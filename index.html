@@ -793,6 +793,181 @@
             font-style: italic;
             margin: 0;
         }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: #34495e;
+            transform: scale(1.05);
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .menu-toggle .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .menu-toggle .hamburger span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 5rem 1.5rem 2rem;
+                max-width: 100%;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .paper-title {
+                font-size: 1.6rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .section h3 {
+                font-size: 1.1rem;
+            }
+
+            .content {
+                padding: 5rem 1rem 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .figure-caption {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            .sidebar {
+                width: 280px;
+                max-width: 85vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .paper-title {
+                font-size: 1.4rem;
+                line-height: 1.4;
+            }
+
+            .section h2 {
+                font-size: 1.2rem;
+            }
+
+            .section h3 {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 5rem 0.75rem 1rem;
+            }
+
+            .password-form {
+                padding: 1.5rem;
+            }
+
+            .menu-toggle {
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.6rem;
+            }
+
+            .equation {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -828,6 +1003,18 @@
 
     <!-- Main Content (Protected) -->
     <div class="protected-content" id="protectedContent">
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <div class="container">
             <!-- Sidebar with TOC -->
             <nav class="sidebar" id="sidebar">
@@ -900,7 +1087,7 @@
                     
                     <div class="paper-meta">
                         <strong>Author:</strong> Houston Golden<br>
-                        <strong>Date:</strong> July 2025
+                        <strong>Date:</strong> November 10, 2025
                     </div>
 
 
@@ -3066,6 +3253,65 @@ def build_hierarchical_model(data):
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.style.display === 'block') {
                 lightbox.style.display = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle Functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (sidebar.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle menu on button click
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMenu);
+        }
+
+        // Close menu when clicking overlay
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a TOC link (on mobile)
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    setTimeout(closeMenu, 300); // Small delay for smooth transition
+                }
+            });
+        });
+
+        // Close menu on window resize if moving to desktop view
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                closeMenu();
+            }
+        });
+
+        // Close mobile menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeMenu();
             }
         });
     </script>
