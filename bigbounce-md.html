@@ -138,6 +138,19 @@
             padding: 0.25rem 0.25rem;
         }
         .toc a:hover { color: #ffffff; }
+        /* Active section highlighting */
+        .toc a.active {
+            color: #22d3ee; /* cyan-400 */
+            font-weight: 600;
+            border-left: 3px solid #22d3ee;
+            padding-left: 0.5rem;
+            background: rgba(34, 211, 238, 0.08);
+            border-radius: 0 4px 4px 0;
+        }
+        .toc a.active:hover {
+            color: #06b6d4; /* cyan-500 on hover for active */
+            background: rgba(6, 182, 212, 0.12);
+        }
         .toc .lvl-2 { margin-left: 0.75rem; font-size: 0.92rem; }
         .toc .lvl-3 { margin-left: 1.25rem; font-size: 0.9rem; }
         .btn {
@@ -424,6 +437,7 @@
             if (statusEl) statusEl.remove();
             buildTocAndIds(contentEl);
             initMobileToggle();
+            initActiveSectionHighlight();
             return typesetMath();
         })
         .catch(function(err) {
@@ -440,6 +454,61 @@
         }
         // If already unlocked, start immediately
         if (unlocked) { start(); }
+    })();
+    </script>
+    <script>
+    // Scroll spy: highlight active TOC item
+    (function() {
+        var tocEl = document.getElementById('toc');
+        var contentEl = document.getElementById('md-content');
+        var observer = null;
+        var headingEls = [];
+        var linkById = new Map();
+        var activeId = null;
+
+        window.initActiveSectionHighlight = function() {
+            if (!tocEl || !contentEl) return;
+            linkById.clear();
+            Array.prototype.forEach.call(tocEl.querySelectorAll('a'), function(a) {
+                var id = (a.getAttribute('href') || '').replace(/^#/, '');
+                if (id) linkById.set(id, a);
+            });
+            headingEls = Array.prototype.slice.call(contentEl.querySelectorAll('h1, h2, h3'));
+            if (observer) { observer.disconnect(); }
+            observer = new IntersectionObserver(onIntersect, {
+                root: null,
+                rootMargin: '0px 0px -70% 0px', // mark a section active when its top passes 30% from top
+                threshold: [0, 1.0]
+            });
+            headingEls.forEach(function(h) { observer.observe(h); });
+            // Initialize based on current hash or first heading
+            var initialId = (location.hash || '').replace(/^#/, '') || (headingEls[0] && headingEls[0].id);
+            if (initialId) setActive(initialId);
+            window.addEventListener('hashchange', function() {
+                var hid = (location.hash || '').replace(/^#/, '');
+                if (hid) setActive(hid);
+            });
+        };
+
+        function onIntersect(entries) {
+            // Find the topmost heading that is intersecting or just passed top
+            var candidates = entries.filter(function(e){ return e.isIntersecting; });
+            if (candidates.length === 0) return;
+            candidates.sort(function(a, b){ return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top; });
+            var id = candidates[0].target.id;
+            if (id) setActive(id);
+        }
+        function setActive(id) {
+            if (activeId === id) return;
+            activeId = id;
+            linkById.forEach(function(a){ a.classList.remove('active'); });
+            var link = linkById.get(id);
+            if (link) {
+                link.classList.add('active');
+                // Ensure visibility in sidebar
+                try { link.scrollIntoView({ block: 'nearest', inline: 'nearest' }); } catch(e){}
+            }
+        }
     })();
     </script>
 </body>
