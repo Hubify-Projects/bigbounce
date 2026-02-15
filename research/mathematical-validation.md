@@ -8,148 +8,123 @@
 
 ### Starting Framework
 
-In Einstein-Cartan theory, the presence of spin density modifies the field equations. The action includes:
+In Einstein-Cartan-Sciama-Kibble (ECSK) theory, spacetime has both curvature and torsion. The torsion tensor is coupled to spin angular momentum density.
 
-$$S = \int d^4x \sqrt{-g} \left[\frac{R}{16\pi G} + \mathcal{L}_m\right]$$
+### Derivation of Modified First Friedmann Equation
 
-where torsion couples to spin through:
+The standard Friedmann equation in GR:
+$$H^2 = \frac{8\pi G}{3}\rho - \frac{k}{a^2}$$
 
-$$T^\lambda_{\mu\nu} = \frac{8\pi G}{c^4} S^\lambda_{\mu\nu}$$
+With spin-torsion coupling, the energy-momentum tensor acquires a spin contribution. The key modification comes from the torsion-spin interaction energy:
 
-### Derivation of Modified Friedmann Equation
+$$T^{\mu\nu} = T^{\mu\nu}_{\text{matter}} + T^{\mu\nu}_{\text{spin}}$$
 
-For a spatially flat FLRW metric with spin-torsion coupling:
+The spin energy density contributes quadratically:
+$$\rho_{\text{eff}} = \rho - \alpha \sigma^2$$
 
-$$ds^2 = -dt^2 + a^2(t)(dx^2 + dy^2 + dz^2)$$
+where $\sigma$ is the spin density magnitude and $\alpha$ is a coupling constant related to Planck-scale physics:
+$$\alpha = \frac{1}{2\kappa^2} = \frac{c^4}{32\pi G^2\hbar^2}$$
 
-The Einstein-Cartan field equations with spin give:
+**Modified Friedmann equation:**
+$$\boxed{H^2 = \frac{8\pi G}{3}\rho\left(1 - \frac{\rho}{\rho_c}\right) - \frac{k}{a^2}}$$
 
-$$G_{\mu\nu} + C_{\mu\nu} = 8\pi G T_{\mu\nu}$$
+where the critical density is:
+$$\rho_c = \frac{3c^4}{32\pi G^2\sigma^2} = \frac{1}{2\kappa^2\sigma^2}$$
 
-where $C_{\mu\nu}$ is the spin-torsion contribution:
+**Alternative form with explicit spin coupling:**
+$$\boxed{H^2 = \frac{8\pi G}{3}\rho - k_{\text{eff}}\sigma^2 - \frac{k}{a^2}}$$
 
-$$C_{00} = -\kappa \sigma^2$$
+where $k_{\text{eff}} = \frac{8\pi G}{3} \cdot \frac{1}{2\kappa^2} = \frac{4\pi Gc^4}{3G^2\hbar^2} = \frac{4\pi c^4}{3G\hbar^2}$
 
-with $\kappa = \frac{8\pi G}{3}$ and $\sigma$ being the spin density magnitude.
-
-The 00-component of the field equation yields:
-
-$$3H^2 = 8\pi G \rho - \kappa \sigma^2$$
-
-Therefore:
-
-$$\boxed{H^2 = \frac{8\pi G}{3}\rho - \frac{8\pi G}{9}\sigma^2}$$
-
-Or more compactly with $k = \frac{8\pi G}{9}$:
-
-$$\boxed{H^2 = \frac{8\pi G}{3}\rho - k\sigma^2}$$
-
-### Physical Interpretation
-
-The spin density term $-k\sigma^2$ provides a **repulsive contribution** that becomes significant at high densities, preventing singularities.
+For flat universe ($k=0$) and homogeneous spin:
+$$\boxed{H^2 = \frac{8\pi G}{3}\rho - \frac{c^4}{24G\hbar^2}\sigma^2}$$
 
 ## 2. Bounce Condition at Critical Density
 
-### Determining the Bounce
+### Deriving the Bounce Condition
 
-The bounce occurs when $H = 0$ and $\dot{H} > 0$. Setting $H = 0$:
+At the bounce point, the scale factor reaches minimum, so:
+$$\dot{a} = 0 \implies H = 0$$
 
-$$0 = \frac{8\pi G}{3}\rho_B - k\sigma^2_B$$
+From the modified Friedmann equation:
+$$0 = \frac{8\pi G}{3}\rho_B - k_{\text{eff}}\sigma_B^2$$
 
-### Spin-Density Relationship
+Solving for bounce density:
+$$\boxed{\rho_B = \frac{3k_{\text{eff}}}{8\pi G}\sigma_B^2 = \frac{c^4}{8G\hbar^2}\sigma_B^2}$$
 
-For fermions, spin density relates to matter density:
+### Critical Density Relationship
 
-$$\sigma^2 = \alpha \rho^2$$
+The spin density at bounce can be expressed in terms of matter density:
 
-where $\alpha$ is a coupling constant with dimensions $[\text{density}]^{-1}$, typically:
+For a universe dominated by fermions with intrinsic spin:
+$$\sigma^2 = \left(\frac{\hbar n}{2}\right)^2$$
 
-$$\alpha \sim \frac{1}{\rho_{\text{Planck}}} = \frac{\hbar c}{m_{\text{Planck}}^4 c^4}$$
+where $n$ is number density. Using $\rho = nm$ for particle mass $m$:
+$$\sigma^2 = \frac{\hbar^2\rho^2}{4m^2}$$
 
-### Critical Bounce Density
+Substituting into bounce condition:
+$$\rho_B = \frac{c^4}{8G\hbar^2} \cdot \frac{\hbar^2\rho_B^2}{4m^2}$$
 
-Substituting into the bounce condition:
+$$\boxed{\rho_B = \frac{8m^2c^4}{G\hbar^2} = \frac{2m^2}{\ell_P^2}}$$
 
-$$\frac{8\pi G}{3}\rho_B = k\alpha\rho_B^2$$
+For Planck mass particles ($m \sim m_P$):
+$$\boxed{\rho_B \sim \rho_P = \frac{c^5}{G^2\hbar} \approx 5.16 \times 10^{99} \text{ g/cm}^3}$$
 
-$$\rho_B = \frac{8\pi G}{3k\alpha}$$
-
-With $k = \frac{8\pi G}{9}$:
-
-$$\boxed{\rho_B = \frac{3}{\alpha} = \frac{3m_{\text{Planck}}^4 c^3}{\hbar}}$$
-
-For typical values:
-
-$$\boxed{\rho_B \sim 0.41 \rho_{\text{Planck}} \approx 2 \times 10^{93} \text{ g/cm}^3}$$
-
-### Verification of Bounce Dynamics
-
-Taking the time derivative of the modified Friedmann equation:
-
-$$2H\dot{H} = \frac{8\pi G}{3}\dot{\rho} - 2k\sigma\dot{\sigma}$$
-
-At $H = 0$:
-
-$$\dot{H} = \frac{1}{2k\sigma_B}\left(2k\sigma\dot{\sigma} - \frac{8\pi G}{3}\dot{\rho}\right)\Bigg|_{H=0}$$
-
-Using $\dot{\rho} = -3H(\rho + p) = 0$ at the bounce:
-
-$$\dot{H}\Big|_{\text{bounce}} = \frac{\dot{\sigma}}{\sigma_B} \cdot k\sigma_B > 0$$
-
-Since $\sigma$ is increasing as we approach the bounce from contraction ($\dot{\sigma} > 0$), we confirm $\dot{H} > 0$, validating the **bounce**.
+This is the **Planck density**, confirming quantum gravity effects trigger the bounce.
 
 ## 3. Equation of State Near the Bounce
 
-### General Energy-Momentum Conservation
+### Modified Continuity Equation
 
+The energy conservation equation is modified:
 $$\dot{\rho} + 3H(\rho + p) = 0$$
 
-### Effective Equation of State
+Near the bounce, include spin pressure contribution:
+$$p_{\text{eff}} = p + p_{\text{spin}}$$
 
-Define the effective pressure including spin-torsion effects:
+### Spin Pressure Derivation
 
-$$p_{\text{eff}} = p - \frac{k\sigma^2}{8\pi G}$$
+From the spin energy density $\rho_{\text{spin}} = -\frac{c^4}{24G\hbar^2}\sigma^2$:
 
-Near the bounce, the modified Friedmann equation can be rewritten:
+The spin contribution acts as negative energy (repulsive). For equation of state:
+$$p_{\text{spin}} = w_{\text{spin}}\rho_{\text{spin}}$$
 
-$$H^2 = \frac{8\pi G}{3}(\rho + \rho_{\text{eff,spin}})$$
+From thermodynamic consistency and dimensional analysis:
+$$\boxed{p_{\text{spin}} = +\frac{c^4}{24G\hbar^2}\sigma^2 = -\rho_{\text{spin}}}$$
 
-where:
+Thus $w_{\text{spin}} = -1$ (vacuum energy-like).
 
-$$\rho_{\text{eff,spin}} = -\frac{3k\sigma^2}{8\pi G}$$
+### Effective Equation of State at Bounce
 
-### Equation of State Parameter
+Total effective equation of state parameter:
+$$w_{\text{eff}} = \frac{p + p_{\text{spin}}}{\rho + \rho_{\text{spin}}}$$
 
-Define $w_{\text{eff}} = p_{\text{eff}}/\rho$. From the acceleration equation:
+As $\rho \to \rho_B$:
+$$w_{\text{eff}} \to \frac{p - \frac{c^4\sigma_B^2}{24G\hbar^2}}{\rho_B - \frac{c^4\sigma_B^2}{24G\hbar^2}}$$
 
-$$\frac{\ddot{a}}{a} = -\frac{4\pi G}{3}(\rho + 3p) + k\sigma^2$$
+At the bounce point where $H=0$, the two terms balance:
+$$\frac{8\pi G}{3}\rho_B = \frac{c^4}{24G\hbar^2}\sigma_B^2$$
 
-At the bounce ($H = 0$, $\ddot{a} > 0$):
+For **ultra-stiff matter** near bounce ($p \approx \rho$):
+$$\boxed{w_{\text{eff}} \approx +1}$$
 
-$$0 < -\frac{4\pi G}{3}(\rho_B + 3p_B) + k\sigma_B^2$$
+For **radiation** ($p = \rho/3$) dominated bounce:
+$$\boxed{w_{\text{eff}} \approx \frac{1/3 + 1}{1 + 1} = \frac{2}{3}}$$
 
-Using $\frac{8\pi G}{3}\rho_B = k\sigma_B^2$:
+### Verification of Bounce Dynamics
 
-$$0 < -\frac{4\pi G}{3}(\rho_B + 3p_B) + \frac{8\pi G}{3}\rho_B$$
+The second Friedmann equation:
+$$\dot{H} = -4\pi G(\rho + p) + \text{spin terms}$$
 
-$$3p_B < \rho_B$$
+Near bounce:
+$$\boxed{\dot{H}\bigg|_{H=0} = -4\pi G\rho_B(1 + w) + \frac{c^4}{6G\hbar^2}\sigma_B^2 > 0}$$
 
-$$\boxed{w_B = \frac{p_B}{\rho_B} < \frac{1}{3}}$$
-
-### Near-Bounce Behavior
-
-For radiation-dominated matter near bounce, $p = \frac{1}{3}\rho$, but effective:
-
-$$w_{\text{eff}} = \frac{p - \frac{3k\sigma^2}{8\pi G}}{\rho} = \frac{1}{3} - \frac{k\sigma^2}{8\pi G\rho}$$
-
-At $\rho = \rho_B$:
-
-$$\boxed{w_{\text{eff}}(\rho_B) = \frac{1}{3} - 1 = -\frac{2}{3}}$$
-
-This **negative effective equation of state** drives the bounce, transitioning from contraction to expansion.
+For $w < 1$, this ensures $\dot{H} > 0$ at bounce, confirming **contraction → expansion** transition.
 
 ## Summary
 
-✓ **Modified Friedmann equation** validated with spin-torsion correction
-✓ **Critical bounce density** $\rho_B \sim 0.41\rho_{\text{Planck}}$ derived
-✓ **Equation of state** shows $w_{\text{eff}} < 0$ at bounce, enabling singularity avoidance
+✓ **Modified Friedmann equation** includes quadratic spin density term with coupling $k_{\text{eff}} \sim c^4/(G\hbar^2)$
+
+✓ **Bounce occurs** at $H=0$ when $\rho = \rho_B \sim m^2/\ell_P^2 \sim \rho_P$ (Planck density)
+
+✓ **Equation of state** near bounce shows $w_{\text{eff}} \lesssim 1$, with spin providing repulsive pressure that reverses collapse
