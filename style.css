@@ -50,6 +50,7 @@ body {
 /* — Typography — */
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text); letter-spacing: -0.02em; line-height: 1.3; }
 h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 16px; }
+main > h1:first-child, main > .hero:first-child { margin-top: 0; }
 h2 { font-size: 1.5rem; font-weight: 600; margin: 48px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
 h3 { font-size: 1.125rem; font-weight: 600; margin: 24px 0 12px; }
 h4 { font-size: 0.9375rem; font-weight: 600; margin: 16px 0 8px; color: var(--text-secondary); }
@@ -73,8 +74,6 @@ nav {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid var(--border);
 }
-
-main > h1:first-child, main > .hero:first-child { margin-top: 0; }
 nav .nav-inner {
   max-width: 960px; margin: 0 auto; padding: 0 24px;
   display: flex; align-items: center; height: 56px; gap: 32px;
