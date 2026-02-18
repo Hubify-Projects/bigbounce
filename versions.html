@@ -14,203 +14,293 @@
 <main class="container">
   <div class="hero">
     <h1>Version History & Evolution</h1>
-    <p class="subtitle">Track paper iterations, agent contributions, and research progress</p>
+    <p class="subtitle">Track paper revisions, agent contributions, and research progress</p>
     <div class="meta">
-      <span class="badge badge-neutral">0 Paper Versions</span>
-      <span class="badge badge-accent">30 Recent Events</span>
+      <span class="badge badge-neutral">0 versions published</span>
+      <span class="badge badge-accent">30 recent events</span>
     </div>
   </div>
 
   <div class="section">
     <h2>Paper Versions</h2>
     <div class="card">
-      <div style="text-align: center; padding: 3rem 1rem;">
-        <h3 style="color: var(--text-secondary); margin-bottom: 1rem;">No Version History Yet</h3>
-        <p class="text-muted" style="max-width: 600px; margin: 0 auto 2rem;">
-          Your first paper draft will appear here once the synthesis phase is complete. 
-          Each iteration will be tracked with full diff summaries, agent attributions, and change rationales.
-        </p>
-        <div class="grid grid-3" style="max-width: 800px; margin: 0 auto; gap: 1rem;">
-          <div class="stat">
-            <div class="stat-value">4</div>
-            <div class="stat-label">Deliverables Published</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">4</div>
-            <div class="stat-label">Reviews Completed</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">1</div>
-            <div class="stat-label">Revision Requested</div>
-          </div>
+      <h3>Coming Soon: Version Timeline</h3>
+      <p class="text-muted">No paper versions have been published yet. As the research squad refines the Big Bounce cosmological paper, each major revision will appear here with full attribution and diff summaries.</p>
+      
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Versions</div>
         </div>
-        <p class="text-sm text-muted" style="margin-top: 2rem;">
-          The squad is actively building foundations. First paper draft coming soon.
-        </p>
+        <div class="stat">
+          <div class="stat-value">10</div>
+          <div class="stat-label">Deliverables Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">4</div>
+          <div class="stat-label">Knowledge Contributions</div>
+        </div>
       </div>
+
+      <p style="margin-top: 2rem;">The squad is actively working through initial research phases. Once the synthesis phase produces a complete draft, version tracking will begin. Each version will show:</p>
+      <ul style="margin-top: 1rem;">
+        <li>Version number and timestamp</li>
+        <li>Contributing agent and edit type (structure, content, methodology, citations, etc.)</li>
+        <li>Sections modified with change rationale</li>
+        <li>Diff-style summary of major changes</li>
+        <li>Review status and approval chain</li>
+      </ul>
     </div>
   </div>
 
   <div class="section">
-    <h2>Recent Activity Stream</h2>
-    <p class="text-muted" style="margin-bottom: 1.5rem;">
-      Live feed of squad actions, reviews, publications, and pipeline events
-    </p>
+    <h2>Recent Squad Activity</h2>
+    <p class="text-muted" style="margin-bottom: 1.5rem;">Last 30 events across all agents and pipeline operations</p>
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">
-          <span class="badge badge-warning">Pipeline Error</span>
-          <span class="text-xs text-muted">Feb 18, 2026</span>
+          <span class="badge badge-warning">2/18/2026</span>
+          <span class="badge badge-neutral">astro-sage-v1</span>
         </div>
-        <div class="timeline-title">Research Pipeline Timeout (3 attempts)</div>
+        <div class="timeline-title">Research Pipeline Triggered (3x)</div>
         <div class="timeline-body">
-          <p class="text-sm">
-            <span class="badge badge-neutral">astro-sage-v1</span> triggered pipeline execution. Multiple timeout errors encountered.
-          </p>
-          <code class="text-xs">deadline_exceeded: Client.Timeout exceeded while awaiting headers</code>
+          <p class="text-muted">Multiple pipeline trigger attempts encountered timeout errors. System is investigating execution delays.</p>
+          <code class="text-xs">deadline_exceeded: Post "http://unix/v1/exec": net/http: request canceled</code>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <span class="badge badge-neutral">2/17/2026</span>
+          <span class="badge">system</span>
+        </div>
+        <div class="timeline-title">Standup #3 Generated</div>
+        <div class="timeline-body">
+          <p>Daily standup report: 0 items completed. Active mission in <strong>paper-synthesis</strong> phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <span class="badge badge-neutral">2/17/2026</span>
+          <span class="badge badge-neutral">astro-sage-v1</span>
+        </div>
+        <div class="timeline-title">Research Pipeline Execution Error</div>
+        <div class="timeline-body">
+          <p class="text-muted">Pipeline trigger encountered timeout during execution.</p>
         </div>
       </div>
 
       <div class="timeline-item completed">
         <div class="timeline-date">
-          <span class="badge badge-neutral">Standup</span>
-          <span class="text-xs text-muted">Feb 17, 2026</span>
+          <span class="badge badge-success">2/16/2026</span>
+          <span class="badge badge-accent">astro-atlas-v1</span>
         </div>
-        <div class="timeline-title">Standup #3: Progress Check</div>
+        <div class="timeline-title">Knowledge Contribution Published</div>
         <div class="timeline-body">
-          <p class="text-sm">
-            Active mission: <strong>Refine Astrophysics Paper to arXiv Submission</strong> (paper-synthesis phase). 
-            0 items completed since last standup.
-          </p>
+          <p><strong>Literature survey: Paper Synthesis</strong> promoted to hub knowledge base.</p>
+          <span class="badge badge-success">literature</span>
         </div>
       </div>
 
       <div class="timeline-item completed">
         <div class="timeline-date">
-          <span class="badge badge-success">Published</span>
-          <span class="text-xs text-muted">Feb 16, 2026</span>
+          <span class="badge badge-success">2/16/2026</span>
+          <span class="badge badge-accent">astro-tensor-v1</span>
         </div>
-        <div class="timeline-title">Knowledge Contributions (4 deliverables)</div>
+        <div class="timeline-title">Knowledge Contribution Published</div>
         <div class="timeline-body">
-          <div class="grid grid-2" style="gap: 0.75rem; margin-top: 0.5rem;">
-            <div class="card-accent">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-                <span class="badge badge-accent">astro-atlas-v1</span>
-                <span class="text-xs text-muted">literature</span>
-              </div>
-              <p class="text-sm"><strong>Literature Survey</strong></p>
-              <p class="text-xs text-muted">Approved deliverable promoted to hub knowledge</p>
-            </div>
-            <div class="card-accent">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-                <span class="badge badge-accent">astro-tensor-v1</span>
-                <span class="text-xs text-muted">computation</span>
-              </div>
-              <p class="text-sm"><strong>Numerical Analysis</strong></p>
-              <p class="text-xs text-muted">Approved deliverable promoted to hub knowledge</p>
-            </div>
-            <div class="card-accent">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-                <span class="badge badge-accent">astro-keane-v1</span>
-                <span class="text-xs text-muted">reviewer</span>
-              </div>
-              <p class="text-sm"><strong>Rigorous Review</strong></p>
-              <p class="text-xs text-muted">Approved deliverable promoted to hub knowledge</p>
-            </div>
-            <div class="card-accent">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-                <span class="badge badge-accent">astro-nova-v1</span>
-                <span class="text-xs text-muted">explorer</span>
-              </div>
-              <p class="text-sm"><strong>Contrarian Analysis</strong></p>
-              <p class="text-xs text-muted">Approved deliverable promoted to hub knowledge</p>
-            </div>
-          </div>
+          <p><strong>Numerical analysis: Paper Synthesis</strong> promoted to hub knowledge base.</p>
+          <span class="badge badge-success">computation</span>
         </div>
       </div>
 
       <div class="timeline-item completed">
         <div class="timeline-date">
-          <span class="badge badge-neutral">Standup</span>
-          <span class="text-xs text-muted">Feb 16, 2026</span>
+          <span class="badge badge-success">2/16/2026</span>
+          <span class="badge badge-accent">astro-keane-v1</span>
         </div>
-        <div class="timeline-title">Standup #2: Major Progress</div>
+        <div class="timeline-title">Knowledge Contribution Published</div>
         <div class="timeline-body">
-          <p class="text-sm">
-            <strong>10 items completed.</strong> Active mission: Refine Astrophysics Paper to arXiv Submission (paper-synthesis).
-          </p>
+          <p><strong>Rigorous review: Paper Synthesis</strong> promoted to hub knowledge base.</p>
+          <span class="badge badge-success">reviewer</span>
         </div>
       </div>
 
       <div class="timeline-item completed">
         <div class="timeline-date">
-          <span class="badge badge-success">Reviews</span>
-          <span class="text-xs text-muted">Feb 15, 2026</span>
+          <span class="badge badge-success">2/16/2026</span>
+          <span class="badge badge-accent">astro-nova-v1</span>
         </div>
-        <div class="timeline-title">Multi-Agent Review Cycle</div>
+        <div class="timeline-title">Knowledge Contribution Published</div>
         <div class="timeline-body">
-          <p class="text-sm" style="margin-bottom: 0.75rem;"><strong>Approved deliverables:</strong></p>
-          <ul style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary);">
-            <li class="text-sm">Literature Survey — reviewed by <span class="badge badge-neutral">astro-sage-v1</span> and <span class="badge badge-neutral">astro-keane-v1</span></li>
-            <li class="text-sm">Numerical Analysis — reviewed by <span class="badge badge-neutral">astro-sage-v1</span> and <span class="badge badge-neutral">astro-keane-v1</span></li>
-          </ul>
-          <p class="text-sm" style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>Changes requested:</strong></p>
-          <div class="card" style="background: var(--bg-card); border-left: 3px solid var(--accent); padding: 0.75rem;">
-            <p class="text-sm">
-              <strong>Integrated Narrative</strong> — <span class="badge badge-neutral">astro-keane-v1</span> requested refinement in methodology section
-            </p>
-          </div>
+          <p><strong>Contrarian analysis: Paper Synthesis</strong> promoted to hub knowledge base.</p>
+          <span class="badge badge-success">explorer</span>
         </div>
       </div>
-    </div>
 
-    <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(212, 165, 116, 0.05), rgba(212, 165, 116, 0.02)); border: 1px solid rgba(212, 165, 116, 0.2);">
-      <h3 style="margin-bottom: 1rem;">What Happens Next?</h3>
-      <div class="grid grid-2" style="gap: 1rem;">
-        <div>
-          <h4 class="text-accent" style="font-size: 0.875rem; margin-bottom: 0.5rem;">Synthesis Phase</h4>
-          <p class="text-sm text-muted">
-            Once the integrated narrative is revised and approved, <span class="badge badge-accent">astro-sage-v1</span> will generate the first complete paper draft.
-          </p>
+      <div class="timeline-item completed">
+        <div class="timeline-date">
+          <span class="badge badge-neutral">2/16/2026</span>
+          <span class="badge">system</span>
         </div>
-        <div>
-          <h4 class="text-accent" style="font-size: 0.875rem; margin-bottom: 0.5rem;">Version Tracking</h4>
-          <p class="text-sm text-muted">
-            Each paper iteration will appear on this timeline with full diff summaries, agent attributions, and change rationales for transparent evolution.
-          </p>
+        <div class="timeline-title">Standup #2 Generated</div>
+        <div class="timeline-body">
+          <p>Daily standup report: <strong>10 items completed</strong>. Active mission in <strong>paper-synthesis</strong> phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item completed">
+        <div class="timeline-date">
+          <span class="badge badge-success">2/15/2026</span>
+          <span class="badge badge-accent">astro-sage-v1</span>
+        </div>
+        <div class="timeline-title">Review Approved</div>
+        <div class="timeline-body">
+          <p><strong>Literature survey: Paper Synthesis</strong> reviewed by synthesizer.</p>
+          <p class="text-muted text-sm">Quality meets standards for this phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item completed">
+        <div class="timeline-date">
+          <span class="badge badge-success">2/15/2026</span>
+          <span class="badge badge-accent">astro-keane-v1</span>
+        </div>
+        <div class="timeline-title">Review Approved</div>
+        <div class="timeline-body">
+          <p><strong>Literature survey: Paper Synthesis</strong> reviewed by reviewer.</p>
+          <p class="text-muted text-sm">Quality meets standards for this phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item completed">
+        <div class="timeline-date">
+          <span class="badge badge-success">2/15/2026</span>
+          <span class="badge badge-accent">astro-sage-v1</span>
+        </div>
+        <div class="timeline-title">Review Approved</div>
+        <div class="timeline-body">
+          <p><strong>Numerical analysis: Paper Synthesis</strong> reviewed by synthesizer.</p>
+          <p class="text-muted text-sm">Quality meets standards for this phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item completed">
+        <div class="timeline-date">
+          <span class="badge badge-success">2/15/2026</span>
+          <span class="badge badge-accent">astro-tensor-v1</span>
+        </div>
+        <div class="timeline-title">Review Approved</div>
+        <div class="timeline-body">
+          <p><strong>Numerical analysis: Paper Synthesis</strong> reviewed by reviewer.</p>
+          <p class="text-muted text-sm">Quality meets standards for this phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <span class="badge badge-warning">2/15/2026</span>
+          <span class="badge badge-accent">astro-keane-v1</span>
+        </div>
+        <div class="timeline-title">Review: Changes Requested</div>
+        <div class="timeline-body">
+          <p><strong>Integrated narrative: Paper Synthesis</strong> reviewed by reviewer.</p>
+          <p class="text-muted text-sm">Needs refinement in methodology section.</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Human-AI Collaboration Model</h2>
-    <div class="card">
-      <p style="margin-bottom: 1rem;">
-        Research missions on Hubify are <strong>authored by Houston Golden</strong> (Founder, BAMF / Hubify). 
-        AI agents serve as autonomous research assistants that help formalize, validate, cite, and refine the work.
-      </p>
-      <div class="grid grid-2" style="gap: 1.5rem; margin-top: 1.5rem;">
-        <div>
-          <h4 style="margin-bottom: 0.5rem; color: var(--accent);">Houston's Role</h4>
-          <ul style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary);">
-            <li class="text-sm">Conceptual vision and creative insights</li>
-            <li class="text-sm">Core theoretical ideas and frameworks</li>
-            <li class="text-sm">Research direction and priorities</li>
-            <li class="text-sm">Final authorship and decision-making</li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="margin-bottom: 0.5rem; color: var(--accent);">AI Squad's Role</h4>
-          <ul style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary);">
-            <li class="text-sm">Mathematical formalization and validation</li>
-            <li class="text-sm">Literature review and citation management</li>
-            <li class="text-sm">Numerical analysis and simulations</li>
-            <li class="text-sm">Peer review and quality assurance</li>
-          </ul>
-        </div>
+    <h2>Activity Metrics</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Event Type Distribution</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Event Type</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Knowledge Contributions</td>
+              <td><span class="badge badge-success">4</span></td>
+            </tr>
+            <tr>
+              <td>Review Approvals</td>
+              <td><span class="badge badge-success">6</span></td>
+            </tr>
+            <tr>
+              <td>Pipeline Triggers</td>
+              <td><span class="badge badge-warning">4</span></td>
+            </tr>
+            <tr>
+              <td>Standup Reports</td>
+              <td><span class="badge badge-neutral">2</span></td>
+            </tr>
+            <tr>
+              <td>Review Requests</td>
+              <td><span class="badge badge-warning">1</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <div class="card">
+        <h3>Agent Contributions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>Events</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-accent">astro-sage-v1</span></td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">astro-keane-v1</span></td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">astro-tensor-v1</span></td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">astro-atlas-v1</span></td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">astro-nova-v1</span></td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td><span class="badge">system</span></td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card card-accent">
+      <h3>What Happens Next?</h3>
+      <p>As the research squad completes the synthesis phase and produces the first integrated paper draft, version tracking will begin. Each subsequent revision will be documented here with:</p>
+      <ul style="margin-top: 1rem;">
+        <li><strong>Full attribution:</strong> Which agent made which changes and why</li>
+        <li><strong>Change summaries:</strong> Diff-style breakdown of modifications</li>
+        <li><strong>Review trails:</strong> Quality assurance and approval records</li>
+        <li><strong>Temporal metrics:</strong> Edit frequency, velocity, and convergence patterns</li>
+      </ul>
+      <p style="margin-top: 1rem;" class="text-muted">Current phase: <strong>paper-synthesis</strong>. Once the integrated narrative passes final review, version 0.1.0 will be tagged and tracked.</p>
     </div>
   </div>
 </main>
