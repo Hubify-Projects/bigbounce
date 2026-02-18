@@ -73,6 +73,8 @@ nav {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid var(--border);
 }
+
+main > h1:first-child, main > .hero:first-child { margin-top: 0; }
 nav .nav-inner {
   max-width: 960px; margin: 0 auto; padding: 0 24px;
   display: flex; align-items: center; height: 56px; gap: 32px;
@@ -90,7 +92,7 @@ nav a:hover { color: var(--text-secondary); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* — Main — */
-main { padding-top: 80px; min-height: 100vh; padding-bottom: 48px; }
+main { padding-top: 100px; min-height: 100vh; padding-bottom: 48px; }
 
 /* — Cards — */
 .card {
@@ -161,7 +163,7 @@ blockquote { border-left: 2px solid var(--accent); padding: 12px 20px; margin: 2
 blockquote p { color: var(--text-secondary); font-style: italic; }
 
 /* — Hero — */
-.hero { margin-bottom: 48px; padding: 40px 0 32px; }
+.hero { margin-bottom: 48px; padding: 20px 0 32px; }
 .hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
 .hero .subtitle { font-size: 17px; color: var(--text-secondary); max-width: 680px; line-height: 1.7; }
 .hero .meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: center; }
