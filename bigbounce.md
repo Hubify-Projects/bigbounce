@@ -211,6 +211,66 @@ For stellar-mass black holes, quantum fluctuations near the horizon can trigger 
 
 ### 2.2 Black Hole Interior Dynamics and Quantum Bounce
 
+We now address the cosmogonic scenario underlying our framework: the emergence of our universe from quantum gravitational processes within a rotating black hole interior in a parent universe. This section provides the mathematical foundations connecting Popławski's scenario to our spin-torsion mechanism.
+
+### 2.2.1 Interior Metric and Torsion-Induced Bounce
+
+Following Popławski (2010, 2012), we consider the interior of a rotating (Kerr) black hole where Einstein-Cartan torsion prevents singularity formation. The effective metric inside the horizon can be written in the frame of an infalling observer as:
+
+$$ds^2 = -dt^2 + a^2(t)[d\chi^2 + \sin^2\chi(d\theta^2 + \sin^2\theta\, d\phi^2)]$$
+
+where $a(t)$ is the scale factor and $\chi \in [0,\pi]$ is the radial coordinate. The parent black hole's angular momentum $J_{\rm parent}$ introduces a background torsion field with spin density:
+
+$$S^{\mu\nu\lambda} \sim \frac{J_{\rm parent}}{M_{\rm parent}^2 r^3} \epsilon^{\mu\nu\lambda\rho} u_\rho$$
+
+where $M_{\rm parent}$ is the parent black hole mass and $u_\rho$ the four-velocity of matter.
+
+### 2.2.2 Matching Conditions Across the Bounce
+
+The quantum bounce occurs when the energy density reaches the critical value $\rho_c \sim m_{\rm Pl}^2/\ell_{\rm Pl}^2$ where torsion-induced repulsion balances gravitational attraction. The bounce dynamics are governed by the modified Friedmann equation from Einstein-Cartan theory:
+
+$$H^2 = \frac{8\pi G}{3}\rho\left(1 - \frac{\rho}{\rho_c}\right) + \frac{\kappa}{3}$$
+
+where $\kappa$ characterizes spatial curvature inherited from the parent black hole geometry. At the bounce ($t = t_B$, $a = a_B$), we impose continuity of the scale factor and its derivative:
+
+$$a(t_B^-) = a(t_B^+) = a_B, \quad \dot{a}(t_B^-) = -\dot{a}(t_B^+)$$
+
+The false-vacuum energy density that drives post-bounce inflation is determined by the phase transition temperature:
+
+$$\rho_{\rm vac} = \epsilon \rho_c \approx \epsilon \times 5.2 \times 10^{113}\,{\rm erg\,cm}^{-3}$$
+
+where $\epsilon \sim 10^{-10}$ parameterizes the tunneling probability from the torsion-stabilized state to the false vacuum. This yields an inflationary Hubble scale:
+
+$$H_{\rm inf} = \sqrt{\frac{8\pi G \rho_{\rm vac}}{3}} \sim 10^{14}\,{\rm GeV}$$
+
+consistent with GUT-scale inflation.
+
+### 2.2.3 Evolution of Cosmic Rotation Through Inflation
+
+The parent black hole's rotation manifests as a global vorticity $\omega_B$ at the bounce. During slow-roll inflation lasting $N_e \approx 60$ e-folds, this vorticity dilutes as:
+
+$$\omega(t) = \omega_B \left(\frac{a_B}{a(t)}\right)^3 = \omega_B e^{-3N_e}$$
+
+Matching to present-day constraints $\omega_0/H_0 \lesssim 10^{-9}$ requires:
+
+$$\omega_B \lesssim 10^{-9} H_0 e^{180} \sim 10^{69}\,{\rm s}^{-1}$$
+
+which is automatically satisfied for any parent black hole with $J_{\rm parent}/M_{\rm parent}^2 \lesssim 1$ (in geometric units). The key insight is that while rotation dilutes exponentially, parity-violating effects encoded in the $\alpha$ parameter (Eq. 2.1) remain imprinted on the inflationary perturbations and do not dilute.
+
+### 2.2.4 Connection to the $\alpha$ Parameter
+
+The parent black hole's rotation sources the initial spin density through frame-dragging effects:
+
+$$S_{\rm eff}^{\mu\nu\lambda}(t_B) \sim \frac{\hbar}{m_{\rm Pl}^2 \ell_{\rm Pl}^3} \times \frac{J_{\rm parent}}{M_{\rm parent}^2}$$
+
+Integrating through the bounce and applying the one-loop fermionic corrections (Section 2.3), this determines the coefficient:
+
+$$\alpha \sim \frac{\hbar c}{M_{\rm Pl}^2} \times \left(\frac{J_{\rm parent}}{M_{\rm parent}^2 c}\right) \times \ln\left(\frac{\rho_c}{\rho_{\rm inf}}\right)$$
+
+For near-extremal rotation ($J_{\rm parent} \sim M_{\rm parent}^2$) and $\ln(\rho_c/\rho_{\rm inf}) \sim 10$, we obtain $\alpha \sim 10^{-1}\ell_{\rm Pl}^2$, within the range required for observable CMB signatures (Section 4.1).
+
+**Limitations**: This matching is semi-classical and neglects full quantum geometry of the bounce. A rigorous derivation requires solving the quantum Einstein-Cartan constraints with boundary conditions set by the parent black hole, which remains an open problem in quantum gravity. The $\epsilon$ parameter encoding tunneling probability is estimated from analogy with Coleman-De Luccia instantons but lacks first-principles calculation in the ECSK framework.
+
 #### 2.2.1 Kerr Interior Geometry
 
 For a rotating black hole with mass $M$ and spin parameter $a_*$, the interior metric in Boyer-Lindquist coordinates is:
