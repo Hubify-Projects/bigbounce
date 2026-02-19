@@ -1,1 +1,1 @@
-{"buildCommand": "echo static", "outputDirectory": ".", "framework": null, "rewrites": [{"source": "/animations", "destination": "/animations.html"}]}
+{"buildCommand": "echo static", "outputDirectory": ".", "framework": null, "rewrites": [{"source": "/animations", "destination": "/animations.html"}, {"source": "/data-comparison", "destination": "/data-comparison.html"}]}
