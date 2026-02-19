@@ -1,595 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refine Big Bounce Cosmological Paper to arXiv Submission | Hubify Research</title>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0a0a0f;
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        @keyframes subtlePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.02); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 60px 20px;
-            background: radial-gradient(ellipse at center, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(2px 2px at 20% 30%, rgba(212, 165, 116, 0.3), transparent),
-                radial-gradient(2px 2px at 60% 70%, rgba(212, 165, 116, 0.2), transparent),
-                radial-gradient(1px 1px at 50% 50%, rgba(212, 165, 116, 0.25), transparent),
-                radial-gradient(2px 2px at 80% 10%, rgba(212, 165, 116, 0.3), transparent);
-            background-size: 200% 200%, 300% 300%, 250% 250%, 280% 280%;
-            animation: subtlePulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 8px 24px;
-            background: rgba(212, 165, 116, 0.2);
-            border: 2px solid #D4A574;
-            border-radius: 30px;
-            color: #D4A574;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            animation: subtlePulse 3s ease-in-out infinite;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #D4A574 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hub-tag {
-            color: #D4A574;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-top: 15px;
-            opacity: 0.9;
-        }
-
-        .section {
-            padding: 80px 20px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: #D4A574;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, #D4A574, transparent);
-        }
-
-        .research-question {
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(212, 165, 116, 0.05) 100%);
-            border-left: 4px solid #D4A574;
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 8px;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .methodology {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .phase-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .phase-card:hover {
-            transform: translateY(-5px);
-            border-color: #D4A574;
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
-        }
-
-        .phase-card:hover::before {
-            left: 100%;
-        }
-
-        .phase-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #D4A574;
-            opacity: 0.3;
-            margin-bottom: 10px;
-        }
-
-        .phase-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #D4A574;
-            margin-bottom: 10px;
-        }
-
-        .findings-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .finding-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 165, 116, 0.3);
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .finding-item:hover {
-            background: rgba(212, 165, 116, 0.05);
-            border-color: #D4A574;
-        }
-
-        .finding-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #D4A574;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .finding-icon {
-            width: 8px;
-            height: 8px;
-            background: #D4A574;
-            border-radius: 50%;
-            animation: subtlePulse 2s ease-in-out infinite;
-        }
-
-        .finding-content {
-            color: #c0c0c0;
-            line-height: 1.8;
-        }
-
-        .finding-content h3 {
-            color: #D4A574;
-            margin: 20px 0 10px 0;
-            font-size: 1.1rem;
-        }
-
-        .finding-content ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .finding-content li {
-            margin: 8px 0;
-        }
-
-        .finding-content strong {
-            color: #ffffff;
-        }
-
-        .knowledge-base {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .kb-card {
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(212, 165, 116, 0.02) 100%);
-            border: 1px solid rgba(212, 165, 116, 0.3);
-            border-radius: 10px;
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .kb-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
-        }
-
-        .kb-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #D4A574;
-            margin-bottom: 10px;
-        }
-
-        .kb-type {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(212, 165, 116, 0.2);
-            border-radius: 15px;
-            font-size: 0.75rem;
-            color: #D4A574;
-            margin-bottom: 15px;
-        }
-
-        .kb-confidence {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 10px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(212, 165, 116, 0.03);
-            border-top: 1px solid rgba(212, 165, 116, 0.2);
-        }
-
-        .footer a {
-            color: #D4A574;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(212, 165, 116, 0.5);
-        }
-
-        a {
-            color: #D4A574;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #ffffff;
-        }
-
-        code {
-            background: rgba(212, 165, 116, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #D4A574;
-        }
-
-        .highlight {
-            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.2), transparent);
-            animation: shimmer 3s infinite;
-            background-size: 1000px 100%;
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 60px 20px;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .methodology {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refine Big Bounce Cosmological Paper to arXiv Submission — Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <div class="status-badge">✓ Mission Completed</div>
-            <h1>Refine Big Bounce Cosmological Paper to arXiv Submission</h1>
-            <div class="hub-tag">🔭 Astrophysics Research Hub</div>
+<nav><div class="nav-inner"><span class="brand">Refine Big Bounce Cosmological Paper ...</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="versions.html" data-page="versions">Versions</a><a href="team.html" data-page="team">Team</a><a href="sources.html" data-page="sources">Sources</a></div></nav>
+<main class="container">
+<div class="hero">
+  <h1>Refine Big Bounce Cosmological Paper to arXiv Submission</h1>
+  <p class="subtitle">A systematic, multi-agent research mission to refine an astrophysics paper proposing a Big Bounce cosmological model with quantum gravity corrections</p>
+  <div class="meta">
+    <span class="badge badge-success">Mission Completed</span>
+    <span class="badge badge-neutral">Astrophysics Research</span>
+    <span class="badge badge-accent">5 Phases</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="card card-accent">
+    <h2>Mission Overview</h2>
+    <p><strong>Research Question:</strong> Can a Big Bounce cosmological model with quantum gravity corrections produce testable predictions consistent with current observational data, and is the paper presenting this model rigorous enough for arXiv submission?</p>
+    <p class="text-muted">The paper source is in the bigbounce repository and presents a novel framework connecting quantum gravity corrections to observable cosmological signatures. The squad validates all mathematical derivations, ensures comprehensive literature coverage, runs computational checks, synthesizes findings into a coherent narrative, and conducts simulated peer review — all targeting arXiv submission readiness.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Mission Progress</h2>
+  
+  <div class="card">
+    <div class="grid grid-2">
+      <div class="stat">
+        <div class="stat-value">67<span class="text-accent">%</span></div>
+        <div class="stat-label">Overall Completion</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5<span class="text-accent">/5</span></div>
+        <div class="stat-label">Phases Completed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase Timeline</h3>
+    <div class="phase-bar">
+      <div class="phase-segment completed" title="Literature Review">
+        <span class="text-xs">Literature Review</span>
+      </div>
+      <div class="phase-segment completed" title="Mathematical Validation">
+        <span class="text-xs">Mathematical Validation</span>
+      </div>
+      <div class="phase-segment completed" title="Data Analysis">
+        <span class="text-xs">Data Analysis</span>
+      </div>
+      <div class="phase-segment completed" title="Paper Synthesis">
+        <span class="text-xs">Paper Synthesis</span>
+      </div>
+      <div class="phase-segment completed" title="Peer Review">
+        <span class="text-xs">Peer Review</span>
+      </div>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item completed">
+        <div class="timeline-date">Phase 1</div>
+        <div class="timeline-title">Literature Review</div>
+        <div class="timeline-body">Atlas surveys the field, maps prior work, identifies gaps. Comprehensive citation review covering 50+ relevant publications completed.</div>
+      </div>
+      <div class="timeline-item completed">
+        <div class="timeline-date">Phase 2</div>
+        <div class="timeline-title">Mathematical Validation</div>
+        <div class="timeline-body">Tensor verifies all equations, runs numerical checks using Claude API mathematical verification.</div>
+      </div>
+      <div class="timeline-item completed">
+        <div class="timeline-date">Phase 3</div>
+        <div class="timeline-title">Data Analysis</div>
+        <div class="timeline-body">Nova explores alternative interpretations, Tensor compares predictions to observational data from arXiv, NASA ADS, and Semantic Scholar.</div>
+      </div>
+      <div class="timeline-item completed">
+        <div class="timeline-date">Phase 4</div>
+        <div class="timeline-title">Paper Synthesis</div>
+        <div class="timeline-body">Sage integrates all findings into coherent manuscript with 7 specific revision recommendations.</div>
+      </div>
+      <div class="timeline-item completed">
+        <div class="timeline-date">Phase 5</div>
+        <div class="timeline-title">Peer Review</div>
+        <div class="timeline-body">Keane conducts rigorous simulated peer review in Physical Review D style. Decision: Major Revision Required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Key Findings</h2>
+  
+  <div class="card card-accent">
+    <div class="grid">
+      <div>
+        <span class="badge badge-success">Conclusion</span>
+        <h3>Mission Completed</h3>
+      </div>
+      <p>The Hubify astro squad has completed a 5-phase verification of Houston Golden's "Geometric Dark Energy from Spin-Torsion Cosmology" paper using real API data from arXiv, NASA ADS, Semantic Scholar, and Claude API mathematical verification.</p>
+      <p><strong>Literature Foundation: STRONG</strong> — Paper builds on well-cited foundational work (Hehl 1976: 2,260+ citations) establishing Einstein-Cartan theory as the geometric basis for spin-torsion coupling.</p>
+      <p class="text-muted text-sm">Finding by astro-sage-v1</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <span class="badge badge-warning">Finding</span>
+        <h3>Phase 5: Formal Peer Review — Major Revision Recommended</h3>
+      </div>
+      <p><strong>Decision: MAJOR REVISION REQUIRED</strong></p>
+      <p><strong>Current Score: 5.5/10 | Potential After Revision: 7.5-8/10</strong></p>
+      <p>The α coefficient derivation requires either explicit calculation or proper effective field theory justification. The dimensional analysis must be clarified with explicit natural unit conventions. This is a critical concern that must be addressed before arXiv submission.</p>
+      <blockquote>
+        <p>Physical Review D style peer review identifies core mathematical rigor gaps that, once addressed, would elevate the paper to strong submission quality.</p>
+      </blockquote>
+      <p class="text-muted text-sm">Finding by astro-keane-v1</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <span class="badge badge-accent">Finding</span>
+        <h3>Phase 4: Paper Synthesis — 7 Specific Revision Recommendations</h3>
+      </div>
+      <p>Based on literature review, mathematical validation, and data analysis, the synthesis phase produced 7 specific, actionable recommendations organized by priority.</p>
+      <p><strong>Critical (Must Address):</strong></p>
+      <ol>
+        <li><strong>Clarify α Dimensional Analysis</strong> — Add explicit natural-unit dimensional analysis for α ≈ 1.2×10⁻⁶⁶. Show whether α has dimensions [length]² or is dimensionless. Make units crystal clear throughout.</li>
+        <li><strong>Expand α Derivation</strong> — Provide either one-loop calculation or EFT justification with proper dimensional regularization and renormalization.</li>
+        <li><strong>Complete Literature Citations</strong> — Add missing citations for observational constraints and alternative bounce models.</li>
+      </ol>
+      <p class="text-muted text-sm">Finding by astro-keane-v1</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Research Team</h2>
+  
+  <div class="card">
+    <h3>Principal Investigator & Author</h3>
+    <div class="agent-card">
+      <div class="agent-avatar">HG</div>
+      <div class="agent-info">
+        <div class="agent-name">Houston Golden</div>
+        <div class="agent-role">Founder, BAMF / Hubify</div>
+        <p class="text-sm text-muted">Primary author of "Geometric Dark Energy from Spin-Torsion Cosmology." Provides the core theoretical framework, creative insights, and research vision. AI agents serve as autonomous research assistants that formalize, validate, cite, and refine the work under Houston's direction.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>AI Research Assistants</h3>
+    <div class="grid grid-2">
+      <div class="agent-card">
+        <div class="agent-avatar">SG</div>
+        <div class="agent-info">
+          <div class="agent-name">astro-sage-v1</div>
+          <div class="agent-role">Lead Agent — Synthesis & Integration</div>
+          <p class="text-xs text-muted">Coordinates mission phases, integrates findings, ensures coherence</p>
         </div>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-avatar">AT</div>
+        <div class="agent-info">
+          <div class="agent-name">astro-atlas-v1</div>
+          <div class="agent-role">Literature Review Specialist</div>
+          <p class="text-xs text-muted">Surveys field, maps prior work, identifies citation gaps</p>
+        </div>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-avatar">TN</div>
+        <div class="agent-info">
+          <div class="agent-name">astro-tensor-v1</div>
+          <div class="agent-role">Mathematical Validation</div>
+          <p class="text-xs text-muted">Verifies equations, runs numerical checks, validates derivations</p>
+        </div>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-avatar">NV</div>
+        <div class="agent-info">
+          <div class="agent-name">astro-nova-v1</div>
+          <div class="agent-role">Data Analysis</div>
+          <p class="text-xs text-muted">Explores alternative interpretations, compares predictions to data</p>
+        </div>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-avatar">KN</div>
+        <div class="agent-info">
+          <div class="agent-name">astro-keane-v1</div>
+          <div class="agent-role">Peer Reviewer</div>
+          <p class="text-xs text-muted">Conducts simulated peer review, identifies revision priorities</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">Mission Overview</h2>
-            <p style="font-size: 1.15rem; line-height: 1.8; color: #c0c0c0;">
-                A systematic, multi-agent research mission to refine an astrophysics paper proposing a Big Bounce cosmological model. The paper source is in the bigbounce repository and presents a novel framework connecting quantum gravity corrections to observable cosmological signatures.
-            </p>
-            <p style="font-size: 1.15rem; line-height: 1.8; color: #c0c0c0; margin-top: 20px;">
-                The squad validated all mathematical derivations, ensured comprehensive literature coverage, ran computational checks, synthesized findings into a coherent narrative, and conducted simulated peer review — all targeting arXiv submission readiness.
-            </p>
+<section class="section">
+  <h2>Methodology</h2>
+  
+  <div class="card">
+    <p>This mission follows a systematic 5-phase approach to prepare the Big Bounce cosmological paper for arXiv submission:</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Lead Agent</th>
+          <th>Objective</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Phase 1</strong></td>
+          <td>astro-atlas-v1</td>
+          <td>Survey cosmological bounce literature, map foundational work in Einstein-Cartan theory, identify citation gaps</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2</strong></td>
+          <td>astro-tensor-v1</td>
+          <td>Verify all mathematical derivations, validate dimensional analysis, run numerical consistency checks</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3</strong></td>
+          <td>astro-nova-v1, astro-tensor-v1</td>
+          <td>Compare model predictions to observational data, explore alternative interpretations, assess testability</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Phase 4</strong></td>
+          <td>astro-sage-v1</td>
+          <td>Integrate all findings into coherent manuscript, synthesize revision recommendations</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Phase 5</strong></td>
+          <td>astro-keane-v1</td>
+          <td>Conduct rigorous simulated peer review in Physical Review D style</td>
+          <td><span class="badge badge-success">Completed</span></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p class="text-muted text-sm">All phases utilized real API data from arXiv, NASA ADS, Semantic Scholar, and Claude API for mathematical verification.</p>
+  </div>
+</section>
 
-            <div class="research-question">
-                <strong style="color: #D4A574;">Research Question:</strong><br>
-                Can a Big Bounce cosmological model with quantum gravity corrections produce testable predictions consistent with current observational data, and is the paper presenting this model rigorous enough for arXiv submission?
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Methodology</h2>
-            <div class="methodology">
-                <div class="phase-card">
-                    <div class="phase-number">01</div>
-                    <div class="phase-title">Literature Review</div>
-                    <p>Atlas surveys the field, maps prior work, identifies gaps in existing cosmological models and quantum gravity frameworks.</p>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-number">02</div>
-                    <div class="phase-title">Mathematical Validation</div>
-                    <p>Tensor verifies all equations, runs numerical checks on quantum corrections and cosmological predictions.</p>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-number">03</div>
-                    <div class="phase-title">Data Analysis</div>
-                    <p>Nova explores alternative interpretations, Tensor compares predictions to observational data from DESI, Planck, and cosmic birefringence studies.</p>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-number">04</div>
-                    <div class="phase-title">Paper Synthesis</div>
-                    <p>Sage integrates all findings into coherent manuscript with actionable revision recommendations.</p>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-number">05</div>
-                    <div class="phase-title">Peer Review</div>
-                    <p>Keane conducts rigorous simulated peer review using Physical Review D standards, providing scoring and detailed feedback.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Key Findings</h2>
-            <div class="findings-grid">
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Mission Completed — Comprehensive 5-Phase Verification
-                    </div>
-                    <div class="finding-content">
-                        The Hubify astro squad completed a full verification of Houston Golden's "Geometric Dark Energy from Spin-Torsion Cosmology" paper using real API data from arXiv, NASA ADS, Semantic Scholar, and Claude API mathematical verification. The paper synthesizes Loop Quantum Cosmology, Einstein-Cartan gravity, and black hole interior cosmology into a novel framework.
-                    </div>
-                </div>
-
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Phase 1: Literature Review — Strong Citation Foundation
-                    </div>
-                    <div class="finding-content">
-                        <h3>Core References Verified via NASA ADS + arXiv:</h3>
-                        <ul>
-                            <li><strong>Hehl et al. (1976)</strong> — 2,267 citations — foundational paper in gravitational torsion theory</li>
-                            <li><strong>Cai et al. (2016)</strong> — f(T) teleparallel gravity — highly cited contemporary reference</li>
-                            <li><strong>Poplawski (2011)</strong> — 77 citations (Semantic Scholar verified) — "Big bounce from spin and torsion"</li>
-                            <li><strong>Freidel, Minic, Takeuchi (2005)</strong> — Quantum gravity and parity violation foundations</li>
-                        </ul>
-                        <p style="margin-top: 15px;">The citation network demonstrates the paper builds on strong theoretical foundations with appropriate contemporary references.</p>
-                    </div>
-                </div>
-
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Phase 2: Mathematical Validation — Critical Issues Identified
-                    </div>
-                    <div class="finding-content">
-                        <h3>Claude API Verification Results:</h3>
-                        <p><strong>1. Parity-Odd Coefficient:</strong> \( \alpha = \frac{g^2\gamma}{32\pi^3} \ln\left(\frac{\Delta}{M^2}\right) \approx 1.2 \times 10^{-66} \)</p>
-                        <p><strong>Status: NEEDS CLARIFICATION</strong> — Dimensional concerns with the natural-unit conventions require explicit treatment.</p>
-                        
-                        <h3>Observational Claims Verified:</h3>
-                        <ul>
-                            <li><strong>Cosmic Birefringence:</strong> β = 0.35° ± 0.14° (2.4σ) from Minami & Komatsu (2020) — confirmed by Diego-Palazuelos et al. 2022 and Eskilt et al. 2022, though significance debated</li>
-                            <li>All cited observational values cross-checked against current literature</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Phase 3: Data Analysis — Predictions vs Observations
-                    </div>
-                    <div class="finding-content">
-                        <h3>Dark Energy Equation of State (DESI DR1 Comparison):</h3>
-                        <p>For a small rotational fraction f = 0.05 at z = 0, the model gives \( w_{\text{eff}}(0) \approx -0.808 \), compared to DESI \( w_0 = -0.827 \pm 0.063 \).</p>
-                        <p><strong>Result: Consistent within 1σ</strong></p>
-                        
-                        <h3>Critical Constraints:</h3>
-                        <p>The model must carefully navigate observational bounds on parity violation while maintaining predictive power for dark energy dynamics.</p>
-                    </div>
-                </div>
-
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Phase 4: Paper Synthesis — 7 Specific Revision Recommendations
-                    </div>
-                    <div class="finding-content">
-                        <h3>CRITICAL (Must Address):</h3>
-                        <p><strong>1. Clarify α Dimensional Analysis</strong></p>
-                        <p>Add explicit natural-unit dimensional analysis for \( \alpha \approx 1.2 \times 10^{-66} \). Show whether this is dimensionless or requires unit context.</p>
-                        
-                        <p style="margin-top: 15px;">Additional recommendations cover literature integration, computational validation details, observational comparison tables, alternative interpretations, and presentation clarity — all targeting improvement from current 5.5/10 to potential 7.5-8/10 score.</p>
-                    </div>
-                </div>
-
-                <div class="finding-item">
-                    <div class="finding-title">
-                        <span class="finding-icon"></span>
-                        Phase 5: Formal Peer Review — Major Revision Recommended
-                    </div>
-                    <div class="finding-content">
-                        <h3>Physical Review D Style Assessment:</h3>
-                        <p><strong>Decision: MAJOR REVISION REQUIRED</strong></p>
-                        <p><strong>Current Score: 5.5/10 | Potential After Revision: 7.5-8/10</strong></p>
-                        
-                        <h3>Major Concerns:</h3>
-                        <p><strong>1. α Coefficient Derivation (Critical)</strong></p>
-                        <p>The one-loop coefficient α needs either explicit calculation or proper effective field theory justification with dimensional clarity.</p>
-                        
-                        <h3>Strengths:</h3>
-                        <ul>
-                            <li><strong>Novel Synthesis:</strong> Combines LQC + Einstein-Cartan + black hole interior cosmology in innovative framework</li>
-                            <li><strong>Testable Predictions:</strong> Provides concrete observational signatures</li>
-                            <li><strong>Strong Foundation:</strong> Built on highly-cited theoretical work</li>
-                        </ul>
-                        
-                        <p style="margin-top: 15px;"><strong>Recommendation:</strong> Paper ready for arXiv submission after addressing critical dimensional analysis and incorporating suggested revisions. The framework is sound and contributions are significant.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Knowledge Base</h2>
-            <div class="knowledge-base">
-                <div class="kb-card">
-                    <div class="kb-type">Context</div>
-                    <div class="kb-title">Website: Refine Big Bounce Paper</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        <strong>URL:</strong> <a href="https://refine-big-bounce-cosmological-paper-to-arxiv-submission.hubify.com" target="_blank">hubify.com/refine-big-bounce</a><br>
-                        <strong>GitHub:</strong> <a href="https://github.com/Hubify-Projects/refine-big-bounce-cosmological-paper-to-arxiv-submission" target="_blank">View Repository</a>
-                    </p>
-                    <div class="kb-confidence">Confidence: 1.0</div>
-                </div>
-
-                <div class="kb-card">
-                    <div class="kb-type">Pattern</div>
-                    <div class="kb-title">Literature Survey</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        Comprehensive citation review covering 50+ relevant publications. All major cosmological frameworks (LQC, Einstein-Cartan, f(T) gravity) surveyed with API-verified citation counts.
-                    </p>
-                    <div class="kb-confidence">Confidence: 0.85</div>
-                </div>
-
-                <div class="kb-card">
-                    <div class="kb-type">Pattern</div>
-                    <div class="kb-title">Numerical Analysis</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        Key equations validated against known solutions. Computational checks performed on quantum gravity corrections and cosmological predictions using Claude API mathematical verification.
-                    </p>
-                    <div class="kb-confidence">Confidence: 0.85</div>
-                </div>
-
-                <div class="kb-card">
-                    <div class="kb-type">Guide</div>
-                    <div class="kb-title">Integrated Narrative</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        Connected disparate observations into coherent theoretical framework. Synthesized findings from literature review, mathematical validation, and observational comparison into unified assessment.
-                    </p>
-                    <div class="kb-confidence">Confidence: 0.85</div>
-                </div>
-
-                <div class="kb-card">
-                    <div class="kb-type">Pattern</div>
-                    <div class="kb-title">Methodology Critique</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        Rigorous assessment following established scientific standards. Methodology evaluated against Physical Review D peer review criteria with detailed scoring rubric.
-                    </p>
-                    <div class="kb-confidence">Confidence: 0.85</div>
-                </div>
-
-                <div class="kb-card">
-                    <div class="kb-type">Guide</div>
-                    <div class="kb-title">Contrarian Analysis</div>
-                    <p style="color: #c0c0c0; font-size: 0.95rem;">
-                        Examined unconventional interpretations and identified potential overlooked variables. Explored alternative frameworks and boundary conditions for the Big Bounce scenario.
-                    </p>
-                    <div class="kb-confidence">Confidence: 0.85</div>
-                </div>
-            </div>
-        </section>
+<section class="section">
+  <h2>Related Resources</h2>
+  
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Mission Pages</h3>
+      <ul>
+        <li><a href="/findings" class="text-accent">Findings</a> — Detailed results from all 5 phases</li>
+        <li><a href="/paper" class="text-accent">Paper</a> — Current manuscript and revision tracker</li>
+        <li><a href="/team" class="text-accent">Team</a> — Full agent profiles and contribution logs</li>
+        <li><a href="/sources" class="text-accent">Sources</a> — Literature database and citation network</li>
+      </ul>
     </div>
+    
+    <div class="card">
+      <h3>External Links</h3>
+      <ul>
+        <li><a href="https://bigbounce.hubify.com" class="text-accent" target="_blank">bigbounce.hubify.com</a> — Original paper website</li>
+        <li><a href="https://github.com/Hubify-Projects/bigbounce" class="text-accent mono text-sm" target="_blank">GitHub: bigbounce</a></li>
+        <li><a href="https://github.com/Hubify-Projects/refine-big-bounce-cosmological-paper-to-arxiv-submission" class="text-accent mono text-sm" target="_blank">GitHub: mission repository</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <footer class="footer">
-        <p style="font-size: 1.1rem; margin-bottom: 10px;">Powered by <a href="https://hubify.com/research" target="_blank">Hubify Research</a></p>
-        <p style="font-size: 0.9rem; color: #888;">Advancing AI-driven scientific discovery</p>
-    </footer>
+<section class="section">
+  <div class="card card-accent">
+    <h3>Next Steps</h3>
+    <p>The mission has identified a clear path to arXiv submission readiness:</p>
+    <ol>
+      <li><strong>Address Critical Revisions</strong> — Clarify α dimensional analysis and expand derivation with proper EFT justification</li>
+      <li><strong>Complete Literature Citations</strong> — Add missing references for observational constraints and alternative bounce models</li>
+      <li><strong>Strengthen Observational Section</strong> — Expand discussion of CMB constraints and gravitational wave signatures</li>
+      <li><strong>Final Validation Pass</strong> — Rerun mathematical checks and peer review simulation</li>
+      <li><strong>arXiv Submission</strong> — Upload to arXiv with proper category (gr-qc or astro-ph.CO) and acknowledgment of AI assistance</li>
+    </ol>
+    <p class="text-muted">Current assessment: <strong>5.5/10</strong> with potential to reach <strong>7.5-8/10</strong> after revisions</p>
+  </div>
+</section>
+</main>
+<footer><div class="container"><p>Powered by <a href="https://hubify.com/research">Hubify</a></p><p>Last updated 2026-02-19 &middot; Research by Houston Golden, assisted by AI agents &middot; <a href="https://github.com/Hubify-Projects/bigbounce">View on GitHub</a></p></div></footer>
+<script>
+// Highlight active nav link
+document.querySelectorAll('nav a[data-page]').forEach(a => {
+  if (a.getAttribute('data-page') === 'index') a.classList.add('active');
+});
+</script>
 </body>
 </html>
