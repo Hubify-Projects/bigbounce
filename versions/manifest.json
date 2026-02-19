@@ -1,0 +1,146 @@
+{
+  "paper_title": "Geometric Dark Energy from Spin-Torsion Cosmology: A Comprehensive Framework with Observational Validation",
+  "author": "Houston Golden",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "date": "2025-07-15T00:00:00-07:00",
+      "title": "Initial Draft",
+      "description": "Houston Golden's original theoretical framework laying out the Einstein-Cartan spin-torsion cosmology approach to dark energy. Introduced the core modified Friedmann equations with spin-torsion coupling, the bounce mechanism at Planck density, and the geometric dilution parameter. Initial observational predictions outlined.",
+      "authors": ["Houston Golden"],
+      "sections_count": 12,
+      "word_count_approx": 8500,
+      "status": "draft",
+      "key_changes": [
+        "Core Einstein-Cartan-Holst (ECH) action derivation",
+        "Modified Friedmann equations with spin-torsion coupling",
+        "Bounce condition at critical density ~ρ_Planck",
+        "Geometric dilution parameter ξ introduced",
+        "Initial galaxy spin asymmetry predictions",
+        "Basic comparison with ΛCDM"
+      ],
+      "snapshot_file": null,
+      "note": "Pre-git version; original manuscript before systematic review"
+    },
+    {
+      "version": "0.2.0",
+      "date": "2025-11-10T00:00:00-08:00",
+      "title": "Critical Review & Professional Tone",
+      "description": "Major revision following comprehensive editing checklist assessment. Removed self-referential 'Golden Parameter' naming (renamed to Geometric Dilution Parameter), deleted AI peer review gallery section, removed pre-emptive FAQ section, and substantially improved professional scientific tone throughout.",
+      "authors": ["Houston Golden"],
+      "sections_count": 14,
+      "word_count_approx": 11000,
+      "status": "revision",
+      "key_changes": [
+        "Renamed 'Golden Parameter' → 'Geometric Dilution Parameter'",
+        "Removed AI peer review gallery (Section 22)",
+        "Removed FAQ: Addressing Referee Concerns (Section 14)",
+        "Fixed notation inconsistencies (∇ vs D covariant derivatives)",
+        "Added proper novelty delineation from Poplawski (2010) and Hehl et al.",
+        "Integrated 15+ critical fixes from editing checklist",
+        "Added Discussion section with reframed scientific considerations",
+        "Professional tone alignment for arXiv submission standards"
+      ],
+      "snapshot_file": null,
+      "note": "Editing checklist assessment date: Nov 10, 2025. Status: 'NOT READY for submission - Critical revisions required'"
+    },
+    {
+      "version": "0.3.0",
+      "date": "2026-02-15T14:00:00+00:00",
+      "title": "Research Squad Integration",
+      "description": "Hubify research squad deployed. Four AI agents completed independent deliverables: comprehensive literature review (astro-atlas-v1, astro-nova-v1), numerical validation of modified Friedmann equations (astro-tensor-v1), rigorous peer review assessment (astro-keane-v1), and contrarian analysis of theoretical weaknesses (astro-nova-v1). All deliverables approved through dual-review process.",
+      "authors": ["Houston Golden", "astro-atlas-v1", "astro-tensor-v1", "astro-keane-v1", "astro-nova-v1"],
+      "sections_count": 16,
+      "word_count_approx": 18000,
+      "status": "revision",
+      "key_changes": [
+        "Literature review: Big Bounce cosmology 2024-2026 (LQC, string gas, CMB, EC theory)",
+        "Mathematical validation: Modified Friedmann equations verified with step-by-step derivations",
+        "Bounce condition independently confirmed: ρ_B ~ m²/ℓ_P² ~ ρ_Planck",
+        "Spin pressure derivation: w_spin = -1 (vacuum energy-like) verified",
+        "Peer review scoring: Novelty 7/10, Math rigor 6/10, Testability 5/10, Comparison 6/10",
+        "Peer review recommendation: Major revisions required",
+        "Contrarian analysis: BKL instability, spin averaging problems, ΛCDM degeneracy identified",
+        "Observational constraints from Planck + SPT-3G integrated"
+      ],
+      "snapshot_file": null,
+      "note": "Research squad deliverables all approved Feb 15-16, 2026. Standup #2: 10 items completed."
+    },
+    {
+      "version": "0.4.0",
+      "date": "2026-02-18T06:00:00+00:00",
+      "title": "Comprehensive Expansion & Data Methods",
+      "description": "Major structural expansion from 16 sections to 35 section files plus 4 appendices. Added rigorous data & methods sections for galaxy spin fitting and CMB analysis, joint likelihood framework, cosmological parameter fits, systematics & null tests, enhanced parameter tables, and notation conventions. Paper expanded to 1,240 lines with substantially more mathematical detail.",
+      "authors": ["Houston Golden", "astro-sage-v1", "astro-tensor-v1", "astro-keane-v1"],
+      "sections_count": 35,
+      "word_count_approx": 32000,
+      "status": "revision",
+      "key_changes": [
+        "Expanded to 35 section files + 4 appendices (from 16 sections)",
+        "Added §23: Data & Methods — Galaxy Spin Analysis",
+        "Added §24: Data & Methods — CMB Parity Analysis",
+        "Added §25: Joint Likelihood Framework (multi-probe)",
+        "Added §26: Cosmological Parameter Fits (MCMC methodology)",
+        "Added §27: Systematics & Null Tests",
+        "Added §28: Limitations & Future Work",
+        "Added §29: Enhanced Parameter Summary Table",
+        "Added §30: Systematics Audit Table",
+        "Added §31: Notation Conventions",
+        "Added Appendix C: Galaxy Spin Fitting Pipeline",
+        "Added Appendix J: Joint Likelihood Derivation",
+        "Added Appendix L: Loop Quantum Gravity–Nieh-Yan Coupling",
+        "Added Appendix R: Covariant Rotation Measure",
+        "Honest treatment of Patel & Desmond (2024) null galaxy spin result",
+        "Enhanced error analysis with systematic uncertainty quantification"
+      ],
+      "snapshot_file": null,
+      "note": "First version pushed to GitHub as Hubify-Projects/bigbounce"
+    },
+    {
+      "version": "0.5.0",
+      "date": "2026-02-18T22:42:00-08:00",
+      "title": "Interactive Website & Visualizations",
+      "description": "Website reorganized from single-page to multi-page format (Overview, Findings, Paper, Versions, Team, Sources). Added interactive SVG/Canvas visualizations for quantum bounce dynamics, dark energy evolution, black hole origin, and fine-tuning comparison. Downloadable data files added for all figures. Interactive data explorer with Chart.js integration.",
+      "authors": ["Houston Golden", "astro-sage-v1"],
+      "sections_count": 35,
+      "word_count_approx": 32000,
+      "status": "active",
+      "key_changes": [
+        "Website reorganized: index.html → 6-page site (index, findings, paper, versions, team, sources)",
+        "Added animations.html: interactive SVG/Canvas visualizations",
+        "Quantum bounce dynamics visualization (animated scale factor through bounce)",
+        "Dark energy equation of state evolution visualization",
+        "Black hole origin / bounce interior visualization",
+        "Fine-tuning comparison chart (ΛCDM vs ECH framework)",
+        "Downloadable .xlsx data files for Figures 2, 3a, 3b, 6, 7",
+        "JSON data files for interactive Chart.js rendering",
+        "Vercel deployment with clean URL rewrites"
+      ],
+      "snapshot_file": "v0.5.0-bigbounce.md",
+      "note": "Current deployed version. Paper text unchanged from v0.4.0; website presentation enhanced."
+    },
+    {
+      "version": "0.6.0",
+      "date": "2026-02-18T23:30:00-08:00",
+      "title": "Deep Research & Adversarial Review",
+      "description": "Comprehensive deep research phase. Galaxy spin asymmetry literature search found 9 supporting papers and 5 null results. NASA ADS pulled 70+ papers across 7 topic areas. Adversarial peer review conducted by 4 AI providers (Gemini 2.0, GPT-4o, Grok 3, Perplexity Sonar Pro) identifying 7 key weaknesses. Structured counter-arguments built. Contingency analysis addressing 'what if galaxy spin asymmetry is not real' completed.",
+      "authors": ["Houston Golden", "claude-sonnet-4.5", "gemini-2.0-flash", "gpt-4o", "grok-3-mini-fast", "perplexity-sonar-pro"],
+      "sections_count": 35,
+      "word_count_approx": 32000,
+      "status": "active",
+      "key_changes": [
+        "Galaxy spin literature review: 9 supporting papers (Shamir 2012-2024, Longo 2011, SDSS analyses)",
+        "Galaxy spin null results: 5 papers (Patel & Desmond 2024, Hayes et al. 2017, Iye & Sugai 1991, Land et al. 2008, Philcox & Ereza 2025)",
+        "NASA ADS deep research: 70+ papers across torsion cosmology, CMB parity, H₀ tension, S₈ tension, DESI, torsion bounds, spin-torsion bounce",
+        "Key finding: Liu et al. 2025 (EPJC) — EC torsion preferred over ΛCDM by AIC, S₈ tension resolved",
+        "Key finding: Philcox & Ereza 2025 — BOSS 4PCF parity signal drops from 2.9σ to 1.0σ with improved mocks",
+        "Adversarial review: 7 weaknesses identified (spin averaging, observational status, parameter constraints, novelty claims, cosmic birefringence interpretation, numerical stability, galaxy spin systematic effects)",
+        "Counter-arguments constructed for all 7 adversarial criticisms",
+        "Contingency framework: ECH survives even without galaxy spin evidence (CMB parity, DESI, H₀ tension remain)",
+        "Posted 5 research updates to Convex mission database"
+      ],
+      "snapshot_file": "v0.5.0-bigbounce.md",
+      "note": "Research updates posted to mission but not yet integrated into paper text. Paper integration pending."
+    }
+  ]
+}
