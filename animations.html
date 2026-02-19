@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visualizations — Big Bounce Cosmology | Houston Golden</title>
+<link rel="stylesheet" href="style.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},svg:{fontCache:'global'}}</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+.viz-container{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin:32px 0;overflow:hidden}
+.viz-title{font-size:1.125rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.viz-subtitle{font-size:13px;color:var(--text-tertiary);margin-bottom:24px}
+canvas{display:block;margin:0 auto;border-radius:var(--radius)}
+.viz-controls{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.viz-btn{padding:8px 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-elevated);color:var(--text-secondary);font-family:var(--font-mono);font-size:12px;cursor:pointer;transition:all var(--transition)}
+.viz-btn:hover,.viz-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.viz-legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
+.viz-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary)}
+.viz-legend-dot{width:10px;height:10px;border-radius:50%}
+.viz-equation{text-align:center;margin:16px 0;padding:16px;background:var(--bg-elevated);border-radius:var(--radius);border:1px solid var(--border)}
+.viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.viz-grid{grid-template-columns:1fr}}
+.phase-indicator{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;font-family:var(--font-mono);color:var(--text-secondary)}
+.phase-dot{width:8px;height:8px;border-radius:50%;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav style="position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 0">
+<div class="container" style="display:flex;justify-content:space-between;align-items:center">
+<a href="index.html" style="font-weight:600;color:var(--text);text-decoration:none;font-size:14px">Big Bounce</a>
+<div style="display:flex;gap:16px;font-size:13px">
+<a href="index.html" style="color:var(--text-tertiary);text-decoration:none">Overview</a>
+<a href="findings.html" style="color:var(--text-tertiary);text-decoration:none">Findings</a>
+<a href="paper.html" style="color:var(--text-tertiary);text-decoration:none">Paper</a>
+<a href="animations.html" style="color:var(--accent);text-decoration:none;font-weight:600">Visualizations</a>
+<a href="sources.html" style="color:var(--text-tertiary);text-decoration:none">Sources</a>
+<a href="team.html" style="color:var(--text-tertiary);text-decoration:none">Team</a>
+</div>
+</div>
+</nav>
+
+<main class="container" style="padding-top:48px;padding-bottom:96px">
+
+<h1>Visualizations</h1>
+<p style="max-width:640px;margin-bottom:8px">Interactive animations of the key mechanisms in Houston Golden's spin-torsion dark energy framework.</p>
+<p class="text-xs" style="color:var(--text-muted)">Author: Houston Golden &mdash; Independent Researcher</p>
+
+<!-- ========== VISUALIZATION 1: Quantum Bounce ========== -->
+<div class="viz-container">
+<div class="viz-title">1. The Quantum Bounce</div>
+<div class="viz-subtitle">Torsion from fermionic spin prevents the singularity &mdash; density reaches &rho;<sub>crit</sub> &asymp; 0.41 &rho;<sub>Pl</sub> and bounces</div>
+<canvas id="bounceCanvas" width="880" height="360"></canvas>
+<div class="viz-equation">$$H^2 = \frac{8\pi G}{3}\rho\left[1 - \frac{\rho}{\rho_{\text{crit}}}\right], \qquad \rho_{\text{crit}} = \frac{\sqrt{3}}{32\pi^2\gamma^3 G} \approx 0.41\,\rho_{\text{Pl}}$$</div>
+<div class="viz-controls">
+<button class="viz-btn active" onclick="setBounceSpeed(1)">1x Speed</button>
+<button class="viz-btn" onclick="setBounceSpeed(2)">2x Speed</button>
+<button class="viz-btn" onclick="setBounceSpeed(0.5)">0.5x Speed</button>
+<button class="viz-btn" onclick="resetBounce()">Reset</button>
+</div>
+<div class="phase-indicator">
+<div class="phase-dot" id="bouncePhaseDot" style="background:var(--accent)"></div>
+<span id="bouncePhaseText">Collapsing...</span>
+</div>
+</div>
+
+<!-- ========== VISUALIZATION 2: Dark Energy Evolution ========== -->
+<div class="viz-container">
+<div class="viz-title">2. Dark Energy Evolution: &Lambda;(t) &propto; &Omega;&sup2;(t)</div>
+<div class="viz-subtitle">Spin-torsion predicts evolving dark energy &Lambda;(t) = &Lambda;<sub>0</sub>(1+z)<sup>4</sup> vs constant &Lambda;CDM</div>
+<canvas id="deCanvas" width="880" height="400"></canvas>
+<div class="viz-equation">$$\Lambda(t) = \Lambda_0\left(\frac{a_0}{a(t)}\right)^4 = \Lambda_0(1+z)^4, \qquad \Lambda_{\text{eff}} = 3\Omega^2 + \xi$$</div>
+<div class="viz-controls">
+<button class="viz-btn active" id="deBtnBoth" onclick="setDEMode('both')">Both Models</button>
+<button class="viz-btn" id="deBtnST" onclick="setDEMode('st')">Spin-Torsion Only</button>
+<button class="viz-btn" id="deBtnLCDM" onclick="setDEMode('lcdm')">ΛCDM Only</button>
+</div>
+<div class="viz-legend">
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#D4A574"></div>Spin-Torsion &Lambda;(z)</div>
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#ef4444"></div>&Lambda;CDM (constant)</div>
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#22c55e"></div>DESI BAO hints</div>
+</div>
+</div>
+
+<!-- ========== VISUALIZATION 3: Black Hole → Baby Universe ========== -->
+<div class="viz-container">
+<div class="viz-title">3. Black Hole Origin: Parent &rarr; Baby Universe</div>
+<div class="viz-subtitle">Matter falls into rotating Kerr black hole &mdash; torsion prevents singularity &mdash; baby universe inflates</div>
+<canvas id="bhCanvas" width="880" height="450"></canvas>
+<div class="viz-equation">$$a_{\min} \approx r_g = \frac{2GM}{c^2}, \qquad \Omega_{\text{initial}} \approx \frac{J}{Mr_g^2} \approx 10^{-18}\,\text{rad/s}$$</div>
+<div class="phase-indicator">
+<div class="phase-dot" id="bhPhaseDot" style="background:var(--success)"></div>
+<span id="bhPhaseText">Rotating black hole...</span>
+</div>
+</div>
+
+<!-- ========== VISUALIZATION 4: Fine-Tuning Comparison ========== -->
+<div class="viz-container">
+<div class="viz-title">4. Fine-Tuning Comparison</div>
+<div class="viz-subtitle">Orders of magnitude of fine-tuning required by each dark energy model</div>
+<canvas id="ftCanvas" width="880" height="300"></canvas>
+<div class="viz-legend">
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#ef4444"></div>&Lambda;CDM (~120 orders)</div>
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#eab308"></div>Quintessence (~60)</div>
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#3b82f6"></div>f(R) Gravity (~40)</div>
+<div class="viz-legend-item"><div class="viz-legend-dot" style="background:#22c55e"></div>Spin-Torsion (~5)</div>
+</div>
+</div>
+
+</main>
+
+<!-- Footer -->
+<footer style="border-top:1px solid var(--border);padding:32px 0;text-align:center">
+<div class="container">
+<p class="text-xs" style="color:var(--text-muted)">Author: Houston Golden &bull; Powered by <a href="https://hubify.com" style="color:var(--accent);text-decoration:none">Hubify</a> Research Squads</p>
+</div>
+</footer>
+
+<script>
+// ============================================================
+// VISUALIZATION 1: Quantum Bounce Animation
+// ============================================================
+(function(){
+const c=document.getElementById('bounceCanvas');
+const ctx=c.getContext('2d');
+const W=c.width, H=c.height;
+let t=0, speed=1, animId;
+const accent='#D4A574', bg='#16161a';
+
+function draw(){
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,W,H);
+
+  // Time parameter (0 to 2PI for one full cycle)
+  const phase=t%1;
+
+  // Scale factor a(t): starts large, contracts to minimum, then expands
+  // Using a smooth bounce: a(t) = a_min + (a_max - a_min) * |sin(pi*t)|
+  const aMin=0.05, aMax=1.0;
+  const cycleT=(t*0.3)%(2*Math.PI);
+  const aFactor=aMin + (aMax-aMin)*Math.abs(Math.sin(cycleT));
+
+  // Density is inversely proportional to a^3
+  const rho=1/(aFactor*aFactor*aFactor);
+  const rhoCrit=1/(aMin*aMin*aMin);
+  const rhoNorm=Math.min(rho/rhoCrit,1);
+
+  // Phase text
+  const phaseText=document.getElementById('bouncePhaseText');
+  const phaseDot=document.getElementById('bouncePhaseDot');
+  if(Math.cos(cycleT)<0){
+    phaseText.textContent='Expanding — torsion repulsion dominates';
+    phaseDot.style.background='#22c55e';
+  } else if(rhoNorm>0.8){
+    phaseText.textContent='BOUNCE! ρ → ρ_crit ≈ 0.41 ρ_Pl';
+    phaseDot.style.background='#ef4444';
+  } else {
+    phaseText.textContent='Collapsing — gravity dominates';
+    phaseDot.style.background=accent;
+  }
+
+  // Draw the universe as expanding/contracting circle
+  const centerX=W*0.35, centerY=H*0.5;
+  const maxR=130;
+  const r=maxR*aFactor;
+
+  // Glow effect at bounce
+  if(rhoNorm>0.6){
+    const glowAlpha=(rhoNorm-0.6)*2.5;
+    const grad=ctx.createRadialGradient(centerX,centerY,r*0.5,centerX,centerY,r*2);
+    grad.addColorStop(0,`rgba(239,68,68,${glowAlpha*0.3})`);
+    grad.addColorStop(1,'transparent');
+    ctx.fillStyle=grad;
+    ctx.fillRect(0,0,W,H);
+  }
+
+  // Universe circle
+  ctx.beginPath();
+  ctx.arc(centerX,centerY,r,0,Math.PI*2);
+  const uGrad=ctx.createRadialGradient(centerX-r*0.3,centerY-r*0.3,0,centerX,centerY,r);
+  const hue=rhoNorm>0.7?0:30;
+  const sat=rhoNorm>0.7?'80%':'60%';
+  uGrad.addColorStop(0,`hsla(${hue},${sat},70%,0.8)`);
+  uGrad.addColorStop(0.7,`hsla(${hue},${sat},40%,0.6)`);
+  uGrad.addColorStop(1,`hsla(${hue},${sat},20%,0.3)`);
+  ctx.fillStyle=uGrad;
+  ctx.fill();
+  ctx.strokeStyle=accent;
+  ctx.lineWidth=2;
+  ctx.stroke();
+
+  // Particles inside (spin/fermion dots)
+  for(let i=0;i<20;i++){
+    const angle=(i/20)*Math.PI*2+t*0.5;
+    const dist=r*0.3+r*0.5*(Math.sin(i*137.5*Math.PI/180+t*2)*0.5+0.5);
+    const px=centerX+Math.cos(angle)*dist*0.8;
+    const py=centerY+Math.sin(angle)*dist*0.8;
+    ctx.beginPath();
+    ctx.arc(px,py,2,0,Math.PI*2);
+    ctx.fillStyle=i%3===0?'#22c55e':'rgba(255,255,255,0.4)';
+    ctx.fill();
+  }
+
+  // Right panel: density plot
+  const plotX=W*0.55, plotW=W*0.4, plotY=30, plotH=H-60;
+
+  // Axes
+  ctx.strokeStyle='#3f3f46';
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(plotX,plotY);
+  ctx.lineTo(plotX,plotY+plotH);
+  ctx.lineTo(plotX+plotW,plotY+plotH);
+  ctx.stroke();
+
+  // Labels
+  ctx.fillStyle='#71717a';
+  ctx.font='11px Inter, sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText('time →',plotX+plotW/2,plotY+plotH+20);
+  ctx.save();
+  ctx.translate(plotX-20,plotY+plotH/2);
+  ctx.rotate(-Math.PI/2);
+  ctx.fillText('ρ / ρ_crit',0,0);
+  ctx.restore();
+
+  // ρ_crit line
+  ctx.setLineDash([4,4]);
+  ctx.strokeStyle='#ef4444';
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(plotX,plotY+plotH*0.1);
+  ctx.lineTo(plotX+plotW,plotY+plotH*0.1);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='#ef4444';
+  ctx.textAlign='left';
+  ctx.font='10px JetBrains Mono, monospace';
+  ctx.fillText('ρ_crit ≈ 0.41 ρ_Pl',plotX+plotW+5,plotY+plotH*0.1+4);
+
+  // Draw density history
+  ctx.strokeStyle=accent;
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  const histLen=200;
+  for(let i=0;i<histLen;i++){
+    const tt=((t*0.3)-(histLen-i)*0.02)%(2*Math.PI);
+    const aH=aMin+(aMax-aMin)*Math.abs(Math.sin(tt));
+    const rhoH=1/(aH*aH*aH);
+    const rhoHN=Math.min(rhoH/rhoCrit,1);
+    const x=plotX+(i/histLen)*plotW;
+    const y=plotY+plotH-(rhoHN*plotH*0.9);
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+
+  // Current point
+  const curX=plotX+plotW;
+  const curY=plotY+plotH-(rhoNorm*plotH*0.9);
+  ctx.beginPath();
+  ctx.arc(curX,curY,5,0,Math.PI*2);
+  ctx.fillStyle=rhoNorm>0.8?'#ef4444':accent;
+  ctx.fill();
+
+  // Scale factor label
+  ctx.fillStyle='#a1a1aa';
+  ctx.font='12px JetBrains Mono, monospace';
+  ctx.textAlign='left';
+  ctx.fillText(`a(t) = ${aFactor.toFixed(3)}`,plotX+10,plotY+20);
+  ctx.fillText(`ρ/ρ_c = ${rhoNorm.toFixed(3)}`,plotX+10,plotY+36);
+
+  t+=0.02*speed;
+  animId=requestAnimationFrame(draw);
+}
+draw();
+
+window.setBounceSpeed=function(s){
+  speed=s;
+  document.querySelectorAll('.viz-container:nth-child(2) .viz-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+};
+window.resetBounce=function(){t=0};
+})();
+
+// ============================================================
+// VISUALIZATION 2: Dark Energy Evolution
+// ============================================================
+(function(){
+const c=document.getElementById('deCanvas');
+const ctx=c.getContext('2d');
+const W=c.width, H=c.height;
+let mode='both';
+const accent='#D4A574';
+
+function draw(){
+  ctx.fillStyle='#16161a';
+  ctx.fillRect(0,0,W,H);
+
+  const pad={l:70,r:40,t:30,b:50};
+  const pW=W-pad.l-pad.r, pH=H-pad.t-pad.b;
+
+  // Axes
+  ctx.strokeStyle='#3f3f46';
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(pad.l,pad.t);
+  ctx.lineTo(pad.l,pad.t+pH);
+  ctx.lineTo(pad.l+pW,pad.t+pH);
+  ctx.stroke();
+
+  // X axis: redshift z from 0 to 3
+  const zMax=3;
+  ctx.fillStyle='#71717a';
+  ctx.font='11px Inter, sans-serif';
+  ctx.textAlign='center';
+  for(let z=0;z<=zMax;z+=0.5){
+    const x=pad.l+(z/zMax)*pW;
+    ctx.fillText(z.toFixed(1),x,pad.t+pH+20);
+    ctx.strokeStyle='#27272a';
+    ctx.beginPath();
+    ctx.moveTo(x,pad.t);
+    ctx.lineTo(x,pad.t+pH);
+    ctx.stroke();
+  }
+  ctx.fillText('Redshift z',pad.l+pW/2,pad.t+pH+42);
+
+  // Y axis: Λ(z)/Λ₀ from 0 to 100
+  const yMax=100;
+  ctx.textAlign='right';
+  for(let y=0;y<=yMax;y+=20){
+    const yp=pad.t+pH-(y/yMax)*pH;
+    ctx.fillStyle='#71717a';
+    ctx.fillText(y.toString(),pad.l-8,yp+4);
+    ctx.strokeStyle='#27272a';
+    ctx.beginPath();
+    ctx.moveTo(pad.l,yp);
+    ctx.lineTo(pad.l+pW,yp);
+    ctx.stroke();
+  }
+  ctx.save();
+  ctx.translate(15,pad.t+pH/2);
+  ctx.rotate(-Math.PI/2);
+  ctx.textAlign='center';
+  ctx.fillStyle='#71717a';
+  ctx.fillText('Λ(z) / Λ₀',0,0);
+  ctx.restore();
+
+  // ΛCDM: constant line at Λ/Λ₀ = 1
+  if(mode==='both'||mode==='lcdm'){
+    ctx.strokeStyle='#ef4444';
+    ctx.lineWidth=2;
+    ctx.setLineDash([6,4]);
+    ctx.beginPath();
+    const yLcdm=pad.t+pH-(1/yMax)*pH;
+    ctx.moveTo(pad.l,yLcdm);
+    ctx.lineTo(pad.l+pW,yLcdm);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle='#ef4444';
+    ctx.textAlign='left';
+    ctx.font='11px JetBrains Mono, monospace';
+    ctx.fillText('ΛCDM: Λ = const',pad.l+pW-140,yLcdm-8);
+  }
+
+  // Spin-Torsion: Λ(z) = Λ₀(1+z)⁴
+  if(mode==='both'||mode==='st'){
+    ctx.strokeStyle=accent;
+    ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<=300;i++){
+      const z=(i/300)*zMax;
+      const lambda=Math.pow(1+z,4);
+      const x=pad.l+(z/zMax)*pW;
+      const y=pad.t+pH-Math.min(lambda/yMax,1)*pH;
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    // Label
+    ctx.fillStyle=accent;
+    ctx.font='11px JetBrains Mono, monospace';
+    ctx.textAlign='left';
+    const labelZ=1.5;
+    const labelLam=Math.pow(1+labelZ,4);
+    ctx.fillText('Λ(z) = Λ₀(1+z)⁴',pad.l+(labelZ/zMax)*pW+10,pad.t+pH-Math.min(labelLam/yMax,1)*pH-10);
+  }
+
+  // DESI data points (approximate w₀wₐ hints)
+  if(mode==='both'){
+    const desiPoints=[
+      {z:0.3,lam:1.3,err:0.4},
+      {z:0.5,lam:1.8,err:0.6},
+      {z:0.7,lam:2.5,err:0.9},
+      {z:1.0,lam:4.0,err:1.5},
+    ];
+    ctx.fillStyle='#22c55e';
+    ctx.strokeStyle='#22c55e';
+    ctx.lineWidth=1;
+    for(const p of desiPoints){
+      const x=pad.l+(p.z/zMax)*pW;
+      const y=pad.t+pH-Math.min(p.lam/yMax,1)*pH;
+      const errPx=(p.err/yMax)*pH;
+      ctx.beginPath();
+      ctx.arc(x,y,4,0,Math.PI*2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(x,y-errPx);
+      ctx.lineTo(x,y+errPx);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x-3,y-errPx);
+      ctx.lineTo(x+3,y-errPx);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x-3,y+errPx);
+      ctx.lineTo(x+3,y+errPx);
+      ctx.stroke();
+    }
+    ctx.fillStyle='#22c55e';
+    ctx.font='10px JetBrains Mono, monospace';
+    ctx.textAlign='left';
+    ctx.fillText('DESI BAO hints',pad.l+pW-120,pad.t+20);
+  }
+
+  // z=0 marker
+  ctx.fillStyle=accent;
+  ctx.beginPath();
+  ctx.arc(pad.l,pad.t+pH-(1/yMax)*pH,6,0,Math.PI*2);
+  ctx.fill();
+  ctx.fillStyle='#a1a1aa';
+  ctx.font='10px JetBrains Mono, monospace';
+  ctx.textAlign='left';
+  ctx.fillText('Today (z=0): Λ₀ ≈ (2.3 meV)⁴',pad.l+12,pad.t+pH-(1/yMax)*pH+4);
+}
+draw();
+
+window.setDEMode=function(m){
+  mode=m;
+  document.querySelectorAll('#deBtnBoth,#deBtnST,#deBtnLCDM').forEach(b=>b.classList.remove('active'));
+  document.getElementById(m==='both'?'deBtnBoth':m==='st'?'deBtnST':'deBtnLCDM').classList.add('active');
+  draw();
+};
+})();
+
+// ============================================================
+// VISUALIZATION 3: Black Hole → Baby Universe
+// ============================================================
+(function(){
+const c=document.getElementById('bhCanvas');
+const ctx=c.getContext('2d');
+const W=c.width, H=c.height;
+let t=0;
+const accent='#D4A574';
+
+function draw(){
+  ctx.fillStyle='#16161a';
+  ctx.fillRect(0,0,W,H);
+
+  const cx=W*0.25, cy=H*0.5;
+  const bhR=80;
+
+  // Phase
+  const phase=((t*0.15)%3);
+  const phaseText=document.getElementById('bhPhaseText');
+  const phaseDot=document.getElementById('bhPhaseDot');
+
+  if(phase<1){
+    phaseText.textContent='Phase 1: Matter collapses into rotating Kerr black hole';
+    phaseDot.style.background=accent;
+  } else if(phase<2){
+    phaseText.textContent='Phase 2: Torsion prevents singularity — quantum bounce at ρ_crit';
+    phaseDot.style.background='#ef4444';
+  } else {
+    phaseText.textContent='Phase 3: Baby universe inflates, inheriting angular momentum';
+    phaseDot.style.background='#22c55e';
+  }
+
+  // Draw parent black hole
+  // Accretion disk
+  ctx.save();
+  ctx.translate(cx,cy);
+  ctx.scale(1,0.3);
+  for(let ring=3;ring>=0;ring--){
+    const r=bhR+ring*20;
+    const grad=ctx.createRadialGradient(0,0,bhR,0,0,r);
+    const alpha=0.15-ring*0.03;
+    grad.addColorStop(0,'transparent');
+    grad.addColorStop(0.3,`rgba(212,165,116,${alpha})`);
+    grad.addColorStop(0.7,`rgba(239,68,68,${alpha*0.6})`);
+    grad.addColorStop(1,'transparent');
+    ctx.fillStyle=grad;
+    ctx.beginPath();
+    ctx.arc(0,0,r,0,Math.PI*2);
+    ctx.fill();
+  }
+  ctx.restore();
+
+  // Black hole shadow
+  const bhGrad=ctx.createRadialGradient(cx,cy,0,cx,cy,bhR);
+  bhGrad.addColorStop(0,'#000');
+  bhGrad.addColorStop(0.85,'#000');
+  bhGrad.addColorStop(0.9,`rgba(212,165,116,0.3)`);
+  bhGrad.addColorStop(1,'transparent');
+  ctx.fillStyle=bhGrad;
+  ctx.beginPath();
+  ctx.arc(cx,cy,bhR,0,Math.PI*2);
+  ctx.fill();
+
+  // Photon ring
+  ctx.strokeStyle=`rgba(212,165,116,0.5)`;
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(cx,cy,bhR*1.05,0,Math.PI*2);
+  ctx.stroke();
+
+  // Rotation arrows
+  for(let i=0;i<4;i++){
+    const angle=i*Math.PI/2+t*0.3;
+    const arX=cx+Math.cos(angle)*bhR*1.3;
+    const arY=cy+Math.sin(angle)*bhR*0.4;
+    ctx.save();
+    ctx.translate(arX,arY);
+    ctx.rotate(angle+Math.PI/2);
+    ctx.fillStyle=`rgba(212,165,116,0.4)`;
+    ctx.beginPath();
+    ctx.moveTo(0,-6);
+    ctx.lineTo(4,0);
+    ctx.lineTo(0,6);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Infalling matter particles
+  for(let i=0;i<8;i++){
+    const angle=i*Math.PI/4+t*0.2;
+    const spiralR=bhR*2.5-((t*20+i*30)%200);
+    if(spiralR<bhR*0.5||spiralR>bhR*2.5)continue;
+    const px=cx+Math.cos(angle+spiralR*0.02)*spiralR;
+    const py=cy+Math.sin(angle+spiralR*0.02)*spiralR*0.3;
+    ctx.beginPath();
+    ctx.arc(px,py,2,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${(spiralR-bhR*0.5)/(bhR*2)})`;
+    ctx.fill();
+  }
+
+  // Connection tunnel
+  const tunnelX1=cx+bhR*0.8;
+  const tunnelX2=W*0.55;
+  if(phase>=1){
+    const tunnelAlpha=phase<2?(phase-1):1;
+    ctx.strokeStyle=`rgba(212,165,116,${tunnelAlpha*0.3})`;
+    ctx.lineWidth=1;
+    for(let i=-3;i<=3;i++){
+      ctx.beginPath();
+      ctx.moveTo(tunnelX1,cy+i*8);
+      ctx.bezierCurveTo(
+        (tunnelX1+tunnelX2)/2,cy+i*8-20*Math.sin(t),
+        (tunnelX1+tunnelX2)/2,cy+i*12+20*Math.sin(t+1),
+        tunnelX2,cy+i*15
+      );
+      ctx.stroke();
+    }
+
+    // Bounce flash
+    if(phase>=1&&phase<2){
+      const flashAlpha=Math.sin((phase-1)*Math.PI)*0.5;
+      const flashGrad=ctx.createRadialGradient((tunnelX1+tunnelX2)/2,cy,0,(tunnelX1+tunnelX2)/2,cy,60);
+      flashGrad.addColorStop(0,`rgba(239,68,68,${flashAlpha})`);
+      flashGrad.addColorStop(1,'transparent');
+      ctx.fillStyle=flashGrad;
+      ctx.fillRect(0,0,W,H);
+
+      // Label
+      ctx.fillStyle=`rgba(239,68,68,${flashAlpha})`;
+      ctx.font='bold 13px Inter, sans-serif';
+      ctx.textAlign='center';
+      ctx.fillText('QUANTUM BOUNCE',(tunnelX1+tunnelX2)/2,cy-40);
+      ctx.font='10px JetBrains Mono, monospace';
+      ctx.fillText('ρ → ρ_crit ≈ 0.41 ρ_Pl',(tunnelX1+tunnelX2)/2,cy-25);
+    }
+  }
+
+  // Baby universe
+  if(phase>=1.5){
+    const babyAlpha=Math.min((phase-1.5)*2,1);
+    const babyCx=W*0.72, babyCy=cy;
+    const babyR=phase>=2?40+(phase-2)*60:40*(phase-1.5)*2;
+
+    const babyGrad=ctx.createRadialGradient(babyCx-babyR*0.2,babyCy-babyR*0.2,0,babyCx,babyCy,babyR);
+    babyGrad.addColorStop(0,`rgba(34,197,94,${babyAlpha*0.8})`);
+    babyGrad.addColorStop(0.5,`rgba(34,197,94,${babyAlpha*0.4})`);
+    babyGrad.addColorStop(1,`rgba(34,197,94,${babyAlpha*0.1})`);
+    ctx.fillStyle=babyGrad;
+    ctx.beginPath();
+    ctx.arc(babyCx,babyCy,babyR,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.strokeStyle=`rgba(34,197,94,${babyAlpha*0.5})`;
+    ctx.lineWidth=1.5;
+    ctx.beginPath();
+    ctx.arc(babyCx,babyCy,babyR,0,Math.PI*2);
+    ctx.stroke();
+
+    // Rotation arrow in baby universe
+    if(phase>=2){
+      const arrowAngle=t*0.4;
+      for(let i=0;i<3;i++){
+        const a=arrowAngle+i*Math.PI*2/3;
+        const ar=babyR*0.6;
+        ctx.save();
+        ctx.translate(babyCx+Math.cos(a)*ar,babyCy+Math.sin(a)*ar*0.5);
+        ctx.rotate(a+Math.PI/2);
+        ctx.fillStyle=`rgba(34,197,94,${babyAlpha*0.6})`;
+        ctx.beginPath();
+        ctx.moveTo(0,-4);
+        ctx.lineTo(3,0);
+        ctx.lineTo(0,4);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Label
+      ctx.fillStyle=`rgba(34,197,94,${babyAlpha})`;
+      ctx.font='bold 12px Inter, sans-serif';
+      ctx.textAlign='center';
+      ctx.fillText('Baby Universe',babyCx,babyCy-babyR-15);
+      ctx.font='10px JetBrains Mono, monospace';
+      ctx.fillStyle=`rgba(255,255,255,${babyAlpha*0.6})`;
+      ctx.fillText(`Ω₀ ≈ 10⁻¹⁸ rad/s`,babyCx,babyCy-babyR-3);
+    }
+  }
+
+  // Labels
+  ctx.fillStyle='#a1a1aa';
+  ctx.font='bold 12px Inter, sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText('Parent Black Hole',cx,cy+bhR+25);
+  ctx.font='10px JetBrains Mono, monospace';
+  ctx.fillStyle='#71717a';
+  ctx.fillText('Kerr metric, a* > 0',cx,cy+bhR+40);
+
+  t+=0.02;
+  requestAnimationFrame(draw);
+}
+draw();
+})();
+
+// ============================================================
+// VISUALIZATION 4: Fine-Tuning Comparison (static bar chart)
+// ============================================================
+(function(){
+const c=document.getElementById('ftCanvas');
+const ctx=c.getContext('2d');
+const W=c.width, H=c.height;
+
+const models=[
+  {name:'ΛCDM',val:120,color:'#ef4444'},
+  {name:'Quintessence',val:60,color:'#eab308'},
+  {name:'f(R) Gravity',val:40,color:'#3b82f6'},
+  {name:'Spin-Torsion',val:5,color:'#22c55e'},
+];
+
+const pad={l:120,r:60,t:30,b:30};
+const pW=W-pad.l-pad.r, pH=H-pad.t-pad.b;
+const barH=40, gap=20;
+
+ctx.fillStyle='#16161a';
+ctx.fillRect(0,0,W,H);
+
+// Animate bars
+let frame=0;
+function draw(){
+  ctx.fillStyle='#16161a';
+  ctx.fillRect(0,0,W,H);
+
+  const progress=Math.min(frame/60,1);
+  const ease=1-Math.pow(1-progress,3); // ease-out cubic
+
+  models.forEach((m,i)=>{
+    const y=pad.t+i*(barH+gap);
+    const barW=(m.val/120)*pW*ease;
+
+    // Bar
+    const grad=ctx.createLinearGradient(pad.l,0,pad.l+barW,0);
+    grad.addColorStop(0,m.color+'cc');
+    grad.addColorStop(1,m.color+'44');
+    ctx.fillStyle=grad;
+    ctx.beginPath();
+    ctx.roundRect(pad.l,y,barW,barH,4);
+    ctx.fill();
+
+    // Label
+    ctx.fillStyle='#fafafa';
+    ctx.font='13px Inter, sans-serif';
+    ctx.textAlign='right';
+    ctx.fillText(m.name,pad.l-12,y+barH/2+5);
+
+    // Value
+    if(ease>0.3){
+      ctx.fillStyle=m.color;
+      ctx.font='bold 13px JetBrains Mono, monospace';
+      ctx.textAlign='left';
+      ctx.fillText(`~${m.val} orders`,pad.l+barW+8,y+barH/2+5);
+    }
+  });
+
+  // Scale markers
+  ctx.strokeStyle='#27272a';
+  ctx.lineWidth=1;
+  ctx.setLineDash([2,4]);
+  for(let v=0;v<=120;v+=30){
+    const x=pad.l+(v/120)*pW;
+    ctx.beginPath();
+    ctx.moveTo(x,pad.t-5);
+    ctx.lineTo(x,pad.t+models.length*(barH+gap));
+    ctx.stroke();
+    ctx.fillStyle='#52525b';
+    ctx.font='10px JetBrains Mono, monospace';
+    ctx.textAlign='center';
+    ctx.fillText(v.toString(),x,pad.t-10);
+  }
+  ctx.setLineDash([]);
+
+  frame++;
+  if(frame<80)requestAnimationFrame(draw);
+}
+draw();
+})();
+</script>
+</body>
+</html>
