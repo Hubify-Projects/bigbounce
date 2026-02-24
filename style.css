@@ -91,7 +91,7 @@ nav a:hover { color: var(--text-secondary); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* — Main — */
-main { padding-top: 100px; min-height: 100vh; padding-bottom: 48px; }
+main { padding-top: 300px; min-height: 100vh; padding-bottom: 48px; }
 
 /* — Cards — */
 .card {
