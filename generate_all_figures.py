@@ -121,7 +121,7 @@ def figure_1():
          r"$\rho_{\rm Pl} \sim 10^{76}\;\mathrm{GeV}^4$"),
         (72, r"$\rho_{\rm bounce}$",
          "Quantum bounce\n(LQG critical density)",
-         r"$\rho_c \approx 0.41\,\rho_{\rm Pl}$"),
+         r"$\rho_c \approx 0.27\,\rho_{\rm Pl}$"),
         (70, r"$\frac{\alpha}{M}\,\rho_{\rm Pl}$",
          "Parity-odd vacuum energy\n(one-loop, Holst term)",
          r"$\rho_{\rm vac} = \frac{\alpha}{M}\,M_{\rm Pl}^4$"),
