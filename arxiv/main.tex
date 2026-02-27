@@ -98,7 +98,7 @@ This work presents a comprehensive theoretical framework that addresses these ch
 $H_0$ tension ($4.4\sigma$) & $69.2\pm 0.8$ km/s/Mpc & $\to 1.4\sigma$ \\
 $\sigma_8$ tension ($2.5\sigma$) & $0.785 \pm 0.016$ & $\to 0.8\sigma$ \\
 Dark energy fine-tuning & Geometric origin & $10^5$ vs $10^{120}$ \\
-Singularity problem & Torsion bounce & $\rho = 0.41\rhoPl$ \\
+Singularity problem & Torsion bounce & $\rho_c \simeq 0.27\rhoPl$ \\
 Cosmic parity violation & Rotating BH origin & JWST 65--35\% \\
 \end{tabular}
 \end{ruledtabular}
@@ -121,7 +121,7 @@ Our framework synthesizes well-established theoretical components into a unified
 Each theoretical ingredient above has been studied independently. Our contribution is to assemble them into a single quantitative framework that produces specific, falsifiable predictions---a synthesis that has not previously been attempted. Concretely, the original contributions are:
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{End-to-end derivation of the dark energy scale}: Starting from the ECH action with LQG-fixed parameters, we derive $\Leff = \Lconst + c_\omega\omega^2$ where $\Lconst = (\alpha/M)\Dinf$, tracing a continuous chain from the Planck-scale parity-odd coefficient through inflationary dilution to the observed $(2.3\;\text{meV})^4$. Prior work derived individual steps; this paper connects them with specific numerical outputs: $H_0 = 69.2 \pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$ and $\sigma_8 = 0.785 \pm 0.016$.
+\item \textit{End-to-end derivation of the dark energy scale}: Starting from the ECH action with LQG-fixed parameters, we derive $\Leff = \Lconst + c_\omega\omega^2$ where $\Lconst = (\alpha/M)\Dinf$, tracing a continuous chain from the Planck-scale parity-odd coefficient through inflationary dilution to the observed vacuum energy density $\rho_\Lambda\approx(2.3\;\text{meV})^4$. Prior work derived individual steps; this paper connects them with specific numerical outputs: $H_0 = 69.2 \pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$ and $\sigma_8 = 0.785 \pm 0.016$.
 
 \item \textit{Simultaneous tension resolution}: Both the $H_0$ and $\sigma_8$ tensions are addressed within a single framework through physically motivated parameters ($\Delta\Neff$, $\Omega_k$) whose values follow from bounce physics, extending partial results by Izaurieta \etal~\cite{Izaurieta2020} and Akhshabi \& Zamani~\cite{Akhshabi2023} to a complete cosmological fit.
 
@@ -151,21 +151,21 @@ This paper is organized as follows. Section~\ref{sec:theory} develops the theore
 
 The fundamental action combining Einstein-Cartan theory with the Holst term is
 \begin{align}\label{eq:ECH}
-S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[R + \frac{1}{\gamma} \varepsilon^{\mu\nu\rho\sigma} R_{\mu\nu\rho\sigma} \right.\nonumber\\
+S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\;\;\;\mu\nu} + \frac{1}{\gamma} \varepsilon^{abcd}\,e_{a}^{\;\mu}\,e_{b}^{\;\nu}\,R_{cd\mu\nu} \right.\nonumber\\
 &\qquad\left.+ \frac{1}{4} T^{abc} T_{abc}\right] + S_{\rm matter},
 \end{align}
-where $e = \det(e^a_\mu)$ is the tetrad determinant, $\gamma$ is the Barbero-Immirzi parameter, and $T^{abc}$ is the torsion tensor. The Holst term $\varepsilon^{\mu\nu\rho\sigma} R_{\mu\nu\rho\sigma}/\gamma$ is topological in the absence of torsion but contributes non-trivially when fermions are present. This construction builds directly on the foundational work of Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who established that the Barbero-Immirzi parameter becomes physically observable through its coupling to fermionic matter.
+where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi parameter, and $T^{abc}$ is the torsion tensor. The Holst term $\varepsilon^{abcd}e_a^\mu e_b^\nu R_{cd\mu\nu}/\gamma$ is topological in the absence of torsion but contributes non-trivially when fermions are present. This construction builds directly on the foundational work of Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who established that the Barbero-Immirzi parameter becomes physically observable through its coupling to fermionic matter.
 
 The Barbero-Immirzi parameter is fixed by the LQG black hole entropy calculation~\cite{Ashtekar2011}:
 \begin{equation}\label{eq:gamma}
-\gamma = \frac{\ln 2}{\pi\sqrt{3}} = 0.2375\ldots \approx 0.274 \pm 0.020,
+\gamma = 0.274 \pm 0.020,
 \end{equation}
-where the range accounts for different counting schemes in the area spectrum. Whether $\gamma$ constitutes a genuine physical observable or a quantization artifact absorbable by canonical transformations remains debated~\cite{Freidel2005,Mercuri2006}. This distinction does not affect our results at leading order: if $\gamma$ is non-physical, the torsion-fermion coupling factor $\gamma^2/(\gamma^2+1)$ in Eq.~\eqref{eq:4fermi} reverts to unity (the standard ECSK value), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ without eliminating parity violation, which originates from the Holst term's coupling to fermions independently of the Barbero-Immirzi interpretation.
+where the central value is determined by matching the Bekenstein-Hawking entropy from the full SU(2) spin-network state counting (Domagala-Lewandowski-Meissner), and the uncertainty range reflects different counting schemes and area-spectrum quantization prescriptions in the literature. Whether $\gamma$ constitutes a genuine physical observable or a quantization artifact absorbable by canonical transformations remains debated~\cite{Freidel2005,Mercuri2006}. This distinction does not affect our results at leading order: if $\gamma$ is non-physical, the torsion-fermion coupling factor $\gamma^2/(\gamma^2+1)$ in Eq.~\eqref{eq:4fermi} reverts to unity (the standard ECSK value), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ without eliminating parity violation, which originates from the Holst term's coupling to fermions independently of the Barbero-Immirzi interpretation.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\columnwidth]{figures/figure1_lqg_holst_derivation_enhanced.png}
-\caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to the observed dark energy scale. The Einstein-Cartan-Holst action generates a parity-odd vacuum energy $\rho_{\rm vac}\sim(\alpha/M)\,M_{\rm Pl}^4$ at one loop. Inflationary dilution by $\sim e^{-3N}$ ($N\approx 55$ $e$-folds) bridges the $\sim$72 orders of magnitude to the observed $\Lambda_{\rm obs}\approx (2.3\;\text{meV})^4$. Left axis: comparison of the residual fine-tuning in this framework ($10^5$, from uncertainty in $N$) versus $\Lambda$CDM ($10^{120}$).}
+\caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to the observed dark energy scale. The Einstein-Cartan-Holst action generates a parity-odd vacuum energy $\rho_{\rm vac}\sim(\alpha/M)\,M_{\rm Pl}^4$ at one loop. Inflationary dilution by $\sim e^{-3N}$ ($N\approx 55$ $e$-folds) bridges the $\sim$72 orders of magnitude to the observed $\rho_\Lambda\approx (2.3\;\text{meV})^4$. Left axis: comparison of the residual fine-tuning in this framework ($10^5$, from uncertainty in $N$) versus $\Lambda$CDM ($10^{120}$).}
 \end{figure}
 
 
@@ -217,9 +217,9 @@ H^2 = \frac{8\pi G}{3}\,\rho\left[1-\frac{\rho}{\rhocrit}\right],
 \end{equation}
 where the critical density is
 \begin{equation}\label{eq:rhocrit}
-\rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl \simeq 0.41\,\rhoPl,
+\rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl \simeq 0.27\,\rhoPl,
 \end{equation}
-with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ being the LQG area gap and $\rhoPl\equiv c^5/(\hbar G^2)$. The factor $(1-\rho/\rhocrit)$ ensures that $H^2 \to 0$ as $\rho \to \rhocrit$, producing a smooth bounce. Key properties of the bounce:
+with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ being the LQG area gap and $\rhoPl\equiv c^5/(\hbar G^2)$. The numerical value $\rhocrit\simeq 0.27\,\rhoPl$ corresponds to $\gamma = 0.274$; the range $\gamma\in[0.254,0.294]$ gives $\rhocrit\in[0.22,0.34]\,\rhoPl$. The factor $(1-\rho/\rhocrit)$ ensures that $H^2 \to 0$ as $\rho \to \rhocrit$, producing a smooth bounce. Key properties of the bounce:
 
 \begin{itemize}[leftmargin=*]
 \item For $\rho \ll \rhocrit$: standard GR is recovered exactly.
@@ -257,9 +257,9 @@ In the limit of negligible shear ($\sigma^2\ll\omega^2$), this reduces to $\Leff
 
 The observed dark energy scale arises from
 \begin{equation}\label{eq:Lobs}
-\Lobs = \left(\frac{\alpha}{M}\right)\Dinf \approx (2.3\;\text{meV})^4,
+\rho_\Lambda = \left(\frac{\alpha}{M}\right)\Dinf\,\MPl^4 \approx (2.3\;\text{meV})^4,
 \end{equation}
-where $\Dinf \sim e^{-3N}$ is the inflationary dilution factor for a mass-dimension-3 operator after $N$ $e$-folds of inflation (see Appendix~\ref{app:niehyan} and Sec.~\ref{sec:dilution}).
+where $\Dinf \sim e^{-3N}$ is the inflationary dilution factor for a mass-dimension-3 operator after $N$ $e$-folds of inflation (see Appendix~\ref{app:niehyan} and Sec.~\ref{sec:dilution}), and the factor $\MPl^4$ converts the dimensionless product $(\alpha/M)\Dinf\,\MPl$ to a vacuum energy density.
 
 
 \subsubsection{Inflationary Dilution Mechanism}\label{sec:dilution}
@@ -268,7 +268,7 @@ The dilution factor for our parity-odd operator during inflation is
 \begin{equation}\label{eq:Dinf}
 \Dinf = \exp[-3N] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2},
 \end{equation}
-where $N = 50$--$60$ is the number of $e$-folds. With $T_{\rm reh} \sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT} \sim 10^{16}\;\text{GeV}$:
+where $N = 50$--$60$ is the number of $e$-folds. The exponent $-3N$ arises because the contorsion $K_{ab}$ is sourced by the fermion spin density, which dilutes as $a^{-3}$ during inflation; thus $\langle K_{ab}R_{cd}\rangle \propto a^{-3} \propto e^{-3N}$. The reheating factor $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ accounts for the entropy transfer from the inflaton decay. With $T_{\rm reh} \sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT} \sim 10^{16}\;\text{GeV}$:
 \begin{equation}
 \Dinf \sim 10^{-65}\;\text{to}\;10^{-78}.
 \end{equation}
@@ -277,7 +277,7 @@ This massive suppression is the geometric dilution mechanism that converts the P
 \frac{\alpha}{M}\bigg|_{\rm primordial} \sim \frac{10^{-2}}{\MPl} \sim 10^{-21}\;\text{GeV}^{-1},
 \end{equation}
 \begin{equation}
-\Lobs = \frac{\alpha}{M}\times\Dinf \sim 10^{-21}\times 10^{-65}\;\text{GeV}^{-1} \sim (2.3\;\text{meV})^4.\;\checkmark
+\rho_\Lambda = \frac{\alpha}{M}\times\Dinf\times\MPl^4 \sim \frac{10^{-2}}{\MPl}\times 10^{-65}\times\MPl^4 \sim 10^{-67}\,\MPl^3 \approx (2.3\;\text{meV})^4.
 \end{equation}
 
 This reduces fine-tuning from $10^{120}$ to $\sim 10^5$, where the residual tuning arises from: (1)~the inflationary $e$-folding number $N\sim 55$ (constrained by CMB observations), and (2)~initial conditions set by the parent black hole.
@@ -427,9 +427,10 @@ DES Y3 & $S_8 = 0.776 \pm 0.017$ & WL+GC & \cite{DES2024} \\
 HSC Y3 & $S_8 = 0.769^{+0.031}_{-0.034}$ & WL & \cite{HSC2023} \\
 \textbf{Spin-Torsion} & $\bm{\sigma_8 = 0.785 \pm 0.016}$ & \textbf{Theory} & This work \\
 ACT DR6 & $\sigma_8 = 0.819 \pm 0.015$ & CMB lens & \cite{ACT2024} \\
-eROSITA & $S_8 = 0.86^{+0.01}_{-0.01}$ & Clusters & \cite{eROSITA2024} \\
+eROSITA & $S_8 = 0.86^{+0.01}_{-0.01}$ & Clusters$^\dagger$ & \cite{eROSITA2024} \\
 \end{tabular}
 \end{ruledtabular}
+{\small $^\dagger$Ghirardini \etal\ (2024) cosmology pipeline; other eROSITA analyses yield $S_8 \simeq 0.79\pm 0.03$.}
 \end{table}
 
 
@@ -456,7 +457,7 @@ which isolates the parity-odd structure. The momentum integral evaluates to:
 \end{equation}
 The pole term is absorbed by the Nieh-Yan counterterm, leaving the finite part as the physical contribution in Eq.~\eqref{eq:oneloop}.
 
-The running is governed by the RG equation~\eqref{eq:RGflow}. For the Standard Model gauge group $SU(3)\times SU(2)\times U(1)$: $C_2(G) = 0$ (Abelian component), and $T(R)\,N_f = 6\times\frac{1}{2} = 3$ for six quark flavors. The coefficient decreases logarithmically from UV to IR.
+The running is governed by the RG equation~\eqref{eq:RGflow}. Here $g$ is the effective axial-torsion coupling (not a standard gauge coupling), and the beta function receives contributions from fermion loops only. Since the torsion-fermion vertex carries no non-Abelian charge, $C_2(G) = 0$, while the fermion loop contribution gives $T(R)\,N_f = 6\times\frac{1}{2} = 3$ for six quark flavors. The coefficient thus decreases logarithmically from UV to IR.
 
 \textit{Scope and validity.}---This one-loop calculation operates near the boundary of perturbative control: the coupling $g^2/(16\pi^2)\sim\mathcal{O}(10^{-2})$ ensures loop suppression, but full quantum gravity corrections (spin-foam amplitudes, lattice LQG) could modify the finite part at $\mathcal{O}(1)$. The Nieh-Yan non-renormalization theorem~\cite{NiehYan1982} suppresses higher-loop topological contributions, providing partial UV protection. A complete two-loop calculation---requiring spin-foam vertex amplitudes in a torsionful background---remains an open technical challenge and would constitute an independent verification of the coefficient. However, the cosmological predictions of this framework separate into two classes with different sensitivities to $\alpha/M$: (i)~the $H_0$ and $\sigma_8$ predictions depend primarily on $\Delta\Neff$ and $\Omega_k$, which arise from bounce physics and are insensitive to the parity-odd coefficient; (ii)~the $C_\ell^{EB}$ amplitude scales linearly with $\alpha/M$ and would shift under non-perturbative corrections, though its spectral shape (peaked at $\ell=2$--$4$, set by the dipolar geometry of cosmic rotation) is robust. This separation ensures that the tension resolution and the spectral signature survive even if the coefficient receives $\mathcal{O}(1)$ corrections.
 
@@ -883,14 +884,14 @@ The constant contribution to $\Leff$ emerges from the interplay between a parity
 \end{equation}
 so that $\Leff = c_\omega\omega^2 + \Xi$. This parameter naturally yields a value on the order of $10^{-33}\;\text{eV}^2$, consistent with the observed dark energy scale, with its value fixed entirely by early-universe physics.
 
-The physical interpretation is straightforward: $\alpha/M$ measures the strength of parity violation in quantum gravity, while $\Dinf$ captures how much inflation dilutes this primordial effect. Their product---a single bridge between Planck-scale microphysics and cosmic acceleration---sets the energy scale of dark energy without fine-tuning. The remarkably simple expression $\Xi = (\alpha/M)\Dinf$, connecting UV quantum gravity to IR cosmological acceleration through a single geometric product, may prove a golden thread linking disparate energy scales if confirmed observationally.
+The physical interpretation is straightforward: $\alpha/M$ measures the strength of parity violation in quantum gravity, while $\Dinf$ captures how much inflation dilutes this primordial effect. Their product---a single bridge between Planck-scale microphysics and cosmic acceleration---sets the energy scale of dark energy without fine-tuning. The expression $\Xi = (\alpha/M)\Dinf$ provides a concrete connection between UV quantum gravity and IR cosmological acceleration through a single geometric product, testable with the observational program described in Sec.~\ref{sec:timeline}.
 
 \subsection{Theoretical Implications}
 
 Detection of our predicted signatures would have significant implications:
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{Observational quantum gravity}: Direct constraints on LQG parameters ($\gamma = 0.274\pm 0.020$, $\Delta = 4\sqrt{3}\pi\gamma\pm 10\%$, $\rho_c = 0.41\,\rhoPl\pm 15\%$).
+\item \textit{Observational quantum gravity}: Direct constraints on LQG parameters ($\gamma = 0.274\pm 0.020$, $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2\pm 10\%$, $\rho_c \simeq 0.27\,\rhoPl$).
 
 \item \textit{Black hole interior physics}: Validation of torsion-regulated collapse, baby universe production, and information preservation through the quantum bounce.
 
@@ -1089,7 +1090,7 @@ We thank the Planck, CMB-S4, LiteBIRD, LSST, and DESI collaborations for providi
 %% --- A: Notation and Conventions ---
 \section{Notation and Conventions}\label{app:notation}
 
-We use natural units $c=\hbar=1$ throughout unless otherwise stated. The metric signature is $(-,+,+,+)$. Greek indices $\mu,\nu,\ldots$ denote spacetime coordinates; Latin indices $a,b,\ldots$ denote tangent-space (Lorentz) indices. The Levi-Civita symbol $\varepsilon^{abcd}$ is the totally antisymmetric tensor with $\varepsilon^{0123}=+1$. The Fourier convention is $\tilde{f}(k) = \int d^4x\,e^{ikx}f(x)$.
+We use natural units $c=\hbar=1$ throughout unless otherwise stated, with $8\pi G = \MPl^{-2}$. The metric signature is $(-,+,+,+)$. The vacuum energy density is $\rho_\Lambda = \Leff\,\MPl^2/(8\pi)$; when we write $\rho_\Lambda \approx (2.3\;\text{meV})^4$ this refers to the energy density, while $\Leff$ in the Friedmann equation has dimension (mass)$^2$. Greek indices $\mu,\nu,\ldots$ denote spacetime coordinates; Latin indices $a,b,\ldots$ denote tangent-space (Lorentz) indices. The Levi-Civita symbol $\varepsilon^{abcd}$ is the totally antisymmetric tensor with $\varepsilon^{0123}=+1$. The Fourier convention is $\tilde{f}(k) = \int d^4x\,e^{ikx}f(x)$.
 
 Key symbols used throughout:
 \begin{itemize}[leftmargin=*]
@@ -1104,7 +1105,7 @@ Key symbols used throughout:
 \item $\Dinf$---inflationary dilution factor ($\sim e^{-3N}$)
 \item $\Xi\equiv(\alpha/M)\Dinf$---geometric dilution parameter (mass dimension $+2$ in natural units)
 \item $\Leff$---effective cosmological constant
-\item $\rhocrit$---bounce critical density ($0.41\,\rhoPl$)
+\item $\rhocrit$---bounce critical density ($\simeq 0.27\,\rhoPl$ for $\gamma=0.274$)
 \item $\rhoPl \equiv c^5/(\hbar G^2)$---Planck density
 \item $\MPl \equiv \sqrt{\hbar c/G}$---Planck mass
 \item $A(z)$---galaxy spin asymmetry amplitude
@@ -1126,8 +1127,8 @@ Parameter & Description & Prior & Best Fit & Notes \\
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
 $\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274\pm 0.020$ & LQG area spectrum \\
 $\alpha/M$ & Parity-odd coeff. & Log-uniform [$10^{-40}$, $10^{-20}$] & $\sim 10^{-33}\;\text{eV}^{-1}$ & One-loop calculation \\
-$\Dinf$ & Inflation dilution & Derived from $N$ & $\sim e^{-2N}$ & $N\sim 55$--$60$ $e$-folds \\
-$\rhocrit/\rhoPl$ & Bounce density & Derived from $\gamma$ & $0.41\pm 0.06$ & Modified Friedmann \\
+$\Dinf$ & Inflation dilution & Derived from $N$ & $\sim e^{-3N}$ & $N\sim 55$--$60$ $e$-folds \\
+$\rhocrit/\rhoPl$ & Bounce density & Derived from $\gamma$ & $0.27^{+0.07}_{-0.05}$ & Modified Friedmann \\
 $\Xi$ & Geom.\ dilution param. & Derived & $\sim 10^{-33}\;\text{eV}^2$ & $= (\alpha/M)\times\Dinf$ \\
 \hline
 \multicolumn{5}{l}{\textit{Galaxy spin model parameters}} \\
@@ -1257,8 +1258,8 @@ The product $(\alpha/M)\times\Dinf$ sets the dark energy scale because:
 \begin{enumerate}[leftmargin=*]
 \item The operator $\varepsilon^{abcd}K_{ab}R_{cd}$ has mass dimension 3.
 \item Its coefficient $\alpha/M$ has mass dimension $-1$.
-\item Inflationary dilution gives $\Dinf \sim e^{-3N}$ for a dimension-3 operator.
-\item The product $(10^{-21}\;\text{GeV}^{-1})\times(10^{-65}) \sim 10^{-47}\;\text{eV}^{-1}$, which corresponds to $\Lambda^{1/4} \sim 2.3\;\text{meV}$.
+\item Inflationary dilution gives $\Dinf = e^{-3N}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ (Eq.~\ref{eq:Dinf}), where the $e^{-3N}$ arises from dilution of the spin-density source $K_{ab}\propto a^{-3}$.
+\item The product $(\alpha/M)\times\Dinf\times\MPl^4 \sim (10^{-2}/\MPl)\times 10^{-65}\times\MPl^4 \sim 10^{-67}\,\MPl^3$, giving $\rho_\Lambda^{1/4} \sim 2.3\;\text{meV}$.
 \end{enumerate}
 
 
