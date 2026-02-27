@@ -10,11 +10,11 @@
 <style>
   details.derivation {
     margin: 12px 0; border: 1px solid var(--border); border-radius: var(--radius);
-    background: var(--bg-elevated); overflow: hidden;
+    background: var(--bg-subtle); overflow: hidden;
   }
   details.derivation summary {
     padding: 12px 20px; cursor: pointer; font-size: 13px; font-weight: 600;
-    color: var(--accent); display: flex; align-items: center; gap: 8px;
+    color: var(--text); display: flex; align-items: center; gap: 8px;
     transition: background var(--transition);
     list-style: none;
   }
@@ -22,11 +22,11 @@
   details.derivation summary::before {
     content: '+'; font-family: var(--font-mono); font-size: 16px; font-weight: 700;
     width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
-    border-radius: 4px; background: var(--accent-dim); color: var(--accent); flex-shrink: 0;
+    border-radius: 4px; background: #f0f0f4; color: var(--text); flex-shrink: 0;
     transition: transform var(--transition);
   }
   details.derivation[open] summary::before { content: '−'; }
-  details.derivation summary:hover { background: var(--bg-card); }
+  details.derivation summary:hover { background: var(--bg-subtle); }
   details.derivation .derivation-content {
     padding: 16px 20px; border-top: 1px solid var(--border);
     font-size: 14px; line-height: 1.8; color: var(--text-secondary);
@@ -44,18 +44,18 @@
     font-family: var(--font-mono); font-size: 11px; font-weight: 700;
     width: 20px; height: 20px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center;
-    background: var(--accent-dim); color: var(--accent);
+    background: #f0f0f4; color: var(--text);
   }
   .verified-badge {
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 11px; font-weight: 600; color: var(--success);
-    background: #22c55e15; padding: 2px 8px; border-radius: 3px;
+    font-size: 11px; font-weight: 600; color: var(--text-secondary);
+    background: #f0f0f4; padding: 2px 8px; border-radius: 3px;
     letter-spacing: 0.03em;
   }
 </style>
 </head>
 <body>
-<nav><div class="nav-inner"><span class="brand">Geometric Dark Energy &mdash; Spin-Torsion</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="arxiv-preview.html" data-page="arxiv">arXiv</a><a href="explained.html" data-page="explained">Explained</a><a href="data-comparison.html" data-page="data">Data</a><a href="team.html" data-page="team">Team</a></div></nav>
+<nav><div class="nav-inner"><span class="brand">Golden 2026</span><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="data-comparison.html" data-page="data">Data</a><a href="arxiv-preview.html" data-page="arxiv">arXiv</a></div></nav>
 <main class="container">
 <div class="hero">
   <div class="badge badge-success">Paper Complete</div>
@@ -68,7 +68,7 @@
     <span class="badge badge-accent">Ready for arXiv Submission</span>
   </div>
   <div style="margin-top: 1.5rem;">
-    <a href="public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf" download style="display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:var(--accent); color:#09090b; border-radius:6px; font-weight:600; font-size:14px;">Download Paper (PDF)</a>
+    <a href="public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf" download style="display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:var(--text); color:var(--bg); border-radius:6px; font-weight:600; font-size:14px;">Download Paper (PDF)</a>
   </div>
 </div>
 
@@ -483,7 +483,7 @@
     
     <p>Present-epoch constraint: Λ₀ ~ Ω₀²H₀²/c² ~ 10⁻⁵⁶ cm⁻², consistent with observations.</p>
     
-    <p class="text-sm text-accent" style="margin-top: 1rem">This is the primary novel theoretical contribution: quantitative evolution of rotational energy into dynamical dark energy with testable predictions.</p>
+    <p class="text-sm text-muted" style="margin-top: 1rem">This is the primary novel theoretical contribution: quantitative evolution of rotational energy into dynamical dark energy with testable predictions.</p>
   </div>
 
   <h3>4.3 Observational Predictions</h3>
@@ -737,7 +737,7 @@
   <div class="card">
     <p>The author (Houston Golden) acknowledges the use of AI research assistants for mathematical formalization, literature review, data validation
 </main>
-<footer><div class="container"><p>Powered by <a href="https://hubify.com/research">Hubify</a></p><p>Last updated 2026-02-19 &middot; Research by Houston Golden, assisted by AI agents &middot; <a href="https://github.com/Hubify-Projects/bigbounce">View on GitHub</a></p></div></footer>
+<footer><div class="container"><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></div></footer>
 <script>
 // Highlight active nav link
 document.querySelectorAll('nav a[data-page]').forEach(a => {

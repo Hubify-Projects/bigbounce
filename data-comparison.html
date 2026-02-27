@@ -12,7 +12,7 @@
 <style>
   .chart-wrapper {
     position: relative; padding: 20px;
-    background: var(--bg-card); border: 1px solid var(--border);
+    background: var(--bg); border: 1px solid var(--border);
     border-radius: var(--radius-lg); margin: 16px 0;
   }
   .chart-wrapper canvas { max-height: 380px; }
@@ -30,13 +30,13 @@
     margin-top: 4px;
   }
   .highlight-box {
-    background: var(--accent-dim); border: 1px solid var(--accent);
+    background: #f0f0f4; border: 1px solid var(--text);
     border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
   }
   .highlight-box p { color: var(--text-secondary); margin: 4px 0; }
-  .highlight-box strong { color: var(--accent); }
+  .highlight-box strong { color: var(--accent-link); }
   .math-block {
-    background: var(--bg-elevated); border: 1px solid var(--border);
+    background: var(--bg-subtle); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 16px 20px; margin: 12px 0;
     text-align: center; overflow-x: auto;
   }
@@ -47,13 +47,13 @@
   .verdict-dot {
     width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
   }
-  .verdict-dot.green { background: var(--success); }
+  .verdict-dot.green { background: #16a34a; }
   .verdict-dot.yellow { background: var(--warning); }
   .verdict-dot.red { background: var(--error); }
 </style>
 </head>
 <body>
-<nav><div class="nav-inner"><span class="brand">Geometric Dark Energy &mdash; Spin-Torsion</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="arxiv-preview.html" data-page="arxiv">arXiv</a><a href="explained.html" data-page="explained">Explained</a><a href="data-comparison.html" data-page="data">Data</a><a href="team.html" data-page="team">Team</a></div></nav>
+<nav><div class="nav-inner"><span class="brand">Golden 2026</span><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="data-comparison.html" data-page="data">Data</a><a href="arxiv-preview.html" data-page="arxiv">arXiv</a></div></nav>
 <main class="container">
 <div class="hero">
   <h1>Observational Data Comparison</h1>
@@ -410,7 +410,7 @@
 </section>
 
 </main>
-<footer><div class="container"><p>Powered by <a href="https://hubify.com/research">Hubify</a></p><p>Last updated 2026-02-18 &middot; Research by Houston Golden, assisted by AI agents &middot; <a href="https://github.com/Hubify-Projects/bigbounce">View on GitHub</a></p></div></footer>
+<footer><div class="container"><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></div></footer>
 
 <script>
 // Highlight active nav link
@@ -418,19 +418,19 @@ document.querySelectorAll('nav a[data-page]').forEach(a => {
   if (a.getAttribute('data-page') === 'data') a.classList.add('active');
 });
 
-// Color palette
-const amber = '#D4A574';
-const amberDim = 'rgba(212,165,116,0.15)';
-const green = '#4ade80';
-const greenDim = 'rgba(74,222,128,0.15)';
-const red = '#ef4444';
-const redDim = 'rgba(239,68,68,0.15)';
-const blue = '#60a5fa';
-const blueDim = 'rgba(96,165,250,0.15)';
-const grey = '#71717a';
-const greyDim = 'rgba(113,113,122,0.15)';
-const gridColor = '#27272a';
-const tickColor = '#71717a';
+// Color palette (light mode)
+const amber = '#111111';
+const amberDim = 'rgba(17,17,17,0.08)';
+const green = '#16a34a';
+const greenDim = 'rgba(22,163,74,0.10)';
+const red = '#dc2626';
+const redDim = 'rgba(220,38,38,0.08)';
+const blue = '#1e40af';
+const blueDim = 'rgba(30,64,175,0.08)';
+const grey = '#6b7280';
+const greyDim = 'rgba(107,114,128,0.08)';
+const gridColor = '#e5e5e8';
+const tickColor = '#444444';
 const fontMono = "'JetBrains Mono', monospace";
 const fontBody = "'Inter', sans-serif";
 
@@ -472,17 +472,17 @@ new Chart(document.getElementById('h0Chart'), {
         annotations: {
           planckBand: {
             type: 'box', xMin: 66.82, xMax: 67.9,
-            backgroundColor: 'rgba(113,113,122,0.08)', borderWidth: 0,
+            backgroundColor: 'rgba(107,114,128,0.08)', borderWidth: 0,
             label: { display: true, content: 'Planck ΛCDM', position: 'start', color: grey, font: {size: 10} }
           },
           ourBand: {
             type: 'box', xMin: 68.4, xMax: 70.0,
-            backgroundColor: 'rgba(212,165,116,0.08)', borderWidth: 0,
+            backgroundColor: 'rgba(17,17,17,0.06)', borderWidth: 0,
             label: { display: true, content: 'Our Model', position: 'start', color: amber, font: {size: 10} }
           },
           shoesBand: {
             type: 'box', xMin: 72.0, xMax: 74.08,
-            backgroundColor: 'rgba(239,68,68,0.06)', borderWidth: 0,
+            backgroundColor: 'rgba(220,38,38,0.06)', borderWidth: 0,
             label: { display: true, content: 'SH0ES', position: 'start', color: red, font: {size: 10} }
           }
         }
@@ -536,12 +536,12 @@ new Chart(document.getElementById('s8Chart'), {
         annotations: {
           planckBand: {
             type: 'box', xMin: 0.819, xMax: 0.845,
-            backgroundColor: 'rgba(113,113,122,0.08)', borderWidth: 0,
+            backgroundColor: 'rgba(107,114,128,0.08)', borderWidth: 0,
             label: { display: true, content: 'Planck ΛCDM', position: 'start', color: grey, font: {size: 10} }
           },
           ourBand: {
             type: 'box', xMin: 0.769, xMax: 0.801,
-            backgroundColor: 'rgba(212,165,116,0.08)', borderWidth: 0,
+            backgroundColor: 'rgba(17,17,17,0.06)', borderWidth: 0,
             label: { display: true, content: 'Our Model', position: 'start', color: amber, font: {size: 10} }
           }
         }
@@ -707,13 +707,13 @@ new Chart(document.getElementById('detectionChart'), {
         annotations: {
           threeSigma: {
             type: 'line', yMin: 3, yMax: 3,
-            borderColor: 'rgba(250,204,21,0.5)', borderWidth: 2, borderDash: [6, 4],
-            label: { display: true, content: '3σ Evidence', position: 'end', color: '#fbbf24', backgroundColor: 'rgba(0,0,0,0.6)', font: {size: 11} }
+            borderColor: 'rgba(202,138,4,0.6)', borderWidth: 2, borderDash: [6, 4],
+            label: { display: true, content: '3σ Evidence', position: 'end', color: '#a16207', backgroundColor: 'rgba(255,255,255,0.85)', font: {size: 11} }
           },
           fiveSigma: {
             type: 'line', yMin: 5, yMax: 5,
-            borderColor: 'rgba(74,222,128,0.5)', borderWidth: 2, borderDash: [6, 4],
-            label: { display: true, content: '5σ Discovery', position: 'end', color: '#4ade80', backgroundColor: 'rgba(0,0,0,0.6)', font: {size: 11} }
+            borderColor: 'rgba(22,163,74,0.6)', borderWidth: 2, borderDash: [6, 4],
+            label: { display: true, content: '5σ Discovery', position: 'end', color: '#16a34a', backgroundColor: 'rgba(255,255,255,0.85)', font: {size: 11} }
           }
         }
       }
@@ -804,8 +804,8 @@ new Chart(document.getElementById('galaxySpinChart'), {
         annotations: {
           predLine: {
             type: 'line', yMin: 0.003, yMax: 0.003,
-            borderColor: 'rgba(212,165,116,0.4)', borderWidth: 1, borderDash: [4, 4],
-            label: { display: true, content: 'Predicted A ≈ 0.003', position: 'start', color: amber, backgroundColor: 'rgba(0,0,0,0.6)', font: {size: 10} }
+            borderColor: 'rgba(17,17,17,0.3)', borderWidth: 1, borderDash: [4, 4],
+            label: { display: true, content: 'Predicted A ≈ 0.003', position: 'start', color: amber, backgroundColor: 'rgba(255,255,255,0.85)', font: {size: 10} }
           }
         }
       }

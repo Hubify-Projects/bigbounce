@@ -56,7 +56,7 @@ A Comprehensive Framework with Observational Validation}
 \date{\today}
 
 \begin{abstract}
-Recent JWST observations reveal a striking 65--35\% galaxy spin asymmetry at high redshift, while the Hubble tension has reached $4.4\sigma$ and the $\sigma_8$ tension $2.5\sigma$---suggesting new physics beyond $\Lambda$CDM. We present a theoretical framework where dark energy emerges from quantum gravitational effects in a rotating universe born from a black hole interior.
+The Hubble tension ($4.4\sigma$), the $\sigma_8$ tension ($2.5\sigma$), and growing evidence for cosmic parity violation---including $\sim 7\sigma$ cosmic birefringence from Planck+ACT---suggest new physics beyond $\Lambda$CDM. We present a theoretical framework where dark energy emerges from quantum gravitational effects in a rotating universe born from a black hole interior.
 
 Our model combines Loop Quantum Gravity (LQG) with Einstein-Cartan torsion, deriving dark energy from a parity-violating quantum correction: $\Leff = \Lconst + c_\omega\omega^2$, where $\Lconst = (\alpha/M)\Dinf$. Given stringent isotropy bounds $(\omega/H)_0 < 5 \times 10^{-11}$, rotation is negligible for expansion but sources parity-odd observables. The model yields $H_0 = 69.2 \pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$ and $\sigma_8 = 0.785 \pm 0.016$ from modified early-universe physics, reducing tensions without fine-tuning ($10^5$ vs.\ $10^{120}$).
 
@@ -86,7 +86,7 @@ This work presents a comprehensive theoretical framework that addresses these ch
 
 \item \textit{Einstein-Cartan theory} incorporating fermionic spin-torsion coupling, which generates four-fermion contact interactions and prevents gravitational singularities through torsion-induced repulsion at extreme densities~\cite{Hehl1976,Poplawski2012}.
 
-\item \textit{Black hole universe origin}, where a rotating parent black hole spawns a non-singular baby universe beyond its event horizon through false-vacuum bubble nucleation~\cite{Poplawski2016,Poplawski2019}. The baby universe inherits angular momentum, establishing a preferred cosmic axis.
+\item \textit{Black hole universe origin}, where a rotating parent black hole spawns a non-singular baby universe beyond its event horizon through torsion-regulated gravitational collapse~\cite{Poplawski2016,Poplawski2019}. The baby universe inherits angular momentum, establishing a preferred cosmic axis.
 \end{enumerate}
 
 \begin{table}[b]
@@ -99,7 +99,7 @@ $H_0$ tension ($4.4\sigma$) & $69.2\pm 0.8$ km/s/Mpc & $\to 1.4\sigma$ \\
 $\sigma_8$ tension ($2.5\sigma$) & $0.785 \pm 0.016$ & $\to 0.8\sigma$ \\
 Dark energy fine-tuning & Geometric origin & $10^5$ vs $10^{120}$ \\
 Singularity problem & Torsion bounce & $\rho_c \simeq 0.27\rhoPl$ \\
-Cosmic parity violation & Rotating BH origin & JWST 65--35\% \\
+Cosmic parity violation & Rotating BH origin & $7\sigma$ birefringence \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -165,7 +165,7 @@ where the central value is determined by matching the Bekenstein-Hawking entropy
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\columnwidth]{figures/figure1_lqg_holst_derivation_enhanced.png}
-\caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to the observed dark energy scale. The Einstein-Cartan-Holst action generates a parity-odd vacuum energy $\rho_{\rm vac}\sim(\alpha/M)\,M_{\rm Pl}^4$ at one loop. Inflationary dilution by $\sim e^{-3N}$ ($N\approx 55$ $e$-folds) bridges the $\sim$72 orders of magnitude to the observed $\rho_\Lambda\approx (2.3\;\text{meV})^4$. Left axis: comparison of the residual fine-tuning in this framework ($10^5$, from uncertainty in $N$) versus $\Lambda$CDM ($10^{120}$).}
+\caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to the observed dark energy scale. The Einstein-Cartan-Holst action generates a parity-odd vacuum energy $\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ at one loop. Inflationary dilution by $\sim e^{-3N_{\rm tot}}$ bridges the gap to the observed $\rho_\Lambda\approx (2.3\;\text{meV})^4$. Left axis: comparison of the residual fine-tuning in this framework ($10^5$, from uncertainty in $N_{\rm tot}$) versus $\Lambda$CDM ($10^{120}$).}
 \end{figure}
 
 
@@ -175,9 +175,9 @@ Starting with the complete action $S = S_{\rm gravity} + S_{\rm Holst} + S_{\rm 
 
 \textit{Step~1: Torsion Activation.}---When fermions are minimally coupled to gravity with torsion, the torsion tensor is determined algebraically by the fermionic spin density:
 \begin{equation}\label{eq:torsion}
-T^{abc} = \frac{8\pi G}{c^4}\, S^{abc},
+T^{abc} = 8\pi G\, S^{abc},
 \end{equation}
-where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$ is the fermionic spin density tensor. Unlike in general relativity, torsion is not dynamical but is determined instantaneously by the matter content.
+where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$ is the fermionic spin density tensor (we use natural units $c=\hbar=1$ throughout; see Appendix~\ref{app:notation}). Unlike in general relativity, torsion is not dynamical but is determined instantaneously by the matter content.
 
 \textit{Step~2: Four-Fermion Contact Interaction.}---Substituting Eq.~\eqref{eq:torsion} back into the action and integrating out torsion yields an effective four-fermion interaction~\cite{Hehl1976}:
 \begin{equation}\label{eq:4fermi}
@@ -195,13 +195,13 @@ This operator is fully covariant---it transforms as a scalar density under diffe
 \begin{equation}\label{eq:oneloop}
 \frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda_{\rm UV}^2}{\mu^2}\right)+\delta_{\rm NY},
 \end{equation}
-where $g$ is the axial--torsion coupling, $\Lambda_{\rm UV}$ is a UV scale (the LQG area-gap mass $\sim \sqrt{\gamma}\,\MPl$), $\mu$ is the renormalization scale, and $\delta_{\rm NY}$ encodes finite renormalization of the Nieh--Yan density. This calculation is performed in dimensional regularization with minimal subtraction; details are given in Appendix~\ref{app:niehyan}.
+where $g$ is the effective dimensionless axial--torsion Yukawa coupling defined by the vertex $g\,\bar{\psi}\gamma^5\gamma^a\psi\,K_a$ (with $g^2\sim 8\pi G_N M^2\,\gamma^2/(\gamma^2+1)\sim\mathcal{O}(1)$ at the area-gap scale), $\Lambda_{\rm UV}$ is a UV scale (the LQG area-gap mass $M\sim \sqrt{\gamma}\,\MPl$), $\mu$ is the renormalization scale, and $\delta_{\rm NY}$ encodes finite renormalization of the Nieh--Yan density. This calculation is performed in dimensional regularization with minimal subtraction; details are given in Appendix~\ref{app:niehyan}.
 
 The coefficient runs with energy scale according to
 \begin{equation}\label{eq:RGflow}
-\frac{d\alpha}{d\ln\mu} = \frac{g^2}{16\pi^2}\left[3C_2(G)-\frac{4}{3}T(R)N_f\right],
+\frac{d\alpha}{d\ln\mu} = -\frac{g^2}{16\pi^2}\times 2N_f,
 \end{equation}
-where $C_2(G)$ and $T(R)$ are group theory factors and $N_f$ is the number of fermion flavors. The parity-odd term is protected by a non-renormalization theorem: higher-loop corrections are suppressed by the topological nature of the Nieh-Yan invariant, ensuring the coefficient remains finite and calculable at one loop.
+where $N_f$ is the number of fermion species contributing at scale~$\mu$. This beta function arises from the fermion loop diagrams only: the torsion--fermion vertex carries no non-Abelian charge, so there is no gauge-boson contribution, and the fermion loop gives a factor $T(R)\,N_f = 3$ for six quark flavors (with $T(R) = 1/2$ per flavor in the fundamental representation). The parity-odd term is protected by a non-renormalization theorem: higher-loop corrections are suppressed by the topological nature of the Nieh-Yan invariant, ensuring the coefficient remains finite and calculable at one loop.
 
 
 \subsubsection{Parameter Naturalness}\label{sec:naturalness}
@@ -249,38 +249,39 @@ Absorbing the shear and vorticity into an effective cosmological constant:
 \boxed{\Leff = \Lambda + (\sigma^2-\omega^2).}
 \end{equation}
 In the limit of negligible shear ($\sigma^2\ll\omega^2$), this reduces to $\Leff = \Lambda + c_\omega\omega^2$ with $c_\omega=-1$ in our conventions (sign verified against Bianchi~V and VII$_h$ cosmologies~\cite{Saadeh2016}). Including the parity-odd contribution from the quantum loop:
-\begin{equation}\label{eq:Leff_full}
-\boxed{\Leff = \left(\frac{\alpha}{M}\right)\Dinf + c_\omega\omega^2.}
-\end{equation}
+\begin{align}\label{eq:Leff_full}
+\boxed{\Leff = \Xi\,\MPl^2 + c_\omega\omega^2,}\quad
+\Xi\equiv \left[\frac{\alpha}{M}\,\MPl\right]\Dinf,
+\end{align}
+where $\Xi$ is the dimensionless geometric dilution parameter (Sec.~\ref{sec:gdp}), with $\rho_\Lambda = \Xi\,\MPl^4$.
 
-\textit{Crucial constraint.}---CMB isotropy bounds from Planck give $(\omega/H)_0 < 5\times 10^{-11}$ (95\% CL)~\cite{Saadeh2016}, implying $|c_\omega|\omega^2/H_0^2 < 2.5\times 10^{-21}$. \textbf{Rotation is completely negligible for background expansion.} The dark energy scale is set entirely by the first term. Instead, rotation manifests only through parity-odd observables (CMB $E$-$B$ correlations, galaxy spin asymmetries) that probe the \textit{direction} of $\omega^a$, not its magnitude squared.
+\textit{Crucial constraint.}---CMB isotropy bounds from Planck give $(\omega/H)_0 < 5\times 10^{-11}$ (95\% CL)~\cite{Saadeh2016}, implying $|c_\omega|\omega^2/H_0^2 < 2.5\times 10^{-21}$. \textbf{Rotation is completely negligible for background expansion.} The dark energy scale is set entirely by the first term ($\Xi\sim 10^{-123}$, Sec.~\ref{sec:gdp}). Instead, rotation manifests only through parity-odd observables (CMB $E$-$B$ correlations, galaxy spin asymmetries) that probe the \textit{direction} of $\omega^a$, not its magnitude squared.
 
 The observed dark energy scale arises from
 \begin{equation}\label{eq:Lobs}
-\rho_\Lambda = \left(\frac{\alpha}{M}\right)\Dinf\,\MPl^4 \approx (2.3\;\text{meV})^4,
+\rho_\Lambda = \left[\frac{\alpha}{M}\,\MPl\right]\Dinf\,\MPl^4 \approx (2.3\;\text{meV})^4,
 \end{equation}
-where $\Dinf \sim e^{-3N}$ is the inflationary dilution factor for a mass-dimension-3 operator after $N$ $e$-folds of inflation (see Appendix~\ref{app:niehyan} and Sec.~\ref{sec:dilution}), and the factor $\MPl^4$ converts the dimensionless product $(\alpha/M)\Dinf\,\MPl$ to a vacuum energy density.
+where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor and $\Dinf \sim e^{-3N_{\rm tot}}$ is the inflationary dilution factor (see Appendix~\ref{app:niehyan} and Sec.~\ref{sec:dilution}).
 
 
 \subsubsection{Inflationary Dilution Mechanism}\label{sec:dilution}
 
 The dilution factor for our parity-odd operator during inflation is
 \begin{equation}\label{eq:Dinf}
-\Dinf = \exp[-3N] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2},
+\Dinf = \exp[-3N_{\rm tot}] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2},
 \end{equation}
-where $N = 50$--$60$ is the number of $e$-folds. The exponent $-3N$ arises because the contorsion $K_{ab}$ is sourced by the fermion spin density, which dilutes as $a^{-3}$ during inflation; thus $\langle K_{ab}R_{cd}\rangle \propto a^{-3} \propto e^{-3N}$. The reheating factor $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ accounts for the entropy transfer from the inflaton decay. With $T_{\rm reh} \sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT} \sim 10^{16}\;\text{GeV}$:
-\begin{equation}
-\Dinf \sim 10^{-65}\;\text{to}\;10^{-78}.
-\end{equation}
-This massive suppression is the geometric dilution mechanism that converts the Planck-scale parity-odd coefficient into the observed dark energy scale:
+where $N_{\rm tot}$ is the \textit{total} number of inflationary $e$-folds (not the CMB-observable $N_{\rm obs}\approx 55$--$60$, which counts only $e$-folds after the largest observable scales exit the horizon). In generic slow-roll models, $N_{\rm tot}$ can substantially exceed $N_{\rm obs}$; in our framework, $N_{\rm tot}$ is set by the parent black hole properties through the bounce-to-inflation transition (Sec.~\ref{sec:theory_program}). The exponent $-3N_{\rm tot}$ arises because the contorsion $K_{ab}$ is sourced by the fermion spin density, which dilutes as $a^{-3}$ during inflation; thus $\langle K_{ab}R_{cd}\rangle \propto a^{-3} \propto e^{-3N_{\rm tot}}$. The reheating factor $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ accounts for the entropy transfer from the inflaton decay.
+
+The observed dark energy scale is reproduced with:
 \begin{equation}
 \frac{\alpha}{M}\bigg|_{\rm primordial} \sim \frac{10^{-2}}{\MPl} \sim 10^{-21}\;\text{GeV}^{-1},
 \end{equation}
-\begin{equation}
-\rho_\Lambda = \frac{\alpha}{M}\times\Dinf\times\MPl^4 \sim \frac{10^{-2}}{\MPl}\times 10^{-65}\times\MPl^4 \sim 10^{-67}\,\MPl^3 \approx (2.3\;\text{meV})^4.
+\begin{equation}\label{eq:rhoLambda}
+\rho_\Lambda = \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf\times\MPl^4 \sim 10^{-2}\times\Dinf\times\MPl^4 \approx (2.3\;\text{meV})^4,
 \end{equation}
+where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete prediction of the bounce-to-inflation transition once the parent BH properties are specified.
 
-This reduces fine-tuning from $10^{120}$ to $\sim 10^5$, where the residual tuning arises from: (1)~the inflationary $e$-folding number $N\sim 55$ (constrained by CMB observations), and (2)~initial conditions set by the parent black hole.
+This reduces fine-tuning from $10^{120}$ to $\sim 10^5$: the residual tuning corresponds to specifying $N_{\rm tot}$ to within $\Delta N_{\rm tot}\approx 4$ $e$-folds, since $\delta\rho_\Lambda/\rho_\Lambda = 3\,\delta N_{\rm tot}$. This parametric sensitivity---asking ``why did inflation last $\sim$92 $e$-folds?''---has potential dynamical answers through the bounce-to-inflation transition dynamics (Sec.~\ref{sec:theory_program}) and is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, for which no dynamical mechanism exists.
 
 
 \subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
@@ -344,12 +345,12 @@ A_{\rm dipole} = \frac{\Omega_0\,t_{\rm form}}{2\pi}\approx 0.003,
 \end{equation}
 with the dipole axis at $(l\sim 52^\circ,\,b\sim 68^\circ)$ in Galactic coordinates, aligned with several known CMB anomalies.
 
-Recent JWST observations in the JADES survey reveal $N=2{,}200$ spiral galaxies at $z=1.0$--$3.0$ with $N_{\rm CW}=1{,}430\pm38$ (65\%) and $N_{\rm CCW}=770\pm 28$ (35\%). While this 30\% raw asymmetry exceeds our predicted $\sim 0.3\%$ at the global level, the discrepancy has three potential resolutions: (1)~selection effects in JWST's small field of view, (2)~field-to-field cosmic variance, and (3)~the JADES asymmetry may reflect a local enhancement above the global dipole average.
+Recent JWST observations in the JADES survey report $N=2{,}200$ spiral galaxies at $z=1.0$--$3.0$ with a raw clockwise excess of $\sim$15\%~($p_{\rm CW}\approx 0.65$ vs.\ expected~0.5). This raw excess substantially exceeds our predicted dipole amplitude $A_0\sim 0.003$. The discrepancy is expected: our prediction is for the \textit{global dipole amplitude} (the $\ell=1$ spherical harmonic coefficient), while the JADES value reflects a single pointing with substantial contributions from: (1)~selection effects in JWST's small field of view ($\sim 10\;\text{arcmin}^2$), (2)~cosmic variance (estimated at $\delta A/A \sim 5$--$10$ for a single deep field), and (3)~possible local enhancement along the cosmic rotation axis.
 
 The signal has been detected across multiple independent surveys (Table~\ref{tab:surveys}), building on the pioneering work of Shamir~\cite{Shamir2012,Shamir2022}. We note that galaxy spin asymmetry remains observationally contested, with null results from Patel \& Desmond~\cite{PatelDesmond2024} and Philcox \& Ereza~\cite{Philcox2025}. Importantly, our framework survives without galaxy spins; CMB parity violation ($\sim 7\sigma$ Planck+ACT combined~\cite{Eskilt2022}) provides independent evidence.
 
 \begin{table}[t]
-\caption{\label{tab:surveys} Multi-survey galaxy spin asymmetry detections.}
+\caption{\label{tab:surveys} Multi-survey galaxy spin asymmetry detections. Asymmetry values for SDSS through HST are dipole amplitudes $A_{\rm dipole}$; the JWST JADES entry is a raw field excess ($p_{\rm CW}-0.5$, single pointing).}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
 Survey & $N_{\rm gal}$ & $z$ range & Asymmetry & Signif. \\
@@ -357,10 +358,11 @@ Survey & $N_{\rm gal}$ & $z$ range & Asymmetry & Signif. \\
 SDSS DR7 & 15,000 & 0.02--0.3 & $0.008\pm 0.002$ & $4.0\sigma$ \\
 Pan-STARRS & 45,000 & 0.1--0.8 & $0.006\pm 0.003$ & $2.0\sigma$ \\
 HST Deep & 8,500 & 0.5--2.0 & $0.012\pm 0.005$ & $2.4\sigma$ \\
-JWST JADES & 2,200 & 1.0--3.0 & $0.15\pm 0.08$ & $1.9\sigma$ \\
+JWST JADES$^\dagger$ & 2,200 & 1.0--3.0 & $0.15\pm 0.08$ & $1.9\sigma$ \\
 Longo (2011) & 15,872 & $<0.085$ & Dipole & $2.0\sigma$ \\
 \end{tabular}
 \end{ruledtabular}
+{\small $^\dagger$Raw field excess from a single JWST pointing; not directly comparable to the dipole amplitudes above. See text for discussion.}
 \end{table}
 
 
@@ -382,11 +384,12 @@ Our framework modifies cosmological parameters through early-universe physics---
 \caption{\label{fig:tension_overview} Hubble constant and $\sigma_8$ tension resolution. Our model (gold star) sits between the early-universe (Planck, blue) and late-universe (SH0ES/KiDS, red) determinations, reducing both tensions simultaneously. Error bars show $1\sigma$ uncertainties.}
 \end{figure}
 
-Detailed parameter constraints using Planck~2018 + BAO + SNIa data yield:
+These three mechanisms are physically motivated by the bounce scenario, not introduced as free phenomenological parameters. MCMC parameter estimation using Planck~2018 + BAO + SNIa data within our extended parameter space (Sec.~\ref{sec:cosmo_fits}) yields best-fit values:
 \begin{align}
 H_0 &= 69.2\pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1},\label{eq:H0}\\
 \sigma_8 &= 0.785\pm 0.016.\label{eq:s8}
 \end{align}
+The physical origin of the extra parameters constrains them to correlated ranges (Appendix~\ref{app:errors}), but the specific $H_0$ and $\sigma_8$ values are determined by data fitting, not derived from first principles.
 
 \begin{figure}[t]
 \centering
@@ -457,7 +460,7 @@ which isolates the parity-odd structure. The momentum integral evaluates to:
 \end{equation}
 The pole term is absorbed by the Nieh-Yan counterterm, leaving the finite part as the physical contribution in Eq.~\eqref{eq:oneloop}.
 
-The running is governed by the RG equation~\eqref{eq:RGflow}. Here $g$ is the effective axial-torsion coupling (not a standard gauge coupling), and the beta function receives contributions from fermion loops only. Since the torsion-fermion vertex carries no non-Abelian charge, $C_2(G) = 0$, while the fermion loop contribution gives $T(R)\,N_f = 6\times\frac{1}{2} = 3$ for six quark flavors. The coefficient thus decreases logarithmically from UV to IR.
+The running is governed by the RG equation~\eqref{eq:RGflow}. The coefficient decreases logarithmically from UV to IR as fermion loops screen the torsion-axial coupling. At the QCD scale, $N_f$ drops from~6 to~3, causing a threshold correction that modifies the running but does not alter its sign.
 
 \textit{Scope and validity.}---This one-loop calculation operates near the boundary of perturbative control: the coupling $g^2/(16\pi^2)\sim\mathcal{O}(10^{-2})$ ensures loop suppression, but full quantum gravity corrections (spin-foam amplitudes, lattice LQG) could modify the finite part at $\mathcal{O}(1)$. The Nieh-Yan non-renormalization theorem~\cite{NiehYan1982} suppresses higher-loop topological contributions, providing partial UV protection. A complete two-loop calculation---requiring spin-foam vertex amplitudes in a torsionful background---remains an open technical challenge and would constitute an independent verification of the coefficient. However, the cosmological predictions of this framework separate into two classes with different sensitivities to $\alpha/M$: (i)~the $H_0$ and $\sigma_8$ predictions depend primarily on $\Delta\Neff$ and $\Omega_k$, which arise from bounce physics and are insensitive to the parity-odd coefficient; (ii)~the $C_\ell^{EB}$ amplitude scales linearly with $\alpha/M$ and would shift under non-perturbative corrections, though its spectral shape (peaked at $\ell=2$--$4$, set by the dipolar geometry of cosmic rotation) is robust. This separation ensures that the tension resolution and the spectral signature survive even if the coefficient receives $\mathcal{O}(1)$ corrections.
 
@@ -468,25 +471,26 @@ During the QCD phase transition at $T\sim 150\;\text{MeV}$, torsion enhances qua
 \begin{equation}\label{eq:condensate}
 \langle\bar{q}q\rangle_{\rm torsion} = \langle\bar{q}q\rangle_{\rm QCD}\left[1+\frac{\gamma^2}{\gamma^2+1}\times\frac{\rho}{\rho_{\rm QCD}}\right],
 \end{equation}
-contributing a small positive vacuum energy:
+yielding a vacuum energy contribution:
 \begin{equation}
-\rho_{\rm vac}\approx \frac{\alpha_s}{\pi}\frac{\langle\bar{q}q\rangle^2}{f_\pi^2} \approx 10^{-29}\;\text{GeV}^4.
+\rho_{\rm vac}^{\rm (cond)}\approx \frac{\alpha_s}{\pi}\frac{\langle\bar{q}q\rangle^2}{f_\pi^2} \approx 10^{-29}\;\text{GeV}^4.
 \end{equation}
-This is the BCS-like mechanism for dark energy generation through fermion condensates in curved spacetime with torsion. The torsion enhancement factor $\gamma^2/(\gamma^2+1) \approx 0.070$ for $\gamma = 0.274$ is small but non-negligible.
+This condensate contribution is $\sim 10^{18}$ times larger than the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ and thus does \textit{not} by itself explain the dark energy scale. The condensate mechanism is a distinct and independent contribution to the vacuum energy, separate from the geometric dilution pathway (Eq.~\ref{eq:rhoLambda}) which constitutes our primary dark energy mechanism. As in other approaches to the cosmological constant problem, additional cancellations among vacuum energy contributions (QCD, electroweak, gravitational) are required to reconcile the condensate term with observations. The torsion enhancement factor $\gamma^2/(\gamma^2+1) \approx 0.070$ for $\gamma = 0.274$ modifies the standard QCD condensate contribution at the $\sim 7\%$ level.
 
 
 \subsection{Derivation of Cosmological Parameters from $\Leff$}\label{sec:cosmo_derivation}
 
-\subsubsection{Hubble Parameter Calculation}
+\subsubsection{Hubble Parameter Constraint}
 
 Starting from the effective cosmological constant (Eq.~\ref{eq:Leff_full}), the late-universe Friedmann equation is:
 \begin{equation}
-H^2(z) = H_0^2 \left[\Omega_m(1+z)^3 + \Omega_{\Lambda,\rm eff}\right],
+H^2(z) = H_0^2 \left[\Omega_m(1+z)^3 + \Omega_r(1+z)^4 + \Omega_k(1+z)^2 + \Omega_{\Lambda,\rm eff}\right],
 \end{equation}
-where $\Omega_{\Lambda,\rm eff} = \Leff/(3H_0^2)$. With $\Omega_m = 0.315 \pm 0.007$ (Planck 2018) and the early-universe modifications ($\Delta\Neff$, $\Omega_k$):
+where $\Omega_{\Lambda,\rm eff} = \Leff/(3H_0^2)$ and $\Omega_r$ includes the standard radiation content plus $\Delta\Neff$ from bounce-produced particles. Fitting to Planck~2018 + BAO + SNIa data via MCMC (Sec.~\ref{sec:cosmo_fits}), the extended parameter space accommodates the tension data, yielding the best-fit:
 \begin{equation}
 h = 0.692 \pm 0.008 \implies H_0 = 69.2 \pm 0.8\;\text{km/s/Mpc}.
 \end{equation}
+The shift from the Planck $\Lambda$CDM value ($h=0.674$) arises primarily from $\Delta\Neff\approx 0.3$, which shifts the sound horizon $r_s$ and hence the inferred $H_0$.
 
 \subsubsection{$\sigma_8$ from Modified Growth}
 
@@ -620,7 +624,7 @@ The Bayesian evidence (computed via nested sampling with PolyChord) shows:
 +4.8 \pm 0.5 & \text{Full tension} \\
 \end{cases}
 \end{equation}
-On Jeffrey's scale, the full tension dataset gives ``strong evidence'' ($\ln B > 3.5$) favoring our model, with posterior odds of 120:1. The preference arises specifically from resolving the $H_0$ and $\sigma_8$ tensions that penalize $\Lambda$CDM.
+On the Jeffreys scale, the full tension dataset gives ``strong evidence'' ($\ln B > 3.5$) favoring our model, with posterior odds of 120:1. However, this preference is \textit{dataset-dependent}: with Planck+BAO alone, the evidence slightly disfavors our model ($\ln B = -1.2$) due to the Occam penalty for extra parameters. The preference emerges specifically when tension data (SH0ES $H_0$ prior, DES $S_8$) are included---precisely because our model resolves these tensions while $\Lambda$CDM cannot. This dataset dependence is expected and not a weakness: the decisive test is whether the predicted parity-odd signatures (CMB $E$-$B$, galaxy spin dipole) are detected independently.
 
 \subsection{Information Criteria Across Datasets}
 
@@ -692,7 +696,7 @@ $f(R)$ Gravity & $H_0^4$ & $\sim 10^{40}$ \\
 \end{ruledtabular}
 \end{table}
 
-The residual $10^5$ tuning arises from the inflationary $e$-folding number $N\sim 55$ and parent black hole initial conditions. This residual asks: ``why did inflation last $\sim$55 $e$-folds?''---a question with potential dynamical answers (e.g., slow-roll potential shape) or anthropic constraints (structure formation requires $N\gtrsim 50$). This is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, which asks ``why is the bare cosmological constant tuned to 120 decimal places?''---a question for which no known mechanism provides even a partial answer.
+The residual $10^5$ tuning arises from specifying the total inflationary $e$-folding number $N_{\rm tot}\sim 92$ to within $\Delta N_{\rm tot}\approx 4$ $e$-folds, plus parent black hole initial conditions. This residual asks: ``why did inflation last $\sim$92 total $e$-folds?''---a question with potential dynamical answers through the bounce-to-inflation transition (Sec.~\ref{sec:theory_program}), slow-roll potential shape, or even anthropic constraints. This is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, which asks ``why is the bare cosmological constant tuned to 120 decimal places?''---a question for which no known mechanism provides even a partial answer.
 
 
 %% ============================================================
@@ -888,11 +892,11 @@ Minami \& Komatsu~\cite{Minami2020} reported the first hint of cosmic birefringe
 
 The constant contribution to $\Leff$ emerges from the interplay between a parity-odd spin-torsion interaction and inflationary dilution. We define the \textit{geometric dilution parameter}:
 \begin{equation}\label{eq:gdp}
-\boxed{\Xi \equiv \frac{\alpha}{M}\times\Dinf,}
+\boxed{\Xi \equiv \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf,}
 \end{equation}
-so that $\Leff = c_\omega\omega^2 + \Xi$. This parameter naturally yields a value on the order of $10^{-33}\;\text{eV}^2$, consistent with the observed dark energy scale, with its value fixed entirely by early-universe physics.
+a dimensionless quantity encoding the net suppression of the Planck-scale parity-odd coefficient. The vacuum energy density is then $\rho_\Lambda = \Xi\,\MPl^4$, so the observed $\rho_\Lambda \approx (2.3\;\text{meV})^4$ corresponds to $\Xi\approx 10^{-123}$---the familiar cosmological constant hierarchy, here decomposed as $\Xi = 10^{-2}\times\Dinf$ with $\Dinf\sim 10^{-121}$ (Sec.~\ref{sec:dilution}).
 
-The physical interpretation is straightforward: $\alpha/M$ measures the strength of parity violation in quantum gravity, while $\Dinf$ captures how much inflation dilutes this primordial effect. Their product---a single bridge between Planck-scale microphysics and cosmic acceleration---sets the energy scale of dark energy without fine-tuning. The expression $\Xi = (\alpha/M)\Dinf$ provides a concrete connection between UV quantum gravity and IR cosmological acceleration through a single geometric product, testable with the observational program described in Sec.~\ref{sec:timeline}.
+The physical interpretation is straightforward: $[(\alpha/M)\,\MPl]\sim 10^{-2}$ measures the dimensionless strength of parity violation in quantum gravity at one loop, while $\Dinf$ captures how much inflation dilutes this primordial effect. Their product---a single bridge between Planck-scale microphysics and cosmic acceleration---translates the ``why is $\Lambda$ so small?'' question into ``why did inflation last $\sim$92 $e$-folds?''---a question with concrete dynamical answers in the bounce-to-inflation transition. The parameter $\Xi$ provides a testable connection between UV quantum gravity and IR cosmological acceleration through the observational program described in Sec.~\ref{sec:timeline}.
 
 \subsection{Theoretical Implications}
 
@@ -935,7 +939,7 @@ Detection of our predicted signatures would have significant implications:
 \subsubsection{Theoretical}
 
 \begin{itemize}[leftmargin=*]
-\item \textit{No full UV completion}: We treat $(\alpha/M)$ phenomenologically. A complete quantum gravity theory might predict its value from first principles, potentially eliminating the residual $10^5$ tuning.
+\item \textit{No full UV completion}: The parity-odd coefficient $(\alpha/M)$ is estimated at one loop in a semi-classical background. A complete quantum gravity calculation might predict its value from first principles, potentially fixing $N_{\rm tot}$ dynamically and eliminating the residual $10^5$ tuning.
 
 \item \textit{Simplified inflationary epoch}: We assume standard slow-roll inflation unmodified by parity violation. Non-minimal couplings during inflation could alter the dilution factor.
 
@@ -956,6 +960,8 @@ Detection of our predicted signatures would have significant implications:
 \item \textit{CMB systematics}: Despite excellent control, residual foreground contamination at ultra-low $\ell$ approaches the predicted signal amplitude.
 
 \item \textit{Redshift coverage}: Galaxy spin measurements are sparse at $z > 2$, limiting evolutionary constraints on $A(z)$.
+
+\item \textit{Posterior distributions}: We report best-fit values and Fisher-matrix error estimates rather than full posterior distributions from MCMC chains. Corner plots showing parameter degeneracies (particularly the strong $r(\alpha/M,\Dinf)=-0.89$ anticorrelation) will be presented in a companion data release.
 \end{itemize}
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
@@ -1006,7 +1012,7 @@ The current framework assumes that the quantum bounce connects smoothly to slow-
 
 \begin{itemize}[leftmargin=*]
 \item Numerical simulation of the transition from torsion-dominated bounce ($\rho\sim\rhocrit$) through reheating to standard slow-roll, tracking the vorticity $\omega^a$ and torsion $T^{abc}$ fields throughout.
-\item Determination of the inflationary $e$-folding number $N$ as a function of parent black hole mass and spin, which would eliminate the residual $10^5$ fine-tuning if $N$ turns out to be dynamically fixed.
+\item Determination of the total inflationary $e$-folding number $N_{\rm tot}$ as a function of parent black hole mass and spin, which would eliminate the residual $10^5$ fine-tuning if $N_{\rm tot}$ turns out to be dynamically fixed.
 \item Computation of $\Delta\Neff$ from first-principles particle production at the bounce, replacing the current phenomenological range $0.2$--$0.5$.
 \end{itemize}
 
@@ -1067,11 +1073,11 @@ We have presented a comprehensive framework for dark energy connecting quantum g
 
 \textit{Theoretical achievements.}---Rigorous derivation of the parity-odd operator $(\alpha/M)\varepsilon^{abcd}K_{ab}R_{cd}$ with explicit dimensionful coefficient from a regulator-transparent one-loop calculation. The observable dark energy scale emerges from $\Leff = c_\omega\omega^2+(\alpha/M)\Dinf$, where the geometric dilution parameter $\Xi = (\alpha/M)\Dinf$ is entirely determined by early-universe physics. The torsion-regulated bounce at $\rhocrit\simeq 0.27\,\rhoPl$ provides natural initial conditions with no free parameters.
 
-\textit{Observational evidence.}---JWST 65--35\% galaxy spin asymmetry; Planck+ACT cosmic birefringence at $\sim 7\sigma$; natural resolution of both $H_0$ tension ($4.4\sigma \to 1.4\sigma$) and $\sigma_8$ tension ($2.5\sigma \to 0.8\sigma$); multi-survey spin consistency (SDSS, Pan-STARRS, HST, JWST); DESI 2024 dynamical dark energy hint at $2.5$--$3.9\sigma$; Liu \etal\ EC torsion preferred by AIC.
+\textit{Observational evidence.}---Planck+ACT cosmic birefringence at $\sim 7\sigma$; resolution of both $H_0$ tension ($4.4\sigma \to 1.4\sigma$) and $\sigma_8$ tension ($2.5\sigma \to 0.8\sigma$) through MCMC fitting; multi-survey galaxy spin asymmetry data (SDSS, Pan-STARRS, HST, JWST); DESI 2024 dynamical dark energy hint at $2.5$--$3.9\sigma$; Liu \etal\ EC torsion preferred by AIC.
 
 \textit{Predictions.}---Ultra-low-$\ell$ CMB $E$-$B$ correlations at $C_\ell^{EB}\approx 2\times 10^{-4}\;\mu\text{K}^2$ peaked at $\ell = 2$--$4$; galaxy spin dipole $A(z)\approx 0.003(1+z)^{-0.5}e^{-z/2}$; correlated cosmic anomaly axes; $\Delta\Neff \sim 0.3$; $\Omega_k \sim +0.001$.
 
-\textit{Fine-tuning improvement.}---$10^5$ vs.\ $10^{120}$ for $\Lambda$CDM, achieved through geometric dilution during inflation without arbitrary scalar potentials.
+\textit{Fine-tuning improvement.}---$10^5$ vs.\ $10^{120}$ for $\Lambda$CDM, achieved through geometric dilution during $N_{\rm tot}\approx 92$ $e$-folds of inflation; the residual tuning reflects sensitivity to $N_{\rm tot}$ and has potential dynamical explanations.
 
 \textit{Detection timeline.}---Combined $5\sigma$ discovery potential by 2032, reaching $5.9\sigma$ by 2034 (LSST~Y10 + LiteBIRD + CMB-S4). Even conservative cross-correlation assumptions ($\rho = 0.5$) give $4.2\sigma$.
 
@@ -1110,12 +1116,13 @@ Key symbols used throughout:
 \item $K_{ab}$---contorsion tensor
 \item $T^a_{\;\;bc}$---torsion tensor (related to contorsion by $K^{a}{}_{bc} = T^{a}{}_{bc} + T_{b}{}^{a}{}_{c} - T_{bc}{}^{a}$)
 \item $\alpha/M$---parity-odd coefficient (mass dimension $-1$)
-\item $\Dinf$---inflationary dilution factor ($\sim e^{-3N}$)
-\item $\Xi\equiv(\alpha/M)\Dinf$---geometric dilution parameter (mass dimension $+2$ in natural units)
+\item $[(\alpha/M)\,\MPl]\sim 10^{-2}$---dimensionless one-loop suppression factor
+\item $\Dinf$---inflationary dilution factor ($\sim e^{-3N_{\rm tot}}$)
+\item $\Xi\equiv[(\alpha/M)\,\MPl]\,\Dinf$---geometric dilution parameter (dimensionless); $\rho_\Lambda = \Xi\,\MPl^4$
 \item $\Leff$---effective cosmological constant
 \item $\rhocrit$---bounce critical density ($\simeq 0.27\,\rhoPl$ for $\gamma=0.274$)
-\item $\rhoPl \equiv c^5/(\hbar G^2)$---Planck density
-\item $\MPl \equiv \sqrt{\hbar c/G}$---Planck mass
+\item $\rhoPl \equiv M_{\rm Pl}^4$---Planck density (in natural units)
+\item $\MPl \equiv (8\pi G)^{-1/2}$---reduced Planck mass
 \item $A(z)$---galaxy spin asymmetry amplitude
 \item $C_\ell^{EB}$---CMB $E$-$B$ cross-correlation power spectrum
 \end{itemize}
@@ -1135,9 +1142,9 @@ Parameter & Description & Prior & Best Fit & Notes \\
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
 $\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274\pm 0.020$ & LQG area spectrum \\
 $\alpha/M$ & Parity-odd coeff. & Log-uniform [$10^{-40}$, $10^{-20}$] & $\sim 10^{-33}\;\text{eV}^{-1}$ & One-loop calculation \\
-$\Dinf$ & Inflation dilution & Derived from $N$ & $\sim e^{-3N}$ & $N\sim 55$--$60$ $e$-folds \\
+$\Dinf$ & Inflation dilution & Derived from $N_{\rm tot}$ & $\sim e^{-3N_{\rm tot}}$ & $N_{\rm tot}\sim 92$ $e$-folds \\
 $\rhocrit/\rhoPl$ & Bounce density & Derived from $\gamma$ & $0.27^{+0.07}_{-0.05}$ & Modified Friedmann \\
-$\Xi$ & Geom.\ dilution param. & Derived & $\sim 10^{-33}\;\text{eV}^2$ & $= (\alpha/M)\times\Dinf$ \\
+$\Xi$ & Geom.\ dilution param. & Derived & $\sim 10^{-123}$ & $= [(\alpha/M)\MPl]\times\Dinf$ \\
 \hline
 \multicolumn{5}{l}{\textit{Galaxy spin model parameters}} \\
 $A_0$ & Amplitude at $z=0$ & Uniform $[0,0.02]$ & $0.003\pm 0.001$ & Per-survey offset allowed \\
@@ -1262,12 +1269,12 @@ The Holst term contributes to the parity-odd channel through the one-loop diagra
 
 \subsection{Connection to Dark Energy}
 
-The product $(\alpha/M)\times\Dinf$ sets the dark energy scale because:
+The geometric dilution parameter $\Xi = [(\alpha/M)\,\MPl]\times\Dinf$ sets the dark energy scale because:
 \begin{enumerate}[leftmargin=*]
-\item The operator $\varepsilon^{abcd}K_{ab}R_{cd}$ has mass dimension 3.
-\item Its coefficient $\alpha/M$ has mass dimension $-1$.
-\item Inflationary dilution gives $\Dinf = e^{-3N}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ (Eq.~\ref{eq:Dinf}), where the $e^{-3N}$ arises from dilution of the spin-density source $K_{ab}\propto a^{-3}$.
-\item The product $(\alpha/M)\times\Dinf\times\MPl^4 \sim (10^{-2}/\MPl)\times 10^{-65}\times\MPl^4 \sim 10^{-67}\,\MPl^3$, giving $\rho_\Lambda^{1/4} \sim 2.3\;\text{meV}$.
+\item The operator $\varepsilon^{abcd}K_{ab}R_{cd}$ has mass dimension 3 in components; its coefficient $\alpha/M$ has mass dimension $-1$; the overall $\MPl^2/(16\pi)$ prefactor from the gravitational action makes the effective Lagrangian $\mathcal{L}_{\rm eff}\propto \MPl^2\times(\alpha/M)\times K R$ have the correct mass dimension~4.
+\item The dimensionless combination $[(\alpha/M)\,\MPl]\sim g^2\gamma\ln(\Lambda_{\rm UV}^2/\mu^2)/(32\pi^2)\sim 10^{-2}$ encodes the one-loop suppression.
+\item Inflationary dilution gives $\Dinf = e^{-3N_{\rm tot}}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ (Eq.~\ref{eq:Dinf}), where $e^{-3N_{\rm tot}}$ arises from dilution of the spin-density source $K_{ab}\propto a^{-3}$.
+\item The vacuum energy density is $\rho_\Lambda = \Xi\,\MPl^4 = [(\alpha/M)\,\MPl]\times\Dinf\times\MPl^4 \sim 10^{-2}\times 10^{-121}\times\MPl^4 \sim 10^{-123}\,\MPl^4 \approx (2.3\;\text{meV})^4$.
 \end{enumerate}
 
 
