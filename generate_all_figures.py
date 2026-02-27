@@ -86,76 +86,104 @@ def savefig(fig, name):
 
 
 # ===================================================================
-# Figure 1 : LQG-Holst derivation chain (wide conceptual flowchart)
+# Figure 1 : LQG-Holst derivation chain (publication-quality)
 # ===================================================================
 def figure_1():
-    """Five-step derivation: ECH Action -> Observed Lambda_obs."""
+    """Five-step derivation: ECH Action -> Observed Lambda_obs.
+    Clean black/grey scientific style for PhysRevD."""
     print("Figure 1: LQG-Holst derivation chain")
 
-    fig, ax = plt.subplots(figsize=(14, 4.5))
+    fig, ax = plt.subplots(figsize=(14, 5.2))
     ax.set_xlim(0, 14)
-    ax.set_ylim(0, 5.0)
+    ax.set_ylim(-0.3, 5.8)
     ax.axis("off")
+    fig.patch.set_facecolor("white")
 
+    # -- Colours (monochrome + single accent for final result) --
+    BK = "#1a1a1a"      # near-black for text
+    BDR = "#333333"      # box borders
+    FILL = "#f7f7f7"     # very light grey fill
+    FILL_END = "#e8f0e8" # faint green-grey for final box
+    ARROW = "#555555"
+    STEP_COL = "#666666"
+
+    # -- Box definitions --
+    # (x_ctr, y_ctr, w, h, label_top, equation, fill)
     boxes = [
-        # (x_ctr, y_ctr, w, h, title, math, colour)
-        (1.3,  2.5, 2.1, 3.0,
-         "Einstein-Cartan\nHolst Action",
-         r"$S_{\rm ECH}[e,\omega,\psi;\gamma]$", BLUE),
-        (4.1,  2.5, 2.1, 3.0,
-         "Torsion\nElimination",
-         r"$T^{abc}=\frac{8\pi G}{c^4}\,S^{abc}$", BLUE),
-        (6.9,  2.5, 2.1, 3.0,
-         "Four-Fermion\nContact",
-         r"$\mathcal{L}\propto\frac{\gamma^2}{\gamma^2+1}\,J_A^\mu J_{A\mu}$",
-         ACCENT),
-        (9.7,  2.5, 2.1, 3.0,
-         "Parity-Odd\nOperator (1-loop)",
-         r"$\frac{\alpha}{M}\,\varepsilon^{abcd}K_{ab}R_{cd}$", ACCENT),
-        (12.5, 2.5, 2.1, 3.0,
+        (1.3,  2.8, 2.2, 2.6,
+         "Einstein-Cartan-\nHolst action",
+         r"$S_{\rm ECH}[e^a_\mu,\,\omega^{ab}_\mu,\,\psi;\,\gamma]$",
+         FILL),
+        (4.1,  2.8, 2.2, 2.6,
+         "Torsion\nelimination",
+         r"$T^{a}_{\;\;bc} = \frac{8\pi G}{c^4}\,S^{a}_{\;\;bc}$",
+         FILL),
+        (6.9,  2.8, 2.2, 2.6,
+         "Four-fermion\ncontact term",
+         r"$\mathcal{L} \propto \frac{\gamma^2}{\gamma^2{+}1}\,J_A^\mu\, J_{A\mu}$",
+         FILL),
+        (9.7,  2.8, 2.2, 2.6,
+         "Parity-odd\noperator (1-loop)",
+         r"$\frac{\alpha}{M}\,\varepsilon^{abcd}\,K_{ab}\,R_{cd}$",
+         FILL),
+        (12.5, 2.8, 2.2, 2.6,
          r"Observed $\Lambda_{\rm obs}$",
-         r"$(2.3\;\mathrm{meV})^4$", GREEN),
+         r"$(2.3\;\mathrm{meV})^4$",
+         FILL_END),
     ]
 
-    for (x, y, w, h, title, math, col) in boxes:
+    for (x, y, w, h, title, math, fc) in boxes:
+        # Main box — thin solid border, minimal fill
         rect = FancyBboxPatch(
             (x - w / 2, y - h / 2), w, h,
-            boxstyle="round,pad=0.12", facecolor=col, alpha=0.12,
-            edgecolor=col, linewidth=2)
+            boxstyle="round,pad=0.10",
+            facecolor=fc, edgecolor=BDR, linewidth=1.2)
         ax.add_patch(rect)
-        ax.text(x, y + 0.40, title, ha="center", va="center",
-                fontsize=10, fontweight="bold", color=col)
+        # Title (bold, small caps feel)
+        ax.text(x, y + 0.42, title, ha="center", va="center",
+                fontsize=10, fontweight="bold", color=BK,
+                linespacing=1.3)
+        # Equation
         ax.text(x, y - 0.55, math, ha="center", va="center",
-                fontsize=9, color="0.3")
+                fontsize=9.5, color="#2a2a2a")
 
-    # Arrows between boxes
-    for i in range(len(boxes) - 1):
-        x1 = boxes[i][0] + boxes[i][2] / 2 + 0.05
-        x2 = boxes[i + 1][0] - boxes[i + 1][2] / 2 - 0.05
-        ax.annotate("", xy=(x2, 2.5), xytext=(x1, 2.5),
-                    arrowprops=dict(arrowstyle="-|>", color="0.4",
-                                    lw=2.2, mutation_scale=14))
-
-    # Step labels
-    steps = [
-        (2.70, 4.35, "Step 1\nSpin density\nsources torsion"),
-        (5.50, 4.35, "Step 2\nIntegrate out\ntorsion"),
-        (8.30, 4.35, "Step 3\nOne-loop\nquantum correction"),
-        (11.10, 4.35, "Step 4\nInflationary\ndilution $e^{-3N}$"),
+    # -- Arrows with step annotations --
+    step_labels = [
+        r"$\mathbf{1}$  Spin density" + "\nsources torsion",
+        r"$\mathbf{2}$  Integrate out" + "\ntorsion algebraically",
+        r"$\mathbf{3}$  One-loop quantum" + "\ncorrection (Holst)",
+        r"$\mathbf{4}$  Inflationary" + "\n" + r"dilution $\sim e^{-3N}$",
     ]
-    for (x, y, txt) in steps:
-        ax.text(x, y, txt, ha="center", va="top", fontsize=7.5,
-                color="0.5", style="italic")
 
-    # Bottom summary bar
-    ax.text(7.0, 0.35,
-            r"$\Lambda_{\rm eff} = \Xi + c_\omega\omega^2$"
-            r"$\;$where$\;\Xi\equiv(\alpha/M)\,\mathcal{D}_{\rm inf}$"
-            r"    |    Fine-tuning: $10^5$ vs.\ $10^{120}$ ($\Lambda$CDM)",
-            ha="center", va="center", fontsize=10.5, fontweight="bold",
-            color="0.2",
-            bbox=dict(boxstyle="round,pad=0.35", facecolor="#f5f0e8",
-                      edgecolor=ACCENT, alpha=0.85))
+    for i in range(len(boxes) - 1):
+        x1 = boxes[i][0] + boxes[i][2] / 2 + 0.08
+        x2 = boxes[i + 1][0] - boxes[i + 1][2] / 2 - 0.08
+        xmid = (x1 + x2) / 2
+
+        # Arrow
+        ax.annotate("", xy=(x2, 2.8), xytext=(x1, 2.8),
+                    arrowprops=dict(arrowstyle="-|>", color=ARROW,
+                                    lw=1.6, mutation_scale=12))
+
+        # Step label above arrow
+        ax.text(xmid, 4.55, step_labels[i],
+                ha="center", va="top", fontsize=7.5,
+                color=STEP_COL, linespacing=1.35)
+
+        # Thin connecting line from label to arrow
+        ax.plot([xmid, xmid], [4.05, 3.25], color="#cccccc",
+                lw=0.6, ls="--")
+
+    # -- Bottom summary: clean ruled line + equation --
+    ax.plot([1.0, 13.0], [0.7, 0.7], color="#cccccc", lw=0.8)
+
+    ax.text(7.0, 0.25,
+            r"$\Lambda_{\rm eff} = \Xi + c_\omega\,\omega^2$"
+            r"$\quad$where$\quad$"
+            r"$\Xi \equiv (\alpha/M)\times\mathcal{D}_{\rm inf}$"
+            r"$\qquad\qquad$"
+            r"Fine-tuning:  $10^{5}$  vs.  $10^{120}$  ($\Lambda$CDM)",
+            ha="center", va="center", fontsize=10, color=BK)
 
     return savefig(fig, "figure1_lqg_holst_derivation_enhanced")
 
