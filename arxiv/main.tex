@@ -1,5 +1,5 @@
 % Geometric Dark Energy from Spin-Torsion Cosmology
-% Houston Golden — 2025
+% Houston Golden — 2026
 % arXiv submission: gr-qc / astro-ph.CO / hep-th
 %
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
@@ -44,7 +44,7 @@
 
 \begin{document}
 
-\preprint{HUBIFY-2025-001}
+\preprint{HUBIFY-2026-001}
 
 \title{Geometric Dark Energy from Spin-Torsion Cosmology:\\
 A Comprehensive Framework with Observational Validation}
@@ -594,7 +594,7 @@ Our extended parameter space adds three parameters to $\Lambda$CDM:
 \begin{equation}
 \{\Delta\Neff,\;\Omega_k,\;(\omega/H)_0\},
 \end{equation}
-bringing the total from 6 to 9.
+bringing the total to 9. However, $(\omega/H)_0$ is tightly bounded by CMB isotropy ($< 5\times 10^{-11}$) and contributes negligibly to the likelihood, so the effective parameter count is $k=8$.
 
 \subsection{Bayesian Model Comparison}
 
@@ -973,25 +973,79 @@ Conversely, confirmation of the spin asymmetry at $A_0 \sim 0.003$ with a dipole
 
 \textit{Synergies}:~JWST+Roman (high-$z$ morphologies to $z\sim 5$), Euclid (wide-area catalogs), SKA (radio galaxy polarizations as independent probe).
 
-\subsection{Needed Theoretical Work}
+\subsection{Theoretical Research Program}\label{sec:theory_program}
+
+The framework presented here opens several concrete lines of investigation, each constituting an independent research effort that would strengthen or constrain the model:
+
+\subsubsection{Higher-Loop and Non-Perturbative Verification}
+
+The most pressing theoretical need is independent verification of the one-loop coefficient $\alpha/M$ (Eq.~\ref{eq:oneloop}). Three complementary approaches are feasible:
 
 \begin{enumerate}[leftmargin=*]
-\item Full two-loop calculation in dimensional regularization.
-\item Non-perturbative LQG corrections to the bounce dynamics.
-\item Numerical relativity simulations with dynamical torsion.
-\item Inflationary parity violation and its effects on primordial perturbations.
-\item Connection to other quantum gravity approaches (string theory, asymptotic safety).
+\item \textit{Two-loop calculation in dimensional regularization}: Extending Sec.~\ref{sec:oneloopfull} to two loops requires evaluating fermion-loop diagrams with two axial-torsion vertex insertions and one graviton vertex. The technical challenge is the $\gamma^5$ treatment in $d=4-\epsilon$ dimensions (the `t~Hooft-Veltman vs.\ Breitenlohner-Maison schemes give different finite parts). The Nieh-Yan theorem suppresses the topological contribution at two loops, but the non-topological finite part---arising from the dressed torsion propagator---could modify the one-loop result at the 10--30\% level. This calculation would also reveal whether the RG running (Eq.~\ref{eq:RGflow}) receives threshold corrections near the QCD scale.
+
+\item \textit{Spin-foam vertex amplitudes}: The EPRL-FK spin-foam model provides a non-perturbative definition of the graviton propagator in LQG. Computing the parity-odd coefficient from spin-foam amplitudes in a torsionful background would constitute a fully non-perturbative verification. The key technical step is evaluating the asymptotic expansion of the vertex amplitude with an axial-current insertion, which has been partially achieved for the parity-even sector~\cite{Ashtekar2011}. Extension to the parity-odd channel requires tracking the $\gamma$-dependent phases in the Lorentzian vertex.
+
+\item \textit{Lattice LQG}: Numerical evaluation of the path integral on a simplicial lattice with dynamical torsion provides a scheme-independent check. The parity-odd coefficient can be extracted from the correlation function $\langle\varepsilon^{abcd}K_{ab}R_{cd}\rangle$ measured on lattice configurations. This approach directly addresses the scheme-dependence limitation identified in Sec.~\ref{sec:limitations}.
 \end{enumerate}
+
+Any of these approaches confirming $\alpha/M$ within an order of magnitude of our one-loop estimate would substantially strengthen the framework; a discrepancy by more than $\mathcal{O}(10)$ would require re-evaluation of the $C_\ell^{EB}$ amplitude prediction while leaving the tension resolution intact.
+
+\subsubsection{Bounce-to-Inflation Transition Dynamics}
+
+The current framework assumes that the quantum bounce connects smoothly to slow-roll inflation, with initial conditions set by the parent black hole. A detailed treatment requires:
+
+\begin{itemize}[leftmargin=*]
+\item Numerical simulation of the transition from torsion-dominated bounce ($\rho\sim\rhocrit$) through reheating to standard slow-roll, tracking the vorticity $\omega^a$ and torsion $T^{abc}$ fields throughout.
+\item Determination of the inflationary $e$-folding number $N$ as a function of parent black hole mass and spin, which would eliminate the residual $10^5$ fine-tuning if $N$ turns out to be dynamically fixed.
+\item Computation of $\Delta\Neff$ from first-principles particle production at the bounce, replacing the current phenomenological range $0.2$--$0.5$.
+\end{itemize}
+
+\subsubsection{Parity-Odd Primordial Gravitational Waves}
+
+The parity-odd operator (Eq.~\ref{eq:Seff}) affects tensor perturbations during inflation, producing a chiral gravitational wave background where left- and right-handed circular polarizations have different amplitudes. Specific predictions include:
+
+\begin{itemize}[leftmargin=*]
+\item A parity-odd contribution to the stochastic gravitational wave background at nanohertz frequencies (detectable by pulsar timing arrays: NANOGrav, EPTA, PPTA) and millihertz frequencies (LISA).
+\item Circular polarization asymmetry in the CMB $B$-mode spectrum at $\ell \sim 50$--$200$, accessible to LiteBIRD and CMB-S4.
+\item Cross-correlation between the gravitational wave chirality and the galaxy spin dipole direction, providing a third independent parity-odd probe.
+\end{itemize}
+
+This program would extend the current two-probe (CMB EB + galaxy spins) framework to a four-probe test, substantially increasing detection significance and model discrimination.
+
+\subsubsection{Black Hole Interior Numerical Relativity}
+
+Full numerical relativity simulations of rotating black hole interiors with dynamical torsion have not been attempted, primarily due to the additional degrees of freedom in the torsion field. Such simulations would:
+
+\begin{itemize}[leftmargin=*]
+\item Test whether the smooth-bounce approximation (Eq.~\ref{eq:modfriedmann}) holds for realistic rotating collapse with finite angular momentum.
+\item Compute the efficiency of angular momentum transfer through the bounce as a function of parent Kerr spin parameter $a_*$.
+\item Determine whether baby universe formation is generic or requires fine-tuned initial conditions.
+\end{itemize}
+
+\subsubsection{Connection to Other Quantum Gravity Approaches}
+
+The parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ could potentially arise in quantum gravity frameworks beyond LQG:
+
+\begin{itemize}[leftmargin=*]
+\item In string theory, parity-violating terms in the low-energy effective action arise from compactifications with topological flux (e.g., Calabi-Yau manifolds with non-trivial torsion cohomology). Identifying whether these reproduce the structure of Eq.~\eqref{eq:Seff} would connect our framework to string phenomenology.
+\item The asymptotic safety program for quantum gravity predicts specific values for gravitational couplings at the UV fixed point. Computing the parity-odd coefficient in this framework would provide an independent determination of $\alpha/M$, potentially constraining $\gamma$ from a non-LQG perspective.
+\end{itemize}
 
 \subsection{Open Questions}
 
 \begin{enumerate}[leftmargin=*]
-\item Why is $\gamma \approx 0.274$? Can it be derived from a more fundamental principle?
-\item What determines the UV cutoff scale in the loop calculation?
-\item How does parity violation affect primordial gravitational waves?
-\item Can gravitational wave detectors (LISA, ET) provide independent confirmation through parity-odd signatures in the stochastic gravitational wave background?
-\item What is the complete quantum gravity theory underlying our effective description?
-\item Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive larger BAO datasets from DESI Y5?
+\item \textit{Origin of $\gamma$}: Why is $\gamma \approx 0.274$? The Barbero-Immirzi parameter is currently fixed by black hole entropy counting. A derivation from a more fundamental principle---perhaps a symmetry argument or fixed-point condition---would place the entire framework on firmer ground and potentially predict deviations from the entropy-counting value that could be tested through our observables.
+
+\item \textit{UV cutoff identification}: The loop calculation (Eq.~\ref{eq:oneloop}) contains a logarithmic dependence on $\Lambda_{\rm UV}/\mu$. We identify $\Lambda_{\rm UV}$ with the LQG area-gap mass $\sim\sqrt{\gamma}\,\MPl$, but this choice affects the coefficient at the $\mathcal{O}(\ln)$ level. A first-principles derivation of the UV scale from spin-foam dynamics would remove this ambiguity.
+
+\item \textit{Dynamical dark energy evolution}: Our framework predicts a strictly constant $\Leff$ in the late universe (since $\omega^2/H_0^2 < 10^{-20}$). However, if the parity-odd coefficient runs with the Hubble scale (as suggested by Eq.~\ref{eq:RGflow}), this could produce an effective $w(z) \neq -1$ at the few-percent level, potentially connecting to the DESI hint for dynamical dark energy. Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive larger BAO datasets from DESI Y5?
+
+\item \textit{Multi-messenger parity tests}: Can gravitational wave detectors (LISA, Einstein Telescope, Cosmic Explorer) provide independent confirmation through parity-odd signatures in the stochastic gravitational wave background? The predicted chirality asymmetry in the GW spectrum would be a smoking-gun signature inaccessible to electromagnetic observations.
+
+\item \textit{Information paradox}: If the universe originated inside a black hole through a torsion-regulated bounce, does information cross the bounce? The smoothness of our bounce solution ($H^2 \to 0$ continuously) suggests information preservation, but a rigorous treatment using the Page curve or holographic entanglement entropy framework remains an open problem with implications for the black hole information paradox.
+
+\item \textit{Cosmic hierarchy of bounces}: If every black hole spawns a baby universe, does every universe contain black holes that spawn further universes? This recursive structure implies a cosmic hierarchy of bounces, each with potentially different values of $\gamma$ (and hence different physics). Whether $\gamma$ is truly universal or varies across the hierarchy is a deep question with implications for the landscape/swampland program.
 \end{enumerate}
 
 
