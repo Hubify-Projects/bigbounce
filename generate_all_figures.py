@@ -86,104 +86,183 @@ def savefig(fig, name):
 
 
 # ===================================================================
-# Figure 1 : LQG-Holst derivation chain (publication-quality)
+# Figure 1 : Energy scale hierarchy diagram
 # ===================================================================
 def figure_1():
-    """Five-step derivation: ECH Action -> Observed Lambda_obs.
-    Clean black/grey scientific style for PhysRevD."""
+    """Energy scale diagram showing the hierarchy from Planck density
+    down to observed dark energy, with the physical mechanism at each
+    scale.  Standard format for QFT/cosmology hierarchy figures."""
     print("Figure 1: LQG-Holst derivation chain")
 
-    fig, ax = plt.subplots(figsize=(14, 5.2))
-    ax.set_xlim(0, 14)
-    ax.set_ylim(-0.3, 5.8)
-    ax.axis("off")
+    fig, ax = plt.subplots(figsize=(7.0, 6.5))
     fig.patch.set_facecolor("white")
 
-    # -- Colours (monochrome + single accent for final result) --
-    BK = "#1a1a1a"      # near-black for text
-    BDR = "#333333"      # box borders
-    FILL = "#f7f7f7"     # very light grey fill
-    FILL_END = "#e8f0e8" # faint green-grey for final box
-    ARROW = "#555555"
-    STEP_COL = "#666666"
+    BK = "#1a1a1a"
+    GRAY_D = "#444444"
+    GRAY_M = "#666666"
 
-    # -- Box definitions --
-    # (x_ctr, y_ctr, w, h, label_top, equation, fill)
-    boxes = [
-        (1.3,  2.8, 2.2, 2.6,
-         "Einstein-Cartan-\nHolst action",
-         r"$S_{\rm ECH}[e^a_\mu,\,\omega^{ab}_\mu,\,\psi;\,\gamma]$",
-         FILL),
-        (4.1,  2.8, 2.2, 2.6,
-         "Torsion\nelimination",
-         r"$T^{a}_{\;\;bc} = \frac{8\pi G}{c^4}\,S^{a}_{\;\;bc}$",
-         FILL),
-        (6.9,  2.8, 2.2, 2.6,
-         "Four-fermion\ncontact term",
-         r"$\mathcal{L} \propto \frac{\gamma^2}{\gamma^2{+}1}\,J_A^\mu\, J_{A\mu}$",
-         FILL),
-        (9.7,  2.8, 2.2, 2.6,
-         "Parity-odd\noperator (1-loop)",
-         r"$\frac{\alpha}{M}\,\varepsilon^{abcd}\,K_{ab}\,R_{cd}$",
-         FILL),
-        (12.5, 2.8, 2.2, 2.6,
-         r"Observed $\Lambda_{\rm obs}$",
-         r"$(2.3\;\mathrm{meV})^4$",
-         FILL_END),
+    # ---- Energy scales (log10 of rho in GeV^4) ----
+    # Planck: ~10^76 GeV^4  -> log=76
+    # Bounce: ~10^72 GeV^4  -> log=72
+    # After loop correction (alpha/M): ~10^70 -> log=70
+    # Post-inflation (e^{-3N}): ~10^{-47} GeV^4 -> log=-47
+    # Observed Lambda: ~10^{-47} GeV^4 -> log=-47
+    #
+    # We show the key scales on a broken y-axis (log scale)
+
+    # Use two panels: upper (high energy) and lower (low energy)
+    # with a break indicator between them
+    # Actually, simpler: single axis with non-linear mapping
+
+    # Scales to show (name, log10_rho_GeV4, physics_label, equation)
+    scales = [
+        (76, r"$M_{\rm Pl}^4$",
+         "Planck density",
+         r"$\rho_{\rm Pl} \sim 10^{76}\;\mathrm{GeV}^4$"),
+        (72, r"$\rho_{\rm bounce}$",
+         "Quantum bounce\n(LQG critical density)",
+         r"$\rho_c \approx 0.41\,\rho_{\rm Pl}$"),
+        (70, r"$\frac{\alpha}{M}\,\rho_{\rm Pl}$",
+         "Parity-odd vacuum energy\n(one-loop, Holst term)",
+         r"$\rho_{\rm vac} = \frac{\alpha}{M}\,M_{\rm Pl}^4$"),
+        (5, r"$e^{-3N}\!\cdot\!\rho_{\rm vac}$",
+         "After inflationary dilution\n" + r"($N \approx 55$ $e$-folds)",
+         r"$\Xi = \frac{\alpha}{M}\,\mathcal{D}_{\rm inf}$"),
+        (-47, r"$\Lambda_{\rm obs}$",
+         "Observed dark energy",
+         r"$\rho_\Lambda \approx (2.3\;\mathrm{meV})^4$"),
     ]
 
-    for (x, y, w, h, title, math, fc) in boxes:
-        # Main box — thin solid border, minimal fill
-        rect = FancyBboxPatch(
-            (x - w / 2, y - h / 2), w, h,
-            boxstyle="round,pad=0.10",
-            facecolor=fc, edgecolor=BDR, linewidth=1.2)
-        ax.add_patch(rect)
-        # Title (bold, small caps feel)
-        ax.text(x, y + 0.42, title, ha="center", va="center",
-                fontsize=10, fontweight="bold", color=BK,
-                linespacing=1.3)
-        # Equation
-        ax.text(x, y - 0.55, math, ha="center", va="center",
-                fontsize=9.5, color="#2a2a2a")
+    # Map log10 values to plot y-coordinates
+    # Upper region (76 to 68): map to y = 5.2 to 3.2 (more spread)
+    # Break region: y = 3.2 to 2.2
+    # Lower region (10 to -50): map to y = 2.2 to 0.5
 
-    # -- Arrows with step annotations --
-    step_labels = [
-        r"$\mathbf{1}$  Spin density" + "\nsources torsion",
-        r"$\mathbf{2}$  Integrate out" + "\ntorsion algebraically",
-        r"$\mathbf{3}$  One-loop quantum" + "\ncorrection (Holst)",
-        r"$\mathbf{4}$  Inflationary" + "\n" + r"dilution $\sim e^{-3N}$",
-    ]
+    def log_to_y(log_val):
+        if log_val >= 68:
+            return 3.2 + (log_val - 68) / (76 - 68) * 2.0
+        elif log_val <= 10:
+            return 0.5 + (log_val - (-50)) / (10 - (-50)) * 1.7
+        else:
+            return 2.2 + (log_val - 10) / (68 - 10) * 1.0
 
-    for i in range(len(boxes) - 1):
-        x1 = boxes[i][0] + boxes[i][2] / 2 + 0.08
-        x2 = boxes[i + 1][0] - boxes[i + 1][2] / 2 - 0.08
-        xmid = (x1 + x2) / 2
+    ax.set_xlim(-0.5, 10)
+    ax.set_ylim(-0.1, 5.8)
+    ax.axis("off")
 
-        # Arrow
-        ax.annotate("", xy=(x2, 2.8), xytext=(x1, 2.8),
-                    arrowprops=dict(arrowstyle="-|>", color=ARROW,
-                                    lw=1.6, mutation_scale=12))
+    # ---- Central vertical scale bar ----
+    bar_x = 1.8
+    bar_w = 0.15
 
-        # Step label above arrow
-        ax.text(xmid, 4.55, step_labels[i],
-                ha="center", va="top", fontsize=7.5,
-                color=STEP_COL, linespacing=1.35)
+    # Upper segment
+    y_top = log_to_y(76)
+    y_mid_top = log_to_y(68)
+    ax.fill_between([bar_x - bar_w, bar_x + bar_w],
+                    y_mid_top, y_top,
+                    color="#e8e8e8", edgecolor=GRAY_D, lw=0.8)
 
-        # Thin connecting line from label to arrow
-        ax.plot([xmid, xmid], [4.05, 3.25], color="#cccccc",
-                lw=0.6, ls="--")
+    # Lower segment
+    y_mid_bot = log_to_y(10)
+    y_bot = log_to_y(-50)
+    ax.fill_between([bar_x - bar_w, bar_x + bar_w],
+                    y_bot, y_mid_bot,
+                    color="#e8e8e8", edgecolor=GRAY_D, lw=0.8)
 
-    # -- Bottom summary: clean ruled line + equation --
-    ax.plot([1.0, 13.0], [0.7, 0.7], color="#cccccc", lw=0.8)
+    # Break indicator (zigzag)
+    break_y_top = y_mid_top - 0.02
+    break_y_bot = y_mid_bot + 0.02
+    break_mid = (break_y_top + break_y_bot) / 2
+    zz_n = 4
+    zz_ys = np.linspace(break_y_bot, break_y_top, 2 * zz_n + 1)
+    zz_xs = [bar_x + (0.12 if i % 2 == 1 else -0.12)
+             for i in range(len(zz_ys))]
+    ax.plot(zz_xs, zz_ys, color=GRAY_D, lw=0.8, clip_on=False)
 
-    ax.text(7.0, 0.25,
-            r"$\Lambda_{\rm eff} = \Xi + c_\omega\,\omega^2$"
-            r"$\quad$where$\quad$"
-            r"$\Xi \equiv (\alpha/M)\times\mathcal{D}_{\rm inf}$"
-            r"$\qquad\qquad$"
-            r"Fine-tuning:  $10^{5}$  vs.  $10^{120}$  ($\Lambda$CDM)",
-            ha="center", va="center", fontsize=10, color=BK)
+    # ---- Scale markers and annotations ----
+    for log_val, scale_label, phys_label, eq_label in scales:
+        y = log_to_y(log_val)
+
+        # Tick mark on the bar
+        ax.plot([bar_x - 0.3, bar_x + 0.3], [y, y],
+                color=GRAY_D, lw=0.8)
+
+        # Scale label (left of bar)
+        ax.text(bar_x - 0.45, y, scale_label,
+                ha="right", va="center", fontsize=9.5, color=BK)
+
+        # Physics description (right of bar)
+        ax.text(bar_x + 0.55, y, phys_label,
+                ha="left", va="center", fontsize=8.5,
+                color=GRAY_D, linespacing=1.3)
+
+        # Equation (far right)
+        ax.text(9.5, y, eq_label,
+                ha="right", va="center", fontsize=9, color=BK)
+
+    # ---- Downward arrows showing the mechanism ----
+    arr_x = bar_x + 0.5
+
+    # Arrow 1: Planck -> Bounce (small step)
+    # Arrow 2: Bounce -> Parity-odd (small step)
+    # Arrow 3: Parity-odd -> Post-inflation (big jump across break)
+    # Arrow 4: Post-inflation -> Observed (small step at bottom)
+
+    # Curly brace or annotation for the big dilution step
+    y_parity = log_to_y(70)
+    y_postinf = log_to_y(5)
+
+    # Large dilution arrow (the key mechanism)
+    ax.annotate("",
+                xy=(bar_x + 2.5, y_postinf + 0.1),
+                xytext=(bar_x + 2.5, y_parity - 0.1),
+                arrowprops=dict(arrowstyle="-|>", color="#b03030",
+                                lw=1.5, mutation_scale=14))
+
+    # Label for the dilution
+    y_dil_mid = (y_parity + y_postinf) / 2
+    ax.text(bar_x + 2.7, y_dil_mid,
+            r"$\times\; e^{-3N}$" + "\n" + r"($\sim 10^{-72}$)",
+            ha="left", va="center", fontsize=10, color="#b03030",
+            fontweight="bold", linespacing=1.4)
+
+    ax.text(bar_x + 2.7, y_dil_mid - 0.35,
+            "Inflationary\ndilution",
+            ha="left", va="top", fontsize=8, color="#b03030",
+            style="italic", linespacing=1.2)
+
+    # ---- Brace showing LCDM fine-tuning for comparison ----
+    y_pl = log_to_y(76)
+    y_obs = log_to_y(-47)
+
+    # Dashed line on far left for LCDM comparison
+    ax.annotate("",
+                xy=(0.15, y_obs), xytext=(0.15, y_pl),
+                arrowprops=dict(arrowstyle="<->", color=GRAY_M,
+                                lw=0.8, ls="--", mutation_scale=10))
+
+    ax.text(-0.15, (y_pl + y_obs) / 2,
+            r"$\Lambda$CDM" + "\n" + r"$10^{120}$",
+            ha="center", va="center", fontsize=7.5,
+            color=GRAY_M, rotation=90)
+
+    # ---- "This work" brace (only 10^5) ----
+    y_par = log_to_y(70)
+    ax.annotate("",
+                xy=(0.75, y_obs), xytext=(0.75, y_par),
+                arrowprops=dict(arrowstyle="<->", color=BK,
+                                lw=0.8, mutation_scale=10))
+
+    ax.text(0.55, (y_par + y_obs) / 2,
+            "This\nwork\n" + r"$10^{5}$",
+            ha="center", va="center", fontsize=7.5,
+            color=BK, rotation=90)
+
+    # ---- Title ----
+    ax.text(5.0, 5.65,
+            "Energy density hierarchy: Planck scale "
+            r"$\rightarrow$ observed $\Lambda_{\rm obs}$",
+            ha="center", va="center", fontsize=10.5,
+            fontweight="bold", color=BK)
 
     return savefig(fig, "figure1_lqg_holst_derivation_enhanced")
 
