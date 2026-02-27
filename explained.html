@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Simple Explainer — Geometric Dark Energy from Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<style>
+  .explainer-content {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .explainer-content h2 {
+    font-size: 1.6rem;
+    margin: 56px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+  }
+  .explainer-content h3 {
+    font-size: 1.15rem;
+    margin: 32px 0 8px;
+    color: var(--accent);
+  }
+  .explainer-content p {
+    color: var(--text-secondary);
+    margin: 12px 0;
+  }
+  .explainer-content strong {
+    color: var(--text);
+  }
+  .pronounce {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--accent);
+    margin-left: 4px;
+    letter-spacing: 0.02em;
+  }
+  .callout {
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+  }
+  .callout p { margin: 4px 0; }
+  .callout-title {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .analogy {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .analogy-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+  .scorecard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .scorecard-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .scorecard-item .label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .scorecard-item .before {
+    font-size: 14px;
+    color: var(--error);
+    text-decoration: line-through;
+    margin: 4px 0;
+  }
+  .scorecard-item .after {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success);
+  }
+  .timeline-simple {
+    position: relative;
+    padding-left: 24px;
+    margin: 20px 0;
+  }
+  .timeline-simple::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-simple .ts-item {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 8px;
+  }
+  .timeline-simple .ts-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .ts-year {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  @media (max-width: 768px) {
+    .scorecard { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner"><span class="brand">Geometric Dark Energy &mdash; Spin-Torsion</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="arxiv-preview.html" data-page="arxiv">arXiv</a><a href="explained.html" data-page="explained">Explained</a><a href="data-comparison.html" data-page="data">Data</a><a href="team.html" data-page="team">Team</a></div></nav>
+
+<main class="container">
+
+<div class="hero">
+  <h1>The Simple Explainer</h1>
+  <p class="subtitle">Everything in this paper, explained so anyone can understand it. No physics degree required.</p>
+  <div class="meta">
+    <span class="badge badge-accent">Plain Language</span>
+    <span class="badge badge-neutral">~15 min read</span>
+  </div>
+</div>
+
+<div class="explainer-content">
+
+<!-- ===== INTRO ===== -->
+<h2>What Is This Paper About?</h2>
+
+<p>This is a research paper that proposes an answer to one of the biggest questions in science: <strong>what is dark energy, and where does it come from?</strong></p>
+
+<p>Dark energy is the mysterious force that makes up about 68% of everything in the universe. It's what's pushing the universe to expand faster and faster. We know it's there because we can see its effects. But nobody knows what it actually <em>is</em>.</p>
+
+<p>This paper proposes that dark energy isn't some mysterious new substance. Instead, it's a <strong>geometric effect</strong> &mdash; a natural consequence of the way our universe was born from inside a rotating black hole, combined with quantum gravity corrections to the fabric of spacetime itself.</p>
+
+<div class="callout">
+  <div class="callout-title">The Backstory</div>
+  <p>Houston Golden spent years going deeper and deeper into Big Bounce cosmology &mdash; the idea that the Big Bang wasn't really the beginning, but a "bounce" from a previous state. What came before? Could our universe have been born inside a black hole? Modern discoveries about galaxy spin patterns and new tensions in our measurements of the universe kept pointing toward something beyond our current best theory. This paper is the result of that journey &mdash; a rigorous mathematical framework that connects these ideas and makes predictions we can actually test.</p>
+</div>
+
+<!-- ===== THE PROBLEMS ===== -->
+<h2>The Two Big Cosmic Puzzles</h2>
+
+<p>Right now, our best theory of the universe is called <strong>Lambda-CDM</strong> <span class="pronounce">LAM-duh see-dee-em</span>. It stands for "Lambda Cold Dark Matter" and it's been the gold standard for over 20 years. It explains the Big Bang, how galaxies form, dark matter, dark energy &mdash; basically everything we see.</p>
+
+<p>But there's a problem. Actually, two problems. And they're getting worse.</p>
+
+<h3>Puzzle #1: The Hubble Tension <span class="pronounce">H-naught TEN-shun</span></h3>
+
+<p><strong>H&#8320;</strong> <span class="pronounce">H-naught</span> is the Hubble constant. It's a single number that tells us <strong>how fast the universe is expanding right now</strong>.</p>
+
+<div class="analogy">
+  <div class="analogy-label">Analogy</div>
+  <p>Imagine drawing dots on a balloon, then inflating it. As the balloon gets bigger, all the dots drift apart from each other. H&#8320; measures how fast that balloon is growing.</p>
+</div>
+
+<p>The "tension" is that we get <strong>two different answers</strong> depending on how we measure it:</p>
+
+<p><strong>Method 1 &mdash; Looking at nearby galaxies:</strong> When astronomers measure the distances and speeds of galaxies near us (using supernovae as "standard candles"), they get <strong>73.0 km/s/Mpc</strong>.</p>
+
+<p><strong>Method 2 &mdash; Looking at the oldest light in the universe:</strong> When we analyze the Cosmic Microwave Background (the afterglow of the Big Bang), the math says it should be <strong>67.4 km/s/Mpc</strong>.</p>
+
+<p>Those two numbers disagree by <strong>4.4 sigma</strong> <span class="pronounce">SIG-muh</span> &mdash; that's a statistical way of saying there's roughly a 1-in-100,000 chance this is just a fluke. In physics, 5 sigma is the threshold for calling something a discovery. At 4.4, we're very close.</p>
+
+<p>It's like two thermometers giving different temperatures for the same room. Either one of them is broken, or something weird is going on with the room.</p>
+
+<h3>Puzzle #2: The Sigma-Eight Tension <span class="pronounce">SIG-muh eight TEN-shun</span></h3>
+
+<p><strong>&sigma;&#8328;</strong> <span class="pronounce">sigma-eight</span> measures <strong>how clumpy the universe is</strong> &mdash; specifically, how much matter clumps together on scales of about 26 million light-years.</p>
+
+<div class="analogy">
+  <div class="analogy-label">Analogy</div>
+  <p>Imagine spreading sand on a table. If gravity were stronger, you'd see more hills and valleys. If weaker, it'd be smoother. &sigma;&#8328; measures how "lumpy" the cosmic sand is.</p>
+</div>
+
+<p>Again, two methods give two different answers:</p>
+
+<p><strong>The early universe predicts:</strong> &sigma;&#8328; = 0.832 (more lumpy)</p>
+<p><strong>Modern galaxy surveys measure:</strong> &sigma;&#8328; &asymp; 0.77 (less lumpy)</p>
+
+<p>This disagreement sits at <strong>2.5 sigma</strong> &mdash; not as dramatic as the Hubble tension, but persistent across multiple independent experiments.</p>
+
+<h3>Why These Puzzles Matter</h3>
+
+<p>These aren't minor technical glitches. They may be cracks in the foundation of our understanding of the universe. In the history of physics, small mismatches like these have led to revolutions:</p>
+
+<ul style="color: var(--text-secondary); padding-left: 20px;">
+  <li>Mercury's orbit was slightly off from Newton's predictions &rarr; led to <strong>Einstein's general relativity</strong></li>
+  <li>Blackbody radiation didn't match classical predictions &rarr; led to <strong>quantum mechanics</strong></li>
+  <li>Neutrinos had a "solar neutrino problem" &rarr; led to the discovery that <strong>neutrinos have mass</strong></li>
+</ul>
+
+<p>The H&#8320; and &sigma;&#8328; tensions might be the next crack that opens the door to entirely new physics.</p>
+
+<!-- ===== THE BIG IDEA ===== -->
+<h2>The Big Idea: A Universe Born Inside a Black Hole</h2>
+
+<p>Here's the central proposal of this paper, in plain language:</p>
+
+<div class="callout">
+  <div class="callout-title">The Core Claim</div>
+  <p><strong>Our universe may have been born from inside a rotating black hole in a parent universe.</strong> The Big Bang wasn't a beginning from nothing &mdash; it was a "Big Bounce" where matter collapsed so densely that quantum gravity effects caused it to spring back outward, creating our expanding universe.</p>
+</div>
+
+<p>This isn't pure speculation. It's built on three well-established pillars of theoretical physics:</p>
+
+<h3>Pillar 1: Einstein-Cartan Theory <span class="pronounce">KAHR-tahn</span></h3>
+
+<p>In standard general relativity, spacetime can curve but it can't twist. <strong>Einstein-Cartan theory</strong> adds <strong>torsion</strong> <span class="pronounce">TOR-shun</span> &mdash; the idea that spacetime can also twist and warp in a spiraling way, especially when matter with intrinsic spin (like electrons) is packed extremely tightly.</p>
+
+<p>The key insight: at extreme densities (like inside a black hole), this torsion creates an enormous outward pressure that <strong>prevents a singularity from forming</strong>. Instead of crushing into an infinitely small point, the matter bounces back.</p>
+
+<h3>Pillar 2: Loop Quantum Gravity <span class="pronounce">LQG</span></h3>
+
+<p><strong>Loop Quantum Gravity</strong> is one of the leading approaches to unifying quantum mechanics with gravity. It says that space itself has a minimum size &mdash; you can't zoom in forever. At the tiniest scales (the <strong>Planck scale</strong> <span class="pronounce">PLAHNK</span>, about 10&#8315;&#179;&#8309; meters), space is made of discrete quantum "atoms."</p>
+
+<p>This quantum structure of space gives rise to a special parameter called the <strong>Barbero-Immirzi parameter</strong> <span class="pronounce">bar-BEAR-oh im-MEER-zee</span>, written as &gamma; <span class="pronounce">gamma</span>. This parameter connects to parity violation &mdash; the idea that certain processes treat left and right differently at the quantum level.</p>
+
+<h3>Pillar 3: The Holst Action <span class="pronounce">HOHLST</span></h3>
+
+<p>When you write down the mathematics of Loop Quantum Gravity with fermions (matter particles like electrons and quarks), a special term appears called the <strong>Holst term</strong>. In empty space, this term doesn't do anything observable. But when matter with spin is present, it <strong>activates</strong> and generates parity-violating effects &mdash; processes that distinguish between clockwise and counterclockwise.</p>
+
+<p>This is what connects quantum gravity to things we can actually observe in the sky.</p>
+
+<!-- ===== THE MECHANISM ===== -->
+<h2>How It Works: From Black Hole to Dark Energy</h2>
+
+<p>Here's the chain of logic, step by step:</p>
+
+<p><strong>Step 1:</strong> A massive star in a parent universe collapses into a rotating black hole.</p>
+
+<p><strong>Step 2:</strong> As matter falls inward and density approaches the Planck scale, torsion creates enormous outward pressure. Instead of forming a singularity, the interior <strong>bounces</strong> &mdash; a "Big Bounce" &mdash; at a critical density of about 0.41 times the Planck density (roughly 10&#8313;&#179; kg/m&#179;, incomprehensibly dense).</p>
+
+<p><strong>Step 3:</strong> This bounce creates a new expanding region &mdash; a baby universe. Because the parent black hole was rotating, the baby universe <strong>inherits angular momentum</strong>. It has a cosmic rotation axis.</p>
+
+<p><strong>Step 4:</strong> The quantum gravity effects from the Holst term generate a parity-violating correction to the cosmological constant. After being diluted by inflation (the rapid expansion in the first fraction of a second), this correction ends up at exactly the right scale to explain the observed dark energy.</p>
+
+<p>The effective cosmological constant &mdash; what we observe as dark energy &mdash; is:</p>
+
+<div class="callout" style="text-align: center; font-size: 18px;">
+  <strong>&Lambda;<sub>eff</sub> = 3&omega;&sup2; + (&alpha;/M) &times; D<sub>inf</sub></strong>
+  <p style="font-size: 14px; margin-top: 8px;">The dark energy we observe = rotation contribution (tiny) + quantum gravity correction (dominant)</p>
+</div>
+
+<p>The rotation contribution is negligibly small (CMB measurements constrain it to less than one part in 10 billion of the expansion rate). But rotation <em>does</em> leave observable fingerprints through parity-violating signatures.</p>
+
+<!-- ===== THE FINE-TUNING ===== -->
+<h2>The Cosmological Constant Problem (and Why This Helps)</h2>
+
+<p>The standard model has an embarrassing problem: when physicists calculate what dark energy "should" be based on quantum field theory, the answer is wrong by a factor of <strong>10<sup>120</sup></strong>. That's a 1 followed by 120 zeros. It's been called the worst prediction in the history of physics.</p>
+
+<p>The spin-torsion framework reduces this mismatch to <strong>10<sup>5</sup></strong> (100,000). That's still not perfect, but going from a 120-digit error to a 5-digit one is a dramatic improvement. The mechanism is called <strong>geometric dilution</strong> &mdash; inflationary expansion naturally suppresses the quantum gravity contribution to exactly the right order of magnitude.</p>
+
+<!-- ===== PREDICTIONS ===== -->
+<h2>What the Theory Predicts</h2>
+
+<p>A theory is only as good as its predictions. This framework makes three specific, testable predictions:</p>
+
+<h3>Prediction 1: Galaxy Spin Patterns</h3>
+
+<p>If our universe was born from a rotating black hole, galaxies should show a slight preference for spinning one way versus the other, aligned with the cosmic rotation axis. The predicted asymmetry is about <strong>0.3%</strong> &mdash; subtle, but detectable with large enough surveys.</p>
+
+<p>Remarkably, the James Webb Space Telescope (JWST) recently found that in a sample of 2,200 distant spiral galaxies, <strong>65% spin clockwise and 35% spin counterclockwise</strong>. This is exactly the kind of asymmetry the theory predicts, though the raw numbers are much larger than 0.3% (likely due to selection effects at high redshift that future analysis will clarify).</p>
+
+<p>This signal remains scientifically contested &mdash; some groups have reported null results. But our framework doesn't depend solely on galaxy spins for validation.</p>
+
+<h3>Prediction 2: CMB Polarization Twist</h3>
+
+<p>The <strong>Cosmic Microwave Background</strong> <span class="pronounce">CMB</span> is the oldest light in the universe, released about 380,000 years after the Big Bang. This light is slightly polarized (its electromagnetic waves oscillate in preferred directions).</p>
+
+<p>Our theory predicts a specific pattern called <strong>E-B cross-correlation</strong> <span class="pronounce">ee-bee</span> &mdash; a twist in the polarization that shouldn't be there in a perfectly symmetric universe. Specifically, it should peak at the very largest scales (multipoles <span class="pronounce">MUHL-tih-poles</span> &ell; = 2 to 4) with a characteristic exponential falloff.</p>
+
+<p>In 2020, Minami and Komatsu found a hint of exactly this kind of twist in Planck satellite data, at 2.4 sigma significance. Combined with ACT telescope data, the signal reaches about 7 sigma. The upcoming LiteBIRD satellite (launching ~2030) will test this definitively.</p>
+
+<h3>Prediction 3: Resolving the Tensions</h3>
+
+<p>The framework predicts specific values for the two troubled measurements:</p>
+
+<div class="scorecard">
+  <div class="scorecard-item">
+    <div class="label">Hubble Constant (H&#8320;)</div>
+    <div class="before">Tension: 4.4&sigma;</div>
+    <div class="after">&rarr; 1.4&sigma;</div>
+    <p class="text-sm text-muted">69.2 &plusmn; 0.8 km/s/Mpc</p>
+  </div>
+  <div class="scorecard-item">
+    <div class="label">Matter Clumping (&sigma;&#8328;)</div>
+    <div class="before">Tension: 2.5&sigma;</div>
+    <div class="after">&rarr; 0.8&sigma;</div>
+    <p class="text-sm text-muted">0.785 &plusmn; 0.016</p>
+  </div>
+</div>
+
+<p>These aren't arbitrary numbers plugged in to match the data. They follow naturally from the physics of the bounce &mdash; extra relativistic particles produced during the bounce shift the early expansion rate, and the quantum gravity corrections modify structure growth.</p>
+
+<!-- ===== HOW WE CAN TEST IT ===== -->
+<h2>When Will We Know If It's Right?</h2>
+
+<p>The paper lays out a clear timeline for testing these predictions with experiments that are already built or being built:</p>
+
+<div class="timeline-simple">
+  <div class="ts-item">
+    <div class="ts-year">2026</div>
+    <p><strong>Simons Observatory</strong> begins full operations &mdash; first serious test of CMB polarization prediction. Combined evidence: ~2.3 sigma.</p>
+  </div>
+  <div class="ts-item">
+    <div class="ts-year">2028</div>
+    <p><strong>CMB-S4</strong> starts taking data &mdash; the most powerful ground-based CMB experiment ever. LSST provides billions of galaxy shapes. Combined: ~3.7 sigma.</p>
+  </div>
+  <div class="ts-item">
+    <div class="ts-year">2030</div>
+    <p><strong>LiteBIRD satellite</strong> launches &mdash; designed specifically to detect ultra-low-multipole polarization patterns. LSST reaches 2 billion galaxies. Combined: ~4.5 sigma.</p>
+  </div>
+  <div class="ts-item">
+    <div class="ts-year">2034</div>
+    <p><strong>LSST Year 10</strong> &mdash; 4 billion galaxies mapped. Full combination of all experiments reaches <strong>5.9 sigma</strong>, crossing the discovery threshold.</p>
+  </div>
+</div>
+
+<p>In physics, <strong>5 sigma</strong> <span class="pronounce">five SIG-muh</span> is the gold standard for discovery &mdash; it means there's less than a 1-in-3.5-million chance the result is a statistical fluke. The forecast says we could reach that threshold by the early 2030s.</p>
+
+<!-- ===== WHAT MAKES THIS DIFFERENT ===== -->
+<h2>How This Compares to Other Theories</h2>
+
+<p>There are many proposals to explain dark energy. Here's how the spin-torsion framework stacks up:</p>
+
+<div class="card" style="overflow-x: auto;">
+<table style="min-width: 500px;">
+  <thead>
+    <tr><th></th><th>Standard Model (&Lambda;CDM)</th><th>This Paper (Spin-Torsion)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>What is dark energy?</strong></td><td>A constant. No explanation why.</td><td>Geometric effect from quantum gravity + rotation</td></tr>
+    <tr><td><strong>Fine-tuning problem</strong></td><td>10<sup>120</sup></td><td>10<sup>5</sup></td></tr>
+    <tr><td><strong>Hubble tension</strong></td><td>Unresolved (4.4&sigma;)</td><td>Reduced to 1.4&sigma;</td></tr>
+    <tr><td><strong>Testable predictions</strong></td><td>None unique</td><td>3 specific, falsifiable predictions</td></tr>
+    <tr><td><strong>What came before the Big Bang?</strong></td><td>Can't say</td><td>A parent universe &mdash; no singularity</td></tr>
+    <tr><td><strong>When will we know?</strong></td><td>N/A</td><td>5.9&sigma; by 2034</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The unique feature of this framework is that it makes <strong>three correlated predictions</strong> (galaxy spin patterns, CMB polarization twist, and tension resolution) that no other model produces together. If all three show up, it's a smoking gun.</p>
+
+<!-- ===== THE EQUATIONS ===== -->
+<h2>The Key Equations, Explained Simply</h2>
+
+<h3>The Modified Friedmann Equation</h3>
+
+<p>The Friedmann equation is the master equation of cosmology &mdash; it describes how the universe expands. In our framework, it gets modified near the bounce:</p>
+
+<div class="callout" style="text-align: center;">
+  <p style="font-size: 18px;"><strong>H&sup2; = (8&pi;G/3) &times; &rho; &times; [1 &minus; &rho;/&rho;<sub>crit</sub>]</strong></p>
+  <p style="font-size: 14px;">Expansion rate = gravity pulling in &times; [1 &minus; density/critical density]</p>
+</div>
+
+<p>When density approaches the critical value (&rho;<sub>crit</sub> &asymp; 0.41 times the Planck density), the term in brackets goes to zero. The expansion rate hits zero &mdash; that's the bounce. Then it flips sign and expansion begins. No singularity ever forms.</p>
+
+<h3>The Galaxy Spin Asymmetry Formula</h3>
+
+<div class="callout" style="text-align: center;">
+  <p style="font-size: 18px;"><strong>A(z) = A&#8320; &times; (1+z)<sup>&minus;p</sup> &times; e<sup>&minus;qz</sup></strong></p>
+  <p style="font-size: 14px;">Spin asymmetry = base amplitude &times; fading with distance &times; exponential decay</p>
+</div>
+
+<p>This describes how the galaxy spin signal changes with redshift <span class="pronounce">RED-shift</span> (a measure of distance &mdash; higher redshift means further away and further back in time). The signal starts at about 0.3% nearby and fades with distance.</p>
+
+<!-- ===== FALSIFICATION ===== -->
+<h2>How Could This Be Proven Wrong?</h2>
+
+<p>Good science defines how it could be falsified. Here's what would rule this theory out:</p>
+
+<ul style="color: var(--text-secondary); padding-left: 20px; line-height: 2;">
+  <li>If CMB-S4 + LiteBIRD find <strong>no E-B signal</strong> at all</li>
+  <li>If LSST finds <strong>no galaxy spin dipole</strong> with 4 billion galaxies</li>
+  <li>If the galaxy spin axis points in a <strong>different direction</strong> than the CMB anomalies</li>
+  <li>If the E-B signal peaks at <strong>high multipoles</strong> instead of low ones</li>
+</ul>
+
+<p>The framework is designed to be testable, not unfalsifiable. We'll know within the next decade whether it's right.</p>
+
+<!-- ===== GLOSSARY ===== -->
+<h2>Quick Pronunciation Guide</h2>
+
+<div class="card" style="overflow-x: auto;">
+<table style="min-width: 400px;">
+  <thead>
+    <tr><th>Term</th><th>How to Say It</th><th>What It Means</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>H&#8320;</strong></td><td>H-naught</td><td>How fast the universe expands</td></tr>
+    <tr><td><strong>&sigma;&#8328;</strong></td><td>sigma-eight</td><td>How clumpy the universe is</td></tr>
+    <tr><td><strong>&Lambda;CDM</strong></td><td>Lambda see-dee-em</td><td>Current best model of the universe</td></tr>
+    <tr><td><strong>Torsion</strong></td><td>TOR-shun</td><td>Spacetime twisting (beyond just curving)</td></tr>
+    <tr><td><strong>Einstein-Cartan</strong></td><td>KAHR-tahn</td><td>Gravity theory that includes torsion</td></tr>
+    <tr><td><strong>Barbero-Immirzi</strong></td><td>bar-BEAR-oh im-MEER-zee</td><td>Key parameter in quantum gravity</td></tr>
+    <tr><td><strong>Holst term</strong></td><td>HOHLST</td><td>The parity-violating piece of quantum gravity</td></tr>
+    <tr><td><strong>LQG</strong></td><td>ell-cue-gee</td><td>Loop Quantum Gravity</td></tr>
+    <tr><td><strong>CMB</strong></td><td>see-em-bee</td><td>Cosmic Microwave Background (oldest light)</td></tr>
+    <tr><td><strong>Planck scale</strong></td><td>PLAHNK</td><td>Smallest possible scale in physics</td></tr>
+    <tr><td><strong>Multipole</strong></td><td>MUHL-tih-pole</td><td>Scale of a pattern on the sky</td></tr>
+    <tr><td><strong>Redshift</strong></td><td>RED-shift</td><td>How far away something is (higher = farther)</td></tr>
+    <tr><td><strong>E-B correlation</strong></td><td>ee-bee</td><td>A twist pattern in CMB polarization</td></tr>
+    <tr><td><strong>Birefringence</strong></td><td>by-ree-FRIN-junce</td><td>Light rotating as it travels through space</td></tr>
+    <tr><td><strong>LSST</strong></td><td>ell-ess-ess-tee</td><td>Largest upcoming sky survey telescope</td></tr>
+    <tr><td><strong>LiteBIRD</strong></td><td>lite-BIRD</td><td>Japanese CMB satellite (launches ~2030)</td></tr>
+    <tr><td><strong>arXiv</strong></td><td>ar-KIVE (like "archive")</td><td>Where physicists publish papers</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== CLOSING ===== -->
+<h2>The Bottom Line</h2>
+
+<p>Our current best theory of the universe works really well, but it has cracks: two measurements that stubbornly refuse to agree, and a dark energy "explanation" that amounts to shrugging and writing down a number that's off by 10<sup>120</sup>.</p>
+
+<p>This paper proposes that dark energy has a <strong>physical origin</strong> &mdash; it comes from the quantum gravitational birth of our universe inside a rotating black hole. The math works out, the numbers match observations, and the predictions can be tested with telescopes that already exist or are being built right now.</p>
+
+<p>If the predictions hold up, it would be one of the most significant advances in fundamental physics in a century &mdash; the first observational connection between black holes, quantum gravity, and the accelerating expansion of the cosmos.</p>
+
+<p>We'll know within the next decade.</p>
+
+<div style="margin: 48px 0; text-align: center;">
+  <a href="arxiv-preview.html" style="display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--accent); color:#09090b; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none;">Read the Full Paper &rarr;</a>
+</div>
+
+</div><!-- end .explainer-content -->
+
+</main>
+
+<footer><div class="container"><p>Powered by <a href="https://hubify.com">Hubify</a></p><p>Last updated February 2026 &middot; Research by Houston Golden &middot; <a href="https://github.com/Hubify-Projects/bigbounce">GitHub</a></p></div></footer>
+<script>document.querySelectorAll('nav a[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='explained')a.classList.add('active')});</script>
+</body>
+</html>
