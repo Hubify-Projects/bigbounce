@@ -146,7 +146,7 @@ def figure_1():
         else:
             return 2.2 + (log_val - 10) / (68 - 10) * 1.0
 
-    ax.set_xlim(-0.5, 10)
+    ax.set_xlim(-1.8, 10)
     ax.set_ylim(-0.1, 5.8)
     ax.axis("off")
 
@@ -236,11 +236,11 @@ def figure_1():
 
     # Dashed line on far left for LCDM comparison
     ax.annotate("",
-                xy=(0.15, y_obs), xytext=(0.15, y_pl),
+                xy=(-0.9, y_obs), xytext=(-0.9, y_pl),
                 arrowprops=dict(arrowstyle="<->", color=GRAY_M,
                                 lw=0.8, ls="--", mutation_scale=10))
 
-    ax.text(-0.15, (y_pl + y_obs) / 2,
+    ax.text(-1.2, (y_pl + y_obs) / 2,
             r"$\Lambda$CDM" + "\n" + r"$10^{120}$",
             ha="center", va="center", fontsize=7.5,
             color=GRAY_M, rotation=90)
@@ -248,11 +248,11 @@ def figure_1():
     # ---- "This work" brace (only 10^5) ----
     y_par = log_to_y(70)
     ax.annotate("",
-                xy=(0.75, y_obs), xytext=(0.75, y_par),
+                xy=(-0.2, y_obs), xytext=(-0.2, y_par),
                 arrowprops=dict(arrowstyle="<->", color=BK,
                                 lw=0.8, mutation_scale=10))
 
-    ax.text(0.55, (y_par + y_obs) / 2,
+    ax.text(-0.5, (y_par + y_obs) / 2,
             "This\nwork\n" + r"$10^{5}$",
             ha="center", va="center", fontsize=7.5,
             color=BK, rotation=90)
