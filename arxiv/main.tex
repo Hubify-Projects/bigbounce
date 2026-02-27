@@ -118,18 +118,18 @@ Our framework synthesizes well-established theoretical components into a unified
 
 \subsection{Original Contributions}\label{sec:contributions}
 
-While building on these established foundations, our work makes several original contributions that advance the field:
+Each theoretical ingredient above has been studied independently. Our contribution is to assemble them into a single quantitative framework that produces specific, falsifiable predictions---a synthesis that has not previously been attempted. Concretely, the original contributions are:
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{Quantitative dark energy model}: Rigorous derivation of $\Leff = \Lconst + c_\omega\omega^2$ where $\Lconst = (\alpha/M)\Dinf$, with specific numerical predictions $H_0 = 69.2 \pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$ and $\sigma_8 = 0.785 \pm 0.016$ from a single microphysical origin.
+\item \textit{End-to-end derivation of the dark energy scale}: Starting from the ECH action with LQG-fixed parameters, we derive $\Leff = \Lconst + c_\omega\omega^2$ where $\Lconst = (\alpha/M)\Dinf$, tracing a continuous chain from the Planck-scale parity-odd coefficient through inflationary dilution to the observed $(2.3\;\text{meV})^4$. Prior work derived individual steps; this paper connects them with specific numerical outputs: $H_0 = 69.2 \pm 0.8\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$ and $\sigma_8 = 0.785 \pm 0.016$.
 
-\item \textit{Unified tension resolution}: A comprehensive model using torsion-induced early dark energy to address both $H_0$ and $\sigma_8$ tensions within a single framework, extending partial results by Izaurieta \etal~\cite{Izaurieta2020} and Akhshabi \& Zamani~\cite{Akhshabi2023}.
+\item \textit{Simultaneous tension resolution}: Both the $H_0$ and $\sigma_8$ tensions are addressed within a single framework through physically motivated parameters ($\Delta\Neff$, $\Omega_k$) whose values follow from bounce physics, extending partial results by Izaurieta \etal~\cite{Izaurieta2020} and Akhshabi \& Zamani~\cite{Akhshabi2023} to a complete cosmological fit.
 
-\item \textit{LQG--Einstein-Cartan integration}: Detailed synthesis combining LQG formalism (Barbero-Immirzi parameter, Holst action, area spectrum) with Einstein-Cartan cosmology, including a regulator-transparent one-loop calculation of the parity-odd coefficient.
+\item \textit{One-loop parity-odd coefficient}: A regulator-transparent calculation (Sec.~\ref{sec:oneloopfull}) of the coefficient $\alpha/M$ in a torsionful background, extending Mercuri's framework~\cite{Mercuri2009} with explicit dimensional regularization and Nieh-Yan counterterm structure. We discuss the scope and limitations of this perturbative result in Sec.~\ref{sec:oneloopfull}.
 
-\item \textit{Comprehensive observational framework}: Complete multi-probe validation program with hierarchical Bayesian analysis, systematic error budgets, detection timelines, and explicit falsification criteria accessible to current and near-future experiments.
+\item \textit{Multi-probe falsification program}: A complete observational framework with hierarchical Bayesian analysis, systematic error budgets, five independent null tests per probe, detection timelines through 2034, and explicit conditions for falsification---designed so that the model can be decisively confirmed or excluded within the next decade.
 
-\item \textit{Geometric dilution mechanism}: Novel derivation of how inflationary expansion naturally dilutes the primordial parity-odd coefficient to produce the observed dark energy scale, reducing fine-tuning by 115 orders of magnitude.
+\item \textit{Geometric dilution mechanism}: Derivation of how inflationary expansion naturally suppresses the primordial parity-odd coefficient by $\sim e^{-3N}$, converting a Planck-scale effect into the observed dark energy scale and reducing fine-tuning by 115 orders of magnitude relative to $\Lambda$CDM.
 
 \item \textit{Geometric dilution parameter}: Introduction of $\Xi\equiv(\alpha/M)\times\Dinf$ as the fundamental quantity setting the dark energy scale, with its value entirely determined by early-universe physics.
 \end{enumerate}
@@ -160,7 +160,7 @@ The Barbero-Immirzi parameter is fixed by the LQG black hole entropy calculation
 \begin{equation}\label{eq:gamma}
 \gamma = \frac{\ln 2}{\pi\sqrt{3}} = 0.2375\ldots \approx 0.274 \pm 0.020,
 \end{equation}
-where the range accounts for different counting schemes in the area spectrum.
+where the range accounts for different counting schemes in the area spectrum. Whether $\gamma$ constitutes a genuine physical observable or a quantization artifact absorbable by canonical transformations remains debated~\cite{Freidel2005,Mercuri2006}. This distinction does not affect our results at leading order: if $\gamma$ is non-physical, the torsion-fermion coupling factor $\gamma^2/(\gamma^2+1)$ in Eq.~\eqref{eq:4fermi} reverts to unity (the standard ECSK value), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ without eliminating parity violation, which originates from the Holst term's coupling to fermions independently of the Barbero-Immirzi interpretation.
 
 \begin{figure*}[t]
 \centering
@@ -189,7 +189,7 @@ where $J^{\mu}_{(A)}=\bar{\psi}\gamma^{\mu}\gamma^5\psi$ is the axial current. T
 \begin{equation}\label{eq:Seff}
 S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{abcd}\,K_{ab}\,R_{cd},\quad [\alpha]=M^0.
 \end{equation}
-This operator is fully covariant (transforms as a scalar density) but parity-odd (changes sign under spatial reflection). It is analogous to the Chern-Simons term in gauge theory. The coefficient $\alpha/M$ must be generated quantum mechanically since classical gravity preserves parity.
+This operator is fully covariant---it transforms as a scalar density under diffeomorphisms---but parity-odd, changing sign under spatial reflection. Its structure is analogous to the Chern-Simons term $\varepsilon^{\mu\nu\rho\sigma}A_\mu F_{\nu\rho}A_\sigma$ in gauge theory, which is likewise covariant yet parity-violating. General covariance does not forbid parity-odd terms; it constrains only the tensor structure. Since classical gravity preserves parity, the coefficient $\alpha/M$ must be generated through quantum corrections.
 
 \textit{Step~4: One-Loop Coefficient.}---A regulator-transparent one-loop estimate in a torsionful background (with Nieh--Yan/Holst mixing~\cite{NiehYan1982}) yields
 \begin{equation}\label{eq:oneloop}
@@ -327,6 +327,8 @@ The Gaussian profile peaked at $\ell = 3$ arises from the dipolar nature of the 
 
 Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found cosmic birefringence in Planck data at $\beta\approx 0.35^\circ\pm 0.14^\circ$, inconsistent with $\beta=0$ at $2.4\sigma$. Subsequent analysis by Eskilt~\cite{Eskilt2022} found $\beta = 0.30^\circ \pm 0.11^\circ$ ($2.7\sigma$), and combined Planck+ACT data reach $\sim 7\sigma$ combined significance~\cite{ACT2024}.
 
+The predicted $E$-$B$ signal has not yet been detected directly for three reasons: (i)~most CMB polarization analyses target $\ell > 10$, where $E$-mode and lensing $B$-mode science concentrate; (ii)~current instrument noise at ultra-low $\ell$ ($\ell = 2$--$4$) exceeds the predicted amplitude by a factor $\sim 2$; (iii)~Galactic foreground contamination (synchrotron and thermal dust) dominates the measured signal at $\ell < 5$, requiring multi-frequency separation with uncertainties comparable to the predicted signal. LiteBIRD (cosmic-variance limited below $\ell = 10$) and CMB-S4 (deep ground-based complement) are specifically designed to overcome these limitations.
+
 
 \subsection{Galaxy Spin Asymmetry}\label{sec:spinobs}
 
@@ -455,6 +457,8 @@ which isolates the parity-odd structure. The momentum integral evaluates to:
 The pole term is absorbed by the Nieh-Yan counterterm, leaving the finite part as the physical contribution in Eq.~\eqref{eq:oneloop}.
 
 The running is governed by the RG equation~\eqref{eq:RGflow}. For the Standard Model gauge group $SU(3)\times SU(2)\times U(1)$: $C_2(G) = 0$ (Abelian component), and $T(R)\,N_f = 6\times\frac{1}{2} = 3$ for six quark flavors. The coefficient decreases logarithmically from UV to IR.
+
+\textit{Scope and validity.}---This one-loop calculation operates near the boundary of perturbative control: the coupling $g^2/(16\pi^2)\sim\mathcal{O}(10^{-2})$ ensures loop suppression, but full quantum gravity corrections (spin-foam amplitudes, lattice LQG) could modify the finite part at $\mathcal{O}(1)$. The Nieh-Yan non-renormalization theorem~\cite{NiehYan1982} suppresses higher-loop topological contributions, providing partial UV protection. A complete two-loop calculation---requiring spin-foam vertex amplitudes in a torsionful background---remains an open technical challenge and would constitute an independent verification of the coefficient. However, the cosmological predictions of this framework separate into two classes with different sensitivities to $\alpha/M$: (i)~the $H_0$ and $\sigma_8$ predictions depend primarily on $\Delta\Neff$ and $\Omega_k$, which arise from bounce physics and are insensitive to the parity-odd coefficient; (ii)~the $C_\ell^{EB}$ amplitude scales linearly with $\alpha/M$ and would shift under non-perturbative corrections, though its spectral shape (peaked at $\ell=2$--$4$, set by the dipolar geometry of cosmic rotation) is robust. This separation ensures that the tension resolution and the spectral signature survive even if the coefficient receives $\mathcal{O}(1)$ corrections.
 
 
 \subsection{Vacuum Energy from Fermion Condensates}\label{sec:condensate}
@@ -635,6 +639,8 @@ Spin-Torsion & +SH0ES & 2771.8 & $-9.3$ & $+5.2$ \\
 
 AIC consistently favors our model when tension data are included. The BIC penalty for additional parameters means decisive evidence requires detection of the EB/spin signatures.
 
+The three additional parameters ($\Delta\Neff$, $\Omega_k$, $(\omega/H)_0$) are not phenomenological degrees of freedom introduced to absorb the tensions---each traces to a specific microphysical mechanism: particle production at the quantum bounce ($\Delta\Neff$), closed geometry inherited from the parent black hole ($\Omega_k$), and angular momentum transfer through the bounce ($(\omega/H)_0$). This physical motivation constrains them to correlated ranges that phenomenological extensions cannot reproduce. The decisive test is not tension resolution per se (which other extensions can achieve with comparable parameter counts) but the correlated parity-odd signatures---CMB $E$-$B$ spectral shape, galaxy spin dipole axis, and anomaly axis alignment---that are unique predictions of this framework and cannot be mimicked by parameter tuning.
+
 
 \subsection{Comprehensive Model Comparison}\label{sec:fullcomp}
 
@@ -685,7 +691,7 @@ $f(R)$ Gravity & $H_0^4$ & $\sim 10^{40}$ \\
 \end{ruledtabular}
 \end{table}
 
-The residual $10^5$ tuning arises from the inflationary $e$-folding number $N\sim 55$ and parent black hole initial conditions---both of which have potential dynamical or anthropic explanations. This is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning.
+The residual $10^5$ tuning arises from the inflationary $e$-folding number $N\sim 55$ and parent black hole initial conditions. This residual asks: ``why did inflation last $\sim$55 $e$-folds?''---a question with potential dynamical answers (e.g., slow-roll potential shape) or anthropic constraints (structure formation requires $N\gtrsim 50$). This is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, which asks ``why is the bare cosmological constant tuned to 120 decimal places?''---a question for which no known mechanism provides even a partial answer.
 
 
 %% ============================================================
@@ -847,11 +853,13 @@ Rotating cosmological models date to G\"odel~\cite{Godel1949}, who showed that g
 
 \subsection{Torsion Cosmology}
 
-Einstein-Cartan cosmology has been studied extensively~\cite{Hehl1976}. Pop\l{}awski~\cite{Poplawski2012,Poplawski2016,Poplawski2019} pioneered the application to bouncing cosmologies and the universe-in-a-black-hole scenario. Izaurieta \etal~\cite{Izaurieta2020} explored spinning dark matter effects on the Hubble tension; Akhshabi \& Zamani~\cite{Akhshabi2023} studied torsion effects on cosmic distance measures. Liu \etal~\cite{Liu2025} demonstrated Einstein-Cartan torsion is statistically preferred over $\Lambda$CDM. Our work synthesizes these into a unified framework with quantitative predictions.
+Einstein-Cartan cosmology has been studied extensively~\cite{Hehl1976}. Pop\l{}awski~\cite{Poplawski2012,Poplawski2016,Poplawski2019} pioneered the application to bouncing cosmologies and the universe-in-a-black-hole scenario, establishing that torsion-induced four-fermion interactions generate a positive cosmological constant through condensate formation, and that rotating black holes spawn baby universes inheriting angular momentum. Izaurieta \etal~\cite{Izaurieta2020} explored spinning dark matter effects on the Hubble tension within an EC framework but did not connect to LQG or derive specific $H_0$ values. Akhshabi \& Zamani~\cite{Akhshabi2023} studied torsion effects on cosmic distance measures without quantifying tension resolution or parity-odd observables. Liu \etal~\cite{Liu2025} demonstrated Einstein-Cartan torsion is statistically preferred over $\Lambda$CDM by AIC, providing independent model-comparison support but without a microscopic derivation of the dark energy scale.
+
+Our contribution is the quantitative end-to-end synthesis: starting from the ECH action with LQG-fixed parameters, deriving the parity-odd coefficient through a one-loop calculation, computing its inflationary dilution to the observed $\Lambda$ scale, and producing specific falsifiable predictions ($H_0$, $\sigma_8$, $C_\ell^{EB}$, $A(z)$) with systematic error budgets and detection timelines. No prior work produced this complete chain from microphysics to observational program.
 
 \subsection{Parity Violation in Gravity}
 
-The Holst term and its parity-violating consequences were established by Freidel \etal~\cite{Freidel2005} and Mercuri~\cite{Mercuri2006,Mercuri2009}. The Nieh-Yan invariant~\cite{NiehYan1982} provides the topological framework. Our one-loop calculation extends their work to derive the coefficient in a regulator-transparent scheme.
+The Holst term and its parity-violating consequences were established by Freidel \etal~\cite{Freidel2005} and Mercuri~\cite{Mercuri2006,Mercuri2009}. The Nieh-Yan invariant~\cite{NiehYan1982} provides the topological framework. Mercuri derived the general structure of the parity-odd effective action but did not compute the finite coefficient in dimensional regularization or connect it to cosmological observables. Our one-loop calculation (Sec.~\ref{sec:oneloopfull}) makes this connection explicit, including the RG running from UV to IR scales and the role of the Nieh-Yan counterterm in absorbing divergences. We emphasize that the coefficient's exact value awaits non-perturbative confirmation (see Sec.~\ref{sec:oneloopfull}), but the qualitative structure---a parity-odd operator with inflationary dilution producing a cosmological-constant-scale residual---is robust.
 
 \subsection{Galaxy Spin Studies}
 
@@ -892,24 +900,6 @@ Detection of our predicted signatures would have significant implications:
 
 \item \textit{Origin of dark energy}: Dark energy as a geometric consequence of the universe's quantum gravitational birth, rather than an unexplained constant or ad-hoc scalar field.
 \end{enumerate}
-
-\subsection{Addressing Common Concerns}\label{sec:concerns}
-
-\textit{How can cosmic rotation persist without violating isotropy?}---The rotation is $\sim 10^{15}$ times smaller than $H_0$, making anisotropies negligible for all distance-based probes. Only parity-odd correlations (which probe the \textit{direction} of $\omega^a$, not its magnitude squared) reveal the effect.
-
-\textit{Why hasn't CMB analysis detected the predicted $E$-$B$ correlation?}---Three reasons: (1)~most analyses focus on $\ell > 10$; (2)~insufficient sensitivity at ultra-low $\ell$; (3)~foreground contamination dominates at $\ell < 5$. LiteBIRD and CMB-S4 are designed to overcome these limitations.
-
-\textit{Is the parity-odd term forbidden by general covariance?}---No. The operator $\varepsilon^{abcd}K_{ab}R_{cd}$ is fully covariant but parity-odd, analogous to the Chern-Simons term in gauge theory.
-
-\textit{Why $10^5$ instead of $10^0$?}---The residual fine-tuning asks ``why did inflation last $\sim 55$ $e$-folds?'' rather than ``why is $\Lambda$ exactly $10^{-120}\MPl^4$?'' The former has potential anthropic or dynamical answers; the latter is a fundamental mystery.
-
-\textit{Is this simply ``adding parameters'' to fit the tensions?}---Our three additional parameters ($\Delta\Neff$, $\Omega_k$, $(\omega/H)_0$) are not free---they are physically motivated by specific mechanisms: particle production at the bounce, closed bounce geometry, and inherited angular momentum. Unlike phenomenological extensions that add parameters \textit{ad hoc}, each traces to a microphysical origin. Moreover, the key test is not tension resolution alone (which other models can also achieve with additional parameters) but the \textit{correlated parity-odd signatures} unique to this framework.
-
-\textit{Can the one-loop estimate be trusted for quantum gravity?}---We acknowledge that perturbative calculations operate near the edge of their validity. The one-loop coefficient (Eq.~\ref{eq:oneloop}) is protected by the Nieh-Yan non-renormalization theorem, which suppresses higher-loop corrections from topological contributions. However, non-perturbative effects (lattice LQG, spin-foam amplitudes) could modify the coefficient at the $\mathcal{O}(1)$ level. Crucially, our predictions for $H_0$ and $\sigma_8$ depend primarily on $\Delta\Neff$ and $\Omega_k$---not on the exact value of $\alpha/M$---making them robust to such corrections. The parity-odd signal amplitude would shift proportionally, but its spectral shape (peaked at $\ell = 2$--$4$) is a robust geometric prediction.
-
-\textit{Is the Barbero-Immirzi parameter truly physical?}---There is ongoing debate whether $\gamma$ is a genuine physical parameter or a quantization artifact absorbable by canonical transformations~\cite{Freidel2005,Mercuri2006}. If $\gamma$ is non-physical, the torsion-fermion coupling in Eq.~\eqref{eq:4fermi} reverts to the standard ECSK form ($\gamma^2/(\gamma^2+1) \to 1$), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ but not eliminating it. The physical origin of parity violation---the Holst term's coupling to fermions---exists independently of the Barbero-Immirzi interpretation.
-
-\textit{How does this differ from existing torsion cosmology work?}---Prior work by Pop\l{}awski~\cite{Poplawski2012,Poplawski2016}, Izaurieta \etal~\cite{Izaurieta2020}, and Akhshabi \& Zamani~\cite{Akhshabi2023} addressed individual aspects (bounce, spin-torsion coupling, distance measures). Our contribution is the quantitative synthesis: deriving a specific dark energy scale from first principles, providing concrete numerical predictions ($H_0$, $\sigma_8$, $C_\ell^{EB}$, $A(z)$), and constructing a falsifiable multi-probe test program. The framework stands or falls on its predictions, not on theoretical novelty alone.
 
 \subsection{Distance Measures and Rotation}
 
