@@ -52,9 +52,9 @@ canvas{display:block;margin:0 auto;border-radius:var(--radius)}
 <!-- ========== VISUALIZATION 1: Quantum Bounce ========== -->
 <div class="viz-container">
 <div class="viz-title">1. The Quantum Bounce</div>
-<div class="viz-subtitle">Torsion from fermionic spin prevents the singularity &mdash; density reaches &rho;<sub>crit</sub> &asymp; 0.41 &rho;<sub>Pl</sub> and bounces</div>
+<div class="viz-subtitle">Torsion from fermionic spin prevents the singularity &mdash; density reaches &rho;<sub>crit</sub> &asymp; 0.27 &rho;<sub>Pl</sub> and bounces</div>
 <canvas id="bounceCanvas" width="880" height="360"></canvas>
-<div class="viz-equation">$$H^2 = \frac{8\pi G}{3}\rho\left[1 - \frac{\rho}{\rho_{\text{crit}}}\right], \qquad \rho_{\text{crit}} = \frac{\sqrt{3}}{32\pi^2\gamma^3 G} \approx 0.41\,\rho_{\text{Pl}}$$</div>
+<div class="viz-equation">$$H^2 = \frac{8\pi G}{3}\rho\left[1 - \frac{\rho}{\rho_{\text{crit}}}\right], \qquad \rho_{\text{crit}} = \frac{\sqrt{3}}{32\pi^2\gamma^3 G} \approx 0.27\,\rho_{\text{Pl}}$$</div>
 <div class="viz-controls">
 <button class="viz-btn active" onclick="setBounceSpeed(1)">1x Speed</button>
 <button class="viz-btn" onclick="setBounceSpeed(2)">2x Speed</button>
@@ -155,7 +155,7 @@ function draw(){
     phaseText.textContent='Expanding — torsion repulsion dominates';
     phaseDot.style.background='#22c55e';
   } else if(rhoNorm>0.8){
-    phaseText.textContent='BOUNCE! ρ → ρ_crit ≈ 0.41 ρ_Pl';
+    phaseText.textContent='BOUNCE! ρ → ρ_crit ≈ 0.27 ρ_Pl';
     phaseDot.style.background='#ef4444';
   } else {
     phaseText.textContent='Collapsing — gravity dominates';
@@ -239,7 +239,7 @@ function draw(){
   ctx.fillStyle='#ef4444';
   ctx.textAlign='left';
   ctx.font='10px JetBrains Mono, monospace';
-  ctx.fillText('ρ_crit ≈ 0.41 ρ_Pl',plotX+plotW+5,plotY+plotH*0.1+4);
+  ctx.fillText('ρ_crit ≈ 0.27 ρ_Pl',plotX+plotW+5,plotY+plotH*0.1+4);
 
   // Draw density history
   ctx.strokeStyle=accent;
@@ -579,7 +579,7 @@ function draw(){
       ctx.textAlign='center';
       ctx.fillText('QUANTUM BOUNCE',(tunnelX1+tunnelX2)/2,cy-40);
       ctx.font='10px JetBrains Mono, monospace';
-      ctx.fillText('ρ → ρ_crit ≈ 0.41 ρ_Pl',(tunnelX1+tunnelX2)/2,cy-25);
+      ctx.fillText('ρ → ρ_crit ≈ 0.27 ρ_Pl',(tunnelX1+tunnelX2)/2,cy-25);
     }
   }
 
