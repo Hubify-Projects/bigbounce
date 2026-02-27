@@ -4,7 +4,7 @@
 %
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 
-\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography]{revtex4-2}
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
@@ -19,6 +19,7 @@
 \usepackage{bbold}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{slashed}
 
 \hypersetup{
   colorlinks=true,
@@ -1025,7 +1026,7 @@ Key symbols used throughout:
 \item $\sigma_{\mu\nu}$---kinematic shear tensor
 \item $\sigma^2 \equiv \frac{1}{2}\sigma_{\mu\nu}\sigma^{\mu\nu}$---shear magnitude squared
 \item $K_{ab}$---contorsion tensor
-\item $T^a_{\;\;bc}$---torsion tensor (related to contorsion by $K^a_{\;\;bc} = T^a_{\;\;bc} + T_{b}^{\;\;a}_{\;\;c} - T_{bc}^{\;\;\;\;a}$)
+\item $T^a_{\;\;bc}$---torsion tensor (related to contorsion by $K^{a}{}_{bc} = T^{a}{}_{bc} + T_{b}{}^{a}{}_{c} - T_{bc}{}^{a}$)
 \item $\alpha/M$---parity-odd coefficient (mass dimension $-1$)
 \item $\Dinf$---inflationary dilution factor ($\sim e^{-3N}$)
 \item $\mathcal{g}\equiv(\alpha/M)\Dinf$---Golden Parameter (mass dimension $+2$ in natural units)
