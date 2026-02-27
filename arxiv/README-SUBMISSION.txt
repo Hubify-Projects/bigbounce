@@ -43,7 +43,7 @@ Paper Statistics
 - 14 main sections + 7 appendices
 - 9 figures
 - 15 tables
-- 41 references
+- 46 references
 - ~1280 lines of LaTeX source
 - Estimated page count: 25-30 pages (two-column Physical Review D format)
 
