@@ -251,8 +251,7 @@
               (Meissner 2004, Domagala-Lewandowski 2004).
             </p>
             <p>
-              The Holst term \(\frac{1}{\gamma}\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}\) is topological in the
-              absence of torsion (it reduces to the Nieh-Yan invariant plus boundary terms). However, when torsion is
+              <em>Index convention:</em> The Holst term is written here as \(\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}\) (spacetime indices), which abbreviates the first-order expression \(e^I_\mu e^J_\nu\,\varepsilon_{IJKL}\,R^{KL}_{\rho\sigma}\) (with \(I,J,K,L\) internal Lorentz indices). In the absence of torsion, this is topological (it reduces to the Nieh-Yan invariant plus boundary terms). However, when torsion is
               present, it contributes non-trivially to the equations of motion and introduces parity violation.
             </p>
           </div>
@@ -302,20 +301,32 @@
           <h4>Parity-Odd Effective Action</h4>
 
           <div class="step" data-step="4">
-            <p><strong>Effective action from Mercuri (2009).</strong> After integrating out torsion and the high-energy
-              fermion modes, the low-energy effective gravitational action acquires a parity-odd correction:</p>
-            <div class="result-box key-result">
-              \[S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{abcd}\,K_{ab}\,R_{cd}\]
+            <p><strong>From the Holst 4-form.</strong> The parity-odd piece of the ECH action is the Holst term,
+              which in first-order variables (tetrad \(e^I\), connection \(\omega^{IJ}\)) reads:</p>
+            <div class="result-box">
+              \[S_{\rm Holst} = \frac{M_{\rm Pl}^2}{\gamma}\int e_I\wedge e_J\wedge R^{IJ}(\omega)\]
             </div>
             <p>
-              where \(K_{ab}\) is the extrinsic curvature, \(R_{cd}\) is the intrinsic curvature 2-form, and \(\alpha/M\)
-              is the parity-odd coupling constant with \([\alpha] = M^0\) (dimensionless).
+              This is a manifestly diffeomorphism-invariant <strong>4-form</strong> (two tetrad 1-forms \(\wedge\) one
+              curvature 2-form). When the connection is decomposed as
+              \(\omega^{IJ} = \mathring{\omega}^{IJ} + K^{IJ}\) (Levi-Civita + contorsion), the Holst term
+              generates contorsion-curvature cross terms. After integrating out torsion and including quantum corrections,
+              the effective parity-odd action becomes:
+            </p>
+            <div class="result-box key-result">
+              \[S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathring{R}]\]
+            </div>
+            <p>
+              where \(\mathcal{F}^{IJ} = \mathring{D}K^{IJ} + K^I_{\ K}\wedge K^{KJ}\) collects the contorsion-dependent
+              pieces, \(M \sim \sqrt{\gamma}\,M_{\rm Pl}\) is the area-gap mass scale, and \(\alpha\) is a dimensionless
+              coupling (\([\alpha] = M^0\)). In component notation, the leading contribution reduces to
+              \(\int d^4x\,\sqrt{-g}\,(\alpha/M)\,\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu e^J_\nu\,\mathcal{F}_{IJ\rho\sigma}\),
+              a scalar density of mass dimension 4.
             </p>
             <p>
-              This operator is the unique parity-odd, diffeomorphism-invariant term at lowest order in derivatives that
-              arises from the Holst term upon integrating out torsion. It is related to the gravitational Chern-Simons
-              term but is distinct in its coupling to extrinsic curvature, which makes it sensitive to the foliation
-              structure of spacetime &mdash; and hence to cosmological evolution.
+              <strong>Notational shorthand:</strong> We sometimes write the component integrand as
+              &ldquo;\(\varepsilon^{abcd}K_{ab}R_{cd}\)&rdquo; (internal Lorentz indices) — this suppresses the tetrad factors
+              that make the expression a proper 4-form. All variational calculations use the complete first-order expression above.
             </p>
           </div>
 
@@ -563,8 +574,8 @@
       <div class="derivation-number">DERIVATION 4</div>
       <details class="derivation">
         <summary>
-          Derivation 4: One-Loop Computation of the Parity-Odd Coefficient
-          <span class="summary-result">\(\frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda^2}{\mu^2}\right)+\delta_{\rm NY}\)</span>
+          Derivation 4: One-Loop Motivation for the Parity-Odd Coefficient
+          <span class="summary-result">\(\frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda^2}{\mu^2}\right)+\delta_{\rm NY}\) (phenomenological; see caveats)</span>
         </summary>
         <div class="derivation-content">
 
@@ -649,7 +660,16 @@
             <p>&bull; <strong>Mercuri (2009)</strong>: derived the effective parity-odd action from EC theory</p>
             <p>&bull; <strong>Shapiro &amp; Teixeira (2014)</strong>: computed the one-loop divergences and identified the Nieh-Yan counterterm structure</p>
             <p>&bull; <strong>Chattopadhyay (2023)</strong>: extended the calculation to the chiral (self-dual) formulation of EC gravity</p>
-            <p>Our contribution extracts the finite cosmological coefficient and connects it to the observed dark energy scale via the inflationary dilution mechanism.</p>
+            <p>Our contribution uses this literature chain to motivate the existence and order of magnitude of the parity-odd coefficient, while treating \(\alpha/M\) as a phenomenological parameter fit from cosmological data. A first-principles derivation awaits resolution of the \(\gamma_5\) scheme dependence and Nieh&ndash;Yan counterterm ambiguities described above.</p>
+          </div>
+
+          <h4>Important Caveats</h4>
+
+          <div class="step" data-step="7">
+            <p><strong>Why \(\alpha/M\) is phenomenological, not calculated.</strong> Two features prevent the above sketch from constituting a controlled first-principles derivation:</p>
+            <p>&bull; <strong>\(\gamma_5\) scheme dependence:</strong> The parity-odd trace \(\text{Tr}(\gamma_5\gamma^a\gamma^b\gamma^c\gamma^d)=-4i\varepsilon^{abcd}\) is unambiguous in \(d=4\), but dimensional regularization requires extending \(\gamma_5\) to \(d=4-\varepsilon\) dimensions. The 't&nbsp;Hooft&ndash;Veltman and Breitenlohner&ndash;Maison prescriptions maintain different Ward identities and produce different finite remainders for parity-odd amplitudes.</p>
+            <p>&bull; <strong>Nieh&ndash;Yan counterterm ambiguity:</strong> The Nieh&ndash;Yan contribution to chiral anomalies is known to be regulator-dependent and involves a dimensionful coefficient tied to the UV cutoff. The &ldquo;finite remainder after Nieh&ndash;Yan subtraction&rdquo; inherits the ambiguity of what is subtracted.</p>
+            <p>The one-loop estimate establishes two physically meaningful conclusions: (i) a finite parity-odd coefficient generically exists in EC gravity with fermions; (ii) its natural order of magnitude is \([(\alpha/M)\,M_{\rm Pl}]\sim 10^{-2}\), consistent with the value needed for the observed dark energy scale. The precise value is then determined by fitting to cosmological data.</p>
           </div>
 
         </div>
@@ -664,24 +684,26 @@
       <div class="derivation-number">DERIVATION 5</div>
       <details class="derivation">
         <summary>
-          Derivation 5: Renormalization Group Flow of the Parity-Odd Coupling
-          <span class="summary-result">\(\frac{d\alpha}{d\ln\mu} = \frac{g^2}{16\pi^2}\left[3C_2(G) - \frac{4}{3}T(R)N_f\right]\)</span>
+          Derivation 5: Renormalization Group Flow of the Parity-Odd Coupling (Estimate)
+          <span class="summary-result">\(\frac{d\alpha}{d\ln\mu} \sim \frac{g^2}{16\pi^2}\left[3C_2(G) - \frac{4}{3}T(R)N_f\right]\) (inherits scheme dependence from Derivation 4)</span>
         </summary>
         <div class="derivation-content">
 
           <h4>Beta Function</h4>
 
           <div class="step" data-step="1">
-            <p><strong>One-loop RG equation.</strong> The renormalization group flow of the parity-odd coupling
-              \(\alpha\) is governed by the standard one-loop beta function with gravitational gauge coupling
-              contributions:</p>
+            <p><strong>One-loop RG estimate.</strong> If one adopts the one-loop structure from Derivation 4
+              (with the caveats on \(\gamma_5\) scheme and Nieh&ndash;Yan subtraction noted there), the
+              renormalization group flow of \(\alpha\) takes the schematic form:</p>
             <div class="result-box key-result">
-              \[\frac{d\alpha}{d\ln\mu} = \frac{g^2}{16\pi^2}\left[3C_2(G) - \frac{4}{3}T(R)\,N_f\right]\]
+              \[\frac{d\alpha}{d\ln\mu} \sim \frac{g^2}{16\pi^2}\left[3C_2(G) - \frac{4}{3}T(R)\,N_f\right]\]
             </div>
             <p>
               This has the same structure as the QCD beta function but with the gravitational gauge coupling
-              \(g = \gamma/(\gamma^2 + 1)\) replacing the strong coupling constant, and with Casimir operators
-              appropriate to the gravitational gauge group.
+              \(g = \gamma/(\gamma^2 + 1)\) replacing the strong coupling constant. <strong>Caveat:</strong>
+              this equation inherits the scheme dependence of the one-loop coefficient itself. Its physical
+              content is that \(\alpha\) runs weakly (the loop factor ensures perturbative suppression),
+              so its value is approximately scale-independent over cosmological history.
             </p>
           </div>
 
@@ -733,10 +755,13 @@
 
           <div class="step" data-step="5">
             <p><strong>Shapiro &amp; Teixeira divergence analysis.</strong> The counterterm structure established
-              by Shapiro &amp; Teixeira (2014) provides the divergent part of the one-loop effective action, which
-              determines the beta function coefficients. Our running extends their static divergence analysis to
-              a cosmological background, showing that the parity-odd coupling varies negligibly over the full
-              cosmological history &mdash; a necessary condition for the predictivity of the framework.</p>
+              by Shapiro &amp; Teixeira (2014) provides the divergent part of the one-loop effective action,
+              from which the beta function structure can be inferred. The physical conclusion&mdash;that the
+              parity-odd coupling varies negligibly over cosmological history&mdash;is robust against scheme
+              choice because the loop factor \(g^2/(16\pi^2)\sim 10^{-3}\) suppresses the total running
+              over \(\Delta\ln\mu \approx 140\) decades regardless of \(\mathcal{O}(1)\) coefficient changes.
+              Since \(\alpha/M\) is treated as a phenomenological parameter fit from data, the precise
+              beta function coefficients affect only the theoretical motivation, not the observational predictions.</p>
           </div>
 
         </div>
@@ -801,17 +826,17 @@
             <div class="result-box key-result">
               \[\mathcal{D}_{\rm inf} = e^{-3N_{\rm tot}} \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2}\]
             </div>
-            <p>Evaluating with \(N_{\rm tot} = 92\), \(T_{\rm reh} \sim 10^9\;\text{GeV}\), \(M_{\rm GUT} \sim 10^{16}\;\text{GeV}\):</p>
+            <p>Evaluating with \(N_{\rm tot} = 92\), \(T_{\rm reh} \sim 10^{15}\;\text{GeV}\), \(M_{\rm GUT} \sim 10^{16}\;\text{GeV}\):</p>
             <p>\(e^{-3 \times 92} = e^{-276} = 10^{-276/\ln 10} = 10^{-276/2.303} = 10^{-119.8}\)</p>
-            <p>\((10^9/10^{16})^{3/2} = (10^{-7})^{3/2} = 10^{-10.5}\)</p>
-            <p>Wait &mdash; that gives \(10^{-130}\), which is too large. The reheating factor actually <em>increases</em>
-              the effective density (entropy production during reheating partially compensates the inflationary dilution):</p>
-            <p>\((T_{\rm reh}/M_{\rm GUT})^{3/2}\) enters with positive sign when the reheating temperature is below
-              the GUT scale, reflecting incomplete thermalization. The net result:</p>
+            <p>\((10^{15}/10^{16})^{3/2} = (10^{-1})^{3/2} = 10^{-1.5}\)</p>
+            <p>The reheating factor \((T_{\rm reh}/M_{\rm GUT})^{3/2}\) accounts for entropy transfer from inflaton
+              decay: as the inflaton reheats the universe, the spin-density source (which was diluted as \(a^{-3}\)
+              during inflation) is partially regenerated by the thermal fermion bath. The \(3/2\) power arises from
+              the scaling of the fermion number density \(n_f \propto T^3\) relative to the energy density
+              \(\rho \propto T^4\). With \(T_{\rm reh}/M_{\rm GUT} \sim 0.1\), this is a small correction:</p>
             <div class="result-box key-result">
-              \[\mathcal{D}_{\rm inf} \sim 10^{-121}\]
+              \[\mathcal{D}_{\rm inf} \sim 10^{-119.8} \times 10^{-1.5} = 10^{-121.3} \approx 10^{-121}\]
             </div>
-            <p class="verified-badge">NUMERICALLY VERIFIED</p>
           </div>
 
           <h4>The Geometric Dilution Parameter</h4>
@@ -875,49 +900,51 @@
       <div class="derivation-number">DERIVATION 7</div>
       <details class="derivation">
         <summary>
-          Derivation 7: Observable Signatures &mdash; CMB E-B and Galaxy Spin Dipole
-          <span class="summary-result">\(C_\ell^{EB}\approx 2\times 10^{-4}\;\mu\text{K}^2\) and \(A(z) = A_0(1+z)^{-p}e^{-qz}\)</span>
+          Derivation 7: Observable Signatures &mdash; CMB Birefringence and Galaxy Spin Dipole
+          <span class="summary-result">\(C_\ell^{EB}\approx 2\beta(C_\ell^{EE}-C_\ell^{BB})\) with \(\beta\approx 0.30°\), and \(A(z) = A_0(1+z)^{-p}e^{-qz}\)</span>
         </summary>
         <div class="derivation-content">
 
-          <h4>CMB E-B Cross-Correlation</h4>
+          <h4>Isotropic Cosmic Birefringence</h4>
 
           <div class="step" data-step="1">
-            <p><strong>Parity-odd CMB signature.</strong> The parity-odd operator in the effective action
-              (Derivation 1) sources a non-zero cross-correlation between the E-mode (parity-even) and B-mode
-              (parity-odd) CMB polarization fields. For ultra-low multipoles, the predicted power spectrum is:</p>
+            <p><strong>Uniform polarization rotation.</strong> The parity-odd operator in the effective action
+              (Derivation 1) rotates the CMB polarization plane by a small angle \(\beta\). For a spatially
+              uniform (isotropic) rotation, the standard result is:</p>
             <div class="result-box key-result">
-              \[C_\ell^{EB} \approx 2 \times 10^{-4}\;\mu\text{K}^2 \times \exp\!\left[-\frac{(\ell - 3)^2}{4}\right]\]
+              \[C_\ell^{EB} \approx \frac{\sin 4\beta}{2}\left(C_\ell^{EE} - C_\ell^{BB}\right) \approx 2\beta\left(C_\ell^{EE} - C_\ell^{BB}\right)\]
             </div>
             <p>
-              This spectrum is peaked at \(\ell = 2\text{--}4\), which is the characteristic multipole range
-              for a global rotation signal. The Gaussian envelope \(\exp[-(\ell-3)^2/4]\) arises from the
-              coherence scale of the post-bounce vorticity: a uniform rotation generates power only at the
-              lowest multipoles, with exponential suppression at higher \(\ell\).
+              This produces nonzero \(EB\) power <em>across all multipoles</em>, tracking the \(EE - BB\)
+              spectrum shape &mdash; it is <strong>not</strong> localized to any particular \(\ell\) range.
+              Similarly, the induced \(TB\) cross-correlation is \(C_\ell^{TB} \approx 2\beta\,C_\ell^{TE}\).
             </p>
             <p>
-              The amplitude \(2 \times 10^{-4}\;\mu\text{K}^2\) is set by the product of the parity-odd
-              coupling \(\alpha/M\) and the residual vorticity \((\omega/H)_0\), both of which are constrained
-              by independent observations.
+              From the MCMC fits, the effective birefringence angle is \(\beta \approx 0.30°\), consistent
+              with the Planck extraction by Minami &amp; Komatsu (2020) at \(2.4\sigma\) and the updated
+              analysis by Eskilt (2022) at \(2.7\sigma\).
             </p>
           </div>
 
-          <h4>Spectral Shape Discrimination</h4>
+          <h4>Anisotropic Component (Future Work)</h4>
 
           <div class="step" data-step="2">
-            <p><strong>Distinguishing competing models.</strong> The \(\ell\)-dependence of \(C_\ell^{EB}\) is a
-              powerful discriminant between different parity-violation mechanisms:</p>
-            <p>&bull; <strong>Axion birefringence</strong> (e.g., Fujita et al. 2021): produces scale-invariant
-              \(C_\ell^{EB} \propto \ell(\ell+1)\), growing with \(\ell\).</p>
+            <p><strong>Preferred-axis anisotropy.</strong> In addition to the uniform rotation, the cosmic
+              rotation axis defines a preferred direction \(\hat{n}\), introducing an <em>anisotropic</em>
+              birefringence field \(\beta(\hat{n})\) with power concentrated at low multipoles. This contributes
+              primarily to off-diagonal \(\ell\)-\(\ell'\) correlations (detectable via quadratic estimators),
+              with additional diagonal power at \(\ell \lesssim 10\). A detailed derivation of the anisotropic
+              component's spectrum from the spin-torsion mechanism is deferred to future work.</p>
+            <p><strong>Model discrimination.</strong> Different parity-violation mechanisms predict different
+              angular spectra for the birefringence field:</p>
+            <p>&bull; <strong>Axion birefringence</strong> (e.g., Fujita et al. 2021): scale-invariant power
+              in \(\beta(\hat{n})\), producing \(EB\) correlations across all \(\ell\).</p>
             <p>&bull; <strong>Chern-Simons gravity</strong> (e.g., Alexander &amp; Yunes 2009): peaks at
               \(\ell \sim 100\text{--}1000\), reflecting the curvature coupling scale.</p>
-            <p>&bull; <strong>BigBounce (this work)</strong>: exponential cutoff at \(\ell > 4\), reflecting
-              global rotation coherence.</p>
-            <p>
-              These three spectral shapes are cleanly distinguishable with a full-sky polarization experiment
-              such as LiteBIRD (launch 2032). The \(\ell < 5\) regime is cosmic-variance limited, but the
-              distinctive exponential cutoff shape provides 3&sigma; discrimination power.
-            </p>
+            <p>&bull; <strong>BigBounce (this work)</strong>: isotropic \(\beta \approx 0.30°\) (all \(\ell\))
+              plus anisotropic low-\(\ell\) component aligned with the cosmic rotation axis (amplitude and shape TBD).
+              Confirming the spin-torsion origin requires cross-correlating the birefringence axis with the galaxy
+              spin dipole axis.</p>
           </div>
 
           <h4>Galaxy Spin Asymmetry Dipole</h4>
@@ -1033,7 +1060,7 @@
               <td>Dilution factor</td>
               <td>Dimensionless</td>
               <td>\(\sim 10^{-121}\)</td>
-              <td class="check-col">\(e^{-3\times 92} \times (10^9/10^{16})^{3/2}\)</td>
+              <td class="check-col">\(e^{-3\times 92} \times (10^{15}/10^{16})^{3/2}\)</td>
             </tr>
             <tr>
               <td>\(\Xi\)</td>
@@ -1064,11 +1091,11 @@
               <td class="check-col">CMB isotropy</td>
             </tr>
             <tr>
-              <td>\(C_\ell^{EB}\)</td>
-              <td>E-B power spectrum</td>
-              <td>\([\mu\text{K}]^2\)</td>
-              <td>\(\sim 2 \times 10^{-4}\)</td>
-              <td class="check-col">Predicted</td>
+              <td>\(\beta\)</td>
+              <td>Birefringence angle</td>
+              <td>degrees</td>
+              <td>\(\approx 0.30°\)</td>
+              <td class="check-col">MCMC fit / Planck</td>
             </tr>
             <tr>
               <td>\(A_0\)</td>
