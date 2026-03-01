@@ -5,17 +5,17 @@ Title:   Geometric Dark Energy from Spin-Torsion Cosmology:
          A Comprehensive Framework with Observational Validation
 
 Author:  Houston Golden (houston@hubify.com)
-         Hubify Research, San Francisco, California, USA
+         Hubify Research, Los Angeles, California, USA
 
 Categories: gr-qc (primary), astro-ph.CO, hep-th (cross-list)
 
-Preprint ID: HUBIFY-2025-001
+Preprint ID: HUBIFY-2026-001
 
 
 Files Included
 --------------
 main.tex              LaTeX source (revtex4-2, twocolumn)
-references.bib        Bibliography (41 entries)
+references.bib        Bibliography (46 entries)
 figures/              Publication figures (9 PNG files):
   figure1_lqg_holst_derivation_enhanced.png    - Derivation chain overview
   figure2_galaxy_spin_comprehensive.png         - Galaxy spin asymmetry data
