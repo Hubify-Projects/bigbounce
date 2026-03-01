@@ -141,6 +141,31 @@
       ],
       "snapshot_file": "v0.5.0-bigbounce.md",
       "note": "Research updates posted to mission but not yet integrated into paper text. Paper integration pending."
+    },
+    {
+      "version": "0.7.0",
+      "date": "2026-03-01T00:00:00-08:00",
+      "title": "Cross-Artifact Synchronization & Scientific Corrections",
+      "description": "Full synchronization pass across all artifacts (LaTeX, PDF, website, ZIP README) following 14 audit fixes applied in v0.6.x. Corrected scientifically incorrect TB consistency ratio, replaced all stale 7σ birefringence claims with established 2.4–2.7σ Planck values, updated EB prediction formula from ultra-low-ℓ approximation to correct isotropic birefringence β≈0.30° formulation, softened exclusivity language, fixed ZIP metadata, and set deterministic compilation date.",
+      "authors": ["Houston Golden"],
+      "sections_count": 14,
+      "word_count_approx": 32000,
+      "status": "active",
+      "key_changes": [
+        "Deterministic date: \\today → 'February 28, 2026' + \\paperVersion{v0.7.0} macros",
+        "TB consistency fix: removed incorrect C_ℓ^{TB}/C_ℓ^{TE} = 0.98±0.12 → cross-frequency stability across 100/143/217 GHz",
+        "Exclusivity language softened: 'uniquely provides...no other model' → 'distinctive combination' / 'To our knowledge'",
+        "ZIP README: San Francisco → Los Angeles, HUBIFY-2025-001 → HUBIFY-2026-001, 41 → 46 bib entries",
+        "index.html: 7σ→2.4–2.7σ, EB card updated to β≈0.30° formula, timeline 5σ→4.2–5.9σ",
+        "paper.html: abstract synced to main.tex, date to Feb 28, Table I row 5 JWST→birefringence",
+        "explained.html: 7σ→2.4–2.7σ with ACT caveats, EB description updated to all-ℓ formulation",
+        "datasets.html: 3× ~7σ replacements in honest assessment, contingency, and scorecard",
+        "methodology.html: EB amplitude formula updated, AI consensus marketing → proper disclaimer",
+        "Created version.json at repo root",
+        "PDF recompiled: 27 pages, 0 undefined references"
+      ],
+      "snapshot_file": null,
+      "note": "Canonical source of truth: arxiv/main.tex. All website pages now mirror LaTeX exactly."
     }
   ]
 }
