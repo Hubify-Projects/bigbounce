@@ -719,6 +719,11 @@ async function downloadAll(){
     // Add README
     const readme=await fetch('arxiv/README-SUBMISSION.txt').then(r=>r.text()).catch(()=>'See main.tex for compilation instructions.');
     zip.file('README.txt',readme);
+    // Add compiled PDF
+    try{
+      const pdfBlob=await fetch('public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf').then(r=>r.blob());
+      zip.file('main.pdf',pdfBlob);
+    }catch(e){console.warn('Skipping PDF');}
     // Generate and download
     const blob=await zip.generateAsync({type:'blob'});
     const url=URL.createObjectURL(blob);
