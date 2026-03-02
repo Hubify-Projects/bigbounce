@@ -110,8 +110,8 @@
   <h1>Version History & Evolution</h1>
   <p class="subtitle">Complete chronological record of the paper's evolution from initial draft through research squad collaboration toward arXiv submission</p>
   <div class="meta">
-    <span class="badge badge-accent">6 Versions</span>
-    <span class="badge badge-neutral">Jul 2025 &mdash; Feb 2026</span>
+    <span class="badge badge-accent">7 Versions</span>
+    <span class="badge badge-neutral">Jul 2025 &mdash; Mar 2026</span>
     <span class="badge badge-neutral">~32,000 words</span>
   </div>
 </div>
@@ -128,8 +128,49 @@
 <section class="section">
   <h2>All Versions</h2>
 
-  <!-- v0.6.0 -->
+  <!-- v0.7.0 -->
   <div class="card version-card latest" style="margin-bottom: 20px;">
+    <div class="version-header">
+      <span class="version-tag">v0.7.0</span>
+      <span class="version-title">Cross-Artifact Synchronization &amp; Scientific Corrections</span>
+      <span class="version-date">2026-03-01 &middot; PST</span>
+    </div>
+    <p class="version-description">
+      Full synchronization pass across all artifacts (LaTeX, PDF, website, ZIP README) following audit fixes. Corrected scientifically incorrect TB consistency ratio, replaced all stale 7&#963; birefringence claims with established 2.4&ndash;2.7&#963; Planck values, updated EB prediction formula to correct isotropic birefringence &#946;&asymp;0.30&deg; formulation, softened exclusivity language, fixed ZIP metadata, and set deterministic compilation date.
+    </p>
+    <div class="diff-summary">
+      <span class="diff-stat added">+11 changes</span>
+      <span class="diff-stat modified">~9 files</span>
+    </div>
+    <button class="toggle-changes" onclick="toggleChanges(this)">Show detailed changes</button>
+    <div class="changes-detail">
+      <ul class="changes-list">
+        <li>Deterministic date: \today &rarr; &ldquo;February 28, 2026&rdquo; + \paperVersion{v0.7.0} macros</li>
+        <li>TB consistency fix: removed incorrect C&#8467;<sup>TB</sup>/C&#8467;<sup>TE</sup> = 0.98&plusmn;0.12 &rarr; cross-frequency stability across 100/143/217 GHz</li>
+        <li>Exclusivity language softened: &ldquo;uniquely provides&hellip;no other model&rdquo; &rarr; &ldquo;distinctive combination&rdquo; / &ldquo;To our knowledge&rdquo;</li>
+        <li>ZIP README: San Francisco &rarr; Los Angeles, HUBIFY-2025-001 &rarr; HUBIFY-2026-001, 41 &rarr; 46 bib entries</li>
+        <li>index.html: 7&#963;&rarr;2.4&ndash;2.7&#963;, EB card updated to &#946;&asymp;0.30&deg; formula, timeline 5&#963;&rarr;4.2&ndash;5.9&#963;</li>
+        <li>paper.html: abstract synced to main.tex, date to Feb 28, Table I row 5 JWST&rarr;birefringence</li>
+        <li>explained.html: 7&#963;&rarr;2.4&ndash;2.7&#963; with ACT caveats, EB description updated to all-&#8467; formulation</li>
+        <li>datasets.html: 3&times; ~7&#963; replacements in honest assessment, contingency, and scorecard</li>
+        <li>methodology.html: EB amplitude formula updated, AI consensus marketing &rarr; proper disclaimer</li>
+        <li>Created version.json at repo root</li>
+        <li>PDF recompiled: 27 pages, 0 undefined references</li>
+      </ul>
+    </div>
+    <div class="authors-row">
+      <span class="author-chip human">Houston Golden</span>
+    </div>
+    <div class="stats-row">
+      <span class="stat-chip"><strong>14</strong> sections</span>
+      <span class="stat-chip"><strong>~32,000</strong> words</span>
+      <span class="stat-chip"><strong>9</strong> files modified</span>
+    </div>
+    <p class="version-note">Canonical source of truth: arxiv/main.tex. All website pages now mirror LaTeX exactly.</p>
+  </div>
+
+  <!-- v0.6.0 -->
+  <div class="card version-card" style="margin-bottom: 20px;">
     <div class="version-header">
       <span class="version-tag">v0.6.0</span>
       <span class="version-title">Deep Research & Adversarial Review</span>
@@ -529,11 +570,11 @@ if (ctx) {
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['v0.1.0\nJul 2025', 'v0.2.0\nNov 2025', 'v0.3.0\nFeb 15', 'v0.4.0\nFeb 18', 'v0.5.0\nFeb 18', 'v0.6.0\nFeb 18'],
+      labels: ['v0.1.0\nJul 2025', 'v0.2.0\nNov 2025', 'v0.3.0\nFeb 15', 'v0.4.0\nFeb 18', 'v0.5.0\nFeb 18', 'v0.6.0\nFeb 18', 'v0.7.0\nMar 1'],
       datasets: [
         {
           label: 'Word Count (approx)',
-          data: [8500, 11000, 18000, 32000, 32000, 32000],
+          data: [8500, 11000, 18000, 32000, 32000, 32000, 32000],
           borderColor: '#D4A574',
           backgroundColor: 'rgba(212, 165, 116, 0.1)',
           fill: true,
@@ -544,7 +585,7 @@ if (ctx) {
         },
         {
           label: 'Sections',
-          data: [12, 14, 16, 35, 35, 35],
+          data: [12, 14, 16, 35, 35, 35, 14],
           borderColor: '#4ade80',
           backgroundColor: 'rgba(74, 222, 128, 0.1)',
           fill: false,
