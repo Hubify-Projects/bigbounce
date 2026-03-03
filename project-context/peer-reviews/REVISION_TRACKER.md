@@ -131,6 +131,33 @@ After each revision round:
 
 ---
 
+### Round 2: arXiv-Readiness Audit (2026-03-03)
+
+**Reviewer:** Houston Golden (manual PDF audit)
+**Manuscript version:** v0.7.0 post-Phase 4
+**Overall score:** Borderline → addressed in commit `1e97f96`
+
+**Issues Identified:** 5 structural issues
+**Status:** ALL ADDRESSED
+
+| # | Issue | Status | Resolved In |
+|---|-------|--------|-------------|
+| R2-1 | Title "Comprehensive Framework with Observational Validation" too strong | **DONE** | → "Phenomenological Constraints and Correlated Signatures" |
+| R2-2 | Dimensional appendix needed (action → ρΛ chain not shown) | **DONE** | New Appendix I with full dimensional audit |
+| R2-3 | "emerges" language overreaches for assumed mechanism | **DONE** | → "is modeled as emerging" throughout |
+| R2-4 | Reproducibility package missing | **DONE** | New Appendix J + arxiv/reproducibility/ skeleton |
+| R2-5 | Forecast section (Sec IX) high-risk for skepticism | **DONE** | Moved to Appendix H; main text is 1-paragraph summary |
+
+**Additional fixes:**
+- "natural consequence of the effective action" → "consistent with a possible photon-sector extension"
+- Explicit IR vacuum disclaimer: "This work does not derive the IR effective vacuum term from first principles"
+- Table V: added compressed vs full-multipole χ² clarification
+- "comprehensive framework" → "phenomenological framework" in Conclusions
+
+**PDF:** 29 pages (up from 28 due to new appendices), 0 undefined references
+
+---
+
 ## Future Rounds
 
 *Add new sections here as additional reviews are conducted.*
