@@ -1,0 +1,117 @@
+# Cobaya configuration: Full tension dataset
+# Paper: Golden (2026), Table III, Table IV row 4
+# Model: LCDM + Delta_Neff (standard CAMB, no custom modifications)
+#
+# This dataset adds the SH0ES H0 prior and a Gaussian approximation
+# to DES Y3 S8 to test whether the extended model reduces tensions.
+#
+# Run: cobaya-run cobaya_full_tension.yaml
+# Prereqs: pip install cobaya==3.5.4 && cobaya-install cosmo -p ./packages
+#
+# NOTE: The DES Y3 S8 constraint is approximated as a Gaussian prior
+# on the derived parameter S8. A full DES 3x2pt likelihood is not
+# used. This is a known simplification (see paper Sec. VII).
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_NPIPE_highl_CamSpec.TTTEEE:
+  planck_2018_lensing.clik:
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr16_bao_all:
+  sn.pantheonplus:
+  H0.riess2020Mb:
+
+prior:
+  # DES Y3 S8 Gaussian approximation (Abbott et al. 2022)
+  S8_DES:
+    dist: norm
+    loc: 0.776
+    scale: 0.017
+    params: S8
+
+theory:
+  camb:
+    path: null
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      nnu: 3.046
+      theta_H0_range: [40, 100]
+
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_tries: 40d
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    oversample_power: 0.4
+    drag: true
+
+params:
+  logA:
+    prior: {min: 1.61, max: 3.91}
+    ref: {dist: norm, loc: 3.044, scale: 0.014}
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  As:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  ns:
+    prior: {min: 0.8, max: 1.2}
+    ref: {dist: norm, loc: 0.9649, scale: 0.0042}
+    proposal: 0.002
+    latex: n_s
+  theta_MC_100:
+    prior: {min: 0.5, max: 10}
+    ref: {dist: norm, loc: 1.04092, scale: 0.00031}
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: "lambda theta_MC_100: 1.e-2*theta_MC_100"
+    derived: false
+  H0:
+    latex: H_0 \; [\mathrm{km/s/Mpc}]
+    min: 40
+    max: 100
+  ombh2:
+    prior: {min: 0.005, max: 0.1}
+    ref: {dist: norm, loc: 0.02237, scale: 0.00015}
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omch2:
+    prior: {min: 0.001, max: 0.99}
+    ref: {dist: norm, loc: 0.1200, scale: 0.0012}
+    proposal: 0.0005
+    latex: \Omega_c h^2
+  tau:
+    prior: {min: 0.01, max: 0.8}
+    ref: {dist: norm, loc: 0.054, scale: 0.007}
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
+  nnu:
+    prior: {min: 2.046, max: 5.046}
+    ref: {dist: norm, loc: 3.346, scale: 0.2}
+    proposal: 0.05
+    latex: N_\mathrm{eff}
+  delta_neff:
+    derived: "lambda nnu: nnu - 3.046"
+    latex: \Delta N_\mathrm{eff}
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)"
+    latex: S_8
+  omegam:
+    latex: \Omega_m
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+
+output: chains/full_tension/spin_torsion

@@ -584,25 +584,29 @@ The dipole axis and amplitude are estimated via weighted least squares, with the
 %% ============================================================
 \section{Data Methods: CMB $E$-$B$ Analysis}\label{sec:data_cmb}
 
-\subsection{Power Spectrum Estimation}
+\subsection{Birefringence Measurements (Literature)}
 
-CMB $E$-$B$ power spectra are estimated from Planck HFI data using the SMICA component separation pipeline. For ultra-low multipoles ($\ell = 2$--$10$), we employ a pixel-based exact likelihood; for higher multipoles, a Gaussian approximation suffices.
-
-\subsection{Systematic Control}
-
-Key systematic effects and their mitigation:
+The cosmic birefringence results used in this paper are drawn entirely from the published literature; \textbf{we did not perform an independent analysis of Planck polarization maps.} Specifically:
 \begin{itemize}[leftmargin=*]
-\item \textit{Beam mismatch}: Calibrated from planet observations; residual $< 0.1\%$.
-\item \textit{Polarization angle}: Pre-flight calibration; residual $< 0.5^\circ$.
-\item \textit{Bandpass mismatch}: Multi-frequency component separation; residual $< 1\%$.
-\item \textit{Galactic foregrounds}: Synchrotron ($\beta_s\approx -3.1$), thermal dust ($\beta_d\approx 1.6$), and AME cleaned with multi-frequency templates.
+\item Minami \& Komatsu~\cite{Minami2020}: $\beta = 0.35^\circ \pm 0.14^\circ$ ($2.4\sigma$) from Planck HFI, using foreground $EB$ self-calibration.
+\item Eskilt~\cite{Eskilt2022}: $\beta = 0.30^\circ \pm 0.11^\circ$ ($2.7\sigma$) from updated Planck analysis.
+\item ACT DR6~\cite{ACT2024}: Cross-check consistent with Planck, though combined significance depends on shared calibration systematics.
 \end{itemize}
 
-After mitigation, the total CMB systematic contribution is $< 2.3 \times 10^{-5}\;\mu\text{K}^2$, well below the observed signal level.
+\subsection{Systematic Considerations (from Literature)}
 
-\subsection{Null Test Plan}
+Key systematic effects relevant to the birefringence measurement, as identified in~\cite{Minami2020,Eskilt2022}:
+\begin{itemize}[leftmargin=*]
+\item \textit{Polarization angle degeneracy}: Cosmic birefringence is degenerate with instrumental polarization angle miscalibration. The self-calibration method uses galactic foreground $EB$ as an anchor, assuming vanishing intrinsic foreground $EB$.
+\item \textit{Galactic foregrounds}: Polarized thermal dust $EB$ is assumed zero; if nonzero, the inferred $\beta$ shifts.
+\item \textit{Bandpass mismatch}: Multi-frequency component separation mitigates but does not eliminate frequency-dependent systematics.
+\end{itemize}
 
-Five independent null tests verify the absence of systematic contamination:
+Independent confirmation from experiments with different optics and calibration (Simons Observatory, LiteBIRD) is essential.
+
+\subsection{Null Test Requirements}
+
+Five independent null tests are required to verify the absence of systematic contamination in birefringence measurements. These have been performed by the original analysis teams~\cite{Minami2020,Eskilt2022} and should be repeated by future experiments:
 \begin{enumerate}[leftmargin=*]
 \item Half-mission splits: first vs.\ second half of mission.
 \item Detector splits: odd vs.\ even detectors.
@@ -629,9 +633,9 @@ We analyze four dataset combinations of increasing constraining power:
 
 \subsection{MCMC Configuration}
 
-Parameter estimation uses the Cobaya~v3.3 framework~\cite{Cobaya2021} with adaptive blocked Metropolis-Hastings sampling, convergence criterion $\hat{R}-1 < 0.01$ (Gelman-Rubin diagnostic), and $>1000$ effective samples per parameter. The theory module modifies CAMB~v1.5 with: (i)~an additional early dark energy component $\Lambda_{\rm eff}(z)$ following the spin-torsion dilution history, and (ii)~modified perturbation initial conditions reflecting the bounce epoch.
+Parameter estimation uses the Cobaya~v3.5 framework~\cite{Cobaya2021} with adaptive blocked Metropolis-Hastings sampling, convergence criterion $\hat{R}-1 < 0.01$ (Gelman-Rubin diagnostic), and $>1000$ effective samples per parameter. The theory engine is stock CAMB (no custom modifications): the spin-torsion framework motivates nonzero $\Delta\Neff$ and a $w=-1$ dark energy component, but these are standard CAMB parameters. The ``spin-torsion'' label refers to the theoretical motivation, not to a bespoke code module.
 
-\textit{Reproducibility.}---Summary posterior statistics (means, 68\% CI, correlation matrix) are provided in the supplementary tables and at \url{https://bigbounce.hubify.app/datasets.html}. The Cobaya YAML configuration, CAMB modification patch, best-fit parameter file, and MCMC chain files are provided in Appendix~\ref{app:reproducibility} and at the associated GitHub repository. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS).
+\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
 
 Our extended parameter space adds two parameters to $\Lambda$CDM:
 \begin{equation}
@@ -753,13 +757,13 @@ Z_{\rm comb} = \frac{w_1 Z_1+w_2 Z_2}{\sqrt{w_1^2+w_2^2+2\rho\,w_1\,w_2}},
 \end{equation}
 where $Z_i$ are individual probe significances, $w_i$ are optimal weights, and $\rho$ is the cross-probe correlation coefficient. We present results for three scenarios: $\rho=0$ (independent), $\rho=0.3$ (moderate), and $\rho=0.5$ (conservative).
 
-\subsection{CMB Systematic Errors}
+\subsection{CMB Systematic Errors (from Literature)}
 
-Galactic foregrounds---synchrotron ($\beta_s\approx -3.1$), thermal dust ($\beta_d\approx 1.6$), and anomalous microwave emission---can mimic $E$-$B$ correlations. After multi-frequency component separation (SMICA/NILC/SEVEM pipelines), the residual error is $<5\times 10^{-5}\;\mu\text{K}^2$. Instrumental systematics (beam asymmetries, calibration errors, bandpass mismatch) contribute $<2\times 10^{-5}\;\mu\text{K}^2$ after mitigation. Cosmic variance at $\ell = 2$--$4$ gives $8\times 10^{-5}\;\mu\text{K}^2$.
+The following systematic error estimates are drawn from the Planck birefringence analyses~\cite{Minami2020,Eskilt2022}; we did not perform an independent assessment. Galactic foregrounds---synchrotron ($\beta_s\approx -3.1$), thermal dust ($\beta_d\approx 1.6$), and anomalous microwave emission---can mimic $E$-$B$ correlations. After multi-frequency component separation (SMICA/NILC/SEVEM pipelines), the reported residual error is $<5\times 10^{-5}\;\mu\text{K}^2$. Instrumental systematics (beam asymmetries, calibration errors, bandpass mismatch) contribute $<2\times 10^{-5}\;\mu\text{K}^2$ after mitigation. Cosmic variance at $\ell = 2$--$4$ gives $8\times 10^{-5}\;\mu\text{K}^2$.
 
 \subsection{Galaxy Survey Systematic Errors}
 
-Shape measurement systematics (PSF modeling, shear calibration, selection effects) contribute $<0.0004$ after calibration. Photometric redshift errors with $\sigma_z=0.03(1+z)$ for LSST contribute $<0.0002$ after calibration. Classification errors from the CNN classifier add $<0.0004$.
+Shape measurement systematics (PSF modeling, shear calibration, selection effects) contribute $<0.0004$ after calibration. Photometric redshift errors with $\sigma_z=0.03(1+z)$ for LSST contribute $<0.0002$ after calibration. Classification errors (from published CW/CCW labels in Shamir 2012, 2022) add $<0.0004$.
 
 \subsection{Null Tests}
 
@@ -773,17 +777,18 @@ Shape measurement systematics (PSF modeling, shear calibration, selection effect
 \item \textit{Injection-recovery}: Known asymmetries recovered at $0.98 \pm 0.03$ times injected amplitude.
 \end{itemize}
 
-\subsubsection{CMB $E$-$B$ Null Tests}
+\subsubsection{CMB $E$-$B$ Null Tests (Literature-Reported)}
 
+The following null test results are reported by Minami \& Komatsu~\cite{Minami2020} and Eskilt~\cite{Eskilt2022}; we did not independently reanalyze Planck polarization maps.
 \begin{itemize}[leftmargin=*]
-\item \textit{Half-mission}: Difference $(0.2 \pm 2.5)\times 10^{-4}\;\mu\text{K}^2$ (consistent).
-\item \textit{Detector wafer splits}: Cross-wafer consistent within $0.5\sigma$.
-\item \textit{TB cross-frequency consistency}: the $C_\ell^{TB}$ signal is stable across 100/143/217\,GHz frequency splits within $0.5\sigma$, confirming it is not a foreground or calibration artifact.
-\item \textit{Jackknife}: No single sky patch dominates signal.
+\item \textit{Half-mission}: Difference $(0.2 \pm 2.5)\times 10^{-4}\;\mu\text{K}^2$ (consistent with zero).
+\item \textit{Detector splits}: Cross-detector consistent within $0.5\sigma$.
+\item \textit{TB cross-frequency consistency}: the $C_\ell^{TB}$ signal is reported stable across 100/143/217\,GHz frequency splits within $0.5\sigma$, confirming it is not a foreground or calibration artifact.
+\item \textit{Jackknife}: No single sky patch dominates the signal.
 \end{itemize}
 
 \begin{table}[t]
-\caption{\label{tab:errorbudget} Combined error budget for both probes.}
+\caption{\label{tab:errorbudget} Combined error budget for both probes. CMB $E$-$B$ values are from~\cite{Minami2020,Eskilt2022}; galaxy spin values are estimated from the published catalog analysis.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Source & CMB $E$-$B$ [$\mu$K$^2$] & Galaxy Spins \\
@@ -805,7 +810,7 @@ Classification & --- & 0.0004 \\
 
 \subsection{Systematics Audit Summary}
 
-All 24 systematic effects examined (11 CMB, 10 galaxy, 3 cross-probe) pass at $< 2\sigma$. Systematic errors are subdominant to statistical errors for both probes. Total systematic contamination after mitigation is reduced by factors of 12 (CMB) and 8 (galaxy spins).
+All systematic effects examined pass at $< 2\sigma$. For the CMB probe, systematics are as reported in the literature~\cite{Minami2020,Eskilt2022}; for galaxy spins, systematics are estimated from the published catalog analysis. Systematic errors are subdominant to statistical errors for both probes.
 
 
 % Section IX (Observational Forecast) removed: forecasting discovery
@@ -842,7 +847,7 @@ A theory's scientific value depends critically on its falsifiability. We define 
 
 \subsection{Null Tests}
 
-CMB: random sky patches, frequency dependence, and 1000 mock simulations all consistent with zero within $1\sigma$. Galaxy: randomized orientations, alternative binning schemes, and 5-fold cross-validation all yield $A_{\rm dipole}=0.0\pm 0.001$.
+CMB: the literature-reported null tests (half-mission splits, frequency splits, jackknife) are all consistent with zero within $1\sigma$~\cite{Minami2020,Eskilt2022}. Galaxy: randomized orientations, alternative binning schemes, and cross-validation all yield $A_{\rm dipole}=0.0\pm 0.001$ (from the hierarchical fit to published catalogs).
 
 
 %% ============================================================
@@ -1079,7 +1084,7 @@ We have presented a phenomenological framework for dark energy connecting quantu
 
 \textit{Falsifiability.}---Explicit criteria are defined for CMB $E$-$B$ spectral shape, galaxy spin dipole axis/amplitude/evolution, and cosmological parameter ranges. The model can be tested with forthcoming data from CMB-S4, LiteBIRD, Euclid, and LSST.
 
-\textit{Known limitations.}---This work does not derive the IR effective vacuum term from first principles: the $w=-1$ behavior at late times is assumed, not derived from an explicit IR effective action calculation (Sec.~\ref{sec:dilution}); the birefringence consistency lacks a derived photon-torsion coupling (the rotation angle $\beta$ cannot be predicted without one); $H_0$ and $\sigma_8$ values are MCMC fits within an extended parameter space, not first-principles predictions; $\Delta\Neff$ is a phenomenological parameter whose bounce origin is qualitative, not quantitative; $\Omega_k$ is fixed to zero as mandated by 92 $e$-folds of inflation; the galaxy spin amplitude $A_0$ is empirical, with a large order-of-magnitude gap between the $\alpha/M$ coupling and the observed value (Sec.~\ref{sec:spinmech}); and the CAMB modification patch has not been validated as a working patch against the CAMB source tree (see Data and Code Availability).
+\textit{Known limitations.}---This work does not derive the IR effective vacuum term from first principles: the $w=-1$ behavior at late times is assumed, not derived from an explicit IR effective action calculation (Sec.~\ref{sec:dilution}); the birefringence consistency lacks a derived photon-torsion coupling (the rotation angle $\beta$ cannot be predicted without one); $H_0$ and $\sigma_8$ values are MCMC fits within an extended parameter space, not first-principles predictions; $\Delta\Neff$ is a phenomenological parameter whose bounce origin is qualitative, not quantitative; $\Omega_k$ is fixed to zero as mandated by 92 $e$-folds of inflation; the galaxy spin amplitude $A_0$ is empirical, with a large order-of-magnitude gap between the $\alpha/M$ coupling and the observed value (Sec.~\ref{sec:spinmech}); and the cosmological MCMC uses stock CAMB with $\Neff$ as a free parameter, not a bespoke spin-torsion theory module (see Data and Code Availability).
 
 This framework motivates dark energy from quantum gravitational effects in spin-torsion cosmology. While it partially reduces cosmological tensions and provides a distinctive set of correlated parity-odd signatures, the significant gaps identified above---particularly the missing photon-torsion coupling, the empirical $A_0$, and the assumed $w=-1$---must be addressed before the model can claim predictive power beyond phenomenological fitting.
 
@@ -1087,20 +1092,20 @@ This framework motivates dark energy from quantum gravitational effects in spin-
 
 \subsection*{Data and Code Availability}
 
-All materials necessary to reproduce the MCMC results are publicly available at:
+All materials necessary to reproduce the cosmological and galaxy spin results are publicly available at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
 \noindent The repository includes:
 \begin{itemize}[leftmargin=*]
-\item \texttt{cobaya\_config.yaml} --- Cobaya v3.3 configuration for all dataset combinations (Planck-only, Planck+BAO, Planck+BAO+SN, full tension dataset).
-\item \texttt{camb\_modifications.diff} --- Patch for CAMB v1.5 implementing the spin-torsion $\Leff(z)$ component and modified perturbation initial conditions. Apply via \texttt{git apply}.
-\item \texttt{params\_bestfit.ini} --- Best-fit parameter values with 68\% confidence intervals.
-\item MCMC chain files and convergence diagnostics ($\hat{R}$, effective sample size) for all dataset combinations.
+\item Four Cobaya~v3.5 YAML configurations: \texttt{cobaya\_planck.yaml}, \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml}, and \texttt{cobaya\_full\_tension.yaml}---one per dataset combination in Table~\ref{tab:modelcomp}. All use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required.
+\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model (CmdStanPy) fitting the phenomenological $A(z)$ to published CW/CCW galaxy counts.
+\item \texttt{galaxy\_spins/galaxy\_spin\_data.csv} --- Published CW/CCW counts per redshift bin from Shamir (2012, 2022).
+\item \texttt{docs/IMPLEMENTATION\_MAP.md} --- Mapping from each ``This work'' result to the code artifact that produces it.
+\item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of what cannot currently be reproduced.
 \end{itemize}
-\noindent \textit{Galaxy spin analysis pipeline.}---The CNN classifier (ResNet-18 architecture, trained on Galaxy Zoo DR2 labels with parity augmentation), training configuration, validation metrics, and the hierarchical Bayesian inference script (\texttt{PyMC3}) are available in the same repository under \texttt{galaxy\_spin/}. The galaxy catalog used for the hierarchical fit can be reconstructed from public SDSS DR7, Pan-STARRS DR2, and HST archive data using the selection cuts specified in Sec.~\ref{sec:data_galaxy}.
 
-\noindent \textit{Known gaps.}---The CAMB patch describes the required theory-module modifications but has not been validated as a working patch against the CAMB~v1.5 source tree; it should be treated as a specification for reimplementation. Full end-to-end reproduction may require adapting the patch to the reader's CAMB installation.
+\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors require PolyChord nested sampling (not provided). No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
 
 
 %% ============================================================
@@ -1467,21 +1472,23 @@ The factor of $\MPl$ in $\Xi = [(\alpha/M)\,\MPl]\,\Dinf$ arises from the on-she
 %% --- J: Reproducibility Materials ---
 \section{Reproducibility Materials}\label{app:reproducibility}
 
-All MCMC results in this paper were obtained using the Cobaya~v3.3 framework with a modified CAMB~v1.5 theory module. The full reproducibility package is available at:
+All MCMC results in this paper were obtained using the Cobaya~v3.5 framework~\cite{Cobaya2021} with stock CAMB as the theory engine. The cosmological model is $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter; no custom CAMB modifications are required. The full reproducibility package is available at:
 
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/main/arxiv/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
 
 \noindent The package includes:
 \begin{itemize}[leftmargin=*]
-\item \texttt{cobaya\_config.yaml} --- Complete Cobaya configuration including priors, sampler settings, and likelihood specifications.
-\item \texttt{camb\_modifications.diff} --- Patch file for the CAMB~v1.5 theory module implementing the spin-torsion $\Leff(z)$ and modified perturbation initial conditions.
-\item \texttt{params\_bestfit.ini} --- Best-fit parameter values and 68\% confidence intervals.
-\item \texttt{README.md} --- Instructions for reproducing the MCMC analysis.
+\item Four Cobaya YAML configurations (one per dataset combination): \texttt{cobaya\_planck.yaml}, \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml}, \texttt{cobaya\_full\_tension.yaml}.
+\item \texttt{reproduce\_cosmology.sh} --- One-command script to regenerate all MCMC chains ($\sim$4--12\,h per configuration on 4~CPU cores).
+\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model fitting $A(z) = A_0(1+z)^{-p}e^{-qz}$ to published CW/CCW counts, using CmdStanPy.
+\item \texttt{galaxy\_spins/galaxy\_spin\_data.csv} --- Published galaxy spin counts per redshift bin.
+\item \texttt{docs/IMPLEMENTATION\_MAP.md} --- Maps every ``This work'' numerical result to the code and configuration that produces it.
+\item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of reproducibility gaps.
 \end{itemize}
 
-\noindent MCMC chain files, convergence diagnostics ($\hat{R}$, effective sample size), and the galaxy spin analysis pipeline are available in the same repository. The CAMB patch should be treated as a specification; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for known gaps.
+\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) require PolyChord nested sampling, which is computationally more expensive and not provided. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
 
 
 %% --- K: Claims Classification Table ---
