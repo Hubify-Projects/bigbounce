@@ -2,7 +2,7 @@
 
 **Paper:** Geometric Dark Energy from Spin-Torsion Cosmology
 **Author:** Houston Golden
-**Current version:** v0.8.0
+**Current version:** v0.9.0
 **Target:** arXiv-ready manuscript
 
 ---
@@ -193,6 +193,43 @@ After each revision round:
 - params_bestfit.ini: Ω_k removed
 
 **PDF:** 28 pages (down from 29 — forecast section removed), 0 undefined references
+
+---
+
+### Round 4: Skeptical Coauthor Revision (2026-03-03)
+
+**Reviewer:** Simulated skeptical physics coauthor
+**Manuscript version:** v0.8.0 → v0.9.0
+**Approach:** Maximum credibility, minimal crackpot heuristics
+
+**Issues Addressed:** 8 task groups
+
+| # | Issue | Status | Resolution |
+|---|-------|--------|------------|
+| R4-1 | "Geometric Dilution Parameter" trigger phrase | **DONE** | → "Inflationary Suppression Factor" (14 instances) |
+| R4-2 | Affiliation implies academic authority | **DONE** | → "Independent Researcher, Los Angeles, California, USA" |
+| R4-3 | No Data & Code Availability section | **DONE** | Added before Acknowledgments: Cobaya YAML, CAMB patch, MCMC chains, galaxy spin pipeline, known gaps |
+| R4-4 | Galaxy spins not framed as contested | **DONE** | Sec III.B rewritten: "Contested Anomaly"; dedicated null-result paragraph (Patel & Desmond, Philcox & Ereza); explicit statement "if null, A0=0 and spin channel doesn't support model" |
+| R4-5 | JWST JADES attribution/presentation | **DONE** | Removed from Table II; text clarified as single-field excess, not dipole amplitude; attributed to "Shamir (private communication / preprint)" |
+| R4-6 | Appendix C.3 "Tidal Torque Derivation" title | **DONE** | → "Tidal Torque Hypothesis and Phenomenological Mapping"; added bullet list of what's NOT derived |
+| R4-7 | Birefringence "natural" language | **DONE** | "natural candidate source" → "qualitatively consistent"; "natural origin" → "origin"; "natural mechanism" → "candidate mechanism" |
+| R4-8 | ω² in abstract headline | **DONE** | Removed: $\Leff = \Xi\,\MPl^2 + c_\omega\omega^2$ → $\Leff \approx \Xi\,\MPl^2$ (rotation kept in body/appendix) |
+
+**Additional changes:**
+- Claims Classification Table added as Appendix K (Derived vs Assumed vs Fit/Inferred)
+- "comprehensive theoretical framework" → "phenomenological framework"
+- "Comprehensive Model Comparison" → "Model Comparison"
+- "Comprehensive tension resolution" → "MCMC fits compared with nine published measurements"
+- "smoking-gun signature" → "distinctive signature"
+- "no alternative dark energy model currently reproduces" → "not readily explained by other current dark energy models"
+- "detection timelines through 2034" → "tested with forthcoming data from LiteBIRD, CMB-S4, and LSST"
+- Joint likelihood appendix projections caveated as "conditional on signal amplitudes not derived from first principles"
+- "Simultaneous tension resolution" → "Simultaneous tension reduction"
+- Forecast row in comparison table: "Testable by 2030s" → "Testable (amplitudes TBD)"
+- "will be released in a companion data package" → removed (all materials now at GitHub)
+- 10 appendices (up from 9)
+
+**PDF:** 29 pages, 0 undefined references
 
 ---
 

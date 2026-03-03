@@ -5,7 +5,7 @@ Title:   Geometric Dark Energy from Spin-Torsion Cosmology:
          Phenomenological Constraints and Correlated Signatures
 
 Author:  Houston Golden (houston@hubify.com)
-         Hubify Research, Los Angeles, California, USA
+         Independent Researcher, Los Angeles, California, USA
 
 Categories: gr-qc (primary), astro-ph.CO, hep-th (cross-list)
 
@@ -24,8 +24,7 @@ figures/              Publication figures (9 PNG files):
   figure4_distance_impact.png                   - Distance measure impact
   figure5_rotation_expansion.png                - Rotation and expansion
   figure6_parameter_naturalness.png             - Parameter naturalness
-  figure7_observational_timeline.png            - Detection timeline
-  figure8_detection_forecast.png                - Detection significance forecast
+  (figures 7-8 removed — forecast section deleted in v0.8.0)
 
 
 Compilation
@@ -40,11 +39,11 @@ Requires: revtex4-2, amsmath, graphicx, hyperref, booktabs, float
 
 Paper Statistics
 ----------------
-- 13 main sections + 9 appendices
-- 9 figures
-- 15 tables
+- 13 main sections + 10 appendices
+- 7 figures (figures 7-8 removed in v0.9.0)
+- 16 tables (includes Claims Classification table)
 - 46 references
-- ~1470 lines of LaTeX source
+- ~1600 lines of LaTeX source
 - Estimated page count: 25-30 pages (two-column Physical Review D format)
 
 
