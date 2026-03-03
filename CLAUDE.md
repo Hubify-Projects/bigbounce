@@ -84,6 +84,44 @@ When editing the paper content:
 - Local images in `public/images/` are the primary source
 - Images use descriptive naming: `figure[number]_[description].png`
 
+## Peer Review & Revision Workflow
+
+**CRITICAL: All peer reviews, audits, and revision requests MUST be saved to `project-context/peer-reviews/`.**
+
+### File Naming Convention
+```
+YYYY-MM-DD_HHMMtz_description.md
+```
+Example: `2026-03-02_1917PST_comprehensive-audit.md`
+
+### What to Save
+- Full peer review text (every audit, every round)
+- Claims tables (Derived vs Assumed vs Fit)
+- Revision plans with prioritized issue lists
+- Editor prompts / coauthor instructions
+- Verification results after each revision round
+
+### Tracking Revisions
+- `project-context/peer-reviews/REVISION_TRACKER.md` tracks all issues across rounds
+- Update issue status as revisions are completed
+- After each revision round:
+  1. Recompile PDF and verify 0 undefined references
+  2. Run dimensional consistency checks
+  3. Grep for removed language patterns
+  4. Verify claims table against revised text
+  5. Sync website if applicable
+  6. Update REVISION_TRACKER.md
+
+### Canonical Source of Truth
+- `arxiv/main.tex` is the canonical source — everything else mirrors it
+- `version.json` at repo root tracks current version
+- `versions/manifest.json` tracks version history
+
+### Version History
+- Tracked in `versions/manifest.json` with detailed changelogs
+- Displayed on `versions.html` page of the website
+- Each major revision should increment the version
+
 ## Contact Information
 
 Author: Houston Golden
