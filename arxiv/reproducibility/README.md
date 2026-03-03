@@ -1,7 +1,7 @@
 # Reproducibility Materials
 
 **Paper:** Geometric Dark Energy from Spin-Torsion Cosmology (Golden 2026)
-**Version:** v0.7.0
+**Version:** v0.8.0
 
 ## Contents
 

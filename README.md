@@ -1,7 +1,7 @@
 # BigBounce — Geometric Dark Energy from Spin-Torsion Cosmology
 
 **Author:** Houston Golden
-**Version:** v0.7.0
+**Version:** v0.8.0
 **Paper:** 28 pages, 46 references, 9 appendices
 **Website:** [bigbounce.hubify.app](https://bigbounce.hubify.app)
 **Preprint ID:** HUBIFY-2026-001
@@ -215,7 +215,7 @@ cobaya-run arxiv/reproducibility/cobaya_config.yaml
 
 ---
 
-## Current Scientific Status (v0.7.0)
+## Current Scientific Status (v0.8.0)
 
 ### What the paper claims (honestly):
 - Dark energy **modeled as arising from** (not "derived from") a parity-odd quantum correction

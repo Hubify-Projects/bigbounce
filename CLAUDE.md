@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository contains a scientific research paper titled "Geometric Dark Energy from Spin-Torsion Cosmology: A Comprehensive Framework with Observational Validation" by Houston Golden. The project is a theoretical physics paper exploring dark energy through quantum gravitational effects in spin-torsion cosmology.
+This repository contains a scientific research paper titled "Geometric Dark Energy from Spin-Torsion Cosmology: Phenomenological Constraints and Correlated Signatures" by Houston Golden. The project is a theoretical physics paper exploring dark energy through quantum gravitational effects in spin-torsion cosmology.
 
 ## Repository Structure
 
@@ -125,5 +125,4 @@ Example: `2026-03-02_1917PST_comprehensive-audit.md`
 ## Contact Information
 
 Author: Houston Golden
-Email: houston@bamf.com
-LinkedIn: houstongolden
+Email: houston@hubify.com

@@ -2,7 +2,7 @@ arXiv Submission Package
 ========================
 
 Title:   Geometric Dark Energy from Spin-Torsion Cosmology:
-         A Comprehensive Framework with Observational Validation
+         Phenomenological Constraints and Correlated Signatures
 
 Author:  Houston Golden (houston@hubify.com)
          Hubify Research, Los Angeles, California, USA
@@ -40,11 +40,11 @@ Requires: revtex4-2, amsmath, graphicx, hyperref, booktabs, float
 
 Paper Statistics
 ----------------
-- 14 main sections + 7 appendices
+- 13 main sections + 9 appendices
 - 9 figures
 - 15 tables
 - 46 references
-- ~1280 lines of LaTeX source
+- ~1470 lines of LaTeX source
 - Estimated page count: 25-30 pages (two-column Physical Review D format)
 
 
