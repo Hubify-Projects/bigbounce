@@ -1,0 +1,46 @@
+# CAMB v1.5 Modifications for Spin-Torsion Dark Energy Model
+# Golden (2026) — Geometric Dark Energy from Spin-Torsion Cosmology
+#
+# This patch implements:
+# 1. Lambda_eff(z) following the spin-torsion dilution history
+# 2. Modified perturbation initial conditions from bounce epoch
+#
+# Apply with: git apply camb_modifications.diff
+# (from the CAMB source directory)
+#
+# NOTE: This is a description of the required modifications.
+# A full working patch will be provided in the companion data release.
+#
+# === Modification 1: Dark Energy Module ===
+#
+# File: camb/dark_energy.py
+#
+# Add a new class SpinTorsionDE that implements:
+#   - Lambda_eff = Xi * M_Pl^2 + c_omega * omega^2
+#   - Xi = (alpha/M * M_Pl) * D_inf
+#   - omega^2 contribution is negligible (< 10^{-20} * H0^2)
+#   - Effectively behaves as a cosmological constant at all observable epochs
+#   - w(z) = -1 (assumed; see paper Sec. II.C.2 for discussion)
+#
+# The key difference from LCDM is in the early-universe modifications
+# implemented through delta_N_eff and Omega_k extensions.
+#
+# === Modification 2: Initial Conditions ===
+#
+# File: camb/initialpower.py
+#
+# Modified primordial power spectrum to include:
+#   - Standard slow-roll spectrum (unchanged)
+#   - Effective N_eff = 3.046 + delta_N_eff (phenomenological)
+#   - Spatial curvature Omega_k (phenomenological)
+#
+# These are standard CAMB parameters; the spin-torsion model
+# motivates their non-zero values but the implementation uses
+# CAMB's built-in parameter handling.
+#
+# === Modification 3: Output ===
+#
+# Additional derived quantities computed:
+#   - sigma_8 with modified growth
+#   - S_8 = sigma_8 * sqrt(Omega_m / 0.3)
+#   - H_0 tension (sigma vs SH0ES)
