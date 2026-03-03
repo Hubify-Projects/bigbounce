@@ -66,10 +66,8 @@ params:
     prior: { min: -1.0, max: 2.0 }
     ref: { dist: norm, loc: 0.3, scale: 0.2 }
     latex: \Delta N_\mathrm{eff}
-  omk:
-    prior: { min: -0.05, max: 0.05 }
-    ref: { dist: norm, loc: 0.001, scale: 0.002 }
-    latex: \Omega_k
+  # omk: REMOVED — model mandates Omega_k = 0 (92 e-folds of inflation
+  #       drives |Omega_k| to 10^{-80}). See paper Sec. III.C.
   omega_over_H:
     prior: { min: 0, max: 5.0e-11 }
     ref: 1.0e-15

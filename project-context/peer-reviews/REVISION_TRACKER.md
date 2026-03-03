@@ -158,6 +158,44 @@ After each revision round:
 
 ---
 
+### Round 3: Nuclear Option — Harsh Reviewer #2 Response (2026-03-03)
+
+**Reviewer:** Simulated aggressive Reviewer #2 + Houston's directives
+**Manuscript version:** v0.7.0 post-Round 2
+**Approach:** Full nuclear option — maximum credibility, no overclaims
+
+**Issues Addressed:** 10 critical issues (from two overlapping audits)
+
+| # | Issue | Status | Resolution |
+|---|-------|--------|------------|
+| R3-1 | Abstract "deriving dark energy" oversells | **DONE** | → "modeling dark energy as arising from"; w=-1 assumption noted inline |
+| R3-2 | Ω_k self-falsifying (92 e-folds kills it) | **DONE** | Ω_k REMOVED from MCMC; fixed to 0; caveat on existing fit values |
+| R3-3 | w=-1 by fiat (already labeled assumption) | **DONE** | Already fixed Round 1; verified still in place |
+| R3-4 | Galaxy spin 37-order gap | **DONE** | Explicit order-of-magnitude estimate added to Sec II.C.3 |
+| R3-5 | β=0.30° in abstract without photon coupling | **DONE** | Numerical value removed from abstract; body text retains as Planck measurement |
+| R3-6 | JWST on Figure 2 | **DONE** | Already excluded from fit Round 1; caption caveated |
+| R3-7 | Forecast section (pseudoscience risk) | **DONE** | Section IX DELETED entirely; Appendix H DELETED entirely |
+| R3-8 | CAMB diff is description not patch | **NOTED** | Disclosed in text; actual patch requires CAMB development |
+| R3-9 | A(z) functional form arbitrary | **DONE** | Called "phenomenological" in abstract, body, conclusions |
+| R3-10 | Abstract oversells vs body text | **DONE** | Rewrote abstract to match body text honesty |
+
+**Additional changes:**
+- Parameter count: 8 → 7 (Ω_k removed); effective 8 → 7
+- Model comparison table: footnote explaining values need re-evaluation with Ω_k=0
+- Falsification criteria: "Prediction" → "Expected signature" for CMB and galaxy spin
+- Triple signature claim: softened to "if they can be connected to the theory quantitatively"
+- Conclusions closing: now lists gaps (photon coupling, A_0, w=-1) as blocking issues
+- All "resolves" → "partially reduces" for tensions
+- "quantitative predictions" → "testable outputs" in intro
+- Figure 5 caption: removed Ω_k reference
+- Comprehensive comparison table: 8 → 7 parameters
+- cobaya_config.yaml: Ω_k removed
+- params_bestfit.ini: Ω_k removed
+
+**PDF:** 28 pages (down from 29 — forecast section removed), 0 undefined references
+
+---
+
 ## Future Rounds
 
 *Add new sections here as additional reviews are conducted.*
