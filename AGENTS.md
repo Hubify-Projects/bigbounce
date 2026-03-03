@@ -236,6 +236,201 @@ Full issue-by-issue history: `project-context/peer-reviews/REVISION_TRACKER.md`
 
 ---
 
+## Research Tools & Agents
+
+This project has a multi-model research toolkit at `research/agents/`. API keys are in `.env.local` (gitignored). See `.env.example` for setup.
+
+### Quick Start
+
+```python
+# Load all agents (auto-loads .env.local)
+from research.agents.reasoning_router import query, multi_query
+from research.agents.literature_search import search, search_ads, search_arxiv
+from research.agents.computation import wolfram, deepseek_verify, verify_equation
+from research.agents.data_access import search_jwst, search_gaia, query_catalog
+from research.agents.dataset_loaders import load_mmu, load_astroml
+```
+
+### 1. Reasoning Router (`research/agents/reasoning_router.py`)
+
+Routes questions to the best model for the task type.
+
+```python
+# Math verification (DeepSeek R1 — highest rigor)
+result = query("Verify: [α/M] has mass dimension -1", task="math_rigor")
+
+# Scientific writing (Claude Opus — best academic voice)
+result = query("Write an abstract for...", task="writing")
+
+# Live literature search (Perplexity — web-grounded)
+result = query("Latest cosmic birefringence measurements 2026", task="literature")
+
+# Multimodal analysis (Gemini — images + math)
+result = query("Analyze this CMB power spectrum...", task="multimodal")
+
+# Compare across models
+results = multi_query("Is the Hubble tension resolved?", models=["math_rigor", "reasoning", "literature"])
+```
+
+**Available task types:** `math_rigor`, `tensor_check`, `sign_error`, `derivation`, `writing`, `abstract`, `paper_edit`, `reasoning`, `general`, `literature`, `search`, `recent_papers`, `fast`, `quick`, `multimodal`, `plot_analysis`, `compare`
+
+**Model routing:**
+
+| Task | Model | Why |
+|------|-------|-----|
+| `math_rigor` / `tensor_check` / `sign_error` | DeepSeek R1 | Catches sign errors, highest skepticism |
+| `multimodal` / `plot_analysis` | Gemini Deep Think | Best at images + math combined |
+| `writing` / `abstract` / `paper_edit` | Claude Opus | Most natural academic voice |
+| `reasoning` / `general` | GPT-4o | Highest ELO general reasoning |
+| `literature` / `search` / `recent_papers` | Perplexity sonar-pro | Web-grounded, cites real papers |
+| `fast` / `quick` | Grok | Fast alternative perspective |
+| `compare` | OpenRouter | Multi-model routing |
+
+### 2. Literature Search (`research/agents/literature_search.py`)
+
+Unified search across NASA ADS, Semantic Scholar, arXiv, and Perplexity.
+
+```python
+# Unified search (all configured sources)
+results = search("spin-torsion dark energy", max_results=5, category="gr-qc")
+
+# NASA ADS (astrophysics-specific, citation-aware)
+papers = search_ads("cosmic birefringence Planck", rows=10, year_range="2024-2026")
+
+# arXiv (latest preprints)
+papers = search_arxiv("loop quantum cosmology bounce", max_results=5, category="gr-qc")
+
+# Citation analysis
+citing = ads_citations("2020PhRvL.125v1301M")  # Papers citing Minami & Komatsu 2020
+refs = ads_references("2020PhRvL.125v1301M")    # Papers referenced by M&K 2020
+
+# Perplexity (synthesized answer with live web search)
+answer = search_perplexity("What is the latest DESI dark energy result?")
+
+# Semantic Scholar (cross-field discovery, citation graphs)
+papers = search_s2("Einstein-Cartan torsion cosmology")
+graph = s2_citation_graph("DOI:10.1103/PhysRevLett.125.221301")
+```
+
+### 3. Computation & Verification (`research/agents/computation.py`)
+
+```python
+# Wolfram Alpha — exact computation
+result = wolfram("Planck mass in GeV")                    # Short answer
+result = wolfram("integrate x^2 sin(x) dx", format="full") # Full pods
+result = wolfram("solve H^2 = Lambda/3 for H", format="llm") # Agent-friendly
+
+# Verify equation numerically
+check = wolfram_verify("e^(-3*92) * (10^15/10^16)^(3/2)", "~10^{-121}")
+
+# DeepSeek R1 — rigorous logical verification
+verdict = deepseek_verify(
+    "The operator ε^{μνρσ} e^I_μ e^J_ν F_{IJρσ} has mass dimension +1",
+    context="In Einstein-Cartan theory with Holst term"
+)
+
+# Combined: Wolfram + DeepSeek
+report = verify_equation("(alpha/M) * M_Pl", "~10^{-2}", context="one-loop estimate")
+
+# Multi-model cross-check
+consensus = cross_check("The dilution factor D_inf ~ e^{-3N} for N=92 gives ~10^{-121}")
+```
+
+### 4. Data Access (`research/agents/data_access.py`)
+
+JWST, HST, Gaia, SDSS, and 20,000+ catalogs. All free, no keys needed.
+
+```python
+# JWST observations
+obs = search_jwst("NGC 1365", radius_arcmin=5)
+obs = search_jwst(ra=53.23, dec=-36.14, radius_arcmin=3)
+s3_path = jwst_s3_uri("jw02107-o001_t001_nircam_clear-f200w")  # Direct S3 access
+
+# MAST (any mission)
+obs = search_mast("Crab Nebula", collection="HST")
+
+# Gaia DR3 (1.8 billion stars)
+stars = search_gaia(ra=266.4, dec=-29.0, radius_deg=0.5)
+custom = gaia_adql("SELECT TOP 10 source_id, parallax FROM gaiadr3.gaia_source WHERE parallax > 100")
+
+# VizieR catalogs
+data = query_catalog("II/246", target="M31", radius_arcmin=10)  # 2MASS
+
+# NED (extragalactic)
+info = search_ned("NGC 4993")  # GW170817 host galaxy
+```
+
+**JWST data access methods:**
+1. **MAST API** (`search_jwst()`) — query metadata, download FITS files
+2. **AWS S3** (`jwst_s3_uri()`) — direct access to `s3://stpubdata/jwst/public/`, free, no auth
+3. **MAST REST API** (`mast_api_query()`) — custom programmatic queries
+
+### 5. Dataset Loaders (`research/agents/dataset_loaders.py`)
+
+```python
+# Multimodal Universe (100TB on HuggingFace, streaming)
+light_curves = load_mmu("plasticc", streaming=True, max_samples=1000)
+galaxy_images = load_mmu("legacysurvey", streaming=True)
+jwst_data = load_mmu("jwst_ceers", streaming=True)
+
+# AstroML (local datasets)
+spectra = load_astroml("sdss_spectra")
+quasars = load_astroml("dr7_quasar")
+
+# List all available
+print(list_mmu_datasets())      # 12 HuggingFace datasets
+print(list_astroml_datasets())  # 8 local datasets
+print(list_polymathic_models()) # 3 GPU models (need Colab Pro)
+```
+
+### Environment Validation
+
+```bash
+python3 research/env_check.py          # Check which keys are configured
+python3 research/env_check.py --test   # Also run connectivity tests
+```
+
+### API Keys Status
+
+| Key | Source | Status |
+|-----|--------|--------|
+| ANTHROPIC_API_KEY | Anthropic | Configured |
+| OPENAI_API_KEY | OpenAI | Configured |
+| GOOGLE_AI_API_KEY | Google (Gemini) | Configured |
+| DEEPSEEK_API_KEY | DeepSeek | Configured |
+| XAI_API_KEY | xAI (Grok) | Configured |
+| OPENROUTER_API_KEY | OpenRouter | Configured |
+| NASA_ADS_API_KEY | NASA ADS | Configured |
+| SEMANTIC_SCHOLAR_API_KEY | Semantic Scholar | Pending approval |
+| PERPLEXITY_API_KEY | Perplexity | Configured |
+| WOLFRAM_ALPHA_APP_ID | Wolfram Alpha | Configured |
+| HUGGINGFACE_TOKEN | HuggingFace | Configured |
+| FIRECRAWL_API_KEY | Firecrawl | Configured |
+
+Keys are stored in `.env.local` (gitignored) and loaded automatically by all agents.
+Also mirrored to Convex cloud for Hubify workspace agents.
+
+### GPU Compute (Colab Pro)
+
+For Polymathic AI models (Walrus/AION-1), use Google Colab Pro:
+- Notebook: `research/notebooks/bigbounce_gpu.ipynb`
+- Runtime: Change to GPU (A100 recommended)
+- Secrets: Add API keys in Colab sidebar (key icon)
+
+### Lean 4 (Formal Proofs)
+
+Lean 4 v4.28.0 is installed locally. For formalizing BigBounce theorems:
+```bash
+export PATH="$HOME/.elan/bin:$PATH"
+lean --version
+```
+
+### Full Integration Plan
+
+See `project-context/RESEARCH_TOOLS_INTEGRATION.md` for the complete 29-tool checklist.
+
+---
+
 ## Contact
 
 Houston Golden — houston@hubify.com

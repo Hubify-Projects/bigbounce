@@ -1,7 +1,8 @@
 # BigBounce Research Tools Integration Plan
 
 **Created:** 2026-03-03
-**Status:** Planning
+**Updated:** 2026-03-03
+**Status:** Phase 1 COMPLETE, Phase 2 in progress
 **Goal:** Integrate all relevant science/AI tools for autonomous and assisted research on the BigBounce paper and future physics work.
 
 ---
@@ -32,7 +33,7 @@
 | 17 | Astroquery | Python lib | No key | Free | READY | Claude can integrate |
 | 18 | Jdaviz | Python lib | No key | Free | READY | Claude can install |
 | **Formal Verification** |
-| 19 | Lean 4 + Mathlib | Local install | No key | Free | NEEDS SETUP | Houston: install elan |
+| 19 | Lean 4 + Mathlib | Local install | No key | Free | INSTALLED (v4.28.0) | Done |
 | 20 | AlphaProof | CLOSED | N/A | N/A | UNAVAILABLE | Not released by Google |
 | **Web-Only Tools (Manual Use)** |
 | 21 | ResearchRabbit | Web only | No API | Free | MANUAL | Houston: use browser |
@@ -152,12 +153,9 @@ Unified search across NASA ADS + Semantic Scholar + arXiv.
 - **Alternative:** Use Perplexity `sonar-pro` for similar web-grounded research queries
 - **Impact:** Fact-checking claims against peer-reviewed literature
 
-### 2.4 Lean 4 Installation (Formal Proofs)
-- **Action:** Run in terminal:
-  ```bash
-  curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
-  ```
-- **Then:** Install VS Code + Lean 4 extension
+### 2.4 Lean 4 Installation (Formal Proofs) — DONE
+- **Status:** Installed v4.28.0 via elan
+- **Next:** Install VS Code + Lean 4 extension
 - **Then:** `lake new bigbounce-proofs` to create a proof project
 - **Impact:** Formalize and machine-verify key BigBounce theorems
 - **Priority equations to formalize:**
@@ -165,14 +163,10 @@ Unified search across NASA ADS + Semantic Scholar + arXiv.
   2. Dilution chain: D_inf = e^{-3N}(T_reh/M_GUT)^{3/2}
   3. Dimensional analysis: [α/M · F^{on-shell}] = +4
 
-### 2.5 Cloud GPU for Polymathic AI Models
-- **Need:** GPU with 8GB+ VRAM for Walrus (1.3B params) or 16GB+ for AION-1 (3.1B)
-- **Options:**
-  - Google Colab Pro ($10/mo) — A100 access
-  - Lambda Labs ($1.10/hr) — A100 on demand
-  - HuggingFace Spaces (free GPU tier for inference)
-  - NASA Fornax XLarge tier (free, if GPU-equipped)
-- **Action:** Choose a GPU provider; Claude can write the inference scripts
+### 2.5 Cloud GPU for Polymathic AI Models — DONE
+- **Chosen:** Google Colab Pro ($10/mo) — A100 access
+- **Notebook:** `research/notebooks/bigbounce_gpu.ipynb`
+- **Secrets to add in Colab:** HUGGINGFACE_TOKEN, ANTHROPIC_API_KEY, GOOGLE_AI_API_KEY, DEEPSEEK_API_KEY
 - **Impact:** Physics-informed inference on astronomical data
 
 ### 2.6 Web-Only Tools (Browser Use)
@@ -270,13 +264,15 @@ matplotlib
 | PERPLEXITY_API_KEY | CONFIGURED |
 | WOLFRAM_ALPHA_APP_ID | CONFIGURED |
 
-**9/12 keys configured. 1 pending. 2 not needed yet (Consensus waitlist, Trinka enterprise).**
+**11/12 keys configured. 1 pending (Semantic Scholar). 2 not needed yet (Consensus waitlist, Trinka enterprise).**
+
+Also configured: `DEFAULT_RESEARCH_MODEL=claude-opus-4-6`, `MAX_REASONING_TOKENS=16384`, `RESEARCH_OUTPUT_DIR=./research/outputs`
 
 ---
 
 ## Priority Order
 
-1. **NOW:** Claude builds Phase 1 scripts (reasoning router, literature search, computation, data access)
-2. **THIS WEEK:** Houston registers for Fornax, installs Lean 4, gets Semantic Scholar key
-3. **NEXT:** Wire Phase 1 into automated pre-submission pipeline
-4. **LATER:** Cloud GPU for Polymathic AI models, Lean 4 proof formalization
+1. ~~**NOW:** Claude builds Phase 1 scripts~~ — **DONE** (5 scripts, all tested)
+2. ~~**THIS WEEK:** Lean 4~~ — **DONE** (v4.28.0). ~~Cloud GPU~~ — **DONE** (Colab Pro). Semantic Scholar key — **PENDING**
+3. **NEXT:** Wire Phase 1 into automated pre-submission pipeline (`paper_checker.py` + `run_pipeline.py`)
+4. **LATER:** Lean 4 proof formalization, Fornax registration
