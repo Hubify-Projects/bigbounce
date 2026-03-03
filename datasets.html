@@ -157,11 +157,11 @@
         <tr><td>Primary method</td><td>Metropolis-Hastings</td></tr>
         <tr><td>Evidence estimation</td><td>PolyChord nested sampling</td></tr>
         <tr><td>Convergence criterion</td><td>Gelman-Rubin R &lt; 1.01</td></tr>
-        <tr><td>Extended parameter space</td><td>&Lambda;CDM + &Delta;N<sub>eff</sub> + &Omega;<sub>k</sub> + (&omega;/H)&#8320;</td></tr>
+        <tr><td>Extended parameter space</td><td>&Lambda;CDM + &Delta;N<sub>eff</sub> + (&omega;/H)&#8320; (&Omega;<sub>k</sub> = 0, fixed by inflation)</td></tr>
         <tr><td>Priors</td><td>Flat on all new parameters within physically motivated bounds</td></tr>
       </tbody>
     </table>
-    <p class="text-muted" style="margin-top: 12px;">The standard six &Lambda;CDM parameters (&Omega;<sub>b</sub>h&sup2;, &Omega;<sub>c</sub>h&sup2;, &theta;<sub>s</sub>, &tau;, ln(10<sup>10</sup>A<sub>s</sub>), n<sub>s</sub>) are augmented with three additional parameters: the effective number of extra relativistic species &Delta;N<sub>eff</sub> (phenomenological, motivated by bounce scenario), the spatial curvature &Omega;<sub>k</sub>, and the present-day cosmic rotation rate (&omega;/H)&#8320;. Prior ranges are chosen to encompass theoretically viable values: &Delta;N<sub>eff</sub> &isin; [0, 1], &Omega;<sub>k</sub> &isin; [&minus;0.05, 0.05], and log<sub>10</sub>(&omega;/H)&#8320; &isin; [&minus;14, &minus;8].</p>
+    <p class="text-muted" style="margin-top: 12px;">The standard six &Lambda;CDM parameters (&Omega;<sub>b</sub>h&sup2;, &Omega;<sub>c</sub>h&sup2;, &theta;<sub>s</sub>, &tau;, ln(10<sup>10</sup>A<sub>s</sub>), n<sub>s</sub>) are augmented with two additional parameters: the effective number of extra relativistic species &Delta;N<sub>eff</sub> (phenomenological, motivated by bounce scenario) and the present-day cosmic rotation rate (&omega;/H)&#8320;. Spatial curvature &Omega;<sub>k</sub> is fixed to 0 &mdash; mandated by 92 e-folds of inflation in the model, which drives curvature to zero and removes it as a free parameter. Prior ranges for the two additional parameters are: &Delta;N<sub>eff</sub> &isin; [0, 1] and log<sub>10</sub>(&omega;/H)&#8320; &isin; [&minus;14, &minus;8].</p>
   </div>
 </section>
 
@@ -309,7 +309,7 @@
     <div class="card">
       <h3>Interpretation</h3>
       <p class="text-muted">AIC consistently favors our model (&Delta;AIC &lt; 0), especially with tension datasets. BIC penalizes extra parameters but the penalty is modest. The model earns its additional parameters by resolving two tensions simultaneously &mdash; something &Lambda;CDM and wCDM cannot do.</p>
-      <p class="text-muted" style="margin-top: 8px"><strong>Decisive evidence</strong> requires future EB/spin detection (forecast: &Delta;ln Z &gt; 5 with CMB-S4 + LiteBIRD).</p>
+      <p class="text-muted" style="margin-top: 8px"><strong>Decisive evidence</strong> requires future EB/spin detection. Note: forecasting specific Bayes factor milestones is premature until signal amplitudes are derived from first principles &mdash; the photon-torsion coupling needed to predict EB amplitude has not yet been worked out.</p>
     </div>
   </div>
 
@@ -369,7 +369,7 @@
 
   <div class="chart-wrapper">
     <canvas id="detectionChart"></canvas>
-    <p class="chart-caption"><strong>Figure 5:</strong> Forecast detection significance over time for CMB E-B (blue), galaxy spin asymmetry (green), and combined analysis (amber). The 3&sigma; evidence and 5&sigma; discovery thresholds are marked. Combined significance could reach 4.5&sigma; by 2030 and 4.2&ndash;5.9&sigma; by 2034 (depending on cross-correlation assumptions), if signals exist at expected amplitudes.</p>
+    <p class="chart-caption"><strong>Figure 5:</strong> Forecast detection significance over time for CMB E-B (blue), galaxy spin asymmetry (green), and combined analysis (amber). The 3&sigma; evidence and 5&sigma; discovery thresholds are marked. <strong>Caveat:</strong> These projections assume signals exist at amplitudes consistent with current hints. Because the photon-torsion coupling needed to derive the EB signal amplitude has not yet been worked out, the EB forecasts are illustrative placeholders rather than model predictions. Actual significance will depend on the true signal strength once that coupling is derived.</p>
   </div>
 
   <div class="data-table">
@@ -392,7 +392,7 @@
         <tr><td>2034</td><td>Full combined</td><td>3.8&sigma;</td><td>4.5&sigma;</td><td>5.9&sigma;</td></tr>
       </tbody>
     </table>
-    <p class="data-source">Forecast methodology: Fisher matrix analysis with published instrument specifications. Systematic uncertainties modeled via Monte Carlo simulations. EB sensitivity from instrument noise + foreground residuals. Spin sensitivity from sample size + classification accuracy.</p>
+    <p class="data-source">Forecast methodology: Fisher matrix analysis with published instrument specifications. Systematic uncertainties modeled via Monte Carlo simulations. EB sensitivity from instrument noise + foreground residuals. Spin sensitivity from sample size + classification accuracy. <strong>Important caveat:</strong> EB significance forecasts assume signal amplitudes consistent with current Planck hints. These figures will require revision once the photon-torsion coupling is derived and a theoretical EB amplitude is established. Forecasting specific timeline milestones is premature at this stage.</p>
   </div>
 
   <div class="download-row">
