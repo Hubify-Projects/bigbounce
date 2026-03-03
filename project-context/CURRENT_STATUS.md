@@ -1,206 +1,122 @@
 # Current Status: BigBounce Research Paper
 
+**Last updated: 2026-03-03**
+
 ## Project Overview
 
-The BigBounce project is a comprehensive theoretical physics research paper presenting a novel framework for dark energy through spin-torsion cosmology. The project is currently in a **completed MVP state** with all core functionality implemented and deployed.
+The BigBounce project presents a novel framework for dark energy through Einstein-Cartan-Holst spin-torsion cosmology. The paper is at **v0.9.0** after 5 comprehensive revision rounds. All known critical issues have been addressed.
 
-## What Works Today
+**Author:** Houston Golden (Independent Researcher, Los Angeles, California, USA)
+**Preprint ID:** HUBIFY-2026-001
+**GitHub:** `Hubify-Projects/bigbounce`
+**Website:** `bigbounce.hubify.app`
+**Deployment:** Vercel
 
-### ✅ Core Research Content
-- **Complete Theoretical Framework**: 35,000-word comprehensive paper with 80+ mathematical equations
-- **Organized Structure**: 12 sections from abstract to acknowledgments (`paper/00-abstract.md` through `paper/11-acknowledgments.md`)
-- **Mathematical Rigor**: Complete derivations of LQG-Einstein-Cartan integration and parity-odd effective action
-- **Observational Predictions**: Specific, falsifiable predictions for CMB E-B correlations and galaxy spin asymmetry
-- **Systematic Analysis**: Comprehensive error budgets with 85-95% contamination reduction strategies
+## Paper Status: v0.9.0 (Active)
 
-### ✅ Web Interface
-- **Password Protection**: Functional client-side authentication (password: "houston")
-- **MathJax Integration**: Beautiful mathematical rendering with LaTeX support
-- **Responsive Design**: Mobile-first design with cross-browser compatibility
-- **Navigation**: Smooth scrolling and table of contents navigation
-- **Image Lightbox**: Full-screen image viewing for scientific figures
-- **Academic Styling**: Professional typography and layout
+### What's Complete
+- **29-page manuscript** in RevTeX4-2 (Physical Review D format), 0 undefined references
+- **7 MCMC parameters** fit to Planck+BAO+SN data via Cobaya v3.5 with stock CAMB
+- **Inflationary Suppression Factor** (ξ) — phenomenological parameter for spin-torsion dilution
+- **Claims Classification Table** (Appendix K) — honest categorization of all claims
+- **Reproducibility bundle** — 4 Cobaya YAMLs, Stan galaxy spin model, reproduce scripts
+- **IMPLEMENTATION_MAP.md** and **KNOWN_GAPS.md** documenting what exists vs what doesn't
+- **Literature-only CMB analysis** — all birefringence values from Minami & Komatsu 2020, Eskilt 2022
+- **Galaxy spin asymmetry** reframed as "contested anomaly" with null-result paragraph
 
-### ✅ Supporting Materials
-- **Scientific Figures**: 11 high-resolution PNG images in `public/images/`
-- **Data Spreadsheets**: 7 Excel files with observational constraints in `public/spreadsheets/`
-- **Complete Bibliography**: Comprehensive references with proper citations
+### Version History (9 versions tracked)
+| Version | Date | Summary |
+|---------|------|---------|
+| v0.1.0 | 2025-07-15 | Initial draft — core ECH framework |
+| v0.2.0 | 2025-11-10 | Critical review, professional tone |
+| v0.3.0 | 2026-02-15 | Research squad integration (4 AI agents) |
+| v0.4.0 | 2026-02-18 | Expansion to 35 sections + 4 appendices |
+| v0.5.0 | 2026-02-18 | Interactive website + visualizations |
+| v0.6.0 | 2026-02-18 | Deep research + adversarial review |
+| v0.7.0 | 2026-03-01 | Cross-artifact sync, scientific corrections |
+| v0.8.0 | 2026-03-03 | Nuclear option — maximum credibility revision |
+| v0.9.0 | 2026-03-03 | Reproducibility bundle + claim downgrades |
 
-### ✅ Technical Infrastructure
-- **Development Server**: Express.js local server (`server.js`) for development
-- **Production Deployment**: Netlify hosting with automatic deployment
-- **Security Headers**: Proper security configuration in `netlify.toml`
-- **Performance Optimization**: CDN distribution and caching policies
+### 5 Revision Rounds Completed
+1. **Comprehensive audit** — 14 issues identified and fixed
+2. **arXiv readiness** — operator formalism, one-loop scope, EB prediction
+3. **Nuclear option** — deleted forecast section, dropped Ω_k, softened all claims
+4. **Skeptical coauthor** — 8 task groups addressing fatal contradictions
+5. **Reproducibility captain** — Route 2 (Conservative), stock CAMB, honest artifacts
 
-## What's Broken or Needs Attention
+## Website Status
 
-### ⚠️ Security Considerations
-- **Client-Side Password**: Password is visible in source code (cosmetic protection only)
-- **No Server Validation**: Authentication can be bypassed by viewing source
-- **Recommendation**: Consider server-side authentication for production use
+### Multi-page site at bigbounce.hubify.app
+| Page | Status | Description |
+|------|--------|-------------|
+| `index.html` | Synced to v0.9.0 | Overview with key results |
+| `paper.html` | Synced to v0.9.0 | Full paper rendering with MathJax |
+| `explained.html` | Synced to v0.9.0 | Accessible explainer |
+| `datasets.html` | Synced to v0.9.0 | Data comparison with Chart.js |
+| `methodology.html` | Synced to v0.9.0 | Methods and AI-assisted QA |
+| `mathematics.html` | Synced to v0.9.0 | Full derivations with expandable sections |
+| `versions.html` | Synced to v0.9.0 | Version history with changelogs |
+| `data-comparison.html` | Active | 6 interactive Chart.js charts |
+| `animations.html` | Active | SVG/Canvas visualizations |
 
-### ⚠️ Performance Optimizations
-- **Image Loading**: Large PNG files could benefit from WebP conversion
-- **MathJax Performance**: Complex equations may slow rendering on mobile devices
-- **No Lazy Loading**: All images load immediately on page load
+### Downloadable PDF
+- Located at `public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf`
+- 29 pages, compiled via Docker texlive, 0 undefined references
 
-### ⚠️ Accessibility Improvements
-- **Screen Reader**: Limited ARIA labels and semantic structure
-- **Keyboard Navigation**: Could be improved for better accessibility
-- **Color Contrast**: May need verification for WCAG compliance
+## Key Architecture
 
-### ⚠️ Content Management
-- **Static Content**: No dynamic updates or version control in UI
-- **No Search**: Full-text search not implemented
-- **No Comments**: No peer review or discussion system
+### Repository Structure
+```
+bigbounce/
+├── arxiv/              # LaTeX source (canonical)
+│   ├── main.tex        # Paper source of truth
+│   ├── main.bbl        # Bibliography
+│   └── README-SUBMISSION.txt
+├── reproducibility/    # Working artifacts
+│   ├── cobaya_baseline.yaml
+│   ├── cobaya_ech_model.yaml
+│   ├── cobaya_ech_extended.yaml
+│   ├── cobaya_model_comparison.yaml
+│   ├── galaxy_spin_model.stan
+│   ├── reproduce_mcmc.sh
+│   ├── reproduce_galaxy_spins.sh
+│   ├── data/
+│   ├── IMPLEMENTATION_MAP.md
+│   └── KNOWN_GAPS.md
+├── versions/           # Version tracking
+│   └── manifest.json
+├── public/             # Static assets
+│   ├── downloads/      # PDF
+│   ├── images/
+│   └── spreadsheets/
+├── project-context/    # Documentation
+│   └── peer-reviews/   # All review rounds
+├── *.html              # Website pages
+└── version.json        # Root version metadata
+```
 
-## What's Mocked or Placeholder
+### Canonical Source of Truth
+`arxiv/main.tex` → all website pages mirror it. Any change to the paper must be synced to HTML.
 
-### 🔄 Future Features (Not Implemented)
-- **Interactive Simulations**: JavaScript cosmological calculators
-- **Real-Time Data**: Live updates from observational surveys
-- **Collaborative Features**: Multi-user support and peer review system
-- **Search Functionality**: Full-text search across paper content
-- **Mobile App**: Native iOS/Android application
+## What's NOT in the Paper (Honest Gaps)
 
-### 🔄 Advanced Analytics (Not Implemented)
-- **User Analytics**: Detailed usage tracking and engagement metrics
-- **Performance Monitoring**: Real user monitoring and error tracking
-- **A/B Testing**: Content optimization based on user behavior
+Per `KNOWN_GAPS.md`:
+- No custom CAMB module (uses stock CAMB with N_eff as free parameter)
+- No actual MCMC chain files (methodology described, runs not yet executed)
+- No original CMB map analysis (all values from published literature)
+- No CNN galaxy spin classifier (uses published catalog labels)
+- Galaxy spin signal has 37-order-of-magnitude gap from torsion coupling
 
-## Top Priorities
+## Next Steps for arXiv Submission
 
-### 1. **Immediate (Next 2 Weeks)**
-- [ ] **Security Enhancement**: Implement server-side authentication or remove password protection
-- [ ] **Performance Audit**: Optimize images and MathJax loading
-- [ ] **Accessibility Review**: Add ARIA labels and improve keyboard navigation
-- [ ] **Cross-Browser Testing**: Verify functionality across all target browsers
+1. **Execute MCMC runs** — Run the 4 Cobaya YAMLs to produce actual chain files
+2. **Final proofread** — One more pass for typos, formatting
+3. **arXiv category selection** — gr-qc (primary), astro-ph.CO (cross-list)
+4. **Submission** — Upload main.tex + .bbl + figures
 
-### 2. **Short Term (Next Month)**
-- [ ] **Community Engagement**: Share with physics community and gather feedback
-- [ ] **Content Validation**: Peer review and mathematical verification
-- [ ] **Search Implementation**: Add full-text search functionality
-- [ ] **Analytics Setup**: Implement basic usage tracking
+## Peer Review Documentation
 
-### 3. **Medium Term (Next 3 Months)**
-- [ ] **Interactive Features**: Add JavaScript cosmological calculators
-- [ ] **Content Updates**: Incorporate new experimental results
-- [ ] **Mobile Optimization**: Improve mobile performance and usability
-- [ ] **Documentation**: Create user guides and technical documentation
-
-## Open Questions
-
-### Technical Questions
-1. **Authentication Strategy**: Should we implement proper server-side authentication or remove password protection entirely?
-2. **Performance vs. Quality**: How to balance image quality with loading performance?
-3. **Framework Migration**: When should we consider migrating to Next.js or React?
-4. **Search Implementation**: What's the best approach for full-text search (client-side vs. server-side)?
-
-### Content Questions
-1. **Peer Review Process**: How to best facilitate peer review and community feedback?
-2. **Update Strategy**: How to handle content updates as new experimental results become available?
-3. **Version Control**: Should we implement content versioning in the UI?
-4. **Collaboration**: How to enable multi-author collaboration while maintaining quality?
-
-### Strategic Questions
-1. **Target Audience**: Should we focus on academic researchers or expand to broader public engagement?
-2. **Monetization**: Is there potential for educational licensing or commercial applications?
-3. **Scaling Strategy**: How to handle increased traffic and user engagement?
-4. **Long-term Maintenance**: What resources are needed for ongoing maintenance and updates?
-
-## Decision Log
-
-### Recent Decisions
-- **2024-12**: Chose static site approach over dynamic framework for simplicity and performance
-- **2024-12**: Selected Netlify for hosting due to free tier and automatic deployment
-- **2024-12**: Implemented client-side password protection for basic access control
-- **2024-12**: Used MathJax CDN for mathematical rendering to avoid build complexity
-
-### Pending Decisions
-- **Authentication**: Server-side vs. client-side vs. no authentication
-- **Search Implementation**: Client-side vs. server-side search
-- **Framework Migration**: When and how to migrate to modern frameworks
-- **Content Management**: How to handle dynamic content updates
-
-## Known Issues
-
-### Technical Issues
-1. **MathJax Loading**: Occasional slow rendering on mobile devices
-2. **Image Optimization**: Large PNG files impact loading performance
-3. **Browser Compatibility**: Minor rendering differences across browsers
-4. **Mobile Navigation**: Touch interactions could be improved
-
-### Content Issues
-1. **Cross-References**: Some internal links may need updating
-2. **Figure Captions**: Some images may need better accessibility descriptions
-3. **Bibliography**: May need updates as new papers are published
-4. **Data Currency**: Spreadsheets may need updates as new observations are made
-
-### User Experience Issues
-1. **No Search**: Users cannot easily find specific content
-2. **No Progress Indicator**: No way to track reading progress
-3. **No Bookmarking**: No way to save specific sections
-4. **No Print Support**: Limited print-friendly formatting
-
-## Performance Metrics
-
-### Current Performance
-- **Load Time**: ~2-3 seconds on desktop, ~4-5 seconds on mobile
-- **MathJax Rendering**: ~1-2 seconds for complex equations
-- **Image Loading**: Progressive loading with lightbox on-demand
-- **Memory Usage**: Minimal (static content, no server-side processing)
-
-### Target Performance
-- **Load Time**: < 2 seconds on all devices
-- **MathJax Rendering**: < 1 second for all equations
-- **Image Loading**: < 1 second for initial images
-- **Memory Usage**: < 50MB total
-
-## Success Metrics
-
-### Academic Impact
-- **Citations**: Track references in peer-reviewed literature
-- **Conference Presentations**: Monitor adoption at physics conferences
-- **Research Collaboration**: Measure collaborative research projects
-- **Funding Success**: Track grant applications citing the framework
-
-### User Engagement
-- **Website Traffic**: Monitor unique visitors and time on page
-- **Section Completion**: Track which sections are most read
-- **Return Visits**: Measure user retention and engagement
-- **Feedback Quality**: Collect and analyze user feedback
-
-### Technical Performance
-- **Uptime**: Maintain 99.9% availability
-- **Performance**: Keep load times under 2 seconds
-- **Accessibility**: Achieve WCAG 2.1 AA compliance
-- **Browser Support**: Maintain 100% target browser compatibility
-
-## Next Steps
-
-### Immediate Actions (This Week)
-1. **Security Review**: Decide on authentication strategy
-2. **Performance Testing**: Run comprehensive performance audit
-3. **Accessibility Audit**: Test with screen readers and keyboard navigation
-4. **Content Review**: Final proofreading and cross-reference checking
-
-### Short-term Goals (Next Month)
-1. **Community Launch**: Share with physics community
-2. **Feedback Collection**: Gather user feedback and suggestions
-3. **Feature Prioritization**: Decide on next feature implementations
-4. **Analytics Setup**: Implement usage tracking and monitoring
-
-### Long-term Vision (Next 6 Months)
-1. **Interactive Features**: Add JavaScript calculators and simulations
-2. **Collaborative Tools**: Implement peer review and discussion system
-3. **Mobile App**: Develop native mobile application
-4. **Educational Integration**: Partner with universities for course adoption
-
-## How to Keep This File Fresh
-
-- **Weekly Updates**: Review and update status based on new developments
-- **Monthly Reviews**: Assess progress against goals and adjust priorities
-- **Quarterly Planning**: Update roadmap and strategic direction
-- **User Feedback**: Incorporate feedback into status and priorities
-- **Technical Monitoring**: Update based on performance metrics and issues
-
+All reviews saved in `project-context/peer-reviews/`:
+- `2026-03-02_1917PST_comprehensive-audit.md`
+- `2026-03-02_1917PST_claims-table.md`
+- `REVISION_TRACKER.md` — tracks all 5 rounds with issue resolution
