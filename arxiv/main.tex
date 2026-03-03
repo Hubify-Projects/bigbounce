@@ -41,8 +41,8 @@
 \newcommand{\eg}{e.g.}
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v0.9.0}
-\newcommand{\paperTimestamp}{2026-03-03}
+\newcommand{\paperVersion}{v0.9.1}
+\newcommand{\paperTimestamp}{2026-03-03T13:30-08:00}
 
 \begin{document}
 
@@ -135,7 +135,7 @@ Each theoretical ingredient above has been studied independently. Our contributi
 
 \item \textit{Inflationary suppression mechanism}: Scaling estimate of how inflationary expansion suppresses the primordial parity-odd coefficient by $\sim e^{-3N}$, converting a Planck-scale effect into the observed dark energy scale and reducing fine-tuning by 115 orders of magnitude relative to $\Lambda$CDM.
 
-\item \textit{Inflationary suppression factor}: Introduction of $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ as the dimensionless factor setting the dark energy scale via $\rho_\Lambda = \Xi\,\MPl^4$, with its value determined by early-universe physics (dimensional chain relies on on-shell evaluation at Planck densities; see Appendix~\ref{app:dimcheck}).
+\item \textit{Inflationary suppression factor}: Introduction of $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ as the dimensionless factor setting the dark energy scale via $\rho_\Lambda = \Xi\,\MPl^4$, with its value determined by early-universe physics (dimensional chain relies on on-shell evaluation at Planck densities; see Appendix~\ref{app:dimensions}).
 \end{enumerate}
 
 
@@ -201,7 +201,7 @@ where $\mathcal{F}^{IJ}$ collects the contorsion-dependent pieces ($\mathring{D}
 \begin{equation}\label{eq:Seff_comp}
 S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
 \end{equation}
-where the operator $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ and $\alpha/M$ has dimension~$-1$, giving a total Lagrangian density of mass dimension~$+1$---three short of the required~$+4$ (see Appendix~\ref{app:dimcheck} for the full counting). The missing three powers of mass arise through \textit{on-shell evaluation} at Planck-scale densities (Sec.~\ref{sec:dimbridge}), where the spin-sourced contorsion evaluates to $K\sim\MPl$ and the curvature to $R\sim\MPl^2$. The relation $\rho_\Lambda = \Xi\,\MPl^4$ is therefore a \textit{scaling ansatz}---dimensionally correct on-shell at the bounce---not a derivation from a renormalizable effective field theory. Throughout this paper, we adopt the convention that the Einstein-Hilbert action carries the standard $\MPl^2/2$ prefactor, while the parity-odd sector carries $\alpha/M$ independently.
+where the operator $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ and $\alpha/M$ has dimension~$-1$, giving a total Lagrangian density of mass dimension~$+1$---three short of the required~$+4$ (see Appendix~\ref{app:dimensions} for the full counting). The missing three powers of mass arise through \textit{on-shell evaluation} at Planck-scale densities (Sec.~\ref{sec:dimbridge}), where the spin-sourced contorsion evaluates to $K\sim\MPl$ and the curvature to $R\sim\MPl^2$. The relation $\rho_\Lambda = \Xi\,\MPl^4$ is therefore a \textit{scaling ansatz}---dimensionally correct on-shell at the bounce---not a derivation from a renormalizable effective field theory. Throughout this paper, we adopt the convention that the Einstein-Hilbert action carries the standard $\MPl^2/2$ prefactor, while the parity-odd sector carries $\alpha/M$ independently.
 
 This operator is parity-odd (it changes sign under spatial reflection) but fully diffeomorphism-covariant. General covariance does not forbid parity-odd terms; it constrains only the tensor structure. Since classical gravity preserves parity, the coefficient $\alpha/M$ must be generated through quantum corrections.
 
@@ -1306,7 +1306,7 @@ The Holst term contributes to the parity-odd channel through the one-loop diagra
 
 The inflationary suppression factor $\Xi = [(\alpha/M)\,\MPl]\times\Dinf$ sets the dark energy scale because:
 \begin{enumerate}[leftmargin=*]
-\item The effective action Eq.~\eqref{eq:Seff_comp} has coefficient $\alpha/M$ (mass dimension~$-1$); the tetrad-curvature combination $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu \mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ off-shell (Appendix~\ref{app:dimcheck}), giving an operator of mass dimension~$+1$---three short of the required~$+4$. The missing powers arise through on-shell evaluation at Planck densities (Sec.~\ref{sec:dimbridge}). The factor of $\MPl$ in the dimensionless combination $[(\alpha/M)\,\MPl]$ arises from this on-shell evaluation ($K\sim\MPl$), not from an additional prefactor in the action itself.
+\item The effective action Eq.~\eqref{eq:Seff_comp} has coefficient $\alpha/M$ (mass dimension~$-1$); the tetrad-curvature combination $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu \mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ off-shell (Appendix~\ref{app:dimensions}), giving an operator of mass dimension~$+1$---three short of the required~$+4$. The missing powers arise through on-shell evaluation at Planck densities (Sec.~\ref{sec:dimbridge}). The factor of $\MPl$ in the dimensionless combination $[(\alpha/M)\,\MPl]$ arises from this on-shell evaluation ($K\sim\MPl$), not from an additional prefactor in the action itself.
 \item The dimensionless combination $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the phenomenological best-fit value, consistent with the one-loop order-of-magnitude estimate $g^2\gamma/(32\pi^2)\sim 10^{-2}$.
 \item Inflationary dilution gives $\Dinf = e^{-3N_{\rm tot}}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ (Eq.~\ref{eq:Dinf}), where $e^{-3N_{\rm tot}}$ arises from dilution of the spin-density source $K_{ab}\propto a^{-3}$.
 \item The vacuum energy density is $\rho_\Lambda = \Xi\,\MPl^4 = [(\alpha/M)\,\MPl]\times\Dinf\times\MPl^4 \sim 10^{-2}\times 10^{-121}\times\MPl^4 \sim 10^{-123}\,\MPl^4 \approx (2.3\;\text{meV})^4$.
