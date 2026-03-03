@@ -161,7 +161,7 @@
         <tr><td>Priors</td><td>Flat on all new parameters within physically motivated bounds</td></tr>
       </tbody>
     </table>
-    <p class="text-muted" style="margin-top: 12px;">The standard six &Lambda;CDM parameters (&Omega;<sub>b</sub>h&sup2;, &Omega;<sub>c</sub>h&sup2;, &theta;<sub>s</sub>, &tau;, ln(10<sup>10</sup>A<sub>s</sub>), n<sub>s</sub>) are augmented with three additional parameters: the effective number of extra relativistic species &Delta;N<sub>eff</sub> from bounce particle production, the spatial curvature &Omega;<sub>k</sub>, and the present-day cosmic rotation rate (&omega;/H)&#8320;. Prior ranges are chosen to encompass theoretically viable values: &Delta;N<sub>eff</sub> &isin; [0, 1], &Omega;<sub>k</sub> &isin; [&minus;0.05, 0.05], and log<sub>10</sub>(&omega;/H)&#8320; &isin; [&minus;14, &minus;8].</p>
+    <p class="text-muted" style="margin-top: 12px;">The standard six &Lambda;CDM parameters (&Omega;<sub>b</sub>h&sup2;, &Omega;<sub>c</sub>h&sup2;, &theta;<sub>s</sub>, &tau;, ln(10<sup>10</sup>A<sub>s</sub>), n<sub>s</sub>) are augmented with three additional parameters: the effective number of extra relativistic species &Delta;N<sub>eff</sub> (phenomenological, motivated by bounce scenario), the spatial curvature &Omega;<sub>k</sub>, and the present-day cosmic rotation rate (&omega;/H)&#8320;. Prior ranges are chosen to encompass theoretically viable values: &Delta;N<sub>eff</sub> &isin; [0, 1], &Omega;<sub>k</sub> &isin; [&minus;0.05, 0.05], and log<sub>10</sub>(&omega;/H)&#8320; &isin; [&minus;14, &minus;8].</p>
   </div>
 </section>
 
@@ -170,11 +170,11 @@
 <!-- ======================================== -->
 <section class="section">
   <h2>1. Hubble Constant Measurements</h2>
-  <p>The Hubble tension &mdash; the discrepancy between early-universe (CMB) and late-universe (distance ladder) measurements of H&#8320; &mdash; is one of the most significant problems in modern cosmology. Our spin-torsion model predicts H&#8320; = 69.2 &plusmn; 0.8 km/s/Mpc, bridging the gap.</p>
+  <p>The Hubble tension &mdash; the discrepancy between early-universe (CMB) and late-universe (distance ladder) measurements of H&#8320; &mdash; is one of the most significant problems in modern cosmology. Our spin-torsion model yields H&#8320; = 69.2 &plusmn; 0.8 km/s/Mpc from MCMC fits, bridging the gap.</p>
 
   <div class="chart-wrapper">
     <canvas id="h0Chart"></canvas>
-    <p class="chart-caption"><strong>Figure 1:</strong> H&#8320; measurements from independent experiments. The grey band shows the Planck 2018 &Lambda;CDM value (67.36 &plusmn; 0.54). The amber band shows the spin-torsion model prediction (69.2 &plusmn; 0.8). The red band shows SH0ES (73.04 &plusmn; 1.04). Data points from published results.</p>
+    <p class="chart-caption"><strong>Figure 1:</strong> H&#8320; measurements from independent experiments. The grey band shows the Planck 2018 &Lambda;CDM value (67.36 &plusmn; 0.54). The amber band shows the spin-torsion MCMC fit (69.2 &plusmn; 0.8). The red band shows SH0ES (73.04 &plusmn; 1.04). Data points from published results.</p>
   </div>
 
   <div class="data-table">
@@ -204,7 +204,7 @@
   </div>
 
   <div class="highlight-box">
-    <p><strong>Key Result:</strong> The spin-torsion model reduces Hubble tension from 4.4&sigma; to 1.4&sigma; by shifting H&#8320; upward through &Delta;N<sub>eff</sub> ~ 0.24 from particle production at the bounce, without conflicting with CMB data. The model prediction falls naturally between early and late universe measurements, aligning closely with the TRGB measurement.</p>
+    <p><strong>Key Result:</strong> The spin-torsion model reduces the Planck&ndash;SH0ES Hubble discrepancy from 4.4&sigma; to 2.9&sigma; through an extended parameter space with phenomenological &Delta;N<sub>eff</sub> ~ 0.24 (motivated by the bounce scenario). The MCMC fit falls between early and late universe measurements, aligning closely with the TRGB measurement.</p>
   </div>
 
   <div class="download-row">
@@ -218,11 +218,11 @@
 <!-- ======================================== -->
 <section class="section">
   <h2>2. Matter Clustering (&sigma;&#8328;) Tension</h2>
-  <p>The &sigma;&#8328; tension reflects a discrepancy between CMB-inferred matter clustering and direct weak lensing measurements. Our model predicts &sigma;&#8328; = 0.785 &plusmn; 0.016, reducing the tension from 2.5&sigma; to 0.8&sigma;.</p>
+  <p>The &sigma;&#8328; tension reflects a discrepancy between CMB-inferred matter clustering and direct weak lensing measurements. Our model yields &sigma;&#8328; = 0.785 &plusmn; 0.016 from MCMC fits, reducing the tension from 2.5&sigma; to 1.5&sigma; (vs Planck).</p>
 
   <div class="chart-wrapper">
     <canvas id="s8Chart"></canvas>
-    <p class="chart-caption"><strong>Figure 2:</strong> &sigma;&#8328; measurements from CMB and weak lensing surveys. Grey band: Planck &Lambda;CDM (0.832 &plusmn; 0.013). Amber band: spin-torsion prediction (0.785 &plusmn; 0.016). Green points: weak lensing measurements that trend lower. Data from published results.</p>
+    <p class="chart-caption"><strong>Figure 2:</strong> &sigma;&#8328; measurements from CMB and weak lensing surveys. Grey band: Planck &Lambda;CDM (0.832 &plusmn; 0.013). Amber band: spin-torsion MCMC fit (0.785 &plusmn; 0.016). Green points: weak lensing measurements that trend lower. Data from published results.</p>
   </div>
 
   <div class="data-table">
@@ -250,7 +250,7 @@
   </div>
 
   <div class="highlight-box">
-    <p><strong>Key Result:</strong> The spin-torsion model naturally predicts lower &sigma;&#8328; through modified early expansion history from the bounce phase. The prediction aligns remarkably well with weak lensing measurements (KiDS, DES, HSC) and eROSITA cluster counts, reducing the tension from 2.5&sigma; to 0.8&sigma;. This is consistent with Liu et al. (2025, EPJC) finding that EC torsion is preferred over &Lambda;CDM for resolving the S&#8328; tension.</p>
+    <p><strong>Key Result:</strong> The spin-torsion model yields lower &sigma;&#8328; through modified early expansion history in the extended parameter space. The MCMC fit aligns well with weak lensing measurements (KiDS, DES, HSC) and eROSITA cluster counts, reducing the tension from 2.5&sigma; to 1.5&sigma; (vs Planck). This is consistent with Liu et al. (2025, EPJC) finding that EC torsion is preferred over &Lambda;CDM for resolving the S&#8328; tension.</p>
   </div>
 
   <div class="download-row">
@@ -361,15 +361,15 @@
 </section>
 
 <!-- ======================================== -->
-<!-- SECTION 5: Detection Timeline -->
+<!-- SECTION 5: Observational Forecast -->
 <!-- ======================================== -->
 <section class="section">
   <h2>5. Detection Significance Forecast</h2>
-  <p>Projected combined detection significance of spin-torsion signatures from CMB E-B cross-correlations and galaxy spin asymmetry measurements, assuming the model is correct.</p>
+  <p>Projected combined sensitivity to spin-torsion signatures from CMB E-B cross-correlations and galaxy spin asymmetry measurements, <em>assuming signals exist at expected amplitudes</em>. These projections are illustrative; actual significance will depend on the true signal strength.</p>
 
   <div class="chart-wrapper">
     <canvas id="detectionChart"></canvas>
-    <p class="chart-caption"><strong>Figure 5:</strong> Forecast detection significance over time for CMB E-B (blue), galaxy spin asymmetry (green), and combined analysis (amber). The 3&sigma; evidence and 5&sigma; discovery thresholds are marked. Combined significance reaches 4.5&sigma; by 2030 and 5.9&sigma; by 2034.</p>
+    <p class="chart-caption"><strong>Figure 5:</strong> Forecast detection significance over time for CMB E-B (blue), galaxy spin asymmetry (green), and combined analysis (amber). The 3&sigma; evidence and 5&sigma; discovery thresholds are marked. Combined significance could reach 4.5&sigma; by 2030 and 4.2&ndash;5.9&sigma; by 2034 (depending on cross-correlation assumptions), if signals exist at expected amplitudes.</p>
   </div>
 
   <div class="data-table">
@@ -449,7 +449,7 @@
     <div class="verdict"><span class="verdict-dot green"></span><span class="text-muted"><strong>H&#8320; tension resolution</strong>: our mechanism works independently of galaxy spins</span></div>
     <div class="verdict"><span class="verdict-dot green"></span><span class="text-muted"><strong>S&#8328; tension resolution</strong>: confirmed by Liu et al. (2025) via EC torsion</span></div>
     <div class="verdict"><span class="verdict-dot yellow"></span><span class="text-muted"><strong>Cosmic rotation</strong>: upper bound (&omega;/H)&#8320; &lt; 5 &times; 10<sup>&minus;11</sup> still allows our mechanism; direct detection is harder</span></div>
-    <p class="text-muted" style="margin-top: 8px;">Bottom line: null galaxy spin results would reduce combined detection significance by ~1&ndash;1.5&sigma; but the framework's core predictions from CMB EB and bounce physics remain intact.</p>
+    <p class="text-muted" style="margin-top: 8px;">Bottom line: null galaxy spin results would reduce combined detection significance by ~1&ndash;1.5&sigma; but the framework's core testable signatures from CMB EB correlations remain intact.</p>
   </div>
 
   <div class="download-row">
@@ -482,14 +482,14 @@
           <td>4.4&sigma; unresolved</td>
           <td>Partial (~2.5&sigma;)</td>
           <td>Partial (~2&sigma;)</td>
-          <td><strong>Reduced to 1.4&sigma;</strong></td>
+          <td><strong>Reduced to 2.9&sigma;</strong></td>
         </tr>
         <tr>
           <td><strong>&sigma;&#8328; tension</strong></td>
           <td>2.5&sigma; unresolved</td>
           <td>No improvement</td>
           <td>Partial (~1.5&sigma;)</td>
-          <td><strong>Reduced to 0.8&sigma;</strong></td>
+          <td><strong>Reduced to 1.5&sigma;</strong></td>
         </tr>
         <tr>
           <td><strong>Fine-tuning</strong></td>
@@ -499,7 +499,7 @@
           <td><strong>10<sup>5</sup></strong></td>
         </tr>
         <tr>
-          <td><strong>Falsifiable predictions</strong></td>
+          <td><strong>Testable signatures</strong></td>
           <td>None unique</td>
           <td>w(z) &ne; &minus;1</td>
           <td>f(R) shape</td>
@@ -527,11 +527,11 @@
           <td><strong>8 (+ 1 constrained)</strong></td>
         </tr>
         <tr>
-          <td><strong>Discovery timeline</strong></td>
+          <td><strong>Observational forecast</strong></td>
           <td>N/A</td>
           <td>Uncertain</td>
           <td>Uncertain</td>
-          <td><strong>5.9&sigma; by 2034</strong></td>
+          <td><strong>4.2&ndash;5.9&sigma; projected by 2034</strong></td>
         </tr>
       </tbody>
     </table>
