@@ -31,6 +31,9 @@ KEYS = [
     # Science
     ("NASA_ADS_API_KEY",        "NASA ADS",             True,  "Science"),
     ("SEMANTIC_SCHOLAR_API_KEY","Semantic Scholar",      False, "Science"),
+    # Computation
+    ("PERPLEXITY_API_KEY",      "Perplexity",           False, "Compute"),
+    ("WOLFRAM_ALPHA_APP_ID",    "Wolfram Alpha",        False, "Compute"),
     # Data
     ("HUGGINGFACE_TOKEN",       "Hugging Face",         False, "Data"),
     # Web
