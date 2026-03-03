@@ -133,15 +133,15 @@ Each theoretical ingredient above has been studied independently. Our contributi
 
 \item \textit{Multi-probe falsification program}: An observational framework with hierarchical Bayesian analysis, systematic error budgets, five independent null tests per probe, and explicit conditions for falsification---designed so that the model can be tested with forthcoming data from LiteBIRD, CMB-S4, and LSST.
 
-\item \textit{Inflationary suppression mechanism}: Derivation of how inflationary expansion suppresses the primordial parity-odd coefficient by $\sim e^{-3N}$, converting a Planck-scale effect into the observed dark energy scale and reducing fine-tuning by 115 orders of magnitude relative to $\Lambda$CDM.
+\item \textit{Inflationary suppression mechanism}: Scaling estimate of how inflationary expansion suppresses the primordial parity-odd coefficient by $\sim e^{-3N}$, converting a Planck-scale effect into the observed dark energy scale and reducing fine-tuning by 115 orders of magnitude relative to $\Lambda$CDM.
 
-\item \textit{Inflationary suppression factor}: Introduction of $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ as the dimensionless factor setting the dark energy scale via $\rho_\Lambda = \Xi\,\MPl^4$, with its value determined by early-universe physics.
+\item \textit{Inflationary suppression factor}: Introduction of $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ as the dimensionless factor setting the dark energy scale via $\rho_\Lambda = \Xi\,\MPl^4$, with its value determined by early-universe physics (dimensional chain relies on on-shell evaluation at Planck densities; see Appendix~\ref{app:dimcheck}).
 \end{enumerate}
 
 
 \subsection{Paper Organization}
 
-This paper is organized as follows. Section~\ref{sec:theory} develops the theoretical framework, including the Einstein-Cartan-Holst action, parity-odd term derivation, quantum bounce, and cosmic rotation formalism. Section~\ref{sec:obs} presents observational predictions and current evidence. Section~\ref{sec:derivations} provides enhanced derivations including one-loop calculations and vacuum energy mechanisms. Section~\ref{sec:data_galaxy} details galaxy spin data analysis methods. Section~\ref{sec:data_cmb} covers CMB $E$-$B$ analysis methodology. Section~\ref{sec:cosmo_fits} presents cosmological fits and Bayesian model comparison against published data. Section~\ref{sec:systematics} contains the systematic analysis and null tests. Section~\ref{sec:falsification} defines falsification criteria. Section~\ref{sec:related} positions our work in context. Section~\ref{sec:discussion} discusses theoretical implications and the inflationary suppression factor. Section~\ref{sec:limitations} addresses limitations and future directions. Section~\ref{sec:conclusions} summarizes conclusions and outlook. Ten appendices provide technical details, including a claims classification table (Appendix~\ref{app:claims}).
+This paper is organized as follows. Section~\ref{sec:theory} develops the theoretical framework, including the Einstein-Cartan-Holst action, parity-odd term derivation, quantum bounce, and cosmic rotation formalism. Section~\ref{sec:obs} presents observational signatures and current evidence. Section~\ref{sec:derivations} provides enhanced derivations including one-loop calculations and vacuum energy mechanisms. Section~\ref{sec:data_galaxy} details galaxy spin data analysis methods. Section~\ref{sec:data_cmb} covers CMB $E$-$B$ analysis methodology. Section~\ref{sec:cosmo_fits} presents cosmological fits and Bayesian model comparison against published data. Section~\ref{sec:systematics} contains the systematic analysis and null tests. Section~\ref{sec:falsification} defines falsification criteria. Section~\ref{sec:related} positions our work in context. Section~\ref{sec:discussion} discusses theoretical implications and the inflationary suppression factor. Section~\ref{sec:limitations} addresses limitations and future directions. Section~\ref{sec:conclusions} summarizes conclusions and outlook. Ten appendices provide technical details, including a claims classification table (Appendix~\ref{app:claims}).
 
 
 %% ============================================================
@@ -201,7 +201,7 @@ where $\mathcal{F}^{IJ}$ collects the contorsion-dependent pieces ($\mathring{D}
 \begin{equation}\label{eq:Seff_comp}
 S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
 \end{equation}
-which is a scalar density of mass dimension~4 as required (the coefficient $\alpha/M$ has mass dimension~$-1$; the tetrad-curvature combination has mass dimension~5). Throughout this paper, we adopt the convention that the Einstein-Hilbert action carries the standard $\MPl^2/2$ prefactor, while the parity-odd sector carries $\alpha/M$ independently.
+where the operator $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ and $\alpha/M$ has dimension~$-1$, giving a total Lagrangian density of mass dimension~$+1$---three short of the required~$+4$ (see Appendix~\ref{app:dimcheck} for the full counting). The missing three powers of mass arise through \textit{on-shell evaluation} at Planck-scale densities (Sec.~\ref{sec:dimbridge}), where the spin-sourced contorsion evaluates to $K\sim\MPl$ and the curvature to $R\sim\MPl^2$. The relation $\rho_\Lambda = \Xi\,\MPl^4$ is therefore a \textit{scaling ansatz}---dimensionally correct on-shell at the bounce---not a derivation from a renormalizable effective field theory. Throughout this paper, we adopt the convention that the Einstein-Hilbert action carries the standard $\MPl^2/2$ prefactor, while the parity-odd sector carries $\alpha/M$ independently.
 
 This operator is parity-odd (it changes sign under spatial reflection) but fully diffeomorphism-covariant. General covariance does not forbid parity-odd terms; it constrains only the tensor structure. Since classical gravity preserves parity, the coefficient $\alpha/M$ must be generated through quantum corrections.
 
@@ -297,7 +297,7 @@ The observed dark energy scale is reproduced with:
 \begin{equation}\label{eq:rhoLambda}
 \rho_\Lambda = \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf\times\MPl^4 \sim 10^{-2}\times\Dinf\times\MPl^4 \approx (2.3\;\text{meV})^4,
 \end{equation}
-where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete prediction of the bounce-to-inflation transition once the parent BH properties are specified.
+where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete output of the bounce-to-inflation transition once the parent BH properties are specified.
 
 This reduces fine-tuning from $10^{120}$ to $\sim 10^5$: the residual tuning corresponds to specifying $N_{\rm tot}$ to within $\Delta N_{\rm tot}\approx 4$ $e$-folds, since $\delta\rho_\Lambda/\rho_\Lambda = 3\,\delta N_{\rm tot}$. This parametric sensitivity---asking ``why did inflation last $\sim$92 $e$-folds?''---has potential dynamical answers through the bounce-to-inflation transition dynamics (Sec.~\ref{sec:theory_program}) and is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, for which no dynamical mechanism exists.
 
@@ -335,7 +335,7 @@ The framework motivates the \textit{functional form} $A(z)$, the \textit{dipole 
 %% ============================================================
 %%  3. OBSERVATIONAL PREDICTIONS AND EVIDENCE
 %% ============================================================
-\section{Observational Predictions and Evidence}\label{sec:obs}
+\section{Observational Signatures and Evidence}\label{sec:obs}
 
 \subsection{CMB $E$-$B$ Cross-Correlations}\label{sec:EB}
 
@@ -345,7 +345,13 @@ C_\ell^{EB}\approx \frac{\sin 4\beta}{2}\left(C_\ell^{EE}-C_\ell^{BB}\right) \ap
 \end{equation}
 where the small-angle approximation holds for $\beta\ll 1$~rad. This produces nonzero $EB$ power \textit{across all multipoles}, tracking the $EE-BB$ spectrum shape---not localized to any particular $\ell$ range. Similarly, the induced $TB$ cross-correlation is $C_\ell^{TB}\approx 2\beta\,C_\ell^{TE}$.
 
-\textit{Connecting to Planck.}---The Planck measurement reports $\beta \approx 0.30^\circ$ at $2.4$--$2.7\sigma$~\cite{Minami2020,Eskilt2022}. Our framework's parity-odd operator (Eq.~\ref{eq:Seff}) is qualitatively consistent with cosmic birefringence, since it violates parity. However, deriving the photon polarization rotation angle $\beta$ from our gravitational/torsion operator requires an explicit effective coupling between the parity-odd sector and the electromagnetic field---for example, a term of the form $\mathcal{L}\supset \beta(\tau)\,F_{\mu\nu}\tilde{F}^{\mu\nu}$ generated by integrating out torsion at one loop with an EM vertex. This coupling has not yet been derived in this work. We therefore treat the consistency between our framework's parity violation and the observed $\beta\approx 0.30^\circ$ as suggestive, not as a quantitative prediction.
+\textit{Connecting to Planck.}---The Planck measurement reports $\beta \approx 0.30^\circ$ at $2.4$--$2.7\sigma$~\cite{Minami2020,Eskilt2022}. Our framework's parity-odd operator (Eq.~\ref{eq:Seff}) is qualitatively consistent with cosmic birefringence, since it violates parity. However, deriving the photon polarization rotation angle $\beta$ from our gravitational/torsion operator requires an explicit effective coupling between the parity-odd sector and the electromagnetic field---for example, a term of the standard axion-like form
+\begin{equation}\label{eq:axionFF}
+\mathcal{L}\supset \frac{\varphi(\tau)}{4f}\,F_{\mu\nu}\tilde{F}^{\mu\nu},
+\end{equation}
+where $\varphi$ is a pseudo-scalar field sourced by the spin-torsion sector and $f$ is the associated decay constant, generated by integrating out torsion at one loop with an electromagnetic vertex. This coupling has not yet been derived in this work. We therefore treat the consistency between our framework's parity violation and the observed $\beta\approx 0.30^\circ$ as suggestive, not as a quantitative prediction.
+
+\textit{Relation between $\varphi/f$ and $\beta$.}---For a spatially uniform pseudo-scalar rolling over conformal time, the standard result~\cite{Carroll1998} gives a uniform polarization rotation $\beta = \Delta\varphi/(2f)$, where $\Delta\varphi$ is the net field excursion between last scattering and today. This relation assumes three conditions: (i)~spatial uniformity of $\varphi$ over the last-scattering surface (justified if the correlation length exceeds the Hubble radius at decoupling), (ii)~photon propagation along FLRW geodesics (valid for the isotropic component), and (iii)~$\varphi/f\ll 1$ so that the rotation is in the small-angle regime (consistent with $\beta\approx 0.30^\circ \approx 5\times 10^{-3}$~rad). Deriving $\varphi$ and $f$ from the spin-torsion operator $(\alpha/M)\varepsilon^{abcd}K_{ab}R_{cd}$ requires computing the one-loop photon-torsion vertex and matching to the effective Lagrangian~\eqref{eq:axionFF}; this calculation is beyond the scope of the present work. We use the literature values of $\beta$ as consistency benchmarks throughout.
 
 \textit{Anisotropic component.}---In addition to the uniform rotation, the cosmic rotation axis defines a preferred direction $\hat{n}$, which introduces an \textit{anisotropic} birefringence field $\beta(\hat{n})$ with power concentrated at low multipoles. This anisotropic component contributes primarily to off-diagonal $\ell$-$\ell'$ correlations (detectable via quadratic estimators~\cite{Eskilt2022}), with additional diagonal power at $\ell\lesssim 10$. A detailed derivation of the anisotropic component's spectrum from the spin-torsion mechanism is deferred to future work (Sec.~\ref{sec:futuredirections}); here we note that alternative models predict different angular spectra:
 \begin{itemize}[leftmargin=*]
@@ -635,7 +641,7 @@ We analyze four dataset combinations of increasing constraining power:
 
 Parameter estimation uses the Cobaya~v3.5 framework~\cite{Cobaya2021} with adaptive blocked Metropolis-Hastings sampling, convergence criterion $\hat{R}-1 < 0.01$ (Gelman-Rubin diagnostic), and $>1000$ effective samples per parameter. The theory engine is stock CAMB (no custom modifications): the spin-torsion framework motivates nonzero $\Delta\Neff$ and a $w=-1$ dark energy component, but these are standard CAMB parameters. The ``spin-torsion'' label refers to the theoretical motivation, not to a bespoke code module.
 
-\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
+\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
 
 Our extended parameter space adds two parameters to $\Lambda$CDM:
 \begin{equation}
@@ -667,7 +673,7 @@ The Bayesian evidence (computed via nested sampling with PolyChord) shows:
 +4.8 \pm 0.5 & \text{Full (+ Pantheon + DES $S_8$)} \\
 \end{cases}
 \end{equation}
-On the Jeffreys scale, the full tension dataset gives ``strong evidence'' ($\ln B > 3.5$) favoring our model, with posterior odds of 120:1. However, this preference is \textit{dataset-dependent}: with Planck+BAO alone, the evidence slightly disfavors our model ($\ln B = -1.2$) due to the Occam penalty for extra parameters. The preference emerges specifically when tension data (SH0ES $H_0$ prior, DES $S_8$) are included---precisely because our model partially reduces these tensions while $\Lambda$CDM cannot. This dataset dependence is expected and not a weakness: the decisive test is whether the predicted parity-odd signatures (CMB $E$-$B$, galaxy spin dipole) are detected independently.
+On the Jeffreys scale, the full tension dataset gives ``strong evidence'' ($\ln B > 3.5$) favoring our model, with posterior odds of 120:1. However, this preference is \textit{dataset-dependent}: with Planck+BAO alone, the evidence slightly disfavors our model ($\ln B = -1.2$) due to the Occam penalty for extra parameters. The preference emerges specifically when tension data (SH0ES $H_0$ prior, DES $S_8$) are included---precisely because our model partially reduces these tensions while $\Lambda$CDM cannot. This dataset dependence is expected and not a weakness: the decisive test is whether the expected parity-odd signatures (CMB $E$-$B$, galaxy spin dipole) are detected independently.
 
 \subsection{Information Criteria Across Datasets}
 
@@ -687,7 +693,7 @@ Spin-Torsion & Planck+BAO+SH0ES & 2771.8 & $-9.3$ & $+5.2$ \\
 
 AIC consistently favors our model when tension data are included. The BIC penalty for additional parameters means decisive evidence requires detection of the EB/spin signatures.
 
-The two additional parameters ($\Delta\Neff$, $(\omega/H)_0$) are phenomenological extensions motivated by the bounce scenario. The bounce provides qualitative reasons to expect nonzero $\Delta\Neff$ (particle production) and $(\omega/H)_0$ (angular momentum transfer), but quantitative predictions for their values require microphysical calculations not yet available. $\Omega_k$ is fixed to zero, as mandated by $N_{\rm tot}\approx 92$ $e$-folds of inflation which drives $|\Omega_k|\to 10^{-80}$. We emphasize that tension resolution alone---achievable by other extensions with comparable parameter counts---is not the distinctive feature of this framework. The decisive test is the correlated parity-odd signatures: CMB $E$-$B$ spectral shape, galaxy spin dipole axis, and anomaly axis alignment, which cannot be mimicked by generic parameter extensions.
+The two additional parameters ($\Delta\Neff$, $(\omega/H)_0$) are phenomenological extensions motivated by the bounce scenario. The bounce provides qualitative reasons to expect nonzero $\Delta\Neff$ (particle production) and $(\omega/H)_0$ (angular momentum transfer), but quantitative estimates of their values require microphysical calculations not yet available. $\Omega_k$ is fixed to zero, as mandated by $N_{\rm tot}\approx 92$ $e$-folds of inflation which drives $|\Omega_k|\to 10^{-80}$. We emphasize that tension resolution alone---achievable by other extensions with comparable parameter counts---is not the distinctive feature of this framework. The decisive test is the correlated parity-odd signatures: CMB $E$-$B$ spectral shape, galaxy spin dipole axis, and anomaly axis alignment, which cannot be mimicked by generic parameter extensions.
 
 
 \subsection{Model Comparison}\label{sec:fullcomp}
@@ -827,7 +833,7 @@ A theory's scientific value depends critically on its falsifiability. We define 
 
 \subsection{CMB $E$-$B$ Correlations}
 
-\textit{Expected signature}: If a photon-torsion coupling exists, the framework predicts isotropic cosmic birefringence producing $C_\ell^{EB}\approx 2\beta(C_\ell^{EE}-C_\ell^{BB})$ across all~$\ell$, plus an anisotropic low-$\ell$ component aligned with the cosmic rotation axis. The rotation angle $\beta$ is not derived in this work (Sec.~\ref{sec:EB}); the observed Planck value $\beta\approx 0.30^\circ$ is used as a consistency benchmark, not a prediction.
+\textit{Expected signature}: If a photon-torsion coupling exists, the framework is consistent with isotropic cosmic birefringence producing $C_\ell^{EB}\approx 2\beta(C_\ell^{EE}-C_\ell^{BB})$ across all~$\ell$, plus an anisotropic low-$\ell$ component aligned with the cosmic rotation axis. The rotation angle $\beta$ is not derived in this work (Sec.~\ref{sec:EB}); the observed Planck value $\beta\approx 0.30^\circ$ is used as a consistency benchmark, not a prediction.
 
 \textit{Falsified if}: (i)~LiteBIRD + CMB-S4 combined find $\beta$ consistent with zero at $>3\sigma$ (by $\sim$2032); (ii)~opposite-sign $\beta$ (wrong chirality); (iii)~birefringence anisotropy axis inconsistent with galaxy spin dipole axis at $>3\sigma$ (decouples the two probes); (iv)~$\beta$ strongly scale-dependent ($\ell$-dependent rotation angle), which would indicate a different mechanism.
 
@@ -908,11 +914,11 @@ Detection of the parity-odd signatures described here would have significant imp
 \begin{enumerate}[leftmargin=*]
 \item \textit{Observational quantum gravity}: Direct constraints on LQG parameters ($\gamma = 0.274\pm 0.020$, $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2\pm 10\%$, $\rho_c \simeq 0.27\,\rhoPl$).
 
-\item \textit{Black hole interior physics}: Validation of torsion-regulated collapse, baby universe production, and information preservation through the quantum bounce.
+\item \textit{Black hole interior physics}: Evidence for torsion-regulated collapse, baby universe production, and information preservation through the quantum bounce.
 
 \item \textit{UV-IR connection}: An empirical link between UV quantum gravitational effects (Planck scale) and IR cosmological observations (Hubble scale), mediated by inflationary dilution.
 
-\item \textit{Parity violation in gravity}: Confirmation that gravity violates parity at the quantum level, with implications for fundamental symmetries.
+\item \textit{Parity violation in gravity}: Evidence that gravity violates parity at the quantum level, with implications for fundamental symmetries.
 
 \item \textit{Origin of dark energy}: Dark energy as a geometric consequence of the universe's quantum gravitational birth, rather than an unexplained constant or ad-hoc scalar field.
 \end{enumerate}
@@ -942,7 +948,7 @@ Detection of the parity-odd signatures described here would have significant imp
 \subsubsection{Theoretical}
 
 \begin{itemize}[leftmargin=*]
-\item \textit{Phenomenological $\alpha/M$}: The parity-odd coefficient is not derived from first principles but is treated as a free parameter constrained by data. The one-loop estimate (Eq.~\ref{eq:oneloop}) motivates its existence and order of magnitude, but the finite part depends on the $\gamma_5$ regularization scheme and Nieh--Yan counterterm conventions (Sec.~\ref{sec:oneloopfull}). A non-perturbative calculation could modify its value at $\mathcal{O}(1)$, shifting the $C_\ell^{EB}$ amplitude prediction while leaving the $H_0$ and $\sigma_8$ predictions intact.
+\item \textit{Phenomenological $\alpha/M$}: The parity-odd coefficient is not derived from first principles but is treated as a free parameter constrained by data. The one-loop estimate (Eq.~\ref{eq:oneloop}) motivates its existence and order of magnitude, but the finite part depends on the $\gamma_5$ regularization scheme and Nieh--Yan counterterm conventions (Sec.~\ref{sec:oneloopfull}). A non-perturbative calculation could modify its value at $\mathcal{O}(1)$, shifting the $C_\ell^{EB}$ amplitude estimate while leaving the $H_0$ and $\sigma_8$ fit values intact.
 
 \item \textit{Simplified inflationary epoch}: We assume standard slow-roll inflation unmodified by parity violation. Non-minimal couplings during inflation could alter the dilution factor.
 
@@ -972,7 +978,7 @@ The galaxy spin asymmetry signal remains observationally contested~\cite{PatelDe
 
 \item \textit{Parameter space accommodation}: A null spin result constrains the tidal torque coupling efficiency $\beta$ (Appendix~\ref{app:galaxy}), pushing $A_0 < 0.001$---consistent with weaker coupling without affecting the $\Leff$ derivation or the cosmological parameter fits ($H_0$, $\sigma_8$).
 
-\item \textit{Alternative parity-odd signatures}: Beyond galaxy spins, cosmic rotation predicts: (i)~alignment of radio galaxy polarization position angles, detectable by SKA Phase~2; (ii)~correlation between galaxy angular momentum vectors and large-scale filament orientations in LSST data; (iii)~handedness asymmetry in weak lensing shear patterns; (iv)~preferred-axis signatures in gravitational wave backgrounds accessible to LISA.
+\item \textit{Alternative parity-odd signatures}: Beyond galaxy spins, cosmic rotation motivates: (i)~alignment of radio galaxy polarization position angles, detectable by SKA Phase~2; (ii)~correlation between galaxy angular momentum vectors and large-scale filament orientations in LSST data; (iii)~handedness asymmetry in weak lensing shear patterns; (iv)~preferred-axis signatures in gravitational wave backgrounds accessible to LISA.
 
 \item \textit{What a spin null would teach us}: A definitive null result would constrain the parity-odd tidal torque coupling efficiency, refining our understanding of how the $\varepsilon KR$ operator imprints on structure formation. This would narrow the allowed parameter space without invalidating the core theoretical framework.
 \end{enumerate}
@@ -1021,7 +1027,7 @@ The current framework assumes that the quantum bounce connects smoothly to slow-
 
 \subsubsection{Parity-Odd Primordial Gravitational Waves}
 
-The parity-odd operator (Eq.~\ref{eq:Seff}) affects tensor perturbations during inflation, producing a chiral gravitational wave background where left- and right-handed circular polarizations have different amplitudes. Specific predictions include:
+The parity-odd operator (Eq.~\ref{eq:Seff}) affects tensor perturbations during inflation, producing a chiral gravitational wave background where left- and right-handed circular polarizations have different amplitudes. Expected signatures include:
 
 \begin{itemize}[leftmargin=*]
 \item A parity-odd contribution to the stochastic gravitational wave background at nanohertz frequencies (detectable by pulsar timing arrays: NANOGrav, EPTA, PPTA) and millihertz frequencies (LISA).
@@ -1053,13 +1059,13 @@ The parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ could potentially arise
 \subsection{Open Questions}
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{Origin of $\gamma$}: Why is $\gamma \approx 0.274$? The Barbero-Immirzi parameter is currently fixed by black hole entropy counting. A derivation from a more fundamental principle---perhaps a symmetry argument or fixed-point condition---would place the entire framework on firmer ground and potentially predict deviations from the entropy-counting value that could be tested through our observables.
+\item \textit{Origin of $\gamma$}: Why is $\gamma \approx 0.274$? The Barbero-Immirzi parameter is currently fixed by black hole entropy counting. A derivation from a more fundamental principle---perhaps a symmetry argument or fixed-point condition---would place the entire framework on firmer ground and potentially suggest deviations from the entropy-counting value that could be tested through our observables.
 
 \item \textit{UV cutoff identification}: The loop calculation (Eq.~\ref{eq:oneloop}) contains a logarithmic dependence on $\Lambda_{\rm UV}/\mu$. We identify $\Lambda_{\rm UV}$ with the LQG area-gap mass $\sim\sqrt{\gamma}\,\MPl$, but this choice affects the coefficient at the $\mathcal{O}(\ln)$ level. A first-principles derivation of the UV scale from spin-foam dynamics would remove this ambiguity.
 
-\item \textit{Dynamical dark energy evolution}: Our framework predicts a strictly constant $\Leff$ in the late universe (since $\omega^2/H_0^2 < 10^{-20}$). However, if the parity-odd coefficient runs with the Hubble scale (as suggested by Eq.~\ref{eq:RGflow}), this could produce an effective $w(z) \neq -1$ at the few-percent level, potentially connecting to the DESI hint for dynamical dark energy. Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive larger BAO datasets from DESI Y5?
+\item \textit{Dynamical dark energy evolution}: Our framework implies a strictly constant $\Leff$ in the late universe (since $\omega^2/H_0^2 < 10^{-20}$). However, if the parity-odd coefficient runs with the Hubble scale (as suggested by Eq.~\ref{eq:RGflow}), this could produce an effective $w(z) \neq -1$ at the few-percent level, potentially connecting to the DESI hint for dynamical dark energy. Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive larger BAO datasets from DESI Y5?
 
-\item \textit{Multi-messenger parity tests}: Can gravitational wave detectors (LISA, Einstein Telescope, Cosmic Explorer) provide independent confirmation through parity-odd signatures in the stochastic gravitational wave background? The predicted chirality asymmetry in the GW spectrum would be a distinctive signature inaccessible to electromagnetic observations.
+\item \textit{Multi-messenger parity tests}: Can gravitational wave detectors (LISA, Einstein Telescope, Cosmic Explorer) provide independent confirmation through parity-odd signatures in the stochastic gravitational wave background? The expected chirality asymmetry in the GW spectrum would be a distinctive signature inaccessible to electromagnetic observations.
 
 \item \textit{Information paradox}: If the universe originated inside a black hole through a torsion-regulated bounce, does information cross the bounce? The smoothness of our bounce solution ($H^2 \to 0$ continuously) suggests information preservation, but a rigorous treatment using the Page curve or holographic entanglement entropy framework remains an open problem with implications for the black hole information paradox.
 
@@ -1094,8 +1100,10 @@ This framework motivates dark energy from quantum gravitational effects in spin-
 
 All materials necessary to reproduce the cosmological and galaxy spin results are publicly available at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}
 \end{center}
+\noindent (pinned to tag \texttt{v0.9.0}, commit \texttt{7884b4f}).
+
 \noindent The repository includes:
 \begin{itemize}[leftmargin=*]
 \item Four Cobaya~v3.5 YAML configurations: \texttt{cobaya\_planck.yaml}, \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml}, and \texttt{cobaya\_full\_tension.yaml}---one per dataset combination in Table~\ref{tab:modelcomp}. All use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required.
@@ -1298,7 +1306,7 @@ The Holst term contributes to the parity-odd channel through the one-loop diagra
 
 The inflationary suppression factor $\Xi = [(\alpha/M)\,\MPl]\times\Dinf$ sets the dark energy scale because:
 \begin{enumerate}[leftmargin=*]
-\item Following the convention in Sec.~\ref{sec:parityodd}, the effective action Eq.~\eqref{eq:Seff_comp} stands independently with coefficient $\alpha/M$ (mass dimension~$-1$); the tetrad-curvature combination $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu \mathcal{F}_{IJ\rho\sigma}$ has mass dimension~5 in this convention, giving a Lagrangian density of mass dimension~4. The factor of $\MPl$ in the dimensionless combination $[(\alpha/M)\,\MPl]$ arises when extracting the energy density $\rho_\Lambda = \Xi\,\MPl^4$ from the on-shell action, not from an additional prefactor in the action itself.
+\item The effective action Eq.~\eqref{eq:Seff_comp} has coefficient $\alpha/M$ (mass dimension~$-1$); the tetrad-curvature combination $\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu \mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+2$ off-shell (Appendix~\ref{app:dimcheck}), giving an operator of mass dimension~$+1$---three short of the required~$+4$. The missing powers arise through on-shell evaluation at Planck densities (Sec.~\ref{sec:dimbridge}). The factor of $\MPl$ in the dimensionless combination $[(\alpha/M)\,\MPl]$ arises from this on-shell evaluation ($K\sim\MPl$), not from an additional prefactor in the action itself.
 \item The dimensionless combination $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the phenomenological best-fit value, consistent with the one-loop order-of-magnitude estimate $g^2\gamma/(32\pi^2)\sim 10^{-2}$.
 \item Inflationary dilution gives $\Dinf = e^{-3N_{\rm tot}}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ (Eq.~\ref{eq:Dinf}), where $e^{-3N_{\rm tot}}$ arises from dilution of the spin-density source $K_{ab}\propto a^{-3}$.
 \item The vacuum energy density is $\rho_\Lambda = \Xi\,\MPl^4 = [(\alpha/M)\,\MPl]\times\Dinf\times\MPl^4 \sim 10^{-2}\times 10^{-121}\times\MPl^4 \sim 10^{-123}\,\MPl^4 \approx (2.3\;\text{meV})^4$.
@@ -1418,7 +1426,7 @@ S_{\rm Holst} = \frac{\MPl^2}{\gamma}\int e_I\wedge e_J\wedge R^{IJ}
 \end{equation}
 has dimension $[\MPl^2] + [e\wedge e\wedge R] = 2 + (-1-1+0) = 0$ in form language (the action is dimensionless). In component form: $[\MPl^2 \cdot R_{\mu\nu\rho\sigma}] = 2+2 = 4 = [\mathcal{L}]$. \checkmark
 
-\subsection{Parity-Odd Operator}
+\subsection{Parity-Odd Operator (Scaling Ansatz)}
 
 The effective action (Eq.~\ref{eq:Seff_comp}) is:
 \begin{equation}
@@ -1468,6 +1476,8 @@ Thus $[\Leff] = 0 + 2 = +2$, as required in the Friedmann equation $H^2 = \Leff/
 \end{equation}
 The factor of $\MPl$ in $\Xi = [(\alpha/M)\,\MPl]\,\Dinf$ arises from the on-shell evaluation of the operator at Planck-scale densities, not from an additional prefactor in the action. This is the key dimensional bridge between the coefficient $\alpha/M$ (mass$^{-1}$) and the observed vacuum energy density (mass$^4$).
 
+\textit{Off-shell status.}---Away from the bounce epoch, the operator $(\alpha/M)\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}$ has mass dimension~$+1$, not the~$+4$ required for a Lagrangian density. The relation $\rho_\Lambda = \Xi\,\MPl^4$ therefore relies on evaluating the operator at the specific kinematic regime of the bounce ($\rho\to\rho_c$, $K\sim\MPl$, $R\sim\MPl^2$) where on-shell substitution supplies the missing three powers of mass. This is a \textit{scaling ansatz}: it gives the correct dimension and numerical value at the bounce, and the subsequent inflationary dilution is a standard classical calculation, but the chain does not constitute a derivation from a renormalizable off-shell effective field theory. Promoting $\rho_\Lambda = \Xi\,\MPl^4$ to a first-principles result would require either (a)~constructing a manifestly dimension-4 effective Lagrangian whose vacuum sector reproduces $\Xi\,\MPl^4$, or (b)~demonstrating that a non-perturbative condensate freezes the on-shell value into a true vacuum energy. Both remain open problems (Sec.~\ref{sec:limitations}).
+
 
 %% --- J: Reproducibility Materials ---
 \section{Reproducibility Materials}\label{app:reproducibility}
@@ -1475,8 +1485,9 @@ The factor of $\MPl$ in $\Xi = [(\alpha/M)\,\MPl]\,\Dinf$ arises from the on-she
 All MCMC results in this paper were obtained using the Cobaya~v3.5 framework~\cite{Cobaya2021} with stock CAMB as the theory engine. The cosmological model is $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter; no custom CAMB modifications are required. The full reproducibility package is available at:
 
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}
 \end{center}
+\noindent (pinned to tag \texttt{v0.9.0}, commit \texttt{7884b4f}).
 
 \noindent The package includes:
 \begin{itemize}[leftmargin=*]
@@ -1486,6 +1497,8 @@ All MCMC results in this paper were obtained using the Cobaya~v3.5 framework~\ci
 \item \texttt{galaxy\_spins/galaxy\_spin\_data.csv} --- Published galaxy spin counts per redshift bin.
 \item \texttt{docs/IMPLEMENTATION\_MAP.md} --- Maps every ``This work'' numerical result to the code and configuration that produces it.
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of reproducibility gaps.
+\item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).
+\item \texttt{figures/corner\_H0\_sigma8\_Neff.pdf} --- Corner plot of $H_0$, $\sigma_8$, $\Delta\Neff$ posteriors (produced by \texttt{plot\_posteriors.py}).
 \end{itemize}
 
 \noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) require PolyChord nested sampling, which is computationally more expensive and not provided. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
