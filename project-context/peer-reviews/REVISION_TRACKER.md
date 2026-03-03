@@ -27,26 +27,26 @@ This tracker logs each revision round and which issues have been addressed.
 - `2026-03-02_1917PST_claims-table.md` — Derived vs Assumed vs Fit classification
 
 **Issues Identified:** 10 critical/major issues
-**Status:** Phase 1 COMPLETE
+**Status:** ALL PHASES COMPLETE
 
 | # | Issue | Severity | Status | Resolved In |
 |---|-------|----------|--------|-------------|
-| 1 | Inflationary dilution vs bounce relic contradiction | FATAL | PENDING | — |
-| 2 | $w=-1$ freezing logic not derived | FATAL | PENDING | — |
-| 3 | Parity-odd action dimensional inconsistency | FATAL | PENDING | — |
-| 4 | CMB birefringence: no photon-sector coupling | FATAL | PENDING | — |
-| 5 | $f(\tau_{\rm rec})$ undefined / hides 10^120 enhancement | FATAL/MAJOR | PENDING | — |
+| 1 | Inflationary dilution vs bounce relic contradiction | FATAL | **DONE** | Phase 2 commit (Option A: keep dilution, drop bounce relic Ω_k/ΔN_eff claims) |
+| 2 | $w=-1$ freezing logic not derived | FATAL | **DONE** | Phase 2 commit (downgraded to assumption, logical gap acknowledged) |
+| 3 | Parity-odd action dimensional inconsistency | FATAL | **DONE** | Phase 2 commit (abstract formula fixed, Appendix E.4 reconciled) |
+| 4 | CMB birefringence: no photon-sector coupling | FATAL | **DONE** | Phase 3 commit (reframed as consistency, not prediction; f(τ_rec) removed) |
+| 5 | $f(\tau_{\rm rec})$ undefined / hides 10^120 enhancement | FATAL/MAJOR | **DONE** | Phase 3 commit (formula removed, honest statement about missing coupling) |
 | 6 | H0 tension sigma arithmetic wrong (1.4sigma vs 2.9sigma) | MAJOR | **DONE** | `cfeba36` |
-| 7 | Fits labeled as "predictions" | MAJOR | **PARTIAL** | `cfeba36` (Abstract, Table I, Sec I.B, Conclusions) |
+| 7 | Fits labeled as "predictions" | MAJOR | **DONE** | Phase 3 commit (all Tables, captions, body text relabeled) |
 | 8 | Bayes factor table/equation inconsistency | MAJOR | **DONE** | `cfeba36` |
 | 9 | JWST JADES on global dipole plot | MAJOR | **DONE** | `cfeba36` |
-| 10 | Marketing tone (Detection Timeline, Discovery Era, fine-tuning scoreboards) | MAJOR | **PARTIAL** | `cfeba36` (Discovery Era removed, Conclusions rewritten; timeline table/Fig 5 scoreboards still present) |
+| 10 | Marketing tone (Detection Timeline, Discovery Era, fine-tuning scoreboards) | MAJOR | **DONE** | Phase 4 commit (Sec renamed "Observational Forecast", all captions softened, reproducibility honest) |
 
 **Revision phases:**
 - [x] Phase 1: Arithmetic / internal consistency (Issues 6, 8, 9, ref [37]) — commit `cfeba36`
-- [ ] Phase 2: Theory coherence (Issues 1, 2, 3 — pick Option A)
-- [ ] Phase 3: Remove unsupported predictions (Issues 4, 5, 7)
-- [ ] Phase 4: Reproducibility and tone (Issue 10, code release)
+- [x] Phase 2: Theory coherence (Issues 1, 2, 3 — Option A adopted)
+- [x] Phase 3: Remove unsupported predictions (Issues 4, 5, 7)
+- [x] Phase 4: Reproducibility and tone (Issue 10, code release honesty)
 
 ### Phase 1 Changes Summary (commit `cfeba36`, 2026-03-02)
 
@@ -72,6 +72,49 @@ This tracker logs each revision round and which issues have been addressed.
 - Stouffer 1949 → PDG Statistics Review 2024
 - "Discovery Era" → "Full Operations"
 - Conclusions: "Detection timeline" paragraph removed, "Known limitations" added
+
+### Phases 2-4 Changes Summary (2026-03-02)
+
+**Phase 2A — Inflation vs bounce relic (Issue 1, Option A):**
+- Sec I.B: "values follow from bounce physics" → "motivated by—but not uniquely predicted by—the bounce scenario"
+- Sec III.C: Three mechanisms rewritten — ΔN_eff and Ω_k explicitly labeled as phenomenological parameters fit to data; added note that Ω_k~10^{-3} cannot survive 92 e-folds as a direct bounce relic
+- Sec VII.D: "not phenomenological degrees of freedom" → honest statement about phenomenological extensions
+- Sec X (Falsification): Removed "closed bounce geometry" language for Ω_k
+- Table params (Appendix B): "Closed bounce geometry" → "Phenomenological"; "Bounce production" → "Phenomenological"
+- Sec IV.A: "from bounce physics" → "phenomenological parameters"
+
+**Phase 2B — w=-1 freezing (Issue 2):**
+- Sec II.C.2: Rewrote "Why w=-1" paragraph — now explicitly labeled as assumption, not derivation; logical gap acknowledged (if K_{ab}→0, why doesn't operator vanish?); flagged IR effective action derivation as open problem
+
+**Phase 2C — Dimensional inconsistency (Issue 3):**
+- Abstract: Λ_const = (α/M)D_inf → Λ_eff = Ξ M_Pl^2 with Ξ = [(α/M) M_Pl] D_inf (dimensionally correct)
+- Sec I.B: Same formula fix
+- Sec I.B item 6: Ξ definition corrected with M_Pl factor
+- Appendix E.4: Reconciled with main text convention — clarified that M_Pl appears in energy density extraction, not in action coefficient
+
+**Phase 3A — Birefringence coupling + f(τ_rec) (Issues 4, 5):**
+- Sec III.A: Removed β = (α/M) D_inf × f(τ_rec) ≈ 0.30° formula entirely; replaced with honest statement that deriving β requires an explicit photon-torsion coupling not yet available; β treated as consistency with Planck, not a prediction
+- Conclusions: Updated observational signatures paragraph to match
+
+**Phase 3B — Fits vs predictions (Issue 7):**
+- "predicted dipole amplitude" → "fitted dipole amplitude" (JWST paragraph)
+- "predicted signal" → "observed/expected signal" (2× instances)
+- "our model's predictions" → "our model's MCMC fits" (Fig 3b caption)
+- "compared with our prediction" → "compared with our MCMC fit" (Table H0data caption)
+- "Method: Theory" → "Method: MCMC fit" (Tables H0data, S8data)
+- "predicted signatures" → "parity-odd signatures" (Discussion)
+- "falsifiable predictions" → "testable outputs" (Related Work)
+- "consistent with predictions" → "consistent with the framework" (Forecast Sec)
+
+**Phase 4A — Timeline/scoreboards (Issue 10):**
+- Sec IX title: "Detection Timeline" → "Observational Forecast"
+- Fig 7 caption: Added "assuming signals exist at expected levels" + "illustrative" caveat
+- Table X caption: Added "(illustrative; assumes signal exists at expected amplitudes)"
+- Fig 8 caption: Added "conditional on assumed signal amplitudes" caveat
+- Closing sentence: "decisively testable" → "within reach of planned experiments...not that detection is guaranteed"
+- Fig 5 caption: "reduces fine-tuning by 115 orders" → "reparameterizes the fine-tuning...not a complete resolution"
+- Reproducibility: "bundle in preparation and will be released" → "not yet available but is planned"
+- Conclusions Known Limitations: Expanded to include Ω_k/ΔN_eff phenomenological status + code not available
 
 ---
 
