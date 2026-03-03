@@ -1,5 +1,8 @@
 pandas
 xlsxwriter
 pyyaml
+python-dotenv
+anthropic
+requests
 
 
