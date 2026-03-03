@@ -208,7 +208,7 @@ After each revision round:
 |---|-------|--------|------------|
 | R4-1 | "Geometric Dilution Parameter" trigger phrase | **DONE** | → "Inflationary Suppression Factor" (14 instances) |
 | R4-2 | Affiliation implies academic authority | **DONE** | → "Independent Researcher, Los Angeles, California, USA" |
-| R4-3 | No Data & Code Availability section | **DONE** | Added before Acknowledgments: Cobaya YAML, CAMB patch, MCMC chains, galaxy spin pipeline, known gaps |
+| R4-3 | No Data & Code Availability section | **DONE** | Added before Acknowledgments; rewritten in Round 5 to reference actual artifacts (4 Cobaya YAMLs, Stan model, no CAMB patch) |
 | R4-4 | Galaxy spins not framed as contested | **DONE** | Sec III.B rewritten: "Contested Anomaly"; dedicated null-result paragraph (Patel & Desmond, Philcox & Ereza); explicit statement "if null, A0=0 and spin channel doesn't support model" |
 | R4-5 | JWST JADES attribution/presentation | **DONE** | Removed from Table II; text clarified as single-field excess, not dipole amplitude; attributed to "Shamir (private communication / preprint)" |
 | R4-6 | Appendix C.3 "Tidal Torque Derivation" title | **DONE** | → "Tidal Torque Hypothesis and Phenomenological Mapping"; added bullet list of what's NOT derived |
@@ -230,6 +230,60 @@ After each revision round:
 - 10 appendices (up from 9)
 
 **PDF:** 29 pages, 0 undefined references
+
+---
+
+### Round 5: Reproducibility Captain (2026-03-03)
+
+**Reviewer:** Reproducibility audit (Claude)
+**Manuscript version:** v0.9.0
+**Approach:** Route 2 (Conservative) — remove claims that depend on non-existent artifacts
+
+**Audit Findings:**
+- CAMB "patch" (`camb_modifications.diff`) was prose description, NOT working code
+- `cobaya_config.yaml` referenced fictional `SpinTorsionDE` class
+- `params_bestfit.ini` values had no backing MCMC chains
+- No CNN galaxy classifier exists
+- No CMB polarization map analysis was performed
+- Actual model IS standard ΛCDM + ΔN_eff, implementable with stock CAMB
+
+**Deliverables Created:**
+
+| File | Description |
+|------|------------|
+| `reproducibility/cosmology/cobaya_planck.yaml` | Planck-only, stock CAMB |
+| `reproducibility/cosmology/cobaya_planck_bao.yaml` | Planck + BAO |
+| `reproducibility/cosmology/cobaya_planck_bao_sn.yaml` | Planck + BAO + SN |
+| `reproducibility/cosmology/cobaya_full_tension.yaml` | Full tension dataset |
+| `reproducibility/cosmology/reproduce_cosmology.sh` | One-command reproduction |
+| `reproducibility/galaxy_spins/spin_fit_stan.py` | Hierarchical Bayesian model |
+| `reproducibility/galaxy_spins/galaxy_spin_data.csv` | Published CW/CCW counts |
+| `reproducibility/galaxy_spins/reproduce_spins.sh` | One-command reproduction |
+| `reproducibility/docs/IMPLEMENTATION_MAP.md` | Claim → code → output mapping |
+| `reproducibility/docs/KNOWN_GAPS.md` | Honest gap disclosure |
+| `reproducibility/README.md` | Quick start + structure |
+
+**Paper Claims Downgraded:**
+
+| # | Original Claim | Downgraded To |
+|---|---------------|---------------|
+| RC-1 | "modifies CAMB v1.5 with additional early dark energy" | "stock CAMB (no custom modifications)" |
+| RC-2 | "CMB E-B spectra estimated from Planck HFI using SMICA" | "drawn entirely from published literature; we did not perform independent analysis" |
+| RC-3 | "CNN classifier (ResNet-18)" in Data & Code Availability | Removed; uses published catalog labels |
+| RC-4 | "CAMB patch should be treated as specification" | Removed; no CAMB patch exists |
+| RC-5 | CMB null test results presented as original analysis | Attributed to literature (Minami & Komatsu, Eskilt) |
+| RC-6 | CMB systematic error budget as original assessment | Attributed to literature |
+| RC-7 | "Cobaya v3.3 with modified CAMB v1.5" in Appendix J | "Cobaya v3.5 with stock CAMB" |
+| RC-8 | `cobaya_config.yaml` (single fictional file) | 4 real working Cobaya YAMLs |
+
+**Old Files Removed:**
+- `arxiv/reproducibility/camb_modifications.diff` (prose, not code)
+- `arxiv/reproducibility/cobaya_config.yaml` (fictional SpinTorsionDE class)
+- `arxiv/reproducibility/params_bestfit.ini` (values without backing chains)
+
+**Verification:** 0 undefined references, 0 stale CAMB references, 0 claims of original CMB analysis, 29 pages
+
+**Commit:** `dd22d06`, pushed to `origin/main`
 
 ---
 

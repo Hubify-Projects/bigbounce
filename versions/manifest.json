@@ -166,6 +166,59 @@
       ],
       "snapshot_file": null,
       "note": "Canonical source of truth: arxiv/main.tex. All website pages now mirror LaTeX exactly."
+    },
+    {
+      "version": "0.8.0",
+      "date": "2026-03-03T00:00:00-08:00",
+      "title": "Nuclear Option — Maximum Credibility Revision",
+      "description": "Harsh Reviewer #2 response: removed all overclaims, deleted forecast section and Appendix H entirely, removed Ω_k from MCMC (92 e-folds kills it), softened all 'prediction' language to 'MCMC fits', added explicit order-of-magnitude gap for galaxy spin A_0, removed β=0.30° from abstract.",
+      "authors": ["Houston Golden"],
+      "sections_count": 13,
+      "word_count_approx": 30000,
+      "status": "revision",
+      "key_changes": [
+        "Section IX (Detection Timeline) DELETED entirely",
+        "Appendix H (Forecast) DELETED entirely",
+        "Ω_k removed from MCMC: fixed to 0 (92 e-folds mandates this)",
+        "Abstract: 'deriving dark energy' → 'modeling dark energy as arising from'",
+        "All 'predictions' → 'MCMC fits' or 'testable outputs'",
+        "β=0.30° removed from abstract (no photon coupling to derive it)",
+        "Galaxy spin 37-order gap explicitly documented",
+        "A(z) functional form labeled 'phenomenological' throughout",
+        "All 'resolves' → 'partially reduces' for tensions",
+        "Parameter count: 8 → 7 (after Ω_k removal)"
+      ],
+      "snapshot_file": null,
+      "note": "10 critical/major issues from comprehensive audit — all addressed. Option A: keep inflationary dilution, drop bounce relic claims."
+    },
+    {
+      "version": "0.9.0",
+      "date": "2026-03-03T12:00:00-08:00",
+      "title": "Reproducibility Bundle + Claim Downgrades",
+      "description": "Complete reproducibility overhaul (Route 2: Conservative). Created honest bundle with 4 working Cobaya v3.5 YAMLs using stock CAMB, Stan galaxy spin model, one-command reproduce scripts. Downgraded all claims depending on non-existent artifacts. Renamed 'Geometric Dilution Parameter' to 'Inflationary Suppression Factor'. Added Claims Classification Table (Appendix K). Website fully synced.",
+      "authors": ["Houston Golden"],
+      "sections_count": 13,
+      "word_count_approx": 31000,
+      "status": "active",
+      "key_changes": [
+        "'Geometric Dilution Parameter' → 'Inflationary Suppression Factor' (14 instances + all HTML)",
+        "Affiliation: 'Independent Researcher, Los Angeles, California, USA'",
+        "MCMC section: 'modified CAMB v1.5' → 'stock CAMB (no custom modifications)'",
+        "CMB EB section: 'estimated from Planck HFI using SMICA' → 'drawn entirely from published literature'",
+        "Data & Code Availability: complete rewrite with honest artifact list",
+        "Appendix J (Reproducibility): rewritten to reference actual Cobaya YAMLs and Stan model",
+        "Galaxy spins reframed as 'Contested Anomaly' with null-result paragraph",
+        "JWST removed from Table II",
+        "Claims Classification Table added as Appendix K",
+        "Removed fictional camb_modifications.diff, cobaya_config.yaml, params_bestfit.ini",
+        "Created 4 working Cobaya YAMLs + reproduce scripts in reproducibility/",
+        "Created IMPLEMENTATION_MAP.md and KNOWN_GAPS.md",
+        "CNN classifier references removed; uses published catalog labels",
+        "All CMB null tests attributed to literature",
+        "PDF recompiled: 29 pages, 0 undefined references"
+      ],
+      "snapshot_file": null,
+      "note": "Route 2 (Conservative): every 'This work' number traceable to a working script or honest literature citation."
     }
   ]
 }

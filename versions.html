@@ -128,8 +128,93 @@
 <section class="section">
   <h2>All Versions</h2>
 
-  <!-- v0.7.0 -->
+  <!-- v0.9.0 -->
   <div class="card version-card latest" style="margin-bottom: 20px;">
+    <div class="version-header">
+      <span class="version-tag">v0.9.0</span>
+      <span class="version-title">Reproducibility Bundle + Claim Downgrades</span>
+      <span class="version-date">2026-03-03 &middot; PST</span>
+    </div>
+    <p class="version-description">
+      Complete reproducibility overhaul. Created honest reproducibility bundle with 4 working Cobaya v3.5 YAMLs using stock CAMB, Stan galaxy spin model, and one-command reproduce scripts. Downgraded all paper claims that depended on non-existent artifacts: &ldquo;modified CAMB v1.5&rdquo; &rarr; stock CAMB, CMB EB analysis &rarr; literature-only, CNN classifier &rarr; published catalog labels. Renamed &ldquo;Geometric Dilution Parameter&rdquo; to &ldquo;Inflationary Suppression Factor&rdquo; throughout. Added Claims Classification Table (Appendix K). Website fully synced.
+    </p>
+    <div class="diff-summary">
+      <span class="diff-stat added">+17 files</span>
+      <span class="diff-stat modified">~15 files modified</span>
+      <span class="diff-stat removed">&minus;3 placeholder files</span>
+    </div>
+    <button class="toggle-changes" onclick="toggleChanges(this)">Show detailed changes</button>
+    <div class="changes-detail">
+      <ul class="changes-list">
+        <li>&ldquo;Geometric Dilution Parameter&rdquo; &rarr; &ldquo;Inflationary Suppression Factor&rdquo; (14 instances in LaTeX + all HTML pages)</li>
+        <li>Affiliation: &ldquo;Independent Researcher, Los Angeles, California, USA&rdquo;</li>
+        <li>MCMC section: &ldquo;modified CAMB v1.5&rdquo; &rarr; &ldquo;stock CAMB (no custom modifications)&rdquo;</li>
+        <li>CMB EB section: complete rewrite &mdash; &ldquo;estimated from Planck HFI using SMICA&rdquo; &rarr; &ldquo;drawn entirely from published literature&rdquo;</li>
+        <li>Data &amp; Code Availability: complete rewrite with honest artifact list</li>
+        <li>Appendix J (Reproducibility): rewritten to reference actual Cobaya YAMLs and Stan model</li>
+        <li>Galaxy spins reframed as &ldquo;Contested Anomaly&rdquo; with null-result paragraph</li>
+        <li>JWST removed from Table II; caveated as single-field excess</li>
+        <li>Claims Classification Table added as Appendix K</li>
+        <li>Removed fictional camb_modifications.diff, cobaya_config.yaml, params_bestfit.ini</li>
+        <li>Created 4 working Cobaya YAMLs + reproduce scripts in reproducibility/</li>
+        <li>Created IMPLEMENTATION_MAP.md and KNOWN_GAPS.md</li>
+        <li>CNN classifier removed from all references; uses published catalog labels</li>
+        <li>All CMB null tests attributed to literature (Minami &amp; Komatsu, Eskilt)</li>
+        <li>PDF recompiled: 29 pages, 0 undefined references</li>
+      </ul>
+    </div>
+    <div class="authors-row">
+      <span class="author-chip human">Houston Golden</span>
+    </div>
+    <div class="stats-row">
+      <span class="stat-chip"><strong>13</strong> sections + 10 appendices</span>
+      <span class="stat-chip"><strong>29</strong> pages</span>
+      <span class="stat-chip"><strong>17</strong> files changed</span>
+    </div>
+    <p class="version-note">Route 2 (Conservative): every &ldquo;This work&rdquo; number now traceable to a working script or honest literature citation.</p>
+  </div>
+
+  <!-- v0.8.0 -->
+  <div class="card version-card" style="margin-bottom: 20px;">
+    <div class="version-header">
+      <span class="version-tag">v0.8.0</span>
+      <span class="version-title">Nuclear Option &mdash; Maximum Credibility Revision</span>
+      <span class="version-date">2026-03-03 &middot; PST</span>
+    </div>
+    <p class="version-description">
+      Harsh Reviewer #2 response: removed all overclaims, deleted forecast section and Appendix H entirely, removed &Omega;<sub>k</sub> from MCMC (92 e-folds kills it), softened all &ldquo;prediction&rdquo; language to &ldquo;MCMC fits&rdquo;, added explicit order-of-magnitude gap for galaxy spin A<sub>0</sub>, removed &beta;=0.30&deg; numerical value from abstract without photon coupling.
+    </p>
+    <div class="diff-summary">
+      <span class="diff-stat modified">~40 changes</span>
+      <span class="diff-stat removed">&minus;2 sections deleted</span>
+    </div>
+    <button class="toggle-changes" onclick="toggleChanges(this)">Show detailed changes</button>
+    <div class="changes-detail">
+      <ul class="changes-list">
+        <li>Section IX (Detection Timeline) DELETED entirely</li>
+        <li>Appendix H (Forecast) DELETED entirely</li>
+        <li>&Omega;<sub>k</sub> removed from MCMC: fixed to 0 (92 e-folds mandates this)</li>
+        <li>Abstract: &ldquo;deriving dark energy&rdquo; &rarr; &ldquo;modeling dark energy as arising from&rdquo;</li>
+        <li>All &ldquo;predictions&rdquo; &rarr; &ldquo;MCMC fits&rdquo; or &ldquo;testable outputs&rdquo;</li>
+        <li>&beta;=0.30&deg; removed from abstract (no photon coupling to derive it)</li>
+        <li>Galaxy spin 37-order gap explicitly documented</li>
+        <li>A(z) functional form labeled &ldquo;phenomenological&rdquo; throughout</li>
+        <li>All &ldquo;resolves&rdquo; &rarr; &ldquo;partially reduces&rdquo; for tensions</li>
+        <li>Parameter count: 8 &rarr; 7 (after &Omega;<sub>k</sub> removal)</li>
+      </ul>
+    </div>
+    <div class="authors-row">
+      <span class="author-chip human">Houston Golden</span>
+    </div>
+    <div class="stats-row">
+      <span class="stat-chip"><strong>13</strong> sections + 9 appendices</span>
+      <span class="stat-chip"><strong>28</strong> pages</span>
+    </div>
+    <p class="version-note">10 critical/major issues from comprehensive audit &mdash; all addressed. Inflationary dilution vs bounce relic contradiction resolved (Option A: keep dilution, drop bounce relic claims).</p>
+  </div>
+
+  <!-- v0.7.0 -->
+  <div class="card version-card" style="margin-bottom: 20px;">
     <div class="version-header">
       <span class="version-tag">v0.7.0</span>
       <span class="version-title">Cross-Artifact Synchronization &amp; Scientific Corrections</span>
