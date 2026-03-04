@@ -1,0 +1,35 @@
+{
+  "plasticc": {
+    "name": "MultimodalUniverse/plasticc",
+    "description": "N/A",
+    "features": "{'lightcurve': {'band': List(Value('string')), 'flux': List(Value('float32')), 'flux_err': List(Value('float32')), 'time': List(Value('float32'))}, 'hostgal_photoz': Value('float32'), 'hostgal_specz': Value('float32'), 'redshift': Value('float32'), 'obj_type': Value('string'), 'object_id': Value('string')}",
+    "size": null,
+    "splits": {
+      "train": 7848
+    }
+  },
+  "jwst_ceers": {
+    "error": "Dataset 'MultimodalUniverse/jwst_ceers' doesn't exist on the Hub or cannot be accessed."
+  },
+  "gaia_xp": {
+    "error": "Dataset 'MultimodalUniverse/gaia_xp' doesn't exist on the Hub or cannot be accessed."
+  },
+  "legacysurvey": {
+    "name": "MultimodalUniverse/legacysurvey",
+    "description": "N/A",
+    "features": "{'image': {'band': List(Value('string')), 'flux': List(Array2D(shape=(160, 160), dtype='float32')), 'mask': List(Array2D(shape=(160, 160), dtype='bool')), 'ivar': List(Array2D(shape=(160, 160), dtype='float32')), 'psf_fwhm': List(Value('float32')), 'scale': List(Value('float32'))}, 'blobmodel': Image(mode=None, decode=True), 'rgb': Image(mode=None, decode=True), 'object_mask': Image(mode=None, decode=True), 'catalog': {'FLUX_G': List(Value('float32')), 'FLUX_R': List(Value('float32')), 'FLUX_I': List(Value('float32')), 'FLUX_Z': List(Value('float32')), 'TYPE': List(Value('float32')), 'SHAPE_R': List(Value('float32')), 'SHAPE_E1': List(Value('float32')), 'SHAPE_E2': List(Value('float32')), 'X': List(Value('float32')), 'Y': List(Value('float32'))}, 'EBV': Value('float32'), 'FLUX_G': Value('float32'), 'FLUX_R': Value('float32'), 'FLUX_I': Value('float32'), 'FLUX_Z': Value('float32'), 'FLUX_W1': Value('float32'), 'FLUX_W2': Value('float32'), 'FLUX_W3': Value('float32'), 'FLUX_W4': Value('float32'), 'SHAPE_R': Value('float32'), 'SHAPE_E1': Value('float32'), 'SHAPE_E2': Value('float32'), 'object_id': Value('string')}",
+    "size": null,
+    "splits": {
+      "train": 90580
+    }
+  },
+  "apogee": {
+    "name": "MultimodalUniverse/apogee",
+    "description": "N/A",
+    "features": "{'spectrum': {'flux': List(Value('float32')), 'ivar': List(Value('float32')), 'lsf_sigma': List(Value('float32')), 'lambda': List(Value('float32')), 'pix_bitmask': List(Value('int64')), 'pseudo_continuum_flux': List(Value('float32')), 'pseudo_continuum_ivar': List(Value('float32'))}, 'teff': Value('float32'), 'logg': Value('float32'), 'm_h': Value('float32'), 'alpha_m': Value('float32'), 'teff_err': Value('float32'), 'logg_err': Value('float32'), 'm_h_err': Value('float32'), 'alpha_m_err': Value('float32'), 'radial_velocity': Value('float32'), 'restframe': Value('bool'), 'object_id': Value('string')}",
+    "size": null,
+    "splits": {
+      "train": 44
+    }
+  }
+}

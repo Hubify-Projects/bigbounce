@@ -1,0 +1,573 @@
+[
+  {
+    "bibcode": "2026JCAP...02..079D",
+    "citation_count": 0,
+    "abstract": "Cosmic birefringence (CB) is a promising probe of parity-violating physics beyond the Standard Model, characterized by the rotation of the linear polarization plane of cosmic microwave background (CMB) photons. This effect, quantified by the birefringence angle \u03b2, generates non-zero EB and TB correlations that are otherwise absent in standard cosmology. However, instrumental miscalibration angles \u03b1 can mimic this signal, necessitating a joint estimation approach. In this work, we forecast the sensitivity of the AliCPT experiment, combined with Planck HFI data, on constraining the isotropic CB angle using a semi-analytical maximum-likelihood method. We simulate observations under various foreground complexities, rotation angles, and scanning strategies, and demonstrate that AliCPT can achieve an uncertainty of \u03c3(\u03b2) = 0.09<SUP>\u2218</SUP> with one-year data, which will improve to 0.026<SUP>\u2218</SUP> after four years' observations. We also find that neglecting or mismodeling the foreground EB correlation will introduce significant biases, which can be alleviated under a clean but small sky patch.",
+    "author": [
+      "Dou, Jiazheng",
+      "Zhao, Wen"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2026/02/079",
+      "10.48550/arXiv.2510.21221"
+    ],
+    "title": [
+      "Forecasts of constraining isotropic cosmic birefringence on AliCPT-1"
+    ],
+    "year": "2026"
+  },
+  {
+    "bibcode": "2026arXiv260212019C",
+    "abstract": "Simulation-based inference (SBI) is a powerful inference technique for cases where the exact functional form of the likelihood is not known. A prime example is the likelihood of cross-correlation power spectra of the cosmic microwave background (CMB) fields at low multipoles, $\\ell\\lesssim 10$. In this paper, we investigate a parity-violating cross-correlation between $E$- and $B$- mode polarization fields using SBI. The $EB$ correlation at low $\\ell$ is essential to distinguish between possible axion dark energy and dark matter interpretations of `cosmic birefringence', a rotation of the plane of linear polarization of the CMB, recently reported from WMAP, Planck, and Atacama Cosmology Telescope data. We use neural likelihood estimation to infer the likelihood of the $EB$ correlation at low $\\ell$ and show that it is highly non-Gaussian. We then employ neural posterior estimation to constrain the scalar field mass ($m_\u03d5$), the cosmic birefringence amplitude ($g\u03d5_\\mathrm{in}/2$), and the instrumental miscalibration angle ($\u03b1$), from simulated datasets. We find that the posterior on $m_\u03d5$ shows two regimes, with a transition marked by $10^{-32}$ eV, highlighting a strong sensitivity to the scale dependence of cosmic birefringence. To quantify this behavior, we compute the probability $p(m_\u03d5 &lt; 10^{-32}$ eV) for various fiducial values of $m_\u03d5$. We find that $\u03b1$ and the contribution of lensed $B$ modes ultimately limit our ability to exclude the dark energy scenario fully.",
+    "author": [
+      "Carralot, Florie",
+      "Diego-Palazuelos, Patricia",
+      "Duivenvoorden, Adriaan J.",
+      "Komatsu, Eiichiro",
+      "Krachmalnicoff, Nicoletta",
+      "Baccigalupi, Carlo"
+    ],
+    "doi": [
+      "10.48550/arXiv.2602.12019"
+    ],
+    "title": [
+      "Is cosmic birefringence due to dark energy or dark matter? Simulation-based inference"
+    ],
+    "year": "2026",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2026PhRvL.136d1003N",
+    "abstract": "We point out that the rotation angle <inline-formula><mml:math><mml:mi>\u03b2</mml:mi></mml:math></inline-formula> of cosmic birefringence, which is a recently reported parity-violating signal in the cosmic microwave background (CMB), has a phase ambiguity of <inline-formula><mml:math><mml:mi>n</mml:mi><mml:mi>\u03c0</mml:mi><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>\u2208</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo></mml:math></inline-formula>. This ambiguity has a significant impact on the interpretation of the origin of cosmic birefringence. Assuming an axionlike particle (ALP) as the origin of cosmic birefringence, this ambiguity can be partly broken by the anisotropic cosmic birefringence and the shape of the CMB angular power spectra. We forecast constraints on <inline-formula><mml:math><mml:mi>n</mml:mi></mml:math></inline-formula> from ongoing and upcoming experiments and find that most nonzero values of <inline-formula><mml:math><mml:mi>n</mml:mi></mml:math></inline-formula> can be excluded using the cross-power spectrum between <inline-formula><mml:math><mml:mi>E</mml:mi></mml:math></inline-formula> and <inline-formula><mml:math><mml:mi>B</mml:mi></mml:math></inline-formula> modes. We also find that measuring the reionization bump in the <inline-formula><mml:math><mml:mi>E</mml:mi></mml:math></inline-formula>-mode auto-power spectrum can give further constraints, provided that the optical depth <inline-formula><mml:math><mml:mi>\u03c4</mml:mi></mml:math></inline-formula> is determined independently of the CMB. The change in the low-<inline-formula><mml:math><mml:mi>l</mml:mi></mml:math></inline-formula> <inline-formula><mml:math><mml:mi>E</mml:mi></mml:math></inline-formula>-mode power spectrum may also provide a potential solution to the tension in <inline-formula><mml:math><mml:mi>\u03c4</mml:mi></mml:math></inline-formula> suggested by the latest CMB and baryon acoustic oscillation measurements.",
+    "author": [
+      "Naokawa, Fumihiro",
+      "Namikawa, Toshiya",
+      "Murai, Kai",
+      "Obata, Ippei",
+      "Kamada, Kohei"
+    ],
+    "doi": [
+      "10.1103/6z1m-r1j5",
+      "10.48550/arXiv.2405.15538"
+    ],
+    "title": [
+      "<inline-formula><mml:math><mml:mrow><mml:mi>n</mml:mi><mml:mi>\u03c0</mml:mi></mml:mrow></mml:math></inline-formula> Phase Ambiguity of Cosmic Birefringence"
+    ],
+    "year": "2026",
+    "citation_count": 11
+  },
+  {
+    "bibcode": "2026arXiv260113624Y",
+    "abstract": "With the increasing number of high-precision astronomical observations, physical quantities that were previously inaccessible to accurate calculations, such as cosmic birefringence, have once again become a focal point of interest. Such phenomena induce a nonvanishing cross-correlation between the $E$- and $B$-mode polarizations of the cosmic microwave background (CMB), thereby providing a direct observational signature of parity violation. The Chern-Simons coupling between the scalar field in early dark energy (EDE) models and CMB photons is regarded as a plausible mechanism for generating cosmic birefringence. Recent data from the Atacama Cosmology Telescope (ACT) deliver $EB$ measurements at higher multipole moments than those previously achieved by {Planck}, while DESI and PantheonPlus datasets provide new and stringent constraints on the late-time expansion history. Using a joint analysis of {Planck}, DESI DR1, Pantheon+, and ACT data, we perform a full-parameter constraint on the cosmic birefringence effects induced by the EDE-CMB photon coupling. Our results favor a higher Hubble constant, $H_0 = 76.9^{+2.9}_{-2.5}\\,\\rm km\\,s^{-1}\\,Mpc^{-1}$, and a relatively large EDE fraction, $f_{\\mathrm{EDE}} = 0.232^{+0.074}_{-0.047}$. By comparing the cosmological evolution of this model across different data combinations, we find that the ACT-$EB$ data combined with {Planck} + DESI + PantheonPlus provide good constraints to both early- and late-Universe observations.",
+    "author": [
+      "Yin, Lu",
+      "Du, Guo-Hong",
+      "Li, Tian-Nuo",
+      "Zhang, Xin"
+    ],
+    "doi": [
+      "10.48550/arXiv.2601.13624"
+    ],
+    "title": [
+      "Joint constraints on cosmic birefringence and early dark energy from ACT, Planck, DESI, and PantheonPlus"
+    ],
+    "year": "2026",
+    "citation_count": 1
+  },
+  {
+    "bibcode": "2025JCAP...12..013R",
+    "abstract": "Cosmic birefringence, arising from a potential parity-violating interaction between cosmic microwave background (CMB) photons and evolving pseudo-scalar fields such as axion-like particles, can rotate the CMB polarization plane and induce an effective correlation between the CMB E- and B-mode polarization. In this work, we introduce a hybrid internal linear combination (ILC) method that combines both E- and B-mode frequency maps into the component separation pipeline, enabling the disentanglement of correlated and uncorrelated components of CMB polarization in the presence of cosmic birefringence and instrumental polarization angle miscalibration. We derive an analytic linear relation connecting the birefringence-induced correlated component of the CMB E- (or B-) mode field to the full CMB B- (or E-) mode field convolved with a modulating field. By performing linear regression between these fields across multiple sky patches, we directly estimate the birefringence angle at the field level. This allows us to distinguish cosmic birefringence from polarization angle miscalibration and foreground contamination, as the ILC responds differently to achromatic cosmic birefringence and chromatic systematic effects, with its weights projecting spatial or harmonic dependence only onto the latter. This non-parametric, field-level approach provides a novel way to probe cosmic birefringence directly in real space. When applied to realistic simulations of the forthcoming LiteBIRD satellite mission, our method yields constraints that are competitive with, and complementary to, existing power spectrum-based analyses. When applied to Planck Release 4 (PR4) data, we find a birefringence angle of \u03b2 = 0.32\u00b0 \u00b1 0.12\u00b0, a 2.7\u03c3 detection that remains robust against varying sky fractions.",
+    "author": [
+      "Remazeilles, Mathieu"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/12/013",
+      "10.48550/arXiv.2507.22109"
+    ],
+    "title": [
+      "Field-level constraints on cosmic birefringence from hybrid ILC maps combining E- and B-mode channels"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025arXiv251025489Y",
+    "abstract": "The Early Dark Energy (EDE) model has been proposed as a candidate mechanism to generate cosmic birefringence through a Chern-Simons coupling between a dynamical scalar field and the cosmic microwave background (CMB) photon. Such birefringence induces a nonzero cross-correlation between the CMB $E$- and $B$-modes, providing a direct observational signature of parity violation. Recent measurements of the $EB$ and $TB$ power spectra, however, cannot yet unambiguously separate instrumental miscalibration ($\u03b1$) from a true cosmic-rotation angle ($\u03b2$). For this reason, we perform a model-independent analysis in terms of the total effective rotation angle $\u03b1+\u03b2$. We analyze the latest $EB$ and $TB$ measurements from the SPIDER, Planck, and ACT experiments and derive constraints on the Chern-Simons coupling constant $gM_{Pl}$ and on the polarization rotation angle $\u03b1+\u03b2$. We find that the coupling $gM_{Pl}$ is not compatible with the SPIDER data, while it provides reasonable fits to the Planck and ACT measurements. The fits for $\u03b1+\u03b2$ prefer a value larger than zero: when combined, Planck+ACT yield a detection significance of approximately 7$\u03c3$. We also find that ACT data alone do not provide sufficiently tight constraints on either $gM_{Pl}$ or $\u03b1+\u03b2$, whereas the combination Planck+ACT improves the statistical consistency of ACT's high-$\\ell$ results and leads to a better PTE for those measurements.",
+    "author": [
+      "Yin, Lu",
+      "Xiong, Shuhang",
+      "Kochappan, Joby",
+      "Lee, Bum-Hoon",
+      "Ghosh, Tuhin"
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.25489"
+    ],
+    "title": [
+      "Constraints on Cosmic Birefringence from SPIDER, Planck, and ACT observations"
+    ],
+    "year": "2025",
+    "citation_count": 1
+  },
+  {
+    "bibcode": "2025arXiv251013032P",
+    "abstract": "Cosmic birefringence is a hypothesized parity violation in electromagnetism that predicts a frequency-independent polarization rotation as light propagates. This would rotate the light from the Cosmic Microwave Background, producing an unexpected EB correlation. However, cosmic birefringence angle is degenerate with instrument polarization angle, and breaking this degeneracy requires an absolute polarization calibration. We calibrate the BICEP3 telescope (a 95GHz CMB polarimeter) by observing a rotating polarized source (RPS) with both the telescope and a small test receiver called the In-Situ Absolute Angle Calibrator (ISAAC).",
+    "author": [
+      "Polish, A. R.",
+      "Ade, P. A. R.",
+      "Ahmed, Z.",
+      "Amiri, M.",
+      "Barkats, D.",
+      "Basu Thakur, R.",
+      "Bischoff, C. A.",
+      "Beck, D.",
+      "Bock, J. J.",
+      "Boenish, H.",
+      "Buza, V.",
+      "Cantrall, B.",
+      "Cheshire, J. R., IV",
+      "Connors, J.",
+      "Cornelison, J.",
+      "Crumrine, M.",
+      "Cukierman, A. J.",
+      "Denison, E.",
+      "Duband, L.",
+      "Echter, M.",
+      "Eiben, M.",
+      "Elwood, B. D.",
+      "Fatigoni, S.",
+      "Filippini, J. P.",
+      "Fortes, A.",
+      "Gao, M.",
+      "Giannakopoulos, C.",
+      "Goeckner-Wald, N.",
+      "Goldfinger, D. C.",
+      "Gratton, S.",
+      "Grayson, J. A.",
+      "Greathouse, A.",
+      "Grimes, P. K.",
+      "Hall, G.",
+      "Halal, G.",
+      "Halpern, M.",
+      "Hand, E.",
+      "Harrison, S. A.",
+      "Henderson, S.",
+      "Hoang, T. D.",
+      "Hubmayr, J.",
+      "Hui, H.",
+      "Irwin, K. D.",
+      "Kang, J. H.",
+      "Karkare, K. S.",
+      "Kefeli, S.",
+      "Kovac, J. M.",
+      "Kuo, C.",
+      "Lasko, K.",
+      "Lau, K. K.",
+      "Lautzenhiser, M.",
+      "Lennox, A.",
+      "Liu, T.",
+      "Mackey, S.",
+      "Maher, N.",
+      "Megerian, K. G.",
+      "Minutolo, L.",
+      "Moncelsi, L.",
+      "Nakato, Y.",
+      "Nguyen, H. T.",
+      "O'Brient, R.",
+      "Paine, S. N.",
+      "Patel, A.",
+      "Petroff, M. A.",
+      "Prouve, T.",
+      "Pryke, C.",
+      "Reintsema, C. D.",
+      "Romand, T.",
+      "Salatino, M.",
+      "Schillaci, A.",
+      "Schmitt, B.",
+      "Singari, B.",
+      "Soliman, A.",
+      "St. Germaine, T.",
+      "Steiger, A.",
+      "Steinbach, B.",
+      "Sudiwala, R.",
+      "Thompson, K. L.",
+      "Tsai, C.",
+      "Tucker, C.",
+      "Turner, A. D.",
+      "Verges, C.",
+      "Vieregg, A. G.",
+      "Wandui, A.",
+      "Weber, A. C.",
+      "Willmert, J.",
+      "Wu, W. L. K.",
+      "Yang, H.",
+      "Yu, C.",
+      "Zheng, L.",
+      "Zhang, C.",
+      "Zhang, S."
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.13032"
+    ],
+    "title": [
+      "Improved Absolute Polarization Calibrator for BICEP CMB Polarimeters"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025JCAP...09..075B",
+    "abstract": "The rotation of the linear polarisation plane of photons during propagation, also known as cosmic birefringence, is a powerful probe of parity-violating extensions of standard electromagnetism. Using Planck legacy data, we confirm previous estimates of the isotropic birefringence angle, finding \u03b2 \u2243 0.30\u00b10.05 [deg] at 68% CL, not including the systematic error from the instrumental polarisation angle. If this is a genuine signal, it could be explained by theories of Chern-Simons-type coupled to electromagnetism, which could lead to a harmonic scale-dependent birefringence signal, if the hypothesis of an ultra-light (pseudo) scalar field does not hold. To investigate these models, we pursue two complementary approaches: first, we fit the birefringence angle estimated at different multipoles, \u03b2 <SUB>\u2113</SUB>, with a power-law model and second, we perform a non-parametric Bayesian reconstruction of it. Both methods yield results consistent with a non-vanishing constant birefringence angle. The first method shows no significant dependence on the harmonic scale (up to 1.8\u03c3 CL), while the second method demonstrates that a constant model is favored by Bayesian evidence. This conclusion is robust across all four published Planck CMB solutions. Finally, we forecast that upcoming CMB observations by Simons Observatory, LiteBIRD and a wishful CMB-Stage 4 experiment could reduce current uncertainties by a factor of approximately 7.",
+    "author": [
+      "Ballardini, M.",
+      "Gruppuso, A.",
+      "Paradiso, S.",
+      "Sirletti, S. S.",
+      "Natoli, P."
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/09/075",
+      "10.48550/arXiv.2507.16714"
+    ],
+    "title": [
+      "Planck constraints on the scale dependence of isotropic cosmic birefringence"
+    ],
+    "year": "2025",
+    "citation_count": 6
+  },
+  {
+    "bibcode": "2025arXiv250913654D",
+    "abstract": "The polarized light of the cosmic microwave background is sensitive to new physics that violates parity symmetry. For example, the interaction of photons with the fields of elusive dark matter and dark energy could cause a uniform rotation of the plane of linear polarization across the sky, an effect known as cosmic birefringence. We extract the cosmological rotation angle, $\u03b2$, using Bayesian analysis of parity-violating correlations, $EB$ and $TB$, of polarization data from the Atacama Cosmology Telescope (ACT) Data Release 6. We use prior probabilities for instrumental miscalibration angles derived from the optics model for the ACT telescope and instruments, and marginalize over a residual intensity-to-polarization leakage. We measure $\u03b2= 0.215^\\circ\\pm 0.074^\\circ$ (68\\% confidence level), which excludes $\u03b2=0$ with a statistical significance of $2.9\u03c3$. Although there remain systematics in the ACT data that are not understood and do not allow us to draw strong cosmological conclusions, this result is consistent with previous independent results from the \\wmap\\ and \\planck\\ missions. It is suggestive that independent data sets and analyses using different methodologies have yielded the same sign and comparable magnitudes for $\u03b2$.",
+    "author": [
+      "Diego-Palazuelos, P.",
+      "Komatsu, E."
+    ],
+    "doi": [
+      "10.48550/arXiv.2509.13654"
+    ],
+    "title": [
+      "Cosmic Birefringence from the Atacama Cosmology Telescope Data Release 6"
+    ],
+    "year": "2025",
+    "citation_count": 7
+  },
+  {
+    "bibcode": "2025PhRvD.112b3555L",
+    "abstract": "Cosmic birefringence\u2014the rotation of the polarization plane of light as it traverses the Universe\u2014offers a direct observational window into parity-violating physics beyond the Standard Model. In this work, we revisit the anisotropic component of cosmic birefringence, which leads to the generation of <inline-formula><mml:math><mml:mi>B</mml:mi></mml:math></inline-formula>-mode polarization in the cosmic microwave background (CMB). Using an exact theoretical treatment beyond the thin last-scattering surface approximation, we constrain the amplitude of anisotropic birefringence with combined polarization data from SPTpol, ACT, POLARBEAR, and BICEP. The joint analysis yields a best-fit amplitude of <inline-formula><mml:math><mml:msub><mml:mi>A</mml:mi><mml:mi>CB</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0.4</mml:mn><mml:msubsup><mml:mn>2</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>0.34</mml:mn></mml:mrow><mml:mrow><mml:mo>+</mml:mo><mml:mn>0.40</mml:mn></mml:mrow></mml:msubsup><mml:mo>\u00d7</mml:mo><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>4</mml:mn></mml:mrow></mml:msup></mml:math></inline-formula>, consistent with zero within <inline-formula><mml:math><mml:mn>2</mml:mn><mml:mi>\u03c3</mml:mi></mml:math></inline-formula>, and we place a 95% confidence-level upper bound of <inline-formula><mml:math><mml:msub><mml:mi>A</mml:mi><mml:mi>CB</mml:mi></mml:msub><mml:mo>&lt;</mml:mo><mml:mn>1</mml:mn><mml:mo>\u00d7</mml:mo><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>4</mml:mn></mml:mrow></mml:msup></mml:math></inline-formula>. The constraint is not dominated by any single experiment and remains robust under the inclusion of a possible isotropic rotation angle. These results provide leading constraints on anisotropic cosmic birefringence from CMB <inline-formula><mml:math><mml:mi>B</mml:mi></mml:math></inline-formula>-mode polarization and illustrate the potential of upcoming experiments to improve sensitivity to parity-violating effects in the early Universe.",
+    "author": [
+      "Lonappan, A. I.",
+      "Keating, B.",
+      "Arnold, K."
+    ],
+    "doi": [
+      "10.1103/yxmh-rh9z",
+      "10.48550/arXiv.2504.13154"
+    ],
+    "title": [
+      "Constraints on anisotropic cosmic birefringence from CMB <inline-formula><mml:math><mml:mrow><mml:mi>B</mml:mi></mml:mrow></mml:math></inline-formula>-mode polarization"
+    ],
+    "year": "2025",
+    "citation_count": 5
+  },
+  {
+    "bibcode": "2025JCAP...07..009L",
+    "abstract": "We present a study on using delensing to enhance cosmic birefringence measurements based on full-sky, map-based simulations. In our analysis, we neglect foreground contamination and instrumental systematics to isolate the intrinsic impact of delensing on both isotropic and anisotropic birefringence. For the isotropic case, assuming a constant rotation angle of \u03b2 = 0.35\u00b0, delensing reduces the lensing-induced variance in the EB power spectrum, yielding an improvement in sensitivity of approximately 10% at 6\u03bcK-arcmin noise for \u2113 &lt; 200 and 25\u201340% at lower noise levels for \u2113 &lt; 1000. For the anisotropic case, using simulations at 1 \u03bcK-arcmin noise, we reconstruct the birefringence angle for a scale-invariant spectrum and mitigate lensing bias by delensing, achieving a 50% reduction in the leading N <SUB>(0)</SUB> bias and a 30% improvement in the constraints on the amplitude A <SUB>CB</SUB>. Our results demonstrate that delensing is an effective tool for enhancing the detectability of subtle parity-violating signals in the CMB with forthcoming experiments such as the Simons Observatory, CMB-S4, and LiteBIRD.",
+    "author": [
+      "Lonappan, Anto Idicherian"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/07/009",
+      "10.48550/arXiv.2503.04708"
+    ],
+    "title": [
+      "Improving cosmic birefringence constraints via delensing"
+    ],
+    "year": "2025",
+    "citation_count": 2
+  },
+  {
+    "bibcode": "2025JCAP...07..083D",
+    "abstract": "Cosmic birefringence (CB) is the rotation of the photons' linear polarisation plane during propagation. Such an effect is a tracer of parity-violating extensions of standard electromagnetism and would probe the existence of a new cosmological field acting as dark matter or dark energy. It has become customary to employ cosmic microwave background (CMB) polarised data to probe such a phenomenon. Recent analyses on Planck and WMAP data provide a hint of detection of the isotropic CB angle with an amplitude of around 0.3\u00b0 at the level of 2.4 to 3.6\u03c3. In this work, we explore the LiteBIRD capabilities in constraining such an effect, accounting for the impact of the more relevant systematic effects, namely foreground emission and instrumental polarisation angles. We build five semi-independent pipelines and test these against four different simulation sets with increasing complexity in terms of non-idealities. All the pipelines are shown to be robust and capable of returning the expected values of the CB angle within statistical fluctuations for all the cases considered. We find that the uncertainties in the CB estimates increase with more complex simulations. However, the trend is less pronounced for pipelines that account for the instrumental polarisation angles. For the most complex case analysed, we find that LiteBIRD will be able to detect a CB angle of 0.3\u00b0 with a statistical significance ranging from 5 to 13\u03c3, depending on the pipeline employed, where the latter uncertainty corresponds to a total error budget of the order of 0.02\u00b0.",
+    "author": [
+      "de la Hoz, E.",
+      "Diego-Palazuelos, P.",
+      "Errard, J.",
+      "Gruppuso, A.",
+      "Jost, B.",
+      "Sullivan, R. M.",
+      "Bortolami, M.",
+      "Chinone, Y.",
+      "Hergt, L. T.",
+      "Komatsu, E.",
+      "Minami, Y.",
+      "Obata, I.",
+      "Paoletti, D.",
+      "Scott, D.",
+      "Vielva, P.",
+      "Adak, D.",
+      "Akizawa, R.",
+      "Anand, A.",
+      "Aumont, J.",
+      "Baccigalupi, C.",
+      "Banday, A. J.",
+      "Barreiro, R. B.",
+      "Bartolo, N.",
+      "Basak, S.",
+      "Basyrov, A.",
+      "Bersanelli, M.",
+      "Brinckmann, T.",
+      "Cacciotti, F.",
+      "Calabrese, E.",
+      "Campeti, P.",
+      "Carinos, E.",
+      "Carones, A.",
+      "Carralot, F.",
+      "Casas, F. J.",
+      "Citran, M.",
+      "Clermont, L.",
+      "Columbro, F.",
+      "Coppi, G.",
+      "Coppolecchia, A.",
+      "Cuttaia, F.",
+      "de Bernardis, P.",
+      "De Lucia, M.",
+      "De Petris, M.",
+      "Della Torre, S.",
+      "Di Giorgi, E.",
+      "Eriksen, H. K.",
+      "Ferreira, E.",
+      "Finelli, F.",
+      "Franceschet, C.",
+      "Fuskeland, U.",
+      "Galloni, G.",
+      "Galloway, M.",
+      "Gerbino, M.",
+      "Gervasi, M.",
+      "G\u00e9nova-Santos, R. T.",
+      "Ghigna, T.",
+      "Giardiello, S.",
+      "Gimeno-Amo, C.",
+      "Gjerl\u00f8w, E.",
+      "Hazumi, M.",
+      "Henrot-Versill\u00e9, S.",
+      "Hivon, E.",
+      "Ishino, H.",
+      "Kohri, K.",
+      "Lamagna, L.",
+      "Lattanzi, M.",
+      "Leloup, C.",
+      "Lembo, M.",
+      "Levrier, F.",
+      "L\u00f3pez-Caniego, M.",
+      "Luzzi, G.",
+      "Mart\u00ednez-Gonz\u00e1lez, E.",
+      "Masi, S.",
+      "Matarrese, S.",
+      "Micheli, S.",
+      "Migliaccio, M.",
+      "Monelli, M.",
+      "Montier, L.",
+      "Morgante, G.",
+      "Nagata, R.",
+      "Namikawa, T.",
+      "Natoli, P.",
+      "Occhiuzzi, A.",
+      "Pagano, L.",
+      "Paiella, A.",
+      "Pascual-Cisneros, G.",
+      "Pavlidou, V.",
+      "Pelgrims, V.",
+      "Piacentini, F.",
+      "Piccirilli, G.",
+      "Polenta, G.",
+      "Porcelli, L.",
+      "Raffuzzi, N.",
+      "Remazeilles, M.",
+      "Ritacco, A.",
+      "Rizzieri, A.",
+      "Rubi\u00f1o-Mart\u00edn, J. A.",
+      "Ruiz-Granda, M.",
+      "Sakurai, Y.",
+      "Sanghavi, J.",
+      "Shiraishi, M.",
+      "Stever, S. L.",
+      "Takase, Y.",
+      "Tassis, K.",
+      "Terenzi, L.",
+      "Tomasi, M.",
+      "Tristram, M.",
+      "Vacher, L.",
+      "van Tent, B.",
+      "Watts, D.",
+      "Wehus, I. K.",
+      "Weymann-Despres, G.",
+      "Winter, B.",
+      "Wollack, E. J.",
+      "Zhou, Y.",
+      "The LiteBIRD collaboration"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/07/083",
+      "10.48550/arXiv.2503.22322"
+    ],
+    "title": [
+      "LiteBIRD science goals and forecasts: constraining isotropic cosmic birefringence"
+    ],
+    "year": "2025",
+    "citation_count": 12
+  },
+  {
+    "bibcode": "2025JCAP...06..025S",
+    "abstract": "Cosmic birefringence is an effect where the plane of polarisation of the cosmic microwave background (CMB) is rotated by an angle \u03b2 through coupling to a hypothetical parity-violating field. We analyse the Planck Public Release 4 (PR4 or NPIPE) data using a map-space analysis method and find \u03b2= 0.46\u00b0 \u00b1 0.04\u00b0(stat.) \u00b1 0.28\u00b0(syst.) for SEVEM CMB maps and \u03b2 = 0.48\u00b0 \u00b1 0.04\u00b0(stat.) \u00b1 0.28\u00b0(syst.) for Commander CMB maps. These values are slightly higher than previously published results, which may be explained by the fact that we have not attempted to remove any potential bias from miscalibration of the Planck polarimeters. The uncertainty in this miscalibration dominates the systematic uncertainty, which also means that our results are consistent with no parity violation. An advantage of the map-space analysis is that it is easy to investigate any variations on the sky, for example caused by foreground contamination. Our results for isotropic birefringence are fairly robust against different spatial data cuts, but there may be hints of a foreground systematic (north versus south hemispheres) or uncontrolled miscalibration effect (T peaks versus E peaks) that should be followed up in future studies. We additionally find no evidence of a cosmic birefringence dipole (anisotropic birefringence).",
+    "author": [
+      "Sullivan, Raelyn M.",
+      "Abghari, Arefe",
+      "Diego-Palazuelos, Patricia",
+      "Hergt, Lukas T.",
+      "Scott, Douglas"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/06/025",
+      "10.48550/arXiv.2502.07654"
+    ],
+    "title": [
+      "Planck PR4 (NPIPE) map-space cosmic birefringence"
+    ],
+    "year": "2025",
+    "citation_count": 9
+  },
+  {
+    "bibcode": "2025PhRvL.134p1001Y",
+    "abstract": "We propose a novel statistical method to measure cosmic birefringence and demonstrate its power in probing parity violation due to axions. Exploiting an empirical correlation between the integrated radio polarization direction of a spiral galaxy and its apparent shape, we devise an unbiased minimum-variance estimator for the rotation angle, which should achieve an uncertainty of 5\u00b0\u201315\u00b0 per galaxy. Large galaxy samples from the forthcoming SKA continuum surveys, together with optical shape catalogs, promise a comparable or even lower noise power spectrum for the rotation angle than in the CMB Stage-IV (CMB-S4) experiment, with different systematics.",
+    "author": [
+      "Yin, Weichen Winston",
+      "Dai, Liang",
+      "Huang, Junwu",
+      "Ji, Lingyuan",
+      "Ferraro, Simone"
+    ],
+    "doi": [
+      "10.1103/PhysRevLett.134.161001",
+      "10.48550/arXiv.2402.18568"
+    ],
+    "title": [
+      "New Probe of Cosmic Birefringence Using Galaxy Polarization and Shapes"
+    ],
+    "year": "2025",
+    "citation_count": 10
+  },
+  {
+    "bibcode": "2025arXiv250308538M",
+    "abstract": "The Cosmic Microwave Background (CMB) is a fundamental observational tool in modern cosmology. The linear polarization of the CMB provides a crucial observational tool for exploring new physics, including the inflationary paradigm and parity-violating phenomena. The spectral distortion of the CMB can be used as a probe of the intracluster medium (ICM) of galaxy clusters (GCs) and to infer cosmological parameters. However, precise measurements are limited by foreground contamination and instrumental systematics. This work examines the non-thermal energy budget in GCs with the non-thermal Sunyaev-Zeldovich (ntSZ) effect. Using $Planck$ all-sky maps, we measure the ntSZ effect in GCs hosting radio halos, enabling constraints on the volume-averaged magnetic field strength within the ICM. We further assess how observations from upcoming ground-based CMB experiments improve these constraints. The imprints of parity-violating physics on the polarization of the CMB are predicted theoretically and recently, several methods have been used to measure the effect of cosmic birefringence from $Planck$ and $WMAP$ data. The miscalibration of polarization-sensitive detectors is found to be one of the limiting factors in this endeavour. We perform a relative and an absolute polarization angle calibration of the $Planck$ detectors using microwave and X-ray observations of the Crab nebula. Additionally, we develop a simulation pipeline to generate time-ordered data for an upcoming ground-based sub-mm telescope, analyzing the impact of correlated detector and atmospheric noise on CMB map reconstruction. Our findings in this thesis emphasize the importance of broad-frequency coverage for better foreground characterization and highlight the need for dedicated ground-based calibration to achieve accurate CMB polarization measurements. [abridged]",
+    "author": [
+      "Muralidhara, Vyoma"
+    ],
+    "doi": [
+      "10.48550/arXiv.2503.08538"
+    ],
+    "title": [
+      "Spectral distortion and polarization of the cosmic microwave background: Measurement, challenges and perspectives"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025IJMPD..3440008G",
+    "abstract": "We provide an update to S.\u00a0di Serego Alighieri, Int. J. Mod. Phys. D\u00a024 (2015) 1530016, arXiv:1501.06460 [astro-ph.CO], focusing on recent developments regarding constraints on Cosmic Polarization Rotation (CPR), also known as Cosmic Birefringence (CB), derived from Cosmic Microwave Background (CMB) polarization data.",
+    "author": [
+      "Gruppuso, Alessandro",
+      "di Serego Alighieri, Sperello"
+    ],
+    "doi": [
+      "10.1142/S0218271825400085",
+      "10.48550/arXiv.2502.07743"
+    ],
+    "title": [
+      "Cosmic Polarization Rotation from CMB data: A review for GR110"
+    ],
+    "year": "2025",
+    "citation_count": 3
+  },
+  {
+    "bibcode": "2024PhRvD.110j3525Z",
+    "abstract": "Cosmic birefringence, the observed rotation of the polarization plane of the cosmic microwave background (CMB), serves as a compelling probe for parity-violating physics beyond the Standard Model. This study explores the potential of ultralight axion-like particle (ALP) dark matter to explain the observed cosmic birefringence in the CMB. We focus on the previously understudied mass range of <inline-formula><mml:math display=\"inline\"><mml:mrow><mml:msup><mml:mrow><mml:mn>10</mml:mn></mml:mrow><mml:mrow><mml:mo>-</mml:mo><mml:mn>25</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:math></inline-formula> to <inline-formula><mml:math display=\"inline\"><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>23</mml:mn></mml:mrow></mml:msup><mml:mtext> </mml:mtext><mml:mtext> </mml:mtext><mml:mi>eV</mml:mi></mml:math></inline-formula>, where ALPs start to undergo nonlinear clustering in the late Universe. Our analysis incorporates recent cosmological constraints and considers the washout effect on CMB polarization. We find that for models with ALP masses <inline-formula><mml:math display=\"inline\"><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>25</mml:mn></mml:mrow></mml:msup><mml:mtext> </mml:mtext><mml:mtext> </mml:mtext><mml:mi>eV</mml:mi><mml:mo>\u2272</mml:mo><mml:msub><mml:mi>m</mml:mi><mml:mi>\u03d5</mml:mi></mml:msub><mml:mo>\u2272</mml:mo><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>23</mml:mn></mml:mrow></mml:msup><mml:mtext> </mml:mtext><mml:mtext> </mml:mtext><mml:mi>eV</mml:mi></mml:math></inline-formula> and birefringence arising from late ALP clustering, the upper limit on the ALP-photon coupling constant, imposed by the washout effect, is stringently lower than the coupling required to account for the observed static cosmic birefringence signal. This discrepancy persists regardless of the ALP fraction in dark matter. Furthermore, considering that ALPs with masses <inline-formula><mml:math display=\"inline\"><mml:msub><mml:mi>m</mml:mi><mml:mi>\u03d5</mml:mi></mml:msub><mml:mo>\u2273</mml:mo><mml:msup><mml:mn>10</mml:mn><mml:mrow><mml:mo>-</mml:mo><mml:mn>23</mml:mn></mml:mrow></mml:msup><mml:mtext> </mml:mtext><mml:mtext> </mml:mtext><mml:mi>eV</mml:mi></mml:math></inline-formula> cannot explain static birefringence due to their rapid field oscillations, our results indicate that all ALP dark matter candidates capable of nonlinear clustering in the late Universe and thus contributing mainly to the rotation angle of polarized photons are incompatible with explaining the static cosmic birefringence signal observed in Planck and WMAP data.",
+    "author": [
+      "Zhang, Dongdong",
+      "Ferreira, Elisa G. M.",
+      "Obata, Ippei",
+      "Namikawa, Toshiya"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.110.103525",
+      "10.48550/arXiv.2408.08063"
+    ],
+    "title": [
+      "Constraining ultralight ALP dark matter in light of cosmic birefringence"
+    ],
+    "year": "2024",
+    "citation_count": 12
+  },
+  {
+    "bibcode": "2024EPJC...84.1142M",
+    "abstract": "The cosmic birefringence (CB) angle refers to the rotation of the linear polarization plane of Cosmic Microwave Background (CMB) radiations when parity-violating theories are considered. We analyzed the Quantum Boltzmann equation for an ensemble of CMB photons interacting with the right-handed sterile neutrino dark matter (DM) and axion-like particles (ALPs) DM in the presence of the scalar metric perturbation. We used the birefringence angle of CMB to study those probable candidates of DM. It is shown that the CB angle contribution of sterile neutrino is much less that two other sources considered here. Next, we combined the results of the cosmic neutrinos' contribution and the contribution of the ALPs to producing the CMB birefringence and discussed the uncertainty on the parameter space of axions caused by the share of CMB-cosmic neutrino interaction in generating this effect. Finally, we plotted the EB power spectrum of the CMB and showed that this spectrum behaves differently in the presence of cosmic neutrinos and ALPs interactions in small $l$. Hence, future observed data for $C^{l}_{EB}$, will help us to distinguish the CB angle value due to the various sources of its production.",
+    "author": [
+      "Mahmoudi, Somayyeh",
+      "Sadegh, Mahdi",
+      "Khodagholizadeh, Jafar",
+      "Motie, Iman",
+      "Xue, She-Sheng",
+      "Blanchard, Alain"
+    ],
+    "doi": [
+      "10.1140/epjc/s10052-024-13444-8",
+      "10.48550/arXiv.2409.18588"
+    ],
+    "title": [
+      "Erratum to: Generation of the CMB cosmic birefringence through axion-like particles, sterile and active neutrinos"
+    ],
+    "year": "2024",
+    "citation_count": 1
+  },
+  {
+    "bibcode": "2024JCAP...10..101A",
+    "abstract": "Unveiling the dark sector of the Universe is one of the leading efforts in theoretical physics. Among the many models proposed, axions and axion-like particles stand out due to their solid theoretical foundation, capacity to contribute significantly to both dark matter and dark energy, and potential to address the small-scale crisis of \u039bCDM. Moreover, these pseudo-scalar fields couple to the electromagnetic sector through a Chern-Simons parity-violating term, leading to a rotation of the plane of linearly polarized waves, namely cosmic birefringence. We explore the impact of the axion-parameters on anisotropic birefringence and study, for the first time, its cross-correlation with the spatial distribution of galaxies, focusing on ultralight axions with masses 10<SUP>-33</SUP> eV \u2264 m<SUB>\u03d5</SUB> \u2264 10<SUP>-28</SUP> eV. Through this novel approach, we investigate the axion-parameter space in the mass m<SUB>\u03d5</SUB> and initial misalignment angle \u03b8<SUB>i</SUB> , within the framework of early dark energy models, and constrain the axion-photon coupling g<SUB>\u03d5</SUB>\u03b3 required to achieve unity in the signal-to-noise ratio of the underlying cross-correlation, computed with the instrument specifications of Euclid and forthcoming CMB-polarization data. Our findings reveal that for masses below 10<SUP>-32</SUP> eV and initial misalignment angles greater in absolute value than \u03c0/4, the signal-to-noise ratio not only exceeds unity but also surpasses that achievable from the auto-correlation of birefringence alone (up to a factor 7), highlighting the informative potential of this new probe. Additionally, given the late-time evolution of these low-mass axions, the signal stems from the epoch of reionization, providing an excellent tool to single out the birefringence generated during this period.",
+    "author": [
+      "Arcari, S.",
+      "Bartolo, N.",
+      "Greco, A.",
+      "Gruppuso, A.",
+      "Lattanzi, M.",
+      "Natoli, P."
+    ],
+    "doi": [
+      "10.1088/1475-7516/2024/10/101",
+      "10.48550/arXiv.2407.02144"
+    ],
+    "title": [
+      "Conversations in the dark: cross-correlating birefringence and LSS to constrain axions"
+    ],
+    "year": "2024",
+    "citation_count": 4
+  },
+  {
+    "bibcode": "2024JCAP...08..037L",
+    "abstract": "We study the kinetic mixing between the cosmic microwave background (CMB) photon and the birefringent dark photon. These birefringent dark photon may exist in parity-violating dark sector, for example, through the coupling to axion field. We show that the birefringence of the dark photon propagates to the CMB photon, but the resulting birefringence may not be isotropic over the sky, but will be anisotropic in general. Moreover, our investigation sheds light on the essential role played by kinetic mixing in the generation of two fundamental characteristics of the CMB: circular polarization and spectral distortion.",
+    "author": [
+      "Lee, Sung Mook",
+      "Kang, Dong Woo",
+      "Gong, Jinn-Ouk",
+      "Jeong, Donghui",
+      "Jung, Dong-Won",
+      "Park, Seong Chan"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2024/08/037",
+      "10.48550/arXiv.2307.14798"
+    ],
+    "title": [
+      "Cosmic birefringence by dark photon"
+    ],
+    "year": "2024",
+    "citation_count": 2
+  }
+]

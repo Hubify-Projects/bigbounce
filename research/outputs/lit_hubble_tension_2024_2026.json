@@ -1,0 +1,402 @@
+[
+  {
+    "bibcode": "2024arXiv240418579W",
+    "abstract": "Recently, Dark Energy Spectroscopic Instrument (DESI) collaboration based on their first year data has reported a $\\gtrsim 3\\sigma$ evidence for an evolving dark energy (DE) against the cosmological constant (CC), so the standard $\\Lambda$CDM model. However, it is necessary to access the impact of DESI data on the state equation $w_0$-$w_a$ of DE in the Hubble-tension-free cosmologies, where $w_0$ and $w_a$ is the parameters of state equation of DE. In this paper, using recent DESI BAO measurements combined with Planck CMB and Pantheon Plus dataset, we perform the Monte Carlo Markov Chain (MCMC) analysis for the $w_0w_a$CDM model with possible pre-recombination resolutions of the Hubble tension. It is found that though $w_0&gt;-1$ and $w_a&lt;0$ are still preferred, the CC is also $&lt;2\\sigma$ consistent, while the bestfit Hubble constant $H_0$ are higher than those with pre-DESI BAO data but without the further exacerbation of $S_8$ tension. According to our results, the resolutions of Hubble tension are likely to suppress the \\textit{preference} of DESI for the evolving DE, thus the claim of ruling out the CC needs to be more cautious regarding not only the recent observational data but also the cosmological tensions.",
+    "author": [
+      "Wang, Hao",
+      "Piao, Yun-Song"
+    ],
+    "doi": [
+      "10.48550/arXiv.2404.18579"
+    ],
+    "title": [
+      "Dark energy in light of recent DESI BAO and Hubble tension"
+    ],
+    "year": "2024",
+    "citation_count": 137
+  },
+  {
+    "bibcode": "2024ApJ...977..120R",
+    "abstract": "We cross-check the Hubble Space Telescope (HST) Cepheid/Type Ia supernova (SN Ia) distance ladder, which yields the most precise local H <SUB>0</SUB>, against early James Webb Space Telescope (JWST) subsamples (\u223c1/4 of the HST sample) from SH0ES and CCHP, calibrated only with NGC 4258. We find HST Cepheid distances agree well (\u223c1\u03c3) with all combinations of methods, samples, and telescopes. The comparisons explicitly include the measurement uncertainty of each method in NGC 4258, an oft-neglected but dominant term. Mean differences are \u223c0.03 mag, far smaller than the 0.18 mag \"Hubble tension.\" Combining all measures produces the strongest constraint yet on the linearity of HST Cepheid distances, 0.994 \u00b10.010, ruling out distance-dependent bias or offset as the source of the tension at \u223c7\u03c3. However, current JWST subsamples produce large sampling differences in H<SUB>0</SUB> whose size and direction we can directly estimate from the full HST set. We show that \u0394H <SUB>0</SUB> \u223c 2.5 km s<SUP>\u20111</SUP> Mpc<SUP>\u20111</SUP> between the CCHP JWST program and the full HST sample is entirely consistent with differences in sample selection. We combine all JWST samples into a new distance-limited set of 16 SNe Ia at D \u2264 25 Mpc. Using JWST Cepheids, JAGB, and tip of the red giant branch, we find 73.4 \u00b1 2.1, 72.2 \u00b1 2.2, and 72.1 \u00b1 2.2 km s<SUP>\u20111</SUP> Mpc<SUP>\u20111</SUP>, respectively. Explicitly accounting for common supernovae, the three-method JWST result is H <SUB>0</SUB> = 72.6 \u00b1 2.0, similar to H <SUB>0</SUB> = 72.8 expected from HST Cepheids in the same galaxies. The small JWST sample trivially lowers the Hubble tension significance due to small-sample statistics and is not yet competitive with the HST set (42 SNe Ia and 4 anchors), which yields 73.2 \u00b1 0.9. Still, the joint JWST sample provides important cross-checks that the HST data pass.",
+    "author": [
+      "Riess, Adam G.",
+      "Scolnic, Dan",
+      "Anand, Gagandeep S.",
+      "Breuval, Louise",
+      "Casertano, Stefano",
+      "Macri, Lucas M.",
+      "Li, Siyang",
+      "Yuan, Wenlong",
+      "Huang, Caroline D.",
+      "Jha, Saurabh",
+      "Murakami, Yukei S.",
+      "Beaton, Rachael",
+      "Brout, Dillon",
+      "Wu, Tianrui",
+      "Addison, Graeme E.",
+      "Bennett, Charles",
+      "Anderson, Richard I.",
+      "Filippenko, Alexei V.",
+      "Carr, Anthony"
+    ],
+    "doi": [
+      "10.3847/1538-4357/ad8c21",
+      "10.48550/arXiv.2408.11770"
+    ],
+    "title": [
+      "JWST Validates HST Distance Measurements: Selection of Supernova Subsample Explains Differences in JWST Estimates of Local H <SUB>0</SUB>"
+    ],
+    "year": "2024",
+    "citation_count": 119
+  },
+  {
+    "bibcode": "2024PhRvD.109b3527A",
+    "abstract": "This paper introduces the class of omnipotent dark energy (DE) models characterized by nonmonotonic energy densities that are capable of attaining negative values with corresponding equation of state parameters featuring phantom divide line (PDL) crossings and singularities. These nontrivial features are phenomenologically motivated by findings of previous studies that reconstruct cosmological functions from observations, and the success of extensions of \u039b CDM , whose actual or effective DE density is omnipotent, in alleviating the observational discordance within \u039b CDM . As an example, we focus on one embodiment of omnipotent DE, viz. the DE parametrization introduced in Di Valentino et al. [Dark energy with phantom crossing and the H<SUB>0</SUB> tension, Entropy 23, 404 (2021), 10.3390/e23040404] (DMS20). By updating and extending the datasets used in the original paper where it was introduced, we confirm the effectiveness of DMS20 in alleviating the observational discrepancies. Additionally, we uncover that its negative DE density feature, importance of which was not previously investigated, plays a crucial role in alleviating the tensions, along with the PDL crossing feature that the parametrization presupposes. In particular, we find that there is a positive correlation between the H<SUB>0</SUB> parameter and the scale (a<SUB>p</SUB>) at which DE density transitions from negative to positive, in agreement with previous studies that incorporate this transition feature. For our full dataset, the model yields H<SUB>0</SUB>=70.05 \u00b10.64 (68% CL) relaxing the H<SUB>0</SUB> tension with a preference of crossing to negative DE densities (a<SUB>p</SUB>&gt;0 at 99% CL), along with the constraint a<SUB>m</SUB>=0.92 2<SUB>-0.035</SUB><SUP>+0.041</SUP> on the scale of the presupposed PDL crossing.",
+    "author": [
+      "Adil, Shahnawaz A.",
+      "Akarsu, \u00d6zg\u00fcr",
+      "Di Valentino, Eleonora",
+      "Nunes, Rafael C.",
+      "\u00d6z\u00fclker, Emre",
+      "Sen, Anjan A.",
+      "Specogna, Enrico"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.109.023527",
+      "10.48550/arXiv.2306.08046"
+    ],
+    "title": [
+      "Omnipotent dark energy: A phenomenological answer to the Hubble tension"
+    ],
+    "year": "2024",
+    "citation_count": 74
+  },
+  {
+    "bibcode": "2024PhRvL.132v1002E",
+    "abstract": "Axionlike early dark energy (EDE) as an extension to \u039b cold dark matter (\u039b CDM ) has been proposed as a possible solution to the \"Hubble tension.\" We revisit this model using a new cosmic microwave background (CMB) temperature and polarization likelihood constructed from the Planck NPIPE data release. In a Bayesian analysis, we find that the maximum fractional contribution of EDE to the total energy density is f<SUB>EDE</SUB>&lt;0.061 (without SH0ES) over the redshift range z \u2208[10<SUP>3</SUP>,10<SUP>4</SUP>] and that the Hubble constant is constrained to lie within the range 66.9 &lt;H<SUB>0</SUB>&lt;69.5 km s<SUP>-1</SUP> Mpc<SUP>-1</SUP> (both at 95% C.L.). The data therefore favor a model close to \u039b CDM , leaving a residual tension of 3.7 \u03c3 with the SH0ES Cepheid-based measurement of H<SUB>0</SUB>. A comparison with the likelihood profile shows that our conclusions are robust to prior-volume effects. Our new CMB likelihood provides no evidence in favor of a significant EDE component.",
+    "author": [
+      "Efstathiou, George",
+      "Rosenberg, Erik",
+      "Poulin, Vivian"
+    ],
+    "doi": [
+      "10.1103/PhysRevLett.132.221002",
+      "10.48550/arXiv.2311.00524"
+    ],
+    "title": [
+      "Improved Planck Constraints on Axionlike Early Dark Energy as a Resolution of the Hubble Tension"
+    ],
+    "year": "2024",
+    "citation_count": 67
+  },
+  {
+    "bibcode": "2025SCPMA..6880410P",
+    "abstract": "Recent findings from the Dark Energy Spectroscopic Instrument (DESI) Data Release 2 (DR2) favor a dynamical dark energy characterized by a phantom crossing feature. This result also implies a lower value of the Hubble constant, thereby intensifying the so-called Hubble tension. To alleviate the Hubble tension, we consider the early dark energy and explore its impact on the evidence for dynamical dark energy including the Hubble constant calibrated by the SH0ES collaboration. We find that incorporating SH0ES prior with CMB, DESI DR2 BAO and Pantheon Plus/Union3/DESY5 data reduces the preference to dynamical dark energy to 1.5\u03c3/1.4\u03c3/2.4\u03c3 level, respectively. Our results suggest a potential tension between the Hubble constant H<SUB>0</SUB> of the SH0ES measurement and the phantom-to-quintessence transition in dark energy favored by DESI DR2 BAO data.",
+    "author": [
+      "Pang, Ye-Huang",
+      "Zhang, Xue",
+      "Huang, Qing-Guo"
+    ],
+    "doi": [
+      "10.1007/s11433-025-2713-8",
+      "10.48550/arXiv.2503.21600"
+    ],
+    "title": [
+      "The impact of the Hubble tension on the evidence for dynamical dark energy"
+    ],
+    "year": "2025",
+    "citation_count": 67
+  },
+  {
+    "bibcode": "2024PhRvD.109b3525G",
+    "abstract": "The \u223c5 \u03c3 mismatch between the value of the Hubble parameter measured by SH0ES and the one inferred from the inverse distance ladder (IDL) constitutes the biggest tension afflicting the standard model of cosmology, which could be pointing to the need of physics beyond \u039b CDM . In this paper, we study the background history required to solve the H<SUB>0</SUB> tension if we consider standard prerecombination physics, paying special attention to the role played by the data on baryon acoustic oscillations (BAO) employed to build the IDL. We show that the anisotropic BAO data favor an ultra-late-time (phantomlike) enhancement of H (z ) at z \u22720.2 , accompanied by a transition in the absolute magnitude of supernovae of type Ia M (z ) in the same redshift range. This agrees with previous findings in the literature. The effective dark energy (DE) density must be smaller than in the standard model at higher redshifts. Instead, when angular BAO data (claimed to be less subject to model dependencies) is employed in the analysis, we find that the increase of H (z ) starts at much higher redshifts, typically in the range z \u223c0.5 - 0.8 . In this case, M (z ) could experience also a transition (although much smoother), and the effective DE density becomes negative at z \u22732 . Both scenarios require a violation of the weak energy condition (WEC) but leave an imprint on completely different redshift ranges and might also have a different impact on the perturbed observables. They allow for the effective crossing of the phantom divide. Finally, we employ two alternative methods to show that current data from cosmic chronometers do not exclude the violation of the WEC but neither do they add any strong evidence in its favor. Our work puts the accent on the utmost importance of the choice of the BAO data set in the study of the possible solutions to the H<SUB>0</SUB> tension.",
+    "author": [
+      "G\u00f3mez-Valent, Adri\u00f9",
+      "Favale, Arianna",
+      "Migliaccio, Marina",
+      "Sen, Anjan A."
+    ],
+    "doi": [
+      "10.1103/PhysRevD.109.023525",
+      "10.48550/arXiv.2309.07795"
+    ],
+    "title": [
+      "Late-time phenomenology required to solve the H<SUB>0</SUB> tension in view of the cosmic ladders and the anisotropic and angular BAO datasets"
+    ],
+    "year": "2024",
+    "citation_count": 65
+  },
+  {
+    "bibcode": "2024PhRvD.109d3538L",
+    "abstract": "The origin of interstellar and intergalactic magnetic fields remains largely unknown. One possibility is that they are related to the primordial magnetic fields (PMFs) produced by, for instance, the phase transitions of the early Universe. In this paper, the PMF-induced turbulence generated at around the QCD phase transition epoch\u2014the characteristic magnetic field strength B<SUB>ch</SUB><SUP>*</SUP>\u223cO (1 ) \u03bc G and coherent length scale \u2113<SUB>ch</SUB><SUP>*</SUP>\u223cO (1 ) pc \u2014can naturally accommodate nanohertz gravitational waves reported by pulsar timing array (PTA) collaborations. Moreover, the evolution of the PMFs to the recombination era with the form of B<SUB>ch</SUB>\u223c\u2113<SUB>ch</SUB><SUP>-\u03b1</SUP> can induce baryon density inhomogeneities, alter the recombination history, and alleviate the tension of the Hubble parameter H<SUB>0</SUB> and the matter clumpiness parameter S<SUB>8</SUB> between early- and late-time measurements for 0.88 \u2264\u03b1 \u22641.17 (approximate 95% credible region based on three PTA likelihoods). This allowed range of \u03b1 is for the first time obtained by data-driven approach. The further evolved PMFs may account for the \u223cO (10<SUP>-16</SUP>) Gauss extragalactic magnetic field inferred with GRB 221009A.",
+    "author": [
+      "Li, Yao-Yu",
+      "Zhang, Chi",
+      "Wang, Ziwei",
+      "Cui, Ming-Yang",
+      "Tsai, Yue-Lin Sming",
+      "Yuan, Qiang",
+      "Fan, Yi-Zhong"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.109.043538",
+      "10.48550/arXiv.2306.17124"
+    ],
+    "title": [
+      "Primordial magnetic field as a common solution of nanohertz gravitational waves and the Hubble tension"
+    ],
+    "year": "2024",
+    "citation_count": 53
+  },
+  {
+    "bibcode": "2024MNRAS.528L..20A",
+    "abstract": "Hubble constant H<SUB>0</SUB> and weighted amplitude of matter fluctuations S<SUB>8</SUB> determinations are biased to higher and lower values, respectively, in the late universe with respect to early universe values inferred by the Planck collaboration within flat \u039bCDM cosmology. If these anomalies are physical, that is, not due to systematics, they naively suggest that H<SUB>0</SUB> decreases and S<SUB>8</SUB> increases with effective redshift. Here, subjecting matter density today \u03a9<SUB>m</SUB> to a prior, corresponding to a combination of Planck CMB and BAO data, we perform a consistency test of the Planck-\u039bCDM cosmology and show that S<SUB>8</SUB> determinations from f\u03c3<SUB>8</SUB> (z) constraints increase with effective redshift. Due to the redshift evolution, a ~3\u03c3 tension in the S<SUB>8</SUB> parameter with Planck at lower redshifts remarkably becomes consistent with Planck within 1\u03c3 at high redshifts. This provides corroborating support for an S<SUB>8</SUB> discrepancy that is physical in origin. We further confirm that the flat \u039bCDM model is preferred over a theoretically ad hoc model with a jump in S<SUB>8</SUB> at a given redshift. In the absence of the CMB+BAO \u03a9<SUB>m</SUB> prior, we find that &gt;3\u03c3 tensions with Planck in low-redshift data are ameliorated by shifts in the parameters in high-redshift data. Results here and elsewhere suggest that the \u039bCDM cosmological parameters are redshift dependent. Fitting parameters that evolve with redshift is a recognizable hallmark of model breakdown.",
+    "author": [
+      "Adil, S. A.",
+      "Akarsu, \u00d6.",
+      "Malekjani, M.",
+      "\u00d3 Colg\u00e1in, E.",
+      "Pourojaghi, S.",
+      "Sen, A. A.",
+      "Sheikh-Jabbari, M. M."
+    ],
+    "doi": [
+      "10.1093/mnrasl/slad165",
+      "10.48550/arXiv.2303.06928"
+    ],
+    "title": [
+      "S <SUB>8</SUB> increases with effective redshift in \u039bCDM cosmology"
+    ],
+    "year": "2024",
+    "citation_count": 52
+  },
+  {
+    "bibcode": "2025ApJ...979L...9S",
+    "abstract": "The Dark Energy Spectroscopic Instrument (DESI) collaboration measured a tight relation between the Hubble constant (H<SUB>0</SUB>) and the distance to the Coma cluster using the fundamental plane (FP) relation of the deepest, most homogeneous sample of early-type galaxies. To determine H<SUB>0</SUB>, we measure the distance to Coma by several independent routes, each with its own geometric reference. We measure the most precise distance to Coma from 13 Type Ia supernovae (SNe Ia) in the cluster with a mean standardized brightness of <inline-formula> </inline-formula> mag. Calibrating the absolute magnitude of SNe Ia with the Hubble Space Telescope (HST) distance ladder yields D<SUB>Coma</SUB> = 98.5 \u00b1 2.2 Mpc, consistent with its canonical value of 95\u2013100 Mpc. This distance results in H<SUB>0</SUB> = 76.5 \u00b1 2.2 km s<SUP>\u20111</SUP> Mpc<SUP>\u20111</SUP> from the DESI FP relation. Inverting the DESI relation by calibrating it instead to the Planck+\u039bCDM value of H<SUB>0</SUB> = 67.4 km s<SUP>\u20111</SUP> Mpc<SUP>\u20111</SUP> implies a much greater distance to Coma, D<SUB>Coma</SUB> = 111.8 \u00b1 1.8 Mpc, 4.6\u03c3 beyond a joint, direct measure. Independent of SNe Ia, the HST Key Project FP relation as calibrated by Cepheids, the tip of the red giant branch from JWST, or HST near-infrared surface brightness fluctuations all yield D<SUB>Coma</SUB> &lt; 100 Mpc, in joint tension themselves with the Planck-calibrated route at &gt;3\u03c3. From a broad array of distance estimates compiled back to 1990, it is hard to see how Coma could be located as far as the Planck+\u039bCDM expectation of &gt;110 Mpc. By extending the Hubble diagram to Coma, a well-studied location in our own backyard whose distance was in good accord well before the Hubble tension, DESI indicates a more pervasive conflict between our knowledge of local distances and cosmological expectations. We expect future programs to refine the distance to Coma and nearer clusters to help illuminate this new local window on the Hubble tension.",
+    "author": [
+      "Scolnic, Daniel",
+      "Riess, Adam G.",
+      "Murakami, Yukei S.",
+      "Peterson, Erik R.",
+      "Brout, Dillon",
+      "Acevedo, Maria",
+      "Carreres, Bastien",
+      "Jones, David O.",
+      "Said, Khaled",
+      "Howlett, Cullan",
+      "Anand, Gagandeep S."
+    ],
+    "doi": [
+      "10.3847/2041-8213/ada0bd",
+      "10.48550/arXiv.2409.14546"
+    ],
+    "title": [
+      "The Hubble Tension in Our Own Backyard: DESI and the Nearness of the Coma Cluster"
+    ],
+    "year": "2025",
+    "citation_count": 49
+  },
+  {
+    "bibcode": "2024PhRvD.109l3545G",
+    "abstract": "I review and discuss the possible implications for inflation resulting from considering new physics in light of the Hubble tension. My study is motivated by a simple argument that the constraints on inflationary parameters, most typically the spectral index n<SUB>s</SUB>, depend to some extent on the cosmological framework. To avoid broadening the uncertainties resulting from marginalizing over additional parameters (typical in many alternative models), I first adopt the same alternative viewpoint of previous studies and analyze what happens if a physical theory can fix extra parameters to nonstandard values. Focusing on the dark energy equation of state w and the effective number of relativistic species N<SUB>eff</SUB>, I confirm that physical theories able to fix w \u2248-1.2 or N<SUB>eff</SUB>\u22483.9 produce values of H<SUB>0</SUB> from Cosmic Microwave Background and Baryon Acoustic Oscillations in line with the local distance ladder estimate. While in the former case I do not find any relevant implications for inflation, in the latter scenarios, I observe a shift toward n<SUB>s</SUB>\u22481 . From a model-selection perspective, both cases are strongly disfavored compared to \u039b cold dark matter. However, models with N<SUB>eff</SUB>\u22483.3 - 3.4 could bring the H<SUB>0</SUB> tension down to \u223c3 \u03c3 while being moderately disfavored. Yet, this is enough to change the constraints on inflation so that the most accredited models (e.g., Starobinsky inflation) would no longer be favored by data. I then focus on Early Dark Energy (EDE), arguing that an EDE fraction f<SUB>EDE</SUB>\u223c0.04 - 0.06 (only able to mildly reduce the H<SUB>0</SUB> tension down to \u223c3 \u03c3 ) could already require a similar change in perspective on inflation. In fact, performing a full joint analysis of EDE and Starobinsky inflation, I find that the two models can hardly coexist for f<SUB>EDE</SUB>\u22730.06 .",
+    "author": [
+      "Giar\u00e8, William"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.109.123545",
+      "10.48550/arXiv.2404.12779"
+    ],
+    "title": [
+      "Inflation, the Hubble tension, and early dark energy: An alternative overview"
+    ],
+    "year": "2024",
+    "citation_count": 48
+  },
+  {
+    "bibcode": "2025RSPTA.38340022E",
+    "abstract": "Observations of the cosmic microwave background (CMB) radiation are described with remarkable accuracy by the six-parameter \u039b CDM cosmology. However, the key ingredients of this model, namely dark matter, dark energy and cosmic inflation are not understood at a fundamental level. It is, therefore, important to investigate tensions between the CMB and other cosmological probes. I will review aspects of tensions with direct measurements of the Hubble constant H<SUB>0</SUB>, measurements of weak gravitational lensing, and the recent hints of evolving dark energy reported by the Dark Energy Spectroscopic Instrument (DESI) collaboration. <P />This article is part of the discussion meeting issue `Challenging the standard cosmological model'.",
+    "author": [
+      "Efstathiou, George"
+    ],
+    "doi": [
+      "10.1098/rsta.2024.0022",
+      "10.48550/arXiv.2406.12106"
+    ],
+    "title": [
+      "Challenges to the \u039b CDM cosmology"
+    ],
+    "year": "2025",
+    "citation_count": 46
+  },
+  {
+    "bibcode": "2024A&A...688A.156B",
+    "abstract": "We investigated a possible interaction between cold dark matter and dark energy, corresponding to a well-known interacting dark energy model discussed in the literature within the context of resolving the Hubble tension. We put constraints on it in a novel way, by creating new likelihoods with an analytical marginalization over the Hubble parameter H<SUB>0</SUB>, the sound horizon r<SUB>d</SUB>, and the supernova absolute magnitude M<SUB>B</SUB>. Our aim is to investigate the impacts on the coupling parameter of the interacting model, \u03be, and the equation of state of dark energy w and the matter density parameter \u03a9<SUB>m, 0</SUB>. The late-time cosmological probes used in our analysis include the PantheonPlus (calibrated and uncalibrated), cosmic chronometers, and baryon acoustic oscillation samples and the Pantheon for comparison. Through various combinations of these datasets, we demonstrate hints of an up to 2\u03c3 deviation from the standard \u039b cold dark matter model.",
+    "author": [
+      "Benisty, David",
+      "Pan, Supriya",
+      "Staicova, Denitsa",
+      "Di Valentino, Eleonora",
+      "Nunes, Rafael C."
+    ],
+    "doi": [
+      "10.1051/0004-6361/202449883",
+      "10.48550/arXiv.2403.00056"
+    ],
+    "title": [
+      "Late-time constraints on interacting dark energy: Analysis independent of H<SUB>0</SUB>, r<SUB>d</SUB>, and M<SUB>B</SUB>"
+    ],
+    "year": "2024",
+    "citation_count": 45
+  },
+  {
+    "bibcode": "2024MNRAS.527L.156M",
+    "abstract": "We introduce a theoretical framework to interpret the Hubble tension, based on the combination of a metric f(R) gravity with a dynamical dark energy contribution. The modified gravity provides the non-minimally coupled scalar field responsible for the proper scaling of the Hubble constant, in order to accommodate for the local SNIa pantheon+ data and Planck measurements. The dynamical dark energy source, which exhibits a phantom divide line separating the low redshift quintessence regime (-1 &lt; w &lt; -1/3) from the phantom contribution (w &lt; -1) in the early Universe, guarantees the absence of tachyonic instabilities at low redshift. The resulting H<SUB>0</SUB>(z) profile rapidly approaches the Planck value, with a plateau behaviour for z \u2273 5. In this scenario, the Hubble tension emerges as a low redshift effect, which can be in principle tested by comparing SNIa predictions with far sources, like QUASARS and gamma ray bursts.",
+    "author": [
+      "Montani, Giovanni",
+      "De Angelis, Mariaveronica",
+      "Bombacigno, Flavio",
+      "Carlevaro, Nakia"
+    ],
+    "doi": [
+      "10.1093/mnrasl/slad159",
+      "10.48550/arXiv.2306.11101"
+    ],
+    "title": [
+      "Metric f(R) gravity with dynamical dark energy as a scenario for the Hubble tension"
+    ],
+    "year": "2024",
+    "citation_count": 42
+  },
+  {
+    "bibcode": "2024ChPhC..48e1001G",
+    "abstract": "We consider a new cosmological model (called $ \\tilde\\Lambda $ CDM), in which the vacuum energy interacts with matter and radiation, and test this model using the current cosmological observations. Using the CMB+BAO+SN (CBS) dataset to constrain the model, we find that $ H_0 $ and $ S_8 $ tensions are relieved to $ 2.87\\sigma $ and $ 2.77\\sigma $ , respectively. However, in this case, the $ \\tilde\\Lambda $ CDM model is not favored by the data, compared with \u039bCDM. We find that when the $ H_0 $ and $ S_8 $ data are added to the data combination, the situation is significantly improved. In the CBS+ $ H_0 $ case, the model relieves the $ H_0 $ tension to $ 0.47\\sigma $ , and the model is favored over \u039bCDM. In the CBS+ $ H_0 $ + $ S_8 $ case, we obtain a synthetically best situation, in which the $ H_0 $ and $ S_8 $ tensions are relieved to $ 0.72\\sigma $ and $ 2.11\\sigma $ , respectively. In this case, the model is most favored by the data. Therefore, this cosmological model can greatly relieve the $ H_0 $ tension and simultaneously effectively alleviate the $ S_8 $ tension. *Supported by the National SKA Program of China (2022SKA0110200, 2022SKA0110203), and the National Natural Science Foundation of China (11975072, 11875102, 11835009)",
+    "author": [
+      "Gao, Li-Yang",
+      "Xue, She-Sheng",
+      "Zhang, Xin"
+    ],
+    "doi": [
+      "10.1088/1674-1137/ad2b52",
+      "10.48550/arXiv.2212.13146"
+    ],
+    "title": [
+      "Dark energy and matter interacting scenario to relieve H <SUB>0</SUB> and S <SUB>8</SUB> tensions"
+    ],
+    "year": "2024",
+    "citation_count": 41
+  },
+  {
+    "bibcode": "2025A&A...698A.215G",
+    "abstract": "The Hubble constant (H<SUB>0</SUB>) is one of the most important parameters in the standard \u039bCDM model. The measurements given by the main two methods show a gap larger than 4\u03c3, which is known as Hubble tension. Fast radio bursts (FRBs) are extragalactic pulses with durations of milliseconds. They can be used as cosmological probes. We constrain H<SUB>0</SUB> using localized and nonlocalized FRBs. We first used 108 localized FRBs to constrain H<SUB>0</SUB> using the probability distributions of DM<SUB>host</SUB> and DM<SUB>IGM</SUB> from the IllustrisTNG simulation. Then, we used a Monte Carlo sampling to calculate the pseudo-redshift distributions of 527 nonlocalized FRBs from CHIME observations. The 108 localized FRBs yield a constraint of H<SUB>0</SUB> = 69.40<SUB>\u22121.97</SUB><SUP>+2.14</SUP> km s<SUP>\u22121</SUP> Mpc<SUP>\u22121</SUP>, which lies between the early- and late-time values. The constraint of H<SUB>0</SUB> from nonlocalized FRBs yields H<SUB>0</SUB> = 68.81<SUB>\u22120.68</SUB><SUP>+0.68</SUP> km s<SUP>\u22121</SUP> Mpc<SUP>\u22121</SUP>. This result indicates that the uncertainty on the constraint of H<SUB>0</SUB> drops to \u223c1% when the number of localized FRBs is increased to \u223c500. These uncertainties only include the statistical error. The systematic errors are also discussed and play a dominant role in the current sample.",
+    "author": [
+      "Gao, D. H.",
+      "Wu, Q.",
+      "Hu, J. P.",
+      "Yi, S. X.",
+      "Zhou, X.",
+      "Wang, F. Y.",
+      "Dai, Z. G."
+    ],
+    "doi": [
+      "10.1051/0004-6361/202453006",
+      "10.48550/arXiv.2410.03994"
+    ],
+    "title": [
+      "Measuring the Hubble constant using localized and nonlocalized fast radio bursts"
+    ],
+    "year": "2025",
+    "citation_count": 37
+  },
+  {
+    "bibcode": "2025ApJ...979L..34J",
+    "abstract": "The Dark Energy Spectroscopic Instrument (DESI) collaboration recently released the first-year data of baryon acoustic oscillations (BAOs). Based on the five different tracers, the cosmological constraint shows a hint of deviation from the standard \u039bCDM model. In this Letter, we combine the DESI BAOs with other cosmic probes to constrain the evolution of the Hubble constant as a function of redshift in the flat \u039bCDM model. The nonparametric method is used to estimate the value of the Hubble constant at different redshift bins. The correlations among different bins are removed by diagonalizing the covariance matrix. The joint data sample demonstrates a decreasing trend of the Hubble constant with a significance of 6.4\u03c3, which can naturally resolve the Hubble tension. To avoid statistical effects caused by the binning methods, we tested three other different binning methods and also found a decreasing trend. It may be due to dynamical dark energy or modified gravity.",
+    "author": [
+      "Jia, X. D.",
+      "Hu, J. P.",
+      "Yi, S. X.",
+      "Wang, F. Y."
+    ],
+    "doi": [
+      "10.3847/2041-8213/ada94d",
+      "10.48550/arXiv.2406.02019"
+    ],
+    "title": [
+      "Uncorrelated Estimations of H<SUB>0</SUB> Redshift Evolution from DESI Baryon Acoustic Oscillation Observations"
+    ],
+    "year": "2025",
+    "citation_count": 37
+  },
+  {
+    "bibcode": "2024OJAp....7E..32B",
+    "abstract": "Despite its successes, the \u039bCDM model faces several tensions with recent cosmological data and their increased accuracy. The mismatch between the values of the Hubble constant H0 obtained from {some} direct distance ladder measurements and from the cosmic microwave background (CMB) is the most statistically significant, but the amplitude of the matter fluctuations is also regarded as a serious concern, leading to the investigation of a plethora of {alternative} models. Here, we examine the situation from a different perspective. We first show that the combination of several recent measurements from local probes leads to a tight constraint on the present-day matter density \u03a9m as well as on the amplitude of the matter fluctuations, both acceptably consistent with the values inferred from the CMB. Secondly, we address the Hubble tension by assuming that some determinations of the value of H0 are possibly biased. We treat such a bias as a nuisance parameter within \u039bCDM and we examine such `` \u039bCDM + H0 bias'' models on the same statistical grounds as alternative cosmological models. A bias in Planck or in SH0ES produces similar improvements. However we show that a bias in the Cepheids calibration produces improvements in terms of \u0394AIC that supersede existing extended models proposed up to now. In a third step, we show that the value of \u03a9m we obtained from our RSD, Pantheon+ and 3\u00d72pt from DES, combined with SH0ES determination of H0, leads to a precise determination of the density parameter of the Universe \u03c9m=0.1753\u00b10.0069. This measurement provides an additional low-redshift test for cosmological models by comparing it to the preferred value derived from the CMB. From this test, most \u039bCDM extensions seem to be confronted with a new tension as many of them cluster around \u03c9m=0.14, while there is no tension with a local $H_0 67 $ km/s/Mpc. We conclude that a standard \u039bCDM model with an unknown bias in the Cepheids distance calibration represents a model that reaches a remarkable agreement, statistically better than previously proposed extensions without bias for which such a comparison can be performed.",
+    "author": [
+      "Blanchard, Alain",
+      "H\u00e9loret, Jean-Yves",
+      "Ili\u0107, St\u00e9phane",
+      "Lamine, Brahim",
+      "Tutusaus, Isaac"
+    ],
+    "doi": [
+      "10.33232/001c.117170",
+      "10.48550/arXiv.2205.05017"
+    ],
+    "title": [
+      "\u039bCDM is alive and well"
+    ],
+    "year": "2024",
+    "citation_count": 36
+  },
+  {
+    "bibcode": "2024IAUS..376...15R",
+    "abstract": "We review the local determination of the Hubble constant, H<SUB>0</SUB>, focusing on recent measurements of a distance ladder constructed from geometry, Cepheid variables and Type Ia supernovae (SNe Ia). We explain in some detail the components of the ladder: (1) geometry from Milky Way parallaxes, masers in NGC 4258 and detached eclipsing binaries in the Large Magellanic Cloud; (2) measurements of Cepheids with the Hubble Space Telescope (HST) in these anchors and in the hosts of 42 SNe Ia; and (3) SNe Ia in the Hubble flow. Great attention to negating systematic uncertainties through the use of differential measurements is reviewed. A wide array of tests are discussed. The measurements provide a strong indication of a discrepancy between the local measure of H<SUB>0</SUB> and its value predicted by \u039b Cold Dark Matter theory, calibrated by the cosmic microwave background (Planck), a decade-long challenge known as the `Hubble Tension'. We present new measurements with the James Webb Space Telescope of &gt;320 Cepheids on both rungs of the distance ladder, in a SN Ia host and the geometric calibrator NGC 4258, showing good agreement with the same as measured with HST. This provides strong evidence that systematic errors in HST Cepheid photometry do not play a significant role in the present Hubble Tension. Future measurements are expected to refine the local determination of the Hubble constant.",
+    "author": [
+      "Riess, Adam G.",
+      "Breuval, Louise"
+    ],
+    "doi": [
+      "10.1017/S1743921323003034",
+      "10.48550/arXiv.2308.10954"
+    ],
+    "title": [
+      "The Local Value of H<SUB>0</SUB>"
+    ],
+    "year": "2024",
+    "citation_count": 34
+  },
+  {
+    "bibcode": "2024arXiv240718292P",
+    "abstract": "The `cosmic calibration tension' is a $&gt; 5\\sigma$ discrepancy between the cosmological distance ladder built from baryonic acoustic oscillations (BAO) calibrated by the Planck/$\\Lambda$CDM sound horizon ($r_s$) and Type Ia supernovae (SN1a) calibrated instead with the S$H_0$ES absolute magnitude, assuming the distance-duality relationship (DDR) holds. In this work, we emphasize the consequences of this tension beyond the value of the Hubble constant $H_0$, and the implications for physics beyond $\\Lambda$CDM. Of utmost importance, it implies a larger physical matter density $\\omega_m\\equiv \\Omega_m h^2$, as both the fractional matter density $\\Omega_m$ and $h\\equiv H_0/100$ km/s/Mpc are well constrained from late-time data. New physics in the pre-recombination era must thus be able to decrease $r_s$ while either reducing the value of $\\Omega_m$, or increasing the value of $\\omega_m$. Assuming a $\\Lambda$CDM-like primordial power spectrum, this necessarily results in an increase in the clustering amplitude $\\sigma_8$. Deviations from $\\Lambda$CDM in the late-time expansion history cannot resolve the calibrator tension but can help relax the required shifts to the matter density and $\\sigma_8$: it is in that sense that a combination of early and late-time new physics may help alleviate the tension. More precisely, models that modify the pre-recombination expansion history can accommodate the increase in $\\omega_m$ without the need for additional modifications. It is those models which only affect recombination that require additional deviations at late-times to be successful. Hence, the `cosmic calibration tension' points either to a targeted modification of the pre-recombination expansion history, or to a broader change affecting multiple cosmic epochs.",
+    "author": [
+      "Poulin, Vivian",
+      "Smith, Tristan L.",
+      "Calder\u00f3n, Rodrigo",
+      "Simon, Th\u00e9o"
+    ],
+    "doi": [
+      "10.48550/arXiv.2407.18292"
+    ],
+    "title": [
+      "On the implications of the `cosmic calibration tension' beyond $H_0$ and the synergy between early- and late-time new physics"
+    ],
+    "year": "2024",
+    "citation_count": 32
+  },
+  {
+    "bibcode": "2025JCAP...03..023A",
+    "abstract": "We investigate the presence of extra relativistic degrees of freedom in the early Universe, contributing to the effective number of neutrinos N <SUB>eff</SUB>, as \u0394 N <SUB>eff</SUB> \u2261 N <SUB>eff</SUB>-3.044 \u2265 0, in light of the recent measurements of Baryon Acoustic Oscillations (BAO) by the DESI collaboration. We analyze one-parameter extensions of the \u039bCDM model where dark radiation (DR) is free streaming or behaves as a perfect fluid, due to self-interactions. We report a significant relaxation of upper bounds on \u0394 N <SUB>eff</SUB>, with respect to previous BAO data from SDSS+6dFGS, when additionally employing Planck data (and supernovae data from Pantheon+), setting \u0394 N <SUB>eff</SUB> \u2264 0.39 (95% C.L.) for free streaming DR, and a very mild preference for fluid DR, \u0394 N <SUB>eff</SUB> = 0.221<SUP>+0.088</SUP> <SUB>-0.18</SUB> (\u2264 0.46, 95% C.L.). Applying constraints from primordial element abundances leads to tighter constraints on \u0394 N <SUB>eff</SUB>, but they are avoided if DR is produced after Big Bang Nucleosynthesis (BBN). For fluid DR we estimate the tension with the SH<SUB>0</SUB>ES determination of H<SUB>0</SUB> to be less than 3\u03c3 and as low as 2\u03c3, and for free-streaming DR the tension is below 3\u03c3 if production occurs after BBN. This lesser degree of tension motivates a combination with SH<SUB>0</SUB>ES in these cases, resulting in a 4.4\u03c3-5\u03c3 evidence for dark radiation with \u0394 N <SUB>eff</SUB> \u2243 0.6 and large improvements in \u03c7 <SUP>2</SUP> over \u039bCDM, -18 \u2272 \u0394\u03c7 <SUP>2</SUP> \u2272 -25. Upcoming data releases by DESI and other CMB and LSS surveys will decisively confirm or disfavour this conclusion.",
+    "author": [
+      "Allali, Itamar J.",
+      "Notari, Alessio",
+      "Rompineve, Fabrizio"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2025/03/023",
+      "10.48550/arXiv.2404.15220"
+    ],
+    "title": [
+      "Reduced Hubble tension in dark radiation models after DESI 2024"
+    ],
+    "year": "2025",
+    "citation_count": 32
+  }
+]

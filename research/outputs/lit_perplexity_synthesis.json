@@ -1,0 +1,41 @@
+{
+  "birefringence": {
+    "content": "As of early 2026, the latest analyses of cosmic birefringence\u2014a parity-violating rotation of CMB polarization\u2014using Planck and ACT data report rotation angles **\u03b2 \u2248 0.2\u20130.3\u00b0** at **~2\u20133\u03c3** significance, with ACT DR6 providing higher-multipole EB correlations complementing Planck's low-\u2113 measurements.[1][2][4][5][8]\n\n### Key Measurements from Joint Planck + ACT Analyses\n- A January 2026 study (arXiv:2601.13624) jointly analyzes **Planck**, **ACT** (EB data at higher multipoles), DESI DR1, and Pantheon+ to constrain birefringence from early dark energy (EDE)-CMB Chern-Simons coupling. It favors a large EDE fraction (**f_EDE = 0.232^{+0.074}_{-0.047}**) and higher H_0 = 76.9^{+2.9}_{-2.5} km s^{-1} Mpc^{-1}, with ACT-EB tightening early-Universe constraints alongside Planck.[1][2]\n- ACT DR6 reanalysis (Diego-Palazuelos & Komatsu, ~Feb 2026) measures **\u03b2 = 0.215\u00b0 \u00b1 0.074\u00b0** at **99.6% CL (~2.6\u03c3)** after marginalizing telescope optics systematics via Bayesian modeling, confirming prior Planck/WMAP hints without scale dependence beyond \u2113>42.[5]\n- February 2026 study (arXiv:2602.12019v2) reports consistent **\u03b2 \u2248 0.3\u00b0** from Planck, WMAP, and **ACT DR6**, with non-Gaussian low-\u2113 EB favoring axion-like interpretations; no strong evidence distinguishes dark energy vs. dark matter yet, pending \u2113<20 data.[4]\n\n### Planck-Specific Constraints\nPlanck alone (recent reanalyses) yields **\u03b2 \u2248 0.3\u00b0** (~2\u20133\u03c3), consistent with joint fits but limited at high multipoles; isotropic axion-like birefringence is favored over scale-dependent signals.[4][6]\n\n### ACT-Specific Advances\nACT DR6 (final release, ~2026) provides sharper polarization maps than Planck, with **\u03b2_0 = 0.20 \u00b1 0.08\u00b0** (~2.5\u03c3), enabling EB tomography and Hubble tension confirmation alongside Planck.[3][7][8]\n\nThese results build on pre-2026 hints (e.g., Planck 2018: ~2.4\u03c3), but tensions persist in distinguishing mechanisms; future BICEP3/Simons Observatory data are needed for >3\u03c3 confirmation.[5] No March 2026 updates appear in available sources.",
+    "model": "sonar-pro",
+    "citations": [
+      "https://arxiv.org/abs/2601.13624",
+      "https://www.arxiv.org/pdf/2601.13624",
+      "https://www.eurekalert.org/news-releases/1106637",
+      "https://arxiv.org/html/2602.12019v2",
+      "https://www.mpa-garching.mpg.de/1137699/hl202602",
+      "https://link.aps.org/doi/10.1103/kc89-xjkb",
+      "https://inspirehep.net/literature/2970644",
+      "https://journals.aps.org/prl/abstract/10.1103/srfg-9fdy"
+    ]
+  },
+  "hubble_tension": {
+    "content": "**The Hubble tension remains unresolved as of early 2026, with local measurements of the Hubble constant (H\u2080) consistently higher than those inferred from cosmic microwave background (CMB) data.** Recent studies using James Webb Space Telescope (JWST) data confirm the accuracy of prior local H\u2080 values around 70-76 km/s/Mpc, while CMB-based predictions stay near 67-68 km/s/Mpc, maintaining a discrepancy of about 5-6 km/s/Mpc or 8-9%[2][5].\n\n### Latest H\u2080 Measurements\nKey recent H\u2080 determinations highlight the ongoing split between **early-universe (CMB)** and **late-universe (local)** probes:\n\n| Method/Source | Date | H\u2080 Value (km/s/Mpc) | Notes |\n|---------------|------|----------------------|-------|\n| JWST + Hubble (Freedman et al.)[2] | 2025 | 70.4 \u00b1 3 | Doubled supernova calibration sample; claims agreement with CMB at 67.4 \u00b1 0.7, but tension persists per critiques. |\n| JWST + Hubble supernovae (Riess team, JHU)[5] | Dec 2024 | ~73 (local mean) | Verified Hubble's accuracy with <2% differences; rules out measurement error as cause (67-68 from standard model). |\n| Planck 2018 (CMB baseline)[1][5] | 2020 | 67-68 | Early-universe standard; tight error bars, unchanged by new data. |\n| Gravitational waves (stochastic sirens)[3] | 2026 | Incremental upper limits | New method; expects tighter constraints post-detection (~2032). |\n\nLocal measurements (e.g., Cepheids, supernovae via Hubble/JWST) yield 70-76 km/s/Mpc, while CMB (Planck) gives ~67.4 km/s/Mpc[2][5]. JWST's higher resolution confirms no major biases in local data[5].\n\n### Proposed Resolutions and Status\nNo consensus solution exists; theories include primordial magnetic fields[4][6] or new physics, but they await confirmation:\n- **Freedman (2025)**: JWST data narrows gap to ~3 km/s/Mpc, suggesting convergence, though critics note overlapping errors do not eliminate tension[2].\n- **SFU/Pogosian (Jan 2026)**: Early magnetic fields tested against Hubble/Planck data; survives checks but needs future validation[4].\n- Related **S\u2088 tension** (structure growth parameter) shows 2.4-2.7\u03c3 discrepancies (e.g., DES Y6 at 0.794 vs. CMB 0.836), complicating \u039bCDM but distinct from H\u2080[1].\n\nJWST rules out Hubble errors[5], gravitational waves offer future probes[3], and ground-based CMB (ACT DR6, SPT-3G; 2025) complements Planck without resolving H\u2080[1]. The tension, a ~5\u03c3 puzzle for over a decade, drives new models but lacks resolution[2][4][5].",
+    "model": "sonar-pro",
+    "citations": [
+      "https://arxiv.org/html/2602.12238v1",
+      "https://www.centauri-dreams.org/2025/06/03/expansion-of-the-universe-an-end-to-the-hubble-tension/",
+      "https://phys.org/news/2026-02-physicists-method-universe-expansion.html",
+      "https://www.sfu.ca/science/news/2026-news/hubble-tension---sfu-researcher-potentially-one-step-closer-to-a.html",
+      "https://hub.jhu.edu/2024/12/09/webb-telescope-hubble-tension-universe-expansion/",
+      "https://phys.org/news/2026-01-hubble-tension-primordial-magnetic-fields.html"
+    ]
+  },
+  "desi": {
+    "content": "The latest DESI 2025 results provide **significant evidence that dark energy is evolving over time** rather than remaining constant, as predicted by the standard cosmological model.[1][3]\n\n## Key Findings\n\nDESI's analysis of data from its first three years of observations\u2014comprising millions of galaxies and quasars\u2014reveals that the **dark energy equation of state parameter (w) appears to vary with cosmic time**.[1] In the standard Lambda Cold Dark Matter (\u039bCDM) model, this parameter is fixed at w = \u20131, but DESI's measurements suggest it deviates from this value and changes as the universe expands.[4]\n\nThe evidence comes from measurements of baryon acoustic oscillations (BAO), which serve as a \"standard ruler\" for measuring cosmic distances. DESI found that the sizes of these BAO shells are slightly offset from predictions based on the standard model, and they fit better with a model where dark energy evolves.[2] The data indicates that w(z) was below \u20131 at earlier cosmic times, implying an energy density that increased with expansion, peaked at a redshift of 0.45, and has since been decreasing.[4]\n\n## Significance and Caveats\n\nWhile the evidence is compelling, it does not yet constitute a definitive 5-sigma detection required to overturn the standard model.[4] However, the March 2025 press release announcing these results generated unprecedented global attention, with over 1,500 news articles appearing in 67 countries and 35 languages within weeks.[3]\n\nThe implications are profound: if confirmed by future observations from DESI's remaining data, the Euclid mission, the Vera C. Rubin Observatory, and the Nancy Grace Roman Space Telescope, this would fundamentally reshape our understanding of dark energy and the universe's ultimate fate.[4]",
+    "model": "sonar-pro",
+    "citations": [
+      "https://fisica.unimi.it/en/events/2025-results-dark-energy-spectroscopic-instrument-desi-standard-cosmological-model-question-davide-bianchi",
+      "https://www.universetoday.com/articles/desis-dizzying-results",
+      "https://www.desi.lbl.gov/2025/04/12/desis-evolving-dark-energy-lights-up-the-news/",
+      "https://cerncourier.com/desi-hints-at-evolving-dark-energy/",
+      "https://www.desi.lbl.gov",
+      "https://ui.adsabs.harvard.edu/abs/2025AAS...24521204I/abstract",
+      "https://arxiv.org/abs/2503.17659"
+    ]
+  }
+}

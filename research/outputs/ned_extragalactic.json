@@ -1,0 +1,86 @@
+{
+  "NGC 1365": [
+    {
+      "No.": "1",
+      "Object Name": "NGC 1365",
+      "RA": 53.4017,
+      "DEC": -36.14019,
+      "Type": "G",
+      "Velocity": 1636.0,
+      "Redshift": 0.005457,
+      "Redshift Flag": "UUN",
+      "Magnitude and Filter": "10.32",
+      "Separation": "--",
+      "References": "1416",
+      "Notes": "35",
+      "Photometry Points": "408",
+      "Positions": "143",
+      "Redshift Points": "166",
+      "Diameter Points": "25",
+      "Associations": "0"
+    }
+  ],
+  "NGC 4993": [
+    {
+      "No.": "1",
+      "Object Name": "NGC 4993",
+      "RA": 197.44876,
+      "DEC": -23.38396,
+      "Type": "G",
+      "Velocity": 2961.0,
+      "Redshift": 0.009877,
+      "Redshift Flag": "UUN",
+      "Magnitude and Filter": "13.32",
+      "Separation": "--",
+      "References": "410",
+      "Notes": "3",
+      "Photometry Points": "39",
+      "Positions": "25",
+      "Redshift Points": "46",
+      "Diameter Points": "17",
+      "Associations": "0"
+    }
+  ],
+  "M87": [
+    {
+      "No.": "1",
+      "Object Name": "MESSIER 087",
+      "RA": 187.70593,
+      "DEC": 12.39112,
+      "Type": "G",
+      "Velocity": 1284.0,
+      "Redshift": 0.004283,
+      "Redshift Flag": "UUN",
+      "Magnitude and Filter": "9.59",
+      "Separation": "--",
+      "References": "3579",
+      "Notes": "55",
+      "Photometry Points": "506",
+      "Positions": "135",
+      "Redshift Points": "142",
+      "Diameter Points": "14",
+      "Associations": "1"
+    }
+  ],
+  "Coma Cluster": [
+    {
+      "No.": "1",
+      "Object Name": "Coma Cluster",
+      "RA": 194.953,
+      "DEC": 27.981,
+      "Type": "GClstr",
+      "Velocity": 7194.0,
+      "Redshift": 0.023997,
+      "Redshift Flag": "SUN",
+      "Magnitude and Filter": "13.5J",
+      "Separation": "--",
+      "References": "1911",
+      "Notes": "7",
+      "Photometry Points": "32",
+      "Positions": "24",
+      "Redshift Points": "68",
+      "Diameter Points": "0",
+      "Associations": "0"
+    }
+  ]
+}

@@ -1,0 +1,422 @@
+{
+  "spin_torsion": [
+    {
+      "title": "Effective potentials for de Sitter and anti de Sitter quantum fields",
+      "abstract": "We derive a systematic treatment of one-loop effective potentials for interacting scalar fields in curved spacetimes, providing a general formula valid in arbitrary geometries and explicit results for de Sitter and anti-de Sitter backgrounds. We then compute the effective potential for a scalar $O(N)$ theory on a de Sitter space in any integer dimension. In $d=3$ and dimensional regularization, we extend the calculation up to two loops and compute the $\u03b2$-function and the anomalous mass dimension. They coincide exactly with flat-space results, despite dramatic curvature modifications to physical masses/couplings. The flat limit $R\\to\\infty$ recovers Coleman-Weinberg, confirming consistency. Working in $d=3$ dimensions, we repeat the calculation for $AdS_3$ by using point-splitting regularization, obtaining analogous results for the $\u03b2$-function and anomalous mass dimension.",
+      "published": "2026-03-02T18:00:38Z",
+      "arxiv_id": "2603.02140v1",
+      "authors": [
+        "Alfio Bonanno",
+        "Sergio Luigi Cacciatori",
+        "Ugo Moschella"
+      ],
+      "category": "hep-th",
+      "url": "http://arxiv.org/abs/2603.02140v1"
+    },
+    {
+      "title": "Low-$T/|W|$ instabilities in differentially rotating neutron stars resembling merger remnants",
+      "abstract": "We construct constant rest-mass sequences of equilibrium models of differentially rotating neutron stars which resemble binary neutron star post-merger remnants. For a more realistic description of the post-merger remnant, we impose that each model carries approximately $95\\%$ of the angular momentum that a binary system with the same total rest-mass has at the moment of merging, based on an empirical relation informed from neutron star merger simulations. We account for equation of state effects by employing two distinct microphysical descriptions for high density matter. We dynamically evolve the equilibrium models with a three-dimensional general relativistic hydrodynamics code that employs the conformal flatness approximation. We investigate the connection between the occurrence of the instability and the existence of corotation radii within the stellar configurations and determine the instability window for both equation of state sequences. The occurrence of low-$T/|W|$ instabilities leads to pronounced gravitational wave emission in the range $0.13 \\lessapprox\u03b2\\lessapprox 0.2$, while models outside this range exhibit less pronounced features in the gravitational wave spectrum. The prominence of gravitational wave emission is primarily determined by $\u03b2$, while the equation of state seems to have a more minor effect. We present correlations between the strength of the gravitational wave emission associated with the instability and properties of the equilibrium models. Stellar configurations modelled by different equations of state display differences in the timescales over which the various dynamical features develop, as well as whether they exhibit a pronounced $m=1$ deformation. Potential relations between the instability growth timescales and properties of the stellar models are studied.",
+      "published": "2026-03-02T17:40:56Z",
+      "arxiv_id": "2603.02120v1",
+      "authors": [
+        "Georgios Lioutas",
+        "Panagiotis Iosif",
+        "Andreas Bauswein",
+        "Nikolaos Stergioulas"
+      ],
+      "category": "astro-ph.HE",
+      "url": "http://arxiv.org/abs/2603.02120v1"
+    },
+    {
+      "title": "Dispersive estimates for a system of tensorial quasilinear wave equations satisfying the weak-null condition",
+      "abstract": "We establish both global existence and decay properties for solutions with small data for a general class of coupled system of tensorial quasilinear hyperbolic wave equations in three space dimensions, that covers the dynamical Einstein equations coupled to a class of non-linear matter sources that do not satisfy the null condition of Christodoulou and Klainerman, and have new different non-linearities than the one treated by Lindblad-Rodnianski, for which their celebrated seminal $L^\\infty$-estimate does not work, to the best of our knowledge. Global existence of solutions for a general class of quasilinear wave equations satisfying the weak-null condition, with small initial data, is largely an open problem at present. There is no known theory to prove decay for the class of non-linear hyperbolic partial differential equations that we treat in this paper. We establish a technique based on novel decoupling of the higher order energy estimates, at the level of the $L^2$-norm of the Lie derivatives of the tangential components, without involving all the other components, up to some good factor. This generalizes our previous results to include new non-linearities that are not present in the Einstein-Yang-Mills system in the Lorenz gauge.",
+      "published": "2026-03-02T14:56:08Z",
+      "arxiv_id": "2603.01939v1",
+      "authors": [
+        "Sari Ghanem"
+      ],
+      "category": "math.AP",
+      "url": "http://arxiv.org/abs/2603.01939v1"
+    },
+    {
+      "title": "Universal Bounds on Horizons, Photon Spheres, and Shadows: The Role of Energy Conditions in Spherically Symmetric Black Holes",
+      "abstract": "In this work, we derive rigorous and universal bounds on the geometric characteristics of black holes in asymptotically flat spacetimes under assumptions that weak energy condition is satisfied. We prove that the event horizon radius, the photon sphere , and the shadow ones take their maximal values in the Schwarzschild black hole case. Any additional matter distribution satisfying the weak energy condition necessarily decreases these radii relative to their Schwarzschild counterparts. Thus, the Schwarzschild solution provides an absolute upper bound on observable size characteristics of static, spherically symmetric black holes. We further analyze configurations possessing two distinct horizons and investigate their extremal regime, in which the inner and outer horizons merge. For extremal black holes, we establish both lower and upper bounds on the extremal horizon location. These bounds depend on the asymptotic structure of the lapse function, in particular on the presence or absence of a $1/r^2$ term in its asymptotic expansion. We derive explicit conditions on the lapse function determining when the extremal Reissner-Nordstrom radius provides a lower bound and when it instead serves as an upper bound. In addition, we prove that in asymptotically flat spacetimes the pressure at the outer event horizon is always either positive or equal to zero. As a consequence, the strong energy condition can not be violated outside the black hole, even in models of regular black holes where it may be violated in the interior region to avoid singularity formation.",
+      "published": "2026-03-02T14:52:40Z",
+      "arxiv_id": "2603.01937v1",
+      "authors": [
+        "Vitalii Vertogradov"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01937v1"
+    },
+    {
+      "title": "Spatially inhomogeneous confinement-deconfinement phase transition in accelerated gluodynamics",
+      "abstract": "This study explores confinement-deconfinement transition properties of SU($3$) Yang--Mills theory under weak accelerations at finite temperatures, using first-principles lattice simulations. The system is formulated in the Rindler spacetime, and the properties are studied from the perspective of a co-accelerating observer situated at the center of the lattice. We found that spatially separated confinement and deconfinement phases can coexist in the Rindler spacetime within certain intervals of temperature and acceleration. The position of the boundary between the phases is calculated as a function of temperature for several accelerations, and it is in accordance with the TE prediction, although a small deviation is observed. Moreover, in the weak acceleration regime, the critical temperature of the system is found to coincide with that of non-accelerated gluodynamics.",
+      "published": "2026-03-02T11:25:51Z",
+      "arxiv_id": "2603.01754v1",
+      "authors": [
+        "Victor V. Braguta",
+        "Vladimir A. Goy",
+        "Jayanta Dey",
+        "Artem A. Roenko"
+      ],
+      "category": "hep-lat",
+      "url": "http://arxiv.org/abs/2603.01754v1"
+    },
+    {
+      "title": "Ultraviolet completion of the inflationary paradigm",
+      "abstract": "After an exhaustive introduction highlighting the strengths and weaknesses of the non-local models proposed so far as ultraviolet completions of the Starobinsky theory, we propose a new nonlocal completion of a general $f(R)$ theory (in the Einstein's frame) suitable for driving inflation in the early universe consistently with observations. The nonlocal theory shares with $f(R)$ the same background solutions and the same equations of motion for perturbations at linear and nonlinear level. Therefore, the classical cosmological observables are not affected by the nonlocal operators needed for the quantum completion. Our construction applies to any local action written in the Einstein's frame, but we will provide the details only for two explicit examples: the Starobinsky model and a general $f(R)$ theory. The new model overcomes the incompatibility of renormalizability and stability present in the previous proposals.\n  Since the nonlocal theory is at least super-renormalizable, but can also be finite depending on the details of the model, this work shows the consistency of the inflationary paradigm with a well-defined quantum theory of gravity at high energy. We could rephrase the latter statement saying that the success of the $f(R)$ theories in cosmology can be traced back to the existence of an ultraviolet completion that preserves all the classical features. The inflationary paradigm survives, or it is actually insensitive to quantum gravity, because it is an exact solution of quantum gravity, up to perturbative corrections.",
+      "published": "2026-03-02T10:45:47Z",
+      "arxiv_id": "2603.01722v1",
+      "authors": [
+        "Leonardo Modesto",
+        "Lorenzo Orlando"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01722v1"
+    },
+    {
+      "title": "$\\mathcal{H}$-EFTCAMB: A Cobaya-Integrated, Python-Wrapped Extension of EFTCAMB for Covariant Horndeski Gravity",
+      "abstract": "We present $\\mathcal{H}\\mathtt{-EFTCAMB}$, the official successor to $\\mathtt{EFTCAMB}$. The original $\\mathtt{EFTCAMB}$ is designed as a consistent and numerically stable implementation of the effective field theory (EFT) of dark energy in the Einstein-Boltzmann code $\\mathtt{CAMB}$. On top of this, $\\mathcal{H}\\mathtt{-EFTCAMB}$ introduces a new Horndeski module that supports computing cosmology for an arbitrary input covariant Horndeski Lagragian. $\\mathcal{H}\\mathtt{-EFTCAMB}$ supports both mapping the Horndeski theory to an EFT lagrangian to solve in the EFT framework as well as directly solving for the scalar field equations of motion derived from the covariant Lagrangian. The latter approach also works for the cases when the Horndeski field experiences turn-overs, e.g. oscillation, where the EFT approach breaks down. The Horndeski module has been validated by comparing internally with existing models in the original $\\mathtt{EFTCAMB}$ and externally with $\\mathtt{hi\\_class}$. $\\mathcal{H}\\mathtt{-EFTCAMB}$ features a flexible Python wrapper that is seamlessly integrated into the widely utilized cosmological sampler $\\mathtt{Cobaya}$. \\heft~is publicly available and serves as a comprehensive tool for testing gravity against the precision data from current and next-generation surveys.",
+      "published": "2026-03-02T09:52:29Z",
+      "arxiv_id": "2603.01662v1",
+      "authors": [
+        "Gen Ye",
+        "Shijie Lin",
+        "Jiaming Pan",
+        "Dani de Boe",
+        "Stan Verhoeve",
+        "Marco Raveri",
+        "Bin Hu",
+        "Noemi Frusciante",
+        "Alessandra Silvestri"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01662v1"
+    },
+    {
+      "title": "Mass-type invariants in the presence of a cosmological constant",
+      "abstract": "In this paper, we introduce new mass-type invariants for time-symmetric initial data in space-times obeying the Dominant Energy Condition. When the cosmological constant is positive, these invariants, unlike the total Hawking mass, turn out to be genuinely effective in providing new characterizations of de Sitter solution. From a theoretical standpoint, this opens a new perspective on how one might refine the rigidity statement originally proposed by Min-Oo in his well known conjecture, later refuted by the counterexamples of Brendle, Marques, and Neves.",
+      "published": "2026-03-02T07:15:30Z",
+      "arxiv_id": "2603.01543v1",
+      "authors": [
+        "Virginia Agostiniani",
+        "Stefano Borghini",
+        "Lorenzo Mazzieri"
+      ],
+      "category": "math.DG",
+      "url": "http://arxiv.org/abs/2603.01543v1"
+    },
+    {
+      "title": "Modified Teukolsky formalism: Null testing and numerical benchmarking",
+      "abstract": "Next-generation gravitational-wave detectors will make black-hole ringdown an increasingly sensitive probe of small departures from General Relativity in the strong-field regime. This motivates obtaining high-precision predictions of gravitational effective field theory, as spectral shifts can be quite small. Here we perform a focused stress test of the modified-Teukolsky framework by designing two null diagnostics. First, we consider an action with redundant operators that must produce zero first-order vacuum QNM shifts. Second, we exploit a Ricci-flat identity relating two physical cubic Riemann to test such a relation is satisfied by the ringdown spectra obtained. We compute the shifts using two independent numerical approaches: the eigenvalue-perturbation and generalized continued-fraction (Leaver-type) methods. Both null tests are passed across multiple multipoles and overtones, and the control-operator results agree in magnitude with the benchmark values reported in Ref. [1]. These validations support using the framework for obtaining accurate precitions for robust strong-field tests, with straightforward extensions to rotating backgrounds and coupling with matter fields.",
+      "published": "2026-03-02T05:13:12Z",
+      "arxiv_id": "2603.01456v1",
+      "authors": [
+        "Fawzi Aly",
+        "Mahmoud A. Mansour",
+        "Luis Lehner",
+        "Dejan Stojkovic",
+        "Dongjun Li",
+        "Pratik Wagle"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01456v1"
+    },
+    {
+      "title": "Generator Histories and Parity-Odd Curvature in Lorentzian Topology Change",
+      "abstract": "Lorentzian topology change may be resolved into an ordered sequence of localized, orientation-sensitive operations rather than treated solely as a global transition between spatial manifolds. We develop a generator-history framework in which topology-changing spacetimes are represented algebraically as compositions of elementary local events, independent of dynamics, quantization, or anomaly inflow. Braid groups arise as the minimal realization of ordered, invertible pairwise exchanges, while higher-valence generators extend the construction to networked processes. Within this framework we identify parity-odd conformal curvature as the unique nontrivial local curvature pseudoscalar (without derivatives) capable of aggregating oriented generator content in four-dimensional Lorentzian vacuum geometry. The dual Weyl contraction changes sign under orientation reversal and therefore isolates chiral generator accumulation, while parity-even curvature scalars are insensitive to such structure. The associated spacetime integral functions as a covariant geometric diagnostic of chiral topology change that depends on generator histories and does not descend to endpoint-only equivalence classes obtained by Markov-type coarse-graining. The resulting picture isolates a pre-quantum geometric layer beneath spectral asymmetry: oriented generator dynamics induce parity-odd curvature compatible with the Pontryagin density appearing in the Atiyah Patodi Singer index theorem yet remains defined entirely within classical Lorentzian geometry. This framework clarifies the algebraic and geometric substrate underlying chiral topology change without introducing new gravitational dynamics or topological invariants.",
+      "published": "2026-03-02T00:18:31Z",
+      "arxiv_id": "2603.01333v1",
+      "authors": [
+        "Keith Andrew",
+        "Eric V. Steinfelds",
+        "Kristopher A. Andrew"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01333v1"
+    }
+  ],
+  "birefringence": [
+    {
+      "title": "Interpreting map-based $E$/$B$ spectral properties of CMB foregrounds",
+      "abstract": "Map-space $E$/$B$ decompositions of linear polarization are attractive for foreground and CMB analyses because they isolate the $B$-family patterns that contaminate primordial tensor searches from $E$-family patterns that trace coherent Galactic structures. However, the $E$/$B$ transform is non-fully-local and induces apparent spectral complexity in projected fields even when the underlying sky is spectrally simple in $\\underline{P}=Q+iU$. We quantify this effect for synchrotron emission. We introduce a complex-parameter description of the frequency dependence of $\\underline{P}$, its spin-preserving projections $\\underline{P}_E$ and $\\underline{P}_B$, and the scalar $\\underline{S}=E+iB$, using complex log--Taylor and moment expansions (with simple transformation rules under $E$/$B$ projection) and linking their coefficients to spectral-index variations, line-of-sight mixing, synchrotron ageing, and Faraday effects. Using a toy model and a PySM template, we find that scalar combinations, especially $|E|$ and $|B|$, acquire the largest induced complexity, while $\\underline{S}$ is less affected but lacks a directly interpretable amplitude and angle. By contrast, $\\underline{P}_E$ and $\\underline{P}_B$ retain a clear geometric meaning and exhibit only moderate spectral distortions, while satisfying the closure relation $\\underline{P}=\\underline{P}_E+\\underline{P}_B$ (which extends to all spectral orders in the moment formalism). Finally, with three frequency channels, we compare low-order spectral truncations and propose diagnostics to test whether the data favour a single power law in $P$ or independent power laws in $(P_E,P_B)$. This work is intended to be of practical relevance for both Galactic science and CMB $B$-mode analyses and lays the conceptual foundation for a series of papers applying the framework to observational data.",
+      "published": "2026-03-02T18:47:46Z",
+      "arxiv_id": "2603.02177v1",
+      "authors": [
+        "Gilles Weymann-Despres",
+        "L\u00e9o Vacher",
+        "Michael E. Jones",
+        "Angela C. Taylor",
+        "Carlo Baccigalupi",
+        "A. J. Banday",
+        "Richard D. P. Grumitt",
+        "Nicoletta Krachmalnicoff"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.02177v1"
+    },
+    {
+      "title": "Current and future constraints on the expansion history of the GREA model",
+      "abstract": "In this work, we investigate the General Relativistic Entropic Acceleration (GREA) framework, in which late-time acceleration emerges from entropy production associated with the cosmological horizon, and compare its performance with the standard $\u039b$CDM description of the Universe.\n  We first confront GREA with current background observations, including baryon acoustic oscillations, type Ia supernovae, compressed CMB information, and cosmic chronometers, with particular emphasis on the geometric horizon parameter $\\sqrt{-k}\u03b7_0$. We then introduce a phenomenological extension of the theory by allowing for an additional dark energy component, $\u03a9_{de}$, enabling the recovery of a $\u039b$CDM-like expansion history as a limiting case.\n  We perform a Bayesian parameter inference and model comparison analysis using both current data and mock datasets representative of future surveys, including SKAO, LSST, and ET. While current data statistically prefer $\u039b$CDM when compressed CMB information is included, GREA remains competitive for low-redshift combinations. Forecasts indicate that gravitational wave standard sirens are expected to enhance the ability to discriminate between entropic-driven and dark-energy-driven expansion scenarios, and to identify the underlying cosmological model favored by the data.",
+      "published": "2026-03-02T14:51:49Z",
+      "arxiv_id": "2603.01934v1",
+      "authors": [
+        "Irene Graziotti",
+        "Chiara De Leo",
+        "Matteo Martinelli"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.01934v1"
+    },
+    {
+      "title": "CosmicWeb-21cm array: A New Radio Observation Array Design for 21cm Cosmology",
+      "abstract": "This paper presents the CosmicWeb-21cm array, a novel radio interferometer designed to overcome the key challenges in 21 cm cosmology. Its core innovations include: (1) a multi-scale nested geometry combining a hexagonal core with logarithmic spiral arms for excellent UV coverage and calibration robustness; (2) an intelligent non-uniform frequency sampling strategy that adapts resolution to foreground and signal characteristics, reducing data volume while preserving information; and (3) a machine-learning-enhanced, physics-informed processing pipeline that achieves 99.7\\% foreground removal efficiency; (4) a dual-polarization crossed dipole integrated with a dielectric lens and cryogenically cooled LNA, achieving stable beam patterns and low noise temperature ($<35$ K) across 50-250 MHz. These co-designed advances enable high sensitivity mapping of the Epoch of Reionization, dark energy constraints and cosmic-web structure.",
+      "published": "2026-03-02T06:59:06Z",
+      "arxiv_id": "2603.01529v1",
+      "authors": [
+        "Jiancheng Wang",
+        "Jirong Mao",
+        "Xiangming Cheng",
+        "Yigong Zhang",
+        "Jie Su",
+        "Xiaogu Zhong",
+        "Min Wang",
+        "Zhigang Zhang",
+        "Qingwei Wang",
+        "Yonghua Xu",
+        "Zhixuan Li",
+        "Longhua Qin",
+        "Zhengjun Zhang"
+      ],
+      "category": "astro-ph.IM",
+      "url": "http://arxiv.org/abs/2603.01529v1"
+    },
+    {
+      "title": "The effect of photon re-scattering due to cosmic reionization on 21-cm images and power spectra",
+      "abstract": "The 21-cm signal from neutral hydrogen serves as a critical tool for unraveling the astrophysical processes that shaped cosmic dawn and the epoch of reionization. We explore the usually overlooked impact of re-scattering of 21-cm photons during and after reionization, similarly to cosmic microwave background photons. This scattering affects the observed brightness temperature by mixing the original signal with light scattered into the line of sight from other regions, effectively at the mean 21-cm brightness temperature. This gives a small but significant effect. We show that it attenuates the fluctuations in a 21-cm image by $4-7\\%$, while reducing the 21-cm power spectrum by a scale-independent $7-13\\%$ during cosmic dawn and reionization. Incorporating this correction is vital for precisely comparing theoretical predictions with observations from experiments such as NenuFAR, LOFAR, and HERA, and the upcoming Square Kilometre Array.",
+      "published": "2026-03-01T14:08:44Z",
+      "arxiv_id": "2603.01118v1",
+      "authors": [
+        "Sudipta Sikder",
+        "Rennan Barkana",
+        "Anastasia Fialkov"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.01118v1"
+    },
+    {
+      "title": "Non-Minimal Dilaton Inflation from the Effective Gluodynamics",
+      "abstract": "We study single-field inflation in which the inflaton is identified with the lightest scalar (dilaton) excitation of a confining gauge theory. The inflaton potential is not postulated: it follows from the pure effective Gluodynamics Lagrangian tightly constrained by the trace anomaly and the associated infinite tower of Ward identities, yielding a Coleman--Weinberg form with a logarithmic term fixed by nonperturbative condensates. After coupling to gravity via a non-minimal interaction $\u03be\\,\\varphi^2 R$, the Einstein-frame potential develops a plateau consistent with current CMB observables. In the large-$\u03be$ limit the model approaches the standard plateau attractor, while the Migdal--Shifman(MS) logarithmic structure induces a controlled, testable deformation governed by $A/\u03bb$ across the CMB window. We quantify the resulting shifts in $(n_s,r)$ and the running analytically and confirm them with numerical scans over $(\u03be,\u03bb,A,\u03bc)$, making the departure from the attractor both microphysically motivated and observationally predictive.",
+      "published": "2026-02-28T21:31:24Z",
+      "arxiv_id": "2603.00818v1",
+      "authors": [
+        " Pirzada",
+        "Imtiaz Khan",
+        "Mussawair Khan",
+        "Tianjun Li",
+        "Ali Muhammad"
+      ],
+      "category": "hep-ph",
+      "url": "http://arxiv.org/abs/2603.00818v1"
+    },
+    {
+      "title": "First Sardinia Radio Telescope detection of the Sunyaev-Zel'dovich effect at 18.6 GHz",
+      "abstract": "Galaxy clusters imprint a distinctive signature on the cosmic microwave background through the thermal Sunyaev-Zel'dovich (SZ) effect, which enables to study the intracluster plasma distribution and makes them powerful cosmological probes. We present the first Sardinia Radio Telescope (SRT) detection of the SZ effect in the galaxy cluster MACS J1752+4440 at 18.6 GHz, with a resolution of 0.9'. We detected a decrement in brightness toward the cluster centre, which we attributed to the thermal SZ effect. We modelled the signal using a spherically symmetric $\u03b2$ model for the electron density distribution and we employed a Bayesian retrieval to estimate the core radius, central electron density, and $\u03b2$ parameter of the cluster. We found values consistent with expectations for a galaxy cluster of the mass of MACS J1752+4440: a core radius of ($160 \\pm 30$) kpc, a central electron density of ($2.5^{+0.7}_{-0.5} \\cdot 10^{-3}$) cm$^{-3}$, and $\u03b2$=$0.6\\pm0.1$. The mean Compton-$y$ parameter within a radius of 3.5' is $(2.6 \\pm 0.3) \\cdot 10^{-5}$, higher than the value reported by Planck, which is coherent considering the different resolution of the instruments and the modelling adopted. This work demonstrates the potential of the SRT to detect the onset of the SZ decrement at low frequencies, providing higher angular resolution than current all-sky surveys and enabling an improved reconstruction of the SZ decrement profile and the plasma distribution in the intracluster medium.",
+      "published": "2026-02-28T10:32:20Z",
+      "arxiv_id": "2603.00584v1",
+      "authors": [
+        "S. Cocchi",
+        "F. Loi",
+        "M. Murgia",
+        "P. Marchegiani",
+        "V. Vacca",
+        "F. Govoni",
+        "F. Gandossi",
+        "G. Rodighiero"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.00584v1"
+    },
+    {
+      "title": "Constraining the neutral hydrogen fraction during reionization: Cross-simulation inference using power spectrum and bispectrum",
+      "abstract": "The redshifted 21-cm signal is a unique probe of the early universe, particularly the Epoch of Reionization (EoR). While the 21-cm power spectrum has been the primary statistic for parameter inference, it fails to capture the non-Gaussian information in the signal, motivating the use of higher-order statistics such as the bispectrum. We perform a rigorous cross-simulation validation to infer the mean neutral hydrogen fraction ($\\bar{x}_{HI}$) by training a Bayesian neural network on 21cmFAST simulations and applying it to mock observations generated by ReionYuga code. Our analysis spans six redshifts and includes realistic SKA system noise and cosmic variance, calculated from 50 statistically independent realizations. We find that the bispectrum adds useful information, but the improvement is moderate, with constraints tightened by $\\sim 1.4\\times$ the power-spectrum only case. The cross-simulation analysis also identifies a persistent systematic discrepancy between inferred and true values that often exceeds the statistical uncertainties, implying that modeling uncertainty remains the dominant limitation. Our results, therefore, indicate that the highly stringent constraints obtained in same-code validation studies may be overly optimistic, and mitigating cross-model systematics is crucial for robust parameter inference in the SKA era.",
+      "published": "2026-02-28T08:06:40Z",
+      "arxiv_id": "2603.00531v1",
+      "authors": [
+        "Anoop Krishna",
+        "Deepthi Moorkanat",
+        " Hiten",
+        "Rajesh Mondal"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.00531v1"
+    },
+    {
+      "title": "Parameterizations of the Hubble Constant: Logarithmic vs Power-Law Expansion from the Binned Master Sample of SNe Ia",
+      "abstract": "In view of the current and increasing evidence of a running Hubble constant, we investigate its redshift dependence within the flat $\u039b$CDM framework using a 20-bin analysis of the Master SNe~Ia Sample \\citep{2025JHEAp..4800405D}, considering cases with and without very low-redshift data. For each case, we obtain best-fitting values of $H_0$ and $\u03a9_{m0}$, and employ both logarithmic \\citep{2025arXiv250902636L} and power-law \\citep{2021ApJ...912..150D,2022Galax..10...24D,2025JHEAp..4800405D} parameterizations. The two parameterizations are consistent over the redshift range considered and coincide for low redshifts. To assess their behavior at earlier epochs, we extrapolate both forms to the Cosmic Microwave Background radiation (CMB) era ($z\\simeq1100$), Big Bang Nucleosynthesis (BBN, $z\\sim10^{9}$), and inflationary scales ($z\\sim10^{20}$). The reconstructed Hubble constant remains nearly indistinguishable up to the CMB scale, diverges at the few-to-ten percent level around BBN, and differs more substantially when extrapolated to inflationary redshifts. A qualitative distinction emerges at very-high redshift: the logarithmic form predicts a vanishing of $\\mathcal{H}_0^{\\mathrm{Log}}(z)$ at finite $z$, while the power-law form, $\\mathcal{H}_0^{\\mathrm{PL}}(z)$, approaches zero asymptotically as $z \\rightarrow \\infty$. In future studies, independent high-redshift observations and extensions beyond $\u039b$CDM, such as $f(R)$ modified gravity, could allow a comparative study of the two parameterizations beyond the SNe~Ia regime and their high-$z$ physical implications.",
+      "published": "2026-02-28T06:41:59Z",
+      "arxiv_id": "2603.00497v1",
+      "authors": [
+        "Maria Giovanna Dainottia",
+        "Avik Banerjeed",
+        "Andr\u00e9 LeClaire",
+        "Giovanni Montani"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.00497v1"
+    },
+    {
+      "title": "Halving and Doubling: Boosting the Detection of Relativistic Effects in the Galaxy Bispectrum with Optimal Subsample Selection",
+      "abstract": "On the scale of the cosmic horizon, signatures that are unique to general relativity are concealed within the statistics of the large scale distribution of galaxies. These were thought to be beyond the reach of all but the most ambitious galaxy surveys, as they are substantially suppressed relative to standard redshift-space distortions. We show that the detectability of these higher-order relativistic effects can be dramatically enhanced by a sampling strategy that splits a galaxy catalogue into faint and bright subsamples and then combines their auto-bispectra. For current surveys such as DESI, this implies that this new signal will be detectable for the first time using our new strategy.",
+      "published": "2026-02-27T19:01:34Z",
+      "arxiv_id": "2603.00244v1",
+      "authors": [
+        "Samantha Josephine Rossiter",
+        "Stefano Camera",
+        "Federico Montano",
+        "Chris Clarkson",
+        "Dionysios Karagiannis",
+        "Roy Maartens"
+      ],
+      "category": "astro-ph.CO",
+      "url": "http://arxiv.org/abs/2603.00244v1"
+    },
+    {
+      "title": "The Baryon Budget of Galaxies across the First Billion Years -- Theoretical Predictions for Gas Phases, Depletion Times, and Stellar Return Fractions",
+      "abstract": "We provide a complete census of the baryons in early galaxies to investigate the phases in which gas and stars reside, their corresponding budgets, depletion times, and stellar return fraction as a function of redshift and stellar age. We use the ColdSIM hydrodynamical time-dependent non-equilibrium chemistry simulations and perform a detailed analysis of the cold, warm, hot, and stellar phases for both bound structures (galaxies/CGM) and the diffuse IGM. We investigate in depth the cold HI and H2 components, explicitly computed in our simulations, and their relations with host mass, SFR, metallicity and depletion times. We also provide observational insights and discuss the implications for stellar mass functions, PopIII star formation and changes in the IMF. We find that cosmic gas prior to reionisation is mostly cold, while at later epochs the warm phase becomes dominant due to enhanced star formation activity and increasing UV reionising radiation. Stellar return fractions at these times are ~0.15-0.20, a factor of two lower than the values usually adopted. Cold, warm, and hot gas masses as well as HI and H2 components show increasing trends with mass and SFR, while depletion times decrease down to 0.01-0.1 Gyr with a weak metallicity dependence. The resulting star formation efficiency remains at the level of a few per cent and gas-to-star fractions decline with mass, influenced by local feedback and environment. Our findings are consistent with ALMA, VLA and IRAM surveys at later epochs, including ALFALFA, xCOLDGASS, GASS, xGASS, EDGE-CALIFA, PHIBBS, and ASPECS. Gas phases are quantitatively related to the underlying stellar populations and can be used to infer unknown quantities. In the appendix we provide fit functions describing the trends of the stellar return fraction, the main sequence, phase mass relations, gas-to-star fractions and depletion times.",
+      "published": "2026-02-27T19:00:00Z",
+      "arxiv_id": "2603.00230v1",
+      "authors": [
+        "Umberto Maio",
+        "C\u00e9line P\u00e9roux"
+      ],
+      "category": "astro-ph.GA",
+      "url": "http://arxiv.org/abs/2603.00230v1"
+    }
+  ],
+  "lqc_bounce": [
+    {
+      "title": "Effective potentials for de Sitter and anti de Sitter quantum fields",
+      "abstract": "We derive a systematic treatment of one-loop effective potentials for interacting scalar fields in curved spacetimes, providing a general formula valid in arbitrary geometries and explicit results for de Sitter and anti-de Sitter backgrounds. We then compute the effective potential for a scalar $O(N)$ theory on a de Sitter space in any integer dimension. In $d=3$ and dimensional regularization, we extend the calculation up to two loops and compute the $\u03b2$-function and the anomalous mass dimension. They coincide exactly with flat-space results, despite dramatic curvature modifications to physical masses/couplings. The flat limit $R\\to\\infty$ recovers Coleman-Weinberg, confirming consistency. Working in $d=3$ dimensions, we repeat the calculation for $AdS_3$ by using point-splitting regularization, obtaining analogous results for the $\u03b2$-function and anomalous mass dimension.",
+      "published": "2026-03-02T18:00:38Z",
+      "arxiv_id": "2603.02140v1",
+      "authors": [
+        "Alfio Bonanno",
+        "Sergio Luigi Cacciatori",
+        "Ugo Moschella"
+      ],
+      "category": "hep-th",
+      "url": "http://arxiv.org/abs/2603.02140v1"
+    },
+    {
+      "title": "On the Physical Nature of the Scalar Mode Mass in the Jordan frame of a Metric $f(R)$ gravity",
+      "abstract": "We analyze the Taylor expansion of metric $f(R)$ gravity in the Jordan frame around the General Relativity limit. By relating the scalar--tensor representation to the original $f(R)$ formulation, we derive constraints on the expansion parameters from the observed value of the present-day $\u039b$CDM deceleration parameter and from cosmological bounds on the variation of Newton's constant. We show that these requirements imply that the scalar degree of freedom must have a mass exceeding the Hubble scale by several orders of magnitude. This result challenges the common assumption that the scalar mode can drive cosmological dynamics with a mass of order $H_0$. We provide a dynamical interpretation of this hierarchy by emphasizing that a proper definition of the scalar mass, in a field-theoretical sense, requires an adiabatic separation between background evolution and perturbations, which naturally leads to a super-Hubble mass scale.",
+      "published": "2026-03-02T17:42:40Z",
+      "arxiv_id": "2603.02124v1",
+      "authors": [
+        "Giovanni Montani",
+        "Andrea Valletta"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.02124v1"
+    },
+    {
+      "title": "Low-$T/|W|$ instabilities in differentially rotating neutron stars resembling merger remnants",
+      "abstract": "We construct constant rest-mass sequences of equilibrium models of differentially rotating neutron stars which resemble binary neutron star post-merger remnants. For a more realistic description of the post-merger remnant, we impose that each model carries approximately $95\\%$ of the angular momentum that a binary system with the same total rest-mass has at the moment of merging, based on an empirical relation informed from neutron star merger simulations. We account for equation of state effects by employing two distinct microphysical descriptions for high density matter. We dynamically evolve the equilibrium models with a three-dimensional general relativistic hydrodynamics code that employs the conformal flatness approximation. We investigate the connection between the occurrence of the instability and the existence of corotation radii within the stellar configurations and determine the instability window for both equation of state sequences. The occurrence of low-$T/|W|$ instabilities leads to pronounced gravitational wave emission in the range $0.13 \\lessapprox\u03b2\\lessapprox 0.2$, while models outside this range exhibit less pronounced features in the gravitational wave spectrum. The prominence of gravitational wave emission is primarily determined by $\u03b2$, while the equation of state seems to have a more minor effect. We present correlations between the strength of the gravitational wave emission associated with the instability and properties of the equilibrium models. Stellar configurations modelled by different equations of state display differences in the timescales over which the various dynamical features develop, as well as whether they exhibit a pronounced $m=1$ deformation. Potential relations between the instability growth timescales and properties of the stellar models are studied.",
+      "published": "2026-03-02T17:40:56Z",
+      "arxiv_id": "2603.02120v1",
+      "authors": [
+        "Georgios Lioutas",
+        "Panagiotis Iosif",
+        "Andreas Bauswein",
+        "Nikolaos Stergioulas"
+      ],
+      "category": "astro-ph.HE",
+      "url": "http://arxiv.org/abs/2603.02120v1"
+    },
+    {
+      "title": "Decoherence and entropy production due to quantum fluctuations of spacetime",
+      "abstract": "The intersection between quantum mechanics and gravitational physics has been providing challenging puzzles for decades. In this thesis, we study the dynamics of an open quantum system coupled with a bath of gravitons, the quanta of the gravitational field in the linear limit of general relativity. We focus on two main aspects. First, we analyze the decoherence induced by gravitons when we consider the open system to be described by both external and internal degrees of freedom. Since gravity is universal, the internal variables also interact with the gravitons, and here we show that this interaction leads to the decoherence of spatial superpositions of microscopic systems in the long-time regime, even when the graviton bath alone does not. We then proceed to the second main aspect, which is the entropy production that arises when an external agent drives a quantum system through the graviton bath. This irreversibility comes from quantum fluctuations of spacetime itself and, as such, has a fundamentally universal aspect.",
+      "published": "2026-03-02T16:20:13Z",
+      "arxiv_id": "2603.02034v1",
+      "authors": [
+        "Thiago H. Moreira"
+      ],
+      "category": "quant-ph",
+      "url": "http://arxiv.org/abs/2603.02034v1"
+    },
+    {
+      "title": "Ricci curvature and metric in causal spacetimes",
+      "abstract": "A viable spacetime is one that admits a complete timelike geodesic. It is shown that a causal diffeomorphism preserving the Ricci tensor between two spacetimes is necessarily a homothety, if one of them is viable.",
+      "published": "2026-03-02T16:11:37Z",
+      "arxiv_id": "2603.02027v1",
+      "authors": [
+        "Javier Lafuente-L\u00f3pez"
+      ],
+      "category": "math.DG",
+      "url": "http://arxiv.org/abs/2603.02027v1"
+    },
+    {
+      "title": "Dispersive estimates for a system of tensorial quasilinear wave equations satisfying the weak-null condition",
+      "abstract": "We establish both global existence and decay properties for solutions with small data for a general class of coupled system of tensorial quasilinear hyperbolic wave equations in three space dimensions, that covers the dynamical Einstein equations coupled to a class of non-linear matter sources that do not satisfy the null condition of Christodoulou and Klainerman, and have new different non-linearities than the one treated by Lindblad-Rodnianski, for which their celebrated seminal $L^\\infty$-estimate does not work, to the best of our knowledge. Global existence of solutions for a general class of quasilinear wave equations satisfying the weak-null condition, with small initial data, is largely an open problem at present. There is no known theory to prove decay for the class of non-linear hyperbolic partial differential equations that we treat in this paper. We establish a technique based on novel decoupling of the higher order energy estimates, at the level of the $L^2$-norm of the Lie derivatives of the tangential components, without involving all the other components, up to some good factor. This generalizes our previous results to include new non-linearities that are not present in the Einstein-Yang-Mills system in the Lorenz gauge.",
+      "published": "2026-03-02T14:56:08Z",
+      "arxiv_id": "2603.01939v1",
+      "authors": [
+        "Sari Ghanem"
+      ],
+      "category": "math.AP",
+      "url": "http://arxiv.org/abs/2603.01939v1"
+    },
+    {
+      "title": "Universal Bounds on Horizons, Photon Spheres, and Shadows: The Role of Energy Conditions in Spherically Symmetric Black Holes",
+      "abstract": "In this work, we derive rigorous and universal bounds on the geometric characteristics of black holes in asymptotically flat spacetimes under assumptions that weak energy condition is satisfied. We prove that the event horizon radius, the photon sphere , and the shadow ones take their maximal values in the Schwarzschild black hole case. Any additional matter distribution satisfying the weak energy condition necessarily decreases these radii relative to their Schwarzschild counterparts. Thus, the Schwarzschild solution provides an absolute upper bound on observable size characteristics of static, spherically symmetric black holes. We further analyze configurations possessing two distinct horizons and investigate their extremal regime, in which the inner and outer horizons merge. For extremal black holes, we establish both lower and upper bounds on the extremal horizon location. These bounds depend on the asymptotic structure of the lapse function, in particular on the presence or absence of a $1/r^2$ term in its asymptotic expansion. We derive explicit conditions on the lapse function determining when the extremal Reissner-Nordstrom radius provides a lower bound and when it instead serves as an upper bound. In addition, we prove that in asymptotically flat spacetimes the pressure at the outer event horizon is always either positive or equal to zero. As a consequence, the strong energy condition can not be violated outside the black hole, even in models of regular black holes where it may be violated in the interior region to avoid singularity formation.",
+      "published": "2026-03-02T14:52:40Z",
+      "arxiv_id": "2603.01937v1",
+      "authors": [
+        "Vitalii Vertogradov"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01937v1"
+    },
+    {
+      "title": "Growth factor in teleparallel Gauss-Bonnet gravity",
+      "abstract": "Teleparallel gravity offers a competing geometric framework on which to build cosmological models. The Gauss-Bonnet invariant captures key aspects of the underlying geometry that has been shown to be an interesting way to form cosmological models beyond $\u039b$CDM cosmology. In this work, we explore three competing cosmological models in $F(T,T_G)$ cosmology in the context of their evolution of the growth of structure in the Universe. This is a core test of the viability of any cosmological model. In our work, we show how these models are qualitatively competitive with $\u039b$CDM cosmology for certain ranges of model parameters. Interestingly, the models can arrive at the same level of growth as $\u039b$CDM while producing possible deviations at intermediate scales.",
+      "published": "2026-03-02T14:05:05Z",
+      "arxiv_id": "2603.01884v1",
+      "authors": [
+        "Shivam Kumar Mishra",
+        "Jackson Levi Said",
+        "B. Mishra"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01884v1"
+    },
+    {
+      "title": "Spatially inhomogeneous confinement-deconfinement phase transition in accelerated gluodynamics",
+      "abstract": "This study explores confinement-deconfinement transition properties of SU($3$) Yang--Mills theory under weak accelerations at finite temperatures, using first-principles lattice simulations. The system is formulated in the Rindler spacetime, and the properties are studied from the perspective of a co-accelerating observer situated at the center of the lattice. We found that spatially separated confinement and deconfinement phases can coexist in the Rindler spacetime within certain intervals of temperature and acceleration. The position of the boundary between the phases is calculated as a function of temperature for several accelerations, and it is in accordance with the TE prediction, although a small deviation is observed. Moreover, in the weak acceleration regime, the critical temperature of the system is found to coincide with that of non-accelerated gluodynamics.",
+      "published": "2026-03-02T11:25:51Z",
+      "arxiv_id": "2603.01754v1",
+      "authors": [
+        "Victor V. Braguta",
+        "Vladimir A. Goy",
+        "Jayanta Dey",
+        "Artem A. Roenko"
+      ],
+      "category": "hep-lat",
+      "url": "http://arxiv.org/abs/2603.01754v1"
+    },
+    {
+      "title": "Ultraviolet completion of the inflationary paradigm",
+      "abstract": "After an exhaustive introduction highlighting the strengths and weaknesses of the non-local models proposed so far as ultraviolet completions of the Starobinsky theory, we propose a new nonlocal completion of a general $f(R)$ theory (in the Einstein's frame) suitable for driving inflation in the early universe consistently with observations. The nonlocal theory shares with $f(R)$ the same background solutions and the same equations of motion for perturbations at linear and nonlinear level. Therefore, the classical cosmological observables are not affected by the nonlocal operators needed for the quantum completion. Our construction applies to any local action written in the Einstein's frame, but we will provide the details only for two explicit examples: the Starobinsky model and a general $f(R)$ theory. The new model overcomes the incompatibility of renormalizability and stability present in the previous proposals.\n  Since the nonlocal theory is at least super-renormalizable, but can also be finite depending on the details of the model, this work shows the consistency of the inflationary paradigm with a well-defined quantum theory of gravity at high energy. We could rephrase the latter statement saying that the success of the $f(R)$ theories in cosmology can be traced back to the existence of an ultraviolet completion that preserves all the classical features. The inflationary paradigm survives, or it is actually insensitive to quantum gravity, because it is an exact solution of quantum gravity, up to perturbative corrections.",
+      "published": "2026-03-02T10:45:47Z",
+      "arxiv_id": "2603.01722v1",
+      "authors": [
+        "Leonardo Modesto",
+        "Lorenzo Orlando"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.01722v1"
+    }
+  ]
+}

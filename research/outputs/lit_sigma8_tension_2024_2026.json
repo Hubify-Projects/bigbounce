@@ -1,0 +1,122 @@
+[
+  {
+    "bibcode": "2025A&A...703A..25L",
+    "abstract": "Aims. We present the joint modelling of weak-lensing and count measurements of the galaxy clusters detected with the Adaptive Matched Identifier of Clustered Objects (AMICO) code, in the fourth data release of the Kilo Degree Survey (KiDS-1000). The analysed sample comprises approximately 8000 clusters that cover an effective area of 839 deg<SUP>2</SUP> and extend up to a redshift of z = 0.8. This modelling provides the first mass calibration of this cluster sample, as well as the first cosmological constraints derived from it. Methods. We derived stacked cluster weak-lensing and count measurements in bins of redshift and intrinsic richness, \u03bb<SUP>*</SUP>. To define the background galaxy samples for the stacked profiles, we used a combination of selections based on photometric redshifts (photo-zs) and colours. Then, based on self-organising maps, we reconstructed the true redshift distributions of the background galaxy samples. In the joint modelling of weak lensing and counts, we accounted for the systematic uncertainties arising from impurities in the background and cluster samples, biases in the cluster z and \u03bb<SUP>*</SUP>, projection effects, halo orientation and miscentring, truncation of cluster halo mass distributions, matter correlated with cluster haloes, multiplicative shear bias, baryonic matter, geometric distortions in the lensing profiles, uncertainties in the theoretical halo mass function, and super-sample covariance. In addition, we employed a blinding strategy based on perturbing the cluster sample completeness. Results. The improved statistics and photometry, along with the refined analysis compared to the previous KiDS data release, KiDS-DR3, led to a halving of the uncertainties on \u03a9<SUB>m</SUB> and \u03c3<SUB>8</SUB>, as we obtained <inline-formula> \u03a9<SUB>m</SUB> = 0.218<SUP>+0.024</SUP><SUB>\u22120.021</SUB> <mml:math> <mml:mrow> <mml:msub> <mml:mi>\u03a9</mml:mi> <mml:mi>m</mml:mi> </mml:msub> <mml:mo>=</mml:mo> <mml:msubsup> <mml:mrow> <mml:mn>0.218</mml:mn> </mml:mrow> <mml:mrow> <mml:mo>\u2212</mml:mo> <mml:mrow> <mml:mn>0.021</mml:mn> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mo>+</mml:mo> <mml:mrow> <mml:mn>0.024</mml:mn> </mml:mrow> </mml:mrow> </mml:msubsup> </mml:mrow> </mml:math> </inline-formula> and <inline-formula> \u03c3<SUB>8</SUB> = 0.86<SUP>+0.03</SUP><SUB>\u22120.03</SUB> <mml:math> <mml:mrow> <mml:msub> <mml:mi>\u03c3</mml:mi> <mml:mn>8</mml:mn> </mml:msub> <mml:mo>=</mml:mo> <mml:msubsup> <mml:mrow> <mml:mn>0.86</mml:mn> </mml:mrow> <mml:mrow> <mml:mo>\u2212</mml:mo> <mml:mrow> <mml:mn>0.03</mml:mn> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mo>+</mml:mo> <mml:mrow> <mml:mn>0.03</mml:mn> </mml:mrow> </mml:mrow> </mml:msubsup> </mml:mrow> </mml:math> </inline-formula>, despite a more extensive modelling of systematic uncertainties. The constraint on S<SUB>8</SUB> \u2261 \u03c3<SUB>8</SUB>(\u03a9<SUB>m</SUB>/0.3)<SUP>0.5</SUP>, <inline-formula> S<SUB>8</SUB> = 0.74<SUP>+0.03</SUP><SUB>\u22120.03</SUB> <mml:math> <mml:mrow> <mml:msub> <mml:mi>S</mml:mi> <mml:mn>8</mml:mn> </mml:msub> <mml:mo>=</mml:mo> <mml:msubsup> <mml:mrow> <mml:mn>0.74</mml:mn> </mml:mrow> <mml:mrow> <mml:mo>\u2212</mml:mo> <mml:mrow> <mml:mn>0.03</mml:mn> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mo>+</mml:mo> <mml:mrow> <mml:mn>0.03</mml:mn> </mml:mrow> </mml:mrow> </mml:msubsup> </mml:mrow> </mml:math> </inline-formula>, is in excellent agreement with recent cluster count and KiDS-1000 cosmic shear analyses, while it shows a 2.8\u03c3 tension with Planck cosmic microwave background results. The constraints on the log \u03bb<SUP>*</SUP> \u2212 log M<SUB>200</SUB> relation imply a mass precision of 8%, on average, which is an improvement of three percentage points compared to KiDS-DR3. In addition, the result on the intrinsic scatter of the log \u03bb<SUP>*</SUP> \u2212 log M<SUB>200</SUB> relation, <inline-formula> \u03c3<SUB>intr</SUB> = 0.052<SUP>+0.023</SUP><SUB>\u22120.015</SUB> <mml:math> <mml:mrow> <mml:msub> <mml:mi>\u03c3</mml:mi> <mml:mi>intr</mml:mi> </mml:msub> <mml:mo>=</mml:mo> <mml:msubsup> <mml:mrow> <mml:mn>0.052</mml:mn> </mml:mrow> <mml:mrow> <mml:mo>\u2212</mml:mo> <mml:mrow> <mml:mn>0.015</mml:mn> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mo>+</mml:mo> <mml:mrow> <mml:mn>0.023</mml:mn> </mml:mrow> </mml:mrow> </mml:msubsup> </mml:mrow> </mml:math> </inline-formula>, confirms that \u03bb<SUP>*</SUP> is an excellent mass proxy.",
+    "author": [
+      "Lesci, G. F.",
+      "Marulli, F.",
+      "Moscardini, L.",
+      "Maturi, M.",
+      "Sereno, M.",
+      "Radovich, M.",
+      "Romanello, M.",
+      "Giocoli, C.",
+      "Wright, A. H.",
+      "Bardelli, S.",
+      "Bilicki, M.",
+      "Castignani, G.",
+      "Hildebrandt, H.",
+      "Ingoglia, L.",
+      "Joudaki, S.",
+      "Kannawadi, A.",
+      "Puddu, E."
+    ],
+    "doi": [
+      "10.1051/0004-6361/202555285",
+      "10.48550/arXiv.2507.14285"
+    ],
+    "title": [
+      "AMICO galaxy clusters in KiDS-1000: Cosmological constraints and mass calibration from counts and weak lensing"
+    ],
+    "year": "2025",
+    "citation_count": 8
+  },
+  {
+    "bibcode": "2025A&A...696A...5A",
+    "abstract": "Recent advancements in methods used in wide-area surveys have demonstrated the reliability of the number density of galaxy clusters as a viable tool for precision cosmology. Beyond testing the current cosmological paradigm, cluster number counts can also be used to investigate the discrepancies currently affecting cosmological measurements. In particular, cosmological studies based on cosmic shear and other large-scale structure probes routinely find a value for the amplitude of the fluctuations in the universe S<SUB>8</SUB> = \u03c3<SUB>8</SUB>(\u03a9<SUB>m</SUB>/0.3)<SUP>0.5</SUP> smaller than the one inferred from the primary cosmic microwave background. In this work, we investigate this tension by measuring structure evolution across cosmic time as probed by the number counts of massive halos with the first SRG/eROSITA All-Sky Survey cluster catalog in the western Galactic hemisphere, complemented with the overlapping Dark Energy Survey Year-3, Kilo-Degree Survey, and Hyper Suprime-Cam data for weak lensing mass calibration, by implementing two different parameterizations and a model-agnostic method. In the first model, we measured the cosmic linear growth index as \u03b3 = 1.19 \u00b1 0.21, which is in tension with the standard value of \u03b3 = 0.55 but in good statistical agreement with other large-scale structure probes. The second model is a phenomenological scenario in which we rescale the linear matter power spectrum at low redshift to investigate a potential reduction of structure formation, and it provided similar results. Finally, in a third strategy, we considered a standard \u039bCDM cosmology, but we separated the cluster catalog into five redshift bins, measuring the cosmological parameters in each and inferring the evolution of the structure formation, finding hints of a reduction. Interestingly, the S<SUB>8</SUB> value inferred from the number counts of the cluster eRASS1 when we add a degree of freedom to the matter power spectrum recovers the value inferred by cosmic shear studies. The observed reduction in the growth rate or systematic uncertainties associated with various measurements may account for the discrepancy in the S<SUB>8</SUB> values suggested between cosmic shear probes and eROSITA cluster number counts and Planck CMB measurements.",
+    "author": [
+      "Artis, E.",
+      "Bulbul, E.",
+      "Grandis, S.",
+      "Ghirardini, V.",
+      "Clerc, N.",
+      "Seppi, R.",
+      "Comparat, J.",
+      "Cataneo, M.",
+      "von der Linden, A.",
+      "Bahar, Y. E.",
+      "Balzer, F.",
+      "Chiu, I.",
+      "Gruen, D.",
+      "Kleinebreil, F.",
+      "Kluge, M.",
+      "Krippendorf, S.",
+      "Li, X.",
+      "Liu, A.",
+      "Malavasi, N.",
+      "Merloni, A.",
+      "Miyatake, H.",
+      "Miyazaki, S.",
+      "Nandra, K.",
+      "Okabe, N.",
+      "Pacaud, F.",
+      "Predehl, P.",
+      "Ramos-Ceja, M. E.",
+      "Reiprich, T. H.",
+      "Sanders, J. S.",
+      "Schrabback, T.",
+      "Zelmer, S.",
+      "Zhang, X."
+    ],
+    "doi": [
+      "10.1051/0004-6361/202452584",
+      "10.48550/arXiv.2410.09499"
+    ],
+    "title": [
+      "The SRG/eROSITA All-Sky Survey: Constraints on the structure growth from cluster number counts"
+    ],
+    "year": "2025",
+    "citation_count": 15
+  },
+  {
+    "bibcode": "2025AAS...24525025M",
+    "abstract": "Structure formation in the universe is particularly sensitive to S<SUB>8</SUB>, a derived cosmological parameter which combines the mean matter density (\u03a9<SUB>m</SUB>) and a measure of matter clustering (\u03c3<SUB>8</SUB>) in the present epoch. Numerous independent analyses probing the matter distribution, mostly using galaxy clustering and weak gravitational lensing, have inferred lower values of S<SUB>8 </SUB> than Planck's constraints from the cosmic microwave background. This weak but consistent discrepancy, referred to as the S<SUB>8</SUB> tension, has led to several theoretical studies exploring beyond-standard model cosmology or modifications to general relativity. However, the S<SUB>8</SUB> tension could be a result of systematics not properly accounted for in the CMB analysis or in the modelling of low redshift probes of matter distribution. <P />We use Basilisk, a Bayesian hierarchical tool to accurately model the smallest and the fully non-linear scales in a galaxy redshift survey data. It extracts potential central and satellite galaxies from the redshift survey, forward-models the 2D phase-space distribution of projected separation and line-of-sight velocity difference between central and satellite galaxies, as well as satellite abundance, to constrain the galaxy-halo connection of both central and satellite galaxies with unprecedented precision. Combining it with other probes of galaxy-halo connection we can break the degeneracy with cosmology, and thus constrain cosmological parameters like \u03a9<SUB>m</SUB> and \u03c3<SUB>8</SUB>. <P />We use realistic SDSS-like mock data, to validate our methodology with unbiased recovery of galaxy-halo connection and cosmology. We apply the machinery to SDSS DR7, yielding inference of galaxy-halo connection that is in good agreement with but significantly more constraining compared to previous analyses on similar volume of data. Our inference of cosmological parameters is insensitive to effects of halo assembly bias that plague other probes like galaxy clustering and weak lensing. We identify baryonic effects as a key factor in interpreting our results on the S<SUB>8</SUB> tension.",
+    "author": [
+      "Mitra, Kaustav",
+      "Van Den Bosch, Frank",
+      "Baggen, Josephine",
+      "Lange, Johannes Ulf"
+    ],
+    "title": [
+      "Novel probe of S8 tension: insensitive to halo assembly bias and incorporating baryonic effects"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2024A&A...690A.238A",
+    "abstract": "We provide a new scaling relation between Y<SUB>SZ</SUB>, the integrated Sunyaev-Zeldovich signal and M<SUB>500</SUB><SUP>Y<SUB>X</SUB></SUP>, the cluster mass derived from X-ray observations, using a sample of clusters from the Planck Early Sunyaev-Zeldovich (ESZ) catalogue observed in X-rays by Chandra, and compare it to the results of the Planck collaboration obtained from XMM-Newton observations of a subsample of the ESZ. We calibrated a mass bias on a subset of the Planck cosmological cluster sample using published weak-lensing data from the Canadian Cluster Cosmology Project (CCCP) and Multi Epoch Nearby Cluster Survey (MENeaCS), for the new scaling relation as well as that from the Planck collaboration. We propose a novel method to account for selection effects and find a mass bias of (1 \u2212 b) = 0.89 \u00b1 0.04 for the Chandra-calibrated scaling relation, and (1 \u2212 b) = 0.76 \u00b1 0.04 for the XMM-Newton-calibrated scaling relation. We applied the scaling relations we derived to the full Planck cosmological cluster sample and obtain new constraints on the cosmological parameters. We find identical constraints regardless of the X-ray sample used, with \u03c3<SUB>8</SUB> = 0.77 \u00b1 0.02, \u03a9<SUB>m</SUB> = 0.31 \u00b1 0.02, and S<SUB>8</SUB> \u2261 \u03c3<SUB>8</SUB> \u221a(\u03a9<SUB>m</SUB>/0.3) = 0.78 \u00b1 0.02. We also provide constraints with a redshift evolution of the scaling relation fitted from the data instead of fixing it to the self-similar value. We find a redshift evolution significantly deviating from the self-similar value, leading to a higher value of S<SUB>8</SUB> = 0.81 \u00b1 0.02. We compare our results to those from various cosmological probes, and find that our S<SUB>8</SUB> constraints are competitive with the tightest constraints from the literature. When assuming a self-similar redshift evolution, our constraints are in agreement with most late-time probes and in tension with constraints from the cosmic microwave background (CMB) primary anisotropies. When relaxing the assumption of redshift evolution and fitting it to the data, we find no significant tension with results from either late-time probes or the CMB.",
+    "author": [
+      "Aymerich, G.",
+      "Douspis, M.",
+      "Pratt, G. W.",
+      "Salvati, L.",
+      "Soubri\u00e9, E.",
+      "Andrade-Santos, F.",
+      "Forman, W. R.",
+      "Jones, C.",
+      "Aghanim, N.",
+      "Kraft, R.",
+      "van Weeren, R. J."
+    ],
+    "doi": [
+      "10.1051/0004-6361/202449513",
+      "10.48550/arXiv.2402.04006"
+    ],
+    "title": [
+      "Cosmological constraints from the Planck cluster catalogue with new multi-wavelength mass calibration from Chandra and CFHT"
+    ],
+    "year": "2024",
+    "citation_count": 16
+  }
+]

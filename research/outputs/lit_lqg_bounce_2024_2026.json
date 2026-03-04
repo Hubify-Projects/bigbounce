@@ -1,0 +1,351 @@
+[
+  {
+    "bibcode": "2026PhRvD.113d1503L",
+    "citation_count": 0,
+    "abstract": "The five-dimensional loop quantum Kaluza-Klein cosmology is constructed based on the symmetric reduction of the connection formulation of the full theory. Through semiclassical analysis, the effective scalar constraint for the cosmological model coupled with a dust field is derived, incorporating the quantum fluctuations of geometry as a subleading-order correction. It demonstrates that the quantum model has the correct classical limit. The explicit solutions to the equations of motion show that the big bang and past big rip singularities in the classical model are avoided by a quantum bounce and a quantum collapse respectively in the effective model. In a particular scenario, the dynamical compactification of the extra dimension is realized, while the observable four-dimensional universe transitions through three distinct epochs: (i) A superinflationary phase generating 55 e-folds; (ii) A decelerated expansion era; (iii) A late-time accelerated expansion phase driven by quantum fluctuations. These results suggest that both cosmic inflation and dark energy may originate from the interplay between the compact extra dimension and quantum geometric effects.",
+    "author": [
+      "Li, Shengzhi",
+      "Ma, Yongge",
+      "Yuan, Faqiang",
+      "Zhang, Xiangdong"
+    ],
+    "doi": [
+      "10.1103/pv8v-wphn"
+    ],
+    "title": [
+      "Effective dynamics of loop quantum Kaluza-Klein cosmology"
+    ],
+    "year": "2026"
+  },
+  {
+    "bibcode": "2026PhRvD.113d6016C",
+    "citation_count": 0,
+    "abstract": "Polymer models are effective in describing quantum gravity effects around the initial singularity, leading to its replacement by bouncing surfaces on which the curvature and densities are finite. Their properties depend on the space-time symmetry and on the particular polymerization scheme adopted. In this article we investigate anisotropic models under the Gambini-Ben\u00edtez-Pullin polymerization, recently used to quantise spherically symmetric black-holes, whose interiors are isometric to Kantowski-Sachs (KS) space-times. Demanding that the minimum area defined by the bouncing surface matches the loop quantum gravity area gap, we can find its radius alongside the curvature and effective density and pressures at the bounce. The density is always positive, while the pressures are negative enough to avoid the singularity. Due to the positive spatial curvature, the solution is oscillatory, reaching a maximum radius where a recollapse occurs. Therefore, a positive cosmological constant is included in order to have an eternal expansion to a late de Sitter phase. We have also considered a Bianchi III metric, showing that the bounce is still present, but the space-time is asymptotically flat in this case, with no recollapse. In this hyperbolic space, the minimal area constraint can also be imposed on compact 2-surfaces. Nevertheless, in contrast to the KS case, it is enough for avoiding the singularity, independently of polymerization procedures.",
+    "author": [
+      "Cook, D. A.",
+      "Olimpieri, A.",
+      "Baranov, I. P. R.",
+      "Borges, H. A.",
+      "Carneiro, S."
+    ],
+    "doi": [
+      "10.1103/dtn2-c7g3"
+    ],
+    "title": [
+      "Anisotropic models in loop quantum cosmology with the Gambini-Ben\u00edtez-Pullin polymerization"
+    ],
+    "year": "2026"
+  },
+  {
+    "bibcode": "2026arXiv260215924S",
+    "abstract": "We investigate the emergence of cosmic hysteresis in cyclic and bouncing cosmologies within the framework of reconstructed $f(T)$ gravity. In contrast to curvature-based modifications of General Relativity, teleparallel gravity attributes gravitation to spacetime torsion encoded in the torsion scalar $T$. By reconstructing viable $f(T)$ functions corresponding to analytically prescribed nonsingular bouncing scale factors and coupling the geometry to a minimally interacting canonical scalar field, we demonstrate that asymmetric scalar field dynamics between expansion and contraction phases give rise to a non-vanishing thermodynamic work integral $\\oint p_\u03d5\\, dV$ over complete cycles. This hysteresis manifests as closed loops in the $(w_\u03d5,a)$ plane, signifying thermodynamic memory and irreversibility. We derive the modified Friedmann equations, establish exact bounce and turnaround conditions, and discuss the implications of torsion-induced hysteresis for the cosmological arrow of time. Our results confirm that cosmic hysteresis is a generic feature of cyclic universes in modified gravity, extending beyond curvature-based theories.",
+    "author": [
+      "Sanyal, Aritra",
+      "Dhankar, Praveen Kumar",
+      "Munyeshyaka, Albert",
+      "Islam, Safiqul",
+      "Rahaman, Farook",
+      "Pourhassan, Behnam"
+    ],
+    "doi": [
+      "10.48550/arXiv.2602.15924"
+    ],
+    "title": [
+      "Cosmic Hysteresis in Reconstructed $f(T)$ Bounce Models A Torsion-Based Thermodynamic Perspective"
+    ],
+    "year": "2026",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2026arXiv260215227G",
+    "abstract": "We investigate gravitational dust collapse within an effective loop quantum gravity (LQG)-inspired model exhibiting an asymmetric bounce in the marginally bound case. This work extends previous studies, which have predominantly focused on models with either symmetric bounces or asymmetric bounces restricted to homogeneous dust configurations. Our analysis emphasises the phenomenological implications of the model through a combination of analytical and numerical investigations, with particular attention to singularity resolution and the formation of trapped surfaces. As in symmetric bounce models, the central curvature singularity inside the collapsing dust cloud is resolved. However, in contrast to the symmetric case, we find that a singularity emerges in the polymerised vacuum region during the bounce phase. This singularity can be identified as a shell-crossing singularity and exhibits the expected power-law behaviour of curvature scalars. Furthermore, likewise to the symmetric bounce models, we find a critical mass threshold governing the formation of inner and outer horizons in the pre-bounce phase. No analogous critical mass restriction arises for the formation of the inner horizon in the post-bounce phase, highlighting a qualitative difference between the pre- and post-bounce dynamics.",
+    "author": [
+      "Giesel, Kristina",
+      "Liu, Hongguang",
+      "Rullit, Eric"
+    ],
+    "doi": [
+      "10.48550/arXiv.2602.15227"
+    ],
+    "title": [
+      "Investigation of the gravitational dust collapse of the LQG-inspired effective asymmetric bounce model"
+    ],
+    "year": "2026",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2026arXiv260118618B",
+    "abstract": "Models of effective stellar collapse inspired by loop quantum gravity predict a bounce when the stellar energy density reaches the Planck scale, typically followed by the formation of shell-crossing singularities. This work aims to extend the spacetime beyond these singularities by employing a Hamiltonian formulation of the Darmois-Israel junction conditions, treating the singularity as a non-isolated thin dust shell. By construction, the shell's motion remains timelike throughout the entire evolution, regardless of the amount of initial stellar mass, and the induced metric on the shell remains continuous. The resulting stellar evolution produces an inter-universal wormhole, analogous to the simpler Oppenheimer-Snyder scenario. The proposed approach provides a general framework for any effective (or classical) theory of stellar collapse characterized by shell-crossing singularities.",
+    "author": [
+      "Bobula, Micha\u0142",
+      "Fazzini, Francesco"
+    ],
+    "doi": [
+      "10.48550/arXiv.2601.18618"
+    ],
+    "title": [
+      "Quantum gravitational stellar evolution beyond shell-crossing singularities"
+    ],
+    "year": "2026",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2026arXiv260112207H",
+    "abstract": "We investigate the effective quantum evolution of the Bianchi type I cosmological model within the Brans-Dicke framework using an effective Hamiltonian approach that includes expectation values, quantum dispersions and cross-correlation terms between different degrees of freedom. For the case $\u03c9&lt; -3/2$, where energy conditions are violated and bouncing solutions exist classically, we demonstrate that quantum backreaction effects significantly smooth the bounce of directional scale factors, with the bounce occurring at scales set by the quantum state width. For the conformally invariant case $\u03c9= -3/2$, quantum corrections cause scale factors to enter accelerated expansion phases more rapidly than in the classical limit. Most significantly, we show that cross-correlation terms between canonical variables are essential for obtaining physically consistent effective dynamics: neglecting these terms leads to spurious divergences and unphysical behavior. When correlations are included, small-amplitude oscillations appear shortly after the bounce, rapidly damping to classical trajectories. We interpret these oscillations as quantum remnant effects encoding information about correlations between gravitational and scalar field degrees of freedom. Our results demonstrate that cross-correlations carry crucial quantum information that substantially influences cosmological dynamics, with implications for quantum gravity phenomenology near singularities. We compare our findings with existing loop quantum cosmology results.",
+    "author": [
+      "Hernandez Hernandez, Hector Hugo",
+      "Sanchez Herrera, Gustavo Alejandro"
+    ],
+    "doi": [
+      "10.48550/arXiv.2601.12207"
+    ],
+    "title": [
+      "Quantum Backreaction in Effective Brans-Dicke Bianchi I Cosmology"
+    ],
+    "year": "2026",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2026PhRvD.113b6020F",
+    "abstract": "Effective models of gravitational collapse inspired by loop quantum gravity typically resolve the central singularity by replacing it with a bounce of the matter density in the Planckian regime. In the specific model analyzed here, this bounce is generally followed by the formation of shell-crossing singularities. The purpose of this work is to provide a physically meaningful extension of spacetime beyond the shell-crossing singularity. To this end, we derive the dynamics of a dust thin shell within the effective Hamiltonian framework. The motion of the shell remains timelike throughout: after undergoing a quantum-gravitational bounce, it expands and eventually emerges from the white hole vacuum region.",
+    "author": [
+      "Fazzini, Francesco"
+    ],
+    "doi": [
+      "10.1103/hj85-317t",
+      "10.48550/arXiv.2509.04945"
+    ],
+    "title": [
+      "Effective LQG dynamics of a thin shell and the fate of a collapsing star"
+    ],
+    "year": "2026",
+    "citation_count": 2
+  },
+  {
+    "bibcode": "2025PhRvD.112l6006B",
+    "abstract": "We explore the isotropization of a model anisotropic universe in the bouncing models using the ekpyrotic potential without assuming initial conditions corresponding to an ekpyrotic phase. In particular, we explore the way the use of ekpyrotic potentials may dynamically help isotropization for the considered initial conditions corresponding to the macroscopic classical contracting universe with potentially large anisotropies. As an example of a concrete nonsingular bouncing mechanism, we consider the effective description of loop quantum cosmology for Bianchi-I and Bianchi-IX spacetimes for ekpyrotic and ekpyrotic-like potentials. Considering two different values of potential parameters and initial conditions corresponding to a classical macroscopic universe, we show that for both of these spacetimes, the cosmological singularity is resolved via multiple short-duration nonsingular bounces caused by quantum gravitational effects. We perform a large number of numerical simulations for a wide range of initial conditions which do not favor ekpyrosis initially. Even with such unfavorable initial conditions, we show that the relative strength of the anisotropies at the end of the bounce regime is noticeably reduced in more than 90% of the simulations. This provides a strong evidence for the isotropization ability of the ekpyrotic potentials. We find that isotropization can occur over cycles of rapid nonsingular bounces in the Planck regime via enhancement of the contribution of the (isotropic) energy density relative to the anisotropies at the bounces. Achieving isotropization is found to be easier in Bianchi-I spacetimes when compared to Bianchi-IX spacetimes. Our results demonstrate that, even with initial conditions which are not most favorable for the existence of ekpyrosis, an effective isotropization can occur in nonsingular anisotropic models with ekpyrotic and ekpyrotic-like potentials.",
+    "author": [
+      "Brown, Rachel",
+      "McNamara, A. Meenakshi",
+      "Saini, Sahil",
+      "Singh, Parampreet"
+    ],
+    "doi": [
+      "10.1103/p4vk-2v43",
+      "10.48550/arXiv.2412.12274"
+    ],
+    "title": [
+      "Ekpyrosis in quantum gravitational anisotropic bouncing models"
+    ],
+    "year": "2025",
+    "citation_count": 2
+  },
+  {
+    "bibcode": "2025PDU....5002174T",
+    "abstract": "Quantum Gravity models suggest that singularities in gravitational collapse can be replaced by bounces, leading to the formation of Planck star remnants (PSR) that survive as stable relics once the black holes evaporate to the Planck mass. Recently, we proposed that such relics can be a viable candidate for dark matter. Here we show that LIGO's upper limit on the gravitational wave background rules out a formation pathway of Planck mass relics as dark matter from Gaussian initial conditions. This leaves non-Gaussian primordial fluctuations as the only viable channel for making Planck mass relics as dark matter.",
+    "author": [
+      "Trivedi, Oem",
+      "Loeb, Abraham"
+    ],
+    "doi": [
+      "10.1016/j.dark.2025.102174",
+      "10.48550/arXiv.2509.20533"
+    ],
+    "title": [
+      "Gaussian Planck relics are ruled-out as dark matter by LIGO"
+    ],
+    "year": "2025",
+    "citation_count": 2
+  },
+  {
+    "bibcode": "2025arXiv251220440Y",
+    "abstract": "The effective dynamics of the Janis-Newman-Winicour spacetime inspired by loop quantum gravity is studied. Two different schemes are considered to regularize the Hamiltonian constraint for the quantum dynamics. In the $\u03bc_0$ scheme in which the quantum parameters are treated as constants, the equations of motion generated by the effective Hamiltonian are solved analytically. The resulting quantum-corrected effective spacetime obviously extends the effective spacetime previously obtained in the literature. In the new effective spacetime, the naked singularity and the central singularity presented in the classical JNW spacetime are resolved by a series of quantum bounces. In the scheme of choosing the quantum parameters as Dirac observables, the effective dynamics is also solved in the light of the solution in $\u03bc_0$ scheme. It turns out that the resulting effective spacetime has singularities due to the appearance of the zero points of the time reparametrization functions. Hence, the effective theory in this scheme does not remain valid throughout the full spacetime.",
+    "author": [
+      "Yuan, Faqiang",
+      "Li, Shengzhi",
+      "Li, Zhen",
+      "Ma, Yongge"
+    ],
+    "doi": [
+      "10.48550/arXiv.2512.20440"
+    ],
+    "title": [
+      "Effective dynamics of Janis-Newman-Winicour spacetime"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025GReGr..57..155S",
+    "abstract": "We present an analysis of phantom energy dominated conformal cyclic baby universes evolving inside black holes. For stable black holes, the analysis yields an infinite sequence of conformal cycles. This sequence terminates at a critical number <inline-formula><mml:math><mml:mrow><mml:msub><mml:mi>n</mml:mi><mml:mtext>crit</mml:mtext></mml:msub><mml:mo>\u224d</mml:mo><mml:msup><mml:mi>\u03f5</mml:mi><mml:mrow><mml:mo>-</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msup><mml:mo>ln</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mi>M</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>/</mml:mo><mml:msub><mml:mi>\u2113</mml:mi><mml:mtext>Pl</mml:mtext></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:math></inline-formula>. At this point, the interior approaches a Planck-scale remnant in finite proper time. For evaporating BHs, the discussed solutions indicate that a phantom-dominated interior branch can outgrow the shrinking horizon if <inline-formula><mml:math><mml:mrow><mml:msub><mml:mi>b</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>&gt;</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mi>M</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>\u03c4</mml:mi><mml:mi>s</mml:mi></mml:msub><mml:mo>-</mml:mo><mml:msub><mml:mi>v</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mo>-</mml:mo><mml:mi>\u03bc</mml:mi><mml:mo>/</mml:mo><mml:mn>3</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:math></inline-formula>. These timescales are shorter than Hawking evaporation. The model exhibits a possible semiclassical avoidance of the Schwarzschild singularity via effective LQG dynamics. A phantom-dominated branch extends the interior evolution beyond the bounce. The conformal mapping suggests, at a heuristic level, a possible channel for information leakage. We discuss possible observational signatures, such as gravitational-wave echoes and CMB circular anomalies. We also discuss a complex-time formulation that captures the accumulation of cycles.",
+    "author": [
+      "Shriethar, Natarajan"
+    ],
+    "doi": [
+      "10.1007/s10714-025-03494-y"
+    ],
+    "title": [
+      "Conformal Cyclic Baby Universes in Evaporating Black Holes"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025PhyS..100k5220F",
+    "abstract": "Spherically symmetric effective dust collapse inspired by effective loop quantum cosmology predicts a bounce when the stellar energy density becomes planckian, which in turn inevitably leads to shell-crossing singularity formation. An extension of the spacetime beyond such singularities is possible through weak solutions of the equations of motion in integral form, leading to the shockwave model. In this work, we show explicitly that such an extension is not unique, and that relevant features like the black hole life-time strongly depend on the choice of the integral form of the equation of motion.",
+    "author": [
+      "Fazzini, Francesco"
+    ],
+    "doi": [
+      "10.1088/1402-4896/ae1be4",
+      "10.48550/arXiv.2502.03003"
+    ],
+    "title": [
+      "Non-uniqueness of shockwave evolution in a loop quantum gravity inspired model"
+    ],
+    "year": "2025",
+    "citation_count": 8
+  },
+  {
+    "bibcode": "2025arXiv251115660C",
+    "abstract": "Polymer models are effective in describing quantum gravity effects around the initial singularity, leading to its replacement by bouncing surfaces on which the curvature and densities are finite. Their properties depend on the space-time symmetry and on the particular polymerisation scheme adopted. In this article we investigate anisotropic models under the Gambini-Ben\u00edtez-Pullin polymerisation, recently used to quantise spherically symmetric black-holes, whose interiors are isometric to Kantowski-Sachs (KS) space-times. Demanding that the minimum area defined by the bouncing surface matches the Loop Quantum Gravity area gap, we can find its radius alongside the curvature and effective density and pressures at the bounce. The density is always positive, while the pressures are negative enough to avoid the singularity. Due to the positive spatial curvature, the solution is oscillatory, reaching a maximum radius where a re-collapse occurs. Therefore, a positive cosmological constant is included in order to have an eternal expansion to a late de Sitter phase. We have also considered a Bianchi III metric, showing that the bounce is still present, but the space-time is asymptotically flat in this case, with no re-collapse. In this hyperbolic space, the minimal area constraint can also be imposed on compact $2$-surfaces. Nevertheless, in contrast to the KS case, it is enough for avoiding the singularity, independently of polymerisation procedures.",
+    "author": [
+      "Cook, D. A.",
+      "Olimpieri, A.",
+      "Baranov, I. P. R.",
+      "Borges, H. A.",
+      "Carneiro, S."
+    ],
+    "doi": [
+      "10.48550/arXiv.2511.15660"
+    ],
+    "title": [
+      "Anisotropic models in LQC with GBP polymerisation"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025arXiv251117711M",
+    "abstract": "We explore Krylov complexity for two exactly solvable models, one in the Wheeler-DeWitt (WDW) quantum cosmology and another in loop quantum cosmology (LQC), for a spatially flat, homogeneous, and isotropic universe sourced with a massless scalar field, which serves the role of clock. While the WDW quantization of this model cannot avoid the big bang/big crunch singularity, it is replaced by a big bounce in LQC. We construct the Krylov basis analytically by applying the Lanczos algorithm and evaluate both the Krylov state and operator complexity. In regimes where the wave function of the universe is sharply peaked, our results indicate that the Krylov complexity grows quadratically with the scalar field clock for the state and operator complexities in both the WDW quantum cosmology and LQC. We further show that operator complexity is exactly twice the state complexity in these regimes. We discuss the interpretation of the global behavior of these systems by calculating the Krylov entropy for both quantum cosmological frameworks. We observe that in LQC, the Krylov complexity and entropy remain finite at the bounce, whereas in the WDW quantum cosmology, they diverge at the big bang/crunch singularity. Our work paves the way for computing Krylov complexity in more intricate quantum cosmological models, including those exhibiting phenomena such as quantum chaos.",
+    "author": [
+      "Motaharfar, Meysam",
+      "Siebersma, Maxwell R.",
+      "Singh, Parampreet"
+    ],
+    "doi": [
+      "10.48550/arXiv.2511.17711"
+    ],
+    "title": [
+      "Krylov Complexity in Canonical Quantum Cosmology"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025arXiv251014021G",
+    "abstract": "We analyze the dynamics of the Bianchi I universe in modified loop quantum cosmology (Model I, or mLQC-I), uncovering a robust mechanism for isotropization. As in the standard LQC, the classical singularities are resolved by quantum bounce. Remarkably, mLQC-I exhibits a distinctive feature: following the bounce, the shear is dynamically suppressed and decays rapidly to zero within the deep quantum regime. This occurs independently of the collapsing matter fields, leading to a natural quantum isotropization. Consequently, the three spatial directions expand rapidly to macroscopic scales, producing a homogeneous and isotropic universe directly from the quantum epoch without fine-tuning. Our findings demonstrate that mLQC-I not only resolves singularities but also provides a more effective pathway for suppressing anisotropies than other models, thereby reinforcing its viability as a description of the early universe.",
+    "author": [
+      "Gan, Wen-Cong",
+      "Graef, Leila L.",
+      "Ramos, Rudnei O.",
+      "Vicente, Gustavo S.",
+      "Wang, Anzhong"
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.14021"
+    ],
+    "title": [
+      "Quantum Damping of Cosmological Shear: A New Prediction from Loop Quantum Cosmologies"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025arXiv251017663Y",
+    "citation_count": 0,
+    "abstract": "The degree of freedom of the scalar field in scalar-tensor gravity is employed as \"time\" to deparametrize the Hamiltonian constraint of the theory. The deparametrized system is then nonperturbatively quantized by the approach of loop quantum gravity. This results in a discrete time evolution of the physical states with respect to the gravitational degree of freedom in the quantum theory. In the corresponding Brans-Dicke cosmological model, the physical solutions to the quantum Hamiltonian constraint are obtained in the light of the deparametrization. The quantum dynamics indicates that the classical big bang singularity is replaced by a quantum bounce.",
+    "author": [
+      "Yuan, Faqiang",
+      "Li, Haida",
+      "Li, Shengzhi",
+      "Ma, Yongge"
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.17663"
+    ],
+    "title": [
+      "Deparametrization and quantization of scalar-tensor gravity and its cosmological model"
+    ],
+    "year": "2025"
+  },
+  {
+    "bibcode": "2025arXiv251003907B",
+    "abstract": "In bouncing cosmological models, either classical or quantum, the big bang singularity is replaced by a regular bounce. A challenging question in such models is how to keep the shear under control in the contracting phase, as it is well-known that the shear grows as fast as $1/a^{6}$ toward the bounce, where $a$ is the average expansion factor of the universe. A common approach is to introduce a scalar field with an ekpyrotic-like potential which becomes negative near the bounce, so the effective equation of state of the scalar field will be greater than one, whereby it dominates the shear in the bounce region. As a result, a homogeneous and isotropic universe can be produced after the bounce. In this paper, we study how the ekpyrotic mechanism affects the inflationary phase in both loop quantum cosmology (LQC) and a modified loop quantum cosmological model (mLQC-I), because in these frameworks inflation is generic without such a mechanism. After numerically studying various cases in which the potential of the inflaton consists of two parts, an inflationary potential and an ekpyrotic-like one, we find that, despite the fact that the influence is significant, by properly choosing the free parameters involved in the models, the ekpyrotic-like potential dominates in the bounce region, during which the effective equation of state is larger than one, so the shear problem is resolved. As the time continuously increases after the bounce, the inflationary potential grows and ultimately becomes dominant, resulting in an inflationary phase. This phase can last long enough to solve the cosmological problems existing in the big bang model.",
+    "author": [
+      "Brown, Christian",
+      "Fier, Jared",
+      "Phillips, Brian",
+      "Cleaver, Gerald",
+      "Wang, Anzhong"
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.03907"
+    ],
+    "title": [
+      "Effects of the ekpyrotic mechanism on inflationary phase in loop quantum cosmologies"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025arXiv251011230P",
+    "abstract": "We investigate uniform rate inflationary universe in the framework of loop quantum cosmology (LQC) and find that this seemingly simple inflationary model is interlinked with various concepts such as cyclic evolution, HNI inflation and polymer quantized scalar fields, when the background spacetime is loop quantized. The potential for an \\textit{exactly} uniform rate inflation in a loop quantized FRW spacetime turns out to be a polymerized version of the corresponding potential in general relativity, which mimics the potentials for a polymerized scalar field and that for hybrid natural inflation (HNI). There is also a radical modification of the background spacetime, leading to a cyclic universe with identical epochs separated by quantum bounces which replace the classical singularity. The energy density and Hubble rate are bounded. The predictions for cosmological perturbations depend on the value of the field at the end of inflation. The parameter space is explored to compare the results for spectral index and tensor-to-scalar ratio with observational constraints.",
+    "author": [
+      "Paul, Bikash Chandra",
+      "Saini, Sahil"
+    ],
+    "doi": [
+      "10.48550/arXiv.2510.11230"
+    ],
+    "title": [
+      "Cyclic universe and uniform rate inflation in loop quantum cosmology"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025PDU....4902003T",
+    "abstract": "We explore the end state of gravitational collapse under quantum gravity effects and propose that Planck Star Remnants (PSR), formed via nonsingular bounces, could serve as viable dark matter candidates. Within the framework of Loop Quantum Cosmology, we model the collapse of a homogeneous matter distribution and show that the classical singularity is replaced by a quantum bounce at the Planck density. By analytically matching the Friedman\u2013Lema\u00eetre\u2013Robertson\u2013Walker (FLRW) interior to an exterior Schwarzschild spacetime using the Israel junction conditions, we demonstrate that the bounce remains causally hidden from external observers, avoiding any observable re-expansion. This naturally leads to the formation of stable, non-radiating PSR, whose radius coincides with the Schwarzschild radius when the black hole mass approaches the Planck mass as a result of Hawking evaporation. We suggest that such remnants may originate from evaporating primordial black holes in the early universe, and estimate the relic abundance needed for PSR to account for the observed dark matter density. We also discuss some crucial differences between PSR and previous proposals of Planck mass relics. The scenario is shown to be consistent with existing astrophysical and cosmological constraints, offering a unified framework connecting quantum gravitational collapse, and the nature of dark matter.",
+    "author": [
+      "Trivedi, Oem",
+      "Loeb, Abraham"
+    ],
+    "doi": [
+      "10.1016/j.dark.2025.102003",
+      "10.48550/arXiv.2506.03334"
+    ],
+    "title": [
+      "Could planck star remnants be dark matter?"
+    ],
+    "year": "2025",
+    "citation_count": 8
+  },
+  {
+    "bibcode": "2025arXiv250906148F",
+    "abstract": "In the framework of Loop Quantum Cosmology, we study a cosmological bouncing model with two fields that reproduce the desired features of the primordial power spectra. The model combines the matter-bounce mechanism, that generates scale-invariant perturbations, with ekpyrotic contraction, that suppresses anisotropies leading to the bounce. The bounce that replaces the classical initial singularity is achieved thanks to the loop quantisation. The matter-bounce is enacted by a \\textit{quasi-dust} scalar field, with a slightly-negative equation of state that accounts for a small positive cosmological constant, that generates a red-tilt in the perturbations' power spectra. A second field, endowed with an ekpyrotic potential, is introduced to tame the growth of anisotropies throughout the bouncing phase. The equations of motion of the scalar perturbations are non-trivially coupled, leading to rich phenomenology that cannot be inferred simply from their single-field counterpart. We study the evolution of scalar and tensor perturbations and compare the results to current observations, showing the viability of this model as a base for further investigations.",
+    "author": [
+      "Frion, Emmanuel",
+      "Pascual, Mateo",
+      "Vidotto, Francesca"
+    ],
+    "doi": [
+      "10.48550/arXiv.2509.06148"
+    ],
+    "title": [
+      "Quasi-dust ekpyrotic scenario in Loop Quantum Cosmology"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  }
+]

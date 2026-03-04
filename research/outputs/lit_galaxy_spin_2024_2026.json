@@ -1,0 +1,325 @@
+[
+  {
+    "bibcode": "2025MNRAS.544.2172O",
+    "abstract": "We compute the achromatic gravitational imprint that Kerr space\u2500time leaves on linear polarization at the photon ring. Recasting parallel transport in a null Frenet\u2500Serret frame yields a single scalar evolution law for the electric-vector position angle. On the observer's screen, the Kerr-minus-Schwarzschild pattern on the direct critical curve is non-zero, strictly odd under spin reversal after a half-turn azimuth relabelling, and tightly confined to a thin annulus. Using backward-shot, Carter-separated geodesics with midpoint RK2 transport, we achieve second-order convergence and degree-scale amplitudes that grow monotonically with spin and inclination (RMS <inline-formula><tex-math>$\\simeq 0.5$</tex-math></inline-formula>\u2500<inline-formula><tex-math>$2^\\circ$</tex-math></inline-formula> for <inline-formula><tex-math>$a/M\\gtrsim 0.8$</tex-math></inline-formula>, <inline-formula><tex-math>$i\\gtrsim 60^\\circ$</tex-math></inline-formula>). Three independent constructions \u2500 Frenet\u2500Serret line integral, explicit Levi\u2500Civita transport of the polarization vector, and the phase of the Walker\u2500Penrose constant \u2500 agree ray by ray. We then define a parity-odd ring estimator that is intrinsically achromatic after standard wavelength-squared regression, symmetry-protected against common even-parity systematics, and compressed into low azimuthal modes. This yields a minimal two-parameter template (spin and inclination) for mm/sub-mm polarimetry of horizon-scale rings in sources such as M87<inline-formula><tex-math>$^\\ast$</tex-math></inline-formula> and Sgr A<inline-formula><tex-math>$^\\ast$</tex-math></inline-formula>. The pipeline enables either a detection of the strong-field parallel-transport phase induced by frame dragging or informative upper limits.",
+    "author": [
+      "\u00d6kten, M. Baran"
+    ],
+    "doi": [
+      "10.1093/mnras/staf1883",
+      "10.48550/arXiv.2512.14773"
+    ],
+    "title": [
+      "Achromatic, spin-odd Kerr EVPA as a null Frenet\u2500Serret torsion integral on the photon ring"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025PhRvL.135n1002S",
+    "abstract": "We explore the potential of using late-time galaxy spins to test the parity symmetry of primordial vector fossils. Using <inline-formula><mml:math><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:math></inline-formula>-body simulations, we analyze halo spins as a reliable proxy for galaxy spins to investigate the detectability of this effect. We develop a novel approach to generate initial conditions (ICs) that have substantial parity asymmetry but do not alter the initial matter power spectrum. We construct the initial spin fields from the parity broken ICs and halo spin fields using late-time halos evolved from such ICs. Focusing on the helicity of these vector fields, we detect substantial asymmetry in the initial spin field. In addition, we find that over 50% of the initial spin field's asymmetry remains in the late-time halo spin field on a range of scales. Based on mock galaxy spin fields derived from the halo spin fields, we forecast that a maximum detection at <inline-formula><mml:math><mml:mn>13</mml:mn><mml:mi>\u03c3</mml:mi></mml:math></inline-formula> is possible with the final DESI BGS for the model considered in this analysis. Our findings demonstrate that primordial vectorial parity violation survives nonlinear gravitational evolution, and thus, can be effectively probed with galaxy spins at late times.",
+    "author": [
+      "Shim, Junsup",
+      "Pen, Ue-Li",
+      "Yu, Hao-Ran",
+      "Okumura, Teppei"
+    ],
+    "doi": [
+      "10.1103/ym2n-lzts",
+      "10.48550/arXiv.2406.06080"
+    ],
+    "title": [
+      "Probing Vector Chirality in the Early Universe"
+    ],
+    "year": "2025",
+    "citation_count": 7
+  },
+  {
+    "bibcode": "2025arXiv250914701F",
+    "abstract": "Weak interactions cause small parity-violating energy differences between left- and right-handed chiral systems. Although normally tiny, these effects may be significantly enhanced during collective phenomena such as phase transitions. We propose a theoretical model describing the enhancement of weak interactions in phase transitions. The enhancement factor is proportional to the critical number of atoms, $N_c$, in the nucleus of the new phase. After the nucleus reaches its critical size, it grows until it fills the entire system. Measurement of the ratio of produced left and right chiral structures may provide a way to measure this critical number $N_c$. Experiments where definite spin-chiral structures are formed during a phase transition in crossed electric and magnetic fields, indicate $N_c \\sim 10^9 - 10^{10}$. An open question is whether a similar enhancement could operate during cosmological phase transitions - thereby boosting CP-violating effects sufficiently to contribute to the observed matter-antimatter asymmetry (baryogenesis).",
+    "author": [
+      "Flambaum, V. V."
+    ],
+    "doi": [
+      "10.48550/arXiv.2509.14701"
+    ],
+    "title": [
+      "Enhancement of Weak Interactions in Phase Transitions"
+    ],
+    "year": "2025",
+    "citation_count": 0
+  },
+  {
+    "bibcode": "2025JHEP...06..203K",
+    "abstract": "Gravitational chiral anomaly connects the topological charge of spacetime and the chirality of fermions. It has been known that the chirality is carried by the particles (or the excited states) and also by vacuum. While the gravitational anomaly equation has been applied to cosmology, distinction between these two contributions has been rarely discussed. In the study of gravitational leptogenesis, for example, lepton asymmetry associated with the chiral gravitational waves (GWs) sourced during inflation is evaluated only by integrating the anomaly equation. This approach, however, does not reveal how these two contributions are distributed in this scenario. Meanwhile, the dominance of vacuum contribution is observed in some specific types of Bianchi spacetime with parity-violating gravitational fields. One may wonder whether such a vacuum dominance takes place also in the system with chiral GWs around the flat background, which is more suitable for application to realistic cosmology. In this work, we apply an analogy between U(1) electromagnetism and the weak gravity to the spacetime that captures the characteristics of the one considered in the gravitational leptogenesis. With this approach, we try to obtain intuitive understanding of the fermion chirality generation under the parity-violating spin-2 gravitational field. By assuming the emergence of Landau level-like dispersion relation in our setup, we observe that spin-2 nature seems to make the level-crossing inefficient, indicating that the chrial charge is likely to accumulate in the vacuum. On this basis, phenomenological implications for gravitational leptogenesis are discussed.",
+    "author": [
+      "Kamada, Kohei",
+      "Kume, Jun'ya"
+    ],
+    "doi": [
+      "10.1007/JHEP06(2025)203",
+      "10.48550/arXiv.2404.19726"
+    ],
+    "title": [
+      "On the inefficiency of fermion level-crossing under the parity-violating spin-2 gravitational field"
+    ],
+    "year": "2025",
+    "citation_count": 1
+  },
+  {
+    "bibcode": "2025arXiv250106383T",
+    "abstract": "A no-go theorem for parity-violation in even $D$-dimensional spacetimes invariant under $ISO(d)$ and dilatations (as well as the implications for odd $D$) is derived. For the case of real massless scalar and gravitons (as well as any massless even integer spin-$s$ field) at $\\mathcal{I}^+$, the reality of wavefunction coefficients in Fourier space to all orders in perturbation theory (any order in loops) coming from a local, unitary, IR- and UV-finite theory, which start from the initial \\CRT-invariant Bunch-Davies state in the infinite past, is proven. From this it is inferred that a parity-odd correlator with any massless scalar fields and even integer spin-$s$ fields vanishes in the presence of any number of interactions of massless fields. The same is true for correlators with an even number of conformally-coupled and massless odd integer spin-$s$ external fields, which is used to derive the cosmological analogue of Furry's theorem. The fundamental implications of \\CRT symmetry for theories with chemical potentials, such as Chern-Simons and Axion inflation, is also discussed. Given the recent interest in parity-violation coming from observational claims of parity-violation detection, these results provide clear constraints on parity-violating models of inflation and establish the measurement of any parity-odd correlator as an exceptionally sensitive probe of new physics beyond vanilla inflation.",
+    "author": [
+      "Thavanesan, Ayngaran"
+    ],
+    "doi": [
+      "10.48550/arXiv.2501.06383"
+    ],
+    "title": [
+      "No-go Theorem for Cosmological Parity Violation"
+    ],
+    "year": "2025",
+    "citation_count": 15
+  },
+  {
+    "bibcode": "2024JHEP...07..107G",
+    "abstract": "The neutrino force results from the exchange of a pair of neutrinos. A neutrino background can significantly influence this force. In this work, we present a comprehensive calculation of the neutrino force in various neutrino backgrounds with spin dependence taken into account. In particular, we calculate the spin-independent and spin-dependent parity-conserving neutrino forces, in addition to the spin-dependent parity-violating neutrino forces with and without the presence of a neutrino background for both isotropic and anisotropic backgrounds. Compared with the vacuum case, the neutrino background can effectively violate Lorentz invariance and lead to additional parity-violating terms that are not suppressed by the velocity of external particles. We estimate the magnitude of the effect of atomic parity-violation experiments, and it turns out to be well below the current experimental sensitivity.",
+    "author": [
+      "Ghosh, Mitrajyoti",
+      "Grossman, Yuval",
+      "Tangarife, Walter",
+      "Xu, Xun-Jie",
+      "Yu, Bingrong"
+    ],
+    "doi": [
+      "10.1007/JHEP07(2024)107",
+      "10.48550/arXiv.2405.16801"
+    ],
+    "title": [
+      "The neutrino force in neutrino backgrounds: Spin dependence and parity-violating effects"
+    ],
+    "year": "2024",
+    "citation_count": 9
+  },
+  {
+    "bibcode": "2024JHEP...05..196S",
+    "abstract": "We consider the evolution of quantum fields during inflation, and show that the total-energy singularities appearing in the perturbative expansion of the late-time Wavefunction of the Universe are purely real when the external states are massless scalars and massless gravitons. Our proof relies on the tree-level approximation, Bunch-Davies initial conditions, and exact scale invariance (IR-convergence), but without any assumptions on invariance under de Sitter boosts. We consider all n-point functions and allow for the exchange of additional states of any mass and integer spin. Our proof makes use of a decomposition of the inflationary bulk-bulk propagator of massive spinning fields which preserves UV-convergence and ensures that the time-ordered contributions are purely real after we rotate to Euclidean time. We use this reality property to show that the maximally-connected parts of wavefunction coefficients, from which total-energy singularities originate, are purely real. In a theory where all states are in the complementary series, this reality extends to the full wavefunction coefficient. We then use our reality theorem to show that parity-odd correlators (correlators that are mirror asymmetric) are factorised and do not diverge when the total-energy is conserved. We pay special attention to the parity-odd four-point function (trispectrum) of inflationary curvature perturbations and use our reality/factorisation theorems to show that this observable is factorised into a product of cubic diagrams thereby enabling us to derive exact shapes. We present examples of couplings between the inflaton and massive spin-1 and spin-2 fields, with the parity-violation in the trispectrum driven by Chern-Simons corrections to the spinning field two-point function, or from parity-violating cubic interactions which we build within the Effective Field Theory of Inflation. In addition, we present a first-of-its-kind example of a parity-violating trispectrum, generated at tree-level, that arises in a purely scalar theory where the inflaton mixes linearly with an additional massive scalar field.",
+    "author": [
+      "Stefanyszyn, David",
+      "Tong, Xi",
+      "Zhu, Yuhang"
+    ],
+    "doi": [
+      "10.1007/JHEP05(2024)196",
+      "10.48550/arXiv.2309.07769"
+    ],
+    "title": [
+      "Cosmological correlators through the looking glass: reality, parity, and factorisation"
+    ],
+    "year": "2024",
+    "citation_count": 41
+  },
+  {
+    "bibcode": "2023JCAP...11..040N",
+    "abstract": "We consider axial (or odd-parity) perturbations of non-spinning hairy black holes (BH) in shift-symmetric DHOST (Degenerate Higher-Order Scalar-Tensor) theories, including terms quartic and cubic in second derivatives of the scalar field. We give a new formulation of the effective metric in which axial perturbations propagate as in general relativity. We then introduce a generic parametrization of the effective metric in the vicinity of the background BH horizon. Writing the dynamics of the perturbations in terms of a Schr\u00f6dinger-like operator, we discuss in which cases the operator is (essentially) self-adjoint, thus leading to an unambiguous time evolution, according to the choice of parameters characterizing the near-horizon effective metric. This is in particular useful to investigate the stability of the perturbations. We finally illustrate our general analysis with two examples of BH solutions.",
+    "author": [
+      "Noui, Karim",
+      "Roussille, Hugo",
+      "Langlois, David"
+    ],
+    "doi": [
+      "10.1088/1475-7516/2023/11/040",
+      "10.48550/arXiv.2304.03055"
+    ],
+    "title": [
+      "Axial perturbations of black holes in scalar-tensor gravity: near-horizon behaviour"
+    ],
+    "year": "2023",
+    "citation_count": 4
+  },
+  {
+    "bibcode": "2023Symm...15.1704S",
+    "abstract": "Recent independent observations using several different telescope systems and analysis methods have provided evidence of parity violation between the numbers of galaxies that spin in opposite directions. On the other hand, other studies argue that no parity violation can be identified. This paper provides detailed analysis, statistical inference, and reproduction of previous reports that show no preferred spin direction. Code and data used for the reproduction are publicly available. The results show that the data used in all of these studies agree with the observation of a preferred direction as observed from Earth. In some of these studies, the datasets were too small, or the statistical analysis was incomplete. In other papers, the results were impacted by experimental design decisions that led directly to showing nonpreferred direction. In some of these cases, these decisions were not stated in the papers but were revealed after further investigation in cases where the reproduction of the work did not match the results reported in the papers. These results show that the data used in all of these previous studies, in fact, agree with the contention that galaxies as observed from Earth have a preferred spin direction, and the distribution of galaxy spin directions as observed from Earth forms a cosmological-scale dipole axis. This study also shows that the reason for the observations is not necessarily an anomaly in the large-scale structure, and can also be related to internal structure of galaxies.",
+    "author": [
+      "Shamir, Lior"
+    ],
+    "doi": [
+      "10.3390/sym15091704",
+      "10.48550/arXiv.2309.03418"
+    ],
+    "title": [
+      "Large-Scale Asymmetry in the Distribution of Galaxy Spin Directions\u2014Analysis and Reproduction"
+    ],
+    "year": "2023",
+    "citation_count": 5
+  },
+  {
+    "bibcode": "2023PhRvD.107f4070M",
+    "abstract": "We investigate dynamical properties of static and spherically symmetric systems in the self-accelerating branch of the minimal theory of bigravity (MTBG). In the former part, we study the gravitational collapse of pressureless dust and find special solutions, where, in both the physical and fiducial sectors, the exterior and interior spacetime geometries are given by the Schwarzschild spacetimes and the Friedmann-Lema\u00eetre-Robertson-Walker universes dominated by pressureless dust, respectively, with specific time slicings. In the case where the Lagrange multipliers are trivial and have no jump across the matter interfaces in both the physical and fiducial sectors, the junction conditions across them remain the same as those in general relativity (GR). For simplicity, we foliate the interior geometry by homogeneous and isotropic spacetimes. For a spatially flat interior universe, we foliate the exterior geometry by a time-independent flat space, while for a spatially curved interior universe, we foliate the exterior geometry by a time-independent space with deficit solid angle. Despite the rather restrictive choice of foliations, we find interesting classes of exact solutions that represent gravitational collapse in MTBG. In the spatially flat case, under a certain tuning of the initial condition, we find exact solutions of matter collapse in which the two sectors evolve independently. In the spatially closed case, once the matter energy densities and the Schwarzschild radii are tuned between the two sectors, we find exact solutions that correspond to the Oppenheimer-Snyder model in GR. In the latter part, we study odd-parity perturbations of the Schwarzschild-de Sitter solutions written in the spatially flat coordinates. For the higher-multipole modes \u2113\u22652 , we find that, in general, the system reduces to that of four physical modes, where two of them are dynamical and the remaining two are shadowy, i.e., satisfying only elliptic equations. In the case where the ratio of the lapse functions between the physical and fiducial sectors are equal to a constant determined by the parameters of the theory, the two dynamical modes are decoupled from each other, but sourced by one of the shadowy modes. Otherwise, the two dynamical modes are coupled to each other and sourced by the two shadowy modes. At least for the cases of collapse described in this paper, we find that the ratio of the lapse functions is determined by the properties of the collapse itself. On giving appropriate boundary conditions to the shadowy modes so as to not strongly backreact/influence the dynamics of the master variables, in the high frequency and short wavelength limits, we show that the two dynamical modes do not suffer from ghost or gradient instabilities. For the dipolar mode \u2113=1 , the two copies of the slow-rotation limit of the Kerr-de Sitter metrics cannot be a solution in the self-accelerating branch, unless the mass and spin of black holes and effective cosmological constants are tuned to be the same. Therefore, deviation from GR is expected for rotating black holes in the self-accelerating branch of MTBG.",
+    "author": [
+      "Minamitsuji, Masato",
+      "De Felice, Antonio",
+      "Mukohyama, Shinji",
+      "Oliosi, Michele"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.107.064070",
+      "10.48550/arXiv.2301.00498"
+    ],
+    "title": [
+      "Gravitational collapse and odd-parity black hole perturbations in minimal theory of bigravity"
+    ],
+    "year": "2023",
+    "citation_count": 2
+  },
+  {
+    "bibcode": "2023JHEP...02..021C",
+    "abstract": "We derive a set of no-go theorems and yes-go examples for the parity-odd primordial trispectrum of curvature perturbations. We work at tree-level in the decoupling limit of the Effective Field Theory of Inflation and assume scale invariance and a Bunch-Davies vacuum. We show that the parity-odd scalar trispectrum vanishes in the presence of any number of scalar fields with arbitrary mass and any parity-odd scalar correlator vanishes in the presence of any number of spinning fields with massless de Sitter mode functions, in agreement with the findings of Liu, Tong, Wang and Xianyu [1]. The same is true for correlators with an odd number of conformally-coupled external fields. We derive these results using both the (boostless) cosmological bootstrap, in particular the Cosmological Optical Theorem, and explicit perturbative calculations. We then discuss a series of yes-go examples by relaxing the above assumptions one at the time. In particular, we provide explicit results for the parity-odd trispectrum for (i) violations of scale invariance in single-clock inflation, (ii) the modified dispersion relation of the ghost condensate (non-Bunch-Davies vacuum), and (iii) interactions with massive spinning fields. Our results establish the parity-odd trispectrum as an exceptionally sensitive probe of new physics beyond vanilla inflation.",
+    "author": [
+      "Cabass, Giovanni",
+      "Jazayeri, Sadra",
+      "Pajer, Enrico",
+      "Stefanyszyn, David"
+    ],
+    "doi": [
+      "10.1007/JHEP02(2023)021",
+      "10.48550/arXiv.2210.02907"
+    ],
+    "title": [
+      "Parity violation in the scalar trispectrum: no-go theorems and yes-go examples"
+    ],
+    "year": "2023",
+    "citation_count": 64
+  },
+  {
+    "bibcode": "2023PhRvD.107b3523C",
+    "abstract": "Could new physics break the mirror symmetry of the Universe? Utilizing recent measurements of the parity-odd four-point correlation function of BOSS galaxies, we probe the physics of inflation by placing constraints on the amplitude of a number of parity-violating models. Within canonical models of (single-field, slow-roll) inflation, no parity asymmetry can occur; however, it has recently been shown that breaking of the standard assumptions can lead to parity violation within the effective field theory of inflation (EFTI). In particular, we consider the ghost condensate and cosmological collider scenarios\u2014the former for the leading and subleading operators in the EFTI and the latter for different values of mass and speed of an exchanged spin-1 particle\u2014for a total of 18 models. Each instance yields a definite prediction for the inflationary trispectrum, which we convert to a late-time galaxy correlator prediction (through a highly nontrivial calculation) and constrain using the observed data. We find no evidence for inflationary parity violation (with each of the 18 models having significances below 2 \u03c3 ), and place the first constraints on the relevant coupling strengths, at a level comparable with the theoretical perturbativity bounds. This is also the first time cosmological collider signatures have directly been searched for in observational data. We further show that possible secondary parity-violating signatures in galaxy clustering can be systematically described within the effective field theory of large-scale structure. We argue that these late-time contributions are subdominant compared to the primordial parity-odd signal for a vast region of parameter space. In summary, the results of this paper disfavor the notion that the recent hints of parity violation observed in the distribution of galaxies are due to new physics.",
+    "author": [
+      "Cabass, Giovanni",
+      "Ivanov, Mikhail M.",
+      "Philcox, Oliver H. E."
+    ],
+    "doi": [
+      "10.1103/PhysRevD.107.023523",
+      "10.48550/arXiv.2210.16320"
+    ],
+    "title": [
+      "Colliders and ghosts: Constraining inflation with the parity-odd galaxy four-point function"
+    ],
+    "year": "2023",
+    "citation_count": 61
+  },
+  {
+    "bibcode": "2022nsf....2210112H",
+    "citation_count": 0,
+    "author": [
+      "Halperin, William P"
+    ],
+    "title": [
+      "Quantum Coherent Applications of Superfluid 3He"
+    ],
+    "year": "2022",
+    "abstract": "Nontechnical Description: There are two important challenges today where physics plays an essential role. The first is to develop a new generation of computers that can handle the complexity and vastness of the digital information age. These putative quantum computers take advantage of quantum states of matter which contain information that can be stored and manipulated at sufficiently low temperature that neither thermal fluctuations nor impurities destroy their coherence. One important class of such quantum states is a robust form of superconductivity which does not have mirror symmetry and is called chirality, analogous to twisted strands of DNA. The paradigm quantum material having this property is superfluid 3He. Investigation in this project of quantum coherence in 3He tests a fundamental prediction that the anomalous thermal Hall can provide an unambiguous identification of chirality in any superconductor that is a candidate material for quantum computation. There is a second challenge. Our universe appears to be missing 70% of its mass, so-called dark matter. Dark matter is unobserved except for its gravitational impact on star distributions in galaxies. Its absence from all other observation is an existential problem. Many attempts have been launched to develop high resolution sensing tools to identify this missing mass as it floods throughout our environment. A possible detector is based on high coherence of i nuclear spin precession states in superfluid 3He. Its known coherence makes it a very attractive choice for this purpose; yet the limits of coherence have not yet been fully explored. A second unique benefit of 3He spin precession for mass sensing, is its tunability allowing continuous measurements in situ to be made over a wide range of dark mass. <P />Technical Description: Superfluid helium-three is a known topological quantum condensed system, a model for understanding complex quantum materials and in particular, odd-parity chiral superconductors; a subject of interest to researchers in the burgeoning field of quantum information science. The project Quantum Coherent Applications of Superfluid 3He, is a platform to improve and demonstrate quantum coherence among chiral quantum systems including superconducting quantum materials. Additionally, these materials provide an opportunity for instrumentation development based on quantum sensing. One such important application addresses the existential problem, how to determine the nature of dark matter. For superfluid 3He, the paradigm system of choice, the quantum degrees of freedom are its nuclear spin and orbital angular momentum coherently manifest on a macroscopic scale. Superfluid 3He imbibed into very high porosity (98%) uniformly anisotropic silica aerogel controls both the spin and orbital angular momentum quantization axes. Using nuclear magnetic resonance, the directions of these axes can be unambiguously determined. Recent theory predicts that observation of a non-zero thermal Hall effect in the superfluid in uniformly anisotropic silica aerogel defines the chiral axis perpendicular to a thermal gradient. Confirmation of this theory provides a unique tool, measurement of the transverse thermal conductance, that can be used to determine chirality. The application extends to superconducting materials relevant to quantum information science. Quantum sensing is a second application in this project. The long-lived, quantum-spin coherent state of superfluid 3He provides a promising detector for light dark matter. Importantly, in this case high sensing sensitivity is combined with the advantage of continuous tuning for the putative dark mass, thereby at the very least establishing limits on galactic axion production, an existential problem in modern physics. Key to this project is its partnership with theoretical physicists in both the fields of superfluid 3He and dark matter, together with cryogenic and nuclear magnetic resonance spectroscopy expertise at Northwestern. <P />This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria."
+  },
+  {
+    "bibcode": "2021PhRvD.104h4036B",
+    "abstract": "It was recently found that, when linearized in the absence of matter, 58 cases of the general gravitational theory with quadratic curvature and torsion are (i) free from ghosts and tachyons and (ii) power-counting renormalizable. We inspect the nonlinear Hamiltonian structure of the eight cases whose primary constraints do not depend on the curvature tensor. We confirm the particle spectra and unitarity of all these theories in the linear regime. We uncover qualitative dynamical changes in the nonlinear regimes of all eight cases, suggesting at least a broken gauge symmetry, and possibly the activation of negative kinetic energy spin-parity sectors and acausal behavior. Two of the cases propagate a pair of massless modes at the linear level, and were interesting as candidate theories of gravity. However, we identify these modes with vector excitations, rather than the tensor polarizations of the graviton. Moreover, we show that these theories do not support a viable cosmological background.",
+    "author": [
+      "Barker, W. E. V.",
+      "Lasenby, A. N.",
+      "Hobson, M. P.",
+      "Handley, W. J."
+    ],
+    "doi": [
+      "10.1103/PhysRevD.104.084036",
+      "10.48550/arXiv.2101.02645"
+    ],
+    "title": [
+      "Nonlinear Hamiltonian analysis of new quadratic torsion theories: Cases with curvature-free constraints"
+    ],
+    "year": "2021",
+    "citation_count": 17
+  },
+  {
+    "bibcode": "2021PhRvD.104h4077L",
+    "abstract": "Recently, based on the theory of teleparallel gravity, a simple and ghost free parity violating gravity model was proposed in [M. Li, H. Rao, and D. Zhao, J. Cosmol. Astropart. Phys. 11 (2020) 023JCAPBP1475-751610.1088/1475-7516/2020/11/023], where the Weitzenb\u00f6ck connection was adopted for simplifying the calculations but breaks the local Lorentz symmetry explicitly. In this paper, we restore the local Lorentz symmetry of this model by giving up the Weitzenb\u00f6ck condition on the spin connection. With full local Lorentz covariance, this model is not a pure tetrad theory any more. We also apply the new version of this model to the universe with general Friedmann-Robertson-Walker background. This further generalizes the studies of [M. Li, H. Rao, and D. Zhao, J. Cosmol. Astropart. Phys. 11 (2020) 023JCAPBP1475-751610.1088/1475-7516/2020/11/023] where only the spatially flat background was considered. Through the investigations of this paper, we confirm the results obtained in [M. Li, H. Rao, and D. Zhao, J. Cosmol. Astropart. Phys. 11 (2020) 023JCAPBP1475-751610.1088/1475-7516/2020/11/023] and in addition get some new results.",
+    "author": [
+      "Li, Mingzhe",
+      "Rao, Haomin",
+      "Tong, Yeheng"
+    ],
+    "doi": [
+      "10.1103/PhysRevD.104.084077",
+      "10.48550/arXiv.2104.05917"
+    ],
+    "title": [
+      "Revisiting a parity violating gravity model without ghost instability: Local Lorentz covariance"
+    ],
+    "year": "2021",
+    "citation_count": 53
+  },
+  {
+    "bibcode": "2021PhRvD.104f4034S",
+    "abstract": "Using gravitational wave observations to search for deviations from general relativity (GR) in the strong-gravity regime has become an important research direction. One aspect of the strong gravity modifications to GR is parity violation. Chern Simons (CS) gravity is one of the most frequently studied parity-violating models of strong gravity. CS gravity is indistinguishable from GR for all conformally flat space-times and for space-times that possess a maximally symmetric two-dimensional subspace. Also, it is known that the Kerr black hole is not a solution for CS gravity. At the same time, the only rotating solution available in the literature for dynamical CS (DCS) gravity is the slow-rotating case most accurately known to quadratic order in spin. In this work, for the slow-rotating case (accurate to first order in spin), we derive the linear perturbation equations governing the metric and the DCS field accurate to linear order in spin and quadratic order in the CS coupling parameter (\u03b1 ) and obtain the quasinormal mode (QNM) frequencies. After confirming the recent results of Wagle et al. arXiv:2103.09913, we find an additional contribution to the eigenfrequency correction at the leading perturbative order of \u03b1<SUP>2</SUP>. Unlike Wagle et al., we also find corrections to frequencies in the polar sector. We compute these extra corrections by evaluating the expectation values of the perturbative potential on unperturbed QNM wave functions along a contour deformed into the complex-r plane. For \u03b1 =0.1 M<SUP>2</SUP>, we obtain the ratio of the imaginary parts of the DCS correction to the GR correction in the first QNM frequency (in the polar sector) to be 0.263 implying significant change. For the (2, 2) mode, the DCS corrections make imaginary part of the first QNM of the fundamental mode less negative, thereby decreasing the decay rate. Our results, along with future gravitational wave observations, can be used as a test for DCS gravity and to further constrain the CS coupling parameters.",
+    "author": [
+      "Srivastava, Manu",
+      "Chen, Yanbei",
+      "Shankaranarayanan, S."
+    ],
+    "doi": [
+      "10.1103/PhysRevD.104.064034",
+      "10.48550/arXiv.2106.06209"
+    ],
+    "title": [
+      "Analytical computation of quasinormal modes of slowly rotating black holes in dynamical Chern-Simons gravity"
+    ],
+    "year": "2021",
+    "citation_count": 69
+  },
+  {
+    "bibcode": "2021ApJ...907..123I",
+    "abstract": "Observation has not yet determined whether the distribution of spin vectors of galaxies is truly random. It is unclear whether is there any large-scale symmetry-breaking in the distribution of the vorticity field in the universe. Here, we present a formulation to evaluate the dipole component D<SUB>max</SUB> of the observed spin distribution, whose statistical significance \u03c3<SUB>D</SUB> can be calibrated by the expected amplitude for 3D random walk (random flight) simulations. We apply this formulation to evaluate the dipole component in the distribution of Sloan Digital Sky Survey (SDSS) spirals. Shamir published a catalog of spiral galaxies from the SDSS DR8, classifying them with his pattern recognition tool into clockwise and counterclockwise (Z-spiral and S-spiral, respectively). He found significant photometric asymmetry in their distribution. We have confirmed that this sample provides dipole asymmetry up to a level of \u03c3<SUB>D</SUB> = 4.00. However, we also found that the catalog contains a significant number of multiple entries of the same galaxies. After removing the duplicated entries, the number of samples shrunk considerably to 45%. The actual dipole asymmetry observed for the \"cleaned\" catalog is quite modest, \u03c3<SUB>D</SUB> = 0.29. We conclude that SDSS data alone do not support the presence of a large-scale symmetry-breaking in the spin vector distribution of galaxies in the local universe. The data are compatible with a random distribution.",
+    "author": [
+      "Iye, Masanori",
+      "Yagi, Masafumi",
+      "Fukumoto, Hideya"
+    ],
+    "doi": [
+      "10.3847/1538-4357/abb3bb",
+      "10.48550/arXiv.2011.00662"
+    ],
+    "title": [
+      "Spin Parity of Spiral Galaxies. III. Dipole Analysis of the Distribution of SDSS Spirals with 3D Random Walk Simulations"
+    ],
+    "year": "2021",
+    "citation_count": 14
+  },
+  {
+    "bibcode": "2020Ap&SS.365..136S",
+    "abstract": "The distribution of spin directions of <inline-formula id=\"IEq1\"><mml:math><mml:mo>\u223c</mml:mo><mml:mn>6.4</mml:mn><mml:mo>\u1e61</mml:mo><mml:msup><mml:mrow><mml:mn>10</mml:mn></mml:mrow><mml:mrow><mml:mn>4</mml:mn></mml:mrow></mml:msup></mml:math></inline-formula> SDSS spiral galaxies with spectra was examined, and compared to the distribution of <inline-formula id=\"IEq2\"><mml:math><mml:mo>\u223c</mml:mo><mml:mn>3.3</mml:mn><mml:mo>\u1e61</mml:mo><mml:msup><mml:mrow><mml:mn>10</mml:mn></mml:mrow><mml:mrow><mml:mn>4</mml:mn></mml:mrow></mml:msup></mml:math></inline-formula> Pan-STARRS galaxies. The analysis shows a statistically significant asymmetry between the number of SDSS galaxies with opposite spin directions, and the magnitude and direction of the asymmetry changes with the direction of observation and with the redshift. The redshift dependence shows that the distribution of the spin direction of SDSS galaxies becomes more asymmetric as the redshift gets higher. Fitting the distribution of the galaxy spin directions to a quadrupole alignment provides fitness with statistical significance <inline-formula id=\"IEq3\"><mml:math><mml:mo>&gt;</mml:mo><mml:mn>5</mml:mn><mml:mi>\u03c3</mml:mi></mml:math></inline-formula>, which grows to <inline-formula id=\"IEq4\"><mml:math><mml:mo>&gt;</mml:mo><mml:mn>8</mml:mn><mml:mi>\u03c3</mml:mi></mml:math></inline-formula> when just galaxies with <inline-formula id=\"IEq5\"><mml:math><mml:mi>z</mml:mi><mml:mo>&gt;</mml:mo><mml:mn>0.15</mml:mn></mml:math></inline-formula> are used. Similar analysis with Pan-STARRS galaxies provides dipole and quadrupole alignments nearly identical to the analysis of SDSS galaxies, showing that the source of the asymmetry is not necessarily a certain unknown flaw in a specific telescope system. While these observations are clearly provocative, there is no known error that could exhibit itself in such form. The data analysis process is fully automatic, and uses deterministic and symmetric algorithms with defined rules. It does not involve either manual analysis that can lead to human perceptual bias, or machine learning that can capture human biases or other subtle differences that are difficult to identify due to the complex nature of machine learning processes. Also, an error in the galaxy annotation process is expected to show consistent bias in all parts of the sky, rather than change with the direction of observation to form a clear and definable pattern.",
+    "author": [
+      "Shamir, Lior"
+    ],
+    "doi": [
+      "10.1007/s10509-020-03850-1",
+      "10.48550/arXiv.2007.16116"
+    ],
+    "title": [
+      "Patterns of galaxy spin directions in SDSS and Pan-STARRS show parity violation and multipoles"
+    ],
+    "year": "2020",
+    "citation_count": 27
+  },
+  {
+    "bibcode": "2020AAS...23633602S",
+    "abstract": "The apparent spin direction of a spiral galaxy changes based on the location of the observer relative to the galaxy, and therefore it can be assumed that the spin directions of spiral galaxies as observed from Earth are randomly distributed. Here I use large datasets of spiral galaxies from SDSS and Pan-STARRS to show that the distribution of the spin directions of spiral galaxies is not symmetric, and changes based on the direction of observation. The parity violation in spin directions exhibits multipoles, and has a best fit to a quadrupole with probability of less than 6\u03c3 to have such distribution by chance. Comparison of SDSS and Pan-STARRS shows that the two sky surveys exhibit nearly identical patterns of the distribution of spiral galaxies, even when the datasets are completely orthogonal. Analysis of galaxies with spectra shows that the parity violation increases with the redshift in all tested directions of observation. The mean redshift of the galaxies is ~0.12, making the dataset far larger than any supercluster or other known astrophysical structure. The data analysis process is fully automatic, and is based on deterministic model-driven algorithms that follow defined rules, and are not sensitive to the size of the galaxies in the dataset. It does not involve manual analysis, and therefore the analysis is not subjected to a possible human bias. It also does not involve machine learning or deep neural networks that rely on complex unintuitive rules that can capture instrumental or atmospheric biases.",
+    "author": [
+      "Shamir, L."
+    ],
+    "title": [
+      "Distribution of galaxy spin directions in Pan-STARRS and SDSS shows large-scale multipoles and redshift dependence"
+    ],
+    "year": "2020",
+    "citation_count": 0
+  }
+]

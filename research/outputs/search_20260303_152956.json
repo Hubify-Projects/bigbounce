@@ -1,0 +1,107 @@
+{
+  "ads": [
+    {
+      "bibcode": "2026arXiv260104576L",
+      "abstract": "We present a search for ultralight axion dark matter coupled to electron spins using a levitated ferromagnetic torsional oscillator (FMTO). This platform directly measures axion-induced torques on a macroscopic spin-polarized body, combining large spin density with strong mechanical isolation to probe magnetic fluctuations below 10 Hz while suppressing gradient-field noise. In a first implementation, the experiment yielded 18000 s of analyzable data at room temperature under high vacuum with optical readout and triple-layer magnetic shielding. A likelihood-based statistical framework, incorporating stochastic fluctuations in the axion-field amplitude, was used to evaluate the data. No excess consistent with an axion-induced pseudo-magnetic field was observed near 2e-14 eV. To account for possible shielding-induced signal attenuation, we quantify its effect and report both the uncorrected (g_aee &lt; 1e-7) and attenuation-corrected (g_aee &lt; 6e-5) 90% CL limits on the axion-electron coupling. Looking ahead, improvements guided by both noise-budget analysis and shielding-attenuation considerations, including optimized levitation geometry, cryogenic operation, and superconducting shielding, are expected to boost sensitivity by multiple orders of magnitude.",
+      "author": [
+        "Li, Chunlong",
+        "Huang, Yiwei",
+        "Yang, Shien",
+        "Ren, Yichong",
+        "Zhang, Yu",
+        "Yin, Peiran",
+        "Huang, Pu",
+        "Xue, Fei"
+      ],
+      "doi": [
+        "10.48550/arXiv.2601.04576"
+      ],
+      "title": [
+        "Search for Ultralight Axion Dark Matter with a Levitated Ferromagnetic Torsional Oscillator"
+      ],
+      "year": "2026",
+      "citation_count": 0
+    },
+    {
+      "bibcode": "2026MPLA...4150228Y",
+      "abstract": "We reconstruct a holographic dark energy model within a Friedmann cosmology incorporating torsion scalar, assuming no interaction between dark energy and dark matter. Setting the Hubble radius as an infrared (IR) cut-off, we focus on a system dominated by contribution of a time-dependent torsion scalar induced by the spin of matter. In this regime, our results show that even very weak torsion causes cosmic acceleration. Specifically, we find that minima of the current equation of state for holographic dark energy, (\u03c9X0)min, lie in the range \u22121&lt;(\u03c9X0)min&lt;\u22120.778 as a free parameter d varies from 1 to 0.654. Focusing on the free parameter d\u22481, we find that (\u03c9X0)min exhibits slightly different behavior from the cosmological constant. Introducing torsion allows the Hubble radius to serve as a viable IR cut-off even without assuming the interaction between them. Moreover, this approach provides a non-interacting limit not found in earlier interacting models that use the Hubble radius as the IR cut-off.",
+      "author": [
+        "Yun, Yongjun",
+        "Lee, Jungjai"
+      ],
+      "doi": [
+        "10.1142/S0217732325502281",
+        "10.48550/arXiv.2502.19880"
+      ],
+      "title": [
+        "Non-interacting holographic dark energy with Torsion via Hubble Radius"
+      ],
+      "year": "2026",
+      "citation_count": 1
+    },
+    {
+      "bibcode": "2025PhRvA.112e2217K",
+      "abstract": "We investigate the previously unexplored quantum dynamics of nonrelativistic, spinless particles propagating in curved spaces with torsion. Our findings demonstrate that while torsion has been predominantly associated with spin, it can also influence the quantum behavior of spinless particles by inducing a logarithmic nonlinearity in the Schr\u00f6dinger equation through quantum fluctuations, even in flat space. To facilitate quantization in curved spaces, we introduce an extended stochastic variational method. Unlike canonical quantization, this approach is naturally suited to general coordinate systems, with quantum fluctuations arising from a noise term in the stochastic process that is directly influenced by torsion. By requiring consistency with quantum dynamics, we derive an upper bound on the magnitude of torsion. Our results reveal a previously unrecognized mechanism by which torsion, as predicted in certain extensions of general relativity, can influence quantum systems, with potential implications for early-universe physics and dark matter or energy models.",
+      "author": [
+        "Koide, Tomoi",
+        "van de Venn, Armin"
+      ],
+      "doi": [
+        "10.1103/1mp8-wnvd",
+        "10.48550/arXiv.2504.09698"
+      ],
+      "title": [
+        "Torsion-driven nonlinearity in spinless quantum mechanics"
+      ],
+      "year": "2025",
+      "citation_count": 0
+    }
+  ],
+  "arxiv": [
+    {
+      "title": "Effective potentials for de Sitter and anti de Sitter quantum fields",
+      "abstract": "We derive a systematic treatment of one-loop effective potentials for interacting scalar fields in curved spacetimes, providing a general formula valid in arbitrary geometries and explicit results for de Sitter and anti-de Sitter backgrounds. We then compute the effective potential for a scalar $O(N)$ theory on a de Sitter space in any integer dimension. In $d=3$ and dimensional regularization, we extend the calculation up to two loops and compute the $\u03b2$-function and the anomalous mass dimension. They coincide exactly with flat-space results, despite dramatic curvature modifications to physical masses/couplings. The flat limit $R\\to\\infty$ recovers Coleman-Weinberg, confirming consistency. Working in $d=3$ dimensions, we repeat the calculation for $AdS_3$ by using point-splitting regularization, obtaining analogous results for the $\u03b2$-function and anomalous mass dimension.",
+      "published": "2026-03-02T18:00:38Z",
+      "arxiv_id": "2603.02140v1",
+      "authors": [
+        "Alfio Bonanno",
+        "Sergio Luigi Cacciatori",
+        "Ugo Moschella"
+      ],
+      "category": "hep-th",
+      "url": "http://arxiv.org/abs/2603.02140v1"
+    },
+    {
+      "title": "On the Physical Nature of the Scalar Mode Mass in the Jordan frame of a Metric $f(R)$ gravity",
+      "abstract": "We analyze the Taylor expansion of metric $f(R)$ gravity in the Jordan frame around the General Relativity limit. By relating the scalar--tensor representation to the original $f(R)$ formulation, we derive constraints on the expansion parameters from the observed value of the present-day $\u039b$CDM deceleration parameter and from cosmological bounds on the variation of Newton's constant. We show that these requirements imply that the scalar degree of freedom must have a mass exceeding the Hubble scale by several orders of magnitude. This result challenges the common assumption that the scalar mode can drive cosmological dynamics with a mass of order $H_0$. We provide a dynamical interpretation of this hierarchy by emphasizing that a proper definition of the scalar mass, in a field-theoretical sense, requires an adiabatic separation between background evolution and perturbations, which naturally leads to a super-Hubble mass scale.",
+      "published": "2026-03-02T17:42:40Z",
+      "arxiv_id": "2603.02124v1",
+      "authors": [
+        "Giovanni Montani",
+        "Andrea Valletta"
+      ],
+      "category": "gr-qc",
+      "url": "http://arxiv.org/abs/2603.02124v1"
+    },
+    {
+      "title": "Low-$T/|W|$ instabilities in differentially rotating neutron stars resembling merger remnants",
+      "abstract": "We construct constant rest-mass sequences of equilibrium models of differentially rotating neutron stars which resemble binary neutron star post-merger remnants. For a more realistic description of the post-merger remnant, we impose that each model carries approximately $95\\%$ of the angular momentum that a binary system with the same total rest-mass has at the moment of merging, based on an empirical relation informed from neutron star merger simulations. We account for equation of state effects by employing two distinct microphysical descriptions for high density matter. We dynamically evolve the equilibrium models with a three-dimensional general relativistic hydrodynamics code that employs the conformal flatness approximation. We investigate the connection between the occurrence of the instability and the existence of corotation radii within the stellar configurations and determine the instability window for both equation of state sequences. The occurrence of low-$T/|W|$ instabilities leads to pronounced gravitational wave emission in the range $0.13 \\lessapprox\u03b2\\lessapprox 0.2$, while models outside this range exhibit less pronounced features in the gravitational wave spectrum. The prominence of gravitational wave emission is primarily determined by $\u03b2$, while the equation of state seems to have a more minor effect. We present correlations between the strength of the gravitational wave emission associated with the instability and properties of the equilibrium models. Stellar configurations modelled by different equations of state display differences in the timescales over which the various dynamical features develop, as well as whether they exhibit a pronounced $m=1$ deformation. Potential relations between the instability growth timescales and properties of the stellar models are studied.",
+      "published": "2026-03-02T17:40:56Z",
+      "arxiv_id": "2603.02120v1",
+      "authors": [
+        "Georgios Lioutas",
+        "Panagiotis Iosif",
+        "Andreas Bauswein",
+        "Nikolaos Stergioulas"
+      ],
+      "category": "astro-ph.HE",
+      "url": "http://arxiv.org/abs/2603.02120v1"
+    }
+  ],
+  "s2": {
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "perplexity": {
+    "error": "401 Client Error: Unauthorized for url: https://api.perplexity.ai/chat/completions"
+  }
+}

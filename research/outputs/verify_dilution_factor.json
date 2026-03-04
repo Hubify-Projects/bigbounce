@@ -1,0 +1,30 @@
+{
+  "format": "full",
+  "success": true,
+  "pods": [
+    {
+      "title": "Input",
+      "text": "e^(-3\u00d792) (10^15/10^16)^(3/2)"
+    },
+    {
+      "title": "Result",
+      "text": "sqrt(10)/(e^276 100)"
+    },
+    {
+      "title": "Decimal approximation",
+      "text": "4.312439295197686840061228659990815193338447172180797646708... \u00d7 10^-122"
+    },
+    {
+      "title": "Property",
+      "text": "1/(10 sqrt(10) e^276) is a transcendental number"
+    },
+    {
+      "title": "Continued fraction",
+      "text": "[0; 23188732212731563286582814259729544671316915748230878908950, ...]"
+    },
+    {
+      "title": "Alternative representation",
+      "text": "e^(-3 92) (10^15/10^16)^(3/2) = exp^(-3 92)(z) (10^15/10^16)^(3/2) for z = 1"
+    }
+  ]
+}
