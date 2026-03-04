@@ -411,12 +411,31 @@ python3 research/env_check.py --test   # Also run connectivity tests
 Keys are stored in `.env.local` (gitignored) and loaded automatically by all agents.
 Also mirrored to Convex cloud for Hubify workspace agents.
 
-### GPU Compute (Colab Pro)
+### GPU Compute (RunPod)
 
-For Polymathic AI models (Walrus/AION-1), use Google Colab Pro:
-- Notebook: `research/notebooks/bigbounce_gpu.ipynb`
-- Runtime: Change to GPU (A100 recommended)
-- Secrets: Add API keys in Colab sidebar (key icon)
+GPU research runs on RunPod (RTX 6000 Ada, 48GB VRAM). Persistent workspace at `/workspace/`.
+
+**Quick start:**
+```bash
+# From local machine — manage pod
+python3 research/runpod_cloud.py status       # Check pod status
+python3 research/runpod_cloud.py ssh           # Get SSH command
+python3 research/runpod_cloud.py setup         # Full environment setup
+python3 research/runpod_cloud.py push-keys     # Push .env.local to pod
+python3 research/runpod_cloud.py stop          # Stop pod (keeps data)
+python3 research/runpod_cloud.py start         # Restart pod
+
+# On the pod
+ssh root@<ip> -p <port> -i ~/.ssh/id_ed25519
+cd /workspace/bigbounce
+python3 research/runpod_gpu_session.py         # Run full GPU session
+```
+
+**JupyterLab:** Available at port 8888 on RunPod. Use `research/notebooks/runpod_gpu_session.ipynb`.
+
+**Data persists** across pod stop/start in `/workspace/`. Only `terminate` destroys data.
+
+**Legacy Colab notebook:** `research/notebooks/bigbounce_gpu.ipynb` still works on Google Colab Pro as fallback.
 
 ### Lean 4 (Formal Proofs)
 

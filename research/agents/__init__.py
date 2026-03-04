@@ -13,5 +13,13 @@ except ImportError:
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 RESEARCH_DIR = PROJECT_ROOT / "research"
-OUTPUT_DIR = Path(os.environ.get("RESEARCH_OUTPUT_DIR", RESEARCH_DIR / "outputs"))
+
+# RunPod workspace detection — /workspace/outputs takes priority
+_env_output = os.environ.get("RESEARCH_OUTPUT_DIR", "")
+if Path("/workspace").exists():
+    OUTPUT_DIR = Path("/workspace/outputs")
+elif _env_output:
+    OUTPUT_DIR = Path(_env_output)
+else:
+    OUTPUT_DIR = RESEARCH_DIR / "outputs"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
