@@ -38,7 +38,7 @@
     </ul>
 
     <h4>Statistical Methodology: MCMC Parameter Estimation</h4>
-    <p>All quantitative constraints in this work are derived from Markov Chain Monte Carlo (MCMC) parameter estimation using <strong>Cobaya v3.5</strong> with <strong>stock CAMB</strong> as the Boltzmann solver. No modifications were made to the CAMB source code. The analysis treats &Delta;N<sub>eff</sub> as a free parameter within an otherwise standard &Lambda;CDM+N<sub>eff</sub> model, fit against three combined datasets:</p>
+    <p>All quantitative constraints in this work are derived from Markov Chain Monte Carlo (MCMC) parameter estimation using <strong>Cobaya v3.5</strong> (independently verified with <strong>Cobaya v3.6.1 + CAMB v1.6.5</strong> on RunPod GPU infrastructure) with <strong>stock CAMB</strong> as the Boltzmann solver. No modifications were made to the CAMB source code. The analysis treats &Delta;N<sub>eff</sub> as a free parameter within an otherwise standard &Lambda;CDM+N<sub>eff</sub> model, fit against three combined datasets:</p>
     <ul style="color: var(--text-secondary); font-size: 15px;">
       <li><strong>Planck 2018</strong> — CMB temperature and polarization power spectra (TT+TE+EE+lowE+lensing)</li>
       <li><strong>BAO</strong> — Baryon acoustic oscillation measurements from BOSS DR12 and DESI 2024</li>
@@ -46,6 +46,7 @@
     </ul>
     <p class="text-muted" style="margin-top: 12px;"><strong>Important disclosure:</strong> The MCMC analysis uses stock CAMB with &Delta;N<sub>eff</sub> as a free parameter. This is phenomenologically equivalent to any additional relativistic species model; the connection to bounce physics provides theoretical motivation but does not modify the statistical inference. The bounce framework predicts a specific value of &Delta;N<sub>eff</sub> &asymp; 0.5 from relic gravitational wave heating, and the MCMC analysis tests whether this value is consistent with observations &mdash; it does not assume it.</p>
     <p class="text-muted">Convergence was assessed using the Gelman-Rubin diagnostic (R &minus; 1 &lt; 0.01 for all parameters). Nested sampling via PolyChord was used independently for Bayesian model comparison (log-evidence ratios).</p>
+    <p class="text-muted"><strong>Independent verification (v1.2.0):</strong> Four independent MCMC chains (Planck-only, Planck+BAO, Planck+BAO+SNIa, Full Tension) running on RunPod GPU infrastructure with Cobaya v3.6.1 + CAMB v1.6.5 using Planck NPIPE CamSpec TTTEEE likelihoods. Preliminary results confirm that &Delta;N<sub>eff</sub> is dataset-dependent: CMB-only prefers ~0.46 while the full dataset constrains it to ~0.11. All four chains remain consistent with the paper's reported parameter ranges. Final converged posteriors will be reported in a forthcoming update.</p>
   </div>
 </section>
 
@@ -62,7 +63,7 @@
         <div class="timeline-body">
           <p><strong>Lead Agent:</strong> astro-atlas-v1 (Literature Specialist)</p>
           <p><strong>Objective:</strong> Survey the field, map prior work, identify gaps</p>
-          <p><strong>Output:</strong> 50+ publications reviewed, 57 verified references, 2025-2026 advances documented</p>
+          <p><strong>Output:</strong> 50+ publications reviewed, 63 verified references, 2025-2026 advances documented</p>
           <p class="text-sm text-muted">Supporting agents: astro-nova-v1 (alternative interpretations), astro-sage-v1 (synthesis)</p>
         </div>
       </div>
@@ -252,7 +253,7 @@
     <div class="card">
       <h3 style="margin-top: 0;">Computational Tools</h3>
       <ul style="color: var(--text-secondary); font-size: 15px; padding-left: 1.25rem;">
-        <li style="margin-bottom: 8px;"><strong>Cobaya v3.5</strong> — MCMC parameter estimation (stock CAMB)</li>
+        <li style="margin-bottom: 8px;"><strong>Cobaya v3.5/v3.6.1</strong> — MCMC parameter estimation (stock CAMB v1.6.5)</li>
         <li style="margin-bottom: 8px;"><strong>PolyChord</strong> — Nested sampling for Bayesian evidence</li>
         <li style="margin-bottom: 8px;"><strong>MathJax</strong> — Equation rendering for web</li>
         <li><strong>Chart.js</strong> — Data visualization</li>

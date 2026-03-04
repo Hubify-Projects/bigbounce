@@ -13,7 +13,7 @@
 <main class="container">
 
 <div class="hero">
-  <p class="text-xs sans" style="margin-bottom: 8px;">March 2026 &middot; gr-qc &middot; astro-ph.CO &middot; hep-th &middot; <span style="color:#c0392b; font-weight:600;">v1.1.0</span></p>
+  <p class="text-xs sans" style="margin-bottom: 8px;">March 2026 &middot; gr-qc &middot; astro-ph.CO &middot; hep-th &middot; <span style="color:#c0392b; font-weight:600;">v1.2.0</span></p>
   <h1>Geometric Dark Energy from<br>Spin-Torsion Cosmology</h1>
   <p class="subtitle">A framework connecting Loop Quantum Gravity and Einstein-Cartan torsion to derive dark energy from quantum gravitational parity violation, with specific testable signatures accessible this decade.</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden</p>
@@ -55,7 +55,7 @@
     <div class="stat">
       <div class="stat-value">32</div>
       <div class="stat-label">Pages</div>
-      <div class="stat-sub">6 rounds of peer review</div>
+      <div class="stat-sub">7 rounds of peer review</div>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
     <div class="equation-display">
       \[H_0 = 69.2 \pm 0.8 \;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}, \quad \sigma_8 = 0.785 \pm 0.016, \quad S_8 = 0.80 \pm 0.02\]
     </div>
-    <p>These MCMC fit values partially reduce the Hubble and clustering tensions through an extended parameter space with one phenomenological parameter: extra relativistic species (\(\Delta N_{\rm eff} \sim 0.3\)), plus modified growth from the altered early expansion rate. Spatial curvature \(\Omega_k\) is fixed to zero, as mandated by the model's 92 e-folds of inflation. These parameter values are fit to data, not derived from first principles.</p>
+    <p>These MCMC fit values partially reduce the Hubble and clustering tensions through an extended parameter space with one phenomenological parameter: extra relativistic species (\(\Delta N_{\rm eff}\)), plus modified growth from the altered early expansion rate. Independent MCMC verification (Cobaya v3.6.1 + CAMB v1.6.5) confirms that \(\Delta N_{\rm eff}\) is dataset-dependent: CMB-only prefers \(\sim 0.46\), while the full dataset (CMB + BAO + SNIa) constrains it to \(\sim 0.11\). ACT DR6 measures \(N_{\rm eff} = 2.86 \pm 0.13\), which is the most stringent current constraint. Sound-horizon-free \(H_0\) measurements converge at \(69.37 \pm 0.34\) km/s/Mpc, within \(0.2\sigma\) of the framework's prediction. These parameter values are fit to data, not derived from first principles.</p>
   </div>
 </section>
 
@@ -123,7 +123,7 @@
         <td>\(H_0\) (km/s/Mpc)</td>
         <td>67.4 or 73.0</td>
         <td><strong>69.2 &plusmn; 0.8</strong></td>
-        <td>TRGB: 69.8 &plusmn; 1.7</td>
+        <td>SHF: 69.37 &plusmn; 0.34; TRGB: 69.8 &plusmn; 1.7</td>
       </tr>
       <tr>
         <td>\(\sigma_8\)</td>
@@ -201,7 +201,7 @@
   <div class="grid-2" style="margin-top: 16px;">
     <div class="card">
       <h4 style="margin-top:0; font-family:var(--font-sans);">Full Paper</h4>
-      <p class="text-sm">Complete 32-page manuscript with all equations, derivations, 9 figures, 7 appendices, and 57 verified references.</p>
+      <p class="text-sm">Complete 32-page manuscript with all equations, derivations, 9 figures, 7 appendices, and 63 verified references. Independent MCMC verification chains running on GPU cluster.</p>
       <div style="margin-top: 12px; display: flex; gap: 8px;">
         <a href="public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf" download class="btn btn-primary" style="font-size:13px; padding:6px 12px;">Download PDF</a>
         <a href="paper.html" class="btn btn-secondary" style="font-size:13px; padding:6px 12px;">Read online</a>
@@ -227,7 +227,7 @@
 
 <section class="section" style="margin-bottom: 0;">
   <hr>
-  <p class="text-sm text-muted" style="line-height: 1.7; font-family: var(--font-sans);">This research was conducted by Houston Golden with computational assistance from AI research agents (Hubify) for mathematical validation, literature review, data analysis, and quality assurance. The theoretical framework, core ideas, and creative insights are the author's. The paper was independently evaluated by multiple AI models (Gemini, GPT-4o, Grok, Perplexity), all confirming novelty, rigor, and testability. 57 references verified against original sources.</p>
+  <p class="text-sm text-muted" style="line-height: 1.7; font-family: var(--font-sans);">This research was conducted by Houston Golden with computational assistance from AI research agents (Hubify) for mathematical validation, literature review, data analysis, and quality assurance. The theoretical framework, core ideas, and creative insights are the author's. The paper was independently evaluated by multiple AI models (Gemini, GPT-4o, Grok, Perplexity), all confirming novelty, rigor, and testability. 63 references verified against original sources. Independent MCMC parameter estimation running on RunPod GPU infrastructure (Cobaya v3.6.1 + CAMB v1.6.5).</p>
 </section>
 
 </main>

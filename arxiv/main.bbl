@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{54}%
+\begin{thebibliography}{58}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -360,9 +360,9 @@
   \bibfield  {author} {\bibinfo {author} {\bibnamefont {{SPIDER
   Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {Constraints on
   cosmic birefringence from {SPIDER}, {Planck}, and {ACT} observations},\
-  }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
-  {https://arxiv.org/abs/2510.25489} {arXiv:2510.25489 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ }
+  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2510.25489}
+  {arXiv:2510.25489 [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{ACT Collaboration}}\ \emph
   {et~al.}(2024)\citenamefont {{ACT Collaboration}}, \citenamefont {Qu} \emph
   {et~al.}}]{ACT2024}%
@@ -441,6 +441,45 @@
   {699}},\ \bibinfo {pages} {224} (\bibinfo {year} {2011})},\ \Eprint
   {https://arxiv.org/abs/1104.2815} {arXiv:1104.2815 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{ACT
+  Collaboration}}(2025{\natexlab{a}})}]{ACTDR6Neff2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ACT Collaboration}}},\
+  }\bibfield  {title} {\bibinfo {title} {{ACT DR6} constraints on extended
+  cosmological models},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2025}{\natexlab{a}})},\
+  \bibinfo {note} {$N_{\rm eff} = 2.86 \pm 0.13$ (ACT DR6 alone)},\ \Eprint
+  {https://arxiv.org/abs/2503.14454} {arXiv:2503.14454 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{ECT(2025)}]{ECTorsionDESI2025}%
+  \BibitemOpen
+  \bibfield  {title} {\bibinfo {title} {Torsion cosmology in the light of
+  {DESI}, supernovae and {CMB} observational constraints},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {European Physical Journal C}\ }
+  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2507.04265}
+  {arXiv:2507.04265 [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pantos}\ and\ \citenamefont
+  {Perivolaropoulos}(2026)}]{Pantos2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Pantos}}\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Perivolaropoulos}},\ }\bibfield  {title} {\bibinfo {title} {Dissecting the
+  {Hubble} tension: Insights from a diverse set of sound horizon-free $h_0$
+  measurements},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {arXiv e-prints}\ } (\bibinfo {year} {2026})},\ \bibinfo {note} {sHF: $H_0 =
+  69.37 \pm 0.34$; 6.5$\sigma$ tension between distance ladder and other
+  methods},\ \Eprint {https://arxiv.org/abs/2601.00650} {arXiv:2601.00650
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{ACT
+  Collaboration}}(2025{\natexlab{b}})}]{ACTDR6baseline2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ACT Collaboration}}},\
+  }\bibfield  {title} {\bibinfo {title} {{ACT DR6} power spectra, likelihoods
+  and {$\Lambda$CDM} parameters},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year}
+  {2025}{\natexlab{b}})},\ \bibinfo {note} {$H_0 = 68.22 \pm 0.36$ (P-ACT +
+  DESI DR1)},\ \Eprint {https://arxiv.org/abs/2503.14452} {arXiv:2503.14452
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Wong}\ \emph {et~al.}(2020)\citenamefont {Wong} \emph
   {et~al.}}]{Wong2020}%
   \BibitemOpen
@@ -533,13 +572,6 @@
   {pages} {030001} (\bibinfo {year} {2024})},\ \bibinfo {note} {sec.~40 in the
   Review of Particle Physics. See Sec.~40.2.2 for combining
   measurements.}\BibitemShut {Stop}%
-\bibitem [{\citenamefont {{ACT Collaboration}}(2025)}]{ACTDR6Neff2025}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ACT Collaboration}}},\
-  }\bibfield  {title} {\bibinfo {title} {{ACT DR6} constraints on extended
-  cosmological models},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
-  {https://arxiv.org/abs/2503.14452} {arXiv:2503.14452 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {G\"odel}(1949)}]{Godel1949}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
@@ -575,13 +607,6 @@
   {122}},\ \bibinfo {pages} {221302} (\bibinfo {year} {2019})},\ \Eprint
   {https://arxiv.org/abs/1711.05183} {arXiv:1711.05183 [gr-qc]} \BibitemShut
   {NoStop}%
-\bibitem [{ECT(2025)}]{ECTorsionDESI2025}%
-  \BibitemOpen
-  \bibfield  {title} {\bibinfo {title} {Torsion cosmology in the light of
-  {DESI}, supernovae and {CMB} observational constraints},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {European Physical Journal C}\ }
-  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2507.04265}
-  {arXiv:2507.04265 [gr-qc]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Legner}\ \emph {et~al.}(2025)\citenamefont {Legner},
   \citenamefont {Handley},\ and\ \citenamefont {Barker}}]{Legner2025}%
   \BibitemOpen
@@ -589,16 +614,18 @@
   {Legner}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Handley}},\
   and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Barker}},\
   }\bibfield  {title} {\bibinfo {title} {Alleviating the {Hubble} tension with
-  torsion condensation ({TorC})},\ }\href@noop {} {\  (\bibinfo {year}
-  {2025})},\ \Eprint {https://arxiv.org/abs/2507.09228} {arXiv:2507.09228
-  [astro-ph.CO]} \BibitemShut {NoStop}%
+  torsion condensation ({TorC})},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2507.09228} {arXiv:2507.09228 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Fabbri}(2025)}]{Fabbri2025}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
   {Fabbri}},\ }\bibfield  {title} {\bibinfo {title} {Avoiding singularities
-  with propagating torsion},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\
-  \Eprint {https://arxiv.org/abs/2502.17979} {arXiv:2502.17979 [gr-qc]}
-  \BibitemShut {NoStop}%
+  with propagating torsion},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2502.17979} {arXiv:2502.17979 [gr-qc]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Sanyal}\ \emph {et~al.}(2026)\citenamefont {Sanyal},
   \citenamefont {Dhankar}, \citenamefont {Munyeshyaka}, \citenamefont {Islam},
   \citenamefont {Rahaman},\ and\ \citenamefont {Pourhassan}}]{Sanyal2026}%
@@ -614,6 +641,17 @@
   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
   {2026})},\ \Eprint {https://arxiv.org/abs/2602.15924} {arXiv:2602.15924
   [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Alam}\ \emph {et~al.}(2025)\citenamefont {Alam},
+  \citenamefont {Sen},\ and\ \citenamefont {Sengupta}}]{Alam2025bounce}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Alam}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Sen}},\ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Sengupta}},\ }\bibfield
+  {title} {\bibinfo {title} {Bouncing cosmologies in modified gravity with
+  space time torsion},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Eur.\ Phys.\ J.\ C}\ } (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2509.03508} {arXiv:2509.03508 [gr-qc]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Chattopadhyay}(2023)}]{Chattopadhyay2023}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
@@ -622,12 +660,22 @@
   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
   {2023})},\ \Eprint {https://arxiv.org/abs/2310.10405} {arXiv:2310.10405
   [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shamir}(2025)}]{ShamirJWSTJADES2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Shamir}},\ }\bibfield  {title} {\bibinfo {title} {The distribution of galaxy
+  rotation in {JWST} advanced deep extragalactic survey},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {MNRAS}\ }\textbf {\bibinfo
+  {volume} {538}},\ \bibinfo {pages} {76} (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2502.18781} {arXiv:2502.18781 [astro-ph.GA]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Shim}\ \emph {et~al.}(2025)\citenamefont {Shim} \emph
   {et~al.}}]{Shim2025}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
   {Shim}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Probing
-  vector chirality in the early universe},\ }\href@noop {} {\  (\bibinfo {year}
+  vector chirality in the early universe},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year}
   {2025})},\ \bibinfo {note} {revised August 2025},\ \Eprint
   {https://arxiv.org/abs/2406.06080} {arXiv:2406.06080 [astro-ph.CO]}
   \BibitemShut {NoStop}%

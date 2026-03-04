@@ -275,6 +275,33 @@
       ],
       "snapshot_file": null,
       "note": "RunPod GPU verification session. CAMB confirms paper numbers. MCMC chains running for independent Table IV verification."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-03-04T20:00:00-08:00",
+      "title": "v1.2 — Independent MCMC Verification, ACT DR6 Constraints, Model Comparison",
+      "description": "Comprehensive research update incorporating preliminary MCMC chain results from 4 independent Cobaya v3.6.1 chains, ACT DR6 Neff constraint analysis, Liu et al. EC torsion cross-validation, sound-horizon-free H₀ convergence at 69.37±0.34, model comparison scorecard against 6 competing frameworks, and 6 new citations. Paper updated to reflect dataset-dependent ΔNeff (0.1-0.5) and ACT DR6 as most stringent observational challenge.",
+      "authors": ["Houston Golden"],
+      "sections_count": 13,
+      "word_count_approx": 33500,
+      "status": "active",
+      "key_changes": [
+        "NEW: Independent MCMC verification results — ΔNeff dataset-dependent (0.46 CMB-only → 0.11 full)",
+        "NEW: ACT DR6 Neff = 2.86 ± 0.13 constraint analysis — most stringent challenge to framework",
+        "NEW: Liu et al. (2507.04265) cross-validation — all parameters agree within 1.6σ",
+        "NEW: Sound-horizon-free H₀ = 69.37 ± 0.34 from Pantos & Perivolaropoulos (2601.00650)",
+        "NEW: Model comparison scorecard — BigBounce vs ΛCDM, EDE, νDM, Liu EC, w0waCDM",
+        "NEW: Shamir JWST JADES galaxy spin asymmetry (2502.18781) — 65% CW in 2200 spirals",
+        "NEW: Alam et al. bouncing cosmologies in modified gravity with torsion (2509.03508)",
+        "Added ACT DR6 baseline H₀ = 68.22 ± 0.36 reference (2503.14452)",
+        "Updated H₀ comparison table with SHF consensus and ACT DR6 baseline",
+        "Updated ΔNeff range from 0.2-0.5 to 0.1-0.5 reflecting dataset dependence",
+        "6 new figures: parameter space, tension comparison, model comparison, σ₈/S₈, Neff, galaxy spin",
+        "PDF recompiled: 32 pages, 63 references, 0 undefined",
+        "All HTML pages synced with v1.2.0 paper content"
+      ],
+      "snapshot_file": null,
+      "note": "Comprehensive research update with independent MCMC verification, ACT DR6 analysis, and model comparison. MCMC chains still running — final converged posteriors pending."
     }
   ]
 }
