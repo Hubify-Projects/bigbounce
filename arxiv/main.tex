@@ -41,8 +41,8 @@
 \newcommand{\eg}{e.g.}
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v0.9.1}
-\newcommand{\paperTimestamp}{2026-03-03T13:30-08:00}
+\newcommand{\paperVersion}{v1.0.0}
+\newcommand{\paperTimestamp}{2026-03-04T00:00-08:00}
 
 \begin{document}
 
@@ -55,7 +55,7 @@ Phenomenological Constraints and Correlated Signatures}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 3, 2026}
+\date{March 4, 2026}
 
 \begin{abstract}
 The Hubble tension (${\sim}4.9\sigma$), the $\sigma_8$ tension ($2.5\sigma$), and growing evidence for cosmic parity violation---including $2.4$--$2.7\sigma$ cosmic birefringence from Planck, with rising significance from ACT cross-checks---suggest new physics beyond $\Lambda$CDM. We present a theoretical framework where dark energy is modeled as emerging from quantum gravitational effects in a rotating universe born from a black hole interior.
@@ -79,7 +79,7 @@ The framework accommodates three correlated observational signatures: (1)~galaxy
 
 The nature of dark energy remains one of the most profound challenges in modern physics. While the $\Lambda$CDM model successfully accounts for the observed cosmic acceleration~\cite{Planck2018params}, it faces severe theoretical difficulties---most notably the cosmological constant problem, where the observed vacuum energy density $\rho_\Lambda \sim (2.3\;\text{meV})^4$ is $\sim 10^{120}$ times smaller than the naive quantum field theory estimate $\sim \MPl^4$~\cite{Weinberg1989}. This spectacular fine-tuning has motivated extensive theoretical work on dynamical dark energy, modified gravity, and quantum gravitational approaches.
 
-Simultaneously, precision cosmological measurements have revealed growing tensions within $\Lambda$CDM. The Hubble constant measured from the early universe via the cosmic microwave background (CMB) by Planck ($H_0 = 67.36 \pm 0.54\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$)~\cite{Planck2018params} disagrees at ${\sim}4.9\sigma$ with late-universe determinations from the SH0ES collaboration ($H_0 = 73.04 \pm 1.04\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$)~\cite{Riess2022}.\footnote{$(73.04 - 67.36)/\sqrt{1.04^2 + 0.54^2} = 4.86\sigma$; we quote ${\sim}4.9\sigma$ throughout.} The matter clustering amplitude $\sigma_8$ inferred from Planck ($\sigma_8 = 0.811 \pm 0.006$) exceeds weak lensing measurements from KiDS-1000 ($S_8 = 0.759^{+0.024}_{-0.021}$)~\cite{KiDS2021} and DES Y3~\cite{DES2024} by $2$--$3\sigma$. The recent DESI 2024 BAO results~\cite{DESI2024} further suggest dynamical dark energy at $2.5$--$3.9\sigma$, adding urgency to the search for extensions of the standard model.
+Simultaneously, precision cosmological measurements have revealed growing tensions within $\Lambda$CDM. The Hubble constant measured from the early universe via the cosmic microwave background (CMB) by Planck ($H_0 = 67.36 \pm 0.54\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$)~\cite{Planck2018params} disagrees at ${\sim}4.9\sigma$ with late-universe determinations from the SH0ES collaboration ($H_0 = 73.04 \pm 1.04\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$)~\cite{Riess2022}.\footnote{$(73.04 - 67.36)/\sqrt{1.04^2 + 0.54^2} = 4.86\sigma$; we quote ${\sim}4.9\sigma$ throughout.} The matter clustering amplitude $\sigma_8$ inferred from Planck ($\sigma_8 = 0.811 \pm 0.006$) exceeds weak lensing measurements from KiDS-1000 ($S_8 = 0.759^{+0.024}_{-0.021}$)~\cite{KiDS2021} and DES Y3~\cite{DES2024} by $2$--$3\sigma$. The DESI 2024 BAO results~\cite{DESI2024} suggest dynamical dark energy at $2.5$--$3.9\sigma$, with the subsequent DESI DR2 (Year~3) analysis~\cite{DESI2025DR2} strengthening this evidence, adding urgency to the search for extensions of the standard model.
 
 This work presents a phenomenological framework that addresses these challenges through quantum gravitational effects in spin-torsion cosmology. Our approach builds on three well-established theoretical pillars, synthesized here for the first time into a unified cosmological model:
 
@@ -283,7 +283,9 @@ The observed dark energy scale arises from
 where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor and $\Dinf \sim e^{-3N_{\rm tot}}$ is the inflationary dilution factor (see Appendix~\ref{app:niehyan} and Sec.~\ref{sec:dilution}).
 
 
-\subsubsection{Inflationary Dilution Mechanism}\label{sec:dilution}
+\subsubsection{Inflationary Suppression of the Primordial Coefficient}\label{sec:dilution}
+
+\textit{Important clarification.}---The inflationary suppression factor $\Xi$ parameterizes the \textit{initial condition} set by early-universe dynamics: inflation dilutes the primordial spin-density source that generates the parity-odd coefficient, thereby \textit{setting} the value of $\rho_\Lambda$ at a specific scale. This is not ``diluting vacuum energy''---vacuum energy by definition does not dilute under expansion. Rather, $\Xi$ encodes how the primordial parity-odd coefficient $\alpha/M$ is suppressed during inflation to produce the observed cosmological constant scale. The resulting $\rho_\Lambda = \Xi\,\MPl^4$ is then a true cosmological constant, not a running quantity.
 
 The dilution factor for our parity-odd operator during inflation is
 \begin{equation}\label{eq:Dinf}
@@ -298,7 +300,7 @@ The observed dark energy scale is reproduced with:
 \begin{equation}\label{eq:rhoLambda}
 \rho_\Lambda = \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf\times\MPl^4 \sim 10^{-2}\times\Dinf\times\MPl^4 \approx (2.3\;\text{meV})^4,
 \end{equation}
-where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$---that is, $N_{\rm tot} = 92$ is the value \textit{required} by the observed $\rho_\Lambda$ and is therefore a fitted parameter of the framework, not an independent prediction. Standard slow-roll inflation readily accommodates $N_{\rm tot} \gg N_{\rm obs}$: the observable $N_{\rm obs} \approx 55$--$60$ $e$-folds count only the expansion after the largest CMB scales exit the horizon, while the total duration $N_{\rm tot}$ includes prior $e$-folds invisible to the CMB. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete output of the bounce-to-inflation transition once the parent BH properties are specified.
+where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$---that is, $N_{\rm tot} = 92$ is the value \textit{required} by the observed $\rho_\Lambda$ and is therefore a fitted parameter of the framework, not an independent prediction. The choice $N_{\rm tot} = 92$ represents total $e$-folds of inflation, comprising the $\sim$55--60 $e$-folds of observable modes (those that produced the CMB scales we measure today) plus $\sim$30 pre-observable $e$-folds during which the universe inflated before the largest observable scales exited the horizon. This total is essentially unconstrained by CMB observations, which are sensitive only to $N_{\rm obs}$, and serves as a fitted parameter absorbing the fine-tuning in our suppression mechanism. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete output of the bounce-to-inflation transition once the parent BH properties are specified.
 
 This reduces fine-tuning from $10^{120}$ to $\sim 10^5$: the residual tuning corresponds to specifying $N_{\rm tot}$ to within $\Delta N_{\rm tot}\approx 4$ $e$-folds, since $\delta\rho_\Lambda/\rho_\Lambda = 3\,\delta N_{\rm tot}$. This parametric sensitivity---asking ``why did inflation last $\sim$92 $e$-folds?''---has potential dynamical answers through the bounce-to-inflation transition dynamics (Sec.~\ref{sec:theory_program}) and is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, for which no dynamical mechanism exists.
 
@@ -361,7 +363,7 @@ where $\varphi$ is a pseudo-scalar field sourced by the spin-torsion sector and 
 \item \textit{Spin-torsion (this work)}: Isotropic birefringence (all $\ell$; angle not derived, requires photon-torsion coupling) plus anisotropic low-$\ell$ component (amplitude and shape TBD).
 \end{itemize}
 
-Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found cosmic birefringence in Planck data at $\beta\approx 0.35^\circ\pm 0.14^\circ$, inconsistent with $\beta=0$ at $2.4\sigma$. Subsequent analysis by Eskilt~\cite{Eskilt2022} found $\beta = 0.30^\circ \pm 0.11^\circ$ ($2.7\sigma$). Cross-checks with ACT DR6 polarization data are consistent with this signal, though the combined significance depends sensitively on the treatment of shared calibration systematics~\cite{ACT2024}.
+Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found cosmic birefringence in Planck data at $\beta\approx 0.35^\circ\pm 0.14^\circ$, inconsistent with $\beta=0$ at $2.4\sigma$. Subsequent analysis by Eskilt~\cite{Eskilt2022} found $\beta = 0.30^\circ \pm 0.11^\circ$ ($2.7\sigma$). A dedicated ACT DR6 analysis by Diego-Palazuelos \& Komatsu~\cite{DiegoPalazuelos2025} measured $\beta = 0.215^\circ \pm 0.074^\circ$ ($2.9\sigma$), providing independent confirmation from a different instrument. Joint constraints combining birefringence with early dark energy and DESI+Planck data have been explored by Yin \etal~\cite{Yin2026}, demonstrating that nonzero $\beta$ is compatible with---and potentially complementary to---solutions to the $H_0$ tension. The combined significance depends sensitively on the treatment of shared calibration systematics between Planck and ACT~\cite{ACT2024}.
 
 \textit{Calibration caveat.}---The cosmic birefringence signal is degenerate with miscalibration of the instrumental polarization angle~$\psi$~\cite{Minami2020}. Minami \& Komatsu's method breaks this degeneracy using the galactic foreground $EB$ signal as a self-calibration anchor, assuming vanishing intrinsic foreground $EB$---an assumption that has been questioned for polarized thermal dust. Independent validation from experiments with different optics and calibration strategies (Simons Observatory, LiteBIRD) is essential. The isotropic birefringence value ($\beta\approx 0.30^\circ$) can be tested with existing and near-term data; the anisotropic low-$\ell$ component requires full-sky, cosmic-variance-limited polarimetry (LiteBIRD).
 
@@ -417,6 +419,8 @@ Our framework modifies cosmological parameters through extended early-universe p
 \includegraphics[width=\columnwidth]{figures/figure_3a_tension_resolution.png}
 \caption{\label{fig:tension_overview} Hubble constant and $\sigma_8$ tension resolution. Our model (gold star) sits between the early-universe (Planck, blue) and late-universe (SH0ES/KiDS, red) determinations, reducing both tensions simultaneously. Error bars show $1\sigma$ uncertainties.}
 \end{figure}
+
+The primary $\sigma_8$ tension manifests between CMB-inferred values ($\sigma_8 = 0.811 \pm 0.006$ from Planck) and direct weak lensing measurements from KiDS-1000 ($S_8 = 0.759^{+0.024}_{-0.021}$)~\cite{KiDS2021} and DES Y3 ($S_8 = 0.776 \pm 0.017$)~\cite{DES2024}, not between different CMB analyses. Our model's lower $\sigma_8$ brings the CMB-inferred value into closer agreement with these weak lensing surveys.
 
 These extensions are motivated by the bounce scenario but are treated as phenomenological parameters fit to data. MCMC parameter estimation using Planck~2018 + BAO + SNIa data within our extended parameter space (Sec.~\ref{sec:cosmo_fits}) yields best-fit values:
 \begin{align}
@@ -642,7 +646,9 @@ We analyze four dataset combinations of increasing constraining power:
 
 Parameter estimation uses the Cobaya~v3.5 framework~\cite{Cobaya2021} with adaptive blocked Metropolis-Hastings sampling, convergence criterion $\hat{R}-1 < 0.01$ (Gelman-Rubin diagnostic), and $>1000$ effective samples per parameter. The theory engine is stock CAMB (no custom modifications): the spin-torsion framework motivates nonzero $\Delta\Neff$ and a $w=-1$ dark energy component, but these are standard CAMB parameters. The ``spin-torsion'' label refers to the theoretical motivation, not to a bespoke code module.
 
-\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
+\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/v1.0.0/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
+
+\textit{Statistical equivalence.}---We emphasize that our MCMC analysis uses stock CAMB with $\Delta\Neff$ as a free parameter. This is phenomenologically equivalent to \textit{any} additional relativistic species model (e.g., sterile neutrinos, dark radiation, early dark energy with similar effects on the sound horizon); the connection to bounce physics provides theoretical motivation for expecting $\Delta\Neff > 0$ but does not modify the statistical inference itself. The tension reduction reported here is therefore a property of the $\Lambda$CDM+$\Delta\Neff$ parameter space, not uniquely of spin-torsion cosmology.
 
 Our extended parameter space adds two parameters to $\Lambda$CDM:
 \begin{equation}
@@ -886,7 +892,7 @@ Einstein-Cartan cosmology has been studied extensively~\cite{Hehl1976}. Pop\l{}a
 
 Cabral, Lobo \& Rubiera-Garcia~\cite{CabralLobo2020} demonstrated that Einstein-Cartan-Dirac-Maxwell theory can simultaneously produce cosmological bounces and an effective cosmological constant from nonlinear torsion self-interactions, the closest prior work to our overall framework goal. Their mechanism relies on nonlinear field-equation corrections at high density, whereas ours traces a perturbative derivation chain from the one-loop parity-odd coefficient through inflationary dilution to the observed scale. Perez \& Sudarsky~\cite{PerezSudarsky2019} derived dark energy from generic LQG discreteness via energy diffusion---a compelling alternative route from quantum gravity to $\Lambda$, but one that does not involve torsion, parity violation, or the specific ECH action we employ.
 
-Izaurieta \etal~\cite{Izaurieta2020} explored spinning dark matter effects on the Hubble tension within an EC framework but did not connect to LQG or derive specific $H_0$ values. Akhshabi \& Zamani~\cite{Akhshabi2023} studied torsion effects on cosmic distance measures without quantifying tension resolution or parity-odd observables. Liu \etal~\cite{Liu2025} demonstrated Einstein-Cartan torsion is statistically preferred over $\Lambda$CDM by AIC, providing independent model-comparison support but without a microscopic derivation of the dark energy scale.
+Izaurieta \etal~\cite{Izaurieta2020} explored spinning dark matter effects on the Hubble tension within an EC framework but did not connect to LQG or derive specific $H_0$ values. Akhshabi \& Zamani~\cite{Akhshabi2023} studied torsion effects on cosmic distance measures without quantifying tension resolution or parity-odd observables. Liu \etal~\cite{Liu2025} demonstrated Einstein-Cartan torsion is statistically preferred over $\Lambda$CDM by AIC, providing independent model-comparison support but without a microscopic derivation of the dark energy scale. Sanyal \etal~\cite{Sanyal2026} recently explored thermodynamic aspects of bouncing cosmologies in $f(T)$ gravity, demonstrating cosmic hysteresis in torsion-based bounce models---a complementary perspective on the torsion-bounce scenario that does not address the dark energy scale or parity violation.
 
 Our contribution is the quantitative end-to-end synthesis: starting from the ECH action with LQG-fixed parameters, motivating the parity-odd coefficient through one-loop arguments (treating it as a phenomenological parameter fit from data), computing its inflationary dilution to the observed $\Lambda$ scale, and producing specific testable outputs---MCMC fits for $H_0$ and $\sigma_8$, qualitative consistency with $C_\ell^{EB}$, and a phenomenological model for $A(z)$---with systematic error budgets. No prior work attempted this complete chain from microphysics to multi-probe observational analysis.
 
@@ -904,7 +910,7 @@ Longo~\cite{Longo2011} first reported a galaxy handedness dipole; Shamir~\cite{S
 
 \subsection{Cosmic Birefringence}
 
-Minami \& Komatsu~\cite{Minami2020} reported the first hint of cosmic birefringence from Planck data at $2.4\sigma$. Eskilt~\cite{Eskilt2022} confirmed and improved the measurement to $2.7\sigma$. Cross-checks with ACT data are consistent, though the combined significance depends on shared calibration systematics (see Sec.~\ref{sec:EB} for a detailed discussion of calibration caveats). Our model's parity-odd torsion operator is qualitatively consistent with cosmic birefringence: if a photon-torsion coupling exists, the parity violation could produce a polarization rotation. However, the birefringence angle is not derived in this work, and the consistency remains qualitative pending an explicit photon-sector coupling (Sec.~\ref{sec:EB}).
+Minami \& Komatsu~\cite{Minami2020} reported the first hint of cosmic birefringence from Planck data at $2.4\sigma$. Eskilt~\cite{Eskilt2022} confirmed and improved the measurement to $2.7\sigma$. Diego-Palazuelos \& Komatsu~\cite{DiegoPalazuelos2025} measured $\beta = 0.215^\circ \pm 0.074^\circ$ ($2.9\sigma$) using ACT DR6 data, providing independent instrumental confirmation. Yin \etal~\cite{Yin2026} explored joint constraints on birefringence and early dark energy using ACT+Planck+DESI+PantheonPlus, finding that nonzero $\beta$ is compatible with $H_0$ tension solutions. Our model's parity-odd torsion operator is qualitatively consistent with cosmic birefringence: if a photon-torsion coupling exists, the parity violation could produce a polarization rotation. However, the birefringence angle is not derived in this work, and the consistency remains qualitative pending an explicit photon-sector coupling (Sec.~\ref{sec:EB}).
 
 
 %% ============================================================
@@ -1078,7 +1084,7 @@ The parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ could potentially arise
 
 \item \textit{UV cutoff identification}: The loop calculation (Eq.~\ref{eq:oneloop}) contains a logarithmic dependence on $\Lambda_{\rm UV}/\mu$. We identify $\Lambda_{\rm UV}$ with the LQG area-gap mass $\sim\sqrt{\gamma}\,\MPl$, but this choice affects the coefficient at the $\mathcal{O}(\ln)$ level. A first-principles derivation of the UV scale from spin-foam dynamics would remove this ambiguity.
 
-\item \textit{Dynamical dark energy evolution}: Our framework implies a strictly constant $\Leff$ in the late universe (since $\omega^2/H_0^2 < 10^{-20}$). However, if the parity-odd coefficient runs with the Hubble scale (as suggested by Eq.~\ref{eq:RGflow}), this could produce an effective $w(z) \neq -1$ at the few-percent level, potentially connecting to the DESI hint for dynamical dark energy. Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive larger BAO datasets from DESI Y5?
+\item \textit{Dynamical dark energy evolution}: Our framework implies a strictly constant $\Leff$ in the late universe (since $\omega^2/H_0^2 < 10^{-20}$). However, if the parity-odd coefficient runs with the Hubble scale (as suggested by Eq.~\ref{eq:RGflow}), this could produce an effective $w(z) \neq -1$ at the few-percent level, potentially connecting to the DESI evidence for dynamical dark energy~\cite{DESI2024,DESI2025DR2}. Does the statistical preference for torsion (Liu \etal~\cite{Liu2025} AIC) survive with DESI DR2 and beyond?
 
 \item \textit{Multi-messenger parity tests}: Can gravitational wave detectors (LISA, Einstein Telescope, Cosmic Explorer) provide independent confirmation through parity-odd signatures in the stochastic gravitational wave background? The expected chirality asymmetry in the GW spectrum would be a distinctive signature inaccessible to electromagnetic observations.
 
@@ -1097,7 +1103,7 @@ We have presented a phenomenological framework for dark energy connecting quantu
 
 \textit{Theoretical achievements.}---Construction of the parity-odd effective action from the Holst term in first-order variables (Eq.~\ref{eq:Seff}), with $\alpha/M$ treated as a phenomenological parameter motivated by one-loop estimates and constrained by data. The observable dark energy scale is modeled as $\Leff = c_\omega\omega^2+\Xi\,\MPl^2$, where the inflationary suppression factor $\Xi = [(\alpha/M)\,\MPl]\Dinf$ is motivated by early-universe physics (this work does not derive the IR effective vacuum term from first principles; see Sec.~\ref{sec:limitations}). The torsion-regulated bounce at $\rhocrit\simeq 0.27\,\rhoPl$ provides natural initial conditions with no free parameters.
 
-\textit{Observational context.}---Planck cosmic birefringence at $2.4$--$2.7\sigma$~\cite{Minami2020,Eskilt2022} (with rising significance from ACT cross-checks, subject to calibration caveats); MCMC fits reduce the $H_0$ discrepancy from ${\sim}4.9\sigma$ (Planck--SH0ES) to $2.9\sigma$ (vs.\ SH0ES) and the $\sigma_8$ discrepancy to $1.5\sigma$ (vs.\ Planck); multi-survey galaxy spin asymmetry data (SDSS, Pan-STARRS, HST); DESI 2024 dynamical dark energy hint at $2.5$--$3.9\sigma$; Liu \etal\ EC torsion preferred by AIC.
+\textit{Observational context.}---Planck cosmic birefringence at $2.4$--$2.7\sigma$~\cite{Minami2020,Eskilt2022}, independently confirmed by ACT DR6 at $2.9\sigma$~\cite{DiegoPalazuelos2025} (subject to calibration caveats); MCMC fits reduce the $H_0$ discrepancy from ${\sim}4.9\sigma$ (Planck--SH0ES) to $2.9\sigma$ (vs.\ SH0ES) and the $\sigma_8$ discrepancy to $1.5\sigma$ (vs.\ Planck); multi-survey galaxy spin asymmetry data (SDSS, Pan-STARRS, HST); DESI 2024--2025 dynamical dark energy evidence at $2.5$--$3.9\sigma$~\cite{DESI2024,DESI2025DR2}; Liu \etal\ EC torsion preferred by AIC~\cite{Liu2025}.
 
 \textit{Observational signatures.}---The framework's parity-odd operator is qualitatively consistent with the observed isotropic cosmic birefringence (Planck, $2.4$--$2.7\sigma$), though deriving the rotation angle $\beta$ quantitatively requires an explicit photon-torsion coupling not yet available; without this coupling, the framework strictly predicts $\beta = 0$, and any nonzero value requires a photon-sector extension. An anisotropic low-$\ell$ birefringence component aligned with the cosmic rotation axis is expected but its amplitude is not yet derived. The galaxy spin dipole has phenomenological form $A(z)=A_0(1+z)^{-p}e^{-qz}$ with empirical fit $A_0 \sim 0.003$; the coupling $\alpha/M$ is far too small to produce this amplitude directly, and a first-principles derivation remains outstanding (Sec.~\ref{sec:spinmech}). Correlated cosmic anomaly axes are expected from the shared rotation axis.
 
@@ -1115,9 +1121,9 @@ This framework motivates dark energy from quantum gravitational effects in spin-
 
 All materials necessary to reproduce the cosmological and galaxy spin results are publicly available at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v1.0.0/reproducibility}
 \end{center}
-\noindent (pinned to tag \texttt{v0.9.0}, commit \texttt{7884b4f}).
+\noindent (pinned to tag \texttt{v1.0.0}).
 
 \noindent The repository includes:
 \begin{itemize}[leftmargin=*]
@@ -1500,9 +1506,9 @@ The factor of $\MPl$ in $\Xi = [(\alpha/M)\,\MPl]\,\Dinf$ arises from the on-she
 All MCMC results in this paper were obtained using the Cobaya~v3.5 framework~\cite{Cobaya2021} with stock CAMB as the theory engine. The cosmological model is $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter; no custom CAMB modifications are required. The full reproducibility package is available at:
 
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/v0.9.0/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v1.0.0/reproducibility}
 \end{center}
-\noindent (pinned to tag \texttt{v0.9.0}, commit \texttt{7884b4f}).
+\noindent (pinned to tag \texttt{v1.0.0}).
 
 \noindent The package includes:
 \begin{itemize}[leftmargin=*]

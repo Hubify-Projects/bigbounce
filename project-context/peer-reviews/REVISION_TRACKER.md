@@ -2,7 +2,7 @@
 
 **Paper:** Geometric Dark Energy from Spin-Torsion Cosmology
 **Author:** Houston Golden
-**Current version:** v0.9.0
+**Current version:** v1.0.0
 **Target:** arXiv-ready manuscript
 
 ---
@@ -284,6 +284,49 @@ After each revision round:
 **Verification:** 0 undefined references, 0 stale CAMB references, 0 claims of original CMB analysis, 29 pages
 
 **Commit:** `dd22d06`, pushed to `origin/main`
+
+---
+
+### Round 6: v1.0 Final — Research Issues + New Citations (2026-03-04)
+
+**Reviewer:** Comprehensive research agent sweep (148 papers, 9 equation checks, 5 cross-checks)
+**Manuscript version:** v0.9.1 → v1.0.0
+**Approach:** Address 6 substantive issues, add 4 new BibTeX entries, sync all HTML pages
+
+**Issues Addressed:**
+
+| # | Issue | Severity | Status | Resolution |
+|---|-------|----------|--------|------------|
+| R6-1 | Vacuum energy dilution mechanism framing | HIGH | **DONE** | Sec II.C.2 retitled "Inflationary Suppression of the Primordial Coefficient"; added clarification that Ξ sets primordial coefficient, not "dilutes vacuum energy" |
+| R6-2 | H₀ tension baseline (4.4σ vs 4.9σ) | MEDIUM | **VERIFIED** | All references consistently use ~4.9σ; no stale 4.4σ found |
+| R6-3 | σ₈ tension framing (CMB vs weak lensing) | MEDIUM | **DONE** | Added explicit weak lensing context in Sec III.C: KiDS-1000 (0.759) and DES Y3 (0.776) |
+| R6-4 | MCMC = standard ΔNeff extension disclosure | MEDIUM | **DONE** | Added "Statistical equivalence" paragraph in Sec VII.B; explicitly states phenomenologically equivalent to any additional relativistic species model |
+| R6-5 | N=92 motivation and breakdown | MEDIUM | **DONE** | Added specific decomposition: ~55-60 observable + ~30 pre-observable e-folds; labeled as fitted parameter |
+| R6-6 | Conjunctive falsification criterion | LOW | **VERIFIED** | Already present in Sec VIII.F (lines 859-872); no changes needed |
+
+**New Citations Added (4 BibTeX entries):**
+
+| Citation | arXiv | Where Cited | Content |
+|----------|-------|-------------|---------|
+| Yin et al. 2026 | 2601.13624 | Sec III.A (birefringence), Sec XI (related work), Conclusions | Birefringence + EDE joint constraints |
+| Diego-Palazuelos & Komatsu 2025 | 2509.13654 | Sec III.A, Sec XI, Conclusions | ACT DR6 β=0.215°±0.074° (2.9σ) |
+| DESI DR2 2025 | 2503.14738 | Sec I (intro), Sec XII.4 (open questions), Conclusions | Strengthened dynamical DE evidence |
+| Sanyal et al. 2026 | 2602.15924 | Sec XI (torsion cosmology) | Cosmic hysteresis in f(T) bounce |
+
+**Also fixed:** Carroll1998 reference (was cited but missing from .bib)
+
+**Version tracking:**
+- `version.json` → v1.0.0
+- `versions/manifest.json` → v1.0.0 entry added
+- `main.tex` → \paperVersion{v1.0.0}, \date{March 4, 2026}
+- Reproducibility URLs → tree/v1.0.0/reproducibility
+- PDF recompiled: 31 pages, 0 undefined references, 51 bibliography entries
+
+**Verification:**
+- `grep "undefined" main.log` = 0
+- All 4.9σ consistent throughout
+- No "Geometric Dilution" anywhere
+- All HTML pages synced
 
 ---
 

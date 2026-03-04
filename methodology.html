@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geometric Dark Energy from Cosmic Rotation — Methodology</title>
+<title>Methodology — Geometric Dark Energy from Spin-Torsion Cosmology</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -37,7 +37,15 @@
       <li><strong>Semi-autonomous agents</strong> — guided by Houston's initial draft and continuous prompting</li>
     </ul>
 
-    <p class="text-sm text-muted" style="margin-top: 16px; font-style: italic;">This section will be expanded with Houston's detailed narrative of the research process — the false starts, breakthroughs, and lessons learned from pushing AI-assisted theoretical physics to its limits.</p>
+    <h4>Statistical Methodology: MCMC Parameter Estimation</h4>
+    <p>All quantitative constraints in this work are derived from Markov Chain Monte Carlo (MCMC) parameter estimation using <strong>Cobaya v3.5</strong> with <strong>stock CAMB</strong> as the Boltzmann solver. No modifications were made to the CAMB source code. The analysis treats &Delta;N<sub>eff</sub> as a free parameter within an otherwise standard &Lambda;CDM+N<sub>eff</sub> model, fit against three combined datasets:</p>
+    <ul style="color: var(--text-secondary); font-size: 15px;">
+      <li><strong>Planck 2018</strong> — CMB temperature and polarization power spectra (TT+TE+EE+lowE+lensing)</li>
+      <li><strong>BAO</strong> — Baryon acoustic oscillation measurements from BOSS DR12 and DESI 2024</li>
+      <li><strong>SNIa</strong> — Type Ia supernovae from the Pantheon+ sample</li>
+    </ul>
+    <p class="text-muted" style="margin-top: 12px;"><strong>Important disclosure:</strong> The MCMC analysis uses stock CAMB with &Delta;N<sub>eff</sub> as a free parameter. This is phenomenologically equivalent to any additional relativistic species model; the connection to bounce physics provides theoretical motivation but does not modify the statistical inference. The bounce framework predicts a specific value of &Delta;N<sub>eff</sub> &asymp; 0.5 from relic gravitational wave heating, and the MCMC analysis tests whether this value is consistent with observations &mdash; it does not assume it.</p>
+    <p class="text-muted">Convergence was assessed using the Gelman-Rubin diagnostic (R &minus; 1 &lt; 0.01 for all parameters). Nested sampling via PolyChord was used independently for Bayesian model comparison (log-evidence ratios).</p>
   </div>
 </section>
 

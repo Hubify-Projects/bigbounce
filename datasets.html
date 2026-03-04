@@ -84,9 +84,9 @@
     </div>
 
     <div class="card source-card">
-      <h4>DESI 2024 BAO</h4>
+      <h4>DESI 2024&ndash;2025 BAO (DR2)</h4>
       <p class="text-sm text-muted">Baryon acoustic oscillations from luminous red/emission-line galaxies</p>
-      <p class="text-xs">DESI Collaboration, arXiv:2404.03002</p>
+      <p class="text-xs">DESI Collaboration, arXiv:2404.03002; DR2 (2025)</p>
     </div>
 
     <div class="card source-card">
@@ -191,7 +191,7 @@
       <tbody>
         <tr><td>Planck 2018</td><td>CMB (TT,TE,EE+lowE)</td><td>67.36 &plusmn; 0.54</td><td>0.0&sigma;</td><td>2.0&sigma;</td></tr>
         <tr><td>ACT DR6</td><td>CMB lensing</td><td>67.9 &plusmn; 1.5</td><td>0.3&sigma;</td><td>0.8&sigma;</td></tr>
-        <tr><td>DESI 2024 BAO</td><td>BAO (LRG+ELG+QSO)</td><td>67.97 &plusmn; 0.38</td><td>1.0&sigma;</td><td>1.4&sigma;</td></tr>
+        <tr><td>DESI 2024&ndash;2025 BAO (DR2)</td><td>BAO (LRG+ELG+QSO)</td><td>67.97 &plusmn; 0.38</td><td>1.0&sigma;</td><td>1.4&sigma;</td></tr>
         <tr><td>DES Y5</td><td>Weak lensing + BAO</td><td>67.1 &plusmn; 1.3</td><td>0.2&sigma;</td><td>1.4&sigma;</td></tr>
         <tr><td><strong>Spin-Torsion Model</strong></td><td><strong>ECH + bounce</strong></td><td><strong>69.2 &plusmn; 0.8</strong></td><td><strong>2.3&sigma;</strong></td><td><strong>&mdash;</strong></td></tr>
         <tr><td>H0LiCOW</td><td>Strong lensing time delays</td><td>73.3 &plusmn; 1.8</td><td>3.1&sigma;</td><td>2.1&sigma;</td></tr>
@@ -200,7 +200,7 @@
         <tr><td>TRGB (Freedman 2021)</td><td>Tip of red giant branch</td><td>69.8 &plusmn; 1.7</td><td>1.4&sigma;</td><td>0.3&sigma;</td></tr>
       </tbody>
     </table>
-    <p class="data-source">Sources: Planck Collaboration (2018), Riess et al. (2022), Wong et al. (2020), Freedman (2021), DESI Collaboration (2024), ACT DR6 (2024), DES Collaboration (2024)</p>
+    <p class="data-source">Sources: Planck Collaboration (2018), Riess et al. (2022), Wong et al. (2020), Freedman (2021), DESI Collaboration (2024&ndash;2025, DR2), ACT DR6 (2024), DES Collaboration (2024)</p>
   </div>
 
   <div class="highlight-box">
@@ -651,7 +651,7 @@ Chart.defaults.font.family = fontBody;
 new Chart(document.getElementById('h0Chart'), {
   type: 'bar',
   data: {
-    labels: ['Planck 2018', 'ACT DR6', 'DESI BAO', 'DES Y5', 'TRGB', 'Spin-Torsion', 'H0LiCOW', 'SH0ES', 'Megamaser'],
+    labels: ['Planck 2018', 'ACT DR6', 'DESI BAO (DR2)', 'DES Y5', 'TRGB', 'Spin-Torsion', 'H0LiCOW', 'SH0ES', 'Megamaser'],
     datasets: [{
       label: 'H\u2080 (km/s/Mpc)',
       data: [67.36, 67.9, 67.97, 67.1, 69.8, 69.2, 73.3, 73.04, 73.9],

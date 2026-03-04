@@ -1,0 +1,594 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{48}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
+  {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Aghanim}
+  \emph {et~al.}}]{Planck2018params}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Planck
+  Collaboration}}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Aghanim}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Planck}
+  2018 results. {VI.} cosmological parameters},\ }\href
+  {https://doi.org/10.1051/0004-6361/201833910} {\bibfield  {journal} {\bibinfo
+   {journal} {Astronomy \& Astrophysics}\ }\textbf {\bibinfo {volume} {641}},\
+  \bibinfo {pages} {A6} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1807.06209} {arXiv:1807.06209 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Weinberg}(1989)}]{Weinberg1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Weinberg}},\ }\bibfield  {title} {\bibinfo {title} {The cosmological
+  constant problem},\ }\href {https://doi.org/10.1103/RevModPhys.61.1}
+  {\bibfield  {journal} {\bibinfo  {journal} {Reviews of Modern Physics}\
+  }\textbf {\bibinfo {volume} {61}},\ \bibinfo {pages} {1} (\bibinfo {year}
+  {1989})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Riess}\ \emph {et~al.}(2022)\citenamefont {Riess},
+  \citenamefont {Yuan}, \citenamefont {Macri} \emph {et~al.}}]{Riess2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Riess}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Yuan}},
+  \bibinfo {author} {\bibfnamefont {L.~M.}\ \bibnamefont {Macri}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {A comprehensive measurement
+  of the local value of the {Hubble} constant with 1 km/s/{Mpc} uncertainty
+  from the {Hubble Space Telescope} and the {SH0ES} team},\ }\href
+  {https://doi.org/10.3847/2041-8213/ac5c5b} {\bibfield  {journal} {\bibinfo
+  {journal} {The Astrophysical Journal Letters}\ }\textbf {\bibinfo {volume}
+  {934}},\ \bibinfo {pages} {L7} (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2112.04510} {arXiv:2112.04510 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Asgari}\ \emph {et~al.}(2021)\citenamefont {Asgari}
+  \emph {et~al.}}]{KiDS2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Asgari}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{KiDS-1000}
+  cosmology: Cosmic shear constraints on the amplitude of matter
+  fluctuations},\ }\href {https://doi.org/10.1051/0004-6361/202039070}
+  {\bibfield  {journal} {\bibinfo  {journal} {Astronomy \& Astrophysics}\
+  }\textbf {\bibinfo {volume} {645}},\ \bibinfo {pages} {A104} (\bibinfo {year}
+  {2021})},\ \Eprint {https://arxiv.org/abs/2007.15633} {arXiv:2007.15633
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{DES Collaboration}}\ \emph
+  {et~al.}(2022)\citenamefont {{DES Collaboration}}, \citenamefont {Abbott}
+  \emph {et~al.}}]{DES2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DES Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {T.~M.~C.}\ \bibnamefont {Abbott}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Dark {Energy Survey Year} 3
+  results: Cosmological constraints from galaxy clustering and weak lensing},\
+  }\href {https://doi.org/10.1103/PhysRevD.105.023520} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume}
+  {105}},\ \bibinfo {pages} {023520} (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2105.13549} {arXiv:2105.13549 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{DESI Collaboration}}\ \emph
+  {et~al.}(2024)\citenamefont {{DESI Collaboration}}, \citenamefont {Adame}
+  \emph {et~al.}}]{DESI2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DESI Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont {Adame}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{DESI} 2024 {VI:}
+  cosmological constraints from the measurements of baryon acoustic
+  oscillations},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {arXiv preprint}\ } (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2404.03002} {arXiv:2404.03002 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{DESI Collaboration}}\ \emph
+  {et~al.}(2025)\citenamefont {{DESI Collaboration}}, \citenamefont
+  {Abdul-Karim} \emph {et~al.}}]{DESI2025DR2}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DESI Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Abdul-Karim}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{DESI DR2} results {II}:
+  Measurements of baryon acoustic oscillations and cosmological constraints},\
+  }\href {https://doi.org/10.1103/tr6y-kpc6} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {112}},\ \bibinfo
+  {pages} {083515} (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2503.14738} {arXiv:2503.14738 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ashtekar}\ and\ \citenamefont
+  {Singh}(2011)}]{Ashtekar2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Ashtekar}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Singh}},\ }\bibfield  {title} {\bibinfo {title} {Loop quantum cosmology: A
+  status report},\ }\href {https://doi.org/10.1088/0264-9381/28/21/213001}
+  {\bibfield  {journal} {\bibinfo  {journal} {Classical and Quantum Gravity}\
+  }\textbf {\bibinfo {volume} {28}},\ \bibinfo {pages} {213001} (\bibinfo
+  {year} {2011})},\ \Eprint {https://arxiv.org/abs/1108.0893} {arXiv:1108.0893
+  [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hehl}\ \emph {et~al.}(1976)\citenamefont {Hehl},
+  \citenamefont {von~der Heyde}, \citenamefont {Kerlick},\ and\ \citenamefont
+  {Nester}}]{Hehl1976}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.~W.}\ \bibnamefont
+  {Hehl}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {von~der Heyde}},
+  \bibinfo {author} {\bibfnamefont {G.~D.}\ \bibnamefont {Kerlick}},\ and\
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Nester}},\ }\bibfield
+   {title} {\bibinfo {title} {General relativity with spin and torsion:
+  Foundations and prospects},\ }\href
+  {https://doi.org/10.1103/RevModPhys.48.393} {\bibfield  {journal} {\bibinfo
+  {journal} {Reviews of Modern Physics}\ }\textbf {\bibinfo {volume} {48}},\
+  \bibinfo {pages} {393} (\bibinfo {year} {1976})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pop{\l}awski}(2011)}]{Poplawski2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Pop{\l}awski}},\ }\bibfield  {title} {\bibinfo {title} {Cosmological
+  constant from quarks and torsion},\ }\href
+  {https://doi.org/10.1002/andp.201000162} {\bibfield  {journal} {\bibinfo
+  {journal} {Annalen der Physik}\ }\textbf {\bibinfo {volume} {523}},\ \bibinfo
+  {pages} {291} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1005.0893} {arXiv:1005.0893 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pop{\l}awski}(2016)}]{Poplawski2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Pop{\l}awski}},\ }\bibfield  {title} {\bibinfo {title} {Universe in a black
+  hole in {Einstein-Cartan} gravity},\ }\href
+  {https://doi.org/10.3847/0004-637X/832/2/96} {\bibfield  {journal} {\bibinfo
+  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume} {832}},\
+  \bibinfo {pages} {96} (\bibinfo {year} {2016})},\ \Eprint
+  {https://arxiv.org/abs/1410.3881} {arXiv:1410.3881 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pop{\l}awski}(2010)}]{Poplawski2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Pop{\l}awski}},\ }\bibfield  {title} {\bibinfo {title} {Cosmology with
+  torsion: An alternative to cosmic inflation},\ }\href
+  {https://doi.org/10.1016/j.physletb.2010.09.056} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physics Letters B}\ }\textbf {\bibinfo {volume}
+  {694}},\ \bibinfo {pages} {181} (\bibinfo {year} {2010})},\ \Eprint
+  {https://arxiv.org/abs/1007.0587} {arXiv:1007.0587 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pop{\l}awski}(2012)}]{Poplawski2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Pop{\l}awski}},\ }\bibfield  {title} {\bibinfo {title} {Four-fermion
+  interaction from torsion as dark energy},\ }\href
+  {https://doi.org/10.1007/s10714-011-1288-1} {\bibfield  {journal} {\bibinfo
+  {journal} {General Relativity and Gravitation}\ }\textbf {\bibinfo {volume}
+  {44}},\ \bibinfo {pages} {491} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1102.5667} {arXiv:1102.5667 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Liu}\ \emph {et~al.}(2025)\citenamefont {Liu} \emph
+  {et~al.}}]{Liu2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.-Y.}\ \bibnamefont
+  {Liu}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title}
+  {{Einstein-Cartan} torsion and the {$S_8$} tension},\ }\href
+  {https://doi.org/10.1140/epjc/s10052-025-13754-3} {\bibfield  {journal}
+  {\bibinfo  {journal} {European Physical Journal C}\ }\textbf {\bibinfo
+  {volume} {85}},\ \bibinfo {pages} {112} (\bibinfo {year} {2025})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Freidel}\ \emph {et~al.}(2005)\citenamefont
+  {Freidel}, \citenamefont {Minic},\ and\ \citenamefont
+  {Takeuchi}}]{Freidel2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Freidel}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Minic}},\
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Takeuchi}},\
+  }\bibfield  {title} {\bibinfo {title} {Quantum gravity, torsion, parity
+  violation and all that},\ }\href {https://doi.org/10.1103/PhysRevD.72.104002}
+  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
+  {\bibinfo {volume} {72}},\ \bibinfo {pages} {104002} (\bibinfo {year}
+  {2005})},\ \Eprint {https://arxiv.org/abs/hep-th/0507253}
+  {arXiv:hep-th/0507253 [hep-th]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mercuri}(2006)}]{Mercuri2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Mercuri}},\ }\bibfield  {title} {\bibinfo {title} {Fermion coupling to the
+  {Holst} action},\ }\href {https://doi.org/10.1103/PhysRevD.73.084016}
+  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
+  {\bibinfo {volume} {73}},\ \bibinfo {pages} {084016} (\bibinfo {year}
+  {2006})},\ \Eprint {https://arxiv.org/abs/gr-qc/0601013} {arXiv:gr-qc/0601013
+  [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mercuri}(2009)}]{Mercuri2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Mercuri}},\ }\bibfield  {title} {\bibinfo {title} {Peccei-quinn mechanism in
+  gravity and the nature of the {Barbero-Immirzi} parameter},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.103.081302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {103}},\ \bibinfo {pages} {081302} (\bibinfo {year} {2009})},\ \Eprint
+  {https://arxiv.org/abs/0902.2764} {arXiv:0902.2764 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Izaurieta}\ \emph {et~al.}(2020)\citenamefont
+  {Izaurieta}, \citenamefont {Ram\'irez},\ and\ \citenamefont
+  {Rodr\'iguez}}]{Izaurieta2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Izaurieta}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Ram\'irez}},\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Rodr\'iguez}},\ }\bibfield  {title} {\bibinfo {title} {Spinning dark matter
+  and the {Hubble} tension},\ }\href
+  {https://doi.org/10.1016/j.dark.2020.100662} {\bibfield  {journal} {\bibinfo
+  {journal} {Physics of the Dark Universe}\ }\textbf {\bibinfo {volume} {30}},\
+  \bibinfo {pages} {100662} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Akhshabi}\ and\ \citenamefont
+  {Zamani}(2023)}]{Akhshabi2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Akhshabi}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Zamani}},\ }\bibfield  {title} {\bibinfo {title} {Effects of torsion on
+  cosmological distance measures},\ }\href
+  {https://doi.org/10.1103/PhysRevD.107.064023} {\bibfield  {journal} {\bibinfo
+   {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {107}},\ \bibinfo
+  {pages} {064023} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shapiro}\ and\ \citenamefont
+  {Teixeira}(2014)}]{ShapiroTeixeira2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~L.}\ \bibnamefont
+  {Shapiro}}\ and\ \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont
+  {Teixeira}},\ }\bibfield  {title} {\bibinfo {title} {Quantum
+  {Einstein-Cartan} theory with the {Holst} term},\ }\href
+  {https://doi.org/10.1088/0264-9381/31/18/185002} {\bibfield  {journal}
+  {\bibinfo  {journal} {Classical and Quantum Gravity}\ }\textbf {\bibinfo
+  {volume} {31}},\ \bibinfo {pages} {185002} (\bibinfo {year} {2014})},\
+  \Eprint {https://arxiv.org/abs/1402.4854} {arXiv:1402.4854 [gr-qc]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ellis}\ and\ \citenamefont
+  {Bruni}(1989)}]{Ellis1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~F.~R.}\
+  \bibnamefont {Ellis}}\ and\ \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Bruni}},\ }\bibfield  {title} {\bibinfo {title} {Covariant
+  and gauge-invariant approach to cosmological density fluctuations},\ }\href
+  {https://doi.org/10.1103/PhysRevD.40.1804} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {40}},\ \bibinfo
+  {pages} {1804} (\bibinfo {year} {1989})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Saadeh}\ \emph {et~al.}(2016)\citenamefont {Saadeh},
+  \citenamefont {Feeney}, \citenamefont {Pontzen}, \citenamefont {Peiris},\
+  and\ \citenamefont {McEwen}}]{Saadeh2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Saadeh}}, \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont {Feeney}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Pontzen}}, \bibinfo
+  {author} {\bibfnamefont {H.~V.}\ \bibnamefont {Peiris}},\ and\ \bibinfo
+  {author} {\bibfnamefont {J.~D.}\ \bibnamefont {McEwen}},\ }\bibfield  {title}
+  {\bibinfo {title} {How isotropic is the universe?},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.117.131302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {117}},\ \bibinfo {pages} {131302} (\bibinfo {year} {2016})},\ \Eprint
+  {https://arxiv.org/abs/1605.07178} {arXiv:1605.07178 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Minami}\ and\ \citenamefont
+  {Komatsu}(2020)}]{Minami2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Minami}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {New extraction of the
+  cosmic birefringence from the {Planck} 2018 polarization data},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.125.221301} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {125}},\ \bibinfo {pages} {221301} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2011.11254} {arXiv:2011.11254 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
+  {Komatsu}(2022)}]{Eskilt2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Eskilt}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Improved constraints on
+  cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background
+  polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
+  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
+  {\bibinfo {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year}
+  {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Carroll}(1998)}]{Carroll1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
+  {Carroll}},\ }\bibfield  {title} {\bibinfo {title} {Quintessence and the rest
+  of the world: Suppressing long-range interactions},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.81.3067} {\bibfield  {journal} {\bibinfo
+   {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume} {81}},\
+  \bibinfo {pages} {3067} (\bibinfo {year} {1998})},\ \Eprint
+  {https://arxiv.org/abs/astro-ph/9806099} {arXiv:astro-ph/9806099 [astro-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
+  {Komatsu}(2025)}]{DiegoPalazuelos2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Diego-Palazuelos}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Cosmic birefringence from
+  the {Atacama Cosmology Telescope} data release 6},\ }\href@noop {} {\bibfield
+   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
+  {2025})},\ \Eprint {https://arxiv.org/abs/2509.13654} {arXiv:2509.13654
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yin}\ \emph {et~al.}(2026)\citenamefont {Yin},
+  \citenamefont {Du}, \citenamefont {Li},\ and\ \citenamefont
+  {Zhang}}]{Yin2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Yin}}, \bibinfo {author} {\bibfnamefont {G.-H.}\ \bibnamefont {Du}},
+  \bibinfo {author} {\bibfnamefont {T.-N.}\ \bibnamefont {Li}},\ and\ \bibinfo
+  {author} {\bibfnamefont {X.}~\bibnamefont {Zhang}},\ }\bibfield  {title}
+  {\bibinfo {title} {Joint constraints on cosmic birefringence and early dark
+  energy from {ACT}, {Planck}, {DESI}, and {PantheonPlus}},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo
+  {year} {2026})},\ \Eprint {https://arxiv.org/abs/2601.13624}
+  {arXiv:2601.13624 [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{ACT Collaboration}}\ \emph
+  {et~al.}(2024)\citenamefont {{ACT Collaboration}}, \citenamefont {Qu} \emph
+  {et~al.}}]{ACT2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ACT Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {F.~J.}\ \bibnamefont {Qu}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The {Atacama Cosmology
+  Telescope}: {DR6} gravitational lensing map and cosmological parameters},\
+  }\href {https://doi.org/10.3847/1538-4357/acfe06} {\bibfield  {journal}
+  {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume}
+  {962}},\ \bibinfo {pages} {112} (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2304.05203} {arXiv:2304.05203 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{LiteBIRD Collaboration}}\ \emph
+  {et~al.}(2023)\citenamefont {{LiteBIRD Collaboration}}, \citenamefont {Allys}
+  \emph {et~al.}}]{LiteBIRD2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{LiteBIRD
+  Collaboration}}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Allys}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Probing
+  cosmic inflation with the {LiteBIRD} cosmic microwave background polarization
+  survey},\ }\href {https://doi.org/10.1093/ptep/ptac150} {\bibfield  {journal}
+  {\bibinfo  {journal} {Progress of Theoretical and Experimental Physics}\
+  }\textbf {\bibinfo {volume} {2023}},\ \bibinfo {pages} {042F01} (\bibinfo
+  {year} {2023})},\ \Eprint {https://arxiv.org/abs/2202.02773}
+  {arXiv:2202.02773 [astro-ph.IM]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shamir}(2012)}]{Shamir2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Shamir}},\ }\bibfield  {title} {\bibinfo {title} {Handedness asymmetry of
+  spiral galaxies with {$z<0.3$} shows cosmic parity violation and a dipole
+  axis},\ }\href {https://doi.org/10.1016/j.physletb.2012.07.054} {\bibfield
+  {journal} {\bibinfo  {journal} {Physics Letters B}\ }\textbf {\bibinfo
+  {volume} {715}},\ \bibinfo {pages} {25} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1207.3674} {arXiv:1207.3674 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shamir}(2022)}]{Shamir2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Shamir}},\ }\bibfield  {title} {\bibinfo {title} {Analysis of the alignment
+  of non-random patterns of spin directions in populations of spiral
+  galaxies},\ }\href {https://doi.org/10.3847/1538-4357/ac8fab} {\bibfield
+  {journal} {\bibinfo  {journal} {The Astrophysical Journal}\ }\textbf
+  {\bibinfo {volume} {938}},\ \bibinfo {pages} {77} (\bibinfo {year}
+  {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Patel}\ and\ \citenamefont
+  {Desmond}(2024)}]{PatelDesmond2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Patel}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Desmond}},\ }\bibfield  {title} {\bibinfo {title} {A critical assessment of
+  galaxy spin asymmetry studies},\ }\href
+  {https://doi.org/10.1093/mnras/stae132} {\bibfield  {journal} {\bibinfo
+  {journal} {Monthly Notices of the Royal Astronomical Society}\ }\textbf
+  {\bibinfo {volume} {528}},\ \bibinfo {pages} {2553} (\bibinfo {year}
+  {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Philcox}\ and\ \citenamefont
+  {Ereza}(2025)}]{Philcox2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.~H.~E.}\
+  \bibnamefont {Philcox}}\ and\ \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Ereza}},\ }\bibfield  {title} {\bibinfo {title} {Testing
+  cosmic parity violation with galaxy spins},\ }\href
+  {https://doi.org/10.1103/PhysRevD.111.023501} {\bibfield  {journal} {\bibinfo
+   {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo
+  {pages} {023501} (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2410.18185} {arXiv:2410.18185 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Longo}(2011)}]{Longo2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Longo}},\ }\bibfield  {title} {\bibinfo {title} {Detection of a dipole in
+  the handedness of spiral galaxies with redshifts {$z \sim 0.04$}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2011.04.008} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physics Letters B}\ }\textbf {\bibinfo {volume}
+  {699}},\ \bibinfo {pages} {224} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1104.2815} {arXiv:1104.2815 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wong}\ \emph {et~al.}(2020)\citenamefont {Wong} \emph
+  {et~al.}}]{Wong2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~C.}\ \bibnamefont
+  {Wong}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{H0LiCOW} --
+  {XIII.} a 2.4\% measurement of {$H_0$} from lensed quasars: 5.3{$\sigma$}
+  tension between early- and late-universe probes},\ }\href
+  {https://doi.org/10.1093/mnras/stz3094} {\bibfield  {journal} {\bibinfo
+  {journal} {Monthly Notices of the Royal Astronomical Society}\ }\textbf
+  {\bibinfo {volume} {498}},\ \bibinfo {pages} {1420} (\bibinfo {year}
+  {2020})},\ \Eprint {https://arxiv.org/abs/1907.04869} {arXiv:1907.04869
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pesce}\ \emph {et~al.}(2020)\citenamefont {Pesce}
+  \emph {et~al.}}]{Pesce2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~W.}\ \bibnamefont
+  {Pesce}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
+  {Megamaser Cosmology Project}. {XIII.} combined {Hubble} constant
+  constraints},\ }\href {https://doi.org/10.3847/2041-8213/ab75f0} {\bibfield
+  {journal} {\bibinfo  {journal} {The Astrophysical Journal Letters}\ }\textbf
+  {\bibinfo {volume} {891}},\ \bibinfo {pages} {L1} (\bibinfo {year} {2020})},\
+  \Eprint {https://arxiv.org/abs/2001.09213} {arXiv:2001.09213 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Freedman}(2021)}]{Freedman2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~L.}\ \bibnamefont
+  {Freedman}},\ }\bibfield  {title} {\bibinfo {title} {Measurements of the
+  {Hubble} constant: Tensions in perspective},\ }\href
+  {https://doi.org/10.3847/1538-4357/ac0e95} {\bibfield  {journal} {\bibinfo
+  {journal} {The Astrophysical Journal}\ }\textbf {\bibinfo {volume} {919}},\
+  \bibinfo {pages} {16} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/2106.15656} {arXiv:2106.15656 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2023)\citenamefont {Li} \emph
+  {et~al.}}]{HSC2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Li}}
+  \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Hyper Suprime-Cam
+  Year 3} results: Cosmology from cosmic shear two-point correlation
+  functions},\ }\href {https://doi.org/10.1103/PhysRevD.108.123518} {\bibfield
+  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf {\bibinfo
+  {volume} {108}},\ \bibinfo {pages} {123518} (\bibinfo {year} {2023})},\
+  \Eprint {https://arxiv.org/abs/2304.00702} {arXiv:2304.00702 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ghirardini}\ \emph {et~al.}(2024)\citenamefont
+  {Ghirardini} \emph {et~al.}}]{eROSITA2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Ghirardini}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
+  {SRG/eROSITA} all-sky survey: Cosmology constraints from cluster abundances
+  in the western galactic hemisphere},\ }\href
+  {https://doi.org/10.1051/0004-6361/202348852} {\bibfield  {journal} {\bibinfo
+   {journal} {Astronomy \& Astrophysics}\ }\textbf {\bibinfo {volume} {689}},\
+  \bibinfo {pages} {A298} (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2402.08458} {arXiv:2402.08458 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nieh}\ and\ \citenamefont {Yan}(1982)}]{NiehYan1982}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~T.}\ \bibnamefont
+  {Nieh}}\ and\ \bibinfo {author} {\bibfnamefont {M.~L.}\ \bibnamefont {Yan}},\
+  }\bibfield  {title} {\bibinfo {title} {An identity in {Riemann-Cartan}
+  geometry},\ }\href {https://doi.org/10.1063/1.525379} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Mathematical Physics}\ }\textbf {\bibinfo
+  {volume} {23}},\ \bibinfo {pages} {373} (\bibinfo {year} {1982})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Torrado}\ and\ \citenamefont
+  {Lewis}(2021)}]{Cobaya2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Torrado}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Lewis}},\ }\bibfield  {title} {\bibinfo {title} {Cobaya: Code for {Bayesian}
+  analysis of hierarchical physical models},\ }\href
+  {https://doi.org/10.1088/1475-7516/2021/05/057} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Cosmology and Astroparticle Physics}\
+  }\textbf {\bibinfo {volume} {05}}\bibfield  {number} {\bibinfo  {number} {
+  (057)},\ \bibinfo {pages} {057}},\ }\Eprint
+  {https://arxiv.org/abs/2005.05290} {arXiv:2005.05290 [astro-ph.IM]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cowan}\ \emph {et~al.}(2024)\citenamefont {Cowan},
+  \citenamefont {Cranmer}, \citenamefont {Gross},\ and\ \citenamefont
+  {Vitells}}]{PDGstats2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Cowan}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Cranmer}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Gross}},\ and\ \bibinfo
+  {author} {\bibfnamefont {O.}~\bibnamefont {Vitells}},\ }\bibfield  {title}
+  {\bibinfo {title} {Statistics},\ }\href
+  {https://doi.org/10.1103/PhysRevD.110.030001} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {110}},\ \bibinfo
+  {pages} {030001} (\bibinfo {year} {2024})},\ \bibinfo {note} {sec.~40 in the
+  Review of Particle Physics. See Sec.~40.2.2 for combining
+  measurements.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {G\"odel}(1949)}]{Godel1949}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {G\"odel}},\ }\bibfield  {title} {\bibinfo {title} {An example of a new type
+  of cosmological solutions of {Einstein's} field equations of gravitation},\
+  }\href {https://doi.org/10.1103/RevModPhys.21.447} {\bibfield  {journal}
+  {\bibinfo  {journal} {Reviews of Modern Physics}\ }\textbf {\bibinfo {volume}
+  {21}},\ \bibinfo {pages} {447} (\bibinfo {year} {1949})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Cabral}\ \emph {et~al.}(2020)\citenamefont {Cabral},
+  \citenamefont {Lobo},\ and\ \citenamefont {Rubiera-Garcia}}]{CabralLobo2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Cabral}}, \bibinfo {author} {\bibfnamefont {F.~S.~N.}\ \bibnamefont
+  {Lobo}},\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Rubiera-Garcia}},\ }\bibfield  {title} {\bibinfo {title} {Cosmological
+  bounces, cyclic universes, and effective cosmological constant in
+  {Einstein-Cartan-Dirac-Maxwell} theory},\ }\href
+  {https://doi.org/10.1103/PhysRevD.102.083509} {\bibfield  {journal} {\bibinfo
+   {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {102}},\ \bibinfo
+  {pages} {083509} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2003.07463} {arXiv:2003.07463 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Perez}\ and\ \citenamefont
+  {Sudarsky}(2019)}]{PerezSudarsky2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Perez}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Sudarsky}},\ }\bibfield  {title} {\bibinfo {title} {Dark energy from quantum
+  gravity discreteness},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.122.221302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {122}},\ \bibinfo {pages} {221302} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1711.05183} {arXiv:1711.05183 [gr-qc]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Sanyal}\ \emph {et~al.}(2026)\citenamefont {Sanyal},
+  \citenamefont {Dhankar}, \citenamefont {Munyeshyaka}, \citenamefont {Islam},
+  \citenamefont {Rahaman},\ and\ \citenamefont {Pourhassan}}]{Sanyal2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Sanyal}}, \bibinfo {author} {\bibfnamefont {P.~K.}\ \bibnamefont {Dhankar}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Munyeshyaka}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Islam}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Rahaman}},\ and\ \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Pourhassan}},\ }\bibfield  {title}
+  {\bibinfo {title} {Cosmic hysteresis in reconstructed $f(t)$ bounce models: A
+  torsion-based thermodynamic perspective},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
+  {2026})},\ \Eprint {https://arxiv.org/abs/2602.15924} {arXiv:2602.15924
+  [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chattopadhyay}(2023)}]{Chattopadhyay2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Chattopadhyay}},\ }\bibfield  {title} {\bibinfo {title} {One-loop effective
+  action in chiral {Einstein-Cartan} gravity},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
+  {2023})},\ \Eprint {https://arxiv.org/abs/2310.10405} {arXiv:2310.10405
+  [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Golden}(2026)}]{BigBounceWebsite}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Golden}},\ }\href {https://bigbounce.hubify.app} {\bibinfo {title}
+  {Geometric dark energy from spin-torsion cosmology: Interactive data and
+  supplementary materials}} (\bibinfo {year} {2026}),\ \bibinfo {note}
+  {interactive data visualizations, observational comparison charts, and
+  complete paper available online}\BibitemShut {NoStop}%
+\end{thebibliography}%
