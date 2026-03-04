@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{48}%
+\begin{thebibliography}{54}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -355,6 +355,14 @@
   {\bibfield  {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo
   {year} {2026})},\ \Eprint {https://arxiv.org/abs/2601.13624}
   {arXiv:2601.13624 [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{SPIDER Collaboration}}(2025)}]{SPIDER2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{SPIDER
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {Constraints on
+  cosmic birefringence from {SPIDER}, {Planck}, and {ACT} observations},\
+  }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2510.25489} {arXiv:2510.25489 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{ACT Collaboration}}\ \emph
   {et~al.}(2024)\citenamefont {{ACT Collaboration}}, \citenamefont {Qu} \emph
   {et~al.}}]{ACT2024}%
@@ -525,6 +533,13 @@
   {pages} {030001} (\bibinfo {year} {2024})},\ \bibinfo {note} {sec.~40 in the
   Review of Particle Physics. See Sec.~40.2.2 for combining
   measurements.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {{ACT Collaboration}}(2025)}]{ACTDR6Neff2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ACT Collaboration}}},\
+  }\bibfield  {title} {\bibinfo {title} {{ACT DR6} constraints on extended
+  cosmological models},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2503.14452} {arXiv:2503.14452 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {G\"odel}(1949)}]{Godel1949}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
@@ -560,6 +575,30 @@
   {122}},\ \bibinfo {pages} {221302} (\bibinfo {year} {2019})},\ \Eprint
   {https://arxiv.org/abs/1711.05183} {arXiv:1711.05183 [gr-qc]} \BibitemShut
   {NoStop}%
+\bibitem [{ECT(2025)}]{ECTorsionDESI2025}%
+  \BibitemOpen
+  \bibfield  {title} {\bibinfo {title} {Torsion cosmology in the light of
+  {DESI}, supernovae and {CMB} observational constraints},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {European Physical Journal C}\ }
+  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2507.04265}
+  {arXiv:2507.04265 [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Legner}\ \emph {et~al.}(2025)\citenamefont {Legner},
+  \citenamefont {Handley},\ and\ \citenamefont {Barker}}]{Legner2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Legner}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Handley}},\
+  and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Barker}},\
+  }\bibfield  {title} {\bibinfo {title} {Alleviating the {Hubble} tension with
+  torsion condensation ({TorC})},\ }\href@noop {} {\  (\bibinfo {year}
+  {2025})},\ \Eprint {https://arxiv.org/abs/2507.09228} {arXiv:2507.09228
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fabbri}(2025)}]{Fabbri2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Fabbri}},\ }\bibfield  {title} {\bibinfo {title} {Avoiding singularities
+  with propagating torsion},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\
+  \Eprint {https://arxiv.org/abs/2502.17979} {arXiv:2502.17979 [gr-qc]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Sanyal}\ \emph {et~al.}(2026)\citenamefont {Sanyal},
   \citenamefont {Dhankar}, \citenamefont {Munyeshyaka}, \citenamefont {Islam},
   \citenamefont {Rahaman},\ and\ \citenamefont {Pourhassan}}]{Sanyal2026}%
@@ -583,6 +622,15 @@
   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
   {2023})},\ \Eprint {https://arxiv.org/abs/2310.10405} {arXiv:2310.10405
   [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shim}\ \emph {et~al.}(2025)\citenamefont {Shim} \emph
+  {et~al.}}]{Shim2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Shim}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Probing
+  vector chirality in the early universe},\ }\href@noop {} {\  (\bibinfo {year}
+  {2025})},\ \bibinfo {note} {revised August 2025},\ \Eprint
+  {https://arxiv.org/abs/2406.06080} {arXiv:2406.06080 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Golden}(2026)}]{BigBounceWebsite}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont

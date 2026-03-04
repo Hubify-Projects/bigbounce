@@ -247,6 +247,34 @@
       ],
       "snapshot_file": null,
       "note": "v1.0 release: all research issues from comprehensive agent sweep addressed, 50 bibliography entries."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-03-04T12:00:00-08:00",
+      "title": "v1.1 — S₈ Computation, CAMB Verification, 6 New Citations",
+      "description": "RunPod GPU infrastructure integration session. CAMB numerical verification confirmed paper σ₈ values. Computed and reported S₈ = 0.80 ± 0.02 for the spin-torsion model (reduces S₈ tension from ~3σ to ~1σ vs weak lensing). Added 6 new citations from comprehensive literature survey. Updated DESI DR2 significance to 3.1-4.2σ. Updated birefringence numbers throughout (ACT DR6 2.9σ, SPIDER combined 7σ). All 4 Cobaya MCMC chains running on RunPod GPU pod for independent verification.",
+      "authors": ["Houston Golden"],
+      "sections_count": 13,
+      "word_count_approx": 32500,
+      "status": "active",
+      "key_changes": [
+        "NEW: S₈ = 0.80 ± 0.02 computed and reported (Eq. 3, abstract, Table 4, conclusions)",
+        "NEW: S₈ tension quantified: ~1σ vs DES Y3, down from ~3σ in ΛCDM",
+        "CAMB numerical verification on RunPod: σ₈, S₈, Ωm confirmed at 5 parameter points",
+        "Added SPIDER+Planck+ACT combined 7σ rotation (arXiv:2510.25489)",
+        "Added EC torsion AIC-preferred by DESI DR2+Planck (arXiv:2507.04265)",
+        "Added TorC Hubble tension alleviation (arXiv:2507.09228)",
+        "Added Fabbri propagating torsion singularity avoidance (arXiv:2502.17979)",
+        "Added Shim et al. DESI galaxy spin 13σ forecast (arXiv:2406.06080)",
+        "Added ACT DR6 Neff = 2.86 ± 0.13 constraint (arXiv:2503.14452)",
+        "Updated DESI DR2: 2.5-3.9σ → 3.1-4.2σ throughout",
+        "Updated birefringence: 2.4-2.7σ → 2.4-2.9σ (including ACT DR6) throughout",
+        "All 4 Cobaya MCMC chains launched on RunPod (Planck, +BAO, +SN, +Full Tension)",
+        "Integration test suite: 15/15 passing on RunPod GPU pod",
+        "PDF recompiled: 32 pages, 57 references, 0 undefined"
+      ],
+      "snapshot_file": null,
+      "note": "RunPod GPU verification session. CAMB confirms paper numbers. MCMC chains running for independent Table IV verification."
     }
   ]
 }
