@@ -29,7 +29,7 @@ MMU_DATASETS = {
     "swift_uvot":       "MultimodalUniverse/swift_uvot_sne",
     "chandra_agn":      "MultimodalUniverse/chandra_agn",
     "gaia_xp":          "MultimodalUniverse/gaia_xp",
-    "jwst_ceers":       "MultimodalUniverse/jwst_ceers",
+    "jwst_ceers":       "MultimodalUniverse/jwst",
 }
 
 
@@ -95,7 +95,8 @@ def mmu_info(name: str) -> dict:
 # ── AstroML Datasets ─────────────────────────────────────────────────
 
 ASTROML_DATASETS = {
-    "sdss_spectra":     "fetch_sdss_spectra",
+    "sdss_spectra":     "fetch_sdss_corrected_spectra",
+    "sdss_specgals":    "fetch_sdss_specgals",
     "sdss_photometry":  "fetch_sdss_sspp",
     "sdss_S82":         "fetch_sdss_S82standards",
     "rrlyrae":          "fetch_rrlyrae_combined",
@@ -114,9 +115,11 @@ def load_astroml(name: str, **kwargs):
         name: Dataset name (see ASTROML_DATASETS keys)
 
     Returns:
-        NumPy structured array or similar
+        NumPy array (structured or regular). NpzFile objects are unwrapped
+        to return the primary data array.
     """
     try:
+        import numpy as np
         from astroML import datasets
     except ImportError:
         raise ImportError("Install AstroML: pip install astroML")
@@ -127,7 +130,17 @@ def load_astroml(name: str, **kwargs):
                          f"Available: {list(ASTROML_DATASETS.keys())}")
 
     func = getattr(datasets, func_name)
-    return func(**kwargs)
+    result = func(**kwargs)
+
+    # Some AstroML functions return NpzFile — unwrap to primary array
+    if isinstance(result, np.lib.npyio.NpzFile):
+        keys = list(result.files)
+        if len(keys) == 1:
+            return result[keys[0]]
+        # Return dict of arrays for multi-key npz
+        return {k: result[k] for k in keys}
+
+    return result
 
 
 def list_astroml_datasets() -> dict:
@@ -163,23 +176,61 @@ def load_polymathic(model_name: str, device: str = "auto"):
     """
     Load a Polymathic AI model from HuggingFace.
 
-    Requires GPU. Returns (model, tokenizer/processor).
+    Requires GPU. Returns model object.
+    Note: Walrus uses a custom architecture — requires `pip install walrus`
+    (from https://github.com/PolymathicAI/walrus) before loading.
 
     Args:
         model_name: Key from POLYMATHIC_MODELS
         device: "auto", "cuda", "cpu" (cpu is very slow for inference)
     """
-    try:
-        from transformers import AutoModel, AutoTokenizer
-    except ImportError:
-        raise ImportError("Install transformers: pip install transformers torch")
-
     info = POLYMATHIC_MODELS.get(model_name)
     if not info:
         raise ValueError(f"Unknown model: {model_name}. "
                          f"Available: {list(POLYMATHIC_MODELS.keys())}")
 
     hf_token = os.environ.get("HUGGINGFACE_TOKEN", "")
+
+    # Walrus uses custom architecture — requires cloning the PolymathicAI repo
+    # pip install walrus is the WRONG package (Redis wrapper).
+    # Correct: pip install git+https://github.com/PolymathicAI/walrus.git
+    if model_name == "walrus":
+        try:
+            # The PolymathicAI walrus package uses a different import
+            from polymathic_walrus import Walrus
+            model = Walrus.from_pretrained(
+                info["hf_id"],
+                token=hf_token if hf_token else None,
+            )
+            return model
+        except ImportError:
+            pass
+
+        # Fallback: download weights directly from HF and load manually
+        try:
+            from huggingface_hub import hf_hub_download
+            import torch
+
+            # Download config and weights
+            config_path = hf_hub_download(info["hf_id"], "config.json",
+                                          token=hf_token if hf_token else None)
+            weights_path = hf_hub_download(info["hf_id"], "pytorch_model.bin",
+                                           token=hf_token if hf_token else None)
+            import json
+            with open(config_path) as f:
+                config = json.load(f)
+            weights = torch.load(weights_path, map_location="cuda" if torch.cuda.is_available() else "cpu")
+            params = sum(v.numel() for v in weights.values())
+            return {"config": config, "weights_path": weights_path, "params": params,
+                    "note": "Raw weights loaded. Install PolymathicAI walrus for full model inference."}
+        except Exception:
+            pass
+
+    try:
+        from transformers import AutoModel
+    except ImportError:
+        raise ImportError("Install transformers: pip install transformers torch")
+
     model = AutoModel.from_pretrained(
         info["hf_id"],
         token=hf_token if hf_token else None,

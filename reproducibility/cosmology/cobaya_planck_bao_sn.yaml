@@ -12,7 +12,10 @@ likelihood:
   planck_2018_lensing.clik:
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
-  bao.sdss_dr16_bao_all:
+  bao.sdss_dr16_baoplus_lrg:
+  bao.sdss_dr16_baoplus_qso:
+  bao.sdss_dr16_baoplus_lyauto:
+  bao.sdss_dr16_baoplus_lyxqso:
   sn.pantheonplus:
 
 theory:
@@ -21,7 +24,7 @@ theory:
     extra_args:
       lens_potential_accuracy: 1
       num_massive_neutrinos: 1
-      nnu: 3.046
+      # nnu sampled as free parameter (see params.nnu below)
       theta_H0_range: [40, 100]
 
 sampler:

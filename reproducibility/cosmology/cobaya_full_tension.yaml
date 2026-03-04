@@ -19,17 +19,16 @@ likelihood:
   planck_2018_lensing.clik:
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
-  bao.sdss_dr16_bao_all:
+  bao.sdss_dr16_baoplus_lrg:
+  bao.sdss_dr16_baoplus_qso:
+  bao.sdss_dr16_baoplus_lyauto:
+  bao.sdss_dr16_baoplus_lyxqso:
   sn.pantheonplus:
   H0.riess2020Mb:
-
-prior:
   # DES Y3 S8 Gaussian approximation (Abbott et al. 2022)
+  # S8 = sigma8 * sqrt(omegam/0.3) — use native CAMB outputs directly
   S8_DES:
-    dist: norm
-    loc: 0.776
-    scale: 0.017
-    params: S8
+    external: "lambda sigma8, omegam: stats.norm.logpdf(sigma8*np.sqrt(omegam/0.3), loc=0.776, scale=0.017)"
 
 theory:
   camb:
@@ -37,7 +36,7 @@ theory:
     extra_args:
       lens_potential_accuracy: 1
       num_massive_neutrinos: 1
-      nnu: 3.046
+      # nnu sampled as free parameter (see params.nnu below)
       theta_H0_range: [40, 100]
 
 sampler:

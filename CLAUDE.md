@@ -6,6 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a scientific research paper titled "Geometric Dark Energy from Spin-Torsion Cosmology: Phenomenological Constraints and Correlated Signatures" by Houston Golden. The project is a theoretical physics paper exploring dark energy through quantum gravitational effects in spin-torsion cosmology.
 
+**Current version: v1.0.0** (March 4, 2026) — 31 pages, 51 bibliography entries, 6 revision rounds complete.
+All HTML pages synced. PDF compiled with 0 undefined references.
+
 ## Repository Structure
 
 - `bigbounce.md` - Complete research paper content in Markdown format (~35,000 words)

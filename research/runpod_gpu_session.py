@@ -67,9 +67,9 @@ def detect_environment() -> dict:
         if torch.cuda.is_available():
             env["gpu_available"] = True
             env["gpu_name"] = torch.cuda.get_device_name(0)
-            env["gpu_vram_gb"] = round(
-                getattr(torch.cuda.get_device_properties(0), 'total_memory', 0) / 1e9, 1
-            )
+            props = torch.cuda.get_device_properties(0)
+            total_mem = getattr(props, 'total_memory', 0) or getattr(props, 'total_mem', 0)
+            env["gpu_vram_gb"] = round(total_mem / 1e9, 1)
     except ImportError:
         pass
 
@@ -278,20 +278,45 @@ def cell_4_load_walrus(env: dict) -> object:
         return None
 
     try:
-        from transformers import AutoModel
+        import torch
+        from huggingface_hub import hf_hub_download
         hf_token = os.environ.get("HUGGINGFACE_TOKEN", "")
-        print("      Loading Walrus...")
-        model = AutoModel.from_pretrained(
-            "polymathic-ai/walrus",
-            token=hf_token if hf_token else None,
-            device_map="auto",
-            trust_remote_code=True,
-        )
-        params = sum(p.numel() for p in model.parameters())
-        device = next(model.parameters()).device
-        print(f"      Loaded on {device}")
-        print(f"      Parameters: {params:,}")
-        return model
+        print("      Downloading Walrus weights from HuggingFace...")
+
+        # Walrus uses custom architecture — download weights directly
+        # (pip install walrus is the WRONG package — it's a Redis wrapper)
+        try:
+            weights_path = hf_hub_download(
+                "polymathic-ai/walrus", "pytorch_model.bin",
+                token=hf_token if hf_token else None,
+            )
+            weights = torch.load(weights_path, map_location="cuda")
+            params = sum(v.numel() for v in weights.values())
+            print(f"      Weights loaded on CUDA")
+            print(f"      Parameters: {params:,}")
+            print(f"      Keys: {list(weights.keys())[:5]}...")
+            del weights
+            torch.cuda.empty_cache()
+            return {"status": "ok", "params": params, "weights_path": weights_path}
+        except Exception as e1:
+            print(f"      Direct weight load failed: {e1}")
+            # Try safetensors format
+            try:
+                weights_path = hf_hub_download(
+                    "polymathic-ai/walrus", "model.safetensors",
+                    token=hf_token if hf_token else None,
+                )
+                from safetensors.torch import load_file
+                weights = load_file(weights_path, device="cuda")
+                params = sum(v.numel() for v in weights.values())
+                print(f"      Safetensors loaded on CUDA")
+                print(f"      Parameters: {params:,}")
+                del weights
+                torch.cuda.empty_cache()
+                return {"status": "ok", "params": params}
+            except Exception as e2:
+                print(f"      Safetensors also failed: {e2}")
+                return None
     except Exception as e:
         print(f"      FAILED: {e}")
         return None

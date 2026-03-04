@@ -17,7 +17,7 @@ theory:
     extra_args:
       lens_potential_accuracy: 1
       num_massive_neutrinos: 1
-      nnu: 3.046  # will be overridden by nnu param below
+      # nnu sampled as free parameter (see params.nnu below)
       theta_H0_range: [40, 100]
 
 sampler:
