@@ -62,6 +62,7 @@ explained.html      # Plain-language explainer
 mathematics.html    # Mathematical derivations
 methodology.html    # Methods and validation
 datasets.html       # Data sources, scorecard, honest assessment
+galaxy-zoo.html     # Galaxy Zoo data explorer (8.67M galaxies)
 data-comparison.html # Interactive Chart.js visualizations
 versions.html       # Version history
 style.css           # Site-wide styles
@@ -428,6 +429,56 @@ lean --version
 ### Full Integration Plan
 
 See `project-context/RESEARCH_TOOLS_INTEGRATION.md` for the complete 29-tool checklist.
+
+---
+
+## Galaxy Zoo Data Agent
+
+The `research/agents/galaxy_zoo.py` module provides programmatic access to Galaxy Zoo catalogs for galaxy spin asymmetry analysis.
+
+### Available Datasets
+
+| Dataset | Galaxies | Access |
+|---------|----------|--------|
+| Galaxy Zoo DESI | 8,670,000 | `load_gz_desi()` via HuggingFace |
+| Galaxy Zoo 2 | 304,122 | `query_gz2()` via VizieR |
+| Galaxy Zoo DECaLS | 314,000 | `query_gz_decals()` via VizieR |
+| TNG50-CEERS | 10,000 | `load_tng50_ceers()` via HuggingFace |
+| Zoobot Encoders | 4M-197M params | `load_zoobot_encoder()` via timm |
+
+### Usage Examples
+
+```python
+from research.agents.galaxy_zoo import *
+
+# List all datasets
+list_gz_datasets()
+
+# Load GZ DESI (streaming)
+ds = load_gz_desi(streaming=True, max_samples=10000)
+
+# Compute spin asymmetry in redshift bins
+result = compute_spin_asymmetry(catalog, z_bins=20)
+
+# Compute HEALPix sky map
+sky_map = compute_spin_dipole(catalog, nside=16)
+
+# Save analysis results
+save_gz_data(result, "my_analysis.json")
+```
+
+### Data Pipeline
+
+```bash
+# Download and process Galaxy Zoo data for the website
+python3 scripts/download_galaxy_zoo.py --sample-size 100000
+
+# Output: public/data/galaxy_zoo/
+#   gz_desi_spin_summary.json
+#   gz_desi_sky_map.json
+#   gz2_spin_asymmetry.json
+#   catalog_metadata.json
+```
 
 ---
 

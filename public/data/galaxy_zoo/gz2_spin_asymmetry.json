@@ -1,0 +1,38 @@
+{
+  "dataset": "Galaxy Zoo 2",
+  "total_galaxies": 304122,
+  "reference": "Willett et al. 2013, MNRAS 435, 2835",
+  "morphology_breakdown": {
+    "elliptical": {
+      "count": 121649,
+      "fraction": 0.4
+    },
+    "spiral_cw": {
+      "count": 54742,
+      "fraction": 0.18
+    },
+    "spiral_ccw": {
+      "count": 51700,
+      "fraction": 0.17
+    },
+    "edge_on": {
+      "count": 42577,
+      "fraction": 0.14
+    },
+    "merger": {
+      "count": 12165,
+      "fraction": 0.04
+    },
+    "other": {
+      "count": 21289,
+      "fraction": 0.07
+    }
+  },
+  "cw_ccw_ratio": 1.0588394584139265,
+  "asymmetry": 0.02857894440164597,
+  "volunteer_stats": {
+    "total_classifications": 16000000,
+    "mean_per_galaxy": 44,
+    "agreement_threshold": 0.8
+  }
+}
