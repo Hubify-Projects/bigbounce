@@ -375,12 +375,12 @@ Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/figure2_galaxy_spin_comprehensive.png}
-\caption{\label{fig:galaxy_spin} Galaxy spin dipole amplitude data across multiple surveys. The fitted curve $A(z) = 0.003(1+z)^{-0.5}e^{-z/2}$ (solid line) is shown with 68\% and 95\% confidence bands from a hierarchical Bayesian fit to the Shamir~\cite{Shamir2012,Shamir2022} and related catalogs. Data points include SDSS DR7, Pan-STARRS, and HST Deep Fields (dipole amplitudes). Null results from independent reanalyses~\cite{PatelDesmond2024,Philcox2025} are not shown because they report $A_0$ consistent with zero. This fit should be interpreted as conditional on the reality of the signal.}
+\caption{\label{fig:galaxy_spin} Galaxy spin dipole amplitude data across multiple surveys. The fitted curve $A(z) = 0.003(1+z)^{-0.5}e^{-z/2}$ (solid line) is shown with 68\% and 95\% confidence bands from a hierarchical Bayesian fit to published aggregate CW/CCW counts from Shamir~\cite{Shamir2012,Shamir2022,Shamir2024}. Data points include SDSS DR7, Pan-STARRS, HST, and DECaLS survey-level dipole amplitudes. Null results from independent reanalyses~\cite{PatelDesmond2024,Philcox2025} are not shown because they report $A_0$ consistent with zero. This fit should be interpreted as conditional on the reality of the signal.}
 \end{figure}
 
 Several groups have reported a dipole asymmetry in galaxy spin handedness, with a preferred axis roughly aligned with the CMB kinematic dipole~\cite{Shamir2012,Shamir2022,Longo2011}. If real, this anomaly is a natural signature of the parity-odd tidal torque mechanism described in Sec.~\ref{sec:spinmech}. However, the observational status is contested and the signal should be treated as a hypothetical signature requiring confirmation.
 
-\textit{Claimed detections.}---Shamir~\cite{Shamir2012,Shamir2022} reported a spin dipole across SDSS DR7, Pan-STARRS, and HST deep fields, with fitted amplitude $A_0 \sim 0.003$ and axis at $(l\sim 52^\circ,\,b\sim 68^\circ)$ in Galactic coordinates. Longo~\cite{Longo2011} independently reported a $2\sigma$ dipole in SDSS spiral galaxies. A hierarchical Bayesian fit to these catalogs (Appendix~\ref{app:galaxy}) yields the $A(z)$ curve shown in Fig.~\ref{fig:galaxy_spin}.
+\textit{Claimed detections.}---Shamir~\cite{Shamir2012,Shamir2022} reported a spin dipole across SDSS DR7, Pan-STARRS, and HST deep fields, with fitted amplitude $A_0 \sim 0.003$ and axis at $(l\sim 52^\circ,\,b\sim 68^\circ)$ in Galactic coordinates. Longo~\cite{Longo2011} independently reported a $2\sigma$ dipole in SDSS spiral galaxies. A hierarchical Bayesian fit to published aggregate CW/CCW counts from these surveys (Appendix~\ref{app:galaxy}) yields the $A(z)$ curve shown in Fig.~\ref{fig:galaxy_spin}.
 
 \textit{Null results and critiques.}---Patel \& Desmond~\cite{PatelDesmond2024} reanalyzed SDSS spiral classifications using an independent pipeline and found no statistically significant spin asymmetry, attributing previous detections to selection effects and classification biases. Philcox \& Ereza~\cite{Philcox2025} applied a different statistical framework and also found results consistent with isotropy. These null results represent serious challenges to the claimed signal. If future analyses with larger, well-controlled samples (e.g., LSST with $>10^9$ galaxies) support the null results, then $A_0$ is consistent with zero and the galaxy spin channel does not support the model. Our framework survives this outcome: CMB parity violation ($2.4$--$2.9\sigma$ from Planck and ACT~DR6~\cite{Minami2020,Eskilt2022,DiegoPalazuelos2025}) provides an independent line of evidence entirely decoupled from galaxy morphology.
 
@@ -1147,8 +1147,8 @@ All materials necessary to reproduce the cosmological and galaxy spin results ar
 \noindent The repository includes:
 \begin{itemize}[leftmargin=*]
 \item Four Cobaya~v3.5 YAML configurations: \texttt{cobaya\_planck.yaml}, \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml}, and \texttt{cobaya\_full\_tension.yaml}---one per dataset combination in Table~\ref{tab:modelcomp}. All use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required.
-\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model (CmdStanPy) fitting the phenomenological $A(z)$ to published CW/CCW galaxy counts.
-\item \texttt{galaxy\_spins/galaxy\_spin\_data.csv} --- Published CW/CCW counts per redshift bin from Shamir (2012, 2022).
+\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model (CmdStanPy) fitting the phenomenological $A(z)$ to published aggregate CW/CCW galaxy counts.
+\item \texttt{data\_build/build\_galaxy\_spin\_dataset.py} --- Reproducible pipeline that downloads the Galaxy Zoo DECaLS catalog~\cite{Walmsley2022} from Zenodo (DOI:~10.5281/zenodo.4573248, CC-BY-4.0) and extracts an object-level spiral galaxy catalog. CW/CCW aggregate counts for the $A(z)$ fit are from Shamir~\cite{Shamir2024}.
 \item \texttt{docs/IMPLEMENTATION\_MAP.md} --- Mapping from each ``This work'' result to the code artifact that produces it.
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of what cannot currently be reproduced.
 \end{itemize}
@@ -1533,8 +1533,8 @@ All MCMC results in this paper were obtained using the Cobaya~v3.5 framework~\ci
 \begin{itemize}[leftmargin=*]
 \item Four Cobaya YAML configurations (one per dataset combination): \texttt{cobaya\_planck.yaml}, \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml}, \texttt{cobaya\_full\_tension.yaml}.
 \item \texttt{reproduce\_cosmology.sh} --- One-command script to regenerate all MCMC chains ($\sim$4--12\,h per configuration on 4~CPU cores).
-\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model fitting $A(z) = A_0(1+z)^{-p}e^{-qz}$ to published CW/CCW counts, using CmdStanPy.
-\item \texttt{galaxy\_spins/galaxy\_spin\_data.csv} --- Published galaxy spin counts per redshift bin.
+\item \texttt{galaxy\_spins/spin\_fit\_stan.py} --- Hierarchical Bayesian model fitting $A(z) = A_0(1+z)^{-p}e^{-qz}$ to published aggregate CW/CCW counts~\cite{Shamir2024}, using CmdStanPy.
+\item \texttt{data\_build/build\_galaxy\_spin\_dataset.py} --- Downloads Galaxy Zoo DECaLS~\cite{Walmsley2022} from Zenodo and builds an object-level spiral galaxy catalog.
 \item \texttt{docs/IMPLEMENTATION\_MAP.md} --- Maps every ``This work'' numerical result to the code and configuration that produces it.
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of reproducibility gaps.
 \item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).

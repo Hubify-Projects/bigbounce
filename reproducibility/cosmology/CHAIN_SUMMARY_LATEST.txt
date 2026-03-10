@@ -1,0 +1,31 @@
+BigBounce MCMC Chain Summary — 2026-03-05 07:40:29 UTC
+================================================================================
+
+Dataset combos running: 4
+  1. planck_only      (Planck 2018 TT,TE,EE+lowE)
+  2. planck_bao       (Planck + BAO)
+  3. planck_bao_sn    (Planck + BAO + Pantheon SN)
+  4. full_tension     (Planck + BAO + Pantheon + SH0ES)
+
+Chains per dataset:
+  planck_only: 7 chains (1960 total samples)
+  planck_bao: 7 chains (2032 total samples)
+  planck_bao_sn: 7 chains (2220 total samples)
+  full_tension: 7 chains (4066 total samples)
+
+Total MCMC chains: 28 (4 datasets x 7 chains)
+Total processes on pod: 31 cobaya + 2 helpers = 33
+
+Config locations:
+  Original:  reproducibility/cosmology/cobaya_*.yaml  (4 files)
+  Parallel:  reproducibility/configs/cobaya_*_chain*.yaml  (24 files)
+  Backed up: /tmp/ originals copied to configs/ (persist across restarts)
+
+Chain output locations:
+  /workspace/bigbounce/reproducibility/chains/{dataset}/spin_torsion.1.txt
+  /workspace/bigbounce/reproducibility/chains/{dataset}_chain{2-7}/spin_torsion.1.txt
+
+Config consistency within each dataset: YES
+  All 6 parallel chains per dataset have IDENTICAL configs.
+  Original vs parallel: 2 MCMC tuning diffs (burn_in, learn_proposal_Rminus1_max)
+  These are efficiency tuning, NOT physics. Same posterior sampled. NOT BLOCKING.

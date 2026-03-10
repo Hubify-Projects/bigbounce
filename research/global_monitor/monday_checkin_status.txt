@@ -1,0 +1,254 @@
+==============================================================================
+  BIGBOUNCE MONDAY CHECK-IN — 2026-03-09
+  Author: Automated audit
+  Diagnostic source of truth: reproducibility/cosmology/convergence_latest.csv
+  Diagnostic timestamp: 2026-03-05 07:36 UTC (4.0 DAYS STALE)
+==============================================================================
+
+WARNING: ALL DIAGNOSTICS ARE 4 DAYS STALE
+  Last monitor run: 2026-03-05 07:36:08 UTC
+  Current time: 2026-03-09 morning
+  Implication: We do NOT know the current pod state. The numbers below
+  reflect where things stood 4 days ago. Pods may have crashed, chains
+  may have advanced, or convergence may have improved — we cannot tell
+  without SSHing into the pods and running the monitors.
+
+==============================================================================
+  STEP 1 — PAPER-1 LIVE STATUS CHECK
+==============================================================================
+
+  --- POD: bigbounce-gpu-validation ---
+  IP/Port:         195.26.233.79:38115
+  Hardware:         RTX 6000 Ada (48GB VRAM)
+  Pod status:       UNKNOWN (no SSH check performed, diagnostics stale 4d)
+  Expected chains:  7 per dataset × 4 datasets = 28 chains
+  Monitor loop:     NOT CONFIRMED (last output 4d ago)
+  Freeze manager:   NOT CONFIRMED (gpu_freeze_manager.py was deployed but
+                    no snapshots or frozen packs exist on disk)
+  Safety snapshots: NONE (0 files found)
+  Frozen packs:     NONE (0 files found)
+  Latest backup:    Unknown — must SSH to verify
+
+  GPU DATASET STATUS (as of 2026-03-05 07:36 UTC):
+
+  +------------------+-------+------+----------+----------+----------+------+------+------+---------+---------+
+  | Dataset          | Chn   | Rows | Rm1(H0)  | Rm1(ΔN)  | Rm1(τ)   | ESS  | ESS  | ESS  | Drft H0 | Drft ΔN |
+  |                  |       |      |          |          |          | H0   | ΔN   | τ    |         |         |
+  +------------------+-------+------+----------+----------+----------+------+------+------+---------+---------+
+  | planck_only      | 7     | 1937 | 0.403    | 0.685    | 0.862    | 40   | 37   | 40   | -0.50σ  | -0.80σ  |
+  | planck_bao       | 7     | 2015 | 0.341    | 0.854    | 1.611    | 59   | 43   | 36   | -0.14σ  | -0.14σ  |
+  | planck_bao_sn    | 7     | 2195 | 0.272    | 0.681    | 0.833    | 89   | 48   | 62   | -0.28σ  | -0.35σ  |
+  | full_tension     | 7     | 4016 | 0.049    | 0.151    | 0.935    | 59   | 43   | 55   | -0.08σ  | -0.07σ  |
+  +------------------+-------+------+----------+----------+----------+------+------+------+---------+---------+
+
+  Stage classification (from trend monitor):
+    full_tension H0:       CLOSE (Rm1=0.049, target <0.01)
+    full_tension ΔNeff:    MIXING (Rm1=0.151, target <0.01)
+    full_tension τ:        EARLY MIXING (Rm1=0.935, target <0.02)
+    planck_bao_sn:         EARLY MIXING across the board
+    planck_bao:            EARLY MIXING (τ worst at Rm1=1.611)
+    planck_only:           EARLY MIXING (active drift in H0 and ΔNeff)
+
+  --- POD: bigbounce-cpu1-primary ---
+  IP/Port:         157.157.221.30:30194
+  Hardware:         32 vCPU, 64GB RAM
+  Purpose:          ΔNeff model, 4 datasets × 4 chains = 16 chains
+  Pod status:       UNKNOWN (diagnostics stale 4d)
+  Monitor PID:      6594 (at deployment)
+  Freeze PID:       5454 (at deployment)
+  Status file:      convergence_latest.csv (on pod — not synced here)
+  Diagnostics here: NONE — no CPU convergence data has been pulled locally.
+
+  --- POD: bigbounce-cpu2-secondary ---
+  IP/Port:         157.157.221.30:40204
+  Hardware:         32 vCPU, 64GB RAM
+  Purpose:          ΛCDM controls, 4 datasets × 4 chains = 16 chains
+  Pod status:       UNKNOWN (diagnostics stale 4d)
+  Monitor PID:      4095 (at deployment)
+  Freeze PID:       3283 (at deployment)
+  Status file:      convergence_latest.csv (on pod — not synced here)
+  Diagnostics here: NONE — no CPU convergence data has been pulled locally.
+
+==============================================================================
+  STEP 2 — GPU SCIENCE FREEZE READINESS
+==============================================================================
+
+  Freeze criteria: ALL 8 gates must pass on cohort_main (chains 2-7)
+    Gate 1-3: R-hat-1 < 0.01 (H0), < 0.01 (ΔNeff), < 0.02 (τ)
+    Gate 4-6: ESS >= 2000 (H0), >= 2000 (ΔNeff), >= 1000 (τ)
+    Gate 7-8: |drift| < 0.2σ (H0), |drift| < 0.2σ (ΔNeff)
+
+  --- FULL TENSION (closest to freeze) ---
+  Gate 1: Rm1(H0)    = 0.049    target <0.01   FAIL (4.9×)
+  Gate 2: Rm1(ΔNeff) = 0.151    target <0.01   FAIL (15×)
+  Gate 3: Rm1(τ)     = 0.935    target <0.02   FAIL (47×)
+  Gate 4: ESS(H0)    = 59       target >=2000  FAIL (34× short)
+  Gate 5: ESS(ΔNeff) = 43       target >=2000  FAIL (47× short)
+  Gate 6: ESS(τ)     = 55       target >=1000  FAIL (18× short)
+  Gate 7: drift(H0)  = -0.075σ  target <0.2σ   PASS
+  Gate 8: drift(ΔN)  = -0.066σ  target <0.2σ   PASS
+  GATES PASSING: 2/8
+  Science freeze now? NO
+  Archival pack exists? NO
+  Safety snapshot path: NONE
+
+  --- PLANCK_BAO_SN ---
+  Gates passing: 0/8 (all Rhat failing, drift H0=-0.28σ FAIL, drift ΔN=-0.35σ FAIL)
+
+  --- PLANCK_BAO ---
+  Gates passing: 2/8 (drift H0 and ΔN pass, everything else fails)
+  Note: τ has the worst Rm1 of any parameter at 1.611
+
+  --- PLANCK_ONLY ---
+  Gates passing: 0/8 (active drift in H0 and ΔNeff, all Rhat/ESS far from targets)
+
+  SUMMARY:
+  1. Closest to science freeze: full_tension (H0 in CLOSE stage)
+  2. Will anything freeze soon? NO — even full_tension needs Rm1 to drop
+     from 0.049 → 0.01 (H0), 0.151 → 0.01 (ΔNeff), 0.935 → 0.02 (τ),
+     and ESS to grow from ~50 → 2000. This requires many more samples.
+  3. Are chains still improving? UNKNOWN (4-day data gap). At the last
+     check, trend_monitor said "need 24h history" — no improvement rate
+     could be computed. We have no ETA.
+
+==============================================================================
+  STEP 3 — CPU VALIDATION STATUS
+==============================================================================
+
+  CPU#1 (ΔNeff model):
+    Convergence diagnostics available locally? NO
+    Last sync from pod: NEVER (no local CPU convergence CSV found)
+    Scientifically useful? POTENTIALLY — if converged, provides
+    independent confirmation of GPU results. But we have no data.
+
+  CPU#2 (ΛCDM controls):
+    Convergence diagnostics available locally? NO
+    Last sync from pod: NEVER
+    Scientifically useful? POTENTIALLY — ΛCDM controls are needed for
+    the model comparison table. But we have no data.
+
+  Comparison (CPU#1 ΔNeff vs CPU#2 ΛCDM):
+    Cannot be performed — no data has been pulled from either pod.
+
+  Should CPU pods keep running?
+    YES — they are running independent chains that could provide
+    confirmation/ablation. But we need to SSH in and pull diagnostics.
+
+==============================================================================
+  STEP 4 — GALAXY-SPIN / DATASET STATUS
+==============================================================================
+
+  --- Galaxy Zoo DECaLS Spiral Catalog ---
+  File: data/public_mirror/galaxy_zoo_decals_spins.csv
+  Exists: YES
+  Size: 2.66 MB
+  Lines: 18,992 (12 header/comment + 18,979 data rows + 1 CSV header)
+  Row count: 18,979 spiral galaxies
+  Columns: galaxy_id, ra, dec, redshift, spiral_vote_fraction,
+           winding_tight, winding_medium, winding_loose, survey_source
+  Redshift range: 0.0000 - 0.1500
+  Object-level: YES (one row per galaxy)
+  Source parquet: data/public_mirror/galaxy_zoo_decals/gz_decals_volunteers_1_and_2.parquet (18.7 MB)
+  Checksum file: data/public_mirror/galaxy_zoo_decals/CHECKSUMS.txt — EXISTS
+  CW/CCW direction: NOT AVAILABLE (GZ DECaLS question tree classifies
+                    winding tightness, not chirality)
+
+  --- Shamir Aggregate CW/CCW Counts ---
+  File: research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv
+  Exists: YES
+  Rows: 5 surveys
+  Total galaxies: 215,515
+  Feeding Stan fit: YES — spin_fit_stan.py loads this via verified path
+  Path bug: FIXED (was parents[1], now parents[2]/research/...)
+
+  --- Deprecated File ---
+  galaxy_spin_data_DEPRECATED.csv: EXISTS (renamed, not loaded by any code)
+  galaxy_spin_bins_example_DEPRECATED.csv: EXISTS (renamed, not loaded)
+  Active code references to old file: ZERO
+
+  --- Paper / Docs Consistency ---
+  arxiv/main.tex: Updated — references build script + Shamir counts, not old CSV
+  reproducibility/README.md: Updated — shows DEPRECATED suffix
+  dataset_catalog.json: Updated — old entry marked DEPRECATED, new entry added
+  BibTeX: Walmsley2022 and Shamir2024 added to references.bib
+
+  ANSWERS:
+  1. Enough galaxy-spin data for paper as framed? YES
+     Paper treats spin as "contested anomaly" using published aggregate counts.
+     The 5 survey-level data points from Shamir are adequate for this framing.
+     The 18,979-galaxy GZ DECaLS catalog provides supplementary object-level
+     infrastructure.
+
+  2. Leave paper on aggregate published counts? YES
+     This is the honest approach. Object-level CW/CCW classification would
+     require Galaxy Zoo 2 data (which has the CW/ACW question) or a trained
+     vision classifier — both are future work.
+
+  3. Best next step for GZ DECaLS catalog:
+     LEAVE AS SUPPORTING INFRASTRUCTURE. It demonstrates reproducible data
+     handling and provides a real spiral catalog, but cannot add CW/CCW
+     information to the paper. Best used as the foundation for a future
+     chirality paper (plan at research/paper2/galaxy_spin_llm_pipeline_plan.md).
+
+==============================================================================
+  STEP 5 — RECOMMENDED NEXT ACTIONS
+==============================================================================
+
+  A. DO TODAY (priority order)
+  ────────────────────────────
+  1. SSH into all 3 pods and verify they are alive
+     - Check Cobaya process counts
+     - Check chain file modification times
+     - Pull fresh convergence_latest.csv from each pod
+     This is the single most important action. We have a 4-day data gap.
+
+  2. Run the GPU monitor pipeline on the GPU pod
+     - Execute mcmc_monitor_v6.py (or equivalent) to get fresh Rhat/ESS
+     - Pull updated convergence_latest.csv, status_latest.txt,
+       trend_monitor_latest.txt to local repo
+     - This will tell us whether chains have advanced or crashed
+
+  3. Pull CPU diagnostics for the first time
+     - SSH into CPU#1, run monitor, pull convergence CSV
+     - SSH into CPU#2, run monitor, pull convergence CSV
+     - First-ever local copy of CPU chain diagnostics
+
+  4. After fresh data is pulled: re-evaluate freeze readiness
+     - If full_tension Rm1(H0) has dropped below 0.01, prepare for freeze
+     - If chains appear stalled (no new rows), investigate
+
+  B. LET RUN LONGER
+  ──────────────────
+  1. All GPU chains — keep running. No dataset is close to the 8-gate freeze.
+  2. All CPU chains — keep running. We don't even have baseline data yet.
+  3. Galaxy-spin section — stable, leave alone. Do not change paper text.
+  4. Do NOT regenerate ΔNeff viability figure yet — wait for fresh chain data.
+
+  C. DO LATER / FUTURE PAPER
+  ──────────────────────────
+  1. Build chirality classifier using Galaxy Zoo 2 CW/ACW labels + ViT
+     (plan exists at research/paper2/galaxy_spin_llm_pipeline_plan.md)
+  2. Build the dataset explorer HTML page from the JSON catalog
+     (spec exists at docs/dataset_explorer_spec.md)
+  3. Download Galaxy Zoo 2 catalog for CW/ACW labels (separate Zenodo record)
+  4. Once chains converge: build final corner plots, update paper tables,
+     compile v1.3.0 PDF
+
+==============================================================================
+  EXECUTIVE SUMMARY
+==============================================================================
+
+The best current scientific result is the full_tension dataset showing
+H0 = 68.26 +/- 0.67, ΔNeff = 0.067 +/- 0.087 (P>0 = 79%), with H0
+R-hat approaching the CLOSE stage (Rm1 = 0.049). However, ALL diagnostics
+are 4 days stale (last update: 2026-03-05 07:36 UTC) and NO dataset passes
+the convergence criteria for science freeze. The biggest blocker right now
+is the 4-day monitoring gap — we do not know whether the pods are alive,
+whether chains have advanced, or whether any dataset has improved toward
+convergence. The galaxy-spin data pipeline is clean and stable. The
+recommended action for today is to SSH into all 3 pods, verify liveness,
+pull fresh diagnostics, and reassess.
+
+==============================================================================
+  END OF REPORT
+==============================================================================

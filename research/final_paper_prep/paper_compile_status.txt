@@ -1,0 +1,58 @@
+==============================================================================
+  PAPER COMPILE STATUS — BigBounce v1.2.0
+  Generated: 2026-03-09
+  Source: arxiv/main.tex (last modified: 2026-03-06, uncommitted galaxy spin edits)
+  PDF: arxiv/main.pdf (compiled: 2026-03-04 from v1.2.0 commit)
+==============================================================================
+
+COMPILATION SUMMARY
+  Compiler:      pdfTeX 3.141592653-2.6-1.40.28 (TeX Live 2025)
+  Document class: revtex4-2 (APS PRD format, two-column)
+  Output:         main.pdf — 32 pages, 1.69 MB
+  Build command:  pdflatex main && bibtex main && pdflatex main && pdflatex main
+
+CONTENT COUNTS
+  Pages:          32
+  Figures:        7 (embedded via \includegraphics)
+  Tables:         8 (in \begin{table} environments)
+  Equations:      ~80+ (labeled and unlabeled)
+  Bibliography:   64 entries in references.bib (66 after uncommitted +2)
+  Sections:       13 main + 10 appendices = 23 top-level sections
+  Words:          ~33,500 (estimated from tex source)
+
+REFERENCE INTEGRITY
+  Undefined references:  0
+  Undefined citations:   0
+  Missing figures:       0
+  Broken cross-refs:     0
+  All 7 figure files exist in arxiv/figures/
+
+WARNINGS (non-critical)
+  - "A float is stuck (cannot be placed)" on line 386 — standard revtex float issue
+  - Duplicate destination identifiers (table.1, figure.1, etc.) — hyperref/revtex quirk
+  - "No type size specified, using default 10" — revtex4-2 default behavior
+  None of these affect PDF correctness or arXiv submission.
+
+UNCOMMITTED CHANGES (since v1.2.0 PDF)
+  arxiv/main.tex — 3 edits:
+    1. Figure 2 caption: "published aggregate CW/CCW counts from Shamir"
+    2. Data availability: replaced galaxy_spin_data.csv with build script + Shamir counts
+    3. Reproducibility appendix: same replacement
+  arxiv/references.bib — 2 new entries:
+    1. Shamir2024 (JWST JADES galaxy spin asymmetry)
+    2. Walmsley2022 (Galaxy Zoo DECaLS)
+
+  These changes are TEXT ONLY (no new figures, no structural changes).
+  The v1.2.0 PDF is functionally current. A recompile is needed only to
+  incorporate the galaxy spin provenance wording and new citations.
+
+RECOMPILE NEEDED?
+  Optional — the changes are minor text updates (3 caption/paragraph edits + 2 bib entries).
+  LaTeX is NOT installed on the local machine or GPU pod.
+  Recommendation: Install TeX Live or use Overleaf for the final pre-submission recompile.
+
+PDF LOCATIONS
+  Primary:    arxiv/main.pdf (32 pages, 1.69 MB)
+  Public:     public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf (identical copy)
+
+==============================================================================

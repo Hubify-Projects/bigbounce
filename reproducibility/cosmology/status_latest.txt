@@ -1,0 +1,216 @@
+========================================================================================================================
+BigBounce MCMC Status — 2026-03-05 07:36:08 UTC
+========================================================================================================================
+Method: Gelman-Rubin Rhat (BDA3 §11.4), autocorrelation ESS (Geyer IPS)
+Naming: Rhat >= 1.0 ; Rhat_m1 = Rhat - 1 >= 0.0
+Targets: Rhat_m1 < 0.01 (H0, delta_neff, omegam, ombh2, ns, sigma8) ; Rhat_m1 < 0.02 (tau)
+Drift: last-20% vs last-40% mean, threshold < 0.2σ
+Cohort window: chains started within last 24h are "new"
+ETA model: Stage A (>0.3)=EARLY MIXING, Stage B (0.05-0.3)=exp decay, Stage C (<=0.05)=linear
+
+========================================================================================================================
+  PLANCK ONLY   |   chains: 7 (old 0, new 7)   |   raw rows: 1937
+========================================================================================================================
+
+  [A] COHORT NEW (7 chains, started < 24h ago)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.40324    0.40324      39.6      50.4     RUNNING  -0.501σ DRIFT
+    delta_neff   1.68455    0.68455      36.9      53.7     RUNNING  -0.796σ DRIFT
+        omegam   1.24191    0.24191      50.5      42.4     RUNNING             
+         ombh2   1.22941    0.22941      80.9      28.1     RUNNING             
+            ns   1.50123    0.50123      40.0      50.3     RUNNING             
+           tau   1.86242    0.86242      39.8      50.0     RUNNING             
+        sigma8   1.58713    0.58713      41.5      49.4     RUNNING             
+
+  Physics (new):  ΔNeff = 0.0900 ± 0.1688 (0.53σ, P>0=77.9%)   H₀ = 68.02 ± 1.37   SH0ES Δ = 2.92σ
+
+  [B] ALL CHAINS (7 chains)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.40324    0.40324      39.6      50.4     RUNNING  -0.501σ DRIFT
+    delta_neff   1.68455    0.68455      36.9      53.7     RUNNING  -0.796σ DRIFT
+        omegam   1.24191    0.24191      50.5      42.4     RUNNING             
+         ombh2   1.22941    0.22941      80.9      28.1     RUNNING             
+            ns   1.50123    0.50123      40.0      50.3     RUNNING             
+           tau   1.86242    0.86242      39.8      50.0     RUNNING             
+        sigma8   1.58713    0.58713      41.5      49.4     RUNNING             
+
+  Physics (all):  ΔNeff = 0.0900 ± 0.1688 (0.53σ, P>0=77.9%)   H₀ = 68.02 ± 1.37   SH0ES Δ = 2.92σ
+
+  Chain                          Cohort  Age(h)  Rows          H0       ΔNeff         tau     Outlier
+  ------------------------------ ------ ------- -----  ----------  ----------  ----------  ----------
+  planck_only                    new       22.8   117     70.1425    0.312837    0.050170  H0,delta_neff,tau
+  planck_only_chain2             new       13.1   264     68.1910    0.117571    0.061670            
+  planck_only_chain3             new       13.1   280     67.8033    0.030083    0.055632            
+  planck_only_chain4             new       13.1   274     69.2324    0.231025    0.061266            
+  planck_only_chain5             new       13.1   327     67.2627    0.083012    0.048476         tau
+  planck_only_chain6             new       13.1   356     68.5020    0.195764    0.057660            
+  planck_only_chain7             new       13.1   319     66.5672   -0.180408    0.061202  H0,delta_neff
+
+  ** OUTLIER CHAINS (>1.0σ from median) **
+     planck_only: H0 = 70.1425  (median=68.1910, σ=1.3763, dev=1.4σ)
+     planck_only_chain7: H0 = 66.5672  (median=68.1910, σ=1.3763, dev=1.2σ)
+     planck_only: delta_neff = 0.3128  (median=0.1176, σ=0.1297, dev=1.5σ)
+     planck_only_chain7: delta_neff = -0.1804  (median=0.1176, σ=0.1297, dev=2.3σ)
+     planck_only: tau = 0.0502  (median=0.0577, σ=0.0053, dev=1.4σ)
+     planck_only_chain5: tau = 0.0485  (median=0.0577, σ=0.0053, dev=1.7σ)
+
+========================================================================================================================
+  PLANCK BAO   |   chains: 7 (old 0, new 7)   |   raw rows: 2015
+========================================================================================================================
+
+  [A] COHORT NEW (7 chains, started < 24h ago)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.34127    0.34127      59.4      37.5     RUNNING   -0.136σ ok
+    delta_neff   1.85410    0.85410      43.0      61.0     RUNNING   -0.138σ ok
+        omegam   1.20915    0.20915      90.5      23.6     RUNNING             
+         ombh2   1.33461    0.33461     123.5      22.9     RUNNING             
+            ns   1.26820    0.26820      81.0      30.8     RUNNING             
+           tau   2.61123    1.61123      36.2      56.3     RUNNING             
+        sigma8   1.55618    0.55618      62.6      43.7     RUNNING             
+
+  Physics (new):  ΔNeff = 0.1195 ± 0.1419 (0.84σ, P>0=84.3%)   H₀ = 68.34 ± 1.00   SH0ES Δ = 3.25σ
+
+  [B] ALL CHAINS (7 chains)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.34127    0.34127      59.4      37.5     RUNNING   -0.136σ ok
+    delta_neff   1.85410    0.85410      43.0      61.0     RUNNING   -0.138σ ok
+        omegam   1.20915    0.20915      90.5      23.6     RUNNING             
+         ombh2   1.33461    0.33461     123.5      22.9     RUNNING             
+            ns   1.26820    0.26820      81.0      30.8     RUNNING             
+           tau   2.61123    1.61123      36.2      56.3     RUNNING             
+        sigma8   1.55618    0.55618      62.6      43.7     RUNNING             
+
+  Physics (all):  ΔNeff = 0.1195 ± 0.1419 (0.84σ, P>0=84.3%)   H₀ = 68.34 ± 1.00   SH0ES Δ = 3.25σ
+
+  Chain                          Cohort  Age(h)  Rows          H0       ΔNeff         tau     Outlier
+  ------------------------------ ------ ------- -----  ----------  ----------  ----------  ----------
+  planck_bao                     new       22.8    95     70.3142    0.396280    0.051207  H0,delta_neff
+  planck_bao_chain2              new       13.1   385     67.3318   -0.025038    0.049299  H0,delta_neff
+  planck_bao_chain3              new       13.1   372     68.3103    0.069871    0.063010         tau
+  planck_bao_chain4              new       13.1   253     69.2887    0.275903    0.053873  H0,delta_neff
+  planck_bao_chain5              new       13.1   262     68.5543    0.132148    0.055387            
+  planck_bao_chain6              new       13.1   315     68.0003    0.105560    0.047559         tau
+  planck_bao_chain7              new       13.1   333     68.1501    0.104007    0.052191            
+
+  ** OUTLIER CHAINS (>1.0σ from median) **
+     planck_bao: H0 = 70.3142  (median=68.3103, σ=0.4596, dev=4.4σ)
+     planck_bao_chain2: H0 = 67.3318  (median=68.3103, σ=0.4596, dev=2.1σ)
+     planck_bao_chain4: H0 = 69.2887  (median=68.3103, σ=0.4596, dev=2.1σ)
+     planck_bao: delta_neff = 0.3963  (median=0.1056, σ=0.0529, dev=5.5σ)
+     planck_bao_chain2: delta_neff = -0.0250  (median=0.1056, σ=0.0529, dev=2.5σ)
+     planck_bao_chain4: delta_neff = 0.2759  (median=0.1056, σ=0.0529, dev=3.2σ)
+     planck_bao_chain3: tau = 0.0630  (median=0.0522, σ=0.0043, dev=2.5σ)
+     planck_bao_chain6: tau = 0.0476  (median=0.0522, σ=0.0043, dev=1.1σ)
+
+========================================================================================================================
+  PLANCK BAO SN   |   chains: 7 (old 0, new 7)   |   raw rows: 2195
+========================================================================================================================
+
+  [A] COHORT NEW (7 chains, started < 24h ago)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.27175    0.27175      88.7      27.7     RUNNING  -0.277σ DRIFT
+    delta_neff   1.68066    0.68066      47.7      46.4     RUNNING  -0.350σ DRIFT
+        omegam   1.21733    0.21733      95.6      27.0     RUNNING             
+         ombh2   1.45362    0.45362      89.9      28.3     RUNNING             
+            ns   1.33339    0.33339      90.4      28.0     RUNNING             
+           tau   1.83265    0.83265      61.8      49.0     RUNNING             
+        sigma8   1.55576    0.55576      43.4      52.5     RUNNING             
+
+  Physics (new):  ΔNeff = 0.1340 ± 0.1279 (1.05σ, P>0=86.7%)   H₀ = 68.25 ± 1.02   SH0ES Δ = 3.28σ
+
+  [B] ALL CHAINS (7 chains)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.27175    0.27175      88.7      27.7     RUNNING  -0.277σ DRIFT
+    delta_neff   1.68066    0.68066      47.7      46.4     RUNNING  -0.350σ DRIFT
+        omegam   1.21733    0.21733      95.6      27.0     RUNNING             
+         ombh2   1.45362    0.45362      89.9      28.3     RUNNING             
+            ns   1.33339    0.33339      90.4      28.0     RUNNING             
+           tau   1.83265    0.83265      61.8      49.0     RUNNING             
+        sigma8   1.55576    0.55576      43.4      52.5     RUNNING             
+
+  Physics (all):  ΔNeff = 0.1340 ± 0.1279 (1.05σ, P>0=86.7%)   H₀ = 68.25 ± 1.02   SH0ES Δ = 3.28σ
+
+  Chain                          Cohort  Age(h)  Rows          H0       ΔNeff         tau     Outlier
+  ------------------------------ ------ ------- -----  ----------  ----------  ----------  ----------
+  planck_bao_sn                  new       22.7    89     68.9647    0.227338    0.057216  delta_neff,tau
+  planck_bao_sn_chain2           new       13.1   273     67.9007    0.095694    0.049503            
+  planck_bao_sn_chain3           new       13.1   294     69.5103    0.354426    0.046627  H0,delta_neff
+  planck_bao_sn_chain4           new       13.1   366     68.3693    0.145341    0.049225            
+  planck_bao_sn_chain5           new       13.1   426     67.7186    0.069711    0.051626            
+  planck_bao_sn_chain6           new       13.1   390     68.2487    0.117038    0.049341            
+  planck_bao_sn_chain7           new       13.1   357     67.5479    0.002362    0.056219  delta_neff,tau
+
+  ** OUTLIER CHAINS (>1.0σ from median) **
+     planck_bao_sn_chain3: H0 = 69.5103  (median=68.2487, σ=0.7858, dev=1.6σ)
+     planck_bao_sn: delta_neff = 0.2273  (median=0.1170, σ=0.0702, dev=1.6σ)
+     planck_bao_sn_chain3: delta_neff = 0.3544  (median=0.1170, σ=0.0702, dev=3.4σ)
+     planck_bao_sn_chain7: delta_neff = 0.0024  (median=0.1170, σ=0.0702, dev=1.6σ)
+     planck_bao_sn: tau = 0.0572  (median=0.0495, σ=0.0031, dev=2.5σ)
+     planck_bao_sn_chain7: tau = 0.0562  (median=0.0495, σ=0.0031, dev=2.1σ)
+
+========================================================================================================================
+  FULL TENSION   |   chains: 7 (old 0, new 7)   |   raw rows: 4016
+========================================================================================================================
+
+  [A] COHORT NEW (7 chains, started < 24h ago)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.04905    0.04905      59.1      77.8       CLOSE   -0.075σ ok
+    delta_neff   1.15068    0.15068      43.0     104.6      MIXING   -0.066σ ok
+        omegam   1.04363    0.04363     110.0      42.9       CLOSE             
+         ombh2   1.15114    0.15114      68.7      68.6      MIXING             
+            ns   1.37817    0.37817      61.7      87.1     RUNNING             
+           tau   1.93543    0.93543      55.2      86.2     RUNNING             
+        sigma8   1.57988    0.57988      64.8      78.3     RUNNING             
+
+  Physics (new):  ΔNeff = 0.0672 ± 0.0870 (0.77σ, P>0=78.8%)   H₀ = 68.26 ± 0.67   SH0ES Δ = 3.86σ
+
+  [B] ALL CHAINS (7 chains)
+         Param      Rhat    Rhat_m1       ESS   tau_int      Status   Drift20/40
+  ------------  --------  ---------  --------  --------  ----------  -----------
+            H0   1.04905    0.04905      59.1      77.8       CLOSE   -0.075σ ok
+    delta_neff   1.15068    0.15068      43.0     104.6      MIXING   -0.066σ ok
+        omegam   1.04363    0.04363     110.0      42.9       CLOSE             
+         ombh2   1.15114    0.15114      68.7      68.6      MIXING             
+            ns   1.37817    0.37817      61.7      87.1     RUNNING             
+           tau   1.93543    0.93543      55.2      86.2     RUNNING             
+        sigma8   1.57988    0.57988      64.8      78.3     RUNNING             
+
+  Physics (all):  ΔNeff = 0.0672 ± 0.0870 (0.77σ, P>0=78.8%)   H₀ = 68.26 ± 0.67   SH0ES Δ = 3.86σ
+
+  Chain                          Cohort  Age(h)  Rows          H0       ΔNeff         tau     Outlier
+  ------------------------------ ------ ------- -----  ----------  ----------  ----------  ----------
+  full_tension                   new       22.6   232     68.2779    0.083177    0.059644         tau
+  full_tension_chain2            new       13.1   632     68.5385    0.123550    0.055114  H0,delta_neff
+  full_tension_chain3            new       13.1   555     68.5069    0.078645    0.056342          H0
+  full_tension_chain4            new       13.1   655     68.2514    0.065767    0.051075         tau
+  full_tension_chain5            new       13.1   626     68.1497    0.042643    0.053824            
+  full_tension_chain6            new       13.1   755     68.4111    0.103167    0.052841            
+  full_tension_chain7            new       13.1   561     67.6638   -0.027418    0.054788  H0,delta_neff
+
+  ** OUTLIER CHAINS (>1.0σ from median) **
+     full_tension_chain2: H0 = 68.5385  (median=68.2779, σ=0.1975, dev=1.3σ)
+     full_tension_chain3: H0 = 68.5069  (median=68.2779, σ=0.1975, dev=1.2σ)
+     full_tension_chain7: H0 = 67.6638  (median=68.2779, σ=0.1975, dev=3.1σ)
+     full_tension_chain2: delta_neff = 0.1236  (median=0.0786, σ=0.0364, dev=1.2σ)
+     full_tension_chain7: delta_neff = -0.0274  (median=0.0786, σ=0.0364, dev=2.9σ)
+     full_tension: tau = 0.0596  (median=0.0548, σ=0.0023, dev=2.1σ)
+     full_tension_chain4: tau = 0.0511  (median=0.0548, σ=0.0023, dev=1.6σ)
+
+========================================================================================================================
+CROSS-DATASET SUMMARY (all_chains mode)
+========================================================================================================================
+  Dataset             Chains     Raw     Rm1(H0)     Rm1(ΔN)      Rm1(τ)   ESS(H0)   ESS(ΔN)        Top Bottleneck
+  ------------------  ------  ------  ----------  ----------  ----------  --------  --------  --------------------
+  Planck Only              7    1937     0.40324     0.68455     0.86242      39.6      36.9  tau, delta_neff, sigma8
+  Planck Bao               7    2015     0.34127     0.85410     1.61123      59.4      43.0  tau, delta_neff, sigma8
+  Planck Bao Sn            7    2195     0.27175     0.68066     0.83265      88.7      47.7  tau, delta_neff, sigma8
+  Full Tension             7    4016     0.04905     0.15068     0.93543      59.1      43.0       tau, sigma8, ns
+
+Targets: Rhat_m1 < 0.01 (core), < 0.02 (tau)

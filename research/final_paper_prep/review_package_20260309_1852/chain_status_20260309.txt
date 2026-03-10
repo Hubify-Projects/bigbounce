@@ -1,0 +1,358 @@
+==============================================================================
+  BIGBOUNCE PAPER-1 — LIVE MCMC CHAIN AUDIT (COHORT_MAIN EDITION)
+  Date: 2026-03-09 21:15 UTC (LIVE — computed on GPU pod via SSH)
+  Author: Automated SSH audit
+  Source: Live chain files on GPU pod + convergence CSVs from CPU pods
+  Science metric: cohort_main (chains 2-7) — excludes lagging chain1
+==============================================================================
+
+==============================================================================
+  STEP 1 — POD HEALTH CHECK
+==============================================================================
+
+  +----------------------------+----------+----------------+----------+--------+---------+----------+
+  | Pod                        | Status   | Uptime         | Cobaya   | Disk   | Memory  | CPU/GPU  |
+  +----------------------------+----------+----------------+----------+--------+---------+----------+
+  | bigbounce-gpu-validation   | ALIVE    | 52d 22h 47m    | 32 procs | 46%    | 23%     | CPU 100% |
+  |   (basic_ivory_cattle)     |          |                |          |        |         | GPU 0%   |
+  |   RTX 6000 Ada 48GB        |          |                |          |        |         |          |
+  +----------------------------+----------+----------------+----------+--------+---------+----------+
+  | bigbounce-cpu1-primary     | ALIVE    | 422d 7h 38m    | 16 procs | 6%     | 25%     | CPU 100% |
+  |   cpu5c 32vCPU 124GB       |          |                |          |        |         |          |
+  +----------------------------+----------+----------------+----------+--------+---------+----------+
+  | bigbounce-cpu2-secondary   | ALIVE    | 422d 7h 38m    | 16 procs | 5%     | 25%     | CPU 100% |
+  |   cpu5c 32vCPU 124GB       |          |                |          |        |         |          |
+  +----------------------------+----------+----------------+----------+--------+---------+----------+
+
+  All 64 chains actively writing (last write < 10 min ago on all pods).
+  Monitor and backup loops running on all 3 pods.
+  GPU 0% is expected — Cobaya MCMC with CLASS/CAMB is CPU-bound.
+
+==============================================================================
+  STEP 2 — CHAIN SAMPLE COUNTS
+==============================================================================
+
+  --- GPU POD ---
+  Chain1 = original launch (lagging). Chains 2-7 = cohort_main (science).
+
+  PLANCK_ONLY:
+    chain1: 790        chain2: 3,747    chain3: 4,013    chain4: 3,938
+    chain5: 4,113      chain6: 4,610    chain7: 4,134
+    Cohort_main total: 24,555   |   Chain1 lag: 5.2×
+
+  PLANCK_BAO:
+    chain1: 645        chain2: 3,797    chain3: 4,537    chain4: 4,288
+    chain5: 3,954      chain6: 4,496    chain7: 3,529
+    Cohort_main total: 24,601   |   Chain1 lag: 6.4×
+
+  PLANCK_BAO_SN:
+    chain1: 622        chain2: 3,850    chain3: 4,367    chain4: 3,955
+    chain5: 4,438      chain6: 4,459    chain7: 4,529
+    Cohort_main total: 25,598   |   Chain1 lag: 6.8×
+
+  FULL_TENSION:
+    chain1: 1,451      chain2: 10,652   chain3: 10,725   chain4: 9,722
+    chain5: 10,912     chain6: 9,751    chain7: 10,318
+    Cohort_main total: 62,080   |   Chain1 lag: 7.1×
+
+  --- CPU1 (ΔNeff model, 4 chains/dataset) ---
+  planck_only:   13,205   |   planck_bao:   11,996
+  planck_bao_sn: 11,739   |   full_tension: 11,880
+  Total: 48,820
+
+  --- CPU2 (ΛCDM controls, 4 chains/dataset) ---
+  planck_only:   13,176   |   planck_bao:   11,980
+  planck_bao_sn: 12,523   |   full_tension: 11,964
+  Total: 49,643
+
+  GRAND TOTAL: 236,622 samples across 64 chains on 3 pods.
+  Stalled chains: ZERO.
+
+==============================================================================
+  STEP 3 — CONVERGENCE DIAGNOSTICS: COHORT_MAIN vs ALL_CHAINS
+==============================================================================
+
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ GPU COHORT_MAIN (chains 2-7) — SCIENCE METRIC                         │
+  ├──────────────────┬──────────┬──────────┬──────────┬──────┬──────┬──────┤
+  │ Dataset          │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS  │ ESS  │ ESS │
+  │                  │          │          │          │ H0   │ ΔN   │ τ   │
+  ├──────────────────┼──────────┼──────────┼──────────┼──────┼──────┼──────┤
+  │ full_tension     │ 0.0036   │ 0.0031   │ 0.0071   │ 781  │ 694  │ 1243│
+  │ planck_only      │ 0.0042   │ 0.0035   │ 0.0090   │ 569  │ 547  │ 609 │
+  │ planck_bao_sn    │ 0.0081   │ 0.0126   │ 0.0031   │ 691  │ 565  │ 724 │
+  │ planck_bao       │ 0.0266   │ 0.0230   │ 0.0059   │ 479  │ 440  │ 840 │
+  └──────────────────┴──────────┴──────────┴──────────┴──────┴──────┴──────┘
+
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ GPU ALL_CHAINS (1-7) — ARCHIVAL METRIC (inflated by lagging chain1)    │
+  ├──────────────────┬──────────┬──────────┬──────────┬──────┬──────┬──────┤
+  │ Dataset          │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS  │ ESS  │ ESS │
+  │                  │          │          │          │ H0   │ ΔN   │ τ   │
+  ├──────────────────┼──────────┼──────────┼──────────┼──────┼──────┼──────┤
+  │ full_tension     │ 0.150    │ 0.219    │ 0.111    │ 788  │ 701  │ 1249│
+  │ planck_only      │ 0.257    │ 0.304    │ 0.258    │ 583  │ 558  │ 616 │
+  │ planck_bao_sn    │ 0.114    │ 0.244    │ 0.189    │ 699  │ 570  │ 731 │
+  │ planck_bao       │ 0.406    │ 0.447    │ 0.139    │ 484  │ 443  │ 843 │
+  └──────────────────┴──────────┴──────────┴──────────┴──────┴──────┴──────┘
+
+  IMPACT OF CHAIN1 ON R-HAT:
+  ┌──────────────────┬──────────────────────┬──────────────────────┬────────┐
+  │ Dataset          │ Rm1(H0) all→cohort   │ Rm1(ΔN) all→cohort   │ Factor │
+  ├──────────────────┼──────────────────────┼──────────────────────┼────────┤
+  │ full_tension     │ 0.150 → 0.0036       │ 0.219 → 0.0031       │ 42-71× │
+  │ planck_only      │ 0.257 → 0.0042       │ 0.304 → 0.0035       │ 61-87× │
+  │ planck_bao_sn    │ 0.114 → 0.0081       │ 0.244 → 0.0126       │ 14-19× │
+  │ planck_bao       │ 0.406 → 0.0266       │ 0.447 → 0.0230       │ 15-19× │
+  └──────────────────┴──────────────────────┴──────────────────────┴────────┘
+
+  Chain1 inflates R-hat by 14-87× depending on dataset. This is because
+  chain1 has 6-7× fewer samples than cohort_main chains, dragging the
+  Gelman-Rubin statistic. cohort_main is the correct science metric.
+
+==============================================================================
+  STEP 4 — FREEZE GATE EVALUATION (COHORT_MAIN)
+==============================================================================
+
+  Freeze criteria (8 gates):
+    G1: Rm1(H0)    < 0.01     G2: Rm1(ΔNeff) < 0.01     G3: Rm1(τ)    < 0.02
+    G4: ESS(H0)    ≥ 2000     G5: ESS(ΔNeff) ≥ 2000     G6: ESS(τ)    ≥ 1000
+    G7: |drift(H0)| < 0.2σ    G8: |drift(ΔN)| < 0.2σ
+
+  --- FULL_TENSION (cohort_main) ---
+  G1: Rm1(H0)    = 0.0036    target <0.01   ✅ PASS
+  G2: Rm1(ΔNeff) = 0.0031    target <0.01   ✅ PASS
+  G3: Rm1(τ)     = 0.0071    target <0.02   ✅ PASS
+  G4: ESS(H0)    = 781       target ≥2000   ❌ FAIL (2.6× short)
+  G5: ESS(ΔNeff) = 694       target ≥2000   ❌ FAIL (2.9× short)
+  G6: ESS(τ)     = 1243      target ≥1000   ✅ PASS
+  G7: drift(H0)  = +0.007σ   target <0.2σ   ✅ PASS
+  G8: drift(ΔN)  = +0.007σ   target <0.2σ   ✅ PASS
+  GATES PASSING: 6/8 ★★★
+  BLOCKING: ESS(H0) and ESS(ΔNeff) — need ~2.6× more samples
+
+  --- PLANCK_ONLY (cohort_main) ---
+  G1: Rm1(H0)    = 0.0042    target <0.01   ✅ PASS
+  G2: Rm1(ΔNeff) = 0.0035    target <0.01   ✅ PASS
+  G3: Rm1(τ)     = 0.0090    target <0.02   ✅ PASS
+  G4: ESS(H0)    = 569       target ≥2000   ❌ FAIL (3.5× short)
+  G5: ESS(ΔNeff) = 547       target ≥2000   ❌ FAIL (3.7× short)
+  G6: ESS(τ)     = 609       target ≥1000   ❌ FAIL (1.6× short)
+  G7: drift(H0)  = -0.024σ   target <0.2σ   ✅ PASS
+  G8: drift(ΔN)  = -0.035σ   target <0.2σ   ✅ PASS
+  GATES PASSING: 5/8 ★★
+  BLOCKING: ESS(H0), ESS(ΔNeff), ESS(τ) — need ~3.5× more samples
+
+  --- PLANCK_BAO_SN (cohort_main) ---
+  G1: Rm1(H0)    = 0.0081    target <0.01   ✅ PASS
+  G2: Rm1(ΔNeff) = 0.0126    target <0.01   ❌ FAIL (1.26×)
+  G3: Rm1(τ)     = 0.0031    target <0.02   ✅ PASS
+  G4: ESS(H0)    = 691       target ≥2000   ❌ FAIL (2.9× short)
+  G5: ESS(ΔNeff) = 565       target ≥2000   ❌ FAIL (3.5× short)
+  G6: ESS(τ)     = 724       target ≥1000   ❌ FAIL (1.4× short)
+  G7: drift(H0)  = -0.029σ   target <0.2σ   ✅ PASS
+  G8: drift(ΔN)  = -0.016σ   target <0.2σ   ✅ PASS
+  GATES PASSING: 4/8 ★
+  BLOCKING: Rm1(ΔNeff), ESS(H0), ESS(ΔNeff), ESS(τ)
+
+  --- PLANCK_BAO (cohort_main) ---
+  G1: Rm1(H0)    = 0.0266    target <0.01   ❌ FAIL (2.7×)
+  G2: Rm1(ΔNeff) = 0.0230    target <0.01   ❌ FAIL (2.3×)
+  G3: Rm1(τ)     = 0.0059    target <0.02   ✅ PASS
+  G4: ESS(H0)    = 479       target ≥2000   ❌ FAIL (4.2× short)
+  G5: ESS(ΔNeff) = 440       target ≥2000   ❌ FAIL (4.5× short)
+  G6: ESS(τ)     = 840       target ≥1000   ❌ FAIL (1.2× short)
+  G7: drift(H0)  = +0.062σ   target <0.2σ   ✅ PASS
+  G8: drift(ΔN)  = +0.051σ   target <0.2σ   ✅ PASS
+  GATES PASSING: 3/8
+  BLOCKING: Rm1(H0), Rm1(ΔNeff), ESS(all three)
+
+==============================================================================
+  STEP 5 — FREEZE PROXIMITY & ESTIMATED RUNTIME
+==============================================================================
+
+  RANKING (most gates passed → fewest):
+
+  ┌──────┬──────────────────┬───────┬──────────────────────────────────────────┐
+  │ Rank │ Dataset          │ Gates │ Remaining Blockers                       │
+  ├──────┼──────────────────┼───────┼──────────────────────────────────────────┤
+  │  1   │ full_tension     │ 6/8   │ ESS(H0)=781, ESS(ΔN)=694               │
+  │  2   │ planck_only      │ 5/8   │ ESS(H0)=569, ESS(ΔN)=547, ESS(τ)=609  │
+  │  3   │ planck_bao_sn    │ 4/8   │ Rm1(ΔN)=0.013, ESS(H0,ΔN,τ)           │
+  │  4   │ planck_bao       │ 3/8   │ Rm1(H0)=0.027, Rm1(ΔN)=0.023, ESS(all)│
+  └──────┴──────────────────┴───────┴──────────────────────────────────────────┘
+
+  ESS GROWTH ESTIMATES:
+  ESS scales roughly linearly with sample count (once R-hat is converged).
+  Current GPU sampling rate: ~200 samples/hr per chain (full_tension) or
+  ~80 samples/hr per chain (other datasets).
+
+  full_tension (6 chains × ~200 samp/hr):
+    ESS(H0) = 781, need 2000 → need ~2.6× more samples
+    Current cohort_main: 62,080 samples → need ~161,000
+    Additional: ~99,000 → at ~1200 samples/hr total → ~83 hrs (~3.5 days)
+
+  planck_only (6 chains × ~80 samp/hr):
+    ESS(H0) = 569, need 2000 → need ~3.5× more samples
+    Current: 24,555 → need ~86,000
+    Additional: ~61,000 → at ~480 samples/hr total → ~127 hrs (~5.3 days)
+
+  planck_bao_sn (6 chains × ~85 samp/hr):
+    ESS(H0) = 691, need 2000 → need ~2.9× more samples
+    Also need Rm1(ΔNeff) to drop from 0.0126 → 0.01 (close, ~12-24h)
+    Additional for ESS: ~48,000 → at ~510 samples/hr → ~94 hrs (~3.9 days)
+
+  planck_bao:
+    Still needs Rm1(H0) 0.027 → 0.01 and Rm1(ΔN) 0.023 → 0.01
+    R-hat convergence: ~1-2 weeks more
+    ESS will lag further behind
+
+  ESTIMATED FREEZE ORDER:
+    1. full_tension     — ~3.5 days (ESS only blocker)
+    2. planck_bao_sn    — ~4-5 days (ΔNeff R-hat + ESS)
+    3. planck_only      — ~5-6 days (ESS only blocker)
+    4. planck_bao       — ~2+ weeks (R-hat still converging)
+
+==============================================================================
+  STEP 6 — FOUR-WAY CONVERGENCE COMPARISON
+==============================================================================
+
+  GPU cohort_main vs GPU all_chains vs CPU1 (ΔNeff) vs CPU2 (ΛCDM)
+
+  --- FULL_TENSION ---
+  ┌───────────────┬──────────┬──────────┬──────────┬───────┬───────┬───────┐
+  │ Source         │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS   │ ESS   │ ESS  │
+  │                │          │          │          │ H0    │ ΔN    │ τ    │
+  ├───────────────┼──────────┼──────────┼──────────┼───────┼───────┼───────┤
+  │ GPU cohort    │ 0.0036   │ 0.0031   │ 0.0071   │ 781   │ 694   │ 1243 │
+  │ GPU all       │ 0.150    │ 0.219    │ 0.111    │ 788   │ 701   │ 1249 │
+  │ CPU1 (ΔNeff)  │ 0.0036   │ 0.0064   │ 0.0048   │ 118   │ 116   │ 241  │
+  │ CPU2 (ΛCDM)   │ 0.0040   │   n/a    │ 0.0015   │ 489   │  n/a  │ 221  │
+  └───────────────┴──────────┴──────────┴──────────┴───────┴───────┴───────┘
+  Agreement: GPU cohort_main and CPU1 show nearly identical R-hat for H0 ✓
+  CPU2 (ΛCDM) also agrees: H0 Rm1 = 0.004. Independent confirmation ✓
+
+  --- PLANCK_ONLY ---
+  ┌───────────────┬──────────┬──────────┬──────────┬───────┬───────┬───────┐
+  │ Source         │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS   │ ESS   │ ESS  │
+  │                │          │          │          │ H0    │ ΔN    │ τ    │
+  ├───────────────┼──────────┼──────────┼──────────┼───────┼───────┼───────┤
+  │ GPU cohort    │ 0.0042   │ 0.0035   │ 0.0090   │ 569   │ 547   │ 609  │
+  │ GPU all       │ 0.257    │ 0.304    │ 0.258    │ 583   │ 558   │ 616  │
+  │ CPU1 (ΔNeff)  │ 0.0080   │ 0.0077   │ 0.0077   │ 136   │ 120   │ 162  │
+  │ CPU2 (ΛCDM)   │ 0.0011   │   n/a    │ 0.0053   │ 461   │  n/a  │ 250  │
+  └───────────────┴──────────┴──────────┴──────────┴───────┴───────┴───────┘
+  Agreement: All three independently confirm Rm1(H0) < 0.01 ✓
+
+  --- PLANCK_BAO_SN ---
+  ┌───────────────┬──────────┬──────────┬──────────┬───────┬───────┬───────┐
+  │ Source         │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS   │ ESS   │ ESS  │
+  │                │          │          │          │ H0    │ ΔN    │ τ    │
+  ├───────────────┼──────────┼──────────┼──────────┼───────┼───────┼───────┤
+  │ GPU cohort    │ 0.0081   │ 0.0126   │ 0.0031   │ 691   │ 565   │ 724  │
+  │ GPU all       │ 0.114    │ 0.244    │ 0.189    │ 699   │ 570   │ 731  │
+  │ CPU1 (ΔNeff)  │ 0.0076   │ 0.0062   │ 0.0105   │ 143   │ 118   │ 204  │
+  │ CPU2 (ΛCDM)   │ 0.0005   │   n/a    │ 0.0038   │ 1369  │  n/a  │ 351  │
+  └───────────────┴──────────┴──────────┴──────────┴───────┴───────┴───────┘
+  Note: GPU cohort has ΔNeff Rm1=0.013 (just above 0.01 target).
+  CPU1 shows 0.006 for ΔNeff — the GPU ΔNeff R-hat is likely transient.
+  CPU2 ΛCDM: planck_bao_sn has best ESS (1369 for H0) of any CPU dataset.
+
+  --- PLANCK_BAO ---
+  ┌───────────────┬──────────┬──────────┬──────────┬───────┬───────┬───────┐
+  │ Source         │ Rm1(H0)  │ Rm1(ΔN)  │ Rm1(τ)   │ ESS   │ ESS   │ ESS  │
+  │                │          │          │          │ H0    │ ΔN    │ τ    │
+  ├───────────────┼──────────┼──────────┼──────────┼───────┼───────┼───────┤
+  │ GPU cohort    │ 0.0266   │ 0.0230   │ 0.0059   │ 479   │ 440   │ 840  │
+  │ GPU all       │ 0.406    │ 0.447    │ 0.139    │ 484   │ 443   │ 843  │
+  │ CPU1 (ΔNeff)  │ 0.0300   │ 0.0248   │ 0.0035   │ 260   │ 243   │ 363  │
+  │ CPU2 (ΛCDM)   │ 0.0018   │   n/a    │ 0.0066   │ 587   │  n/a  │ 325  │
+  └───────────────┴──────────┴──────────┴──────────┴───────┴───────┴───────┘
+  Note: GPU cohort and CPU1 agree closely on R-hat: both show H0 ~0.027-0.030
+  and ΔNeff ~0.023-0.025. This is the slowest-converging ΔNeff dataset.
+  CPU2 ΛCDM: already at Rm1(H0)=0.002 — ΛCDM converges much faster.
+
+==============================================================================
+  STEP 7 — SNAPSHOT & ARCHIVE STATUS
+==============================================================================
+
+  GPU pod:
+    Hourly backup loop: RUNNING (PID 32200)
+    Latest backup: chains_20260309_2032.tar.gz (24.8 MB, ~45 min ago)
+    Safety snapshot: /workspace/backups/gpu_run_snapshot_20260305_0824/
+    Frozen packs: 5 archival (created 2026-03-05 and 2026-03-07)
+      - frozen_gpu_validation_full_tension_20260305_094359
+      - frozen_gpu_validation_planck_only_20260307_094807
+      - frozen_gpu_validation_planck_bao_20260307_101600
+      - frozen_gpu_validation_planck_bao_sn_20260307_104705
+      - frozen_gpu_validation_combined_20260307_112054
+    NOTE: These are archival snapshots, NOT science freezes.
+
+  CPU pods:
+    No frozen packs exist yet. Freeze loops running but no dataset
+    has triggered criteria.
+
+==============================================================================
+  STEP 8 — EXECUTIVE SUMMARY
+==============================================================================
+
+  THE COHORT_MAIN REVELATION:
+
+  Under cohort_main (chains 2-7), the picture changes completely:
+
+  ┌──────────────────┬────────────────────┬────────────────────┬─────────────┐
+  │ Dataset          │ All-chains gates   │ Cohort_main gates  │ Improvement │
+  ├──────────────────┼────────────────────┼────────────────────┼─────────────┤
+  │ full_tension     │ 3/8                │ 6/8 ★★★            │ +3 gates    │
+  │ planck_only      │ 2/8                │ 5/8 ★★             │ +3 gates    │
+  │ planck_bao_sn    │ 2/8                │ 4/8 ★              │ +2 gates    │
+  │ planck_bao       │ 2/8                │ 3/8                │ +1 gate     │
+  └──────────────────┴────────────────────┴────────────────────┴─────────────┘
+
+  ANSWERS TO KEY QUESTIONS:
+
+  1. Which dataset is truly closest to science freeze under cohort_main?
+
+     FULL_TENSION — 6/8 gates passing.
+     All R-hat gates PASS. ESS(tau) PASSES. Both drift gates PASS.
+     Only ESS(H0) = 781 and ESS(ΔNeff) = 694 remain below targets.
+     Estimated ~3.5 days to freeze.
+
+  2. Does planck_bao_sn still lead?
+
+     NO. Under cohort_main, planck_bao_sn drops to 4/8 gates.
+     It still has Rm1(ΔNeff) = 0.0126 > 0.01 (failing R-hat gate 2).
+     full_tension has overtaken it decisively.
+
+     The previous audit was misled by all-chains metrics. planck_bao_sn's
+     all-chains R-hat was improving fastest because chain1 was becoming
+     less disruptive as cohort grew — but this was an artifact, not real
+     convergence improvement.
+
+  3. Is full_tension still worth prioritizing?
+
+     ABSOLUTELY YES — it is the CLEAR LEADER.
+     - 6/8 gates passing (no other dataset has more than 5)
+     - 62,080 cohort_main samples (2.5× more than any other dataset)
+     - R-hat fully converged: H0=0.0036, ΔNeff=0.0031, tau=0.0071
+     - Only needs ESS to grow, which is purely a matter of more samples
+     - CPU1 and CPU2 independently confirm the R-hat convergence
+     - Estimated 3.5 days to full science freeze
+
+     The "tau worsening" flag from the trend monitor was also an artifact
+     of the all-chains metric: chain1 was drifting relative to cohort_main,
+     inflating the R-hat. Under cohort_main, tau Rm1 = 0.007 — well below
+     the 0.02 target.
+
+  REVISED FREEZE ORDER:
+    1. full_tension     — 6/8, ~3.5 days  ← CLEAR PRIORITY
+    2. planck_only      — 5/8, ~5-6 days
+    3. planck_bao_sn    — 4/8, ~4-5 days (ΔNeff R-hat close to passing)
+    4. planck_bao       — 3/8, ~2+ weeks
+
+  RECOMMENDATION: Keep all chains running unchanged. full_tension is on
+  track for science freeze around 2026-03-13. No intervention needed.
+
+==============================================================================
+  END OF LIVE AUDIT — 2026-03-09 21:15 UTC
+==============================================================================

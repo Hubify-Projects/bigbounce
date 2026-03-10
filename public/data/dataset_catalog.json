@@ -1,0 +1,798 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-03-06",
+  "audit_report": "research/data_audit/provenance_report.md",
+  "total_datasets": 32,
+  "status_counts": {
+    "raw_public": 4,
+    "derived_public": 6,
+    "reconstructed": 3,
+    "internal_summary": 19
+  },
+  "datasets": [
+    {
+      "id": "galaxy_spin_bins_DEPRECATED",
+      "name": "Galaxy Spin Bins — DEPRECATED",
+      "description": "DEPRECATED 2026-03-06. Previously contained 17 binned CW/CCW counts with unverified provenance. Replaced by Galaxy Zoo DECaLS spiral catalog + Shamir (2024) aggregate counts. See reproducibility/galaxy_spins/DEPRECATED.md.",
+      "status": "reconstructed",
+      "status_label": "DEPRECATED — unverified provenance",
+      "paper": "paper1",
+      "sections": [],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": "reproducibility/galaxy_spins/galaxy_spin_data_DEPRECATED.csv",
+        "name": "galaxy_spin_data_DEPRECATED.csv",
+        "type": "csv",
+        "size_bytes": 1100,
+        "size_human": "1.1 KB",
+        "row_count": 17,
+        "columns": ["z_bin_center", "z_bin_width", "N_cw", "N_ccw", "survey_id", "b_weight", "psf_quality_flag"],
+        "checksum_sha256": "eabbdc6adf9830c4b28ddaae561703bcf21fc2d43bbee4934b7f514207e9ee79",
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": "Shamir2012,Shamir2022",
+        "citation_text": "Shamir (2012) ApJ 751:164; Shamir (2022) Symmetry 14:1190",
+        "license": "N/A",
+        "method": "DEPRECATED — unverified provenance. See research/data_audit/galaxy_spin_data_audit.md.",
+        "reproducible_by_third_party": false,
+        "transforms": "Unknown"
+      },
+      "warnings": [
+        {
+          "level": "critical",
+          "message": "DEPRECATED. This file has been removed from the analysis pipeline. It had unverified provenance with fabricated-looking round numbers and JWST counts inconsistent with the cited catalog. Replaced by Galaxy Zoo DECaLS spiral catalog and Shamir (2024) aggregate counts."
+        }
+      ],
+      "preview": [],
+      "tags": ["deprecated", "galaxy-spin", "do-not-use"]
+    },
+    {
+      "id": "galaxy_zoo_decals_spins",
+      "name": "Galaxy Zoo DECaLS Spiral Catalog (Paper 1 replacement)",
+      "description": "Object-level spiral galaxy catalog extracted from Galaxy Zoo DECaLS volunteer classifications. Filtered to galaxies with spiral vote fraction > 0.6. Includes coordinates, redshifts, and winding tightness votes. NOTE: Does not include CW/CCW direction — GZ DECaLS classifies winding tightness, not chirality.",
+      "status": "derived_public",
+      "status_label": "Derived from public data (fully reproducible)",
+      "paper": "paper1",
+      "sections": ["Sec 5 (Data Methods)", "Appendix C (Galaxy Spin Fitting)"],
+      "figures": ["Figure 2"],
+      "scripts": ["research/data_build/build_galaxy_spin_dataset.py"],
+      "file": {
+        "path": "data/public_mirror/galaxy_zoo_decals_spins.csv",
+        "name": "galaxy_zoo_decals_spins.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "TBD (run build script)",
+        "row_count": null,
+        "columns": ["galaxy_id", "ra", "dec", "redshift", "spiral_vote_fraction", "winding_tight", "winding_medium", "winding_loose", "survey_source"],
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://zenodo.org/records/4573248",
+        "citation_key": "Walmsley2022",
+        "citation_text": "Walmsley et al. (2022), MNRAS 509:3966",
+        "license": "CC-BY-4.0",
+        "method": "Downloaded from Zenodo (DOI: 10.5281/zenodo.4573248), filtered to spiral galaxies with vote_fraction > 0.6. Fully reproducible via build script.",
+        "reproducible_by_third_party": true,
+        "transforms": "Filter spiral vote fraction > 0.6, select columns, sort by redshift"
+      },
+      "warnings": [
+        {
+          "level": "info",
+          "message": "Galaxy Zoo DECaLS classifies spiral winding TIGHTNESS (tight/medium/loose) but NOT CW/CCW direction. For CW/CCW aggregate counts used in the A(z) fit, see galaxy_spin_counts_wp5 dataset (Shamir 2024)."
+        },
+        {
+          "level": "caution",
+          "message": "The galaxy spin asymmetry signal is contested. Independent reanalyses by Patel & Desmond (2024) and Philcox (2025) find results consistent with isotropy."
+        }
+      ],
+      "preview": [],
+      "tags": ["galaxy-spin", "galaxy-zoo", "object-level", "paper1", "reproducible"]
+    },
+    {
+      "id": "galaxy_spin_counts_wp5",
+      "name": "Galaxy Spin Aggregate Counts (Shamir 2024 — verified provenance)",
+      "description": "Survey-level aggregate CW/CCW counts extracted from Shamir (2024) JWST JADES paper Tables 1-3. 5 survey rows covering SDSS, Pan-STARRS, HST, DECaLS, JWST JADES. Now used for both Paper 1 A(z) fit and Paper 2 WP5 sensitivity analysis.",
+      "status": "reconstructed",
+      "status_label": "Reconstructed (documented provenance)",
+      "paper": "both",
+      "sections": ["Sec 5 (Data Methods)", "Appendix C (Galaxy Spin Fitting)", "Paper 2 WP5"],
+      "figures": [],
+      "scripts": ["research/paper2/wp5_spin_amplitude/monte_carlo_sensitivity.py"],
+      "file": {
+        "path": "research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv",
+        "name": "galaxy_spin_counts.csv",
+        "type": "csv",
+        "size_bytes": 1300,
+        "size_human": "1.3 KB",
+        "row_count": 5,
+        "columns": ["survey", "N_CW", "N_CCW", "N_total", "A_obs", "sigma_A", "z_range", "sky_region", "ref_table"],
+        "checksum_sha256": "c43fd88645a590c3a1efc07b563e01ec8b7f5090f183e3a7de56c61b390f3989",
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2401.09450",
+        "citation_key": "Shamir2024JWST",
+        "citation_text": "Shamir (2024), arXiv:2401.09450, 'Asymmetry in galaxy spin directions in JWST JADES data'",
+        "license": "public (published tables)",
+        "method": "Manual extraction from paper Tables 1-3 and text Section 2. Documented in file header.",
+        "reproducible_by_third_party": true,
+        "transforms": "None — direct transcription from paper"
+      },
+      "warnings": [
+        {
+          "level": "info",
+          "message": "Values reconstructed from published tables, not from a machine-readable catalog. Small rounding differences possible."
+        }
+      ],
+      "preview": [
+        {"survey": "JWST_JADES_GOODS_S", "N_CW": 87, "N_CCW": 108, "N_total": 195, "A_obs": 0.108, "sigma_A": 0.072},
+        {"survey": "SDSS_DR7_Shamir2012", "N_CW": 30628, "N_CCW": 31317, "N_total": 61945, "A_obs": 0.011, "sigma_A": 0.004}
+      ],
+      "tags": ["galaxy-spin", "paper2", "well-documented"]
+    },
+    {
+      "id": "planck2018_params",
+      "name": "Planck 2018 Cosmological Parameters",
+      "description": "Reference cosmological parameter values from Planck 2018 results VI (Table 2). ΛCDM and extended model constraints used throughout the analysis.",
+      "status": "raw_public",
+      "status_label": "Published reference values",
+      "paper": "both",
+      "sections": ["Sec 4", "Sec 5", "Sec 6"],
+      "figures": ["Figure 3a", "Figure 3b", "Figure 6"],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature reference",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/1807.06209",
+        "citation_key": "Planck2018VI",
+        "citation_text": "Planck Collaboration (2020), A&A 641, A6",
+        "license": "CC-BY-4.0",
+        "method": "Published, peer-reviewed parameter table",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["cmb", "cosmological-parameters", "paper1", "paper2"]
+    },
+    {
+      "id": "planck_pr4_maps",
+      "name": "Planck PR4 (NPIPE) Frequency Maps",
+      "description": "Reprocessed CMB frequency maps from the Planck Legacy Archive. 100/143/217/353 GHz (HFI) + 70 GHz (LFI). Used in Paper 2 P6 birefringence analysis.",
+      "status": "raw_public",
+      "status_label": "Official ESA data release",
+      "paper": "paper2",
+      "sections": ["Paper 2 P6"],
+      "figures": [],
+      "scripts": ["research/paper2/p6_cmb_eb_pipeline/"],
+      "file": {
+        "path": null,
+        "name": "HFI_SkyMap_{freq}_2048_R4.00_full.fits",
+        "type": "FITS (HEALPix)",
+        "size_bytes": null,
+        "size_human": "~13 GB total",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": "https://pla.esac.esa.int/#maps"
+      },
+      "provenance": {
+        "source_url": "https://pla.esac.esa.int/#maps",
+        "citation_key": "NPIPE2020",
+        "citation_text": "Planck Collaboration Int. LVII (2020), A&A 643, A42",
+        "license": "ESA-PSL",
+        "method": "Official Planck data release via PLA",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [
+        {
+          "level": "info",
+          "message": "Data exists on RunPod compute pod only. Not mirrored locally (~13 GB). Download from PLA using documented file list."
+        }
+      ],
+      "preview": [],
+      "tags": ["cmb", "planck", "maps", "paper2"]
+    },
+    {
+      "id": "galaxy_zoo_decals",
+      "name": "Galaxy Zoo DECaLS Volunteer Classifications",
+      "description": "~314,000 galaxy morphology classifications from citizen science volunteers. Classifies spiral structure, bar presence, bulge size, and winding tightness (NOT CW/CCW direction). Used in Paper 2 P7 CNN classifier and as source for the Paper 1 spiral galaxy catalog.",
+      "status": "raw_public",
+      "status_label": "Public data release (Zenodo DOI)",
+      "paper": "paper2",
+      "sections": ["Paper 2 P7"],
+      "figures": [],
+      "scripts": ["research/paper2/p7_cnn_spin_classifier/"],
+      "file": {
+        "path": null,
+        "name": "gz_decals_auto_posteriors.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "~500 MB",
+        "row_count": 314000,
+        "columns": ["objid", "ra", "dec", "morphology votes"],
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": "https://zenodo.org/records/4573248"
+      },
+      "provenance": {
+        "source_url": "https://zenodo.org/records/4573248",
+        "citation_key": "Walmsley2022",
+        "citation_text": "Walmsley et al. (2022), MNRAS 509:3966",
+        "license": "CC-BY-4.0",
+        "method": "Zenodo data release with permanent DOI",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["galaxy-spin", "galaxy-zoo", "object-level", "paper2"]
+    },
+    {
+      "id": "birefringence_minami_komatsu",
+      "name": "CMB Birefringence β — Minami & Komatsu (2020)",
+      "description": "First >2σ detection of isotropic cosmic birefringence from Planck 2018 HFI EB cross-correlation. β = 0.35° ± 0.14°.",
+      "status": "raw_public",
+      "status_label": "Published measurement",
+      "paper": "both",
+      "sections": ["Sec 3.4", "Paper 2 P6"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature value",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2011.11254",
+        "citation_key": "MinamiKomatsu2020",
+        "citation_text": "Minami & Komatsu (2020), PRL 125, 221301",
+        "license": "public",
+        "method": "Published peer-reviewed measurement",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["birefringence", "cmb", "paper1", "paper2"]
+    },
+    {
+      "id": "birefringence_eskilt_pr4",
+      "name": "CMB Birefringence β — Eskilt PR4 (2022)",
+      "description": "Frequency-dependent β from Planck PR4. β = 0.30° ± 0.11° (68% CL). Tests frequency dependence to separate from Galactic dust EB.",
+      "status": "raw_public",
+      "status_label": "Published measurement",
+      "paper": "both",
+      "sections": ["Sec 3.4", "Paper 2 P6"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature value",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2205.13962",
+        "citation_key": "Eskilt2022",
+        "citation_text": "Eskilt (2022), A&A 662, A10",
+        "license": "public",
+        "method": "Published peer-reviewed measurement",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["birefringence", "cmb", "planck", "paper1", "paper2"]
+    },
+    {
+      "id": "birefringence_act_dr6",
+      "name": "CMB Birefringence β — ACT DR6 (2025)",
+      "description": "ACT DR6 birefringence measurement. β = 0.215° ± 0.074° (2.9σ). Independent of Planck systematics.",
+      "status": "raw_public",
+      "status_label": "Published measurement",
+      "paper": "paper1",
+      "sections": ["Sec 3.4"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature value",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2509.13654",
+        "citation_key": "DiegoPalazuelos2025",
+        "citation_text": "Diego-Palazuelos & Komatsu (2025)",
+        "license": "public",
+        "method": "Published measurement",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["birefringence", "cmb", "act", "paper1"]
+    },
+    {
+      "id": "birefringence_spider",
+      "name": "SPIDER+Planck+ACT Combined β (2025)",
+      "description": "Combined SPIDER+Planck+ACT: 7σ detection of cosmic birefringence.",
+      "status": "raw_public",
+      "status_label": "Published measurement",
+      "paper": "paper1",
+      "sections": ["Sec 3.4"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature value",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2510.25489",
+        "citation_key": "SPIDER2025",
+        "citation_text": "SPIDER Collaboration (2025)",
+        "license": "public",
+        "method": "Published measurement",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["birefringence", "cmb", "spider", "paper1"]
+    },
+    {
+      "id": "bbn_constraints",
+      "name": "BBN Light Element Abundances (2024)",
+      "description": "ΔNeff = -0.10 ± 0.21 from light element abundances with conservative nuclear rate marginalization.",
+      "status": "raw_public",
+      "status_label": "Published measurement",
+      "paper": "paper2",
+      "sections": ["Paper 2 WP4"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": null,
+        "name": null,
+        "type": "literature value",
+        "size_bytes": null,
+        "size_human": "N/A",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://arxiv.org/abs/2401.15054",
+        "citation_key": "Burns2024",
+        "citation_text": "Burns et al. (2024)",
+        "license": "public",
+        "method": "Published measurement",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["bbn", "neff", "paper2"]
+    },
+    {
+      "id": "wp4_reheat_scan",
+      "name": "WP4 Reheating Parameter Scan",
+      "description": "24,000-row parameter scan over Br_dr × g_star_hidden × T_reh, computing ΔNeff and checking BBN/CMB consistency.",
+      "status": "derived_public",
+      "status_label": "Computed (fully reproducible)",
+      "paper": "paper2",
+      "sections": ["Paper 2 WP4"],
+      "figures": [],
+      "scripts": ["research/paper2/wp4_dneff_microphysics/"],
+      "file": {
+        "path": "research/paper2/wp4_dneff_microphysics/runs/reheat_001/scan_results.csv",
+        "name": "scan_results.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "~2 MB",
+        "row_count": 24000,
+        "columns": ["Br_dr", "g_star_hidden", "Treh_GeV", "Delta_Neff", "BBN_OK", "CMB_OK", "Target", "Allowed"],
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Computed from spin-torsion model",
+        "license": "N/A",
+        "method": "Theoretical parameter scan. Run Python scripts to reproduce.",
+        "reproducible_by_third_party": true,
+        "transforms": "Grid scan over parameter space"
+      },
+      "warnings": [],
+      "preview": [
+        {"Br_dr": 0.0001, "g_star_hidden": 1.0, "Treh_GeV": 1000000, "Delta_Neff": 0.001101, "BBN_OK": true, "CMB_OK": true}
+      ],
+      "tags": ["parameter-scan", "neff", "paper2", "reproducible"]
+    },
+    {
+      "id": "wp4_decay_scan",
+      "name": "WP4 Decay Parameter Scan",
+      "description": "32,000-row parameter scan over m_X × tau_X × Br_dark × Y_X, computing ΔNeff for particle decay scenarios.",
+      "status": "derived_public",
+      "status_label": "Computed (fully reproducible)",
+      "paper": "paper2",
+      "sections": ["Paper 2 WP4"],
+      "figures": [],
+      "scripts": ["research/paper2/wp4_dneff_microphysics/"],
+      "file": {
+        "path": "research/paper2/wp4_dneff_microphysics/runs/decay_001/scan_results.csv",
+        "name": "scan_results.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "~3 MB",
+        "row_count": 32000,
+        "columns": ["m_X_GeV", "tau_X_sec", "Br_dark", "Y_X", "Delta_Neff", "BBN_OK", "CMB_OK", "Target", "Allowed"],
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Computed from decay model",
+        "license": "N/A",
+        "method": "Theoretical parameter scan. Run Python scripts to reproduce.",
+        "reproducible_by_third_party": true,
+        "transforms": "Grid scan over parameter space"
+      },
+      "warnings": [],
+      "preview": [
+        {"m_X_GeV": 1.0, "tau_X_sec": 0.000001, "Br_dark": 1.0, "Y_X": 1e-10, "Delta_Neff": 5.03e-9, "BBN_OK": true, "CMB_OK": true}
+      ],
+      "tags": ["parameter-scan", "neff", "decay", "paper2", "reproducible"]
+    },
+    {
+      "id": "wp5_mc_samples",
+      "name": "WP5 Monte Carlo Sensitivity Samples",
+      "description": "100,000 Monte Carlo samples for spin amplitude sensitivity forecasting. Derived from galaxy spin counts + theoretical model.",
+      "status": "derived_public",
+      "status_label": "Computed (fully reproducible)",
+      "paper": "paper2",
+      "sections": ["Paper 2 WP5"],
+      "figures": [],
+      "scripts": ["research/paper2/wp5_spin_amplitude/monte_carlo_sensitivity.py"],
+      "file": {
+        "path": "research/paper2/archives/paper2_snapshot_20260306_0706/paper2/wp5_spin_amplitude/runs/first_run/mc_samples.csv",
+        "name": "mc_samples.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "~15 MB",
+        "row_count": 100000,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Monte Carlo sampling from parity bias model",
+        "license": "N/A",
+        "method": "Run monte_carlo_sensitivity.py to reproduce",
+        "reproducible_by_third_party": true,
+        "transforms": "Monte Carlo sampling"
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["monte-carlo", "sensitivity", "paper2", "reproducible"]
+    },
+    {
+      "id": "cls_EE_theory",
+      "name": "Theory EE Power Spectrum",
+      "description": "CMB EE angular power spectrum from CAMB. Standard cosmological computation for forecasting.",
+      "status": "derived_public",
+      "status_label": "Computed (fully reproducible)",
+      "paper": "paper1",
+      "sections": ["Sec 4-5"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": "data/cls_EE_theory_example.csv",
+        "name": "cls_EE_theory_example.csv",
+        "type": "csv",
+        "size_bytes": 600,
+        "size_human": "0.6 KB",
+        "row_count": 27,
+        "columns": ["ell", "C_ell_EE"],
+        "checksum_sha256": "0baeca76edf6591d40b17f13a087ec02ef8cb0fd54c548b4f20086edf240eec7",
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "CAMB Boltzmann solver output",
+        "license": "N/A",
+        "method": "Standard cosmological computation via CAMB",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [
+        {"ell": 2, "C_ell_EE": 0.00892},
+        {"ell": 10, "C_ell_EE": 0.265},
+        {"ell": 100, "C_ell_EE": 4.18}
+      ],
+      "tags": ["cmb", "theory", "power-spectrum", "paper1"]
+    },
+    {
+      "id": "instrument_cmbs4",
+      "name": "CMB-S4 Instrument Noise Specification",
+      "description": "CMB-S4 EE noise power spectrum and beam specification for forecasting. Based on published survey performance expectations.",
+      "status": "derived_public",
+      "status_label": "Published instrument specs",
+      "paper": "paper1",
+      "sections": ["Sec 8"],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": "data/instrument_cmbs4_example.csv",
+        "name": "instrument_cmbs4_example.csv",
+        "type": "csv",
+        "size_bytes": 700,
+        "size_human": "0.7 KB",
+        "row_count": 27,
+        "columns": ["ell", "N_ell_EE", "beam_fwhm_arcmin", "f_sky_override"],
+        "checksum_sha256": "d7b064334f5b593313d56cd4a53368f7b2506b014041ff6506624225376f43ba",
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://cmb-s4.org/wiki/index.php/Survey_Performance_Expectations",
+        "citation_key": "CMBS4Science2016",
+        "citation_text": "CMB-S4 Collaboration (2016), arXiv:1610.02743",
+        "license": "public",
+        "method": "Based on published instrument performance expectations",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [
+        {"ell": 2, "N_ell_EE": 8.5e-5, "beam_fwhm_arcmin": 3.0}
+      ],
+      "tags": ["cmb-s4", "instrument", "forecast", "paper1"]
+    },
+    {
+      "id": "p7_catalog_synthetic",
+      "name": "P7 CNN Test Catalog (SYNTHETIC)",
+      "description": "2,000-row synthetic galaxy catalog with randomly generated coordinates and simulated Galaxy Zoo vote fractions. Used for CNN pipeline testing only.",
+      "status": "internal_summary",
+      "status_label": "Synthetic test data",
+      "paper": "paper2",
+      "sections": ["Paper 2 P7"],
+      "figures": [],
+      "scripts": ["research/paper2/p7_cnn_spin_classifier/"],
+      "file": {
+        "path": "research/paper2/archives/paper2_snapshot_20260306_0706/paper2/p7_cnn_spin_classifier/data/catalog.csv",
+        "name": "catalog.csv",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "~130 KB",
+        "row_count": 2000,
+        "columns": ["objid", "ra", "dec", "label", "gz_cw_frac", "gz_ccw_frac", "split"],
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Synthetically generated",
+        "license": "N/A",
+        "method": "Generated programmatically with 'syn_cw_' prefixed IDs and random coordinates",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [
+        {
+          "level": "info",
+          "message": "This is SYNTHETIC test data, not real galaxy observations. The P7 CNN track achieved test_acc=0.49 (essentially random) — as expected with synthetic data."
+        }
+      ],
+      "preview": [
+        {"objid": "syn_cw_000000", "ra": 134.834, "dec": 54.086, "label": "cw", "gz_cw_frac": 0.91, "gz_ccw_frac": 0.06, "split": "test"}
+      ],
+      "tags": ["synthetic", "cnn", "paper2"]
+    },
+    {
+      "id": "mcmc_chains",
+      "name": "Paper 1 MCMC Posterior Chains (IN PROGRESS)",
+      "description": "Cobaya MCMC posterior chains for spin-torsion cosmological model. 4 datasets × 7 chains on GPU pod + 4 datasets × 4 chains on CPU pods. Parameters: H0, ΔNeff, Ωm, Ωbh², ns, τ, σ₈.",
+      "status": "derived_public",
+      "status_label": "In progress (not yet converged)",
+      "paper": "paper1",
+      "sections": ["Sec 5", "Sec 6"],
+      "figures": [],
+      "scripts": ["reproducibility/cosmology/"],
+      "file": {
+        "path": null,
+        "name": "spin_torsion.1.txt (per chain)",
+        "type": "Cobaya chain txt",
+        "size_bytes": null,
+        "size_human": "~50-200 MB total per dataset",
+        "row_count": null,
+        "columns": ["weight", "minuslogpost", "H0", "delta_neff", "omegam", "ombh2", "ns", "tau", "sigma8"],
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Generated by Cobaya sampler using Planck/BAO/SN likelihoods",
+        "license": "N/A — internal research artifact",
+        "method": "Cobaya MCMC with public likelihoods (planck_2018_highl_plik.TTTEEE_lite, bao.sdss_dr16_*, sn.pantheonplus)",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [
+        {
+          "level": "caution",
+          "message": "Chains are still running and have NOT reached convergence targets. Do not use for publication until convergence criteria are met. Will be released as frozen packs after convergence."
+        }
+      ],
+      "preview": [],
+      "tags": ["mcmc", "cosmology", "in-progress", "paper1"]
+    },
+    {
+      "id": "figure_panel_csvs",
+      "name": "Figure Panel Data (CSVs)",
+      "description": "Small CSV files containing the data behind each paper figure panel. 3-5 rows each. Include model predictions, comparison values, and forecasts.",
+      "status": "internal_summary",
+      "status_label": "Model predictions and comparison values",
+      "paper": "paper1",
+      "sections": ["Various"],
+      "figures": ["Figure 2", "Figure 3a", "Figure 3b", "Figure 6", "Figure 7"],
+      "scripts": [],
+      "file": {
+        "path": "data/figures/",
+        "name": "panel_a.csv (etc.)",
+        "type": "csv",
+        "size_bytes": null,
+        "size_human": "< 1 KB each",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Model predictions and published comparison values",
+        "license": "N/A",
+        "method": "Each panel has a meta.yml documenting schema and provenance",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["figures", "model-predictions", "paper1"]
+    },
+    {
+      "id": "spreadsheets",
+      "name": "Figure Data Spreadsheets (XLSX)",
+      "description": "Excel versions of figure data for web visualization. 7 files covering all major paper figures.",
+      "status": "internal_summary",
+      "status_label": "Web visualization data",
+      "paper": "paper1",
+      "sections": ["Various"],
+      "figures": ["Figures 1-3, 6-7"],
+      "scripts": [],
+      "file": {
+        "path": "public/spreadsheets/",
+        "name": "figure_*_complete_data.xlsx",
+        "type": "xlsx",
+        "size_bytes": null,
+        "size_human": "~70 KB total",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": true,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Same data as figure panel CSVs, formatted for web display",
+        "license": "N/A",
+        "method": "Excel formatting of figure data",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["figures", "spreadsheets", "web", "paper1"]
+    },
+    {
+      "id": "lit_galaxy_spin",
+      "name": "Galaxy Spin Literature Search (2024-2026)",
+      "description": "ADS bibliography search results for recent galaxy spin and parity violation papers. Machine-readable JSON with abstracts and citation counts.",
+      "status": "raw_public",
+      "status_label": "Public bibliography data",
+      "paper": "both",
+      "sections": [],
+      "figures": [],
+      "scripts": [],
+      "file": {
+        "path": "research/outputs/lit_galaxy_spin_2024_2026.json",
+        "name": "lit_galaxy_spin_2024_2026.json",
+        "type": "json",
+        "size_bytes": null,
+        "size_human": "~500 KB",
+        "row_count": null,
+        "columns": null,
+        "checksum_sha256": null,
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": "https://ui.adsabs.harvard.edu/",
+        "citation_key": null,
+        "citation_text": "NASA ADS search results",
+        "license": "public",
+        "method": "ADS API query",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [],
+      "tags": ["literature", "bibliography", "galaxy-spin"]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "report": "BigBounce Paper-1 Live MCMC Chain Audit — Cohort_Main Edition",
+  "timestamp": "2026-03-09T21:15:00Z",
+  "data_freshness": "LIVE — computed directly on GPU pod chain files via SSH",
+  "science_metric": "cohort_main (chains 2-7, excludes lagging chain1)",
+
+  "pods": {
+    "bigbounce-gpu-validation": {
+      "status": "ALIVE", "uptime": "52d 22h 47m", "cobaya_processes": 32,
+      "hardware": "RTX 6000 Ada 48GB", "disk_pct": 46, "memory_pct": 23,
+      "all_chains_writing": true
+    },
+    "bigbounce-cpu1-primary": {
+      "status": "ALIVE", "uptime": "422d 7h 38m", "cobaya_processes": 16,
+      "hardware": "cpu5c 32vCPU 124GB", "model": "delta_neff",
+      "all_chains_writing": true
+    },
+    "bigbounce-cpu2-secondary": {
+      "status": "ALIVE", "uptime": "422d 7h 38m", "cobaya_processes": 16,
+      "hardware": "cpu5c 32vCPU 124GB", "model": "lcdm",
+      "all_chains_writing": true
+    }
+  },
+
+  "chain_samples": {
+    "gpu_cohort_main": {
+      "full_tension": 62080, "planck_bao_sn": 25598,
+      "planck_bao": 24601, "planck_only": 24555
+    },
+    "gpu_chain1": {
+      "full_tension": 1451, "planck_bao_sn": 622,
+      "planck_bao": 645, "planck_only": 790
+    },
+    "cpu1_total": 48820,
+    "cpu2_total": 49643,
+    "grand_total": 236622,
+    "stalled_chains": 0
+  },
+
+  "convergence_gpu_cohort_main": {
+    "full_tension": {
+      "Rm1_H0": 0.0036, "Rm1_dNeff": 0.0031, "Rm1_tau": 0.0071,
+      "ESS_H0": 781, "ESS_dNeff": 694, "ESS_tau": 1243,
+      "drift_H0": 0.007, "drift_dNeff": 0.007,
+      "gates_passing": 6, "gates_total": 8,
+      "blocking": ["ESS_H0 (781 vs 2000)", "ESS_dNeff (694 vs 2000)"]
+    },
+    "planck_only": {
+      "Rm1_H0": 0.0042, "Rm1_dNeff": 0.0035, "Rm1_tau": 0.0090,
+      "ESS_H0": 569, "ESS_dNeff": 547, "ESS_tau": 609,
+      "drift_H0": -0.024, "drift_dNeff": -0.035,
+      "gates_passing": 5, "gates_total": 8,
+      "blocking": ["ESS_H0 (569 vs 2000)", "ESS_dNeff (547 vs 2000)", "ESS_tau (609 vs 1000)"]
+    },
+    "planck_bao_sn": {
+      "Rm1_H0": 0.0081, "Rm1_dNeff": 0.0126, "Rm1_tau": 0.0031,
+      "ESS_H0": 691, "ESS_dNeff": 565, "ESS_tau": 724,
+      "drift_H0": -0.029, "drift_dNeff": -0.016,
+      "gates_passing": 4, "gates_total": 8,
+      "blocking": ["Rm1_dNeff (0.013 vs 0.01)", "ESS_H0", "ESS_dNeff", "ESS_tau"]
+    },
+    "planck_bao": {
+      "Rm1_H0": 0.0266, "Rm1_dNeff": 0.0230, "Rm1_tau": 0.0059,
+      "ESS_H0": 479, "ESS_dNeff": 440, "ESS_tau": 840,
+      "drift_H0": 0.062, "drift_dNeff": 0.051,
+      "gates_passing": 3, "gates_total": 8,
+      "blocking": ["Rm1_H0 (0.027 vs 0.01)", "Rm1_dNeff (0.023 vs 0.01)", "ESS_H0", "ESS_dNeff", "ESS_tau"]
+    }
+  },
+
+  "convergence_gpu_all_chains": {
+    "full_tension": {"Rm1_H0": 0.150, "Rm1_dNeff": 0.219, "Rm1_tau": 0.111, "ESS_H0": 788, "ESS_dNeff": 701, "ESS_tau": 1249},
+    "planck_only": {"Rm1_H0": 0.257, "Rm1_dNeff": 0.304, "Rm1_tau": 0.258, "ESS_H0": 583, "ESS_dNeff": 558, "ESS_tau": 616},
+    "planck_bao_sn": {"Rm1_H0": 0.114, "Rm1_dNeff": 0.244, "Rm1_tau": 0.189, "ESS_H0": 699, "ESS_dNeff": 570, "ESS_tau": 731},
+    "planck_bao": {"Rm1_H0": 0.406, "Rm1_dNeff": 0.447, "Rm1_tau": 0.139, "ESS_H0": 484, "ESS_dNeff": 443, "ESS_tau": 843}
+  },
+
+  "convergence_cpu1_dneff": {
+    "full_tension": {"Rm1_H0": 0.004, "Rm1_dNeff": 0.006, "Rm1_tau": 0.005, "ESS_H0": 118, "ESS_dNeff": 116, "ESS_tau": 241},
+    "planck_only": {"Rm1_H0": 0.008, "Rm1_dNeff": 0.008, "Rm1_tau": 0.008, "ESS_H0": 136, "ESS_dNeff": 120, "ESS_tau": 162},
+    "planck_bao_sn": {"Rm1_H0": 0.008, "Rm1_dNeff": 0.006, "Rm1_tau": 0.010, "ESS_H0": 143, "ESS_dNeff": 118, "ESS_tau": 204},
+    "planck_bao": {"Rm1_H0": 0.030, "Rm1_dNeff": 0.025, "Rm1_tau": 0.003, "ESS_H0": 260, "ESS_dNeff": 243, "ESS_tau": 363}
+  },
+
+  "convergence_cpu2_lcdm": {
+    "full_tension": {"Rm1_H0": 0.004, "Rm1_tau": 0.001, "ESS_H0": 489, "ESS_tau": 221},
+    "planck_only": {"Rm1_H0": 0.001, "Rm1_tau": 0.005, "ESS_H0": 461, "ESS_tau": 250},
+    "planck_bao_sn": {"Rm1_H0": 0.001, "Rm1_tau": 0.004, "ESS_H0": 1369, "ESS_tau": 351},
+    "planck_bao": {"Rm1_H0": 0.002, "Rm1_tau": 0.007, "ESS_H0": 587, "ESS_tau": 325}
+  },
+
+  "chain1_inflation_factor": {
+    "full_tension_H0": "0.150 / 0.0036 = 42×",
+    "full_tension_dNeff": "0.219 / 0.0031 = 71×",
+    "planck_only_H0": "0.257 / 0.0042 = 61×",
+    "planck_only_dNeff": "0.304 / 0.0035 = 87×",
+    "planck_bao_sn_H0": "0.114 / 0.0081 = 14×",
+    "planck_bao_H0": "0.406 / 0.0266 = 15×"
+  },
+
+  "freeze_ranking": [
+    {"rank": 1, "dataset": "full_tension", "gates": "6/8", "blocking": "ESS only", "eta_days": 3.5},
+    {"rank": 2, "dataset": "planck_only", "gates": "5/8", "blocking": "ESS (all 3)", "eta_days": 5.5},
+    {"rank": 3, "dataset": "planck_bao_sn", "gates": "4/8", "blocking": "Rm1(dNeff) + ESS", "eta_days": 4.5},
+    {"rank": 4, "dataset": "planck_bao", "gates": "3/8", "blocking": "Rm1(H0,dNeff) + ESS", "eta_days": 14}
+  ],
+
+  "executive_summary": {
+    "closest_to_freeze": "full_tension (6/8 gates, all R-hat PASS, only ESS blocking)",
+    "planck_bao_sn_leads": false,
+    "full_tension_worth_prioritizing": true,
+    "key_finding": "Chain1 inflates R-hat by 14-87×. Under cohort_main, full_tension has ALL R-hat gates passing and is ~3.5 days from science freeze.",
+    "previous_audit_was_wrong": "The all-chains metric made planck_bao_sn look like the leader. Under cohort_main, full_tension is the clear leader at 6/8 gates.",
+    "tau_worsening_was_artifact": "The trend monitor's 'tau WORSENING' flag was caused by chain1 drift, not real degradation. Cohort_main tau Rm1 = 0.007 (well below 0.02 target).",
+    "recommendation": "Keep all chains running. full_tension science freeze expected ~2026-03-13."
+  }
+}

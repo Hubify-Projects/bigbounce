@@ -1,0 +1,149 @@
+{
+  "report": "BigBounce Monday Check-In",
+  "date": "2026-03-09",
+  "generated_by": "automated_audit",
+  "diagnostic_source": "reproducibility/cosmology/convergence_latest.csv",
+  "diagnostic_timestamp": "2026-03-05T07:36:08Z",
+  "diagnostic_staleness_days": 4.0,
+  "warning": "ALL DIAGNOSTICS ARE 4 DAYS STALE — pod state unknown",
+
+  "pods": {
+    "bigbounce-gpu-validation": {
+      "ip": "195.26.233.79",
+      "port": 38115,
+      "hardware": "RTX 6000 Ada (48GB VRAM)",
+      "purpose": "ΔNeff model, 4 datasets × 7 chains = 28 chains",
+      "status": "UNKNOWN",
+      "monitor_confirmed": false,
+      "freeze_manager_confirmed": false,
+      "safety_snapshots": 0,
+      "frozen_packs": 0
+    },
+    "bigbounce-cpu1-primary": {
+      "ip": "157.157.221.30",
+      "port": 30194,
+      "hardware": "32 vCPU, 64GB RAM",
+      "purpose": "ΔNeff model, 4 datasets × 4 chains = 16 chains",
+      "status": "UNKNOWN",
+      "monitor_pid_at_deploy": 6594,
+      "freeze_pid_at_deploy": 5454,
+      "local_diagnostics": false
+    },
+    "bigbounce-cpu2-secondary": {
+      "ip": "157.157.221.30",
+      "port": 40204,
+      "hardware": "32 vCPU, 64GB RAM",
+      "purpose": "ΛCDM controls, 4 datasets × 4 chains = 16 chains",
+      "status": "UNKNOWN",
+      "monitor_pid_at_deploy": 4095,
+      "freeze_pid_at_deploy": 3283,
+      "local_diagnostics": false
+    }
+  },
+
+  "gpu_datasets": {
+    "full_tension": {
+      "chains": 7,
+      "rows": 4016,
+      "rhat_minus1": { "H0": 0.049, "dNeff": 0.151, "tau": 0.935 },
+      "ess": { "H0": 59, "dNeff": 43, "tau": 55 },
+      "drift_sigma": { "H0": -0.075, "dNeff": -0.066 },
+      "stage": { "H0": "CLOSE", "dNeff": "MIXING", "tau": "EARLY_MIXING" },
+      "gates_passing": 2,
+      "gates_total": 8,
+      "science_freeze_ready": false
+    },
+    "planck_bao_sn": {
+      "chains": 7,
+      "rows": 2195,
+      "rhat_minus1": { "H0": 0.272, "dNeff": 0.681, "tau": 0.833 },
+      "ess": { "H0": 89, "dNeff": 48, "tau": 62 },
+      "drift_sigma": { "H0": -0.28, "dNeff": -0.35 },
+      "stage": "EARLY_MIXING",
+      "gates_passing": 0,
+      "gates_total": 8,
+      "science_freeze_ready": false
+    },
+    "planck_bao": {
+      "chains": 7,
+      "rows": 2015,
+      "rhat_minus1": { "H0": 0.341, "dNeff": 0.854, "tau": 1.611 },
+      "ess": { "H0": 59, "dNeff": 43, "tau": 36 },
+      "drift_sigma": { "H0": -0.14, "dNeff": -0.14 },
+      "stage": "EARLY_MIXING",
+      "gates_passing": 2,
+      "gates_total": 8,
+      "science_freeze_ready": false
+    },
+    "planck_only": {
+      "chains": 7,
+      "rows": 1937,
+      "rhat_minus1": { "H0": 0.403, "dNeff": 0.685, "tau": 0.862 },
+      "ess": { "H0": 40, "dNeff": 37, "tau": 40 },
+      "drift_sigma": { "H0": -0.50, "dNeff": -0.80 },
+      "stage": "EARLY_MIXING",
+      "gates_passing": 0,
+      "gates_total": 8,
+      "science_freeze_ready": false
+    }
+  },
+
+  "freeze_criteria": {
+    "rhat_minus1_H0": "<0.01",
+    "rhat_minus1_dNeff": "<0.01",
+    "rhat_minus1_tau": "<0.02",
+    "ess_H0": ">=2000",
+    "ess_dNeff": ">=2000",
+    "ess_tau": ">=1000",
+    "drift_H0": "<0.2σ",
+    "drift_dNeff": "<0.2σ"
+  },
+
+  "freeze_summary": {
+    "closest_to_freeze": "full_tension",
+    "any_dataset_freeze_soon": false,
+    "reason": "Even full_tension needs Rm1 0.049→0.01 (H0), 0.151→0.01 (ΔNeff), 0.935→0.02 (τ), ESS ~50→2000. Many more samples required.",
+    "eta": "UNKNOWN — no trend data available due to 4-day gap"
+  },
+
+  "cpu_validation": {
+    "cpu1_diagnostics_local": false,
+    "cpu2_diagnostics_local": false,
+    "comparison_possible": false,
+    "recommendation": "SSH in and pull convergence CSVs for the first time"
+  },
+
+  "galaxy_spin_pipeline": {
+    "status": "STABLE",
+    "deprecated_file_removed": true,
+    "gz_decals_catalog": {
+      "file": "data/public_mirror/galaxy_zoo_decals_spins.csv",
+      "exists": true,
+      "rows": 18979,
+      "size_mb": 2.66,
+      "redshift_range": "0.0000-0.1500",
+      "cw_ccw_available": false
+    },
+    "shamir_aggregate_counts": {
+      "file": "research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv",
+      "exists": true,
+      "surveys": 5,
+      "total_galaxies": 215515
+    },
+    "stan_fit_path_valid": true,
+    "paper_text_updated": true,
+    "recommendation": "No changes needed. Pipeline is clean and stable."
+  },
+
+  "recommended_actions": {
+    "priority_1": "SSH into all 3 pods, verify liveness, pull fresh convergence CSVs",
+    "priority_2": "Run GPU monitor pipeline (mcmc_monitor_v6.py) for fresh Rhat/ESS",
+    "priority_3": "Pull CPU diagnostics for the first time (CPU#1 and CPU#2)",
+    "priority_4": "After fresh data: re-evaluate freeze readiness",
+    "do_not_touch": [
+      "Galaxy-spin pipeline (stable)",
+      "Active MCMC chains (let run)",
+      "ΔNeff viability figure (wait for fresh data)"
+    ]
+  }
+}

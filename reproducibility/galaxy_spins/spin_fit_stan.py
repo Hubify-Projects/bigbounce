@@ -2,6 +2,13 @@
 """
 Galaxy Spin Asymmetry Hierarchical Bayesian Fit
 Using Stan for MCMC sampling
+
+Data source: Published aggregate CW/CCW counts from Shamir (2024),
+arXiv:2401.09450, reconstructed from Tables 1-3 and Section 2.
+File: research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv
+
+NOTE: The previous data file (galaxy_spin_data.csv) was deprecated on
+2026-03-06 due to unverified provenance. See DEPRECATED.md for details.
 """
 
 import numpy as np
@@ -71,20 +78,44 @@ generated quantities {
 """
 
 def load_spin_data(csv_path):
-    """Load and validate galaxy spin data."""
-    df = pd.read_csv(csv_path)
-    
-    # Validate columns
+    """Load and validate galaxy spin data.
+
+    Accepts the verified aggregate counts from galaxy_spin_counts.csv
+    (Shamir 2024, per-survey totals) and maps them to the format
+    expected by the Stan model.
+
+    Since this data has one row per survey (not per redshift bin),
+    we use the midpoint of each survey's z_range as the bin center
+    and assign uniform selection weights (b_weight=1.0).
+    """
+    df = pd.read_csv(csv_path, comment='#')
+
+    # Handle the verified aggregate format (galaxy_spin_counts.csv)
+    if 'survey' in df.columns and 'N_CW' in df.columns:
+        # Parse z_range midpoints
+        def z_midpoint(z_range_str):
+            parts = z_range_str.split('-')
+            return (float(parts[0]) + float(parts[1])) / 2
+
+        out = pd.DataFrame({
+            'z_bin_center': df['z_range'].apply(z_midpoint),
+            'z_bin_width': df['z_range'].apply(
+                lambda s: float(s.split('-')[1]) - float(s.split('-')[0])),
+            'N_cw': df['N_CW'],
+            'N_ccw': df['N_CCW'],
+            'survey_id': df['survey'],
+            'b_weight': 1.0,
+        })
+        out['survey_idx'] = pd.Categorical(out['survey_id']).codes
+        return out
+
+    # Legacy format (deprecated — should not be reached)
     required = ['z_bin_center', 'N_cw', 'N_ccw', 'survey_id', 'b_weight']
-    assert all(col in df.columns for col in required), f"Missing columns: {set(required) - set(df.columns)}"
-    
-    # Validate values
+    assert all(col in df.columns for col in required), \
+        f"Missing columns: {set(required) - set(df.columns)}"
     assert (df['N_cw'] >= 0).all() and (df['N_ccw'] >= 0).all(), "Negative counts"
     assert df['b_weight'].between(0, 1).all(), "Invalid weights"
-    
-    # Convert survey_id to numeric
     df['survey_idx'] = pd.Categorical(df['survey_id']).codes
-    
     return df
 
 def prepare_stan_data(df, sigma_delta=0.02):
@@ -220,8 +251,9 @@ def save_results(results, output_dir):
 
 def main():
     """Run the full analysis pipeline."""
-    # Configuration
-    data_path = 'data/galaxy_spin_bins.csv'
+    # Configuration — uses published aggregate counts (verified provenance)
+    data_path = Path(__file__).resolve().parents[2] / \
+        'research' / 'paper2' / 'wp5_spin_amplitude' / 'data' / 'galaxy_spin_counts.csv'
     output_dir = 'output/spin_fit'
     
     # Load data

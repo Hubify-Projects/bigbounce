@@ -13,3 +13,18 @@ yarn-error.log*
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Large data files (downloaded from Zenodo, reproducible)
+data/public_mirror/galaxy_zoo_decals/gz_decals_volunteers_1_and_2.parquet
+
+# LaTeX build artifacts
+arxiv/main.aux
+arxiv/main.blg
+arxiv/main.out
+arxiv/main.toc
+arxiv/mainNotes.bib
+
+# MCMC chain archives (large binary snapshots)
+reproducibility/cosmology/archives/*.tar.gz
+reproducibility/cosmology/archives/gpu_run_snapshot_*/chains/
+reproducibility/cosmology/traces/

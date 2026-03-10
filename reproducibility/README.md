@@ -32,8 +32,9 @@ reproducibility/
 │   └── reproduce_cosmology.sh       # One-command reproduction
 ├── galaxy_spins/
 │   ├── spin_fit_stan.py             # Hierarchical Bayesian model (Stan)
-│   ├── galaxy_spin_data.csv         # Published CW/CCW counts per bin
-│   └── reproduce_spins.sh           # One-command reproduction
+│   ├── reproduce_spins.sh           # One-command reproduction
+│   ├── DEPRECATED.md                # Deprecation notice for old data file
+│   └── galaxy_spin_data_DEPRECATED.csv  # DEPRECATED — do not use
 ├── cmb_eb/
 │   └── (empty — CMB EB values are literature citations, not original analysis)
 ├── results/
@@ -52,7 +53,7 @@ reproducibility/
 | H₀ = 69.2 ± 0.8 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | σ₈ = 0.785 ± 0.016 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | ΔN_eff ≈ 0.3 | YES | `cobaya_full_tension.yaml` with stock CAMB |
-| Galaxy spin A₀, p, q | YES | `spin_fit_stan.py` + published data |
+| Galaxy spin A₀, p, q | YES | `spin_fit_stan.py` + Shamir (2024) aggregate counts |
 | χ²_eff, AIC, BIC | YES | From MCMC chain maximum likelihood |
 | ln B (Bayes factors) | PARTIAL | Requires PolyChord (not included) |
 | β ≈ 0.30° birefringence | N/A | Literature value (Planck) |

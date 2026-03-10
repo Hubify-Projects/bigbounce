@@ -257,7 +257,8 @@ After each revision round:
 | `reproducibility/cosmology/cobaya_full_tension.yaml` | Full tension dataset |
 | `reproducibility/cosmology/reproduce_cosmology.sh` | One-command reproduction |
 | `reproducibility/galaxy_spins/spin_fit_stan.py` | Hierarchical Bayesian model |
-| `reproducibility/galaxy_spins/galaxy_spin_data.csv` | Published CW/CCW counts |
+| `reproducibility/galaxy_spins/galaxy_spin_data_DEPRECATED.csv` | DEPRECATED — replaced by GZ DECaLS + Shamir (2024) |
+| `research/data_build/build_galaxy_spin_dataset.py` | GZ DECaLS spiral catalog build script |
 | `reproducibility/galaxy_spins/reproduce_spins.sh` | One-command reproduction |
 | `reproducibility/docs/IMPLEMENTATION_MAP.md` | Claim → code → output mapping |
 | `reproducibility/docs/KNOWN_GAPS.md` | Honest gap disclosure |
