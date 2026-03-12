@@ -1,0 +1,124 @@
+{
+  "audit_title": "RunPod Storage Survival Audit — BigBounce",
+  "timestamp": "2026-03-10T21:40:00Z",
+  "mode": "READ-ONLY",
+  "account": {
+    "user_id": "user_3ASjlBqOLifanwrV3Q6Xe4BHzop",
+    "client_balance_usd": 199.98,
+    "current_spend_per_hr_usd": 0.002,
+    "billing_was_cause": false
+  },
+
+  "terminated_pods": {
+    "bigbounce-gpu-validation": {
+      "pod_id": "47htajss1ng2ig",
+      "status": "TERMINATED",
+      "api_response": "HTTP 400 — pod does not exist",
+      "had_network_volume": false,
+      "volume_in_gb_at_creation": 0,
+      "container_disk_in_gb": "unknown (pod gone)",
+      "volume_mount_path": null,
+      "storage_recoverable": false,
+      "notes": "Pod created with volumeInGb: 0. All /workspace data destroyed on termination."
+    },
+    "bigbounce-cpu1-primary": {
+      "pod_id": "m4xpnxzgokd93f",
+      "status": "TERMINATED",
+      "api_response": "HTTP 400 — pod does not exist",
+      "had_network_volume": false,
+      "volume_in_gb_at_creation": 0,
+      "container_disk_in_gb": "unknown (pod gone)",
+      "volume_mount_path": null,
+      "storage_recoverable": false,
+      "notes": "Pod created with volumeInGb: 0. All /workspace data destroyed on termination."
+    },
+    "bigbounce-cpu2-secondary": {
+      "pod_id": "eblghcn6u43wfk",
+      "status": "TERMINATED",
+      "api_response": "HTTP 400 — pod does not exist",
+      "had_network_volume": false,
+      "volume_in_gb_at_creation": 0,
+      "container_disk_in_gb": "unknown (pod gone)",
+      "volume_mount_path": null,
+      "storage_recoverable": false,
+      "notes": "Pod created with volumeInGb: 0. All /workspace data destroyed on termination."
+    },
+    "paper2-p7-cnn": {
+      "pod_id": "pkysk4lbaqnhm0",
+      "status": "TERMINATED",
+      "api_response": "pod: null",
+      "had_network_volume": false,
+      "storage_recoverable": false,
+      "notes": "Also terminated. Data backed up locally in research/paper2/archives/."
+    }
+  },
+
+  "surviving_pods": {
+    "paper2-wp4-dneff": {
+      "pod_id": "bpou58tmt95jjb",
+      "status": "EXITED",
+      "volume_in_gb": 0,
+      "container_disk_in_gb": 50,
+      "volume_mount_path": null,
+      "has_network_volume": false,
+      "data_backed_up_locally": true,
+      "local_backup_path": "research/paper2/archives/paper2_snapshot_20260306_0706/paper2/wp4_dneff_microphysics/"
+    },
+    "paper2-wp5-spin": {
+      "pod_id": "mz3srzbzxxv1yj",
+      "status": "EXITED",
+      "volume_in_gb": 0,
+      "container_disk_in_gb": 50,
+      "volume_mount_path": null,
+      "has_network_volume": false,
+      "data_backed_up_locally": true,
+      "local_backup_path": "research/paper2/archives/paper2_snapshot_20260306_0706/paper2/wp5_spin_amplitude/"
+    },
+    "paper2-p6-eb": {
+      "pod_id": "uktt3hghbs1djo",
+      "status": "EXITED",
+      "volume_in_gb": 0,
+      "container_disk_in_gb": 50,
+      "volume_mount_path": null,
+      "has_network_volume": false,
+      "data_backed_up_locally": true,
+      "local_backup_path": "research/paper2/archives/paper2_snapshot_20260306_0706/paper2/p6_cmb_eb_pipeline/"
+    }
+  },
+
+  "network_volumes": [
+    {
+      "id": "9wln8f98am",
+      "name": "modest_plum_antlion",
+      "size_gb": 20,
+      "data_center": "US-WA-1",
+      "associated_with_paper1_pods": false,
+      "ever_referenced_in_project": false,
+      "likely_contents": "unknown — never mentioned in any config, script, or log",
+      "action": "INSPECT — start a cheap pod, attach this volume, check contents"
+    }
+  ],
+
+  "pod_templates": {
+    "count": 11,
+    "relevant_to_paper1": false,
+    "notes": "All templates are RunPod stock defaults (PyTorch, Ubuntu, ComfyUI). None are custom BigBounce templates."
+  },
+
+  "savings_plans": [],
+
+  "storage_type_analysis": {
+    "paper1_pods_used_container_disk_only": true,
+    "paper1_pods_had_network_volumes": false,
+    "evidence": "SESSION_HANDOFF_20260305.md line 108: 'Pod creation fix: volumeInGb: 0'. All 3 Paper-1 pods and Paper-2 pods created with volumeInGb: 0. Confirmed by API for surviving pods.",
+    "consequence": "Container disk is destroyed on pod termination. No remote recovery path exists."
+  },
+
+  "conclusion": {
+    "any_network_volumes_alive": true,
+    "network_volume_relevant_to_paper1": false,
+    "any_remote_data_recovery_path": false,
+    "paper1_chain_data_on_remote": "NONE — irrecoverably lost",
+    "paper2_data_at_risk": false
+  }
+}

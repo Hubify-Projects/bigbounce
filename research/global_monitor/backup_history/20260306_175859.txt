@@ -1,0 +1,45 @@
+BigBounce Global Backup Report
+Generated: 2026-03-06 18:01:06 UTC
+Duration: 126.5s
+==============================================================================
+
+bigbounce-gpu-validation        [FAIL]
+  Track: paper1
+  Paths found: chains/, *.log
+  Message: tar failed: tar: chains/planck_only_chain3: file changed as we read it
+tar: chains/planck_only: file changed as we read it 
+
+bigbounce-cpu1-primary          [FAIL]
+  Track: paper1
+  Paths found: chains/
+  Message: tar failed: tar: chains/planck_bao_sn_chain3/spin_torsion.1.txt: file changed as we read it 
+
+bigbounce-cpu2-secondary        [FAIL]
+  Track: paper1
+  Paths found: none
+  Message: No critical outputs found to back up
+
+paper2-wp4-dneff                [SKIP]
+  Track: paper2-track-a
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+paper2-wp5-spin                 [SKIP]
+  Track: paper2-track-b
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+paper2-p7-cnn                   [OK]
+  Track: paper2-track-c
+  Paths found: runs/, figures/, *.py, *.md
+  Tarball: /workspace/paper2/p7_cnn_spin_classifier/backups/backup_paper2-p7-cnn_20260306_175859.tar.gz (118.3 MB)
+  Message: Backup created successfully
+
+paper2-p6-eb                    [SKIP]
+  Track: paper2-track-d
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+==============================================================================
+Summary: 1 OK, 3 skipped, 3 failed
+Total backup size: 118.3 MB

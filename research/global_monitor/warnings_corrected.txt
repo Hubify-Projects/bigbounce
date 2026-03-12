@@ -1,0 +1,143 @@
+==============================================================================
+  BIGBOUNCE CORRECTED WARNINGS — TRUTH AUDIT
+  Generated: 2026-03-06 00:22 UTC
+==============================================================================
+
+  CORRECTIONS TO PREVIOUS REPORT (global_status_latest.txt, 2026-03-05 21:44 UTC):
+  ----------------------------------------------------------------------------------
+
+  1. [CORRECTED] CPU#2 "UNREACHABLE" → ALIVE
+     Previous report: "CRITICAL: bigbounce-cpu2-secondary is UNREACHABLE"
+     Truth: Pod is ALIVE with 16 active cobaya processes, writing chains.
+     Cause: SSH timeout (both CPU pods are on same host 157.157.221.30).
+
+  2. [CORRECTED] Paper 2 pods "PENDING BOOT" → ALL ALIVE
+     Previous report: 4x "CRITICAL: SSH not configured (pending boot)"
+     Truth: All 4 Paper 2 pods are ALIVE and responsive.
+     Cause: pod_registry.yaml had not yet been updated with SSH creds.
+     (Registry was subsequently updated — see current pod_registry.yaml.)
+
+  3. [CORRECTED] GPU disk "479T / 46%" → INFRASTRUCTURE-ONLY
+     Previous report showed disk=46% as if it were pod health
+     Truth: This is a shared NFS cluster mount (mfs#us-wa-1.runpod.net:9421)
+     Pod-level storage is NOT measurable via df on this mount.
+     Flag: [INFRASTRUCTURE — NOT POD STORAGE]
+
+  4. [CORRECTED] GPU memory "93798MB/515789MB" → INFRASTRUCTURE-ONLY
+     Previous report showed this as pod memory
+     Truth: 515 GB is the HOST NODE total RAM, shared across all containers
+     Flag: [INFRASTRUCTURE — HOST NODE MEMORY]
+
+  5. [CORRECTED] CPU uptime "418 days" → HOST MACHINE, not container
+     Not shown in automated report but known from manual checks
+     Truth: Containers are ~26 hours old. Host machine has been up 418 days.
+     Flag: [INFRASTRUCTURE — HOST UPTIME]
+
+  6. [CORRECTED] GPU "chain_files: 28" → ACCURATE (confirmed)
+     Previous report was correct. 28 chain files in 28 directories verified.
+
+  7. [CORRECTED] CPU#1 "chain_files: 0" → ACTUALLY 16
+     Previous report showed 0 chain files
+     Truth: 16 chain files exist and are actively being written
+     Cause: Possible path mismatch or timing issue in original scan.
+
+==============================================================================
+  ACTIVE WARNINGS (verified)
+==============================================================================
+
+  [CRITICAL] NO BACKUP TARBALLS EXIST ON ANY PAPER 1 POD
+    All previous "backups" were DRY RUN ONLY (0 bytes).
+    No /backups/ directory exists on GPU, CPU#1, or CPU#2.
+    60 active MCMC chains have ZERO backup protection.
+    ACTION: Run `python3 global_backup.py` (without --dry-run) immediately.
+
+  [HIGH] ESS ETA PREDICTIONS ARE UNRELIABLE — SUPPRESSED
+    Previous ETAs of 1500-6400 hours were based on ~13 hours of data.
+    Even now at ~45 hours, chains are still in mixing/burn-in phase.
+    R-hat values range 0.04-1.02 (target: <0.01).
+    ESS values range 60-254 (target: 2000 for H0/dNeff).
+    ANY eta extrapolation from this phase is unreliable.
+    Label: [LOW CONFIDENCE] until 48+ hours of POST-MIXING data.
+    NEVER print "will never converge" — not supported by current data.
+
+  [HIGH] CONVERGENCE MONITORS NOT YET PRODUCING DATA ON CPU PODS
+    CPU#1: convergence_latest.csv has header only (no data rows)
+    CPU#2: no convergence file at all
+    Freeze loops (PIDs 5454, 3283) are alive but monitors have not
+    computed R-hat/ESS yet — likely chains too short (<300 samples).
+    This is expected at this stage. Monitor when chains reach 500+ samples.
+
+  [MEDIUM] GPU full_tension OUTLIER CHAINS
+    Chains 5 and 7 show H0 2-3sigma below median (67.70-67.80 vs 68.09)
+    Chain 5 and 7 show negative dNeff (vs positive median of 0.049)
+    Original chain (full_tension, 352 samples) has tau 4.6sigma from median
+    This may indicate slow mixing or stuck modes. Monitor closely.
+    However: full_tension dataset already FROZEN as of 2026-03-05 10:15 UTC.
+
+  [MEDIUM] planck_only DRIFT DETECTED
+    H0 drift: -0.349sigma (exceeds 0.2sigma threshold)
+    dNeff drift: -0.451sigma (exceeds 0.2sigma threshold)
+    Chains are still mixing — drift expected during burn-in.
+    Monitor whether drift stabilizes as chains lengthen.
+
+  [LOW] CPU PODS SHARE PHYSICAL HOST
+    CPU#1 (port 30194) and CPU#2 (port 40204) are on same machine (157.157.221.30)
+    Memory reported by `free -m` (128 GB) is shared between both containers.
+    Disk overlay (50G each) IS container-isolated.
+    No immediate risk, but resource contention is possible under heavy load.
+    Current load averages: 374 (CPU#1) and 374 (CPU#2) — very high but expected
+    for 32 total cobaya processes on 32 vCPU host.
+
+  [LOW] GPU freeze loop has 33.7 hours remaining on 48h time cap
+    After time cap, freeze_packager will force-freeze remaining datasets
+    even if R-hat targets are not met. This is by design.
+
+  [INFO] Paper 2 pods are all idle (first runs complete)
+    No running processes. All output files present.
+    No backup or frozen pack infrastructure configured for Paper 2 pods.
+
+==============================================================================
+  INFRASTRUCTURE-ONLY METRICS — DO NOT USE FOR SCIENCE
+==============================================================================
+
+  The following metrics from global_status.py are host/cluster-level
+  and should NOT be interpreted as pod health or experiment state:
+
+  Metric                  Pod(s) affected         What it actually shows
+  ----------------------  ----------------------  ---------------------------------
+  uptime                  ALL                     Host machine uptime (not container)
+  disk (df -h)            GPU only                Shared 479T NFS cluster filesystem
+  memory (free -m)        GPU, CPU#1, CPU#2       Host node RAM (not container limit)
+  GPU utilization         GPU                     Always 0% (MCMC is CPU-bound)
+
+  Metrics that ARE pod/job-level:
+  - cobaya_count, python_count
+  - chain files, samples per chain
+  - write freshness (seconds since last chain write)
+  - R-hat, ESS, drift (convergence diagnostics)
+  - freeze/monitor PID status
+  - frozen pack existence and timestamps
+  - disk on CPU pods (overlay filesystem is container-isolated)
+
+==============================================================================
+  RECOMMENDATIONS
+==============================================================================
+
+  1. RUN REAL BACKUPS NOW: `python3 global_backup.py` (no --dry-run flag)
+     All 60 active chains have zero backup protection.
+
+  2. DO NOT trust ESS ETAs until chains have 48+ hours of stable post-mixing
+     data. Current phase is still burn-in/mixing for most parameters.
+
+  3. Update global_status.py to flag infrastructure-only metrics in output.
+     Add [INFRASTRUCTURE] labels to disk/memory/uptime where applicable.
+
+  4. Monitor CPU pod convergence — expect first R-hat/ESS data when chains
+     reach 500+ samples (currently at 260-410).
+
+  5. Investigate full_tension outlier chains 5 and 7 (negative dNeff).
+     May indicate stuck modes or slow mixing in that parameter direction.
+
+==============================================================================
+  END OF CORRECTED WARNINGS
+==============================================================================

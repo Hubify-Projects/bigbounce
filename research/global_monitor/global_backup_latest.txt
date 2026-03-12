@@ -1,0 +1,14 @@
+BigBounce Global Backup Report
+Generated: 2026-03-06 18:09:10 UTC
+Duration: 25.8s
+==============================================================================
+
+bigbounce-cpu2-secondary        [OK]
+  Track: paper1
+  Paths found: controls_lcdm/
+  Tarball: /workspace/bigbounce/reproducibility/cosmology/cpu_secondary_suite_20260305/backups/backup_bigbounce-cpu2-secondary_20260306_180845.tar.gz (2.6 MB)
+  Message: Backup created successfully
+
+==============================================================================
+Summary: 1 OK, 0 skipped, 0 failed
+Total backup size: 2.6 MB

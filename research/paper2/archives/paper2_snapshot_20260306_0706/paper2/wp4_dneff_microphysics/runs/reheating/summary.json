@@ -1,0 +1,25 @@
+{
+  "model": "reheating",
+  "n_Br_dr": 100,
+  "n_g_hidden": 80,
+  "Treh_values_GeV": [
+    1000000.0,
+    1000000000.0,
+    1000000000000.0
+  ],
+  "total_points": 24000,
+  "constraints": {
+    "BBN_max": 0.5,
+    "CMB_max": 0.34,
+    "target_lo": 0.1,
+    "target_hi": 0.2
+  },
+  "best_fit": {
+    "dneff": 0.1546315809532376,
+    "Br_dr": 0.013848863713938732,
+    "g_star_hidden": 6.2508895869783725,
+    "Treh_GeV": 1000000.0,
+    "distance": 0.0046315809532375685
+  },
+  "timestamp": "2026-03-05T22:40:41"
+}

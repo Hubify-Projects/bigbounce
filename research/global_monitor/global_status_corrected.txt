@@ -1,0 +1,300 @@
+==============================================================================
+  BIGBOUNCE CORRECTED STATUS REPORT — TRUTH AUDIT
+  Generated: 2026-03-06 00:22 UTC
+  Auditor: Claude Code (non-destructive read-only SSH probe)
+  Scope: Experiment-relevant metrics ONLY
+==============================================================================
+
+NOTE: This report was produced by a truth audit that verified every metric
+via live SSH. Metrics flagged [INFRASTRUCTURE] are host/cluster-level values
+that do NOT reflect pod or job state. They are included for transparency but
+should NOT be used for science or runtime interpretation.
+
+==============================================================================
+  METRIC CLASSIFICATION AUDIT
+==============================================================================
+
+  INFRASTRUCTURE-ONLY (not suitable for science/runtime interpretation):
+  -----------------------------------------------------------------------
+  1. UPTIME (from `uptime` command)
+     - Reports HOST MACHINE uptime, NOT container/pod age
+     - GPU host: 49 days — container actually created 2026-03-04 03:11 UTC (~45h ago)
+     - CPU host (both pods): 418 days — containers created ~26h ago
+     - VERDICT: MISLEADING. Do not use for pod age estimation.
+
+  2. DISK on GPU pod (df -h /workspace)
+     - Shows: 479T total / 218T used / 46%
+     - Source: mfs#us-wa-1.runpod.net:9421 — SHARED NFS CLUSTER MOUNT
+     - This is the RunPod datacenter shared filesystem, not pod-allocated storage
+     - VERDICT: INFRASTRUCTURE-ONLY. Not meaningful for pod health.
+
+  3. MEMORY on GPU pod (free -m)
+     - Shows: 515,789 MB total (503 GB)
+     - Source: HOST NODE memory (shared GPU server)
+     - Actual pod memory allocation is a fraction of this
+     - VERDICT: INFRASTRUCTURE-ONLY. Shows host, not container limits.
+
+  4. MEMORY on CPU pods (free -m)
+     - Shows: 127,894 MB total (125 GB) — SAME on both CPU#1 and CPU#2
+     - Both CPU pods are on the SAME physical host (157.157.221.30)
+     - This is the host machine's RAM, shared between both containers
+     - VERDICT: INFRASTRUCTURE-ONLY. Shared between pods.
+
+  5. GPU UTILIZATION on GPU pod (nvidia-smi)
+     - Shows: 0% utilization, 2 MiB used
+     - MCMC sampling via Cobaya is CPU-bound — GPU idle is EXPECTED
+     - VERDICT: POD-LEVEL but MISLEADING for MCMC health. Always 0%.
+
+  POD/JOB-LEVEL (science-relevant):
+  -----------------------------------------------------------------------
+  1. cobaya process count       — actual MCMC processes in this container
+  2. chain file count           — actual chain files on pod
+  3. samples per chain          — actual MCMC sample count (lines in .txt)
+  4. output write freshness     — seconds since last chain file write
+  5. R-hat (Gelman-Rubin)       — inter-chain convergence diagnostic
+  6. ESS (effective sample size) — independent sample count
+  7. drift                      — mean shift between early/late windows
+  8. freeze/monitor PID status  — whether safety loops are alive
+  9. frozen pack existence      — whether any datasets have been frozen
+  10. disk on CPU pods           — overlay 50G IS pod-specific storage
+
+==============================================================================
+  PAPER 1 — MCMC POD STATUS (experiment-relevant metrics only)
+==============================================================================
+
+--- bigbounce-gpu-validation (GPU) ---
+  Status:           ALIVE
+  Container age:    ~45 hours (created 2026-03-04 03:11 UTC)
+  Active processes: 28 cobaya (running as expected)
+  Datasets:         4 (full_tension, planck_bao, planck_bao_sn, planck_only)
+  Chains per set:   7 (28 total chain files)
+  Disk [INFRA]:     479T NFS shared cluster — NOT pod storage [INFRASTRUCTURE]
+  Memory [INFRA]:   515 GB host node RAM [INFRASTRUCTURE]
+  GPU [EXPECTED 0]: 0% util / 2 MiB (MCMC is CPU-bound)
+
+  Samples per chain (full_tension — best converged):
+    full_tension:        352 lines  (oldest chain, slow writer)
+    full_tension_chain2: 2558 lines
+    full_tension_chain3: 2440 lines
+    full_tension_chain4: 2539 lines
+    full_tension_chain5: 2421 lines
+    full_tension_chain6: 2579 lines
+    full_tension_chain7: 2228 lines
+    TOTAL full_tension: ~14,792 samples across 7 chains
+
+  Samples per chain (planck_bao):
+    planck_bao:        145
+    planck_bao_chain2: 998
+    planck_bao_chain3: 1145
+    planck_bao_chain4: 1040
+    planck_bao_chain5: 1011
+    planck_bao_chain6: 1121
+    planck_bao_chain7: 958
+    TOTAL: ~6,271
+
+  Samples per chain (planck_bao_sn):
+    planck_bao_sn:        148
+    planck_bao_sn_chain2: 989
+    planck_bao_sn_chain3: 1083
+    planck_bao_sn_chain4: 1053
+    planck_bao_sn_chain5: 1265
+    planck_bao_sn_chain6: 1130
+    planck_bao_sn_chain7: 1184
+    TOTAL: ~6,718
+
+  Samples per chain (planck_only):
+    planck_only:        179
+    planck_only_chain2: 918
+    planck_only_chain3: 1012
+    planck_only_chain4: 963
+    planck_only_chain5: 1050
+    planck_only_chain6: 1154
+    planck_only_chain7: 1042
+    TOTAL: ~6,192
+
+  Write freshness:    ACTIVE — chains written seconds ago (verified 00:21 UTC)
+  Freeze loop:        PID 39713 ALIVE
+  Monitor loop:       PID 36885 ALIVE
+
+  CONVERGENCE (all_chains, latest):
+    Dataset         R-hat-1(H0)  R-hat-1(dN)  R-hat-1(tau)  ESS(H0)  ESS(dN)  Status
+    full_tension    0.085        0.163        0.704         88.4     66.4     MIXING
+    planck_bao_sn   0.229        0.897        1.018         112.1    79.2     RUNNING
+    planck_bao      0.368        0.738        0.893         91.4     78.0     RUNNING
+    planck_only     0.334        0.659        0.881         78.5     67.9     RUNNING
+
+  Publication targets: R-hat-1 < 0.01 (core), < 0.02 (tau), ESS >= 2000 (H0/dNeff), >= 1000 (tau)
+  Current best: full_tension H0 at R-hat-1 = 0.085 (still 8.5x above target)
+
+  ESS ETA predictions: [LOW CONFIDENCE — SUPPRESSED]
+    Reason: Only ~45 hours of data. Chains still in mixing/burn-in phase.
+    R-hat values 0.08-1.0 indicate chains have NOT yet converged.
+    Any ESS extrapolation from this regime is unreliable.
+    Will reassess after 48+ hours of stable post-mixing data.
+
+  Drift (mean shift in 20/40 windows):
+    full_tension:    H0 = -0.171sigma (ok), dNeff = -0.204sigma (MARGINAL)
+    planck_bao_sn:   H0 = -0.146sigma (ok), dNeff = -0.067sigma (ok)
+    planck_bao:      H0 = +0.024sigma (ok), dNeff = -0.007sigma (ok)
+    planck_only:     H0 = -0.349sigma (DRIFTING), dNeff = -0.451sigma (DRIFTING)
+
+  Outlier chains (>1.0sigma from median):
+    full_tension_chain5: H0=67.80 (2.1sigma), dNeff=-0.007 (2.8sigma)
+    full_tension_chain7: H0=67.70 (2.9sigma), dNeff=-0.010 (3.0sigma)
+    full_tension: tau=0.060 (4.6sigma from median)
+
+  Frozen packs:
+    full_tension: FROZEN 2026-03-05 10:15:50 UTC
+      Path: /workspace/.../frozen_gpu_validation_full_tension_20260305_094359/
+      Contents: MANIFEST.md, convergence_report.txt, CHECKSUMS.txt, getdist/, reference_chains/
+      Size: 4.9 MB
+    planck_only: PENDING (min samples 125 < 200 threshold)
+    planck_bao: PENDING (min samples 101 < 200 threshold)
+    planck_bao_sn: PENDING (min samples 102 < 200 threshold)
+
+  BACKUP STATUS:
+    Real backup tarballs: NONE EXIST
+    /workspace/bigbounce/reproducibility/backups/ — DIRECTORY DOES NOT EXIST
+    Previous backup report was DRY RUN ONLY (0 bytes)
+    >> REAL BACKUPS NEEDED
+
+--- bigbounce-cpu1-primary (CPU#1) ---
+  Status:           ALIVE
+  Container age:    ~26 hours (host uptime 418 days is HOST, not container)
+  Active processes: 16 cobaya (running as expected)
+  Datasets:         4 (full_tension, planck_bao, planck_bao_sn, planck_only)
+  Chains per set:   4 (16 total chain files)
+  Disk:             50G overlay / 2.9G used / 6% — this IS pod-specific
+  Memory [INFRA]:   128 GB host RAM (shared with CPU#2) [INFRASTRUCTURE]
+
+  Samples per chain:
+    full_tension_chain1: 279     planck_bao_chain1: 264     planck_bao_sn_chain1: 275     planck_only_chain1: 311
+    full_tension_chain2: 261     planck_bao_chain2: 262     planck_bao_sn_chain2: 266     planck_only_chain2: 283
+    full_tension_chain3: 296     planck_bao_chain3: 294     planck_bao_sn_chain3: 267     planck_only_chain3: 333
+    full_tension_chain4: 266     planck_bao_chain4: 273     planck_bao_sn_chain4: 260     planck_only_chain4: 313
+    TOTAL: ~4,429 samples across 16 chains
+
+  Write freshness:    ACTIVE — chains written seconds ago (verified 00:21 UTC)
+  Freeze loop:        PID 5454 ALIVE
+  Monitor loop:       PID 6594 ALIVE
+
+  CONVERGENCE:
+    convergence_latest.csv: Header only (no data rows yet)
+    R-hat / ESS: Not yet computed by monitor (chains still too short)
+    ESS ETA: [LOW CONFIDENCE — SUPPRESSED] (< 48h of data, < 300 samples/chain)
+
+  Frozen packs:       NONE
+  BACKUP STATUS:      NONE EXIST — no /backups/ directory
+
+--- bigbounce-cpu2-secondary (CPU#2) ---
+  Status:           ALIVE (previous "DOWN" was SSH timeout false alarm)
+  Container age:    ~26 hours (host uptime 418 days is HOST, not container)
+  Active processes: 16 cobaya (running as expected)
+  Datasets:         4 LCDM controls (full_tension, planck_bao, planck_bao_sn, planck_only)
+  Chains per set:   4 (16 chain files + 1 extra planck_only dir = 17 chain dirs)
+  Disk:             50G overlay / 2.3G used / 5% — this IS pod-specific
+  Memory [INFRA]:   128 GB host RAM (shared with CPU#1) [INFRASTRUCTURE]
+
+  Samples per chain:
+    full_tension_chain1: 270     planck_bao_chain1: 334     planck_bao_sn_chain1: 347     planck_only_chain1: 394
+    full_tension_chain2: 293     planck_bao_chain2: 328     planck_bao_sn_chain2: 360     planck_only_chain2: 376
+    full_tension_chain3: 388     planck_bao_chain3: 312     planck_bao_sn_chain3: 343     planck_only_chain3: 408
+    full_tension_chain4: 367     planck_bao_chain4: 367     planck_bao_sn_chain4: 367     planck_only_chain4: 358
+    TOTAL: ~5,612 samples across 16 LCDM chains
+
+  Write freshness:    ACTIVE — chains written seconds ago (verified 00:21 UTC)
+  Freeze loop:        PID 3283 ALIVE
+  Monitor loop:       PID 4095 ALIVE
+
+  CONVERGENCE:
+    No convergence_latest.csv yet
+    R-hat / ESS: Not yet computed by monitor
+    ESS ETA: [LOW CONFIDENCE — SUPPRESSED]
+
+  Frozen packs:       NONE
+  BACKUP STATUS:      NONE EXIST — no /backups/ directory
+
+==============================================================================
+  PAPER 2 — RESEARCH TRACK STATUS
+==============================================================================
+
+--- paper2-wp4-dneff (Track A) ---
+  Status:           ALIVE
+  Active processes: 0 (first runs complete, idle)
+  Disk:             50G overlay / 1.9G used / 4%
+  Output files:     32
+  Latest output:    2026-03-05 22:20 UTC (runs/decay/summary.json)
+  Uptime [INFRA]:   36 days (HOST) [INFRASTRUCTURE]
+
+--- paper2-wp5-spin (Track B) ---
+  Status:           ALIVE
+  Active processes: 0 (first runs complete, idle)
+  Disk:             50G overlay / 772M used / 2%
+  Output files:     15
+  Latest output:    2026-03-05 22:19 UTC (runs/first_run/corner_plot.png)
+  Uptime [INFRA]:   36 days (HOST) [INFRASTRUCTURE]
+
+--- paper2-p7-cnn (Track C) ---
+  Status:           ALIVE
+  Active processes: 0 (first runs complete, idle)
+  Disk:             50G overlay / 703M used / 2%
+  Output files:     2221 (includes synthetic training images)
+  Latest output:    2026-03-05 22:20 UTC (runs/first_run/test_predictions.json)
+  Uptime [INFRA]:   36 days (HOST) [INFRASTRUCTURE]
+
+--- paper2-p6-eb (Track D) ---
+  Status:           ALIVE
+  Active processes: 0 (first runs complete, idle)
+  Disk:             50G overlay / 762M used / 2%
+  Output files:     14
+  Latest output:    2026-03-05 22:20 UTC (runs/tier1_first_run/forest_plot.png)
+  Uptime [INFRA]:   36 days (HOST) [INFRASTRUCTURE]
+
+==============================================================================
+  BACKUP VERIFICATION — ALL 3 PAPER 1 PODS
+==============================================================================
+
+  FINDING: NO REAL BACKUP TARBALLS EXIST ON ANY POD.
+
+  GPU pod:
+    /workspace/bigbounce/reproducibility/backups/ — DOES NOT EXIST
+    No backup_*.tar.gz files found anywhere under /workspace/bigbounce/reproducibility/
+    Previous global_backup_latest.txt shows: "DRY RUN: would tar chains/ *.log" (0 bytes)
+
+  CPU#1 pod:
+    /workspace/bigbounce/reproducibility/backups/ — DOES NOT EXIST
+    No backup_*.tar.gz files found
+
+  CPU#2 pod:
+    /workspace/bigbounce/reproducibility/backups/ — DOES NOT EXIST
+    No backup_*.tar.gz files found
+
+  FROZEN PACKS (separate from backups):
+    GPU: 1 frozen pack exists
+      Path: frozen_gpu_validation_full_tension_20260305_094359/
+      Contents: MANIFEST.md, convergence_report.txt, CHECKSUMS.txt, getdist/, reference_chains/
+      Size: 4.9 MB, frozen 2026-03-05 10:15 UTC
+    CPU#1: No frozen packs
+    CPU#2: No frozen packs
+
+  ACTION REQUIRED: Run global_backup.py WITHOUT --dry-run to create real tarballs.
+
+==============================================================================
+  CROSS-POD AGGREGATE SUMMARY
+==============================================================================
+
+  Pod                          Alive  Procs  Chains  Total Samples  Freshness     Backups  Frozen
+  ---------------------------  -----  -----  ------  -------------  ----------    -------  ------
+  bigbounce-gpu-validation     YES    28     28      ~33,973        ACTIVE (sec)  NONE     1/4
+  bigbounce-cpu1-primary       YES    16     16      ~4,429         ACTIVE (sec)  NONE     0/4
+  bigbounce-cpu2-secondary     YES    16     16      ~5,612 (LCDM)  ACTIVE (sec)  NONE     0/4
+  paper2-wp4-dneff             YES    0      n/a     n/a            idle          n/a      n/a
+  paper2-wp5-spin              YES    0      n/a     n/a            idle          n/a      n/a
+  paper2-p7-cnn                YES    0      n/a     n/a            idle          n/a      n/a
+  paper2-p6-eb                 YES    0      n/a     n/a            idle          n/a      n/a
+
+  ALL 7 PODS ALIVE. 60 MCMC chains actively writing. Zero backups.
+
+==============================================================================
+  END OF CORRECTED STATUS REPORT
+==============================================================================

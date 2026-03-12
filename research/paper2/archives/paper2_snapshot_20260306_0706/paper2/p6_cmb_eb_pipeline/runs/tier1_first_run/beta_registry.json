@@ -1,0 +1,158 @@
+{
+  "description": "Cosmic birefringence beta measurements from published literature",
+  "compilation_date": "2026-03-05",
+  "compiler": "Houston Golden",
+  "notes": [
+    "All arXiv IDs verified against ADS/arXiv (see docs/backlog_candidates.md).",
+    "Statistical uncertainties are 68% CL unless noted.",
+    "Systematic uncertainties are listed separately where reported.",
+    "The weighted average uses statistical errors only, because systematic errors are correlated between experiments using the same Planck data and cannot be simply combined in quadrature."
+  ],
+  "measurements": [
+    {
+      "label": "Minami & Komatsu (2020)",
+      "arxiv": "2011.11254",
+      "doi": "10.1103/PhysRevLett.125.221301",
+      "journal": "PRL 125, 221301",
+      "instrument": "Planck HFI",
+      "data_release": "PR3 (2018)",
+      "method": "spectrum-level EB cross-correlation",
+      "frequencies_ghz": [
+        100,
+        143,
+        217,
+        353
+      ],
+      "beta_deg": 0.35,
+      "stat_err_deg": 0.14,
+      "syst_err_deg": null,
+      "confidence": "68% CL",
+      "significance": "2.4 sigma",
+      "notes": "First >2sigma detection of isotropic cosmic birefringence. Uses miscalibration angle self-calibration method.",
+      "independent_of": []
+    },
+    {
+      "label": "Eskilt (2022)",
+      "arxiv": "2205.13962",
+      "doi": "10.1051/0004-6361/202243269",
+      "journal": "A&A 662, A10",
+      "instrument": "Planck HFI + LFI",
+      "data_release": "PR4 (NPIPE)",
+      "method": "spectrum-level, frequency-dependent",
+      "frequencies_ghz": [
+        70,
+        100,
+        143,
+        217,
+        353
+      ],
+      "beta_deg": 0.3,
+      "stat_err_deg": 0.11,
+      "syst_err_deg": null,
+      "confidence": "68% CL",
+      "significance": "2.7 sigma",
+      "notes": "Frequency-dependent analysis separating cosmic beta from Galactic dust EB. Uses PR4/NPIPE reprocessed maps. Checks that beta is frequency-independent (as expected for cosmic birefringence, unlike dust).",
+      "independent_of": [
+        "Minami & Komatsu (2020)"
+      ]
+    },
+    {
+      "label": "Eskilt et al. (2022) [Cosmoglobe]",
+      "arxiv": "2203.04830",
+      "doi": "10.1103/PhysRevD.106.063503",
+      "journal": "PRD 106, 063503",
+      "instrument": "Planck HFI",
+      "data_release": "PR4 (NPIPE)",
+      "method": "spectrum-level EB, PR4 baseline",
+      "frequencies_ghz": [
+        100,
+        143,
+        217,
+        353
+      ],
+      "beta_deg": 0.342,
+      "stat_err_deg": 0.094,
+      "syst_err_deg": null,
+      "confidence": "68% CL",
+      "significance": "3.6 sigma",
+      "notes": "PR4-based EB analysis with improved noise characterization. Uses same self-calibration method as Minami & Komatsu but with reprocessed NPIPE data.",
+      "independent_of": [
+        "Minami & Komatsu (2020)"
+      ]
+    },
+    {
+      "label": "Zagatti et al. (2025)",
+      "arxiv": "2502.07654",
+      "doi": null,
+      "journal": "preprint",
+      "instrument": "Planck HFI",
+      "data_release": "PR4 (NPIPE)",
+      "method": "map-level (pixel-space rotation)",
+      "frequencies_ghz": [
+        100,
+        143,
+        217,
+        353
+      ],
+      "beta_deg": 0.46,
+      "stat_err_deg": 0.04,
+      "syst_err_deg": 0.28,
+      "confidence": "68% CL",
+      "significance": "~1.6 sigma (incl. syst)",
+      "notes": "Map-level analysis using SEVEM CMB map. Very small stat error but large systematic uncertainty dominated by miscalibration angle degeneracy. Demonstrates map-space vs spectrum-space tension worth investigating.",
+      "independent_of": [
+        "Minami & Komatsu (2020)",
+        "Eskilt (2022)"
+      ]
+    },
+    {
+      "label": "Diego-Palazuelos & Komatsu (2025)",
+      "arxiv": "2509.13654",
+      "doi": null,
+      "journal": "preprint",
+      "instrument": "ACT",
+      "data_release": "DR6",
+      "method": "spectrum-level EB cross-correlation",
+      "frequencies_ghz": [
+        98,
+        150
+      ],
+      "beta_deg": 0.215,
+      "stat_err_deg": 0.074,
+      "syst_err_deg": null,
+      "confidence": "68% CL",
+      "significance": "2.9 sigma",
+      "notes": "First ACT-only measurement. Independent of Planck systematics (different instrument, different scan strategy, different frequency coverage). GitHub: pdp79/act_dr6_analysis",
+      "independent_of": [
+        "Minami & Komatsu (2020)",
+        "Eskilt (2022)",
+        "Zagatti et al. (2025)"
+      ]
+    },
+    {
+      "label": "SPIDER + Planck + ACT (2025)",
+      "arxiv": "2510.25489",
+      "doi": null,
+      "journal": "preprint",
+      "instrument": "SPIDER + Planck + ACT",
+      "data_release": "combined",
+      "method": "joint spectrum-level analysis",
+      "frequencies_ghz": [
+        95,
+        150,
+        100,
+        143,
+        217,
+        353,
+        98
+      ],
+      "beta_deg": 0.3,
+      "stat_err_deg": 0.043,
+      "syst_err_deg": null,
+      "confidence": "68% CL",
+      "significance": "7 sigma (combined)",
+      "notes": "Combined analysis of three independent experiments. SPIDER provides balloon-borne data free of ground-based systematics. 7sigma is the strongest detection to date. Note: this is NOT independent of the Planck and ACT entries above; it combines their data.",
+      "independent_of": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "total_galaxies": 2000,
+  "n_cw": 1000,
+  "n_ccw": 1000,
+  "n_null": 200,
+  "n_train": 1400,
+  "n_val": 300,
+  "n_test": 300,
+  "cutout_size": 128,
+  "seed": 42,
+  "synthetic": true,
+  "catalog_sha256": "60b90c5cc94f98a70b1e100cb8a4b3083b991233a2333e5c55db87208dbb79a5"
+}

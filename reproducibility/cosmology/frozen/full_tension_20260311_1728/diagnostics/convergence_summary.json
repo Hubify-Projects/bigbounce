@@ -1,0 +1,16 @@
+{
+  "getdist_version": "1.7.5",
+  "gelman_rubin_worst_r1": 0.00447014151793356,
+  "n_chains": 6,
+  "burn_fraction": 0.3,
+  "total_samples_post_burn": 123129,
+  "parameters": [
+    "H0",
+    "delta_neff",
+    "tau",
+    "sigma8",
+    "omegam",
+    "ns"
+  ],
+  "timestamp": "2026-03-11T17:26:50.661472+00:00"
+}

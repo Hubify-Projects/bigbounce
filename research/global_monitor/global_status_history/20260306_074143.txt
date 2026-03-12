@@ -1,0 +1,65 @@
+
+==============================================================================
+  BIGBOUNCE GLOBAL STATUS DASHBOARD  2026-03-06 07:41:43 UTC
+  Pods: 4/7 alive   0 pending boot   Scan took 119.8s
+==============================================================================
+
+  POD STATUS
+  NAME                            STATUS    PROCESSES   DISK    MEMORY             GPU
+  ----------------------------------------------------------------------------
+  bigbounce-gpu-validation        ALIVE  cob=28  py=0    disk=46%    mem=102721MB/515789MB  gpu=0% / 2MB
+  bigbounce-cpu1-primary          ALIVE  cob=16  py=0    disk=6%     mem=32469MB/127894MB  gpu=n/a
+  bigbounce-cpu2-secondary        ALIVE  cob=16  py=0    disk=5%     mem=31956MB/127894MB  gpu=n/a
+  paper2-wp4-dneff                DOWN  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-wp5-spin                 DOWN  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-p7-cnn                   ALIVE  cob=0   py=0    disk=3%     mem=161722MB/515601MB  gpu=0% / 1MB
+  paper2-p6-eb                    DOWN  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+
+==============================================================================
+  PAPER 1 — MCMC CONVERGENCE
+  bigbounce-gpu-validation (RTX 6000 Ada (48GB VRAM), GPU pod)
+    Chain files: 28   Dirs: full_tension, full_tension_chain2, full_tension_chain3, full_tension_chain4, full_tension_chain5, full_tension_chain6, full_tension_chain7, planck_bao, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_chain5, planck_bao_chain6, planck_bao_chain7, planck_bao_sn, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_bao_sn_chain5, planck_bao_sn_chain6
+    Convergence status: not available
+    Freeze loop: dead/unknown   Monitor: dead/unknown
+    Latest output: 2026-03-06 07:40:04 UTC (0.0h ago)
+
+  bigbounce-cpu1-primary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 16   Dirs: full_tension_chain1, full_tension_chain2, full_tension_chain3, full_tension_chain4, planck_bao_chain1, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_sn_chain1, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_only_chain1, planck_only_chain2, planck_only_chain3, planck_only_chain4
+    | dataset,param,Rhat_all,Rhat_m1_all,ESS_all,drift_all,Rhat_new,Rhat_m1_new,ESS_new,drift_new
+    Freeze loop: alive   Monitor: alive
+    Latest output: 2026-03-06 07:40:31 UTC (0.0h ago)
+
+  bigbounce-cpu2-secondary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 16   Dirs: full_tension_chain1, full_tension_chain2, full_tension_chain3, full_tension_chain4, planck_bao_chain1, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_sn_chain1, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_only, planck_only_chain1, planck_only_chain2, planck_only_chain3, planck_only_chain4
+    Convergence status: not available
+    Freeze loop: alive   Monitor: alive
+    Latest output: 2026-03-06 07:41:03 UTC (0.0h ago)
+
+==============================================================================
+  PAPER 2 — RESEARCH TRACKS
+  paper2-wp4-dneff — DOWN — WP4 ΔNeff microphysics — reheating + decay parameter scans
+
+  paper2-wp5-spin — DOWN — WP5 spin amplitude — parity-odd TTT mapping + Monte Carlo
+
+  paper2-p7-cnn — ALIVE — P7 CNN spin classifier — ResNet-18 + bias audits + dipole fit
+    Dirs: runs, figures   model.pt: no   Scripts: 4   Docs: 3
+    Latest output: 2026-03-05 22:40:15 UTC (9.0h ago)
+
+  paper2-p6-eb — DOWN — P6 CMB EB birefringence — literature registry + optional map estimator
+
+==============================================================================
+  WARNINGS
+  [CRITICAL] paper2-wp4-dneff is UNREACHABLE
+  [CRITICAL] paper2-wp5-spin is UNREACHABLE
+  [CRITICAL] paper2-p6-eb is UNREACHABLE
+  [MEDIUM] paper2-p7-cnn outputs stale (9.0 hours old)
+  [LOW] bigbounce-gpu-validation missing MANIFEST.md
+
+==============================================================================
+  RECOMMENDED ACTIONS
+  1. Check pod paper2-wp4-dneff — may need restart via RunPod dashboard
+  2. Check pod paper2-wp5-spin — may need restart via RunPod dashboard
+  3. Investigate stale outputs on paper2-p7-cnn — process may have crashed
+  4. Check pod paper2-p6-eb — may need restart via RunPod dashboard
+
+==============================================================================

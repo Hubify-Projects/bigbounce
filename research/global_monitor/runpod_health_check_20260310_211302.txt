@@ -1,0 +1,266 @@
+==============================================================================
+  BIGBOUNCE RUNPOD CHAIN HEALTH CHECK
+  Date: 2026-03-10 21:13 UTC
+  Author: Automated diagnostics (Claude Code)
+  Mode: READ-ONLY — no jobs modified
+==============================================================================
+
+==============================================================================
+  STEP 1 — POD STATUS
+==============================================================================
+
+  +----------------------------+----------------+----------+----------+
+  | Pod                        | Pod ID         | SSH Test | Status   |
+  +----------------------------+----------------+----------+----------+
+  | bigbounce-gpu-validation   | 47htajss1ng2ig | REFUSED  | DOWN     |
+  |   195.26.233.79:38115      |                |          |          |
+  |   RTX 6000 Ada 48GB        |                |          |          |
+  +----------------------------+----------------+----------+----------+
+  | bigbounce-cpu1-primary     | m4xpnxzgokd93f | REFUSED  | DOWN     |
+  |   157.157.221.30:30194     |                |          |          |
+  |   cpu5c 32vCPU 124GB       |                |          |          |
+  +----------------------------+----------------+----------+----------+
+  | bigbounce-cpu2-secondary   | eblghcn6u43wfk | REFUSED  | DOWN     |
+  |   157.157.221.30:40204     |                |          |          |
+  |   cpu5c 32vCPU 124GB       |                |          |          |
+  +----------------------------+----------------+----------+----------+
+
+  ALL THREE PAPER-1 PODS ARE UNREACHABLE.
+
+  SSH error on all pods: "Connection refused"
+  This means the pods are either stopped, terminated, or the SSH daemon
+  is not running. This is NOT a network timeout — the host is responding
+  but the port is closed, indicating the pod container is down.
+
+  Last confirmed alive: 2026-03-09 21:15 UTC (live SSH audit)
+  Time since last contact: ~24 hours
+
+  Paper 2 pods (also tested):
+  - paper2-wp4-dneff (69.30.85.227:22055): REFUSED — DOWN
+  - paper2-wp5-spin, paper2-p7-cnn, paper2-p6-eb: Expected DOWN (stopped)
+
+  Uptime/CPU/memory/disk/GPU: CANNOT BE DETERMINED (no SSH access)
+
+==============================================================================
+  STEP 2 — COBAYA CHAIN STATUS (LAST KNOWN)
+==============================================================================
+
+  Cannot perform live verification. Reporting last known state from
+  the live chain audit on 2026-03-09 21:15 UTC.
+
+  LAST KNOWN STATE (2026-03-09 21:15 UTC):
+
+  --- GPU POD (32 cobaya processes) ---
+  Datasets: 4 (planck_only, planck_bao, planck_bao_sn, full_tension)
+  Chains per dataset: 7 (chain1 lagging + chains 2-7 = cohort_main)
+  Chain directories: 28
+  All 32 chains were actively writing (last write < 10 min at time of audit).
+
+  --- CPU#1 (16 cobaya processes) ---
+  Datasets: 4 × 4 chains = 16 chains (ΔNeff model)
+  All 16 chains were actively writing.
+
+  --- CPU#2 (16 cobaya processes) ---
+  Datasets: 4 × 4 chains = 16 chains (ΛCDM controls)
+  All 16 chains were actively writing.
+
+  CURRENT STATUS: UNKNOWN — pods are unreachable.
+  CHAINS ARE PRESUMED STOPPED since pods are down.
+
+==============================================================================
+  STEP 3 — BILLING / RESOURCE FAILURE ANALYSIS
+==============================================================================
+
+  CANNOT ACCESS SYSTEM LOGS (pods unreachable).
+
+  Last known resource state (2026-03-09 21:15 UTC):
+  +----------------------------+--------+---------+---------+
+  | Pod                        | Disk   | Memory  | CPU     |
+  +----------------------------+--------+---------+---------+
+  | bigbounce-gpu-validation   | 46%    | 23%     | 100%    |
+  | bigbounce-cpu1-primary     | 6%     | 25%     | 100%    |
+  | bigbounce-cpu2-secondary   | 5%     | 25%     | 100%    |
+  +----------------------------+--------+---------+---------+
+
+  Resource-related shutdown analysis:
+  - Disk full:   UNLIKELY — GPU at 46%, CPUs at 5-6%. No disk pressure.
+  - OOM kill:    UNLIKELY — memory at 23-25%. Comfortable headroom.
+  - GPU crash:   N/A — GPU was 0% (Cobaya MCMC is CPU-bound with CLASS/CAMB).
+
+  MOST LIKELY CAUSE: BILLING-RELATED SHUTDOWN
+  Evidence:
+  1. All 3 pods went down simultaneously (or within the same ~24h window)
+  2. Connection is "refused" not "timed out" — pods are terminated, not hung
+  3. No resource pressure was detected at last audit
+  4. GPU pod had 52+ days uptime, CPU pods had 422+ days uptime
+  5. This pattern is consistent with RunPod billing suspension or
+     account-level pod termination (insufficient credits / auto-stop)
+
+  Alternative possibilities:
+  - RunPod platform maintenance (less likely — would affect all users)
+  - Manual stop by operator (possible — check RunPod dashboard)
+
+==============================================================================
+  STEP 4 — MONITOR + BACKUP LOOP STATUS
+==============================================================================
+
+  CANNOT VERIFY — pods unreachable.
+
+  Last known state (2026-03-09 21:15 UTC):
+  +----------------------------+------------------+------------------+------------------+
+  | Pod                        | Monitor Loop     | Freeze Manager   | Backup Loop      |
+  +----------------------------+------------------+------------------+------------------+
+  | bigbounce-gpu-validation   | dead/unknown     | dead/unknown     | RUNNING PID 32200|
+  | bigbounce-cpu1-primary     | alive PID 6594   | alive PID 5454   | N/A              |
+  | bigbounce-cpu2-secondary   | alive PID 4095   | alive PID 3283   | N/A              |
+  +----------------------------+------------------+------------------+------------------+
+
+  GPU pod backup: Last backup was chains_20260309_2032.tar.gz (24.8 MB)
+  CPU pods: Monitor + freeze loops were confirmed alive at last audit.
+
+  Local hourly loop (on this machine):
+  - Started: 2026-03-06 01:31:05 UTC, PID 83885
+  - Script: research/global_monitor/hourly_loop.sh
+  - Status: LIKELY DEAD (local machine may have been restarted since Mar 6)
+
+  ALL MONITORING IS PRESUMED DOWN since pods are unreachable.
+
+==============================================================================
+  STEP 5 — CHAIN PROGRESS SUMMARY (LAST KNOWN: 2026-03-09 21:15 UTC)
+==============================================================================
+
+  GPU COHORT_MAIN (chains 2-7, science metric):
+
+  +------------------+--------+--------+----------+----------+----------+------+------+------+-------+
+  | Dataset          | Chains | Samples| Rm1(H0)  | Rm1(ΔN)  | Rm1(τ)   | ESS  | ESS  | ESS  | Gates |
+  |                  |        |        |          |          |          | H0   | ΔN   | τ    |  /8   |
+  +------------------+--------+--------+----------+----------+----------+------+------+------+-------+
+  | full_tension     |   6    | 62,080 | 0.0036   | 0.0031   | 0.0071   | 781  | 694  | 1243 | 6/8   |
+  | planck_only      |   6    | 24,555 | 0.0042   | 0.0035   | 0.0090   | 569  | 547  | 609  | 5/8   |
+  | planck_bao_sn    |   6    | 25,598 | 0.0081   | 0.0126   | 0.0031   | 691  | 565  | 724  | 4/8   |
+  | planck_bao       |   6    | 24,601 | 0.0266   | 0.0230   | 0.0059   | 479  | 440  | 840  | 3/8   |
+  +------------------+--------+--------+----------+----------+----------+------+------+------+-------+
+
+  GPU chain1 (lagging, excluded from science metric):
+    full_tension: 1,451 | planck_only: 790 | planck_bao_sn: 622 | planck_bao: 645
+
+  CPU#1 (ΔNeff model, 4 chains/dataset):
+    planck_only: 13,205 | planck_bao: 11,996 | planck_bao_sn: 11,739 | full_tension: 11,880
+    Total: 48,820
+
+  CPU#2 (ΛCDM controls, 4 chains/dataset):
+    planck_only: 13,176 | planck_bao: 11,980 | planck_bao_sn: 12,523 | full_tension: 11,964
+    Total: 49,643
+
+  GRAND TOTAL: 236,622 samples across 64 chains on 3 pods.
+  Stalled chains at last audit: ZERO.
+
+  NOTE: These counts are frozen at 2026-03-09 21:15 UTC. No new samples have
+  been written since the pods went down.
+
+==============================================================================
+  STEP 6 — BILLING RISK CHECK
+==============================================================================
+
+  CURRENT STATUS: PODS ARE ALREADY DOWN.
+
+  The billing risk has already materialized — all 3 pods are unreachable.
+
+  Last known disk state:
+  +----------------------------+--------+------------------+------------------------+
+  | Pod                        | Disk   | Growth Rate      | Projected Safe Runtime |
+  +----------------------------+--------+------------------+------------------------+
+  | bigbounce-gpu-validation   | 46%    | ~1-2%/day (est)  | N/A — pod is down      |
+  | bigbounce-cpu1-primary     | 6%     | <1%/day (est)    | N/A — pod is down      |
+  | bigbounce-cpu2-secondary   | 5%     | <1%/day (est)    | N/A — pod is down      |
+  +----------------------------+--------+------------------+------------------------+
+
+  Disk was NOT a risk factor. Memory was NOT a risk factor.
+  The shutdown is almost certainly billing-related or operator-initiated.
+
+  DATA LOSS RISK:
+  - GPU pod: Last backup = chains_20260309_2032.tar.gz (24.8 MB)
+    If pod is terminated (not just stopped), chain data on /workspace may be lost.
+    Archival frozen packs exist from 2026-03-05 and 2026-03-07 but are on the pod.
+  - CPU pods: No backups have ever been pulled to local.
+  - Local copies: The convergence data from the 2026-03-09 audit is saved in
+    research/global_monitor/live_chain_audit.json — this is the safest copy.
+
+  CRITICAL: If these are "terminated" (not "stopped") pods, ALL chain data
+  on /workspace volumes may be permanently lost. Stopped pods retain their
+  volumes; terminated pods do not.
+
+==============================================================================
+  STEP 7 — FINAL STATUS SUMMARY
+==============================================================================
+
+  Are all pods alive?                    NO — ALL 3 PAPER-1 PODS ARE DOWN
+  Are all chains writing?               NO — PRESUMED STOPPED
+  Did any chain stop?                    YES — ALL 64 CHAINS STOPPED (pod-level)
+  Did any pod restart?                   CANNOT DETERMINE — no SSH access
+  Evidence of billing-related shutdown?  YES (HIGH CONFIDENCE)
+    - All pods down simultaneously
+    - No resource pressure at last check
+    - Connection refused (not timeout)
+    - Pattern consistent with billing suspension
+
+  SEVERITY: CRITICAL
+
+  ============================================================
+  IMMEDIATE ACTIONS REQUIRED
+  ============================================================
+
+  1. CHECK RUNPOD DASHBOARD IMMEDIATELY
+     - Log into runpod.io
+     - Verify pod status: stopped vs terminated
+     - If STOPPED: pods can be restarted, data is safe
+     - If TERMINATED: /workspace data may be lost permanently
+     - Check billing status / credit balance
+
+  2. IF PODS ARE STOPPED (data safe):
+     a. Add credits / resolve billing issue
+     b. Restart all 3 pods (GPU first, then CPU#1, CPU#2)
+     c. After restart, verify Cobaya processes auto-resume or restart them:
+        - GPU: 32 cobaya processes across 4 datasets × 7 chains + 4 chain1s
+        - CPU#1: 16 cobaya processes (4 datasets × 4 chains, ΔNeff)
+        - CPU#2: 16 cobaya processes (4 datasets × 4 chains, ΛCDM)
+     d. Restart monitor loops (PIDs will be new after pod restart)
+     e. Restart backup loop on GPU pod
+     f. Pull fresh convergence data after chains resume
+
+  3. IF PODS ARE TERMINATED (data at risk):
+     a. Check if /workspace volumes still exist in RunPod storage
+     b. If volumes exist: create new pods and attach the volumes
+     c. If volumes are gone: use local audit data (live_chain_audit.json)
+        as the last known state — 236,622 samples are documented
+     d. May need to restart MCMC runs from scratch or from frozen packs
+        (if those were backed up anywhere)
+
+  4. PRIORITY DATA RECOVERY:
+     - full_tension (6/8 gates, 62,080 cohort_main samples) is the
+       highest-value dataset — was estimated ~3.5 days from science freeze
+     - CPU chain data (48,820 + 49,643 = 98,463 samples) has NEVER been
+       backed up locally — recovery is critical
+
+  DO NOT:
+  - Do not spin up additional pods until billing is resolved
+  - Do not start new chains — prioritize recovering existing data
+  - Do not modify any configuration until pods are back online
+
+==============================================================================
+  CONVERGENCE STATUS AT TIME OF SHUTDOWN
+==============================================================================
+
+  Estimated freeze order (from 2026-03-09 audit):
+    1. full_tension     — 6/8 gates, was ~3.5 days from freeze
+    2. planck_only      — 5/8 gates, was ~5-6 days from freeze
+    3. planck_bao_sn    — 4/8 gates, was ~4-5 days from freeze
+    4. planck_bao       — 3/8 gates, was ~2+ weeks from freeze
+
+  If pods can be restarted and chains resume from where they left off,
+  full_tension could reach science freeze by ~2026-03-14 (adjusted for
+  the ~1 day of downtime).
+
+==============================================================================
+  END OF HEALTH CHECK — 2026-03-10 21:13 UTC
+==============================================================================

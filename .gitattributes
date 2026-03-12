@@ -1,0 +1,5 @@
+reproducibility/cosmology/frozen/**/spin_torsion.*.txt filter=lfs diff=lfs merge=lfs -text
+reproducibility/cosmology/frozen/**/*.covmat filter=lfs diff=lfs merge=lfs -text
+research/paper2/archives/**/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+research/paper2/archives/**/*.pt filter=lfs diff=lfs merge=lfs -text
+reproducibility/cosmology/paper1_clean_restart_sync/**/spin_torsion.*.txt filter=lfs diff=lfs merge=lfs -text

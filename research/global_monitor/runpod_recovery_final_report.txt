@@ -1,0 +1,229 @@
+==============================================================================
+  BIGBOUNCE RUNPOD RECOVERY — FINAL REPORT
+  Date: 2026-03-10 21:35 UTC
+  Author: Automated diagnostics (Claude Code)
+  Mode: READ-ONLY — no pods modified, no data deleted
+==============================================================================
+
+==============================================================================
+  1. POD STATUS: STOPPED vs TERMINATED
+==============================================================================
+
+  ALL THREE PAPER-1 PODS HAVE BEEN TERMINATED.
+
+  +----------------------------+----------------+-------------+------------------+
+  | Pod                        | Pod ID         | Status      | In RunPod API?   |
+  +----------------------------+----------------+-------------+------------------+
+  | bigbounce-gpu-validation   | 47htajss1ng2ig | TERMINATED  | NO (404/400)     |
+  | bigbounce-cpu1-primary     | m4xpnxzgokd93f | TERMINATED  | NO (404/400)     |
+  | bigbounce-cpu2-secondary   | eblghcn6u43wfk | TERMINATED  | NO (404/400)     |
+  | paper2-p7-cnn              | pkysk4lbaqnhm0 | TERMINATED  | NO (pod: null)   |
+  +----------------------------+----------------+-------------+------------------+
+
+  These pods do not exist in the RunPod account. They are not stopped,
+  not exited, not paused — they are gone. The API returns HTTP 400 or
+  null when queried by pod ID. They do not appear in the pod list.
+
+  Remaining pods (Paper 2, not relevant to MCMC):
+  - paper2-wp4-dneff: EXITED (container disk only, no volume)
+  - paper2-wp5-spin: EXITED (container disk only, no volume)
+  - paper2-p6-eb: EXITED (container disk only, no volume)
+
+  Account balance: $199.99 — billing was NOT the cause.
+
+==============================================================================
+  2. PERSISTENT VOLUMES
+==============================================================================
+
+  The Paper-1 pods used pod-local /workspace storage, NOT network volumes.
+  When pods are terminated, pod-local storage is destroyed.
+
+  Existing network volumes in account:
+  - modest_plum_antlion (20 GB, US-WA-1) — purpose unknown, may be empty
+
+  /workspace volumes for all 3 Paper-1 pods: DESTROYED.
+
+==============================================================================
+  3. CHAIN DATA RECOVERY STATUS
+==============================================================================
+
+  +---------------------+-------------------+-------------------+----------+
+  | Source               | Samples at Death  | Locally Preserved | Status   |
+  +---------------------+-------------------+-------------------+----------+
+  | GPU chains (all)     | ~140,342          | 14,021 (10.0%)    | PARTIAL  |
+  | CPU#1 chains (ΔNeff) | 48,820            | 0                 | LOST     |
+  | CPU#2 chains (ΛCDM)  | 49,643            | 0                 | LOST     |
+  +---------------------+-------------------+-------------------+----------+
+  | TOTAL                | 236,622           | 14,021 (5.9%)     |          |
+  +---------------------+-------------------+-------------------+----------+
+
+  ~224,784 MCMC samples are IRRECOVERABLY LOST.
+
+  What IS preserved locally:
+  - 14,021 early GPU samples (from 2026-03-05 snapshot)
+  - Cobaya checkpoint files for all 28 GPU chains
+  - Learned covariance matrices for all 28 GPU chains
+  - YAML configs for all chain runs
+  - All monitor/analysis scripts (v2-v6)
+  - Complete convergence diagnostics from 2026-03-09 live audit
+    (R-hat, ESS, drift for all datasets on all pods)
+  - Best-fit parameter values and uncertainty estimates
+  - Earlier snapshot from 2026-03-04
+
+==============================================================================
+  4. LOCAL RECOVERY SNAPSHOT LOCATION
+==============================================================================
+
+  Primary GPU data:
+    reproducibility/cosmology/archives/gpu_run_snapshot_20260305_0824/
+    reproducibility/cosmology/archives/gpu_run_snapshot_20260305_0824.tar.gz
+
+  Earlier GPU snapshot:
+    reproducibility/cosmology/runpod_snapshot_20260304/
+
+  Convergence diagnostics (MOST VALUABLE — captures final state):
+    reproducibility/cosmology/convergence_cohort_main.csv
+    reproducibility/cosmology/cpu1_diagnostics/convergence_latest.csv
+    reproducibility/cosmology/cpu2_diagnostics/convergence_latest.csv
+    research/global_monitor/live_chain_audit.json
+    research/global_monitor/live_chain_audit.txt
+
+  Recovery log:
+    research/global_monitor/runpod_recovery_20260310_2130.md
+
+==============================================================================
+  5. GPU AND CPU CHAIN RESUME STATUS
+==============================================================================
+
+  GPU chains: RESUMABLE from 2026-03-05 checkpoints on a new pod.
+  - Checkpoint files, covmats, and configs all preserved locally
+  - Will lose ~90% of accumulated samples but chains can continue
+  - Learned covariance matrices dramatically speed reconvergence
+  - Cobaya `--resume` flag will pick up from checkpoint state
+
+  CPU#1 chains: NOT RESUMABLE — must restart from scratch.
+  - No chain files, checkpoints, or covmats preserved
+  - Can use GPU covmats as initial proposal (significant speedup)
+
+  CPU#2 chains: NOT RESUMABLE — must restart from scratch.
+  - Same situation as CPU#1
+  - ΛCDM converges faster, so less time lost
+
+  Resume classification per dataset:
+
+  +-------------------+---+------+------+------+
+  | Dataset           |Pod| Data | Ckpt | Covmat|
+  +-------------------+---+------+------+------+
+  | full_tension      |GPU| 4599 |  YES |  YES | → RESUME from checkpoint
+  | planck_only       |GPU| 2208 |  YES |  YES | → RESUME from checkpoint
+  | planck_bao        |GPU| 4727 |  YES |  YES | → RESUME from checkpoint
+  | planck_bao_sn     |GPU| 2487 |  YES |  YES | → RESUME from checkpoint
+  | planck_only       |CP1|    0 |  NO  |  NO  | → RESTART (use GPU covmat)
+  | planck_bao        |CP1|    0 |  NO  |  NO  | → RESTART (use GPU covmat)
+  | planck_bao_sn     |CP1|    0 |  NO  |  NO  | → RESTART (use GPU covmat)
+  | full_tension      |CP1|    0 |  NO  |  NO  | → RESTART (use GPU covmat)
+  | planck_only_lcdm  |CP2|    0 |  NO  |  NO  | → RESTART
+  | planck_bao_lcdm   |CP2|    0 |  NO  |  NO  | → RESTART
+  | planck_bao_sn_lcdm|CP2|    0 |  NO  |  NO  | → RESTART
+  | full_tension_lcdm |CP2|    0 |  NO  |  NO  | → RESTART
+  +-------------------+---+------+------+------+
+
+==============================================================================
+  6. DATA LOSS CONFIRMED
+==============================================================================
+
+  YES — SIGNIFICANT DATA LOSS HAS OCCURRED.
+
+  Lost:
+  - ~126,321 GPU chain samples (accumulated 2026-03-05 to 2026-03-09)
+  - All 48,820 CPU#1 chain samples, checkpoints, and covmats
+  - All 49,643 CPU#2 chain samples, checkpoints, and covmats
+  - On-pod frozen packs (5 archival GPU packs from 2026-03-05 and 2026-03-07)
+  - On-pod hourly backup tarballs
+  - All monitor logs, trend data, and convergence history from pod filesystems
+
+  The convergence state that was achieved (full_tension at 6/8 freeze gates,
+  R-hat < 0.005, ESS ~700-1200) must be re-achieved from the early checkpoint
+  state. Estimated additional time: 5-7 days on GPU, 7-10 days on CPU pods.
+
+==============================================================================
+  7. RECOMMENDED NEXT ACTIONS
+==============================================================================
+
+  A. IMMEDIATE (TODAY)
+  ────────────────────
+  1. Log into RunPod dashboard (runpod.io) and confirm the termination.
+     Check activity logs for WHY the pods were terminated.
+
+  2. Check if network volume "modest_plum_antlion" has any useful data.
+
+  3. Provision a new GPU pod:
+     - RTX 6000 Ada (or RTX 4090 / A100 as alternative)
+     - MUST use a network volume (not just container disk)
+     - Upload local GPU snapshot:
+       reproducibility/cosmology/archives/gpu_run_snapshot_20260305_0824/
+     - Resume chains: `cobaya-run <config>.yaml --resume`
+     - Priority: full_tension first, then others
+
+  B. WITHIN 24 HOURS
+  ───────────────────
+  4. Provision 2 new CPU pods:
+     - cpu5c (32 vCPU, 64GB RAM) or equivalent
+     - MUST use network volumes
+     - Copy GPU covmats to CPU pods for faster convergence
+     - Start fresh ΔNeff (CPU#1) and ΛCDM (CPU#2) chains
+
+  5. Set up automated off-pod backup:
+     - Cron job on local machine: rsync chain files every 30 minutes
+     - Or use RunPod's backup/snapshot features
+     - NEVER rely solely on pod-local storage again
+
+  C. AFTER CHAINS ARE RUNNING
+  ───────────────────────────
+  6. Restore monitoring:
+     - Deploy mcmc_monitor_v6.py to all pods
+     - Deploy freeze manager
+     - Deploy backup loop with off-pod rsync
+
+  7. Update pod_registry.yaml with new pod IDs and SSH details.
+
+  8. Run fresh convergence diagnostics and compare to pre-crash state.
+
+  D. PREVENTION
+  ─────────────
+  9. ALL future pods MUST use network volumes.
+  10. ALL chain data MUST be backed up off-pod at least hourly.
+  11. Consider S3/GCS backup as secondary off-pod storage.
+  12. Set up RunPod webhook/email alerts for pod state changes.
+
+==============================================================================
+  EXECUTIVE SUMMARY
+==============================================================================
+
+  All three Paper-1 MCMC pods (GPU + 2 CPU) have been TERMINATED from the
+  RunPod account. This was NOT caused by billing ($199.99 balance remains).
+  The cause is unknown — check RunPod dashboard activity logs.
+
+  ~224,784 of 236,622 MCMC samples (95%) are permanently lost, including
+  ALL CPU chain data (never backed up) and ~90% of GPU chain data.
+
+  The 14,021 early GPU samples with checkpoints and covariance matrices
+  are preserved locally and can be used to resume GPU chains on a new pod.
+  CPU chains must restart from scratch but can use GPU covmats for faster
+  convergence.
+
+  The science is partially preserved: all convergence diagnostics, best-fit
+  values, and the live chain audit from 2026-03-09 are saved locally. The
+  full_tension dataset was at 6/8 freeze gates with R-hat < 0.005.
+
+  Estimated time to re-reach the pre-crash convergence state:
+  - GPU: 5-7 days (resuming from checkpoint with learned covmats)
+  - CPU: 7-10 days (fresh start with GPU covmats as proposal)
+
+  Action required: Provision new pods with NETWORK VOLUMES, upload
+  preserved data, resume/restart chains, and implement automated
+  off-pod backup before any further MCMC work.
+
+==============================================================================
+  END OF FINAL REPORT — 2026-03-10 21:35 UTC
+==============================================================================

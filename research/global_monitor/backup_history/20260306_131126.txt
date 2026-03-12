@@ -1,0 +1,45 @@
+BigBounce Global Backup Report
+Generated: 2026-03-06 13:56:38 UTC
+Duration: 2712.4s
+==============================================================================
+
+bigbounce-gpu-validation        [FAIL]
+  Track: paper1
+  Paths found: chains/, *.log
+  Message: tar failed:  SSH timeout after 100s
+
+bigbounce-cpu1-primary          [OK]
+  Track: paper1
+  Paths found: chains/
+  Tarball: /workspace/bigbounce/reproducibility/cosmology/cpu_primary_run_20260305/backups/backup_bigbounce-cpu1-primary_20260306_131126.tar.gz (2.4 MB)
+  Message: Backup created successfully
+
+bigbounce-cpu2-secondary        [FAIL]
+  Track: paper1
+  Paths found: none
+  Message: No critical outputs found to back up
+
+paper2-wp4-dneff                [SKIP]
+  Track: paper2-track-a
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+paper2-wp5-spin                 [SKIP]
+  Track: paper2-track-b
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+paper2-p7-cnn                   [OK]
+  Track: paper2-track-c
+  Paths found: runs/, figures/, *.py, *.md
+  Tarball: /workspace/paper2/p7_cnn_spin_classifier/backups/backup_paper2-p7-cnn_20260306_131126.tar.gz (118.3 MB)
+  Message: Backup created successfully
+
+paper2-p6-eb                    [SKIP]
+  Track: paper2-track-d
+  Paths found: none
+  Message: UNREACHABLE — skipped
+
+==============================================================================
+Summary: 2 OK, 3 skipped, 2 failed
+Total backup size: 120.7 MB

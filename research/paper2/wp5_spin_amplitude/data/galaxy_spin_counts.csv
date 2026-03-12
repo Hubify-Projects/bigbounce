@@ -1,0 +1,27 @@
+# Galaxy Spin Asymmetry Counts — Reconstructed from Published Tables
+# Source: Shamir (2024), arXiv:2401.09450, "Asymmetry in galaxy spin directions in JWST JADES data"
+# Method: Manual extraction from paper Tables 1-3 and text
+# Date extracted: 2026-03-05
+# Contact: Houston Golden (research@hubify.com)
+#
+# IMPORTANT: These values are reconstructed from published figures and tables.
+# They are NOT from a downloadable machine-readable catalog.
+# Small rounding differences from the original are possible.
+#
+# Columns:
+#   survey: Name of the galaxy survey/dataset
+#   N_CW: Number of clockwise spiral galaxies
+#   N_CCW: Number of counter-clockwise spiral galaxies
+#   N_total: Total classified spirals
+#   A_obs: Observed asymmetry = (N_CCW - N_CW) / N_total
+#   sigma_A: Statistical uncertainty on A (Poisson: ~1/sqrt(N_total))
+#   z_range: Approximate redshift range
+#   sky_region: Sky coverage description
+#   ref_table: Table/section in source paper
+#
+survey,N_CW,N_CCW,N_total,A_obs,sigma_A,z_range,sky_region,ref_table
+JWST_JADES_GOODS_S,87,108,195,0.108,0.072,0.0-6.0,GOODS-South (JADES),Table 1
+SDSS_DR7_Shamir2012,30628,31317,61945,0.011,0.004,0.0-0.3,SDSS footprint (North),text Sec 2
+Pan-STARRS_Shamir2020,33498,34589,68087,0.016,0.004,0.0-0.3,Pan-STARRS footprint,text Sec 2
+HST_Shamir2020,5646,5882,11528,0.020,0.009,0.0-1.0,HST archive fields,text Sec 2
+DECaLS_Shamir2021,36284,37476,73760,0.016,0.004,0.0-0.3,DECaLS footprint (South),text Sec 2

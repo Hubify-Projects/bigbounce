@@ -1,0 +1,3 @@
+WARNING: This dataset uses SYNTHETIC images.
+NOT FOR SCIENCE. Pipeline testing only.
+Replace with real SDSS images before any scientific analysis.

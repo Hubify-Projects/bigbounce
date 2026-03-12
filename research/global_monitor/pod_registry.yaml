@@ -1,0 +1,141 @@
+# BigBounce Global Pod Registry
+# All active computation pods across Paper 1 and Paper 2
+# Updated: 2026-03-11
+#
+# Usage: read by global_status.py, global_backup.py, global_artifact_index.py
+
+auto_discovery_enabled: true
+
+pods:
+  # ============================================================
+  # PAPER 1 — CLEAN RESTART (2026-03-11)
+  # ============================================================
+
+  - pod_name: bigbounce-paper1-cpu5
+    track_name: paper1
+    purpose: "Paper-1 clean restart — ΛCDM+ΔNeff, 24 chains, 4 datasets"
+    pod_id: 83ubwlcdk0gat2
+    ssh: "ssh -i ~/.ssh/id_ed25519 -p 36579 root@157.157.221.30"
+    ssh_port: 36579
+    ssh_host: 157.157.221.30
+    working_dir: /workspace/bigbounce
+    hardware: "CPU5 Compute-Optimized (32 vCPU, 64 GB RAM)"
+    expected_outputs: /workspace/bigbounce/chains/dneff/
+    network_volume_id: a9d3xb63bv
+    network_volume_name: bigbounce-paper1-canonical
+    network_volume_size_gb: 150
+    datacenter: EUR-IS-1
+    cost_per_hr: 1.12
+    backup_script: /workspace/bigbounce/backup_hourly.sh
+    backup_cron: "0 * * * *"
+    tags: [paper1, canonical, cpu, mcmc, clean-restart, dneff]
+    last_seen: "2026-03-11 02:10 UTC"
+    notes: "24 cobaya chains (6 per dataset × 4 datasets). Warm-start covmats from gpu_run_snapshot_20260305_0824. Hourly backups + off-pod sync."
+
+  # ============================================================
+  # PAPER 1 — TERMINATED PODS (archived, data lost)
+  # ============================================================
+
+  - pod_name: bigbounce-gpu-validation
+    track_name: paper1-terminated
+    purpose: "TERMINATED — GPU validation run (pre-crash)"
+    pod_id: 47htajss1ng2ig
+    status: TERMINATED
+    tags: [paper1, terminated, archived]
+    notes: "Terminated 2026-03-09. 140,342 GPU samples lost. Covmats and early snapshots survive locally."
+
+  - pod_name: bigbounce-cpu1-primary
+    track_name: paper1-terminated
+    purpose: "TERMINATED — CPU#1 primary MCMC (pre-crash)"
+    pod_id: m4xpnxzgokd93f
+    status: TERMINATED
+    tags: [paper1, terminated, archived]
+    notes: "Terminated 2026-03-09. 48,820 samples lost. Only convergence CSV survives."
+
+  - pod_name: bigbounce-cpu2-secondary
+    track_name: paper1-terminated
+    purpose: "TERMINATED — CPU#2 ΛCDM controls (pre-crash)"
+    pod_id: eblghcn6u43wfk
+    status: TERMINATED
+    tags: [paper1, terminated, archived]
+    notes: "Terminated 2026-03-09. 49,643 samples lost. Only convergence CSV survives."
+
+  # ============================================================
+  # PAPER 2 — Research Tracks (NEW, deploying)
+  # ============================================================
+
+  - pod_name: paper2-wp4-dneff
+    track_name: paper2-track-a
+    purpose: "WP4 ΔNeff microphysics — reheating + decay parameter scans"
+    pod_id: bpou58tmt95jjb
+    ssh: "ssh -i ~/.ssh/id_ed25519 -p 22055 root@69.30.85.227"
+    ssh_port: 22055
+    ssh_host: 69.30.85.227
+    working_dir: /workspace/paper2/wp4_dneff_microphysics
+    hardware: "RTX A5000 (24GB VRAM), secure cloud"
+    expected_outputs: /workspace/paper2/wp4_dneff_microphysics/runs/
+    monitor_script: null
+    backup_loop: null
+    freeze_script: null
+    status_file: null
+    python: python3.11
+    tags: [paper2, wp4, dneff, microphysics, cpu-workload]
+    last_seen: "2026-03-05 22:40 UTC"
+    notes: "First run complete: reheating (24k rows) + decay (32k rows). Best ΔNeff~0.15 fits found."
+
+  - pod_name: paper2-wp5-spin
+    track_name: paper2-track-b
+    purpose: "WP5 spin amplitude — parity-odd TTT mapping + Monte Carlo"
+    pod_id: mz3srzbzxxv1yj
+    ssh: "ssh -i ~/.ssh/id_ed25519 -p 22157 root@69.30.85.228"
+    ssh_port: 22157
+    ssh_host: 69.30.85.228
+    working_dir: /workspace/paper2/wp5_spin_amplitude
+    hardware: "RTX A5000 (24GB VRAM), secure cloud"
+    expected_outputs: /workspace/paper2/wp5_spin_amplitude/runs/
+    monitor_script: null
+    backup_loop: null
+    freeze_script: null
+    status_file: null
+    python: python3.11
+    tags: [paper2, wp5, spin, amplitude, cpu-workload]
+    last_seen: "2026-03-05 22:39 UTC"
+    notes: "First run complete: 100k MC samples, eps_PO=0.24 (68% CI 0.14-0.38), 3 figures."
+
+  - pod_name: paper2-p7-cnn
+    track_name: paper2-track-c
+    purpose: "P7 CNN spin classifier — ResNet-18 + bias audits + dipole fit"
+    pod_id: pkysk4lbaqnhm0
+    ssh: "ssh -i ~/.ssh/id_ed25519 -p 22183 root@69.30.85.244"
+    ssh_port: 22183
+    ssh_host: 69.30.85.244
+    working_dir: /workspace/paper2/p7_cnn_spin_classifier
+    hardware: "RTX A5000 (24GB VRAM), secure cloud"
+    expected_outputs: /workspace/paper2/p7_cnn_spin_classifier/runs/
+    monitor_script: null
+    backup_loop: null
+    freeze_script: null
+    status_file: null
+    python: python3
+    tags: [paper2, p7, cnn, gpu-workload, classifier]
+    last_seen: "2026-03-05 22:40 UTC"
+    notes: "First run complete: ResNet-18 10 epochs, val_acc=0.55, test_acc=0.49 (synthetic data — expected ~random). Model saved (128MB)."
+
+  - pod_name: paper2-p6-eb
+    track_name: paper2-track-d
+    purpose: "P6 CMB EB birefringence — literature registry + optional map estimator"
+    pod_id: uktt3hghbs1djo
+    ssh: "ssh -i ~/.ssh/id_ed25519 -p 22128 root@69.30.85.234"
+    ssh_port: 22128
+    ssh_host: 69.30.85.234
+    working_dir: /workspace/paper2/p6_cmb_eb_pipeline
+    hardware: "RTX A5000 (24GB VRAM), secure cloud"
+    expected_outputs: /workspace/paper2/p6_cmb_eb_pipeline/runs/
+    monitor_script: null
+    backup_loop: null
+    freeze_script: null
+    status_file: null
+    python: python3.11
+    tags: [paper2, p6, cmb, eb, birefringence, cpu-workload]
+    last_seen: "2026-03-05 22:40 UTC"
+    notes: "Tier 1 complete: β=0.36±0.03 (all), β=0.39±0.03 (independent), chi2 p=0.03. Forest plot saved. Tier 2 not attempted."

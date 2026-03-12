@@ -1,0 +1,22 @@
+BigBounce Config Diff Report — 2026-03-05 07:40:29 UTC
+================================================================================
+
+Two differences found between original and parallel chain configs:
+  1) burn_in: 0.3 (original) vs 0.1 (parallel)
+  2) learn_proposal_Rminus1_max: 30 (original) vs 50 (parallel)
+
+IMPACT ASSESSMENT:
+  burn_in: fraction of initial samples discarded. 0.1 vs 0.3 = parallel
+  chains keep more of their early samples. This is a tuning choice, NOT a
+  physics difference. Post-convergence samples are statistically equivalent.
+
+  learn_proposal_Rminus1_max: R-1 threshold above which Cobaya continues
+  adapting the proposal covariance. 50 vs 30 = parallel chains adapt longer.
+  Again, a tuning choice. Once R-1 drops below both thresholds, behavior is
+  identical. Does NOT affect the target distribution being sampled.
+
+VERDICT: NOT BLOCKING. All chains sample the same posterior. Tuning params
+affect MCMC efficiency, not correctness. Mixing chains is valid for R-hat
+computation since they target the same distribution.
+
+Within each group (original or parallel), configs are IDENTICAL.

@@ -1,0 +1,202 @@
+P7 CNN Spin Classifier -- Failure Analysis
+===========================================
+Date: 2026-03-05
+Pipeline: BigBounce P7 (ResNet-18 galaxy spin CW/CCW classifier)
+Author: Houston Golden
+
+
+EXECUTIVE SUMMARY
+-----------------
+The P7 spin classifier achieved random-chance accuracy (val=0.55, test=0.49)
+due to a critical augmentation bug that corrupted ~25% of training labels,
+compounded by the use of synthetic (non-SDSS) training images.
+
+
+OBSERVED PERFORMANCE
+--------------------
+  val_acc  = 0.55  (chance = 0.50)
+  test_acc = 0.49  (below chance)
+
+  Test prediction probabilities: range ~0.44 to ~0.59
+  The model learned nothing -- outputs are clustered at p=0.5 for both classes.
+
+  Model file: model.pt (saved at best val_acc checkpoint)
+  Architecture: ResNet-18 (ImageNet-pretrained, FC -> 2 classes, ~11M params)
+
+
+ROOT CAUSE ANALYSIS
+--------------------
+
+1. CRITICAL BUG: Conflicting horizontal flip in parity augmentation + transforms
+   -------------------------------------------------------------------------------
+   File: train_resnet18.py
+
+   The parity augmentation (lines 132-134 in GalaxySpinDataset.__getitem__) and
+   the RandomHorizontalFlip in the training transform pipeline (line 148 in
+   get_transforms) destructively interfere.
+
+   Code path for a training sample:
+
+     Step A -- Parity augmentation (line 132-134):
+       if self.parity_aug and np.random.random() < 0.5:
+           img = img.transpose(Image.FLIP_LEFT_RIGHT)   # mirror image
+           label_idx = 1 - label_idx                     # invert label (CW<->CCW)
+
+     Step B -- Transform pipeline (line 148, applied at line 137):
+       transforms.RandomHorizontalFlip(p=0.5)           # mirror again, NO label change
+
+   The four possible outcomes for each training sample:
+
+     Case  | Parity aug (p=0.5) | RandomHFlip (p=0.5) | Net image state  | Label   | Correct?
+     ------+--------------------+----------------------+------------------+---------+----------
+      1    | NO flip            | NO flip              | Original         | Original| YES
+      2    | NO flip            | YES flip             | Flipped          | Original| WRONG (*)
+      3    | YES flip+invert    | NO flip              | Flipped          | Inverted| YES
+      4    | YES flip+invert    | YES flip             | Original (back)  | Inverted| WRONG (*)
+
+     (*) Cases 2 and 4 each occur with probability 0.25.
+
+   Case 2: Image is flipped but label is NOT inverted -- wrong label.
+   Case 4: Image is flipped back to original but label IS inverted -- wrong label.
+
+   Net result: 50% of training samples have correct labels, 50% have wrong labels.
+
+   Wait -- that is even worse than 25%. Let me re-examine.
+
+   Actually, Cases 1 and 3 are correct (probability 0.25 each = 50% correct).
+   Cases 2 and 4 are incorrect (probability 0.25 each = 50% incorrect).
+
+   With 50% label noise uniformly distributed across classes, the Bayes-optimal
+   classifier outputs p=0.5 for all inputs. This matches the observed behavior
+   exactly: the model converged to predicting ~0.5 for every sample.
+
+   NOTE: The effective label noise is 50%, not 25%. Each of the four equally
+   likely cases contributes 25% probability. Two of the four cases are wrong,
+   so 50% of all training labels are corrupted. This makes the task completely
+   unlearnable -- the optimal strategy is to predict the prior (0.5) always.
+
+   FIX: Remove RandomHorizontalFlip from the training transforms (line 148).
+   The parity augmentation already handles horizontal flipping with the correct
+   label semantics. The two mechanisms must not coexist.
+
+   Corrected get_transforms("train") should be:
+     transforms.Compose([
+         transforms.Resize(144),
+         transforms.RandomCrop(img_size),
+         # NO RandomHorizontalFlip -- parity aug handles this
+         transforms.RandomRotation(15),
+         transforms.ColorJitter(brightness=0.2, contrast=0.2),
+         transforms.ToTensor(),
+         transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                              std=[0.229, 0.224, 0.225]),
+     ])
+
+
+2. ALL training data is synthetic (not real galaxy images)
+   -------------------------------------------------------
+   File: dataset_build_sdss_gz.py
+
+   The dataset builder (dataset_build_sdss_gz.py) has a fallback mode that
+   generates procedural spiral images using PIL when SDSS downloads are
+   unavailable. On the RunPod training environment, SDSS downloads were not
+   available, so the script fell back to synthetic mode.
+
+   Evidence:
+   - SYNTHETIC_DATA_FLAG.txt exists in the data directory (written at line 551)
+   - Images are PIL-drawn spirals: colored dots on a dark background with a
+     central elliptical bulge (see generate_synthetic_spiral, lines 398-481)
+
+   The synthetic images bear no resemblance to real SDSS galaxy cutouts:
+   - No realistic noise, PSF, or background
+   - No galaxy substructure (bars, rings, dust lanes)
+   - Spiral arms are simple Archimedean curves with Gaussian scatter
+   - Uniform dark background instead of sky noise
+
+   Even without the label-corruption bug (issue #1), training on these images
+   would produce a model that cannot generalize to real galaxy images.
+
+   Dataset size:
+   - 2000 total images: 1000 CW + 1000 CCW (perfectly balanced)
+   - Split: 1400 train / 300 val / 300 test (70/15/15 stratified)
+
+   This is far too small for a network with 11M parameters (ResNet-18).
+   Typical galaxy morphology classifiers use 50,000-300,000 images.
+
+
+3. Extreme model-data size mismatch
+   ---------------------------------
+   ResNet-18 has ~11.2 million trainable parameters.
+   Training set has 1,400 images (128x128 px).
+   That is ~8,000 parameters per training image -- massively overparameterized.
+
+   Without aggressive regularization or a much larger dataset, the model will
+   either memorize or (in this case, due to label noise) fail to learn anything.
+
+   The existing regularization (weight_decay=1e-4, label_smoothing=0.1,
+   dropout in ResNet is minimal) is insufficient for this data regime.
+
+
+4. Hyperparameters are reasonable but irrelevant given upstream issues
+   -------------------------------------------------------------------
+   - AdamW optimizer, lr=1e-4, weight_decay=1e-4
+   - CosineAnnealingLR scheduler
+   - Label smoothing = 0.1
+   - 10 epochs (default is 30, but the run used 10)
+   - Batch size = 64
+   - ImageNet pretrained weights
+
+   These are standard fine-tuning hyperparameters. They are not the cause of
+   failure. Even perfect hyperparameters cannot overcome 50% label corruption.
+
+
+RECOMMENDATION FOR SECOND RUN
+------------------------------
+
+Priority 1 (MUST FIX):
+  - Remove RandomHorizontalFlip(p=0.5) from line 148 of train_resnet18.py.
+    The parity augmentation at lines 132-134 already provides equivariant
+    horizontal flipping with correct label handling. The two cannot coexist.
+
+Priority 2 (MUST FIX):
+  - Obtain real SDSS/DECaLS galaxy images. Either:
+    (a) Run dataset_build_sdss_gz.py with working network access to SDSS DR17, or
+    (b) Use a pre-downloaded Galaxy Zoo DECaLS image set (e.g., from Zenodo), or
+    (c) Use the Galaxy Zoo 2 Kaggle dataset as an alternative source.
+  - Target at least 10,000 images per class (20,000+ total).
+
+Priority 3 (SHOULD FIX):
+  - Consider a smaller model (e.g., EfficientNet-B0 or a custom 4-layer CNN)
+    if the dataset remains small (<10k images).
+  - Add a check in train_resnet18.py that asserts SYNTHETIC_DATA_FLAG.txt does
+    NOT exist before training, to prevent accidental training on synthetic data.
+
+Priority 4 (NICE TO HAVE):
+  - Increase epochs to 30-50 with early stopping based on val_loss.
+  - Add a RandomVerticalFlip (chirality is invariant under vertical flip,
+    so no label inversion needed -- this is safe additional augmentation).
+  - Log per-epoch prediction histograms to detect label noise early.
+
+
+CLASSIFICATION
+--------------
+This failure is a PIPELINE / CODE BUG, not a physics result.
+
+The near-chance accuracy does not indicate anything about the learnability of
+galaxy spin classification from images or about any physical signal. It is
+entirely explained by the augmentation conflict that corrupts 50% of training
+labels, combined with the use of non-representative synthetic data.
+
+No scientific conclusions should be drawn from this run. The model.pt
+checkpoint should be discarded and not used for inference or dipole fitting.
+
+
+APPENDIX: Code References
+--------------------------
+  train_resnet18.py:132-134  -- parity augmentation (correct logic, wrong context)
+  train_resnet18.py:148      -- RandomHorizontalFlip(p=0.5) (the bug)
+  train_resnet18.py:136-137  -- transform application (after parity aug)
+  train_resnet18.py:173-180  -- ResNet-18 model construction
+  train_resnet18.py:400      -- CrossEntropyLoss with label_smoothing=0.1
+  dataset_build_sdss_gz.py:398-481  -- synthetic spiral generator
+  dataset_build_sdss_gz:510-556     -- synthetic dataset generation + flag file
+  dataset_build_sdss_gz.py:562-604  -- 70/15/15 train/val/test split

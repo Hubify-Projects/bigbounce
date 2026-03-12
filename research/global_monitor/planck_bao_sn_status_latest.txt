@@ -1,0 +1,209 @@
+================================================================
+PAPER-1 CHAIN STATUS AUDIT — FULL REPORT
+================================================================
+Generated: 2026-03-12 06:42 UTC
+Previous:  2026-03-11 21:17 UTC
+
+================================================================
+STEP 1 — POD HEALTH
+================================================================
+
+Pod ID:           83ubwlcdk0gat2
+Hostname:         8dbde78e6b05
+Region:           EUR-IS-1 (Iceland)
+Spec:             CPU5 Compute-Optimized, 32 vCPU, 124 GB RAM
+Cost:             $1.12/hr
+Uptime:           424 days 17h 19m (container)
+
+CPU Load:         34.48 / 33.75 / 33.62 (1/5/15 min)
+RAM Usage:        14 GB / 124 GB (11%, 109 GB available)
+Disk (/workspace): 599 TB / 839 TB (72%, shared NFS)
+
+Active Cobaya Processes: 6 (PIDs 5056-5061, started Mar 11 17:32)
+
+Chain write confirmation (all actively writing):
+  chain_01: last write 29s ago — ACTIVE
+  chain_02: last write  8s ago — ACTIVE
+  chain_03: last write 25s ago — ACTIVE
+  chain_04: last write 21s ago — ACTIVE
+  chain_05: last write 29s ago — ACTIVE
+  chain_06: last write 32s ago — ACTIVE
+
+ALL 6 CHAINS CONFIRMED ACTIVELY WRITING.
+
+================================================================
+STEP 2 — PLANCK_BAO_SN CHAIN PROGRESS
+================================================================
+
+Path: /workspace/bigbounce/chains/dneff/planck_bao_sn/
+
+Chain    Accepted   File Size    Last Modified          PID    Growth (+)
+------   --------   ---------    ---------------------- ----   ----------
+01       11,074     9.13 MB      2026-03-12 06:42 UTC   5056   +7,648
+02       11,180     9.21 MB      2026-03-12 06:42 UTC   5057   +7,801
+03       11,441     9.43 MB      2026-03-12 06:42 UTC   5058   +7,970
+04       10,895     8.98 MB      2026-03-12 06:42 UTC   5059   +7,641
+05       10,885     8.97 MB      2026-03-12 06:42 UTC   5060   +7,550
+06       11,520     9.49 MB      2026-03-12 06:42 UTC   5061   +8,021
+------   --------   ---------                                  --------
+TOTAL    66,995     55.21 MB                                   +46,631
+
+Runtime since resume:     13.2 hours (resumed 2026-03-11 17:32 UTC)
+Throughput:               5,083 accepted/hr (overall average)
+
+Growth since previous audit (21:17 UTC, 9.4h ago):
+  +46,631 samples — steady at ~4,960/hr
+
+ESS growth rates (from 13.2h runtime):
+  H0:         3,771 / 13.2h = 286 ESS/hr
+  delta_neff: 3,325 / 13.2h = 252 ESS/hr
+  tau:        4,902 / 13.2h = 371 ESS/hr
+
+================================================================
+STEP 3 — CONVERGENCE DIAGNOSTICS
+================================================================
+
+***  ALL 9/9 FREEZE GATES PASS  ***
+
+Gate  Metric             Value      Target      Status
+----  ------             -----      ------      ------
+ 1    R-1 (H0)          0.0019     < 0.01      PASS
+ 2    R-1 (delta_neff)  0.0027     < 0.01      PASS
+ 3    R-1 (tau)         0.0010     < 0.02      PASS
+ 4    ESS (H0)          3,771      > 2,000     PASS
+ 5    ESS (delta_neff)  3,325      > 2,000     PASS
+ 6    ESS (tau)         4,902      > 1,000     PASS
+ 7    Drift (H0)        0.065σ     < 0.1σ      PASS
+ 8    Drift (delta_neff) 0.067σ    < 0.1σ      PASS
+ 9    Drift (tau)        0.011σ    < 0.1σ      PASS
+
+Convergence quality: EXCELLENT
+  - R-hat well below targets (worst: 0.0027)
+  - ESS exceeds targets by 1.5-4.9x
+  - Drift extremely low — chains fully stationary
+
+Current Mean Values (66,995 samples):
+  H0         = 67.824 km/s/Mpc
+  delta_neff = +0.065
+  tau        = 0.056
+  sigma8     = 0.812
+  omegam     = 0.312
+  ns         = 0.967
+
+Comparison with full_tension:
+  Parameter      full_tension    planck_bao_sn    Shift
+  H0             67.68           67.82            +0.14 (0.1σ)
+  delta_neff     -0.020          +0.065           +0.085 (0.5σ)
+  tau            0.054           0.056            +0.002 (0.3σ)
+  sigma8         0.803           0.812            +0.009 (1.1σ)
+  omegam         0.308           0.312            +0.004 (0.7σ)
+  ns             0.965           0.967            +0.002 (0.3σ)
+
+Key finding: delta_neff shifts from -0.020 to +0.065 when removing
+the Riess H0 and DES S8 priors. Both are consistent with zero.
+
+================================================================
+STEP 4 — ETA TO FREEZE
+================================================================
+
+Parameter      Current ESS   Target   Status
+---------      -----------   ------   ------
+H0             3,771         2,000    DONE (1.9x target)
+delta_neff     3,325         2,000    DONE (1.7x target)
+tau            4,902         1,000    DONE (4.9x target)
+
+*** SCIENCE CONVERGENCE REACHED ***
+*** planck_bao_sn IS READY TO FREEZE ***
+
+No remaining ESS shortfall. All R-hat, ESS, and drift gates pass.
+
+FREEZE ETA: NOW — ready for immediate freeze when user authorizes.
+
+================================================================
+STEP 5 — STORAGE AND BACKUP CHECK
+================================================================
+
+--- Network Volume (Layer 1) ---
+Volume:           a9d3xb63bv (bigbounce-paper1-canonical)
+Total usage:      1.1 GB (/workspace/bigbounce/)
+Chain dirs:       6/6 present for planck_bao_sn
+Status:           HEALTHY
+
+--- Hourly Backup System (Layer 2) ---
+Crontab:          0 * * * * /workspace/bigbounce/backup_hourly.sh
+Last 5 snapshots:
+  2026-03-12 06:00 UTC    38 MB
+  2026-03-12 05:00 UTC    38 MB
+  2026-03-12 04:00 UTC    37 MB
+  2026-03-12 03:00 UTC    36 MB
+  2026-03-12 02:00 UTC    35 MB
+Snapshot growth confirms chains are producing.
+Total snapshots since chain start: 30+ (from Mar 11 02:09 onward)
+
+Frozen pack SHA256SUMS (full_tension): PRESENT
+
+--- Local Off-Pod Sync (Layer 3) ---
+Frozen full_tension local copy: 161 MB (synced 2026-03-11 10:28)
+planck_bao_sn: NOT yet synced locally (chains still running)
+
+BACKUP RISK: LOW
+  - Network volume survives pod stop/restart/termination
+  - 30+ hourly snapshots provide recovery granularity
+  - Recommend local sync immediately after freeze
+
+================================================================
+STEP 6 — DATASET QUEUE STATUS
+================================================================
+
+Dataset         Status     Chains   Samples   Last Modified
+-----------     ------     ------   -------   -----------------
+full_tension    FROZEN     6        175,545   2026-03-11 17:28 UTC
+planck_bao_sn   CONVERGED  6        66,995    2026-03-12 06:42 UTC
+planck_only     PAUSED     6        458       2026-03-11 02:28 UTC
+planck_bao      PAUSED     6        469       2026-03-11 02:28 UTC
+
+Paused dataset details (preserved on network volume):
+
+planck_only:
+  chain_01: 69    chain_02: 78    chain_03: 84
+  chain_04: 65    chain_05: 75    chain_06: 87
+  Total: 458 samples — ready to resume with --resume
+
+planck_bao:
+  chain_01: 89    chain_02: 76    chain_03: 69
+  chain_04: 80    chain_05: 88    chain_06: 67
+  Total: 469 samples — ready to resume with --resume
+
+================================================================
+STEP 7 — DECISION SUMMARY
+================================================================
+
+CONVERGENCE STAGE:  *** SCIENCE CONVERGENCE REACHED ***
+                    9/9 freeze gates pass
+                    66,995 accepted samples across 6 chains
+                    Worst R-1: 0.0027 (target < 0.01)
+                    Min ESS: 3,325 (target 2,000)
+                    Max drift: 0.067σ (target < 0.1σ)
+
+FREEZE ETA:         NOW — ready for immediate freeze
+
+RECOMMENDATION:     EXECUTE FREEZE WORKFLOW
+                    planck_bao_sn has met all convergence criteria.
+                    Recommend executing the canonical freeze + packaging
+                    workflow identical to full_tension:
+                    1. Run GetDist validation
+                    2. Create frozen artifact pack
+                    3. Generate SHA256 checksums
+                    4. Create snapshot tarball
+                    5. Sync to local machine
+                    6. Stop chains and resume planck_only
+
+NEXT ACTION:        User authorization to freeze planck_bao_sn
+
+POD COST SO FAR:    $1.12/hr × 13.2h = ~$14.80 for planck_bao_sn
+                    Total pod session: ~$21.50 (full_tension + planck_bao_sn)
+
+KEY SCIENCE RESULT: delta_neff = +0.065 ± TBD (preliminary)
+                    Shifted positive vs full_tension (-0.020)
+                    Both consistent with SM (delta_neff = 0)
+                    Removing H0/S8 priors slightly favors positive dNeff

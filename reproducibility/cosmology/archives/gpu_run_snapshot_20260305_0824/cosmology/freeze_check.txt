@@ -1,0 +1,59 @@
+BigBounce MCMC Freeze Check — 2026-03-05 07:36:08 UTC
+Targets: Rhat_m1 < 0.01 (H0..sigma8), < 0.02 (tau), Drift < 0.2σ
+====================================================================================================
+
+--- PLANCK ONLY ---
+  [all_chains]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.8624, delta_neff=0.6846, sigma8=0.5871
+    Drift20/40 < 0.2σ: FAIL  (H0=-0.5013σ [FAIL], delta_neff=-0.7959σ [FAIL])
+    ESS(H0) = 39.6   ESS(ΔNeff) = 36.9
+    >> all_chains OVERALL: FAIL
+  [cohort_new]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.8624, delta_neff=0.6846, sigma8=0.5871
+    Drift20/40 < 0.2σ: FAIL  (H0=-0.5013σ [FAIL], delta_neff=-0.7959σ [FAIL])
+    ESS(H0) = 39.6   ESS(ΔNeff) = 36.9
+    >> cohort_new OVERALL: FAIL
+
+--- PLANCK BAO ---
+  [all_chains]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=1.6112, delta_neff=0.8541, sigma8=0.5562
+    Drift20/40 < 0.2σ: PASS  (H0=-0.1357σ [PASS], delta_neff=-0.1380σ [PASS])
+    ESS(H0) = 59.4   ESS(ΔNeff) = 43.0
+    >> all_chains OVERALL: FAIL
+  [cohort_new]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=1.6112, delta_neff=0.8541, sigma8=0.5562
+    Drift20/40 < 0.2σ: PASS  (H0=-0.1357σ [PASS], delta_neff=-0.1380σ [PASS])
+    ESS(H0) = 59.4   ESS(ΔNeff) = 43.0
+    >> cohort_new OVERALL: FAIL
+
+--- PLANCK BAO SN ---
+  [all_chains]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.8326, delta_neff=0.6807, sigma8=0.5558
+    Drift20/40 < 0.2σ: FAIL  (H0=-0.2772σ [FAIL], delta_neff=-0.3499σ [FAIL])
+    ESS(H0) = 88.7   ESS(ΔNeff) = 47.7
+    >> all_chains OVERALL: FAIL
+  [cohort_new]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.8326, delta_neff=0.6807, sigma8=0.5558
+    Drift20/40 < 0.2σ: FAIL  (H0=-0.2772σ [FAIL], delta_neff=-0.3499σ [FAIL])
+    ESS(H0) = 88.7   ESS(ΔNeff) = 47.7
+    >> cohort_new OVERALL: FAIL
+
+--- FULL TENSION ---
+  [all_chains]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.9354, sigma8=0.5799, ns=0.3782
+    Drift20/40 < 0.2σ: PASS  (H0=-0.0753σ [PASS], delta_neff=-0.0657σ [PASS])
+    ESS(H0) = 59.1   ESS(ΔNeff) = 43.0
+    >> all_chains OVERALL: FAIL
+  [cohort_new]
+    Rhat_m1 < 0.01 (core) + < 0.02 (tau): FAIL
+    Bottlenecks: tau=0.9354, sigma8=0.5799, ns=0.3782
+    Drift20/40 < 0.2σ: PASS  (H0=-0.0753σ [PASS], delta_neff=-0.0657σ [PASS])
+    ESS(H0) = 59.1   ESS(ΔNeff) = 43.0
+    >> cohort_new OVERALL: FAIL

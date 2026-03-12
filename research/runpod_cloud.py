@@ -176,47 +176,142 @@ def create_pod(
     image: str = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04",
     volume_gb: int = 50,
     container_disk_gb: int = 20,
+    network_volume_id: str = None,
 ) -> dict:
-    """Launch a new RunPod pod."""
+    """Launch a new RunPod pod. If network_volume_id is provided, attaches
+    the network volume and ignores volume_gb (NV provides /workspace)."""
+    if network_volume_id:
+        query = """
+        mutation CreatePod(
+            $name: String!
+            $imageName: String!
+            $gpuTypeId: String!
+            $containerDiskInGb: Int
+            $gpuCount: Int
+            $networkVolumeId: String
+        ) {
+            podFindAndDeployOnDemand(input: {
+                name: $name
+                imageName: $imageName
+                gpuTypeId: $gpuTypeId
+                containerDiskInGb: $containerDiskInGb
+                gpuCount: $gpuCount
+                networkVolumeId: $networkVolumeId
+                startSsh: true
+            }) {
+                id
+                name
+                desiredStatus
+                machine {
+                    gpuDisplayName
+                }
+                costPerHr
+            }
+        }
+        """
+        variables = {
+            "name": name,
+            "imageName": image,
+            "gpuTypeId": gpu_type,
+            "containerDiskInGb": container_disk_gb,
+            "gpuCount": 1,
+            "networkVolumeId": network_volume_id,
+        }
+    else:
+        query = """
+        mutation CreatePod(
+            $name: String!
+            $imageName: String!
+            $gpuTypeId: String!
+            $volumeInGb: Int
+            $containerDiskInGb: Int
+            $gpuCount: Int
+        ) {
+            podFindAndDeployOnDemand(input: {
+                name: $name
+                imageName: $imageName
+                gpuTypeId: $gpuTypeId
+                volumeInGb: $volumeInGb
+                containerDiskInGb: $containerDiskInGb
+                gpuCount: $gpuCount
+                startSsh: true
+            }) {
+                id
+                name
+                desiredStatus
+                machine {
+                    gpuDisplayName
+                }
+                costPerHr
+            }
+        }
+        """
+        variables = {
+            "name": name,
+            "imageName": image,
+            "gpuTypeId": gpu_type,
+            "volumeInGb": volume_gb,
+            "containerDiskInGb": container_disk_gb,
+            "gpuCount": 1,
+        }
+    data = _graphql(query, variables)
+    if not data:
+        return {}
+    return data.get("podFindAndDeployOnDemand", {})
+
+
+def create_network_volume(
+    name: str = "bigbounce-paper1-canonical",
+    size_gb: int = 75,
+    datacenter_id: str = "US-TX-3",
+) -> dict:
+    """Create a persistent network volume."""
     query = """
-    mutation CreatePod(
+    mutation CreateNetworkVolume(
         $name: String!
-        $imageName: String!
-        $gpuTypeId: String!
-        $volumeInGb: Int
-        $containerDiskInGb: Int
-        $gpuCount: Int
+        $size: Int!
+        $dataCenterId: String!
     ) {
-        podFindAndDeployOnDemand(input: {
+        createNetworkVolume(input: {
             name: $name
-            imageName: $imageName
-            gpuTypeId: $gpuTypeId
-            volumeInGb: $volumeInGb
-            containerDiskInGb: $containerDiskInGb
-            gpuCount: $gpuCount
-            startSsh: true
+            size: $size
+            dataCenterId: $dataCenterId
         }) {
             id
             name
-            desiredStatus
-            machine {
-                gpuDisplayName
-            }
-            costPerHr
+            size
+            dataCenterId
         }
     }
     """
     data = _graphql(query, {
         "name": name,
-        "imageName": image,
-        "gpuTypeId": gpu_type,
-        "volumeInGb": volume_gb,
-        "containerDiskInGb": container_disk_gb,
-        "gpuCount": 1,
+        "size": size_gb,
+        "dataCenterId": datacenter_id,
     })
     if not data:
         return {}
-    return data.get("podFindAndDeployOnDemand", {})
+    return data.get("createNetworkVolume", {})
+
+
+def list_network_volumes() -> list:
+    """List all network volumes."""
+    query = """
+    query {
+        myself {
+            networkVolumes {
+                id
+                name
+                size
+                dataCenterId
+            }
+        }
+    }
+    """
+    data = _graphql(query)
+    if not data:
+        return []
+    return data.get("myself", {}).get("networkVolumes", [])
 
 
 def stop_pod(pod_id: str = None) -> dict:

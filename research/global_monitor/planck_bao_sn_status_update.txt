@@ -1,0 +1,57 @@
+planck_bao_sn STATUS UPDATE
+============================
+Updated: 2026-03-11 19:35 UTC
+Pod: 83ubwlcdk0gat2 (CPU5, EUR-IS-1)
+Runtime: 2.1h since resume at 17:32 UTC
+
+CHAINS: 6/6 ALIVE
+  chain_01:   1,996 accepted (weight_sum 6,449)
+  chain_02:   2,029 accepted (weight_sum 6,515)
+  chain_03:   2,038 accepted (weight_sum 6,471)
+  chain_04:   1,906 accepted (weight_sum 6,582)
+  chain_05:   1,989 accepted (weight_sum 6,492)
+  chain_06:   2,027 accepted (weight_sum 7,138)
+  TOTAL:    11,985 accepted
+
+Throughput: ~5,805 accepted/hr
+
+CONVERGENCE
+  Parameter       R-1      Target    ESS    Target    Drift    Status
+  H0              0.0039   <0.01     471    >2000     0.053    R-1 PASS, ESS WAIT
+  delta_neff      0.0064   <0.01     420    >2000     0.034    R-1 PASS, ESS WAIT
+  tau             0.0052   <0.02     673    >1000     0.142    R-1 PASS, ESS WAIT
+
+NOTE: R-hat for all 3 key parameters is now BELOW target.
+Only ESS remains to be satisfied. This is very encouraging.
+
+TIMELINE ESTIMATE
+  H0:         ESS 471/2000  -> need 4.2x samples -> ~7h
+  delta_neff: ESS 420/2000  -> need 4.8x samples -> ~8h
+  tau:        ESS 673/1000  -> need 1.5x samples -> ~1h
+
+  BOTTLENECK: delta_neff ESS (~8h to target)
+  Estimated freeze-ready: ~2026-03-12 03:00-05:00 UTC
+
+  *** FASTER than previous estimate (was ~14:00 UTC) ***
+  R-hat converged early; only ESS accumulation remains.
+
+CURRENT MEAN VALUES (preliminary — 11,985 samples)
+  H0         = 67.92 km/s/Mpc
+  delta_neff = 0.078
+  tau        = 0.056
+  sigma8     = 0.812
+  omegam     = 0.311
+  ns         = 0.967
+
+COMPARISON WITH full_tension
+  Parameter     full_tension    planck_bao_sn    Shift
+  H0            67.68           67.92            +0.24 (within 1sigma)
+  delta_neff    -0.020          +0.078           +0.098 (within 1sigma)
+  tau           0.054           0.056            +0.002 (negligible)
+  sigma8        0.803           0.812            +0.009 (~1sigma)
+  S8            0.814           TBD              —
+
+The positive shift in delta_neff is expected when removing the Riess H0
+and DES S8 priors. Without these "tension" anchors, the CMB+BAO+SN data
+slightly prefer positive delta_neff. This will be a key discussion point
+in the paper.

@@ -1,0 +1,462 @@
+{
+  "collected_at": "2026-03-06 17:58:59 UTC",
+  "scan_duration_seconds": 138.7,
+  "pod_count": 7,
+  "alive_count": 4,
+  "pending_count": 0,
+  "warnings": [
+    {
+      "severity": "LOW",
+      "message": "bigbounce-gpu-validation missing MANIFEST.md"
+    },
+    {
+      "severity": "CRITICAL",
+      "message": "paper2-wp4-dneff is UNREACHABLE"
+    },
+    {
+      "severity": "CRITICAL",
+      "message": "paper2-wp5-spin is UNREACHABLE"
+    },
+    {
+      "severity": "MEDIUM",
+      "message": "paper2-p7-cnn outputs stale (19.3 hours old)"
+    },
+    {
+      "severity": "CRITICAL",
+      "message": "paper2-p6-eb is UNREACHABLE"
+    }
+  ],
+  "recommendations": [
+    "Check pod paper2-wp4-dneff \u2014 may need restart via RunPod dashboard",
+    "Check pod paper2-wp5-spin \u2014 may need restart via RunPod dashboard",
+    "Investigate stale outputs on paper2-p7-cnn \u2014 process may have crashed",
+    "Check pod paper2-p6-eb \u2014 may need restart via RunPod dashboard"
+  ],
+  "pods": [
+    {
+      "pod_name": "bigbounce-gpu-validation",
+      "track_name": "paper1",
+      "purpose": "GPU validation run \u2014 RTX 6000 Ada, 31 cobaya processes, freeze loop",
+      "pod_id": "47htajss1ng2ig",
+      "hardware": "RTX 6000 Ada (48GB VRAM), GPU pod",
+      "tags": [
+        "paper1",
+        "validation",
+        "gpu",
+        "mcmc"
+      ],
+      "alive": true,
+      "ssh_configured": true,
+      "processes": {
+        "cobaya_count": 28,
+        "python_count": 0,
+        "key_processes": [
+          "29 /usr/bin/python",
+          "5 bash"
+        ]
+      },
+      "disk": {
+        "raw": "mfs#us-wa-1.runpod.net:9421  479T  216T  263T  46% /workspace",
+        "percent_used": 46,
+        "total": "479T",
+        "used": "216T",
+        "avail": "263T"
+      },
+      "memory": {
+        "raw": "Mem:          515789       89402        7287        1632      419099      421404",
+        "total_mb": 515789,
+        "used_mb": 89402,
+        "free_mb": 7287
+      },
+      "gpu": {
+        "available": true,
+        "util_percent": 0,
+        "mem_used_mb": 2,
+        "raw": "0, 2"
+      },
+      "output_timestamps": {
+        "newest_file": "/workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain4/spin_torsion.1.txt",
+        "newest_mtime": "2026-03-06 17:56:59 UTC",
+        "age_seconds": 5,
+        "stale": false
+      },
+      "mcmc_convergence": {
+        "raw": "",
+        "available": false
+      },
+      "chain_count": {
+        "chain_files": 28,
+        "chain_dirs": [
+          "full_tension",
+          "full_tension_chain2",
+          "full_tension_chain3",
+          "full_tension_chain4",
+          "full_tension_chain5",
+          "full_tension_chain6",
+          "full_tension_chain7",
+          "planck_bao",
+          "planck_bao_chain2",
+          "planck_bao_chain3",
+          "planck_bao_chain4",
+          "planck_bao_chain5",
+          "planck_bao_chain6",
+          "planck_bao_chain7",
+          "planck_bao_sn",
+          "planck_bao_sn_chain2",
+          "planck_bao_sn_chain3",
+          "planck_bao_sn_chain4",
+          "planck_bao_sn_chain5",
+          "planck_bao_sn_chain6"
+        ]
+      },
+      "paper2_outputs": {},
+      "backup_status": {
+        "freeze_alive": false,
+        "monitor_alive": false
+      },
+      "has_manifest": false,
+      "warnings": [
+        {
+          "severity": "LOW",
+          "message": "bigbounce-gpu-validation missing MANIFEST.md"
+        }
+      ],
+      "collected_at": "2026-03-06 17:56:40 UTC"
+    },
+    {
+      "pod_name": "bigbounce-cpu1-primary",
+      "track_name": "paper1",
+      "purpose": "CPU#1 primary canonical MCMC \u2014 16 chains, 4 datasets",
+      "pod_id": "m4xpnxzgokd93f",
+      "hardware": "cpu5c (32 vCPU, 64GB RAM), CPU pod",
+      "tags": [
+        "paper1",
+        "canonical",
+        "cpu",
+        "mcmc",
+        "primary"
+      ],
+      "alive": true,
+      "ssh_configured": true,
+      "processes": {
+        "cobaya_count": 16,
+        "python_count": 0,
+        "key_processes": [
+          "16 /workspace/cosmo_env/bin/python3.12",
+          "2 bash"
+        ]
+      },
+      "disk": {
+        "raw": "overlay          50G  2.9G   48G   6% /",
+        "percent_used": 6,
+        "total": "50G",
+        "used": "2.9G",
+        "avail": "48G"
+      },
+      "memory": {
+        "raw": "Mem:         127894       32550       90556          19        4787       94099",
+        "total_mb": 127894,
+        "used_mb": 32550,
+        "free_mb": 90556
+      },
+      "gpu": {
+        "available": false,
+        "util_percent": null,
+        "mem_used_mb": null,
+        "raw": ""
+      },
+      "output_timestamps": {
+        "newest_file": "/workspace/bigbounce/reproducibility/cosmology/cpu_primary_run_20260305/chains/full_tension_chain1/spin_torsion.1.txt",
+        "newest_mtime": "2026-03-06 17:57:32 UTC",
+        "age_seconds": 7,
+        "stale": false
+      },
+      "mcmc_convergence": {
+        "raw": "dataset,param,Rhat_all,Rhat_m1_all,ESS_all,drift_all,Rhat_new,Rhat_m1_new,ESS_new,drift_new",
+        "available": true
+      },
+      "chain_count": {
+        "chain_files": 16,
+        "chain_dirs": [
+          "full_tension_chain1",
+          "full_tension_chain2",
+          "full_tension_chain3",
+          "full_tension_chain4",
+          "planck_bao_chain1",
+          "planck_bao_chain2",
+          "planck_bao_chain3",
+          "planck_bao_chain4",
+          "planck_bao_sn_chain1",
+          "planck_bao_sn_chain2",
+          "planck_bao_sn_chain3",
+          "planck_bao_sn_chain4",
+          "planck_only_chain1",
+          "planck_only_chain2",
+          "planck_only_chain3",
+          "planck_only_chain4"
+        ]
+      },
+      "paper2_outputs": {},
+      "backup_status": {
+        "freeze_alive": true,
+        "monitor_alive": true
+      },
+      "has_manifest": true,
+      "warnings": [],
+      "collected_at": "2026-03-06 17:57:15 UTC"
+    },
+    {
+      "pod_name": "bigbounce-cpu2-secondary",
+      "track_name": "paper1",
+      "purpose": "CPU#2 secondary suite \u2014 \u039bCDM controls, 16 chains",
+      "pod_id": "eblghcn6u43wfk",
+      "hardware": "cpu5c (32 vCPU, 64GB RAM), CPU pod",
+      "tags": [
+        "paper1",
+        "controls",
+        "cpu",
+        "mcmc",
+        "secondary",
+        "lcdm"
+      ],
+      "alive": true,
+      "ssh_configured": true,
+      "processes": {
+        "cobaya_count": 16,
+        "python_count": 0,
+        "key_processes": [
+          "16 /workspace/cosmo_env/bin/python3.12",
+          "2 bash"
+        ]
+      },
+      "disk": {
+        "raw": "overlay          50G  2.3G   48G   5% /",
+        "percent_used": 5,
+        "total": "50G",
+        "used": "2.3G",
+        "avail": "48G"
+      },
+      "memory": {
+        "raw": "Mem:         127894       32005       88541          19        7347       94644",
+        "total_mb": 127894,
+        "used_mb": 32005,
+        "free_mb": 88541
+      },
+      "gpu": {
+        "available": false,
+        "util_percent": null,
+        "mem_used_mb": null,
+        "raw": ""
+      },
+      "output_timestamps": {
+        "newest_file": "/workspace/bigbounce/reproducibility/cosmology/cpu_secondary_suite_20260305/controls_lcdm/full_tension_chain2/lcdm.1.txt",
+        "newest_mtime": "2026-03-06 17:58:18 UTC",
+        "age_seconds": 4,
+        "stale": false
+      },
+      "mcmc_convergence": {
+        "raw": "",
+        "available": false
+      },
+      "chain_count": {
+        "chain_files": 16,
+        "chain_dirs": [
+          "full_tension_chain1",
+          "full_tension_chain2",
+          "full_tension_chain3",
+          "full_tension_chain4",
+          "planck_bao_chain1",
+          "planck_bao_chain2",
+          "planck_bao_chain3",
+          "planck_bao_chain4",
+          "planck_bao_sn_chain1",
+          "planck_bao_sn_chain2",
+          "planck_bao_sn_chain3",
+          "planck_bao_sn_chain4",
+          "planck_only",
+          "planck_only_chain1",
+          "planck_only_chain2",
+          "planck_only_chain3",
+          "planck_only_chain4"
+        ]
+      },
+      "paper2_outputs": {},
+      "backup_status": {
+        "freeze_alive": true,
+        "monitor_alive": true
+      },
+      "has_manifest": true,
+      "warnings": [],
+      "collected_at": "2026-03-06 17:57:54 UTC"
+    },
+    {
+      "pod_name": "paper2-wp4-dneff",
+      "track_name": "paper2-track-a",
+      "purpose": "WP4 \u0394Neff microphysics \u2014 reheating + decay parameter scans",
+      "pod_id": "bpou58tmt95jjb",
+      "hardware": "RTX A5000 (24GB VRAM), secure cloud",
+      "tags": [
+        "paper2",
+        "wp4",
+        "dneff",
+        "microphysics",
+        "cpu-workload"
+      ],
+      "alive": false,
+      "ssh_configured": true,
+      "processes": {},
+      "disk": {},
+      "memory": {},
+      "gpu": {},
+      "output_timestamps": {},
+      "mcmc_convergence": {},
+      "chain_count": {},
+      "paper2_outputs": {},
+      "backup_status": {},
+      "has_manifest": false,
+      "warnings": [
+        {
+          "severity": "CRITICAL",
+          "message": "paper2-wp4-dneff is UNREACHABLE"
+        }
+      ],
+      "collected_at": "2026-03-06 17:58:39 UTC"
+    },
+    {
+      "pod_name": "paper2-wp5-spin",
+      "track_name": "paper2-track-b",
+      "purpose": "WP5 spin amplitude \u2014 parity-odd TTT mapping + Monte Carlo",
+      "pod_id": "mz3srzbzxxv1yj",
+      "hardware": "RTX A5000 (24GB VRAM), secure cloud",
+      "tags": [
+        "paper2",
+        "wp5",
+        "spin",
+        "amplitude",
+        "cpu-workload"
+      ],
+      "alive": false,
+      "ssh_configured": true,
+      "processes": {},
+      "disk": {},
+      "memory": {},
+      "gpu": {},
+      "output_timestamps": {},
+      "mcmc_convergence": {},
+      "chain_count": {},
+      "paper2_outputs": {},
+      "backup_status": {},
+      "has_manifest": false,
+      "warnings": [
+        {
+          "severity": "CRITICAL",
+          "message": "paper2-wp5-spin is UNREACHABLE"
+        }
+      ],
+      "collected_at": "2026-03-06 17:58:40 UTC"
+    },
+    {
+      "pod_name": "paper2-p7-cnn",
+      "track_name": "paper2-track-c",
+      "purpose": "P7 CNN spin classifier \u2014 ResNet-18 + bias audits + dipole fit",
+      "pod_id": "pkysk4lbaqnhm0",
+      "hardware": "RTX A5000 (24GB VRAM), secure cloud",
+      "tags": [
+        "paper2",
+        "p7",
+        "cnn",
+        "gpu-workload",
+        "classifier"
+      ],
+      "alive": true,
+      "ssh_configured": true,
+      "processes": {
+        "cobaya_count": 0,
+        "python_count": 0,
+        "key_processes": []
+      },
+      "disk": {
+        "raw": "overlay          50G  1.9G   49G   4% /",
+        "percent_used": 4,
+        "total": "50G",
+        "used": "1.9G",
+        "avail": "49G"
+      },
+      "memory": {
+        "raw": "Mem:          515601      112547      113450         160      289604      399532",
+        "total_mb": 515601,
+        "used_mb": 112547,
+        "free_mb": 113450
+      },
+      "gpu": {
+        "available": true,
+        "util_percent": 0,
+        "mem_used_mb": 1,
+        "raw": "0, 1"
+      },
+      "output_timestamps": {
+        "newest_file": "/workspace/paper2/p7_cnn_spin_classifier/runs/first_run/test_predictions.json",
+        "newest_mtime": "2026-03-05 22:40:15 UTC",
+        "age_seconds": 69515,
+        "stale": true
+      },
+      "mcmc_convergence": {},
+      "chain_count": {},
+      "paper2_outputs": {
+        "dirs_found": [
+          "runs",
+          "figures"
+        ],
+        "model_pt": false,
+        "scripts": 4,
+        "markdown_docs": 3
+      },
+      "backup_status": {
+        "freeze_alive": false,
+        "monitor_alive": false
+      },
+      "has_manifest": true,
+      "warnings": [
+        {
+          "severity": "MEDIUM",
+          "message": "paper2-p7-cnn outputs stale (19.3 hours old)"
+        }
+      ],
+      "collected_at": "2026-03-06 17:58:40 UTC"
+    },
+    {
+      "pod_name": "paper2-p6-eb",
+      "track_name": "paper2-track-d",
+      "purpose": "P6 CMB EB birefringence \u2014 literature registry + optional map estimator",
+      "pod_id": "uktt3hghbs1djo",
+      "hardware": "RTX A5000 (24GB VRAM), secure cloud",
+      "tags": [
+        "paper2",
+        "p6",
+        "cmb",
+        "eb",
+        "birefringence",
+        "cpu-workload"
+      ],
+      "alive": false,
+      "ssh_configured": true,
+      "processes": {},
+      "disk": {},
+      "memory": {},
+      "gpu": {},
+      "output_timestamps": {},
+      "mcmc_convergence": {},
+      "chain_count": {},
+      "paper2_outputs": {},
+      "backup_status": {},
+      "has_manifest": false,
+      "warnings": [
+        {
+          "severity": "CRITICAL",
+          "message": "paper2-p6-eb is UNREACHABLE"
+        }
+      ],
+      "collected_at": "2026-03-06 17:58:59 UTC"
+    }
+  ]
+}

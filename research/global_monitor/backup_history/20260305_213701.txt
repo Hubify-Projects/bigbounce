@@ -1,0 +1,45 @@
+BigBounce Global Backup Report
+Generated: 2026-03-05 21:37:45 UTC
+Duration: 43.9s
+==============================================================================
+
+bigbounce-gpu-validation        [OK]
+  Track: paper1
+  Paths found: chains/, *.log
+  Tarball: /workspace/bigbounce/reproducibility/backups/backup_bigbounce-gpu-validation_20260305_213701.tar.gz (0 B)
+  Message: DRY RUN: would tar chains/ *.log into /workspace/bigbounce/reproducibility/backups/backup_bigbounce-gpu-validation_20260305_213701.tar.gz
+
+bigbounce-cpu1-primary          [OK]
+  Track: paper1
+  Paths found: chains/
+  Tarball: /workspace/bigbounce/reproducibility/backups/backup_bigbounce-cpu1-primary_20260305_213701.tar.gz (0 B)
+  Message: DRY RUN: would tar chains/ into /workspace/bigbounce/reproducibility/backups/backup_bigbounce-cpu1-primary_20260305_213701.tar.gz
+
+bigbounce-cpu2-secondary        [FAIL]
+  Track: paper1
+  Paths found: none
+  Message: No critical outputs found to back up
+
+paper2-wp4-dneff                [SKIP]
+  Track: paper2-track-a
+  Paths found: none
+  Message: SSH not configured (pending boot) — skipped
+
+paper2-wp5-spin                 [SKIP]
+  Track: paper2-track-b
+  Paths found: none
+  Message: SSH not configured (pending boot) — skipped
+
+paper2-p7-cnn                   [SKIP]
+  Track: paper2-track-c
+  Paths found: none
+  Message: SSH not configured (pending boot) — skipped
+
+paper2-p6-eb                    [SKIP]
+  Track: paper2-track-d
+  Paths found: none
+  Message: SSH not configured (pending boot) — skipped
+
+==============================================================================
+Summary: 2 OK, 4 skipped, 1 failed
+Total backup size: 0 B

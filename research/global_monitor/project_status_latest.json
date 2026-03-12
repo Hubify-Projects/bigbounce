@@ -1,0 +1,113 @@
+{
+  "report": {
+    "generated_at": "2026-03-06 (updated freeze policy)",
+    "method": "Convergence-only freeze logic — replaces 48h time cap",
+    "freeze_policy": "CONVERGENCE ONLY — no time cap, chains never stopped"
+  },
+  "freeze_policy": {
+    "old_policy_removed": {
+      "time_cap_hours": 48,
+      "force_freeze_at_cap": true,
+      "description": "REMOVED — was force-freezing all datasets at 48h regardless of convergence"
+    },
+    "new_policy_active": {
+      "time_cap": null,
+      "force_freeze_at_cap": false,
+      "chains_stopped_automatically": false,
+      "freeze_trigger": "convergence_criteria_only",
+      "manual_override_available": true,
+      "description": "Chains run indefinitely. Freezing only via convergence thresholds or manual --force-freeze command."
+    }
+  },
+  "convergence_criteria": {
+    "cohort": "chains 2-7 (cohort_main)",
+    "rhat_m1": {
+      "H0": 0.01,
+      "delta_neff": 0.01,
+      "tau": 0.02
+    },
+    "ess": {
+      "H0": 2000,
+      "delta_neff": 2000,
+      "tau": 1000
+    },
+    "drift_max_sigma": 0.2,
+    "drift_params": ["H0", "delta_neff"]
+  },
+  "freeze_packs": {
+    "science_pack": {
+      "naming": "frozen_gpu_cohort_main_<dataset>_<timestamp>/",
+      "chains_included": "2-7",
+      "contents": ["chains 2-7", "convergence_report.txt", "triangle plots", "1D posteriors", "manifest", "checksums"]
+    },
+    "archival_pack": {
+      "naming": "frozen_gpu_all_chains_<dataset>_<timestamp>/",
+      "chains_included": "1-7",
+      "contents": ["chains 1-7", "convergence diagnostics", "manifest"],
+      "note": "chain 1 excluded from science interpretation, documented in manifest"
+    }
+  },
+  "safety_snapshots": {
+    "interval_hours": 6,
+    "naming": "snapshot_gpu_<dataset>_<timestamp>/",
+    "contents": ["current chains", "convergence diagnostics", "manifest"],
+    "note": "Created regardless of convergence status. Chains NOT stopped."
+  },
+  "hourly_backups": {
+    "contents": ["chains", "covmats", "logs", "monitor reports", "plots", "frozen packs"],
+    "continues_after_convergence": true
+  },
+  "datasets": {
+    "planck_only": {
+      "convergence_status": "CLOSEST — R-hat H0/nnu passing, tau and ESS still failing",
+      "cohort_main": {
+        "rhat_m1_H0": 0.007,
+        "rhat_m1_nnu": 0.006,
+        "rhat_m1_tau": 0.023,
+        "ess_H0": 40,
+        "ess_nnu": 37,
+        "gates_passing": ["rhat_H0", "rhat_nnu"],
+        "gates_failing": ["rhat_tau", "ess_H0", "ess_nnu", "ess_tau"]
+      }
+    },
+    "planck_bao": {
+      "convergence_status": "RUNNING — all R-hat gates failing",
+      "cohort_main": {
+        "rhat_m1_H0": 0.055,
+        "rhat_m1_nnu": 0.055,
+        "rhat_m1_tau": 0.032
+      }
+    },
+    "planck_bao_sn": {
+      "convergence_status": "RUNNING — all R-hat gates failing",
+      "cohort_main": {
+        "rhat_m1_H0": 0.052,
+        "rhat_m1_nnu": 0.068,
+        "rhat_m1_tau": 0.034
+      }
+    },
+    "full_tension": {
+      "convergence_status": "RUNNING — tau R-hat passing, H0/nnu still failing",
+      "cohort_main": {
+        "rhat_m1_H0": 0.041,
+        "rhat_m1_nnu": 0.044,
+        "rhat_m1_tau": 0.016
+      }
+    }
+  },
+  "summary": {
+    "closest_to_convergence": "planck_only",
+    "primary_bottleneck": "ESS (~40 vs 2000 target across all datasets)",
+    "improvement_occurring": true,
+    "time_cap_removed": true,
+    "old_48h_cap_expires": "N/A — REMOVED",
+    "chains_will_not_be_stopped": true
+  },
+  "rules": [
+    "NEVER stop active chains automatically",
+    "NEVER freeze based solely on time",
+    "Freezing only via convergence thresholds or manual command",
+    "Hourly backups continue indefinitely",
+    "Safety snapshots every 6 hours"
+  ]
+}

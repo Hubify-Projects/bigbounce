@@ -1,0 +1,46 @@
+BigBounce MCMC Process Inventory — 2026-03-05 07:40:29 UTC
+====================================================================================================
+
+COBAYA PROCESSES: 31
+--------------------------------------------------------------------------------
+  PID 6397  bash -c cd /workspace/bigbounce/reproducibility && export COBAYA_PACKAGES_PATH=./packages && mkdir -p chains && nohup co
+  PID 6399  /usr/bin/python /usr/local/bin/cobaya-run cosmology/cobaya_planck.yaml --packages-path ./packages
+  PID 6694  bash -c cd /workspace/bigbounce/reproducibility && export COBAYA_PACKAGES_PATH=./packages && nohup cobaya-run cosmology/
+  PID 6695  /usr/bin/python /usr/local/bin/cobaya-run cosmology/cobaya_planck_bao.yaml --packages-path ./packages
+  PID 7086  /usr/bin/python /usr/local/bin/cobaya-run cosmology/cobaya_planck_bao_sn.yaml --packages-path ./packages
+  PID 7545  bash -c cd /workspace/bigbounce/reproducibility && nohup cobaya-run cosmology/cobaya_full_tension.yaml -f > /workspace/b
+  PID 7546  /usr/bin/python /usr/local/bin/cobaya-run cosmology/cobaya_full_tension.yaml -f
+  PID 21661  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain2.yaml -f
+  PID 21665  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain3.yaml -f
+  PID 21672  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain4.yaml -f
+  PID 21683  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain5.yaml -f
+  PID 21687  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain6.yaml -f
+  PID 21695  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_only_chain7.yaml -f
+  PID 21704  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain2.yaml -f
+  PID 21712  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain3.yaml -f
+  PID 21724  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain4.yaml -f
+  PID 21733  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain5.yaml -f
+  PID 21746  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain6.yaml -f
+  PID 21757  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_chain7.yaml -f
+  PID 21770  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain2.yaml -f
+  PID 21779  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain3.yaml -f
+  PID 21794  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain4.yaml -f
+  PID 21808  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain5.yaml -f
+  PID 21820  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain6.yaml -f
+  PID 21827  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_planck_bao_sn_chain7.yaml -f
+  PID 21834  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain2.yaml -f
+  PID 21852  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain3.yaml -f
+  PID 21864  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain4.yaml -f
+  PID 21878  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain5.yaml -f
+  PID 21885  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain6.yaml -f
+  PID 21893  /usr/bin/python /usr/local/bin/cobaya-run /tmp/cobaya_full_tension_chain7.yaml -f
+
+NON-COBAYA HELPERS: 2
+--------------------------------------------------------------------------------
+  PID 32200  bash -c while true; do STAMP=$(date +%Y%m%d_%H%M) tar czf /workspace/backups/chains_${STAMP}.tar.gz 
+  PID 36885  bash -c while true; do sleep 3600; cd /workspace/bigbounce/reproducibility && python3 mcmc_monitor_v
+
+TOTALS:
+  Cobaya processes: 31
+  Helper processes: 2
+  Grand total: 33

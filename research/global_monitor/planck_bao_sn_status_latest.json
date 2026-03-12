@@ -1,0 +1,90 @@
+{
+  "report_time": "2026-03-12T06:42:45Z",
+  "previous_report": "2026-03-11T21:17:15Z",
+  "pod": {
+    "id": "83ubwlcdk0gat2",
+    "hostname": "8dbde78e6b05",
+    "region": "EUR-IS-1",
+    "spec": "CPU5 Compute-Optimized",
+    "vcpu": 32,
+    "ram_gb": 124,
+    "cost_per_hour": 1.12,
+    "load_avg": [34.48, 33.75, 33.62],
+    "ram_used_gb": 14,
+    "ram_available_gb": 109,
+    "cobaya_processes": 6,
+    "pids": [5056, 5057, 5058, 5059, 5060, 5061],
+    "all_chains_active": true
+  },
+  "planck_bao_sn": {
+    "status": "CONVERGED — READY TO FREEZE",
+    "chains": 6,
+    "resume_time": "2026-03-11T17:32:00Z",
+    "runtime_hours": 13.2,
+    "total_accepted": 66995,
+    "throughput_per_hour": 5083,
+    "total_file_size_mb": 55.21,
+    "chain_details": {
+      "chain_01": {"accepted": 11074, "bytes": 9125800, "active": true, "growth_since_last": 7648},
+      "chain_02": {"accepted": 11180, "bytes": 9213144, "active": true, "growth_since_last": 7801},
+      "chain_03": {"accepted": 11441, "bytes": 9428208, "active": true, "growth_since_last": 7970},
+      "chain_04": {"accepted": 10895, "bytes": 8978304, "active": true, "growth_since_last": 7641},
+      "chain_05": {"accepted": 10885, "bytes": 8970064, "active": true, "growth_since_last": 7550},
+      "chain_06": {"accepted": 11520, "bytes": 9493304, "active": true, "growth_since_last": 8021}
+    },
+    "convergence": {
+      "gates_passing": 9,
+      "gates_total": 9,
+      "gates_remaining": [],
+      "science_convergence": true,
+      "H0":         {"R_minus_1": 0.0019, "R_target": 0.01, "R_pass": true, "ESS": 3771, "ESS_target": 2000, "ESS_pass": true, "drift_sigma": 0.065, "drift_pass": true},
+      "delta_neff": {"R_minus_1": 0.0027, "R_target": 0.01, "R_pass": true, "ESS": 3325, "ESS_target": 2000, "ESS_pass": true, "drift_sigma": 0.067, "drift_pass": true},
+      "tau":        {"R_minus_1": 0.0010, "R_target": 0.02, "R_pass": true, "ESS": 4902, "ESS_target": 1000, "ESS_pass": true, "drift_sigma": 0.011, "drift_pass": true}
+    },
+    "preliminary_means": {
+      "H0": 67.824,
+      "delta_neff": 0.065,
+      "tau": 0.056,
+      "sigma8": 0.812,
+      "omegam": 0.312,
+      "ns": 0.967
+    },
+    "comparison_with_full_tension": {
+      "H0_shift": "+0.14 (0.1 sigma)",
+      "delta_neff_shift": "+0.085 (0.5 sigma)",
+      "tau_shift": "+0.002 (0.3 sigma)",
+      "sigma8_shift": "+0.009 (1.1 sigma)"
+    }
+  },
+  "full_tension": {
+    "status": "FROZEN",
+    "freeze_time": "2026-03-11T17:28:00Z",
+    "chains": 6,
+    "total_accepted": 175545,
+    "artifact_integrity": "VERIFIED"
+  },
+  "paused_datasets": {
+    "planck_only": {"status": "PAUSED", "chains": 6, "total_samples": 458, "last_write": "2026-03-11T02:28:00Z", "preserved": true},
+    "planck_bao":  {"status": "PAUSED", "chains": 6, "total_samples": 469, "last_write": "2026-03-11T02:28:00Z", "preserved": true}
+  },
+  "storage": {
+    "network_volume_total_gb": 1.1,
+    "hourly_snapshots_count": 30,
+    "latest_snapshot": "2026-03-12T06:00:00Z",
+    "latest_snapshot_size_mb": 38,
+    "frozen_sha256_present": true,
+    "local_frozen_synced": true,
+    "local_frozen_size_mb": 161,
+    "planck_bao_sn_local_synced": false,
+    "backup_risk": "LOW"
+  },
+  "decision": {
+    "action": "EXECUTE FREEZE WORKFLOW",
+    "convergence_stage": "SCIENCE CONVERGENCE REACHED — 9/9 gates pass",
+    "freeze_eta": "NOW",
+    "continue_running": false,
+    "next_action": "User authorization to freeze planck_bao_sn",
+    "pod_cost_this_session": 14.80,
+    "pod_cost_total": 21.50
+  }
+}

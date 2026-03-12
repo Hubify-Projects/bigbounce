@@ -1,0 +1,125 @@
+theory:
+  camb:
+    path: null
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      theta_H0_range:
+      - 40
+      - 100
+likelihood:
+  planck_NPIPE_highl_CamSpec.TTTEEE: null
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_lensing.clik: null
+params:
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.044
+      scale: 0.014
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  nnu:
+    prior:
+      min: 2.046
+      max: 5.046
+    ref:
+      dist: norm
+      loc: 3.346
+      scale: 0.2
+    proposal: 0.05
+    latex: N_\mathrm{eff}
+  ns:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.0042
+    proposal: 0.002
+    latex: n_s
+  ombh2:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.00015
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omch2:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.0012
+    proposal: 0.0005
+    latex: \Omega_c h^2
+  tau:
+    prior:
+      min: 0.01
+      max: 0.8
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04092
+      scale: 0.00031
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0 \; [\mathrm{km/s/Mpc}]
+    min: 40
+    max: 100
+  sigma8:
+    latex: \sigma_8
+  omegam:
+    latex: \Omega_m
+  S8:
+    derived: 'lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)'
+    latex: S_8
+  delta_neff:
+    derived: 'lambda nnu: nnu - 3.046'
+    latex: \Delta N_\mathrm{eff}
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+sampler:
+  mcmc:
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    burn_in: 0.1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 50
+    drag: true
+    oversample_power: 0.4
+    proposal_scale: 2.4
+    max_tries: 40d
+    seed: 295013969
+    covmat: /workspace/bigbounce/covmats/planck_only.covmat
+output: /workspace/bigbounce/chains/dneff/planck_only/chain_02/spin_torsion
+packages_path: /workspace/cobaya_packages

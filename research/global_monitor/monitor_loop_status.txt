@@ -1,0 +1,30 @@
+Hourly Monitor Loop Status
+==========================
+Started: 2026-03-06 01:31:05 UTC
+PID: 83885
+PID file: /tmp/bigbounce_hourly_monitor.pid
+Interval: 3600s (1 hour)
+Script: research/global_monitor/hourly_loop.sh
+
+Fixes applied before start:
+  1. hourly_loop.sh line 47: Removed --dry-run flag (was making backups dry-run only)
+  2. run_all_monitors.sh lines 51/68/85: Fixed EXTRA_ARGS[@] unbound variable error
+     Changed "${EXTRA_ARGS[@]}" to ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}
+
+First run status:
+  [1/3] global_status.py:  OK (deprecation warnings only)
+  [2/3] global_backup.py:  PARTIAL
+    - GPU backup FAILED (tar: file changed as we read it — chains actively writing)
+    - CPU#1 backup OK (946 KB)
+    - CPU#2 backup NO DATA (controls_lcdm/ not in backup paths — known issue)
+    - Paper 2 pods UNREACHABLE (stopped to save costs)
+  [3/3] global_artifact_index.py: pending (still running)
+
+Known issues:
+  - GPU backup will always fail with "file changed" unless --warning=no-file-changed
+  - CPU#2 needs controls_lcdm/ added to backup paths in global_backup.py
+  - Paper 2 pods will be UNREACHABLE on every hourly run (they're stopped)
+  - Consider removing Paper 2 pods from registry or marking as stopped
+
+To stop the loop:
+  kill $(cat /tmp/bigbounce_hourly_monitor.pid)

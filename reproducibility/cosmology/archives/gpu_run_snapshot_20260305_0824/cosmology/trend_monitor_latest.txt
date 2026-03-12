@@ -1,0 +1,49 @@
+BigBounce MCMC Trend Monitor — 2026-03-05 07:36:08 UTC
+ETA model: Stage A (Rm1>0.3)=EARLY MIXING | Stage B (0.05-0.3)=exp decay | Stage C (<=0.05)=linear
+History span: 5.5h (224 data points). ETA requires >= 24h.
+Plateau flag: <5% improvement over 12h window
+========================================================================================================================
+
+--- PLANCK ONLY ---
+         Param     Rhat_m1           Stage   ETA (hrs)     12h ago      Δ(12h)   %impr 12h            Flag                  Note
+  ------------  ----------  --------------  ----------  ----------  ----------  ----------  --------------  --------------------
+            H0     0.40324    EARLY MIXING           —     no data           —           —                                      
+    delta_neff     0.68455    EARLY MIXING           —     no data           —           —                                      
+        omegam     0.24191          MIXING           —     no data           —           —                      need 24h history
+         ombh2     0.22941          MIXING           —     no data           —           —                      need 24h history
+            ns     0.50123    EARLY MIXING           —     no data           —           —                                      
+           tau     0.86242    EARLY MIXING           —     no data           —           —                                      
+        sigma8     0.58713    EARLY MIXING           —     no data           —           —                                      
+
+--- PLANCK BAO ---
+         Param     Rhat_m1           Stage   ETA (hrs)     12h ago      Δ(12h)   %impr 12h            Flag                  Note
+  ------------  ----------  --------------  ----------  ----------  ----------  ----------  --------------  --------------------
+            H0     0.34127    EARLY MIXING           —     no data           —           —                                      
+    delta_neff     0.85410    EARLY MIXING           —     no data           —           —                                      
+        omegam     0.20915          MIXING           —     no data           —           —                      need 24h history
+         ombh2     0.33461    EARLY MIXING           —     no data           —           —                                      
+            ns     0.26820          MIXING           —     no data           —           —                      need 24h history
+           tau     1.61123    EARLY MIXING           —     no data           —           —                                      
+        sigma8     0.55618    EARLY MIXING           —     no data           —           —                                      
+
+--- PLANCK BAO SN ---
+         Param     Rhat_m1           Stage   ETA (hrs)     12h ago      Δ(12h)   %impr 12h            Flag                  Note
+  ------------  ----------  --------------  ----------  ----------  ----------  ----------  --------------  --------------------
+            H0     0.27175          MIXING           —     no data           —           —                      need 24h history
+    delta_neff     0.68066    EARLY MIXING           —     no data           —           —                                      
+        omegam     0.21733          MIXING           —     no data           —           —                      need 24h history
+         ombh2     0.45362    EARLY MIXING           —     no data           —           —                                      
+            ns     0.33339    EARLY MIXING           —     no data           —           —                                      
+           tau     0.83265    EARLY MIXING           —     no data           —           —                                      
+        sigma8     0.55576    EARLY MIXING           —     no data           —           —                                      
+
+--- FULL TENSION ---
+         Param     Rhat_m1           Stage   ETA (hrs)     12h ago      Δ(12h)   %impr 12h            Flag                  Note
+  ------------  ----------  --------------  ----------  ----------  ----------  ----------  --------------  --------------------
+            H0     0.04905           CLOSE           —     no data           —           —                      need 24h history
+    delta_neff     0.15068          MIXING           —     no data           —           —                      need 24h history
+        omegam     0.04363           CLOSE           —     no data           —           —                      need 24h history
+         ombh2     0.15114          MIXING           —     no data           —           —                      need 24h history
+            ns     0.37817    EARLY MIXING           —     no data           —           —                                      
+           tau     0.93543    EARLY MIXING           —     no data           —           —                                      
+        sigma8     0.57988    EARLY MIXING           —     no data           —           —                                      

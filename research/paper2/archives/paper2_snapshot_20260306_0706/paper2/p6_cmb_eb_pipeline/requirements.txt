@@ -1,0 +1,7 @@
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+# Tier 2 only (optional):
+# healpy>=1.16
+# pymaster>=1.6
+# astropy>=5.3

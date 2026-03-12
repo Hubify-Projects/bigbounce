@@ -1,0 +1,44 @@
+{
+  "model": "decay",
+  "n_m_X": 100,
+  "n_tau_X": 80,
+  "configs": [
+    {
+      "Br_dark": 1.0,
+      "Y_X": 1e-10,
+      "tag": "fiducial"
+    },
+    {
+      "Br_dark": 0.1,
+      "Y_X": 1e-10,
+      "tag": "Br01"
+    },
+    {
+      "Br_dark": 1.0,
+      "Y_X": 1e-08,
+      "tag": "YX1e8"
+    },
+    {
+      "Br_dark": 0.5,
+      "Y_X": 1e-09,
+      "tag": "Br05_YX1e9"
+    }
+  ],
+  "total_points": 32000,
+  "constraints": {
+    "BBN_max": 0.5,
+    "CMB_max": 0.34,
+    "target_lo": 0.1,
+    "target_hi": 0.2
+  },
+  "best_fit": {
+    "dneff": 0.1500120229971136,
+    "m_X_GeV": 2656087.7829466895,
+    "tau_X_sec": 9.433732216299774e-05,
+    "Br_dark": 1.0,
+    "Y_X": 1e-10,
+    "config": "fiducial",
+    "distance": 1.2022997113586564e-05
+  },
+  "timestamp": "2026-03-05T11:12:57"
+}

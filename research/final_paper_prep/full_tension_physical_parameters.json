@@ -1,0 +1,130 @@
+{
+  "source": "reproducibility/cosmology/frozen/full_tension_20260311_1728",
+  "timestamp": "2026-03-11T18:03:31.254337+00:00",
+  "n_chains": 6,
+  "burn_fraction": 0.3,
+  "total_samples": 176240,
+  "column_mapping_validated": true,
+  "parameters": {
+    "H0": {
+      "mean": 67.68401856657633,
+      "std": 1.060648381874554,
+      "lo68": 66.631129,
+      "hi68": 68.750885,
+      "rhat_minus_1": 0.0006263744380108349,
+      "ess": 5078.331250916045,
+      "description": "Hubble constant",
+      "unit": "km/s/Mpc"
+    },
+    "delta_neff": {
+      "mean": -0.019593915016936265,
+      "std": 0.16920698903920367,
+      "lo68": -0.18789728,
+      "hi68": 0.1484857,
+      "rhat_minus_1": 0.0006223409469299224,
+      "ess": 4743.53494309167,
+      "description": "Extra effective neutrino species",
+      "unit": "dimensionless"
+    },
+    "tau": {
+      "mean": 0.05359154315254703,
+      "std": 0.006957339597216269,
+      "lo68": 0.046922415,
+      "hi68": 0.060365693,
+      "rhat_minus_1": 0.0009595198798770799,
+      "ess": 6506.868019539092,
+      "description": "Optical depth to reionization",
+      "unit": "dimensionless"
+    },
+    "sigma8": {
+      "mean": 0.8033947338061266,
+      "std": 0.008399593516921324,
+      "lo68": 0.794984,
+      "hi68": 0.81186633,
+      "rhat_minus_1": 0.0007925442657461534,
+      "ess": 5530.657141164756,
+      "description": "RMS matter fluctuations (8 Mpc/h)",
+      "unit": "dimensionless"
+    },
+    "omegam": {
+      "mean": 0.3080901230246068,
+      "std": 0.00545565338674918,
+      "lo68": 0.30269528,
+      "hi68": 0.31355014,
+      "rhat_minus_1": 0.0006226103980591091,
+      "ess": 6227.414210125172,
+      "description": "Total matter density",
+      "unit": "dimensionless"
+    },
+    "ns": {
+      "mean": 0.9654818077227909,
+      "std": 0.0061835460532965805,
+      "lo68": 0.95933717,
+      "hi68": 0.9716079,
+      "rhat_minus_1": 0.0009833242907750783,
+      "ess": 5624.248249388988,
+      "description": "Scalar spectral index",
+      "unit": "dimensionless"
+    },
+    "S8": {
+      "mean": 0.8140908942209859,
+      "std": 0.008456377124017814,
+      "lo68": 0.80560739,
+      "hi68": 0.82249666,
+      "rhat_minus_1": 0.0003697862546452324,
+      "ess": 6696.91658354207,
+      "description": "sigma8 * sqrt(Omega_m/0.3)",
+      "unit": "dimensionless"
+    },
+    "nnu": {
+      "mean": 3.0264060846932686,
+      "std": 0.16920698903050407,
+      "lo68": 2.8581027,
+      "hi68": 3.1944857,
+      "rhat_minus_1": 0.0006223409779104738,
+      "ess": 4743.5349386472,
+      "description": "Effective number of neutrino species",
+      "unit": "dimensionless"
+    },
+    "ombh2": {
+      "mean": 0.022264483441745107,
+      "std": 0.00015630396555844778,
+      "lo68": 0.022108675,
+      "hi68": 0.022419674,
+      "rhat_minus_1": 9.599177875863063e-05,
+      "ess": 6432.4280480734005,
+      "description": "Baryon density",
+      "unit": "dimensionless"
+    },
+    "omch2": {
+      "mean": 0.11821502340004532,
+      "std": 0.002754117772066503,
+      "lo68": 0.11549288,
+      "hi68": 0.12095097,
+      "rhat_minus_1": 0.0004915806270979761,
+      "ess": 4706.331854653938,
+      "description": "CDM density",
+      "unit": "dimensionless"
+    },
+    "logA": {
+      "mean": 3.0363672291700583,
+      "std": 0.014656076601000607,
+      "lo68": 3.0219331,
+      "hi68": 3.0507676,
+      "rhat_minus_1": 0.0006675925985832887,
+      "ess": 6229.178380635502,
+      "description": "log(10^10 A_s)",
+      "unit": "dimensionless"
+    },
+    "age": {
+      "mean": 13.822289537440112,
+      "std": 0.16689632545977787,
+      "lo68": 13.655891,
+      "hi68": 13.988379,
+      "rhat_minus_1": 0.0005641076327371763,
+      "ess": 4852.283947860899,
+      "description": "Age of the universe",
+      "unit": "Gyr"
+    }
+  }
+}

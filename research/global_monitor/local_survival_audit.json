@@ -1,0 +1,206 @@
+{
+  "audit_title": "Local Survival Audit — BigBounce MCMC Recovery Assets",
+  "timestamp": "2026-03-10T22:00:00Z",
+  "mode": "READ-ONLY",
+
+  "sample_counts": {
+    "gpu_local_snapshot_20260305": {
+      "full_tension": {"chain1": 240, "chain2": 752, "chain3": 593, "chain4": 787, "chain5": 730, "chain6": 896, "chain7": 601, "total": 4599},
+      "planck_only": {"chain1": 122, "chain2": 299, "chain3": 337, "chain4": 308, "chain5": 372, "chain6": 412, "chain7": 358, "total": 2208},
+      "planck_bao": {"chain1": 97, "chain2": 422, "chain3": 404, "chain4": 280, "chain5": 287, "chain6": 370, "chain7": 380, "total": 2240},
+      "planck_bao_sn": {"chain1": 90, "chain2": 323, "chain3": 332, "chain4": 411, "chain5": 480, "chain6": 441, "chain7": 410, "total": 2487},
+      "grand_total": 11534,
+      "note": "Snapshot from 2026-03-05 08:24 UTC (~24h into run)"
+    },
+    "gpu_earlier_snapshot_20260304": {
+      "total": 2814,
+      "note": "Subset of above. Also has checkpoints and covmats. Superseded by 20260305 snapshot."
+    },
+    "gpu_at_shutdown_20260309": {
+      "full_tension": {"cohort_main": 62080, "chain1": 1451, "total": 63531},
+      "planck_only": {"cohort_main": 24555, "chain1": 790, "total": 25345},
+      "planck_bao": {"cohort_main": 24601, "chain1": 645, "total": 25246},
+      "planck_bao_sn": {"cohort_main": 25598, "chain1": 622, "total": 26220},
+      "grand_total": 140342,
+      "note": "From live_chain_audit.json — sample counts only, no chain files"
+    },
+    "cpu1_at_shutdown": {
+      "planck_only": 13205, "planck_bao": 11996, "planck_bao_sn": 11739, "full_tension": 11880,
+      "total": 48820,
+      "local_chain_files": 0,
+      "note": "ZERO chain files preserved locally. Only convergence CSV survives."
+    },
+    "cpu2_at_shutdown": {
+      "planck_only": 13176, "planck_bao": 11980, "planck_bao_sn": 12523, "full_tension": 11964,
+      "total": 49643,
+      "local_chain_files": 0,
+      "note": "ZERO chain files preserved locally. Only convergence CSV survives."
+    },
+    "loss_summary": {
+      "total_at_shutdown": 236622,
+      "chain_files_preserved": 14021,
+      "chain_files_lost": 222601,
+      "recovery_rate_percent": 5.9,
+      "convergence_diagnostics_preserved": true,
+      "science_results_preserved": true
+    }
+  },
+
+  "gpu_surviving_assets": {
+    "chain_files": {
+      "count": 28,
+      "total_samples": 11534,
+      "source": "gpu_run_snapshot_20260305_0824",
+      "note": "Note: 2 planck_bao chain1 dirs have different sample counts in snapshot vs direct listing; using direct-listing figures."
+    },
+    "covmats": {
+      "count": 28,
+      "datasets": ["full_tension", "planck_only", "planck_bao", "planck_bao_sn"],
+      "chains_per_dataset": 7,
+      "use": "CRITICAL — learned proposal covariance accelerates MCMC convergence 5-10x"
+    },
+    "checkpoints": {
+      "count": 0,
+      "note": "Checkpoint files exist in the 20260304 tarball (28 files) but NOT in the extracted 20260305 snapshot directory. The 20260305 snapshot was extracted without checkpoint files."
+    },
+    "yaml_configs": {
+      "updated_yamls": 28,
+      "input_yamls": 28,
+      "locked_yamls": 0,
+      "original_cobaya_yamls": 4,
+      "note": "Both input.yaml and updated.yaml survive for every chain"
+    },
+    "progress_files": {
+      "count": 0,
+      "note": "Not present in extracted snapshot"
+    },
+    "figures": {
+      "trace_plots": 16,
+      "note": "8 from original traces/ dir + 8 from archived cosmology/ — H0 and delta_neff traces for all 4 datasets"
+    },
+    "scripts": {
+      "monitor_versions": ["v2", "v3", "v4", "v5", "v6"],
+      "analysis_scripts": ["analyze_chains.py"],
+      "launch_scripts": ["launch_parallel_chains.sh", "monitor_convergence.sh"],
+      "note": "Complete monitor evolution preserved"
+    },
+    "archives": {
+      "gpu_snapshot_tarball": "3.5 MB (gpu_run_snapshot_20260305_0824.tar.gz)",
+      "earlier_snapshot_chains": "502 KB (runpod_snapshot_20260304/chains.tar.gz — includes checkpoints)",
+      "earlier_snapshot_outputs": "51 KB (runpod_snapshot_20260304/outputs.tar.gz — cobaya logs)"
+    },
+    "convergence_data": {
+      "convergence_cohort_main_csv": true,
+      "convergence_latest_csv": true,
+      "convergence_gpu_stale_csv": true,
+      "getdist_validation": true,
+      "trend_monitor": true,
+      "freeze_check": true,
+      "chain_means": true,
+      "bottlenecks": true,
+      "chain_summary": true,
+      "config_hashes": true,
+      "dataset_chain_map": true
+    },
+    "science_results": {
+      "mcmc_results_20260304": true,
+      "mcmc_results_latest": true,
+      "note": "Early best-fit values — not final"
+    }
+  },
+
+  "cpu1_surviving_assets": {
+    "chain_files": 0,
+    "covmats": 0,
+    "checkpoints": 0,
+    "yaml_configs": 0,
+    "convergence_csv": true,
+    "convergence_csv_path": "reproducibility/cosmology/cpu1_diagnostics/convergence_latest.csv",
+    "convergence_csv_rows": 28,
+    "convergence_csv_date": "2026-03-09",
+    "note": "ONLY the convergence diagnostics CSV survives. No chain data at all."
+  },
+
+  "cpu2_surviving_assets": {
+    "chain_files": 0,
+    "covmats": 0,
+    "checkpoints": 0,
+    "yaml_configs": 0,
+    "convergence_csv": true,
+    "convergence_csv_path": "reproducibility/cosmology/cpu2_diagnostics/convergence_latest.csv",
+    "convergence_csv_rows": 24,
+    "convergence_csv_date": "2026-03-09",
+    "note": "ONLY the convergence diagnostics CSV survives. No chain data at all."
+  },
+
+  "shared_orchestration_assets": {
+    "global_status_py": true,
+    "global_backup_py": true,
+    "gpu_freeze_manager_py": true,
+    "run_all_monitors_py": true,
+    "run_all_monitors_sh": true,
+    "hourly_loop_sh": true,
+    "pod_registry_yaml": true,
+    "runpod_cloud_py": true,
+    "global_status_history": "12 snapshots (2026-03-05 through 2026-03-06)",
+    "backup_history": "11 records (2026-03-05 through 2026-03-06)",
+    "monitor_logs": "8 hourly logs",
+    "live_chain_audit": {"json": true, "txt": true, "date": "2026-03-09"},
+    "monday_checkin": {"json": true, "txt": true, "date": "2026-03-09"},
+    "recovery_reports": ["runpod_health_check_20260310_211302.txt", "runpod_recovery_20260310_2130.md", "runpod_recovery_final_report.txt", "runpod_storage_survival_audit.md", "runpod_storage_survival_audit.json"]
+  },
+
+  "resume_vs_restart_classification": {
+    "gpu_full_tension": {
+      "classification": "WARM_RESTART",
+      "has_chain_files": true,
+      "has_covmats": true,
+      "has_checkpoints_in_tarball": true,
+      "samples_preserved": 4599,
+      "samples_lost": 58932,
+      "reason": "Chain files + covmats + configs survive. No extracted checkpoints but checkpoints exist in 20260304 tarball. Cobaya can resume with --resume if checkpoint is restored, otherwise warm restart with covmat."
+    },
+    "gpu_planck_only": {
+      "classification": "WARM_RESTART",
+      "has_chain_files": true,
+      "has_covmats": true,
+      "has_checkpoints_in_tarball": true,
+      "samples_preserved": 2208,
+      "samples_lost": 23137
+    },
+    "gpu_planck_bao": {
+      "classification": "WARM_RESTART",
+      "has_chain_files": true,
+      "has_covmats": true,
+      "has_checkpoints_in_tarball": true,
+      "samples_preserved": 2240,
+      "samples_lost": 23006
+    },
+    "gpu_planck_bao_sn": {
+      "classification": "WARM_RESTART",
+      "has_chain_files": true,
+      "has_covmats": true,
+      "has_checkpoints_in_tarball": true,
+      "samples_preserved": 2487,
+      "samples_lost": 23733
+    },
+    "cpu1_all_datasets": {
+      "classification": "COLD_RESTART",
+      "has_chain_files": false,
+      "has_covmats": false,
+      "has_checkpoints": false,
+      "samples_preserved": 0,
+      "samples_lost": 48820,
+      "mitigation": "Use GPU covmats as initial proposal to skip burn-in exploration phase"
+    },
+    "cpu2_all_datasets": {
+      "classification": "COLD_RESTART",
+      "has_chain_files": false,
+      "has_covmats": false,
+      "has_checkpoints": false,
+      "samples_preserved": 0,
+      "samples_lost": 49643,
+      "mitigation": "LCDM converges fast. Use GPU covmats minus delta_neff dimension."
+    }
+  }
+}

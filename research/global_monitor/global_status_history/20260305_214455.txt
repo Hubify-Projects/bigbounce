@@ -1,0 +1,60 @@
+
+==============================================================================
+  BIGBOUNCE GLOBAL STATUS DASHBOARD  2026-03-05 21:44:55 UTC
+  Pods: 2/7 alive   4 pending boot   Scan took 84.1s
+==============================================================================
+
+  POD STATUS
+  NAME                            STATUS    PROCESSES   DISK    MEMORY             GPU
+  ----------------------------------------------------------------------------
+  bigbounce-gpu-validation        ALIVE  cob=28  py=0    disk=46%    mem=93798MB/515789MB  gpu=0% / 2MB
+  bigbounce-cpu1-primary          ALIVE  cob=16  py=0    disk=6%     mem=-                 gpu=n/a
+  bigbounce-cpu2-secondary        DOWN  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-wp4-dneff                PENDING  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-wp5-spin                 PENDING  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-p7-cnn                   PENDING  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+  paper2-p6-eb                    PENDING  cob=-   py=-    disk=-      mem=-                 gpu=n/a
+
+==============================================================================
+  PAPER 1 — MCMC CONVERGENCE
+  bigbounce-gpu-validation (RTX 6000 Ada (48GB VRAM), GPU pod)
+    Chain files: 28   Dirs: full_tension, full_tension_chain2, full_tension_chain3, full_tension_chain4, full_tension_chain5, full_tension_chain6, full_tension_chain7, planck_bao, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_chain5, planck_bao_chain6, planck_bao_chain7, planck_bao_sn, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_bao_sn_chain5, planck_bao_sn_chain6
+    Convergence status: not available
+    Freeze loop: dead/unknown   Monitor: dead/unknown
+    Latest output: 2026-03-05 21:43:52 UTC (0.0h ago)
+
+  bigbounce-cpu1-primary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 0   Dirs: none
+    Convergence status: not available
+    Freeze loop: dead/unknown   Monitor: dead/unknown
+
+  bigbounce-cpu2-secondary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 0   Dirs: none
+    Convergence status: not available
+    Freeze loop: dead/unknown   Monitor: dead/unknown
+
+==============================================================================
+  PAPER 2 — RESEARCH TRACKS
+  paper2-wp4-dneff — PENDING BOOT — WP4 ΔNeff microphysics — reheating + decay parameter scans
+
+  paper2-wp5-spin — PENDING BOOT — WP5 spin amplitude — parity-odd TTT mapping + Monte Carlo
+
+  paper2-p7-cnn — PENDING BOOT — P7 CNN spin classifier — ResNet-18 + bias audits + dipole fit
+
+  paper2-p6-eb — PENDING BOOT — P6 CMB EB birefringence — literature registry + optional map estimator
+
+==============================================================================
+  WARNINGS
+  [CRITICAL] bigbounce-cpu2-secondary is UNREACHABLE
+  [CRITICAL] paper2-wp4-dneff — SSH not configured (pending boot)
+  [CRITICAL] paper2-wp5-spin — SSH not configured (pending boot)
+  [CRITICAL] paper2-p7-cnn — SSH not configured (pending boot)
+  [CRITICAL] paper2-p6-eb — SSH not configured (pending boot)
+  [LOW] bigbounce-gpu-validation missing MANIFEST.md
+  [LOW] bigbounce-cpu1-primary missing MANIFEST.md
+
+==============================================================================
+  RECOMMENDED ACTIONS
+  1. Check pod bigbounce-cpu2-secondary — may need restart via RunPod dashboard
+
+==============================================================================

@@ -1,0 +1,71 @@
+
+==============================================================================
+  BIGBOUNCE GLOBAL STATUS DASHBOARD  2026-03-06 01:34:05 UTC
+  Pods: 7/7 alive   0 pending boot   Scan took 180.0s
+==============================================================================
+
+  POD STATUS
+  NAME                            STATUS    PROCESSES   DISK    MEMORY             GPU
+  ----------------------------------------------------------------------------
+  bigbounce-gpu-validation        ALIVE  cob=28  py=1    disk=46%    mem=102555MB/515789MB  gpu=0% / 2MB
+  bigbounce-cpu1-primary          ALIVE  cob=16  py=0    disk=6%     mem=32542MB/127894MB  gpu=n/a
+  bigbounce-cpu2-secondary        ALIVE  cob=16  py=0    disk=5%     mem=31990MB/127894MB  gpu=n/a
+  paper2-wp4-dneff                ALIVE  cob=0   py=0    disk=4%     mem=93115MB/515601MB  gpu=0% / 1MB
+  paper2-wp5-spin                 ALIVE  cob=0   py=0    disk=2%     mem=48671MB/515601MB  gpu=0% / 1MB
+  paper2-p7-cnn                   ALIVE  cob=0   py=0    disk=3%     mem=80325MB/515601MB  gpu=0% / 1MB
+  paper2-p6-eb                    ALIVE  cob=0   py=0    disk=2%     mem=49869MB/515601MB  gpu=0% / 1MB
+
+==============================================================================
+  PAPER 1 — MCMC CONVERGENCE
+  bigbounce-gpu-validation (RTX 6000 Ada (48GB VRAM), GPU pod)
+    Chain files: 28   Dirs: full_tension, full_tension_chain2, full_tension_chain3, full_tension_chain4, full_tension_chain5, full_tension_chain6, full_tension_chain7, planck_bao, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_chain5, planck_bao_chain6, planck_bao_chain7, planck_bao_sn, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_bao_sn_chain5, planck_bao_sn_chain6
+    Convergence status: not available
+    Freeze loop: dead/unknown   Monitor: dead/unknown
+    Latest output: 2026-03-06 01:31:22 UTC (0.0h ago)
+
+  bigbounce-cpu1-primary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 16   Dirs: full_tension_chain1, full_tension_chain2, full_tension_chain3, full_tension_chain4, planck_bao_chain1, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_sn_chain1, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_only_chain1, planck_only_chain2, planck_only_chain3, planck_only_chain4
+    | dataset,param,Rhat_all,Rhat_m1_all,ESS_all,drift_all,Rhat_new,Rhat_m1_new,ESS_new,drift_new
+    Freeze loop: alive   Monitor: alive
+    Latest output: 2026-03-06 01:31:44 UTC (0.0h ago)
+
+  bigbounce-cpu2-secondary (cpu5c (32 vCPU, 64GB RAM), CPU pod)
+    Chain files: 16   Dirs: full_tension_chain1, full_tension_chain2, full_tension_chain3, full_tension_chain4, planck_bao_chain1, planck_bao_chain2, planck_bao_chain3, planck_bao_chain4, planck_bao_sn_chain1, planck_bao_sn_chain2, planck_bao_sn_chain3, planck_bao_sn_chain4, planck_only, planck_only_chain1, planck_only_chain2, planck_only_chain3, planck_only_chain4
+    Convergence status: not available
+    Freeze loop: alive   Monitor: alive
+    Latest output: 2026-03-06 01:32:27 UTC (0.0h ago)
+
+==============================================================================
+  PAPER 2 — RESEARCH TRACKS
+  paper2-wp4-dneff — ALIVE — WP4 ΔNeff microphysics — reheating + decay parameter scans
+    Dirs: runs, figures   model.pt: no   Scripts: 3   Docs: 3
+    Latest output: 2026-03-05 22:40:42 UTC (2.9h ago)
+
+  paper2-wp5-spin — ALIVE — WP5 spin amplitude — parity-odd TTT mapping + Monte Carlo
+    Dirs: runs, figures   model.pt: no   Scripts: 3   Docs: 3
+    Latest output: 2026-03-05 22:39:49 UTC (2.9h ago)
+
+  paper2-p7-cnn — ALIVE — P7 CNN spin classifier — ResNet-18 + bias audits + dipole fit
+    Dirs: runs, figures   model.pt: no   Scripts: 4   Docs: 3
+    Latest output: 2026-03-05 22:40:15 UTC (2.9h ago)
+
+  paper2-p6-eb — ALIVE — P6 CMB EB birefringence — literature registry + optional map estimator
+    Dirs: runs, figures   model.pt: no   Scripts: 2   Docs: 3
+    Latest output: 2026-03-05 22:40:30 UTC (2.9h ago)
+
+==============================================================================
+  WARNINGS
+  [MEDIUM] paper2-wp4-dneff outputs stale (2.9 hours old)
+  [MEDIUM] paper2-wp5-spin outputs stale (2.9 hours old)
+  [MEDIUM] paper2-p7-cnn outputs stale (2.9 hours old)
+  [MEDIUM] paper2-p6-eb outputs stale (2.9 hours old)
+  [LOW] bigbounce-gpu-validation missing MANIFEST.md
+
+==============================================================================
+  RECOMMENDED ACTIONS
+  1. Investigate stale outputs on paper2-wp4-dneff — process may have crashed
+  2. Investigate stale outputs on paper2-wp5-spin — process may have crashed
+  3. Investigate stale outputs on paper2-p7-cnn — process may have crashed
+  4. Investigate stale outputs on paper2-p6-eb — process may have crashed
+
+==============================================================================

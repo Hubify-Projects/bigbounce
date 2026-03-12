@@ -1,0 +1,671 @@
+[2026-03-11_0205] Starting off-pod sync
+Transfer starting: 238 files
+./
+dneff/
+dneff/full_tension/
+dneff/full_tension/chain_01/
+dneff/full_tension/chain_01/cobaya.pid
+              5 100%    7.90KB/s   00:00:00 (xfer#1, to-check=4/238)
+dneff/full_tension/chain_01/cobaya_config.yaml
+           2766 100%    4.59MB/s   00:00:00 (xfer#2, to-check=5/238)
+dneff/full_tension/chain_01/spin_torsion.1.txt
+          46436 100%   57.60MB/s   00:00:00 (xfer#3, to-check=6/238)
+dneff/full_tension/chain_01/spin_torsion.checkpoint
+             92 100%  235.81KB/s   00:00:00 (xfer#4, to-check=7/238)
+dneff/full_tension/chain_01/spin_torsion.covmat
+           7454 100%   29.89KB/s   00:00:00 (xfer#5, to-check=8/238)
+dneff/full_tension/chain_01/spin_torsion.input.yaml
+           2710 100%    6.77MB/s   00:00:00 (xfer#6, to-check=9/238)
+dneff/full_tension/chain_01/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#7, to-check=10/238)
+dneff/full_tension/chain_01/spin_torsion.progress
+             85 100%  223.75KB/s   00:00:00 (xfer#8, to-check=11/238)
+dneff/full_tension/chain_01/spin_torsion.updated.yaml
+          10671 100%   10.79MB/s   00:00:00 (xfer#9, to-check=12/238)
+dneff/full_tension/chain_02/
+dneff/full_tension/chain_02/cobaya.pid
+              5 100%    7.34KB/s   00:00:00 (xfer#10, to-check=14/238)
+dneff/full_tension/chain_02/cobaya_config.yaml
+           2767 100%    3.28MB/s   00:00:00 (xfer#11, to-check=15/238)
+dneff/full_tension/chain_02/spin_torsion.1.txt
+          50008 100%   21.07MB/s   00:00:00 (xfer#12, to-check=16/238)
+dneff/full_tension/chain_02/spin_torsion.checkpoint
+             92 100%   57.92KB/s   00:00:00 (xfer#13, to-check=17/238)
+dneff/full_tension/chain_02/spin_torsion.covmat
+           7454 100%   11.41MB/s   00:00:00 (xfer#14, to-check=18/238)
+dneff/full_tension/chain_02/spin_torsion.input.yaml
+           2711 100%    4.90MB/s   00:00:00 (xfer#15, to-check=19/238)
+dneff/full_tension/chain_02/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#16, to-check=20/238)
+dneff/full_tension/chain_02/spin_torsion.progress
+             85 100%  163.38KB/s   00:00:00 (xfer#17, to-check=21/238)
+dneff/full_tension/chain_02/spin_torsion.updated.yaml
+          10672 100%   15.26MB/s   00:00:00 (xfer#18, to-check=22/238)
+dneff/full_tension/chain_03/
+dneff/full_tension/chain_03/cobaya.pid
+              5 100%   14.62KB/s   00:00:00 (xfer#19, to-check=24/238)
+dneff/full_tension/chain_03/cobaya_config.yaml
+           2767 100%    5.43MB/s   00:00:00 (xfer#20, to-check=25/238)
+dneff/full_tension/chain_03/spin_torsion.1.txt
+          58045 100%    3.21MB/s   00:00:00 (xfer#21, to-check=26/238)
+dneff/full_tension/chain_03/spin_torsion.checkpoint
+             92 100%  311.95KB/s   00:00:00 (xfer#22, to-check=27/238)
+dneff/full_tension/chain_03/spin_torsion.covmat
+           7454 100%   12.07MB/s   00:00:00 (xfer#23, to-check=28/238)
+dneff/full_tension/chain_03/spin_torsion.input.yaml
+           2711 100%    3.17MB/s   00:00:00 (xfer#24, to-check=29/238)
+dneff/full_tension/chain_03/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#25, to-check=30/238)
+dneff/full_tension/chain_03/spin_torsion.progress
+             85 100%   93.69KB/s   00:00:00 (xfer#26, to-check=31/238)
+dneff/full_tension/chain_03/spin_torsion.updated.yaml
+          10672 100%    6.41MB/s   00:00:00 (xfer#27, to-check=32/238)
+dneff/full_tension/chain_04/
+dneff/full_tension/chain_04/cobaya.pid
+              5 100%   13.64KB/s   00:00:00 (xfer#28, to-check=34/238)
+dneff/full_tension/chain_04/cobaya_config.yaml
+           2767 100%    6.11MB/s   00:00:00 (xfer#29, to-check=35/238)
+dneff/full_tension/chain_04/spin_torsion.1.txt
+          50008 100%   41.40MB/s   00:00:00 (xfer#30, to-check=36/238)
+dneff/full_tension/chain_04/spin_torsion.checkpoint
+             92 100%   98.93KB/s   00:00:00 (xfer#31, to-check=37/238)
+dneff/full_tension/chain_04/spin_torsion.covmat
+           7454 100%   30.80KB/s   00:00:00 (xfer#32, to-check=38/238)
+dneff/full_tension/chain_04/spin_torsion.input.yaml
+           2711 100%   20.19MB/s   00:00:00 (xfer#33, to-check=39/238)
+dneff/full_tension/chain_04/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#34, to-check=40/238)
+dneff/full_tension/chain_04/spin_torsion.progress
+             85 100%  838.94KB/s   00:00:00 (xfer#35, to-check=41/238)
+dneff/full_tension/chain_04/spin_torsion.updated.yaml
+          10672 100%   48.24MB/s   00:00:00 (xfer#36, to-check=42/238)
+dneff/full_tension/chain_05/
+dneff/full_tension/chain_05/cobaya.pid
+              5 100%   44.43KB/s   00:00:00 (xfer#37, to-check=44/238)
+dneff/full_tension/chain_05/cobaya_config.yaml
+           2766 100%   11.18MB/s   00:00:00 (xfer#38, to-check=45/238)
+dneff/full_tension/chain_05/spin_torsion.1.txt
+          46436 100%  105.42MB/s   00:00:00 (xfer#39, to-check=46/238)
+dneff/full_tension/chain_05/spin_torsion.checkpoint
+             92 100%  824.58KB/s   00:00:00 (xfer#40, to-check=47/238)
+dneff/full_tension/chain_05/spin_torsion.covmat
+           7454 100%   16.35MB/s   00:00:00 (xfer#41, to-check=48/238)
+dneff/full_tension/chain_05/spin_torsion.input.yaml
+           2710 100%   13.90MB/s   00:00:00 (xfer#42, to-check=49/238)
+dneff/full_tension/chain_05/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#43, to-check=50/238)
+dneff/full_tension/chain_05/spin_torsion.progress
+             85 100%  669.54KB/s   00:00:00 (xfer#44, to-check=51/238)
+dneff/full_tension/chain_05/spin_torsion.updated.yaml
+          10671 100%   58.87MB/s   00:00:00 (xfer#45, to-check=52/238)
+dneff/full_tension/chain_06/
+dneff/full_tension/chain_06/cobaya.pid
+              5 100%   42.40KB/s   00:00:00 (xfer#46, to-check=54/238)
+dneff/full_tension/chain_06/cobaya_config.yaml
+           2766 100%   21.28MB/s   00:00:00 (xfer#47, to-check=55/238)
+dneff/full_tension/chain_06/spin_torsion.1.txt
+         231287 100%    3.20MB/s   00:00:00 (xfer#48, to-check=56/238)
+dneff/full_tension/chain_06/spin_torsion.checkpoint
+             92 100%  761.28KB/s   00:00:00 (xfer#49, to-check=57/238)
+dneff/full_tension/chain_06/spin_torsion.covmat
+           7454 100%   16.15MB/s   00:00:00 (xfer#50, to-check=58/238)
+dneff/full_tension/chain_06/spin_torsion.input.yaml
+           2710 100%   19.15MB/s   00:00:00 (xfer#51, to-check=59/238)
+dneff/full_tension/chain_06/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#52, to-check=60/238)
+dneff/full_tension/chain_06/spin_torsion.progress
+             85 100%  404.84KB/s   00:00:00 (xfer#53, to-check=61/238)
+dneff/full_tension/chain_06/spin_torsion.updated.yaml
+          10672 100%   47.33MB/s   00:00:00 (xfer#54, to-check=62/238)
+dneff/planck_bao/
+dneff/planck_bao/chain_01/
+dneff/planck_bao/chain_01/cobaya.pid
+              5 100%   39.69KB/s   00:00:00 (xfer#55, to-check=65/238)
+dneff/planck_bao/chain_01/cobaya_config.yaml
+           2591 100%   20.44MB/s   00:00:00 (xfer#56, to-check=66/238)
+dneff/planck_bao/chain_01/spin_torsion.checkpoint
+             92 100%  862.32KB/s   00:00:00 (xfer#57, to-check=67/238)
+dneff/planck_bao/chain_01/spin_torsion.covmat
+           6618 100%   33.21MB/s   00:00:00 (xfer#58, to-check=68/238)
+dneff/planck_bao/chain_01/spin_torsion.input.yaml
+           2537 100%   15.12MB/s   00:00:00 (xfer#59, to-check=69/238)
+dneff/planck_bao/chain_01/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#60, to-check=70/238)
+dneff/planck_bao/chain_01/spin_torsion.progress
+             85 100%  830.93KB/s   00:00:00 (xfer#61, to-check=71/238)
+dneff/planck_bao/chain_01/spin_torsion.updated.yaml
+           9746 100%   43.22MB/s   00:00:00 (xfer#62, to-check=72/238)
+dneff/planck_bao/chain_02/
+dneff/planck_bao/chain_02/cobaya.pid
+              5 100%   40.31KB/s   00:00:00 (xfer#63, to-check=74/238)
+dneff/planck_bao/chain_02/cobaya_config.yaml
+           2591 100%   20.77MB/s   00:00:00 (xfer#64, to-check=75/238)
+dneff/planck_bao/chain_02/spin_torsion.checkpoint
+             92 100%  680.20KB/s   00:00:00 (xfer#65, to-check=76/238)
+dneff/planck_bao/chain_02/spin_torsion.covmat
+           6618 100%   22.08MB/s   00:00:00 (xfer#66, to-check=77/238)
+dneff/planck_bao/chain_02/spin_torsion.input.yaml
+           2537 100%   20.50MB/s   00:00:00 (xfer#67, to-check=78/238)
+dneff/planck_bao/chain_02/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#68, to-check=79/238)
+dneff/planck_bao/chain_02/spin_torsion.progress
+             85 100%  866.07KB/s   00:00:00 (xfer#69, to-check=80/238)
+dneff/planck_bao/chain_02/spin_torsion.updated.yaml
+           9746 100%   54.37MB/s   00:00:00 (xfer#70, to-check=81/238)
+dneff/planck_bao/chain_03/
+dneff/planck_bao/chain_03/cobaya.pid
+              5 100%   51.85KB/s   00:00:00 (xfer#71, to-check=83/238)
+dneff/planck_bao/chain_03/cobaya_config.yaml
+           2590 100%   18.60MB/s   00:00:00 (xfer#72, to-check=84/238)
+dneff/planck_bao/chain_03/spin_torsion.checkpoint
+             92 100%  846.81KB/s   00:00:00 (xfer#73, to-check=85/238)
+dneff/planck_bao/chain_03/spin_torsion.covmat
+           6618 100%   31.40MB/s   00:00:00 (xfer#74, to-check=86/238)
+dneff/planck_bao/chain_03/spin_torsion.input.yaml
+           2536 100%   19.36MB/s   00:00:00 (xfer#75, to-check=87/238)
+dneff/planck_bao/chain_03/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#76, to-check=88/238)
+dneff/planck_bao/chain_03/spin_torsion.progress
+             85 100%  830.93KB/s   00:00:00 (xfer#77, to-check=89/238)
+dneff/planck_bao/chain_03/spin_torsion.updated.yaml
+           9745 100%   52.18MB/s   00:00:00 (xfer#78, to-check=90/238)
+dneff/planck_bao/chain_04/
+dneff/planck_bao/chain_04/cobaya.pid
+              5 100%   51.46KB/s   00:00:00 (xfer#79, to-check=92/238)
+dneff/planck_bao/chain_04/cobaya_config.yaml
+           2591 100%   23.08MB/s   00:00:00 (xfer#80, to-check=93/238)
+dneff/planck_bao/chain_04/spin_torsion.checkpoint
+             92 100%  376.08KB/s   00:00:00 (xfer#81, to-check=94/238)
+dneff/planck_bao/chain_04/spin_torsion.covmat
+           6618 100%   38.03MB/s   00:00:00 (xfer#82, to-check=95/238)
+dneff/planck_bao/chain_04/spin_torsion.input.yaml
+           2537 100%   19.86MB/s   00:00:00 (xfer#83, to-check=96/238)
+dneff/planck_bao/chain_04/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#84, to-check=97/238)
+dneff/planck_bao/chain_04/spin_torsion.progress
+             85 100%  722.32KB/s   00:00:00 (xfer#85, to-check=98/238)
+dneff/planck_bao/chain_04/spin_torsion.updated.yaml
+           9746 100%   56.34MB/s   00:00:00 (xfer#86, to-check=99/238)
+dneff/planck_bao/chain_05/
+dneff/planck_bao/chain_05/cobaya.pid
+              5 100%   49.23KB/s   00:00:00 (xfer#87, to-check=101/238)
+dneff/planck_bao/chain_05/cobaya_config.yaml
+           2590 100%   20.12MB/s   00:00:00 (xfer#88, to-check=102/238)
+dneff/planck_bao/chain_05/spin_torsion.checkpoint
+             92 100%  856.44KB/s   00:00:00 (xfer#89, to-check=103/238)
+dneff/planck_bao/chain_05/spin_torsion.covmat
+           6618 100%   36.07MB/s   00:00:00 (xfer#90, to-check=104/238)
+dneff/planck_bao/chain_05/spin_torsion.input.yaml
+           2536 100%   19.66MB/s   00:00:00 (xfer#91, to-check=105/238)
+dneff/planck_bao/chain_05/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#92, to-check=106/238)
+dneff/planck_bao/chain_05/spin_torsion.progress
+             85 100%  734.51KB/s   00:00:00 (xfer#93, to-check=107/238)
+dneff/planck_bao/chain_05/spin_torsion.updated.yaml
+           9745 100%   28.33MB/s   00:00:00 (xfer#94, to-check=108/238)
+dneff/planck_bao/chain_06/
+dneff/planck_bao/chain_06/cobaya.pid
+              5 100%   42.05KB/s   00:00:00 (xfer#95, to-check=110/238)
+dneff/planck_bao/chain_06/cobaya_config.yaml
+           2591 100%   21.15MB/s   00:00:00 (xfer#96, to-check=111/238)
+dneff/planck_bao/chain_06/spin_torsion.checkpoint
+             92 100%  731.71KB/s   00:00:00 (xfer#97, to-check=112/238)
+dneff/planck_bao/chain_06/spin_torsion.covmat
+           6618 100%   35.11MB/s   00:00:00 (xfer#98, to-check=113/238)
+dneff/planck_bao/chain_06/spin_torsion.input.yaml
+           2537 100%   22.65MB/s   00:00:00 (xfer#99, to-check=114/238)
+dneff/planck_bao/chain_06/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#100, to-check=115/238)
+dneff/planck_bao/chain_06/spin_torsion.progress
+             85 100%  830.93KB/s   00:00:00 (xfer#101, to-check=116/238)
+dneff/planck_bao/chain_06/spin_torsion.updated.yaml
+           9746 100%   53.11MB/s   00:00:00 (xfer#102, to-check=117/238)
+dneff/planck_bao_sn/
+dneff/planck_bao_sn/chain_01/
+dneff/planck_bao_sn/chain_01/cobaya.pid
+              5 100%   45.71KB/s   00:00:00 (xfer#103, to-check=120/238)
+dneff/planck_bao_sn/chain_01/cobaya_config.yaml
+           2621 100%   22.12MB/s   00:00:00 (xfer#104, to-check=121/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.1.txt
+           4944 100%   27.43MB/s   00:00:00 (xfer#105, to-check=122/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.checkpoint
+             92 100%  899.36KB/s   00:00:00 (xfer#106, to-check=123/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.covmat
+           6634 100%   34.20MB/s   00:00:00 (xfer#107, to-check=124/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.input.yaml
+           2564 100%   19.57MB/s   00:00:00 (xfer#108, to-check=125/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#109, to-check=126/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.progress
+             85 100%  755.23KB/s   00:00:00 (xfer#110, to-check=127/238)
+dneff/planck_bao_sn/chain_01/spin_torsion.updated.yaml
+          10083 100%   52.24MB/s   00:00:00 (xfer#111, to-check=128/238)
+dneff/planck_bao_sn/chain_02/
+dneff/planck_bao_sn/chain_02/cobaya.pid
+              5 100%   36.97KB/s   00:00:00 (xfer#112, to-check=130/238)
+dneff/planck_bao_sn/chain_02/cobaya_config.yaml
+           2620 100%   19.66MB/s   00:00:00 (xfer#113, to-check=131/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.1.txt
+           3296 100%   10.58MB/s   00:00:00 (xfer#114, to-check=132/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.checkpoint
+             92 100%  801.77KB/s   00:00:00 (xfer#115, to-check=133/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.covmat
+           6634 100%   35.57MB/s   00:00:00 (xfer#116, to-check=134/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.input.yaml
+           2563 100%   17.58MB/s   00:00:00 (xfer#117, to-check=135/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#118, to-check=136/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.progress
+             85 100%  748.73KB/s   00:00:00 (xfer#119, to-check=137/238)
+dneff/planck_bao_sn/chain_02/spin_torsion.updated.yaml
+          10082 100%   49.85MB/s   00:00:00 (xfer#120, to-check=138/238)
+dneff/planck_bao_sn/chain_03/
+dneff/planck_bao_sn/chain_03/cobaya.pid
+              5 100%   48.42KB/s   00:00:00 (xfer#121, to-check=140/238)
+dneff/planck_bao_sn/chain_03/cobaya_config.yaml
+           2621 100%   21.57MB/s   00:00:00 (xfer#122, to-check=141/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.1.txt
+           2472 100%   18.41MB/s   00:00:00 (xfer#123, to-check=142/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.checkpoint
+             92 100%  761.28KB/s   00:00:00 (xfer#124, to-check=143/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.covmat
+           6634 100%   38.13MB/s   00:00:00 (xfer#125, to-check=144/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.input.yaml
+           2564 100%   20.89MB/s   00:00:00 (xfer#126, to-check=145/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#127, to-check=146/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.progress
+             85 100%  775.41KB/s   00:00:00 (xfer#128, to-check=147/238)
+dneff/planck_bao_sn/chain_03/spin_torsion.updated.yaml
+          10083 100%   49.79MB/s   00:00:00 (xfer#129, to-check=148/238)
+dneff/planck_bao_sn/chain_04/
+dneff/planck_bao_sn/chain_04/cobaya.pid
+              5 100%   46.86KB/s   00:00:00 (xfer#130, to-check=150/238)
+dneff/planck_bao_sn/chain_04/cobaya_config.yaml
+           2620 100%  163.75KB/s   00:00:00 (xfer#131, to-check=151/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.1.txt
+           3296 100%   24.92MB/s   00:00:00 (xfer#132, to-check=152/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.checkpoint
+             92 100%  872.30KB/s   00:00:00 (xfer#133, to-check=153/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.covmat
+           6634 100%   36.35MB/s   00:00:00 (xfer#134, to-check=154/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.input.yaml
+           2563 100%   20.34MB/s   00:00:00 (xfer#135, to-check=155/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#136, to-check=156/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.progress
+             85 100%  836.92KB/s   00:00:00 (xfer#137, to-check=157/238)
+dneff/planck_bao_sn/chain_04/spin_torsion.updated.yaml
+          10082 100%   54.06MB/s   00:00:00 (xfer#138, to-check=158/238)
+dneff/planck_bao_sn/chain_05/
+dneff/planck_bao_sn/chain_05/cobaya.pid
+              5 100%   49.23KB/s   00:00:00 (xfer#139, to-check=160/238)
+dneff/planck_bao_sn/chain_05/cobaya_config.yaml
+           2620 100%   23.76MB/s   00:00:00 (xfer#140, to-check=161/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.1.txt
+           9064 100%   54.03MB/s   00:00:00 (xfer#141, to-check=162/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.checkpoint
+             92 100%  976.25KB/s   00:00:00 (xfer#142, to-check=163/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.covmat
+           6634 100%   41.08MB/s   00:00:00 (xfer#143, to-check=164/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.input.yaml
+           2563 100%   22.00MB/s   00:00:00 (xfer#144, to-check=165/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#145, to-check=166/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.progress
+             85 100%  911.41KB/s   00:00:00 (xfer#146, to-check=167/238)
+dneff/planck_bao_sn/chain_05/spin_torsion.updated.yaml
+          10082 100%   59.75MB/s   00:00:00 (xfer#147, to-check=168/238)
+dneff/planck_bao_sn/chain_06/
+dneff/planck_bao_sn/chain_06/cobaya.pid
+              5 100%   51.33KB/s   00:00:00 (xfer#148, to-check=170/238)
+dneff/planck_bao_sn/chain_06/cobaya_config.yaml
+           2620 100%   43.86KB/s   00:00:00 (xfer#149, to-check=171/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.1.txt
+           8240 100%  980.25KB/s   00:00:00 (xfer#150, to-check=172/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.checkpoint
+             92 100%  259.71KB/s   00:00:00 (xfer#151, to-check=173/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.covmat
+           6634 100%    1.27MB/s   00:00:00 (xfer#152, to-check=174/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.input.yaml
+           2563 100%  870.56KB/s   00:00:00 (xfer#153, to-check=175/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#154, to-check=176/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.progress
+             85 100%  605.50KB/s   00:00:00 (xfer#155, to-check=177/238)
+dneff/planck_bao_sn/chain_06/spin_torsion.updated.yaml
+          10082 100%   33.97MB/s   00:00:00 (xfer#156, to-check=178/238)
+dneff/planck_only/
+dneff/planck_only/chain_01/
+dneff/planck_only/chain_01/cobaya.pid
+              5 100%   33.19KB/s   00:00:00 (xfer#157, to-check=181/238)
+dneff/planck_only/chain_01/cobaya_config.yaml
+           2399 100%    5.54MB/s   00:00:00 (xfer#158, to-check=182/238)
+dneff/planck_only/chain_01/spin_torsion.1.txt
+           2940 100%   11.40MB/s   00:00:00 (xfer#159, to-check=183/238)
+dneff/planck_only/chain_01/spin_torsion.checkpoint
+             92 100%  319.89KB/s   00:00:00 (xfer#160, to-check=184/238)
+dneff/planck_only/chain_01/spin_torsion.covmat
+           6618 100%   17.47MB/s   00:00:00 (xfer#161, to-check=185/238)
+dneff/planck_only/chain_01/spin_torsion.input.yaml
+           2344 100%    7.90MB/s   00:00:00 (xfer#162, to-check=186/238)
+dneff/planck_only/chain_01/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#163, to-check=187/238)
+dneff/planck_only/chain_01/spin_torsion.progress
+             85 100%   13.90KB/s   00:00:00 (xfer#164, to-check=188/238)
+dneff/planck_only/chain_01/spin_torsion.updated.yaml
+           6670 100%    2.30MB/s   00:00:00 (xfer#165, to-check=189/238)
+dneff/planck_only/chain_02/
+dneff/planck_only/chain_02/cobaya.pid
+              5 100%   12.91KB/s   00:00:00 (xfer#166, to-check=191/238)
+dneff/planck_only/chain_02/cobaya_config.yaml
+           2398 100%   12.34KB/s   00:00:00 (xfer#167, to-check=192/238)
+dneff/planck_only/chain_02/spin_torsion.checkpoint
+             92 100%  737.44KB/s   00:00:00 (xfer#168, to-check=193/238)
+dneff/planck_only/chain_02/spin_torsion.covmat
+           6618 100%   33.94MB/s   00:00:00 (xfer#169, to-check=194/238)
+dneff/planck_only/chain_02/spin_torsion.input.yaml
+           2343 100%    7.42MB/s   00:00:00 (xfer#170, to-check=195/238)
+dneff/planck_only/chain_02/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#171, to-check=196/238)
+dneff/planck_only/chain_02/spin_torsion.progress
+             85 100%  703.35KB/s   00:00:00 (xfer#172, to-check=197/238)
+dneff/planck_only/chain_02/spin_torsion.updated.yaml
+           6669 100%   33.81MB/s   00:00:00 (xfer#173, to-check=198/238)
+dneff/planck_only/chain_03/
+dneff/planck_only/chain_03/cobaya.pid
+              5 100%   40.72KB/s   00:00:00 (xfer#174, to-check=200/238)
+dneff/planck_only/chain_03/cobaya_config.yaml
+           2398 100%   14.21MB/s   00:00:00 (xfer#175, to-check=201/238)
+dneff/planck_only/chain_03/spin_torsion.1.txt
+           2352 100%   16.14MB/s   00:00:00 (xfer#176, to-check=202/238)
+dneff/planck_only/chain_03/spin_torsion.checkpoint
+             92 100%  713.70KB/s   00:00:00 (xfer#177, to-check=203/238)
+dneff/planck_only/chain_03/spin_torsion.covmat
+           6618 100%   16.74MB/s   00:00:00 (xfer#178, to-check=204/238)
+dneff/planck_only/chain_03/spin_torsion.input.yaml
+           2343 100%   13.37MB/s   00:00:00 (xfer#179, to-check=205/238)
+dneff/planck_only/chain_03/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#180, to-check=206/238)
+dneff/planck_only/chain_03/spin_torsion.progress
+             85 100%  697.72KB/s   00:00:00 (xfer#181, to-check=207/238)
+dneff/planck_only/chain_03/spin_torsion.updated.yaml
+           6669 100%   32.61MB/s   00:00:00 (xfer#182, to-check=208/238)
+dneff/planck_only/chain_04/
+dneff/planck_only/chain_04/cobaya.pid
+              5 100%   42.14KB/s   00:00:00 (xfer#183, to-check=210/238)
+dneff/planck_only/chain_04/cobaya_config.yaml
+           2398 100%   18.77MB/s   00:00:00 (xfer#184, to-check=211/238)
+dneff/planck_only/chain_04/spin_torsion.1.txt
+           2940 100%   23.76MB/s   00:00:00 (xfer#185, to-check=212/238)
+dneff/planck_only/chain_04/spin_torsion.checkpoint
+             92 100%  737.44KB/s   00:00:00 (xfer#186, to-check=213/238)
+dneff/planck_only/chain_04/spin_torsion.covmat
+           6618 100%   37.13MB/s   00:00:00 (xfer#187, to-check=214/238)
+dneff/planck_only/chain_04/spin_torsion.input.yaml
+           2343 100%    8.69MB/s   00:00:00 (xfer#188, to-check=215/238)
+dneff/planck_only/chain_04/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#189, to-check=216/238)
+dneff/planck_only/chain_04/spin_torsion.progress
+             85 100%  805.93KB/s   00:00:00 (xfer#190, to-check=217/238)
+dneff/planck_only/chain_04/spin_torsion.updated.yaml
+           6669 100%   33.81MB/s   00:00:00 (xfer#191, to-check=218/238)
+dneff/planck_only/chain_05/
+dneff/planck_only/chain_05/cobaya.pid
+              5 100%   40.39KB/s   00:00:00 (xfer#192, to-check=220/238)
+dneff/planck_only/chain_05/cobaya_config.yaml
+           2398 100%   19.38MB/s   00:00:00 (xfer#193, to-check=221/238)
+dneff/planck_only/chain_05/spin_torsion.1.txt
+           1176 100%    8.78MB/s   00:00:00 (xfer#194, to-check=222/238)
+dneff/planck_only/chain_05/spin_torsion.checkpoint
+             92 100%  864.29KB/s   00:00:00 (xfer#195, to-check=223/238)
+dneff/planck_only/chain_05/spin_torsion.covmat
+           6618 100%   33.21MB/s   00:00:00 (xfer#196, to-check=224/238)
+dneff/planck_only/chain_05/spin_torsion.input.yaml
+           2343 100%   14.51MB/s   00:00:00 (xfer#197, to-check=225/238)
+dneff/planck_only/chain_05/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#198, to-check=226/238)
+dneff/planck_only/chain_05/spin_torsion.progress
+             85 100%  761.84KB/s   00:00:00 (xfer#199, to-check=227/238)
+dneff/planck_only/chain_05/spin_torsion.updated.yaml
+           6669 100%   37.21MB/s   00:00:00 (xfer#200, to-check=228/238)
+dneff/planck_only/chain_06/
+dneff/planck_only/chain_06/cobaya.pid
+              5 100%   53.61KB/s   00:00:00 (xfer#201, to-check=230/238)
+dneff/planck_only/chain_06/cobaya_config.yaml
+           2398 100%   17.07MB/s   00:00:00 (xfer#202, to-check=231/238)
+dneff/planck_only/chain_06/spin_torsion.checkpoint
+             92 100%  937.39KB/s   00:00:00 (xfer#203, to-check=232/238)
+dneff/planck_only/chain_06/spin_torsion.covmat
+           6618 100%   36.07MB/s   00:00:00 (xfer#204, to-check=233/238)
+dneff/planck_only/chain_06/spin_torsion.input.yaml
+           2343 100%   18.16MB/s   00:00:00 (xfer#205, to-check=234/238)
+dneff/planck_only/chain_06/spin_torsion.input.yaml.locked
+              0 nan%   00:00:00 (xfer#206, to-check=235/238)
+dneff/planck_only/chain_06/spin_torsion.progress
+             85 100%  830.93KB/s   00:00:00 (xfer#207, to-check=236/238)
+dneff/planck_only/chain_06/spin_torsion.updated.yaml
+           6669 100%   39.00MB/s   00:00:00 (xfer#208, to-check=237/238)
+
+sent 4772 bytes  received 275333 bytes  2801050000 bytes/sec
+total size is 1037441  speedup is 3.70
+Transfer starting: 5 files
+./
+full_tension.covmat
+planck_bao.covmat
+planck_bao_sn.covmat
+planck_only.covmat
+
+sent 110 bytes  received 9227 bytes  93370000 bytes/sec
+total size is 27324  speedup is 2.93
+Transfer starting: 2 files
+./
+MANIFEST.md
+
+sent 44 bytes  received 556 bytes  6000000 bytes/sec
+total size is 703  speedup is 1.17
+[2026-03-11_0205] Off-pod sync complete
+[2026-03-11_0512] Starting off-pod sync
+Transfer starting: 246 files
+dneff/full_tension/chain_01/spin_torsion.1.txt
+         800802  29%    1.44MB/s   00:00:01        2747761 100%    3.17MB/s   00:00:00 (xfer#1, to-check=6/246)
+dneff/full_tension/chain_01/spin_torsion.checkpoint
+            107 100%  652.19KB/s   00:00:00 (xfer#2, to-check=7/246)
+dneff/full_tension/chain_01/spin_torsion.covmat
+           7470 100%  374.23KB/s   00:00:00 (xfer#3, to-check=8/246)
+dneff/full_tension/chain_01/spin_torsion.progress
+            729 100%    2.87MB/s   00:00:00 (xfer#4, to-check=11/246)
+dneff/full_tension/chain_02/spin_torsion.1.txt
+        2702218 100%   16.40MB/s   00:00:00 (xfer#5, to-check=16/246)
+dneff/full_tension/chain_02/spin_torsion.checkpoint
+            107 100%  486.43KB/s   00:00:00 (xfer#6, to-check=17/246)
+dneff/full_tension/chain_02/spin_torsion.covmat
+           7448 100%   21.34MB/s   00:00:00 (xfer#7, to-check=18/246)
+dneff/full_tension/chain_02/spin_torsion.progress
+            672 100%    3.66MB/s   00:00:00 (xfer#8, to-check=21/246)
+dneff/full_tension/chain_03/spin_torsion.1.txt
+        2524511 100%   25.04MB/s   00:00:00 (xfer#9, to-check=26/246)
+dneff/full_tension/chain_03/spin_torsion.checkpoint
+            107 100%  309.95KB/s   00:00:00 (xfer#10, to-check=27/246)
+dneff/full_tension/chain_03/spin_torsion.covmat
+           7468 100%   12.15MB/s   00:00:00 (xfer#11, to-check=28/246)
+dneff/full_tension/chain_03/spin_torsion.progress
+            669 100%    1.53MB/s   00:00:00 (xfer#12, to-check=31/246)
+dneff/full_tension/chain_04/spin_torsion.1.txt
+        2584342 100%   40.31MB/s   00:00:00 (xfer#13, to-check=36/246)
+dneff/full_tension/chain_04/spin_torsion.checkpoint
+            105 100%  299.08KB/s   00:00:00 (xfer#14, to-check=37/246)
+dneff/full_tension/chain_04/spin_torsion.covmat
+           7472 100%   14.51MB/s   00:00:00 (xfer#15, to-check=38/246)
+dneff/full_tension/chain_04/spin_torsion.progress
+            668 100%    1.87MB/s   00:00:00 (xfer#16, to-check=41/246)
+dneff/full_tension/chain_05/spin_torsion.1.txt
+        2582556 100%   38.71MB/s   00:00:00 (xfer#17, to-check=46/246)
+dneff/full_tension/chain_05/spin_torsion.checkpoint
+            107 100%  140.25KB/s   00:00:00 (xfer#18, to-check=47/246)
+dneff/full_tension/chain_05/spin_torsion.covmat
+           7474 100%    3.59MB/s   00:00:00 (xfer#19, to-check=48/246)
+dneff/full_tension/chain_05/spin_torsion.progress
+            671 100%    1.13MB/s   00:00:00 (xfer#20, to-check=51/246)
+dneff/full_tension/chain_06/spin_torsion.1.txt
+       17357241 100%   58.29MB/s   00:00:00 (xfer#21, to-check=56/246)
+dneff/full_tension/chain_06/spin_torsion.checkpoint
+            107 100%  384.11KB/s   00:00:00 (xfer#22, to-check=57/246)
+dneff/full_tension/chain_06/spin_torsion.covmat
+           7466 100%   22.83MB/s   00:00:00 (xfer#23, to-check=58/246)
+dneff/full_tension/chain_06/spin_torsion.progress
+           1567 100%    4.97MB/s   00:00:00 (xfer#24, to-check=61/246)
+dneff/planck_bao/chain_01/
+dneff/planck_bao/chain_01/spin_torsion.1.txt
+          69954 100%   29.12MB/s   00:00:00 (xfer#25, to-check=67/246)
+dneff/planck_bao/chain_02/
+dneff/planck_bao/chain_02/spin_torsion.1.txt
+          59736 100%   17.16MB/s   00:00:00 (xfer#26, to-check=77/246)
+dneff/planck_bao/chain_03/
+dneff/planck_bao/chain_03/spin_torsion.1.txt
+          54234 100%  109.62MB/s   00:00:00 (xfer#27, to-check=87/246)
+dneff/planck_bao/chain_04/
+dneff/planck_bao/chain_04/spin_torsion.1.txt
+          62880 100%   86.02MB/s   00:00:00 (xfer#28, to-check=97/246)
+dneff/planck_bao/chain_05/
+dneff/planck_bao/chain_05/spin_torsion.1.txt
+          69168 100%   96.60MB/s   00:00:00 (xfer#29, to-check=107/246)
+dneff/planck_bao/chain_06/
+dneff/planck_bao/chain_06/spin_torsion.1.txt
+          52662 100%  101.27MB/s   00:00:00 (xfer#30, to-check=117/246)
+dneff/planck_bao_sn/chain_01/spin_torsion.1.txt
+          62624 100%   95.87MB/s   00:00:00 (xfer#31, to-check=128/246)
+dneff/planck_bao_sn/chain_02/spin_torsion.1.txt
+          71688 100%    3.69MB/s   00:00:00 (xfer#32, to-check=138/246)
+dneff/planck_bao_sn/chain_03/spin_torsion.1.txt
+          69216 100%   40.82MB/s   00:00:00 (xfer#33, to-check=148/246)
+dneff/planck_bao_sn/chain_04/spin_torsion.1.txt
+          70864 100%  100.73MB/s   00:00:00 (xfer#34, to-check=158/246)
+dneff/planck_bao_sn/chain_05/spin_torsion.1.txt
+          74984 100%    3.53MB/s   00:00:00 (xfer#35, to-check=168/246)
+dneff/planck_bao_sn/chain_06/spin_torsion.1.txt
+          74160 100%   99.34MB/s   00:00:00 (xfer#36, to-check=178/246)
+dneff/planck_only/chain_01/spin_torsion.1.txt
+          40572 100%   92.37MB/s   00:00:00 (xfer#37, to-check=189/246)
+dneff/planck_only/chain_02/
+dneff/planck_only/chain_02/spin_torsion.1.txt
+          45864 100%  115.67MB/s   00:00:00 (xfer#38, to-check=199/246)
+dneff/planck_only/chain_03/spin_torsion.1.txt
+          49392 100%    4.54MB/s   00:00:00 (xfer#39, to-check=209/246)
+dneff/planck_only/chain_04/spin_torsion.1.txt
+          38220 100%   24.28MB/s   00:00:00 (xfer#40, to-check=219/246)
+dneff/planck_only/chain_05/spin_torsion.1.txt
+          44100 100%   37.59MB/s   00:00:00 (xfer#41, to-check=229/246)
+dneff/planck_only/chain_06/
+dneff/planck_only/chain_06/spin_torsion.1.txt
+          51156 100%   95.13MB/s   00:00:00 (xfer#42, to-check=239/246)
+
+sent 5986 bytes  received 5345540 bytes  53515260000 bytes/sec
+total size is 32079232  speedup is 5.99
+Transfer starting: 5 files
+
+sent 16 bytes  received 167 bytes  1830000 bytes/sec
+total size is 27324  speedup is 149.31
+Transfer starting: 12 files
+./
+SHA256SUMS_2026-03-11_0209.txt
+SHA256SUMS_2026-03-11_0229.txt
+SHA256SUMS_2026-03-11_0300.txt
+SHA256SUMS_2026-03-11_0400.txt
+SHA256SUMS_2026-03-11_0500.txt
+manifest_2026-03-11_0209.json
+manifest_2026-03-11_0229.json
+manifest_2026-03-11_0300.json
+manifest_2026-03-11_0400.json
+manifest_2026-03-11_0500.json
+
+sent 242 bytes  received 7689 bytes  79310000 bytes/sec
+total size is 21687  speedup is 2.73
+[2026-03-11_0512] Off-pod sync complete
+[2026-03-11_1700] Starting off-pod sync
+Transfer starting: 246 files
+dneff/full_tension/chain_01/spin_torsion.1.txt
+        2747264  21%    4.20MB/s   00:00:02        6874070  53%    7.81MB/s   00:00:00       13061911 100%    9.05MB/s   00:00:01 (xfer#1, to-check=6/246)
+dneff/full_tension/chain_01/spin_torsion.checkpoint
+            107 100%   16.64KB/s   00:00:00 (xfer#2, to-check=7/246)
+dneff/full_tension/chain_01/spin_torsion.covmat
+           7470 100%    4.29MB/s   00:00:00 (xfer#3, to-check=8/246)
+dneff/full_tension/chain_01/spin_torsion.progress
+           3148 100%   10.49MB/s   00:00:00 (xfer#4, to-check=11/246)
+dneff/full_tension/chain_02/spin_torsion.1.txt
+       12287025  96%   18.09MB/s   00:00:00       12857414 100%   17.20MB/s   00:00:00 (xfer#5, to-check=16/246)
+dneff/full_tension/chain_02/spin_torsion.checkpoint
+            108 100%  134.50KB/s   00:00:00 (xfer#6, to-check=17/246)
+dneff/full_tension/chain_02/spin_torsion.covmat
+           7456 100%    7.44MB/s   00:00:00 (xfer#7, to-check=18/246)
+dneff/full_tension/chain_02/spin_torsion.progress
+           3085 100%  766.94KB/s   00:00:00 (xfer#8, to-check=21/246)
+dneff/full_tension/chain_03/spin_torsion.1.txt
+       12519247  98%   23.17MB/s   00:00:00       12744003 100%   21.56MB/s   00:00:00 (xfer#9, to-check=26/246)
+dneff/full_tension/chain_03/spin_torsion.checkpoint
+            107 100%  433.50KB/s   00:00:00 (xfer#10, to-check=27/246)
+dneff/full_tension/chain_03/spin_torsion.covmat
+           7456 100%    1.44MB/s   00:00:00 (xfer#11, to-check=28/246)
+dneff/full_tension/chain_03/spin_torsion.progress
+           3028 100%  364.84KB/s   00:00:00 (xfer#12, to-check=31/246)
+dneff/full_tension/chain_04/spin_torsion.1.txt
+        8849717  70%   16.86MB/s   00:00:00       12346774  97%    6.55MB/s   00:00:00       12688637 100%   11.34MB/s   00:00:01 (xfer#13, to-check=36/246)
+dneff/full_tension/chain_04/spin_torsion.checkpoint
+            107 100%  474.83KB/s   00:00:00 (xfer#14, to-check=37/246)
+dneff/full_tension/chain_04/spin_torsion.covmat
+           7468 100%   25.08MB/s   00:00:00 (xfer#15, to-check=38/246)
+dneff/full_tension/chain_04/spin_torsion.progress
+           3026 100%  395.43KB/s   00:00:00 (xfer#16, to-check=41/246)
+dneff/full_tension/chain_05/spin_torsion.1.txt
+        9005456  72%   16.90MB/s   00:00:00       12590407 100%   16.36MB/s   00:00:00 (xfer#17, to-check=46/246)
+dneff/full_tension/chain_05/spin_torsion.checkpoint
+            108 100%   68.48KB/s   00:00:00 (xfer#18, to-check=47/246)
+dneff/full_tension/chain_05/spin_torsion.covmat
+           7454 100%   13.77MB/s   00:00:00 (xfer#19, to-check=48/246)
+dneff/full_tension/chain_05/spin_torsion.progress
+           3030 100%    7.71MB/s   00:00:00 (xfer#20, to-check=51/246)
+dneff/full_tension/chain_06/spin_torsion.1.txt
+       17355552  20%   10.47MB/s   00:00:06       51470806  58%   63.70MB/s   00:00:00       61092475  69%   17.06MB/s   00:00:01       86539123  98%   48.38MB/s   00:00:00       88657040 100%   26.89MB/s   00:00:03 (xfer#21, to-check=56/246)
+dneff/full_tension/chain_06/spin_torsion.checkpoint
+            107 100%  343.74KB/s   00:00:00 (xfer#22, to-check=57/246)
+dneff/full_tension/chain_06/spin_torsion.covmat
+           7464 100%   26.26MB/s   00:00:00 (xfer#23, to-check=58/246)
+dneff/full_tension/chain_06/spin_torsion.progress
+           7838 100%    3.53MB/s   00:00:00 (xfer#24, to-check=61/246)
+
+sent 74578 bytes  received 20113140 bytes  201877180000 bytes/sec
+total size is 154198168  speedup is 7.64
+Transfer starting: 5 files
+
+sent 16 bytes  received 167 bytes  1830000 bytes/sec
+total size is 27324  speedup is 149.31
+Transfer starting: 36 files
+./
+SHA256SUMS_2026-03-11_0600.txt
+SHA256SUMS_2026-03-11_0700.txt
+SHA256SUMS_2026-03-11_0800.txt
+SHA256SUMS_2026-03-11_0900.txt
+SHA256SUMS_2026-03-11_1000.txt
+SHA256SUMS_2026-03-11_1100.txt
+SHA256SUMS_2026-03-11_1200.txt
+SHA256SUMS_2026-03-11_1300.txt
+SHA256SUMS_2026-03-11_1400.txt
+SHA256SUMS_2026-03-11_1500.txt
+SHA256SUMS_2026-03-11_1600.txt
+SHA256SUMS_2026-03-11_1700.txt
+manifest_2026-03-11_0600.json
+manifest_2026-03-11_0700.json
+manifest_2026-03-11_0800.json
+manifest_2026-03-11_0900.json
+manifest_2026-03-11_1000.json
+manifest_2026-03-11_1100.json
+manifest_2026-03-11_1200.json
+manifest_2026-03-11_1300.json
+manifest_2026-03-11_1400.json
+manifest_2026-03-11_1500.json
+manifest_2026-03-11_1600.json
+manifest_2026-03-11_1700.json
+
+sent 550 bytes  received 18779 bytes  193290000 bytes/sec
+total size is 72174  speedup is 3.73
+[2026-03-11_1700] Off-pod sync complete

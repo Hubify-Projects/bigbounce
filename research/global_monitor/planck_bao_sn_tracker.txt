@@ -1,0 +1,41 @@
+planck_bao_sn CHAIN TRACKER
+===========================
+Updated: 2026-03-11 17:59 UTC
+Pod: 83ubwlcdk0gat2 (CPU5, EUR-IS-1)
+
+CHAINS: 6/6 ALIVE
+  chain_01:    565 accepted
+  chain_02:    606 accepted
+  chain_03:    595 accepted
+  chain_04:    557 accepted
+  chain_05:    603 accepted
+  chain_06:    584 accepted
+  TOTAL:     3,510 accepted
+
+Throughput: ~7,767 accepted/hr (0.5h since resume at 17:32 UTC)
+
+CONVERGENCE
+  Parameter       R-1      Target    ESS    Target    Drift     Status
+  H0              0.0876   <0.01     64     >2000     0.551     WAIT
+  delta_neff      0.1162   <0.01     43     >2000     0.591     WAIT
+  tau             0.0328   <0.02     82     >1000     0.125     WAIT
+
+TIMELINE ESTIMATE
+  H0:         ESS 64/2000  -> need 31x samples -> ~14h
+  delta_neff: ESS 43/2000  -> need 46x samples -> ~20h
+  tau:        ESS 82/1000  -> need 12x samples -> ~5h
+
+  BOTTLENECK: delta_neff ESS (~20h to target)
+  Estimated freeze-ready: ~2026-03-12 14:00 UTC (~20h from now)
+
+  Note: Early-chain ESS estimates are unreliable. R-hat will improve
+  substantially as chains accumulate more samples. Recommend re-checking
+  at 6h and 12h marks for better projections.
+
+CURRENT MEAN VALUES (preliminary, low sample count)
+  H0         = 67.97 km/s/Mpc
+  delta_neff = 0.077 (higher than full_tension; expected w/o H0+S8 pulls)
+  tau        = 0.056
+  sigma8     = 0.812
+  omegam     = 0.310
+  ns         = 0.967

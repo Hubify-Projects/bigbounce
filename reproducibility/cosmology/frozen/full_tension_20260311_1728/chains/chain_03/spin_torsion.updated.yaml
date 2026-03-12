@@ -1,0 +1,563 @@
+theory:
+  camb:
+    version: 1.6.5
+    path: null
+    speed: 0.3
+    stop_at_error: false
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      theta_H0_range:
+      - 40
+      - 100
+    ignore_obsolete: false
+    external_primordial_pk: false
+    renames:
+      omegabh2: ombh2
+      omegach2: omch2
+      omegal: omega_de
+      omegak: omk
+      yhe: YHe
+      yheused: YHe
+      YpBBN: Y_p
+    input_params:
+    - As
+    - ns
+    - nnu
+    - ombh2
+    - omch2
+    - tau
+    - cosmomc_theta
+    output_params:
+    - H0
+    - sigma8
+    - omegam
+    - age
+likelihood:
+  planck_NPIPE_highl_CamSpec.TTTEEE:
+    path: null
+    dataset_file: CamSpec_NPIPE/CamSpec_NPIPE_12_6_cl.dataset
+    dataset_params:
+      use_cl: 143x143 217x217 143x217 TE EE
+    aliases:
+    - CamSpec_NPIPE_TTTEEE
+    speed: 10
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    - use_fg_residual_model
+    - cal0
+    - cal2
+    - amp_100
+    - amp_143
+    - amp_217
+    - amp_143x217
+    - n_100
+    - n_143
+    - n_217
+    - n_143x217
+    - calTE
+    - calEE
+    output_params: []
+  planck_2018_lowl.TT:
+    lmin: 2
+    lmax: 29
+    type: CMB
+    aliases:
+    - lowT
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_lowl.EE:
+    type: CMB
+    aliases:
+    - lowE
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_lensing.clik:
+    path: null
+    clik_file: baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing
+    product_id: '151902'
+    commands: null
+    aliases:
+    - lensing
+    speed: 600
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  bao.sdss_dr16_baoplus_lrg:
+    path: null
+    measurements_file: bao_data/sdss_DR16_BAOplus_LRG_FSBAO_DMDHfs8.dat
+    cov_file: bao_data/sdss_DR16_BAOplus_LRG_FSBAO_DMDHfs8_covtot.txt
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_fid: null
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr16_baoplus_lyauto:
+    path: null
+    grid_file: bao_data/sdss_DR16_LYAUTO_BAO_DMDHgrid.txt
+    observable_1: DM_over_rs
+    observable_2: DH_over_rs
+    redshift: 2.334
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    rs_rescale: null
+    prob_dist: null
+    cov_file: null
+    invcov_file: null
+    observable_3: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr16_baoplus_lyxqso:
+    path: null
+    grid_file: bao_data/sdss_DR16_LYxQSO_BAO_DMDHgrid.txt
+    observable_1: DM_over_rs
+    observable_2: DH_over_rs
+    redshift: 2.334
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    rs_rescale: null
+    prob_dist: null
+    cov_file: null
+    invcov_file: null
+    observable_3: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr16_baoplus_qso:
+    path: null
+    measurements_file: bao_data/sdss_DR16_BAOplus_QSO_FSBAO_DMDHfs8.dat
+    cov_file: bao_data/sdss_DR16_BAOplus_QSO_FSBAO_DMDHfs8_covtot.txt
+    redshift: 2.334
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_fid: null
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr7_mgs:
+    path: null
+    prob_dist: bao_data/sdss_MGS_prob.txt
+    prob_dist_bounds:
+    - 0.8005
+    - 1.1985
+    rs_rescale: 4.29720761315
+    data:
+    - 0.15
+    - 4.465666824
+    - 0.1681350461
+    - DV_over_rs
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sixdf_2011_bao:
+    path: null
+    rs_rescale: 1.027369826
+    data:
+    - 0.106
+    - 0.336
+    - 0.015
+    - rs_over_DV
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    prob_dist: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  sn.pantheonplus:
+    path: null
+    dataset_file: PantheonPlus/config.dataset
+    dataset_params: null
+    aliases:
+    - PantheonPlus
+    use_abs_mag: false
+    speed: 100
+    type: SN
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  H0.riess2020Mb:
+    Mb_mean: -19.263
+    Mb_std: 0.049
+    aliases:
+    - Riess20Mb
+    speed: 4500
+    type: Mb
+    stop_at_error: false
+    version: null
+    input_params:
+    - Mb
+    output_params: []
+  S8_DES:
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    external: 'lambda sigma8, omegam: stats.norm.logpdf(sigma8*np.sqrt(omegam/0.3),
+      loc=0.776, scale=0.017)'
+    input_params: []
+    output_params: []
+params:
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.044
+      scale: 0.014
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+    derived: true
+  nnu:
+    prior:
+      min: 2.046
+      max: 5.046
+    ref:
+      dist: norm
+      loc: 3.346
+      scale: 0.2
+    proposal: 0.05
+    latex: N_\mathrm{eff}
+  ns:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.0042
+    proposal: 0.002
+    latex: n_s
+  ombh2:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.00015
+    proposal: 0.0001
+    latex: \Omega_b h^2
+    renames:
+    - omegabh2
+  omch2:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.0012
+    proposal: 0.0005
+    latex: \Omega_c h^2
+    renames:
+    - omegach2
+  tau:
+    prior:
+      min: 0.01
+      max: 0.8
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04092
+      scale: 0.00031
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0 \; [\mathrm{km/s/Mpc}]
+    min: 40
+    max: 100
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  omegam:
+    latex: \Omega_m
+    derived: true
+  S8:
+    derived: 'lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)'
+    latex: S_8
+  delta_neff:
+    derived: 'lambda nnu: nnu - 3.046'
+    latex: \Delta N_\mathrm{eff}
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+    derived: true
+  A_planck:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.0025
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.002
+    proposal: 0.0005
+    latex: y_\mathrm{cal}
+    renames: calPlanck
+  use_fg_residual_model:
+    value: 0
+  cal0:
+    value: 1
+  cal2:
+    value: 1
+  amp_100:
+    value: 0
+  amp_143:
+    prior:
+      dist: uniform
+      min: 0
+      max: 50
+    ref:
+      dist: norm
+      loc: 10
+      scale: 1
+    latex: A^{\rm power}_{143}
+    proposal: 1
+  amp_217:
+    prior:
+      dist: uniform
+      min: 0
+      max: 50
+    ref:
+      dist: norm
+      loc: 20
+      scale: 1
+    latex: A^{\rm power}_{217}
+    proposal: 1
+  amp_143x217:
+    prior:
+      dist: uniform
+      min: 0
+      max: 50
+    ref:
+      dist: norm
+      loc: 10
+      scale: 1
+    latex: A^{\rm power}_{143\times217}
+    proposal: 1
+  n_100:
+    value: 1
+  n_143:
+    prior:
+      dist: uniform
+      min: 0
+      max: 5
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.2
+    latex: \gamma^{\rm power}_{143}
+    proposal: 0.2
+  n_217:
+    prior:
+      dist: uniform
+      min: 0
+      max: 5
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.2
+    latex: \gamma^{\rm power}_{217}
+    proposal: 0.2
+  n_143x217:
+    prior:
+      dist: uniform
+      min: 0
+      max: 5
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.2
+    latex: \gamma^{\rm power}_{143\times217}
+    proposal: 0.2
+  calTE:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.01
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.01
+    proposal: 0.01
+    latex: c_{TE}
+  calEE:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.01
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.01
+    proposal: 0.01
+    latex: c_{EE}
+  Mb:
+    prior:
+      min: -20
+      max: -18
+    latex: M_b
+  chi2__BAO:
+    latex: \chi^2_\mathrm{BAO}
+    derived: true
+  chi2__CMB:
+    latex: \chi^2_\mathrm{CMB}
+    derived: true
+  chi2__Mb:
+    latex: \chi^2_\mathrm{Mb}
+    derived: true
+  chi2__SN:
+    latex: \chi^2_\mathrm{SN}
+    derived: true
+sampler:
+  mcmc:
+    sampler_type: mcmc
+    supports_periodic_params: true
+    burn_in: 0.1
+    max_tries: 40d
+    covmat: /workspace/bigbounce/covmats/full_tension.covmat
+    covmat_params: null
+    proposal_scale: 2.4
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 50
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: true
+    blocking:
+    - - 1
+      - - nnu
+        - ombh2
+        - omch2
+        - tau
+        - theta_MC_100
+    - - 1
+      - - logA
+        - ns
+    - - 4
+      - - A_planck
+    - - 4
+      - - amp_143
+        - amp_217
+        - amp_143x217
+        - n_143
+        - n_217
+        - n_143x217
+        - calTE
+        - calEE
+    - - 4
+      - - Mb
+    callback_function: null
+    callback_every: null
+    seed: 1373358949
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.6.1
+output: spin_torsion
+packages_path: /workspace/cobaya_packages
+version: 3.6.1

@@ -1,0 +1,19 @@
+scenario,pod_type,count,cost_per_hr,daily_cost,runtime_days,total_cost,datasets,chains,science_value,notes
+A1_GPU_focused,RTX 6000 Ada (on-demand),1,0.74,17.76,10,177.60,4,28,HIGH,"Warm restart all 4 datasets from covmats. Fastest path to full_tension freeze."
+A2_GPU_focused_spot,RTX 6000 Ada (spot),1,0.40,9.60,10,96.00,4,28,HIGH,"Same as A1 but spot pricing. Risk: preemption."
+A3_GPU_budget,RTX A5000 (on-demand),1,0.16,3.84,14,53.76,4,28,MEDIUM,"Cheaper GPU but fewer CPU cores (~9 vs ~128). Slower convergence. 14 days est."
+B1_GPU_plus_CPU1,RTX 6000 Ada + cpu5c,2,0.93,22.32,10,223.20,4+4,28+16,VERY HIGH,"GPU warm restart + CPU#1 cold restart with GPU covmats. Independent verification."
+B2_GPU_plus_both_CPUs,RTX 6000 Ada + 2x cpu5c,3,1.12,26.88,10,268.80,4+4+4,28+16+16,MAXIMUM,"Full replication of original setup. GPU + ΔNeff + ΛCDM."
+B3_budget_full,RTX A5000 + 2x cpu3c,3,0.46,11.04,14,154.56,4+4+4,28+16+16,HIGH,"Budget full recovery. A5000 GPU + smaller CPU pods."
+C1_minimal_science,RTX A5000 (on-demand),1,0.16,3.84,14,53.76,2,14,FOCUSED,"Run only full_tension + planck_bao_sn (closest to freeze). 7 chains each."
+C2_two_datasets_gpu,RTX 6000 Ada (on-demand),1,0.74,17.76,7,124.32,2,14,FOCUSED,"full_tension + planck_bao_sn only on fast GPU. ~7 days to freeze."
+D1_full_tension_only,RTX 6000 Ada (on-demand),1,0.74,17.76,5,88.80,1,7,TARGETED,"Only full_tension. Fastest freeze. 5 days est."
+D2_full_tension_spot,RTX 6000 Ada (spot),1,0.40,9.60,5,48.00,1,7,TARGETED,"Only full_tension on spot. Cheapest path to first result."
+--- RECOMMENDED SCENARIO ---,,,,,,,,,,
+RECOMMENDED,RTX 6000 Ada (on-demand) + cpu5c,2,0.93,22.32,12,267.84,4+4,28+16,VERY HIGH,"Phase A: GPU all 4 datasets (warm restart). Phase B: CPU#1 ΔNeff after GPU stabilizes."
+--- NETWORK VOLUME COSTS ---,,,,,,,,,,
+nv_gpu,Network Volume 100GB,1,0.07,1.68,30,50.40,,,,"$0.07/hr = $50/mo. Persistent. Mandatory."
+nv_cpu,Network Volume 50GB,1,0.035,0.84,30,25.20,,,,"Smaller vol for CPU chains."
+--- BUDGET SUMMARY ($1000) ---,,,,,,,,,,
+budget_check,"RECOMMENDED + 2 network vols",,1.035,24.84,40,$993.60,,,,"40 days runway with recommended setup. Includes storage."
+budget_minimal,"C1 minimal + 1 network vol",,0.23,5.52,90,$496.80,,,,"90 days runway. 2 datasets only."

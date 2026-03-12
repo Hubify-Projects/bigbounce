@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-03-11T02:09:29.555047+00:00",
+  "total_samples": 948,
+  "datasets": {
+    "full_tension": {
+      "chain_01": 65,
+      "chain_02": 71,
+      "chain_03": 75,
+      "chain_04": 62,
+      "chain_05": 61,
+      "chain_06": 334,
+      "total": 668
+    },
+    "planck_only": {
+      "chain_01": 14,
+      "chain_02": 15,
+      "chain_03": 17,
+      "chain_04": 12,
+      "chain_05": 16,
+      "chain_06": 18,
+      "total": 92
+    },
+    "planck_bao": {
+      "chain_01": 11,
+      "chain_02": 11,
+      "chain_03": 14,
+      "chain_04": 11,
+      "chain_05": 16,
+      "chain_06": 6,
+      "total": 69
+    },
+    "planck_bao_sn": {
+      "chain_01": 17,
+      "chain_02": 20,
+      "chain_03": 19,
+      "chain_04": 23,
+      "chain_05": 21,
+      "chain_06": 19,
+      "total": 119
+    }
+  }
+}

@@ -1,0 +1,160 @@
+==============================================================================================================
+GetDist Convergence Validation — 2026-03-04 22:49:40 UTC
+GetDist available: True
+==============================================================================================================
+
+==============================================================================================================
+  DATASET: planck_only
+==============================================================================================================
+  Chain files (7):
+    /workspace/bigbounce/reproducibility/chains/planck_only/spin_torsion.1.txt  (90 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain2/spin_torsion.1.txt  (54 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain3/spin_torsion.1.txt  (75 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain4/spin_torsion.1.txt  (65 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain5/spin_torsion.1.txt  (85 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain6/spin_torsion.1.txt  (103 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_only_chain7/spin_torsion.1.txt  (101 samples)
+  Valid chains loaded: 7
+
+  --- GetDist native analysis ---
+  GetDist native failed: WeightedSamples.__init__() got an unexpected keyword argument 'name'
+  Falling back to manual computation only.
+
+  --- Manual split-Rhat + autocorrelation ESS ---
+         Param         Mean        Std   Split R-1      Status   ESS(AR)   ESS(wt)
+  ------------  -----------  ---------  ----------  ----------  --------  --------
+            H0    68.938026   1.494489    +1.29071     RUNNING        31       315
+    delta_neff     0.164404   0.158722    +1.68854     RUNNING        37       315
+        omegam     0.302454   0.011494    +1.11753     RUNNING        33       315
+         ombh2     0.022337   0.000170    +0.73107     RUNNING        45       315
+            ns     0.972456   0.007056    +1.00251     RUNNING        34       315
+           tau     0.055524   0.004274    +1.76848     RUNNING        53       315
+        sigma8     0.812554   0.006319    +1.40954     RUNNING        46       315
+
+  --- Per-chain means (detect outlier chains) ---
+  Chain                          Rows           H0   delta_neff          tau       sigma8
+  ----------------------------  -----  -----------  -----------  -----------  -----------
+  planck_only                      90      70.7618     0.369610     0.048500     0.812053
+  planck_only_chain2               54      68.2626     0.135864     0.057505     0.821763
+  planck_only_chain3               75      67.8351    -0.017952     0.057748     0.801987
+  planck_only_chain4               65      70.4867     0.287527     0.060750     0.815047
+  planck_only_chain5               85      68.4640     0.163574     0.051166     0.812724
+  planck_only_chain6              103      69.3214     0.233757     0.056200     0.815577
+  planck_only_chain7              101      67.6979    -0.006570     0.057555     0.809254
+
+==============================================================================================================
+  DATASET: planck_bao
+==============================================================================================================
+  Chain files (7):
+    /workspace/bigbounce/reproducibility/chains/planck_bao/spin_torsion.1.txt  (65 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain2/spin_torsion.1.txt  (98 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain3/spin_torsion.1.txt  (105 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain4/spin_torsion.1.txt  (56 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain5/spin_torsion.1.txt  (78 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain6/spin_torsion.1.txt  (94 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_chain7/spin_torsion.1.txt  (91 samples)
+  Valid chains loaded: 7
+
+  --- GetDist native analysis ---
+  GetDist native failed: WeightedSamples.__init__() got an unexpected keyword argument 'name'
+  Falling back to manual computation only.
+
+  --- Manual split-Rhat + autocorrelation ESS ---
+         Param         Mean        Std   Split R-1      Status   ESS(AR)   ESS(wt)
+  ------------  -----------  ---------  ----------  ----------  --------  --------
+            H0    68.713552   1.054801    +0.91805     RUNNING        36       313
+    delta_neff     0.166739   0.110301    +1.56035     RUNNING        40       313
+        omegam     0.305696   0.009242    +0.71859     RUNNING        38       313
+         ombh2     0.022335   0.000137    +0.41152     RUNNING        82       313
+            ns     0.971441   0.005364    +0.80262     RUNNING        35       313
+           tau     0.051456   0.006396    +2.46931     RUNNING        36       313
+        sigma8     0.810681   0.005990    +0.87512     RUNNING        38       313
+
+  --- Per-chain means (detect outlier chains) ---
+  Chain                          Rows           H0   delta_neff          tau       sigma8
+  ----------------------------  -----  -----------  -----------  -----------  -----------
+  planck_bao                       65      70.4646     0.390226     0.052373     0.814337
+  planck_bao_chain2                98      68.0796     0.099205     0.045168     0.801692
+  planck_bao_chain3               105      68.9320     0.106340     0.061108     0.814979
+  planck_bao_chain4                56      68.1186     0.046139     0.059660     0.811351
+  planck_bao_chain5                78      69.2237     0.238604     0.051803     0.814714
+  planck_bao_chain6                94      68.0694     0.138538     0.045432     0.807846
+  planck_bao_chain7                91      68.4333     0.171059     0.048188     0.811151
+
+==============================================================================================================
+  DATASET: planck_bao_sn
+==============================================================================================================
+  Chain files (7):
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn/spin_torsion.1.txt  (65 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain2/spin_torsion.1.txt  (64 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain3/spin_torsion.1.txt  (93 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain4/spin_torsion.1.txt  (103 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain5/spin_torsion.1.txt  (122 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain6/spin_torsion.1.txt  (97 samples)
+    /workspace/bigbounce/reproducibility/chains/planck_bao_sn_chain7/spin_torsion.1.txt  (103 samples)
+  Valid chains loaded: 7
+
+  --- GetDist native analysis ---
+  GetDist native failed: WeightedSamples.__init__() got an unexpected keyword argument 'name'
+  Falling back to manual computation only.
+
+  --- Manual split-Rhat + autocorrelation ESS ---
+         Param         Mean        Std   Split R-1      Status   ESS(AR)   ESS(wt)
+  ------------  -----------  ---------  ----------  ----------  --------  --------
+            H0    68.469998   1.334927    +0.59626     RUNNING        46       366
+    delta_neff     0.133945   0.133330    +1.05643     RUNNING        49       366
+        omegam     0.306897   0.011274    +0.52512     RUNNING        43       366
+         ombh2     0.022284   0.000195    +0.91466     RUNNING        60       366
+            ns     0.968277   0.005883    +0.77245     RUNNING        40       366
+           tau     0.051919   0.004432    +1.26049     RUNNING        54       366
+        sigma8     0.808903   0.005926    +0.85132     RUNNING        35       366
+
+  --- Per-chain means (detect outlier chains) ---
+  Chain                          Rows           H0   delta_neff          tau       sigma8
+  ----------------------------  -----  -----------  -----------  -----------  -----------
+  planck_bao_sn                    65      68.5968     0.199621     0.056862     0.815257
+  planck_bao_sn_chain2             64      67.7460     0.082872     0.052272     0.809908
+  planck_bao_sn_chain3             93      69.5790     0.317966     0.048776     0.812647
+  planck_bao_sn_chain4            103      69.6472     0.175025     0.049271     0.802096
+  planck_bao_sn_chain5            122      67.9991     0.113684     0.054633     0.812227
+  planck_bao_sn_chain6             97      68.6266     0.156367     0.045634     0.803021
+  planck_bao_sn_chain7            103      67.1247    -0.074863     0.056506     0.808959
+
+==============================================================================================================
+  DATASET: full_tension
+==============================================================================================================
+  Chain files (7):
+    /workspace/bigbounce/reproducibility/chains/full_tension/spin_torsion.1.txt  (182 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain2/spin_torsion.1.txt  (186 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain3/spin_torsion.1.txt  (137 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain4/spin_torsion.1.txt  (195 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain5/spin_torsion.1.txt  (202 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain6/spin_torsion.1.txt  (201 samples)
+    /workspace/bigbounce/reproducibility/chains/full_tension_chain7/spin_torsion.1.txt  (160 samples)
+  Valid chains loaded: 7
+
+  --- GetDist native analysis ---
+  GetDist native failed: WeightedSamples.__init__() got an unexpected keyword argument 'name'
+  Falling back to manual computation only.
+
+  --- Manual split-Rhat + autocorrelation ESS ---
+         Param         Mean        Std   Split R-1      Status   ESS(AR)   ESS(wt)
+  ------------  -----------  ---------  ----------  ----------  --------  --------
+            H0    68.659452   0.642420    +0.42865     RUNNING        41       648
+    delta_neff     0.127642   0.075837    +0.78687     RUNNING        46       648
+        omegam     0.304443   0.005232    +0.32801     RUNNING        47       648
+         ombh2     0.022417   0.000140    +0.55968     RUNNING        32       648
+            ns     0.970190   0.004425    +0.66285     RUNNING        56       648
+           tau     0.053058   0.005342    +1.07434     RUNNING        80       648
+        sigma8     0.807565   0.004190    +0.85552     RUNNING        58       648
+
+  --- Per-chain means (detect outlier chains) ---
+  Chain                          Rows           H0   delta_neff          tau       sigma8
+  ----------------------------  -----  -----------  -----------  -----------  -----------
+  full_tension                    182      68.4938     0.107140     0.059233     0.811758
+  full_tension_chain2             186      68.6914     0.152925     0.054585     0.809552
+  full_tension_chain3             137      68.7895     0.129891     0.059168     0.813314
+  full_tension_chain4             195      68.9539     0.179353     0.044476     0.803817
+  full_tension_chain5             202      68.7429     0.140435     0.050039     0.805974
+  full_tension_chain6             201      68.4556     0.122075     0.051833     0.807056
+  full_tension_chain7             160      68.4621     0.034249     0.055690     0.802665

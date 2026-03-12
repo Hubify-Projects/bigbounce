@@ -1,0 +1,139 @@
+==============================================================================
+  PAPER 2 FIRST-PASS RESULTS AUDIT
+  Generated: 2026-03-06
+==============================================================================
+
+OVERVIEW: All four parallel research tracks completed first runs on RunPod.
+All first-run outputs have been archived locally with SHA256 checksums.
+All 4 pods STOPPED to save costs (see archives/MANIFEST.txt).
+
+==============================================================================
+  TRACK A — WP4 ΔNeff Microphysics (pod: bpou58tmt95jjb)
+==============================================================================
+
+  Purpose:  Reheating temperature + decay parameter scans to predict ΔNeff
+  Framing:  "Candidate microphysics realization" — NOT first-principles derivation
+  Code:     research/paper2/wp4_dneff_microphysics/
+
+  Results:
+    - Reheating scan: 24,000 rows across T_rh parameter space
+    - Decay scan: 32,000 rows across decay width parameter space
+    - Best-fit ΔNeff ≈ 0.15 (plausible in spin-torsion context)
+    - 32 output files total, 0 figures generated
+
+  Assessment: PASS — Toy model scans completed as designed.
+    - ΔNeff ≈ 0.15 is physically reasonable and within Planck+ACT bounds
+    - Scans provide input for Paper 1's ΔNeff prior discussion
+    - No second run needed unless Paper 1 MCMC constrains ΔNeff differently
+
+  For Paper 2:
+    - Use as Table/Figure showing ΔNeff(T_rh) and ΔNeff(Γ) scan curves
+    - Frame as "illustrative microphysics pathway"
+    - Cite Planck 2018 + ACT DR6 ΔNeff bounds for comparison
+
+==============================================================================
+  TRACK B — WP5 Spin Amplitude (pod: mz3srzbzxxv1yj)
+==============================================================================
+
+  Purpose:  Map parity-odd tidal torque → spin amplitude A₀
+  Framing:  "Phenomenological parity-odd tidal torque mapping" — NOT torsion derivation
+  Code:     research/paper2/wp5_spin_amplitude/
+
+  Results:
+    - 100,000 Monte Carlo samples
+    - ε_PO = 0.244 (68% CI: 0.14 – 0.38)
+    - A₀ ≈ ε_PO × 0.015 → A₀ ~ 0.003 for ε_PO ~ 0.2
+    - 3 figures generated (posterior, A₀ mapping, summary)
+    - 15 output files total
+
+  Assessment: PASS — Monte Carlo mapping completed.
+    - ε_PO ~ 0.24 required for A₀ ~ 0.003 matches observed galaxy spin asymmetry
+    - Well-constrained posterior with reasonable uncertainties
+    - Figures suitable for paper inclusion
+
+  For Paper 2:
+    - Central result: ε_PO posterior + A₀ mapping figure
+    - Compare with Longo (2011), Shamir (2020+) observed asymmetries
+    - Discuss ε_PO ~ 0.2 requirement as "moderate parity violation"
+
+==============================================================================
+  TRACK C — P7 CNN Spin Classifier (pod: pkysk4lbaqnhm0)
+==============================================================================
+
+  Purpose:  ResNet-18 classifier for galaxy spiral arm chirality (CW vs CCW)
+  Framing:  "Pipeline/data product" — NOT cosmological measurement
+  Code:     research/paper2/p7_cnn_spin_classifier/
+
+  Results:
+    - Data: 2,000 SYNTHETIC images (1,000 CW + 1,000 CCW)
+      CRITICAL: SDSS download not available; fell back to procedural PIL spirals
+    - Model: ResNet-18, 10 epochs, label smoothing 0.1, AdamW + CosineAnnealing
+    - val_acc = 0.55, test_acc = 0.49 (ESSENTIALLY RANDOM)
+    - Test predictions: all probabilities in 0.44–0.59 range
+    - model.pt saved (46 MB), 2221 output files (mostly images)
+
+  Assessment: FAIL — Random-chance performance.
+    See: p7_cnn_spin_classifier/failure_analysis.txt for details.
+
+  Root Causes (in priority order):
+    1. CRITICAL BUG: RandomHorizontalFlip(p=0.5) in transforms (line 148)
+       conflicts with parity augmentation (lines 132-134), corrupting ~50%
+       of training labels → task is mathematically unlearnable
+    2. 100% synthetic data — procedural spirals lack real galaxy morphology
+    3. 1,400 training images for 11M-param ResNet-18 (severe underfitting)
+
+  Second Run Requirements:
+    - FIX: Remove RandomHorizontalFlip from training transforms
+    - FIX: Acquire real SDSS Galaxy Zoo cutouts (need DR17 or Galaxy Zoo DECaLS)
+    - FIX: Minimum 10,000 real images, ideally 50,000+
+    - KEEP: Parity augmentation logic (correct when not conflicting with flip)
+    - Model checkpoint from first run should be DISCARDED
+
+==============================================================================
+  TRACK D — P6 CMB EB Birefringence (pod: uktt3hghbs1djo)
+==============================================================================
+
+  Purpose:  Literature registry of cosmic birefringence measurements + optional map
+  Framing:  Two-tier approach — NO independent EB detection claim
+  Code:     research/paper2/p6_cmb_eb_pipeline/
+
+  Results:
+    Tier 1 (COMPLETE):
+    - Literature meta-analysis of published birefringence measurements
+    - β = 0.358 ± 0.025 deg (all measurements combined)
+    - β = 0.393 ± 0.033 deg (independent measurements only)
+    - Forest plot figure generated showing all measurements + combined
+    - 14 output files, 2 figures
+
+    Tier 2 (NOT ATTEMPTED):
+    - Map-level EB estimator was not run
+    - Requires Planck PR4/NPIPE frequency maps + HEALPix processing
+
+  Assessment: PASS (Tier 1) — Literature registry complete.
+    - Combined β consistent with Minami & Komatsu (2020) 3.6σ result
+    - Independent-only estimate slightly higher but consistent
+    - Forest plot publication-ready
+
+  For Paper 2:
+    - Tier 1 is sufficient for Paper 2 — provides observational anchor
+    - Frame as "literature compilation supporting β ≈ 0.35°"
+    - Tier 2 optional for future work section
+    - Compare with spin-torsion predicted birefringence from Paper 1
+
+==============================================================================
+  SUMMARY TABLE
+==============================================================================
+
+  Track  | Status | Key Result              | Usable? | Second Run?
+  -------|--------|-------------------------|---------|------------
+  WP4    | PASS   | ΔNeff ≈ 0.15           | Yes     | Not needed
+  WP5    | PASS   | ε_PO = 0.24 ± 0.12     | Yes     | Not needed
+  P7     | FAIL   | test_acc = 0.49 (random)| No      | REQUIRED (fix bug + real data)
+  P6     | PASS   | β = 0.36 ± 0.03 deg    | Yes     | Optional (Tier 2)
+
+  Archival: All outputs archived to research/paper2/archives/ with checksums.
+  Cost: All 4 pods STOPPED as of 2026-03-06.
+
+==============================================================================
+  END OF FIRST-PASS AUDIT
+==============================================================================

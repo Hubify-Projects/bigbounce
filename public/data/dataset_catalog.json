@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "generated_at": "2026-03-06",
   "audit_report": "research/data_audit/provenance_report.md",
-  "total_datasets": 32,
+  "total_datasets": 33,
   "status_counts": {
     "raw_public": 4,
     "derived_public": 6,
@@ -688,6 +688,47 @@
       ],
       "preview": [],
       "tags": ["mcmc", "cosmology", "in-progress", "paper1"]
+    },
+    {
+      "id": "mcmc_full_tension_frozen",
+      "name": "full_tension MCMC Frozen Result (ΛCDM + ΔNeff)",
+      "description": "Frozen posterior chains from the full_tension dataset (Planck NPIPE + BAO DR16 + Pantheon+ + Riess 2020 H0 + DES S8). 6 chains, 175,545 accepted samples. All 9 convergence gates passed (R-1 < 0.005, ESS > 4,700). Key result: ΔNeff = -0.020 ± 0.169, consistent with SM.",
+      "status": "derived_public",
+      "status_label": "FROZEN — publication-ready",
+      "paper": "paper1",
+      "sections": ["Sec 5", "Sec 6"],
+      "figures": ["Triangle plot", "1D posteriors", "Convergence diagnostics", "ESS growth", "Correlation heatmap"],
+      "scripts": ["research/final_paper_prep/extract_physical_parameters.py", "research/final_paper_prep/generate_publication_figures.py"],
+      "file": {
+        "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/",
+        "name": "full_tension_20260311_1728 (frozen pack)",
+        "type": "Cobaya chain pack",
+        "size_bytes": 166199296,
+        "size_human": "158.5 MB",
+        "row_count": 175545,
+        "columns": ["weight", "minuslogpost", "H0", "delta_neff", "tau", "sigma8", "omegam", "ns", "S8", "nnu", "ombh2", "omch2", "logA", "age"],
+        "checksum_sha256": "0225e4876b448dd2bc6516bcd094a409dd13148c8db7a83864957fe97a379bb6",
+        "downloadable": false,
+        "download_url": null
+      },
+      "provenance": {
+        "source_url": null,
+        "citation_key": null,
+        "citation_text": "Cobaya 3.6.1 + CAMB 1.6.5 MCMC sampling with Planck/BAO/SN/H0/S8 likelihoods",
+        "license": "N/A — internal research artifact",
+        "method": "6 independent chains with drag sampler, warm-started from Planck covariance matrix. Frozen 2026-03-11 17:28 UTC after passing all convergence gates.",
+        "reproducible_by_third_party": true,
+        "transforms": null
+      },
+      "warnings": [],
+      "preview": [
+        {"parameter": "H0", "mean": 67.68, "std": 1.06, "unit": "km/s/Mpc"},
+        {"parameter": "delta_neff", "mean": -0.020, "std": 0.169, "unit": "dimensionless"},
+        {"parameter": "tau", "mean": 0.054, "std": 0.007, "unit": "dimensionless"},
+        {"parameter": "sigma8", "mean": 0.803, "std": 0.008, "unit": "dimensionless"},
+        {"parameter": "S8", "mean": 0.814, "std": 0.008, "unit": "dimensionless"}
+      ],
+      "tags": ["mcmc", "cosmology", "frozen", "paper1", "publication-ready"]
     },
     {
       "id": "figure_panel_csvs",

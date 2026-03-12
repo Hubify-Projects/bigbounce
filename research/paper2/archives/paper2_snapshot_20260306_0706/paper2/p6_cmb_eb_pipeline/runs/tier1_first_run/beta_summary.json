@@ -1,0 +1,35 @@
+{
+  "weighted_average_stat_only": {
+    "beta_avg_deg": 0.35753325947744385,
+    "sigma_avg_deg": 0.02503690697313859,
+    "chi2": 12.366063615967143,
+    "ndof": 5,
+    "p_value": 0.030101950464666793,
+    "n_measurements": 6,
+    "include_systematics": false
+  },
+  "weighted_average_with_syst": {
+    "beta_avg_deg": 0.2936731145968787,
+    "sigma_avg_deg": 0.031898513315266115,
+    "chi2": 1.9272421582446242,
+    "ndof": 5,
+    "p_value": 0.8591181241210603,
+    "n_measurements": 6,
+    "include_systematics": true
+  },
+  "independent_measurements_only": {
+    "beta_avg_deg": 0.3924578591170876,
+    "sigma_avg_deg": 0.03259421794334657,
+    "chi2": 9.400453629506428,
+    "ndof": 3,
+    "p_value": 0.02441429139612239,
+    "n_measurements": 4,
+    "include_systematics": false
+  },
+  "caveats": [
+    "Weighted average uses inverse-variance weighting with stat errors only.",
+    "The SPIDER+Planck+ACT combined entry reuses Planck and ACT data. The 'independent_measurements_only' average excludes it to avoid double-counting.",
+    "Systematic errors (especially miscalibration angle degeneracy) are correlated across Planck-based analyses. The stat-only weighted average may underestimate the true uncertainty.",
+    "Map-level vs spectrum-level analyses show mild tension (Zagatti+2025 vs Eskilt 2022). This may reflect different sensitivity to Galactic foreground residuals."
+  ]
+}

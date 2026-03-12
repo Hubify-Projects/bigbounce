@@ -1,0 +1,42 @@
+planck_bao_sn CHAIN TRACKER — UPDATE
+=====================================
+Updated: 2026-03-11 18:10 UTC
+Pod: 83ubwlcdk0gat2 (CPU5, EUR-IS-1)
+
+CHAINS: 6/6 ALIVE (8 cobaya processes confirmed)
+  chain_01:    747 accepted
+  chain_02:    786 accepted
+  chain_03:    759 accepted
+  chain_04:    709 accepted
+  chain_05:    758 accepted
+  chain_06:    725 accepted
+  TOTAL:     4,484 accepted
+
+Throughput: ~6,958 accepted/hr (0.6h since resume at 17:32 UTC)
+
+CONVERGENCE
+  Parameter       R-1      Target    ESS    Target    Drift     Status
+  H0              0.0646   <0.01     92     >2000     0.194     WAIT
+  delta_neff      0.0805   <0.01     75     >2000     0.216     WAIT
+  tau             0.0043   <0.02     125    >1000     0.118     WAIT
+
+TIMELINE ESTIMATE
+  H0:         ESS 92/2000  -> need 22x samples -> ~13h
+  delta_neff: ESS 75/2000  -> need 27x samples -> ~17h
+  tau:        ESS 125/1000 -> need 8x samples  -> ~5h
+
+  BOTTLENECK: delta_neff ESS (~17h to target)
+  Estimated freeze-ready: ~2026-03-12 11:00-14:00 UTC
+
+CURRENT MEAN VALUES (preliminary — 4,484 samples)
+  H0         = 67.91 km/s/Mpc  (slightly higher than full_tension 67.68)
+  delta_neff = 0.071            (positive vs full_tension -0.020; expected w/o H0+S8 pulls)
+  tau        = 0.056
+  sigma8     = 0.812
+  omegam     = 0.311
+  ns         = 0.967
+
+NOTE: Early-chain values are unreliable. The shift in delta_neff toward positive
+values is expected when removing the Riess H0 and DES S8 priors. These priors
+pull the full_tension result toward lower dNeff. Recommend re-checking at 6h
+and 12h marks for more reliable estimates.

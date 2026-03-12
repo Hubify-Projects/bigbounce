@@ -1,0 +1,15 @@
+BigBounce P7 — Galaxy Spin Classification Report
+==================================================
+
+Test accuracy: 0.4867
+Test loss: 0.6999
+
+              precision    recall  f1-score   support
+
+          CW       0.49      0.60      0.54       150
+         CCW       0.48      0.37      0.42       150
+
+    accuracy                           0.49       300
+   macro avg       0.49      0.49      0.48       300
+weighted avg       0.49      0.49      0.48       300
+

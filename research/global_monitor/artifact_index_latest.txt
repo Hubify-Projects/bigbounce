@@ -1,0 +1,62 @@
+BigBounce Global Artifact Index
+Generated: 2026-03-06 18:03:50 UTC
+Duration: 164.1s
+Total artifacts: 6
+==============================================================================
+
+TRACK: paper1 (3 artifacts)
+----------------------------------------
+  [backup] backups
+    Pod: bigbounce-gpu-validation
+    Path: /workspace/bigbounce/reproducibility/backups
+    Status: archived   Size: 67.3 MB   Files: 9
+    Timestamp: 2026-03-06 17:59:53 UTC
+    Manifest: no   Checksums: no
+    Deliverables: backup_bigbounce-gpu-validation_20260306_175859.tar.gz, backup_bigbounce-gpu-validation_20260306_161526.tar.gz, backup_bigbounce-gpu-validation_20260306_131126.tar.gz, backup_bigbounce-gpu-validation_20260306_084745.tar.gz, backup_bigbounce-gpu-validation_20260306_074144.tar.gz, backup_bigbounce-gpu-validation_20260306_034912.tar.gz, backup_bigbounce-gpu-validation_20260306_024213.tar.gz, backup_bigbounce-gpu-validation_20260306_013405.tar.gz, backup_bigbounce-gpu-validation_20260306_002746.tar.gz
+
+  [backup] backups
+    Pod: bigbounce-cpu1-primary
+    Path: /workspace/bigbounce/reproducibility/cosmology/cpu_primary_run_20260305/backups
+    Status: archived   Size: 15.3 MB   Files: 9
+    Timestamp: 2026-03-06 18:00:21 UTC
+    Manifest: no   Checksums: no
+    Deliverables: backup_bigbounce-cpu1-primary_20260306_002746.tar.gz, backup_bigbounce-cpu1-primary_20260306_013405.tar.gz, backup_bigbounce-cpu1-primary_20260306_024213.tar.gz, backup_bigbounce-cpu1-primary_20260306_034912.tar.gz, backup_bigbounce-cpu1-primary_20260306_074144.tar.gz, backup_bigbounce-cpu1-primary_20260306_084745.tar.gz, backup_bigbounce-cpu1-primary_20260306_131126.tar.gz, backup_bigbounce-cpu1-primary_20260306_161526.tar.gz, backup_bigbounce-cpu1-primary_20260306_175859.tar.gz
+
+  [backup] backups
+    Pod: bigbounce-cpu2-secondary
+    Path: /workspace/bigbounce/reproducibility/cosmology/cpu_secondary_suite_20260305/backups
+    Status: archived   Size: 978.4 KB   Files: 1
+    Timestamp: 2026-03-06 00:31:14 UTC
+    Manifest: no   Checksums: no
+    Deliverables: backup_bigbounce-cpu2-secondary_20260306_002746.tar.gz
+
+
+TRACK: paper2-track-c (3 artifacts)
+----------------------------------------
+  [run_output] first_run
+    Pod: paper2-p7-cnn
+    Path: /workspace/paper2/p7_cnn_spin_classifier/runs/first_run
+    Status: partial   Size: 128.2 MB   Files: 7
+    Timestamp: 2026-03-05 22:40:15 UTC
+    Manifest: no   Checksums: no
+    Deliverables: model.pt, classification_report.txt, confusion_matrix.png, training_curves.png, training_curves.json, hyperparams.json, test_predictions.json
+
+  [run_output] runs
+    Pod: paper2-p7-cnn
+    Path: /workspace/paper2/p7_cnn_spin_classifier/runs
+    Status: partial   Size: 128.2 MB   Files: 7
+    Timestamp: 2026-03-05 22:40:15 UTC
+    Manifest: no   Checksums: no
+    Deliverables: model.pt, classification_report.txt, confusion_matrix.png, training_curves.png, training_curves.json, hyperparams.json, test_predictions.json
+
+  [backup] backups
+    Pod: paper2-p7-cnn
+    Path: /workspace/paper2/p7_cnn_spin_classifier/backups
+    Status: archived   Size: 1.0 GB   Files: 9
+    Timestamp: 2026-03-06 18:01:03 UTC
+    Manifest: no   Checksums: no
+    Deliverables: backup_paper2-p7-cnn_20260306_002746.tar.gz, backup_paper2-p7-cnn_20260306_013405.tar.gz, backup_paper2-p7-cnn_20260306_024213.tar.gz, backup_paper2-p7-cnn_20260306_034912.tar.gz, backup_paper2-p7-cnn_20260306_074144.tar.gz, backup_paper2-p7-cnn_20260306_084745.tar.gz, backup_paper2-p7-cnn_20260306_131126.tar.gz, backup_paper2-p7-cnn_20260306_161526.tar.gz, backup_paper2-p7-cnn_20260306_175859.tar.gz
+
+
+==============================================================================
+Summary: 0 frozen packs, 2 run outputs, total size 1.4 GB

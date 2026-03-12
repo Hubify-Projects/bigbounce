@@ -1,0 +1,94 @@
+==============================================================================
+  BIGBOUNCE GPU FREEZE MANAGER — STATUS REPORT
+  Generated: 2026-03-06 (updated freeze policy)
+  Policy: CONVERGENCE ONLY — no time cap, chains never stopped
+==============================================================================
+
+==============================================================================
+  FREEZE POLICY CHANGE
+==============================================================================
+
+  OLD POLICY (REMOVED):
+    - 48-hour time cap: force-freeze all datasets at cap expiry
+    - freeze_packager could stop chains based on elapsed time
+
+  NEW POLICY (ACTIVE):
+    - Chains run INDEFINITELY until convergence criteria are met
+    - No time-based freeze cap of any kind
+    - Chains are NEVER stopped, restarted, or interrupted automatically
+    - Freezing occurs ONLY via convergence thresholds or manual command
+
+  CONVERGENCE CRITERIA — cohort_main (chains 2-7):
+    Gate 1 — R-hat-1:  H0 < 0.01, delta_neff < 0.01, tau < 0.02
+    Gate 2 — ESS:      H0 >= 2000, delta_neff >= 2000, tau >= 1000
+    Gate 3 — Drift:    |drift| < 0.2 sigma for H0 and delta_neff
+
+  ON CONVERGENCE, two artifact packs are created:
+    A) Science freeze pack (chains 2-7 only):
+       frozen_gpu_cohort_main_<dataset>_<timestamp>/
+       Contains: chains 2-7, convergence_report.txt, triangle plots,
+                 1D posteriors, manifest, checksums
+
+    B) Full archival pack (chains 1-7):
+       frozen_gpu_all_chains_<dataset>_<timestamp>/
+       Contains: chains 1-7, convergence diagnostics, manifest
+       (chain 1 excluded from science interpretation, documented)
+
+  SAFETY SNAPSHOTS:
+    Every 6 hours, regardless of convergence:
+    snapshot_gpu_<dataset>_<timestamp>/
+    Contains: current chains, convergence diagnostics, manifest
+
+  HOURLY BACKUPS:
+    Continue indefinitely, including after convergence.
+    Backed up: chains, covmats, logs, monitor reports, plots, frozen packs
+
+==============================================================================
+  CURRENT CONVERGENCE STATUS — cohort_main (chains 2-7)
+==============================================================================
+
+  Based on last available diagnostics (see project_status_latest.json
+  for machine-readable data). Run gpu_freeze_manager.py for live update.
+
+  --- PLANCK ONLY ---
+  Status: CLOSEST TO CONVERGENCE
+    R-hat H0     = 0.007    target < 0.01   PASS
+    R-hat nnu    = 0.006    target < 0.01   PASS
+    R-hat tau    = 0.023    target < 0.02   FAIL (close)
+    ESS H0       = ~40      target >= 2000  FAIL (needs ~50x more)
+    ESS nnu      = ~37      target >= 2000  FAIL (needs ~54x more)
+    ESS tau       = ~40     target >= 1000  FAIL (needs ~25x more)
+    Drift H0     = checked  target < 0.2sig
+    Drift nnu    = checked  target < 0.2sig
+
+  --- PLANCK BAO ---
+    R-hat H0     = 0.055    target < 0.01   FAIL
+    R-hat nnu    = 0.055    target < 0.01   FAIL
+    R-hat tau    = 0.032    target < 0.02   FAIL
+
+  --- PLANCK BAO SN ---
+    R-hat H0     = 0.052    target < 0.01   FAIL
+    R-hat nnu    = 0.068    target < 0.01   FAIL
+    R-hat tau    = 0.034    target < 0.02   FAIL
+
+  --- FULL TENSION ---
+    R-hat H0     = 0.041    target < 0.01   FAIL
+    R-hat nnu    = 0.044    target < 0.01   FAIL
+    R-hat tau    = 0.016    target < 0.02   PASS
+
+==============================================================================
+  SUMMARY
+==============================================================================
+
+  Closest to convergence: planck_only (R-hat H0 and nnu already passing)
+  ESS is the primary bottleneck across all datasets (~40 vs 2000 target)
+  Improvement is still occurring — chains must continue running
+
+  IMPORTANT:
+    - The old 48h time cap has been REMOVED
+    - No force-freeze will occur at 2026-03-07 09:43 UTC
+    - Chains will run until convergence criteria are satisfied
+
+==============================================================================
+  END OF REPORT
+==============================================================================
