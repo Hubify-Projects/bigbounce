@@ -1,0 +1,26 @@
+================================================================
+PLANCK_BAO_SN FREEZE STATUS CHECK
+================================================================
+Generated: 2026-03-12 ~13:00 UTC
+Previous status report: 2026-03-12 06:42 UTC
+
+STATUS: CONVERGED — NOT YET FROZEN
+
+Last known state (from 06:42 UTC audit):
+  - 66,995 accepted samples across 6 chains
+  - 9/9 freeze gates pass
+  - Worst R-1: 0.0027 (target < 0.01)
+  - Min ESS: 3,325 (target 2,000)
+  - Max drift: 0.067σ (target < 0.1σ)
+  - All 6 chains actively writing
+
+Frozen datasets on disk:
+  - full_tension: reproducibility/cosmology/frozen/full_tension_20260311_1728/ (FROZEN)
+  - planck_bao_sn: NOT YET FROZEN
+
+ACTION COMPLETED:
+  - Frozen pack created: 2026-03-12 19:54 UTC
+  - SHA256 verified locally: 43/43 files pass
+  - Chains stopped: PIDs 5056-5061 terminated
+  - planck_only resumed: PIDs 8165-8170 launched
+  - All deliverables generated

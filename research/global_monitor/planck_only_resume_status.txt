@@ -1,0 +1,12 @@
+planck_only resume status
+=========================
+
+Resumed: 2026-03-12 19:58 UTC
+
+Chains: 6 launched (PIDs 8165-8170)
+Starting from preserved samples: 458 total across 6 chains
+Config files: all present and valid
+CAMB initialization: in progress
+Backup crontab: still active (hourly)
+
+planck_bao: NOT resumed (stays paused)
