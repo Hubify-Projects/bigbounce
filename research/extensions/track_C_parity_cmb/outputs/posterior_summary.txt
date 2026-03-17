@@ -1,0 +1,38 @@
+======================================================================
+Track C: Gaussian Posterior Summary
+======================================================================
+
+INDEPENDENT MEASUREMENTS USED:
+  Eskilt 2022                               beta = 0.300 +/- 0.110 deg
+  Diego-Palazuelos & Komatsu 2025           beta = 0.215 +/- 0.074 deg
+
+COMBINED BETA POSTERIOR:
+  Mean:     0.2415 deg  (4.214668e-03 rad)
+  Sigma:    0.0614 deg  (1.071622e-03 rad)
+  68% CI:   [0.1801, 0.3029] deg
+  95% CI:   [0.1187, 0.3643] deg
+  Significance: 3.9 sigma
+
+G_EFF POSTERIOR (C_0 = 1.0):
+  Mean:     4.214668e-03
+  Sigma:    1.071622e-03
+  68% CI:   [3.143046e-03, 5.286291e-03]
+  95% CI:   [2.071424e-03, 6.357913e-03]
+
+F_PHOTON POSTERIOR (C_0 = 1.0, epsilon = 2.4350e-03):
+  Mean:     1.731
+  Sigma:    0.440
+  68% CI:   [1.291, 2.171]
+  95% CI:   [0.851, 2.611]
+
+INTERPRETATION:
+  f_photon = 1.73 +/- 0.44
+  This is O(1), confirming no fine-tuning is needed.
+
+CAVEATS:
+  - f_photon and g_eff posteriors are CONDITIONAL on C_0.
+  - The spin-torsion framework does not predict C_0 from first principles.
+  - SPIDER measurement excluded due to calibration degeneracy.
+  - Minami & Komatsu 2020 excluded (superseded by Eskilt 2022).
+
+======================================================================

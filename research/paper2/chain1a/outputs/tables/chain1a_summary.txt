@@ -1,0 +1,37 @@
+CHAIN 1A SUMMARY
+Date: 2026-03-13
+Grid: 80 x 100 x 3
+Collapse: delta_c=0.45, K_c=3.0, gamma_c=0.36
+==================================================
+
+s_k = 0.1:
+  Viable points (all): 7395
+  Excluded points: 605
+  Viable with f_PBH > 0: 1073
+  Mass range: 15.8 to 40.0 (log10 g)
+  f_PBH range: 1.03e-30 to 8.91e-01
+  SMBH overlap: YES
+  Bounce scale in viable region: YES
+
+s_k = 0.3:
+  Viable points (all): 6399
+  Excluded points: 1601
+  Viable with f_PBH > 0: 1090
+  Mass range: 16.0 to 40.0 (log10 g)
+  f_PBH range: 1.02e-30 to 7.84e-01
+  SMBH overlap: YES
+  Bounce scale in viable region: YES
+
+s_k = 0.5:
+  Viable points (all): 6067
+  Excluded points: 1933
+  Viable with f_PBH > 0: 1090
+  Mass range: 15.3 to 40.0 (log10 g)
+  f_PBH range: 1.12e-30 to 9.18e-01
+  SMBH overlap: YES
+  Bounce scale in viable region: YES
+
+FRAMEWORK-PREDICTED BOUNCE SCALE:
+  k_bounce = 5.86e14 Mpc^-1
+  M_bounce = 7.68e+16 g = 3.86e-17 M_sun
+  log10(M_bounce/g) = 16.9

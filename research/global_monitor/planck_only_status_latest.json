@@ -1,0 +1,75 @@
+{
+  "report_type": "mcmc_chain_status",
+  "dataset": "planck_only",
+  "model": "dneff",
+  "generated_utc": "2026-03-12T23:05:00Z",
+  "pod": {
+    "ip": "157.157.221.30",
+    "port": 36579,
+    "provider": "RunPod"
+  },
+  "run_metadata": {
+    "started_utc": "2026-03-12T19:58:00Z",
+    "elapsed_hours": 3.1,
+    "pids": [8165, 8166, 8167, 8168, 8169, 8170],
+    "all_processes_alive": true,
+    "chain_base_path": "/workspace/bigbounce/chains/dneff/planck_only/",
+    "n_chains": 6,
+    "n_columns": 33
+  },
+  "chains": {
+    "chain_01": {"samples": 376, "bytes": 221676, "last_modified_utc": "2026-03-12T23:01:00Z"},
+    "chain_02": {"samples": 405, "bytes": 238140, "last_modified_utc": "2026-03-12T23:01:00Z"},
+    "chain_03": {"samples": 381, "bytes": 224616, "last_modified_utc": "2026-03-12T23:02:00Z"},
+    "chain_04": {"samples": 388, "bytes": 228732, "last_modified_utc": "2026-03-12T23:01:00Z"},
+    "chain_05": {"samples": 397, "bytes": 234024, "last_modified_utc": "2026-03-12T23:01:00Z"},
+    "chain_06": {"samples": 413, "bytes": 243432, "last_modified_utc": "2026-03-12T23:01:00Z"}
+  },
+  "total_samples": 2360,
+  "diagnostics": {
+    "H0":         {"mean": 67.6395, "std": 1.2034, "rhat": 1.3717, "ess": 58,  "drift_sigma": 0.683},
+    "nnu":        {"mean": 3.0986,  "std": 0.1448, "rhat": 1.7112, "ess": 45,  "drift_sigma": 0.476},
+    "tau":        {"mean": 0.0509,  "std": 0.0051, "rhat": 1.1930, "ess": 57,  "drift_sigma": 0.333},
+    "sigma8":     {"mean": 0.8075,  "std": 0.0054, "rhat": 1.7102, "ess": 74,  "drift_sigma": 0.107},
+    "omegam":     {"mean": 0.3136,  "std": 0.0093, "rhat": 1.0567, "ess": 94,  "drift_sigma": 0.695},
+    "logA":       {"mean": 3.0340,  "std": 0.0088, "rhat": 1.4562, "ess": 91,  "drift_sigma": 0.043},
+    "ns":         {"mean": 0.9639,  "std": 0.0059, "rhat": 1.2457, "ess": 90,  "drift_sigma": 0.212},
+    "delta_neff": {"mean": 0.0526,  "std": 0.1448, "rhat": 1.7112, "ess": 45,  "drift_sigma": 0.476},
+    "S8":         {"mean": 0.8255,  "std": 0.0141, "rhat": 1.0276, "ess": 113, "drift_sigma": 0.649},
+    "ombh2":      {"mean": 0.0222,  "std": 0.0002, "rhat": 1.0928, "ess": 115, "drift_sigma": 0.546},
+    "omch2":      {"mean": 0.1205,  "std": 0.0022, "rhat": 1.6760, "ess": 53,  "drift_sigma": 0.173}
+  },
+  "cobaya_internal_R_minus_1": {
+    "chain_01": 8.935,
+    "chain_02": 24.560,
+    "chain_03": 11.212,
+    "chain_04": 17.756,
+    "chain_05": 9.606,
+    "chain_06": 4.160
+  },
+  "freeze_gates": {
+    "total_samples_ge_10000": {"pass": false, "value": 2360, "threshold": 10000},
+    "chains_ge_4": {"pass": true, "value": 6, "threshold": 4},
+    "worst_R_minus_1_lt_0.01": {"pass": false, "value": 0.7112, "threshold": 0.01},
+    "min_ESS_gt_2000": {"pass": false, "value": 45, "threshold": 2000},
+    "max_drift_lt_0.1sigma": {"pass": false, "value": 0.695, "threshold": 0.1}
+  },
+  "all_gates_pass": false,
+  "throughput": {
+    "samples_per_hour_total": 765,
+    "samples_per_hour_per_chain": 128,
+    "acceptance_rate_range": [0.35, 0.40]
+  },
+  "eta": {
+    "estimated_samples_needed": 126000,
+    "remaining_samples": 124000,
+    "estimated_hours_remaining": 161.4,
+    "projected_completion_utc": "2026-03-19T16:00:00Z"
+  },
+  "health": {
+    "errors_in_logs": false,
+    "checkpoints_updating": true,
+    "files_growing": true,
+    "status": "RUNNING_HEALTHY"
+  }
+}

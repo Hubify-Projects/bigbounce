@@ -1,0 +1,141 @@
+============================================================
+  PLANCK_ONLY MCMC CHAIN BACKUP AUDIT
+  Pod: 157.157.221.30:36579
+  Date: 2026-03-12 (audit run ~23:10 UTC)
+============================================================
+
+======================== RISK FLAGS ========================
+
+[HIGH] LOCAL COPY IS 22+ HOURS STALE
+  Local sync was last done Mar 12 00:46 local time.
+  Pod chains have grown ~5x since then (e.g. chain_01: 40KB local vs 227KB on pod).
+  If the pod dies, ~22 hours of sampling is lost from local backup.
+
+[MEDIUM] R-1 STILL VERY HIGH (8.93) — CHAINS FAR FROM CONVERGED
+  Only 2,336 total samples across 6 chains (~389/chain).
+  Convergence requires R-1 < 0.01; current R-1 = 8.93.
+  These chains will need to run for a long time. Pod stability is critical.
+
+[MEDIUM] NO OFF-VOLUME BACKUP EXISTS FOR PLANCK_ONLY
+  The hourly backup script creates tarballs, but they live on the SAME
+  /workspace volume (mfs#eur-is-1.runpod.net). If the volume is lost,
+  both chains and backups are gone. No frozen snapshot exists for
+  planck_only (frozen/ has full_tension and planck_bao_sn only).
+
+[LOW] HOURLY TARBALLS GROWING — MONITOR DISK USAGE
+  Latest tarball: 54.9 MB (covers all datasets). 48 retained.
+  Total /workspace usage: 610T of 839T (73%). Not urgent but worth watching.
+
+============================================================
+
+1. CHAIN FILES ON POD
+---------------------
+Location: /workspace/bigbounce/chains/dneff/planck_only/
+6 chains, each with spin_torsion.1.txt:
+
+  chain_01/spin_torsion.1.txt   226,968 bytes   Mar 12 23:09
+  chain_02/spin_torsion.1.txt   244,608 bytes   Mar 12 23:08
+  chain_03/spin_torsion.1.txt   232,848 bytes   Mar 12 23:08
+  chain_04/spin_torsion.1.txt   236,964 bytes   Mar 12 23:08
+  chain_05/spin_torsion.1.txt   241,668 bytes   Mar 12 23:09
+  chain_06/spin_torsion.1.txt   254,604 bytes   Mar 12 23:09
+
+All 6 chains were written within the last ~2 minutes of audit time.
+STATUS: ACTIVELY WRITING
+
+2. CHECKPOINT FILES
+-------------------
+All 6 checkpoints present and recently updated:
+
+  chain_01: Mar 12 22:08   R-1 = 8.93, converged = false
+  chain_02: Mar 12 21:47
+  chain_03: Mar 12 21:57
+  chain_04: Mar 12 22:05
+  chain_05: Mar 12 22:01
+  chain_06: Mar 12 21:48
+
+Checkpoints lag chain files by ~1 hour (normal cobaya behavior).
+STATUS: OK
+
+3. RUNNING PROCESSES
+--------------------
+All 6 cobaya processes are alive and running:
+
+  PID 8165  chain_01  started Mar 11 19:58  CPU: 527%  1012 min
+  PID 8166  chain_02  started Mar 11 19:58  CPU: 549%  1053 min
+  PID 8167  chain_03  started Mar 11 19:58  CPU: 536%  1028 min
+  PID 8168  chain_04  started Mar 11 19:58  CPU: 540%  1036 min
+  PID 8169  chain_05  started Mar 11 19:58  CPU: 518%   994 min
+  PID 8170  chain_06  started Mar 11 19:58  CPU: 518%   994 min
+
+All chains have been running ~27 hours continuously.
+STATUS: ALL ACTIVE
+
+4. HOURLY BACKUP (ON-POD)
+--------------------------
+Crontab entry:
+  0 * * * * /workspace/bigbounce/backup_hourly.sh >> /workspace/bigbounce/logs/cron.log 2>&1
+
+Backup script does:
+  - Tarballs all chain .txt, .covmat, .yaml, .json files
+  - SHA256 checksums of chain files
+  - Sample count manifest (JSON)
+  - Retains last 48 hourly tarballs
+  - Stale chain detection (>2h warning)
+
+Latest snapshot: chains_2026-03-12_2300.tar.gz (54.9 MB)
+Latest manifest sample counts:
+  planck_only total: 2,336 samples
+    chain_01: 372, chain_02: 403, chain_03: 379
+    chain_04: 384, chain_05: 389, chain_06: 409
+
+STATUS: HOURLY BACKUP IS RUNNING (but on same volume — not offsite)
+
+5. FROZEN SNAPSHOTS (ON-POD)
+-----------------------------
+  /workspace/bigbounce/frozen/full_tension_20260311_1728/
+  /workspace/bigbounce/frozen/planck_bao_sn_20260312_1954/
+  /workspace/bigbounce/frozen/planck_bao_sn_20260312_1954.tar.gz (28.2 MB)
+
+NOTE: NO frozen snapshot exists for planck_only.
+
+6. DISK SPACE
+-------------
+  /workspace volume: 839T total, 610T used, 230T free (73%)
+  planck_only directory: 9.4 MB
+  All chains directory: 303 MB
+
+STATUS: Ample space, no concern.
+
+7. LOCAL COPY (MacBook)
+-----------------------
+Path: reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/planck_only/
+
+  chain_01/spin_torsion.1.txt    40,572 bytes   Mar 12 00:46
+  chain_02/spin_torsion.1.txt    45,864 bytes   Mar 12 00:46
+  chain_03/spin_torsion.1.txt    49,392 bytes   Mar 12 00:46
+  chain_04/spin_torsion.1.txt    38,220 bytes   Mar 12 00:46
+  chain_05/spin_torsion.1.txt    44,100 bytes   Mar 12 00:46
+  chain_06/spin_torsion.1.txt    51,156 bytes   Mar 12 00:46
+
+Local total: ~270 KB  vs  Pod total: ~1.4 MB
+Local copy is from ~22 hours ago. Chains have grown ~5x since last sync.
+
+STATUS: STALE — needs rsync
+
+8. ARCHIVE COPIES
+------------------
+Older snapshots exist locally at:
+  reproducibility/cosmology/archives/gpu_run_snapshot_20260305_0824/chains/planck_only/
+  (from March 5 — very old, different run)
+
+============================================================
+RECOMMENDATIONS (read-only audit, no changes made):
+
+1. Run an rsync NOW to pull current planck_only chains to local machine.
+2. Create a frozen snapshot on the pod for planck_only (like the others).
+3. Consider adding offsite/local rsync to the hourly cron, or at minimum
+   set up a daily manual sync reminder.
+4. These chains are far from convergence (R-1 ~ 9). Plan for multi-day
+   runtime. Pod stability and backup are critical.
+============================================================

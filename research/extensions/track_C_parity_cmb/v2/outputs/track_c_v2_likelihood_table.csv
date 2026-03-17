@@ -1,0 +1,13 @@
+# Track C v2: Summary-likelihood results
+# All values computed analytically from Gaussian summary likelihood
+# Date: 2026-03-13
+#
+parameter,value,uncertainty,unit,prior,notes
+beta,0.241483,0.061399,degrees,uniform[-1:1],combined_posterior
+beta_rad,4.21466827e-03,1.07162232e-03,radians,derived,combined_posterior
+significance,3.93,,sigma,,from_zero
+bayes_factor,175.84,,,savage_dickey,beta!=0_vs_0
+f_photon_C0_0.3,5.7696,1.4670,,log_uniform[0.01:100],derived
+f_photon_C0_1.0,1.7309,0.4401,,log_uniform[0.01:100],derived
+f_photon_C0_3.0,0.5770,0.1467,,log_uniform[0.01:100],derived
+epsilon,2.435000e-03,,dimensionless,fixed,(alpha/M)*M_Pl

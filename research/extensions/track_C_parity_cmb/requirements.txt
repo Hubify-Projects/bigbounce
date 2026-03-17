@@ -1,0 +1,9 @@
+# Track C: Parity / CMB birefringence analysis
+# Core (required)
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+pyyaml>=6.0
+
+# Optional (for EB shape comparison with full Boltzmann spectra)
+# camb>=1.5

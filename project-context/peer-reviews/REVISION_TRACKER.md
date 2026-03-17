@@ -2,7 +2,7 @@
 
 **Paper:** Geometric Dark Energy from Spin-Torsion Cosmology
 **Author:** Houston Golden
-**Current version:** v1.0.0
+**Current version:** v1.6.0
 **Target:** arXiv-ready manuscript
 
 ---
@@ -328,6 +328,112 @@ After each revision round:
 - All 4.9σ consistent throughout
 - No "Geometric Dilution" anywhere
 - All HTML pages synced
+
+---
+
+### Round 7: v1.5.0 — Manuscript Update with Frozen MCMC + Theory Audit (2026-03-12)
+
+**Reviewer:** Internal (Claude + Houston Golden)
+**Manuscript version:** v1.3.0 → v1.5.0
+**Approach:** Integrate two frozen MCMC datasets + Monte Carlo sensitivity scan + theory audit results
+
+**Frozen Datasets Used:**
+- full_tension: 175,545 samples, 6 chains, R̂−1 < 0.001, ESS > 6,000 (frozen 2026-03-11)
+- planck_bao_sn: 132,949 samples, 6 chains, R̂−1 < 0.003, ESS > 4,600 (frozen 2026-03-12)
+- planck_only: [PENDING — running]
+- planck_bao: [PENDING — paused]
+
+**Changes Made:**
+
+| # | Change | Location | Details |
+|---|--------|----------|---------|
+| R7-1 | Version/date update | Line 1, metadata | v1.3.0 → v1.5.0, March 9 → March 12 |
+| R7-2 | Abstract updated | Abstract | Replaced "236,622 samples, 64 chains" with frozen dataset specifics; added Monte Carlo scan mention |
+| R7-3 | Executive summary footnote | Table I | Added verification footnote: H0=67.68/67.79 from frozen chains |
+| R7-4 | MCMC configuration updated | Sec VII.B | Added frozen dataset counts, Cobaya v3.6.1 verification details |
+| R7-5 | New verification subsection | Sec VII (new \subsection) | `\subsection{Independent Verification Results}` with Table `\ref{tab:verification}`, two figures, narrative |
+| R7-6 | New verification table | Table (new) | Both frozen dataset parameter values; [PENDING] markers for planck_only/planck_bao |
+| R7-7 | ΔNeff viability figure inserted | Sec VII | `fig_dneff_viability_two_frozen.pdf` — posteriors + normalized shifts |
+| R7-8 | Dataset comparison figure inserted | Sec VII | `cosmology_dataset_comparison_two_frozen.pdf` — 3-panel H0/dNeff/S8 |
+| R7-9 | Fine-tuning section updated | Discussion | Added Monte Carlo scan quantification (100K samples, 2.2% viable, Spearman ρ=0.996) |
+| R7-10 | Sensitivity figure inserted | Discussion | `vacuum_scale_sensitivity.pdf` — 4-panel parameter scan |
+| R7-11 | Limit behavior subsection | Discussion (new) | Table `\ref{tab:limits}` with 5 limits; dimensional analysis summary (10/12 + 2 noted) |
+| R7-12 | Conclusions updated | Conclusions | Observational context + fine-tuning paragraphs updated with frozen dataset results |
+| R7-13 | Fisher-matrix caveat | Sec XIII (Limitations) | Updated to note full posteriors now available from verification |
+| R7-14 | ΔNeff range updated | Sec XIV (Future) | Original 0.1–0.5 range noted as unsupported by full posterior; frozen results cited |
+| R7-15 | Reproducibility URLs | Throughout (4 occurrences) | v1.3.0 → v1.5.0 |
+| R7-16 | Appendix B parameter table | Table `\ref{tab:params}` | Added footnotes linking original Fisher-matrix values to frozen verification values |
+| R7-17 | Appendix K claims table | Table `\ref{tab:claims}` | Updated ΔNeff and H0/σ8 entries with frozen verification values; added verification rows |
+
+**Figures Created:**
+- `paper/figures/cosmology_dataset_comparison_two_frozen.pdf` — 3-panel comparison
+- `paper/figures/fig_dneff_viability_two_frozen.pdf` — 2-panel ΔNeff posteriors
+- `paper/figures/vacuum_scale_sensitivity.pdf` — 4-panel Monte Carlo sensitivity scan
+
+**Theory Audit Outputs Integrated:**
+- `theory_claims_do_and_do_not_support.md` — 10 supported + 8 unsupported claims
+- `theory_results_integration_note.md` — Guidance for connecting theory to MCMC
+- Monte Carlo sensitivity scan (100K samples) results
+- Dimensional audit (10/12 consistent + 2 noted)
+- 5 limit behavior checks (all pass)
+
+**Still Pending (waiting on running chains):**
+- planck_only results (running, ~20-30h to convergence)
+- planck_bao results (paused, will resume after planck_only freezes)
+- Final cross-dataset comparison with all 4 datasets
+- Complete Appendix B table with all 4 dataset columns
+- Final abstract/conclusions with full quantitative summary
+
+**PDF Status:** Compilation pending (Step 7)
+
+---
+
+### Round 8: v1.6.0 — Track C Integration + Early-Structure Future Work (2026-03-13)
+
+**Reviewer:** Internal (Claude + Houston Golden)
+**Manuscript version:** v1.5.0 → v1.6.0
+**Approach:** Integrate audited Track C consistency check + honest early-structure future-work paragraph
+
+**Preceding Audits:**
+- Track C method audit: `research/extensions/track_C_parity_cmb/method_audit.md`
+- Track C likelihood audit: `research/extensions/track_C_parity_cmb/likelihood_audit.md`
+- Track C result classification: `research/extensions/track_C_parity_cmb/result_classification.md`
+- Track C paper integration recommendation: `research/extensions/track_C_parity_cmb/paper_integration_recommendation.md`
+- Early-structure scale mismatch: `research/extensions/early_structure_program/scale_mismatch_derivation.md`
+- Early-structure no-go decision: `research/extensions/early_structure_program/no_go_or_narrow_window_decision.md`
+- Early-structure paper integration: `research/extensions/early_structure_program/current_paper_bridge_integration.md`
+
+**Changes Made:**
+
+| # | Change | Location | Details |
+|---|--------|----------|---------|
+| R8-1 | New subsection: Cosmic Birefringence Consistency Check | Discussion (Sec 10, new subsection before Distance Measures) | 2 paragraphs + 1 figure; combines published Planck+ACT birefringence, translates to f_photon ≈ 1.7; explicitly labeled as consistency check, not inference |
+| R8-2 | New figure: consistency_window_birefringence.pdf | Discussion | f_photon vs β with observational bands; caption calls it "phenomenological consistency check, not statistical inference" |
+| R8-3 | Early-structure future-work paragraph | Sec 11.4 (Bounce-to-Inflation Transition Dynamics) | New bullet point: P(k) features at k ~ 10^15 Mpc^-1 from N_tot=92; sub-asteroid PBH window; perturbation calculation needed |
+| R8-4 | Claims table update | Appendix K | New row: f_photon ≈ 1.7 classified as "Consistency check" |
+| R8-5 | Conclusions update | Conclusions (Observational signatures paragraph) | Added sentence referencing Sec 10.X consistency check and f_photon ≈ 1.7 |
+| R8-6 | Version bump | Throughout | v1.5.0 → v1.6.0, date → March 13, 2026 |
+
+**Language Audit (all passed):**
+- Track C: "consistency check" only, never "constraint" or "inference"
+- Early structure: future work only, no SMBH/PBH claims
+- ΔN_eff: "consistent with zero" maintained
+- Galaxy spins: "contested anomaly" maintained
+- f_photon: "requires" not "measures"
+- Combined β: "combining published measurements" not "our analysis"
+
+**What Was NOT Included (by design):**
+- No phenomenological window analysis plots (SMBH/PBH direction is a no-go for framework)
+- No beta_posterior or geff_posterior figures (labeled "posterior" but no inference performed)
+- No EB shape comparison figure (forward model without data overlay)
+- No MCMC for Track C (zero of 5 necessary conditions met)
+- No SMBH/JWST/PBH claims in main text
+
+**Still Pending:**
+- planck_only chains (running, ETA ~March 19-20)
+- planck_bao chains (paused, will resume after planck_only freezes)
+- Final cross-dataset table with all 4 columns
+- Referee-style external review
 
 ---
 

@@ -1,0 +1,18 @@
+P(k) FEATURE WINDOW ANALYSIS SUMMARY
+Date: 2026-03-13
+==================================================
+
+Framework feature scale: k = 5.86e+14 Mpc^-1
+Framework feature mass: M = 9.61e-17 M_sun
+SMBH seed scales: k = 1.82e+04 to 5.74e+05 Mpc^-1
+Scale mismatch: 10^9 in k
+Mass mismatch: 10^18 in mass
+
+Phenomenological window: EXISTS (narrow)
+  Best scale: k ~ 10^5.7 Mpc^-1
+  P_R range: 10^-1.62 to 10^-1.25
+  Width: 0.37 decades
+
+VERDICT: Framework scale mismatch prevents SMBH seed connection.
+Feature at k ~ 10^15 is in asteroid-mass PBH window (weakly constrained).
+Possibly relevant for PBH dark matter, NOT for early SMBH seeds.

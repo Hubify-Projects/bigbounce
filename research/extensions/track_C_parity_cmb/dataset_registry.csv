@@ -1,0 +1,8 @@
+source,paper,arxiv,year,observable,value,uncertainty,unit,public,machine_readable,covariance,correlation_with_others,status,suitable_for
+Eskilt 2022,Frequency-dependent constraints on cosmic birefringence from Planck DR4,2205.13962,2022,beta_iso,0.30,0.11,degrees,yes,yes,single_param,independent_of_ACT,USE,gaussian_summary_likelihood
+Diego-Palazuelos_Komatsu 2025,ACT DR6 birefringence,2503.14452,2025,beta_iso,0.215,0.074,degrees,yes,yes,single_param,independent_of_Eskilt,USE,gaussian_summary_likelihood
+Eskilt 2022 Table 1,Same as above,2205.13962,2022,D_ell_EB_bandpowers,see_paper,see_paper,uK2,yes,digitizable,diagonal_only,N/A,USE,eb_shape_comparison
+SPIDER 2025,SPIDER combined rotation,2510.25489,2025,total_rotation,0.50,0.07,degrees,yes,yes,single_param,calibration_degenerate,CITE_ONLY,not_directly_usable
+Minami_Komatsu 2020,New extraction of cosmic birefringence from Planck,2011.11254,2020,beta_iso,0.35,0.14,degrees,yes,yes,single_param,superseded_by_Eskilt,DO_NOT_USE,superseded
+Planck_PR4_EB_spectra,Planck Legacy Archive NPIPE,N/A,2020,C_ell_EB,available,N/A,uK2,yes,yes,not_public,N/A,FUTURE_WORK,requires_full_likelihood
+ACT_DR6_EB_likelihood,ACT DR6 likelihood code,N/A,2025,EB_likelihood,not_public,N/A,N/A,no,no,not_public,N/A,FUTURE_WORK,when_released

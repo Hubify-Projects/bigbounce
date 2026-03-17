@@ -1,0 +1,8 @@
+track,resource,type,cost_per_hour,estimated_hours,total_cost,status,notes
+C,Local Mac CPU,compute,0,0.5,0,APPROVED,Gaussian constraint sampling + plotting
+C,Local disk,storage,0,permanent,0,APPROVED,<10 MB output
+C,CAMB (optional),software,0,0.1,0,OPTIONAL,pip install; only for EB shape comparison
+A,N/A,N/A,0,0,0,REJECTED,Future work only
+B,N/A,N/A,0,0,0,REJECTED,Future work only
+Paper-1,RunPod CPU5,compute,0.12,336,40.32,EXISTING,planck_only + planck_bao (~14 days remaining)
+Paper-1,Network volume,storage,0.01,336,3.36,EXISTING,Chain storage + backups

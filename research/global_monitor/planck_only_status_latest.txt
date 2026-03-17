@@ -1,0 +1,79 @@
+==============================================================
+PLANCK_ONLY MCMC CHAIN STATUS REPORT
+Generated: 2026-03-12 ~23:05 UTC
+Pod: 157.157.221.30:36579 (RunPod)
+==============================================================
+
+RUN METADATA
+  Dataset:        planck_only (dneff model)
+  Started:        2026-03-12 19:58 UTC
+  Elapsed:        ~3.1 hours
+  PIDs:           8165-8170 (6 chains)
+  Process status: ALL 6 ALIVE (confirmed via ps aux)
+  Chain path:     /workspace/bigbounce/chains/dneff/planck_only/
+
+CHAIN FILES (spin_torsion.1.txt)
+  chain_01:  376 samples   221,676 bytes   last modified 23:01 UTC
+  chain_02:  405 samples   238,140 bytes   last modified 23:01 UTC
+  chain_03:  381 samples   224,616 bytes   last modified 23:02 UTC
+  chain_04:  388 samples   228,732 bytes   last modified 23:01 UTC
+  chain_05:  397 samples   234,024 bytes   last modified 23:01 UTC
+  chain_06:  413 samples   243,432 bytes   last modified 23:01 UTC
+  TOTAL:     2,360 samples across 6 chains
+
+PARAMETERS (33 columns per sample)
+  weight, minuslogpost, logA, nnu, ns, ombh2, omch2, tau,
+  theta_MC_100, A_planck, amp_143, amp_217, amp_143x217,
+  n_143, n_217, n_143x217, calTE, calEE, As, H0, sigma8,
+  omegam, S8, delta_neff, age, chi2__CMB, minuslogprior,
+  minuslogprior__0, chi2, chi2__planck_NPIPE_highl_CamSpec.TTTEEE,
+  chi2__planck_2018_lowl.TT, chi2__planck_2018_lowl.EE,
+  chi2__planck_2018_lensing.clik
+
+CONVERGENCE DIAGNOSTICS
+  Parameter      Mean           Std        R-hat    ESS   Drift
+  -----------  ----------  ----------  --------  -----  ------
+  H0           67.6395      1.2034      1.3717      58   0.683s
+  nnu           3.0986      0.1448      1.7112      45   0.476s
+  tau           0.0509      0.0051      1.1930      57   0.333s
+  sigma8        0.8075      0.0054      1.7102      74   0.107s
+  omegam        0.3136      0.0093      1.0567      94   0.695s
+  logA          3.0340      0.0088      1.4562      91   0.043s
+  ns            0.9639      0.0059      1.2457      90   0.212s
+  delta_neff    0.0526      0.1448      1.7112      45   0.476s
+  S8            0.8255      0.0141      1.0276     113   0.649s
+  ombh2         0.0222      0.0002      1.0928     115   0.546s
+  omch2         0.1205      0.0022      1.6760      53   0.173s
+
+COBAYA INTERNAL R-1 (from progress files, at N=224)
+  chain_01:  8.935    chain_02: 24.560    chain_03: 11.212
+  chain_04: 17.756    chain_05:  9.606    chain_06:  4.160
+
+FREEZE GATE ASSESSMENT
+  [FAIL] total_samples >= 10,000    (have 2,360)
+  [PASS] chains >= 4                (have 6)
+  [FAIL] worst R-1 < 0.01          (worst = 0.7112)
+  [FAIL] min ESS > 2,000           (min = 45)
+  [FAIL] max drift < 0.1sigma      (max = 0.695)
+  ALL GATES PASS: NO
+
+THROUGHPUT
+  Total rate:     ~765 samples/hour (~128/hour/chain)
+  Acceptance rate: ~35-40% (from cobaya progress)
+  Log status:     No errors detected; steady progress in logs
+
+ETA ESTIMATE
+  Estimated samples needed for convergence: ~126,000
+  Remaining: ~124,000
+  Estimated time to convergence: ~161 hours (~6.7 days)
+  Projected completion: ~2026-03-19 16:00 UTC
+
+NOTES
+  - Chains are very early (3.1 hrs into run). R-hat values are
+    expected to be large at this stage.
+  - delta_neff mean = 0.053 +/- 0.145 (consistent with zero
+    at current precision, but chains have not converged).
+  - Checkpoint files last updated ~21:47-22:08 UTC (lag expected).
+  - No errors or warnings in cobaya logs.
+  - DO NOT STOP OR MODIFY CHAINS. Read-only monitoring only.
+==============================================================

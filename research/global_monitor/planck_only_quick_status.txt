@@ -1,0 +1,84 @@
+================================================================
+PLANCK_ONLY QUICK STATUS CHECK
+================================================================
+Generated: 2026-03-13 02:15 UTC (2026-03-12 19:15 PST)
+Previous check: 2026-03-12 ~23:00 UTC
+
+CHAIN STATUS: RUNNING (all 6 chains actively writing)
+  Pod: 157.157.221.30:36579
+  Chain files last modified: 2026-03-13 02:12-02:13 UTC (< 3 min ago)
+  Runtime since start: ~6.3 hours (started ~19:58 UTC)
+
+PER-CHAIN SAMPLE COUNTS:
+  Chain 1:  711
+  Chain 2:  680
+  Chain 3:  681
+  Chain 4:  701
+  Chain 5:  727
+  Chain 6:  769
+  TOTAL:    4,269
+
+THROUGHPUT:
+  679 samples/hour aggregate (113 per chain)
+
+CONVERGENCE DIAGNOSTICS:
+  Parameter   Mean        Std       R-hat   R-1      ESS   Drift
+  -----------------------------------------------------------------------
+  H0          67.06508    1.33608   1.0966  0.0966    56   0.9925 sigma
+  nnu          3.01530    0.17761   1.1353  0.1353    45   1.0991 sigma
+  tau          0.05036    0.00528   1.1030  0.1030    75   0.1486 sigma
+  sigma8       0.80452    0.00744   1.1951  0.1951    54   0.9140 sigma
+  omegam       0.31624    0.00916   1.0399  0.0399   144   0.6422 sigma
+  logA         3.03073    0.01180   1.1711  0.1711    85   0.5914 sigma
+  ns           0.96147    0.00694   1.0916  0.0916    93   0.8024 sigma
+
+FREEZE GATES:
+  FAIL: total_samples >= 10,000      (actual: 4,269)
+  PASS: chains >= 4                  (actual: 6)
+  FAIL: worst R-1 < 0.01            (actual: 0.1951 -- sigma8)
+  FAIL: min ESS > 2,000             (actual: 45 -- nnu)
+  FAIL: max drift < 0.1 sigma       (actual: 1.0991 -- nnu)
+  ALL GATES: FAIL
+
+ASSESSMENT: Chains are still in early burn-in phase. R-hat values
+  and drift are expected to be high at ~4K samples. No anomalies --
+  parameters are in physically reasonable ranges.
+
+ETA TO CONVERGENCE:
+  Target: ~130,000 samples (based on planck_bao_sn precedent)
+  Remaining: ~125,731 samples
+  At current rate: ~185 hours (~7.7 days)
+  Projected: ~2026-03-20 19:17 UTC
+
+LOCAL SYNC: CURRENT
+  Path: /Users/houstongolden/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/planck_only_live_sync/
+  Synced size: 2.8 MB
+  File count: 60 files (6 chains x 10 files each)
+  Latest chain file timestamp: 2026-03-13 02:13 UTC
+
+BACKUP STATUS: HEALTHY
+  Hourly cron: ACTIVE (0 * * * * /workspace/bigbounce/backup_hourly.sh)
+  Last backup run: 2026-03-13 02:00 UTC
+  Backup destination: /workspace/bigbounce/snapshots/chains_*.tar.gz
+  Includes: all datasets (planck_only covered)
+  SHA256 manifests: generated each hour
+  Stale chain warnings: 18 stale chains from OTHER datasets
+    (planck_bao: 47h, full_tension: 32h, planck_bao_sn: 6h)
+    planck_only chains are NOT stale -- all writing normally.
+
+PDF STATUS: EXISTS
+  Path: /Users/houstongolden/Desktop/CODE_2026/bigbounce/arxiv/main.pdf
+  Size: 2.0 MB
+  Pages: 34
+  Modified: 2026-03-12 16:07 PST
+
+================================================================
+RECOMMENDATION:
+  - No action needed. Chains running normally in burn-in.
+  - Next meaningful convergence check after ~20K samples
+    (~24 hours from now, around 2026-03-14 02:00 UTC).
+  - Consider checking planck_bao_sn stale chains (6h stale)
+    if those are expected to still be running.
+
+NEXT CHECK-IN: 2026-03-14 ~02:00 UTC (~24 hours)
+================================================================

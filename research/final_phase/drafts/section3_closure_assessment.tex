@@ -1,0 +1,304 @@
+% =============================================================================
+% SECTION 3: STRUCTURAL CLOSURE ASSESSMENT
+% =============================================================================
+% Target: ~3 pages PRD format (dense, table-heavy)
+% This is the paper's PRIMARY NOVELTY.
+% =============================================================================
+
+\section{Structural Closure of the Minimal Framework}
+\label{sec:closure}
+
+The nonsingular bounce described in Sec.~\ref{sec:bounce} is mathematically
+well-defined and singularity-free.  We now ask: does this framework produce
+testable consequences beyond the bounce itself?  We systematically investigate
+all logical routes from the ECH bounce to late-time observables, organizing
+them into fifteen branches labeled A--O.  Each branch is pursued until it
+either produces a distinctive, testable prediction or encounters a structural
+barrier---a mechanism-independent obstruction rooted in symmetry, scaling, or
+conservation law.
+
+The outcome is a catalog of fourteen structural barriers spanning five failure
+modes.  No first-principles route from the bounce to dark energy survives, and
+no distinctive observational signature of the bounce is accessible to current
+or planned experiments.  One indirect handle remains: spectator ALP
+birefringence, treated in Sec.~\ref{sec:alp}.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Methodology}
+\label{sec:closure_method}
+
+We classify candidate connections between the bounce and late-time physics into
+three tiers:
+
+\begin{enumerate}
+\item \emph{Direct derivation} (Branches A--G): attempts to derive a late-time
+  dark energy density $\rho_\mathrm{DE}$ or equation of state $w=-1$ from the
+  ECH Lagrangian and bounce dynamics, without external input.
+
+\item \emph{Observable signatures} (Branches H, K--M): attempts to identify
+  distinctive features in the tensor spectrum, scalar perturbations,
+  gravitational wave background, or relic abundances that could distinguish the
+  ECH bounce from other cosmological scenarios.
+
+\item \emph{State selection and vacuum determination} (Branches I, J, N, O):
+  attempts to use the bounce as a mechanism for constraining dark-sector
+  initial conditions, triggering phase transitions, or selecting a vacuum
+  energy scale.
+\end{enumerate}
+
+Each branch is tested against explicit calculations.  A branch is closed when
+a structural barrier is identified---that is, an obstruction that cannot be
+removed by parameter adjustment within the minimal framework or its natural
+extensions (PGT, dynamical Immirzi, environmental masses).  A branch is
+classified as \emph{generic} when the result, though calculable, is shared by
+all bouncing cosmologies and cannot distinguish ECH from alternatives.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Fourteen Structural Barriers}
+\label{sec:barriers}
+
+Table~\ref{tab:barriers} catalogs the fourteen barriers encountered across
+all fifteen branches.  We summarize each in turn.
+
+\begin{table*}[t]
+\centering
+\caption{Fourteen structural barriers closing all routes from the ECH bounce to
+  late-time observables.  Each barrier is labeled by the branch in which it
+  first appears, together with its physical mechanism and failure mode
+  classification.}
+\label{tab:barriers}
+\begin{tabular}{clllll}
+\hline\hline
+\# & Barrier name & Branch & Mechanism blocked & Root cause & Failure mode \\
+\hline
+1  & Mass-coupling lock
+   & A & PGT torsion as DE
+   & $m \propto |t_3|^{-1/2}$,\; $g \propto (M_\mathrm{Pl}\sqrt{|t_3|})^{-1}$
+   & I \\
+2  & Topological-shift duality
+   & B & Nieh--Yan pseudoscalar
+   & Shift symmetry $\Leftrightarrow$ geometric content exclusive
+   & I \\
+3  & Scalar-tensor universality
+   & C & Environmental mass on FRW
+   & $T_0 = Q_0 = 0$ on FRW;\; only $R(g)$ survives
+   & I \\
+4  & Planck suppression
+   & D & Disformal/connection coupling
+   & $1\;\partial\phi$/vertex;\; disformal needs 2;\; dim-8 $\sim 10^{-122}$
+   & I \\
+5  & Scale separation
+   & E & Global vacuum integrals
+   & Bounce $\sim 10^{-32}$ of spacetime volume integrals
+   & II \\
+6  & Attractor-sensitivity dilemma
+   & F & Bounce-set initial conditions
+   & Attractors erase $\phi_i$; no-attractor needs $10^{-30}$ precision
+   & II \\
+7  & Parameter immunity
+   & G & Cyclic vacuum selection
+   & Action parameters $\neq$ boundary conditions;\; cyclic geometry incompatible
+   & II \\
+8  & Parity-even interaction
+   & H & Tensor chirality
+   & $(J^5)^2$ is parity-even;\; $\tilde{R}R = 0$ on FRW
+   & III \\
+9  & Phase-space conservation
+   & J & Reversible state selection
+   & Liouville theorem at $H=0$;\; no phase-space contraction
+   & IV \\
+10 & UV--IR specificity dilemma
+   & L & Observable mechanism search
+   & Generic mechanisms don't need the bounce
+   & III \\
+11 & Decoupling universality
+   & L & PGT lower-scale bounce
+   & Light torsion decouples: $g_\mathrm{eff} \sim m_T/M_\mathrm{Pl}^2$
+   & I \\
+12 & Vacuum amplification ceiling
+   & M & Detectable GW from bounce
+   & $\Omega_\mathrm{GW} \propto (H_b/M_\mathrm{Pl})^2$;\; gap $\geq 10^{17}$ to detectors
+   & III \\
+13 & Gravitational democracy
+   & N & Relic/baryon production
+   & Torsion $\sim 1/g_* \sim 1\%$ of Planck-era channels;\; $B$, $L$ conserved
+   & V \\
+14 & Bounce--vacuum decoupling
+   & O & Irreversible vacuum selection
+   & Trigger (bounce) $\neq$ outcome ($\rho_\mathrm{DE}$)
+   & V \\
+\hline\hline
+\end{tabular}
+\end{table*}
+
+
+% ---------------------------------------------------------------------------
+\subsection{Five Failure Modes}
+\label{sec:failure_modes}
+
+The fourteen barriers organize into five failure modes that together constitute
+a comprehensive obstruction theorem for the minimal ECH framework.
+
+\medskip
+\noindent\textbf{Mode I: Geometric specificity lost on FRW
+  (Barriers 1--4, 11).}
+The ECH Lagrangian contains rich geometric structure---propagating torsion
+modes, the Nieh--Yan topological density, non-metricity, disformal couplings.
+On a Friedmann--Robertson--Walker background, however, isotropy and homogeneity
+set $T_\mu = Q_\mu = 0$.  The only surviving geometric scalar is the Ricci
+curvature $R(g)$, which is the same in general relativity and in all
+metric-compatible theories.  Concretely:
+\begin{itemize}
+\item The PGT torsion mode's mass and coupling are both controlled by
+  a single PGT parameter $t_3$, creating a lock: making the mass cosmologically
+  light simultaneously decouples the mode from matter (Barrier~1).
+\item The Nieh--Yan density $dT^a \wedge e_a$ is non-topological in MAG, but
+  shift symmetry (which protects a small mass) and non-trivial geometric
+  content are mutually exclusive for linear couplings (Barrier~2).
+\item Any torsion- or non-metricity-descended scalar on FRW reduces to a
+  standard scalar-tensor field $\phi$ with coupling $\xi\phi^2 R$---the same
+  theory obtained from any non-minimal scalar, with no geometric fingerprint
+  (Barrier~3).
+\item Disformal couplings require two field gradients per vertex, but the
+  connection coupling $\nabla = \partial + \Gamma$ provides only one,
+  suppressing all distinctive effects to dimension-8 operators at
+  $\mathcal{O}(M_\mathrm{Pl}^{-4})$ (Barrier~4).
+\end{itemize}
+
+\medskip
+\noindent\textbf{Mode II: Scale separation (Barriers 5--7).}
+The bounce occurs at $\rho_\mathrm{crit} \sim 0.27\,\rho_\mathrm{Pl}$, while
+dark energy operates at $\rho_\mathrm{DE} \sim 10^{-122}\,\rho_\mathrm{Pl}$.
+This $10^{122}$ hierarchy in energy density (equivalently $10^{61}$ in mass
+scale) prevents the bounce from communicating with the DE sector:
+\begin{itemize}
+\item Global spacetime integrals are dominated by the expansion era; the bounce
+  contributes a fraction $\sim 10^{-32}$ of the total spacetime volume
+  (Barrier~5).
+\item Quintessence initial conditions either flow to late-time attractors
+  (erasing all bounce information) or require $10^{-30}$ precision in
+  $\phi_i$, which the generic bounce cannot provide (Barrier~6).
+\item Action parameters (coupling constants) cannot be constrained by dynamical
+  boundary conditions, and cyclic cosmology with $\Lambda > 0$ and
+  Planck-density bounce is geometrically incompatible with observed spatial
+  flatness (Barrier~7).
+\end{itemize}
+
+\medskip
+\noindent\textbf{Mode III: Generic or undetectable signatures
+  (Barriers 8, 10, 12).}
+Where the bounce does produce calculable perturbation spectra, the results are
+either undetectable or indistinguishable from other bouncing cosmologies:
+\begin{itemize}
+\item The four-fermion interaction $(J^5)^2$ is parity-\emph{even}
+  (pseudovector squared = scalar), and the Pontryagin density $\tilde{R}R$
+  vanishes identically on FRW.  No parity-odd tensor signal exists
+  (Barrier~8).
+\item The tensor power spectrum $P_T \sim 2 \times 10^{-64}$ is calculable and
+  scale-invariant ($n_T \approx 0$) but lies at least $10^4$ below the
+  sensitivity of any planned detector.  The scalar transfer function
+  $\mathcal{T}(k) = 1$ for $k \ll k_b$ by time-reversal symmetry, and
+  features appear only at $k \sim k_b \sim \mathrm{GHz}$
+  ($k_\mathrm{CMB}/k_b \sim 10^{-28}$).
+\item Generic UV$\to$IR mechanisms (contraction spectra, inflation matching,
+  phase transitions) operate identically in any hot cosmology and do not
+  require or probe the bounce (Barrier~10).  The vacuum amplification ceiling
+  $\Omega_\mathrm{GW} \propto (H_b/M_\mathrm{Pl})^2$ applies universally to
+  all bounce scenarios (Barrier~12).
+\end{itemize}
+
+\medskip
+\noindent\textbf{Mode IV: Hamiltonian conservation (Barrier 9).}
+The bounce is a conservative scattering event at $H = 0$.  Liouville's theorem
+guarantees that phase-space volume is preserved: the bounce \emph{rotates}
+dark-sector states but cannot \emph{select} them.  Five candidate selection
+mechanisms (pNGB misalignment, multi-vacuum, symmetry re-breaking, metastable
+trapping, nonadiabatic excitation) all fail because the bounce provides no
+dissipation.
+
+\medskip
+\noindent\textbf{Mode V: Gravitational democracy and vacuum decoupling
+  (Barriers 13--14).}
+At $T \sim M_\mathrm{Pl}$, the torsion interaction is one of approximately
+$g_* \sim 100$ gravitational-strength channels, contributing $\sim 1\%$ of the
+total scattering rate.  It cannot dominate relic production or baryogenesis,
+and it conserves $B$ and $L$.  Meanwhile, irreversible processes (phase
+transitions, tunneling) can be triggered by the bounce but the resulting vacuum
+energy is set by hidden-sector parameters that the bounce does not determine.
+The bounce controls \emph{whether} a transition occurs, not \emph{what} vacuum
+energy results.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Branch Status Summary}
+\label{sec:branch_summary}
+
+Table~\ref{tab:branches} summarizes the status of all fifteen branches.
+
+\begin{table}[h]
+\centering
+\caption{Status of the fifteen branches investigated.  CLOSED: structural
+  barrier identified.  GENERIC: result correct but shared by all bouncing
+  cosmologies.  WEAK: no nontrivial constraint found.}
+\label{tab:branches}
+\begin{tabular}{cllc}
+\hline\hline
+Branch & Route tested & Barriers & Status \\
+\hline
+A & Propagating torsion (PGT) & 1 & Closed \\
+B & Nieh--Yan pseudoscalar & 2 & Closed \\
+C & Environmental mass & 3 & Closed \\
+D & Disformal coupling & 4 & Closed \\
+E & Global vacuum integrals & 5 & Closed \\
+F & Bounce-set initial conditions & 6 & Closed \\
+G & Cyclic vacuum selection & 7 & Closed \\
+H & Tensor spectrum \& chirality & 8 & Closed \\
+I & Horndeski DE stability & --- & Weak \\
+J & State selection & 9 & Closed \\
+K & Scalar perturbations & --- & Generic \\
+L & UV--IR bridge (PGT) & 10, 11 & Closed \\
+M & PGT bounce GW spectrum & 12 & Generic \\
+N & Baryogenesis \& relics & 13 & Closed \\
+O & Hidden-sector vacuum & 14 & Closed \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+
+% ---------------------------------------------------------------------------
+\subsection{Implications}
+\label{sec:closure_implications}
+
+The fourteen barriers organize into a coherent obstruction.  The bounce is
+trapped between three regimes:
+
+\begin{enumerate}
+\item \emph{Too high-energy for late-time observables.}  The bounce energy
+  density $\rho_\mathrm{crit} \sim 0.27\,\rho_\mathrm{Pl}$ is $10^{122}$
+  times the dark energy scale.  All direct channels from bounce to DE are
+  suppressed by this hierarchy (Modes I and II).
+
+\item \emph{Too generic at its own scale.}  At $T \sim M_\mathrm{Pl}$,
+  torsion is one of $\sim 100$ gravitational-strength interactions, and tensor
+  and scalar spectra are shared by all symmetric radiation bounces (Modes III
+  and V).
+
+\item \emph{Too decoupled from late-time vacuum.}  Conservative dynamics
+  (Liouville) preserve phase space, and irreversible processes decouple the
+  trigger from the outcome (Mode IV and V).
+\end{enumerate}
+
+\noindent These results do not invalidate the ECH framework.  The bounce
+remains a well-defined, singularity-free cosmology.  What they establish is
+that the \emph{minimal} framework is \emph{observationally inert} in the
+direct sector: no distinctive, testable consequence of the bounce dynamics
+itself is accessible.  Dark energy requires separate input; we treat it as a
+cosmological constant~$\Lambda$.
+
+One \emph{indirect} handle survives.  The ECH parity-odd sector motivates a
+Planck-scale axion-like particle whose photon coupling produces cosmic
+birefringence.  This is not a bounce prediction---it is a prediction of the
+effective ALP sector that the framework motivates.  We turn to this in the
+next section.

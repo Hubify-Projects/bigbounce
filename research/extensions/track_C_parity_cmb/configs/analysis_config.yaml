@@ -1,0 +1,61 @@
+# ============================================================
+# Track C: Parity / CMB Birefringence — Analysis Configuration
+# ============================================================
+
+# Spin-torsion operator scale
+# The parity-odd operator is (alpha/M) epsilon^{abcd} K_{ab} R_{cd}
+# with alpha/M approx 10^{-21} GeV^{-1}.
+alpha_over_M:
+  value: 1.0e-21        # GeV^{-1}
+  log10_range: [-22, -20]  # for scanning
+
+# Planck mass
+M_Pl: 2.435e18          # GeV (reduced Planck mass)
+
+# Dimensionless one-loop suppression: (alpha/M) * M_Pl
+# = 1.0e-21 * 2.435e18 = 2.435e-3 ~ O(10^{-2})
+one_loop_suppression_note: "(alpha/M)*M_Pl ~ 2.4e-3; this is a dimensionless measure of coupling strength"
+
+# Published birefringence measurements to use in combined fit
+# Only independent measurements should be combined.
+# Minami & Komatsu 2020 is superseded by Eskilt 2022 — excluded from fit.
+measurements_for_fit:
+  - experiment: "Eskilt 2022"
+    beta_deg: 0.30
+    sigma_deg: 0.11
+    independent: true
+  - experiment: "Diego-Palazuelos & Komatsu 2025"
+    beta_deg: 0.215
+    sigma_deg: 0.074
+    independent: true
+  # SPIDER has calibration degeneracy; shown but not included in primary fit
+  # - experiment: "SPIDER 2025"
+  #   beta_deg: 0.50
+  #   sigma_deg: 0.07
+  #   independent: false  # calibration degeneracy
+
+# Parameterization of photon-torsion coupling gap
+# beta = g_eff * C_0
+# g_eff = (alpha/M) * f_photon * M_Pl  [dimensionless]
+# C_0 encodes geometric/cosmological integral factors [radians]
+# For a field excursion Delta_phi ~ M_Pl over cosmic history,
+# C_0 ~ O(1) radian is natural.
+coupling_parameterization:
+  C_0_fiducial: 1.0      # radians; geometric prefactor (order-of-magnitude)
+  C_0_range: [0.1, 10.0] # scan range
+  f_photon_range: [0.01, 100.0]  # dimensionless vertex factor scan range
+
+# Plot settings
+plot:
+  figsize: [8, 6]
+  dpi: 150
+  style: "seaborn-v0_8-whitegrid"
+  colors:
+    eskilt: "#1f77b4"
+    act_dr6: "#ff7f0e"
+    spider: "#2ca02c"
+    combined: "#d62728"
+    theory: "#9467bd"
+  confidence_bands:
+    one_sigma: 0.3
+    two_sigma: 0.15

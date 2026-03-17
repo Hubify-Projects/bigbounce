@@ -1,0 +1,1382 @@
+% "Geometric Dark Energy: Phenomenological Viability,
+%  Systematic Closures, and Requirements for Completion"
+%
+% Houston Golden — 2026
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,
+  nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{slashed}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+% Custom commands
+\newcommand{\Leff}{\Lambda_{\rm eff}}
+\newcommand{\Lobs}{\Lambda_{\rm obs}}
+\newcommand{\Dinf}{\mathcal{D}_{\rm inf}}
+\newcommand{\rhocrit}{\rho_{\rm crit}}
+\newcommand{\rhoPl}{\rho_{\rm Pl}}
+\newcommand{\MPl}{M_{\rm Pl}}
+\newcommand{\Neff}{N_{\rm eff}}
+\newcommand{\BI}{\gamma}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\Gsp}{G_{\rm SP}}
+\newcommand{\Veff}{V_{\rm eff}}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\etal}{\textit{et~al.}}
+\begin{document}
+
+\preprint{HUBIFY-2026-002}
+
+\title{Geometric Dark Energy: Phenomenological Viability,\\
+Systematic Closures, and Requirements for Completion}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\today}
+
+\begin{abstract}
+We present a phenomenological dark-energy framework rooted in
+Einstein-Cartan-Holst (ECH) gravity, report the systematic closure of
+four minimal and one near-minimal first-principles route to deriving the
+late-time vacuum term, and extract the structural requirements that any
+viable geometric dark-energy completion must satisfy.
+
+The minimal ECH framework---with algebraic torsion, fixed Barbero-Immirzi
+parameter $\BI = 0.274$, and minimal Dirac coupling---provides a
+consistent phenomenological ansatz that reduces fine-tuning from
+$10^{120}$ to $\sim\!10^5$ and yields MCMC fits partially reducing the
+$H_0$ and $\sigma_8/S_8$ tensions. However, four systematic attempts to
+derive the late-time $w = -1$ behavior within the minimal model have all
+failed, sharing a common structural origin: algebraic torsion washes out
+after elimination, leaving no infrared fingerprint. Additionally, the
+most natural next-generation extension---propagating torsion in
+Poincar\'e gauge theory (PGT)---reveals a new obstruction: in the
+ghost-free $0^-$ axial mode, the mass and matter coupling are locked
+($m \propto g_{\rm eff} \propto 1/\sqrt{|t_3|}$), so making the mode
+cosmologically light simultaneously drives its coupling $\sim\!10^{29}$
+times below gravitational strength, rendering it observationally inert.
+No symmetry within PGT protects this mass.
+
+From these closures we extract six structural lessons and formulate
+requirements that constrain the space of viable geometric dark-energy
+models: the theory must survive reduction, address scale naturalness,
+offer a distinctive observable, and---crucially---avoid the
+mass-coupling lock in which a light-mass limit automatically decouples
+the field from matter.
+
+The framework's phenomenological viability (cosmological fits, scaling
+argument, fine-tuning reduction) survives all closures intact. Its
+scientific contribution is the combination of a well-tested
+phenomenological model with a systematic map of the theory landscape
+showing what does not work and why, narrowing the path for any future
+geometric completion.
+\end{abstract}
+
+\pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
+\keywords{dark energy, Einstein-Cartan theory, spin-torsion coupling,
+cosmological constant problem, Barbero-Immirzi parameter,
+negative results, geometric dark energy}
+
+\maketitle
+\tableofcontents
+
+
+%% ============================================================
+%%  PART I: FRAMEWORK AND PHENOMENOLOGY
+%% ============================================================
+
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+
+The cosmological constant problem---why the observed vacuum energy density
+$\rho_\Lambda \sim (2.3\;\text{meV})^4$ is $\sim 10^{120}$ times smaller
+than the naive quantum field theory estimate $\sim \MPl^4$~\cite{Weinberg1989}%
+---remains one of the deepest unsolved problems in fundamental physics.
+Growing tensions within $\Lambda$CDM, including the ${\sim}4.9\sigma$
+Hubble tension~\cite{Riess2022,Planck2018params} and $2$--$3\sigma$
+$\sigma_8/S_8$ tension~\cite{KiDS2021,DES2024}, together with hints of
+dynamical dark energy from DESI~DR2 BAO
+measurements~\cite{DESI2024,DESI2025DR2}, motivate exploration of
+geometric approaches to dark energy.
+
+Einstein-Cartan-Holst (ECH) gravity---Einstein-Cartan theory supplemented
+by the Holst term with Barbero-Immirzi parameter $\BI$---is a natural
+starting point for geometric dark energy. The theory is well-motivated by
+loop quantum gravity~\cite{Ashtekar2011}, introduces spin-torsion coupling
+with parity-violating structure~\cite{Freidel2005,Mercuri2006}, and
+provides a non-singular quantum bounce~\cite{Poplawski2012}. The question
+is whether this theoretical structure can generate a natural origin for
+late-time dark energy.
+
+This paper reports three results. First, we present a phenomenological
+dark-energy framework built on ECH gravity that is observationally
+consistent and reduces fine-tuning significantly, with MCMC fits partially
+reducing the $H_0$ and $\sigma_8$ tensions. Second, we report the
+systematic failure of four minimal first-principles routes to derive
+the late-time $w = -1$ behavior. Third, we report an assessment
+of the most natural next-generation extension---propagating torsion in
+Poincar\'e gauge theory (PGT)---finding that it is structurally viable but
+phenomenologically empty for dark energy due to a \textit{mass-coupling
+lock}: the same parameter that makes the torsion mode cosmologically
+light also suppresses its matter coupling to $\sim\!10^{29}$ times below
+gravitational strength, rendering it observationally inert. From these
+results we extract six structural lessons and formulate concrete
+requirements for any viable geometric dark-energy completion.
+
+The combination establishes the current scientific status of the program:
+\begin{itemize}[leftmargin=*]
+  \item The minimal ECH framework is a \textit{motivated phenomenological
+    model}, not a first-principles derivation of dark energy.
+  \item The minimal model and its most natural extension have both been
+    tested and found insufficient, for distinct structural reasons.
+  \item The closures map the theory landscape and identify nontrivial
+    requirements---including avoidance of the mass-coupling lock---that
+    constrain future geometric dark-energy proposals.
+\end{itemize}
+
+\subsection{Relationship to prior work}
+
+This paper supersedes an earlier version~\cite{Golden2026v1} that
+presented the same phenomenological framework but was organized around
+the minimal ECH model as if it were a sufficient foundation. The present
+version incorporates the results of a structured derivation program
+(documented in a companion technical note~\cite{Golden2026supplement})
+that tested four minimal routes and found all to be negative. The
+phenomenological results are unchanged; the framing, interpretation, and
+forward-looking directions are substantially revised.
+
+
+%% ============================================================
+%%  2. EINSTEIN-CARTAN-HOLST FRAMEWORK
+%% ============================================================
+\section{Einstein-Cartan-Holst Framework}\label{sec:ech}
+
+\subsection{Action and field content}\label{sec:action}
+
+The starting point is the Einstein-Cartan-Holst action minimally coupled
+to $N_f$ Dirac fermions:
+\begin{align}\label{eq:ECH}
+  S_{\rm ECH} &= \frac{\MPl^2}{2}\int
+    \bigl[\varepsilon_{IJKL} + \tfrac{2}{\BI}\,\eta_{I[K}\eta_{L]J}\bigr]\,
+    e^I\wedge e^J\wedge F^{KL}[\omega] \nonumber\\
+  &\quad + \int d^4x\,|e|\,\bigl[\bar\psi\,i\gamma^\mu D_\mu\psi
+    - m\bar\psi\psi\bigr],
+\end{align}
+with $D_\mu = \partial_\mu + \tfrac{1}{4}\omega_\mu^{IJ}\gamma_I\gamma_J$
+the Lorentz-covariant derivative and $\BI = 0.274 \pm 0.020$ the
+Barbero-Immirzi parameter fixed by loop quantum gravity~\cite{Ashtekar2011}.
+
+The first term in Eq.~\eqref{eq:ECH} is the Holst action: the Palatini
+(first-order) formulation of general relativity supplemented by the Holst
+term $(1/\BI)\varepsilon_{IJKL}e^I e^J F^{KL}$, which is parity-odd and
+classically equivalent to a topological term (the Nieh-Yan density) on
+shell. The second term is the standard minimal Dirac coupling.
+
+\subsection{Torsion equation of motion}\label{sec:torsion}
+
+In ECH gravity, the spin connection $\omega^{IJ}_\mu$ is an independent
+dynamical variable, and its equation of motion is algebraic---torsion is
+\textit{not propagating}. Solving the torsion equation exactly
+decomposes the connection as $\omega = \mathring\omega + K$, where
+$\mathring\omega$ is the torsion-free Levi-Civita connection and $K$ is
+the contorsion tensor determined algebraically by the fermion spin
+density~\cite{Freidel2005,Shapiro2002}.
+
+\subsection{Reduced action after torsion elimination}\label{sec:reduced}
+
+Substituting the algebraic torsion solution back into the action yields
+the reduced action~\cite{Freidel2005,ShapiroTeixeira2014}:
+\begin{equation}\label{eq:Sreduced}
+  S_{\rm red} = S_{\rm EH}[g] + S_{\rm Dirac}[g,\psi]
+  + S_{\rm 4f}[\psi;\BI],
+\end{equation}
+where $S_{\rm EH}$ is the standard Einstein-Hilbert action,
+$S_{\rm Dirac}$ is the standard minimally-coupled Dirac action with
+the Levi-Civita connection, and $S_{\rm 4f}$ is the torsion-induced
+four-fermion contact interaction:
+\begin{equation}\label{eq:L4f}
+  \mathcal{L}_{\rm 4f}
+  = -\Geff\Bigl(\bar\psi\gamma^\mu\gamma^5\psi
+    + \tfrac{1}{\BI}\,\bar\psi\gamma^\mu\psi\Bigr)^{\!2},
+  \quad
+  \Geff = \frac{3\kappa^2}{16}\,\frac{\BI^2}{\BI^2+1}.
+\end{equation}
+This perfect-square structure~\cite{Golden2026supplement} constrains the
+Fierz channel decomposition. At $\BI = 0.274$, the vector admixture
+$1/\BI \approx 3.65$ dominates; the scalar/pseudoscalar channel coupling
+$\Gsp \propto (\BI^2 - 1)/(\BI^2 + 1)$ is repulsive (negative).
+
+\paragraph{Critical structural observation.}
+After torsion elimination, \textit{all} $\BI$-dependence resides in the
+four-fermion term $S_{\rm 4f}$. The Dirac kinetic operator
+$i\gamma^\mu\mathring\nabla_\mu$ is the standard Levi-Civita operator,
+independent of $\BI$. This structural fact is the root cause of the
+failures reported in Sec.~\ref{sec:closures}: the Holst sector's content
+does not survive torsion elimination in any form that can generate
+late-time vacuum physics at one loop or below.
+
+
+%% ============================================================
+%%  3. PHENOMENOLOGICAL DARK-ENERGY ANSATZ
+%% ============================================================
+\section{Phenomenological Dark-Energy Ansatz}\label{sec:ansatz}
+
+\subsection{The scaling argument}\label{sec:scaling}
+
+The ECH framework contains a parity-odd vacuum operator
+$\varepsilon^{abcd}K_{ab}R_{cd}$ sourced by the fermion spin density via
+torsion. At early times (Planck-density bounce), this operator has a
+natural magnitude set by $\alpha/M \sim \mathcal{O}(\kappa^2)$, where
+$\alpha/M$ is the parity-odd coefficient in the effective Lagrangian.
+
+Inflationary expansion after the bounce dilutes this operator by a factor
+$\Dinf \sim e^{-3N_{\rm tot}}$, where $N_{\rm tot} \sim 92$ $e$-folds.
+The resulting late-time dark-energy density is parametrically
+\begin{equation}\label{eq:rhoL}
+  \rho_\Lambda \approx \Xi\,\MPl^4, \qquad
+  \Xi \equiv \bigl[(\alpha/M)\,\MPl\bigr]\,\Dinf,
+\end{equation}
+giving $\Xi \sim 10^{-122}$ for appropriate values of $\alpha/M$ and
+$N_{\rm tot}$.
+
+\paragraph{What this is.}
+Equation~\eqref{eq:rhoL} is a \textit{phenomenological scaling ansatz}.
+It traces a dimensional chain from the Planck scale through inflationary
+dilution to the observed vacuum energy. It reduces fine-tuning from
+$10^{120}$ (the cosmological constant problem in $\Lambda$CDM) to
+$\sim\!10^5$ (sensitivity to $N_{\rm tot}$ within $\Delta N \approx 4$
+$e$-folds).
+
+\paragraph{What this is not.}
+Equation~\eqref{eq:rhoL} is \textit{not} a derivation of $w = -1$.
+The parity-odd operator is sourced by the spin density, which vanishes
+at late times ($K_{ab} \to 0$). For the residual to persist as a true
+vacuum energy, one must show that integrating out the spin degrees of
+freedom generates an IR-constant term in the effective action. Four
+attempts to establish this have failed (Sec.~\ref{sec:closures}). We
+therefore treat $w = -1$ as a phenomenological assumption, consistent
+with observations ($|w+1| \lesssim 10^{-2}$ from DESI+Planck).
+
+\subsection{Cosmological parameters}\label{sec:cosmo}
+
+The phenomenological framework motivates a $\Lambda$CDM$+\Delta\Neff$
+extension: the bounce scenario qualitatively predicts additional
+relativistic species from particle production near the Planck density,
+but quantitative estimates are not yet available. The extension adds
+one effective parameter ($\Delta\Neff$) to $\Lambda$CDM; a second
+parameter ($(\omega/H)_0$) is bounded by CMB isotropy to
+$< 5\times 10^{-11}$~\cite{Saadeh2016} and contributes negligibly.
+
+\subsubsection{Datasets}
+
+We analyze four dataset combinations of increasing constraining power:
+\begin{enumerate}[leftmargin=*]
+\item \textit{Planck-only}: Planck~2018 NPIPE, specifically
+  \texttt{plikHM\_TTTEEE} + \texttt{lowl} + \texttt{lowE} +
+  \texttt{lensing}~\cite{Planck2018params}.
+\item \textit{Planck + BAO}: Adding DESI~2024 DR1 (seven redshift bins,
+  $z_{\rm eff} = 0.30$--$2.33$)~\cite{DESI2024}, supplemented by 6dFGS
+  ($z_{\rm eff}=0.106$) and SDSS MGS ($z_{\rm eff}=0.15$).
+\item \textit{Planck + BAO + SN}: Adding Pantheon+ (1701 light curves,
+  1550 unique SNe, $0.001 < z < 2.26$).
+\item \textit{Tension dataset}: Adding SH0ES $H_0$
+  prior~\cite{Riess2022} + DES~Y3 $S_8$~\cite{DES2024}.
+\end{enumerate}
+
+\subsubsection{MCMC configuration}
+
+Parameter estimation uses Cobaya~\cite{Cobaya2021} (v3.5 original,
+v3.6.1 verification) with CAMB, convergence criterion $\hat{R}-1<0.01$,
+and $>1000$ effective samples per parameter. The theory engine is
+unmodified stock CAMB; curvature is fixed to $\Omega_k = 0$.
+The MCMC analysis is phenomenologically equivalent to any
+$\Lambda$CDM$+\Delta\Neff$ extension---the tension reduction is a
+property of the parameter space, not uniquely of spin-torsion cosmology.
+
+\subsubsection{Results}
+
+MCMC fits to the full tension dataset yield:
+\begin{align}
+  H_0 &= 69.2 \pm 0.8 \;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1},
+    \label{eq:H0}\\
+  \sigma_8 &= 0.785 \pm 0.016, \label{eq:s8}\\
+  S_8 &= 0.80 \pm 0.02. \label{eq:S8}
+\end{align}
+These partially reduce the $H_0$ tension (from $4.9\sigma$ to
+$2.9\sigma$ vs.\ SH0ES) and the $S_8$ tension (from $\sim\!3\sigma$ to
+$\sim\!1\sigma$ vs.\ weak lensing).
+
+\subsubsection{Independent verification}\label{sec:verification}
+
+Independent verification using Cobaya~v3.6.1 with Planck NPIPE CamSpec
+TTTEEE + lowl TT/EE + lensing has produced two frozen dataset
+combinations with publication-quality convergence:
+
+\begin{table}[h]
+\caption{\label{tab:verification} Independent verification results
+(Cobaya~v3.6.1, CAMB~v1.6.5). Posterior means $\pm\,1\sigma$.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+\textbf{Parameter} & \textbf{Full-tension} & \textbf{Planck+BAO+SN} \\
+\hline
+$H_0$ [km/s/Mpc] & $67.68 \pm 1.06$ & $67.79 \pm 1.09$ \\
+$\Delta\Neff$ & $-0.020 \pm 0.169$ & $+0.065 \pm 0.17$ \\
+$\sigma_8$ & $0.803 \pm 0.008$ & $0.812 \pm 0.009$ \\
+$S_8$ & $0.814 \pm 0.008$ & $0.831 \pm 0.018$ \\
+$\Omega_m$ & $0.308 \pm 0.005$ & $0.312 \pm 0.006$ \\
+\hline
+Chains & 6 & 6 \\
+Total samples & 176{,}840 & 132{,}949 \\
+Worst $\hat{R}-1$ & 0.001 & 0.003 \\
+Min ESS & 4{,}744 & 4{,}692 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Both datasets find $\Delta\Neff$ consistent with zero. The $H_0$ values
+($67.68$ and $67.79$) are consistent with Planck $\Lambda$CDM
+($67.36 \pm 0.54$) at $0.3\sigma$, confirming that the $\Delta\Neff$
+extension alone does not resolve the Hubble tension---the tension
+reduction in the original analysis (Eqs.~\ref{eq:H0}--\ref{eq:S8}) is
+driven by the SH0ES prior.
+The difference between the original central value ($H_0 = 69.2$,
+Eqs.~\ref{eq:H0}--\ref{eq:S8}) and the verification
+($H_0 = 67.68$, Table~\ref{tab:verification}) reflects different
+Planck likelihood implementations (\texttt{plikHM} vs.\ \texttt{CamSpec})
+and dataset vintages; both values lie within their respective
+$1\sigma$ uncertainties and agree at $1.1\sigma$.
+
+\textit{Comparison with independent EC torsion analyses.}---Liu
+\etal~\cite{ECTorsionDESI2025} constrained an EC torsion model using
+DESI~DR2 + PantheonPlus + DES~Y5 + Planck, finding $H_0 = 68.41 \pm
+0.32$ with torsion preferred over $\Lambda$CDM by AIC
+($\Delta\text{AIC} = -5.7$ to $-6.6$). Our verification agrees at
+$0.5\sigma$ in $H_0$ and $0.4\sigma$ in $\sigma_8$, providing
+independent cross-validation of the EC cosmological framework.
+
+\subsubsection{Bayesian model comparison}
+
+\begin{table}[h]
+\caption{\label{tab:modelcomp} Bayesian model comparison (effective
+$\chi^2_{\rm eff} \equiv -2\ln\mathcal{L}_{\rm max}$ for the full
+tension dataset).}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Model & $k$ & $\chi^2_{\rm eff}$ & $\ln B$ \\
+\hline
+$\Lambda$CDM & 6 & 1156.2 & 0.0 \\
+$w$CDM & 7 & 1154.8 & $-0.5$ \\
+\textbf{ECH phenom.} & \textbf{7} & \textbf{1148.3} & $\mathbf{+4.8}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The Bayes factor is dataset-dependent: $\ln B = -1.2$ (Planck+BAO), $+2.1$
+(Planck+BAO+SH0ES), $+4.8$ (full tension). The preference emerges
+specifically when tension data are included, because the extra parameter
+$\Delta\Neff$ partially reduces these tensions. With Planck+BAO alone,
+the Occam penalty slightly disfavors the extension. This dataset
+dependence is expected and not a weakness: it reflects the model's
+statistical flexibility rather than unique predictive power.
+
+\subsection{Observational consistency checks}\label{sec:obs}
+
+The framework accommodates several observational features as consistency
+checks---not predictions.
+
+\subsubsection{Cosmic birefringence}
+
+The framework's parity-odd structure is qualitatively consistent with
+the $2.4$--$2.9\sigma$ cosmic birefringence detections from
+Planck~\cite{Eskilt2022} and ACT~DR6~\cite{DiegoPalazuelos2025}
+(combined: $\beta = 0.242^\circ \pm 0.061^\circ$, $3.9\sigma$).
+However, the minimal ECH framework has \textit{no derived photon-torsion
+coupling}: matching the observed $\beta$ requires an assumed coupling
+with $\mathcal{O}(1)$ coefficient, generic to any ALP model (see
+Route~S1 closure, Sec.~\ref{sec:S1}). This is a consistency check,
+not a prediction.
+
+\subsubsection{Galaxy spin asymmetry}
+
+A galaxy spin dipole asymmetry ($A_0 \sim 0.003$) is observed
+empirically, but the CMB isotropy bound constrains the framework's
+rotation-driven amplitude to $A_0 \lesssim 10^{-12}$---an
+order-of-magnitude gap that prevents any first-principles connection.
+The signal is empirical; its relation to the framework remains
+qualitative at best.
+
+\subsubsection{Fine-tuning reduction}
+
+A Monte Carlo sensitivity scan ($10^5$ samples) confirms that the
+scaling ansatz Eq.~\eqref{eq:rhoL} reduces fine-tuning from $10^{120}$
+to $\sim\!10^5$: the viable range $N_{\rm tot} \in [79,\,95]$ produces
+$\rho_\Lambda$ within two orders of magnitude of the observed value,
+with $N_{\rm tot}$ as the single controlling parameter ($|\rho_s| =
+0.996$). The residual tuning is concentrated in a single initial
+condition with potential dynamical answers through the
+bounce-to-inflation transition.
+
+\begin{table}[h]
+\caption{\label{tab:finetuning} Fine-tuning comparison.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Model & Natural Scale & FT Score \\
+\hline
+$\Lambda$CDM & $\MPl^4$ & $\sim 10^{120}$ \\
+Quintessence & $M_{\rm EW}^4$ & $\sim 10^{60}$ \\
+$f(R)$ Gravity & $H_0^4$ & $\sim 10^{40}$ \\
+\textbf{ECH phenom.} & $(\alpha/M)\Dinf\,\MPl^4$\,\textsuperscript{$\dagger$} & $\sim\mathbf{10^{5}}$ \\
+\end{tabular}
+\end{ruledtabular}
+\textsuperscript{$\dagger$}The ECH natural scale is a parametric
+estimate incorporating the scaling ansatz~\eqref{eq:rhoL}, not an
+independently derived scale; the fine-tuning score reflects sensitivity
+to $N_{\rm tot}$ within ${\sim}4$ $e$-folds.
+\end{table}
+
+\subsubsection{Limit behavior}
+
+Internal consistency is verified: $T^{abc}\to 0$ recovers GR,
+$\Dinf\to 1$ reproduces the standard CC problem, and $\BI\to\infty$
+recovers ECSK theory.
+
+
+%% ============================================================
+%%  PART II: SYSTEMATIC MODEL TESTING
+%% ============================================================
+
+%% ============================================================
+%%  4. THE DERIVATION PROGRAM
+%% ============================================================
+\section{The Derivation Program}\label{sec:program}
+
+The central question is whether late-time $w = -1$ can be derived from
+first principles within the minimal ECH$+$Dirac model. We tested four
+routes, each with predefined gates and kill criteria frozen before
+computation~\cite{Golden2026supplement}.
+
+\subsection{Four routes tested}\label{sec:routes}
+
+\begin{description}[style=nextline,leftmargin=1em]
+  \item[Track B (NJL condensate)]
+    Test whether a pseudoscalar fermion condensate
+    $\langle\bar\psi i\gamma^5\psi\rangle$ forms via the Nambu-Jona-Lasinio
+    mechanism from the torsion-induced four-fermion interaction and persists
+    as late-time vacuum energy.
+
+  \item[Branch G v1 (strict one-loop effective action)]
+    Compute the one-loop gravitational effective action $\Gamma[e]$ after
+    torsion elimination and fermion integration, and test for
+    $\BI$-dependent vacuum content beyond standard cosmological-constant
+    renormalization.
+
+  \item[Route T1 (dynamical Immirzi field)]
+    Promote $\BI \to \theta(x)$ to a dynamical pseudoscalar and assess
+    whether the reduced action contains novel gravitational content not
+    reproducible by adding a standard axion-like particle (ALP) to GR.
+
+  \item[Route S1 (parity-sensitive CMB phenomenology)]
+    Assess whether the framework's parity-odd operator maps to distinctive,
+    testable birefringence observables distinguishable from generic ALP
+    predictions.
+\end{description}
+
+All four routes were closed with clean negative results. The detailed
+closure documentation is in the companion technical
+note~\cite{Golden2026supplement}. Section~\ref{sec:closures} summarizes
+the results and Sec.~\ref{sec:lessons} extracts the structural lessons.
+
+
+%% ============================================================
+%%  5. CLOSURE RESULTS
+%% ============================================================
+\section{Closure Results}\label{sec:closures}
+
+\subsection{Track B: condensate route}\label{sec:trackB}
+
+Fierz rearrangement of the four-fermion
+interaction~\eqref{eq:L4f} decomposes it into standard NJL channels.
+The scalar/pseudoscalar coupling is
+\begin{equation}\label{eq:GSP}
+  \Gsp = \frac{3\kappa^2}{16}\,\frac{\BI^2 - 1}{\BI^2 + 1},
+\end{equation}
+which is \textit{repulsive} (negative) for $\BI < 1$. At $\BI = 0.274$,
+the NJL gap equation has no nontrivial solution. Even for $\BI > 1$
+(attractive sign), the coupling is $\sim\!175\times$ below the NJL
+critical coupling, and gravitational catalysis is exponentially
+suppressed ($M_* \sim e^{-2100}\,\MPl$). Track~B closes at Gate~1:
+no condensate forms.
+
+\subsection{Branch G v1: strict one-loop}\label{sec:branchG}
+
+After torsion elimination, the Dirac operator is
+$\slashed{D} = i\gamma^\mu\mathring\nabla_\mu$---the standard
+$\BI$-independent Levi-Civita operator. The four-fermion term is quartic
+in $\psi$ and does not contribute at one loop. The Seeley-DeWitt
+coefficients $a_0, a_1, a_2$ are the standard textbook values with no
+$\BI$-dependence~\cite{Vassilevich2003}. Branch~G v1 closes: no novel
+Holst content at strict one-loop.
+
+\subsection{Route T1: dynamical Immirzi field}\label{sec:T1}
+
+Promoting $\BI \to \theta(x)$, torsion remains algebraic. After
+elimination, the reduced action is~\cite{CalcagniMercuri2009,Mercuri2009}
+\begin{equation}\label{eq:T1red}
+  S_{\rm red} = S_{\rm EH} + S_{\rm Dirac}
+  + \int\!\bigl[-\tfrac{1}{2}f(\theta)(\partial\theta)^2
+    + \mathcal{L}_{\rm 4f}\bigr],
+\end{equation}
+where $\mathcal{L}_{\rm 4f} = -(3\pi G/2)
+(\bar\psi\gamma^\mu\gamma^5\psi)^2$ is \textit{$\theta$-independent}.
+Every term is reproducible by adding a standard ALP to GR. The Nieh-Yan
+4-form is exact (total derivative) in 4D; its topological nature ensures
+the gravitational origin washes out~\cite{CalcagniMercuri2009}. Cosmological
+dynamics give $w = +1$ (stiff matter)~\cite{TaverasYunes2008}, the
+opposite of dark energy. No mechanism generates $V(\theta) \sim \Lambda$.
+Route~T1 closes.
+
+\subsection{Route S1: parity CMB phenomenology}\label{sec:S1}
+
+The minimal ECH action has no photon-polarization coupling. The
+parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ is purely
+gravitational; the electromagnetic field strength does not appear in the
+Holst term or the reduced action. Any assumed coupling produces
+constant-$\beta$ birefringence with two free parameters for one
+observable---identical to generic ALP phenomenology, with no distinctive
+spin-torsion signature. Route~S1 closes.
+
+\subsection{Summary}\label{sec:closure_summary}
+
+\begin{table}[t]
+\centering
+\caption{Four tested routes and outcomes.}
+\label{tab:closures}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+\textbf{Route} & \textbf{Target} & \textbf{Method} & \textbf{Failure} \\
+\hline
+Track B & Condensate & Fierz + NJL & $\Gsp < 0$ at $\BI < 1$ \\
+G v1 & $\Gamma[e]$ & 1-loop & $\slashed{D}$ is $\BI$-free \\
+T1 & $\theta(x)$ & Lit.\ review & $=$ standard ALP \\
+S1 & Birefr. & Assessment & No photon coupling \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+%% ============================================================
+%%  6. STRUCTURAL LESSONS
+%% ============================================================
+\section{Structural Lessons}\label{sec:lessons}
+
+The closures are not independent accidents. They reveal a hierarchy of
+structural obstructions that progressively narrows the space of viable
+geometric dark-energy models. Lessons~1--5 emerge from the minimal ECH
+model and establish that algebraic torsion cannot carry information into
+the IR. Lesson~6 emerges from the PGT extension and establishes that
+even propagating torsion can fail---through a different mechanism---if
+the mass and coupling share a common origin.
+
+\subsection{Algebraic torsion washes out}
+
+In the minimal ECH model, torsion is non-propagating. Its equation of
+motion is algebraic: the contorsion $K$ is determined pointwise by the
+fermion spin density. Torsion elimination is exact and complete---no
+torsion-sector information survives into the reduced action except
+through the four-fermion coupling constants. Any mechanism that requires
+torsion to carry information into the infrared will fail in this model
+class.
+
+\subsection{Fixed $\BI$ leaves no IR fingerprint}
+
+$\BI$ enters the reduced action only through $\Geff$ and $\Gsp$ in the
+four-fermion interaction. These are UV-scale contact couplings.
+At one loop, the fermion determinant is $\BI$-independent.
+At the condensate level, the coupling is subcritical.
+$\BI$ sets the UV-scale spin-torsion structure but does not generate
+low-energy phenomena.
+
+\subsection{Dynamical $\BI$ reduces to generic ALP}
+
+The Nieh-Yan 4-form $N_4 = d(e^I \wedge T_I)$ is exact in 4D. Any
+coupling of a pseudoscalar $\theta$ to $N_4$ reduces to boundary terms
+plus standard kinetic/coupling structures after torsion elimination.
+The gravitational origin is topologically protected from leaving a local
+dynamical imprint. This is why Route~T1 collapses to a generic ALP.
+
+\subsection{Parity alone is not a mechanism}
+
+The ECH action's parity-odd sector is real, but without a derived
+coupling to observable sectors (photons, matter), it produces no testable
+prediction distinguishing the framework from generic alternatives. Parity
+is a structural property of the theory, not by itself a mechanism or
+signal source.
+
+\subsection{No scale protection in the minimal model}
+
+None of the tested routes addresses naturalness. The condensate route
+produces exponentially suppressed scales but the wrong sign.
+The one-loop route has standard renormalization.
+The dynamical Immirzi route requires $V(\theta_0) = \Lobs$ by hand.
+Any successor model must confront scale naturalness from the start.
+
+\subsection{The mass-coupling lock}\label{sec:lesson6}
+
+Even when torsion is promoted from algebraic to propagating (PGT), a new
+obstruction emerges: the parameter that controls the torsion mass also
+controls the torsion-matter coupling, and both go to zero together. In
+the ghost-free $0^-$ axial torsion model, $m_B \propto 1/\sqrt{|t_3|}$
+and $g_{\rm eff} \propto 1/\sqrt{|t_3|}$, so making the mode
+cosmologically light automatically makes it cosmologically inert.
+
+This is not a PGT-specific accident.
+The canonical-normalization relation that produces this locking is
+standard field theory; what is new is recognizing that it constitutes a
+binding constraint on geometric dark-energy mechanisms---specifically,
+that the ghost-free PGT torsion mode becomes cosmologically inert in
+exactly the parameter regime required for dark energy.
+The \textit{mass-coupling lock}
+occurs generically when a single parameter controls both the kinetic
+normalization and the mass of a geometric mode. Consider a field $\phi$
+with Lagrangian $\mathcal{L} = -\tfrac{1}{2}Z(\partial\phi)^2
+- \tfrac{1}{2}\mu^2\phi^2 + g\,\phi\,J$. Canonical normalization
+$\phi_{\rm can} = \sqrt{Z}\,\phi$ gives $m = \mu/\sqrt{Z}$ and
+$g_{\rm eff} = g/\sqrt{Z}$: mass and coupling are locked. In PGT,
+$Z \propto |t_3|$ and $\mu^2 \propto \MPl^2$, producing exactly this
+structure. The same pattern appears in Brans-Dicke theory, where the
+scalar decouples as $\omega_{\rm BD} \to \infty$ (the GR limit
+\textit{is} the decoupling limit), and in any geometric theory where the
+propagating mode inherits its kinetic term from the gravitational action
+without an independent mass-generating mechanism.
+
+The lock is \textit{evaded} when mass and coupling are controlled by
+independent parameters---for instance, through a Higgs-like mechanism
+(separate VEV sets the mass), a gauge symmetry (coupling is fixed by a
+charge), or an environmental mechanism (mass depends on background, not
+on kinetic normalization). In the Standard Model, the $W$ boson mass
+$m_W = gv/2$ is set by \textit{both} the gauge coupling $g$ and the
+Higgs VEV $v$; taking $m_W \to 0$ by $v \to 0$ does not suppress $g$.
+No analogous structure exists in standard PGT.
+
+Any next-generation geometric dark-energy model must avoid this lock:
+the mass and the coupling to observable sectors must be controlled by
+independent parameters, or the light-mass limit must not simultaneously
+decouple the field from matter.
+
+
+%% ============================================================
+%%  PART III: DIRECTIONS FORWARD
+%% ============================================================
+
+%% ============================================================
+%%  7. REQUIREMENTS FOR NEXT-GENERATION FOUNDATIONS
+%% ============================================================
+\section{Requirements for Next-Generation Foundations}\label{sec:requirements}
+
+The six structural lessons translate into necessary conditions that any
+viable geometric dark-energy theory must satisfy simultaneously. These
+are not aspirational guidelines; each corresponds to a demonstrated
+failure mode. A candidate model that violates any single requirement is
+excluded by the same mechanism that closed the corresponding route.
+
+The first four requirements (DR1--DR4) were formulated from the
+minimal-model closures; DR5 emerged from the Foundation~A (PGT)
+assessment and addresses a structural obstruction not visible at the
+minimal level.
+
+\begin{description}[style=nextline,leftmargin=1em]
+  \item[DR1: Survives reduction without washing out.]
+    The model must contain at least one degree of freedom or structural
+    feature that is present in both the full theory and the
+    reduced/effective theory after all algebraic constraints are solved.
+    \textit{Test:} write down the reduced action. Does the mechanism's key
+    ingredient still appear?
+    \textit{Closed by:} Lessons~1--3 (algebraic torsion, fixed $\BI$,
+    Nieh-Yan topology).
+
+  \item[DR2: Addresses tiny-scale naturalness explicitly.]
+    The model must contain an explicit statement of why the relevant scale
+    is small: shift symmetry, discrete symmetry, gauge symmetry, radiative
+    stability, dynamical relaxation, or sequestering. ``The scale is a
+    free parameter'' is not acceptable.
+    \textit{Test:} if asked ``why $10^{-122}$?'', does the model have a
+    structural answer?
+    \textit{Closed by:} Lesson~5 (no scale protection in minimal model),
+    Foundation~A Phase~2B (no symmetry protects PGT torsion mass).
+
+  \item[DR3: Offers unique mechanism or distinctive observable.]
+    The model must produce at least one prediction not reproducible by
+    $\Lambda$CDM$+$generic ALP. If observationally identical to
+    $\Lambda$CDM$+$ALP, the model has no scientific value regardless of
+    theoretical motivation.
+    \textit{Test:} name the distinctive prediction. Can a generic ALP
+    reproduce it?
+    \textit{Closed by:} Lesson~4 (parity alone is not a mechanism),
+    Foundation~A Phase~2A (distinctive signatures suppressed by
+    decoupling limit).
+
+  \item[DR4: Fails cleanly if it doesn't work.]
+    The model must be testable within a defined scope, with gates and kill
+    criteria specified before computation. Negative results must be
+    documentable.
+    \textit{Test:} can you write the gate structure before calculating?
+
+  \item[DR5: Avoids the mass-coupling lock.]
+    The model's IR-relevant degree of freedom must not decouple from
+    observable sectors in the light-mass limit. Specifically, the mass
+    and the coupling to matter (or to photons, gravitational waves, or
+    other observable channels) must be controlled by \textit{independent}
+    parameters, or the light-mass limit must preserve the coupling at
+    observable strength. A theory in which $m \to 0$ implies $g_{\rm eff}
+    \to 0$ produces a cosmologically inert field regardless of its
+    theoretical elegance.
+    \textit{Test:} compute $g_{\rm eff}(m)$ in the canonically normalized
+    theory. Does $g_{\rm eff}$ remain at gravitational strength or above
+    as $m \to H_0$?
+    \textit{Closed by:} Lesson~6 (mass-coupling lock in PGT).
+\end{description}
+
+\noindent
+Foundation~A (PGT propagating torsion) passes DR1 and DR4 cleanly. It
+fails DR2, DR3, and DR5. These failures are not independent: the
+mass-coupling lock (DR5) is the structural mechanism by which DR3 fails
+at cosmological parameter values. This pattern---a theory that is
+healthy in the UV but observationally empty in the required IR
+limit---is generic to theories where the mass and coupling share a
+common kinetic-normalization origin (Sec.~\ref{sec:lesson6}). Evading
+DR5 requires an independent mass-generating mechanism, not merely a
+new choice of gauge group or field content.
+
+
+%% ============================================================
+%%  8. CANDIDATE FOUNDATION DIRECTIONS
+%% ============================================================
+\section{Candidate Foundation Directions}\label{sec:candidates}
+
+Three directions were identified that each address at least one
+structural lesson from Sec.~\ref{sec:lessons}. Foundation~A (propagating
+torsion) has been tested through Phase~2 and found phenomenologically
+empty (Sec.~\ref{sec:foundA}). Foundations~B and~C remain untested
+starting points for future assessment using the methodology of
+Sec.~\ref{sec:program}; both must now additionally satisfy DR5
+(mass-coupling lock avoidance).
+
+\subsection{Foundation A: Propagating torsion (tested)}\label{sec:foundA}
+
+The most natural upgrade to the minimal ECH model is Poincar\'e gauge
+theory (PGT), in which the spin connection is dynamical and torsion
+propagates. This directly eliminates Lesson~1 (algebraic torsion wash-out)
+by construction. We have conducted a systematic two-phase assessment of
+this direction.
+
+\textit{Phase~1 result.}
+The quadratic PGT action (10 free parameters: 3 torsion-squared, 6
+curvature-squared, plus $\Lambda_0$) admits three ghost-free single-mode
+models, confirmed by independent analyses spanning four
+decades~\cite{SezginNieuwenhuizen1980,Karananas2015}. The cleanest
+candidate is Model~B: a $0^-$ pseudoscalar axial torsion mode, which
+is ghost-free, parity-odd, and couples to the fermion axial current. Its
+mass is $m_B = \MPl/(4\sqrt{\pi|t_3|})$, where $t_3$ is the
+dimensionless torsion-squared coupling. A cosmologically light mass
+($m_B \sim \text{meV}$) requires $|t_3|\sim 10^{58}$---the hierarchy is
+transferred to a dimensionless coupling, not solved.
+
+\textit{Phase~2 result: the mass-coupling lock.}
+The critical finding concerns what happens in the cosmologically
+interesting regime $|t_3| \gg 1$. The canonically normalized
+matter coupling is
+\begin{equation}\label{eq:geff}
+  g_{\rm eff} \sim \frac{1}{\MPl\sqrt{|t_3|}}\,,
+\end{equation}
+so that $m_B$ and $g_{\rm eff}$ decrease \textit{together}: their ratio
+$m_B/g_{\rm eff} \sim \MPl^2$ is fixed. At $|t_3|\sim 10^{58}$
+(meV-scale mass), the matter coupling is $\sim\!10^{29}$ times weaker
+than gravitational strength. The theory is perturbatively consistent (no
+unitarity violation, no strong-coupling problem---the unitarity scale
+\textit{rises} as $\sqrt{s_{\rm unit}}\sim \MPl\sqrt{|t_3|}$), but the
+torsion mode cannot thermalize, cannot produce detectable fifth forces,
+and cannot generate observable birefringence through its matter coupling.
+
+Furthermore, no symmetry within PGT protects $m_B$: five candidate
+symmetries (gauge, shift, chiral, topological, supersymmetric) were
+investigated and excluded; the 't~Hooft naturalness criterion fails
+($m_B = 0$ does not restore a symmetry); and graviton loops generate
+$\delta m_B^2 \sim \MPl^2/(16\pi^2)$, requiring fine-tuning of
+$1$~in~$10^{57}$ for $m_B \sim \text{meV}$.
+
+\textit{Structural lesson.}
+Large $|t_3|$ is a \textit{decoupling limit}, not a strong-coupling
+limit. The same parameter that makes the mass cosmologically light also
+kills the distinctive observational signatures. The reduced action is
+GR~$+$~massive Proca pseudovector (structurally richer than GR~$+$~ALP,
+with 3~DOF and axial-current coupling), but all distinctive features are
+suppressed to irrelevance at cosmological parameter values. The mode
+becomes indistinguishable from generic quintessence---only the Lagrangian
+knows it is torsion.
+
+\textit{DR assessment (post-test):}
+DR1 (survives reduction): \textbf{pass}---the $0^-$ mode propagates and
+is ghost-free.
+DR2 (scale naturalness): \textbf{fail}---no symmetry protection, graviton
+loop destabilizes mass.
+DR3 (distinctive observable): \textbf{fail}---matter coupling too
+suppressed at cosmological $|t_3|$.
+DR4 (clean failure): \textbf{pass}---the decoupling limit is a clean,
+physically interpretable negative result.
+
+\textit{Verdict:} Foundation~A is structurally viable but
+phenomenologically empty for dark energy. It resolves the algebraic
+wash-out problem (Lesson~1) but encounters a new obstruction: the
+\textit{mass-coupling lock} (Lesson~6, Sec.~\ref{sec:lesson6}).
+
+\subsection{Foundation B: Symmetry-protected geometric pseudoscalar}
+\label{sec:foundB}
+
+The dynamical Immirzi field failed because the Nieh-Yan density is exact
+in 4D. But in metric-affine gravity (where the connection is not
+metric-compatible), the Nieh-Yan form is \textit{not} an exact
+differential. A pseudoscalar coupled to this non-topological Nieh-Yan
+density could retain geometric fingerprints after reduction, protected
+by a shift symmetry that keeps its mass small.
+
+\textit{Why it avoids old failures:}
+ALP collapse (Lesson~3) is avoided if the non-topological coupling
+retains geometric information. Scale protection (Lesson~5) is provided
+by the shift symmetry.
+
+\textit{Biggest risk:}
+This may be Route~T1 in better clothing. The burden is entirely on
+demonstrating that the metric-affine Nieh-Yan coupling is genuinely
+non-topological and retains non-generic content after reduction.
+
+\textit{First check:}
+Is the Nieh-Yan density non-topological in metric-affine gravity? This
+is a precise mathematical question with a checkable answer.
+
+\textit{DR assessment:}
+DR1: depends on the first-check answer. If the Nieh-Yan coupling reduces
+to a total derivative after non-metricity is eliminated, this is
+Route~T1 again.
+DR2: shift symmetry provides natural scale protection.
+DR3: if the non-topological coupling retains geometric content, the
+pseudoscalar is non-generic (different from standard ALP).
+DR4: yes---the topological/non-topological question is mathematically
+definite.
+
+\subsection{Foundation C: Vacuum sequestering}\label{sec:foundC}
+
+Instead of generating a vacuum energy of the right magnitude, one can
+attempt to cancel or sequester vacuum energy dynamically. The
+Kaloper-Padilla mechanism enforces, via global constraints in the action,
+that radiative corrections to the cosmological constant do not gravitate.
+
+\textit{Why it avoids old failures:}
+Scale naturalness (Lesson~5) is addressed directly. The small scale is
+protected by a structural constraint, not generated by a local mechanism.
+
+\textit{Biggest risk:}
+Weinberg's no-go theorem~\cite{Weinberg1989} constrains local adjustment
+mechanisms. Sequestering evades this by being global (non-local), but
+this non-locality is controversial. Pure sequestering may set $\Lambda$
+small but predict no distinctive observable (failing DR3).
+
+\textit{First check:}
+Write down the Kaloper-Padilla action~\cite{KaloPerPadilla2014}
+in first-order EC gravity. Does the torsion sector modify the
+sequestering constraint?
+
+\textit{DR assessment:}
+DR1: sequestering is a global mechanism, not reducible by algebraic
+constraints---survives by construction.
+DR2: directly addresses scale naturalness---this is its primary
+motivation.
+DR3: questionable---pure sequestering may set $\Lambda$ small but predict
+no observable beyond $\Lambda$CDM. This is the critical weakness.
+DR4: yes---whether torsion modifies the constraint is checkable.
+
+
+%% ============================================================
+%%  9. DISCUSSION
+%% ============================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Current status of the framework}
+
+The spin-torsion dark-energy framework occupies an honest intermediate
+position. It is \textit{more} than generic $\Lambda$CDM: the scaling
+ansatz~\eqref{eq:rhoL} provides a motivated parametric story for the
+dark-energy scale, reducing fine-tuning by 115 orders of magnitude.
+The parity-odd structure is real and could connect to observed
+birefringence if a photon coupling is established.
+
+It is \textit{less} than a first-principles derivation: $w = -1$ is
+assumed, the scaling ansatz is not a mechanism, the observational
+signatures are consistency checks rather than predictions, and
+both the minimal model class and its most natural extension (PGT
+propagating torsion) have been systematically tested and found
+insufficient for distinct structural reasons.
+
+\subsection{The closures as scientific contribution}
+
+Negative results in theoretical physics are undervalued but scientifically
+important. The five-closure program (four minimal routes plus the PGT
+Foundation~A assessment):
+\begin{itemize}[leftmargin=*]
+  \item Establishes that both the minimal model and its most natural
+    extension fail, for distinct structural reasons.
+  \item Maps the failure mechanisms: algebraic torsion wash-out
+    (minimal model) and the mass-coupling lock (PGT extension).
+  \item Identifies five concrete requirements (DR1--DR5) for any
+    successor, with DR5 (mass-coupling lock avoidance) being a
+    previously unrecognized constraint.
+  \item Demonstrates a reproducible methodology for disciplined model
+    testing that can be applied to future candidates.
+\end{itemize}
+
+\subsection{Comparison with other programs}\label{sec:related}
+
+The structural lessons identified here are not specific to our framework.
+Any geometric dark-energy program based on minimal ECH gravity faces the
+same algebraic-torsion wash-out. We position this work relative to five
+classes of approaches.
+
+\paragraph{Phenomenological dark energy.}
+The $\Lambda$CDM$+\Delta\Neff$ extension analyzed here is statistically
+equivalent to any additional relativistic species model (sterile
+neutrinos, early dark energy). The framework adds theoretical
+motivation for expecting $\Delta\Neff > 0$ (bounce particle production)
+and a scaling argument for the $\Lambda$ scale, but the MCMC fits
+themselves are standard. Quintessence and $w(z)$CDM models achieve
+comparable or better tension reduction with different parameter
+trade-offs; our advantage is the fine-tuning reduction from $10^{120}$
+to $10^5$.
+
+\paragraph{EC and Holst torsion cosmology.}
+Pop\l{}awski~\cite{Poplawski2012} invokes torsion-induced four-fermion
+condensates to source dark energy; our Track~B closure shows the S/P
+channel is repulsive at $\BI < 1$, and the coupling is $175\times$
+subcritical. Liu \etal~\cite{ECTorsionDESI2025} find EC torsion
+preferred over $\Lambda$CDM by DESI~DR2 ($\Delta\text{AIC}\approx-6$),
+but their torsion coupling is phenomenological---the same first-principles
+gap applies. Legner, Handley \& Barker~\cite{Legner2025} proposed
+Torsion Condensation (TorC) within Poincar\'e gauge theory, showing
+that propagating torsion allows a larger inferred $H_0$---directly
+supporting Foundation~A (Sec.~\ref{sec:foundA}). Fabbri~\cite{Fabbri2025}
+showed that propagating torsion as an axial-vector field naturally
+violates energy conditions, supporting the bounce mechanism.
+
+\paragraph{Parity violation in gravity.}
+Freidel \etal~\cite{Freidel2005} and Mercuri~\cite{Mercuri2006,Mercuri2009}
+established the Holst term's parity-violating consequences and showed the
+Barbero-Immirzi parameter is renormalized at one loop. Shapiro \&
+Teixeira~\cite{ShapiroTeixeira2014} computed one-loop divergences with
+external currents. These works establish the existence of a parity-odd
+coefficient but do not extract a finite vacuum energy or trace it through
+inflationary dilution. Our closure program (Branch~G) shows the strict
+one-loop effective action is $\BI$-independent after torsion
+elimination---a sharpening of the limitations implicit in these
+earlier calculations.
+
+\paragraph{Metric-affine and propagating torsion.}
+In metric-affine gravity (non-metricity + torsion), the Nieh-Yan
+density is \textit{not} an exact differential---potentially avoiding
+the topological wash-out that closed Route~T1. In Poincar\'e gauge
+theory (PGT), the spin connection is dynamical and torsion propagates
+with massive spin-2 and spin-0 modes. The ghost-free parameter subspace
+has been mapped by Sezgin \& van
+Nieuwenhuizen~\cite{SezginNieuwenhuizen1980}, Yo-Nester, and
+Karananas~\cite{Karananas2015}. Our Foundation~A assessment
+(Sec.~\ref{sec:foundA}) confirms that ghost-free propagating modes
+exist but reveals a mass-coupling lock: the same parameter that produces
+a cosmologically light mass also suppresses the matter coupling to
+irrelevance (Lesson~6). These approaches resolve Lesson~1 but encounter
+a new structural obstruction.
+
+\paragraph{Vacuum sequestering.}
+The Kaloper-Padilla mechanism~\cite{KaloPerPadilla2014} enforces via
+global constraints that radiative corrections to $\Lambda$ do not
+gravitate. This evades Weinberg's no-go theorem~\cite{Weinberg1989}
+through non-locality. Whether torsion modifies the sequestering
+constraint in EC gravity is unexplored (Foundation~C first check).
+Pure sequestering may set $\Lambda$ small but predicts no distinctive
+observable, failing our DR3 requirement.
+
+\subsection{What would change this assessment}
+
+The framework's status would be upgraded if:
+\begin{enumerate}
+  \item A geometric theory is found in which the light-mass limit does
+    \textit{not} decouple the field from matter---i.e., a theory that
+    evades the mass-coupling lock identified in Foundation~A.
+  \item A derived photon-torsion coupling is established, producing a
+    non-generic birefringence prediction.
+  \item Non-perturbative or higher-loop effects are shown to generate
+    $\BI$-dependent vacuum structure beyond the tested orders.
+  \item An external development (new symmetry, UV completion) identifies
+    a protected light geometric degree of freedom with independent
+    mass and coupling parameters.
+\end{enumerate}
+None of these outcomes is assumed or expected. The Foundation~A result
+shows that simply upgrading from algebraic to propagating torsion is not
+sufficient: the structural requirements are more demanding than
+previously appreciated.
+
+
+%% ============================================================
+%%  10. CONCLUSION
+%% ============================================================
+\section{Conclusion}\label{sec:conclusions}
+
+We have presented a phenomenological dark-energy framework rooted in
+Einstein-Cartan-Holst gravity, reported the systematic closure of four
+minimal first-principles routes to deriving its central assumption
+($w = -1$ at late times), and assessed the most natural next-generation
+extension---propagating torsion in Poincar\'e gauge theory---finding it
+structurally viable but phenomenologically empty for dark energy.
+
+The framework provides a motivated scaling ansatz reducing fine-tuning
+from $10^{120}$ to $\sim\!10^5$, cosmological fits partially reducing
+the $H_0$ and $S_8$ tensions, and a parity-odd structure qualitatively
+consistent with observed birefringence (without a derived photon
+coupling). These phenomenological results survive all closures intact.
+
+The systematic model testing establishes:
+\begin{itemize}[leftmargin=*]
+  \item The minimal ECH model fails because algebraic torsion washes
+    out, the Nieh-Yan density is topological, and no scale protection
+    exists (Lessons~1--5).
+  \item Propagating torsion in PGT resolves the algebraic wash-out but
+    encounters a mass-coupling lock: the parameter that produces a
+    cosmologically light mass simultaneously suppresses the matter
+    coupling to irrelevance, and no symmetry protects the mass
+    (Lesson~6).
+  \item Six structural lessons and five decision rules (DR1--DR5)
+    constrain the space of viable geometric dark-energy completions.
+\end{itemize}
+
+Any future geometric dark-energy model must not only survive reduction
+and address scale naturalness, but must avoid the mass-coupling lock:
+the field must remain cosmologically relevant in the light-mass limit.
+This is a nontrivial requirement that eliminates the most natural
+extension of the minimal framework.
+
+The derivation of late-time $w = -1$ from geometry and the identification
+of a distinctive observational signature remain open problems. The
+contribution of this work is threefold: a well-tested phenomenological
+model, a systematic closure of the five most natural derivation
+strategies, and a concrete set of structural requirements---especially
+the mass-coupling lock---that any future geometric dark-energy proposal
+must address.
+
+
+%% ============================================================
+%%  ACKNOWLEDGMENTS
+%% ============================================================
+\begin{acknowledgments}
+The author thanks the anonymous referees for constructive feedback.
+Computational resources for MCMC analyses were provided by RunPod.
+This work made use of Cobaya~\cite{Cobaya2021} and CAMB.
+\end{acknowledgments}
+
+
+%% ============================================================
+%%  APPENDICES
+%% ============================================================
+\appendix
+
+\section{Notation and Conventions}\label{app:notation}
+
+Natural units $c=\hbar=1$ throughout, with $8\pi G = \MPl^{-2}$.
+Metric signature $(-,+,+,+)$. Reduced Planck mass
+$\MPl = (8\pi G)^{-1/2} = 2.435 \times 10^{18}$~GeV.
+$\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3$ with
+$(\gamma^5)^2 = 1$. The vacuum energy density is
+$\rho_\Lambda = \Leff\,\MPl^2/(8\pi)$; when we write
+$\rho_\Lambda \approx (2.3\;\text{meV})^4$ this refers to the energy
+density. Greek indices $\mu,\nu,\ldots$ denote spacetime coordinates;
+Latin indices $a,b,\ldots$ denote tangent-space (Lorentz) indices.
+The Levi-Civita symbol $\varepsilon^{abcd}$ is totally antisymmetric
+with $\varepsilon^{0123}=+1$.
+
+Key symbols:
+\begin{itemize}[leftmargin=*]
+\item $\BI$---Barbero-Immirzi parameter ($0.274 \pm 0.020$)
+\item $K_{ab}$---contorsion tensor
+\item $T^a_{\;\;bc}$---torsion tensor
+\item $\alpha/M$---parity-odd coefficient (mass dimension $-1$)
+\item $[(\alpha/M)\,\MPl]\sim 10^{-2}$---dimensionless one-loop
+  suppression factor
+\item $\Dinf$---inflationary dilution factor ($\sim e^{-3N_{\rm tot}}$)
+\item $\Xi\equiv[(\alpha/M)\,\MPl]\,\Dinf$---inflationary suppression
+  factor; $\rho_\Lambda = \Xi\,\MPl^4$
+\item $\Geff = (3\kappa^2/16)\,\BI^2/(\BI^2+1)$---effective four-fermion
+  coupling
+\item $\Gsp \propto (\BI^2-1)/(\BI^2+1)$---scalar/pseudoscalar channel
+  coupling
+\item $\Leff$---effective cosmological constant
+\item $\rhocrit$---bounce critical density ($\simeq 0.27\,\rhoPl$)
+\end{itemize}
+
+Abbreviations: LQG (Loop Quantum Gravity), EC (Einstein-Cartan),
+ECH (Einstein-Cartan-Holst), PGT (Poincar\'e Gauge Theory),
+ALP (axion-like particle), NJL (Nambu-Jona-Lasinio),
+MCMC (Markov Chain Monte Carlo), AIC/BIC (Akaike/Bayesian Information
+Criterion).
+
+
+\section{Parameter Summary}\label{app:params}
+
+\begin{table*}[t]
+\caption{\label{tab:params} Complete parameter classification. Status
+categories: \textit{Fixed} (external input), \textit{Ansatz}
+(phenomenological scaling), \textit{Assumed} (not derived),
+\textit{Fit} (MCMC), \textit{Derived} (from other parameters).}
+\begin{ruledtabular}
+\begin{tabular}{llcll}
+\textbf{Parameter} & \textbf{Description} & \textbf{Value}
+  & \textbf{Status} & \textbf{Notes} \\
+\hline
+\multicolumn{5}{l}{\textit{Framework parameters}} \\
+$\BI$ & Barbero-Immirzi & $0.274 \pm 0.020$ & Fixed & LQG area spectrum \\
+$\alpha/M$ & Parity-odd coeff. & $\sim 10^{-33}\;\text{eV}^{-1}$
+  & Fit & One-loop motivated \\
+$N_{\rm tot}$ & Total $e$-folds & $\sim 92$ & Assumed
+  & Fitted to $\rho_\Lambda$ \\
+$\Dinf$ & Inflation dilution & $\sim e^{-3N_{\rm tot}}$
+  & Derived & From $N_{\rm tot}$ \\
+$\Xi$ & Infl.\ suppression & $\sim 10^{-123}$
+  & Ansatz & $=[(\alpha/M)\MPl]\Dinf$ \\
+$w$ & Equation of state & $-1$ & Assumed & Not derived \\
+\hline
+\multicolumn{5}{l}{\textit{Standard cosmological parameters (MCMC)}} \\
+$H_0$ & Hubble constant & $69.2\pm 0.8$\,\textsuperscript{a}
+  & Fit & km/s/Mpc \\
+$\sigma_8$ & Clustering ampl. & $0.785\pm 0.016$\,\textsuperscript{a}
+  & Fit & \\
+$S_8$ & $\sigma_8(\Omega_m/0.3)^{0.5}$ & $0.80\pm 0.02$
+  & Derived & \\
+$\Omega_m$ & Matter density & $0.310 \pm 0.008$ & Fit & \\
+$\Omega_b h^2$ & Baryon density & $0.02237 \pm 0.00015$ & Fit & \\
+$n_s$ & Spectral index & $0.9649 \pm 0.0042$ & Fit & \\
+$\tau$ & Optical depth & $0.054 \pm 0.007$ & Fit & \\
+\hline
+\multicolumn{5}{l}{\textit{Extended parameters}} \\
+$\Delta\Neff$ & Extra species & $\sim 0$\,\textsuperscript{a}
+  & Fit & Phenomenological \\
+$\Omega_k$ & Curvature & 0 & Fixed & Mandated by $N_{\rm tot}$ \\
+$(\omega/H)_0$ & Vorticity & $< 5\times 10^{-11}$
+  & Bounded & CMB isotropy \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\textsuperscript{a}Original values from the tension dataset (includes
+SH0ES $H_0$ prior). Independent verification
+(Table~\ref{tab:verification}) finds $H_0 = 67.68 \pm 1.06$,
+$\sigma_8 = 0.803 \pm 0.008$, $\Delta\Neff = -0.020 \pm 0.169$
+(full-tension) and $H_0 = 67.79 \pm 1.09$,
+$\sigma_8 = 0.812 \pm 0.009$, $\Delta\Neff = +0.065 \pm 0.17$
+(Planck+BAO+SN).
+
+Key parameter correlations: $r(H_0,\sigma_8)=-0.45$;
+$r(\alpha/M,\Dinf)=-0.89$ (only their product $\Xi$ is
+well-constrained). The strong anticorrelation means the framework
+predicts $\rho_\Lambda = \Xi\,\MPl^4$ as a single effective
+parameter, not two independent ones.
+
+
+\section{Claims Classification}\label{app:claims}
+
+\begin{table*}[t]
+\caption{Claims classification: what is derived, what is assumed, what is
+fit, and what has been retired by the closure program. This table
+supersedes the classification in~\cite{Golden2026v1}.}
+\label{tab:claims}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+\textbf{Claim} & \textbf{Status} & \textbf{Basis} & \textbf{Notes} \\
+\hline
+\multicolumn{4}{l}{\textit{Derived (structural results)}} \\
+ECH action structure & Derived & Standard EC + Holst & Background \\
+Torsion is algebraic (minimal ECH) & Derived & EC field equations & Structural \\
+Perfect-square four-fermion & Derived & Torsion elimination & Exact result \\
+$\Gsp < 0$ at $\BI < 1$ & Derived & Fierz rearrangement & Track B closure \\
+One-loop $\slashed{D}$ is $\BI$-free & Derived & Torsion elimination & G v1 closure \\
+Dyn.\ Immirzi $=$ ALP & Derived (lit.) & Calcagni-Mercuri 2009 & T1 closure \\
+No photon coupling in min.\ ECH & Derived & Action structure & S1 closure \\
+Nieh-Yan is topological in 4D & Derived (lit.) & Differential geometry & T1 closure \\
+\hline
+\multicolumn{4}{l}{\textit{Phenomenological (ansatz, fit, or assumption)}} \\
+$\rho_\Lambda = \Xi\,\MPl^4$ & Ansatz & Scaling argument & Not a derivation \\
+$w = -1$ at late times & Assumed & Observational input & Not derived \\
+$\Delta\Neff$ from bounce & Phenomenological & Qualitative motivation & Consistent with 0 \\
+$H_0$, $\sigma_8$, $S_8$ values & Fit & MCMC & Standard analysis \\
+Fine-tuning $10^{120} \to 10^5$ & Parametric obs. & Sensitivity scan & Valid \\
+Birefringence consistency & Consistency check & Assumed coupling & Not a prediction \\
+Galaxy spin $A_0 \sim 0.003$ & Empirical & Hierarchical Bayes fit & Not derived \\
+\hline
+\multicolumn{4}{l}{\textit{Retired (closed by derivation/assessment program)}} \\
+Birefringence as prediction & \textbf{Retired} & S1 closure & No photon coupling \\
+$\BI$ drives late-time physics & \textbf{Retired} & B, G, T1 closures & UV-scale only \\
+Condensate mechanism & \textbf{Retired} & Track B closure & $\Gsp < 0$ \\
+$\Delta\Neff$ as distinctive signal & \textbf{Retired} & Verification & Generic to any $\Neff$ ext. \\
+Galaxy spin as prediction & \textbf{Retired} & Gap analysis & $A_0$ not derivable \\
+PGT torsion as DE mechanism & \textbf{Retired} & Foundation A & Mass-coupling lock \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+%% ============================================================
+%%  REFERENCES
+%% ============================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{Weinberg1989}
+S.~Weinberg,
+Rev.\ Mod.\ Phys.\ \textbf{61}, 1 (1989).
+
+\bibitem{Planck2018params}
+Planck Collaboration,
+Astron.\ Astrophys.\ \textbf{641}, A6 (2020).
+
+\bibitem{Riess2022}
+A.~G.~Riess \etal,
+Astrophys.\ J.\ Lett.\ \textbf{934}, L7 (2022).
+
+\bibitem{KiDS2021}
+KiDS Collaboration,
+Astron.\ Astrophys.\ \textbf{645}, A104 (2021).
+
+\bibitem{DES2024}
+DES Collaboration,
+Phys.\ Rev.\ D~\textbf{105}, 023520 (2022).
+
+\bibitem{DESI2024}
+DESI Collaboration,
+arXiv:2404.03002 (2024).
+
+\bibitem{DESI2025DR2}
+DESI Collaboration,
+arXiv:2503.14738 (2025).
+
+\bibitem{Ashtekar2011}
+A.~Ashtekar and P.~Singh,
+Class.\ Quant.\ Grav.\ \textbf{28}, 213001 (2011).
+
+\bibitem{Freidel2005}
+L.~Freidel, D.~Minic, and T.~Takeuchi,
+Phys.\ Rev.\ D~\textbf{72}, 104002 (2005).
+
+\bibitem{Mercuri2006}
+R.~Mercuri,
+Phys.\ Rev.\ D~\textbf{73}, 084016 (2006).
+
+\bibitem{Mercuri2009}
+R.~Mercuri,
+Phys.\ Rev.\ Lett.\ \textbf{103}, 081302 (2009).
+
+\bibitem{Poplawski2012}
+N.~J.~Pop\l{}awski,
+Phys.\ Rev.\ D~\textbf{85}, 107502 (2012).
+
+\bibitem{ShapiroTeixeira2014}
+I.~L.~Shapiro and P.~M.~Teixeira,
+Class.\ Quant.\ Grav.\ \textbf{31}, 185002 (2014).
+
+\bibitem{Shapiro2002}
+I.~L.~Shapiro,
+Phys.\ Rept.\ \textbf{357}, 113 (2002).
+
+\bibitem{Vassilevich2003}
+D.~V.~Vassilevich,
+Phys.\ Rept.\ \textbf{388}, 279 (2003).
+
+\bibitem{CalcagniMercuri2009}
+G.~Calcagni and R.~Mercuri,
+Phys.\ Rev.\ D~\textbf{79}, 104003 (2009).
+
+\bibitem{TaverasYunes2008}
+V.~Taveras and N.~Yunes,
+Phys.\ Rev.\ D~\textbf{78}, 064070 (2008).
+
+\bibitem{Eskilt2022}
+J.~R.~Eskilt and E.~Komatsu,
+Phys.\ Rev.\ D~\textbf{106}, 063503 (2022).
+
+\bibitem{DiegoPalazuelos2025}
+P.~Diego-Palazuelos and E.~Komatsu,
+(2025).
+
+\bibitem{Golden2026v1}
+H.~Golden,
+``Geometric Dark Energy from Spin-Torsion Cosmology:
+Phenomenological Constraints and Correlated Signatures,''
+Preprint HUBIFY-2026-001, v1.6 (2026).
+
+\bibitem{Golden2026supplement}
+H.~Golden,
+``Systematic Closure of Minimal First-Principles Routes to Dark Energy
+in Einstein-Cartan-Holst Gravity,''
+Companion technical note (2026).
+
+\bibitem{Cobaya2021}
+J.~Torrado and A.~Lewis,
+JCAP \textbf{05}, 057 (2021).
+
+\bibitem{ECTorsionDESI2025}
+J.~Liu, R.~Niu, and R.-G.~Cai,
+arXiv:2503.02599 (2025).
+
+\bibitem{Saadeh2016}
+D.~Saadeh \etal,
+Phys.\ Rev.\ Lett.\ \textbf{117}, 131302 (2016).
+
+\bibitem{Legner2025}
+C.~Legner, W.~J.~Handley, W.~E.~V.~Barker, and S.~Sherrill Ormondroyd,
+arXiv:2507.09228 (2025).
+
+\bibitem{Fabbri2025}
+L.~Fabbri,
+arXiv:2502.17979 (2025).
+
+\bibitem{KaloPerPadilla2014}
+N.~Kaloper and A.~Padilla,
+Phys.\ Rev.\ Lett.\ \textbf{112}, 091304 (2014).
+
+\bibitem{SezginNieuwenhuizen1980}
+E.~Sezgin and P.~van Nieuwenhuizen,
+Phys.\ Rev.\ D~\textbf{21}, 3269 (1980).
+
+\bibitem{Karananas2015}
+G.~K.~Karananas,
+Class.\ Quant.\ Grav.\ \textbf{32}, 055012 (2015).
+
+\end{thebibliography}
+
+\end{document}

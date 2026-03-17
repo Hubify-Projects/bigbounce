@@ -1,0 +1,54 @@
+========================================================================
+TRACK C v2: Gaussian Summary-Likelihood Inference Results
+========================================================================
+
+METHOD:
+  Gaussian summary likelihood using published isotropic
+  birefringence measurements. NOT a map-level analysis.
+  Prior: uniform on beta in [-1, 1] degrees.
+
+DATA SOURCES:
+  Eskilt 2022 (Planck NPIPE)
+    beta = 0.300 +/- 0.110 deg  (arXiv:2205.13962)
+  Diego-Palazuelos & Komatsu 2025 (ACT DR6)
+    beta = 0.215 +/- 0.074 deg  (arXiv:2503.14452)
+
+POSTERIOR ON BETA:
+  beta = 0.2415 +/- 0.0614 deg
+       = 4.214668e-03 +/- 1.071622e-03 rad
+  68% CI: [0.1801, 0.3029] deg
+  95% CI: [0.1187, 0.3643] deg
+  Significance: 3.9 sigma
+
+BAYESIAN MODEL COMPARISON:
+  Bayes factor BF(beta!=0 / beta=0) = 175.8
+  ln BF = 5.2
+  Interpretation: Strong evidence for beta != 0 (Jeffreys scale)
+
+DERIVED f_photon POSTERIORS:
+  (epsilon = (alpha/M)*M_Pl = 2.4350e-03)
+
+     C_0    f_photon       sigma        status
+     ---         ---         ---           ---
+     0.1      17.309       4.401    fine-tuned
+     0.3       5.770       1.467  O(1) natural
+     1.0       1.731       0.440  O(1) natural
+     3.0       0.577       0.147  O(1) natural
+    10.0       0.173       0.044  O(1) natural
+
+INTERPRETATION:
+  For C_0 in [0.3, 3.0], f_photon in [5.8, 0.6].
+  All values are O(1), confirming that the spin-torsion
+  operator scale alpha/M ~ 10^{-21} GeV^{-1} is naturally
+  compatible with observed cosmic birefringence.
+
+CAVEATS:
+  1. This is a SUMMARY-LIKELIHOOD inference, not a full CMB analysis.
+  2. f_photon and C_0 are DEGENERATE; only the product is constrained.
+  3. The photon-torsion coupling has NOT been derived from first principles.
+  4. Uniform birefringence is generic to ANY pseudo-scalar model,
+     not specific to the spin-torsion framework.
+  5. Eskilt and ACT measurements treated as independent; a rigorous
+     joint analysis would account for shared sky/calibration overlap.
+
+========================================================================

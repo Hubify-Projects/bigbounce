@@ -1,0 +1,72 @@
+theory:
+  beta_free_theory.BetaFreeTheory:
+    input_params_defaults:
+      beta_deg: null
+    speed: -1
+    stop_at_error: false
+    version: null
+    python_path: .
+    input_params:
+    - beta_deg
+    output_params: []
+likelihood:
+  birefringence_lk.BirefringenceLikelihood:
+    beta_obs: 0.342
+    sigma_beta: 0.094
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    python_path: .
+    input_params:
+    - beta_deg
+    output_params: []
+params:
+  beta_deg:
+    prior:
+      min: -1.0
+      max: 2.0
+    ref:
+      dist: norm
+      loc: 0.342
+      scale: 0.094
+    proposal: 0.05
+    latex: \beta\;[\mathrm{deg}]
+sampler:
+  mcmc:
+    sampler_type: mcmc
+    supports_periodic_params: true
+    burn_in: 0.3
+    max_tries: 40d
+    covmat: null
+    covmat_params: null
+    proposal_scale: 2.4
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: 100000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.15
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: false
+    blocking:
+    - - 1
+      - - beta_deg
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.6.1
+output: beta
+version: 3.6.1

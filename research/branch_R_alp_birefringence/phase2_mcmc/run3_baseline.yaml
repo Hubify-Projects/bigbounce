@@ -1,0 +1,33 @@
+# Baseline model: free beta parameter (no ALP physics)
+# Branch R Phase 2, Run 3
+# 1 sampled parameter: beta_deg
+
+theory:
+  beta_free_theory.BetaFreeTheory:
+    python_path: .
+
+likelihood:
+  birefringence_lk.BirefringenceLikelihood:
+    python_path: .
+    beta_obs: 0.342
+    sigma_beta: 0.094
+
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_samples: 100000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.15
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    drag: false
+
+params:
+  beta_deg:
+    prior: {min: -1.0, max: 2.0}
+    ref: {dist: norm, loc: 0.342, scale: 0.094}
+    proposal: 0.05
+    latex: \beta\;[\mathrm{deg}]
+
+output: chains/run3_baseline/beta

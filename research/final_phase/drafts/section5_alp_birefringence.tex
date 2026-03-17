@@ -1,0 +1,300 @@
+% =============================================================================
+% SECTION 5: ALP BIREFRINGENCE — THE SURVIVING PREDICTION
+% =============================================================================
+% Target: ~3.5 pages PRD format
+% Framing: payoff of the closure assessment, not standalone ALP paper.
+% =============================================================================
+
+\section{Spectator ALP Birefringence}
+\label{sec:alp}
+
+The structural closure of Sec.~\ref{sec:closure} eliminates all direct routes
+from the bounce to late-time observables.  One indirect testable handle
+remains: the ECH framework's parity-odd sector motivates an effective
+axion-like particle at the Planck scale, whose coupling to photons produces
+cosmic birefringence.  We stress at the outset that this ALP is not uniquely
+derived from ECH---any Planck-scale pseudoscalar with Standard Model anomaly
+coupling yields the same prediction~\cite{Fujita2021,Nakagawa2025}.  The ECH
+framework provides one possible UV completion; our contribution is the
+identification of this prediction as the sole survivor of a comprehensive
+assessment, and its confrontation with data through MCMC analysis.
+
+
+% ---------------------------------------------------------------------------
+\subsection{The Effective Spectator ALP}
+\label{sec:alp_model}
+
+The ECH parity-odd sector generates, at one loop, a finite parity-violating
+coefficient of natural order $\mathcal{O}(\alpha_\mathrm{em}/M_\mathrm{Pl})$
+\cite{Alexander2009,Freidel2005}.  We parametrize this sector as an effective
+pseudoscalar field $\phi$ with the Lagrangian
+%
+\begin{equation}
+\label{eq:alp_lagrangian}
+\mathcal{L}_\mathrm{ALP}
+= -\tfrac{1}{2}(\partial_\mu\phi)^2
+  - m_a^2 f_a^2\!\left[1 - \cos\!\left(\frac{\phi}{f_a}\right)\right]
+  - \frac{g_{a\gamma}}{4}\,\phi\,F_{\mu\nu}\tilde{F}^{\mu\nu} \,,
+\end{equation}
+%
+where the photon coupling is
+%
+\begin{equation}
+\label{eq:coupling}
+g_{a\gamma} = \frac{C_{a\gamma}\,\alpha_\mathrm{em}}{2\pi\,f_a} \,.
+\end{equation}
+%
+We fix two parameters to their natural ECH-motivated values:
+%
+\begin{itemize}
+\item $f_a = M_\mathrm{Pl} = 2.435 \times 10^{18}\;\mathrm{GeV}$
+  (the natural scale of the parity-odd sector);
+\item $C_{a\gamma} = 8$ (the Standard Model anomaly coefficient from all
+  charged fermions: $C = 2\sum_f N_c^{(f)} Q_f^2 = 8$).
+\end{itemize}
+%
+This leaves a two-parameter model with free parameters $\theta_i$ (initial
+misalignment angle) and $m_a$ (ALP mass).  The field satisfies
+%
+\begin{equation}
+\ddot{\theta} + 3H\dot{\theta} + m_a^2\sin\theta = 0 \,,
+\end{equation}
+%
+where $\theta \equiv \phi/f_a$ and $H(t)$ is the Hubble parameter in a
+standard $\Lambda$CDM background.
+
+\medskip
+\noindent\textbf{Spectator regime.}  We require $m_a > \mathrm{few}\times
+H_0$, so that the ALP has oscillated and its energy density has redshifted as
+$a^{-3}$ by today.  In this regime the ALP contributes negligible energy
+density ($\Omega_a \ll 0.01$) and does not affect the background expansion.
+Dark energy is provided by a separate cosmological constant~$\Lambda$.  The
+spectator regime avoids the rolling-versus-freezing tension identified in
+Ref.~\cite{Choi2021}: a single ALP cannot simultaneously provide $w \approx
+-1$ dark energy (requiring frozen field) and large birefringence (requiring
+rolled field); on the $\Omega_a = 0.68$ contour the maximum achievable
+$\beta \approx 0.16^\circ$, a factor of two below observation.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Birefringence Prediction}
+\label{sec:beta_prediction}
+
+As the ALP evolves from its initial value $\theta_i$ at recombination to its
+present value $\theta_0$, CMB photons accumulate a polarization rotation
+%
+\begin{equation}
+\label{eq:beta}
+\beta = \frac{C_{a\gamma}\,\alpha_\mathrm{em}}{4\pi}
+        \bigl[\theta(z_\mathrm{rec}) - \theta(z{=}0)\bigr]
+      = \frac{C_{a\gamma}\,\alpha_\mathrm{em}\,\theta_i\,\eta}{4\pi} \,,
+\end{equation}
+%
+where the rolling efficiency
+$\eta \equiv [\theta(z_\mathrm{rec}) - \theta(0)] / \theta_i$ is computed
+numerically by integrating the field equation from $z_\mathrm{rec} = 1089.8$
+to $z = 0$ using a DOP853 Runge--Kutta integrator in the variable
+$\ln a$~\cite{DOP853}.
+
+A key feature of Eq.~\eqref{eq:beta} is that $f_a$ cancels exactly: $\beta$
+depends only on $C_{a\gamma}$, $\alpha_\mathrm{em}$, $\theta_i$, and
+$\eta(m_a/H_0)$.  The prediction is therefore robust against
+uncertainties in $f_a$ and independent of the specific UV completion.
+
+For the spectator regime ($m_a \gg H_0$, $\eta \to 1$) with $C = 8$ and
+$\theta_i = 1$:
+%
+\begin{equation}
+\label{eq:beta_fiducial}
+\beta = \frac{8 \times \alpha_\mathrm{em}}{4\pi} \times 1
+      \approx 0.27^\circ \,,
+\end{equation}
+%
+in good agreement with the combined measurement $\beta_\mathrm{obs} = 0.342
+\pm 0.094^\circ$ from Planck PR4 and ACT
+DR6~\cite{Eskilt2022,DiegoPalazuelos2022}.
+Figure~\ref{fig:beta_vs_theta} shows the prediction as a function of
+$\theta_i$, with the observational band overlaid.
+
+
+% ---------------------------------------------------------------------------
+\subsection{MCMC Constraints}
+\label{sec:mcmc}
+
+We constrain the two free parameters $(\theta_i,\,\log_{10}(m_a/\mathrm{eV}))$
+using a Gaussian likelihood on the isotropic birefringence angle:
+%
+\begin{equation}
+\ln\mathcal{L} = -\frac{1}{2}
+  \left(\frac{\beta_\mathrm{pred} - \beta_\mathrm{obs}}{\sigma_\beta}\right)^2 \,,
+\end{equation}
+%
+with $\beta_\mathrm{obs} = 0.342^\circ$ and $\sigma_\beta = 0.094^\circ$.
+We sample with \textsc{Cobaya}~\cite{Cobaya} using 4 MCMC chains, convergence
+criterion $\hat{R} - 1 < 0.01$, and flat priors $\theta_i \in [0.01,\,\pi]$,
+$\log_{10}(m_a/\mathrm{eV}) \in [-33,\,-28]$.
+
+We note that this likelihood uses the summary statistic $\beta_\mathrm{obs}
+\pm \sigma_\beta$ rather than the full $C_\ell^{EB}$ power spectrum employed
+in Refs.~\cite{Eskilt2023,Namikawa2025}.  Our analysis therefore does not
+constrain the ALP mass through the $\ell$-dependent shape of the EB spectrum
+and is less informative for mass discrimination.  However, for the spectator
+regime ($m_a \gg H_0$, $\eta \to 1$) the birefringence is
+$\ell$-independent, and the summary statistic captures the full information
+content.
+
+\medskip
+\noindent\textbf{Results.}
+After 2160 accepted samples with $\hat{R} - 1 = 0.008$ and effective sample
+sizes $N_\mathrm{eff} > 1000$ for both parameters, we obtain:
+
+\begin{table}[h]
+\centering
+\caption{Posterior summary for the spectator ALP model ($f_a = M_\mathrm{Pl}$,
+  $C_{a\gamma} = 8$).}
+\label{tab:mcmc}
+\begin{tabular}{lcccc}
+\hline\hline
+Parameter & Mean & Median & 68\% CI & 95\% CI \\
+\hline
+$\theta_i$ & 1.36 & 1.30 & $[0.90,\, 1.72]$ & $[0.47,\, 2.28]$ \\
+$\log_{10}(m_a/\mathrm{eV})$ & $-31.3$ & $-31.2$ & $[-32.4,\, -30.1]$ & $[-32.4,\, -30.0]$ \\
+$\beta\;[\mathrm{deg}]$ & 0.336 & 0.335 & $[0.245,\, 0.442]$ & $[0.130,\, 0.519]$ \\
+$\eta$ & 0.957 & 0.999 & $[0.95,\, 1.04]$ & $[0.40,\, 1.17]$ \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+\noindent The inferred misalignment angle $\theta_i = 1.36 \pm 0.44$ is
+$\mathcal{O}(1)$, consistent with random initial conditions drawn from the
+field space $[0,\,2\pi)$.  No fine-tuning is required.  The posterior strongly
+favors $\eta \approx 1$ (full rolling), confirming the spectator regime.  The
+mass is weakly constrained from below ($m_a \gtrsim 3\,H_0$, where $\eta$
+begins to decrease) but unconstrained from above (for $m_a \gg H_0$, $\eta$
+saturates at unity and $\beta$ becomes mass-independent).
+
+
+% ---------------------------------------------------------------------------
+\subsection{Model Comparison}
+\label{sec:model_comparison}
+
+To assess whether the ALP model adds explanatory value beyond a
+phenomenological birefringence parameter, we compare three models:
+
+\begin{enumerate}
+\item \textbf{Model~0} ($\beta_\mathrm{free}$): one free parameter $\beta$,
+  no physical model.
+
+\item \textbf{Model~2} (ALP, $C = 8$): two free parameters
+  $(\theta_i,\,\log_{10} m_a)$; $f_a = M_\mathrm{Pl}$, $C = 8$ fixed.
+
+\item \textbf{Model~2b} (ALP, $C$ free): three free parameters
+  $(\theta_i,\,\log_{10} m_a,\,C_{a\gamma})$.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{Model comparison.  All non-null models achieve $\chi^2_\mathrm{min}
+  \approx 0$ (exact fit to one data point).  $\Delta\chi^2$ is relative to the
+  null hypothesis $\beta = 0$.}
+\label{tab:model_comparison}
+\begin{tabular}{lccccc}
+\hline\hline
+Model & $k$ & $\chi^2_\mathrm{min}$ & $\Delta\chi^2$ vs null & AIC & $\Delta$AIC vs Model~0 \\
+\hline
+Null ($\beta = 0$)    & 0 & 13.2 & ---  & ---  & --- \\
+Model~0 ($\beta$ free) & 1 & $\approx 0$ & 13.2 (3.6$\sigma$) & 2.0  & 0.0 \\
+Model~2 (ALP, $C{=}8$) & 2 & $\approx 0$ & 13.2 (3.6$\sigma$) & 4.0  & $+2.0$ \\
+Model~2b (ALP, $C$ free) & 3 & $\approx 0$ & 13.2 (3.6$\sigma$) & 6.0  & $+4.0$ \\
+\hline\hline
+\end{tabular}
+\end{table}
+
+\noindent All three models produce identical $\beta$ posteriors
+(Fig.~\ref{fig:beta_comparison}) and identical improvement over the null
+hypothesis: $\Delta\chi^2 = 13.2$, corresponding to $3.6\sigma$.  The ALP
+model does not fit the data better than free $\beta$.  Information criteria
+impose a mild penalty for the additional parameters ($\Delta\mathrm{AIC} =
++2.0$ for Model~2, $+4.0$ for Model~2b).
+
+Floating $C_{a\gamma}$ in Model~2b reveals a degeneracy: the data constrain
+the product $C_{a\gamma} \times \theta_i \approx 10.6$ (correlation
+$r = -0.52$) but not the individual values.  The posterior width on $C_{a\gamma}$
+is 56\% of the prior range, indicating weak constraint.  The Standard Model
+value $C = 8$ lies comfortably within the posterior, confirming that no
+beyond-SM charged sector is required.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Assessment: Physical Interpretation, Not Statistical Improvement}
+\label{sec:honest_assessment}
+
+The model comparison establishes that the spectator ALP provides no
+statistical improvement over a phenomenological $\beta$ parameter.  This is
+expected: with a single Gaussian measurement, any model that can reproduce
+$\beta_\mathrm{obs}$ achieves $\chi^2 \approx 0$; the data constrain exactly
+one effective combination regardless of parameterization.
+
+The ALP model's value is physical, not statistical:
+
+\begin{enumerate}
+\item \emph{Natural parameters.}  The inferred $\theta_i \approx 1.3$ is
+  $\mathcal{O}(1)$, consistent with a randomly drawn initial condition.  A
+  phenomenological $\beta = 0.34^\circ$ has no such interpretation.
+
+\item \emph{Structural prediction.}  The model relates $\beta$ to fundamental
+  parameters through Eq.~\eqref{eq:beta}: $\beta$ is determined by $C$
+  (particle content), $\alpha_\mathrm{em}$ (measured), $\theta_i$ (natural),
+  and $\eta$ (computed).  Free $\beta$ has no such structure.
+
+\item \emph{Falsifiability.}  The ALP predicts achromatic, isotropic
+  birefringence with a specific mass-dependent evolution.
+  LiteBIRD~\cite{LiteBIRD}, with projected $\sigma(\beta) \approx 0.01^\circ$,
+  will determine $\theta_i$ to $\pm 0.04\;\mathrm{rad}$, providing a decisive
+  test.  If $\beta_\mathrm{pred} = 0.27^\circ$, detection exceeds
+  $20\sigma$.  If $\beta = 0$, the model is excluded at comparable
+  significance.  The model is also falsified by frequency-dependent
+  birefringence or an anisotropic pattern inconsistent with a homogeneous
+  scalar background.
+
+\item \emph{Framework context.}  Unlike previous ALP birefringence
+  studies~\cite{Fujita2021,Nakagawa2025,LinYanagida2023}, this prediction
+  emerges as the sole surviving testable output of a comprehensive
+  framework assessment (Sec.~\ref{sec:closure}).  It is not selected from a
+  menu of claims but identified by systematic elimination.
+\end{enumerate}
+
+We emphasize that spectator ALP models producing similar conclusions have been
+studied previously~\cite{Fujita2021,Nakagawa2025}.  Our contribution is the
+specific ECH-motivated two-parameter reduction ($f_a = M_\mathrm{Pl}$,
+$C = 8$), the explicit comparison against a free-$\beta$ baseline (which, to
+our knowledge, has not been performed in the literature), and the framing
+within the structural closure of Sec.~\ref{sec:closure}.
+
+
+% ---------------------------------------------------------------------------
+\subsection{Experimental Constraints}
+\label{sec:constraints}
+
+Table~\ref{tab:bounds} summarizes existing bounds on the ALP parameter space.
+All are satisfied with margins of nine to thirty-two orders of magnitude.
+
+\begin{table}[h]
+\centering
+\caption{Experimental and observational bounds on the spectator ALP.  The
+  model coupling $g_{a\gamma} = 3.8 \times 10^{-21}\;\mathrm{GeV}^{-1}$ and
+  mass $m_a \sim 10^{-31}\;\mathrm{eV}$.}
+\label{tab:bounds}
+\begin{tabular}{lcc}
+\hline\hline
+Constraint & Bound & Margin \\
+\hline
+CAST helioscope & $g < 6.6 \times 10^{-11}\;\mathrm{GeV}^{-1}$ & $10^{10}$ \\
+SN1987A & $g < 5 \times 10^{-12}\;\mathrm{GeV}^{-1}$ & $10^{9}$ \\
+BH superradiance & excludes $6\times10^{-13}\text{--}2\times10^{-11}\;\mathrm{eV}$ & model below \\
+CMB spectral distortion & no constraint for $m < 10^{-28}\;\mathrm{eV}$ & model below \\
+Isocurvature (Planck) & $f_a < 10^{19}\;\mathrm{GeV}$ for $m \sim H_0$ & marginal \\
+DM overproduction & $\theta_i < 2.4$ for $f_a = M_\mathrm{Pl}$ & $\theta_i = 1.3$ safe \\
+\hline\hline
+\end{tabular}
+\end{table}

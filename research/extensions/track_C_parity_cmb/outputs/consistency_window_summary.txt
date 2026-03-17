@@ -1,0 +1,46 @@
+======================================================================
+Track C: Consistency Window Summary
+======================================================================
+
+SPIN-TORSION PARAMETERS:
+  alpha/M           = 1.0e-21 GeV^{-1}
+  M_Pl (reduced)    = 2.435e+18 GeV
+  epsilon = (a/M)*M = 2.4350e-03  (dimensionless one-loop suppression)
+
+PUBLISHED BIREFRINGENCE MEASUREMENTS:
+  Minami & Komatsu 2020                     beta = 0.350 +/- 0.140 deg  (2020) [SUPERSEDED]
+  Eskilt 2022                               beta = 0.300 +/- 0.110 deg  (2022)
+  Diego-Palazuelos & Komatsu 2025           beta = 0.215 +/- 0.074 deg  (2025)
+  SPIDER 2025                               beta = 0.500 +/- 0.070 deg  (2025) [CALIBRATION CAVEAT]
+
+COMBINED INDEPENDENT CONSTRAINT (Eskilt 2022 + ACT DR6):
+  beta_combined     = 0.2415 +/- 0.0614 deg
+                    = 4.214668e-03 +/- 1.071622e-03 rad
+  Detection significance: 3.9 sigma
+
+REQUIRED f_photon (for C_0 = 1 radian):
+  f_photon = beta / (epsilon * C_0)
+           = 4.2147e-03 / (2.4350e-03 * 1.0)
+           = 1.731
+
+INTERPRETATION:
+  For C_0 ~ O(1), the required f_photon ~ 1.7
+  This is an O(1) number, meaning NO FINE-TUNING is required.
+  The spin-torsion scale alpha/M ~ 10^{-21} GeV^{-1} is naturally
+  consistent with observed cosmic birefringence.
+
+PHOTON-TORSION COUPLING GAP:
+  The spin-torsion framework contains a parity-odd gravitational
+  operator but does NOT directly couple to photons. The parameter
+  f_photon encodes the unknown photon-torsion coupling vertex.
+  This analysis shows the REQUIRED VALUE is O(1), not that it
+  has been DERIVED from the theory.
+
+SENSITIVITY TABLE (f_photon for different C_0):
+  C_0 =   0.1  =>  f_photon =   17.309
+  C_0 =   0.3  =>  f_photon =    5.770
+  C_0 =   1.0  =>  f_photon =    1.731
+  C_0 =   3.0  =>  f_photon =    0.577
+  C_0 =  10.0  =>  f_photon =    0.173
+
+======================================================================

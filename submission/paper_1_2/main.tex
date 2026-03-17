@@ -1,0 +1,2053 @@
+% "Geometric Dark Energy and the Spin-Torsion Bounce:
+%  A Complete Theoretical Assessment"
+%
+% Houston Golden — 2026
+% Preprint: HUBIFY-2026-002
+%
+% Compile: pdflatex main && pdflatex main (inline bibliography)
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,
+  nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{slashed}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+% Custom commands
+\newcommand{\Leff}{\Lambda_{\rm eff}}
+\newcommand{\Lobs}{\Lambda_{\rm obs}}
+\newcommand{\Dinf}{\mathcal{D}_{\rm inf}}
+\newcommand{\rhocrit}{\rho_{\rm crit}}
+\newcommand{\rhoPl}{\rho_{\rm Pl}}
+\newcommand{\MPl}{M_{\rm Pl}}
+\newcommand{\Neff}{N_{\rm eff}}
+\newcommand{\BI}{\gamma}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\Gsp}{G_{\rm SP}}
+\newcommand{\Veff}{V_{\rm eff}}
+\newcommand{\OmGW}{\Omega_{\rm GW}}
+\newcommand{\mT}{m_{\rm T}}
+\newcommand{\geff}{g_{\rm eff}}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\etal}{\textit{et~al.}}
+\newcommand{\paperVersion}{v2.0.0}
+
+\begin{document}
+
+\preprint{HUBIFY-2026-002}
+
+\title{Geometric Dark Energy and the Spin-Torsion Bounce:\\
+A Complete Theoretical Assessment}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\today}
+
+\begin{abstract}
+We present a comprehensive theoretical assessment of the Einstein-Cartan-Holst
+(ECH) framework as both a dark-energy phenomenology and a bouncing cosmology.
+The paper has three parts. First, we describe a phenomenological dark-energy
+ansatz rooted in ECH gravity that reduces fine-tuning from $10^{120}$ to
+$\sim\!10^5$ and yields MCMC fits partially reducing the $H_0$ and
+$\sigma_8/S_8$ tensions ($H_0 = 69.2 \pm 0.8$~km~s$^{-1}$~Mpc$^{-1}$,
+$\sigma_8 = 0.785 \pm 0.016$). Second, we report the systematic closure
+of four minimal and three extended first-principles routes to deriving
+the late-time vacuum term, spanning Foundations A through G (seven
+structural barriers). Third, we present a comprehensive characterization
+of the spin-torsion bounce's observable prospects across all perturbation
+channels: the tensor power spectrum is $P_T \approx 2\times 10^{-64}$
+(flat, $n_T \approx 0$), the chirality is $\Delta\chi = 0$ exactly
+(the effective four-fermion interaction $(J^5)^2$ is parity-\textit{even}),
+the scalar transfer function is $T(k)=1$ for all observable modes
+(time-reversal symmetry), and bounce-triggered state selection is
+prevented by Liouville's theorem. The Poincar\'e gauge theory (PGT)
+extension lowers the bounce scale but the mass-coupling lock
+($\geff \sim \mT/\MPl^2$) suppresses torsion-specific features, and the
+vacuum amplification ceiling ($\OmGW \propto (H/\MPl)^2$) ensures a
+minimum $10^{17}$ gap to any gravitational-wave detector. Two further
+routes are tested and closed: baryogenesis and relic production
+(Branch~N) fail because at $T\sim\MPl$ the torsion $(J^5)^2$ interaction
+is one of $\sim\!100$ gravitational-strength channels (gravitational
+democracy), and hidden-sector vacuum selection (Branch~O) fails because
+the bounce determines \textit{whether} a transition occurs but not
+\textit{what} vacuum energy results (bounce--vacuum energy decoupling).
+Finally, the PGT Sector~II pseudoscalar torsion mode---the last candidate
+for a torsion-specific relic---is protected by an exact $\mathbb{Z}_2$
+parity symmetry that prevents population at the bounce (Branch~P).
+Fourteen structural barriers are cataloged across ten research branches
+(H through P), spanning five failure modes. The spin-torsion bounce is
+theoretically consistent but observationally inert: what is detectable is
+generic to any bounce; what is specific to torsion is undetectable.
+\end{abstract}
+
+\pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
+\keywords{dark energy, Einstein-Cartan theory, spin-torsion coupling,
+cosmological constant problem, Barbero-Immirzi parameter, bouncing cosmology,
+gravitational waves, negative results, Poincar\'e gauge theory}
+
+\maketitle
+\tableofcontents
+
+
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+
+The cosmological constant problem---why the observed vacuum energy density
+$\rho_\Lambda \sim (2.3\;\text{meV})^4$ is $\sim 10^{120}$ times smaller
+than the naive quantum field theory estimate $\sim \MPl^4$~\cite{Weinberg1989}%
+---remains one of the deepest unsolved problems in fundamental physics.
+Growing tensions within $\Lambda$CDM, including the ${\sim}4.9\sigma$
+Hubble tension~\cite{Riess2022,Planck2018params} and $2$--$3\sigma$
+$\sigma_8/S_8$ tension~\cite{KiDS2021,DES2024}, together with hints of
+dynamical dark energy from DESI~DR2 BAO
+measurements~\cite{DESI2024,DESI2025DR2}, motivate exploration of
+geometric approaches to dark energy.
+
+Einstein-Cartan-Holst (ECH) gravity---Einstein-Cartan theory supplemented
+by the Holst term with Barbero-Immirzi parameter $\BI$---is a natural
+starting point for geometric dark energy. The theory is well-motivated by
+loop quantum gravity~\cite{Ashtekar2011}, introduces spin-torsion coupling
+with parity-violating structure~\cite{Freidel2005,Mercuri2006}, and
+provides a non-singular quantum bounce~\cite{Poplawski2012}. The central
+questions are whether this theoretical structure can (i) generate a natural
+origin for late-time dark energy, and (ii) produce distinctive observable
+signatures from the bounce.
+
+This paper reports three sets of results, organized as a three-part
+assessment.
+
+\textit{Part~I: Framework and Phenomenology} (Secs.~\ref{sec:ech}--\ref{sec:ansatz}).
+We present the ECH framework and a phenomenological dark-energy ansatz that
+is observationally consistent and reduces fine-tuning significantly.
+MCMC fits partially reduce the $H_0$ and $\sigma_8$ tensions. The equation
+of state $w = -1$ is assumed, not derived.
+
+\textit{Part~II: Dark Energy Derivation Program} (Secs.~\ref{sec:program}--\ref{sec:lessons}).
+We report the systematic failure of four minimal first-principles routes to
+derive the late-time $w=-1$ behavior, together with the assessment of three
+extended foundations (A through G), identifying seven structural barriers
+and six structural lessons.
+
+\textit{Part~III: Bounce Observable Signatures} (Secs.~\ref{sec:tensor}--\ref{sec:pgt_gw}).
+We present a comprehensive characterization of the spin-torsion bounce
+across all observable channels: tensor perturbations (Branch~H), scalar
+perturbations (Branch~K), bounce-compatible dark energy (Branch~I), state
+selection (Branch~J), UV$\to$IR bridge extensions (Branch~L), and the PGT
+gravitational wave spectrum (Branch~M). Five additional barriers are
+identified, bringing the total to twelve.
+
+The combination establishes the current scientific status of the program:
+\begin{itemize}[leftmargin=*]
+  \item The ECH framework is a \textit{motivated phenomenological model},
+    not a first-principles derivation of dark energy.
+  \item All tested routes to deriving $w=-1$ from geometry have failed,
+    for distinct structural reasons spanning seven barriers.
+  \item The spin-torsion bounce is observationally inert in the minimal
+    model. The PGT extension produces a well-defined but undetectable
+    gravitational wave spectrum.
+  \item Twelve structural barriers, spanning three failure modes
+    (energy-budget, signature, state-selection), prevent any nontrivial
+    connection between the bounce and dark energy or between the bounce
+    and cosmological observations.
+\end{itemize}
+
+\subsection{Relationship to prior work}
+
+This paper supersedes an earlier version~\cite{Golden2026v1} (Paper~1)
+that presented the phenomenological framework organized around the minimal
+ECH model as if it were a sufficient foundation. The present version
+incorporates the results of a structured derivation and bounce
+characterization program (Branches H through M) that tested all natural
+routes and found all to be negative or generic. The phenomenological
+results are unchanged; the framing, scope, and conclusions are
+substantially extended to include the bounce sector.
+
+
+%% ============================================================
+%%  2. EINSTEIN-CARTAN-HOLST FRAMEWORK
+%% ============================================================
+\section{Einstein-Cartan-Holst Framework}\label{sec:ech}
+
+\subsection{Action and field content}\label{sec:action}
+
+The starting point is the Einstein-Cartan-Holst action minimally coupled
+to $N_f$ Dirac fermions:
+\begin{align}\label{eq:ECH}
+  S_{\rm ECH} &= \frac{\MPl^2}{2}\int
+    \bigl[\varepsilon_{IJKL} + \tfrac{2}{\BI}\,\eta_{I[K}\eta_{L]J}\bigr]\,
+    e^I\wedge e^J\wedge F^{KL}[\omega] \nonumber\\
+  &\quad + \int d^4x\,|e|\,\bigl[\bar\psi\,i\gamma^\mu D_\mu\psi
+    - m\bar\psi\psi\bigr],
+\end{align}
+with $D_\mu = \partial_\mu + \tfrac{1}{4}\omega_\mu^{IJ}\gamma_I\gamma_J$
+the Lorentz-covariant derivative and $\BI = 0.274 \pm 0.020$ the
+Barbero-Immirzi parameter fixed by loop quantum gravity black hole entropy
+calculations~\cite{Ashtekar2011}. The first term is the Holst action:
+the Palatini formulation of general relativity supplemented by the
+parity-odd Holst term $(1/\BI)\eta_{I[K}\eta_{L]J}e^I e^J F^{KL}$.
+The second term is the standard minimal Dirac coupling.
+
+\subsection{Torsion equation of motion}\label{sec:torsion}
+
+In ECH gravity, the spin connection $\omega^{IJ}_\mu$ is an independent
+dynamical variable, and its equation of motion is algebraic---torsion is
+\textit{not propagating}. Solving the torsion equation exactly
+decomposes the connection as $\omega = \mathring\omega + K$, where
+$\mathring\omega$ is the torsion-free Levi-Civita connection and $K$ is
+the contorsion tensor determined algebraically by the fermion spin
+density~\cite{Freidel2005,Shapiro2002}.
+
+\subsection{Reduced action after torsion elimination}\label{sec:reduced}
+
+Substituting the algebraic torsion solution back into the action yields
+the reduced action~\cite{Freidel2005,ShapiroTeixeira2014}:
+\begin{equation}\label{eq:Sreduced}
+  S_{\rm red} = S_{\rm EH}[g] + S_{\rm Dirac}[g,\psi]
+  + S_{\rm 4f}[\psi;\BI],
+\end{equation}
+where $S_{\rm EH}$ is the standard Einstein-Hilbert action,
+$S_{\rm Dirac}$ is the standard minimally-coupled Dirac action with
+the Levi-Civita connection, and $S_{\rm 4f}$ is the torsion-induced
+four-fermion contact interaction:
+\begin{equation}\label{eq:L4f}
+  \mathcal{L}_{\rm 4f}
+  = -\Geff\Bigl(\bar\psi\gamma^\mu\gamma^5\psi
+    + \tfrac{1}{\BI}\,\bar\psi\gamma^\mu\psi\Bigr)^{\!2},
+  \quad
+  \Geff = \frac{3\kappa^2}{16}\,\frac{\BI^2}{\BI^2+1}.
+\end{equation}
+This perfect-square structure constrains the Fierz channel decomposition.
+At $\BI = 0.274$, the vector admixture $1/\BI \approx 3.65$ dominates;
+the scalar/pseudoscalar channel coupling
+$\Gsp \propto (\BI^2 - 1)/(\BI^2 + 1)$ is repulsive (negative).
+
+\paragraph{Critical structural observation.}
+After torsion elimination, \textit{all} $\BI$-dependence resides in the
+four-fermion term $S_{\rm 4f}$. The Dirac kinetic operator
+$i\gamma^\mu\mathring\nabla_\mu$ is the standard Levi-Civita operator,
+independent of $\BI$. This structural fact is the root cause of the
+failures reported in Sec.~\ref{sec:closures}.
+
+\subsection{Modified Friedmann equation}\label{sec:friedmann}
+
+The spin-torsion four-fermion interaction generates a $\rho^2$ correction
+to the Friedmann equation at high densities. When the fermion content is
+treated as a perfect fluid with energy density $\rho$, the effective
+Friedmann equation reads~\cite{Poplawski2012}:
+\begin{equation}\label{eq:modfriedmann}
+  H^2 = \frac{8\pi G}{3}\,\rho\Bigl(1 - \frac{\rho}{\rhocrit}\Bigr),
+\end{equation}
+with critical density
+\begin{equation}\label{eq:rhocrit}
+  \rhocrit \simeq 0.21\,\MPl^4,
+\end{equation}
+where the numerical prefactor depends on the number of fermion species and
+$\BI$. Equation~\eqref{eq:modfriedmann} implies a non-singular bounce:
+$H=0$ when $\rho = \rhocrit$, and $\dot{a} > 0$ for $\rho < \rhocrit$.
+The bounce replaces the classical Big Bang singularity with a smooth
+transition from contraction to expansion.
+
+
+%% ============================================================
+%%  3. PHENOMENOLOGICAL DARK-ENERGY ANSATZ
+%% ============================================================
+\section{Phenomenological Dark-Energy Ansatz}\label{sec:ansatz}
+
+\subsection{The scaling argument}\label{sec:scaling}
+
+The ECH framework contains a parity-odd vacuum operator
+$\varepsilon^{abcd}K_{ab}R_{cd}$ sourced by the fermion spin density via
+torsion. At early times (Planck-density bounce), this operator has a
+natural magnitude set by $\alpha/M \sim \mathcal{O}(\kappa^2)$, where
+$\alpha/M$ is the parity-odd coefficient in the effective Lagrangian.
+
+Inflationary expansion after the bounce dilutes this operator by a factor
+$\Dinf \sim e^{-3N_{\rm tot}}$, where $N_{\rm tot} \sim 92$ $e$-folds.
+The resulting late-time dark-energy density is parametrically
+\begin{equation}\label{eq:rhoL}
+  \rho_\Lambda \approx \Xi\,\MPl^4, \qquad
+  \Xi \equiv \bigl[(\alpha/M)\,\MPl\bigr]\,\Dinf,
+\end{equation}
+giving $\Xi \sim 10^{-122}$ for appropriate values of $\alpha/M$ and
+$N_{\rm tot}$.
+
+\paragraph{What this is.}
+Equation~\eqref{eq:rhoL} is a \textit{phenomenological scaling ansatz}.
+It traces a dimensional chain from the Planck scale through inflationary
+dilution to the observed vacuum energy. It reduces fine-tuning from
+$10^{120}$ (the cosmological constant problem in $\Lambda$CDM) to
+$\sim\!10^5$ (sensitivity to $N_{\rm tot}$ within $\Delta N \approx 4$
+$e$-folds).
+
+\paragraph{What this is not.}
+Equation~\eqref{eq:rhoL} is \textit{not} a derivation of $w = -1$.
+The parity-odd operator is sourced by the spin density, which vanishes
+at late times ($K_{ab} \to 0$). For the residual to persist as a true
+vacuum energy, one must show that integrating out the spin degrees of
+freedom generates an IR-constant term in the effective action. Four
+attempts to establish this have failed (Sec.~\ref{sec:closures}). We
+therefore treat $w = -1$ as a phenomenological assumption, consistent
+with observations ($|w+1| \lesssim 10^{-2}$ from DESI+Planck).
+
+\subsection{Cosmological parameters}\label{sec:cosmo}
+
+The phenomenological framework motivates a $\Lambda$CDM$+\Delta\Neff$
+extension: the bounce scenario qualitatively predicts additional
+relativistic species from particle production near the Planck density,
+but quantitative estimates are not yet available.
+
+\subsubsection{MCMC results}
+
+MCMC fits to the full tension dataset (Planck~2018 + DESI~DR1 BAO +
+Pantheon+ + SH0ES $H_0$ prior + DES~Y3 $S_8$) yield:
+\begin{align}
+  H_0 &= 69.2 \pm 0.8 \;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1},
+    \label{eq:H0}\\
+  \sigma_8 &= 0.785 \pm 0.016, \label{eq:s8}\\
+  S_8 &= 0.80 \pm 0.02. \label{eq:S8}
+\end{align}
+These partially reduce the $H_0$ tension (from $4.9\sigma$ to
+$2.9\sigma$ vs.\ SH0ES) and the $S_8$ tension (from $\sim\!3\sigma$ to
+$\sim\!1\sigma$ vs.\ weak lensing).
+
+\begin{table}[t]
+\caption{\label{tab:mcmc} Cosmological parameters from MCMC fits.
+Posterior means $\pm\,1\sigma$. Original analysis uses the full tension
+dataset; verification uses Cobaya~v3.6.1 with CamSpec.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+\textbf{Parameter} & \textbf{Original} & \textbf{Verification} \\
+\hline
+$H_0$ [km/s/Mpc] & $69.2 \pm 0.8$ & $67.68 \pm 1.06$ \\
+$\sigma_8$ & $0.785 \pm 0.016$ & $0.803 \pm 0.008$ \\
+$S_8$ & $0.80 \pm 0.02$ & $0.814 \pm 0.008$ \\
+$\Delta\Neff$ & --- & $-0.020 \pm 0.169$ \\
+$\Omega_m$ & $0.310 \pm 0.008$ & $0.308 \pm 0.005$ \\
+$n_s$ & $0.9649 \pm 0.0042$ & --- \\
+$\tau$ & $0.054 \pm 0.007$ & --- \\
+\hline
+Total samples & --- & 176{,}840 \\
+$\hat{R}-1$ & $< 0.01$ & $0.001$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsubsection{Independent verification}\label{sec:verification}
+
+Independent verification using Cobaya~v3.6.1 with Planck NPIPE CamSpec
+TTTEEE + lowl TT/EE + lensing finds $\Delta\Neff$ consistent with zero
+($\Delta\Neff = -0.020 \pm 0.169$ for the full-tension dataset,
+$\Delta\Neff = +0.065 \pm 0.17$ for Planck+BAO+SN without $H_0$/$S_8$
+priors; see Table~\ref{tab:mcmc}). The tension reduction in the
+original analysis is driven by the SH0ES prior, not by the $\Delta\Neff$
+extension itself.
+
+\subsection{Fine-tuning reduction}
+
+A Monte Carlo sensitivity scan ($10^5$ samples) confirms that the
+scaling ansatz Eq.~\eqref{eq:rhoL} reduces fine-tuning from $10^{120}$
+to $\sim\!10^5$: the viable range $N_{\rm tot} \in [79,\,95]$ produces
+$\rho_\Lambda$ within two orders of magnitude of the observed value,
+with $N_{\rm tot}$ as the single controlling parameter ($|\rho_s| =
+0.996$). The residual tuning is concentrated in a single initial
+condition with potential dynamical answers through the
+bounce-to-inflation transition.
+
+
+%% ============================================================
+%%  PART II: SYSTEMATIC MODEL TESTING
+%% ============================================================
+
+%% ============================================================
+%%  4. THE DARK ENERGY DERIVATION PROGRAM
+%% ============================================================
+\section{Dark Energy Derivation Program}\label{sec:program}
+
+The central question is whether late-time $w = -1$ can be derived from
+first principles within the minimal ECH$+$Dirac model or its natural
+extensions. We tested four minimal routes and assessed three extended
+foundations (A through G), each with predefined gates and kill criteria
+frozen before computation.
+
+\subsection{Four minimal routes tested}\label{sec:routes}
+
+\begin{description}[style=nextline,leftmargin=1em]
+  \item[Track B (NJL condensate)]
+    Test whether a pseudoscalar fermion condensate
+    $\langle\bar\psi i\gamma^5\psi\rangle$ forms via the
+    Nambu-Jona-Lasinio mechanism from the torsion-induced four-fermion
+    interaction and persists as late-time vacuum energy.
+
+  \item[Branch G v1 (strict one-loop effective action)]
+    Compute the one-loop gravitational effective action $\Gamma[e]$ after
+    torsion elimination and fermion integration, and test for
+    $\BI$-dependent vacuum content.
+
+  \item[Route T1 (dynamical Immirzi field)]
+    Promote $\BI \to \theta(x)$ to a dynamical pseudoscalar and assess
+    whether the reduced action contains novel content not reproducible
+    by adding a standard axion-like particle (ALP) to GR.
+
+  \item[Route S1 (parity-sensitive CMB phenomenology)]
+    Assess whether the framework's parity-odd operator maps to distinctive
+    birefringence observables distinguishable from generic ALP predictions.
+\end{description}
+
+All four routes were closed with clean negative results. Additionally,
+Foundations~A through~G (an extended program testing propagating torsion,
+Nieh-Yan non-topological coupling, environmental mass, disformal coupling,
+scale separation, attractor sensitivity, and vacuum selection) were all
+closed, yielding seven barriers in total.
+
+
+%% ============================================================
+%%  5. CLOSURE RESULTS
+%% ============================================================
+\section{Closure Results}\label{sec:closures}
+
+\subsection{Track B: condensate route}\label{sec:trackB}
+
+Fierz rearrangement of the four-fermion
+interaction~\eqref{eq:L4f} decomposes it into standard NJL channels.
+The scalar/pseudoscalar coupling is
+\begin{equation}\label{eq:GSP}
+  \Gsp = \frac{3\kappa^2}{16}\,\frac{\BI^2 - 1}{\BI^2 + 1},
+\end{equation}
+which is \textit{repulsive} (negative) for $\BI < 1$. At $\BI = 0.274$,
+the NJL gap equation has no nontrivial solution. Even for $\BI > 1$
+(attractive sign), the coupling is $\sim\!175\times$ below the NJL
+critical coupling. Track~B closes at Gate~1: no condensate forms.
+
+\subsection{Branch G v1: strict one-loop}\label{sec:branchG}
+
+After torsion elimination, the Dirac operator is
+$\slashed{D} = i\gamma^\mu\mathring\nabla_\mu$---the standard
+$\BI$-independent Levi-Civita operator. The four-fermion term is quartic
+in $\psi$ and does not contribute at one loop. The Seeley-DeWitt
+coefficients $a_0, a_1, a_2$ are the standard textbook values with no
+$\BI$-dependence~\cite{Vassilevich2003}. Branch~G v1 closes: no novel
+Holst content at strict one-loop.
+
+\subsection{Route T1: dynamical Immirzi field}\label{sec:T1}
+
+Promoting $\BI \to \theta(x)$, torsion remains algebraic. After
+elimination, the reduced action is~\cite{CalcagniMercuri2009,Mercuri2009}
+\begin{equation}\label{eq:T1red}
+  S_{\rm red} = S_{\rm EH} + S_{\rm Dirac}
+  + \int\!\bigl[-\tfrac{1}{2}f(\theta)(\partial\theta)^2
+    + \mathcal{L}_{\rm 4f}\bigr],
+\end{equation}
+where $\mathcal{L}_{\rm 4f}$ is $\theta$-independent. Every term is
+reproducible by adding a standard ALP to GR. The Nieh-Yan 4-form is
+exact (total derivative) in 4D; its topological nature ensures the
+gravitational origin washes out~\cite{CalcagniMercuri2009}. Cosmological
+dynamics give $w = +1$ (stiff matter), the opposite of dark
+energy~\cite{TaverasYunes2008}. Route~T1 closes.
+
+\subsection{Route S1: parity CMB phenomenology}\label{sec:S1}
+
+The minimal ECH action has no photon-polarization coupling. The
+parity-odd operator is purely gravitational; the electromagnetic field
+strength does not appear in the Holst term or the reduced action. Any
+assumed coupling produces constant-$\beta$ birefringence with two free
+parameters for one observable---identical to generic ALP phenomenology.
+Route~S1 closes.
+
+\subsection{Foundations A--G: extended program}\label{sec:foundations}
+
+Beyond the four minimal routes, three extended foundations were assessed:
+\begin{itemize}[leftmargin=*]
+  \item \textit{Foundation~A} (PGT propagating torsion): The ghost-free
+    $0^-$ axial torsion mode has mass $m_B = \MPl/(4\sqrt{\pi|t_3|})$
+    and matter coupling $\geff \sim 1/(\MPl\sqrt{|t_3|})$. The
+    \textit{mass-coupling lock} (Barrier~1): $m_B$ and $\geff$ decrease
+    together, with $m_B/\geff \sim \MPl^2$ fixed. At meV-scale mass,
+    the coupling is $10^{29}\times$ below gravitational strength. No
+    symmetry within PGT protects $m_B$.
+  \item \textit{Foundations~B--D}: The Nieh-Yan non-topological route
+    (B), environmental mass (C), and disformal coupling (D) were all
+    closed by distinct mechanisms: topological-shift duality, scalar-tensor
+    universality, and Planck suppression, respectively.
+  \item \textit{Foundations~E--G}: Scale separation, attractor-sensitivity
+    dilemma, and parameter immunity closed the remaining directions.
+\end{itemize}
+
+\subsection{Closure summary}\label{sec:closure_summary}
+
+\begin{table}[t]
+\centering
+\caption{\label{tab:closures} Tested routes and outcomes. Four minimal
+routes plus Foundation~A (the most natural PGT extension).}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+\textbf{Route} & \textbf{Target} & \textbf{Method} & \textbf{Failure} \\
+\hline
+Track B & Condensate & Fierz + NJL & $\Gsp < 0$ at $\BI < 1$ \\
+G v1 & $\Gamma[e]$ & 1-loop & $\slashed{D}$ is $\BI$-free \\
+T1 & $\theta(x)$ & Lit.\ review & $=$ standard ALP \\
+S1 & Birefr. & Assessment & No photon coupling \\
+Found.\ A & PGT $0^-$ & Phase 1+2 & Mass-coupling lock \\
+Found.\ B & Nieh-Yan & MAG analysis & Top.-shift duality \\
+Found.\ C & Environ. & Scalar-tensor & FRW universality \\
+Found.\ D & Disformal & Connection & Planck suppression \\
+Found.\ E & Integrals & Scale sep. & $k_{\rm CMB}/k_b$ \\
+Found.\ F & Attractors & IC analysis & Sensitivity dilemma \\
+Found.\ G & Vacuum sel. & Cyclic & Parameter immunity \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+%% ============================================================
+%%  6. STRUCTURAL LESSONS FROM THE DE PROGRAM
+%% ============================================================
+\section{Structural Lessons}\label{sec:lessons}
+
+The closures reveal a hierarchy of structural obstructions. Lessons~1--5
+emerge from the minimal ECH model; Lesson~6 from the PGT extension.
+
+\subsection{Lesson 1: Algebraic torsion washes out}
+
+In the minimal ECH model, torsion is non-propagating. Its equation of
+motion is algebraic: contorsion $K$ is determined pointwise by the fermion
+spin density. Torsion elimination is exact and complete---no torsion-sector
+information survives into the reduced action except through the
+four-fermion coupling constants.
+
+\subsection{Lesson 2: Fixed $\BI$ leaves no IR fingerprint}
+
+$\BI$ enters the reduced action only through $\Geff$ and $\Gsp$ in the
+four-fermion interaction. These are UV-scale contact couplings. At one
+loop, the fermion determinant is $\BI$-independent. At the condensate
+level, the coupling is subcritical. $\BI$ sets the UV-scale spin-torsion
+structure but does not generate low-energy phenomena.
+
+\subsection{Lesson 3: Dynamical $\BI$ reduces to generic ALP}
+
+The Nieh-Yan 4-form $N_4 = d(e^I \wedge T_I)$ is exact in 4D. Any
+coupling of a pseudoscalar $\theta$ to $N_4$ reduces to boundary terms
+plus standard kinetic/coupling structures. The gravitational origin is
+topologically protected from leaving a local dynamical imprint.
+
+\subsection{Lesson 4: Parity alone is not a mechanism}
+
+Without a derived coupling to observable sectors, the ECH action's
+parity-odd sector produces no testable prediction distinguishing the
+framework from generic alternatives. Parity is a structural property,
+not by itself a mechanism or signal source.
+
+\subsection{Lesson 5: No scale protection in the minimal model}
+
+None of the tested routes addresses naturalness. The condensate route
+produces the wrong sign. The one-loop route has standard renormalization.
+The dynamical Immirzi route requires $V(\theta_0) = \Lobs$ by hand.
+
+\subsection{Lesson 6: The mass-coupling lock}\label{sec:lesson6}
+
+Even when torsion propagates (PGT), the parameter that controls the
+torsion mass also controls the matter coupling:
+\begin{equation}\label{eq:lock}
+  m_B \propto \frac{1}{\sqrt{|t_3|}}, \qquad
+  \geff \propto \frac{1}{\sqrt{|t_3|}}, \qquad
+  \frac{m_B}{\geff} \sim \MPl^2.
+\end{equation}
+Making the mode cosmologically light automatically makes it
+cosmologically inert. The lock occurs generically when a single parameter
+controls both the kinetic normalization and the mass of a geometric mode.
+No symmetry within PGT protects the mass, and graviton loops generate
+$\delta m_B^2 \sim \MPl^2/(16\pi^2)$, requiring fine-tuning of $1$ in
+$10^{57}$ for meV-scale mass.
+
+
+%% ============================================================
+%%  PART III: BOUNCE OBSERVABLE SIGNATURES
+%% ============================================================
+
+%% ============================================================
+%%  7. BOUNCE TENSOR SPECTRUM (Branch H)
+%% ============================================================
+\section{Bounce Tensor Spectrum}\label{sec:tensor}
+
+\subsection{Background solution}\label{sec:background}
+
+For a radiation-dominated fluid ($p = \rho/3$) on the modified Friedmann
+equation~\eqref{eq:modfriedmann}, the exact scale factor is
+\begin{equation}\label{eq:scale_factor}
+  a(t) = a_b\bigl(1 + 4\alpha^2 t^2\bigr)^{1/4},
+\end{equation}
+where $a_b$ is the minimum scale factor at the bounce ($t=0$) and
+\begin{equation}\label{eq:alpha}
+  \alpha = \sqrt{\frac{8\pi}{3}}\,\MPl
+\end{equation}
+is set by the Planck scale. At late times ($\alpha t \gg 1$),
+Eq.~\eqref{eq:scale_factor} reduces to $a \propto t^{1/2}$, the standard
+radiation-dominated expansion.
+
+\subsection{Tensor perturbation equation}
+
+Tensor perturbations $h_{ij}$ on the bounce background satisfy the
+standard wave equation in conformal time $\eta$:
+\begin{equation}\label{eq:tensor_mode}
+  \mu_k'' + \Bigl(k^2 - \frac{a''}{a}\Bigr)\mu_k = 0,
+\end{equation}
+where $\mu_k = a\,h_k$ is the Mukhanov variable, primes denote
+derivatives with respect to conformal time, and the effective potential is
+\begin{equation}\label{eq:tensor_potential}
+  \frac{a''}{a} = \frac{2\alpha^2 a_b^2}{\bigl(1 + 4\alpha^2 t^2\bigr)^{3/2}}.
+\end{equation}
+The potential is \textit{always positive}, localized within a time
+$\Delta t \sim 1/\alpha \sim t_{\rm Pl}$ around the bounce, and defines a
+characteristic wavenumber $k_b = a_b\sqrt{2}\,\alpha \approx
+1.88\,a_b\,\MPl$.
+
+\subsection{Bogoliubov coefficients}
+
+Numerical solution of Eq.~\eqref{eq:tensor_mode} with vacuum initial
+conditions in the contracting phase yields the Bogoliubov coefficient:
+\begin{equation}\label{eq:bogoliubov}
+  |\beta_k|^2 \approx 0.855\,\frac{k_b^2}{k^2}
+  \quad \text{for } k \ll k_b,
+\end{equation}
+with exponential suppression for $k \gg k_b$. The $1/k^2$ scaling is
+confirmed analytically from the Born approximation for scattering off
+the localized potential.
+
+\subsection{Tensor power spectrum}
+
+The tensor power spectrum is
+\begin{equation}\label{eq:PT}
+  P_T(k) \propto k^2\bigl(1 + 2|\beta_k|^2\bigr) \approx \text{const}
+  \quad \text{for } k \ll k_b.
+\end{equation}
+The $k^2$ phase-space factor exactly cancels the $1/k^2$ from the
+Bogoliubov coefficient, producing a \textit{flat} (scale-invariant)
+spectrum with
+\begin{equation}\label{eq:nT}
+  n_T \approx 0 \quad (\text{numerical: } n_T = -0.002 \pm 0.01).
+\end{equation}
+The absolute amplitude, however, is suppressed by the enormous redshift
+from the bounce epoch to the present:
+\begin{equation}\label{eq:PT_amplitude}
+  \boxed{P_T \approx 2 \times 10^{-64},}
+\end{equation}
+reflecting a dilution factor $(a_b/a_0)^2 \sim 10^{-65}$. The
+tensor-to-scalar ratio is correspondingly
+\begin{equation}\label{eq:r}
+  r = \frac{P_T}{P_S} \sim \frac{10^{-64}}{10^{-9}} \sim 10^{-55},
+\end{equation}
+which is 51 orders of magnitude below any conceivable detection
+threshold.
+
+\subsection{Chirality analysis}
+
+A key question is whether the spin-torsion bounce produces chiral
+gravitational waves (different amplitudes for left- and right-circular
+polarizations). Six candidate parity-odd mechanisms were analyzed:
+
+\begin{table}[t]
+\centering
+\caption{\label{tab:parity} Parity-odd candidate mechanisms. None
+provides a tensor chirality source within the minimal model.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+\textbf{Candidate} & \textbf{Parity-odd?} & \textbf{Tensor coupling?} \\
+\hline
+$(J^5)^2$ interaction & No (even) & --- \\
+$n_5$ background & Conditional & No \\
+Holst/Immirzi & Rescales only & No \\
+Dynamical Nieh-Yan & Yes (not EC) & Generic ALP \\
+Chern-Simons $\tilde{R}R$ & Yes (not EC) & Yes (not EC) \\
+Chiral anomaly & Yes (quantum) & No ($\tilde{R}R=0$ on FRW) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The result is unambiguous:
+\begin{equation}\label{eq:chirality}
+  \boxed{\Delta\chi(k) \equiv \frac{P_L - P_R}{P_L + P_R} = 0
+  \quad \text{(exact)}.}
+\end{equation}
+The four-fermion interaction $(J^5_\mu)^2$ is the product of two
+pseudovectors, giving a \textit{scalar}---it is parity-\textit{even}
+despite arising from parity-odd torsion. FRW isotropy eliminates all
+spatial parity-odd backgrounds ($\langle J^5_i\rangle = 0$), and the
+Pontryagin density vanishes identically on FRW
+($\tilde{R}^{\mu\nu}_{\;\;\;\rho\sigma}R^{\rho\sigma}_{\;\;\;\mu\nu}=0$).
+The bounce breaks time-reversal symmetry, not spatial parity.
+
+This constitutes \textit{Barrier~8: parity-even effective interaction}.
+The spin-torsion four-fermion interaction is parity-even; FRW isotropy
+eliminates all remaining parity-odd backgrounds; no chirality in tensor
+observables.
+
+\subsection{Characteristic frequency}
+
+The bounce tensor spectrum extends from $f=0$ to a cutoff at
+\begin{equation}\label{eq:fb_minimal}
+  f_b \approx 8\;\text{GHz}
+\end{equation}
+in the minimal model. This is far above any gravitational wave detector
+band.
+
+
+%% ============================================================
+%%  8. SCALAR PERTURBATIONS (Branch K)
+%% ============================================================
+\section{Scalar Perturbations}\label{sec:scalar}
+
+\subsection{Bardeen equation through the bounce}
+
+Scalar perturbations of a radiation fluid on the bounce background are
+described by the Bardeen potential $\Phi$, which satisfies
+\begin{equation}\label{eq:bardeen}
+  \ddot\Phi + 5H\dot\Phi +
+  \Bigl[\frac{k^2}{3a^2} + 2\dot H + 4H^2\Bigr]\Phi = 0.
+\end{equation}
+Crucially, this equation is \textit{regular} at $H=0$ (the bounce
+instant), unlike the Mukhanov-Sasaki variable $v = z\mathcal{R}$ where
+$z \propto a\dot\phi/H$ diverges at the bounce. The Bardeen formulation
+avoids this singularity entirely, as noted by Peter and
+Pinto-Neto~\cite{PeterPintoNeto2008}.
+
+\subsection{Transfer function}
+
+\paragraph{Analytic proof.}
+The Bardeen equation possesses exact time-reversal symmetry on the
+spin-torsion bounce background. Under $\eta \to -\eta$, the growing mode
+of contraction maps to the decaying mode of expansion, and the constant
+mode maps to itself with unit amplitude. Therefore
+\begin{equation}\label{eq:transfer}
+  \boxed{T(k) = 1 \quad \text{for all } k \ll k_b.}
+\end{equation}
+The bounce does not modify the scalar power spectrum at any observable
+scale. Features appear only at $k \sim k_b$ (GHz frequencies).
+
+\paragraph{Numerical confirmation.}
+$T(k) = 1.000$ to machine precision for $k/k_b < 0.1$. The growing mode
+amplifies by $(k_b/k)^3 \sim 10^{84}$ for CMB modes during contraction,
+but the time-reversal symmetry maps this entirely to the decaying mode
+of the expanding phase. No matching ambiguity, no spectral distortion.
+
+\subsection{Non-Gaussianity}
+
+The torsion-specific $(J^5)^2$ interaction generates
+\begin{equation}\label{eq:fNL}
+  f_{\rm NL}^{\rm torsion} \sim 10^{-56}
+\end{equation}
+at CMB scales, suppressed by the $(k/k_b)^2$ localization of the bounce
+interaction. Generic mode coupling through gravity gives $f_{\rm NL}
+\sim \mathcal{O}(1)$ at most---the same as any bounce. No distinctive
+non-Gaussian signal.
+
+\subsection{Pre-bounce dependence}
+
+The observed scalar spectrum ($A_s$, $n_s$, running) is entirely
+determined by the pre-bounce contraction mechanism, which the minimal
+model does not specify. A pure radiation contraction gives
+$P_S \propto k^4$ (excluded by CMB data). A viable spectrum requires
+a matter-dominated or ekpyrotic pre-bounce phase---physics beyond the
+minimal spin-torsion bounce.
+
+\subsection{Summary: scalar sector}
+
+The scalar sector provides \textit{no} distinctive bounce signature at
+observable scales. The scale separation $k_{\rm CMB}/k_b \sim 10^{-28}$
+ensures that the bounce is a sub-resolution event for all cosmological
+probes. Everything observable (the spectral shape, the transfer function)
+is generic to any time-symmetric radiation bounce; everything specific to
+spin-torsion (the bounce profile, the $(J^5)^2$ correction) is confined
+to GHz scales.
+
+
+%% ============================================================
+%%  9. BOUNCE-COMPATIBLE DARK ENERGY AND STATE SELECTION
+%% ============================================================
+\section{Bounce-Compatible Dark Energy and State Selection}\label{sec:compat}
+
+\subsection{Horndeski stability at the bounce (Branch I)}\label{sec:horndeski}
+
+We tested whether the spin-torsion bounce ($H=0$, $\dot{H} \approx
+3.52\,\MPl^2$) constrains which Horndeski/scalar-tensor dark energy
+models are viable. Six model classes were screened for ghost freedom,
+gradient stability, and EFT validity at the bounce:
+
+\begin{table}[t]
+\centering
+\caption{\label{tab:horndeski} Horndeski model classes at the bounce.}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+\textbf{Class} & \textbf{Verdict} & \textbf{Key finding} \\
+\hline
+Quintessence & Trivial compat. & $(Q_S,c_S^2) = (1,1)$ \\
+K-essence & Trivial compat. & $X \to 0$ at bounce \\
+Braiding & EFT breaks & $Q_S \to 0$; $M \sim H_0 \ll \MPl$ \\
+Non-minimal & Compatible & Tachyonic kick, bounded \\
+Quartic/Quintic & Trivial compat. & Pre-empted by GW170817 \\
+DHOST & EFT breaks & Degeneracy algebraic \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The root cause is scale separation: $\rho_{\rm DE}/\rhocrit \sim
+10^{-122}$. DE fields are frozen ($X \to 0$, $\dot\phi \sim 10^{-60}\,
+\MPl^2$) during the Planck-scale bounce. All stability conditions reduce
+to their trivial limits.
+
+A methodological finding: the EFT-of-DE $\alpha$-parameterization
+(Bellini-Sawicki) is singular at $H=0$ ($\alpha_K \propto 1/H^2$,
+$\alpha_B \propto 1/H$ diverge), while physical stability quantities
+remain finite. Standard Boltzmann codes cannot be applied to bouncing
+cosmologies without reformulation.
+
+\subsection{State selection (Branch J)}\label{sec:state}
+
+Five candidate mechanisms for bounce-triggered dark-energy state selection
+were tested: pNGB misalignment, multi-vacuum selection, symmetry
+re-breaking, metastable trapping, and nonadiabatic excitation. All five
+fail for three converging reasons:
+
+\paragraph{Barrier 9: Hamiltonian phase-space conservation.}
+The bounce is a Hamiltonian scattering event occurring near $H=0$
+(negligible friction). Liouville's theorem guarantees that the mapping
+from pre-bounce to post-bounce states preserves phase-space volume. The
+bounce \textit{rotates} dark-sector initial conditions but cannot
+\textit{contract} them to a predictive outcome. Phase-space contraction
+requires dissipation or irreversibility, both absent at the bounce
+instant.
+
+\paragraph{Naturalness dilemma.}
+Any curvature coupling strong enough to affect the dark sector at the
+bounce ($\xi \sim \mathcal{O}(1)$) generates Planck-scale radiative
+corrections to the DE mass ($\delta m^2 \sim \xi\,\MPl^2$), destroying
+the DE potential structure. A coupling weak enough to preserve the DE
+sector ($\xi \sim 10^{-124}$) is far too weak for state selection.
+
+\paragraph{Scale separation.}
+The $10^{61}$ hierarchy between $\MPl$ and $m_{\rm DE}$ prevents
+parametric resonance (frequency mismatch), meaningful field evolution
+during the bounce ($t_{\rm Pl} \ll 1/m_{\rm DE}$), and nonadiabatic
+effects at DE frequencies.
+
+
+%% ============================================================
+%%  10. UV->IR BRIDGE EXTENSIONS (Branch L)
+%% ============================================================
+\section{UV$\to$IR Bridge Extensions}\label{sec:bridge}
+
+The scale separation $k_{\rm CMB}/k_b \sim 10^{-28}$ is the meta-barrier
+underlying many of the null results above. Branch~L screened seven
+candidate mechanisms for transferring bounce-scale physics to observable
+scales.
+
+\subsection{Screening results}
+
+\begin{itemize}[leftmargin=*]
+  \item \textit{PGT lower-scale bounce}: Survives. In Poincar\'e gauge
+    theory, torsion propagates with mass $\mT$, and the effective bounce
+    critical density becomes
+    \begin{equation}\label{eq:rhocrit_pgt}
+      \rhocrit^{\rm eff} \sim \mT^2\,\MPl^2.
+    \end{equation}
+    For $\mT \sim 10^3$--$10^9$~GeV, bounce features move to the
+    LISA--ET frequency bands.
+  \item \textit{Bounce + brief inflation}: Killed---reduces to standard
+    inflation with the bounce irrelevant.
+  \item \textit{Time-asymmetric matter bounce}: Killed---not
+    bounce-specific (any bounce works).
+  \item \textit{Generic curvaton}: Killed---not bounce-specific.
+  \item \textit{Torsion-curvaton}: Conditional ($\sim\!3\%$)---requires
+    PGT with specific parameter tuning.
+  \item \textit{Bounce-triggered relics}: Killed---not bounce-specific.
+  \item \textit{Cyclic resonance}: Killed---pathological (Foundation~G
+    incompatibility).
+\end{itemize}
+
+The screening reveals a sharp dichotomy (\textit{Barrier~10: UV$\to$IR
+specificity dilemma}): mechanisms that beat scale separation generically
+(contraction-era spectrum generation, inflation) do not need the bounce,
+while the only mechanism that is bounce-specific (lowering $\rhocrit$ via
+PGT) requires changing the gravitational theory itself.
+
+\subsection{PGT bounce parameters}
+
+The PGT bounce frequency scales as
+\begin{equation}\label{eq:fb_pgt}
+  f_b \approx 2.6 \times 10^{10}\,
+  \Bigl(\frac{\mT}{\MPl}\Bigr)^{\!1/2}\;\text{Hz},
+\end{equation}
+and the torsion mass determines the bounce scale:
+\begin{equation}\label{eq:mT}
+  \mT = \frac{\MPl}{2\sqrt{|t_3|}}.
+\end{equation}
+
+\begin{table}[t]
+\centering
+\caption{\label{tab:pgt_scan} PGT bounce parameter scan: torsion mass
+$\mT$ vs.\ bounce frequency $f_b$ and peak GW amplitude
+$\OmGW^{\rm peak}h^2$. The detector gap is the ratio of detector
+sensitivity to signal amplitude.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+$\mT$ [GeV] & $f_b$ [Hz] & $\OmGW^{\rm peak}h^2$ & Gap to best detector \\
+\hline
+$10^{18}$ ($=\MPl$) & $2.6\times 10^{10}$ & $5\times 10^{-6}$ & $10^4$ (HF) \\
+$10^{14}$ & $2.6\times 10^{8}$ & $5\times 10^{-14}$ & $10^9$ (ET) \\
+$10^{10}$ & $2.6\times 10^{6}$ & $5\times 10^{-22}$ & $10^{12}$ (ET) \\
+$10^{7}$ & $2.4\times 10^{4}$ & $3\times 10^{-30}$ & $10^{17}$ (ET) \\
+$10^{4}$ & $2.6\times 10^{2}$ & $5\times 10^{-34}$ & $10^{21}$ (LIGO) \\
+$10^{0}$ & $2.6$ & $5\times 10^{-42}$ & $10^{32}$ (DECIGO) \\
+$10^{-3}$ & $8.2\times 10^{-2}$ & $5\times 10^{-48}$ & $10^{35}$ (LISA) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+%% ============================================================
+%%  11. PGT GHOST-FREE PARAMETER SPACE (Branch L Phase 2)
+%% ============================================================
+\section{PGT Ghost-Free Parameter Space}\label{sec:ghost}
+
+\subsection{Sector II: spin-$0^-$ axial torsion}
+
+In the quadratic PGT action, the ghost-free parameter subspace has been
+mapped by Sezgin and van
+Nieuwenhuizen~\cite{SezginNieuwenhuizen1980} and
+Karananas~\cite{Karananas2015}. The cleanest single-mode model is the
+spin-$0^-$ (pseudoscalar axial torsion), which is ghost-free for all
+$|t_3| > 0$ and has one light mode.
+
+\subsection{Sector I: rejected}
+
+The spin-$0^+$ scalar torsion mode develops a ghost at the target mass
+scale required for observable bounce features. This sector is rejected.
+
+\subsection{Mass-coupling lock reappears}
+
+In the ghost-free $0^-$ sector, canonical normalization gives
+\begin{equation}\label{eq:geff_pgt}
+  \geff \sim \frac{\mT}{\MPl^2},
+\end{equation}
+confirming the mass-coupling lock (Lesson~6): the effective matter
+coupling is $\mT/\MPl^2$, which vanishes in the light-mass limit.
+
+This constitutes \textit{Barrier~11: decoupling universality}. The
+pattern is universal: any geometric mode whose kinetic term is inherited
+from the gravitational action without an independent mass-generating
+mechanism will exhibit this decoupling in the canonically normalized
+theory.
+
+
+%% ============================================================
+%%  12. PGT BOUNCE GRAVITATIONAL WAVE SPECTRUM (Branch M)
+%% ============================================================
+\section{PGT Bounce Gravitational Wave Spectrum}\label{sec:pgt_gw}
+
+\subsection{Background evolution}
+
+The PGT bounce background has the same functional form as the minimal
+model, Eq.~\eqref{eq:scale_factor}, but with $\alpha$ replaced by
+\begin{equation}\label{eq:alpha_pgt}
+  \alpha_{\rm PGT} = \mT\sqrt{\frac{8\pi}{3}},
+\end{equation}
+reflecting the lowered bounce energy scale $\rhocrit^{\rm eff} \sim
+\mT^2\,\MPl^2$.
+
+\subsection{Effective potential and mode equation}
+
+The tensor mode equation is identical to Eq.~\eqref{eq:tensor_mode},
+with the effective potential
+\begin{equation}\label{eq:Veff_pgt}
+  \frac{a''}{a} = \frac{2\alpha_{\rm PGT}^2\,a_b^2}
+  {\bigl(1 + 4\alpha_{\rm PGT}^2\,t^2\bigr)^{3/2}}.
+\end{equation}
+
+\subsection{Bogoliubov spectrum}
+
+The Bogoliubov coefficient follows the same functional form as the
+minimal model:
+\begin{equation}\label{eq:beta_pgt}
+  |\beta_k|^2 \approx
+  \begin{cases}
+    \text{const} & k \ll k_b, \\
+    \exp(-\pi k/k_b) & k \gg k_b.
+  \end{cases}
+\end{equation}
+
+\subsection{GW energy density: the critical result}
+
+The GW energy density spectrum is
+\begin{equation}\label{eq:OmGW}
+  \boxed{\OmGW(f)\,h^2 \approx 5\times 10^{-6}\,
+  \Bigl(\frac{\mT}{\MPl}\Bigr)^{\!2}\,S(f/f_b),}
+\end{equation}
+where $S(x)$ is a universal shape function with $S \approx 1$ for $x \ll
+1$, oscillatory with $1/x^2$ envelope near $x \sim 1$, and exponentially
+suppressed for $x \gg 1$.
+
+The critical feature is the factor $(\mT/\MPl)^2$---this is \textit{not}
+$\mathcal{O}(1)$ as might be naively expected. The efficiency of vacuum
+amplification is
+\begin{equation}\label{eq:efficiency}
+  \varepsilon = \frac{\rho_{\rm GW}}{\rhocrit} \sim
+  \frac{\mT^2}{\MPl^2} = \Bigl(\frac{\mT}{\MPl}\Bigr)^{\!2},
+\end{equation}
+which is the standard graviton production efficiency: $\mathcal{O}(1)$
+gravitons per mode, but each graviton carries energy $\sim \mT$ while
+the total energy budget is $\sim \mT\,\MPl$. The ratio is $(\mT/\MPl)^2$.
+
+\subsection{Amplitude-frequency tradeoff}
+
+The peak amplitude satisfies
+\begin{equation}\label{eq:tradeoff}
+  \OmGW^{\rm peak} \propto f_b^4,
+\end{equation}
+where $f_b \propto \mT^{1/2}$. Lowering $f_b$ by a factor of $10$
+reduces the amplitude by $10^4$. Moving from $f_{\rm Pl} \sim 10^{10}$~Hz
+to LISA frequencies ($10^{-3}$~Hz) requires $10^{13}$ in frequency,
+giving $10^{52}$ in amplitude suppression. This tradeoff is universal to
+\textit{all} vacuum-amplification bounces.
+
+\subsection{Minimum detector gap}
+
+\begin{table}[t]
+\centering
+\caption{\label{tab:detector} Detector sensitivity comparison for the
+PGT bounce GW spectrum. The minimum gap across all frequencies and
+parameter choices is $10^{17}$.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+\textbf{Detector} & \textbf{Band [Hz]} &
+  $\OmGW^{\rm sens}\,h^2$ & \textbf{Min.\ gap} \\
+\hline
+PTA & $10^{-9}$--$10^{-7}$ & $10^{-10}$ & $10^{42}$ \\
+LISA & $10^{-4}$--$10^{-1}$ & $10^{-13}$ & $10^{35}$ \\
+DECIGO & $10^{-1}$--$10^{1}$ & $10^{-16}$ & $10^{26}$ \\
+LIGO O5 & $10^{1}$--$10^{3}$ & $10^{-10}$ & $10^{20}$ \\
+ET & $10^{0}$--$10^{4}$ & $10^{-13}$ & $\mathbf{10^{17}}$ \\
+HF concept & $10^{8}$--$10^{10}$ & $10^{-10}$ & $10^{4}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The best case is the Einstein Telescope (ET) at $\sim\!10^4$~Hz, with
+optimal $\mT \sim 10^7$~GeV giving $\OmGW^{\rm peak}\,h^2 \sim 3\times
+10^{-30}$ against a sensitivity of $\sim\!10^{-13}$. The gap is
+$10^{17}$---insurmountable.
+
+\subsection{Comparison with other GW sources}
+
+The bounce spectrum (flat + exponential cutoff) differs qualitatively
+from inflation (near-flat power law), phase transitions (peaked with
+$f^3$ rise and $f^{-1}$ decay), and cosmic strings (flat without cutoff).
+However, these shape differences are moot: the amplitude is $\geq 10^{17}$
+below any detector threshold. Furthermore, the amplitude scaling
+$\OmGW \propto (H_{\rm bounce}/\MPl)^2$ applies equally to LQC,
+ekpyrotic, and any other bounce model relying on vacuum amplification.
+
+\subsection{Barrier 12: Vacuum amplification ceiling}
+
+The GW energy density from vacuum amplification at a cosmological bounce
+satisfies
+\begin{equation}\label{eq:ceiling}
+  \OmGW \propto \Bigl(\frac{H_{\rm bounce}}{\MPl}\Bigr)^{\!2}
+  \propto \Bigl(\frac{f_b}{f_{\rm Pl}}\Bigr)^{\!4}.
+\end{equation}
+This fundamental bound ensures that any bounce whose features fall in a
+GW detector band ($f < 10^4$~Hz) produces a signal at least $10^{17}$
+below sensitivity. The bound is model-independent and applies to all
+bounce mechanisms relying on vacuum amplification.
+
+The only escape would be a \textit{non-vacuum} GW source: a pre-bounce
+contraction phase that coherently amplifies tensor modes, post-bounce
+phase transitions, or topological defect formation. All of these either
+require additional physics beyond the bounce or are not bounce-specific.
+
+
+%% ============================================================
+%%  13. BARYOGENESIS AND RELIC PRODUCTION (BRANCH N)
+%% ============================================================
+\section{Baryogenesis and Relic Production}\label{sec:baryogenesis}
+
+The spin-torsion bounce couples directly to fermion chirality through the
+$(J^5)^2$ contact interaction. At the bounce energy scale ($T \sim \MPl$
+for ECH, $T \sim \mT$ for PGT), particle production and asymmetry
+generation are kinematically open. This motivates testing whether the
+bounce can drive baryogenesis, dark matter production, or other relic
+mechanisms.
+
+\subsection{Candidate mechanisms screened}
+
+Seven candidate mechanisms were constructed and screened:
+\begin{enumerate}[leftmargin=*,label=\Alph*.]
+  \item \textit{Axial chemical potential baryogenesis:} The torsion
+    $(J^5)^2$ interaction generates an effective chemical potential
+    $\mu_5 \sim G\,\xi\,n_5$ for chiral fermions, biasing sphaleron
+    processes.
+  \item \textit{Modified heavy fermion decay:} Bounce-era curvature
+    shifts heavy particle masses by $\delta m \sim \mathcal{O}(\MPl)$,
+    modifying CP-violating decay rates.
+  \item \textit{Gravitational superheavy dark matter:} Nonadiabatic
+    particle production at the bounce creates superheavy relics with
+    $m \sim \MPl$.
+  \item \textit{Bounce-modified axion abundance:} The bounce modifies the
+    axion misalignment angle $\theta_i$.
+  \item \textit{Torsion-assisted leptogenesis:} The $(J^5)^2$ interaction
+    enhances lepton-number-violating processes.
+  \item \textit{PBH formation:} Bounce-scale perturbations collapse to
+    primordial black holes.
+  \item \textit{Sterile neutrino production:} Spin-density coupling
+    populates sterile neutrinos during the bounce.
+\end{enumerate}
+
+\subsection{Results}
+
+\textit{All seven candidates are killed.}
+
+The $(J^5)^2$ interaction conserves both baryon number $B$ and lepton
+number $L$. It is a chirality-sensitive \textit{scattering} operator, not
+a $B$- or $L$-violating operator. Any baryogenesis mechanism must rely on
+external $B/L$-violating physics (sphalerons, Majorana masses), with
+torsion providing at most a perturbative correction.
+
+At $T \sim \MPl$, all gravitational-strength interactions have comparable
+rates: $\Gamma \sim G^2 T^5 \sim H$. The torsion $(J^5)^2$ interaction is
+one of approximately $g_* \sim 100$ such channels, contributing
+$\sim\!1\%$ of any effect. It cannot dominate any relic abundance.
+
+The strongest candidate (A: axial $\mu_5$ baryogenesis) produces
+$\eta_B \sim 10^{-9}$ for maximal initial chirality---tantalizingly close
+to observation. But the initial chirality $n_5$ is a \textit{free parameter}
+that the bounce does not set (the gravitational chiral anomaly vanishes:
+$\tilde{R}R = 0$ on FRW, established in Sec.~\ref{sec:tensor}). The
+weakest candidate (D: axion) changes the misalignment angle by
+$\Delta\theta \sim 10^{-96}$~rad---96 orders of magnitude below relevance.
+
+\subsection{Barrier 13a: Gravitational democracy}
+
+\textit{At $T \sim \MPl$, all gravitational-strength interactions have
+comparable rates. The torsion $(J^5)^2$ interaction contributes
+$\sim\!1/g_*$ of the total gravitational effect. It conserves $B$ and $L$,
+so it cannot generate asymmetries that generic gravitational interactions
+do not. No relic abundance or asymmetry is dominated by, or specific to,
+the torsion interaction.}
+
+The bounce is trapped: too high-energy for late-time observables (scale
+separation, Branches~A--M) and too generic at its own energy scale for
+early-time observables (gravitational democracy, Branch~N).
+
+
+%% ============================================================
+%%  14. HIDDEN-SECTOR VACUUM SELECTION (BRANCH O)
+%% ============================================================
+\section{Hidden-Sector Vacuum Selection}\label{sec:hidden}
+
+Branch~J established that purely Hamiltonian (reversible) state selection
+is killed by Liouville's theorem (Barrier~9). The remaining logical
+possibility is \textit{irreversible} mechanisms: thermalization, particle
+production, tunneling, dissipation, or phase-transition hysteresis. We
+test whether the bounce can trigger such processes in a hidden sector,
+indirectly selecting the late-time vacuum energy.
+
+\subsection{Candidate mechanisms screened}
+
+Seven candidates were constructed:
+\begin{enumerate}[leftmargin=*,label=\Alph*.]
+  \item \textit{First-order phase transition:} Bounce curvature
+    ($R \sim \MPl^2$) triggers a hidden-sector transition.
+  \item \textit{Metastable vacuum trapping:} Bounce temporarily deforms
+    the hidden-sector potential, trapping the field.
+  \item \textit{Symmetry restoration/re-breaking:} The bounce restores a
+    hidden symmetry that re-breaks with biased branch selection.
+  \item \textit{Tunneling enhancement:} Bounce-era potential distortion
+    enhances or suppresses quantum tunneling.
+  \item \textit{Nonadiabatic production:} Bounce populates a pNGB hidden
+    sector via particle production.
+  \item \textit{Dissipative reheating:} Post-bounce thermalization
+    selects a thermal branch.
+  \item \textit{Domain-wall percolation:} Bounce-imposed asymmetry biases
+    multi-vacuum domain percolation.
+\end{enumerate}
+
+\subsection{Results}
+
+\textit{All seven candidates are killed.}
+
+The results partition into three structural outcomes:
+
+\textit{(i) Irreversibility is real but not bounce-specific.} Five
+candidates (B, C, E, F, G) involve genuine irreversibility, but the same
+processes occur in any hot cosmology. The bounce provides energy, but so
+does inflationary reheating.
+
+\textit{(ii) Bounce-specific candidates fail on naturalness.} Two
+candidates (A, D) have marginal bounce-specificity: only the
+Planck-scale curvature of the ECH bounce can trigger the transition. But
+the resulting vacuum energy $\rho_{\rm DE}$ is set by hidden-sector
+potential parameters, not by the bounce. The bounce determines
+\textit{whether} a transition occurs, not \textit{what} vacuum energy
+results.
+
+\textit{(iii) The $10^{122}$ hierarchy is untouched.} No mechanism
+connects $\MPl^4$ to $(2.3\;\text{meV})^4$ through bounce dynamics. The
+hierarchy must be bridged by hidden-sector parameters that the bounce
+does not set.
+
+\subsection{Barrier 13b: Bounce--vacuum energy decoupling}
+
+\textit{The bounce operates at scale $M$ ($= \MPl$ or $\mT$). The
+late-time vacuum energy is at scale $\Lambda_{\rm DE}^4$. Any formula
+$\rho_{\rm DE} = f(M, g_i)$ requires a suppression factor
+$\sim\!(\Lambda_{\rm DE}/M)^p$ that cannot be generated by bounce
+dynamics. Adding irreversibility determines whether a transition occurs
+but not the vacuum energy scale. The trigger and the outcome are
+structurally decoupled.}
+
+\subsection{Completeness of the state-change closure}
+
+Barriers~9 and~13 together close \textit{all} state-change mechanisms:
+\begin{itemize}[leftmargin=*]
+  \item Reversible (Hamiltonian) mechanisms: killed by Liouville
+    (Barrier~9).
+  \item Irreversible, bounce-specific mechanisms: killed by decoupling
+    (Barrier~13).
+  \item Irreversible, non-bounce-specific mechanisms: not relevant to the
+    bounce program.
+\end{itemize}
+There is no remaining category. The logical space of bounce$\to$DE
+state-change connections is exhausted.
+
+
+%% ============================================================
+%%  15. PGT TORSION RELIC COSMOLOGY (BRANCH P)
+%% ============================================================
+\section{PGT Torsion Relic Cosmology}\label{sec:relic}
+
+The last surviving positive channel was torsion relic cosmology: if the
+PGT Sector~II pseudoscalar torsion mode $\phi(t) \equiv S_0(t)$ carries
+$\mathcal{O}(1)$ of the bounce energy, its post-bounce decay yields a
+massive relic constrained by BBN, CMB spectral distortions, and dark
+radiation bounds. The gating question is whether $\phi$ is actually
+populated at the bounce.
+
+\subsection{FRW parity protection}
+
+The Sector~II pseudoscalar mode $S_0(t)$ is kinematically allowed on FRW:
+isotropy permits $S_\mu = (S_0(t), 0, 0, 0)$. However, $S_0$ is
+parity-\textit{odd} (a pseudoscalar under spatial inversion). FRW
+spacetime is parity-invariant, and the PGT Sector~II action is quadratic
+in $S_\mu$, possessing an exact $\mathbb{Z}_2$ symmetry $\phi \to -\phi$.
+The field equation on FRW is
+\begin{equation}\label{eq:torsion_kg}
+  \ddot{\phi} + 3H\dot{\phi} + \mT^2 \phi = 0\,,
+\end{equation}
+with \textit{no source term}: parity-even matter cannot source a
+parity-odd field. The origin $\phi = 0$ is a stable fixed point
+($\mT^2 > 0$), and the bounce---being a parity-even gravitational
+event---cannot dislodge it.
+
+\subsection{Population mechanisms tested}
+
+Five population scenarios were assessed:
+\begin{enumerate}[leftmargin=*]
+  \item \textit{Self-consistent bounce:} The modified Friedmann equation
+    works with $\phi = 0$ (the contact-term $(J^5)^2$ alone drives the
+    bounce). The propagating mode is not required.
+  \item \textit{Quantum vacuum fluctuations:} Produce particle pairs
+    (occupation number $\langle n_k \rangle$), not a homogeneous
+    condensate $\langle\phi\rangle \neq 0$.
+  \item \textit{Chiral matter sourcing:} A chiral asymmetry $n_5 \neq 0$
+    in the matter sector could source $\phi$ through the axial coupling,
+    but $n_5$ is a free parameter (the gravitational chiral anomaly
+    $\tilde{R}R = 0$ on FRW; see Sec.~\ref{sec:tensor}) and the sourced
+    amplitude is $\phi \sim G\,n_5 \ll \MPl$.
+  \item \textit{Parametric resonance:} The bounce is $\sim\!1$ oscillation
+    period long; no time for resonant buildup.
+  \item \textit{Unmotivated initial condition:} $\phi(0) \sim \MPl$ as a
+    free parameter. Not a prediction---equivalent to assuming the
+    conclusion.
+\end{enumerate}
+No mechanism populates the pseudoscalar mode at $\mathcal{O}(\MPl)$ or
+$\mathcal{O}(\mT)$.
+
+\subsection{Literature context}
+
+The PGT cosmology literature (Shie, Nester, Yo 2008; Chen \etal\ 2009)
+uses the parity-\textit{even} trace vector $T_0(t)$, which is naturally
+nonzero on FRW. This is a fundamentally different mode (Sector~I/III),
+which has ghost issues at the target mass scale. The specific question
+of pseudoscalar population at a PGT bounce had not been addressed; our
+answer is negative.
+
+\subsection{Barrier 14: Parity protection of the torsion vacuum}
+
+\textit{The PGT Sector~II pseudoscalar torsion mode has an exact
+$\mathbb{Z}_2$ parity symmetry $\phi \to -\phi$ that protects $\phi = 0$
+as the unique parity-invariant vacuum on FRW. No parity-even dynamics
+(including the bounce) can excite the mode. The torsion relic abundance
+is zero unless parity is explicitly broken by the initial conditions.}
+
+This closes the last positive observable channel of the minimal PGT
+bounce program.
+
+
+%% ============================================================
+%%  16. COMPLETE BARRIER CATALOG
+%% ============================================================
+\section{Complete Barrier Catalog}\label{sec:barriers}
+
+Fourteen structural barriers have been identified across the full research
+program (Branches~A--P). They span five distinct failure modes:
+energy-budget failure (Barriers~1--7), signature failure
+(Barriers~8, 10--12), reversible state-selection failure (Barrier~9),
+irreversible state-selection / relic failure (Barrier~13), and relic
+population failure (Barrier~14).
+
+\begin{table*}[t]
+\centering
+\caption{\label{tab:barriers} Complete catalog of fourteen structural
+barriers identified in the spin-torsion bounce and dark energy program.}
+\begin{ruledtabular}
+\begin{tabular}{clll}
+\textbf{\#} & \textbf{Barrier} & \textbf{Branch} & \textbf{Description} \\
+\hline
+1 & Mass-coupling lock & Found.\ A (PGT) & $m_B$ and $\geff$ decrease together; $m_B/\geff \sim \MPl^2$ fixed \\
+2 & Topological-shift duality & Found.\ B & Nieh-Yan non-topological in MAG but geometric content blocked \\
+3 & Scalar-tensor universality & Found.\ C & Environmental mass reduces to standard scalar-tensor on FRW \\
+4 & Planck suppression & Found.\ D & Connection coupling gives 1~$\partial\phi$/vertex; disformal requires 2 \\
+5 & Scale separation & Found.\ E & $k_{\rm CMB}/k_b \sim 10^{-28}$; global integrals insensitive to bounce \\
+6 & Attractor-sensitivity dilemma & Found.\ F & Attractors erase IC; sensitivity requires fine-tuning \\
+7 & Parameter immunity & Found.\ G & Cyclic incompatibility; continuous vacuum solutions \\
+8 & Parity-even effective interaction & Branch H & $(J^5)^2$ is parity-even; FRW kills spatial P-odd backgrounds \\
+9 & Hamiltonian phase-space conservation & Branch J & Liouville prevents phase-space contraction at bounce \\
+10 & UV$\to$IR specificity dilemma & Branch L$_1$ & Observable $\Rightarrow$ generic; specific $\Rightarrow$ non-minimal \\
+11 & Decoupling universality & Branch L$_2$ & Light PGT gauge fields decouple universally \\
+12 & Vacuum amplification ceiling & Branch M & $\OmGW \propto (H/\MPl)^2$; minimum $10^{17}$ gap to detectors \\
+13 & Gravitational democracy / & Branches N, O & At $T\sim\MPl$, torsion is 1 of $\sim\!100$ channels; \\
+   & bounce--vacuum decoupling & & bounce trigger decoupled from vacuum energy outcome \\
+14 & Parity protection of torsion vacuum & Branch P & $\mathbb{Z}_2$: $\phi\to-\phi$ protects $\phi=0$; no population mechanism \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+%% ============================================================
+%%  14. DISCUSSION
+%% ============================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{The generic-specific dichotomy}
+
+The central finding of the bounce characterization is a sharp dichotomy:
+\textit{what is detectable is generic to any bounce; what is specific to
+torsion is undetectable.}
+
+Observable quantities---the flat tensor spectrum ($n_T \approx 0$), the
+unit transfer function ($T(k) = 1$), the GW spectral shape (flat +
+exponential cutoff)---are all shared by any time-symmetric radiation
+bounce. They are properties of the bounce \textit{geometry}, not the
+bounce \textit{mechanism}.
+
+Torsion-specific quantities---the critical density $\rhocrit \approx
+0.21\,\MPl^4$, the exact bounce profile, the $(J^5)^2$ corrections, the
+chirality $\Delta\chi = 0$---are all either unobservable (confined to
+GHz scales) or null (parity-even interaction, Pontryagin density vanishes
+on FRW).
+
+\subsection{Comparison with other bouncing cosmologies}
+
+\subsubsection{Loop quantum cosmology (LQC)}
+
+LQC also produces a modified Friedmann equation of the
+form~\eqref{eq:modfriedmann} with $\rhocrit \approx 0.41\,\rhoPl$
+(slightly different numerical coefficient). The tensor spectrum has the
+same functional form: flat, with $P_T \sim 10^{-64}$ and $n_T \approx
+0$. The GW amplitude-frequency tradeoff~\eqref{eq:ceiling} applies
+identically. The spin-torsion bounce and LQC bounce are observationally
+indistinguishable at any accessible frequency.
+
+\subsubsection{Ekpyrotic bounce}
+
+Ekpyrotic scenarios produce a strongly blue-tilted tensor spectrum
+($n_T \sim 2$), in contrast to the flat spectrum of the spin-torsion and
+LQC bounces. However, the ekpyrotic bounce amplitude is similarly
+suppressed. In principle, $n_T$ distinguishes ecpyrotic from
+radiation-symmetric bounces---but only if the amplitude is detectable,
+which it is not.
+
+\subsubsection{Matter bounce}
+
+The matter bounce scenario~\cite{Quintin2015,Cai2014} also produces
+$n_T \approx 0$ (scale-invariant tensors), making it degenerate with
+the spin-torsion bounce. The matter bounce requires a specific
+pre-bounce contraction phase (dust-like), which is not part of the
+minimal spin-torsion model. Both models face the same amplitude
+suppression.
+
+\subsection{The complementary trap}
+
+The spin-torsion bounce is trapped between three complementary failures:
+\begin{itemize}[leftmargin=*]
+  \item \textit{Too high-energy} for late-time observables (scale
+    separation, Planck suppression---Branches A--M).
+  \item \textit{Too generic} at its own energy scale (gravitational
+    democracy---Branch~N). At $T \sim \MPl$, torsion is one
+    gravitational-strength channel among $\sim\!100$.
+  \item \textit{Too decoupled} from late-time vacuum energy
+    (bounce--vacuum decoupling---Branch~O). The bounce trigger and the
+    vacuum energy outcome are structurally independent.
+\end{itemize}
+
+\subsection{What would change the assessment}
+
+The assessment would change if:
+\begin{enumerate}[leftmargin=*]
+  \item A \textit{non-vacuum} GW source is identified at the bounce
+    (particle production, phase transition) that does not suffer from
+    the vacuum amplification ceiling. This would require a detailed model
+    of the bounce-to-inflation transition.
+  \item A \textit{pre-bounce} contraction phase with $w \neq 1/3$ is
+    specified, allowing horizon exit of tensor modes at CMB scales during
+    contraction. This is additional physics beyond the spin-torsion bounce.
+  \item A mechanism breaking the mass-coupling lock is found (independent
+    mass-generating mechanism), enabling observable torsion-specific
+    signatures.
+  \item Non-perturbative or multi-loop effects generate $\BI$-dependent
+    vacuum structure not accessible at the tested orders.
+  \item A mechanism is found that connects the bounce energy scale to the
+    vacuum energy scale without fine-tuning, evading both Liouville
+    (Barrier~9) and bounce--vacuum decoupling (Barrier~13).
+\end{enumerate}
+None of these outcomes is assumed or expected within the minimal and
+near-minimal program assessed here.
+
+\subsection{The program as a publishable negative result}
+
+Negative results in theoretical physics are undervalued but scientifically
+important. The combined program (four minimal DE routes, seven extended
+foundations, five bounce observable channels, seven baryogenesis/relic
+candidates, seven hidden-sector vacuum candidates) establishes:
+\begin{itemize}[leftmargin=*]
+  \item A complete classification of failure modes (energy-budget,
+    signature, reversible state-selection, irreversible state-selection /
+    relic production).
+  \item Fourteen structural barriers spanning five failure modes.
+  \item Six structural lessons and five decision requirements (DR1--DR5)
+    constraining future proposals.
+  \item A reproducible methodology for disciplined model testing.
+  \item Exhaustive coverage of the logical space: direct derivation
+    (A--G), observable signatures (H, K, L--M), state selection (J, O),
+    UV$\to$IR bridge (L), relic production (N), and GW spectrum (M).
+\end{itemize}
+The program's value lies not in any single null result but in the
+\textit{completeness} of the closure: every natural direction has been
+tested, and the structural reasons for failure have been identified and
+cataloged.
+
+
+%% ============================================================
+%%  15. CONCLUSION
+%% ============================================================
+\section{Conclusion}\label{sec:conclusions}
+
+This paper presents a comprehensive theoretical assessment of the
+Einstein-Cartan-Holst framework as both a dark-energy phenomenology and a
+bouncing cosmology. The contribution is threefold.
+
+\textit{First}, the phenomenological dark-energy ansatz rooted in ECH
+gravity remains observationally consistent. It reduces fine-tuning from
+$10^{120}$ to $\sim\!10^5$, yields MCMC fits partially reducing the $H_0$
+and $\sigma_8/S_8$ tensions, and has a parity-odd structure qualitatively
+consistent with observed birefringence. The equation of state $w=-1$ is
+assumed, not derived.
+
+\textit{Second}, the systematic closure of four minimal and seven extended
+derivation routes establishes that neither the minimal ECH model nor its
+most natural extensions can derive late-time dark energy from geometry.
+Seven structural barriers and six structural lessons map the failure
+landscape. The mass-coupling lock (Barrier~1)---in which a light torsion
+mass automatically decouples the field from matter---is a previously
+unrecognized obstruction that applies to any geometric theory where mass
+and coupling share a common kinetic-normalization origin.
+
+\textit{Third}, the comprehensive characterization of the spin-torsion
+bounce across all observable channels establishes its observational
+inertness. The tensor spectrum is $P_T \approx 2\times 10^{-64}$
+(undetectable). The chirality is $\Delta\chi = 0$ exactly (no parity
+violation). The scalar transfer function is $T(k) = 1$ (no bounce
+imprint). State selection is prevented by Liouville's theorem. The PGT
+gravitational wave spectrum has a minimum $10^{17}$ gap to any detector.
+Baryogenesis and relic production via the $(J^5)^2$ interaction are
+killed by gravitational democracy at $T \sim \MPl$. Hidden-sector vacuum
+selection via irreversible transitions is killed by bounce--vacuum energy
+decoupling: the bounce determines \textit{whether} a transition occurs,
+not \textit{what} vacuum energy results. The last positive channel---PGT
+torsion relic cosmology---is closed by $\mathbb{Z}_2$ parity protection:
+the pseudoscalar mode cannot be populated at the bounce without explicit
+parity violation in the initial conditions. Seven additional barriers
+(8--14) are cataloged.
+
+The spin-torsion bounce is theoretically consistent but observationally
+inert. Fourteen structural barriers, spanning ten research branches and
+five failure modes, prevent any nontrivial connection between the
+Planck-scale bounce and low-energy cosmological observations. The logical
+space of bounce$\to$observable connections is exhausted: direct derivation,
+observable signatures, state selection (both reversible and irreversible),
+relic production, torsion relic population, and UV$\to$IR bridges have all
+been tested and closed. Future directions require physics beyond minimal
+Einstein-Cartan gravity and quadratic Poincar\'e gauge theory.
+
+
+%% ============================================================
+%%  ACKNOWLEDGMENTS
+%% ============================================================
+\begin{acknowledgments}
+The author thanks the anonymous referees for constructive feedback.
+Computational resources for MCMC analyses were provided by RunPod.
+This work made use of Cobaya~\cite{Cobaya2021} and CAMB.
+\end{acknowledgments}
+
+
+%% ============================================================
+%%  APPENDICES
+%% ============================================================
+\appendix
+
+%% ============================================================
+%%  A. NOTATION AND CONVENTIONS
+%% ============================================================
+\section{Notation and Conventions}\label{app:notation}
+
+Natural units $c=\hbar=1$ throughout, with $8\pi G = \MPl^{-2}$.
+Metric signature $(-,+,+,+)$. Reduced Planck mass
+$\MPl = (8\pi G)^{-1/2} = 2.435 \times 10^{18}$~GeV.
+$\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3$ with
+$(\gamma^5)^2 = 1$. The vacuum energy density is
+$\rho_\Lambda = \Leff\,\MPl^2/(8\pi)$; when we write
+$\rho_\Lambda \approx (2.3\;\text{meV})^4$ this refers to the energy
+density. Greek indices $\mu,\nu,\ldots$ denote spacetime coordinates;
+Latin indices $I,J,\ldots$ denote tangent-space (Lorentz) indices.
+The Levi-Civita symbol $\varepsilon^{IJKL}$ is totally antisymmetric
+with $\varepsilon^{0123}=+1$.
+
+Key symbols:
+\begin{itemize}[leftmargin=*]
+\item $\BI$---Barbero-Immirzi parameter ($0.274 \pm 0.020$)
+\item $K^{IJ}_{\;\;\;\mu}$---contorsion tensor
+\item $T^I_{\;\;JK}$---torsion tensor
+\item $\alpha/M$---parity-odd coefficient (mass dimension $-1$)
+\item $\Dinf$---inflationary dilution factor ($\sim e^{-3N_{\rm tot}}$)
+\item $\Xi\equiv[(\alpha/M)\,\MPl]\,\Dinf$---inflationary suppression
+  factor; $\rho_\Lambda = \Xi\,\MPl^4$
+\item $\Geff = (3\kappa^2/16)\,\BI^2/(\BI^2+1)$---effective four-fermion
+  coupling
+\item $\Gsp \propto (\BI^2-1)/(\BI^2+1)$---scalar/pseudoscalar channel
+  coupling
+\item $\mT$---PGT torsion mass
+\item $\geff$---canonically normalized matter coupling
+\item $\rhocrit$---bounce critical density
+\item $k_b$---bounce characteristic wavenumber
+\item $f_b$---bounce characteristic frequency
+\end{itemize}
+
+Abbreviations: LQG (Loop Quantum Gravity), EC (Einstein-Cartan),
+ECH (Einstein-Cartan-Holst), PGT (Poincar\'e Gauge Theory),
+ALP (axion-like particle), NJL (Nambu-Jona-Lasinio), MAG
+(metric-affine gravity), MCMC (Markov Chain Monte Carlo), ET (Einstein
+Telescope), HF (high-frequency).
+
+
+%% ============================================================
+%%  B. PARAMETER SUMMARY
+%% ============================================================
+\section{Parameter Summary}\label{app:params}
+
+\begin{table*}[t]
+\caption{\label{tab:params} Complete parameter classification. Status
+categories: \textit{Fixed} (external input), \textit{Ansatz}
+(phenomenological scaling), \textit{Assumed} (not derived),
+\textit{Fit} (MCMC), \textit{Derived} (from other parameters).}
+\begin{ruledtabular}
+\begin{tabular}{llcll}
+\textbf{Parameter} & \textbf{Description} & \textbf{Value}
+  & \textbf{Status} & \textbf{Notes} \\
+\hline
+\multicolumn{5}{l}{\textit{Framework parameters}} \\
+$\BI$ & Barbero-Immirzi & $0.274 \pm 0.020$ & Fixed & LQG area spectrum \\
+$\alpha/M$ & Parity-odd coeff. & $\sim 10^{-33}\;\text{eV}^{-1}$
+  & Fit & One-loop motivated \\
+$N_{\rm tot}$ & Total $e$-folds & $\sim 92$ & Assumed
+  & Fitted to $\rho_\Lambda$ \\
+$\Dinf$ & Inflation dilution & $\sim e^{-3N_{\rm tot}}$
+  & Derived & From $N_{\rm tot}$ \\
+$\Xi$ & Infl.\ suppression & $\sim 10^{-123}$
+  & Ansatz & $=[(\alpha/M)\MPl]\Dinf$ \\
+$w$ & Equation of state & $-1$ & Assumed & Not derived \\
+\hline
+\multicolumn{5}{l}{\textit{Standard cosmological parameters (MCMC)}} \\
+$H_0$ & Hubble constant & $69.2\pm 0.8$\,\textsuperscript{a}
+  & Fit & km/s/Mpc \\
+$\sigma_8$ & Clustering ampl. & $0.785\pm 0.016$\,\textsuperscript{a}
+  & Fit & \\
+$S_8$ & $\sigma_8(\Omega_m/0.3)^{0.5}$ & $0.80\pm 0.02$
+  & Derived & \\
+$\Omega_m$ & Matter density & $0.310 \pm 0.008$ & Fit & \\
+$\Omega_b h^2$ & Baryon density & $0.02237 \pm 0.00015$ & Fit & \\
+$n_s$ & Spectral index & $0.9649 \pm 0.0042$ & Fit & \\
+$\tau$ & Optical depth & $0.054 \pm 0.007$ & Fit & \\
+\hline
+\multicolumn{5}{l}{\textit{Extended/bounce parameters}} \\
+$\Delta\Neff$ & Extra species & $\sim 0$\,\textsuperscript{a}
+  & Fit & Consistent with 0 \\
+$\rhocrit$ & Bounce density & $0.21\,\MPl^4$ & Derived & Minimal ECH \\
+$\mT$ & PGT torsion mass & Free & Model param. & Sets PGT bounce scale \\
+$|t_3|$ & PGT coupling & Free & Model param. & $\mT = \MPl/(2\sqrt{|t_3|})$ \\
+\end{tabular}
+\end{ruledtabular}
+\textsuperscript{a}Full tension dataset (includes SH0ES $H_0$ prior).
+Verification finds $H_0 = 67.68 \pm 1.06$, $\Delta\Neff = -0.020
+\pm 0.169$.
+\end{table*}
+
+
+%% ============================================================
+%%  C. CLAIMS CLASSIFICATION
+%% ============================================================
+\section{Claims Classification}\label{app:claims}
+
+\begin{table*}[t]
+\caption{\label{tab:claims} Expanded claims classification. Categories:
+Derived (structural results), Phenomenological (ansatz/fit/assumption),
+Negative (clean null results from the testing program), and
+Retired (superseded by closures).}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+\textbf{Claim} & \textbf{Status} & \textbf{Basis} & \textbf{Notes} \\
+\hline
+\multicolumn{4}{l}{\textit{Derived (structural results)}} \\
+ECH action structure & Derived & Standard EC + Holst & Background \\
+Torsion is algebraic (minimal ECH) & Derived & EC field equations & Structural \\
+Perfect-square four-fermion & Derived & Torsion elimination & Exact result \\
+$\Gsp < 0$ at $\BI < 1$ & Derived & Fierz rearrangement & Track B closure \\
+One-loop $\slashed{D}$ is $\BI$-free & Derived & Torsion elimination & G v1 closure \\
+Dyn.\ Immirzi $=$ ALP & Derived (lit.) & Calcagni-Mercuri 2009 & T1 closure \\
+No photon coupling in min.\ ECH & Derived & Action structure & S1 closure \\
+Nieh-Yan is topological in 4D & Derived (lit.) & Differential geometry & T1 closure \\
+$(J^5)^2$ is parity-even & Derived & Algebra & Branch H closure \\
+$T(k) = 1$ (time-reversal) & Derived & Analytic + numerical & Branch K \\
+$\Delta\chi = 0$ on FRW & Derived & FRW isotropy & Branch H closure \\
+Liouville prevents state selection & Derived & Hamiltonian mechanics & Branch J closure \\
+$\OmGW \propto (\mT/\MPl)^2$ & Derived & Bogoliubov calculation & Branch M \\
+\hline
+\multicolumn{4}{l}{\textit{Phenomenological (ansatz, fit, or assumption)}} \\
+$\rho_\Lambda = \Xi\,\MPl^4$ & Ansatz & Scaling argument & Not a derivation \\
+$w = -1$ at late times & Assumed & Observational input & Not derived \\
+$H_0$, $\sigma_8$, $S_8$ values & Fit & MCMC & Standard analysis \\
+Fine-tuning $10^{120} \to 10^5$ & Parametric & Sensitivity scan & Valid \\
+\hline
+\multicolumn{4}{l}{\textit{Negative results (clean null)}} \\
+$P_T \approx 2\times 10^{-64}$ & Null (amplitude) & Numerical & Undetectable \\
+$n_T \approx 0$ (generic) & Null (shape) & Numerical + analytic & Any rad.\ bounce \\
+$r \sim 10^{-55}$ & Null (ratio) & Derived & Undetectable \\
+$f_{\rm NL} \sim 10^{-56}$ & Null (NG) & Order-of-magnitude & Undetectable \\
+GW gap $\geq 10^{17}$ & Null (GW) & Bogoliubov + detector & Branch M \\
+No Horndeski constraint & Null (compat.) & Scale separation & Branch I \\
+\hline
+\multicolumn{4}{l}{\textit{Retired (closed by testing program)}} \\
+Birefringence as prediction & Retired & S1 closure & No photon coupling \\
+$\BI$ drives late-time physics & Retired & B, G, T1 closures & UV-scale only \\
+Condensate mechanism & Retired & Track B closure & $\Gsp < 0$ \\
+PGT torsion as DE mechanism & Retired & Foundation A & Mass-coupling lock \\
+Bounce tensor as observable & Retired & Branch H & $P_T \sim 10^{-64}$ \\
+Bounce chirality as observable & Retired & Branch H & $\Delta\chi = 0$ \\
+Bounce state selection & Retired & Branch J & Liouville theorem \\
+PGT GW as observable & Retired & Branch M & Vac.\ ampl.\ ceiling \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+%% ============================================================
+%%  D. BARDEEN EQUATION THROUGH THE BOUNCE
+%% ============================================================
+\section{Bardeen Equation Through the Bounce}\label{app:bardeen}
+
+We sketch the derivation of the Bardeen equation on the spin-torsion
+bounce background and the proof of $T(k) = 1$.
+
+\subsection{Setup}
+
+Consider scalar perturbations of a radiation fluid ($w = 1/3$,
+$c_s^2 = 1/3$) on the modified Friedmann
+background~\eqref{eq:modfriedmann}. In the longitudinal gauge
+($B = E = 0$), the perturbed metric is
+\begin{equation}
+  ds^2 = -(1+2\Phi)\,dt^2 + a^2(1-2\Psi)\,\delta_{ij}\,dx^i\,dx^j,
+\end{equation}
+with $\Phi = \Psi$ for a perfect fluid (no anisotropic stress).
+
+\subsection{Derivation of the Bardeen equation}
+
+From the linearized Einstein equations on the modified Friedmann
+background, one obtains~\cite{MukhanovFeldmanBrandenberger1992,
+PeterPintoNeto2008}:
+\begin{equation}\label{eq:bardeen_app}
+  \ddot\Phi + 5H\dot\Phi +
+  \Bigl[\frac{k^2}{3a^2} + 2\dot H + 4H^2\Bigr]\Phi = 0.
+\end{equation}
+The key feature for bouncing cosmologies: all coefficients are
+\textit{regular} at $H = 0$. Specifically:
+\begin{itemize}[leftmargin=*]
+  \item The friction term $5H\dot\Phi$ vanishes at $H = 0$ (the bounce
+    instant).
+  \item The effective mass term $2\dot H + 4H^2$ remains finite:
+    $\dot H(0) \approx 3.52\,\MPl^2$ and $H(0) = 0$.
+  \item The gradient term $k^2/(3a^2)$ is regular and positive.
+\end{itemize}
+This regularity is in contrast to the Mukhanov-Sasaki variable
+$v = z\mathcal{R}$ where $z = a\dot\phi/H \to \infty$ at the bounce.
+
+\subsection{Time-reversal symmetry and $T(k) = 1$}
+
+The bounce background $a(t)$ is an even function of $t$:
+$a(-t) = a(t)$. Therefore $H(-t) = -H(t)$ and $\dot H(-t) = \dot H(t)$.
+Under the substitution $t \to -t$, Eq.~\eqref{eq:bardeen_app} maps to
+\begin{equation}
+  \ddot\Phi - 5H\dot\Phi +
+  \Bigl[\frac{k^2}{3a^2} + 2\dot H + 4H^2\Bigr]\Phi = 0,
+\end{equation}
+where the only change is the sign of the friction term. This means that
+if $\Phi_{\rm grow}(t)$ is a growing solution in the contracting phase
+($t < 0$, $H < 0$, friction term is anti-damping), then
+$\Phi_{\rm grow}(-t)$ is a \textit{decaying} solution in the expanding
+phase ($t > 0$).
+
+The constant mode $\Phi_{\rm const}$ (the physically relevant mode for
+the power spectrum) is symmetric under $t \to -t$ and maps to itself
+with unit amplitude. Therefore:
+\begin{equation}
+  T(k) \equiv \frac{\Phi_{\rm const}^{\rm out}}
+  {\Phi_{\rm const}^{\rm in}} = 1
+  \quad \text{for all } k \ll k_b.
+\end{equation}
+
+
+%% ============================================================
+%%  E. PGT GHOST-FREE CONDITIONS
+%% ============================================================
+\section{PGT Ghost-Free Conditions}\label{app:ghost}
+
+\subsection{Quadratic PGT action}
+
+The most general quadratic PGT action with torsion-squared and
+curvature-squared terms has ten free parameters (three torsion-squared
+$a_1, a_2, a_3$ plus six curvature-squared $b_i$ plus
+$\Lambda_0$)~\cite{HayashiShirafuji1980,Neville1980,
+SezginNieuwenhuizen1980}.
+
+\subsection{Single-mode ghost-free models}
+
+Sezgin and van Nieuwenhuizen~\cite{SezginNieuwenhuizen1980} identified
+the conditions for ghost-freedom (absence of negative-norm states) in
+the linearized theory around flat spacetime. Karananas~\cite{Karananas2015}
+confirmed and extended this analysis. The cleanest single-mode models are:
+
+\begin{itemize}[leftmargin=*]
+  \item \textit{Spin-$0^-$ (axial pseudoscalar):} Ghost-free for all
+    $|t_3| > 0$. Mass $m_B = \MPl/(4\sqrt{\pi|t_3|})$. This is the mode
+    assessed in Foundation~A.
+  \item \textit{Spin-$0^+$ (scalar):} Ghost-free only in a restricted
+    parameter range. Develops a ghost at the mass scale needed for
+    observable bounce features. Rejected.
+  \item \textit{Spin-$2^+$ (tensor):} Ghost-free but massive spin-2
+    fields face the van Dam-Veltman-Zakharov discontinuity and require
+    careful Vainshtein screening.
+\end{itemize}
+
+\subsection{Sector II analysis}
+
+For the spin-$0^-$ mode in Sector~II, the propagator is
+\begin{equation}
+  D(p^2) = \frac{1}{p^2 - m_B^2},
+\end{equation}
+with no ghost pole (residue is positive). The canonically normalized
+field $\phi_{\rm can} = \sqrt{Z}\,\phi$ with $Z \propto |t_3|$ gives
+\begin{equation}
+  m_B = \frac{\MPl}{4\sqrt{\pi|t_3|}}, \qquad
+  \geff = \frac{g}{\sqrt{Z}} \sim \frac{1}{\MPl\sqrt{|t_3|}},
+\end{equation}
+confirming the mass-coupling lock~\eqref{eq:lock}.
+
+\subsection{Symmetry analysis}
+
+Five candidate symmetries for protecting $m_B$ were investigated:
+\begin{enumerate}[leftmargin=*]
+  \item \textit{Gauge symmetry:} The $0^-$ mode is not a gauge field;
+    no gauge invariance protects its mass.
+  \item \textit{Shift symmetry:} The mass term $m_B^2\phi^2$ explicitly
+    breaks any shift symmetry $\phi \to \phi + c$.
+  \item \textit{Chiral symmetry:} The axial current coupling preserves
+    chiral symmetry, but this does not protect a scalar mass.
+  \item \textit{Topological protection:} No topological mechanism
+    applies in 4D for a massive pseudoscalar.
+  \item \textit{Supersymmetry:} Would pair the $0^-$ with a fermion,
+    but SUSY is not part of PGT and its breaking scale is unknown.
+\end{enumerate}
+The 't~Hooft naturalness criterion fails: setting $m_B = 0$ does not
+restore any symmetry of the PGT action. Graviton loops generate
+\begin{equation}
+  \delta m_B^2 \sim \frac{\MPl^2}{16\pi^2},
+\end{equation}
+requiring fine-tuning of order $10^{-57}$ to maintain $m_B \sim
+\text{meV}$.
+
+
+%% ============================================================
+%%  REFERENCES
+%% ============================================================
+\begin{thebibliography}{99}
+
+\bibitem{Weinberg1989}
+S.~Weinberg,
+``The cosmological constant problem,''
+Rev.\ Mod.\ Phys.\ \textbf{61}, 1 (1989).
+
+\bibitem{Planck2018params}
+Planck Collaboration (N.~Aghanim \etal),
+``Planck 2018 results.\ VI.\ Cosmological parameters,''
+Astron.\ Astrophys.\ \textbf{641}, A6 (2020).
+
+\bibitem{Riess2022}
+A.~G.~Riess \etal,
+``A comprehensive measurement of the local value of the Hubble constant
+with 1 km/s/Mpc uncertainty from the Hubble Space Telescope and the
+SH0ES team,''
+Astrophys.\ J.\ Lett.\ \textbf{934}, L7 (2022).
+
+\bibitem{KiDS2021}
+KiDS Collaboration (M.~Asgari \etal),
+``KiDS-1000 cosmology: Cosmic shear constraints on the amplitude of
+matter fluctuations,''
+Astron.\ Astrophys.\ \textbf{645}, A104 (2021).
+
+\bibitem{DES2024}
+DES Collaboration (T.~M.~C.~Abbott \etal),
+``Dark Energy Survey Year 3 results: Cosmological constraints from
+galaxy clustering and weak lensing,''
+Phys.\ Rev.\ D~\textbf{105}, 023520 (2022).
+
+\bibitem{DESI2024}
+DESI Collaboration,
+``DESI 2024 VI: Cosmological constraints from the measurements of
+baryon acoustic oscillations,''
+arXiv:2404.03002 (2024).
+
+\bibitem{DESI2025DR2}
+DESI Collaboration,
+``DESI DR2 results I: Baryon acoustic oscillations and cosmological
+constraints,''
+arXiv:2503.14738 (2025).
+
+\bibitem{Ashtekar2011}
+A.~Ashtekar and P.~Singh,
+``Loop quantum cosmology: A status report,''
+Class.\ Quant.\ Grav.\ \textbf{28}, 213001 (2011).
+
+\bibitem{Freidel2005}
+L.~Freidel, D.~Minic, and T.~Takeuchi,
+``Quantum gravity, torsion, parity violation and all that,''
+Phys.\ Rev.\ D~\textbf{72}, 104002 (2005).
+
+\bibitem{Mercuri2006}
+R.~Mercuri,
+``Fermion interactions, cosmological constant and torsion,''
+Phys.\ Rev.\ D~\textbf{73}, 084016 (2006).
+
+\bibitem{Mercuri2009}
+R.~Mercuri,
+``Peccei-Quinn mechanism in gravity and the nature of the
+Barbero-Immirzi parameter,''
+Phys.\ Rev.\ Lett.\ \textbf{103}, 081302 (2009).
+
+\bibitem{Poplawski2012}
+N.~J.~Pop\l{}awski,
+``Cosmological constant from quarks and torsion,''
+Phys.\ Rev.\ D~\textbf{85}, 107502 (2012).
+
+\bibitem{ShapiroTeixeira2014}
+I.~L.~Shapiro and P.~M.~Teixeira,
+``Quantum Einstein-Cartan theory with the Holst term,''
+Class.\ Quant.\ Grav.\ \textbf{31}, 185002 (2014).
+
+\bibitem{Shapiro2002}
+I.~L.~Shapiro,
+``Physical aspects of the space-time torsion,''
+Phys.\ Rept.\ \textbf{357}, 113 (2002).
+
+\bibitem{Vassilevich2003}
+D.~V.~Vassilevich,
+``Heat kernel expansion: User's manual,''
+Phys.\ Rept.\ \textbf{388}, 279 (2003).
+
+\bibitem{CalcagniMercuri2009}
+G.~Calcagni and R.~Mercuri,
+``Barbero-Immirzi field in canonical formalism of pure gravity,''
+Phys.\ Rev.\ D~\textbf{79}, 104003 (2009).
+
+\bibitem{TaverasYunes2008}
+V.~Taveras and N.~Yunes,
+``Barbero-Immirzi parameter as a scalar field: K-inflation from loop
+quantum gravity?''
+Phys.\ Rev.\ D~\textbf{78}, 064070 (2008).
+
+\bibitem{Eskilt2022}
+J.~R.~Eskilt and E.~Komatsu,
+``Improved constraints on cosmic birefringence from the WMAP and Planck
+cosmic microwave background polarization data,''
+Phys.\ Rev.\ D~\textbf{106}, 063503 (2022).
+
+\bibitem{DiegoPalazuelos2025}
+P.~Diego-Palazuelos and E.~Komatsu,
+``Cosmic birefringence from ACT DR6,''
+(2025).
+
+\bibitem{Golden2026v1}
+H.~Golden,
+``Geometric Dark Energy from Spin-Torsion Cosmology:
+Phenomenological Constraints and Correlated Signatures,''
+Preprint HUBIFY-2026-001, v1.6 (2026).
+
+\bibitem{Cobaya2021}
+J.~Torrado and A.~Lewis,
+``Cobaya: Code for Bayesian analysis of hierarchical physical models,''
+JCAP \textbf{05}, 057 (2021).
+
+\bibitem{ECTorsionDESI2025}
+J.~Liu, R.~Niu, and R.-G.~Cai,
+``Torsion cosmology with DESI DR2,''
+arXiv:2503.02599 (2025).
+
+\bibitem{SezginNieuwenhuizen1980}
+E.~Sezgin and P.~van Nieuwenhuizen,
+``New ghost-free gravity Lagrangians with propagating torsion,''
+Phys.\ Rev.\ D~\textbf{21}, 3269 (1980).
+
+\bibitem{Karananas2015}
+G.~K.~Karananas,
+``The particle spectrum of parity-violating Poincar\'e gravitational
+theory,''
+Class.\ Quant.\ Grav.\ \textbf{32}, 055012 (2015).
+
+\bibitem{HayashiShirafuji1980}
+K.~Hayashi and T.~Shirafuji,
+``Gravity from Poincar\'e gauge theory of the fundamental particles.
+I. General formulation,''
+Prog.\ Theor.\ Phys.\ \textbf{64}, 866 (1980).
+
+\bibitem{Neville1980}
+D.~E.~Neville,
+``Gravity theories with propagating torsion,''
+Phys.\ Rev.\ D~\textbf{21}, 867 (1980).
+
+\bibitem{YoNester1999}
+H.-J.~Yo and J.~M.~Nester,
+``Hamiltonian analysis of Poincar\'e gauge theory,''
+Int.\ J.\ Mod.\ Phys.\ D~\textbf{8}, 459 (1999).
+
+\bibitem{MukhanovFeldmanBrandenberger1992}
+V.~F.~Mukhanov, H.~A.~Feldman, and R.~H.~Brandenberger,
+``Theory of cosmological perturbations,''
+Phys.\ Rept.\ \textbf{215}, 203 (1992).
+
+\bibitem{PeterPintoNeto2008}
+P.~Peter and N.~Pinto-Neto,
+``Primordial perturbations in a non-singular bouncing universe model,''
+Phys.\ Rev.\ D~\textbf{78}, 063506 (2008).
+
+\bibitem{Quintin2015}
+J.~Quintin, Y.-F.~Cai, and R.~H.~Brandenberger,
+``Matter creation in a nonsingular bouncing cosmology,''
+Phys.\ Rev.\ D~\textbf{90}, 063507 (2015).
+
+\bibitem{Cai2014}
+Y.-F.~Cai, D.~A.~Easson, and R.~Brandenberger,
+``Towards a nonsingular bouncing cosmology,''
+JCAP \textbf{08}, 020 (2012).
+
+\bibitem{Hehl1976}
+F.~W.~Hehl, P.~von~der~Heyde, G.~D.~Kerlick, and J.~M.~Nester,
+``General relativity with spin and torsion: Foundations and prospects,''
+Rev.\ Mod.\ Phys.\ \textbf{48}, 393 (1976).
+
+\bibitem{KaloPerPadilla2014}
+N.~Kaloper and A.~Padilla,
+``Sequestering the standard model vacuum energy,''
+Phys.\ Rev.\ Lett.\ \textbf{112}, 091304 (2014).
+
+\bibitem{Poplawski2016}
+N.~J.~Pop\l{}awski,
+``Universe in a black hole in Einstein-Cartan gravity,''
+Astrophys.\ J.\ \textbf{832}, 96 (2016).
+
+\bibitem{LISA2017}
+LISA Collaboration,
+``Laser Interferometer Space Antenna,''
+arXiv:1702.00786 (2017).
+
+\bibitem{ET2010}
+M.~Punturo \etal,
+``The Einstein Telescope: A third-generation gravitational wave
+observatory,''
+Class.\ Quant.\ Grav.\ \textbf{27}, 194002 (2010).
+
+\bibitem{Saadeh2016}
+D.~Saadeh \etal,
+``How isotropic is the universe?''
+Phys.\ Rev.\ Lett.\ \textbf{117}, 131302 (2016).
+
+\bibitem{Legner2025}
+C.~Legner, W.~J.~Handley, W.~E.~V.~Barker, and S.~S.~Ormondroyd,
+``Torsion condensation in Poincar\'e gauge theory,''
+arXiv:2507.09228 (2025).
+
+\bibitem{Fabbri2025}
+L.~Fabbri,
+``Propagating torsion as an axial-vector field,''
+arXiv:2502.17979 (2025).
+
+\bibitem{Izaurieta2020}
+F.~Izaurieta \etal,
+``Torsion fermion interaction and the Hubble parameter,''
+Phys.\ Rev.\ D~\textbf{101}, 064007 (2020).
+
+\bibitem{Akhshabi2023}
+S.~Akhshabi and E.~Zamani,
+``Cosmological constraints on Einstein-Cartan torsion,''
+Class.\ Quant.\ Grav.\ \textbf{40}, 065006 (2023).
+
+\end{thebibliography}
+
+\end{document}

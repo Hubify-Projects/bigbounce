@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Intelligence Dossier — Spin-Torsion Cosmology Research Program</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22262f;
+    --border: #2e3340;
+    --text: #e1e4ea;
+    --text-dim: #8b8fa3;
+    --accent: #6c8cff;
+    --green: #3ddc84;
+    --red: #ff5c5c;
+    --orange: #ffaa33;
+    --yellow: #ffe066;
+    --purple: #b07cff;
+    --cyan: #4dd9e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  header {
+    background: linear-gradient(135deg, #1a1d27 0%, #1e2433 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 0;
+    margin-bottom: 32px;
+  }
+  header .container { display: flex; flex-direction: column; gap: 8px; }
+  h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 32px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 16px 0 8px 0; }
+
+  /* Summary Cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .card .number { font-size: 2.4rem; font-weight: 700; line-height: 1.1; }
+  .card .label { font-size: 0.82rem; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card.green .number { color: var(--green); }
+  .card.red .number { color: var(--red); }
+  .card.orange .number { color: var(--orange); }
+  .card.blue .number { color: var(--accent); }
+  .card.purple .number { color: var(--purple); }
+  .card.cyan .number { color: var(--cyan); }
+
+  /* Executive Summary */
+  .exec-summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .exec-summary p { margin-bottom: 10px; }
+  .exec-summary p:last-child { margin-bottom: 0; }
+
+  /* Status badges */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-pass { background: rgba(61,220,132,0.15); color: var(--green); }
+  .badge-fail { background: rgba(255,92,92,0.15); color: var(--red); }
+  .badge-closed { background: rgba(139,143,163,0.15); color: var(--text-dim); }
+  .badge-mixed { background: rgba(255,170,51,0.15); color: var(--orange); }
+  .badge-active { background: rgba(108,140,255,0.15); color: var(--accent); }
+  .badge-deferred { background: rgba(176,124,255,0.15); color: var(--purple); }
+  .badge-superseded { background: rgba(139,143,163,0.1); color: #666; }
+
+  .novelty {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .n0 { background: rgba(139,143,163,0.15); color: var(--text-dim); }
+  .n1 { background: rgba(139,143,163,0.2); color: #aaa; }
+  .n2 { background: rgba(108,140,255,0.15); color: var(--accent); }
+  .n3 { background: rgba(61,220,132,0.15); color: var(--green); }
+  .n4 { background: rgba(255,224,102,0.2); color: var(--yellow); }
+
+  .pub-low { color: var(--text-dim); }
+  .pub-mod { color: var(--orange); }
+  .pub-high { color: var(--green); }
+  .pub-flag { color: var(--yellow); font-weight: 700; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 24px 0;
+    font-size: 0.85rem;
+  }
+  th {
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: rgba(108,140,255,0.04); }
+  .sig-text { font-size: 0.8rem; color: var(--text-dim); font-style: italic; }
+
+  /* Nav links */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 16px 0 32px 0;
+  }
+  .nav-link {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .nav-link:hover { border-color: var(--accent); background: var(--surface2); }
+  .nav-link .desc { color: var(--text-dim); font-size: 0.78rem; font-weight: 400; display: block; margin-top: 2px; }
+
+  /* Sections */
+  .section-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .section-block h3 { margin-top: 0; }
+
+  /* Two-col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .cards { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Highlight box */
+  .highlight-box {
+    background: rgba(61,220,132,0.06);
+    border: 1px solid rgba(61,220,132,0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .caution-box {
+    background: rgba(255,92,92,0.06);
+    border: 1px solid rgba(255,92,92,0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .highlight-box h4, .caution-box h4 { font-size: 0.9rem; margin-bottom: 6px; }
+  .highlight-box ul, .caution-box ul { padding-left: 18px; font-size: 0.88rem; }
+  .highlight-box li, .caution-box li { margin-bottom: 4px; }
+
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+  }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82em; }
+
+  .era-timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 16px 0;
+  }
+  .era-timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--border);
+  }
+  .era-item {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 16px;
+  }
+  .era-item::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .era-item.closed::before { background: var(--text-dim); }
+  .era-item.active::before { background: var(--green); }
+  .era-item.fail::before { background: var(--red); }
+  .era-title { font-weight: 600; font-size: 0.92rem; }
+  .era-desc { font-size: 0.82rem; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Project Intelligence Dossier</h1>
+    <div class="subtitle">Spin-Torsion Cosmology Research Program &mdash; Houston Golden &mdash; Generated 2026-03-17</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- SUMMARY CARDS -->
+  <div class="cards">
+    <div class="card blue">
+      <div class="number">34</div>
+      <div class="label">Scientific Attempts</div>
+    </div>
+    <div class="card green">
+      <div class="number">4</div>
+      <div class="label">Positive Results</div>
+    </div>
+    <div class="card red">
+      <div class="number">22</div>
+      <div class="label">Closed / Failed</div>
+    </div>
+    <div class="card orange">
+      <div class="number">13</div>
+      <div class="label">Structural Barriers</div>
+    </div>
+    <div class="card purple">
+      <div class="number">2</div>
+      <div class="label">Active Programs</div>
+    </div>
+    <div class="card cyan">
+      <div class="number">236K+</div>
+      <div class="label">MCMC Samples</div>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <p><strong>Executive Summary.</strong> This research program investigated whether Einstein-Cartan spin-torsion gravity can produce observable cosmological signatures&mdash;dark energy, cosmic birefringence, and bouncing-cosmology imprints. After 7 foundation studies and 17+ branches testing every viable theoretical route, the core finding is a rigorous negative result: <strong>13 structural barriers close all minimal routes from bounce to dark energy.</strong></p>
+    <p>Two genuinely positive results survive: (1) a spectator ALP birefringence prediction (&beta; = 0.27&deg;) matching observed data (0.35 &plusmn; 0.09&deg;) at 1&sigma;, and (2) a matter-bounce phenomenology framework (Branch V) with a parameter-free prediction f<sub>NL</sub> = 5/12 testable by SPHEREx. The program also produced a validated MCMC infrastructure with 236,000+ posterior samples.</p>
+    <p>The honest conclusion: the ECH framework cannot derive dark energy, but it can motivate well-tested phenomenological models and may provide an explicit nonsingular bounce mechanism with testable predictions.</p>
+  </div>
+
+  <!-- DOSSIER FILES -->
+  <h2>Dossier Files</h2>
+  <div class="nav-grid">
+    <a class="nav-link" href="00_master_index.md">00 &mdash; Master Index<span class="desc">Overview, project status, where to start</span></a>
+    <a class="nav-link" href="01_project_timeline.md">01 &mdash; Project Timeline<span class="desc">Chronological history of the program</span></a>
+    <a class="nav-link" href="02_branch_registry.md">02 &mdash; Branch Registry<span class="desc">All 24+ branches with status and ratings</span></a>
+    <a class="nav-link" href="03_deliverables_inventory.md">03 &mdash; Deliverables Inventory<span class="desc">Papers, notebooks, scripts, configs, figures</span></a>
+    <a class="nav-link" href="04_reproducibility_assets.md">04 &mdash; Reproducibility Assets<span class="desc">MCMC chains, Cobaya configs, Stan models</span></a>
+    <a class="nav-link" href="05_results_matrix.md">05 &mdash; Results Matrix<span class="desc">One row per scientific attempt&mdash;the key table</span></a>
+    <a class="nav-link" href="06_novelty_assessment.md">06 &mdash; Novelty Assessment<span class="desc">Honest N0&ndash;N4 ratings with justifications</span></a>
+    <a class="nav-link" href="07_publication_packaging_options.md">07 &mdash; Publication Options<span class="desc">How to package the work into papers</span></a>
+    <a class="nav-link" href="08_open_questions_and_next_moves.md">08 &mdash; Open Questions &amp; Next Moves<span class="desc">What to do, what to avoid</span></a>
+    <a class="nav-link" href="09_file_nav_map.md">09 &mdash; File Navigation Map<span class="desc">Key file paths organized by function</span></a>
+    <a class="nav-link" href="10_status_legend.md">10 &mdash; Status Legend<span class="desc">Definitions for all labels and ratings</span></a>
+  </div>
+
+  <!-- PROGRAM TIMELINE -->
+  <h2>Program Timeline</h2>
+  <div class="section-block">
+    <div class="era-timeline">
+      <div class="era-item closed">
+        <div class="era-title">Phase 0&ndash;1: Genesis &amp; Paper Build-Out (Jul 2025 &ndash; Feb 2026)</div>
+        <div class="era-desc">ECH framework + ambitious predictions + 32,000-word manuscript</div>
+      </div>
+      <div class="era-item fail">
+        <div class="era-title">Phase 2: Peer Review Gauntlet (Mar 2&ndash;4, 2026)</div>
+        <div class="era-desc">8 revision rounds &mdash; key claims disproved, overclaims removed, claims table added</div>
+      </div>
+      <div class="era-item closed">
+        <div class="era-title">Phase 3: MCMC Verification (Mar 4&ndash;12, 2026)</div>
+        <div class="era-desc">&Delta;N<sub>eff</sub> &asymp; 0, H<sub>0</sub> = 67.68 (standard &Lambda;CDM) &mdash; tension reduction disproved</div>
+      </div>
+      <div class="era-item fail">
+        <div class="era-title">Phase 4: IR Vacuum / 4-Route Closure (Mar 2&ndash;13, 2026)</div>
+        <div class="era-desc">All 4 minimal w = &minus;1 derivation routes closed</div>
+      </div>
+      <div class="era-item fail">
+        <div class="era-title">Phase 5: Foundations A&ndash;G (Mar 13&ndash;15, 2026)</div>
+        <div class="era-desc">7 mechanism classes tested &rarr; 7 named structural barriers</div>
+      </div>
+      <div class="era-item fail">
+        <div class="era-title">Phase 6: Branches H&ndash;O (Mar 15&ndash;16, 2026)</div>
+        <div class="era-desc">Bounce-only observables tested &rarr; 6 more barriers (13 total)</div>
+      </div>
+      <div class="era-item active">
+        <div class="era-title">Phase 7: Branches P&ndash;W / ALP / Bounce Evidence (Mar 16&ndash;17, 2026)</div>
+        <div class="era-desc">Branch R (ALP birefringence) &amp; Branch V (matter bounce + ECH) survive</div>
+      </div>
+      <div class="era-item fail">
+        <div class="era-title">Phase 8: Next-Gen Signal Assessment (Mar 17, 2026)</div>
+        <div class="era-desc">Chiral GW frequency gate FAILED &mdash; all bounce-scale signals permanently inaccessible</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT SURVIVES / WHAT DOESN'T -->
+  <div class="two-col">
+    <div class="highlight-box">
+      <h4 style="color: var(--green);">What This Project Has Genuinely Established</h4>
+      <ul>
+        <li>Well-defined quantum bounce at &rho;<sub>crit</sub> &asymp; 0.27 &rho;<sub>Pl</sub></li>
+        <li>Unique (J<sup>5</sup>)<sup>2</sup> four-fermion interaction from torsion integration</li>
+        <li>All 4 minimal routes to w = &minus;1 are structurally closed</li>
+        <li>13 independent barriers close all standard bounce&rarr;DE mechanism classes</li>
+        <li>Spectator ALP: &beta; = 0.27&deg; matches 3.9&sigma; observed birefringence</li>
+        <li>f<sub>a</sub> cancellation makes birefringence prediction robust</li>
+        <li>MCMC pipeline: 236K+ samples, 4 datasets, R&#770;&minus;1 &lt; 0.005</li>
+        <li>&Delta;N<sub>eff</sub> &asymp; 0 in all datasets (no detectable dark radiation)</li>
+      </ul>
+    </div>
+    <div class="caution-box">
+      <h4 style="color: var(--red);">What This Project Has Not Established</h4>
+      <ul>
+        <li>Dark energy derived from torsion (all routes closed)</li>
+        <li>Hubble tension reduction (H<sub>0</sub> = 67.68, standard value)</li>
+        <li>Any bounce-specific observable signature</li>
+        <li>Galaxy spin dipole from ECH (9&ndash;12 OOM gap)</li>
+        <li>ALP = dark energy (rolling-vs-freezing tension)</li>
+        <li>Chiral GW from bounce (GHz frequencies, detectors at mHz&ndash;kHz)</li>
+        <li>Any result unique to ECH vs. generic ALP/scalar-tensor</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BRANCH STATUS TABLE -->
+  <h2>Branch Status Registry</h2>
+  <div class="section-block" style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr><th>Branch</th><th>Goal</th><th>Status</th><th>Significance</th><th>Novelty</th><th>Pub</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Paper 1</strong></td>
+          <td>Derive DE from ECH bounce</td>
+          <td><span class="badge badge-superseded">Superseded</span></td>
+          <td class="sig-text">Key claims disproved by own MCMC verification</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Paper 1.2</strong></td>
+          <td>Honest closure + ALP birefringence</td>
+          <td><span class="badge badge-active">Active</span></td>
+          <td class="sig-text">The actual publishable paper</td>
+          <td><span class="novelty n2">N2-3</span></td>
+          <td class="pub-high">HIGH</td>
+        </tr>
+        <tr>
+          <td><strong>IR Vacuum</strong></td>
+          <td>Test all 4 routes to w = &minus;1</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Framework definitively phenomenological</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Found. A</strong></td>
+          <td>PGT propagating torsion as DE</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Mass-coupling lock: fine-tuning transferred</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Found. B</strong></td>
+          <td>Break mass-coupling lock</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Topological-Shift Duality: mass protection &hArr; no geometric content</td>
+          <td><span class="novelty n3">N3</span></td>
+          <td class="pub-high">HIGH</td>
+        </tr>
+        <tr>
+          <td><strong>Found. C</strong></td>
+          <td>Environmental mass &rarr; DE</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Scalar-tensor universality on FRW (T<sub>0</sub>=Q<sub>0</sub>=0)</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Found. D</strong></td>
+          <td>Disformal distinctive signatures</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Planck suppression: 1 &part;&phi;/vertex, effects ~10<sup>&minus;122</sup></td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Found. E</strong></td>
+          <td>Global vacuum integrals</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Scale separation: V<sub>4</sub><sup>bounce</sup>/V<sub>4</sub><sup>total</sup> ~ 10<sup>&minus;60</sup></td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Found. F</strong></td>
+          <td>Initial conditions from bounce</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Attractor-sensitivity dilemma: no middle ground</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Found. G</strong></td>
+          <td>Cyclic vacuum selection</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Parameter immunity: &mu;<sup>4</sup> free; Planck-scale matching barrier</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch H</strong></td>
+          <td>Tensor spectrum through bounce</td>
+          <td><span class="badge badge-closed">Closed</span></td>
+          <td class="sig-text">P<sub>T</sub> ~ 10<sup>&minus;64</sup>, n<sub>T</sub> = 0, no chirality</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch I</strong></td>
+          <td>Bounce-compatible DE</td>
+          <td><span class="badge badge-closed">Closed</span></td>
+          <td class="sig-text">Scale separation dominates; ships passing in the night</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch J</strong></td>
+          <td>State selection via bounce</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Barrier 9: Liouville prevents state contraction</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch K</strong></td>
+          <td>Scalar transfer function T(k)</td>
+          <td><span class="badge badge-closed">Closed</span></td>
+          <td class="sig-text">T(k) = 1 exactly; time-reversal symmetry</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch L</strong></td>
+          <td>UV&rarr;IR bridge extensions</td>
+          <td><span class="badge badge-mixed">Mixed</span></td>
+          <td class="sig-text">Barrier 10: specificity dilemma; 1 PGT survivor</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch M</strong></td>
+          <td>PGT bounce GW spectrum</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Barrier 12: vacuum ceiling; detector gap 10<sup>17</sup></td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch N</strong></td>
+          <td>Baryogenesis / relics</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Barrier 13N: gravitational democracy (~1% torsion contribution)</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch O</strong></td>
+          <td>Hidden-sector vacuum</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Barrier 13O: trigger &ne; outcome; exhausts irreversible routes</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch P</strong></td>
+          <td>PGT observable survey</td>
+          <td><span class="badge badge-mixed">Mixed</span></td>
+          <td class="sig-text">Torsion relics gated on energy fraction</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-mod">MOD</td>
+        </tr>
+        <tr>
+          <td><strong>Branch Q</strong></td>
+          <td>Sourced parity violation</td>
+          <td><span class="badge badge-closed">Closed</span></td>
+          <td class="sig-text">Identical to standard ALP; ABJ universal</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr style="background: rgba(61,220,132,0.04);">
+          <td><strong>Branch R</strong></td>
+          <td>ALP cosmic birefringence</td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td class="sig-text">&beta; = 0.27&deg; matches 0.35 &plusmn; 0.09&deg;; LiteBIRD falsifiable</td>
+          <td><span class="novelty n2">N2</span></td>
+          <td class="pub-high">HIGH</td>
+        </tr>
+        <tr>
+          <td><strong>Branch S</strong></td>
+          <td>Photon-torsion vertex</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">&beta; ~ 10<sup>&minus;30</sup>&deg;; 28&ndash;40 OOM too weak</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch T</strong></td>
+          <td>Sourced axion bridge</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">Requires free parameter; no novelty</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Branch U</strong></td>
+          <td>Two-field ALP + DE</td>
+          <td><span class="badge badge-deferred">Deferred</span></td>
+          <td class="sig-text">Speculative; reintroduces fine-tuning</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr style="background: rgba(255,224,102,0.04);">
+          <td><strong>Branch V</strong></td>
+          <td>Matter bounce + ECH</td>
+          <td><span class="badge badge-active">Active</span></td>
+          <td class="sig-text">FLAGSHIP: f<sub>NL</sub> = 5/12 (SPHEREx testable); Planck anomaly</td>
+          <td><span class="novelty n3">N3</span></td>
+          <td class="pub-flag">FLAG</td>
+        </tr>
+        <tr>
+          <td><strong>Branch W</strong></td>
+          <td>ALP curvaton tilt</td>
+          <td><span class="badge badge-superseded">Superseded</span></td>
+          <td class="sig-text">n<sub>s</sub> = 1.000 excluded; superseded by Branch V</td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+        <tr>
+          <td><strong>Chiral GW</strong></td>
+          <td>Chiral GW detection</td>
+          <td><span class="badge badge-fail">Closed</span></td>
+          <td class="sig-text">GHz signals; gap to LIGO 10<sup>6</sup>; &Omega; &propto; f<sup>8</sup></td>
+          <td><span class="novelty n1">N1</span></td>
+          <td class="pub-low">LOW</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 13 BARRIER CATALOG -->
+  <h2>13 Structural Barriers</h2>
+  <div class="section-block" style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Barrier</th><th>Source</th><th>Mechanism Blocked</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Mass-Coupling Lock</td><td>Found. A</td><td>Propagating torsion DE</td></tr>
+        <tr><td>2</td><td>Topological-Shift Duality</td><td>Found. B</td><td>Geometric pseudoscalar protection</td></tr>
+        <tr><td>3</td><td>Scalar-Tensor Universality</td><td>Found. C</td><td>FRW geometric content</td></tr>
+        <tr><td>4</td><td>Planck Suppression</td><td>Found. D</td><td>Disformal / connection coupling</td></tr>
+        <tr><td>5</td><td>Scale Separation</td><td>Found. E</td><td>Global vacuum integrals</td></tr>
+        <tr><td>6</td><td>Attractor-Sensitivity Dilemma</td><td>Found. F</td><td>Initial-condition transfer</td></tr>
+        <tr><td>7</td><td>Parameter Immunity</td><td>Found. G</td><td>Cyclic vacuum selection</td></tr>
+        <tr><td>8</td><td>Parity-Even Interaction</td><td>Branch H</td><td>Tensor chirality</td></tr>
+        <tr><td>9</td><td>Liouville Conservation</td><td>Branch J</td><td>Reversible state selection</td></tr>
+        <tr><td>10</td><td>UV&rarr;IR Specificity Dilemma</td><td>Branch L</td><td>Generic vs. bounce-specific bridge</td></tr>
+        <tr><td>11</td><td>Decoupling Universality</td><td>Branch L/M</td><td>Light gauge field decoupling</td></tr>
+        <tr><td>12</td><td>Vacuum Amplification Ceiling</td><td>Branch M</td><td>GW background amplitude</td></tr>
+        <tr><td>13</td><td>Gravitational Democracy / Bounce-Vacuum Decoupling</td><td>Branch N/O</td><td>Relics &amp; irreversible transitions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOVELTY SUMMARY -->
+  <h2>Novelty Summary</h2>
+  <div class="section-block">
+    <h3>N3 &mdash; Strongly Novel (Publishable Independent Results)</h3>
+    <table>
+      <thead><tr><th>Result</th><th>Why N3</th></tr></thead>
+      <tbody>
+        <tr><td>13-Barrier Map (collective)</td><td>No prior work maps the complete space of bounce&rarr;DE mechanisms at this rigor level</td></tr>
+        <tr><td>Topological-Shift Duality (Found. B)</td><td>Original theorem: mass protection and geometric content are mutually exclusive for pseudoscalar-4-form couplings</td></tr>
+        <tr><td>Branch V matter bounce + ECH</td><td>Parameter-free f<sub>NL</sub> = 5/12 from explicit bounce mechanism (contingent on Phase 1)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 20px;">N2 &mdash; Moderately Novel (13 results)</h3>
+    <p style="font-size: 0.88rem; color: var(--text-dim);">
+      Mass-Coupling Lock, Scalar-Tensor Universality, Planck Suppression, Attractor-Sensitivity Dilemma, Parameter Immunity, Liouville barrier, UV-IR specificity dilemma, Gravitational democracy, Bounce-vacuum decoupling, PGT observable survey, ALP birefringence match, Extensions Track C, IR Vacuum closure
+    </p>
+
+    <h3 style="margin-top: 20px;">N4 &mdash; Flagship Breakthrough</h3>
+    <p style="font-size: 0.88rem; color: var(--text-dim);">None. This is an honest assessment.</p>
+  </div>
+
+  <!-- PUBLICATION OPTIONS -->
+  <h2>Publication Packaging</h2>
+  <div class="section-block">
+    <table>
+      <thead>
+        <tr><th>Option</th><th>Content</th><th>Strengths</th><th>Readiness</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>3A: Framework Paper</strong><br><span class="badge badge-pass" style="font-size: 0.65rem;">RECOMMENDED</span></td>
+          <td>ECH framework + compact closure + ALP + MCMC + LiteBIRD forecast (~28pp)</td>
+          <td>Claims locked, structure locked, 4/9 figures exist, referee simulation done</td>
+          <td><span class="pub-high">75%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2B: ALP Standalone</strong></td>
+          <td>ALP birefringence prediction + MCMC + LiteBIRD (~14pp)</td>
+          <td>Focused, testable, timely, matches literature conversation</td>
+          <td><span class="pub-mod">50%</span></td>
+        </tr>
+        <tr>
+          <td><strong>3B: Technical Note</strong></td>
+          <td>Full 13-barrier catalog companion (~18pp)</td>
+          <td>Low effort (source material exists); arXiv-ready</td>
+          <td><span class="pub-mod">40%</span></td>
+        </tr>
+        <tr>
+          <td><strong>4: Branch V Paper</strong></td>
+          <td>Matter bounce + ECH: f<sub>NL</sub>, spectrum, SPHEREx (~15pp)</td>
+          <td>Highest-impact if calculation succeeds</td>
+          <td><span class="pub-low">10%</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 12px; font-size: 0.88rem; color: var(--text-dim);">
+      <strong>Recommended strategy:</strong> Write Paper 3A immediately (framework paper). Complete Branch R MCMC in parallel. Compile companion technical note. Begin Branch V Phase 1 as medium-term investment.
+    </p>
+  </div>
+
+  <!-- IMMEDIATE NEXT MOVES -->
+  <h2>Immediate Next Moves</h2>
+  <div class="two-col">
+    <div class="section-block">
+      <h3 style="color: var(--green);">Do Now</h3>
+      <ol style="padding-left: 18px; font-size: 0.9rem;">
+        <li style="margin-bottom: 8px;"><strong>Write Paper 3A.</strong> Claims locked. Figure plan ready. Pure writing work.</li>
+        <li style="margin-bottom: 8px;"><strong>Generate 5 remaining figures</strong> (barrier map, rolling efficiency, &beta; vs &theta;<sub>i</sub>, constraint landscape, LiteBIRD forecast).</li>
+        <li style="margin-bottom: 8px;"><strong>Wait for planck_only chains</strong> to converge (~20&ndash;30h).</li>
+        <li style="margin-bottom: 8px;"><strong>Complete Branch R Phase 2 MCMC</strong> for publication-quality posteriors.</li>
+      </ol>
+    </div>
+    <div class="section-block">
+      <h3 style="color: var(--red);">Do Not Do</h3>
+      <ul style="padding-left: 18px; font-size: 0.9rem;">
+        <li style="margin-bottom: 8px;">Reopen any "torsion generates Lambda" variant</li>
+        <li style="margin-bottom: 8px;">Investigate galaxy spin predictions (9&ndash;12 OOM gap)</li>
+        <li style="margin-bottom: 8px;">Build custom CAMB modifications</li>
+        <li style="margin-bottom: 8px;">Pursue bounce-scale observables (GW, relics, baryogenesis)</li>
+        <li style="margin-bottom: 8px;">Further one-loop calculations in ECH</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TOP 5 ASSETS -->
+  <h2>Top 5 Highest-Value Assets</h2>
+  <div class="section-block">
+    <table>
+      <thead><tr><th>#</th><th>Asset</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>13-barrier systematic closure map (Foundations A&ndash;G, Branches H&ndash;O)</td><td class="pub-high">Publishable negative result; saves future researchers years</td></tr>
+        <tr><td>2</td><td>ALP birefringence prediction &amp; MCMC (&beta; = 0.27&deg;, Phase 2 in progress)</td><td class="pub-high">Testable by LiteBIRD; matches current 3.9&sigma; detection</td></tr>
+        <tr><td>3</td><td>Branch V matter bounce + ECH blueprint (f<sub>NL</sub> = 5/12)</td><td class="pub-flag">Flagship potential; parameter-free, SPHEREx testable</td></tr>
+        <tr><td>4</td><td>MCMC infrastructure (Cobaya, 236K+ samples, 4 datasets)</td><td class="pub-high">Fully reusable for any future cosmological model</td></tr>
+        <tr><td>5</td><td>Topological-Shift Duality theorem (Foundation B)</td><td class="pub-high">Original structural result with broad applicability</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    Project Intelligence Dossier &mdash; Spin-Torsion Cosmology Research Program &mdash; Houston Golden &mdash; 2026-03-17<br>
+    <span class="mono">bigbounce @ v1.6.0-preaudit</span>
+  </div>
+</footer>
+
+</body>
+</html>
