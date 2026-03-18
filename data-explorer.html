@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Explorer — Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+<style>
+  .dataset-card { position: relative; }
+  .dataset-card .dataset-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 8px;
+  }
+  .dataset-card .dataset-status .dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  }
+  .dot-frozen { background: #16a34a; }
+  .dot-running { background: #f59e0b; animation: pulse-dot 2s ease-in-out infinite; }
+  .dot-paused { background: #a1a1aa; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .dataset-card .sample-count {
+    font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700;
+    color: var(--text); margin: 8px 0 2px; letter-spacing: -0.02em;
+  }
+  .param-group-header td {
+    background: var(--bg-inset) !important; font-weight: 600 !important;
+    color: var(--text) !important; font-size: 12px !important;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    font-family: var(--font-sans) !important;
+    padding: 10px 14px !important; border-bottom: 1.5px solid var(--border-strong) !important;
+  }
+  .config-yaml {
+    background: var(--bg-code); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 20px;
+    overflow-x: auto; line-height: 1.55;
+    font-family: var(--font-mono); font-size: 12.5px;
+    color: var(--text-secondary); white-space: pre;
+  }
+  .config-yaml .key { color: #0550ae; }
+  .config-yaml .val { color: #6e7781; }
+  .config-yaml .comment { color: #a1a1aa; font-style: italic; }
+
+  .result-highlight {
+    font-family: var(--font-mono); font-weight: 600;
+    font-size: 13px;
+  }
+  .section-anchor { scroll-margin-top: 72px; }
+
+  /* Table of contents mini-nav */
+  .toc-inline {
+    display: flex; flex-wrap: wrap; gap: 6px 16px;
+    margin: 16px 0 8px; font-family: var(--font-sans);
+  }
+  .toc-inline a { font-size: 12.5px; font-weight: 500; white-space: nowrap; }
+
+  /* Responsive table wrapper */
+  .table-scroll { overflow-x: auto; margin: 16px 0; }
+  .table-scroll table { min-width: 640px; }
+
+  .footnote {
+    font-size: 12px; color: var(--text-muted); font-style: italic;
+    margin-top: 6px; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html" class="brand">BigBounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="datasets.html" data-page="datasets" class="active">Data</a><a href="articles.html" data-page="articles">Articles</a><a href="activity.html" data-page="activity">Activity</a><a href="research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
+
+<main class="wide-container">
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">MCMC Reproducibility &middot; Cobaya v3.6.1 + CAMB v1.6.5</p>
+  <h1>Data Explorer</h1>
+  <p class="subtitle">Interactive reference for the MCMC chains and external datasets used to constrain the spin-torsion cosmology model. All chains sample \(\Lambda\)CDM + \(N_{\rm eff}\) with Cobaya, using CAMB as the Boltzmann solver. Designed for anyone who wants to understand, verify, or reproduce the analysis.</p>
+
+  <div class="toc-inline" style="margin-top: 20px;">
+    <span class="text-xs" style="letter-spacing:0;">Jump to:</span>
+    <a href="#datasets">Datasets</a>
+    <a href="#parameters">Parameters</a>
+    <a href="#results">Key Results</a>
+    <a href="#convergence">Convergence</a>
+    <a href="#file-format">File Format</a>
+    <a href="#external-data">External Data</a>
+    <a href="#cobaya-config">Cobaya Config</a>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════ DATASET OVERVIEW ═══════════════════════════════ -->
+<section class="section" id="datasets">
+  <h2 class="section-anchor">Dataset Combinations</h2>
+  <p>Four dataset combinations were run, each with 6 independent MCMC chains. Two are science-frozen; two are in progress. The frozen datasets anchor all published results.</p>
+
+  <div class="grid-4" style="margin-top: 16px;">
+
+    <div class="card dataset-card">
+      <p class="text-xs">Planck Only</p>
+      <div class="sample-count">&mdash;</div>
+      <p style="font-size:13px; color:var(--text-tertiary); margin:2px 0 6px;">6 chains</p>
+      <div class="dataset-status">
+        <span class="dot dot-running"></span>
+        <span class="badge badge-warning">RUNNING</span>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+        Planck NPIPE CamSpec TTTEEE + lowl TT/EE + lensing. Baseline CMB-only constraint.
+      </p>
+    </div>
+
+    <div class="card dataset-card">
+      <p class="text-xs">Planck + BAO</p>
+      <div class="sample-count">&mdash;</div>
+      <p style="font-size:13px; color:var(--text-tertiary); margin:2px 0 6px;">6 chains</p>
+      <div class="dataset-status">
+        <span class="dot dot-paused"></span>
+        <span class="badge badge-neutral">PAUSED</span>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+        CMB + SDSS DR16 BAO (LRG, Ly-&alpha;, QSO) + DR7 MGS + 6dFGS. Geometric distance calibration.
+      </p>
+    </div>
+
+    <div class="card dataset-card">
+      <p class="text-xs">Planck + BAO + SN</p>
+      <div class="sample-count">132,949</div>
+      <p style="font-size:13px; color:var(--text-tertiary); margin:2px 0 6px;">6 chains</p>
+      <div class="dataset-status">
+        <span class="dot dot-frozen"></span>
+        <span class="badge badge-success">FROZEN</span>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+        CMB + BAO + Pantheon+ (1701 SN Ia). Standard concordance combination without local \(H_0\).
+      </p>
+    </div>
+
+    <div class="card dataset-card">
+      <p class="text-xs">Full Tension</p>
+      <div class="sample-count">176,840</div>
+      <p style="font-size:13px; color:var(--text-tertiary); margin:2px 0 6px;">6 chains</p>
+      <div class="dataset-status">
+        <span class="dot dot-frozen"></span>
+        <span class="badge badge-success">FROZEN</span>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+        CMB + BAO + SN + SH0ES \(M_b\) prior + DES Y3 \(S_8\) prior. Maximum constraining power.
+      </p>
+    </div>
+
+  </div>
+
+  <p class="footnote" style="margin-top:14px;">Science-frozen means no further samples will be added. All published constraints use only frozen chains. Running/paused chains are for cross-checks and may resume.</p>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ PARAMETER REFERENCE ═══════════════════════════════ -->
+<section class="section" id="parameters">
+  <h2 class="section-anchor">Parameter Reference</h2>
+  <p>All 47 columns present in the full_tension chain files, grouped by role. Prior ranges are from the Cobaya input YAML. Best-fit values are posterior means from the full_tension dataset (176,840 samples).</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Description</th>
+          <th>Prior / Range</th>
+          <th>Best-fit (full tension)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ── Primary Cosmological ── -->
+        <tr class="param-group-header"><td colspan="4">Primary Cosmological (sampled)</td></tr>
+        <tr>
+          <td><code>logA</code></td>
+          <td>\(\log(10^{10} A_s)\) &mdash; Amplitude of primordial scalar perturbations</td>
+          <td>[1.61, 3.91]</td>
+          <td class="result-highlight">3.044</td>
+        </tr>
+        <tr>
+          <td><code>nnu</code></td>
+          <td>\(N_{\rm eff}\) &mdash; Effective number of neutrino species</td>
+          <td>[2.046, 5.046]</td>
+          <td class="result-highlight">3.026</td>
+        </tr>
+        <tr>
+          <td><code>ns</code></td>
+          <td>\(n_s\) &mdash; Scalar spectral index</td>
+          <td>[0.8, 1.2]</td>
+          <td class="result-highlight">0.965</td>
+        </tr>
+        <tr>
+          <td><code>ombh2</code></td>
+          <td>\(\Omega_b h^2\) &mdash; Physical baryon density</td>
+          <td>[0.005, 0.1]</td>
+          <td class="result-highlight">0.02237</td>
+        </tr>
+        <tr>
+          <td><code>omch2</code></td>
+          <td>\(\Omega_c h^2\) &mdash; Physical cold dark matter density</td>
+          <td>[0.001, 0.99]</td>
+          <td class="result-highlight">0.1200</td>
+        </tr>
+        <tr>
+          <td><code>tau</code></td>
+          <td>\(\tau_{\rm reio}\) &mdash; Optical depth to reionization</td>
+          <td>[0.01, 0.8]</td>
+          <td class="result-highlight">0.054</td>
+        </tr>
+        <tr>
+          <td><code>theta_MC_100</code></td>
+          <td>\(100\theta_{MC}\) &mdash; CosmoMC angular scale of sound horizon</td>
+          <td>[0.5, 10]</td>
+          <td class="result-highlight">1.04092</td>
+        </tr>
+
+        <!-- ── Derived ── -->
+        <tr class="param-group-header"><td colspan="4">Derived Parameters</td></tr>
+        <tr>
+          <td><code>H0</code></td>
+          <td>\(H_0\) &mdash; Hubble constant [km/s/Mpc]</td>
+          <td>[40, 100]</td>
+          <td class="result-highlight">67.68</td>
+        </tr>
+        <tr>
+          <td><code>sigma8</code></td>
+          <td>\(\sigma_8\) &mdash; RMS matter fluctuations in 8 \(h^{-1}\) Mpc spheres</td>
+          <td>derived</td>
+          <td class="result-highlight">0.803</td>
+        </tr>
+        <tr>
+          <td><code>omegam</code></td>
+          <td>\(\Omega_m\) &mdash; Total matter density fraction</td>
+          <td>derived</td>
+          <td class="result-highlight">0.308</td>
+        </tr>
+        <tr>
+          <td><code>S8</code></td>
+          <td>\(S_8 = \sigma_8\sqrt{\Omega_m/0.3}\) &mdash; Clustering amplitude</td>
+          <td>derived</td>
+          <td class="result-highlight">0.814</td>
+        </tr>
+        <tr>
+          <td><code>delta_neff</code></td>
+          <td>\(\Delta N_{\rm eff} = N_{\rm eff} - 3.046\) &mdash; Extra radiation beyond SM</td>
+          <td>derived</td>
+          <td class="result-highlight">&minus;0.020</td>
+        </tr>
+        <tr>
+          <td><code>age</code></td>
+          <td>Age of the universe [Gyr]</td>
+          <td>derived</td>
+          <td class="result-highlight">13.80</td>
+        </tr>
+        <tr>
+          <td><code>As</code></td>
+          <td>\(A_s = 10^{-10} e^{\log A}\) &mdash; Scalar amplitude (derived from <code>logA</code>)</td>
+          <td>derived</td>
+          <td class="result-highlight">2.10 &times; 10<sup>&minus;9</sup></td>
+        </tr>
+
+        <!-- ── Nuisance (Planck) ── -->
+        <tr class="param-group-header"><td colspan="4">Nuisance Parameters (Planck CamSpec)</td></tr>
+        <tr>
+          <td><code>A_planck</code></td>
+          <td>Planck overall calibration parameter</td>
+          <td>&sim; 1.0 (Gaussian)</td>
+          <td class="result-highlight">1.0004</td>
+        </tr>
+        <tr>
+          <td><code>amp_143</code></td>
+          <td>CamSpec point-source amplitude at 143 GHz</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>amp_217</code></td>
+          <td>CamSpec point-source amplitude at 217 GHz</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>amp_143x217</code></td>
+          <td>CamSpec point-source amplitude, 143&times;217 cross</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>n_143</code></td>
+          <td>CamSpec dust spectral index at 143 GHz</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>n_217</code></td>
+          <td>CamSpec dust spectral index at 217 GHz</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>n_143x217</code></td>
+          <td>CamSpec dust spectral index, 143&times;217 cross</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>calTE</code></td>
+          <td>Planck TE calibration factor</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>calEE</code></td>
+          <td>Planck EE calibration factor</td>
+          <td>CamSpec internal</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+
+        <!-- ── External Priors ── -->
+        <tr class="param-group-header"><td colspan="4">External Priors (full_tension only)</td></tr>
+        <tr>
+          <td><code>Mb</code></td>
+          <td>\(M_b\) &mdash; SH0ES absolute SN Ia magnitude prior (Riess et al. 2022)</td>
+          <td>Gaussian: &minus;19.244 &plusmn; 0.037</td>
+          <td class="result-highlight">&minus;19.40</td>
+        </tr>
+
+        <!-- ── Chi-squared Components ── -->
+        <tr class="param-group-header"><td colspan="4">Chi-squared Components</td></tr>
+        <tr>
+          <td><code>chi2</code></td>
+          <td>Total \(\chi^2\) across all likelihoods</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>chi2__CMB</code></td>
+          <td>Combined CMB \(\chi^2\) (Planck high-\(\ell\) + low-\(\ell\) + lensing)</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>chi2__BAO</code></td>
+          <td>Combined BAO \(\chi^2\) (all SDSS + 6dFGS)</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>chi2__SN</code></td>
+          <td>Pantheon+ supernova \(\chi^2\)</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>chi2__Mb</code></td>
+          <td>SH0ES \(M_b\) prior \(\chi^2\) (full_tension only)</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="font-size:12px; color:var(--text-muted); padding: 6px 14px;">
+            Individual likelihood \(\chi^2\) columns: <code>chi2__planck_NPIPE_highl_CamSpec.TTTEEE</code>,
+            <code>chi2__planck_2018_lowl.TT</code>, <code>chi2__planck_2018_lowl.EE</code>,
+            <code>chi2__planck_2018_lensing.clik</code>, <code>chi2__bao.sdss_dr16_baoplus_lrg</code>,
+            <code>chi2__bao.sdss_dr16_baoplus_lyauto</code>, <code>chi2__bao.sdss_dr16_baoplus_lyxqso</code>,
+            <code>chi2__bao.sdss_dr16_baoplus_qso</code>, <code>chi2__bao.sdss_dr7_mgs</code>,
+            <code>chi2__bao.sixdf_2011_bao</code>, <code>chi2__sn.pantheonplus</code>,
+            <code>chi2__H0.riess2020Mb</code>, <code>chi2__S8_DES</code>
+          </td>
+        </tr>
+
+        <!-- ── Sampling ── -->
+        <tr class="param-group-header"><td colspan="4">Sampling Metadata</td></tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>Integer multiplicity weight for this sample</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>minuslogpost</code></td>
+          <td>\(-\ln\mathcal{P}\) &mdash; Negative log-posterior</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+        <tr>
+          <td><code>minuslogprior</code></td>
+          <td>\(-\ln\pi\) &mdash; Negative log-prior</td>
+          <td>&mdash;</td>
+          <td class="result-highlight">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="footnote">Column count varies by dataset: planck_only has 33 columns, planck_bao_sn has 42, full_tension has 46 (maximum). The <code>Mb</code> column and <code>chi2__Mb</code>, <code>chi2__H0.riess2020Mb</code>, <code>chi2__S8_DES</code> columns appear only in full_tension.</p>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ KEY RESULTS ═══════════════════════════════ -->
+<section class="section" id="results">
+  <h2 class="section-anchor">Key Results Summary</h2>
+  <p>Posterior mean &plusmn; 68% credible interval for key cosmological parameters in the two science-frozen datasets. Values are consistent across both combinations; the spin-torsion extension does not shift parameters away from \(\Lambda\)CDM.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Planck + BAO + SN<br><span style="font-weight:400; text-transform:none; letter-spacing:0;">(132,949 samples)</span></th>
+          <th>Full Tension<br><span style="font-weight:400; text-transform:none; letter-spacing:0;">(176,840 samples)</span></th>
+          <th>Planck 2018 \(\Lambda\)CDM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>\(H_0\) [km/s/Mpc]</td>
+          <td class="result-highlight">67.79 &plusmn; 1.09</td>
+          <td class="result-highlight">67.68 &plusmn; 1.06</td>
+          <td style="color:var(--text-muted);">67.36 &plusmn; 0.54</td>
+        </tr>
+        <tr>
+          <td>\(\Delta N_{\rm eff}\)</td>
+          <td class="result-highlight">+0.065 &plusmn; 0.17</td>
+          <td class="result-highlight">&minus;0.020 &plusmn; 0.169</td>
+          <td style="color:var(--text-muted);">0 (fixed)</td>
+        </tr>
+        <tr>
+          <td>\(\sigma_8\)</td>
+          <td class="result-highlight">0.812 &plusmn; 0.009</td>
+          <td class="result-highlight">0.803 &plusmn; 0.008</td>
+          <td style="color:var(--text-muted);">0.8111 &plusmn; 0.006</td>
+        </tr>
+        <tr>
+          <td>\(S_8\)</td>
+          <td class="result-highlight">0.831 &plusmn; 0.018</td>
+          <td class="result-highlight">0.814 &plusmn; 0.008</td>
+          <td style="color:var(--text-muted);">0.832 &plusmn; 0.013</td>
+        </tr>
+        <tr>
+          <td>\(\Omega_m\)</td>
+          <td class="result-highlight">0.312 &plusmn; 0.006</td>
+          <td class="result-highlight">0.308 &plusmn; 0.005</td>
+          <td style="color:var(--text-muted);">0.3153 &plusmn; 0.007</td>
+        </tr>
+        <tr>
+          <td>\(\tau_{\rm reio}\)</td>
+          <td class="result-highlight">0.056 &plusmn; 0.007</td>
+          <td class="result-highlight">0.054 &plusmn; 0.007</td>
+          <td style="color:var(--text-muted);">0.0544 &plusmn; 0.007</td>
+        </tr>
+        <tr>
+          <td>\(n_s\)</td>
+          <td class="result-highlight">0.967 &plusmn; 0.006</td>
+          <td class="result-highlight">0.965 &plusmn; 0.006</td>
+          <td style="color:var(--text-muted);">0.9649 &plusmn; 0.004</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="equation-display" style="margin-top: 20px;">
+    \[\boxed{\Delta N_{\rm eff} = -0.020 \pm 0.169 \;\;\text{(full tension)}\;, \quad +0.065 \pm 0.17 \;\;\text{(Planck+BAO+SN)}}\]
+    <p class="equation-label">Both datasets are consistent with \(\Delta N_{\rm eff} = 0\) at well under 1\(\sigma\). The spin-torsion model does not resolve cosmological tensions through dark radiation.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ CONVERGENCE ═══════════════════════════════ -->
+<section class="section" id="convergence">
+  <h2 class="section-anchor">Convergence Diagnostics</h2>
+  <p>Gelman-Rubin \(\hat{R} - 1\) statistic and effective sample size (ESS) for key parameters in the two frozen datasets. The convergence target was \(\hat{R} - 1 < 0.01\); all parameters surpass this, with \(\hat{R} - 1 < 0.005\) achieved across the board.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Parameter</th>
+          <th colspan="2" style="text-align:center; border-bottom:none;">Planck + BAO + SN</th>
+          <th colspan="2" style="text-align:center; border-bottom:none;">Full Tension</th>
+        </tr>
+        <tr>
+          <th>\(\hat{R} - 1\)</th>
+          <th>ESS</th>
+          <th>\(\hat{R} - 1\)</th>
+          <th>ESS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>\(H_0\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.003</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 10,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 15,000</td>
+        </tr>
+        <tr>
+          <td>\(N_{\rm eff}\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.004</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 8,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.003</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 12,000</td>
+        </tr>
+        <tr>
+          <td>\(\sigma_8\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.003</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 10,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 14,000</td>
+        </tr>
+        <tr>
+          <td>\(\Omega_b h^2\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 12,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 16,000</td>
+        </tr>
+        <tr>
+          <td>\(\Omega_c h^2\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.003</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 10,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 14,000</td>
+        </tr>
+        <tr>
+          <td>\(\tau_{\rm reio}\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.005</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 5,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.004</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 7,000</td>
+        </tr>
+        <tr>
+          <td>\(n_s\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 12,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 15,000</td>
+        </tr>
+        <tr>
+          <td>\(100\theta_{MC}\)</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.002</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 13,000</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">0.001</td>
+          <td style="font-family:var(--font-mono); font-size:12.5px;">&gt; 17,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="footnote">The convergence criterion was \(\hat{R} - 1 < 0.01\) (Rminus1_stop) with 95% confidence interval convergence at \(\hat{R}_{\rm cl} - 1 < 0.2\) (Rminus1_cl_stop). Both frozen datasets satisfy these thresholds for all sampled parameters. Burn-in fraction: 10%.</p>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ FILE FORMAT ═══════════════════════════════ -->
+<section class="section" id="file-format">
+  <h2 class="section-anchor">Chain File Format</h2>
+  <p>Each chain is stored as a plain-text file following the Cobaya/CosmoMC convention.</p>
+
+  <div class="card" style="margin-top: 16px;">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Format specification</h4>
+    <table style="margin-top:10px;">
+      <tbody>
+        <tr>
+          <td style="font-weight:600; width:160px;">Delimiter</td>
+          <td>Space-separated (multiple spaces between columns)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Header</td>
+          <td>Row 1, prefixed with <code>#</code>. Column names follow, space-separated.</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Columns</td>
+          <td>33&ndash;46 depending on dataset (planck_only: 33, planck_bao: 42, planck_bao_sn: 42, full_tension: 46)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Weight column</td>
+          <td>Column 1 (<code>weight</code>). Integer multiplicity &mdash; each row represents <code>weight</code> accepted MCMC steps at that point.</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">File naming</td>
+          <td><code>spin_torsion.1.txt</code> inside each chain directory</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Encoding</td>
+          <td>ASCII, Unix line endings</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top: 12px;">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Directory structure</h4>
+    <pre><code>reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/
+  full_tension/
+    chain_01/  spin_torsion.1.txt  cobaya_config.yaml  spin_torsion.input.yaml
+    chain_02/  ...
+    ...
+    chain_06/  ...
+  planck_bao_sn/
+    chain_01/ ... chain_06/
+  planck_bao/
+    chain_01/ ... chain_06/
+  planck_only/
+    chain_01/ ... chain_06/</code></pre>
+  </div>
+
+  <div class="card" style="margin-top: 12px;">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Loading in Python</h4>
+    <pre><code>import numpy as np
+
+# Load a single chain
+data = np.loadtxt("spin_torsion.1.txt")
+weights = data[:, 0].astype(int)
+H0 = data[:, 20]  # column index for H0 (0-based, after weight)
+
+# Or use GetDist (recommended)
+from getdist import MCSamples, loadMCSamples
+samples = loadMCSamples("spin_torsion")
+print(samples.getTable().tableTex())</code></pre>
+  </div>
+
+  <p style="margin-top: 16px; font-size: 14px;">
+    <strong>Download:</strong> Chain files are available in the
+    <a href="https://github.com/houstongolden/bigbounce" target="_blank" rel="noopener">GitHub repository</a>
+    under <code>reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/</code>.
+    Cobaya input YAML files (<code>spin_torsion.input.yaml</code>) are included alongside each chain for full reproducibility.
+  </p>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ EXTERNAL DATASETS ═══════════════════════════════ -->
+<section class="section" id="external-data">
+  <h2 class="section-anchor">External Datasets Used</h2>
+  <p>All external datasets used in the MCMC analysis, with references and availability.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Dataset</th>
+          <th>Description</th>
+          <th>Reference</th>
+          <th>Public</th>
+          <th>Used in</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="param-group-header"><td colspan="5">CMB</td></tr>
+        <tr>
+          <td>Planck NPIPE CamSpec TTTEEE</td>
+          <td>High-\(\ell\) TT, TE, EE power spectra (\(\ell = 30\)&ndash;2500) from NPIPE maps</td>
+          <td>Rosenberg et al. (2022)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>All 4</td>
+        </tr>
+        <tr>
+          <td>Planck 2018 lowl TT</td>
+          <td>Low-\(\ell\) temperature power spectrum (\(\ell = 2\)&ndash;29)</td>
+          <td>Planck Collaboration V (2020)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>All 4</td>
+        </tr>
+        <tr>
+          <td>Planck 2018 lowl EE</td>
+          <td>Low-\(\ell\) E-mode polarization (\(\ell = 2\)&ndash;29), SimAll</td>
+          <td>Planck Collaboration V (2020)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>All 4</td>
+        </tr>
+        <tr>
+          <td>Planck 2018 lensing</td>
+          <td>CMB lensing power spectrum reconstruction</td>
+          <td>Planck Collaboration VIII (2020)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>All 4</td>
+        </tr>
+
+        <tr class="param-group-header"><td colspan="5">BAO</td></tr>
+        <tr>
+          <td>SDSS DR16 LRG</td>
+          <td>Luminous red galaxy BAO at \(z_{\rm eff} = 0.38, 0.51, 0.70\)</td>
+          <td>Alam et al. (2021)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+        <tr>
+          <td>SDSS DR16 Ly-\(\alpha\) auto</td>
+          <td>Lyman-\(\alpha\) forest auto-correlation at \(z_{\rm eff} = 2.33\)</td>
+          <td>du Mas des Bourboux et al. (2020)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+        <tr>
+          <td>SDSS DR16 Ly-\(\alpha\) &times; QSO</td>
+          <td>Lyman-\(\alpha\) &times; quasar cross-correlation at \(z_{\rm eff} = 2.33\)</td>
+          <td>du Mas des Bourboux et al. (2020)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+        <tr>
+          <td>SDSS DR16 QSO</td>
+          <td>Quasar BAO at \(z_{\rm eff} = 1.48\)</td>
+          <td>Hou et al. (2021)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+        <tr>
+          <td>SDSS DR7 MGS</td>
+          <td>Main Galaxy Sample BAO at \(z_{\rm eff} = 0.15\)</td>
+          <td>Ross et al. (2015)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+        <tr>
+          <td>6dFGS</td>
+          <td>6dF Galaxy Survey BAO at \(z_{\rm eff} = 0.106\)</td>
+          <td>Beutler et al. (2011)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO, BAO+SN, Full</td>
+        </tr>
+
+        <tr class="param-group-header"><td colspan="5">Supernovae</td></tr>
+        <tr>
+          <td>Pantheon+</td>
+          <td>1701 SN Ia light curves, \(0.001 < z < 2.26\)</td>
+          <td>Scolnic et al. (2022); Brout et al. (2022)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>BAO+SN, Full</td>
+        </tr>
+
+        <tr class="param-group-header"><td colspan="5">Local Priors</td></tr>
+        <tr>
+          <td>SH0ES \(M_b\)</td>
+          <td>Cepheid-calibrated SN Ia absolute magnitude: \(M_b = -19.244 \pm 0.037\)</td>
+          <td>Riess et al. (2022)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>Full only</td>
+        </tr>
+        <tr>
+          <td>DES Y3 \(S_8\)</td>
+          <td>Weak lensing Gaussian prior: \(S_8 = 0.776 \pm 0.017\)</td>
+          <td>DES Collaboration (2022)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>Full only</td>
+        </tr>
+
+        <tr class="param-group-header"><td colspan="5">Birefringence (used in paper, not in MCMC)</td></tr>
+        <tr>
+          <td>Planck NPIPE EB</td>
+          <td>Cosmic birefringence \(\beta = 0.342^{+0.094}_{-0.091}\)&deg; (3.6\(\sigma\))</td>
+          <td>Eskilt (2022)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>Theory comparison</td>
+        </tr>
+        <tr>
+          <td>ACT DR6 EB</td>
+          <td>Independent birefringence measurement confirming non-zero signal</td>
+          <td>Diego-Palazuelos &amp; Komatsu (2025)</td>
+          <td><span class="badge badge-success">Yes</span></td>
+          <td>Theory comparison</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="footnote">All datasets are publicly available. Planck data products are distributed through the <a href="https://pla.esac.esa.int/" target="_blank" rel="noopener">Planck Legacy Archive</a>. SDSS BAO likelihoods are available through Cobaya's automatic installer. Pantheon+ data is available at <a href="https://github.com/PantheonPlusSH0ES" target="_blank" rel="noopener">github.com/PantheonPlusSH0ES</a>.</p>
+</section>
+
+<hr>
+
+<!-- ═══════════════════════════════ COBAYA CONFIG ═══════════════════════════════ -->
+<section class="section" id="cobaya-config">
+  <h2 class="section-anchor">Cobaya Configuration</h2>
+  <p>Key configuration parameters for the MCMC sampler. The full YAML input files are included in each chain directory for exact reproducibility.</p>
+
+  <details open>
+    <summary>Theory: CAMB settings</summary>
+    <div class="config-yaml"><span class="key">theory</span>:
+  <span class="key">camb</span>:
+    <span class="key">path</span>: <span class="val">null</span>                          <span class="comment"># use installed version (v1.6.5)</span>
+    <span class="key">extra_args</span>:
+      <span class="key">lens_potential_accuracy</span>: <span class="val">1</span>       <span class="comment"># high accuracy lensing potential</span>
+      <span class="key">num_massive_neutrinos</span>: <span class="val">1</span>        <span class="comment"># 1 massive + 2 massless species</span>
+      <span class="key">theta_H0_range</span>:                    <span class="comment"># H0 search range for theta* solver</span>
+        - <span class="val">40</span>
+        - <span class="val">100</span></div>
+  </details>
+
+  <details>
+    <summary>Sampler: MCMC settings</summary>
+    <div class="config-yaml"><span class="key">sampler</span>:
+  <span class="key">mcmc</span>:
+    <span class="key">Rminus1_stop</span>: <span class="val">0.01</span>              <span class="comment"># stop when R-1 &lt; 0.01</span>
+    <span class="key">Rminus1_cl_stop</span>: <span class="val">0.2</span>            <span class="comment"># 95% CI convergence target</span>
+    <span class="key">burn_in</span>: <span class="val">0.1</span>                     <span class="comment"># discard first 10% as burn-in</span>
+    <span class="key">learn_proposal</span>: <span class="val">true</span>             <span class="comment"># adaptive proposal covariance</span>
+    <span class="key">learn_proposal_Rminus1_max</span>: <span class="val">50</span>   <span class="comment"># stop learning when R-1 &lt; 50</span>
+    <span class="key">drag</span>: <span class="val">true</span>                        <span class="comment"># dragging for fast/slow decorrelation</span>
+    <span class="key">oversample_power</span>: <span class="val">0.4</span>           <span class="comment"># oversampling factor for fast params</span>
+    <span class="key">proposal_scale</span>: <span class="val">2.4</span>             <span class="comment"># Gaussian proposal width scaling</span>
+    <span class="key">max_tries</span>: <span class="val">40d</span>                   <span class="comment"># max tries per sample (40 x dimension)</span></div>
+  </details>
+
+  <details>
+    <summary>Likelihoods: full_tension combination</summary>
+    <div class="config-yaml"><span class="key">likelihood</span>:
+  <span class="comment"># CMB (all 4 datasets)</span>
+  <span class="key">planck_NPIPE_highl_CamSpec.TTTEEE</span>: <span class="val">null</span>
+  <span class="key">planck_2018_lowl.TT</span>: <span class="val">null</span>
+  <span class="key">planck_2018_lowl.EE</span>: <span class="val">null</span>
+  <span class="key">planck_2018_lensing.clik</span>: <span class="val">null</span>
+
+  <span class="comment"># BAO (planck_bao, planck_bao_sn, full_tension)</span>
+  <span class="key">bao.sdss_dr16_baoplus_lrg</span>: <span class="val">null</span>
+  <span class="key">bao.sdss_dr16_baoplus_lyauto</span>: <span class="val">null</span>
+  <span class="key">bao.sdss_dr16_baoplus_lyxqso</span>: <span class="val">null</span>
+  <span class="key">bao.sdss_dr16_baoplus_qso</span>: <span class="val">null</span>
+  <span class="key">bao.sdss_dr7_mgs</span>: <span class="val">null</span>
+  <span class="key">bao.sixdf_2011_bao</span>: <span class="val">null</span>
+
+  <span class="comment"># Supernovae (planck_bao_sn, full_tension)</span>
+  <span class="key">sn.pantheonplus</span>: <span class="val">null</span>
+
+  <span class="comment"># Local priors (full_tension only)</span>
+  <span class="key">H0.riess2020Mb</span>: <span class="val">null</span>
+  <span class="key">S8_DES</span>:
+    <span class="key">external</span>: <span class="val">'lambda sigma8, omegam:</span>
+      <span class="val">stats.norm.logpdf(sigma8*np.sqrt(omegam/0.3),</span>
+      <span class="val">loc=0.776, scale=0.017)'</span></div>
+  </details>
+
+  <details>
+    <summary>Parameters: priors and derived quantities</summary>
+    <div class="config-yaml"><span class="key">params</span>:
+  <span class="comment"># --- Sampled (with flat priors) ---</span>
+  <span class="key">logA</span>:     { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">1.61</span>, <span class="key">max</span>: <span class="val">3.91</span>},   <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">3.044</span>,   <span class="key">scale</span>: <span class="val">0.014</span>} }
+  <span class="key">nnu</span>:      { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">2.046</span>, <span class="key">max</span>: <span class="val">5.046</span>}, <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">3.346</span>,   <span class="key">scale</span>: <span class="val">0.2</span>}   }
+  <span class="key">ns</span>:       { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">0.8</span>,   <span class="key">max</span>: <span class="val">1.2</span>},   <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">0.9649</span>,  <span class="key">scale</span>: <span class="val">0.0042</span>} }
+  <span class="key">ombh2</span>:    { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">0.005</span>, <span class="key">max</span>: <span class="val">0.1</span>},   <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">0.02237</span>, <span class="key">scale</span>: <span class="val">0.00015</span>} }
+  <span class="key">omch2</span>:    { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">0.001</span>, <span class="key">max</span>: <span class="val">0.99</span>},  <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">0.12</span>,    <span class="key">scale</span>: <span class="val">0.0012</span>}  }
+  <span class="key">tau</span>:      { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">0.01</span>,  <span class="key">max</span>: <span class="val">0.8</span>},   <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">0.054</span>,   <span class="key">scale</span>: <span class="val">0.007</span>}   }
+  <span class="key">theta_MC_100</span>: { <span class="key">prior</span>: {<span class="key">min</span>: <span class="val">0.5</span>, <span class="key">max</span>: <span class="val">10</span>},  <span class="key">ref</span>: {<span class="key">loc</span>: <span class="val">1.04092</span>, <span class="key">scale</span>: <span class="val">0.00031</span>} }
+
+  <span class="comment"># --- Derived ---</span>
+  <span class="key">As</span>:         { <span class="key">value</span>: <span class="val">'lambda logA: 1e-10*np.exp(logA)'</span> }
+  <span class="key">H0</span>:         { <span class="key">min</span>: <span class="val">40</span>, <span class="key">max</span>: <span class="val">100</span> }
+  <span class="key">sigma8</span>:     { <span class="key">latex</span>: <span class="val">'\sigma_8'</span> }
+  <span class="key">omegam</span>:     { <span class="key">latex</span>: <span class="val">'\Omega_m'</span> }
+  <span class="key">S8</span>:         { <span class="key">derived</span>: <span class="val">'lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)'</span> }
+  <span class="key">delta_neff</span>: { <span class="key">derived</span>: <span class="val">'lambda nnu: nnu - 3.046'</span> }
+  <span class="key">age</span>:        { <span class="key">latex</span>: <span class="val">'Age/Gyr'</span> }</div>
+  </details>
+
+  <details>
+    <summary>Software versions</summary>
+    <div class="config-yaml"><span class="comment"># Exact versions used for all production chains</span>
+<span class="key">cobaya</span>:       <span class="val">3.6.1</span>
+<span class="key">camb</span>:         <span class="val">1.6.5</span>
+<span class="key">python</span>:       <span class="val">3.11</span>
+<span class="key">numpy</span>:        <span class="val">1.26.x</span>
+<span class="key">scipy</span>:        <span class="val">1.12.x</span>
+<span class="key">getdist</span>:      <span class="val">1.4.x</span>         <span class="comment"># for post-processing / plotting</span>
+<span class="key">platform</span>:     <span class="val">RunPod A40 GPU cloud (CPU-only sampling)</span></div>
+  </details>
+</section>
+
+</main>
+
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+
+<script>
+// Highlight active nav link
+document.querySelectorAll('nav a[data-page]').forEach(a => {
+  if (a.dataset.page === 'datasets') a.classList.add('active');
+});
+</script>
+</body>
+</html>

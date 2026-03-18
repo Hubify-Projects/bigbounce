@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary &amp; Equations — Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── Section anchors ── */
+  .section-anchor { scroll-margin-top: 80px; }
+
+  /* ── Jump links ── */
+  .jump-links {
+    display: flex; gap: 10px; margin-bottom: 32px;
+    font-family: var(--font-sans); font-size: 13px;
+  }
+  .jump-links a {
+    padding: 6px 14px; border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text-secondary); font-weight: 500; transition: all var(--transition);
+  }
+  .jump-links a:hover {
+    background: var(--bg-subtle); border-color: var(--border-strong);
+    color: var(--text); text-decoration: none;
+  }
+
+  /* ── Equation cards ── */
+  .eq-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+  .eq-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .eq-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
+  }
+  .eq-label {
+    font-family: var(--font-sans); font-weight: 700; font-size: 14px;
+    color: var(--text);
+  }
+  .eq-number {
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--text-tertiary); background: var(--bg-inset);
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .eq-math {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 12px 0 16px;
+    text-align: center;
+    overflow-x: auto;
+    font-size: 1.05em;
+  }
+  .eq-explanation {
+    font-size: 14.5px; line-height: 1.75;
+    color: var(--text-secondary);
+    font-family: var(--font-serif);
+  }
+  .eq-explanation strong { color: var(--text); }
+
+  /* Status badges for equations */
+  .badge-derived {
+    background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe;
+    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+  }
+  .badge-assumed {
+    background: #fffbeb; color: #92400e; border: 1px solid #fde68a;
+    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+  }
+  .badge-standard {
+    background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;
+    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+  }
+  .badge-contingent {
+    background: #faf5ff; color: #6b21a8; border: 1px solid #e9d5ff;
+    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+  }
+
+  /* ── Glossary filter ── */
+  .filter-container {
+    position: relative; margin-bottom: 20px;
+  }
+  .filter-input {
+    width: 100%; padding: 10px 16px 10px 40px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-family: var(--font-sans); font-size: 14px;
+    color: var(--text); background: var(--bg);
+    transition: border-color var(--transition);
+    outline: none;
+  }
+  .filter-input:focus { border-color: var(--text); }
+  .filter-input::placeholder { color: var(--text-muted); }
+  .filter-icon {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); pointer-events: none;
+  }
+  .filter-count {
+    font-family: var(--font-sans); font-size: 12px; color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* ── Glossary table ── */
+  .glossary-table { margin-top: 12px; }
+  .glossary-table table { table-layout: fixed; }
+  .glossary-table thead th:nth-child(1) { width: 14%; }
+  .glossary-table thead th:nth-child(2) { width: 10%; }
+  .glossary-table thead th:nth-child(3) { width: 76%; }
+  .glossary-table tbody td { vertical-align: top; }
+  .glossary-table .gl-symbol {
+    font-family: var(--font-mono); font-size: 13.5px; font-weight: 600;
+    color: var(--text); white-space: nowrap;
+  }
+  .glossary-table .gl-pronunciation {
+    font-family: var(--font-sans); font-size: 11.5px; color: var(--text-muted);
+    font-style: italic; display: block; margin-top: 1px;
+  }
+  .glossary-table .gl-def {
+    font-size: 13.5px; line-height: 1.7; color: var(--text-secondary);
+  }
+  .glossary-table .gl-def strong { color: var(--text); }
+  .glossary-table .gl-value {
+    font-family: var(--font-mono); font-size: 12px;
+    background: var(--bg-inset); padding: 1px 6px; border-radius: 3px;
+    color: var(--text-tertiary); white-space: nowrap;
+  }
+  .glossary-table tr.hidden { display: none; }
+
+  /* Type badges in glossary */
+  .gl-type {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    font-family: var(--font-sans); text-transform: uppercase;
+    letter-spacing: 0.04em; padding: 2px 6px; border-radius: 3px;
+    white-space: nowrap;
+  }
+  .gl-type-param { background: #eff6ff; color: #1e40af; }
+  .gl-type-obs { background: #f0fdf4; color: #166534; }
+  .gl-type-theory { background: #faf5ff; color: #6b21a8; }
+  .gl-type-dataset { background: #fffbeb; color: #92400e; }
+  .gl-type-instrument { background: #fef2f2; color: #991b1b; }
+  .gl-type-code { background: #f5f5f5; color: #3f3f46; }
+
+  /* ── Section divider ── */
+  .section-divider {
+    margin: 56px 0 44px;
+    border: none;
+    border-top: 2px solid var(--border);
+  }
+
+  /* ── Badge legend ── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;
+    font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);
+    align-items: center;
+  }
+  .legend-label { font-weight: 600; color: var(--text-secondary); margin-right: 4px; }
+
+  /* ── Responsive table scroll ── */
+  @media (max-width: 768px) {
+    .eq-card { padding: 20px 18px 18px; }
+    .eq-math { padding: 14px 16px; font-size: 0.95em; }
+    .glossary-table { overflow-x: auto; }
+    .glossary-table table { min-width: 600px; }
+    .glossary-table thead th:nth-child(1) { width: 18%; }
+    .glossary-table thead th:nth-child(2) { width: 12%; }
+    .glossary-table thead th:nth-child(3) { width: 70%; }
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner"><a href="index.html" class="brand">BigBounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="datasets.html" data-page="datasets">Data</a><a href="figures.html" data-page="figures">Figures</a><a href="glossary.html" data-page="glossary">Glossary</a><a href="articles.html" data-page="articles">Articles</a><a href="activity.html" data-page="activity">Activity</a><a href="research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
+
+<main>
+<div class="container">
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<div class="hero">
+  <h1>Equations &amp; Glossary</h1>
+  <p class="subtitle">The mathematical backbone of the spin-torsion cosmology framework, with a complete reference for every symbol, parameter, and observable.</p>
+</div>
+
+<div class="jump-links">
+  <a href="#equations">Key Equations</a>
+  <a href="#glossary">Glossary</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PART 1: EQUATIONS GALLERY
+     ═══════════════════════════════════════════════════════════════════ -->
+<h2 id="equations" class="section-anchor">Key Equations</h2>
+<p style="margin-bottom: 24px;">The mathematical backbone of the spin-torsion cosmology framework.</p>
+
+<div class="legend">
+  <span class="legend-label">Status:</span>
+  <span class="badge-derived">Derived</span>
+  <span class="badge-standard">Standard Result</span>
+  <span class="badge-assumed">Assumed</span>
+  <span class="badge-contingent">Contingent</span>
+</div>
+
+
+<!-- Eq 1 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Einstein-Cartan-Holst Action</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 1</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[S_{\rm ECH} = \frac{1}{16\pi G}\int d^4x\,e\left[e^\mu_a e^\nu_b R^{ab}{}_{\mu\nu} + \frac{1}{\gamma}\,\varepsilon^{abcd}\,e^\mu_a e^\nu_b R_{cd\mu\nu}\right] + S_{\rm matter}\]
+  </div>
+  <p class="eq-explanation">
+    The gravitational action with the <strong>Holst term</strong>. The second term (proportional to \(1/\gamma\)) is the parity-violating contribution from the Barbero-Immirzi parameter. This is the starting point of the entire framework -- standard Einstein gravity plus a topological-like correction that becomes physically relevant when torsion is present.
+  </p>
+</div>
+
+<!-- Eq 2 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Torsion from Spin Density</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-standard">Standard Result</span>
+      <span class="eq-number">Eq. 2</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[T^{abc} = 8\pi G\, S^{abc}\]
+  </div>
+  <p class="eq-explanation">
+    Torsion is <strong>algebraically determined</strong> by the spin density of matter -- it is not dynamical and does not propagate. In the minimal Einstein-Cartan-Holst framework, torsion is a constrained field that can be integrated out, leaving observable consequences in the matter sector.
+  </p>
+</div>
+
+<!-- Eq 3 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Four-Fermion Contact Interaction</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 3</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\mathcal{L}_{\rm int} = -\frac{3\pi G_N}{2}\,\frac{\gamma^2}{\gamma^2+1}\,J^{(A)}_\mu J^{\mu}_{(A)}\]
+  </div>
+  <p class="eq-explanation">
+    After integrating out torsion, this <strong>parity-violating contact term</strong> emerges. \(J^{(A)}\) is the fermionic axial current \((\bar\psi\gamma_\mu\gamma_5\psi)\). The \(\gamma^2/(\gamma^2+1)\) factor encodes the Barbero-Immirzi parameter's physical effect. This interaction provides the repulsion that drives the cosmological bounce and is the seed of all parity-odd phenomena in the framework.
+  </p>
+</div>
+
+<!-- Eq 4 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Modified Friedmann Equation</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 4</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[H^2 = \frac{8\pi G}{3}\,\rho\left[1 - \frac{\rho}{\rho_{\rm crit}}\right]\]
+  </div>
+  <p class="eq-explanation">
+    The key modification to standard cosmology. At <strong>low density</strong>, this reduces to standard GR. As \(\rho \to \rho_{\rm crit}\), the Hubble parameter \(H \to 0\) and the universe <strong>bounces</strong> rather than forming a singularity. The correction factor \([1 - \rho/\rho_{\rm crit}]\) is the single most important prediction of the framework.
+  </p>
+</div>
+
+<!-- Eq 5 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Critical Bounce Density</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 5</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\rho_{\rm crit} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rho_{\rm Pl} \approx 0.27\,\rho_{\rm Pl}\]
+  </div>
+  <p class="eq-explanation">
+    <strong>No free parameters</strong> -- the critical density is determined entirely by the Barbero-Immirzi parameter \(\gamma = 0.274\). This is a sub-Planckian density, meaning the bounce occurs before quantum gravity effects dominate and the semiclassical description remains valid.
+  </p>
+</div>
+
+<!-- Eq 6 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Generalized Friedmann with Rotation</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 6</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[H^2 = \frac{8\pi G}{3}\,\rho + \frac{\Lambda}{3} + \frac{1}{3}(\sigma^2 - \omega^2) - \frac{k}{a^2}\]
+  </div>
+  <p class="eq-explanation">
+    The <strong>1+3 covariant decomposition</strong> of the Friedmann equation including shear \(\sigma\) and vorticity \(\omega\). Shear contributes positively (like extra energy density), while vorticity contributes negatively (like negative curvature). The vorticity term is the bridge between the bounce mechanism and late-time dark energy.
+  </p>
+</div>
+
+<!-- Eq 7 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Effective Cosmological Constant</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-assumed">Assumed + Derived</span>
+      <span class="eq-number">Eq. 7</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\Lambda_{\rm eff} = \Xi\,M_{\rm Pl}^2 + c_\omega\,\omega^2\]
+  </div>
+  <p class="eq-explanation">
+    The full dark energy model. \(\Xi\) is the inflationary suppression factor and \(c_\omega\) controls the vorticity contribution. <strong>Important caveat:</strong> the equation of state \(w = -1\) at late times is <em>assumed</em>, not derived from first principles. The framework provides a mechanism for the magnitude of \(\Lambda\) but not its equation of state.
+  </p>
+</div>
+
+<!-- Eq 8 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Inflationary Suppression Factor</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 8</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\Xi = \left[\frac{\alpha}{M}\,M_{\rm Pl}\right] \cdot \mathcal{D}_{\rm inf}\,, \quad \mathcal{D}_{\rm inf} = e^{-3N_{\rm tot}}\!\left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{\!3/2}\]
+  </div>
+  <p class="eq-explanation">
+    Converts a <strong>Planck-scale parity-odd effect</strong> into the observed dark energy scale. The exponential dilution factor \(\mathcal{D}_{\rm inf}\) arises from inflationary expansion. Reproducing the observed \(\rho_\Lambda \sim 10^{-123}\,M_{\rm Pl}^4\) requires \(N_{\rm tot} \approx 92\) e-folds -- a testable, quantitative requirement.
+  </p>
+</div>
+
+<!-- Eq 9 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">CMB Birefringence Formula</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-standard">Standard Result</span>
+      <span class="eq-number">Eq. 9</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[C_\ell^{EB} \approx 2\beta\,(C_\ell^{EE} - C_\ell^{BB})\]
+  </div>
+  <p class="eq-explanation">
+    Standard formula relating the <strong>polarization rotation angle</strong> \(\beta\) to the EB cross-power spectrum. A non-zero \(C_\ell^{EB}\) is a smoking-gun signal of cosmological parity violation. This is a model-independent relation used by all CMB experiments searching for birefringence.
+  </p>
+</div>
+
+<!-- Eq 10 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">ALP Birefringence Prediction</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 10</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\beta = \frac{\theta_i \cdot C_\gamma}{2\pi} \approx 0.27°\]
+  </div>
+  <p class="eq-explanation">
+    The <strong>surviving positive prediction</strong> of the framework. The birefringence angle is independent of \(f_a\) due to an exact cancellation in the ALP coupling. With \(\theta_i \sim \mathcal{O}(1)\) from natural misalignment and \(C_\gamma\) fixed by the photon-torsion coupling, the prediction is sharp and testable by LiteBIRD (launch ~2030, \(\sigma \sim 0.01°\)).
+  </p>
+</div>
+
+<!-- Eq 11 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Galaxy Spin Dipole</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-assumed">Assumed / Phenomenological</span>
+      <span class="eq-number">Eq. 11</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[A(z) = A_0\,(1+z)^{-p}\,e^{-qz}\]
+  </div>
+  <p class="eq-explanation">
+    <strong>Phenomenological fit</strong> for galaxy spin asymmetry as a function of redshift. \(A_0 \sim 0.003\) sets the amplitude. <strong>Status: contested.</strong> There is a 9--12 order-of-magnitude coupling gap between the theoretical torsion-induced mechanism and the observed signal amplitude. This observable is included for completeness but is not a robust prediction.
+  </p>
+</div>
+
+<!-- Eq 12 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">One-Loop Parity-Odd Coefficient</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 12</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[\frac{\alpha}{M} \sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\frac{\Lambda_{\rm UV}^2}{\mu^2} + \delta_{\rm NY}\]
+  </div>
+  <p class="eq-explanation">
+    <strong>Order-of-magnitude estimate</strong> from a fermion loop diagram. The first term is the perturbative one-loop contribution; \(\delta_{\rm NY}\) is the Nieh-Yan topological correction. In practice, \(\alpha/M\) is treated as a phenomenological parameter because the full non-perturbative calculation is not available. Its value is constrained by requiring consistency with the observed \(\rho_\Lambda\).
+  </p>
+</div>
+
+<!-- Eq 13 -->
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Branch V Non-Gaussianity</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-contingent">Derived -- Contingent</span>
+      <span class="eq-number">Eq. 13</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[f_{\rm NL} = \frac{5}{12}\]
+  </div>
+  <p class="eq-explanation">
+    A <strong>parameter-free prediction</strong> from dust contraction through the ECH bounce. Standard slow-roll inflation predicts \(f_{\rm NL} \sim 10^{-2}\), so a measurement of \(f_{\rm NL} \approx 0.42\) would be a decisive discriminator. <strong>Contingent</strong> because the full perturbation calculation through the bounce has not yet been performed. Testable by SPHEREx at approximately \(2.5\sigma\) significance.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PART 2: GLOSSARY
+     ═══════════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<h2 id="glossary" class="section-anchor">Glossary of Terms, Parameters &amp; Variables</h2>
+<p style="margin-bottom: 8px;">Complete reference for every symbol and concept in the spin-torsion cosmology framework.</p>
+
+<div class="legend" style="margin-top: 16px;">
+  <span class="legend-label">Type:</span>
+  <span class="gl-type gl-type-param">Parameter</span>
+  <span class="gl-type gl-type-obs">Observable</span>
+  <span class="gl-type gl-type-theory">Theory</span>
+  <span class="gl-type gl-type-dataset">Dataset</span>
+  <span class="gl-type gl-type-instrument">Instrument</span>
+  <span class="gl-type gl-type-code">Code</span>
+</div>
+
+<div class="filter-container">
+  <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input type="text" class="filter-input" id="glossaryFilter" placeholder="Filter glossary &mdash; type a symbol, term, or keyword..." autocomplete="off">
+  <div class="filter-count" id="filterCount"></div>
+</div>
+
+<div class="glossary-table">
+<table>
+<thead>
+  <tr>
+    <th>Symbol / Term</th>
+    <th>Type</th>
+    <th>Definition</th>
+  </tr>
+</thead>
+<tbody id="glossaryBody">
+
+<tr>
+  <td>
+    <span class="gl-symbol">ALP</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Axion-Like Particle.</strong> Ultralight pseudoscalar field arising from spontaneous breaking of an approximate global symmetry. In this program: \(f_a \sim M_{\rm Pl}\), \(m \sim H_0\), \(\theta_i \sim \mathcal{O}(1)\). Produces cosmic birefringence via photon coupling.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\beta\)</span>
+    <span class="gl-pronunciation">"BAY-tuh"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>CMB polarization rotation angle.</strong> Measures the total parity-violating rotation of the CMB linear polarization plane between last scattering and observation. Predicted: <span class="gl-value">0.27&deg;</span>. Observed: <span class="gl-value">0.342 &plusmn; 0.094&deg; (3.9&sigma;)</span>. Will be measured by LiteBIRD to \(\sigma \sim 0.01°\).
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\gamma\)</span>
+    <span class="gl-pronunciation">"GAM-uh"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Barbero-Immirzi parameter.</strong> Dimensionless constant of loop quantum gravity. Value: <span class="gl-value">0.274 &plusmn; 0.020</span>. Fixed by black hole entropy counting in LQG. Controls the bounce density (Eq. 5), the strength of the parity-odd coupling (Eq. 3), and the four-fermion interaction.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">CAMB</span>
+  </td>
+  <td><span class="gl-type gl-type-code">Code</span></td>
+  <td class="gl-def">
+    <strong>Code for Anisotropies in the Microwave Background.</strong> Boltzmann solver for computing CMB power spectra and matter transfer functions. Version <span class="gl-value">1.6.5</span> used in all MCMC runs.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(C_\ell^{EB}\)</span>
+    <span class="gl-pronunciation">"C-ell E-B"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>CMB E-mode/B-mode cross-power spectrum.</strong> Non-zero if cosmological parity is violated. Related to the birefringence angle \(\beta\) by Eq. 9. Key target observable for Planck, ACT, and LiteBIRD parity searches.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Cobaya</span>
+    <span class="gl-pronunciation">"co-BAH-yah"</span>
+  </td>
+  <td><span class="gl-type gl-type-code">Code</span></td>
+  <td class="gl-def">
+    <strong>MCMC sampling framework.</strong> Python-based Bayesian inference code. Version <span class="gl-value">3.6.1</span>. Drives all parameter estimation in this work, interfacing with CAMB and Planck likelihood codes.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\Delta N_{\rm eff}\)</span>
+    <span class="gl-pronunciation">"delta N-effective"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Extra relativistic species</strong> beyond the 3 Standard Model neutrinos. Parameterizes any additional radiation density at recombination. Best fit: <span class="gl-value">-0.020 &plusmn; 0.169</span>, consistent with zero. Does <em>not</em> resolve the Hubble tension in this framework.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">ECH</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Einstein-Cartan-Holst.</strong> The gravitational framework combining Einstein's general relativity, Cartan's torsion extension, and the Holst term from LQG. The minimal first-order formulation that includes parity-violating gravitational effects. Starting point for Eq. 1.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">ESS</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Effective Sample Size.</strong> Measures the number of independent samples in an MCMC chain after accounting for autocorrelation. Minimum ESS > <span class="gl-value">4,600</span> across all frozen datasets in this work.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(f_a\)</span>
+    <span class="gl-pronunciation">"eff-sub-a"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>ALP decay constant.</strong> Sets the symmetry-breaking scale. Cancels exactly in the birefringence prediction (Eq. 10). Assumed <span class="gl-value">~ M_Pl</span> in this framework.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(f_{\rm NL}\)</span>
+    <span class="gl-pronunciation">"eff-N-L"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Local non-Gaussianity amplitude.</strong> Measures departure from Gaussian primordial fluctuations. Branch V predicts <span class="gl-value">5/12 &approx; 0.42</span> (parameter-free). Standard slow-roll inflation predicts \(\sim 10^{-2}\). Testable by SPHEREx.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(f_{\rm photon}\)</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Photon-torsion coupling.</strong> Quantifies the strength of the photon interaction with the torsion condensate. Consistency check: <span class="gl-value">\(f_{\rm photon} \times C_0 = 1.73 \pm 0.44\)</span>, confirming \(\mathcal{O}(1)\) naturalness.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(H_0\)</span>
+    <span class="gl-pronunciation">"H-naught"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Hubble constant.</strong> Present-day expansion rate of the universe. Full-tension fit: <span class="gl-value">67.68 &plusmn; 1.06 km/s/Mpc</span>. Consistent with Planck &Lambda;CDM value; the spin-torsion framework does not resolve the Hubble tension.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(J^{(A)}_\mu\)</span>
+    <span class="gl-pronunciation">"J-A-mu"</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Fermionic axial current.</strong> Defined as \(\bar\psi\gamma_\mu\gamma_5\psi\). The source of torsion in the ECH framework and the origin of all parity-violating effects. Appears in the four-fermion contact interaction (Eq. 3).
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">&Lambda;CDM</span>
+    <span class="gl-pronunciation">"Lambda CDM"</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Standard cosmological model.</strong> Cosmological constant (&Lambda;) plus cold dark matter (CDM). The baseline against which all spin-torsion predictions are compared. The framework reduces to &Lambda;CDM in the low-energy, zero-torsion limit.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">LiteBIRD</span>
+  </td>
+  <td><span class="gl-type gl-type-instrument">Instrument</span></td>
+  <td class="gl-def">
+    <strong>Lite satellite for B-mode Inflation and Reionization Detection.</strong> JAXA mission, launch ~2030. Will measure the birefringence angle \(\beta\) to <span class="gl-value">&sigma; ~ 0.01&deg;</span>, providing a definitive test of the 0.27&deg; prediction (Eq. 10).
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">LQG</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Loop Quantum Gravity.</strong> Non-perturbative approach to quantum gravity based on quantizing the connection formulation of GR. Provides the Barbero-Immirzi parameter \(\gamma\) and the theoretical motivation for the bounce mechanism.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(M_{\rm Pl}\)</span>
+    <span class="gl-pronunciation">"M-Planck"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Planck mass.</strong> Natural scale of quantum gravity. <span class="gl-value">~1.22 &times; 10<sup>19</sup> GeV</span>. Sets the reference scale for the bounce density, the ALP decay constant, and the suppression factor \(\Xi\).
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(N_{\rm tot}\)</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Total number of inflationary e-folds.</strong> Best fit: <span class="gl-value">~92</span>. Viable range: [79, 95]. Controls the exponential dilution that converts Planck-scale parity effects into the observed dark energy density (Eq. 8). Larger than the observationally required minimum of ~60.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\Omega_m\)</span>
+    <span class="gl-pronunciation">"Omega-m"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Matter density parameter.</strong> Fraction of the critical density in matter (baryonic + dark). Best fit: <span class="gl-value">0.308 &plusmn; 0.005</span>. Consistent with Planck &Lambda;CDM.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\rho_{\rm crit}\)</span>
+    <span class="gl-pronunciation">"rho-crit"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Critical bounce density.</strong> The energy density at which the universe bounces. Value: <span class="gl-value">0.27 &rho;<sub>Pl</sub></span>. Determined entirely by \(\gamma\) with no free parameters (Eq. 5). Sub-Planckian, so the semiclassical description remains valid.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\hat{R}\)</span>
+    <span class="gl-pronunciation">"R-hat"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Gelman-Rubin convergence diagnostic.</strong> Compares within-chain and between-chain variance in MCMC runs. Target: <span class="gl-value">\(\hat{R} - 1 &lt; 0.01\)</span>. Achieved: <span class="gl-value">&lt; 0.005</span> across all frozen datasets.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(S_8\)</span>
+    <span class="gl-pronunciation">"S-eight"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Clustering amplitude parameter.</strong> Defined as \(\sigma_8\sqrt{\Omega_m/0.3}\). Combines matter fluctuation amplitude with matter density. Full-tension fit: <span class="gl-value">0.814 &plusmn; 0.008</span>.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\sigma_8\)</span>
+    <span class="gl-pronunciation">"sigma-eight"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>RMS matter fluctuation</strong> in 8 \(h^{-1}\) Mpc spheres. Measures the amplitude of the matter power spectrum on galaxy cluster scales. Full-tension fit: <span class="gl-value">0.803 &plusmn; 0.008</span>.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">SPHEREx</span>
+  </td>
+  <td><span class="gl-type gl-type-instrument">Instrument</span></td>
+  <td class="gl-def">
+    <strong>Spectro-Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer.</strong> NASA all-sky spectral survey. Will test the Branch V prediction of \(f_{\rm NL} = 5/12\) at approximately <span class="gl-value">2.5&sigma;</span> significance.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\tau\)</span>
+    <span class="gl-pronunciation">"tau"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Optical depth to reionization.</strong> Measures the integrated Thomson scattering probability of CMB photons through the reionized intergalactic medium. Best fit: <span class="gl-value">0.054 &plusmn; 0.007</span>.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\theta_i\)</span>
+    <span class="gl-pronunciation">"theta-i"</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Initial ALP misalignment angle.</strong> Sets the initial field value of the axion-like particle. Best fit: <span class="gl-value">1.36 &plusmn; 0.44</span>. \(\mathcal{O}(1)\) is natural (no fine-tuning required). Enters the birefringence prediction (Eq. 10).
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\Xi\)</span>
+    <span class="gl-pronunciation">"Ksi" (or "Zai")</span>
+  </td>
+  <td><span class="gl-type gl-type-param">Parameter</span></td>
+  <td class="gl-def">
+    <strong>Inflationary suppression factor.</strong> Dimensionless number <span class="gl-value">~ 10<sup>-123</sup></span> that converts the Planck-scale parity effect into the observed dark energy density. Arises from exponential dilution during inflation (Eq. 8). The framework's explanation for the cosmological constant problem.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(\omega\)</span>
+    <span class="gl-pronunciation">"omega" (lowercase)</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Cosmic vorticity.</strong> Rotational component of the cosmological fluid's 4-velocity. Upper bound: <span class="gl-value">\((\omega/H)_0 &lt; 5 \times 10^{-11}\)</span>. Contributes to the effective cosmological constant (Eq. 7) and the generalized Friedmann equation (Eq. 6).
+  </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+</div><!-- /.container -->
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p>
+  </div>
+</footer>
+
+<script>
+// Highlight active nav link
+document.querySelectorAll('nav a[data-page]').forEach(a => {
+  if (a.getAttribute('data-page') === 'glossary') a.classList.add('active');
+});
+
+// Glossary filter
+const filterInput = document.getElementById('glossaryFilter');
+const glossaryBody = document.getElementById('glossaryBody');
+const filterCount = document.getElementById('filterCount');
+const rows = glossaryBody.querySelectorAll('tr');
+const totalRows = rows.length;
+
+function updateFilter() {
+  const query = filterInput.value.toLowerCase().trim();
+  let visible = 0;
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (!query || text.includes(query)) {
+      row.classList.remove('hidden');
+      visible++;
+    } else {
+      row.classList.add('hidden');
+    }
+  });
+
+  if (query) {
+    filterCount.textContent = visible + ' of ' + totalRows + ' entries';
+  } else {
+    filterCount.textContent = '';
+  }
+}
+
+filterInput.addEventListener('input', updateFilter);
+</script>
+
+</body>
+</html>
