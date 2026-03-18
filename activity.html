@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity — Spin-Torsion Cosmology Research Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+<style>
+  .status-banner {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-left: 4px solid #1e40af;
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    font-family: var(--font-sans);
+  }
+  .status-banner .status-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    font-weight: 700; color: #1e40af; margin-bottom: 4px;
+  }
+  .status-banner .status-focus {
+    font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 6px;
+    font-family: var(--font-serif);
+  }
+  .status-banner .status-desc {
+    font-size: 14px; color: var(--text-secondary); margin: 0; line-height: 1.6;
+  }
+  .status-meta {
+    display: flex; gap: 24px; margin-top: 12px; flex-wrap: wrap;
+  }
+  .status-meta-item {
+    font-size: 12px; color: var(--text-tertiary);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .status-meta-item .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .dot-active { background: #22c55e; }
+  .dot-paused { background: #eab308; }
+  .dot-planned { background: #94a3b8; }
+
+  .feed { position: relative; padding-left: 28px; margin-top: 8px; }
+  .feed::before {
+    content: ''; position: absolute; left: 7px; top: 12px; bottom: 12px;
+    width: 1px; background: var(--border);
+  }
+  .feed-item {
+    position: relative; margin-bottom: 28px;
+    padding: 16px 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition);
+  }
+  .feed-item:hover { border-color: var(--border-strong); }
+  .feed-item::before {
+    content: ''; position: absolute; left: -25px; top: 22px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--text-tertiary);
+  }
+  .feed-item.milestone::before { background: var(--text); border-color: var(--text); }
+  .feed-item.positive::before { background: #22c55e; border-color: #22c55e; }
+  .feed-item.negative::before { background: #ef4444; border-color: #ef4444; }
+  .feed-item.active-item::before { background: #3b82f6; border-color: #3b82f6; }
+
+  .feed-date {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .feed-title {
+    font-family: var(--font-sans); font-weight: 600; font-size: 15px;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .feed-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+  .feed-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .feed-tag {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px;
+    background: var(--bg-subtle); color: var(--text-tertiary); border: 1px solid var(--border);
+  }
+  .feed-tag.pass { color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+  .feed-tag.fail { color: #dc2626; background: #fef2f2; border-color: #fecaca; }
+  .feed-tag.active { color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+
+  .up-next {
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 20px 24px; margin-top: 32px;
+  }
+  .up-next h3 { margin-top: 0; font-family: var(--font-sans); font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-tertiary); }
+  .up-next-list { list-style: none; padding: 0; margin: 12px 0 0 0; }
+  .up-next-list li {
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    font-family: var(--font-sans); font-size: 14px; color: var(--text-secondary);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .up-next-list li:last-child { border-bottom: none; }
+  .up-next-list .priority {
+    font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+    font-family: var(--font-mono); flex-shrink: 0;
+  }
+  .priority-now { background: #dbeafe; color: #1d4ed8; }
+  .priority-next { background: #fef3c7; color: #92400e; }
+  .priority-later { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html" class="brand">BigBounce</a><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="datasets.html" data-page="datasets">Data</a><a href="articles.html" data-page="articles">Articles</a><a href="activity.html" data-page="activity">Activity</a><a href="research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
+<main class="container">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Live Research Activity</p>
+  <h1>Activity Feed</h1>
+  <p class="subtitle">What we're working on now, what happened recently, and what's coming next. A living timeline of the spin-torsion cosmology research program.</p>
+</div>
+
+<!-- ═══════════ CURRENT FOCUS ═══════════ -->
+<div class="status-banner">
+  <div class="status-label">Current Research Focus</div>
+  <div class="status-focus">Bounce Evidence Audit &amp; Branch V Feasibility Assessment</div>
+  <p class="status-desc">Conducting a comprehensive audit of all bounce-dependent claims across the program. Evaluating whether the ECH bounce produces any signature that is both (a) genuinely bounce-specific (not reproducible by inflation or generic contraction) and (b) observationally accessible. The strongest surviving candidate is the matter-bounce \(f_{NL}\) prediction from Branch V.</p>
+  <div class="status-meta">
+    <div class="status-meta-item"><span class="dot dot-active"></span> Bounce evidence audit in progress</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Planck-only MCMC chains running</div>
+    <div class="status-meta-item"><span class="dot dot-paused"></span> Planck+BAO chains paused</div>
+    <div class="status-meta-item"><span class="dot dot-planned"></span> Paper 3A manuscript queued</div>
+  </div>
+</div>
+
+<!-- ═══════════ UP NEXT ═══════════ -->
+<div class="up-next">
+  <h3>Up Next</h3>
+  <ul class="up-next-list">
+    <li><span class="priority priority-now">NOW</span> Complete bounce evidence audit &mdash; assess all 16 bounce-dependent claims</li>
+    <li><span class="priority priority-now">NOW</span> Wait for planck_only chains to converge (~20-30h remaining)</li>
+    <li><span class="priority priority-next">NEXT</span> Branch V Phase 1 &mdash; test perturbation propagation through ECH bounce</li>
+    <li><span class="priority priority-next">NEXT</span> Generate 5 remaining publication figures (barrier map, \(\beta\) vs \(\theta_i\), etc.)</li>
+    <li><span class="priority priority-next">NEXT</span> Complete Branch R Phase 2 MCMC for publication-quality posteriors</li>
+    <li><span class="priority priority-later">LATER</span> Write Paper 3A manuscript from locked claims and figure plan</li>
+    <li><span class="priority priority-later">LATER</span> Compile 13-barrier technical companion note</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ═══════════ TIMELINE FEED ═══════════ -->
+<h2>Research Timeline</h2>
+
+<div class="feed">
+
+  <div class="feed-item active-item">
+    <div class="feed-date">2026-03-17</div>
+    <div class="feed-title">Bounce Evidence Audit Initiated</div>
+    <p class="feed-body">Comprehensive audit of all 16 bounce-dependent claims across the program. Evaluating which claims are genuinely bounce-specific vs. bounce-generic. Key question: does the ECH bounce produce ANY signature not reproducible by other mechanisms?</p>
+    <div class="feed-tags"><span class="feed-tag active">IN PROGRESS</span><span class="feed-tag">Audit</span><span class="feed-tag">Branch V</span></div>
+  </div>
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-17</div>
+    <div class="feed-title">Project Intelligence Dossier Published</div>
+    <p class="feed-body">Complete 12-file research intelligence system covering all 34 scientific attempts, 24 branches, 13 barriers. Includes results matrix, novelty assessment, publication packaging options, and interactive HTML dashboard. <a href="research/project_master_dossier/index.html">View dossier &rarr;</a></p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">Dossier</span><span class="feed-tag">Infrastructure</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-17</div>
+    <div class="feed-title">Chiral GW Frequency Gate Failed</div>
+    <p class="feed-body">Bounce-generated GW signals exist at 10<sup>9</sup>&ndash;10<sup>10</sup> Hz (GHz). Gap to LIGO: 10<sup>6</sup>. Gap to LISA: 10<sup>12</sup>. Bringing frequency to mHz kills amplitude by 10<sup>&minus;104</sup>. All bounce-scale signals permanently inaccessible to any planned detector.</p>
+    <div class="feed-tags"><span class="feed-tag fail">CLOSED</span><span class="feed-tag">Chiral GW</span><span class="feed-tag">Frequency Gate</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-17</div>
+    <div class="feed-title">Branch V Identified as Flagship Candidate</div>
+    <p class="feed-body">Matter contraction &rarr; ECH bounce &rarr; radiation expansion. Produces parameter-free prediction \(f_{NL} = 5/12\) testable by SPHEREx at 2.5&sigma;. Low-&ell; cutoff connects to Planck anomaly. Phase 1 blueprint ready. <a href="articles/matter-bounce-blueprint.html">Read article &rarr;</a></p>
+    <div class="feed-tags"><span class="feed-tag pass">FLAGSHIP</span><span class="feed-tag">Branch V</span><span class="feed-tag">N3 Novelty</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-16 &ndash; 17</div>
+    <div class="feed-title">Branches P&ndash;W Systematic Assessment Complete</div>
+    <p class="feed-body">10 branches assessed. Branch Q (sourced parity): identical to standard ALP. Branch S (photon-torsion vertex): 28&ndash;40 OOM too weak. Branch T (axion bridge): free parameters. Branch U: deferred. Branch W: superseded by V. Only Branch R (ALP birefringence) and Branch V survived.</p>
+    <div class="feed-tags"><span class="feed-tag fail">MOSTLY CLOSED</span><span class="feed-tag">Branches P&ndash;W</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-16</div>
+    <div class="feed-title">Branch R: ALP Birefringence Matches 3.9&sigma; Detection</div>
+    <p class="feed-body">Spectator ALP with \(f_a \sim M_{\rm Pl}\), \(m \sim H_0\), \(\theta_i \sim \mathcal{O}(1)\) predicts \(\beta = 0.27°\). Combined Planck + ACT DR6 observation: \(0.342 \pm 0.094°\). Within 1&sigma;. Phase 2 MCMC initiated (25+ subdirectories). LiteBIRD falsifiable.</p>
+    <div class="feed-tags"><span class="feed-tag pass">PROMISING</span><span class="feed-tag">Branch R</span><span class="feed-tag">ALP</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-15 &ndash; 16</div>
+    <div class="feed-title">Branches H&ndash;O: 6 Additional Barriers Identified (13 Total)</div>
+    <p class="feed-body">Bounce-only observables comprehensively tested. Tensor spectrum unobservable (P<sub>T</sub> ~ 10<sup>&minus;64</sup>). Scalar transfer function T(k) = 1 exactly. State selection blocked by Liouville. Baryogenesis killed by gravitational democracy. Hidden-sector vacuum decoupled from trigger. Six new barriers bring total to 13.</p>
+    <div class="feed-tags"><span class="feed-tag fail">CLOSED</span><span class="feed-tag">Branches H&ndash;O</span><span class="feed-tag">6 Barriers</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-15</div>
+    <div class="feed-title">Post-AG Pivot: Bounce and DE Are Independent Problems</div>
+    <p class="feed-body">Strategic pivot after all 7 foundations closed. Direct bounce&rarr;DE program definitively terminated. New direction: test bounce-only observables (H&ndash;O) and pursue surviving positive results independently.</p>
+    <div class="feed-tags"><span class="feed-tag">Strategic Pivot</span><span class="feed-tag">Post-AG</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-13 &ndash; 15</div>
+    <div class="feed-title">Foundations A&ndash;G: 7 Structural Barriers Established</div>
+    <p class="feed-body">Seven mechanism classes tested: propagating torsion, geometric ALP, environmental mass, disformal coupling, global vacuum, initial conditions, cyclic selection. Each closed by a named structural barrier. Mass-Coupling Lock, Topological-Shift Duality, Scalar-Tensor Universality, Planck Suppression, Scale Separation, Attractor-Sensitivity Dilemma, Parameter Immunity.</p>
+    <div class="feed-tags"><span class="feed-tag fail">ALL CLOSED</span><span class="feed-tag">Foundations A&ndash;G</span><span class="feed-tag">7 Barriers</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-03-13</div>
+    <div class="feed-title">IR Vacuum Program: All 4 Routes to w = &minus;1 Closed</div>
+    <p class="feed-body">Track B (condensate): wrong sign. Branch G v1 (one-loop): &gamma;-independent. Route T1 (scalar): generic ALP. Route S1 (ALP): not ECH-specific. Framework definitively phenomenological at minimal-model level. Negative-result supplement compiled (272 KiB).</p>
+    <div class="feed-tags"><span class="feed-tag fail">CLOSED</span><span class="feed-tag">IR Vacuum</span><span class="feed-tag">4 Routes</span></div>
+  </div>
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-04 &ndash; 12</div>
+    <div class="feed-title">MCMC Verification Phase: 236,000+ Samples</div>
+    <p class="feed-body">Independent Cobaya v3.6.1 + CAMB verification across 4 datasets. Full-tension: 176,840 samples (R&#770;&minus;1 &lt; 0.001). Planck+BAO+SN: 132,949 samples. Key finding: &Delta;N<sub>eff</sub> &asymp; 0 in all datasets. H<sub>0</sub> = 67.68 (standard &Lambda;CDM). Earlier tension-reduction claims disproved.</p>
+    <div class="feed-tags"><span class="feed-tag pass">VERIFIED</span><span class="feed-tag">MCMC</span><span class="feed-tag">Self-Correction</span></div>
+  </div>
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-02 &ndash; 04</div>
+    <div class="feed-title">Peer Review Gauntlet: 8 Revision Rounds</div>
+    <p class="feed-body">5 fatal issues identified and resolved. H<sub>0</sub> tension claim corrected (1.4&sigma; not "resolved"). Galaxy spin coupling gap exposed (9&ndash;12 OOM). Claims classification table added (Appendix K). All "predictions" downgraded to "MCMC fits." Reproducibility honestly documented.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">Peer Review</span><span class="feed-tag">8 Rounds</span></div>
+  </div>
+
+  <div class="feed-item">
+    <div class="feed-date">2025-07 &ndash; 2026-02</div>
+    <div class="feed-title">Paper 1: Genesis &amp; Build-Out</div>
+    <p class="feed-body">Initial ECH framework development. 32,000-word manuscript with ambitious predictions. Interactive web presentation built. 70+ papers from NASA ADS integrated. Versions 0.1.0 through 0.6.0.</p>
+    <div class="feed-tags"><span class="feed-tag">Genesis</span><span class="feed-tag">Paper 1</span></div>
+  </div>
+
+</div>
+
+</main>
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+<script>document.querySelectorAll('nav a[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='activity')a.classList.add('active')});</script>
+</body>
+</html>

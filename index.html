@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav><div class="nav-inner"><span class="brand">Golden 2026</span><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="mathematics.html" data-page="mathematics">Mathematics</a><a href="datasets.html" data-page="datasets">Datasets</a><a href="methodology.html" data-page="methodology">Methodology</a><a href="sources.html" data-page="sources">Sources</a><a href="articles.html" data-page="articles">Articles</a><a href="research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="brand">BigBounce</a><a href="index.html" data-page="index">Research</a><a href="paper.html" data-page="paper">Paper</a><a href="explained.html" data-page="explained">Explainer</a><a href="datasets.html" data-page="datasets">Data</a><a href="articles.html" data-page="articles">Articles</a><a href="activity.html" data-page="activity">Activity</a><a href="research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
 <main class="container">
 
 <div class="hero">
@@ -303,26 +303,36 @@
 <!-- ═══════════════════════════════ EXPLORE ═══════════════════════════════ -->
 <section class="section">
   <h2>Explore</h2>
-  <div class="grid-2" style="margin-top: 16px;">
+  <div class="grid-3" style="margin-top: 16px;">
     <div class="card">
       <h4 style="margin-top:0; font-family:var(--font-sans);">Full Paper</h4>
-      <p style="font-size:15px;">31 pages, 51 references, 10 appendices. Includes claims classification table, reproducibility bundle, and full MCMC results.</p>
-      <div style="margin-top: 12px;"><a href="arxiv/main.pdf" class="btn btn-primary" download>Download PDF</a> <a href="paper.html" class="btn btn-secondary">Read online</a></div>
+      <p style="font-size:15px;">31 pages, 51 references, 10 appendices. Claims table, reproducibility bundle, full MCMC results.</p>
+      <div style="margin-top: 12px;"><a href="arxiv/main.pdf" class="btn btn-primary" download>PDF</a> <a href="paper.html" class="btn btn-secondary">Read</a></div>
     </div>
     <div class="card">
-      <h4 style="margin-top:0; font-family:var(--font-sans);">Project Intelligence Dossier</h4>
-      <p style="font-size:15px;">Complete research program archive: 34 scientific attempts, branch registry, results matrix, novelty assessment, publication packaging options, and reproducibility inventory.</p>
-      <div style="margin-top: 12px;"><a href="research/project_master_dossier/index.html" class="btn btn-primary">Open Dossier</a></div>
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Project Dossier</h4>
+      <p style="font-size:15px;">34 scientific attempts, branch registry, results matrix, novelty assessment, publication options.</p>
+      <div style="margin-top: 12px;"><a href="research/project_master_dossier/index.html" class="btn btn-primary">Open</a></div>
     </div>
     <div class="card">
-      <h4 style="margin-top:0; font-family:var(--font-sans);">Mathematics</h4>
-      <p style="font-size:15px;">Step-by-step derivation chains: ECH action, torsion integration, bounce mechanics, parity-odd operator, and inflationary dilution.</p>
-      <div style="margin-top: 12px;"><a href="mathematics.html" class="btn btn-secondary">View derivations</a></div>
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Articles</h4>
+      <p style="font-size:15px;">Deep dives on Branch V, ALP birefringence, the 13 barriers, and a student's guide to the Big Bounce.</p>
+      <div style="margin-top: 12px;"><a href="articles.html" class="btn btn-secondary">Read</a></div>
     </div>
     <div class="card">
-      <h4 style="margin-top:0; font-family:var(--font-sans);">Datasets &amp; Reproducibility</h4>
-      <p style="font-size:15px;">4 working Cobaya configs, frozen MCMC chains (236K+ samples), Stan galaxy spin model. All code and configs on GitHub.</p>
-      <div style="margin-top: 12px;"><a href="datasets.html" class="btn btn-secondary">View datasets</a></div>
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Activity Feed</h4>
+      <p style="font-size:15px;">Live research status: what we're working on now, recent results, and what's coming next.</p>
+      <div style="margin-top: 12px;"><a href="activity.html" class="btn btn-secondary">View</a></div>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Data Explorer</h4>
+      <p style="font-size:15px;">Interactive charts comparing our fits against Planck, DESI, DES, and other datasets.</p>
+      <div style="margin-top: 12px;"><a href="interactive-data.html" class="btn btn-secondary">Explore</a></div>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Datasets &amp; Code</h4>
+      <p style="font-size:15px;">4 Cobaya configs, frozen MCMC chains (236K+), Stan model. <a href="https://github.com/Hubify-Projects/bigbounce">GitHub repo</a>.</p>
+      <div style="margin-top: 12px;"><a href="datasets.html" class="btn btn-secondary">View</a></div>
     </div>
   </div>
 </section>
@@ -335,7 +345,7 @@
 </div>
 
 </main>
-<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.com">bigbounce.hubify.com</a></p></footer>
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 <script>document.querySelectorAll('nav a[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='index')a.classList.add('active')});</script>
 </body>
 </html>

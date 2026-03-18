@@ -79,7 +79,9 @@ nav .nav-inner {
 nav .brand {
   font-family: var(--font-serif); font-weight: 700; font-size: 15px;
   color: var(--text); margin-right: auto; white-space: nowrap;
+  text-decoration: none; border-bottom: none;
 }
+nav .brand:hover { color: var(--text); text-decoration: none; }
 nav a {
   color: var(--text-tertiary); font-size: 14px; font-weight: 500;
   padding: 4px 0; border-bottom: 2px solid transparent; transition: all var(--transition);
