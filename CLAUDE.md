@@ -2,130 +2,182 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CRITICAL RESEARCH DIRECTIVE
+
+**DO NOT suggest "write up the results and publish" or "document the barriers as a paper" as a next step.** The goal of this project is continued active research toward positive scientific discoveries — specifically, finding meaningful evidence that bounce cosmology fits observational and mathematical constraints better than ΛCDM + inflation. After negative results, always propose the next research direction that could yield a positive discovery. Treat barriers as constraints that narrow the search space, not as conclusions. Continue researching until genuine positive results are found.
+
 ## Project Overview
 
-This repository contains a scientific research paper titled "Geometric Dark Energy from Spin-Torsion Cosmology: Phenomenological Constraints and Correlated Signatures" by Houston Golden. The project is a theoretical physics paper exploring dark energy through quantum gravitational effects in spin-torsion cosmology.
+This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current version: v1.0.0** (March 4, 2026) — 31 pages, 51 bibliography entries, 6 revision rounds complete.
-All HTML pages synced. PDF compiled with 0 undefined references.
+**Current version: v1.6.0** (March 2026) — 31 pages, 51 bibliography entries, 8 revision rounds complete.
+
+**Live website:** https://bigbounce.hubify.app
+
+**Key scientific results:**
+- 13 structural barriers close all minimal routes from bounce to dark energy
+- ALP birefringence prediction β = 0.27° matches 3.9σ observed signal (0.342 ± 0.094°)
+- Branch V matter bounce + ECH: f_NL = 5/12 (parameter-free, SPHEREx testable)
+- MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
+- 236,000+ MCMC posterior samples across 4 dataset combinations
+
+## Website Architecture
+
+The website at bigbounce.hubify.app is a multi-page static site deployed via Netlify from the `main` branch.
+
+### Site Pages (all must stay in sync with research)
+
+| Page | File | Purpose |
+|------|------|---------|
+| Homepage | `index.html` | Research overview, key results, stat cards, 13 barriers, ALP prediction, MCMC table, figures, claims table, falsification criteria |
+| Papers | `paper.html` | Paper listing (4 tentative papers with readiness %), version history timeline, full inline paper text |
+| Explainer | `explained.html` | Accessible non-technical explanation of the research |
+| Data Explorer | `data-explorer.html` | Interactive MCMC data tool with 15 embedded datasets, sortable tables, column stats, 6 equation calculators, node-tree visualization |
+| Figures | `figures.html` | Gallery of 22 figures with lightbox viewer |
+| Glossary | `glossary.html` | 13 equations gallery + 28-entry searchable glossary with pronunciations |
+| Articles | `articles.html` | Index of 7 deep-dive articles |
+| Activity | `activity.html` | Live research status banner, priority queue, chronological timeline feed |
+| Dossier | `research/project_master_dossier/index.html` | Full project intelligence dashboard (integrated with site nav) |
+| Datasets | `datasets.html` | Dataset descriptions and Cobaya config details |
+| Articles (7) | `articles/*.html` | Individual article pages |
+
+### Navigation
+
+All pages share a consistent nav bar:
+```
+BigBounce | Research | Papers | Explainer | Data | Figures | Glossary | Articles | Activity | Dossier
+```
+
+The nav includes a mobile hamburger menu (`<button class="nav-toggle">`).
+
+**Brand "BigBounce"** links to `index.html`. All nav links use `data-page` attributes for active-state highlighting.
+
+**When adding or modifying pages:** Ensure the nav is consistent across ALL pages. Root pages use direct paths. Article subpages use `../` prefixes. Dossier uses `../../` prefixes.
+
+### Styling
+
+- `style.css` — shared CSS for the entire site (Newsreader serif + Inter sans + JetBrains Mono)
+- Light mode, academic/technical aesthetic
+- Uses CSS custom properties (--bg, --text, --border, --accent-link, etc.)
+- Responsive with mobile breakpoints at 768px and 480px
+
+## WEBSITE SYNC PROTOCOL
+
+**CRITICAL: The website must always reflect the current state of the research.**
+
+When ANY of the following change, the corresponding website pages MUST be updated:
+
+### When research results change:
+1. **`index.html`** — Update stat cards, key results, MCMC table, claims table, barrier count
+2. **`explained.html`** — Update all scientific claims to match current findings
+3. **`activity.html`** — Add new timeline entry at the top, update "Current Focus" banner and "Up Next" queue
+4. **`data-explorer.html`** — If new MCMC chains complete or new datasets are created, embed the new data
+5. **`paper.html`** — Update paper readiness percentages and version history
+
+### When new data is generated:
+1. **`data-explorer.html`** — Embed new dataset (chain samples, analysis results, etc.)
+2. **`figures.html`** — Add any new figures to the gallery
+3. **`glossary.html`** — Add any new parameters or equations
+4. **`activity.html`** — Log the data generation event
+
+### When new research branches open or close:
+1. **`activity.html`** — Add timeline entry with appropriate color (green=positive, red=closed, blue=active)
+2. **`index.html`** — Update stat cards if barrier count or positive result count changes
+3. **`research/project_master_dossier/index.html`** — Update branch status table
+4. **`data-explorer.html`** — Update branch results dataset
+
+### When the paper manuscript changes:
+1. **`paper.html`** — Update version history, readiness percentages
+2. Recompile PDF and place in `arxiv/main.pdf`
+3. Update `version.json`
+
+### Quick-sync command:
+When the user says **"update the site"** or **"sync the website"** or **"update the paper"**:
+1. Check what has changed since the last git commit
+2. Identify which pages are affected
+3. Update all affected pages
+4. Commit and push to deploy
 
 ## Repository Structure
 
-- `bigbounce.md` - Complete research paper content in Markdown format (~35,000 words)
-- `index.html` - Interactive web presentation of the research paper with password protection
-- `paper/` - Individual sections of the paper organized as separate Markdown files:
-  - `00-abstract.md` through `11-acknowledgments.md`
-  - `metadata.md` - Paper metadata
-- `public/images/` - Scientific figures and illustrations (PNG format, Git LFS tracked)
-- `public/spreadsheets/` - Supporting data tables (Excel format)
-- `interactive-data.html` & `interactive-data-simple.html` - Interactive data visualizations using Chart.js
-- `server.js` - Express server for local development
+### Canonical Sources
+- `arxiv/main.tex` — canonical paper source (LaTeX)
+- `arxiv/main.pdf` — compiled PDF
+- `arxiv/references.bib` — bibliography
+- `version.json` — current version metadata
+
+### Research
+- `research/foundation_*/` — Foundation studies A-G (7 structural barriers)
+- `research/branch_*/` — Research branches H-W (17 branches)
+- `research/paper2/` — Paper 2 tracks (WP4, WP5, P6, P7)
+- `research/extensions/` — Observable extensions program
+- `research/post_AG_pivot/` — Strategic pivot documents
+- `research/final_phase/` — Paper structure, claims lock, figure plan
+- `research/project_master_dossier/` — Full project intelligence dossier (12 markdown files + HTML dashboard)
+
+### Reproducibility
+- `reproducibility/cosmology/` — Cobaya YAML configs, MCMC chains, convergence diagnostics
+- `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/` — 4 datasets × 6-7 chains
+- `reproducibility/galaxy_spins/` — Stan hierarchical model
+- `reproducibility/docs/` — IMPLEMENTATION_MAP.md, KNOWN_GAPS.md
+
+### Website
+- `style.css` — shared stylesheet
+- `*.html` — all site pages (root level)
+- `articles/` — article subpages
+- `articles/images/` — article images
+- `public/images/` — publication figures (PNG, LFS-tracked)
+- `public/spreadsheets/` — backing data (Excel/CSV)
+
+### Data Files (for embedding in data explorer)
+- Chain files: `reproducibility/cosmology/.../spin_torsion.1.txt` (space-delimited, 34-47 columns)
+- **IMPORTANT column offset:** Header row starts with `#` which shifts column indices by +1. In data rows, column 1 = weight. In header, column 1 = `#`, column 2 = `weight`. So `H0` at header position 22 is at data position 21 for full_tension, and position 20 for other datasets (which have fewer columns).
+- Summary CSVs: `convergence_latest.csv`, `chain_means_latest.csv`, `dataset_chain_map.csv`
+- Parameter JSON: `research/final_paper_prep/full_tension_physical_parameters.json`
+- Galaxy spin: `research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv`
+- Spreadsheets: `public/spreadsheets/*.xlsx` and `*.csv`
 
 ## Commands
 
 ### Local Development
 ```bash
-# Install dependencies (only Express is required)
-npm install
-
-# Run local server
-node server.js
-# Server runs at http://localhost:3000
-
-# Alternative: Use any static file server
-python -m http.server 8000
-# Or simply open index.html directly in a browser
+npm install        # Only Express needed
+node server.js     # http://localhost:3000
 ```
 
 ### Deployment
-- Configured for Netlify deployment via `netlify.toml`
-- No build step required - purely static site
-- Security headers and caching rules are configured in `netlify.toml`
+- Netlify auto-deploys from `main` branch via `netlify.toml`
+- `git push origin main` triggers deployment
+- No build step — purely static
 
-## Development Environment
-
-This is primarily a static website project. The main deliverable is `index.html` which presents the research paper in an interactive web format.
-
-### Key Features of the Web Interface
-
-- **Password Protection**: Uses session storage with password "houston"
-- **Interactive Table of Contents**: Sidebar navigation with smooth scrolling
-- **MathJax Integration**: Renders LaTeX mathematical expressions
-- **Lightbox Image Viewer**: Click images to view in full screen
-- **Responsive Design**: Mobile-friendly layout
-- **Scientific Styling**: Academic paper formatting
-- **Interactive Data Visualizations**: Separate pages for exploring research data with Chart.js
-
-### Project Dependencies
-
-- **Express.js**: Only for optional local development server
-- **MathJax**: Loaded from CDN for mathematical rendering
-- **Chart.js**: Loaded from CDN for data visualizations
-- No build tools or preprocessors required
-
-## Content Organization
-
-The paper is structured as a comprehensive theoretical physics research paper with:
-- Mathematical derivations using LaTeX notation
-- Scientific figures with detailed captions
-- Extensive references to academic literature
-- Systematic analysis and observational predictions
-- Timeline for experimental validation
-
-## Working with the Content
-
-When editing the paper content:
-- Mathematical expressions use LaTeX syntax within `$$` or `$` delimiters
-- Figures are referenced as `public/images/figure_name.png`
-- The HTML version in `index.html` should be kept in sync with `bigbounce.md`
-- Maintain academic writing style and scientific rigor
-- Images are tracked with Git LFS - ensure Git LFS is installed when cloning
-
-## Image Management
-
-- GitHub image URLs are documented in `github-image-mappings.md` and `image-urls.md`
-- Local images in `public/images/` are the primary source
-- Images use descriptive naming: `figure[number]_[description].png`
+### After any research session:
+```bash
+# 1. Update affected website pages
+# 2. Commit research + website changes together
+git add [changed files]
+git commit -m "feat: [description]"
+git push origin main   # Auto-deploys to bigbounce.hubify.app
+```
 
 ## Peer Review & Revision Workflow
 
-**CRITICAL: All peer reviews, audits, and revision requests MUST be saved to `project-context/peer-reviews/`.**
+**All peer reviews saved to `project-context/peer-reviews/`.**
 
-### File Naming Convention
-```
-YYYY-MM-DD_HHMMtz_description.md
-```
-Example: `2026-03-02_1917PST_comprehensive-audit.md`
+File naming: `YYYY-MM-DD_HHMMtz_description.md`
 
-### What to Save
-- Full peer review text (every audit, every round)
-- Claims tables (Derived vs Assumed vs Fit)
-- Revision plans with prioritized issue lists
-- Editor prompts / coauthor instructions
-- Verification results after each revision round
+Revision tracker: `project-context/peer-reviews/REVISION_TRACKER.md`
 
-### Tracking Revisions
-- `project-context/peer-reviews/REVISION_TRACKER.md` tracks all issues across rounds
-- Update issue status as revisions are completed
-- After each revision round:
-  1. Recompile PDF and verify 0 undefined references
-  2. Run dimensional consistency checks
-  3. Grep for removed language patterns
-  4. Verify claims table against revised text
-  5. Sync website if applicable
-  6. Update REVISION_TRACKER.md
+After each revision round:
+1. Recompile PDF (0 undefined references)
+2. Run dimensional consistency checks
+3. Verify claims table against revised text
+4. **Sync website** (update index.html, explained.html, activity.html, data-explorer.html as needed)
+5. Update REVISION_TRACKER.md
+6. Commit and push
 
-### Canonical Source of Truth
-- `arxiv/main.tex` is the canonical source — everything else mirrors it
-- `version.json` at repo root tracks current version
-- `versions/manifest.json` tracks version history
-
-### Version History
-- Tracked in `versions/manifest.json` with detailed changelogs
-- Displayed on `versions.html` page of the website
-- Each major revision should increment the version
-
-## Contact Information
+## Contact
 
 Author: Houston Golden
 Email: houston@hubify.com
+Website: https://bigbounce.hubify.app
+GitHub: https://github.com/Hubify-Projects/bigbounce
