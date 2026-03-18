@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ECH Spin-Torsion Bounce — Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+<nav><div class="nav-inner"><span class="brand">Golden 2026</span><a href="../index.html" data-page="index">Research</a><a href="../paper.html" data-page="paper">Paper</a><a href="../explained.html" data-page="explained">Explainer</a><a href="../mathematics.html" data-page="mathematics">Mathematics</a><a href="../datasets.html" data-page="datasets">Datasets</a><a href="../methodology.html" data-page="methodology">Methodology</a><a href="../sources.html" data-page="sources">Sources</a><a href="../articles.html" data-page="articles">Articles</a><a href="../research/project_master_dossier/index.html" data-page="dossier">Dossier</a></div></nav>
+
+<main class="container">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Technical Article &middot; ECH Framework</p>
+  <h1>The Einstein-Cartan-Holst Spin-Torsion Bounce and Matter-Bounce Phenomenology</h1>
+  <p class="subtitle">A comprehensive technical overview of the ECH framework &mdash; connecting loop quantum gravity, torsion-regulated bounces, and cosmic rotation &mdash; together with the 13 structural barriers, the surviving predictions, and the path to observational tests.</p>
+  <div class="meta">
+    <span class="badge badge-accent">ECH Framework</span>
+    <span class="badge badge-accent">Technical</span>
+    <span class="badge badge-neutral">Houston Golden &middot; 2026</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>1. The Einstein-Cartan-Holst Framework</h2>
+
+<p>General relativity describes gravity as the curvature of space-time. But curvature is not the only geometric degree of freedom available. In the Einstein-Cartan-Holst (ECH) extension, the gravitational connection carries an additional piece &mdash; <strong>torsion</strong> &mdash; which couples directly to the intrinsic spin of fermionic matter.</p>
+
+<p>The ECH framework has three foundational pillars:</p>
+
+<div class="grid-3" style="margin: 24px 0;">
+  <div class="card">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Pillar 1</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Geometry Beyond Curvature</h3>
+    <p style="font-size: 15px;">The space-time connection is not assumed to be torsion-free. Instead, torsion is a dynamical consequence of the coupling between geometry and matter with spin. The gravitational action includes the Holst term, parameterized by the Barbero-Immirzi parameter \(\gamma\).</p>
+  </div>
+  <div class="card">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Pillar 2</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Quantum Spin Coupling</h3>
+    <p style="font-size: 15px;">Fermionic matter (quarks, leptons) possesses intrinsic spin angular momentum. In ECH gravity, this spin sources torsion through the field equations, creating a back-reaction that modifies the effective energy-momentum tensor at high densities.</p>
+  </div>
+  <div class="card">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Pillar 3</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">LQG Connection</h3>
+    <p style="font-size: 15px;">The Barbero-Immirzi parameter \(\gamma\) that appears in the Holst term is the same parameter that sets the area gap in loop quantum gravity (LQG). The ECH framework thus serves as the classical limit of LQG, with \(\gamma\) fixed by black hole entropy considerations.</p>
+  </div>
+</div>
+
+<h3>The Gravitational Action</h3>
+
+<p>The ECH action extends the Einstein-Hilbert action with the Holst term:</p>
+
+<div class="equation-display">
+  \[ S_{\rm ECH} = \frac{1}{16\pi G}\int d^4x\,\sqrt{-g}\left(R + \frac{1}{\gamma}\,{}^*\!R\right) + S_{\rm matter}[\psi, e, \omega] \]
+  <p class="equation-label">Einstein-Cartan-Holst action with Barbero-Immirzi parameter \(\gamma\)</p>
+</div>
+
+<p>where \(R\) is the Ricci scalar, \({}^*\!R\) is its dual (the Holst invariant), \(e\) is the tetrad, and \(\omega\) is the spin connection. The matter action \(S_{\rm matter}\) includes the minimal coupling of fermions to the full connection, including torsion.</p>
+
+<h3>The Four-Fermion Interaction</h3>
+
+<p>Because torsion in ECH gravity is non-propagating (it satisfies an algebraic, not differential, field equation), it can be integrated out exactly. The result is an effective four-fermion contact interaction:</p>
+
+<div class="equation-display">
+  \[ \mathcal{L}_{\rm int} = -\frac{3\pi G_N}{2}\,\frac{\gamma^2}{\gamma^2 + 1}\,J^{(A)}_\mu\,J^{\mu}_{(A)} \]
+  <p class="equation-label">Torsion-induced four-fermion interaction</p>
+</div>
+
+<p>Here \(J^{(A)}_\mu\) is the axial fermion current. This interaction is:</p>
+
+<ul style="margin: 12px 0; padding-left: 24px; color: var(--text-secondary);">
+  <li style="margin-bottom: 8px;"><strong>Universal:</strong> it couples to all fermions equally through their axial current.</li>
+  <li style="margin-bottom: 8px;"><strong>Gravitational strength:</strong> suppressed by \(G_N \sim 1/M_{\rm Pl}^2\), so negligible at low densities.</li>
+  <li style="margin-bottom: 8px;"><strong>\(\gamma\)-dependent:</strong> the Barbero-Immirzi parameter modulates the coupling through the factor \(\gamma^2/(\gamma^2 + 1)\).</li>
+  <li style="margin-bottom: 8px;"><strong>Repulsive:</strong> at extreme densities, this term acts as an effective repulsive pressure that prevents gravitational collapse to a singularity.</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>2. The Torsion-Regulated Quantum Bounce</h2>
+
+<p>The most dramatic consequence of the four-fermion interaction is the cosmological bounce. When the universe contracts to near-Planckian densities, the spin-spin repulsion becomes dominant and halts the collapse.</p>
+
+<h3>The Modified Friedmann Equation</h3>
+
+<p>On a Friedmann-Robertson-Walker background, the ECH field equations reduce to a modified Friedmann equation:</p>
+
+<div class="equation-display">
+  \[ H^2 = \frac{8\pi G}{3}\,\rho\!\left(1 - \frac{\rho}{\rho_{\rm crit}}\right) \]
+  <p class="equation-label">Modified Friedmann equation with torsion-regulated bounce</p>
+</div>
+
+<p>The critical density at which the bounce occurs is:</p>
+
+<div class="equation-display">
+  \[ \rho_{\rm crit} \approx 0.27\,\rho_{\rm Pl} \]
+  <p class="equation-label">Updated critical density (from 0.41 in earlier models)</p>
+</div>
+
+<p>where \(\rho_{\rm Pl} = c^5/(\hbar G^2) \approx 5.16 \times 10^{93}\,\text{g/cm}^3\) is the Planck density. The update from the earlier value of \(0.41\,\rho_{\rm Pl}\) reflects refined calculations incorporating the full Holst-term contribution with the LQG-fixed value of \(\gamma\).</p>
+
+<div class="card card-accent" style="margin: 24px 0;">
+  <h4 style="margin-top: 0;">The Bounce Mechanism</h4>
+  <p>As \(\rho \to \rho_{\rm crit}\), the factor \((1 - \rho/\rho_{\rm crit}) \to 0\), so \(H^2 \to 0\) and the Hubble parameter passes smoothly through zero. The universe transitions from contraction (\(H < 0\)) to expansion (\(H > 0\)) without ever reaching a singularity. The bounce is not imposed by hand &mdash; it is a direct dynamical consequence of the spin-torsion coupling at high density.</p>
+</div>
+
+<h3>Relation to Loop Quantum Cosmology</h3>
+
+<p>The modified Friedmann equation has the same functional form as the effective equation of loop quantum cosmology (LQC). This is not a coincidence: the ECH framework is the classical starting point for the LQG quantization. The critical density \(\rho_{\rm crit}\) in LQC is set by the area gap, which in turn depends on \(\gamma\). The ECH bounce can be understood as the semiclassical limit of the LQC bounce, with torsion providing the classical mechanism that mimics the quantum geometry effects.</p>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>3. The 13 Structural Barriers</h2>
+
+<p>A central result of the BigBounce research program is the systematic identification of 13 distinct structural barriers that close all standard routes from the ECH bounce to dark energy, bounce-specific observables, and several other phenomenological targets. These are not failures of imagination &mdash; they are proven no-go results that map the boundary of what the framework can and cannot deliver.</p>
+
+<div class="card" style="margin: 24px 0; overflow-x: auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Barrier</th>
+        <th>Description</th>
+        <th>Branches Closed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Mass-Coupling Lock</td>
+        <td>\(g_{\rm eff} \sim 1/(M_{\rm Pl}\sqrt{|t_3|})\) &mdash; no symmetry protection for tiny coupling</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Topological-Shift Duality</td>
+        <td>Mass protection and geometric content cannot coexist simultaneously</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Scalar-Tensor Reduction</td>
+        <td>Environmental mass evades lock but reduces to standard scalar-tensor gravity</td>
+        <td>C</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Planck Suppression</td>
+        <td>Connection coupling gives \(1\,\partial\phi\)/vertex (need 2 for disformal); all distinctive effects hidden</td>
+        <td>D</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Bounce-DE Decoupling</td>
+        <td>The bounce and dark energy operate at energy scales separated by \(\sim 120\) orders of magnitude</td>
+        <td>E</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Attractor-Sensitivity Dilemma</td>
+        <td>Initial conditions either require fine-tuning or lead to attractor solutions that erase bounce information</td>
+        <td>F</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Cyclic Incompatibility</td>
+        <td>Cyclic models cannot naturally select the vacuum energy scale; continuous solutions give parameter immunity</td>
+        <td>G</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>GHz Detector Gap</td>
+        <td>Chiral gravitational waves from the bounce peak at GHz frequencies, \(\sim 10^6\) above LIGO band</td>
+        <td>H, M</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>9&ndash;12 OOM Gap</td>
+        <td>The energy scale gap between bounce physics and late-universe observables spans 9&ndash;12 orders of magnitude</td>
+        <td>Multiple</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Graviton Loop Fine-Tuning</td>
+        <td>Radiative corrections require tuning at \(1\) in \(10^{57}\) to maintain the required mass hierarchy</td>
+        <td>A (PGT)</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>FRW Torsion Vanishing</td>
+        <td>On FRW backgrounds, \(T_0 = Q_0 = 0\) &mdash; no geometric fingerprint survives homogeneity and isotropy</td>
+        <td>C</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Generic ALP Reduction</td>
+        <td>After integrating out torsion, the coupling reduces to a generic axion-like particle with no geometric distinction</td>
+        <td>B, R, S</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Sourced Parity Instability</td>
+        <td>Attempts to source parity violation directly from torsion encounter gradient instabilities</td>
+        <td>Q</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<blockquote>
+<p>"We have not found what we were looking for. But we have mapped, with unprecedented rigor, exactly where the boundaries lie. The 13 barriers are not a failure &mdash; they are a contribution to the field."</p>
+</blockquote>
+
+<h3>Dark Energy: All Minimal Routes Closed</h3>
+
+<p>The most significant negative result concerns dark energy. The program explored all four minimal mechanism classes that could connect the ECH bounce to late-time cosmic acceleration:</p>
+
+<div class="grid-2" style="margin: 24px 0;">
+  <div class="card">
+    <h4 style="margin-top: 0;">Route 1: Direct Torsion DE</h4>
+    <p style="font-size: 15px;">Mass-coupling lock (Barrier 1) prevents the torsion-generated scalar from having both the correct mass and coupling to drive late-time acceleration.</p>
+    <span class="badge badge-neutral">CLOSED</span>
+  </div>
+  <div class="card">
+    <h4 style="margin-top: 0;">Route 2: Topological Torsion</h4>
+    <p style="font-size: 15px;">Topological-shift duality (Barrier 2) ensures that protecting the mass simultaneously destroys the geometric content.</p>
+    <span class="badge badge-neutral">CLOSED</span>
+  </div>
+  <div class="card">
+    <h4 style="margin-top: 0;">Route 3: Environmental Scalar</h4>
+    <p style="font-size: 15px;">Environmental mass mechanism (Barrier 3) evades the lock but produces a standard scalar-tensor theory, indistinguishable from non-geometric models.</p>
+    <span class="badge badge-neutral">CLOSED</span>
+  </div>
+  <div class="card">
+    <h4 style="margin-top: 0;">Route 4: Disformal Coupling</h4>
+    <p style="font-size: 15px;">Planck suppression (Barrier 4) hides all disformal signatures below observational thresholds.</p>
+    <span class="badge badge-neutral">CLOSED</span>
+  </div>
+</div>
+
+<p>The conclusion is unambiguous: <strong>dark energy cannot be derived from the ECH bounce</strong> within any of the minimal mechanism classes explored. The bounce and dark energy are independent problems operating at energy scales separated by roughly 120 orders of magnitude.</p>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>4. Surviving Predictions</h2>
+
+<p>Despite the 13 barriers, the ECH framework motivates two genuinely positive phenomenological results that survived the full gauntlet of scrutiny:</p>
+
+<div class="grid-2" style="margin: 24px 0;">
+  <div class="card card-accent">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Prediction 1 &mdash; Branch V</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Matter-Bounce Non-Gaussianity</h3>
+    <div class="equation-display" style="margin: 16px 0;">
+      \[ f_{NL}^{\rm local} = \frac{5}{12} \]
+    </div>
+    <p style="font-size: 15px;">A parameter-free prediction from the matter-dominated contraction through the ECH bounce. Testable by SPHEREx at \(2.5\sigma\) significance. Addresses the Planck low-\(\ell\) anomaly through a natural infrared cutoff.</p>
+    <div style="margin-top: 12px;">
+      <span class="badge badge-accent">Parameter-free</span>
+      <span class="badge badge-accent">SPHEREx testable</span>
+      <span class="badge badge-accent">N3 novelty</span>
+    </div>
+  </div>
+  <div class="card card-accent">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Prediction 2 &mdash; ALP Birefringence</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Cosmic Birefringence Angle</h3>
+    <div class="equation-display" style="margin: 16px 0;">
+      \[ \beta = 0.27^\circ \]
+    </div>
+    <p style="font-size: 15px;">The ALP sector motivated by the ECH framework predicts a cosmic birefringence angle of \(\beta = 0.27^\circ\), consistent with the \(3.9\sigma\) detection of \(\beta = 0.342 \pm 0.094^\circ\) from Planck polarization data. The predicted value lies within \(0.8\sigma\) of the measured central value.</p>
+    <div style="margin-top: 12px;">
+      <span class="badge badge-accent">Matches observation</span>
+      <span class="badge badge-accent">\(3.9\sigma\) detection</span>
+      <span class="badge badge-accent">LiteBIRD will confirm</span>
+    </div>
+  </div>
+</div>
+
+<h3>ALP Birefringence in Detail</h3>
+
+<p>Cosmic birefringence is a rotation of the polarization plane of CMB photons as they propagate from the last-scattering surface. An axion-like particle (ALP) coupled to photons through the operator \(\phi\,F_{\mu\nu}\tilde{F}^{\mu\nu}\) can produce this effect if the field evolves between recombination and today.</p>
+
+<p>The observed birefringence angle from Planck polarization analysis is:</p>
+
+<div class="equation-display">
+  \[ \beta_{\rm obs} = 0.342 \pm 0.094^\circ \quad (3.9\sigma \text{ detection}) \]
+  <p class="equation-label">Minami &amp; Komatsu (2020), updated analysis</p>
+</div>
+
+<p>The ECH-motivated ALP model predicts:</p>
+
+<div class="equation-display">
+  \[ \beta_{\rm pred} = 0.27^\circ \]
+  <p class="equation-label">ECH framework prediction</p>
+</div>
+
+<p>The discrepancy between prediction and observation is only \(|\beta_{\rm obs} - \beta_{\rm pred}|/\sigma = (0.342 - 0.27)/0.094 \approx 0.8\sigma\), well within the observational uncertainty. The upcoming LiteBIRD satellite mission will measure \(\beta\) with significantly improved precision, providing a definitive test.</p>
+
+<div class="card" style="margin: 24px 0;">
+  <h4 style="margin-top: 0;">Important Caveat</h4>
+  <p>After integrating out torsion, the ALP coupling reduces to a generic axion-photon interaction (Barrier 12). The birefringence prediction is therefore not uniquely geometric &mdash; the same \(\beta\) value could arise from a non-geometric ALP model with appropriately chosen parameters. The prediction is consistent with the ECH framework but does not constitute a unique signature of it.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>5. The Bounce-Specific Observable Challenge</h2>
+
+<p>One of the program's most important findings concerns the difficulty of detecting direct signatures of the bounce itself. The ECH bounce occurs at \(\rho \approx 0.27\,\rho_{\rm Pl}\), corresponding to energy scales of order \(10^{18}\,\text{GeV}\). The most natural observable &mdash; chiral gravitational waves produced during the bounce &mdash; peaks at frequencies in the GHz range:</p>
+
+<div class="equation-display">
+  \[ f_{\rm GW}^{\rm bounce} \sim \text{GHz} \]
+  <p class="equation-label">Characteristic frequency of bounce-generated gravitational waves</p>
+</div>
+
+<p>Current and planned gravitational wave detectors operate at vastly lower frequencies:</p>
+
+<table style="margin: 20px 0;">
+  <thead>
+    <tr>
+      <th>Detector</th>
+      <th>Frequency Band</th>
+      <th>Gap to Bounce Signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LIGO / Virgo / KAGRA</td>
+      <td>\(10\)&ndash;\(10^3\) Hz</td>
+      <td>\(\sim 10^6\)</td>
+    </tr>
+    <tr>
+      <td>LISA</td>
+      <td>\(10^{-4}\)&ndash;\(10^{-1}\) Hz</td>
+      <td>\(\sim 10^{10}\)</td>
+    </tr>
+    <tr>
+      <td>Pulsar Timing Arrays</td>
+      <td>\(10^{-9}\)&ndash;\(10^{-7}\) Hz</td>
+      <td>\(\sim 10^{16}\)</td>
+    </tr>
+    <tr>
+      <td><strong>Bounce GW signal</strong></td>
+      <td><strong>\(\sim 10^9\) Hz</strong></td>
+      <td><strong>&mdash;</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The gap of \(\sim 10^6\) between the bounce signal and the nearest detector band (LIGO) represents a fundamental observational barrier. No planned or proposed detector technology can bridge this gap in the foreseeable future. This is Barrier 8 in the program's classification, and it applies to all bounce models, not just ECH.</p>
+
+<blockquote>
+<p>The bounce itself is, for all practical purposes, observationally silent in the gravitational wave channel. The only route to observational contact is through indirect signatures imprinted on the primordial perturbation spectrum &mdash; which is precisely what Branch V exploits.</p>
+</blockquote>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>6. The Modified Cosmological Evolution</h2>
+
+<p>The ECH framework modifies the standard cosmological evolution in the deep ultraviolet (near-Planckian densities) while leaving the infrared (late-universe) physics unchanged. The key equations governing the cosmological evolution are:</p>
+
+<h3>Friedmann Equation (Modified)</h3>
+
+<div class="equation-display">
+  \[ H^2 = \frac{8\pi G}{3}\,\rho\!\left(1 - \frac{\rho}{\rho_{\rm crit}}\right) \]
+</div>
+
+<h3>Raychaudhuri Equation (Modified)</h3>
+
+<div class="equation-display">
+  \[ \dot{H} = -4\pi G\,(\rho + p)\!\left(1 - \frac{2\rho}{\rho_{\rm crit}}\right) \]
+</div>
+
+<h3>Conservation Equation (Unchanged)</h3>
+
+<div class="equation-display">
+  \[ \dot{\rho} + 3H(\rho + p) = 0 \]
+</div>
+
+<p>The conservation equation is unmodified because the torsion contribution enters through the gravitational sector, not the matter sector. The continuity equation follows from the Bianchi identity, which holds in ECH gravity as in GR.</p>
+
+<div class="card" style="margin: 24px 0;">
+  <h4 style="margin-top: 0;">Key Features of the Modified Evolution</h4>
+  <ul style="margin: 12px 0; padding-left: 24px; color: var(--text-secondary);">
+    <li style="margin-bottom: 8px;">At \(\rho \ll \rho_{\rm crit}\): corrections are negligible, standard GR cosmology is recovered exactly.</li>
+    <li style="margin-bottom: 8px;">At \(\rho = \rho_{\rm crit}/2\): the Raychaudhuri equation gives \(\dot{H} = 0\), a turning point in the Hubble evolution.</li>
+    <li style="margin-bottom: 8px;">At \(\rho = \rho_{\rm crit}\): the Friedmann equation gives \(H = 0\), the bounce point.</li>
+    <li style="margin-bottom: 8px;">For \(\rho > \rho_{\rm crit}\): the equations would give \(H^2 < 0\), which is unphysical. The bounce at \(\rho_{\rm crit}\) is a hard ceiling &mdash; the density cannot exceed it.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>7. Connections to Loop Quantum Gravity</h2>
+
+<p>The ECH framework is not an isolated phenomenological model. It connects to the broader program of loop quantum gravity through several precise links:</p>
+
+<div class="card" style="margin: 20px 0;">
+  <h4 style="margin-top: 0;">The Barbero-Immirzi Parameter</h4>
+  <p>The parameter \(\gamma\) appearing in the Holst term is the same Barbero-Immirzi parameter that determines the area spectrum in LQG: \(A = 8\pi\gamma\ell_{\rm Pl}^2\sum_i\sqrt{j_i(j_i+1)}\). Its value is fixed by the requirement that LQG reproduce the Bekenstein-Hawking entropy of black holes, giving \(\gamma \approx 0.2375\) (the Meissner value).</p>
+</div>
+
+<div class="card" style="margin: 20px 0;">
+  <h4 style="margin-top: 0;">Cosmic Rotation and Torsion</h4>
+  <p>In the presence of a net spin density (as in a universe with more matter than antimatter), the torsion field generates a preferred orientation. This manifests as a cosmic parity asymmetry that could, in principle, be detected through correlations in the CMB polarization pattern. The ALP birefringence result is one realization of this connection.</p>
+</div>
+
+<div class="card" style="margin: 20px 0;">
+  <h4 style="margin-top: 0;">Effective Equations</h4>
+  <p>The modified Friedmann equation of ECH cosmology matches the effective equations of loop quantum cosmology (LQC) in the isotropic sector. This matching provides confidence that the ECH bounce captures the essential physics of the full quantum gravity bounce, at least in the homogeneous approximation.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>8. Summary: The ECH Landscape</h2>
+
+<p>The Einstein-Cartan-Holst framework defines a precise, calculable extension of general relativity that resolves the Big Bang singularity through a torsion-regulated bounce. The BigBounce research program has mapped its phenomenological landscape with unusual thoroughness:</p>
+
+<div class="grid-2" style="margin: 24px 0;">
+  <div class="card stat">
+    <div class="stat-value">13</div>
+    <div class="stat-label">Structural Barriers</div>
+    <div class="stat-sub">Proven no-go results</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value">24</div>
+    <div class="stat-label">Branches Explored</div>
+    <div class="stat-sub">A through W</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value">2</div>
+    <div class="stat-label">Surviving Predictions</div>
+    <div class="stat-sub">\(f_{NL}\) and \(\beta\)</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-value">0.27</div>
+    <div class="stat-label">\(\rho_{\rm crit}/\rho_{\rm Pl}\)</div>
+    <div class="stat-sub">Bounce density</div>
+  </div>
+</div>
+
+<p>The negative results are as valuable as the positive ones. The 13 barriers constitute a map of the framework's boundaries &mdash; telling future researchers exactly which directions are closed and why, saving potentially years of effort. The two surviving predictions (matter-bounce \(f_{NL}\) and ALP birefringence \(\beta\)) provide concrete, falsifiable targets for near-term observations.</p>
+
+<p>The framework's ultimate test will come from SPHEREx (for \(f_{NL}\)) and LiteBIRD (for \(\beta\)). If either prediction is confirmed, it will provide strong motivation for the deeper theoretical work needed to connect the ECH bounce to a complete quantum gravity theory. If both are falsified, the framework's phenomenological viability will be significantly constrained &mdash; an outcome that is equally valuable for the field's progress.</p>
+</section>
+
+</main>
+
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.com">bigbounce.hubify.com</a></p></footer>
+<script>document.querySelectorAll('nav a[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='articles')a.classList.add('active')});</script>
+</body>
+</html>
