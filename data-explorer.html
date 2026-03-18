@@ -156,7 +156,9 @@
 
   <div class="sidebar-group"><span class="dot orange"></span> Research Program</div>
   <div class="sidebar-item" onclick="selectDataset('barriers')" data-key="barriers">13 Struct. Barriers <span class="sidebar-badge closed">13 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="sidebar-badge active-badge">26 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="sidebar-badge active-badge">29 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('bounceAudit')" data-key="bounceAudit">Bounce Evidence Audit <span class="sidebar-badge">16</span></div>
+  <div class="sidebar-item" onclick="selectDataset('fnlDerivation')" data-key="fnlDerivation">f_NL Derivation Status <span class="sidebar-badge active-badge">8 rows</span></div>
 
   <div class="sidebar-sep"></div>
   <div class="sidebar-group">Equations</div>
@@ -2031,9 +2033,9 @@ barriers: {
 
 branches: {
   name: "Research Branch Results Matrix",
-  description: "Status and results for all 26 research branches in the spin-torsion cosmology program.",
+  description: "Status and results for all 29 research branches in the spin-torsion cosmology program.",
   source: "research/",
-  rows: 26,
+  rows: 29,
   status: "ACTIVE", statusClass: "active-badge",
   columns: ["Branch","Scientific Question","Result","Status","Novelty","Pub Value"],
   data: [
@@ -2060,9 +2062,56 @@ branches: {
     ["Branch S","Does ECH generate photon rotation via loops?","\u03B2~10\u207B\u00B3\u2070\u00B0 (28\u201340 OOM too weak)","CLOSED","N1","LOW"],
     ["Branch T","Can axion kicked by bounce amplify fields?","Requires free parameter (n5)","CLOSED","N1","LOW"],
     ["Branch U","Can two-field ALP resolve rolling tension?","Reintroduces fine-tuning","DEFERRED","N1","LOW"],
-    ["Branch V","Can matter contraction+ECH produce signals?","f_NL=5/12 (parameter-free, SPHEREx)","ACTIVE","N3","FLAGSHIP"],
+    ["Branch V","Can matter contraction+ECH produce signals?","f_NL = \u221235/8 = \u22124.375 (parameter-free, SPHEREx)","ACTIVE","N3","FLAGSHIP"],
     ["Branch W","Can ALP curvaton generate red tilt?","n_s=1.000 (8.3\u03C3 excluded)","SUPERSEDED","N1","LOW"],
-    ["Chiral GW","Can chiral GW reach detectors?","GHz signals; gap to LIGO 10\u2076","CLOSED","N1","LOW"]
+    ["Chiral GW","Can chiral GW reach detectors?","GHz signals; gap to LIGO 10\u2076","CLOSED","N1","LOW"],
+    ["Bounce Evidence Audit","Do any bounce claims reach STRONG?","No claim reaches STRONG; ECH perturbation-transparent","COMPLETE","N2","HIGH"],
+    ["f_NL Derivation","Is f_NL = \u221235/8 correct?","Convention resolved; ~75% confidence; time integral pending","ACTIVE","N3","FLAGSHIP"],
+    ["Viable Bounce Model","Does a minimal viable model exist?","Wilson-Ewing quasi-dust survives; curvaton tilt killed","PASS","N3","FLAGSHIP"]
+  ]
+},
+
+bounceAudit: {
+  name: "Bounce Evidence Audit",
+  description: "Systematic audit of 16 bounce-dependent claims. Assessed evidence strength, data contact, bounce-specificity. No claim reaches STRONG. Best: birefringence (MODERATE, bounce-independent), f_NL (MODERATE, testable ~2030).",
+  source: "research/bounce_evidence_audit/",
+  status: "COMPLETE", statusClass: "frozen",
+  columns: ["#","Claim","Evidence","Bounce-Specific?","Status","Assessment"],
+  data: [
+    ["1","Cosmic birefringence \u03B2 \u2248 0.30\u00B0","2.4\u20133.6\u03C3 detection","No (bounce-independent)","MODERATE","Strongest data match but ALP needs no bounce"],
+    ["2","f_NL = \u221235/8","Planck: \u22120.9 \u00B1 5.1","Yes (matter contraction)","MODERATE","Parameter-free, MegaMapper 8.75\u03C3 by ~2032"],
+    ["3","PTA/NANOGrav signal","Bayesian-favored","Partially (generic bounce)","MODERATE","Trans-Planckian scale; SMBH binaries not ruled out"],
+    ["4","Low-\u2113 CMB deficit","Qualitative","LQC-specific","WEAK","Durrer challenge to bispectrum prediction"],
+    ["5","CMB parity asymmetry","~2.5\u03C3","Qualitative only","WEAK","No quantitative bounce prediction exists"],
+    ["6","Hemispherical asymmetry","~3\u03C3","No","WEAK","Inflation-dependent mechanisms exist"],
+    ["7","PBH dark matter","Theoretical","Generic bounce","DROPPED","No production mechanism in ECH"],
+    ["8","S\u2088 tension reduction","\u0394Neff \u2248 0","No","DROPPED","Disproved by own MCMC"],
+    ["9","Blue tensor tilt","n_T > 0","Generic bounce","DROPPED","r ~ 10\u207B\u2074 untestable"],
+    ["10","Galaxy spin chirality","9\u201312 OOM gap","No","DROPPED","Coupling gap insurmountable"],
+    ["11","Hubble tension reduction","H\u2080 = 67.68","No","DROPPED","Standard \u039BCDM value recovered"],
+    ["12","Baryogenesis","Gravitational democracy","No","DROPPED","Torsion ~1% of Planck channels"],
+    ["13","GW echoes","GHz frequency","No","DROPPED","Detector gap 10\u2076+"],
+    ["14","Dark radiation (\u0394Neff)","Consistent with zero","No","DROPPED","All datasets: \u0394Neff \u2248 0"],
+    ["15","Singularity resolution","Mathematical proof","ECH-specific","PASS","Clean existence proof, no observable signature"],
+    ["16","Scale-invariant spectrum","n_s \u2248 1","Generic (w=0)","PASS","But n_s = 1 excluded at 8.3\u03C3; need quasi-dust"]
+  ]
+},
+
+fnlDerivation: {
+  name: "f_NL Derivation Status",
+  description: "Progress on independent verification of f_NL = \u221235/8 from matter contraction. Convention, template projection, and vertex identification complete. Time integral evaluation pending.",
+  source: "research/fnl_derivation_execution/",
+  status: "IN PROGRESS", statusClass: "active-badge",
+  columns: ["Step","Status","Result","Confidence"],
+  data: [
+    ["Cai-to-Planck convention","\u2713 RESOLVED","f_NL^Planck = |B|_NL^sq (no hidden factor)","100%"],
+    ["Dominant cubic vertex","\u2713 CONFIRMED","(9/4)M_Pl\u00B2 a\u00B2 \u03B6 \u03B6'\u00B2 dominates by \u03B7\u207B\u00B2","95%"],
+    ["Li-Brandenberger discrepancy","\u2713 DIAGNOSED","Systematic factor-of-2 (convention, not physics)","85%"],
+    ["Template projection","\u2713 BOUNDED","cos \u03B8 \u2248 0.95 \u00B1 0.03; f_NL^eff = \u22124.16 \u00B1 0.15","90%"],
+    ["Field redefinition","\u2713 CONFIRMED","+5/4 contribution","95%"],
+    ["Superhorizon hierarchy","\u2713 CONFIRMED","Horizon-crossing dominates, not late-time","90%"],
+    ["In-in time integral","\u23F3 PENDING","Numerical quadrature with exact Bessel modes needed","\u2014"],
+    ["Overall f_NL = \u221235/8","\u23F3 IN PROGRESS","~75% confidence (up from ~50% pre-execution)","75%"]
   ]
 }
 
