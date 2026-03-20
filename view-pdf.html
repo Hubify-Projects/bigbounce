@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper — BigBounce</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { margin: 0; overflow: hidden; }
+  .pdf-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 36px; background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 20px;
+    font-family: var(--font-mono); font-size: 12px;
+  }
+  .pdf-bar a { color: var(--text-muted); text-decoration: none; }
+  .pdf-bar a:hover { color: var(--text); }
+  .pdf-bar .pdf-back { margin-right: 16px; }
+  .pdf-bar .pdf-title { color: var(--text-secondary); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pdf-bar .pdf-author { color: var(--text-muted); margin-left: 16px; white-space: nowrap; }
+  .pdf-bar .pdf-download { margin-left: 16px; padding: 3px 10px; border: 1px solid var(--border); font-size: 11px; color: var(--text-secondary); }
+  .pdf-bar .pdf-download:hover { border-color: var(--text); color: var(--text); }
+  iframe { width: 100%; height: calc(100vh - 36px); border: none; margin-top: 36px; }
+</style>
+</head>
+<body>
+<div class="pdf-bar">
+  <a href="index.html" class="pdf-back">&larr; back</a>
+  <span class="pdf-title">Geometric Dark Energy from Spin-Torsion Cosmology</span>
+  <span class="pdf-author">Houston Golden</span>
+  <a href="arxiv/main.pdf" download class="pdf-download">download</a>
+</div>
+<iframe src="arxiv/main.pdf"></iframe>
+</body>
+</html>
