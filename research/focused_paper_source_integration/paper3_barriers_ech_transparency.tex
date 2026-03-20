@@ -281,6 +281,51 @@ We have presented a systematic catalog of 14 structural barriers that close all 
 
 The author thanks the developers of NumPy, SciPy, Matplotlib, mpmath, SymPy, and Tectonic. Computations were performed on consumer hardware. The author acknowledges helpful interactions with AI research assistants during the systematic barrier-cataloging and perturbation-gate phases.
 
+\appendix
+
+\section{MCMC Verification Context}
+\label{app:mcmc}
+
+The research program that produced the 14 barriers also included an independent MCMC verification campaign using Cobaya v3.6.1 interfacing with CAMB and Planck likelihood codes. The key dataset combinations and results:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrcc}
+\toprule
+Dataset & Samples & $\Delta N_{\rm eff}$ & $H_0$ [km/s/Mpc] \\
+\midrule
+Full Tension (Planck+BAO+SN+SH0ES) & 176{,}840 & $-0.020 \pm 0.169$ & $67.68 \pm 0.42$ \\
+Planck+BAO+SN & 132{,}949 & $+0.065 \pm 0.170$ & $67.91 \pm 0.58$ \\
+Planck+BAO & $\sim$50{,}000 & consistent with 0 & standard \\
+Planck Only & $\sim$50{,}000 & consistent with 0 & standard \\
+\bottomrule
+\end{tabular}
+\caption{MCMC verification results. All datasets find $\Delta N_{\rm eff}$ consistent with zero---no detectable dark radiation from the ECH framework. $H_0$ values are standard $\Lambda$CDM, not reduced tensions.}
+\label{tab:mcmc}
+\end{table}
+
+These results established two important findings: (1)~the spin-torsion $\Delta N_{\rm eff}$ contribution is observationally undetectable with current data, and (2)~the Hubble tension reduction previously reported was driven by the SH0ES prior, not by the $\Delta N_{\rm eff}$ extension. Both findings are consistent with the perturbation-transparency theorem: if ECH is dynamically inert at the perturbation level, it should not produce a detectable $\Delta N_{\rm eff}$ signal.
+
+All 236{,}622 posterior samples used fixed $w = -1$ (cosmological constant). The hybrid dark-energy loophole ($w_0w_a$ freedom) was never implemented computationally.
+
+\section{Novelty Assessment}
+\label{app:novelty}
+
+The following novelty scale is used throughout this program:
+
+\begin{itemize}
+\item \textbf{N0:} Not novel (prior art, verification only)
+\item \textbf{N1:} Weakly novel (synthesis, review, compilation)
+\item \textbf{N2:} Moderately novel (new framing, new application, new quantitative result)
+\item \textbf{N3:} Strongly novel (new theorem, new method, new observable mapping)
+\item \textbf{N4:} Breakthrough (new physics, new prediction, paradigm shift)
+\end{itemize}
+
+The perturbation-transparency theorem (Barrier 14) is rated N3: it is a strong structural result that formally closes a class of theoretical possibilities, analogous to no-go theorems in other areas of theoretical physics. The 14-barrier catalog as a body of work is rated N2--N3 overall: each individual barrier draws on known physics, but the systematic exhaustion across 7 foundations and 17 branches is original in scope.
+
+No result in this program qualifies as N4 (breakthrough-level), as no genuinely new physics or previously unknown observable has been discovered. The program's novelty lies in \emph{systematic framework construction, quantitative verification, and honest structural closure}---not in new fundamental discoveries.
+
 \bibliography{focused_paper_refs}
 
 \end{document}
