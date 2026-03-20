@@ -15,11 +15,11 @@ This repository contains a comprehensive spin-torsion cosmology research program
 **Live website:** https://bigbounce.hubify.app
 
 **Key scientific results:**
-- 13 structural barriers close all minimal routes from bounce to dark energy
-- ALP birefringence prediction β = 0.27° matches 3.9σ observed signal (0.342 ± 0.094°)
-- Branch V matter bounce + ECH: f_NL = 5/12 (parameter-free, SPHEREx testable)
+- 14 structural barriers close all minimal routes from bounce to dark energy
+- ALP birefringence prediction β = 0.27° matches 3.6σ observed signal (0.342 ± 0.094°)
+- Branch V matter bounce: f_NL = -35/8 = -4.375 (parameter-free, SPHEREx testable)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
-- 236,000+ MCMC posterior samples across 4 dataset combinations
+- 309,789 MCMC posterior samples across 2 frozen dataset combinations
 
 ## Website Architecture
 
@@ -29,7 +29,7 @@ The website at bigbounce.hubify.app is a multi-page static site deployed via Net
 
 | Page | File | Purpose |
 |------|------|---------|
-| Homepage | `index.html` | Research overview, key results, stat cards, 13 barriers, ALP prediction, MCMC table, figures, claims table, falsification criteria |
+| Homepage | `index.html` | Research overview, key results, stat cards, 14 barriers, ALP prediction, MCMC table, figures, claims table, falsification criteria |
 | Papers | `paper.html` | Paper listing (4 tentative papers with readiness %), version history timeline, full inline paper text |
 | Explainer | `explained.html` | Accessible non-technical explanation of the research |
 | Data Explorer | `data-explorer.html` | Interactive MCMC data tool with 15 embedded datasets, sortable tables, column stats, 6 equation calculators, node-tree visualization |
