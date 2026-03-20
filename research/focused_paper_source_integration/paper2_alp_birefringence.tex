@@ -103,6 +103,8 @@ Run & Model & Samples & $\hat{R}-1$ & Status \\
 \caption{MCMC run configurations. All runs converge to $\hat{R}-1 < 0.01$.}
 \end{table}
 
+We acknowledge that these sample sizes (720--6{,}840 accepted samples) are modest by modern standards. The Gelman-Rubin convergence diagnostic $\hat{R}-1 < 0.01$ confirms adequate mixing, but the small effective sample sizes ($N_{\rm eff} \sim 1{,}000$) limit the precision of tail estimates and evidence calculations. Future work with longer chains ($>50{,}000$ samples) would improve the reliability of the posterior tails and Bayes factor.
+
 The posterior on $\beta$ from the ALP model (Run 1, $C=8$ fixed):
 \begin{equation}
 \beta_{\rm ALP} = 0.336 \pm 0.107^\circ
@@ -143,7 +145,7 @@ computed via the Savage-Dickey density ratio with a flat prior $\beta \in [0°, 
 
 \section{LiteBIRD Forecast}
 
-LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$ on the isotropic birefringence angle. For our prediction $\beta = 0.27^\circ$:
+LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$ on the isotropic birefringence angle~\citep{LiteBIRD:2023}, depending on the self-calibration strategy and systematic error budget. For our prediction $\beta = 0.27^\circ$:
 
 \begin{equation}
 \text{Significance} = \frac{0.27}{0.03} = 9\sigma
@@ -155,9 +157,11 @@ If the signal is real, LiteBIRD will detect it at overwhelming significance. If 
 
 This birefringence prediction is \emph{independent} of bounce cosmology. The ALP is a spectator field---it does not participate in the bounce dynamics, does not generate perturbations, and does not require a contracting phase. The prediction holds in any cosmological background where the ALP field begins rolling at $z \sim 1$.
 
-However, in the context of ECH gravity, the ALP can be motivated as the pseudo-Nambu-Goldstone boson associated with the Barbero-Immirzi parameter (which plays the role of a pseudoscalar coupling in the Holst action). This provides a natural theoretical origin for $f_a \sim M_{\rm Pl}$, though the birefringence prediction itself does not depend on this identification.
+In the context of ECH gravity, the ALP can be heuristically motivated as associated with the Barbero-Immirzi pseudoscalar sector of the Holst action, providing a natural theoretical context for $f_a \sim M_{\rm Pl}$. However, this motivation is qualitative---no derivation connects the Holst action to a specific ALP potential or coupling---and the birefringence prediction does not depend on this identification.
 
 \section{Discussion}
+
+\textit{Calibration systematics.}---The isotropic birefringence measurement relies on the Minami-Komatsu self-calibration method, which simultaneously fits the cosmic rotation angle $\beta$ and per-detector polarization angle miscalibration. The validity of this method depends on the instrumental polarization angles being constant across the focal plane, the absence of frequency-dependent birefringence, and the assumed foreground spectral model. There is an active debate about whether residual $\sim 0.1$--$0.3^\circ$ systematics could arise from bandpass mismatch effects, residual polarized dust emission, or beam asymmetries. Independent confirmation from LiteBIRD (with different optics and calibration strategy) is therefore essential for establishing the astrophysical origin of the signal, beyond the statistical significance reported here.
 
 The ALP birefringence prediction $\beta \approx 0.27^\circ$ has three notable features:
 
