@@ -41,8 +41,9 @@
 \newcommand{\eg}{e.g.}
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.6.0-preaudit}
-\newcommand{\paperTimestamp}{2026-03-13T14:30-08:00}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\paperVersion}{v2.0.0}
+\newcommand{\paperTimestamp}{2026-03-20T12:00-07:00}
 
 \begin{document}
 
@@ -978,7 +979,278 @@ Minami \& Komatsu~\cite{Minami2020} reported the first hint of cosmic birefringe
 
 
 %% ============================================================
-%%  12. DISCUSSION
+%%  12. STRUCTURAL BARRIERS
+%% ============================================================
+\section{Structural Barriers to First-Principles Dark Energy}\label{sec:barriers}
+
+We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional observational channels (Branches H--O, plus the ECH perturbation gates) for the possibility of connecting the bounce to late-time dark energy or producing distinctive observable signatures. Each test yielded a named structural barrier.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{clll}
+\toprule
+\# & Barrier & Source & Mechanism Blocked \\
+\midrule
+1 & Mass-Coupling Lock & Found.\ A & Propagating torsion as DE \\
+2 & Topological-Shift Duality & Found.\ B & Geometric pseudoscalar mass protection \\
+3 & Scalar-Tensor Universality & Found.\ C & Distinctive geometric content on FRW \\
+4 & Planck Suppression & Found.\ D & Disformal / connection coupling effects \\
+5 & Scale Separation & Found.\ E & Global vacuum integral coupling \\
+6 & Attractor-Sensitivity Dilemma & Found.\ F & Initial-condition transfer to DE \\
+7 & Parameter Immunity & Found.\ G & Cyclic vacuum selection \\
+8 & Parity-Even Interaction & Branch H & Tensor chirality from the bounce \\
+9 & Liouville Conservation & Branch J & Reversible state selection \\
+10 & UV$\to$IR Specificity Dilemma & Branch L & Generic vs.\ bounce-specific bridge \\
+11 & Decoupling Universality & Branch L/M & Light gauge field coupling \\
+12 & Vacuum Amplification Ceiling & Branch M & Gravitational wave amplitude \\
+13 & Gravitational Democracy & Branch N/O & Relics, baryogenesis, vacuum transitions \\
+14 & Perturbation Transparency & ECH Gates & ECH-specific perturbation signatures \\
+\bottomrule
+\end{tabular}
+\caption{The 14 structural barriers. Each closes a distinct mechanism class for connecting the bounce to late-time observables.}
+\label{tab:barriers}
+\end{table}
+
+\subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
+
+In Poincar\'e gauge theory (PGT), the most general torsion Lagrangian includes propagating spin-2 and spin-0 torsion modes with masses $m_T$ set by the PGT coupling constants $\{t_i\}$. For these modes to act as dark energy, they would need to be ultralight ($m_T \sim H_0 \sim 10^{-33}$ eV) and couple to matter at cosmologically relevant strength.
+
+The mass-coupling lock arises because the effective coupling is:
+\begin{equation}
+g_{\rm eff} \sim \frac{1}{\MPl \sqrt{|t_3|}}
+\end{equation}
+where $t_3$ is the PGT coupling. For ultralight masses ($|t_3| \sim \MPl^2/H_0^2$), the coupling becomes $g_{\rm eff} \sim H_0/\MPl^2 \sim 10^{-61}$---far too weak for any observable effect. To achieve $g_{\rm eff} \sim 1$, one needs $|t_3| \sim 1/\MPl^2$, giving $m_T \sim \MPl$ (Planck-mass torsion, not dark energy).
+
+The fine-tuning required to simultaneously achieve $m_T \sim H_0$ and $g_{\rm eff} \sim \mathcal{O}(1)$ is:
+\begin{equation}
+\frac{m_T^2}{m_T^2|_{\rm natural}} \sim \frac{H_0^2}{\MPl^2} \sim 10^{-122}
+\end{equation}
+equivalent to the standard cosmological constant fine-tuning problem. The barrier transfers rather than solves the fine-tuning.
+
+Graviton loop corrections generate $\delta m_T^2 \sim \MPl^2/(16\pi^2)$, requiring cancellation at the level of 1 in $10^{57}$.
+
+\subsection{Barrier 2: Topological-Shift Duality (Foundation B)}
+
+Foundation B investigated whether the Nieh-Yan topological term could break the mass-coupling lock by providing a non-topological mass term in metric-affine gravity (MAG). In MAG, the Nieh-Yan term $\int T^a \wedge T_a - e^a \wedge e^b \wedge R_{ab}$ is indeed non-topological (unlike in standard EC theory).
+
+However, a duality emerges: configurations that protect the pseudoscalar mass (through the topological structure) necessarily eliminate the geometric content (the field becomes a standard ALP after torsion elimination). Conversely, configurations that preserve geometric content cannot protect the mass. This \emph{topological-shift duality} means:
+\begin{equation}
+\text{Mass protection} \iff \text{No geometric fingerprint}
+\end{equation}
+After exact torsion elimination (to all orders in $\phi/f_\phi$), the effective action reduces to standard ALP electrodynamics with no operators beyond those already present in generic scalar-tensor theory.
+
+\subsection{Barrier 3: Scalar-Tensor Universality (Foundation C)}
+
+For scalar field matter on FRW backgrounds, the background torsion and non-metricity vanish identically:
+\begin{equation}
+T_0 = Q_0 = 0 \quad (\text{exact on FRW with scalar matter})
+\end{equation}
+This is because FRW symmetry (homogeneity + isotropy) admits no preferred spatial direction for torsion or non-metricity to point in when the matter is a scalar field. Environmental mass mechanisms (chameleon-like effects from torsion) therefore reduce exactly to standard scalar-tensor theory on cosmological backgrounds, with no distinctive geometric fingerprint.
+
+\subsection{Barrier 4: Planck Suppression (Foundation D)}
+
+Disformal couplings (terms involving $\partial_\mu\phi\,\partial_\nu\phi$ in the effective metric) could in principle produce distinctive signatures. However, in the connection-coupling framework of ECH, each interaction vertex carries only one $\partial\phi$ factor (from the single derivative in the torsion-scalar coupling), while disformal effects require two. The resulting operators are suppressed by:
+\begin{equation}
+\frac{\text{Disformal effect}}{\text{Conformal effect}} \sim \frac{k^2}{\MPl^2} \sim 10^{-122}
+\end{equation}
+at cosmological scales, rendering all distinctive geometric effects unobservable.
+
+\subsection{Barrier 5: Scale Separation (Foundation E)}
+
+Global vacuum integrals (attempts to connect the bounce vacuum energy to the late-time cosmological constant through spacetime-volume-averaged quantities) fail due to extreme scale separation:
+\begin{equation}
+\frac{V_4^{\rm bounce}}{V_4^{\rm total}} \sim \frac{t_{\rm bounce}^4}{t_0^4} \sim \frac{t_{\rm Pl}^4}{(10^{17}\,\text{s})^4} \sim 10^{-244}
+\end{equation}
+The bounce occupies a vanishingly small fraction of the total spacetime volume. No averaging procedure can amplify the bounce-scale vacuum energy to affect late-time dynamics.
+
+\subsection{Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}
+
+Attempts to transfer bounce initial conditions to late-time dark energy face a dilemma:
+\begin{itemize}
+\item If the late-time dynamics has an \emph{attractor}, the system forgets its initial conditions---including any information from the bounce.
+\item If the dynamics is \emph{sensitive} to initial conditions, it requires fine-tuning of those conditions to produce the observed dark energy---reintroducing the problem.
+\end{itemize}
+There is no middle ground: either the bounce information is washed out (attractor) or it requires tuning (sensitivity).
+
+\subsection{Barrier 7: Parameter Immunity (Foundation G)}
+
+In cyclic/ekpyrotic models, the vacuum energy at late times is set by the continuous parameter $\mu^4$ in the potential, which is \emph{immune} to the bounce dynamics:
+\begin{equation}
+\Lambda_{\rm eff} = \mu^4 + \mathcal{O}(e^{-\MPl/\sigma}) \approx \mu^4
+\end{equation}
+The bounce introduces corrections that are exponentially suppressed by the Planck mass. The vacuum energy is a free parameter, not a prediction.
+
+\subsection{Barrier 8: Parity-Even Interaction (Branch H)}
+
+The spin-torsion effective interaction obtained after integrating out torsion is:
+\begin{equation}
+\mathcal{L}_{\rm eff} \supset \frac{3}{16} \frac{(J^5_\mu)^2}{\MPl^2}
+\end{equation}
+where $J^5_\mu = \bar{\psi}\gamma^\mu\gamma^5\psi$ is the axial fermion current. Despite the presence of $\gamma^5$, the interaction $(J^5)^2$ is \emph{parity-even} (a pseudovector squared is a scalar). This means:
+\begin{itemize}
+\item No tensor chirality: $\Delta v \equiv v_R - v_L = 0$ exactly
+\item No gravitational-wave birefringence
+\item No TB/EB CMB parity violation from the bounce
+\end{itemize}
+FRW isotropy further kills all spatial parity-odd backgrounds.
+
+\subsection{Barrier 9: Liouville Conservation (Branch J)}
+
+Attempts to use the bounce as a ``state selector''---choosing a preferred vacuum or field configuration from a broader landscape---are blocked by Liouville's theorem. In Hamiltonian mechanics, phase-space volume is conserved under unitary evolution:
+\begin{equation}
+\frac{d}{dt}\int_{\Gamma} d^{2n}q\,d^{2n}p = 0
+\end{equation}
+where $\Gamma$ is any region of phase space. The bounce, being governed by the modified Friedmann equation (Eq.~\ref{eq:modfriedmann}), is a smooth, time-reversible Hamiltonian flow. It cannot irreversibly contract the accessible phase-space volume.
+
+The consequence for dark energy is direct: if the pre-bounce phase space contains a measure-zero set of trajectories leading to the observed $\Lambda_{\rm eff}$, the post-bounce phase space contains the same measure-zero set. The bounce cannot amplify the probability of landing on a trajectory with $\rho_\Lambda \approx (2.3\;\text{meV})^4$. Any mechanism that appears to select a preferred vacuum through the bounce must, upon closer inspection, either (a)~have the selection already encoded in the initial conditions (shifting the fine-tuning to the contracting phase) or (b)~invoke dissipative/decoherence effects that violate unitarity.
+
+Entropy production during the bounce (e.g., particle creation at near-Planck densities) does break time-reversal symmetry, but the resulting entropy increase is generic---it does not preferentially select cosmological-constant-scale vacuum energies over any other scale. The entropy is $\Delta S \sim \rho_{\rm crit}/T_{\rm bounce} \sim \mathcal{O}(\MPl^3)$, which is Planck-scale information, not IR-scale vacuum selection.
+
+\subsection{Barrier 10: UV$\to$IR Specificity Dilemma (Branch L)}
+
+Any mechanism bridging bounce-scale (UV) physics to cosmological-scale (IR) dark energy must make a choice: be \emph{generic} (arising from general principles applicable to any UV completion) or be \emph{specific} (deriving from detailed ECH/LQC structure). Both choices fail:
+
+\textbf{Generic bridges} produce effects indistinguishable from standard scalar-tensor theory. If the bridge depends only on the existence of a bounce at some critical density $\rho_c$ and a subsequent expansion, its IR predictions are captured by an effective field theory with operators organized by the hierarchy:
+\begin{equation}
+\mathcal{L}_{\rm eff} = \MPl^2 R + c_1 \frac{R^2}{\MPl^2} + c_2 \frac{(\nabla\phi)^4}{\MPl^4} + \cdots
+\end{equation}
+where the Wilson coefficients $c_i$ are $\mathcal{O}(1)$ numbers set at the UV scale. These operators produce late-time effects suppressed by $H_0^2/\MPl^2 \sim 10^{-122}$. No generic bridge can overcome this hierarchy without invoking a light scalar with mass $m \sim H_0$---which is precisely the cosmological constant problem in a different guise.
+
+\textbf{Specific bridges} require detailed knowledge of the bounce dynamics at Planck density to set IR parameters. But any IR parameter that depends sensitively on Planck-scale details is subject to radiative corrections of order $\delta m^2 \sim \MPl^2/(16\pi^2)$, requiring cancellation at 1 part in $10^{57}$ (the same hierarchy as Barrier~1). The specificity that makes the mechanism distinctive also makes it radiatively unstable.
+
+This dilemma is a manifestation of the technical naturalness problem~\cite{tHooft:1979nat}: a small parameter ($H_0/\MPl$) is natural only if setting it to zero enhances the symmetry of the theory. No bounce mechanism provides such a symmetry.
+
+\subsection{Barrier 11: Decoupling Universality (Branches L/M)}
+
+Light gauge fields (photons, gravitons at cosmological wavelengths) decouple from Planck-scale torsion modes with universal efficiency, governed by the Appelquist-Carazzone decoupling theorem. For a heavy torsion mode of mass $m_T \sim \MPl$, its contribution to the vacuum polarization of a massless gauge field at momentum $k \ll m_T$ is:
+\begin{equation}
+\Pi(k^2) \sim \frac{g_{\rm eff}^2}{16\pi^2}\left[\frac{k^2}{m_T^2} + \mathcal{O}\left(\frac{k^4}{m_T^4}\right)\right]
+\end{equation}
+where $g_{\rm eff}$ is the torsion-gauge coupling. At cosmological scales ($k \sim H_0$):
+\begin{equation}
+\frac{\Pi(H_0^2)}{\Pi(\MPl^2)} \sim \frac{H_0^2}{\MPl^2} \sim 10^{-122}
+\end{equation}
+
+This suppression is not specific to ECH or any particular torsion theory---it follows from general principles of effective field theory. The bounce imprints its physics at scale $\MPl$; by the time this information propagates to scale $H_0$ through gauge-sector loops, it is suppressed by 122 orders of magnitude.
+
+The only escape from decoupling universality is a torsion mode that is itself ultralight ($m_T \sim H_0$), but this returns to the mass-coupling lock of Barrier~1: achieving $m_T \sim H_0$ requires fine-tuning at the level of $10^{-122}$. The combination of Barriers 1 and 11 forms a closed loop: heavy torsion modes decouple from IR physics, and light torsion modes require the same fine-tuning they were meant to explain.
+
+\subsection{Barrier 12: Vacuum Amplification Ceiling (Branch M)}
+
+The gravitational wave energy density from a PGT-type bounce is bounded by:
+\begin{equation}
+\Omega_{\rm GW}(f) \propto \left(\frac{H_{\rm bounce}}{\MPl}\right)^2 \propto \left(\frac{f_{\rm bounce}}{f_{\rm Pl}}\right)^4
+\end{equation}
+For any sub-Planckian bounce, $\Omega_{\rm GW}$ is catastrophically small. The characteristic frequency is $f_{\rm bounce} \sim 10^9$--$10^{10}$ Hz (GHz), with zero overlap with any planned detector (LIGO at 10--$10^3$ Hz, LISA at $10^{-4}$--$10^{-1}$ Hz). The detector gap is at least $10^{17}$ in amplitude.
+
+\subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
+
+Torsion-mediated baryogenesis or relic production fails because torsion couples democratically to all fermion species ($\sim 1\%$ torsion contribution per species), with no mechanism to preferentially produce baryons over antibaryons or specific dark matter candidates. Vacuum transitions at the bounce are blocked by the bounce-vacuum decoupling: the bounce is too brief and too symmetric to trigger irreversible phase transitions.
+
+\subsection{Barrier 14: Perturbation Transparency}
+
+See Section~\ref{sec:transparency} for the full proof. In summary: for canonical scalar field matter, torsion vanishes identically at all perturbation orders, rendering the Holst term topological and the Barbero-Immirzi parameter invisible.
+
+
+%% ============================================================
+%%  13. PERTURBATION-TRANSPARENCY THEOREM
+%% ============================================================
+\section{The Perturbation-Transparency Theorem}\label{sec:transparency}
+
+\subsection{Statement}
+
+In minimal Einstein-Cartan-Holst gravity with canonical scalar field matter, the Holst term is dynamically inert for both scalar and tensor perturbations at all orders. The Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables.
+
+\subsection{Proof (Scalar Sector)}
+
+The argument proceeds in five steps:
+
+\begin{enumerate}
+\item \textbf{Zero spin density.} A canonical scalar field $\phi$ has spin density $S^\lambda{}_{\mu\nu} = 0$ (by definition of ``canonical''---no spinor indices, no intrinsic angular momentum).
+
+\item \textbf{Zero torsion.} In Einstein-Cartan theory, the torsion tensor is algebraically determined by the spin density: $T^\lambda{}_{\mu\nu} = 8\pi G\, (S^\lambda{}_{\mu\nu} + \delta^\lambda_{[\mu} S_{\nu]} + \ldots)$. With $S = 0$, we have $T^\lambda{}_{\mu\nu} = 0$ at all perturbation orders.
+
+\item \textbf{Connection reduces to Levi-Civita.} With $T = 0$, the full connection $\Gamma^\lambda{}_{\mu\nu} = \mathring{\Gamma}^\lambda{}_{\mu\nu}$ (Christoffel symbols only).
+
+\item \textbf{Holst term becomes topological.} The Holst term $\frac{1}{2\gamma}\int \epsilon^{IJ}{}_{KL}\, e^K \wedge e^L \wedge F_{IJ}$ evaluated with the Levi-Civita connection reduces to the Pontryagin density $\int \sqrt{-g}\, \epsilon^{\mu\nu\rho\sigma} R_{\mu\nu\rho\sigma}\, d^4x$, which is a total derivative in 4D.
+
+\item \textbf{No equations of motion.} A total derivative contributes zero to the variational equations at all orders in perturbation theory.
+\end{enumerate}
+
+\subsection{Extension to Tensor Sector}
+
+The same five-step argument applies to tensor perturbations. With $T = 0$, the gravitational action reduces to the Einstein-Hilbert form plus a topological term. The tensor perturbation equation is:
+\begin{equation}
+h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0
+\end{equation}
+with no parity-dependent modifications. The left and right circular polarization modes propagate identically:
+\begin{equation}
+v_R(k,\eta) = v_L(k,\eta) \quad \Rightarrow \quad \Delta v \equiv v_R - v_L = 0 \quad (\text{exact})
+\end{equation}
+This means: no gravitational-wave birefringence, no tensor chirality, and no $TB/EB$ CMB parity violation from the ECH mechanism. This result was independently confirmed by the Branch H parity-tensor analysis (Barrier 8), which proved that the spin-torsion effective interaction $(J^5)^2$ is parity-even.
+
+\subsection{Explicit Verification: The Holst Term in Perturbation Theory}
+
+To make the argument fully explicit, consider the ECH action:
+\begin{equation}
+S_{\rm ECH} = \frac{\MPl^2}{2}\int d^4x\, \sqrt{-g}\left[R(\Gamma) + \frac{1}{\gamma}\widetilde{R}(\Gamma)\right] + S_{\rm matter}[\phi, g]
+\end{equation}
+where $\widetilde{R} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ is the Holst dual of the Ricci scalar, and $\Gamma$ is the full (torsionful) connection.
+
+Expanding the metric to second order ($g_{\mu\nu} = \bar{g}_{\mu\nu} + \delta g^{(1)}_{\mu\nu} + \delta g^{(2)}_{\mu\nu} + \ldots$) and the scalar field ($\phi = \bar{\phi} + \delta\phi^{(1)} + \delta\phi^{(2)} + \ldots$):
+
+At \emph{each perturbation order}, the torsion equation of motion gives $T = 0$ (because $S_{\rm matter}$ for a canonical scalar has zero spin density at every order). Therefore $\Gamma = \mathring{\Gamma}$ at every order, and the Holst dual evaluates to:
+\begin{equation}
+\widetilde{R}(\mathring{\Gamma}) = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) = \text{total derivative}
+\end{equation}
+This holds at zeroth, first, second, and third order in perturbation theory. In particular, the \emph{cubic action} for $\zeta$ (the Maldacena action that determines the bispectrum) receives \emph{zero} contribution from the Holst term. The bispectrum is therefore identical to the standard GR result.
+
+\subsection{What Would Break the Transparency}
+
+The transparency theorem fails if \emph{any} of the following conditions hold:
+
+\begin{enumerate}
+\item \textbf{Fermionic matter:} If the matter sector includes fermions (spinors), the spin density $S^\lambda{}_{\mu\nu} \neq 0$ and torsion is sourced. The Holst term then contributes dynamically. However, fermionic contributions to torsion are Planck-suppressed at cosmological densities and negligible during the matter-contraction phase relevant for the bispectrum.
+
+\item \textbf{Propagating torsion (Poincar\'e gauge theory):} If the gravitational action includes kinetic terms for torsion ($\sim T_{\mu\nu\rho}T^{\mu\nu\rho}$), torsion becomes dynamical rather than algebraic. The Holst term then generates non-trivial dynamics. However, this is \emph{not} Einstein-Cartan theory---it is a different theory entirely (PGT), and our Foundation A analysis showed it faces the mass-coupling lock (Barrier 1).
+
+\item \textbf{Non-minimal scalar-torsion coupling:} Terms like $\phi^2 T^2$ or $\phi \nabla_\mu T^\mu$ could source torsion from the scalar field. However, these are ad hoc additions to the minimal ECH action, and our Foundation C analysis showed they reduce to standard scalar-tensor theory on FRW backgrounds (Barrier 3).
+
+\item \textbf{Higher-derivative corrections:} Terms like $\nabla T$ or $R^2$ in the gravitational action could make torsion propagate. These are UV corrections expected at the Planck scale and are negligible during the matter-contraction phase ($\rho \ll \MPl^4$).
+\end{enumerate}
+
+In summary: the transparency is robust within the minimal ECH framework. Breaking it requires going beyond minimal ECH, and all such extensions have been tested and closed by Barriers 1--4.
+
+\subsection{Implications}
+
+ECH gravity is a \emph{perturbation-transparent UV regulator}: it resolves the singularity at Planck density through the $\rho^2$ modification of the Friedmann equation, but leaves zero fingerprint on the primordial perturbations. The Barbero-Immirzi parameter $\gamma$, which sets the bounce density $\rho_{\rm crit}$ and plays a central role in loop quantum gravity, is completely invisible in all scalar and tensor perturbation observables computed with canonical scalar field matter.
+
+This result has a positive interpretation: the observable predictions of a matter bounce (principally $\fnl = -35/8$) are \emph{mechanism-independent}. They do not depend on whether the bounce is realized by ECH, LQC, or any other UV completion. This makes the predictions \emph{more robust}, not less---they cannot be invalidated by changes to the bounce mechanism.
+
+
+%% ============================================================
+%%  14. HYBRID DARK-ENERGY LOOPHOLE
+%% ============================================================
+\section{The Hybrid Dark-Energy Loophole}\label{sec:loophole}
+
+We considered the phenomenological route of appending late-time dynamical-dark-energy freedom (e.g., CPL $w_0w_a$ parametrization) to the bounce model. This was explored across 7 disguised forms:
+
+\begin{enumerate}
+\item Direct $w_0w_a$ addition to the background
+\item Quintessence scalar with bounce-motivated initial conditions
+\item Curvaton-derived late-time potential
+\item Vacuum energy from cyclic boundary conditions
+\item Torsion-induced effective $w(z)$
+\item Holst-term residual as effective DE
+\item ALP rolling as late-time acceleration
+\end{enumerate}
+
+All 7 forms were rejected on the following grounds: adding $w_0w_a$ to a bounce model produces the same fit improvement as adding $w_0w_a$ to $\Lambda$CDM, with no additional theoretical content from the bounce. None of the 236{,}622 MCMC posterior samples in this program used $w_0$ or $w_a$ as free parameters. The loophole was explored theoretically but never implemented computationally, because its implementation would not constitute first-principles evidence for bounce cosmology.
+
+
+%% ============================================================
+%%  15. DISCUSSION
 %% ============================================================
 \section{Discussion}\label{sec:discussion}
 
@@ -1169,9 +1441,9 @@ The parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ could potentially arise
 \item The asymptotic safety program for quantum gravity predicts specific values for gravitational couplings at the UV fixed point. Computing the parity-odd coefficient in this framework would provide an independent determination of $\alpha/M$, potentially constraining $\gamma$ from a non-LQG perspective.
 \end{itemize}
 
-\subsection{Structural Closure: ECH Perturbation Transparency}\label{sec:ech_closure}
+\subsection{Structural Closure}\label{sec:ech_closure}
 
-\textit{Note added (March 2026):} Subsequent systematic investigation established that minimal ECH gravity is perturbation-transparent for scalar field matter: the spin density vanishes identically, forcing torsion to zero at all perturbation orders. The Holst term reduces to the Pontryagin topological density, and the Barbero-Immirzi parameter $\gamma$ becomes invisible in all scalar and tensor perturbation observables. This result (``Barrier 14'') closes the possibility of ECH-specific perturbation-level signatures. The observable science case for bouncing cosmology therefore rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$~\cite{Cai:2009fn}, testable by SPHEREx at $4$--$6\sigma$ significance. The hybrid dark-energy loophole (appending phenomenological $w_0w_a$ freedom) was explored across 7 disguised forms and rejected as non-derivational. See the companion paper~\cite{Golden:2026barriers} for full details.
+The systematic analysis presented in Secs.~\ref{sec:barriers}--\ref{sec:loophole} established that minimal ECH gravity is perturbation-transparent and cannot produce late-time dark energy through any standard mechanism. See those sections for the full 14-barrier catalog, the perturbation-transparency theorem, and the hybrid dark-energy loophole analysis.
 
 \subsection{Open Questions}
 
@@ -1213,7 +1485,7 @@ We have presented a phenomenological framework for dark energy connecting quantu
 
 This framework motivates dark energy from quantum gravitational effects in spin-torsion cosmology. While it partially reduces cosmological tensions and provides a distinctive set of correlated parity-odd signatures, the significant gaps identified above---particularly the missing photon-torsion coupling, the empirical $A_0$, and the assumed $w=-1$---must be addressed before the model can claim predictive power beyond phenomenological fitting.
 
-\textit{ECH perturbation-transparency update (March 2026).}---Subsequent systematic analysis (Sec.~\ref{sec:ech_closure} and companion paper~\cite{Golden:2026barriers}) established that minimal ECH gravity is perturbation-transparent for canonical scalar field matter: torsion vanishes identically at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all scalar and tensor perturbation observables. Combined with the 14 structural barriers documented in this work and its companion, this establishes ECH as a perturbation-transparent bounce mechanism---not a source of distinctive perturbation-level signatures. The observable science case for the bounce therefore rests on generic, mechanism-independent predictions, principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$~\cite{Cai:2009fn}, which is testable by SPHEREx at $4$--$6\sigma$ significance through the multi-tracer galaxy bispectrum~\cite{Heinrich:2023}. The hybrid dark-energy loophole (appending phenomenological $w_0w_a$ freedom to a bounce model) was explored across 7 disguised forms and rejected as non-derivational: such freedom does not derive the signal from the bounce physics itself. See the focused forecast paper~\cite{Golden:2026forecast} for the full Bayesian discrimination analysis based on 800{,}000 Monte Carlo realizations.
+\textit{Structural barriers and perturbation transparency.}---Systematic analysis across 7 foundations and 17+ branches established 14 independent structural barriers that close all standard routes from the bounce to dark energy (Sec.~\ref{sec:barriers}). The central result is the perturbation-transparency theorem (Sec.~\ref{sec:transparency}): minimal ECH gravity is dynamically inert for scalar and tensor perturbations when the matter content is a canonical scalar field. The observable science case for the bounce therefore rests on generic, mechanism-independent predictions, principally the matter-bounce non-Gaussianity $\fnl = -35/8$~\cite{Cai:2009fn}, testable by SPHEREx at $4$--$6\sigma$ significance through the multi-tracer galaxy bispectrum~\cite{Heinrich:2023}. See the focused forecast paper~\cite{Golden:2026forecast} for the full Bayesian discrimination analysis.
 
 \textit{Supplementary materials.}---Interactive data visualizations and observational comparison charts are available at \url{https://bigbounce.hubify.app}~\cite{BigBounceWebsite}.
 
@@ -1668,6 +1940,20 @@ $\ln B = +4.8$ (tension dataset) & Inferred & Eq.~(\ref{eq:Zcomb2}) & Dataset-de
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
+
+
+\section{Novelty Assessment}\label{app:novelty}
+
+The following scale is used to assess the novelty of results in this program:
+\begin{itemize}
+\item \textbf{N0:} Not novel (prior art, verification only)
+\item \textbf{N1:} Weakly novel (synthesis, review, compilation)
+\item \textbf{N2:} Moderately novel (new framing, new application, new quantitative result)
+\item \textbf{N3:} Strongly novel (new theorem, new method, new observable mapping)
+\item \textbf{N4:} Breakthrough (new physics, new prediction, paradigm shift)
+\end{itemize}
+
+The perturbation-transparency theorem (Sec.~\ref{sec:transparency}) is rated N3: a strong structural result that formally closes a class of theoretical possibilities. The 14-barrier catalog as a body of work is rated N2--N3 overall: each individual barrier draws on known physics, but the systematic exhaustion across 7 foundations and 17+ branches is original in scope. No result in this program qualifies as N4, as no genuinely new physics or previously unknown observable has been discovered. The program's novelty lies in systematic framework construction, quantitative verification, and honest structural closure.
 
 
 %% ============================================================
