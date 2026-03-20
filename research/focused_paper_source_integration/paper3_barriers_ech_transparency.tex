@@ -64,15 +64,112 @@ We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional obs
 \label{tab:barriers}
 \end{table}
 
-\subsection{Summary of Key Barrier Arguments}
+\subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
 
-\textbf{Barriers 1--4 (Foundations A--D):} These establish that single-field geometric dark energy from torsion is structurally impossible in the minimal framework. Foundation A shows that propagating torsion modes face a mass-coupling lock: the effective coupling $g_{\rm eff} \sim 1/(\Mpl\sqrt{|t_3|})$ requires graviton-loop fine-tuning at the level of 1 in $10^{57}$. Foundation B discovers a topological-shift duality: mass protection and geometric content cannot coexist simultaneously. Foundation C proves scalar-tensor universality on FRW backgrounds ($T_0 = Q_0 = 0$). Foundation D shows Planck suppression: connection couplings give 1 $\partial\phi$/vertex where 2 are needed for disformal effects.
+In Poincar\'e gauge theory (PGT), the most general torsion Lagrangian includes propagating spin-2 and spin-0 torsion modes with masses $m_T$ set by the PGT coupling constants $\{t_i\}$. For these modes to act as dark energy, they would need to be ultralight ($m_T \sim H_0 \sim 10^{-33}$ eV) and couple to matter at cosmologically relevant strength.
 
-\textbf{Barriers 5--7 (Foundations E--G):} These close non-minimal and global routes. Foundation E shows scale separation ($V_4^{\rm bounce}/V_4^{\rm total} \sim 10^{-60}$). Foundation F identifies the attractor-sensitivity dilemma. Foundation G establishes parameter immunity of the vacuum energy to bounce-scale physics.
+The mass-coupling lock arises because the effective coupling is:
+\begin{equation}
+g_{\rm eff} \sim \frac{1}{\Mpl \sqrt{|t_3|}}
+\end{equation}
+where $t_3$ is the PGT coupling. For ultralight masses ($|t_3| \sim \Mpl^2/H_0^2$), the coupling becomes $g_{\rm eff} \sim H_0/\Mpl^2 \sim 10^{-61}$---far too weak for any observable effect. To achieve $g_{\rm eff} \sim 1$, one needs $|t_3| \sim 1/\Mpl^2$, giving $m_T \sim \Mpl$ (Planck-mass torsion, not dark energy).
 
-\textbf{Barriers 8--13 (Branches H--O):} These close observational channels. Barrier 8 proves the spin-torsion effective interaction $(J^5)^2$ is parity-even. Barrier 12 establishes the vacuum amplification ceiling $\Omega_{\rm GW} \propto (H_{\rm bounce}/\Mpl)^2$ with a detector gap of $10^{17}$.
+The fine-tuning required to simultaneously achieve $m_T \sim H_0$ and $g_{\rm eff} \sim \mathcal{O}(1)$ is:
+\begin{equation}
+\frac{m_T^2}{m_T^2|_{\rm natural}} \sim \frac{H_0^2}{\Mpl^2} \sim 10^{-122}
+\end{equation}
+equivalent to the standard cosmological constant fine-tuning problem. The barrier transfers rather than solves the fine-tuning.
 
-\textbf{Barrier 14 (Perturbation Transparency):} See Section~\ref{sec:transparency}.
+Graviton loop corrections generate $\delta m_T^2 \sim \Mpl^2/(16\pi^2)$, requiring cancellation at the level of 1 in $10^{57}$.
+
+\subsection{Barrier 2: Topological-Shift Duality (Foundation B)}
+
+Foundation B investigated whether the Nieh-Yan topological term could break the mass-coupling lock by providing a non-topological mass term in metric-affine gravity (MAG). In MAG, the Nieh-Yan term $\int T^a \wedge T_a - e^a \wedge e^b \wedge R_{ab}$ is indeed non-topological (unlike in standard EC theory).
+
+However, a duality emerges: configurations that protect the pseudoscalar mass (through the topological structure) necessarily eliminate the geometric content (the field becomes a standard ALP after torsion elimination). Conversely, configurations that preserve geometric content cannot protect the mass. This \emph{topological-shift duality} means:
+\begin{equation}
+\text{Mass protection} \iff \text{No geometric fingerprint}
+\end{equation}
+After exact torsion elimination (to all orders in $\phi/f_\phi$), the effective action reduces to standard ALP electrodynamics with no operators beyond those already present in generic scalar-tensor theory.
+
+\subsection{Barrier 3: Scalar-Tensor Universality (Foundation C)}
+
+For scalar field matter on FRW backgrounds, the background torsion and non-metricity vanish identically:
+\begin{equation}
+T_0 = Q_0 = 0 \quad (\text{exact on FRW with scalar matter})
+\end{equation}
+This is because FRW symmetry (homogeneity + isotropy) admits no preferred spatial direction for torsion or non-metricity to point in when the matter is a scalar field. Environmental mass mechanisms (chameleon-like effects from torsion) therefore reduce exactly to standard scalar-tensor theory on cosmological backgrounds, with no distinctive geometric fingerprint.
+
+\subsection{Barrier 4: Planck Suppression (Foundation D)}
+
+Disformal couplings (terms involving $\partial_\mu\phi\,\partial_\nu\phi$ in the effective metric) could in principle produce distinctive signatures. However, in the connection-coupling framework of ECH, each interaction vertex carries only one $\partial\phi$ factor (from the single derivative in the torsion-scalar coupling), while disformal effects require two. The resulting operators are suppressed by:
+\begin{equation}
+\frac{\text{Disformal effect}}{\text{Conformal effect}} \sim \frac{k^2}{\Mpl^2} \sim 10^{-122}
+\end{equation}
+at cosmological scales, rendering all distinctive geometric effects unobservable.
+
+\subsection{Barrier 5: Scale Separation (Foundation E)}
+
+Global vacuum integrals (attempts to connect the bounce vacuum energy to the late-time cosmological constant through spacetime-volume-averaged quantities) fail due to extreme scale separation:
+\begin{equation}
+\frac{V_4^{\rm bounce}}{V_4^{\rm total}} \sim \frac{t_{\rm bounce}^4}{t_0^4} \sim \frac{t_{\rm Pl}^4}{(10^{17}\,\text{s})^4} \sim 10^{-244}
+\end{equation}
+The bounce occupies a vanishingly small fraction of the total spacetime volume. No averaging procedure can amplify the bounce-scale vacuum energy to affect late-time dynamics.
+
+\subsection{Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}
+
+Attempts to transfer bounce initial conditions to late-time dark energy face a dilemma:
+\begin{itemize}
+\item If the late-time dynamics has an \emph{attractor}, the system forgets its initial conditions---including any information from the bounce.
+\item If the dynamics is \emph{sensitive} to initial conditions, it requires fine-tuning of those conditions to produce the observed dark energy---reintroducing the problem.
+\end{itemize}
+There is no middle ground: either the bounce information is washed out (attractor) or it requires tuning (sensitivity).
+
+\subsection{Barrier 7: Parameter Immunity (Foundation G)}
+
+In cyclic/ekpyrotic models, the vacuum energy at late times is set by the continuous parameter $\mu^4$ in the potential, which is \emph{immune} to the bounce dynamics:
+\begin{equation}
+\Lambda_{\rm eff} = \mu^4 + \mathcal{O}(e^{-\Mpl/\sigma}) \approx \mu^4
+\end{equation}
+The bounce introduces corrections that are exponentially suppressed by the Planck mass. The vacuum energy is a free parameter, not a prediction.
+
+\subsection{Barrier 8: Parity-Even Interaction (Branch H)}
+
+The spin-torsion effective interaction obtained after integrating out torsion is:
+\begin{equation}
+\mathcal{L}_{\rm eff} \supset \frac{3}{16} \frac{(J^5_\mu)^2}{\Mpl^2}
+\end{equation}
+where $J^5_\mu = \bar{\psi}\gamma^\mu\gamma^5\psi$ is the axial fermion current. Despite the presence of $\gamma^5$, the interaction $(J^5)^2$ is \emph{parity-even} (a pseudovector squared is a scalar). This means:
+\begin{itemize}
+\item No tensor chirality: $\Delta v \equiv v_R - v_L = 0$ exactly
+\item No gravitational-wave birefringence
+\item No TB/EB CMB parity violation from the bounce
+\end{itemize}
+FRW isotropy further kills all spatial parity-odd backgrounds.
+
+\subsection{Barriers 9--11 (Branches J, L)}
+
+\textbf{Barrier 9 (Liouville Conservation):} Phase-space conservation (Liouville's theorem) prevents the bounce from irreversibly selecting a preferred state. Any state contraction would violate unitarity.
+
+\textbf{Barrier 10 (UV$\to$IR Specificity Dilemma):} Extensions bridging UV (bounce-scale) to IR (cosmological-scale) physics face a dilemma: generic bridges produce effects indistinguishable from standard scalar-tensor theory, while specific bridges require tuning.
+
+\textbf{Barrier 11 (Decoupling Universality):} Light gauge fields decouple from Planck-scale torsion modes with universal efficiency, preventing any bounce-scale information from reaching the gauge sector.
+
+\subsection{Barrier 12: Vacuum Amplification Ceiling (Branch M)}
+
+The gravitational wave energy density from a PGT-type bounce is bounded by:
+\begin{equation}
+\Omega_{\rm GW}(f) \propto \left(\frac{H_{\rm bounce}}{\Mpl}\right)^2 \propto \left(\frac{f_{\rm bounce}}{f_{\rm Pl}}\right)^4
+\end{equation}
+For any sub-Planckian bounce, $\Omega_{\rm GW}$ is catastrophically small. The characteristic frequency is $f_{\rm bounce} \sim 10^9$--$10^{10}$ Hz (GHz), with zero overlap with any planned detector (LIGO at 10--$10^3$ Hz, LISA at $10^{-4}$--$10^{-1}$ Hz). The detector gap is at least $10^{17}$ in amplitude.
+
+\subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
+
+Torsion-mediated baryogenesis or relic production fails because torsion couples democratically to all fermion species ($\sim 1\%$ torsion contribution per species), with no mechanism to preferentially produce baryons over antibaryons or specific dark matter candidates. Vacuum transitions at the bounce are blocked by the bounce-vacuum decoupling: the bounce is too brief and too symmetric to trigger irreversible phase transitions.
+
+\subsection{Barrier 14: Perturbation Transparency}
+
+See Section~\ref{sec:transparency} for the full proof. In summary: for canonical scalar field matter, torsion vanishes identically at all perturbation orders, rendering the Holst term topological and the Barbero-Immirzi parameter invisible.
 
 \section{The Perturbation-Transparency Theorem}
 \label{sec:transparency}

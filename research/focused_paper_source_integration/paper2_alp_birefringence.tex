@@ -82,6 +82,41 @@ f_{\rm photon} \times C_0 = 1.73 \pm 0.44
 \end{equation}
 which is order-unity, consistent with the ALP prediction without fine-tuning.
 
+\subsection{MCMC Parameter Estimation}
+
+We performed dedicated MCMC sampling of the ALP parameter space using three configurations:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llccl}
+\toprule
+Run & Model & Samples & $\hat{R}-1$ & Status \\
+\midrule
+1 & ALP ($C=8$ fixed) & 2{,}160 & 0.008 & Converged \\
+2 & ALP ($C$ free) & 6{,}840 & 0.009 & Converged \\
+3 & $\beta$ free & 720 & 0.005 & Converged \\
+\bottomrule
+\end{tabular}
+\caption{MCMC run configurations. All runs converge to $\hat{R}-1 < 0.01$.}
+\end{table}
+
+The posterior on $\beta$ from the ALP model (Run 1, $C=8$ fixed):
+\begin{equation}
+\beta_{\rm ALP} = 0.336 \pm 0.107^\circ
+\end{equation}
+compared to the model-independent fit (Run 3):
+\begin{equation}
+\beta_{\rm free} = 0.344 \pm 0.096^\circ
+\end{equation}
+and the observed value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$. The ALP model reproduces the observed birefringence with no tension.
+
+In the extended model (Run 2, $C$ free), the posterior on the coupling-misalignment product shows:
+\begin{equation}
+C_{a\gamma} \times \theta_i = 3.4 \pm 1.1
+\end{equation}
+consistent with $\mathcal{O}(1)$ values for both parameters individually.
+
 \subsection{Bayes Factor}
 
 Comparing the ALP model ($\beta \neq 0$) against the null hypothesis ($\beta = 0$):
