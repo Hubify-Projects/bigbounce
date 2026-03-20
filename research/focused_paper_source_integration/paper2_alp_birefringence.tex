@@ -58,13 +58,12 @@ For $C_0 \sim 1$, $\theta_i \sim 1$: the cosmological field evolution gives $\De
 
 \subsection{Datasets}
 
-We use the following birefringence measurements:
+We use two independent birefringence measurements for the summary-likelihood combination (Eq.~3):
 \begin{itemize}
-\item Planck HFI 2020: $\beta = 0.35 \pm 0.14^\circ$
-\item ACT DR6: $\beta = 0.18 \pm 0.11^\circ$ (approximate)
+\item Planck NPIPE (Eskilt 2022): $\beta = 0.30 \pm 0.11^\circ$ ($2.7\sigma$)
+\item ACT DR6 (Diego-Palazuelos \& Komatsu 2025): $\beta = 0.215 \pm 0.074^\circ$ ($2.9\sigma$)
 \end{itemize}
-
-The combined constraint $\beta_{\rm combined} = 0.242 \pm 0.061^\circ$ in Eq.~(4) is the inverse-variance weighted average of these two measurements. Our MCMC analysis (Sec.~3.3) uses the Eskilt et al.\ (2022) joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it accounts for the full EB cross-spectrum covariance rather than combining point estimates.
+These produce the combined constraint in Eq.~(4). For the MCMC parameter estimation (Sec.~3.3), we use the Eskilt et al.\ joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it fits the full EB cross-spectrum rather than combining point estimates. An earlier Planck HFI analysis~\citep{Minami:2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.4\sigma$); we adopt the updated Eskilt value which uses improved foreground cleaning.
 
 \subsection{Summary-Likelihood Inference}
 
