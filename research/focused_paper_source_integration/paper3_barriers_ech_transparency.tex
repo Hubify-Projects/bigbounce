@@ -196,11 +196,53 @@ The argument proceeds in five steps:
 
 \subsection{Extension to Tensor Sector}
 
-The same five-step argument applies to tensor perturbations: with $T = 0$, the tensor mode equation remains the standard GR form $h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0$, with no parity splitting ($\Delta v \equiv v_R - v_L = 0$ exactly). This was independently confirmed by the earlier Branch H parity-tensor analysis (Barrier 8).
+The same five-step argument applies to tensor perturbations. With $T = 0$, the gravitational action reduces to the Einstein-Hilbert form plus a topological term. The tensor perturbation equation is:
+\begin{equation}
+h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0
+\end{equation}
+with no parity-dependent modifications. The left and right circular polarization modes propagate identically:
+\begin{equation}
+v_R(k,\eta) = v_L(k,\eta) \quad \Rightarrow \quad \Delta v \equiv v_R - v_L = 0 \quad (\text{exact})
+\end{equation}
+This means: no gravitational-wave birefringence, no tensor chirality, and no $TB/EB$ CMB parity violation from the ECH mechanism. This result was independently confirmed by the Branch H parity-tensor analysis (Barrier 8), which proved that the spin-torsion effective interaction $(J^5)^2$ is parity-even.
+
+\subsection{Explicit Verification: The Holst Term in Perturbation Theory}
+
+To make the argument fully explicit, consider the ECH action:
+\begin{equation}
+S_{\rm ECH} = \frac{\Mpl^2}{2}\int d^4x\, \sqrt{-g}\left[R(\Gamma) + \frac{1}{\gamma}\widetilde{R}(\Gamma)\right] + S_{\rm matter}[\phi, g]
+\end{equation}
+where $\widetilde{R} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ is the Holst dual of the Ricci scalar, and $\Gamma$ is the full (torsionful) connection.
+
+Expanding the metric to second order ($g_{\mu\nu} = \bar{g}_{\mu\nu} + \delta g^{(1)}_{\mu\nu} + \delta g^{(2)}_{\mu\nu} + \ldots$) and the scalar field ($\phi = \bar{\phi} + \delta\phi^{(1)} + \delta\phi^{(2)} + \ldots$):
+
+At \emph{each perturbation order}, the torsion equation of motion gives $T = 0$ (because $S_{\rm matter}$ for a canonical scalar has zero spin density at every order). Therefore $\Gamma = \mathring{\Gamma}$ at every order, and the Holst dual evaluates to:
+\begin{equation}
+\widetilde{R}(\mathring{\Gamma}) = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) = \text{total derivative}
+\end{equation}
+This holds at zeroth, first, second, and third order in perturbation theory. In particular, the \emph{cubic action} for $\zeta$ (the Maldacena action that determines the bispectrum) receives \emph{zero} contribution from the Holst term. The bispectrum is therefore identical to the standard GR result.
+
+\subsection{What Would Break the Transparency}
+
+The transparency theorem fails if \emph{any} of the following conditions hold:
+
+\begin{enumerate}
+\item \textbf{Fermionic matter:} If the matter sector includes fermions (spinors), the spin density $S^\lambda{}_{\mu\nu} \neq 0$ and torsion is sourced. The Holst term then contributes dynamically. However, fermionic contributions to torsion are Planck-suppressed at cosmological densities and negligible during the matter-contraction phase relevant for the bispectrum.
+
+\item \textbf{Propagating torsion (Poincar\'e gauge theory):} If the gravitational action includes kinetic terms for torsion ($\sim T_{\mu\nu\rho}T^{\mu\nu\rho}$), torsion becomes dynamical rather than algebraic. The Holst term then generates non-trivial dynamics. However, this is \emph{not} Einstein-Cartan theory---it is a different theory entirely (PGT), and our Foundation A analysis showed it faces the mass-coupling lock (Barrier 1).
+
+\item \textbf{Non-minimal scalar-torsion coupling:} Terms like $\phi^2 T^2$ or $\phi \nabla_\mu T^\mu$ could source torsion from the scalar field. However, these are ad hoc additions to the minimal ECH action, and our Foundation C analysis showed they reduce to standard scalar-tensor theory on FRW backgrounds (Barrier 3).
+
+\item \textbf{Higher-derivative corrections:} Terms like $\nabla T$ or $R^2$ in the gravitational action could make torsion propagate. These are UV corrections expected at the Planck scale and are negligible during the matter-contraction phase ($\rho \ll \Mpl^4$).
+\end{enumerate}
+
+In summary: the transparency is robust within the minimal ECH framework. Breaking it requires going beyond minimal ECH, and all such extensions have been tested and closed by Barriers 1--4.
 
 \subsection{Implications}
 
 ECH gravity is a \emph{perturbation-transparent UV regulator}: it resolves the singularity at Planck density through the $\rho^2$ modification of the Friedmann equation, but leaves zero fingerprint on the primordial perturbations. The Barbero-Immirzi parameter $\gamma$, which sets the bounce density $\rho_{\rm crit}$ and plays a central role in loop quantum gravity, is completely invisible in all scalar and tensor perturbation observables computed with canonical scalar field matter.
+
+This result has a positive interpretation: the observable predictions of a matter bounce (principally $\fnl = -35/8$) are \emph{mechanism-independent}. They do not depend on whether the bounce is realized by ECH, LQC, or any other UV completion. This makes the predictions \emph{more robust}, not less---they cannot be invalidated by changes to the bounce mechanism.
 
 \section{The Hybrid Dark-Energy Loophole}
 
