@@ -713,7 +713,7 @@ bringing the total to 8. However, $(\omega/H)_0$ is tightly bounded by CMB isotr
 \subsection{Bayesian Model Comparison}
 
 \begin{table}[h]
-\caption{\label{tab:modelcomp} Bayesian model comparison. The $\chi^2$ values here are effective $\chi^2_{\rm eff} \equiv -2\ln\mathcal{L}_{\rm max}$ for the \textit{full tension dataset} (Planck TT,TE,EE+lowE + BAO + Pantheon SNIa + SH0ES $H_0$ prior + DES $S_8$). Bayes factors $\ln B$ are computed via nested sampling (PolyChord). See Eq.~(\ref{eq:Zcomb2}) for dataset-dependent breakdown. Note: $\chi^2_{\rm eff}$ here uses the compressed likelihood; see Table~\ref{tab:fullcomp} for full-multipole $\chi^2$ values ($\sim 2768$), which are larger because they include the full Planck $\ell=2$--$2508$ likelihood.}
+\caption{\label{tab:modelcomp} Bayesian model comparison. The $\chi^2$ values here are effective $\chi^2_{\rm eff} \equiv -2\ln\mathcal{L}_{\rm max}$ for the \textit{full tension dataset} (Planck TT,TE,EE+lowE + BAO + Pantheon SNIa + SH0ES $H_0$ prior + DES $S_8$). Bayes factors $\ln B$ are estimated via the Savage-Dickey density ratio from MCMC posteriors. See Eq.~(\ref{eq:Zcomb2}) for dataset-dependent breakdown. Note: $\chi^2_{\rm eff}$ here uses the compressed likelihood; see Table~\ref{tab:fullcomp} for full-multipole $\chi^2$ values ($\sim 2768$), which are larger because they include the full Planck $\ell=2$--$2508$ likelihood.}
 \begin{ruledtabular}
 \begin{tabular}{lccccc}
 Model & $k$ & $\chi^2_{\rm eff}$ & AIC & BIC & $\ln B$ \\
@@ -726,7 +726,7 @@ $w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
 {\small $^\ddagger$Values shown were obtained from chains that included $\Omega_k$ as a free parameter. Since the model's 92 $e$-folds of inflation mandate $\Omega_k = 0$, the corresponding $\Omega_k = 0$ analysis is expected to yield similar or improved $\chi^2$ values. The qualitative conclusions are unchanged: the model is competitive with $\Lambda$CDM when tension data are included.}
 \end{table}
 
-The Bayesian evidence shows:\footnote{These evidence ratios were estimated from the MCMC chain posteriors via the Savage-Dickey density ratio, not from dedicated nested sampling. The values should be treated as approximate; a PolyChord nested-sampling analysis would provide more robust evidence estimates.}
+The Bayesian evidence shows:\footnote{These evidence ratios were estimated from the MCMC chain posteriors via the Savage-Dickey density ratio, not from dedicated nested sampling. The values should be treated as approximate; a dedicated nested-sampling analysis would provide more robust evidence estimates.}
 \begin{equation}\label{eq:Zcomb2}
 \ln \mathcal{Z}_{\rm ST} - \ln \mathcal{Z}_{\Lambda\text{CDM}} = \begin{cases}
 -1.2 \pm 0.3 & \text{Planck+BAO} \\
@@ -1502,7 +1502,7 @@ All materials necessary to reproduce the cosmological and galaxy spin results ar
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of what cannot currently be reproduced.
 \end{itemize}
 
-\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors were estimated via the Savage-Dickey density ratio from MCMC posteriors; dedicated PolyChord nested sampling (not provided) would yield more robust estimates. No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
+\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors were estimated via the Savage-Dickey density ratio from MCMC posteriors; dedicated nested sampling (not provided) would yield more robust estimates. No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
 
 
 %% ============================================================
@@ -1893,7 +1893,7 @@ All MCMC results in this paper were obtained using the Cobaya framework (v3.5 fo
 \item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).
 \end{itemize}
 
-\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio; dedicated PolyChord nested sampling would provide more robust estimates but is not included. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
+\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio; dedicated nested sampling would provide more robust estimates but is not included. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
 
 
 %% --- K: Claims Classification Table ---
