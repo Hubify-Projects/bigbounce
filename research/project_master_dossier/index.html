@@ -261,21 +261,13 @@
         <tr><th>Branch</th><th>Goal</th><th>Status</th><th>Significance</th><th>Novelty</th><th>Pub</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Paper 1</strong></td>
-          <td>Derive DE from ECH bounce</td>
-          <td><span class="badge badge-superseded">Superseded</span></td>
-          <td class="sig-text">Key claims disproved by own MCMC verification</td>
-          <td><span class="novelty n1">N1</span></td>
-          <td class="pub-low">LOW</td>
-        </tr>
-        <tr>
-          <td><strong>Paper 1.2</strong></td>
-          <td>ECH closure + ALP birefringence</td>
-          <td><span class="badge badge-deferred">Deferred</span></td>
-          <td class="sig-text">Broader framework paper; superseded as lead by focused PNG paper (Paper 5)</td>
-          <td><span class="novelty n2">N2-3</span></td>
-          <td class="pub-mod">MOD</td>
+        <tr class="row-pass">
+          <td><strong>Paper 1 (merged)</strong></td>
+          <td>ECH framework + 14 barriers + transparency theorem</td>
+          <td><span class="badge badge-pass">v2.0 Complete</span></td>
+          <td class="sig-text">Framework + honest reckoning + structural closure. ~37pp compiled.</td>
+          <td><span class="novelty n3">N2-3</span></td>
+          <td class="pub-high">HIGH</td>
         </tr>
         <tr>
           <td><strong>IR Vacuum</strong></td>
@@ -457,7 +449,7 @@
           <td><strong>Branch V</strong></td>
           <td>Matter bounce f<sub>NL</sub></td>
           <td><span class="badge badge-pass">Paper Complete</span></td>
-          <td class="sig-text">FLAGSHIP: f<sub>NL</sub> = &minus;35/8 verified; SPHEREx 4&ndash;6&sigma;; Paper 5 compiled</td>
+          <td class="sig-text">FLAGSHIP: f<sub>NL</sub> = &minus;35/8 verified; SPHEREx 4&ndash;6&sigma;; Paper 3 compiled</td>
           <td><span class="novelty n2">N2-3</span></td>
           <td class="pub-flag">FLAG</td>
         </tr>
@@ -514,9 +506,9 @@
   </div>
 </section>
 
-<!-- 13 BARRIER CATALOG -->
+<!-- 14 BARRIER CATALOG -->
 <section class="section">
-  <h2>13 Structural Barriers</h2>
+  <h2>14 Structural Barriers</h2>
   <div class="card" style="overflow-x: auto; padding: 0;">
     <table>
       <thead>
@@ -536,6 +528,7 @@
         <tr><td>11</td><td>Decoupling Universality</td><td>Branch L/M</td><td>Light gauge field decoupling</td></tr>
         <tr><td>12</td><td>Vacuum Amplification Ceiling</td><td>Branch M</td><td>GW background amplitude</td></tr>
         <tr><td>13</td><td>Gravitational Democracy / Bounce-Vacuum Decoupling</td><td>Branch N/O</td><td>Relics &amp; irreversible transitions</td></tr>
+        <tr><td>14</td><td>Perturbation Transparency</td><td>ECH Gates</td><td>ECH-specific perturbation signatures</td></tr>
       </tbody>
     </table>
   </div>
@@ -549,9 +542,10 @@
     <table>
       <thead><tr><th>Result</th><th>Why N3</th></tr></thead>
       <tbody>
-        <tr><td>13-Barrier Map (collective)</td><td>No prior work maps the complete space of bounce&rarr;DE mechanisms at this rigor level</td></tr>
+        <tr><td>14-Barrier Map (collective)</td><td>No prior work maps the complete space of bounce&rarr;DE mechanisms at this rigor level</td></tr>
+        <tr><td>Perturbation-Transparency Theorem</td><td>Proves minimal ECH is dynamically inert for scalar + tensor perturbations; &gamma; invisible in all observables</td></tr>
         <tr><td>Topological-Shift Duality (Found. B)</td><td>Original theorem: mass protection and geometric content are mutually exclusive for pseudoscalar-4-form couplings</td></tr>
-        <tr><td>Branch V matter bounce + ECH</td><td>Parameter-free f<sub>NL</sub> = &minus;35/8 from explicit bounce mechanism (verified; Paper 5 draft complete)</td></tr>
+        <tr><td>Branch V matter bounce + ECH</td><td>Parameter-free f<sub>NL</sub> = &minus;35/8 from explicit bounce mechanism (verified; Paper 3 complete)</td></tr>
       </tbody>
     </table>
 
@@ -571,38 +565,32 @@
   <div class="card" style="overflow-x: auto; padding: 0;">
     <table>
       <thead>
-        <tr><th>Option</th><th>Content</th><th>Strengths</th><th>Readiness</th></tr>
+        <tr><th>Paper</th><th>Content</th><th>Status</th><th>Readiness</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Paper 5: Focused PNG Forecast</strong><br><span class="badge badge-pass" style="font-size: 10px;">COMPILED &amp; READY</span></td>
-          <td>f<sub>NL</sub> = &minus;35/8 benchmark + SPHEREx/MegaMapper forecasts + Bayesian discrimination + GR hardening (~7pp, 5 figs)</td>
-          <td>Compiled, arXiv-ready. 800K MC. Claims scrubbed. <a href="../../public/focused_paper_bounce_fnl_forecast.pdf">Download PDF</a></td>
-          <td><span class="pub-high">95%</span></td>
+        <tr class="row-pass">
+          <td><strong>Paper 1: Framework + Barriers</strong><br><span class="badge badge-pass" style="font-size: 10px;">v2.0 COMPILED</span></td>
+          <td>ECH framework + MCMC (236K samples) + 14 barriers with equations + perturbation-transparency theorem + hybrid-DE rejection + ALP birefringence consistency + falsification criteria (~37pp, 8 figs). <a href="../../arxiv/main.pdf">Download PDF</a></td>
+          <td>Merged from old Papers 1 + barriers note. Compiled, claims scrubbed.</td>
+          <td><span class="pub-high">99%</span></td>
         </tr>
-        <tr>
-          <td><strong>Paper 3A: Framework Paper</strong></td>
-          <td>ECH framework + compact closure + ALP + MCMC + LiteBIRD forecast (~28pp)</td>
-          <td>Claims locked, structure locked. Now secondary to Paper 5.</td>
-          <td><span class="pub-mod">75%</span></td>
+        <tr class="row-pass">
+          <td><strong>Paper 2: ALP Birefringence</strong><br><span class="badge badge-pass" style="font-size: 10px;">COMPILED &amp; READY</span></td>
+          <td>Spectator ALP (&beta; = 0.27&deg;) + MCMC (9,720 samples) + Bayes factor (ln B = 5.17) + LiteBIRD 9&sigma; forecast (~8pp, 2 figs). <a href="../../public/paper2_alp_birefringence.pdf">Download PDF</a></td>
+          <td>Standalone positive result. Bounce-independent but ECH-motivated.</td>
+          <td><span class="pub-high">100%</span></td>
         </tr>
-        <tr>
-          <td><strong>Paper 2B: ALP Standalone</strong></td>
-          <td>ALP birefringence prediction + MCMC + LiteBIRD (~14pp)</td>
-          <td>Focused, testable, timely, matches literature conversation</td>
-          <td><span class="pub-mod">50%</span></td>
-        </tr>
-        <tr>
-          <td><strong>Paper 3B: Technical Note</strong></td>
-          <td>Full barrier catalog + ECH transparency proof (~18pp)</td>
-          <td>Low effort (source material exists); now includes ECH perturbation closure</td>
-          <td><span class="pub-mod">40%</span></td>
+        <tr class="row-flag">
+          <td><strong>Paper 3: f<sub>NL</sub> Forecast</strong><br><span class="badge badge-pass" style="font-size: 10px;">COMPILED &amp; READY</span></td>
+          <td>f<sub>NL</sub> = &minus;35/8 benchmark + SPHEREx 4&ndash;6&sigma; + MegaMapper 3&ndash;7&sigma; + Bayesian discrimination (800K MC, BF &gt;300) + GR hardening (~12pp, 5 figs). <a href="../../public/focused_paper_bounce_fnl_forecast.pdf">Download PDF</a></td>
+          <td>The flagship. Parameter-free, falsifiable, decisive test.</td>
+          <td><span class="pub-high">100%</span></td>
         </tr>
       </tbody>
     </table>
   </div>
   <p style="margin-top: 14px; font-size: 14px;">
-    <strong>Recommended strategy:</strong> Submit Paper 5 (focused PNG forecast) immediately &mdash; it is the lead deliverable. Continue ALP birefringence (Branch R) in parallel. Paper 3A (ECH closure framework) can follow as a companion. Paper 3B (technical note with barrier catalog + ECH transparency proof) is low-effort follow-up.
+    <strong>Release strategy:</strong> All three papers are designed for simultaneous release. Paper 1 tells the complete story (framework + honest reckoning). Paper 2 extracts the surviving birefringence signal. Paper 3 presents the decisive bounce test. Together they form a coherent arc: ambition &rarr; structural closure &rarr; surviving predictions &rarr; falsifiable tests.
   </p>
 </section>
 
@@ -613,10 +601,10 @@
     <div class="card" style="border-left: 4px solid #16a34a;">
       <h3 style="color: #166534;">Do Now</h3>
       <ol style="padding-left: 18px; font-size: 14px; color: var(--text-secondary);">
-        <li style="margin-bottom: 8px;"><strong>Submit Paper 5 to arXiv.</strong> Compiled, claims scrubbed, arXiv package ready (285 KB). Categories: astro-ph.CO (primary), gr-qc (secondary).</li>
-        <li style="margin-bottom: 8px;"><strong>Final PDF polish pass.</strong> Check figure quality, typography, any remaining citation formatting.</li>
-        <li style="margin-bottom: 8px;"><strong>Engage SPHEREx science team.</strong> The paper presents a specific, testable target for their PNG analysis pipeline.</li>
-        <li style="margin-bottom: 8px;"><strong>Continue ALP birefringence track</strong> (Branch R) as independent parallel program.</li>
+        <li style="margin-bottom: 8px;"><strong>Submit all 3 papers to arXiv simultaneously.</strong> All compiled, claims scrubbed. Categories: gr-qc + astro-ph.CO (Paper 1), astro-ph.CO + hep-ph (Paper 2), astro-ph.CO + gr-qc (Paper 3).</li>
+        <li style="margin-bottom: 8px;"><strong>Final PDF polish pass.</strong> Check figure quality, typography, any remaining citation formatting across all 3 papers.</li>
+        <li style="margin-bottom: 8px;"><strong>Engage SPHEREx science team.</strong> Paper 3 presents a specific, testable target for their PNG analysis pipeline.</li>
+        <li style="margin-bottom: 8px;"><strong>Engage LiteBIRD collaboration.</strong> Paper 2 presents a 9&sigma; birefringence forecast for their mission design.</li>
       </ol>
     </div>
     <div class="card" style="border-left: 4px solid #dc2626;">
@@ -639,9 +627,9 @@
     <table>
       <thead><tr><th>#</th><th>Asset</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>13-barrier systematic closure map (Foundations A&ndash;G, Branches H&ndash;O)</td><td class="pub-high">Publishable negative result; saves future researchers years</td></tr>
-        <tr><td>2</td><td>ALP birefringence prediction &amp; MCMC (&beta; = 0.27&deg;, Phase 2 in progress)</td><td class="pub-high">Testable by LiteBIRD; matches current 3.9&sigma; detection</td></tr>
-        <tr><td>3</td><td>Branch V matter bounce + ECH blueprint (f<sub>NL</sub> = &minus;35/8)</td><td class="pub-flag">Flagship potential; parameter-free, SPHEREx testable</td></tr>
+        <tr><td>1</td><td>14-barrier systematic closure map + perturbation-transparency theorem (Paper 1)</td><td class="pub-high">Publishable structural result (N3 novelty); saves future researchers years</td></tr>
+        <tr><td>2</td><td>ALP birefringence prediction &amp; MCMC (&beta; = 0.27&deg;, Paper 2 complete)</td><td class="pub-high">Testable by LiteBIRD at 9&sigma;; matches current 3.9&sigma; detection</td></tr>
+        <tr><td>3</td><td>f<sub>NL</sub> = &minus;35/8 forecast + Bayesian discrimination (Paper 3 complete)</td><td class="pub-flag">Flagship; parameter-free, SPHEREx 4&ndash;6&sigma;, BF &gt;300 vs inflation</td></tr>
         <tr><td>4</td><td>MCMC infrastructure (Cobaya, 236K+ samples, 4 datasets)</td><td class="pub-high">Fully reusable for any future cosmological model</td></tr>
         <tr><td>5</td><td>Topological-Shift Duality theorem (Foundation B)</td><td class="pub-high">Original structural result with broad applicability</td></tr>
       </tbody>
