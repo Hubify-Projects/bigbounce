@@ -90,7 +90,7 @@ Key file paths organized by function. All paths are relative to the repository r
 | S (Photon-torsion vertex) | `research/branch_S_photon_torsion_vertex/phase1_results.md` |
 | T (Axion bridge) | `research/branch_T_sourced_axion_bridge/phase1_results.md` |
 | U (Two-field ALP) | `research/branch_U_twofield_alp_de/phase1_results.md` |
-| V (Matter bounce + ECH) | `research/branch_V_bounce_evidence/final_verdict.md` |
+| V (Generic matter-bounce (LQC-viable)) | `research/branch_V_bounce_evidence/final_verdict.md` |
 | Vb (Perturbation gate) | `research/branch_Vb_ech_perturbation_gate/` |
 | W (Curvaton tilt) | `research/branch_W_alp_curvaton_tilt/phase1_results.md` |
 

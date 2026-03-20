@@ -44,7 +44,7 @@ Seven foundations tested propagating torsion, lock-breaking, environmental mass,
 Pivot to bounce-only early-universe program. Eight new branches tested tensor spectrum, compatibility, state selection, scalar perturbations, UV-IR bridge, PGT GW, baryogenesis, and hidden-sector vacuum. Six additional barriers identified. Total: 13.
 
 ### Era 5 — ALP Birefringence / Next-Gen Search (2026-03-16 to 2026-03-17)
-Branches P-W tested parity violation, ALP phenomenology, photon-torsion vertex, axion bridge, two-field models, bounce evidence, perturbation gate, and curvaton tilt. Branch R (ALP birefringence) emerged as strongest surviving positive result. Branch V (matter bounce + ECH) identified as flagship future direction. Chiral GW frequency gate failed.
+Branches P-W tested parity violation, ALP phenomenology, photon-torsion vertex, axion bridge, two-field models, bounce evidence, perturbation gate, and curvaton tilt. Branch R (ALP birefringence) emerged as strongest surviving positive result. Branch V (generic matter-bounce (LQC-viable)) identified as flagship future direction. Chiral GW frequency gate failed.
 
 ---
 
@@ -74,7 +74,7 @@ Branches P-W tested parity violation, ALP phenomenology, photon-torsion vertex, 
 
 3. **Understand what survives:** Two positive results survive:
    - **ALP birefringence** (Branch R): spectator ALP predicts beta = 0.27 deg, observed 0.35 +/- 0.09 deg. Files in `research/branch_R_alp_birefringence/`.
-   - **Matter bounce + ECH** (Branch V): dust contraction through ECH bounce predicts f_NL = 5/12, testable by SPHEREx. Files in `research/branch_V_bounce_evidence/`.
+   - **Generic matter-bounce (LQC-viable)** (Branch V): dust contraction through matter contraction produces f_NL = -35/8 = -4.375, testable by SPHEREx. Files in `research/branch_V_bounce_evidence/`.
 
 4. **Run the MCMC:** Reproducibility bundle is in `reproducibility/`. Start with `reproducibility/README.md`. Frozen chains are in `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/`.
 

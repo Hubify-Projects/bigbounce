@@ -59,7 +59,7 @@ Honest evaluation of novelty for every major result in the program.
 | Branch S | One-loop VVA in ECH | **N1** | VVA triangle is textbook. Computing it in ECH context is a check. Result (ABJ is universal) was expected. |
 | Branch T | Axion bridge mechanism | **N1** | Axion-gauge amplification is well-studied. Bounce-kick as source is a minor variation. |
 | Branch U | Two-field ALP | **N1** | Two-field ALP models exist in the literature. No calculation performed here. |
-| **Branch V** | **Matter bounce + ECH framework** | **N3** | This is genuinely novel. While matter-bounce cosmology exists (Wands 1999, Finelli & Brandenberger 2002), using the ECH spin-torsion bounce as the explicit nonsingular transition mechanism is new. The parameter-free prediction f_NL = 5/12 from ECH-mediated bounce has not been computed. Connecting to Planck low-ell anomaly via bounce-induced cutoff is testable. **Caveat:** the calculation has not yet been performed — novelty is contingent on Branch V Phase 1 succeeding. |
+| **Branch V** | **Generic matter-bounce (LQC-viable) framework** | **N3** | This is genuinely novel. While matter-bounce cosmology exists (Wands 1999, Finelli & Brandenberger 2002), using the ECH spin-torsion bounce as the explicit nonsingular transition mechanism is new. The parameter-free prediction f_NL = -35/8 = -4.375 from nonsingular bounce has not been computed. Connecting to Planck low-ell anomaly via bounce-induced cutoff is testable. **Caveat:** the calculation has not yet been performed — novelty is contingent on Branch V Phase 1 succeeding. |
 | Branch Vb | ECH perturbation gate | **N1** | Infrastructure assessment, not standalone result. |
 | Branch W | n_s = 1 from dust | **N1** | Known result (Harrison-Zel'dovich spectrum from scale-invariant contraction). |
 
@@ -87,7 +87,7 @@ Honest evaluation of novelty for every major result in the program.
 
 2. **Topological-Shift Duality (Foundation B):** Mutual exclusivity of mass protection and geometric content for pseudoscalar-4-form couplings. Original theorem.
 
-3. **Branch V matter bounce + ECH framework:** Parameter-free f_NL prediction from explicit bounce mechanism. **Contingent on Phase 1 calculation succeeding.**
+3. **Branch V generic matter-bounce (LQC-viable) framework:** Parameter-free f_NL prediction from explicit bounce mechanism. **Contingent on Phase 1 calculation succeeding.**
 
 ### N2 (Moderately novel / new implementation or test)
 
@@ -130,7 +130,7 @@ Honest evaluation of novelty for every major result in the program.
 **What is genuinely new here:**
 1. The 13-barrier systematic closure map — no one has done this for ECH/spin-torsion bounces
 2. The Topological-Shift Duality theorem — an original structural result
-3. The Branch V matter bounce + ECH framework (if calculation succeeds) — explicit bounce mechanism with testable predictions
+3. The Branch V generic matter-bounce (LQC-viable) framework (if calculation succeeds) — explicit bounce mechanism with testable predictions
 
 **What is NOT new (despite appearing prominently):**
 1. ALP birefringence prediction (Branch R) — well-studied by Fujita, Minami, Murai, Obata, and others. ECH provides motivation, not uniqueness.

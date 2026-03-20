@@ -10,7 +10,7 @@ What is truly open, what is dead, and what is worth doing next.
 
 **Question:** Can perturbations be propagated through the ECH bounce, and what spectrum results from dust contraction → ECH bounce → radiation expansion?
 
-**Why it matters:** This is the only remaining path to a genuinely novel, testable prediction (f_NL = 5/12, low-ell cutoff) from an explicit spin-torsion bounce mechanism.
+**Why it matters:** This is the only remaining path to a genuinely novel, testable prediction (f_NL = -35/8 = -4.375, low-ell cutoff) from an explicit spin-torsion bounce mechanism.
 
 **What must happen:** Branch Vb (perturbation gate) must pass — i.e., the perturbation equations must be well-defined and tractable through the ECH bounce background.
 

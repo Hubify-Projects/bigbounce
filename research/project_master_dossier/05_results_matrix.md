@@ -36,7 +36,7 @@ See [10_status_legend.md](10_status_legend.md) for all label definitions.
 | 24 | Branch-S | Does minimal ECH generate photon-polarization rotation via loops? | One-loop VVA triangle in ECH | beta from loop process | ABJ anomaly exists but universal; beta ~ 10^{-30} deg (28-40 OOM too weak) | FAIL | Definitively closes one-loop salvage path | VVA derivation | N1 | LOW |
 | 25 | Branch-T | Can axion kicked by bounce amplify gauge fields? | External axion + bounce kick | Gauge field amplification | Source requires free parameter (n_5); no genuine novelty | FAIL | Shifts problem to unknown initial conditions | Kick estimate | N1 | LOW |
 | 26 | Branch-U | Can two-field ALP resolve rolling-vs-freezing tension? | Two ALPs (roller + freezer) | beta + Omega_DE | Reintroduces fine-tuning (m_2 ~ H_0) | DEFERRED | Not prioritized unless single-field ALP fails | Background equations | N1 | LOW |
-| 27 | **Branch-V** | **Can matter contraction + ECH bounce produce testable signals?** | **Dust contraction -> ECH bounce -> radiation** | **f_NL, n_s, low-ell cutoff** | **f_NL = 5/12 (parameter-free); SPHEREx 2.5-sigma; Planck anomaly connection** | **ACTIVE** | **Flagship: explicit bounce mechanism with testable predictions** | **Phase 1 blueprint** | **N3** | **FLAGSHIP** |
+| 27 | **Branch-V** | **Can matter contraction + ECH bounce produce testable signals?** | **Dust contraction -> ECH bounce -> radiation** | **f_NL, n_s, low-ell cutoff** | **f_NL = -35/8 = -4.375 (parameter-free); SPHEREx 4-6σ; Planck anomaly connection** | **PAPER DRAFT COMPLETE** | **Flagship: explicit bounce mechanism with testable predictions** | **Phase 1 blueprint** | **N3** | **FLAGSHIP** |
 | 28 | Branch-Vb | Can perturbations propagate through ECH bounce? | ECH perturbation equations | Perturbation transfer | Gate for Branch V; assessment in progress | ACTIVE | Infrastructure for Branch V feasibility | Perturbation framework | N1 | LOW |
 | 29 | Branch-W | Can birefringence ALP serve as curvaton for red tilt? | ALP curvaton in dust contraction | n_s from curvaton | n_s = 1.000 from dust (8.3-sigma excluded); superseded by Branch V | CLOSED | Identified n_s = 1 as fundamental dust property; prompted V pivot | n_s proof | N1 | LOW |
 | 30 | Chiral-GW | Can chiral GW from ECH bounce reach detectors? | ECH + parity-violating Holst | Circular GW polarization | f_0 ~ 10^{9-10} Hz; gap to LIGO 10^6; Omega proportional to f^8 kills amplitude | FAIL | All bounce-scale signals permanently inaccessible | Frequency-amplitude scaling | N1 | LOW |
@@ -65,7 +65,7 @@ See [10_status_legend.md](10_status_legend.md) for all label definitions.
 
 1. **Branch R — ALP birefringence:** beta = 0.27 deg matches 0.35 +/- 0.09 deg (1-sigma). Phase 2 MCMC in progress. HIGH publication value.
 
-2. **Branch V — Matter bounce + ECH:** f_NL = 5/12 parameter-free prediction. SPHEREx testable. FLAGSHIP publication potential if calculation succeeds.
+2. **Branch V — Generic matter-bounce (LQC-viable):** f_NL = -35/8 = -4.375 parameter-free prediction. SPHEREx testable. FLAGSHIP publication potential if calculation succeeds.
 
 3. **13-Barrier Map:** Systematic closure of 15 branches with named structural barriers. HIGH value as honest negative-result paper.
 

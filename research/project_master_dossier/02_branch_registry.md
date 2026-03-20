@@ -339,7 +339,7 @@ See [10_status_legend.md](10_status_legend.md) for definitions of all status and
 | **ID** | Branch-V |
 | **Goal** | Identify minimal extensions producing detectable bounce signatures |
 | **Status** | ACTIVE (Phase 1 to begin) |
-| **One-line significance** | FLAGSHIP: dust contraction + ECH bounce predicts f_NL = 5/12 (SPHEREx testable), low-ell cutoff |
+| **One-line significance** | FLAGSHIP: dust contraction + matter contraction produces f_NL = -35/8 = -4.375 (SPHEREx testable), low-ell cutoff |
 | **Main files** | `research/branch_V_bounce_evidence/` (7 files + dust bounce spectrum + novelty audit + final_verdict) |
 | **Publication potential** | FLAGSHIP |
 | **Novelty** | N3 — parameter-free prediction from explicit bounce mechanism; connects to Planck anomaly |

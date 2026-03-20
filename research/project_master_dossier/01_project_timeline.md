@@ -144,11 +144,11 @@ Chronological history of the spin-torsion cosmology research program.
 - **Branch S (Photon-torsion vertex):** ABJ anomaly is universal, not ECH-specific. beta ~ 10^{-30} deg. 28-40 orders too weak.
 - **Branch T (Sourced axion bridge):** Requires free parameters (axial current). No genuine novelty.
 - **Branch U (Two-field ALP + DE):** Speculative; deferred unless single-field ALP fails.
-- **Branch V (Bounce evidence — matter bounce + ECH):** FLAGSHIP CANDIDATE. Dust contraction through ECH bounce predicts f_NL = 5/12 (SPHEREx at 2.5-sigma), low-ell cutoff (Planck anomaly), scale-invariant spectrum.
+- **Branch V (Bounce evidence — generic matter-bounce (LQC-viable)):** FLAGSHIP CANDIDATE. Dust contraction through matter contraction produces f_NL = -35/8 = -4.375 (SPHEREx at 4-6σ, MegaMapper at 3-7σ), low-ell cutoff (Planck anomaly), scale-invariant spectrum.
 - **Branch Vb (ECH perturbation gate):** Assessing perturbation propagation through ECH bounce.
 - **Branch W (ALP curvaton tilt):** n_s = 1.000 from dust contraction (8.3-sigma excluded). Superseded by Branch V.
 
-**Result:** Two positive paths identified: Branch R (ALP birefringence) and Branch V (matter bounce + ECH).
+**Result:** Two positive paths identified: Branch R (ALP birefringence) and Branch V (generic matter-bounce (LQC-viable)).
 
 **What changed:** Program has a genuine future direction for the first time since the closure era.
 
@@ -176,6 +176,6 @@ Chronological history of the spin-torsion cosmology research program.
 
 2. **Branch R (ALP birefringence MCMC)** — Phase 2 initiated. 25+ MCMC subdirectories. Target: publication-quality posteriors and Bayes factors.
 
-3. **Branch V (Matter bounce + ECH)** — Phase 1 blueprint ready. Dust contraction → ECH bounce → radiation. Parameter-free prediction f_NL = 5/12. Tractable calculation extending Branch H tensor solver.
+3. **Branch V (Generic matter-bounce (LQC-viable))** — Phase 1 blueprint ready. Dust contraction → ECH bounce → radiation. Parameter-free prediction f_NL = -35/8 = -4.375. Tractable calculation extending Branch H tensor solver.
 
 **Everything else is closed, deferred, or superseded.**

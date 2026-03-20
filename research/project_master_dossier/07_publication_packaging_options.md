@@ -138,7 +138,7 @@ Same as Paper 2B above.
 **Content (speculative — calculation not yet done):**
 - Dust contraction → ECH bounce → radiation framework (3pp)
 - Scalar perturbation spectrum through ECH bounce (4pp)
-- f_NL = 5/12 prediction derivation (2pp)
+- f_NL = -35/8 = -4.375 prediction derivation (2pp)
 - Low-ell cutoff and Planck anomaly connection (2pp)
 - Comparison with inflationary predictions (2pp)
 - SPHEREx forecast (1pp)
@@ -146,7 +146,7 @@ Same as Paper 2B above.
 
 **Strengths:**
 - Genuinely novel (N3) — explicit bounce mechanism, parameter-free prediction
-- Testable by SPHEREx at 2.5-sigma
+- Testable by SPHEREx at 4-6σ, MegaMapper at 3-7σ
 - Connects to known Planck anomaly
 - Would be the strongest paper from the program if it works
 
@@ -196,7 +196,7 @@ Reasons:
 
 3. **Near-term:** Compile Paper 3B (companion technical note with full barrier catalog). Post to arXiv as companion to Paper 3A. Low effort if barrier derivations are compiled from existing branch results.
 
-4. **Medium-term:** If Branch V Phase 1 succeeds, write Paper 4 (matter bounce + ECH). This would be the highest-impact paper in the program. But do not delay Paper 3A for this.
+4. **Medium-term:** If Branch V Phase 1 succeeds, write Paper 4 (generic matter-bounce (LQC-viable)). This would be the highest-impact paper in the program. But do not delay Paper 3A for this.
 
 ---
 
