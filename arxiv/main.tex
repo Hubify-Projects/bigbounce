@@ -59,7 +59,7 @@ Phenomenological Constraints, Structural Barriers, and Perturbation Transparency
 \date{March 20, 2026}
 
 \begin{abstract}
-We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. The framework yields a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27\,\rho_{\rm Pl}$ and a unique parity-violating four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 309{,}789 samples across two frozen datasets) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
+We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. Within this framework, LQC holonomy corrections yield a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27$--$0.41\,\rho_{\rm Pl}$ (depending on the entropy-counting scheme for the Barbero-Immirzi parameter), while the ECH parity structure generates a unique four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 309{,}789 samples across two frozen datasets) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
@@ -81,7 +81,7 @@ Simultaneously, precision cosmological measurements have revealed growing tensio
 This work presents a phenomenological framework that addresses these challenges through quantum gravitational effects in spin-torsion cosmology. Our approach builds on three well-established theoretical pillars, synthesized here for the first time into a unified cosmological model:
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{Loop Quantum Cosmology} (LQC), providing a non-singular quantum bounce replacing the classical Big Bang singularity~\cite{Ashtekar2011}. The bounce occurs at a critical density $\rhocrit \simeq 0.27\,\rhoPl$, determined by the Barbero-Immirzi parameter $\gamma = 0.274 \pm 0.020$ of LQG.
+\item \textit{Loop Quantum Cosmology} (LQC), providing a non-singular quantum bounce replacing the classical Big Bang singularity~\cite{Ashtekar2011}. The bounce occurs at a critical density $\rhocrit \simeq 0.27$--$0.41\,\rhoPl$ (depending on the entropy-counting scheme for the Barbero-Immirzi parameter; see Sec.~\ref{sec:bounce}).
 
 \item \textit{Einstein-Cartan theory} incorporating fermionic spin-torsion coupling, which generates four-fermion contact interactions and prevents gravitational singularities through torsion-induced repulsion at extreme densities~\cite{Hehl1976,Poplawski2012}.
 
@@ -97,7 +97,7 @@ This work presents a phenomenological framework that addresses these challenges 
 $H_0$ tension (${\sim}4.9\sigma$, Planck--SH0ES) & $67.68\pm 1.06$ km/s/Mpc & $3.6\sigma$ vs.\ SH0ES$^a$ \\
 $\sigma_8$/$S_8$ tension ($2$--$3\sigma$) & $\sigma_8 = 0.803$; $S_8 = 0.814$ & Standard (Planck-consistent)$^b$ \\
 Dark energy fine-tuning & Geometric origin & $10^5$ vs $10^{120}$$^c$ \\
-Singularity problem & Torsion bounce & $\rho_c \simeq 0.27\rhoPl$ \\
+Singularity problem & LQC bounce & $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ \\
 Cosmic parity violation & Rotating BH origin & $2.4$--$2.9\sigma$ individual; $3.9\sigma$ combined \\
 \end{tabular}
 \end{ruledtabular}
@@ -157,11 +157,11 @@ S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\
 \end{align}
 where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi parameter, and $T^{abc}$ is the torsion tensor. The Holst term $\varepsilon^{abcd}e_a^\mu e_b^\nu R_{cd\mu\nu}/\gamma$ is topological in the absence of torsion but contributes non-trivially when fermions are present.\footnote{The explicit $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} represents the torsion-squared contact interaction that emerges after integrating out the non-propagating torsion in the standard EC framework. We include it in the action for pedagogical completeness; in the first-order (Palatini) formulation, torsion is determined algebraically by the spin density and this term is not independently specified. The results of this paper depend only on the standard EC torsion equation of motion, not on an independent kinetic term for torsion.} This construction builds directly on the foundational work of Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who established that the Barbero-Immirzi parameter becomes physically observable through its coupling to fermionic matter.
 
-The Barbero-Immirzi parameter is fixed by the LQG black hole entropy calculation~\cite{Ashtekar2011}:
+The Barbero-Immirzi parameter is fixed by the LQG black hole entropy calculation~\cite{Ashtekar2011,ABCK1998}:
 \begin{equation}\label{eq:gamma}
 \gamma = 0.274 \pm 0.020,
 \end{equation}
-where the central value is determined by matching the Bekenstein-Hawking entropy from the full SU(2) spin-network state counting (Domagala-Lewandowski-Meissner), and the uncertainty range reflects different counting schemes and area-spectrum quantization prescriptions in the literature. Whether $\gamma$ constitutes a genuine physical observable or a quantization artifact absorbable by canonical transformations remains debated~\cite{Freidel2005,Mercuri2006}. This distinction does not affect our results at leading order: if $\gamma$ is non-physical, the torsion-fermion coupling factor $\gamma^2/(\gamma^2+1)$ in Eq.~\eqref{eq:4fermi} reverts to unity (the standard ECSK value), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ without eliminating parity violation, which originates from the Holst term's coupling to fermions independently of the Barbero-Immirzi interpretation.
+Different entropy-counting schemes yield different values: the Ashtekar-Baez-Corichi-Krasnov (ABCK) calculation~\cite{ABCK1998} gives $\gamma_{\rm ABCK} \approx 0.274$, while the Domagala-Lewandowski-Meissner (DLM) full SU(2) state counting~\cite{Domagala2004,Meissner2004} gives $\gamma_{\rm DLM} \approx 0.2375$. We adopt $\gamma = 0.274$ (ABCK) throughout this paper; the DLM value would shift $\rho_{\rm crit}$ upward to $\simeq 0.41\,\rho_{\rm Pl}$ without qualitatively changing any conclusion. Whether $\gamma$ constitutes a genuine physical observable or a quantization artifact absorbable by canonical transformations remains debated~\cite{Freidel2005,Mercuri2006}. This distinction does not affect our results at leading order: if $\gamma$ is non-physical, the torsion-fermion coupling factor $\gamma^2/(\gamma^2+1)$ in Eq.~\eqref{eq:4fermi} reverts to unity (the standard ECSK value), modifying the parity-odd coefficient by $\mathcal{O}(10\%)$ without eliminating parity violation, which originates from the Holst term's coupling to fermions independently of the Barbero-Immirzi interpretation.
 
 \begin{figure}[t]
 \centering
@@ -226,7 +226,7 @@ The parent black hole mass must satisfy $M_{\rm BH} > M_{\rm crit} = (M_{\rm Pl}
 
 \subsection{Black Hole Interior and Quantum Bounce}\label{sec:bounce}
 
-In Einstein-Cartan theory, gravitational collapse is modified by torsion pressure at extreme densities. The Friedmann equation receives a quantum correction\footnote{We note that the effective Friedmann equation Eq.~\eqref{eq:modfriedmann} is the standard LQC result from holonomy corrections~\cite{Ashtekar2011}, which is physically distinct from the Einstein-Cartan torsion bounce of Pop\l{}awski. Both produce a qualitatively similar $\rho^2$ repulsion at high densities but through different mechanisms (quantum geometry vs.\ classical spin-torsion coupling). In this paper, we adopt the LQC effective equation for its well-studied perturbation dynamics, while the EC framework provides the broader theoretical context including the Holst term and parity structure.}:
+In Loop Quantum Cosmology (LQC), holonomy corrections to the gravitational Hamiltonian constraint produce a non-singular bounce at Planck-scale densities~\cite{Ashtekar2011}. The effective Friedmann equation is\footnote{The LQC bounce (from quantum geometry holonomy corrections) is physically distinct from the Einstein-Cartan torsion bounce of Pop\l{}awski~\cite{Poplawski2012}, which produces a qualitatively similar $\rho^2$ repulsion through classical spin-torsion coupling at high fermion density. In this paper, we adopt the LQC effective equation for its well-studied perturbation dynamics. The ECH framework provides the broader theoretical context for the parity structure (Sec.~\ref{sec:parityodd}) but is not the source of Eq.~\eqref{eq:modfriedmann}.}
 \begin{equation}\label{eq:modfriedmann}
 H^2 = \frac{8\pi G}{3}\,\rho\left[1-\frac{\rho}{\rhocrit}\right],
 \end{equation}
@@ -234,7 +234,7 @@ where the critical density is
 \begin{equation}\label{eq:rhocrit}
 \rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl \simeq 0.27\,\rhoPl,
 \end{equation}
-with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ being the LQG area gap and $\rhoPl\equiv c^5/(\hbar G^2)$. The numerical value $\rhocrit\simeq 0.27\,\rhoPl$ corresponds to $\gamma = 0.274$; the range $\gamma\in[0.254,0.294]$ gives $\rhocrit\in[0.22,0.34]\,\rhoPl$. The factor $(1-\rho/\rhocrit)$ ensures that $H^2 \to 0$ as $\rho \to \rhocrit$, producing a smooth bounce. Key properties of the bounce:
+with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ being the LQG area gap and $\rhoPl\equiv c^5/(\hbar G^2)$. The numerical value $\rhocrit \simeq 0.27\,\rhoPl$ corresponds to $\gamma = 0.274$ (ABCK); the DLM value $\gamma = 0.2375$ gives $\rhocrit \simeq 0.41\,\rhoPl$~\cite{Ashtekar2011}. The range $\gamma \in [0.2375, 0.294]$ brackets both counting schemes and gives $\rhocrit \in [0.22, 0.41]\,\rhoPl$. The factor $(1-\rho/\rhocrit)$ ensures that $H^2 \to 0$ as $\rho \to \rhocrit$, producing a smooth bounce. Key properties of the bounce:
 
 \begin{itemize}[leftmargin=*]
 \item For $\rho \ll \rhocrit$: standard GR is recovered exactly.
@@ -1207,7 +1207,7 @@ This holds at zeroth, first, second, and third order in perturbation theory. In 
 The transparency theorem fails if \emph{any} of the following conditions hold:
 
 \begin{enumerate}
-\item \textbf{Fermionic matter:} If the matter sector includes fermions (spinors), the spin density $S^\lambda{}_{\mu\nu} \neq 0$ and torsion is sourced. The Holst term then contributes dynamically. However, fermionic contributions to torsion are Planck-suppressed at cosmological densities and negligible during the matter-contraction phase relevant for the bispectrum.
+\item \textbf{Fermionic matter:} If the matter sector includes fermions (spinors), the spin density $S^\lambda{}_{\mu\nu} \neq 0$ and torsion is sourced. The Holst term then contributes dynamically. However, fermionic contributions to torsion are Planck-suppressed at cosmological densities and negligible during the matter-contraction phase relevant for the bispectrum. Note that the EC torsion bounce of Pop\l{}awski~\cite{Poplawski2012} \emph{requires} fermionic spin density and therefore falls outside the scope of this theorem. Our perturbation analysis adopts the LQC bounce (Sec.~\ref{sec:bounce}), which operates with scalar field matter where the theorem applies.
 
 \item \textbf{Propagating torsion (Poincar\'e gauge theory):} If the gravitational action includes kinetic terms for torsion ($\sim T_{\mu\nu\rho}T^{\mu\nu\rho}$), torsion becomes dynamical rather than algebraic. The Holst term then generates non-trivial dynamics. However, this is \emph{not} Einstein-Cartan theory---it is a different theory entirely (PGT), and our Foundation A analysis showed it faces the mass-coupling lock (Barrier 1).
 
@@ -1220,9 +1220,9 @@ In summary: the transparency is robust within the minimal ECH framework. Breakin
 
 \subsection{Implications}
 
-ECH gravity is a \emph{perturbation-transparent UV regulator}: it resolves the singularity at Planck density through the $\rho^2$ modification of the Friedmann equation, but leaves zero fingerprint on the primordial perturbations. The Barbero-Immirzi parameter $\gamma$, which sets the bounce density $\rho_{\rm crit}$ and plays a central role in loop quantum gravity, is completely invisible in all scalar and tensor perturbation observables computed with canonical scalar field matter.
+The perturbation-transparency theorem applies to the ECH parity structure (Holst term, four-fermion interaction, parity-odd operator), establishing that these have no effect on perturbation observables for canonical scalar field matter. The bounce itself is realized by the LQC effective equation (Sec.~\ref{sec:bounce}), which operates on scalar field matter where ECH is indeed transparent. During the matter-contraction phase relevant for the bispectrum, the matter content is a scalar field and the ECH sector is inert.
 
-This result has a positive interpretation: the observable predictions of a matter bounce (principally $\fnl = -35/8$) are \emph{mechanism-independent}. They do not depend on whether the bounce is realized by ECH, LQC, or any other UV completion. This makes the predictions \emph{more robust}, not less---they cannot be invalidated by changes to the bounce mechanism.
+This result has a positive interpretation: the observable predictions of a matter bounce (principally $\fnl = -35/8$) depend only on the contracting-phase dynamics, which are governed by scalar field matter where ECH is transparent. The bispectrum does not depend on the UV completion that produces the bounce---whether LQC holonomy corrections, ECH torsion with fermions, or another mechanism---making the prediction \emph{mechanism-independent} and thus more robust.
 
 
 %% ============================================================
@@ -1465,7 +1465,7 @@ The systematic analysis presented in Secs.~\ref{sec:barriers}--\ref{sec:loophole
 
 We have presented a phenomenological framework for dark energy connecting quantum gravitational effects in black hole interiors to cosmic acceleration through spin-torsion cosmology. Our main results are:
 
-\textit{Theoretical achievements.}---Construction of the parity-odd effective action from the Holst term in first-order variables (Eq.~\ref{eq:Seff}), with $\alpha/M$ treated as a phenomenological parameter motivated by one-loop estimates and constrained by data. The observable dark energy scale is modeled as $\Leff = c_\omega\omega^2+\Xi\,\MPl^2$, where the inflationary suppression factor $\Xi = [(\alpha/M)\,\MPl]\Dinf$ is motivated by early-universe physics (this work does not derive the IR effective vacuum term from first principles; see Sec.~\ref{sec:limitations}). The torsion-regulated bounce at $\rhocrit\simeq 0.27\,\rhoPl$ provides natural initial conditions with no free parameters.
+\textit{Theoretical achievements.}---Construction of the parity-odd effective action from the Holst term in first-order variables (Eq.~\ref{eq:Seff}), with $\alpha/M$ treated as a phenomenological parameter motivated by one-loop estimates and constrained by data. The observable dark energy scale is modeled as $\Leff = c_\omega\omega^2+\Xi\,\MPl^2$, where the inflationary suppression factor $\Xi = [(\alpha/M)\,\MPl]\Dinf$ is motivated by early-universe physics (this work does not derive the IR effective vacuum term from first principles; see Sec.~\ref{sec:limitations}). The LQC bounce at $\rhocrit\simeq 0.27$--$0.41\,\rhoPl$ (depending on entropy-counting scheme; see Sec.~\ref{sec:bounce}) provides natural initial conditions with no free parameters.
 
 \textit{Observational context.}---Planck cosmic birefringence at $2.4$--$2.7\sigma$~\cite{Minami2020,Eskilt2022}, independently confirmed by ACT~DR6 at $2.9\sigma$~\cite{DiegoPalazuelos2025}, with combined SPIDER+Planck+ACT total rotation at ${\sim}7\sigma$~\cite{SPIDER2025} (subject to calibration caveats); DESI 2024--2025 dynamical dark energy evidence at $3.1$--$4.2\sigma$~\cite{DESI2024,DESI2025DR2}; EC torsion preferred by AIC in multiple independent analyses~\cite{Liu2025,ECTorsionDESI2025}. Independent Cobaya~v3.6.1 verification across two frozen dataset combinations (Table~\ref{tab:verification}) finds $\Delta\Neff$ consistent with zero in both: $-0.020 \pm 0.169$ (full-tension, 176{,}840 samples) and $+0.065 \pm 0.17$ (Planck+BAO+SN, 132{,}949 samples). Current data neither require nor exclude the predicted spin-torsion $\Delta\Neff$ contribution; the framework is observationally viable but not yet confirmed. The Hubble tension reduction reported in the original analysis ($4.9\sigma \to 2.9\sigma$) is driven by the SH0ES prior, not by the $\Delta\Neff$ extension alone.
 
@@ -1908,7 +1908,7 @@ Table~\ref{tab:claims} classifies every major claim in this paper as \textit{Der
 \textbf{Claim} & \textbf{Status} & \textbf{Where} & \textbf{Notes} \\
 \hline
 \multicolumn{4}{l}{\textit{Derived (explicit calculation shown)}} \\
-Torsion bounce at $\rhocrit \simeq 0.27\,\rhoPl$ & Derived & Eq.~(\ref{eq:modfriedmann}) & From LQC with $\gamma = 0.274$ \\
+LQC bounce at $\rhocrit \simeq 0.27$--$0.41\,\rhoPl$ & Derived & Eq.~(\ref{eq:modfriedmann}) & From LQC; range reflects ABCK ($\gamma=0.274$) vs.\ DLM ($\gamma=0.2375$) counting \\
 Four-fermion interaction from torsion & Derived & Eq.~(\ref{eq:4fermi}) & Standard EC result (Hehl 1976) \\
 Parity-odd operator structure & Derived & Eq.~(\ref{eq:Seff}) & From Holst term + fermion loop \\
 $\Dinf = e^{-3N_{\rm tot}}(T_{\rm reh}/M_{\rm GUT})^{3/2}$ & Derived & Eq.~(\ref{eq:Dinf}) & Dilution of $K_{ab} \propto a^{-3}$ \\
