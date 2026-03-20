@@ -56,14 +56,10 @@ Phenomenological Constraints, Structural Barriers, and Perturbation Transparency
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 13, 2026}
+\date{March 20, 2026}
 
 \begin{abstract}
-The Hubble tension (${\sim}4.9\sigma$), the $\sigma_8$/$S_8$ tension ($2$--$3\sigma$), and growing evidence for cosmic parity violation---including $2.4$--$2.9\sigma$ cosmic birefringence from Planck and ACT~DR6, with combined significance reaching ${\sim}7\sigma$ for total polarization rotation---suggest new physics beyond $\Lambda$CDM. We present a theoretical framework where dark energy is modeled as emerging from quantum gravitational effects in a rotating universe born from a black hole interior.
-
-Our model combines Loop Quantum Gravity (LQG) with Einstein-Cartan torsion, modeling dark energy as arising from a parity-violating quantum correction: $\Leff \approx \Xi\,\MPl^2$, where $\Xi \equiv [(\alpha/M)\,\MPl]\,\Dinf$ is a dimensionless inflationary suppression factor (the late-time $w=-1$ behavior is assumed, not derived; see Sec.~\ref{sec:dilution}). Given stringent isotropy bounds $(\omega/H)_0 < 5 \times 10^{-11}$, rotation is negligible for background expansion. Independent MCMC verification using Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE across two frozen dataset combinations (full-tension: 176{,}840 samples; Planck+BAO+SN: 132{,}949 samples) finds $\Delta\Neff$ consistent with zero in both: $\Delta\Neff = -0.020 \pm 0.169$ (full-tension) and $\Delta\Neff = +0.065 \pm 0.17$ (Planck+BAO+SN), with $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$. Current data neither require nor exclude a small positive $\Delta\Neff$ contribution from the spin-torsion sector. An earlier analysis reported $H_0 = 69.2$ and partial tension reduction, but this was driven by the SH0ES prior, not by the $\Delta\Neff$ extension. CMB-S4 ($\sigma(\Neff) \sim 0.03$) will be decisive. A 100{,}000-sample Monte Carlo sensitivity scan confirms that the inflationary suppression mechanism reduces fine-tuning from $10^{120}$ to $\sim 10^5$, with the total inflationary $e$-folding number $N_{\rm tot}$ identified as the single controlling parameter (Spearman $|\rho_s| = 0.996$).
-
-The framework accommodates three correlated observational signatures: (1)~galaxy spin dipole asymmetry following a phenomenological $A(z) = A_0(1+z)^{-p}e^{-qz}$, with hierarchical Bayesian fits yielding $A_0 \sim 0.003$ (empirical; a first-principles derivation from $\alpha/M$ faces an order-of-magnitude gap that remains unresolved); (2)~cosmic birefringence (the framework's parity-odd sector is qualitatively consistent with the $2.4$--$2.9\sigma$ Planck/ACT detections, but deriving the rotation angle requires a photon-torsion coupling not yet available); (3)~correlated axes between birefringence anisotropy and galaxy spin dipole. These signatures, if confirmed, would provide distinctive tests of the framework.
+We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. The framework yields a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27\,\rho_{\rm Pl}$ and a unique parity-violating four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 309{,}789 samples across two frozen datasets) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The honest conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
@@ -143,7 +139,7 @@ Each theoretical ingredient above has been studied independently. Our contributi
 
 \subsection{Paper Organization}
 
-This paper is organized as follows. Section~\ref{sec:theory} develops the theoretical framework, including the Einstein-Cartan-Holst action, parity-odd term derivation, quantum bounce, and cosmic rotation formalism. Section~\ref{sec:obs} presents observational signatures and current evidence. Section~\ref{sec:derivations} provides enhanced derivations including one-loop calculations and vacuum energy mechanisms. Section~\ref{sec:data_galaxy} details galaxy spin data analysis methods. Section~\ref{sec:data_cmb} covers CMB $E$-$B$ analysis methodology. Section~\ref{sec:cosmo_fits} presents cosmological fits and Bayesian model comparison against published data. Section~\ref{sec:systematics} contains the systematic analysis and null tests. Section~\ref{sec:falsification} defines falsification criteria. Section~\ref{sec:related} positions our work in context. Section~\ref{sec:discussion} discusses theoretical implications and the inflationary suppression factor. Section~\ref{sec:limitations} addresses limitations and future directions. Section~\ref{sec:conclusions} summarizes conclusions and outlook. Ten appendices provide technical details, including a claims classification table (Appendix~\ref{app:claims}).
+This paper is organized as follows. Sections~\ref{sec:theory}--\ref{sec:derivations} develop the theoretical framework, observational signatures, and enhanced derivations. Sections~\ref{sec:data_galaxy}--\ref{sec:cosmo_fits} present data analysis methods and cosmological fits. Sections~\ref{sec:systematics}--\ref{sec:falsification} contain systematic analysis and falsification criteria. Section~\ref{sec:related} positions our work in context. Section~\ref{sec:barriers} presents the 14 structural barriers that close all dark energy derivation routes. Section~\ref{sec:transparency} proves the perturbation-transparency theorem. Section~\ref{sec:loophole} documents the hybrid dark-energy loophole rejection. Section~\ref{sec:discussion} discusses theoretical implications. Section~\ref{sec:limitations} addresses limitations. Section~\ref{sec:conclusions} summarizes conclusions. Appendices provide technical details including a claims classification table (Appendix~\ref{app:claims}).
 
 
 %% ============================================================
@@ -324,7 +320,7 @@ The expected galaxy spin asymmetry follows a dipole pattern $A_{\rm dipole}(\hat
 
 The asymmetry amplitude evolves as
 \begin{equation}\label{eq:Az}
-\boxed{A(z) = A_0\cdot(1+z)^{-p}\cdot e^{-qz},}
+A(z) = A_0\cdot(1+z)^{-p}\cdot e^{-qz},
 \end{equation}
 with $A_0\in[0,0.02]$, $p\in[0,2]$, $q\in[0,2]$.
 
@@ -1259,7 +1255,7 @@ All 7 forms were rejected on the following grounds: adding $w_0w_a$ to a bounce 
 
 The constant contribution to $\Leff$ is modeled as emerging from the interplay between a parity-odd spin-torsion interaction and inflationary dilution. We define the \textit{inflationary suppression factor}:
 \begin{equation}\label{eq:gdp}
-\boxed{\Xi \equiv \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf,}
+\Xi \equiv \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf,
 \end{equation}
 a dimensionless quantity encoding the net suppression of the Planck-scale parity-odd coefficient. The vacuum energy density is then $\rho_\Lambda = \Xi\,\MPl^4$, so the observed $\rho_\Lambda \approx (2.3\;\text{meV})^4$ corresponds to $\Xi\approx 10^{-123}$---the familiar cosmological constant hierarchy, here decomposed as $\Xi = 10^{-2}\times\Dinf$ with $\Dinf\sim 10^{-121}$ (Sec.~\ref{sec:dilution}).
 
@@ -1941,20 +1937,6 @@ $\ln B = +4.8$ (tension dataset) & Inferred & Eq.~(\ref{eq:Zcomb2}) & Dataset-de
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
-
-
-\section{Novelty Assessment}\label{app:novelty}
-
-The following scale is used to assess the novelty of results in this program:
-\begin{itemize}
-\item \textbf{N0:} Not novel (prior art, verification only)
-\item \textbf{N1:} Weakly novel (synthesis, review, compilation)
-\item \textbf{N2:} Moderately novel (new framing, new application, new quantitative result)
-\item \textbf{N3:} Strongly novel (new theorem, new method, new observable mapping)
-\item \textbf{N4:} Breakthrough (new physics, new prediction, paradigm shift)
-\end{itemize}
-
-The perturbation-transparency theorem (Sec.~\ref{sec:transparency}) is rated N3: a strong structural result that formally closes a class of theoretical possibilities. The 14-barrier catalog as a body of work is rated N2--N3 overall: each individual barrier draws on known physics, but the systematic exhaustion across 7 foundations and 17+ branches is original in scope. No result in this program qualifies as N4, as no genuinely new physics or previously unknown observable has been discovered. The program's novelty lies in systematic framework construction, quantitative verification, and honest structural closure.
 
 
 %% ============================================================
