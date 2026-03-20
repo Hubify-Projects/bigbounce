@@ -14,14 +14,14 @@
 {\small\textit{Independent Researcher}}\\[2pt]
 {\small\texttt{houston@hubify.com}}}
 
-\date{\today}
+\date{March 20, 2026}
 
 \begin{document}
 \sloppy
 \maketitle
 
 \begin{abstract}
-We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. This minimal setup naturally produces a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6$--$3.9\sigma$ isotropic birefringence signal reported by Planck and ACT analyses ($\beta_{\rm obs} = 0.35 \pm 0.09^\circ$ combined). The prediction is natural in the sense that $f_a \sim M_{\rm Pl}$ is the natural scale for a gravitationally coupled pseudoscalar, $m \sim H_0$ ensures the field is rolling today, and the initial misalignment angle $\theta_i \sim \mathcal{O}(1)$ is generic. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (strong evidence). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $> 5\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
+We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. This minimal setup naturally produces a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6$--$3.9\sigma$ isotropic birefringence signal reported by Planck and ACT analyses ($\beta_{\rm obs} = 0.342 \pm 0.094^\circ$ from the Eskilt et al.\ joint analysis). The prediction is natural in the sense that $f_a \sim M_{\rm Pl}$ is the natural scale for a gravitationally coupled pseudoscalar, $m \sim H_0$ ensures the field is rolling today, and the initial misalignment angle $\theta_i \sim \mathcal{O}(1)$ is generic. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (strong evidence). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $9\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
 \end{abstract}
 
 \section{Introduction}
@@ -42,7 +42,7 @@ The field displacement from recombination to today is:
 \begin{equation}
 \Delta\phi \approx f_a \theta_i \left(1 - \frac{J_0(m/H_0)}{J_0(0)}\right) \approx f_a \theta_i \times \mathcal{O}(1)
 \end{equation}
-where the precise factor depends on the cosmological evolution and the mass-to-Hubble ratio.
+For $m/H_0 \sim 1$, $1 - J_0(1) \approx 0.24$; the precise value depends on the cosmological integration through the matter and dark-energy eras.
 
 \subsection{Birefringence Prediction}
 
@@ -60,10 +60,10 @@ For $C_0 \sim 1$, $\theta_i \sim 1$: the cosmological field evolution gives $\De
 
 We use two independent birefringence measurements for the summary-likelihood combination (Eq.~3):
 \begin{itemize}
-\item Planck NPIPE (Eskilt 2022): $\beta = 0.30 \pm 0.11^\circ$ ($2.7\sigma$)
-\item ACT DR6 (Diego-Palazuelos \& Komatsu 2025): $\beta = 0.215 \pm 0.074^\circ$ ($2.9\sigma$)
+\item Planck NPIPE~\citep{Eskilt:2022}: $\beta = 0.30 \pm 0.11^\circ$ ($2.7\sigma$)
+\item ACT DR6~\citep{DiegoPalazuelos:2025}: $\beta = 0.215 \pm 0.074^\circ$ ($2.9\sigma$)
 \end{itemize}
-These produce the combined constraint in Eq.~(4). For the MCMC parameter estimation (Sec.~3.3), we use the Eskilt et al.\ joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it fits the full EB cross-spectrum rather than combining point estimates. An earlier Planck HFI analysis~\citep{Minami:2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.4\sigma$); we adopt the updated Eskilt value which uses improved foreground cleaning.
+These produce the combined constraint in Eq.~(4). For the MCMC parameter estimation (Sec.~3.3), we use the Eskilt et al.\ joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it fits the full EB cross-spectrum rather than combining point estimates. An earlier Planck HFI analysis~\citep{Minami:2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.5\sigma$); we adopt the updated Eskilt value which uses improved foreground cleaning.
 
 \subsection{Summary-Likelihood Inference}
 
@@ -170,7 +170,7 @@ The ALP birefringence prediction $\beta \approx 0.27^\circ$ has three notable fe
 \item \textbf{Sharp falsifiability:} LiteBIRD will test the prediction at $9\sigma$---either a decisive confirmation or a clean exclusion.
 \end{enumerate}
 
-We emphasize that the ALP birefringence model class is well-studied in the literature~\citep{Fujita:2021}. Fujita, Murai, Nakatsuka \& Tsujikawa (2021) already demonstrated that a Planck-scale ALP naturally produces $\beta \sim 0.3°$, and Namikawa, Murai \& Naokawa (2025) provide superior ALP mass constraints using the full Planck EB spectrum. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
+We emphasize that the ALP birefringence model class is well-studied in the literature~\citep{Fujita:2021}. Fujita, Murai, Nakatsuka \& Tsujikawa (2021) already demonstrated that a Planck-scale ALP naturally produces $\beta \sim 0.3°$, and Namikawa, Murai \& Naokawa~\citep{Namikawa:2025} provide superior ALP mass constraints using the full Planck EB spectrum. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
 
 \section{Conclusion}
 

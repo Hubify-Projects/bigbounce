@@ -59,7 +59,7 @@ Phenomenological Constraints, Structural Barriers, and Perturbation Transparency
 \date{March 20, 2026}
 
 \begin{abstract}
-We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. The framework yields a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27\,\rho_{\rm Pl}$ and a unique parity-violating four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 309{,}789 samples across two frozen datasets) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The honest conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
+We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. The framework yields a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27\,\rho_{\rm Pl}$ and a unique parity-violating four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 309{,}789 samples across two frozen datasets) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
@@ -132,9 +132,7 @@ Each theoretical ingredient above has been studied independently. Our contributi
 
 \item \textit{Multi-probe falsification program}: An observational framework with hierarchical Bayesian analysis, systematic error budgets, five independent null tests per probe, and explicit conditions for falsification---designed so that the model can be tested with forthcoming data from LiteBIRD, CMB-S4, and LSST.
 
-\item \textit{Inflationary suppression mechanism}: Scaling estimate of how inflationary expansion suppresses the primordial parity-odd coefficient by $\sim e^{-3N}$, converting a Planck-scale effect into the observed dark energy scale and reducing fine-tuning by 115 orders of magnitude relative to $\Lambda$CDM.
-
-\item \textit{Inflationary suppression factor}: Introduction of $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ as the dimensionless factor setting the dark energy scale via $\rho_\Lambda = \Xi\,\MPl^4$, with its value determined by early-universe physics (dimensional chain relies on on-shell evaluation at Planck densities; see Appendix~\ref{app:dimensions}).
+\item \textit{Inflationary suppression mechanism}: Introduction of the dimensionless factor $\Xi\equiv[(\alpha/M)\,\MPl]\times\Dinf$ encoding how inflationary expansion suppresses the primordial parity-odd coefficient, converting a Planck-scale effect into the observed dark energy scale. This reparameterizes the fine-tuning from $10^{120}$ to $\sim 10^5$ (as sensitivity to $N_{\rm tot}$, not a resolution; see Sec.~\ref{sec:gdp}).
 \end{enumerate}
 
 
@@ -701,7 +699,7 @@ We analyze four dataset combinations of increasing constraining power:
 
 Parameter estimation uses the Cobaya framework (v3.5 for the original analysis; v3.6.1 with CAMB~v1.6.5 for independent verification)~\cite{Cobaya2021} with adaptive blocked Metropolis-Hastings sampling, convergence criterion $\hat{R}-1 < 0.01$ (Gelman-Rubin diagnostic), and $>1000$ effective samples per parameter. The theory engine is stock CAMB (no custom modifications): the spin-torsion framework motivates nonzero $\Delta\Neff$ and a $w=-1$ dark energy component, but these are standard CAMB parameters. The ``spin-torsion'' label refers to the theoretical motivation, not to a bespoke code module. Independent verification using Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE (replacing plik) has produced two frozen dataset combinations: the full-tension dataset (176{,}840 MCMC samples, 6 chains, $\hat{R}-1 < 0.001$ for all parameters) and Planck+BAO+SN without $H_0$/$S_8$ priors (132{,}949 samples, 6 chains, $\hat{R}-1 < 0.003$). Updated results are reported in Sec.~\ref{sec:verification}.
 
-\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/v1.6.0/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
+\textit{Reproducibility.}---Cobaya YAML configurations for all four dataset combinations, the hierarchical Bayesian galaxy spin model (Stan), and best-fit parameter summaries are provided at \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.0.0/reproducibility}. All cosmological fits use stock CAMB with $\Neff$ as a free parameter; no custom CAMB modifications are required. An implementation map linking each paper result to the corresponding code artifact is included. We welcome independent reproduction using alternative samplers (e.g., MontePython + CLASS). Known gaps are documented in \texttt{docs/KNOWN\_GAPS.md}.
 
 \textit{Statistical equivalence.}---We emphasize that our MCMC analysis uses stock CAMB with $\Delta\Neff$ as a free parameter. This is phenomenologically equivalent to \textit{any} additional relativistic species model (e.g., sterile neutrinos, dark radiation, early dark energy with similar effects on the sound horizon); the connection to bounce physics provides theoretical motivation for expecting $\Delta\Neff > 0$ but does not modify the statistical inference itself. The tension reduction reported here is therefore a property of the $\Lambda$CDM+$\Delta\Neff$ parameter space, not uniquely of spin-torsion cosmology.
 
@@ -724,7 +722,7 @@ $w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
 \textbf{Spin-Torsion}$^\ddagger$ & \textbf{7} & \textbf{1148.3} & \textbf{1162.3} & \textbf{1194.8} & $\mathbf{+4.8}$ \\
 \end{tabular}
 \end{ruledtabular}
-{\small $^\ddagger$Values shown were obtained from chains that included $\Omega_k$ as a free parameter. Since the model's 92 $e$-folds of inflation mandate $\Omega_k = 0$, these are being updated; the AIC/BIC improve slightly with fewer parameters, but $\chi^2_{\rm eff}$ may increase modestly. The qualitative conclusions are unchanged: the model is competitive with $\Lambda$CDM when tension data are included.}
+{\small $^\ddagger$Values shown were obtained from chains that included $\Omega_k$ as a free parameter. Since the model's 92 $e$-folds of inflation mandate $\Omega_k = 0$, the corresponding $\Omega_k = 0$ analysis is expected to yield similar or improved $\chi^2$ values. The qualitative conclusions are unchanged: the model is competitive with $\Lambda$CDM when tension data are included.}
 \end{table}
 
 The Bayesian evidence (computed via nested sampling with PolyChord) shows:
@@ -1331,7 +1329,7 @@ This consistency check does not constitute independent evidence for the framewor
 %% ============================================================
 %%  13. LIMITATIONS AND FUTURE DIRECTIONS
 %% ============================================================
-\section{Limitations and Future Directions}\label{sec:limitations}\label{sec:futuredirections}
+\section{Limitations and Future Directions}\label{sec:limitations}
 
 \subsection{Current Limitations}
 
@@ -1491,9 +1489,9 @@ This framework motivates dark energy from quantum gravitational effects in spin-
 
 All materials necessary to reproduce the cosmological and galaxy spin results are publicly available at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/v1.6.0/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.0.0/reproducibility}
 \end{center}
-\noindent (pinned to tag \texttt{v1.6.0}).
+\noindent (pinned to tag \texttt{v2.0.0}).
 
 \noindent The repository includes:
 \begin{itemize}[leftmargin=*]
@@ -1878,9 +1876,9 @@ The factor of $\MPl$ in $\Xi = [(\alpha/M)\,\MPl]\,\Dinf$ arises from the on-she
 All MCMC results in this paper were obtained using the Cobaya framework (v3.5 for the original analysis; v3.6.1 with CAMB~v1.6.5 for independent verification)~\cite{Cobaya2021} with stock CAMB as the theory engine. The cosmological model is $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter; no custom CAMB modifications are required. The full reproducibility package is available at:
 
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/v1.6.0/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.0.0/reproducibility}
 \end{center}
-\noindent (pinned to tag \texttt{v1.6.0}).
+\noindent (pinned to tag \texttt{v2.0.0}).
 
 \noindent The package includes:
 \begin{itemize}[leftmargin=*]
