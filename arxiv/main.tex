@@ -47,7 +47,7 @@
 
 \begin{document}
 
-\preprint{HUBIFY-2026-001}
+\preprint{}
 
 \title{Geometric Dark Energy from Spin-Torsion Cosmology:\\
 Phenomenological Constraints, Structural Barriers, and Perturbation Transparency}
@@ -63,7 +63,7 @@ We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can prod
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
-\keywords{dark energy, Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, cosmic parity violation, galaxy spin asymmetry, CMB birefringence, Big Bounce cosmology, Hubble tension, cosmological constant problem}
+\keywords{Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, cosmic parity violation, primordial non-Gaussianity, perturbation transparency}
 
 \maketitle
 \tableofcontents
@@ -256,7 +256,7 @@ H^2 = \frac{8\pi G}{3}\rho + \frac{\Lambda}{3}+\frac{1}{3}(\sigma^2-\omega^2)-\f
 \end{equation}
 The Raychaudhuri equation governs acceleration:
 \begin{equation}\label{eq:raychaudhuri}
-\dot{\Theta}+\frac{1}{3}\Theta^2=-\frac{1}{2}(\rho+3p)+\Lambda+2(\omega^2-\sigma^2)+\nabla_a\dot{u}^a.
+\dot{\Theta}+\frac{1}{3}\Theta^2=-\frac{1}{2\MPl^2}(\rho+3p)+\Lambda+2(\omega^2-\sigma^2)+\nabla_a\dot{u}^a.
 \end{equation}
 
 Absorbing the shear and vorticity into an effective cosmological constant:
@@ -499,13 +499,14 @@ ACT DR6 & $68.22 \pm 0.36$ & CMB+BAO & \cite{ACTDR6baseline2025} \\
 DESI 2024 BAO & $67.97 \pm 0.76$ & BAO & \cite{DESI2024} \\
 SHF consensus & $69.37 \pm 0.34$ & Multiple & \cite{Pantos2026} \\
 DES Y5 & $67.1 \pm 1.3$ & WL+GC & \cite{DES2024} \\
-\textbf{Spin-Torsion} & $\mathbf{69.2 \pm 0.8}$ & \textbf{MCMC fit} & This work \\
+\textbf{Spin-Torsion} & $\mathbf{69.2 \pm 0.8}$\textsuperscript{a} & \textbf{MCMC fit} & This work \\
 H0LiCOW & $73.3^{+1.7}_{-1.8}$ & Lensing & \cite{Wong2020} \\
 SH0ES & $73.04 \pm 1.04$ & Cepheids & \cite{Riess2022} \\
 Megamaser & $73.9 \pm 3.0$ & Masers & \cite{Pesce2020} \\
 TRGB & $69.8 \pm 1.7$ & TRGB & \cite{Freedman2021} \\
 \end{tabular}
 \end{ruledtabular}
+{\small \textsuperscript{a}Superseded by independent verification: $H_0 = 67.68 \pm 1.06$ (Sec.~\ref{sec:verification}, Table~\ref{tab:verification}). The original value was driven by the SH0ES prior included in the tension dataset.}
 \end{table}
 
 \begin{table}[h]
@@ -725,7 +726,7 @@ $w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
 {\small $^\ddagger$Values shown were obtained from chains that included $\Omega_k$ as a free parameter. Since the model's 92 $e$-folds of inflation mandate $\Omega_k = 0$, the corresponding $\Omega_k = 0$ analysis is expected to yield similar or improved $\chi^2$ values. The qualitative conclusions are unchanged: the model is competitive with $\Lambda$CDM when tension data are included.}
 \end{table}
 
-The Bayesian evidence (computed via nested sampling with PolyChord) shows:
+The Bayesian evidence shows:\footnote{These evidence ratios were estimated from the MCMC chain posteriors via the Savage-Dickey density ratio, not from dedicated nested sampling. The values should be treated as approximate; a PolyChord nested-sampling analysis would provide more robust evidence estimates.}
 \begin{equation}\label{eq:Zcomb2}
 \ln \mathcal{Z}_{\rm ST} - \ln \mathcal{Z}_{\Lambda\text{CDM}} = \begin{cases}
 -1.2 \pm 0.3 & \text{Planck+BAO} \\
@@ -1095,7 +1096,7 @@ FRW isotropy further kills all spatial parity-odd backgrounds.
 
 Attempts to use the bounce as a ``state selector''---choosing a preferred vacuum or field configuration from a broader landscape---are blocked by Liouville's theorem. In Hamiltonian mechanics, phase-space volume is conserved under unitary evolution:
 \begin{equation}
-\frac{d}{dt}\int_{\Gamma} d^{2n}q\,d^{2n}p = 0
+\frac{d}{dt}\int_{\Gamma} d^nq\,d^np = 0
 \end{equation}
 where $\Gamma$ is any region of phase space. The bounce, being governed by the modified Friedmann equation (Eq.~\ref{eq:modfriedmann}), is a smooth, time-reversible Hamiltonian flow. It cannot irreversibly contract the accessible phase-space volume.
 
@@ -1169,7 +1170,7 @@ The argument proceeds in five steps:
 
 \item \textbf{Connection reduces to Levi-Civita.} With $T = 0$, the full connection $\Gamma^\lambda{}_{\mu\nu} = \mathring{\Gamma}^\lambda{}_{\mu\nu}$ (Christoffel symbols only).
 
-\item \textbf{Holst term becomes topological.} The Holst term $\frac{1}{2\gamma}\int \epsilon^{IJ}{}_{KL}\, e^K \wedge e^L \wedge F_{IJ}$ evaluated with the Levi-Civita connection reduces to the Pontryagin density $\int \sqrt{-g}\, \epsilon^{\mu\nu\rho\sigma} R_{\mu\nu\rho\sigma}\, d^4x$, which is a total derivative in 4D.
+\item \textbf{Holst term becomes topological.} The Holst term $\frac{1}{2\gamma}\int \epsilon^{IJ}{}_{KL}\, e^K \wedge e^L \wedge F_{IJ}$ evaluated with the Levi-Civita connection evaluates to $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which vanishes identically for a torsion-free Riemann tensor by the first Bianchi identity $R_{[\mu\nu\rho]\sigma} = 0$.
 
 \item \textbf{No equations of motion.} A total derivative contributes zero to the variational equations at all orders in perturbation theory.
 \end{enumerate}
@@ -1192,13 +1193,13 @@ To make the argument fully explicit, consider the ECH action:
 \begin{equation}
 S_{\rm ECH} = \frac{\MPl^2}{2}\int d^4x\, \sqrt{-g}\left[R(\Gamma) + \frac{1}{\gamma}\widetilde{R}(\Gamma)\right] + S_{\rm matter}[\phi, g]
 \end{equation}
-where $\widetilde{R} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ is the Holst dual of the Ricci scalar, and $\Gamma$ is the full (torsionful) connection.
+where $\widetilde{R} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ is the dual Riemann contraction, and $\Gamma$ is the full (torsionful) connection.
 
 Expanding the metric to second order ($g_{\mu\nu} = \bar{g}_{\mu\nu} + \delta g^{(1)}_{\mu\nu} + \delta g^{(2)}_{\mu\nu} + \ldots$) and the scalar field ($\phi = \bar{\phi} + \delta\phi^{(1)} + \delta\phi^{(2)} + \ldots$):
 
 At \emph{each perturbation order}, the torsion equation of motion gives $T = 0$ (because $S_{\rm matter}$ for a canonical scalar has zero spin density at every order). Therefore $\Gamma = \mathring{\Gamma}$ at every order, and the Holst dual evaluates to:
 \begin{equation}
-\widetilde{R}(\mathring{\Gamma}) = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) = \text{total derivative}
+\widetilde{R}(\mathring{\Gamma}) = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) = 0 \quad (\text{by the first Bianchi identity})
 \end{equation}
 This holds at zeroth, first, second, and third order in perturbation theory. In particular, the \emph{cubic action} for $\zeta$ (the Maldacena action that determines the bispectrum) receives \emph{zero} contribution from the Holst term. The bispectrum is therefore identical to the standard GR result.
 
@@ -1502,7 +1503,7 @@ All materials necessary to reproduce the cosmological and galaxy spin results ar
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of what cannot currently be reproduced.
 \end{itemize}
 
-\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors require PolyChord nested sampling (not provided). No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
+\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors were estimated via the Savage-Dickey density ratio from MCMC posteriors; dedicated PolyChord nested sampling (not provided) would yield more robust estimates. No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
 
 
 %% ============================================================
@@ -1510,6 +1511,8 @@ All materials necessary to reproduce the cosmological and galaxy spin results ar
 %% ============================================================
 \begin{acknowledgments}
 We thank the Planck, CMB-S4, LiteBIRD, LSST, and DESI collaborations for providing the observational foundation for this work. We particularly acknowledge the foundational contributions of Nikodem Pop\l{}awski, whose pioneering work on Einstein-Cartan cosmology, torsion-induced bounces, and rotating black hole universes provided essential theoretical groundwork. We thank Simone Mercuri, Laurent Freidel, Djordje Minic, and Tatsu Takeuchi for their fundamental derivations connecting the Barbero-Immirzi parameter to parity-violating interactions in Loop Quantum Gravity. We acknowledge Lior Shamir for his persistent observational documentation of large-scale galaxy spin asymmetries. We thank Yuto Minami and Eiichiro Komatsu for establishing the observational evidence for cosmic birefringence. We acknowledge the theoretical and observational cosmology communities for the frameworks and precision measurements that enable these tests. Computational resources were provided by the author.
+
+The author acknowledges the use of Claude (Anthropic) as an AI research assistant during the systematic barrier-cataloging, perturbation-gate verification, and manuscript preparation phases of this work. No external funding was received for this research.
 \end{acknowledgments}
 
 
@@ -1580,7 +1583,7 @@ $\tau$ & Optical depth & Flat $[0.01,0.1]$ & $0.054 \pm 0.007$ & \\
 \hline
 \multicolumn{5}{l}{\textit{Extended parameters (our model)}} \\
 $\Omega_k$ & Curvature & \textbf{Fixed: 0} & --- & Mandated by 92 $e$-folds \\
-$\Delta \Neff$ & Extra species & Flat $[0,1]$ & $-0.020\pm 0.169$\,\textsuperscript{a} & Consistent with zero \\
+$\Delta \Neff$ & Extra species & Flat $[-1,2]$ (via $N_{\rm eff} \in [2.046, 5.046]$) & $-0.020\pm 0.169$\,\textsuperscript{a} & Consistent with zero \\
 $(\omega/H)_0$ & Vorticity & $[0,5\times 10^{-11}]$ & $< 2.1\times 10^{-11}$ & CMB isotropy (95\% CL) \\
 \end{tabular}
 \end{ruledtabular}
@@ -1891,7 +1894,7 @@ All MCMC results in this paper were obtained using the Cobaya framework (v3.5 fo
 \item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).
 \end{itemize}
 
-\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) require PolyChord nested sampling, which is computationally more expensive and not provided. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
+\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio; dedicated PolyChord nested sampling would provide more robust estimates but is not included. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
 
 
 %% --- K: Claims Classification Table ---
@@ -1922,7 +1925,7 @@ Smooth bounce $\to$ slow-roll transition & Assumed & Sec.~\ref{sec:theory_progra
 $A(z) = A_0(1+z)^{-p}e^{-qz}$ functional form & Assumed & Eq.~(\ref{eq:Az}) & Phenomenological ansatz \\
 \hline
 \multicolumn{4}{l}{\textit{Fit / Inferred from data}} \\
-$H_0 = 69.2 \pm 0.8$ km/s/Mpc & MCMC fit & Eq.~(\ref{eq:H0}) & Original (tension dataset, includes SH0ES prior) \\
+$H_0 = 69.2 \pm 0.8$ km/s/Mpc & MCMC fit & Eq.~(\ref{eq:H0}) & Original (superseded; see Sec.~\ref{sec:verification}) \\
 $H_0 = 67.68 \pm 1.06$ km/s/Mpc & Verification & Table~\ref{tab:verification} & Full-tension, frozen chains \\
 $\sigma_8 = 0.785 \pm 0.016$ & MCMC fit & Eq.~(\ref{eq:s8}) & Original (tension dataset) \\
 $\sigma_8 = 0.803 \pm 0.008$ & Verification & Table~\ref{tab:verification} & Full-tension, frozen chains \\
