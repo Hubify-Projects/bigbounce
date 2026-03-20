@@ -147,13 +147,46 @@ where $J^5_\mu = \bar{\psi}\gamma^\mu\gamma^5\psi$ is the axial fermion current.
 \end{itemize}
 FRW isotropy further kills all spatial parity-odd backgrounds.
 
-\subsection{Barriers 9--11 (Branches J, L)}
+\subsection{Barrier 9: Liouville Conservation (Branch J)}
 
-\textbf{Barrier 9 (Liouville Conservation):} Phase-space conservation (Liouville's theorem) prevents the bounce from irreversibly selecting a preferred state. Any state contraction would violate unitarity.
+Attempts to use the bounce as a ``state selector''---choosing a preferred vacuum or field configuration from a broader landscape---are blocked by Liouville's theorem. In Hamiltonian mechanics, phase-space volume is conserved under unitary evolution:
+\begin{equation}
+\frac{d}{dt}\int_{\Gamma} d^{2n}q\,d^{2n}p = 0
+\end{equation}
+where $\Gamma$ is any region of phase space. The bounce, being governed by the modified Friedmann equation (Eq.~\ref{eq:modfriedmann} of Paper~I), is a smooth, time-reversible Hamiltonian flow. It cannot irreversibly contract the accessible phase-space volume.
 
-\textbf{Barrier 10 (UV$\to$IR Specificity Dilemma):} Extensions bridging UV (bounce-scale) to IR (cosmological-scale) physics face a dilemma: generic bridges produce effects indistinguishable from standard scalar-tensor theory, while specific bridges require tuning.
+The consequence for dark energy is direct: if the pre-bounce phase space contains a measure-zero set of trajectories leading to the observed $\Lambda_{\rm eff}$, the post-bounce phase space contains the same measure-zero set. The bounce cannot amplify the probability of landing on a trajectory with $\rho_\Lambda \approx (2.3\;\text{meV})^4$. Any mechanism that appears to select a preferred vacuum through the bounce must, upon closer inspection, either (a)~have the selection already encoded in the initial conditions (shifting the fine-tuning to the contracting phase) or (b)~invoke dissipative/decoherence effects that violate unitarity.
 
-\textbf{Barrier 11 (Decoupling Universality):} Light gauge fields decouple from Planck-scale torsion modes with universal efficiency, preventing any bounce-scale information from reaching the gauge sector.
+Entropy production during the bounce (e.g., particle creation at near-Planck densities) does break time-reversal symmetry, but the resulting entropy increase is generic---it does not preferentially select cosmological-constant-scale vacuum energies over any other scale. The entropy is $\Delta S \sim \rho_{\rm crit}/T_{\rm bounce} \sim \mathcal{O}(\Mpl^3)$, which is Planck-scale information, not IR-scale vacuum selection.
+
+\subsection{Barrier 10: UV$\to$IR Specificity Dilemma (Branch L)}
+
+Any mechanism bridging bounce-scale (UV) physics to cosmological-scale (IR) dark energy must make a choice: be \emph{generic} (arising from general principles applicable to any UV completion) or be \emph{specific} (deriving from detailed ECH/LQC structure). Both choices fail:
+
+\textbf{Generic bridges} produce effects indistinguishable from standard scalar-tensor theory. If the bridge depends only on the existence of a bounce at some critical density $\rho_c$ and a subsequent expansion, its IR predictions are captured by an effective field theory with operators organized by the hierarchy:
+\begin{equation}
+\mathcal{L}_{\rm eff} = \Mpl^2 R + c_1 \frac{R^2}{\Mpl^2} + c_2 \frac{(\nabla\phi)^4}{\Mpl^4} + \cdots
+\end{equation}
+where the Wilson coefficients $c_i$ are $\mathcal{O}(1)$ numbers set at the UV scale. These operators produce late-time effects suppressed by $H_0^2/\Mpl^2 \sim 10^{-122}$. No generic bridge can overcome this hierarchy without invoking a light scalar with mass $m \sim H_0$---which is precisely the cosmological constant problem in a different guise.
+
+\textbf{Specific bridges} require detailed knowledge of the bounce dynamics at Planck density to set IR parameters. But any IR parameter that depends sensitively on Planck-scale details is subject to radiative corrections of order $\delta m^2 \sim \Mpl^2/(16\pi^2)$, requiring cancellation at 1 part in $10^{57}$ (the same hierarchy as Barrier~1). The specificity that makes the mechanism distinctive also makes it radiatively unstable.
+
+This dilemma is a manifestation of the technical naturalness problem~\citep{tHooft:1979nat}: a small parameter ($H_0/\Mpl$) is natural only if setting it to zero enhances the symmetry of the theory. No bounce mechanism provides such a symmetry.
+
+\subsection{Barrier 11: Decoupling Universality (Branches L/M)}
+
+Light gauge fields (photons, gravitons at cosmological wavelengths) decouple from Planck-scale torsion modes with universal efficiency, governed by the Appelquist-Carazzone decoupling theorem. For a heavy torsion mode of mass $m_T \sim \Mpl$, its contribution to the vacuum polarization of a massless gauge field at momentum $k \ll m_T$ is:
+\begin{equation}
+\Pi(k^2) \sim \frac{g_{\rm eff}^2}{16\pi^2}\left[\frac{k^2}{m_T^2} + \mathcal{O}\left(\frac{k^4}{m_T^4}\right)\right]
+\end{equation}
+where $g_{\rm eff}$ is the torsion-gauge coupling. At cosmological scales ($k \sim H_0$):
+\begin{equation}
+\frac{\Pi(H_0^2)}{\Pi(\Mpl^2)} \sim \frac{H_0^2}{\Mpl^2} \sim 10^{-122}
+\end{equation}
+
+This suppression is not specific to ECH or any particular torsion theory---it follows from general principles of effective field theory. The bounce imprints its physics at scale $\Mpl$; by the time this information propagates to scale $H_0$ through gauge-sector loops, it is suppressed by 122 orders of magnitude.
+
+The only escape from decoupling universality is a torsion mode that is itself ultralight ($m_T \sim H_0$), but this returns to the mass-coupling lock of Barrier~1: achieving $m_T \sim H_0$ requires fine-tuning at the level of $10^{-122}$. The combination of Barriers 1 and 11 forms a closed loop: heavy torsion modes decouple from IR physics, and light torsion modes require the same fine-tuning they were meant to explain.
 
 \subsection{Barrier 12: Vacuum Amplification Ceiling (Branch M)}
 
