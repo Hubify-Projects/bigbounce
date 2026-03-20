@@ -21,7 +21,7 @@
 \maketitle
 
 \begin{abstract}
-We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. This minimal setup naturally produces a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6$--$3.9\sigma$ isotropic birefringence signal reported by Planck and ACT analyses ($\beta_{\rm obs} = 0.35 \pm 0.09^\circ$ combined). The prediction is parameter-free in the sense that $f_a \sim M_{\rm Pl}$ is the natural scale for a gravitationally coupled pseudoscalar, $m \sim H_0$ ensures the field is rolling today, and the initial misalignment angle $\theta_i \sim \mathcal{O}(1)$ is generic. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (strong evidence). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $> 5\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
+We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. This minimal setup naturally produces a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6$--$3.9\sigma$ isotropic birefringence signal reported by Planck and ACT analyses ($\beta_{\rm obs} = 0.35 \pm 0.09^\circ$ combined). The prediction is natural in the sense that $f_a \sim M_{\rm Pl}$ is the natural scale for a gravitationally coupled pseudoscalar, $m \sim H_0$ ensures the field is rolling today, and the initial misalignment angle $\theta_i \sim \mathcal{O}(1)$ is generic. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (strong evidence). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $> 5\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
 \end{abstract}
 
 \section{Introduction}
@@ -63,6 +63,8 @@ We use the following birefringence measurements:
 \item Planck HFI 2020: $\beta = 0.35 \pm 0.14^\circ$
 \item ACT DR6: $\beta = 0.18 \pm 0.11^\circ$ (approximate)
 \end{itemize}
+
+The combined constraint $\beta_{\rm combined} = 0.242 \pm 0.061^\circ$ in Eq.~(4) is the inverse-variance weighted average of these two measurements. Our MCMC analysis (Sec.~3.3) uses the Eskilt et al.\ (2022) joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it accounts for the full EB cross-spectrum covariance rather than combining point estimates.
 
 \subsection{Summary-Likelihood Inference}
 
@@ -137,6 +139,7 @@ Comparing the ALP model ($\beta \neq 0$) against the null hypothesis ($\beta = 0
 \begin{equation}
 \ln B = 5.17 \quad (\text{strong evidence for nonzero rotation})
 \end{equation}
+computed via the Savage-Dickey density ratio with a flat prior $\beta \in [0°, 1°]$. The evidence is prior-dependent: $\ln B = 4.48$ for $\beta \in [0°, 2°]$ and $\ln B = 5.86$ for $\beta \in [0°, 0.5°]$.
 
 \section{LiteBIRD Forecast}
 
@@ -164,11 +167,11 @@ The ALP birefringence prediction $\beta \approx 0.27^\circ$ has three notable fe
 \item \textbf{Sharp falsifiability:} LiteBIRD will test the prediction at $9\sigma$---either a decisive confirmation or a clean exclusion.
 \end{enumerate}
 
-We emphasize that the ALP birefringence model class is well-studied in the literature. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
+We emphasize that the ALP birefringence model class is well-studied in the literature~\citep{Fujita:2021}. Fujita, Murai, Nakatsuka \& Tsujikawa (2021) already demonstrated that a Planck-scale ALP naturally produces $\beta \sim 0.3°$, and Namikawa, Murai \& Naokawa (2025) provide superior ALP mass constraints using the full Planck EB spectrum. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
 
 \section{Conclusion}
 
-A spectator ALP with Planck-scale decay constant and Hubble-scale mass naturally predicts cosmic birefringence at $\beta \approx 0.27^\circ$, consistent with the $3.9\sigma$ combined signal from Planck and ACT. The prediction is parameter-free in the sense that all inputs are at their natural scales. LiteBIRD will provide a definitive test at $9\sigma$ significance. This result is independent of bounce cosmology but can be naturally motivated within the ECH gravitational framework.
+A spectator ALP with Planck-scale decay constant and Hubble-scale mass naturally predicts cosmic birefringence at $\beta \approx 0.27^\circ$, consistent with the $3.9\sigma$ combined signal from Planck and ACT. The prediction requires no fine-tuning: all inputs are at their natural scales, though the anomaly coefficient $C_0$ and initial misalignment $\theta_i$ are model-dependent parameters of order unity. LiteBIRD will provide a definitive test at $9\sigma$ significance. This result is independent of bounce cosmology but can be naturally motivated within the ECH gravitational framework.
 
 \section*{Acknowledgments}
 
