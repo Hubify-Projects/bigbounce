@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current version: v1.6.0** (March 2026) — 31 pages, 51 bibliography entries, 8 revision rounds complete.
+**Current version: v2.0.0** (March 2026) — ~37 pages, 57+ bibliography entries, 8 revision rounds complete.
 
 **Live website:** https://bigbounce.hubify.app
 
@@ -30,13 +30,15 @@ The website at bigbounce.hubify.app is a multi-page static site deployed via Net
 | Page | File | Purpose |
 |------|------|---------|
 | Homepage | `index.html` | Research overview, key results, stat cards, 14 barriers, ALP prediction, MCMC table, figures, claims table, falsification criteria |
-| Papers | `paper.html` | Paper listing (4 tentative papers with readiness %), version history timeline, full inline paper text |
+| Papers | `paper.html` | Paper listing (3 papers with readiness %), version history timeline, full inline paper text |
 | Explainer | `explained.html` | Accessible non-technical explanation of the research |
 | Data Explorer | `data-explorer.html` | Interactive MCMC data tool with 15 embedded datasets, sortable tables, column stats, 6 equation calculators, node-tree visualization |
 | Figures | `figures.html` | Gallery of 22 figures with lightbox viewer |
 | Glossary | `glossary.html` | 13 equations gallery + 28-entry searchable glossary with pronunciations |
 | Articles | `articles.html` | Index of 7 deep-dive articles |
 | Activity | `activity.html` | Live research status banner, priority queue, chronological timeline feed |
+| Timeline | `timeline.html` | Visual cosmological timeline from parent universe through bounce to SPHEREx 2028 |
+| Visualize | `visualize.html` | Interactive dark-mode cosmic simulation of the Big Bounce |
 | Dossier | `research/project_master_dossier/index.html` | Full project intelligence dashboard (integrated with site nav) |
 | Datasets | `datasets.html` | Dataset descriptions and Cobaya config details |
 | Articles (7) | `articles/*.html` | Individual article pages |
@@ -45,7 +47,7 @@ The website at bigbounce.hubify.app is a multi-page static site deployed via Net
 
 All pages share a consistent nav bar:
 ```
-BigBounce | Research | Papers | Explainer | Data | Figures | Glossary | Articles | Activity | Dossier
+BigBounce | Research | Papers | Explainer | Data | Figures | Glossary | Articles | Timeline | Visualize | Activity | Dossier
 ```
 
 The nav includes a mobile hamburger menu (`<button class="nav-toggle">`).
