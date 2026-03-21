@@ -349,6 +349,7 @@ footer p { margin: 2px 0; color: var(--text-muted); }
   .sidebar-toggle { display: flex; z-index: 150; /* below sidebar z-index 200 */ }
   .sidebar-close { display: block; }
   .topbar { left: 0; padding-left: 40px; }
+  .topbar-right { display: none; }
   .site-content { margin-left: 0; }
   main, main.container, main.wide-container { padding: 24px 20px 40px; max-width: none; }
   .grid, .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
@@ -364,7 +365,8 @@ footer p { margin: 2px 0; color: var(--text-muted); }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 1.15rem; }
-  .topbar { font-size: 10px; padding: 0 16px; }
+  .topbar { font-size: 10px; padding: 0 12px 0 40px; }
+  .topbar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
 
 /* ── Legacy compat ── */
