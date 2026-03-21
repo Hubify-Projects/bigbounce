@@ -1300,13 +1300,33 @@ Detection of the parity-odd signatures described here would have significant imp
 \item \textit{Origin of dark energy}: Dark energy as a geometric consequence of the universe's quantum gravitational birth, rather than an unexplained constant or ad-hoc scalar field.
 \end{enumerate}
 
-\subsection{Cosmic Birefringence Consistency Check}\label{sec:birefringence_check}
+\subsection{Cosmic Birefringence: Spectator ALP Analysis}\label{sec:birefringence_check}
 
-The parity-odd operator in Eq.~(\ref{eq:Seff}) generates cosmic birefringence---a uniform rotation of CMB linear polarization. We perform a Gaussian summary-likelihood consistency check using two independent published measurements of the isotropic birefringence angle: $\beta = 0.30^\circ \pm 0.11^\circ$ from Planck NPIPE~\cite{Eskilt2022} and $\beta = 0.215^\circ \pm 0.074^\circ$ from ACT~DR6~\cite{DiegoPalazuelos2025}. With a uniform prior $\beta \in [-1^\circ, 1^\circ]$, inverse-variance weighting yields the combined posterior $\beta = 0.242^\circ \pm 0.061^\circ$ ($3.9\sigma$ from zero). A Savage-Dickey density ratio gives a Bayes factor $\mathrm{BF}(\beta \neq 0) \approx 176$ (prior-dependent; the value shifts with the assumed $\beta$ range).
+Cosmic birefringence---a uniform rotation of CMB linear polarization---has been reported at $2.5$--$2.9\sigma$ by independent analyses of Planck~\cite{Minami2020,Eskilt2022} and ACT~DR6~\cite{DiegoPalazuelos2025} data. While the minimal ECH framework does not predict birefringence without an explicit photon-sector coupling, the parity-odd structure of the Holst action provides heuristic motivation for a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim \MPl$ and Hubble-scale mass $m \sim H_0$.
 
-In this framework, the birefringence angle is $\beta = f_{\rm photon} \times [(\alpha/M)\,\MPl] \times C_0$, where $f_{\rm photon}$ parameterizes the photon-torsion vertex strength and $C_0$ encodes the integrated pseudo-scalar field excursion from recombination to today. Matching the combined measurement requires $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (Fig.~\ref{fig:consistency_window}). For $C_0 \in [0.3,\,3]$, the implied coupling is $f_{\rm photon} \in [0.6,\,5.8]$---all $\mathcal{O}(1)$ values consistent with a perturbative one-loop origin. The $(f_{\rm photon},\,C_0)$ degeneracy traces a hyperbola that cannot be broken without an independent determination of $C_0$ from the pseudo-scalar field evolution.
+\textit{ALP field evolution.}---Numerical integration of the ALP equation of motion $\ddot\phi + 3H\dot\phi + m^2 f_a\sin(\phi/f_a) = 0$ in a $\Lambda$CDM background (Planck~2018 parameters) yields the field displacement from recombination to today:
+\begin{equation}
+\Delta\phi/f_a \approx 0.65 \quad (m = H_0,\; \theta_i = 1),
+\end{equation}
+where $\theta_i = \phi_{\rm ini}/f_a$ is the initial misalignment angle. The displacement is $\mathcal{O}(1)$, as the field rolls during the $\Lambda$-dominated transition era ($z \lesssim 1$). Across the natural parameter range $m/H_0 \in [1, 3]$, $\theta_i \in [0.5, 2]$, the displacement varies over $\Delta\phi/f_a \in [0.2, 1.1]$.
 
-This consistency check does not constitute independent evidence for the framework. The birefringence data do not uniquely select spin-torsion cosmology: uniform birefringence of this magnitude is generic to any axion-like coupling~\cite{Carroll1998}. Distinguishing the spin-torsion origin would require either a first-principles derivation of $f_{\rm photon}$ or detection of the specific scale-dependent $EB$ signature predicted by the torsion condensate profile. However, the check establishes that the framework's parity-odd coupling scale $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$---already fixed by the dark energy phenomenology---is naturally compatible with the observed birefringence signal without fine-tuning. A dedicated analysis of the ALP birefringence prediction, including MCMC parameter estimation and LiteBIRD forecasts, is presented in the companion paper~\cite{Golden:2026birefringence}.
+\textit{Birefringence prediction.}---The rotation angle is $\beta = (\alpha_{\rm EM}\,C_{a\gamma})/(4\pi f_a) \times \Delta\phi$, where $C_{a\gamma}$ is the integer anomaly coefficient. For natural parameters ($C_{a\gamma} = 8$, $\theta_i = 1$, $m \approx 2\,H_0$):
+\begin{equation}
+\beta \approx \frac{\alpha_{\rm EM} \times 8}{4\pi} \times 1.07 \approx 0.29^\circ,
+\end{equation}
+consistent with the observed signal. The prediction spans $\beta \approx 0.17$--$0.43^\circ$ over $C_{a\gamma} \in [4,12]$, $m/H_0 \in [1,3]$, $\theta_i \in [0.5,2]$, comfortably bracketing the observed value without fine-tuning. This ALP model class was previously studied by Fujita \etal~\cite{Fujita2021}; our analysis confirms their results and adds the ECH motivation and numerical MCMC constraints described below.
+
+\textit{Summary-likelihood combination.}---Combining $\beta = 0.30^\circ \pm 0.11^\circ$ (Planck NPIPE~\cite{Eskilt2022}) and $\beta = 0.215^\circ \pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}) via inverse-variance weighting:
+\begin{equation}
+\beta_{\rm combined} = 0.242^\circ \pm 0.061^\circ \quad (3.9\sigma\;\text{from zero}).
+\end{equation}
+A Savage-Dickey density ratio gives $\mathrm{BF}(\beta \neq 0) \approx 176$ (prior-dependent; the value shifts with the assumed $\beta$ range).
+
+\textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter space (3 configurations, 9{,}720 total accepted samples) yields: $\beta_{\rm ALP} = 0.336^\circ \pm 0.107^\circ$ (ALP model, $C_{a\gamma} = 8$ fixed), consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ \pm 0.096^\circ$ and the observed $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$ (Eskilt \etal joint analysis). All three are within $1\sigma$, confirming internal consistency. The coupling-misalignment product is $C_{a\gamma} \times \theta_i = 3.4 \pm 1.1$. Priors: $\theta_i \in [0.01, \pi]$ flat, $\log_{10}(m/\text{eV}) \in [-35, -30]$ flat, $C_{a\gamma} \in [1, 30]$ flat. These sample sizes (720--6{,}840) are modest; the posteriors are converged ($\hat{R}-1 < 0.01$) but tail estimates are limited.
+
+\textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$, contingent on the self-calibration strategy and systematic error budget~\cite{LiteBIRD2023}. For $\beta = 0.27^\circ$, this gives $\sim 9\sigma$ statistical significance---either a decisive confirmation or a clean exclusion of the ALP explanation.
+
+\textit{Caveats.}---This birefringence prediction is \emph{independent of bounce cosmology}: the ALP is a spectator field that does not participate in the bounce dynamics. The ECH framework provides heuristic motivation (the Holst action's pseudoscalar sector suggests $f_a \sim \MPl$) but no derivation connects the Holst action to a specific ALP potential. The model \emph{accommodates} the observed signal for natural parameter values; it does not uniquely predict it, since $C_{a\gamma}$ and $\theta_i$ are model-dependent parameters of order unity whose product sets the amplitude.
 
 \begin{figure}[t]
 \centering

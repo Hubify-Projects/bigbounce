@@ -30,7 +30,7 @@ The website at bigbounce.hubify.app is a multi-page static site deployed via Net
 | Page | File | Purpose |
 |------|------|---------|
 | Homepage | `index.html` | Research overview, key results, stat cards, 14 barriers, ALP prediction, MCMC table, figures, claims table, falsification criteria |
-| Papers | `paper.html` | Paper listing (3 papers with readiness %), version history timeline, full inline paper text |
+| Papers | `paper.html` | Paper listing (2 papers with readiness %), version history timeline, full inline paper text |
 | Explainer | `explained.html` | Accessible non-technical explanation of the research |
 | Data Explorer | `data-explorer.html` | Interactive MCMC data tool with 15 embedded datasets, sortable tables, column stats, 6 equation calculators, node-tree visualization |
 | Figures | `figures.html` | Gallery of 22 figures with lightbox viewer |
