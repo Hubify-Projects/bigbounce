@@ -3,7 +3,7 @@
  * Contains full site knowledge for the BigBounce research chatbot.
  */
 
-function getSystemPrompt(pageContext) {
+export function getSystemPrompt(pageContext) {
   const currentPage = pageContext
     ? `The user is currently viewing: "${pageContext.title}" at ${pageContext.path}`
     : 'The user is on the BigBounce research site.';
@@ -90,5 +90,3 @@ The research classifies all claims as:
 Houston Golden, Independent Researcher (houston@hubify.com)
 GitHub: https://github.com/Hubify-Projects/bigbounce`;
 }
-
-module.exports = { getSystemPrompt };

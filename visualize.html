@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualize the Bounce — BigBounce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background: #080810;
+  color: #e0e0e8;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ── Dark-mode sidebar (override) ── */
+.sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 240px; z-index: 200;
+  background: #0d0d18;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transform: translateX(-100%);
+  transition: transform 200ms ease;
+}
+.sidebar.open { transform: translateX(0); }
+.sidebar-brand {
+  padding: 20px 24px 16px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600;
+  color: #ffffff !important; text-decoration: none !important; display: block;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid #222;
+}
+.sidebar-brand:hover { color: #aaa !important; }
+.sidebar-close {
+  position: absolute; top: 20px; right: 16px;
+  background: none; border: none; color: #666; font-size: 18px; cursor: pointer;
+}
+.sidebar-nav { display: block; padding: 16px 0; flex: 1; }
+.sidebar-section {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 24px; margin-bottom: 2px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;
+  color: #888 !important; text-decoration: none !important;
+}
+.sidebar-section:hover { color: #fff !important; }
+.sidebar-section::before { content: '~'; color: #555; }
+.sidebar-section::after { content: '>'; color: #555; margin-left: -2px; }
+.sidebar-link {
+  display: block; padding: 6px 24px 6px 36px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 400;
+  color: #999 !important; text-decoration: none !important;
+}
+.sidebar-link:hover { color: #fff !important; background: rgba(255,255,255,0.04); }
+.sidebar-link.active { color: #fff !important; background: rgba(255,255,255,0.06); }
+.sidebar-sub { padding-left: 0; }
+.sidebar-sub .sidebar-link { padding-left: 48px; font-size: 12px; }
+.sidebar-footer {
+  padding: 16px 24px; border-top: 1px solid #222;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #555; line-height: 1.5;
+}
+
+/* ── Topbar (dark mode) ── */
+.topbar-vis {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 150;
+  height: 44px;
+  background: rgba(8,8,16,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.sidebar-toggle {
+  background: none; border: none; color: #888; cursor: pointer;
+  display: flex; align-items: center; padding: 4px;
+}
+.sidebar-toggle:hover { color: #fff; }
+.topbar-brand {
+  font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;
+  color: #fff !important; text-decoration: none !important; letter-spacing: -0.01em;
+}
+.topbar-brand:hover { color: #aaa !important; }
+.topbar-nav {
+  display: flex; gap: 16px; align-items: center;
+}
+.topbar-nav a {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  color: #666 !important; text-decoration: none !important;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.topbar-nav a:hover { color: #ccc !important; }
+.topbar-nav a.active { color: #fff !important; }
+.topbar-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  color: #444; letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .topbar-nav { display: none; }
+  .topbar-meta { display: none; }
+}
+
+/* ── Canvas ── */
+#cosmos {
+  position: fixed;
+  top: 44px; left: 0; right: 0; bottom: 0;
+  display: block;
+}
+
+/* ── Phase Label ── */
+.phase-label {
+  position: fixed;
+  top: 60px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  pointer-events: none;
+  z-index: 100;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  transition: opacity 0.6s ease;
+  max-width: 90vw;
+}
+.phase-sublabel {
+  display: block;
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+
+/* ── Controls Panel ── */
+.controls {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 120;
+  background: rgba(8,8,16,0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 0 20px 12px;
+}
+
+/* Phase pips */
+.phase-pips {
+  display: flex; justify-content: space-between;
+  padding: 8px 0 4px;
+  position: relative;
+}
+.phase-pip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.phase-pip.active { color: rgba(255,255,255,0.9); }
+.phase-pip:hover { color: rgba(255,255,255,0.6); }
+
+@media (max-width: 600px) {
+  .phase-pip { font-size: 7px; letter-spacing: 0.04em; }
+}
+
+/* Timeline bar */
+.timeline-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 4px 0;
+}
+.timeline-track {
+  flex: 1; height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+.timeline-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  width: 0%;
+  position: relative;
+  transition: none;
+}
+.timeline-fill::after {
+  content: '';
+  position: absolute; right: -5px; top: -3px;
+  width: 10px; height: 10px;
+  background: #fff; border-radius: 50%;
+  box-shadow: 0 0 8px rgba(139,92,246,0.6);
+}
+
+/* Buttons */
+.ctrl-row {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 4px 0 0;
+}
+.ctrl-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #ccc;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 150ms ease;
+}
+.ctrl-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.ctrl-btn.active { background: rgba(139,92,246,0.25); border-color: rgba(139,92,246,0.4); color: #c4b5fd; }
+.play-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; cursor: pointer;
+  transition: all 150ms ease;
+  padding: 0;
+}
+.play-btn:hover { background: rgba(255,255,255,0.15); }
+.play-btn svg { width: 14px; height: 14px; }
+
+/* ── Density Meter ── */
+.density-meter {
+  position: fixed;
+  right: 30px; top: 50%; transform: translateY(-50%);
+  width: 6px; height: 200px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.density-fill {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-radius: 3px;
+  background: linear-gradient(to top, #3b82f6, #f97316, #ef4444);
+  height: 0%;
+  transition: height 0.1s linear;
+}
+.density-label {
+  position: absolute; top: -22px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.density-value {
+  position: absolute; bottom: -20px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<!-- ── Sidebar (hidden by default, toggled) ── -->
+<aside class="sidebar" id="sidebar">
+<a href="index.html" class="sidebar-brand">bigbounce</a>
+<button class="sidebar-close" onclick="document.getElementById('sidebar').classList.remove('open')">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="datasets.html" class="sidebar-link">datasets</a>
+<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+</div>
+<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
+<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="visualize.html" class="sidebar-link active" data-page="visualize">visualize</a>
+<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com</div>
+</aside>
+
+<!-- ── Top bar ── -->
+<div class="topbar-vis">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg>
+    </button>
+    <a href="index.html" class="topbar-brand">bigbounce</a>
+  </div>
+  <nav class="topbar-nav">
+    <a href="index.html">research</a>
+    <a href="paper.html">papers</a>
+    <a href="explained.html">explainer</a>
+    <a href="data-explorer.html">data</a>
+    <a href="figures.html">figures</a>
+    <a href="glossary.html">glossary</a>
+    <a href="visualize.html" class="active">visualize</a>
+    <a href="activity.html">activity</a>
+  </nav>
+  <span class="topbar-meta">Houston Golden &middot; gr-qc</span>
+</div>
+
+<!-- ── Phase label overlay ── -->
+<div class="phase-label" id="phaseLabel">
+  PARENT UNIVERSE &mdash; STELLAR COLLAPSE
+  <span class="phase-sublabel">Matter falls into a black hole</span>
+</div>
+
+<!-- ── Density meter ── -->
+<div class="density-meter" id="densityMeter">
+  <div class="density-label">&rho;/&rho;<sub>crit</sub></div>
+  <div class="density-fill" id="densityFill"></div>
+  <div class="density-value" id="densityValue">0.00</div>
+</div>
+
+<!-- ── Canvas ── -->
+<canvas id="cosmos"></canvas>
+
+<!-- ── Controls ── -->
+<div class="controls">
+  <div class="phase-pips" id="phasePips"></div>
+  <div class="timeline-row">
+    <div class="timeline-track" id="timelineTrack">
+      <div class="timeline-fill" id="timelineFill"></div>
+    </div>
+  </div>
+  <div class="ctrl-row">
+    <button class="ctrl-btn" id="speedDown">0.5x</button>
+    <button class="play-btn" id="playBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><polygon points="6,4 20,12 6,20"/></svg>
+    </button>
+    <button class="ctrl-btn active" id="speedNorm">1x</button>
+    <button class="ctrl-btn" id="speedUp">2x</button>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  COSMIC VISUALIZATION — Big Bounce Animation
+// ════════════════════════════════════════════════════════
+
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+
+// ── State ──
+let W, H, cx, cy;
+let progress = 0;          // 0..1
+let playing = true;
+let speed = 1;
+const CYCLE_MS = 60000;    // 60s at 1x
+let lastTime = null;
+
+// ── Phase definitions ──
+const phases = [
+  { start: 0.00, end: 0.15, label: 'PARENT UNIVERSE \u2014 STELLAR COLLAPSE', sub: 'Matter falls into a black hole' },
+  { start: 0.15, end: 0.30, label: 'INTERIOR \u2014 APPROACHING PLANCK DENSITY', sub: 'Density rises toward critical threshold' },
+  { start: 0.30, end: 0.45, label: 'THE BOUNCE \u2014 \u03C1_crit \u2248 0.41 \u03C1_Pl', sub: 'Contraction reverses \u2014 a new universe begins' },
+  { start: 0.45, end: 0.55, label: 'INFLATION \u2014 92 e-FOLDS', sub: 'Space expands exponentially' },
+  { start: 0.55, end: 0.65, label: 'RECOMBINATION \u2014 z \u2248 1100 \u2014 CMB RELEASED', sub: 'First light escapes the plasma' },
+  { start: 0.65, end: 0.80, label: 'STRUCTURE FORMATION \u2014 GALAXIES FORM', sub: 'Dark matter filaments, galaxy clusters, spiral arms' },
+  { start: 0.80, end: 1.00, label: 'TODAY & FUTURE \u2014 TESTING THE BOUNCE', sub: 'SPHEREx ~2028 \u2014 Will we see the bounce?' },
+];
+
+// ── Build phase pips ──
+const pipsEl = document.getElementById('phasePips');
+const pipLabels = ['COLLAPSE', 'DENSITY', 'BOUNCE', 'INFLATION', 'CMB', 'STRUCTURE', 'TODAY'];
+phases.forEach((p, i) => {
+  const pip = document.createElement('span');
+  pip.className = 'phase-pip';
+  pip.textContent = pipLabels[i];
+  pip.onclick = () => { progress = p.start + 0.001; };
+  pipsEl.appendChild(pip);
+});
+
+// ── Stars (persistent background) ──
+const NUM_STARS = 400;
+let stars = [];
+function initStars() {
+  stars = [];
+  for (let i = 0; i < NUM_STARS; i++) {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.5 + 0.3,
+      bright: Math.random(),
+      twinkleSpeed: Math.random() * 2 + 0.5,
+      twinkleOffset: Math.random() * Math.PI * 2,
+    });
+  }
+}
+
+// ── Particles ──
+const NUM_PARTICLES = 350;
+let particles = [];
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < NUM_PARTICLES; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * Math.min(W, H) * 0.4 + 20;
+    particles.push({
+      x: cx + Math.cos(angle) * dist,
+      y: cy + Math.sin(angle) * dist,
+      vx: 0, vy: 0,
+      baseAngle: angle,
+      baseDist: dist,
+      r: Math.random() * 2 + 0.8,
+      hue: Math.random() * 60 + 200, // blue-violet
+      life: 1,
+    });
+  }
+}
+
+// ── Resize ──
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight - 44; // minus topbar
+  cx = W / 2;
+  cy = H / 2;
+  initStars();
+  initParticles();
+}
+window.addEventListener('resize', resize);
+resize();
+
+// ── Utility ──
+function lerp(a, b, t) { return a + (b - a) * Math.max(0, Math.min(1, t)); }
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+function easeIn(t) { return t * t * t; }
+
+function phaseT(p) {
+  // Return 0..1 within the current phase, or -1 if not in this phase
+  const phase = phases[p];
+  if (progress < phase.start || progress >= phase.end) return -1;
+  return (progress - phase.start) / (phase.end - phase.start);
+}
+
+// ── Draw Stars ──
+function drawStars(time, opacity) {
+  if (opacity <= 0) return;
+  for (const s of stars) {
+    const twinkle = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(time * 0.001 * s.twinkleSpeed + s.twinkleOffset));
+    const alpha = s.bright * twinkle * opacity;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(220,225,255,${alpha})`;
+    ctx.fill();
+  }
+}
+
+// ── Draw Accretion Disk ──
+function drawAccretionDisk(time, t) {
+  const spin = time * 0.0008;
+  const bhRadius = 30 + t * 10;
+  const diskOuter = 180 - t * 40;
+  const diskInner = bhRadius + 8;
+
+  // Disk glow
+  for (let ring = 0; ring < 40; ring++) {
+    const rFrac = ring / 40;
+    const r = lerp(diskInner, diskOuter, rFrac);
+    const brightness = (1 - rFrac) * 0.6;
+    const hue = lerp(200, 30, rFrac * rFrac); // blue inner -> orange outer
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, r, r * 0.25, spin * 0.1, 0, Math.PI * 2);
+    ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${brightness * 0.3})`;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  // Accretion streams — particles spiraling in
+  const streamCount = 60;
+  for (let i = 0; i < streamCount; i++) {
+    const angle = spin + (i / streamCount) * Math.PI * 2 + Math.sin(time * 0.002 + i) * 0.3;
+    const dist = diskInner + (1 - ((time * 0.0004 * (1 + i * 0.02)) % 1)) * (diskOuter - diskInner);
+    const px = cx + Math.cos(angle) * dist;
+    const py = cy + Math.sin(angle) * dist * 0.25;
+    const sz = lerp(1, 3, 1 - (dist - diskInner) / (diskOuter - diskInner));
+    const alpha = lerp(0.2, 0.8, 1 - (dist - diskInner) / (diskOuter - diskInner));
+    const hue = lerp(200, 40, (dist - diskInner) / (diskOuter - diskInner));
+    ctx.beginPath();
+    ctx.arc(px, py, sz, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${hue}, 90%, 65%, ${alpha})`;
+    ctx.fill();
+  }
+
+  // Black hole (dark center)
+  const grad = ctx.createRadialGradient(cx, cy, bhRadius * 0.3, cx, cy, bhRadius);
+  grad.addColorStop(0, 'rgba(0,0,0,1)');
+  grad.addColorStop(0.7, 'rgba(0,0,0,0.98)');
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath();
+  ctx.arc(cx, cy, bhRadius, 0, Math.PI * 2);
+  ctx.fillStyle = '#000';
+  ctx.fill();
+
+  // Gravitational lensing ring
+  const ringGrad = ctx.createRadialGradient(cx, cy, bhRadius - 3, cx, cy, bhRadius + 12);
+  ringGrad.addColorStop(0, 'rgba(100,160,255,0)');
+  ringGrad.addColorStop(0.3, `rgba(140,180,255,${0.4 + 0.2 * Math.sin(time * 0.003)})`);
+  ringGrad.addColorStop(0.6, `rgba(200,220,255,${0.25 + 0.15 * Math.sin(time * 0.003 + 1)})`);
+  ringGrad.addColorStop(1, 'rgba(100,160,255,0)');
+  ctx.beginPath();
+  ctx.arc(cx, cy, bhRadius + 4, 0, Math.PI * 2);
+  ctx.fillStyle = ringGrad;
+  ctx.fill();
+}
+
+// ── Phase 2: Interior density approach ──
+function drawInterior(time, t) {
+  // Energy tendrils
+  const numTendrils = 12;
+  for (let i = 0; i < numTendrils; i++) {
+    const baseAngle = (i / numTendrils) * Math.PI * 2 + time * 0.0005;
+    const maxR = Math.min(W, H) * 0.4 * (1 - t * 0.6);
+    ctx.beginPath();
+    for (let s = 0; s < 60; s++) {
+      const sf = s / 60;
+      const r = maxR * sf;
+      const wobble = Math.sin(sf * 8 + time * 0.003 + i * 2) * 20 * (1 - sf);
+      const angle = baseAngle + sf * 0.8 + wobble * 0.01;
+      const px = cx + Math.cos(angle) * (r + wobble);
+      const py = cy + Math.sin(angle) * (r + wobble);
+      if (s === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    const hue = lerp(220, 20, t); // blue -> orange
+    ctx.strokeStyle = `hsla(${hue}, 80%, 55%, ${0.15 + t * 0.2})`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  // Compressing particles
+  const compressionRadius = lerp(Math.min(W, H) * 0.35, 40, easeIn(t));
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const targetDist = compressionRadius * (p.baseDist / (Math.min(W, H) * 0.4));
+    const angle = p.baseAngle + time * 0.0003;
+    const tx = cx + Math.cos(angle) * targetDist;
+    const ty = cy + Math.sin(angle) * targetDist;
+    p.x = lerp(p.x, tx, 0.05);
+    p.y = lerp(p.y, ty, 0.05);
+
+    const hue = lerp(220, 20, t * t);
+    const alpha = lerp(0.4, 0.9, t);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${hue}, 85%, 60%, ${alpha})`;
+    ctx.fill();
+  }
+
+  // Central glow intensifying
+  const glowR = lerp(20, 80, t);
+  const glowGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
+  const hue = lerp(220, 30, t);
+  glowGrad.addColorStop(0, `hsla(${hue}, 90%, 70%, ${0.3 + t * 0.4})`);
+  glowGrad.addColorStop(0.5, `hsla(${hue}, 80%, 50%, ${0.1 + t * 0.15})`);
+  glowGrad.addColorStop(1, `hsla(${hue}, 70%, 40%, 0)`);
+  ctx.beginPath();
+  ctx.arc(cx, cy, glowR, 0, Math.PI * 2);
+  ctx.fillStyle = glowGrad;
+  ctx.fill();
+}
+
+// ── Phase 3: THE BOUNCE ──
+function drawBounce(time, t) {
+  // Flash at beginning
+  const flashIntensity = t < 0.15 ? (1 - t / 0.15) : 0;
+  if (flashIntensity > 0) {
+    ctx.fillStyle = `rgba(255,255,255,${flashIntensity * 0.9})`;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Shockwave rings
+  const numRings = 5;
+  for (let i = 0; i < numRings; i++) {
+    const ringT = Math.max(0, t - i * 0.08);
+    if (ringT <= 0) continue;
+    const ringR = easeOut(ringT) * Math.max(W, H) * 0.6;
+    const alpha = Math.max(0, 1 - ringT * 1.2) * 0.5;
+    const hue = lerp(0, 270, ringT);
+    ctx.beginPath();
+    ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
+    ctx.strokeStyle = `hsla(${hue}, 80%, 70%, ${alpha})`;
+    ctx.lineWidth = lerp(6, 1, ringT);
+    ctx.stroke();
+
+    // Inner glow on ring
+    const rgGrad = ctx.createRadialGradient(cx, cy, Math.max(0, ringR - 10), cx, cy, ringR + 10);
+    rgGrad.addColorStop(0, `hsla(${hue}, 80%, 60%, 0)`);
+    rgGrad.addColorStop(0.5, `hsla(${hue}, 90%, 70%, ${alpha * 0.3})`);
+    rgGrad.addColorStop(1, `hsla(${hue}, 80%, 60%, 0)`);
+    ctx.beginPath();
+    ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
+    ctx.fillStyle = rgGrad;
+    ctx.fill();
+  }
+
+  // Particles exploding outward
+  const expansionR = easeOut(t) * Math.min(W, H) * 0.45;
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const dist = expansionR * (p.baseDist / (Math.min(W, H) * 0.4));
+    const angle = p.baseAngle + (1 - t) * 0.5;
+    p.x = cx + Math.cos(angle) * dist;
+    p.y = cy + Math.sin(angle) * dist;
+
+    const hue = lerp(30, 260, t);
+    const alpha = lerp(0.9, 0.5, t);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r * lerp(1.5, 1, t), 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${hue}, 85%, 65%, ${alpha})`;
+    ctx.fill();
+  }
+
+  // Central radiance
+  if (t < 0.5) {
+    const cR = lerp(120, 20, t / 0.5);
+    const cGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, cR);
+    cGrad.addColorStop(0, `rgba(255,255,255,${0.8 * (1 - t / 0.5)})`);
+    cGrad.addColorStop(0.4, `rgba(200,180,255,${0.4 * (1 - t / 0.5)})`);
+    cGrad.addColorStop(1, 'rgba(100,80,200,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, cR, 0, Math.PI * 2);
+    ctx.fillStyle = cGrad;
+    ctx.fill();
+  }
+}
+
+// ── Phase 4: Inflation ──
+function drawInflation(time, t) {
+  // Grid lines stretching
+  const gridSpacing = lerp(30, 200, easeIn(t));
+  const gridAlpha = lerp(0.15, 0.03, t);
+
+  ctx.strokeStyle = `rgba(100,140,255,${gridAlpha})`;
+  ctx.lineWidth = 0.5;
+
+  // Vertical lines expanding from center
+  const numLines = 40;
+  for (let i = -numLines; i <= numLines; i++) {
+    const x = cx + i * gridSpacing;
+    if (x < -gridSpacing || x > W + gridSpacing) continue;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+  }
+  // Horizontal lines
+  for (let i = -numLines; i <= numLines; i++) {
+    const y = cy + i * gridSpacing;
+    if (y < -gridSpacing || y > H + gridSpacing) continue;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(W, y);
+    ctx.stroke();
+  }
+
+  // Particles spread out and fade to uniform
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const expandFactor = lerp(1, 5, easeIn(t));
+    const dist = p.baseDist * expandFactor;
+    const angle = p.baseAngle;
+    p.x = cx + Math.cos(angle) * dist;
+    p.y = cy + Math.sin(angle) * dist;
+
+    const alpha = lerp(0.4, 0.08, t);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r * 0.8, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(160,170,255,${alpha})`;
+    ctx.fill();
+  }
+
+  // Uniform background glow at end
+  if (t > 0.5) {
+    const uAlpha = (t - 0.5) * 0.1;
+    ctx.fillStyle = `rgba(30,25,60,${uAlpha})`;
+    ctx.fillRect(0, 0, W, H);
+  }
+}
+
+// ── Phase 5: CMB Release ──
+function drawCMB(time, t) {
+  // CMB sphere — expanding shell of photons
+  const cmbR = lerp(40, Math.min(W, H) * 0.35, easeOut(t));
+  const shellWidth = 30;
+
+  // Warm glow sphere
+  const cmbGrad = ctx.createRadialGradient(cx, cy, Math.max(0, cmbR - shellWidth), cx, cy, cmbR + shellWidth);
+  cmbGrad.addColorStop(0, 'rgba(255,180,50,0)');
+  cmbGrad.addColorStop(0.3, `rgba(255,160,30,${0.15 + 0.1 * Math.sin(time * 0.002)})`);
+  cmbGrad.addColorStop(0.5, `rgba(255,200,80,${0.25 + 0.1 * Math.sin(time * 0.003)})`);
+  cmbGrad.addColorStop(0.7, `rgba(255,140,20,${0.15 + 0.1 * Math.sin(time * 0.002 + 1)})`);
+  cmbGrad.addColorStop(1, 'rgba(255,100,0,0)');
+  ctx.beginPath();
+  ctx.arc(cx, cy, cmbR + shellWidth, 0, Math.PI * 2);
+  ctx.fillStyle = cmbGrad;
+  ctx.fill();
+
+  // CMB "photons" released
+  const photonCount = 120;
+  for (let i = 0; i < photonCount; i++) {
+    const angle = (i / photonCount) * Math.PI * 2 + Math.sin(time * 0.001 + i * 0.5) * 0.1;
+    const dist = cmbR + Math.sin(time * 0.003 + i * 3) * 8;
+    const px = cx + Math.cos(angle) * dist;
+    const py = cy + Math.sin(angle) * dist;
+    const sz = 1 + Math.sin(time * 0.005 + i) * 0.5;
+    ctx.beginPath();
+    ctx.arc(px, py, sz, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,${180 + Math.sin(i) * 40},${50 + Math.sin(i * 2) * 30},${0.6 + 0.3 * Math.sin(time * 0.004 + i)})`;
+    ctx.fill();
+  }
+
+  // Polarization streaks
+  if (t > 0.3) {
+    const polAlpha = lerp(0, 0.25, (t - 0.3) / 0.7);
+    const streakCount = 30;
+    for (let i = 0; i < streakCount; i++) {
+      const angle = (i / streakCount) * Math.PI * 2;
+      const dist = cmbR;
+      const px = cx + Math.cos(angle) * dist;
+      const py = cy + Math.sin(angle) * dist;
+      const polAngle = angle + Math.PI / 2 + Math.sin(i * 1.5 + time * 0.001) * 0.4;
+      const len = 12;
+      ctx.beginPath();
+      ctx.moveTo(px - Math.cos(polAngle) * len, py - Math.sin(polAngle) * len);
+      ctx.lineTo(px + Math.cos(polAngle) * len, py + Math.sin(polAngle) * len);
+      ctx.strokeStyle = `rgba(255,220,120,${polAlpha})`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }
+
+  // Inner dark (already released)
+  if (t > 0.4) {
+    const innerAlpha = lerp(0, 0.4, (t - 0.4) / 0.6);
+    const innerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, cmbR - shellWidth);
+    innerGrad.addColorStop(0, `rgba(8,8,16,${innerAlpha})`);
+    innerGrad.addColorStop(1, 'rgba(8,8,16,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, cmbR - shellWidth, 0, Math.PI * 2);
+    ctx.fillStyle = innerGrad;
+    ctx.fill();
+  }
+}
+
+// ── Phase 6: Structure Formation ──
+function drawStructure(time, t) {
+  // Cosmic web filaments
+  const nodeCount = 20;
+  const nodes = [];
+  for (let i = 0; i < nodeCount; i++) {
+    // Deterministic positions based on index
+    const seed1 = Math.sin(i * 127.1 + 311.7) * 0.5 + 0.5;
+    const seed2 = Math.sin(i * 269.5 + 183.3) * 0.5 + 0.5;
+    nodes.push({
+      x: seed1 * W,
+      y: seed2 * H,
+    });
+  }
+
+  // Filaments between nearby nodes
+  const filAlpha = lerp(0, 0.3, easeOut(Math.min(t * 2, 1)));
+  for (let i = 0; i < nodeCount; i++) {
+    for (let j = i + 1; j < nodeCount; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 250) {
+        const alpha = filAlpha * (1 - dist / 250);
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        // Curved filament
+        const mx = (nodes[i].x + nodes[j].x) / 2 + Math.sin(i + j) * 30;
+        const my = (nodes[i].y + nodes[j].y) / 2 + Math.cos(i * j) * 30;
+        ctx.quadraticCurveTo(mx, my, nodes[j].x, nodes[j].y);
+        ctx.strokeStyle = `rgba(80,100,200,${alpha})`;
+        ctx.lineWidth = lerp(0.5, 2, alpha / filAlpha);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Galaxy clusters at nodes
+  const clusterAlpha = lerp(0, 1, easeOut(Math.max(0, (t - 0.2) * 1.5)));
+  for (let i = 0; i < nodeCount; i++) {
+    const n = nodes[i];
+    const sz = 4 + Math.sin(i * 7.7) * 2;
+    const clGrad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, sz * 4);
+    clGrad.addColorStop(0, `rgba(180,160,255,${0.5 * clusterAlpha})`);
+    clGrad.addColorStop(0.5, `rgba(100,80,200,${0.2 * clusterAlpha})`);
+    clGrad.addColorStop(1, 'rgba(60,40,150,0)');
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, sz * 4, 0, Math.PI * 2);
+    ctx.fillStyle = clGrad;
+    ctx.fill();
+
+    // Core
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, sz * 0.8, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(220,210,255,${0.7 * clusterAlpha})`;
+    ctx.fill();
+  }
+
+  // Spiral galaxies (draw a few prominent ones in later part)
+  if (t > 0.4) {
+    const galAlpha = lerp(0, 1, (t - 0.4) / 0.4);
+    const galaxyPositions = [
+      { x: cx - W * 0.2, y: cy - H * 0.1 },
+      { x: cx + W * 0.25, y: cy + H * 0.15 },
+      { x: cx, y: cy },
+    ];
+    for (const gp of galaxyPositions) {
+      drawSpiralGalaxy(gp.x, gp.y, time, galAlpha, 50);
+    }
+  }
+}
+
+function drawSpiralGalaxy(gx, gy, time, alpha, size) {
+  const spin = time * 0.0006;
+  // Arms
+  for (let arm = 0; arm < 2; arm++) {
+    ctx.beginPath();
+    for (let s = 0; s < 80; s++) {
+      const sf = s / 80;
+      const angle = spin + arm * Math.PI + sf * 3;
+      const r = sf * size;
+      const px = gx + Math.cos(angle) * r;
+      const py = gy + Math.sin(angle) * r * 0.6; // elliptical
+      if (s === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = `rgba(180,170,255,${0.3 * alpha})`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  // Stars along arms
+  for (let arm = 0; arm < 2; arm++) {
+    for (let s = 0; s < 30; s++) {
+      const sf = s / 30;
+      const angle = spin + arm * Math.PI + sf * 3 + Math.sin(s * 3) * 0.15;
+      const r = sf * size + Math.sin(s * 5) * 3;
+      const px = gx + Math.cos(angle) * r;
+      const py = gy + Math.sin(angle) * r * 0.6;
+      ctx.beginPath();
+      ctx.arc(px, py, 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(220,215,255,${0.5 * alpha})`;
+      ctx.fill();
+    }
+  }
+
+  // Bright center
+  const cGrad = ctx.createRadialGradient(gx, gy, 0, gx, gy, size * 0.2);
+  cGrad.addColorStop(0, `rgba(255,240,200,${0.7 * alpha})`);
+  cGrad.addColorStop(1, 'rgba(200,180,255,0)');
+  ctx.beginPath();
+  ctx.arc(gx, gy, size * 0.2, 0, Math.PI * 2);
+  ctx.fillStyle = cGrad;
+  ctx.fill();
+}
+
+// ── Phase 7: Today ──
+function drawToday(time, t) {
+  // Background: faint cosmic web
+  drawStructure(time, 1);
+
+  // Earth (blue-green circle)
+  const earthR = 18;
+  const earthX = cx;
+  const earthY = cy + H * 0.1;
+
+  // Earth glow
+  const eGrad = ctx.createRadialGradient(earthX, earthY, earthR * 0.3, earthX, earthY, earthR * 2.5);
+  eGrad.addColorStop(0, 'rgba(60,130,200,0.3)');
+  eGrad.addColorStop(0.5, 'rgba(40,100,160,0.1)');
+  eGrad.addColorStop(1, 'rgba(30,80,140,0)');
+  ctx.beginPath();
+  ctx.arc(earthX, earthY, earthR * 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = eGrad;
+  ctx.fill();
+
+  // Earth body
+  const earthGrad = ctx.createRadialGradient(earthX - 4, earthY - 4, 0, earthX, earthY, earthR);
+  earthGrad.addColorStop(0, '#4a9eda');
+  earthGrad.addColorStop(0.3, '#2d7ab8');
+  earthGrad.addColorStop(0.6, '#1d6a3a');
+  earthGrad.addColorStop(0.8, '#2d7ab8');
+  earthGrad.addColorStop(1, '#1a4a7a');
+  ctx.beginPath();
+  ctx.arc(earthX, earthY, earthR, 0, Math.PI * 2);
+  ctx.fillStyle = earthGrad;
+  ctx.fill();
+
+  // Telescope (small triangle above earth)
+  const telX = earthX;
+  const telY = earthY - earthR - 25;
+  ctx.save();
+  ctx.translate(telX, telY);
+  ctx.rotate(Math.sin(time * 0.001) * 0.1);
+  ctx.beginPath();
+  ctx.moveTo(0, -10);
+  ctx.lineTo(-5, 6);
+  ctx.lineTo(5, 6);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(200,200,220,0.7)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+  ctx.lineWidth = 0.5;
+  ctx.stroke();
+  ctx.restore();
+
+  // Data streams radiating from telescope toward CMB at edges
+  const streamAlpha = lerp(0, 0.6, easeOut(Math.min(t * 3, 1)));
+  const streamCount = 12;
+  for (let i = 0; i < streamCount; i++) {
+    const angle = -Math.PI / 2 + (i - streamCount / 2) * 0.15;
+    const len = lerp(30, Math.max(W, H) * 0.4, easeOut(Math.min(t * 2, 1)));
+    // Dotted data stream
+    const dots = 20;
+    for (let d = 0; d < dots; d++) {
+      const df = d / dots;
+      const offset = (time * 0.002 + i * 0.3) % 1;
+      const dPos = (df + offset) % 1;
+      const dx = telX + Math.cos(angle) * len * dPos;
+      const dy = telY + Math.sin(angle) * len * dPos;
+      const sz = 1.2 * (1 - dPos);
+      const a = streamAlpha * (1 - dPos) * 0.5;
+      ctx.beginPath();
+      ctx.arc(dx, dy, sz, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(100,200,255,${a})`;
+      ctx.fill();
+    }
+  }
+
+  // Prediction text overlays
+  if (t > 0.3) {
+    const textAlpha = lerp(0, 1, (t - 0.3) / 0.3);
+    ctx.save();
+    ctx.font = `600 ${Math.min(24, W * 0.03)}px 'IBM Plex Mono', monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = `rgba(255,200,80,${textAlpha})`;
+    ctx.fillText('f_NL = \u221235/8', cx, cy - H * 0.22);
+    ctx.font = `400 ${Math.min(12, W * 0.015)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(255,200,80,${textAlpha * 0.6})`;
+    ctx.fillText('matter bounce prediction (parameter-free)', cx, cy - H * 0.22 + 20);
+
+    ctx.font = `600 ${Math.min(24, W * 0.03)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(139,92,246,${textAlpha})`;
+    ctx.fillText('\u03B2 = 0.27\u00B0', cx, cy - H * 0.12);
+    ctx.font = `400 ${Math.min(12, W * 0.015)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(139,92,246,${textAlpha * 0.6})`;
+    ctx.fillText('cosmic birefringence (natural ALP)', cx, cy - H * 0.12 + 20);
+    ctx.restore();
+  }
+
+  // Mission labels
+  if (t > 0.5) {
+    const mAlpha = lerp(0, 1, (t - 0.5) / 0.3);
+    ctx.save();
+    ctx.textAlign = 'left';
+    ctx.font = `500 ${Math.min(13, W * 0.016)}px 'IBM Plex Mono', monospace`;
+
+    // SPHEREx
+    const sphX = cx + W * 0.15;
+    const sphY = cy + H * 0.25;
+    ctx.fillStyle = `rgba(59,130,246,${mAlpha})`;
+    ctx.fillText('SPHEREx ~2028', sphX, sphY);
+    ctx.font = `400 ${Math.min(10, W * 0.012)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(59,130,246,${mAlpha * 0.6})`;
+    ctx.fillText('f_NL sensitivity: \u03C3 \u2248 0.5', sphX, sphY + 16);
+
+    // LiteBIRD
+    const litX = cx - W * 0.35;
+    const litY = cy + H * 0.25;
+    ctx.font = `500 ${Math.min(13, W * 0.016)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(139,92,246,${mAlpha})`;
+    ctx.fillText('LiteBIRD ~2030', litX, litY);
+    ctx.font = `400 ${Math.min(10, W * 0.012)}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = `rgba(139,92,246,${mAlpha * 0.6})`;
+    ctx.fillText('\u03B2 at 9\u03C3 significance', litX, litY + 16);
+    ctx.restore();
+  }
+
+  // Final question
+  if (t > 0.7) {
+    const qAlpha = lerp(0, 1, (t - 0.7) / 0.2);
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.font = `600 ${Math.min(20, W * 0.025)}px 'Inter', sans-serif`;
+    ctx.fillStyle = `rgba(255,255,255,${qAlpha * 0.9})`;
+    ctx.fillText('Will we see the bounce?', cx, cy + H * 0.38);
+    ctx.restore();
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  MAIN RENDER LOOP
+// ════════════════════════════════════════════════════════
+function render(timestamp) {
+  if (!lastTime) lastTime = timestamp;
+  const dt = timestamp - lastTime;
+  lastTime = timestamp;
+
+  if (playing) {
+    progress += (dt / CYCLE_MS) * speed;
+    if (progress >= 1) progress = 0;
+  }
+
+  // ── Clear ──
+  // Background gradient changes with phase
+  let bgR, bgG, bgB;
+  if (progress < 0.3) {
+    bgR = 8; bgG = 8; bgB = 16;
+  } else if (progress < 0.35) {
+    const bt = (progress - 0.3) / 0.05;
+    bgR = lerp(8, 40, bt); bgG = lerp(8, 30, bt); bgB = lerp(16, 50, bt);
+  } else if (progress < 0.45) {
+    const bt = (progress - 0.35) / 0.1;
+    bgR = lerp(40, 8, bt); bgG = lerp(30, 8, bt); bgB = lerp(50, 20, bt);
+  } else {
+    bgR = 8; bgG = 8; bgB = lerp(20, 16, Math.min(1, (progress - 0.45) / 0.2));
+  }
+  ctx.fillStyle = `rgb(${bgR|0},${bgG|0},${bgB|0})`;
+  ctx.fillRect(0, 0, W, H);
+
+  const time = timestamp;
+
+  // ── Phase 1: Parent Universe ──
+  let t1 = phaseT(0);
+  if (t1 >= 0) {
+    drawStars(time, 1);
+    drawAccretionDisk(time, t1);
+  }
+
+  // ── Transition 1->2 ──
+  let t2 = phaseT(1);
+  if (t2 >= 0) {
+    // Fading stars
+    const starFade = 1 - easeIn(Math.min(t2 * 3, 1));
+    drawStars(time, starFade);
+    drawInterior(time, t2);
+  }
+
+  // ── Phase 3: Bounce ──
+  let t3 = phaseT(2);
+  if (t3 >= 0) {
+    drawBounce(time, t3);
+  }
+
+  // ── Phase 4: Inflation ──
+  let t4 = phaseT(3);
+  if (t4 >= 0) {
+    drawInflation(time, t4);
+  }
+
+  // ── Phase 5: CMB ──
+  let t5 = phaseT(4);
+  if (t5 >= 0) {
+    drawCMB(time, t5);
+  }
+
+  // ── Phase 6: Structure ──
+  let t6 = phaseT(5);
+  if (t6 >= 0) {
+    const starReturn = easeOut(Math.min(t6 * 2, 1)) * 0.3;
+    drawStars(time, starReturn);
+    drawStructure(time, t6);
+  }
+
+  // ── Phase 7: Today ──
+  let t7 = phaseT(6);
+  if (t7 >= 0) {
+    drawStars(time, 0.3);
+    drawToday(time, t7);
+  }
+
+  // ── Update UI ──
+  updateUI(time);
+
+  requestAnimationFrame(render);
+}
+
+// ── UI Updates ──
+const phaseLabel = document.getElementById('phaseLabel');
+const timelineFill = document.getElementById('timelineFill');
+const densityMeter = document.getElementById('densityMeter');
+const densityFillEl = document.getElementById('densityFill');
+const densityValueEl = document.getElementById('densityValue');
+
+function updateUI(time) {
+  // Timeline
+  timelineFill.style.width = (progress * 100) + '%';
+
+  // Phase label
+  let currentPhase = 0;
+  for (let i = 0; i < phases.length; i++) {
+    if (progress >= phases[i].start && progress < phases[i].end) {
+      currentPhase = i;
+      break;
+    }
+  }
+  const p = phases[currentPhase];
+  phaseLabel.innerHTML = p.label + '<span class="phase-sublabel">' + p.sub + '</span>';
+
+  // Phase pips
+  const pips = document.querySelectorAll('.phase-pip');
+  pips.forEach((pip, i) => {
+    pip.classList.toggle('active', i === currentPhase);
+  });
+
+  // Density meter (only visible in phases 1-3)
+  if (progress >= 0.1 && progress < 0.45) {
+    densityMeter.style.opacity = '1';
+    let density;
+    if (progress < 0.15) {
+      density = lerp(0, 0.1, (progress - 0.1) / 0.05);
+    } else if (progress < 0.30) {
+      density = lerp(0.1, 0.95, (progress - 0.15) / 0.15);
+    } else if (progress < 0.35) {
+      density = lerp(0.95, 1.0, (progress - 0.30) / 0.05);
+    } else {
+      density = lerp(1.0, 0.3, (progress - 0.35) / 0.1);
+    }
+    densityFillEl.style.height = (density * 100) + '%';
+    densityValueEl.textContent = density.toFixed(2);
+  } else {
+    densityMeter.style.opacity = '0';
+  }
+}
+
+// ── Controls ──
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+
+playBtn.addEventListener('click', () => {
+  playing = !playing;
+  if (playing) {
+    playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
+  } else {
+    playIcon.innerHTML = '<polygon points="6,4 20,12 6,20"/>';
+  }
+});
+// Start as playing — show pause
+playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
+
+const speedBtns = {
+  '0.5': document.getElementById('speedDown'),
+  '1':   document.getElementById('speedNorm'),
+  '2':   document.getElementById('speedUp'),
+};
+function setSpeed(s) {
+  speed = s;
+  Object.entries(speedBtns).forEach(([k, btn]) => {
+    btn.classList.toggle('active', parseFloat(k) === s);
+  });
+}
+speedBtns['0.5'].addEventListener('click', () => setSpeed(0.5));
+speedBtns['1'].addEventListener('click', () => setSpeed(1));
+speedBtns['2'].addEventListener('click', () => setSpeed(2));
+
+// Timeline click/drag
+const timelineTrack = document.getElementById('timelineTrack');
+let dragging = false;
+
+function setProgressFromEvent(e) {
+  const rect = timelineTrack.getBoundingClientRect();
+  const x = (e.clientX || e.touches[0].clientX) - rect.left;
+  progress = Math.max(0, Math.min(0.999, x / rect.width));
+}
+
+timelineTrack.addEventListener('mousedown', (e) => {
+  dragging = true;
+  setProgressFromEvent(e);
+});
+window.addEventListener('mousemove', (e) => {
+  if (dragging) setProgressFromEvent(e);
+});
+window.addEventListener('mouseup', () => { dragging = false; });
+
+timelineTrack.addEventListener('touchstart', (e) => {
+  dragging = true;
+  setProgressFromEvent(e);
+}, { passive: true });
+window.addEventListener('touchmove', (e) => {
+  if (dragging) setProgressFromEvent(e);
+}, { passive: true });
+window.addEventListener('touchend', () => { dragging = false; });
+
+// ── Keyboard shortcuts ──
+window.addEventListener('keydown', (e) => {
+  if (e.key === ' ' || e.key === 'k') {
+    e.preventDefault();
+    playBtn.click();
+  } else if (e.key === 'ArrowRight') {
+    progress = Math.min(0.999, progress + 0.02);
+  } else if (e.key === 'ArrowLeft') {
+    progress = Math.max(0, progress - 0.02);
+  } else if (e.key === '1') setSpeed(0.5);
+  else if (e.key === '2') setSpeed(1);
+  else if (e.key === '3') setSpeed(2);
+});
+
+// ── Close sidebar on outside click ──
+document.addEventListener('click', (e) => {
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.querySelector('.sidebar-toggle');
+  if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+    sidebar.classList.remove('open');
+  }
+});
+
+// ── Start ──
+requestAnimationFrame(render);
+</script>
+</body>
+</html>

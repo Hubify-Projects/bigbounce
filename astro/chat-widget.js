@@ -7,7 +7,7 @@
   'use strict';
 
   // ── Config ──
-  const API_URL = '/.netlify/functions/chat';
+  const API_URL = '/api/chat';
   const MAX_HISTORY = 20; // max message pairs to send
 
   // ── State ──

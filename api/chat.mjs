@@ -1,5 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { getSystemPrompt } from '../../astro/system-prompt.mjs';
+import { getSystemPrompt } from '../astro/system-prompt.mjs';
+
+export const config = { runtime: 'edge' };
 
 // In-memory rate limiter (resets on cold start — fine for soft limiting)
 const rateLimits = new Map();
@@ -17,7 +19,7 @@ function checkRateLimit(ip) {
   return entry.count <= RATE_LIMIT;
 }
 
-export default async (request) => {
+export default async function handler(request) {
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
       status: 405,
@@ -26,7 +28,7 @@ export default async (request) => {
   }
 
   // Rate limit by IP
-  const ip = request.headers.get('x-forwarded-for') || request.headers.get('client-ip') || 'unknown';
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
   if (!checkRateLimit(ip)) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Please wait a moment.' }), {
       status: 429,
@@ -108,4 +110,4 @@ export default async (request) => {
       headers: { 'Content-Type': 'application/json' }
     });
   }
-};
+}
