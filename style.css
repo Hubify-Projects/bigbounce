@@ -78,6 +78,7 @@ body {
 .sidebar-brand:hover { color: #ccc !important; text-decoration: none !important; }
 
 .sidebar-nav {
+  display: block !important; /* Override any nav{display:none} */
   padding: 16px 0; flex: 1;
 }
 .sidebar-section {
@@ -138,7 +139,7 @@ main.wide-container { max-width: 1040px; padding: 32px 48px 48px; }
 .sidebar-toggle svg { display: block; width: 18px; height: 18px; }
 
 /* Hide old nav elements — sidebar replaces them */
-nav { display: none; }
+body > nav { display: none; }
 
 /* ══════════════════════════════════
    Typography
@@ -334,7 +335,7 @@ footer p { margin: 2px 0; color: var(--text-muted); }
 }
 
 /* ── Legacy compat ── */
-nav { display: none; } /* Old nav hidden — sidebar is primary */
+body > nav, .nav-inner { display: none; } /* Old top nav hidden — sidebar is primary */
 .nav-toggle { display: none; }
 .nav-links { display: none; }
 .phase-bar { display: flex; gap: 2px; }
