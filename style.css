@@ -82,10 +82,14 @@ body {
   padding: 16px 0; flex: 1;
 }
 .sidebar-section {
-  padding: 0 24px; margin-bottom: 4px;
-  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
-  color: #666; display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 24px; margin-bottom: 2px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: #888 !important; text-decoration: none !important;
+  transition: color var(--transition);
 }
+.sidebar-section:hover { color: #fff !important; }
+.sidebar-section.active { color: #fff !important; }
 .sidebar-section::before { content: '~'; color: #555; }
 .sidebar-section::after { content: '>'; color: #555; margin-left: -2px; }
 
