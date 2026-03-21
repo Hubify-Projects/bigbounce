@@ -192,7 +192,7 @@ Bounce vs.\ tuned multifield [$-15,+15$] & 10--23 & 87--96\% \\
 \label{tab:bayes}
 \end{table}
 
-These results are robust to prior sensitivity: the Bayes factor vs.\ tuned multifield ranges from 7 (narrow prior) to 57 (broad prior) under all reasonable prior choices.
+The Bayes factor vs.\ tuned multifield ranges from 7 (narrow prior) to 57 (broad prior), illustrating the sensitivity to prior width choices.
 
 % ============================================================
 \section{Systematics and GR-Aware Robustness}
@@ -275,11 +275,11 @@ A detection of $\fnl \approx -4$ by SPHEREx, if confirmed by any of these indepe
 \label{fig:thresholds}
 \end{figure}
 
-A measurement of $\fnl = -4 \pm 1$ by SPHEREx would provide strong evidence favoring a contracting/bounce origin over standard single-field inflation. A null result ($\fnl$ consistent with zero at the $2\sigma$ level) would strongly disfavor the quasi-dust matter bounce.
+A measurement of $\fnl = -4 \pm 1$ by SPHEREx would provide evidence favoring a contracting/bounce origin over standard single-field inflation. A null result ($\fnl$ consistent with zero at the $2\sigma$ level) would strongly disfavor the quasi-dust matter bounce.
 
 \subsection{Caveats}
 
-We emphasize that a detection of $\fnl \approx -4$ would constitute strong evidence \emph{favoring} the bounce over standard inflation, not unique proof of a pre-Big-Bang contracting phase. Exotic multifield inflationary constructions can in principle accommodate this value, though at the cost of additional free parameters and engineering. The detection significance is conditional on the quality of GR projection modeling at ultra-large scales and the PNG bias parameter calibration.
+We emphasize that a detection of $\fnl \approx -4$ would constitute evidence \emph{favoring} the bounce over standard inflation, not unique proof of a pre-Big-Bang contracting phase. Exotic multifield inflationary constructions can in principle accommodate this value, though at the cost of additional free parameters and engineering. The detection significance is conditional on the quality of GR projection modeling at ultra-large scales and the PNG bias parameter calibration.
 
 We also note that appending late-time dynamical-dark-energy freedom (e.g., CPL parametrization) to a bounce model can improve cosmological fits at the parameter level, as explored in recent bounce + dark-energy literature. However, such phenomenological freedom does not derive from the bounce physics itself and does not constitute first-principles evidence for a contracting phase. Our analysis restricts attention to the parameter-free prediction $\fnl = -35/8$, which is controlled by the contraction dynamics.
 
@@ -296,9 +296,14 @@ Our Bayesian model comparison, based on over 600{,}000 Monte Carlo realizations 
 The matter-bounce bispectrum provides what may be the sharpest single observable for distinguishing the bounce paradigm from standard inflation. SPHEREx data (first science release expected $\sim$2028) will provide the first meaningful test.
 
 % ============================================================
+\section*{Data and Code Availability}
+
+All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/main/research/}. The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\citep{Heinrich:2023,Schlegel:2022}.
+
+% ============================================================
 \section*{Acknowledgments}
 
-The author thanks the developers of the open-source tools used in this work, including NumPy, SciPy, Matplotlib, mpmath, and Tectonic. Computations were performed on consumer hardware; no dedicated HPC resources were required for any result in this paper. The author acknowledges helpful interactions with AI research assistants during the systematic audit and verification phases of this work. No external funding was received for this research.
+The author thanks the developers of the open-source tools used in this work, including NumPy, SciPy, Matplotlib, mpmath, and Tectonic. Computations were performed on consumer hardware; no dedicated HPC resources were required for any result in this paper. The author acknowledges the use of Claude (Anthropic) as an AI research assistant during the systematic audit, verification, and manuscript preparation phases of this work. No external funding was received for this research.
 
 % ============================================================
 \bibliography{focused_paper_refs}
