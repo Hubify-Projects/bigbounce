@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astro Chat — Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<aside class="sidebar">
+<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="datasets.html" class="sidebar-link">datasets</a>
+<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+</div>
+<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
+<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com</div>
+</aside>
+<div class="topbar">
+<span>March 2026 · GR-QC · ASTRO-PH.CO · HEP-TH</span>
+<span class="topbar-right">Houston Golden · Independent Researcher</span>
+</div>
+<div class="site-content">
+<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="chat.html" data-page="astro">astro</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden · gr-qc</span></div></nav>
+<main class="container">
+
+<div class="hero" style="padding-bottom: 16px;">
+  <h1>astro</h1>
+  <p class="subtitle">AI research assistant — ask anything about the BigBounce research program</p>
+</div>
+
+<div id="astro-full-chat"></div>
+
+</main>
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+<script>document.querySelectorAll('[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='astro')a.classList.add('active')})</script>
+<script src="/astro/chat-widget.js" defer></script>
+</div></body>
+</html>

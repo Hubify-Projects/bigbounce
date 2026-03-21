@@ -23,7 +23,9 @@
 <a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
 <a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
 <a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
 <a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
 <a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
 </nav>
 <div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com</div>
@@ -35,7 +37,7 @@
 <div class="site-content">
 
 <!-- Navigation -->
-<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden · gr-qc</span></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="chat.html" data-page="astro">astro</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden · gr-qc</span></div></nav>
 
 <main class="container">
 
@@ -71,7 +73,7 @@
     </ul>
     <p class="text-muted" style="margin-top: 12px;"><strong>Important disclosure:</strong> The MCMC analysis uses stock CAMB with &Delta;N<sub>eff</sub> as a free parameter. This is phenomenologically equivalent to any additional relativistic species model; the connection to bounce physics provides theoretical motivation but does not modify the statistical inference. The bounce framework predicts a specific value of &Delta;N<sub>eff</sub> &asymp; 0.5 from relic gravitational wave heating, and the MCMC analysis tests whether this value is consistent with observations &mdash; it does not assume it.</p>
     <p class="text-muted">Convergence was assessed using the Gelman-Rubin diagnostic (R &minus; 1 &lt; 0.01 for all parameters). Nested sampling via PolyChord was used independently for Bayesian model comparison (log-evidence ratios).</p>
-    <p class="text-muted"><strong>Independent verification (v1.6.0):</strong> Four independent MCMC chains (Planck-only, Planck+BAO, Planck+BAO+SNIa, Full Tension) running on RunPod GPU infrastructure with Cobaya v3.6.1 + CAMB v1.6.5 using Planck NPIPE CamSpec TTTEEE likelihoods. Preliminary results confirm that &Delta;N<sub>eff</sub> is dataset-dependent: CMB-only prefers ~0.46 while the full dataset constrains it to ~0.11. All four chains remain consistent with the paper's reported parameter ranges. Final converged posteriors will be reported in a forthcoming update.</p>
+    <p class="text-muted"><strong>Independent verification:</strong> Four independent MCMC chains (Planck-only, Planck+BAO, Planck+BAO+SNIa, Full Tension) completed on RunPod GPU infrastructure with Cobaya v3.6.1 + CAMB v1.6.5 using Planck NPIPE CamSpec TTTEEE likelihoods. Results: &Delta;N<sub>eff</sub> &asymp; 0 across all dataset combinations. Two chains reached full convergence (Full Tension: 176,840 samples, R&#770;&minus;1 &lt; 0.001; Planck+BAO+SN: 132,949 samples, R&#770;&minus;1 &lt; 0.003). Two exploratory chains (Planck-only, Planck+BAO) have insufficient samples for convergence.</p>
   </div>
 </section>
 
@@ -607,5 +609,6 @@ document.querySelectorAll('nav a[data-page]').forEach(a => {
 });
 </script>
 
-</div></body>
+</div><script src="/astro/chat-widget.js" defer></script>
+</body>
 </html>

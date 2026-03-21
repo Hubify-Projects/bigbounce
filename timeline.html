@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cosmic Timeline — Spin-Torsion Cosmology Research Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ══════════════════════════════════
+     Cosmic Timeline — page-specific styles
+     ══════════════════════════════════ */
+
+  .cosmic-intro {
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .cosmic-intro p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* ── The vertical timeline ── */
+  .cosmic-timeline {
+    position: relative;
+    padding-left: 0;
+    margin: 0 0 48px 0;
+  }
+  .cosmic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      #94a3b8 0%,
+      #475569 15%,
+      #0f172a 30%,
+      #1e40af 45%,
+      #059669 60%,
+      #0891b2 75%,
+      #7c3aed 90%,
+      #db2777 100%
+    );
+  }
+
+  .epoch {
+    position: relative;
+    padding: 0 0 0 52px;
+    margin-bottom: 0;
+  }
+
+  /* The dot on the timeline line */
+  .epoch-dot {
+    position: absolute;
+    left: 10px;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--border);
+  }
+
+  /* The card */
+  .epoch-card {
+    border: 1px solid var(--border);
+    border-left: 4px solid;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    background: var(--bg);
+    transition: border-color var(--transition), box-shadow 200ms ease;
+  }
+  .epoch-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .epoch-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .epoch-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .epoch-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .epoch-body strong {
+    color: var(--text);
+  }
+
+  /* Inline equation boxes within epoch cards */
+  .epoch-equation {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--text);
+    padding: 14px 18px;
+    margin: 14px 0 6px;
+    text-align: center;
+    overflow-x: auto;
+  }
+  .epoch-equation .eq-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+  }
+
+  /* Color themes for each epoch */
+  .epoch-pre       .epoch-dot { background: #94a3b8; }
+  .epoch-pre       .epoch-card { border-left-color: #94a3b8; }
+  .epoch-pre       .epoch-label { color: #94a3b8; }
+
+  .epoch-contract  .epoch-dot { background: #64748b; }
+  .epoch-contract  .epoch-card { border-left-color: #64748b; }
+  .epoch-contract  .epoch-label { color: #64748b; }
+
+  .epoch-bounce    .epoch-dot { background: #0f172a; }
+  .epoch-bounce    .epoch-card { border-left-color: #0f172a; }
+  .epoch-bounce    .epoch-label { color: #0f172a; }
+
+  .epoch-transit   .epoch-dot { background: #334155; }
+  .epoch-transit   .epoch-card { border-left-color: #334155; }
+  .epoch-transit   .epoch-label { color: #334155; }
+
+  .epoch-inflate   .epoch-dot { background: #1e40af; }
+  .epoch-inflate   .epoch-card { border-left-color: #1e40af; }
+  .epoch-inflate   .epoch-label { color: #1e40af; }
+
+  .epoch-recomb    .epoch-dot { background: #059669; }
+  .epoch-recomb    .epoch-card { border-left-color: #059669; }
+  .epoch-recomb    .epoch-label { color: #059669; }
+
+  .epoch-struct    .epoch-dot { background: #0891b2; }
+  .epoch-struct    .epoch-card { border-left-color: #0891b2; }
+  .epoch-struct    .epoch-label { color: #0891b2; }
+
+  .epoch-today     .epoch-dot { background: #7c3aed; }
+  .epoch-today     .epoch-card { border-left-color: #7c3aed; }
+  .epoch-today     .epoch-label { color: #7c3aed; }
+
+  .epoch-spherex   .epoch-dot { background: #db2777; }
+  .epoch-spherex   .epoch-card { border-left-color: #db2777; }
+  .epoch-spherex   .epoch-label { color: #db2777; }
+
+  .epoch-litebird  .epoch-dot { background: #e11d48; }
+  .epoch-litebird  .epoch-card { border-left-color: #e11d48; }
+  .epoch-litebird  .epoch-label { color: #e11d48; }
+
+  .epoch-verdict   .epoch-dot { background: #0a0a0a; box-shadow: 0 0 0 2px #0a0a0a; }
+  .epoch-verdict   .epoch-card { border-left-color: #0a0a0a; background: var(--bg-subtle); }
+  .epoch-verdict   .epoch-label { color: #0a0a0a; }
+
+  /* ── Key at the top ── */
+  .timeline-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+  .timeline-key-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .timeline-key-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Bottom links ── */
+  .timeline-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .cosmic-timeline::before { left: 14px; }
+    .epoch { padding-left: 44px; }
+    .epoch-dot { left: 6px; top: 22px; width: 16px; height: 16px; }
+    .epoch-card { padding: 18px 20px; }
+    .epoch-title { font-size: 1rem; }
+    .timeline-key { gap: 10px; }
+  }
+  @media (max-width: 480px) {
+    .epoch-card { padding: 14px 16px; }
+    .epoch-body { font-size: 13px; }
+    .epoch-equation { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<aside class="sidebar">
+<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="datasets.html" class="sidebar-link">datasets</a>
+<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+</div>
+<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link active" data-page="timeline">timeline</a>
+<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com</div>
+</aside>
+<div class="topbar">
+<span>March 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>
+<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>
+</div>
+<div class="site-content">
+<main class="container">
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Cosmological Timeline &middot; Bounce to SPHEREx</p>
+  <h1>The Cosmic Timeline</h1>
+  <p class="subtitle">From the parent universe to SPHEREx: what bounce cosmology predicts at every stage.</p>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════ INTRO ═══════════════════════════════ -->
+<div class="cosmic-intro">
+  <p>This page traces the history of a bouncing universe from beginning to experimental verdict. Each epoch shows what happens physically, what the theory predicts, and where key equations enter. Read it like a museum exhibit: top to bottom, past to future.</p>
+</div>
+
+<!-- ═══════════════════════════════ KEY ═══════════════════════════════ -->
+<div class="timeline-key">
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#94a3b8"></div> Before the bounce</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0f172a"></div> The bounce</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#1e40af"></div> Inflation</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#059669"></div> CMB release</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0891b2"></div> Structure</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#7c3aed"></div> Present day</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#db2777"></div> Future tests</div>
+</div>
+
+<!-- ═══════════════════════════════ TIMELINE ═══════════════════════════════ -->
+<div class="cosmic-timeline">
+
+  <!-- ── 1. Parent Universe ── -->
+  <div class="epoch epoch-pre">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">Before the Bounce</div>
+      <h3 class="epoch-title">The Parent Universe</h3>
+      <div class="epoch-body">
+        <p>A massive star in a parent universe collapses into a rotating black hole. Inside the event horizon, matter density increases relentlessly toward the Planck scale (\(\rho_{\rm Pl} \approx 5.16 \times 10^{96}\;\text{kg/m}^3\)). In standard general relativity, this collapse ends in a singularity &mdash; a point of infinite density where physics breaks down.</p>
+        <p>But in loop quantum cosmology (LQC), quantum geometry effects become important before the singularity forms. The interior of the black hole is about to become a new universe.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. Matter-Dominated Contraction ── -->
+  <div class="epoch epoch-contract">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">The Contracting Phase</div>
+      <h3 class="epoch-title">Matter-Dominated Contraction</h3>
+      <div class="epoch-body">
+        <p>The contracting phase is dominated by dust-like matter with equation of state \(w \approx 0\). This is the <strong>key prediction engine</strong>. During this phase, perturbations grow as \(|\eta|^{-3}\) on superhorizon scales, dramatically amplifying any primordial fluctuations.</p>
+        <p>The Maldacena cubic action evaluated in this matter-dominated background, with slow-roll parameter \(\varepsilon = 3/2\), produces a specific, parameter-free non-Gaussianity:</p>
+        <div class="epoch-equation">
+          \[\displaystyle f_{\rm NL} = \frac{5}{4}\left(1 - \frac{1}{\varepsilon}\right) = \frac{5}{4}\left(1 - \frac{2}{3}\right) = -\frac{35}{8} = -4.375\]
+          <div class="eq-label">The f<sub>NL</sub> Prediction &mdash; Paper 3</div>
+        </div>
+        <p>This value is <strong>300 times larger</strong> than what standard slow-roll inflation predicts (\(f_{\rm NL}^{\rm local} \sim 0.01\)) and opposite in sign. It depends only on the contraction being matter-dominated &mdash; no free parameters, no model tuning.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. The Bounce ── -->
+  <div class="epoch epoch-bounce">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">t = 0 &middot; &rho; &asymp; 0.27&ndash;0.41 &rho;<sub>Pl</sub></div>
+      <h3 class="epoch-title">The Bounce</h3>
+      <div class="epoch-body">
+        <p>At the critical density, quantum gravity effects (LQC holonomy corrections) replace the singularity with a smooth transition. The Hubble parameter \(H\) passes through zero and reverses sign: contraction becomes expansion. <strong>No singularity occurs.</strong></p>
+        <div class="epoch-equation">
+          \[\displaystyle H^2 = \frac{8\pi G}{3}\,\rho\!\left(1 - \frac{\rho}{\rho_{\rm crit}}\right)\]
+          <div class="eq-label">Modified Friedmann Equation (LQC)</div>
+        </div>
+        <p>The correction factor \((1 - \rho/\rho_{\rm crit})\) is the entire mechanism: when \(\rho \to \rho_{\rm crit}\), the right-hand side vanishes, forcing \(H = 0\). For \(\rho > \rho_{\rm crit}/2\), gravity effectively becomes repulsive. A new expanding region &mdash; a baby universe &mdash; begins. It inherits angular momentum from the parent black hole's rotation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. The Bounce Transition ── -->
+  <div class="epoch epoch-transit">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">Through the Bounce</div>
+      <h3 class="epoch-title">Perturbation Transmission</h3>
+      <div class="epoch-body">
+        <p>Do the perturbations from the contracting phase survive the bounce? At <strong>linear order</strong> (the power spectrum), the answer is yes &mdash; verified by Wilson-Ewing (2012). Perturbations transmit faithfully through the LQC bounce.</p>
+        <p>At <strong>cubic order</strong> (the bispectrum, where the \(f_{\rm NL}\) prediction lives), this has <strong>not yet been verified</strong>. This is a key assumption of the program. If the bounce disrupts the bispectrum, the \(f_{\rm NL} = -35/8\) prediction would be modified or destroyed.</p>
+        <p style="font-size: 13px; color: var(--text-tertiary); margin-top: 10px;">This is one of the honest gaps we document. See <a href="paper.html">Paper 3</a> for the full discussion.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. Inflation ── -->
+  <div class="epoch epoch-inflate">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">After the Bounce &middot; ~92 e-folds</div>
+      <h3 class="epoch-title">Inflation</h3>
+      <div class="epoch-body">
+        <p>After the bounce, slow-roll inflation proceeds normally. This phase solves the standard problems of cosmology &mdash; flatness, horizon, monopole &mdash; exactly as in the conventional picture.</p>
+        <p>Here is a crucial fact: <strong>the bounce adds nothing observable during this phase</strong>. This is the "perturbation transparency" result. The bounce mechanism (holonomy corrections, torsion, etc.) is invisible at energy scales below \(\rho_{\rm crit}\). All memory of the bounce geometry is erased except for the primordial perturbation spectrum established during contraction, which is now frozen into the expanding universe.</p>
+        <p>This is why we found 14 structural barriers when trying to connect the bounce to dark energy &mdash; the two problems are separated by the transparency wall.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Recombination ── -->
+  <div class="epoch epoch-recomb">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">z &asymp; 1100 &middot; t &asymp; 380,000 years</div>
+      <h3 class="epoch-title">Recombination &amp; the CMB</h3>
+      <div class="epoch-body">
+        <p>The universe cools enough for neutral atoms to form. CMB photons stream freely for the first time &mdash; the oldest light we can observe.</p>
+        <p>Two signatures are encoded in this light:</p>
+        <p><strong>1. Bispectrum.</strong> The \(f_{\rm NL} = -35/8\) signal from contraction is imprinted in the three-point correlation function of CMB temperature fluctuations. Planck has measured \(f_{\rm NL}^{\rm local} = -0.9 \pm 5.1\), which is consistent with our prediction but not precise enough to confirm or exclude it.</p>
+        <p><strong>2. Birefringence.</strong> If a Planck-scale axion-like particle (ALP) with decay constant \(f_a \sim M_{\rm Pl}\) exists, its field begins evolving after recombination, rotating the polarization plane of CMB photons:</p>
+        <div class="epoch-equation">
+          \[\displaystyle \beta = \frac{g_{a\gamma}}{4}\,\Delta a \approx \frac{\Delta a}{4 f_a} \approx 0.27°\]
+          <div class="eq-label">Birefringence Prediction &mdash; Paper 2</div>
+        </div>
+        <p>This prediction uses only natural parameter values: \(f_a \sim M_{\rm Pl}\), \(\Delta a \sim f_a\). No tuning required.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 7. Structure Formation ── -->
+  <div class="epoch epoch-struct">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">z &asymp; 10 &rarr; 0 &middot; Galaxies Form</div>
+      <h3 class="epoch-title">Structure Formation</h3>
+      <div class="epoch-body">
+        <p>As galaxies form, the \(f_{\rm NL}\) signature imprints on their spatial distribution through <strong>scale-dependent bias</strong>:</p>
+        <div class="epoch-equation">
+          \[\displaystyle \Delta b(k) = 3(b_1 - 1)\,f_{\rm NL}\,\frac{\delta_c \,\Omega_m \,H_0^2}{k^2\,T(k)\,D(z)}\]
+          <div class="eq-label">Scale-Dependent Bias</div>
+        </div>
+        <p>The key feature: the effect scales as \(1/k^2\), so it is strongest on the <strong>largest observable scales</strong>. With \(f_{\rm NL} = -4.375\) (versus the inflationary prediction of ~0.01), the bounce signal is enormously amplified. Galaxy surveys targeting these large scales are the most powerful tool for detecting it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 8. Today ── -->
+  <div class="epoch epoch-today">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">z = 0 &middot; Present Day</div>
+      <h3 class="epoch-title">Today</h3>
+      <div class="epoch-body">
+        <p>Current observational status:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0;">
+          <div class="card" style="padding: 12px 14px; text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">0.342 &pm; 0.094&deg;</div>
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Measured &beta; (Planck+ACT, 3.6&sigma;)</div>
+          </div>
+          <div class="card" style="padding: 12px 14px; text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">0.27&deg;</div>
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Predicted &beta; (within 1&sigma;)</div>
+          </div>
+        </div>
+        <p>Our MCMC verification (309,000+ posterior samples) confirms: \(H_0 = 67.68\;\text{km/s/Mpc}\), \(\Delta N_{\rm eff} \approx 0\). The spin-torsion coupling does not shift standard cosmological parameters. This is consistent with the perturbation-transparency result.</p>
+        <p>We have cataloged <strong>14 structural barriers</strong> that close all minimal routes from the bounce to dark energy. The bounce and late-time acceleration are independent problems. But the two predictions above &mdash; \(f_{\rm NL}\) and \(\beta\) &mdash; survive, because they depend on contraction dynamics and natural ALP scales, not on the bounce mechanism itself.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. SPHEREx ── -->
+  <div class="epoch epoch-spherex">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">~2028 &middot; Galaxy Bispectrum</div>
+      <h3 class="epoch-title">SPHEREx</h3>
+      <div class="epoch-body">
+        <p>NASA's SPHEREx mission will survey 450 million galaxies in the near-infrared, measuring \(f_{\rm NL}^{\rm local}\) to a precision of \(\sigma(f_{\rm NL}) \approx 0.8\text{&ndash;}1.0\).</p>
+        <p>At that precision, the bounce prediction \(f_{\rm NL} = -4.375\) would be detected at <strong>4&ndash;6&sigma;</strong> significance.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0;">
+          <div class="card" style="padding: 14px; border-left: 3px solid #059669;">
+            <div style="font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px;">If detected</div>
+            <p style="font-size: 13px; margin: 0;">Bayes factor ~300:1 in favor of the matter bounce over standard inflation. The strongest evidence yet that the universe bounced.</p>
+          </div>
+          <div class="card" style="padding: 14px; border-left: 3px solid #dc2626;">
+            <div style="font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px;">If null</div>
+            <p style="font-size: 13px; margin: 0;">The quasi-dust matter bounce is ruled out at &gt;4&sigma;. The model is falsified cleanly. No wiggle room.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 10. LiteBIRD ── -->
+  <div class="epoch epoch-litebird">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">~2030 &middot; CMB Polarization</div>
+      <h3 class="epoch-title">LiteBIRD</h3>
+      <div class="epoch-body">
+        <p>JAXA's LiteBIRD satellite will map CMB polarization across the full sky with unprecedented precision, measuring the birefringence angle \(\beta\) to \(\sigma(\beta) \approx 0.03°\).</p>
+        <p>At that precision, the ALP prediction \(\beta = 0.27°\) would be confirmed at <strong>~9&sigma;</strong> significance &mdash; a decisive result.</p>
+        <p>If confirmed, this establishes the existence of a Planck-scale ALP with precisely the properties expected from quantum gravity. While the birefringence prediction is bounce-independent (it works in any cosmology with this ALP), its confirmation would strongly motivate the broader framework.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 11. The Verdict ── -->
+  <div class="epoch epoch-verdict">
+    <div class="epoch-dot"></div>
+    <div class="epoch-card">
+      <div class="epoch-label">~2028&ndash;2032</div>
+      <h3 class="epoch-title">The Verdict</h3>
+      <div class="epoch-body">
+        <p style="font-size: 15px; line-height: 1.75;"><strong>Within five years, we will know if the universe bounced.</strong></p>
+        <p>SPHEREx tests the bounce-specific prediction (\(f_{\rm NL} = -35/8\)). LiteBIRD tests the ALP prediction (\(\beta = 0.27°\)). Both are sharp, parameter-free, and falsifiable. Both use missions that are already funded and scheduled.</p>
+        <p>This is not a "maybe someday" situation. The data is coming. The predictions are on the record. The theory either survives or it doesn't.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════ END TIMELINE ═══════════════════════════════ -->
+
+<hr>
+
+<!-- ═══════════════════════════════ NAVIGATE ═══════════════════════════════ -->
+<h2>Continue Reading</h2>
+<div class="timeline-nav">
+  <a href="paper.html" class="btn btn-primary">Read the Papers</a>
+  <a href="explained.html" class="btn btn-secondary">Non-Technical Explainer</a>
+  <a href="figures.html" class="btn btn-secondary">View Figures</a>
+  <a href="data-explorer.html" class="btn btn-secondary">Explore the Data</a>
+  <a href="glossary.html" class="btn btn-secondary">Glossary &amp; Equations</a>
+</div>
+
+<footer>
+  <p>Houston Golden &middot; Independent Researcher &middot; <a href="mailto:houston@hubify.com">houston@hubify.com</a></p>
+  <p>&copy; 2026 &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p>
+</footer>
+
+</main>
+</div>
+<script src="/astro/chat-widget.js" defer></script>
+</body>
+</html>

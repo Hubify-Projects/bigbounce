@@ -1,11 +1,10 @@
 [build]
-  # No build command needed for static site
-  command = ""
-  # Publish the root directory containing index.html
+  command = "npm install"
   publish = "."
 
-[build.environment]
-  # No environment variables needed for static site
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [[headers]]
   # Apply security headers to all pages
