@@ -107,9 +107,9 @@
 </style>
 </head>
 <body>
-<button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
 <aside class="sidebar">
-<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open')">&laquo;</button>
+<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
 <nav class="sidebar-nav">
 <div class="sidebar-section">research/</div>
 <a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
