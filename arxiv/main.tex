@@ -88,7 +88,7 @@ This work presents a phenomenological framework that addresses these challenges 
 \item \textit{Black hole universe origin}, where a rotating parent black hole spawns a non-singular baby universe beyond its event horizon through torsion-regulated gravitational collapse~\cite{Poplawski2016,Poplawski2019}. The baby universe inherits angular momentum, establishing a preferred cosmic axis.
 \end{enumerate}
 
-\begin{table}[b]
+\begin{table*}[tb]
 \caption{\label{tab:summary} Executive summary of key results.}
 \begin{ruledtabular}
 \begin{tabular}{lll}
@@ -105,7 +105,7 @@ Cosmic parity violation & Rotating BH origin & $2.4$--$2.9\sigma$ individual; $3
 {\small $^a$$(67.68-73.04)/\sqrt{1.06^2+1.04^2} = 3.61\sigma$. \quad $^b$Verified $\sigma_8 = 0.803 \pm 0.008$ and $S_8 = 0.814 \pm 0.008$ (full-tension), consistent with Planck~$\Lambda$CDM ($\sigma_8 = 0.811$, $S_8 = 0.832$). The $\Delta\Neff$ extension does not reduce the $\sigma_8$/$S_8$ tension; the original lower values were SH0ES-prior-driven.\\[3pt]
 \textit{Note:} Independent Cobaya~v3.6.1 verification yields $H_0 = 67.68 \pm 1.06$ (full-tension) and $67.79 \pm 1.09$ (Planck+BAO+SN), consistent with Planck~$\Lambda$CDM. The $\Delta\Neff$ extension does not by itself resolve the Hubble tension; it is the SH0ES prior in the original analysis that pulls $H_0$ upward. See Sec.~\ref{sec:verification}.\\[3pt]
 $^c$Reparameterized as sensitivity to $N_{\rm tot}$, not solved; see Sec.~\ref{sec:gdp}.}
-\end{table}
+\end{table*}
 
 
 \subsection{Theoretical Foundations and Novel Synthesis}\label{sec:foundations}
@@ -298,9 +298,10 @@ The observed dark energy scale is reproduced with:
 \begin{equation}
 \frac{\alpha}{M}\bigg|_{\rm primordial} \sim \frac{10^{-2}}{\MPl} \sim 10^{-21}\;\text{GeV}^{-1},
 \end{equation}
-\begin{equation}\label{eq:rhoLambda}
-\rho_\Lambda = \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf\times\MPl^4 \sim 10^{-2}\times\Dinf\times\MPl^4 \approx (2.3\;\text{meV})^4,
-\end{equation}
+\begin{align}\label{eq:rhoLambda}
+\rho_\Lambda &= \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf\times\MPl^4\nonumber\\
+&\sim 10^{-2}\times\Dinf\times\MPl^4 \approx (2.3\;\text{meV})^4,
+\end{align}
 where $[(\alpha/M)\,\MPl]\sim 10^{-2}$ is the dimensionless one-loop suppression factor. Matching the observed $\rho_\Lambda\approx 3\times 10^{-47}\;\text{GeV}^4$ requires $\Dinf\sim 10^{-121}$, corresponding to $N_{\rm tot}\approx 92$ with $T_{\rm reh}\sim 10^{15}\;\text{GeV}$ and $M_{\rm GUT}\sim 10^{16}\;\text{GeV}$---that is, $N_{\rm tot} = 92$ is the value \textit{required} by the observed $\rho_\Lambda$ and is therefore a fitted parameter of the framework, not an independent prediction. The choice $N_{\rm tot} = 92$ represents total $e$-folds of inflation, comprising the $\sim$55--60 $e$-folds of observable modes (those that produced the CMB scales we measure today) plus $\sim$30 pre-observable $e$-folds during which the universe inflated before the largest observable scales exited the horizon. This total is essentially unconstrained by CMB observations, which are sensitive only to $N_{\rm obs}$, and serves as a fitted parameter absorbing the fine-tuning in our suppression mechanism. This value of $N_{\rm tot}$ is readily accommodated by standard slow-roll potentials (e.g., Starobinsky $R^2$ or plateau models give $N_{\rm tot}\gtrsim 10^3$ for typical initial field displacements) and is a concrete output of the bounce-to-inflation transition once the parent BH properties are specified.
 
 This reduces fine-tuning from $10^{120}$ to $\sim 10^5$: the residual tuning corresponds to specifying $N_{\rm tot}$ to within $\Delta N_{\rm tot}\approx 4$ $e$-folds, since $\delta\rho_\Lambda/\rho_\Lambda = 3\,\delta N_{\rm tot}$. This parametric sensitivity---asking ``why did inflation last $\sim$92 $e$-folds?''---has potential dynamical answers through the bounce-to-inflation transition dynamics (Sec.~\ref{sec:theory_program}) and is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, for which no dynamical mechanism exists.
@@ -373,11 +374,11 @@ Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found 
 
 \subsection{Galaxy Spin Asymmetry: A Contested Anomaly}\label{sec:spinobs}
 
-\begin{figure}[t]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=\columnwidth]{figures/figure2_galaxy_spin_comprehensive.png}
+\includegraphics[width=0.95\textwidth]{figures/figure2_galaxy_spin_comprehensive.png}
 \caption{\label{fig:galaxy_spin} Galaxy spin dipole amplitude data across multiple surveys. The fitted curve $A(z) = 0.003(1+z)^{-0.5}e^{-z/2}$ (solid line) is shown with 68\% and 95\% confidence bands from a hierarchical Bayesian fit to published aggregate CW/CCW counts from Shamir~\cite{Shamir2012,Shamir2022,Shamir2024}. Data points include SDSS DR7, Pan-STARRS, HST, and DECaLS survey-level dipole amplitudes. Null results from independent reanalyses~\cite{PatelDesmond2024,Philcox2025} are not shown because they report $A_0$ consistent with zero. This fit should be interpreted as conditional on the reality of the signal.}
-\end{figure}
+\end{figure*}
 
 Several groups have reported a dipole asymmetry in galaxy spin handedness, with a preferred axis roughly aligned with the CMB kinematic dipole~\cite{Shamir2012,Shamir2022,Longo2011}. If real, this anomaly is a natural signature of the parity-odd tidal torque mechanism described in Sec.~\ref{sec:spinmech}. However, the observational status is contested and the signal should be treated as a hypothetical signature requiring confirmation.
 
@@ -387,7 +388,7 @@ Several groups have reported a dipole asymmetry in galaxy spin handedness, with 
 
 \textit{JWST JADES.}---A preliminary analysis of $N=2{,}200$ JADES spiral galaxies at $z=1.0$--$3.0$ by Shamir (private communication / preprint) reports a raw clockwise excess $p_{\rm CW}-0.5 \approx 0.15\pm 0.08$ ($1.9\sigma$). This is a single-field raw excess from one JWST pointing ($\sim 10\;\text{arcmin}^2$), not a global dipole amplitude, and is subject to large cosmic variance ($\delta A/A \sim 5$--$10$). It is not included in our fit and should not be interpreted as supporting the global dipole signal.
 
-\begin{table}[t]
+\begin{table*}[tb]
 \caption{\label{tab:surveys} Claimed galaxy spin asymmetry detections. All entries are global dipole amplitudes $A_{\rm dipole}$ from the respective authors' analyses. Independent reanalyses~\cite{PatelDesmond2024,Philcox2025} find results consistent with isotropy (see text). These values are conditional on the reality of the signal.}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
@@ -400,7 +401,7 @@ Longo (2011) & 15,872 & $<0.085$ & Dipole & $2.0\sigma$ \\
 \end{tabular}
 \end{ruledtabular}
 {\small $^a$Shamir~\cite{Shamir2012,Shamir2022} analyses. Patel \& Desmond~\cite{PatelDesmond2024} find no significant asymmetry in an independent reanalysis of SDSS spirals.}
-\end{table}
+\end{table*}
 
 
 \subsection{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:tensions}
@@ -436,7 +437,7 @@ The physical origin of the extra parameters constrains them to correlated ranges
 
 Independent verification using Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE + lowl TT/EE + lensing has produced two frozen dataset combinations with publication-quality convergence.
 
-\begin{table}[h]
+\begin{table}[t]
 \caption{\label{tab:verification} Independent verification results from frozen MCMC chains (Cobaya~v3.6.1, CAMB~v1.6.5). All values are posterior means $\pm\,1\sigma$. The full-tension dataset includes SH0ES $H_0$ and DES $S_8$ priors; Planck+BAO+SN does not.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
@@ -460,17 +461,17 @@ Min ESS & 4{,}744 & 4{,}692 \\
 
 \textit{Key findings from the verification.}---Both frozen datasets find $\Delta\Neff$ consistent with zero: the full-tension posterior is centered at $-0.020$ and the Planck+BAO+SN posterior at $+0.065$, both well within $1\sigma$ of the Standard Model value ($\Delta\Neff = 0$). The mild positive shift ($+0.085$, ${\sim}0.5\sigma$) when removing the SH0ES $H_0$ and DES $S_8$ priors is expected from the $H_0$--$\Neff$ degeneracy: without external priors pulling $H_0$ upward, the posterior settles near the Planck $\Lambda$CDM value. The $H_0$ values ($67.68$ and $67.79$) are consistent with Planck $\Lambda$CDM ($67.36 \pm 0.54$) at $0.3\sigma$, confirming that the $\Delta\Neff$ extension alone does not resolve the Hubble tension---the tension reduction reported in the original analysis (Table~\ref{tab:summary}) is driven by the SH0ES prior. The $\sigma_8$ shift of $1.1\sigma$ between datasets reflects the expected response to removing the DES $S_8$ constraint, with Planck+BAO+SN recovering the higher Planck-preferred value ($\sigma_8 = 0.812$).
 
-\begin{figure}[t]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_dneff_viability_two_frozen.pdf}
+\includegraphics[width=0.95\textwidth]{figures/fig_dneff_viability_two_frozen.pdf}
 \caption{\label{fig:dneff_viability} $\Delta\Neff$ posteriors from the two frozen verification datasets. \textit{Left}: Gaussian approximations to the posteriors, with vertical lines marking the SM value ($\Delta\Neff = 0$), BBN upper limit, and ACT~DR6 central value. Shaded regions show the WP4 theory-predicted ranges from spin-torsion reheating and decay mechanisms. \textit{Right}: Normalized parameter shifts between the two datasets, in units of the full-tension standard deviation.}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[t]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=\columnwidth]{figures/cosmology_dataset_comparison_two_frozen.pdf}
+\includegraphics[width=0.95\textwidth]{figures/cosmology_dataset_comparison_two_frozen.pdf}
 \caption{\label{fig:dataset_comparison} Comparison of $H_0$, $\Delta\Neff$, and $S_8$ across the two frozen verification datasets. Gray markers indicate pending dataset combinations (Planck-only, Planck+BAO). Reference bands show Planck~$\Lambda$CDM (blue), SH0ES (red), and DES~Y3 (green).}
-\end{figure}
+\end{figure*}
 
 \textit{Implications for the framework.}---Current data neither require nor exclude a small positive $\Delta\Neff$ from the spin-torsion sector. The framework's qualitative prediction---that bounce-epoch particle production contributes positively to $\Neff$---is not contradicted but remains below the detection threshold. CMB-S4 ($\sigma(\Neff) \sim 0.03$) will provide the first precision test of this prediction.
 
@@ -480,15 +481,15 @@ Min ESS & 4{,}744 & 4{,}692 \\
 
 \textit{Sound-horizon-free $H_0$.}---Pantos \& Perivolaropoulos~\cite{Pantos2026} compiled a diverse set of sound-horizon-free $H_0$ measurements, finding convergence at $H_0 = 69.37 \pm 0.34$. This is $1.5\sigma$ above our verification value of $67.68 \pm 1.06$, indicating that the spin-torsion framework does not naturally explain the sound-horizon-free measurement.
 
-\begin{figure}[t]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=\columnwidth]{figures/figure3b_tensions_resolution_comprehensive.png}
+\includegraphics[width=0.95\textwidth]{figures/figure3b_tensions_resolution_comprehensive.png}
 \caption{\label{fig:tension_comprehensive} MCMC fits compared with nine published measurements against nine published measurements. \textit{Top panel}: $H_0$ measurements from Planck (early universe), ACT DR6, DESI BAO, DES Y5, our spin-torsion model, H0LiCOW, SH0ES, Megamaser Project, and TRGB. \textit{Bottom panel}: $\sigma_8/S_8$ measurements including Planck, KiDS-1000, DES Y3, HSC Y3, eROSITA, and ACT DR6.}
-\end{figure}
+\end{figure*}
 
 Table~\ref{tab:H0data} presents the complete observational comparison for the Hubble constant.
 
-\begin{table}[h]
+\begin{table*}[tb]
 \caption{\label{tab:H0data} Hubble constant measurements compared with our MCMC fit.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -507,9 +508,9 @@ TRGB & $69.8 \pm 1.7$ & TRGB & \cite{Freedman2021} \\
 \end{tabular}
 \end{ruledtabular}
 {\small \textsuperscript{a}Superseded by independent verification: $H_0 = 67.68 \pm 1.06$ (Sec.~\ref{sec:verification}, Table~\ref{tab:verification}). The original value was driven by the SH0ES prior included in the tension dataset.}
-\end{table}
+\end{table*}
 
-\begin{table}[h]
+\begin{table*}[tb]
 \caption{\label{tab:S8data} Clustering amplitude $\sigma_8$ / $S_8$ measurements.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -526,7 +527,7 @@ eROSITA & $S_8 = 0.86^{+0.01}_{-0.01}$ & Clusters$^\dagger$ & \cite{eROSITA2024}
 \end{tabular}
 \end{ruledtabular}
 {\small $^\dagger$Ghirardini \etal\ (2024) cosmology pipeline; other eROSITA analyses yield $S_8 \simeq 0.79\pm 0.03$.}
-\end{table}
+\end{table*}
 
 
 %% ============================================================
@@ -549,9 +550,10 @@ In dimensional regularization ($d = 4-\epsilon$), the $\gamma^5$ trace in strict
 \text{Tr}[\gamma^5\gamma^a\gamma^b\gamma^c\gamma^d] = -4i\,\varepsilon^{abcd},
 \end{equation}
 which isolates the parity-odd structure. The momentum integral gives:
-\begin{equation}
-\int \frac{d^dk}{(2\pi)^d}\frac{1}{(k^2-M^2)k^2} = \frac{i}{16\pi^2}\left[\frac{2}{\epsilon}-\ln\frac{M^2}{\mu^2}+\text{finite}\right].
-\end{equation}
+\begin{align}
+&\int \frac{d^dk}{(2\pi)^d}\frac{1}{(k^2-M^2)k^2}\nonumber\\
+&\quad = \frac{i}{16\pi^2}\left[\frac{2}{\epsilon}-\ln\frac{M^2}{\mu^2}+\text{finite}\right].
+\end{align}
 
 \textit{Caveats on the finite part.}---Two features of this sketch prevent it from constituting a controlled calculation of $\alpha/M$:
 
@@ -712,7 +714,7 @@ bringing the total to 8. However, $(\omega/H)_0$ is tightly bounded by CMB isotr
 
 \subsection{Bayesian Model Comparison}
 
-\begin{table}[h]
+\begin{table*}[tb]
 \caption{\label{tab:modelcomp} Bayesian model comparison. The $\chi^2$ values here are effective $\chi^2_{\rm eff} \equiv -2\ln\mathcal{L}_{\rm max}$ for the \textit{full tension dataset} (Planck TT,TE,EE+lowE + BAO + Pantheon SNIa + SH0ES $H_0$ prior + DES $S_8$). Bayes factors $\ln B$ are estimated via the Savage-Dickey density ratio from MCMC posteriors. See Eq.~(\ref{eq:Zcomb2}) for dataset-dependent breakdown. Note: $\chi^2_{\rm eff}$ here uses the compressed likelihood; see Table~\ref{tab:fullcomp} for full-multipole $\chi^2$ values ($\sim 2768$), which are larger because they include the full Planck $\ell=2$--$2508$ likelihood.}
 \begin{ruledtabular}
 \begin{tabular}{lccccc}
@@ -724,21 +726,22 @@ $w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
 \end{tabular}
 \end{ruledtabular}
 {\small $^\ddagger$Values shown were obtained from chains that included $\Omega_k$ as a free parameter. Since the model's 92 $e$-folds of inflation mandate $\Omega_k = 0$, the corresponding $\Omega_k = 0$ analysis is expected to yield similar or improved $\chi^2$ values. The qualitative conclusions are unchanged: the model is competitive with $\Lambda$CDM when tension data are included.}
-\end{table}
+\end{table*}
 
 The Bayesian evidence shows:\footnote{These evidence ratios were estimated from the MCMC chain posteriors via the Savage-Dickey density ratio, not from dedicated nested sampling. The values should be treated as approximate; a dedicated nested-sampling analysis would provide more robust evidence estimates.}
-\begin{equation}\label{eq:Zcomb2}
-\ln \mathcal{Z}_{\rm ST} - \ln \mathcal{Z}_{\Lambda\text{CDM}} = \begin{cases}
+\begin{align}\label{eq:Zcomb2}
+&\ln \mathcal{Z}_{\rm ST} - \ln \mathcal{Z}_{\Lambda\text{CDM}}\nonumber\\
+&\quad = \begin{cases}
 -1.2 \pm 0.3 & \text{Planck+BAO} \\
-+2.1 \pm 0.4 & \text{Planck+BAO+SH0ES} \\
-+4.8 \pm 0.5 & \text{Full (+ Pantheon + DES $S_8$)} \\
++2.1 \pm 0.4 & \text{+SH0ES} \\
++4.8 \pm 0.5 & \text{Full (+SN+$S_8$)} \\
 \end{cases}
-\end{equation}
+\end{align}
 On the Jeffreys scale, the full tension dataset gives ``strong evidence'' ($\ln B > 3.5$) favoring our model, with posterior odds of 120:1. However, this preference is \textit{dataset-dependent}: with Planck+BAO alone, the evidence slightly disfavors our model ($\ln B = -1.2$) due to the Occam penalty for extra parameters. The preference emerges specifically when tension data (SH0ES $H_0$ prior, DES $S_8$) are included---precisely because our model partially reduces these tensions while $\Lambda$CDM cannot. This dataset dependence is expected and not a weakness: the decisive test is whether the expected parity-odd signatures (CMB $E$-$B$, galaxy spin dipole) are detected independently.
 
 \subsection{Information Criteria Across Datasets}
 
-\begin{table}[h]
+\begin{table*}[tb]
 \caption{\label{tab:ic} Information criteria across dataset combinations. Here $\chi^2 \equiv -2\ln\mathcal{L}_{\rm max}$ includes all likelihood terms; the larger values compared to Table~\ref{tab:modelcomp} reflect the inclusion of the full Planck multipole likelihood ($\ell = 2$--2508) rather than the compressed summary used there.}
 \begin{ruledtabular}
 \begin{tabular}{llccc}
@@ -750,7 +753,7 @@ $\Lambda$CDM & Planck+BAO+SH0ES & 2783.1 & 0 & 0 \\
 Spin-Torsion & Planck+BAO+SH0ES & 2771.8 & $-9.3$ & $+5.2$ \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 AIC consistently favors our model when tension data are included. The BIC penalty for additional parameters means decisive evidence requires detection of the EB/spin signatures.
 
@@ -794,7 +797,7 @@ To our knowledge, no other dark energy model produces this combination of correl
 
 We quantify fine-tuning using $\text{FT}=\text{Natural scale}/\text{Observed value}$:
 
-\begin{table}[h]
+\begin{table}[t]
 \caption{\label{tab:finetuning} Fine-tuning comparison across dark energy frameworks.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
@@ -812,11 +815,11 @@ The residual $10^5$ tuning arises from specifying the total inflationary $e$-fol
 
 This residual asks: ``why did inflation last $\sim$92 total $e$-folds?''---an initial-condition question with potential dynamical answers through the bounce-to-inflation transition (Sec.~\ref{sec:theory_program}), slow-roll potential shape, or even anthropic constraints. This is qualitatively different from $\Lambda$CDM's fundamental $10^{120}$ tuning, which asks ``why is the bare cosmological constant tuned to 120 decimal places?''---a question for which no known mechanism provides even a partial answer. The fine-tuning has been concentrated into a single initial condition ($N_{\rm tot}$), not distributed across multiple parameters.
 
-\begin{figure}[t]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=\columnwidth]{figures/vacuum_scale_sensitivity.pdf}
+\includegraphics[width=0.95\textwidth]{figures/vacuum_scale_sensitivity.pdf}
 \caption{\label{fig:sensitivity} Vacuum energy scale sensitivity analysis from a 100{,}000-sample Monte Carlo scan. \textit{(a)}~Distribution of $\log_{10}(\rho_{\rm pred}/\rho_{\rm obs})$; the viable region (shaded) corresponds to $N_{\rm tot} \in [79,\,95]$. \textit{(b)}~Sensitivity to $N_{\rm tot}$, colored by $(\alpha/M)\,\MPl$---the near-vertical band confirms $N_{\rm tot}$ as the single controlling parameter. \textit{(c)}~Viable fraction in the $N_{\rm tot}$--$(\alpha/M)\,\MPl$ plane. \textit{(d)}~Spearman rank correlations confirming $N_{\rm tot}$ dominance ($|\rho_s| = 0.996$).}
-\end{figure}
+\end{figure*}
 
 
 %% ============================================================
@@ -862,7 +865,7 @@ The following null test results are reported by Minami \& Komatsu~\cite{Minami20
 \item \textit{Jackknife}: No single sky patch dominates the signal.
 \end{itemize}
 
-\begin{table}[t]
+\begin{table*}[tb]
 \caption{\label{tab:errorbudget} Combined error budget for both probes. CMB $E$-$B$ values are from~\cite{Minami2020,Eskilt2022}; galaxy spin values are estimated from the published catalog analysis.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
@@ -881,7 +884,7 @@ Classification & --- & 0.0004 \\
 \textbf{Combined} & $1.2\times 10^{-4}$ & 0.0009 \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \subsection{Systematics Audit Summary}
 
@@ -981,9 +984,8 @@ Minami \& Komatsu~\cite{Minami2020} reported the first hint of cosmic birefringe
 
 We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional observational channels (Branches H--O, plus the ECH perturbation gates) for the possibility of connecting the bounce to late-time dark energy or producing distinctive observable signatures. Each test yielded a named structural barrier.
 
-\begin{table}[h]
+\begin{table*}[tb]
 \centering
-\small
 \begin{tabular}{clll}
 \toprule
 \# & Barrier & Source & Mechanism Blocked \\
@@ -1006,7 +1008,7 @@ We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional obs
 \end{tabular}
 \caption{The 14 structural barriers. Each closes a distinct mechanism class for connecting the bounce to late-time observables.}
 \label{tab:barriers}
-\end{table}
+\end{table*}
 
 \subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
 
@@ -1189,9 +1191,10 @@ This means: no gravitational-wave birefringence, no tensor chirality, and no $TB
 \subsection{Explicit Verification: The Holst Term in Perturbation Theory}
 
 To make the argument fully explicit, consider the ECH action:
-\begin{equation}
-S_{\rm ECH} = \frac{\MPl^2}{2}\int d^4x\, \sqrt{-g}\left[R(\Gamma) + \frac{1}{\gamma}\widetilde{R}(\Gamma)\right] + S_{\rm matter}[\phi, g]
-\end{equation}
+\begin{align}
+S_{\rm ECH} &= \frac{\MPl^2}{2}\int d^4x\, \sqrt{-g}\left[R(\Gamma) + \frac{1}{\gamma}\widetilde{R}(\Gamma)\right]\nonumber\\
+&\quad + S_{\rm matter}[\phi, g]
+\end{align}
 where $\widetilde{R} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ is the dual Riemann contraction, and $\Gamma$ is the full (torsionful) connection.
 
 Expanding the metric to second order ($g_{\mu\nu} = \bar{g}_{\mu\nu} + \delta g^{(1)}_{\mu\nu} + \delta g^{(2)}_{\mu\nu} + \ldots$) and the scalar field ($\phi = \bar{\phi} + \delta\phi^{(1)} + \delta\phi^{(2)} + \ldots$):
@@ -1266,7 +1269,7 @@ The framework's internal consistency is verified by checking five physical limit
 
 A systematic dimensional analysis of 12 key equations finds 10 fully consistent; the remaining two---the parity-odd Lagrangian density (mass dimension $+1$ rather than $+4$) and the galaxy spin amplitude proportionality (hiding a required energy scale $E_{\rm eff}$)---are explicitly acknowledged as scaling ans\"atze in Secs.~\ref{sec:dimbridge} and~\ref{sec:spinmech}, respectively.
 
-\begin{table}[h]
+\begin{table}[t]
 \caption{\label{tab:limits} Limit behavior of the spin-torsion framework.}
 \begin{ruledtabular}
 \begin{tabular}{lll}
@@ -1655,9 +1658,10 @@ LSST~Y10 will provide:
 \section{Joint Likelihood Analysis}\label{app:joint}
 
 The two-probe correlated Gaussian log-likelihood is
-\begin{equation}\label{eq:joint}
--2\ln\mathcal{L}=\mathbf{d}^T\,\mathbf{C}^{-1}\,\mathbf{d},\quad \mathbf{C}=\begin{pmatrix}\sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2\end{pmatrix},
-\end{equation}
+\begin{align}\label{eq:joint}
+-2\ln\mathcal{L}&=\mathbf{d}^T\,\mathbf{C}^{-1}\,\mathbf{d},\nonumber\\
+\mathbf{C}&=\begin{pmatrix}\sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2\end{pmatrix},
+\end{align}
 where $\mathbf{d}=(\hat{A}_{\rm EB}-A_{\rm EB}^{\rm th},\;\hat{A}_{\rm spin}-A_{\rm spin}^{\rm th})^T$. The analytic MLE yields the combined significance via Eq.~\eqref{eq:Zcomb}. Special cases:
 \begin{itemize}[leftmargin=*]
 \item $\rho = 0$ (independent): $Z^2 = Z_E^2 + Z_G^2$ (quadrature addition).
@@ -1774,10 +1778,11 @@ where $O_\alpha$ are observables ($H_0$, $\sigma_8$, $C_\ell^{EB}$, $A_{\rm dipo
 
 \subsection{Error Propagation for $H_0$}
 
+\begin{widetext}
 \begin{align}
-\frac{\delta H_0}{H_0} &= \sqrt{\left(\frac{\partial \ln H_0}{\partial \Omega_m}\right)^{\!2} \delta\Omega_m^2 + \left(\frac{\partial \ln H_0}{\partial \Delta\Neff}\right)^{\!2} \delta(\Delta\Neff)^2 + \cdots}\nonumber\\
-&= 1.2\%.
+\frac{\delta H_0}{H_0} &= \sqrt{\left(\frac{\partial \ln H_0}{\partial \Omega_m}\right)^{\!2} \delta\Omega_m^2 + \left(\frac{\partial \ln H_0}{\partial \Delta\Neff}\right)^{\!2} \delta(\Delta\Neff)^2 + \cdots} = 1.2\%.
 \end{align}
+\end{widetext}
 
 \subsection{Goodness of Fit}
 
@@ -1824,9 +1829,10 @@ has dimension $[\MPl^2] + [e\wedge e\wedge R] = 2 + (-1-1+0) = 0$ in form langua
 \subsection{Parity-Odd Operator (Scaling Ansatz)}
 
 The effective action (Eq.~\ref{eq:Seff_comp}) is:
-\begin{equation}
-S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
-\end{equation}
+\begin{align}
+S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;&\varepsilon^{\mu\nu\rho\sigma}\nonumber\\
+&\times e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
+\end{align}
 where $[\alpha/M] = -1$ and $\alpha$ is dimensionless ($[\alpha] = 0$, $[M] = +1$). The combined object $\mathcal{F}_{IJ\rho\sigma} \equiv \mathring{D}_{[\rho}K_{IJ\sigma]} + K_{I}{}^{K}{}_{[\rho}K_{KJ\sigma]}$ has contributions:
 \begin{itemize}[leftmargin=*]
 \item $[\mathring{D}_\rho K_{IJ\sigma}]$: derivative ($+1$) $\times$ contorsion ($+1$) = $+2$
@@ -1847,17 +1853,19 @@ The missing mass dimensions arise through the on-shell evaluation. At the bounce
 \item The Riemann curvature near the bounce is $R_{\mu\nu\rho\sigma} \sim H_{\rm bounce}^2 \sim \rho_c/\MPl^2 \sim \MPl^2$.
 \item The $\mathcal{F}$ operator evaluates to $\mathcal{F}^{\rm bounce} \sim K \cdot R \sim \MPl \cdot \MPl^2 = \MPl^3$.
 \item The full on-shell energy density contribution is therefore:
-\begin{equation}
-\rho_\Lambda^{\rm bounce} \sim \frac{\alpha}{M}\cdot\MPl^3 \sim \frac{\alpha\,\MPl^3}{M} = [(\alpha/M)\,\MPl]\cdot\MPl^4 \sim 10^{-2}\,\MPl^4.
-\end{equation}
+\begin{align}
+\rho_\Lambda^{\rm bounce} &\sim \frac{\alpha}{M}\cdot\MPl^3 \sim \frac{\alpha\,\MPl^3}{M}\nonumber\\
+&= [(\alpha/M)\,\MPl]\cdot\MPl^4 \sim 10^{-2}\,\MPl^4.
+\end{align}
 \end{enumerate}
 
 \subsection{Inflationary Dilution to Present}
 
 The contorsion source $K_{ab}$ dilutes as $a^{-3}$ during inflation (it is sourced by the fermion spin density, which dilutes with volume). After $N_{\rm tot}$ $e$-folds:
-\begin{equation}
-\rho_\Lambda^{\rm today} = \rho_\Lambda^{\rm bounce} \times \Dinf = [(\alpha/M)\,\MPl]\times\Dinf\times\MPl^4 = \Xi\,\MPl^4,
-\end{equation}
+\begin{align}
+\rho_\Lambda^{\rm today} &= \rho_\Lambda^{\rm bounce} \times \Dinf\nonumber\\
+&= [(\alpha/M)\,\MPl]\times\Dinf\times\MPl^4 = \Xi\,\MPl^4,
+\end{align}
 where $\Xi \equiv [(\alpha/M)\,\MPl]\,\Dinf$ is dimensionless. The corresponding cosmological constant is:
 \begin{equation}
 \Leff = \frac{8\pi G}{3}\,\rho_\Lambda = \frac{\rho_\Lambda}{3\MPl^2/(8\pi)} = \Xi\,\MPl^2 \times \frac{8\pi}{3}.

@@ -132,7 +132,7 @@ For our target signal $\fnl = -4.375$, the detection significance ranges from $6
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{fig2_survey_comparison.png}
+\includegraphics[width=0.85\textwidth]{fig2_survey_comparison.png}
 \caption{Detection significance for $\fnl = -35/8$ across survey configurations. Error bars show optimistic-to-conservative ranges accounting for multi-tracer, photo-$z$, bias, and GR systematics.}
 \label{fig:surveys}
 \end{figure}
@@ -168,7 +168,11 @@ The bounce predicts $\fnl = -35/8$ \emph{kinematically}, with zero free paramete
 
 \subsection{Quantitative Bayesian Comparison}
 
-We performed model comparison using over 600{,}000 Monte Carlo realizations across three frameworks (analytic closed-form, mock power spectrum generation with fitting, and GR-aware marginalization). Each realization draws a mock $\fnl^{\rm obs}$ from a Gaussian centered on $-35/8$ with $\sigma$ drawn from the forecast uncertainty distribution, then computes the Bayes factor analytically for the bounce model (a delta-function prior at $-35/8$) against each inflationary competitor (a spread prior over the competitor's natural $\fnl$ range). The analytic Bayes factor for a point prediction versus a uniform prior $[\fnl^{\rm min}, \fnl^{\rm max}]$ is $B = (\fnl^{\rm max} - \fnl^{\rm min}) \times \mathcal{L}(\fnl^{\rm obs} | \fnl = -35/8) / \int_{\fnl^{\rm min}}^{\fnl^{\rm max}} \mathcal{L}(\fnl^{\rm obs} | \fnl)\, d\fnl$. The realizations marginalize over the uncertainty in survey performance parameters (multi-tracer efficiency, $b_\phi$, GR systematic level). Specifically, each realization draws: $\sigma(\fnl)$ uniformly from $[0.5, 1.5]$ (spanning optimistic to conservative survey performance); multi-tracer efficiency from $[0.5, 1.0]$; PNG bias parameter $b_\phi$ uncertainty as a Gaussian with 20\% scatter; and GR systematic shift from $\mathcal{N}(0, \sigma_{\rm GR})$ with $\sigma_{\rm GR}$ uniform in $[0, 1.0]$.
+We performed model comparison using over 600{,}000 Monte Carlo realizations across three frameworks (analytic closed-form, mock power spectrum generation with fitting, and GR-aware marginalization). Each realization draws a mock $\fnl^{\rm obs}$ from a Gaussian centered on $-35/8$ with $\sigma$ drawn from the forecast uncertainty distribution, then computes the Bayes factor analytically for the bounce model (a delta-function prior at $-35/8$) against each inflationary competitor (a spread prior over the competitor's natural $\fnl$ range). The analytic Bayes factor for a point prediction versus a uniform prior $[\fnl^{\rm min}, \fnl^{\rm max}]$ is:
+\begin{equation}
+B = \frac{(\fnl^{\rm max} - \fnl^{\rm min}) \times \mathcal{L}(\fnl^{\rm obs} \mid \fnl = -35/8)}{\int_{\fnl^{\rm min}}^{\fnl^{\rm max}} \mathcal{L}(\fnl^{\rm obs} \mid \fnl)\, d\fnl}\,.
+\end{equation}
+The realizations marginalize over the uncertainty in survey performance parameters (multi-tracer efficiency, $b_\phi$, GR systematic level). Specifically, each realization draws: $\sigma(\fnl)$ uniformly from $[0.5, 1.5]$ (spanning optimistic to conservative survey performance); multi-tracer efficiency from $[0.5, 1.0]$; PNG bias parameter $b_\phi$ uncertainty as a Gaussian with 20\% scatter; and GR systematic shift from $\mathcal{N}(0, \sigma_{\rm GR})$ with $\sigma_{\rm GR}$ uniform in $[0, 1.0]$.
 
 We note that the delta-function prior for the bounce model maximally favors a parameter-free prediction. Any theoretical uncertainty in the $\fnl = -35/8$ value---from the $\mathcal{O}(\epsilon)$ correction, the Li \& Brandenberger convention discrepancy, or unverified third-order bounce transmission---would broaden the effective bounce prior and reduce the Bayes factor. With a Gaussian bounce prior of width $\sigma_{\rm theory} = 1.0$ centered at $-35/8$ (encompassing both literature values), the median Bayes factor vs.\ tuned multifield drops from $\sim 17$ to $\sim 8$, still favoring the bounce but with reduced confidence.
 
@@ -200,14 +204,14 @@ Our Fisher robustness scan identified three dominant threats to the forecast: (1
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{fig3_kmin_cliff.png}
+\includegraphics[width=0.85\textwidth]{fig3_kmin_cliff.png}
 \caption{Left: $\sigma(\fnl)$ vs.\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel ($\sigma = 0.7$, dotted) avoids the ultra-large-scale fragility. Right: corresponding detection significance for $\fnl = -35/8$.}
 \label{fig:kmin}
 \end{figure}
 
 \subsection{GR-Aware Analysis}
 
-We performed GR-aware Bayesian comparison across five scenarios (Table~\ref{tab:gr}). Even under conservative GR marginalization ($\sigma_{\rm GR} = 1.0$), the bounce is favored at Bayes factor $> 300$ over standard inflation and $> 7$ over tuned multifield.
+We performed GR-aware Bayesian comparison across four scenarios (Table~\ref{tab:gr}). Even under conservative GR marginalization ($\sigma_{\rm GR} = 1.0$), the bounce is favored at Bayes factor $> 300$ over standard inflation and $> 7$ over tuned multifield.
 
 \begin{table}[h]
 \centering
@@ -266,7 +270,7 @@ A detection of $\fnl \approx -4$ by SPHEREx, if confirmed by any of these indepe
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{fig4_decision_thresholds.png}
+\includegraphics[width=0.85\textwidth]{fig4_decision_thresholds.png}
 \caption{Observational decision thresholds. Green: strongly favors bounce. Red: kills the matter-bounce hypothesis. Blue vertical line: bounce prediction $\fnl = -35/8$. Error bars: SPHEREx ($\sigma = 0.7$) and MegaMapper conservative ($\sigma = 1.5$).}
 \label{fig:thresholds}
 \end{figure}
