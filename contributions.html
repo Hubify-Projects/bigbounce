@@ -453,57 +453,63 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td><code>research/transparency_verification/verify_holst_vanishing.py</code></td>
-          <td style="font-family: var(--font-sans);">Tests |&epsilon;<sup>&mu;&nu;&rho;&sigma;</sup>R<sub>&mu;&nu;&rho;&sigma;</sub>| across 1000 random Riemann tensors. Verifies the Holst term vanishes as a topological identity to machine precision (&lt;10<sup>-15</sup>).</td>
-          <td style="font-family: var(--font-sans);">Perturbation-Transparency Theorem (N3-1)</td>
+          <td><code>research/alp_field_evolution/compute_alp_birefringence.py</code></td>
+          <td style="font-family: var(--font-sans);">ALP field evolution in &Lambda;CDM background. Computes &Delta;&phi;/f<sub>a</sub> = 0.65 and predicted birefringence angle &beta; = 0.27&deg;.</td>
+          <td style="font-family: var(--font-sans);">Paper 1 &sect;11.5</td>
         </tr>
         <tr>
           <td>2</td>
-          <td><code>research/fisher_robustness_surface/02_compute_fisher_robustness.py</code></td>
-          <td style="font-family: var(--font-sans);">Fisher matrix sensitivity surface for SPHEREx and MegaMapper f<sub>NL</sub> detection, including GR-projection marginalization.</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> Forecast Package (N3-3), 4&ndash;6&sigma; SPHEREx forecast</td>
+          <td><code>research/fnl_epsilon_correction/compute_fnl_epsilon.py</code></td>
+          <td style="font-family: var(--font-sans);">O(&epsilon;) f<sub>NL</sub> correction for w = &minus;0.003 departure from exact matter domination. Result: &delta;f<sub>NL</sub> = 0.6%.</td>
+          <td style="font-family: var(--font-sans);">Paper 2 &sect;2.3</td>
         </tr>
         <tr>
           <td>3</td>
-          <td><code>research/bayesian_discrimination_program/04_compute_bayesian_discrimination.py</code></td>
-          <td style="font-family: var(--font-sans);">600K+ Monte Carlo realizations for Bayesian model comparison between bounce (f<sub>NL</sub> = -4.375) and inflation (f<sub>NL</sub> ~ 0).</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> Forecast Package (N3-3), 300:1 Bayes factor</td>
+          <td><code>research/transparency_verification/verify_holst_vanishing.py</code></td>
+          <td style="font-family: var(--font-sans);">SymPy + numerical verification of the perturbation-transparency theorem. Tests |&epsilon;<sup>&mu;&nu;&rho;&sigma;</sup>R<sub>&mu;&nu;&rho;&sigma;</sub>| across random Riemann tensors to machine precision |&epsilon; R| &lt; 10<sup>&minus;15</sup>.</td>
+          <td style="font-family: var(--font-sans);">Paper 1 &sect;12</td>
         </tr>
         <tr>
           <td>4</td>
-          <td><code>research/fnl_epsilon_correction/compute_fnl_epsilon.py</code></td>
-          <td style="font-family: var(--font-sans);">O(&epsilon;) correction to f<sub>NL</sub> for w = -0.003 departure from exact matter domination. Result: 0.6% correction.</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> Forecast Package (N3-3), robustness analysis</td>
+          <td><code>research/template_projection/compute_cosine.py</code></td>
+          <td style="font-family: var(--font-sans);">Fisher-weighted template projection between local and matter-bounce bispectrum shapes. Result: cos &theta; = 0.97.</td>
+          <td style="font-family: var(--font-sans);">Paper 2 &sect;3.2</td>
         </tr>
         <tr>
           <td>5</td>
-          <td><code>research/template_projection/compute_cosine.py</code></td>
-          <td style="font-family: var(--font-sans);">Template-projection cosine between local and matter-bounce bispectrum shapes. Result: cos &theta; = 0.97.</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> Forecast Package (N3-3), template overlap</td>
+          <td><code>research/photon_torsion_coupling/compute_triangle_diagram.py</code></td>
+          <td style="font-family: var(--font-sans);">One-loop photon-torsion triangle vertex computation. Result: g<sub>a&gamma;</sub> = 7&times;10<sup>&minus;26</sup> GeV<sup>&minus;1</sup>.</td>
+          <td style="font-family: var(--font-sans);">Paper 1 &sect;14</td>
         </tr>
         <tr>
           <td>6</td>
-          <td><code>research/cubic_bounce_transmission/compute_bispectrum_transmission.py</code></td>
-          <td style="font-family: var(--font-sans);">Cubic bounce bispectrum transmission coefficient. Result: 0.024% correction, negligible.</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> Forecast Package (N3-3), bounce transmission</td>
+          <td><code>research/galaxy_spin_tidal_torque/compute_parity_odd_tidal.py</code></td>
+          <td style="font-family: var(--font-sans);">Post-Newtonian parity-odd tidal torque amplitude. Result: A<sub>0</sub> ~ 10<sup>&minus;128</sup> (125 OOM gap below detectability).</td>
+          <td style="font-family: var(--font-sans);">Paper 1 &sect;5</td>
         </tr>
         <tr>
           <td>7</td>
-          <td><code>research/cai_action_audit/</code></td>
-          <td style="font-family: var(--font-sans);">Direct algebraic audit of the Cai et al. (2009) action and bispectrum calculation. Resolves three implementation mismatches.</td>
-          <td style="font-family: var(--font-sans);">f<sub>NL</sub> = -35/8 verification (N1)</td>
+          <td><code>research/lqc_bounce_perturbations/compute_mukhanov_sasaki.py</code></td>
+          <td style="font-family: var(--font-sans);">Mukhanov-Sasaki equation through the LQC bounce. Computes spectral index (n<sub>s</sub> = 1.31) and bounce features in the primordial power spectrum.</td>
+          <td style="font-family: var(--font-sans);">Paper 1 &sect;15</td>
         </tr>
         <tr>
           <td>8</td>
-          <td><code>reproducibility/cosmology/</code></td>
-          <td style="font-family: var(--font-sans);">Cobaya v3.6.1 + CAMB v1.6.5 MCMC infrastructure. 309,789 total posterior samples across 2 frozen dataset combinations. Convergence diagnostics, chain means, Gelman-Rubin statistics.</td>
-          <td style="font-family: var(--font-sans);">MCMC Verification Infrastructure (N2-12), &Delta;N<sub>eff</sub> &asymp; 0, H<sub>0</sub> = 67.68</td>
+          <td><code>research/cubic_bounce_transmission/compute_bispectrum_transmission.py</code></td>
+          <td style="font-family: var(--font-sans);">Cubic bounce bispectrum transmission coefficient. Result: &delta;f<sub>NL</sub> = 0.024% correction, negligible.</td>
+          <td style="font-family: var(--font-sans);">Paper 2 &sect;2.3</td>
         </tr>
         <tr>
           <td>9</td>
-          <td><code>research/alp_field_evolution/</code></td>
-          <td style="font-family: var(--font-sans);">Numerical integration of the ALP field evolution in &Lambda;CDM background. Computes &Delta;&phi;/f<sub>a</sub> = 0.65 and predicted birefringence angle &beta; = 0.27&deg;.</td>
-          <td style="font-family: var(--font-sans);">ALP Birefringence Consistency (N2-1)</td>
+          <td><code>research/fisher_robustness_surface/02_compute_fisher_robustness.py</code></td>
+          <td style="font-family: var(--font-sans);">Baseline Fisher forecast + k<sub>min</sub> scan for SPHEREx and MegaMapper f<sub>NL</sub> detection, including GR-projection marginalization.</td>
+          <td style="font-family: var(--font-sans);">Paper 2 &sect;6</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><code>research/photoz_degradation/compute_photoz_degraded_forecast.py</code></td>
+          <td style="font-family: var(--font-sans);">Photo-z catastrophic outlier degradation analysis. Shows bispectrum f<sub>NL</sub> forecast is robust to 10% outlier contamination.</td>
+          <td style="font-family: var(--font-sans);">Paper 2 &sect;7.3</td>
         </tr>
       </tbody>
     </table>
