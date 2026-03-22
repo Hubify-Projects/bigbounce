@@ -156,7 +156,7 @@ def fig1_dataset_comparison():
         if param == "H0":
             ax.legend(loc="lower right", fontsize=6.5, handlelength=1.5)
 
-    fig.suptitle("DRAFT --- 2/4 datasets frozen", fontsize=12, fontweight="bold",
+    fig.suptitle("Independent MCMC Verification --- 2 frozen datasets", fontsize=12, fontweight="bold",
                  color="0.4", y=0.97)
 
     for ext in ("png", "pdf"):
@@ -235,7 +235,7 @@ def fig2_dneff_viability():
     ax2.text(0.03, 0.95, "(b)", transform=ax2.transAxes,
              fontsize=12, fontweight="bold", va="top")
 
-    fig.suptitle("DRAFT --- 2/4 datasets frozen", fontsize=12, fontweight="bold",
+    fig.suptitle("Independent MCMC Verification --- 2 frozen datasets", fontsize=12, fontweight="bold",
                  color="0.4", y=0.97)
 
     for ext in ("png", "pdf"):
