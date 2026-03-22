@@ -116,7 +116,7 @@ where $\alpha(k)$ encodes the Poisson equation normalization. The signal grows a
 
 \subsection{Template Projection}
 
-For LSS surveys using the scale-dependent bias (SDB) estimator, the relevant bispectrum configurations are in the squeezed limit ($k_{\rm long} \ll k_{\rm short}$). In this limit, the matter-bounce bispectrum converges to exactly $-35/8$---the local template value. The template-projection cosine for SDB is therefore $\cos\theta \approx 1.0$. For the galaxy bispectrum estimator, which probes all triangle configurations including equilateral and folded, the Fisher-weighted projection cosine is $\cos\theta \approx 0.97$ (computed via Monte Carlo integration over the triangle domain with $1/k^2$ weighting), corresponding to an effective signal $\fnl^{\rm eff} \approx -4.24$. The exact value depends on the survey-specific weighting and nuisance marginalization; our estimate uses a simplified Fisher weighting that emphasizes the squeezed configurations where the signal-to-noise is concentrated. Since the SPHEREx forecast of $\sigma(\fnl) = 0.7$ is from the bispectrum channel, the effective signal is $\fnl^{\rm eff} \approx -4.16$, giving a detection significance of $\sim 6\sigma$ (bispectrum only, ideal) rather than the $6.3\sigma$ that would obtain with exact local-template matching.
+For LSS surveys using the scale-dependent bias (SDB) estimator, the relevant bispectrum configurations are in the squeezed limit ($k_{\rm long} \ll k_{\rm short}$). In this limit, the matter-bounce bispectrum converges to exactly $-35/8$---the local template value. The template-projection cosine for SDB is therefore $\cos\theta \approx 1.0$. For the galaxy bispectrum estimator, which probes all triangle configurations including equilateral and folded, the Fisher-weighted projection cosine is $\cos\theta \approx 0.97$ (computed via Monte Carlo integration over the triangle domain with $1/k^2$ weighting), corresponding to an effective signal $\fnl^{\rm eff} \approx -4.24$. The exact value depends on the survey-specific weighting and nuisance marginalization; our estimate uses a simplified Fisher weighting that emphasizes the squeezed configurations where the signal-to-noise is concentrated. Since the SPHEREx forecast of $\sigma(\fnl) = 0.7$ is from the bispectrum channel, the effective signal is $\fnl^{\rm eff} \approx -4.24$, giving a detection significance of $\sim 6\sigma$ (bispectrum only, ideal) rather than the $6.3\sigma$ that would obtain with exact local-template matching.
 
 \subsection{Galaxy Bispectrum}
 
@@ -251,7 +251,7 @@ These effects are expected to degrade the forecast significance by $\mathcal{O}(
 
 \subsection{The Staged Observational Strategy}
 
-SPHEREx (launched March 2025; first science data expected $\sim$2028) provides the first real test via the galaxy bispectrum at $\sim 4$--$6\sigma$ significance. MegaMapper ($\sim$2032+, if funded) provides the more powerful but fragile follow-up at $3$--$7\sigma$ via scale-dependent bias.
+SPHEREx (launched March 2025; first all-sky survey completed December 2025; science data release expected $\sim$2028) provides the first real test via the galaxy bispectrum at $\sim 4$--$6\sigma$ significance. MegaMapper ($\sim$2032+, if funded) provides the more powerful but fragile follow-up at $3$--$7\sigma$ via scale-dependent bias.
 
 \subsection{Complementary Experiments}
 
@@ -298,7 +298,7 @@ The matter-bounce bispectrum provides what may be the sharpest single observable
 % ============================================================
 \section*{Data and Code Availability}
 
-All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/main/research/}. The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\citep{Heinrich:2023,Schlegel:2022}.
+All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.1.0/research/} (pinned to release tag \texttt{v2.1.0}). The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\citep{Heinrich:2023,Schlegel:2022}.
 
 % ============================================================
 \section*{Acknowledgments}
