@@ -209,6 +209,17 @@ Our Fisher robustness scan identified three dominant threats to the forecast: (1
 \label{fig:kmin}
 \end{figure}
 
+\subsection{PNG Bias ($b_\phi$) Sensitivity}
+
+The scale-dependent bias signal is proportional to $\fnl \times b_\phi$, where $b_\phi$ is the linear PNG galaxy bias parameter. Our forecast assumes a 20\% Gaussian prior on $b_\phi$, which is optimistic. Fig.~\ref{fig:bphi} shows how $\sigma(\fnl)$ degrades as the $b_\phi$ prior widens: at 20\% prior width, MegaMapper SDB gives $\sigma(\fnl) \approx 1.0$; at 50\%, $\sigma \approx 2.2$; if $b_\phi$ is completely unconstrained, $\sigma \to \infty$ and the SDB channel cannot measure $\fnl$ independently. The SPHEREx bispectrum channel ($\sigma = 0.7$) is nearly independent of $b_\phi$ because it accesses $\fnl$ through the full three-point function shape, not just the squeezed-limit amplitude. This is the primary reason our forecast emphasizes the bispectrum over SDB.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{bphi_sensitivity.pdf}
+\caption{Left: $\sigma(\fnl)$ as a function of $b_\phi$ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constraint (red dashed) is nearly independent of $b_\phi$. Right: corresponding detection significance for $\fnl = -35/8$. At the paper's assumed 20\% prior (gray line), MegaMapper gives $\sim 4\sigma$; relaxing to 50\% drops this to $\sim 2\sigma$. The bispectrum channel remains at $\sim 6\sigma$ regardless.}
+\label{fig:bphi}
+\end{figure}
+
 \subsection{GR-Aware Analysis}
 
 We performed GR-aware Bayesian comparison across four scenarios (Table~\ref{tab:gr}). Even under conservative GR marginalization ($\sigma_{\rm GR} = 1.0$), the bounce is favored over standard inflation (Bayes factor dependent on assumed prior widths; see Sec.~\ref{sec:bayesian} for the sensitivity analysis).
@@ -299,6 +310,23 @@ The matter-bounce bispectrum provides what may be the sharpest single observable
 \section*{Data and Code Availability}
 
 All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.1.0/research/} (pinned to release tag \texttt{v2.1.0}). The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\citep{Heinrich:2023,Schlegel:2022}.
+
+% ============================================================
+\appendix
+
+\section{Bispectrum Convention: Cai vs.\ Li-Brandenberger}
+\label{app:convention}
+
+The factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\citep{Cai:2009fn}) and $\fnl = -35/16$ (Li \& Brandenberger~\citep{LiBrandenberger:2014}) arises from differing bispectrum normalization conventions. The local-type bispectrum is defined as:
+\begin{equation}
+B_\zeta(k_1,k_2,k_3) = c \cdot \fnl \left[P_\zeta(k_1)P_\zeta(k_2) + \text{2 perms}\right],
+\end{equation}
+where the constant $c$ differs between conventions:
+\begin{itemize}
+\item \textbf{Planck/Komatsu-Spergel convention} (used by Cai \textit{et~al.}, SPHEREx, and this paper): $c = 2$, giving $\fnl = -35/8$.
+\item \textbf{Alternative convention} (used by Li \& Brandenberger): $c = 1$, giving $\fnl = -35/4 \times (1/2) = -35/16$.
+\end{itemize}
+The \emph{physical} bispectrum amplitude $B_\zeta$ is identical in both conventions: $2 \times (-35/8) = 1 \times (-35/4)$. The detection significance $|\fnl|/\sigma(\fnl)$ is also convention-independent, since $\sigma(\fnl)$ scales inversely with $c$.
 
 % ============================================================
 \section*{Acknowledgments}
