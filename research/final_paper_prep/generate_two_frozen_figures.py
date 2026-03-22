@@ -56,7 +56,7 @@ datasets = {
     },
 }
 
-pending = ["Planck-only\n(pending)", "Planck+BAO\n(pending)"]
+pending = ["Planck-only\n(exploratory)", "Planck+BAO\n(exploratory)"]
 
 refs = {
     "SH0ES":       {"H0": (73.04, 1.04)},
@@ -142,7 +142,7 @@ def fig1_dataset_comparison():
         for j, lbl in enumerate(pending):
             yp = y_positions[2 + j]
             ax.plot([], [])  # skip
-            ax.annotate("pending", xy=(0.5, yp), xycoords=("axes fraction", "data"),
+            ax.annotate("exploratory", xy=(0.5, yp), xycoords=("axes fraction", "data"),
                         ha="center", va="center", fontsize=8, color="0.55",
                         fontstyle="italic")
 
