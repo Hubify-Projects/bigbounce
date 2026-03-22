@@ -1,8 +1,8 @@
 # BigBounce — Geometric Dark Energy from Spin-Torsion Cosmology
 
 **Author:** Houston Golden
-**Version:** v0.8.0
-**Paper:** 28 pages, 46 references, 9 appendices
+**Version:** v2.0.0
+**Papers:** Two papers (~40pp framework + ~12pp forecast), 57+ references
 **Website:** [bigbounce.hubify.app](https://bigbounce.hubify.app)
 **Preprint ID:** HUBIFY-2026-001
 
@@ -22,13 +22,13 @@ This repository is **fully self-contained** — no external dependencies on any 
 bigbounce/
 ├── arxiv/                          # LaTeX paper (canonical source of truth)
 │   ├── main.tex                    # The paper (~1,500 lines)
-│   ├── main.pdf                    # Compiled PDF (28 pages)
-│   ├── references.bib              # Bibliography (46 entries)
+│   ├── main.pdf                    # Compiled PDF (~40 pages)
+│   ├── references.bib              # Bibliography (57+ entries)
 │   ├── figures/                    # Paper figures (9 PNGs)
 │   ├── README-SUBMISSION.txt       # arXiv submission metadata
 │   └── reproducibility/            # MCMC reproducibility package
 │       ├── cobaya_config.yaml      # Cobaya v3.3 MCMC configuration
-│       ├── camb_modifications.diff # CAMB v1.5 modification description
+│       ├── camb_modifications.diff # (Legacy) No custom CAMB mods needed; uses stock CAMB with ΔN_eff
 │       ├── params_bestfit.ini      # Best-fit parameters + 68% CI
 │       └── README.md               # Reproducibility instructions
 │
@@ -202,20 +202,22 @@ The `arxiv/reproducibility/` directory contains materials for reproducing the MC
 
 - **`cobaya_config.yaml`** — Full Cobaya v3.3 sampler configuration with priors
 - **`params_bestfit.ini`** — Best-fit parameters with uncertainties
-- **`camb_modifications.diff`** — Description of required CAMB v1.5 modifications (descriptive, not a working patch — this is disclosed in the paper)
+
+**Note:** The implementation uses stock CAMB with `ΔN_eff` as a free parameter — no custom CAMB modifications are required. The legacy `camb_modifications.diff` file is retained for historical reference only.
 
 To reproduce:
 
 ```bash
 pip install cobaya==3.3 camb==1.5
 cobaya-install cosmo -p /path/to/packages
-# Apply CAMB modifications per camb_modifications.diff
 cobaya-run arxiv/reproducibility/cobaya_config.yaml
 ```
 
+Additional computation scripts and analysis notebooks are located in `research/`. These include MCMC post-processing, convergence diagnostics, and figure generation.
+
 ---
 
-## Current Scientific Status (v0.8.0)
+## Current Scientific Status (v2.0.0)
 
 ### What the paper claims (honestly):
 - Dark energy **modeled as arising from** (not "derived from") a parity-odd quantum correction
