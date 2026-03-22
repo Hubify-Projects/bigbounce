@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current version: v2.0.0** (March 2026) — ~37 pages, 57+ bibliography entries, 8 revision rounds complete.
+**Current version: v2.1.0** (March 2026) — ~24 pages (focused version), 57+ bibliography entries, 10+ revision rounds complete.
 
 **Live website:** https://bigbounce.hubify.app
 
