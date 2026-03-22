@@ -1,0 +1,96 @@
+{
+  "spherex_sdb": [
+    {
+      "f_outlier": 0.0,
+      "sigma_fnl": 67.11564002582736,
+      "significance": 0.06518599835025662,
+      "degradation": 1.0
+    },
+    {
+      "f_outlier": 0.01,
+      "sigma_fnl": 67.70364538849076,
+      "significance": 0.06461985872246291,
+      "degradation": 1.0087610780801184
+    },
+    {
+      "f_outlier": 0.02,
+      "sigma_fnl": 68.30379094902332,
+      "significance": 0.06405208172508554,
+      "degradation": 1.0177030409415562
+    },
+    {
+      "f_outlier": 0.05,
+      "sigma_fnl": 70.18084732764531,
+      "significance": 0.06233894526201624,
+      "degradation": 1.0456705367130283
+    },
+    {
+      "f_outlier": 0.1,
+      "sigma_fnl": 73.58986229128631,
+      "significance": 0.05945112361649355,
+      "degradation": 1.0964636895806632
+    },
+    {
+      "f_outlier": 0.15,
+      "sigma_fnl": 77.40257839131947,
+      "significance": 0.05652266488955421,
+      "degradation": 1.1532718508164936
+    },
+    {
+      "f_outlier": 0.2,
+      "sigma_fnl": 81.69385583141224,
+      "significance": 0.05355359904946195,
+      "degradation": 1.2172104117605806
+    },
+    {
+      "f_outlier": 0.3,
+      "sigma_fnl": 92.11843985281156,
+      "significance": 0.04749320556221372,
+      "degradation": 1.3725331356053918
+    }
+  ],
+  "megamapper_sdb": [
+    {
+      "f_outlier": 0.0,
+      "sigma_fnl": 1.9554865332961853,
+      "significance": 2.2372948754729913
+    },
+    {
+      "f_outlier": 0.01,
+      "sigma_fnl": 1.9686173553178716,
+      "significance": 2.2223719547029854
+    },
+    {
+      "f_outlier": 0.02,
+      "sigma_fnl": 1.9820236890864227,
+      "significance": 2.207339914295664
+    },
+    {
+      "f_outlier": 0.05,
+      "sigma_fnl": 2.023978553691362,
+      "significance": 2.161584168972942
+    },
+    {
+      "f_outlier": 0.1,
+      "sigma_fnl": 2.100241261002964,
+      "significance": 2.0830940145946526
+    },
+    {
+      "f_outlier": 0.15,
+      "sigma_fnl": 2.1855859830429285,
+      "significance": 2.0017514908788048
+    },
+    {
+      "f_outlier": 0.2,
+      "sigma_fnl": 2.2816507048990706,
+      "significance": 1.9174714125199672
+    },
+    {
+      "f_outlier": 0.3,
+      "sigma_fnl": 2.5148247425963595,
+      "significance": 1.739683853866952
+    }
+  ],
+  "fnl_signal": 4.375,
+  "conclusion": "Bispectrum channel is the robust SPHEREx strategy; SDB degrades with photo-z outliers"
+}
