@@ -1,0 +1,28 @@
+{
+  "planck_fnl_local": {
+    "value": -0.9,
+    "sigma": 5.1
+  },
+  "bounce_template_projection": {
+    "alpha_L": 0.97,
+    "alpha_E": 0.02,
+    "alpha_O": 0.01
+  },
+  "bounce_recast": {
+    "fnl_measured": -3.886,
+    "sigma": 4.761,
+    "fnl_predicted": -4.375,
+    "distance_sigma": 0.103,
+    "bayes_factor_vs_null": 1.388
+  },
+  "convention_variant": {
+    "fnl_LB": -2.1875,
+    "distance_sigma_LB": 0.357
+  },
+  "detection_thresholds": {
+    "1sigma": 4.38,
+    "2sigma": 2.19,
+    "3sigma": 1.46,
+    "5sigma": 0.88
+  }
+}
