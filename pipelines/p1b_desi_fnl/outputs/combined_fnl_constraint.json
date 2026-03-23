@@ -56,5 +56,7 @@
   ],
   "bounce_prediction": -4.375,
   "best_current_sigma": 3.106,
-  "improvement_over_planck": 1.53
+  "improvement_over_planck": 1.53,
+  "methodology": "TRIAGE_RECAST",
+  "caveat": "This is a summary-statistic recast from published constraints, not an end-to-end reanalysis of raw data products. The numbers are useful for plausibility checking but are not publishable measurements."
 }

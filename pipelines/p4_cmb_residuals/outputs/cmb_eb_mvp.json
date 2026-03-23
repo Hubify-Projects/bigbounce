@@ -12,5 +12,7 @@
   "chi2_act": 0.5524,
   "eb_amplitude_ell100": 0.376969,
   "status": "MVP_COMPLETE",
-  "note": "Full map-level analysis requires Planck PR3/PR4 map downloads (~6GB) and NaMaster"
+  "note": "Full map-level analysis requires Planck PR3/PR4 map downloads (~6GB) and NaMaster",
+  "methodology": "TRIAGE_RECAST",
+  "caveat": "This is a summary-statistic recast from published constraints, not an end-to-end reanalysis of raw data products. The numbers are useful for plausibility checking but are not publishable measurements."
 }

@@ -36,5 +36,7 @@
   "litebird_forecast": {
     "sigma_beta": 0.03,
     "significance_if_predicted": 9.000000000000002
-  }
+  },
+  "methodology": "TRIAGE_RECAST",
+  "caveat": "This is a summary-statistic recast from published constraints, not an end-to-end reanalysis of raw data products. The numbers are useful for plausibility checking but are not publishable measurements."
 }

@@ -24,5 +24,8 @@
     "2sigma": 2.19,
     "3sigma": 1.46,
     "5sigma": 0.88
-  }
+  },
+  "methodology": "TEMPLATE_PROJECTION_ON_PUBLISHED_CONSTRAINTS",
+  "caveat": "This is a projection of the published Planck f_NL^local = -0.9 \u00b1 5.1 through our computed template cosine (0.97). It is NOT a new bispectrum measurement from Planck maps. The result confirms consistency but does not constitute independent evidence.",
+  "honest_summary": "The bounce prediction sits inside the broad Planck error bar. This is expected and not surprising given sigma ~ 5."
 }

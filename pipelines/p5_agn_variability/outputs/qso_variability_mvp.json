@@ -13,5 +13,7 @@
   },
   "improvement_factor": 0.422,
   "status": "MVP_COMPLETE",
-  "note": "Full unTimely cross-match would identify additional missed variable QSOs not in DESI spectroscopic catalog"
+  "note": "Full unTimely cross-match would identify additional missed variable QSOs not in DESI spectroscopic catalog",
+  "methodology": "TRIAGE_RECAST",
+  "caveat": "This is a summary-statistic recast from published constraints, not an end-to-end reanalysis of raw data products. The numbers are useful for plausibility checking but are not publishable measurements."
 }

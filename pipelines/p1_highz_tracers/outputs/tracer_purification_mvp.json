@@ -19,5 +19,7 @@
     "multitracer": 1.43
   },
   "status": "MVP_COMPLETE",
-  "note": "Actual purification requires DESI+Legacy+unWISE cross-match and ML classifier training"
+  "note": "Actual purification requires DESI+Legacy+unWISE cross-match and ML classifier training",
+  "methodology": "TRIAGE_RECAST",
+  "caveat": "This is a summary-statistic recast from published constraints, not an end-to-end reanalysis of raw data products. The numbers are useful for plausibility checking but are not publishable measurements."
 }
