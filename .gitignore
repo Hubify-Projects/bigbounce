@@ -28,3 +28,4 @@ arxiv/mainNotes.bib
 reproducibility/cosmology/archives/*.tar.gz
 reproducibility/cosmology/archives/gpu_run_snapshot_*/chains/
 reproducibility/cosmology/traces/
+runpod_backups/

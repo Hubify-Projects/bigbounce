@@ -19,7 +19,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - ALP birefringence prediction β = 0.27° matches 3.6σ observed signal (0.342 ± 0.094°)
 - Branch V matter bounce: f_NL = -35/8 = -4.375 (parameter-free, SPHEREx testable)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
-- 309,789 MCMC posterior samples across 2 frozen dataset combinations
+- 424,181 MCMC posterior samples across 2 frozen dataset combinations
 
 ## Website Architecture
 
