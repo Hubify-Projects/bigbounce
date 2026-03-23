@@ -1,0 +1,9 @@
+{
+  "n_galaxies": 10000,
+  "n_rare_true": 500,
+  "top_100_rare_found": 100,
+  "precision_at_100": 1.0,
+  "recall_at_100": 0.2,
+  "status": "MVP_COMPLETE",
+  "note": "MVP uses synthetic embeddings. Full version uses Zoobot 768-dim embeddings from P2."
+}

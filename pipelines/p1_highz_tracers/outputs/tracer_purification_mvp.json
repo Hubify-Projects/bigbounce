@@ -1,0 +1,23 @@
+{
+  "baseline": {
+    "sigma_fnl": 9.1,
+    "significance": 0.481
+  },
+  "purified": {
+    "sigma_fnl": 4.63,
+    "significance": 0.945,
+    "total_improvement": 1.97
+  },
+  "combined_with_planck": {
+    "sigma_fnl": 3.32,
+    "significance": 1.318
+  },
+  "improvement_factors": {
+    "bias_selection": 1.18,
+    "contamination": 1.05,
+    "photoz": 1.11,
+    "multitracer": 1.43
+  },
+  "status": "MVP_COMPLETE",
+  "note": "Actual purification requires DESI+Legacy+unWISE cross-match and ML classifier training"
+}

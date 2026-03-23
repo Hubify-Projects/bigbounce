@@ -1,0 +1,17 @@
+{
+  "full_qso_sample": {
+    "n": 1189129,
+    "b": 3.5,
+    "sigma_fnl": 74.06,
+    "significance": 0.06
+  },
+  "variable_subsample": {
+    "n": 356738,
+    "b": 4.0249999999999995,
+    "sigma_fnl": 175.33,
+    "significance": 0.02
+  },
+  "improvement_factor": 0.422,
+  "status": "MVP_COMPLETE",
+  "note": "Full unTimely cross-match would identify additional missed variable QSOs not in DESI spectroscopic catalog"
+}

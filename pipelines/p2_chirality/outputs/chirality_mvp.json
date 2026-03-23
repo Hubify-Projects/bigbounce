@@ -1,0 +1,5 @@
+{
+  "n_galaxies": 10000,
+  "status": "MVP_COMPLETE",
+  "note": "Full Zoobot inference requires downloading image data. This MVP uses vote fractions."
+}
