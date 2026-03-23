@@ -1,0 +1,40 @@
+{
+  "measurements": [
+    {
+      "name": "Planck HFI (Minami & Komatsu 2020)",
+      "beta": 0.35,
+      "sigma": 0.14
+    },
+    {
+      "name": "Planck NPIPE (Eskilt 2022)",
+      "beta": 0.3,
+      "sigma": 0.11
+    },
+    {
+      "name": "ACT DR6 (Diego-Palazuelos 2025)",
+      "beta": 0.215,
+      "sigma": 0.074
+    }
+  ],
+  "primary_combination": {
+    "datasets": "Planck NPIPE + ACT DR6",
+    "beta": 0.2415,
+    "sigma": 0.0614,
+    "significance": 3.93
+  },
+  "full_combination": {
+    "datasets": "Planck HFI + NPIPE + ACT DR6",
+    "beta": 0.259,
+    "sigma": 0.0562,
+    "significance": 4.61
+  },
+  "bounce_prediction": {
+    "beta": 0.27,
+    "distance_from_primary": 0.464,
+    "C_agamma_needed": 11.2
+  },
+  "litebird_forecast": {
+    "sigma_beta": 0.03,
+    "significance_if_predicted": 9.000000000000002
+  }
+}
