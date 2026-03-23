@@ -89,16 +89,17 @@ This work presents a phenomenological framework that addresses these challenges 
 \end{enumerate}
 
 \begin{table*}[tb]
-\caption{\label{tab:summary} Executive summary of key results.}
+\caption{\label{tab:summary} Executive summary: what the investigation found. Most routes fail; the surviving testable prediction is the mechanism-independent $f_{\rm NL} = -35/8$.}
 \begin{ruledtabular}
 \begin{tabular}{lll}
-\textbf{Problem} & \textbf{MCMC Fit} & \textbf{Residual Tension} \\
+\textbf{Question} & \textbf{Result} & \textbf{Status} \\
 \hline
-$H_0$ tension (${\sim}4.9\sigma$, Planck--SH0ES) & $67.68\pm 1.06$ km/s/Mpc & $3.6\sigma$ vs.\ SH0ES$^a$ \\
-$\sigma_8$/$S_8$ tension ($2$--$3\sigma$) & $\sigma_8 = 0.803$; $S_8 = 0.814$ & Standard (Planck-consistent)$^b$ \\
-Dark energy fine-tuning & Scaling ansatz$^c$ & $10^5$ vs $10^{120}$ (reparameterized) \\
-Singularity problem & LQC bounce & $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ \\
-Cosmic parity violation & Rotating BH origin & $2.4$--$2.9\sigma$ individual; $3.9\sigma$ combined \\
+Does the framework resolve $H_0$ tension? & $H_0 = 67.68\pm 1.06$ km/s/Mpc$^a$ & \textbf{No.} Standard $\Lambda$CDM recovered. \\
+Does the framework resolve $\sigma_8$/$S_8$ tension? & $\sigma_8 = 0.803$; $S_8 = 0.814$$^b$ & \textbf{No.} Planck-consistent. \\
+Can the bounce derive dark energy? & 14 barriers close all routes & \textbf{No.} Scaling ansatz only$^c$. \\
+Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (from LQC, not ECH-specific). \\
+Is ECH visible in perturbations? & Perturbation-transparency theorem & \textbf{No.} $\gamma$ invisible at all orders. \\
+Is there a testable prediction? & $f_{\rm NL} = -35/8$ (SPHEREx $4$--$6\sigma$) & \textbf{Yes} (mechanism-independent). \\
 \end{tabular}
 \end{ruledtabular}
 \vspace{2pt}
@@ -129,7 +130,7 @@ Each theoretical ingredient above has been studied independently. Our contributi
 
 \item \textit{MCMC verification revealing null result}: Independent Cobaya verification across two frozen dataset combinations demonstrates that $\Delta\Neff$ is consistent with zero, $H_0$ recovers the standard Planck $\Lambda$CDM value of $67.68 \pm 1.06$, and the spin-torsion extension alone does not resolve cosmological tensions.
 
-\item \textit{ALP birefringence consistency}: A spectator ALP with natural parameters ($f_a \sim \MPl$, $m \sim H_0$) reproduces the observed cosmic birefringence $\beta = 0.242^\circ \pm 0.061^\circ$ ($3.9\sigma$) without fine-tuning, providing a consistency check between the ECH parity structure and CMB polarization data.
+\item \textit{ALP birefringence consistency check (secondary)}: A spectator ALP with natural parameters ($f_a \sim \MPl$, $m \sim H_0$) accommodates the observed $\beta = 0.242^\circ \pm 0.061^\circ$ ($3.9\sigma$) without fine-tuning. This ALP model class was previously studied by Fujita \etal~\cite{Fujita2021}; our contribution is the ECH-motivated parameter identification and independent MCMC inference, not the model itself. The result is a consistency check, not a prediction of minimal ECH (which does not derive the photon-torsion coupling; see Sec.~\ref{sec:birefringence_check}).
 \end{enumerate}
 
 
@@ -754,9 +755,11 @@ Detection of the parity-odd signatures would constrain LQG parameters ($\gamma$,
 
 %% TRIMMED: Expanded theoretical implications enumeration — moved to supplementary material
 
-\subsection{Cosmic Birefringence: Spectator ALP Analysis}\label{sec:birefringence_check}
+\subsection{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
 
-Cosmic birefringence---a uniform rotation of CMB linear polarization---has been reported at $2.5$--$2.9\sigma$ by independent analyses of Planck~\cite{Minami2020,Eskilt2022} and ACT~DR6~\cite{DiegoPalazuelos2025} data. While the minimal ECH framework does not predict birefringence without an explicit photon-sector coupling, the parity-odd structure of the Holst action provides heuristic motivation for a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim \MPl$ and Hubble-scale mass $m \sim H_0$.
+\textit{Note: This subsection presents a secondary consistency check using a spectator ALP model. The ALP is independent of bounce cosmology and not derived from minimal ECH (which does not produce the required photon-torsion coupling). The model class was previously studied by Fujita \etal~\cite{Fujita2021}; our contribution is the ECH-motivated parameter identification and independent inference. This material is included for completeness and does not affect the paper's central results (the barrier catalog and perturbation-transparency theorem).}
+
+Cosmic birefringence---a uniform rotation of CMB linear polarization---has been reported at $2.5$--$2.9\sigma$ by independent analyses of Planck~\cite{Minami2020,Eskilt2022} and ACT~DR6~\cite{DiegoPalazuelos2025} data. The parity-odd structure of the Holst action provides heuristic motivation for a spectator ALP with $f_a \sim \MPl$ and $m \sim H_0$.
 
 \textit{ALP field evolution.}---Numerical integration of the ALP equation of motion $\ddot\phi + 3H\dot\phi + m^2 f_a\sin(\phi/f_a) = 0$ in a $\Lambda$CDM background (Planck~2018 parameters) yields the field displacement from recombination to today:
 \begin{equation}
