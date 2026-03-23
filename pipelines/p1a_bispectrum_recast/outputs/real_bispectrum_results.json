@@ -1,0 +1,26 @@
+{
+  "methodology": "REAL_MAP_LEVEL_BISPECTRUM",
+  "map": "Planck PR3 SMICA",
+  "nside_analysis": 128,
+  "lmax": 256,
+  "fsky": 0.7794118523597717,
+  "estimator": "squeezed_KSW_lite",
+  "n_monte_carlo": 200,
+  "fnl_local": {
+    "value": 57.98356789051952,
+    "sigma": 159.04879570032568,
+    "significance": 0.36456464593274995
+  },
+  "fnl_bounce": {
+    "value": 56.24406085380393,
+    "sigma": 163.96783061889246,
+    "template_cosine": 0.97,
+    "prediction": -4.375,
+    "distance_sigma": 0.3697009384401733
+  },
+  "planck_published": {
+    "fnl_local": -0.9,
+    "sigma": 5.1
+  },
+  "caveat": "Simplified squeezed estimator at NSIDE=128 (lmax=256). The full Planck analysis uses NSIDE=2048, lmax=2500, and optimal KSW/modal estimators. Our error bar is expected to be ~10-50x larger than the published Planck value. This is a real map-level analysis but not a replacement for the official pipeline."
+}
