@@ -1,0 +1,11 @@
+{
+  "method": "NaMaster_purified",
+  "nside": 256,
+  "fsky": 0.7135021770100477,
+  "beta_deg": 0.1377675045290429,
+  "beta_err_deg": 0.10798324463635334,
+  "ell_range": [
+    50,
+    500
+  ]
+}
