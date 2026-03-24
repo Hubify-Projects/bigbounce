@@ -2138,7 +2138,7 @@ bayesianDiscrimination: {
 
 templateOverlap: {
   name: "Template Overlap Robustness",
-  description: "Amplitude recovery factor r across 10 physically motivated weighting schemes. Mean r = 0.84 \u00B1 0.02 is stable across all weights, proving the mismatch is intrinsic to the bounce shape. Injection validation (200 MC realizations) confirms r_meas = 0.90 \u00B1 0.01, giving a consolidated range r = 0.88\u20130.90.",
+  description: "Amplitude recovery factor r across 10 physically motivated weighting schemes, using the physics-derived full-commutator polynomial (6,2,-18,10,-66,18) from 2\u00D7(Eqs. 34+35+36) at \u03B5 = 3/2. CMB Fisher: r = 0.90; LSS/SDB: r = 0.85; \u2113-space Fisher: r = 0.878; injection: r = 0.90 \u00B1 0.01. Consolidated: r \u2248 0.85\u20130.90.",
   source: "research/branch_V_matter_bounce/template_mismatch/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Weight","r_amp","r_shape","\u03C3_degradation","Notes"],
@@ -2158,7 +2158,7 @@ templateOverlap: {
 
 normAudit: {
   name: "Normalization Audit: Cai vs Li Vertex Match",
-  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error. Cai Eq. 37 typo proven: published coefficients are wrong (unique correct coefficients determined independently).",
+  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error. Physics-derived full-commutator polynomial (6,2,-18,10,-66,18) from 2\u00D7(Eqs. 34+35+36) at \u03B5 = 3/2 using exact rational arithmetic. Published (3,1,-9,5,-66,9) are single-ordering coefficients. No independent -35/8 verification found in 2020\u20132024 literature.",
   source: "research/branch_V_matter_bounce/normalization_audit/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Vertex","Cai (Eq.)","Li (Eq.)","Cai value","Li value","Match"],
