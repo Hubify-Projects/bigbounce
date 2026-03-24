@@ -1,0 +1,197 @@
+{
+  "coefficient_c": 18.324752178581157,
+  "coefficient_c_err": 0.7612787971394819,
+  "consistency_relation": "f_NL = -4.375 * (1 + 18.3248 * (eps - 1.5))",
+  "consistency_relation_ns": "f_NL = -4.375 + -10.0213 * (n_s - 1)",
+  "fnl_at_planck_ns": -4.023250655447079,
+  "correction_percent": 8.03998501835248,
+  "max_residual": 0.12880030251585084,
+  "valid_range_eps": [
+    1.47,
+    1.53
+  ],
+  "status": "numerically computed",
+  "caveat": "Uses scaling model (explicit coefficients + power spectrum ratio), not full cubic integral",
+  "scan_data": [
+    {
+      "epsilon": 1.47,
+      "P_ratio": 1.7899910555279914,
+      "alpha": 1.03092828762744,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0180239999999998,
+      "fnl_ratio_simple": 0.5687313335203871,
+      "fnl_estimated": -2.4881995841516935
+    },
+    {
+      "epsilon": 1.48,
+      "P_ratio": 1.4670123670200108,
+      "alpha": 1.0204073771277153,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0124515555555555,
+      "fnl_ratio_simple": 0.6901452082590012,
+      "fnl_estimated": -3.0193852861331303
+    },
+    {
+      "epsilon": 1.485,
+      "P_ratio": 1.330570060054187,
+      "alpha": 1.015227039727556,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.009503,
+      "fnl_ratio_simple": 0.7586996207917743,
+      "fnl_estimated": -3.319310840964013
+    },
+    {
+      "epsilon": 1.49,
+      "P_ratio": 1.2082928493794292,
+      "alpha": 1.0100990350723948,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0064453333333332,
+      "fnl_ratio_simple": 0.8329481829262141,
+      "fnl_estimated": -3.6441483003021866
+    },
+    {
+      "epsilon": 1.492,
+      "P_ratio": 1.16298117780813,
+      "alpha": 1.0080623091021133,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0051915662222222,
+      "fnl_ratio_simple": 0.8643231596548331,
+      "fnl_estimated": -3.7814138234898946
+    },
+    {
+      "epsilon": 1.494,
+      "P_ratio": 1.1195827960844884,
+      "alpha": 1.0060337801644208,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0039201919999998,
+      "fnl_ratio_simple": 0.8966913349428065,
+      "fnl_estimated": -3.9230245903747782
+    },
+    {
+      "epsilon": 1.495,
+      "P_ratio": 1.0985731107608332,
+      "alpha": 1.0050225741343244,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.003277888888889,
+      "fnl_ratio_simple": 0.9132554575216699,
+      "fnl_estimated": -3.995492626657306
+    },
+    {
+      "epsilon": 1.4955,
+      "P_ratio": 1.0882359203991694,
+      "alpha": 1.00451773304042,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.002955081,
+      "fnl_ratio_simple": 0.9216338683546781,
+      "fnl_estimated": -4.032148174051716
+    },
+    {
+      "epsilon": 1.496,
+      "P_ratio": 1.078008744687107,
+      "alpha": 1.0040133988738518,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.002631168,
+      "fnl_ratio_simple": 0.9300770266859149,
+      "fnl_estimated": -4.069086991750877
+    },
+    {
+      "epsilon": 1.498,
+      "P_ratio": 1.0381745538299738,
+      "alpha": 1.0020011162408564,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0013244515555555,
+      "fnl_ratio_simple": 0.9645049070616564,
+      "fnl_estimated": -4.219708968394746
+    },
+    {
+      "epsilon": 1.5,
+      "P_ratio": 1.0,
+      "alpha": 0.9999968836678552,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 1.0,
+      "fnl_ratio_simple": 1.0,
+      "fnl_estimated": -4.375
+    },
+    {
+      "epsilon": 1.502,
+      "P_ratio": 0.9634088765696471,
+      "alpha": 0.9980006529453078,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9986577706666666,
+      "fnl_ratio_simple": 1.0365876783516135,
+      "fnl_estimated": -4.535071092788309
+    },
+    {
+      "epsilon": 1.504,
+      "P_ratio": 0.928328777624184,
+      "alpha": 0.9960123762478645,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.997297720888889,
+      "fnl_ratio_simple": 1.074293660745079,
+      "fnl_estimated": -4.700034765759721
+    },
+    {
+      "epsilon": 1.505,
+      "P_ratio": 0.9113337243543634,
+      "alpha": 0.9950212058172447,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9966110000000001,
+      "fnl_ratio_simple": 1.0935741467331868,
+      "fnl_estimated": -4.784386891957692
+    },
+    {
+      "epsilon": 1.506,
+      "P_ratio": 0.8946908941945038,
+      "alpha": 0.9940320061305387,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.995919808,
+      "fnl_ratio_simple": 1.1131440081287889,
+      "fnl_estimated": -4.870005035563452
+    },
+    {
+      "epsilon": 1.508,
+      "P_ratio": 0.8624298221426782,
+      "alpha": 0.9920594955249421,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9945239893333334,
+      "fnl_ratio_simple": 1.1531651199890929,
+      "fnl_estimated": -5.045097399952281
+    },
+    {
+      "epsilon": 1.51,
+      "P_ratio": 0.8314833809927161,
+      "alpha": 0.9900947977355341,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9931102222222221,
+      "fnl_ratio_simple": 1.1943837302394886,
+      "fnl_estimated": -5.225428819797763
+    },
+    {
+      "epsilon": 1.515,
+      "P_ratio": 0.7594878411210672,
+      "alpha": 0.9852169312148227,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9894970000000001,
+      "fnl_ratio_simple": 1.3028477171397772,
+      "fnl_estimated": -5.699958762486525
+    },
+    {
+      "epsilon": 1.52,
+      "P_ratio": 0.6944992383713442,
+      "alpha": 0.980386892327431,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.9857706666666667,
+      "fnl_ratio_simple": 1.4193977648965852,
+      "fnl_estimated": -6.20986522142256
+    },
+    {
+      "epsilon": 1.53,
+      "P_ratio": 0.5826339134484516,
+      "alpha": 0.9708675110630933,
+      "alpha_ref": 0.9999968836678552,
+      "coeff_ratio": 0.977976,
+      "fnl_ratio_simple": 1.678542867873286,
+      "fnl_estimated": -7.343625046945626
+    }
+  ]
+}
