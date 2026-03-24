@@ -2138,7 +2138,7 @@ bayesianDiscrimination: {
 
 templateOverlap: {
   name: "Template Overlap Robustness",
-  description: "Amplitude recovery factor r across 10 physically motivated weighting schemes. Mean r = 0.84 \u00B1 0.02 is stable across all weights, proving the mismatch is intrinsic to the bounce shape.",
+  description: "Amplitude recovery factor r across 10 physically motivated weighting schemes. Mean r = 0.84 \u00B1 0.02 is stable across all weights, proving the mismatch is intrinsic to the bounce shape. Injection validation (200 MC realizations) confirms r_meas = 0.90 \u00B1 0.01, giving a consolidated range r = 0.88\u20130.90.",
   source: "research/branch_V_matter_bounce/template_mismatch/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Weight","r_amp","r_shape","\u03C3_degradation","Notes"],
@@ -2158,7 +2158,7 @@ templateOverlap: {
 
 normAudit: {
   name: "Normalization Audit: Cai vs Li Vertex Match",
-  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error.",
+  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error. Cai Eq. 37 typo proven: published coefficients are wrong (unique correct coefficients determined independently).",
   source: "research/branch_V_matter_bounce/normalization_audit/",
   status: "COMPLETE", statusClass: "frozen",
   columns: ["Vertex","Cai (Eq.)","Li (Eq.)","Cai value","Li value","Match"],
@@ -2185,7 +2185,7 @@ forecastCorrected: {
     ["Planck+DESI (now)","4.1","1.1\u03C3","0.9\u03C3","0.5\u03C3"],
     ["AI-improved tracers","2.5","1.8\u03C3","1.5\u03C3","0.8\u03C3"],
     ["Simons Observatory","2.0","2.2\u03C3","1.9\u03C3","1.0\u03C3"],
-    ["SPHEREx bispectrum","0.7","6.2\u03C3","5.5\u03C3","2.7\u03C3"],
+    ["SPHEREx bispectrum","0.7","6.2\u03C3","~5.0\u20135.5\u03C3","2.7\u03C3"],
     ["CMB-S4","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper SDB","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper+CMB-S4","0.35","12.5\u03C3","11.0\u03C3","5.5\u03C3"]
