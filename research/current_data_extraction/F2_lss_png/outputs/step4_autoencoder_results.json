@@ -1,0 +1,13 @@
+{
+  "n_objects": 2360737,
+  "n_features": 20,
+  "train_loss_final": 0.06569431246477703,
+  "val_loss_final": 0.029100612981319426,
+  "score_median": 0.011153162457048893,
+  "score_p99": 0.8654132771492022,
+  "pca_ae_correlation": 0.03934106763939814,
+  "top100_overlap": 59,
+  "training_time_s": 330.41615653038025,
+  "sky_holdout_ratio": 4.79765510559082,
+  "status": "NEEDS_INVESTIGATION"
+}

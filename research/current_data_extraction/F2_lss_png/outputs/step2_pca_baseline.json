@@ -1,0 +1,27 @@
+{
+  "n_objects": 2847435,
+  "n_features": 21,
+  "feature_names": [
+    "Z",
+    "ZERR",
+    "DELTACHI2",
+    "ZWARN",
+    "FLUX_G",
+    "FLUX_R",
+    "FLUX_Z",
+    "FLUX_W1",
+    "FLUX_W2",
+    "FLUX_IVAR_G",
+    "FLUX_IVAR_R",
+    "FLUX_IVAR_Z",
+    "FLUX_IVAR_W1",
+    "FLUX_IVAR_W2",
+    "FIBERFLUX_G",
+    "FIBERFLUX_R",
+    "FIBERFLUX_Z",
+    "FIBERTOTFLUX_G",
+    "FIBERTOTFLUX_R",
+    "FIBERTOTFLUX_Z"
+  ],
+  "status": "PCA_BASELINE_COMPLETE"
+}
