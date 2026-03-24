@@ -167,7 +167,7 @@
     <p><strong>Cai, Chen, Easther &amp; Brandenberger (2009)</strong> derived \(f_{\rm NL} = -35/8\) for exact matter-dominated contraction. <strong>Heinrich, Dor&eacute; &amp; Krause (2023)</strong> published SPHEREx bispectrum forecasts for generic \(f_{\rm NL}^{\rm local}\). <strong>Dalal et al. (2008)</strong> established scale-dependent bias as a complementary \(f_{\rm NL}\) probe. <strong>MegaMapper</strong> science case documents (Schlegel et al.) provide survey specifications. <strong>Li &amp; Brandenberger (2014)</strong> re-derived a related result with a factor-of-2 difference in convention. Sullivan et al. forecast generic local-PNG performance for MegaMapper and SPHEREx. Heinrich et al. explicitly noted their SPHEREx bispectrum forecast did not yet include wide-angle or GR effects.</p>
 
     <h4>What's new</h4>
-    <p>To our knowledge, no prior work combines all of the following into a single matter-bounce-specific forecast: (a) SPHEREx and MegaMapper sensitivity forecasts specific to the bounce prediction; (b) Bayesian model comparison with 600,000+ Monte Carlo realizations showing bounce favored at ~8-17:1 over tuned multifield (prior-dependent; up to &gt;300 with sharp priors); (c) GR-projection robustness analysis showing the signal survives marginalization over relativistic corrections; (d) template-projection computation (\(\cos\theta = 0.97\) between local and matter-bounce templates); (e) \(\mathcal{O}(\varepsilon)\) correction for \(w = -0.003\) departure from exact matter domination (0.6% effect); (f) cubic bounce transmission estimate (0.024% correction); (g) Li-Brandenberger convention resolution establishing that even the worst-case value (\(-35/16\)) is detectable at \(4.4\sigma\) by MegaMapper.</p>
+    <p>To our knowledge, no prior work combines all of the following into a single matter-bounce-specific forecast: (a) SPHEREx and MegaMapper sensitivity forecasts specific to the bounce prediction; (b) Bayesian model comparison with 600,000+ Monte Carlo realizations showing bounce favored at ~8-17:1 over tuned multifield (prior-dependent; up to &gt;300 with sharp priors); (c) GR-projection robustness analysis showing the signal survives marginalization over relativistic corrections; (d) template-mismatch quantification (amplitude recovery \(r = 0.84 \pm 0.02\), stable across 10 weighting schemes; local estimator captures 84% of the bounce signal); (e) \(\mathcal{O}(\varepsilon)\) correction for \(w = -0.003\) departure from exact matter domination (0.6% effect); (f) cubic bounce transmission estimate (0.024% correction); (g) Li-Brandenberger convention resolution establishing that even the worst-case value (\(-35/16\)) is detectable at \(4.4\sigma\) by MegaMapper.</p>
 
     <h4>Computational verification</h4>
     <p>Five independent computational programs back this forecast:</p>
@@ -472,7 +472,7 @@
         <tr>
           <td>4</td>
           <td><code>research/template_projection/compute_cosine.py</code></td>
-          <td style="font-family: var(--font-sans);">Fisher-weighted template projection between local and matter-bounce bispectrum shapes. Result: cos &theta; = 0.97.</td>
+          <td style="font-family: var(--font-sans);">Fisher-weighted template projection between local and matter-bounce bispectrum shapes. Result: r = 0.84 ± 0.02 (amplitude recovery).</td>
           <td style="font-family: var(--font-sans);">Paper 2 &sect;3.2</td>
         </tr>
         <tr>
