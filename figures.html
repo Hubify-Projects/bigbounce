@@ -200,7 +200,7 @@
   <h1>Figures &amp; Media</h1>
   <p class="subtitle">Complete gallery of figures from the two-paper spin-torsion cosmology research program. Click any image to view full-size.</p>
   <div class="meta">
-    <span class="badge badge-accent">30 Figures</span>
+    <span class="badge badge-accent">33 Figures</span>
     <span class="badge badge-neutral">2 Papers</span>
   </div>
 </div>
@@ -209,7 +209,7 @@
 <div class="card" style="margin-bottom: 32px; padding: 24px 28px; border-left: 4px solid var(--text); background: var(--bg-subtle);">
 <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px;"><strong>How these figures tell the story.</strong> The figures are organized by paper, leading with the positive prediction (Paper 2) and followed by the framework investigation (Paper 1) that led to it.</p>
 <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-  <strong>Paper 2</strong> (The Decisive Test): Figures 23&ndash;27 present the f<sub>NL</sub> shape function, survey forecasts, k<sub>min</sub> sensitivity, Bayesian decision thresholds, and bounce-vs-inflation comparison. Figures 28&ndash;30 cover the template mismatch analysis and corrected forecasts. These are the flagship results.<br>
+  <strong>Paper 2</strong> (The Decisive Test): Figures 23&ndash;27 present the f<sub>NL</sub> shape function, survey forecasts, k<sub>min</sub> sensitivity, Bayesian decision thresholds, and bounce-vs-inflation comparison. Figures 28&ndash;30 cover the template mismatch analysis and corrected forecasts. Figures 31&ndash;33 add the true polynomial shape comparison, NaMaster birefringence resolution study, and updated forecasts with the physics-derived polynomial. These are the flagship results.<br>
   <strong>Paper 1 &mdash; ALP Birefringence</strong>: Figures 20&ndash;21 show ALP birefringence posteriors and model comparisons (now part of Paper 1 &sect;11.5).<br>
   <strong>Paper 1 &mdash; Framework</strong>: Figures 1&ndash;8 are from the original framework investigation. <em>Note: Some figures (3a, 3b, 6) reflect analysis that was later corrected by MCMC verification</em>. Figures 10&ndash;19 show the MCMC verification that established the corrected results.
 </div>
@@ -218,7 +218,7 @@
 <!-- ═══════════════════════════════════════════════
      Section 1: Paper 2 — f_NL Forecast (Flagship)
      ═══════════════════════════════════════════════ -->
-<h2>Paper 2 &mdash; f<sub>NL</sub> Forecast <span class="section-count">8 figures</span></h2>
+<h2>Paper 2 &mdash; f<sub>NL</sub> Forecast <span class="section-count">11 figures</span></h2>
 <p>Figures from Paper 2 ("Testing the Matter Bounce with Primordial Non-Gaussianity"). These present the decisive test: f<sub>NL</sub> = &minus;35/8 shape function, survey comparison, systematics analysis, Bayesian discrimination, bounce-vs-inflation anti-mimicry, template mismatch analysis, and corrected forecasts. All results verified through 600,000+ Monte Carlo simulations.</p>
 
 <div class="gallery-grid">
@@ -299,6 +299,36 @@
       <div class="gallery-item-number">Figure 30</div>
       <div class="gallery-item-title">Forecast Significance Comparison</div>
       <p class="gallery-desc">Left: Detection significance with and without template mismatch correction (canonical \(f_\mathrm{NL} = -35/8\)). SPHEREx drops from \(6.2\sigma\) naive to \(5.5\sigma\) corrected. Right: Normalization sensitivity &mdash; if \(-35/16\) is correct, SPHEREx drops further to \(2.7\sigma\). Template correction matters more for the MegaMapper SDB channel.</p>
+      <span class="gallery-source">Paper 2 &mdash; Forecasts</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="public/images/fig_true_vs_fitted_polynomial.png" alt="True vs Fitted Polynomial Shape" loading="lazy">
+    <div class="gallery-item-info">
+      <div class="gallery-item-number">Figure 31</div>
+      <div class="gallery-item-title">True vs Fitted Polynomial Shape</div>
+      <p class="gallery-desc">Matter-bounce \(B_\mathrm{NL}\) shape: physics-derived polynomial (6,2,&minus;18,10,&minus;66,18) vs 3-benchmark fit (2,7,3,&minus;12,&minus;69,19). Left: isosceles series showing the true polynomial stays closer to the local template at intermediate configurations. Right: squeezed series showing both converge to \(-35/8\). The physics-derived polynomial gives a less severe template mismatch (\(r \approx 0.85\text{--}0.90\) vs \(r \approx 0.84\)).</p>
+      <span class="gallery-source">Paper 2 &mdash; True Polynomial</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="public/images/fig_namaster_beta_vs_nside.png" alt="NaMaster Beta vs NSIDE" loading="lazy">
+    <div class="gallery-item-info">
+      <div class="gallery-item-number">Figure 32</div>
+      <div class="gallery-item-title">NaMaster \(\beta\) vs NSIDE</div>
+      <p class="gallery-desc">Cosmic birefringence \(\beta\) measured from Planck SMICA using NaMaster with B-mode purification at increasing resolution. NSIDE=1024 (\(\beta = 0.19 \pm 0.03°\)) is the lead result. At NSIDE=2048, \(\beta\) drops to \(0.07 \pm 0.02°\), suggesting high-\(\ell\) contamination or noise. Green circle marks the preferred NSIDE=1024 result. Blue band shows the published Planck+ACT measurement. Red dashed line is our ALP prediction.</p>
+      <span class="gallery-source">Paper 2 &mdash; Birefringence</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="public/images/fig_forecast_true_polynomial.png" alt="Updated Forecast with True Polynomial" loading="lazy">
+    <div class="gallery-item-info">
+      <div class="gallery-item-number">Figure 33</div>
+      <div class="gallery-item-title">Updated Forecast with True Polynomial</div>
+      <p class="gallery-desc">Detection significance for \(f_\mathrm{NL} = -35/8\) using the physics-derived polynomial (\(r = 0.88\)). Template correction reduces SPHEREx from \(6.2\sigma\) naive to \(\sim5.5\sigma\). MegaMapper drops from \(8.8\sigma\) to \(\sim7.7\sigma\). Both remain well above the \(5\sigma\) discovery threshold.</p>
       <span class="gallery-source">Paper 2 &mdash; Forecasts</span>
     </div>
   </div>

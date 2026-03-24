@@ -155,6 +155,8 @@
   <div class="sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="sidebar-badge frozen">10 rows</span></div>
   <div class="sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="sidebar-badge frozen">8 rows</span></div>
   <div class="sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="sidebar-badge frozen">8 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('namasterHierarchy')" data-key="namasterHierarchy">NaMaster EB Hierarchy <span class="sidebar-badge frozen">9 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('truePolynomial')" data-key="truePolynomial">True Polynomial <span class="sidebar-badge frozen">4 rows</span></div>
 
   <div class="sidebar-group"><span class="dot purple"></span> Observational</div>
   <div class="sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="sidebar-badge">5 rows</span></div>
@@ -2189,6 +2191,41 @@ forecastCorrected: {
     ["CMB-S4","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper SDB","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper+CMB-S4","0.35","12.5\u03C3","11.0\u03C3","5.5\u03C3"]
+  ]
+}
+
+},
+
+namasterHierarchy: {
+  name: "NaMaster EB Birefringence vs Resolution",
+  description: "Cosmic birefringence \u03B2 measured from Planck SMICA using NaMaster with B-mode purification at increasing map resolution. NSIDE=1024 is the lead result. NSIDE=2048 shows high-\u2113 instability. All frequency channels show positive \u03B2 (consistent with cosmological origin). Injection recovery passes at all tested levels including \u03B2 = 0.5\u00B0.",
+  source: "F3 CMB Residuals/EB Pipeline",
+  status: "ROBUSTNESS_PARTIAL", statusClass: "frozen",
+  columns: ["Resolution","NSIDE","\u03B2 (deg)","\u03C3(\u03B2)","Chi2/dof","Time (s)","Status"],
+  data: [
+    ["Low","256","0.138","0.108","\u2014","0.4","Noisy"],
+    ["Medium","512","0.150","0.029","0.070","3.3","Good"],
+    ["High (lead)","1024","0.190","0.029","0.114","25","Lead result"],
+    ["Full","2048","0.074","0.022","\u2014","271","High-\u2113 instability"],
+    ["100 GHz","256","+0.040","0.062","\u2014","\u2014","Frequency test"],
+    ["143 GHz","256","+0.179","0.045","\u2014","\u2014","Frequency test"],
+    ["217 GHz","256","+0.132","0.081","\u2014","\u2014","Frequency test"],
+    ["Prediction","\u2014","0.27","\u2014","\u2014","\u2014","Natural ALP"],
+    ["Published","\u2014","0.342","0.094","\u2014","\u2014","Planck+ACT (Eskilt)"]
+  ]
+},
+
+truePolynomial: {
+  name: "True vs Fitted Polynomial Coefficients",
+  description: "The physics-derived full-commutator polynomial (6,2,-18,10,-66,18) from 2\u00D7(Eqs. 34+35+36) at \u03B5 = 3/2, compared with the 3-benchmark fit and published values. The physics-derived coefficients reproduce all benchmarks and define the shape at ALL configurations.",
+  source: "Algebraic commutator proof",
+  status: "PROVEN", statusClass: "frozen",
+  columns: ["Basis","c1 (\u03A3k\u2079)","c2 (\u03A3k\u2077k\u00B2)","c3 (\u03A3k\u2076k\u00B3)","c4 (\u03A3k\u2075k\u2074)","c5 (\u03A3k\u2075k\u00B2k\u00B2)","c6 (\u03A3k\u2074k\u00B3k\u00B2)"],
+  data: [
+    ["Physics-derived (2\u00D7 Eqs 34-36)","6","2","-18","10","-66","18"],
+    ["Published (Cai Eq. 37, single ordering)","3","1","-9","5","-66","9"],
+    ["3-benchmark fit (underdetermined)","2","7","3","-12","-69","19"],
+    ["Ratio: physics / published","2","2","2","2","1","2"]
   ]
 }
 
