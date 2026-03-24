@@ -1,0 +1,34 @@
+{
+  "nside_512": {
+    "nside": 512,
+    "fsky": 0.6964826878598886,
+    "lmax": 1535,
+    "beta_deg": 0.15025038096307997,
+    "beta_err": 0.029053307876238138,
+    "chi2_dof": 0.06991469276998957,
+    "elapsed": 3.2794010639190674
+  },
+  "nside_1024": {
+    "nside": 1024,
+    "fsky": 0.6932613765276354,
+    "lmax": 3071,
+    "beta_deg": 0.19019883726022424,
+    "beta_err": 0.028917177439970528,
+    "chi2_dof": 0.11360978043107706,
+    "elapsed": 25.265273094177246
+  },
+  "frequency": {
+    "100": {
+      "freq": 100,
+      "error": "cannot reshape array of size 12048710 into shape (50331648,)"
+    },
+    "143": {
+      "freq": 143,
+      "error": "cannot reshape array of size 5848800 into shape (50331648,)"
+    },
+    "217": {
+      "freq": 217,
+      "error": "cannot reshape array of size 12304608 into shape (50331648,)"
+    }
+  }
+}
