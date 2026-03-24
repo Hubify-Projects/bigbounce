@@ -151,6 +151,11 @@
   <div class="sidebar-item" onclick="selectDataset('crossComparison')" data-key="crossComparison">Cross-Dataset <span class="sidebar-badge">7 rows</span></div>
   <div class="sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="sidebar-badge frozen">3 rows</span></div>
 
+  <div class="sidebar-group"><span class="dot blue"></span> Paper 2 &mdash; Template</div>
+  <div class="sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="sidebar-badge frozen">10 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="sidebar-badge frozen">8 rows</span></div>
+  <div class="sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="sidebar-badge frozen">8 rows</span></div>
+
   <div class="sidebar-group"><span class="dot purple"></span> Observational</div>
   <div class="sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="sidebar-badge">5 rows</span></div>
   <div class="sidebar-item" onclick="selectDataset('galaxySpin')" data-key="galaxySpin">Galaxy Spin Counts <span class="sidebar-badge">5 rows</span></div>
@@ -2128,6 +2133,62 @@ bayesianDiscrimination: {
     ["Bounce vs Standard Inflation","~2.1-2.8","~8-17:1","Yes","Moderately Favored (prior-dependent)"],
     ["Bounce vs Tuned Multifield","~2.0","~7:1","Yes","Moderately Favored"],
     ["Bounce vs Curvaton (r_dec>1)",">>10",">>1000:1","N/A","Overwhelmingly Favored"]
+  ]
+},
+
+templateOverlap: {
+  name: "Template Overlap Robustness",
+  description: "Amplitude recovery factor r across 10 physically motivated weighting schemes. Mean r = 0.84 \u00B1 0.02 is stable across all weights, proving the mismatch is intrinsic to the bounce shape.",
+  source: "research/branch_V_matter_bounce/template_mismatch/",
+  status: "COMPLETE", statusClass: "frozen",
+  columns: ["Weight","r_amp","r_shape","\u03C3_degradation","Notes"],
+  data: [
+    ["Flat (uniform)","0.835","0.993","1.20\u00D7","Baseline"],
+    ["CMB Fisher (k\u00B2)","0.876","0.997","1.14\u00D7","Primary CMB"],
+    ["CMB with noise","0.879","0.998","1.14\u00D7","Noise-weighted"],
+    ["LSS SDB (1/k\u00B2)","0.829","0.991","1.21\u00D7","Primary LSS"],
+    ["LSS SDB hard (1/k\u2074)","0.831","0.990","1.20\u00D7","Enhanced squeezed"],
+    ["SPHEREx-like","0.830","0.991","1.20\u00D7","Mixed bispectrum+SDB"],
+    ["MegaMapper-like (1/k\u00B3)","0.828","0.990","1.21\u00D7","Ultra-large scale"],
+    ["Equilateral masked","0.821","0.992","1.22\u00D7","Adversarial test"],
+    ["Squeezed only (x\u2083<0.3)","0.827","0.990","1.21\u00D7","Adversarial test"],
+    ["No squeezed (x\u2083>0.2)","0.835","0.993","1.20\u00D7","Adversarial test"]
+  ]
+},
+
+normAudit: {
+  name: "Normalization Audit: Cai vs Li Vertex Match",
+  description: "Independent cross-check of all cubic action vertices between Cai et al. (2009) and Li (2014). All momentum-space coefficients match exactly; the \u00D72 discrepancy in A_T is a convention difference, not a physics error.",
+  source: "research/branch_V_matter_bounce/normalization_audit/",
+  status: "COMPLETE", statusClass: "frozen",
+  columns: ["Vertex","Cai (Eq.)","Li (Eq.)","Cai value","Li value","Match"],
+  data: [
+    ["Field redefinition","Eq.28","Eq.4.12","-0.468750","-0.468750","EXACT"],
+    ["\u03B6\u03B6\u0307\u00B2","Eq.31","Eq.4.14","-0.046875","-0.046875","EXACT"],
+    ["\u03B6\u0307\u2202\u03B6\u2202\u03C7","Eq.32","Eq.4.15","-0.187500","-0.187500","EXACT"],
+    ["\u03B6(\u2202\u1D62\u2202\u2C7C\u03C7)\u00B2","Eq.33","Eq.4.16","-0.070312","-0.070312","EXACT"],
+    ["\u03B6\u0307\u00B3 (c_s\u22601 only)","\u2014","Eq.4.18","0","0","N/A"],
+    ["TOTAL \u03A3k\u00B3 coeff","\u2014","\u2014","-0.773438","-0.773438","EXACT"],
+    ["A_T squeezed","Eq.44","Eq.4.23","-21/8 k\u00B3","-21/16 k\u00B3","\u00D72 DISCREPANCY"],
+    ["f_NL (Planck conv.)","Eq.38","Eq.5.1","-35/8","-35/16","\u00D72 (convention)"]
+  ]
+},
+
+forecastCorrected: {
+  name: "Forecast Significance (Template-Corrected)",
+  description: "Detection significance for matter-bounce f_NL across current and future surveys, with and without template mismatch correction. Shows impact of the \u00D72 normalization ambiguity.",
+  source: "research/branch_V_matter_bounce/forecasts/",
+  status: "COMPLETE", statusClass: "frozen",
+  columns: ["Survey","\u03C3(f_NL)_local","Signif naive (\u221235/8)","Signif corrected (\u221235/8)","Signif corrected (\u221235/16)"],
+  data: [
+    ["Planck 2018","5.1","0.9\u03C3","0.8\u03C3","0.4\u03C3"],
+    ["Planck+DESI (now)","4.1","1.1\u03C3","0.9\u03C3","0.5\u03C3"],
+    ["AI-improved tracers","2.5","1.8\u03C3","1.5\u03C3","0.8\u03C3"],
+    ["Simons Observatory","2.0","2.2\u03C3","1.9\u03C3","1.0\u03C3"],
+    ["SPHEREx bispectrum","0.7","6.2\u03C3","5.5\u03C3","2.7\u03C3"],
+    ["CMB-S4","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
+    ["MegaMapper SDB","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
+    ["MegaMapper+CMB-S4","0.35","12.5\u03C3","11.0\u03C3","5.5\u03C3"]
   ]
 }
 

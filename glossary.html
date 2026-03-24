@@ -464,6 +464,38 @@
   </p>
 </div>
 
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Template Projection Formula</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 14</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[f_{\rm NL}^{\rm measured} = r \times f_{\rm NL}^{\rm bounce}, \qquad \sigma(f_{\rm NL}^{\rm bounce}) = \frac{\sigma(f_{\rm NL}^{\rm local})}{r}\]
+  </div>
+  <p class="eq-explanation">
+    Relates the measured non-Gaussianity amplitude (using a local-template estimator) to the true matter-bounce value. The <strong>template projection factor</strong> \(r = 0.84 \pm 0.02\) quantifies the fraction of the bounce signal recovered by a local estimator. The 16% loss comes from folded and intermediate bispectrum configurations where the bounce and local shapes differ. This correction degrades the naive SPHEREx significance from 6.2&sigma; to <strong>5.5&sigma;</strong>.
+  </p>
+</div>
+
+<div class="eq-card">
+  <div class="eq-header">
+    <span class="eq-label">Spectral Consistency Relation</span>
+    <span style="display:flex;gap:8px;align-items:center;">
+      <span class="badge-derived">Derived</span>
+      <span class="eq-number">Eq. 15</span>
+    </span>
+  </div>
+  <div class="eq-math">
+    \[f_{\rm NL}(n_s) = -\frac{35}{8} - 0.73\,(n_s - 1)\]
+  </div>
+  <p class="eq-explanation">
+    The <strong>spectral consistency relation</strong> linking the non-Gaussianity amplitude to the scalar spectral index \(n_s\). In the exact scale-invariant limit (\(n_s = 1\)), the prediction reduces to \(f_{\rm NL} = -35/8\). For the observed value \(n_s \approx 0.965\), the correction is small (\(\sim +0.026\)), confirming that the parameter-free prediction is robust against spectral tilt effects.
+  </p>
+</div>
+
 
 <!-- ═══════════════════════════════════════════════════════════════════
      PART 2: GLOSSARY
@@ -507,6 +539,17 @@
   <td><span class="gl-type gl-type-theory">Theory</span></td>
   <td class="gl-def">
     <strong>Axion-Like Particle.</strong> Ultralight pseudoscalar field arising from spontaneous breaking of an approximate global symmetry. In this program: \(f_a \sim M_{\rm Pl}\), \(m \sim H_0\), \(\theta_i \sim \mathcal{O}(1)\). Produces cosmic birefringence via photon coupling.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(B_{\rm NL}\)</span>
+    <span class="gl-pronunciation">"bee-en-ell"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Dimensionless nonlinearity parameter</strong> describing the amplitude of the bispectrum at a given triangle configuration. Defined as \(|B|_{\rm NL} = (10/3)\,A_T / \Sigma k_i^3\). For the local template, \(B_{\rm NL} = f_{\rm NL}\) (constant). For the matter bounce, \(B_{\rm NL}\) varies from <span class="gl-value">&minus;4.375</span> (squeezed) to <span class="gl-value">&minus;2.25</span> (folded).
   </td>
 </tr>
 
@@ -603,6 +646,17 @@
   <td><span class="gl-type gl-type-param">Parameter</span></td>
   <td class="gl-def">
     <strong>ALP decay constant.</strong> Sets the symmetry-breaking scale. Cancels exactly in the birefringence prediction (Eq. 10). Assumed <span class="gl-value">~ M_Pl</span> in this framework.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Folded limit</span>
+    <span class="gl-pronunciation">"folded limit"</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Bispectrum configuration where one wavenumber equals the sum of the other two</strong> (\(k_1 = k_2 + k_3\), or equivalently \(k_1 = 2k_2 = 2k_3\)). For the matter bounce, \(B_{\rm NL} = -2.25\) in this limit &mdash; only 51% of the squeezed-limit value &mdash; making it the primary source of template mismatch.
   </td>
 </tr>
 
@@ -747,6 +801,17 @@
 
 <tr>
   <td>
+    <span class="gl-symbol">Scale-dependent bias</span>
+    <span class="gl-pronunciation">"scale dependent bias"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Correction to galaxy clustering caused by primordial non-Gaussianity.</strong> Local \(f_{\rm NL}\) produces an additional contribution to galaxy bias proportional to \(f_{\rm NL}/k^2\), growing on the largest scales. This is the primary method by which LSS surveys (SPHEREx, MegaMapper) constrain \(f_{\rm NL}\).
+  </td>
+</tr>
+
+<tr>
+  <td>
     <span class="gl-symbol">\(\sigma_8\)</span>
     <span class="gl-pronunciation">"sigma-eight"</span>
   </td>
@@ -763,6 +828,28 @@
   <td><span class="gl-type gl-type-instrument">Instrument</span></td>
   <td class="gl-def">
     <strong>Spectro-Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer.</strong> NASA all-sky spectral survey. Will test the matter-bounce prediction of \(f_{\rm NL} = -35/8\) at <span class="gl-value">4&ndash;6\(\sigma\)</span> significance via the galaxy bispectrum.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Squeezed limit</span>
+    <span class="gl-pronunciation">"squeezed limit"</span>
+  </td>
+  <td><span class="gl-type gl-type-theory">Theory</span></td>
+  <td class="gl-def">
+    <strong>Bispectrum configuration where one wavenumber is much smaller than the other two</strong> (\(k_1 \ll k_2 \approx k_3\)). This is where the local-type non-Gaussianity signal is strongest and where the matter-bounce shape converges to the local template.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Template projection (\(r\))</span>
+    <span class="gl-pronunciation">"template projection"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Fraction of a non-Gaussian signal recovered by a template estimator</strong> when the true bispectrum shape differs from the template. For the matter bounce measured with a local estimator: <span class="gl-value">r = 0.84 &plusmn; 0.02</span>, meaning 84% of the signal is captured. The 16% loss comes from the folded and intermediate configurations where the bounce and local shapes differ.
   </td>
 </tr>
 
