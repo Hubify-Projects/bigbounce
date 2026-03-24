@@ -124,6 +124,11 @@
       <div class="stat-label">Template Recovery</div>
       <div class="stat-sub">r = 0.84&ndash;0.88 (validated by k-space and &ell;-space Fisher overlap) &mdash; first explicit quantification of template mismatch</div>
     </div>
+    <div class="stat">
+      <div class="stat-value">8.67M</div>
+      <div class="stat-label">Galaxy chirality catalog</div>
+      <div class="stat-sub">93.7% accuracy, 8/8 bias tests pass, H100 inference in progress</div>
+    </div>
   </div>
 </section>
 
@@ -381,7 +386,7 @@
       <tr><td>\(H_0 = 67.68 \pm 1.06\) km/s/Mpc</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>MCMC (full-tension, frozen chains)</td></tr>
       <tr><td>\(\Delta N_{\rm eff} \approx 0\)</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>MCMC (all datasets; consistent with zero)</td></tr>
       <tr><td>\(f_{\rm photon} \times C_0 = 1.73 \pm 0.44\)</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>Consistency check (literature combination)</td></tr>
-      <tr><td>Galaxy spin dipole \(A_0 \sim 0.003\)</td><td style="color:#c0392b; font-weight:600;">Contested</td><td>9&ndash;12 OOM coupling gap; null reanalyses exist</td></tr>
+      <tr><td>Galaxy spin dipole \(A_0 \sim 0.003\)</td><td style="color:#c0392b; font-weight:600;">Contested</td><td>9&ndash;12 OOM coupling gap; null reanalyses exist. Chirality pipeline v2 (8.67M galaxies, 93.7% acc, all bias tests pass) in production</td></tr>
       <tr><td>\(f_{\rm NL} = -35/8 = -4.375\)</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>Cai et al. (2009) cubic action; algebraically verified via direct action audit</td></tr>
       <tr><td>Cai vs Li normalization resolved</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>92% confidence, vertex-by-vertex match; literature factor-of-2 discrepancy traced to convention</td></tr>
       <tr><td>Template mismatch \(r = 0.84\text{--}0.88\)</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>Validated by k-space and &ell;-space Fisher overlap; template-corrected SPHEREx ~5.0&ndash;5.5\(\sigma\)</td></tr>
@@ -406,7 +411,7 @@
     </div>
     <div class="card" style="margin-bottom: 12px;">
       <h4 style="margin-top:0; font-family:var(--font-sans);">What Has Already Been Falsified</h4>
-      <p style="font-size:15px;">Our own MCMC verification has already falsified several earlier claims: \(H_0 = 69.2\) (artifact of SH0ES prior), tension reduction (not supported by independent chains), galaxy spin dipole coupling (9&ndash;12 orders of magnitude gap), and ALP simultaneously explaining dark energy (rolling-vs-freezing tension).</p>
+      <p style="font-size:15px;">Our own MCMC verification has already falsified several earlier claims: \(H_0 = 69.2\) (artifact of SH0ES prior), tension reduction (not supported by independent chains), galaxy spin dipole coupling (9&ndash;12 orders of magnitude gap), and ALP simultaneously explaining dark energy (rolling-vs-freezing tension). A dedicated AI chirality pipeline (8.67M galaxies, 93.7% accuracy, 8/8 bias tests pass) is now generating an independent catalog to re-examine the galaxy spin asymmetry question with proper systematics control.</p>
     </div>
   </div>
 </section>

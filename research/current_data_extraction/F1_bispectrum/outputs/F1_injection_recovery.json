@@ -1,0 +1,125 @@
+{
+  "pipeline": "F1",
+  "stage": "F1.3",
+  "level": "INJECTION_VALIDATED",
+  "description": "Bispectrum injection/recovery test validating template-recast methodology",
+  "configuration": {
+    "grid_size": 128,
+    "n_kbins": 10,
+    "n_realizations": 200,
+    "f_NL_injected": -4.375,
+    "A_s": 0.1,
+    "A_s_note": "Boosted for high S/N. Ratio test is amplitude-independent.",
+    "bounce_coefficients": [
+      2,
+      7,
+      3,
+      -12,
+      -69,
+      19
+    ],
+    "seed": 20260322
+  },
+  "test_A_local_injection": {
+    "injection": "local",
+    "f_NL_injected": -4.375,
+    "estimator_raw_mean": -149888045.39455903,
+    "estimator_raw_sem": 1300265.6834807883,
+    "calibration_factor": 34260124.661613494,
+    "pass": true
+  },
+  "test_B_bounce_injection": {
+    "injection": "bounce",
+    "f_NL_injected": -4.375,
+    "local_estimator_mean": -134872763.63994682,
+    "local_estimator_sem": 1290357.4673799516,
+    "bounce_estimator_mean": -152342098.43288603,
+    "bounce_estimator_sem": 1471497.254392578,
+    "ratio_measured": 0.8998233533896142,
+    "ratio_measured_err": 0.011620821129299347,
+    "ratio_predicted": 0.876,
+    "ratio_predicted_err": 0.02,
+    "ratio_tension_sigma": 1.0299315293292126,
+    "ratio_in_range_0p80_0p95": true,
+    "pass_ratio": true,
+    "pass_bounce_better": true
+  },
+  "test_C_null": {
+    "injection": "null",
+    "estimator_raw_mean": -74328.36305842527,
+    "estimator_raw_sem": 35283.15128041657,
+    "tension_with_zero": 2.1066248439004998,
+    "pass": true
+  },
+  "all_tests": {
+    "A_local_detection": true,
+    "B_ratio_recovery": true,
+    "B_bounce_better_matched": true,
+    "C_null_consistent": true,
+    "C_null_small": true
+  },
+  "core_tests_pass": true,
+  "all_tests_pass": true,
+  "ensemble_stats": {
+    "test_A": {
+      "injection_type": "local",
+      "f_NL_injected": -4.375,
+      "n_realizations": 200,
+      "local_estimator": {
+        "mean": -149888045.39455903,
+        "median": -147843986.0234977,
+        "std": 18388533.64266853,
+        "sem": 1300265.6834807883
+      },
+      "bounce_estimator": {
+        "mean": -169238833.35479063,
+        "median": -167143828.53106028,
+        "std": 20891201.91353106,
+        "sem": 1477231.0540195191
+      }
+    },
+    "test_B": {
+      "injection_type": "bounce",
+      "f_NL_injected": -4.375,
+      "n_realizations": 200,
+      "local_estimator": {
+        "mean": -134872763.63994682,
+        "median": -133436603.73513286,
+        "std": 18248410.306781262,
+        "sem": 1290357.4673799516
+      },
+      "bounce_estimator": {
+        "mean": -152342098.43288603,
+        "median": -150868423.88175684,
+        "std": 20810113.741567563,
+        "sem": 1471497.254392578
+      }
+    },
+    "test_C": {
+      "injection_type": "null",
+      "f_NL_injected": 0.0,
+      "n_realizations": 200,
+      "local_estimator": {
+        "mean": -74328.36305842527,
+        "median": -105663.20187627696,
+        "std": 498979.11064026743,
+        "sem": 35283.15128041657
+      },
+      "bounce_estimator": {
+        "mean": -83613.5311114375,
+        "median": -111977.54817728436,
+        "std": 560676.7221136966,
+        "sem": 39645.83122600404
+      }
+    }
+  },
+  "timing_seconds": 4.4,
+  "caveats": [
+    "2D grid (not 3D CMB spherical harmonics) -- validates methodology, not full pipeline",
+    "Boosted A_s for high S/N -- does NOT affect the ratio r (geometric property)",
+    "Bounce injection uses binned BNL approximation (10 k-bins, angle-averaged)",
+    "Absolute f_NL calibration has FFT-convention offset; only the RATIO is tested",
+    "No beam, noise, or mask effects",
+    "This validates the RATIO recovery, not absolute calibration"
+  ]
+}
