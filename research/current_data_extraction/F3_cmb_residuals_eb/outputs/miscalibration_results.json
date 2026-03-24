@@ -1,0 +1,11 @@
+{
+  "beta_nominal": 0.19,
+  "beta_nominal_err": 0.029,
+  "beta_after_miscal_marg": 0.15707994249639962,
+  "beta_after_miscal_marg_err": 0.09324003936028748,
+  "delta_beta": -0.032920057503600386,
+  "gap_plausibly_explained": "yes",
+  "self_calibration_beta": 0.17868654926642905,
+  "self_calibration_err": 0.045435468291255506,
+  "method": "frequency-level marginalization with Planck miscalibration priors"
+}

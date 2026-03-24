@@ -1,0 +1,170 @@
+{
+  "individual": {
+    "planck_TplusE": {
+      "source": "Planck 2018 IX, Table 4, KSW T+E",
+      "f_NL_local": -0.9,
+      "sigma_local": 5.1,
+      "type": "CMB_bispectrum",
+      "r": 0.878,
+      "direct": true,
+      "f_NL_bounce": -1.0250569476082005,
+      "sigma_bounce": 5.808656036446469,
+      "tension_vs_pred": 0.5767156862745099,
+      "data_type": "DIRECT"
+    },
+    "planck_T_only": {
+      "source": "Planck 2018 IX, Table 4, KSW T-only",
+      "f_NL_local": -0.6,
+      "sigma_local": 5.7,
+      "type": "CMB_bispectrum",
+      "r": 0.878,
+      "direct": true,
+      "f_NL_bounce": -0.683371298405467,
+      "sigma_bounce": 6.492027334851937,
+      "tension_vs_pred": 0.568640350877193,
+      "data_type": "DIRECT"
+    },
+    "desi_qso_sdb": {
+      "source": "DESI DR1 QSO SDB (Mueller et al., approximate)",
+      "f_NL_local": -3.6,
+      "sigma_local": 9.2,
+      "type": "LSS_SDB",
+      "r": 0.83,
+      "direct": false,
+      "note": "approximate value from early analysis",
+      "f_NL_bounce": -4.337349397590362,
+      "sigma_bounce": 11.08433734939759,
+      "tension_vs_pred": 0.003396739130434725,
+      "data_type": "APPROX"
+    },
+    "desi_pb_combined": {
+      "source": "DESI DR1 P+B (approximate)",
+      "f_NL_local": -0.1,
+      "sigma_local": 7.4,
+      "type": "LSS_bispectrum",
+      "r": 0.83,
+      "direct": false,
+      "note": "approximate",
+      "f_NL_bounce": -0.12048192771084339,
+      "sigma_bounce": 8.91566265060241,
+      "tension_vs_pred": 0.47719594594594594,
+      "data_type": "APPROX"
+    },
+    "euclid_forecast": {
+      "source": "Euclid photometric forecast (Amendola et al.)",
+      "f_NL_local": 0.0,
+      "sigma_local": 3.0,
+      "type": "LSS_photometric",
+      "r": 0.83,
+      "direct": false,
+      "note": "FORECAST, not measurement",
+      "f_NL_bounce": 0.0,
+      "sigma_bounce": 3.6144578313253013,
+      "tension_vs_pred": 1.2104166666666667,
+      "data_type": "FORECAST"
+    },
+    "cmbs4_forecast": {
+      "source": "CMB-S4 forecast (bispectrum)",
+      "f_NL_local": 0.0,
+      "sigma_local": 2.5,
+      "type": "CMB_bispectrum",
+      "r": 0.878,
+      "direct": false,
+      "note": "FORECAST, not measurement",
+      "f_NL_bounce": 0.0,
+      "sigma_bounce": 2.847380410022779,
+      "tension_vs_pred": 1.5365,
+      "data_type": "FORECAST"
+    }
+  },
+  "combinations": {
+    "Planck T+E only": {
+      "f_NL_bounce": -1.0250569476082005,
+      "sigma_bounce": 5.80865603644647,
+      "tension_pred": 0.5767156862745098,
+      "tension_zero": 0.1764705882352941,
+      "improvement_pct": -2.220446049250313e-14,
+      "all_direct": true,
+      "members": [
+        "planck_TplusE"
+      ]
+    },
+    "Planck + DESI QSO": {
+      "f_NL_bounce": -1.7386980636487892,
+      "sigma_bounce": 5.144999412375388,
+      "tension_pred": 0.5124008236055483,
+      "tension_zero": 0.3379394095685721,
+      "improvement_pct": 11.425304234008015,
+      "all_direct": false,
+      "members": [
+        "planck_TplusE",
+        "desi_qso_sdb"
+      ]
+    },
+    "Planck + DESI P+B": {
+      "f_NL_bounce": -0.7555088794368391,
+      "sigma_bounce": 4.866866616760447,
+      "tension_pred": 0.7437004967628265,
+      "tension_zero": 0.15523517263346157,
+      "improvement_pct": 16.2135511859672,
+      "all_direct": false,
+      "members": [
+        "planck_TplusE",
+        "desi_pb_combined"
+      ]
+    },
+    "Planck + all DESI": {
+      "f_NL_bounce": -1.3344341341429289,
+      "sigma_bounce": 4.456232689950923,
+      "tension_pred": 0.682317571233148,
+      "tension_zero": 0.2994534233259765,
+      "improvement_pct": 23.282896043589986,
+      "all_direct": false,
+      "members": [
+        "planck_TplusE",
+        "desi_qso_sdb",
+        "desi_pb_combined"
+      ]
+    },
+    "All current (direct+approx)": {
+      "f_NL_bounce": -1.3344341341429289,
+      "sigma_bounce": 4.456232689950923,
+      "tension_pred": 0.682317571233148,
+      "tension_zero": 0.2994534233259765,
+      "improvement_pct": 23.282896043589986,
+      "all_direct": false,
+      "members": [
+        "planck_TplusE",
+        "desi_qso_sdb",
+        "desi_pb_combined"
+      ]
+    },
+    "Future: +Euclid +CMB-S4": {
+      "f_NL_bounce": -0.2685336983726203,
+      "sigma_bounce": 1.9990271177382901,
+      "tension_pred": 2.054232413952172,
+      "tension_zero": 0.13433219389061654,
+      "improvement_pct": 65.58537628678003,
+      "all_direct": false,
+      "members": [
+        "planck_TplusE",
+        "desi_qso_sdb",
+        "desi_pb_combined",
+        "euclid_forecast",
+        "cmbs4_forecast"
+      ]
+    }
+  },
+  "canonical_prediction": -4.375,
+  "template_overlap": {
+    "r_cmb": 0.878,
+    "r_lss": 0.83,
+    "r_injection": 0.9
+  },
+  "verdict": {
+    "desi_materially_improves": true,
+    "improvement_pct": 23.282896043589986,
+    "best_current_sigma": 4.456232689950923,
+    "best_current_fnl": -1.3344341341429289
+  }
+}
