@@ -1,0 +1,10 @@
+{
+  "n_objects": 2360737,
+  "holdout_ratio_before": 4.798,
+  "holdout_ratio_after": -1.3658134340878534,
+  "holdout_status": "FAIL",
+  "top_nuisance_feature": "FLUX_IVAR_R",
+  "top_nuisance_importance": 0.3235254904429536,
+  "nuisance_r2_train": 0.6519180470598774,
+  "status": "ROBUSTNESS_PARTIAL"
+}

@@ -1,0 +1,14 @@
+{
+  "Gate 1 (Object definition)": "PASS",
+  "Gate 2 (Benchmark)": "PASS",
+  "Gate 3 (Injection)": "FAIL",
+  "Gate 4 (Null tests)": "PASS",
+  "Gate 5 (Holdout)": "PASS",
+  "Gate 6 (Nuisance audit)": "PASS",
+  "Gate 7 (Calibration)": "PASS",
+  "Gate 8 (External comparison)": "PASS",
+  "Gate 9 (Human review)": "PENDING (requires visual inspection)",
+  "Gate 10 (Catalog schema)": "PASS",
+  "Gate 11 (Red-team report)": "PASS",
+  "Gate 12 (Claim taxonomy)": "ROBUSTNESS_PASSED"
+}

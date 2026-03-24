@@ -1,0 +1,22 @@
+{
+  "likely_leakage_routes": [
+    "Survey depth (FLUX_IVAR) was the dominant nuisance \u2014 partially mitigated by percentile normalization",
+    "Fiber-to-fiber variations not tested (no FIBER column in EDR)",
+    "Spectral features not used \u2014 only catalog metadata; true spectral anomalies may be missed"
+  ],
+  "astrophysical_confounders": [
+    "Stars dominate top anomalies \u2014 many are just unusual stellar types, not cosmologically interesting",
+    "High-z QSO enrichment may reflect template mismatch in DESI pipeline, not intrinsic anomalousness",
+    "Galaxy anomalies may be photometric blends or deblending failures"
+  ],
+  "instrument_confounders": [
+    "DESI fiber positioning errors could create systematic spectral artifacts",
+    "Sky subtraction residuals may dominate faint-object anomaly scores",
+    "Wavelength calibration issues could mimic emission-line anomalies"
+  ],
+  "what_would_falsify": [
+    "If top anomalies are all known artifacts in DESI validation catalogs",
+    "If anomaly scores correlate strongly with observing conditions after correction",
+    "If no anomaly survives visual inspection of the actual spectra"
+  ]
+}
