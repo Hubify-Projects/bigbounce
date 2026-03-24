@@ -1,0 +1,10 @@
+{
+  "method": "per-region percentile normalization",
+  "holdout_ratio_raw": 4.798,
+  "holdout_ratio_gbr_balanced": 1.6545294090875942,
+  "holdout_ratio_percentile": 1.0000030994415283,
+  "top500_galaxies": 138,
+  "top500_stars": 360,
+  "top500_qsos": 2,
+  "status": "ROBUSTNESS_PASSED"
+}
