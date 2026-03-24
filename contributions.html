@@ -170,17 +170,65 @@
     <p>To our knowledge, no prior work combines all of the following into a single matter-bounce-specific forecast: (a) SPHEREx and MegaMapper sensitivity forecasts specific to the bounce prediction; (b) Bayesian model comparison with 600,000+ Monte Carlo realizations showing bounce favored at ~8-17:1 over tuned multifield (prior-dependent; up to &gt;300 with sharp priors); (c) GR-projection robustness analysis showing the signal survives marginalization over relativistic corrections; (d) template-mismatch quantification (amplitude recovery \(r \approx 0.85\text{--}0.90\), CMB Fisher near 0.90, LSS/SDB nearer 0.85; physics-derived full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) from 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2); (e) \(\varepsilon\) correction bounded [1&ndash;8%] for \(w = -0.003\) departure from exact matter domination (Hankel singularity at \(\varepsilon = 3/2\)); (f) cubic bounce transmission estimate (0.024% correction); (g) Li-Brandenberger convention resolution establishing that even the worst-case value (\(-35/16\)) is detectable at \(4.4\sigma\) by MegaMapper. No independent verification of \(-35/8\) found in the 2020&ndash;2024 literature.</p>
 
     <h4>Computational verification</h4>
-    <p>Five independent computational programs back this forecast:</p>
+    <p>Eight independent computational programs back this forecast:</p>
     <ul style="font-size: 14px; color: var(--text-secondary); margin-top: 6px; padding-left: 20px; line-height: 1.8;">
       <li><code>research/fisher_robustness_surface/</code> &mdash; Fisher matrix sensitivity surface</li>
       <li><code>research/bayesian_discrimination_program/</code> &mdash; 600K+ MC Bayesian model comparison</li>
-      <li><code>research/fnl_epsilon_correction/</code> &mdash; \(\mathcal{O}(\varepsilon)\) correction for \(w \neq 0\)</li>
-      <li><code>research/template_projection/</code> &mdash; Template cosine computation</li>
+      <li><code>research/fnl_epsilon_correction/</code> &mdash; \(\varepsilon\) correction bounded [1&ndash;8%]</li>
+      <li><code>research/matter_bounce_parameters/algebraic_commutator_proof.py</code> &mdash; Exact-arithmetic proof: 2&times;(Eqs.&nbsp;34&ndash;36) = Eq.&nbsp;37</li>
+      <li><code>research/matter_bounce_parameters/phase3_fisher_overlap.py</code> &mdash; \(\ell\)-space Fisher template overlap (CAMB + Planck noise)</li>
+      <li><code>research/current_data_extraction/F1_bispectrum/scripts/f1_injection_recovery.py</code> &mdash; 200-realization MC injection recovery</li>
+      <li><code>research/current_data_extraction/F3_cmb_residuals_eb/scripts/</code> &mdash; NaMaster EB analysis + injection + frequency consistency</li>
       <li><code>research/cubic_bounce_transmission/</code> &mdash; Cubic bounce bispectrum transmission</li>
     </ul>
 
     <h4>How to check</h4>
-    <p><strong>Paper 2:</strong> Full forecast sections with SPHEREx/MegaMapper projections, Bayesian comparison figures, and robustness tables. <strong>Key equation:</strong> \(f_{\rm NL}^{\rm local} = -\frac{35}{8}\) from the Cai action, verified via algebraic audit in <code>research/cai_action_audit/</code>.</p>
+    <p><strong>Paper 2 (v1.6.0):</strong> Full forecast sections with SPHEREx/MegaMapper projections, Bayesian comparison figures, and robustness tables. <strong>Key equation:</strong> \(f_{\rm NL}^{\rm local} = -\frac{35}{8}\) with physics-derived polynomial (6,2,&minus;18,10,&minus;66,18), verified via algebraic commutator proof and injection recovery.</p>
+  </div>
+
+  <!-- N3-5: Physics-Derived Commutator Polynomial -->
+  <div class="card" style="border-left: 3px solid #16a34a; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #166534;">5. Physics-Derived Full-Commutator Polynomial</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Paper 2 &middot; N3 &mdash; New Algebraic Result</p>
+
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p>Using Cai et al.&rsquo;s own intermediate vertex contributions (Eqs.&nbsp;34&ndash;36), we derive the full-commutator shape polynomial algebraically: <strong>(6, 2, &minus;18, 10, &minus;66, 18)</strong>. This is proven by exact rational arithmetic (Python <code>Fraction</code>) at multiple configurations. The published Eq.&nbsp;37 coefficients (3, 1, &minus;9, 5, &minus;66, 9) are the single-time-ordering values. The factor of 2 is the in-in commutator: \(i\langle[\zeta^3, L]\rangle = -2\,\mathrm{Im}\,\langle\zeta^3 L\rangle\).</p>
+
+    <h4>What existed before</h4>
+    <p>Cai et al. (2009) published Eq.&nbsp;37 with the single-ordering coefficients. Li et al. (2017) obtained a factor-of-2 different result. No prior work traced the factor-of-2 to the commutator, identified the printed coefficients as single-ordering values, or derived the full-commutator polynomial from the paper&rsquo;s own intermediate equations. A literature search (2009&ndash;2024) found no independent numerical verification of \(-35/8\).</p>
+
+    <h4>What's new</h4>
+    <ul style="font-size: 14px; color: var(--text-secondary); margin-top: 6px; padding-left: 20px; line-height: 1.8;">
+      <li>Algebraic proof: \(2 \times (\text{Eqs. 34+35+36}) = \text{Eq. 37}\) at equilateral (exact) and folded (exact)</li>
+      <li>Physics-derived polynomial: (6,2,&minus;18,10,&minus;66,18) &mdash; the full-commutator result</li>
+      <li>Published (3,1,&minus;9,5,&minus;66,9) identified as single-ordering coefficients</li>
+      <li>Template overlap with true polynomial: \(r \approx 0.85\text{--}0.90\) (less mismatch than the fitted polynomial suggested)</li>
+      <li>No independent \(-35/8\) verification found in the 2009&ndash;2024 literature</li>
+    </ul>
+
+    <h4>How to check</h4>
+    <p><code>research/matter_bounce_parameters/algebraic_commutator_proof.py</code> &mdash; Run with Python 3. Uses exact <code>Fraction</code> arithmetic. Reproduces all benchmarks.</p>
+  </div>
+
+  <!-- N2+: Independent EB Birefringence Analysis -->
+  <div class="card" style="border-left: 3px solid #2563eb; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #1e40af;">6. Independent EB Birefringence Analysis</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Paper 2 &middot; N2 &mdash; Independent Robustness Check</p>
+
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p>An independent measurement of cosmic birefringence \(\beta\) from Planck SMICA maps using NaMaster with B-mode purification. Includes a resolution ladder (NSIDE 256&ndash;2048), frequency consistency test (100/143/217 GHz), injection recovery, and miscalibration marginalization.</p>
+
+    <h4>Key results</h4>
+    <ul style="font-size: 14px; color: var(--text-secondary); margin-top: 6px; padding-left: 20px; line-height: 1.8;">
+      <li><strong>Lead result:</strong> \(\beta = 0.19 \pm 0.03°\) at NSIDE=1024</li>
+      <li><strong>Frequency consistency:</strong> All 3 HFI channels positive, spread &lt; 3&sigma;</li>
+      <li><strong>Injection recovery:</strong> All levels pass (0&ndash;0.5&deg;), including \(\beta = 0.27°\) with zero bias</li>
+      <li><strong>Resolution stress test:</strong> NSIDE=2048 gives \(\beta = 0.07 \pm 0.02°\) (high-\(\ell\) instability)</li>
+      <li><strong>Miscalibration marginalization:</strong> \(\beta = 0.16 \pm 0.09°\); prediction (0.27&deg;) at 1.2&sigma;</li>
+    </ul>
+
+    <h4>What's new</h4>
+    <p>The resolution ladder and frequency consistency test for the matter-bounce ALP prediction. The NSIDE=2048 stress test revealing high-\(\ell\) instability. Injection recovery validating the NaMaster estimator for the full science range. These are supporting rather than primary results, but they demonstrate active data engagement beyond theoretical forecasting.</p>
   </div>
 
   <!-- N3-4: Topological-Shift Duality -->
