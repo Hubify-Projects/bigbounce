@@ -1,0 +1,39 @@
+{
+  "pipeline": "F1",
+  "stage": "F1.1",
+  "level": "TRIAGE_RECAST",
+  "planck_local": {
+    "f_NL": -0.9,
+    "sigma": 5.1,
+    "source": "Planck 2018 IX (arXiv:1905.05697), Table 4"
+  },
+  "template_overlap": {
+    "r_cmb": 0.876,
+    "r_lss": 0.829,
+    "r_uncertainty": 0.02
+  },
+  "planck_bounce": {
+    "f_NL": -1.0273972602739727,
+    "sigma": 5.821965061368377,
+    "tension_vs_prediction": 0.5749953330944959,
+    "tension_vs_zero": 0.17646915593692972
+  },
+  "combined_bounce": {
+    "f_NL": -1.3370849147798485,
+    "sigma": 4.464430479479076,
+    "tension_vs_prediction": 0.6804709131845693,
+    "tension_vs_zero": 0.29949730899065624,
+    "note": "APPROXIMATE \u2014 DESI values are estimated, not from official publication"
+  },
+  "canonical_prediction": {
+    "f_NL": -4.375,
+    "confidence": 0.92
+  },
+  "caveats": [
+    "TRIAGE_RECAST: uses published numbers, not map-level data",
+    "Template overlap r assumed constant (survey-weighted average)",
+    "DESI values are approximate and may not match official publication",
+    "Independence of Planck bispectrum and DESI SDB assumed but not rigorously verified",
+    "No injection/recovery validation performed at this level"
+  ]
+}
