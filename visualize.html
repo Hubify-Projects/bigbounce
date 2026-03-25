@@ -430,11 +430,11 @@ let collapseP = [];
 let expandP = [];
 
 function spawnCollapse(p) {
-  p.baseParam = 0.02 + Math.random() * (THROAT - 0.04); // rest position spread across left side
-  p.lane = (Math.random() * 2 - 1) * 0.85;
-  p.size = 0.8 + Math.random() * 2;
+  p.baseParam = 0.03 + Math.random() * THROAT * 0.65; // rest position biased toward left opening
+  p.lane = (Math.random() * 2 - 1) * 0.82;
+  p.size = 1 + Math.random() * 2;
   p.flicker = Math.random() * 6.28;
-  p.drift = Math.random() * 6.28; // phase offset for gentle drift
+  p.drift = Math.random() * 6.28;
 }
 
 function spawnExpand(p) {
@@ -550,13 +550,11 @@ function drawFunnel(time) {
   const pulse = 0.5 + 0.5 * Math.sin(time * 0.0015);
   const throatIntensity = smoothstep(0.1, 0.36, progress) * 2;
 
-  // Multi-pass glow rendering
+  // Multi-pass glow rendering (soft outer + medium + sharp edge)
   const passes = [
-    { w: 24, a: 0.015 },
-    { w: 14, a: 0.025 },
-    { w: 7,  a: 0.05 },
-    { w: 3,  a: 0.10 + pulse * 0.03 },
-    { w: 1.2, a: 0.25 + pulse * 0.05 },
+    { w: 12, a: 0.025 },
+    { w: 4,  a: 0.08 + pulse * 0.02 },
+    { w: 1.2, a: 0.22 + pulse * 0.04 },
   ];
 
   for (const pass of passes) {
@@ -782,34 +780,36 @@ function drawAccretionDisk(time) {
   const alpha = smoothstep(0.06, 0.15, progress) * (1 - smoothstep(0.34, 0.40, progress));
   if (alpha < 0.01) return;
 
-  const spin = time * 0.001;
-  const diskX = throatX - 20;
-  const diskOuterR = 60 + smoothstep(0.12, 0.30, progress) * 30;
-  const diskInnerR = 12;
+  const diskX = throatX - 15;
+  const diskR = 50 + smoothstep(0.12, 0.30, progress) * 30;
 
-  // Glowing disk rings
-  ctx.save();
-  ctx.globalCompositeOperation = 'lighter';
-  for (let ring = 0; ring < 30; ring++) {
-    const rf = ring / 30;
-    const r = lerp(diskInnerR, diskOuterR, rf);
-    const bright = (1 - rf) * alpha;
-    const hue = lerp(30, 10, rf);
+  // Warm radial glow (the hot accretion region)
+  const g1 = ctx.createRadialGradient(diskX, cy, 0, diskX, cy, diskR);
+  g1.addColorStop(0, `rgba(255, 220, 140, ${alpha * 0.6})`);
+  g1.addColorStop(0.2, `rgba(255, 160, 60, ${alpha * 0.35})`);
+  g1.addColorStop(0.5, `rgba(200, 80, 20, ${alpha * 0.12})`);
+  g1.addColorStop(1, 'rgba(120, 40, 10, 0)');
+  ctx.fillStyle = g1;
+  ctx.beginPath();
+  ctx.arc(diskX, cy, diskR, 0, 6.2832);
+  ctx.fill();
+
+  // Spinning particles around the throat
+  const spin = time * 0.0012;
+  const particleCount = 40;
+  for (let i = 0; i < particleCount; i++) {
+    const angle = spin + (i / particleCount) * Math.PI * 2;
+    const orbitR = 10 + (i % 5) * 8 + Math.sin(time * 0.002 + i * 2.5) * 4;
+    const px = diskX + Math.cos(angle) * orbitR;
+    const py = cy + Math.sin(angle) * orbitR * 0.35; // flattened orbit
+    const sz = 1 + (1 - orbitR / diskR) * 1.5;
+    const bright = (1 - orbitR / diskR) * alpha * 0.7;
+    const hue = lerp(40, 15, orbitR / diskR);
     ctx.beginPath();
-    ctx.ellipse(diskX, cy, r, r * 0.2, spin * 0.15, 0, Math.PI * 2);
-    ctx.strokeStyle = `hsla(${hue}, 90%, 60%, ${bright * 0.25})`;
-    ctx.lineWidth = 2.5;
-    ctx.stroke();
+    ctx.arc(px, py, sz, 0, 6.2832);
+    ctx.fillStyle = `hsla(${hue}, 90%, 65%, ${bright})`;
+    ctx.fill();
   }
-
-  // Hot inner ring
-  const innerGlow = ctx.createRadialGradient(diskX, cy, diskInnerR * 0.5, diskX, cy, diskInnerR * 2);
-  innerGlow.addColorStop(0, `rgba(255, 200, 100, ${alpha * 0.5})`);
-  innerGlow.addColorStop(0.5, `rgba(255, 120, 40, ${alpha * 0.2})`);
-  innerGlow.addColorStop(1, 'rgba(200, 60, 20, 0)');
-  ctx.fillStyle = innerGlow;
-  ctx.fillRect(diskX - diskInnerR * 2, cy - diskInnerR * 2, diskInnerR * 4, diskInnerR * 4);
-  ctx.restore();
 }
 
 // ═══════════════════════════════════════
@@ -1445,6 +1445,10 @@ function render(timestamp) {
 
   const time = timestamp;
 
+  // ── Hard clip: nothing renders past the visible funnel region ──
+  const _rightReveal = smoothstep(0.36, 0.56, progress);
+  const _maxVisibleX = throatX + _rightReveal * (W - throatX);
+
   // ── Layer 1: Background + nebula ──
   drawBackground(time);
 
@@ -1454,6 +1458,12 @@ function render(timestamp) {
 
   // ── Layer 3: Parent universe content ──
   drawParentUniverse(time);
+
+  // ── Clip all funnel/effect drawing to visible region ──
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0, 0, _maxVisibleX + 30, H);
+  ctx.clip();
 
   // ── Layer 4: Funnel geometry ──
   drawFunnel(time);
@@ -1484,6 +1494,8 @@ function render(timestamp) {
 
   // ── Layer 13: Today overlay ──
   if (phaseT(7) >= 0) drawToday(time);
+
+  ctx.restore(); // remove clip
 
   // ── Layer 14: Vignette ──
   drawVignette();
