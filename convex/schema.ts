@@ -85,6 +85,26 @@ export default defineSchema({
   })
     .index("by_dataset", ["dataset", "timestamp"]),
 
+  // ── Spectral Pipeline Results ──
+  spectralResults: defineTable({
+    pipelineId: v.string(),
+    targetId: v.string(),
+    ra: v.number(),
+    dec: v.number(),
+    anomalyScore: v.number(),
+    anomalyType: v.string(),
+    worstRegion: v.string(),
+    regionB: v.number(),
+    regionR: v.number(),
+    regionZ: v.number(),
+    simbadStatus: v.string(),
+    batchId: v.string(),
+    processedAt: v.number(),
+  })
+    .index("by_pipeline", ["pipelineId"])
+    .index("by_score", ["pipelineId", "anomalyScore"])
+    .index("by_batch", ["batchId"]),
+
   // ── Page Analytics ──
   pageViews: defineTable({
     path: v.string(),
