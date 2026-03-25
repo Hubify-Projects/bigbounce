@@ -124,33 +124,65 @@
     + '</div></nav>';
 
   // ── Inject into page ──
-  // Look for a placeholder: <div id="site-nav"></div>
-  // If found, inject there. Otherwise, inject at the start of <body>.
-  var placeholder = document.getElementById('site-nav');
-  var html = sidebar + topbar + '<div class="site-content">' + inlineNav;
+  // 1. Inject sidebar + topbar at the start of <body>
+  // 2. Wrap ALL remaining body content in .site-content for proper layout offset
+  var navFragment = sidebar + topbar;
+  document.body.insertAdjacentHTML('afterbegin', navFragment);
 
-  if (placeholder) {
-    placeholder.outerHTML = html;
-  } else {
-    // Inject right after <body> opens
-    document.body.insertAdjacentHTML('afterbegin', html);
+  // Build the .site-content wrapper via DOM so it properly contains page content
+  var siteContent = document.createElement('div');
+  siteContent.className = 'site-content';
+  siteContent.insertAdjacentHTML('afterbegin', inlineNav);
+
+  // Move all body children (except sidebar, toggle, topbar) into the wrapper
+  var nodesToMove = [];
+  var child = document.body.firstChild;
+  while (child) {
+    var next = child.nextSibling;
+    if (child.nodeType === 1) {
+      var tag = child.tagName;
+      var cl = child.classList || { contains: function() { return false; } };
+      if (!cl.contains('sidebar') && !cl.contains('sidebar-toggle') && !cl.contains('topbar')) {
+        nodesToMove.push(child);
+      }
+    } else if (child.nodeType === 3 && child.textContent.trim()) {
+      nodesToMove.push(child);
+    }
+    child = next;
   }
+  for (var j = 0; j < nodesToMove.length; j++) {
+    siteContent.appendChild(nodesToMove[j]);
+  }
+  document.body.appendChild(siteContent);
 
   // ── Wire up sidebar toggle/close ──
   var toggle = document.querySelector('.sidebar-toggle');
   var sidebarEl = document.querySelector('.sidebar');
   var closeBtn = document.querySelector('.sidebar-close');
+  var isMobile = function () { return window.innerWidth <= 900; };
 
   if (toggle && sidebarEl) {
     toggle.addEventListener('click', function () {
-      sidebarEl.classList.toggle('open');
-      toggle.style.visibility = sidebarEl.classList.contains('open') ? 'hidden' : 'visible';
+      if (isMobile()) {
+        // Mobile: slide sidebar open as overlay
+        sidebarEl.classList.toggle('open');
+        toggle.style.visibility = sidebarEl.classList.contains('open') ? 'hidden' : 'visible';
+      } else {
+        // Desktop: uncollapse sidebar
+        document.body.classList.remove('sidebar-collapsed');
+        toggle.style.display = 'none';
+      }
     });
   }
-  if (closeBtn && sidebarEl && toggle) {
+  if (closeBtn && sidebarEl) {
     closeBtn.addEventListener('click', function () {
-      sidebarEl.classList.remove('open');
-      toggle.style.visibility = 'visible';
+      if (isMobile()) {
+        sidebarEl.classList.remove('open');
+        if (toggle) toggle.style.visibility = 'visible';
+      } else {
+        // Desktop: collapse sidebar
+        document.body.classList.add('sidebar-collapsed');
+      }
     });
   }
 

@@ -67,6 +67,7 @@ body {
   padding: 0;
   display: flex; flex-direction: column;
   overflow-y: auto;
+  transition: transform 200ms ease;
 }
 .sidebar-brand {
   padding: 20px 24px 16px;
@@ -126,6 +127,7 @@ body {
   margin-left: var(--sidebar-w);
   padding-top: var(--topbar-h);
   min-height: 100vh;
+  transition: margin-left 200ms ease;
 }
 main {
   padding: 32px 48px 48px;
@@ -134,26 +136,31 @@ main {
 main.container { max-width: 860px; padding: 32px 48px 48px; }
 main.wide-container { max-width: 1040px; padding: 32px 48px 48px; }
 
-/* Mobile hamburger for sidebar */
+/* Hamburger toggle for sidebar */
 .sidebar-toggle {
-  display: none; position: fixed; top: 0; left: 0; z-index: 300;
+  position: fixed; top: 0; left: 0; z-index: 300;
   width: var(--topbar-h); height: var(--topbar-h);
   background: none; border: none; cursor: pointer;
   color: var(--text-muted);
-  /* Perfect center the icon inside the topbar-height box */
   display: none; align-items: center; justify-content: center;
 }
 .sidebar-toggle:hover { color: var(--text); }
 .sidebar-toggle svg { display: block; width: 18px; height: 18px; }
 
-/* Close button inside sidebar (mobile) */
+/* Close button inside sidebar — always visible */
 .sidebar-close {
-  display: none; position: absolute; top: 14px; right: 14px;
+  display: block; position: absolute; top: 14px; right: 14px;
   background: none; border: none; cursor: pointer;
   color: #777; font-family: var(--font-mono); font-size: 24px;
   padding: 4px 8px; line-height: 1; letter-spacing: -4px;
 }
 .sidebar-close:hover { color: #fff; }
+
+/* When sidebar is collapsed on desktop, shift content back */
+body.sidebar-collapsed .sidebar { transform: translateX(-100%); transition: transform 200ms ease; }
+body.sidebar-collapsed .site-content { margin-left: 0; transition: margin-left 200ms ease; }
+body.sidebar-collapsed .topbar { left: 0; padding-left: 40px; transition: left 200ms ease, padding-left 200ms ease; }
+body.sidebar-collapsed .sidebar-toggle { display: flex; }
 
 /* Hide old nav elements — sidebar replaces them */
 body > nav { display: none; }
