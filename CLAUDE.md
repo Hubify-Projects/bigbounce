@@ -10,16 +10,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current version: v2.1.0** (March 2026) — ~24 pages (focused version), 57+ bibliography entries, 10+ revision rounds complete.
+**Current version: v2.2.0** (March 2026) — ~24 pages (focused version), 63+ bibliography entries, 10+ revision rounds complete.
 
 **Live website:** https://bigbounce.hubify.app
 
+**Research stance:** Bounce-model agnostic. The goal is proving bounce cosmology beats inflation, not proving one specific model. See `project-context/bounce_portfolio_strategy.md`.
+
 **Key scientific results:**
-- 14 structural barriers close all minimal routes from bounce to dark energy
+- 14 structural barriers close all ECH-specific routes from bounce to dark energy (other bounce models like quintom can bypass these)
 - ALP birefringence prediction β = 0.27° matches 3.6σ observed signal (0.342 ± 0.094°)
-- Branch V matter bounce: f_NL = -35/8 = -4.375 (parameter-free, SPHEREx testable)
+- Branch V matter bounce: f_NL = -35/8 = -4.375 (parameter-free, SPHEREx testable, mechanism-independent across all bounce models)
+- Bounce model discrimination table: matter bounce vs Cuscuton vs ekpyrotic vs quintom vs inflation
+- f_NL triple role: galaxy bispectrum + PBH abundance regulator + induced GW spectral shape
+- NANOGrav 15yr consistency: matter bounce γ = 3.0 vs observed 3.2 ± 0.6 (0.33σ)
+- w0-wa MCMC: quintom-B (w-crossing) favored at 2.3σ, P(quintom-B) = 98.6%
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
-- 424,181 MCMC posterior samples across 2 frozen dataset combinations
+- 424,181+ MCMC posterior samples across 3 frozen dataset combinations
+
+**Active pods & pipelines:** See `project-context/active_pods_and_pipelines.md` for live status of all running compute. DO NOT TERMINATE any pods without explicit user approval.
+
+**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — the H200 DESI DR1 anomaly scan feeds directly into f_NL tracer improvement. Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work waiting to be done after the H200 finishes.
 
 ## Website Architecture
 
