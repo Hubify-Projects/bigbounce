@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipeline B: DESI Spectral Anomaly Miner — Human Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<style>
+/* ── Pipeline B Review Styles ── */
+.review-controls {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 16px; font-family: var(--font-sans); font-size: 14px;
+}
+.review-controls .btn { font-size: 13px; padding: 6px 16px; }
+.review-controls .filter-group { display: flex; gap: 6px; align-items: center; }
+.review-controls select {
+  font-size: 13px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
+  background: var(--bg); color: var(--text); font-family: var(--font-sans);
+}
+.review-controls .saved-indicator {
+  font-size: 12px; color: #16a34a; opacity: 0; transition: opacity 0.3s;
+}
+.review-controls .saved-indicator.show { opacity: 1; }
+
+.review-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;
+  margin-bottom: 20px;
+}
+.review-stat {
+  background: var(--bg-raised, #f8f8f8); border: 1px solid var(--border); border-radius: 6px;
+  padding: 10px 14px; text-align: center; font-family: var(--font-sans);
+}
+.review-stat .val { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.review-stat .lbl { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; }
+.review-stat.stat-interesting .val { color: #16a34a; }
+.review-stat.stat-artifact .val { color: #dc2626; }
+.review-stat.stat-needs .val { color: #f59e0b; }
+.review-stat.stat-confirmed .val { color: #2563eb; }
+
+.review-table-wrap {
+  overflow-x: auto; margin-bottom: 32px;
+  border: 1px solid var(--border); border-radius: 6px;
+}
+.review-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; font-family: var(--font-sans);
+}
+.review-table thead th {
+  position: sticky; top: 0; background: var(--bg-raised, #f5f5f5);
+  border-bottom: 2px solid var(--border); padding: 8px 10px;
+  text-align: left; font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.3px; color: var(--text-secondary);
+  white-space: nowrap;
+}
+.review-table tbody td {
+  padding: 6px 10px; border-bottom: 1px solid var(--border);
+  vertical-align: middle; line-height: 1.4;
+}
+.review-table tbody tr.data-row { cursor: pointer; transition: background 0.15s; }
+.review-table tbody tr.data-row:hover { background: rgba(0,0,0,0.03); }
+.review-table tbody tr.data-row.expanded { background: rgba(0,0,0,0.04); }
+.review-table tbody tr.label-INTERESTING { border-left: 3px solid #16a34a; }
+.review-table tbody tr.label-ARTIFACT { border-left: 3px solid #dc2626; }
+.review-table tbody tr.label-KNOWN_TYPE { border-left: 3px solid #9ca3af; }
+.review-table tbody tr.label-NEEDS_SPECTRUM { border-left: 3px solid #f59e0b; }
+.review-table tbody tr.label-CONFIRMED { border-left: 3px solid #2563eb; }
+
+.review-table .targetid-cell { font-family: var(--font-mono); font-size: 11px; }
+.review-table .coord-cell { font-family: var(--font-mono); font-size: 11px; }
+.review-table .flux-cell { font-family: var(--font-mono); font-size: 11px; }
+
+.label-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-badge.INTERESTING { background: #dcfce7; color: #166534; }
+.label-badge.ARTIFACT { background: #fee2e2; color: #991b1b; }
+.label-badge.KNOWN_TYPE { background: #f3f4f6; color: #374151; }
+.label-badge.NEEDS_SPECTRUM { background: #fef3c7; color: #92400e; }
+.label-badge.CONFIRMED { background: #dbeafe; color: #1e40af; }
+
+/* ── Detail Panel ── */
+.detail-row { display: none; }
+.detail-row.open { display: table-row; }
+.detail-row td { padding: 0 !important; border-bottom: 1px solid var(--border); }
+
+.detail-panel {
+  background: #f8f8f8; padding: 20px 16px;
+  border-left: 4px solid #9ca3af;
+  display: grid; grid-template-columns: 280px 1fr; gap: 20px;
+  font-family: var(--font-sans); font-size: 14px;
+}
+.detail-panel.border-INTERESTING { border-left-color: #16a34a; }
+.detail-panel.border-ARTIFACT { border-left-color: #dc2626; }
+.detail-panel.border-KNOWN_TYPE { border-left-color: #9ca3af; }
+.detail-panel.border-NEEDS_SPECTRUM { border-left-color: #f59e0b; }
+.detail-panel.border-CONFIRMED { border-left-color: #2563eb; }
+
+.detail-image-col { text-align: center; }
+.detail-image-col img {
+  width: 256px; height: 256px; border: 1px solid #ddd; border-radius: 4px;
+  background: #222; display: block; margin: 0 auto 8px;
+}
+.detail-image-col a {
+  font-size: 12px; color: var(--accent-link, #2563eb);
+}
+
+.detail-info-col h4 {
+  margin: 0 0 6px; font-size: 14px; font-weight: 600; color: var(--text);
+}
+.detail-info-col .ai-reason {
+  font-size: 13px; line-height: 1.6; color: var(--text-secondary);
+  margin-bottom: 14px; padding: 10px 12px;
+  background: #fff; border: 1px solid var(--border); border-radius: 4px;
+}
+
+.detail-form { display: flex; flex-direction: column; gap: 10px; }
+.detail-form label { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
+.detail-form select {
+  font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 4px;
+  background: var(--bg); font-family: var(--font-sans); width: 200px;
+}
+.detail-form textarea {
+  width: 100%; min-height: 60px; padding: 8px 10px; border: 1px solid var(--border);
+  border-radius: 4px; font-family: var(--font-sans); font-size: 13px; line-height: 1.5;
+  resize: vertical; background: #fff;
+}
+
+.detail-meta {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 4px 16px; font-size: 12px; color: var(--text-secondary); margin-top: 10px;
+}
+.detail-meta .meta-item { display: flex; gap: 6px; }
+.detail-meta .meta-label { font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; font-size: 10px; min-width: 60px; }
+.detail-meta .meta-val { font-family: var(--font-mono); font-size: 11px; }
+
+/* ── Red-Team Checklist ── */
+.redteam-section { margin-top: 48px; }
+.redteam-category { margin-bottom: 24px; }
+.redteam-category h3 {
+  font-size: 15px; font-family: var(--font-sans); font-weight: 600;
+  margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+}
+.redteam-item {
+  display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 14px; line-height: 1.5;
+}
+.redteam-item input[type="checkbox"] { margin-top: 4px; accent-color: #16a34a; }
+.redteam-item .risk-text { color: var(--text); }
+
+@media (max-width: 768px) {
+  .detail-panel { grid-template-columns: 1fr; }
+  .detail-image-col { order: -1; }
+  .review-stats { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .review-stats { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="../index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="../paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="../explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="../datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="../datasets.html" class="sidebar-link">datasets</a>
+<a href="../data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+</div>
+<a href="../figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="../glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="../articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="../activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="index.html" class="sidebar-link active" data-page="review">review</a>
+<a href="../chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="../research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher</div>
+</aside>
+<div class="topbar">
+<span>March 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>
+<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>
+</div>
+<div class="site-content">
+<nav><div class="nav-inner"><a href="../index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="../index.html" data-page="index">research</a><a href="../paper.html" data-page="paper">papers</a><a href="../explained.html" data-page="explained">explainer</a><a href="../data-explorer.html" data-page="datasets">data</a><a href="../figures.html" data-page="figures">figures</a><a href="../glossary.html" data-page="glossary">glossary</a><a href="../articles.html" data-page="articles">articles</a><a href="../activity.html" data-page="activity">activity</a><a href="index.html" data-page="review">review</a><a href="../chat.html" data-page="astro">astro</a><a href="../research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden &middot; gr-qc</span></div></nav>
+<main class="container">
+
+<div class="hero" style="padding-bottom: 16px;">
+  <p class="text-xs sans" style="margin-bottom: 8px;"><a href="index.html" style="color: var(--text-tertiary); text-decoration: none;">Review Hub</a> &rarr; Pipeline B</p>
+  <h1>Pipeline B: DESI Spectral Anomaly Miner</h1>
+  <p class="subtitle">Human Review Dashboard &mdash; Gate 9</p>
+</div>
+
+<hr>
+
+<!-- Summary Stat Cards -->
+<div id="stat-cards" class="review-stats"></div>
+
+<!-- Controls -->
+<div class="review-controls">
+  <button class="btn btn-primary" onclick="saveAllReviews()">Save All Reviews</button>
+  <button class="btn btn-secondary" onclick="exportJSON()">Export JSON</button>
+  <button class="btn btn-secondary" onclick="resetAllReviews()">Reset to AI Labels</button>
+  <div class="filter-group">
+    <label>Filter:</label>
+    <select id="filter-select" onchange="applyFilter()">
+      <option value="ALL">All</option>
+      <option value="INTERESTING">Interesting</option>
+      <option value="KNOWN_TYPE">Known Type</option>
+      <option value="ARTIFACT">Artifact</option>
+      <option value="NEEDS_SPECTRUM">Needs Spectrum</option>
+      <option value="CONFIRMED">Confirmed</option>
+    </select>
+  </div>
+  <span id="saved-msg" class="saved-indicator">Saved</span>
+</div>
+
+<!-- Top 50 Anomalies Table -->
+<section class="section" style="margin-top: 8px;">
+  <h2>Top 50 Anomalies</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 12px;">Click any row to expand the detail panel with sky image, AI reasoning, and review form.</p>
+  <div class="review-table-wrap" style="max-height: 70vh; overflow-y: auto;">
+    <table class="review-table" id="table-top50">
+      <thead>
+        <tr>
+          <th style="width:40px">#</th>
+          <th>Target ID</th>
+          <th>RA</th>
+          <th>Dec</th>
+          <th>z</th>
+          <th>Type</th>
+          <th>ZWARN</th>
+          <th>Score</th>
+          <th>AI Label</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-top50"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Top 20 QSO Table -->
+<section class="section">
+  <h2>Top 20 QSO Anomalies</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 12px;">QSO-specific anomaly subset. Click any row for details.</p>
+  <div class="review-table-wrap" style="max-height: 60vh; overflow-y: auto;">
+    <table class="review-table" id="table-qso">
+      <thead>
+        <tr>
+          <th style="width:40px">#</th>
+          <th>Target ID</th>
+          <th>RA</th>
+          <th>Dec</th>
+          <th>z</th>
+          <th>ZWARN</th>
+          <th>AI Label</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-qso"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Red-Team Checklist -->
+<section class="section redteam-section">
+  <h2>Red-Team Checklist</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Review each risk before finalizing labels. Check off items as you address them.</p>
+
+  <div class="redteam-category">
+    <h3>Likely Leakage Routes</h3>
+    <div class="redteam-item"><input type="checkbox" id="rt-0" onchange="saveChecklist()"><span class="risk-text">Survey depth (FLUX_IVAR) was the dominant nuisance &mdash; partially mitigated by percentile normalization</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-1" onchange="saveChecklist()"><span class="risk-text">Fiber-to-fiber variations not tested (no FIBER column in EDR)</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-2" onchange="saveChecklist()"><span class="risk-text">Spectral features not used &mdash; only catalog metadata; true spectral anomalies may be missed</span></div>
+  </div>
+
+  <div class="redteam-category">
+    <h3>Astrophysical Confounders</h3>
+    <div class="redteam-item"><input type="checkbox" id="rt-3" onchange="saveChecklist()"><span class="risk-text">Stars dominate top anomalies &mdash; many are just unusual stellar types, not cosmologically interesting</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-4" onchange="saveChecklist()"><span class="risk-text">High-z QSO enrichment may reflect template mismatch in DESI pipeline, not intrinsic anomalousness</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-5" onchange="saveChecklist()"><span class="risk-text">Galaxy anomalies may be photometric blends or deblending failures</span></div>
+  </div>
+
+  <div class="redteam-category">
+    <h3>Instrument Confounders</h3>
+    <div class="redteam-item"><input type="checkbox" id="rt-6" onchange="saveChecklist()"><span class="risk-text">DESI fiber positioning errors could create systematic spectral artifacts</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-7" onchange="saveChecklist()"><span class="risk-text">Sky subtraction residuals may dominate faint-object anomaly scores</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-8" onchange="saveChecklist()"><span class="risk-text">Wavelength calibration issues could mimic emission-line anomalies</span></div>
+  </div>
+
+  <div class="redteam-category">
+    <h3>What Would Falsify the Pipeline</h3>
+    <div class="redteam-item"><input type="checkbox" id="rt-9" onchange="saveChecklist()"><span class="risk-text">If top anomalies are all known artifacts in DESI validation catalogs</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-10" onchange="saveChecklist()"><span class="risk-text">If anomaly scores correlate strongly with observing conditions after correction</span></div>
+    <div class="redteam-item"><input type="checkbox" id="rt-11" onchange="saveChecklist()"><span class="risk-text">If no anomaly survives visual inspection of the actual spectra</span></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// EMBEDDED DATA
+// ═══════════════════════════════════════════════════════════
+
+const TOP50 = [
+  {rank:1, targetid:"39633555847905489", ra:180.0657, dec:80.8492, z:9.527e-05, type:"STAR", zwarn:0, score:1.0, flux_g:39.08, flux_r:134.84, flux_z:149.17, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with very red colors (flux_r/flux_g \u2248 3.5, flux_z/flux_g \u2248 3.8). Likely late M-dwarf or L-dwarf with typical red SED."},
+  {rank:2, targetid:"39627665157658710", ra:67.9162, dec:-5.0862, z:0.0157, type:"GALAXY", zwarn:0, score:1.0, flux_g:21160.50, flux_r:46682.59, flux_z:87329.13, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=21160, flux_r=46683, flux_z=87329) at z=0.016. Nearby bright galaxy \u2014 likely NGC catalog member. Red SED consistent with massive elliptical."},
+  {rank:3, targetid:"616089274034422391", ra:145.2839, dec:32.0065, z:0.4560, type:"GALAXY", zwarn:5, score:1.0, flux_g:0.0, flux_r:0.0, flux_z:0.0, ai_label:"ARTIFACT", ai_reason:"ZWARN=5 with all fluxes exactly zero. Classic pipeline failure \u2014 no valid photometry. Likely fiber positioning error or sky-subtraction failure."},
+  {rank:4, targetid:"39633296988047544", ra:179.3999, dec:53.3748, z:0.00349, type:"GALAXY", zwarn:0, score:1.0, flux_g:70843.73, flux_r:149822.16, flux_z:159499.16, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=70844, flux_r=149822, flux_z=159499) at z=0.0035. Very nearby bright galaxy, likely NGC/IC catalog member. Anomaly score driven by extreme brightness."},
+  {rank:5, targetid:"39633282291204769", ra:178.4541, dec:52.3268, z:0.00351, type:"GALAXY", zwarn:0, score:1.0, flux_g:59615.94, flux_r:126921.63, flux_z:193771.83, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=59616, flux_r=126922, flux_z=193772) at z=0.0035. Very nearby bright galaxy. Red SED consistent with massive elliptical."},
+  {rank:6, targetid:"39633296895773069", ra:170.2620, dec:53.1696, z:0.00384, type:"GALAXY", zwarn:0, score:1.0, flux_g:42590.52, flux_r:73662.92, flux_z:82125.52, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=42591, flux_r=73663, flux_z=82126) at z=0.0038. Very nearby bright galaxy. Normal SED shape."},
+  {rank:7, targetid:"39633485668812699", ra:213.0243, dec:69.4378, z:-5.302e-05, type:"GALAXY", zwarn:0, score:1.0, flux_g:75.92, flux_r:111.30, flux_z:130.13, ai_label:"INTERESTING", ai_reason:"Galaxy at z\u2248-0.00005 (effectively z=0). Negative redshift is unphysical for a galaxy \u2014 possible blueshift from high peculiar velocity or pipeline misclassification. Moderate flux (76\u2013130 nMgy). Worth checking if this is a misclassified star or a genuinely unusual nearby object."},
+  {rank:8, targetid:"39633558586787943", ra:135.9120, dec:81.5416, z:-1.274e-04, type:"STAR", zwarn:0, score:1.0, flux_g:15861.79, flux_r:15523.46, flux_z:1551.44, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with unusual SED: flux_g\u2248flux_r\u224815800 but flux_z=1551 (blue, sharp z-band drop). Likely hot white dwarf or early-type subdwarf (sdB/sdO)."},
+  {rank:9, targetid:"39633165249151966", ra:100.0952, dec:44.8777, z:0.9886, type:"GALAXY", zwarn:0, score:1.0, flux_g:23.37, flux_r:18135.23, flux_z:1.38, ai_label:"INTERESTING", ai_reason:"Galaxy at z=0.989 with extreme color: flux_r=18135 but flux_g=23 and flux_z=1.4. Flux ratio flux_r/flux_g \u2248 776 is extraordinary. Possible strong emission line boosting r-band, or photometric blend. Genuinely unusual \u2014 worth spectral follow-up."},
+  {rank:10, targetid:"39633139173164346", ra:99.3487, dec:43.4967, z:5.272e-05, type:"STAR", zwarn:0, score:1.0, flux_g:2083.32, flux_r:6995.90, flux_z:3073.13, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with peaked r-band (flux_g=2083, flux_r=6996, flux_z=3073). Likely late K or early M giant with strong TiO absorption in z-band. Unusual but recognized stellar type."},
+  {rank:11, targetid:"39633328785066757", ra:179.4839, dec:55.4536, z:0.00340, type:"GALAXY", zwarn:0, score:1.0, flux_g:35244.00, flux_r:74972.83, flux_z:125785.13, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=35244, flux_r=74973, flux_z=125785) at z=0.0034. Very nearby bright galaxy. Normal red SED."},
+  {rank:12, targetid:"39633076048889192", ra:114.3284, dec:40.0225, z:9.750e-05, type:"GALAXY", zwarn:0, score:1.0, flux_g:23.15, flux_r:58.19, flux_z:117.15, ai_label:"INTERESTING", ai_reason:"Galaxy at z\u22480.0001 (essentially z=0) with faint flux (23\u2013117 nMgy). Redshift is suspiciously low for a galaxy classification \u2014 could be misclassified star or genuinely unusual ultra-nearby dwarf galaxy. Rising SED toward z-band."},
+  {rank:13, targetid:"39633501649111725", ra:168.0142, dec:71.5894, z:-6.087e-05, type:"STAR", zwarn:0, score:1.0, flux_g:30.43, flux_r:140.24, flux_z:743.97, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with very red colors: flux_z/flux_g \u2248 24. Extreme red SED consistent with late M-dwarf (M7\u2013M9) or L-dwarf."},
+  {rank:14, targetid:"39633335592422861", ra:177.3134, dec:56.0845, z:0.00388, type:"GALAXY", zwarn:0, score:1.0, flux_g:31838.06, flux_r:65661.77, flux_z:103677.96, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=31838, flux_r=65662, flux_z=103678) at z=0.0039. Very nearby bright galaxy. Normal red SED."},
+  {rank:15, targetid:"39633289706737241", ra:181.5958, dec:52.7112, z:0.00262, type:"GALAXY", zwarn:0, score:1.0, flux_g:19231.95, flux_r:44585.05, flux_z:81780.41, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=19232, flux_r=44585, flux_z=81780) at z=0.0026. Very nearby bright galaxy. Normal red SED shape."},
+  {rank:16, targetid:"39633293284476775", ra:173.1457, dec:53.0682, z:0.00322, type:"GALAXY", zwarn:0, score:1.0, flux_g:30920.50, flux_r:67602.98, flux_z:102805.00, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=30921, flux_r=67603, flux_z=102805) at z=0.0032. Very nearby bright galaxy. Normal SED."},
+  {rank:17, targetid:"39633263488141603", ra:179.8545, dec:50.9617, z:0.00329, type:"GALAXY", zwarn:0, score:1.0, flux_g:26965.23, flux_r:56561.73, flux_z:95296.28, ai_label:"KNOWN_TYPE", ai_reason:"Extremely bright galaxy (flux_g=26965, flux_r=56562, flux_z=95296) at z=0.0033. Very nearby bright galaxy. Normal red SED."},
+  {rank:18, targetid:"39627067007965716", ra:60.3000, dec:-31.1940, z:6.142e-05, type:"STAR", zwarn:0, score:1.0, flux_g:3916.18, flux_r:9476.98, flux_z:13179.69, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with bright flux (3916\u201313180 nMgy). Red SED (flux_z/flux_g \u2248 3.4) consistent with K or early M giant. Unusual brightness but recognized type."},
+  {rank:19, targetid:"39628516584587684", ra:144.8492, dec:31.7536, z:5.874e-06, type:"STAR", zwarn:0, score:1.0, flux_g:138.60, flux_r:1064.93, flux_z:31368.91, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with extreme red SED: flux_z/flux_g \u2248 226. Very red \u2014 likely late M-dwarf or early L-dwarf. Dramatic flux ratio is the anomaly driver."},
+  {rank:20, targetid:"39633314813841448", ra:173.9529, dec:54.5240, z:7.806e-04, type:"GALAXY", zwarn:0, score:1.0, flux_g:16679.51, flux_r:24122.60, flux_z:24639.13, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=16680, flux_r=24123, flux_z=24639) at z=0.0008. Very nearby. Relatively flat SED (blue for a galaxy) \u2014 could be star-forming galaxy. Known type but unusual flatness."},
+  {rank:21, targetid:"39633348326330578", ra:105.0470, dec:57.0834, z:-3.343e-05, type:"STAR", zwarn:0, score:1.0, flux_g:232.20, flux_r:107.64, flux_z:118.29, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with blue colors: flux_g=232 > flux_r=108 \u2248 flux_z=118. Blue excess suggests hot star \u2014 likely DA white dwarf or blue horizontal branch star."},
+  {rank:22, targetid:"39632960252545975", ra:134.7770, dec:33.9524, z:2.643e-04, type:"STAR", zwarn:0, score:1.0, flux_g:165.56, flux_r:245.38, flux_z:307.01, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with modest flux (166\u2013307 nMgy). Mildly red SED. Likely K-dwarf. Anomaly score possibly driven by subtle spectral features."},
+  {rank:23, targetid:"39633141127713316", ra:259.6659, dec:43.6109, z:-9.543e-06, type:"STAR", zwarn:0, score:1.0, flux_g:47.83, flux_r:139.93, flux_z:252.18, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with red SED (flux_z/flux_g \u2248 5.3). Likely mid-to-late M-dwarf. Normal red stellar type."},
+  {rank:24, targetid:"39633331532335405", ra:107.6988, dec:55.8614, z:8.224e-05, type:"STAR", zwarn:0, score:1.0, flux_g:273.51, flux_r:168.49, flux_z:215.22, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with blue excess: flux_g=274 > flux_r=168 \u2248 flux_z=215. Blue star \u2014 likely sdB, DA white dwarf, or blue horizontal branch star."},
+  {rank:25, targetid:"39633334942304113", ra:108.0075, dec:55.9986, z:-1.583e-04, type:"STAR", zwarn:0, score:1.0, flux_g:19.70, flux_r:144.97, flux_z:281.16, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with extreme red SED: flux_z/flux_g \u2248 14.3. Likely late M-dwarf. Very faint in g-band (20 nMgy)."},
+  {rank:26, targetid:"39633139177361666", ra:99.8827, dec:43.5110, z:-6.340e-05, type:"STAR", zwarn:0, score:1.0, flux_g:209.90, flux_r:343.43, flux_z:169.51, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with unusual peaked-r SED: flux_g=210, flux_r=343, flux_z=170. R-band peak is uncommon \u2014 possibly carbon star, DZ white dwarf, or cataclysmic variable."},
+  {rank:27, targetid:"39633318324472017", ra:173.7571, dec:54.8504, z:0.00396, type:"GALAXY", zwarn:0, score:1.0, flux_g:11112.20, flux_r:18418.26, flux_z:17045.01, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=11112, flux_r=18418, flux_z=17045) at z=0.004. Very nearby bright galaxy. Relatively flat r-to-z SED."},
+  {rank:28, targetid:"39633004414375734", ra:103.5618, dec:36.2262, z:1.2345, type:"GALAXY", zwarn:0, score:1.0, flux_g:5782.89, flux_r:664.14, flux_z:0.71, ai_label:"INTERESTING", ai_reason:"Galaxy at z=1.23 with extreme blue color: flux_g=5783 >> flux_r=664 >> flux_z=0.7. Flux ratio flux_g/flux_z \u2248 8200. At z=1.23, Lyman break should be below g-band, so extreme UV luminosity is genuinely unusual. Could be AGN, lensed galaxy, or strong Lyman-alpha emitter. Worth follow-up."},
+  {rank:29, targetid:"39633325333155389", ra:179.1174, dec:55.1251, z:0.00374, type:"GALAXY", zwarn:0, score:1.0, flux_g:15692.36, flux_r:26704.30, flux_z:37638.88, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=15692, flux_r=26704, flux_z=37639) at z=0.0037. Very nearby bright galaxy. Normal red SED."},
+  {rank:30, targetid:"39633099130145362", ra:120.8359, dec:41.1820, z:-1.679e-04, type:"STAR", zwarn:0, score:1.0, flux_g:3494.25, flux_r:713.35, flux_z:1712.27, ai_label:"INTERESTING", ai_reason:"Star at z\u22480 with unusual SED: flux_g=3494, flux_r=713, flux_z=1712. Non-monotonic \u2014 dip in r-band with strong g and z. Very unusual for any standard stellar type. Could be magnetic white dwarf, emission-line star, or photometric error. Worth spectral check."},
+  {rank:31, targetid:"39633338952058456", ra:174.8426, dec:56.2704, z:0.00790, type:"GALAXY", zwarn:0, score:1.0, flux_g:16054.73, flux_r:28963.66, flux_z:41167.85, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=16055, flux_r=28964, flux_z=41168) at z=0.008. Nearby bright galaxy. Normal red SED."},
+  {rank:32, targetid:"39633033417983176", ra:101.2590, dec:37.7328, z:5.540e-05, type:"STAR", zwarn:0, score:1.0, flux_g:0.00, flux_r:5471.56, flux_z:329.28, ai_label:"INTERESTING", ai_reason:"Star at z\u22480 with flux_g=0 but flux_r=5472 and flux_z=329. Zero g-band flux with bright r-band is extremely unusual. Could be very late-type object with emission boosting r-band, photometric artifact, or carbon star. Non-monotonic r-to-z drop also unusual."},
+  {rank:33, targetid:"39633493579270120", ra:141.7031, dec:70.5099, z:4.567e-07, type:"STAR", zwarn:0, score:1.0, flux_g:702.46, flux_r:2163.02, flux_z:1259.60, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with peaked-r SED: flux_g=702, flux_r=2163, flux_z=1260. Likely K-giant or carbon star. Moderate flux ratio."},
+  {rank:34, targetid:"39633331519752941", ra:106.4097, dec:55.7078, z:0.8645, type:"GALAXY", zwarn:0, score:1.0, flux_g:6930.17, flux_r:589.80, flux_z:1.32, ai_label:"INTERESTING", ai_reason:"Galaxy at z=0.865 with extreme blue color: flux_g=6930 >> flux_r=590 >> flux_z=1.3. Flux ratio flux_g/flux_z \u2248 5300. At z=0.86, rest-frame UV is in g-band \u2014 extreme UV luminosity suggests AGN or strong emission-line galaxy. Genuinely unusual."},
+  {rank:35, targetid:"39627706828069508", ra:36.4880, dec:-3.3449, z:7.007e-05, type:"STAR", zwarn:0, score:1.0, flux_g:371.63, flux_r:1399.08, flux_z:4085.89, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with very red SED: flux_z/flux_g \u2248 11. Likely late M-dwarf. Standard red stellar type."},
+  {rank:36, targetid:"39633338327106131", ra:107.9692, dec:56.1968, z:8.256e-05, type:"STAR", zwarn:0, score:1.0, flux_g:688.16, flux_r:1800.15, flux_z:4469.49, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with very red SED: flux_z/flux_g \u2248 6.5. Likely mid-M-dwarf. Standard red stellar type."},
+  {rank:37, targetid:"39627624095422109", ra:129.4594, dec:-6.8053, z:1.141e-04, type:"STAR", zwarn:0, score:1.0, flux_g:181.64, flux_r:337.22, flux_z:691.61, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with moderately red SED (flux_z/flux_g \u2248 3.8). Likely early M-dwarf. Standard type."},
+  {rank:38, targetid:"39633362125589062", ra:187.8423, dec:57.9646, z:0.01047, type:"GALAXY", zwarn:0, score:1.0, flux_g:9276.63, flux_r:16146.22, flux_z:22239.95, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=9277, flux_r=16146, flux_z=22240) at z=0.010. Nearby bright galaxy. Normal red SED."},
+  {rank:39, targetid:"39633331523946288", ra:106.7603, dec:55.7969, z:1.314e-05, type:"STAR", zwarn:0, score:1.0, flux_g:237.72, flux_r:76.97, flux_z:62.62, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with blue excess: flux_g=238 > flux_r=77 \u2248 flux_z=63. Blue star \u2014 likely hot white dwarf (DA/DB) or subdwarf. Recognized type."},
+  {rank:40, targetid:"39632930229715045", ra:159.9077, dec:32.4608, z:4.055e-05, type:"STAR", zwarn:0, score:1.0, flux_g:625.16, flux_r:2225.80, flux_z:153.32, ai_label:"INTERESTING", ai_reason:"Star at z\u22480 with unusual SED: flux_g=625, flux_r=2226, flux_z=153. Strong r-band peak with steep drop to z-band. Non-monotonic SED is unusual \u2014 could be emission-line star (e.g., Be star with H-alpha in r-band) or photometric artifact."},
+  {rank:41, targetid:"39633289689958525", ra:179.7891, dec:52.7076, z:0.00362, type:"GALAXY", zwarn:0, score:1.0, flux_g:6663.86, flux_r:10609.00, flux_z:7313.38, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=6664, flux_r=10609, flux_z=7313) at z=0.0036. Nearby galaxy with unusual blue-ish SED (flux_z < flux_r). Likely star-forming galaxy. Recognized type."},
+  {rank:42, targetid:"39633341695136017", ra:108.6640, dec:56.4785, z:1.054e-04, type:"STAR", zwarn:0, score:1.0, flux_g:55.36, flux_r:217.00, flux_z:156.93, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with red SED (flux_z/flux_g \u2248 2.8, peaked at r). Likely K-dwarf or early M-dwarf."},
+  {rank:43, targetid:"39633182240280190", ra:98.8515, dec:45.9766, z:4.403e-04, type:"STAR", zwarn:0, score:1.0, flux_g:137.82, flux_r:286.54, flux_z:248.99, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with peaked-r SED: flux_g=138, flux_r=287, flux_z=249. Likely K-dwarf. Modest flux ratios."},
+  {rank:44, targetid:"39633345037993318", ra:108.4818, dec:56.7520, z:-7.357e-05, type:"STAR", zwarn:0, score:1.0, flux_g:1622.96, flux_r:1103.04, flux_z:3915.12, ai_label:"INTERESTING", ai_reason:"Star at z\u22480 with non-monotonic SED: flux_g=1623, flux_r=1103, flux_z=3915. Dip in r-band with bright g and very bright z is unusual. Could be carbon star, magnetic white dwarf, or unresolved binary. Worth spectral check."},
+  {rank:45, targetid:"39633562034507267", ra:142.3660, dec:82.4839, z:-2.322e-05, type:"STAR", zwarn:0, score:1.0, flux_g:181.36, flux_r:519.09, flux_z:230.94, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with peaked-r SED: flux_g=181, flux_r=519, flux_z=231. Likely K-dwarf or early M-dwarf."},
+  {rank:46, targetid:"39633274816955213", ra:177.6894, dec:51.8246, z:0.00322, type:"GALAXY", zwarn:0, score:1.0, flux_g:11908.29, flux_r:23407.14, flux_z:35663.73, ai_label:"KNOWN_TYPE", ai_reason:"Bright galaxy (flux_g=11908, flux_r=23407, flux_z=35664) at z=0.0032. Very nearby bright galaxy. Normal red SED."},
+  {rank:47, targetid:"39632934692457459", ra:114.9575, dec:32.7215, z:-3.643e-05, type:"STAR", zwarn:0, score:1.0, flux_g:354.66, flux_r:5713.13, flux_z:2673.90, ai_label:"INTERESTING", ai_reason:"Star at z\u22480 with unusual SED: flux_g=355, flux_r=5713, flux_z=2674. Very strong r-band peak (flux_r/flux_g \u2248 16). Could be emission-line star (strong H-alpha in r-band), symbiotic star, or photometric issue. Non-standard SED worth follow-up."},
+  {rank:48, targetid:"39627776222823288", ra:213.0426, dec:-0.5835, z:-1.486e-04, type:"STAR", zwarn:0, score:1.0, flux_g:550.85, flux_r:2175.14, flux_z:10055.93, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with very red SED: flux_z/flux_g \u2248 18.3. Likely late M-dwarf (M7+). Standard very red stellar type."},
+  {rank:49, targetid:"39632940132469085", ra:140.0556, dec:32.9966, z:1.004e-05, type:"STAR", zwarn:0, score:1.0, flux_g:203.37, flux_r:864.22, flux_z:1609.82, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with red SED: flux_z/flux_g \u2248 7.9. Likely mid-M-dwarf. Standard type."},
+  {rank:50, targetid:"39632930309410150", ra:165.8095, dec:32.6150, z:-2.613e-05, type:"STAR", zwarn:0, score:1.0, flux_g:93.61, flux_r:258.89, flux_z:237.96, ai_label:"KNOWN_TYPE", ai_reason:"Star at z\u22480 with red SED: flux_z/flux_g \u2248 2.5. Likely K-dwarf. Standard type."}
+];
+
+const TOP20_QSO = [
+  {rank:1, targetid:"39632939771759177", ra:114.3910, dec:33.0606, z:3.768, type:"QSO", zwarn:4, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=3.77 with ZWARN=4. High-z QSO but redshift warning flag suggests pipeline uncertainty. Could be template mismatch. Need actual spectrum to verify redshift."},
+  {rank:2, targetid:"39627818572710520", ra:217.2774, dec:1.2850, z:0.0864, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=0.086 with ZWARN=0. Very low-redshift QSO/AGN \u2014 unusual in anomaly list. Confirmed redshift. Likely nearby Seyfert nucleus. Worth checking if it has unusual spectral features."},
+  {rank:3, targetid:"39633282643528010", ra:212.7672, dec:52.2987, z:2.879, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.88 with ZWARN=0. Confirmed high-z QSO. Flagged as anomalous despite good pipeline fit \u2014 could have unusual broad absorption lines (BAL) or extreme emission features."},
+  {rank:4, targetid:"39633114238026813", ra:241.4322, dec:41.8773, z:2.485, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.49 with ZWARN=0. Confirmed high-z QSO. Anomalous despite clean fit \u2014 possibly unusual continuum shape, strong associated absorption, or extreme luminosity."},
+  {rank:5, targetid:"-5775410", ra:236.2768, dec:44.9092, z:5.857, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.86 with ZWARN=5. Extremely high-z \u2014 if real, one of the most distant QSOs known. Negative targetid is unusual (secondary target?). ZWARN=5 strongly suggests template mismatch. Need spectrum to verify."},
+  {rank:6, targetid:"39633251786034274", ra:164.7464, dec:50.1669, z:3.256, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=3.26 with ZWARN=0. Confirmed high-z QSO with clean pipeline fit. Anomaly flag suggests unusual spectral properties \u2014 possibly BAL QSO or unusual emission line ratios."},
+  {rank:7, targetid:"616094071282205154", ra:240.9444, dec:54.7208, z:4.486, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=4.49 with ZWARN=5. Very high-z QSO but ZWARN flag indicates pipeline uncertainty. Could be misidentified \u2014 need actual spectrum to verify. Large targetid suggests secondary targeting."},
+  {rank:8, targetid:"39632950383345740", ra:148.9081, dec:33.5844, z:2.500, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.50 with ZWARN=0. Confirmed high-z QSO. Clean pipeline fit but flagged anomalous \u2014 likely has unusual spectral morphology."},
+  {rank:9, targetid:"39628516429401717", ra:134.1738, dec:31.6892, z:3.623, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=3.62 with ZWARN=0. Confirmed high-z QSO (z>3). Clean pipeline classification. Anomaly flag suggests genuinely unusual spectral features worth investigating."},
+  {rank:10, targetid:"39627775732093815", ra:183.9575, dec:-0.5756, z:2.706, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.71 with ZWARN=0. Confirmed high-z QSO. Clean fit \u2014 anomaly likely reflects unusual continuum or emission properties."},
+  {rank:11, targetid:"-1286342", ra:195.7464, dec:29.2791, z:4.246, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=4.25 with ZWARN=5. Very high-z but ZWARN flag and negative targetid suggest caution. Likely secondary target with uncertain classification. Need spectrum."},
+  {rank:12, targetid:"-1295505", ra:194.6181, dec:29.7776, z:5.720, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.72 with ZWARN=5. Extremely high-z \u2014 if real, exceptionally rare. Negative targetid and ZWARN=5 strongly suggest template mismatch or misclassification. Critical to verify with actual spectrum."},
+  {rank:13, targetid:"39627763597968247", ra:180.5420, dec:-0.9071, z:3.591, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=3.59 with ZWARN=0. Confirmed high-z QSO (z>3). Clean pipeline fit. Anomaly suggests unusual spectral properties."},
+  {rank:14, targetid:"39627927016439985", ra:209.8829, dec:5.7389, z:0.665, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=0.67 with ZWARN=0. Intermediate-redshift QSO with clean fit. Anomalous despite relatively common redshift \u2014 likely has unusual spectral morphology or extreme luminosity."},
+  {rank:15, targetid:"616094056455340289", ra:173.9696, dec:53.6744, z:5.259, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.26 with ZWARN=5. Extremely high-z. ZWARN=5 indicates pipeline uncertainty. Large targetid suggests secondary targeting. Need actual spectrum to confirm \u2014 if real, very scientifically valuable."},
+  {rank:16, targetid:"39633362754732929", ra:258.1156, dec:57.9186, z:2.995, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.99 with ZWARN=0. Confirmed high-z QSO near z=3. Clean pipeline fit \u2014 anomaly flag indicates unusual spectral features worth follow-up."},
+  {rank:17, targetid:"616093805384302824", ra:148.7844, dec:38.6698, z:5.203, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.20 with ZWARN=5. Extremely high-z. ZWARN flag and large targetid indicate caution. Need spectrum to verify \u2014 template mismatch likely."},
+  {rank:18, targetid:"616093748471792535", ra:217.6981, dec:35.8210, z:5.936, type:"QSO", zwarn:1, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.94 with ZWARN=1. Highest-z QSO in the list. ZWARN=1 (less severe than 5 but still flagged). If real, exceptionally rare and scientifically important. Must verify with actual spectrum."},
+  {rank:19, targetid:"39627908955767854", ra:209.6324, dec:5.0897, z:2.447, type:"QSO", zwarn:0, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"INTERESTING", ai_reason:"QSO at z=2.45 with ZWARN=0. Confirmed high-z QSO. Clean pipeline fit \u2014 anomaly likely from unusual spectral properties."},
+  {rank:20, targetid:"-809715450", ra:213.9985, dec:1.4668, z:5.792, type:"QSO", zwarn:5, score:null, flux_g:null, flux_r:null, flux_z:null, ai_label:"NEEDS_SPECTRUM", ai_reason:"QSO at z=5.79 with ZWARN=5. Extremely high-z. Negative targetid and ZWARN=5 suggest high uncertainty. Need actual spectrum. If confirmed, exceptionally rare high-z QSO."}
+];
+
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+
+const STORAGE_KEY = "pipelineB_reviews";
+const CHECKLIST_KEY = "pipelineB_checklist";
+let reviews = {};   // keyed by "top50_{rank}" or "qso_{rank}"
+let expandedRow = null;
+
+function loadReviews() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) reviews = JSON.parse(raw);
+  } catch(e) { reviews = {}; }
+}
+
+function getReview(tableKey, rank) {
+  const key = tableKey + "_" + rank;
+  return reviews[key] || {};
+}
+
+function setReview(tableKey, rank, field, value) {
+  const key = tableKey + "_" + rank;
+  if (!reviews[key]) reviews[key] = {};
+  reviews[key][field] = value;
+}
+
+// ═══════════════════════════════════════════════════════════
+// STAT CARDS
+// ═══════════════════════════════════════════════════════════
+
+function computeStats() {
+  const allItems = [];
+  TOP50.forEach(d => {
+    const r = getReview("top50", d.rank);
+    allItems.push(r.label || d.ai_label);
+  });
+  TOP20_QSO.forEach(d => {
+    const r = getReview("qso", d.rank);
+    allItems.push(r.label || d.ai_label);
+  });
+  const counts = {INTERESTING:0, KNOWN_TYPE:0, ARTIFACT:0, NEEDS_SPECTRUM:0, CONFIRMED:0};
+  allItems.forEach(l => { if (counts[l] !== undefined) counts[l]++; });
+  return {total: allItems.length, ...counts};
+}
+
+function renderStats() {
+  const s = computeStats();
+  document.getElementById("stat-cards").innerHTML =
+    `<div class="review-stat"><div class="val">${s.total}</div><div class="lbl">Total Objects</div></div>` +
+    `<div class="review-stat stat-interesting"><div class="val">${s.INTERESTING}</div><div class="lbl">Interesting</div></div>` +
+    `<div class="review-stat"><div class="val">${s.KNOWN_TYPE}</div><div class="lbl">Known Type</div></div>` +
+    `<div class="review-stat stat-artifact"><div class="val">${s.ARTIFACT}</div><div class="lbl">Artifact</div></div>` +
+    `<div class="review-stat stat-needs"><div class="val">${s.NEEDS_SPECTRUM}</div><div class="lbl">Needs Spectrum</div></div>` +
+    `<div class="review-stat stat-confirmed"><div class="val">${s.CONFIRMED}</div><div class="lbl">Confirmed</div></div>`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// TABLE RENDERING
+// ═══════════════════════════════════════════════════════════
+
+function fmtZ(z) {
+  if (z === null || z === undefined) return "\u2014";
+  if (Math.abs(z) < 0.001) return z.toExponential(3);
+  return z.toFixed(4);
+}
+
+function fmtFlux(f) {
+  if (f === null || f === undefined) return "\u2014";
+  if (f === 0) return "0.00";
+  if (f >= 1000) return f.toFixed(0);
+  if (f >= 1) return f.toFixed(2);
+  return f.toFixed(4);
+}
+
+function currentLabel(tableKey, d) {
+  const r = getReview(tableKey, d.rank);
+  return r.label || d.ai_label;
+}
+
+function buildDataRow(tableKey, d, colCount) {
+  const label = currentLabel(tableKey, d);
+  const tr = document.createElement("tr");
+  tr.className = "data-row label-" + label;
+  tr.dataset.tableKey = tableKey;
+  tr.dataset.rank = d.rank;
+
+  if (tableKey === "top50") {
+    tr.innerHTML =
+      `<td>${d.rank}</td>` +
+      `<td class="targetid-cell">${d.targetid}</td>` +
+      `<td class="coord-cell">${d.ra.toFixed(4)}</td>` +
+      `<td class="coord-cell">${d.dec.toFixed(4)}</td>` +
+      `<td class="coord-cell">${fmtZ(d.z)}</td>` +
+      `<td>${d.type}</td>` +
+      `<td>${d.zwarn}</td>` +
+      `<td class="flux-cell">${d.score !== null ? d.score.toFixed(4) : "\u2014"}</td>` +
+      `<td><span class="label-badge ${label}">${label.replace("_"," ")}</span></td>`;
+  } else {
+    tr.innerHTML =
+      `<td>${d.rank}</td>` +
+      `<td class="targetid-cell">${d.targetid}</td>` +
+      `<td class="coord-cell">${d.ra.toFixed(4)}</td>` +
+      `<td class="coord-cell">${d.dec.toFixed(4)}</td>` +
+      `<td class="coord-cell">${fmtZ(d.z)}</td>` +
+      `<td>${d.zwarn}</td>` +
+      `<td><span class="label-badge ${label}">${label.replace("_"," ")}</span></td>`;
+  }
+
+  tr.addEventListener("click", function() { toggleDetail(tableKey, d, colCount, tr); });
+  return tr;
+}
+
+function buildDetailRow(tableKey, d, colCount) {
+  const review = getReview(tableKey, d.rank);
+  const label = review.label || d.ai_label;
+  const notes = review.notes || "";
+  const imgUrl = `https://www.legacysurvey.org/viewer/jpeg-cutout?ra=${d.ra}&dec=${d.dec}&size=256&layer=ls-dr10&pixscale=0.5`;
+  const viewerUrl = `https://www.legacysurvey.org/viewer?ra=${d.ra}&dec=${d.dec}&layer=ls-dr10&zoom=14`;
+
+  const tr = document.createElement("tr");
+  tr.className = "detail-row";
+  tr.dataset.detailFor = tableKey + "_" + d.rank;
+
+  const td = document.createElement("td");
+  td.colSpan = colCount;
+
+  let fluxHtml = "";
+  if (d.flux_g !== null) {
+    fluxHtml =
+      `<div class="meta-item"><span class="meta-label">FLUX_G</span><span class="meta-val">${fmtFlux(d.flux_g)}</span></div>` +
+      `<div class="meta-item"><span class="meta-label">FLUX_R</span><span class="meta-val">${fmtFlux(d.flux_r)}</span></div>` +
+      `<div class="meta-item"><span class="meta-label">FLUX_Z</span><span class="meta-val">${fmtFlux(d.flux_z)}</span></div>`;
+  }
+
+  td.innerHTML = `
+    <div class="detail-panel border-${label}">
+      <div class="detail-image-col">
+        <img src="${imgUrl}" alt="Sky image for ${d.targetid}" loading="lazy">
+        <a href="${viewerUrl}" target="_blank">Open in Legacy Survey Viewer</a>
+      </div>
+      <div class="detail-info-col">
+        <h4>AI Label: <span class="label-badge ${d.ai_label}">${d.ai_label.replace("_"," ")}</span></h4>
+        <div class="ai-reason">${d.ai_reason}</div>
+        <div class="detail-form">
+          <label>Your Label</label>
+          <select class="review-label-select" data-table="${tableKey}" data-rank="${d.rank}" onchange="onLabelChange(this)">
+            <option value="INTERESTING" ${label==="INTERESTING"?"selected":""}>INTERESTING</option>
+            <option value="KNOWN_TYPE" ${label==="KNOWN_TYPE"?"selected":""}>KNOWN_TYPE</option>
+            <option value="ARTIFACT" ${label==="ARTIFACT"?"selected":""}>ARTIFACT</option>
+            <option value="NEEDS_SPECTRUM" ${label==="NEEDS_SPECTRUM"?"selected":""}>NEEDS_SPECTRUM</option>
+            <option value="CONFIRMED" ${label==="CONFIRMED"?"selected":""}>CONFIRMED</option>
+          </select>
+          <label>Notes</label>
+          <textarea data-table="${tableKey}" data-rank="${d.rank}" placeholder="Add your notes here..." oninput="onNotesChange(this)">${notes}</textarea>
+        </div>
+        <div class="detail-meta">
+          <div class="meta-item"><span class="meta-label">TARGETID</span><span class="meta-val">${d.targetid}</span></div>
+          <div class="meta-item"><span class="meta-label">RA</span><span class="meta-val">${d.ra.toFixed(6)}</span></div>
+          <div class="meta-item"><span class="meta-label">Dec</span><span class="meta-val">${d.dec.toFixed(6)}</span></div>
+          <div class="meta-item"><span class="meta-label">z</span><span class="meta-val">${fmtZ(d.z)}</span></div>
+          <div class="meta-item"><span class="meta-label">Type</span><span class="meta-val">${d.type}</span></div>
+          <div class="meta-item"><span class="meta-label">ZWARN</span><span class="meta-val">${d.zwarn}</span></div>
+          ${d.score !== null ? `<div class="meta-item"><span class="meta-label">Score</span><span class="meta-val">${d.score.toFixed(6)}</span></div>` : ""}
+          ${fluxHtml}
+        </div>
+      </div>
+    </div>`;
+
+  tr.appendChild(td);
+  return tr;
+}
+
+function toggleDetail(tableKey, d, colCount, clickedRow) {
+  const detailKey = tableKey + "_" + d.rank;
+
+  // Close previously expanded row
+  if (expandedRow && expandedRow !== detailKey) {
+    const prev = document.querySelector(`tr[data-detail-for="${expandedRow}"]`);
+    if (prev) { prev.classList.remove("open"); prev.remove(); }
+    const prevData = document.querySelector(`tr.data-row.expanded`);
+    if (prevData) prevData.classList.remove("expanded");
+  }
+
+  // Toggle current
+  const existing = document.querySelector(`tr[data-detail-for="${detailKey}"]`);
+  if (existing) {
+    existing.classList.remove("open");
+    existing.remove();
+    clickedRow.classList.remove("expanded");
+    expandedRow = null;
+  } else {
+    const detailTr = buildDetailRow(tableKey, d, colCount);
+    clickedRow.after(detailTr);
+    // Force reflow then add class for potential animation
+    detailTr.offsetHeight;
+    detailTr.classList.add("open");
+    clickedRow.classList.add("expanded");
+    expandedRow = detailKey;
+  }
+}
+
+function renderTable(containerId, data, tableKey, colCount) {
+  const tbody = document.getElementById(containerId);
+  tbody.innerHTML = "";
+  const filter = document.getElementById("filter-select").value;
+  data.forEach(d => {
+    const label = currentLabel(tableKey, d);
+    if (filter !== "ALL" && label !== filter) return;
+    tbody.appendChild(buildDataRow(tableKey, d, colCount));
+  });
+}
+
+function renderAll() {
+  renderTable("tbody-top50", TOP50, "top50", 9);
+  renderTable("tbody-qso", TOP20_QSO, "qso", 7);
+  renderStats();
+}
+
+// ═══════════════════════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════════════════════
+
+function onLabelChange(select) {
+  const tk = select.dataset.table;
+  const rank = parseInt(select.dataset.rank);
+  const newLabel = select.value;
+  setReview(tk, rank, "label", newLabel);
+
+  // Update the data row's border and badge
+  const dataRow = document.querySelector(`tr.data-row[data-table-key="${tk}"][data-rank="${rank}"]`);
+  if (dataRow) {
+    dataRow.className = dataRow.className.replace(/label-\w+/, "label-" + newLabel);
+    if (dataRow.classList.contains("expanded")) dataRow.classList.add("expanded");
+    const badge = dataRow.querySelector(".label-badge");
+    if (badge) { badge.className = "label-badge " + newLabel; badge.textContent = newLabel.replace("_"," "); }
+  }
+
+  // Update detail panel border
+  const detailKey = tk + "_" + rank;
+  const detailRow = document.querySelector(`tr[data-detail-for="${detailKey}"]`);
+  if (detailRow) {
+    const panel = detailRow.querySelector(".detail-panel");
+    if (panel) {
+      panel.className = panel.className.replace(/border-\w+/, "border-" + newLabel);
+    }
+  }
+
+  renderStats();
+  autoSave();
+}
+
+function onNotesChange(textarea) {
+  const tk = textarea.dataset.table;
+  const rank = parseInt(textarea.dataset.rank);
+  setReview(tk, rank, "notes", textarea.value);
+  autoSave();
+}
+
+function applyFilter() {
+  // Close any expanded detail
+  if (expandedRow) {
+    const prev = document.querySelector(`tr[data-detail-for="${expandedRow}"]`);
+    if (prev) prev.remove();
+    const prevData = document.querySelector(`tr.data-row.expanded`);
+    if (prevData) prevData.classList.remove("expanded");
+    expandedRow = null;
+  }
+  renderAll();
+}
+
+// ═══════════════════════════════════════════════════════════
+// SAVE / EXPORT / RESET
+// ═══════════════════════════════════════════════════════════
+
+function autoSave() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+}
+
+function saveAllReviews() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  const msg = document.getElementById("saved-msg");
+  msg.classList.add("show");
+  setTimeout(() => msg.classList.remove("show"), 2000);
+}
+
+function exportJSON() {
+  const exportData = {
+    exported: new Date().toISOString(),
+    pipeline: "B_DESI_Spectral_Anomaly",
+    gate: 9,
+    top50: TOP50.map(d => {
+      const r = getReview("top50", d.rank);
+      return {
+        rank: d.rank,
+        targetid: d.targetid,
+        ra: d.ra,
+        dec: d.dec,
+        z: d.z,
+        type: d.type,
+        zwarn: d.zwarn,
+        score: d.score,
+        flux_g: d.flux_g,
+        flux_r: d.flux_r,
+        flux_z: d.flux_z,
+        ai_label: d.ai_label,
+        human_label: r.label || d.ai_label,
+        human_notes: r.notes || ""
+      };
+    }),
+    top20_qso: TOP20_QSO.map(d => {
+      const r = getReview("qso", d.rank);
+      return {
+        rank: d.rank,
+        targetid: d.targetid,
+        ra: d.ra,
+        dec: d.dec,
+        z: d.z,
+        type: d.type,
+        zwarn: d.zwarn,
+        ai_label: d.ai_label,
+        human_label: r.label || d.ai_label,
+        human_notes: r.notes || ""
+      };
+    }),
+    checklist: getChecklistState()
+  };
+
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "pipelineB_review_" + new Date().toISOString().slice(0,10) + ".json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAllReviews() {
+  if (!confirm("Reset all labels and notes to AI defaults? This cannot be undone.")) return;
+  reviews = {};
+  localStorage.removeItem(STORAGE_KEY);
+  expandedRow = null;
+  renderAll();
+}
+
+// ═══════════════════════════════════════════════════════════
+// CHECKLIST
+// ═══════════════════════════════════════════════════════════
+
+function saveChecklist() {
+  const state = getChecklistState();
+  localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+}
+
+function getChecklistState() {
+  const state = {};
+  for (let i = 0; i < 12; i++) {
+    const cb = document.getElementById("rt-" + i);
+    if (cb) state["rt-" + i] = cb.checked;
+  }
+  return state;
+}
+
+function loadChecklist() {
+  try {
+    const raw = localStorage.getItem(CHECKLIST_KEY);
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    Object.keys(state).forEach(id => {
+      const cb = document.getElementById(id);
+      if (cb) cb.checked = state[id];
+    });
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════
+// NAV ACTIVE STATE
+// ═══════════════════════════════════════════════════════════
+
+function setActiveNav() {
+  document.querySelectorAll("[data-page]").forEach(a => {
+    if (a.dataset.page === "review") a.classList.add("active");
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+
+loadReviews();
+renderAll();
+loadChecklist();
+setActiveNav();
+</script>
+</body>
+</html>
