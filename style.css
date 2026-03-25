@@ -395,3 +395,144 @@ details[open] summary { margin-bottom: 6px; }
 .agent-info { flex: 1; }
 .agent-name { font-weight: 600; color: var(--text); font-size: 13px; font-family: var(--font-mono); }
 .agent-role { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); }
+
+/* ══════════════════════════════════
+   Dark Mode — academic dark theme
+   ══════════════════════════════════ */
+
+/* Auto dark mode via system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a0a;
+    --bg-subtle: #111111;
+    --bg-code: #161616;
+    --bg-sidebar: #050505;
+    --bg-raised: #1a1a1a;
+    --border: #2a2a2a;
+    --border-strong: #3a3a3a;
+    --text: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+    --text-muted: #666666;
+    --accent-link: #60a5fa;
+    --accent-link-hover: #93c5fd;
+  }
+
+  :root:not([data-theme="light"]) .badge-success { color: #4ade80; border-color: #166534; background: #052e16; }
+  :root:not([data-theme="light"]) .badge-warning { color: #fbbf24; border-color: #92400e; background: #1c1406; }
+  :root:not([data-theme="light"]) .pdf-bar { background: rgba(10,10,10,0.96); }
+  :root:not([data-theme="light"]) .sidebar { border-right: 1px solid #1a1a1a; }
+
+  /* Form elements */
+  :root:not([data-theme="light"]) select,
+  :root:not([data-theme="light"]) textarea,
+  :root:not([data-theme="light"]) input[type="text"],
+  :root:not([data-theme="light"]) input[type="search"],
+  :root:not([data-theme="light"]) input[type="number"],
+  :root:not([data-theme="light"]) input[type="email"] {
+    background: var(--bg-raised);
+    color: var(--text);
+    border-color: var(--border);
+  }
+}
+
+/* Manual dark mode via data attribute */
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-subtle: #111111;
+  --bg-code: #161616;
+  --bg-sidebar: #050505;
+  --bg-raised: #1a1a1a;
+  --border: #2a2a2a;
+  --border-strong: #3a3a3a;
+  --text: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --text-muted: #666666;
+  --accent-link: #60a5fa;
+  --accent-link-hover: #93c5fd;
+}
+
+[data-theme="dark"] .badge-success { color: #4ade80; border-color: #166534; background: #052e16; }
+[data-theme="dark"] .badge-warning { color: #fbbf24; border-color: #92400e; background: #1c1406; }
+[data-theme="dark"] .pdf-bar { background: rgba(10,10,10,0.96); }
+[data-theme="dark"] .sidebar { border-right: 1px solid #1a1a1a; }
+
+[data-theme="dark"] select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="search"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input[type="email"] {
+  background: var(--bg-raised);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Manual light mode via data attribute — forces light regardless of system preference */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-subtle: #fafafa;
+  --bg-code: #f6f6f6;
+  --bg-sidebar: #1a1a1a;
+  --bg-raised: #ffffff;
+  --border: #eaeaea;
+  --border-strong: #d4d4d4;
+  --text: #0a0a0a;
+  --text-secondary: #444444;
+  --text-tertiary: #666666;
+  --text-muted: #999999;
+  --accent-link: #0a0a0a;
+  --accent-link-hover: #000000;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  line-height: 1;
+  transition: color var(--transition);
+  margin-left: 8px;
+}
+.theme-toggle:hover { color: var(--text); }
+
+/* ══════════════════════════════════
+   Print Styles
+   ══════════════════════════════════ */
+@media print {
+  /* Hide interactive/nav elements */
+  .sidebar, .sidebar-toggle, .topbar, nav, .nav-inner,
+  .astro-bubble, .astro-panel,
+  .review-controls, #feedback-widget,
+  .btn, button { display: none !important; }
+
+  /* Reset layout */
+  .site-content { margin-left: 0 !important; padding: 0 !important; }
+  .container { max-width: 100% !important; }
+
+  /* Typography for print */
+  body { font-size: 11pt; line-height: 1.6; color: #000; background: #fff; }
+  h1 { font-size: 18pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+
+  /* Links show URL */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  a[href^="http"] { color: #000; text-decoration: underline; }
+
+  /* Tables */
+  table { border-collapse: collapse; }
+  th, td { border: 1px solid #ccc; padding: 4px 8px; }
+
+  /* Page breaks */
+  section { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+
+  /* Figures */
+  img { max-width: 100%; page-break-inside: avoid; }
+}

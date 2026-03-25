@@ -23,7 +23,6 @@
     Cache-Control = "public, max-age=31536000"
 
 [[redirects]]
-  # Redirect any 404s to index.html for single-page app behavior
   from = "/*"
-  to = "/index.html"
+  to = "/404.html"
   status = 404

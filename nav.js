@@ -11,6 +11,20 @@
 (function () {
   'use strict';
 
+  // ── Inject favicon ──
+  var favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="%230a0a0a"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="%23fff">BB</text></svg>');
+  document.head.appendChild(favicon);
+
+  // ── Restore theme preference (early, to prevent flash) ──
+  var storedTheme = null;
+  try { storedTheme = localStorage.getItem('bb_theme'); } catch (e) {}
+  if (storedTheme === 'dark' || storedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', storedTheme);
+  }
+
   // ── Determine path prefix from the script tag's own src ──
   var scripts = document.getElementsByTagName('script');
   var prefix = '';
@@ -121,6 +135,7 @@
     + '<a href="' + p('research/project_master_dossier/index.html') + '" data-page="dossier"' + activeAttr('dossier') + '>dossier</a>'
     + '</div>'
     + '<span class="nav-meta">Houston Golden &middot; gr-qc</span>'
+    + '<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>'
     + '</div></nav>';
 
   // ── Inject into page ──
@@ -193,4 +208,43 @@
       this.parentElement.classList.toggle('open');
     });
   }
+
+  // ── Theme toggle ──
+  function getEffectiveTheme() {
+    var attr = document.documentElement.getAttribute('data-theme');
+    if (attr === 'dark' || attr === 'light') return attr;
+    // No explicit preference — check system
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    return 'light';
+  }
+
+  function updateToggleIcon(btn) {
+    btn.textContent = getEffectiveTheme() === 'dark' ? '\u2600' : '\u263E';
+    btn.title = getEffectiveTheme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  }
+
+  var themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) {
+    updateToggleIcon(themeBtn);
+    themeBtn.addEventListener('click', function () {
+      var current = getEffectiveTheme();
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('bb_theme', next); } catch (e) {}
+      updateToggleIcon(themeBtn);
+    });
+
+    // Update icon if system preference changes (and no manual override)
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        updateToggleIcon(themeBtn);
+      });
+    }
+  }
+
+  // ── Load site search ──
+  var searchScript = document.createElement('script');
+  searchScript.src = prefix + 'search.js';
+  searchScript.defer = true;
+  document.head.appendChild(searchScript);
 })();
