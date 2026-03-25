@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 </head>
 <body>
 <button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
@@ -53,5 +54,15 @@
 <footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 <script>document.querySelectorAll('[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='astro')a.classList.add('active')})</script>
 <script src="/astro/chat-widget.js" defer></script>
-</div></body>
+</div>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
+</body>
 </html>

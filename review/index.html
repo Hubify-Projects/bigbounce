@@ -6,6 +6,7 @@
 <title>Review Hub — BigBounce Research</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 </head>
 <body>
 <button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
@@ -47,27 +48,30 @@
   <h2>Active Pipelines</h2>
 
   <div class="grid-2" style="margin-top: 16px;">
-    <a href="pipeline-b-desi-spectral.html" class="card" style="border-left: 3px solid #16a34a; text-decoration: none; display: block;">
+    <a href="pipeline-b-desi-spectral.html" class="card" data-pipeline="B" style="border-left: 3px solid #16a34a; text-decoration: none; display: block;">
       <h4 style="margin-top:0; font-family:var(--font-sans); color: #166534;">Pipeline B: DESI Spectral Anomaly Miner</h4>
       <p style="font-size:14px; color: var(--text-secondary);">70 objects to review (50 anomalies + 20 QSOs). AI-simulated labels assigned. Click each object to see the sky image, spectrum metadata, and AI reasoning. Add your own notes and labels.</p>
-      <div style="margin-top: 8px;">
+      <div class="pipeline-status" style="margin-top: 8px;">
         <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Status: 11/12 gates &middot; Gate 9: simulated, pending human confirmation</span>
       </div>
     </a>
 
-    <div class="card" style="border-left: 3px solid var(--border); opacity: 0.5;">
+    <div class="card" data-pipeline="A" style="border-left: 3px solid var(--border); opacity: 0.5;">
       <h4 style="margin-top:0; font-family:var(--font-sans); color: var(--text-muted);">Pipeline A: CMB Anomaly Hunter</h4>
       <p style="font-size:14px; color: var(--text-muted);">Not started yet. Will appear here when ready for review.</p>
+      <div class="pipeline-status"></div>
     </div>
 
-    <div class="card" style="border-left: 3px solid var(--border); opacity: 0.5;">
+    <div class="card" data-pipeline="C" style="border-left: 3px solid var(--border); opacity: 0.5;">
       <h4 style="margin-top:0; font-family:var(--font-sans); color: var(--text-muted);">Pipeline C: Polarization Feature Extractor</h4>
       <p style="font-size:14px; color: var(--text-muted);">Not started yet.</p>
+      <div class="pipeline-status"></div>
     </div>
 
-    <div class="card" style="border-left: 3px solid var(--border); opacity: 0.5;">
+    <div class="card" data-pipeline="E" style="border-left: 3px solid var(--border); opacity: 0.5;">
       <h4 style="margin-top:0; font-family:var(--font-sans); color: var(--text-muted);">Pipeline E: Time-Domain Transient Finder</h4>
       <p style="font-size:14px; color: var(--text-muted);">Not started yet.</p>
+      <div class="pipeline-status"></div>
     </div>
   </div>
 </section>
@@ -89,5 +93,53 @@
 <footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 <script>document.querySelectorAll('[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='review')a.classList.add('active')})</script>
 <script src="/astro/chat-widget.js" defer></script>
-</div></body>
+<script>
+// Live pipeline status from Convex (fallback: hardcoded HTML remains)
+(function() {
+  try {
+    var client = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    client.query("pipelineState:all").then(function(pipelines) {
+      if (!pipelines || !pipelines.length) return;
+      pipelines.forEach(function(p) {
+        var card = document.querySelector('[data-pipeline="' + p.pipelineId + '"]');
+        if (!card) return;
+        // Update status line
+        var statusDiv = card.querySelector('.pipeline-status');
+        if (statusDiv && p.status) {
+          var parts = [];
+          if (p.gatesPassed !== undefined && p.gatesTotalCount !== undefined) {
+            parts.push('Status: ' + p.gatesPassed + '/' + p.gatesTotalCount + ' gates');
+          }
+          if (p.status) parts.push(p.status);
+          if (p.lastUpdated) {
+            var d = new Date(p.lastUpdated);
+            parts.push('Updated: ' + d.toLocaleDateString());
+          }
+          statusDiv.innerHTML = '<span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">' + parts.join(' &middot; ') + '</span>';
+        }
+        // If pipeline has become active, update card styling
+        if (p.status && p.status !== 'not_started') {
+          card.style.opacity = '1';
+          if (!card.getAttribute('href') && p.pipelineId === 'A') {
+            card.style.borderLeftColor = '#2563eb';
+          }
+        }
+      });
+    }).catch(function(e) {
+      // Convex unreachable — hardcoded HTML remains as fallback
+    });
+  } catch(e) {}
+})();
+</script>
+</div>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
+</body>
 </html>

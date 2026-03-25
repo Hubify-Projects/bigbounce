@@ -16,6 +16,7 @@ import type * as mcmcStatus from "../mcmcStatus.js";
 import type * as models from "../models.js";
 import type * as pipelineState from "../pipelineState.js";
 import type * as reviews from "../reviews.js";
+import type * as spectralResults from "../spectralResults.js";
 
 import type {
   ApiFromModules,
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   models: typeof models;
   pipelineState: typeof pipelineState;
   reviews: typeof reviews;
+  spectralResults: typeof spectralResults;
 }>;
 
 /**

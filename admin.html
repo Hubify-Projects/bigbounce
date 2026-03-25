@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Spin-Torsion Cosmology Research Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<style>
+/* ── Login Gate ── */
+#login-gate {
+  display: flex; align-items: center; justify-content: center;
+  min-height: calc(100vh - var(--topbar-h));
+  padding: 32px;
+}
+.login-box {
+  width: 100%; max-width: 360px; text-align: center;
+}
+.login-box h2 {
+  font-size: 1.1rem; font-weight: 700; text-transform: none;
+  letter-spacing: -0.02em; font-family: var(--font-sans);
+  border: none; margin-bottom: 8px; color: var(--text);
+}
+.login-box p { font-size: 13px; color: var(--text-tertiary); margin-bottom: 20px; }
+.login-box input[type="password"] {
+  width: 100%; padding: 10px 14px; font-size: 14px;
+  border: 1px solid var(--border); background: var(--bg);
+  font-family: var(--font-mono); color: var(--text);
+  margin-bottom: 12px;
+}
+.login-box input[type="password"]:focus { outline: none; border-color: var(--text); }
+.login-box .login-btn {
+  width: 100%; padding: 10px; font-size: 13px; font-weight: 500;
+  font-family: var(--font-mono); cursor: pointer;
+  background: var(--text); color: var(--bg); border: 1px solid var(--text);
+}
+.login-box .login-btn:hover { opacity: 0.85; }
+.login-error { color: #dc2626; font-size: 12px; margin-top: 8px; display: none; }
+.lock-icon { font-size: 28px; margin-bottom: 12px; opacity: 0.4; }
+
+/* ── Dashboard Layout ── */
+#dashboard { display: none; }
+.dash-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 24px; overflow-x: auto;
+}
+.dash-tab {
+  padding: 10px 20px; font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-muted); background: none; border: none;
+  border-bottom: 2px solid transparent; cursor: pointer;
+  white-space: nowrap; transition: color var(--transition);
+}
+.dash-tab:hover { color: var(--text); }
+.dash-tab.active { color: var(--text); border-bottom-color: var(--text); }
+
+.dash-section { display: none; }
+.dash-section.active { display: block; }
+
+/* ── Stats Bar ── */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 14px 16px; text-align: center;
+}
+.stat-card .val {
+  font-size: 1.5rem; font-weight: 700; font-family: var(--font-mono);
+  color: var(--text); line-height: 1.2; letter-spacing: -0.02em;
+}
+.stat-card .lbl {
+  font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 0.06em; margin-top: 4px; font-family: var(--font-mono);
+}
+
+/* ── Chat Layout ── */
+.chat-layout {
+  display: grid; grid-template-columns: 300px 1fr; gap: 16px;
+  min-height: 500px;
+}
+.session-list {
+  border: 1px solid var(--border); overflow-y: auto; max-height: 600px;
+}
+.session-item {
+  padding: 12px 14px; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background var(--transition);
+  font-family: var(--font-sans);
+}
+.session-item:hover { background: var(--bg-subtle); }
+.session-item.active { background: var(--bg-subtle); border-left: 2px solid var(--text); }
+.session-item .session-preview {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.4;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.session-item .session-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 4px;
+}
+.session-item .session-meta span {
+  font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);
+}
+.session-item .msg-count {
+  background: var(--bg-code); padding: 1px 6px; font-size: 10px;
+  font-family: var(--font-mono); color: var(--text-tertiary);
+}
+
+/* ── Conversation Viewer ── */
+.convo-viewer {
+  border: 1px solid var(--border); padding: 20px; overflow-y: auto;
+  max-height: 600px;
+}
+.convo-viewer .empty-state {
+  text-align: center; padding: 60px 20px; color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 13px;
+}
+.convo-msg { margin-bottom: 16px; }
+.convo-msg .msg-role {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; font-family: var(--font-mono); margin-bottom: 4px;
+}
+.convo-msg .msg-role.role-user { color: #2563eb; }
+.convo-msg .msg-role.role-assistant { color: #16a34a; }
+.convo-msg .msg-content {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+  padding: 10px 14px; border: 1px solid var(--border);
+  background: var(--bg); white-space: pre-wrap; word-break: break-word;
+}
+.convo-msg.user-msg .msg-content { border-left: 2px solid #2563eb; }
+.convo-msg.assistant-msg .msg-content { border-left: 2px solid #16a34a; }
+.convo-msg .msg-time {
+  font-size: 10px; color: var(--text-muted); font-family: var(--font-mono);
+  margin-top: 3px;
+}
+
+/* ── Analytics Section ── */
+.top-pages-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; font-family: var(--font-mono);
+}
+.top-pages-table th {
+  padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+  border-bottom: 1px solid var(--text);
+}
+.top-pages-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.top-pages-table tr:hover td { background: var(--bg-subtle); }
+
+/* ── Activity Feed Manager ── */
+.activity-form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  padding: 20px; border: 1px solid var(--border); margin-bottom: 24px;
+}
+.activity-form .full-width { grid-column: 1 / -1; }
+.activity-form label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--text-tertiary); font-family: var(--font-mono);
+  display: block; margin-bottom: 4px;
+}
+.activity-form input, .activity-form select, .activity-form textarea {
+  width: 100%; padding: 8px 12px; font-size: 13px;
+  border: 1px solid var(--border); background: var(--bg);
+  font-family: var(--font-sans); color: var(--text);
+}
+.activity-form textarea { min-height: 80px; resize: vertical; font-size: 13px; }
+.activity-form input:focus, .activity-form select:focus, .activity-form textarea:focus {
+  outline: none; border-color: var(--text);
+}
+
+.feed-managed-item {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 14px 16px; border: 1px solid var(--border); margin-bottom: 8px;
+  transition: border-color var(--transition);
+}
+.feed-managed-item:hover { border-color: var(--border-strong); }
+.feed-managed-item .feed-managed-info { flex: 1; min-width: 0; }
+.feed-managed-item .feed-managed-title {
+  font-weight: 600; font-size: 14px; color: var(--text);
+  font-family: var(--font-sans);
+}
+.feed-managed-item .feed-managed-date {
+  font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);
+}
+.feed-managed-item .feed-managed-body {
+  font-size: 13px; color: var(--text-secondary); margin-top: 4px;
+  line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.feed-managed-item .feed-managed-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+.feed-managed-item .feed-managed-tags span {
+  font-size: 10px; padding: 1px 6px; font-family: var(--font-mono);
+  border: 1px solid var(--border); color: var(--text-tertiary);
+}
+.delete-btn {
+  background: none; border: 1px solid var(--border); color: var(--text-muted);
+  font-size: 11px; font-family: var(--font-mono); padding: 4px 10px;
+  cursor: pointer; flex-shrink: 0; margin-left: 12px;
+}
+.delete-btn:hover { border-color: #dc2626; color: #dc2626; }
+
+/* ── MCMC Section ── */
+.mcmc-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+}
+.mcmc-card {
+  border: 1px solid var(--border); padding: 16px 20px;
+}
+.mcmc-card .mcmc-dataset {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+  color: var(--text); margin-bottom: 8px;
+}
+.mcmc-card .mcmc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 0; font-size: 13px; font-family: var(--font-sans);
+  color: var(--text-secondary);
+}
+.mcmc-card .mcmc-row .mcmc-label { font-weight: 500; }
+.mcmc-badge {
+  display: inline-block; padding: 2px 8px; font-size: 11px;
+  font-weight: 600; font-family: var(--font-mono);
+}
+.mcmc-badge.converged { color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; }
+.mcmc-badge.not-converged { color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; }
+.mcmc-timestamp {
+  font-size: 10px; color: var(--text-muted); font-family: var(--font-mono);
+  margin-top: 8px;
+}
+
+/* ── Loading / Empty ── */
+.loading-text { color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; padding: 20px 0; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .chat-layout { grid-template-columns: 1fr; }
+  .session-list { max-height: 250px; }
+  .activity-form { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<aside class="sidebar">
+<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="datasets.html" class="sidebar-link">datasets</a>
+<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+</div>
+<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
+<a href="visualize.html" class="sidebar-link" data-page="visualize">visualize</a>
+<a href="contributions.html" class="sidebar-link" data-page="contributions">contributions</a>
+<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="review/index.html" class="sidebar-link" data-page="review">review</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+<a href="admin.html" class="sidebar-link" data-page="admin" style="color:#f59e0b !important;">&#9919; admin</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com<br><a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:var(--text-tertiary);text-decoration:none;font-size:12px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+</aside>
+<div class="topbar">
+<span>March 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>
+<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>
+</div>
+<div class="site-content">
+<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="review/index.html" data-page="review">review</a><a href="chat.html" data-page="astro">astro</a><a href="admin.html" data-page="admin">admin</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden &middot; gr-qc</span></div></nav>
+<main class="wide-container">
+
+<!-- ── Login Gate ── -->
+<div id="login-gate">
+  <div class="login-box">
+    <div class="lock-icon">&#9919;</div>
+    <h2>Admin Dashboard</h2>
+    <p>Enter password to access the admin panel</p>
+    <input type="password" id="login-password" placeholder="password" autocomplete="off" onkeydown="if(event.key==='Enter')attemptLogin()">
+    <button class="login-btn" onclick="attemptLogin()">Authenticate</button>
+    <div class="login-error" id="login-error">Incorrect password</div>
+  </div>
+</div>
+
+<!-- ── Dashboard ── -->
+<div id="dashboard">
+  <div class="hero" style="padding-bottom: 16px;">
+    <h1>admin</h1>
+    <p class="subtitle">Site analytics, chat logs, activity management, and MCMC monitoring</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="dash-tabs">
+    <button class="dash-tab active" data-tab="chat">Chat Messages</button>
+    <button class="dash-tab" data-tab="analytics">Page Analytics</button>
+    <button class="dash-tab" data-tab="activity">Activity Feed</button>
+    <button class="dash-tab" data-tab="mcmc">MCMC Status</button>
+  </div>
+
+  <!-- ════════ Chat Messages ════════ -->
+  <div class="dash-section active" id="tab-chat">
+    <div class="stats-bar" id="chat-stats">
+      <div class="stat-card"><div class="val" id="chat-total">--</div><div class="lbl">Total Messages</div></div>
+      <div class="stat-card"><div class="val" id="chat-today">--</div><div class="lbl">Messages Today</div></div>
+      <div class="stat-card"><div class="val" id="chat-sessions">--</div><div class="lbl">Total Sessions</div></div>
+      <div class="stat-card"><div class="val" id="chat-sessions-today">--</div><div class="lbl">Sessions Today</div></div>
+    </div>
+    <div class="chat-layout">
+      <div class="session-list" id="session-list">
+        <div class="loading-text" style="padding:20px;text-align:center;">Loading sessions...</div>
+      </div>
+      <div class="convo-viewer" id="convo-viewer">
+        <div class="empty-state">Select a session to view the conversation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ Page Analytics ════════ -->
+  <div class="dash-section" id="tab-analytics">
+    <div class="stats-bar" id="analytics-stats">
+      <div class="stat-card"><div class="val" id="analytics-total">--</div><div class="lbl">Total Views</div></div>
+      <div class="stat-card"><div class="val" id="analytics-today">--</div><div class="lbl">Views Today</div></div>
+      <div class="stat-card"><div class="val" id="analytics-week">--</div><div class="lbl">Views This Week</div></div>
+      <div class="stat-card"><div class="val" id="analytics-unique">--</div><div class="lbl">Unique Sessions (7d)</div></div>
+    </div>
+    <h2>Top Pages (Last 7 Days)</h2>
+    <table class="top-pages-table">
+      <thead><tr><th>Page</th><th>Views</th></tr></thead>
+      <tbody id="top-pages-body">
+        <tr><td colspan="2" class="loading-text">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════════ Activity Feed Manager ════════ -->
+  <div class="dash-section" id="tab-activity">
+    <h2>Add Activity Entry</h2>
+    <div class="activity-form" id="activity-form">
+      <div>
+        <label>Type</label>
+        <select id="act-type">
+          <option value="active">Active</option>
+          <option value="positive">Positive</option>
+          <option value="negative">Negative</option>
+          <option value="milestone">Milestone</option>
+        </select>
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="date" id="act-date">
+      </div>
+      <div class="full-width">
+        <label>Title</label>
+        <input type="text" id="act-title" placeholder="Entry title">
+      </div>
+      <div class="full-width">
+        <label>Body</label>
+        <textarea id="act-body" placeholder="Description of the activity..."></textarea>
+      </div>
+      <div class="full-width">
+        <label>Tags (comma-separated, format: label:kind e.g. "MCMC:pass, cosmology:active")</label>
+        <input type="text" id="act-tags" placeholder="tag1:kind1, tag2:kind2">
+      </div>
+      <div class="full-width">
+        <button class="btn btn-primary" onclick="addActivityEntry()">Add Entry</button>
+      </div>
+    </div>
+
+    <h2>Recent Activity</h2>
+    <div id="activity-list">
+      <div class="loading-text">Loading activity feed...</div>
+    </div>
+  </div>
+
+  <!-- ════════ MCMC Status ════════ -->
+  <div class="dash-section" id="tab-mcmc">
+    <h2>Latest Convergence Status</h2>
+    <div class="mcmc-grid" id="mcmc-grid">
+      <div class="loading-text">Loading MCMC status...</div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+</div>
+
+<script>
+// ── Active nav highlighting ──
+document.querySelectorAll('[data-page]').forEach(a => {
+  if (a.getAttribute('data-page') === 'admin') a.classList.add('active');
+});
+
+// ── Password Gate ──
+// SHA-256 hash of "bigbounce2026"
+const PASSWORD_HASH = '5f5231ad2fbe8c2b7741139fd9201361935d28ee2e317e0558383df36c1012f4';
+
+async function sha256(text) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function attemptLogin() {
+  const pw = document.getElementById('login-password').value;
+  const hash = await sha256(pw);
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem('admin_auth', 'true');
+    showDashboard();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+function showDashboard() {
+  document.getElementById('login-gate').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  initDashboard();
+}
+
+// Check session on load
+if (sessionStorage.getItem('admin_auth') === 'true') {
+  showDashboard();
+}
+
+// ── Convex Client ──
+const client = new convex.ConvexHttpClient('https://impressive-quail-879.convex.cloud');
+
+// ── Tab Navigation ──
+document.querySelectorAll('.dash-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Dashboard Initialization ──
+let dashboardInitialized = false;
+function initDashboard() {
+  if (dashboardInitialized) return;
+  dashboardInitialized = true;
+  loadChatStats();
+  loadSessions();
+  loadAnalyticsStats();
+  loadTopPages();
+  loadActivityFeed();
+  loadMCMCStatus();
+
+  // Set default date for activity form
+  document.getElementById('act-date').value = new Date().toISOString().slice(0, 10);
+}
+
+// ── Helpers ──
+function formatTime(ts) {
+  const d = new Date(ts);
+  const now = new Date();
+  const diffMs = now - d;
+  const diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 1) return 'just now';
+  if (diffMin < 60) return diffMin + 'm ago';
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return diffHr + 'h ago';
+  const diffDay = Math.floor(diffHr / 24);
+  if (diffDay < 7) return diffDay + 'd ago';
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function formatTimeFull(ts) {
+  return new Date(ts).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+  });
+}
+
+function escapeHtml(text) {
+  const el = document.createElement('div');
+  el.textContent = text;
+  return el.innerHTML;
+}
+
+// ════════════════════════════════════
+//  CHAT MESSAGES
+// ════════════════════════════════════
+
+async function loadChatStats() {
+  try {
+    const stats = await client.query('chatMessages:stats', {});
+    document.getElementById('chat-total').textContent = stats.totalMessages;
+    document.getElementById('chat-today').textContent = stats.messagesLast24h;
+    document.getElementById('chat-sessions').textContent = stats.totalSessions;
+    document.getElementById('chat-sessions-today').textContent = stats.sessionsToday;
+  } catch (e) {
+    console.error('Failed to load chat stats:', e);
+  }
+}
+
+async function loadSessions() {
+  try {
+    const sessions = await client.query('chatMessages:sessions', { limit: 50 });
+    const list = document.getElementById('session-list');
+    if (sessions.length === 0) {
+      list.innerHTML = '<div class="empty-state" style="padding:30px;">No chat sessions yet</div>';
+      return;
+    }
+    list.innerHTML = sessions.map(s => `
+      <div class="session-item" onclick="loadConversation('${escapeHtml(s.sessionId)}')" data-sid="${escapeHtml(s.sessionId)}">
+        <div class="session-preview">${escapeHtml(s.lastMessage)}</div>
+        <div class="session-meta">
+          <span>${formatTime(s.lastTimestamp)}</span>
+          <span class="msg-count">${s.messageCount} msg${s.messageCount !== 1 ? 's' : ''}</span>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error('Failed to load sessions:', e);
+    document.getElementById('session-list').innerHTML = '<div class="loading-text" style="padding:20px;text-align:center;color:#dc2626;">Failed to load</div>';
+  }
+}
+
+async function loadConversation(sessionId) {
+  // Highlight active session
+  document.querySelectorAll('.session-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.sid === sessionId);
+  });
+
+  const viewer = document.getElementById('convo-viewer');
+  viewer.innerHTML = '<div class="loading-text">Loading conversation...</div>';
+
+  try {
+    const messages = await client.query('chatMessages:bySession', { sessionId });
+    if (messages.length === 0) {
+      viewer.innerHTML = '<div class="empty-state">No messages in this session</div>';
+      return;
+    }
+
+    // Sort by timestamp ascending
+    messages.sort((a, b) => a.timestamp - b.timestamp);
+
+    viewer.innerHTML = messages.map(m => `
+      <div class="convo-msg ${m.role === 'user' ? 'user-msg' : 'assistant-msg'}">
+        <div class="msg-role role-${m.role}">${m.role}</div>
+        <div class="msg-content">${escapeHtml(m.content)}</div>
+        <div class="msg-time">${formatTimeFull(m.timestamp)}</div>
+      </div>
+    `).join('');
+
+    viewer.scrollTop = 0;
+  } catch (e) {
+    console.error('Failed to load conversation:', e);
+    viewer.innerHTML = '<div class="empty-state" style="color:#dc2626;">Failed to load conversation</div>';
+  }
+}
+
+// ════════════════════════════════════
+//  PAGE ANALYTICS
+// ════════════════════════════════════
+
+async function loadAnalyticsStats() {
+  try {
+    const stats = await client.query('analytics:stats', {});
+    document.getElementById('analytics-total').textContent = stats.totalViews;
+    document.getElementById('analytics-today').textContent = stats.viewsLast24h;
+    document.getElementById('analytics-week').textContent = stats.viewsLast7d;
+    document.getElementById('analytics-unique').textContent = stats.uniqueSessionsLast7d;
+  } catch (e) {
+    console.error('Failed to load analytics stats:', e);
+  }
+}
+
+async function loadTopPages() {
+  try {
+    const pages = await client.query('analytics:topPages', { days: 7 });
+    const tbody = document.getElementById('top-pages-body');
+    if (pages.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;color:var(--text-muted);padding:20px;">No page views recorded yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = pages.map(p => `
+      <tr>
+        <td>${escapeHtml(p.path)}</td>
+        <td>${p.count}</td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    console.error('Failed to load top pages:', e);
+    document.getElementById('top-pages-body').innerHTML = '<tr><td colspan="2" style="color:#dc2626;">Failed to load</td></tr>';
+  }
+}
+
+// ════════════════════════════════════
+//  ACTIVITY FEED MANAGER
+// ════════════════════════════════════
+
+async function loadActivityFeed() {
+  try {
+    const items = await client.query('activityFeed:list', { limit: 30 });
+    const container = document.getElementById('activity-list');
+    if (items.length === 0) {
+      container.innerHTML = '<div class="loading-text">No activity entries yet</div>';
+      return;
+    }
+    container.innerHTML = items.map(item => `
+      <div class="feed-managed-item">
+        <div class="feed-managed-info">
+          <div class="feed-managed-date">${escapeHtml(item.date)} &middot; ${item.type}</div>
+          <div class="feed-managed-title">${escapeHtml(item.title)}</div>
+          <div class="feed-managed-body">${escapeHtml(item.body)}</div>
+          ${item.tags && item.tags.length > 0 ? `
+            <div class="feed-managed-tags">
+              ${item.tags.map(t => `<span>${escapeHtml(t.label)}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+        <button class="delete-btn" onclick="deleteActivity('${item._id}')">delete</button>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error('Failed to load activity feed:', e);
+    document.getElementById('activity-list').innerHTML = '<div class="loading-text" style="color:#dc2626;">Failed to load activity feed</div>';
+  }
+}
+
+async function addActivityEntry() {
+  const type = document.getElementById('act-type').value;
+  const date = document.getElementById('act-date').value;
+  const title = document.getElementById('act-title').value.trim();
+  const body = document.getElementById('act-body').value.trim();
+  const tagsRaw = document.getElementById('act-tags').value.trim();
+
+  if (!title || !body) {
+    alert('Title and body are required.');
+    return;
+  }
+
+  const tags = tagsRaw
+    ? tagsRaw.split(',').map(t => {
+        const parts = t.trim().split(':');
+        return { label: parts[0] || t.trim(), kind: parts[1] || 'active' };
+      })
+    : [];
+
+  try {
+    await client.mutation('activityFeed:add', { type, date, title, body, tags });
+    // Clear form
+    document.getElementById('act-title').value = '';
+    document.getElementById('act-body').value = '';
+    document.getElementById('act-tags').value = '';
+    // Reload
+    loadActivityFeed();
+  } catch (e) {
+    console.error('Failed to add activity entry:', e);
+    alert('Failed to add entry: ' + e.message);
+  }
+}
+
+async function deleteActivity(id) {
+  if (!confirm('Delete this activity entry?')) return;
+  try {
+    await client.mutation('activityFeed:remove', { id });
+    loadActivityFeed();
+  } catch (e) {
+    console.error('Failed to delete activity:', e);
+    alert('Failed to delete: ' + e.message);
+  }
+}
+
+// ════════════════════════════════════
+//  MCMC STATUS
+// ════════════════════════════════════
+
+async function loadMCMCStatus() {
+  try {
+    const statuses = await client.query('mcmcStatus:latest', {});
+    const grid = document.getElementById('mcmc-grid');
+    if (statuses.length === 0) {
+      grid.innerHTML = '<div class="loading-text">No MCMC status records yet</div>';
+      return;
+    }
+    grid.innerHTML = statuses.map(s => {
+      const rhatDisplay = typeof s.rhat === 'object' ? JSON.stringify(s.rhat) : s.rhat;
+      const essDisplay = typeof s.ess === 'object' ? JSON.stringify(s.ess) : s.ess;
+      return `
+        <div class="mcmc-card">
+          <div class="mcmc-dataset">${escapeHtml(s.dataset)}</div>
+          <div class="mcmc-row">
+            <span class="mcmc-label">Converged</span>
+            <span class="mcmc-badge ${s.converged ? 'converged' : 'not-converged'}">
+              ${s.converged ? 'YES' : 'NO'}
+            </span>
+          </div>
+          <div class="mcmc-row">
+            <span class="mcmc-label">R-hat</span>
+            <span style="font-family:var(--font-mono);font-size:12px;">${escapeHtml(String(rhatDisplay))}</span>
+          </div>
+          <div class="mcmc-row">
+            <span class="mcmc-label">ESS</span>
+            <span style="font-family:var(--font-mono);font-size:12px;">${escapeHtml(String(essDisplay))}</span>
+          </div>
+          <div class="mcmc-timestamp">${formatTimeFull(s.timestamp)}</div>
+        </div>
+      `;
+    }).join('');
+  } catch (e) {
+    console.error('Failed to load MCMC status:', e);
+    document.getElementById('mcmc-grid').innerHTML = '<div class="loading-text" style="color:#dc2626;">Failed to load MCMC status</div>';
+  }
+}
+</script>
+</body>
+</html>
