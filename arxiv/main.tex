@@ -42,8 +42,8 @@
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
-\newcommand{\paperVersion}{v2.1.0}
-\newcommand{\paperTimestamp}{2026-03-21}
+\newcommand{\paperVersion}{v2.2.0}
+\newcommand{\paperTimestamp}{2026-03-25}
 
 \begin{document}
 
@@ -56,7 +56,7 @@ Structural Barriers, Perturbation Transparency, and Surviving Predictions}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 21, 2026 --- \paperVersion}
+\date{March 25, 2026 --- \paperVersion}
 
 \begin{abstract}
 We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. Within this framework, LQC holonomy corrections yield a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27$--$0.41\,\rho_{\rm Pl}$ (depending on the entropy-counting scheme for the Barbero-Immirzi parameter), while the ECH parity structure generates a unique four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 424{,}181 samples across three dataset combinations, two frozen) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
@@ -466,7 +466,7 @@ Recent developments in bounce cosmology include: Cai \& Zhu~\cite{Cai:2026echoes
 %% ============================================================
 \section{Structural Barriers to First-Principles Dark Energy}\label{sec:barriers}
 
-We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional observational channels (Branches H--O, plus the ECH perturbation gates) for the possibility of connecting the bounce to late-time dark energy or producing distinctive observable signatures. Each test yielded a named structural barrier.
+We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional observational channels (Branches H--O, plus the ECH perturbation gates) for the possibility of connecting the ECH bounce to late-time dark energy or producing distinctive observable signatures within the minimal Einstein-Cartan-Holst framework. Each test yielded a named structural barrier. These barriers are specific to the ECH mechanism class; other bounce cosmologies using different physics (e.g., quintom scenarios with phantom fields) are not subject to these constraints.
 
 \begin{table*}[tb]
 \centering
@@ -731,7 +731,7 @@ The Cuscuton maintains perturbative control throughout the bounce, with the stro
 
 \textit{PBH channel.}---Papanikolaou \etal~\cite{Papanikolaou:2024pbh} showed that an \emph{asymmetric} matter bounce ($w = 0 \to w = 1/3$ transition during the bounce, $H_{\pm} \sim 10^{-10}\,\MPl$) can produce asteroid-mass primordial black holes ($10^{17}\text{--}10^{24}$~g) through curvature perturbation enhancement, with induced gravitational waves detectable by LISA and ET. This mechanism is incompatible with the symmetric Planck-scale LQC bounce used in this work (the transfer function satisfies $T(k) \approx 1$ by time-reversal symmetry), but demonstrates that bounce cosmology broadly offers testable predictions across multiple observational channels.
 
-\textit{Discrimination table.}---Table~\ref{tab:bounce_disc} summarizes the $\fnl$ predictions. Among nonsingular bouncing cosmologies, the matter bounce is the \emph{only} model with a parameter-free, detectable, and falsifiable $\fnl$ prediction. SPHEREx ($\sigma(\fnl^{\rm local}) \approx 0.8$--$2$) will simultaneously test the matter bounce prediction, rule out slow-roll inflation degeneracy, and distinguish from the Cuscuton bounce.
+\textit{Discrimination table.}---Table~\ref{tab:bounce_disc} summarizes the $\fnl$ predictions. The matter-bounce bispectrum prediction is not a generic feature of all nonsingular bounces---it is a uniquely falsifiable signature of the dust-dominated contraction lane. Among nonsingular bouncing cosmologies, the matter bounce is the \emph{only} model with a parameter-free, detectable, and falsifiable $\fnl$ prediction. SPHEREx ($\sigma(\fnl^{\rm local}) \approx 0.8$--$2$) will simultaneously test the matter bounce prediction, rule out slow-roll inflation degeneracy, and distinguish from the Cuscuton bounce.
 
 \begin{table}[t]
 \caption{\label{tab:bounce_disc} Discrimination among bouncing cosmologies via $\fnl$. SPHEREx sensitivity: $\sigma(\fnl^{\rm local}) \approx 0.8\text{--}2$.}
@@ -998,7 +998,7 @@ We have investigated whether Einstein-Cartan-Holst spin-torsion gravity can prod
 
 This framework motivates dark energy from quantum gravitational effects in spin-torsion cosmology. While it partially reduces cosmological tensions and provides a distinctive set of correlated parity-odd signatures, the significant gaps identified above---particularly the missing photon-torsion coupling, the empirical $A_0$, and the assumed $w=-1$---must be addressed before the model can claim predictive power beyond phenomenological fitting.
 
-\textit{Structural barriers and perturbation transparency.}---Systematic analysis across 7 foundations and 17+ branches established 14 independent structural barriers that close all standard routes from the bounce to dark energy \emph{within the minimal ECH framework} (Sec.~\ref{sec:barriers}). These barriers are ECH-specific: other bouncing cosmologies---notably the quintom scenario, which uses dynamical phantom and quintessence fields rather than geometric torsion---can in principle unify the bounce with late-time dark energy through mechanisms that bypass all 14 barriers. DESI DR2 evidence for equation-of-state crossing at $4.2\sigma$ lends empirical support to such models. The central result of this work is the perturbation-transparency theorem (Sec.~\ref{sec:transparency}): minimal ECH gravity is dynamically inert for scalar and tensor perturbations when the matter content is a canonical scalar field. The observable science case for the bounce therefore rests on generic, mechanism-independent predictions, principally the matter-bounce non-Gaussianity $\fnl = -35/8$~\cite{Cai:2009fn}, testable by SPHEREx at $4$--$6\sigma$ significance through the multi-tracer galaxy bispectrum~\cite{Heinrich:2023}. This prediction discriminates the matter bounce from both slow-roll inflation ($\fnl \approx 0.04$) and other bouncing cosmologies such as the Cuscuton bounce ($\fnl \approx 0$; Ref.~\cite{Dehghani:2025cusc}; Table~\ref{tab:bounce_disc}). See the focused forecast paper~\cite{Golden:2026forecast} for the full Bayesian discrimination analysis.
+\textit{Structural barriers and perturbation transparency.}---Systematic analysis across 7 foundations and 17+ branches established 14 independent structural barriers that close all standard routes from the bounce to dark energy \emph{within the minimal ECH framework} (Sec.~\ref{sec:barriers}). These barriers are ECH-specific: other bouncing cosmologies---notably the quintom scenario, which uses dynamical phantom and quintessence fields rather than geometric torsion---can in principle unify the bounce with late-time dark energy through mechanisms that bypass all 14 barriers. DESI DR2 evidence for equation-of-state crossing at $3.1$--$4.2\sigma$ (dataset-dependent~\cite{DESI2025DR2}) lends empirical support to such models. The central result of this work is the perturbation-transparency theorem (Sec.~\ref{sec:transparency}): minimal ECH gravity is dynamically inert for scalar and tensor perturbations when the matter content is a canonical scalar field. The observable science case for the bounce therefore rests on generic, mechanism-independent predictions, principally the matter-bounce non-Gaussianity $\fnl = -35/8$~\cite{Cai:2009fn}, testable by SPHEREx at $4$--$6\sigma$ significance through the multi-tracer galaxy bispectrum~\cite{Heinrich:2023}. This prediction discriminates the matter bounce from both slow-roll inflation ($\fnl \approx 0.04$) and other bouncing cosmologies such as the Cuscuton bounce ($\fnl \approx 0$; Ref.~\cite{Dehghani:2025cusc}; Table~\ref{tab:bounce_disc}). See the focused forecast paper~\cite{Golden:2026forecast} for the full Bayesian discrimination analysis.
 
 \textit{Supplementary materials.}---Interactive data visualizations and observational comparison charts are available at \url{https://bigbounce.hubify.app}~\cite{BigBounceWebsite}.
 

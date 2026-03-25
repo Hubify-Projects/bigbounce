@@ -35,7 +35,7 @@ Papanikolaou (April 2025, arXiv:2504.11641) showed that the induced GW spectrum 
 | Galaxy bispectrum f_NL | Matter bounce | f_NL = -35/8 (parameter-free) | SPHEREx | ~2028 | **FLAGSHIP** |
 | PBH dark matter | Asymmetric matter bounce | Asteroid-mass PBHs, f_PBH ~ 0.001-1 | LISA, microlensing | ~2035 | Viable |
 | Induced GW spectrum | Matter bounce → PBH | f^2 IR scaling, gamma = 3 | NANOGrav/PTA | NOW | **1σ consistent** |
-| Bounce → DE unification | Quintom bounce | w(z) crosses -1 | DESI DR2 | NOW | **4.2σ evidence** |
+| Bounce → DE unification | Quintom bounce | w(z) crosses -1 | DESI DR2 | NOW | **2.8–4.2σ** |
 | GW echoes | Ekpyrotic bounce (GUT-scale) | Oscillatory Ω_GW | CE/ET | ~2035 | Conditional |
 | Perturbative safety | Cuscuton bounce | No strong coupling | (theoretical) | Complete | Supporting |
 

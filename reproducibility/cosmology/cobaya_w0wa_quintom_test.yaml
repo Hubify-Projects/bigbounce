@@ -1,0 +1,139 @@
+# Cobaya configuration: w0-wa CPL dark energy test (quintom crossing)
+# Project: Golden (2026), BigBounce — DESI DR2 quintom-B test
+# Model: wCDM (CPL parameterization) — w(a) = w0 + wa*(1-a)
+#
+# Motivation: DESI DR2 reports 4.2-sigma evidence for w(z) crossing -1
+# (quintom-B behavior: w0 > -1, w0+wa < -1). This is exactly what the
+# quintom bounce predicts. Our prior MCMC tested Delta_Neff but NOT
+# the dark energy equation of state. This config fills that gap.
+#
+# Key question: Does the Planck+BAO+SN posterior independently confirm
+# the DESI DR2 quintom-B signal (w0 = -0.752 +/- 0.070, wa = -1.01 +/- 0.30)?
+#
+# Run: cobaya-run cobaya_w0wa_quintom_test.yaml
+# Prereqs: pip install cobaya==3.5.4 && cobaya-install cosmo -p ./packages
+#
+# NOTE: This uses standard CAMB's dark_energy_model = ppf (parameterized
+# post-Friedmann) which handles w-crossing correctly. No custom code needed.
+
+likelihood:
+  # --- CMB: Planck 2018 NPIPE ---
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_NPIPE_highl_CamSpec.TTTEEE:
+  planck_2018_lensing.clik:
+  # --- BAO: SDSS DR16 ---
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr16_baoplus_lrg:
+  bao.sdss_dr16_baoplus_qso:
+  bao.sdss_dr16_baoplus_lyauto:
+  bao.sdss_dr16_baoplus_lyxqso:
+  # --- Supernovae: Pantheon+ ---
+  sn.pantheonplus:
+
+theory:
+  camb:
+    path: null
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      theta_H0_range: [40, 100]
+      # CPL dark energy with PPF crossing handler
+      dark_energy_model: ppf
+      # w0 and wa are passed automatically from sampled params below
+
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_tries: 40d
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    oversample_power: 0.4
+    drag: true
+
+params:
+  # --- Standard LCDM parameters ---
+  logA:
+    prior: {min: 1.61, max: 3.91}
+    ref: {dist: norm, loc: 3.044, scale: 0.014}
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  As:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  ns:
+    prior: {min: 0.8, max: 1.2}
+    ref: {dist: norm, loc: 0.9649, scale: 0.0042}
+    proposal: 0.002
+    latex: n_s
+  theta_MC_100:
+    prior: {min: 0.5, max: 10}
+    ref: {dist: norm, loc: 1.04092, scale: 0.00031}
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: "lambda theta_MC_100: 1.e-2*theta_MC_100"
+    derived: false
+  H0:
+    latex: H_0 \; [\mathrm{km/s/Mpc}]
+    min: 40
+    max: 100
+  ombh2:
+    prior: {min: 0.005, max: 0.1}
+    ref: {dist: norm, loc: 0.02237, scale: 0.00015}
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omch2:
+    prior: {min: 0.001, max: 0.99}
+    ref: {dist: norm, loc: 0.1200, scale: 0.0012}
+    proposal: 0.0005
+    latex: \Omega_c h^2
+  tau:
+    prior: {min: 0.01, max: 0.8}
+    ref: {dist: norm, loc: 0.054, scale: 0.007}
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
+
+  # --- CPL dark energy equation of state ---
+  # w(a) = w0 + wa*(1-a), or equivalently w(z) = w0 + wa*z/(1+z)
+  # Quintom-B crossing: w0 > -1 at z=0, but w crosses -1 at higher z
+  w:
+    prior: {min: -2.5, max: -0.3}
+    ref: {dist: norm, loc: -0.85, scale: 0.1}
+    proposal: 0.03
+    latex: w_0
+  wa:
+    prior: {min: -3.0, max: 2.0}
+    ref: {dist: norm, loc: -0.6, scale: 0.3}
+    proposal: 0.08
+    latex: w_a
+
+  # --- Derived parameters ---
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)"
+    latex: S_8
+  omegam:
+    latex: \Omega_m
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+  # Quintom diagnostic: w at the pivot redshift z=0.5
+  w_pivot:
+    derived: "lambda w, wa: w + wa*(1.0 - 1.0/1.5)"
+    latex: w(z{=}0.5)
+  # Crossing redshift: z_c where w(z_c) = -1
+  # w(z) = w0 + wa*z/(1+z) = -1  =>  z_c = -(1+w0)/(wa + 1 + w0)
+  # Only valid when wa != 0 and result is positive
+  w0_plus_wa:
+    derived: "lambda w, wa: w + wa"
+    latex: w_0 + w_a
+
+output: chains/w0wa_quintom/spin_torsion
