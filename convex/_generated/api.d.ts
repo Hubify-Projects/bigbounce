@@ -8,7 +8,11 @@
  * @module
  */
 
+import type * as activityFeed from "../activityFeed.js";
+import type * as analytics from "../analytics.js";
+import type * as chatMessages from "../chatMessages.js";
 import type * as checklist from "../checklist.js";
+import type * as mcmcStatus from "../mcmcStatus.js";
 import type * as models from "../models.js";
 import type * as pipelineState from "../pipelineState.js";
 import type * as reviews from "../reviews.js";
@@ -20,7 +24,11 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  activityFeed: typeof activityFeed;
+  analytics: typeof analytics;
+  chatMessages: typeof chatMessages;
   checklist: typeof checklist;
+  mcmcStatus: typeof mcmcStatus;
   models: typeof models;
   pipelineState: typeof pipelineState;
   reviews: typeof reviews;

@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' };
 
+const CONVEX_URL = 'https://impressive-quail-879.convex.cloud';
+
 // ── System Prompt ──
 function getSystemPrompt(pageContext) {
   const currentPage = pageContext
@@ -57,6 +59,42 @@ Systematically tested every minimal route from bounce to dark energy across 7 fo
 Houston Golden, Independent Researcher (houston@hubify.com)`;
 }
 
+// ── IP Hashing (non-reversible, privacy-safe) ──
+function hashIP(ip) {
+  let h = 0x9e3779b9;
+  for (let i = 0; i < ip.length; i++) {
+    h ^= ip.charCodeAt(i);
+    h = (h << 5) | (h >>> 27);
+    h = Math.imul(h, 0x5bd1e995);
+    h ^= h >>> 15;
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+// ── Session ID: hash of IP + daily salt ──
+function makeSessionId(ip) {
+  const daySalt = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const raw = ip + ':' + daySalt;
+  let h = 0x811c9dc5;
+  for (let i = 0; i < raw.length; i++) {
+    h ^= raw.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+// ── Convex Logging (fire-and-forget) ──
+function logToConvex(args) {
+  fetch(`${CONVEX_URL}/api/mutation`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      path: 'chatMessages:log',
+      args: args,
+    }),
+  }).catch(() => {});
+}
+
 // ── Rate Limiter ──
 const rateLimits = new Map();
 const RATE_LIMIT = 20;
@@ -110,6 +148,26 @@ export default async function handler(request) {
     content: String(m.content).slice(0, 4000)
   }));
 
+  // ── Generate session ID and IP hash for logging ──
+  const sessionId = makeSessionId(ip);
+  const ipHash = hashIP(ip);
+  const pageCtx = pageContext
+    ? { title: pageContext.title || undefined, path: pageContext.path || undefined }
+    : undefined;
+
+  // ── Log the user message (fire-and-forget) ──
+  const lastUserMsg = sanitized.filter(m => m.role === 'user').pop();
+  if (lastUserMsg) {
+    logToConvex({
+      sessionId,
+      role: 'user',
+      content: lastUserMsg.content,
+      pageContext: pageCtx,
+      ipHash,
+      timestamp: Date.now(),
+    });
+  }
+
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
     return new Response(JSON.stringify({ error: 'OPENROUTER_API_KEY not configured' }), {
@@ -150,6 +208,9 @@ export default async function handler(request) {
     const decoder = new TextDecoder();
     const reader = orResponse.body.getReader();
 
+    // Accumulate assistant response for logging
+    let assistantText = '';
+
     const readable = new ReadableStream({
       async start(controller) {
         let buffer = '';
@@ -171,6 +232,7 @@ export default async function handler(request) {
                 const parsed = JSON.parse(data);
                 const text = parsed.choices?.[0]?.delta?.content;
                 if (text) {
+                  assistantText += text;
                   controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text })}\n\n`));
                 }
               } catch {}
@@ -178,6 +240,18 @@ export default async function handler(request) {
           }
           controller.enqueue(encoder.encode('data: [DONE]\n\n'));
           controller.close();
+
+          // ── Log the assistant response (fire-and-forget) ──
+          if (assistantText) {
+            logToConvex({
+              sessionId,
+              role: 'assistant',
+              content: assistantText.slice(0, 10000),
+              pageContext: pageCtx,
+              ipHash,
+              timestamp: Date.now(),
+            });
+          }
         } catch (err) {
           controller.enqueue(encoder.encode(`data: ${JSON.stringify({ error: err.message })}\n\n`));
           controller.close();
