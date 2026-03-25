@@ -1,0 +1,162 @@
+[
+  {
+    "targetid": 39633555847905489,
+    "ra": 180.06568250331472,
+    "dec": 80.84924410381518,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39627665157658710,
+    "ra": 67.91616881203309,
+    "dec": -5.0861767586447915,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 616089274034422391,
+    "ra": 145.2839051683573,
+    "dec": 32.0065129386919,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633296988047544,
+    "ra": 179.3998862010822,
+    "dec": 53.37479452368237,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633282291204769,
+    "ra": 178.4540548861623,
+    "dec": 52.32684675190664,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633296895773069,
+    "ra": 170.2619650515452,
+    "dec": 53.16958040237005,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633485668812699,
+    "ra": 213.02433831203265,
+    "dec": 69.43781426209436,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633558586787943,
+    "ra": 135.91204848941211,
+    "dec": 81.54164258908457,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633165249151966,
+    "ra": 100.09522845389444,
+    "dec": 44.877685474563236,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633139173164346,
+    "ra": 99.34872803350552,
+    "dec": 43.49667912061804,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633328785066757,
+    "ra": 179.48386071000252,
+    "dec": 55.45364363075736,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633076048889192,
+    "ra": 114.32844138912661,
+    "dec": 40.022456576060925,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633501649111725,
+    "ra": 168.01415131105267,
+    "dec": 71.58943048990854,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633335592422861,
+    "ra": 177.31344016559427,
+    "dec": 56.0844715942535,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633289706737241,
+    "ra": 181.59582201899457,
+    "dec": 52.7111903156375,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633293284476775,
+    "ra": 173.14572836323353,
+    "dec": 53.068244090182574,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633263488141603,
+    "ra": 179.85448679932676,
+    "dec": 50.96165741661699,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39627067007965716,
+    "ra": 60.30002111837843,
+    "dec": -31.193961269943394,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39628516584587684,
+    "ra": 144.84919777523973,
+    "dec": 31.753607455219992,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  },
+  {
+    "targetid": 39633314813841448,
+    "ra": 173.95291676474585,
+    "dec": 54.52398677509226,
+    "sdss_matches": -1,
+    "in_sdss": null,
+    "note": "Query failed: HTTP Error 500: InternalServerError"
+  }
+]
