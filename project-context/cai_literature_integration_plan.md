@@ -122,10 +122,45 @@ These papers need to be added to `arxiv/references.bib`:
 
 ## Success Criteria
 
-- [ ] Cuscuton f_NL extracted and added to Paper 2 discrimination table
-- [ ] PBH channel viability assessed (quick-kill T(k) computation scoped)
-- [ ] GW echo mechanism tested against Barrier 12
-- [ ] Quintom bounce f_NL status determined
-- [ ] All 6 bibliography entries added to references.bib
-- [ ] Website updated (contributions.html author fix done, any new findings reflected)
-- [ ] Activity page updated with literature audit event
+- [x] Cuscuton f_NL extracted and added to Paper 2 discrimination table — **DONE: negligible f_NL, novel shape, validates our discrimination argument**
+- [x] PBH channel viability assessed — **DONE: downgraded to <1% for LQC bounce (energy scale mismatch, symmetric bounce, EOS transition timing)**
+- [x] GW echo mechanism tested against Barrier 12 — **DONE: CONDITIONAL, requires GUT-scale + ekpyrotic. Does NOT apply to our ECH/LQC/matter bounce models. Barrier 12 holds.**
+- [x] Quintom bounce f_NL status determined — **DONE: ZERO computed f_NL in any quintom bounce model. No head-to-head comparison possible.**
+- [x] All 6 bibliography entries added to references.bib — **DONE**
+- [x] Website updated — **DONE: contributions.html author fix (3 instances), distinctiveness_audit fix, 06_fNL_estimate fix**
+- [x] Activity page updated with literature audit event — **DONE**
+
+---
+
+## Results Summary (2026-03-24)
+
+### Track 1: Cuscuton Bounce (Dehghani+ 2025)
+- f_NL is **essentially zero** on observable scales (suppressed by ~50 orders of magnitude)
+- Bispectrum has a novel shape (not local, equilateral, or folded)
+- Strong coupling is controlled (c_s >= 1 through bounce)
+- Evades no-go theorem because cuscuton is non-dynamical
+- **Footnote 26 explicitly supports our perturbation-transparency claim**
+- **Strategic value: HIGH** — ideal foil for Paper 2 discrimination table
+
+### Track 2: PBH Channel (Papanikolaou+ 2024)
+- Uses generic LOW-ENERGY parametrized bounce (H ~ 10^{-10} M_Pl), not LQC
+- Three fatal incompatibilities with our Model B:
+  1. Energy scale: Planck-scale bounce -> Planck-mass PBHs (evaporate in 10^{-43} s)
+  2. Bounce symmetry: symmetric bounce -> T(k) ~ 1 (no enhancement)
+  3. EOS transition: must occur DURING bounce, ours occurs AFTER
+- **Channel A downgraded from 30-50% to <1%**
+- Program remains single-point-of-failure: f_NL = -35/8 only
+
+### Track 3: GW Echoes (Cai & Zhu 2026)
+- Echoes provide ZERO amplitude enhancement — purely spectral shape modulation
+- Detectable signal requires: GUT-scale contraction + ekpyrotic EOS + tachyonic amplification
+- ECH bounce: NO (radiation contraction w=1/3 -> single-peak potential, no echoes)
+- Matter bounce (Branch V): NO (w_c=0 fails ekpyrotic requirement)
+- **Barrier 12 holds for all our models**
+
+### Track 4: Quintom Bounce (Cai 2025 review)
+- Three quintom bounce examples + cyclic universe, NONE compute f_NL
+- None of our 14 barriers apply (all ECH-specific, quintom uses phantom fields)
+- Quintom advantage: bounce-DE unification (DESI DR2 supports w-crossing at 4+ sigma)
+- Our advantage: parameter-free early-universe prediction
+- **Strategic: complement with competitive asymmetry, not direct competitor**
