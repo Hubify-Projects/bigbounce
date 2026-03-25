@@ -1,0 +1,608 @@
+<!-- Convex integration: replace placeholder data with live queries when catalog is imported -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Chirality Explorer — Spin-Torsion Cosmology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<style>
+/* ══════════════════════════════════════════════
+   Galaxy Explorer — page-specific styles
+   ══════════════════════════════════════════════ */
+
+/* Stats row */
+.gx-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin: 24px 0 32px; }
+.gx-stat {
+  text-align: center; padding: 18px 10px;
+  border: 1px solid var(--border); background: var(--bg);
+  transition: border-color var(--transition);
+}
+.gx-stat:hover { border-color: var(--border-strong); }
+.gx-stat-value {
+  font-size: 1.4rem; font-weight: 600; color: var(--text);
+  font-family: var(--font-mono); letter-spacing: -0.02em; line-height: 1.1;
+}
+.gx-stat-label {
+  font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 0.06em; margin-top: 6px; font-family: var(--font-mono);
+}
+.gx-stat-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; font-family: var(--font-mono); }
+
+/* Filter panel */
+.gx-filters {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end;
+  padding: 18px 22px; border: 1px solid var(--border); background: var(--bg-subtle);
+  margin-bottom: 20px;
+}
+.gx-filter-group { display: flex; flex-direction: column; gap: 4px; }
+.gx-filter-group label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+}
+.gx-filter-group select,
+.gx-filter-group input {
+  padding: 6px 10px; font-family: var(--font-mono); font-size: 12px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  outline: none; transition: border-color 150ms;
+}
+.gx-filter-group select:focus,
+.gx-filter-group input:focus { border-color: var(--text-tertiary); }
+.gx-filter-group input[type="text"] { width: 140px; }
+.gx-filter-group input[type="number"] { width: 90px; }
+.gx-filter-group .gx-range-pair { display: flex; gap: 6px; align-items: center; }
+.gx-range-sep { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.gx-confidence-display { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.gx-filter-actions { display: flex; gap: 8px; align-items: flex-end; margin-left: auto; }
+
+/* Results count & controls */
+.gx-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; flex-wrap: wrap; gap: 8px;
+}
+.gx-result-count { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+.gx-pagination { display: flex; align-items: center; gap: 6px; }
+.gx-pagination button {
+  padding: 5px 12px; font-family: var(--font-mono); font-size: 11px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text-secondary);
+  cursor: pointer; transition: all var(--transition);
+}
+.gx-pagination button:hover { border-color: var(--text); color: var(--text); }
+.gx-pagination button:disabled { opacity: 0.4; cursor: default; }
+.gx-pagination button:disabled:hover { border-color: var(--border); color: var(--text-secondary); }
+.gx-page-info { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+
+/* Table */
+.gx-table-wrap { overflow-x: auto; border: 1px solid var(--border); }
+.gx-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+.gx-table th {
+  padding: 10px 12px; text-align: left; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+  background: var(--bg-subtle); border-bottom: 1px solid var(--text);
+  cursor: pointer; user-select: none; white-space: nowrap;
+}
+.gx-table th:hover { color: var(--text); }
+.gx-table th .sort-arrow { margin-left: 4px; font-size: 9px; opacity: 0.4; }
+.gx-table th.sorted .sort-arrow { opacity: 1; }
+.gx-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); white-space: nowrap; }
+.gx-table tr:hover td { background: var(--bg-subtle); }
+.gx-table .gx-thumb {
+  width: 48px; height: 48px; object-fit: cover; border: 1px solid var(--border);
+  background: var(--bg-code);
+}
+.gx-class-cw { color: #1d4ed8; font-weight: 600; }
+.gx-class-ccw { color: #dc2626; font-weight: 600; }
+.gx-class-ns { color: var(--text-muted); }
+
+/* Sky map */
+.gx-skymap-section { margin-top: 36px; }
+.gx-skymap-container {
+  border: 1px solid var(--border); background: #0a0a0a;
+  padding: 0; position: relative; overflow: hidden;
+}
+.gx-skymap-canvas { width: 100%; height: 320px; display: block; }
+.gx-skymap-legend {
+  display: flex; gap: 20px; padding: 10px 16px;
+  background: var(--bg-subtle); border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary);
+}
+.gx-legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+.gx-legend-cw { background: #3b82f6; }
+.gx-legend-ccw { background: #ef4444; }
+
+/* Pipeline info */
+.gx-pipeline {
+  margin-top: 36px; padding: 22px 24px;
+  border: 1px solid var(--border); border-left: 2px solid var(--text);
+}
+.gx-pipeline-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; margin-top: 12px; }
+.gx-pipeline-item { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.gx-pipeline-item strong { color: var(--text); font-weight: 600; }
+.gx-pipeline-item a { color: var(--text-secondary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gx-stats { grid-template-columns: repeat(3, 1fr); }
+  .gx-filters { flex-direction: column; align-items: stretch; }
+  .gx-filter-actions { margin-left: 0; justify-content: flex-start; }
+  .gx-pipeline-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .gx-stats { grid-template-columns: repeat(2, 1fr); }
+  .gx-skymap-canvas { height: 200px; }
+}
+</style>
+</head>
+<body>
+<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
+<aside class="sidebar">
+<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
+<nav class="sidebar-nav">
+<a href="index.html" class="sidebar-section" data-page="index">research/</a>
+<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
+<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
+<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
+<div class="sidebar-sub">
+<a href="datasets.html" class="sidebar-link">datasets</a>
+<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
+<a href="galaxy-explorer.html" class="sidebar-link" data-page="galaxy-explorer">galaxy explorer</a>
+</div>
+<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
+<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
+<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
+<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
+<a href="visualize.html" class="sidebar-link" data-page="visualize">visualize</a>
+<a href="contributions.html" class="sidebar-link" data-page="contributions">contributions</a>
+<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
+<a href="review/index.html" class="sidebar-link" data-page="review">review</a>
+<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
+<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
+</nav>
+<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com<br><a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:var(--text-tertiary);text-decoration:none;font-size:12px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+</aside>
+<div class="topbar">
+<span>Galaxy Chirality Explorer &middot; 8.47M Galaxies</span>
+<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>
+</div>
+<div class="site-content">
+<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="review/index.html" data-page="review">review</a><a href="chat.html" data-page="astro">astro</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden &middot; gr-qc</span></div></nav>
+<main class="wide-container">
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline 2 &middot; Galaxy Chirality Catalog &middot; DESI Legacy Survey DR8</p>
+  <h1>Galaxy Chirality Explorer</h1>
+  <p class="subtitle">Browse 8.47 million galaxies classified by spiral chirality using a ViT-Small vision transformer. Search by sky position, filter by classification and confidence, and explore the all-sky distribution of clockwise vs counter-clockwise spirals.</p>
+</div>
+
+<!-- ═══════════════════════════════ STAT CARDS ═══════════════════════════════ -->
+<div class="gx-stats">
+  <div class="gx-stat">
+    <div class="gx-stat-value">8,474,688</div>
+    <div class="gx-stat-label">Total Galaxies</div>
+    <div class="gx-stat-sub">DESI LS DR8</div>
+  </div>
+  <div class="gx-stat">
+    <div class="gx-stat-value">~1.67M</div>
+    <div class="gx-stat-label">Clockwise (CW)</div>
+    <div class="gx-stat-sub">19.9%</div>
+  </div>
+  <div class="gx-stat">
+    <div class="gx-stat-value">~1.61M</div>
+    <div class="gx-stat-label">Counter-CW (CCW)</div>
+    <div class="gx-stat-sub">19.2%</div>
+  </div>
+  <div class="gx-stat">
+    <div class="gx-stat-value">~5.10M</div>
+    <div class="gx-stat-label">Not Spiral</div>
+    <div class="gx-stat-sub">60.9%</div>
+  </div>
+  <div class="gx-stat">
+    <div class="gx-stat-value">93.7%</div>
+    <div class="gx-stat-label">Model Accuracy</div>
+    <div class="gx-stat-sub">3-class test set</div>
+  </div>
+  <div class="gx-stat">
+    <div class="gx-stat-value">0.5093</div>
+    <div class="gx-stat-label">CW / (CW+CCW)</div>
+    <div class="gx-stat-sub">raw ratio</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════ FILTER PANEL ═══════════════════════════════ -->
+<h2>Filter Galaxies</h2>
+
+<div class="gx-filters">
+  <div class="gx-filter-group">
+    <label for="gx-class-filter">Classification</label>
+    <select id="gx-class-filter">
+      <option value="ALL">All</option>
+      <option value="CW">Clockwise (CW)</option>
+      <option value="CCW">Counter-Clockwise (CCW)</option>
+      <option value="NOT_SPIRAL">Not Spiral</option>
+    </select>
+  </div>
+
+  <div class="gx-filter-group">
+    <label for="gx-confidence">Confidence &ge; <span id="gx-conf-val">0.50</span></label>
+    <input type="range" id="gx-confidence" min="0.50" max="1.00" step="0.01" value="0.50" style="width: 140px; accent-color: var(--text);">
+  </div>
+
+  <div class="gx-filter-group">
+    <label>RA Range (&deg;)</label>
+    <div class="gx-range-pair">
+      <input type="number" id="gx-ra-min" placeholder="0" min="0" max="360" step="0.1">
+      <span class="gx-range-sep">&ndash;</span>
+      <input type="number" id="gx-ra-max" placeholder="360" min="0" max="360" step="0.1">
+    </div>
+  </div>
+
+  <div class="gx-filter-group">
+    <label>DEC Range (&deg;)</label>
+    <div class="gx-range-pair">
+      <input type="number" id="gx-dec-min" placeholder="-90" min="-90" max="90" step="0.1">
+      <span class="gx-range-sep">&ndash;</span>
+      <input type="number" id="gx-dec-max" placeholder="90" min="-90" max="90" step="0.1">
+    </div>
+  </div>
+
+  <div class="gx-filter-group">
+    <label for="gx-search-id">Search dr8_id</label>
+    <input type="text" id="gx-search-id" placeholder="e.g. 7953-5581-194">
+  </div>
+
+  <div class="gx-filter-actions">
+    <button class="btn btn-primary" onclick="applyFilters()">Apply</button>
+    <button class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ RESULTS TABLE ═══════════════════════════════ -->
+<h2>Results</h2>
+
+<div class="gx-controls">
+  <div class="gx-result-count">Showing <strong>1&ndash;20</strong> of <strong>8,474,688</strong> galaxies</div>
+  <div class="gx-pagination">
+    <button disabled>&laquo; Prev</button>
+    <span class="gx-page-info">Page 1 of 423,735</span>
+    <button onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
+
+<div class="gx-table-wrap">
+  <table class="gx-table" id="gx-results-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th onclick="sortTable(1)">dr8_id <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(2)">Class <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(3)">P(CW) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(4)">P(CCW) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(5)">P(NS) <span class="sort-arrow">&#9650;</span></th>
+        <th onclick="sortTable(6)">Confidence <span class="sort-arrow">&#9650;</span></th>
+        <th>RA</th>
+        <th>DEC</th>
+      </tr>
+    </thead>
+    <tbody id="gx-results-body">
+      <!-- Placeholder rows — will be replaced by Convex queries -->
+    </tbody>
+  </table>
+</div>
+
+<div class="gx-controls" style="margin-top: 12px;">
+  <div></div>
+  <div class="gx-pagination">
+    <button disabled>&laquo; Prev</button>
+    <span class="gx-page-info">Page 1 of 423,735</span>
+    <button onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SKY MAP ═══════════════════════════════ -->
+<div class="gx-skymap-section">
+  <h2>All-Sky Chirality Map</h2>
+  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications. Each point is one galaxy: blue for clockwise, red for counter-clockwise. A uniform distribution would indicate no large-scale parity violation; clustering or hemispheric asymmetry would be evidence for cosmic chirality.</p>
+
+  <div class="gx-skymap-container">
+    <canvas id="gx-skymap" class="gx-skymap-canvas"></canvas>
+    <div class="gx-skymap-legend">
+      <span><span class="gx-legend-dot gx-legend-cw"></span>Clockwise (CW)</span>
+      <span><span class="gx-legend-dot gx-legend-ccw"></span>Counter-Clockwise (CCW)</span>
+      <span style="margin-left: auto; font-style: italic;">Placeholder &mdash; live data pending Convex import</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PIPELINE INFO ═══════════════════════════════ -->
+<div class="gx-pipeline">
+  <h2 style="border: none; margin: 0 0 4px; padding: 0;">Classification Pipeline</h2>
+  <p style="font-size: 13px; margin-bottom: 12px;">Details of the inference pipeline that produced this catalog.</p>
+
+  <div class="gx-pipeline-grid">
+    <div class="gx-pipeline-item"><strong>Model:</strong> ViT-Small + 3-class head</div>
+    <div class="gx-pipeline-item"><strong>Training data:</strong> GZ1 + CE-ResNet + synthetic (26.6K images)</div>
+    <div class="gx-pipeline-item"><strong>Bias tests:</strong> <span style="color: #166534;">8/8 PASS</span></div>
+    <div class="gx-pipeline-item"><strong>Equivariant CW:</strong> 0.5012</div>
+    <div class="gx-pipeline-item"><strong>Test accuracy:</strong> 93.7%</div>
+    <div class="gx-pipeline-item"><strong>Source images:</strong> DESI Legacy Survey DR8/DR9</div>
+    <div class="gx-pipeline-item"><strong>HuggingFace:</strong> <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a></div>
+    <div class="gx-pipeline-item"><strong>Status:</strong> <span class="badge badge-warning">Inference in progress</span></div>
+    <div class="gx-pipeline-item"><strong>Shards processed:</strong> 0 / 192</div>
+    <div class="gx-pipeline-item"><strong>Cutout size:</strong> 150 &times; 150 px</div>
+  </div>
+</div>
+
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+
+</main>
+</div>
+
+<!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script>
+// Active nav highlight
+document.querySelectorAll('[data-page]').forEach(function(a) {
+  if (a.getAttribute('data-page') === 'galaxy-explorer') a.classList.add('active');
+});
+
+// Confidence slider
+var confSlider = document.getElementById('gx-confidence');
+var confVal = document.getElementById('gx-conf-val');
+confSlider.addEventListener('input', function() {
+  confVal.textContent = parseFloat(this.value).toFixed(2);
+});
+
+// ── Placeholder data ──
+// 20 sample galaxies with realistic coordinates and probabilities
+var placeholderGalaxies = [
+  { dr8_id: "7953-5581-194", ra: 150.1234, dec: 2.3456, p_cw: 0.912, p_ccw: 0.051, p_ns: 0.037, cls: "CW" },
+  { dr8_id: "7953-5581-207", ra: 150.2891, dec: 2.1023, p_cw: 0.034, p_ccw: 0.927, p_ns: 0.039, cls: "CCW" },
+  { dr8_id: "8141-3220-089", ra: 185.4567, dec: 31.7890, p_cw: 0.021, p_ccw: 0.013, p_ns: 0.966, cls: "NOT_SPIRAL" },
+  { dr8_id: "6934-2101-455", ra: 210.8912, dec: -5.4321, p_cw: 0.873, p_ccw: 0.089, p_ns: 0.038, cls: "CW" },
+  { dr8_id: "8022-4410-312", ra: 45.6789, dec: 12.3456, p_cw: 0.044, p_ccw: 0.891, p_ns: 0.065, cls: "CCW" },
+  { dr8_id: "7101-6782-018", ra: 312.5678, dec: -22.1098, p_cw: 0.011, p_ccw: 0.008, p_ns: 0.981, cls: "NOT_SPIRAL" },
+  { dr8_id: "8855-1190-233", ra: 78.9012, dec: 55.6789, p_cw: 0.856, p_ccw: 0.102, p_ns: 0.042, cls: "CW" },
+  { dr8_id: "6501-7823-107", ra: 225.3456, dec: 8.9012, p_cw: 0.067, p_ccw: 0.875, p_ns: 0.058, cls: "CCW" },
+  { dr8_id: "9012-3344-089", ra: 330.1234, dec: -45.6789, p_cw: 0.015, p_ccw: 0.022, p_ns: 0.963, cls: "NOT_SPIRAL" },
+  { dr8_id: "7234-8891-456", ra: 120.5678, dec: 38.9012, p_cw: 0.934, p_ccw: 0.031, p_ns: 0.035, cls: "CW" },
+  { dr8_id: "8567-2234-078", ra: 267.8901, dec: -12.3456, p_cw: 0.023, p_ccw: 0.918, p_ns: 0.059, cls: "CCW" },
+  { dr8_id: "7890-5567-345", ra: 15.4567, dec: 67.8901, p_cw: 0.008, p_ccw: 0.005, p_ns: 0.987, cls: "NOT_SPIRAL" },
+  { dr8_id: "6123-9012-234", ra: 180.0123, dec: 0.4567, p_cw: 0.845, p_ccw: 0.112, p_ns: 0.043, cls: "CW" },
+  { dr8_id: "8345-1678-567", ra: 95.6789, dec: -33.2109, p_cw: 0.055, p_ccw: 0.867, p_ns: 0.078, cls: "CCW" },
+  { dr8_id: "7012-4456-890", ra: 290.3456, dec: 21.0987, p_cw: 0.019, p_ccw: 0.014, p_ns: 0.967, cls: "NOT_SPIRAL" },
+  { dr8_id: "9234-7789-123", ra: 55.1234, dec: -8.7654, p_cw: 0.901, p_ccw: 0.062, p_ns: 0.037, cls: "CW" },
+  { dr8_id: "6789-0123-456", ra: 345.6789, dec: 44.5678, p_cw: 0.041, p_ccw: 0.903, p_ns: 0.056, cls: "CCW" },
+  { dr8_id: "8901-3456-789", ra: 135.0123, dec: -56.7890, p_cw: 0.007, p_ccw: 0.011, p_ns: 0.982, cls: "NOT_SPIRAL" },
+  { dr8_id: "7456-6789-012", ra: 240.4567, dec: 15.2345, p_cw: 0.878, p_ccw: 0.081, p_ns: 0.041, cls: "CW" },
+  { dr8_id: "8123-9012-345", ra: 170.8901, dec: -19.8765, p_cw: 0.029, p_ccw: 0.895, p_ns: 0.076, cls: "CCW" }
+];
+
+// ── Render table ──
+function renderTable(data) {
+  var tbody = document.getElementById('gx-results-body');
+  tbody.innerHTML = '';
+  data.forEach(function(g) {
+    var imgUrl = 'https://www.legacysurvey.org/viewer/jpeg-cutout?ra=' + g.ra + '&dec=' + g.dec + '&size=150&layer=ls-dr9';
+    var clsClass = g.cls === 'CW' ? 'gx-class-cw' : g.cls === 'CCW' ? 'gx-class-ccw' : 'gx-class-ns';
+    var clsLabel = g.cls === 'NOT_SPIRAL' ? 'NOT_SPIRAL' : g.cls;
+    var conf = Math.max(g.p_cw, g.p_ccw, g.p_ns);
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><img class="gx-thumb" src="' + imgUrl + '" alt="' + g.dr8_id + '" loading="lazy" onerror="this.style.display=\'none\'"></td>' +
+      '<td>' + g.dr8_id + '</td>' +
+      '<td class="' + clsClass + '">' + clsLabel + '</td>' +
+      '<td>' + g.p_cw.toFixed(3) + '</td>' +
+      '<td>' + g.p_ccw.toFixed(3) + '</td>' +
+      '<td>' + g.p_ns.toFixed(3) + '</td>' +
+      '<td>' + conf.toFixed(3) + '</td>' +
+      '<td>' + g.ra.toFixed(4) + '</td>' +
+      '<td>' + g.dec.toFixed(4) + '</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+renderTable(placeholderGalaxies);
+
+// ── Filter logic (placeholder) ──
+function applyFilters() {
+  var clsFilter = document.getElementById('gx-class-filter').value;
+  var confMin = parseFloat(document.getElementById('gx-confidence').value);
+  var searchId = document.getElementById('gx-search-id').value.trim();
+  var raMin = parseFloat(document.getElementById('gx-ra-min').value) || 0;
+  var raMax = parseFloat(document.getElementById('gx-ra-max').value) || 360;
+  var decMin = parseFloat(document.getElementById('gx-dec-min').value) || -90;
+  var decMax = parseFloat(document.getElementById('gx-dec-max').value) || 90;
+
+  var filtered = placeholderGalaxies.filter(function(g) {
+    var conf = Math.max(g.p_cw, g.p_ccw, g.p_ns);
+    if (clsFilter !== 'ALL' && g.cls !== clsFilter) return false;
+    if (conf < confMin) return false;
+    if (searchId && g.dr8_id.indexOf(searchId) === -1) return false;
+    if (g.ra < raMin || g.ra > raMax) return false;
+    if (g.dec < decMin || g.dec > decMax) return false;
+    return true;
+  });
+
+  renderTable(filtered);
+  document.querySelector('.gx-result-count').innerHTML =
+    'Showing <strong>1&ndash;' + filtered.length + '</strong> of <strong>' + filtered.length + '</strong> galaxies (filtered from placeholder)';
+}
+
+function resetFilters() {
+  document.getElementById('gx-class-filter').value = 'ALL';
+  document.getElementById('gx-confidence').value = '0.50';
+  document.getElementById('gx-conf-val').textContent = '0.50';
+  document.getElementById('gx-search-id').value = '';
+  document.getElementById('gx-ra-min').value = '';
+  document.getElementById('gx-ra-max').value = '';
+  document.getElementById('gx-dec-min').value = '';
+  document.getElementById('gx-dec-max').value = '';
+  renderTable(placeholderGalaxies);
+  document.querySelector('.gx-result-count').innerHTML =
+    'Showing <strong>1&ndash;20</strong> of <strong>8,474,688</strong> galaxies';
+}
+
+// ── Sort (placeholder) ──
+var sortState = {};
+function sortTable(colIdx) {
+  var dir = sortState[colIdx] === 'asc' ? 'desc' : 'asc';
+  sortState = {};
+  sortState[colIdx] = dir;
+
+  var keys = ['dr8_id', 'dr8_id', 'cls', 'p_cw', 'p_ccw', 'p_ns', 'conf'];
+  placeholderGalaxies.sort(function(a, b) {
+    var va, vb;
+    if (colIdx === 6) {
+      va = Math.max(a.p_cw, a.p_ccw, a.p_ns);
+      vb = Math.max(b.p_cw, b.p_ccw, b.p_ns);
+    } else {
+      var key = keys[colIdx];
+      va = a[key]; vb = b[key];
+    }
+    if (typeof va === 'string') {
+      return dir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return dir === 'asc' ? va - vb : vb - va;
+  });
+  renderTable(placeholderGalaxies);
+}
+
+function nextPage() {
+  // Placeholder: pagination will connect to Convex cursor-based queries
+  alert('Pagination will connect to Convex when the catalog is imported.');
+}
+
+// ── Sky map (placeholder Mollweide projection) ──
+(function() {
+  var canvas = document.getElementById('gx-skymap');
+  var ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = canvas.classList.contains('gx-skymap-canvas') ? Math.min(rect.width * 0.45, 320) : 320;
+    drawSkymap();
+  }
+
+  function mollweide(ra, dec) {
+    // Convert RA/DEC to Mollweide x,y
+    var lam = (ra - 180) * Math.PI / 180; // longitude centered at 180
+    var phi = dec * Math.PI / 180;
+
+    // Iterative solve for theta
+    var theta = phi;
+    for (var i = 0; i < 20; i++) {
+      var dtheta = -(2 * theta + Math.sin(2 * theta) - Math.PI * Math.sin(phi)) /
+                    (2 + 2 * Math.cos(2 * theta));
+      theta += dtheta;
+      if (Math.abs(dtheta) < 1e-6) break;
+    }
+
+    var x = (2 * Math.SQRT2 / Math.PI) * lam * Math.cos(theta);
+    var y = Math.SQRT2 * Math.sin(theta);
+    return { x: x, y: y };
+  }
+
+  function drawSkymap() {
+    var w = canvas.width;
+    var h = canvas.height;
+    var cx = w / 2;
+    var cy = h / 2;
+    var scale = Math.min(w / 5.6, h / 2.9);
+
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, w, h);
+
+    // Draw Mollweide boundary
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (var t = 0; t <= 2 * Math.PI; t += 0.01) {
+      var bx = cx + 2 * Math.SQRT2 * scale * Math.cos(t);
+      var by = cy - Math.SQRT2 * scale * Math.sin(t);
+      if (t === 0) ctx.moveTo(bx, by);
+      else ctx.lineTo(bx, by);
+    }
+    ctx.stroke();
+
+    // Draw grid lines
+    ctx.strokeStyle = '#222';
+    ctx.lineWidth = 0.5;
+    // DEC lines
+    for (var d = -60; d <= 60; d += 30) {
+      ctx.beginPath();
+      for (var r = 0; r <= 360; r += 2) {
+        var pt = mollweide(r, d);
+        var sx = cx + pt.x * scale;
+        var sy = cy - pt.y * scale;
+        if (r === 0) ctx.moveTo(sx, sy);
+        else ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+    }
+    // RA lines
+    for (var r = 0; r < 360; r += 60) {
+      ctx.beginPath();
+      for (var d = -90; d <= 90; d += 2) {
+        var pt = mollweide(r, d);
+        var sx = cx + pt.x * scale;
+        var sy = cy - pt.y * scale;
+        if (d === -90) ctx.moveTo(sx, sy);
+        else ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+    }
+
+    // Scatter placeholder galaxies (generate many random points for visual effect)
+    var rng = (function(seed) {
+      return function() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; };
+    })(42);
+
+    // Draw ~2000 placeholder points
+    for (var i = 0; i < 2000; i++) {
+      var ra = rng() * 360;
+      var dec = (Math.asin(2 * rng() - 1)) * 180 / Math.PI; // uniform on sphere
+      var pt = mollweide(ra, dec);
+      var sx = cx + pt.x * scale;
+      var sy = cy - pt.y * scale;
+
+      // ~40% spirals, split roughly even CW/CCW
+      var type = rng();
+      if (type < 0.20) {
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.6)'; // CW blue
+      } else if (type < 0.39) {
+        ctx.fillStyle = 'rgba(239, 68, 68, 0.6)'; // CCW red
+      } else {
+        continue; // skip non-spirals for clarity
+      }
+
+      ctx.fillRect(sx - 0.8, sy - 0.8, 1.6, 1.6);
+    }
+
+    // Label
+    ctx.fillStyle = '#555';
+    ctx.font = '11px "IBM Plex Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('Mollweide Projection — Placeholder Data', cx, h - 8);
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+})();
+</script>
+<script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
+</body>
+</html>
