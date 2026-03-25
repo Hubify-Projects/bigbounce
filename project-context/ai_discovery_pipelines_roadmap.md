@@ -5,9 +5,9 @@
 | | |
 |---|---|
 | **Created** | 2026-03-24 |
-| **Updated** | 2026-03-24 — hardened with 12-gate publication standards |
+| **Updated** | 2026-03-25 — live progress on Pipelines B, 2, and new MCMC tracks |
 | **Author** | Houston Golden |
-| **Status** | Ready for execution |
+| **Status** | 3 pipelines actively running on RunPod |
 
 ---
 
@@ -43,17 +43,42 @@ Our chirality pipeline follows the same structure: real survey-scale data, expli
 
 ---
 
-## Build Order
+## Build Order & Live Status
 
-| Priority | Pipeline | Feeds f_NL? | Standalone paper? | Sessions |
-|:--------:|----------|:-----------:|:-----------------:|:--------:|
-| **1** | **B — DESI Spectral Anomaly Miner** | Yes (high-bias tracers) | Yes (DESI DR1 is new) | 3–5 |
-| **2** | **E — Time-Domain Transient Finder** | Yes (QSO enrichment) | Yes (Paz-style) | 4–6 |
-| **3** | **A — CMB Anomaly Hunter** | Indirect | Yes (if anomalies found) | 2–4 |
-| **4** | **C — Polarization Feature Extractor** | Indirect (birefringence) | Yes (if scale-dependent) | 4–6 |
-| **5** | **D — Cross-Survey Anomaly Correlator** | Indirect | Yes (new methodology) | 2–3 on top of A–C |
+| Priority | Pipeline | Feeds f_NL? | Standalone paper? | Sessions | **STATUS** |
+|:--------:|----------|:-----------:|:-----------------:|:--------:|:----------:|
+| **1** | **B — DESI Spectral Anomaly Miner** | Yes (high-bias tracers) | Yes (DESI DR1 is new) | 3–5 | **🟢 RUNNING — 71% (12.8M/18M spectra, 119K anomalies) on H200 beast. ETA ~1-2h.** |
+| **1.5** | **Chirality Catalog (Pipeline 2)** | Indirect (parity test) | Yes (largest bias-audited catalog) | 4–6 | **🟢 RUNNING — 41% (3.49M/8.47M galaxies) on H100. ETA ~36h.** |
+| **2** | **E — Time-Domain Transient Finder** | Yes (QSO enrichment) | Yes (Paz-style) | 4–6 | 🔴 Not started |
+| **3** | **A — CMB Anomaly Hunter** | Indirect | Yes (if anomalies found) | 2–4 | 🔴 Not started |
+| **4** | **C — Polarization Feature Extractor** | Indirect (birefringence) | Yes (if scale-dependent) | 4–6 | 🔴 Not started |
+| **5** | **D — Cross-Survey Anomaly Correlator** | Indirect | Yes (new methodology) | 2–3 on top of A–C | 🔴 Blocked (needs A–C outputs) |
+
+**Additionally running (not in original 5, added 2026-03-25):**
+
+| Track | What | Status |
+|-------|------|--------|
+| w0-wa Quintom MCMC | CPL dark energy EOS test (quintom-B w-crossing) | **🟢 RUNNING — 9.4K samples, R-1=0.098, on RTX A4000** |
+| Pipeline B CPU batch | Earlier/slower CPU version of Pipeline B | **🟡 RUNNING — 19% (368K spectra) but redundant with H200 run** |
 
 B and E feed f_NL directly. A and C are more validation-heavy. D depends on the others being mature.
+
+---
+
+## Pipeline B — Next Steps After H200 Completes
+
+When the DESI DR1 anomaly scan finishes (~119K+ anomalies from 18M spectra), the novel work begins. This is the **critical path to a standalone publication** AND to feeding Pipeline 1 (tracer purification for f_NL improvement).
+
+**See `project-context/pipeline1_tracer_purification_plan.md` for the full 6-step execution plan:**
+
+1. **Pull and catalog** — structured anomaly catalog with TARGETID, RA, DEC, z, scores
+2. **Cross-match** with Legacy Survey DR10 + unWISE + Gaia DR3
+3. **Classify anomalies** — which are high-z QSOs? unusual AGN? artifacts?
+4. **Validate bias** — do recovered QSOs have enhanced clustering (higher b₁)?
+5. **Re-measure σ(f_NL)** — with enhanced tracer sample
+6. **Paper** — "AI-purified high-z tracer catalog from DESI DR1 anomaly mining"
+
+**This is the most novel work in the program.** Nobody has published an autoencoder anomaly search on the full DESI DR1.
 
 ---
 
@@ -438,22 +463,38 @@ RunPod GPU for classifier; CPU for feature engineering on 2B sources. **4–6 se
 
 ## What Still Strengthens the Core Bounce Research
 
-### Theory (diminishing returns)
+### Theory (updated 2026-03-25 after Cai literature audit)
 
-| Task | Impact | Difficulty | Worth it? |
-|------|--------|:----------:|:---------:|
-| Email Cai | 92% → ~99% confidence | Easy | **Yes** |
-| Full in-in integral | Independent derivation | Multi-month | No — polynomial proof sufficient |
-| PolySpec pipeline | Estimator-grade r | 1–2 sessions | Medium |
-| Exact ε correction | Narrows [1–8%] | All-vertex cancellation | Low |
+| Task | Impact | Difficulty | Worth it? | **Status** |
+|------|--------|:----------:|:---------:|:----------:|
+| Email Cai | 92% → ~99% confidence | Easy | **Yes** | Ready to send (audit complete) |
+| Quintom f_NL computation | Fill literature gap (no quintom f_NL exists) | 1-2 sessions | **Yes — novel** | Verification script done, full computation next |
+| Bounce model discrimination table | Strengthens Paper 2 | Done | **Yes** | ✅ Added to Paper 1 |
+| NANOGrav model comparison | γ=3 vs SMBH γ=13/3 | Done | **Yes** | ✅ B(bounce/SMBH)=5.6 |
+| PBH regulation by f_NL | Triple role of -35/8 | Done | **Yes** | ✅ Script + figure done |
+| w0-wa MCMC (quintom-B test) | Bounce-DE unification | Running | **Yes** | 🟢 98.6% quintom-B |
+| Full in-in integral | Independent derivation | Multi-month | No | Polynomial proof sufficient |
+| Exact ε correction | Narrows [1–8%] | All-vertex cancellation | Low | Not started |
 
-### Data (high value, untapped)
+### Data (high value — updated)
 
 | Task | Impact | Status |
 |------|--------|--------|
-| DESI catalog + enhanced tracers | Real data product | Design only |
+| **DESI DR1 anomaly catalog** | First autoencoder search on full DESI DR1 | **🟢 71% on H200 — 119K anomalies** |
+| **8.47M chirality catalog** | Largest bias-audited handedness catalog | **🟢 41% on H100 — 3.49M classified** |
+| DESI catalog → tracer purification → σ(f_NL) improvement | Real data product, novel | Steps 2-6 waiting on H200 completion |
 | Miscalibration-marginalized β | Closes 0.08° gap | Done at basic level |
 | Frequency consistency at high res | Tests cosmological origin | Done at NSIDE=256 |
+
+### New computation scripts (added 2026-03-25)
+
+| Script | Purpose | Status |
+|--------|---------|--------|
+| `reproducibility/quintom_fnl_verification.py` | Verify f_NL=-35/8 across 3 bounce models | ✅ Done — all 3 give -35/8 exactly |
+| `reproducibility/pbh_nanograv_consistency.py` | PBH regulation + NANOGrav γ=3 | ✅ Done — 0.33σ from NANOGrav |
+| `reproducibility/nanograv_model_comparison.py` | Bayesian bounce vs SMBH vs strings | ✅ Done — bounce preferred 5.6:1 |
+| `reproducibility/cosmology/cobaya_w0wa_quintom_test.yaml` | w0-wa MCMC config | 🟢 Running on RunPod |
+| `reproducibility/cosmology/analyze_w0wa_quintom.py` | Post-processing for w0-wa chains | Ready for when chains converge |
 
 ---
 
@@ -464,3 +505,18 @@ RunPod GPU for classifier; CPU for feature engineering on 2B sources. **4–6 se
 
 **After these pipelines:**
 > An active observational research program producing novel catalogs, discovering new objects, and improving the sensitivity of current data to the bounce prediction — while also contributing standalone astrophysical discoveries that the community uses regardless of bounce physics.
+
+---
+
+## Active Pods Reference (2026-03-25)
+
+See `project-context/active_pods_and_pipelines.md` for full SSH details, log locations, and quick-check commands.
+
+| Pod ID | Machine | Pipeline | Progress |
+|--------|---------|----------|----------|
+| `rtv8cegaw1618r` | H200, 192 cores, 3TB | Pipeline B (DESI DR1) | 71%, 119K anomalies |
+| `ulfxypratod4vr` | H100, 208 cores, 2TB | Chirality (8.47M) | 41%, 3.49M classified |
+| `fn19oivkjowmq4` | RTX A4000, 32 cores | w0-wa MCMC | 9.4K samples, R-1=0.098 |
+| `kqo1b4e4igycra` | CPU, 32 cores | Pipeline B CPU (slow) | 19%, 368K spectra |
+
+**DO NOT TERMINATE any pods without explicit user approval.**
