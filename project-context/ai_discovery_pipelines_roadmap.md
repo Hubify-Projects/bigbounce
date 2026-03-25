@@ -78,7 +78,7 @@ When the DESI DR1 anomaly scan finishes (~119K+ anomalies from 18M spectra), the
 5. **Re-measure σ(f_NL)** — with enhanced tracer sample
 6. **Paper** — "AI-purified high-z tracer catalog from DESI DR1 anomaly mining"
 
-**This is the most novel work in the program.** Nobody has published an autoencoder anomaly search on the full DESI DR1.
+**This is the most novel work in the program.** Prior autoencoder anomaly detection on DESI (Liang et al. 2023; Nicolaou et al. 2026) used ~200-250K EDR spectra. We scale to the full DR1 (~18M spectra, ~90x increase). Must cite both prior papers.
 
 ---
 
@@ -480,7 +480,7 @@ RunPod GPU for classifier; CPU for feature engineering on 2B sources. **4–6 se
 
 | Task | Impact | Status |
 |------|--------|--------|
-| **DESI DR1 anomaly catalog** | First autoencoder search on full DESI DR1 | **🟢 71% on H200 — 119K anomalies** |
+| **DESI DR1 anomaly catalog** | First full-DR1-scale autoencoder search (~90x prior work on EDR) | **🟢 71% on H200 — 119K anomalies** |
 | **8.47M chirality catalog** | Largest bias-audited handedness catalog | **🟢 41% on H100 — 3.49M classified** |
 | DESI catalog → tracer purification → σ(f_NL) improvement | Real data product, novel | Steps 2-6 waiting on H200 completion |
 | Miscalibration-marginalized β | Closes 0.08° gap | Done at basic level |

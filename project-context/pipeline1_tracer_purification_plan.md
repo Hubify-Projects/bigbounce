@@ -156,7 +156,7 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 
 ## What Makes This Novel
 
-1. **First autoencoder-based anomaly search on the full DESI DR1** — 18M spectra, nobody has published this
+1. **First autoencoder anomaly search scaled to the full DESI DR1 Main Survey catalog (~18M spectra)** — prior autoencoder-based anomaly detection on DESI (Liang et al. 2023, ApJL; Nicolaou et al. 2026, MNRAS) was limited to ~200-250K EDR spectra. We extend this approach by ~90x in scale to the complete DR1 release
 2. **AI-discovered tracers fed back into a cosmological measurement** — the closed loop from anomaly detection to f_NL improvement
 3. **Direct connection to a specific theoretical prediction** — not "improve f_NL constraints generally" but "test f_NL = -35/8 specifically"
 4. **The anomaly catalog itself** is a standalone data product the community can use regardless of bounce physics
