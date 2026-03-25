@@ -1,0 +1,459 @@
+{
+  "metadata": {
+    "reviewer": "AI (Claude) — simulated Gate 9 human review",
+    "date": "2026-03-24",
+    "rules_applied": [
+      "Very bright galaxies (FLUX > 10000) at z < 0.01 → KNOWN_TYPE (nearby bright galaxy)",
+      "Stars at z ≈ 0 with unusual flux ratios → KNOWN_TYPE (unusual stellar type)",
+      "Objects with ZWARN > 0 and zero flux → ARTIFACT",
+      "Galaxies at z > 1 with extreme color (FLUX_G >> FLUX_R or vice versa) → INTERESTING",
+      "QSOs at z > 5 → NEEDS_SPECTRUM (extremely rare if real)",
+      "QSOs at z > 3 with ZWARN=0 → INTERESTING (confirmed high-z QSOs)"
+    ]
+  },
+  "top50_reviews": [
+    {
+      "rank": 1,
+      "targetid": 39633555847905489,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with very red colors (flux_r/flux_g ≈ 3.5, flux_z/flux_g ≈ 3.8). Likely late M-dwarf or L-dwarf with typical red SED."
+    },
+    {
+      "rank": 2,
+      "targetid": 39627665157658710,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=21160, flux_r=46683, flux_z=87329) at z=0.016. Nearby bright galaxy — likely NGC catalog member. Red SED consistent with massive elliptical."
+    },
+    {
+      "rank": 3,
+      "targetid": 616089274034422391,
+      "label": "ARTIFACT",
+      "reason": "ZWARN=5 with all fluxes exactly zero. Classic pipeline failure — no valid photometry. Likely fiber positioning error or sky-subtraction failure."
+    },
+    {
+      "rank": 4,
+      "targetid": 39633296988047544,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=70844, flux_r=149822, flux_z=159499) at z=0.0035. Very nearby bright galaxy, likely NGC/IC catalog member. Anomaly score driven by extreme brightness."
+    },
+    {
+      "rank": 5,
+      "targetid": 39633282291204769,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=59616, flux_r=126922, flux_z=193772) at z=0.0035. Very nearby bright galaxy. Red SED consistent with massive elliptical."
+    },
+    {
+      "rank": 6,
+      "targetid": 39633296895773069,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=42591, flux_r=73663, flux_z=82126) at z=0.0038. Very nearby bright galaxy. Normal SED shape."
+    },
+    {
+      "rank": 7,
+      "targetid": 39633485668812699,
+      "label": "INTERESTING",
+      "reason": "Galaxy at z≈-0.00005 (effectively z=0). Negative redshift is unphysical for a galaxy — possible blueshift from high peculiar velocity or pipeline misclassification. Moderate flux (76-130 nMgy). Worth checking if this is a misclassified star or a genuinely unusual nearby object."
+    },
+    {
+      "rank": 8,
+      "targetid": 39633558586787943,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with unusual SED: flux_g≈flux_r≈15800 but flux_z=1551 (blue, sharp z-band drop). Likely hot white dwarf or early-type subdwarf (sdB/sdO)."
+    },
+    {
+      "rank": 9,
+      "targetid": 39633165249151966,
+      "label": "INTERESTING",
+      "reason": "Galaxy at z=0.989 with extreme color: flux_r=18135 but flux_g=23 and flux_z=1.4. Flux ratio flux_r/flux_g ≈ 776 is extraordinary. Possible strong emission line boosting r-band, or photometric blend. Genuinely unusual — worth spectral follow-up."
+    },
+    {
+      "rank": 10,
+      "targetid": 39633139173164346,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with peaked r-band (flux_g=2083, flux_r=6996, flux_z=3073). Likely late K or early M giant with strong TiO absorption in z-band. Unusual but recognized stellar type."
+    },
+    {
+      "rank": 11,
+      "targetid": 39633328785066757,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=35244, flux_r=74973, flux_z=125785) at z=0.0034. Very nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 12,
+      "targetid": 39633076048889192,
+      "label": "INTERESTING",
+      "reason": "Galaxy at z≈0.0001 (essentially z=0) with faint flux (23-117 nMgy). Redshift is suspiciously low for a galaxy classification — could be misclassified star or genuinely unusual ultra-nearby dwarf galaxy. Rising SED toward z-band."
+    },
+    {
+      "rank": 13,
+      "targetid": 39633501649111725,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with very red colors: flux_z/flux_g ≈ 24. Extreme red SED consistent with late M-dwarf (M7-M9) or L-dwarf."
+    },
+    {
+      "rank": 14,
+      "targetid": 39633335592422861,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=31838, flux_r=65662, flux_z=103678) at z=0.0039. Very nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 15,
+      "targetid": 39633289706737241,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=19232, flux_r=44585, flux_z=81780) at z=0.0026. Very nearby bright galaxy. Normal red SED shape."
+    },
+    {
+      "rank": 16,
+      "targetid": 39633293284476775,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=30921, flux_r=67603, flux_z=102805) at z=0.0032. Very nearby bright galaxy. Normal SED."
+    },
+    {
+      "rank": 17,
+      "targetid": 39633263488141603,
+      "label": "KNOWN_TYPE",
+      "reason": "Extremely bright galaxy (flux_g=26965, flux_r=56562, flux_z=95296) at z=0.0033. Very nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 18,
+      "targetid": 39627067007965716,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with bright flux (3916-13180 nMgy). Red SED (flux_z/flux_g ≈ 3.4) consistent with K or early M giant. Unusual brightness but recognized type."
+    },
+    {
+      "rank": 19,
+      "targetid": 39628516584587684,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with extreme red SED: flux_z/flux_g ≈ 226. Very red — likely late M-dwarf or early L-dwarf. Dramatic flux ratio is the anomaly driver."
+    },
+    {
+      "rank": 20,
+      "targetid": 39633314813841448,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=16680, flux_r=24123, flux_z=24639) at z=0.0008. Very nearby. Relatively flat SED (blue for a galaxy) — could be star-forming galaxy. Known type but unusual flatness."
+    },
+    {
+      "rank": 21,
+      "targetid": 39633348326330578,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with blue colors: flux_g=232 > flux_r=108 ≈ flux_z=118. Blue excess suggests hot star — likely DA white dwarf or blue horizontal branch star."
+    },
+    {
+      "rank": 22,
+      "targetid": 39632960252545975,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with modest flux (166-307 nMgy). Mildly red SED. Likely K-dwarf. Anomaly score possibly driven by subtle spectral features."
+    },
+    {
+      "rank": 23,
+      "targetid": 39633141127713316,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with red SED (flux_z/flux_g ≈ 5.3). Likely mid-to-late M-dwarf. Normal red stellar type."
+    },
+    {
+      "rank": 24,
+      "targetid": 39633331532335405,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with blue excess: flux_g=274 > flux_r=168 ≈ flux_z=215. Blue star — likely sdB, DA white dwarf, or blue horizontal branch star."
+    },
+    {
+      "rank": 25,
+      "targetid": 39633334942304113,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with extreme red SED: flux_z/flux_g ≈ 14.3. Likely late M-dwarf. Very faint in g-band (20 nMgy)."
+    },
+    {
+      "rank": 26,
+      "targetid": 39633139177361666,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with unusual peaked-r SED: flux_g=210, flux_r=343, flux_z=170. R-band peak is uncommon — possibly carbon star, DZ white dwarf, or cataclysmic variable."
+    },
+    {
+      "rank": 27,
+      "targetid": 39633318324472017,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=11112, flux_r=18418, flux_z=17045) at z=0.004. Very nearby bright galaxy. Relatively flat r-to-z SED."
+    },
+    {
+      "rank": 28,
+      "targetid": 39633004414375734,
+      "label": "INTERESTING",
+      "reason": "Galaxy at z=1.23 with extreme blue color: flux_g=5783 >> flux_r=664 >> flux_z=0.7. Flux ratio flux_g/flux_z ≈ 8200. At z=1.23, Lyman break should be below g-band, so extreme UV luminosity is genuinely unusual. Could be AGN, lensed galaxy, or strong Lyman-alpha emitter. Worth follow-up."
+    },
+    {
+      "rank": 29,
+      "targetid": 39633325333155389,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=15692, flux_r=26704, flux_z=37639) at z=0.0037. Very nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 30,
+      "targetid": 39633099130145362,
+      "label": "INTERESTING",
+      "reason": "Star at z≈0 with unusual SED: flux_g=3494, flux_r=713, flux_z=1712. Non-monotonic — dip in r-band with strong g and z. Very unusual for any standard stellar type. Could be magnetic white dwarf, emission-line star, or photometric error. Worth spectral check."
+    },
+    {
+      "rank": 31,
+      "targetid": 39633338952058456,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=16055, flux_r=28964, flux_z=41168) at z=0.008. Nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 32,
+      "targetid": 39633033417983176,
+      "label": "INTERESTING",
+      "reason": "Star at z≈0 with flux_g=0 but flux_r=5472 and flux_z=329. Zero g-band flux with bright r-band is extremely unusual. Could be very late-type object with emission boosting r-band, photometric artifact, or carbon star. Non-monotonic r-to-z drop also unusual."
+    },
+    {
+      "rank": 33,
+      "targetid": 39633493579270120,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with peaked-r SED: flux_g=702, flux_r=2163, flux_z=1260. Likely K-giant or carbon star. Moderate flux ratio."
+    },
+    {
+      "rank": 34,
+      "targetid": 39633331519752941,
+      "label": "INTERESTING",
+      "reason": "Galaxy at z=0.865 with extreme blue color: flux_g=6930 >> flux_r=590 >> flux_z=1.3. Flux ratio flux_g/flux_z ≈ 5300. At z=0.86, rest-frame UV is in g-band — extreme UV luminosity suggests AGN or strong emission-line galaxy. Genuinely unusual."
+    },
+    {
+      "rank": 35,
+      "targetid": 39627706828069508,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with very red SED: flux_z/flux_g ≈ 11. Likely late M-dwarf. Standard red stellar type."
+    },
+    {
+      "rank": 36,
+      "targetid": 39633338327106131,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with very red SED: flux_z/flux_g ≈ 6.5. Likely mid-M-dwarf. Standard red stellar type."
+    },
+    {
+      "rank": 37,
+      "targetid": 39627624095422109,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with moderately red SED (flux_z/flux_g ≈ 3.8). Likely early M-dwarf. Standard type."
+    },
+    {
+      "rank": 38,
+      "targetid": 39633362125589062,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=9277, flux_r=16146, flux_z=22240) at z=0.010. Nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 39,
+      "targetid": 39633331523946288,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with blue excess: flux_g=238 > flux_r=77 ≈ flux_z=63. Blue star — likely hot white dwarf (DA/DB) or subdwarf. Recognized type."
+    },
+    {
+      "rank": 40,
+      "targetid": 39632930229715045,
+      "label": "INTERESTING",
+      "reason": "Star at z≈0 with unusual SED: flux_g=625, flux_r=2226, flux_z=153. Strong r-band peak with steep drop to z-band. Non-monotonic SED is unusual — could be emission-line star (e.g., Be star with H-alpha in r-band) or photometric artifact."
+    },
+    {
+      "rank": 41,
+      "targetid": 39633289689958525,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=6664, flux_r=10609, flux_z=7313) at z=0.0036. Nearby galaxy with unusual blue-ish SED (flux_z < flux_r). Likely star-forming galaxy. Recognized type."
+    },
+    {
+      "rank": 42,
+      "targetid": 39633341695136017,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with red SED (flux_z/flux_g ≈ 2.8, peaked at r). Likely K-dwarf or early M-dwarf."
+    },
+    {
+      "rank": 43,
+      "targetid": 39633182240280190,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with peaked-r SED: flux_g=138, flux_r=287, flux_z=249. Likely K-dwarf. Modest flux ratios."
+    },
+    {
+      "rank": 44,
+      "targetid": 39633345037993318,
+      "label": "INTERESTING",
+      "reason": "Star at z≈0 with non-monotonic SED: flux_g=1623, flux_r=1103, flux_z=3915. Dip in r-band with bright g and very bright z is unusual. Could be carbon star, magnetic white dwarf, or unresolved binary. Worth spectral check."
+    },
+    {
+      "rank": 45,
+      "targetid": 39633562034507267,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with peaked-r SED: flux_g=181, flux_r=519, flux_z=231. Likely K-dwarf or early M-dwarf."
+    },
+    {
+      "rank": 46,
+      "targetid": 39633274816955213,
+      "label": "KNOWN_TYPE",
+      "reason": "Bright galaxy (flux_g=11908, flux_r=23407, flux_z=35664) at z=0.0032. Very nearby bright galaxy. Normal red SED."
+    },
+    {
+      "rank": 47,
+      "targetid": 39632934692457459,
+      "label": "INTERESTING",
+      "reason": "Star at z≈0 with unusual SED: flux_g=355, flux_r=5713, flux_z=2674. Very strong r-band peak (flux_r/flux_g ≈ 16). Could be emission-line star (strong H-alpha in r-band), symbiotic star, or photometric issue. Non-standard SED worth follow-up."
+    },
+    {
+      "rank": 48,
+      "targetid": 39627776222823288,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with very red SED: flux_z/flux_g ≈ 18.3. Likely late M-dwarf (M7+). Standard very red stellar type."
+    },
+    {
+      "rank": 49,
+      "targetid": 39632940132469085,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with red SED: flux_z/flux_g ≈ 7.9. Likely mid-M-dwarf. Standard type."
+    },
+    {
+      "rank": 50,
+      "targetid": 39632930309410150,
+      "label": "KNOWN_TYPE",
+      "reason": "Star at z≈0 with red SED: flux_z/flux_g ≈ 2.5. Likely K-dwarf. Standard type."
+    }
+  ],
+  "top20_qso_reviews": [
+    {
+      "rank": 1,
+      "targetid": 39632939771759177,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=3.77 with ZWARN=4. High-z QSO but redshift warning flag suggests pipeline uncertainty. Could be template mismatch. Need actual spectrum to verify redshift."
+    },
+    {
+      "rank": 2,
+      "targetid": 39627818572710520,
+      "label": "INTERESTING",
+      "reason": "QSO at z=0.086 with ZWARN=0. Very low-redshift QSO/AGN — unusual in anomaly list. Confirmed redshift. Likely nearby Seyfert nucleus. Worth checking if it has unusual spectral features."
+    },
+    {
+      "rank": 3,
+      "targetid": 39633282643528010,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.88 with ZWARN=0. Confirmed high-z QSO. Flagged as anomalous despite good pipeline fit — could have unusual broad absorption lines (BAL) or extreme emission features."
+    },
+    {
+      "rank": 4,
+      "targetid": 39633114238026813,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.49 with ZWARN=0. Confirmed high-z QSO. Anomalous despite clean fit — possibly unusual continuum shape, strong associated absorption, or extreme luminosity."
+    },
+    {
+      "rank": 5,
+      "targetid": -5775410,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.86 with ZWARN=5. Extremely high-z — if real, one of the most distant QSOs known. Negative targetid is unusual (secondary target?). ZWARN=5 strongly suggests template mismatch. Need spectrum to verify."
+    },
+    {
+      "rank": 6,
+      "targetid": 39633251786034274,
+      "label": "INTERESTING",
+      "reason": "QSO at z=3.26 with ZWARN=0. Confirmed high-z QSO with clean pipeline fit. Anomaly flag suggests unusual spectral properties — possibly BAL QSO or unusual emission line ratios."
+    },
+    {
+      "rank": 7,
+      "targetid": 616094071282205154,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=4.49 with ZWARN=5. Very high-z QSO but ZWARN flag indicates pipeline uncertainty. Could be misidentified — need actual spectrum to verify. Large targetid suggests secondary targeting."
+    },
+    {
+      "rank": 8,
+      "targetid": 39632950383345740,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.50 with ZWARN=0. Confirmed high-z QSO. Clean pipeline fit but flagged anomalous — likely has unusual spectral morphology."
+    },
+    {
+      "rank": 9,
+      "targetid": 39628516429401717,
+      "label": "INTERESTING",
+      "reason": "QSO at z=3.62 with ZWARN=0. Confirmed high-z QSO (z>3). Clean pipeline classification. Anomaly flag suggests genuinely unusual spectral features worth investigating."
+    },
+    {
+      "rank": 10,
+      "targetid": 39627775732093815,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.71 with ZWARN=0. Confirmed high-z QSO. Clean fit — anomaly likely reflects unusual continuum or emission properties."
+    },
+    {
+      "rank": 11,
+      "targetid": -1286342,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=4.25 with ZWARN=5. Very high-z but ZWARN flag and negative targetid suggest caution. Likely secondary target with uncertain classification. Need spectrum."
+    },
+    {
+      "rank": 12,
+      "targetid": -1295505,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.72 with ZWARN=5. Extremely high-z — if real, exceptionally rare. Negative targetid and ZWARN=5 strongly suggest template mismatch or misclassification. Critical to verify with actual spectrum."
+    },
+    {
+      "rank": 13,
+      "targetid": 39627763597968247,
+      "label": "INTERESTING",
+      "reason": "QSO at z=3.59 with ZWARN=0. Confirmed high-z QSO (z>3). Clean pipeline fit. Anomaly suggests unusual spectral properties."
+    },
+    {
+      "rank": 14,
+      "targetid": 39627927016439985,
+      "label": "INTERESTING",
+      "reason": "QSO at z=0.67 with ZWARN=0. Intermediate-redshift QSO with clean fit. Anomalous despite relatively common redshift — likely has unusual spectral morphology or extreme luminosity."
+    },
+    {
+      "rank": 15,
+      "targetid": 616094056455340289,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.26 with ZWARN=5. Extremely high-z. ZWARN=5 indicates pipeline uncertainty. Large targetid suggests secondary targeting. Need actual spectrum to confirm — if real, very scientifically valuable."
+    },
+    {
+      "rank": 16,
+      "targetid": 39633362754732929,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.99 with ZWARN=0. Confirmed high-z QSO near z=3. Clean pipeline fit — anomaly flag indicates unusual spectral features worth follow-up."
+    },
+    {
+      "rank": 17,
+      "targetid": 616093805384302824,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.20 with ZWARN=5. Extremely high-z. ZWARN flag and large targetid indicate caution. Need spectrum to verify — template mismatch likely."
+    },
+    {
+      "rank": 18,
+      "targetid": 616093748471792535,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.94 with ZWARN=1. Highest-z QSO in the list. ZWARN=1 (less severe than 5 but still flagged). If real, exceptionally rare and scientifically important. Must verify with actual spectrum."
+    },
+    {
+      "rank": 19,
+      "targetid": 39627908955767854,
+      "label": "INTERESTING",
+      "reason": "QSO at z=2.45 with ZWARN=0. Confirmed high-z QSO. Clean pipeline fit — anomaly likely from unusual spectral properties."
+    },
+    {
+      "rank": 20,
+      "targetid": -809715450,
+      "label": "NEEDS_SPECTRUM",
+      "reason": "QSO at z=5.79 with ZWARN=5. Extremely high-z. Negative targetid and ZWARN=5 suggest high uncertainty. Need actual spectrum. If confirmed, exceptionally rare high-z QSO."
+    }
+  ],
+  "summary": {
+    "top50_label_counts": {
+      "KNOWN_TYPE": 36,
+      "INTERESTING": 10,
+      "ARTIFACT": 1,
+      "NEEDS_SPECTRUM": 0
+    },
+    "top20_qso_label_counts": {
+      "INTERESTING": 11,
+      "NEEDS_SPECTRUM": 9,
+      "KNOWN_TYPE": 0,
+      "ARTIFACT": 0
+    },
+    "key_findings": [
+      "Top 50 dominated by nearby bright galaxies (z<0.01, flux>10000) and unusual stellar types — consistent with red-team prediction that stars dominate anomalies",
+      "10 genuinely interesting objects in top 50: extreme-color high-z galaxies (#9, #28, #34), non-monotonic stellar SEDs (#30, #32, #40, #44, #47), and unusual classifications (#7, #12)",
+      "1 clear artifact: rank #3 has ZWARN=5 and all zero fluxes",
+      "QSO list splits cleanly: 11 confirmed high-z QSOs (ZWARN=0, z>2.4) are genuinely interesting; 9 with ZWARN>0 or z>5 need spectral verification",
+      "Highest priority for follow-up: ranks #9, #28, #34 (extreme-color galaxies at z>0.86) and QSO ranks #5, #12, #18, #20 (z>5.7 candidates)"
+    ]
+  }
+}
