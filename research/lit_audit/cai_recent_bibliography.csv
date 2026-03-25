@@ -1,0 +1,43 @@
+arxiv_id,year,title,authors,journal,citations,topic,fnl_overlap,biref_overlap,desi_overlap,action
+2603.13924,2026,"Smoking-gun signatures of bounce cosmology from echoes of relic GWs","Zhu, Cai",,0,bounce/GW,none,none,none,cite
+2603.14287,2026,"Do We Have Sufficient Knowledge of Galactic Foreground Emission in CMB Science?","Cai+",,0,CMB foreground,none,none,none,no
+2603.12580,2026,"Sound Speed Resonance in GW Background","Cai+",,0,GW/early universe,none,none,none,no
+2602.23249,2026,"Axion-Photon Mixing and Extragalactic Magnetic Background","Cai+",,0,ALP-photon/NG,none,none,none,monitor
+2602.21733,2026,"Sound horizon independent H0 from BOSS DESI DES","Cai+",,0,H0/LSS,none,none,moderate,monitor
+2512.21167,2025,"(Lovelock)^2 inflation explaining ACT data","Cai+",,1,inflation/ACT,none,none,none,no
+2512.16551,2025,"Decoupling perturbations in f(Q) gravity sigma8 tension","Cai+",,1,modified gravity,none,none,moderate,no
+2512.08301,2025,"Isocurvature Induced GWs at Pulsar Timing Arrays","Cai+",,0,GW/PTA,none,none,none,no
+2511.22478,2025,"Clustering in dynamical dark energy DESI CMB SN","Cai+",,3,dark energy/DESI,none,none,high,monitor
+2511.19994,2025,"Focused review of quintom cosmology: quintom DE to quintom bounce","Cai+","Chin.Phys.50(2026)012001",1,quintom/bounce/review,none,none,high,monitor
+2511.03657,2025,"EMRI Dark Matter Halo Homoclinic Orbit","Cai+",,6,EMRI/DM,none,none,none,no
+2510.15031,2025,"Atomic Quantum Sensors for High-Frequency GW","Cai+",,3,GW detection,none,none,none,no
+2507.04618,2025,"CSST Survey Telescope Introduction","Cai+","Sci.China",41,survey,none,none,none,no
+2505.24732,2025,"Quintom theory of dark energy after DESI DR2","Cai+",,68,quintom/DESI,none,none,high,monitor
+2505.20677,2025,"Holographic superconductor dark matter","Cai+",,1,holography,none,none,none,no
+2504.12105,2025,"PBH DM compatible with catalyzed phase transition PTA","Cai+","JCAP",5,PBH/PTA,none,none,none,no
+2504.07791,2025,"Quantum gravity meets DESI: quintom-B TCC","Cai+","JCAP",50,quantum gravity/DESI,none,none,high,monitor
+2504.06784,2025,"Modified Gravity Quintom after DESI DR2","Cai+","ApJ",55,modified gravity/DESI,none,none,high,monitor
+2501.18336,2025,"Gaussian process quintom reconstruction","Cai+","JCAP",29,quintom/DE,none,none,high,monitor
+2412.19631,2024,"PBH from upward step inflation","Cai+","IJMPD",10,PBH/inflation,none,none,none,no
+2411.04543,2024,"Dust emission model evaluation CMB","Cai+","ApJS",9,CMB foreground,none,none,none,no
+2411.02161,2024,"Static Microlensing","Cai+",,1,microlensing,none,none,none,no
+2410.04340,2024,"Optical lattice clocks GW detectors","Cai+","Sci.China",7,GW detection,none,none,none,no
+2410.03422,2024,"Strong coupling modified teleparallel gravity","Cai+","JCAP",0,modified gravity,none,none,none,no
+2409.11333,2024,"GWs from PBH isocurvature non-Gaussianity","Cai+","JCAP",30,PBH/NG/GW,low,none,none,monitor
+2408.16579,2024,"PBH compaction CMB mu distortion","Cai+","PRD",3,PBH/CMB,none,none,none,no
+2408.14902,2024,"MIR up-conversion interferometer","Cai+","PRD",2,instrumentation,none,none,none,no
+2408.05091,2024,"Sound speed resonance in GB-coupled inflation","Cai+","PRD",6,inflation/GW,none,none,none,no
+2408.00585,2024,"Northern hemisphere CMB polarization","Cai+",,0,CMB polarization,none,none,none,no
+2407.19521,2024,"Ultra-light dark matter non-canonical kinetics","Cai+","JCAP",2,dark matter,none,none,none,no
+2407.10365,2024,"CMB foreground scattering","Cai+","A&A",1,CMB foreground,none,none,none,no
+2406.00242,2024,"f(Q) gravity weak lensing test","Cai+","ApJ",22,modified gravity,none,none,none,no
+2404.19437,2024,"Quintom cosmology after DESI 2024","Cai+","Sci.Bull.",102,quintom/DESI,none,none,high,website
+2404.12731,2024,"Dark-photon dark matter haloscope search","Cai+","PRD",9,dark photon,none,none,none,no
+2404.12140,2024,"f(Q) dynamical connection reconstruction","Cai+","MNRAS",47,modified gravity,none,none,none,no
+2404.03779,2024,"PBHs and induced GWs in matter bouncing cosmology","Papanikolaou+ Cai","JCAP",37,bounce/PBH/GW,none,none,none,cite
+2403.18263,2024,"Exotic spin-spin-velocity interactions NV diamond","Cai+","PRL",10,quantum sensors,none,none,none,no
+2403.00660,2024,"Non-Gaussianity probe via PBH induced GWs","Cai+","PLB",51,NG/PBH/GW,low,none,none,monitor
+2402.02415,2024,"Narrow-band GW background parametrization","Cai+","PRD",2,GW background,none,none,none,no
+2401.17940,2024,"Warm dark matter from galaxy simulations","Cai+","ApJ",4,dark matter,none,none,none,no
+2401.06440,2024,"PBH limits MeV detectors","Cai+","PRD",7,PBH,none,none,none,no
+2401.05464,2024,"f(T) gravity via lensed FRBs","Cai+","MNRAS",9,modified gravity,none,none,none,no

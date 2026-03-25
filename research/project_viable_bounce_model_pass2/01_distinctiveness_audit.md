@@ -98,7 +98,7 @@ The first-pass analysis found confusion between:
 
 **This distinction is CRITICAL.** If f_NL = -4.375, the model has a sharp negative prediction distinguishable from inflation. If f_NL = +0.42, the model is practically indistinguishable from single-field inflation (which predicts f_NL ~ 0).
 
-**The agent research confirmed:** f_NL = -35/8 is from arXiv:0903.0631 (Cai, Xue, Brandenberger, Wilson). This must be verified to determine whether this is the Planck-observable f_NL or a different convention.
+**The agent research confirmed:** f_NL = -35/8 is from arXiv:0903.0631 (Cai, Xue, Brandenberger, Zhang). This must be verified to determine whether this is the Planck-observable f_NL or a different convention.
 
 ### Verdict (conditional on f_NL convention):
 

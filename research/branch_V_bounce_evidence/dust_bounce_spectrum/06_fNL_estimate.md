@@ -71,7 +71,7 @@ $$
 f_{\rm NL}^{\rm local} = \frac{5}{6} \times \frac{2M_{\rm Pl}^2}{2M_{\rm Pl}^2} = \frac{5}{6}
 $$
 
-**However**, the standard matter bounce result uses a different convention. Following Cai, Chen, Easther, et al. (2009, arXiv:0812.1032) and Quintin et al. (2015):
+**However**, the standard matter bounce result uses a different convention. Following Cai, Xue, Brandenberger & Zhang (2009, arXiv:0903.0631) and Quintin et al. (2015):
 
 ### The standard result
 
