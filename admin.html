@@ -230,6 +230,14 @@
   margin-top: 8px;
 }
 
+/* ── Unread Badge ── */
+.unread-badge {
+  display: inline-block; background: #dc2626; color: #fff; font-size: 10px;
+  font-weight: 700; font-family: var(--font-mono); min-width: 18px; height: 18px;
+  line-height: 18px; text-align: center; border-radius: 9px; margin-left: 6px;
+  vertical-align: middle; padding: 0 4px;
+}
+
 /* ── Loading / Empty ── */
 .loading-text { color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; padding: 20px 0; }
 
@@ -241,41 +249,9 @@
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
+<script src="nav.js" defer></script>
 </head>
 <body>
-<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
-<aside class="sidebar">
-<a href="index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
-<nav class="sidebar-nav">
-<a href="index.html" class="sidebar-section" data-page="index">research/</a>
-<a href="paper.html" class="sidebar-link" data-page="paper">papers</a>
-<a href="explained.html" class="sidebar-link" data-page="explained">explainer</a>
-<a href="datasets.html" class="sidebar-link" data-page="datasets">data/</a>
-<div class="sidebar-sub">
-<a href="datasets.html" class="sidebar-link">datasets</a>
-<a href="data-explorer.html" class="sidebar-link" data-page="data-explorer">data explorer</a>
-<a href="galaxy-explorer.html" class="sidebar-link" data-page="galaxy-explorer">galaxy explorer</a>
-</div>
-<a href="figures.html" class="sidebar-link" data-page="figures">figures</a>
-<a href="glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
-<a href="articles.html" class="sidebar-link" data-page="articles">articles</a>
-<a href="timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
-<a href="visualize.html" class="sidebar-link" data-page="visualize">visualize</a>
-<a href="contributions.html" class="sidebar-link" data-page="contributions">contributions</a>
-<a href="activity.html" class="sidebar-link" data-page="activity">activity</a>
-<a href="review/index.html" class="sidebar-link" data-page="review">review</a>
-<a href="chat.html" class="sidebar-link" data-page="astro">astro</a>
-<a href="research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
-<a href="admin.html" class="sidebar-link" data-page="admin" style="color:#f59e0b !important;">&#9919; admin</a>
-</nav>
-<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com<br><a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:var(--text-tertiary);text-decoration:none;font-size:12px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
-</aside>
-<div class="topbar">
-<span>March 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>
-<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>
-</div>
-<div class="site-content">
-<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="activity.html" data-page="activity">activity</a><a href="review/index.html" data-page="review">review</a><a href="chat.html" data-page="astro">astro</a><a href="admin.html" data-page="admin">admin</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden &middot; gr-qc</span></div></nav>
 <main class="wide-container">
 
 <!-- ── Login Gate ── -->
@@ -299,10 +275,11 @@
 
   <!-- Tabs -->
   <div class="dash-tabs">
-    <button class="dash-tab active" data-tab="chat">Chat Messages</button>
+    <button class="dash-tab active" data-tab="chat" id="tab-btn-chat">Chat Messages</button>
     <button class="dash-tab" data-tab="analytics">Page Analytics</button>
     <button class="dash-tab" data-tab="activity">Activity Feed</button>
     <button class="dash-tab" data-tab="mcmc">MCMC Status</button>
+    <button class="dash-tab" data-tab="feedback">Feedback</button>
   </div>
 
   <!-- ════════ Chat Messages ════════ -->
@@ -387,6 +364,23 @@
       <div class="loading-text">Loading MCMC status...</div>
     </div>
   </div>
+
+  <!-- ════════ Feedback ════════ -->
+  <div class="dash-section" id="tab-feedback">
+    <h2>Article Feedback Summary</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">Thumbs up/down feedback collected from article pages via the feedback widget.</p>
+    <table class="top-pages-table" id="feedback-table">
+      <thead><tr><th>Page</th><th>&#x1F44D; Up</th><th>&#x1F44E; Down</th><th>Net</th></tr></thead>
+      <tbody id="feedback-body">
+        <tr><td colspan="4" class="loading-text">Loading feedback...</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:32px;">Recent Feedback</h2>
+    <div id="feedback-recent">
+      <div class="loading-text">Loading recent feedback...</div>
+    </div>
+  </div>
 </div>
 
 </main>
@@ -394,11 +388,6 @@
 </div>
 
 <script>
-// ── Active nav highlighting ──
-document.querySelectorAll('[data-page]').forEach(a => {
-  if (a.getAttribute('data-page') === 'admin') a.classList.add('active');
-});
-
 // ── Password Gate ──
 // SHA-256 hash of "bigbounce2026"
 const PASSWORD_HASH = '5f5231ad2fbe8c2b7741139fd9201361935d28ee2e317e0558383df36c1012f4';
@@ -443,6 +432,18 @@ document.querySelectorAll('.dash-tab').forEach(tab => {
     document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    // Track last chat check for unread badge
+    if (tab.dataset.tab === 'chat') {
+      localStorage.setItem('admin_last_chat_check', Date.now().toString());
+      localStorage.setItem('admin_last_chat_count', document.getElementById('chat-today').textContent);
+      var badge = document.getElementById('chat-unread-badge');
+      if (badge) badge.remove();
+    }
+    // Lazy-load feedback tab
+    if (tab.dataset.tab === 'feedback') {
+      loadFeedbackSummary();
+      loadFeedbackRecent();
+    }
   });
 });
 
@@ -457,6 +458,7 @@ function initDashboard() {
   loadTopPages();
   loadActivityFeed();
   loadMCMCStatus();
+  checkUnreadMessages();
 
   // Set default date for activity form
   document.getElementById('act-date').value = new Date().toISOString().slice(0, 10);
@@ -714,6 +716,98 @@ async function loadMCMCStatus() {
   } catch (e) {
     console.error('Failed to load MCMC status:', e);
     document.getElementById('mcmc-grid').innerHTML = '<div class="loading-text" style="color:#dc2626;">Failed to load MCMC status</div>';
+  }
+}
+
+// ════════════════════════════════════
+//  UNREAD CHAT BADGE
+// ════════════════════════════════════
+
+async function checkUnreadMessages() {
+  try {
+    const stats = await client.query('chatMessages:stats', {});
+    const lastCheck = parseInt(localStorage.getItem('admin_last_chat_check') || '0');
+    const lastCount = parseInt(localStorage.getItem('admin_last_chat_count') || '0');
+    const current24h = stats.messagesLast24h || 0;
+    // Show badge if there are new messages since last check
+    if (lastCheck > 0 && current24h > lastCount) {
+      var diff = current24h - lastCount;
+      var chatBtn = document.getElementById('tab-btn-chat');
+      if (chatBtn && !document.getElementById('chat-unread-badge')) {
+        var badge = document.createElement('span');
+        badge.id = 'chat-unread-badge';
+        badge.className = 'unread-badge';
+        badge.textContent = diff > 99 ? '99+' : diff;
+        chatBtn.appendChild(badge);
+      }
+    }
+    // If this is the first visit, set baseline
+    if (!lastCheck) {
+      localStorage.setItem('admin_last_chat_check', Date.now().toString());
+      localStorage.setItem('admin_last_chat_count', String(current24h));
+    }
+  } catch (e) {
+    console.error('Failed to check unread messages:', e);
+  }
+}
+
+// ════════════════════════════════════
+//  FEEDBACK
+// ════════════════════════════════════
+
+let feedbackSummaryLoaded = false;
+let feedbackRecentLoaded = false;
+
+async function loadFeedbackSummary() {
+  if (feedbackSummaryLoaded) return;
+  feedbackSummaryLoaded = true;
+  try {
+    const data = await client.query('feedback:summary', {});
+    const tbody = document.getElementById('feedback-body');
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:20px;">No feedback received yet</td></tr>';
+      return;
+    }
+    // Sort by net score descending
+    data.sort(function(a, b) { return (b.up - b.down) - (a.up - a.down); });
+    tbody.innerHTML = data.map(function(row) {
+      var net = row.up - row.down;
+      var netColor = net > 0 ? '#16a34a' : net < 0 ? '#dc2626' : 'var(--text-muted)';
+      return '<tr>' +
+        '<td>' + escapeHtml(row.page) + '</td>' +
+        '<td style="text-align:center;">' + row.up + '</td>' +
+        '<td style="text-align:center;">' + row.down + '</td>' +
+        '<td style="text-align:center;font-weight:600;color:' + netColor + ';">' + (net > 0 ? '+' : '') + net + '</td>' +
+        '</tr>';
+    }).join('');
+  } catch (e) {
+    console.error('Failed to load feedback summary:', e);
+    document.getElementById('feedback-body').innerHTML = '<tr><td colspan="4" style="color:#dc2626;">Failed to load</td></tr>';
+  }
+}
+
+async function loadFeedbackRecent() {
+  if (feedbackRecentLoaded) return;
+  feedbackRecentLoaded = true;
+  try {
+    const data = await client.query('feedback:recent', { limit: 50 });
+    var container = document.getElementById('feedback-recent');
+    if (!data || data.length === 0) {
+      container.innerHTML = '<div class="loading-text">No recent feedback</div>';
+      return;
+    }
+    container.innerHTML = data.map(function(item) {
+      var page = item.sessionId.replace('feedback_', '');
+      var vote = item.content === 'up' ? '&#x1F44D;' : '&#x1F44E;';
+      return '<div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;font-family:var(--font-sans);">' +
+        '<span style="font-size:18px;">' + vote + '</span>' +
+        '<span style="color:var(--text-secondary);">' + escapeHtml(page) + '</span>' +
+        '<span style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">' + formatTime(item.timestamp) + '</span>' +
+        '</div>';
+    }).join('');
+  } catch (e) {
+    console.error('Failed to load recent feedback:', e);
+    document.getElementById('feedback-recent').innerHTML = '<div class="loading-text" style="color:#dc2626;">Failed to load</div>';
   }
 }
 </script>

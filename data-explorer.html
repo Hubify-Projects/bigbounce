@@ -126,10 +126,9 @@
 @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
 </style>
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="nav.js" defer></script>
 </head>
 <body>
-
-<nav><div class="nav-inner"><a href="index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="index.html" data-page="index">research</a><a href="paper.html" data-page="paper">papers</a><a href="explained.html" data-page="explained">explainer</a><a href="data-explorer.html" data-page="datasets">data</a><a href="figures.html" data-page="figures">figures</a><a href="glossary.html" data-page="glossary">glossary</a><a href="articles.html" data-page="articles">articles</a><a href="timeline.html" data-page="timeline">timeline</a><a href="activity.html" data-page="activity">activity</a><a href="review/index.html" data-page="review">review</a><a href="chat.html" data-page="astro">astro</a><a href="research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden · gr-qc</span></div></nav>
 
 <main>
 <div class="explorer">
@@ -2661,10 +2660,6 @@ function showTree() {
 //  INIT & ACTIVE PAGE
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
-  // Mark active nav
-  document.querySelectorAll('nav a[data-page]').forEach(a => {
-    if (a.dataset.page === 'datasets') a.classList.add('active');
-  });
   selectDataset('fullTension');
 });
 </script>

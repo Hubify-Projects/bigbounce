@@ -7,39 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../style.css">
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="../nav.js" defer></script>
 </head>
 <body>
-<button class="sidebar-toggle" onclick="var s=document.querySelector('.sidebar'),t=this;s.classList.toggle('open');t.style.visibility=s.classList.contains('open')?'hidden':'visible'" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button>
-<aside class="sidebar">
-<a href="../index.html" class="sidebar-brand">bigbounce</a><button class="sidebar-close" onclick="document.querySelector('.sidebar').classList.remove('open');document.querySelector('.sidebar-toggle').style.visibility='visible'">&laquo;</button>
-<nav class="sidebar-nav">
-<a href="../index.html" class="sidebar-section" data-page="index">research/</a>
-<a href="../paper.html" class="sidebar-link" data-page="paper">papers</a>
-<a href="../explained.html" class="sidebar-link" data-page="explained">explainer</a>
-<a href="../datasets.html" class="sidebar-link" data-page="datasets">data/</a>
-<div class="sidebar-sub">
-<a href="../datasets.html" class="sidebar-link">datasets</a>
-<a href="../data-explorer.html" class="sidebar-link">data explorer</a>
-</div>
-<a href="../figures.html" class="sidebar-link" data-page="figures">figures</a>
-<a href="../glossary.html" class="sidebar-link" data-page="glossary">glossary</a>
-<a href="../articles.html" class="sidebar-link" data-page="articles">articles</a>
-<a href="../timeline.html" class="sidebar-link" data-page="timeline">timeline</a>
-<a href="../visualize.html" class="sidebar-link" data-page="visualize">visualize</a>
-<a href="../contributions.html" class="sidebar-link" data-page="contributions">contributions</a>
-<a href="../activity.html" class="sidebar-link" data-page="activity">activity</a>
-<a href="../review/index.html" class="sidebar-link" data-page="review">review</a>
-<a href="../chat.html" class="sidebar-link" data-page="astro">astro</a>
-<a href="../research/project_master_dossier/index.html" class="sidebar-link" data-page="dossier">dossier</a>
-</nav>
-<div class="sidebar-footer">Houston Golden<br>Independent Researcher</div>
-</aside>
-<div class="topbar">
-<span>March 2026 · GR-QC · ASTRO-PH.CO · HEP-TH</span>
-<span class="topbar-right">Houston Golden · Independent Researcher</span>
-</div>
-<div class="site-content">
-<nav><div class="nav-inner"><a href="../index.html" class="brand">bigbounce</a><button class="nav-toggle" onclick="this.parentElement.classList.toggle('open')" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg></button><div class="nav-links"><a href="../index.html" data-page="index">research</a><a href="../paper.html" data-page="paper">papers</a><a href="../explained.html" data-page="explained">explainer</a><a href="../data-explorer.html" data-page="datasets">data</a><a href="../figures.html" data-page="figures">figures</a><a href="../glossary.html" data-page="glossary">glossary</a><a href="../articles.html" data-page="articles">articles</a><a href="../activity.html" data-page="activity">activity</a><a href="../review/index.html" data-page="review">review</a><a href="../chat.html" data-page="astro">astro</a><a href="../research/project_master_dossier/index.html" data-page="dossier">dossier</a></div><span class="nav-meta">Houston Golden · gr-qc</span></div></nav>
 
 <main class="container">
 
@@ -350,10 +321,33 @@
   <p class="text-muted sans" style="font-size: 13px;">See also: <a href="technical-evaluation.html">Technical Evaluation</a> &middot; <a href="publication-roadmap.html">Publication Roadmap</a> &middot; <a href="program-visual-guide.html">Visual Guide</a></p>
 </div>
 
+<div id="feedback-widget" style="margin-top:48px;padding:20px 0;border-top:1px solid var(--border);text-align:center;font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);">
+  Was this helpful?
+  <button onclick="sendFeedback('up')" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
+  <button onclick="sendFeedback('down')" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
+  <span id="fb-thanks" style="display:none;margin-left:12px;color:#16a34a;">Thanks!</span>
+</div>
+<script>
+function sendFeedback(vote) {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    c.mutation("chatMessages:log", {
+      sessionId: "feedback_" + location.pathname,
+      role: "feedback",
+      content: vote,
+      pageContext: { title: document.title, path: location.pathname },
+      timestamp: Date.now()
+    });
+    document.getElementById('fb-up').disabled = true;
+    document.getElementById('fb-down').disabled = true;
+    document.getElementById('fb-thanks').style.display = 'inline';
+  } catch(e) {}
+}
+</script>
+
 </main>
 
 <footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
-<script>document.querySelectorAll('nav a[data-page]').forEach(a=>{if(a.getAttribute('data-page')==='articles')a.classList.add('active')});</script>
 </div><script src="/astro/chat-widget.js" defer></script>
 </body>
 </html>

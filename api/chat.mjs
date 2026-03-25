@@ -128,11 +128,12 @@ export default async function handler(request) {
     });
   }
 
-  let messages, pageContext;
+  let messages, pageContext, clientSessionId;
   try {
     const body = await request.json();
     messages = body.messages;
     pageContext = body.pageContext;
+    clientSessionId = body.sessionId;
     if (!Array.isArray(messages) || messages.length === 0) {
       throw new Error('messages required');
     }
@@ -149,7 +150,8 @@ export default async function handler(request) {
   }));
 
   // ── Generate session ID and IP hash for logging ──
-  const sessionId = makeSessionId(ip);
+  // Prefer client-provided sessionId (for cross-page persistence), fall back to IP-based
+  const sessionId = (typeof clientSessionId === 'string' && clientSessionId.length > 0) ? clientSessionId : makeSessionId(ip);
   const ipHash = hashIP(ip);
   const pageCtx = pageContext
     ? { title: pageContext.title || undefined, path: pageContext.path || undefined }

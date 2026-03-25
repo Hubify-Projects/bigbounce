@@ -17,6 +17,13 @@
   let isFullPage = false;
   let abortController = null;
 
+  // ── Session ID (persists across page navigations within same browser session) ──
+  var sessionId = sessionStorage.getItem('astro_session') || (function() {
+    var id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    sessionStorage.setItem('astro_session', id);
+    return id;
+  })();
+
   // ── Detect full-page mode ──
   const fullPageMount = document.getElementById('astro-full-chat');
   if (fullPageMount) isFullPage = true;
@@ -408,7 +415,8 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: sendMsgs,
-          pageContext: getPageContext()
+          pageContext: getPageContext(),
+          sessionId: sessionId
         }),
         signal: abortController.signal
       });
@@ -492,12 +500,46 @@
     }
   }
 
+  // ── Restore previous messages from Convex ──
+  function restoreMessages(msgArea) {
+    try {
+      if (!window.convex) return;
+      var c = new convex.ConvexHttpClient('https://impressive-quail-879.convex.cloud');
+      c.query('chatMessages:bySession', { sessionId: sessionId }).then(function(stored) {
+        if (!stored || stored.length === 0 || messages.length > 0) return;
+        // Sort by timestamp ascending
+        stored.sort(function(a, b) { return a.timestamp - b.timestamp; });
+        // Filter to user and assistant messages only
+        var restored = stored.filter(function(m) { return m.role === 'user' || m.role === 'assistant'; });
+        if (restored.length === 0) return;
+        // Clear welcome message
+        var welcome = msgArea.querySelector('.astro-welcome');
+        if (welcome) welcome.remove();
+        // Render restored messages
+        for (var i = 0; i < restored.length; i++) {
+          var m = restored[i];
+          messages.push({ role: m.role, content: m.content });
+          var el = document.createElement('div');
+          el.className = 'astro-msg ' + m.role;
+          if (m.role === 'assistant') {
+            el.innerHTML = renderMarkdown(m.content);
+          } else {
+            el.textContent = m.content;
+          }
+          msgArea.appendChild(el);
+        }
+        msgArea.scrollTop = msgArea.scrollHeight;
+      }).catch(function() {});
+    } catch(e) {}
+  }
+
   // ── Initialize ──
   function init() {
     if (isFullPage) {
       // Full-page mode
       fullPageMount.classList.add('astro-full');
-      buildPanel(fullPageMount);
+      const { msgArea } = buildPanel(fullPageMount);
+      restoreMessages(msgArea);
       const input = fullPageMount.querySelector('.astro-input');
       if (input) setTimeout(() => input.focus(), 200);
     } else {
@@ -512,7 +554,8 @@
       // Create panel
       const panel = document.createElement('div');
       panel.className = 'astro-panel';
-      buildPanel(panel);
+      const { msgArea } = buildPanel(panel);
+      restoreMessages(msgArea);
       document.body.appendChild(panel);
 
       // Close on Escape
