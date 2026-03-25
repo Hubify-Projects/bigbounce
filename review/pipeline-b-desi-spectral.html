@@ -6,6 +6,7 @@
 <title>Pipeline B: DESI Spectral Anomaly Miner — Human Review</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <style>
 /* ── Pipeline B Review Styles ── */
 .review-controls {
@@ -390,14 +391,45 @@ const TOP20_QSO = [
 
 const STORAGE_KEY = "pipelineB_reviews";
 const CHECKLIST_KEY = "pipelineB_checklist";
+const PIPELINE_ID = "pipeline-b";
 let reviews = {};   // keyed by "top50_{rank}" or "qso_{rank}"
 let expandedRow = null;
 
+// ── Convex Client ──
+let convexClient = null;
+let convexReady = false;
+try {
+  convexClient = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+  convexReady = true;
+} catch(e) {
+  console.warn("Convex client unavailable, using localStorage only:", e);
+}
+
 function loadReviews() {
+  // Load from localStorage first (instant)
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) reviews = JSON.parse(raw);
   } catch(e) { reviews = {}; }
+
+  // Then load from Convex in background and merge
+  if (convexReady) {
+    convexClient.query("reviews:byPipeline", { pipelineId: PIPELINE_ID })
+      .then(function(rows) {
+        if (!rows || rows.length === 0) return;
+        rows.forEach(function(row) {
+          const key = row.objectId; // stored as "top50_1", "qso_3", etc.
+          if (!reviews[key]) reviews[key] = {};
+          // Convex is authoritative — overwrite localStorage values
+          if (row.label) reviews[key].label = row.label;
+          if (row.humanNotes) reviews[key].notes = row.humanNotes;
+        });
+        // Sync merged state back to localStorage
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+        renderAll();
+      })
+      .catch(function(e) { console.warn("Convex load failed, using localStorage:", e); });
+  }
 }
 
 function getReview(tableKey, rank) {
@@ -409,6 +441,8 @@ function setReview(tableKey, rank, field, value) {
   const key = tableKey + "_" + rank;
   if (!reviews[key]) reviews[key] = {};
   reviews[key][field] = value;
+  // Track which key changed for Convex sync
+  autoSave._lastKey = key;
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -660,11 +694,60 @@ function applyFilter() {
 // ═══════════════════════════════════════════════════════════
 
 function autoSave() {
+  // Always save to localStorage (instant)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  // Push changed review to Convex in background
+  if (convexReady && autoSave._lastKey) {
+    const key = autoSave._lastKey;
+    const r = reviews[key];
+    if (r) {
+      // Look up the source data for ai_label and ai_reason
+      const parts = key.split("_");
+      const tableKey = parts[0] === "qso" ? "qso" : "top50";
+      const rank = parseInt(parts.slice(tableKey === "qso" ? 1 : 1).join("_"));
+      const source = (tableKey === "top50" ? TOP50 : TOP20_QSO).find(d => d.rank === rank);
+      convexClient.mutation("reviews:save", {
+        pipelineId: PIPELINE_ID,
+        objectId: key,
+        label: r.label || (source ? source.ai_label : ""),
+        aiLabel: source ? source.ai_label : "",
+        aiReason: source ? source.ai_reason : "",
+        humanNotes: r.notes || "",
+        reviewerName: "Houston",
+        reviewedAt: Date.now(),
+        metadata: source ? { ra: source.ra, dec: source.dec, z: source.z, type: source.type, zwarn: source.zwarn } : {},
+      }).catch(function(e) { console.warn("Convex save failed:", e); });
+    }
+    autoSave._lastKey = null;
+  }
 }
 
 function saveAllReviews() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  // Batch-save all reviews to Convex
+  if (convexReady) {
+    const allData = [].concat(
+      TOP50.map(function(d) { return { tableKey: "top50", d: d }; }),
+      TOP20_QSO.map(function(d) { return { tableKey: "qso", d: d }; })
+    );
+    allData.forEach(function(item) {
+      const key = item.tableKey + "_" + item.d.rank;
+      const r = reviews[key];
+      if (r && (r.label || r.notes)) {
+        convexClient.mutation("reviews:save", {
+          pipelineId: PIPELINE_ID,
+          objectId: key,
+          label: r.label || item.d.ai_label,
+          aiLabel: item.d.ai_label,
+          aiReason: item.d.ai_reason,
+          humanNotes: r.notes || "",
+          reviewerName: "Houston",
+          reviewedAt: Date.now(),
+          metadata: { ra: item.d.ra, dec: item.d.dec, z: item.d.z, type: item.d.type, zwarn: item.d.zwarn },
+        }).catch(function(e) { console.warn("Convex batch save failed for " + key + ":", e); });
+      }
+    });
+  }
   const msg = document.getElementById("saved-msg");
   msg.classList.add("show");
   setTimeout(() => msg.classList.remove("show"), 2000);
@@ -722,7 +805,7 @@ function exportJSON() {
 }
 
 function resetAllReviews() {
-  if (!confirm("Reset all labels and notes to AI defaults? This cannot be undone.")) return;
+  if (!confirm("Reset all labels and notes to AI defaults? This cannot be undone (localStorage will be cleared; Convex data will remain as backup).")) return;
   reviews = {};
   localStorage.removeItem(STORAGE_KEY);
   expandedRow = null;
@@ -736,6 +819,21 @@ function resetAllReviews() {
 function saveChecklist() {
   const state = getChecklistState();
   localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+  // Sync each checklist item to Convex
+  if (convexReady) {
+    const categories = ["leakage","leakage","leakage","astrophysical","astrophysical","astrophysical","instrument","instrument","instrument","falsification","falsification","falsification"];
+    for (let i = 0; i < 12; i++) {
+      const cb = document.getElementById("rt-" + i);
+      if (!cb) continue;
+      const text = cb.parentElement.querySelector(".risk-text");
+      convexClient.mutation("checklist:save", {
+        pipelineId: PIPELINE_ID,
+        category: categories[i] || "other",
+        text: text ? text.textContent.trim() : "rt-" + i,
+        status: cb.checked ? "addressed" : "not_started",
+      }).catch(function(e) { console.warn("Convex checklist save failed:", e); });
+    }
+  }
 }
 
 function getChecklistState() {
@@ -748,6 +846,7 @@ function getChecklistState() {
 }
 
 function loadChecklist() {
+  // Load from localStorage first
   try {
     const raw = localStorage.getItem(CHECKLIST_KEY);
     if (!raw) return;
@@ -757,6 +856,31 @@ function loadChecklist() {
       if (cb) cb.checked = state[id];
     });
   } catch(e) {}
+  // Then sync from Convex
+  if (convexReady) {
+    convexClient.query("checklist:byPipeline", { pipelineId: PIPELINE_ID })
+      .then(function(items) {
+        if (!items || items.length === 0) return;
+        // Map checklist items back to checkboxes by matching text
+        const checkboxes = [];
+        for (let i = 0; i < 12; i++) {
+          const cb = document.getElementById("rt-" + i);
+          if (cb) {
+            const text = cb.parentElement.querySelector(".risk-text");
+            checkboxes.push({ el: cb, text: text ? text.textContent.trim() : "" });
+          }
+        }
+        items.forEach(function(item) {
+          const match = checkboxes.find(function(c) { return c.text === item.text; });
+          if (match) {
+            match.el.checked = (item.status === "addressed" || item.status === "in_progress");
+          }
+        });
+        // Sync back to localStorage
+        localStorage.setItem(CHECKLIST_KEY, JSON.stringify(getChecklistState()));
+      })
+      .catch(function(e) { console.warn("Convex checklist load failed:", e); });
+  }
 }
 
 // ═══════════════════════════════════════════════════════════
