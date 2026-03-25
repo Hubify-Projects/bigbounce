@@ -430,19 +430,19 @@ let collapseP = [];
 let expandP = [];
 
 function spawnCollapse(p) {
-  p.param = Math.random() * 0.35; // position along funnel (0 = left edge, THROAT ≈ 0.4 = throat)
+  p.baseParam = 0.02 + Math.random() * (THROAT - 0.04); // rest position spread across left side
   p.lane = (Math.random() * 2 - 1) * 0.85;
-  p.speed = 0.015 + Math.random() * 0.025;
   p.size = 0.8 + Math.random() * 2;
   p.flicker = Math.random() * 6.28;
+  p.drift = Math.random() * 6.28; // phase offset for gentle drift
 }
 
 function spawnExpand(p) {
-  p.param = THROAT + Math.random() * 0.02;
-  p.lane = (Math.random() * 2 - 1) * 0.3;
-  p.speed = 0.02 + Math.random() * 0.035;
+  p.baseParam = THROAT + 0.03 + Math.random() * (0.96 - THROAT); // rest position spread across right side
+  p.lane = (Math.random() * 2 - 1) * 0.85;
   p.size = 0.8 + Math.random() * 2.2;
   p.flicker = Math.random() * 6.28;
+  p.drift = Math.random() * 6.28;
 }
 
 function initParticles() {
@@ -451,13 +451,11 @@ function initParticles() {
   for (let i = 0; i < N_COLLAPSE; i++) {
     const p = {};
     spawnCollapse(p);
-    p.param = Math.random() * THROAT; // spread across funnel initially
     collapseP.push(p);
   }
   for (let i = 0; i < N_EXPAND; i++) {
     const p = {};
     spawnExpand(p);
-    p.param = THROAT + Math.random() * (1 - THROAT);
     expandP.push(p);
   }
 }
@@ -545,7 +543,10 @@ function drawBackground(time) {
 //  DRAW: FUNNEL (the hourglass membrane)
 // ═══════════════════════════════════════
 function drawFunnel(time) {
-  // Energy pulsing along edges
+  // Right side only reveals after the bounce
+  const rightReveal = smoothstep(0.36, 0.56, progress);
+  const maxX = Math.round(throatX + rightReveal * (W - throatX));
+
   const pulse = 0.5 + 0.5 * Math.sin(time * 0.0015);
   const throatIntensity = smoothstep(0.1, 0.36, progress) * 2;
 
@@ -559,20 +560,22 @@ function drawFunnel(time) {
   ];
 
   for (const pass of passes) {
-    // Color gradient along the funnel: warm left → bright center → cool right
-    const grad = ctx.createLinearGradient(0, 0, W, 0);
+    const grad = ctx.createLinearGradient(0, 0, maxX, 0);
     grad.addColorStop(0, `rgba(255, 120, 40, ${pass.a * 0.6})`);
-    grad.addColorStop(THROAT * 0.5, `rgba(255, 180, 80, ${pass.a * 0.8})`);
-    grad.addColorStop(THROAT, `rgba(180, 220, 255, ${pass.a * (1 + throatIntensity)})`);
-    grad.addColorStop(THROAT + 0.15, `rgba(100, 160, 255, ${pass.a * 0.8})`);
-    grad.addColorStop(1, `rgba(60, 100, 220, ${pass.a * 0.5})`);
+    const throatNorm = throatX / maxX;
+    grad.addColorStop(Math.min(throatNorm * 0.5, 0.99), `rgba(255, 180, 80, ${pass.a * 0.8})`);
+    grad.addColorStop(Math.min(throatNorm, 0.99), `rgba(180, 220, 255, ${pass.a * (1 + throatIntensity)})`);
+    if (rightReveal > 0.05) {
+      grad.addColorStop(Math.min(throatNorm + 0.15 * (1 / (maxX / W)), 0.99), `rgba(100, 160, 255, ${pass.a * 0.8 * rightReveal})`);
+    }
+    grad.addColorStop(1, rightReveal > 0.05 ? `rgba(60, 100, 220, ${pass.a * 0.5 * rightReveal})` : `rgba(180, 220, 255, ${pass.a})`);
 
     ctx.lineWidth = pass.w;
     ctx.strokeStyle = grad;
 
-    // Top edge
+    // Top edge — only draw to maxX
     ctx.beginPath();
-    for (let x = 0; x <= W; x += 3) {
+    for (let x = 0; x <= maxX; x += 3) {
       const y = cy - fH(x);
       if (x === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
@@ -581,7 +584,7 @@ function drawFunnel(time) {
 
     // Bottom edge
     ctx.beginPath();
-    for (let x = 0; x <= W; x += 3) {
+    for (let x = 0; x <= maxX; x += 3) {
       const y = cy + fH(x);
       if (x === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
@@ -589,28 +592,28 @@ function drawFunnel(time) {
     ctx.stroke();
   }
 
-  // Subtle interior fill
+  // Subtle interior fill (only drawn portion)
   ctx.beginPath();
-  for (let x = 0; x <= W; x += 3) ctx.lineTo(x, cy - fH(x));
-  for (let x = W; x >= 0; x -= 3) ctx.lineTo(x, cy + fH(x));
+  for (let x = 0; x <= maxX; x += 3) ctx.lineTo(x, cy - fH(x));
+  for (let x = maxX; x >= 0; x -= 3) ctx.lineTo(x, cy + fH(x));
   ctx.closePath();
-  const fillGrad = ctx.createLinearGradient(0, 0, W, 0);
+  const fillGrad = ctx.createLinearGradient(0, 0, maxX, 0);
   const fillA = 0.02 + pulse * 0.008;
   fillGrad.addColorStop(0, `rgba(180, 80, 30, ${fillA})`);
-  fillGrad.addColorStop(THROAT, `rgba(150, 180, 255, ${fillA * 2})`);
+  fillGrad.addColorStop(Math.min(throatX / maxX, 0.99), `rgba(150, 180, 255, ${fillA * 2})`);
   fillGrad.addColorStop(1, `rgba(40, 60, 150, ${fillA * 0.8})`);
   ctx.fillStyle = fillGrad;
   ctx.fill();
 
-  // Energy sparks along edges
+  // Energy sparks — only on visible portion
   const sparkCount = 30;
   const sparkAlpha = 0.3 + pulse * 0.2;
   for (let i = 0; i < sparkCount; i++) {
-    const sx = ((time * 0.0002 * (1 + i * 0.03) + i * 0.0618) % 1) * W;
+    const sx = ((time * 0.0002 * (1 + i * 0.03) + i * 0.0618) % 1) * maxX;
+    if (sx > maxX) continue;
     const topY = cy - fH(sx);
     const botY = cy + fH(sx);
-    const edge = i % 2 === 0;
-    const ey = edge ? topY : botY;
+    const ey = (i % 2 === 0) ? topY : botY;
     const pr = sx / W;
     const hue = pr < THROAT ? lerp(25, 200, pr / THROAT) : lerp(200, 250, (pr - THROAT) / (1 - THROAT));
     ctx.beginPath();
@@ -667,57 +670,55 @@ function drawThroatGlow(time) {
 //  DRAW: COLLAPSE PARTICLES (left → throat)
 // ═══════════════════════════════════════
 function drawCollapseParticles(time, dt) {
-  const collapseAlpha = 1 - smoothstep(0.40, 0.52, progress);
+  const collapseAlpha = 1 - smoothstep(0.40, 0.50, progress);
   if (collapseAlpha < 0.01) return;
 
-  // Speed factor increases as we approach the bounce
-  const urgency = 1 + smoothstep(0.15, 0.36, progress) * 3;
+  // Compression: 0 = particles at rest positions, 1 = all compressed to throat
+  const compression = smoothstep(0.0, 0.36, progress);
 
   for (let i = 0; i < collapseP.length; i++) {
     const p = collapseP[i];
 
-    // Move toward throat — accelerate near the throat
-    const distFrac = (THROAT - p.param) / THROAT;
-    const accel = 1 + (1 - distFrac) * 4; // faster near throat
-    p.param += p.speed * accel * urgency * (dt / 16);
+    // Position driven by progress — moves from baseParam toward throat
+    const targetParam = lerp(p.baseParam, THROAT - 0.005, easeIn(compression));
+    // Gentle organic drift (not wild motion)
+    const drift = Math.sin(time * 0.0008 + p.drift) * 0.012 * (1 - compression);
+    const param = Math.max(0.01, Math.min(THROAT - 0.005, targetParam + drift));
 
-    // Compress lane toward center near throat
-    const compression = Math.pow(distFrac, 0.4);
-    const effectiveLane = p.lane * compression;
+    // Lane compresses toward center as particles approach throat
+    const laneCompression = lerp(1, 0.08, easeIn(compression));
+    const effectiveLane = p.lane * laneCompression;
 
     // Screen position
-    const px = p.param * W;
+    const px = param * W;
     const maxY = fH(px);
     const py = cy + effectiveLane * maxY;
 
-    // Color: warm red-orange → hot yellow-white near throat
-    const proximity = 1 - distFrac;
-    const hue = lerp(15, 50, proximity);
-    const light = lerp(55, 88, proximity * proximity);
-    const sat = lerp(90, 70, proximity);
-    const alpha = lerp(0.3, 0.85, proximity) * collapseAlpha;
-    const sz = p.size * lerp(0.7, 1.6, proximity);
+    // Color: warm red-orange (spread) → hot yellow-white (compressed)
+    const hue = lerp(15, 50, compression);
+    const light = lerp(55, 85, compression * compression);
+    const sat = lerp(90, 70, compression);
+    const alpha = lerp(0.35, 0.8, compression) * collapseAlpha;
+    const sz = p.size * lerp(0.8, 1.4, compression);
 
-    // Flicker
-    const flicker = 0.7 + 0.3 * Math.sin(time * 0.004 + p.flicker);
+    // Gentle flicker
+    const flicker = 0.8 + 0.2 * Math.sin(time * 0.002 + p.flicker);
 
     ctx.beginPath();
     ctx.arc(px, py, sz * flicker, 0, 6.2832);
     ctx.fillStyle = `hsla(${hue}, ${sat}%, ${light}%, ${alpha * flicker})`;
     ctx.fill();
 
-    // Glow for hot particles near throat
-    if (proximity > 0.6) {
+    // Glow when compressed near throat
+    if (compression > 0.5) {
       const glowR = sz * 3;
+      const glowA = alpha * 0.2 * (compression - 0.5) * 2;
       const gg = ctx.createRadialGradient(px, py, 0, px, py, glowR);
-      gg.addColorStop(0, `hsla(${hue}, 80%, 80%, ${alpha * 0.3 * flicker})`);
+      gg.addColorStop(0, `hsla(${hue}, 80%, 80%, ${glowA})`);
       gg.addColorStop(1, `hsla(${hue}, 80%, 60%, 0)`);
       ctx.fillStyle = gg;
       ctx.fillRect(px - glowR, py - glowR, glowR * 2, glowR * 2);
     }
-
-    // Respawn if past throat
-    if (p.param >= THROAT - 0.01) spawnCollapse(p);
   }
 }
 
@@ -725,53 +726,52 @@ function drawCollapseParticles(time, dt) {
 //  DRAW: EXPANSION PARTICLES (throat → right)
 // ═══════════════════════════════════════
 function drawExpansionParticles(time, dt) {
-  const expandAlpha = smoothstep(0.38, 0.46, progress);
+  const expandAlpha = smoothstep(0.39, 0.48, progress);
   if (expandAlpha < 0.01) return;
 
-  const vigor = lerp(3, 0.8, smoothstep(0.42, 0.85, progress));
+  // Expansion: 0 = all at throat, 1 = fully spread to rest positions
+  const expansion = smoothstep(0.39, 0.88, progress);
 
   for (let i = 0; i < expandP.length; i++) {
     const p = expandP[i];
 
-    // Move away from throat
-    const distFromThroat = (p.param - THROAT) / (1 - THROAT);
-    const decel = 1 + (1 - distFromThroat) * 2;
-    p.param += p.speed * decel * vigor * (dt / 16);
+    // Position driven by progress — moves from throat toward baseParam
+    const targetParam = lerp(THROAT + 0.005, p.baseParam, easeOut(expansion));
+    const drift = Math.sin(time * 0.0008 + p.drift) * 0.008 * expansion;
+    const param = Math.min(0.99, targetParam + drift);
 
-    // Lane spreads out as particles move right
-    const spread = Math.pow(Math.max(0, distFromThroat), 0.3);
-    const effectiveLane = p.lane * spread;
+    // Lane starts compressed, spreads as particles expand
+    const effectiveLane = p.lane * easeOut(expansion);
 
     // Screen position
-    const px = p.param * W;
+    const px = param * W;
     const maxY = fH(px);
     const py = cy + effectiveLane * maxY;
 
-    // Color: white-blue → cool blue-purple
-    const hue = lerp(210, 275, distFromThroat);
-    const light = lerp(82, 55, distFromThroat);
-    const sat = lerp(60, 75, distFromThroat);
-    const alpha = lerp(0.8, 0.25, distFromThroat) * expandAlpha;
-    const sz = p.size * lerp(1.4, 0.6, distFromThroat);
+    // Color: white-blue (near throat) → cool blue-purple (spread out)
+    const distNorm = (param - THROAT) / (1 - THROAT);
+    const hue = lerp(210, 275, distNorm);
+    const light = lerp(82, 55, distNorm);
+    const sat = lerp(60, 75, distNorm);
+    const alpha = lerp(0.75, 0.25, distNorm) * expandAlpha;
+    const sz = p.size * lerp(1.3, 0.6, distNorm);
 
-    const flicker = 0.7 + 0.3 * Math.sin(time * 0.003 + p.flicker);
+    const flicker = 0.8 + 0.2 * Math.sin(time * 0.002 + p.flicker);
 
     ctx.beginPath();
     ctx.arc(px, py, sz * flicker, 0, 6.2832);
     ctx.fillStyle = `hsla(${hue}, ${sat}%, ${light}%, ${alpha * flicker})`;
     ctx.fill();
 
-    // Glow for particles near throat
-    if (distFromThroat < 0.15) {
+    // Glow for particles still near throat
+    if (distNorm < 0.12 && expansion < 0.5) {
       const glowR = sz * 3;
       const gg = ctx.createRadialGradient(px, py, 0, px, py, glowR);
-      gg.addColorStop(0, `hsla(${hue}, 70%, 80%, ${alpha * 0.25})`);
+      gg.addColorStop(0, `hsla(${hue}, 70%, 80%, ${alpha * 0.2})`);
       gg.addColorStop(1, `hsla(${hue}, 70%, 60%, 0)`);
       ctx.fillStyle = gg;
       ctx.fillRect(px - glowR, py - glowR, glowR * 2, glowR * 2);
     }
-
-    if (p.param >= 0.99) spawnExpand(p);
   }
 }
 
