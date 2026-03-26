@@ -1,11 +1,11 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-03-25 22:30 UTC
+**Last updated:** 2026-03-26
 **DO NOT TERMINATE ANY PODS without explicit user approval.**
 
 ---
 
-## Pod 1: H200 Beast — DESI DR1 Spectral Anomaly Inference
+## Pod 1: H200 Beast — DESI DR1 Spectral Anomaly Inference -- COMPLETE
 | Field | Value |
 |-------|-------|
 | **Pod ID** | `rtv8cegaw1618r` (defeated_harlequin_lemming) |
@@ -14,13 +14,12 @@
 | **Pipeline** | Pipeline B — DESI DR1 GPU inference |
 | **Script** | `/workspace/desi_dr1/run_dr1_parallel.py` |
 | **Log** | `/workspace/desi_dr1/dr1_log.txt` |
-| **Progress** | 19,600/27,488 batches (71%), 12.8M spectra, 119,667 anomalies |
-| **Rate** | 889 spectra/sec |
-| **ETA** | ~1.6 hours from last check |
-| **Anomaly rate** | ~0.94% |
+| **Progress** | **COMPLETE** — 18M spectra processed, 195,829 anomalies found (1.08%) |
+| **Rate** | 889 spectra/sec (peak) |
+| **Anomaly rate** | 1.08% |
 | **Dataset** | DESI DR1 full spectroscopic catalog (~18M spectra) |
 
-**What this produces:** Survey-scale anomaly catalog from ALL DESI DR1 spectra. These anomalies are objects with unusual spectral features that standard pipelines miss — potential new high-z tracers, unusual AGN, or genuinely novel objects.
+**Result:** Survey-scale anomaly catalog from ALL DESI DR1 spectra. 195,829 anomalies found. 99.8% absent from SIMBAD. 0% known QSOs. Galaxies 19x more anomalous than QSOs. Model published on HuggingFace. Anomaly Explorer page live on website.
 
 ---
 
@@ -42,7 +41,7 @@
 
 ---
 
-## Pod 3: RTX A4000 — w0-wa Quintom MCMC
+## Pod 3: RTX A4000 — w0-wa Quintom MCMC -- CONVERGED
 | Field | Value |
 |-------|-------|
 | **Pod ID** | `fn19oivkjowmq4` (electronic_indigo_bison) |
@@ -52,12 +51,11 @@
 | **Script** | `cobaya-run cobaya_w0wa_quintom_test.yaml` |
 | **Log** | `/workspace/mcmc_w0wa.log` |
 | **Chains** | `/workspace/chains/w0wa_quintom/spin_torsion.1.txt` |
-| **Progress** | 9,411 accepted samples, R-1 = 0.098 (target: 0.01) |
+| **Progress** | **CONVERGED** — 50,900 accepted samples, R-1 < 0.01 |
 | **Rate** | ~30 accepted/min |
-| **ETA** | ~2-3 hours to convergence |
 | **Data** | Planck 2018 NPIPE + SDSS DR16 BAO + Pantheon+ |
 
-**Preliminary result:** w0 = -0.870 ± 0.060, wa = -0.550 ± 0.245, P(quintom-B) = 98.6%. Independently confirms DESI DR2 w-crossing at 2.3σ.
+**Final result:** w0 = -0.871 +/- 0.060, wa = -0.542 +/- 0.245, P(quintom-B) = 98.6%. Independently confirms DESI DR2 w-crossing at 2.3 sigma. Chains frozen and backed up.
 
 ---
 
@@ -89,10 +87,10 @@
 
 | Location | What's there | Last updated |
 |----------|-------------|-------------|
-| **Local disk** | All chains, scripts, figures | 2026-03-25 22:30 |
-| **GitHub** | Committed and pushed (main) | 2026-03-25 22:30 |
-| **Backblaze B2** | MCMC chains + scripts + figures | 2026-03-25 22:30 |
-| **HuggingFace** | `bamfai/bigbounce-mcmc` (private dataset) | 2026-03-25 22:30 |
+| **Local disk** | All chains, scripts, figures, anomaly catalog | 2026-03-26 |
+| **GitHub** | Committed and pushed (main) | 2026-03-26 |
+| **Backblaze B2** | MCMC chains + scripts + figures | 2026-03-26 |
+| **HuggingFace** | `bamfai/bigbounce-mcmc` (private dataset), `bamfai/desi-spectral-anomaly-detector` (model) | 2026-03-26 |
 | **RunPod pods** | Live data on each pod | Running |
 
 ---

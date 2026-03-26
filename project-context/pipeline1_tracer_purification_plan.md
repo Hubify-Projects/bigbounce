@@ -1,8 +1,8 @@
 # Pipeline 1: High-z Tracer Purification for f_NL
 
-**Last updated:** 2026-03-25
+**Last updated:** 2026-03-26
 **Priority:** HIGHEST AI PIPELINE — directly improves the f_NL measurement
-**Status:** Anomaly catalog 71% complete on H200. Cross-matching and purification NOT started.
+**Status:** Anomaly catalog COMPLETE (195,829 anomalies from 18M spectra). Cross-matching and purification steps 2-6 NOT started.
 
 ---
 
@@ -32,45 +32,41 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 
 ## What's Done
 
-### 1. DESI DR1 Anomaly Catalog (H200 pod — finishing now)
+### 1. DESI DR1 Anomaly Catalog (H200 pod) -- DONE
 - **Script:** `/workspace/desi_dr1/run_dr1_parallel.py` on pod `rtv8cegaw1618r`
 - **Model:** Spectral autoencoder trained on known DESI spectral classes
-- **Progress:** 12.8M/~18M spectra processed (71%), 119,667 anomalies found (0.94%)
-- **Output:** Anomaly scores + reconstructions for every DESI DR1 spectrum
-- **ETA:** ~1-2 hours from 2026-03-25 22:30 UTC
-- **Checkpoint:** `/workspace/desi_dr1/outputs/dr1_checkpoint.json`
+- **Result:** 195,829 anomalies from ~18M spectra (1.08% anomaly rate). COMPLETE.
+- **Output:** Full anomaly catalog with scores, band residuals, classifications
+- **Cross-match:** 99.8% absent from SIMBAD, 0% known QSOs, galaxies 19x more anomalous than QSOs
+- **Model published:** HuggingFace `bamfai/desi-spectral-anomaly-detector`
 
-### 2. Bispectrum Template Recast (P1a — complete)
+### 2. Bispectrum Template Recast (P1a) -- DONE
 - **Script:** `pipelines/p1a_bispectrum_recast/bispectrum_recast.py`
 - **Result:** Planck f_NL = -0.9 ± 5.1 projected onto bounce template (α_L = 0.97) gives f_NL = -3.89 ± 4.76
-- **Status:** RECAST ONLY — not a new measurement from maps
+- **Status:** DONE — RECAST ONLY — not a new measurement from maps
 
-### 3. DESI f_NL Combination (P1b — complete)
+### 3. DESI f_NL Combination (P1b) -- DONE
 - **Script:** `pipelines/p1b_desi_fnl/desi_fnl_forecast.py`
 - **Result:** Combined Planck + all DESI gives σ(f_NL) = 2.94
-- **Status:** RECAST ONLY — combines published numbers
+- **Status:** DONE — RECAST ONLY — combines published numbers
 
-### 4. Tracer Purification MVP Estimate (P1 — complete)
+### 4. Tracer Purification MVP Estimate (P1) -- DONE
 - **Output:** `pipelines/p1_highz_tracers/outputs/tracer_purification_mvp.json`
 - **Result:** Purification could improve σ from 9.1 → 4.6 (1.97x), combined with Planck → 3.3
-- **Status:** STATISTICAL ESTIMATE ONLY — no model trained, no cross-match done
+- **Status:** DONE — STATISTICAL ESTIMATE ONLY — no model trained, no cross-match done
 
-### 5. High-z QSO Candidates from Earlier Anomaly Run
+### 5. High-z QSO Candidates from Earlier Anomaly Run -- DONE
 - **Output:** `research/current_data_extraction/F2_lss_png/outputs/highz_qso_tracer_candidates.json`
 - **Result:** 500 candidate high-z QSOs with highest anomaly scores from an earlier smaller run
-- **Status:** Candidates identified but not validated
+- **Status:** DONE — Candidates identified but not validated
 
 ---
 
-## What's NOT Done (the novel work)
+## What's NOT Done (the novel work — Steps 2-6 below)
 
-### Step 1: Pull and catalog the full H200 anomaly results
-**When:** Immediately after H200 finishes (~1-2 hours)
-**What:**
-- Pull all anomaly scores and reconstructions from the pod
-- Build a structured anomaly catalog with columns: TARGETID, RA, DEC, z, anomaly_score, reconstruction_error, DESI_class, spectrum_type
-- Basic statistics: score distribution, spatial distribution, redshift distribution
-- Save to `pipelines/p1_highz_tracers/outputs/desi_dr1_anomaly_catalog.parquet`
+### Step 1: Pull and catalog the full H200 anomaly results -- DONE
+**Completed:** 2026-03-26
+**Result:** 195,829 anomalies cataloged with TARGETID, RA, DEC, z, anomaly_score, band residuals, DESI class, spectrum type. Full sky map, score distribution, and classification analysis complete. Anomaly Explorer page live at bigbounce.hubify.app/anomaly-explorer.html. Top 1,000 browsable with Legacy Survey images.
 
 ### Step 2: Cross-match anomalies with Legacy Survey + unWISE
 **When:** After Step 1
@@ -115,8 +111,10 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 - **This is the publishable measurement** (if the improvement is real)
 - Save to `pipelines/p1_highz_tracers/outputs/enhanced_fnl_constraint.json`
 
-### Step 6: Paper
-**Title:** "AI-purified high-z tracer catalog from DESI DR1 anomaly mining for improved primordial non-Gaussianity constraints"
+### Step 6: Paper -- DRAFT EXISTS (Paper 3, v0.1)
+**Title:** "DESI DR1 Spectral Anomaly Catalog: 195,829 Uncharacterized Objects from 18M Spectra"
+**Status:** v0.1 draft (~2,800 words) exists. This is now Paper 3 in the program. The anomaly catalog + methodology is documented; tracer purification results (Steps 2-5 of the novel work below) will be added once those steps are completed.
+**Original planned title:** "AI-purified high-z tracer catalog from DESI DR1 anomaly mining for improved primordial non-Gaussianity constraints"
 **Structure:**
 1. Introduction: f_NL as bounce discriminator, current constraints, room for improvement
 2. Anomaly detection pipeline: autoencoder architecture, training, DESI DR1 inference
@@ -146,7 +144,7 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 
 | Dataset | Size | Where to get it | Status |
 |---------|------|----------------|--------|
-| DESI DR1 anomaly catalog | ~119K objects | H200 pod (finishing now) | In progress |
+| DESI DR1 anomaly catalog | 195,829 objects | H200 pod (complete) | **DONE** |
 | Legacy Survey DR10 | ~100 TB total, query by position | NOIRLab data lab / astro data lab | Available |
 | unWISE catalogs | ~2B sources | unWISE website or CatWISE2020 | Available |
 | Gaia DR3 | ~1.8B stars | ESA Gaia archive | Available |

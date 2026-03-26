@@ -57,6 +57,7 @@
   else if (path.indexOf('/visualize') !== -1) activePage = 'visualize';
   else if (path.indexOf('/contributions') !== -1) activePage = 'contributions';
   else if (path.indexOf('/activity') !== -1) activePage = 'activity';
+  else if (path.indexOf('/status') !== -1) activePage = 'status';
   else if (path.indexOf('/review') !== -1) activePage = 'review';
   else if (path.indexOf('/chat') !== -1) activePage = 'astro';
   else if (path.indexOf('/admin') !== -1) activePage = 'admin';
@@ -106,6 +107,7 @@
     + '<a href="' + p('visualize.html') + '" class="' + sidebarActiveClass('visualize', 'sidebar-link') + '" data-page="visualize">visualize</a>'
     + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">contributions</a>'
     + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
+    + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
     + '<a href="' + p('review/index.html') + '" class="' + sidebarActiveClass('review', 'sidebar-link') + '" data-page="review">review</a>'
     + '<a href="' + p('chat.html') + '" class="' + sidebarActiveClass('astro', 'sidebar-link') + '" data-page="astro">astro</a>'
     + '<a href="' + p('research/project_master_dossier/index.html') + '" class="' + sidebarActiveClass('dossier', 'sidebar-link') + '" data-page="dossier">dossier</a>'
@@ -134,6 +136,7 @@
     + '<a href="' + p('glossary.html') + '" data-page="glossary"' + activeAttr('glossary') + '>glossary</a>'
     + '<a href="' + p('articles.html') + '" data-page="articles"' + activeAttr('articles') + '>articles</a>'
     + '<a href="' + p('activity.html') + '" data-page="activity"' + activeAttr('activity') + '>activity</a>'
+    + '<a href="' + p('status.html') + '" data-page="status"' + activeAttr('status') + '>status</a>'
     + '<a href="' + p('review/index.html') + '" data-page="review"' + activeAttr('review') + '>review</a>'
     + '<a href="' + p('chat.html') + '" data-page="astro"' + activeAttr('astro') + '>astro</a>'
     + '<a href="' + p('research/project_master_dossier/index.html') + '" data-page="dossier"' + activeAttr('dossier') + '>dossier</a>'

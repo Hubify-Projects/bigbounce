@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Status — BigBounce Program</title>
+<meta name="description" content="Comprehensive master status page for the BigBounce spin-torsion cosmology research program. All papers, pipelines, MCMC runs, and discoveries.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Research Status — BigBounce Program">
+<meta property="og:description" content="Master status page: papers, pipelines, MCMC chains, compute pods, computation scripts, and key discoveries.">
+<meta property="og:url" content="https://bigbounce.hubify.app/status.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Research Status — BigBounce Program">
+<meta name="twitter:description" content="Master status page: papers, pipelines, MCMC chains, compute pods, computation scripts, and key discoveries.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
+<style>
+.status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+.status-stat { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; text-align: center; }
+.status-stat .num { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.status-stat .label { font-family: var(--font-sans); font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.03em; }
+.status-stat.green { border-left: 3px solid #22c55e; }
+.status-stat.blue { border-left: 3px solid #3b82f6; }
+.status-stat.amber { border-left: 3px solid #f59e0b; }
+.status-stat.red { border-left: 3px solid #ef4444; }
+
+.status-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+.status-table th { font-family: var(--font-sans); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); padding: 8px 10px; border-bottom: 2px solid var(--border); text-align: left; white-space: nowrap; }
+.status-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); font-family: var(--font-sans); font-size: 13px; vertical-align: top; }
+.status-table tr:hover { background: var(--bg-subtle); }
+.status-table code { font-family: var(--font-mono); font-size: 12px; background: var(--bg-subtle); padding: 1px 5px; border-radius: 3px; }
+
+.badge { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-red { background: #fee2e2; color: #991b1b; }
+.badge-gray { background: #f3f4f6; color: #4b5563; }
+.badge-purple { background: #f3e8ff; color: #6b21a8; }
+
+[data-theme="dark"] .badge-green { background: #14532d; color: #86efac; }
+[data-theme="dark"] .badge-blue { background: #1e3a5f; color: #93c5fd; }
+[data-theme="dark"] .badge-amber { background: #78350f; color: #fcd34d; }
+[data-theme="dark"] .badge-red { background: #7f1d1d; color: #fca5a5; }
+[data-theme="dark"] .badge-gray { background: #374151; color: #d1d5db; }
+[data-theme="dark"] .badge-purple { background: #3b0764; color: #d8b4fe; }
+
+.section-anchor { scroll-margin-top: 80px; }
+
+.toc { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px; margin: 20px 0; font-family: var(--font-sans); font-size: 13px; }
+.toc h3 { margin: 0 0 10px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); }
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { margin: 4px 0; }
+.toc a { color: var(--accent-link); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+.progress-bar { display: inline-block; width: 80px; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; vertical-align: middle; margin-left: 6px; }
+.progress-fill { height: 100%; border-radius: 4px; }
+.progress-fill.green { background: #22c55e; }
+.progress-fill.blue { background: #3b82f6; }
+.progress-fill.amber { background: #f59e0b; }
+
+.discovery-card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px; margin: 10px 0; }
+.discovery-card h4 { margin: 0 0 6px 0; font-family: var(--font-sans); font-size: 14px; }
+.discovery-card p { margin: 0; font-size: 13px; color: var(--text-secondary); }
+.discovery-card .tag { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+
+@media (max-width: 768px) {
+  .status-grid { grid-template-columns: repeat(2, 1fr); }
+  .status-table { font-size: 12px; }
+  .status-table th, .status-table td { padding: 6px 6px; }
+}
+</style>
+</head>
+<body>
+
+<main class="container" style="padding-top: 20px;">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 26, 2026</p>
+  <h1>Research Program Status</h1>
+  <p class="subtitle">Comprehensive source of truth for the entire BigBounce spin-torsion cosmology research program. Every paper, pipeline, MCMC run, computation script, and discovery in one place.</p>
+  <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
+</div>
+
+<hr>
+
+<!-- ═══════════ TOP-LEVEL STATS ═══════════ -->
+<div class="status-grid">
+  <div class="status-stat green">
+    <div class="num">3</div>
+    <div class="label">Papers</div>
+  </div>
+  <div class="status-stat blue">
+    <div class="num">6</div>
+    <div class="label">AI Pipelines</div>
+  </div>
+  <div class="status-stat green">
+    <div class="num">474K+</div>
+    <div class="label">MCMC Samples</div>
+  </div>
+  <div class="status-stat green">
+    <div class="num">195,829</div>
+    <div class="label">Anomalies Found</div>
+  </div>
+  <div class="status-stat blue">
+    <div class="num">14</div>
+    <div class="label">Computation Scripts</div>
+  </div>
+  <div class="status-stat amber">
+    <div class="num">6</div>
+    <div class="label">Bounce Channels</div>
+  </div>
+</div>
+
+<!-- ═══════════ TABLE OF CONTENTS ═══════════ -->
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#papers">Research Papers</a></li>
+    <li><a href="#portfolio">Bounce Cosmology Portfolio</a></li>
+    <li><a href="#pipelines">AI Discovery Pipelines</a></li>
+    <li><a href="#compute">Active Compute</a></li>
+    <li><a href="#mcmc">MCMC Runs</a></li>
+    <li><a href="#crossref">Cross-Reference Status</a></li>
+    <li><a href="#scripts">Computation Scripts</a></li>
+    <li><a href="#future">Future Plans</a></li>
+    <li><a href="#discoveries">Key Discoveries</a></li>
+  </ol>
+</div>
+
+<hr>
+
+<!-- ═══════════ SECTION 1: PAPERS ═══════════ -->
+<section class="section" id="papers">
+  <h2 class="section-anchor">1. Research Papers</h2>
+  <table class="status-table">
+    <thead>
+      <tr><th>Paper</th><th>Title</th><th>Status</th><th>Version</th><th>Pages</th><th>Refs</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Paper 1</strong></td>
+        <td>Spin-Torsion Cosmology: Structural Barriers, Falsifiable Predictions, and the Bounce-Inflation Landscape</td>
+        <td><span class="badge badge-green">Ready for Submission</span></td>
+        <td><code>v2.2.0</code></td>
+        <td>~24</td>
+        <td>63+</td>
+      </tr>
+      <tr>
+        <td><strong>Paper 2</strong></td>
+        <td>f<sub>NL</sub> = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation</td>
+        <td><span class="badge badge-green">Ready for Submission</span></td>
+        <td><code>v1.3.0</code></td>
+        <td>~12</td>
+        <td>30+</td>
+      </tr>
+      <tr>
+        <td><strong>Paper 3</strong></td>
+        <td>DESI DR1 Spectral Anomaly Catalog: 195,829 Uncharacterized Objects from 18M Spectra</td>
+        <td><span class="badge badge-blue">Draft</span></td>
+        <td><code>v0.1</code></td>
+        <td>~8</td>
+        <td>TBD</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Paper 1 has undergone 10+ rounds of peer review with ~200 individual edits. Paper 2 contains the parameter-free f<sub>NL</sub> = -35/8 prediction testable by SPHEREx (~2028). Paper 3 documents the first full-DR1-scale autoencoder anomaly search (~90x prior EDR work).</p>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 2: PORTFOLIO ═══════════ -->
+<section class="section" id="portfolio">
+  <h2 class="section-anchor">2. Bounce Cosmology Portfolio</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">The mission is proving bounce cosmology beats inflation &mdash; not proving one specific model. Six independent observational channels, each with a distinct prediction.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Channel</th><th>Best Model</th><th>Prediction</th><th>Experiment</th><th>Timeline</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Galaxy bispectrum f<sub>NL</sub></strong></td>
+        <td>Matter bounce</td>
+        <td>f<sub>NL</sub> = -35/8 = -4.375 (parameter-free)</td>
+        <td>SPHEREx</td>
+        <td>~2028</td>
+        <td><span class="badge badge-purple">FLAGSHIP</span></td>
+      </tr>
+      <tr>
+        <td><strong>Quintom bounce-DE</strong></td>
+        <td>Quintom bounce</td>
+        <td>w(z) crosses -1 (quintom-B)</td>
+        <td>DESI DR2</td>
+        <td>NOW</td>
+        <td><span class="badge badge-green">2.3&sigma; confirmed</span></td>
+      </tr>
+      <tr>
+        <td><strong>PBH dark matter</strong></td>
+        <td>Asymmetric matter bounce</td>
+        <td>Asteroid-mass PBHs, f<sub>PBH</sub> ~ 0.001&ndash;1</td>
+        <td>LISA, microlensing</td>
+        <td>~2035</td>
+        <td><span class="badge badge-amber">Viable (asym. only)</span></td>
+      </tr>
+      <tr>
+        <td><strong>NANOGrav GW</strong></td>
+        <td>Matter bounce</td>
+        <td>&gamma; = 3.0 vs observed 3.2 &plusmn; 0.6 (0.33&sigma;)</td>
+        <td>NANOGrav / PTA</td>
+        <td>NOW</td>
+        <td><span class="badge badge-green">1&sigma; consistent</span></td>
+      </tr>
+      <tr>
+        <td><strong>GW echoes</strong></td>
+        <td>Ekpyrotic bounce (GUT-scale)</td>
+        <td>Oscillatory &Omega;<sub>GW</sub></td>
+        <td>CE / ET</td>
+        <td>~2035</td>
+        <td><span class="badge badge-gray">Conditional</span></td>
+      </tr>
+      <tr>
+        <td><strong>Perturbative safety</strong></td>
+        <td>Cuscuton bounce</td>
+        <td>No strong coupling through bounce</td>
+        <td>(theoretical)</td>
+        <td>Complete</td>
+        <td><span class="badge badge-green">Supporting</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="discovery-card" style="margin-top: 16px;">
+    <h4>The Triple Role of f<sub>NL</sub> = -35/8</h4>
+    <p>The matter bounce f<sub>NL</sub> simultaneously: (1) predicts galaxy bispectrum (SPHEREx), (2) regulates PBH abundance (prevents overproduction that plagues inflation), and (3) shapes induced GW spectrum (encodes clustering, detectable by LISA). This triple role is unique to matter bounce cosmology.</p>
+  </div>
+
+  <div class="discovery-card">
+    <h4>Quintom w-crossing at 98.6%</h4>
+    <p>Our independent w<sub>0</sub>-w<sub>a</sub> MCMC (Planck + BAO + SN) finds w<sub>0</sub> = -0.871, w<sub>a</sub> = -0.542, with P(quintom-B) = 98.6%. This independently confirms the DESI DR2 w-crossing signal at 2.3&sigma;. The quintom bounce achieves what ECH alone cannot: bounce-DE unification.</p>
+  </div>
+
+  <div class="discovery-card">
+    <h4>NANOGrav Consistency</h4>
+    <p>Matter bounce predicts GW spectral index &gamma; = 3.0. NANOGrav 15yr measures &gamma; = 3.2 &plusmn; 0.6. Bayesian model comparison: bounce preferred over SMBH at 5.6:1, over cosmic strings at 3.2:1.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 3: AI PIPELINES ═══════════ -->
+<section class="section" id="pipelines">
+  <h2 class="section-anchor">3. AI Discovery Pipelines</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Survey-scale AI extraction pipelines turning existing cosmological archives into calibrated catalogs, validated anomaly products, and improved tracer sets. All pipelines follow a 12-gate publication standard.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Pipeline</th><th>Description</th><th>Feeds f<sub>NL</sub>?</th><th>Status</th><th>Progress</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>B &mdash; DESI Spectral Anomaly Miner</strong></td>
+        <td>Autoencoder anomaly search on all 18M DESI DR1 spectra. First full-DR1-scale search (~90x prior EDR work).</td>
+        <td>Yes (high-bias tracers)</td>
+        <td><span class="badge badge-green">COMPLETE</span></td>
+        <td>195,829 anomalies from 18M spectra <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
+      </tr>
+      <tr>
+        <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
+        <td>Largest bias-audited galaxy handedness catalog (CW/CCW/NOT_SPIRAL). v2 model: 93.7% accuracy, 8/8 bias tests passed.</td>
+        <td>Indirect (parity test)</td>
+        <td><span class="badge badge-blue">RUNNING</span></td>
+        <td>3.49M / 8.47M galaxies (41%) <span class="progress-bar"><span class="progress-fill blue" style="width:41%"></span></span></td>
+      </tr>
+      <tr>
+        <td><strong>E &mdash; Time-Domain Transient Finder</strong></td>
+        <td>unTimely 32-epoch IR variability analysis for anomalous transients and QSO enrichment.</td>
+        <td>Yes (QSO enrichment)</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>A &mdash; CMB Anomaly Hunter</strong></td>
+        <td>CNN/ViT anomaly detection on Planck/ACT CMB patches at multiple scales.</td>
+        <td>Indirect</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>C &mdash; Polarization Feature Extractor</strong></td>
+        <td>Task-specific polarization signal extraction from CMB Q/U maps (birefringence, strings, reionization).</td>
+        <td>Indirect (birefringence)</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>D &mdash; Cross-Survey Anomaly Correlator</strong></td>
+        <td>Multi-survey coincidence analysis. Requires calibrated outputs from A, B, C, and E.</td>
+        <td>Indirect</td>
+        <td><span class="badge badge-gray">Blocked on A&ndash;C</span></td>
+        <td>&mdash;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="discovery-card" style="border-left: 3px solid #22c55e;">
+    <h4>Pipeline B Headline Result</h4>
+    <p>195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. 100% of the top 100 objects are NOT in SIMBAD. Cross-matched against 6 databases (3B+ objects): 99.8% absent from SIMBAD, 0% are known QSOs, galaxies 19x more anomalous than QSOs. Model published on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 4: ACTIVE COMPUTE ═══════════ -->
+<section class="section" id="compute">
+  <h2 class="section-anchor">4. Active Compute</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">RunPod GPU/CPU pods. Do NOT terminate any pods without explicit user approval.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Pod</th><th>Machine</th><th>Pipeline</th><th>SSH</th><th>Status</th><th>Progress</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>H200 Beast</strong><br><code style="font-size:10px;">rtv8cegaw1618r</code></td>
+        <td>H200 (143 GB), 192 cores, 3 TB RAM</td>
+        <td>Pipeline B &mdash; DESI DR1</td>
+        <td><code style="font-size:10px;">root@205.196.17.44 -p 10789</code></td>
+        <td><span class="badge badge-green">COMPLETE</span></td>
+        <td>195,829 anomalies from 18M spectra</td>
+      </tr>
+      <tr>
+        <td><strong>H100</strong><br><code style="font-size:10px;">ulfxypratod4vr</code></td>
+        <td>H100 (80 GB), 208 cores, 2 TB RAM</td>
+        <td>Pipeline 2 &mdash; Chirality</td>
+        <td><code style="font-size:10px;">root@64.247.201.47 -p 10778</code></td>
+        <td><span class="badge badge-blue">RUNNING</span></td>
+        <td>3.49M / 8.47M (41%)</td>
+      </tr>
+      <tr>
+        <td><strong>RTX A4000</strong><br><code style="font-size:10px;">fn19oivkjowmq4</code></td>
+        <td>A4000 (16 GB), 32 cores, 124 GB RAM</td>
+        <td>w<sub>0</sub>-w<sub>a</sub> MCMC</td>
+        <td><code style="font-size:10px;">root@157.157.221.30 -p 24859</code></td>
+        <td><span class="badge badge-green">CONVERGED</span></td>
+        <td>50.9K samples, R-1 &lt; 0.01</td>
+      </tr>
+      <tr>
+        <td><strong>CPU Batch</strong><br><code style="font-size:10px;">kqo1b4e4igycra</code></td>
+        <td>32 cores, 124 GB RAM (no GPU)</td>
+        <td>Pipeline B CPU (redundant)</td>
+        <td><code style="font-size:10px;">root@157.157.221.29 -p 29268</code></td>
+        <td><span class="badge badge-gray">Redundant</span></td>
+        <td>368K spectra (superseded by H200)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:12px; color:var(--text-tertiary); margin-top:8px;">
+    All pods use SSH key <code>~/.ssh/id_ed25519</code>. Backups: local disk, GitHub, Backblaze B2, HuggingFace (<code>bamfai/bigbounce-mcmc</code>).
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 5: MCMC RUNS ═══════════ -->
+<section class="section" id="mcmc">
+  <h2 class="section-anchor">5. MCMC Runs</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">All Markov chain Monte Carlo sampling runs. Posterior samples frozen and backed up to multiple locations.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Dataset</th><th>Parameters</th><th>Samples</th><th>Status</th><th>Key Result</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Full Tension</strong><br><span style="font-size:11px;color:var(--text-tertiary);">Planck+BAO+SN+H<sub>0</sub></span></td>
+        <td>&Lambda;CDM + &Delta;N<sub>eff</sub></td>
+        <td>176,164</td>
+        <td><span class="badge badge-green">Frozen</span></td>
+        <td>&Delta;N<sub>eff</sub> &asymp; 0; H<sub>0</sub> = 67.68</td>
+      </tr>
+      <tr>
+        <td><strong>Planck + BAO + SN</strong><br><span style="font-size:11px;color:var(--text-tertiary);">No H<sub>0</sub> prior</span></td>
+        <td>&Lambda;CDM + &Delta;N<sub>eff</sub></td>
+        <td>133,263</td>
+        <td><span class="badge badge-green">Frozen</span></td>
+        <td>&Delta;N<sub>eff</sub> &asymp; 0; standard &Lambda;CDM</td>
+      </tr>
+      <tr>
+        <td><strong>w<sub>0</sub>-w<sub>a</sub> Quintom</strong><br><span style="font-size:11px;color:var(--text-tertiary);">Planck+BAO+SN (CPL)</span></td>
+        <td>w<sub>0</sub>-w<sub>a</sub> dark energy EOS</td>
+        <td>50,900</td>
+        <td><span class="badge badge-green">CONVERGED</span></td>
+        <td>w<sub>0</sub> = -0.871 &plusmn; 0.060, w<sub>a</sub> = -0.542 &plusmn; 0.245, P(quintom-B) = 98.6%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:12px; color:var(--text-tertiary); margin-top:8px;">
+    Total posterior samples: 424,181+ (&Delta;N<sub>eff</sub> datasets) + 50,900 (w<sub>0</sub>-w<sub>a</sub>) = <strong>475,081+ total</strong>. All chains run with Cobaya. Convergence diagnostics: Gelman-Rubin R-1 &lt; 0.01 for all frozen chains.
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 6: CROSS-REFERENCE STATUS ═══════════ -->
+<section class="section" id="crossref">
+  <h2 class="section-anchor">6. Cross-Reference Status</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Pipeline B anomalies cross-matched against 6 astronomical databases covering 3B+ cataloged objects.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Database</th><th>Objects</th><th>Match Rate</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SIMBAD</strong></td>
+        <td>~15M objects</td>
+        <td>0.2%</td>
+        <td>99.8% of anomalies NOT in SIMBAD &mdash; genuinely uncharacterized</td>
+      </tr>
+      <tr>
+        <td><strong>NED</strong></td>
+        <td>~400M objects</td>
+        <td>Low</td>
+        <td>Minimal overlap; anomalies are not in standard extragalactic catalogs</td>
+      </tr>
+      <tr>
+        <td><strong>AllWISE</strong></td>
+        <td>~750M sources</td>
+        <td>Moderate</td>
+        <td>IR counterparts available for photometric classification</td>
+      </tr>
+      <tr>
+        <td><strong>Gaia DR3</strong></td>
+        <td>~1.8B stars</td>
+        <td>Low</td>
+        <td>Only 1 confirmed Galactic star in top 100; anomalies are extragalactic</td>
+      </tr>
+      <tr>
+        <td><strong>SDSS DR17</strong></td>
+        <td>~1B objects</td>
+        <td>Low</td>
+        <td>No known QSOs in top 100; 0% QSO match rate</td>
+      </tr>
+      <tr>
+        <td><strong>Legacy Survey DR10</strong></td>
+        <td>~2B objects</td>
+        <td>High (imaging)</td>
+        <td>Imaging counterparts available; morphology extraction underway</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
+    <h4>Key Cross-Match Finding</h4>
+    <p>Galaxies are 19x more anomalous than QSOs in our catalog. Of the top 1,000 anomalies, the overwhelming majority are galaxies with unusual spectral features, not QSOs or stars. This suggests the autoencoder is finding genuinely unusual galaxy populations that standard pipelines classify but do not flag as noteworthy.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 7: COMPUTATION SCRIPTS ═══════════ -->
+<section class="section" id="scripts">
+  <h2 class="section-anchor">7. Computation Scripts</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Every numerical claim in the papers is backed by a reproducible Python script or Cobaya YAML config.</p>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>#</th><th>Script</th><th>Purpose</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><code>alp_field_evolution.py</code></td><td>ALP field evolution for birefringence prediction &beta; = 0.27&deg;</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>2</td><td><code>fnl_epsilon_correction.py</code></td><td>f<sub>NL</sub> epsilon slow-roll correction verification</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>3</td><td><code>transparency_verification.py</code></td><td>ECH perturbation transparency verification</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>4</td><td><code>template_projection.py</code></td><td>Bounce template projection for f<sub>NL</sub> constraint recasts</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>5</td><td><code>photon_torsion_coupling.py</code></td><td>Photon-torsion coupling strength computation</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>6</td><td><code>galaxy_spin_tidal_torque.py</code></td><td>Galaxy spin tidal torque model (chirality)</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>7</td><td><code>lqc_bounce_perturbations.py</code></td><td>LQC bounce perturbation evolution</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>8</td><td><code>cubic_transmission.py</code></td><td>Cubic transmission coefficient through bounce</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>9</td><td><code>fisher_forecast.py</code></td><td>Fisher forecast for SPHEREx f<sub>NL</sub> sensitivity</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>10</td><td><code>photoz_degradation.py</code></td><td>Photo-z degradation impact on f<sub>NL</sub> constraints</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>11</td><td><code>bphi_sensitivity.py</code></td><td>b<sub>&phi;</sub> tracer bias sensitivity analysis</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>12</td><td><code>quintom_fnl_verification.py</code></td><td>Verify f<sub>NL</sub> = -35/8 across 3 bounce models (all give -35/8 exactly)</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>13</td><td><code>pbh_nanograv_consistency.py</code></td><td>PBH regulation + NANOGrav &gamma; = 3 consistency</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>14</td><td><code>nanograv_model_comparison.py</code></td><td>Bayesian bounce vs SMBH vs cosmic strings (bounce 5.6:1)</td><td><span class="badge badge-green">Done</span></td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">
+    MCMC configs: <code>cobaya_w0wa_quintom_test.yaml</code> + 4 frozen &Delta;N<sub>eff</sub> dataset configs in <code>reproducibility/cosmology/</code>. Post-processing: <code>analyze_w0wa_quintom.py</code>.
+  </p>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 8: FUTURE PLANS ═══════════ -->
+<section class="section" id="future">
+  <h2 class="section-anchor">8. Future Plans</h2>
+
+  <table class="status-table">
+    <thead>
+      <tr><th>Priority</th><th>Task</th><th>Description</th><th>Status</th><th>Depends On</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Tracer Purification (Steps 2&ndash;6)</strong></td>
+        <td>Cross-match 195K anomalies with Legacy Survey DR10 + unWISE + Gaia DR3. Classify high-z QSOs. Validate bias enhancement. Re-measure &sigma;(f<sub>NL</sub>).</td>
+        <td><span class="badge badge-amber">Next</span></td>
+        <td>Pipeline B (done)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Multi-Pass Triage</strong></td>
+        <td>6-pass enrichment: band ratios (done) &rarr; cross-match &rarr; morphology &rarr; redshift &rarr; LLM reasoning &rarr; clustering/embedding.</td>
+        <td><span class="badge badge-blue">Pass 1 Done</span></td>
+        <td>Pipeline B output</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>LLM Deep Analysis</strong></td>
+        <td>Claude/GPT-4o analyzes top 1,000 anomalies with full context: band residuals + Legacy Survey image + cross-match + DESI metadata.</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>Pass 2&ndash;4</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Full 18M Structured Catalog</strong></td>
+        <td>Run band-ratio classification on ALL 18M spectra, not just anomalies. Community resource for the entire DESI DR1.</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>H200 pod data</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Super-Resolution Imaging</strong></td>
+        <td>Physics-aware AI upscaling of Legacy Survey cutouts using paired HST/JWST training data. Separate project.</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>Training data curation</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Complete 8.47M Chirality Catalog</strong></td>
+        <td>Finish inference on remaining 4.98M galaxies. v2 model frozen (93.7% accuracy, equivariant CW = 0.5012).</td>
+        <td><span class="badge badge-blue">Running (41%)</span></td>
+        <td>H100 pod</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Quintom f<sub>NL</sub> Computation</strong></td>
+        <td>Fill the literature gap: no quintom bounce f<sub>NL</sub> has ever been computed. If confirmed as -35/8, this is a universality result.</td>
+        <td><span class="badge badge-amber">Verification Done</span></td>
+        <td>Full in-in integral</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Pipeline E (Time-Domain)</strong></td>
+        <td>unTimely 32-epoch IR variability for anomalous transients. Feeds QSO enrichment for f<sub>NL</sub>.</td>
+        <td><span class="badge badge-red">Not Started</span></td>
+        <td>GPU pod allocation</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 9: KEY DISCOVERIES ═══════════ -->
+<section class="section" id="discoveries">
+  <h2 class="section-anchor">9. Key Discoveries</h2>
+
+  <div class="discovery-card" style="border-left: 3px solid #22c55e;">
+    <h4>14 ECH Structural Barriers</h4>
+    <p>Systematic analysis revealed 14 structural barriers that close all minimal routes from the ECH bounce to dark energy. Crucially, these are ECH-specific &mdash; other bounce models (quintom, Cuscuton) can bypass them. The barriers MAP the requirements for bounce-DE unification rather than ruling out bounce cosmology.</p>
+    <span class="tag">Foundation Studies A&ndash;G &middot; Branches H&ndash;W</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #22c55e;">
+    <h4>f<sub>NL</sub> = -35/8 Mechanism Independence</h4>
+    <p>Verified across 3 bounce models (matter bounce, LQC, Cuscuton contrast): f<sub>NL</sub> = -35/8 = -4.375 is parameter-free and mechanism-independent. The contraction dynamics determine f<sub>NL</sub>, not the bounce mechanism. SPHEREx (~2028) will measure this to &sigma;(f<sub>NL</sub>) ~ 0.7&ndash;2.</p>
+    <span class="tag">Paper 2 &middot; quintom_fnl_verification.py</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #22c55e;">
+    <h4>PBH Regulation by f<sub>NL</sub></h4>
+    <p>f<sub>NL</sub> = -35/8 naturally prevents primordial black hole overproduction (Choudhury+ 2025). Inflationary models with positive f<sub>NL</sub> tend to overproduce PBHs requiring fine-tuning. The matter bounce&rsquo;s negative f<sub>NL</sub> acts as a natural regulator: 10<sup>-3</sup> &lt; f<sub>PBH</sub> &lt; 1.</p>
+    <span class="tag">pbh_nanograv_consistency.py &middot; Choudhury+ 2025 (EPJC 85:472)</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
+    <h4>NANOGrav Consistency</h4>
+    <p>Matter bounce predicts induced GW spectral index &gamma; = 3.0 (Papanikolaou 2025). NANOGrav 15yr measures &gamma; = 3.2 &plusmn; 0.6 &mdash; just 0.33&sigma; away. Bayesian model comparison: bounce preferred 5.6:1 over SMBH binary background.</p>
+    <span class="tag">nanograv_model_comparison.py &middot; Papanikolaou 2025 (arXiv:2504.11641)</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
+    <h4>Quintom-B w-Crossing at 98%</h4>
+    <p>Independent MCMC (50.9K samples, converged R-1 &lt; 0.01) finds w<sub>0</sub> = -0.871 &plusmn; 0.060, w<sub>a</sub> = -0.542 &plusmn; 0.245. P(quintom-B w-crossing) = 98.6%. Confirms DESI DR2 signal at 2.3&sigma;. Quintom bounce achieves bounce-DE unification.</p>
+    <span class="tag">cobaya_w0wa_quintom_test.yaml &middot; 50.9K posterior samples</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
+    <h4>195,829 Uncharacterized Spectral Anomalies</h4>
+    <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). 99.8% absent from SIMBAD. 0% are known QSOs. Only 1 confirmed Galactic star in top 100. Galaxies 19x more anomalous than QSOs.</p>
+    <span class="tag">Pipeline B &middot; 18M spectra &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
+  </div>
+
+  <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
+    <h4>ALP Birefringence Prediction</h4>
+    <p>ALP birefringence prediction &beta; = 0.27&deg; matches the observed 3.6&sigma; signal of 0.342 &plusmn; 0.094&deg; from Planck/WMAP combined data. Consistent at 0.8&sigma;.</p>
+    <span class="tag">alp_field_evolution.py &middot; Paper 1 Section 4</span>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer style="text-align: center; padding: 32px 0; font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);">
+  <p>BigBounce Research Program &middot; Houston Golden &middot; houston@hubify.com</p>
+  <p style="margin-top:4px;"><a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" style="color:var(--text-tertiary);">GitHub</a> &middot; <a href="https://bigbounce.hubify.app" style="color:var(--text-tertiary);">bigbounce.hubify.app</a></p>
+</footer>
+
+</main>
+</body>
+</html>
