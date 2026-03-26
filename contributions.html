@@ -551,23 +551,51 @@
 
 <!-- ═══════════════════════════════ AI DISCOVERY PIPELINES ═══════════════════════════════ -->
 <section class="section">
-  <h2>AI Discovery Pipelines &mdash; Data Products</h2>
-  <p>Beyond the theoretical research program, we operate AI-enhanced discovery pipelines that produce novel observational catalogs. These are independent data products with their own novelty assessments.</p>
+  <h2>AI Discovery Pipelines &mdash; Data Products (4 Active)</h2>
+  <p>Beyond the theoretical research program, we operate AI-enhanced discovery pipelines that produce novel observational catalogs. These are independent data products with their own novelty assessments. The anomaly catalog is the subject of Paper 3 (draft, targeting ApJS).</p>
 
   <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
     <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">DESI DR1 Spectral Anomaly Catalog</h3>
-    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Pipeline B &middot; Data Product</p>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Pipeline B &middot; Data Product &middot; Paper 3 (draft)</p>
     <h4 style="margin-top: 16px;">What it is</h4>
-    <p>195,829 spectral anomalies identified from the full DESI DR1 Main Survey catalog (~18M spectra) using a spectral autoencoder running on an H200 GPU at 896 spectra/sec. This is the first full-DR1-scale autoencoder anomaly search, ~90x larger than prior EDR work (Liang et al. 2023; Nicolaou et al. 2026).</p>
+    <p>195,829 spectral anomalies identified from the full DESI DR1 Main Survey catalog (~18M spectra) using a spectral autoencoder running on an H200 GPU at 896 spectra/sec. This is the first full-DR1-scale autoencoder anomaly search, ~90x larger than prior EDR work (Liang et al. 2023; Nicolaou et al. 2026). Target journal: ApJS.</p>
     <h4>Key findings</h4>
     <ul>
-      <li>100/100 top-scored anomalies are NOT in SIMBAD (uncharacterized objects)</li>
+      <li><strong>Galaxies are 20x more anomalous than QSOs</strong> (0.75% anomaly rate vs 0.037%) &mdash; an unexpected result suggesting galaxies harbor far more uncharacterized spectral behavior at scale</li>
+      <li><strong>6-database cross-match:</strong> SIMBAD 0.2%, NED 12.7%, AllWISE 1.5%, Milliquas 0%, Gaia 0.6%, SDSS down &mdash; <strong>99.8% uncataloged</strong> in SIMBAD</li>
       <li>151,244 multi-band anomalies (genuinely unusual across the full spectrum)</li>
       <li>44,436 B-dominant anomalies (blue-end spectral features)</li>
       <li>96 artifact suspects identified and flagged</li>
     </ul>
     <h4>Prior art</h4>
-    <p><strong>Liang et al. (2023)</strong> applied autoencoder + normalizing flow to ~250K DESI EDR spectra. <strong>Nicolaou et al. (2026)</strong> applied VAE + Astronomaly to ~208K DESI EDR spectra. Our contribution is scale (~90x) and dataset (DR1 vs EDR).</p>
+    <p><strong>Liang et al. (2023)</strong> applied autoencoder + normalizing flow to ~250K DESI EDR spectra. <strong>Nicolaou et al. (2026)</strong> applied VAE + Astronomaly to ~208K DESI EDR spectra. Our contribution is scale (~90x), dataset (DR1 vs EDR), the 20x galaxy anomaly rate discovery, and the 6-database cross-match characterization.</p>
+  </div>
+
+  <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">Enhanced 18M DESI DR1 Catalog</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Pipeline B &middot; Data Product &middot; In Progress (36%)</p>
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p>A uniform machine-learning characterization of every spectrum in DESI DR1, with <strong>45 computed columns</strong> per object: anomaly scores, spectral feature measurements, cross-match results, quality flags, and derived quantities. 6.5M of 17.9M spectra processed (36%), running on H200. This is the first catalog of its kind &mdash; no prior work has applied a uniform autoencoder characterization at this scale to DESI DR1.</p>
+    <h4>Prior art</h4>
+    <p>No equivalent product exists. DESI's own pipeline provides redshifts and classifications, but not autoencoder-derived anomaly scores or the additional 45-column feature set.</p>
+  </div>
+
+  <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">w<sub>0</sub>-w<sub>a</sub> MCMC Quintom Result</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Supporting Contribution &middot; MCMC</p>
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p>Converged w<sub>0</sub>-w<sub>a</sub> MCMC analysis: w<sub>0</sub> = &minus;0.871 &plusmn; 0.061, w<sub>a</sub> = &minus;0.542 &plusmn; 0.247, with <strong>P(quintom-B) = 98%</strong> and R&minus;1 = 0.009. This supports the quintom bounce scenario as a viable dark energy model consistent with DESI DR2 findings.</p>
+    <h4>Prior art</h4>
+    <p>DESI DR2 collaboration reported w<sub>0</sub>-w<sub>a</sub> constraints with similar quintom-crossing preference (2.8&ndash;4.2&sigma;, dataset-dependent). Our contribution is independent verification using our own MCMC infrastructure with the same datasets.</p>
+  </div>
+
+  <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">Galaxy Chirality Catalog</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Pipeline A &middot; Data Product &middot; 82% Complete</p>
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p><strong>8.47M galaxy chirality classifications</strong> from an equivariant CNN (93.7% 3-class accuracy, 8/8 bias tests passed, CW = 0.5012). Running on H100 GPU, 82% complete. When finished, this will be the <strong>largest galaxy chirality catalog ever produced</strong>, enabling population-level tests of cosmic parity violation.</p>
+    <h4>Prior art</h4>
+    <p>Shamir (2020, 2022) published chirality catalogs of ~100K&ndash;200K galaxies using Galaxy Zoo morphologies. Our catalog will be ~40x larger with a purpose-built equivariant classifier and comprehensive bias testing.</p>
   </div>
 </section>
 

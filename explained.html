@@ -436,6 +436,36 @@
   <p style="margin-top: 8px;">The case for bounce cosmology is built across multiple models and observational channels, not from a single prediction.</p>
 </div>
 
+<!-- ===== AI DISCOVERY PIPELINE ===== -->
+<h2>AI Discovery Pipeline</h2>
+
+<p>Beyond the theoretical predictions, this research program now includes a large-scale observational discovery effort. We built an AI system (a "spectral autoencoder") that learns what normal astronomical spectra look like, then flags anything unusual. We pointed it at the entire DESI DR1 survey &mdash; nearly <strong>18 million spectra</strong>, the largest dataset of its kind.</p>
+
+<h3>What We Found</h3>
+
+<p>The AI identified <strong>195,829 spectral anomalies</strong> &mdash; objects whose light signatures don't match anything the model learned as "normal." This is the largest autoencoder anomaly search ever run on DESI data, about 90 times bigger than previous efforts that only used early data releases.</p>
+
+<p>The most striking result: <strong>galaxies are 20 times more anomalous than quasars.</strong> About 0.75% of galaxies trigger the anomaly detector, versus only 0.037% of quasars (the extremely bright galactic nuclei). This was unexpected &mdash; quasars are often considered the "weird" objects in astronomy, but it turns out galaxies harbor far more uncharacterized spectral behavior at scale.</p>
+
+<h3>Are These Real?</h3>
+
+<p>We cross-matched every anomaly against <strong>6 major astronomical databases</strong>: SIMBAD, NED, AllWISE, Milliquas, Gaia, and SDSS. The result: <strong>99.8% of our anomalies are not cataloged in SIMBAD</strong>, the largest astronomical reference database. NED (the NASA/IPAC Extragalactic Database) recognizes 12.7% of them, AllWISE has 1.5%, and Gaia has 0.6%. The vast majority are genuinely uncataloged objects.</p>
+
+<p>This doesn't mean they're all astrophysically exotic &mdash; some may be instrument artifacts or unusual but understood phenomena. That's why the catalog is still in draft stage: we need to visually inspect the top candidates, run injection/recovery tests, and systematically investigate artifacts before making strong claims.</p>
+
+<h3>The Enhanced 18M Catalog</h3>
+
+<p>Alongside the anomaly search, we're building an <strong>enhanced catalog of all 18 million DESI DR1 spectra</strong> with 45 computed columns per object &mdash; anomaly scores, spectral feature measurements, cross-match results, and quality flags. This is the first catalog of its kind: a uniform machine-learning characterization of every spectrum in DESI DR1. It's 36% complete and running on an H200 GPU.</p>
+
+<h3>The w<sub>0</sub>-w<sub>a</sub> Dark Energy Result</h3>
+
+<p>On the cosmology side, we ran a new MCMC analysis testing whether dark energy's equation of state changes over time. The result: <strong>w<sub>0</sub> = &minus;0.871 &plusmn; 0.061</strong> and <strong>w<sub>a</sub> = &minus;0.542 &plusmn; 0.247</strong>, with 98% probability of "quintom-B" behavior &mdash; meaning dark energy's equation of state crosses the w = &minus;1 boundary from below. This is consistent with DESI DR2 findings and supports the quintom bounce scenario as a viable cosmological model. The chains fully converged (R&minus;1 = 0.009).</p>
+
+<div class="callout">
+  <div class="callout-title">Why This Matters for Bounce Cosmology</div>
+  <p>The anomaly catalog and the w<sub>0</sub>-w<sub>a</sub> result both feed into the broader bounce cosmology portfolio. The quintom w-crossing is a natural prediction of bounce models that unify the bounce with dark energy. The anomaly catalog may contain objects whose spectral signatures reveal new physics. Together with the f<sub>NL</sub> prediction, birefringence, and the 8.47M galaxy chirality catalog (82% complete, the largest ever), the case for bounce cosmology is being built across multiple independent observational channels.</p>
+</div>
+
 <!-- ===== THE EQUATIONS ===== -->
 <h2>The Key Equations, Explained Simply</h2>
 
