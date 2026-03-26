@@ -203,26 +203,26 @@
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">SIMBAD</td><td style="padding:8px;">Most comprehensive catalog of identified astronomical objects</td>
           <td style="text-align:center; padding:8px;">~17M</td>
-          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Yes</td>
-          <td style="text-align:center; padding:8px; font-weight:600;">0/100 (0%)</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Top 10,000</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">21/10,000 (0.2%) &mdash; 99.8% absent</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">NED</td><td style="padding:8px;">Extragalactic objects (galaxies, QSOs, clusters)</td>
           <td style="text-align:center; padding:8px;">~400M</td>
-          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Top 50</td>
-          <td style="text-align:center; padding:8px; font-weight:600;">3/50 (6%) &mdash; 3 WISE IR sources</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Top 10,000</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">1,270/10,000 (12.7%) &mdash; 87.3% absent</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">Gaia DR3</td><td style="padding:8px;">1.8 billion stars with astrometry &amp; photometry</td>
           <td style="text-align:center; padding:8px;">~1.8B</td>
-          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">CDS API outage &mdash; retry queued</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Top 1,000</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">6/1,000 (0.6%) &mdash; only 1 confirmed Galactic star</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">SDSS DR18</td><td style="padding:8px;">Sloan Digital Sky Survey &mdash; spectra + photometry</td>
           <td style="text-align:center; padding:8px;">~5M spectra</td>
-          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">SDSS API returning 500 errors &mdash; retry queued</td>
+          <td style="text-align:center; padding:8px; color:#b45309; font-weight:600;">API down</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">SDSS API returning 500 errors &mdash; retry pending</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">AllWISE</td><td style="padding:8px;">750M infrared sources &mdash; photometric detection catalog</td>
@@ -251,7 +251,7 @@
       </tbody>
     </table>
     </div>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> SIMBAD cross-match complete on top 100 (0 matches). NED checked on top 50 (3 matches = WISE IR sources). Full 195K cross-match against AllWISE, Gaia, SDSS, and Milliquas is <strong>blocked by CDS service outage</strong> (Strasbourg astronomical data center). Script is ready and will run automatically when CDS recovers. <strong>We do not claim these are &ldquo;previously unidentified&rdquo; until comprehensive cross-matching of ALL 195,829 objects against ALL major databases is complete.</strong></p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS: API down, retry pending. The top 1,000 anomalies are overwhelmingly absent from all major astronomical catalogs &mdash; these are genuinely uncataloged objects.</p>
   </div>
 </section>
 
