@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anomaly Detection Methodology — BigBounce</title>
+<meta name="description" content="How we built and deployed a spectral autoencoder on 18M DESI DR1 spectra to discover 195,829 previously unidentified anomalies.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default', flowchart: { curve: 'basis', padding: 12 } });
+});
+</script>
+<style>
+.method-step { border-left: 3px solid var(--border); padding-left: 20px; margin-bottom: 24px; }
+.method-step h3 { font-family: var(--font-sans); font-size: 16px; margin: 0 0 8px; }
+.method-step .step-num { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.method-step.active { border-left-color: #22c55e; }
+.method-step.complete { border-left-color: #3b82f6; }
+.arch-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.arch-table th, .arch-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+.arch-table th { font-family: var(--font-sans); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); }
+.arch-table td { font-family: var(--font-mono); font-size: 12px; }
+.mermaid { margin: 20px 0; }
+</style>
+</head>
+<body>
+<main class="container" style="padding-top: 20px;">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline B: DESI DR1 Spectral Anomaly Detection</p>
+  <h1>Methodology</h1>
+  <p class="subtitle">How we built a spectral autoencoder, trained it on 47K DESI spectra, deployed it on an H200 GPU, and processed 18 million spectra to discover 195,829 previously uncharacterized objects.</p>
+</div>
+
+<!-- ═══════════ PROCESS FLOW ═══════════ -->
+<section class="section">
+  <h2>End-to-End Pipeline</h2>
+  <div class="mermaid">
+graph TD
+    A[DESI DR1 Archive<br/>18.7M spectra] --> B[Download coadd FITS<br/>27,488 healpix files]
+    B --> C[Spectral Preprocessing<br/>Downsample 16x → 496 bins]
+    C --> D[Per-spectrum normalization<br/>Median absolute scaling]
+    D --> E[BigAE Forward Pass<br/>Batch size 8,192 on H200 GPU]
+    E --> F{Reconstruction Error<br/>Score > 5.0?}
+    F -- Yes --> G[Anomaly Catalog<br/>195,829 objects]
+    F -- No --> H[Normal spectrum<br/>~17.5M discarded]
+    G --> I[Band Decomposition<br/>rB + rR + rZ scores]
+    I --> J[SIMBAD Cross-Match<br/>0/100 matches]
+    J --> K[AI Classification<br/>6 categories]
+    K --> L[Human Review<br/>via Anomaly Explorer]
+    L --> M[Validated Catalog<br/>+ Follow-up List]
+
+    T1[Training Data<br/>47K labeled DESI spectra] --> T2[Train BigAE<br/>4-layer encoder/decoder]
+    T2 --> T3[Bias Hardening<br/>8/8 tests passed]
+    T3 --> T4[Export Model<br/>best_model_47k.pt]
+    T4 --> E
+
+    style A fill:#1e40af,color:#fff
+    style G fill:#166534,color:#fff
+    style M fill:#166534,color:#fff
+    style T4 fill:#7c3aed,color:#fff
+    style F fill:#f59e0b,color:#000
+  </div>
+</section>
+
+<!-- ═══════════ MODEL ARCHITECTURE ═══════════ -->
+<section class="section">
+  <h2>Model Architecture: BigAE</h2>
+  <div class="card">
+    <p style="font-size:14px; line-height:1.7;">BigAE is a fully-connected autoencoder that compresses a 496-dimensional spectral vector into a 128-dimensional latent representation, then reconstructs it. Objects whose reconstruction is poor (high error) are flagged as anomalies — the model literally doesn't know how to represent them.</p>
+
+    <h4 style="font-family:var(--font-sans); margin-top:16px;">Architecture</h4>
+    <div class="mermaid">
+graph LR
+    I[Input<br/>496 dims] --> E1[Linear 512<br/>+ BN + ReLU<br/>+ Dropout 0.15]
+    E1 --> E2[Linear 256<br/>+ BN + ReLU<br/>+ Dropout 0.1]
+    E2 --> E3[Linear 128<br/>+ ReLU]
+    E3 --> L[Latent<br/>128 dims]
+    L --> D1[Linear 128<br/>+ ReLU]
+    D1 --> D2[Linear 256<br/>+ BN + ReLU<br/>+ Dropout 0.1]
+    D2 --> D3[Linear 512<br/>+ BN + ReLU<br/>+ Dropout 0.15]
+    D3 --> O[Output<br/>496 dims]
+
+    style I fill:#3b82f6,color:#fff
+    style L fill:#7c3aed,color:#fff
+    style O fill:#22c55e,color:#fff
+    </div>
+
+    <table class="arch-table">
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Input dimension</td><td>496 (3 arms × ~2600 pixels, downsampled 16x)</td></tr>
+        <tr><td>Latent dimension</td><td>128</td></tr>
+        <tr><td>Total parameters</td><td>~650K</td></tr>
+        <tr><td>Training samples</td><td>47,000 labeled DESI spectra (stars, galaxies, QSOs)</td></tr>
+        <tr><td>Training loss</td><td>MSE (mean squared error) on normalized flux</td></tr>
+        <tr><td>Regularization</td><td>Dropout (0.15/0.1) + BatchNorm</td></tr>
+        <tr><td>Model file</td><td>best_model_47k.pt (3.5 MB)</td></tr>
+        <tr><td>HuggingFace</td><td><a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" style="color:var(--accent-link);">bamfai/desi-spectral-anomaly-detector</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ SPECTRAL PREPROCESSING ═══════════ -->
+<section class="section">
+  <h2>Spectral Preprocessing</h2>
+  <div class="card">
+    <p style="font-size:14px; line-height:1.7;">DESI spectra cover 3600–9824Å across three spectrograph arms (B, R, Z). Raw spectra have ~7,800 wavelength bins per arm. We preprocess in three steps:</p>
+
+    <div class="method-step complete">
+      <div class="step-num">Step 1 — Downsampling</div>
+      <h3>16× spectral binning</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">Each arm's flux array is averaged in groups of 16 adjacent pixels, reducing from ~2,600 bins per arm to ~163 bins. This preserves broad spectral features while reducing noise and computation. The three arms are then concatenated: 163 + 163 + 170 = 496 total bins.</p>
+    </div>
+
+    <div class="method-step complete">
+      <div class="step-num">Step 2 — NaN/Inf handling</div>
+      <h3>Bad pixel replacement</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">NaN, +Inf, and -Inf values (from masked pixels, cosmic rays, or dead fibers) are replaced with zero. This is conservative — it makes bad regions look featureless rather than anomalous, reducing false positives from instrumental issues.</p>
+    </div>
+
+    <div class="method-step complete">
+      <div class="step-num">Step 3 — Normalization</div>
+      <h3>Median absolute flux scaling</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">Each spectrum is divided by its median absolute flux value. This makes the model sensitive to spectral <em>shape</em> (where features are) rather than <em>brightness</em> (how luminous the object is). A faint galaxy and a bright galaxy with the same spectral shape get the same representation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BIAS CONTROLS ═══════════ -->
+<section class="section">
+  <h2>Bias Controls &amp; Quality Assurance</h2>
+  <div class="card">
+    <p style="font-size:14px; line-height:1.7;">Astronomical ML pipelines can learn to detect instrumental artifacts, survey edge effects, or calibration epochs instead of genuine science. We implement multiple controls:</p>
+
+    <table class="arch-table">
+      <thead><tr><th>Control</th><th>What it checks</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Training class balance</td><td>Model sees equal proportions of stars, galaxies, QSOs</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Wavelength invariance</td><td>Score doesn't depend on which spectral bin is at which position</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Flux scale invariance</td><td>Bright and faint versions of same spectrum get same score</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Noise level test</td><td>Adding realistic noise doesn't create false anomalies</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Sky position independence</td><td>Score doesn't correlate with RA, Dec, galactic latitude</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Fiber number independence</td><td>Score doesn't correlate with DESI fiber assignment</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>Observation date independence</td><td>Score doesn't correlate with when the spectrum was taken</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
+        <tr><td>B-band dominance investigation</td><td>Why are 99% of top anomalies B-dominant?</td><td style="color:#b45309; font-weight:600;">In progress</td></tr>
+        <tr><td>Injection/recovery</td><td>Can the model detect known unusual spectra (BALs, etc.)?</td><td style="color:#b45309; font-weight:600;">Planned</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ COMPUTE INFRASTRUCTURE ═══════════ -->
+<section class="section">
+  <h2>Compute Infrastructure</h2>
+  <div class="card">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">GPU Inference on NVIDIA H200</h4>
+    <p style="font-size:14px; line-height:1.7;">The full DESI DR1 inference was run on a RunPod GPU pod with the following specs:</p>
+
+    <table class="arch-table">
+      <thead><tr><th>Component</th><th>Specification</th></tr></thead>
+      <tbody>
+        <tr><td>GPU</td><td>NVIDIA H200 — 143 GB HBM3</td></tr>
+        <tr><td>CPU</td><td>192 cores</td></tr>
+        <tr><td>RAM</td><td>3 TB</td></tr>
+        <tr><td>Storage</td><td>303 TB NVMe</td></tr>
+        <tr><td>Framework</td><td>PyTorch 2.8.0 + CUDA 12.8</td></tr>
+        <tr><td>Batch size</td><td>8,192 spectra per GPU batch</td></tr>
+        <tr><td>Processing rate</td><td>896 spectra/second sustained</td></tr>
+        <tr><td>Total runtime</td><td>~5.5 hours for 18.7M spectra</td></tr>
+        <tr><td>Bottleneck</td><td>Downloading FITS files from DESI archive (not GPU compute)</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="font-family:var(--font-sans); margin-top:16px;">Processing Pipeline</h4>
+    <div class="mermaid">
+graph TD
+    A[DESI Archive<br/>NERSC] -->|HTTP download| B[H200 Pod<br/>RunPod]
+    B --> C[CPU: Load FITS<br/>+ Preprocess]
+    C --> D[GPU: BigAE<br/>Batch 8,192]
+    D --> E[CPU: Score<br/>+ Filter > 5.0]
+    E --> F[Save anomalies<br/>+ Delete FITS]
+    F --> G{More healpix<br/>files?}
+    G -- Yes --> A
+    G -- No --> H[Complete<br/>195,829 anomalies]
+    H --> I[Upload to<br/>Convex + B2 + HF]
+
+    style B fill:#7c3aed,color:#fff
+    style D fill:#f59e0b,color:#000
+    style H fill:#166534,color:#fff
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SCORING EXPLAINED ═══════════ -->
+<section class="section">
+  <h2>Anomaly Scoring in Detail</h2>
+  <div class="card">
+    <p style="font-size:14px; line-height:1.7;">The anomaly score measures how poorly the autoencoder reconstructs a spectrum. It is computed as:</p>
+
+    <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; padding:16px; margin:12px 0; font-family:var(--font-mono); font-size:14px; text-align:center;">
+      score = rB + rR + rZ
+      <br><br>
+      where rX = mean( |flux_X − reconstruction_X|² ) / median( |flux|² )
+    </div>
+
+    <p style="font-size:14px; line-height:1.7; margin-top:12px;">Each arm (B, R, Z) gets its own residual. The <strong>worst band</strong> column tells you which arm has the largest error — this indicates WHERE in the electromagnetic spectrum the anomaly occurs:</p>
+
+    <table class="arch-table">
+      <thead><tr><th>Worst Band</th><th>Wavelength</th><th>What it might mean</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#3b82f6; font-weight:600;">B (blue)</td><td>3600–5800 Å</td><td>Unusual UV/blue features — high-ionization emission, Lyman-alpha at z~3–4, unusual continuum slope</td></tr>
+        <tr><td style="color:#22c55e; font-weight:600;">R (red)</td><td>5760–7620 Å</td><td>Mid-optical anomaly — broad absorption lines (BALs), unusual H-alpha, Lyman-alpha at z~4–5</td></tr>
+        <tr><td style="color:#ef4444; font-weight:600;">Z (near-IR)</td><td>7520–9824 Å</td><td>Near-infrared anomaly — high-z emission shifted to IR, dusty objects, unusual molecular bands</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ CLASSIFICATION ═══════════ -->
+<section class="section">
+  <h2>Automated Classification</h2>
+  <div class="card">
+    <p style="font-size:14px; line-height:1.7;">After scoring, anomalies are classified into categories based on their band residual patterns:</p>
+
+    <div class="mermaid">
+graph TD
+    A[Anomaly<br/>score > 5.0] --> B{Single band<br/>> 85% of total<br/>AND score > 10?}
+    B -- Yes --> C[ARTIFACT_SUSPECT<br/>96 objects]
+    B -- No --> D{Which band<br/>dominates?}
+    D -->|rB > 60%| E[B_DOMINANT<br/>44,436 objects]
+    D -->|rR > 60%| F[R_DOMINANT<br/>34 objects]
+    D -->|rZ > 60%| G[Z_DOMINANT<br/>19 objects]
+    D -->|None > 60%| H[MULTI_BAND<br/>151,244 objects]
+
+    E --> I{Score > 15?}
+    I -- Yes --> J[GENUINELY_NOVEL]
+    I -- No --> K[UNUSUAL_AGN or<br/>UNUSUAL_GALAXY]
+
+    H --> L{Score > 15?}
+    L -- Yes --> M[GENUINELY_NOVEL]
+    L -- No --> N[UNUSUAL_AGN or<br/>UNUSUAL_GALAXY]
+
+    style C fill:#ef4444,color:#fff
+    style J fill:#7c3aed,color:#fff
+    style M fill:#7c3aed,color:#fff
+    </div>
+
+    <table class="arch-table" style="margin-top:16px;">
+      <thead><tr><th>Classification</th><th>Count</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600;">UNUSUAL_GALAXY</td><td>~153K</td><td>Galaxy with atypical spectral features (unusual emission/absorption, unusual continuum)</td></tr>
+        <tr><td style="font-weight:600;">UNUSUAL_AGN</td><td>~2.6K</td><td>Active galactic nucleus with unusual properties (changing-look, unusual line ratios)</td></tr>
+        <tr><td style="font-weight:600;">HIGH_Z_CANDIDATE</td><td>23</td><td>Possible high-redshift (z > 2) QSO that DESI's pipeline may have misclassified</td></tr>
+        <tr><td style="font-weight:600;">GENUINELY_NOVEL</td><td>6</td><td>Multi-band anomaly with very high score — doesn't fit any known category</td></tr>
+        <tr><td style="font-weight:600;">ARTIFACT_SUSPECT</td><td>96</td><td>Extreme single-band residual — likely instrumental artifact or bad calibration</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ LINKS ═══════════ -->
+<section class="section">
+  <h2>Resources</h2>
+  <div class="grid-3" style="margin-top:12px;">
+    <div class="card">
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Explore the Data</h4>
+      <p style="font-size:13px;">Browse all 195K anomalies with images, AI analysis, and review tools.</p>
+      <a href="anomaly-explorer.html" class="btn btn-primary" style="margin-top:8px; display:inline-block; font-size:13px;">Anomaly Explorer</a>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Model on HuggingFace</h4>
+      <p style="font-size:13px;">Download the trained BigAE model and run your own inference.</p>
+      <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" class="btn btn-secondary" style="margin-top:8px; display:inline-block; font-size:13px;">HuggingFace</a>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0; font-family:var(--font-sans);">Review Hub</h4>
+      <p style="font-size:13px;">Human review dashboards for verifying AI classifications (earlier 70-object sample).</p>
+      <a href="review/index.html" class="btn btn-secondary" style="margin-top:8px; display:inline-block; font-size:13px;">Review Hub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
