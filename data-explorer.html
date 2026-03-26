@@ -21,24 +21,25 @@
    Data Explorer — Sidebar + Main Panel Layout
    ══════════════════════════════════════════════ */
 .explorer { display: flex; min-height: calc(100vh - 120px); }
-.sidebar { width: 260px; min-width: 260px; border-right: 1px solid var(--border); background: var(--bg-subtle); overflow-y: auto; padding: 16px 0; position: sticky; top: 68px; height: calc(100vh - 68px); }
-.sidebar-header { padding: 0 16px 14px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
-.sidebar-header h3 { font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin: 0; }
-.sidebar-group { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 16px 0 6px; padding: 0 16px; font-family: var(--font-sans); font-weight: 700; display: flex; align-items: center; gap: 6px; }
-.sidebar-group .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-.sidebar-group .dot.green { background: #22c55e; }
-.sidebar-group .dot.blue { background: #3b82f6; }
-.sidebar-group .dot.purple { background: #a855f7; }
-.sidebar-group .dot.orange { background: #f97316; }
-.sidebar-item { padding: 7px 10px 7px 20px; border-radius: 6px; cursor: pointer; font-size: 13px; font-family: var(--font-sans); display: flex; justify-content: space-between; align-items: center; margin: 1px 8px; color: var(--text-secondary); transition: all 100ms ease; user-select: none; font-weight: 500; }
-.sidebar-item:hover { background: var(--bg-inset); color: var(--text); }
-.sidebar-item.active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
-.sidebar-badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); background: var(--bg-code); color: var(--text-tertiary); border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
-.sidebar-badge.frozen { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
-.sidebar-badge.active-badge { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
-.sidebar-badge.closed { background: var(--bg-code); color: var(--text-tertiary); }
-.sidebar-badge.ref { background: #fefce8; color: #854d0e; border-color: #fde68a; }
-.sidebar-sep { height: 1px; background: var(--border); margin: 12px 16px; }
+main { max-width: none; padding: 0; }
+.de-sidebar { width: 260px; min-width: 260px; border-right: 1px solid var(--border); background: var(--bg-subtle); overflow-y: auto; padding: 16px 0; position: sticky; top: 68px; height: calc(100vh - 68px); }
+.de-sidebar-header { padding: 0 16px 14px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+.de-sidebar-header h3 { font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin: 0; }
+.de-sidebar-group { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 16px 0 6px; padding: 0 16px; font-family: var(--font-sans); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.de-sidebar-group .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.de-sidebar-group .dot.green { background: #22c55e; }
+.de-sidebar-group .dot.blue { background: #3b82f6; }
+.de-sidebar-group .dot.purple { background: #a855f7; }
+.de-sidebar-group .dot.orange { background: #f97316; }
+.de-sidebar-item { padding: 7px 10px 7px 20px; border-radius: 6px; cursor: pointer; font-size: 13px; font-family: var(--font-sans); display: flex; justify-content: space-between; align-items: center; margin: 1px 8px; color: var(--text-secondary); transition: all 100ms ease; user-select: none; font-weight: 500; }
+.de-sidebar-item:hover { background: var(--bg-inset); color: var(--text); }
+.de-sidebar-item.active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+.de-sidebar-badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); background: var(--bg-code); color: var(--text-tertiary); border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
+.de-sidebar-badge.frozen { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.de-sidebar-badge.active-badge { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+.de-sidebar-badge.closed { background: var(--bg-code); color: var(--text-tertiary); }
+.de-sidebar-badge.ref { background: #fefce8; color: #854d0e; border-color: #fde68a; }
+.de-sidebar-sep { height: 1px; background: var(--border); margin: 12px 16px; }
 
 /* ── Main Panel ── */
 .main-panel { flex: 1; padding: 24px; overflow-x: auto; min-width: 0; }
@@ -120,11 +121,11 @@
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .explorer { flex-direction: column; }
-  .sidebar { width: 100%; min-width: 100%; height: auto; position: relative; top: 0; border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; display: flex; overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap; gap: 0; -webkit-overflow-scrolling: touch; }
-  .sidebar-header, .sidebar-group, .sidebar-sep { display: none; }
-  .sidebar-item { padding: 6px 14px; white-space: nowrap; border-bottom: 2.5px solid transparent; font-size: 12px; flex-shrink: 0; margin: 0; border-radius: 0; }
-  .sidebar-item.active { background: transparent; border-bottom-color: #1d4ed8; }
-  .sidebar-badge { display: none; }
+  .de-sidebar { width: 100%; min-width: 100%; height: auto; position: relative; top: 0; border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; display: flex; overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap; gap: 0; -webkit-overflow-scrolling: touch; }
+  .de-sidebar-header, .de-sidebar-group, .de-sidebar-sep { display: none; }
+  .de-sidebar-item { padding: 6px 14px; white-space: nowrap; border-bottom: 2.5px solid transparent; font-size: 12px; flex-shrink: 0; margin: 0; border-radius: 0; }
+  .de-sidebar-item.active { background: transparent; border-bottom-color: #1d4ed8; }
+  .de-sidebar-badge { display: none; }
   .main-panel { padding: 16px 14px; }
   .controls-bar { flex-direction: column; align-items: stretch; }
   .search-bar { max-width: 100%; }
@@ -140,51 +141,59 @@
 </head>
 <body>
 
+<div style="padding: 12px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-family: var(--font-sans); background: var(--bg);">
+  <a href="index.html" style="font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em;">bigbounce</a>
+  <span style="color: var(--border);">|</span>
+  <a href="index.html" style="font-size: 13px; color: var(--text-tertiary); text-decoration: none; display: flex; align-items: center; gap: 4px;">&larr; Back to site</a>
+  <span style="flex:1;"></span>
+  <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-sans);">Data Explorer</span>
+</div>
+
 <main>
 <div class="explorer">
 
 <!-- ═════════════ Left Sidebar ═════════════ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-header"><h3>Data Sources</h3></div>
+<aside class="de-sidebar" id="sidebar">
+  <div class="de-sidebar-header"><h3>Data Sources</h3></div>
   <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting both papers. MCMC chains, analysis, barriers &amp; birefringence back Paper 1. f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2.</div>
 
-  <div class="sidebar-group"><span class="dot green"></span> MCMC Chains</div>
-  <div class="sidebar-item active" onclick="selectDataset('fullTension')" data-key="fullTension">Full Tension <span class="sidebar-badge frozen">198</span></div>
-  <div class="sidebar-item" onclick="selectDataset('planckBaoSn')" data-key="planckBaoSn">Planck+BAO+SN <span class="sidebar-badge frozen">508</span></div>
-  <div class="sidebar-item" onclick="selectDataset('planckBao')" data-key="planckBao">Planck+BAO <span class="sidebar-badge frozen">463</span></div>
-  <div class="sidebar-item" onclick="selectDataset('planckOnly')" data-key="planckOnly">Planck Only <span class="sidebar-badge frozen">452</span></div>
+  <div class="de-sidebar-group"><span class="dot green"></span> MCMC Chains</div>
+  <div class="de-sidebar-item active" onclick="selectDataset('fullTension')" data-key="fullTension">Full Tension <span class="de-sidebar-badge frozen">198</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('planckBaoSn')" data-key="planckBaoSn">Planck+BAO+SN <span class="de-sidebar-badge frozen">508</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('planckBao')" data-key="planckBao">Planck+BAO <span class="de-sidebar-badge frozen">463</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('planckOnly')" data-key="planckOnly">Planck Only <span class="de-sidebar-badge frozen">452</span></div>
 
-  <div class="sidebar-group"><span class="dot blue"></span> Analysis</div>
-  <div class="sidebar-item" onclick="selectDataset('paramResults')" data-key="paramResults">Parameter Results <span class="sidebar-badge">12 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('convergence')" data-key="convergence">Convergence Diag. <span class="sidebar-badge">16 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('chainMeans')" data-key="chainMeans">Chain Means <span class="sidebar-badge">28 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('crossComparison')" data-key="crossComparison">Cross-Dataset <span class="sidebar-badge">7 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="sidebar-badge frozen">3 rows</span></div>
+  <div class="de-sidebar-group"><span class="dot blue"></span> Analysis</div>
+  <div class="de-sidebar-item" onclick="selectDataset('paramResults')" data-key="paramResults">Parameter Results <span class="de-sidebar-badge">12 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('convergence')" data-key="convergence">Convergence Diag. <span class="de-sidebar-badge">16 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('chainMeans')" data-key="chainMeans">Chain Means <span class="de-sidebar-badge">28 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('crossComparison')" data-key="crossComparison">Cross-Dataset <span class="de-sidebar-badge">7 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
 
-  <div class="sidebar-group"><span class="dot blue"></span> Paper 2 &mdash; Template</div>
-  <div class="sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="sidebar-badge frozen">10 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="sidebar-badge frozen">8 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="sidebar-badge frozen">8 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('namasterHierarchy')" data-key="namasterHierarchy">NaMaster EB Hierarchy <span class="sidebar-badge frozen">9 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('truePolynomial')" data-key="truePolynomial">True Polynomial <span class="sidebar-badge frozen">4 rows</span></div>
+  <div class="de-sidebar-group"><span class="dot blue"></span> Paper 2 &mdash; Template</div>
+  <div class="de-sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="de-sidebar-badge frozen">10 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="de-sidebar-badge frozen">8 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="de-sidebar-badge frozen">8 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('namasterHierarchy')" data-key="namasterHierarchy">NaMaster EB Hierarchy <span class="de-sidebar-badge frozen">9 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('truePolynomial')" data-key="truePolynomial">True Polynomial <span class="de-sidebar-badge frozen">4 rows</span></div>
 
-  <div class="sidebar-group"><span class="dot purple"></span> Observational</div>
-  <div class="sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="sidebar-badge">5 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('galaxySpin')" data-key="galaxySpin">Galaxy Spin Counts <span class="sidebar-badge">5 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('sigTimeline')" data-key="sigTimeline">Significance Timeline <span class="sidebar-badge">10 rows</span></div>
+  <div class="de-sidebar-group"><span class="dot purple"></span> Observational</div>
+  <div class="de-sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="de-sidebar-badge">5 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('galaxySpin')" data-key="galaxySpin">Galaxy Spin Counts <span class="de-sidebar-badge">5 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('sigTimeline')" data-key="sigTimeline">Significance Timeline <span class="de-sidebar-badge">10 rows</span></div>
 
-  <div class="sidebar-group"><span class="dot orange"></span> Research Program</div>
-  <div class="sidebar-item" onclick="selectDataset('barriers')" data-key="barriers">14 Struct. Barriers <span class="sidebar-badge closed">14 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="sidebar-badge active-badge">29 rows</span></div>
-  <div class="sidebar-item" onclick="selectDataset('bounceAudit')" data-key="bounceAudit">Bounce Evidence Audit <span class="sidebar-badge">16</span></div>
-  <div class="sidebar-item" onclick="selectDataset('fnlDerivation')" data-key="fnlDerivation">f_NL Derivation Status <span class="sidebar-badge frozen">8 rows</span></div>
+  <div class="de-sidebar-group"><span class="dot orange"></span> Research Program</div>
+  <div class="de-sidebar-item" onclick="selectDataset('barriers')" data-key="barriers">14 Struct. Barriers <span class="de-sidebar-badge closed">14 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="de-sidebar-badge active-badge">29 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('bounceAudit')" data-key="bounceAudit">Bounce Evidence Audit <span class="de-sidebar-badge">16</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('fnlDerivation')" data-key="fnlDerivation">f_NL Derivation Status <span class="de-sidebar-badge frozen">8 rows</span></div>
 
-  <div class="sidebar-sep"></div>
-  <div class="sidebar-group">Equations</div>
-  <div class="sidebar-item" onclick="selectDataset('equations')" data-key="equations">6 Calculators <span class="sidebar-badge ref">interactive</span></div>
+  <div class="de-sidebar-sep"></div>
+  <div class="de-sidebar-group">Equations</div>
+  <div class="de-sidebar-item" onclick="selectDataset('equations')" data-key="equations">6 Calculators <span class="de-sidebar-badge ref">interactive</span></div>
 
-  <div class="sidebar-sep"></div>
-  <div class="sidebar-item" onclick="selectDataset('connections')" data-key="connections">Connections <span class="sidebar-badge">tree</span></div>
+  <div class="de-sidebar-sep"></div>
+  <div class="de-sidebar-item" onclick="selectDataset('connections')" data-key="connections">Connections <span class="de-sidebar-badge">tree</span></div>
 </aside>
 
 <!-- ═════════════ Main Panel ═════════════ -->
@@ -2260,7 +2269,7 @@ function selectDataset(key) {
   currentSearch = '';
   currentPage = 0;
   document.getElementById('searchInput').value = '';
-  document.querySelectorAll('.sidebar-item').forEach(el => {
+  document.querySelectorAll('.de-sidebar-item').forEach(el => {
     el.classList.toggle('active', el.dataset.key === key);
   });
   const sp = document.getElementById('specialContent');
