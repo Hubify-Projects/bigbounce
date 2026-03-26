@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "test_name": "Injection/Recovery Test (Gate 3)",
+    "pipeline": "BigAE spectral autoencoder (496 -> 128 -> 496)",
+    "date": "2026-03-26",
+    "author": "Houston Golden",
+    "n_per_class": 200,
+    "n_normal_templates": 500,
+    "proxy_threshold": 0.209871260679861,
+    "production_threshold": 5.0,
+    "scoring_method": "NNLS template-fitting reconstruction error (conservative proxy)",
+    "note": "Proxy scores are conservative lower bounds on real BigAE scores. Linear template fitting is more flexible than a 128-dim nonlinear bottleneck, so real completeness should be equal or higher.",
+    "spectral_format": {
+      "n_channels": 496,
+      "B_arm": "172 channels (3600-5800 A)",
+      "R_arm": "145 channels (5760-7620 A)",
+      "Z_arm": "179 channels (7520-9824 A)",
+      "normalization": "flux / median(|flux|), clipped to [-10, 10]"
+    }
+  },
+  "calibration": {
+    "normal_score_mean": 0.0127228481168932,
+    "normal_score_std": 0.018508589690063356,
+    "normal_score_max": 0.139914173786574,
+    "normal_score_99pct": 0.10472889475207739,
+    "proxy_threshold": 0.209871260679861
+  },
+  "results_by_class": {
+    "BAL_QSO": {
+      "description": "Broad Absorption Line QSOs (Trump+ 2006 analogs)",
+      "n_injected": 200,
+      "n_recovered": 64,
+      "completeness": 0.32,
+      "mean_score": 0.16660654830611135,
+      "median_score": 0.13408723784529408,
+      "std_score": 0.12866453996853228,
+      "min_score": 0.0048940749444598575,
+      "max_score": 0.7660771481976351,
+      "score_percentiles": {
+        "p10": 0.03076171550622601,
+        "p25": 0.061827483677089304,
+        "p50": 0.13408723784529408,
+        "p75": 0.2431678210925055,
+        "p90": 0.35786376036842127,
+        "p95": 0.3963630284317154,
+        "p99": 0.4821849580515172
+      }
+    },
+    "double_peaked": {
+      "description": "Double-peaked emitters (Wang+ 2009 analogs)",
+      "n_injected": 200,
+      "n_recovered": 0,
+      "completeness": 0.0,
+      "mean_score": 0.007938080565542825,
+      "median_score": 0.006855221926797179,
+      "std_score": 0.005255061293530106,
+      "min_score": 0.0013461472625272374,
+      "max_score": 0.029691783610483934,
+      "score_percentiles": {
+        "p10": 0.002191559892791366,
+        "p25": 0.003606424332390507,
+        "p50": 0.006855221926797179,
+        "p75": 0.011217035807927352,
+        "p90": 0.014820582715897295,
+        "p95": 0.018063125982620755,
+        "p99": 0.023129978108447892
+      }
+    },
+    "unusual_continuum": {
+      "description": "Extreme/unusual continuum shapes (broken power laws, extreme slopes)",
+      "n_injected": 200,
+      "n_recovered": 79,
+      "completeness": 0.395,
+      "mean_score": 0.6749403765714536,
+      "median_score": 0.0974518764996194,
+      "std_score": 1.0971735053418115,
+      "min_score": 0.0010112017184255723,
+      "max_score": 5.540117028299513,
+      "score_percentiles": {
+        "p10": 0.005217261820436936,
+        "p25": 0.012027840671644967,
+        "p50": 0.0974518764996194,
+        "p75": 0.6049632568732543,
+        "p90": 2.596606417495517,
+        "p95": 3.1118997149776226,
+        "p99": 3.473886476930662
+      }
+    },
+    "featureless": {
+      "description": "Featureless spectra (BL Lac / DC WD analogs)",
+      "n_injected": 200,
+      "n_recovered": 58,
+      "completeness": 0.29,
+      "mean_score": 0.3154030249879677,
+      "median_score": 0.007407985808599252,
+      "std_score": 0.5164869509856408,
+      "min_score": 0.00012708832003807593,
+      "max_score": 2.2053494623802483,
+      "score_percentiles": {
+        "p10": 0.0002053536058633213,
+        "p25": 0.0003379281568492247,
+        "p50": 0.007407985808599252,
+        "p75": 0.567086776857529,
+        "p90": 1.2543702087851678,
+        "p95": 1.429407683596709,
+        "p99": 1.6069684199038774
+      }
+    },
+    "multi_redshift": {
+      "description": "Multi-redshift superpositions (lens/projected pair candidates)",
+      "n_injected": 200,
+      "n_recovered": 0,
+      "completeness": 0.0,
+      "mean_score": 0.02787968855792644,
+      "median_score": 0.018668373308320906,
+      "std_score": 0.025689553445684576,
+      "min_score": 0.0016057859140263182,
+      "max_score": 0.13727042507690912,
+      "score_percentiles": {
+        "p10": 0.0038696621697517047,
+        "p25": 0.007566847213390013,
+        "p50": 0.018668373308320906,
+        "p75": 0.04103996909076514,
+        "p90": 0.06544873118021599,
+        "p95": 0.08087438697755572,
+        "p99": 0.09667523807272353
+      }
+    },
+    "extreme_emission": {
+      "description": "Extreme emission-line galaxies (Green Pea / EELG analogs)",
+      "n_injected": 200,
+      "n_recovered": 200,
+      "completeness": 1.0,
+      "mean_score": 1.1133286258077637,
+      "median_score": 1.079271790052814,
+      "std_score": 0.36257716687910346,
+      "min_score": 0.3723176473250255,
+      "max_score": 2.1867613066747675,
+      "score_percentiles": {
+        "p10": 0.6362540018389697,
+        "p25": 0.8538818243470002,
+        "p50": 1.079271790052814,
+        "p75": 1.3142815403597736,
+        "p90": 1.6578476187238518,
+        "p95": 1.7523731679739176,
+        "p99": 1.9653902023803769
+      }
+    }
+  },
+  "summary": {
+    "total_injected": 1200,
+    "total_recovered": 401,
+    "overall_completeness": 0.33416666666666667,
+    "quality_assessment": "NEEDS IMPROVEMENT",
+    "quality_detail": "Pipeline misses majority of known unusual spectra",
+    "classes_above_90pct": 1,
+    "classes_above_75pct": 1,
+    "classes_above_50pct": 1,
+    "weakest_class": "double_peaked",
+    "strongest_class": "extreme_emission"
+  },
+  "figure_path": "public/images/injection_recovery.png"
+}
