@@ -1,0 +1,258 @@
+{
+  "matches": 0,
+  "misses": 0,
+  "errors": 50,
+  "likely_stars": 0,
+  "results": [
+    {
+      "rank": 1,
+      "score": 25.15802574157715,
+      "status": "ERROR"
+    },
+    {
+      "rank": 2,
+      "score": 24.60582160949707,
+      "status": "ERROR"
+    },
+    {
+      "rank": 3,
+      "score": 24.532506942749023,
+      "status": "ERROR"
+    },
+    {
+      "rank": 4,
+      "score": 24.204801559448242,
+      "status": "ERROR"
+    },
+    {
+      "rank": 5,
+      "score": 22.297954559326172,
+      "status": "ERROR"
+    },
+    {
+      "rank": 6,
+      "score": 20.97508430480957,
+      "status": "ERROR"
+    },
+    {
+      "rank": 7,
+      "score": 20.866609573364258,
+      "status": "ERROR"
+    },
+    {
+      "rank": 8,
+      "score": 20.49983024597168,
+      "status": "ERROR"
+    },
+    {
+      "rank": 9,
+      "score": 20.288227081298828,
+      "status": "ERROR"
+    },
+    {
+      "rank": 10,
+      "score": 20.24767303466797,
+      "status": "ERROR"
+    },
+    {
+      "rank": 11,
+      "score": 19.963838577270508,
+      "status": "ERROR"
+    },
+    {
+      "rank": 12,
+      "score": 19.85393524169922,
+      "status": "ERROR"
+    },
+    {
+      "rank": 13,
+      "score": 19.80963706970215,
+      "status": "ERROR"
+    },
+    {
+      "rank": 14,
+      "score": 19.447969436645508,
+      "status": "ERROR"
+    },
+    {
+      "rank": 15,
+      "score": 19.16004753112793,
+      "status": "ERROR"
+    },
+    {
+      "rank": 16,
+      "score": 18.732236862182617,
+      "status": "ERROR"
+    },
+    {
+      "rank": 17,
+      "score": 18.710302352905273,
+      "status": "ERROR"
+    },
+    {
+      "rank": 18,
+      "score": 18.60306167602539,
+      "status": "ERROR"
+    },
+    {
+      "rank": 19,
+      "score": 18.565752029418945,
+      "status": "ERROR"
+    },
+    {
+      "rank": 20,
+      "score": 18.486783981323242,
+      "status": "ERROR"
+    },
+    {
+      "rank": 21,
+      "score": 18.31916046142578,
+      "status": "ERROR"
+    },
+    {
+      "rank": 22,
+      "score": 18.256803512573242,
+      "status": "ERROR"
+    },
+    {
+      "rank": 23,
+      "score": 18.09542465209961,
+      "status": "ERROR"
+    },
+    {
+      "rank": 24,
+      "score": 18.046424865722656,
+      "status": "ERROR"
+    },
+    {
+      "rank": 25,
+      "score": 17.851219177246094,
+      "status": "ERROR"
+    },
+    {
+      "rank": 26,
+      "score": 17.719388961791992,
+      "status": "ERROR"
+    },
+    {
+      "rank": 27,
+      "score": 17.551517486572266,
+      "status": "ERROR"
+    },
+    {
+      "rank": 28,
+      "score": 17.53705406188965,
+      "status": "ERROR"
+    },
+    {
+      "rank": 29,
+      "score": 17.48286247253418,
+      "status": "ERROR"
+    },
+    {
+      "rank": 30,
+      "score": 17.1458797454834,
+      "status": "ERROR"
+    },
+    {
+      "rank": 31,
+      "score": 17.081724166870117,
+      "status": "ERROR"
+    },
+    {
+      "rank": 32,
+      "score": 16.978601455688477,
+      "status": "ERROR"
+    },
+    {
+      "rank": 33,
+      "score": 16.96597671508789,
+      "status": "ERROR"
+    },
+    {
+      "rank": 34,
+      "score": 16.85445213317871,
+      "status": "ERROR"
+    },
+    {
+      "rank": 35,
+      "score": 16.704862594604492,
+      "status": "ERROR"
+    },
+    {
+      "rank": 36,
+      "score": 16.64512062072754,
+      "status": "ERROR"
+    },
+    {
+      "rank": 37,
+      "score": 16.34577178955078,
+      "status": "ERROR"
+    },
+    {
+      "rank": 38,
+      "score": 16.33734130859375,
+      "status": "ERROR"
+    },
+    {
+      "rank": 39,
+      "score": 16.332717895507812,
+      "status": "ERROR"
+    },
+    {
+      "rank": 40,
+      "score": 16.322721481323242,
+      "status": "ERROR"
+    },
+    {
+      "rank": 41,
+      "score": 16.300886154174805,
+      "status": "ERROR"
+    },
+    {
+      "rank": 42,
+      "score": 16.296958923339844,
+      "status": "ERROR"
+    },
+    {
+      "rank": 43,
+      "score": 16.293004989624023,
+      "status": "ERROR"
+    },
+    {
+      "rank": 44,
+      "score": 16.239795684814453,
+      "status": "ERROR"
+    },
+    {
+      "rank": 45,
+      "score": 16.170503616333008,
+      "status": "ERROR"
+    },
+    {
+      "rank": 46,
+      "score": 16.161375045776367,
+      "status": "ERROR"
+    },
+    {
+      "rank": 47,
+      "score": 16.075735092163086,
+      "status": "ERROR"
+    },
+    {
+      "rank": 48,
+      "score": 15.993314743041992,
+      "status": "ERROR"
+    },
+    {
+      "rank": 49,
+      "score": 15.993086814880371,
+      "status": "ERROR"
+    },
+    {
+      "rank": 50,
+      "score": 15.9761962890625,
+      "status": "ERROR"
+    }
+  ]
+}

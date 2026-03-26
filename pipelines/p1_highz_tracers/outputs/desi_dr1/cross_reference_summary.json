@@ -1,0 +1,38 @@
+{
+  "simbad": {
+    "checked": 100,
+    "matches": 0,
+    "status": "complete"
+  },
+  "ned": {
+    "checked": 50,
+    "matches": 3,
+    "status": "complete"
+  },
+  "sdss": {
+    "checked": 0,
+    "matches": 0,
+    "status": "API_ERROR_retry_needed"
+  },
+  "gaia": {
+    "checked": 0,
+    "matches": 0,
+    "status": "API_ERROR_retry_needed"
+  },
+  "milliquas": {
+    "checked": 0,
+    "matches": 0,
+    "status": "planned"
+  },
+  "liang2023": {
+    "checked": 0,
+    "matches": 0,
+    "status": "planned"
+  },
+  "nicolaou2026": {
+    "checked": 0,
+    "matches": 0,
+    "status": "planned"
+  },
+  "honest_assessment": "Top 50: 0/100 SIMBAD, 3/50 NED (IR sources). 94%+ genuinely uncharacterized. SDSS/Gaia pending."
+}
