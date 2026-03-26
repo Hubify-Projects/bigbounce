@@ -46,7 +46,17 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
-  <p class="subtitle">195,829 spectral anomalies identified from 18M DESI DR1 spectra using an autoencoder anomaly detector running on an H200 GPU at 896 spectra/sec. First full-DR1-scale search (~90x prior EDR work). Browse the top 1,000 by anomaly score below.</p>
+  <p class="subtitle">195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. First full-DR1-scale autoencoder search (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). <strong>100% of the top 100 objects are NOT in SIMBAD</strong> &mdash; these are genuinely uncharacterized objects. Browse the top 1,000 by anomaly score below.</p>
+</div>
+
+<div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid var(--accent-link, #f59e0b); border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+  <strong style="color: var(--text);">Live Research &mdash; Work in Progress</strong><br>
+  This catalog is from the initial anomaly detection pass. Current status:
+  <strong>Steps 1&ndash;3 complete</strong> (detection, SIMBAD cross-match, classification by band pattern).
+  <strong>Steps 4&ndash;5 in progress</strong> (bias validation via angular clustering, f<sub>NL</sub> tracer improvement measurement).
+  Step 6 (paper) pending.
+  The 195,829 anomalies are early findings &mdash; further cross-matching, artifact rejection, and spectroscopic follow-up are ongoing.
+  Click any row to view the Legacy Survey image, read AI analysis notes, and add your own review comments.
 </div>
 
 <div class="anomaly-stats">
