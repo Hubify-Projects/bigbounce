@@ -130,14 +130,14 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">DESI DR1 Anomaly Catalog Complete &mdash; Cross-matching &amp; Classification Phase</div>
-  <p class="status-desc">DESI DR1 spectral anomaly pipeline complete: 195,829 anomalies from 18M spectra on H200 GPU. Now entering cross-matching and classification phase (Pipeline 1 Steps 2&ndash;6). Quintom w0-wa MCMC running (16.9K samples, R-1=0.049). Two papers remain ready for simultaneous arXiv submission. The f<sub>NL</sub> = &minus;35/8 prediction is confirmed and forecasted; SPHEREx data (~2028) will be decisive.</p>
+  <div class="status-focus">Research Platform &amp; Convex Integration Complete</div>
+  <p class="status-desc">Full-stack research platform now live: Convex persistence for reviews, chat logging, analytics, and activity feed. Admin dashboard deployed. Dark mode, site search, and social sharing added. DESI spectral anomaly pipeline active on H200 GPU.</p>
   <div class="status-meta">
-    <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 anomaly scan: 195,829 ANOMALIES CATALOGED</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> Quintom MCMC: 16.9K samples (R-1=0.049)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> f_NL = &minus;35/8: VERIFIED</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> 2 papers: READY FOR SUBMISSION</div>
-    <div class="status-meta-item"><span class="dot dot-planned"></span> Awaiting SPHEREx data (~2028)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> H200 DESI DR1 Scan &mdash; Complete</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Convex Backend &mdash; 11 tables deployed</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Admin Dashboard &mdash; Live</div>
+    <div class="status-meta-item"><span class="dot dot-paused"></span> Pipeline B Review &mdash; 70 objects, human review pending</div>
+    <div class="status-meta-item"><span class="dot dot-planned"></span> f_NL Tracer Purification &mdash; Steps 2-6 pending</div>
   </div>
 </div>
 
@@ -145,12 +145,12 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">NOW</span> Complete chirality pipeline v2 inference (8.67M galaxies on H100)</li>
-    <li><span class="priority priority-now">NOW</span> Finalize two-paper arXiv submission package</li>
-    <li><span class="priority priority-next">NEXT</span> Analyze chirality catalog for parity asymmetry signal</li>
-    <li><span class="priority priority-next">NEXT</span> Submit to arXiv (gr-qc / astro-ph.CO)</li>
-    <li><span class="priority priority-later">LATER</span> Await SPHEREx data (~2028) for f<sub>NL</sub> measurement</li>
-    <li><span class="priority priority-later">LATER</span> Await LiteBIRD data for birefringence confirmation</li>
+    <li><span class="priority priority-now">NOW</span> Human review of Pipeline B DESI anomalies (70 objects)</li>
+    <li><span class="priority priority-now">NOW</span> Monitor H200 DESI DR1 full-catalog scan</li>
+    <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> tracer purification (cross-match, classify, validate bias)</li>
+    <li><span class="priority priority-next">NEXT</span> w0-wa quintom MCMC analysis</li>
+    <li><span class="priority priority-later">LATER</span> Paper 2 submission preparation</li>
+    <li><span class="priority priority-later">LATER</span> LiteBIRD birefringence forecast update</li>
   </ul>
 </div>
 
@@ -160,6 +160,48 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-25 (evening)</div>
+    <div class="feed-title">Site Search, Dark Mode, Social Sharing, Print Styles</div>
+    <p class="feed-body">Added Cmd+K site-wide search overlay (27 indexed entries), automatic dark mode with manual toggle, Open Graph meta tags on all 26 pages for rich social previews, print-optimized stylesheet, SVG favicon, and custom 404 page.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">SEARCH</span><span class="feed-tag">DARK MODE</span><span class="feed-tag">OG TAGS</span><span class="feed-tag">UX</span></div>
+  </div>
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-25 (afternoon)</div>
+    <div class="feed-title">Shared Navigation Refactor &mdash; nav.js</div>
+    <p class="feed-body">Extracted hardcoded navigation from 26 HTML pages into a single shared nav.js file. Auto-detects page depth, handles active states, injects sidebar + topbar + inline nav. One file to edit, every page updates. Net reduction of 332 lines of duplicated HTML.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">NAV</span><span class="feed-tag">REFACTOR</span><span class="feed-tag">-332 LINES</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-25 (afternoon)</div>
+    <div class="feed-title">Chat Persistence, Feedback Widgets, Activity Feed, Deep Links</div>
+    <p class="feed-body">Astro chatbot now persists conversations across page navigation via Convex sessions. Visitor feedback (thumbs up/down) added to explainer and 5 article pages. Activity feed reads from Convex (admin can post entries). Deep link support for review objects (?object=top50_12). Admin notification badges for new chat sessions.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">CONVEX</span><span class="feed-tag">CHAT</span><span class="feed-tag">FEEDBACK</span><span class="feed-tag">UX</span></div>
+  </div>
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-03-25 (morning)</div>
+    <div class="feed-title">Convex Backend Deployed &mdash; 11 Tables, Admin Dashboard Live</div>
+    <p class="feed-body">Full Convex integration deployed to dev and production. Tables: reviews, checklistItems, pipelineState, models, chatMessages, activityFeed, mcmcStatus, pageViews, spectralResults, feedback queries. Admin dashboard at /admin.html with chat session browser, page analytics, activity feed manager, MCMC status viewer, and feedback summary. All chatbot conversations now logged. Page view analytics on all 14+ pages.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">CONVEX</span><span class="feed-tag">ADMIN</span><span class="feed-tag">ANALYTICS</span><span class="feed-tag">11 TABLES</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-25 (morning)</div>
+    <div class="feed-title">Review Page Wired to Convex with localStorage Fallback</div>
+    <p class="feed-body">Pipeline B review dashboard now persists labels and notes to Convex database in addition to localStorage. Reviews sync across devices. Convex is authoritative on load, with localStorage as instant fallback. Checklist state also syncs. Review hub shows live pipeline status from Convex.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">CONVEX</span><span class="feed-tag">REVIEW</span><span class="feed-tag">PIPELINE B</span></div>
+  </div>
+
+  <div class="feed-item active-item">
+    <div class="feed-date">2026-03-25</div>
+    <div class="feed-title">New Articles: &lsquo;Look Up&rsquo; Essay + Research Platform Technical Write-up</div>
+    <p class="feed-body">Published two new articles. &lsquo;Look Up&rsquo; &mdash; a personal essay on why AI should be used for real scientific discovery, not benchmark optimization. &lsquo;Building a Live Research Platform&rsquo; &mdash; technical deep dive into how the BigBounce static site became an interactive research hub with Convex, AI chat, and human review tools.</p>
+    <div class="feed-tags"><span class="feed-tag active">ACTIVE</span><span class="feed-tag">ARTICLES</span><span class="feed-tag">ESSAY</span><span class="feed-tag">AI</span></div>
+  </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-03-26</div>

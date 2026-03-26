@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Live Research Platform — Spin-Torsion Cosmology</title>
+<meta name="description" content="How a static cosmology website became an interactive research hub with Convex backend, AI chat, human review pipeline, and real-time analytics — all without a frontend framework.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Building a Live Research Platform — Spin-Torsion Cosmology">
+<meta property="og:description" content="How a static cosmology website became an interactive research hub with Convex backend, AI chat, human review pipeline, and real-time analytics — all without a frontend framework.">
+<meta property="og:url" content="https://bigbounce.hubify.app/articles/building-a-research-platform.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Live Research Platform — Spin-Torsion Cosmology">
+<meta name="twitter:description" content="How a static cosmology website became an interactive research hub with Convex backend, AI chat, human review pipeline, and real-time analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="../nav.js" defer></script>
+</head>
+<body>
+
+<main class="container">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Technical &middot; Infrastructure</p>
+  <h1>Building a Live Research Platform</h1>
+  <p class="subtitle">How a static cosmology site became an interactive research hub with real-time data, AI chat, and human review tools</p>
+  <div class="meta">
+    <span class="badge badge-accent">TECHNICAL</span>
+    <span class="badge badge-accent">INFRASTRUCTURE</span>
+    <span class="badge badge-neutral">WEB</span>
+    <span class="badge badge-neutral">2026</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>1. From Static to Dynamic</h2>
+
+<p>The BigBounce website started the way most research sites do: a handful of HTML files summarizing a paper. An index page with key results. A figures gallery. A glossary. The kind of thing you put together in a weekend to make your work accessible beyond the PDF.</p>
+
+<p>Then the research grew. What began as a single paper became a 24-branch research program with 424,000+ MCMC samples, 14 structural barriers, and multiple falsifiable predictions. The static site couldn't keep up. We needed the site to do things that static HTML cannot do on its own:</p>
+
+<ul style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary);">
+  <li style="margin-bottom: 8px;">Persist visitor feedback and analytics without third-party trackers</li>
+  <li style="margin-bottom: 8px;">Let visitors ask questions about the research and get real answers</li>
+  <li style="margin-bottom: 8px;">Track the status of running MCMC chains and compute pipelines</li>
+  <li style="margin-bottom: 8px;">Manage a human review pipeline for DESI spectral anomalies</li>
+  <li style="margin-bottom: 8px;">Provide an admin dashboard for monitoring everything</li>
+</ul>
+
+<p>The question was: how do you add all of this without turning a clean, fast, content-first website into a bloated single-page application?</p>
+
+<p>The answer turned out to be simpler than expected.</p>
+
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>2. The Stack</h2>
+
+<p>The BigBounce platform runs on three layers:</p>
+
+<div class="grid-3" style="margin: 24px 0;">
+  <div class="card" style="text-align: center;">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Frontend</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Vanilla HTML/CSS/JS</h3>
+    <p style="font-size: 15px;">No React. No Vue. No Svelte. No build step. Plain HTML files with a shared stylesheet and a single <code>nav.js</code> file that injects navigation across all 26 pages.</p>
+  </div>
+  <div class="card" style="text-align: center;">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Backend</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Convex</h3>
+    <p style="font-size: 15px;">A reactive backend-as-a-service that handles persistence, real-time subscriptions, and server-side mutations. Accessed directly from the browser via the Convex JS client &mdash; no API server needed.</p>
+  </div>
+  <div class="card" style="text-align: center;">
+    <p class="text-xs sans" style="margin-bottom: 8px;">Edge</p>
+    <h3 style="margin-top: 0; border: none; padding: 0;">Vercel Edge Functions</h3>
+    <p style="font-size: 15px;">Handles the AI chat proxy (routing to Claude Sonnet via OpenRouter) and any server-side logic that can't run in the browser. Deployed alongside the static files.</p>
+  </div>
+</div>
+
+<p>Why this combination works:</p>
+
+<div class="card card-accent" style="margin: 24px 0;">
+  <h4 style="margin-top: 0;">Zero Build Step</h4>
+  <p>There is no <code>npm run build</code>. There is no webpack, no Vite, no bundler. You edit an HTML file, push to <code>main</code>, and Netlify deploys it. The entire site is the source code. This has a surprising secondary benefit: <strong>any AI agent can edit the site directly</strong>. There's no compilation layer between the code and the output, which makes AI-assisted development dramatically simpler.</p>
+</div>
+
+<p>The static frontend talks to Convex for persistence and to Vercel Edge Functions for AI chat. That's the entire architecture. No ORM. No database migrations. No Docker containers. No Kubernetes.</p>
+
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>3. What We Built</h2>
+
+<p>Here's a walkthrough of the major features, roughly in the order they were added.</p>
+
+<h3>Convex Data Layer</h3>
+
+<p>Convex provides the persistence layer for everything dynamic on the site. The tables include:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Purpose</th>
+      <th>Records</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>reviews</code></td>
+      <td>Human review labels for DESI spectral anomalies</td>
+      <td>70+</td>
+    </tr>
+    <tr>
+      <td><code>chatMessages</code></td>
+      <td>Astro chatbot conversation logs and feedback</td>
+      <td>Growing</td>
+    </tr>
+    <tr>
+      <td><code>analytics</code></td>
+      <td>Page view tracking (path, referrer, session hash)</td>
+      <td>Growing</td>
+    </tr>
+    <tr>
+      <td><code>activityFeed</code></td>
+      <td>Research activity timeline entries</td>
+      <td>50+</td>
+    </tr>
+    <tr>
+      <td><code>mcmcStatus</code></td>
+      <td>Running chain status and convergence metrics</td>
+      <td>Per-chain</td>
+    </tr>
+    <tr>
+      <td><code>spectralResults</code></td>
+      <td>DESI spectral anomaly classification results</td>
+      <td>195,000+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Every mutation is called directly from the browser using the Convex HTTP client &mdash; a single <code>&lt;script&gt;</code> tag loaded from a CDN. No backend server, no API routes, no CORS configuration.</p>
+
+<h3>Admin Dashboard</h3>
+
+<p>A protected admin page provides a unified view of the platform:</p>
+
+<ul style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+  <li style="margin-bottom: 6px;"><strong>Chat session browser:</strong> View all Astro chatbot conversations, filter by date, see full message threads</li>
+  <li style="margin-bottom: 6px;"><strong>Analytics overview:</strong> Page view counts, top pages, referrer breakdown, visitor timelines</li>
+  <li style="margin-bottom: 6px;"><strong>Activity manager:</strong> Add, edit, and reorder research timeline entries</li>
+  <li style="margin-bottom: 6px;"><strong>Review pipeline status:</strong> Track progress on human verification of AI-classified anomalies</li>
+</ul>
+
+<h3>Astro: The Research Chatbot</h3>
+
+<p>Astro is an AI chatbot embedded on every page of the site. It uses Claude Sonnet (via OpenRouter) to answer visitor questions about the BigBounce research. The implementation:</p>
+
+<div class="card" style="margin: 20px 0;">
+  <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-secondary); font-size: 15px;">
+    <li style="margin-bottom: 6px;">Frontend widget loaded via <code>chat-widget.js</code></li>
+    <li style="margin-bottom: 6px;">Messages streamed via SSE (Server-Sent Events) from a Vercel Edge Function</li>
+    <li style="margin-bottom: 6px;">Conversations persisted to Convex with page context (which page the user was on)</li>
+    <li style="margin-bottom: 6px;">System prompt grounded in the actual research content</li>
+    <li style="margin-bottom: 6px;">Full conversation history maintained per session</li>
+  </ul>
+</div>
+
+<p>Astro knows about the 14 barriers, the surviving predictions, the MCMC results, and the ECH framework. It doesn't hallucinate physics because its system prompt anchors it to the specific claims and numbers from the research.</p>
+
+<h3>Human Review Pipeline</h3>
+
+<p>The DESI spectral anomaly pipeline classified 195,000+ objects using AI. But AI classification needs human verification. We built a review interface directly into the site:</p>
+
+<ol style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+  <li style="margin-bottom: 6px;">70 representative anomalies selected for human review</li>
+  <li style="margin-bottom: 6px;">Each anomaly shows the AI classification, confidence score, and spectral data</li>
+  <li style="margin-bottom: 6px;">Human reviewer confirms, overrides, or flags for further analysis</li>
+  <li style="margin-bottom: 6px;">Results stored in Convex with both AI and human labels</li>
+  <li style="margin-bottom: 6px;">Agreement rate tracked to validate the AI pipeline</li>
+</ol>
+
+<h3>Shared Navigation</h3>
+
+<p>One of the earliest infrastructure decisions was centralizing navigation in a single <code>nav.js</code> file. With 26 pages across root, articles, and research subdirectories, maintaining nav HTML in every file was unsustainable. The nav script:</p>
+
+<ul style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+  <li style="margin-bottom: 6px;">Detects its depth from the URL (root, <code>articles/</code>, <code>research/</code>) and adjusts link prefixes</li>
+  <li style="margin-bottom: 6px;">Highlights the active page</li>
+  <li style="margin-bottom: 6px;">Injects mobile hamburger menu</li>
+  <li style="margin-bottom: 6px;">Includes site search (Cmd+K / Ctrl+K)</li>
+  <li style="margin-bottom: 6px;">Handles dark mode toggle</li>
+</ul>
+
+<h3>Additional Features</h3>
+
+<ul style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+  <li style="margin-bottom: 6px;"><strong>Dark mode:</strong> Full dark theme with CSS custom properties, respects system preference</li>
+  <li style="margin-bottom: 6px;"><strong>Site search:</strong> Cmd+K overlay that searches across all pages</li>
+  <li style="margin-bottom: 6px;"><strong>Print styles:</strong> Clean print output for any page</li>
+  <li style="margin-bottom: 6px;"><strong>Page view analytics:</strong> Privacy-respecting, first-party, session-hashed &mdash; no cookies</li>
+  <li style="margin-bottom: 6px;"><strong>Visitor feedback:</strong> Thumbs up/down widget on every article and page</li>
+</ul>
+
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>4. Why Not a Framework?</h2>
+
+<p>This is the question everyone asks. Why not React? Why not Next.js? Why not Astro (the framework, not our chatbot)? It's a fair question, and the honest answer has tradeoffs on both sides.</p>
+
+<h3>Why plain HTML works for this project</h3>
+
+<div class="card" style="margin: 20px 0;">
+  <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-secondary); font-size: 15px;">
+    <li style="margin-bottom: 8px;"><strong>No build step:</strong> Edit a file, push, deployed. No compilation, no bundling, no "it works on my machine."</li>
+    <li style="margin-bottom: 8px;"><strong>AI-agent-friendly:</strong> Any AI coding assistant can read, understand, and edit plain HTML. No framework abstractions to navigate, no component trees to understand, no state management to reason about.</li>
+    <li style="margin-bottom: 8px;"><strong>Instant page loads:</strong> No JavaScript bundle to parse before content appears. The HTML is the content.</li>
+    <li style="margin-bottom: 8px;"><strong>Content-first:</strong> This is a research site. The content is the product. Frameworks optimize for interactivity; we optimize for reading.</li>
+    <li style="margin-bottom: 8px;"><strong>Longevity:</strong> HTML from 1999 still renders perfectly. React components from 2019 may not compile without dependency updates. For a research archive that should remain accessible for decades, plain HTML is the safest bet.</li>
+  </ul>
+</div>
+
+<h3>The real downsides</h3>
+
+<p>We should be honest about what we give up:</p>
+
+<ul style="margin: 16px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+  <li style="margin-bottom: 8px;"><strong>No component reuse:</strong> Common patterns (cards, stat blocks, equation displays) are copy-pasted, not abstracted. Changes to a pattern require updating every instance.</li>
+  <li style="margin-bottom: 8px;"><strong>No TypeScript on the frontend:</strong> Type safety only exists in the Convex backend. Frontend JS is untyped.</li>
+  <li style="margin-bottom: 8px;"><strong>Nav duplication was painful</strong> &mdash; until we solved it with <code>nav.js</code>. But other shared elements (footer, feedback widget, analytics snippet) are still duplicated.</li>
+  <li style="margin-bottom: 8px;"><strong>Interactive features are harder:</strong> The data explorer page, with its sortable tables and equation calculators, would be cleaner as React components. We made it work with vanilla JS, but it took more code than it should have.</li>
+</ul>
+
+<h3>When would we switch?</h3>
+
+<p>If the interactive surface keeps growing &mdash; if we add more dashboard features, more real-time visualizations, more complex data tools &mdash; the balance tips toward a framework. The threshold is roughly: when more than half the development time is spent on interactivity rather than content, it's time to consider a migration. We're not there yet. The site is still primarily a reading experience with dynamic features layered on top.</p>
+
+</section>
+
+<!-- ============================================================ -->
+<section class="section">
+<h2>5. For Other Researchers</h2>
+
+<p>If you are a researcher thinking about sharing your work online, here is the simplest path I can recommend based on what we learned:</p>
+
+<div class="card card-accent" style="margin: 24px 0;">
+  <h4 style="margin-top: 0;">The Minimal Research Platform Stack</h4>
+  <ol style="margin: 12px 0; padding-left: 24px; color: var(--text-secondary); font-size: 15px;">
+    <li style="margin-bottom: 8px;"><strong>Start with HTML.</strong> Write your research as web pages. Use a single <code>style.css</code>. Include MathJax for equations. This gets you 80% of the way.</li>
+    <li style="margin-bottom: 8px;"><strong>Add Convex when you need persistence.</strong> The moment you want feedback, analytics, or any form of data storage, add the Convex browser bundle (one script tag) and write your mutations. No server to manage.</li>
+    <li style="margin-bottom: 8px;"><strong>Use Vercel or Netlify for hosting.</strong> Push to GitHub, auto-deploy. Free tier is more than enough for a research site.</li>
+    <li style="margin-bottom: 8px;"><strong>Add AI chat if your research is complex.</strong> A chatbot grounded in your actual findings can answer visitor questions better than a FAQ page. Use an edge function to proxy the LLM API.</li>
+    <li style="margin-bottom: 8px;"><strong>Centralize your nav early.</strong> If you have more than five pages, write a <code>nav.js</code> that injects navigation. You'll thank yourself later.</li>
+  </ol>
+</div>
+
+<p>You do not need React to build something useful. You do not need a design system, a component library, or a state management solution. You need HTML, a stylesheet, and the willingness to ship something imperfect and iterate.</p>
+
+<p>The BigBounce site has 26 pages, an AI chatbot, a review pipeline, real-time analytics, an admin dashboard, and a full data explorer &mdash; and it was built by one person using plain HTML and a handful of backend services. If that's not proof that you can do this too, I don't know what is.</p>
+
+<blockquote>
+<p>The best research platform is the one that exists. Don't let tooling decisions delay sharing your work. Start with HTML. Add complexity only when the research demands it.</p>
+</blockquote>
+
+</section>
+
+<div id="feedback-widget" style="margin-top:48px;padding:20px 0;border-top:1px solid var(--border);text-align:center;font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);">
+  Was this helpful?
+  <button onclick="sendFeedback('up')" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
+  <button onclick="sendFeedback('down')" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
+  <span id="fb-thanks" style="display:none;margin-left:12px;color:#16a34a;">Thanks!</span>
+</div>
+<script>
+function sendFeedback(vote) {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    c.mutation("chatMessages:log", {
+      sessionId: "feedback_" + location.pathname,
+      role: "feedback",
+      content: vote,
+      pageContext: { title: document.title, path: location.pathname },
+      timestamp: Date.now()
+    });
+    document.getElementById('fb-up').disabled = true;
+    document.getElementById('fb-down').disabled = true;
+    document.getElementById('fb-thanks').style.display = 'inline';
+  } catch(e) {}
+}
+</script>
+
+</main>
+
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+</div><script src="/astro/chat-widget.js" defer></script>
+</body>
+</html>
