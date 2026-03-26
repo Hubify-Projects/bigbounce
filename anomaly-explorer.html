@@ -46,13 +46,18 @@
 </style>
 </head>
 <body>
-<!-- nav not found -->
+<script src="nav.js" defer></script>
 
 <main class="container" style="padding-top: 20px;">
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
   <p class="subtitle">195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. First full-DR1-scale autoencoder search (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). <strong>100% of the top 100 objects are NOT in SIMBAD</strong> &mdash; these are genuinely uncharacterized objects. Browse the top 1,000 by anomaly score below.</p>
+  <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+    <a href="methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
+    <a href="review/index.html" class="btn btn-secondary" style="font-size:13px;">Review Hub</a>
+    <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" class="btn btn-secondary" style="font-size:13px;">Model on HuggingFace</a>
+  </div>
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid var(--accent-link, #f59e0b); border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">

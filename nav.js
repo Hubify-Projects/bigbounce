@@ -48,6 +48,7 @@
   else if (path.indexOf('/datasets') !== -1) activePage = 'datasets';
   else if (path.indexOf('/data-explorer') !== -1) activePage = 'data-explorer';
   else if (path.indexOf('/anomaly-explorer') !== -1) activePage = 'anomaly-explorer';
+  else if (path.indexOf('/methodology-anomaly') !== -1) activePage = 'methodology-anomaly';
   else if (path.indexOf('/galaxy-explorer') !== -1) activePage = 'galaxy-explorer';
   else if (path.indexOf('/figures') !== -1) activePage = 'figures';
   else if (path.indexOf('/glossary') !== -1) activePage = 'glossary';
@@ -96,6 +97,7 @@
     + '<a href="' + p('data-explorer.html') + '" class="' + sidebarActiveClass('data-explorer', 'sidebar-link') + '" data-page="data-explorer">data explorer</a>'
     + '<a href="' + p('galaxy-explorer.html') + '" class="' + sidebarActiveClass('galaxy-explorer', 'sidebar-link') + '" data-page="galaxy-explorer">galaxy explorer</a>'
     + '<a href="' + p('anomaly-explorer.html') + '" class="' + sidebarActiveClass('anomaly-explorer', 'sidebar-link') + '" data-page="anomaly-explorer">anomaly explorer</a>'
+    + '<a href="' + p('methodology-anomaly.html') + '" class="' + sidebarActiveClass('methodology-anomaly', 'sidebar-link') + '" data-page="methodology-anomaly">methodology</a>'
     + '</div>'
     + '<a href="' + p('figures.html') + '" class="' + sidebarActiveClass('figures', 'sidebar-link') + '" data-page="figures">figures</a>'
     + '<a href="' + p('glossary.html') + '" class="' + sidebarActiveClass('glossary', 'sidebar-link') + '" data-page="glossary">glossary</a>'
