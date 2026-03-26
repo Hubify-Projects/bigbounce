@@ -35,7 +35,8 @@
     { title: "14 Structural Barriers", path: "/index.html#barriers", tags: "barriers structural theorem perturbation transparency mass coupling", excerpt: "Every minimal route from bounce to dark energy is closed by 14 structural barriers." },
     { title: "MCMC Results \u2014 \u0394Neff \u2248 0", path: "/data-explorer.html", tags: "mcmc neff dark radiation hubble h0 sigma8 posterior", excerpt: "309,789 posterior samples confirm \u0394Neff ~ 0, H\u2080 = 67.68 (standard \u039bCDM)." },
     { title: "Contributions", path: "/contributions.html", tags: "contributions community collaborative", excerpt: "Community contributions and collaborative research." },
-    { title: "Galaxy Explorer", path: "/galaxy-explorer.html", tags: "galaxy explorer catalog chirality spin", excerpt: "Interactive galaxy catalog exploration tool." }
+    { title: "Galaxy Explorer", path: "/galaxy-explorer.html", tags: "galaxy explorer catalog chirality spin", excerpt: "Interactive galaxy catalog exploration tool." },
+    { title: "Anomaly Explorer", path: "/anomaly-explorer.html", tags: "anomaly explorer desi dr1 spectral autoencoder simbad", excerpt: "195,829 spectral anomalies from 18M DESI DR1 spectra. 100% of top objects not in SIMBAD." }
   ];
 
   // ── Detect prefix (same approach as nav.js) ──────────────

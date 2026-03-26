@@ -549,6 +549,30 @@
 
 <hr>
 
+<!-- ═══════════════════════════════ AI DISCOVERY PIPELINES ═══════════════════════════════ -->
+<section class="section">
+  <h2>AI Discovery Pipelines &mdash; Data Products</h2>
+  <p>Beyond the theoretical research program, we operate AI-enhanced discovery pipelines that produce novel observational catalogs. These are independent data products with their own novelty assessments.</p>
+
+  <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">DESI DR1 Spectral Anomaly Catalog</h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Pipeline B &middot; Data Product</p>
+    <h4 style="margin-top: 16px;">What it is</h4>
+    <p>195,829 spectral anomalies identified from the full DESI DR1 Main Survey catalog (~18M spectra) using a spectral autoencoder running on an H200 GPU at 896 spectra/sec. This is the first full-DR1-scale autoencoder anomaly search, ~90x larger than prior EDR work (Liang et al. 2023; Nicolaou et al. 2026).</p>
+    <h4>Key findings</h4>
+    <ul>
+      <li>100/100 top-scored anomalies are NOT in SIMBAD (uncharacterized objects)</li>
+      <li>151,244 multi-band anomalies (genuinely unusual across the full spectrum)</li>
+      <li>44,436 B-dominant anomalies (blue-end spectral features)</li>
+      <li>96 artifact suspects identified and flagged</li>
+    </ul>
+    <h4>Prior art</h4>
+    <p><strong>Liang et al. (2023)</strong> applied autoencoder + normalizing flow to ~250K DESI EDR spectra. <strong>Nicolaou et al. (2026)</strong> applied VAE + Astronomaly to ~208K DESI EDR spectra. Our contribution is scale (~90x) and dataset (DR1 vs EDR).</p>
+  </div>
+</section>
+
+<hr>
+
 <!-- ═══════════════════════════════ SUMMARY ═══════════════════════════════ -->
 <section class="section">
   <h2>Summary</h2>

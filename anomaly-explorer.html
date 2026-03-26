@@ -7,6 +7,7 @@
 <meta name="description" content="Explore 195,829 spectral anomalies from 18M DESI DR1 spectra. Interactive table with Legacy Survey image links.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
 <style>
 .anomaly-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
 .anomaly-stat { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; text-align: center; }
@@ -26,6 +27,16 @@
 .btn-ls:hover { background: #bfdbfe; }
 .sky-map { width: 100%; height: 300px; background: #0f172a; border-radius: var(--radius-lg); margin: 20px 0; position: relative; overflow: hidden; }
 .sky-map canvas { width: 100%; height: 100%; }
+.anomaly-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+.anomaly-modal.open { display: flex; }
+.anomaly-modal-content { background: var(--bg); border-radius: var(--radius-lg); padding: 24px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
+.anomaly-thumb { width: 48px; height: 48px; border-radius: 4px; cursor: pointer; object-fit: cover; border: 1px solid var(--border); }
+.anomaly-thumb:hover { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.3); }
+.anomaly-table tr { cursor: pointer; }
+.comment-item { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; margin-bottom: 6px; font-size: 12px; font-family: var(--font-sans); display: flex; justify-content: space-between; align-items: flex-start; }
+.comment-item .comment-text { flex: 1; }
+.comment-item .comment-delete { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 14px; padding: 0 0 0 8px; }
+.comment-item .comment-delete:hover { color: #ef4444; }
 </style>
 </head>
 <body>
@@ -94,6 +105,7 @@
 <th onclick="sortTable(6)">rR</th>
 <th onclick="sortTable(7)">rZ</th>
 <th>Image</th>
+<th>Full</th>
 </tr>
 </thead>
 <tbody id="tableBody"></tbody>
@@ -111,6 +123,33 @@
   </div>
 </section>
 
+<div class="anomaly-modal" id="anomalyModal" onclick="if(event.target===this)closeModal()">
+  <div class="anomaly-modal-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 id="modalTitle" style="margin:0;font-family:var(--font-sans);">Anomaly #1</h3>
+      <button onclick="closeModal()" style="background:none;border:none;font-size:20px;cursor:pointer;">&times;</button>
+    </div>
+    <div style="text-align:center;margin-bottom:16px;">
+      <img id="modalImage" style="max-width:100%;border-radius:8px;border:1px solid var(--border);" alt="Legacy Survey cutout">
+    </div>
+    <div id="modalDetails" style="font-family:var(--font-mono);font-size:13px;margin-bottom:16px;"></div>
+    <div id="aiComment" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;display:none;">
+      <strong style="color:#166534;">AI Analysis:</strong> <span id="aiCommentText"></span>
+    </div>
+    <div style="margin-bottom:16px;">
+      <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Open in Legacy Survey Viewer</a>
+    </div>
+    <div class="comments-section">
+      <h4 style="font-family:var(--font-sans);font-size:14px;margin-bottom:8px;">Review Notes</h4>
+      <div id="commentsList" style="margin-bottom:8px;"></div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="commentInput" placeholder="Add a review note..." style="flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;" onkeydown="if(event.key==='Enter')addComment()">
+        <button onclick="addComment()" style="padding:6px 12px;background:#1d4ed8;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script>
@@ -119,6 +158,136 @@ const DATA =
 ;
 // DATA format: [score, ra, dec, worst, rB, rR, rZ, tid]
 let sortCol = 0, sortDir = 1;
+let currentModalIdx = -1;
+
+// AI analysis comments for top 20 anomalies
+const AI_COMMENTS = {
+  "-242117190": "Z-band dominated residual (rZ=7.33 vs rB=1.35, rR=0.41). Strong near-IR spectral anomaly — likely a high-redshift object with emission features shifted into the Z-band, or unusual dust emission. Highest overall score in catalog.",
+  "-262397190": "Z-band dominated residual (rZ=6.23 vs rB=1.37, rR=0.26). Near-IR anomaly with negligible R-band deviation. Consistent with a high-z quasar or strongly reddened AGN with features beyond 8000A.",
+  "-242337192": "Z-band dominated residual (rZ=7.43 vs rB=0.87, rR=0.72). Strongest Z-band residual in the catalog. The low B and R residuals indicate a very localized spectral anomaly in the near-IR — possible unusual molecular or dust features.",
+  "-218427377": "R-band dominated residual (rR=8.27 vs rB=1.55, rZ=0.18). Strongest R-band residual in catalog. Mid-optical anomaly suggests unusual continuum shape, possible broad absorption features or atypical emission line ratios in 6000-7500A range.",
+  "-237137377": "R-band dominated residual (rR=7.86 vs rB=1.55, rZ=0.17). Strong mid-optical anomaly with very clean Z-band. Pattern matches unusual AGN continuum or broad-line region emission not captured by standard templates.",
+  "-260408264": "B-band dominated residual (rB=6.92 vs rR=0.22, rZ=0.32). Blue-end spectral anomaly in a high-latitude field (Dec +59). Possible high-ionization emission object, unusual UV continuum, or Lyman-alpha feature at low redshift.",
+  "-218424222": "B-band dominated residual (rB=6.99 vs rR=0.32, rZ=0.18). Strongest B-band residual in catalog. The extremely clean R and Z bands suggest a sharp, localized spectral feature below 5000A — possible extreme emission line or continuum break.",
+  "-252707377": "R-band dominated residual (rR=7.46 vs rB=1.40, rZ=0.18). Strong mid-optical anomaly. The elevated B-band residual hints at a broad anomalous feature spanning B-to-R, possibly an unusual continuum slope or multiple absorption systems.",
+  "-226434222": "B-band dominated residual (rB=6.66 vs rR=0.35, rZ=0.30). Blue-end anomaly in Virgo cluster field. Could be an unusual compact galaxy, blue compact dwarf, or object with strong [OII]/[OIII] emission overwhelming the blue continuum.",
+  "-242117261": "R-band dominated residual (rR=7.23 vs rB=1.65, rZ=0.24). Located near anomaly #1 (0.5 deg separation) — possible physical association. Strong mid-optical anomaly warrants comparison of both spectra.",
+  "-240426131": "B-band dominated residual (rB=6.59 vs rR=0.25, rZ=0.25). High Galactic latitude field (RA 264, Dec +43). Clean red/near-IR bands with extreme blue anomaly suggest genuine UV-excess source, not a calibration artifact.",
+  "-218354222": "B-band dominated residual (rB=6.52 vs rR=0.45, rZ=0.35). Slightly elevated R-band compared to other B-dominant objects. Possible unusual emission line complex spanning the B-R boundary near 5500A.",
+  "-218427261": "R-band dominated residual (rR=6.97 vs rB=1.75, rZ=0.36). Same field as anomaly #4 (0.2 deg separation). Similar R-band dominance pattern suggests a shared physical origin or systematic effect in this sky region.",
+  "-248077261": "R-band dominated residual (rR=6.91 vs rB=1.86, rZ=0.50). Multi-band anomaly emerging — B and Z residuals are both elevated relative to pure R-dominant objects. Warrants visual inspection as a candidate for genuinely unusual broadband spectrum.",
+  "-237137261": "R-band dominated residual (rR=6.61 vs rB=2.04, rZ=0.16). Same field as anomaly #5 (0.15 deg separation). The elevated B-band residual distinguishes this from its neighbor — possibly a different redshift or spectral class.",
+  "-218357192": "R-band dominated residual (rR=6.61 vs rB=1.92, rZ=0.25). Located in a dense anomaly cluster near RA 168, Dec -7.6. Moderate B-band residual suggests anomalous features extend across mid-to-blue optical range.",
+  "-216814222": "B-band dominated residual (rB=6.41 vs rR=0.21, rZ=0.25). Extremely clean R and Z bands — one of the sharpest B-only anomalies. Strong candidate for a genuine UV-excess or high-ionization emission source.",
+  "-237314222": "B-band dominated residual (rB=6.29 vs rR=0.29, rZ=0.26). Clean single-band anomaly. Located near anomaly #14 (5 deg separation) but in a different sky region. Possible similar physical mechanism producing blue-only deviations.",
+  "-246427377": "R-band dominated residual (rR=6.52 vs rB=1.86, rZ=0.52). Moderate multi-band involvement. The Z-band is slightly elevated compared to other R-dominant objects, suggesting a broader spectral anomaly extending into the near-IR.",
+  "-11932521": "R-band dominated residual (rR=6.78 vs rB=1.16, rZ=0.75). Notable positive TID (most anomalies have negative TIDs). Z-band residual is the highest among R-dominant objects in the top 20 — possible broadband continuum anomaly spanning R-to-Z."
+};
+
+function openModal(dataIdx) {
+  const d = DATA[dataIdx];
+  if (!d) return;
+  currentModalIdx = dataIdx;
+  const [score, ra, dec, worst, rB, rR, rZ, tid] = d;
+  const rank = dataIdx + 1;
+  const lsUrl = `https://www.legacysurvey.org/viewer?ra=${ra}&dec=${dec}&layer=ls-dr10&zoom=15`;
+  const cutoutUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=128`;
+
+  document.getElementById('modalTitle').textContent = `Anomaly #${rank}`;
+  document.getElementById('modalImage').src = cutoutUrl;
+  document.getElementById('modalDetails').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
+      <div><strong>Score:</strong> ${score}</div>
+      <div><strong>Worst Band:</strong> ${worst}</div>
+      <div><strong>RA:</strong> ${ra.toFixed(5)}</div>
+      <div><strong>Dec:</strong> ${dec.toFixed(5)}</div>
+      <div><strong>rB:</strong> ${rB}</div>
+      <div><strong>rR:</strong> ${rR}</div>
+      <div><strong>rZ:</strong> ${rZ}</div>
+      <div><strong>TID:</strong> ${tid}</div>
+    </div>`;
+  document.getElementById('modalLsLink').href = lsUrl;
+
+  // AI comment
+  const aiDiv = document.getElementById('aiComment');
+  const aiText = AI_COMMENTS[String(tid)];
+  if (aiText) {
+    document.getElementById('aiCommentText').textContent = aiText;
+    aiDiv.style.display = 'block';
+  } else {
+    aiDiv.style.display = 'none';
+  }
+
+  // Load comments
+  renderComments(tid);
+
+  document.getElementById('anomalyModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('anomalyModal').classList.remove('open');
+  document.body.style.overflow = '';
+  currentModalIdx = -1;
+}
+
+function getComments(tid) {
+  try {
+    return JSON.parse(localStorage.getItem('anomaly_comments_' + tid) || '[]');
+  } catch { return []; }
+}
+
+function saveComments(tid, comments) {
+  localStorage.setItem('anomaly_comments_' + tid, JSON.stringify(comments));
+}
+
+function renderComments(tid) {
+  const comments = getComments(tid);
+  const list = document.getElementById('commentsList');
+  if (comments.length === 0) {
+    list.innerHTML = '<p style="color:var(--text-muted);font-size:12px;font-family:var(--font-sans);margin:0 0 4px 0;">No review notes yet.</p>';
+    return;
+  }
+  list.innerHTML = comments.map((c, i) => `
+    <div class="comment-item">
+      <span class="comment-text">${escapeHtml(c.text)} <span style="color:var(--text-muted);font-size:11px;">&mdash; ${new Date(c.ts).toLocaleDateString()}</span></span>
+      <button class="comment-delete" onclick="deleteComment(${i})" title="Delete">&times;</button>
+    </div>
+  `).join('');
+}
+
+function addComment() {
+  if (currentModalIdx < 0) return;
+  const input = document.getElementById('commentInput');
+  const text = input.value.trim();
+  if (!text) return;
+  const tid = DATA[currentModalIdx][7];
+  const comments = getComments(tid);
+  comments.push({ text, ts: Date.now() });
+  saveComments(tid, comments);
+  renderComments(tid);
+  input.value = '';
+}
+
+function deleteComment(idx) {
+  if (currentModalIdx < 0) return;
+  const tid = DATA[currentModalIdx][7];
+  const comments = getComments(tid);
+  comments.splice(idx, 1);
+  saveComments(tid, comments);
+  renderComments(tid);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
 
 function renderTable(data) {
   const tbody = document.getElementById('tableBody');
@@ -131,7 +300,9 @@ function renderTable(data) {
     const pct = Math.min(100, (score - 5) / 20 * 100);
     const color = score > 15 ? '#ef4444' : score > 10 ? '#f97316' : score > 7 ? '#eab308' : '#3b82f6';
     const lsUrl = `https://www.legacysurvey.org/viewer?ra=${ra}&dec=${dec}&layer=ls-dr10&zoom=15`;
-    return `<tr>
+    const thumbUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=64`;
+    const dataIdx = DATA.indexOf(d);
+    return `<tr onclick="openModal(${dataIdx})">
       <td>${i+1}</td>
       <td><span class="score-bar" style="width:${pct}px;background:${color}"></span>${score}</td>
       <td>${ra.toFixed(4)}</td>
@@ -140,7 +311,8 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls">View</a></td>
+      <td><img class="anomaly-thumb" loading="lazy" src="${thumbUrl}" alt="cutout"></td>
+      <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');
 }

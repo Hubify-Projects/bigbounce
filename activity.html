@@ -130,10 +130,11 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">Galaxy Chirality Pipeline v2: 8.67M Catalog Inference on H100</div>
-  <p class="status-desc">AI chirality pipeline v2 running production inference on H100 GPU &mdash; 8.67M galaxy catalog in progress. 3-class classifier (CW / CCW / NOT_SPIRAL) with 93.7% validation accuracy and all 8/8 bias-hardening tests passed. Two papers remain ready for simultaneous arXiv submission. The f<sub>NL</sub> = &minus;35/8 prediction is confirmed and forecasted; SPHEREx data (~2028) will be decisive.</p>
+  <div class="status-focus">DESI DR1 Anomaly Catalog Complete &mdash; Cross-matching &amp; Classification Phase</div>
+  <p class="status-desc">DESI DR1 spectral anomaly pipeline complete: 195,829 anomalies from 18M spectra on H200 GPU. Now entering cross-matching and classification phase (Pipeline 1 Steps 2&ndash;6). Quintom w0-wa MCMC running (16.9K samples, R-1=0.049). Two papers remain ready for simultaneous arXiv submission. The f<sub>NL</sub> = &minus;35/8 prediction is confirmed and forecasted; SPHEREx data (~2028) will be decisive.</p>
   <div class="status-meta">
-    <div class="status-meta-item"><span class="dot dot-active"></span> Chirality pipeline v2: INFERENCE RUNNING</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 anomaly scan: 195,829 ANOMALIES CATALOGED</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Quintom MCMC: 16.9K samples (R-1=0.049)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> f_NL = &minus;35/8: VERIFIED</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> 2 papers: READY FOR SUBMISSION</div>
     <div class="status-meta-item"><span class="dot dot-planned"></span> Awaiting SPHEREx data (~2028)</div>
@@ -159,6 +160,13 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-26</div>
+    <div class="feed-title">DESI DR1 Anomaly Catalog Complete — 195,829 Anomalies from 18M Spectra</div>
+    <p class="feed-body">H200 GPU pod completed full DESI DR1 spectral anomaly inference at 896 spectra/sec. <strong>195,829 anomalies</strong> identified (score &gt; 5.0), including 101 extreme outliers (score &gt; 15) and 9,836 high-confidence detections (score &gt; 10). This is the first full-DR1-scale autoencoder anomaly search (&sim;90&times; larger than prior EDR work by Liang+ 2023 and Nicolaou+ 2026). Anomaly catalog ready for cross-matching and classification (Pipeline 1 Steps 2&ndash;6). Also: w0-wa quintom MCMC at 16.9K samples, R-1=0.049, quintom-B favored at 98.3%.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">DESI DR1</span><span class="feed-tag">195K Anomalies</span><span class="feed-tag">H200</span><span class="feed-tag">Pipeline B</span></div>
+  </div>
 
   <div class="feed-item active-item">
     <div class="feed-date">2026-03-24</div>
