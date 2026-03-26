@@ -202,43 +202,49 @@
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">NED</td><td style="padding:8px;">Extragalactic objects (galaxies, QSOs, clusters)</td>
           <td style="text-align:center; padding:8px;">~400M</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Top 50</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">3/50 (6%) &mdash; 3 WISE IR sources</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">Gaia DR3</td><td style="padding:8px;">1.8 billion stars with astrometry &amp; photometry</td>
           <td style="text-align:center; padding:8px;">~1.8B</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">CDS API outage &mdash; retry queued</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">SDSS DR18</td><td style="padding:8px;">Sloan Digital Sky Survey &mdash; spectra + photometry</td>
           <td style="text-align:center; padding:8px;">~5M spectra</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">SDSS API returning 500 errors &mdash; retry queued</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:8px; font-weight:600;">Million Quasars (Milliquas)</td><td style="padding:8px;">Comprehensive QSO catalog from all surveys</td>
+          <td style="padding:8px; font-weight:600;">AllWISE</td><td style="padding:8px;">750M infrared sources &mdash; photometric detection catalog</td>
+          <td style="text-align:center; padding:8px;">~750M</td>
+          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">CDS xMatch outage &mdash; retry queued</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">Milliquas v8</td><td style="padding:8px;">Comprehensive QSO catalog from all surveys</td>
           <td style="text-align:center; padding:8px;">~1M</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#dc2626; font-weight:600;">Blocked</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">CDS xMatch outage &mdash; retry queued</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">Liang+2023 EDR anomalies</td><td style="padding:8px;">Prior DESI EDR autoencoder anomaly catalog</td>
           <td style="text-align:center; padding:8px;">~250K</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#b45309; font-weight:600;">Pending</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">Catalog not published as downloadable file</td>
         </tr>
         <tr>
           <td style="padding:8px; font-weight:600;">Nicolaou+2026 EDR anomalies</td><td style="padding:8px;">Prior DESI EDR VAE anomaly catalog</td>
           <td style="text-align:center; padding:8px;">~208K</td>
-          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+          <td style="text-align:center; padding:8px; color:#b45309; font-weight:600;">Pending</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">Catalog not published as downloadable file</td>
         </tr>
       </tbody>
     </table>
     </div>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> SIMBAD cross-match complete (0/100 matches in top 100). Additional catalogs (NED, Gaia, SDSS, Milliquas, prior DESI anomaly catalogs) are planned. We will not claim objects are &ldquo;previously unidentified&rdquo; until cross-matched against all major databases. This is a live work in progress.</p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> SIMBAD cross-match complete on top 100 (0 matches). NED checked on top 50 (3 matches = WISE IR sources). Full 195K cross-match against AllWISE, Gaia, SDSS, and Milliquas is <strong>blocked by CDS service outage</strong> (Strasbourg astronomical data center). Script is ready and will run automatically when CDS recovers. <strong>We do not claim these are &ldquo;previously unidentified&rdquo; until comprehensive cross-matching of ALL 195,829 objects against ALL major databases is complete.</strong></p>
   </div>
 </section>
 
