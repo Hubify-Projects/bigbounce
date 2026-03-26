@@ -1,0 +1,46 @@
+{
+  "total_anomalies": 195829,
+  "match_radius_arcsec": 3.0,
+  "matched_by_any": 0,
+  "genuinely_new": 195829,
+  "genuinely_new_pct": 100.0,
+  "per_catalog": {
+    "AllWISE (IR photometry)": {
+      "catalog_id": "vizier:II/328/allwise",
+      "n_matched": 0,
+      "n_total": 195829,
+      "match_pct": 0.0,
+      "sample_matches": []
+    },
+    "Gaia DR3 (stellar astrometry)": {
+      "catalog_id": "vizier:I/355/gaiadr3",
+      "n_matched": 0,
+      "n_total": 195829,
+      "match_pct": 0.0,
+      "sample_matches": []
+    },
+    "SDSS DR16 Photometric": {
+      "catalog_id": "vizier:V/154/sdss16",
+      "n_matched": 0,
+      "n_total": 195829,
+      "match_pct": 0.0,
+      "sample_matches": []
+    },
+    "Milliquas v8 (QSO catalog)": {
+      "catalog_id": "vizier:VII/290/catalog",
+      "n_matched": 0,
+      "n_total": 195829,
+      "match_pct": 0.0,
+      "sample_matches": []
+    },
+    "SIMBAD (all known objects)": {
+      "catalog_id": "simbad",
+      "n_matched": 0,
+      "n_total": 195829,
+      "match_pct": 0.0,
+      "sample_matches": []
+    }
+  },
+  "timestamp": "2026-03-26 05:13:48 UTC",
+  "disclaimer": "Objects not found in checked catalogs may still exist in other databases not yet cross-matched. This is a necessary but not sufficient condition for claiming discovery."
+}
