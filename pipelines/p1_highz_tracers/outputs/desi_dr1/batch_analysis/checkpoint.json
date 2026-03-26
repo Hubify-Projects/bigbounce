@@ -1,22 +1,22 @@
 {
-  "next_index": 3150,
-  "batches_complete": 63,
+  "next_index": 7400,
+  "batches_complete": 148,
   "total_batches": 3917,
   "stats": {
     "HIGH_Z_CANDIDATE": 23,
-    "UNUSUAL_AGN": 683,
-    "UNUSUAL_GALAXY": 2374,
+    "UNUSUAL_AGN": 1859,
+    "UNUSUAL_GALAXY": 5430,
     "GENUINELY_NOVEL": 6,
     "STELLAR_ODDITY": 0,
-    "ARTIFACT_SUSPECT": 64,
+    "ARTIFACT_SUSPECT": 82,
     "UNCLASSIFIED": 0,
     "VERY_HIGH": 6,
     "HIGH": 23,
-    "MEDIUM": 685,
-    "LOW": 2436,
+    "MEDIUM": 1861,
+    "LOW": 5510,
     "follow_up_count": 427
   },
-  "convex_uploads": 3150,
+  "convex_uploads": 7400,
   "convex_failures": 0,
-  "timestamp": "2026-03-26 03:58:32 UTC"
+  "timestamp": "2026-03-26 04:08:57 UTC"
 }
