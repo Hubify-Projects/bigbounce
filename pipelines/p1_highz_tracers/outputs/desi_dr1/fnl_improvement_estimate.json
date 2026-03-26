@@ -1,0 +1,46 @@
+{
+  "baseline": {
+    "sigma_desi_sdb": 9.05,
+    "sigma_planck": 5.1,
+    "sigma_combined": 4.443067164039173,
+    "n_desi_qso": 1600000,
+    "b_desi_qso": 2.5,
+    "detection_significance": 0.9846801406492147
+  },
+  "anomaly_enhanced": {
+    "conservative_10pct": {
+      "n_new_qso": 19582,
+      "b_new": 2.9749999999999996,
+      "sigma_sdb_new": 8.955493268078406,
+      "sigma_combined_new": 4.43174971899112,
+      "improvement_pct": 0.25472144872471514,
+      "significance": 0.9871947373860185
+    },
+    "moderate_20pct": {
+      "n_new_qso": 39165,
+      "b_new": 2.875,
+      "sigma_sdb_new": 8.8817434023467,
+      "sigma_combined_new": 4.422728165481354,
+      "improvement_pct": 0.4577693248131842,
+      "significance": 0.9892084334158575
+    },
+    "aggressive_30pct": {
+      "n_new_qso": 58748,
+      "b_new": 2.75,
+      "sigma_sdb_new": 8.831994086063586,
+      "sigma_combined_new": 4.416546396059703,
+      "improvement_pct": 0.5969022524377032,
+      "significance": 0.9905930126542384
+    },
+    "sample_size_only": {
+      "n_new_qso": 19582,
+      "b_new": 2.5,
+      "sigma_sdb_new": 8.995122866267709,
+      "sigma_combined_new": 4.436528349782863,
+      "improvement_pct": 0.14716892666473136,
+      "significance": 0.9861314196750541
+    }
+  },
+  "fnl_prediction": -4.375,
+  "honest_assessment": "Incremental improvement. Primary value is catalog + methodology, not \u03c3(f_NL) breakthrough."
+}
