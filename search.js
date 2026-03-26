@@ -38,7 +38,6 @@
     { title: "Galaxy Explorer", path: "/galaxy-explorer.html", tags: "galaxy explorer catalog chirality spin", excerpt: "Interactive galaxy catalog exploration tool." },
     { title: "Anomaly Explorer", path: "/anomaly-explorer.html", tags: "anomaly explorer desi dr1 spectral autoencoder simbad", excerpt: "195,829 spectral anomalies from 18M DESI DR1 spectra. 100% of top objects not in SIMBAD." },
     { title: "Look Up: Why AI Should Be Pointed at the Stars", path: "/articles/look-up.html", tags: "ai science research amplifier benchmarks discovery cosmology essay", excerpt: "Most AI labs optimize benchmarks while the universe waits. A case for using AI as a research amplifier for real scientific discovery." },
-    { title: "Building a Live Research Platform", path: "/articles/building-a-research-platform.html", tags: "convex platform infrastructure vanilla html static site admin dashboard analytics", excerpt: "How a static cosmology site became an interactive research hub with Convex backend, AI chat, and human review tools." }
   ];
 
   // ── Detect prefix (same approach as nav.js) ──────────────

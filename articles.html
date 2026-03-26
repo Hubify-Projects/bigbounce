@@ -17,6 +17,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <link rel="stylesheet" href="style.css">
+<style>
+@media (max-width: 480px) {
+  .card[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <script src="nav.js" defer></script>
 </head>
@@ -33,58 +40,92 @@
 
 <section class="section">
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Essay &middot; AI &amp; Science</p>
-    <h3 style="margin-top: 4px;"><a href="articles/look-up.html">Look Up: Why AI Should Be Pointed at the Stars, Not at Itself</a></h3>
-    <p style="font-size: 15px;">Most AI labs are stuck optimizing benchmarks while the universe waits to be understood. One independent researcher's case for using AI as a research amplifier &mdash; and the cosmology results that prove it works.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0ea5e9 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/figure7_observational_timeline.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Essay &middot; AI &amp; Science</p>
+      <h3 style="margin-top: 4px;"><a href="articles/look-up.html">Look Up: Why AI Should Be Pointed at the Stars, Not at Itself</a></h3>
+      <p style="font-size: 15px;">Most AI labs are stuck optimizing benchmarks while the universe waits to be understood. One independent researcher's case for using AI as a research amplifier &mdash; and the cosmology results that prove it works.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Technical &middot; Infrastructure</p>
-    <h3 style="margin-top: 4px;"><a href="articles/building-a-research-platform.html">Building a Live Research Platform</a></h3>
-    <p style="font-size: 15px;">How a static cosmology website became an interactive research hub with Convex backend, AI chat, human review pipeline, and real-time analytics &mdash; all without a frontend framework.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #064e3b 0%, #065f46 40%, #10b981 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/fig1_shape_function.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Research &middot; Branch V</p>
+      <h3 style="margin-top: 4px;"><a href="articles/matter-bounce-blueprint.html">The Matter-Bounce Blueprint: Predictive Precision in Branch V Cosmology</a></h3>
+      <p style="font-size: 15px;">Why Branch V is the program's flagship — a parameter-free (conditional on bounce-transition assumptions) prediction of \(f_{NL} = -35/8\) testable by SPHEREx at ~5.5\(\sigma\) (template-corrected), and the only surviving route to a genuinely novel bouncing-cosmology observable.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Research &middot; Branch V</p>
-    <h3 style="margin-top: 4px;"><a href="articles/matter-bounce-blueprint.html">The Matter-Bounce Blueprint: Predictive Precision in Branch V Cosmology</a></h3>
-    <p style="font-size: 15px;">Why Branch V is the program's flagship — a parameter-free (conditional on bounce-transition assumptions) prediction of \(f_{NL} = -35/8\) testable by SPHEREx at ~5.5\(\sigma\) (template-corrected), and the only surviving route to a genuinely novel bouncing-cosmology observable.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #6366f1 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/figure1_lqg_holst_derivation_enhanced.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Technical &middot; Framework</p>
+      <h3 style="margin-top: 4px;"><a href="articles/ech-bounce-phenomenology.html">The ECH Spin-Torsion Bounce and Matter-Bounce Phenomenology</a></h3>
+      <p style="font-size: 15px;">A comprehensive technical overview of the Einstein-Cartan-Holst framework: the quantum bounce at \(\rho_{crit} \approx 0.27\,\rho_{Pl}\), the 14 structural barriers, and the surviving ALP birefringence and matter-bounce predictions.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Technical &middot; Framework</p>
-    <h3 style="margin-top: 4px;"><a href="articles/ech-bounce-phenomenology.html">The ECH Spin-Torsion Bounce and Matter-Bounce Phenomenology</a></h3>
-    <p style="font-size: 15px;">A comprehensive technical overview of the Einstein-Cartan-Holst framework: the quantum bounce at \(\rho_{crit} \approx 0.27\,\rho_{Pl}\), the 14 structural barriers, and the surviving ALP birefringence and matter-bounce predictions.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #431407 0%, #9a3412 40%, #f97316 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/figure5_rotation_expansion.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Explainer &middot; Students</p>
+      <h3 style="margin-top: 4px;"><a href="articles/students-guide-big-bounce.html">Beyond the Singularity: A Student's Guide to the Big Bounce</a></h3>
+      <p style="font-size: 15px;">No physics degree required. An accessible guide to why the universe may not have begun with a "bang" at all — and what torsion, spin, and the ECH framework have to say about it.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Explainer &middot; Students</p>
-    <h3 style="margin-top: 4px;"><a href="articles/students-guide-big-bounce.html">Beyond the Singularity: A Student's Guide to the Big Bounce</a></h3>
-    <p style="font-size: 15px;">No physics degree required. An accessible guide to why the universe may not have begun with a "bang" at all — and what torsion, spin, and the ECH framework have to say about it.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #1c1917 0%, #44403c 50%, #78716c 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/fig_dneff_viability_two_frozen.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Evaluation &middot; Institutional</p>
+      <h3 style="margin-top: 4px;"><a href="articles/technical-evaluation.html">Technical Evaluation: Spin-Torsion Cosmology Research Program</a></h3>
+      <p style="font-size: 15px;">A formal institutional assessment of Project BigBounce — the 14 barriers, the 24 research branches, the surviving empirical successes, and the recommended next steps for the field.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Evaluation &middot; Institutional</p>
-    <h3 style="margin-top: 4px;"><a href="articles/technical-evaluation.html">Technical Evaluation: Spin-Torsion Cosmology Research Program</a></h3>
-    <p style="font-size: 15px;">A formal institutional assessment of Project BigBounce — the 14 barriers, the 24 research branches, the surviving empirical successes, and the recommended next steps for the field.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #172554 0%, #1e40af 50%, #3b82f6 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/fig_forecast_template_corrected.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Strategy &middot; Publication</p>
+      <h3 style="margin-top: 4px;"><a href="articles/publication-roadmap.html">Strategic Publication Roadmap: Spin-Torsion Cosmology Research Program</a></h3>
+      <p style="font-size: 15px;">How the program's assets — the Framework Paper, ALP standalone, Technical Note, and Branch V blueprint — fit into a phased publication strategy targeting high-impact journals.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Strategy &middot; Publication</p>
-    <h3 style="margin-top: 4px;"><a href="articles/publication-roadmap.html">Strategic Publication Roadmap: Spin-Torsion Cosmology Research Program</a></h3>
-    <p style="font-size: 15px;">How the program's assets — the Framework Paper, ALP standalone, Technical Note, and Branch V blueprint — fit into a phased publication strategy targeting high-impact journals.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #3b0764 0%, #6b21a8 50%, #a855f7 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/fig4_decision_thresholds.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Case Study &middot; Pedagogy</p>
+      <h3 style="margin-top: 4px;"><a href="articles/evolution-of-rigor.html">The Evolution of Rigor in the Big Bounce Project</a></h3>
+      <p style="font-size: 15px;">A pedagogical case study in scientific self-correction. How a 32,000-word speculative manuscript became a definitive closure map through eight rounds of adversarial peer review.</p>
+    </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Case Study &middot; Pedagogy</p>
-    <h3 style="margin-top: 4px;"><a href="articles/evolution-of-rigor.html">The Evolution of Rigor in the Big Bounce Project</a></h3>
-    <p style="font-size: 15px;">A pedagogical case study in scientific self-correction. How a 32,000-word speculative manuscript became a definitive closure map through eight rounds of adversarial peer review.</p>
-  </div>
-
-  <div class="card" style="margin-bottom: 20px;">
-    <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Visual Guide &middot; Overview</p>
-    <h3 style="margin-top: 4px;"><a href="articles/program-visual-guide.html">Spin-Torsion Cosmology: A Visual Guide to the Research Program</a></h3>
-    <p style="font-size: 15px;">Mind maps and infographics mapping the full architecture of the BigBounce program — from theoretical framework through structural barriers to observational validation and deliverables.</p>
+  <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start;">
+    <div style="width:120px;height:80px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg, #083344 0%, #155e75 40%, #06b6d4 100%);display:flex;align-items:center;justify-content:center;">
+      <img src="public/images/figure1_lqg_holst_derivation_enhanced.png" alt="" style="height:64px;opacity:0.4;mix-blend-mode:screen;filter:brightness(1.5);" loading="lazy">
+    </div>
+    <div>
+      <p class="text-xs sans" style="margin-bottom: 4px; color: var(--text-tertiary);">Visual Guide &middot; Overview</p>
+      <h3 style="margin-top: 4px;"><a href="articles/program-visual-guide.html">Spin-Torsion Cosmology: A Visual Guide to the Research Program</a></h3>
+      <p style="font-size: 15px;">Mind maps and infographics mapping the full architecture of the BigBounce program — from theoretical framework through structural barriers to observational validation and deliverables.</p>
+    </div>
   </div>
 
 </section>
