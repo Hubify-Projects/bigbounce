@@ -30,8 +30,14 @@
 .anomaly-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
 .anomaly-modal.open { display: flex; }
 .anomaly-modal-content { background: var(--bg); border-radius: var(--radius-lg); padding: 24px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
-.anomaly-thumb { width: 48px; height: 48px; border-radius: 4px; cursor: pointer; object-fit: cover; border: 1px solid var(--border); }
+.anomaly-thumb { width: 48px; height: 48px; border-radius: 4px; cursor: pointer; object-fit: cover; border: 1px solid var(--border); background: var(--bg-subtle); min-width: 48px; }
 .anomaly-thumb:hover { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.3); }
+.anomaly-thumb-fail { width: 48px; height: 48px; border-radius: 4px; background: var(--bg-subtle); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-muted); font-family: var(--font-sans); }
+.ai-comment-box { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: var(--text-secondary); }
+.ai-comment-box strong { color: var(--text); }
+.glossary-grid { display: grid; grid-template-columns: 100px 1fr; gap: 4px 12px; font-size: 13px; margin: 8px 0; }
+.glossary-grid dt { font-family: var(--font-mono); font-weight: 600; color: var(--text); }
+.glossary-grid dd { color: var(--text-secondary); margin: 0; }
 .anomaly-table tr { cursor: pointer; }
 .comment-item { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; margin-bottom: 6px; font-size: 12px; font-family: var(--font-sans); display: flex; justify-content: space-between; align-items: flex-start; }
 .comment-item .comment-text { flex: 1; }
@@ -124,12 +130,118 @@
 </section>
 
 <section class="section">
-  <h2>About This Catalog</h2>
+  <h2>How Anomaly Detection Works</h2>
   <div class="card">
-    <p style="font-size: 14px; line-height: 1.7;">This catalog was produced by running a spectral autoencoder trained on standard DESI spectral classes across the entire DESI DR1 Main Survey catalog. Objects with high reconstruction error (anomaly score &gt; 5.0) are flagged as anomalies &mdash; their spectra deviate significantly from all known templates.</p>
-    <p style="font-size: 14px; line-height: 1.7; margin-top: 8px;"><strong>Prior work:</strong> Autoencoder anomaly detection on DESI was pioneered by <strong>Liang et al. (2023)</strong> on ~250K EDR spectra and <strong>Nicolaou et al. (2026)</strong> on ~208K EDR spectra. This catalog extends their approach by ~90x in scale to the full DR1 release.</p>
-    <p style="font-size: 14px; line-height: 1.7; margin-top: 8px;"><strong>Score meaning:</strong> The anomaly score is the total reconstruction error across B/R/Z spectral bands. Higher = more anomalous. Scores 5&ndash;7 are mildly unusual; 10+ are highly anomalous; 15+ are extreme outliers whose spectra are dramatically different from any known template.</p>
-    <p style="font-size: 14px; line-height: 1.7; margin-top: 8px;"><strong>Next steps:</strong> Cross-matching against SIMBAD, NED, and Legacy Survey photometry to classify anomalies (high-z QSOs, unusual AGN, artifacts, genuinely novel objects). Results feed the f<sub>NL</sub> tracer purification pipeline.</p>
+    <p style="font-size: 14px; line-height: 1.7;"><strong>What is an anomaly?</strong> A spectral autoencoder is a neural network trained to compress and reconstruct normal DESI spectra (stars, galaxies, quasars). When it encounters a spectrum that doesn&rsquo;t match any learned pattern, the reconstruction is poor &mdash; producing a high <em>residual</em>. Objects with total residual (anomaly score) above 5.0 are flagged. These are spectra the model literally &ldquo;doesn&rsquo;t know what to do with.&rdquo;</p>
+    <p style="font-size: 14px; line-height: 1.7; margin-top: 8px;"><strong>What the score means:</strong> The anomaly score is the sum of reconstruction errors across DESI&rsquo;s three spectrograph arms. Higher = more unusual. The score tiers are:</p>
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap: 4px 12px; font-size: 13px; margin: 8px 0 12px; font-family: var(--font-sans);">
+      <span style="font-weight:600; color:#3b82f6;">5 &ndash; 7</span><span style="color:var(--text-secondary);">Mildly unusual &mdash; spectrum slightly off from nearest template (151K objects)</span>
+      <span style="font-weight:600; color:#eab308;">7 &ndash; 10</span><span style="color:var(--text-secondary);">Moderately anomalous &mdash; noticeable spectral features not in training set (34K objects)</span>
+      <span style="font-weight:600; color:#f97316;">10 &ndash; 15</span><span style="color:var(--text-secondary);">Highly anomalous &mdash; spectrum dramatically different from all known classes (9.8K objects)</span>
+      <span style="font-weight:600; color:#ef4444;">15+</span><span style="color:var(--text-secondary);">Extreme outlier &mdash; nothing in the training set remotely resembles this spectrum (101 objects)</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Column Definitions &amp; Glossary</h2>
+  <div class="card">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Table Columns</h4>
+    <dl class="glossary-grid">
+      <dt>Score</dt><dd>Total reconstruction error across all three spectrograph arms (B + R + Z). Higher = more anomalous.</dd>
+      <dt>RA</dt><dd>Right Ascension (degrees, 0&ndash;360). East-west position on the sky in the ICRS coordinate system.</dd>
+      <dt>Dec</dt><dd>Declination (degrees, -90 to +90). North-south position on the sky.</dd>
+      <dt>Band</dt><dd>Which spectrograph arm has the largest residual: B (blue, 3600&ndash;5800&Aring;), R (red, 5760&ndash;7620&Aring;), or Z (near-IR, 7520&ndash;9824&Aring;).</dd>
+      <dt>rB</dt><dd>Reconstruction error in the B (blue) arm. High rB = anomalous blue-end features (e.g. unusual emission lines, UV excess).</dd>
+      <dt>rR</dt><dd>Reconstruction error in the R (red) arm. High rR = anomalous mid-optical features (e.g. unusual continuum, absorption).</dd>
+      <dt>rZ</dt><dd>Reconstruction error in the Z (near-infrared) arm. High rZ = anomalous near-IR features (e.g. high-redshift emission shifted into IR).</dd>
+      <dt>TID</dt><dd>DESI TARGETID &mdash; unique identifier for this object in the DESI DR1 catalog.</dd>
+    </dl>
+
+    <h4 style="font-family:var(--font-sans); margin-top: 16px;">Astronomy Terms</h4>
+    <dl class="glossary-grid">
+      <dt>AGN</dt><dd><strong>Active Galactic Nucleus</strong> &mdash; a supermassive black hole at a galaxy&rsquo;s center actively accreting matter, producing bright emission across the spectrum.</dd>
+      <dt>QSO</dt><dd><strong>Quasi-Stellar Object (Quasar)</strong> &mdash; an extremely luminous AGN, often at high redshift (z &gt; 1). Key tracer for large-scale structure measurements.</dd>
+      <dt>Near-IR</dt><dd><strong>Near-Infrared</strong> &mdash; wavelengths just beyond visible red light (~7000&ndash;10000&Aring; in the Z-band). High-redshift features shift into this range.</dd>
+      <dt>High-z</dt><dd><strong>High redshift</strong> &mdash; objects at great cosmological distances (z &gt; 1.5), seen as they were billions of years ago.</dd>
+      <dt>BAL</dt><dd><strong>Broad Absorption Line</strong> &mdash; a QSO showing wide absorption troughs from high-velocity outflows. Rare (~10% of QSOs) and often missed by pipelines.</dd>
+      <dt>PSF</dt><dd><strong>Point Spread Function</strong> &mdash; the image of a point source (star or distant QSO). &ldquo;PSF morphology&rdquo; means it looks like a point, not an extended galaxy.</dd>
+      <dt>REX</dt><dd><strong>Round Exponential</strong> &mdash; a Legacy Survey morphology classification for a small, round, slightly extended source.</dd>
+      <dt>SER</dt><dd><strong>S&eacute;rsic profile</strong> &mdash; a Legacy Survey classification for galaxies fit with a S&eacute;rsic surface brightness profile.</dd>
+      <dt>SIMBAD</dt><dd><strong>Set of Identifications, Measurements and Bibliography for Astronomical Data</strong> &mdash; the most comprehensive database of known astronomical objects (CDS, Strasbourg).</dd>
+      <dt>NED</dt><dd><strong>NASA/IPAC Extragalactic Database</strong> &mdash; a database focused on extragalactic objects (galaxies, QSOs, clusters).</dd>
+      <dt>f<sub>NL</sub></dt><dd>The amplitude of primordial non-Gaussianity &mdash; a key parameter for distinguishing between the Big Bounce and inflation.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Cross-Reference Status</h2>
+  <div class="card">
+    <p style="font-size: 14px; line-height: 1.7;"><strong>How do we know these are previously unidentified?</strong> We cross-match anomaly positions against multiple astronomical databases. An object NOT found in any of these catalogs is a strong candidate for being genuinely new.</p>
+    <div style="overflow-x:auto;">
+    <table style="width:100%; font-size:13px; border-collapse:collapse; margin-top:12px;">
+      <thead><tr style="border-bottom:2px solid var(--border);">
+        <th style="text-align:left; padding:8px; font-family:var(--font-sans); font-weight:600;">Database</th>
+        <th style="text-align:left; padding:8px; font-family:var(--font-sans); font-weight:600;">What it contains</th>
+        <th style="text-align:center; padding:8px; font-family:var(--font-sans); font-weight:600;">Objects</th>
+        <th style="text-align:center; padding:8px; font-family:var(--font-sans); font-weight:600;">Checked?</th>
+        <th style="text-align:center; padding:8px; font-family:var(--font-sans); font-weight:600;">Matches</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">SIMBAD</td><td style="padding:8px;">Most comprehensive catalog of identified astronomical objects</td>
+          <td style="text-align:center; padding:8px;">~17M</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">Yes</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">0/100 (0%)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">NED</td><td style="padding:8px;">Extragalactic objects (galaxies, QSOs, clusters)</td>
+          <td style="text-align:center; padding:8px;">~400M</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">Gaia DR3</td><td style="padding:8px;">1.8 billion stars with astrometry &amp; photometry</td>
+          <td style="text-align:center; padding:8px;">~1.8B</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">SDSS DR18</td><td style="padding:8px;">Sloan Digital Sky Survey &mdash; spectra + photometry</td>
+          <td style="text-align:center; padding:8px;">~5M spectra</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">Million Quasars (Milliquas)</td><td style="padding:8px;">Comprehensive QSO catalog from all surveys</td>
+          <td style="text-align:center; padding:8px;">~1M</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:8px; font-weight:600;">Liang+2023 EDR anomalies</td><td style="padding:8px;">Prior DESI EDR autoencoder anomaly catalog</td>
+          <td style="text-align:center; padding:8px;">~250K</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; font-weight:600;">Nicolaou+2026 EDR anomalies</td><td style="padding:8px;">Prior DESI EDR VAE anomaly catalog</td>
+          <td style="text-align:center; padding:8px;">~208K</td>
+          <td style="text-align:center; padding:8px; color:#b45309;">Planned</td>
+          <td style="text-align:center; padding:8px; color:var(--text-muted);">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> SIMBAD cross-match complete (0/100 matches in top 100). Additional catalogs (NED, Gaia, SDSS, Milliquas, prior DESI anomaly catalogs) are planned. We will not claim objects are &ldquo;previously unidentified&rdquo; until cross-matched against all major databases. This is a live work in progress.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Prior Work &amp; Attribution</h2>
+  <div class="card">
+    <p style="font-size: 14px; line-height: 1.7;"><strong>Prior work:</strong> Autoencoder anomaly detection on DESI was pioneered by <strong>Liang et al. (2023)</strong> on ~250K EDR spectra and <strong>Nicolaou et al. (2026, MNRAS, 46 co-authors)</strong> on ~208K EDR spectra. This catalog extends their approach by ~90x in scale to the full DR1 release. Both teams must be cited in any publication using this catalog.</p>
   </div>
 </section>
 
@@ -143,8 +255,8 @@
       <img id="modalImage" style="max-width:100%;border-radius:8px;border:1px solid var(--border);" alt="Legacy Survey cutout">
     </div>
     <div id="modalDetails" style="font-family:var(--font-mono);font-size:13px;margin-bottom:16px;"></div>
-    <div id="aiComment" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;display:none;">
-      <strong style="color:#166534;">AI Analysis:</strong> <span id="aiCommentText"></span>
+    <div id="aiComment" class="ai-comment-box" style="display:none;">
+      <strong>AI Analysis:</strong> <span id="aiCommentText"></span>
     </div>
     <div style="margin-bottom:16px;">
       <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Open in Legacy Survey Viewer</a>
@@ -321,7 +433,7 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><img class="anomaly-thumb" loading="lazy" src="${thumbUrl}" alt="cutout"></td>
+      <td><img class="anomaly-thumb" loading="lazy" src="${thumbUrl}" alt="" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=anomaly-thumb-fail>No img</div>')"></td>
       <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');
