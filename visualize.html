@@ -445,29 +445,60 @@ function drawStars(time, opacity) {
 }
 
 // ═══════════════════════════════════════
+//  DRAW: DUST/GAS FIELD (ultra-fine background texture)
+// ═══════════════════════════════════════
+let dustParticles = [];
+function initDust() {
+  dustParticles = [];
+  for (let i = 0; i < 300; i++) {
+    dustParticles.push({
+      x: Math.random() * W * 0.45,
+      y: Math.random() * H,
+      r: 0.15 + Math.random() * 0.35,
+      bright: 0.05 + Math.random() * 0.15,
+      hue: 20 + Math.random() * 30,
+    });
+  }
+}
+
+function drawDustField(time) {
+  const alpha = (1 - smoothstep(0.30, 0.42, progress));
+  if (alpha < 0.01) return;
+  for (let i = 0; i < dustParticles.length; i++) {
+    const d = dustParticles[i];
+    const a = d.bright * alpha;
+    if (a < 0.01) continue;
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, d.r, 0, 6.2832);
+    ctx.fillStyle = `hsla(${d.hue}, 30%, 70%, ${a})`;
+    ctx.fill();
+  }
+}
+
+// ═══════════════════════════════════════
 //  PARTICLES
 // ═══════════════════════════════════════
-const N_COLLAPSE = 220;
-const N_EXPAND = 280;
+const N_COLLAPSE = 550;
+const N_EXPAND = 400;
 let collapseP = [];
 let expandP = [];
 
 function spawnCollapse(p) {
   p.baseParam = 0.03 + Math.random() * THROAT * 0.65;
   p.lane = (Math.random() * 2 - 1) * 0.82;
-  p.size = 1 + Math.random() * 2.2;
+  p.size = 0.2 + Math.random() * 0.9;
   p.flicker = Math.random() * 6.28;
   p.drift = Math.random() * 6.28;
-  // Variety: some are warm stars, some are cool blue, some are golden
+  // Warm yellows, oranges, and pale golds — NO green/cyan/blue
   const type = Math.random();
-  p.hueBase = type < 0.4 ? 25 + Math.random() * 20 : (type < 0.7 ? 200 + Math.random() * 40 : 45 + Math.random() * 10);
-  p.satBase = 50 + Math.random() * 40;
+  p.hueBase = type < 0.5 ? 30 + Math.random() * 15 : (type < 0.8 ? 15 + Math.random() * 10 : 50 + Math.random() * 5);
+  p.satBase = 20 + Math.random() * 40;
 }
 
 function spawnExpand(p) {
   p.baseParam = THROAT + 0.03 + Math.random() * (0.96 - THROAT); // rest position spread across right side
   p.lane = (Math.random() * 2 - 1) * 0.85;
-  p.size = 0.8 + Math.random() * 2.2;
+  p.size = 0.3 + Math.random() * 1.0;
   p.flicker = Math.random() * 6.28;
   p.drift = Math.random() * 6.28;
 }
@@ -498,6 +529,7 @@ function resize() {
   buildFunnelProfile();
   initStars();
   initParticles();
+  initDust();
 }
 window.addEventListener('resize', resize);
 resize();
@@ -589,11 +621,9 @@ function drawFunnel(time) {
   const pulse = 0.5 + 0.5 * Math.sin(time * 0.0015);
   const throatIntensity = smoothstep(0.1, 0.36, progress) * 2;
 
-  // Multi-pass glow rendering (soft outer + medium + sharp edge)
+  // Single faint pass (nearly invisible funnel hint)
   const passes = [
-    { w: 12, a: 0.025 },
-    { w: 4,  a: 0.08 + pulse * 0.02 },
-    { w: 1.2, a: 0.22 + pulse * 0.04 },
+    { w: 1, a: 0.06 + pulse * 0.02 },
   ];
 
   for (const pass of passes) {
@@ -635,7 +665,7 @@ function drawFunnel(time) {
   for (let x = maxX; x >= 0; x -= 3) ctx.lineTo(x, cy + fH(x));
   ctx.closePath();
   const fillGrad = ctx.createLinearGradient(0, 0, maxX, 0);
-  const fillA = 0.02 + pulse * 0.008;
+  const fillA = 0.006 + pulse * 0.003;
   fillGrad.addColorStop(0, `rgba(180, 80, 30, ${fillA})`);
   fillGrad.addColorStop(Math.min(throatX / maxX, 0.99), `rgba(150, 180, 255, ${fillA * 2})`);
   fillGrad.addColorStop(1, `rgba(40, 60, 150, ${fillA * 0.8})`);
@@ -643,8 +673,8 @@ function drawFunnel(time) {
   ctx.fill();
 
   // Energy sparks — only on visible portion
-  const sparkCount = 30;
-  const sparkAlpha = 0.3 + pulse * 0.2;
+  const sparkCount = 8;
+  const sparkAlpha = 0.08 + pulse * 0.05;
   for (let i = 0; i < sparkCount; i++) {
     const sx = ((time * 0.0002 * (1 + i * 0.03) + i * 0.0618) % 1) * maxX;
     if (sx > maxX) continue;
@@ -749,7 +779,7 @@ function drawBlackHole(time) {
     const baseAngle = spin * 3 + (s / numStreams) * Math.PI * 2;
     for (let j = 0; j < 50; j++) {
       const jf = j / 50;
-      const spiralR = bhR + 5 + jf * bhR * 4;
+      const spiralR = bhR + 5 + jf * bhR * 2.5;
       const angle = baseAngle - jf * 2.5; // spiral inward
       const px = bhX + Math.cos(angle) * spiralR;
       const py = cy + Math.sin(angle) * spiralR * (0.3 + jf * 0.4);
@@ -757,7 +787,7 @@ function drawBlackHole(time) {
       else ctx.lineTo(px, py);
     }
     ctx.strokeStyle = `rgba(255, 150, 50, ${streamAlpha * (0.3 + 0.7 * Math.sin(s * 2.1))})`;
-    ctx.lineWidth = lerp(2.5, 0.5, 0);
+    ctx.lineWidth = 1.2;
     ctx.stroke();
   }
 }
@@ -774,7 +804,7 @@ function drawPreBounceDarkness(time) {
   if (darkenPhase < 0.01) return;
 
   // Darken the entire left side
-  ctx.fillStyle = `rgba(0, 0, 0, ${darkenPhase * 0.6})`;
+  ctx.fillStyle = `rgba(0, 0, 0, ${darkenPhase * 0.85})`;
   ctx.fillRect(0, 0, throatX + 30, H);
 
   // Tiny point at throat transitions from black to white-hot
@@ -836,16 +866,6 @@ function drawCollapseParticles(time, dt) {
     ctx.fillStyle = `hsla(${hue}, ${sat}%, ${light}%, ${alpha * flicker})`;
     ctx.fill();
 
-    // Glow when compressed near throat
-    if (compression > 0.5) {
-      const glowR = sz * 3;
-      const glowA = alpha * 0.2 * (compression - 0.5) * 2;
-      const gg = ctx.createRadialGradient(px, py, 0, px, py, glowR);
-      gg.addColorStop(0, `hsla(${hue}, 80%, 80%, ${glowA})`);
-      gg.addColorStop(1, `hsla(${hue}, 80%, 60%, 0)`);
-      ctx.fillStyle = gg;
-      ctx.fillRect(px - glowR, py - glowR, glowR * 2, glowR * 2);
-    }
   }
 }
 
@@ -890,15 +910,6 @@ function drawExpansionParticles(time, dt) {
     ctx.fillStyle = `hsla(${hue}, ${sat}%, ${light}%, ${alpha * flicker})`;
     ctx.fill();
 
-    // Glow for particles still near throat
-    if (distNorm < 0.12 && expansion < 0.5) {
-      const glowR = sz * 3;
-      const gg = ctx.createRadialGradient(px, py, 0, px, py, glowR);
-      gg.addColorStop(0, `hsla(${hue}, 70%, 80%, ${alpha * 0.2})`);
-      gg.addColorStop(1, `hsla(${hue}, 70%, 60%, 0)`);
-      ctx.fillStyle = gg;
-      ctx.fillRect(px - glowR, py - glowR, glowR * 2, glowR * 2);
-    }
   }
 }
 
@@ -921,7 +932,7 @@ function drawInfallingDebris(time) {
     const px = throatX + Math.cos(orbitPhase) * orbitR;
     const py = cy + Math.sin(orbitPhase) * orbitR * 0.3;
     const distFrac = orbitR / 100;
-    const sz = 0.6 + distFrac * 1.5;
+    const sz = 0.3 + distFrac * 0.6;
     const bright = alpha * (1 - distFrac * 0.6) * (0.4 + 0.6 * Math.sin(time * 0.003 + i * 5));
     const hue = lerp(35, 15, 1 - distFrac);
     ctx.beginPath();
@@ -943,10 +954,10 @@ function drawBounceFlash(time) {
 
   if (flashI < 0.01) return;
 
-  // Screen-wide flash
+  // Screen-wide flash (right side only)
   if (flashI > 0.3) {
     ctx.fillStyle = `rgba(255, 255, 255, ${(flashI - 0.3) * 0.8})`;
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillRect(throatX, 0, W - throatX, H);
   }
 
   // Central radiance
@@ -958,35 +969,9 @@ function drawBounceFlash(time) {
   rg.addColorStop(0.7, `rgba(60, 80, 200, ${flashI * 0.06})`);
   rg.addColorStop(1, 'rgba(30, 40, 120, 0)');
   ctx.fillStyle = rg;
-  ctx.fillRect(0, 0, W, H);
+  ctx.fillRect(throatX - 20, 0, W - throatX + 20, H);
 
-  // Horizontal lens flare
-  ctx.save();
-  ctx.globalCompositeOperation = 'lighter';
-  const flareLen = flashI * W * 0.55;
-  const flareH = 3 + flashI * 4;
-  const fg = ctx.createLinearGradient(throatX - flareLen, cy, throatX + flareLen, cy);
-  fg.addColorStop(0, 'rgba(255, 180, 80, 0)');
-  fg.addColorStop(0.2, `rgba(255, 200, 120, ${flashI * 0.12})`);
-  fg.addColorStop(0.5, `rgba(255, 255, 255, ${flashI * 0.4})`);
-  fg.addColorStop(0.8, `rgba(255, 200, 120, ${flashI * 0.12})`);
-  fg.addColorStop(1, 'rgba(255, 180, 80, 0)');
-  ctx.fillStyle = fg;
-  ctx.fillRect(throatX - flareLen, cy - flareH, flareLen * 2, flareH * 2);
-
-  // Secondary vertical flare
-  const vLen = flashI * H * 0.25;
-  const vg = ctx.createLinearGradient(throatX, cy - vLen, throatX, cy + vLen);
-  vg.addColorStop(0, 'rgba(150, 180, 255, 0)');
-  vg.addColorStop(0.3, `rgba(180, 200, 255, ${flashI * 0.08})`);
-  vg.addColorStop(0.5, `rgba(255, 255, 255, ${flashI * 0.2})`);
-  vg.addColorStop(0.7, `rgba(180, 200, 255, ${flashI * 0.08})`);
-  vg.addColorStop(1, 'rgba(150, 180, 255, 0)');
-  ctx.fillStyle = vg;
-  ctx.fillRect(throatX - 2, cy - vLen, 4, vLen * 2);
-  ctx.restore();
-
-  // Shockwave rings
+  // Shockwave rings (right semicircle only)
   for (let i = 0; i < 5; i++) {
     const rt = Math.max(0, t - i * 0.08);
     if (rt <= 0) continue;
@@ -994,7 +979,7 @@ function drawBounceFlash(time) {
     const ringA = Math.max(0, 1 - rt * 1.3) * 0.35;
     const hue = lerp(220, 280, rt);
     ctx.beginPath();
-    ctx.arc(throatX, cy, ringR, 0, 6.2832);
+    ctx.arc(throatX, cy, ringR, -Math.PI/2, Math.PI/2);
     ctx.strokeStyle = `hsla(${hue}, 75%, 75%, ${ringA})`;
     ctx.lineWidth = lerp(5, 0.5, rt);
     ctx.stroke();
@@ -1111,6 +1096,17 @@ function drawCMBWall(time) {
   }
 
   ctx.restore();
+
+  // CMB release annotation
+  if (t > 0.3) {
+    const textA = easeOut((t - 0.3) / 0.4);
+    ctx.save();
+    ctx.font = `500 ${Math.min(11, W * 0.013)}px 'IBM Plex Mono', monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = `rgba(255, 200, 100, ${textA * 0.7})`;
+    ctx.fillText('z \u2248 1100 \u2014 first light escapes', bandX, cy - fH(bandX) - 12);
+    ctx.restore();
+  }
 }
 
 // ═══════════════════════════════════════
@@ -1428,7 +1424,7 @@ function drawParentUniverse(time) {
   for (let i = 0; i < galCount; i++) {
     const gx = W * 0.03 + seed(i, 53.1, 17.3) * throatX * 0.7;
     const gy = cy + (seed(i, 89.7, 41.2) - 0.5) * fH(gx) * 1.4;
-    const sz = 3 + seed(i, 11.3, 7.7) * 6;
+    const sz = 1.5 + seed(i, 11.3, 7.7) * 3;
     const bright = alpha * (0.15 + seed(i, 33.1, 5.5) * 0.2);
 
     // Tiny galaxy blobs
@@ -1574,6 +1570,9 @@ function render(timestamp) {
   // ── Layer 2: Stars ──
   const starAlpha = progress < 0.36 ? 0.6 : (progress < 0.48 ? lerp(0.6, 0.1, (progress - 0.36) / 0.12) : lerp(0.1, 0.5, smoothstep(0.55, 0.75, progress)));
   drawStars(time, starAlpha);
+
+  // ── Layer 2b: Dust/gas field ──
+  drawDustField(time);
 
   // ── Layer 3: Parent universe content ──
   drawParentUniverse(time);
