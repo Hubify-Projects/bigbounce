@@ -157,36 +157,43 @@ main { max-width: none; padding: 0; }
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
   <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting both papers. MCMC chains, analysis, barriers &amp; birefringence back Paper 1. f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2.</div>
 
-  <div class="de-sidebar-group"><span class="dot green"></span> MCMC Chains</div>
-  <div class="de-sidebar-item active" onclick="selectDataset('fullTension')" data-key="fullTension">Full Tension <span class="de-sidebar-badge frozen">198</span></div>
+  <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
+  <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
+  <div class="de-sidebar-item active" onclick="selectDataset('modelDiscrimination')" data-key="modelDiscrimination">Model Discrimination <span class="de-sidebar-badge frozen">5 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="de-sidebar-badge frozen">8 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="de-sidebar-badge frozen">10 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('truePolynomial')" data-key="truePolynomial">True Polynomial <span class="de-sidebar-badge frozen">4 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="de-sidebar-badge frozen">8 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('fnlDerivation')" data-key="fnlDerivation">f_NL Derivation Status <span class="de-sidebar-badge frozen">8 rows</span></div>
+
+  <div class="de-sidebar-group"><span class="dot blue"></span> New Results</div>
+  <div class="de-sidebar-item" onclick="selectDataset('w0waQuintom')" data-key="w0waQuintom">w0-wa Quintom <span class="de-sidebar-badge frozen">9 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('pbhNanograv')" data-key="pbhNanograv">PBH &amp; NANOGrav <span class="de-sidebar-badge frozen">6 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('nanoGravComparison')" data-key="nanoGravComparison">NANOGrav Model Comparison <span class="de-sidebar-badge frozen">5 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('quintomFnlVerification')" data-key="quintomFnlVerification">Quintom f_NL Verification <span class="de-sidebar-badge frozen">5 rows</span></div>
+
+  <div class="de-sidebar-group"><span class="dot purple"></span> Observational</div>
+  <div class="de-sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="de-sidebar-badge">5 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('namasterHierarchy')" data-key="namasterHierarchy">NaMaster EB Hierarchy <span class="de-sidebar-badge frozen">9 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('sigTimeline')" data-key="sigTimeline">Significance Timeline <span class="de-sidebar-badge">10 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('galaxySpin')" data-key="galaxySpin">Galaxy Spin Counts <span class="de-sidebar-badge">5 rows</span></div>
+
+  <div class="de-sidebar-group"><span class="dot orange"></span> MCMC Chains &mdash; Paper 1</div>
+  <div class="de-sidebar-item" onclick="selectDataset('fullTension')" data-key="fullTension">Full Tension <span class="de-sidebar-badge frozen">198</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('planckBaoSn')" data-key="planckBaoSn">Planck+BAO+SN <span class="de-sidebar-badge frozen">508</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('planckBao')" data-key="planckBao">Planck+BAO <span class="de-sidebar-badge frozen">463</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('planckOnly')" data-key="planckOnly">Planck Only <span class="de-sidebar-badge frozen">452</span></div>
 
-  <div class="de-sidebar-group"><span class="dot blue"></span> Analysis</div>
+  <div class="de-sidebar-group">Analysis</div>
   <div class="de-sidebar-item" onclick="selectDataset('paramResults')" data-key="paramResults">Parameter Results <span class="de-sidebar-badge">12 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('convergence')" data-key="convergence">Convergence Diag. <span class="de-sidebar-badge">16 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('chainMeans')" data-key="chainMeans">Chain Means <span class="de-sidebar-badge">28 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('crossComparison')" data-key="crossComparison">Cross-Dataset <span class="de-sidebar-badge">7 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
-
-  <div class="de-sidebar-group"><span class="dot blue"></span> Paper 2 &mdash; Template</div>
-  <div class="de-sidebar-item" onclick="selectDataset('templateOverlap')" data-key="templateOverlap">Template Overlap <span class="de-sidebar-badge frozen">10 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('normAudit')" data-key="normAudit">Normalization Audit <span class="de-sidebar-badge frozen">8 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('forecastCorrected')" data-key="forecastCorrected">Forecast (Corrected) <span class="de-sidebar-badge frozen">8 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('namasterHierarchy')" data-key="namasterHierarchy">NaMaster EB Hierarchy <span class="de-sidebar-badge frozen">9 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('truePolynomial')" data-key="truePolynomial">True Polynomial <span class="de-sidebar-badge frozen">4 rows</span></div>
-
-  <div class="de-sidebar-group"><span class="dot purple"></span> Observational</div>
-  <div class="de-sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="de-sidebar-badge">5 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('galaxySpin')" data-key="galaxySpin">Galaxy Spin Counts <span class="de-sidebar-badge">5 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('sigTimeline')" data-key="sigTimeline">Significance Timeline <span class="de-sidebar-badge">10 rows</span></div>
 
   <div class="de-sidebar-group"><span class="dot orange"></span> Research Program</div>
   <div class="de-sidebar-item" onclick="selectDataset('barriers')" data-key="barriers">14 Struct. Barriers <span class="de-sidebar-badge closed">14 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="de-sidebar-badge active-badge">29 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('bounceAudit')" data-key="bounceAudit">Bounce Evidence Audit <span class="de-sidebar-badge">16</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('fnlDerivation')" data-key="fnlDerivation">f_NL Derivation Status <span class="de-sidebar-badge frozen">8 rows</span></div>
 
   <div class="de-sidebar-sep"></div>
   <div class="de-sidebar-group">Equations</div>
@@ -2245,6 +2252,87 @@ truePolynomial: {
     ["3-benchmark fit (underdetermined)","2","7","3","-12","-69","19"],
     ["Ratio: physics / published","2","2","2","2","1","2"]
   ]
+},
+
+w0waQuintom: {
+  name: "w0-wa Quintom MCMC Results",
+  description: "50,880 MCMC samples testing quintom-B dark energy (w-crossing from w>-1 to w<-1). Joint fit: Planck 2018 NPIPE + SDSS DR16 BAO + Pantheon+. Result: quintom-B (w-crossing) favored at P=98.0%, w\u2080=-0.87\u00B10.06, w\u2090=-0.54\u00B10.25. H\u2080=81.4\u00B10.9 (high \u2014 dataset combination specific).",
+  source: "chains/w0wa_quintom/",
+  rows: 9, totalSamples: 50880,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Parameter", "Mean", "Std", "95% Lo", "95% Hi", "Note"],
+  data: [
+    ["w\u2080", "-0.871", "0.061", "-0.990", "-0.749", "2.1\u03C3 from \u039BCDM (w\u2080=-1)"],
+    ["w\u2090", "-0.542", "0.247", "-1.046", "-0.084", "2.2\u03C3 from \u039BCDM (w\u2090=0)"],
+    ["w\u2080+w\u2090", "-1.413", "\u2014", "\u2014", "\u2014", "Quintom-B crossing signature"],
+    ["P(quintom-B)", "98.0%", "\u2014", "\u2014", "\u2014", "w-crossing probability"],
+    ["H\u2080", "81.42", "0.89", "\u2014", "\u2014", "km/s/Mpc"],
+    ["\u03C3\u2088", "0.832", "0.010", "\u2014", "\u2014", "\u2014"],
+    ["\u0394DESI DR2 w\u2080", "\u2014", "\u2014", "\u2014", "\u2014", "1.28\u03C3 from DESI DR2 best-fit"],
+    ["\u0394DESI DR2 w\u2090", "\u2014", "\u2014", "\u2014", "\u2014", "1.20\u03C3 from DESI DR2 best-fit"],
+    ["R-1 (Gelman-Rubin)", "0.009", "\u2014", "\u2014", "\u2014", "Converged"]
+  ]
+},
+
+modelDiscrimination: {
+  name: "Bounce vs Inflation \u2014 Bayesian Discrimination",
+  description: "Bayes factors comparing the matter bounce (f_NL = -35/8, zero free parameters) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
+  source: "Bayesian discrimination program",
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Bounce vs...", "SPHEREx BF", "MegaMapper BF", "SPHEREx Verdict", "MegaMapper Verdict"],
+  data: [
+    ["Standard single-field (SSFSR)", "3.5\u00D710\u2078", "5.5\u00D710\u00B9\u2076", "DECISIVE", "DECISIVE"],
+    ["Standard curvaton", "3.2\u00D710\u2075", "8.4\u00D710\u2079", "DECISIVE", "DECISIVE"],
+    ["Non-attractor single-field", "11.4", "16.0", "STRONG", "STRONG"],
+    ["Tuned multifield [-15,+15]", "17.1", "23.9", "STRONG", "STRONG"],
+    ["Rapid-turn multifield", "17.1", "\u2014", "STRONG", "\u2014"]
+  ]
+},
+
+pbhNanograv: {
+  name: "PBH Regulation & NANOGrav Consistency",
+  description: "Two independent consistency checks for f_NL = -35/8. (1) Negative f_NL naturally suppresses PBH overproduction by reducing the tail of the curvature PDF \u2014 positive f_NL of equal magnitude would overproduce. (2) Scalar-induced GW from matter bounce give spectral index \u03B3=3.0 vs NANOGrav 15yr observed \u03B3=3.2\u00B10.6 \u2014 a 0.33\u03C3 match.",
+  source: "pbh_nanograv_consistency.py",
+  status: "VERIFIED", statusClass: "frozen",
+  columns: ["Test", "Prediction", "Observation", "Tension", "Status"],
+  data: [
+    ["PBH suppression (f_NL<0)", "Reduced tail", "No PBH overproduction", "Consistent", "PASS"],
+    ["PBH enhancement (f_NL>0)", "Enhanced tail", "Would overproduce", "\u2014", "Contrast case"],
+    ["NANOGrav \u03B3 (spectral index)", "3.0", "3.2 \u00B1 0.6", "0.33\u03C3", "PASS"],
+    ["SMBH \u03B3 (competitor)", "4.333", "3.2 \u00B1 0.6", "1.89\u03C3", "Disfavored"],
+    ["Cosmic strings \u03B3", "1.667", "3.2 \u00B1 0.6", "2.56\u03C3", "Disfavored"],
+    ["f_NL PBH threshold \u03B4_c", "0.45", "\u2014", "\u2014", "Musco+ (2009)"]
+  ]
+},
+
+nanoGravComparison: {
+  name: "NANOGrav 15yr \u2014 GW Source Model Comparison",
+  description: "Gravitational wave spectral index comparison. The matter bounce predicts \u03B3=3.0 from scalar-induced GW with universal f\u00B2 infrared scaling. NANOGrav 15yr measures \u03B3=3.2\u00B10.6. The bounce is the closest match among all standard GW source models.",
+  source: "nanograv_model_comparison.py",
+  status: "VERIFIED", statusClass: "frozen",
+  columns: ["GW Source", "\u03B3 predicted", "\u03B3 observed", "Tension (\u03C3)", "Physical mechanism"],
+  data: [
+    ["Matter bounce (scalar-induced)", "3.0", "3.2 \u00B1 0.6", "0.33", "\u03A9_GW ~ f\u00B2 infrared scaling"],
+    ["SMBH binary inspiral", "4.333 (13/3)", "3.2 \u00B1 0.6", "1.89", "Circular GW-driven inspiral"],
+    ["Cosmic strings", "1.667 (5/3)", "3.2 \u00B1 0.6", "2.56", "String network + radiation"],
+    ["Phase transition", "2.0\u20133.0", "3.2 \u00B1 0.6", "0.3\u20132.0", "Model-dependent"],
+    ["Domain walls", "3.0", "3.2 \u00B1 0.6", "0.33", "Similar to bounce (different origin)"]
+  ]
+},
+
+quintomFnlVerification: {
+  name: "f_NL Mechanism Independence \u2014 Quintom Verification",
+  description: "Verification that f_NL = -35/8 is mechanism-independent across bounce models. The prediction depends only on the matter-dominated contraction phase, not on the specific bounce mechanism (dust, quintom-B, or asymmetric). This makes the prediction robust \u2014 it works for ANY bounce model with matter contraction.",
+  source: "quintom_fnl_verification.py",
+  status: "VERIFIED", statusClass: "frozen",
+  columns: ["Bounce mechanism", "f_NL value", "Contraction phase", "Parameters", "Status"],
+  data: [
+    ["Dust (standard)", "-35/8 = -4.375", "Matter-dominated", "0 free", "Exact"],
+    ["Quintom-B", "-35/8 = -4.375", "Matter-dominated", "0 free", "Verified"],
+    ["Asymmetric bounce", "-35/8 = -4.375", "Matter-dominated", "0 free", "Verified"],
+    ["Ekpyrotic", "\u2248 +0.02 (different)", "Ekpyrotic (w\u226B1)", "0 free", "Distinct prediction"],
+    ["Slow-roll inflation", "\u2248 -0.01 (tiny)", "de Sitter expansion", "0 free", "Undetectable"]
+  ]
 }
 
 };
@@ -2252,7 +2340,7 @@ truePolynomial: {
 // ══════════════════════════════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════════════════════════════
-let currentDatasetKey = 'fullTension';
+let currentDatasetKey = 'modelDiscrimination';
 let currentSort = { col: -1, asc: true };
 let currentSearch = '';
 let currentPage = 0;
@@ -2678,7 +2766,7 @@ function showTree() {
 //  INIT & ACTIVE PAGE
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
-  selectDataset('fullTension');
+  selectDataset('modelDiscrimination');
 });
 </script>
 
