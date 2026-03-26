@@ -1,0 +1,7 @@
+{
+  "conclusion": "f_NL = -35/8 confirmed for quintom bounce",
+  "condition": "CMB modes must exit during phi-dominated (w=0) contraction phase",
+  "mechanism": "Phantom field negligible at horizon exit, grows to trigger bounce later",
+  "fine_tuning": "Initial phantom fraction must be small enough that w=0 at CMB exit",
+  "status": "MECHANISM_INDEPENDENCE_CONFIRMED"
+}
