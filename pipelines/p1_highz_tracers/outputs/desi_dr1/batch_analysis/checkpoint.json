@@ -1,11 +1,11 @@
 {
-  "next_index": 36700,
-  "batches_complete": 734,
+  "next_index": 40500,
+  "batches_complete": 810,
   "total_batches": 3917,
   "stats": {
     "HIGH_Z_CANDIDATE": 23,
     "UNUSUAL_AGN": 2636,
-    "UNUSUAL_GALAXY": 33939,
+    "UNUSUAL_GALAXY": 37739,
     "GENUINELY_NOVEL": 6,
     "STELLAR_ODDITY": 0,
     "ARTIFACT_SUSPECT": 96,
@@ -13,10 +13,10 @@
     "VERY_HIGH": 6,
     "HIGH": 23,
     "MEDIUM": 2641,
-    "LOW": 34030,
+    "LOW": 37830,
     "follow_up_count": 427
   },
-  "convex_uploads": 36697,
+  "convex_uploads": 40497,
   "convex_failures": 3,
-  "timestamp": "2026-03-26 05:22:06 UTC"
+  "timestamp": "2026-03-26 05:31:31 UTC"
 }
