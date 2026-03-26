@@ -1,0 +1,14 @@
+{
+  "n_checked": 10000,
+  "matches": 21,
+  "misses": 9979,
+  "errors": 0,
+  "types": {
+    "*": 3,
+    "QSO": 5,
+    "Rad": 1,
+    "G": 9,
+    "GiC": 2,
+    "WD?": 1
+  }
+}
