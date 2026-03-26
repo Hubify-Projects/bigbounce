@@ -1,0 +1,39 @@
+{
+  "total_spectra": 6510389,
+  "n_batches": 13,
+  "anomalies_gt5": 41622,
+  "anomalies_gt10": 2409,
+  "anomalies_gt15": 12,
+  "anomaly_rate_pct": 0.639,
+  "mean_score": 1.0246,
+  "spectral_types": {
+    "STAR": 206964,
+    "GALAXY": 5502364,
+    "QSO": 801061
+  },
+  "anomaly_rate_by_type": {
+    "GALAXY": {
+      "total": 5502364,
+      "anomalous": 41278,
+      "rate_pct": 0.75
+    },
+    "QSO": {
+      "total": 801061,
+      "anomalous": 298,
+      "rate_pct": 0.037
+    },
+    "STAR": {
+      "total": 206964,
+      "anomalous": 46,
+      "rate_pct": 0.022
+    }
+  },
+  "redshift_stats": {
+    "mean_all": 0.98,
+    "mean_anomalous": 0.802,
+    "mean_normal": 0.981,
+    "z_gt1": 2746399,
+    "z_gt2": 279552,
+    "z_gt3": 43648
+  }
+}
