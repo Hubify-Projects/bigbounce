@@ -27,9 +27,11 @@
 .btn-ls:hover { background: #bfdbfe; }
 .sky-map { width: 100%; height: 300px; background: #0f172a; border-radius: var(--radius-lg); margin: 20px 0; position: relative; overflow: hidden; }
 .sky-map canvas { width: 100%; height: 100%; }
-.anomaly-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
-.anomaly-modal.open { display: flex; }
-.anomaly-modal-content { background: var(--bg); border-radius: var(--radius-lg); padding: 24px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
+.anomaly-panel { position: fixed; top: 0; right: -65%; width: 60%; height: 100vh; background: var(--bg); border-left: 1px solid var(--border); box-shadow: -4px 0 20px rgba(0,0,0,0.3); z-index: 1000; overflow-y: auto; transition: right 0.3s ease; padding: 24px; }
+.anomaly-panel.open { right: 0; }
+.anomaly-panel-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 999; }
+.anomaly-panel-backdrop.open { display: block; }
+@media (max-width: 768px) { .anomaly-panel { width: 100%; right: -105%; } }
 .anomaly-thumb { width: 48px; height: 48px; border-radius: 4px; cursor: pointer; object-fit: cover; border: 1px solid var(--border); background: var(--bg-subtle); min-width: 48px; }
 .anomaly-thumb:hover { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.3); }
 .anomaly-thumb-fail { width: 48px; height: 48px; border-radius: 4px; background: var(--bg-subtle); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-muted); font-family: var(--font-sans); }
@@ -255,29 +257,29 @@
   </div>
 </section>
 
-<div class="anomaly-modal" id="anomalyModal" onclick="if(event.target===this)closeModal()">
-  <div class="anomaly-modal-content">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <h3 id="modalTitle" style="margin:0;font-family:var(--font-sans);">Anomaly #1</h3>
-      <button onclick="closeModal()" style="background:none;border:none;font-size:20px;cursor:pointer;">&times;</button>
-    </div>
-    <div style="text-align:center;margin-bottom:16px;">
-      <img id="modalImage" style="max-width:100%;border-radius:8px;border:1px solid var(--border);" alt="Legacy Survey cutout">
-    </div>
-    <div id="modalDetails" style="font-family:var(--font-mono);font-size:13px;margin-bottom:16px;"></div>
-    <div id="aiComment" class="ai-comment-box" style="display:none;">
-      <strong>AI Analysis:</strong> <span id="aiCommentText"></span>
-    </div>
-    <div style="margin-bottom:16px;">
-      <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Open in Legacy Survey Viewer</a>
-    </div>
-    <div class="comments-section">
-      <h4 style="font-family:var(--font-sans);font-size:14px;margin-bottom:8px;">Review Notes</h4>
-      <div id="commentsList" style="margin-bottom:8px;"></div>
-      <div style="display:flex;gap:8px;">
-        <input type="text" id="commentInput" placeholder="Add a review note..." style="flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;" onkeydown="if(event.key==='Enter')addComment()">
-        <button onclick="addComment()" style="padding:6px 12px;background:#1d4ed8;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">Add</button>
-      </div>
+<div class="anomaly-panel-backdrop" id="panelBackdrop" onclick="closePanel()"></div>
+<div class="anomaly-panel" id="anomalyPanel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+    <h3 id="modalTitle" style="margin:0;font-family:var(--font-sans);">Anomaly #1</h3>
+    <button onclick="closePanel()" style="background:none;border:none;font-size:20px;cursor:pointer;">&times;</button>
+  </div>
+  <div style="text-align:center;margin-bottom:16px;">
+    <img id="modalImage" style="max-width:100%;border-radius:8px;border:1px solid var(--border);" alt="Legacy Survey cutout">
+  </div>
+  <div id="modalDetails" style="font-family:var(--font-mono);font-size:13px;margin-bottom:16px;"></div>
+  <div id="aiComment" class="ai-comment-box" style="display:none;">
+    <strong>AI Analysis:</strong> <span id="aiCommentText"></span>
+  </div>
+  <div style="margin-bottom:16px;">
+    <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Open in Legacy Survey Viewer</a>
+  </div>
+  <div class="comments-section">
+    <h4 style="font-family:var(--font-sans);font-size:14px;margin-bottom:8px;">Review Notes</h4>
+    <div id="commentsList" style="margin-bottom:8px;"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <input type="text" id="commentName" placeholder="Your name" style="width:120px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;">
+      <input type="text" id="commentInput" placeholder="Add a review note..." style="flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;" onkeydown="if(event.key==='Enter')addComment()">
+      <button onclick="addComment()" style="padding:6px 12px;background:#1d4ed8;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">Add</button>
     </div>
   </div>
 </div>
@@ -316,7 +318,7 @@ const AI_COMMENTS = {
   "-11932521": "R-band dominated residual (rR=6.78 vs rB=1.16, rZ=0.75). Notable positive TID (most anomalies have negative TIDs). Z-band residual is the highest among R-dominant objects in the top 20 — possible broadband continuum anomaly spanning R-to-Z."
 };
 
-function openModal(dataIdx) {
+function openPanel(dataIdx) {
   const d = DATA[dataIdx];
   if (!d) return;
   currentModalIdx = dataIdx;
@@ -353,61 +355,82 @@ function openModal(dataIdx) {
   // Load comments
   renderComments(tid);
 
-  document.getElementById('anomalyModal').classList.add('open');
+  document.getElementById('anomalyPanel').classList.add('open');
+  document.getElementById('panelBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal() {
-  document.getElementById('anomalyModal').classList.remove('open');
+function closePanel() {
+  document.getElementById('anomalyPanel').classList.remove('open');
+  document.getElementById('panelBackdrop').classList.remove('open');
   document.body.style.overflow = '';
   currentModalIdx = -1;
 }
 
-function getComments(tid) {
+// Convex-backed comment system
+const convexUrl = 'https://impressive-quail-879.convex.cloud';
+
+async function loadComments(tid) {
   try {
-    return JSON.parse(localStorage.getItem('anomaly_comments_' + tid) || '[]');
-  } catch { return []; }
+    const resp = await fetch(convexUrl + '/api/query', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({path: 'reviews:byPipelineObject', args: {pipelineId: 'desi_dr1_anomaly', objectId: String(tid)}})
+    });
+    const data = await resp.json();
+    return data.value || [];
+  } catch(e) { return []; }
 }
 
-function saveComments(tid, comments) {
-  localStorage.setItem('anomaly_comments_' + tid, JSON.stringify(comments));
+async function saveComment(tid, name, text) {
+  try {
+    await fetch(convexUrl + '/api/mutation', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({path: 'reviews:add', args: {
+        pipelineId: 'desi_dr1_anomaly',
+        objectId: String(tid),
+        label: 'human_review',
+        aiLabel: '',
+        aiReason: '',
+        humanNotes: text,
+        reviewerName: name,
+        reviewedAt: Date.now(),
+        metadata: {}
+      }})
+    });
+    return true;
+  } catch(e) { return false; }
 }
 
-function renderComments(tid) {
-  const comments = getComments(tid);
+async function renderComments(tid) {
   const list = document.getElementById('commentsList');
+  list.innerHTML = '<p style="color:var(--text-muted);font-size:12px;font-family:var(--font-sans);margin:0 0 4px 0;">Loading...</p>';
+  const comments = await loadComments(tid);
   if (comments.length === 0) {
     list.innerHTML = '<p style="color:var(--text-muted);font-size:12px;font-family:var(--font-sans);margin:0 0 4px 0;">No review notes yet.</p>';
     return;
   }
-  list.innerHTML = comments.map((c, i) => `
+  list.innerHTML = comments.map(c => `
     <div class="comment-item">
-      <span class="comment-text">${escapeHtml(c.text)} <span style="color:var(--text-muted);font-size:11px;">&mdash; ${new Date(c.ts).toLocaleDateString()}</span></span>
-      <button class="comment-delete" onclick="deleteComment(${i})" title="Delete">&times;</button>
+      <span class="comment-text">${escapeHtml(c.humanNotes || c.text || '')} <span style="color:var(--text-muted);font-size:11px;">&mdash; ${escapeHtml(c.reviewerName || 'Anonymous')}, ${new Date(c.reviewedAt || c._creationTime).toLocaleDateString()}</span></span>
     </div>
   `).join('');
 }
 
-function addComment() {
+async function addComment() {
   if (currentModalIdx < 0) return;
+  const nameInput = document.getElementById('commentName');
   const input = document.getElementById('commentInput');
+  const name = nameInput.value.trim() || 'Anonymous';
   const text = input.value.trim();
   if (!text) return;
   const tid = DATA[currentModalIdx][7];
-  const comments = getComments(tid);
-  comments.push({ text, ts: Date.now() });
-  saveComments(tid, comments);
-  renderComments(tid);
-  input.value = '';
-}
-
-function deleteComment(idx) {
-  if (currentModalIdx < 0) return;
-  const tid = DATA[currentModalIdx][7];
-  const comments = getComments(tid);
-  comments.splice(idx, 1);
-  saveComments(tid, comments);
-  renderComments(tid);
+  const ok = await saveComment(tid, name, text);
+  if (ok) {
+    await renderComments(tid);
+    input.value = '';
+  }
 }
 
 function escapeHtml(str) {
@@ -418,7 +441,7 @@ function escapeHtml(str) {
 
 // Close modal on Escape key
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') closePanel();
 });
 
 function renderTable(data) {
@@ -434,7 +457,7 @@ function renderTable(data) {
     const lsUrl = `https://www.legacysurvey.org/viewer?ra=${ra}&dec=${dec}&layer=ls-dr10&zoom=15`;
     const thumbUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=64`;
     const dataIdx = DATA.indexOf(d);
-    return `<tr onclick="openModal(${dataIdx})">
+    return `<tr onclick="openPanel(${dataIdx})">
       <td>${i+1}</td>
       <td><span class="score-bar" style="width:${pct}px;background:${color}"></span>${score}</td>
       <td>${ra.toFixed(4)}</td>
