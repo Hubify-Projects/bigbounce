@@ -1,0 +1,908 @@
+{
+  "matches": 0,
+  "misses": 100,
+  "errors": 0,
+  "types": {},
+  "results": [
+    {
+      "rank": 1,
+      "score": 25.15802574157715,
+      "status": "NEW",
+      "ra": 194.4558186493681,
+      "dec": 21.730231996909502,
+      "tid": -242117190,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=194.45582&dec=21.73023&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 2,
+      "score": 24.60582160949707,
+      "status": "NEW",
+      "ra": 156.18069296379974,
+      "dec": 2.107485515235272,
+      "tid": -262397190,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=156.18069&dec=2.10749&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 3,
+      "score": 24.532506942749023,
+      "status": "NEW",
+      "ra": 206.63805730171762,
+      "dec": 9.050748882955313,
+      "tid": -242337192,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=206.63806&dec=9.05075&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 4,
+      "score": 24.204801559448242,
+      "status": "NEW",
+      "ra": 172.86434243833887,
+      "dec": -2.3433882833294746,
+      "tid": -218427377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=172.86434&dec=-2.34339&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 5,
+      "score": 22.297954559326172,
+      "status": "NEW",
+      "ra": 201.28737802738988,
+      "dec": -7.662388989759027,
+      "tid": -237137377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=201.28738&dec=-7.66239&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 6,
+      "score": 20.97508430480957,
+      "status": "NEW",
+      "ra": 99.0516272537663,
+      "dec": 59.11269503742137,
+      "tid": -260408264,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=99.05163&dec=59.11270&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 7,
+      "score": 20.866609573364258,
+      "status": "NEW",
+      "ra": 171.25417858210673,
+      "dec": -2.086120304979545,
+      "tid": -218424222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=171.25418&dec=-2.08612&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 8,
+      "score": 20.49983024597168,
+      "status": "NEW",
+      "ra": 195.37268624793685,
+      "dec": -5.492670097939735,
+      "tid": -252707377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=195.37269&dec=-5.49267&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 9,
+      "score": 20.288227081298828,
+      "status": "NEW",
+      "ra": 199.20743431057167,
+      "dec": 8.654999471542963,
+      "tid": -226434222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=199.20743&dec=8.65500&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 10,
+      "score": 20.24767303466797,
+      "status": "NEW",
+      "ra": 194.5899908276067,
+      "dec": 22.226540876613235,
+      "tid": -242117261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=194.58999&dec=22.22654&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 11,
+      "score": 19.963838577270508,
+      "status": "NEW",
+      "ra": 263.8410557809553,
+      "dec": 42.62542027956028,
+      "tid": -240426131,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=263.84106&dec=42.62542&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 12,
+      "score": 19.85393524169922,
+      "status": "NEW",
+      "ra": 167.1063745831944,
+      "dec": -7.335034760511977,
+      "tid": -218354222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=167.10637&dec=-7.33503&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 13,
+      "score": 19.80963706970215,
+      "status": "NEW",
+      "ra": 172.6744633524276,
+      "dec": -2.484923653385845,
+      "tid": -218427261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=172.67446&dec=-2.48492&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 14,
+      "score": 19.447969436645508,
+      "status": "NEW",
+      "ra": 212.6181916205498,
+      "dec": -2.3555026714727108,
+      "tid": -248077261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=212.61819&dec=-2.35550&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 15,
+      "score": 19.16004753112793,
+      "status": "NEW",
+      "ra": 201.09605398784117,
+      "dec": -7.804091441346144,
+      "tid": -237137261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=201.09605&dec=-7.80409&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 16,
+      "score": 18.732236862182617,
+      "status": "NEW",
+      "ra": 168.38676450436458,
+      "dec": -7.662668752165482,
+      "tid": -218357192,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=168.38676&dec=-7.66267&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 17,
+      "score": 18.710302352905273,
+      "status": "NEW",
+      "ra": 211.78378256030317,
+      "dec": 1.2123178020216203,
+      "tid": -216814222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=211.78378&dec=1.21232&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 18,
+      "score": 18.60306167602539,
+      "status": "NEW",
+      "ra": 207.12837342394388,
+      "dec": -2.547647598075105,
+      "tid": -237314222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=207.12837&dec=-2.54765&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 19,
+      "score": 18.565752029418945,
+      "status": "NEW",
+      "ra": 153.18996685139686,
+      "dec": 7.911975284620864,
+      "tid": -246427377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=153.18997&dec=7.91198&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 20,
+      "score": 18.486783981323242,
+      "status": "NEW",
+      "ra": 226.88872567425435,
+      "dec": 21.822664174200725,
+      "tid": -11932521,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=226.88873&dec=21.82266&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 21,
+      "score": 18.31916046142578,
+      "status": "NEW",
+      "ra": 266.73105355028474,
+      "dec": 22.653338187217006,
+      "tid": -251384222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=266.73105&dec=22.65334&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 22,
+      "score": 18.256803512573242,
+      "status": "NEW",
+      "ra": 244.88212899581768,
+      "dec": 8.152489675317554,
+      "tid": -251414222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=244.88213&dec=8.15249&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 23,
+      "score": 18.09542465209961,
+      "status": "NEW",
+      "ra": 142.63936426751624,
+      "dec": -0.6994729197834181,
+      "tid": -230884222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=142.63936&dec=-0.69947&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 24,
+      "score": 18.046424865722656,
+      "status": "NEW",
+      "ra": 239.13624323584844,
+      "dec": -0.3617625798705179,
+      "tid": -232357190,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=239.13624&dec=-0.36176&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 25,
+      "score": 17.851219177246094,
+      "status": "NEW",
+      "ra": 174.86353624467296,
+      "dec": 0.3588663309187227,
+      "tid": -249804222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=174.86354&dec=0.35887&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 26,
+      "score": 17.719388961791992,
+      "status": "NEW",
+      "ra": 99.12214333247728,
+      "dec": 59.88231396613117,
+      "tid": -260407300,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=99.12214&dec=59.88231&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 27,
+      "score": 17.551517486572266,
+      "status": "NEW",
+      "ra": 157.14945180779134,
+      "dec": -3.723834600116112,
+      "tid": 616088449090323141,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=157.14945&dec=-3.72383&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 28,
+      "score": 17.53705406188965,
+      "status": "NEW",
+      "ra": 168.1442082289862,
+      "dec": 1.2657600364977537,
+      "tid": -249754222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=168.14421&dec=1.26576&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 29,
+      "score": 17.48286247253418,
+      "status": "NEW",
+      "ra": 167.20950719211663,
+      "dec": -2.371668148000137,
+      "tid": -218393212,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=167.20951&dec=-2.37167&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 30,
+      "score": 17.1458797454834,
+      "status": "NEW",
+      "ra": 248.8467007325075,
+      "dec": 24.093911487651106,
+      "tid": -204208127,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=248.84670&dec=24.09391&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 31,
+      "score": 17.081724166870117,
+      "status": "NEW",
+      "ra": 141.96011601370662,
+      "dec": -3.6925581592441037,
+      "tid": -231017261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=141.96012&dec=-3.69256&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 32,
+      "score": 16.978601455688477,
+      "status": "NEW",
+      "ra": 268.26716746187327,
+      "dec": 28.15620174331911,
+      "tid": -240312292,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=268.26717&dec=28.15620&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 33,
+      "score": 16.96597671508789,
+      "status": "NEW",
+      "ra": 220.77094508195344,
+      "dec": -1.5047388283986785,
+      "tid": -232217377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=220.77095&dec=-1.50474&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 34,
+      "score": 16.85445213317871,
+      "status": "NEW",
+      "ra": 182.52340150371066,
+      "dec": -2.125390062437945,
+      "tid": -234177261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=182.52340&dec=-2.12539&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 35,
+      "score": 16.704862594604492,
+      "status": "NEW",
+      "ra": 271.08133044620774,
+      "dec": 46.762311212331,
+      "tid": -208925052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=271.08133&dec=46.76231&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 36,
+      "score": 16.64512062072754,
+      "status": "NEW",
+      "ra": 97.19158274142002,
+      "dec": 63.25524638233988,
+      "tid": -70095052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=97.19158&dec=63.25525&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 37,
+      "score": 16.34577178955078,
+      "status": "NEW",
+      "ra": 148.12507522026422,
+      "dec": -0.686309762001906,
+      "tid": -215207261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=148.12508&dec=-0.68631&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 38,
+      "score": 16.33734130859375,
+      "status": "NEW",
+      "ra": 225.11852921274766,
+      "dec": 35.76842814890491,
+      "tid": -200075052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=225.11853&dec=35.76843&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 39,
+      "score": 16.332717895507812,
+      "status": "NEW",
+      "ra": 275.35035574410415,
+      "dec": 45.66619332207202,
+      "tid": -224495449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=275.35036&dec=45.66619&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 40,
+      "score": 16.322721481323242,
+      "status": "NEW",
+      "ra": 224.05756122035982,
+      "dec": 41.786727396764064,
+      "tid": -17747190,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=224.05756&dec=41.78673&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 41,
+      "score": 16.300886154174805,
+      "status": "NEW",
+      "ra": 72.25086847514712,
+      "dec": -0.8699035191741975,
+      "tid": -24905449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=72.25087&dec=-0.86990&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 42,
+      "score": 16.296958923339844,
+      "status": "NEW",
+      "ra": 109.9830057047606,
+      "dec": 38.026533245006654,
+      "tid": -52785158,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=109.98301&dec=38.02653&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 43,
+      "score": 16.293004989624023,
+      "status": "NEW",
+      "ra": 197.96039551260705,
+      "dec": -0.012824742687321132,
+      "tid": -252904222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=197.96040&dec=-0.01282&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 44,
+      "score": 16.239795684814453,
+      "status": "NEW",
+      "ra": 195.18212180127043,
+      "dec": -5.634261141397556,
+      "tid": -252707261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=195.18212&dec=-5.63426&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 45,
+      "score": 16.170503616333008,
+      "status": "NEW",
+      "ra": 218.46305664549527,
+      "dec": 0.4014135104471119,
+      "tid": -216614222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=218.46306&dec=0.40141&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 46,
+      "score": 16.161375045776367,
+      "status": "NEW",
+      "ra": 245.05429797000937,
+      "dec": 19.73244625322001,
+      "tid": -14215052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=245.05430&dec=19.73245&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 47,
+      "score": 16.075735092163086,
+      "status": "NEW",
+      "ra": 200.45138224798598,
+      "dec": 55.95080180952832,
+      "tid": -16467190,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=200.45138&dec=55.95080&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 48,
+      "score": 15.993314743041992,
+      "status": "NEW",
+      "ra": 273.16727810382145,
+      "dec": 43.1489040693433,
+      "tid": -240143380,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=273.16728&dec=43.14890&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 49,
+      "score": 15.993086814880371,
+      "status": "NEW",
+      "ra": 146.60354665082434,
+      "dec": -2.4923945477715743,
+      "tid": 616088479092179594,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=146.60355&dec=-2.49239&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 50,
+      "score": 15.9761962890625,
+      "status": "NEW",
+      "ra": 170.13241034826447,
+      "dec": -4.778431663418613,
+      "tid": -234088437,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=170.13241&dec=-4.77843&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 51,
+      "score": 15.976109504699707,
+      "status": "NEW",
+      "ra": 160.34807072838342,
+      "dec": 3.7672536529573706,
+      "tid": -246816131,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=160.34807&dec=3.76725&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 52,
+      "score": 15.939603805541992,
+      "status": "NEW",
+      "ra": 61.16238840598063,
+      "dec": -14.94888153656462,
+      "tid": -86897377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=61.16239&dec=-14.94888&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 53,
+      "score": 15.909132957458496,
+      "status": "NEW",
+      "ra": 260.20683938855433,
+      "dec": 54.27021819972842,
+      "tid": -207905449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=260.20684&dec=54.27022&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 54,
+      "score": 15.844123840332031,
+      "status": "NEW",
+      "ra": 96.74385235672223,
+      "dec": 60.883046319109795,
+      "tid": -260405449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=96.74385&dec=60.88305&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 55,
+      "score": 15.802316665649414,
+      "status": "NEW",
+      "ra": 205.35294190834324,
+      "dec": 9.38206288220996,
+      "tid": -242334222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=205.35294&dec=9.38206&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 56,
+      "score": 15.79957103729248,
+      "status": "NEW",
+      "ra": 192.9510729740337,
+      "dec": -6.36772749180369,
+      "tid": -237144222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=192.95107&dec=-6.36773&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 57,
+      "score": 15.7801513671875,
+      "status": "NEW",
+      "ra": 194.49280309028134,
+      "dec": -5.313736460940837,
+      "tid": -94064222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=194.49280&dec=-5.31374&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 58,
+      "score": 15.77763843536377,
+      "status": "NEW",
+      "ra": 145.72533127796783,
+      "dec": -5.854253287945741,
+      "tid": -246896274,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=145.72533&dec=-5.85425&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 59,
+      "score": 15.766414642333984,
+      "status": "NEW",
+      "ra": 58.42104802722509,
+      "dec": -17.86102980412361,
+      "tid": -245628344,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=58.42105&dec=-17.86103&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 60,
+      "score": 15.766061782836914,
+      "status": "NEW",
+      "ra": 163.0617526486697,
+      "dec": 40.74203855515005,
+      "tid": -219585097,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=163.06175&dec=40.74204&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 61,
+      "score": 15.704671859741211,
+      "status": "NEW",
+      "ra": 279.2084507752832,
+      "dec": 53.584255014904954,
+      "tid": -20715052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=279.20845&dec=53.58426&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 62,
+      "score": 15.683855056762695,
+      "status": "NEW",
+      "ra": 62.39461382476361,
+      "dec": -7.129106014542257,
+      "tid": -230448229,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=62.39461&dec=-7.12911&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 63,
+      "score": 15.675568580627441,
+      "status": "NEW",
+      "ra": 185.11229128414715,
+      "dec": 2.934707032371795,
+      "tid": -211407377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=185.11229&dec=2.93471&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 64,
+      "score": 15.669892311096191,
+      "status": "NEW",
+      "ra": 107.25705503606414,
+      "dec": 50.14412161191548,
+      "tid": -240807377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=107.25706&dec=50.14412&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 65,
+      "score": 15.662930488586426,
+      "status": "NEW",
+      "ra": 158.71327353005654,
+      "dec": -2.8492939343389434,
+      "tid": -262466505,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=158.71327&dec=-2.84929&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 66,
+      "score": 15.534549713134766,
+      "status": "NEW",
+      "ra": 14.750284630719857,
+      "dec": 0.8520866067033114,
+      "tid": -217395155,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=14.75028&dec=0.85209&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 67,
+      "score": 15.497294425964355,
+      "status": "NEW",
+      "ra": 132.37936250028974,
+      "dec": 1.3459699090881656,
+      "tid": -246535449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=132.37936&dec=1.34597&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 68,
+      "score": 15.425819396972656,
+      "status": "NEW",
+      "ra": 186.84864188857205,
+      "dec": -3.43900464396574,
+      "tid": -205766016,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=186.84864&dec=-3.43900&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 69,
+      "score": 15.41358757019043,
+      "status": "NEW",
+      "ra": 217.06975548545032,
+      "dec": 37.309449354099335,
+      "tid": -211955052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=217.06976&dec=37.30945&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 70,
+      "score": 15.375840187072754,
+      "status": "NEW",
+      "ra": 160.79732935277866,
+      "dec": 3.5976170992389918,
+      "tid": -204844222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=160.79733&dec=3.59762&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 71,
+      "score": 15.365564346313477,
+      "status": "NEW",
+      "ra": 216.05682603976246,
+      "dec": 39.86604948977897,
+      "tid": -258615449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=216.05683&dec=39.86605&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 72,
+      "score": 15.359931945800781,
+      "status": "NEW",
+      "ra": 239.44788804164529,
+      "dec": 0.276247291888422,
+      "tid": -232357377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=239.44789&dec=0.27625&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 73,
+      "score": 15.356714248657227,
+      "status": "NEW",
+      "ra": 259.2485301406492,
+      "dec": 9.973535263571254,
+      "tid": -251264222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=259.24853&dec=9.97354&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 74,
+      "score": 15.34677791595459,
+      "status": "NEW",
+      "ra": 134.73295895278727,
+      "dec": -2.661524560091528,
+      "tid": -56547261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=134.73296&dec=-2.66152&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 75,
+      "score": 15.340452194213867,
+      "status": "NEW",
+      "ra": 139.88052652177905,
+      "dec": 5.2629427800954796,
+      "tid": -88005449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=139.88053&dec=5.26294&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 76,
+      "score": 15.326234817504883,
+      "status": "NEW",
+      "ra": 195.9872459635854,
+      "dec": 4.51404637511375,
+      "tid": -211254222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=195.98725&dec=4.51405&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 77,
+      "score": 15.310038566589355,
+      "status": "NEW",
+      "ra": 327.3933008435731,
+      "dec": 7.763272162486215,
+      "tid": -255427377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=327.39330&dec=7.76327&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 78,
+      "score": 15.266444206237793,
+      "status": "NEW",
+      "ra": 68.39479145394058,
+      "dec": -5.025860542023935,
+      "tid": -24825449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=68.39479&dec=-5.02586&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 79,
+      "score": 15.258340835571289,
+      "status": "NEW",
+      "ra": 270.3150506056311,
+      "dec": 43.365333786142706,
+      "tid": -208905052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=270.31505&dec=43.36533&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 80,
+      "score": 15.256887435913086,
+      "status": "NEW",
+      "ra": 163.99799466917372,
+      "dec": 4.334919551226652,
+      "tid": -251925052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=163.99799&dec=4.33492&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 81,
+      "score": 15.251256942749023,
+      "status": "NEW",
+      "ra": 279.3309619674752,
+      "dec": 57.88536966020718,
+      "tid": -20705449,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=279.33096&dec=57.88537&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 82,
+      "score": 15.238733291625977,
+      "status": "NEW",
+      "ra": 178.657407616727,
+      "dec": 56.3094312992692,
+      "tid": -205957261,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=178.65741&dec=56.30943&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 83,
+      "score": 15.235312461853027,
+      "status": "NEW",
+      "ra": 270.4880804938377,
+      "dec": 58.494917512936006,
+      "tid": -200016020,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=270.48808&dec=58.49492&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 84,
+      "score": 15.23231315612793,
+      "status": "NEW",
+      "ra": 227.16804231607162,
+      "dec": 2.2204638743047456,
+      "tid": -216684222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=227.16804&dec=2.22046&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 85,
+      "score": 15.197403907775879,
+      "status": "NEW",
+      "ra": 42.10381445459788,
+      "dec": 3.3198574610724716,
+      "tid": 39627863950886368,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=42.10381&dec=3.31986&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 86,
+      "score": 15.183297157287598,
+      "status": "NEW",
+      "ra": 266.69493513699786,
+      "dec": 45.44431849650696,
+      "tid": -208935052,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=266.69494&dec=45.44432&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 87,
+      "score": 15.178228378295898,
+      "status": "NEW",
+      "ra": 258.63419671539117,
+      "dec": 34.884087008569644,
+      "tid": -66206131,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=258.63420&dec=34.88409&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 88,
+      "score": 15.174240112304688,
+      "status": "NEW",
+      "ra": 195.64095191278096,
+      "dec": 52.50970049941491,
+      "tid": -206371051,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=195.64095&dec=52.50970&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 89,
+      "score": 15.17249584197998,
+      "status": "NEW",
+      "ra": 215.11942726223555,
+      "dec": 2.4843891553165047,
+      "tid": 616088601037373983,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=215.11943&dec=2.48439&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 90,
+      "score": 15.171966552734375,
+      "status": "NEW",
+      "ra": 159.58323438452524,
+      "dec": 13.590443685548562,
+      "tid": -236265525,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=159.58323&dec=13.59044&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 91,
+      "score": 15.146724700927734,
+      "status": "NEW",
+      "ra": 326.82680420407445,
+      "dec": -3.880559555893944,
+      "tid": -208613504,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=326.82680&dec=-3.88056&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 92,
+      "score": 15.143722534179688,
+      "status": "NEW",
+      "ra": 208.8715949272509,
+      "dec": 35.467795975068555,
+      "tid": -242977401,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=208.87159&dec=35.46780&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 93,
+      "score": 15.131038665771484,
+      "status": "NEW",
+      "ra": 204.59850443799903,
+      "dec": -3.232047478873037,
+      "tid": -201203171,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=204.59850&dec=-3.23205&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 94,
+      "score": 15.122142791748047,
+      "status": "NEW",
+      "ra": 196.33282430005968,
+      "dec": -6.900668897749888,
+      "tid": -237124222,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=196.33282&dec=-6.90067&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 95,
+      "score": 15.118273735046387,
+      "status": "NEW",
+      "ra": 104.83895867679585,
+      "dec": 60.884721880417864,
+      "tid": -213128174,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=104.83896&dec=60.88472&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 96,
+      "score": 15.084108352661133,
+      "status": "NEW",
+      "ra": 107.69203818302398,
+      "dec": 43.09478378554769,
+      "tid": -256851178,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=107.69204&dec=43.09478&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 97,
+      "score": 15.082902908325195,
+      "status": "NEW",
+      "ra": 126.8900286321779,
+      "dec": 0.1437081725484449,
+      "tid": 616088545198604408,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=126.89003&dec=0.14371&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 98,
+      "score": 15.074226379394531,
+      "status": "NEW",
+      "ra": 127.42099580085541,
+      "dec": 29.7122421183987,
+      "tid": -101847377,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=127.42100&dec=29.71224&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 99,
+      "score": 15.070428848266602,
+      "status": "NEW",
+      "ra": 165.46755294586643,
+      "dec": 17.03892796080235,
+      "tid": -236033317,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=165.46755&dec=17.03893&layer=ls-dr10&zoom=15"
+    },
+    {
+      "rank": 100,
+      "score": 15.045614242553711,
+      "status": "NEW",
+      "ra": 207.71723182207367,
+      "dec": 37.0785479519921,
+      "tid": 616093772698092476,
+      "legacy_url": "https://www.legacysurvey.org/viewer?ra=207.71723&dec=37.07855&layer=ls-dr10&zoom=15"
+    }
+  ]
+}
