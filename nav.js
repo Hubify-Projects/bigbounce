@@ -58,6 +58,7 @@
   else if (path.indexOf('/contributions') !== -1) activePage = 'contributions';
   else if (path.indexOf('/activity') !== -1) activePage = 'activity';
   else if (path.indexOf('/status') !== -1) activePage = 'status';
+  else if (path.indexOf('/sitemap') !== -1) activePage = 'sitemap';
   else if (path.indexOf('/review') !== -1) activePage = 'review';
   else if (path.indexOf('/chat') !== -1) activePage = 'astro';
   else if (path.indexOf('/admin') !== -1) activePage = 'admin';
@@ -108,7 +109,7 @@
     + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">contributions</a>'
     + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
     + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
-    + '<a href="' + p('review/index.html') + '" class="' + sidebarActiveClass('review', 'sidebar-link') + '" data-page="review">review</a>'
+    + '<a href="' + p('sitemap.html') + '" class="' + sidebarActiveClass('sitemap', 'sidebar-link') + '" data-page="sitemap">sitemap</a>'
     + '<a href="' + p('chat.html') + '" class="' + sidebarActiveClass('astro', 'sidebar-link') + '" data-page="astro">astro</a>'
     + '<a href="' + p('research/project_master_dossier/index.html') + '" class="' + sidebarActiveClass('dossier', 'sidebar-link') + '" data-page="dossier">dossier</a>'
     + '</nav>'

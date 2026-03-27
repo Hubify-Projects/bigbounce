@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap — BigBounce Research</title>
+<link rel="stylesheet" href="style.css">
+<script src="nav.js" defer></script>
+<style>
+.sitemap-section { margin-bottom: 32px; }
+.sitemap-section h3 { font-family: var(--font-sans); font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.sitemap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.sitemap-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--text); transition: all 100ms; }
+.sitemap-item:hover { border-color: var(--accent-link); background: var(--bg-subtle); }
+.sitemap-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.sitemap-label { font-family: var(--font-sans); font-size: 13px; font-weight: 600; }
+.sitemap-desc { font-family: var(--font-sans); font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+.sitemap-badge { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-family: var(--font-mono); margin-left: 6px; }
+.badge-core { background: #dbeafe; color: #1d4ed8; }
+.badge-data { background: #d1fae5; color: #065f46; }
+.badge-ai { background: #fef3c7; color: #92400e; }
+.badge-article { background: #f3e8ff; color: #6b21a8; }
+.badge-tool { background: #e5e7eb; color: #374151; }
+.badge-deprecated { background: #fee2e2; color: #991b1b; }
+.badge-new { background: #d1fae5; color: #065f46; }
+</style>
+</head>
+<body>
+<main class="container" style="padding-top: 20px;">
+
+<div class="hero">
+  <h1>Sitemap</h1>
+  <p class="subtitle">All pages in the BigBounce research program website. 43 pages organized by category.</p>
+</div>
+
+<!-- ═══════ CORE RESEARCH ═══════ -->
+<div class="sitemap-section">
+  <h3>Core Research</h3>
+  <div class="sitemap-grid">
+    <a href="index.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">🏠</div>
+      <div><div class="sitemap-label">Research Home <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">Overview, key results, stat cards, bounce portfolio, claims table</div></div>
+    </a>
+    <a href="paper.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">📄</div>
+      <div><div class="sitemap-label">Papers <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">3 papers: spin-torsion barriers, f_NL forecast, anomaly catalog</div></div>
+    </a>
+    <a href="explained.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">💡</div>
+      <div><div class="sitemap-label">Explainer <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">Non-technical explanation of the entire research program</div></div>
+    </a>
+    <a href="contributions.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">🏆</div>
+      <div><div class="sitemap-label">Contributions <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">Novel contributions, prior art attribution, data products</div></div>
+    </a>
+    <a href="glossary.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">📖</div>
+      <div><div class="sitemap-label">Glossary <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">28 terms + 13 equations with explanations</div></div>
+    </a>
+    <a href="figures.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">📊</div>
+      <div><div class="sitemap-label">Figures <span class="sitemap-badge badge-core">Core</span></div>
+      <div class="sitemap-desc">31 publication figures with lightbox viewer</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ DATA & EXPLORATION ═══════ -->
+<div class="sitemap-section">
+  <h3>Data &amp; Exploration</h3>
+  <div class="sitemap-grid">
+    <a href="anomaly-explorer.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#d1fae5;">🔍</div>
+      <div><div class="sitemap-label">Anomaly Explorer <span class="sitemap-badge badge-new">New</span></div>
+      <div class="sitemap-desc">195K DESI DR1 anomalies — browse, filter, review, Legacy Survey images</div></div>
+    </a>
+    <a href="methodology-anomaly.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#d1fae5;">⚙️</div>
+      <div><div class="sitemap-label">Anomaly Methodology <span class="sitemap-badge badge-new">New</span></div>
+      <div class="sitemap-desc">How the autoencoder works — Mermaid flowcharts, architecture, scoring</div></div>
+    </a>
+    <a href="data-explorer.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#d1fae5;">📈</div>
+      <div><div class="sitemap-label">Data Explorer <span class="sitemap-badge badge-data">Data</span></div>
+      <div class="sitemap-desc">475K+ MCMC samples — sortable tables, calculators, node tree</div></div>
+    </a>
+    <a href="galaxy-explorer.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#d1fae5;">🌀</div>
+      <div><div class="sitemap-label">Galaxy Explorer <span class="sitemap-badge badge-data">Data</span></div>
+      <div class="sitemap-desc">Galaxy chirality catalog — CW/CCW classification browser</div></div>
+    </a>
+    <a href="datasets.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#d1fae5;">💾</div>
+      <div><div class="sitemap-label">Datasets <span class="sitemap-badge badge-data">Data</span></div>
+      <div class="sitemap-desc">Dataset descriptions, Cobaya configs, chain details</div></div>
+    </a>
+    <a href="data-comparison.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">📉</div>
+      <div><div class="sitemap-label">Data Comparison <span class="sitemap-badge badge-tool">Tool</span></div>
+      <div class="sitemap-desc">Side-by-side parameter comparison across datasets</div></div>
+    </a>
+    <a href="interactive-data.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">🎛️</div>
+      <div><div class="sitemap-label">Interactive Data <span class="sitemap-badge badge-tool">Tool</span></div>
+      <div class="sitemap-desc">Interactive parameter visualization</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ AI PIPELINES ═══════ -->
+<div class="sitemap-section">
+  <h3>AI Pipelines</h3>
+  <div class="sitemap-grid">
+    <a href="status.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#fef3c7;">📋</div>
+      <div><div class="sitemap-label">Research Status <span class="sitemap-badge badge-new">New</span></div>
+      <div class="sitemap-desc">Master dashboard — all papers, pipelines, pods, discoveries</div></div>
+    </a>
+    <a href="galaxy-zoo.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#fef3c7;">🔬</div>
+      <div><div class="sitemap-label">Galaxy Zoo Analysis <span class="sitemap-badge badge-ai">AI</span></div>
+      <div class="sitemap-desc">Galaxy morphology classification pipeline details</div></div>
+    </a>
+    <a href="review/index.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#fee2e2;">👁️</div>
+      <div><div class="sitemap-label">Review Hub <span class="sitemap-badge badge-deprecated">Legacy</span></div>
+      <div class="sitemap-desc">Human review dashboards — 70-object sample (superseded by Anomaly Explorer)</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ ARTICLES & DEEP DIVES ═══════ -->
+<div class="sitemap-section">
+  <h3>Articles &amp; Deep Dives</h3>
+  <div class="sitemap-grid">
+    <a href="articles.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">📚</div>
+      <div><div class="sitemap-label">Articles Index <span class="sitemap-badge badge-article">Articles</span></div>
+      <div class="sitemap-desc">Index of 8 deep-dive articles</div></div>
+    </a>
+    <a href="articles/students-guide-big-bounce.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🎓</div>
+      <div><div class="sitemap-label">Student's Guide</div>
+      <div class="sitemap-desc">Accessible intro to bounce cosmology</div></div>
+    </a>
+    <a href="articles/matter-bounce-blueprint.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🗺️</div>
+      <div><div class="sitemap-label">Matter Bounce Blueprint</div>
+      <div class="sitemap-desc">Technical guide to the f_NL prediction</div></div>
+    </a>
+    <a href="articles/ech-bounce-phenomenology.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">⚛️</div>
+      <div><div class="sitemap-label">ECH Bounce Phenomenology</div>
+      <div class="sitemap-desc">Einstein-Cartan-Holst framework deep dive</div></div>
+    </a>
+    <a href="articles/evolution-of-rigor.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">📐</div>
+      <div><div class="sitemap-label">Evolution of Rigor</div>
+      <div class="sitemap-desc">How the research methodology improved</div></div>
+    </a>
+    <a href="articles/program-visual-guide.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🖼️</div>
+      <div><div class="sitemap-label">Visual Guide</div>
+      <div class="sitemap-desc">Illustrated guide to the research program</div></div>
+    </a>
+    <a href="articles/publication-roadmap.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🗓️</div>
+      <div><div class="sitemap-label">Publication Roadmap</div>
+      <div class="sitemap-desc">Timeline to submission</div></div>
+    </a>
+    <a href="articles/technical-evaluation.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🧪</div>
+      <div><div class="sitemap-label">Technical Evaluation</div>
+      <div class="sitemap-desc">Critical assessment of the framework</div></div>
+    </a>
+    <a href="articles/look-up.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#f3e8ff;">🌌</div>
+      <div><div class="sitemap-label">Look Up</div>
+      <div class="sitemap-desc">Philosophical perspective on cosmology</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ VISUALIZATION & TIMELINE ═══════ -->
+<div class="sitemap-section">
+  <h3>Visualization &amp; Timeline</h3>
+  <div class="sitemap-grid">
+    <a href="visualize.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">🎬</div>
+      <div><div class="sitemap-label">Big Bounce Simulation</div>
+      <div class="sitemap-desc">Interactive dark-mode cosmic bounce visualization</div></div>
+    </a>
+    <a href="timeline.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">⏰</div>
+      <div><div class="sitemap-label">Cosmological Timeline</div>
+      <div class="sitemap-desc">From parent universe through bounce to SPHEREx 2028</div></div>
+    </a>
+    <a href="activity.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#dbeafe;">📰</div>
+      <div><div class="sitemap-label">Activity Feed</div>
+      <div class="sitemap-desc">Live research timeline with status updates</div></div>
+    </a>
+    <a href="animations.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">✨</div>
+      <div><div class="sitemap-label">Animations</div>
+      <div class="sitemap-desc">Physics animations and visual effects</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ REFERENCE & TOOLS ═══════ -->
+<div class="sitemap-section">
+  <h3>Reference &amp; Tools</h3>
+  <div class="sitemap-grid">
+    <a href="mathematics.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">∑</div>
+      <div><div class="sitemap-label">Mathematics</div>
+      <div class="sitemap-desc">Key equations and derivations</div></div>
+    </a>
+    <a href="methodology.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">🔧</div>
+      <div><div class="sitemap-label">General Methodology</div>
+      <div class="sitemap-desc">Research methodology overview</div></div>
+    </a>
+    <a href="versions.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">📋</div>
+      <div><div class="sitemap-label">Version History</div>
+      <div class="sitemap-desc">Paper version changelog</div></div>
+    </a>
+    <a href="sources.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">📚</div>
+      <div><div class="sitemap-label">Sources</div>
+      <div class="sitemap-desc">Bibliography and references</div></div>
+    </a>
+    <a href="findings.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">🔎</div>
+      <div><div class="sitemap-label">Findings</div>
+      <div class="sitemap-desc">Key findings summary</div></div>
+    </a>
+    <a href="chat.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">💬</div>
+      <div><div class="sitemap-label">Astro Chat</div>
+      <div class="sitemap-desc">AI-powered cosmology Q&amp;A</div></div>
+    </a>
+    <a href="arxiv-preview.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">📑</div>
+      <div><div class="sitemap-label">arXiv Preview</div>
+      <div class="sitemap-desc">Paper preview in arXiv format</div></div>
+    </a>
+    <a href="view-pdf.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">📃</div>
+      <div><div class="sitemap-label">PDF Viewer</div>
+      <div class="sitemap-desc">Embedded PDF reader</div></div>
+    </a>
+    <a href="research/project_master_dossier/index.html" class="sitemap-item">
+      <div class="sitemap-icon" style="background:#e5e7eb;">🗄️</div>
+      <div><div class="sitemap-label">Project Dossier</div>
+      <div class="sitemap-desc">Full project intelligence dashboard</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ DEPRECATED ═══════ -->
+<div class="sitemap-section">
+  <h3>Deprecated / Legacy</h3>
+  <div class="sitemap-grid">
+    <a href="review/pipeline-b-desi-spectral.html" class="sitemap-item" style="opacity:0.5;">
+      <div class="sitemap-icon" style="background:#fee2e2;">⚠️</div>
+      <div><div class="sitemap-label">Pipeline B Review (OLD) <span class="sitemap-badge badge-deprecated">Deprecated</span></div>
+      <div class="sitemap-desc">70-object review — superseded by Anomaly Explorer (195K objects)</div></div>
+    </a>
+    <a href="review.html" class="sitemap-item" style="opacity:0.5;">
+      <div class="sitemap-icon" style="background:#fee2e2;">⚠️</div>
+      <div><div class="sitemap-label">Review (Root) <span class="sitemap-badge badge-deprecated">Deprecated</span></div>
+      <div class="sitemap-desc">Old review page redirect</div></div>
+    </a>
+    <a href="bigbounce-md.html" class="sitemap-item" style="opacity:0.5;">
+      <div class="sitemap-icon" style="background:#fee2e2;">⚠️</div>
+      <div><div class="sitemap-label">BigBounce MD <span class="sitemap-badge badge-deprecated">Deprecated</span></div>
+      <div class="sitemap-desc">Markdown rendered page</div></div>
+    </a>
+    <a href="team.html" class="sitemap-item" style="opacity:0.5;">
+      <div class="sitemap-icon" style="background:#fee2e2;">⚠️</div>
+      <div><div class="sitemap-label">Team <span class="sitemap-badge badge-deprecated">Deprecated</span></div>
+      <div class="sitemap-desc">Team page (solo researcher)</div></div>
+    </a>
+    <a href="admin.html" class="sitemap-item" style="opacity:0.5;">
+      <div class="sitemap-icon" style="background:#fee2e2;">⚠️</div>
+      <div><div class="sitemap-label">Admin <span class="sitemap-badge badge-deprecated">Internal</span></div>
+      <div class="sitemap-desc">Admin dashboard</div></div>
+    </a>
+  </div>
+</div>
+
+<div style="margin-top:32px; padding:16px; background:var(--bg-subtle); border-radius:8px; font-size:13px; color:var(--text-secondary); font-family:var(--font-sans);">
+  <strong>43 pages total</strong> &mdash; 6 core, 7 data/exploration, 3 AI pipeline, 9 articles, 4 visualization, 9 reference, 5 deprecated. Last updated: March 2026.
+</div>
+
+</main>
+</body>
+</html>
