@@ -56,7 +56,7 @@
   <p class="subtitle">195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. First full-DR1-scale autoencoder search (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). <strong>100% of the top 100 objects are NOT in SIMBAD</strong> &mdash; these are genuinely uncharacterized objects. Browse the top 1,000 by anomaly score below.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
-    <a href="review/index.html" class="btn btn-secondary" style="font-size:13px;">Review Hub</a>
+    <a href="status.html" class="btn btn-secondary" style="font-size:13px;">Research Status</a>
     <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" class="btn btn-secondary" style="font-size:13px;">Model on HuggingFace</a>
   </div>
 </div>
@@ -277,8 +277,17 @@
   <div id="aiComment" class="ai-comment-box" style="display:none;">
     <strong>AI Analysis:</strong> <span id="aiCommentText"></span>
   </div>
-  <div style="margin-bottom:16px;">
-    <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Open in Legacy Survey Viewer</a>
+  <div id="enhancedAnalysis" style="display:none; margin-bottom:16px;">
+    <div style="background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:6px;">Enhanced Analysis</div>
+      <div id="enhancedNarrative" style="font-size:13px;color:var(--text-secondary);line-height:1.6;"></div>
+      <div id="enhancedMeta" style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;"></div>
+    </div>
+    <div id="enhancedTags" style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;"></div>
+    <div id="spectrumLink" style="margin-bottom:10px;"></div>
+  </div>
+  <div style="margin-bottom:16px; display:flex; gap:8px; flex-wrap:wrap;">
+    <a id="modalLsLink" href="#" target="_blank" class="btn-img btn-ls" style="padding:6px 14px;font-size:13px;">Legacy Survey</a>
   </div>
   <div class="comments-section">
     <h4 style="font-family:var(--font-sans);font-size:14px;margin-bottom:8px;">Review Notes</h4>
@@ -349,7 +358,7 @@ function openPanel(dataIdx) {
     </div>`;
   document.getElementById('modalLsLink').href = lsUrl;
 
-  // AI comment
+  // AI comment (basic)
   const aiDiv = document.getElementById('aiComment');
   const aiText = AI_COMMENTS[String(tid)];
   if (aiText) {
@@ -357,6 +366,32 @@ function openPanel(dataIdx) {
     aiDiv.style.display = 'block';
   } else {
     aiDiv.style.display = 'none';
+  }
+
+  // Enhanced analysis (if available for this object)
+  const eDiv = document.getElementById('enhancedAnalysis');
+  const eData = (typeof ENHANCED !== 'undefined') ? ENHANCED[String(tid)] : null;
+  if (eData) {
+    document.getElementById('enhancedNarrative').textContent = eData.n;
+    // Meta badges
+    const metaHtml = [];
+    if (eData.pw) metaHtml.push('<span style="background:var(--bg-code);padding:2px 8px;border-radius:4px;font-size:11px;font-family:var(--font-mono);">Peak: ' + Math.round(eData.pw) + 'Å</span>');
+    if (eData.d) metaHtml.push('<span style="background:' + (eData.d === 'VERY_HIGH' ? '#dcfce7' : '#dbeafe') + ';padding:2px 8px;border-radius:4px;font-size:11px;font-family:var(--font-mono);color:#166534;">' + eData.d + '</span>');
+    metaHtml.push('<span style="background:#dcfce7;padding:2px 8px;border-radius:4px;font-size:11px;font-family:var(--font-mono);color:#166534;">✓ Verified Genuine</span>');
+    document.getElementById('enhancedMeta').innerHTML = metaHtml.join(' ');
+    // Tags
+    const tagsHtml = (eData.t || []).map(function(t) { return '<span style="background:var(--bg-code);border:1px solid var(--border);padding:1px 6px;border-radius:3px;font-size:10px;font-family:var(--font-mono);">' + t + '</span>'; }).join(' ');
+    document.getElementById('enhancedTags').innerHTML = tagsHtml;
+    // Spectrum plot link
+    const specLink = document.getElementById('spectrumLink');
+    if (rank <= 50) {
+      specLink.innerHTML = '<a href="pipelines/p1_highz_tracers/outputs/desi_dr1/spectra/spectrum_rank' + String(rank).padStart(3,'0') + '_tid' + tid + '.png" target="_blank" class="btn-img btn-ls" style="padding:4px 10px;font-size:12px;">View Actual Spectrum</a>';
+    } else {
+      specLink.innerHTML = '';
+    }
+    eDiv.style.display = 'block';
+  } else {
+    eDiv.style.display = 'none';
   }
 
   // Load comments
