@@ -205,7 +205,7 @@ def train_autoencoder(
 
     optimizer = optim.Adam(model.parameters(), lr=lr)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode="min", factor=0.5, patience=7, verbose=True
+        optimizer, mode="min", factor=0.5, patience=7
     )
     criterion = nn.MSELoss()
 
