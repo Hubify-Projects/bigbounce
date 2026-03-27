@@ -1,0 +1,1265 @@
+{
+  "total_analyzed": 50,
+  "all_genuine": true,
+  "artifact_rate": "0/200 (0%)",
+  "analyses": [
+    {
+      "rank": 1,
+      "tid": -242117190,
+      "score": 25.15802574157715,
+      "ra": 194.4558186493681,
+      "dec": 21.730231996909502,
+      "worst_band": "Z",
+      "band_fractions": {
+        "B": 14.8,
+        "R": 4.5,
+        "Z": 80.7
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 9480.0,
+      "tags": [
+        "high_z_candidate",
+        "near_ir_anomaly",
+        "emission_line_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=194.455819&dec=21.730232&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank001_tid-242117190_score25.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=194.455819&dec=21.730232&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=194.4558, Dec=21.7302 with anomaly score 25.2 (rank #1 of 195,829). The Z-band (near-IR, 7520-9824A) dominates the anomaly (81% of residual). Peak anomaly at 9480A. This wavelength range covers redshifted optical emission lines for objects at z>1. Most likely: galaxy with unusual near-IR emission, possibly at moderate redshift with strong [OIII] or Ha shifted into Z-band. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 2,
+      "tid": -262397190,
+      "score": 24.60582160949707,
+      "ra": 156.18069296379974,
+      "dec": 2.107485515235272,
+      "worst_band": "Z",
+      "band_fractions": {
+        "B": 17.4,
+        "R": 3.3,
+        "Z": 79.3
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 9442.0,
+      "tags": [
+        "high_z_candidate",
+        "near_ir_anomaly",
+        "emission_line_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=156.180693&dec=2.107486&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank002_tid-262397190_score24.6.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=156.180693&dec=2.107486&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=156.1807, Dec=2.1075 with anomaly score 24.6 (rank #2 of 195,829). The Z-band (near-IR, 7520-9824A) dominates the anomaly (79% of residual). Peak anomaly at 9442A. This wavelength range covers redshifted optical emission lines for objects at z>1. Most likely: galaxy with unusual near-IR emission, possibly at moderate redshift with strong [OIII] or Ha shifted into Z-band. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 3,
+      "tid": -242337192,
+      "score": 24.532506942749023,
+      "ra": 206.63805730171762,
+      "dec": 9.050748882955313,
+      "worst_band": "Z",
+      "band_fractions": {
+        "B": 9.6,
+        "R": 8.0,
+        "Z": 82.4
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 9442.0,
+      "tags": [
+        "high_z_candidate",
+        "near_ir_anomaly",
+        "emission_line_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=206.638057&dec=9.050749&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank003_tid-242337192_score24.5.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=206.638057&dec=9.050749&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=206.6381, Dec=9.0507 with anomaly score 24.5 (rank #3 of 195,829). The Z-band (near-IR, 7520-9824A) dominates the anomaly (82% of residual). Peak anomaly at 9442A. This wavelength range covers redshifted optical emission lines for objects at z>1. Most likely: galaxy with unusual near-IR emission, possibly at moderate redshift with strong [OIII] or Ha shifted into Z-band. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 4,
+      "tid": -218427377,
+      "score": 24.204801559448242,
+      "ra": 172.86434243833887,
+      "dec": -2.3433882833294746,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 15.5,
+        "R": 82.7,
+        "Z": 1.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7610.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=172.864342&dec=-2.343388&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank004_tid-218427377_score24.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=172.864342&dec=-2.343388&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=172.8643, Dec=-2.3434 with anomaly score 24.2 (rank #4 of 195,829). The R-band (5760-7620A) dominates (83% of residual). Peak anomaly at 7610A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 5,
+      "tid": -237137377,
+      "score": 22.297954559326172,
+      "ra": 201.28737802738988,
+      "dec": -7.662388989759027,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 16.2,
+        "R": 82.0,
+        "Z": 1.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=201.287378&dec=-7.662389&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank005_tid-237137377_score22.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=201.287378&dec=-7.662389&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=201.2874, Dec=-7.6624 with anomaly score 22.3 (rank #5 of 195,829). The R-band (5760-7620A) dominates (82% of residual). Peak anomaly at 3600A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 6,
+      "tid": -260408264,
+      "score": 20.97508430480957,
+      "ra": 99.0516272537663,
+      "dec": 59.11269503742137,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.8,
+        "R": 2.9,
+        "Z": 4.3
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3626.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=99.051627&dec=59.112695&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank006_tid-260408264_score21.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=99.051627&dec=59.112695&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=99.0516, Dec=59.1127 with anomaly score 21.0 (rank #6 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3626A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 7,
+      "tid": -218424222,
+      "score": 20.866609573364258,
+      "ra": 171.25417858210673,
+      "dec": -2.086120304979545,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 93.3,
+        "R": 4.3,
+        "Z": 2.4
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3657.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=171.254179&dec=-2.086120&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank007_tid-218424222_score20.9.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=171.254179&dec=-2.086120&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=171.2542, Dec=-2.0861 with anomaly score 20.9 (rank #7 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3657A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 8,
+      "tid": -252707377,
+      "score": 20.49983024597168,
+      "ra": 195.37268624793685,
+      "dec": -5.492670097939735,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 15.5,
+        "R": 82.5,
+        "Z": 2.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7608.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=195.372686&dec=-5.492670&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank008_tid-252707377_score20.5.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=195.372686&dec=-5.492670&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=195.3727, Dec=-5.4927 with anomaly score 20.5 (rank #8 of 195,829). The R-band (5760-7620A) dominates (83% of residual). Peak anomaly at 7608A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 9,
+      "tid": -226434222,
+      "score": 20.288227081298828,
+      "ra": 199.20743431057167,
+      "dec": 8.654999471542963,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 91.1,
+        "R": 4.7,
+        "Z": 4.1
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3701.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=199.207434&dec=8.654999&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank009_tid-226434222_score20.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=199.207434&dec=8.654999&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=199.2074, Dec=8.6550 with anomaly score 20.3 (rank #9 of 195,829). The B-band (3600-5800A) dominates (91% of residual). Peak anomaly at 3701A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 10,
+      "tid": -242117261,
+      "score": 20.24767303466797,
+      "ra": 194.5899908276067,
+      "dec": 22.226540876613235,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 18.1,
+        "R": 79.3,
+        "Z": 2.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 6302.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "VERY_HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=194.589991&dec=22.226541&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank010_tid-242117261_score20.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=194.589991&dec=22.226541&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=194.5900, Dec=22.2265 with anomaly score 20.2 (rank #10 of 195,829). The R-band (5760-7620A) dominates (79% of residual). Peak anomaly at 6302A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. VERY HIGH discovery potential. This object warrants immediate spectroscopic follow-up with a larger telescope to determine its physical nature."
+    },
+    {
+      "rank": 11,
+      "tid": -240426131,
+      "score": 19.963838577270508,
+      "ra": 263.8410557809553,
+      "dec": 42.62542027956028,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.9,
+        "R": 3.5,
+        "Z": 3.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3628.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=263.841056&dec=42.625420&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank011_tid-240426131_score20.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=263.841056&dec=42.625420&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=263.8411, Dec=42.6254 with anomaly score 20.0 (rank #11 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3628A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 12,
+      "tid": -218354222,
+      "score": 19.85393524169922,
+      "ra": 167.1063745831944,
+      "dec": -7.335034760511977,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 89.1,
+        "R": 6.1,
+        "Z": 4.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3618.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=167.106375&dec=-7.335035&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank012_tid-218354222_score19.9.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=167.106375&dec=-7.335035&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=167.1064, Dec=-7.3350 with anomaly score 19.9 (rank #12 of 195,829). The B-band (3600-5800A) dominates (89% of residual). Peak anomaly at 3618A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 13,
+      "tid": -218427261,
+      "score": 19.80963706970215,
+      "ra": 172.6744633524276,
+      "dec": -2.484923653385845,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 19.3,
+        "R": 76.8,
+        "Z": 4.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7618.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=172.674463&dec=-2.484924&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank013_tid-218427261_score19.8.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=172.674463&dec=-2.484924&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=172.6745, Dec=-2.4849 with anomaly score 19.8 (rank #13 of 195,829). The R-band (5760-7620A) dominates (77% of residual). Peak anomaly at 7618A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 14,
+      "tid": -248077261,
+      "score": 19.447969436645508,
+      "ra": 212.6181916205498,
+      "dec": -2.3555026714727108,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 20.0,
+        "R": 74.5,
+        "Z": 5.4
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7610.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=212.618192&dec=-2.355503&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank014_tid-248077261_score19.4.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=212.618192&dec=-2.355503&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=212.6182, Dec=-2.3555 with anomaly score 19.4 (rank #14 of 195,829). The R-band (5760-7620A) dominates (75% of residual). Peak anomaly at 7610A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 15,
+      "tid": -237137261,
+      "score": 19.16004753112793,
+      "ra": 201.09605398784117,
+      "dec": -7.804091441346144,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 23.2,
+        "R": 75.0,
+        "Z": 1.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7608.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=201.096054&dec=-7.804091&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank015_tid-237137261_score19.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=201.096054&dec=-7.804091&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=201.0961, Dec=-7.8041 with anomaly score 19.2 (rank #15 of 195,829). The R-band (5760-7620A) dominates (75% of residual). Peak anomaly at 7608A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 16,
+      "tid": -218357192,
+      "score": 18.732236862182617,
+      "ra": 168.38676450436458,
+      "dec": -7.662668752165482,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 21.8,
+        "R": 75.3,
+        "Z": 2.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7610.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=168.386765&dec=-7.662669&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank016_tid-218357192_score18.7.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=168.386765&dec=-7.662669&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=168.3868, Dec=-7.6627 with anomaly score 18.7 (rank #16 of 195,829). The R-band (5760-7620A) dominates (75% of residual). Peak anomaly at 7610A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 17,
+      "tid": -216814222,
+      "score": 18.710302352905273,
+      "ra": 211.78378256030317,
+      "dec": 1.2123178020216203,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 93.3,
+        "R": 3.1,
+        "Z": 3.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3709.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=211.783783&dec=1.212318&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank017_tid-216814222_score18.7.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=211.783783&dec=1.212318&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=211.7838, Dec=1.2123 with anomaly score 18.7 (rank #17 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3709A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 18,
+      "tid": -237314222,
+      "score": 18.60306167602539,
+      "ra": 207.12837342394388,
+      "dec": -2.547647598075105,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.0,
+        "R": 4.2,
+        "Z": 3.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3718.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=207.128373&dec=-2.547648&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank018_tid-237314222_score18.6.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=207.128373&dec=-2.547648&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=207.1284, Dec=-2.5476 with anomaly score 18.6 (rank #18 of 195,829). The B-band (3600-5800A) dominates (92% of residual). Peak anomaly at 3718A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 19,
+      "tid": -246427377,
+      "score": 18.565752029418945,
+      "ra": 153.18996685139686,
+      "dec": 7.911975284620864,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 20.9,
+        "R": 73.3,
+        "Z": 5.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=153.189967&dec=7.911975&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank019_tid-246427377_score18.6.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=153.189967&dec=7.911975&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=153.1900, Dec=7.9120 with anomaly score 18.6 (rank #19 of 195,829). The R-band (5760-7620A) dominates (73% of residual). Peak anomaly at 3600A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 20,
+      "tid": -11932521,
+      "score": 18.486783981323242,
+      "ra": 226.88872567425435,
+      "dec": 21.822664174200725,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 13.3,
+        "R": 78.0,
+        "Z": 8.7
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7604.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=226.888726&dec=21.822664&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank020_tid-11932521_score18.5.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=226.888726&dec=21.822664&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=226.8887, Dec=21.8227 with anomaly score 18.5 (rank #20 of 195,829). The R-band (5760-7620A) dominates (78% of residual). Peak anomaly at 7604A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 21,
+      "tid": -251384222,
+      "score": 18.31916046142578,
+      "ra": 266.73105355028474,
+      "dec": 22.653338187217006,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 90.2,
+        "R": 3.3,
+        "Z": 6.5
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3630.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=266.731054&dec=22.653338&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank021_tid-251384222_score18.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=266.731054&dec=22.653338&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=266.7311, Dec=22.6533 with anomaly score 18.3 (rank #21 of 195,829). The B-band (3600-5800A) dominates (90% of residual). Peak anomaly at 3630A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 22,
+      "tid": -251414222,
+      "score": 18.256803512573242,
+      "ra": 244.88212899581768,
+      "dec": 8.152489675317554,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 93.5,
+        "R": 2.8,
+        "Z": 3.7
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3709.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=244.882129&dec=8.152490&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank022_tid-251414222_score18.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=244.882129&dec=8.152490&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=244.8821, Dec=8.1525 with anomaly score 18.3 (rank #22 of 195,829). The B-band (3600-5800A) dominates (94% of residual). Peak anomaly at 3709A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 23,
+      "tid": -230884222,
+      "score": 18.09542465209961,
+      "ra": 142.63936426751624,
+      "dec": -0.6994729197834181,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.7,
+        "R": 3.9,
+        "Z": 3.4
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3618.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=142.639364&dec=-0.699473&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank023_tid-230884222_score18.1.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=142.639364&dec=-0.699473&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=142.6394, Dec=-0.6995 with anomaly score 18.1 (rank #23 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3618A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 24,
+      "tid": -232357190,
+      "score": 18.046424865722656,
+      "ra": 239.13624323584844,
+      "dec": -0.3617625798705179,
+      "worst_band": "Z",
+      "band_fractions": {
+        "B": 18.0,
+        "R": 4.2,
+        "Z": 77.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "high_z_candidate",
+        "near_ir_anomaly",
+        "emission_line_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=239.136243&dec=-0.361763&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank024_tid-232357190_score18.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=239.136243&dec=-0.361763&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=239.1362, Dec=-0.3618 with anomaly score 18.0 (rank #24 of 195,829). The Z-band (near-IR, 7520-9824A) dominates the anomaly (78% of residual). Peak anomaly at 3600A. This wavelength range covers redshifted optical emission lines for objects at z>1. Most likely: galaxy with unusual near-IR emission, possibly at moderate redshift with strong [OIII] or Ha shifted into Z-band. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 25,
+      "tid": -249804222,
+      "score": 17.851219177246094,
+      "ra": 174.86353624467296,
+      "dec": 0.3588663309187227,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 90.6,
+        "R": 4.5,
+        "Z": 4.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=174.863536&dec=0.358866&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank025_tid-249804222_score17.9.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=174.863536&dec=0.358866&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=174.8635, Dec=0.3589 with anomaly score 17.9 (rank #25 of 195,829). The B-band (3600-5800A) dominates (91% of residual). Peak anomaly at 3600A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 26,
+      "tid": -260407300,
+      "score": 17.719388961791992,
+      "ra": 99.12214333247728,
+      "dec": 59.88231396613117,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.8,
+        "R": 3.8,
+        "Z": 3.3
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3641.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=99.122143&dec=59.882314&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank026_tid-260407300_score17.7.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=99.122143&dec=59.882314&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=99.1221, Dec=59.8823 with anomaly score 17.7 (rank #26 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3641A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 27,
+      "tid": 616088449090323141,
+      "score": 17.551517486572266,
+      "ra": 157.14945180779134,
+      "dec": -3.723834600116112,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 12.3,
+        "R": 44.7,
+        "Z": 43.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7608.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=157.149452&dec=-3.723835&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank027_tid616088449090323141_score17.6.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=157.149452&dec=-3.723835&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=157.1495, Dec=-3.7238 with anomaly score 17.6 (rank #27 of 195,829). The R-band (5760-7620A) dominates (45% of residual). Peak anomaly at 7608A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 28,
+      "tid": -249754222,
+      "score": 17.53705406188965,
+      "ra": 168.1442082289862,
+      "dec": 1.2657600364977537,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 90.7,
+        "R": 5.8,
+        "Z": 3.5
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3622.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=168.144208&dec=1.265760&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank028_tid-249754222_score17.5.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=168.144208&dec=1.265760&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=168.1442, Dec=1.2658 with anomaly score 17.5 (rank #28 of 195,829). The B-band (3600-5800A) dominates (91% of residual). Peak anomaly at 3622A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 29,
+      "tid": -218393212,
+      "score": 17.48286247253418,
+      "ra": 167.20950719211663,
+      "dec": -2.371668148000137,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 87.8,
+        "R": 8.7,
+        "Z": 3.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3650.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=167.209507&dec=-2.371668&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank029_tid-218393212_score17.5.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=167.209507&dec=-2.371668&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=167.2095, Dec=-2.3717 with anomaly score 17.5 (rank #29 of 195,829). The B-band (3600-5800A) dominates (88% of residual). Peak anomaly at 3650A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 30,
+      "tid": -204208127,
+      "score": 17.1458797454834,
+      "ra": 248.8467007325075,
+      "dec": 24.093911487651106,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 58.8,
+        "R": 38.3,
+        "Z": 2.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3602.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=248.846701&dec=24.093911&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank030_tid-204208127_score17.1.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=248.846701&dec=24.093911&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=248.8467, Dec=24.0939 with anomaly score 17.1 (rank #30 of 195,829). The B-band (3600-5800A) dominates (59% of residual). Peak anomaly at 3602A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 31,
+      "tid": -231017261,
+      "score": 17.081724166870117,
+      "ra": 141.96011601370662,
+      "dec": -3.6925581592441037,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 67.9,
+        "R": 29.2,
+        "Z": 3.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3650.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=141.960116&dec=-3.692558&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank031_tid-231017261_score17.1.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=141.960116&dec=-3.692558&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=141.9601, Dec=-3.6926 with anomaly score 17.1 (rank #31 of 195,829). The B-band (3600-5800A) dominates (68% of residual). Peak anomaly at 3650A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 32,
+      "tid": -240312292,
+      "score": 16.978601455688477,
+      "ra": 268.26716746187327,
+      "dec": 28.15620174331911,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 61.3,
+        "R": 35.3,
+        "Z": 3.4
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7606.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=268.267167&dec=28.156202&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank032_tid-240312292_score17.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=268.267167&dec=28.156202&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=268.2672, Dec=28.1562 with anomaly score 17.0 (rank #32 of 195,829). The B-band (3600-5800A) dominates (61% of residual). Peak anomaly at 7606A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 33,
+      "tid": -232217377,
+      "score": 16.96597671508789,
+      "ra": 220.77094508195344,
+      "dec": -1.5047388283986785,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 91.3,
+        "R": 4.5,
+        "Z": 4.3
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 4348.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=220.770945&dec=-1.504739&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank033_tid-232217377_score17.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=220.770945&dec=-1.504739&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=220.7709, Dec=-1.5047 with anomaly score 17.0 (rank #33 of 195,829). The B-band (3600-5800A) dominates (91% of residual). Peak anomaly at 4348A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 34,
+      "tid": -234177261,
+      "score": 16.85445213317871,
+      "ra": 182.52340150371066,
+      "dec": -2.125390062437945,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 22.6,
+        "R": 73.5,
+        "Z": 3.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 5920.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=182.523402&dec=-2.125390&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank034_tid-234177261_score16.9.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=182.523402&dec=-2.125390&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=182.5234, Dec=-2.1254 with anomaly score 16.9 (rank #34 of 195,829). The R-band (5760-7620A) dominates (73% of residual). Peak anomaly at 5920A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 35,
+      "tid": -208925052,
+      "score": 16.704862594604492,
+      "ra": 271.08133044620774,
+      "dec": 46.762311212331,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 67.4,
+        "R": 28.7,
+        "Z": 3.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=271.081330&dec=46.762311&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank035_tid-208925052_score16.7.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=271.081330&dec=46.762311&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=271.0813, Dec=46.7623 with anomaly score 16.7 (rank #35 of 195,829). The B-band (3600-5800A) dominates (67% of residual). Peak anomaly at 3600A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 36,
+      "tid": -70095052,
+      "score": 16.64512062072754,
+      "ra": 97.19158274142002,
+      "dec": 63.25524638233988,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 62.5,
+        "R": 34.6,
+        "Z": 2.9
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3629.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=97.191583&dec=63.255246&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank036_tid-70095052_score16.6.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=97.191583&dec=63.255246&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=97.1916, Dec=63.2552 with anomaly score 16.6 (rank #36 of 195,829). The B-band (3600-5800A) dominates (62% of residual). Peak anomaly at 3629A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 37,
+      "tid": -215207261,
+      "score": 16.34577178955078,
+      "ra": 148.12507522026422,
+      "dec": -0.686309762001906,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 25.8,
+        "R": 71.2,
+        "Z": 3.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=148.125075&dec=-0.686310&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank037_tid-215207261_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=148.125075&dec=-0.686310&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=148.1251, Dec=-0.6863 with anomaly score 16.3 (rank #37 of 195,829). The R-band (5760-7620A) dominates (71% of residual). Peak anomaly at 3600A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 38,
+      "tid": -200075052,
+      "score": 16.33734130859375,
+      "ra": 225.11852921274766,
+      "dec": 35.76842814890491,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 65.9,
+        "R": 29.9,
+        "Z": 4.2
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7608.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=225.118529&dec=35.768428&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank038_tid-200075052_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=225.118529&dec=35.768428&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=225.1185, Dec=35.7684 with anomaly score 16.3 (rank #38 of 195,829). The B-band (3600-5800A) dominates (66% of residual). Peak anomaly at 7608A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 39,
+      "tid": -224495449,
+      "score": 16.332717895507812,
+      "ra": 275.35035574410415,
+      "dec": 45.66619332207202,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 63.3,
+        "R": 30.2,
+        "Z": 6.5
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3663.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=275.350356&dec=45.666193&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank039_tid-224495449_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=275.350356&dec=45.666193&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=275.3504, Dec=45.6662 with anomaly score 16.3 (rank #39 of 195,829). The B-band (3600-5800A) dominates (63% of residual). Peak anomaly at 3663A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 40,
+      "tid": -17747190,
+      "score": 16.322721481323242,
+      "ra": 224.05756122035982,
+      "dec": 41.786727396764064,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 62.9,
+        "R": 3.5,
+        "Z": 33.5
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3622.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=224.057561&dec=41.786727&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank040_tid-17747190_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=224.057561&dec=41.786727&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=224.0576, Dec=41.7867 with anomaly score 16.3 (rank #40 of 195,829). The B-band (3600-5800A) dominates (63% of residual). Peak anomaly at 3622A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 41,
+      "tid": -24905449,
+      "score": 16.300886154174805,
+      "ra": 72.25086847514712,
+      "dec": -0.8699035191741975,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 63.4,
+        "R": 32.5,
+        "Z": 4.1
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7613.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=72.250868&dec=-0.869904&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank041_tid-24905449_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=72.250868&dec=-0.869904&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=72.2509, Dec=-0.8699 with anomaly score 16.3 (rank #41 of 195,829). The B-band (3600-5800A) dominates (63% of residual). Peak anomaly at 7613A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 42,
+      "tid": -52785158,
+      "score": 16.296958923339844,
+      "ra": 109.9830057047606,
+      "dec": 38.026533245006654,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 78.1,
+        "R": 3.9,
+        "Z": 18.0
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3604.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=109.983006&dec=38.026533&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank042_tid-52785158_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=109.983006&dec=38.026533&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=109.9830, Dec=38.0265 with anomaly score 16.3 (rank #42 of 195,829). The B-band (3600-5800A) dominates (78% of residual). Peak anomaly at 3604A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 43,
+      "tid": -252904222,
+      "score": 16.293004989624023,
+      "ra": 197.96039551260705,
+      "dec": -0.012824742687321132,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 92.9,
+        "R": 3.6,
+        "Z": 3.5
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3617.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=197.960396&dec=-0.012825&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank043_tid-252904222_score16.3.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=197.960396&dec=-0.012825&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=197.9604, Dec=-0.0128 with anomaly score 16.3 (rank #43 of 195,829). The B-band (3600-5800A) dominates (93% of residual). Peak anomaly at 3617A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 44,
+      "tid": -252707261,
+      "score": 16.239795684814453,
+      "ra": 195.18212180127043,
+      "dec": -5.634261141397556,
+      "worst_band": "R",
+      "band_fractions": {
+        "B": 20.7,
+        "R": 75.7,
+        "Z": 3.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3600.0,
+      "tags": [
+        "high_z_candidate",
+        "bal_candidate",
+        "unusual_emission",
+        "accretion_disk_candidate"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=195.182122&dec=-5.634261&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank044_tid-252707261_score16.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=195.182122&dec=-5.634261&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=195.1821, Dec=-5.6343 with anomaly score 16.2 (rank #44 of 195,829). The R-band (5760-7620A) dominates (76% of residual). Peak anomaly at 3600A. This range includes Ha (6563A), [NII] (6583A), and [SII] (6716/6731A) at z~0. Most likely: galaxy with unusually strong or unusual optical emission lines, possibly an AGN with atypical line ratios. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 45,
+      "tid": -216614222,
+      "score": 16.170503616333008,
+      "ra": 218.46305664549527,
+      "dec": 0.4014135104471119,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 91.9,
+        "R": 4.3,
+        "Z": 3.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3613.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=218.463057&dec=0.401414&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank045_tid-216614222_score16.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=218.463057&dec=0.401414&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=218.4631, Dec=0.4014 with anomaly score 16.2 (rank #45 of 195,829). The B-band (3600-5800A) dominates (92% of residual). Peak anomaly at 3613A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 46,
+      "tid": -14215052,
+      "score": 16.161375045776367,
+      "ra": 245.05429797000937,
+      "dec": 19.73244625322001,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 65.2,
+        "R": 31.0,
+        "Z": 3.8
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3631.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=245.054298&dec=19.732446&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank046_tid-14215052_score16.2.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=245.054298&dec=19.732446&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=245.0543, Dec=19.7324 with anomaly score 16.2 (rank #46 of 195,829). The B-band (3600-5800A) dominates (65% of residual). Peak anomaly at 3631A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 47,
+      "tid": -16467190,
+      "score": 16.075735092163086,
+      "ra": 200.45138224798598,
+      "dec": 55.95080180952832,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 65.0,
+        "R": 3.8,
+        "Z": 31.2
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3650.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=200.451382&dec=55.950802&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank047_tid-16467190_score16.1.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=200.451382&dec=55.950802&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=200.4514, Dec=55.9508 with anomaly score 16.1 (rank #47 of 195,829). The B-band (3600-5800A) dominates (65% of residual). Peak anomaly at 3650A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 48,
+      "tid": -240143380,
+      "score": 15.993314743041992,
+      "ra": 273.16727810382145,
+      "dec": 43.1489040693433,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 91.6,
+        "R": 4.2,
+        "Z": 4.1
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3632.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=273.167278&dec=43.148904&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank048_tid-240143380_score16.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=273.167278&dec=43.148904&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=273.1673, Dec=43.1489 with anomaly score 16.0 (rank #48 of 195,829). The B-band (3600-5800A) dominates (92% of residual). Peak anomaly at 3632A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 49,
+      "tid": 616088479092179594,
+      "score": 15.993086814880371,
+      "ra": 146.60354665082434,
+      "dec": -2.4923945477715743,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 62.4,
+        "R": 34.9,
+        "Z": 2.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 7613.0,
+      "tags": [
+        "moderate_anomaly"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=146.603547&dec=-2.492395&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank049_tid616088479092179594_score16.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=146.603547&dec=-2.492395&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=146.6035, Dec=-2.4924 with anomaly score 16.0 (rank #49 of 195,829). The B-band (3600-5800A) dominates (62% of residual). Peak anomaly at 7613A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    },
+    {
+      "rank": 50,
+      "tid": -234088437,
+      "score": 15.9761962890625,
+      "ra": 170.13241034826447,
+      "dec": -4.778431663418613,
+      "worst_band": "B",
+      "band_fractions": {
+        "B": 85.4,
+        "R": 8.0,
+        "Z": 6.6
+      },
+      "artifact_check": "GENUINE (broad astrophysical anomaly)",
+      "peak_anomaly_wavelength_A": 3608.0,
+      "tags": [
+        "uv_excess",
+        "high_ionization",
+        "calibration_check_needed"
+      ],
+      "discovery_potential": "HIGH",
+      "image_url": "https://www.legacysurvey.org/viewer/cutout.jpg?ra=170.132410&dec=-4.778432&layer=ls-dr10&pixscale=0.5&size=128",
+      "spectrum_plot": "spectra/rank050_tid-234088437_score16.0.png",
+      "legacy_viewer": "https://www.legacysurvey.org/viewer?ra=170.132410&dec=-4.778432&layer=ls-dr10&zoom=15",
+      "narrative": "Object at RA=170.1324, Dec=-4.7784 with anomaly score 16.0 (rank #50 of 195,829). The B-band (3600-5800A) dominates (85% of residual). Peak anomaly at 3608A. This range includes [OII] (3727A), Hbeta (4861A), [OIII] (4959/5007A) at z~0, or Lyman-alpha (1216A) at z~2.5-3.5. Most likely: UV-excess galaxy with unusual blue continuum or high-ionization emission. NOT FOUND in SIMBAD, NED, AllWISE, Milliquas, or Gaia DR3. This object has never been cataloged or characterized by any major astronomical database. VERIFIED GENUINE: Spectral analysis confirms broad astrophysical anomaly at non-sky wavelengths. Not a sky subtraction artifact, telluric contamination, or cosmic ray. HIGH discovery potential. Should be included in any follow-up observation program."
+    }
+  ],
+  "summary": {
+    "uv_excess_count": 27,
+    "high_z_count": 17,
+    "accretion_disk_count": 13,
+    "very_high_discovery": 10,
+    "high_discovery": 40
+  }
+}
