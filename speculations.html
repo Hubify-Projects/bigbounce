@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speculations — BigBounce Research Program</title>
+<meta name="description" content="A running braindump of speculative research paths, future datasets, and ambitious ideas across cosmology, astrophysics, particle physics, and beyond.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Speculations — BigBounce">
+<meta property="og:description" content="Future research directions spanning dark energy, black holes, exoplanets, particle physics, and the search for extraterrestrial intelligence.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="nav.js" defer></script>
+<style>
+  .spec-card { padding:20px; margin-bottom:16px; border-radius:8px; background:var(--bg-subtle,#f8f9fa); border-left:4px solid #7c3aed; }
+  .spec-card h4 { margin: 0 0 8px 0; }
+  .spec-card p { margin: 0 0 8px 0; font-size:15px; line-height:1.7; }
+  .spec-card .tag { font-size:12px; font-family:var(--font-sans); color:var(--text-secondary,#666); }
+  .domain-header { margin-top:40px; padding:12px 20px; border-radius:8px; font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; }
+  .d-cosmo { background:#1e3a5f; color:#93c5fd; }
+  .d-astro { background:#1a2e1a; color:#86efac; }
+  .d-particle { background:#3b1a45; color:#d8b4fe; }
+  .d-frontier { background:#451a1a; color:#fca5a5; }
+  .d-seti { background:#1a3545; color:#67e8f9; }
+  [data-theme="light"] .d-cosmo { background:#dbeafe; color:#1e3a5f; }
+  [data-theme="light"] .d-astro { background:#dcfce7; color:#166534; }
+  [data-theme="light"] .d-particle { background:#f3e8ff; color:#581c87; }
+  [data-theme="light"] .d-frontier { background:#fee2e2; color:#991b1b; }
+  [data-theme="light"] .d-seti { background:#cffafe; color:#155e75; }
+</style>
+</head>
+<body>
+
+<main class="container">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Living Document &middot; Updated March 2026</p>
+  <h1>Speculations</h1>
+  <p class="subtitle">A Running Log of Future Research Paths, Wild Ideas, and Things We Want to Build</p>
+  <div class="meta">
+    <span class="badge badge-accent">BRAINDUMP</span>
+    <span class="badge badge-neutral">Houston Golden</span>
+  </div>
+</div>
+
+<hr>
+
+<section class="section">
+<p>This page is a living braindump. Some of these ideas are testable with current infrastructure. Others are generational challenges. A few are genuinely speculative. The point is to log every direction worth exploring while the window is open &mdash; and to be transparent about which ideas are grounded and which are "wouldn't it be wild if..."</p>
+<p>Organized by domain. Items marked <strong>ACTIONABLE</strong> could be started this month with existing tools and data.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-cosmo">Cosmology &amp; Dark Energy</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>What Is Dark Energy?</h4>
+  <p>73% of the universe is dark energy and we don't know what it is. Our 14 barriers show ECH can't derive it from first principles, but the quintom bounce CAN unify bounce + dark energy through phantom fields. DESI DR2 shows w-crossing at 2.8&ndash;4.2&sigma;. Our MCMC confirms at 98%. If w truly crosses -1, dark energy is dynamical, not a cosmological constant &mdash; and the quintom bounce provides a theoretical home for it.</p>
+  <span class="tag">ACTIONABLE &middot; w0-wa MCMC &middot; DESI DR2 &middot; Quintom</span>
+</div>
+
+<div class="spec-card">
+  <h4>What Is Dark Matter?</h4>
+  <p>27% of the universe is dark matter. In bounce cosmology, the asymmetric matter bounce can produce asteroid-mass primordial black holes (10<sup>17</sup>&ndash;10<sup>24</sup> g) as dark matter candidates. Our f<sub>NL</sub> = &minus;35/8 naturally regulates PBH abundance, preventing overproduction. If LISA detects the induced gravitational wave spectrum from PBH formation, it would be evidence for both dark matter AND a cosmological bounce.</p>
+  <span class="tag">Future &middot; LISA ~2035 &middot; PBH dark matter &middot; f<sub>NL</sub> regulation</span>
+</div>
+
+<div class="spec-card">
+  <h4>How Old Is the Universe &mdash; Really?</h4>
+  <p>Standard cosmology says 13.8 billion years. But if the Big Bang was a Big Bounce, there was a BEFORE. The parent universe could be arbitrarily old. The Hubble tension might hint our age estimate is wrong. Bounce cosmology allows a pre-bounce era whose duration is unconstrained &mdash; the universe could be far older than 13.8 Gyr, or eternal through cyclic bounces.</p>
+  <span class="tag">Theoretical &middot; Hubble tension &middot; Cyclic cosmology</span>
+</div>
+
+<div class="spec-card">
+  <h4>Fate of the Universe: Big Crunch, Big Freeze, or Eternal Cycles?</h4>
+  <p>Standard cosmology predicts a Big Freeze. But if dark energy is dynamical (quintom), it could reverse &mdash; leading to a future Big Crunch and another bounce. Our quintom-B result (w<sub>0</sub> + w<sub>a</sub> = &minus;1.4) is in the regime where phantom energy could eventually dominate and trigger recollapse.</p>
+  <span class="tag">Theoretical &middot; Quintom dynamics &middot; Cyclic cosmology</span>
+</div>
+
+<div class="spec-card">
+  <h4>f<sub>NL</sub> = &minus;35/8: The Decisive Test</h4>
+  <p>SPHEREx launches ~2028 and will measure primordial non-Gaussianity to &sigma;(f<sub>NL</sub>) &approx; 1. Our matter bounce prediction is f<sub>NL</sub> = &minus;4.375, parameter-free and mechanism-independent. Inflation predicts |f<sub>NL</sub>| &lt; 1. This is the cleanest possible discriminator between bounce and inflation. One measurement, one answer.</p>
+  <span class="tag">ACTIONABLE (forecast) &middot; SPHEREx ~2028 &middot; Parameter-free prediction</span>
+</div>
+
+<div class="spec-card">
+  <h4>Vacuum Energy: Why Is Empty Space Not Empty?</h4>
+  <p>The cosmological constant problem: quantum field theory predicts vacuum energy 10<sup>120</sup> times larger than observed. This is the worst prediction in physics. The bounce framework doesn't solve it directly, but the parity-odd quantum correction we study (Pontryagin term) is a <em>topological</em> vacuum contribution that could partially explain why the effective vacuum energy is small &mdash; cancellations between topological sectors.</p>
+  <span class="tag">Theoretical &middot; Cosmological constant problem &middot; Topology</span>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-cosmo">Black Holes &amp; Extreme Gravity</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>Baby Universes: Does Every Black Hole Spawn a New Cosmos?</h4>
+  <p>Pop&#322;awski's scenario proposes that every black hole interior undergoes a torsion-regulated bounce, creating a baby universe on the other side. If true, our universe was born inside a black hole in a parent universe, and every black hole we observe (~10<sup>18</sup> in the observable universe) contains its own cosmos.</p>
+  <span class="tag">Speculative &middot; Pop&#322;awski (2010) &middot; Black hole cosmology</span>
+</div>
+
+<div class="spec-card">
+  <h4>Black Hole Mergers: Gravitational Wave Echoes</h4>
+  <p>When two black holes merge, if their interiors contain baby universes, the merger process might produce gravitational wave echoes &mdash; signals bouncing off the internal structure rather than being absorbed by a classical singularity. LIGO/Virgo/KAGRA could detect these echoes in existing data. Cai &amp; Zhu (2026) propose specific templates. We tested against our Barrier 12 framework.</p>
+  <span class="tag">ACTIONABLE &middot; LIGO O4 data &middot; GW echo templates &middot; Cai &amp; Zhu 2026</span>
+</div>
+
+<div class="spec-card">
+  <h4>Can Black Holes Die?</h4>
+  <p>Hawking radiation predicts black holes slowly evaporate. But if every black hole contains a baby universe, does evaporation destroy that universe? The information paradox meets cosmology: does quantum information from the parent universe survive the bounce?</p>
+  <span class="tag">Theoretical &middot; Information paradox &middot; Hawking radiation</span>
+</div>
+
+<div class="spec-card">
+  <h4>Supermassive Black Hole Formation: The Too-Early Problem</h4>
+  <p>JWST has found supermassive black holes (10<sup>9</sup> M<sub>&#9737;</sub>) at z &gt; 10, when the universe was less than 500 million years old. Standard accretion models can't grow them fast enough. Primordial black holes from a bounce-era phase transition could seed these monsters. Our anomaly catalog might contain spectral signatures of their host galaxies.</p>
+  <span class="tag">ACTIONABLE &middot; JWST data &middot; PBH seeds &middot; Cross-match with anomaly catalog</span>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-astro">Astrophysics &amp; Discovery</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>195,829 Uncharacterized Objects: What ARE They?</h4>
+  <p>Our AI pipeline found 195,829 spectral anomalies absent from every major catalog. Galaxies are 18x more anomalous than QSOs. The top 200 are verified genuine. Three wavelength clusters suggest distinct physical populations. The enhanced 18M catalog will provide full classification. We may discover entirely new classes of astronomical objects.</p>
+  <span class="tag">ACTIONABLE &middot; Enhanced 18M running now &middot; Paper 3</span>
+</div>
+
+<div class="spec-card">
+  <h4>Exoplanet Atmospheres at Scale</h4>
+  <p>JWST and ground-based telescopes are measuring transmission spectra of exoplanet atmospheres. An autoencoder trained on "normal" atmospheres could flag planets with anomalous atmospheric composition &mdash; unusual chemical ratios, unexpected absorption features, or spectral signatures that don't match any known atmospheric model. Biosignatures (O<sub>2</sub> + CH<sub>4</sub> disequilibrium) would be exactly the kind of anomaly this approach finds.</p>
+  <span class="tag">Future &middot; JWST spectra &middot; Biosignature detection &middot; Atmospheric characterization</span>
+</div>
+
+<div class="spec-card">
+  <h4>Galaxy Morphology: What Shapes Don't Fit?</h4>
+  <p>Our chirality pipeline classified 8.47 million galaxies. But spiral handedness is just one morphological feature. An autoencoder on galaxy images could find unusual morphologies: double nuclei (mergers), tidal tails, ring galaxies, lensing arcs, or entirely novel structures. Legacy Survey images for all 195K anomalies are available now.</p>
+  <span class="tag">ACTIONABLE &middot; Legacy Survey cutouts &middot; Image autoencoder &middot; Super-resolution</span>
+</div>
+
+<div class="spec-card">
+  <h4>Time-Domain Astronomy: What Changed?</h4>
+  <p>NEOWISE observed 2 billion sources in infrared over 10.5 years. ZTF covers the northern sky every 2 nights in optical. Cross-matching our spectral anomalies with time-domain variability data finds objects that are BOTH spectrally unusual AND temporally unusual. These are the strongest discovery candidates for genuinely new phenomena.</p>
+  <span class="tag">ACTIONABLE &middot; NEOWISE/unTimely &middot; ZTF alert archive &middot; $200-400</span>
+</div>
+
+<div class="spec-card">
+  <h4>Fast Radio Bursts: What Are They?</h4>
+  <p>FRBs are millisecond radio pulses from cosmological distances. Their origin is unknown. CHIME detects hundreds per year. An anomaly detection approach on FRB properties (dispersion measure, scattering, spectral shape, repetition pattern) could identify subpopulations that current classification schemes miss.</p>
+  <span class="tag">Future &middot; CHIME/FRB catalog &middot; Time-series autoencoder</span>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-seti">Search for Extraterrestrial Intelligence</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>Artificial Light from Exoplanets</h4>
+  <p>Loeb &amp; Turner (2012) proposed that artificial illumination on the night side of tidally locked exoplanets could be detectable with next-generation telescopes. The signal would be a slight flux excess compared to what albedo alone predicts, with a specific spectral signature (LED/sodium lamp emission lines vs thermal blackbody). An autoencoder trained on "normal" exoplanet phase curves would flag planets with anomalous night-side emission as candidates. JWST might already have the sensitivity for nearby systems.</p>
+  <span class="tag">Speculative but testable &middot; JWST &middot; Loeb &amp; Turner (2012) &middot; Phase curves</span>
+</div>
+
+<div class="spec-card">
+  <h4>Anomalous Stellar Spectra: Dyson Spheres?</h4>
+  <p>A Dyson sphere (or swarm) would absorb starlight and re-emit in infrared, creating excess IR emission with no natural explanation. Searches have been done on small samples. Our autoencoder approach on Gaia + AllWISE photometry for billions of stars could flag candidates at scale. Suazo et al. (2022) found 7 candidates from 5 million stars. We could search 100x more.</p>
+  <span class="tag">ACTIONABLE &middot; Gaia DR3 + AllWISE &middot; IR excess anomaly detection</span>
+</div>
+
+<div class="spec-card">
+  <h4>SETI at Scale: Anomaly Detection on Radio Surveys</h4>
+  <p>The Breakthrough Listen project has petabytes of radio telescope data. Traditional SETI searches for narrow-band signals. An unsupervised anomaly detector could find signals that don't match ANY known natural or artificial pattern &mdash; the signals we don't know to look for. This is philosophically identical to what we're doing with DESI spectra: find what doesn't fit.</p>
+  <span class="tag">Future &middot; Breakthrough Listen &middot; Radio anomaly detection</span>
+</div>
+
+<div class="spec-card">
+  <h4>Interstellar Objects</h4>
+  <p>'Oumuamua and Borisov were the first confirmed interstellar visitors. Rubin/LSST will detect more. Anomaly detection on their trajectories, spectra, and light curves could identify objects with properties inconsistent with natural comets or asteroids. This isn't necessarily "aliens" &mdash; even purely natural interstellar chemistry would be a major discovery.</p>
+  <span class="tag">Future &middot; Rubin/LSST ~2025-2035 &middot; Trajectory anomalies</span>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-particle">Particle Physics &amp; Fundamental Structure</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>LHC Anomaly Detection: New Particles Hiding in Plain Sight</h4>
+  <p>The Large Hadron Collider generates petabytes of collision data. Most analyses search for specific predicted particles (Higgs, SUSY, etc.). An unsupervised autoencoder on collision events could find anomalous signatures that don't match ANY Standard Model prediction &mdash; new particles or interactions that theorists haven't predicted. Groups at CERN are starting to explore this (CATHODE, CURTAINS), but full-scale unsupervised searches are still in their infancy.</p>
+  <span class="tag">Future &middot; LHC Run 3 data &middot; Collision autoencoder &middot; CMS/ATLAS open data</span>
+</div>
+
+<div class="spec-card">
+  <h4>Higgs Boson: Is It Really Elementary?</h4>
+  <p>The Higgs boson was discovered in 2012 but its properties are still being measured with increasing precision. Anomalous Higgs decay channels, unexpected production rates, or deviations from SM predictions would be revolutionary. ML anomaly detection on Higgs event data could catch subtle deviations that targeted searches miss.</p>
+  <span class="tag">Future &middot; HL-LHC ~2029 &middot; Precision Higgs measurements</span>
+</div>
+
+<div class="spec-card">
+  <h4>Vacuum Structure: What Fills "Empty" Space?</h4>
+  <p>Quantum field theory says the vacuum is teeming with virtual particles, zero-point energy, and topological fluctuations. The Casimir effect proves it experimentally. But we don't understand the vacuum's full structure. The cosmological constant problem (vacuum energy 10<sup>120</sup> times too large) suggests our understanding of empty space is fundamentally incomplete. Torsion (the antisymmetric part of the connection that our framework studies) is itself a property of spacetime's vacuum structure.</p>
+  <span class="tag">Theoretical &middot; Vacuum energy &middot; Casimir effect &middot; Torsion</span>
+</div>
+
+<div class="spec-card">
+  <h4>Strings, Quarks, and Below: Is There a Smallest Scale?</h4>
+  <p>The Standard Model has quarks and leptons as fundamental. String theory proposes 1D strings at 10<sup>&minus;35</sup> m. Loop quantum gravity (the framework behind our bounce models) proposes quantized spacetime at the Planck scale. These theories make different predictions for the very early universe &mdash; and the bounce is where they're most testable. Our f<sub>NL</sub> prediction comes from the contracting phase where Planck-scale physics imprints on macroscopic observables.</p>
+  <span class="tag">Theoretical &middot; String theory &middot; LQG &middot; Planck-scale physics</span>
+</div>
+
+<div class="spec-card">
+  <h4>Spacetime Fabric: Is Space Discrete or Continuous?</h4>
+  <p>Loop quantum gravity predicts space is made of discrete quanta (spin networks) with minimum area ~10<sup>&minus;66</sup> cm<sup>2</sup>. This discreteness should produce energy-dependent photon speeds: high-energy gamma rays travel slightly slower than low-energy photons over cosmological distances. Fermi-LAT observations of gamma-ray bursts already constrain this. Our birefringence prediction (&beta; = 0.27&deg;) is another test of spacetime microstructure.</p>
+  <span class="tag">Testable &middot; Fermi-LAT &middot; CTA ~2027 &middot; Lorentz invariance violation</span>
+</div>
+
+<div class="spec-card">
+  <h4>Neutrino Mass &amp; the Matter-Antimatter Asymmetry</h4>
+  <p>Why is there more matter than antimatter? CP violation in neutrino oscillations could explain it (leptogenesis). DUNE and Hyper-Kamiokande will measure neutrino CP phases in the late 2020s. Anomaly detection on neutrino interaction data could find unexpected oscillation patterns, sterile neutrino signatures, or BSM physics that current analyses parameterize away.</p>
+  <span class="tag">Future &middot; DUNE ~2029 &middot; Hyper-K ~2027 &middot; CP violation</span>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="domain-header d-frontier">Frontier &amp; Cross-Domain</div>
+
+<section class="section">
+
+<div class="spec-card">
+  <h4>Gravitational Wave Background: What's the Cosmic Hum?</h4>
+  <p>NANOGrav detected a gravitational wave background in 2023. Our matter bounce predicts &gamma; = 3.0 (observed: 3.2 &plusmn; 0.6). But the background's origin is uncertain &mdash; supermassive black hole mergers, cosmic strings, phase transitions, or a bounce? Each source predicts a different spectral shape. Template fitting on the free-spectrum data can discriminate. We've started this (Bayes factor B = 302 favoring bounce over SMBH).</p>
+  <span class="tag">ACTIONABLE &middot; NANOGrav 15yr &middot; Template fitting done</span>
+</div>
+
+<div class="spec-card">
+  <h4>Quantum Computing for Cosmological Simulation</h4>
+  <p>Quantum computers could simulate the bounce transition itself &mdash; a regime where classical computation breaks down (Planck-density, quantum gravitational effects). IBM, Google, and IonQ are approaching the qubit counts needed for toy models. A quantum simulation of the ECH bounce equations could verify whether torsion truly prevents singularity formation.</p>
+  <span class="tag">Future &middot; Quantum advantage ~2030s &middot; LQG simulation</span>
+</div>
+
+<div class="spec-card">
+  <h4>Quantum Information &amp; the Bounce</h4>
+  <p>The bounce connects two epochs through a Planck-density transition. Does information travel "backward" through the bounce? If the bounce preserves quantum coherence, it informs theories of quantum teleportation across cosmological horizons. Understanding whether the bounce preserves or scrambles quantum information connects to the black hole information paradox, ER=EPR, and quantum error correction in curved spacetime.</p>
+  <span class="tag">Speculative &middot; Quantum information &middot; ER=EPR &middot; Planck-scale physics</span>
+</div>
+
+<div class="spec-card">
+  <h4>Multi-Messenger Astronomy: Combining Everything</h4>
+  <p>The next frontier is combining data across electromagnetic spectrum, gravitational waves, neutrinos, and cosmic rays simultaneously. An object that's anomalous in optical spectra (DESI), infrared variability (NEOWISE), X-ray emission (eROSITA), AND gravitational waves (LIGO) would be the most extraordinary discovery candidate imaginable. Our cross-survey pipeline is built for exactly this.</p>
+  <span class="tag">ACTIONABLE &middot; Cross-survey architecture exists &middot; Multi-messenger</span>
+</div>
+
+<div class="spec-card">
+  <h4>The Hubify Lab Scaling Vision</h4>
+  <p>Run anomaly detection on every major public dataset simultaneously. Publish the fastest-growing catalog of scientific discoveries per dollar spent. Establish a new model for independent research: small team, public data, commodity compute, AI-assisted development. Target: 5+ papers and 10+ public data releases within 12 months of first publication.</p>
+  <span class="tag">ACTIONABLE &middot; This is the plan &middot; See <a href="articles/the-window.html" style="color:inherit;text-decoration:underline;">The Window</a></span>
+</div>
+
+</section>
+
+<div style="margin-top:40px; padding:24px; border-radius:8px; background:var(--bg-subtle); font-size:14px; line-height:1.7; font-family:var(--font-sans); color:var(--text-secondary);">
+  <strong style="color:var(--text);">On the spectrum from rigorous to speculative:</strong> Items marked ACTIONABLE can be started this month with current tools and data. Items marked "Future" require instruments or datasets arriving in 2-10 years. Items marked "Speculative" or "Theoretical" may never be directly testable but shape how we think about the testable predictions. We include all of them because the history of science is full of "speculative" ideas that turned out to be measurable once someone figured out the right experiment.
+</div>
+
+<footer style="text-align: center; padding: 32px 0; font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);">
+  <p>BigBounce Research Program &middot; Houston Golden &middot; houston@hubify.com</p>
+  <p style="margin-top:4px;">This page is a living document. Last updated March 2026.</p>
+</footer>
+
+</main>
+</body>
+</html>
