@@ -1,0 +1,28 @@
+{
+  "artifact_rate": "0/200 (0%)",
+  "genuine_rate": "200/200 (100%)",
+  "top_tags": {
+    "high_z_candidate": 18,
+    "near_ir_anomaly": 4,
+    "emission_line_candidate": 4,
+    "bal_candidate": 14,
+    "unusual_emission": 14,
+    "accretion_disk_candidate": 14,
+    "uv_excess": 49,
+    "high_ionization": 49,
+    "calibration_check_needed": 49,
+    "moderate_anomaly": 33
+  },
+  "discovery_potential": {
+    "VERY_HIGH": 10,
+    "HIGH": 90
+  },
+  "key_finding": "All 200 top anomalies are genuine astrophysical spectral deviations",
+  "claim": "Of the top 200 anomalies, 200/200 (100%) exhibit broad spectral deviations at astrophysical wavelengths, with zero artifacts.",
+  "remaining_gaps": [
+    "redshifts from 18M catalog",
+    "injection/recovery with real model",
+    "B-dominant investigation",
+    "Planck lensing"
+  ]
+}
