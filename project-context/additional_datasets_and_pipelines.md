@@ -149,3 +149,50 @@ Each survey gets its own instance of this pipeline. Results cross-reference acro
 **Key difference:** Paz does supervised classification (knows what he's looking for). We do unsupervised anomaly detection (finds things we DON'T know about). Both are valid but find different things.
 
 **Synergy:** Run VARnet-style time-domain analysis on the unTimely light curves of our 195K anomalies. Objects that are spectrally unusual AND temporally unusual are the strongest discovery candidates.
+
+---
+
+## HIGH-IMPACT LARGE DATASETS FOR BEAST MODE
+
+These are the datasets where autoencoder anomaly detection at GPU scale would produce genuinely novel results. Ranked by untapped discovery potential.
+
+### 1. eROSITA All-Sky X-ray Survey (NEW — recently public)
+- **Size:** 710,000 X-ray sources, ~900,000 detections, ~50GB
+- **What:** First all-sky X-ray survey since ROSAT (1990s). 4x more sources.
+- **Why it's interesting:** X-ray sources are almost always "interesting" — AGN, galaxy clusters, compact binaries, supernova remnants. An autoencoder trained on typical X-ray spectra would find the unusual ones.
+- **Nobody has done:** Autoencoder anomaly detection on eROSITA at catalog scale
+- **H200 estimate:** ~$50, 1-2 days
+- **Connection to bounce:** X-ray AGN are potential high-bias tracers for f_NL
+
+### 2. NEOWISE Single-Exposure Database (THE BEAST)
+- **Size:** 170 BILLION rows, ~2B unique sources, 10.5 years of IR photometry
+- **What:** Every single IR observation from the WISE/NEOWISE telescope since 2013
+- **Why it's interesting:** Time-domain variability at scale nobody has fully processed. Paz (2024) showed the approach works but only ran on a subset.
+- **Nobody has done:** Full autoencoder/reconstruction-based anomaly detection on the raw single-exposure data
+- **H200 estimate:** Multiple H200s, $300-500, 1-2 weeks
+- **Connection to bounce:** Variable QSOs are the best f_NL tracers
+
+### 3. ACT DR6 at Full Resolution
+- **Size:** ~20GB, 19,000 deg² at ~1 arcmin resolution
+- **What:** Higher-resolution CMB than Planck over 47% of the sky
+- **Why it's interesting:** At 1 arcmin, you see galaxy clusters (SZ effect), point sources, and potentially new transient phenomena
+- **Nobody has done:** Autoencoder patch anomaly detection on ACT at full resolution
+- **H200 estimate:** ~$30-50, 1 day
+- **Connection to bounce:** Tests birefringence β = 0.27° with better angular resolution
+
+### 4. Gaia DR3 Epoch Photometry (time-domain for 1.8B stars)
+- **Size:** ~1TB, time-series photometry for 1.8B sources
+- **What:** Not just positions — Gaia observed each star ~70 times over 3 years
+- **Why it's interesting:** Variability detection for 1.8 BILLION stars. Most analyses use the AVERAGED catalog, not the epoch data.
+- **Nobody has done:** Full epoch-level anomaly detection at 1.8B scale
+- **H200 estimate:** Multiple H200s, $500-1000, 2-4 weeks
+- **Connection to cosmology:** Unusual variable stars, microlensing events, unexpected transients
+
+### 5. ZTF (Zwicky Transient Facility) Alert Stream Archive
+- **Size:** ~30B alerts, ~1B unique sources, 4+ years
+- **What:** Optical time-domain survey covering the entire northern sky every 2 nights
+- **Why it's interesting:** Fastest optical survey — catches transients in real-time
+- **Nobody has done:** Retroactive autoencoder anomaly mining on the full alert archive
+- **H200 estimate:** $200-400, 1-2 weeks
+- **Connection to cosmology:** Supernovae for dark energy, unusual transients
+
