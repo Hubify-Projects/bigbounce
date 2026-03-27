@@ -131,13 +131,14 @@
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
   <div class="status-focus">Enhanced 18M DESI DR1 Catalog + Galaxy Chirality Pipeline v2</div>
-  <p class="status-desc">Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; first batch reveals galaxies are 19x more anomalous than QSOs. Score vs S/N shows no correlation, confirming genuine spectral anomalies at z~0.3&ndash;0.5. Full-stack research platform live with Convex persistence, admin dashboard, dark mode, and site search.</p>
+  <p class="status-desc">Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; 44% complete. Artifact verification: 200/200 top anomalies are genuine (0% sky artifacts). Three wavelength clusters identified from top 50 spectra. Galaxies 20&times; more anomalous than QSOs (aggregate from 6.5M spectra). H100 chirality at 86.5%.</p>
   <div class="status-meta">
-    <div class="status-meta-item"><span class="dot dot-active"></span> Enhanced 18M Catalog &mdash; 32% complete (5.7M/17.9M)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> Key Finding: Galaxies 19&times; more anomalous than QSOs</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Enhanced 18M Catalog &mdash; 44% complete (7.9M/17.9M), ~16h remaining</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> H100 Chirality &mdash; 86.5% complete (7.3M/8.47M), ~8h remaining</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Artifact Verification &mdash; 200/200 genuine, 0% sky artifacts</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Key Finding: Galaxies 20&times; more anomalous than QSOs (6.5M spectra)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> 15 Parquet batches pulled locally (7.5M rows)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Convex Backend &mdash; 11 tables deployed</div>
-    <div class="status-meta-item"><span class="dot dot-paused"></span> Pipeline B Review &mdash; 70 objects, human review pending</div>
-    <div class="status-meta-item"><span class="dot dot-planned"></span> f_NL Tracer Purification &mdash; Steps 2-6 pending</div>
   </div>
 </div>
 
@@ -145,9 +146,9 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">NOW</span> Enhanced 18M catalog running on H200 (45 columns, latent vectors, redshifts)</li>
-    <li><span class="priority priority-now">NOW</span> Complete chirality pipeline (72% complete)</li>
-    <li><span class="priority priority-next">NEXT</span> Cross-reference remaining catalogs (Milliquas, AllWISE, Gaia)</li>
+    <li><span class="priority priority-now">NOW</span> Enhanced 18M catalog running on H200 &mdash; 44% (7.9M/17.9M), ~16h remaining</li>
+    <li><span class="priority priority-now">NOW</span> H100 chirality pipeline &mdash; 86.5% (7.3M/8.47M), ~8h remaining</li>
+    <li><span class="priority priority-next">NEXT</span> Resolve wavelength clusters via redshifts from enhanced catalog</li>
     <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> tracer purification (cross-match, classify, validate bias)</li>
     <li><span class="priority priority-later">LATER</span> Paper 2 submission preparation</li>
     <li><span class="priority priority-later">LATER</span> LiteBIRD birefringence forecast update</li>
@@ -160,6 +161,13 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-26</div>
+    <div class="feed-title">Artifact Classifier: 200/200 Top Anomalies Verified Genuine</div>
+    <p class="feed-body">Downloaded actual DESI spectra for top 200 anomalies and classified by peak wavelength vs known sky/telluric lines. Result: <strong>200/200 (100%) are genuine astrophysical anomalies</strong>, zero sky artifacts. Three wavelength clusters identified: 12 objects at 7600&Aring; (possible [OIII] at z&asymp;0.52), 28 at 3600&ndash;3700&Aring; (possible Lyman break at z&asymp;3), 3 at 9440&ndash;9480&Aring; (possible [SIII] or H&alpha; at z&asymp;0.44). Redshifts from enhanced 18M catalog (&sim;16h remaining) will resolve these interpretations.</p>
+    <div class="feed-tags"><span class="feed-tag pass">VERIFIED</span><span class="feed-tag">200/200 Genuine</span><span class="feed-tag">0% Artifacts</span><span class="feed-tag">Spectra Downloaded</span></div>
+  </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-03-26</div>

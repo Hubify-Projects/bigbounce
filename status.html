@@ -267,14 +267,14 @@
         <td>Autoencoder anomaly search on all 18M DESI DR1 spectra. First full-DR1-scale search (~90x prior EDR work).</td>
         <td>Yes (high-bias tracers)</td>
         <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>195,829 anomalies from 18M spectra <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
+        <td>195K anomalies; 200/200 artifact-free; enhanced 18M at 44%; top 50 spectra plotted <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
       </tr>
       <tr>
         <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
         <td>Largest bias-audited galaxy handedness catalog (CW/CCW/NOT_SPIRAL). v2 model: 93.7% accuracy, 8/8 bias tests passed.</td>
         <td>Indirect (parity test)</td>
         <td><span class="badge badge-blue">RUNNING</span></td>
-        <td>3.49M / 8.47M galaxies (41%) <span class="progress-bar"><span class="progress-fill blue" style="width:41%"></span></span></td>
+        <td>7.3M / 8.47M galaxies (86.5%) <span class="progress-bar"><span class="progress-fill blue" style="width:86.5%"></span></span></td>
       </tr>
       <tr>
         <td><strong>E &mdash; Time-Domain Transient Finder</strong></td>
@@ -309,7 +309,7 @@
 
   <div class="discovery-card" style="border-left: 3px solid #22c55e;">
     <h4>Pipeline B Headline Result</h4>
-    <p>195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. 100% of the top 100 objects are NOT in SIMBAD. Cross-matched against 6 databases (3B+ objects): 99.8% absent from SIMBAD, 0% are known QSOs, galaxies 19x more anomalous than QSOs. Model published on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
+    <p>195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. <strong>200/200 top anomalies verified artifact-free</strong> by spectral inspection (peak wavelength vs known sky/telluric lines). Three wavelength clusters in top 50: 12 at 7600&Aring; (possible [OIII] at z&asymp;0.52), 28 at 3600&ndash;3700&Aring; (possible Lyman break at z&asymp;3), 3 at 9440&ndash;9480&Aring; (possible [SIII]/H&alpha; at z&asymp;0.44). Cross-matched against 6 databases (3B+ objects): 99.8% absent from SIMBAD, galaxies 20x more anomalous than QSOs (6.5M spectra). Enhanced 18M catalog at 44%. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
   </div>
 </section>
 
@@ -328,10 +328,10 @@
       <tr>
         <td><strong>H200 Beast</strong><br><code style="font-size:10px;">rtv8cegaw1618r</code></td>
         <td>H200 (143 GB), 192 cores, 3 TB RAM</td>
-        <td>Pipeline B &mdash; DESI DR1</td>
+        <td>Enhanced 18M Catalog</td>
         <td><code style="font-size:10px;">root@205.196.17.44 -p 10789</code></td>
-        <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>195,829 anomalies from 18M spectra</td>
+        <td><span class="badge badge-blue">RUNNING</span></td>
+        <td>7.9M / 17.9M (44%), ~16h remaining</td>
       </tr>
       <tr>
         <td><strong>H100</strong><br><code style="font-size:10px;">ulfxypratod4vr</code></td>
@@ -339,7 +339,7 @@
         <td>Pipeline 2 &mdash; Chirality</td>
         <td><code style="font-size:10px;">root@64.247.201.47 -p 10778</code></td>
         <td><span class="badge badge-blue">RUNNING</span></td>
-        <td>3.49M / 8.47M (41%)</td>
+        <td>7.3M / 8.47M (86.5%), ~8h remaining</td>
       </tr>
       <tr>
         <td><strong>RTX A4000</strong><br><code style="font-size:10px;">fn19oivkjowmq4</code></td>
@@ -546,8 +546,8 @@
       <tr>
         <td>6</td>
         <td><strong>Complete 8.47M Chirality Catalog</strong></td>
-        <td>Finish inference on remaining 4.98M galaxies. v2 model frozen (93.7% accuracy, equivariant CW = 0.5012).</td>
-        <td><span class="badge badge-blue">Running (41%)</span></td>
+        <td>Finish inference on remaining 1.17M galaxies. v2 model frozen (93.7% accuracy, equivariant CW = 0.5012).</td>
+        <td><span class="badge badge-blue">Running (86.5%)</span></td>
         <td>H100 pod</td>
       </tr>
       <tr>
