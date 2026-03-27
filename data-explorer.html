@@ -168,6 +168,7 @@ main { max-width: none; padding: 0; }
 
   <div class="de-sidebar-group"><span class="dot blue"></span> New Results</div>
   <div class="de-sidebar-item" onclick="selectDataset('w0waQuintom')" data-key="w0waQuintom">w0-wa Quintom <span class="de-sidebar-badge frozen">9 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('w0waQuintomChains')" data-key="w0waQuintomChains">w0-wa Chains (Full) <span class="de-sidebar-badge frozen">50,880</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('pbhNanograv')" data-key="pbhNanograv">PBH &amp; NANOGrav <span class="de-sidebar-badge frozen">6 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('nanoGravComparison')" data-key="nanoGravComparison">NANOGrav Model Comparison <span class="de-sidebar-badge frozen">5 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('quintomFnlVerification')" data-key="quintomFnlVerification">Quintom f_NL Verification <span class="de-sidebar-badge frozen">5 rows</span></div>
@@ -236,11 +237,13 @@ const DS = {
 
 fullTension: {
   name: "Full Tension MCMC Chains",
-  description: "198 representative samples from 170,878 total. Joint fit: Planck NPIPE + BAO (6dFGS + BOSS DR12 + eBOSS DR16) + Pantheon+ SN Ia + SH0ES H\u2080 + DES Y3 + ACT DR6.",
+  description: "170,878 MCMC posterior samples. Joint fit: Planck NPIPE + BAO (6dFGS + BOSS DR12 + eBOSS DR16) + Pantheon+ SN Ia + SH0ES H\u2080 + DES Y3 + ACT DR6. Shows first 198 rows \u2014 click \u2018Load Full Dataset\u2019 for all 170,878.",
   source: "chains/dneff/full_tension/",
   rows: 198, totalSamples: 170878,
   status: "FROZEN", statusClass: "frozen",
   columns: CHAIN_COLS,
+  fullDataUrl: "data/full_tension_chains.json",
+  fullRows: 170878,
   data: [
 [7,70.7955,0.827269,0.298326,0.8250,0.4880,13.3313,3.533991,0.9827047,0.0226489,0.126227],
 [1,68.7771,0.811362,0.297646,0.8082,0.0537,13.7313,3.099664,0.9750115,0.0224073,0.117743],
@@ -2274,6 +2277,18 @@ w0waQuintom: {
   ]
 },
 
+w0waQuintomChains: {
+  name: "w0-wa Quintom MCMC Chains (Full)",
+  description: "50,880 MCMC posterior samples from the quintom-B dark energy test. Planck 2018 NPIPE + SDSS DR16 BAO + Pantheon+. Click \u2018Load Full Dataset\u2019 for all 50,880 samples.",
+  source: "chains/w0wa_quintom/",
+  rows: 0, totalSamples: 50880,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["weight","w","wa","w0+wa","H0","\u03C38","S8","\u03A9m","Age","ns","\u03A9bh\u00B2","\u03A9ch\u00B2","\u03C4"],
+  data: [],
+  fullDataUrl: "data/w0wa_quintom_chains.json",
+  fullRows: 50880,
+},
+
 modelDiscrimination: {
   name: "Bounce vs Inflation \u2014 Bayesian Discrimination",
   description: "Bayes factors comparing the matter bounce (f_NL = -35/8, zero free parameters) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
@@ -2373,14 +2388,45 @@ function selectDataset(key) {
   const ds = DS[key];
   if (!ds) return;
   const h = document.getElementById('datasetHeader');
+  const rowDisplay = (ds.fullDataUrl && !ds._fullLoaded)
+    ? (ds.data.length > 0 ? ds.data.length + ' samples shown \u2014 full dataset has ' + (ds.fullRows || '?').toLocaleString() + ' rows' : 'No rows loaded yet \u2014 full dataset has ' + (ds.fullRows || '?').toLocaleString() + ' rows')
+    : (ds.rows || ds.data.length);
   h.innerHTML = `<h1>${ds.name}</h1><p class="description">${ds.description}</p>
     <div class="dataset-meta">
-      <div class="dataset-meta-item"><strong>Rows:</strong> <span class="mono-val">${ds.rows || ds.data.length}</span></div>
+      <div class="dataset-meta-item"><strong>Rows:</strong> <span class="mono-val">${rowDisplay}</span></div>
       <div class="dataset-meta-item"><strong>Columns:</strong> <span class="mono-val">${ds.columns.length}</span></div>
       ${ds.totalSamples ? `<div class="dataset-meta-item"><strong>Total samples:</strong> <span class="mono-val">${ds.totalSamples.toLocaleString()}</span></div>` : ''}
       <div class="dataset-meta-item"><strong>Source:</strong> <span class="mono-val">${ds.source}</span></div>
       <div class="dataset-meta-item"><span class="status-badge ${ds.statusClass}">${ds.status}</span></div>
     </div>`;
+  if (ds.fullDataUrl && !ds._fullLoaded) {
+    const loadBtn = document.createElement('button');
+    loadBtn.className = 'btn';
+    loadBtn.style.marginTop = '12px';
+    loadBtn.innerHTML = '\uD83D\uDCCA Load Full Dataset (' + (ds.fullRows || '?').toLocaleString() + ' rows, ~' + (ds.fullRows > 100000 ? '16' : '6') + ' MB)';
+    loadBtn.onclick = function() {
+      loadBtn.textContent = 'Loading...';
+      loadBtn.disabled = true;
+      fetch(ds.fullDataUrl)
+        .then(r => r.json())
+        .then(fullData => {
+          if (Array.isArray(fullData)) {
+            ds.data = fullData;
+          } else {
+            ds.columns = fullData.columns;
+            ds.data = fullData.data;
+          }
+          ds._fullLoaded = true;
+          ds.rows = ds.data.length;
+          selectDataset(currentDatasetKey);
+        })
+        .catch(err => {
+          loadBtn.textContent = 'Load failed \u2014 ' + err.message;
+          loadBtn.disabled = false;
+        });
+    };
+    h.appendChild(loadBtn);
+  }
   renderTable();
 }
 
