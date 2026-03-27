@@ -1,0 +1,140 @@
+{
+  "description": "NANOGrav 15-year free-spectrum proper template fit results. Three GWB models fit to 14 synthetic frequency bins reconstructed from the published power-law best fit (A=2.4e-15, gamma=3.2). arXiv:2306.16213.",
+  "data": {
+    "n_bins": 14,
+    "freqs_nHz": [
+      1.976798990270053,
+      3.953597980540106,
+      5.9303969708101585,
+      7.907195961080212,
+      9.883994951350266,
+      11.860793941620317,
+      13.837592931890368,
+      15.814391922160423,
+      17.791190912430476,
+      19.76798990270053,
+      21.74478889297058,
+      23.721587883240634,
+      25.69838687351069,
+      27.675185863780737
+    ],
+    "log10_hc": [
+      -14.49929540605298,
+      -14.529398405619377,
+      -14.547007531524946,
+      -14.559501405185776,
+      -14.56919240648658,
+      -14.577110531091343,
+      -14.583805210054404,
+      -14.589604404752173,
+      -14.594719656996912,
+      -14.59929540605298,
+      -14.6034346745688,
+      -14.607213530657742,
+      -14.610689741283663,
+      -14.613908209620803
+    ],
+    "log10_hc_err": [
+      0.1,
+      0.12,
+      0.15,
+      0.18,
+      0.22,
+      0.26,
+      0.29,
+      0.32,
+      0.35,
+      0.38,
+      0.4,
+      0.42,
+      0.45,
+      0.48
+    ],
+    "source": "Synthetic from published power-law fit"
+  },
+  "fit_results": {
+    "SMBH": {
+      "gamma": 4.333333333333333,
+      "k": 1,
+      "params": {
+        "log10_A": -15.062393895741236
+      },
+      "param_errors": {
+        "sigma_log10_A": 0.054380818450400555
+      },
+      "A": 8.661759164875036e-16,
+      "chi2": 13.461554063404629,
+      "dof": 13,
+      "chi2_red": 1.035504158723433,
+      "p_value": 0.4128246417413217,
+      "BIC": 16.100611393019886,
+      "AIC": 15.461554063404629,
+      "log_Z": -9.822194576479394
+    },
+    "Matter_Bounce": {
+      "gamma_IR": 3.0,
+      "k": 2,
+      "params": {
+        "log10_A": -14.523477156937663,
+        "log10_f_peak_Hz": -7.3414085426865325
+      },
+      "param_errors": {
+        "sigma_log10_A": 0.06524104262059824,
+        "sigma_log10_f_peak": 0.46239618970957763,
+        "correlation": -0.5524637572093553
+      },
+      "A": 2.995869165294358e-15,
+      "f_peak_Hz": 4.556081217794467e-08,
+      "f_peak_nHz": 45.56081217794467,
+      "chi2": 0.14088097635189373,
+      "dof": 12,
+      "chi2_red": 0.011740081362657811,
+      "p_value": 0.9999999998402663,
+      "BIC": 5.4189956355824105,
+      "AIC": 4.140880976351894,
+      "log_Z": -4.112865003711272
+    },
+    "Cosmic_Strings": {
+      "gamma": 1.6666666666666667,
+      "k": 1,
+      "params": {
+        "log10_A": -14.020970042911019
+      },
+      "param_errors": {
+        "sigma_log10_A": 0.05438082059293948
+      },
+      "A": 9.528618889755192e-15,
+      "chi2": 24.640699306370287,
+      "dof": 13,
+      "chi2_red": 1.8954384081823297,
+      "p_value": 0.02572295534009006,
+      "BIC": 27.279756635985546,
+      "AIC": 26.640699306370287,
+      "log_Z": -15.411767158563425
+    }
+  },
+  "model_comparison": {
+    "delta_chi2_bounce_minus_smbh": -13.320673087052734,
+    "delta_chi2_bounce_minus_strings": -24.499818330018392,
+    "delta_BIC_bounce_minus_smbh": -10.681615757437475,
+    "delta_BIC_bounce_minus_strings": -21.860761000403137,
+    "delta_AIC_bounce_minus_smbh": -11.320673087052736,
+    "delta_AIC_bounce_minus_strings": -22.499818330018392,
+    "log10_BF_bounce_over_smbh_laplace": 2.4795303288202453,
+    "log10_BF_bounce_over_strings_laplace": 4.907050857417051,
+    "log10_BF_bounce_over_smbh_BIC": 2.3194833906329597,
+    "log10_BF_bounce_over_strings_BIC": 4.747003936340446,
+    "best_model_by_BIC": "Bounce",
+    "best_model_by_chi2": "Bounce"
+  },
+  "method": {
+    "fitting": "chi^2 minimization in log10(h_c) space",
+    "BIC": "chi^2 + k * ln(N)",
+    "AIC": "chi^2 + 2*k",
+    "Bayes_factors": "Laplace approximation with uniform priors",
+    "prior_widths": {
+      "log10_A": 3.0,
+      "log10_f_peak": 3.0
+    }
+  }
+}
