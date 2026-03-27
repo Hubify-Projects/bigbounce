@@ -29,3 +29,10 @@ reproducibility/cosmology/archives/*.tar.gz
 reproducibility/cosmology/archives/gpu_run_snapshot_*/chains/
 reproducibility/cosmology/traces/
 runpod_backups/
+
+# Pipeline outputs (large generated data)
+pipelines/pipeline_a_cmb/outputs/*.npy
+pipelines/pipeline_a_cmb/outputs/*.pt
+pipelines/pipeline_a_cmb/outputs/*.json
+pipelines/pipeline_a_cmb/*.fits
+*.parquet
