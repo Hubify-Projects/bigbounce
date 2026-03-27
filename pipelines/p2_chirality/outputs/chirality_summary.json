@@ -1,0 +1,19 @@
+{
+  "total": 8474531,
+  "cw": 1687069,
+  "ccw": 1634726,
+  "not_spiral": 5152736,
+  "cw_fraction": 0.5079,
+  "cw_excess_pct": 0.79,
+  "mean_confidence": 0.9509,
+  "median_confidence": 0.9997,
+  "model": "chirality_v2 (93.7% acc, 8/8 bias tests)",
+  "dataset": "Smith42/galaxies (DESI Legacy DR8)",
+  "status": "100% COMPLETE (192/192 shards)",
+  "backed_up": [
+    "local",
+    "B2",
+    "HuggingFace",
+    "H100 pod"
+  ]
+}
