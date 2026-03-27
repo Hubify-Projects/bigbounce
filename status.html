@@ -129,6 +129,7 @@
     <li><a href="#scripts">Computation Scripts</a></li>
     <li><a href="#future">Future Plans</a></li>
     <li><a href="#discoveries">Key Discoveries</a></li>
+    <li><a href="#datasets">Additional Datasets &amp; Surveys</a></li>
     <li><a href="#bigquestions">Biggest Questions in the Universe</a></li>
   </ol>
 </div>
@@ -662,9 +663,42 @@
 
 <hr>
 
-<!-- ═══════════ SECTION 10: BIGGEST QUESTIONS ═══════════ -->
+<!-- ═══════════ SECTION 10: ADDITIONAL DATASETS ═══════════ -->
+<section class="section" id="datasets">
+  <h2 class="section-anchor">10. Additional Datasets &amp; Surveys</h2>
+  <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;">Datasets where our AI anomaly detection methodology can be applied next. Ranked by discovery potential. Full details in <code>project-context/additional_datasets_and_pipelines.md</code>.</p>
+
+  <table class="status-table">
+    <thead><tr><th>Dataset</th><th>Size</th><th>Type</th><th>Est. Cost</th><th>Connection to Bounce</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Run Now (data public, infrastructure ready)</td></tr>
+      <tr><td><strong>NEOWISE / unTimely</strong></td><td>170B rows, 2B sources</td><td>IR time-domain</td><td>$100-200</td><td>Variable QSOs for f<sub>NL</sub> tracers</td><td><span class="badge badge-amber">Pipeline E</span></td></tr>
+      <tr><td><strong>Planck CMB Maps</strong></td><td>50GB full-sky</td><td>CMB T/Q/U patches</td><td>$50-100</td><td>Pre-bounce perturbation signatures</td><td><span class="badge badge-amber">Pipeline A</span></td></tr>
+      <tr><td><strong>ACT DR6 Polarization</strong></td><td>20GB</td><td>CMB polarization</td><td>$50</td><td>Tests &beta; = 0.27&deg; prediction</td><td><span class="badge badge-amber">Pipeline C</span></td></tr>
+      <tr><td><strong>NANOGrav 15yr</strong></td><td>~1GB</td><td>PTA timing</td><td>Free</td><td>Bounce GW template fit (&gamma;=3)</td><td><span class="badge badge-blue">Starting</span></td></tr>
+      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Run Soon (need model adaptation)</td></tr>
+      <tr><td><strong>SDSS DR18</strong></td><td>5M spectra</td><td>Optical spectroscopy</td><td>$30-50</td><td>Cross-survey validation</td><td><span class="badge badge-red">API Down</span></td></tr>
+      <tr><td><strong>LAMOST DR10</strong></td><td>20M spectra</td><td>Optical spectroscopy</td><td>$50-100</td><td>More f<sub>NL</sub> tracers</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr><td><strong>Gaia DR3 BP/RP</strong></td><td>220M spectra</td><td>Low-res spectrophotometry</td><td>$100-200</td><td>Unusual stellar populations</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Future (data not yet available)</td></tr>
+      <tr><td><strong>Euclid</strong></td><td>~30M spectra</td><td>Slitless spectroscopy</td><td>$100-200</td><td>Next-gen f<sub>NL</sub> tracers</td><td><span class="badge badge-red">~2027</span></td></tr>
+      <tr><td><strong>SPHEREx</strong></td><td>~300M objects</td><td>96-band spectrophotometry</td><td>TBD</td><td><strong>FLAGSHIP</strong> &mdash; direct f<sub>NL</sub> measurement</td><td><span class="badge badge-red">~2028</span></td></tr>
+      <tr><td><strong>LSST / Rubin</strong></td><td>~20B objects</td><td>Time-domain + photometric</td><td>TBD</td><td>Galaxy chirality at z&gt;1</td><td><span class="badge badge-red">~2025-2035</span></td></tr>
+      <tr><td><strong>CMB-S4</strong></td><td>Full-sky CMB</td><td>Next-gen CMB</td><td>TBD</td><td>Definitive &beta; test (~30&sigma;)</td><td><span class="badge badge-red">~2030s</span></td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px; padding:16px; background:var(--bg-subtle); border:1px solid var(--border); border-left:4px solid #7c3aed; border-radius:8px;">
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px; color:var(--text);">Hubify Lab Vision</h4>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin:0;">Build a scalable, repeatable AI archival discovery platform: each astronomical survey gets its own autoencoder pipeline, anomaly catalog, cross-reference, and explorer UI. Results cross-reference across surveys &mdash; objects flagged by 2+ surveys are highest priority. Infrastructure: H200 GPU for training/inference, Convex for data, HuggingFace for models, GitHub for code. <strong>$50&ndash;200 per survey, 1&ndash;4 weeks each.</strong> DESI DR1 is the proof-of-concept. To be developed as a standalone platform at <a href="https://hubify.com" style="color:var(--accent-link);">hubify.com</a>.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ═══════════ SECTION 11: BIGGEST QUESTIONS ═══════════ -->
 <section class="section" id="bigquestions">
-  <h2 class="section-anchor">10. Biggest Questions in the Universe</h2>
+  <h2 class="section-anchor">11. Biggest Questions in the Universe</h2>
   <p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px;">Future research paths connecting bounce cosmology to the deepest open questions in physics. Some are testable with current infrastructure. Others are generational challenges. All are worth pursuing.</p>
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
