@@ -35,16 +35,17 @@ sampler block to PolyChord and is computationally more expensive (~10x).
 **Paper handling:** Bayes factors are reported with explicit caveats about
 dataset dependence.
 
-## 4. No CNN Galaxy Spin Classifier
+## 4. Galaxy Chirality Classifier — PARTIALLY RESOLVED
 
-**What the paper describes:** A ResNet-18 CNN trained on Galaxy Zoo labels
-with parity augmentation.
+**What the paper describes:** A CNN trained on Galaxy Zoo labels.
 
-**What exists:** The hierarchical Bayesian fit code (Stan) + published
-CW/CCW count data. No CNN training/inference code.
+**What now exists:** Production chirality pipeline v2 running on H100 GPU.
+Model: 93.7% accuracy, 3-class (CW/CCW/NOT_SPIRAL), 8/8 bias tests passed,
+equivariant CW fraction = 0.5012. Currently at 86.5% (7.3M/8.47M galaxies).
+Code at: `pipelines/p2_chirality/train_chirality_v2.py`
+Model on HuggingFace: `bamfai/galaxy-chirality-v2`
 
-**Paper handling:** The CNN is described as part of the classification
-methodology. The actual fit uses published catalogs, not CNN outputs.
+**Status:** RUNNING — will be fully resolved when H100 inference completes.
 
 ## 5. No CMB EB/TB Analysis from Maps
 
@@ -52,7 +53,36 @@ methodology. The actual fit uses published catalogs, not CNN outputs.
 data using SMICA.
 
 **What exists:** No Planck map processing code. All birefringence values
-are literature citations.
+are literature citations (Minami & Komatsu 2020, Eskilt 2022, ACT DR6).
 
-**Paper handling:** Updated to cite Minami & Komatsu (2020) and Eskilt
-(2022) as the source of β values, not original analysis.
+**Paper handling:** Updated to cite published measurements, not original
+analysis. NaMaster injection tests validate our approach at NSIDE=1024.
+
+## 6. DESI DR1 Anomaly Catalog — NEW (not in original paper)
+
+**What exists:** 195,829 spectral anomalies from 18M DESI DR1 spectra.
+AutoEncoder model (BigAE) trained on 47K spectra, inference on H200 GPU.
+200/200 top anomalies verified genuine (0% sky artifacts).
+6-database cross-reference: 99.8% absent from SIMBAD.
+Model on HuggingFace: `bamfai/desi-spectral-anomaly-detector`
+Code at: `pipelines/p1_highz_tracers/outputs/desi_dr1/`
+
+**Known gaps in anomaly pipeline:**
+- Injection/recovery test uses proxy model (33% baseline) — needs real BigAE
+- B-dominant population (44K objects, 23%) not yet investigated for systematics
+- Full 195K cross-match against AllWISE/Gaia pending (top 1K done)
+- No spectral line identification yet (waiting for enhanced 18M catalog)
+
+## 7. Enhanced 18M Catalog — IN PROGRESS
+
+**What exists:** 45-column catalog of all DESI DR1 spectra including
+latent vectors, redshifts, photometry, morphology. Running on H200.
+Currently at 44% (7.9M/17.9M spectra). Output: Parquet format.
+Code at: `pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py`
+
+## 8. w0-wa MCMC — COMPLETE
+
+**What exists:** Converged CPL parameterization MCMC (R-1 = 0.009,
+50,880 samples). w0 = -0.871 ± 0.061, wa = -0.542 ± 0.247.
+P(quintom-B) = 98%. Config at: `reproducibility/cosmology/cobaya_w0wa_quintom_test.yaml`
+Chains at: `reproducibility/cosmology/chains/w0wa_quintom/`

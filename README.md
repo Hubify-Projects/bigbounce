@@ -1,18 +1,26 @@
-# BigBounce — Geometric Dark Energy from Spin-Torsion Cosmology
+# BigBounce — Bounce Cosmology Research Program
 
 **Author:** Houston Golden
-**Version:** v2.0.0
-**Papers:** Two papers (~40pp framework + ~12pp forecast), 57+ references
+**Version:** v2.2.0 (March 2026)
+**Papers:** Three papers (framework + forecast + anomaly catalog), 63+ references
 **Website:** [bigbounce.hubify.app](https://bigbounce.hubify.app)
-**Preprint ID:** HUBIFY-2026-001
+**Status:** [Live Research Status](https://bigbounce.hubify.app/status.html)
+**Models:** [HuggingFace](https://huggingface.co/bamfai)
 
 ---
 
 ## What This Is
 
-A theoretical physics paper and companion website exploring dark energy through quantum gravitational effects in Einstein-Cartan-Holst spin-torsion cosmology. The framework connects Loop Quantum Gravity, torsion-regulated bounces, and cosmic rotation to produce testable observational signatures.
+A research program testing whether bounce cosmology — a singularity-free alternative to the Big Bang — can be proven through observational data and AI-powered discovery. The program spans theoretical physics, MCMC cosmological parameter estimation, and large-scale AI spectral analysis.
 
-This repository is **fully self-contained** — no external dependencies on any other repo, monorepo, or infrastructure. Clone it, work on it, push it.
+**Key results:**
+- **195,829 previously uncharacterized spectral anomalies** discovered in DESI DR1 (18M spectra), with 99.8% absent from SIMBAD and 0% being known QSOs. Galaxies are 20x more anomalous than QSOs.
+- **f_NL = -35/8** is the parameter-free matter-bounce prediction, verified as mechanism-independent across 3 bounce models. SPHEREx (~2028) will test at 4-6σ.
+- **14 structural barriers** close all ECH-specific routes from bounce to dark energy (other bounce models like quintom can bypass these).
+- **Quintom-B w-crossing** independently confirmed at 98% (w0 = -0.871, wa = -0.542) consistent with DESI DR2.
+- **8.47M galaxy chirality catalog** (86.5% complete) — largest bias-audited handedness catalog ever.
+
+This repository is **fully self-contained** — clone it, work on it, push it.
 
 ---
 
