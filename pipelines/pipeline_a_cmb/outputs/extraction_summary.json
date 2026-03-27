@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-03-27T06:30:48.371262Z",
+  "map_file": "/tmp/planck_data/COM_CMB_IQU-smica_2048_R3.00_full.fits",
+  "nside": 2048,
+  "n_patches": 1000,
+  "n_rejected": 0,
+  "patch_deg": 10.0,
+  "patch_pixels": 64,
+  "reso_arcmin": 9.375,
+  "gal_cut_deg": 20.0,
+  "seed": 42,
+  "patches_file": "pipelines/pipeline_a_cmb/outputs/cmb_patches.npy",
+  "metadata_file": "pipelines/pipeline_a_cmb/outputs/patch_metadata.json"
+}
