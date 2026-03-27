@@ -109,6 +109,7 @@
     + '<a href="' + p('glossary.html') + '" class="' + sidebarActiveClass('glossary', 'sidebar-link') + '" data-page="glossary">glossary</a>'
     + '<a href="' + p('articles.html') + '" class="' + sidebarActiveClass('articles', 'sidebar-link') + '" data-page="articles">articles</a>'
     + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">contributions</a>'
+    + '<a href="' + p('research/project_master_dossier/index.html') + '" class="' + sidebarActiveClass('dossier', 'sidebar-link') + '" data-page="dossier">dossier</a>'
     + '</div>'
 
     + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">visualize</div>'
