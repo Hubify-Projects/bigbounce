@@ -133,4 +133,53 @@ This pattern is the core of what makes the research program work. It should be t
 
 ---
 
+---
+
+## Strategic Rules: The Four-Question Test
+
+Before opening ANY new research branch, it must pass all four:
+
+1. **Does this introduce genuinely new physics?** (not just a rewrite)
+2. **Does it have a plausible route to a technically natural tiny scale?**
+3. **Does it predict something distinctive?** (not just another generic DE or ALP effect)
+4. **If it fails, is that failure still a publishable result?**
+
+If "no" on 2 or 3 → do not open. This prevents branch-proliferation.
+
+**What NOT to do:**
+- No more minimal EC+Holst reshuffles
+- No branches that just move fine-tuning around
+- No generic bump/wiggle feature searches
+- No ALP-equivalent predictions presented as spin-torsion content
+
+---
+
+## Sourced Quotes (from project memory and CLAUDE.md)
+
+**On never stopping at failure:**
+> "Continue researching until genuine positive results are found. Not 'until publication-ready.' Not 'until grant cycle ends.' Not 'until it seems hopeless.' Until actual positive results are found." — CLAUDE.md
+
+**On the bounce portfolio pivot:**
+> "Old framing: 'Our ECH Model B predicts f_NL = -35/8. Single point of failure.' New framing: 'Bounce cosmology has a portfolio of testable predictions across multiple models, each optimized for different observational channels.'" — bounce_portfolio_strategy.md
+
+**On persistence across conversation degradation:**
+> "Always document the FULL execution plan in memory files at the START of a work stream, not after confusion arises." — feedback_persist_plans_dont_rediscover.md
+
+**On the window:**
+> "The window is roughly 2025-2027. Maybe 18 months. Maybe less. Every week that passes without publishing is a week closer to someone else publishing first." — The Window article
+
+**On scale:**
+> "Run autoencoder anomaly detection on every major public astronomical dataset. Under $2,000 total. Less than a single night of traditional telescope time." — infrastructure.html
+
+---
+
+## The Unbending Core Directive
+
+From CLAUDE.md:
+> "After negative results, always propose the next research direction that could yield a positive discovery. Treat barriers as constraints that narrow the search space, not as conclusions. Continue researching until genuine positive results are found."
+
+This is not stubbornness. It's a specific scientific methodology: negative results are information about where the answer ISN'T, which tells you where to look next.
+
+---
+
 *Document created March 2026. To be updated as new patterns emerge.*
