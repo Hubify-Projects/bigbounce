@@ -277,17 +277,11 @@ The iteration happens at a HIGHER level:
 
 The results.tsv pattern is fine for logging experiment parameters and outcomes, but the AUTO-RESEARCH LOOP itself should be our 11-step pipeline template (Gap 1), not Karpathy's hyperparameter search loop.
 
-### Wrong 2: "Build Locally First" Might Be Backwards
+### ~~Wrong 2: "Build Locally First" Might Be Backwards~~ CORRECTION: Fly.io Is Correct
 
-The bigbounce project proves that Claude Code running LOCALLY on Houston's machine is already the working pattern. We SSH to RunPod for GPU, push to GitHub for deployment, and everything works.
+**The plan is RIGHT to deploy to Fly.io from the start.** Local-only doesn't scale to the vision of waking up to overnight discoveries, having other agents provide feedback, or running a true research platform. The Fly.io machines ARE the right home for Claude Code terminals.
 
-**For Phase 1, don't deploy to Fly.io.** Instead:
-1. Run 2-3 Claude Code sessions locally (one per project)
-2. Each has its own terminal, its own project directory, its own CLAUDE.md
-3. The Hubify Lab dashboard reads from Convex (heartbeats + state)
-4. Each Claude Code session writes to Convex (progress, findings, activity)
-
-**Add Fly.io machines LATER** (Phase 3+) when you need 24/7 autonomous operation. Don't introduce deployment complexity before the core pipeline works for 2+ projects.
+The key is to **validate with a real project immediately** — deploy SDSS DR18 as the first Fly.io machine with Claude Code + pipeline template + CLAUDE.md, and let it run. If it produces results overnight, the architecture works. If not, you learn what's missing before scaling to 5+ projects. Don't build infrastructure in isolation; build it WITH a real research project running on it.
 
 ### Wrong 3: Agent Personality System Is Over-Designed for Phase 1
 
@@ -331,27 +325,28 @@ The plan should explicitly state this boundary.
 8. Extract LaTeX paper management workflow
 9. Document all of these in the bigbounce project-context/ (some already done)
 
-**Phase 1: Second Project (SDSS DR18) Running Locally**
+**Phase 1: Second Project (SDSS DR18) on Fly.io — Prove the Architecture**
 1. Create Hubify-Projects/sdss-dr18 repo with extracted templates
 2. Write SDSS-specific CLAUDE.md
 3. Create Vercel site: sdss-dr18.hubify.app
-4. Run Claude Code locally on SDSS project (separate terminal)
+4. Deploy Fly.io machine with Claude Code + pipeline template
 5. Heartbeat to Convex for dashboard visibility
 6. GPU on RunPod when needed
-7. VERIFY: the full pipeline works end-to-end for a second survey
+7. VERIFY: the full pipeline works end-to-end overnight on Fly.io
+8. This is the architecture validation — if SDSS produces results autonomously, the platform works
 
-**Phase 2: Dashboard That Shows Both Projects**
+**Phase 2: Dashboard + Human-in-the-Loop**
 1. Build the morning briefing page
 2. Build per-project status pages
 3. Build compute monitoring (RunPod API integration)
 4. Build global chat (scoped to project or global)
 5. Build activity timeline (auto-generated from git + Convex)
+6. Add autonomous research loop with human-in-the-loop gates
 
-**Phase 3: Fly.io Deployment for 24/7 Operation**
-1. Deploy Claude Code terminals to Fly.io (one per project)
-2. Add autonomous research loop with human-in-the-loop gates
-3. Add cron-driven agent personalities (now that the pipeline is proven)
-4. Add multi-model review automation
+**Phase 3: Agent Personalities + Multi-Model Review**
+1. Add cron-driven agent personalities (now that the pipeline is proven)
+2. Add multi-model review automation
+3. Cross-project intelligence (learnings propagation)
 
 **Phase 4: Scale to 5+ Projects**
 1. Launch eROSITA, LAMOST, Planck, NEOWISE
@@ -389,7 +384,7 @@ If the CLAUDE.md is good, Claude Code will produce good research. If it's bad, n
 
 2. **Start with Phase 0: extract patterns from bigbounce.** Don't build infrastructure until you've codified what the infrastructure needs to support.
 
-3. **Phase 1 should be a second project (SDSS) running LOCALLY**, not a Fly.io deployment. Prove the pipeline works for 2 surveys before adding deployment complexity.
+3. **Phase 1 should be SDSS DR18 deployed on Fly.io** — validate the architecture with a real project running autonomously overnight, not in isolation.
 
 4. **Heavy data in Parquet on B2, metadata in Convex.** Don't try to put 17.65M rows in Convex.
 
