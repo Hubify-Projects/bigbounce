@@ -57,8 +57,9 @@ BATCH_SIZE = 1000  # Convex mutation limit per call
 MAX_RETRIES = 5    # Retries per batch on transient failures
 RETRY_BACKOFF = 2  # Exponential backoff base (seconds)
 
-# Expected Parquet columns (input names)
-REQUIRED_COLUMNS = ["dr8_id", "ra", "dec", "p_cw", "p_ccw", "p_ns", "class", "confidence"]
+# Expected Parquet columns (input names) — ra/dec optional (added in Phase 2)
+REQUIRED_COLUMNS = ["dr8_id", "p_cw", "p_ccw", "p_ns", "class", "confidence"]
+OPTIONAL_COLUMNS = ["ra", "dec"]
 
 # Convex function paths
 IMPORT_MUTATION = "galaxies:importBatch"
@@ -129,14 +130,18 @@ def load_catalog(parquet_path: str) -> pd.DataFrame:
     if missing:
         raise ValueError(f"Missing required columns: {missing}")
 
-    # Select and rename columns
-    df = df[REQUIRED_COLUMNS].copy()
-    df = df.rename(columns={"class": "classification"})
+    # Select and rename columns (only use what's available)
+    cols_to_use = [c for c in REQUIRED_COLUMNS if c in df.columns]
+    df = df[cols_to_use].copy()
+    if "class" in df.columns:
+        df = df.rename(columns={"class": "classification"})
 
     # Validate types — coerce to native Python types for JSON serialization
     df["dr8_id"] = df["dr8_id"].astype(str)
-    df["ra"] = df["ra"].astype(float)
-    df["dec"] = df["dec"].astype(float)
+    if "ra" in df.columns:
+        df["ra"] = df["ra"].astype(float)
+    if "dec" in df.columns:
+        df["dec"] = df["dec"].astype(float)
     df["p_cw"] = df["p_cw"].astype(float)
     df["p_ccw"] = df["p_ccw"].astype(float)
     df["p_ns"] = df["p_ns"].astype(float)
@@ -148,10 +153,12 @@ def load_catalog(parquet_path: str) -> pd.DataFrame:
         "Invalid classification values found"
     assert (df["confidence"] >= 0).all() and (df["confidence"] <= 1).all(), \
         "Confidence values out of [0,1] range"
-    assert (df["ra"] >= 0).all() and (df["ra"] < 360).all(), \
-        "RA values out of [0,360) range"
-    assert (df["dec"] >= -90).all() and (df["dec"] <= 90).all(), \
-        "Dec values out of [-90,90] range"
+    if "ra" in df.columns:
+        assert (df["ra"] >= 0).all() and (df["ra"] < 360).all(), \
+            "RA values out of [0,360) range"
+    if "dec" in df.columns:
+        assert (df["dec"] >= -90).all() and (df["dec"] <= 90).all(), \
+            "Dec values out of [-90,90] range"
 
     # Drop any rows with NaN values (safety)
     n_before = len(df)

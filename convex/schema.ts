@@ -113,4 +113,17 @@ export default defineSchema({
     timestamp: v.number(),
   }).index("by_path", ["path", "timestamp"])
     .index("by_timestamp", ["timestamp"]),
+
+  // ── Galaxy Chirality Catalog (8.47M galaxies) ──
+  galaxies: defineTable({
+    dr8_id: v.string(),
+    p_cw: v.float64(),
+    p_ccw: v.float64(),
+    p_ns: v.float64(),
+    classification: v.string(),  // "CW" | "CCW" | "NOT_SPIRAL"
+    confidence: v.float64(),
+  })
+    .index("by_classification", ["classification"])
+    .index("by_confidence", ["confidence"])
+    .index("by_dr8_id", ["dr8_id"]),
 });

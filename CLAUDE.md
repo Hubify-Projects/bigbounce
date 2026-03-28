@@ -149,6 +149,12 @@ When the user says **"update the site"** or **"sync the website"** or **"update 
 - Galaxy spin: `research/paper2/wp5_spin_amplitude/data/galaxy_spin_counts.csv`
 - Spreadsheets: `public/spreadsheets/*.xlsx` and `*.csv`
 
+## GPU Inference Playbook
+
+**READ BEFORE any large-scale GPU inference job:** `project-context/gpu-inference-playbook.md`
+
+Key rule: Always use `torch.utils.data.DataLoader` with `num_workers=16, pin_memory=True, prefetch_factor=4` for image inference. This gave us a **32x speedup** (29 min → 65s per 44K-image shard) on the galaxy chirality pipeline. Never use serial PIL decoding, `ProcessPoolExecutor`, or HuggingFace streaming for production inference.
+
 ## Commands
 
 ### Local Development

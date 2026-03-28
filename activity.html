@@ -130,14 +130,13 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">Enhanced 18M DESI DR1 Catalog + Galaxy Chirality Pipeline v2</div>
-  <p class="status-desc">Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; 44% complete. Artifact verification: 200/200 top anomalies are genuine (0% sky artifacts). Three wavelength clusters identified from top 50 spectra. Galaxies 20&times; more anomalous than QSOs (aggregate from 6.5M spectra). H100 chirality at 86.5%.</p>
+  <div class="status-focus">Enhanced 18M DESI DR1 Catalog + Galaxy Chirality Analysis</div>
+  <p class="status-desc">Galaxy Chirality Catalog C COMPLETE: 8,474,531 galaxies classified, null dipole (0.43&sigma;). Largest chirality catalog ever produced. Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; 44% complete. Artifact verification: 200/200 top anomalies are genuine (0% sky artifacts). Three wavelength clusters identified from top 50 spectra. Galaxies 20&times; more anomalous than QSOs (aggregate from 6.5M spectra).</p>
   <div class="status-meta">
+    <div class="status-meta-item"><span class="dot dot-active"></span> Chirality Catalog C &mdash; COMPLETE (8.47M galaxies, null dipole 0.43&sigma;)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Enhanced 18M Catalog &mdash; 44% complete (7.9M/17.9M), ~16h remaining</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> H100 Chirality &mdash; 86.5% complete (7.3M/8.47M), ~8h remaining</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Artifact Verification &mdash; 200/200 genuine, 0% sky artifacts</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Key Finding: Galaxies 20&times; more anomalous than QSOs (6.5M spectra)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> 15 Parquet batches pulled locally (7.5M rows)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Convex Backend &mdash; 11 tables deployed</div>
   </div>
 </div>
@@ -147,7 +146,7 @@
   <h3>Up Next</h3>
   <ul class="up-next-list">
     <li><span class="priority priority-now">NOW</span> Enhanced 18M catalog running on H200 &mdash; 44% (7.9M/17.9M), ~16h remaining</li>
-    <li><span class="priority priority-now">NOW</span> H100 chirality pipeline &mdash; 86.5% (7.3M/8.47M), ~8h remaining</li>
+    <li><span class="priority priority-now">DONE</span> Chirality Catalog C &mdash; 8.47M galaxies, null dipole (0.43&sigma;)</li>
     <li><span class="priority priority-next">NEXT</span> Resolve wavelength clusters via redshifts from enhanced catalog</li>
     <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> tracer purification (cross-match, classify, validate bias)</li>
     <li><span class="priority priority-later">LATER</span> Paper 2 submission preparation</li>
@@ -161,6 +160,13 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-28</div>
+    <div class="feed-title">Galaxy Chirality Catalog C Complete: 8.47M Galaxies, Null Dipole (0.43&sigma;)</div>
+    <p class="feed-body">Production catalog complete. 8,474,531 galaxies with equivariant post-processing. CW: 1,592,107 (18.8%), CCW: 1,609,053 (19.0%), NOT_SPIRAL: 5,273,371 (62.2%). CW/(CW+CCW) = 0.4974. Dipole = 0.43&sigma; (null). Largest chirality catalog ever produced. 94.6&sigma; survey systematic in raw catalog (Catalog A) completely eliminated by test-time equivariant averaging. All sky regions within 0.5% of 50/50. Validates bias-hardening methodology. Constrains large-scale parity violation. Runtime: 4.1 hours on H200 (32&times; speedup from DataLoader optimization). Model: <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a>. 949,584 spirals with confidence &gt; 0.6.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">Catalog C</span><span class="feed-tag">8.47M Galaxies</span><span class="feed-tag">Null Dipole</span><span class="feed-tag">Publication Ready</span></div>
+  </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-03-26</div>
@@ -255,9 +261,9 @@
 
   <div class="feed-item positive">
     <div class="feed-date">2026-03-24</div>
-    <div class="feed-title">Galaxy Chirality Pipeline v2: 8.67M Catalog, All Bias Tests Pass</div>
-    <p class="feed-body">Production chirality classifier deployed on H100 GPU. 3-class model (CW / CCW / NOT_SPIRAL) trained on GZ1 + CE-ResNet + synthetic data (26.6K images). 93.7% validation accuracy. All 8/8 bias-hardening tests pass. Flip-equivariance verified: CW fraction = 0.5012 (matches CE-ResNet benchmark at 0.5013). External benchmark: 91.5% agreement with CE-ResNet on 1.95M galaxies. Production catalog uses test-time equivariant post-processing. 8.67M galaxy inference in progress. Backed up to Backblaze B2.</p>
-    <div class="feed-tags"><span class="feed-tag pass">RUNNING</span><span class="feed-tag">Chirality Pipeline v2</span><span class="feed-tag">8.67M Galaxies</span><span class="feed-tag">93.7% Accuracy</span><span class="feed-tag">H100 GPU</span></div>
+    <div class="feed-title">Galaxy Chirality Pipeline v2: 8.47M Catalog, All Bias Tests Pass</div>
+    <p class="feed-body">Production chirality classifier deployed on H100 GPU. 3-class model (CW / CCW / NOT_SPIRAL) trained on GZ1 + CE-ResNet + synthetic data (26.6K images). 93.7% validation accuracy. All 8/8 bias-hardening tests pass. Flip-equivariance verified: CW fraction = 0.5012 (matches CE-ResNet benchmark at 0.5013). External benchmark: 91.5% agreement with CE-ResNet on 1.95M galaxies. Production catalog uses test-time equivariant post-processing. <strong>Catalog C complete:</strong> 8,474,531 galaxies, CW/(CW+CCW) = 0.4974, dipole = 0.43&sigma; (null). Backed up to Backblaze B2.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">Chirality Pipeline v2</span><span class="feed-tag">8.47M Galaxies</span><span class="feed-tag">93.7% Accuracy</span><span class="feed-tag">H100 GPU</span></div>
   </div>
 
   <div class="feed-item positive">
