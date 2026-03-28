@@ -304,55 +304,53 @@ The plan should explicitly state this boundary.
 
 ---
 
-## WHAT'S MISSING FROM THE IMPLEMENTATION PHASES
+## IMPLEMENTATION: BUILD THE FULL SYSTEM NOW
 
-### The plan's phases are:
-- A: Local Dev Template
-- B: Convex Schema Extensions
-- C: Dashboard Pages
-- D: Deploy First Non-BigBounce Project
+No phases. No "we'll add this later." Build the complete system as one coherent platform. Everything below is part of the SAME build.
 
-### What should ACTUALLY happen:
-
-**Phase 0: Extract Patterns from BigBounce (BEFORE building anything)**
-1. Extract the pipeline template (11 steps) into a reusable scaffold
+### Extract Patterns from BigBounce
+1. Extract the 11-step pipeline template into a reusable scaffold
 2. Extract checkpoint/resume utilities into a shared library
-3. Extract cross-reference engine into a shared module
+3. Extract cross-reference engine (6 databases) into a shared module
 4. Extract auto-sync script into a parameterized template
 5. Extract CLAUDE.md template with research directives + houstons-approach
 6. Extract the web explorer pattern (anomaly-explorer as reference implementation)
 7. Extract figure generation scripts
 8. Extract LaTeX paper management workflow
-9. Document all of these in the bigbounce project-context/ (some already done)
 
-**Phase 1: Second Project (SDSS DR18) on Fly.io — Prove the Architecture**
-1. Create Hubify-Projects/sdss-dr18 repo with extracted templates
-2. Write SDSS-specific CLAUDE.md
-3. Create Vercel site: sdss-dr18.hubify.app
-4. Deploy Fly.io machine with Claude Code + pipeline template
-5. Heartbeat to Convex for dashboard visibility
-6. GPU on RunPod when needed
-7. VERIFY: the full pipeline works end-to-end overnight on Fly.io
-8. This is the architecture validation — if SDSS produces results autonomously, the platform works
+### Platform Infrastructure
+1. Fly.io machine template for Claude Code research terminals (per project)
+2. Convex schema: lab_projects, experiment_runs, models, datasets, papers, heartbeats, cross_project_anomalies, agent_activity, guardrail_triggers
+3. SDSS DR18 as the first project deployed on the platform (real research, not a test)
+4. Per-project: GitHub repo, Vercel site, Fly.io machine, RunPod access, B2 bucket path
+5. Heartbeat system: every machine reports to Convex every 5-15 minutes
 
-**Phase 2: Dashboard + Human-in-the-Loop**
-1. Build the morning briefing page
-2. Build per-project status pages
-3. Build compute monitoring (RunPod API integration)
-4. Build global chat (scoped to project or global)
-5. Build activity timeline (auto-generated from git + Convex)
-6. Add autonomous research loop with human-in-the-loop gates
+### Dashboard & Human-in-the-Loop
+1. Morning briefing page (narrative-style, framing failures as openings)
+2. Per-project status pages (pipelines, models, datasets, papers, figures, explorer links)
+3. Compute monitoring (RunPod pods, Fly.io machines, costs, budget remaining)
+4. Global chat with project scoping + @personality routing
+5. Activity timeline auto-generated from git + Convex
+6. Agent feed with personality commentary
 
-**Phase 3: Agent Personalities + Multi-Model Review**
-1. Add cron-driven agent personalities (now that the pipeline is proven)
-2. Add multi-model review automation
-3. Cross-project intelligence (learnings propagation)
+### Agent System & Guardrails
+1. Agent personalities (houston-relentless, skeptic, optimizer, infra) — prompt-based initially, cron-driven as they prove value
+2. Multi-model review pipeline (ChatGPT + Gemini + DeepSeek on significant findings)
+3. Feedback loop guards (anti-premature-closure, anti-conservative-default, pro-optimization, multi-model validation)
+4. Budget guardian (RunPod API every 15 min, warn at 80%, flag at 100%, NEVER auto-terminate)
 
-**Phase 4: Scale to 5+ Projects**
-1. Launch eROSITA, LAMOST, Planck, NEOWISE
-2. Cross-project correlation system
-3. Budget optimization (spot instances, scheduling)
-4. Collective intelligence (learnings from one project improve others)
+### Cross-Project Intelligence
+1. Spatial correlation: when Project A finds an anomaly, check all other project catalogs
+2. Learning propagation: optimizations discovered in one project shared to others (e.g., the 32x DataLoader speedup)
+3. Ideas backlog per project, promotable to full project when resources allow
+
+### Research Tooling (per project)
+1. Interactive web explorer (anomaly browser, data viewer, figure gallery)
+2. LaTeX paper management (compilation, version tracking, review cycles)
+3. Figure generation pipeline (scripts → PNGs → paper + website)
+4. HuggingFace publishing workflow (model cards, dataset cards, versioning)
+
+All of this ships together. SDSS DR18 is the first project that runs on it — real science from day one, not infrastructure-then-maybe-research.
 
 ---
 
@@ -384,7 +382,7 @@ If the CLAUDE.md is good, Claude Code will produce good research. If it's bad, n
 
 2. **Start with Phase 0: extract patterns from bigbounce.** Don't build infrastructure until you've codified what the infrastructure needs to support.
 
-3. **Phase 1 should be SDSS DR18 deployed on Fly.io** — validate the architecture with a real project running autonomously overnight, not in isolation.
+3. **Build the full system now, not in phases.** SDSS DR18 should be the first project running on the complete platform from day one.
 
 4. **Heavy data in Parquet on B2, metadata in Convex.** Don't try to put 17.65M rows in Convex.
 
