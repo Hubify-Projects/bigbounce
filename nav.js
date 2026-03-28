@@ -59,6 +59,7 @@
   else if (path.indexOf('/activity') !== -1) activePage = 'activity';
   else if (path.indexOf('/status') !== -1) activePage = 'status';
   else if (path.indexOf('/speculations') !== -1) activePage = 'speculations';
+  else if (path.indexOf('/infrastructure') !== -1) activePage = 'infrastructure';
   else if (path.indexOf('/sitemap') !== -1) activePage = 'sitemap';
   else if (path.indexOf('/review') !== -1) activePage = 'review';
   else if (path.indexOf('/chat') !== -1) activePage = 'astro';
@@ -122,6 +123,7 @@
 
     + '<div class="sidebar-sep"></div>'
     + '<a href="' + p('speculations.html') + '" class="' + sidebarActiveClass('speculations', 'sidebar-link') + '" data-page="speculations">speculations</a>'
+    + '<a href="' + p('infrastructure.html') + '" class="' + sidebarActiveClass('infrastructure', 'sidebar-link') + '" data-page="infrastructure">infrastructure</a>'
     + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
     + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
     + '<a href="' + p('sitemap.html') + '" class="' + sidebarActiveClass('sitemap', 'sidebar-link') + '" data-page="sitemap">sitemap</a>'

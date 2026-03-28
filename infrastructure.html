@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrastructure — BigBounce Research Program</title>
+<meta name="description" content="Complete technical infrastructure behind the BigBounce research program: GPU compute, AI pipelines, data storage, cross-matching, and the Hubify Lab platform vision.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="nav.js" defer></script>
+<style>
+  .infra-card { padding:20px; margin-bottom:16px; border-radius:8px; background:var(--bg-subtle,#f8f9fa); }
+  .infra-card h4 { margin:0 0 8px 0; font-family:var(--font-sans); }
+  .infra-card p { margin:0 0 6px 0; font-size:14px; line-height:1.65; }
+  .infra-card code { font-size:13px; background:var(--bg,#fff); padding:2px 6px; border-radius:3px; border:1px solid var(--border,#e5e7eb); }
+  .stack-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin:20px 0; }
+  .flow-box { background:var(--bg-subtle,#f5f5f5); border-radius:8px; padding:20px; font-family:var(--font-mono); font-size:13px; line-height:2; margin:20px 0; }
+  .layer-header { padding:10px 20px; border-radius:8px; font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; margin-top:32px; margin-bottom:16px; }
+  .l-compute { background:#1e3a5f; color:#93c5fd; }
+  .l-data { background:#1a2e1a; color:#86efac; }
+  .l-ai { background:#3b1a45; color:#d8b4fe; }
+  .l-platform { background:#451a1a; color:#fca5a5; }
+  .l-human { background:#1a3545; color:#67e8f9; }
+  [data-theme="light"] .l-compute { background:#dbeafe; color:#1e3a5f; }
+  [data-theme="light"] .l-data { background:#dcfce7; color:#166534; }
+  [data-theme="light"] .l-ai { background:#f3e8ff; color:#581c87; }
+  [data-theme="light"] .l-platform { background:#fee2e2; color:#991b1b; }
+  [data-theme="light"] .l-human { background:#cffafe; color:#155e75; }
+</style>
+</head>
+<body>
+
+<main class="container">
+
+<div class="hero">
+  <p class="text-xs sans" style="margin-bottom: 8px;">Technical Reference &middot; Updated March 2026</p>
+  <h1>Infrastructure</h1>
+  <p class="subtitle">The Complete Technical Stack Behind the BigBounce Research Program</p>
+  <div class="meta">
+    <span class="badge badge-accent">TECHNICAL</span>
+    <span class="badge badge-neutral">Houston Golden &middot; Hubify Lab</span>
+  </div>
+</div>
+
+<hr>
+
+<section class="section">
+<h2>System Architecture</h2>
+<p>The research platform is built on five layers: compute (GPUs), data (archives + storage), AI models (autoencoders + classifiers), platform (orchestration + UI), and the human loop (researcher + multi-model review).</p>
+
+<div class="flow-box">
+<strong>The Pipeline Pattern (repeatable per survey):</strong><br>
+Public Archive (DESI, SDSS, Planck, etc.)<br>
+&nbsp;&nbsp;&rarr; Download + preprocess (survey-specific FITS handling)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&rarr; GPU inference (autoencoder / classifier / time-series)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Anomaly catalog (Parquet, scored + classified)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Cross-reference (SIMBAD, NED, Gaia, AllWISE, Milliquas, SDSS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Interactive explorer (web UI + Convex real-time DB)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Human review + multi-model analysis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Paper + HuggingFace data release
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="layer-header l-compute">Layer 1: Compute</div>
+
+<section class="section">
+<div class="stack-grid">
+  <div class="infra-card">
+    <h4>RunPod GPU Pods</h4>
+    <p><strong>H200 SXM</strong> &mdash; 150GB VRAM, ~$3-5/hr. Primary inference engine.</p>
+    <p><strong>H100 SXM</strong> &mdash; 80GB VRAM, ~$2-3/hr. Chirality inference.</p>
+    <p><strong>A100 SXM</strong> &mdash; 80GB VRAM, ~$1.5/hr. Backup/overflow.</p>
+    <p>On-demand provisioning via RunPod API. SSH access. tmux for persistent sessions. Auto-checkpoint every 10 pixels.</p>
+    <p><code>RUNPOD_API_KEY</code> in <code>.env.local</code></p>
+  </div>
+  <div class="infra-card">
+    <h4>Local Machine</h4>
+    <p>macOS workstation. Python 3.x, PyTorch, astropy, healpy. Used for analysis, cross-matching, visualization, and website development.</p>
+    <p><strong>Claude Code</strong> &mdash; Primary development environment. AI-assisted pipeline development, debugging, and infrastructure management.</p>
+  </div>
+  <div class="infra-card">
+    <h4>Fly.io Machines</h4>
+    <p>Hubify platform infrastructure. Provisioned machines with OpenClaw/Paperclip agent framework. Available for agent orchestration and persistent compute.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="layer-header l-data">Layer 2: Data</div>
+
+<section class="section">
+<div class="stack-grid">
+  <div class="infra-card">
+    <h4>Input: Public Archives</h4>
+    <p><strong>DESI DR1</strong> &mdash; 17.65M spectra, healpix-organized FITS, <code>data.desi.lbl.gov</code></p>
+    <p><strong>SDSS DR18</strong> &mdash; 5M spectra (API currently down)</p>
+    <p><strong>LAMOST DR10</strong> &mdash; 20M spectra</p>
+    <p><strong>Planck PR4</strong> &mdash; Full-sky CMB maps, 9 frequencies</p>
+    <p><strong>Legacy Survey</strong> &mdash; Galaxy images for 195K anomaly cutouts</p>
+    <p><strong>Smith42/galaxies</strong> &mdash; 8.47M galaxy images for chirality</p>
+  </div>
+  <div class="infra-card">
+    <h4>Cross-Reference Databases</h4>
+    <p><strong>SIMBAD</strong> &mdash; TAP queries via CDS (<code>simbad.u-strasbg.fr</code>)</p>
+    <p><strong>NED</strong> &mdash; Cone search API (<code>ned.ipac.caltech.edu</code>)</p>
+    <p><strong>AllWISE</strong> &mdash; VizieR TAP (<code>II/328/allwise</code>)</p>
+    <p><strong>Milliquas</strong> &mdash; VizieR TAP (<code>VII/290/catalog</code>)</p>
+    <p><strong>Gaia DR3</strong> &mdash; ESA TAP (<code>gea.esac.esa.int</code>)</p>
+    <p><strong>SDSS</strong> &mdash; SkyServer API (when available)</p>
+  </div>
+  <div class="infra-card">
+    <h4>Output: Storage &amp; Backup</h4>
+    <p><strong>Local disk</strong> &mdash; Primary working copies</p>
+    <p><strong>Backblaze B2</strong> &mdash; <code>b2://bigbounce/</code> cloud backup</p>
+    <p><strong>HuggingFace</strong> &mdash; <code>bamfai/</code> org, models + datasets</p>
+    <p><strong>Convex</strong> &mdash; Real-time DB for pipeline state, anomaly reviews, comments</p>
+    <p><strong>GitHub</strong> &mdash; <code>Hubify-Projects/bigbounce</code> code + docs</p>
+    <p><em>Rule: every artifact exists in 3+ locations.</em></p>
+  </div>
+</div>
+
+<div class="infra-card">
+  <h4>Data Formats</h4>
+  <p><strong>Input:</strong> FITS (spectra, images, CMB maps), CSV, JSON</p>
+  <p><strong>Processing:</strong> PyTorch tensors, numpy arrays</p>
+  <p><strong>Output:</strong> Parquet (columnar, zstd compressed, ~367MB per 500K-row batch), JSON (metadata, checkpoints)</p>
+  <p><strong>Catalogs:</strong> 45-173 columns per row including anomaly scores, 128-dim latent vectors, pipeline redshifts, photometry, morphology, derived classifications</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="layer-header l-ai">Layer 3: AI Models</div>
+
+<section class="section">
+<div class="stack-grid">
+  <div class="infra-card">
+    <h4>BigAE &mdash; Spectral Autoencoder</h4>
+    <p><strong>Architecture:</strong> 496 &rarr; 512 &rarr; 256 &rarr; 128 &rarr; 128 (latent) &rarr; 128 &rarr; 256 &rarr; 512 &rarr; 496</p>
+    <p><strong>Parameters:</strong> ~660K</p>
+    <p><strong>Training:</strong> 47K DESI spectra, MSE loss, dropout 0.1-0.15</p>
+    <p><strong>Inference:</strong> 896 spectra/sec (GPU), ~24h for 17.65M</p>
+    <p><strong>Anomaly metric:</strong> Reconstruction error (MSE), per-band (B/R/Z)</p>
+    <p><strong>HuggingFace:</strong> <code>bamfai/desi-spectral-anomaly-detector</code></p>
+  </div>
+  <div class="infra-card">
+    <h4>Chirality CNN v2</h4>
+    <p><strong>Architecture:</strong> ResNet-based, 3-class (CW/CCW/NOT_SPIRAL)</p>
+    <p><strong>Accuracy:</strong> 93.7%</p>
+    <p><strong>Bias tests:</strong> 8/8 passed (rotation, flip, color, crop, etc.)</p>
+    <p><strong>Equivariant CW fraction:</strong> 0.5012</p>
+    <p><strong>HuggingFace:</strong> <code>bamfai/galaxy-chirality-v2</code></p>
+  </div>
+  <div class="infra-card">
+    <h4>CMB Patch Autoencoder</h4>
+    <p><strong>Architecture:</strong> Conv autoencoder, 128-dim latent</p>
+    <p><strong>Parameters:</strong> ~1.1M</p>
+    <p><strong>Training:</strong> Planck SMICA patches (gnomonic projection)</p>
+    <p><strong>Status:</strong> Prototype, 42 anomalous patches found</p>
+  </div>
+</div>
+
+<div class="infra-card">
+  <h4>MCMC Infrastructure</h4>
+  <p><strong>Cobaya 3.6.1</strong> + <strong>CAMB 1.6.5</strong> for cosmological parameter estimation</p>
+  <p><strong>Chains:</strong> 424,181 raw samples across 4 dataset combinations (Full Tension, Planck+BAO+SN, Planck Only, w0-wa Quintom)</p>
+  <p><strong>Key results:</strong> &Delta;N<sub>eff</sub> = &minus;0.020 &plusmn; 0.169, w<sub>0</sub> = &minus;0.871 &plusmn; 0.061, w<sub>a</sub> = &minus;0.542 &plusmn; 0.247, P(quintom-B) = 98%</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="layer-header l-platform">Layer 4: Platform &amp; Orchestration</div>
+
+<section class="section">
+<div class="stack-grid">
+  <div class="infra-card">
+    <h4>Claude Code (Primary Driver)</h4>
+    <p>AI-assisted development environment with full filesystem access, SSH to GPU pods, Git operations, and tool orchestration. Handles pipeline development, debugging, infrastructure management, and research execution.</p>
+    <p><strong>Key capability:</strong> Sub-agents for parallel research tasks, background monitoring, automated syncing.</p>
+  </div>
+  <div class="infra-card">
+    <h4>Multi-Model Review Loop</h4>
+    <p>Research insights and analyses are bounced between multiple AI models for cross-validation:</p>
+    <p><strong>Claude Code</strong> &mdash; Primary executor, code, infrastructure</p>
+    <p><strong>ChatGPT (o1/o3)</strong> &mdash; Extended thinking, theoretical deep dives</p>
+    <p><strong>Gemini</strong> &mdash; Alternative perspectives (with appropriate skepticism)</p>
+    <p>Human researcher synthesizes insights from all models and pushes past conservative recommendations.</p>
+  </div>
+  <div class="infra-card">
+    <h4>Convex Real-Time Database</h4>
+    <p>Powers interactive features: anomaly explorer comments/reviews, pipeline state tracking, chirality catalog querying.</p>
+    <p><strong>Tables:</strong> anomalies, reviews, pipelineState, galaxies</p>
+    <p><strong>Dev:</strong> <code>impressive-quail-879.convex.cloud</code></p>
+  </div>
+  <div class="infra-card">
+    <h4>Website (Static + Convex)</h4>
+    <p><strong>Hosting:</strong> Netlify (auto-deploy from <code>main</code> branch)</p>
+    <p><strong>Domain:</strong> <code>bigbounce.hubify.app</code></p>
+    <p><strong>Stack:</strong> Static HTML/CSS/JS + Convex client SDK</p>
+    <p><strong>Pages:</strong> 40+ including explorers, articles, status, speculations</p>
+  </div>
+</div>
+
+<div class="infra-card">
+  <h4>Automation &amp; Monitoring</h4>
+  <p><strong>auto_sync_18M.sh</strong> &mdash; Runs every 2 hours, downloads completed batches from GPU pod, cleans up disk if &gt;7GB, detects completion</p>
+  <p><strong>Checkpoint/resume</strong> &mdash; Every pipeline saves state after each unit of work; any crash resumes from last good state</p>
+  <p><strong>Backup protocol</strong> &mdash; Every artifact saved to 3+ locations (local + B2 + HuggingFace/Convex/GitHub)</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="layer-header l-human">Layer 5: Human-in-the-Loop</div>
+
+<section class="section">
+<div class="infra-card">
+  <h4>The Houston Approach</h4>
+  <p>The critical differentiator is not the technology &mdash; it's the research methodology. Key principles:</p>
+  <ul style="font-size:14px; line-height:1.8;">
+    <li><strong>Never accept "publish the negative result"</strong> &mdash; failures narrow the search space; keep looking for positive discoveries</li>
+    <li><strong>Always do the harder thing</strong> &mdash; don't add 11 columns when you could add 45; don't scan 200K spectra when you could scan 18M</li>
+    <li><strong>Parallelize everything</strong> &mdash; run multiple research tracks simultaneously; don't wait for one to finish before starting the next</li>
+    <li><strong>Back up everywhere</strong> &mdash; data loss is the only unrecoverable failure</li>
+    <li><strong>Push past conservative AI recommendations</strong> &mdash; when Claude says "this is ready to publish," ask "what else could we add?"</li>
+    <li><strong>Bounce-model agnostic</strong> &mdash; when one model fails, pivot to another; the goal is proving bounce beats inflation, not defending one specific mechanism</li>
+    <li><strong>Multi-model cross-validation</strong> &mdash; use Claude, ChatGPT, and Gemini as complementary reviewers; synthesize the strongest insights from each</li>
+    <li><strong>Relentless optimism</strong> &mdash; 14 barriers closed? Good, that's 14 things we don't need to worry about anymore. What paths remain open?</li>
+  </ul>
+  <p style="margin-top:12px;"><a href="project-context/houstons-approach.md" style="font-size:14px;">Full methodology document &rarr;</a></p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+<h2>Current Pipeline Status</h2>
+<table style="width:100%; font-size:14px; border-collapse:collapse;">
+  <tr style="background:var(--bg-subtle);"><th style="text-align:left;padding:8px;">Pipeline</th><th style="text-align:left;padding:8px;">Status</th><th style="text-align:left;padding:8px;">Output</th></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P1: DESI DR1 Anomaly Scan</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">195,829 anomalies from 17.65M spectra</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P1+: Enhanced 18M Catalog</td><td style="padding:8px;">RUNNING (~88%)</td><td style="padding:8px;">173-column catalog, 29 batches written</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P2: Galaxy Chirality</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">8,474,531 galaxies classified</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">PA: CMB Patch Anomalies</td><td style="padding:8px;">PROTOTYPE</td><td style="padding:8px;">42 anomalous Planck patches</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">MCMC: w0-wa Quintom</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">50,880 samples, P(quintom-B)=98%</td></tr>
+  <tr><td style="padding:8px;">Cross-Match (6 databases)</td><td style="padding:8px;">PARTIAL</td><td style="padding:8px;">Top 10K done, full 195K pending</td></tr>
+</table>
+</section>
+
+<section class="section">
+<h2>Cost Summary</h2>
+<table style="width:100%; font-size:14px; border-collapse:collapse;">
+  <tr style="background:var(--bg-subtle);"><th style="text-align:left;padding:8px;">Item</th><th style="text-align:right;padding:8px;">Cost</th></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">DESI DR1 anomaly scan + enhanced catalog (H200)</td><td style="text-align:right;padding:8px;">~$200</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">Galaxy chirality 8.47M (H100)</td><td style="text-align:right;padding:8px;">~$80</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">MCMC chains (424K samples, 4 configs)</td><td style="text-align:right;padding:8px;">~$120</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">Backblaze B2 storage</td><td style="text-align:right;padding:8px;">~$5</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">Netlify hosting</td><td style="text-align:right;padding:8px;">Free</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">Claude Code / AI models</td><td style="text-align:right;padding:8px;">Subscription</td></tr>
+  <tr><td style="padding:8px;font-weight:600;">Total compute for 4 papers</td><td style="text-align:right;padding:8px;font-weight:600;">~$400</td></tr>
+</table>
+<p style="margin-top:12px;font-size:14px;color:var(--text-secondary);">Less than one night of traditional telescope time. Less than one month of a postdoc's salary.</p>
+</section>
+
+<footer style="text-align: center; padding: 32px 0; font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);">
+  <p>BigBounce Research Program &middot; Houston Golden &middot; Hubify Lab</p>
+  <p style="margin-top:4px;">Last updated March 2026</p>
+</footer>
+
+</main>
+</body>
+</html>
