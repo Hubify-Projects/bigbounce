@@ -5,13 +5,16 @@
 % Author: Houston Golden (BigBounce Research / Hubify Lab)
 % Date: March 2026
 % ============================================================
-\documentclass[twocolumn,twoside]{aastex631}
+\documentclass[twocolumn,11pt]{article}
 
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{xspace}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{authblk}
 
 % Convenience macros
 \newcommand{\fnl}{f_{\rm NL}}
@@ -25,20 +28,13 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small\xspace}
 
-\shorttitle{Galaxy Chirality Catalog: 8.47M Galaxies}
-\shortauthors{Golden}
-
 \begin{document}
 
 \title{No Evidence for Large-Scale Parity Violation in Galaxy Morphology:\\
 A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 
-\correspondingauthor{Houston Golden}
-\email{houston@hubify.com}
-
-\author[0000-0002-XXXX-XXXX]{Houston Golden}
-\affiliation{BigBounce Research / Hubify Lab}
-\affiliation{\url{https://bigbounce.hubify.app}}
+\author{Houston Golden}
+\affil{BigBounce Research / Hubify Lab \\ \url{https://bigbounce.hubify.app} \\ \texttt{houston@hubify.com}}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date, comprising
@@ -344,15 +340,18 @@ known source of spurious chirality asymmetry:
   $\CW/(\CW+\CCW)$ fraction among spirals must be $50\% \pm 10\%$.
 \end{enumerate}
 
-\begin{deluxetable}{llcc}
+\begin{table}[h!]
+\centering
+\begin{tabular}{llcc}
 \tablecaption{Bias hardening audit results (8/8~PASS).
   ``Raw'' denotes the single-pass model output; ``Eq.''\ denotes
   the equivariant-averaged value after test-time flip processing
   (Section~\ref{sec:tta}).\label{tab:bias_tests}}
-\tablehead{
-\colhead{Test} & \colhead{Metric} & \colhead{Result} & \colhead{Threshold}
+% header
+
+\textbf{Test} & \textbf{Metric} & \textbf{Result} & \textbf{Threshold}
 }
-\startdata
+\hline
 T1: Flip-swap & $\pcw$ correlation & 0.833 raw; 1.000 eq. & $>0.80$ \\
 T2: Rotation stability & Mean agreement & 89.8\% & $>80\%$ \\
 T3: Artifact rejection & Blank $\to$ \NS & 100\% & $>70\%$ \\
@@ -361,8 +360,9 @@ T5: Metadata leakage & $|\text{corr}(\pcw, \text{RA/Dec})|$ & $<\!0.04$ & $<0.10
 T6: Hemispheric null & CW frac.\ N vs.\ S diff. & 3.6\% & $<10\%$ \\
 T7: Calibration & Frac.\ at $>0.9$ conf. & 37.9\% & Qualitative \\
 T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 50.12\% eq. & $50 \pm 10\%$ \\
-\enddata
-\end{deluxetable}
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Catalog Tiers}
 \label{sec:tiers}
@@ -447,18 +447,22 @@ $\CW/(\CW+\CCW) = 0.4974$, consistent with exact parity to within
 0.26\%. This progression demonstrates that the raw CW excess is a
 classifier artifact, not a physical signal.
 
-\begin{deluxetable}{lcc}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcc}
 \tablecaption{Global CW fraction across catalog tiers.
   \label{tab:cw_frac}}
-\tablehead{
-\colhead{Tier} & \colhead{$\CW/(\CW+\CCW)$} & \colhead{Excess}
+% header
+
+\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess}
 }
-\startdata
+\hline
 A (raw)         & 0.5079 & $+0.79\%$ \\
 B (calibrated)  & 0.504  & $+0.4\%$ \\
 C (equivariant) & 0.4974 & $-0.26\%$ \\
-\enddata
-\end{deluxetable}
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Dipole Analysis}
 \label{sec:dipole}
@@ -505,22 +509,26 @@ HEALPix \texttt{anafast} estimator on the Catalog~C asymmetry map.
 The significance of each multipole is assessed relative to
 10,000 Monte Carlo null realizations (Table~\ref{tab:multipole}).
 
-\begin{deluxetable}{cccl}
+\begin{table}[h!]
+\centering
+\begin{tabular}{cccl}
 \tablecaption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant). Significance is relative to 10,000
   Monte Carlo null realizations.\label{tab:multipole}}
-\tablehead{
-\colhead{$\ell$} & \colhead{$C_\ell \times 10^{6}$} &
-\colhead{Significance} & \colhead{Interpretation}
+% header
+
+\textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$} &
+\textbf{Significance} & \textbf{Interpretation}
 }
-\startdata
+\hline
 1 & 3.82 & $2.75\sigmaunit$ & Marginal \\
 2 & 1.54 & $1.47\sigmaunit$ & Null \\
 3 & 1.81 & $1.63\sigmaunit$ & Null \\
 4 & 0.88 & $0.91\sigmaunit$ & Null \\
 5 & 1.12 & $1.22\sigmaunit$ & Null \\
-\enddata
-\end{deluxetable}
+\hline
+\end{tabular}
+\end{table}
 
 The $\ell = 1$ mode is the largest, at $2.75\sigmaunit$. While
 nominally suggestive, this does not exceed the $3\sigmaunit$ threshold
@@ -576,15 +584,18 @@ regions defined by RA quadrant and declination band. All regions are
 balanced to within 0.5\% of 50/50, confirming the absence of
 large-scale systematic bias.
 
-\begin{deluxetable}{lrcc}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrcc}
 \tablecaption{CW fraction by sky region (Catalog~C).
   All regions are within 0.5\% of exact parity.
   \label{tab:sky_balance}}
-\tablehead{
-\colhead{Region} & \colhead{$N_{\rm spiral}$} &
-\colhead{$\CW/(\CW+\CCW)$} & \colhead{$|\Delta|$}
+% header
+
+\textbf{Region} & \textbf{$N_{\rm spiral}$} &
+\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$}
 }
-\startdata
+\hline
 RA $[0^\circ, 90^\circ)$     & 628,411  & 0.4968 & 0.32\% \\
 RA $[90^\circ, 180^\circ)$   & 854,293  & 0.4979 & 0.21\% \\
 RA $[180^\circ, 270^\circ)$  & 912,106  & 0.4981 & 0.19\% \\
@@ -595,8 +606,9 @@ Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27\% \\
 Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25\% \\
 \hline
 \textbf{All sky}             & \textbf{3,321,795} & \textbf{0.4974} & \textbf{0.26\%} \\
-\enddata
-\end{deluxetable}
+\hline
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{fig_sky_regions.png}
@@ -959,34 +971,15 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \end{itemize}
 
 % ============================================================
-\begin{acknowledgments}
-This research used the DESI Legacy Imaging Surveys Data Release~8
-\citep{Dey:2019}; the Galaxy Zoo citizen science project
-\citep{Lintott:2008}; the Smith42/galaxies dataset on HuggingFace;
-and the CE-ResNet catalog of \citet{Jia:2023}. Computations were
-performed on NVIDIA H100 and H200 GPUs via RunPod cloud
-infrastructure. The HEALPix/\texttt{healpy} package
-\citep{Gorski:2005,Zonca:2019} was used for pixelization and
-power spectrum analysis. This work made use of Astropy
-\citep{Astropy:2022}, NumPy \citep{Harris:2020}, pandas
-\citep{McKinney:2010}, PyTorch \citep{Paszke:2019}, and the
-\texttt{timm} library \citep{Wightman:2019}.
-\end{acknowledgments}
+\section*{Acknowledgments}
+This research used the DESI Legacy Imaging Surveys Data Release~8;
+the Galaxy Zoo citizen science project; the Smith42/galaxies dataset on HuggingFace;
+and the CE-ResNet catalog of Jia et al.\ (2023). Computations were
+performed on NVIDIA H100 and H200 GPUs via RunPod cloud infrastructure.
 
-\facilities{DESI Legacy Imaging Surveys, HuggingFace, RunPod}
+\paragraph{Facilities:} DESI Legacy Imaging Surveys, HuggingFace, RunPod.
 
-\software{
-  Astropy \citep{Astropy:2022},
-  HEALPix/healpy \citep{Gorski:2005,Zonca:2019},
-  NumPy \citep{Harris:2020},
-  pandas \citep{McKinney:2010},
-  PyTorch \citep{Paszke:2019},
-  timm \citep{Wightman:2019}
-}
-
-% ============================================================
-\bibliography{chirality_refs}
-\bibliographystyle{aasjournal}
+\paragraph{Software:} Astropy, HEALPix/healpy, NumPy, pandas, PyTorch, timm.
 % ============================================================
 
 % ============================================================
