@@ -1,0 +1,11 @@
+{
+  "mae": 0.23330488095159962,
+  "rmse": 0.43232924470881384,
+  "sigma_nmad": 0.05707841278322271,
+  "outlier_fraction_15pct": 0.250625,
+  "n_train": 160000,
+  "n_test": 40000,
+  "n_trees": 30,
+  "max_depth": 15,
+  "model": "RandomForestRegressor"
+}
