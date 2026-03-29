@@ -1,11 +1,108 @@
 {
-  "mae": 0.23330488095159962,
-  "rmse": 0.43232924470881384,
-  "sigma_nmad": 0.05707841278322271,
-  "outlier_fraction_15pct": 0.250625,
-  "n_train": 160000,
-  "n_test": 40000,
-  "n_trees": 30,
-  "max_depth": 15,
-  "model": "RandomForestRegressor"
+  "description": "Predicting spectroscopic redshift from 128-dim autoencoder latent vectors",
+  "data": {
+    "source": "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/enhanced_18M_deduped",
+    "n_files": 46,
+    "total_raw": 22504897,
+    "n_after_quality_filter": 1000000,
+    "quality_cuts": "ZWARN=0, median_coadd_snr_r > 2, z > 0",
+    "n_features": 128,
+    "feature_columns": "lat_000 through lat_127",
+    "train_size": 800000,
+    "test_size": 200000,
+    "z_range": [
+      4.003198217361614e-09,
+      5.880029201507568
+    ],
+    "z_mean": 0.3970140880769527,
+    "z_median": 0.24115705490112305
+  },
+  "models": {
+    "HistGradientBoosting": {
+      "params": {
+        "max_iter": 300,
+        "max_depth": 15,
+        "learning_rate": 0.05,
+        "min_samples_leaf": 20,
+        "early_stopping": true
+      },
+      "training_time_s": 231.9,
+      "n_iter": 300,
+      "mae": 0.12279269259691666,
+      "rmse": 0.2883214261017723,
+      "r2": 0.721810232619398,
+      "sigma_nmad": 0.03942708655987369,
+      "bias": 0.024195247180854057,
+      "outlier_fraction_015": 0.12246,
+      "top_10_features": [
+        {
+          "dim": "lat_067",
+          "importance": 0.18049274930323478
+        },
+        {
+          "dim": "lat_004",
+          "importance": 0.030996598724301806
+        },
+        {
+          "dim": "lat_011",
+          "importance": 0.029408564738527886
+        },
+        {
+          "dim": "lat_073",
+          "importance": 0.024362288956574597
+        },
+        {
+          "dim": "lat_052",
+          "importance": 0.01780439837879244
+        },
+        {
+          "dim": "lat_060",
+          "importance": 0.01762343246625675
+        },
+        {
+          "dim": "lat_117",
+          "importance": 0.016659300055061353
+        },
+        {
+          "dim": "lat_096",
+          "importance": 0.015051467510117277
+        },
+        {
+          "dim": "lat_036",
+          "importance": 0.013876452866012311
+        },
+        {
+          "dim": "lat_108",
+          "importance": 0.012090055636748786
+        }
+      ]
+    },
+    "MLP": {
+      "params": {
+        "hidden_layers": [
+          256,
+          128,
+          64
+        ],
+        "activation": "relu",
+        "max_iter": 200,
+        "batch_size": 4096,
+        "learning_rate_init": 0.001
+      },
+      "training_time_s": 1230.7,
+      "n_iter": 74,
+      "mae": 0.09487401409068348,
+      "rmse": 0.2490223124609363,
+      "r2": 0.7924781454127748,
+      "sigma_nmad": 0.02793213523185231,
+      "bias": 0.016077806753702534,
+      "outlier_fraction_015": 0.07727
+    }
+  },
+  "best_model": "MLP",
+  "plots": [
+    "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/photo_z/photo_z_scatter.png",
+    "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/photo_z/photo_z_residuals.png",
+    "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/photo_z/photo_z_feature_importance.png"
+  ]
 }
