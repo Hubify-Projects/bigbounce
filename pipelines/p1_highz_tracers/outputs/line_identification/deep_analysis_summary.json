@@ -1,0 +1,19 @@
+{
+  "rest_frame_categories": {
+    "sub_lyman_limit": 6,
+    "lyman_forest_region": 33,
+    "uv_emission_region": 30,
+    "uv_iron_region": 4,
+    "optical_region": 6,
+    "nir_region": 4
+  },
+  "n_sub_lyman_limit": 6,
+  "n_lyman_forest": 33,
+  "n_uv_iron": 4,
+  "n_suspicious_redshift": 8,
+  "n_lya_velocity_matches": 16,
+  "lya_mean_velocity_kms": -1.0,
+  "n_matched_extended": 62,
+  "n_unmatched_extended": 21,
+  "total": 83
+}

@@ -1,0 +1,116 @@
+SPECTRAL LINE IDENTIFICATION -- GOLD ANOMALY CATALOG
+======================================================================
+
+METHODOLOGY
+----------------------------------------
+Match tolerance: 80 Angstrom (rest-frame)
+Number of reference lines: 35
+Rest-frame wavelength: lambda_obs / (1 + z)
+
+83-OBJECT PRIMARY CATALOG
+----------------------------------------
+Total: 83
+Matched: 68
+Unmatched: 15 (18.1%)
+Types: {'STAR': 3, 'QSO': 69, 'GALAXY': 11}
+
+Line counts:
+  Ly-beta                       :  26 ( 31.3%)
+  Ly-alpha                      :  16 ( 19.3%)
+  UNMATCHED                     :  15 ( 18.1%)
+  NV                            :  12 ( 14.5%)
+  SiIV                          :   7 (  8.4%)
+  CIV                           :   2 (  2.4%)
+  H-gamma                       :   2 (  2.4%)
+  H-alpha                       :   2 (  2.4%)
+  CaI                           :   1 (  1.2%)
+
+120-OBJECT EXTENDED CATALOG
+----------------------------------------
+Total: 120
+Matched: 69
+Unmatched: 51 (42.5%)
+Types: {'GALAXY': 70, 'QSO': 31, 'STAR': 19}
+
+Line counts:
+  UNMATCHED                     :  51 ( 42.5%)
+  Ly-beta                       :  12 ( 10.0%)
+  CIV                           :   9 (  7.5%)
+  H-gamma                       :   7 (  5.8%)
+  CIII]                         :   6 (  5.0%)
+  H-delta                       :   6 (  5.0%)
+  [NeIII]                       :   4 (  3.3%)
+  CaII K                        :   4 (  3.3%)
+  [OII]                         :   3 (  2.5%)
+  O2 A-band (telluric)          :   2 (  1.7%)
+  MgII                          :   2 (  1.7%)
+  HeII                          :   2 (  1.7%)
+  SiIV                          :   2 (  1.7%)
+  Ly-alpha                      :   2 (  1.7%)
+  [OI]                          :   2 (  1.7%)
+  CaII H                        :   2 (  1.7%)
+  [NII]                         :   1 (  0.8%)
+  H-alpha                       :   1 (  0.8%)
+  NaI D                         :   1 (  0.8%)
+  [OIII] 4959                   :   1 (  0.8%)
+
+UNMATCHED OBJECTS (most scientifically interesting)
+----------------------------------------
+  targetid=-260095289, z=3.2481, spectype=QSO, rest_wave=918.6A, score=8.41
+  targetid=-260091073, z=3.2467, spectype=QSO, rest_wave=915.9A, score=8.28
+  targetid=39637210621808589, z=-0.0000, spectype=STAR, rest_wave=8819.6A, score=7.25
+  targetid=39627815108215497, z=0.0001, spectype=STAR, rest_wave=5587.4A, score=7.19
+  targetid=39627746053195172, z=4.5576, spectype=QSO, rest_wave=933.6A, score=7.18
+  targetid=39627748016133080, z=0.7347, spectype=GALAXY, rest_wave=5467.7A, score=6.68
+  targetid=-115924235, z=5.3703, spectype=QSO, rest_wave=610.6A, score=6.67
+  targetid=39627580000702657, z=2.5141, spectype=QSO, rest_wave=2400.4A, score=6.66
+  targetid=-13870070, z=0.5990, spectype=GALAXY, rest_wave=3237.1A, score=6.61
+  targetid=-228643518, z=1.1802, spectype=GALAXY, rest_wave=1766.3A, score=6.58
+  targetid=-240671076, z=0.5140, spectype=GALAXY, rest_wave=2586.0A, score=6.52
+  targetid=-84016333, z=1.2857, spectype=GALAXY, rest_wave=2528.4A, score=6.52
+  targetid=-236853518, z=0.9183, spectype=GALAXY, rest_wave=2282.4A, score=6.43
+  targetid=616088599716167843, z=1.3997, spectype=GALAXY, rest_wave=3135.4A, score=6.26
+  targetid=39628342709717113, z=0.7848, spectype=GALAXY, rest_wave=2186.5A, score=6.15
+  targetid=-30721454, z=2.7991, spectype=QSO, rest_wave=2496.6A, score=6.08
+  targetid=39628251500380284, z=0.7717, spectype=GALAXY, rest_wave=2326.1A, score=6.07
+  targetid=-15800436, z=0.7375, spectype=GALAXY, rest_wave=2320.0A, score=5.96
+  targetid=39627849346326243, z=0.7874, spectype=GALAXY, rest_wave=2161.7A, score=5.95
+  targetid=39632941889882293, z=0.2619, spectype=GALAXY, rest_wave=3061.8A, score=5.91
+  targetid=39628402071699654, z=0.7711, spectype=GALAXY, rest_wave=2363.2A, score=5.90
+  targetid=616088888212980541, z=-0.0001, spectype=STAR, rest_wave=5588.5A, score=5.75
+  targetid=-228894088, z=5.1733, spectype=QSO, rest_wave=717.6A, score=5.65
+  targetid=39628357956010070, z=6.4767, spectype=QSO, rest_wave=513.3A, score=5.61
+  targetid=39627730878211251, z=0.7219, spectype=GALAXY, rest_wave=2116.9A, score=5.57
+  targetid=616093940453475403, z=0.6318, spectype=GALAXY, rest_wave=5718.3A, score=5.54
+  targetid=39636647024790951, z=1.0057, spectype=GALAXY, rest_wave=2105.9A, score=5.48
+  targetid=-57922492, z=1.3676, spectype=GALAXY, rest_wave=2446.4A, score=5.45
+  targetid=39633040263090376, z=4.4485, spectype=QSO, rest_wave=664.3A, score=5.40
+  targetid=-205833322, z=0.3549, spectype=GALAXY, rest_wave=3003.6A, score=5.38
+  targetid=39628007819707790, z=1.2143, spectype=GALAXY, rest_wave=1826.2A, score=5.37
+  targetid=39632931810971393, z=0.7947, spectype=GALAXY, rest_wave=2167.2A, score=5.35
+  targetid=39633191367084936, z=6.1956, spectype=QSO, rest_wave=806.7A, score=5.30
+  targetid=39633127475250050, z=1.6364, spectype=GALAXY, rest_wave=2196.9A, score=5.30
+  targetid=39627851875488435, z=0.7868, spectype=GALAXY, rest_wave=2025.6A, score=5.28
+  targetid=-203651076, z=0.5172, spectype=GALAXY, rest_wave=2699.2A, score=5.26
+  targetid=39627543703195060, z=0.3079, spectype=GALAXY, rest_wave=3131.2A, score=5.26
+  targetid=39628257338853539, z=0.8608, spectype=GALAXY, rest_wave=2346.0A, score=5.26
+  targetid=39627989616427941, z=0.9354, spectype=GALAXY, rest_wave=1989.7A, score=5.24
+  targetid=-29754122, z=0.7814, spectype=GALAXY, rest_wave=2233.9A, score=5.23
+  targetid=39627854434012501, z=0.5041, spectype=GALAXY, rest_wave=2902.5A, score=5.23
+  targetid=39628336116275738, z=0.7635, spectype=GALAXY, rest_wave=2504.6A, score=5.23
+  targetid=39633169590258797, z=1.6368, spectype=GALAXY, rest_wave=2196.7A, score=5.21
+  targetid=39628433499624504, z=6.1613, spectype=QSO, rest_wave=780.3A, score=5.16
+  targetid=39627827561104370, z=0.6355, spectype=GALAXY, rest_wave=4648.8A, score=5.15
+  targetid=39627951494402623, z=0.1341, spectype=GALAXY, rest_wave=3395.5A, score=5.14
+  targetid=39627551299079580, z=0.8295, spectype=GALAXY, rest_wave=2372.1A, score=5.11
+  targetid=616094008640275098, z=0.6845, spectype=GALAXY, rest_wave=2530.5A, score=5.11
+  targetid=-247831384, z=0.7632, spectype=GALAXY, rest_wave=2264.2A, score=5.07
+  targetid=39628102162188316, z=0.7319, spectype=GALAXY, rest_wave=2513.2A, score=5.02
+  targetid=39628251416498850, z=0.3175, spectype=GALAXY, rest_wave=3293.9A, score=5.02
+
+KEY FINDINGS
+----------------------------------------
+1. Dominant feature: Ly-beta (26/83, 31%)
+2. Unmatched fraction: 15/83 (18.1%)
+3. Most common spectype: QSO (69/83)
+4. High-z (z>4) objects: 65/83 (78%)
