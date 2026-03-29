@@ -1,31 +1,11 @@
 {
-  "timestamp": "2026-03-29T01:31:34.603991",
-  "pipeline": "NEOWISE/AllWISE Cross-Match v1",
+  "timestamp": "2026-03-29T01:52:08.612296",
   "total_processed": 83,
-  "tier": "gold",
   "allwise_matches": 61,
-  "allwise_match_rate_pct": 73.5,
-  "neowise_detections": 61,
-  "neowise_detection_rate_pct": 73.5,
-  "w1_variable": 5,
-  "w2_variable": 5,
-  "either_band_variable": 9,
-  "variable_rate_pct": 10.8,
-  "spectypes": {
-    "STAR": {
-      "total": 3,
-      "allwise_match": 3,
-      "variable": 1
-    },
-    "QSO": {
-      "total": 69,
-      "allwise_match": 54,
-      "variable": 6
-    },
-    "GALAXY": {
-      "total": 11,
-      "allwise_match": 4,
-      "variable": 2
-    }
-  }
+  "neowise_detections": 0,
+  "ir_variable": 0,
+  "allwise_match_rate": 73.5,
+  "neowise_detection_rate": 0.0,
+  "variable_rate": 0.0,
+  "tier": "gold"
 }
