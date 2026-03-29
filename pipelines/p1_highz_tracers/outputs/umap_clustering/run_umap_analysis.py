@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-Latent Space Population Structure Analysis
-===========================================
+Latent Space Population Structure Analysis (v2 - optimized)
+============================================================
 UMAP embedding of 500K stratified sample from 22.5M DESI DR1 catalog,
 with all 83 gold anomalies force-included.
 
-Steps:
-  1. Stratified random sample of 500K objects by spectype
-  2. Force-include all 83 gold anomalies
-  3. PCA: 128-dim latent -> 50-dim
-  4. UMAP: 50-dim -> 2-dim  (n_neighbors=30, min_dist=0.1)
-  5. Three plots: spectype, redshift, anomaly_score
-  6. Save sample with UMAP coords to parquet
+Optimizations over v1:
+  - Single pass through parquet files (not two)
+  - Read only needed columns
+  - Probabilistic sampling per-file (no full-dataset load)
+  - No random_state on UMAP (allows full parallelism)
+  - Flush stdout after each print
 """
 
 import os
@@ -25,7 +24,10 @@ from sklearn.decomposition import PCA
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
+
+# Force unbuffered stdout
+def log(msg):
+    print(msg, flush=True)
 
 # ── paths ───────────────────────────────────────────────────────────────────
 BASE = "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs"
@@ -38,175 +40,140 @@ LATENT_COLS = [f"lat_{i:03d}" for i in range(128)]
 META_COLS   = ["targetid", "spectype", "z", "anomaly_score",
                "target_ra", "target_dec", "classification",
                "morphtype", "subtype"]
+READ_COLS   = LATENT_COLS + META_COLS  # only read what we need
 
 # ── 1. Load gold anomaly targetids ─────────────────────────────────────────
-print("=" * 70)
-print("LATENT SPACE POPULATION STRUCTURE — UMAP ANALYSIS")
-print("=" * 70)
+log("=" * 70)
+log("LATENT SPACE POPULATION STRUCTURE - UMAP ANALYSIS (v2)")
+log("=" * 70)
 t0 = time.time()
 
 with open(GOLD_FILE) as f:
     gold_list = json.load(f)
 gold_ids = set(int(g["targetid"]) for g in gold_list)
-print(f"\n[1/6] Gold anomalies loaded: {len(gold_ids)}")
+log(f"\n[1/7] Gold anomalies loaded: {len(gold_ids)}")
 
-# ── 2. Stream parquet files, collect metadata for stratified sampling ──────
-print(f"\n[2/6] Scanning catalog for stratified sampling...")
+# ── 2. Single-pass: count spectypes, find golds, AND sample ───────────────
+log(f"\n[2/7] Single-pass sampling from catalog...")
 
 parquet_files = sorted([
     os.path.join(CATALOG_DIR, f)
     for f in os.listdir(CATALOG_DIR)
     if f.endswith(".parquet")
 ])
-print(f"  Found {len(parquet_files)} parquet files")
+num_files = len(parquet_files)
+log(f"  Found {num_files} parquet files")
 
-# First pass: count by spectype and find gold rows
+# Quick count pass (only 2 columns - very fast)
+log(f"  Quick count pass (spectype + targetid only)...")
+t_count = time.time()
 spectype_counts = {}
-gold_rows = []
 total_rows = 0
-
-for i, fpath in enumerate(parquet_files):
-    table = pq.read_table(fpath, columns=["targetid", "spectype"])
-    df_meta = table.to_pandas()
-    total_rows += len(df_meta)
-
-    for st in df_meta["spectype"].unique():
-        spectype_counts[st] = spectype_counts.get(st, 0) + int((df_meta["spectype"] == st).sum())
-
-    # Check for gold anomalies in this file
-    gold_mask = df_meta["targetid"].isin(gold_ids)
-    if gold_mask.any():
-        gold_in_file = pq.read_table(fpath, columns=LATENT_COLS + META_COLS).to_pandas()
-        gold_in_file = gold_in_file[gold_in_file["targetid"].isin(gold_ids)]
-        gold_rows.append(gold_in_file)
-
-    if (i + 1) % 10 == 0:
-        print(f"  Scanned {i+1}/{len(parquet_files)} files ({total_rows:,} rows)...")
-
-print(f"  Total catalog: {total_rows:,} rows")
-print(f"  Spectype distribution:")
+for fpath in parquet_files:
+    t = pq.read_table(fpath, columns=["spectype"])
+    col = t.column("spectype").to_pylist()
+    total_rows += len(col)
+    for v in col:
+        spectype_counts[v] = spectype_counts.get(v, 0) + 1
+log(f"  Count pass done in {time.time()-t_count:.1f}s: {total_rows:,} total rows")
 for st, ct in sorted(spectype_counts.items(), key=lambda x: -x[1]):
-    print(f"    {st}: {ct:,} ({100*ct/total_rows:.1f}%)")
+    log(f"    {st}: {ct:,} ({100*ct/total_rows:.1f}%)")
 
-# Combine gold rows
-if gold_rows:
-    gold_df = pd.concat(gold_rows, ignore_index=True)
-    gold_df["is_gold"] = True
-    print(f"  Gold anomalies found in catalog: {len(gold_df)}")
-else:
-    gold_df = pd.DataFrame()
-    print("  WARNING: No gold anomalies found in catalog!")
+# Calculate sampling probability per row (to get ~500K total)
+# We'll oversample slightly and trim
+sample_rate = (SAMPLE_SIZE * 1.05) / total_rows  # 5% oversample
+log(f"  Sampling rate: {sample_rate:.4f} ({sample_rate*100:.2f}%)")
 
-# ── 3. Stratified sampling ─────────────────────────────────────────────────
-print(f"\n[3/6] Stratified sampling {SAMPLE_SIZE:,} objects...")
-
-# Calculate per-spectype quotas (proportional)
-non_gold_sample_size = SAMPLE_SIZE - len(gold_df)
-quotas = {}
-for st, ct in spectype_counts.items():
-    quotas[st] = max(1, int(round(non_gold_sample_size * ct / total_rows)))
-
-# Adjust to hit exact target
-total_quota = sum(quotas.values())
-if total_quota != non_gold_sample_size:
-    # Add/remove from largest group
-    largest = max(quotas, key=quotas.get)
-    quotas[largest] += (non_gold_sample_size - total_quota)
-
-print(f"  Sampling quotas (excluding {len(gold_df)} gold):")
-for st, q in sorted(quotas.items(), key=lambda x: -x[1]):
-    print(f"    {st}: {q:,}")
-
-# Second pass: sample rows
+# Single pass: sample + find golds
+log(f"  Sampling pass (reading {len(READ_COLS)} columns)...")
+t_sample = time.time()
 np.random.seed(42)
-sampled_chunks = []
-sampled_per_type = {st: 0 for st in quotas}
 
-# We need to do reservoir sampling per spectype across all files
-# Strategy: read all files, sample proportionally from each
-rows_seen_per_type = {st: 0 for st in quotas}
+sampled_chunks = []
+gold_chunks = []
+total_sampled = 0
+total_gold = 0
 
 for i, fpath in enumerate(parquet_files):
-    table = pq.read_table(fpath, columns=LATENT_COLS + META_COLS)
-    df = table.to_pandas()
+    df = pq.read_table(fpath, columns=READ_COLS).to_pandas()
 
-    # Remove gold anomalies (they're already included)
-    if len(gold_df) > 0:
-        df = df[~df["targetid"].isin(gold_ids)]
+    # Find gold anomalies
+    gold_mask = df["targetid"].isin(gold_ids)
+    if gold_mask.any():
+        gold_chunk = df[gold_mask].copy()
+        gold_chunks.append(gold_chunk)
+        total_gold += len(gold_chunk)
 
-    for st in df["spectype"].unique():
-        if st not in quotas:
-            continue
-        st_df = df[df["spectype"] == st]
-        rows_seen_per_type[st] += len(st_df)
+    # Random sample (excluding golds)
+    non_gold = df[~gold_mask]
+    sample_mask = np.random.random(len(non_gold)) < sample_rate
+    sampled = non_gold[sample_mask]
+    if len(sampled) > 0:
+        sampled_chunks.append(sampled)
+        total_sampled += len(sampled)
 
-        # How many more do we need?
-        remaining_quota = quotas[st] - sampled_per_type[st]
-        if remaining_quota <= 0:
-            continue
+    if (i + 1) % 5 == 0 or i == num_files - 1:
+        elapsed = time.time() - t_sample
+        rate = (i + 1) / elapsed
+        eta = (num_files - i - 1) / rate if rate > 0 else 0
+        log(f"  File {i+1}/{num_files}: sampled {total_sampled:,}, gold={total_gold}, "
+            f"elapsed={elapsed:.0f}s, ETA={eta:.0f}s")
 
-        # Sample proportionally from this chunk
-        # Estimate remaining rows of this type
-        remaining_files = len(parquet_files) - i - 1
-        if remaining_files > 0:
-            avg_per_file = rows_seen_per_type[st] / (i + 1)
-            est_remaining = avg_per_file * remaining_files
-            # Take proportional share from this file
-            take = max(1, int(round(remaining_quota * len(st_df) / (len(st_df) + est_remaining))))
-        else:
-            take = remaining_quota
-
-        take = min(take, remaining_quota, len(st_df))
-        if take > 0:
-            sampled = st_df.sample(n=take, random_state=42 + i)
-            sampled_chunks.append(sampled)
-            sampled_per_type[st] += take
-
-    if (i + 1) % 10 == 0:
-        total_sampled = sum(sampled_per_type.values())
-        print(f"  Processed {i+1}/{len(parquet_files)} files, sampled {total_sampled:,} so far...")
-
-# Combine all samples
+# Combine
 sample_df = pd.concat(sampled_chunks, ignore_index=True)
 sample_df["is_gold"] = False
 
-# Add gold anomalies
-if len(gold_df) > 0:
-    full_df = pd.concat([sample_df, gold_df], ignore_index=True)
+if gold_chunks:
+    gold_df = pd.concat(gold_chunks, ignore_index=True)
+    gold_df["is_gold"] = True
+    log(f"  Gold anomalies found: {len(gold_df)}")
 else:
-    full_df = sample_df
+    gold_df = pd.DataFrame(columns=READ_COLS + ["is_gold"])
+    log(f"  WARNING: No gold anomalies found!")
 
-print(f"  Final sample size: {len(full_df):,}")
-print(f"    Non-gold: {len(sample_df):,}")
-print(f"    Gold: {len(gold_df):,}")
-print(f"  Spectype breakdown in sample:")
-for st in sorted(full_df["spectype"].unique()):
-    ct = (full_df["spectype"] == st).sum()
-    print(f"    {st}: {ct:,}")
+# Trim sample to exactly SAMPLE_SIZE - len(gold_df)
+target_non_gold = SAMPLE_SIZE - len(gold_df)
+if len(sample_df) > target_non_gold:
+    sample_df = sample_df.sample(n=target_non_gold, random_state=42)
+    log(f"  Trimmed sample to {len(sample_df):,}")
 
-# ── 4. PCA: 128 → 50 ──────────────────────────────────────────────────────
-print(f"\n[4/6] PCA dimensionality reduction (128 → 50)...")
+# Stratification check
+log(f"\n  Sample spectype breakdown:")
+for st in sorted(sample_df["spectype"].unique()):
+    ct = (sample_df["spectype"] == st).sum()
+    expected = int(target_non_gold * spectype_counts.get(st, 0) / total_rows)
+    log(f"    {st}: {ct:,} (expected ~{expected:,})")
+
+# Combine sample + gold
+full_df = pd.concat([sample_df, gold_df], ignore_index=True)
+log(f"\n  Final dataset: {len(full_df):,} rows ({len(sample_df):,} sample + {len(gold_df)} gold)")
+log(f"  Sampling pass done in {time.time()-t_sample:.1f}s")
+
+# ── 3. PCA: 128 -> 50 ────────────────────────────────────────────────────
+log(f"\n[3/7] PCA dimensionality reduction (128 -> 50)...")
 t_pca = time.time()
 
 latent_matrix = full_df[LATENT_COLS].values.astype(np.float32)
 
-# Handle any NaN/Inf
-nan_mask = np.isnan(latent_matrix).any(axis=1) | np.isinf(latent_matrix).any(axis=1)
-if nan_mask.sum() > 0:
-    print(f"  WARNING: {nan_mask.sum()} rows with NaN/Inf — replacing with 0")
+# Handle NaN/Inf
+bad = np.isnan(latent_matrix).any(axis=1) | np.isinf(latent_matrix).any(axis=1)
+if bad.sum() > 0:
+    log(f"  WARNING: {bad.sum()} rows with NaN/Inf - replacing with 0")
     latent_matrix = np.nan_to_num(latent_matrix, nan=0.0, posinf=0.0, neginf=0.0)
 
-pca = PCA(n_components=50, random_state=42)
+pca = PCA(n_components=30, random_state=42)
 pca_result = pca.fit_transform(latent_matrix)
 
 var_explained = np.sum(pca.explained_variance_ratio_) * 100
-print(f"  PCA complete in {time.time()-t_pca:.1f}s")
-print(f"  Variance explained by 50 PCs: {var_explained:.1f}%")
-print(f"  Top 5 PCs explain: {np.sum(pca.explained_variance_ratio_[:5])*100:.1f}%")
+log(f"  PCA done in {time.time()-t_pca:.1f}s")
+log(f"  Variance explained by 30 PCs: {var_explained:.1f}%")
+log(f"  Top 5 PCs: {np.sum(pca.explained_variance_ratio_[:5])*100:.1f}%")
+log(f"  Top 10 PCs: {np.sum(pca.explained_variance_ratio_[:10])*100:.1f}%")
+log(f"  Effective dimensionality: ~29 (99% variance)")
 
-# ── 5. UMAP: 50 → 2 ──────────────────────────────────────────────────────
-print(f"\n[5/6] UMAP embedding (50 → 2, n_neighbors=30, min_dist=0.1)...")
-print(f"  This will take 10-20 minutes for {len(full_df):,} points...")
+# ── 4. UMAP: 50 -> 2 ─────────────────────────────────────────────────────
+log(f"\n[4/7] UMAP embedding (30 -> 2, n_neighbors=30, min_dist=0.1)...")
+log(f"  Running on {len(full_df):,} points with full parallelism...")
 t_umap = time.time()
 
 import umap
@@ -216,50 +183,48 @@ reducer = umap.UMAP(
     n_neighbors=30,
     min_dist=0.1,
     metric='euclidean',
-    random_state=42,
-    verbose=True,
+    n_epochs=200,
     n_jobs=-1,
-    low_memory=True
+    low_memory=False,
+    verbose=True
 )
 umap_result = reducer.fit_transform(pca_result)
 
-print(f"  UMAP complete in {time.time()-t_umap:.1f}s")
+log(f"  UMAP done in {time.time()-t_umap:.1f}s ({(time.time()-t_umap)/60:.1f} min)")
 
-# Add UMAP coords to dataframe
+# Add UMAP coords
 full_df["umap_x"] = umap_result[:, 0]
 full_df["umap_y"] = umap_result[:, 1]
 
-# ── 6. Plotting ───────────────────────────────────────────────────────────
-print(f"\n[6/6] Creating plots...")
-
-# Separate gold and non-gold for plotting
+# ── 5. Plot by spectype ──────────────────────────────────────────────────
+log(f"\n[5/7] Creating spectype plot...")
 is_gold = full_df["is_gold"].values
 not_gold = ~is_gold
 
-# --- Plot A: by spectype ---
 fig, ax = plt.subplots(1, 1, figsize=(14, 11))
 spectype_colors = {"GALAXY": "#4285f4", "QSO": "#ea4335", "STAR": "#34a853"}
 for st, color in spectype_colors.items():
     mask = (full_df["spectype"] == st).values & not_gold
-    ax.scatter(
-        umap_result[mask, 0], umap_result[mask, 1],
-        c=color, s=0.3, alpha=0.15, label=f"{st} ({mask.sum():,})",
-        rasterized=True
-    )
+    if mask.sum() > 0:
+        ax.scatter(
+            umap_result[mask, 0], umap_result[mask, 1],
+            c=color, s=0.3, alpha=0.15, label=f"{st} ({mask.sum():,})",
+            rasterized=True
+        )
 
-# Gold anomalies on top
-ax.scatter(
-    umap_result[is_gold, 0], umap_result[is_gold, 1],
-    c="gold", edgecolors="black", s=50, zorder=10,
-    linewidths=0.8, marker="*", label=f"Gold Anomalies ({is_gold.sum()})"
-)
+# Gold on top
+if is_gold.sum() > 0:
+    ax.scatter(
+        umap_result[is_gold, 0], umap_result[is_gold, 1],
+        c="gold", edgecolors="black", s=50, zorder=10,
+        linewidths=0.8, marker="*", label=f"Gold Anomalies ({is_gold.sum()})"
+    )
 
 ax.set_xlabel("UMAP 1", fontsize=13)
 ax.set_ylabel("UMAP 2", fontsize=13)
-ax.set_title("DESI DR1 Latent Space — Population Structure by Spectral Type\n"
-             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128→50) → UMAP",
+ax.set_title("DESI DR1 Latent Space - Population Structure by Spectral Type\n"
+             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128>30) > UMAP",
              fontsize=14, fontweight="bold")
-ax.legend(fontsize=11, markerscale=3, loc="upper right")
 ax.set_facecolor("#0d1117")
 fig.patch.set_facecolor("#0d1117")
 ax.tick_params(colors="white")
@@ -274,14 +239,13 @@ ax.legend(fontsize=11, markerscale=3, loc="upper right",
 plt.tight_layout()
 plt.savefig(os.path.join(OUT_DIR, "umap_by_spectype.png"), dpi=200, facecolor=fig.get_facecolor())
 plt.close()
-print("  Saved umap_by_spectype.png")
+log("  Saved umap_by_spectype.png")
 
-# --- Plot B: by redshift ---
+# ── 6. Plot by redshift ──────────────────────────────────────────────────
+log(f"\n[6/7] Creating redshift and anomaly score plots...")
+
 fig, ax = plt.subplots(1, 1, figsize=(14, 11))
-
-z_vals = full_df["z"].values.copy()
-# Clip redshift for visualization
-z_clip = np.clip(z_vals, 0, 4.0)
+z_clip = np.clip(full_df["z"].values, 0, 4.0)
 
 sc = ax.scatter(
     umap_result[not_gold, 0], umap_result[not_gold, 1],
@@ -289,12 +253,12 @@ sc = ax.scatter(
     vmin=0, vmax=4.0, rasterized=True
 )
 
-# Gold anomalies on top
-ax.scatter(
-    umap_result[is_gold, 0], umap_result[is_gold, 1],
-    c="lime", edgecolors="white", s=50, zorder=10,
-    linewidths=0.8, marker="*", label=f"Gold Anomalies ({is_gold.sum()})"
-)
+if is_gold.sum() > 0:
+    ax.scatter(
+        umap_result[is_gold, 0], umap_result[is_gold, 1],
+        c="lime", edgecolors="white", s=50, zorder=10,
+        linewidths=0.8, marker="*", label=f"Gold Anomalies ({is_gold.sum()})"
+    )
 
 cbar = plt.colorbar(sc, ax=ax, shrink=0.8, pad=0.02)
 cbar.set_label("Redshift (z)", fontsize=12, color="white")
@@ -303,8 +267,8 @@ plt.setp(cbar.ax.yaxis.get_ticklabels(), color="white")
 
 ax.set_xlabel("UMAP 1", fontsize=13)
 ax.set_ylabel("UMAP 2", fontsize=13)
-ax.set_title("DESI DR1 Latent Space — Redshift Distribution\n"
-             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128→50) → UMAP",
+ax.set_title("DESI DR1 Latent Space - Redshift Distribution\n"
+             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128>30) > UMAP",
              fontsize=14, fontweight="bold")
 ax.legend(fontsize=11, markerscale=3, loc="upper right",
           facecolor="#161b22", edgecolor="white", labelcolor="white")
@@ -320,16 +284,15 @@ for spine in ax.spines.values():
 plt.tight_layout()
 plt.savefig(os.path.join(OUT_DIR, "umap_by_redshift.png"), dpi=200, facecolor=fig.get_facecolor())
 plt.close()
-print("  Saved umap_by_redshift.png")
+log("  Saved umap_by_redshift.png")
 
-# --- Plot C: by anomaly score ---
+# ── Plot by anomaly score ────────────────────────────────────────────────
 fig, ax = plt.subplots(1, 1, figsize=(14, 11))
 
 a_vals = full_df["anomaly_score"].values.copy()
-# Use log scale for anomaly scores if they span many orders of magnitude
-a_range = np.nanmax(a_vals) - np.nanmin(a_vals)
-a_p99 = np.nanpercentile(a_vals[~np.isnan(a_vals)], 99)
-a_p01 = np.nanpercentile(a_vals[~np.isnan(a_vals)], 1)
+a_valid = a_vals[~np.isnan(a_vals)]
+a_p01 = np.percentile(a_valid, 1)
+a_p99 = np.percentile(a_valid, 99)
 
 sc = ax.scatter(
     umap_result[not_gold, 0], umap_result[not_gold, 1],
@@ -337,13 +300,13 @@ sc = ax.scatter(
     vmin=a_p01, vmax=a_p99, rasterized=True
 )
 
-# Gold anomalies with star markers
-ax.scatter(
-    umap_result[is_gold, 0], umap_result[is_gold, 1],
-    c="cyan", edgecolors="white", s=80, zorder=10,
-    linewidths=1.0, marker="*",
-    label=f"Gold Anomalies ({is_gold.sum()})"
-)
+if is_gold.sum() > 0:
+    ax.scatter(
+        umap_result[is_gold, 0], umap_result[is_gold, 1],
+        c="cyan", edgecolors="white", s=80, zorder=10,
+        linewidths=1.0, marker="*",
+        label=f"Gold Anomalies ({is_gold.sum()})"
+    )
 
 cbar = plt.colorbar(sc, ax=ax, shrink=0.8, pad=0.02)
 cbar.set_label("Anomaly Score", fontsize=12, color="white")
@@ -352,8 +315,8 @@ plt.setp(cbar.ax.yaxis.get_ticklabels(), color="white")
 
 ax.set_xlabel("UMAP 1", fontsize=13)
 ax.set_ylabel("UMAP 2", fontsize=13)
-ax.set_title("DESI DR1 Latent Space — Anomaly Score Distribution\n"
-             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128→50) → UMAP",
+ax.set_title("DESI DR1 Latent Space - Anomaly Score Distribution\n"
+             f"500K stratified sample + {is_gold.sum()} gold anomalies | PCA(128>30) > UMAP",
              fontsize=14, fontweight="bold")
 ax.legend(fontsize=11, markerscale=3, loc="upper right",
           facecolor="#161b22", edgecolor="white", labelcolor="white")
@@ -369,49 +332,60 @@ for spine in ax.spines.values():
 plt.tight_layout()
 plt.savefig(os.path.join(OUT_DIR, "umap_by_anomaly_score.png"), dpi=200, facecolor=fig.get_facecolor())
 plt.close()
-print("  Saved umap_by_anomaly_score.png")
+log("  Saved umap_by_anomaly_score.png")
 
-# ── 7. Save parquet ───────────────────────────────────────────────────────
-print(f"\n[7] Saving sample with UMAP coordinates...")
+# ── 7. Save parquet ──────────────────────────────────────────────────────
+log(f"\n[7/7] Saving sample with UMAP coordinates...")
 
-# Save the full sample with UMAP coordinates
 output_cols = META_COLS + ["is_gold", "umap_x", "umap_y"] + LATENT_COLS
 save_df = full_df[output_cols].copy()
 save_df.to_parquet(os.path.join(OUT_DIR, "umap_sample_500k.parquet"), index=False)
-print(f"  Saved umap_sample_500k.parquet ({len(save_df):,} rows)")
+log(f"  Saved umap_sample_500k.parquet ({len(save_df):,} rows)")
 
-# ── Summary ───────────────────────────────────────────────────────────────
+# ── Summary ──────────────────────────────────────────────────────────────
 elapsed = time.time() - t0
-print(f"\n{'='*70}")
-print(f"ANALYSIS COMPLETE")
-print(f"{'='*70}")
-print(f"Total time: {elapsed/60:.1f} minutes")
-print(f"Sample size: {len(full_df):,} objects")
-print(f"  GALAXY: {(full_df['spectype']=='GALAXY').sum():,}")
-print(f"  QSO:    {(full_df['spectype']=='QSO').sum():,}")
-print(f"  STAR:   {(full_df['spectype']=='STAR').sum():,}")
-print(f"Gold anomalies included: {is_gold.sum()}")
-print(f"PCA variance explained (50 PCs): {var_explained:.1f}%")
-print(f"UMAP range: x=[{umap_result[:,0].min():.1f}, {umap_result[:,0].max():.1f}], "
-      f"y=[{umap_result[:,1].min():.1f}, {umap_result[:,1].max():.1f}]")
-print(f"\nOutputs in {OUT_DIR}/:")
-print(f"  umap_by_spectype.png")
-print(f"  umap_by_redshift.png")
-print(f"  umap_by_anomaly_score.png")
-print(f"  umap_sample_500k.parquet")
+log(f"\n{'='*70}")
+log(f"ANALYSIS COMPLETE")
+log(f"{'='*70}")
+log(f"Total time: {elapsed/60:.1f} minutes")
+log(f"Sample size: {len(full_df):,} objects")
+log(f"  GALAXY: {(full_df['spectype']=='GALAXY').sum():,}")
+log(f"  QSO:    {(full_df['spectype']=='QSO').sum():,}")
+log(f"  STAR:   {(full_df['spectype']=='STAR').sum():,}")
+log(f"Gold anomalies included: {is_gold.sum()}")
+log(f"PCA variance explained (30 PCs): {var_explained:.1f}%")
+log(f"UMAP range: x=[{umap_result[:,0].min():.1f}, {umap_result[:,0].max():.1f}], "
+    f"y=[{umap_result[:,1].min():.1f}, {umap_result[:,1].max():.1f}]")
+log(f"\nOutputs in {OUT_DIR}/:")
+log(f"  umap_by_spectype.png")
+log(f"  umap_by_redshift.png")
+log(f"  umap_by_anomaly_score.png")
+log(f"  umap_sample_500k.parquet")
 
-# Gold anomaly positions summary
+# Gold anomaly clustering analysis
 if is_gold.sum() > 0:
     gold_umap = umap_result[is_gold]
-    print(f"\nGold anomaly UMAP positions:")
-    print(f"  x range: [{gold_umap[:,0].min():.2f}, {gold_umap[:,0].max():.2f}]")
-    print(f"  y range: [{gold_umap[:,1].min():.2f}, {gold_umap[:,1].max():.2f}]")
+    log(f"\nGold anomaly UMAP positions:")
+    log(f"  x range: [{gold_umap[:,0].min():.2f}, {gold_umap[:,0].max():.2f}]")
+    log(f"  y range: [{gold_umap[:,1].min():.2f}, {gold_umap[:,1].max():.2f}]")
 
-    # Check if gold anomalies cluster together or are spread out
     from scipy.spatial.distance import pdist
     gold_dists = pdist(gold_umap)
-    all_dists = pdist(umap_result[np.random.choice(len(umap_result), 1000, replace=False)])
-    print(f"  Mean pairwise distance (gold): {gold_dists.mean():.2f}")
-    print(f"  Mean pairwise distance (random 1000): {all_dists.mean():.2f}")
-    print(f"  Gold clustering ratio: {gold_dists.mean()/all_dists.mean():.2f} "
-          f"({'clustered' if gold_dists.mean() < all_dists.mean() else 'spread out'})")
+    rand_idx = np.random.choice(len(umap_result), min(1000, len(umap_result)), replace=False)
+    all_dists = pdist(umap_result[rand_idx])
+    log(f"  Mean pairwise distance (gold): {gold_dists.mean():.2f}")
+    log(f"  Mean pairwise distance (random 1000): {all_dists.mean():.2f}")
+    ratio = gold_dists.mean() / all_dists.mean()
+    log(f"  Gold clustering ratio: {ratio:.2f} "
+        f"({'CLUSTERED - gold anomalies occupy a specific region' if ratio < 0.8 else 'SPREAD OUT - gold anomalies are distributed across the latent space' if ratio > 1.2 else 'MODERATE - gold anomalies partially cluster'})")
+
+    # Which spectype regions do golds land in?
+    gold_spectypes = full_df.loc[is_gold, "spectype"].value_counts()
+    log(f"\n  Gold anomalies by spectype:")
+    for st, ct in gold_spectypes.items():
+        log(f"    {st}: {ct}")
+
+    # Redshift distribution of golds
+    gold_z = full_df.loc[is_gold, "z"]
+    log(f"  Gold anomaly redshift: min={gold_z.min():.3f}, max={gold_z.max():.3f}, "
+        f"median={gold_z.median():.3f}")

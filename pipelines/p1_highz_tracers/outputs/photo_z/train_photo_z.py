@@ -1,8 +1,12 @@
 """
 Latent-space photo-z prediction: Can autoencoder embeddings predict spectroscopic redshift?
 
-Trains RandomForest and MLP regressors on the 128-dim latent vectors from the
-spectral autoencoder, predicting spectroscopic redshift z.
+Trains HistGradientBoosting and MLP regressors on the 128-dim latent vectors
+from the spectral autoencoder, predicting spectroscopic redshift z.
+
+HistGradientBoosting is used instead of RandomForest for speed — it uses
+histogram-based binning which is O(N) rather than O(N log N) per split,
+making it 10-50x faster on large datasets while typically performing better.
 
 This tests whether the autoencoder's internal representation encodes redshift
 information — a novel ML contribution showing the latent space is
@@ -10,17 +14,22 @@ physically meaningful.
 """
 
 import json
+import sys
 import time
 import glob
 import numpy as np
 import pyarrow.parquet as pq
+import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Force unbuffered output
+sys.stdout.reconfigure(line_buffering=True)
 
 # ── Config ──────────────────────────────────────────────────────────────
 DATA_DIR = "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/enhanced_18M_deduped"
@@ -52,8 +61,8 @@ for i, f in enumerate(files):
         n_so_far = sum(len(c) for c in chunks)
         print(f"  ... processed {i+1}/{len(files)} files, {n_so_far:,} good objects so far")
 
-import pandas as pd
 data = pd.concat(chunks, ignore_index=True)
+del chunks  # free memory
 print(f"  Total raw objects scanned: {total_raw:,}")
 print(f"  After quality filter (ZWARN=0, SNR_r>2, z>0): {len(data):,}")
 
@@ -74,7 +83,8 @@ print("STEP 2: Preparing features and splitting")
 print("=" * 60)
 
 X = data[LAT_COLS].values.astype(np.float32)
-y = data["z"].values.astype(np.float32)
+y = data["z"].values.astype(np.float64)
+del data  # free memory
 
 print(f"  Feature matrix: {X.shape}")
 print(f"  Target z range: [{y.min():.4f}, {y.max():.4f}]")
@@ -86,24 +96,30 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 print(f"  Train: {len(X_train):,}  |  Test: {len(X_test):,}")
 
-# ── 3a. Random Forest ──────────────────────────────────────────────────
+# ── 3a. HistGradientBoosting ───────────────────────────────────────────
 print("\n" + "=" * 60)
-print("STEP 3a: Training RandomForestRegressor")
+print("STEP 3a: Training HistGradientBoostingRegressor")
 print("=" * 60)
 
 t0 = time.time()
-rf = RandomForestRegressor(
-    n_estimators=100,
-    max_depth=20,
-    n_jobs=-1,
+hgb = HistGradientBoostingRegressor(
+    max_iter=300,
+    max_depth=15,
+    learning_rate=0.05,
+    min_samples_leaf=20,
+    max_bins=255,
+    validation_fraction=0.1,
+    n_iter_no_change=15,
+    early_stopping=True,
     random_state=SEED,
     verbose=1
 )
-rf.fit(X_train, y_train)
-rf_time = time.time() - t0
-print(f"  Training time: {rf_time:.1f}s")
+hgb.fit(X_train, y_train)
+hgb_time = time.time() - t0
+print(f"  Training time: {hgb_time:.1f}s")
+print(f"  Iterations used: {hgb.n_iter_}")
 
-y_pred_rf = rf.predict(X_test)
+y_pred_hgb = hgb.predict(X_test)
 
 # ── 3b. MLP Regressor ──────────────────────────────────────────────────
 print("\n" + "=" * 60)
@@ -118,6 +134,7 @@ mlp = MLPRegressor(
     max_iter=200,
     early_stopping=True,
     validation_fraction=0.1,
+    n_iter_no_change=15,
     random_state=SEED,
     verbose=True,
     batch_size=4096,
@@ -126,6 +143,7 @@ mlp = MLPRegressor(
 mlp.fit(X_train, y_train)
 mlp_time = time.time() - t0
 print(f"  Training time: {mlp_time:.1f}s")
+print(f"  Iterations used: {mlp.n_iter_}")
 
 y_pred_mlp = mlp.predict(X_test)
 
@@ -162,7 +180,7 @@ def evaluate(y_true, y_pred, name):
         "outlier_fraction_015": float(outlier_frac),
     }
 
-rf_metrics  = evaluate(y_test, y_pred_rf,  "RandomForest")
+hgb_metrics = evaluate(y_test, y_pred_hgb, "HistGradientBoosting")
 mlp_metrics = evaluate(y_test, y_pred_mlp, "MLP (256-128-64)")
 
 # ── 5. Plots ───────────────────────────────────────────────────────────
@@ -171,22 +189,22 @@ print("STEP 5: Generating plots")
 print("=" * 60)
 
 # Use whichever model is better for the main plots
-best_name = "RandomForest" if rf_metrics["rmse"] < mlp_metrics["rmse"] else "MLP"
-y_pred_best = y_pred_rf if best_name == "RandomForest" else y_pred_mlp
-best_metrics = rf_metrics if best_name == "RandomForest" else mlp_metrics
+best_name = "HistGradientBoosting" if hgb_metrics["rmse"] < mlp_metrics["rmse"] else "MLP"
+y_pred_best = y_pred_hgb if best_name == "HistGradientBoosting" else y_pred_mlp
+best_metrics = hgb_metrics if best_name == "HistGradientBoosting" else mlp_metrics
 
 # --- Scatter plot: z_pred vs z_true ---
 fig, axes = plt.subplots(1, 2, figsize=(16, 7))
 
 for ax, (name, yp, met) in zip(axes, [
-    ("RandomForest", y_pred_rf, rf_metrics),
+    ("HistGradientBoosting", y_pred_hgb, hgb_metrics),
     ("MLP (256-128-64)", y_pred_mlp, mlp_metrics)
 ]):
-    # 2D histogram for density
+    zmax = min(max(float(y_test.max()), float(np.max(yp)), 4), 6)
     h = ax.hist2d(y_test, yp, bins=200, cmap="inferno",
-                  range=[[0, max(y_test.max(), 4)], [0, max(yp.max(), 4)]],
+                  range=[[0, zmax], [0, zmax]],
                   norm=matplotlib.colors.LogNorm())
-    ax.plot([0, 5], [0, 5], "w--", lw=1.5, alpha=0.8, label="Perfect prediction")
+    ax.plot([0, zmax], [0, zmax], "w--", lw=1.5, alpha=0.8, label="Perfect prediction")
     ax.set_xlabel("Spectroscopic z (true)", fontsize=13)
     ax.set_ylabel("Predicted z", fontsize=13)
     ax.set_title(f"{name}\nMAE={met['mae']:.4f}  RMSE={met['rmse']:.4f}  "
@@ -196,8 +214,8 @@ for ax, (name, yp, met) in zip(axes, [
     ax.legend(fontsize=10)
     plt.colorbar(h[3], ax=ax, label="Count")
 
-fig.suptitle("Autoencoder Latent Space -> Spectroscopic Redshift Prediction\n"
-             "128-dim latent vectors from DESI DR1 spectral autoencoder",
+fig.suptitle("Autoencoder Latent Space $\\rightarrow$ Spectroscopic Redshift Prediction\n"
+             "128-dim latent vectors from DESI DR1 spectral autoencoder (1M objects)",
              fontsize=14, fontweight="bold", y=1.02)
 plt.tight_layout()
 plt.savefig(f"{OUT_DIR}/photo_z_scatter.png", dpi=200, bbox_inches="tight")
@@ -208,7 +226,7 @@ plt.close()
 fig, axes = plt.subplots(1, 2, figsize=(16, 6))
 
 for ax, (name, yp, met) in zip(axes, [
-    ("RandomForest", y_pred_rf, rf_metrics),
+    ("HistGradientBoosting", y_pred_hgb, hgb_metrics),
     ("MLP (256-128-64)", y_pred_mlp, mlp_metrics)
 ]):
     delta = (yp - y_test) / (1.0 + y_test)
@@ -233,17 +251,24 @@ plt.savefig(f"{OUT_DIR}/photo_z_residuals.png", dpi=200, bbox_inches="tight")
 print(f"  Saved: {OUT_DIR}/photo_z_residuals.png")
 plt.close()
 
-# --- Feature importance (RF only) ---
+# --- Feature importance (HGB permutation-based) ---
+print("  Computing feature importances via permutation (sample)...")
+from sklearn.inspection import permutation_importance
+perm_result = permutation_importance(
+    hgb, X_test[:50000], y_test[:50000],
+    n_repeats=5, random_state=SEED, n_jobs=-1
+)
+importances = perm_result.importances_mean
+
 fig, ax = plt.subplots(figsize=(14, 5))
-importances = rf.feature_importances_
 top_k = 30
 top_idx = np.argsort(importances)[-top_k:][::-1]
 ax.bar(range(top_k), importances[top_idx], color="#2563eb", alpha=0.8)
 ax.set_xticks(range(top_k))
 ax.set_xticklabels([f"lat_{i:03d}" for i in top_idx], rotation=45, ha="right", fontsize=9)
 ax.set_xlabel("Latent dimension", fontsize=12)
-ax.set_ylabel("Feature importance", fontsize=12)
-ax.set_title(f"Top {top_k} Latent Dimensions for Redshift Prediction (RandomForest)",
+ax.set_ylabel("Permutation importance (MAE increase)", fontsize=12)
+ax.set_title(f"Top {top_k} Latent Dimensions for Redshift Prediction (HistGradientBoosting)",
              fontsize=13, fontweight="bold")
 plt.tight_layout()
 plt.savefig(f"{OUT_DIR}/photo_z_feature_importance.png", dpi=200, bbox_inches="tight")
@@ -261,7 +286,7 @@ metrics_out = {
         "source": DATA_DIR,
         "n_files": len(files),
         "total_raw": total_raw,
-        "n_after_quality_filter": int(len(data)),
+        "n_after_quality_filter": SAMPLE_N,
         "quality_cuts": "ZWARN=0, median_coadd_snr_r > 2, z > 0",
         "n_features": 128,
         "feature_columns": "lat_000 through lat_127",
@@ -272,10 +297,12 @@ metrics_out = {
         "z_median": float(np.median(y)),
     },
     "models": {
-        "RandomForest": {
-            "params": {"n_estimators": 100, "max_depth": 20},
-            "training_time_s": round(rf_time, 1),
-            **rf_metrics,
+        "HistGradientBoosting": {
+            "params": {"max_iter": 300, "max_depth": 15, "learning_rate": 0.05,
+                       "min_samples_leaf": 20, "early_stopping": True},
+            "training_time_s": round(hgb_time, 1),
+            "n_iter": int(hgb.n_iter_),
+            **hgb_metrics,
             "top_10_features": [
                 {"dim": f"lat_{i:03d}", "importance": float(importances[i])}
                 for i in np.argsort(importances)[-10:][::-1]
@@ -283,7 +310,7 @@ metrics_out = {
         },
         "MLP": {
             "params": {"hidden_layers": [256, 128, 64], "activation": "relu",
-                       "max_iter": 200, "batch_size": 4096},
+                       "max_iter": 200, "batch_size": 4096, "learning_rate_init": 0.001},
             "training_time_s": round(mlp_time, 1),
             "n_iter": int(mlp.n_iter_),
             **mlp_metrics
@@ -308,4 +335,5 @@ print(f"\n  Best model: {best_name}")
 print(f"  MAE:  {best_metrics['mae']:.5f}")
 print(f"  RMSE: {best_metrics['rmse']:.5f}")
 print(f"  R^2:  {best_metrics['r2']:.5f}")
+print(f"  sigma_NMAD: {best_metrics['sigma_nmad']:.5f}")
 print(f"  Outlier fraction (|dz/(1+z)| > 0.15): {best_metrics['outlier_fraction_015']:.4f}")
