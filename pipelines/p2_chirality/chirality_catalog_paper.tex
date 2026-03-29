@@ -1,26 +1,31 @@
-% ============================================================
 % No Evidence for Large-Scale Parity Violation in Galaxy Morphology:
 % A Survey-Scale Chirality Catalog of 8.47 Million Galaxies
 %
-% Author: Houston Golden (BigBounce Research / Hubify Lab)
-% Date: March 2026
-% ============================================================
-\documentclass[11pt]{article}
+% Houston Golden — 2026
+% arXiv submission: astro-ph.CO / astro-ph.GA
+%
+% Compile: pdflatex chirality_catalog_paper && pdflatex chirality_catalog_paper
 
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
-\usepackage{booktabs}
-\usepackage{xspace}
-\usepackage{hyperref}
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
-\usepackage{natbib}
-\usepackage{authblk}
-\usepackage{multicol}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage{mathtools}
 \usepackage{float}
-\usepackage{caption}
 
-% Professional fonts
-\usepackage{times}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
 
 % Convenience macros
 \newcommand{\fnl}{f_{\rm NL}}
@@ -28,35 +33,33 @@
 \newcommand{\pcw}{P_{\rm CW}}
 \newcommand{\pccw}{P_{\rm CCW}}
 \newcommand{\pns}{P_{\rm NS}}
-\newcommand{\CW}{\textsc{cw}\xspace}
-\newcommand{\CCW}{\textsc{ccw}\xspace}
-\newcommand{\NS}{\textsc{not\_spiral}\xspace}
+\newcommand{\CW}{\textsc{cw}}
+\newcommand{\CCW}{\textsc{ccw}}
+\newcommand{\NS}{\textsc{not\_spiral}}
 \newcommand{\sigmaunit}{\sigma}
-\newcommand{\vit}{ViT-Small\xspace}
+\newcommand{\vit}{ViT-Small}
+\newcommand{\paperVersion}{v1.0.0}
+\newcommand{\paperTimestamp}{2026-03-28}
 
 \begin{document}
 
-% ---- Full-width title page ----
-\begin{center}
-{\LARGE\bfseries No Evidence for Large-Scale Parity Violation\\[4pt] in Galaxy Morphology}\\[12pt]
-{\Large A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}\\[20pt]
-{\large Houston Golden}\\[6pt]
-{\normalsize BigBounce Research / Hubify Lab}\\[2pt]
-{\small \url{https://bigbounce.hubify.app} \quad \texttt{houston@hubify.com}}\\[4pt]
-{\small March 2026}
-\end{center}
+\preprint{}
 
-\vspace{16pt}
-\hrule
-\vspace{12pt}
+\title{No Evidence for Large-Scale Parity Violation in Galaxy Morphology:\\
+A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 
-% ---- Full-width abstract ----
-\noindent\textbf{Abstract.}\quad\begin{minipage}[t]{0.95\textwidth}
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{March 28, 2026 --- \paperVersion}
+
+\begin{abstract}
 We present the largest galaxy chirality catalog to date, comprising
 8,474,531 galaxies from the DESI Legacy Imaging Surveys Data Release~8
 (Smith42/galaxies). Each galaxy is classified as clockwise~(\CW),
 counter-clockwise~(\CCW), or not spiral~(\NS) by a Vision Transformer
-(ViT-Small) fine-tuned on 26,626 images from Galaxy Zoo~1 citizen-science
+(\vit) fine-tuned on 26,626 images from Galaxy Zoo~1 citizen-science
 labels, high-confidence CE-ResNet classifications, and synthetic hard
 negatives. The classifier achieves 93.7\% three-class validation accuracy.
 All eight tests in a purpose-built bias hardening suite pass their
@@ -67,7 +70,6 @@ test-time equivariant averaging at inference eliminate
 orientation-dependent classification bias by construction, yielding
 a global clockwise fraction of $\CW/(\CW+\CCW) = 0.4974$ after
 equivariant post-processing.
-
 We find no significant large-scale chirality dipole: a simple
 dipole fit gives $0.43\sigmaunit$, while a full angular power spectrum
 analysis yields a marginal $2.75\sigmaunit$ at $\ell = 1$. A
@@ -76,30 +78,23 @@ of only 0.17\% does not survive a look-elsewhere correction across the
 directions tested. This constitutes the most sensitive chirality
 measurement ever performed, with a minimum detectable dipole of $0.2\%$
 at $3\sigmaunit$ significance.  The $\sim\!3\%$ large-scale chirality
-asymmetry reported by \citet{Shamir:2020,Shamir:2022} is definitively
+asymmetry reported by Shamir~\cite{Shamir:2020,Shamir:2022} is definitively
 refuted: our maximum regional asymmetry is 0.47\%, a factor of~7
 smaller.  We further demonstrate that raw survey systematics can
-masquerade as a $94.6\sigmaunit$ dipole signal from a classifier CW
+masquerade as a $94.6\sigmaunit$ dipole signal from a classifier \CW{}
 bias of only 0.79\%, underscoring the necessity of equivariant
 post-processing.
 All sky regions are balanced to within 0.5\% of 50/50. The catalog
 is publicly available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
 under a CC-BY-4.0 license.
-\end{minipage}
+\end{abstract}
 
-\vspace{12pt}
+\pacs{98.80.-k, 98.62.Ai, 95.75.Mn}
+\keywords{galaxies: spiral, galaxies: statistics, methods: data analysis, cosmology: observations, large-scale structure of Universe}
 
-\noindent\textbf{Keywords:} galaxies: spiral \textbar{} galaxies: statistics \textbar{}
-  methods: data analysis \textbar{} cosmology: observations \textbar{}
-  large-scale structure of Universe
-
-\vspace{8pt}
-\hrule
-\vspace{16pt}
-
-% ---- Begin two-column body ----
-\begin{multicols}{2}
+\maketitle
+\tableofcontents
 
 % ============================================================
 \section{Introduction}
@@ -114,24 +109,24 @@ universe, the CW and CCW fractions should be exactly equal when averaged
 over large angular scales. A significant departure from this null
 expectation would signal parity violation at cosmological scales,
 providing a window into physics beyond the Standard Model of
-cosmology \citep{Alexander:2009tp}.
+cosmology~\cite{Alexander:2009tp}.
 
 Claims of such a signal have appeared intermittently in the literature.
-\citet{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
+Shamir~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
 dipole using $\sim\!10^4$ Sloan Digital Sky Survey (SDSS) galaxies
 classified by the deterministic Ganalyzer algorithm.
-\citet{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
+Shamir~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
 multiple surveys, reporting asymmetries of $\sim\!3\%$ with a
-consistent dipole axis. \citet{Shamir:2022} further claimed
+consistent dipole axis. Shamir~\cite{Shamir:2022} further claimed
 confirmation with DESI Legacy Survey data. Meanwhile,
-\citet{Iye:2020} analyzed Galaxy Zoo data and found no significant
+Iye \textit{et~al.}~\cite{Iye:2020} analyzed Galaxy Zoo data and found no significant
 signal after correcting for the known ``reading direction'' bias in
-citizen science classifications. \citet{Tadaki:2020} studied a
+citizen science classifications. Tadaki \textit{et~al.}~\cite{Tadaki:2020} studied a
 smaller sample with HSC-SSP imaging and likewise found null results.
 
 The tension between these results has not been resolved, largely
 because the classifiers used in positive-claim studies lack published
-bias audits. The Ganalyzer algorithm \citep{Shamir:2012} is
+bias audits. The Ganalyzer algorithm~\cite{Shamir:2012} is
 deterministic and by construction yields identical CW/CCW probabilities
 for an image and its mirror reflection, but its classification accuracy
 on ambiguous morphologies is validated only by small-sample manual
@@ -139,7 +134,7 @@ checks ($\sim\!400$ galaxies). More importantly, no study has tested
 for brightness-dependent, position-dependent, or artifact-driven
 chirality biases in a systematic and quantitative manner.
 
-Recently, \citet{Jia:2023} introduced CE-ResNet, a chirality-equivariant
+Recently, Jia \textit{et~al.}~\cite{Jia:2023} introduced CE-ResNet, a chirality-equivariant
 convolutional neural network that guarantees, by architectural
 construction, that horizontally flipping an input image exactly swaps
 the CW and CCW output channels. This eliminates model-induced chirality
@@ -151,7 +146,7 @@ factor of~4 fewer galaxies than the full DESI Legacy footprint.
 
 In this paper we present a new chirality catalog that advances beyond
 CE-ResNet in three respects: (i)~survey-scale coverage of 8.47~million
-galaxies (4.3$\times$ larger), (ii)~a dedicated \NS class that
+galaxies (4.3$\times$ larger), (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
 first published multi-test bias hardening audit suite for any galaxy
 chirality classifier. We use this catalog to perform the most
@@ -175,15 +170,15 @@ only $0.79\%$---a cautionary result for the entire field.
 Our parent sample is the Smith42/galaxies dataset hosted on
 HuggingFace\footnote{\url{https://huggingface.co/datasets/Smith42/galaxies}},
 containing 8,474,688 galaxy images drawn from the DESI Legacy Imaging
-Surveys Data Release~8 \citep{Dey:2019}. Each image is a
+Surveys Data Release~8~\cite{Dey:2019}. Each image is a
 $224 \times 224$~pixel cutout in the $grz$ bands at a native scale
 of $0.262''$/pixel. The dataset is distributed as 192 Parquet shards,
 each containing $\sim\!44{,}000$ galaxies with unique \texttt{dr8\_id}
 identifiers. Sky coordinates (right ascension and declination, J2000
 ICRS) are obtained by cross-matching \texttt{dr8\_id} against the
-Galaxy Zoo DESI predictions catalog \citep{Walmsley:2023}.
+Galaxy Zoo DESI predictions catalog~\cite{Walmsley:2023}.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_spiral_density.png}
 \caption{Sky density of classified spiral galaxies (CW~$+$~CCW) in
   equatorial coordinates (Mollweide projection, $\nside = 64$).
@@ -191,9 +186,9 @@ Galaxy Zoo DESI predictions catalog \citep{Walmsley:2023}.
   is clearly visible, with the highest spiral densities concentrated
   in the North Galactic Cap.  This spatial non-uniformity is the
   primary driver of the spurious $94.6\sigmaunit$ dipole observed
-  in the uncorrected Catalog~A (Section~\ref{sec:systematic_dipole}).
+  in the uncorrected Catalog~A (Sec.~\ref{sec:systematic_dipole}).
   \label{fig:spiral_density}}
-\end{figure*}
+\end{figure}
 
 \subsection{Training Labels}
 \label{sec:labels}
@@ -201,25 +196,25 @@ Galaxy Zoo DESI predictions catalog \citep{Walmsley:2023}.
 We assemble training labels from three sources:
 
 \begin{enumerate}
-\item \textbf{Galaxy Zoo~1} \citep{Lintott:2008}: 6,637~galaxies
+\item \textbf{Galaxy Zoo~1}~\cite{Lintott:2008}: 6,637~galaxies
   with citizen-science CW/CCW labels at $>70\%$ vote confidence,
   spatially cross-matched to DESI Legacy cutouts. This is the only
   fully independent label source.
 
-\item \textbf{CE-ResNet} \citep{Jia:2023}: 17,153~galaxies with
+\item \textbf{CE-ResNet}~\cite{Jia:2023}: 17,153~galaxies with
   high-confidence ($>0.8$) spiral classifications from the
   chirality-equivariant ResNet catalog. An additional 846~galaxies
-  confidently classified as non-spiral supplement the \NS class.
+  confidently classified as non-spiral supplement the \NS{} class.
 
 \item \textbf{Synthetic hard negatives}: 2,000~artificial images
   (blank sky, pixel-shuffled galaxies, uniform noise, gradient fields)
-  serving as unambiguous \NS training examples.
+  serving as unambiguous \NS{} training examples.
 \end{enumerate}
 
 The combined training set contains 26,626~images, split 80/20 into
 training and validation subsets with stratified class balance.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_gallery_cw.png}
 \caption{Representative clockwise (CW) spiral galaxies from the
   catalog, ordered by decreasing classification confidence (left to
@@ -227,18 +222,18 @@ training and validation subsets with stratified class balance.
   ($\sim\!59'' \times 59''$) in $grz$ composite from DESI Legacy DR8.
   All examples shown have equivariant confidence $\pcw^{\rm eq} > 0.95$.
   \label{fig:gallery_cw}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_gallery_ccw.png}
 \caption{Representative counter-clockwise (CCW) spiral galaxies,
-  presented identically to Figure~\ref{fig:gallery_cw}.  The visual
+  presented identically to Fig.~\ref{fig:gallery_cw}.  The visual
   mirror symmetry between the CW and CCW galleries reflects the
   statistical parity of the equivariant catalog: there is no
   discernible morphological difference between the two chirality
   classes beyond arm winding direction.
   \label{fig:gallery_ccw}}
-\end{figure*}
+\end{figure}
 
 % ============================================================
 \section{Methods}
@@ -248,8 +243,8 @@ training and validation subsets with stratified class balance.
 \subsection{Model Architecture}
 \label{sec:architecture}
 
-The classifier consists of a ViT-Small encoder
-\citep{Dosovitskiy:2020} (\texttt{vit\_small\_patch16\_224},
+The classifier consists of a \vit{} encoder~\cite{Dosovitskiy:2020}
+(\texttt{vit\_small\_patch16\_224},
 ImageNet-pretrained) with the last 6 of 12 transformer blocks
 fine-tuned, followed by a custom classification head:
 %
@@ -298,7 +293,7 @@ $\mathcal{L}_{\rm CE}$ with a flip-equivariance consistency term:
 where $\mathbf{p}(x_i) = (\pcw, \pccw, \pns)$ is the softmax output
 for image $x_i$, $\tilde{x}_i$ is its horizontal reflection,
 $S$ is the permutation matrix that swaps the CW and CCW channels
-(leaving \NS unchanged), and $\lambda = 0.5$. This term explicitly
+(leaving \NS{} unchanged), and $\lambda = 0.5$. This term explicitly
 penalizes predictions that fail to respect the physical symmetry
 CW~$\leftrightarrow$~CCW under mirror reflection.
 
@@ -320,18 +315,18 @@ time. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_equivariance_demo.png}
 \caption{Demonstration of the test-time equivariant averaging
-  procedure (Equation~\ref{eq:tta}).  \emph{Left column:} original
+  procedure (Eq.~\ref{eq:tta}).  \emph{Left column:} original
   galaxy images.  \emph{Center column:} horizontally reflected images.
   \emph{Right column:} probability bar charts showing the raw softmax
   outputs for each orientation and the final equivariant probabilities.
   The CW and CCW channels swap exactly upon reflection; the equivariant
   average symmetrizes the two passes, eliminating any orientation-dependent
-  bias.  The \NS probability is invariant under reflection by construction.
+  bias.  The \NS{} probability is invariant under reflection by construction.
   \label{fig:equivariance_demo}}
-\end{figure*}
+\end{figure}
 
 \subsection{Bias Hardening Suite}
 \label{sec:bias}
@@ -348,7 +343,7 @@ known source of spurious chirality asymmetry:
 \item[\textbf{T2}:] \textbf{Rotation stability.} Mean class agreement
   across 6 rotation angles (60$^\circ$ increments) must exceed 80\%.
 \item[\textbf{T3}:] \textbf{Artifact rejection.} Blank sky and
-  pixel-scrambled images must be classified as \NS at $>70\%$ rate.
+  pixel-scrambled images must be classified as \NS{} at $>70\%$ rate.
 \item[\textbf{T4}:] \textbf{Perturbation robustness.} Classification
   agreement under Gaussian blur ($\sigma = 2$~px) and brightness
   dimming ($\times 0.5$) must exceed 80\%.
@@ -364,28 +359,25 @@ known source of spurious chirality asymmetry:
   $\CW/(\CW+\CCW)$ fraction among spirals must be $50\% \pm 10\%$.
 \end{enumerate}
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{llcc}
-\tablecaption{Bias hardening audit results (8/8~PASS).
+\begin{table}
+\caption{Bias hardening audit results (8/8~PASS).
   ``Raw'' denotes the single-pass model output; ``Eq.''\ denotes
   the equivariant-averaged value after test-time flip processing
-  (Section~\ref{sec:tta}).\label{tab:bias_tests}}
-% header
-
-\textbf{Test} & \textbf{Metric} & \textbf{Result} & \textbf{Threshold}
-}
+  (Sec.~\ref{sec:tta}).\label{tab:bias_tests}}
+\begin{ruledtabular}
+\begin{tabular}{llcc}
+\textbf{Test} & \textbf{Metric} & \textbf{Result} & \textbf{Threshold} \\
 \hline
 T1: Flip-swap & $\pcw$ correlation & 0.833 raw; 1.000 eq. & $>0.80$ \\
 T2: Rotation stability & Mean agreement & 89.8\% & $>80\%$ \\
-T3: Artifact rejection & Blank $\to$ \NS & 100\% & $>70\%$ \\
+T3: Artifact rejection & Blank $\to$ \NS{} & 100\% & $>70\%$ \\
 T4: Perturbation & Blur/dark agreement & 84\% & $>80\%$ \\
 T5: Metadata leakage & $|\text{corr}(\pcw, \text{RA/Dec})|$ & $<\!0.04$ & $<0.10$ \\
 T6: Hemispheric null & CW frac.\ N vs.\ S diff. & 3.6\% & $<10\%$ \\
 T7: Calibration & Frac.\ at $>0.9$ conf. & 37.9\% & Qualitative \\
 T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 50.12\% eq. & $50 \pm 10\%$ \\
-\hline
 \end{tabular}
+\end{ruledtabular}
 \end{table}
 
 \subsection{Catalog Tiers}
@@ -403,7 +395,7 @@ The pipeline produces three catalog tiers:
   Suitable for ML downstream tasks.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
-  equivariant averaging (Equation~\ref{eq:tta}). This tier eliminates
+  equivariant averaging (Eq.~\ref{eq:tta}). This tier eliminates
   any orientation-dependent bias by construction.
   \textbf{Catalog~C is the recommended tier for all cosmological
   parity analyses.}
@@ -433,22 +425,22 @@ failed transforms) and are excluded.}, classified as follows:
 \end{itemize}
 
 The spiral fraction of $\sim\!39\%$ is consistent with expectations
-for a magnitude-limited galaxy survey \citep{Lintott:2008}. The
+for a magnitude-limited galaxy survey~\cite{Lintott:2008}. The
 mean classification confidence is 0.951, with a median of 0.9997,
 indicating that the model is decisive for the large majority of objects.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_class_pie.png}
 \caption{Class breakdown of the 8,474,531-galaxy catalog.  The
-  three-class output is dominated by the \NS class (60.8\%), which
+  three-class output is dominated by the \NS{} class (60.8\%), which
   captures ellipticals, irregulars, edge-on disks, and artifacts.
   Among the 3,321,795 classified spirals, the CW and CCW fractions
   are nearly balanced at 50.8\% and 49.2\% (raw) or 49.74\% and
   50.26\% (equivariant), consistent with exact parity.
   \label{fig:class_pie}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_confidence_dist.png}
 \caption{Distribution of maximum-class confidence for all 8.47~million
   galaxies.  The distribution is strongly bimodal: 62.1\% of objects
@@ -458,7 +450,7 @@ indicating that the model is decisive for the large majority of objects.
   low-surface-brightness objects).  The high-confidence peak ensures
   that the catalog is dominated by decisive classifications.
   \label{fig:confidence_dist}}
-\end{figure*}
+\end{figure}
 
 \subsection{Global CW Fraction}
 \label{sec:cw_frac}
@@ -471,21 +463,18 @@ $\CW/(\CW+\CCW) = 0.4974$, consistent with exact parity to within
 0.26\%. This progression demonstrates that the raw CW excess is a
 classifier artifact, not a physical signal.
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{lcc}
-\tablecaption{Global CW fraction across catalog tiers.
+\begin{table}
+\caption{Global CW fraction across catalog tiers.
   \label{tab:cw_frac}}
-% header
-
-\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess}
-}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess} \\
 \hline
 A (raw)         & 0.5079 & $+0.79\%$ \\
 B (calibrated)  & 0.504  & $+0.4\%$ \\
 C (equivariant) & 0.4974 & $-0.26\%$ \\
-\hline
 \end{tabular}
+\end{ruledtabular}
 \end{table}
 
 \subsection{Dipole Analysis}
@@ -513,7 +502,7 @@ residual CW bias, which is spatially modulated by the non-uniform
 survey depth. This stark comparison demonstrates the critical
 importance of equivariant post-processing.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_sky_map.png}
 \caption{HEALPix sky map ($\nside = 64$, Mollweide projection) of the
   per-pixel chirality asymmetry $A_p = (N_{\rm CW} - N_{\rm CCW}) /
@@ -522,10 +511,10 @@ importance of equivariant post-processing.
   visible; the map is consistent with pixel-level statistical noise.
   Gray pixels contain fewer than 10 spiral galaxies and are masked from
   the analysis.  Compare with the raw Catalog~A map
-  (Figure~\ref{fig:raw_vs_eq}), which shows a dramatic spurious dipole
+  (Fig.~\ref{fig:raw_vs_eq}), which shows a dramatic spurious dipole
   aligned with the survey footprint.
   \label{fig:sky_map}}
-\end{figure*}
+\end{figure}
 
 \paragraph{Angular power spectrum.}
 We extend the analysis to multipoles $\ell = 1\text{--}5$ using the
@@ -533,25 +522,22 @@ HEALPix \texttt{anafast} estimator on the Catalog~C asymmetry map.
 The significance of each multipole is assessed relative to
 10,000 Monte Carlo null realizations (Table~\ref{tab:multipole}).
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{cccl}
-\tablecaption{Angular power spectrum of the chirality asymmetry map
+\begin{table}
+\caption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant). Significance is relative to 10,000
   Monte Carlo null realizations.\label{tab:multipole}}
-% header
-
+\begin{ruledtabular}
+\begin{tabular}{cccl}
 \textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$} &
-\textbf{Significance} & \textbf{Interpretation}
-}
+\textbf{Significance} & \textbf{Interpretation} \\
 \hline
 1 & 3.82 & $2.75\sigmaunit$ & Marginal \\
 2 & 1.54 & $1.47\sigmaunit$ & Null \\
 3 & 1.81 & $1.63\sigmaunit$ & Null \\
 4 & 0.88 & $0.91\sigmaunit$ & Null \\
 5 & 1.12 & $1.22\sigmaunit$ & Null \\
-\hline
 \end{tabular}
+\end{ruledtabular}
 \end{table}
 
 The $\ell = 1$ mode is the largest, at $2.75\sigmaunit$. While
@@ -559,7 +545,7 @@ nominally suggestive, this does not exceed the $3\sigmaunit$ threshold
 for ``evidence'' and, when considered alongside the four null
 higher multipoles, is consistent with a statistical fluctuation.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_multipoles.png}
 \caption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
@@ -571,7 +557,7 @@ higher multipoles, is consistent with a statistical fluctuation.
   any scale rules out both dipolar and higher-order parity violation
   patterns.
   \label{fig:multipoles}}
-\end{figure*}
+\end{figure}
 
 \subsection{Hemisphere Asymmetry}
 \label{sec:hemisphere}
@@ -587,7 +573,7 @@ $3.05\sigmaunit$ peak does not survive a look-elsewhere correction
 across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_hemisphere.png}
 \caption{Hemisphere asymmetry scan results.  Each point represents
   the CW fraction difference between a pair of opposing hemispheres,
@@ -598,7 +584,7 @@ factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
   amplitude of only $0.17\%$ and does not survive look-elsewhere
   correction (effective significance $<1\sigmaunit$).
   \label{fig:hemisphere}}
-\end{figure*}
+\end{figure}
 
 \subsection{Sky Region Balance}
 \label{sec:sky_balance}
@@ -608,17 +594,14 @@ regions defined by RA quadrant and declination band. All regions are
 balanced to within 0.5\% of 50/50, confirming the absence of
 large-scale systematic bias.
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{lrcc}
-\tablecaption{CW fraction by sky region (Catalog~C).
+\begin{table}
+\caption{CW fraction by sky region (Catalog~C).
   All regions are within 0.5\% of exact parity.
   \label{tab:sky_balance}}
-% header
-
+\begin{ruledtabular}
+\begin{tabular}{lrcc}
 \textbf{Region} & \textbf{$N_{\rm spiral}$} &
-\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$}
-}
+\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$} \\
 \hline
 RA $[0^\circ, 90^\circ)$     & 628,411  & 0.4968 & 0.32\% \\
 RA $[90^\circ, 180^\circ)$   & 854,293  & 0.4979 & 0.21\% \\
@@ -630,11 +613,11 @@ Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27\% \\
 Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25\% \\
 \hline
 \textbf{All sky}             & \textbf{3,321,795} & \textbf{0.4974} & \textbf{0.26\%} \\
-\hline
 \end{tabular}
+\end{ruledtabular}
 \end{table}
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_sky_regions.png}
 \caption{CW fraction by sky region for Catalog~C (equivariant).  Each
   bar shows the CW/(CW$+$CCW) fraction in one of seven sky regions
@@ -643,10 +626,10 @@ Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25\% \\
   50/50, confirming the absence of position-dependent classification
   bias.  Error bars show $1\sigmaunit$ binomial uncertainties.  Note
   that the spiral fraction varies substantially across regions
-  (Section~\ref{sec:spiral_fraction_variation}), but the chirality
+  (Sec.~\ref{sec:spiral_fraction_variation}), but the chirality
   balance does not.
   \label{fig:sky_regions}}
-\end{figure*}
+\end{figure}
 
 \subsection{Scale Dependence}
 \label{sec:nside}
@@ -685,13 +668,12 @@ levels: galaxies with $0.6 < \pccw^{\rm eq} < 0.9$ show a CCW
 fraction $\sim\!0.3\%$ higher than the global average.  This
 confidence-dependent chirality asymmetry vanishes at both high and low
 confidence, and is consistent with the known ``reading direction''
-bias in Western citizen-science labels \citep{Iye:2020} propagating
+bias in Western citizen-science labels~\cite{Iye:2020} propagating
 through the CE-ResNet training labels at intermediate confidence.
 We do not interpret this as a physical signal.
 
 We also tested for a dependence of chirality on bar presence, using a
-morphological proxy from Galaxy Zoo DESI vote fractions
-\citep{Walmsley:2023}.  Barred spirals show a marginally higher CW
+morphological proxy from Galaxy Zoo DESI vote fractions~\cite{Walmsley:2023}.  Barred spirals show a marginally higher CW
 fraction ($+0.4\% \pm 0.2\%$; $\sim\!2\sigmaunit$), but this does
 not survive multiple-comparison correction and may reflect a subtle
 interaction between bar orientation and the classifier's feature
@@ -705,7 +687,7 @@ extraction.
 \subsection{Shamir (2020, 2022)}
 \label{sec:shamir}
 
-\citet{Shamir:2020} and \citet{Shamir:2022} reported galaxy chirality
+Shamir~\cite{Shamir:2020} and Shamir~\cite{Shamir:2022} reported galaxy chirality
 asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
@@ -732,7 +714,7 @@ systematics.
 \subsection{CE-ResNet (Jia et al.\ 2023)}
 \label{sec:ceresnet}
 
-\citet{Jia:2023} published a chirality catalog of 1,953,246~galaxies
+Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
 $\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C matches this
 balance at $4.3\times$ the coverage: $\CW/(\CW+\CCW) = 0.4974$,
@@ -747,7 +729,7 @@ CE-ResNet's 1.000 by construction. However, for science applications,
 both approaches yield equivalent results: the equivariant CW fractions
 agree to within 0.5\%.
 
-Our pipeline adds value in three areas: (i)~the \NS class prevents
+Our pipeline adds value in three areas: (i)~the \NS{} class prevents
 contamination from non-spirals (CE-ResNet lacks this), (ii)~the
 8-test bias hardening suite provides the first quantitative,
 multi-axis bias audit for a chirality classifier, and (iii)~the
@@ -757,7 +739,7 @@ resolution in dipole analyses.
 \subsection{SpArcFiRe}
 \label{sec:sparcfire}
 
-The SpArcFiRe algorithm \citep{Davis:2014} classifies spiral arm
+The SpArcFiRe algorithm~\cite{Davis:2014} classifies spiral arm
 winding direction via automated arm fitting, producing catalogs of
 $\sim\!140{,}000$ galaxies. Our catalog exceeds SpArcFiRe by a
 factor of~60 in coverage while achieving comparable spiral-only
@@ -786,10 +768,10 @@ footprint rather than any cosmological axis.
 Equivariant averaging eliminates this systematic by construction: the
 CW and CCW channels are exactly symmetrized, so any residual bias
 cancels to machine precision. The collapse from $94.6\sigmaunit$ to
-$0.43\sigmaunit$ upon applying Equation~(\ref{eq:tta}) confirms
+$0.43\sigmaunit$ upon applying Eq.~(\ref{eq:tta}) confirms
 that the raw dipole has no cosmological content.
 
-\begin{figure*}
+\begin{figure}
 \includegraphics[width=\columnwidth]{fig_raw_vs_eq.png}
 \caption{Side-by-side comparison of the chirality asymmetry sky maps
   for Catalog~A (raw, \emph{left}) and Catalog~C (equivariant,
@@ -797,13 +779,13 @@ that the raw dipole has no cosmological content.
   raw map exhibits a dramatic dipole pattern ($94.6\sigmaunit$) aligned
   with the DESI Legacy survey footprint, produced by a classifier CW
   bias of only $0.79\%$ modulated by non-uniform sky coverage.
-  Equivariant averaging (Equation~\ref{eq:tta}) eliminates this
+  Equivariant averaging (Eq.~\ref{eq:tta}) eliminates this
   systematic entirely, yielding a noise-consistent map at
   $0.43\sigmaunit$.  This comparison demonstrates that raw survey
   systematics can masquerade as highly significant dipole signals
   without rigorous bias correction.
   \label{fig:raw_vs_eq}}
-\end{figure*}
+\end{figure}
 
 This result serves as a cautionary tale for all chirality studies: a
 classifier bias of even $\sim\!1\%$, combined with non-uniform sky
@@ -826,7 +808,7 @@ a cosmological interpretation:
 \item The angular power spectrum shows no corresponding excess at
   $\ell = 1$ beyond $2.75\sigmaunit$.
 \item The signal is stronger in mid-confidence classifications,
-  suggesting noise rather than physics (Section~\ref{sec:confidence}).
+  suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
 
 We therefore classify this signal as a statistical fluctuation,
@@ -845,8 +827,7 @@ dipole measured in $\sim\!30{,}000$ occupied HEALPix pixels (at
 $\nside = 64$), the per-pixel noise is larger, and the minimum
 detectable dipole amplitude rises to approximately $0.2\%$ at
 $3\sigmaunit$.  This represents the most sensitive chirality
-measurement ever performed, exceeding the CE-ResNet constraint
-\citep{Jia:2023} by a factor of $\sim\!2$ in sensitivity owing to
+measurement ever performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a factor of $\sim\!2$ in sensitivity owing to
 the $4.3\times$ larger sample and the reduced per-pixel variance.
 
 \subsection{Edge-On Galaxy Contamination}
@@ -893,9 +874,8 @@ galaxy population shifts significantly toward fainter magnitudes.
 
 In Einstein--Cartan--Holst gravity, the Barbero--Immirzi
 parameter~$\gamma$ enters the gravitational action through the
-parity-odd Holst term $\gamma^{-1}\!\int e \wedge e \wedge R$
-\citep{Holst:1995pc}. While this coupling is invisible in the scalar
-perturbation sector \citep{Golden:2026framework}, it could in
+parity-odd Holst term $\gamma^{-1}\!\int e \wedge e \wedge R$~\cite{Holst:1995pc}. While this coupling is invisible in the scalar
+perturbation sector~\cite{Golden:2026framework}, it could in
 principle source parity-violating tensor modes that propagate through
 nonlinear structure formation to produce a preferred galaxy handedness
 on cosmological scales.
@@ -912,17 +892,16 @@ resolution.
 \label{sec:future}
 
 The primary limitation of our analysis is the absence of spectroscopic
-redshifts. Cross-matching with the DESI spectroscopic survey
-\citep{DESI:2016} would enable redshift-dependent chirality analyses,
+redshifts. Cross-matching with the DESI spectroscopic survey~\cite{DESI:2016} would enable redshift-dependent chirality analyses,
 testing whether parity violation evolves with cosmic time. At
 $z > 0.5$, where bounce cosmology predicts the strongest deviations
-from $\Lambda$CDM \citep{Golden:2026framework}, even a small
+from $\Lambda$CDM~\cite{Golden:2026framework}, even a small
 redshift-dependent signal would be highly diagnostic.
 
 Second, the catalog's angular resolution is limited by the DESI
 Legacy footprint and its non-uniform depth. Future surveys with
 more uniform all-sky coverage (e.g., Rubin Observatory LSST;
-\citealt{Ivezic:2019}) would improve constraints at large angular
+Ivezic \textit{et~al.}~\cite{Ivezic:2019}) would improve constraints at large angular
 scales by a factor of $\sim\!2$ in sky coverage alone.
 
 Third, we release the bias hardening test suite as open-source
@@ -944,7 +923,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \item \textbf{The most sensitive chirality measurement ever
   performed.} With 3.32~million equivariant spiral classifications,
   we achieve a minimum detectable dipole of $0.2\%$ at $3\sigmaunit$
-  (Section~\ref{sec:sensitivity}).  No compelling evidence for
+  (Sec.~\ref{sec:sensitivity}).  No compelling evidence for
   large-scale parity violation is found: the equivariant global CW
   fraction is $\CW/(\CW+\CCW) = 0.4974$, consistent with exact
   parity. The simple dipole is $0.43\sigmaunit$; the power-spectrum
@@ -961,7 +940,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   a $94.6\sigmaunit$ spurious signal.} Our raw (Catalog~A) analysis
   produces this dramatic false dipole from a classifier CW excess of
   only 0.79\%, modulated by non-uniform survey coverage
-  (Figure~\ref{fig:raw_vs_eq}).  Equivariant post-processing
+  (Fig.~\ref{fig:raw_vs_eq}).  Equivariant post-processing
   eliminates this entirely, reducing the dipole to $0.43\sigmaunit$.
   This demonstrates that survey systematics can masquerade as highly
   significant cosmological signals without rigorous bias correction.
@@ -987,132 +966,122 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   galaxy.
 \item \textbf{Model:}
   \url{https://huggingface.co/bamfai/galaxy-chirality-v2}.
-  ViT-Small encoder + classification head, PyTorch checkpoint.
+  \vit{} encoder + classification head, PyTorch checkpoint.
 \item \textbf{Code:}
   \url{https://github.com/Hubify-Projects/bigbounce}.
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts.
 \end{itemize}
 
-\end{multicols}
-
-% ---- Full-width acknowledgments and references ----
-\vspace{8pt}
-\hrule
-\vspace{8pt}
-
-\section*{Acknowledgments}
+\begin{acknowledgments}
 This research used the DESI Legacy Imaging Surveys Data Release~8;
 the Galaxy Zoo citizen science project; the Smith42/galaxies dataset on HuggingFace;
 and the CE-ResNet catalog of Jia et al.\ (2023). Computations were
 performed on NVIDIA H100 and H200 GPUs via RunPod cloud infrastructure.
 
-\paragraph{Facilities:} DESI Legacy Imaging Surveys, HuggingFace, RunPod.
+\textit{Facilities:} DESI Legacy Imaging Surveys, HuggingFace, RunPod.
 
-\paragraph{Software:} Astropy, HEALPix/healpy, NumPy, pandas, PyTorch, timm.
-% ============================================================
-
-% ============================================================
-% Appendix: Full bibliography entries (inline for standalone use)
-% ============================================================
-% The entries below can be extracted to chirality_refs.bib for
-% compilation. They are included here for completeness.
+\textit{Software:} Astropy~\cite{Astropy:2022}, HEALPix/healpy~\cite{Gorski:2005,Zonca:2019}, NumPy~\cite{Harris:2020}, pandas~\cite{McKinney:2010}, PyTorch~\cite{Paszke:2019}, timm~\cite{Wightman:2019}.
+\end{acknowledgments}
 
 \begin{thebibliography}{99}
 
-\bibitem[Alexander \& Yunes(2009)]{Alexander:2009tp}
-Alexander, S. \& Yunes, N. 2009, PhR, 480, 1,
-doi:10.1016/j.physrep.2009.07.002
+\bibitem{Alexander:2009tp}
+S.~Alexander and N.~Yunes,
+Phys.\ Rep.\ \textbf{480}, 1 (2009).
 
-\bibitem[{Astropy Collaboration} et al.(2022)]{Astropy:2022}
-{Astropy Collaboration}, Price-Whelan, A.~M., Lim, P.~L., et al.\
-2022, ApJ, 935, 167, doi:10.3847/1538-4357/ac7c74
+\bibitem{Astropy:2022}
+{Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
+Astrophys.\ J.\ \textbf{935}, 167 (2022).
 
-\bibitem[Davis \& Hayes(2014)]{Davis:2014}
-Davis, D.~R. \& Hayes, W.~B. 2014, ApJ, 790, 87,
-doi:10.1088/0004-637X/790/2/87
+\bibitem{Davis:2014}
+D.~R.~Davis and W.~B.~Hayes,
+Astrophys.\ J.\ \textbf{790}, 87 (2014).
 
-\bibitem[{DESI Collaboration}(2016)]{DESI:2016}
-{DESI Collaboration}, Aghamousa, A., Aguilar, J., et al.\ 2016,
-arXiv:1611.00036
+\bibitem{DESI:2016}
+{DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
+arXiv:1611.00036 (2016).
 
-\bibitem[Dey et al.(2019)]{Dey:2019}
-Dey, A., Schlegel, D.~J., Lang, D., et al.\ 2019, AJ, 157, 168,
-doi:10.3847/1538-3881/ab089d
+\bibitem{Dey:2019}
+A.~Dey, D.~J.~Schlegel, D.~Lang \textit{et~al.},
+Astron.\ J.\ \textbf{157}, 168 (2019).
 
-\bibitem[Dosovitskiy et al.(2020)]{Dosovitskiy:2020}
-Dosovitskiy, A., Beyer, L., Kolesnikov, A., et al.\ 2020,
-arXiv:2010.11929
+\bibitem{Dosovitskiy:2020}
+A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
+arXiv:2010.11929 (2020).
 
-\bibitem[Golden(2026)]{Golden:2026framework}
-Golden, H. 2026, ``Spin-Torsion Cosmology: Fourteen Structural
-Barriers, a Null MCMC Result, and an ALP Birefringence Prediction,''
-BigBounce Research, \url{https://bigbounce.hubify.app}
+\bibitem{Golden:2026framework}
+H.~Golden,
+``Spin-Torsion Cosmology: Fourteen Structural Barriers, a Null MCMC Result, and an ALP Birefringence Prediction,''
+BigBounce Research (2026),
+\url{https://bigbounce.hubify.app}.
 
-\bibitem[G{\'o}rski et al.(2005)]{Gorski:2005}
-G{\'o}rski, K.~M., Hivon, E., Banday, A.~J., et al.\ 2005, ApJ,
-622, 759, doi:10.1086/427976
+\bibitem{Gorski:2005}
+K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},
+Astrophys.\ J.\ \textbf{622}, 759 (2005).
 
-\bibitem[Harris et al.(2020)]{Harris:2020}
-Harris, C.~R., Millman, K.~J., van der Walt, S.~J., et al.\ 2020,
-Nature, 585, 357, doi:10.1038/s41586-020-2649-2
+\bibitem{Harris:2020}
+C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt \textit{et~al.},
+Nature \textbf{585}, 357 (2020).
 
-\bibitem[Holst(1996)]{Holst:1995pc}
-Holst, S. 1996, PhRvD, 53, 5966, doi:10.1103/PhysRevD.53.5966
+\bibitem{Holst:1995pc}
+S.~Holst,
+Phys.\ Rev.\ D \textbf{53}, 5966 (1996).
 
-\bibitem[Ive\v{z}i\'c et al.(2019)]{Ivezic:2019}
-Ive\v{z}i\'c, \v{Z}., Kahn, S.~M., Tyson, J.~A., et al.\ 2019,
-ApJ, 873, 111, doi:10.3847/1538-4357/ab042c
+\bibitem{Ivezic:2019}
+\v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
+Astrophys.\ J.\ \textbf{873}, 111 (2019).
 
-\bibitem[Iye et al.(2020)]{Iye:2020}
-Iye, M., Yagi, M., \& Fukumoto, H. 2020, ApJ, 907, 123,
-doi:10.3847/1538-4357/abcd97
+\bibitem{Iye:2020}
+M.~Iye, M.~Yagi, and H.~Fukumoto,
+Astrophys.\ J.\ \textbf{907}, 123 (2020).
 
-\bibitem[Jia, Zhu \& Pen(2023)]{Jia:2023}
-Jia, P., Zhu, L., \& Pen, U.-L. 2023, ApJ, 943, 154,
-doi:10.3847/1538-4357/aca8fe
+\bibitem{Jia:2023}
+P.~Jia, L.~Zhu, and U.-L.~Pen,
+Astrophys.\ J.\ \textbf{943}, 154 (2023).
 
-\bibitem[Lintott et al.(2008)]{Lintott:2008}
-Lintott, C.~J., Schawinski, K., Slosar, A., et al.\ 2008, MNRAS,
-389, 1179, doi:10.1111/j.1365-2966.2008.13689.x
+\bibitem{Lintott:2008}
+C.~J.~Lintott, K.~Schawinski, A.~Slosar \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008).
 
-\bibitem[McKinney(2010)]{McKinney:2010}
-McKinney, W. 2010, in Proc.\ 9th Python in Sci.\ Conf., ed.\
-S.\ van der Walt \& J.\ Millman, 56--61
+\bibitem{McKinney:2010}
+W.~McKinney,
+in \textit{Proc.\ 9th Python in Science Conf.}, edited by S.~van der Walt and J.~Millman
+(2010), pp.~56--61.
 
-\bibitem[Paszke et al.(2019)]{Paszke:2019}
-Paszke, A., Gross, S., Massa, F., et al.\ 2019, in Advances in
-Neural Information Processing Systems 32, ed.\ H.~Wallach et al.\
-(Curran Associates), 8024--8035
+\bibitem{Paszke:2019}
+A.~Paszke, S.~Gross, F.~Massa \textit{et~al.},
+in \textit{Advances in Neural Information Processing Systems 32}, edited by H.~Wallach \textit{et~al.}
+(Curran Associates, 2019), pp.~8024--8035.
 
-\bibitem[Shamir(2012)]{Shamir:2012}
-Shamir, L. 2012, PhLA, 376, 1590,
-doi:10.1016/j.physleta.2012.03.065
+\bibitem{Shamir:2012}
+L.~Shamir,
+Phys.\ Lett.\ A \textbf{376}, 1590 (2012).
 
-\bibitem[Shamir(2020)]{Shamir:2020}
-Shamir, L. 2020, Ap\&SS, 365, 136,
-doi:10.1007/s10509-020-03850-1
+\bibitem{Shamir:2020}
+L.~Shamir,
+Astrophys.\ Space Sci.\ \textbf{365}, 136 (2020).
 
-\bibitem[Shamir(2022)]{Shamir:2022}
-Shamir, L. 2022, PASJ, 74, 1114,
-doi:10.1093/pasj/psac058
+\bibitem{Shamir:2022}
+L.~Shamir,
+Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022).
 
-\bibitem[Tadaki et al.(2020)]{Tadaki:2020}
-Tadaki, K., Iye, M., Fukumoto, H., et al.\ 2020, MNRAS, 496, 4276,
-doi:10.1093/mnras/staa1880
+\bibitem{Tadaki:2020}
+K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020).
 
-\bibitem[Walmsley et al.(2023)]{Walmsley:2023}
-Walmsley, M., Lintott, C., G{\'e}ron, T., et al.\ 2023, MNRAS,
-526, 4768, doi:10.1093/mnras/stad2919
+\bibitem{Walmsley:2023}
+M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
 
-\bibitem[Wightman(2019)]{Wightman:2019}
-Wightman, R. 2019, PyTorch Image Models,
-\url{https://github.com/rwightman/pytorch-image-models},
-doi:10.5281/zenodo.4414861
+\bibitem{Wightman:2019}
+R.~Wightman,
+PyTorch Image Models (2019),
+\url{https://github.com/rwightman/pytorch-image-models}.
 
-\bibitem[Zonca et al.(2019)]{Zonca:2019}
-Zonca, A., Singer, L., Lenz, D., et al.\ 2019, JOSS, 4, 1298,
-doi:10.21105/joss.01298
+\bibitem{Zonca:2019}
+A.~Zonca, L.~Singer, D.~Lenz \textit{et~al.},
+J.\ Open Source Softw.\ \textbf{4}, 1298 (2019).
 
 \end{thebibliography}
 
