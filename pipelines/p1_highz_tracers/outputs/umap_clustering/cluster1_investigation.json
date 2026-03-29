@@ -1,0 +1,1252 @@
+{
+  "investigation_summary": {
+    "cluster_1_total": 2571,
+    "cluster_0_total": 246960,
+    "cluster_1_mean_anomaly_score": 7.911642074584961,
+    "cluster_0_mean_anomaly_score": 6.262483596801758,
+    "cluster_1_unmatched": 0
+  },
+  "snr_analysis": {
+    "cluster_1_max_snr_stats": {
+      "mean": 0.22198298573493958,
+      "median": 0.04769796133041382,
+      "std": 3.5138230323791504,
+      "min": -0.12218934297561646,
+      "max": 172.554443359375
+    },
+    "thresholds": {
+      "max_snr_gt_0": {
+        "count": 1846,
+        "percent": 71.8
+      },
+      "max_snr_gt_0.5": {
+        "count": 71,
+        "percent": 2.76
+      },
+      "max_snr_gt_1": {
+        "count": 24,
+        "percent": 0.93
+      },
+      "max_snr_gt_2": {
+        "count": 20,
+        "percent": 0.78
+      },
+      "max_snr_gt_3": {
+        "count": 16,
+        "percent": 0.62
+      },
+      "max_snr_gt_5": {
+        "count": 10,
+        "percent": 0.39
+      },
+      "max_snr_gt_10": {
+        "count": 5,
+        "percent": 0.19
+      },
+      "max_snr_gt_20": {
+        "count": 3,
+        "percent": 0.12
+      }
+    },
+    "band_snr_means_cluster1": {
+      "snr_b": 0.06966773420572281,
+      "snr_r": 0.1211983934044838,
+      "snr_z": 0.06434271484613419
+    },
+    "band_snr_means_cluster0": {
+      "snr_b": -0.008409503847360611,
+      "snr_r": -0.005924853961914778,
+      "snr_z": -0.023170150816440582
+    },
+    "comparison_note": "C1 has dramatically lower SNR than C0 overall. Only 24/2571 (0.9%) have max_SNR > 1."
+  },
+  "good_snr_properties": {
+    "count_snr_gt_1": 24,
+    "count_snr_gt_2": 20,
+    "count_snr_gt_5": 10,
+    "count_snr_gt_10": 5,
+    "redshift": {
+      "mean": 3.615473747253418,
+      "median": 4.452255725860596,
+      "std": 2.305957794189453,
+      "min": -4.604002242558636e-05,
+      "max": 6.216129302978516
+    },
+    "spectype_distribution": {
+      "QSO": 15,
+      "GALAXY": 7,
+      "STAR": 2
+    },
+    "morphtype_distribution": {
+      "": 14,
+      "PSF": 4,
+      "DEV": 3,
+      "SER": 3
+    },
+    "worst_band_distribution": {
+      "Z": 15,
+      "R": 8,
+      "B": 1
+    },
+    "colors": {
+      "gr_color": {
+        "mean": 2.2792789936065674,
+        "median": 1.8601263761520386
+      },
+      "rz_color": {
+        "mean": 2.223177671432495,
+        "median": 1.6605381965637207
+      },
+      "w1w2_color": {
+        "mean": -0.9049151539802551,
+        "median": -0.48661595582962036
+      }
+    },
+    "anomaly_score_mean": 6.072841167449951,
+    "peak_wavelength_mean": 6332.7421875,
+    "discovery_potential": "not_numeric",
+    "top_objects_by_anomaly_score": [
+      {
+        "targetid": -19275275,
+        "z": 3e-05,
+        "anomaly_score": 8.207,
+        "max_snr": 172.554,
+        "snr_b": 172.554,
+        "snr_r": 154.322,
+        "snr_z": 0.0,
+        "spectype": "STAR",
+        "subtype": "K",
+        "morphtype": "",
+        "peak_residual_wavelength": 7603.2,
+        "worst_band": "R",
+        "gr_color": null,
+        "rz_color": null,
+        "w1w2_color": null,
+        "target_ra": 250.39336,
+        "target_dec": 33.6925,
+        "deltachi2": 1930289.6,
+        "ebv": 0.0,
+        "zwarn": 2560
+      },
+      {
+        "targetid": 39633049880629906,
+        "z": 3.67948,
+        "anomaly_score": 7.977,
+        "max_snr": 13.078,
+        "snr_b": 3.042,
+        "snr_r": 13.078,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "PSF",
+        "peak_residual_wavelength": 4867.3,
+        "worst_band": "R",
+        "gr_color": 1.381,
+        "rz_color": 0.524,
+        "w1w2_color": 0.087,
+        "target_ra": 265.34674,
+        "target_dec": 38.44338,
+        "deltachi2": 6508.7,
+        "ebv": 0.0513,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39627827825349098,
+        "z": 0.97026,
+        "anomaly_score": 7.795,
+        "max_snr": 2.036,
+        "snr_b": 0.138,
+        "snr_r": 0.0,
+        "snr_z": 2.036,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "DEV",
+        "peak_residual_wavelength": 3838.0,
+        "worst_band": "Z",
+        "gr_color": 1.86,
+        "rz_color": 1.502,
+        "w1w2_color": -0.614,
+        "target_ra": 48.97036,
+        "target_dec": 1.68393,
+        "deltachi2": 6.3,
+        "ebv": 0.1073,
+        "zwarn": 6
+      },
+      {
+        "targetid": 39637210621808589,
+        "z": -5e-05,
+        "anomaly_score": 7.246,
+        "max_snr": 9.108,
+        "snr_b": -0.17,
+        "snr_r": 1.446,
+        "snr_z": 9.108,
+        "spectype": "STAR",
+        "subtype": "M",
+        "morphtype": "PSF",
+        "peak_residual_wavelength": 8819.2,
+        "worst_band": "Z",
+        "gr_color": 1.758,
+        "rz_color": 3.896,
+        "w1w2_color": -0.463,
+        "target_ra": 19.81977,
+        "target_dec": 27.10129,
+        "deltachi2": 13249.0,
+        "ebv": 0.0606,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39633010877796273,
+        "z": 5.26708,
+        "anomaly_score": 7.232,
+        "max_snr": 22.387,
+        "snr_b": -0.013,
+        "snr_r": 1.726,
+        "snr_z": 22.387,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 9331.2,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": 2.701,
+        "w1w2_color": null,
+        "target_ra": 220.96112,
+        "target_dec": 36.38759,
+        "deltachi2": 146467.7,
+        "ebv": 0.0119,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39627746053195172,
+        "z": 4.55763,
+        "anomaly_score": 7.18,
+        "max_snr": 9.837,
+        "snr_b": 0.607,
+        "snr_r": 9.837,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "PSF",
+        "peak_residual_wavelength": 5188.9,
+        "worst_band": "R",
+        "gr_color": 3.262,
+        "rz_color": 0.895,
+        "w1w2_color": -0.171,
+        "target_ra": 214.8091,
+        "target_dec": -1.83684,
+        "deltachi2": 3473.7,
+        "ebv": 0.056,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39633516731827038,
+        "z": 4.45597,
+        "anomaly_score": 6.892,
+        "max_snr": 23.356,
+        "snr_b": 1.28,
+        "snr_r": 0.0,
+        "snr_z": 23.356,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "PSF",
+        "peak_residual_wavelength": 5278.9,
+        "worst_band": "B",
+        "gr_color": 2.006,
+        "rz_color": 0.454,
+        "w1w2_color": -0.206,
+        "target_ra": 253.65019,
+        "target_dec": 73.47639,
+        "deltachi2": 14239.6,
+        "ebv": 0.0328,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39633305221469827,
+        "z": 6.18802,
+        "anomaly_score": 6.366,
+        "max_snr": 1.215,
+        "snr_b": -0.029,
+        "snr_r": 0.073,
+        "snr_z": 1.215,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 9689.6,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": null,
+        "w1w2_color": null,
+        "target_ra": 281.33615,
+        "target_dec": 53.76311,
+        "deltachi2": 14958.6,
+        "ebv": 0.041,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39627908125297081,
+        "z": 5.3902,
+        "anomaly_score": 6.155,
+        "max_snr": 8.594,
+        "snr_b": 0.148,
+        "snr_r": 0.799,
+        "snr_z": 8.594,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 6715.7,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": 2.374,
+        "w1w2_color": null,
+        "target_ra": 160.05608,
+        "target_dec": 4.99777,
+        "deltachi2": 53928.9,
+        "ebv": 0.0269,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39628241526326839,
+        "z": 5.90854,
+        "anomaly_score": 6.155,
+        "max_snr": 8.965,
+        "snr_b": 0.0,
+        "snr_r": 0.443,
+        "snr_z": 8.965,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 7151.8,
+        "worst_band": "Z",
+        "gr_color": 3.962,
+        "rz_color": 4.475,
+        "w1w2_color": null,
+        "target_ra": 347.66208,
+        "target_dec": 18.92218,
+        "deltachi2": 1365.7,
+        "ebv": 0.1654,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39627753716194528,
+        "z": 4.1698,
+        "anomaly_score": 5.773,
+        "max_snr": 3.022,
+        "snr_b": 0.381,
+        "snr_r": 3.022,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 7600.8,
+        "worst_band": "R",
+        "gr_color": 2.415,
+        "rz_color": 0.754,
+        "w1w2_color": null,
+        "target_ra": 311.69574,
+        "target_dec": -1.46908,
+        "deltachi2": 24.9,
+        "ebv": 0.0625,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39627730878211251,
+        "z": 0.72185,
+        "anomaly_score": 5.567,
+        "max_snr": 1.653,
+        "snr_b": 0.342,
+        "snr_r": 0.0,
+        "snr_z": 1.653,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "DEV",
+        "peak_residual_wavelength": 3645.0,
+        "worst_band": "Z",
+        "gr_color": 1.264,
+        "rz_color": 1.422,
+        "w1w2_color": -0.576,
+        "target_ra": 30.49186,
+        "target_dec": -2.30067,
+        "deltachi2": 12.3,
+        "ebv": 0.024,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39628492031133930,
+        "z": 4.84494,
+        "anomaly_score": 5.474,
+        "max_snr": 6.479,
+        "snr_b": 0.057,
+        "snr_r": 1.417,
+        "snr_z": 6.479,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 7139.0,
+        "worst_band": "Z",
+        "gr_color": 7.4,
+        "rz_color": 2.2,
+        "w1w2_color": null,
+        "target_ra": 238.59572,
+        "target_dec": 30.53736,
+        "deltachi2": 11545.7,
+        "ebv": 0.0299,
+        "zwarn": 0
+      },
+      {
+        "targetid": -57922492,
+        "z": 1.36756,
+        "anomaly_score": 5.447,
+        "max_snr": 1.241,
+        "snr_b": 0.356,
+        "snr_r": 0.035,
+        "snr_z": 1.241,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "",
+        "peak_residual_wavelength": 5792.1,
+        "worst_band": "R",
+        "gr_color": null,
+        "rz_color": null,
+        "w1w2_color": null,
+        "target_ra": 225.38286,
+        "target_dec": -2.67551,
+        "deltachi2": 0.8,
+        "ebv": 0.1144,
+        "zwarn": 5
+      },
+      {
+        "targetid": 39633040263090376,
+        "z": 4.44854,
+        "anomaly_score": 5.402,
+        "max_snr": 2.481,
+        "snr_b": 0.194,
+        "snr_r": 2.481,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 3619.3,
+        "worst_band": "R",
+        "gr_color": 3.362,
+        "rz_color": 1.262,
+        "w1w2_color": null,
+        "target_ra": 256.84451,
+        "target_dec": 37.99311,
+        "deltachi2": 582.1,
+        "ebv": 0.0306,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39633191367084936,
+        "z": 6.1956,
+        "anomaly_score": 5.301,
+        "max_snr": 2.18,
+        "snr_b": -0.056,
+        "snr_r": 0.135,
+        "snr_z": 2.18,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 5804.9,
+        "worst_band": "Z",
+        "gr_color": 0.885,
+        "rz_color": 5.394,
+        "w1w2_color": null,
+        "target_ra": 162.18776,
+        "target_dec": 46.62178,
+        "deltachi2": 2791.0,
+        "ebv": 0.0183,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39633127475250050,
+        "z": 1.63641,
+        "anomaly_score": 5.299,
+        "max_snr": 4.559,
+        "snr_b": 0.259,
+        "snr_r": 4.559,
+        "snr_z": 0.575,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "SER",
+        "peak_residual_wavelength": 5792.1,
+        "worst_band": "R",
+        "gr_color": 0.418,
+        "rz_color": 0.108,
+        "w1w2_color": -4.994,
+        "target_ra": 226.92343,
+        "target_dec": 42.70473,
+        "deltachi2": 305.3,
+        "ebv": 0.0204,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39627851875488435,
+        "z": 0.78676,
+        "anomaly_score": 5.282,
+        "max_snr": 3.193,
+        "snr_b": 0.273,
+        "snr_r": 0.0,
+        "snr_z": 3.193,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "DEV",
+        "peak_residual_wavelength": 3619.3,
+        "worst_band": "Z",
+        "gr_color": 2.017,
+        "rz_color": 1.819,
+        "w1w2_color": -0.721,
+        "target_ra": 42.39081,
+        "target_dec": 2.8632,
+        "deltachi2": 55.2,
+        "ebv": 0.0713,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39627817775793900,
+        "z": 5.78209,
+        "anomaly_score": 5.236,
+        "max_snr": 4.598,
+        "snr_b": 0.092,
+        "snr_r": 0.375,
+        "snr_z": 4.598,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 6908.1,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": 3.443,
+        "w1w2_color": null,
+        "target_ra": 169.84023,
+        "target_dec": 1.21906,
+        "deltachi2": 18752.1,
+        "ebv": 0.0449,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39633169590258797,
+        "z": 1.63678,
+        "anomaly_score": 5.21,
+        "max_snr": 4.047,
+        "snr_b": 0.105,
+        "snr_r": 4.047,
+        "snr_z": 0.53,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "SER",
+        "peak_residual_wavelength": 5792.1,
+        "worst_band": "R",
+        "gr_color": 0.576,
+        "rz_color": 0.03,
+        "w1w2_color": null,
+        "target_ra": 105.24641,
+        "target_dec": 45.18284,
+        "deltachi2": 508.6,
+        "ebv": 0.097,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39628507709444221,
+        "z": 6.21613,
+        "anomaly_score": 5.183,
+        "max_snr": 2.59,
+        "snr_b": -0.027,
+        "snr_r": 0.083,
+        "snr_z": 2.59,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 7485.3,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": 6.665,
+        "w1w2_color": null,
+        "target_ra": 245.88255,
+        "target_dec": 31.20012,
+        "deltachi2": 14472.3,
+        "ebv": 0.0221,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39628433499624504,
+        "z": 6.16134,
+        "anomaly_score": 5.162,
+        "max_snr": 1.144,
+        "snr_b": -0.003,
+        "snr_r": 0.073,
+        "snr_z": 1.144,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 5587.7,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": null,
+        "w1w2_color": null,
+        "target_ra": 210.44725,
+        "target_dec": 27.8264,
+        "deltachi2": 617.1,
+        "ebv": 0.0196,
+        "zwarn": 0
+      },
+      {
+        "targetid": 39627827561104370,
+        "z": 0.63551,
+        "anomaly_score": 5.145,
+        "max_snr": 3.133,
+        "snr_b": 0.6,
+        "snr_r": 0.0,
+        "snr_z": 3.133,
+        "spectype": "GALAXY",
+        "subtype": "",
+        "morphtype": "SER",
+        "peak_residual_wavelength": 7603.2,
+        "worst_band": "Z",
+        "gr_color": 1.624,
+        "rz_color": 1.377,
+        "w1w2_color": -0.487,
+        "target_ra": 33.0233,
+        "target_dec": 1.69963,
+        "deltachi2": 34.6,
+        "ebv": 0.0339,
+        "zwarn": 2
+      },
+      {
+        "targetid": 39627855348374322,
+        "z": 5.75089,
+        "anomaly_score": 5.062,
+        "max_snr": 17.473,
+        "snr_b": -0.036,
+        "snr_r": 0.903,
+        "snr_z": 17.473,
+        "spectype": "QSO",
+        "subtype": "HIZ",
+        "morphtype": "",
+        "peak_residual_wavelength": 7113.3,
+        "worst_band": "Z",
+        "gr_color": null,
+        "rz_color": 3.168,
+        "w1w2_color": null,
+        "target_ra": 249.46741,
+        "target_dec": 2.69955,
+        "deltachi2": 178651.3,
+        "ebv": 0.0588,
+        "zwarn": 0
+      }
+    ],
+    "top_objects_by_snr": [
+      {
+        "targetid": -19275275,
+        "z": 3e-05,
+        "anomaly_score": 8.207,
+        "max_snr": 172.554,
+        "snr_b": 172.554,
+        "snr_r": 154.322,
+        "snr_z": 0.0,
+        "spectype": "STAR",
+        "morphtype": "",
+        "worst_band": "R",
+        "deltachi2": 1930289.6
+      },
+      {
+        "targetid": 39633516731827038,
+        "z": 4.45597,
+        "anomaly_score": 6.892,
+        "max_snr": 23.356,
+        "snr_b": 1.28,
+        "snr_r": 0.0,
+        "snr_z": 23.356,
+        "spectype": "QSO",
+        "morphtype": "PSF",
+        "worst_band": "B",
+        "deltachi2": 14239.6
+      },
+      {
+        "targetid": 39633010877796273,
+        "z": 5.26708,
+        "anomaly_score": 7.232,
+        "max_snr": 22.387,
+        "snr_b": -0.013,
+        "snr_r": 1.726,
+        "snr_z": 22.387,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 146467.7
+      },
+      {
+        "targetid": 39627855348374322,
+        "z": 5.75089,
+        "anomaly_score": 5.062,
+        "max_snr": 17.473,
+        "snr_b": -0.036,
+        "snr_r": 0.903,
+        "snr_z": 17.473,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 178651.3
+      },
+      {
+        "targetid": 39633049880629906,
+        "z": 3.67948,
+        "anomaly_score": 7.977,
+        "max_snr": 13.078,
+        "snr_b": 3.042,
+        "snr_r": 13.078,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "morphtype": "PSF",
+        "worst_band": "R",
+        "deltachi2": 6508.7
+      },
+      {
+        "targetid": 39627746053195172,
+        "z": 4.55763,
+        "anomaly_score": 7.18,
+        "max_snr": 9.837,
+        "snr_b": 0.607,
+        "snr_r": 9.837,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "morphtype": "PSF",
+        "worst_band": "R",
+        "deltachi2": 3473.7
+      },
+      {
+        "targetid": 39637210621808589,
+        "z": -5e-05,
+        "anomaly_score": 7.246,
+        "max_snr": 9.108,
+        "snr_b": -0.17,
+        "snr_r": 1.446,
+        "snr_z": 9.108,
+        "spectype": "STAR",
+        "morphtype": "PSF",
+        "worst_band": "Z",
+        "deltachi2": 13249.0
+      },
+      {
+        "targetid": 39628241526326839,
+        "z": 5.90854,
+        "anomaly_score": 6.155,
+        "max_snr": 8.965,
+        "snr_b": 0.0,
+        "snr_r": 0.443,
+        "snr_z": 8.965,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 1365.7
+      },
+      {
+        "targetid": 39627908125297081,
+        "z": 5.3902,
+        "anomaly_score": 6.155,
+        "max_snr": 8.594,
+        "snr_b": 0.148,
+        "snr_r": 0.799,
+        "snr_z": 8.594,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 53928.9
+      },
+      {
+        "targetid": 39628492031133930,
+        "z": 4.84494,
+        "anomaly_score": 5.474,
+        "max_snr": 6.479,
+        "snr_b": 0.057,
+        "snr_r": 1.417,
+        "snr_z": 6.479,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 11545.7
+      },
+      {
+        "targetid": 39627817775793900,
+        "z": 5.78209,
+        "anomaly_score": 5.236,
+        "max_snr": 4.598,
+        "snr_b": 0.092,
+        "snr_r": 0.375,
+        "snr_z": 4.598,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 18752.1
+      },
+      {
+        "targetid": 39633127475250050,
+        "z": 1.63641,
+        "anomaly_score": 5.299,
+        "max_snr": 4.559,
+        "snr_b": 0.259,
+        "snr_r": 4.559,
+        "snr_z": 0.575,
+        "spectype": "GALAXY",
+        "morphtype": "SER",
+        "worst_band": "R",
+        "deltachi2": 305.3
+      },
+      {
+        "targetid": 39633169590258797,
+        "z": 1.63678,
+        "anomaly_score": 5.21,
+        "max_snr": 4.047,
+        "snr_b": 0.105,
+        "snr_r": 4.047,
+        "snr_z": 0.53,
+        "spectype": "GALAXY",
+        "morphtype": "SER",
+        "worst_band": "R",
+        "deltachi2": 508.6
+      },
+      {
+        "targetid": 39627851875488435,
+        "z": 0.78676,
+        "anomaly_score": 5.282,
+        "max_snr": 3.193,
+        "snr_b": 0.273,
+        "snr_r": 0.0,
+        "snr_z": 3.193,
+        "spectype": "GALAXY",
+        "morphtype": "DEV",
+        "worst_band": "Z",
+        "deltachi2": 55.2
+      },
+      {
+        "targetid": 39627827561104370,
+        "z": 0.63551,
+        "anomaly_score": 5.145,
+        "max_snr": 3.133,
+        "snr_b": 0.6,
+        "snr_r": 0.0,
+        "snr_z": 3.133,
+        "spectype": "GALAXY",
+        "morphtype": "SER",
+        "worst_band": "Z",
+        "deltachi2": 34.6
+      },
+      {
+        "targetid": 39627753716194528,
+        "z": 4.1698,
+        "anomaly_score": 5.773,
+        "max_snr": 3.022,
+        "snr_b": 0.381,
+        "snr_r": 3.022,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "R",
+        "deltachi2": 24.9
+      },
+      {
+        "targetid": 39628507709444221,
+        "z": 6.21613,
+        "anomaly_score": 5.183,
+        "max_snr": 2.59,
+        "snr_b": -0.027,
+        "snr_r": 0.083,
+        "snr_z": 2.59,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 14472.3
+      },
+      {
+        "targetid": 39633040263090376,
+        "z": 4.44854,
+        "anomaly_score": 5.402,
+        "max_snr": 2.481,
+        "snr_b": 0.194,
+        "snr_r": 2.481,
+        "snr_z": 0.0,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "R",
+        "deltachi2": 582.1
+      },
+      {
+        "targetid": 39633191367084936,
+        "z": 6.1956,
+        "anomaly_score": 5.301,
+        "max_snr": 2.18,
+        "snr_b": -0.056,
+        "snr_r": 0.135,
+        "snr_z": 2.18,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 2791.0
+      },
+      {
+        "targetid": 39627827825349098,
+        "z": 0.97026,
+        "anomaly_score": 7.795,
+        "max_snr": 2.036,
+        "snr_b": 0.138,
+        "snr_r": 0.0,
+        "snr_z": 2.036,
+        "spectype": "GALAXY",
+        "morphtype": "DEV",
+        "worst_band": "Z",
+        "deltachi2": 6.3
+      },
+      {
+        "targetid": 39627730878211251,
+        "z": 0.72185,
+        "anomaly_score": 5.567,
+        "max_snr": 1.653,
+        "snr_b": 0.342,
+        "snr_r": 0.0,
+        "snr_z": 1.653,
+        "spectype": "GALAXY",
+        "morphtype": "DEV",
+        "worst_band": "Z",
+        "deltachi2": 12.3
+      },
+      {
+        "targetid": -57922492,
+        "z": 1.36756,
+        "anomaly_score": 5.447,
+        "max_snr": 1.241,
+        "snr_b": 0.356,
+        "snr_r": 0.035,
+        "snr_z": 1.241,
+        "spectype": "GALAXY",
+        "morphtype": "",
+        "worst_band": "R",
+        "deltachi2": 0.8
+      },
+      {
+        "targetid": 39633305221469827,
+        "z": 6.18802,
+        "anomaly_score": 6.366,
+        "max_snr": 1.215,
+        "snr_b": -0.029,
+        "snr_r": 0.073,
+        "snr_z": 1.215,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 14958.6
+      },
+      {
+        "targetid": 39628433499624504,
+        "z": 6.16134,
+        "anomaly_score": 5.162,
+        "max_snr": 1.144,
+        "snr_b": -0.003,
+        "snr_r": 0.073,
+        "snr_z": 1.144,
+        "spectype": "QSO",
+        "morphtype": "",
+        "worst_band": "Z",
+        "deltachi2": 617.1
+      }
+    ]
+  },
+  "cluster_comparison": {
+    "distributions": {
+      "z": {
+        "cluster_0": {
+          "mean": 0.8460841774940491,
+          "median": 0.8008744120597839,
+          "std": 0.6095955967903137
+        },
+        "cluster_1": {
+          "mean": 0.924708366394043,
+          "median": 0.8820551037788391,
+          "std": 0.7809432148933411
+        }
+      },
+      "anomaly_score": {
+        "cluster_0": {
+          "mean": 6.262483596801758,
+          "median": 5.530329704284668,
+          "std": 1.6506208181381226
+        },
+        "cluster_1": {
+          "mean": 7.911642074584961,
+          "median": 7.837017059326172,
+          "std": 2.1509523391723633
+        }
+      },
+      "max_snr": {
+        "cluster_0": {
+          "mean": 0.03712354600429535,
+          "median": 0.02176762744784355,
+          "std": 0.06409922987222672
+        },
+        "cluster_1": {
+          "mean": 0.22198298573493958,
+          "median": 0.04769796133041382,
+          "std": 3.5138230323791504
+        }
+      },
+      "median_coadd_snr_b": {
+        "cluster_0": {
+          "mean": -0.008409503847360611,
+          "median": -0.010047998279333115,
+          "std": 0.07801724970340729
+        },
+        "cluster_1": {
+          "mean": 0.06966773420572281,
+          "median": 0.0,
+          "std": 3.4039664268493652
+        }
+      },
+      "median_coadd_snr_r": {
+        "cluster_0": {
+          "mean": -0.005924853961914778,
+          "median": 0.0,
+          "std": 0.05463135242462158
+        },
+        "cluster_1": {
+          "mean": 0.1211983934044838,
+          "median": 0.005840664263814688,
+          "std": 3.0662832260131836
+        }
+      },
+      "median_coadd_snr_z": {
+        "cluster_0": {
+          "mean": -0.023170150816440582,
+          "median": -0.015151044353842735,
+          "std": 0.07679927349090576
+        },
+        "cluster_1": {
+          "mean": 0.06434271484613419,
+          "median": 0.0,
+          "std": 0.8208125233650208
+        }
+      },
+      "rB": {
+        "cluster_0": {
+          "mean": 2.771883487701416,
+          "median": 2.6615116596221924,
+          "std": 0.4409159719944
+        },
+        "cluster_1": {
+          "mean": 0.7590954303741455,
+          "median": 0.44763800501823425,
+          "std": 0.7527414560317993
+        }
+      },
+      "rR": {
+        "cluster_0": {
+          "mean": 1.023368000984192,
+          "median": 1.0760425329208374,
+          "std": 0.48532870411872864
+        },
+        "cluster_1": {
+          "mean": 2.5334928035736084,
+          "median": 2.64854097366333,
+          "std": 0.7390206456184387
+        }
+      },
+      "rZ": {
+        "cluster_0": {
+          "mean": 1.0191092491149902,
+          "median": 0.9026616811752319,
+          "std": 0.4445624351501465
+        },
+        "cluster_1": {
+          "mean": 2.361921548843384,
+          "median": 2.5349810123443604,
+          "std": 0.7908759713172913
+        }
+      },
+      "peak_residual_wavelength": {
+        "cluster_0": {
+          "mean": 4532.3427734375,
+          "median": 4069.590576171875,
+          "std": 1308.115966796875
+        },
+        "cluster_1": {
+          "mean": 7636.58740234375,
+          "median": 7718.39990234375,
+          "std": 1910.3602294921875
+        }
+      },
+      "gr_color": {
+        "cluster_0": {
+          "mean": -0.11637978255748749,
+          "median": 0.04437609016895294,
+          "std": 0.9392919540405273
+        },
+        "cluster_1": {
+          "mean": 0.560858964920044,
+          "median": 0.1768922507762909,
+          "std": 1.3720343112945557
+        }
+      },
+      "rz_color": {
+        "cluster_0": {
+          "mean": 0.6667035222053528,
+          "median": 0.596057116985321,
+          "std": 0.5215566754341125
+        },
+        "cluster_1": {
+          "mean": 1.266431450843811,
+          "median": 0.8173590898513794,
+          "std": 1.3325239419937134
+        }
+      },
+      "w1w2_color": {
+        "cluster_0": {
+          "mean": 0.069583959877491,
+          "median": 0.16465617716312408,
+          "std": 1.3436661958694458
+        },
+        "cluster_1": {
+          "mean": -0.09864675998687744,
+          "median": -0.20047245919704437,
+          "std": 0.9815675616264343
+        }
+      },
+      "deltachi2": {
+        "cluster_0": {
+          "mean": 12.437755584716797,
+          "median": 2.7516331672668457,
+          "std": 1033.083984375
+        },
+        "cluster_1": {
+          "mean": 963.0490112304688,
+          "median": 2.95601224899292,
+          "std": 38365.97265625
+        }
+      }
+    },
+    "spectype": {
+      "cluster_0": {
+        "GALAXY": 0.9883624878522838,
+        "QSO": 0.01052397149335925,
+        "STAR": 0.0010285066407515386,
+        "": 8.503401360544217e-05
+      },
+      "cluster_1": {
+        "GALAXY": 0.9614935822637106,
+        "QSO": 0.027226760015558148,
+        "STAR": 0.010890704006223259,
+        "": 0.00038895371450797355
+      }
+    },
+    "morphtype": {
+      "cluster_0": {
+        "": 0.9886904761904762,
+        "PSF": 0.005762066731454487,
+        "REX": 0.004652575315840622,
+        "EXP": 0.0006559766763848397,
+        "DEV": 0.00019031422092646584,
+        "SER": 4.859086491739553e-05
+      },
+      "cluster_1": {
+        "": 0.9257098405289771,
+        "PSF": 0.033061065733177755,
+        "REX": 0.03189420458965383,
+        "DEV": 0.004278490859587709,
+        "EXP": 0.0038895371450797353,
+        "SER": 0.0011668611435239206
+      }
+    },
+    "worst_band": {
+      "cluster_0": {
+        "B": 0.9988338192419826,
+        "Z": 0.0007126660187884678,
+        "R": 0.00045351473922902497
+      },
+      "cluster_1": {
+        "R": 0.49280435628160246,
+        "Z": 0.38117464021781405,
+        "B": 0.12602100350058343
+      }
+    },
+    "high_z_fractions": {
+      "cluster_0_z_gt_2": 0.007584224165856819,
+      "cluster_1_z_gt_2": 0.020225593154414623,
+      "cluster_0_z_gt_3": 0.006045513443472627,
+      "cluster_1_z_gt_3": 0.017891870867366783
+    },
+    "point_source_fraction": {
+      "cluster_0": 0.005762066731454487,
+      "cluster_1": 0.033061065733177755
+    },
+    "star_candidate_fraction": {
+      "cluster_0": 0.0013038548752834468,
+      "cluster_1": 0.007001166861143524
+    },
+    "redshift_bins": {
+      "(0.0, 0.5]": {
+        "cluster_0": 0.3352039592203557,
+        "cluster_1": 0.29634002361275086
+      },
+      "(0.5, 1.0]": {
+        "cluster_0": 0.24963909120114514,
+        "cluster_1": 0.2660369933097206
+      },
+      "(1.0, 1.5]": {
+        "cluster_0": 0.31306957508326316,
+        "cluster_1": 0.3069657615112161
+      },
+      "(1.5, 2.0]": {
+        "cluster_0": 0.09447067387264291,
+        "cluster_1": 0.11019283746556474
+      },
+      "(2.0, 2.5]": {
+        "cluster_0": 0.0005611877661066989,
+        "cluster_1": 0.0007870916961826052
+      },
+      "(2.5, 3.0]": {
+        "cluster_0": 0.000984111879694356,
+        "cluster_1": 0.0015741833923652105
+      },
+      "(3.0, 4.0]": {
+        "cluster_0": 0.002155286348090945,
+        "cluster_1": 0.0059031877213695395
+      },
+      "(4.0, 5.0]": {
+        "cluster_0": 0.0009637789896180263,
+        "cluster_1": 0.0019677292404565133
+      },
+      "(5.0, 7.0]": {
+        "cluster_0": 0.002952335639083068,
+        "cluster_1": 0.01023219205037387
+      }
+    }
+  },
+  "physical_interpretation": {
+    "key_differences": [
+      "Peak residual wavelength 1.7x higher in C1 (7637 vs 4532 A) -- anomalies at redder wavelengths.",
+      "Z-band residual 2.3x higher in C1 (2.3619 vs 1.0191) -- NIR excess or poor template match.",
+      "R-band residual 2.5x higher in C1 (2.5335 vs 1.0234).",
+      "C1 anomaly score 7.91 vs C0 6.26 (1.26x).",
+      "QSO fraction 2.6x higher in C1 (0.0272 vs 0.0105).",
+      "STAR fraction 10.6x higher in C1 (0.0109 vs 0.0010)."
+    ],
+    "cluster_1_defining_feature": "Spectral anomalies concentrated in R-band and Z-band (red/NIR) rather than B-band (blue) which dominates Cluster 0. Mean peak residual wavelength ~7644 A vs ~4532 A.",
+    "peak_wavelength_shift_angstroms": 3104.24462890625,
+    "band_ratio_summary": {
+      "rB": {
+        "C0": 2.771883487701416,
+        "C1": 0.7590954303741455,
+        "ratio_C1_over_C0": 0.274
+      },
+      "rR": {
+        "C0": 1.023368000984192,
+        "C1": 2.5334928035736084,
+        "ratio_C1_over_C0": 2.476
+      },
+      "rZ": {
+        "C0": 1.0191092491149902,
+        "C1": 2.361921548843384,
+        "ratio_C1_over_C0": 2.318
+      }
+    },
+    "snr_reality_check": "99.1% of Cluster 1 has max_SNR < 1. These are extremely faint objects. The 24 with SNR > 1 are the actionable subset.",
+    "good_snr_subset_nature": "The 24 good-SNR objects are predominantly high-z QSOs (15/24) with z-band dominant anomalies. They likely have unusual emission/absorption features at red wavelengths that the pipeline templates fail to match."
+  }
+}

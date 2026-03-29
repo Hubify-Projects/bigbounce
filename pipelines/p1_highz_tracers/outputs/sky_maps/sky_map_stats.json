@@ -1,0 +1,32 @@
+{
+  "nside": 64,
+  "npix": 49152,
+  "pixel_area_deg2": 0.8393,
+  "total_objects": 22504897,
+  "total_anomalies": 249905,
+  "anomaly_threshold": 5.0,
+  "global_anomaly_rate": 0.011104,
+  "n_observed_pixels": 16230,
+  "sky_coverage_deg2": 13621.7,
+  "sky_coverage_fraction": 0.3302,
+  "depth_per_pixel": {
+    "median": 1008.0,
+    "mean": 1386.6,
+    "std": 1157.5,
+    "max": 4962
+  },
+  "anomaly_rate_per_pixel": {
+    "median": 0.007874,
+    "mean": 0.013321,
+    "max": 0.428571
+  },
+  "depth_rate_correlation": {
+    "min_objects_per_pixel": 50,
+    "n_pixels_used": 15719,
+    "pearson_r": -0.165609,
+    "pearson_p": 4.708e-97,
+    "spearman_r": 0.030198,
+    "spearman_p": 0.00015269,
+    "interpretation": "WEAKLY CORRELATED: Slight depth dependence detected. Some systematic contribution possible, but anomalies may still partially trace real structure."
+  }
+}

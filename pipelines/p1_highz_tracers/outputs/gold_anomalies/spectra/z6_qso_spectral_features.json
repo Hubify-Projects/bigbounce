@@ -1,0 +1,728 @@
+{
+  "39633191367084936": {
+    "z": 6.195603370666504,
+    "anomaly_score": 5.300685405731201,
+    "ra": 162.18775939941406,
+    "dec": 46.62178039550781,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8747.47914961815,
+        "peak_snr": 13.81411075592041,
+        "peak_flux": 3.793966293334961,
+        "line_excess": 1.729851245880127,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7380.674289360047,
+        "peak_snr": 4.240105628967285,
+        "peak_flux": 1.3400558233261108,
+        "line_excess": 1.2314482927322388,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6562.390274047852,
+        "peak_snr": 0.45980188250541687,
+        "peak_flux": 0.14959925413131714,
+        "line_excess": 0.1387694776058197,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8923.555564098358,
+        "peak_snr": 14.079001426696777,
+        "peak_flux": 3.7468974590301514,
+        "line_excess": 0.9585990905761719,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6223.739574809075,
+        "peak_snr": 0,
+        "peak_flux": 0.07840454578399658,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8747.47914961815,
+    "lyman_break_observed": 6562.390274047852,
+    "n_detected_features": 5
+  },
+  "39628507709444221": {
+    "z": 6.216129302978516,
+    "anomaly_score": 5.183175563812256,
+    "ra": 245.88255310058594,
+    "dec": 31.200124740600586,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8772.431909751893,
+        "peak_snr": 35.74274444580078,
+        "peak_flux": 6.783441066741943,
+        "line_excess": 5.891330122947693,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7401.728148651123,
+        "peak_snr": 2.4667906761169434,
+        "peak_flux": 0.36851876974105835,
+        "line_excess": 0.3521287515759468,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6581.109924316406,
+        "peak_snr": 0.40044355392456055,
+        "peak_flux": 0.07575187087059021,
+        "line_excess": 0.08507756236940622,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8949.010593795778,
+        "peak_snr": 25.21469497680664,
+        "peak_flux": 3.6318204402923584,
+        "line_excess": 0.8311610221862793,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6236.215954875946,
+        "peak_snr": 0,
+        "peak_flux": 0.041593119502067566,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8772.431909751893,
+    "lyman_break_observed": 6581.109924316406,
+    "n_detected_features": 5
+  },
+  "39633040179201450": {
+    "z": 6.015984535217285,
+    "anomaly_score": 4.319015979766846,
+    "ra": 250.34056091308594,
+    "dec": 37.922210693359375,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8529.121919927598,
+        "peak_snr": 14.069595336914062,
+        "peak_flux": 1.806506633758545,
+        "line_excess": 1.490270584821701,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7196.435657463074,
+        "peak_snr": 1.8804131746292114,
+        "peak_flux": 0.3199585974216461,
+        "line_excess": 0.29549597576260567,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6398.577896118164,
+        "peak_snr": 0.5255393385887146,
+        "peak_flux": 0.09918874502182007,
+        "line_excess": 0.10918204486370087,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8700.803061504364,
+        "peak_snr": 10.907583236694336,
+        "peak_flux": 1.1525517702102661,
+        "line_excess": 0.4551093578338623,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9799.646559410096,
+        "peak_snr": 5.083891868591309,
+        "peak_flux": 0.790675699710846,
+        "line_excess": 0.27184873819351196,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6114.560959963799,
+        "peak_snr": 0,
+        "peak_flux": 0.053159650415182114,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8529.121919927598,
+    "lyman_break_observed": 6398.577896118164,
+    "n_detected_features": 4
+  },
+  "39628387379053918": {
+    "z": 6.009921073913574,
+    "anomaly_score": 4.263101577758789,
+    "ra": 18.620481491088867,
+    "dec": 25.778491973876953,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8521.750751924515,
+        "peak_snr": 1.4591820240020752,
+        "peak_flux": 0.159940704703331,
+        "line_excess": 0.16813717130571604,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7190.216243934631,
+        "peak_snr": 0.8944284319877625,
+        "peak_flux": 0.16393578052520752,
+        "line_excess": 0.16345323307905346,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6393.04801940918,
+        "peak_snr": 0.11365248262882233,
+        "peak_flux": 0.026252323761582375,
+        "line_excess": 0.08058192394673824,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8693.283520603181,
+        "peak_snr": 9.570130348205566,
+        "peak_flux": 1.0431252717971802,
+        "line_excess": 0.33396100997924805,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9791.177359199524,
+        "peak_snr": 4.842830181121826,
+        "peak_flux": 0.6785239577293396,
+        "line_excess": 0.1361423134803772,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6110.875375962258,
+        "peak_snr": 0,
+        "peak_flux": 0.05779481306672096,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8521.750751924515,
+    "lyman_break_observed": 6393.04801940918,
+    "n_detected_features": 3
+  },
+  "39627689144878319": {
+    "z": 6.031698226928711,
+    "anomaly_score": 4.148690700531006,
+    "ra": 60.882930755615234,
+    "dec": -3.9189870357513428,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8548.224583530426,
+        "peak_snr": 0.24379490315914154,
+        "peak_flux": 0.0371580608189106,
+        "line_excess": -0.08080130442976952,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7212.553505325318,
+        "peak_snr": 0.7838810086250305,
+        "peak_flux": 0.1331007182598114,
+        "line_excess": 0.09990498423576355,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6412.908782958984,
+        "peak_snr": 0.23054943978786469,
+        "peak_flux": 0.060184091329574585,
+        "line_excess": 0.06853413581848145,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8720.290239143373,
+        "peak_snr": 11.144235610961914,
+        "peak_flux": 1.3339089155197144,
+        "line_excess": 0.6732025146484375,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6124.112291765213,
+        "peak_snr": 0,
+        "peak_flux": 0.05366319790482521,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8548.224583530426,
+    "lyman_break_observed": 6412.908782958984,
+    "n_detected_features": 3
+  },
+  "39628353849789866": {
+    "z": 6.018681526184082,
+    "anomaly_score": 4.046412944793701,
+    "ra": 339.6763000488281,
+    "dec": 23.958824157714844,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8532.400570936203,
+        "peak_snr": 21.765655517578125,
+        "peak_flux": 4.137364387512207,
+        "line_excess": 3.956202879548073,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7199.2020150375365,
+        "peak_snr": 3.5349011421203613,
+        "peak_flux": 0.6937658786773682,
+        "line_excess": 0.6599306240677834,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6401.037551879883,
+        "peak_snr": 0.44901755452156067,
+        "peak_flux": 0.10347641259431839,
+        "line_excess": 0.08928907569497824,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8704.147707881928,
+        "peak_snr": 12.234511375427246,
+        "peak_flux": 1.8576878309249878,
+        "line_excess": 0.7275372743606567,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6116.200285468101,
+        "peak_snr": 0,
+        "peak_flux": 0.06492272019386292,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8532.400570936203,
+    "lyman_break_observed": 6401.037551879883,
+    "n_detected_features": 5
+  },
+  "39627905566769382": {
+    "z": 6.008457660675049,
+    "anomaly_score": 3.801936388015747,
+    "ra": 7.027352333068848,
+    "dec": 4.957057476043701,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8519.971724352838,
+        "peak_snr": 6.4307098388671875,
+        "peak_flux": 1.6673251390457153,
+        "line_excess": 1.3272834718227386,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7188.715191707612,
+        "peak_snr": 1.1924306154251099,
+        "peak_flux": 0.3313625752925873,
+        "line_excess": 0.24136468768119812,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6391.7133865356445,
+        "peak_snr": 0.17441146075725555,
+        "peak_flux": 0.12872900068759918,
+        "line_excess": 0.14133695233613253,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8691.468683309557,
+        "peak_snr": 6.639665603637695,
+        "peak_flux": 1.7706489562988281,
+        "line_excess": 0.5759220123291016,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9789.13332212448,
+        "peak_snr": 3.892580032348633,
+        "peak_flux": 1.9333851337432861,
+        "line_excess": 0.9843488335609436,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6109.985862176419,
+        "peak_snr": 0,
+        "peak_flux": 0.08905744552612305,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8519.971724352838,
+    "lyman_break_observed": 6391.7133865356445,
+    "n_detected_features": 5
+  },
+  "39632995576973195": {
+    "z": 6.010812282562256,
+    "anomaly_score": 3.734060764312744,
+    "ra": 174.32383728027344,
+    "dec": 35.832454681396484,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8522.834167542458,
+        "peak_snr": 19.920215606689453,
+        "peak_flux": 5.835597515106201,
+        "line_excess": 2.3411898612976074,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7191.130374469757,
+        "peak_snr": 2.636671781539917,
+        "peak_flux": 0.8238946795463562,
+        "line_excess": 0.7872796915471554,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6393.860801696777,
+        "peak_snr": 0.7244476079940796,
+        "peak_flux": 0.22070017457008362,
+        "line_excess": 0.1915354747325182,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8694.388744096757,
+        "peak_snr": 14.717243194580078,
+        "peak_flux": 4.339519500732422,
+        "line_excess": 1.3128674030303955,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9792.422163791656,
+        "peak_snr": 7.984143257141113,
+        "peak_flux": 2.655752420425415,
+        "line_excess": 0.8185615539550781,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6111.417083771229,
+        "peak_snr": 0,
+        "peak_flux": 0.10187306255102158,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8522.834167542458,
+    "lyman_break_observed": 6393.860801696777,
+    "n_detected_features": 6
+  },
+  "39627789988529182": {
+    "z": 6.009199142456055,
+    "anomaly_score": 3.6492934226989746,
+    "ra": 313.527099609375,
+    "dec": -0.08734394609928131,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8520.873121509552,
+        "peak_snr": 6.918619632720947,
+        "peak_flux": 1.0930827856063843,
+        "line_excess": 0.20136958360671997,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7189.475744400024,
+        "peak_snr": 1.3687200546264648,
+        "peak_flux": 0.27749842405319214,
+        "line_excess": 0.1951795071363449,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6392.389617919922,
+        "peak_snr": 0.6895096302032471,
+        "peak_flux": 0.1820008009672165,
+        "line_excess": 0.17344980966299772,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8692.388224525452,
+        "peak_snr": 6.525924205780029,
+        "peak_flux": 1.3444713354110718,
+        "line_excess": 0.3872479200363159,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9790.16899421692,
+        "peak_snr": 4.246833801269531,
+        "peak_flux": 1.79922354221344,
+        "line_excess": 1.1174447536468506,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6110.436560754776,
+        "peak_snr": 0,
+        "peak_flux": 0.08471862226724625,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8520.873121509552,
+    "lyman_break_observed": 6392.389617919922,
+    "n_detected_features": 5
+  },
+  "39633152393611253": {
+    "z": 6.229721546173096,
+    "anomaly_score": 3.615532159805298,
+    "ra": 107.70769500732422,
+    "dec": 44.15154266357422,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8788.955592036247,
+        "peak_snr": 10.190000534057617,
+        "peak_flux": 1.8513474464416504,
+        "line_excess": -0.3684720993041992,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7415.669984340668,
+        "peak_snr": 1.3231139183044434,
+        "peak_flux": 0.2794685661792755,
+        "line_excess": 0.08415435254573822,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6593.506050109863,
+        "peak_snr": 1.1786022186279297,
+        "peak_flux": 0.29322516918182373,
+        "line_excess": 0.2284674495458603,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8965.866878271103,
+        "peak_snr": 20.728914260864258,
+        "peak_flux": 5.655476093292236,
+        "line_excess": 1.601750373840332,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6244.477796018124,
+        "peak_snr": 0,
+        "peak_flux": 0.15891478955745697,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8788.955592036247,
+    "lyman_break_observed": 6593.506050109863,
+    "n_detected_features": 4
+  },
+  "39628497290793707": {
+    "z": 6.14373254776001,
+    "anomaly_score": 3.5576605796813965,
+    "ra": 242.4053192138672,
+    "dec": 30.696548461914062,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8684.421346335412,
+        "peak_snr": 15.015414237976074,
+        "peak_flux": 2.788097620010376,
+        "line_excess": 1.6575626134872437,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7327.469348888398,
+        "peak_snr": 1.4249972105026245,
+        "peak_flux": 0.387554794549942,
+        "line_excess": 0.36603619158267975,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6515.084083557129,
+        "peak_snr": 0.3052974045276642,
+        "peak_flux": 0.09329133480787277,
+        "line_excess": 0.08400911279022694,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8859.228481779099,
+        "peak_snr": 9.14509391784668,
+        "peak_flux": 1.667669653892517,
+        "line_excess": 0.4965488910675049,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6192.210673167706,
+        "peak_snr": 0,
+        "peak_flux": 0.08265569806098938,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8684.421346335412,
+    "lyman_break_observed": 6515.084083557129,
+    "n_detected_features": 4
+  },
+  "39627944577993383": {
+    "z": 6.013508319854736,
+    "anomaly_score": 3.3129069805145264,
+    "ra": 181.90597534179688,
+    "dec": 6.502814292907715,
+    "features": [
+      {
+        "name": "Ly-alpha",
+        "obs_lam": 8526.111659197808,
+        "peak_snr": 22.533294677734375,
+        "peak_flux": 3.29187273979187,
+        "line_excess": 3.1248546838760376,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Ly-beta",
+        "obs_lam": 7193.895753841401,
+        "peak_snr": 1.1342942714691162,
+        "peak_flux": 0.19436611235141754,
+        "line_excess": 0.110537089407444,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "Lyman limit",
+        "obs_lam": 6396.3195877075195,
+        "peak_snr": 0.5416440963745117,
+        "peak_flux": 0.08568745851516724,
+        "line_excess": 0.06608620099723339,
+        "detected": true,
+        "type": "break"
+      },
+      {
+        "name": "NV 1240",
+        "obs_lam": 8697.732207784653,
+        "peak_snr": 16.589292526245117,
+        "peak_flux": 1.9414600133895874,
+        "line_excess": 0.29209113121032715,
+        "detected": false,
+        "type": "emission"
+      },
+      {
+        "name": "SiIV 1397",
+        "obs_lam": 9796.187880840302,
+        "peak_snr": 8.478507041931152,
+        "peak_flux": 1.9453872442245483,
+        "line_excess": 0.8225016593933105,
+        "detected": true,
+        "type": "emission"
+      },
+      {
+        "name": "Gunn-Peterson trough",
+        "obs_lam": 6113.055829598904,
+        "peak_snr": 0,
+        "peak_flux": 0.05789295211434364,
+        "line_excess": 0,
+        "detected": true,
+        "type": "absorption"
+      }
+    ],
+    "lya_observed_wavelength": 8526.111659197808,
+    "lyman_break_observed": 6396.3195877075195,
+    "n_detected_features": 4
+  }
+}
