@@ -1,0 +1,52 @@
+{
+  "total_objects": 2145,
+  "in_simbad": 134,
+  "in_ned": 1016,
+  "in_both": 132,
+  "in_either": 1018,
+  "in_neither_uncataloged": 1127,
+  "fraction_in_simbad": 0.0625,
+  "fraction_in_ned": 0.4737,
+  "fraction_uncataloged": 0.5254,
+  "simbad_errors": 0,
+  "ned_errors": 0,
+  "simbad_type_breakdown": {
+    "Quasar": 112,
+    "Galaxy": 7,
+    "Brown Dwarf": 4,
+    "Star": 3,
+    "High Proper Motion Star": 2,
+    "Radio Source": 2,
+    "Low-mass Star": 1,
+    "Radio Galaxy": 1,
+    "SuperNova": 1,
+    "Optical Source": 1
+  },
+  "ned_type_breakdown": {
+    "IrS": 748,
+    "G": 93,
+    "*": 68,
+    "QSO": 67,
+    "UvS": 30,
+    "VisS": 6,
+    "RadioS": 4
+  },
+  "uncataloged_by_spectype": {
+    "GALAXY": 994,
+    "QSO": 99,
+    "STAR": 34
+  },
+  "cataloged_by_spectype": {
+    "GALAXY": 776,
+    "STAR": 35,
+    "QSO": 207
+  },
+  "uncataloged_score_stats": {
+    "count": 1127,
+    "mean": 3.59,
+    "median": 3.34,
+    "max": 15.2,
+    "min": 3.0
+  },
+  "timestamp": "2026-03-29T01:46:10.886026"
+}
