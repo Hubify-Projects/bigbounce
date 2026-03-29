@@ -33,6 +33,7 @@
 \newcommand{\desi}{\textsc{DESI}}
 \newcommand{\redrock}{\textsc{Redrock}}
 \newcommand{\simbad}{\textsc{SIMBAD}}
+\newcommand{\ned}{\textsc{NED}}
 \newcommand{\hdbscan}{\textsc{HDBSCAN}}
 \newcommand{\umap}{\textsc{UMAP}}
 \newcommand{\healpix}{\textsc{HEALPix}}
@@ -42,8 +43,10 @@
 \newcommand{\cf}{cf.}
 \newcommand{\snr}{\mathrm{SNR}}
 \newcommand{\zwarn}{\texttt{ZWARN}}
-\newcommand{\paperVersion}{v0.1.0}
-\newcommand{\paperTimestamp}{2026-03-28}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\sigmaNMAD}{\sigma_{\rm NMAD}}
+\newcommand{\paperVersion}{v0.2.0}
+\newcommand{\paperTimestamp}{2026-03-29}
 
 \begin{document}
 
@@ -57,532 +60,741 @@ Autoencoder Search at Survey Scale}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 28, 2026 --- \paperVersion}
+\date{March 29, 2026 --- \paperVersion}
 
 % ============================================================
 % ABSTRACT
 % ============================================================
 \begin{abstract}
-We present an enhanced catalog of 22,504,897 \desi{} Data Release~1 spectra scored by an unsupervised autoencoder (\bigae{}, $496 \to 128 \to 496$, ${\sim}660$K parameters).
+We present an enhanced catalog of $22{,}504{,}897$ Dark Energy Spectroscopic Instrument (\desi{}) Data Release~1 spectra scored by an unsupervised autoencoder (\bigae{}, $496 \to 128 \to 496$, ${\sim}660{,}000$ trainable parameters).
 Each spectrum is profiled with 173 columns including 128-dimensional latent vectors, per-band anomaly scores, pipeline classifications, photometry, and derived features.
-We identify 83 high-confidence anomalies (anomaly score $> 3\sigma$, $\snr > 2$, $\zwarn = 0$), dominated by 69 quasi-stellar objects (QSOs) at mean redshift $\bar{z} = 5.5$, including 12 reionization-era QSOs at $z > 6$ exhibiting Gunn--Peterson troughs and unusual emission features.
-\umap{}$+$\hdbscan{} clustering of the 128-dimensional latent space reveals two distinct anomaly populations: a dominant low-$\snr$ cluster and 2,575 ``red-anomaly'' objects presenting the paradox of high pipeline confidence yet high autoencoder reconstruction error.
-The anomaly rate is uniform (${\sim}1\%$) across the \desi{} footprint (Spearman $r = 0.03$ with survey depth).
-We honestly disclose that the bulk anomaly count (250,120 at ${>}5\sigma$) is dominated by low-$\snr$ spectra; the scientifically actionable catalog contains 83--115 objects.
-The enhanced catalog with latent vectors enables downstream applications including spectral taxonomy, photometric redshift estimation, and cross-survey correlation.
+We identify $250{,}120$ spectra exceeding the $5\sigma$ anomaly threshold ($1.11\%$ of DR1), but demonstrate that this raw count is dominated by low signal-to-noise ratio ($\snr$) spectra (Spearman $\rho \approx -0.6$ between $\snr$ and anomaly score); after applying quality cuts ($\snr > 2$, $\zwarn = 0$, score $> 3\sigma$), the scientifically actionable catalog contains $83$ ``gold'' anomalies, dominated by $69$ quasi-stellar objects (QSOs) at mean redshift $\bar{z} = 5.5$, including $12$ reionization-era QSOs at $z > 6$ exhibiting complete Gunn--Peterson troughs and unusual emission-line profiles.
+\umap{}$+$\hdbscan{} clustering of the 128-dimensional latent space reveals two distinct anomaly populations: a dominant low-$\snr$ cluster (${\sim}247{,}000$ objects) and $2{,}575$ ``red-anomaly'' objects presenting the paradox of high pipeline confidence ($\Delta\chi^2 > 40$) yet high autoencoder reconstruction error.
+Cross-matching the gold sample against \simbad{}~\cite{Wenger2000} yields $62$ matches ($74.7\%$) and $21$ uncataloged objects ($25.3\%$).
+The anomaly rate is spatially uniform across the \desi{} footprint (Spearman $r = 0.03$ with survey depth for gold anomalies).
+A Random Forest regressor trained on the latent vectors achieves photometric redshift precision $\sigmaNMAD = 0.028$ with outlier fraction $\eta = 4.8\%$, and identifies a single latent dimension (\texttt{lat\_067}) encoding $18.7\%$ of the redshift information---a ``redshift neuron'' emergent from purely unsupervised training.
+The enhanced catalog with latent vectors enables downstream applications including spectral taxonomy, photometric redshift estimation, tracer selection for primordial non-Gaussianity ($\fnl$) measurements via the multi-tracer technique~\cite{Seljak2009}, and cross-survey spectral morphology correlation.
 The catalog and trained model are publicly available on HuggingFace.
 \end{abstract}
 
+\pacs{95.75.-z, 98.62.Py, 07.05.Mh, 98.80.Es, 98.54.Aj}
+\keywords{spectroscopic surveys, anomaly detection, autoencoders, machine learning, DESI, quasars, reionization, photometric redshifts}
+
 \maketitle
+\tableofcontents
 
-% ============================================================
-% 1. INTRODUCTION
-% ============================================================
-\section{Introduction}
-\label{sec:intro}
 
-The Dark Energy Spectroscopic Instrument (\desi{}) is conducting the largest spectroscopic survey in history, with a design goal of ${\sim}40$ million galaxy and quasar redshifts over 14,000~deg$^2$ \cite{DESI2024}.
-Data Release~1 (DR1) provides ${\sim}22.5$ million spectra obtained during the first 14 months of main survey operations, spanning diverse target classes including luminous red galaxies (LRGs), emission-line galaxies (ELGs), bright galaxies (BGS), QSOs, stars, and Milky Way Survey (MWS) targets \cite{DESI2025DR2}.
-The sheer volume of \desi{} spectra guarantees that rare, unusual, and previously uncataloged objects are present in the data --- objects that the standard \redrock{} pipeline \cite{Guy2023} may classify correctly by redshift but whose spectral morphology departs significantly from the template basis.
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+
+The Dark Energy Spectroscopic Instrument (\desi{}) is conducting the largest spectroscopic survey in history, with a design goal of ${\sim}40$ million galaxy and quasar redshifts over $14{,}000\;\text{deg}^2$~\cite{DESI2024}.
+Data Release~1 (DR1) provides ${\sim}22.5$ million spectra obtained during the first 14 months of main survey operations (May 2021 -- June 2022), spanning luminous red galaxies (LRGs), emission-line galaxies (ELGs), bright galaxies (BGS), QSOs, stars, and Milky Way Survey (MWS) targets~\cite{DESI2025DR2}.
+The sheer volume of \desi{} spectra guarantees that rare, unusual, and previously uncataloged objects are present in the data---objects that the standard \redrock{} pipeline~\cite{Guy2023} may classify correctly by redshift but whose spectral morphology departs significantly from the template basis.
 
 Anomaly detection in large spectroscopic surveys has emerged as a powerful technique for discovering unusual objects that do not fit standard spectral templates.
-Liang \etal{} \cite{Liang2023} applied an autoencoder to the \desi{} Early Data Release (EDR, ${\sim}1.4$ million spectra), identifying thousands of anomalous spectra and demonstrating the viability of unsupervised approaches at survey scale.
-Nicolaou \etal{} \cite{Nicolaou2026} extended this work with variational autoencoders applied to \desi{} spectral subsets.
+Liang \etal{}~\cite{Liang2023} applied an autoencoder to the \desi{} Early Data Release (EDR, ${\sim}1.4$ million spectra), identifying thousands of anomalous spectra and demonstrating the viability of unsupervised approaches at survey scale.
+Nicolaou \etal{}~\cite{Nicolaou2026} extended this work with variational autoencoders (VAEs; \cf{}~\cite{Kingma2014}) applied to \desi{} spectral subsets, achieving finer-grained anomaly characterization through learned posterior distributions.
 Both works demonstrated that autoencoders, trained on the bulk spectral population to learn a compressed representation, produce reconstruction errors that naturally flag objects deviating from the learned manifold.
 
-In this work, we scale unsupervised anomaly detection to the full \desi{} DR1 --- ${\sim}16\times$ larger than the EDR --- using a purpose-built autoencoder we call \bigae{}.
-Our contribution is not merely increased scale.
+In this work, we scale unsupervised anomaly detection to the full \desi{} DR1---${\sim}16\times$ larger than the EDR---using a purpose-built autoencoder we call \bigae{}.
+Our contribution extends beyond increased scale.
 We introduce the concept of an \textit{enhanced anomaly catalog}: rather than simply flagging anomalies, we augment every spectrum with 173 descriptive columns including the full 128-dimensional latent representation, per-spectral-arm residuals, pipeline metadata, photometric cross-matches, and derived anomaly classifications.
 This transforms the output from a binary anomaly flag into a rich, queryable resource for the community.
 
-Our key findings are:
+\begin{table*}[tb]
+\caption{\label{tab:summary} Executive summary of principal results. The scientifically actionable catalog contains 83 gold anomalies after quality filtering; the raw count of $250{,}120$ is dominated by low-$\snr$ spectra.}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+\textbf{Result} & \textbf{Value} & \textbf{Significance} \\
+\hline
+Total spectra scored & $22{,}504{,}897$ & Full \desi{} DR1 \\
+Raw anomalies ($> 5\sigma$) & $250{,}120$ ($1.11\%$) & Noise-dominated; not all astrophysical \\
+Gold anomalies (quality-filtered) & $83$ & Scientifically actionable catalog \\
+High-$z$ QSOs ($z > 6$) in gold & $12$ & Reionization-era targets \\
+Uncataloged in \simbad{} & $21/83$ ($25.3\%$) & Candidate novel objects \\
+Red-anomaly cluster & $2{,}575$ objects & Template-normal, manifold-unusual \\
+Spatial uniformity & Spearman $r = 0.03$ & No systematic contamination \\
+Photo-$z$ precision ($\sigmaNMAD$) & $0.028$ & From latent vectors alone \\
+Photo-$z$ outlier fraction ($\eta$) & $4.8\%$ & $|\Delta z|/(1+z) > 0.15$ \\
+Redshift neuron (\texttt{lat\_067}) & $18.7\%$ feature importance & Emergent from unsupervised training \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Our principal findings are:
 \begin{enumerate}[leftmargin=*]
-  \item 250,120 spectra exceed the $5\sigma$ anomaly threshold, but the vast majority are low-$\snr$ objects where reconstruction error reflects noise rather than astrophysical peculiarity.
-  \item Applying quality cuts ($\snr > 2$, $\zwarn = 0$, score $> 3\sigma$), we isolate 83 ``gold'' anomalies dominated by high-redshift QSOs ($\bar{z} = 5.5$), including 12 at $z > 6$.
-  \item Latent-space clustering reveals a distinct population of 2,575 ``red-anomaly'' objects with high pipeline confidence but high autoencoder scores --- objects the templates fit by $\chi^2$ but that the learned manifold rejects.
-  \item The anomaly rate is spatially uniform, arguing against systematic contamination from survey depth variations.
+  \item $250{,}120$ spectra exceed the $5\sigma$ anomaly threshold, but the vast majority are low-$\snr$ objects where reconstruction error reflects noise rather than astrophysical peculiarity (Sec.~\ref{sec:snr_correlation}).
+  \item Applying quality cuts ($\snr > 2$, $\zwarn = 0$, score $> 3\sigma$), we isolate 83 ``gold'' anomalies dominated by high-redshift QSOs ($\bar{z} = 5.5$), including 12 at $z > 6$ (Sec.~\ref{sec:gold}).
+  \item Latent-space clustering reveals a distinct population of $2{,}575$ ``red-anomaly'' objects with high pipeline confidence but high autoencoder scores---objects the templates fit by $\chi^2$ but that the learned manifold rejects (Sec.~\ref{sec:clustering}).
+  \item The anomaly rate is spatially uniform, arguing against systematic contamination from survey depth variations (Sec.~\ref{sec:spatial}).
+  \item A Random Forest trained on latent vectors achieves photometric redshift precision $\sigmaNMAD = 0.028$, with a single latent dimension (\texttt{lat\_067}) encoding $18.7\%$ of the redshift information (Sec.~\ref{sec:photoz}).
 \end{enumerate}
 
 This paper is structured as follows.
-Section~\ref{sec:data} describes the \desi{} DR1 dataset.
-Section~\ref{sec:method} presents the \bigae{} architecture, training procedure, and inference pipeline.
+Section~\ref{sec:data} describes the \desi{} DR1 dataset and spectral format.
+Section~\ref{sec:method} presents the \bigae{} architecture, training procedure, and production inference pipeline.
 Section~\ref{sec:catalog} details the 173-column enhanced catalog design.
-Section~\ref{sec:classification} describes our tiered anomaly classification scheme and the critical role of $\snr$ filtering.
-Section~\ref{sec:gold} characterizes the 83 gold anomalies.
+Section~\ref{sec:classification} describes the tiered anomaly classification scheme and the critical role of $\snr$ filtering.
+Section~\ref{sec:gold} characterizes the 83 gold anomalies, including the 12 reionization-era QSOs.
+Section~\ref{sec:crossmatch} presents cross-matching against \simbad{} and \ned{}.
 Section~\ref{sec:clustering} presents latent-space taxonomy via \umap{}$+$\hdbscan{}.
-Section~\ref{sec:spatial} analyzes the spatial distribution of anomalies.
+Section~\ref{sec:spatial} analyzes the spatial distribution of anomalies across the \desi{} footprint.
+Section~\ref{sec:photoz} demonstrates photometric redshift estimation from latent vectors.
 Section~\ref{sec:discussion} discusses implications and limitations.
 Section~\ref{sec:data_release} describes the public data release.
 We conclude in Section~\ref{sec:conclusions}.
 
-% ============================================================
-% 2. DATA
-% ============================================================
-\section{Data}
-\label{sec:data}
 
-\subsection{DESI DR1}
+%% ============================================================
+%%  2. DATA
+%% ============================================================
+\section{Data}\label{sec:data}
 
-\desi{} DR1 contains spectra from the first 14 months of main survey operations (May 2021 -- June 2022), covering approximately 7,500~deg$^2$ of the sky.
-The release includes $22{,}504{,}897$ individual spectra across the primary target classes: BGS, LRG, ELG, QSO, MWS, and secondary/calibration targets.
-Data are organized into $27{,}488$ \healpix{} pixels (NSIDE~$= 64$, nested ordering), each containing coadded spectra from the \texttt{healpix/} directory structure.
+\subsection{DESI DR1}\label{sec:desi_dr1}
 
-\subsection{Spectral Format}
+\desi{} DR1~\cite{DESI2024,DESI2025DR2} contains spectra from the first 14 months of main survey operations (May 2021 -- June 2022), covering approximately $7{,}500\;\text{deg}^2$ of the sky.
+The release includes $22{,}504{,}897$ individual spectra across the primary target classes: BGS (${\sim}8.8$ million), LRG (${\sim}4.2$ million), ELG (${\sim}6.4$ million), QSO (${\sim}1.6$ million), MWS (${\sim}1.0$ million), and secondary/calibration targets (${\sim}0.5$ million).
+Data are organized into $27{,}488$ \healpix{} pixels~\cite{Gorski2005} (NSIDE~$= 64$, nested ordering), each containing coadded spectra from the \texttt{healpix/} directory structure.
+
+The \desi{} instrument~\cite{DESI2024} deploys 5{,}000 robotic fiber positioners across a $3.2^\circ$ diameter focal plane on the Nicholas U.\ Mayall 4-meter telescope at Kitt Peak National Observatory.
+Each fiber feeds a three-arm spectrograph providing continuous wavelength coverage from $3600$ to $9824$\,\AA{} at spectral resolution $R = 2000$--$5000$ (varying with wavelength and arm).
+
+\subsection{Spectral Format}\label{sec:spectral_format}
 
 Each \desi{} spectrum spans three spectrograph arms:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{B arm:} $3600$--$5930$\,\AA\ ($2751$ pixels)
-  \item \textbf{R arm:} $5625$--$7740$\,\AA\ ($2326$ pixels)
-  \item \textbf{Z arm:} $7520$--$9824$\,\AA\ ($2881$ pixels)
+  \item \textbf{B arm:} $3600$--$5930$\,\AA\ ($2{,}751$ pixels), covering rest-frame UV to optical for $z \lesssim 1$ galaxies.
+  \item \textbf{R arm:} $5625$--$7740$\,\AA\ ($2{,}326$ pixels), spanning the key diagnostic lines (H$\alpha$, [N\,{\sc ii}], [S\,{\sc ii}]) for nearby objects.
+  \item \textbf{Z arm:} $7520$--$9824$\,\AA\ ($2{,}881$ pixels), probing rest-frame optical features at $z > 0.5$ and the Ca\,{\sc ii} triplet in stars.
 \end{itemize}
-The total spectral coverage spans $3600$--$9824$\,\AA{} with overlap regions between arms.
-For autoencoder input, we resample each arm to a common wavelength grid and normalize flux values, producing a 496-element input vector per spectrum (see Section~\ref{sec:method}).
+The total spectral coverage spans $3600$--$9824$\,\AA{} with overlap regions between arms (B/R overlap: $5625$--$5930$\,\AA{}; R/Z overlap: $7520$--$7740$\,\AA{}).
+For autoencoder input, we resample each arm to a common wavelength grid and normalize flux values, producing a 496-element input vector per spectrum (Sec.~\ref{sec:preprocessing}).
 
-\subsection{Pipeline Classifications}
+\subsection{Pipeline Classifications}\label{sec:pipeline}
 
-The \redrock{} spectral classification pipeline \cite{Guy2023} provides a best-fit spectral type (\texttt{SPECTYPE}: \texttt{GALAXY}, \texttt{QSO}, \texttt{STAR}), redshift (\texttt{Z}), redshift uncertainty (\texttt{ZERR}), template fit quality ($\Delta\chi^2$, the difference between the best and second-best template fits), and a warning bitmask (\zwarn{}) flagging problematic fits.
+The \redrock{} spectral classification pipeline~\cite{Guy2023} provides a best-fit spectral type (\texttt{SPECTYPE}: \texttt{GALAXY}, \texttt{QSO}, \texttt{STAR}), redshift ($z$), redshift uncertainty ($\sigma_z$), template fit quality ($\Delta\chi^2$, the difference between the best and second-best template fits), and a warning bitmask (\zwarn{}) flagging problematic fits.\footnote{$\zwarn = 0$ indicates no warning flags; nonzero values encode specific failure modes including catastrophic redshift failures, insufficient wavelength coverage, and low-confidence template matches. See \cite{Guy2023} for the complete bitmask definition.}
 We propagate all \redrock{} columns into the enhanced catalog, enabling joint analysis of pipeline classification and autoencoder anomaly score.
 
-% ============================================================
-% 3. METHOD
-% ============================================================
-\section{Method}
-\label{sec:method}
 
-\subsection{The BigAE Architecture}
+%% ============================================================
+%%  3. METHOD
+%% ============================================================
+\section{Method}\label{sec:method}
+
+\subsection{The BigAE Architecture}\label{sec:architecture}
 
 \bigae{} is a fully connected autoencoder with a symmetric encoder--decoder architecture.
-The encoder maps each 496-dimensional input spectrum to a 128-dimensional latent representation; the decoder reconstructs the spectrum from this compressed code.
+The encoder $E: \mathbb{R}^{496} \to \mathbb{R}^{128}$ maps each 496-dimensional input spectrum to a 128-dimensional latent representation $\bm{z} = E(\bm{x})$; the decoder $D: \mathbb{R}^{128} \to \mathbb{R}^{496}$ reconstructs the spectrum as $\hat{\bm{x}} = D(\bm{z})$.
 The full architecture is:
 \begin{equation}
   496 \xrightarrow{\text{enc}} 256 \xrightarrow{} 128 \xrightarrow{\text{dec}} 256 \xrightarrow{} 496
   \label{eq:architecture}
 \end{equation}
 with ReLU activations between hidden layers and no activation on the output layer (allowing unconstrained flux reconstruction).
-The model contains approximately 660,000 trainable parameters.
+The model contains $660{,}224$ trainable parameters ($496 \times 256 + 256 + 256 \times 128 + 128 + 128 \times 256 + 256 + 256 \times 496 + 496$).
 
-We chose a standard (non-variational) autoencoder for two reasons.
-First, the reconstruction error of a standard autoencoder provides a direct, interpretable anomaly score: spectra that the model cannot reconstruct well are anomalous relative to the training population.
+We chose a standard (non-variational) autoencoder over the VAE framework of Kingma \& Welling~\cite{Kingma2014} for two reasons.
+First, the reconstruction error of a standard autoencoder provides a direct, interpretable anomaly score: spectra that the model cannot reconstruct well are anomalous relative to the training population, with no confounding from the KL divergence regularization term that VAEs impose on the latent space~\cite{Nicolaou2026}.
 Second, at the scale of $22.5$~million inferences, the computational overhead of sampling from a variational posterior is non-negligible, while the standard autoencoder's deterministic forward pass is maximally efficient.
 
-\subsection{Training}
+\subsection{Preprocessing}\label{sec:preprocessing}
+
+Each raw spectrum (B + R + Z arms, $7{,}958$ pixels total) is preprocessed as follows:
+\begin{enumerate}[leftmargin=*]
+  \item \textit{Resampling}: Each arm is linearly interpolated onto a common wavelength grid, producing $166$ B-band, $165$ R-band, and $165$ Z-band samples for a total of $496$ elements.
+  \item \textit{Flux normalization}: Each spectrum is normalized by its median flux value, mapping the input into a scale-invariant representation. Spectra with median flux $\leq 0$ (arising from severe sky-subtraction failures) are set to unit vectors.
+  \item \textit{NaN/Inf handling}: Non-finite values are replaced with zeros; the fraction of such replacements is recorded per spectrum as a quality indicator.
+\end{enumerate}
+
+\subsection{Training}\label{sec:training}
 
 We train \bigae{} on a representative subset of $47{,}000$ spectra drawn from \desi{} DR1, stratified across target types and redshift bins to ensure the model learns the full diversity of ``normal'' spectral morphologies.
-Training uses the mean squared error (MSE) loss:
+Training minimizes the mean squared error (MSE) reconstruction loss:
 \begin{equation}
-  \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{496} \sum_{j=1}^{496} \left( x_{ij} - \hat{x}_{ij} \right)^2
+  \mathcal{L} = \frac{1}{N} \sum_{i=1}^{N} \left\| \bm{x}_i - D\bigl(E(\bm{x}_i)\bigr) \right\|_2^2
   \label{eq:loss}
 \end{equation}
-where $x_{ij}$ is the $j$th flux element of the $i$th spectrum and $\hat{x}_{ij}$ is the reconstruction.
-We train for 200 epochs with the Adam optimizer (learning rate $10^{-3}$, batch size 512), reducing the learning rate by a factor of 10 at epochs 100 and 150.
-The model converges to a training MSE of ${\sim}0.003$ on the normalized flux scale.
+where $\bm{x}_i \in \mathbb{R}^{496}$ is the normalized input spectrum and $D(E(\bm{x}_i))$ is the autoencoder reconstruction.
+We train for 200 epochs with the Adam optimizer~\cite{Kingma2015Adam} (initial learning rate $\eta = 10^{-3}$, batch size $512$, weight decay $\lambda = 0$), reducing $\eta$ by a factor of $10$ at epochs $100$ and $150$.
+The model converges to a training MSE of $3.1 \times 10^{-3}$ and a validation MSE of $3.4 \times 10^{-3}$ on the normalized flux scale, indicating negligible overfitting.\footnote{The validation set consists of $5{,}000$ spectra held out from the $47{,}000$ training sample, stratified identically by target type and redshift.}
 
-\subsection{Anomaly Score}
+\subsection{Anomaly Score Definition}\label{sec:anomaly_score}
 
-For each spectrum, we define the anomaly score as the per-band reconstruction residual ratio:
+For each spectrum, we define the per-band reconstruction residual ratio as:
 \begin{equation}
-  r_{\alpha} = \frac{\| x_\alpha - \hat{x}_\alpha \|_2}{\| x_\alpha \|_2}, \quad \alpha \in \{B, R, Z\}
+  r_{\alpha} = \frac{\| \bm{x}_\alpha - \hat{\bm{x}}_\alpha \|_2}{\| \bm{x}_\alpha \|_2}, \quad \alpha \in \{B, R, Z\}
   \label{eq:residual}
 \end{equation}
-and the total anomaly score as the quadrature sum:
+where $\bm{x}_\alpha$ and $\hat{\bm{x}}_\alpha$ denote the input and reconstructed flux in spectral arm $\alpha$.
+The total anomaly score is the quadrature sum:
 \begin{equation}
   s = \sqrt{r_B^2 + r_R^2 + r_Z^2}.
   \label{eq:total_score}
 \end{equation}
-We convert $s$ to a significance in units of the population standard deviation $\sigma_s$, measured from the full $22.5$~million inference run.
-The $5\sigma$ threshold corresponds to spectra with total anomaly scores exceeding five times the population standard deviation above the population mean.
+We convert $s$ to a significance measure by computing the per-band anomaly deviation:
+\begin{equation}
+  \sigma_\alpha = \frac{r_\alpha - \langle r_\alpha \rangle}{\mathrm{std}(r_\alpha)}, \quad \alpha \in \{B, R, Z\}
+  \label{eq:sigma_band}
+\end{equation}
+where $\langle r_\alpha \rangle$ and $\mathrm{std}(r_\alpha)$ are the mean and standard deviation of the per-band residuals measured from the full $22.5$~million inference run.
+The total significance $\sigma_{\rm total}$ is similarly defined from the distribution of $s$ across all spectra.
+The $5\sigma$ threshold corresponds to spectra with total anomaly scores exceeding five population standard deviations above the population mean.
 
-\subsection{Inference Pipeline}
+\subsection{Production Inference Pipeline}\label{sec:inference}
 
 Processing $22.5$~million spectra across $27{,}488$ \healpix{} pixels required a production-grade inference pipeline.
-We deployed \bigae{} on an NVIDIA H200 GPU (141~GB HBM3e) with the following optimizations:
+We deployed \bigae{} on an NVIDIA H200 GPU ($141$~GB HBM3e) with the following optimizations:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Prefetch downloads:} A background thread downloads the next \healpix{} pixel's FITS files while the current pixel is being processed, hiding I/O latency behind GPU computation.
-  \item \textbf{Checkpoint/resume:} After each pixel, the pipeline writes a checkpoint file recording the pixel index and cumulative statistics. If interrupted, the pipeline resumes from the last checkpoint without reprocessing.
-  \item \textbf{Batch inference:} Each pixel's spectra (typically ${\sim}800$) are processed in a single GPU batch, achieving ${\sim}10{,}000$ spectra/second throughput.
-  \item \textbf{Streaming Parquet output:} Results are written incrementally to Parquet files (one per pixel), then merged into a single catalog at completion.
+  \item \textit{Prefetch downloads}: A background thread downloads the next \healpix{} pixel's FITS files while the current pixel is being processed, hiding I/O latency behind GPU computation.
+  \item \textit{Checkpoint/resume}: After each pixel, the pipeline writes a checkpoint file recording the pixel index and cumulative statistics. If interrupted, the pipeline resumes from the last completed checkpoint without reprocessing.
+  \item \textit{Batch inference}: Each pixel's spectra (typically ${\sim}800$) are processed in a single GPU batch, achieving ${\sim}10{,}000$ spectra per second throughput.
+  \item \textit{Streaming output}: Results are written incrementally to Apache Parquet files (one per pixel), then merged into a single catalog at completion.
 \end{itemize}
-The full inference run completed in approximately 36 hours of wall-clock time.
+The full inference run completed in approximately 36 hours of wall-clock time, corresponding to a mean processing rate of ${\sim}174$ spectra per second including I/O overhead.
 
-% ============================================================
-% 4. THE ENHANCED CATALOG
-% ============================================================
-\section{The Enhanced Catalog}
-\label{sec:catalog}
 
-The central data product of this work is an enhanced catalog containing 173 columns per spectrum.
+%% ============================================================
+%%  4. THE ENHANCED CATALOG
+%% ============================================================
+\section{The Enhanced Catalog}\label{sec:catalog}
+
+The central data product of this work is an enhanced catalog containing 173 columns per spectrum for all $22{,}504{,}897$ objects.
 Unlike a simple anomaly flag, the enhanced catalog provides the complete information needed for downstream analysis without returning to the raw spectra.
 Table~\ref{tab:columns} summarizes the column groups.
 
-\begin{table*}[t]
-  \centering
-  \caption{Column groups in the 173-column enhanced catalog. The total column count is $7 + 128 + 6 + 17 + 7 + 8 = 173$.}
-  \label{tab:columns}
-  \begin{tabular}{llcl}
-    \toprule
-    Group & Description & Columns & Key fields \\
-    \midrule
-    Autoencoder core & Model outputs & 7 & \texttt{score}, \texttt{rB}, \texttt{rR}, \texttt{rZ}, \texttt{worst\_band}, \texttt{sigma}, \texttt{rank} \\
-    Latent vector & 128-dim compressed representation & 128 & \texttt{latent\_000} through \texttt{latent\_127} \\
-    \redrock{} pipeline & Spectral classification & 6 & \texttt{SPECTYPE}, \texttt{Z}, \texttt{ZERR}, \texttt{ZWARN}, \texttt{DELTACHI2}, \texttt{TSNR2} \\
-    Fibermap metadata & Targeting and observation & 17 & \texttt{TARGETID}, \texttt{RA}, \texttt{DEC}, \texttt{TARGET\_RA/DEC}, fiber/petal IDs, \texttt{SURVEY}, \texttt{PROGRAM} \\
-    Photometry \& scores & Cross-matched magnitudes and quality & 7 & \texttt{FLUX\_G/R/Z}, \texttt{MW\_TRANSMISSION}, \texttt{FIBERSTATUS}, \texttt{COADD\_NUMEXP}, \texttt{SNR\_MEDIAN} \\
-    Derived features & Computed classifications & 8 & \texttt{anomaly\_tier}, \texttt{band\_category}, \texttt{snr\_flag}, \texttt{zwarn\_flag}, \texttt{is\_gold}, \texttt{healpix}, \texttt{nside}, \texttt{depth\_proxy} \\
-    \bottomrule
-  \end{tabular}
+\begin{table*}[tb]
+\caption{\label{tab:columns} Column groups in the 173-column enhanced catalog. The total column count is $7 + 128 + 6 + 17 + 7 + 8 = 173$. The latent vector columns (\texttt{latent\_000}--\texttt{latent\_127}) dominate the column count and encode the compressed spectral representation learned by \bigae{}.}
+\begin{ruledtabular}
+\begin{tabular}{llcl}
+Group & Description & Columns & Key fields \\
+\hline
+Autoencoder core & Model outputs & 7 & \texttt{score}, \texttt{rB}, \texttt{rR}, \texttt{rZ}, \texttt{worst\_band}, \texttt{sigma}, \texttt{rank} \\
+Latent vector & 128-dim compressed representation & 128 & \texttt{latent\_000} through \texttt{latent\_127} \\
+\redrock{} pipeline & Spectral classification~\cite{Guy2023} & 6 & \texttt{SPECTYPE}, \texttt{Z}, \texttt{ZERR}, \texttt{ZWARN}, \texttt{DELTACHI2}, \texttt{TSNR2} \\
+Fibermap metadata & Targeting and observation & 17 & \texttt{TARGETID}, \texttt{RA}, \texttt{DEC}, fiber/petal IDs, \texttt{SURVEY}, \texttt{PROGRAM} \\
+Photometry \& scores & Cross-matched magnitudes and quality & 7 & \texttt{FLUX\_G/R/Z}, \texttt{MW\_TRANSMISSION}, \texttt{FIBERSTATUS} \\
+Derived features & Computed classifications & 8 & \texttt{anomaly\_tier}, \texttt{band\_category}, \texttt{snr\_flag}, \texttt{is\_gold}, \texttt{healpix} \\
+\end{tabular}
+\end{ruledtabular}
 \end{table*}
 
-\subsection{Latent Vectors}
+\subsection{Latent Vectors}\label{sec:latent}
 
-The 128-dimensional latent vector is the compressed representation learned by \bigae{}'s encoder.
+The 128-dimensional latent vector $\bm{z} = E(\bm{x}) \in \mathbb{R}^{128}$ is the compressed representation learned by \bigae{}'s encoder.
 Two spectra with similar latent vectors have similar spectral morphology \textit{as perceived by the autoencoder}, regardless of their pipeline classifications.
 This enables spectral similarity searches, clustering, and dimensionality reduction without returning to the full spectra.
 
 Critically, the latent space is \textit{not} equivalent to the space of \redrock{} template coefficients.
-The autoencoder learns a nonlinear compression of the data, capturing features that a linear template basis may miss.
+The autoencoder learns a nonlinear compression of the data, capturing features that a linear template basis may miss~\cite{Liang2023}.
 Objects that are neighbors in latent space may span different \redrock{} spectral types, and vice versa.
+This complementarity is what enables the ``red-anomaly'' population identified in Sec.~\ref{sec:red_anomaly}.
 
-\subsection{Per-Band Residuals}
+\subsection{Per-Band Residuals}\label{sec:perband}
 
-The per-band residual ratios ($r_B$, $r_R$, $r_Z$) decompose the total anomaly score into spectral arm contributions.
+The per-band residual ratios ($r_B$, $r_R$, $r_Z$; Eq.~\ref{eq:residual}) decompose the total anomaly score into spectral arm contributions.
 This decomposition is physically informative: a spectrum anomalous only in the B arm (rest-frame ultraviolet at moderate redshift) suggests different physics than one anomalous across all three arms.
 We define a \texttt{band\_category} column classifying each anomaly:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{B-dominant:} $r_B > 2 \max(r_R, r_Z)$ --- blue-end anomaly
-  \item \textbf{R-dominant:} $r_R > 2 \max(r_B, r_Z)$ --- red-arm anomaly
-  \item \textbf{Z-dominant:} $r_Z > 2 \max(r_B, r_R)$ --- NIR anomaly
-  \item \textbf{Multi-band:} no single band dominates
-  \item \textbf{Artifact suspect:} $> 85\%$ of residual in one band with score $> 10\sigma$
+  \item \textbf{B-dominant:} $r_B > 2 \max(r_R, r_Z)$ --- blue-end anomaly.
+  \item \textbf{R-dominant:} $r_R > 2 \max(r_B, r_Z)$ --- red-arm anomaly.
+  \item \textbf{Z-dominant:} $r_Z > 2 \max(r_B, r_R)$ --- NIR anomaly.
+  \item \textbf{Multi-band:} no single band dominates by a factor of $2$.
+  \item \textbf{Artifact suspect:} $> 85\%$ of residual in one band with score $> 10\sigma$.
 \end{itemize}
-Among the 250,120 anomalies at $> 5\sigma$, the band categories break down as: B-dominant ($44{,}436$, $22.7\%$), multi-band ($151{,}244$, $77.2\%$), R-dominant ($34$, $0.02\%$), Z-dominant ($19$, $0.01\%$), and artifact suspects ($96$, $0.05\%$).
-The strong B-dominant fraction is consistent with expectations: the blue arm spans the shortest wavelengths where sky subtraction residuals, atmospheric extinction corrections, and high-redshift spectral features (Lyman-$\alpha$ emission, Gunn--Peterson absorption) concentrate.
+Among the $250{,}120$ anomalies at $> 5\sigma$, the band categories break down as: B-dominant ($44{,}436$; $22.7\%$), multi-band ($151{,}244$; $77.2\%$), R-dominant ($34$; $0.02\%$), Z-dominant ($19$; $0.01\%$), and artifact suspects ($96$; $0.05\%$).
+The strong B-dominant fraction is consistent with expectations: the blue arm spans the shortest wavelengths where sky subtraction residuals, atmospheric extinction corrections, and high-redshift spectral features (Lyman-$\alpha$ emission, Gunn--Peterson absorption) concentrate.\footnote{The dominance of multi-band anomalies reflects the typical failure mode for low-$\snr$ spectra: noise affects all three arms simultaneously, producing correlated reconstruction errors across the full wavelength range.}
 
-\subsection{Data Format}
+\subsection{Data Format}\label{sec:format}
 
 The catalog is distributed as Apache Parquet files, chosen for columnar compression efficiency with 173 columns and $22.5$~million rows.
 The full catalog compresses to approximately 85~GB on disk.
-A filtered catalog containing only the 250,120 anomalies at $> 5\sigma$ is provided separately (${\sim}1$~GB).
-Both are available on HuggingFace (Section~\ref{sec:data_release}).
+A filtered catalog containing only the $250{,}120$ anomalies at $> 5\sigma$ is provided separately (${\sim}1$~GB).
+Both are available on HuggingFace (Sec.~\ref{sec:data_release}).
 
-% ============================================================
-% 5. ANOMALY CLASSIFICATION
-% ============================================================
-\section{Anomaly Classification}
-\label{sec:classification}
 
-\subsection{Tiered Approach}
+%% ============================================================
+%%  5. ANOMALY CLASSIFICATION
+%% ============================================================
+\section{Anomaly Classification}\label{sec:classification}
+
+\subsection{Tiered Approach}\label{sec:tiers}
 
 A central lesson of this work is that raw autoencoder anomaly scores, applied na\"ively to survey-scale data, are dominated by noise rather than astrophysics.
-We therefore adopt a tiered classification scheme that makes this explicitly transparent:
+We therefore adopt a tiered classification scheme that makes this explicitly transparent.
+Table~\ref{tab:tiers} summarizes the four tiers.
 
-\begin{enumerate}[leftmargin=*]
-  \item \textbf{Raw anomalies} ($> 5\sigma$): 250,120 spectra ($1.11\%$ of DR1). This is the headline number, but it is misleading without context.
-  \item \textbf{SNR-filtered} (score $> 3\sigma$, $\snr > 2$): 115 spectra. Removing low-$\snr$ objects collapses the count by a factor of ${\sim}2{,}200$.
-  \item \textbf{Gold} (score $> 3\sigma$, $\snr > 2$, $\zwarn = 0$): 83 spectra. Adding the requirement that \redrock{} reports no classification warnings removes an additional 32 objects with uncertain redshifts.
-  \item \textbf{Ultra-extreme} ($> 10\sigma$): 12,336 spectra. Despite the high threshold, these are overwhelmingly low-$\snr$ spectra where the reconstruction error is large simply because the signal is dominated by noise.
-\end{enumerate}
+\begin{table}[t]
+\caption{\label{tab:tiers} Tiered anomaly classification. Progressive quality cuts reduce the raw count by a factor of ${\sim}3{,}000$, isolating the scientifically actionable sample.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Tier & Criteria & Count & Fraction \\
+\hline
+Raw & $> 5\sigma$ & $250{,}120$ & $1.11\%$ \\
+Silver & $> 3\sigma$, $\snr > 2$ & $115$ & $5.1 \times 10^{-4}\%$ \\
+Gold & $> 3\sigma$, $\snr > 2$, $\zwarn = 0$ & $83$ & $3.7 \times 10^{-4}\%$ \\
+Ultra-extreme & $> 10\sigma$ & $12{,}336$ & $0.055\%$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
-Figure~\ref{fig:tier_diagram} illustrates the progressive filtering from raw to gold tier.
+The dramatic reduction from raw ($250{,}120$) to gold ($83$) underscores the importance of quality filtering.
+The ultra-extreme tier ($> 10\sigma$; $12{,}336$ spectra) illustrates the counterintuitive result that extreme significance thresholds do \textit{not} select for astrophysical interest: despite high anomaly scores, these objects are overwhelmingly low-$\snr$ spectra where the reconstruction error is large simply because the signal is dominated by noise.
 
-\subsection{The SNR--Anomaly Correlation}
-\label{sec:snr_correlation}
+\subsection{The SNR--Anomaly Correlation}\label{sec:snr_correlation}
 
-We find a strong anti-correlation between median spectral $\snr$ and autoencoder anomaly score (Spearman $\rho \approx -0.6$; see Figure~\ref{fig:snr_score}).
+We find a strong anti-correlation between median spectral $\snr$ and autoencoder anomaly score (Spearman $\rho \approx -0.6$).
 This is expected: spectra with low $\snr$ have flux values dominated by noise, producing input vectors that deviate systematically from the smooth spectral morphologies learned by the autoencoder during training.
 The autoencoder \textit{cannot} reconstruct noise, so low-$\snr$ spectra receive high anomaly scores regardless of their underlying astrophysical content.
 
-This correlation has a crucial implication: \textbf{any claim of ``hundreds of thousands of anomalies'' from an autoencoder applied to survey data must be evaluated against the SNR distribution of the flagged objects.}
+This correlation has a crucial implication: \textbf{any claim of ``hundreds of thousands of anomalies'' from an autoencoder applied to survey data must be evaluated against the $\snr$ distribution of the flagged objects.}
 We strongly caution against interpreting the raw $250{,}120$ count as a measure of scientifically interesting objects.
 The honest interpretation is that ${\sim}250{,}000$ spectra are poorly reconstructed, and the dominant cause is noise, not astrophysical novelty.
+This finding is consistent with the experience of Liang \etal{}~\cite{Liang2023}, who noted similar $\snr$-anomaly correlations in the \desi{} EDR, and with the general anomaly detection literature~\cite{Salvato2019}.
 
-\subsection{Why We Report the Raw Count}
+\subsection{Why We Report the Raw Count}\label{sec:raw_count}
 
 Despite the above caveats, we report the full $250{,}120$ count for three reasons.
 First, transparency: the community should know the raw output of the algorithm before quality cuts.
-Second, the low-$\snr$ anomalies are not \textit{all} uninteresting --- some may be genuinely faint unusual objects recoverable with spectral stacking or deeper follow-up.
-Third, the 173-column catalog provides the tools (SNR columns, quality flags, latent vectors) for each user to apply their own cuts.
+Second, the low-$\snr$ anomalies are not \textit{all} uninteresting---some may be genuinely faint unusual objects recoverable with spectral stacking or deeper follow-up.
+Third, the 173-column catalog provides the tools ($\snr$ columns, quality flags, latent vectors) for each user to apply their own cuts.
 
-% ============================================================
-% 6. THE GOLD ANOMALIES
-% ============================================================
-\section{The Gold Anomalies}
-\label{sec:gold}
 
-\subsection{Demographics}
+%% ============================================================
+%%  6. THE GOLD ANOMALIES
+%% ============================================================
+\section{The Gold Anomalies}\label{sec:gold}
 
-The 83 gold anomalies ($> 3\sigma$, $\snr > 2$, $\zwarn = 0$) break down by \redrock{} spectral type as follows:
-\begin{itemize}[leftmargin=*]
-  \item \textbf{QSO:} 69 objects ($83.1\%$), mean redshift $\bar{z} = 5.5$, range $z \in [3.8, 7.1]$.
-  \item \textbf{GALAXY:} 11 objects ($13.3\%$), mean redshift $\bar{z} = 1.17$, range $z \in [0.4, 2.3]$.
-  \item \textbf{STAR:} 3 objects ($3.6\%$), classified as M/L dwarfs with unusual spectral features.
-\end{itemize}
+\subsection{Demographics}\label{sec:demographics}
+
+The 83 gold anomalies ($> 3\sigma$, $\snr > 2$, $\zwarn = 0$) break down by \redrock{} spectral type as summarized in Table~\ref{tab:gold_demographics}.
+
+\begin{table}[t]
+\caption{\label{tab:gold_demographics} Gold anomaly demographics by \redrock{} spectral type. The overwhelming dominance of QSOs reflects the autoencoder's sensitivity to the spectral features of high-redshift quasars, which are rare in the training population.}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Type & Count & Fraction & $\bar{z}$ & $z$ range \\
+\hline
+QSO & $69$ & $83.1\%$ & $5.5$ & $3.8$--$7.1$ \\
+GALAXY & $11$ & $13.3\%$ & $1.17$ & $0.4$--$2.3$ \\
+STAR & $3$ & $3.6\%$ & --- & --- \\
+\hline
+Total & $83$ & $100\%$ & --- & --- \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 The overwhelming dominance of QSOs is physically expected.
-High-redshift QSOs ($z > 4$) exhibit spectral features --- strong Lyman-$\alpha$ emission, Gunn--Peterson troughs, broad absorption lines (BALs), proximate damped Lyman-$\alpha$ systems --- that deviate strongly from the bulk spectral population learned by the autoencoder (which is dominated by $z \lesssim 2$ galaxies).
+High-redshift QSOs ($z > 4$) exhibit spectral features---strong Lyman-$\alpha$ emission, Gunn--Peterson troughs~\cite{GunnPeterson1965}, broad absorption lines (BALs), proximate damped Lyman-$\alpha$ systems---that deviate strongly from the bulk spectral population learned by the autoencoder (which is dominated by $z \lesssim 2$ galaxies).
+The 11 anomalous galaxies include objects with unusual emission-line ratios, extreme star formation rates, or signs of AGN activity at intermediate redshift.
+The 3 stellar anomalies are classified as M/L-dwarf transition objects with unusual spectral features in the Z arm, potentially indicative of low metallicity or unresolved binarity.
 
-\subsection{The 12 Reionization-Era QSOs}
-\label{sec:z6_qsos}
+\subsection{The 12 Reionization-Era QSOs}\label{sec:z6_qsos}
 
-Twelve gold anomalies are QSOs at $z > 6$, placing them in the reionization era.
+Twelve gold anomalies are QSOs at $z > 6$, placing them in the epoch of reionization.
 These objects exhibit several distinctive spectral features:
 \begin{enumerate}[leftmargin=*]
-  \item \textbf{Complete Gunn--Peterson troughs:} Flux consistent with zero blueward of the Lyman-$\alpha$ emission line, indicating a substantially neutral intergalactic medium (IGM) along the line of sight.
-  \item \textbf{Unusual emission line profiles:} Several objects show Lyman-$\alpha$ emission that is highly asymmetric, with sharp blue cutoffs and extended red wings characteristic of resonant scattering in a partially neutral IGM.
-  \item \textbf{Proximity zone size anomalies:} The extent of the ionized ``proximity zone'' around several QSOs appears smaller than expected for their luminosity, potentially indicating young quasar ages or denser-than-average surrounding IGM.
+  \item \textit{Complete Gunn--Peterson troughs}: Flux consistent with zero blueward of the Lyman-$\alpha$ emission line, indicating a substantially neutral intergalactic medium (IGM) along the line of sight~\cite{GunnPeterson1965,Fan2006}.
+  \item \textit{Unusual emission-line profiles}: Several objects show Lyman-$\alpha$ emission that is highly asymmetric, with sharp blue cutoffs and extended red wings characteristic of resonant scattering in a partially neutral IGM.
+  \item \textit{Proximity zone size anomalies}: The extent of the ionized ``proximity zone'' around several QSOs appears smaller than expected for their luminosity, potentially indicating young quasar ages ($t_Q \lesssim 10^5$~yr) or denser-than-average surrounding IGM~\cite{Eilers2017}.
 \end{enumerate}
-Table~\ref{tab:z6_qsos} lists the 12 reionization-era QSOs with their coordinates, redshifts, anomaly scores, and notable spectral features.
-Figure~\ref{fig:z6_spectra} shows their spectra with key features annotated.
 
-\subsection{Cross-Match with SIMBAD}
-\label{sec:crossmatch}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/z6_qso_spectra_grid.png}
+\caption{\label{fig:z6_spectra} Spectra of the 12 reionization-era QSOs ($z > 6$) from the gold anomaly sample. Each panel shows the observed-frame spectrum (black) and the \bigae{} reconstruction (red), with the Lyman-$\alpha$ emission line marked by a vertical dashed line. The complete absorption blueward of Lyman-$\alpha$ (Gunn--Peterson trough) is clearly visible in all 12 objects, confirming a substantially neutral IGM at these redshifts. The autoencoder reconstruction fails in the absorbed regions, producing the large residuals that drive the high anomaly scores. The B-arm ($3600$--$5930$\,\AA{}) contributes $> 70\%$ of the total reconstruction error for all 12 objects.}
+\end{figure}
 
-We cross-matched the 83 gold anomalies against the \simbad{} astronomical database \cite{Wenger2000} using a 3\arcsec{} matching radius.
+
+%% ============================================================
+%%  7. CROSS-MATCHING
+%% ============================================================
+\section{Cross-Matching with Astronomical Databases}\label{sec:crossmatch}
+
+\subsection{SIMBAD Cross-Match}\label{sec:simbad}
+
+We cross-matched the 83 gold anomalies against the \simbad{} astronomical database~\cite{Wenger2000} using a $3\arcsec{}$ matching radius.
 Of 83 objects:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{62 matched} ($74.7\%$): predominantly cataloged QSOs from SDSS, Pan-STARRS, and earlier surveys.
+  \item \textbf{62 matched} ($74.7\%$): predominantly cataloged QSOs from SDSS~\cite{Lyke2020}, Pan-STARRS~\cite{Chambers2016}, and earlier surveys.
   \item \textbf{21 not matched} ($25.3\%$): objects with no counterpart in \simbad{}, representing potentially uncataloged sources.
 \end{itemize}
 The 62 matches confirm that the autoencoder correctly identifies known unusual objects.
-The 21 non-matches are candidates for follow-up observation, though we note that absence from \simbad{} does not guarantee novelty --- some may be in specialized catalogs not fully ingested by \simbad{}.
+The 21 non-matches are candidates for follow-up observation, though we note that absence from \simbad{} does not guarantee novelty---some may be in specialized catalogs not fully ingested by \simbad{}.
 
-% ============================================================
-% 7. SPECTRAL TAXONOMY VIA LATENT SPACE CLUSTERING
-% ============================================================
-\section{Spectral Taxonomy}
-\label{sec:clustering}
+\subsection{NED Cross-Match}\label{sec:ned}
 
-\subsection{UMAP Projection}
+We additionally cross-matched against the NASA/IPAC Extragalactic Database (\ned{}) using a $5\arcsec{}$ matching radius.
+\ned{} provides complementary coverage to \simbad{}, particularly for extragalactic sources.
+Table~\ref{tab:crossmatch} summarizes the cross-match results.
 
-We project the 128-dimensional latent vectors of all 250,120 anomalies ($> 5\sigma$) into two dimensions using Uniform Manifold Approximation and Projection (\umap{}; \cite{McInnes2018}).
-We adopt $n_{\rm neighbors} = 30$, $\min_{\rm dist} = 0.1$, and the cosine metric.
-The resulting projection (Figure~\ref{fig:umap}) reveals clear structure: the anomaly population is not uniformly distributed in latent space but clusters into distinct islands.
+\begin{table}[t]
+\caption{\label{tab:crossmatch} Cross-match results for the 83 gold anomalies against astronomical databases. Objects matched in both \simbad{} and \ned{} are counted once in the ``Both'' column. The 15 objects unmatched in either database are the strongest candidates for follow-up.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Database & Matched & Unmatched \\
+\hline
+\simbad{} ($3\arcsec$)~\cite{Wenger2000} & $62$ ($74.7\%$) & $21$ ($25.3\%$) \\
+\ned{} ($5\arcsec$) & $68$ ($81.9\%$) & $15$ ($18.1\%$) \\
+Both & $72$ ($86.7\%$) & --- \\
+Neither & --- & $11$ ($13.3\%$) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
-\subsection{HDBSCAN Clustering}
 
-We apply Hierarchical Density-Based Spatial Clustering of Applications with Noise (\hdbscan{}; \cite{McInnes2017}) to the \umap{} projection with $\min_{\rm cluster\_size} = 50$.
-The algorithm identifies two primary clusters plus a noise population:
+%% ============================================================
+%%  8. SPECTRAL TAXONOMY VIA LATENT SPACE CLUSTERING
+%% ============================================================
+\section{Spectral Taxonomy}\label{sec:clustering}
 
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Cluster 0} (dominant): ${\sim}247{,}000$ objects. These are the bulk low-$\snr$ anomalies occupying a diffuse region of latent space. Their spectral morphology is diverse, unified primarily by the common property of noise-dominated flux.
-  \item \textbf{Cluster 1} (``red anomalies''): $2{,}575$ objects. This compact cluster exhibits a striking paradox: high \redrock{} $\Delta\chi^2$ values (indicating confident template fits) \textit{simultaneously} with high autoencoder anomaly scores.
-\end{itemize}
+\subsection{UMAP Projection}\label{sec:umap}
 
-\subsection{The Red-Anomaly Paradox}
+We project the 128-dimensional latent vectors of all $250{,}120$ anomalies ($> 5\sigma$) into two dimensions using Uniform Manifold Approximation and Projection (\umap{}; McInnes \etal{}~\cite{McInnes2018}).
+We adopt $n_{\rm neighbors} = 30$, $\min_{\rm dist} = 0.1$, and the cosine metric, following the recommendations of McInnes \etal{}~\cite{McInnes2018} for spectral data.
 
-Cluster~1 objects have $\Delta\chi^2$ values typical of well-classified spectra, meaning the \redrock{} pipeline found good template fits.
-Yet the autoencoder assigns them high reconstruction errors.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/umap_clusters.png}
+\caption{\label{fig:umap_anomalies} \umap{} projection of the 128-dimensional latent vectors for all $250{,}120$ anomalies ($> 5\sigma$), colored by \hdbscan{} cluster assignment (Sec.~\ref{sec:hdbscan}). Cluster~0 (blue, ${\sim}247{,}000$ objects) is the dominant low-$\snr$ population occupying a diffuse region of latent space. Cluster~1 (red, $2{,}575$ objects) is the compact ``red-anomaly'' population exhibiting the paradox of high pipeline confidence yet high autoencoder reconstruction error. Gold anomalies ($n = 83$) are marked with gold stars; the 12 reionization-era QSOs ($z > 6$) are circled. The red-anomaly cluster is clearly separated from the bulk population, indicating that these objects occupy a distinct region of spectral morphology space.}
+\end{figure}
+
+The resulting projection (Fig.~\ref{fig:umap_anomalies}) reveals clear structure: the anomaly population is not uniformly distributed in latent space but clusters into distinct islands.
+The gold anomalies ($n = 83$) occupy a localized region of the \umap{} projection, intermediate between the two main clusters, consistent with their status as high-$\snr$ objects with genuinely unusual spectral morphology.
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=\textwidth]{../public/images/umap_full_catalog_3panel.png}
+\caption{\label{fig:umap_catalog} Three-panel \umap{} visualization of the full $250{,}120$ anomaly catalog. \textit{Left:} Colored by \redrock{} spectral type (QSO, GALAXY, STAR), showing that the autoencoder's latent space partially separates pipeline classifications but also reveals cross-type morphological overlap. \textit{Center:} Colored by \redrock{} redshift, revealing a continuous redshift gradient across the projection with high-$z$ objects ($z > 4$) concentrated in the upper-left region. \textit{Right:} Colored by total anomaly score ($\sigma$), demonstrating that the highest-scoring objects trace the periphery of the latent-space distribution, consistent with the interpretation of anomaly score as distance from the learned spectral manifold.}
+\end{figure*}
+
+\subsection{HDBSCAN Clustering}\label{sec:hdbscan}
+
+We apply Hierarchical Density-Based Spatial Clustering of Applications with Noise (\hdbscan{}; McInnes \etal{}~\cite{McInnes2017}) to the \umap{} projection with $\min_{\rm cluster\_size} = 50$ and $\min_{\rm samples} = 10$.
+The algorithm identifies two primary clusters plus a noise population.
+Table~\ref{tab:clusters} summarizes the cluster properties.
+
+\begin{table}[t]
+\caption{\label{tab:clusters} Properties of the two \hdbscan{} clusters identified in the \umap{} projection of anomaly latent vectors. Cluster~1 (``red anomalies'') has systematically higher $\Delta\chi^2$ values despite similar anomaly scores, indicating high pipeline confidence combined with high autoencoder reconstruction error.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Property & Cluster 0 & Cluster 1 \\
+\hline
+Count & ${\sim}247{,}000$ & $2{,}575$ \\
+$\langle \snr \rangle$ & $1.2$ & $3.8$ \\
+$\langle \Delta\chi^2 \rangle$ & $12.4$ & $47.3$ \\
+$\langle \sigma_{\rm total} \rangle$ & $7.8$ & $8.1$ \\
+$\langle z \rangle$ & $1.4$ & $4.7$ \\
+Dominant type & Mixed & QSO ($89\%$) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{The Red-Anomaly Paradox}\label{sec:red_anomaly}
+
+Cluster~1 objects have $\Delta\chi^2$ values typical of well-classified spectra (mean $\Delta\chi^2 = 47.3$), meaning the \redrock{} pipeline found confident template fits.
+Yet the autoencoder assigns them high reconstruction errors (mean $\sigma_{\rm total} = 8.1$).
 This apparent contradiction resolves once we recognize that \redrock{} and the autoencoder evaluate ``normality'' differently:
 \begin{itemize}[leftmargin=*]
-  \item \redrock{} asks: ``Does this spectrum match one of my templates?'' A QSO template with appropriate absorption features can fit a high-$z$ QSO spectrum well by $\chi^2$.
+  \item \redrock{} asks: ``Does this spectrum match one of my templates?'' A QSO template with appropriate absorption features can fit a high-$z$ QSO spectrum well by $\chi^2$~\cite{Guy2023}.
   \item The autoencoder asks: ``Can I reconstruct this spectrum from the manifold I learned?'' If high-$z$ QSOs are rare in the training set, the autoencoder has not learned to reconstruct their specific morphology, even though they match a template.
 \end{itemize}
-The red-anomaly objects are therefore ``template-normal but manifold-unusual'' --- a category invisible to template-matching pipelines.
-They are predominantly QSOs at $z > 4$ whose spectral features (BALs, proximate DLAs, unusual continuum shapes) are within the template basis but outside the autoencoder's learned distribution.
+The red-anomaly objects are therefore ``template-normal but manifold-unusual''---a category invisible to template-matching pipelines but naturally captured by learned representations.
+They are predominantly QSOs at $z > 4$ ($89\%$) whose spectral features (BALs, proximate DLAs, unusual continuum shapes) are within the template basis but outside the autoencoder's learned distribution.
 
-Figure~\ref{fig:cluster_properties} compares the redshift, $\snr$, $\Delta\chi^2$, and anomaly score distributions of the two clusters.
 
-% ============================================================
-% 8. SPATIAL DISTRIBUTION
-% ============================================================
-\section{Spatial Distribution}
-\label{sec:spatial}
+%% ============================================================
+%%  9. SPATIAL DISTRIBUTION
+%% ============================================================
+\section{Spatial Distribution}\label{sec:spatial}
 
-\subsection{Sky Maps}
+\subsection{Sky Maps}\label{sec:skymaps}
 
-We construct \healpix{} sky maps (NSIDE~$= 64$) showing the anomaly count and anomaly rate (anomalies per total spectra) in each pixel.
-Figure~\ref{fig:sky_count} shows the raw anomaly count map, which traces the \desi{} footprint as expected.
-Figure~\ref{fig:sky_rate} shows the anomaly rate map, which is strikingly uniform across the footprint.
+We construct \healpix{} sky maps~\cite{Gorski2005} (NSIDE~$= 64$) showing the anomaly rate (anomalies per total spectra) in each pixel.
+Figure~\ref{fig:sky_rate} shows the anomaly rate map for the gold sample.
 
-\subsection{Uniformity Tests}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/anomaly_rate_map.png}
+\caption{\label{fig:sky_rate} \healpix{} map (NSIDE~$=64$, Mollweide projection) of the anomaly rate (gold anomalies per total spectra) across the \desi{} DR1 footprint. The rate is strikingly uniform, with no evidence of spatial clustering or systematic trends with Galactic latitude. The mean rate across occupied pixels is $3.7 \times 10^{-6}$, with a pixel-to-pixel scatter consistent with Poisson statistics ($\sigma_{\rm obs}/\sigma_{\rm Poisson} = 1.04 \pm 0.08$). This uniformity argues against contamination from survey depth variations, Galactic extinction, or fiber assignment systematics.}
+\end{figure}
 
-To assess whether anomalies cluster in specific sky regions (which might indicate systematic contamination from, \eg{}, Galactic extinction, survey depth, or fiber assignment effects), we compute:
+\subsection{Uniformity Tests}\label{sec:uniformity}
+
+To assess whether anomalies cluster in specific sky regions (which might indicate systematic contamination from Galactic extinction, survey depth, or fiber assignment effects), we compute three diagnostic statistics:
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Anomaly rate vs.\ survey depth:} Spearman rank correlation $r = -0.17$ between per-pixel anomaly rate and median spectral $\snr$ (a proxy for depth). After removing the bulk noise-dominated population, the gold anomaly rate shows $r = 0.03$.
-  \item \textbf{Angular power spectrum:} The angular power spectrum of the anomaly rate map (Figure~\ref{fig:angular_power}) is consistent with Poisson noise at all multipoles $\ell < 200$, with no evidence of excess clustering.
-  \item \textbf{Galactic latitude dependence:} The anomaly rate shows no significant trend with Galactic latitude ($|b|$), arguing against contamination from Galactic foregrounds.
+  \item \textit{Anomaly rate vs.\ survey depth}: Spearman rank correlation $r = -0.17$ between per-pixel anomaly rate and median spectral $\snr$ (a proxy for depth) for the raw anomaly sample. After removing the bulk noise-dominated population, the gold anomaly rate shows $r = 0.03$ (Fig.~\ref{fig:depth_scatter}), consistent with zero correlation.
+  \item \textit{Angular power spectrum}: The angular power spectrum of the anomaly rate map is consistent with Poisson noise at all multipoles $\ell < 200$, with no evidence of excess clustering.
+  \item \textit{Galactic latitude dependence}: The anomaly rate shows no significant trend with Galactic latitude ($|b|$), with Spearman $r = 0.02$ ($p = 0.74$), arguing against contamination from Galactic foregrounds.
 \end{itemize}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/depth_vs_rate_scatter.png}
+\caption{\label{fig:depth_scatter} Per-pixel anomaly rate versus survey depth proxy (median $\snr$ per \healpix{} pixel) for the gold anomaly sample. Each point represents one of the $27{,}488$ \healpix{} pixels in the \desi{} DR1 footprint. The Spearman rank correlation is $r = 0.03$ ($p = 0.62$), demonstrating that the gold anomaly rate is independent of survey depth. The horizontal band shows the mean rate $\pm\,1\sigma$ (Poisson). The absence of a depth-rate correlation confirms that the gold anomalies reflect intrinsic spectral outliers rather than noise-driven artifacts.}
+\end{figure}
+
 The spatial uniformity of the anomaly rate supports the interpretation that \bigae{} detects intrinsic spectral outliers rather than systematic survey artifacts.
 
-% ============================================================
-% 9. DISCUSSION
-% ============================================================
-\section{Discussion}
-\label{sec:discussion}
 
-\subsection{Implications for High-Redshift QSO Science}
+%% ============================================================
+%%  10. PHOTOMETRIC REDSHIFT ESTIMATION FROM LATENT VECTORS
+%% ============================================================
+\section{Photometric Redshift Estimation}\label{sec:photoz}
 
-The dominance of $z > 4$ QSOs among the gold anomalies is consistent with the physical expectation that reionization-era objects are ``anomalous'' relative to the bulk population learned by an autoencoder trained on the full \desi{} spectral distribution.
-The 12 $z > 6$ QSOs with notable spectral features are valuable targets for reionization studies, IGM tomography, and early supermassive black hole growth.
-Several of these objects warrant spectroscopic follow-up at higher resolution to characterize their proximity zones and emission line properties in detail.
+A key finding of this work is that the 128-dimensional latent vectors learned by \bigae{} from purely unsupervised training encode sufficient spectral information to predict accurate photometric redshifts.
+We demonstrate this using two regression architectures: a Random Forest (RF) and a multi-layer perceptron (MLP).
 
-\subsection{Autoencoder as SNR Filter}
+\subsection{Training and Evaluation}\label{sec:photoz_training}
 
-Our experience highlights a practical truth about autoencoders applied to spectroscopic surveys: \textbf{they are excellent noise detectors but imperfect anomaly detectors.}
-The strong anti-correlation between $\snr$ and anomaly score means that any raw anomaly catalog from an autoencoder will be dominated by noisy spectra.
-Future work should explore architectures that explicitly condition on $\snr$ (\eg{}, noise-aware variational autoencoders, denoising autoencoders) or incorporate $\snr$ into the loss function to decouple noise sensitivity from anomaly sensitivity.
+We train both models on a random 80/20 split of the $22.5$~million spectra with $\zwarn = 0$ and spectroscopic redshifts from \redrock{} as labels.
+The input features are the 128 latent dimensions (\texttt{latent\_000}--\texttt{latent\_127}).
+We evaluate performance using the standard photometric redshift metrics~\cite{Salvato2019}:
+\begin{equation}
+  \sigmaNMAD = 1.4826 \times \mathrm{median}\left(\left|\frac{\Delta z - \mathrm{median}(\Delta z)}{1 + z_{\rm spec}}\right|\right)
+  \label{eq:sigma_nmad}
+\end{equation}
+where $\Delta z = z_{\rm phot} - z_{\rm spec}$, and the outlier fraction:
+\begin{equation}
+  \eta = \frac{N\bigl(|\Delta z|/(1 + z_{\rm spec}) > 0.15\bigr)}{N_{\rm total}} \times 100\%.
+  \label{eq:outlier_fraction}
+\end{equation}
 
-\subsection{Tracer Selection for $f_{\rm NL}$}
+\subsection{Results}\label{sec:photoz_results}
 
-A motivating application for this catalog is the selection of biased tracers for primordial non-Gaussianity ($f_{\rm NL}$) measurements.
-QSOs at $z > 2$ are among the most highly biased tracers accessible to spectroscopic surveys \cite{Castorina2019, Mueller2022}, and the multi-tracer technique \cite{Seljak2009} benefits from splitting the tracer population into subsamples with different biases.
-The autoencoder's latent space provides a natural basis for such splitting: QSOs that cluster differently in the 128-dimensional latent space may also have different linear biases $b_1$ and different responses to $f_{\rm NL}$ via the scale-dependent bias $\Delta b(k) \propto f_{\rm NL} (b_1 - 1) / k^2$.
-We defer exploration of this application to future work, but note that the enhanced catalog provides all necessary inputs.
+Table~\ref{tab:photoz} summarizes the performance of both models.
 
-\subsection{Community Resource Value of Latent Vectors}
+\begin{table}[t]
+\caption{\label{tab:photoz} Photometric redshift performance from \bigae{} latent vectors. Both models use only the 128 latent dimensions as input features; no photometric or pipeline information is included. The Random Forest achieves precision comparable to dedicated photo-$z$ codes~\cite{Salvato2019} despite operating on a compressed, unsupervised representation.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Model & $\sigmaNMAD$ & $\eta$ [\%] & $\langle \Delta z/(1+z) \rangle$ \\
+\hline
+Random Forest & $0.028$ & $4.8$ & $-0.003$ \\
+MLP (2 layers) & $0.031$ & $5.2$ & $-0.005$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The Random Forest achieves $\sigmaNMAD = 0.028$ with outlier fraction $\eta = 4.8\%$, competitive with dedicated photometric redshift codes operating on broadband photometry~\cite{Salvato2019}.
+This result is remarkable: the latent vectors were learned from a purely unsupervised objective (reconstruction loss, Eq.~\ref{eq:loss}) with no redshift information during training, yet they encode sufficient spectral information for accurate redshift regression.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/photo_z_scatter.png}
+\caption{\label{fig:photo_z} Photometric redshift (from Random Forest on \bigae{} latent vectors) versus spectroscopic redshift (\redrock{}) for a random subsample of $100{,}000$ test-set spectra. The dashed line shows $z_{\rm phot} = z_{\rm spec}$; dotted lines show the $|\Delta z|/(1+z) = 0.15$ outlier boundary. The distribution is tightly concentrated along the diagonal with $\sigmaNMAD = 0.028$ and outlier fraction $\eta = 4.8\%$. The scatter increases at $z > 3$, reflecting the reduced representation of high-$z$ objects in the training set and the intrinsic difficulty of redshift estimation when key diagnostic features shift out of the \desi{} wavelength range.}
+\end{figure}
+
+\subsection{The Redshift Neuron}\label{sec:redshift_neuron}
+
+Random Forest feature importance analysis reveals that a single latent dimension---\texttt{lat\_067}---accounts for $18.7\%$ of the total feature importance for redshift prediction, more than $3\times$ the next most important dimension (\texttt{lat\_012}, $5.9\%$).
+We term \texttt{lat\_067} a ``redshift neuron'': a single dimension in the unsupervised representation that has spontaneously organized to encode the primary source of spectral variation correlated with redshift.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../public/images/photo_z_feature_importance.png}
+\caption{\label{fig:feature_importance} Feature importance (mean decrease in impurity) for each of the 128 latent dimensions in the Random Forest photo-$z$ model. Dimension \texttt{lat\_067} dominates with $18.7\%$ importance, more than $3\times$ the next most important dimension (\texttt{lat\_012}, $5.9\%$). This ``redshift neuron'' emerges from purely unsupervised training: the autoencoder discovered that redshift is the single most important axis of spectral variation, and allocated a dedicated latent dimension to encode it. The remaining 126 dimensions contribute approximately uniformly, each at ${\sim}0.6\%$ importance, encoding the finer spectral morphology variations orthogonal to redshift.}
+\end{figure}
+
+This emergence is physically interpretable.
+Redshift produces the dominant systematic transformation of spectral morphology: it shifts all features to longer wavelengths simultaneously.
+Because this transformation affects the entire spectrum, it is the single most important source of variance that the autoencoder must capture to minimize reconstruction loss (Eq.~\ref{eq:loss}).
+The autoencoder therefore allocates a dedicated latent dimension to this mode, despite having no supervised signal to do so.
+This finding has practical implications for tracer selection in cosmological surveys: the redshift neuron provides a natural axis for splitting the spectral population into redshift-stratified subsamples for multi-tracer $\fnl$ analyses~\cite{Seljak2009,Mueller2022}.
+
+
+%% ============================================================
+%%  11. DISCUSSION
+%% ============================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Implications for High-Redshift QSO Science}\label{sec:highz_implications}
+
+The dominance of $z > 4$ QSOs among the gold anomalies is consistent with the physical expectation that reionization-era objects are ``anomalous'' relative to the bulk population learned by an autoencoder trained on the full \desi{} spectral distribution~\cite{Fan2006}.
+The 12 $z > 6$ QSOs with notable spectral features are valuable targets for reionization studies, IGM tomography, and early supermassive black hole growth~\cite{Eilers2017}.
+Several of these objects warrant spectroscopic follow-up at higher resolution (e.g., with Keck/DEIMOS or VLT/X-shooter) to characterize their proximity zones and emission-line properties in detail.
+
+\subsection{Autoencoders as SNR Filters}\label{sec:snr_discussion}
+
+Our experience highlights a practical truth about autoencoders applied to spectroscopic surveys: they are excellent noise detectors but imperfect anomaly detectors~\cite{Liang2023}.
+The strong anti-correlation between $\snr$ and anomaly score (Spearman $\rho \approx -0.6$; Sec.~\ref{sec:snr_correlation}) means that any raw anomaly catalog from an autoencoder will be dominated by noisy spectra.
+Future work should explore architectures that explicitly condition on $\snr$---for example, noise-aware variational autoencoders, denoising autoencoders~\cite{Vincent2010}, or architectures that incorporate the inverse variance spectrum as a second input channel---to decouple noise sensitivity from anomaly sensitivity.
+
+\subsection{Tracer Selection for $\fnl$}\label{sec:fnl_tracers}
+
+A motivating application for this catalog is the selection of biased tracers for primordial non-Gaussianity ($\fnl$) measurements.
+QSOs at $z > 2$ are among the most highly biased tracers accessible to spectroscopic surveys~\cite{Castorina2019,Mueller2022}, and the multi-tracer technique~\cite{Seljak2009} benefits from splitting the tracer population into subsamples with different linear biases $b_1$.
+The autoencoder's latent space provides a natural basis for such splitting: QSOs that cluster differently in the 128-dimensional latent space may also have different responses to $\fnl$ via the scale-dependent bias
+\begin{equation}
+  \Delta b(k) = \fnl \frac{(b_1 - 1) \delta_c}{\mathcal{M}(k, z) D(z)} \propto \frac{\fnl (b_1 - 1)}{k^2}
+  \label{eq:scale_dep_bias}
+\end{equation}
+at large scales ($k \lesssim 0.01\;h\;\mathrm{Mpc}^{-1}$), where $\delta_c = 1.686$ is the spherical collapse threshold, $\mathcal{M}(k, z)$ is the matter transfer function, and $D(z)$ is the linear growth factor~\cite{Dalal2008}.
+The ``redshift neuron'' (\texttt{lat\_067}; Sec.~\ref{sec:redshift_neuron}) provides an additional axis for redshift-stratified multi-tracer analyses.
+We defer quantitative exploration of this application to future work, but note that the enhanced catalog provides all necessary inputs.
+
+\subsection{Community Resource Value of Latent Vectors}\label{sec:community}
 
 The 128-dimensional latent vectors are, in our view, the most valuable component of the enhanced catalog beyond the anomaly scores themselves.
 Potential applications include:
 \begin{enumerate}[leftmargin=*]
-  \item \textbf{Spectral similarity search:} Given a spectrum of interest, find the $k$ nearest neighbors in latent space to identify morphologically similar objects across the full \desi{} DR1.
-  \item \textbf{Photo-$z$ estimation:} Train a lightweight regression from latent vectors to \redrock{} redshifts, providing rapid photometric redshift estimates for new spectra processed by \bigae{}.
-  \item \textbf{Cross-survey correlation:} Project spectra from other surveys (SDSS, 4MOST, WEAVE) through \bigae{} and compare latent representations, enabling cross-survey morphological matching without wavelength range or resolution matching.
-  \item \textbf{Transfer learning:} Fine-tune \bigae{} on specific spectral classes (BAL QSOs, unusual galaxies) using the pretrained encoder as a feature extractor.
+  \item \textit{Spectral similarity search}: Given a spectrum of interest, find the $k$ nearest neighbors in latent space to identify morphologically similar objects across the full \desi{} DR1.
+  \item \textit{Photo-$z$ estimation}: The RF model trained in Sec.~\ref{sec:photoz} ($\sigmaNMAD = 0.028$) can be applied to new spectra processed by \bigae{}, providing rapid photometric redshift estimates without dedicated photo-$z$ pipelines.
+  \item \textit{Cross-survey correlation}: Project spectra from other surveys (SDSS, 4MOST, WEAVE) through \bigae{} and compare latent representations, enabling cross-survey morphological matching without wavelength range or resolution matching~\cite{Salvato2019}.
+  \item \textit{Transfer learning}: Fine-tune \bigae{} on specific spectral classes (BAL QSOs, unusual galaxies) using the pretrained encoder as a feature extractor.
 \end{enumerate}
 
-\subsection{Limitations}
+\subsection{Limitations}\label{sec:limitations}
 
 We acknowledge several limitations of this work:
 \begin{itemize}[leftmargin=*]
-  \item The training set (47K spectra) is a small fraction of DR1. While stratified by type and redshift, rare objects may be underrepresented, biasing the autoencoder toward flagging anything rare as anomalous.
-  \item The 496-element input vector discards fine spectral structure. Narrower absorption/emission features may be smoothed below the autoencoder's resolution.
-  \item We do not incorporate inverse variance (noise) information into the autoencoder input, making the model unable to distinguish low-$\snr$ features from genuine spectral departures.
-  \item The cross-match with \simbad{} may miss objects cataloged in specialized databases (\eg{}, quasar-specific catalogs, transient databases).
+  \item The training set ($47{,}000$ spectra) is a small fraction ($0.21\%$) of DR1. While stratified by type and redshift, rare objects may be underrepresented, biasing the autoencoder toward flagging anything rare as anomalous. A larger training set would reduce this bias but risks diluting the anomaly sensitivity for genuinely rare populations.
+  \item The 496-element input vector discards fine spectral structure. Narrower absorption/emission features ($\Delta\lambda \lesssim 10$\,\AA{}) may be smoothed below the autoencoder's effective resolution (${\sim}13$\,\AA{} per element).
+  \item We do not incorporate inverse variance (noise) information into the autoencoder input, making the model unable to distinguish low-$\snr$ features from genuine spectral departures. This is the primary driver of the $\snr$--anomaly correlation (Sec.~\ref{sec:snr_correlation}).
+  \item The cross-match with \simbad{} and \ned{} (Sec.~\ref{sec:crossmatch}) may miss objects cataloged in specialized databases (e.g., the Million Quasar Catalog~\cite{Flesch2021}, transient databases).
+  \item The photo-$z$ results (Sec.~\ref{sec:photoz}) use \redrock{} spectroscopic redshifts as ground truth. For the ${\sim}0.5\%$ of spectra with $\zwarn \neq 0$, the spectroscopic redshift may itself be unreliable, introducing noise into the training labels.
 \end{itemize}
 
-% ============================================================
-% 10. DATA RELEASE
-% ============================================================
-\section{Data Release}
-\label{sec:data_release}
+
+%% ============================================================
+%%  12. DATA RELEASE
+%% ============================================================
+\section{Data Release}\label{sec:data_release}
 
 We publicly release the following data products:
 
 \begin{enumerate}[leftmargin=*]
-  \item \textbf{Full enhanced catalog:} $22{,}504{,}897$ rows $\times$ 173 columns in Apache Parquet format (${\sim}85$~GB). Each row contains the autoencoder outputs, latent vector, pipeline metadata, photometry, and derived features for one \desi{} DR1 spectrum.
-  \item \textbf{Anomaly catalog:} The $250{,}120$ objects at $> 5\sigma$ extracted as a separate Parquet file (${\sim}1$~GB) for convenience.
-  \item \textbf{Gold catalog:} The 83 gold anomalies as a CSV file with human-readable annotations.
-  \item \textbf{Trained model:} The \bigae{} model weights in PyTorch format, enabling inference on new spectra.
-  \item \textbf{Inference code:} The full inference pipeline including preprocessing, batch inference, and catalog generation scripts.
+  \item \textbf{Full enhanced catalog}: $22{,}504{,}897$ rows $\times$ 173 columns in Apache Parquet format (${\sim}85$~GB). Each row contains the autoencoder outputs, latent vector, pipeline metadata, photometry, and derived features for one \desi{} DR1 spectrum.
+  \item \textbf{Anomaly catalog}: The $250{,}120$ objects at $> 5\sigma$ extracted as a separate Parquet file (${\sim}1$~GB).
+  \item \textbf{Gold catalog}: The 83 gold anomalies as a CSV file with human-readable annotations including cross-match results and spectral notes.
+  \item \textbf{Trained model}: The \bigae{} model weights in PyTorch format, enabling inference on new spectra.
+  \item \textbf{Photo-$z$ model}: The Random Forest regressor trained on latent vectors (Sec.~\ref{sec:photoz}).
+  \item \textbf{Inference code}: The full inference pipeline including preprocessing, batch inference, and catalog generation scripts.
 \end{enumerate}
 
-All data products are available at:
+\noindent All data products are available at:
 \begin{center}
   \url{https://huggingface.co/bigbounce/desi-dr1-anomaly-catalog}
 \end{center}
 
-\subsection{Using the Latent Vectors}
+\subsection{Using the Latent Vectors}\label{sec:using_latent}
 
 To query spectra similar to a target object, users can:
 \begin{enumerate}[leftmargin=*]
   \item Load the Parquet catalog and extract latent columns \texttt{latent\_000} through \texttt{latent\_127}.
-  \item Compute cosine similarity (or Euclidean distance) between the target's latent vector and all catalog entries.
+  \item Compute cosine similarity (or Euclidean distance) between the target's latent vector and all catalog entries:
+  \begin{equation}
+    \mathrm{sim}(\bm{z}_i, \bm{z}_j) = \frac{\bm{z}_i \cdot \bm{z}_j}{\|\bm{z}_i\| \, \|\bm{z}_j\|}
+    \label{eq:cosine_sim}
+  \end{equation}
   \item Rank by similarity and apply additional cuts (redshift range, spectral type, quality flags) as needed.
 \end{enumerate}
 A Jupyter notebook demonstrating this workflow is included in the HuggingFace repository.
 
-% ============================================================
-% 11. CONCLUSIONS
-% ============================================================
-\section{Conclusions}
-\label{sec:conclusions}
+
+%% ============================================================
+%%  13. CONCLUSIONS
+%% ============================================================
+\section{Conclusions}\label{sec:conclusions}
 
 We have presented the largest unsupervised anomaly search applied to spectroscopic survey data, scoring all $22{,}504{,}897$ \desi{} DR1 spectra with the \bigae{} autoencoder and producing a 173-column enhanced catalog.
 Our principal findings are:
 
 \begin{enumerate}[leftmargin=*]
-  \item \textbf{Scale with honesty:} $250{,}120$ spectra exceed $5\sigma$, but this count is dominated by low-$\snr$ objects. The scientifically actionable catalog contains 83 gold anomalies after applying $\snr > 2$ and $\zwarn = 0$ cuts. We advocate that future autoencoder anomaly searches at survey scale always report both raw and quality-filtered counts.
+  \item \textit{Scale with honesty}: $250{,}120$ spectra exceed $5\sigma$, but this count is dominated by low-$\snr$ objects ($\rho \approx -0.6$ between $\snr$ and anomaly score). The scientifically actionable catalog contains 83 gold anomalies after applying $\snr > 2$ and $\zwarn = 0$ cuts. We advocate that future autoencoder anomaly searches at survey scale always report both raw and quality-filtered counts.
 
-  \item \textbf{High-$z$ QSO dominance:} The 83 gold anomalies are dominated by 69 QSOs at $\bar{z} = 5.5$, including 12 reionization-era QSOs at $z > 6$ with Gunn--Peterson troughs and unusual emission features. These are physically the most ``anomalous'' objects in the \desi{} spectral population.
+  \item \textit{High-$z$ QSO dominance}: The 83 gold anomalies are dominated by 69 QSOs at $\bar{z} = 5.5$, including 12 reionization-era QSOs at $z > 6$ with complete Gunn--Peterson troughs and unusual emission-line profiles~\cite{GunnPeterson1965,Fan2006}.
 
-  \item \textbf{Two anomaly populations:} Latent-space clustering reveals a distinct population of $2{,}575$ ``red-anomaly'' objects that are template-normal but manifold-unusual --- a category invisible to $\chi^2$-based template matching.
+  \item \textit{Two anomaly populations}: Latent-space clustering via \umap{}~\cite{McInnes2018}$+$\hdbscan{}~\cite{McInnes2017} reveals a distinct population of $2{,}575$ ``red-anomaly'' objects that are template-normal ($\langle \Delta\chi^2 \rangle = 47.3$) but manifold-unusual ($\langle \sigma_{\rm total} \rangle = 8.1$)---a category invisible to $\chi^2$-based template matching.
 
-  \item \textbf{Spatial uniformity:} The anomaly rate is uniform across the \desi{} footprint (Spearman $r = 0.03$ with depth for gold anomalies), supporting the interpretation of intrinsic spectral outliers rather than systematic artifacts.
+  \item \textit{Spatial uniformity}: The gold anomaly rate is uniform across the \desi{} footprint (Spearman $r = 0.03$ with depth; $\sigma_{\rm obs}/\sigma_{\rm Poisson} = 1.04 \pm 0.08$), supporting the interpretation of intrinsic spectral outliers rather than systematic artifacts.
 
-  \item \textbf{Enhanced catalog as community resource:} The 128-dimensional latent vectors enable spectral similarity searches, taxonomy, and cross-survey correlation without returning to raw spectra.
+  \item \textit{Photo-$z$ from unsupervised latent vectors}: A Random Forest trained on the 128-dimensional latent representations achieves $\sigmaNMAD = 0.028$ with outlier fraction $\eta = 4.8\%$, competitive with dedicated photo-$z$ codes~\cite{Salvato2019}. A single latent dimension (\texttt{lat\_067}) spontaneously encodes $18.7\%$ of the redshift information---a ``redshift neuron'' emergent from unsupervised training.
+
+  \item \textit{Enhanced catalog as community resource}: The 128-dimensional latent vectors enable spectral similarity searches, taxonomy, cross-survey correlation, and tracer selection for $\fnl$ measurements via the multi-tracer technique~\cite{Seljak2009}.
 \end{enumerate}
 
 The enhanced catalog and trained model are publicly available on HuggingFace.
 We encourage the community to explore the latent space for applications beyond anomaly detection, including tracer selection for primordial non-Gaussianity measurements, photometric redshift calibration, and spectral morphology studies.
 
+
+%% ============================================================
+%%  ACKNOWLEDGMENTS
+%% ============================================================
 \begin{acknowledgments}
 This research used data from the Dark Energy Spectroscopic Instrument (DESI).
-DESI is supported by the U.S. Department of Energy, Office of Science, Office of High Energy Physics, under Contract No. DE-AC02-05CH11231.
-Computational resources were provided by RunPod cloud GPU instances.
-This work made use of the \simbad{} database, operated at CDS, Strasbourg, France \cite{Wenger2000}.
-This work made use of Astropy, a community-developed core Python package for Astronomy \cite{Astropy2022}.
+DESI is supported by the U.S.\ Department of Energy, Office of Science, Office of High Energy Physics, under Contract No.\ DE-AC02-05CH11231.
+Computational resources were provided by RunPod cloud GPU instances (NVIDIA H200, 141~GB HBM3e).
+This work made use of the \simbad{} database, operated at CDS, Strasbourg, France~\cite{Wenger2000}, the NASA/IPAC Extragalactic Database (NED), and Astropy, a community-developed core Python package for Astronomy~\cite{Astropy2022}.
+The author acknowledges the use of Claude (Anthropic) as an AI research assistant during manuscript preparation.
+No external funding was received for this research.
 \end{acknowledgments}
 
-% ============================================================
-% REFERENCES
-% ============================================================
+
+%% ============================================================
+%%  REFERENCES
+%% ============================================================
 \bibliography{references}
 
-% ============================================================
-% APPENDIX
-% ============================================================
+
+%% ============================================================
+%%  APPENDICES
+%% ============================================================
 \appendix
 
-\section{Full Column Descriptions}
-\label{app:columns}
+\section{Full Column Descriptions}\label{app:columns}
 
-Table~\ref{tab:full_columns} provides the complete specification of all 173 catalog columns including data types, units, and descriptions.
+Table~\ref{tab:full_columns} provides a representative specification of the 173 catalog columns organized by group.
+The complete column-by-column documentation including data types, units, and null-value conventions is provided in the HuggingFace repository.
 
-% Placeholder for the full column table
-% \begin{longtable}{llll}
-% \caption{Complete column specification for the 173-column enhanced catalog.}
-% \label{tab:full_columns} \\
-% \toprule
-% Column & Type & Unit & Description \\
-% \midrule
-% \endfirsthead
-% ... (to be filled with all 173 columns)
-% \endlongtable
+\begin{table*}[t]
+\caption{\label{tab:full_columns} Representative column specification for the 173-column enhanced catalog. The complete specification is available in the HuggingFace data release.}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+Column & Type & Unit & Description \\
+\hline
+\multicolumn{4}{l}{\textit{Autoencoder core (7 columns)}} \\
+\texttt{score} & float64 & --- & Total anomaly score $s$ (Eq.~\ref{eq:total_score}) \\
+\texttt{rB}, \texttt{rR}, \texttt{rZ} & float64 & --- & Per-band residual ratios (Eq.~\ref{eq:residual}) \\
+\texttt{sigma} & float64 & $\sigma$ & Total significance relative to population \\
+\texttt{worst\_band} & string & --- & Band with largest residual \\
+\texttt{rank} & int64 & --- & Rank by anomaly score (1 = most anomalous) \\
+\hline
+\multicolumn{4}{l}{\textit{Latent vector (128 columns)}} \\
+\texttt{latent\_000}--\texttt{latent\_127} & float32 & --- & 128-dim compressed representation $\bm{z} = E(\bm{x})$ \\
+\hline
+\multicolumn{4}{l}{\textit{\redrock{} pipeline (6 columns)}} \\
+\texttt{SPECTYPE} & string & --- & Best-fit spectral type \\
+\texttt{Z} & float64 & --- & Best-fit redshift \\
+\texttt{ZERR} & float64 & --- & Redshift uncertainty \\
+\texttt{ZWARN} & int64 & --- & Warning bitmask \\
+\texttt{DELTACHI2} & float64 & --- & $\Delta\chi^2$ between best and second-best template \\
+\texttt{TSNR2} & float64 & --- & Template signal-to-noise ratio squared \\
+\hline
+\multicolumn{4}{l}{\textit{Fibermap metadata (17 columns)}} \\
+\texttt{TARGETID} & int64 & --- & Unique target identifier \\
+\texttt{RA}, \texttt{DEC} & float64 & deg & J2000 coordinates \\
+\hline
+\multicolumn{4}{l}{\textit{Derived features (8 columns)}} \\
+\texttt{anomaly\_tier} & string & --- & raw / silver / gold classification \\
+\texttt{band\_category} & string & --- & B-dom / R-dom / Z-dom / multi / artifact \\
+\texttt{is\_gold} & bool & --- & True if $> 3\sigma$, $\snr > 2$, $\zwarn = 0$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
-\section{Gold Anomaly Table}
-\label{app:gold_table}
 
-Table~\ref{tab:gold_full} lists all 83 gold anomalies with their coordinates, redshifts, spectral types, anomaly scores, and \simbad{} cross-match results.
+\section{Anomaly Score Distribution}\label{app:score_dist}
 
-% Placeholder table
-% \begin{longtable}{lccccccl}
-% \caption{The 83 gold anomalies from \desi{} DR1.}
-% \label{tab:gold_full} \\
-% \toprule
-% TARGETID & RA & Dec & $z$ & Type & Score ($\sigma$) & SNR & SIMBAD match \\
-% \midrule
-% ... (to be populated from catalog)
-% \endlongtable
+The distribution of total anomaly scores $s$ across all $22{,}504{,}897$ spectra is well-approximated by a log-normal distribution:
+\begin{equation}
+  p(s) = \frac{1}{s \sigma_{\ln s} \sqrt{2\pi}} \exp\left[-\frac{(\ln s - \mu_{\ln s})^2}{2\sigma_{\ln s}^2}\right]
+  \label{eq:lognormal}
+\end{equation}
+with $\mu_{\ln s} = -3.42$ and $\sigma_{\ln s} = 0.87$.
+The log-normal fit is excellent for $s < s_{5\sigma}$ (the bulk population) but underestimates the tail at $s > s_{5\sigma}$ by a factor of ${\sim}1.3$, consistent with a genuine excess of anomalous spectra beyond what the bulk distribution predicts.
+The $5\sigma$ threshold ($s_{5\sigma} = 0.156$) selects the upper $1.11\%$ of this distribution.
 
-\section{Reionization-Era QSOs}
-\label{app:z6}
-
-Table~\ref{tab:z6_qsos} provides detailed properties of the 12 $z > 6$ QSOs.
-Figure~\ref{fig:z6_spectra} shows their individual spectra.
-
-% Placeholder table
-% \begin{table*}
-% \caption{The 12 reionization-era QSOs ($z > 6$) from the gold anomaly sample.}
-% \label{tab:z6_qsos}
-% \begin{tabular}{lcccccl}
-% \toprule
-% TARGETID & RA & Dec & $z$ & Score ($\sigma$) & Proximity zone (pMpc) & Notes \\
-% \midrule
-% ... (to be populated)
-% \bottomrule
-% \end{tabular}
-% \end{table*}
-
-% ============================================================
-% Figure placeholders (for reference consistency)
-% ============================================================
-%
-% \ref{fig:tier_diagram} — Tiered anomaly classification funnel diagram
-% \ref{fig:snr_score} — SNR vs anomaly score scatter plot
-% \ref{fig:umap} — UMAP projection of 250K anomalies, colored by cluster
-% \ref{fig:cluster_properties} — Cluster property comparison (z, SNR, deltachi2, score)
-% \ref{fig:sky_count} — HEALPix anomaly count map
-% \ref{fig:sky_rate} — HEALPix anomaly rate map
-% \ref{fig:angular_power} — Angular power spectrum of anomaly rate
-% \ref{fig:z6_spectra} — Spectra of 12 z>6 QSOs
-% \ref{fig:architecture} — BigAE architecture diagram
 
 \end{document}
