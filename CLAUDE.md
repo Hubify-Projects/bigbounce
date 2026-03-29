@@ -155,6 +155,64 @@ When the user says **"update the site"** or **"sync the website"** or **"update 
 
 Key rule: Always use `torch.utils.data.DataLoader` with `num_workers=16, pin_memory=True, prefetch_factor=4` for image inference. This gave us a **32x speedup** (29 min → 65s per 44K-image shard) on the galaxy chirality pipeline. Never use serial PIL decoding, `ProcessPoolExecutor`, or HuggingFace streaming for production inference.
 
+## Paper Compilation & PDF Workflow
+
+**All papers use `revtex4-2` (Physical Review D style).** This is critical for consistency — every paper from this lab must look identical in formatting.
+
+### Document Class (MUST match across all papers)
+```latex
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+```
+
+### Author Format (same for all papers)
+```latex
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+```
+
+### Compilation
+Papers must be compiled on a machine with `texlive-publishers` installed (for `revtex4-2`). Local Mac does NOT have LaTeX — compile on RunPod pods.
+
+```bash
+# On RunPod pod (H200 or H100):
+apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science texlive-publishers
+
+# Compile (run twice for cross-references):
+cd /workspace/chirality   # or wherever the .tex file is
+pdflatex -interaction=nonstopmode paper.tex && pdflatex -interaction=nonstopmode paper.tex
+```
+
+### Figure Handling
+- All figures MUST be in the SAME directory as the `.tex` file (or symlinked there)
+- Use `\includegraphics[width=\columnwidth]{fig_name.png}` — NOT full paths
+- Check PDF file size: if < 1MB, figures are NOT embedded (they showed as empty boxes)
+- A paper with 11 figures should be ~15-25MB
+
+### Paper Locations
+| Paper | Source | PDF | Figures |
+|-------|--------|-----|---------|
+| Paper 1 (Spin-Torsion) | `arxiv/main.tex` | `arxiv/main.pdf` | `public/images/` |
+| Paper 2 (f_NL Forecast) | `research/focused_paper_source_integration/02_full_draft.tex` | — | — |
+| Paper 4 (Chirality Catalog) | `pipelines/p2_chirality/chirality_catalog_paper.tex` | `public/papers/chirality_catalog_paper.pdf` | `public/images/chirality/` |
+
+### Publishing PDFs to the Website
+PDFs go in `public/papers/` and are linked from `paper.html`, `galaxy-explorer.html`, etc.
+```bash
+# After compiling on pod:
+scp -P {PORT} -i ~/.ssh/id_ed25519 root@{IP}:/path/to/paper.pdf public/papers/
+git add public/papers/paper.pdf
+git commit -m "feat: compiled paper PDF"
+git push origin main  # auto-deploys to Netlify
+```
+
+### Common Pitfalls
+- **Empty figure boxes in PDF**: Figures not in same directory as .tex. Symlink or copy them.
+- **`aastex631` class errors**: Do NOT use aastex. Use `revtex4-2` for all papers.
+- **`\citep`/`\citet` undefined**: revtex4-2 uses `\cite{}` — not natbib commands.
+- **`deluxetable` undefined**: Use `\begin{table}\begin{ruledtabular}\begin{tabular}` instead.
+- **364KB PDF**: Figures not embedded. Recompile with figures in the same directory.
+
 ## Commands
 
 ### Local Development
