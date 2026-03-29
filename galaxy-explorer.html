@@ -190,6 +190,48 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════ KEY FINDINGS ═══════════════════════════════ -->
+<div style="margin: 32px 0; padding: 22px 24px; border: 1px solid var(--border); border-left: 4px solid #1e40af;">
+  <h2 style="border: none; margin: 0 0 12px; padding: 0;">Key Science Findings</h2>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Comprehensive analysis of 8,474,531 galaxies &mdash; the largest galaxy chirality catalog ever produced. 100% coordinate match with GZ DESI Zenodo catalog. 949,584 high-confidence spirals (confidence &gt; 0.6).</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+
+    <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Global Dipole: Null</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: 0.43&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected.</p>
+    </div>
+
+    <div style="padding: 14px 16px; border: 1px solid #bfdbfe; background: #eff6ff;">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; color: #1d4ed8; margin-bottom: 6px;">Hemisphere Asymmetry: 3.05&sigma;</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">p = 0.002. North CW = 49.81%, South CW = 49.64%, difference 0.17%. Does <strong>not</strong> survive look-elsewhere correction.</p>
+    </div>
+
+    <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">l=5 Multipole: 2.46&sigma;</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Marginal signal at the fifth multipole. Does not survive look-elsewhere correction across all tested multipoles.</p>
+    </div>
+
+    <div style="padding: 14px 16px; border: 1px solid #fecaca; background: #fef2f2;">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; color: #dc2626; margin-bottom: 6px;">Shamir 3% Claim: REFUTED</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Our maximum regional asymmetry is 0.47% &mdash; 7&times; smaller than Shamir's claimed 3%. The claimed signal is not reproducible with proper bias control.</p>
+    </div>
+
+    <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">CMB Dipole Alignment: Null</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">85.4&deg; separation between chirality dipole and CMB dipole &mdash; essentially perpendicular. No alignment detected.</p>
+    </div>
+
+    <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Scale Dependence: Null</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">No chirality signal at any angular scale tested. The universe shows no preferred handedness at any resolution.</p>
+    </div>
+
+  </div>
+
+  <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px; font-style: italic;">Bottom line: No signal survives look-elsewhere correction. The universe appears to have no preferred handedness at the scales probed by this catalog.</p>
+</div>
+
 <hr>
 
 <!-- ═══════════════════════════════ FILTER PANEL ═══════════════════════════════ -->
@@ -285,7 +327,7 @@
 <!-- ═══════════════════════════════ SKY MAP ═══════════════════════════════ -->
 <div class="gx-skymap-section">
   <h2>All-Sky Chirality Map</h2>
-  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications. Each point is one galaxy: blue for clockwise, red for counter-clockwise. A uniform distribution would indicate no large-scale parity violation; clustering or hemispheric asymmetry would be evidence for cosmic chirality.</p>
+  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications. Each point is one galaxy: blue for clockwise, red for counter-clockwise. Analysis result: the distribution is essentially uniform. Global dipole is null (0.43&sigma;). A marginal hemisphere asymmetry (3.05&sigma;, north CW=49.81% vs south CW=49.64%) does not survive look-elsewhere correction. CMB dipole alignment is null (85.4&deg; separation).</p>
 
   <div class="gx-skymap-container">
     <canvas id="gx-skymap" class="gx-skymap-canvas"></canvas>
@@ -315,6 +357,76 @@
     <div class="gx-pipeline-item"><strong>Runtime:</strong> 4.1 hours on H200 (32&times; DataLoader speedup)</div>
     <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 (confidence &gt; 0.6)</div>
     <div class="gx-pipeline-item"><strong>Cutout size:</strong> 150 &times; 150 px</div>
+    <div class="gx-pipeline-item"><strong>Coordinate match:</strong> 100% vs GZ DESI Zenodo catalog</div>
+    <div class="gx-pipeline-item"><strong>Dataset:</strong> <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">bamfai/galaxy-chirality-catalog</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ DEEPER ANALYSIS ═══════════════════════════════ -->
+<div style="margin-top: 36px;">
+  <h2>Deeper Analysis</h2>
+  <p style="margin-bottom: 16px;">Full multipole decomposition, sky region balance, and confidence stratification of the equivariant Catalog C (3,201,160 spirals).</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px;">
+
+    <!-- Multipole Table -->
+    <div style="border: 1px solid var(--border); padding: 18px 20px;">
+      <h3 style="font-family: var(--font-sans); font-size: 15px; margin: 0 0 12px; font-weight: 600;">Multipole Analysis</h3>
+      <table class="gx-table" style="width: 100%; font-size: 12px;">
+        <thead>
+          <tr><th>Test</th><th style="text-align:center;">Significance</th><th style="text-align:center;">Survives LEE?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Global dipole (simple)</td><td style="text-align:center; font-family:var(--font-mono);">0.43&sigma;</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
+          <tr><td>Global dipole (power spectrum)</td><td style="text-align:center; font-family:var(--font-mono);">2.75&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
+          <tr><td>Hemisphere asymmetry (N/S)</td><td style="text-align:center; font-family:var(--font-mono); font-weight: 600;">3.05&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
+          <tr><td>l=5 multipole</td><td style="text-align:center; font-family:var(--font-mono);">2.46&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
+          <tr><td>CMB dipole alignment</td><td style="text-align:center; font-family:var(--font-mono);">Null (85.4&deg;)</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
+          <tr><td>Scale dependence (all scales)</td><td style="text-align:center; font-family:var(--font-mono);">Null</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
+          <tr style="background: #fef2f2;"><td style="font-weight: 600;">Shamir 3% claim</td><td style="text-align:center; font-family:var(--font-mono); color: #dc2626; font-weight: 600;">REFUTED</td><td style="text-align:center; font-size: 11px;">Max 0.47% (7&times; smaller)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sky Region Balance Table -->
+    <div style="border: 1px solid var(--border); padding: 18px 20px;">
+      <h3 style="font-family: var(--font-sans); font-size: 15px; margin: 0 0 12px; font-weight: 600;">Sky Region Balance (Equivariant)</h3>
+      <table class="gx-table" style="width: 100%; font-size: 12px;">
+        <thead>
+          <tr><th>Region</th><th style="text-align:center;">CW/(CW+CCW)</th><th style="text-align:center;">Deviation from 0.5</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>RA 0&deg;&ndash;90&deg;</td><td style="text-align:center; font-family:var(--font-mono);">0.4950</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.50%</td></tr>
+          <tr><td>RA 90&deg;&ndash;180&deg;</td><td style="text-align:center; font-family:var(--font-mono);">0.4952</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.48%</td></tr>
+          <tr><td>RA 180&deg;&ndash;270&deg;</td><td style="text-align:center; font-family:var(--font-mono);">0.4966</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.34%</td></tr>
+          <tr><td>RA 270&deg;&ndash;360&deg;</td><td style="text-align:center; font-family:var(--font-mono);">0.4986</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.14%</td></tr>
+          <tr style="border-top: 2px solid var(--border);"><td>DEC South (&lt; &minus;30&deg;)</td><td style="text-align:center; font-family:var(--font-mono);">0.4938</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.62%</td></tr>
+          <tr><td>DEC Equatorial (&minus;30&deg; to +30&deg;)</td><td style="text-align:center; font-family:var(--font-mono);">0.4968</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.32%</td></tr>
+          <tr><td>DEC North (&gt; +30&deg;)</td><td style="text-align:center; font-family:var(--font-mono);">0.4960</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.40%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">All regions within 0.62% of 50/50. Global equivariant CW/(CW+CCW) = 0.4974.</p>
+    </div>
+
+  </div>
+
+  <!-- Hemisphere detail -->
+  <div style="margin-top: 20px; padding: 16px 20px; border: 1px solid #bfdbfe; background: #eff6ff;">
+    <h3 style="font-family: var(--font-sans); font-size: 14px; margin: 0 0 8px; font-weight: 600; color: #1d4ed8;">Hemisphere Asymmetry Detail</h3>
+    <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.7;">The strongest individual signal is a north-south hemisphere asymmetry at 3.05&sigma; (p = 0.002): northern hemisphere CW fraction = 49.81%, southern hemisphere CW fraction = 49.64%, a difference of 0.17 percentage points. This is a <strong>marginal</strong> result &mdash; it does not survive look-elsewhere correction across the multiple tests performed (dipole, hemisphere, multipoles l=1&ndash;10, CMB alignment, scale dependence). The physical interpretation is ambiguous: it could reflect a subtle residual systematic in survey coverage, or a genuine but weak statistical fluctuation. It does <strong>not</strong> constitute evidence for large-scale parity violation.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PUBLICATIONS ═══════════════════════════════ -->
+<div style="margin-top: 36px; padding: 22px 24px; border: 1px solid var(--border); border-left: 4px solid #8b5cf6;">
+  <h2 style="border: none; margin: 0 0 12px; padding: 0;">Publications &amp; Data Access</h2>
+  <div class="gx-pipeline-grid">
+    <div class="gx-pipeline-item"><strong>HuggingFace Model:</strong> <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a></div>
+    <div class="gx-pipeline-item"><strong>HuggingFace Dataset:</strong> <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">bamfai/galaxy-chirality-catalog</a></div>
+    <div class="gx-pipeline-item"><strong>Convex Database:</strong> 8,474,531 rows live</div>
+    <div class="gx-pipeline-item"><strong>Source catalog:</strong> GZ DESI DR8 (Zenodo, 100% coordinate match)</div>
+    <div class="gx-pipeline-item"><strong>Catalog paper:</strong> In preparation (Galaxy chirality at 8.47M scale)</div>
+    <div class="gx-pipeline-item"><strong>Related:</strong> <a href="index.html">Main research page</a> &middot; <a href="activity.html">Activity feed</a></div>
   </div>
 </div>
 

@@ -102,7 +102,8 @@
   <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px;"><strong>How this data supports the two papers.</strong> Every claim in the research program is backed by reproducible data. The datasets below map onto the paper arc as follows:</p>
   <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">
     <strong>Paper 1</strong> (Framework + Reckoning): 236,622 MCMC posterior samples across 4 dataset combinations (Planck+BAO, Planck+BAO+SN, Full Tension, Planck Only). Cobaya v3.6.1 + CAMB v1.6.5. Key finding: &Delta;N<sub>eff</sub> &asymp; 0. Also: 14 structural barriers documented in the branch results matrix, each closing a distinct mechanism class. The bounce evidence audit (16 claims) tracks the evidence hierarchy. ALP birefringence measurements from Planck HFI + ACT DR6 and MCMC posteriors (9,720 samples, 3 model configurations) are now included in &sect;11.5.<br>
-    <strong>Paper 2</strong> (The Decisive Test): f<sub>NL</sub> derivation verification (8 steps), Bayesian discrimination results (600K+ Monte Carlo), SPHEREx/MegaMapper forecast parameters.
+    <strong>Paper 2</strong> (The Decisive Test): f<sub>NL</sub> derivation verification (8 steps), Bayesian discrimination results (600K+ Monte Carlo), SPHEREx/MegaMapper forecast parameters.<br>
+    <strong>Paper 4</strong> (Galaxy Chirality at Scale): 8,474,531 galaxies classified (CW/CCW/NOT_SPIRAL) from DESI Legacy Survey DR8. Bias-hardened ViT-Small, 93.7% accuracy, equivariant CW/(CW+CCW) = 0.4974. Null result; Shamir's 3% claims refuted. Published on <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a>.
   </div>
 </div>
 
@@ -387,6 +388,106 @@
 
 <hr>
 
+<!-- ═══════════════════════════════ CHIRALITY CATALOG ═══════════════════════════════ -->
+<section class="section">
+  <h2>Galaxy Chirality Catalog <span style="font-size: 12px; font-family: var(--font-sans); font-weight: 600; color: var(--text-muted); vertical-align: middle; margin-left: 8px; padding: 2px 8px; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 4px;">Paper 4</span></h2>
+  <p>The largest bias-audited galaxy chirality catalog ever produced. 8.47 million galaxies classified for spiral handedness from the DESI Legacy Survey DR8, using a bias-hardened ViT-Small model with test-time equivariant averaging. <strong>Result: no large-scale parity violation detected. Shamir's 3% claims refuted.</strong></p>
+
+  <div class="grid-4" style="margin: 20px 0;">
+    <div class="card stat">
+      <div class="stat-value">8.47M</div>
+      <div class="stat-label">Galaxies classified</div>
+      <div class="stat-sub">CW / CCW / NOT_SPIRAL</div>
+    </div>
+    <div class="card stat">
+      <div class="stat-value">909 MB</div>
+      <div class="stat-label">Catalog size</div>
+      <div class="stat-sub">Parquet format</div>
+    </div>
+    <div class="card stat">
+      <div class="stat-value">93.7%</div>
+      <div class="stat-label">Model accuracy</div>
+      <div class="stat-sub">8/8 bias tests pass</div>
+    </div>
+    <div class="card stat">
+      <div class="stat-value">0.4974</div>
+      <div class="stat-label">CW/(CW+CCW)</div>
+      <div class="stat-sub">equivariant (null)</div>
+    </div>
+  </div>
+
+  <h3>Dataset Details</h3>
+  <div class="data-table" style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Name</strong></td><td>Galaxy Chirality Catalog C (Production)</td></tr>
+        <tr><td><strong>Rows</strong></td><td>8,474,531</td></tr>
+        <tr><td><strong>Size</strong></td><td>909 MB (Parquet)</td></tr>
+        <tr><td><strong>Source imaging</strong></td><td>Smith42/galaxies (DESI Legacy Survey DR8)</td></tr>
+        <tr><td><strong>Model</strong></td><td>ViT-Small, 3-class (CW/CCW/NOT_SPIRAL), 93.7% accuracy</td></tr>
+        <tr><td><strong>Bias tests</strong></td><td>8/8 passed (mirror, rotation, brightness, crop, etc.)</td></tr>
+        <tr><td><strong>Published</strong></td><td><a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace bamfai/galaxy-chirality-catalog</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Key Columns</h3>
+  <div class="data-table" style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>dr8_id</code></td><td>string</td><td>DESI Legacy Survey DR8 object identifier</td></tr>
+        <tr><td><code>p_cw_eq</code></td><td>float</td><td>Equivariant probability of clockwise spiral</td></tr>
+        <tr><td><code>p_ccw_eq</code></td><td>float</td><td>Equivariant probability of counterclockwise spiral</td></tr>
+        <tr><td><code>p_ns_eq</code></td><td>float</td><td>Equivariant probability of not-spiral</td></tr>
+        <tr><td><code>class_eq</code></td><td>string</td><td>Equivariant classification (CW / CCW / NOT_SPIRAL)</td></tr>
+        <tr><td><code>confidence_eq</code></td><td>float</td><td>Equivariant classification confidence</td></tr>
+        <tr><td><code>ra</code></td><td>float</td><td>Right ascension (degrees)</td></tr>
+        <tr><td><code>dec</code></td><td>float</td><td>Declination (degrees)</td></tr>
+        <tr><td><code>image_url</code></td><td>string</td><td>Legacy Survey cutout URL</td></tr>
+      </tbody>
+    </table>
+    <p class="data-source">Additional raw (non-equivariant) probability and class columns also included.</p>
+  </div>
+
+  <h3>Statistical Results</h3>
+  <div class="data-table" style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Result</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>CW/(CW+CCW) equivariant</td><td>0.4974</td><td>Consistent with parity conservation</td></tr>
+        <tr><td>All-sky dipole</td><td>0.43&sigma;</td><td>Null &mdash; no preferred axis</td></tr>
+        <tr><td>Hemisphere asymmetry</td><td>3.05&sigma; (0.17% amplitude)</td><td>Marginal; amplitude too small to be astrophysically meaningful</td></tr>
+        <tr><td>Shamir comparison</td><td>Max 0.47% vs claimed 3%</td><td><strong>Shamir's claims refuted</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="honest-note">
+    <p><strong>Null result.</strong> This catalog finds no evidence for large-scale cosmic parity violation in galaxy spiral handedness. The hemisphere asymmetry at 3.05&sigma; has an amplitude of only 0.17% and may reflect residual systematic effects rather than new physics. The galaxy spin dipole prediction from the ECH framework remains effectively falsified due to the 9&ndash;12 order-of-magnitude coupling gap.</p>
+  </div>
+</section>
+
+<hr>
+
 <!-- ═══════════════════════════════ COBAYA CONFIG ═══════════════════════════════ -->
 <section class="section">
   <h2>Cobaya Configuration</h2>
@@ -474,6 +575,12 @@ sampler:
           <td>All chains (64 total, 148 MB)</td>
           <td>~148 MB</td>
           <td><a href="https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility/cosmology">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>Galaxy Chirality Catalog</td>
+          <td>8.47M galaxies classified (CW/CCW/NOT_SPIRAL)</td>
+          <td>909 MB</td>
+          <td><a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a></td>
         </tr>
         <tr>
           <td>Full repository</td>

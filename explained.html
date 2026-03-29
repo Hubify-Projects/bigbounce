@@ -341,18 +341,18 @@
   <p>This is the framework's strongest result. The ALP birefringence prediction was made <em>before</em> the ACT DR6 confirmation, and the predicted angle falls within the observed 1&sigma; range. If LiteBIRD confirms &beta; &asymp; 0.3&deg; at high significance, it would support a Planck-scale ALP &mdash; a direct window into quantum gravity.</p>
 </div>
 
-<h3>Historical: Galaxy Spin Patterns (not a prediction of this framework)</h3>
+<h3>Galaxy Chirality: The Largest Catalog Ever (and a Null Result)</h3>
 
-<p>If our universe was born from a rotating black hole, galaxies might show a slight preference for spinning one way versus the other. However, this signature has serious problems:</p>
+<p>One way to look for new physics is to check whether the universe has a preferred "handedness." If you count spiral galaxies, do more spin clockwise (CW) than counterclockwise (CCW)? Some researchers &mdash; most notably Shamir (2020, 2022) &mdash; claimed to find a 3% excess of CW spirals, suggesting the universe violates <strong>parity symmetry</strong> at large scales.</p>
 
-<ul style="color: var(--text-secondary); padding-left: 20px;">
-  <li>The predicted coupling between cosmic rotation and galaxy angular momentum has a <strong>9&ndash;12 order-of-magnitude gap</strong> that cannot be bridged without fine-tuning</li>
-  <li>The asymmetry amplitude (A<sub>0</sub> &asymp; 0.3%) is an empirical fit parameter, <strong>not derived from first principles</strong></li>
-  <li>The observational signal is <strong>contested</strong> &mdash; multiple independent reanalyses have reported null results</li>
-  <li>CMB isotropy bounds constrain cosmic rotation to (&omega;/H)<sub>0</sub> &lt; 5 &times; 10<sup>&minus;11</sup>, far too small to produce observable galaxy spin asymmetry through any known coupling</li>
-</ul>
+<p>We tested this directly by building the <strong>largest galaxy chirality catalog ever produced: 8.47 million galaxies</strong> from the DESI Legacy Survey DR8, classified by a bias-hardened AI model (ViT-Small, 93.7% accuracy, 8 out of 8 bias tests passed). To remove systematic biases from the classifier itself, we used <strong>test-time equivariant averaging</strong> &mdash; classifying each galaxy and its mirror image, then combining the results.</p>
 
-<p>This signature should be considered <strong>speculative and unsubstantiated</strong> at present.</p>
+<div class="callout">
+  <div class="callout-title">What We Found</div>
+  <p><strong>No large-scale parity violation.</strong> After equivariant averaging, the fraction of CW spirals is 0.4974 &mdash; essentially 50/50. The all-sky dipole signal is just 0.43&sigma; (consistent with random noise). A hemisphere asymmetry at 3.05&sigma; was detected, but its amplitude is only 0.17% &mdash; far too small to be astrophysically meaningful. Shamir's claimed 3% excess is <strong>refuted</strong>: our maximum observed asymmetry is just 0.47%.</p>
+</div>
+
+<p>This is an important null result. The theoretical coupling between the spin-torsion framework and galaxy angular momentum has a <strong>9&ndash;12 order-of-magnitude gap</strong>, and CMB isotropy bounds constrain cosmic rotation to far too small a level to produce observable galaxy spin asymmetry. Our catalog, 40 times larger than any previous effort, confirms what the theory predicted: <strong>there is no detectable cosmic handedness in galaxy spins</strong>. The full catalog is published on <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a>.</p>
 
 <h3>Historical: Cosmological Tensions (not resolved by this framework)</h3>
 

@@ -110,7 +110,7 @@
     <div class="stat">
       <div class="stat-value">8.47M</div>
       <div class="stat-label">Galaxy chirality catalog</div>
-      <div class="stat-sub">COMPLETE &mdash; null dipole (0.43&sigma;), largest chirality catalog ever</div>
+      <div class="stat-sub">COMPLETE &mdash; null dipole (0.43&sigma;), hemisphere 3.05&sigma; (no LEE survival), Shamir refuted. Published to HuggingFace</div>
     </div>
   </div>
 </section>
@@ -369,7 +369,7 @@
       <tr><td>\(H_0 = 67.68 \pm 1.06\) km/s/Mpc</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>MCMC (full-tension, frozen chains)</td></tr>
       <tr><td>\(\Delta N_{\rm eff} \approx 0\)</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>MCMC (all datasets; consistent with zero)</td></tr>
       <tr><td>\(f_{\rm photon} \times C_0 = 1.73 \pm 0.44\)</td><td style="color:#2874a6; font-weight:600;">Fit</td><td>Consistency check (literature combination)</td></tr>
-      <tr><td>Galaxy spin dipole \(A_0 \sim 0.003\)</td><td style="color:#c0392b; font-weight:600;">Null</td><td>9&ndash;12 OOM coupling gap. Chirality Catalog C (8.47M galaxies): dipole = 0.43&sigma; (null). CW/(CW+CCW) = 0.4974. 94.6&sigma; raw systematic eliminated by equivariant averaging. Largest catalog ever</td></tr>
+      <tr><td>Galaxy spin dipole \(A_0 \sim 0.003\)</td><td style="color:#c0392b; font-weight:600;">Null</td><td>9&ndash;12 OOM coupling gap. Chirality Catalog C (8.47M galaxies): global dipole = 0.43&sigma; (null). CW/(CW+CCW) = 0.4974. Hemisphere asymmetry 3.05&sigma; (p=0.002) but does not survive look-elsewhere correction. Shamir 3% claim refuted (max regional asymmetry 0.47%, 7&times; smaller). CMB dipole alignment null (85.4&deg;). No signal at any angular scale. Published: HuggingFace model + dataset, Convex DB</td></tr>
       <tr><td>\(f_{\rm NL} = -35/8 = -4.375\)</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>Cai et al. (2009) cubic action; algebraically verified. Full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) derived from Cai's intermediate equations. No independent verification in 2020&ndash;2024 literature</td></tr>
       <tr><td>Cai vs Li normalization resolved</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>92% confidence, vertex-by-vertex match; literature factor-of-2 discrepancy traced to convention. Full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) derived algebraically from Cai's intermediate equations. No independent &minus;35/8 verification found in 2020&ndash;2024 literature</td></tr>
       <tr><td>Template mismatch \(r \approx 0.85\text{--}0.90\)</td><td style="color:#1a7d1a; font-weight:600;">Derived</td><td>CMB Fisher: r = 0.90; LSS/SDB: r = 0.85; validated by &ell;-space Fisher (0.878) and injection (0.90 &plusmn; 0.01); template-corrected SPHEREx ~5.0&ndash;5.5\(\sigma\)</td></tr>
@@ -503,7 +503,7 @@
     </div>
     <div class="card" style="margin-bottom: 12px;">
       <h4 style="margin-top:0; font-family:var(--font-sans);">What Has Already Been Falsified</h4>
-      <p style="font-size:15px;">Our own MCMC verification has already falsified several earlier claims: \(H_0 = 69.2\) (artifact of SH0ES prior), tension reduction (not supported by independent chains), galaxy spin dipole coupling (9&ndash;12 orders of magnitude gap), and ALP simultaneously explaining dark energy (rolling-vs-freezing tension). Our dedicated AI chirality pipeline (Catalog C: 8,474,531 galaxies, 93.7% accuracy, 8/8 bias tests pass) found a null dipole at 0.43&sigma; &mdash; CW/(CW+CCW) = 0.4974, all sky regions within 0.5% of 50/50. The 94.6&sigma; raw survey systematic was entirely eliminated by test-time equivariant averaging. This is the largest galaxy chirality catalog ever produced.</p>
+      <p style="font-size:15px;">Our own MCMC verification has already falsified several earlier claims: \(H_0 = 69.2\) (artifact of SH0ES prior), tension reduction (not supported by independent chains), galaxy spin dipole coupling (9&ndash;12 orders of magnitude gap), and ALP simultaneously explaining dark energy (rolling-vs-freezing tension). Our dedicated AI chirality pipeline (Catalog C: 8,474,531 galaxies, 93.7% accuracy, 8/8 bias tests pass) found a null global dipole at 0.43&sigma; &mdash; CW/(CW+CCW) = 0.4974. Deeper analysis found hemisphere asymmetry at 3.05&sigma; (p=0.002, north CW=49.81% vs south CW=49.64%) and an l=5 multipole at 2.46&sigma;, but no signal survives look-elsewhere correction. Shamir's claimed 3% chirality asymmetry is refuted &mdash; our max regional asymmetry is 0.47% (7&times; smaller). CMB dipole alignment is null (85.4&deg; separation). Published to <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a> and Convex DB.</p>
     </div>
   </div>
 </section>

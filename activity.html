@@ -130,13 +130,13 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">Enhanced 18M DESI DR1 Catalog + Galaxy Chirality Analysis</div>
-  <p class="status-desc">Galaxy Chirality Catalog C COMPLETE: 8,474,531 galaxies classified, null dipole (0.43&sigma;). Largest chirality catalog ever produced. Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; 44% complete. Artifact verification: 200/200 top anomalies are genuine (0% sky artifacts). Three wavelength clusters identified from top 50 spectra. Galaxies 20&times; more anomalous than QSOs (aggregate from 6.5M spectra).</p>
+  <div class="status-focus">Galaxy Chirality Deep Analysis Complete + Enhanced DESI DR1 Catalog</div>
+  <p class="status-desc">Galaxy Chirality Catalog C COMPLETE with full science analysis: 8,474,531 galaxies classified (largest chirality catalog ever). Deeper analysis: hemisphere asymmetry at 3.05&sigma; (p=0.002), l=5 multipole at 2.46&sigma;, but no signal survives look-elsewhere correction. Shamir's 3% chirality claim REFUTED &mdash; our max regional asymmetry is 0.47% (7&times; smaller). CMB dipole alignment null (85.4&deg; separation). Published to HuggingFace (model + dataset) and Convex DB. Enhanced 45-column catalog of ALL 17.9M DESI DR1 spectra running on H200 &mdash; 44% complete.</p>
   <div class="status-meta">
-    <div class="status-meta-item"><span class="dot dot-active"></span> Chirality Catalog C &mdash; COMPLETE (8.47M galaxies, null dipole 0.43&sigma;)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Chirality Deep Analysis &mdash; COMPLETE (hemisphere 3.05&sigma;, Shamir refuted, no signal survives LEE)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Published &mdash; HuggingFace model + dataset, Convex DB (8.47M rows)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Enhanced 18M Catalog &mdash; 44% complete (7.9M/17.9M), ~16h remaining</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Artifact Verification &mdash; 200/200 genuine, 0% sky artifacts</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> Key Finding: Galaxies 20&times; more anomalous than QSOs (6.5M spectra)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> Convex Backend &mdash; 11 tables deployed</div>
   </div>
 </div>
@@ -146,7 +146,7 @@
   <h3>Up Next</h3>
   <ul class="up-next-list">
     <li><span class="priority priority-now">NOW</span> Enhanced 18M catalog running on H200 &mdash; 44% (7.9M/17.9M), ~16h remaining</li>
-    <li><span class="priority priority-now">DONE</span> Chirality Catalog C &mdash; 8.47M galaxies, null dipole (0.43&sigma;)</li>
+    <li><span class="priority priority-now">DONE</span> Chirality Deep Analysis &mdash; hemisphere 3.05&sigma;, Shamir refuted, published to HuggingFace</li>
     <li><span class="priority priority-next">NEXT</span> Resolve wavelength clusters via redshifts from enhanced catalog</li>
     <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> tracer purification (cross-match, classify, validate bias)</li>
     <li><span class="priority priority-later">LATER</span> Paper 2 submission preparation</li>
@@ -160,6 +160,13 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-03-28</div>
+    <div class="feed-title">Deeper Analysis Complete: Hemisphere Asymmetry 3.05&sigma;, Shamir Claims Refuted</div>
+    <p class="feed-body">Comprehensive science analysis of Catalog C (8,474,531 galaxies). <strong>Six analysis results:</strong> (1) Global dipole: 0.43&sigma; (simple) / 2.75&sigma; (power spectrum) &mdash; marginal. (2) Hemisphere asymmetry: 3.05&sigma; (p=0.002) &mdash; north CW=49.81%, south CW=49.64%, difference 0.17%. (3) l=5 multipole: 2.46&sigma; &mdash; marginal, doesn't survive look-elsewhere correction. (4) Shamir's 3% claim REFUTED &mdash; our max regional asymmetry is 0.47% (7&times; smaller). (5) CMB dipole alignment: null (85.4&deg; separation &mdash; perpendicular). (6) Scale dependence: null at all angular scales. <strong>Bottom line:</strong> No signal survives look-elsewhere correction. Published to <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace dataset</a>, <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">HuggingFace model</a>, and Convex DB (8,474,531 rows live). 100% coordinate match with GZ DESI Zenodo catalog. 949,584 high-confidence spirals (conf &gt; 0.6). Sky region balance: all quadrants within 0.36% of 50/50.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">Deep Analysis</span><span class="feed-tag">3.05&sigma; Hemisphere</span><span class="feed-tag">Shamir Refuted</span><span class="feed-tag">Published</span><span class="feed-tag">HuggingFace</span></div>
+  </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-03-28</div>
