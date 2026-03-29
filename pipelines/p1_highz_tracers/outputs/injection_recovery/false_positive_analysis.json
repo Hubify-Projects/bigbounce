@@ -1,0 +1,135 @@
+{
+  "test_name": "BigAE False Positive Analysis",
+  "date": "2026-03-29T00:49:37.626437",
+  "method": "False positive rates measured on known normal objects",
+  "control_categories": {
+    "normal_lowz_galaxy": {
+      "description": "Normal galaxies (0.05 < z < 0.5, ZWARN=0, SNR > 5)",
+      "N": 3495834,
+      "false_positive_rates": {
+        "score_gt3": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 3495834
+        },
+        "score_gt5": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 3495834
+        },
+        "score_gt7": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 3495834
+        }
+      },
+      "score_stats": {
+        "mean": 0.0245,
+        "median": 0.0173,
+        "std": 0.037,
+        "min": 0.0016,
+        "max": 2.6933,
+        "p90": 0.0414,
+        "p95": 0.0594,
+        "p99": 0.1509
+      }
+    },
+    "normal_star": {
+      "description": "Normal stars (ZWARN=0, SNR > 5, |z| < 0.005)",
+      "N": 2674422,
+      "false_positive_rates": {
+        "score_gt3": {
+          "count": 3,
+          "fraction": 1e-06,
+          "N": 2674422
+        },
+        "score_gt5": {
+          "count": 1,
+          "fraction": 0.0,
+          "N": 2674422
+        },
+        "score_gt7": {
+          "count": 1,
+          "fraction": 0.0,
+          "N": 2674422
+        }
+      },
+      "score_stats": {
+        "mean": 0.0058,
+        "median": 0.0031,
+        "std": 0.0228,
+        "min": 0.0004,
+        "max": 7.2462,
+        "p90": 0.008,
+        "p95": 0.0128,
+        "p99": 0.0543
+      }
+    },
+    "normal_midz_qso": {
+      "description": "Normal QSOs (0.5 < z < 2, ZWARN=0, SNR > 3)",
+      "N": 492457,
+      "false_positive_rates": {
+        "score_gt3": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 492457
+        },
+        "score_gt5": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 492457
+        },
+        "score_gt7": {
+          "count": 0,
+          "fraction": 0.0,
+          "N": 492457
+        }
+      },
+      "score_stats": {
+        "mean": 0.0514,
+        "median": 0.0383,
+        "std": 0.0469,
+        "min": 0.0035,
+        "max": 1.5864,
+        "p90": 0.0943,
+        "p95": 0.1311,
+        "p99": 0.2499
+      }
+    },
+    "all_normal_snr3": {
+      "description": "All objects with ZWARN=0, SNR > 3 (general population)",
+      "N": 10165482,
+      "false_positive_rates": {
+        "score_gt3": {
+          "count": 61,
+          "fraction": 6e-06,
+          "N": 10165482
+        },
+        "score_gt5": {
+          "count": 9,
+          "fraction": 1e-06,
+          "N": 10165482
+        },
+        "score_gt7": {
+          "count": 2,
+          "fraction": 0.0,
+          "N": 10165482
+        }
+      },
+      "score_stats": {
+        "mean": 0.0389,
+        "median": 0.0212,
+        "std": 0.0655,
+        "min": 0.0004,
+        "max": 7.2462,
+        "p90": 0.0866,
+        "p95": 0.1282,
+        "p99": 0.2978
+      }
+    }
+  },
+  "baseline_catalog_rate": {
+    "score_gt3": 0.13221225,
+    "score_gt5": 0.01110447
+  }
+}

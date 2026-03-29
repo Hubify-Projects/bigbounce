@@ -1,0 +1,57 @@
+{
+  "snr_dependence": {
+    "0-0.5": {
+      "N": 4667837,
+      "mean_score": 2.6787,
+      "frac_gt3": 0.47065,
+      "frac_gt5": 0.043526
+    },
+    "0.5-1": {
+      "N": 2833523,
+      "mean_score": 0.7609,
+      "frac_gt3": 0.000684,
+      "frac_gt5": 3.3e-05
+    },
+    "1-2": {
+      "N": 1738656,
+      "mean_score": 0.3153,
+      "frac_gt3": 5.3e-05,
+      "frac_gt5": 3e-06
+    },
+    "2-5": {
+      "N": 4991394,
+      "mean_score": 0.1174,
+      "frac_gt3": 1.4e-05,
+      "frac_gt5": 2e-06
+    },
+    "5-10": {
+      "N": 3546580,
+      "mean_score": 0.0367,
+      "frac_gt3": 8e-06,
+      "frac_gt5": 1e-06
+    },
+    "10-50": {
+      "N": 3414924,
+      "mean_score": 0.0122,
+      "frac_gt3": 5e-06,
+      "frac_gt5": 1e-06
+    },
+    "50-200": {
+      "N": 345997,
+      "mean_score": 0.005,
+      "frac_gt3": 3e-06,
+      "frac_gt5": 3e-06
+    }
+  },
+  "score_snr_correlation": {
+    "spearman_rho_all": -0.8929,
+    "spearman_rho_highz_qso": -0.8065
+  },
+  "snr_breakdown_of_flagged": {
+    "total_flagged_gt3": 2975423,
+    "snr_lt1": 2975216,
+    "snr_1_to_2": 92,
+    "snr_ge2": 115,
+    "snr_ge5": 47
+  }
+}

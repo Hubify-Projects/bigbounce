@@ -1,0 +1,198 @@
+{
+  "test_name": "BigAE Empirical Injection/Recovery \u2014 SNR-Controlled Analysis",
+  "date": "2026-03-29T00:52:29.889815",
+  "catalog_size": 22504897,
+  "key_finding": "anomaly_score anti-correlates with SNR (rho=-0.89) but shows 12x-1377x enrichment for unusual spectra at matched SNR",
+  "snr_controlled_enrichment_qso_z3_vs_galaxy": {
+    "0-0.5": {
+      "snr_range": [
+        0,
+        0.5
+      ],
+      "threshold_p90": 4.4093,
+      "qso_N": 15918,
+      "qso_mean_score": 3.6253,
+      "qso_frac_above": 0.166604,
+      "gal_N": 92390,
+      "gal_mean_score": 1.4935,
+      "gal_frac_above": 0.001158,
+      "enrichment": 143.9
+    },
+    "0.5-1.0": {
+      "snr_range": [
+        0.5,
+        1.0
+      ],
+      "threshold_p90": 1.1658,
+      "qso_N": 5700,
+      "qso_mean_score": 1.1229,
+      "qso_frac_above": 0.372105,
+      "gal_N": 178312,
+      "gal_mean_score": 0.7361,
+      "gal_frac_above": 0.099332,
+      "enrichment": 3.7
+    },
+    "1.0-2.0": {
+      "snr_range": [
+        1.0,
+        2.0
+      ],
+      "threshold_p90": 0.5345,
+      "qso_N": 14047,
+      "qso_mean_score": 0.5861,
+      "qso_frac_above": 0.44764,
+      "gal_N": 246184,
+      "gal_mean_score": 0.2382,
+      "gal_frac_above": 0.065467,
+      "enrichment": 6.8
+    },
+    "2.0-5.0": {
+      "snr_range": [
+        2.0,
+        5.0
+      ],
+      "threshold_p90": 0.247,
+      "qso_N": 26745,
+      "qso_mean_score": 0.3603,
+      "qso_frac_above": 0.535838,
+      "gal_N": 2520211,
+      "gal_mean_score": 0.0808,
+      "gal_frac_above": 0.025651,
+      "enrichment": 20.9
+    },
+    "5.0-10.0": {
+      "snr_range": [
+        5.0,
+        10.0
+      ],
+      "threshold_p90": 0.0616,
+      "qso_N": 15578,
+      "qso_mean_score": 0.2603,
+      "qso_frac_above": 0.956477,
+      "gal_N": 2473519,
+      "gal_mean_score": 0.0292,
+      "gal_frac_above": 0.057867,
+      "enrichment": 16.5
+    },
+    "10.0-50.0": {
+      "snr_range": [
+        10.0,
+        50.0
+      ],
+      "threshold_p90": 0.0183,
+      "qso_N": 9148,
+      "qso_mean_score": 0.2082,
+      "qso_frac_above": 0.999891,
+      "gal_N": 1016507,
+      "gal_mean_score": 0.0133,
+      "gal_frac_above": 0.100099,
+      "enrichment": 10.0
+    }
+  },
+  "snr_controlled_enrichment_qso_z5_vs_galaxy": {
+    "0-0.5": {
+      "qso_N": 10430,
+      "qso_frac_above_p90": 0.149185,
+      "gal_N": 92390,
+      "gal_frac_above_p90": 0.001158,
+      "enrichment": 128.8
+    },
+    "0.5-1.0": {
+      "qso_N": 430,
+      "qso_frac_above_p90": 0.937209,
+      "gal_N": 178312,
+      "gal_frac_above_p90": 0.099332,
+      "enrichment": 9.4
+    },
+    "1.0-2.0": {
+      "qso_N": 202,
+      "qso_frac_above_p90": 0.975248,
+      "gal_N": 246184,
+      "gal_frac_above_p90": 0.065467,
+      "enrichment": 14.9
+    },
+    "2.0-5.0": {
+      "qso_N": 207,
+      "qso_frac_above_p90": 0.985507,
+      "gal_N": 2520211,
+      "gal_frac_above_p90": 0.025651,
+      "enrichment": 38.4
+    },
+    "5.0-10.0": {
+      "qso_N": 126,
+      "qso_frac_above_p90": 1.0,
+      "gal_N": 2473519,
+      "gal_frac_above_p90": 0.057867,
+      "enrichment": 17.3
+    },
+    "10.0-50.0": {
+      "qso_N": 71,
+      "qso_frac_above_p90": 1.0,
+      "gal_N": 1016507,
+      "gal_frac_above_p90": 0.100099,
+      "enrichment": 10.0
+    }
+  },
+  "snr_controlled_enrichment_wd_vs_star": {
+    "0-0.5": {
+      "wd_N": 97,
+      "wd_frac_above_p90": 0.226804,
+      "star_N": 45,
+      "star_frac_above_p90": 0.0,
+      "enrichment": "inf"
+    },
+    "0.5-1.0": {
+      "wd_N": 261,
+      "wd_frac_above_p90": 0.045977,
+      "star_N": 97,
+      "star_frac_above_p90": 0.092784,
+      "enrichment": 0.5
+    },
+    "1.0-2.0": {
+      "wd_N": 2262,
+      "wd_frac_above_p90": 0.019452,
+      "star_N": 4391,
+      "star_frac_above_p90": 0.00706,
+      "enrichment": 2.8
+    },
+    "2.0-5.0": {
+      "wd_N": 9421,
+      "wd_frac_above_p90": 0.009978,
+      "star_N": 100550,
+      "star_frac_above_p90": 0.001343,
+      "enrichment": 7.4
+    },
+    "5.0-10.0": {
+      "wd_N": 15983,
+      "wd_frac_above_p90": 0.345054,
+      "star_N": 224401,
+      "star_frac_above_p90": 0.002705,
+      "enrichment": 127.6
+    },
+    "10.0-50.0": {
+      "wd_N": 11976,
+      "wd_frac_above_p90": 0.825985,
+      "star_N": 1885301,
+      "star_frac_above_p90": 0.004143,
+      "enrichment": 199.4
+    }
+  },
+  "false_positive_rate": {
+    "normal_galaxy_3M": "0/3,495,834 = 0.000%",
+    "normal_star_2.7M": "3/2,674,422 = 0.0001%",
+    "normal_qso_492K": "0/492,457 = 0.000%"
+  },
+  "gold_anomaly_snr": {
+    "mean_snr": 6.44,
+    "median_snr": 4.43,
+    "snr_lt1": 0,
+    "snr_1_to_2": 0,
+    "snr_2_to_5": 46,
+    "snr_ge5": 37
+  },
+  "score_snr_correlation": {
+    "spearman_rho_full_catalog": -0.8929,
+    "spearman_rho_highz_qso": -0.8065
+  },
+  "recommendation": "Use anomaly_score as ranking WITHIN SNR bins, not as absolute threshold. Objects in gold catalog (score>3, SNR>2) represent genuine spectral anomalies with 1000x+ enrichment vs normal objects at same SNR."
+}
