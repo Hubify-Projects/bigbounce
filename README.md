@@ -14,7 +14,7 @@
 A research program testing whether bounce cosmology — a singularity-free alternative to the Big Bang — can be proven through observational data and AI-powered discovery. The program spans theoretical physics, MCMC cosmological parameter estimation, and large-scale AI spectral analysis.
 
 **Key results:**
-- **195,829 previously uncharacterized spectral anomalies** discovered in DESI DR1 (18M spectra), with 99.8% absent from SIMBAD and 0% being known QSOs. Galaxies are 20x more anomalous than QSOs.
+- **250,120 previously uncharacterized spectral anomalies** discovered in DESI DR1 (22.7M spectra scored, 173 columns per object including 128-dim latent vectors), with 99.8% absent from SIMBAD. Enhanced catalog: 46 Parquet batches, 16GB, zero processing errors.
 - **f_NL = -35/8** is the parameter-free matter-bounce prediction, verified as mechanism-independent across 3 bounce models. SPHEREx (~2028) will test at 4-6σ.
 - **14 structural barriers** close all ECH-specific routes from bounce to dark energy (other bounce models like quintom can bypass these).
 - **Quintom-B w-crossing** independently confirmed at 98% (w0 = -0.871, wa = -0.542) consistent with DESI DR2.

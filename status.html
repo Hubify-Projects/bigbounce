@@ -103,7 +103,7 @@
     <div class="label">MCMC Samples</div>
   </div>
   <div class="status-stat green">
-    <div class="num">195,829</div>
+    <div class="num">250,120</div>
     <div class="label">Anomalies Found</div>
   </div>
   <div class="status-stat blue">
@@ -162,7 +162,7 @@
       </tr>
       <tr>
         <td><strong>Paper 3</strong></td>
-        <td>DESI DR1 Spectral Anomaly Catalog: 195,829 Uncharacterized Objects from 18M Spectra</td>
+        <td>DESI DR1 Spectral Anomaly Catalog: 250,120 Uncharacterized Objects from 22.7M Spectra (173-column enhanced catalog)</td>
         <td><span class="badge badge-blue">Draft</span></td>
         <td><code>v0.1</code></td>
         <td>~8</td>
@@ -269,7 +269,7 @@
         <td>Autoencoder anomaly search on all 18M DESI DR1 spectra. First full-DR1-scale search (~90x prior EDR work).</td>
         <td>Yes (high-bias tracers)</td>
         <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>195K anomalies; 200/200 artifact-free; enhanced 18M at 44%; top 50 spectra plotted <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
+        <td>250K anomalies; 200/200 artifact-free; enhanced 22.7M COMPLETE (173 cols, 46 batches, 0 errors); UMAP clustering in progress <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
       </tr>
       <tr>
         <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
@@ -311,7 +311,7 @@
 
   <div class="discovery-card" style="border-left: 3px solid #22c55e;">
     <h4>Pipeline B Headline Result</h4>
-    <p>195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. <strong>200/200 top anomalies verified artifact-free</strong> by spectral inspection (peak wavelength vs known sky/telluric lines). Three wavelength clusters in top 50: 12 at 7600&Aring; (possible [OIII] at z&asymp;0.52), 28 at 3600&ndash;3700&Aring; (possible Lyman break at z&asymp;3), 3 at 9440&ndash;9480&Aring; (possible [SIII]/H&alpha; at z&asymp;0.44). Cross-matched against 6 databases (3B+ objects): 99.8% absent from SIMBAD, galaxies 20x more anomalous than QSOs (6.5M spectra). Enhanced 18M catalog at 44%. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
+    <p>250,120 spectral anomalies from 22.7M DESI DR1 spectra — every spectrum scored with 173 columns including 128-dim latent vectors. <strong>Enhanced catalog COMPLETE:</strong> 46 Parquet batches (16GB), zero processing errors, 27,488 healpix pixels. 12,336 extreme anomalies (&gt;10&sigma;), 126 ultra-extreme (&gt;15&sigma;). <strong>200/200 top anomalies verified artifact-free.</strong> Cross-matched against 6 databases: 99.8% absent from SIMBAD. UMAP clustering + HDBSCAN taxonomy in progress. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
   </div>
 </section>
 
@@ -649,9 +649,9 @@
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
-    <h4>195,829 Uncharacterized Spectral Anomalies</h4>
+    <h4>250,120 Uncharacterized Spectral Anomalies</h4>
     <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). 99.8% absent from SIMBAD. 0% are known QSOs. Only 1 confirmed Galactic star in top 100. Galaxies 19x more anomalous than QSOs.</p>
-    <span class="tag">Pipeline B &middot; 18M spectra &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
+    <span class="tag">Pipeline B &middot; 22.7M spectra &middot; 173 columns &middot; 46 Parquet batches &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
