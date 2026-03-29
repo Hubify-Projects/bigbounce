@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anomaly Explorer — DESI DR1 Spectral Anomalies</title>
-<meta name="description" content="Explore 195,829 spectral anomalies from 18M DESI DR1 spectra. Interactive table with Legacy Survey image links.">
+<meta name="description" content="Explore 2,145 SNR-filtered spectral anomalies from 22.5M DESI DR1 spectra. 120 gold, 12 z>6 QSOs, photo-z from unsupervised latent vectors. Interactive table with Legacy Survey image links.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="nav.js" defer></script>
@@ -53,7 +53,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
-  <p class="subtitle">195,829 previously unidentified spectral anomalies from 18M DESI DR1 spectra. First full-DR1-scale autoencoder search (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). <strong>100% of the top 100 objects are NOT in SIMBAD</strong> &mdash; these are genuinely uncharacterized objects. Browse the top 1,000 by anomaly score below.</p>
+  <p class="subtitle">22,504,897 unique DESI DR1 spectra scored &rarr; 2,145 SNR-filtered anomalies (score&gt;3, SNR&gt;0.5) &rarr; 120 gold (&gt;5&sigma;) &rarr; 12 reionization-era QSOs at z&gt;6. First full-DR1-scale autoencoder search (~90x prior EDR work). <strong>21 objects NOT in SIMBAD.</strong> Photo-z from unsupervised latent vectors: &sigma;<sub>NMAD</sub> = 0.028. UMAP clustering reveals two populations. Browse the top 1,000 by anomaly score below.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
     <a href="status.html" class="btn btn-secondary" style="font-size:13px;">Research Status</a>
@@ -62,46 +62,48 @@
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid var(--accent-link, #f59e0b); border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
-  <strong style="color: var(--text);">Live Research &mdash; Work in Progress</strong><br>
-  This catalog is from the initial anomaly detection pass. Current status:
-  <strong>Steps 1&ndash;3 complete</strong> (detection, SIMBAD cross-match, classification by band pattern).
-  <strong>Step 4 (bias validation) complete</strong>.
-  <strong>Step 5 (f<sub>NL</sub> improvement) complete</strong>.
-  <strong>Artifact verification complete</strong> &mdash; 200/200 top anomalies verified genuine by spectral inspection (0% sky artifacts). Three wavelength clusters: 12 at 7600&Aring;, 28 at 3600&ndash;3700&Aring;, 3 at 9440&ndash;9480&Aring;.
-  Enhanced 18M catalog &mdash; 44% complete (7.9M/17.9M), redshifts will resolve cluster interpretations.
-  Step 6 (paper) &mdash; draft v0.1 exists.
+  <strong style="color: var(--text);">Paper 3 Status &mdash; ~60% Ready</strong><br>
+  <strong>Enhanced catalog COMPLETE</strong> &mdash; 22,504,897 unique spectra scored (deduplicated), 173 columns, 46 Parquet batches, 16GB.
+  <strong>Tiered anomaly system:</strong> 2,145 silver (score&gt;3, SNR&gt;0.5), 120 gold (&gt;5&sigma;).
+  <strong>Key discoveries:</strong> 12 z&gt;6 reionization-era QSOs with Gunn-Peterson troughs; photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub>=0.028); spontaneous &ldquo;redshift neuron&rdquo; (lat_067); 2,575 red-anomaly cluster.
+  <strong>Honest disclosure:</strong> bulk 250K raw count dominated by low-SNR spectra &mdash; science-grade count is 2,145 after SNR filtering.
+  Paper draft in preparation (~60%). 10 publication figures complete.
   Click any row to view the Legacy Survey image, read AI analysis notes, and add your own review comments.
 </div>
 
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
-  <strong style="color: var(--text);">Key Finding from Enhanced 18M Catalog</strong><br>
-  Galaxies are <strong>20&times; more likely</strong> to be spectrally anomalous than QSOs (aggregate from 6.5M spectra). These anomalies are NOT missed quasars &mdash; they are <strong>unusual galaxies</strong> at z&sim;0.3&ndash;0.5 whose spectra don&rsquo;t match any known template. Score vs S/N shows no correlation, confirming these are genuine spectral anomalies, not noise artifacts. <strong>Artifact verification: 200/200 top anomalies are genuine astrophysical sources</strong> (0% sky artifacts, verified by downloading actual DESI spectra and classifying peak wavelengths vs known sky/telluric lines). Enhanced 18M catalog (45 columns, latent vectors, redshifts) running on H200 &mdash; 44% complete.
+  <strong style="color: var(--text);">Key Findings from Complete 22.5M Catalog</strong><br>
+  <strong>Photo-z from latent vectors:</strong> &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79) with zero redshift supervision &mdash; the autoencoder spontaneously learned spectral features correlated with redshift.
+  <strong>Redshift neuron (lat_067):</strong> A single latent dimension that emergently encodes redshift, the strongest individual predictor of spectroscopic z.
+  <strong>UMAP clustering:</strong> Two distinct populations &mdash; 247K B-band noise cluster + 2,575 red-anomaly cluster with genuinely unusual spectra.
+  <strong>Anomaly rate uniform:</strong> ~1% across the footprint (Spearman r = 0.03 with depth), confirming anomalies are astrophysical, not depth artifacts.
+  <strong>12 z&gt;6 QSOs</strong> with Gunn-Peterson troughs identified from the gold anomaly catalog.
 </div>
 
 <div class="anomaly-stats">
   <div class="anomaly-stat highlight">
-    <div class="num">195,829</div>
-    <div class="label">Total Anomalies</div>
+    <div class="num">22.5M</div>
+    <div class="label">Spectra Scored</div>
+  </div>
+  <div class="anomaly-stat highlight">
+    <div class="num">2,145</div>
+    <div class="label">Silver (SNR-filtered)</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">101</div>
-    <div class="label">Extreme (score &gt; 15)</div>
+    <div class="num">120</div>
+    <div class="label">Gold (&gt;5&sigma;)</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">9,836</div>
-    <div class="label">High Confidence (&gt; 10)</div>
+    <div class="num">12</div>
+    <div class="label">z&gt;6 QSOs</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">44,345</div>
-    <div class="label">Medium (&gt; 7)</div>
+    <div class="num">0.028</div>
+    <div class="label">&sigma;<sub>NMAD</sub> Photo-z</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">18M</div>
-    <div class="label">Spectra Processed</div>
-  </div>
-  <div class="anomaly-stat">
-    <div class="num">896/s</div>
-    <div class="label">Processing Rate</div>
+    <div class="num">21</div>
+    <div class="label">NOT in SIMBAD</div>
   </div>
 </div>
 

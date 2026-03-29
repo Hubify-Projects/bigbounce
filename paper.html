@@ -267,7 +267,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">March 2026 &middot; gr-qc &middot; astro-ph.CO &middot; hep-th</p>
   <h1>Papers</h1>
-  <p class="subtitle">Four papers: two falsifiable predictions from bounce cosmology, a 250K-object anomaly catalog with 173-column enhanced profiles for all 22.7M DESI DR1 spectra, and the largest bias-audited galaxy chirality catalog ever produced</p>
+  <p class="subtitle">Four papers: a 22.5M-spectra anomaly catalog with 2,145 SNR-filtered anomalies and photo-z from unsupervised latent vectors, the largest bias-audited galaxy chirality catalog ever produced, two falsifiable predictions from bounce cosmology</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
 </div>
 
@@ -276,18 +276,18 @@
   <h2>How These Papers Fit Together</h2>
 
   <div class="card" style="margin-bottom: 24px; padding: 28px 32px; border-left: 4px solid var(--text); background: var(--bg-subtle);">
-    <p style="font-size: 15px; line-height: 1.75; margin: 0 0 16px;">Four papers spanning theory, forecasting, and observational discovery. Papers 1 and 2 present the theoretical framework and falsifiable predictions. Paper 3 opens a new observational channel via AI-driven anomaly detection. Paper 4 delivers the largest bias-audited galaxy handedness catalog ever produced.</p>
+    <p style="font-size: 15px; line-height: 1.75; margin: 0 0 16px;">Four papers spanning observational discovery, forecasting, and theory. Paper 3 opens a new observational channel via AI-driven anomaly detection on 22.5M DESI DR1 spectra. Paper 4 delivers the largest bias-audited galaxy handedness catalog ever produced. Papers 2 and 1 present falsifiable predictions and the theoretical framework.</p>
 
     <div style="display: grid; grid-template-columns: 40px 1fr; gap: 8px 16px; font-size: 14px; line-height: 1.65;">
+
+      <div style="font-weight: 700; color: #f97316; font-family: var(--font-sans); text-align: right; padding-top: 2px;">3.</div>
+      <div>
+        <strong>The Discovery Catalog.</strong> Paper 3 presents 2,145 SNR-filtered spectral anomalies (120 gold at &gt;5&sigma;) from 22,504,897 deduplicated DESI DR1 spectra &mdash; the largest autoencoder anomaly search ever conducted on DESI data (~90x prior EDR work). Every spectrum profiled with 173 columns including 128-dim latent vectors. Key discoveries: 12 reionization-era QSOs at z&gt;6 with Gunn-Peterson troughs, a spontaneous &ldquo;redshift neuron&rdquo; (lat_067) encoding redshift without supervision, photo-z from latent vectors at &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79), and a 2,575-object &ldquo;red-anomaly&rdquo; cluster with high pipeline confidence + high autoencoder score. Anomaly rate uniform at ~1% (Spearman r = 0.03 with depth). 21 objects NOT in SIMBAD. 10 publication figures. Enhanced catalog COMPLETE (46 Parquet batches, 16GB). Draft stage, targeting ApJS. ~60% ready.
+      </div>
 
       <div style="font-weight: 700; color: #a855f7; font-family: var(--font-sans); text-align: right; padding-top: 2px;">4.</div>
       <div>
         <strong>The Chirality Catalog.</strong> Paper 4 &mdash; &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology&rdquo; &mdash; presents an 8.47-million galaxy chirality catalog, the largest bias-audited handedness measurement ever produced (40x larger than prior work). ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) at 93.7% accuracy, 8/8 bias tests passed, equivariant CW fraction = 0.4974. No large-scale parity violation found; Shamir's 3% claim refuted. Draft complete (1,096 lines, 11 figures, 4 tables). Targeting MNRAS. ~75% ready.
-      </div>
-
-      <div style="font-weight: 700; color: #f97316; font-family: var(--font-sans); text-align: right; padding-top: 2px;">3.</div>
-      <div>
-        <strong>The Discovery Catalog.</strong> Paper 3 presents 250,120 spectral anomalies from the full DESI DR1 survey (22.7M spectra scored), the largest autoencoder anomaly search ever conducted on DESI data (~90x prior EDR work). Every spectrum profiled with 173 columns including 128-dim latent vectors. Key finding: 1.10% anomaly rate, with galaxies 20x more anomalous than QSOs. Cross-matching against 6 databases shows 99.8% uncataloged. Enhanced catalog COMPLETE (46 Parquet batches, 16GB). Draft stage, targeting ApJS. ~40% ready.
       </div>
 
       <div style="font-weight: 700; color: #16a34a; font-family: var(--font-sans); text-align: right; padding-top: 2px;">2.</div>
@@ -311,14 +311,30 @@
 <section class="section">
   <h2>The Papers</h2>
 
-    <div class="card" style="margin-bottom: 20px; border-left: 4px solid #22c55e;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 2 &mdash; The Decisive Test <span class="badge badge-accent">100% Ready</span></h4>
-    <p style="font-size:14px;"><strong>Title:</strong> "Testing the Matter Bounce with Primordial Non-Gaussianity: Forecasts for SPHEREx and MegaMapper"</p>
-    <p style="font-size:14px;"><strong>Scope:</strong> \(f_{\rm NL} = -35/8\) benchmark verification (Cai action audit + vertex-by-vertex normalization match at 92% confidence). Full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) derived algebraically from Cai's own intermediate equations via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2&mdash;not a fit, the physics-derived result. &epsilon; correction bounded [1&ndash;8%], corrected range [-4.35, -4.02]. Template mismatch quantified: \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85). NaMaster injection: ALL levels pass including \(\beta = 0.5°\) and \(\beta = 0.27°\). Template-corrected SPHEREx galaxy bispectrum forecast (~5.0&ndash;5.5\(\sigma\)). Consistency relation slope bounded: \(c \in [-0.7, -10]\). MegaMapper scale-dependent bias (3&ndash;7\(\sigma\)). Bayesian model comparison (600,000+ MC realizations). GR projection marginalization. Photo-z catastrophic outlier degradation analysis (bispectrum robust to 10% outliers, &sect;7.3). 5 publication figures. ~12 pages.</p>
-    <p style="font-size:14px;"><strong>Key results:</strong> Cai vs Li normalization resolved (92% confidence, vertex-by-vertex match). Full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> derived algebraically from Cai's own intermediate equations using exact rational arithmetic: 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. &epsilon; correction bounded [1&ndash;8%], corrected f<sub>NL</sub> range: [&minus;4.35, &minus;4.02]. Template mismatch \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85) &mdash; first explicit quantification showing local estimator captures 85&ndash;90% of the matter-bounce signal. NaMaster injection: ALL levels pass including \(\beta = 0.5°\) and \(\beta = 0.27°\) with zero bias. NaMaster EB: NSIDE=1024 \(\beta = 0.19 \pm 0.03°\) (lead result); NSIDE=2048 \(\beta = 0.07 \pm 0.02°\) (stress test&mdash;high-\(\ell\) instability). Bounce favored over standard inflation at BF &gt;300 (robust to conservative GR treatment); favored over tuned multifield at BF &gt;7. Template-corrected SPHEREx significance: ~5.0&ndash;5.5\(\sigma\) (reduced from naive 6.2\(\sigma\)). SPHEREx bispectrum channel avoids \(k_{\rm min}\) fragility. Null result would disfavor quasi-dust bounce at &gt;4\(\sigma\).</p>
+  <div class="card" style="margin-bottom: 20px; border-left: 4px solid #f97316;">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~60% Ready</span></h4>
+    <p style="font-size:14px;"><strong>Title:</strong> "Spectral Anomalies in DESI DR1: A 173-Column Enhanced Catalog of 22.5M Spectra with Unsupervised Photo-z and Emergent Latent Structure"</p>
+    <p style="font-size:14px;"><strong>Target:</strong> ApJS (Astrophysical Journal Supplement Series)</p>
+    <p style="font-size:14px;"><strong>Scope:</strong> Spectral autoencoder anomaly detection across the full DESI DR1 survey (22,504,897 unique spectra scored after deduplication), the largest such search ever conducted on DESI data (~90x prior EDR-scale work). Enhanced catalog with 173 columns per spectrum including 128-dim latent vectors (first of its kind). H200 GPU inference with 4-worker prefetch. 46 Parquet batches (16GB). Tiered anomaly system: 2,145 silver (score&gt;3, SNR&gt;0.5), 120 gold (&gt;5&sigma;). Includes photo-z from unsupervised latent vectors, UMAP taxonomy, SIMBAD cross-match, and anomaly density analysis.</p>
+    <p style="font-size:14px;"><strong>Key results:</strong></p>
+    <ul style="font-size:14px; line-height:1.8; padding-left:20px;">
+      <li><strong>22,504,897 unique spectra scored</strong> (deduplicated from 22.7M raw)</li>
+      <li><strong>2,145 spectrally anomalous objects</strong> (score&gt;3, SNR&gt;0.5) &mdash; SNR-filtered honest count</li>
+      <li><strong>120 gold anomalies</strong> at &gt;5&sigma;</li>
+      <li><strong>12 reionization-era QSOs at z&gt;6</strong> with Gunn-Peterson troughs</li>
+      <li><strong>21 objects NOT in SIMBAD</strong> &mdash; genuinely uncharacterized</li>
+      <li><strong>&sigma;<sub>NMAD</sub> = 0.028</strong> photo-z from unsupervised latent vectors (R&sup2; = 0.79, no redshift supervision)</li>
+      <li><strong>lat_067 &ldquo;redshift neuron&rdquo;</strong> &mdash; spontaneous emergent encoding of redshift in autoencoder latent space</li>
+      <li><strong>2,575 &ldquo;red-anomaly&rdquo; cluster</strong> with high pipeline confidence + high autoencoder score paradox</li>
+      <li><strong>Uniform ~1% anomaly rate</strong> across footprint (Spearman r = 0.03 with depth)</li>
+      <li><strong>10 publication figures</strong></li>
+      <li><strong>Honest disclosure:</strong> SNR-anomaly correlation &mdash; bulk 250K raw count dominated by low-SNR spectra</li>
+    </ul>
+    <p style="font-size:14px;"><strong>Remaining work:</strong> Polish draft, complete figure captions, injection/recovery tests, final peer review.</p>
     <div style="margin-top:10px;">
-      <a href="public/focused_paper_bounce_fnl_forecast.pdf" class="btn btn-primary" target="_blank">Read Online</a>
-      <a href="public/focused_paper_bounce_fnl_forecast.pdf" class="btn btn-secondary" download>Download PDF</a>
+      <span class="badge" style="font-size: 13px; background:#fff7ed; color:#9a3412; border:1px solid #fed7aa;">Draft in preparation &mdash; LaTeX source available</span>
+      <a href="anomaly-explorer.html" class="btn btn-secondary" style="margin-left:8px;">Anomaly Explorer</a>
+      <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Model on HuggingFace</a>
     </div>
   </div>
 
@@ -341,15 +357,14 @@
     </div>
   </div>
 
-  <div class="card" style="margin-bottom: 20px; border-left: 4px solid #f97316;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~30% Ready</span></h4>
-    <p style="font-size:14px;"><strong>Title:</strong> "250,120 Spectral Anomalies from DESI DR1: A 173-Column Enhanced Catalog from the Largest Autoencoder Search at Survey Scale"</p>
-    <p style="font-size:14px;"><strong>Target:</strong> ApJS (Astrophysical Journal Supplement Series)</p>
-    <p style="font-size:14px;"><strong>Scope:</strong> Spectral autoencoder anomaly detection across the full DESI DR1 survey (22.7M spectra scored across 27,488 healpix pixels), the largest such search ever conducted on DESI data (~90x prior EDR-scale work). Enhanced catalog with 173 columns per spectrum including 128-dim latent vectors (first of its kind). H200 GPU inference with 4-worker prefetch. 46 Parquet batches (16GB). Includes 6-database cross-match, artifact investigation, UMAP taxonomy, and anomaly density analysis.</p></p>
-    <p style="font-size:14px;"><strong>Key results:</strong> 250,120 anomalies identified from 22,748,720 scored spectra (1.10% anomaly rate). Every spectrum profiled with 173 columns: 7 autoencoder metrics, 128-dim latent vectors, 6 redrock classifications, 17 FIBERMAP columns, 7 SCORES, 7 derived features. Cross-match against 6 databases: <strong>99.8% uncataloged</strong> in SIMBAD. 12,336 extreme anomalies (&gt;10&sigma;), 126 ultra-extreme (&gt;15&sigma;). Zero processing errors across 27,488 healpix pixels.</p>
-    <p style="font-size:14px;"><strong>Remaining work:</strong> Spectral inspection of top candidates, injection/recovery tests, systematic artifact investigation, completeness analysis, redshift-dependent anomaly rate characterization.</p>
+    <div class="card" style="margin-bottom: 20px; border-left: 4px solid #22c55e;">
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 2 &mdash; The Decisive Test <span class="badge badge-accent">100% Ready</span></h4>
+    <p style="font-size:14px;"><strong>Title:</strong> "Testing the Matter Bounce with Primordial Non-Gaussianity: Forecasts for SPHEREx and MegaMapper"</p>
+    <p style="font-size:14px;"><strong>Scope:</strong> \(f_{\rm NL} = -35/8\) benchmark verification (Cai action audit + vertex-by-vertex normalization match at 92% confidence). Full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) derived algebraically from Cai's own intermediate equations via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2&mdash;not a fit, the physics-derived result. &epsilon; correction bounded [1&ndash;8%], corrected range [-4.35, -4.02]. Template mismatch quantified: \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85). NaMaster injection: ALL levels pass including \(\beta = 0.5°\) and \(\beta = 0.27°\). Template-corrected SPHEREx galaxy bispectrum forecast (~5.0&ndash;5.5\(\sigma\)). Consistency relation slope bounded: \(c \in [-0.7, -10]\). MegaMapper scale-dependent bias (3&ndash;7\(\sigma\)). Bayesian model comparison (600,000+ MC realizations). GR projection marginalization. Photo-z catastrophic outlier degradation analysis (bispectrum robust to 10% outliers, &sect;7.3). 5 publication figures. ~12 pages.</p>
+    <p style="font-size:14px;"><strong>Key results:</strong> Cai vs Li normalization resolved (92% confidence, vertex-by-vertex match). Full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> derived algebraically from Cai's own intermediate equations using exact rational arithmetic: 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. &epsilon; correction bounded [1&ndash;8%], corrected f<sub>NL</sub> range: [&minus;4.35, &minus;4.02]. Template mismatch \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85) &mdash; first explicit quantification showing local estimator captures 85&ndash;90% of the matter-bounce signal. NaMaster injection: ALL levels pass including \(\beta = 0.5°\) and \(\beta = 0.27°\) with zero bias. NaMaster EB: NSIDE=1024 \(\beta = 0.19 \pm 0.03°\) (lead result); NSIDE=2048 \(\beta = 0.07 \pm 0.02°\) (stress test&mdash;high-\(\ell\) instability). Bounce favored over standard inflation at BF &gt;300 (robust to conservative GR treatment); favored over tuned multifield at BF &gt;7. Template-corrected SPHEREx significance: ~5.0&ndash;5.5\(\sigma\) (reduced from naive 6.2\(\sigma\)). SPHEREx bispectrum channel avoids \(k_{\rm min}\) fragility. Null result would disfavor quasi-dust bounce at &gt;4\(\sigma\).</p>
     <div style="margin-top:10px;">
-      <span class="badge badge-neutral" style="font-size: 13px;">Draft in preparation</span>
+      <a href="public/focused_paper_bounce_fnl_forecast.pdf" class="btn btn-primary" target="_blank">Read Online</a>
+      <a href="public/focused_paper_bounce_fnl_forecast.pdf" class="btn btn-secondary" download>Download PDF</a>
     </div>
   </div>
 

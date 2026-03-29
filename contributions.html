@@ -577,32 +577,36 @@
 
   <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
     <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">DESI DR1 Spectral Anomaly Catalog</h3>
-    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;"><span style="background:#16a34a;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">NOVEL CONTRIBUTION</span> &middot; Pipeline B &middot; Paper 3 (draft) &middot; ~90x larger than any prior DESI anomaly search</p>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;"><span style="background:#16a34a;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">NOVEL CONTRIBUTION</span> &middot; Pipeline B &middot; Paper 3 (~60% ready) &middot; ~90x larger than any prior DESI anomaly search</p>
     <h4 style="margin-top: 16px;">Why it matters</h4>
-    <p style="background:#f0fdf4;padding:12px 16px;border-radius:6px;border-left:3px solid #16a34a;"><strong>195,829 previously uncharacterized objects in a single catalog.</strong> The unexpected finding that galaxies are 20x more anomalous than QSOs was not reported by anyone before us. These objects are waiting for follow-up spectroscopy and could contain new classes of astrophysical transients, rare emission-line objects, or systematic effects that contaminate cosmological surveys.</p>
+    <p style="background:#f0fdf4;padding:12px 16px;border-radius:6px;border-left:3px solid #16a34a;"><strong>2,145 SNR-filtered spectral anomalies from 22.5M unique spectra, plus unprecedented discoveries in the latent space.</strong> The autoencoder spontaneously learned to encode redshift (lat_067 &ldquo;redshift neuron&rdquo;), enabling photo-z at &sigma;<sub>NMAD</sub> = 0.028 with zero redshift supervision. 12 reionization-era QSOs at z&gt;6 identified, and a &ldquo;red-anomaly&rdquo; population of 2,575 objects challenges standard classification.</p>
     <h4>What it is</h4>
-    <p>195,829 spectral anomalies identified from the full DESI DR1 Main Survey catalog (~18M spectra) using a spectral autoencoder running on an H200 GPU at 896 spectra/sec. This is the first full-DR1-scale autoencoder anomaly search, ~90x larger than prior EDR work (Liang et al. 2023; Nicolaou et al. 2026). Target journal: ApJS.</p>
-    <h4>Key findings</h4>
+    <p>22,504,897 unique DESI DR1 spectra scored (deduplicated) using a spectral autoencoder on H200 GPU at 896 spectra/sec. This is the first full-DR1-scale autoencoder anomaly search, ~90x larger than prior EDR work (Liang et al. 2023; Nicolaou et al. 2026). Target journal: ApJS.</p>
+    <h4>Novel contributions (Paper 3)</h4>
     <ul>
-      <li><strong>Galaxies are 20x more anomalous than QSOs</strong> (0.75% anomaly rate vs 0.037%) &mdash; nobody reported this before</li>
-      <li><strong>6-database cross-match:</strong> SIMBAD 0.2%, NED 12.7%, AllWISE 1.5%, Milliquas 0%, Gaia 0.6% &mdash; <strong>99.8% uncataloged</strong> in SIMBAD</li>
-      <li>200/200 artifact-free visual verification</li>
-      <li>151,244 multi-band anomalies; 44,436 B-dominant anomalies; 96 artifact suspects flagged</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>First 173-column enhanced catalog of full DESI DR1</strong> &mdash; 22.5M spectra with 128-dim latent vectors, anomaly scores, and derived features. No equivalent product exists.</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>Photo-z from unsupervised latent vectors</strong> &mdash; &sigma;<sub>NMAD</sub> = 0.028, R&sup2; = 0.79, with zero redshift supervision. The autoencoder learned spectral features correlated with redshift entirely on its own.</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>Spontaneous &ldquo;redshift neuron&rdquo; (lat_067)</strong> &mdash; a single latent dimension that emergently encodes redshift without any supervision. Demonstrates the autoencoder discovered physically meaningful spectral structure.</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>2,145 spectrally anomalous objects</strong> with SNR quality filter (score&gt;3, SNR&gt;0.5) &mdash; honest tiered system: 2,145 silver, 120 gold (&gt;5&sigma;)</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>12 reionization-era QSOs at z&gt;6</strong> with anomalous spectra identified by AI, showing Gunn-Peterson troughs</li>
+      <li><span style="background:#16a34a;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">NOVEL</span> <strong>&ldquo;Red-anomaly&rdquo; population</strong> (2,575 objects) with high pipeline &Delta;&chi;&sup2; + high autoencoder score paradox &mdash; objects the pipeline fits confidently but the autoencoder flags as unusual</li>
+      <li><span style="background:#9333ea;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">VERIFICATION</span> <strong>Anomaly rate uniform across footprint</strong> (Spearman r = 0.03 with depth) &mdash; confirms anomalies are not depth-correlated artifacts</li>
+      <li><span style="background:#6b7280;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;">HONEST DISCLOSURE</span> <strong>SNR-anomaly correlation</strong> &mdash; the bulk 250K raw count is dominated by low-SNR spectra; the honest science-grade count is 2,145 after SNR filtering</li>
     </ul>
     <h4>What existed before (and what's ours)</h4>
     <p><strong>Not ours:</strong> Autoencoder anomaly detection methods. <strong>Liang et al. (2023)</strong> applied autoencoder + normalizing flow to ~250K DESI EDR spectra. <strong>Nicolaou et al. (2026)</strong> applied VAE + Astronomaly to ~208K DESI EDR spectra.</p>
-    <p><strong>Ours:</strong> The ~90x scale jump (DR1 vs EDR), the 20x galaxy anomaly rate discovery, the 6-database cross-match characterization, and the 200/200 artifact-free verification.</p>
+    <p><strong>Ours:</strong> The ~90x scale jump (DR1 vs EDR), the 173-column enhanced catalog, photo-z from unsupervised latent vectors, the redshift neuron discovery, the SNR-filtered tiered anomaly system, 12 z&gt;6 QSO identifications, and the red-anomaly population characterization.</p>
   </div>
 
   <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">
-    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">Enhanced 18M DESI DR1 Catalog</h3>
-    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;"><span style="background:#16a34a;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">NOVEL CONTRIBUTION</span> &middot; Pipeline B &middot; In Progress (36%) &middot; First catalog of its kind</p>
+    <h3 style="margin-top: 0; font-family: var(--font-sans); font-size: 16px; color: #9a3412;">Enhanced 22.5M DESI DR1 Catalog <span class="badge badge-green" style="font-size:11px;vertical-align:middle;margin-left:8px;">COMPLETE</span></h3>
+    <p style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;"><span style="background:#16a34a;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">NOVEL CONTRIBUTION</span> &middot; Pipeline B &middot; COMPLETE &middot; First catalog of its kind</p>
     <h4 style="margin-top: 16px;">Why it matters</h4>
-    <p style="background:#f0fdf4;padding:12px 16px;border-radius:6px;border-left:3px solid #16a34a;"><strong>Nobody has done this before.</strong> A uniform ML characterization of every spectrum in DESI DR1 with 45 computed columns. When complete, any astronomer can query "show me the most unusual galaxies in this sky region" instantly.</p>
+    <p style="background:#f0fdf4;padding:12px 16px;border-radius:6px;border-left:3px solid #16a34a;"><strong>Nobody has done this before.</strong> A uniform ML characterization of every spectrum in DESI DR1 with 173 computed columns including 128-dim latent vectors. Any astronomer can query &ldquo;show me the most unusual galaxies in this sky region&rdquo; instantly.</p>
     <h4>What it is</h4>
-    <p>A uniform machine-learning characterization of every spectrum in DESI DR1, with <strong>45 computed columns</strong> per object: anomaly scores, spectral feature measurements, cross-match results, quality flags, and derived quantities. 6.5M of 17.9M spectra processed (36%), running on H200.</p>
+    <p>A uniform machine-learning characterization of every spectrum in DESI DR1, with <strong>173 columns</strong> per object: 7 autoencoder metrics, 128-dim latent vectors, 6 redrock classifications, 17 FIBERMAP columns, 7 SCORES, 7 derived features. <strong>22,504,897 unique spectra</strong> across 46 Parquet batches (16GB). COMPLETE.</p>
     <h4>What existed before</h4>
-    <p>No equivalent product exists. DESI's own pipeline provides redshifts and classifications, but not autoencoder-derived anomaly scores or the additional 45-column feature set.</p>
+    <p>No equivalent product exists. DESI's own pipeline provides redshifts and classifications, but not autoencoder-derived anomaly scores, latent vectors, or the full 173-column feature set.</p>
   </div>
 
   <div class="card" style="border-left: 3px solid #f97316; margin-top: 16px;">

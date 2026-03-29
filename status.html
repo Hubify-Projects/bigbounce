@@ -80,7 +80,7 @@
 <main class="container" style="padding-top: 20px;">
 
 <div class="hero">
-  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 26, 2026</p>
+  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 28, 2026</p>
   <h1>Research Program Status</h1>
   <p class="subtitle">Comprehensive source of truth for the entire BigBounce spin-torsion cosmology research program. Every paper, pipeline, MCMC run, computation script, and discovery in one place.</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
@@ -103,8 +103,8 @@
     <div class="label">MCMC Samples</div>
   </div>
   <div class="status-stat green">
-    <div class="num">250,120</div>
-    <div class="label">Anomalies Found</div>
+    <div class="num">2,145</div>
+    <div class="label">Anomalies (SNR-filtered)</div>
   </div>
   <div class="status-stat blue">
     <div class="num">14</div>
@@ -162,10 +162,10 @@
       </tr>
       <tr>
         <td><strong>Paper 3</strong></td>
-        <td>DESI DR1 Spectral Anomaly Catalog: 250,120 Uncharacterized Objects from 22.7M Spectra (173-column enhanced catalog)</td>
-        <td><span class="badge badge-blue">Draft</span></td>
-        <td><code>v0.1</code></td>
-        <td>~8</td>
+        <td>DESI DR1 Spectral Anomaly Catalog: 2,145 SNR-filtered Anomalies from 22.5M Spectra + Unsupervised Photo-z + Redshift Neuron</td>
+        <td><span class="badge badge-blue">Draft (~60%)</span></td>
+        <td><code>v0.2</code></td>
+        <td>~12</td>
         <td>TBD</td>
       </tr>
     </tbody>
@@ -266,10 +266,10 @@
     <tbody>
       <tr>
         <td><strong>B &mdash; DESI Spectral Anomaly Miner</strong></td>
-        <td>Autoencoder anomaly search on all 18M DESI DR1 spectra. First full-DR1-scale search (~90x prior EDR work).</td>
+        <td>Autoencoder anomaly search on all 22.5M DESI DR1 spectra (deduplicated). First full-DR1-scale search (~90x prior EDR work). Photo-z, UMAP, z&gt;6 QSOs, redshift neuron.</td>
         <td>Yes (high-bias tracers)</td>
         <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>250K anomalies; 200/200 artifact-free; enhanced 22.7M COMPLETE (173 cols, 46 batches, 0 errors); UMAP clustering in progress <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
+        <td>22.5M spectra scored; 2,145 anomalies (SNR-filtered); 120 gold (&gt;5&sigma;); 12 z&gt;6 QSOs; photo-z &sigma;<sub>NMAD</sub>=0.028; lat_067 redshift neuron; 2,575 red-anomaly cluster; enhanced catalog COMPLETE (173 cols, 46 batches); 10 pub figures <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
       </tr>
       <tr>
         <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
@@ -310,8 +310,8 @@
   </table>
 
   <div class="discovery-card" style="border-left: 3px solid #22c55e;">
-    <h4>Pipeline B Headline Result</h4>
-    <p>250,120 spectral anomalies from 22.7M DESI DR1 spectra — every spectrum scored with 173 columns including 128-dim latent vectors. <strong>Enhanced catalog COMPLETE:</strong> 46 Parquet batches (16GB), zero processing errors, 27,488 healpix pixels. 12,336 extreme anomalies (&gt;10&sigma;), 126 ultra-extreme (&gt;15&sigma;). <strong>200/200 top anomalies verified artifact-free.</strong> Cross-matched against 6 databases: 99.8% absent from SIMBAD. UMAP clustering + HDBSCAN taxonomy in progress. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
+    <h4>Pipeline B Headline Results</h4>
+    <p><strong>22,504,897 unique spectra scored</strong> (deduplicated) with 173 columns including 128-dim latent vectors. <strong>Enhanced catalog COMPLETE:</strong> 46 Parquet batches (16GB), zero processing errors. Tiered anomaly system: <strong>2,145 silver</strong> (score&gt;3, SNR&gt;0.5), <strong>120 gold</strong> (&gt;5&sigma;). <strong>12 reionization-era QSOs at z&gt;6</strong> with Gunn-Peterson troughs. <strong>21 objects NOT in SIMBAD.</strong> Photo-z from unsupervised latent vectors: &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79). Spontaneous &ldquo;redshift neuron&rdquo; (lat_067) &mdash; single latent dimension encodes redshift without supervision. 2,575 &ldquo;red-anomaly&rdquo; cluster with high &Delta;&chi;&sup2; + high score paradox. Anomaly rate uniform at ~1% (Spearman r = 0.03). <strong>Honest disclosure:</strong> bulk 250K raw count dominated by low-SNR; science-grade count is 2,145. 10 publication figures. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
   </div>
 </section>
 
@@ -330,10 +330,10 @@
       <tr>
         <td><strong>H200 Beast</strong><br><code style="font-size:10px;">rtv8cegaw1618r</code></td>
         <td>H200 (143 GB), 192 cores, 3 TB RAM</td>
-        <td>Enhanced 18M Catalog</td>
+        <td>Enhanced 22.5M Catalog</td>
         <td><code style="font-size:10px;">root@205.196.17.44 -p 10789</code></td>
-        <td><span class="badge badge-blue">RUNNING</span></td>
-        <td>7.9M / 17.9M (44%), ~16h remaining</td>
+        <td><span class="badge badge-green">COMPLETE</span></td>
+        <td>22.5M / 22.5M (100%) &mdash; 46 batches, 173 cols, 16GB</td>
       </tr>
       <tr>
         <td><strong>H100</strong><br><code style="font-size:10px;">ulfxypratod4vr</code></td>
@@ -513,7 +513,7 @@
       <tr>
         <td>1</td>
         <td><strong>Tracer Purification (Steps 2&ndash;6)</strong></td>
-        <td>Cross-match 195K anomalies with Legacy Survey DR10 + unWISE + Gaia DR3. Classify high-z QSOs. Validate bias enhancement. Re-measure &sigma;(f<sub>NL</sub>).</td>
+        <td>Cross-match 2,145 SNR-filtered anomalies with Legacy Survey DR10 + unWISE + Gaia DR3. Classify high-z QSOs (12 z&gt;6 already found). Validate bias enhancement. Re-measure &sigma;(f<sub>NL</sub>).</td>
         <td><span class="badge badge-amber">Next</span></td>
         <td>Pipeline B (done)</td>
       </tr>
@@ -649,9 +649,9 @@
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
-    <h4>250,120 Uncharacterized Spectral Anomalies</h4>
-    <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work by Liang+ 2023 and Nicolaou+ 2026). 99.8% absent from SIMBAD. 0% are known QSOs. Only 1 confirmed Galactic star in top 100. Galaxies 19x more anomalous than QSOs.</p>
-    <span class="tag">Pipeline B &middot; 22.7M spectra &middot; 173 columns &middot; 46 Parquet batches &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
+    <h4>2,145 SNR-Filtered Spectral Anomalies + Unsupervised Photo-z</h4>
+    <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work). 22.5M unique spectra scored. Tiered: 2,145 silver (SNR-filtered), 120 gold (&gt;5&sigma;). 12 z&gt;6 reionization-era QSOs. 21 NOT in SIMBAD. Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub>=0.028). Spontaneous &ldquo;redshift neuron&rdquo; (lat_067). 2,575 red-anomaly cluster. Uniform ~1% anomaly rate (Spearman r=0.03).</p>
+    <span class="tag">Pipeline B &middot; 22.5M spectra &middot; 173 columns &middot; 46 Parquet batches &middot; 10 publication figures &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
@@ -750,9 +750,9 @@
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
-    <h4>195,829 Uncharacterized Objects: What ARE They?</h4>
-    <p>Our AI pipeline found 195,829 spectral anomalies that are absent from essentially every major catalog. Galaxies are 18x more anomalous than QSOs. The top 200 are verified genuine (0% artifacts). Three wavelength clusters suggest distinct physical populations. When the enhanced 18M catalog provides redshifts, we may discover entirely new classes of astronomical objects &mdash; objects the scientific community has never seen or named before. What are they?</p>
-    <span class="tag">Active research &middot; Enhanced 18M (51%) &middot; Paper 3 &middot; DESI DR1</span>
+    <h4>2,145 SNR-Filtered Anomalies + 2,575 Red-Anomaly Objects: What ARE They?</h4>
+    <p>After honest SNR filtering, 2,145 spectrally anomalous objects survive from 22.5M scored spectra (120 at gold &gt;5&sigma;). The 2,575 &ldquo;red-anomaly&rdquo; cluster is particularly puzzling: objects with high pipeline confidence (&Delta;&chi;&sup2;) AND high autoencoder anomaly scores &mdash; they fit known templates well but have genuinely unusual spectral structure. 12 are reionization-era QSOs at z&gt;6. 21 are absent from SIMBAD entirely. The unsupervised latent vectors encode redshift spontaneously (lat_067), achieving photo-z at &sigma;<sub>NMAD</sub> = 0.028. What new astrophysics is hiding in these spectra?</p>
+    <span class="tag">Active research &middot; Enhanced catalog COMPLETE &middot; Paper 3 (~60%) &middot; DESI DR1</span>
   </div>
 
   <div style="margin-top:24px; padding:16px; background:var(--bg-subtle); border-radius:8px; font-size:13px; color:var(--text-secondary); font-family:var(--font-sans); line-height:1.7;">
