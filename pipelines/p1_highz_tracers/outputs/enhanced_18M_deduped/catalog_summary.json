@@ -1,0 +1,8 @@
+{
+  "catalog_total": 22504897,
+  "anomalies_score_gt5": 249905,
+  "anomalies_score_gt3_snr_gt2": 115,
+  "anomalies_score_gt5_snr_gt2": 22,
+  "anomalies_high_confidence": 11,
+  "good_snr_spectra": 12299198
+}

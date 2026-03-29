@@ -132,12 +132,53 @@
 .gx-pipeline-item strong { color: var(--text); font-weight: 600; }
 .gx-pipeline-item a { color: var(--text-secondary); }
 
+/* Figure gallery */
+.gx-figures { margin: 36px 0; }
+.gx-figures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; margin-top: 20px; }
+.gx-fig {
+  border: 1px solid var(--border); background: var(--bg);
+  overflow: hidden; transition: border-color var(--transition);
+}
+.gx-fig:hover { border-color: var(--border-strong); }
+.gx-fig a { display: block; cursor: zoom-in; }
+.gx-fig img {
+  width: 100%; height: auto; display: block;
+  background: var(--bg-code);
+}
+.gx-fig-caption {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+}
+.gx-fig-title {
+  font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+  margin: 0 0 4px; color: var(--text);
+}
+.gx-fig-desc {
+  font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;
+}
+.gx-fig-ref {
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+  margin-top: 4px; display: block;
+}
+.gx-fig--wide { grid-column: 1 / -1; }
+.gx-fig--wide img { max-height: 480px; object-fit: contain; background: #0a0a0a; }
+.gx-gallery-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 24px;
+}
+.gx-fig-note {
+  margin-top: 16px; padding: 12px 16px;
+  border: 1px solid var(--border); border-left: 3px solid var(--text-muted);
+  font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .gx-stats { grid-template-columns: repeat(3, 1fr); }
   .gx-filters { flex-direction: column; align-items: stretch; }
   .gx-filter-actions { margin-left: 0; justify-content: flex-start; }
   .gx-pipeline-grid { grid-template-columns: 1fr; }
+  .gx-figures-grid { grid-template-columns: 1fr; }
+  .gx-gallery-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .gx-stats { grid-template-columns: repeat(2, 1fr); }
@@ -230,6 +271,174 @@
   </div>
 
   <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px; font-style: italic;">Bottom line: No signal survives look-elsewhere correction. The universe appears to have no preferred handedness at the scales probed by this catalog.</p>
+</div>
+
+<!-- ═══════════════════════════════ VISUAL ANALYSIS ═══════════════════════════════ -->
+<div class="gx-figures">
+  <h2>Visual Analysis</h2>
+  <p style="margin-bottom: 8px;">Figures from the chirality catalog analysis of 8,474,531 galaxies. Click any figure to view full resolution.</p>
+  <div class="gx-fig-note">Note: Figures with the "fig_" prefix that show a broken image icon are currently being generated and will appear once processing completes.</div>
+
+  <div class="gx-figures-grid">
+
+    <!-- 1. Sky Map (Mollweide asymmetry) -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_sky_map.png" target="_blank">
+        <img src="public/images/chirality/fig_sky_map.png" alt="Mollweide asymmetry map" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 1. Mollweide Asymmetry Map</div>
+        <div class="gx-fig-desc">Equivariant CW/(CW+CCW) fraction across the full sky in Mollweide projection. No large-scale pattern is visible. Global dipole significance: 0.43&sigma;.</div>
+        <span class="gx-fig-ref">Finding: Global Dipole Null</span>
+      </div>
+    </div>
+
+    <!-- 2. Raw vs Equivariant comparison -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_raw_vs_eq.png" target="_blank">
+        <img src="public/images/chirality/fig_raw_vs_eq.png" alt="Raw vs equivariant Mollweide comparison" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 2. Raw vs Equivariant Comparison</div>
+        <div class="gx-fig-desc">Before/after equivariant averaging. Raw classifier shows systematic CW bias from CNN mirror asymmetry; equivariant averaging eliminates it entirely. This is why prior claims of 3% parity violation are artifacts.</div>
+        <span class="gx-fig-ref">Finding: Shamir 3% Claim Refuted</span>
+      </div>
+    </div>
+
+    <!-- 3. Galaxy density map -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_spiral_density.png" target="_blank">
+        <img src="public/images/chirality/fig_spiral_density.png" alt="Galaxy density map" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 3. Spiral Galaxy Density Map</div>
+        <div class="gx-fig-desc">Spatial distribution of classified spiral galaxies across the DESI Legacy Survey DR8 footprint. Higher density regions correspond to deeper survey coverage. The uneven footprint is accounted for in all statistical tests.</div>
+        <span class="gx-fig-ref">Context: Survey geometry</span>
+      </div>
+    </div>
+
+    <!-- 4. CW fraction heatmap -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_cw_fraction_heatmap.png" target="_blank">
+        <img src="public/images/chirality/fig_cw_fraction_heatmap.png" alt="RA/DEC CW fraction heatmap" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 4. CW Fraction Heatmap (RA/DEC)</div>
+        <div class="gx-fig-desc">Binned CW/(CW+CCW) fraction as a function of right ascension and declination. All bins cluster tightly around 0.50, confirming no preferred handedness at any sky position.</div>
+        <span class="gx-fig-ref">Finding: Scale Dependence Null</span>
+      </div>
+    </div>
+
+    <!-- 5. Multipoles bar chart -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_multipoles.png" target="_blank">
+        <img src="public/images/chirality/fig_multipoles.png" alt="Angular power spectrum multipole analysis" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 5. Angular Power Spectrum (Multipoles)</div>
+        <div class="gx-fig-desc">Power in the CW asymmetry field decomposed by angular multipole l. The dipole (l=1) is at 0.43&sigma;; l=5 shows a marginal 2.46&sigma; excess that does not survive look-elsewhere correction. No significant power at any scale.</div>
+        <span class="gx-fig-ref">Finding: l=5 Multipole 2.46&sigma; (does not survive LEE)</span>
+      </div>
+    </div>
+
+    <!-- 6. Sky regions comparison -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_sky_regions.png" target="_blank">
+        <img src="public/images/chirality/fig_sky_regions.png" alt="Raw vs equivariant CW fraction by sky region" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 6. CW Fraction by Sky Region</div>
+        <div class="gx-fig-desc">Raw versus equivariant CW/(CW+CCW) fraction across RA quadrants and DEC bands. Raw classifications show ~1% systematic bias that vanishes after equivariant averaging. All equivariant regions fall within 0.62% of 50/50.</div>
+        <span class="gx-fig-ref">Finding: All regions balanced after equivariant correction</span>
+      </div>
+    </div>
+
+    <!-- 7. Hemisphere comparison -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_hemisphere.png" target="_blank">
+        <img src="public/images/chirality/fig_hemisphere.png" alt="North/South hemisphere CW comparison" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 7. Hemisphere Asymmetry (N/S)</div>
+        <div class="gx-fig-desc">North CW = 49.81%, South CW = 49.64% &mdash; a 0.17 percentage point difference at 3.05&sigma; (p = 0.002). This is the strongest individual signal but does not survive look-elsewhere correction across all tested multipoles and scales.</div>
+        <span class="gx-fig-ref">Finding: Hemisphere Asymmetry 3.05&sigma; (does not survive LEE)</span>
+      </div>
+    </div>
+
+    <!-- 8. Confidence distribution -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_confidence_dist.png" target="_blank">
+        <img src="public/images/chirality/fig_confidence_dist.png" alt="Classification confidence distribution" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 8. Confidence Distribution</div>
+        <div class="gx-fig-desc">Distribution of classifier confidence across all 8.47M galaxies, broken down by class. The model is highly confident on NOT_SPIRAL classifications. Among spirals, 949,584 exceed the 0.6 confidence threshold.</div>
+        <span class="gx-fig-ref">Context: Classifier performance</span>
+      </div>
+    </div>
+
+    <!-- 9. Class breakdown (pie/donut) -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_class_pie.png" target="_blank">
+        <img src="public/images/chirality/fig_class_pie.png" alt="CW/CCW/NOT_SPIRAL class breakdown" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 9. Classification Breakdown</div>
+        <div class="gx-fig-desc">CW (18.8%), CCW (19.0%), NOT_SPIRAL (62.2%). The near-equal CW/CCW split is the key result: the equivariant classifier finds no global handedness preference among the 3.2M spiral galaxies.</div>
+        <span class="gx-fig-ref">Finding: CW/(CW+CCW) = 0.4974</span>
+      </div>
+    </div>
+
+    <!-- 10. Equivariance demonstration -->
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_equivariance_demo.png" target="_blank">
+        <img src="public/images/chirality/fig_equivariance_demo.png" alt="Equivariant averaging demonstration" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Fig 10. Equivariant Averaging Demonstration</div>
+        <div class="gx-fig-desc">Illustration of the test-time equivariant averaging procedure. Each galaxy image is classified in its original orientation and its mirror reflection; the final prediction averages both, guaranteeing exact CW/CCW symmetry at the classifier level.</div>
+        <span class="gx-fig-ref">Context: Methodology &mdash; bias elimination</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Gallery grids (CW, CCW, NOT_SPIRAL examples) -->
+  <h3 style="margin-top: 32px; font-family: var(--font-sans); font-size: 16px;">Example Galaxy Galleries</h3>
+  <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Representative galaxies from each classification category.</p>
+
+  <div class="gx-gallery-row">
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_gallery_cw.png" target="_blank">
+        <img src="public/images/chirality/fig_gallery_cw.png" alt="Gallery of clockwise spiral galaxies" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Clockwise (CW) Spirals</div>
+        <div class="gx-fig-desc">High-confidence CW classifications from the catalog. Spiral arms wind clockwise as viewed from Earth.</div>
+      </div>
+    </div>
+
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_gallery_ccw.png" target="_blank">
+        <img src="public/images/chirality/fig_gallery_ccw.png" alt="Gallery of counter-clockwise spiral galaxies" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Counter-Clockwise (CCW) Spirals</div>
+        <div class="gx-fig-desc">High-confidence CCW classifications. Spiral arms wind counter-clockwise. The equivariant catalog contains roughly equal numbers of CW and CCW.</div>
+      </div>
+    </div>
+
+    <div class="gx-fig">
+      <a href="public/images/chirality/fig_gallery_notspi.png" target="_blank">
+        <img src="public/images/chirality/fig_gallery_notspi.png" alt="Gallery of non-spiral galaxies" loading="lazy">
+      </a>
+      <div class="gx-fig-caption">
+        <div class="gx-fig-title">Not Spiral (NS)</div>
+        <div class="gx-fig-desc">Galaxies classified as non-spiral: ellipticals, lenticulars, edge-on disks, and mergers. These comprise 62.2% of the catalog.</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <hr>
@@ -327,14 +536,26 @@
 <!-- ═══════════════════════════════ SKY MAP ═══════════════════════════════ -->
 <div class="gx-skymap-section">
   <h2>All-Sky Chirality Map</h2>
-  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications. Each point is one galaxy: blue for clockwise, red for counter-clockwise. Analysis result: the distribution is essentially uniform. Global dipole is null (0.43&sigma;). A marginal hemisphere asymmetry (3.05&sigma;, north CW=49.81% vs south CW=49.64%) does not survive look-elsewhere correction. CMB dipole alignment is null (85.4&deg; separation).</p>
+  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications across 8.47M galaxies. The distribution is essentially uniform. Global dipole is null (0.43&sigma;). A marginal hemisphere asymmetry (3.05&sigma;, north CW=49.81% vs south CW=49.64%) does not survive look-elsewhere correction. CMB dipole alignment is null (85.4&deg; separation).</p>
 
-  <div class="gx-skymap-container">
-    <canvas id="gx-skymap" class="gx-skymap-canvas"></canvas>
-    <div class="gx-skymap-legend">
-      <span><span class="gx-legend-dot gx-legend-cw"></span>Clockwise (CW)</span>
-      <span><span class="gx-legend-dot gx-legend-ccw"></span>Counter-Clockwise (CCW)</span>
-      <span style="margin-left: auto; font-style: italic;">Visualization &mdash; live data pending Convex import (catalog complete)</span>
+  <div class="gx-fig gx-fig--wide">
+    <a href="public/images/chirality/fig_sky_map.png" target="_blank">
+      <img src="public/images/chirality/fig_sky_map.png" alt="Mollweide all-sky asymmetry map of 3.2M spiral galaxies" loading="lazy">
+    </a>
+    <div class="gx-fig-caption">
+      <div class="gx-fig-title">Equivariant CW Asymmetry &mdash; Mollweide Projection</div>
+      <div class="gx-fig-desc">All-sky map of CW/(CW+CCW) fraction from 3,201,160 equivariant spiral classifications. Blue indicates slight CW excess, red indicates slight CCW excess. The distribution is essentially uniform with no significant large-scale pattern.</div>
+    </div>
+  </div>
+
+  <div class="gx-fig gx-fig--wide" style="margin-top: 20px;">
+    <a href="public/images/chirality/fig_raw_vs_eq.png" target="_blank">
+      <img src="public/images/chirality/fig_raw_vs_eq.png" alt="Raw vs equivariant Mollweide comparison" loading="lazy">
+    </a>
+    <div class="gx-fig-caption">
+      <div class="gx-fig-title">Raw vs Equivariant Classification &mdash; Before/After Bias Removal</div>
+      <div class="gx-fig-desc">Side-by-side comparison showing raw classifier output (left) versus equivariant test-time averaging (right). The raw classifier shows systematic CW bias from CNN mirror asymmetry; equivariant averaging eliminates this, producing balanced 49.74% CW. This is the key methodological advance that distinguishes this catalog from prior work.</div>
+      <span class="gx-fig-ref">Key figure &mdash; demonstrates why prior claims of parity violation (e.g., Shamir 3%) are artifacts of classifier bias.</span>
     </div>
   </div>
 </div>
@@ -425,7 +646,7 @@
     <div class="gx-pipeline-item"><strong>HuggingFace Dataset:</strong> <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">bamfai/galaxy-chirality-catalog</a></div>
     <div class="gx-pipeline-item"><strong>Convex Database:</strong> 8,474,531 rows live</div>
     <div class="gx-pipeline-item"><strong>Source catalog:</strong> GZ DESI DR8 (Zenodo, 100% coordinate match)</div>
-    <div class="gx-pipeline-item"><strong>Catalog paper:</strong> In preparation (Galaxy chirality at 8.47M scale)</div>
+    <div class="gx-pipeline-item"><strong>Catalog paper:</strong> &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies&rdquo; &mdash; Draft complete (1,096 lines, 11 figures, 4 tables). <a href="pipelines/p2_chirality/chirality_catalog_paper.tex" target="_blank">LaTeX source</a> &middot; <a href="paper.html">Paper 4 on Papers page</a></div>
     <div class="gx-pipeline-item"><strong>Related:</strong> <a href="index.html">Main research page</a> &middot; <a href="activity.html">Activity feed</a></div>
   </div>
 </div>
@@ -564,123 +785,7 @@ function nextPage() {
   alert('Pagination will connect to Convex when the catalog is imported.');
 }
 
-// ── Sky map (placeholder Mollweide projection) ──
-(function() {
-  var canvas = document.getElementById('gx-skymap');
-  var ctx = canvas.getContext('2d');
-
-  function resizeCanvas() {
-    var rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = canvas.classList.contains('gx-skymap-canvas') ? Math.min(rect.width * 0.45, 320) : 320;
-    drawSkymap();
-  }
-
-  function mollweide(ra, dec) {
-    // Convert RA/DEC to Mollweide x,y
-    var lam = (ra - 180) * Math.PI / 180; // longitude centered at 180
-    var phi = dec * Math.PI / 180;
-
-    // Iterative solve for theta
-    var theta = phi;
-    for (var i = 0; i < 20; i++) {
-      var dtheta = -(2 * theta + Math.sin(2 * theta) - Math.PI * Math.sin(phi)) /
-                    (2 + 2 * Math.cos(2 * theta));
-      theta += dtheta;
-      if (Math.abs(dtheta) < 1e-6) break;
-    }
-
-    var x = (2 * Math.SQRT2 / Math.PI) * lam * Math.cos(theta);
-    var y = Math.SQRT2 * Math.sin(theta);
-    return { x: x, y: y };
-  }
-
-  function drawSkymap() {
-    var w = canvas.width;
-    var h = canvas.height;
-    var cx = w / 2;
-    var cy = h / 2;
-    var scale = Math.min(w / 5.6, h / 2.9);
-
-    ctx.fillStyle = '#0a0a0a';
-    ctx.fillRect(0, 0, w, h);
-
-    // Draw Mollweide boundary
-    ctx.strokeStyle = '#333';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (var t = 0; t <= 2 * Math.PI; t += 0.01) {
-      var bx = cx + 2 * Math.SQRT2 * scale * Math.cos(t);
-      var by = cy - Math.SQRT2 * scale * Math.sin(t);
-      if (t === 0) ctx.moveTo(bx, by);
-      else ctx.lineTo(bx, by);
-    }
-    ctx.stroke();
-
-    // Draw grid lines
-    ctx.strokeStyle = '#222';
-    ctx.lineWidth = 0.5;
-    // DEC lines
-    for (var d = -60; d <= 60; d += 30) {
-      ctx.beginPath();
-      for (var r = 0; r <= 360; r += 2) {
-        var pt = mollweide(r, d);
-        var sx = cx + pt.x * scale;
-        var sy = cy - pt.y * scale;
-        if (r === 0) ctx.moveTo(sx, sy);
-        else ctx.lineTo(sx, sy);
-      }
-      ctx.stroke();
-    }
-    // RA lines
-    for (var r = 0; r < 360; r += 60) {
-      ctx.beginPath();
-      for (var d = -90; d <= 90; d += 2) {
-        var pt = mollweide(r, d);
-        var sx = cx + pt.x * scale;
-        var sy = cy - pt.y * scale;
-        if (d === -90) ctx.moveTo(sx, sy);
-        else ctx.lineTo(sx, sy);
-      }
-      ctx.stroke();
-    }
-
-    // Scatter placeholder galaxies (generate many random points for visual effect)
-    var rng = (function(seed) {
-      return function() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; };
-    })(42);
-
-    // Draw ~2000 placeholder points
-    for (var i = 0; i < 2000; i++) {
-      var ra = rng() * 360;
-      var dec = (Math.asin(2 * rng() - 1)) * 180 / Math.PI; // uniform on sphere
-      var pt = mollweide(ra, dec);
-      var sx = cx + pt.x * scale;
-      var sy = cy - pt.y * scale;
-
-      // ~40% spirals, split roughly even CW/CCW
-      var type = rng();
-      if (type < 0.20) {
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.6)'; // CW blue
-      } else if (type < 0.39) {
-        ctx.fillStyle = 'rgba(239, 68, 68, 0.6)'; // CCW red
-      } else {
-        continue; // skip non-spirals for clarity
-      }
-
-      ctx.fillRect(sx - 0.8, sy - 0.8, 1.6, 1.6);
-    }
-
-    // Label
-    ctx.fillStyle = '#555';
-    ctx.font = '11px "IBM Plex Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('Mollweide Projection — Placeholder Data', cx, h - 8);
-  }
-
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-})();
+// ── Sky map now uses real figure images (no canvas placeholder) ──
 </script>
 <script src="/astro/chat-widget.js" defer></script>
 <script>

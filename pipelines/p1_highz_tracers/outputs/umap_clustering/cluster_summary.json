@@ -1,0 +1,130 @@
+{
+  "total_anomalies": 250120,
+  "n_clusters": 2,
+  "n_clustered": 249577,
+  "n_noise": 543,
+  "fraction_clustered": 0.9978290420598113,
+  "umap_params": {
+    "n_components": 2,
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "metric": "euclidean"
+  },
+  "hdbscan_params": {
+    "min_cluster_size": 50,
+    "min_samples": 10,
+    "cluster_selection_method": "eom"
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "size": 247002,
+      "mean_z": 0.845947265625,
+      "std_z": 0.6093968749046326,
+      "median_z": 0.8006816506385803,
+      "mean_anomaly_score": 6.264614105224609,
+      "std_anomaly_score": 1.6497671604156494,
+      "max_anomaly_score": 22.721017837524414,
+      "mean_peak_wavelength": 4532.40478515625,
+      "std_peak_wavelength": 1308.32421875,
+      "top_classification": "UNCLASSIFIED",
+      "top_classification_fraction": 1.0,
+      "classification_counts": {
+        "UNCLASSIFIED": 247002
+      },
+      "worst_band_counts": {
+        "B": 246714,
+        "Z": 176,
+        "R": 112
+      },
+      "top_worst_band": "B",
+      "top_worst_band_fraction": 0.9988340175383196,
+      "mean_umap_x": 5.963002681732178,
+      "mean_umap_y": 8.496880531311035
+    },
+    {
+      "cluster_id": 1,
+      "size": 2575,
+      "mean_z": 0.9239089488983154,
+      "std_z": 0.7807325720787048,
+      "median_z": 0.8820551037788391,
+      "mean_anomaly_score": 7.933666706085205,
+      "std_anomaly_score": 2.1453192234039307,
+      "max_anomaly_score": 25.15802574157715,
+      "mean_peak_wavelength": 7644.5126953125,
+      "std_peak_wavelength": 1905.1055908203125,
+      "top_classification": "UNCLASSIFIED",
+      "top_classification_fraction": 1.0,
+      "classification_counts": {
+        "UNCLASSIFIED": 2575
+      },
+      "worst_band_counts": {
+        "R": 1274,
+        "Z": 984,
+        "B": 317
+      },
+      "top_worst_band": "R",
+      "top_worst_band_fraction": 0.49475728155339804,
+      "mean_umap_x": 2.7842979431152344,
+      "mean_umap_y": 10.735299110412598
+    }
+  ],
+  "noise": {
+    "cluster_id": -1,
+    "label": "noise",
+    "size": 543,
+    "mean_z": 0.8137999773025513,
+    "mean_anomaly_score": 6.450654029846191,
+    "mean_peak_wavelength": 4561.763671875
+  },
+  "sensitivity_analysis": {
+    "eom_50": {
+      "n_clusters": 2,
+      "n_clustered": 249577,
+      "n_noise": 543,
+      "fraction_clustered": 0.9978290420598113,
+      "config": {
+        "min_cluster_size": 50,
+        "min_samples": 10,
+        "method": "eom",
+        "label": "eom_50"
+      }
+    },
+    "eom_200": {
+      "n_clusters": 2,
+      "n_clustered": 249557,
+      "n_noise": 563,
+      "fraction_clustered": 0.9977490804413881,
+      "config": {
+        "min_cluster_size": 200,
+        "min_samples": 15,
+        "method": "eom",
+        "label": "eom_200"
+      }
+    },
+    "eom_500": {
+      "n_clusters": 2,
+      "n_clustered": 249647,
+      "n_noise": 473,
+      "fraction_clustered": 0.9981089077242924,
+      "config": {
+        "min_cluster_size": 500,
+        "min_samples": 25,
+        "method": "eom",
+        "label": "eom_500"
+      }
+    },
+    "leaf_100": {
+      "n_clusters": 532,
+      "n_clustered": 101132,
+      "n_noise": 148988,
+      "fraction_clustered": 0.4043339197185351,
+      "config": {
+        "min_cluster_size": 100,
+        "min_samples": 5,
+        "method": "leaf",
+        "label": "leaf_100"
+      }
+    }
+  }
+}

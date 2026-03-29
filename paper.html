@@ -282,7 +282,7 @@
 
       <div style="font-weight: 700; color: #a855f7; font-family: var(--font-sans); text-align: right; padding-top: 2px;">4.</div>
       <div>
-        <strong>The Chirality Catalog.</strong> Paper 4 presents a 8.47-million galaxy chirality catalog &mdash; the largest bias-audited handedness measurement ever produced (40x larger than prior work). 3-class CNN (CW/CCW/NOT_SPIRAL) at 93.7% accuracy, 8/8 bias tests passed, equivariant CW fraction = 0.5012. Tests the cosmological parity violation hypothesis: does the universe prefer one spiral direction? Connects to the bounce framework via torsion-induced parity breaking. Targeting MNRAS. ~20% ready.
+        <strong>The Chirality Catalog.</strong> Paper 4 &mdash; &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology&rdquo; &mdash; presents an 8.47-million galaxy chirality catalog, the largest bias-audited handedness measurement ever produced (40x larger than prior work). ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) at 93.7% accuracy, 8/8 bias tests passed, equivariant CW fraction = 0.4974. No large-scale parity violation found; Shamir's 3% claim refuted. Draft complete (1,096 lines, 11 figures, 4 tables). Targeting MNRAS. ~75% ready.
       </div>
 
       <div style="font-weight: 700; color: #f97316; font-family: var(--font-sans); text-align: right; padding-top: 2px;">3.</div>
@@ -323,16 +323,20 @@
   </div>
 
   <div class="card" style="margin-bottom: 20px; border-left: 4px solid #a855f7;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge" style="background:#faf5ff;color:#7c3aed;border:1px solid #ddd6fe;">~40% Ready</span></h4>
-    <p style="font-size:14px;"><strong>Title:</strong> "8.47 Million Galaxies Classified for Spiral Handedness: A Bias-Audited Chirality Catalog from the DESI Legacy Imaging Surveys"</p>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge" style="background:#faf5ff;color:#7c3aed;border:1px solid #ddd6fe;">~75% Ready</span></h4>
+    <p style="font-size:14px;"><strong>Title:</strong> &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies&rdquo;</p>
+    <p style="font-size:14px;"><strong>Author:</strong> Houston Golden</p>
     <p style="font-size:14px;"><strong>Target:</strong> MNRAS (Monthly Notices of the Royal Astronomical Society)</p>
+    <p style="font-size:14px;"><strong>Status:</strong> Draft complete &mdash; 1,096 lines, 11 figures, 4 tables. Pending peer review and PDF compilation.</p>
     <p style="font-size:14px;"><strong>Scope:</strong> Production chirality pipeline applied to the full Smith42/galaxies dataset (DESI Legacy Survey DR8). Bias-hardened ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) with 93.7% accuracy, 8/8 bias tests passed. Test-time equivariant averaging gives CW/(CW+CCW) = 0.4974. Largest bias-audited galaxy handedness catalog ever produced (40x larger than prior work). Definitive refutation of Shamir's 3% parity asymmetry claims. Published on HuggingFace.</p>
-    <p style="font-size:14px;"><strong>Key results:</strong> 8,474,531 galaxies classified. Equivariant CW/(CW+CCW) = 0.4974 (parity conserved). All-sky dipole = 0.43&sigma; (null). Hemisphere asymmetry = 3.05&sigma; but only 0.17% amplitude. Shamir's 3% claim refuted (our max 0.47%). 32x GPU inference speedup via DataLoader optimization. Catalog published: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank"><code>bamfai/galaxy-chirality-catalog</code></a> (909 MB). Model: <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank"><code>bamfai/galaxy-chirality-v2</code></a>.</p>
-    <p style="font-size:14px;"><strong>Remaining work:</strong> Redshift tomography (does asymmetry evolve with z?), cross-correlation with spectral anomaly catalog, systematic error budget writeup, comparison with Iye (2021) catalogs, paper draft.</p>
+    <p style="font-size:14px;"><strong>Key result:</strong> No large-scale parity violation in 8.47M galaxies. 8,474,531 galaxies classified. Equivariant CW/(CW+CCW) = 0.4974 (parity conserved). All-sky dipole = 0.43&sigma; (null). Hemisphere asymmetry = 3.05&sigma; but only 0.17% amplitude. Shamir's 3% claim refuted (our max 0.47%). 32x GPU inference speedup via DataLoader optimization. Catalog published: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank"><code>bamfai/galaxy-chirality-catalog</code></a> (909 MB). Model: <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank"><code>bamfai/galaxy-chirality-v2</code></a>.</p>
+    <p style="font-size:14px;"><strong>Remaining work:</strong> Peer review, PDF compilation, final formatting. Possible additions: redshift tomography, cross-correlation with spectral anomaly catalog.</p>
     <div style="margin-top:10px;">
-      <span class="badge" style="font-size: 13px; background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;">Catalog complete &mdash; draft in preparation</span>
-      <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" class="btn btn-primary" target="_blank" style="margin-left:8px;">Catalog on HuggingFace</a>
+      <span class="badge" style="font-size: 13px; background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;">Draft complete &mdash; pending peer review</span>
+      <a href="pipelines/p2_chirality/chirality_catalog_paper.tex" class="btn btn-primary" target="_blank" style="margin-left:8px;">LaTeX Source</a>
+      <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Catalog on HuggingFace</a>
       <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Model on HuggingFace</a>
+      <a href="galaxy-explorer.html" class="btn btn-secondary" style="margin-left:8px;">Galaxy Explorer</a>
     </div>
   </div>
 
@@ -367,9 +371,9 @@
 
   <div class="timeline">
     <div class="timeline-item completed">
-      <div class="timeline-date">Paper 4 v0.1.0 — 2026-03-28</div>
-      <div class="timeline-title">Chirality catalog complete &mdash; 8.47M galaxies classified, Shamir refuted</div>
-      <div class="timeline-body">Full production chirality pipeline complete. 8,474,531 galaxies classified (CW/CCW/NOT_SPIRAL) from DESI Legacy Survey DR8 using bias-hardened ViT-Small (93.7% accuracy, 8/8 bias tests pass). Test-time equivariant averaging: CW/(CW+CCW) = 0.4974. Dipole = 0.43&sigma; (null). Hemisphere asymmetry 3.05&sigma; at 0.17% amplitude. Shamir's 3% claim refuted (max 0.47%). 32x GPU inference speedup. Catalog published on HuggingFace (<code>bamfai/galaxy-chirality-catalog</code>, 909 MB).</div>
+      <div class="timeline-date">Paper 4 v1.0.0 — 2026-03-28</div>
+      <div class="timeline-title">Paper draft complete &mdash; &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology&rdquo;</div>
+      <div class="timeline-body">Full paper draft complete: 1,096 lines, 11 figures, 4 tables. 8,474,531 galaxies classified (CW/CCW/NOT_SPIRAL) from DESI Legacy Survey DR8 using bias-hardened ViT-Small (93.7% accuracy, 8/8 bias tests pass). Test-time equivariant averaging: CW/(CW+CCW) = 0.4974. Dipole = 0.43&sigma; (null). Hemisphere asymmetry 3.05&sigma; at 0.17% amplitude. Shamir's 3% claim refuted (max 0.47%). 32x GPU inference speedup. Catalog published on HuggingFace (<code>bamfai/galaxy-chirality-catalog</code>, 909 MB). <a href="pipelines/p2_chirality/chirality_catalog_paper.tex">LaTeX source</a>.</div>
     </div>
     <div class="timeline-item completed">
       <div class="timeline-date">Paper 2 v1.6.0 — 2026-03-24</div>
