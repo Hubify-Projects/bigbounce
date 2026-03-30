@@ -43,7 +43,8 @@
     if (path.indexOf('/review') !== -1) activePage = 'review';
     else if (path.indexOf('/dossier') !== -1 || path.indexOf('/project_master_dossier') !== -1) activePage = 'dossier';
     else activePage = 'index';
-  } else if (path.indexOf('/paper') !== -1) activePage = 'paper';
+  } else if (path.indexOf('/projects') !== -1 && path.indexOf('/project_master') === -1) activePage = 'projects';
+  else if (path.indexOf('/paper') !== -1) activePage = 'paper';
   else if (path.indexOf('/explained') !== -1) activePage = 'explained';
   else if (path.indexOf('/datasets') !== -1) activePage = 'datasets';
   else if (path.indexOf('/data-explorer') !== -1) activePage = 'data-explorer';
@@ -93,6 +94,7 @@
     + '<button class="sidebar-close">&laquo;</button>'
     + '<nav class="sidebar-nav">'
     + '<a href="' + p('index.html') + '" class="' + sidebarActiveClass('index', 'sidebar-section') + '" data-page="index">research/</a>'
+    + '<a href="' + p('projects.html') + '" class="' + sidebarActiveClass('projects', 'sidebar-link') + '" data-page="projects">projects</a>'
     + '<a href="' + p('paper.html') + '" class="' + sidebarActiveClass('paper', 'sidebar-link') + '" data-page="paper">papers</a>'
     + '<a href="' + p('explained.html') + '" class="' + sidebarActiveClass('explained', 'sidebar-link') + '" data-page="explained">explainer</a>'
 
