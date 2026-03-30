@@ -282,7 +282,7 @@
 
       <div style="font-weight: 700; color: #f97316; font-family: var(--font-sans); text-align: right; padding-top: 2px;">3.</div>
       <div>
-        <strong>The Discovery Catalog.</strong> Paper 3 presents 2,145 SNR-filtered spectral anomalies (120 gold at &gt;5&sigma;) from 22,504,897 deduplicated DESI DR1 spectra &mdash; the largest autoencoder anomaly search ever conducted on DESI data (~90x prior EDR work). Every spectrum profiled with 173 columns including 128-dim latent vectors. Key discoveries: 12 reionization-era QSOs at z&gt;6 with Gunn-Peterson troughs, a spontaneous &ldquo;redshift neuron&rdquo; (lat_067) encoding redshift without supervision, photo-z from latent vectors at &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79), and a 2,575-object &ldquo;red-anomaly&rdquo; cluster with high pipeline confidence + high autoencoder score. Anomaly rate uniform at ~1% (Spearman r = 0.03 with depth). 21 objects NOT in SIMBAD. 10 publication figures. Enhanced catalog COMPLETE (46 Parquet batches, 16GB). Draft stage, targeting ApJS. ~60% ready.
+        <strong>The Discovery Catalog.</strong> Paper 3 presents 2,145 SNR-filtered spectral anomalies (120 gold at &gt;5&sigma;) from 22,504,897 deduplicated DESI DR1 spectra &mdash; the largest autoencoder anomaly search ever conducted on DESI data (~90x prior EDR work). Every spectrum profiled with 173 columns including 128-dim latent vectors. Key discoveries: 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies across 10 taxonomy families; 16 NEOWISE IR-variable anomalies including a z=5.65 QSO with W2=5.5 mag variability; 68/83 emission lines matched with 6 sub-Lyman-limit candidates; injection/recovery at 0% false positive rate with 10&ndash;1,377x enrichment; 9.5% f<sub>NL</sub> improvement via latent-space multi-tracer selection; photo-z at &sigma;<sub>NMAD</sub> = 0.028 with redshift neuron lat_067; 1,127 objects in neither SIMBAD nor NED. 13 publication figures. Enhanced catalog COMPLETE (46 Parquet batches, 16GB). Draft stage, targeting ApJS. ~80% ready.
       </div>
 
       <div style="font-weight: 700; color: #a855f7; font-family: var(--font-sans); text-align: right; padding-top: 2px;">4.</div>
@@ -312,25 +312,29 @@
   <h2>The Papers</h2>
 
   <div class="card" style="margin-bottom: 20px; border-left: 4px solid #f97316;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~60% Ready</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~80% Ready</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> "Spectral Anomalies in DESI DR1: A 173-Column Enhanced Catalog of 22.5M Spectra with Unsupervised Photo-z and Emergent Latent Structure"</p>
     <p style="font-size:14px;"><strong>Target:</strong> ApJS (Astrophysical Journal Supplement Series)</p>
-    <p style="font-size:14px;"><strong>Scope:</strong> Spectral autoencoder anomaly detection across the full DESI DR1 survey (22,504,897 unique spectra scored after deduplication), the largest such search ever conducted on DESI data (~90x prior EDR-scale work). Enhanced catalog with 173 columns per spectrum including 128-dim latent vectors (first of its kind). H200 GPU inference with 4-worker prefetch. 46 Parquet batches (16GB). Tiered anomaly system: 2,145 silver (score&gt;3, SNR&gt;0.5), 120 gold (&gt;5&sigma;). Includes photo-z from unsupervised latent vectors, UMAP taxonomy, SIMBAD cross-match, and anomaly density analysis.</p>
+    <p style="font-size:14px;"><strong>Scope:</strong> Spectral autoencoder anomaly detection across the full DESI DR1 survey (22,504,897 unique spectra scored after deduplication), the largest such search ever conducted on DESI data (~90x prior EDR-scale work). Enhanced catalog with 173 columns per spectrum including 128-dim latent vectors (first of its kind). H200 GPU inference with 4-worker prefetch. 46 Parquet batches (16GB). Tiered anomaly system: 2,145 silver (score&gt;3, SNR&gt;0.5), 120 gold (&gt;5&sigma;). Includes photo-z from unsupervised latent vectors, UMAP taxonomy with 10 spectral families, SIMBAD cross-match, NEOWISE IR variability, emission-line matching, injection/recovery validation, and f<sub>NL</sub> tracer improvement.</p>
     <p style="font-size:14px;"><strong>Key results:</strong></p>
     <ul style="font-size:14px; line-height:1.8; padding-left:20px;">
       <li><strong>22,504,897 unique spectra scored</strong> (deduplicated from 22.7M raw)</li>
       <li><strong>2,145 spectrally anomalous objects</strong> (score&gt;3, SNR&gt;0.5) &mdash; SNR-filtered honest count</li>
       <li><strong>120 gold anomalies</strong> at &gt;5&sigma;</li>
       <li><strong>12 reionization-era QSOs at z&gt;6</strong> with Gunn-Peterson troughs</li>
-      <li><strong>21 objects NOT in SIMBAD</strong> &mdash; genuinely uncharacterized</li>
-      <li><strong>&sigma;<sub>NMAD</sub> = 0.028</strong> photo-z from unsupervised latent vectors (R&sup2; = 0.79, no redshift supervision)</li>
-      <li><strong>lat_067 &ldquo;redshift neuron&rdquo;</strong> &mdash; spontaneous emergent encoding of redshift in autoencoder latent space</li>
+      <li><strong>1,127 objects NOT in SIMBAD or NED</strong> (52.5%) &mdash; genuinely uncataloged</li>
+      <li><strong>9.5% f<sub>NL</sub> improvement</strong> via latent-space multi-tracer selection &mdash; anomalous objects have higher large-scale bias, directly improving the flagship bounce prediction</li>
+      <li><strong>10 taxonomy families</strong> from UMAP + HDBSCAN: 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies, plus 7 additional families</li>
+      <li><strong>16 NEOWISE IR-variable anomalies</strong> &mdash; including a z=5.65 QSO with W2=5.5 mag variability (extreme AGN activity in the reionization era)</li>
+      <li><strong>68/83 emission lines matched</strong> to known transitions; 6 sub-Lyman-limit candidates (rest-frame &lambda; &lt; 912 &Aring;)</li>
+      <li><strong>Injection/recovery: 0% false positive rate</strong> with 10&ndash;1,377x enrichment over random selection</li>
+      <li><strong>&sigma;<sub>NMAD</sub> = 0.028</strong> photo-z from unsupervised latent vectors (R&sup2; = 0.79, no redshift supervision); redshift neuron lat_067</li>
       <li><strong>2,575 &ldquo;red-anomaly&rdquo; cluster</strong> with high pipeline confidence + high autoencoder score paradox</li>
       <li><strong>Uniform ~1% anomaly rate</strong> across footprint (Spearman r = 0.03 with depth)</li>
-      <li><strong>10 publication figures</strong></li>
+      <li><strong>13 publication figures</strong></li>
       <li><strong>Honest disclosure:</strong> SNR-anomaly correlation &mdash; bulk 250K raw count dominated by low-SNR spectra</li>
     </ul>
-    <p style="font-size:14px;"><strong>Remaining work:</strong> Polish draft, complete figure captions, injection/recovery tests, final peer review.</p>
+    <p style="font-size:14px;"><strong>Remaining work:</strong> Polish draft, complete figure captions, final peer review.</p>
     <div style="margin-top:10px;">
       <a href="arxiv/paper3_anomaly_catalog.pdf" class="btn btn-primary" target="_blank">Read Draft</a>
       <a href="arxiv/paper3_anomaly_catalog.pdf" class="btn btn-secondary" download>Download PDF</a>

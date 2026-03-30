@@ -80,7 +80,7 @@
 <main class="container" style="padding-top: 20px;">
 
 <div class="hero">
-  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 28, 2026</p>
+  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 29, 2026</p>
   <h1>Research Program Status</h1>
   <p class="subtitle">Comprehensive source of truth for the entire BigBounce spin-torsion cosmology research program. Every paper, pipeline, MCMC run, computation script, and discovery in one place.</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
@@ -162,15 +162,15 @@
       </tr>
       <tr>
         <td><strong>Paper 3</strong></td>
-        <td>DESI DR1 Spectral Anomaly Catalog: 2,145 SNR-filtered Anomalies from 22.5M Spectra + Unsupervised Photo-z + Redshift Neuron</td>
-        <td><span class="badge badge-blue">Draft (~60%)</span></td>
-        <td><code>v0.2</code></td>
-        <td>~12</td>
+        <td>DESI DR1 Spectral Anomaly Catalog: 2,145 SNR-filtered Anomalies from 22.5M Spectra + 10 Taxonomy Families + f<sub>NL</sub> Tracer Improvement + NEOWISE Variability</td>
+        <td><span class="badge badge-blue">Draft (~80%)</span></td>
+        <td><code>v0.3</code></td>
+        <td>~14</td>
         <td>TBD</td>
       </tr>
     </tbody>
   </table>
-  <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Paper 1 has undergone 10+ rounds of peer review with ~200 individual edits. Paper 2 contains the parameter-free f<sub>NL</sub> = -35/8 prediction testable by SPHEREx (~2028). Paper 3 documents the first full-DR1-scale autoencoder anomaly search (~90x prior EDR work).</p>
+  <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Paper 1 has undergone 10+ rounds of peer review with ~200 individual edits. Paper 2 contains the parameter-free f<sub>NL</sub> = -35/8 prediction testable by SPHEREx (~2028). Paper 3 documents the first full-DR1-scale autoencoder anomaly search (~90x prior EDR work) with completed taxonomy (10 families, 76 uncataloged AGN), NEOWISE IR variability (16 variable anomalies), emission-line analysis (68/83 matched, 6 sub-Lyman-limit), injection/recovery (0% false positive), and 9.5% f<sub>NL</sub> tracer improvement.</p>
 </section>
 
 <hr>
@@ -266,10 +266,10 @@
     <tbody>
       <tr>
         <td><strong>B &mdash; DESI Spectral Anomaly Miner</strong></td>
-        <td>Autoencoder anomaly search on all 22.5M DESI DR1 spectra (deduplicated). First full-DR1-scale search (~90x prior EDR work). Photo-z, UMAP, z&gt;6 QSOs, redshift neuron.</td>
-        <td>Yes (high-bias tracers)</td>
+        <td>Autoencoder anomaly search on all 22.5M DESI DR1 spectra (deduplicated). First full-DR1-scale search (~90x prior EDR work). Full analysis: taxonomy, NEOWISE, emission lines, injection/recovery, f<sub>NL</sub> tracers.</td>
+        <td>Yes (9.5% &sigma;(f<sub>NL</sub>) improvement)</td>
         <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>22.5M spectra scored; 2,145 anomalies (SNR-filtered); 120 gold (&gt;5&sigma;); 12 z&gt;6 QSOs; photo-z &sigma;<sub>NMAD</sub>=0.028; lat_067 redshift neuron; 2,575 red-anomaly cluster; enhanced catalog COMPLETE (173 cols, 46 batches); 10 pub figures <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
+        <td>22.5M scored; 2,145 anomalies; 1,127 uncataloged; 10 families (76 AGN); 16 NEOWISE variable; 68/83 lines matched; 0% FP injection; 9.5% f<sub>NL</sub> boost; 13 pub figures <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
       </tr>
       <tr>
         <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
@@ -311,7 +311,7 @@
 
   <div class="discovery-card" style="border-left: 3px solid #22c55e;">
     <h4>Pipeline B Headline Results</h4>
-    <p><strong>22,504,897 unique spectra scored</strong> (deduplicated) with 173 columns including 128-dim latent vectors. <strong>Enhanced catalog COMPLETE:</strong> 46 Parquet batches (16GB), zero processing errors. Tiered anomaly system: <strong>2,145 silver</strong> (score&gt;3, SNR&gt;0.5), <strong>120 gold</strong> (&gt;5&sigma;). <strong>12 reionization-era QSOs at z&gt;6</strong> with Gunn-Peterson troughs. <strong>21 objects NOT in SIMBAD.</strong> Photo-z from unsupervised latent vectors: &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79). Spontaneous &ldquo;redshift neuron&rdquo; (lat_067) &mdash; single latent dimension encodes redshift without supervision. 2,575 &ldquo;red-anomaly&rdquo; cluster with high &Delta;&chi;&sup2; + high score paradox. Anomaly rate uniform at ~1% (Spearman r = 0.03). <strong>Honest disclosure:</strong> bulk 250K raw count dominated by low-SNR; science-grade count is 2,145. 10 publication figures. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
+    <p><strong>22,504,897 unique spectra scored</strong> (deduplicated) with 173 columns including 128-dim latent vectors. <strong>Enhanced catalog COMPLETE:</strong> 46 Parquet batches (16GB), zero processing errors. Tiered anomaly system: <strong>2,145 silver</strong> (score&gt;3, SNR&gt;0.5), <strong>120 gold</strong> (&gt;5&sigma;). <strong>1,127 objects in neither SIMBAD nor NED</strong> (52.5% uncataloged). <strong>9.5% f<sub>NL</sub> improvement</strong> via latent-space multi-tracer selection. <strong>10 taxonomy families:</strong> 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies. <strong>16 NEOWISE IR-variable anomalies</strong> including z=5.65 QSO with W2=5.5 mag. <strong>68/83 emission lines matched;</strong> 6 sub-Lyman-limit candidates. <strong>Injection/recovery: 0% false positive, 10&ndash;1,377x enrichment.</strong> Photo-z: &sigma;<sub>NMAD</sub> = 0.028 (R&sup2; = 0.79); redshift neuron lat_067. 2,575 red-anomaly cluster. 13 publication figures. Model on <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank">HuggingFace</a>.</p>
   </div>
 </section>
 
@@ -461,7 +461,7 @@
 
   <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
     <h4>Key Cross-Match Finding</h4>
-    <p>Galaxies are 19x more anomalous than QSOs in our catalog. Of the top 1,000 anomalies, the overwhelming majority are galaxies with unusual spectral features, not QSOs or stars. This suggests the autoencoder is finding genuinely unusual galaxy populations that standard pipelines classify but do not flag as noteworthy.</p>
+    <p><strong>1,127 of 2,145 (52.5%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Classified into 10 taxonomy families: 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies, plus 7 additional families. Galaxies are 19x more anomalous than QSOs. 68/83 emission lines matched to known transitions; 6 sub-Lyman-limit candidates. 16 NEOWISE IR-variable anomalies including a z=5.65 QSO with W2=5.5 mag.</p>
   </div>
 </section>
 
@@ -587,7 +587,7 @@
         <td colspan="5" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Anomaly Pipeline</td>
       </tr>
       <tr><td></td><td>Second autoencoder on anomalies (recursive)</td><td>$20-30</td><td>YES</td><td>Finds most extreme objects</td></tr>
-      <tr><td></td><td>Injection/recovery with real BigAE model</td><td>$10-15</td><td>REQUIRED</td><td>Publication gate (currently proxy only)</td></tr>
+      <tr><td></td><td>Injection/recovery with real BigAE model</td><td>$10-15</td><td><span style="color:#166534;font-weight:600;">COMPLETE</span></td><td>0% false positive, 10&ndash;1,377x enrichment</td></tr>
       <tr><td></td><td>Download all 195K spectra + analysis</td><td>$30-50</td><td>YES</td><td>Full spectral catalog</td></tr>
       <tr><td></td><td>SDSS DR18 cross-validation (5M spectra)</td><td>$15-25</td><td>YES</td><td>Proves methodology is survey-independent</td></tr>
       <tr><td></td><td>Multi-resolution autoencoder (8x/16x/32x/64x)</td><td>$20-30</td><td>YES</td><td>Finds scale-dependent anomalies</td></tr>
@@ -599,7 +599,7 @@
       <tr><td></td><td>Latent space photo-z estimation</td><td>$25-40</td><td>YES</td><td>Novel ML methodology</td></tr>
       <tr><td></td><td>Galaxy merger finder on anomaly images</td><td>$30-50</td><td>Partial</td><td>Connects spectral + morphological anomaly</td></tr>
       <tr><td></td><td>Full-sky anomaly density map</td><td>$20-30</td><td>YES</td><td>Spatial systematics check</td></tr>
-      <tr><td></td><td>Spectral anomaly taxonomy (UMAP + HDBSCAN)</td><td>$40-60</td><td>YES</td><td>Defines NEW object classes</td></tr>
+      <tr><td></td><td>Spectral anomaly taxonomy (UMAP + HDBSCAN)</td><td>$40-60</td><td><span style="color:#166534;font-weight:600;">COMPLETE</span></td><td>10 families: 76 AGN, 27 post-starburst, 363 blue compact</td></tr>
       <tr style="background:var(--bg-subtle);">
         <td colspan="5" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Multi-H200 Scale-Up</td>
       </tr>
@@ -648,10 +648,10 @@
     <span class="tag">cobaya_w0wa_quintom_test.yaml &middot; 50.9K posterior samples</span>
   </div>
 
-  <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
-    <h4>2,145 SNR-Filtered Spectral Anomalies + Unsupervised Photo-z</h4>
-    <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work). 22.5M unique spectra scored. Tiered: 2,145 silver (SNR-filtered), 120 gold (&gt;5&sigma;). 12 z&gt;6 reionization-era QSOs. 21 NOT in SIMBAD. Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub>=0.028). Spontaneous &ldquo;redshift neuron&rdquo; (lat_067). 2,575 red-anomaly cluster. Uniform ~1% anomaly rate (Spearman r=0.03).</p>
-    <span class="tag">Pipeline B &middot; 22.5M spectra &middot; 173 columns &middot; 46 Parquet batches &middot; 10 publication figures &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
+  <div class="discovery-card" style="border-left: 3px solid #22c55e;">
+    <h4>2,145 SNR-Filtered Spectral Anomalies + Full Analysis Suite</h4>
+    <p>First full-DR1-scale autoencoder anomaly search on DESI (~90x prior EDR work). 22.5M unique spectra scored. Tiered: 2,145 silver (SNR-filtered), 120 gold (&gt;5&sigma;). <strong>1,127 in neither SIMBAD nor NED</strong> (52.5% uncataloged). <strong>9.5% f<sub>NL</sub> improvement</strong> via latent-space multi-tracer. <strong>10 taxonomy families:</strong> 76 AGN, 27 post-starburst, 363 blue compact. <strong>16 NEOWISE IR-variable</strong> (z=5.65 QSO, W2=5.5 mag). 68/83 emission lines matched, 6 sub-Lyman-limit candidates. Injection/recovery: 0% false positive, 10&ndash;1,377x enrichment. Photo-z &sigma;<sub>NMAD</sub>=0.028; redshift neuron lat_067.</p>
+    <span class="tag">Pipeline B &middot; 22.5M spectra &middot; 173 columns &middot; 46 Parquet batches &middot; 13 publication figures &middot; HuggingFace: bamfai/desi-spectral-anomaly-detector</span>
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #f59e0b;">
@@ -750,9 +750,9 @@
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
-    <h4>2,145 SNR-Filtered Anomalies + 2,575 Red-Anomaly Objects: What ARE They?</h4>
-    <p>After honest SNR filtering, 2,145 spectrally anomalous objects survive from 22.5M scored spectra (120 at gold &gt;5&sigma;). The 2,575 &ldquo;red-anomaly&rdquo; cluster is particularly puzzling: objects with high pipeline confidence (&Delta;&chi;&sup2;) AND high autoencoder anomaly scores &mdash; they fit known templates well but have genuinely unusual spectral structure. 12 are reionization-era QSOs at z&gt;6. 21 are absent from SIMBAD entirely. The unsupervised latent vectors encode redshift spontaneously (lat_067), achieving photo-z at &sigma;<sub>NMAD</sub> = 0.028. What new astrophysics is hiding in these spectra?</p>
-    <span class="tag">Active research &middot; Enhanced catalog COMPLETE &middot; Paper 3 (~60%) &middot; DESI DR1</span>
+    <h4>2,145 SNR-Filtered Anomalies Fully Classified: 76 Uncataloged AGN, 16 IR-Variable, f<sub>NL</sub> Boost</h4>
+    <p>After honest SNR filtering, 2,145 spectrally anomalous objects survive from 22.5M scored spectra (120 at gold &gt;5&sigma;). Full taxonomy reveals 10 spectral families: 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies, plus 7 additional families. 16 NEOWISE IR-variable anomalies including a z=5.65 QSO varying by 5.5 magnitudes in W2. 68/83 emission lines matched to known transitions; 6 sub-Lyman-limit candidates. Injection/recovery validates 0% false positive rate with 10&ndash;1,377x enrichment. 1,127 objects (52.5%) in neither SIMBAD nor NED. Most importantly: latent-space multi-tracer selection yields a 9.5% improvement in f<sub>NL</sub> sensitivity, directly strengthening the flagship bounce prediction.</p>
+    <span class="tag">Active research &middot; Enhanced catalog COMPLETE &middot; Paper 3 (~80%) &middot; DESI DR1</span>
   </div>
 
   <div style="margin-top:24px; padding:16px; background:var(--bg-subtle); border-radius:8px; font-size:13px; color:var(--text-secondary); font-family:var(--font-sans); line-height:1.7;">

@@ -102,14 +102,14 @@
     <div class="label">&sigma;<sub>NMAD</sub> Photo-z</div>
   </div>
   <div class="anomaly-stat">
-    <div class="num">21</div>
-    <div class="label">NOT in SIMBAD</div>
+    <div class="num">1,127</div>
+    <div class="label">Uncataloged (no SIMBAD/NED)</div>
   </div>
 </div>
 
 <section class="section">
 <h2>Scientific Insights</h2>
-<p class="text-sm sans" style="color: var(--text-secondary); margin-bottom: 16px;">Seven genuinely novel findings from the enhanced 22.5M DESI DR1 catalog &mdash; not just "we ran an autoencoder," but concrete scientific contributions.</p>
+<p class="text-sm sans" style="color: var(--text-secondary); margin-bottom: 16px;">Eight genuinely novel findings from the enhanced 22.5M DESI DR1 catalog &mdash; not just "we ran an autoencoder," but concrete scientific contributions including a direct improvement to the flagship f<sub>NL</sub> bounce prediction.</p>
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
 
@@ -129,13 +129,13 @@
   </div>
 
   <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #ef4444;">
-    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">Extreme IR Variability at z &gt; 5</h4>
-    <p style="font-size:13px; margin:0; line-height:1.6;">6 QSOs at z &gt; 4 are BOTH spectrally anomalous AND infrared-variable (NEOWISE 10yr). A z=5.65 QSO varies by <strong>5.5 magnitudes in W2</strong> &mdash; extreme AGN activity in the reionization era.</p>
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">16 NEOWISE IR-Variable Anomalies</h4>
+    <p style="font-size:13px; margin:0; line-height:1.6;"><strong>16 anomalies</strong> are BOTH spectrally anomalous AND infrared-variable (NEOWISE 10yr). A z=5.65 QSO varies by <strong>5.5 magnitudes in W2</strong> &mdash; extreme AGN activity in the reionization era. These variable sources are prime candidates for multi-epoch follow-up.</p>
   </div>
 
   <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #22c55e;">
-    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">~1,000 Genuinely Uncataloged Objects</h4>
-    <p style="font-size:13px; margin:0; line-height:1.6;">1,127 of 2,145 SNR-filtered anomalies (52.5%) are in <strong>NEITHER SIMBAD nor NED</strong>. Known to DESI, unknown to the astronomical community. Concrete targets for follow-up.</p>
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">1,127 Genuinely Uncataloged Objects</h4>
+    <p style="font-size:13px; margin:0; line-height:1.6;">1,127 of 2,145 SNR-filtered anomalies (52.5%) are in <strong>NEITHER SIMBAD nor NED</strong>. Classified into 10 taxonomy families: <strong>76 uncataloged AGN</strong>, 27 post-starburst galaxies, 363 blue compact galaxies. Known to DESI, unknown to the astronomical community. Concrete targets for follow-up.</p>
   </div>
 
   <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #3b82f6;">
@@ -146,6 +146,11 @@
   <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #a855f7;">
     <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">Autoencoder as Survey Quality Probe</h4>
     <p style="font-size:13px; margin:0; line-height:1.6;">Anomaly score correlates with SNR (Spearman &rho; = &minus;0.89). The autoencoder unintentionally functions as an <strong>independent data quality metric</strong> &mdash; a new tool for spectroscopic survey validation.</p>
+  </div>
+
+  <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #b45309;">
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">9.5% f<sub>NL</sub> Improvement via Multi-Tracer</h4>
+    <p style="font-size:13px; margin:0; line-height:1.6;">Latent-space selection of anomalous objects as high-bias tracers yields a <strong>9.5% improvement</strong> in &sigma;(f<sub>NL</sub>) sensitivity. This directly strengthens the flagship bounce prediction: spectral anomalies are not just curiosities but observationally useful for testing bounce cosmology via the galaxy bispectrum.</p>
   </div>
 
 </div>
@@ -299,7 +304,7 @@
       </tbody>
     </table>
     </div>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS: API down, retry pending. The top 1,000 anomalies are overwhelmingly absent from all major astronomical catalogs &mdash; these are genuinely uncataloged objects.</p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS: API down, retry pending. <strong>1,127 of 2,145 (52.5%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Classified into 10 taxonomy families including 76 AGN, 27 post-starburst, 363 blue compact galaxies.</p>
   </div>
 </section>
 
