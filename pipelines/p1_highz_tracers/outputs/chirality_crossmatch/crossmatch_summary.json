@@ -1,0 +1,181 @@
+{
+  "timestamp": "2026-03-29T23:13:06.245908",
+  "description": "Cross-correlation of DESI DR1 spectral anomalies with Galaxy Zoo DESI chirality catalog (8.47M galaxies)",
+  "method": {
+    "step1": "Extract 2,145 silver anomalies (anomaly_score > 3.0, max_snr > 0.5) from 18M deduped DESI spectra",
+    "step2": "Download 1,664 DR8 tractor catalog files to resolve chirality object positions",
+    "step3": "Build KD-tree of 43,401 chirality-classified objects with exact RA/DEC",
+    "step4": "Positional cross-match at multiple radii (3, 5, 10, 30, 60 arcsec)"
+  },
+  "catalogs": {
+    "silver_anomalies": {
+      "count": 2145,
+      "source": "DESI DR1 spectral autoencoder, anomaly_score > 3.0, max_snr > 0.5",
+      "median_z": 0.8934496641159058,
+      "spectype": {
+        "GALAXY": 1770,
+        "QSO": 306,
+        "STAR": 69
+      }
+    },
+    "gold_anomalies": {
+      "count": 83
+    },
+    "chirality_catalog": {
+      "count": 8474531,
+      "source": "Smith42/galaxies (DESI Legacy DR8), chirality_v2 (93.7% acc)",
+      "CW": 1687069,
+      "CCW": 1634726,
+      "NOT_SPIRAL": 5152736,
+      "cw_fraction_among_spirals": 0.5078787221968846
+    }
+  },
+  "results": {
+    "silver_match_counts": {
+      "1_arcsec": 4,
+      "2_arcsec": 4,
+      "3_arcsec": 4,
+      "5_arcsec": 5,
+      "10_arcsec": 13,
+      "15_arcsec": 35,
+      "20_arcsec": 59,
+      "30_arcsec": 136,
+      "60_arcsec": 417,
+      "120_arcsec": 1111
+    },
+    "gold_match_counts": {
+      "3_arcsec": 0,
+      "5_arcsec": 0,
+      "10_arcsec": 0,
+      "30_arcsec": 1,
+      "60_arcsec": 5
+    },
+    "genuine_matches_5arcsec": {
+      "count": 5,
+      "chirality": {
+        "CW": 3,
+        "CCW": 1,
+        "NOT_SPIRAL": 1
+      },
+      "objects": [
+        {
+          "anomaly_score": 3.0350711345672607,
+          "spectype": "GALAXY",
+          "z": 0.06857016682624817,
+          "dr8_id": "338951_5587",
+          "chirality_class": "CCW",
+          "p_cw": 8.079332758370583e-08,
+          "p_ccw": 0.9999998807907104,
+          "p_ns": 2.1187711958178812e-13,
+          "confidence": 0.9999998807907104,
+          "sep_arcsec": 3.632841528815348,
+          "targetid": 39627820728582369,
+          "morphtype": "SER",
+          "target_ra": 345.7546691894531,
+          "target_dec": 1.3128111362457275
+        },
+        {
+          "anomaly_score": 3.292821168899536,
+          "spectype": "GALAXY",
+          "z": 0.5889450311660767,
+          "dr8_id": "588269_3674",
+          "chirality_class": "NOT_SPIRAL",
+          "p_cw": 3.695672421599738e-05,
+          "p_ccw": 6.220163777470589e-05,
+          "p_ns": 0.9999008178710938,
+          "confidence": 0.9999008178710938,
+          "sep_arcsec": 0.1926321921073752,
+          "targetid": 39633264490579500,
+          "morphtype": "DEV",
+          "target_ra": 274.2755126953125,
+          "target_dec": 51.085514068603516
+        },
+        {
+          "anomaly_score": 3.4419333934783936,
+          "spectype": "GALAXY",
+          "z": 0.20315797626972198,
+          "dr8_id": "404657_919",
+          "chirality_class": "CW",
+          "p_cw": 0.45542049407958984,
+          "p_ccw": 0.13567550480365753,
+          "p_ns": 0.40890395641326904,
+          "confidence": 0.45542049407958984,
+          "sep_arcsec": 0.22962730461051933,
+          "targetid": 39628096319523718,
+          "morphtype": "REX",
+          "target_ra": 352.2048645019531,
+          "target_dec": 12.67361831665039
+        },
+        {
+          "anomaly_score": 3.020810127258301,
+          "spectype": "GALAXY",
+          "z": 0.006469611544162035,
+          "dr8_id": "229926_2372",
+          "chirality_class": "CW",
+          "p_cw": 0.6405737400054932,
+          "p_ccw": 0.35927852988243103,
+          "p_ns": 0.00014779219054616988,
+          "confidence": 0.6405737400054932,
+          "sep_arcsec": 0.4285333656069417,
+          "targetid": 39627363444595538,
+          "morphtype": "SER",
+          "target_ra": 61.513057708740234,
+          "target_dec": -17.76119613647461
+        },
+        {
+          "anomaly_score": 3.6316916942596436,
+          "spectype": "GALAXY",
+          "z": 0.006368214264512062,
+          "dr8_id": "620897_898",
+          "chirality_class": "CW",
+          "p_cw": 0.8739205598831177,
+          "p_ccw": 0.12570329010486603,
+          "p_ns": 0.00037613403401337564,
+          "confidence": 0.8739205598831177,
+          "sep_arcsec": 0.4181808321844464,
+          "targetid": 39633401342331525,
+          "morphtype": "EXP",
+          "target_ra": 104.29654693603516,
+          "target_dec": 61.18179702758789
+        }
+      ]
+    },
+    "environment_30arcsec": {
+      "count": 136,
+      "chirality": {
+        "NOT_SPIRAL": 86,
+        "CW": 26,
+        "CCW": 24
+      }
+    },
+    "statistical_tests": {
+      "spiral_fraction_30arcsec": {
+        "observed": 0.36764705882352944,
+        "expected": 0.39197390392459475,
+        "p_value": 0.598825885265646
+      },
+      "cw_excess_30arcsec": {
+        "observed_cw_frac": 0.52,
+        "expected_cw_frac": 0.5078787221968846,
+        "p_value": 0.8884196945757221
+      }
+    }
+  },
+  "interpretation": {
+    "primary_finding": "Very low overlap (5 matches at < 5 arcsec, 0.2%) between DESI spectral anomalies and GZ DESI chirality catalog, driven by non-overlapping selection functions: GZ covers bright (r < 17.8), low-z galaxies; DESI anomalies are predominantly faint (median r ~ 21), high-z (median z ~ 0.66) objects.",
+    "genuine_matches": "5 objects match within 5 arcsec. Among spirals: 3 CW, 1 CCW. CW/CCW ratio (75/25%) vs global (50.8/49.2%) -- not significant at N=4. All are low-z (z < 0.6) GALAXY-type objects with moderate anomaly scores.",
+    "no_chirality_anomaly": "No evidence that spectral anomalies preferentially occur in galaxies with unusual morphological chirality. The chirality distribution of matched objects is consistent with the global catalog distribution.",
+    "selection_bias_note": "The low match rate is NOT evidence of absence -- it reflects the non-overlapping selection functions. A definitive test would require chirality classification of the anomalous galaxies themselves, e.g., from DESI Legacy DR9/DR10 imaging."
+  },
+  "output_files": [
+    "crossmatch_summary.json",
+    "silver_5arcsec.parquet",
+    "silver_5arcsec.csv",
+    "silver_10arcsec.parquet",
+    "silver_10arcsec.csv",
+    "silver_30arcsec.parquet",
+    "silver_30arcsec.csv",
+    "gold_30arcsec.parquet",
+    "gold_30arcsec.csv"
+  ]
+}
