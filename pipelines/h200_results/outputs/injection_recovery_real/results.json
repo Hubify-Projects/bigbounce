@@ -1,0 +1,52 @@
+{
+  "method": "synthetic_injection_real_BigAE",
+  "results": {
+    "bal_qso": {
+      "N": 1000,
+      "mean_score": 0.04548869083914906,
+      "recovery_3x": 14.2,
+      "recovery_5x": 0.8,
+      "scores_p50": 0.04044663906097412,
+      "scores_p90": 0.0758251465857029,
+      "scores_p99": 0.10736039400100707
+    },
+    "emission_line": {
+      "N": 1000,
+      "mean_score": 0.1260744306696579,
+      "recovery_3x": 25.7,
+      "recovery_5x": 23.200000000000003,
+      "scores_p50": 0.011525433044880629,
+      "scores_p90": 0.5269267678260803,
+      "scores_p99": 0.9178913915157318
+    },
+    "lyman_break": {
+      "N": 1000,
+      "mean_score": 0.034296349860727784,
+      "recovery_3x": 7.7,
+      "recovery_5x": 0.0,
+      "scores_p50": 0.03249208629131317,
+      "scores_p90": 0.06230218000710011,
+      "scores_p99": 0.10407289683818817
+    },
+    "normal_galaxy": {
+      "N": 1000,
+      "mean_score": 0.004410945902811363,
+      "recovery_3x": 0.0,
+      "recovery_5x": 0.0,
+      "scores_p50": 0.004402002086862922,
+      "scores_p90": 0.004726184345781803,
+      "scores_p99": 0.005041441577486694
+    },
+    "unusual_continuum": {
+      "N": 1000,
+      "mean_score": 0.04058401303458959,
+      "recovery_3x": 13.900000000000002,
+      "recovery_5x": 3.5000000000000004,
+      "scores_p50": 0.02992257382720709,
+      "scores_p90": 0.09019294902682305,
+      "scores_p99": 0.13073483407497405
+    }
+  },
+  "median_score": 0.02355370856821537,
+  "n_total": 5000
+}
