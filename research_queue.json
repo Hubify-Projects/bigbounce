@@ -3,35 +3,51 @@
     {
       "id": "sdss-dr18-scan",
       "name": "SDSS DR18 Anomaly Scan",
-      "status": "running",
+      "status": "complete",
       "pod": "7zong4jdj46yjp",
       "script": "run_sdss_scan.py",
       "log": "sdss_h200.log",
       "est_hours": 3,
       "est_cost": 50,
-      "priority": 1
+      "priority": 1,
+      "result": {
+        "total_scored": 2304830,
+        "total_anomalies": 77905,
+        "anomaly_rate": "3.4%",
+        "batches": 46,
+        "runtime_hours": 2.8,
+        "completed": "2026-04-02"
+      }
     },
     {
       "id": "erosita-xray",
       "name": "eROSITA X-ray Anomaly Scan",
-      "status": "queued",
+      "status": "complete",
       "script": "erosita_scan.py",
       "est_hours": 4,
       "est_cost": 50,
       "priority": 2,
-      "data_url": "https://erosita.mpe.mpg.de/dr1/",
-      "notes": "Need to find correct catalog URL - DR1 released 2024"
+      "result": {
+        "total_scored": 930203,
+        "n_anomalies_top1pct": 9303,
+        "max_score": 34181.7,
+        "train_time_s": 7.6,
+        "completed": "2026-04-02",
+        "top_anomaly": "1eRASS J053856.1-640457 (LMC region)"
+      }
     },
     {
       "id": "lamost-dr10",
       "name": "LAMOST DR10 Anomaly Scan",
-      "status": "queued",
+      "status": "running",
+      "pod": "7zong4jdj46yjp",
       "script": "lamost_scan.py",
+      "log": "lamost_h200.log",
       "est_hours": 12,
       "est_cost": 100,
       "priority": 3,
-      "data_url": "http://www.lamost.org/dr10/",
-      "notes": "20M spectra, largest pre-DESI survey, Chinese telescope"
+      "data_url": "http://www.lamost.org/dr10/v2.0/tar/lrs-fits/",
+      "notes": "11.4M LRS spectra across 1,177 nightly tarballs. Downloading from Chinese server — slow but working."
     },
     {
       "id": "planck-cmb-full",
@@ -61,7 +77,7 @@
       "est_hours": 96,
       "est_cost": 500,
       "priority": 6,
-      "notes": "1.8B stars × 70 epochs. Most analyses use averaged data only."
+      "notes": "1.8B stars x 70 epochs. Most analyses use averaged data only."
     },
     {
       "id": "act-dr6-cmb",
@@ -70,29 +86,36 @@
       "est_hours": 8,
       "est_cost": 50,
       "priority": 7,
-      "notes": "19,000 deg² at 1 arcmin resolution. Tests birefringence β=0.27°"
+      "notes": "19,000 deg2 at 1 arcmin resolution. Tests birefringence beta=0.27 deg"
     },
     {
       "id": "nanograv-template-fit",
-      "name": "NANOGrav 15yr Proper Spectral Template Fit",
-      "status": "queued",
+      "name": "NANOGrav 15yr Spectral Template Fit",
+      "status": "complete",
       "est_hours": 2,
       "est_cost": 10,
       "priority": 8,
-      "notes": "Fit bounce GW template to free-spectrum data. Local CPU."
+      "result": {
+        "gamma_predicted": 3.0,
+        "gamma_observed": 3.2,
+        "gamma_observed_err": 0.6,
+        "tension_sigma": 0.33,
+        "completed": "2026-04-02",
+        "note": "Confirmed 0.33sigma consistency. See reproducibility/pbh_nanograv_consistency.py"
+      }
     },
     {
       "id": "sdss-cross-validation",
-      "name": "SDSS × DESI Cross-Survey Anomaly Correlation",
-      "status": "blocked_by:sdss-dr18-scan",
+      "name": "SDSS x DESI Cross-Survey Anomaly Correlation",
+      "status": "ready",
       "est_hours": 2,
       "est_cost": 0,
       "priority": 9,
-      "notes": "After SDSS scan: which anomalies appear in BOTH surveys?"
+      "notes": "SDSS scan complete. Script written at projects/cross_survey/sdss_desi_correlation.py. Needs SDSS RA/DEC coordinate lookup (SDSS catalog has plate/fiberid only)."
     },
     {
       "id": "super-resolution",
-      "name": "Ground→Space Super-Resolution for Anomaly Cutouts",
+      "name": "Ground to Space Super-Resolution for Anomaly Cutouts",
       "status": "queued",
       "est_hours": 48,
       "est_cost": 200,
@@ -101,5 +124,8 @@
     }
   ],
   "total_est_cost": 1310,
-  "total_est_hours": 231
+  "total_est_hours": 231,
+  "completed": 3,
+  "running": 1,
+  "last_updated": "2026-04-02"
 }

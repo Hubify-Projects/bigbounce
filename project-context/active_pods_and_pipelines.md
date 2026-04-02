@@ -1,25 +1,44 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-03-26
-**DO NOT TERMINATE ANY PODS without explicit user approval.**
+**Last updated:** 2026-04-02
+**Only 1 pod running. All others stopped.**
 
 ---
 
-## Pod 1: H200 Beast — DESI DR1 Spectral Anomaly Inference -- COMPLETE
+## Pod: H200 — Multi-Survey Anomaly Research Queue
 | Field | Value |
 |-------|-------|
-| **Pod ID** | `rtv8cegaw1618r` (defeated_harlequin_lemming) |
-| **SSH** | `root@205.196.17.44 -p 10789 -i ~/.ssh/id_ed25519` |
-| **Machine** | NVIDIA H200 (143 GB VRAM), 192 CPU cores, 3 TB RAM |
-| **Pipeline** | Pipeline B — DESI DR1 GPU inference |
-| **Script** | `/workspace/desi_dr1/run_dr1_parallel.py` |
-| **Log** | `/workspace/desi_dr1/dr1_log.txt` |
-| **Progress** | **COMPLETE** — 18M spectra processed, 195,829 anomalies found (1.08%) |
-| **Rate** | 889 spectra/sec (peak) |
-| **Anomaly rate** | 1.08% |
-| **Dataset** | DESI DR1 full spectroscopic catalog (~18M spectra) |
+| **Pod ID** | `7zong4jdj46yjp` (unnecessary_plum_mandrill) |
+| **SSH** | `root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519` |
+| **Machine** | NVIDIA H200 (143 GB VRAM) |
+| **Pipeline** | Research Queue — 10 experiments |
+| **Monitor** | `research_monitor.sh` (local, checks every 15 min) |
+| **Cost** | $3.59/hr |
 
-**Result:** Survey-scale anomaly catalog from ALL DESI DR1 spectra. 195,829 anomalies found. 99.8% absent from SIMBAD. 0% known QSOs. Galaxies 19x more anomalous than QSOs. Model published on HuggingFace. Anomaly Explorer page live on website.
+### Completed Experiments
+| # | Experiment | Spectra/Sources | Anomalies | Runtime | Backed Up |
+|---|-----------|----------------|-----------|---------|-----------|
+| 1 | SDSS DR18 | 2,304,830 | 77,905 (3.4%) | 2.8h | Yes (1.8GB) |
+| 2 | eROSITA DR1 X-ray | 930,203 | 9,303 (top 1%) | 8 sec | Yes |
+| 8 | NANOGrav 15yr | — | — | Local | γ=3.0 at 0.33σ |
+
+### Running
+| # | Experiment | Total | Progress | ETA |
+|---|-----------|-------|----------|-----|
+| 3 | LAMOST DR10 | 11.4M spectra | Downloading tarballs (~9/1177) | ~12-24h |
+
+### Queued (scripts deployed on H200)
+| # | Experiment | Est. Hours | Est. Cost |
+|---|-----------|-----------|-----------|
+| 4 | Planck CMB full-sky | 8h | $50 |
+| 5 | NEOWISE variability | 48h | $300 |
+| 6 | Gaia DR3 epoch | 96h | $500 |
+| 7 | ACT DR6 CMB | 8h | $50 |
+| 9 | SDSS × DESI cross-match | 2h | $0 |
+| 10 | Super-resolution | 48h | $200 |
+
+## Historical Pod 1: H200 Beast — DESI DR1 (COMPLETE, POD STOPPED)
+**Result:** 18M spectra processed, 195,829 anomalies found (1.08%). Pod `rtv8cegaw1618r` is stopped.
 
 ---
 

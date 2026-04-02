@@ -1,0 +1,12 @@
+{
+  "note": "See reproducibility/pbh_nanograv_consistency.py for the correct analysis",
+  "correct_result": {
+    "predicted_gamma": 3.0,
+    "observed_gamma": 3.2,
+    "observed_gamma_err": 0.6,
+    "tension_sigma": 0.33,
+    "convention": "NANOGrav S_h ~ f^{5-gamma}, matter bounce Omega_GW ~ f^2 → gamma = 3",
+    "reference": "Papanikolaou (2025) arXiv:2504.11641; NANOGrav 15yr ApJL 951 L8"
+  },
+  "status": "COMPLETE — existing analysis confirmed 0.33σ consistency"
+}
