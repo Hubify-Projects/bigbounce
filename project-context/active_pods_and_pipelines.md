@@ -23,23 +23,20 @@
 | 2 | eROSITA DR1 X-ray | 930,203 | 9,303 (top 1%) | 8 sec | Yes |
 | 8 | NANOGrav 15yr | — | — | Local | γ=3.0 at 0.33σ |
 
-### Running
-| # | Experiment | Total | Progress | ETA |
-|---|-----------|-------|----------|-----|
-| 3 | LAMOST DR10 | 11.4M spectra | 1,020/1,177 nights (86.7%), 10.15M scored, 37,110 anomalies (0.37%) | ~2.5h (finishes ~22:00 UTC Apr 2) |
+### Completed
+| # | Experiment | Spectra/Sources | Anomalies | Runtime |
+|---|-----------|----------------|-----------|---------|
+| 3 | LAMOST DR10 | 11,418,594 | 44,075 (0.39%) | 18.3h | 
 
-### Auto-Chained (will start automatically after LAMOST)
-| # | Experiment | Est. Hours | Est. Cost |
-|---|-----------|-----------|-----------|
-| 4 | Planck CMB full-sky | 8h | $50 |
-
-### Queued (scripts on pod but NOT auto-chained yet)
-| # | Experiment | Est. Hours | Est. Cost |
-|---|-----------|-----------|-----------|
-| 5 | NEOWISE variability | 48h | $300 |
-| 6 | Gaia DR3 epoch | 96h | $500 |
-| 7 | ACT DR6 CMB | 8h | $50 |
-| 9 | SDSS × DESI cross-match | 2h | $0 |
+### Full Queue Runner (tmux session `queue`, auto-sequential, started 22:10 UTC Apr 2)
+| Order | # | Experiment | Est. Hours | Script | Status |
+|-------|---|-----------|-----------|--------|--------|
+| 1 | 4 | Planck CMB full-sky | 8h | `planck_cmb_scan.py` | **RUNNING** |
+| 2 | 7 | ACT DR6 CMB | 4h | `act_dr6_scan.py` | Queued |
+| 3 | 5 | NEOWISE variability | 2-8h | `neowise_scan.py` | Queued |
+| 4 | 6 | Gaia DR3 epoch | 2-8h | `gaia_epoch_scan.py` | Queued |
+| 5 | 9 | SDSS × DESI cross-match | 1h | `sdss_desi_crossmatch.py` | Queued |
+| 6 | 10 | Super-resolution | 2h | `superres_scan.py` | Queued |
 | 10 | Super-resolution | 48h | $200 |
 
 ## Historical Pod 1: H200 Beast — DESI DR1 (COMPLETE, POD STOPPED)

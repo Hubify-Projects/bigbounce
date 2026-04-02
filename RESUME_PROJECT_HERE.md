@@ -42,14 +42,14 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - RTX A4000 MCMC pod (`fn19oivkjowmq4`) — w0-wa CONVERGED, chains frozen
 - CPU pipeline B pod (`kqo1b4e4igycra`) — redundant with H200
 
-### H200 Pod Live Status (checked 2026-04-02 ~7:15 PM UTC)
-- **LAMOST DR10 scan ACTIVELY RUNNING** — `lamost_scan_v2.py` in tmux
-- **Progress:** 1,020/1,177 nights (86.7%), 10.15M spectra scored, 37,110 anomalies (0.37%)
-- **Rate:** 63 nights/hr, **ETA: ~2.5 hours** (~10 PM UTC Apr 2)
-- **GPU idle** (0% util) — LAMOST is CPU/network-bound
-- **95 LAMOST batch parquets** already saved (522 MB in `/workspace/bigbounce/outputs/lamost/`)
-- **AUTO-CHAIN DEPLOYED:** tmux session `autochain` will auto-start `planck_cmb_scan.py` after LAMOST finishes (~8h Planck run)
-- **Cost to finish LAMOST+Planck:** ~$38 more at $3.59/hr
+### H200 Pod Live Status (updated 2026-04-02 22:10 UTC)
+- **LAMOST DR10 COMPLETE** — 11,418,594 spectra, 44,075 anomalies (0.39%), 18.3h runtime
+- **FULL QUEUE RUNNER ACTIVE** — tmux session `queue`, runs 6 experiments sequentially
+- **Currently running:** Planck CMB full-sky (`planck_cmb_scan.py`) — GPU-intensive, ~8h
+- **Queue order:** Planck → ACT DR6 → NEOWISE → Gaia DR3 → SDSS×DESI cross-match → Super-resolution
+- **All 6 scripts deployed** and chained. GPU will NOT be idle between experiments.
+- **Total queue ETA:** ~25-40 hours from start (~Apr 3-4 completion)
+- **Monitor:** `ssh root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519 "tail -20 /workspace/bigbounce/queue_runner.log"`
 
 ### H200 Pod Data Inventory (20 GB total on `/workspace/bigbounce/`)
 | Directory | Size | Contents |
