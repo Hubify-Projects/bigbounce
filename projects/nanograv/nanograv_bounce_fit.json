@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-01 19:37:51",
+  "best_fit": {
+    "log10_A": -13.886721472361561,
+    "log10_A_err": 0.17663793474197365,
+    "gamma": 6.685764783584,
+    "gamma_err": 0.4906433230531483
+  },
+  "bounce_comparison": {
+    "gamma_predicted": 3.0,
+    "gamma_measured": 6.685764783584,
+    "gamma_measured_err": 0.4906433230531483,
+    "tension_sigma": 7.512106270291065,
+    "p_consistent": 1.0,
+    "chi2_reduced_fixed_gamma": 29.303625351729064,
+    "chi2_reduced_free_gamma": 0.010726699446462647
+  },
+  "mcmc": {
+    "n_samples": 40000,
+    "accept_rate": 0.72908
+  },
+  "data": {
+    "n_freq_bins": 13,
+    "freq_range_nHz": [
+      63.376175628057894,
+      443.6332293964053
+    ]
+  }
+}

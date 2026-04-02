@@ -100,89 +100,89 @@
   ],
   "fisher_forecast": {
     "standard_DESI_QSO": {
-      "sigma_fNL": 3.95,
+      "sigma_fNL": 8.98,
       "sigma_per_bin": {
-        "0.8-1.0": 75.6,
-        "1.0-1.5": 20.2,
-        "1.5-2.0": 10.1,
-        "2.0-2.5": 8.1,
-        "2.5-3.0": 8.0,
-        "3.0-4.0": 7.3,
-        "4.0-5.0": 23.1
+        "0.8-1.0": 177.2,
+        "1.0-1.5": 43.7,
+        "1.5-2.0": 20.1,
+        "2.0-2.5": 17.0,
+        "2.5-3.0": 18.2,
+        "3.0-4.0": 19.2,
+        "4.0-5.0": 71.0
       }
     },
     "AI_single_tracer": {
-      "sigma_fNL": 21.38
+      "sigma_fNL": 65.91
     },
     "multi_tracer_anomaly": {
-      "sigma_fNL": 3.88,
+      "sigma_fNL": 8.83,
       "improvement_pct": 1.6,
       "sigma_per_bin": {
-        "0.8-1.0": 75.6,
-        "1.0-1.5": 20.2,
-        "1.5-2.0": 10.1,
-        "2.0-2.5": 8.1,
-        "2.5-3.0": 7.8,
-        "3.0-4.0": 7.1,
-        "4.0-5.0": 21.5
+        "0.8-1.0": 177.1,
+        "1.0-1.5": 43.7,
+        "1.5-2.0": 20.1,
+        "2.0-2.5": 16.9,
+        "2.5-3.0": 17.8,
+        "3.0-4.0": 18.6,
+        "4.0-5.0": 66.1
       }
     },
     "multi_tracer_latent": {
-      "sigma_fNL": 3.64,
-      "improvement_pct": 7.9
+      "sigma_fNL": 8.12,
+      "improvement_pct": 9.5
     },
     "best_multi_tracer": {
       "method": "latent-space",
-      "sigma_fNL": 3.64,
-      "improvement_pct": 7.9
+      "sigma_fNL": 8.12,
+      "improvement_pct": 9.5
     }
   },
   "bounce_cosmology": {
     "f_NL_prediction": -4.375,
-    "SNR_standard": 1.11,
-    "SNR_multi_tracer": 1.2,
-    "SNR_improvement_pct": 8.6
+    "SNR_standard": 0.49,
+    "SNR_multi_tracer": 0.54,
+    "SNR_improvement_pct": 10.6
   },
   "sensitivity_to_alpha": [
     {
       "alpha": 0.05,
-      "sigma_fNL": 3.93,
+      "sigma_fNL": 8.93,
       "improvement_pct": 0.5
     },
     {
       "alpha": 0.1,
-      "sigma_fNL": 3.91,
+      "sigma_fNL": 8.88,
       "improvement_pct": 1.1
     },
     {
       "alpha": 0.15,
-      "sigma_fNL": 3.88,
+      "sigma_fNL": 8.83,
       "improvement_pct": 1.6
     },
     {
       "alpha": 0.2,
-      "sigma_fNL": 3.86,
+      "sigma_fNL": 8.78,
       "improvement_pct": 2.2
     },
     {
       "alpha": 0.25,
-      "sigma_fNL": 3.84,
+      "sigma_fNL": 8.73,
       "improvement_pct": 2.8
     },
     {
       "alpha": 0.3,
-      "sigma_fNL": 3.82,
+      "sigma_fNL": 8.67,
       "improvement_pct": 3.4
     },
     {
       "alpha": 0.4,
-      "sigma_fNL": 3.77,
-      "improvement_pct": 4.6
+      "sigma_fNL": 8.56,
+      "improvement_pct": 4.7
     },
     {
       "alpha": 0.5,
-      "sigma_fNL": 3.72,
-      "improvement_pct": 5.8
+      "sigma_fNL": 8.44,
+      "improvement_pct": 6.0
     }
   ],
   "latent_space_top_dims": [

@@ -178,7 +178,8 @@ identifiers. Sky coordinates (right ascension and declination, J2000
 ICRS) are obtained by cross-matching \texttt{dr8\_id} against the
 Galaxy Zoo DESI predictions catalog~\cite{Walmsley:2023}.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_spiral_density.png}
 \caption{Sky density of classified spiral galaxies (CW~$+$~CCW) in
   equatorial coordinates (Mollweide projection, $\nside = 64$).
@@ -214,7 +215,8 @@ We assemble training labels from three sources:
 The combined training set contains 26,626~images, split 80/20 into
 training and validation subsets with stratified class balance.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_gallery_cw.png}
 \caption{Representative clockwise (CW) spiral galaxies from the
   catalog, ordered by decreasing classification confidence (left to
@@ -224,7 +226,8 @@ training and validation subsets with stratified class balance.
   \label{fig:gallery_cw}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_gallery_ccw.png}
 \caption{Representative counter-clockwise (CCW) spiral galaxies,
   presented identically to Fig.~\ref{fig:gallery_cw}.  The visual
@@ -315,7 +318,8 @@ time. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_equivariance_demo.png}
 \caption{Demonstration of the test-time equivariant averaging
   procedure (Eq.~\ref{eq:tta}).  \emph{Left column:} original
@@ -429,7 +433,8 @@ for a magnitude-limited galaxy survey~\cite{Lintott:2008}. The
 mean classification confidence is 0.951, with a median of 0.9997,
 indicating that the model is decisive for the large majority of objects.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_class_pie.png}
 \caption{Class breakdown of the 8,474,531-galaxy catalog.  The
   three-class output is dominated by the \NS{} class (60.8\%), which
@@ -440,7 +445,8 @@ indicating that the model is decisive for the large majority of objects.
   \label{fig:class_pie}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_confidence_dist.png}
 \caption{Distribution of maximum-class confidence for all 8.47~million
   galaxies.  The distribution is strongly bimodal: 62.1\% of objects
@@ -502,7 +508,8 @@ residual CW bias, which is spatially modulated by the non-uniform
 survey depth. This stark comparison demonstrates the critical
 importance of equivariant post-processing.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_sky_map.png}
 \caption{HEALPix sky map ($\nside = 64$, Mollweide projection) of the
   per-pixel chirality asymmetry $A_p = (N_{\rm CW} - N_{\rm CCW}) /
@@ -545,7 +552,8 @@ nominally suggestive, this does not exceed the $3\sigmaunit$ threshold
 for ``evidence'' and, when considered alongside the four null
 higher multipoles, is consistent with a statistical fluctuation.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_multipoles.png}
 \caption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
@@ -573,7 +581,8 @@ $3.05\sigmaunit$ peak does not survive a look-elsewhere correction
 across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_hemisphere.png}
 \caption{Hemisphere asymmetry scan results.  Each point represents
   the CW fraction difference between a pair of opposing hemispheres,
@@ -617,7 +626,8 @@ Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25\% \\
 \end{ruledtabular}
 \end{table}
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_sky_regions.png}
 \caption{CW fraction by sky region for Catalog~C (equivariant).  Each
   bar shows the CW/(CW$+$CCW) fraction in one of seven sky regions
@@ -771,7 +781,8 @@ cancels to machine precision. The collapse from $94.6\sigmaunit$ to
 $0.43\sigmaunit$ upon applying Eq.~(\ref{eq:tta}) confirms
 that the raw dipole has no cosmological content.
 
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=\columnwidth]{fig_raw_vs_eq.png}
 \caption{Side-by-side comparison of the chirality asymmetry sky maps
   for Catalog~A (raw, \emph{left}) and Catalog~C (equivariant,
