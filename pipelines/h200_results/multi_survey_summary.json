@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-04-02T19:30:00Z",
+  "surveys": {
+    "DESI_DR1": {
+      "total_spectra": 22504897,
+      "anomalies_scored": 195829,
+      "snr_filtered": 2145,
+      "gold_anomalies": 120,
+      "not_in_simbad": 21,
+      "key_finding": "12 z>6 reionization-era QSOs with Gunn-Peterson troughs",
+      "status": "COMPLETE"
+    },
+    "SDSS_DR18": {
+      "total_spectra": 2304830,
+      "anomalies": 77905,
+      "anomaly_rate_pct": 3.4,
+      "top_classes": "Ultra-cool dwarfs (M7, T2, L3, L5, L9), high-z QSOs",
+      "key_finding": "Transfer-learning anomalies are dominated by spectral type mismatch (cool dwarfs vs galaxy-trained model)",
+      "status": "COMPLETE"
+    },
+    "eROSITA_DR1": {
+      "total_sources": 930203,
+      "anomalies_score_gt5": 298,
+      "novel_xray_sources": 203,
+      "known_sources": 95,
+      "novel_rate_pct": 68.1,
+      "key_finding": "203 novel X-ray sources not in SIMBAD, concentrated near LMC and Galactic plane",
+      "top_novel": "1eRASS J053856.1-640457 (score=34,182, near LMC)",
+      "status": "COMPLETE"
+    },
+    "NANOGrav_15yr": {
+      "result": "Matter bounce spectral index gamma=3.0 vs observed 3.2\u00b10.6 (0.33 sigma)",
+      "key_finding": "Bounce cosmology consistent with PTA signal",
+      "status": "COMPLETE"
+    },
+    "LAMOST_DR10": {
+      "total_spectra_est": 11400000,
+      "scored_so_far": 10250000,
+      "anomalies_so_far": 37676,
+      "progress_pct": 87.5,
+      "eta_hours": 2.0,
+      "status": "RUNNING"
+    },
+    "Planck_CMB": {
+      "status": "QUEUED (auto-chains after LAMOST)",
+      "est_hours": 8
+    }
+  },
+  "total_spectra_scored": 35989930,
+  "total_anomalies": 313179,
+  "novel_discoveries": 224
+}

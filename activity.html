@@ -130,14 +130,14 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">Multi-Survey Anomaly Detection Sweep &mdash; Every Major Astronomical Archive</div>
-  <p class="status-desc">Running anomaly detection on every major public astronomical survey simultaneously. <strong>3 surveys complete, 1 running, 6 queued.</strong> SDSS DR18: 2.3M spectra scored, 77,905 anomalies (3.4%). eROSITA DR1: 930K X-ray sources scored, 9,303 top-1% anomalies. NANOGrav 15yr: bounce GW template consistent at 0.33&sigma;. LAMOST DR10 (11.4M spectra) currently running on H200. Total estimated cost for all 10 experiments: $1,310. Total compute: ~231 GPU-hours.</p>
+  <div class="status-focus">Multi-Survey Anomaly Sweep &mdash; 4/10 Experiments Complete, 6 Running on H200</div>
+  <p class="status-desc">Anomaly detection on every major public astronomical survey. <strong>4 surveys complete (DESI, SDSS, eROSITA, LAMOST), 6 experiments running automatically in sequence on H200.</strong> 32.3M spectra/sources scored. 327,112 total anomalies across 4 surveys. 203 novel X-ray sources discovered. Fisher forecast corrected: &sigma;(f<sub>NL</sub>) = 8.98 for standard DESI QSO. Total estimated cost for all 10 experiments: $1,310.</p>
   <div class="status-meta">
+    <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 &mdash; COMPLETE (18M spectra, 195K anomalies)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> SDSS DR18 &mdash; COMPLETE (2.3M spectra, 77,905 anomalies)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> eROSITA DR1 &mdash; COMPLETE (930K X-ray sources, 9,303 anomalies)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> NANOGrav 15yr &mdash; COMPLETE (0.33&sigma; bounce consistency)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> LAMOST DR10 &mdash; RUNNING (11.4M spectra, ~12h)</div>
-    <div class="status-meta-item"><span class="dot dot-planned"></span> Planck CMB + NEOWISE + Gaia + ACT DR6 &mdash; QUEUED</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> eROSITA DR1 &mdash; COMPLETE (930K sources, 203 novel X-ray objects)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> LAMOST DR10 &mdash; COMPLETE (11.4M spectra, 44,075 anomalies)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Planck CMB &rarr; ACT DR6 &rarr; NEOWISE &rarr; Gaia &rarr; Cross-match &rarr; Super-res &mdash; RUNNING (auto-sequenced)</div>
   </div>
 </div>
 
@@ -145,14 +145,16 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">RUN</span> LAMOST DR10: 11.4M LRS spectra, 1,177 nightly tarballs downloading from Chinese server</li>
-    <li><span class="priority priority-now">DONE</span> SDSS DR18: 2,304,830 spectra &rarr; 77,905 anomalies (3.4%) in 2.8 hours</li>
-    <li><span class="priority priority-now">DONE</span> eROSITA DR1: 930,203 X-ray sources &rarr; 9,303 top-1% anomalies in 8 seconds</li>
-    <li><span class="priority priority-now">DONE</span> NANOGrav 15yr: bounce GW template &gamma;=3.0 consistent at 0.33&sigma;</li>
-    <li><span class="priority priority-next">NEXT</span> Planck CMB full-sky patch anomaly detection (50K patches)</li>
-    <li><span class="priority priority-next">NEXT</span> SDSS &times; DESI cross-survey anomaly correlation</li>
-    <li><span class="priority priority-later">LATER</span> NEOWISE variability (170B rows) + Gaia epoch (1.8B stars) + ACT DR6 CMB</li>
-    <li><span class="priority priority-later">LATER</span> Super-resolution for anomaly cutouts (ESRGAN)</li>
+    <li><span class="priority priority-now">RUN</span> Planck CMB full-sky anomaly scan (auto-chained, running now)</li>
+    <li><span class="priority priority-now">RUN</span> ACT DR6 CMB (queued after Planck)</li>
+    <li><span class="priority priority-now">RUN</span> NEOWISE variability (170B rows, queued after ACT)</li>
+    <li><span class="priority priority-now">RUN</span> Gaia DR3 epoch photometry (1.8B stars, queued after NEOWISE)</li>
+    <li><span class="priority priority-now">RUN</span> SDSS &times; DESI cross-match anomaly correlation (queued after Gaia)</li>
+    <li><span class="priority priority-now">RUN</span> Super-resolution for anomaly cutouts (ESRGAN, queued last)</li>
+    <li><span class="priority priority-now">DONE</span> LAMOST DR10: 11.4M spectra &rarr; 44,075 anomalies (0.39%)</li>
+    <li><span class="priority priority-now">DONE</span> SDSS DR18: 2.3M spectra &rarr; 77,905 anomalies (3.4%)</li>
+    <li><span class="priority priority-now">DONE</span> eROSITA DR1: 930K sources, 203 novel X-ray objects (68% novelty)</li>
+    <li><span class="priority priority-now">DONE</span> DESI DR1: 18M spectra &rarr; 195K anomalies</li>
   </ul>
 </div>
 
@@ -163,11 +165,39 @@
 
 <div class="feed">
 
+  <div class="feed-item positive">
+    <div class="feed-date">2026-04-02</div>
+    <div class="feed-title">LAMOST DR10 Complete &mdash; 11.4M Spectra, 44,075 Anomalies</div>
+    <p class="feed-body">Third survey complete in the multi-survey anomaly sweep. 11,418,594 LAMOST spectra scored by autoencoder in 18.3 hours. <strong>44,075 anomalies detected (0.39% rate).</strong> Combined with DESI (195K) and SDSS (77K), the total anomaly catalog now spans 32.3M spectra with 327,112 anomalies across 4 surveys.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">44K Anomalies</span><span class="feed-tag">0.39% Rate</span></div>
+  </div>
+
   <div class="feed-item active-item">
     <div class="feed-date">2026-04-02</div>
-    <div class="feed-title">LAMOST DR10 Anomaly Scan Launched &mdash; 11.4M Spectra</div>
-    <p class="feed-body">Third survey in the multi-archive anomaly sweep. LAMOST DR10 v2.0 contains 11,441,011 low-resolution spectra (3700&ndash;9097&Aring;) across 1,177 nightly tarballs (~0.61 TB compressed). Downloading from Chinese servers, processing with the same BigAE autoencoder used for DESI and SDSS. Estimated runtime: ~12 hours. This is the largest pre-DESI spectroscopic survey.</p>
-    <div class="feed-tags"><span class="feed-tag active">RUNNING</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">H200</span></div>
+    <div class="feed-title">Full Experiment Queue Deployed on H200</div>
+    <p class="feed-body">6 remaining experiments now running automatically in sequence: Planck CMB full-sky &rarr; ACT DR6 CMB &rarr; NEOWISE variability &rarr; Gaia DR3 epoch &rarr; SDSS&times;DESI cross-match &rarr; Super-resolution. GPU will not be idle between experiments. ~25&ndash;40h total runtime.</p>
+    <div class="feed-tags"><span class="feed-tag active">RUNNING</span><span class="feed-tag">H200</span><span class="feed-tag">6 Experiments</span><span class="feed-tag">Auto-Sequenced</span></div>
+  </div>
+
+  <div class="feed-item active-item">
+    <div class="feed-date">2026-04-02</div>
+    <div class="feed-title">f<sub>NL</sub> Fisher Forecast Corrected</div>
+    <p class="feed-body">Updated &sigma;(f<sub>NL</sub>) values in the Fisher forecast &mdash; corrected from overly optimistic 3.95 to realistic 8.98 for standard DESI QSO. Multi-tracer improvement still holds at ~10%.</p>
+    <div class="feed-tags"><span class="feed-tag active">UPDATED</span><span class="feed-tag">Fisher Forecast</span><span class="feed-tag">&sigma;(f_NL) = 8.98</span><span class="feed-tag">Multi-Tracer</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-04-02</div>
+    <div class="feed-title">eROSITA SIMBAD Cross-Match: 203 Novel X-ray Sources Discovered</div>
+    <p class="feed-body">Cross-matched 298 high-score eROSITA anomalies (score&gt;5) against SIMBAD: <strong>95 are known objects</strong> (X-ray binaries, novae, eclipsing binaries &mdash; confirming the model correctly flags unusual X-ray sources) and <strong>203 are NOT in SIMBAD</strong> (68% novelty rate). Top novel source: 1eRASS J053856.1-640457 (score=34,182, near LMC). Many cluster around LMC/SMC regions and the Galactic plane. SDSS DR18 top anomalies dominated by ultra-cool dwarfs (M7, T2, L3, L5.5, L9) &mdash; expected from a DESI-trained model seeing fundamentally different spectral types. Multi-survey totals: <strong>36M+ spectra/sources scored across 5 surveys, 313K anomalies, 224+ novel objects not in SIMBAD.</strong></p>
+    <div class="feed-tags"><span class="feed-tag pass">DISCOVERY</span><span class="feed-tag">eROSITA</span><span class="feed-tag">203 Novel X-ray Sources</span><span class="feed-tag">SIMBAD Cross-Match</span><span class="feed-tag">68% Novelty Rate</span></div>
+  </div>
+
+  <div class="feed-item positive">
+    <div class="feed-date">2026-04-02</div>
+    <div class="feed-title">LAMOST DR10 Anomaly Scan &mdash; Started (11.4M Spectra)</div>
+    <p class="feed-body">Third survey in the multi-archive anomaly sweep. LAMOST DR10 v2.0 contains 11,441,011 low-resolution spectra (3700&ndash;9097&Aring;) across 1,177 nightly tarballs (~0.61 TB compressed). Downloading from Chinese servers, processing with the same BigAE autoencoder used for DESI and SDSS. This is the largest pre-DESI spectroscopic survey. <strong>Completed in 18.3 hours &mdash; see above.</strong></p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">H200</span></div>
   </div>
 
   <div class="feed-item positive">

@@ -1,0 +1,1402 @@
+[
+  {
+    "plate": 341,
+    "mjd": 51690,
+    "fiberid": 285,
+    "anomaly_score": 194532737024.0,
+    "z_score": 1461.6301779018277
+  },
+  {
+    "plate": 1391,
+    "mjd": 52817,
+    "fiberid": 372,
+    "anomaly_score": 52905955328.0,
+    "z_score": 397.51052241978596
+  },
+  {
+    "plate": 2934,
+    "mjd": 54625,
+    "fiberid": 258,
+    "anomaly_score": 8330577408.0,
+    "z_score": 62.59127037445139
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 252,
+    "anomaly_score": 7106971648.0,
+    "z_score": 53.39764947743841
+  },
+  {
+    "plate": 2145,
+    "mjd": 54210,
+    "fiberid": 417,
+    "anomaly_score": 5966980096.0,
+    "z_score": 44.83226796527107
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 262,
+    "anomaly_score": 4235403008.0,
+    "z_score": 31.821979993902175
+  },
+  {
+    "plate": 2639,
+    "mjd": 54454,
+    "fiberid": 583,
+    "anomaly_score": 2667632896.0,
+    "z_score": 20.04246363775525
+  },
+  {
+    "plate": 287,
+    "mjd": 52023,
+    "fiberid": 584,
+    "anomaly_score": 1293585792.0,
+    "z_score": 9.718494446228584
+  },
+  {
+    "plate": 2068,
+    "mjd": 53381,
+    "fiberid": 491,
+    "anomaly_score": 1075601408.0,
+    "z_score": 8.080658262812037
+  },
+  {
+    "plate": 2150,
+    "mjd": 54508,
+    "fiberid": 367,
+    "anomaly_score": 901522880.0,
+    "z_score": 6.7727108462012655
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 138,
+    "anomaly_score": 478538880.0,
+    "z_score": 3.5946001600419093
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 64,
+    "anomaly_score": 413987840.0,
+    "z_score": 3.109592807454814
+  },
+  {
+    "plate": 1130,
+    "mjd": 52647,
+    "fiberid": 624,
+    "anomaly_score": 402178496.0,
+    "z_score": 3.0208627317003365
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 237,
+    "anomaly_score": 293353952.0,
+    "z_score": 2.2032042713263764
+  },
+  {
+    "plate": 1402,
+    "mjd": 52872,
+    "fiberid": 63,
+    "anomaly_score": 248054752.0,
+    "z_score": 1.8628465471702151
+  },
+  {
+    "plate": 1472,
+    "mjd": 52903,
+    "fiberid": 78,
+    "anomaly_score": 190073680.0,
+    "z_score": 1.4272029660461656
+  },
+  {
+    "plate": 2116,
+    "mjd": 53853,
+    "fiberid": 272,
+    "anomaly_score": 175053680.0,
+    "z_score": 1.3143494715732928
+  },
+  {
+    "plate": 1638,
+    "mjd": 52999,
+    "fiberid": 232,
+    "anomaly_score": 165117088.0,
+    "z_score": 1.2396904083009102
+  },
+  {
+    "plate": 498,
+    "mjd": 51973,
+    "fiberid": 333,
+    "anomaly_score": 141777456.0,
+    "z_score": 1.0643269575079088
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 127,
+    "anomaly_score": 115785160.0,
+    "z_score": 0.8690325878026314
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 234,
+    "anomaly_score": 115300352.0,
+    "z_score": 0.8653899595104606
+  },
+  {
+    "plate": 1154,
+    "mjd": 53083,
+    "fiberid": 487,
+    "anomaly_score": 89279264.0,
+    "z_score": 0.6698792597244333
+  },
+  {
+    "plate": 2586,
+    "mjd": 54167,
+    "fiberid": 486,
+    "anomaly_score": 80125904.0,
+    "z_score": 0.6011050478623685
+  },
+  {
+    "plate": 1164,
+    "mjd": 52673,
+    "fiberid": 149,
+    "anomaly_score": 77749168.0,
+    "z_score": 0.5832473272871703
+  },
+  {
+    "plate": 731,
+    "mjd": 52460,
+    "fiberid": 205,
+    "anomaly_score": 59550588.0,
+    "z_score": 0.4465114186690526
+  },
+  {
+    "plate": 2510,
+    "mjd": 53877,
+    "fiberid": 127,
+    "anomaly_score": 52186772.0,
+    "z_score": 0.39118303196763776
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 307,
+    "anomaly_score": 45840736.0,
+    "z_score": 0.34350178438770096
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 112,
+    "anomaly_score": 42165976.0,
+    "z_score": 0.31589129787976933
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 232,
+    "anomaly_score": 35890096.0,
+    "z_score": 0.26873717078972864
+  },
+  {
+    "plate": 810,
+    "mjd": 52326,
+    "fiberid": 218,
+    "anomaly_score": 34670440.0,
+    "z_score": 0.2595732266049879
+  },
+  {
+    "plate": 1320,
+    "mjd": 52759,
+    "fiberid": 478,
+    "anomaly_score": 34448556.0,
+    "z_score": 0.25790609046866175
+  },
+  {
+    "plate": 2295,
+    "mjd": 53734,
+    "fiberid": 556,
+    "anomaly_score": 31688018.0,
+    "z_score": 0.23716465505420403
+  },
+  {
+    "plate": 324,
+    "mjd": 51637,
+    "fiberid": 71,
+    "anomaly_score": 31353686.0,
+    "z_score": 0.23465263544607456
+  },
+  {
+    "plate": 2563,
+    "mjd": 54653,
+    "fiberid": 66,
+    "anomaly_score": 30650648.0,
+    "z_score": 0.22937032552282427
+  },
+  {
+    "plate": 594,
+    "mjd": 52027,
+    "fiberid": 46,
+    "anomaly_score": 27031552.0,
+    "z_score": 0.2021780731637833
+  },
+  {
+    "plate": 2086,
+    "mjd": 53401,
+    "fiberid": 136,
+    "anomaly_score": 26735468.0,
+    "z_score": 0.19995343174850327
+  },
+  {
+    "plate": 272,
+    "mjd": 51941,
+    "fiberid": 48,
+    "anomaly_score": 25849336.0,
+    "z_score": 0.19329543622491904
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 89,
+    "anomaly_score": 25121570.0,
+    "z_score": 0.18782733128094137
+  },
+  {
+    "plate": 2606,
+    "mjd": 54154,
+    "fiberid": 83,
+    "anomaly_score": 23676420.0,
+    "z_score": 0.17696912705075016
+  },
+  {
+    "plate": 336,
+    "mjd": 51999,
+    "fiberid": 535,
+    "anomaly_score": 23245354.0,
+    "z_score": 0.1737302918677646
+  },
+  {
+    "plate": 1690,
+    "mjd": 53475,
+    "fiberid": 388,
+    "anomaly_score": 22720054.0,
+    "z_score": 0.1697834249805076
+  },
+  {
+    "plate": 2902,
+    "mjd": 54627,
+    "fiberid": 139,
+    "anomaly_score": 22014036.0,
+    "z_score": 0.16447872468352034
+  },
+  {
+    "plate": 2847,
+    "mjd": 54452,
+    "fiberid": 539,
+    "anomaly_score": 21916544.0,
+    "z_score": 0.16374621383910296
+  },
+  {
+    "plate": 2637,
+    "mjd": 54480,
+    "fiberid": 455,
+    "anomaly_score": 21365768.0,
+    "z_score": 0.15960793179703966
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 33,
+    "anomaly_score": 18751060.0,
+    "z_score": 0.13996219712152863
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 83,
+    "anomaly_score": 18145712.0,
+    "z_score": 0.13541388572524604
+  },
+  {
+    "plate": 952,
+    "mjd": 52400,
+    "fiberid": 23,
+    "anomaly_score": 17990228.0,
+    "z_score": 0.1342456491916495
+  },
+  {
+    "plate": 1834,
+    "mjd": 54561,
+    "fiberid": 174,
+    "anomaly_score": 17615246.0,
+    "z_score": 0.13142820384781284
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 110,
+    "anomaly_score": 17042896.0,
+    "z_score": 0.1271278245161518
+  },
+  {
+    "plate": 2567,
+    "mjd": 54179,
+    "fiberid": 178,
+    "anomaly_score": 15973153.0,
+    "z_score": 0.11909025888779667
+  },
+  {
+    "plate": 875,
+    "mjd": 52354,
+    "fiberid": 137,
+    "anomaly_score": 15041396.0,
+    "z_score": 0.11208945772604165
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 195,
+    "anomaly_score": 14880467.0,
+    "z_score": 0.11088030992231163
+  },
+  {
+    "plate": 279,
+    "mjd": 51602,
+    "fiberid": 23,
+    "anomaly_score": 14515610.0,
+    "z_score": 0.108138939254343
+  },
+  {
+    "plate": 2187,
+    "mjd": 54269,
+    "fiberid": 638,
+    "anomaly_score": 14451328.0,
+    "z_score": 0.10765595334677275
+  },
+  {
+    "plate": 2612,
+    "mjd": 54480,
+    "fiberid": 249,
+    "anomaly_score": 14338729.0,
+    "z_score": 0.10680993532918613
+  },
+  {
+    "plate": 2004,
+    "mjd": 53735,
+    "fiberid": 361,
+    "anomaly_score": 14241243.0,
+    "z_score": 0.10607746956605814
+  },
+  {
+    "plate": 2516,
+    "mjd": 54240,
+    "fiberid": 170,
+    "anomaly_score": 13880227.0,
+    "z_score": 0.10336495843685584
+  },
+  {
+    "plate": 411,
+    "mjd": 51871,
+    "fiberid": 295,
+    "anomaly_score": 13801176.0,
+    "z_score": 0.10277100493541942
+  },
+  {
+    "plate": 854,
+    "mjd": 52373,
+    "fiberid": 562,
+    "anomaly_score": 13475258.0,
+    "z_score": 0.10032220432212982
+  },
+  {
+    "plate": 1972,
+    "mjd": 53464,
+    "fiberid": 595,
+    "anomaly_score": 13003877.0,
+    "z_score": 0.09678046044209539
+  },
+  {
+    "plate": 333,
+    "mjd": 52312,
+    "fiberid": 495,
+    "anomaly_score": 11685860.0,
+    "z_score": 0.08687747613952201
+  },
+  {
+    "plate": 1795,
+    "mjd": 54505,
+    "fiberid": 426,
+    "anomaly_score": 11169400.0,
+    "z_score": 0.08299702901865252
+  },
+  {
+    "plate": 2561,
+    "mjd": 54596,
+    "fiberid": 205,
+    "anomaly_score": 11017666.0,
+    "z_score": 0.08185696829093303
+  },
+  {
+    "plate": 919,
+    "mjd": 52405,
+    "fiberid": 505,
+    "anomaly_score": 10849627.0,
+    "z_score": 0.08059439915926013
+  },
+  {
+    "plate": 2539,
+    "mjd": 53918,
+    "fiberid": 487,
+    "anomaly_score": 10705368.0,
+    "z_score": 0.07951050220458888
+  },
+  {
+    "plate": 2874,
+    "mjd": 54556,
+    "fiberid": 203,
+    "anomaly_score": 10377310.0,
+    "z_score": 0.07704562259807879
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 60,
+    "anomaly_score": 10176307.0,
+    "z_score": 0.07553537686242427
+  },
+  {
+    "plate": 2893,
+    "mjd": 54540,
+    "fiberid": 348,
+    "anomaly_score": 9482723.0,
+    "z_score": 0.07032410002417708
+  },
+  {
+    "plate": 1557,
+    "mjd": 53297,
+    "fiberid": 373,
+    "anomaly_score": 9143573.0,
+    "z_score": 0.06777588014065679
+  },
+  {
+    "plate": 2673,
+    "mjd": 54087,
+    "fiberid": 468,
+    "anomaly_score": 8970705.0,
+    "z_score": 0.06647702808456248
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 95,
+    "anomaly_score": 8797322.0,
+    "z_score": 0.06517430655112773
+  },
+  {
+    "plate": 2481,
+    "mjd": 54061,
+    "fiberid": 378,
+    "anomaly_score": 8362581.0,
+    "z_score": 0.06190785907838265
+  },
+  {
+    "plate": 2124,
+    "mjd": 53770,
+    "fiberid": 66,
+    "anomaly_score": 8361758.0,
+    "z_score": 0.06190167542818617
+  },
+  {
+    "plate": 2402,
+    "mjd": 54175,
+    "fiberid": 282,
+    "anomaly_score": 8303813.0,
+    "z_score": 0.06146630287577401
+  },
+  {
+    "plate": 2506,
+    "mjd": 54179,
+    "fiberid": 491,
+    "anomaly_score": 8089797.0,
+    "z_score": 0.05985828333695202
+  },
+  {
+    "plate": 2819,
+    "mjd": 54599,
+    "fiberid": 450,
+    "anomaly_score": 7999645.0,
+    "z_score": 0.0591809219365713
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 8,
+    "anomaly_score": 7903729.0,
+    "z_score": 0.058460252444170496
+  },
+  {
+    "plate": 2829,
+    "mjd": 54623,
+    "fiberid": 168,
+    "anomaly_score": 7647932.0,
+    "z_score": 0.05653830934658878
+  },
+  {
+    "plate": 1963,
+    "mjd": 54329,
+    "fiberid": 10,
+    "anomaly_score": 7646819.0,
+    "z_score": 0.05652994676740447
+  },
+  {
+    "plate": 1803,
+    "mjd": 54152,
+    "fiberid": 88,
+    "anomaly_score": 7490654.5,
+    "z_score": 0.05535659726423477
+  },
+  {
+    "plate": 412,
+    "mjd": 52258,
+    "fiberid": 491,
+    "anomaly_score": 7389279.0,
+    "z_score": 0.05459490755525111
+  },
+  {
+    "plate": 2755,
+    "mjd": 54507,
+    "fiberid": 162,
+    "anomaly_score": 7106197.5,
+    "z_score": 0.0524679610508821
+  },
+  {
+    "plate": 2406,
+    "mjd": 54084,
+    "fiberid": 277,
+    "anomaly_score": 7007193.0,
+    "z_score": 0.05172408596476096
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 269,
+    "anomaly_score": 6669374.0,
+    "z_score": 0.04918586661393996
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 214,
+    "anomaly_score": 6508832.0,
+    "z_score": 0.04797962655337645
+  },
+  {
+    "plate": 735,
+    "mjd": 52519,
+    "fiberid": 562,
+    "anomaly_score": 6057946.0,
+    "z_score": 0.04459187284439539
+  },
+  {
+    "plate": 1447,
+    "mjd": 53120,
+    "fiberid": 174,
+    "anomaly_score": 5973909.0,
+    "z_score": 0.04396045679146485
+  },
+  {
+    "plate": 2019,
+    "mjd": 53430,
+    "fiberid": 440,
+    "anomaly_score": 5606299.0,
+    "z_score": 0.04119840132520834
+  },
+  {
+    "plate": 1023,
+    "mjd": 52795,
+    "fiberid": 288,
+    "anomaly_score": 5481196.0,
+    "z_score": 0.04025843390050529
+  },
+  {
+    "plate": 2914,
+    "mjd": 54532,
+    "fiberid": 282,
+    "anomaly_score": 5470743.5,
+    "z_score": 0.040179898537590665
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 317,
+    "anomaly_score": 5448561.5,
+    "z_score": 0.04001323301066675
+  },
+  {
+    "plate": 676,
+    "mjd": 52174,
+    "fiberid": 340,
+    "anomaly_score": 5336579.0,
+    "z_score": 0.039171847095566315
+  },
+  {
+    "plate": 425,
+    "mjd": 51898,
+    "fiberid": 514,
+    "anomaly_score": 5092784.5,
+    "z_score": 0.03734008536066174
+  },
+  {
+    "plate": 2245,
+    "mjd": 54208,
+    "fiberid": 213,
+    "anomaly_score": 5062467.0,
+    "z_score": 0.03711229336208109
+  },
+  {
+    "plate": 1576,
+    "mjd": 53495,
+    "fiberid": 340,
+    "anomaly_score": 5041893.5,
+    "z_score": 0.036957713377491375
+  },
+  {
+    "plate": 2004,
+    "mjd": 53737,
+    "fiberid": 627,
+    "anomaly_score": 4726399.0,
+    "z_score": 0.03458723023421762
+  },
+  {
+    "plate": 2900,
+    "mjd": 54569,
+    "fiberid": 591,
+    "anomaly_score": 4709309.0,
+    "z_score": 0.03445882369490062
+  },
+  {
+    "plate": 1424,
+    "mjd": 52907,
+    "fiberid": 550,
+    "anomaly_score": 4650996.5,
+    "z_score": 0.034020689913512515
+  },
+  {
+    "plate": 1382,
+    "mjd": 53115,
+    "fiberid": 597,
+    "anomaly_score": 4556898.0,
+    "z_score": 0.03331367629502679
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 302,
+    "anomaly_score": 4530595.0,
+    "z_score": 0.03311604743583105
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 109,
+    "anomaly_score": 4521266.5,
+    "z_score": 0.0330459573011313
+  },
+  {
+    "plate": 1317,
+    "mjd": 52765,
+    "fiberid": 461,
+    "anomaly_score": 4481193.0,
+    "z_score": 0.032744863125980926
+  },
+  {
+    "plate": 1751,
+    "mjd": 53370,
+    "fiberid": 505,
+    "anomaly_score": 4423435.5,
+    "z_score": 0.032310899363862625
+  },
+  {
+    "plate": 2629,
+    "mjd": 54083,
+    "fiberid": 322,
+    "anomaly_score": 4415171.5,
+    "z_score": 0.032248807401257844
+  },
+  {
+    "plate": 1449,
+    "mjd": 53116,
+    "fiberid": 367,
+    "anomaly_score": 4349681.0,
+    "z_score": 0.03175674137064694
+  },
+  {
+    "plate": 1157,
+    "mjd": 52642,
+    "fiberid": 161,
+    "anomaly_score": 4325799.5,
+    "z_score": 0.031577306568499545
+  },
+  {
+    "plate": 967,
+    "mjd": 52636,
+    "fiberid": 582,
+    "anomaly_score": 4263508.0,
+    "z_score": 0.03110927637868883
+  },
+  {
+    "plate": 1028,
+    "mjd": 52562,
+    "fiberid": 517,
+    "anomaly_score": 4154685.25,
+    "z_score": 0.0302916313976204
+  },
+  {
+    "plate": 1028,
+    "mjd": 52559,
+    "fiberid": 517,
+    "anomaly_score": 4154685.25,
+    "z_score": 0.0302916313976204
+  },
+  {
+    "plate": 792,
+    "mjd": 52352,
+    "fiberid": 468,
+    "anomaly_score": 4120906.25,
+    "z_score": 0.03003783125182818
+  },
+  {
+    "plate": 792,
+    "mjd": 52352,
+    "fiberid": 563,
+    "anomaly_score": 4089459.75,
+    "z_score": 0.029801556457291482
+  },
+  {
+    "plate": 1385,
+    "mjd": 53091,
+    "fiberid": 11,
+    "anomaly_score": 3934610.0,
+    "z_score": 0.028638085391662276
+  },
+  {
+    "plate": 1747,
+    "mjd": 53075,
+    "fiberid": 323,
+    "anomaly_score": 3818901.25,
+    "z_score": 0.02776870211745535
+  },
+  {
+    "plate": 2827,
+    "mjd": 54419,
+    "fiberid": 444,
+    "anomaly_score": 3657442.5,
+    "z_score": 0.026555574011548434
+  },
+  {
+    "plate": 1468,
+    "mjd": 52999,
+    "fiberid": 336,
+    "anomaly_score": 3635893.25,
+    "z_score": 0.026393662682269503
+  },
+  {
+    "plate": 1421,
+    "mjd": 53149,
+    "fiberid": 451,
+    "anomaly_score": 3615481.25,
+    "z_score": 0.02624029613571955
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 312,
+    "anomaly_score": 3608078.0,
+    "z_score": 0.02618467145975708
+  },
+  {
+    "plate": 1984,
+    "mjd": 53432,
+    "fiberid": 283,
+    "anomaly_score": 3426731.25,
+    "z_score": 0.024822113906574763
+  },
+  {
+    "plate": 918,
+    "mjd": 52401,
+    "fiberid": 317,
+    "anomaly_score": 3365736.0,
+    "z_score": 0.024363823153662215
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 128,
+    "anomaly_score": 3325327.0,
+    "z_score": 0.02406020818307937
+  },
+  {
+    "plate": 1030,
+    "mjd": 52913,
+    "fiberid": 507,
+    "anomaly_score": 3236458.75,
+    "z_score": 0.023392492300243897
+  },
+  {
+    "plate": 2841,
+    "mjd": 54451,
+    "fiberid": 456,
+    "anomaly_score": 3216681.5,
+    "z_score": 0.0232438949784354
+  },
+  {
+    "plate": 1876,
+    "mjd": 54464,
+    "fiberid": 126,
+    "anomaly_score": 3183211.5,
+    "z_score": 0.022992416519047446
+  },
+  {
+    "plate": 2145,
+    "mjd": 54209,
+    "fiberid": 269,
+    "anomaly_score": 3168625.75,
+    "z_score": 0.022882825782895137
+  },
+  {
+    "plate": 2599,
+    "mjd": 54234,
+    "fiberid": 194,
+    "anomaly_score": 3079183.0,
+    "z_score": 0.022210793366599296
+  },
+  {
+    "plate": 2406,
+    "mjd": 54084,
+    "fiberid": 507,
+    "anomaly_score": 3037532.5,
+    "z_score": 0.02189785032588409
+  },
+  {
+    "plate": 1663,
+    "mjd": 52971,
+    "fiberid": 539,
+    "anomaly_score": 3007448.0,
+    "z_score": 0.02167180898404194
+  },
+  {
+    "plate": 2893,
+    "mjd": 54522,
+    "fiberid": 488,
+    "anomaly_score": 2906369.0,
+    "z_score": 0.020912347042109616
+  },
+  {
+    "plate": 1366,
+    "mjd": 53063,
+    "fiberid": 550,
+    "anomaly_score": 2886698.5,
+    "z_score": 0.020764551791575086
+  },
+  {
+    "plate": 2622,
+    "mjd": 54093,
+    "fiberid": 555,
+    "anomaly_score": 2824839.25,
+    "z_score": 0.020299769332988465
+  },
+  {
+    "plate": 880,
+    "mjd": 52367,
+    "fiberid": 170,
+    "anomaly_score": 2803462.5,
+    "z_score": 0.020139154090779876
+  },
+  {
+    "plate": 2639,
+    "mjd": 54455,
+    "fiberid": 589,
+    "anomaly_score": 2774658.0,
+    "z_score": 0.01992273009067709
+  },
+  {
+    "plate": 2589,
+    "mjd": 54174,
+    "fiberid": 318,
+    "anomaly_score": 2753283.0,
+    "z_score": 0.019762127997177914
+  },
+  {
+    "plate": 2349,
+    "mjd": 53731,
+    "fiberid": 635,
+    "anomaly_score": 2742808.25,
+    "z_score": 0.019683425457815082
+  },
+  {
+    "plate": 1264,
+    "mjd": 52707,
+    "fiberid": 239,
+    "anomaly_score": 2679310.75,
+    "z_score": 0.019206333928834307
+  },
+  {
+    "plate": 2520,
+    "mjd": 54572,
+    "fiberid": 310,
+    "anomaly_score": 2659385.0,
+    "z_score": 0.01905662084511308
+  },
+  {
+    "plate": 2960,
+    "mjd": 54561,
+    "fiberid": 221,
+    "anomaly_score": 2584510.0,
+    "z_score": 0.01849404392110134
+  },
+  {
+    "plate": 2637,
+    "mjd": 54115,
+    "fiberid": 245,
+    "anomaly_score": 2445331.0,
+    "z_score": 0.017448315791458203
+  },
+  {
+    "plate": 2481,
+    "mjd": 54086,
+    "fiberid": 285,
+    "anomaly_score": 2441996.5,
+    "z_score": 0.017423261864872332
+  },
+  {
+    "plate": 1250,
+    "mjd": 52930,
+    "fiberid": 203,
+    "anomaly_score": 2419200.5,
+    "z_score": 0.017251983019332808
+  },
+  {
+    "plate": 2817,
+    "mjd": 54627,
+    "fiberid": 509,
+    "anomaly_score": 2416099.0,
+    "z_score": 0.017228679749485432
+  },
+  {
+    "plate": 2155,
+    "mjd": 53820,
+    "fiberid": 640,
+    "anomaly_score": 2390560.25,
+    "z_score": 0.017036793119527438
+  },
+  {
+    "plate": 1770,
+    "mjd": 53171,
+    "fiberid": 393,
+    "anomaly_score": 2348974.25,
+    "z_score": 0.01672433470267332
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 157,
+    "anomaly_score": 2346158.0,
+    "z_score": 0.016703174672459655
+  },
+  {
+    "plate": 2185,
+    "mjd": 53527,
+    "fiberid": 232,
+    "anomaly_score": 2315048.75,
+    "z_score": 0.016469433822064835
+  },
+  {
+    "plate": 1238,
+    "mjd": 52761,
+    "fiberid": 190,
+    "anomaly_score": 2192851.75,
+    "z_score": 0.015551300768529442
+  },
+  {
+    "plate": 423,
+    "mjd": 51821,
+    "fiberid": 254,
+    "anomaly_score": 2171734.5,
+    "z_score": 0.015392635292087547
+  },
+  {
+    "plate": 1486,
+    "mjd": 52993,
+    "fiberid": 548,
+    "anomaly_score": 2076554.25,
+    "z_score": 0.014677493892799822
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 194,
+    "anomaly_score": 2072833.75,
+    "z_score": 0.014649539736595673
+  },
+  {
+    "plate": 544,
+    "mjd": 52200,
+    "fiberid": 211,
+    "anomaly_score": 1953879.875,
+    "z_score": 0.01375577405917628
+  },
+  {
+    "plate": 2609,
+    "mjd": 54474,
+    "fiberid": 264,
+    "anomaly_score": 1939552.125,
+    "z_score": 0.013648121818468311
+  },
+  {
+    "plate": 2349,
+    "mjd": 53733,
+    "fiberid": 169,
+    "anomaly_score": 1932155.625,
+    "z_score": 0.01359254785895642
+  },
+  {
+    "plate": 1259,
+    "mjd": 52931,
+    "fiberid": 498,
+    "anomaly_score": 1924627.625,
+    "z_score": 0.013535985867851773
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 20,
+    "anomaly_score": 1892121.875,
+    "z_score": 0.01329175234734834
+  },
+  {
+    "plate": 2636,
+    "mjd": 54080,
+    "fiberid": 97,
+    "anomaly_score": 1884184.75,
+    "z_score": 0.013232116375822507
+  },
+  {
+    "plate": 532,
+    "mjd": 51993,
+    "fiberid": 406,
+    "anomaly_score": 1883202.25,
+    "z_score": 0.013224734314682721
+  },
+  {
+    "plate": 845,
+    "mjd": 52381,
+    "fiberid": 508,
+    "anomaly_score": 1860374.25,
+    "z_score": 0.013053215035599716
+  },
+  {
+    "plate": 531,
+    "mjd": 52028,
+    "fiberid": 367,
+    "anomaly_score": 1818379.5,
+    "z_score": 0.012737685455904998
+  },
+  {
+    "plate": 1239,
+    "mjd": 52759,
+    "fiberid": 437,
+    "anomaly_score": 1783871.0,
+    "z_score": 0.012478404176676162
+  },
+  {
+    "plate": 1619,
+    "mjd": 53084,
+    "fiberid": 568,
+    "anomaly_score": 1750041.375,
+    "z_score": 0.0122242236575046
+  },
+  {
+    "plate": 1989,
+    "mjd": 53771,
+    "fiberid": 443,
+    "anomaly_score": 1702133.125,
+    "z_score": 0.011864262710328834
+  },
+  {
+    "plate": 1989,
+    "mjd": 53770,
+    "fiberid": 443,
+    "anomaly_score": 1702133.125,
+    "z_score": 0.011864262710328834
+  },
+  {
+    "plate": 818,
+    "mjd": 52395,
+    "fiberid": 270,
+    "anomaly_score": 1690900.875,
+    "z_score": 0.01177986865817884
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 243,
+    "anomaly_score": 1686754.125,
+    "z_score": 0.01174871185204
+  },
+  {
+    "plate": 2000,
+    "mjd": 53495,
+    "fiberid": 368,
+    "anomaly_score": 1685207.375,
+    "z_score": 0.011737090271309246
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 296,
+    "anomaly_score": 1662486.625,
+    "z_score": 0.011566376820274324
+  },
+  {
+    "plate": 2627,
+    "mjd": 54379,
+    "fiberid": 581,
+    "anomaly_score": 1626716.625,
+    "z_score": 0.01129761719994845
+  },
+  {
+    "plate": 2323,
+    "mjd": 54380,
+    "fiberid": 157,
+    "anomaly_score": 1593493.875,
+    "z_score": 0.011047996465361323
+  },
+  {
+    "plate": 1663,
+    "mjd": 52973,
+    "fiberid": 149,
+    "anomaly_score": 1575900.375,
+    "z_score": 0.010915806854508561
+  },
+  {
+    "plate": 2073,
+    "mjd": 53728,
+    "fiberid": 625,
+    "anomaly_score": 1570256.25,
+    "z_score": 0.010873399449083016
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 215,
+    "anomaly_score": 1557649.125,
+    "z_score": 0.010778675207304965
+  },
+  {
+    "plate": 1024,
+    "mjd": 52819,
+    "fiberid": 103,
+    "anomaly_score": 1547588.625,
+    "z_score": 0.010703085155298019
+  },
+  {
+    "plate": 1137,
+    "mjd": 52970,
+    "fiberid": 125,
+    "anomaly_score": 1527156.625,
+    "z_score": 0.01054956833778339
+  },
+  {
+    "plate": 1687,
+    "mjd": 53260,
+    "fiberid": 109,
+    "anomaly_score": 1518066.625,
+    "z_score": 0.010481270184337423
+  },
+  {
+    "plate": 2299,
+    "mjd": 53711,
+    "fiberid": 119,
+    "anomaly_score": 1494422.25,
+    "z_score": 0.010303617032314985
+  },
+  {
+    "plate": 950,
+    "mjd": 52378,
+    "fiberid": 58,
+    "anomaly_score": 1471075.125,
+    "z_score": 0.010128197282505066
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 278,
+    "anomaly_score": 1466652.25,
+    "z_score": 0.010094965797860147
+  },
+  {
+    "plate": 1468,
+    "mjd": 52996,
+    "fiberid": 356,
+    "anomaly_score": 1463576.25,
+    "z_score": 0.010071854123492733
+  },
+  {
+    "plate": 2330,
+    "mjd": 53738,
+    "fiberid": 406,
+    "anomaly_score": 1451240.125,
+    "z_score": 0.009979166053286064
+  },
+  {
+    "plate": 1010,
+    "mjd": 52649,
+    "fiberid": 411,
+    "anomaly_score": 1433231.25,
+    "z_score": 0.009843855502335654
+  },
+  {
+    "plate": 2338,
+    "mjd": 53679,
+    "fiberid": 315,
+    "anomaly_score": 1430510.5,
+    "z_score": 0.009823413015978326
+  },
+  {
+    "plate": 1558,
+    "mjd": 53271,
+    "fiberid": 9,
+    "anomaly_score": 1419114.75,
+    "z_score": 0.009737790498692092
+  },
+  {
+    "plate": 579,
+    "mjd": 52338,
+    "fiberid": 7,
+    "anomaly_score": 1386755.25,
+    "z_score": 0.009494655834617864
+  },
+  {
+    "plate": 2893,
+    "mjd": 54515,
+    "fiberid": 362,
+    "anomaly_score": 1384448.75,
+    "z_score": 0.00947732583561642
+  },
+  {
+    "plate": 2707,
+    "mjd": 54140,
+    "fiberid": 518,
+    "anomaly_score": 1381564.5,
+    "z_score": 0.009455654884122852
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 261,
+    "anomaly_score": 1347589.25,
+    "z_score": 0.009200380204489732
+  },
+  {
+    "plate": 2185,
+    "mjd": 53532,
+    "fiberid": 525,
+    "anomaly_score": 1347508.125,
+    "z_score": 0.009199770667889259
+  },
+  {
+    "plate": 855,
+    "mjd": 52375,
+    "fiberid": 305,
+    "anomaly_score": 1341861.875,
+    "z_score": 0.009157347296173715
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 231,
+    "anomaly_score": 1326666.5,
+    "z_score": 0.009043176113179327
+  },
+  {
+    "plate": 1401,
+    "mjd": 53144,
+    "fiberid": 464,
+    "anomaly_score": 1319342.75,
+    "z_score": 0.00898814876430145
+  },
+  {
+    "plate": 707,
+    "mjd": 52177,
+    "fiberid": 245,
+    "anomaly_score": 1317142.75,
+    "z_score": 0.008971618958186914
+  },
+  {
+    "plate": 496,
+    "mjd": 51969,
+    "fiberid": 286,
+    "anomaly_score": 1302328.25,
+    "z_score": 0.008860309497876105
+  },
+  {
+    "plate": 316,
+    "mjd": 51584,
+    "fiberid": 155,
+    "anomaly_score": 1291608.5,
+    "z_score": 0.008779766139195974
+  },
+  {
+    "plate": 1180,
+    "mjd": 52993,
+    "fiberid": 439,
+    "anomaly_score": 1290051.625,
+    "z_score": 0.008768068483789351
+  },
+  {
+    "plate": 1529,
+    "mjd": 52930,
+    "fiberid": 341,
+    "anomaly_score": 1287010.375,
+    "z_score": 0.008745217905223064
+  },
+  {
+    "plate": 1180,
+    "mjd": 52995,
+    "fiberid": 428,
+    "anomaly_score": 1281478.125,
+    "z_score": 0.008703651078006185
+  },
+  {
+    "plate": 1637,
+    "mjd": 52992,
+    "fiberid": 452,
+    "anomaly_score": 1270468.5,
+    "z_score": 0.008620929729531757
+  },
+  {
+    "plate": 2818,
+    "mjd": 54614,
+    "fiberid": 441,
+    "anomaly_score": 1252243.625,
+    "z_score": 0.00848399625216283
+  },
+  {
+    "plate": 2333,
+    "mjd": 53676,
+    "fiberid": 109,
+    "anomaly_score": 1243675.375,
+    "z_score": 0.00841961829250789
+  },
+  {
+    "plate": 348,
+    "mjd": 51696,
+    "fiberid": 333,
+    "anomaly_score": 1239830.125,
+    "z_score": 0.008390726821161563
+  }
+]

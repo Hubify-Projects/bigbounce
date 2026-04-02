@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-04-02T15:12:05",
+  "match_radius_arcsec": 3.0,
+  "score_thresholds": {
+    "SDSS": 5.0,
+    "DESI": 5.0,
+    "eROSITA": 5.0
+  },
+  "catalog_sizes": {
+    "SDSS": 77905,
+    "SDSS_with_coords": 52315,
+    "DESI": 250120,
+    "eROSITA": 298
+  },
+  "pairwise_matches": {
+    "SDSS_x_DESI": 3,
+    "SDSS_x_eROSITA": 0,
+    "DESI_x_eROSITA": 0
+  },
+  "triple_matches": 0,
+  "total_runtime_seconds": 4.8,
+  "top10_SDSS_x_DESI": [
+    {
+      "ra": 160.14894,
+      "dec": 5.0915486,
+      "survey_a_score": 49.51620101928711,
+      "survey_b_score": 6.452434539794922,
+      "separation_arcsec": 0.8271673694912441
+    },
+    {
+      "ra": 146.4665,
+      "dec": 56.344646,
+      "survey_a_score": 9.769781112670898,
+      "survey_b_score": 5.8828535079956055,
+      "separation_arcsec": 1.6406056880432327
+    },
+    {
+      "ra": 220.96111,
+      "dec": 36.387542,
+      "survey_a_score": 6.006871700286865,
+      "survey_b_score": 7.232244491577148,
+      "separation_arcsec": 0.1702016704407983
+    }
+  ],
+  "top10_SDSS_x_eROSITA": [],
+  "top10_DESI_x_eROSITA": []
+}
