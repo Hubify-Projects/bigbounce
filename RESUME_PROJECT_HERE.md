@@ -42,13 +42,14 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - RTX A4000 MCMC pod (`fn19oivkjowmq4`) — w0-wa CONVERGED, chains frozen
 - CPU pipeline B pod (`kqo1b4e4igycra`) — redundant with H200
 
-### H200 Pod Live Status (checked 2026-04-02 ~7:15 PM)
+### H200 Pod Live Status (checked 2026-04-02 ~7:15 PM UTC)
 - **LAMOST DR10 scan ACTIVELY RUNNING** — `lamost_scan_v2.py` in tmux
-- **Progress:** 710/1177 nights (60%), 7.7M spectra scored, 23K anomalies (0.3%)
-- **Rate:** 58 nights/hr, **ETA: ~8 hours** (~3 AM Apr 3)
-- **GPU idle** (0% util) — LAMOST is CPU-bound download+scoring
+- **Progress:** 1,020/1,177 nights (86.7%), 10.15M spectra scored, 37,110 anomalies (0.37%)
+- **Rate:** 63 nights/hr, **ETA: ~2.5 hours** (~10 PM UTC Apr 2)
+- **GPU idle** (0% util) — LAMOST is CPU/network-bound
 - **95 LAMOST batch parquets** already saved (522 MB in `/workspace/bigbounce/outputs/lamost/`)
-- **Cost to finish:** ~$29 more at $3.59/hr
+- **AUTO-CHAIN DEPLOYED:** tmux session `autochain` will auto-start `planck_cmb_scan.py` after LAMOST finishes (~8h Planck run)
+- **Cost to finish LAMOST+Planck:** ~$38 more at $3.59/hr
 
 ### H200 Pod Data Inventory (20 GB total on `/workspace/bigbounce/`)
 | Directory | Size | Contents |
@@ -97,10 +98,19 @@ Steps 2-6 in `project-context/pipeline1_tracer_purification_plan.md`:
 - Compute f_NL for Lee-Wick quintom bounce (literature gap — nobody has done this)
 - If f_NL = -35/8 is mechanism-independent across matter bounce AND quintom, that's a major result
 
-### Priority 4: Update Website
-- `activity.html` needs new timeline entries for April work
-- `index.html` stat cards may need updating
-- Papers page needs chirality paper progress update
+### Priority 4: Finish Galaxy Chirality Paper (85% → 100%)
+Paper is at `pipelines/p2_chirality/chirality_catalog_paper.tex`. PDF compiled (25.6MB). All 11 figures present. 23 refs matched. No TODOs. **Needs before journal submission:**
+1. **Confusion matrix table** — 3-class (CW/CCW/NS) predicted vs true on validation set. The 93.7% accuracy is in abstract but never shown in body.
+2. **Training curves figure** — loss + accuracy vs epoch. Standard for ML papers, will be requested by reviewers.
+3. **Redshift distribution** — paper never mentions redshift range. Add median photo-z and distribution plot.
+4. **NSIDE dependence table** — Sec 4.5 describes testing at NSIDE={8,16,32,64,128} but shows no table/figure.
+5. **Trim bounce cosmology section (Sec 6.5)** — makes unsupported claims about ECH parity violation. Either derive the $|A_{dipole}| < 5\times10^{-3}$ constraint properly or reduce to 2-3 sentences.
+6. **Optional improvements:** injection-recovery test for sensitivity floor, cross-match with GZ DESI vote fractions, include unused `fig_gallery_notspi.png` and `fig_cw_fraction_heatmap.png`
+
+### Priority 5: Update Website
+- `index.html` — add stat cards for SDSS 77K, eROSITA 9K, and multi-survey sweep totals
+- `activity.html` — update when LAMOST/Planck finish
+- Keep `paper.html` current (already has Paper 4)
 
 ## KEY FILE LOCATIONS
 
