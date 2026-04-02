@@ -42,12 +42,41 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - RTX A4000 MCMC pod (`fn19oivkjowmq4`) — w0-wa CONVERGED, chains frozen
 - CPU pipeline B pod (`kqo1b4e4igycra`) — redundant with H200
 
-### What Was Just Committed (last commit before this file)
+### H200 Pod Live Status (checked 2026-04-02 ~7:15 PM)
+- **LAMOST DR10 scan ACTIVELY RUNNING** — `lamost_scan_v2.py` in tmux
+- **Progress:** 710/1177 nights (60%), 7.7M spectra scored, 23K anomalies (0.3%)
+- **Rate:** 58 nights/hr, **ETA: ~8 hours** (~3 AM Apr 3)
+- **GPU idle** (0% util) — LAMOST is CPU-bound download+scoring
+- **95 LAMOST batch parquets** already saved (522 MB in `/workspace/bigbounce/outputs/lamost/`)
+- **Cost to finish:** ~$29 more at $3.59/hr
+
+### H200 Pod Data Inventory (20 GB total on `/workspace/bigbounce/`)
+| Directory | Size | Contents |
+|---|---|---|
+| `outputs/sdss_batch_*.parquet` (46 files) | 1.8 GB | SDSS DR18 anomaly scan — 77K anomalies from 2.3M spectra |
+| `outputs/erosita/` | 1.7 GB | eROSITA DR1 X-ray anomaly scan — 9.3K anomalies |
+| `outputs/lamost/` (95+ batches, growing) | 522 MB | LAMOST DR10 partial — 7.7M spectra, 23K anomalies so far |
+| `temp/sdss/` | 15 GB | Raw SDSS FITS spectra (downloaded, can re-download) |
+| `temp_lamost/` | 508 MB | LAMOST temp download cache |
+| `outputs/injection_recovery_real/` | ~1 MB | Injection recovery test |
+| `outputs/multi_resolution/` | ~1 MB | Multi-resolution anomaly test |
+| `outputs/recursive_anomalies/` | ~4 MB | Recursive anomaly detection |
+| Scripts | ~150 KB | `sdss_dr18_scan.py`, `lamost_scan_v2.py`, `erosita_scan.py`, `planck_cmb_scan.py`, etc. |
+| `best_model_47k.pt` | 3.4 MB | Trained spectral autoencoder (also in local repo) |
+
+**CRITICAL:** When LAMOST finishes (~3 AM Apr 3), SSH in from other Mac and run:
+```bash
+scp -P 34546 -i ~/.ssh/id_ed25519 -r root@103.196.86.169:/workspace/bigbounce/outputs/ ./pipelines/h200_results/
+```
+Then stop the pod to save money.
+
+### What Was Just Committed (last 2 commits)
 - Corrected f_NL Fisher forecast σ values (were too optimistic)
 - Chirality paper figure formatting fixes
 - NANOGrav bounce fit results + chain (γ=6.7 free fit vs γ=3.0 predicted — 7.5σ tension in FREE fit, but Papanikolaou 2025 shows consistency via different analysis)
 - `best_model_47k.pt` — trained spectral anomaly model (47K params)
 - `download_uncataloged_spectra.py` — script to get spectra not in catalogs
+- This resume file + local data inventory
 
 ## IMMEDIATE NEXT STEPS (resume here)
 
