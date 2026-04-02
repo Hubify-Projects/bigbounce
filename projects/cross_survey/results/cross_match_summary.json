@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T15:12:05",
+  "timestamp": "2026-04-02T15:18:14",
   "match_radius_arcsec": 3.0,
   "score_thresholds": {
     "SDSS": 5.0,
@@ -8,7 +8,7 @@
   },
   "catalog_sizes": {
     "SDSS": 77905,
-    "SDSS_with_coords": 52315,
+    "SDSS_with_coords": 77469,
     "DESI": 250120,
     "eROSITA": 298
   },
@@ -18,7 +18,7 @@
     "DESI_x_eROSITA": 0
   },
   "triple_matches": 0,
-  "total_runtime_seconds": 4.8,
+  "total_runtime_seconds": 205.6,
   "top10_SDSS_x_DESI": [
     {
       "ra": 160.14894,

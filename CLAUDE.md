@@ -26,10 +26,16 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - w0-wa MCMC: quintom-B (w-crossing) favored at 2.3σ, P(quintom-B) = 98.6%
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
 - 424,181+ MCMC posterior samples across 3 frozen dataset combinations
+- Multi-survey anomaly sweep (4 surveys, 32.3M spectra, 327,112 anomalies total):
+  - DESI DR1: 18.7M spectra, 195,829 anomalies (1.05%)
+  - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%)
+  - eROSITA DR1: 930K sources, 9,303 anomalies (1%)
+  - LAMOST DR10: 11.4M spectra, 44,075 anomalies (0.39%)
+- f_NL Fisher forecast (corrected): σ(f_NL) = 8.98 standard, 8.12 multi-tracer
 
-**Active pods & pipelines:** See `project-context/active_pods_and_pipelines.md` for live status of all running compute. DO NOT TERMINATE any pods without explicit user approval.
+**Active pods & pipelines:** See `project-context/active_pods_and_pipelines.md` for live status. H200 pod running full 10-experiment queue via `research_monitor.sh`. DO NOT TERMINATE any pods without explicit user approval.
 
-**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — the H200 DESI DR1 anomaly scan feeds directly into f_NL tracer improvement. Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work waiting to be done after the H200 finishes.
+**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — multi-survey anomaly catalogs feed directly into f_NL tracer improvement. Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work waiting to be done after the H200 finishes.
 
 ## Website Architecture
 
@@ -127,6 +133,13 @@ When the user says **"update the site"** or **"sync the website"** or **"update 
 - `research/final_phase/` — Paper structure, claims lock, figure plan
 - `research/project_master_dossier/` — Full project intelligence dossier (12 markdown files + HTML dashboard)
 
+### Projects & Pipelines
+- `projects/` — Per-survey and per-topic research projects (nanograv, sdss-dr18, cross_survey, h200_scripts, desi-dr1-anomalies, erosita-xray, etc.)
+- `pipelines/h200_results/` — H200 anomaly sweep outputs across all surveys
+- `pipelines/p1_highz_tracers/` — High-z tracer purification for f_NL
+- `pipelines/p2_chirality/` — Galaxy chirality catalog (8.47M galaxies, complete)
+- `pipelines/p3_anomaly_engine/` — Multi-survey anomaly detection engine
+
 ### Reproducibility
 - `reproducibility/cosmology/` — Cobaya YAML configs, MCMC chains, convergence diagnostics
 - `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/` — 4 datasets × 6-7 chains
@@ -194,6 +207,7 @@ pdflatex -interaction=nonstopmode paper.tex && pdflatex -interaction=nonstopmode
 |-------|--------|-----|---------|
 | Paper 1 (Spin-Torsion) | `arxiv/main.tex` | `arxiv/main.pdf` | `public/images/` |
 | Paper 2 (f_NL Forecast) | `research/focused_paper_source_integration/02_full_draft.tex` | — | — |
+| Paper 3 (Anomaly Catalog) | `pipelines/p3_anomaly_engine/` | — | — |
 | Paper 4 (Chirality Catalog) | `pipelines/p2_chirality/chirality_catalog_paper.tex` | `public/papers/chirality_catalog_paper.pdf` | `public/images/chirality/` |
 
 ### Publishing PDFs to the Website
