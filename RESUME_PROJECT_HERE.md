@@ -108,6 +108,82 @@ Steps 2-6 in `project-context/pipeline1_tracer_purification_plan.md`:
 5. **All papers use revtex4-2** (PRD style), compile on RunPod (local Mac has no LaTeX)
 6. **Website must stay in sync** with research — see CLAUDE.md sync protocol
 
+## LOCAL-ONLY DATA — NOT IN GIT (must recover separately)
+
+**Total local-only data: ~4.8 GB**
+
+### Critical (gitignored, not pushed)
+| What | Size | Where to recover |
+|---|---|---|
+| `data/runpod_backups/` | **2.2 GB** | 176 parquet files: chirality catalogs (full 8.47M), bispectrum results, eq shards, audit results. **Also on HuggingFace `bamfai/bigbounce-mcmc` + Backblaze B2** |
+| `pipelines/h200_results/sdss_dr18/` (46 parquets) | **~1.8 GB** | SDSS anomaly batches. **Still on H200 pod `/workspace/`** |
+| `pipelines/h200_results/erosita/` | **~100 MB** | eROSITA anomalies. **Still on H200 pod** |
+| `reproducibility/cosmology/archives/` | **15 MB** | GPU run snapshot tar.gz. **Also on Backblaze B2** |
+| `data/public_mirror/galaxy_zoo_decals/` | **Large** | Galaxy Zoo parquet. **Re-download from Zenodo** |
+
+### Credentials & Keys (MUST recreate on new Mac)
+| What | How to recover |
+|---|---|
+| **`.env.local`** | Contains: RUNPOD_API_KEY, HF_TOKEN, CONVEX keys (dev+prod deploy keys + URLs), B2 keys (KEY_ID + APP_KEY + BUCKET + ENDPOINT). Get from respective dashboards: runpod.io, huggingface.co, convex.dev, backblaze.com |
+| **`~/.ssh/id_ed25519`** | SSH key for RunPod pods. Generate new keypair and add to RunPod console, OR copy from this Mac before it dies |
+| **RunPod pod SSH configs** | In `.env.local` — H200 pod `7zong4jdj46yjp` at `103.196.86.169:34546` |
+
+### Safe to regenerate (don't worry about these)
+| What | How |
+|---|---|
+| `node_modules/` (56 MB) | `npm install` |
+| LaTeX build artifacts (`arxiv/main.aux` etc.) | Recompile on RunPod |
+| `__pycache__/`, `.ipynb_checkpoints/` | Auto-generated |
+
+### In Git via LFS (will clone automatically with `git lfs pull`)
+| What | Size |
+|---|---|
+| `reproducibility/cosmology/frozen/` | **257 MB** — frozen MCMC chains (full_tension + planck_bao_sn) |
+| `reproducibility/cosmology/chains/w0wa_quintom/` | **42 MB** — quintom w0-wa chains |
+| All chain `.txt` and `.covmat` files | Tracked by Git LFS |
+
+### Data also backed up externally
+| Backup location | What's there | How to access |
+|---|---|---|
+| **HuggingFace** `bamfai/bigbounce-mcmc` | MCMC chains + chirality catalog | `huggingface-cli download bamfai/bigbounce-mcmc` |
+| **HuggingFace** `bamfai/desi-spectral-anomaly-detector` | Trained anomaly model | `huggingface-cli download bamfai/desi-spectral-anomaly-detector` |
+| **Backblaze B2** bucket (in .env.local) | MCMC chains + scripts + figures | Use `b2` CLI with keys from .env.local |
+| **Convex** (convex.dev dashboard) | Galaxy explorer data | Schema in `convex/schema.ts` |
+| **H200 RunPod pod** | All pipeline results, SDSS/eROSITA/LAMOST data | SSH in and `scp` back |
+
+## SETUP ON NEW MAC
+
+```bash
+# 1. Clone
+git clone https://github.com/Hubify-Projects/bigbounce.git
+cd bigbounce
+git lfs pull  # Gets the 300MB of MCMC chains
+
+# 2. Install deps
+npm install
+
+# 3. Recreate .env.local (get keys from respective dashboards)
+cp .env.example .env.local
+# Fill in: RUNPOD_API_KEY, HF_TOKEN, CONVEX_*, B2_*
+
+# 4. Generate SSH key for RunPod
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+# Add public key to RunPod console
+
+# 5. Recover local-only data from H200 pod
+ssh root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519
+# scp back: /workspace/sdss_dr18/, /workspace/erosita/, etc.
+
+# 6. Recover from HuggingFace
+pip install huggingface-cli
+huggingface-cli download bamfai/bigbounce-mcmc --local-dir data/runpod_backups/
+
+# 7. Test site
+node server.js  # http://localhost:3000
+
+# 8. Read this file + CLAUDE.md + project-context/ to get oriented
+```
+
 ## RunPod API
 - API key in `.env.local`
 - Management script: `research/runpod_cloud.py`
