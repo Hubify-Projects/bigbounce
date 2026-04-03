@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "script": "planck_act_cmb_crossmatch.py",
+    "date": "2026-04-02",
+    "planck_n_total": 20000,
+    "act_n_total": 20000,
+    "n_top_selected": 200,
+    "match_radius_deg": 2.0,
+    "planck_summary_timestamp": "2026-04-03 14:22:07",
+    "act_summary_timestamp": "2026-04-02 23:35:53"
+  },
+  "catalog_stats": {
+    "planck_top200_scores": {
+      "min": 0.9261616468429565,
+      "max": 0.9905823469161987,
+      "mean": 0.9388394528627395,
+      "median": 0.9346056580543518,
+      "std": 0.012480945869514237
+    },
+    "act_top200_scores": {
+      "min": 69851.78125,
+      "max": 26372620.0,
+      "mean": 898808.4190625,
+      "median": 153447.4140625,
+      "std": 3123355.0668679266
+    },
+    "planck_top200_score_threshold": 0.9261616468429565,
+    "act_top200_score_threshold": 69851.78125
+  },
+  "crossmatch": {
+    "n_matches": 15,
+    "match_radius_deg": 2.0,
+    "expected_random": 12.183459618084758,
+    "significance_note": "Expected random coincidences (N=200x200, r=2.0 deg): 12.18. Observed: 15. Modest excess: 1.2x expected.",
+    "matches": [
+      {
+        "planck_rank": 1,
+        "act_rank": 199,
+        "ra_planck": 102.115385,
+        "dec_planck": -85.24736,
+        "ra_act": 86.983333,
+        "dec_act": -84.052326,
+        "sep_deg": 1.839242,
+        "planck_score": 0.990582,
+        "planck_score_norm": 1.0,
+        "act_score": 70047.046875,
+        "act_score_norm": 0.002656,
+        "ra_mean": 94.549359,
+        "dec_mean": -84.649843
+      },
+      {
+        "planck_rank": 2,
+        "act_rank": 199,
+        "ra_planck": 98.035714,
+        "dec_planck": -84.881538,
+        "ra_act": 86.983333,
+        "dec_act": -84.052326,
+        "sep_deg": 1.346637,
+        "planck_score": 0.983565,
+        "planck_score_norm": 0.98402,
+        "act_score": 70047.046875,
+        "act_score_norm": 0.002656,
+        "ra_mean": 92.509524,
+        "dec_mean": -84.466932
+      },
+      {
+        "planck_rank": 3,
+        "act_rank": 199,
+        "ra_planck": 79.137931,
+        "dec_planck": -84.698607,
+        "ra_act": 86.983333,
+        "dec_act": -84.052326,
+        "sep_deg": 1.003026,
+        "planck_score": 0.979846,
+        "planck_score_norm": 0.975552,
+        "act_score": 70047.046875,
+        "act_score_norm": 0.002656,
+        "ra_mean": 83.060632,
+        "dec_mean": -84.375466
+      },
+      {
+        "planck_rank": 4,
+        "act_rank": 199,
+        "ra_planck": 84.375,
+        "dec_planck": -85.613134,
+        "ra_act": 86.983333,
+        "dec_act": -84.052326,
+        "sep_deg": 1.577987,
+        "planck_score": 0.973771,
+        "planck_score_norm": 0.961717,
+        "act_score": 70047.046875,
+        "act_score_norm": 0.002656,
+        "ra_mean": 85.679167,
+        "dec_mean": -84.83273
+      },
+      {
+        "planck_rank": 7,
+        "act_rank": 199,
+        "ra_planck": 103.064516,
+        "dec_planck": -84.332705,
+        "ra_act": 86.983333,
+        "dec_act": -84.052326,
+        "sep_deg": 1.645505,
+        "planck_score": 0.968865,
+        "planck_score_norm": 0.950546,
+        "act_score": 70047.046875,
+        "act_score_norm": 0.002656,
+        "ra_mean": 95.023925,
+        "dec_mean": -84.192515
+      },
+      {
+        "planck_rank": 44,
+        "act_rank": 122,
+        "ra_planck": 154.038462,
+        "dec_planck": -85.24736,
+        "ra_act": 153.391667,
+        "dec_act": -86.145349,
+        "sep_deg": 0.899285,
+        "planck_score": 0.946907,
+        "planck_score_norm": 0.900543,
+        "act_score": 127811.890625,
+        "act_score_norm": 0.004846,
+        "ra_mean": 153.715064,
+        "dec_mean": -85.696355
+      },
+      {
+        "planck_rank": 49,
+        "act_rank": 122,
+        "ra_planck": 154.565217,
+        "dec_planck": -85.796004,
+        "ra_act": 153.391667,
+        "dec_act": -86.145349,
+        "sep_deg": 0.358927,
+        "planck_score": 0.944973,
+        "planck_score_norm": 0.89614,
+        "act_score": 127811.890625,
+        "act_score_norm": 0.004846,
+        "ra_mean": 153.978442,
+        "dec_mean": -85.970676
+      },
+      {
+        "planck_rank": 70,
+        "act_rank": 122,
+        "ra_planck": 122.5,
+        "dec_planck": -86.710202,
+        "ra_act": 153.391667,
+        "dec_act": -86.145349,
+        "sep_deg": 1.978036,
+        "planck_score": 0.940074,
+        "planck_score_norm": 0.884983,
+        "act_score": 127811.890625,
+        "act_score_norm": 0.004846,
+        "ra_mean": 137.945833,
+        "dec_mean": -86.427776
+      },
+      {
+        "planck_rank": 83,
+        "act_rank": 90,
+        "ra_planck": 67.148438,
+        "dec_planck": -5.529265,
+        "ra_act": 66.725,
+        "dec_act": -5.372093,
+        "sep_deg": 0.449872,
+        "planck_score": 0.937588,
+        "planck_score_norm": 0.879323,
+        "act_score": 177710.546875,
+        "act_score_norm": 0.006738,
+        "ra_mean": 66.936719,
+        "dec_mean": -5.450679
+      },
+      {
+        "planck_rank": 100,
+        "act_rank": 90,
+        "ra_planck": 66.796875,
+        "dec_planck": -5.229529,
+        "ra_act": 66.725,
+        "dec_act": -5.372093,
+        "sep_deg": 0.159519,
+        "planck_score": 0.93469,
+        "planck_score_norm": 0.872723,
+        "act_score": 177710.546875,
+        "act_score_norm": 0.006738,
+        "ra_mean": 66.760937,
+        "dec_mean": -5.300811
+      },
+      {
+        "planck_rank": 117,
+        "act_rank": 90,
+        "ra_planck": 67.324219,
+        "dec_planck": -5.979157,
+        "ra_act": 66.725,
+        "dec_act": -5.372093,
+        "sep_deg": 0.850926,
+        "planck_score": 0.932479,
+        "planck_score_norm": 0.867689,
+        "act_score": 177710.546875,
+        "act_score_norm": 0.006738,
+        "ra_mean": 67.024609,
+        "dec_mean": -5.675625
+      },
+      {
+        "planck_rank": 118,
+        "act_rank": 90,
+        "ra_planck": 68.203125,
+        "dec_planck": -4.630479,
+        "ra_act": 66.725,
+        "dec_act": -5.372093,
+        "sep_deg": 1.648699,
+        "planck_score": 0.932368,
+        "planck_score_norm": 0.867435,
+        "act_score": 177710.546875,
+        "act_score_norm": 0.006738,
+        "ra_mean": 67.464062,
+        "dec_mean": -5.001286
+      },
+      {
+        "planck_rank": 140,
+        "act_rank": 86,
+        "ra_planck": 56.074219,
+        "dec_planck": 28.63099,
+        "ra_act": 56.108333,
+        "dec_act": 29.633721,
+        "sep_deg": 1.003174,
+        "planck_score": 0.930048,
+        "planck_score_norm": 0.862153,
+        "act_score": 191391.546875,
+        "act_score_norm": 0.007257,
+        "ra_mean": 56.091276,
+        "dec_mean": 29.132355
+      },
+      {
+        "planck_rank": 158,
+        "act_rank": 86,
+        "ra_planck": 55.898438,
+        "dec_planck": 28.461133,
+        "ra_act": 56.108333,
+        "dec_act": 29.633721,
+        "sep_deg": 1.186857,
+        "planck_score": 0.928559,
+        "planck_score_norm": 0.858762,
+        "act_score": 191391.546875,
+        "act_score_norm": 0.007257,
+        "ra_mean": 56.003385,
+        "dec_mean": 29.047427
+      },
+      {
+        "planck_rank": 185,
+        "act_rank": 90,
+        "ra_planck": 66.445312,
+        "dec_planck": -5.829153,
+        "ra_act": 66.725,
+        "dec_act": -5.372093,
+        "sep_deg": 0.535148,
+        "planck_score": 0.92714,
+        "planck_score_norm": 0.855531,
+        "act_score": 177710.546875,
+        "act_score_norm": 0.006738,
+        "ra_mean": 66.585156,
+        "dec_mean": -5.600623
+      }
+    ]
+  },
+  "score_correlation": {
+    "n_matched": 15,
+    "pearson_r": -0.952903629357284,
+    "pearson_p": 4.154590348411743e-08,
+    "spearman_r": -0.932910750711633,
+    "spearman_p": 3.9462096140007946e-07,
+    "interpretation": "Anti-correlation (statistically significant, p<0.05)"
+  },
+  "known_anomaly_comparison": [
+    {
+      "known_anomaly": "CMB Cold Spot",
+      "description": "Supervoid candidate, Eridanus Supervoid; ~3-4 sigma below average temperature",
+      "reference_ra": 209.0,
+      "reference_dec": -57.0,
+      "search_radius_deg": 10.0,
+      "n_planck_top200_nearby": 0,
+      "n_act_top200_nearby": 0,
+      "n_crossmatched_hits": 0,
+      "crossmatched_hits": [],
+      "both_instruments_flag": false
+    },
+    {
+      "known_anomaly": "Hemispherical Power Asymmetry Axis (preferred)",
+      "description": "Low-multipole alignment dipole axis; WMAP/Planck confirmed",
+      "reference_ra": 221.0,
+      "reference_dec": -20.0,
+      "search_radius_deg": 30.0,
+      "n_planck_top200_nearby": 22,
+      "n_act_top200_nearby": 0,
+      "n_crossmatched_hits": 0,
+      "crossmatched_hits": [],
+      "both_instruments_flag": false
+    },
+    {
+      "known_anomaly": "Axis of Evil / Quadrupole-Octupole Alignment",
+      "description": "Quadrupole/octupole anomalous alignment axis",
+      "reference_ra": 240.0,
+      "reference_dec": -60.0,
+      "search_radius_deg": 20.0,
+      "n_planck_top200_nearby": 0,
+      "n_act_top200_nearby": 8,
+      "n_crossmatched_hits": 0,
+      "crossmatched_hits": [],
+      "both_instruments_flag": false
+    },
+    {
+      "known_anomaly": "CMB Dipole Direction",
+      "description": "Solar motion CMB dipole direction (kinematic); useful sanity check",
+      "reference_ra": 168.0,
+      "reference_dec": -7.0,
+      "search_radius_deg": 10.0,
+      "n_planck_top200_nearby": 0,
+      "n_act_top200_nearby": 0,
+      "n_crossmatched_hits": 0,
+      "crossmatched_hits": [],
+      "both_instruments_flag": false
+    }
+  ],
+  "cold_spot_flagged_by_both": false,
+  "cold_spot_matched_patches": [],
+  "hemispherical_asymmetry_flagged_by_both": false,
+  "hemispherical_asymmetry_matched_patches": [],
+  "spatial_distribution": {
+    "planck_top200": {
+      "n_patches": 200,
+      "n_pairs": 19900,
+      "theta_bins_deg": [
+        2.5,
+        10.0,
+        22.5,
+        45.0,
+        75.0,
+        105.0,
+        150.0
+      ],
+      "w_theta": [
+        27.0375,
+        2.0999,
+        -0.4788,
+        -0.2623,
+        -0.051,
+        0.0486,
+        -0.0422
+      ],
+      "interpretation": "Clustered at small angles (w>0 at <5 deg)"
+    },
+    "act_top200": {
+      "n_patches": 200,
+      "n_pairs": 19900,
+      "theta_bins_deg": [
+        2.5,
+        10.0,
+        22.5,
+        45.0,
+        75.0,
+        105.0,
+        150.0
+      ],
+      "w_theta": [
+        14.5705,
+        3.7763,
+        1.6926,
+        0.0062,
+        -0.39,
+        -0.3274,
+        0.0369
+      ],
+      "interpretation": "Clustered at small angles (w>0 at <5 deg)"
+    },
+    "matched_pairs": {
+      "n_patches": 15,
+      "n_pairs": 105,
+      "theta_bins_deg": [
+        2.5,
+        10.0,
+        22.5,
+        45.0,
+        75.0,
+        105.0,
+        150.0
+      ],
+      "w_theta": [
+        154.8439,
+        4.043,
+        -1.0,
+        -0.4787,
+        0.5233,
+        -0.3916,
+        -1.0
+      ],
+      "interpretation": "Matched anomalies cluster at small angles \u2014 spatially coherent"
+    }
+  },
+  "cosmological_interpretation": {
+    "genuine_overlap_likely": false,
+    "cold_spot_confirmed_both_instruments": false,
+    "hemispherical_asymmetry_confirmed": false,
+    "summary": "15 regions flagged as anomalous by both Planck and ACT (within 2.0 deg). Expected random coincidences (N=200x200, r=2.0 deg): 12.18. Observed: 15. Modest excess: 1.2x expected. Pearson r=-0.953 between normalised scores in matched regions. Cold Spot NOT confirmed by dual cross-match. Hemispherical asymmetry axis NOT in dual cross-match."
+  }
+}
