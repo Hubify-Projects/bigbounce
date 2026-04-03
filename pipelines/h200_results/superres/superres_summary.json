@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-04-02 22:21:12",
+  "n_input_anomalies": 10000,
+  "n_super_anomalies_top5pct": 500,
+  "train_time_s": 1.172210931777954,
+  "status": "COMPLETE",
+  "description": "Anomalies-within-anomalies: re-scored top 10K SDSS anomalies with deeper model",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 194532737024.0,
+      "super_score": 4537.94482421875
+    },
+    {
+      "rank": 2,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 52905955328.0,
+      "super_score": 883.4652099609375
+    },
+    {
+      "rank": 3,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 8330577408.0,
+      "super_score": 329.5614318847656
+    },
+    {
+      "rank": 4,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 5966980096.0,
+      "super_score": 142.1217803955078
+    },
+    {
+      "rank": 5,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 2667632896.0,
+      "super_score": 105.82498931884766
+    },
+    {
+      "rank": 6,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 4235403008.0,
+      "super_score": 17.875198364257812
+    },
+    {
+      "rank": 7,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 402178496.0,
+      "super_score": 17.114505767822266
+    },
+    {
+      "rank": 8,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 7106971648.0,
+      "super_score": 15.932524681091309
+    },
+    {
+      "rank": 9,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 1293585792.0,
+      "super_score": 15.172719955444336
+    },
+    {
+      "rank": 10,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 293353952.0,
+      "super_score": 14.157829284667969
+    },
+    {
+      "rank": 11,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 413987840.0,
+      "super_score": 9.815338134765625
+    },
+    {
+      "rank": 12,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 141777456.0,
+      "super_score": 6.645027160644531
+    },
+    {
+      "rank": 13,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 115300352.0,
+      "super_score": 5.334596157073975
+    },
+    {
+      "rank": 14,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 248054752.0,
+      "super_score": 5.231968879699707
+    },
+    {
+      "rank": 15,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 52186772.0,
+      "super_score": 5.153244972229004
+    },
+    {
+      "rank": 16,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 1075601408.0,
+      "super_score": 5.076007843017578
+    },
+    {
+      "rank": 17,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 165117088.0,
+      "super_score": 4.240339279174805
+    },
+    {
+      "rank": 18,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 30650648.0,
+      "super_score": 3.035036087036133
+    },
+    {
+      "rank": 19,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 23676420.0,
+      "super_score": 2.595020294189453
+    },
+    {
+      "rank": 20,
+      "ra": 0.0,
+      "dec": 0.0,
+      "original_score": 42165976.0,
+      "super_score": 2.0453977584838867
+    }
+  ]
+}
