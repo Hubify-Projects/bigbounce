@@ -125,12 +125,14 @@
 ## Phase 5: Papers
 
 ### Paper 3 — Multi-Survey Anomaly Catalog (target: ~95% → 100%)
-- [ ] Integrate ALL 8 survey results into unified catalog
-- [ ] Cross-match analysis section
-- [ ] f_NL improvement measurement
-- [ ] Anomaly taxonomy table
-- [ ] Novel object discoveries section
-- [ ] Compile LaTeX, compile PDF
+- [x] Integrate ALL 8 survey results into unified catalog — **DONE in paper3_draft.tex** (2026-04-03)
+- [x] Cross-match analysis section — **DONE** (2026-04-03)
+- [x] f_NL improvement measurement — **6.1% improvement, SPHEREx 4.38σ** (2026-04-03)
+- [x] Anomaly taxonomy table — **DONE** (2026-04-03)
+- [x] Novel object discoveries section — **DONE (58.8% novel from SIMBAD)** (2026-04-03)
+- [ ] Compile LaTeX, compile PDF (needs texlive-publishers on pod)
+- [ ] Peer review round 1
+- [ ] Add birefringence β result when H200 measurement finishes
 
 ### Paper 5 — Novel Objects from AI Archival Mining
 - [ ] The z≈5.27 QSO: if confirmed uncataloged, this is a discovery
