@@ -1,0 +1,3158 @@
+{
+  "meta": {
+    "description": "SIMBAD cross-match for top anomalies across survey catalogs (INTERMEDIATE)",
+    "top_n_per_survey": 100,
+    "radius_arcsec": 3.0,
+    "surveys_completed_so_far": [
+      "SDSS_DR18",
+      "eROSITA"
+    ],
+    "date": "2026-04-02"
+  },
+  "global_summary": {
+    "total_queried": 200,
+    "total_matched_simbad": 37,
+    "total_novel": 163,
+    "overall_match_fraction": 0.185,
+    "overall_novel_fraction": 0.815,
+    "global_otype_breakdown": {
+      "LXB": 11,
+      "*": 5,
+      "HXB": 5,
+      "X": 4,
+      "G": 3,
+      "BLL": 2,
+      "HB?": 1,
+      "SB*": 1,
+      "QSO": 1,
+      "EB*": 1,
+      "ISM": 1,
+      "Sy1": 1,
+      "**": 1
+    }
+  },
+  "per_survey": {
+    "SDSS_DR18": {
+      "survey": "SDSS_DR18",
+      "n_queried": 100,
+      "n_matched_simbad": 10,
+      "n_novel": 90,
+      "match_fraction": 0.1,
+      "novel_fraction": 0.9,
+      "otype_breakdown": {
+        "*": 4,
+        "G": 3,
+        "HB?": 1,
+        "SB*": 1,
+        "QSO": 1
+      },
+      "top_20_novel_objects": [
+        {
+          "rank": 1,
+          "obj_id": "SDSS-341/51690/285",
+          "ra": 199.38212,
+          "dec": -3.1620115,
+          "anomaly_score": 194532737024.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000187541
+          }
+        },
+        {
+          "rank": 2,
+          "obj_id": "SDSS-1391/52817/372",
+          "ra": 238.89964,
+          "dec": 28.918757,
+          "anomaly_score": 52905955328.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002864867
+          }
+        },
+        {
+          "rank": 3,
+          "obj_id": "SDSS-2934/54625/258",
+          "ra": 221.27547,
+          "dec": -0.95752818,
+          "anomaly_score": 8330577408.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0001448069
+          }
+        },
+        {
+          "rank": 4,
+          "obj_id": "SDSS-2145/54210/417",
+          "ra": 223.8155,
+          "dec": 27.388249,
+          "anomaly_score": 5966980096.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1550524
+          }
+        },
+        {
+          "rank": 5,
+          "obj_id": "SDSS-2639/54454/583",
+          "ra": 56.373952,
+          "dec": 0.60000521,
+          "anomaly_score": 2667632896.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.6676992
+          }
+        },
+        {
+          "rank": 6,
+          "obj_id": "SDSS-287/52023/584",
+          "ra": 184.22823,
+          "dec": 0.11929438,
+          "anomaly_score": 1293585792.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.001944899
+          }
+        },
+        {
+          "rank": 7,
+          "obj_id": "SDSS-2068/53381/491",
+          "ra": 47.009357,
+          "dec": 0.30744581,
+          "anomaly_score": 1075601408.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1670968
+          }
+        },
+        {
+          "rank": 8,
+          "obj_id": "SDSS-2150/54508/367",
+          "ra": 224.98854,
+          "dec": 22.890159,
+          "anomaly_score": 901522880.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002179449
+          }
+        },
+        {
+          "rank": 9,
+          "obj_id": "SDSS-2333/53676/64",
+          "ra": 298.62816,
+          "dec": 18.778869,
+          "anomaly_score": 413987840.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0001020017
+          }
+        },
+        {
+          "rank": 10,
+          "obj_id": "SDSS-1130/52647/624",
+          "ra": 13.803408,
+          "dec": 0.90063703,
+          "anomaly_score": 402178496.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.001476133
+          }
+        },
+        {
+          "rank": 12,
+          "obj_id": "SDSS-1402/52872/63",
+          "ra": 236.14808,
+          "dec": 34.573559,
+          "anomaly_score": 248054752.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003766624
+          }
+        },
+        {
+          "rank": 13,
+          "obj_id": "SDSS-1472/52903/78",
+          "ra": 18.629789,
+          "dec": 46.255645,
+          "anomaly_score": 190073680.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.001962481
+          }
+        },
+        {
+          "rank": 14,
+          "obj_id": "SDSS-2116/53853/272",
+          "ra": 207.59446,
+          "dec": 29.621748,
+          "anomaly_score": 175053680.0,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.912575
+          }
+        },
+        {
+          "rank": 15,
+          "obj_id": "SDSS-1638/52999/232",
+          "ra": 64.549,
+          "dec": 27.6542,
+          "anomaly_score": 165117088.0,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 2.527244
+          }
+        },
+        {
+          "rank": 16,
+          "obj_id": "SDSS-498/51973/333",
+          "ra": 209.66753,
+          "dec": 65.889317,
+          "anomaly_score": 141777456.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.004015171
+          }
+        },
+        {
+          "rank": 17,
+          "obj_id": "SDSS-2333/53676/234",
+          "ra": 298.35671,
+          "dec": 18.678758,
+          "anomaly_score": 115300352.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000100804
+          }
+        },
+        {
+          "rank": 18,
+          "obj_id": "SDSS-1154/53083/487",
+          "ra": 126.33308,
+          "dec": 0.127954,
+          "anomaly_score": 89279264.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1705775
+          }
+        },
+        {
+          "rank": 19,
+          "obj_id": "SDSS-2586/54167/486",
+          "ra": 151.78752,
+          "dec": 14.965037,
+          "anomaly_score": 80125904.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004035082
+          }
+        },
+        {
+          "rank": 20,
+          "obj_id": "SDSS-1164/52673/149",
+          "ra": 225.32185,
+          "dec": 52.7889,
+          "anomaly_score": 77749168.0,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.001107717
+          }
+        },
+        {
+          "rank": 21,
+          "obj_id": "SDSS-731/52460/205",
+          "ra": 323.33497,
+          "dec": 10.372361,
+          "anomaly_score": 59550588.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.02152649
+          }
+        }
+      ],
+      "all_results": [
+        {
+          "rank": 1,
+          "obj_id": "SDSS-341/51690/285",
+          "ra": 199.38212,
+          "dec": -3.1620115,
+          "anomaly_score": 194532737024.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000187541
+          }
+        },
+        {
+          "rank": 2,
+          "obj_id": "SDSS-1391/52817/372",
+          "ra": 238.89964,
+          "dec": 28.918757,
+          "anomaly_score": 52905955328.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002864867
+          }
+        },
+        {
+          "rank": 3,
+          "obj_id": "SDSS-2934/54625/258",
+          "ra": 221.27547,
+          "dec": -0.95752818,
+          "anomaly_score": 8330577408.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0001448069
+          }
+        },
+        {
+          "rank": 4,
+          "obj_id": "SDSS-2145/54210/417",
+          "ra": 223.8155,
+          "dec": 27.388249,
+          "anomaly_score": 5966980096.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1550524
+          }
+        },
+        {
+          "rank": 5,
+          "obj_id": "SDSS-2639/54454/583",
+          "ra": 56.373952,
+          "dec": 0.60000521,
+          "anomaly_score": 2667632896.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.6676992
+          }
+        },
+        {
+          "rank": 6,
+          "obj_id": "SDSS-287/52023/584",
+          "ra": 184.22823,
+          "dec": 0.11929438,
+          "anomaly_score": 1293585792.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.001944899
+          }
+        },
+        {
+          "rank": 7,
+          "obj_id": "SDSS-2068/53381/491",
+          "ra": 47.009357,
+          "dec": 0.30744581,
+          "anomaly_score": 1075601408.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1670968
+          }
+        },
+        {
+          "rank": 8,
+          "obj_id": "SDSS-2150/54508/367",
+          "ra": 224.98854,
+          "dec": 22.890159,
+          "anomaly_score": 901522880.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002179449
+          }
+        },
+        {
+          "rank": 9,
+          "obj_id": "SDSS-2333/53676/64",
+          "ra": 298.62816,
+          "dec": 18.778869,
+          "anomaly_score": 413987840.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0001020017
+          }
+        },
+        {
+          "rank": 10,
+          "obj_id": "SDSS-1130/52647/624",
+          "ra": 13.803408,
+          "dec": 0.90063703,
+          "anomaly_score": 402178496.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.001476133
+          }
+        },
+        {
+          "rank": 11,
+          "obj_id": "SDSS-2333/53676/237",
+          "ra": 298.37115,
+          "dec": 18.741314,
+          "anomaly_score": 293353952.0,
+          "in_simbad": true,
+          "simbad_main_id": "HD 350787",
+          "simbad_otype": "*",
+          "simbad_sep_arcsec": 0.06,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -6.394888e-05
+          }
+        },
+        {
+          "rank": 12,
+          "obj_id": "SDSS-1402/52872/63",
+          "ra": 236.14808,
+          "dec": 34.573559,
+          "anomaly_score": 248054752.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003766624
+          }
+        },
+        {
+          "rank": 13,
+          "obj_id": "SDSS-1472/52903/78",
+          "ra": 18.629789,
+          "dec": 46.255645,
+          "anomaly_score": 190073680.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.001962481
+          }
+        },
+        {
+          "rank": 14,
+          "obj_id": "SDSS-2116/53853/272",
+          "ra": 207.59446,
+          "dec": 29.621748,
+          "anomaly_score": 175053680.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.912575
+          }
+        },
+        {
+          "rank": 15,
+          "obj_id": "SDSS-1638/52999/232",
+          "ra": 64.549,
+          "dec": 27.6542,
+          "anomaly_score": 165117088.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 2.527244
+          }
+        },
+        {
+          "rank": 16,
+          "obj_id": "SDSS-498/51973/333",
+          "ra": 209.66753,
+          "dec": 65.889317,
+          "anomaly_score": 141777456.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.004015171
+          }
+        },
+        {
+          "rank": 17,
+          "obj_id": "SDSS-2333/53676/234",
+          "ra": 298.35671,
+          "dec": 18.678758,
+          "anomaly_score": 115300352.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000100804
+          }
+        },
+        {
+          "rank": 18,
+          "obj_id": "SDSS-1154/53083/487",
+          "ra": 126.33308,
+          "dec": 0.127954,
+          "anomaly_score": 89279264.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1705775
+          }
+        },
+        {
+          "rank": 19,
+          "obj_id": "SDSS-2586/54167/486",
+          "ra": 151.78752,
+          "dec": 14.965037,
+          "anomaly_score": 80125904.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004035082
+          }
+        },
+        {
+          "rank": 20,
+          "obj_id": "SDSS-1164/52673/149",
+          "ra": 225.32185,
+          "dec": 52.7889,
+          "anomaly_score": 77749168.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.001107717
+          }
+        },
+        {
+          "rank": 21,
+          "obj_id": "SDSS-731/52460/205",
+          "ra": 323.33497,
+          "dec": 10.372361,
+          "anomaly_score": 59550588.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.02152649
+          }
+        },
+        {
+          "rank": 22,
+          "obj_id": "SDSS-2510/53877/127",
+          "ra": 177.3322,
+          "dec": 24.409035,
+          "anomaly_score": 52186772.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003318911
+          }
+        },
+        {
+          "rank": 23,
+          "obj_id": "SDSS-2333/53676/112",
+          "ra": 298.57904,
+          "dec": 18.89332,
+          "anomaly_score": 42165976.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -9.97903e-05
+          }
+        },
+        {
+          "rank": 24,
+          "obj_id": "SDSS-810/52326/218",
+          "ra": 52.751752,
+          "dec": -0.161789,
+          "anomaly_score": 34670440.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 5.796869
+          }
+        },
+        {
+          "rank": 25,
+          "obj_id": "SDSS-1320/52759/478",
+          "ra": 201.05431,
+          "dec": 56.990962,
+          "anomaly_score": 34448556.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.5127003
+          }
+        },
+        {
+          "rank": 26,
+          "obj_id": "SDSS-2295/53734/556",
+          "ra": 147.74246,
+          "dec": 22.583219,
+          "anomaly_score": 31688018.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.591304
+          }
+        },
+        {
+          "rank": 27,
+          "obj_id": "SDSS-324/51637/71",
+          "ra": 183.92875,
+          "dec": -0.16342714,
+          "anomaly_score": 31353686.0,
+          "in_simbad": true,
+          "simbad_main_id": "MGC 30901",
+          "simbad_otype": "*",
+          "simbad_sep_arcsec": 0.14,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.0001625993
+          }
+        },
+        {
+          "rank": 28,
+          "obj_id": "SDSS-2563/54653/66",
+          "ra": 293.82331,
+          "dec": 61.963271,
+          "anomaly_score": 30650648.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.003581618
+          }
+        },
+        {
+          "rank": 29,
+          "obj_id": "SDSS-594/52027/46",
+          "ra": 237.55789,
+          "dec": 2.9399058,
+          "anomaly_score": 27031552.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.09200754
+          }
+        },
+        {
+          "rank": 30,
+          "obj_id": "SDSS-2086/53401/136",
+          "ra": 135.63282,
+          "dec": 23.758612,
+          "anomaly_score": 26735468.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.2489593
+          }
+        },
+        {
+          "rank": 31,
+          "obj_id": "SDSS-272/51941/48",
+          "ra": 156.56916,
+          "dec": -0.86273252,
+          "anomaly_score": 25849336.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003091014
+          }
+        },
+        {
+          "rank": 32,
+          "obj_id": "SDSS-2606/54154/83",
+          "ra": 203.19621,
+          "dec": 15.736701,
+          "anomaly_score": 23676420.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004037574
+          }
+        },
+        {
+          "rank": 33,
+          "obj_id": "SDSS-336/51999/535",
+          "ra": 191.724,
+          "dec": -1.4428429,
+          "anomaly_score": 23245354.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.06699
+          }
+        },
+        {
+          "rank": 34,
+          "obj_id": "SDSS-1690/53475/388",
+          "ra": 251.30024,
+          "dec": 27.797952,
+          "anomaly_score": 22720054.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.1423987
+          }
+        },
+        {
+          "rank": 35,
+          "obj_id": "SDSS-2902/54627/139",
+          "ra": 229.57064,
+          "dec": 6.2091815,
+          "anomaly_score": 22014036.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 1.430235
+          }
+        },
+        {
+          "rank": 36,
+          "obj_id": "SDSS-2847/54452/539",
+          "ra": 102.94263,
+          "dec": 41.771954,
+          "anomaly_score": 21916544.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000566118
+          }
+        },
+        {
+          "rank": 37,
+          "obj_id": "SDSS-2637/54480/455",
+          "ra": 35.819157,
+          "dec": 0.75496242,
+          "anomaly_score": 21365768.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.987444
+          }
+        },
+        {
+          "rank": 38,
+          "obj_id": "SDSS-952/52400/23",
+          "ra": 174.65868,
+          "dec": 59.065492,
+          "anomaly_score": 17990228.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002657581
+          }
+        },
+        {
+          "rank": 39,
+          "obj_id": "SDSS-1834/54561/174",
+          "ra": 230.16194,
+          "dec": 5.0289545,
+          "anomaly_score": 17615246.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": -0.006411296
+          }
+        },
+        {
+          "rank": 40,
+          "obj_id": "SDSS-2333/53676/110",
+          "ra": 298.52559,
+          "dec": 18.91921,
+          "anomaly_score": 17042896.0,
+          "in_simbad": true,
+          "simbad_main_id": "Cl* NGC 6838     JS      56",
+          "simbad_otype": "*",
+          "simbad_sep_arcsec": 0.16,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 6.781506e-05
+          }
+        },
+        {
+          "rank": 41,
+          "obj_id": "SDSS-2567/54179/178",
+          "ra": 158.31363,
+          "dec": 44.151187,
+          "anomaly_score": 15973153.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0003298328
+          }
+        },
+        {
+          "rank": 42,
+          "obj_id": "SDSS-875/52354/137",
+          "ra": 159.36919,
+          "dec": 48.654233,
+          "anomaly_score": 15041396.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.7256589
+          }
+        },
+        {
+          "rank": 43,
+          "obj_id": "SDSS-2333/53676/195",
+          "ra": 298.35436,
+          "dec": 18.827176,
+          "anomaly_score": 14880467.0,
+          "in_simbad": true,
+          "simbad_main_id": "2MASS J19532504+1849379",
+          "simbad_otype": "*",
+          "simbad_sep_arcsec": 0.08,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 6.95838e-05
+          }
+        },
+        {
+          "rank": 44,
+          "obj_id": "SDSS-279/51602/23",
+          "ra": 170.19116,
+          "dec": -0.29929986,
+          "anomaly_score": 14515610.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.002303264
+          }
+        },
+        {
+          "rank": 45,
+          "obj_id": "SDSS-2187/54269/638",
+          "ra": 244.30935,
+          "dec": 52.671611,
+          "anomaly_score": 14451328.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 3.915616
+          }
+        },
+        {
+          "rank": 46,
+          "obj_id": "SDSS-2612/54480/249",
+          "ra": 186.91196,
+          "dec": 18.96562,
+          "anomaly_score": 14338729.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.9012866
+          }
+        },
+        {
+          "rank": 47,
+          "obj_id": "SDSS-2004/53735/361",
+          "ra": 182.06625,
+          "dec": 33.081735,
+          "anomaly_score": 14241243.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002861135
+          }
+        },
+        {
+          "rank": 48,
+          "obj_id": "SDSS-2516/54240/170",
+          "ra": 235.68349,
+          "dec": 11.295104,
+          "anomaly_score": 13880227.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.024028
+          }
+        },
+        {
+          "rank": 49,
+          "obj_id": "SDSS-411/51871/295",
+          "ra": 44.85529,
+          "dec": -1.0050932,
+          "anomaly_score": 13801176.0,
+          "in_simbad": true,
+          "simbad_main_id": "2MASX J02592528-0100180",
+          "simbad_otype": "G",
+          "simbad_sep_arcsec": 0.1,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1844525
+          }
+        },
+        {
+          "rank": 50,
+          "obj_id": "SDSS-854/52373/562",
+          "ra": 206.64492,
+          "dec": 5.5309078,
+          "anomaly_score": 13475258.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 2.55426
+          }
+        },
+        {
+          "rank": 51,
+          "obj_id": "SDSS-1972/53464/595",
+          "ra": 175.35383,
+          "dec": 40.751702,
+          "anomaly_score": 13003877.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.6751173
+          }
+        },
+        {
+          "rank": 52,
+          "obj_id": "SDSS-333/52312/495",
+          "ra": 184.84045,
+          "dec": -2.2502763,
+          "anomaly_score": 11685860.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.3548417
+          }
+        },
+        {
+          "rank": 53,
+          "obj_id": "SDSS-1795/54505/426",
+          "ra": 196.84282,
+          "dec": 7.8484839,
+          "anomaly_score": 11169400.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003999701
+          }
+        },
+        {
+          "rank": 54,
+          "obj_id": "SDSS-2561/54596/205",
+          "ra": 261.63804,
+          "dec": 63.399624,
+          "anomaly_score": 11017666.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003109093
+          }
+        },
+        {
+          "rank": 55,
+          "obj_id": "SDSS-919/52405/505",
+          "ra": 219.33322,
+          "dec": -1.7494375,
+          "anomaly_score": 10849627.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 1.715189
+          }
+        },
+        {
+          "rank": 56,
+          "obj_id": "SDSS-2539/53918/487",
+          "ra": 218.21209,
+          "dec": 58.718501,
+          "anomaly_score": 10705368.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 3.811998
+          }
+        },
+        {
+          "rank": 57,
+          "obj_id": "SDSS-2874/54556/203",
+          "ra": 169.32153,
+          "dec": -12.88861,
+          "anomaly_score": 10377310.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.0003306454
+          }
+        },
+        {
+          "rank": 58,
+          "obj_id": "SDSS-2893/54540/348",
+          "ra": 180.5528,
+          "dec": 20.148773,
+          "anomaly_score": 9482723.0,
+          "in_simbad": true,
+          "simbad_main_id": "SDSS J120212.67+200855.5",
+          "simbad_otype": "HB?",
+          "simbad_sep_arcsec": 0.02,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0003120262
+          }
+        },
+        {
+          "rank": 59,
+          "obj_id": "SDSS-1557/53297/373",
+          "ra": 33.005334,
+          "dec": 0.97915636,
+          "anomaly_score": 9143573.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004035247
+          }
+        },
+        {
+          "rank": 60,
+          "obj_id": "SDSS-2673/54087/468",
+          "ra": 70.85027,
+          "dec": 11.536799,
+          "anomaly_score": 8970705.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.00220253
+          }
+        },
+        {
+          "rank": 61,
+          "obj_id": "SDSS-2481/54061/378",
+          "ra": 162.24806,
+          "dec": 24.251884,
+          "anomaly_score": 8362581.0,
+          "in_simbad": true,
+          "simbad_main_id": "LEDA 4252838",
+          "simbad_otype": "G",
+          "simbad_sep_arcsec": 0.14,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.0796575
+          }
+        },
+        {
+          "rank": 62,
+          "obj_id": "SDSS-2124/53770/66",
+          "ra": 212.95392,
+          "dec": 24.117147,
+          "anomaly_score": 8361758.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 2.156458
+          }
+        },
+        {
+          "rank": 63,
+          "obj_id": "SDSS-2402/54175/282",
+          "ra": 140.62666,
+          "dec": 6.3685458,
+          "anomaly_score": 8303813.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004025665
+          }
+        },
+        {
+          "rank": 64,
+          "obj_id": "SDSS-2506/54179/491",
+          "ra": 175.90561,
+          "dec": 19.904559,
+          "anomaly_score": 8089797.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.0003383458
+          }
+        },
+        {
+          "rank": 65,
+          "obj_id": "SDSS-2819/54599/450",
+          "ra": 279.42255,
+          "dec": 42.368719,
+          "anomaly_score": 7999645.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.2949309
+          }
+        },
+        {
+          "rank": 66,
+          "obj_id": "SDSS-2333/53676/8",
+          "ra": 299.31668,
+          "dec": 18.007586,
+          "anomaly_score": 7903729.0,
+          "in_simbad": true,
+          "simbad_main_id": "TYC 1620-2172-1",
+          "simbad_otype": "SB*",
+          "simbad_sep_arcsec": 0.08,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 8.341704e-05
+          }
+        },
+        {
+          "rank": 67,
+          "obj_id": "SDSS-2829/54623/168",
+          "ra": 255.64103,
+          "dec": 28.001768,
+          "anomaly_score": 7647932.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1507127
+          }
+        },
+        {
+          "rank": 68,
+          "obj_id": "SDSS-1963/54329/10",
+          "ra": 324.19321,
+          "dec": -1.0505546,
+          "anomaly_score": 7646819.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.00388041
+          }
+        },
+        {
+          "rank": 69,
+          "obj_id": "SDSS-1803/54152/88",
+          "ra": 206.30165,
+          "dec": 5.9052771,
+          "anomaly_score": 7490654.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.3447831
+          }
+        },
+        {
+          "rank": 70,
+          "obj_id": "SDSS-412/52258/491",
+          "ra": 47.648712,
+          "dec": 0.2753703,
+          "anomaly_score": 7389279.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.254838
+          }
+        },
+        {
+          "rank": 71,
+          "obj_id": "SDSS-2755/54507/162",
+          "ra": 206.97613,
+          "dec": 18.296906,
+          "anomaly_score": 7106197.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 4.593851
+          }
+        },
+        {
+          "rank": 72,
+          "obj_id": "SDSS-2406/54084/277",
+          "ra": 151.24934,
+          "dec": 25.889503,
+          "anomaly_score": 7007193.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 9.619445e-05
+          }
+        },
+        {
+          "rank": 73,
+          "obj_id": "SDSS-735/52519/562",
+          "ra": 332.94286,
+          "dec": 13.604345,
+          "anomaly_score": 6057946.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": -0.007416091
+          }
+        },
+        {
+          "rank": 74,
+          "obj_id": "SDSS-1447/53120/174",
+          "ra": 178.72159,
+          "dec": 42.213519,
+          "anomaly_score": 5973909.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.0007897639
+          }
+        },
+        {
+          "rank": 75,
+          "obj_id": "SDSS-2019/53430/440",
+          "ra": 160.19384,
+          "dec": 32.174337,
+          "anomaly_score": 5606299.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.002919218
+          }
+        },
+        {
+          "rank": 76,
+          "obj_id": "SDSS-1023/52795/288",
+          "ra": 312.41663,
+          "dec": -0.96436403,
+          "anomaly_score": 5481196.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 3.721218
+          }
+        },
+        {
+          "rank": 77,
+          "obj_id": "SDSS-2914/54532/282",
+          "ra": 142.77985,
+          "dec": 29.043723,
+          "anomaly_score": 5470743.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.04237205
+          }
+        },
+        {
+          "rank": 78,
+          "obj_id": "SDSS-676/52174/340",
+          "ra": 342.39116,
+          "dec": 0.93887026,
+          "anomaly_score": 5336579.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.002413451
+          }
+        },
+        {
+          "rank": 79,
+          "obj_id": "SDSS-425/51898/514",
+          "ra": 22.903391,
+          "dec": 14.468126,
+          "anomaly_score": 5092784.5,
+          "in_simbad": true,
+          "simbad_main_id": "LEDA 1458918",
+          "simbad_otype": "G",
+          "simbad_sep_arcsec": 0.0,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.03601329
+          }
+        },
+        {
+          "rank": 80,
+          "obj_id": "SDSS-2245/54208/213",
+          "ra": 202.95651,
+          "dec": 25.368837,
+          "anomaly_score": 5062467.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.00336069
+          }
+        },
+        {
+          "rank": 81,
+          "obj_id": "SDSS-1576/53495/340",
+          "ra": 243.51823,
+          "dec": 27.2915,
+          "anomaly_score": 5041893.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.003354321
+          }
+        },
+        {
+          "rank": 82,
+          "obj_id": "SDSS-2004/53737/627",
+          "ra": 184.43792,
+          "dec": 32.472305,
+          "anomaly_score": 4726399.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 0.4516657
+          }
+        },
+        {
+          "rank": 83,
+          "obj_id": "SDSS-2900/54569/591",
+          "ra": 198.88847,
+          "dec": 39.779389,
+          "anomaly_score": 4709309.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.0001330264
+          }
+        },
+        {
+          "rank": 84,
+          "obj_id": "SDSS-1424/52907/550",
+          "ra": 253.52216,
+          "dec": 23.815873,
+          "anomaly_score": 4650996.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.004020295
+          }
+        },
+        {
+          "rank": 85,
+          "obj_id": "SDSS-1382/53115/597",
+          "ra": 221.01062,
+          "dec": 37.284204,
+          "anomaly_score": 4556898.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.617994
+          }
+        },
+        {
+          "rank": 86,
+          "obj_id": "SDSS-1317/52765/461",
+          "ra": 191.06134,
+          "dec": 57.614204,
+          "anomaly_score": 4481193.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.7372438
+          }
+        },
+        {
+          "rank": 87,
+          "obj_id": "SDSS-1751/53370/505",
+          "ra": 166.92685,
+          "dec": 14.746514,
+          "anomaly_score": 4423435.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.4365633
+          }
+        },
+        {
+          "rank": 88,
+          "obj_id": "SDSS-2629/54083/322",
+          "ra": 346.52657,
+          "dec": 23.053393,
+          "anomaly_score": 4415171.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.1065017
+          }
+        },
+        {
+          "rank": 89,
+          "obj_id": "SDSS-1449/53116/367",
+          "ra": 180.96217,
+          "dec": 48.495768,
+          "anomaly_score": 4349681.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 6.133873
+          }
+        },
+        {
+          "rank": 90,
+          "obj_id": "SDSS-1157/52642/161",
+          "ra": 55.647548,
+          "dec": -0.49959137,
+          "anomaly_score": 4325799.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -9.725158e-05
+          }
+        },
+        {
+          "rank": 91,
+          "obj_id": "SDSS-967/52636/582",
+          "ra": 176.82677,
+          "dec": 49.798613,
+          "anomaly_score": 4263508.0,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.7366794
+          }
+        },
+        {
+          "rank": 92,
+          "obj_id": "SDSS-1028/52562/517",
+          "ra": 322.67861,
+          "dec": 0.4425594,
+          "anomaly_score": 4154685.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 5.23821
+          }
+        },
+        {
+          "rank": 93,
+          "obj_id": "SDSS-1028/52559/517",
+          "ra": 322.67861,
+          "dec": 0.4425594,
+          "anomaly_score": 4154685.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 5.23821
+          }
+        },
+        {
+          "rank": 94,
+          "obj_id": "SDSS-792/52352/468",
+          "ra": 224.59014,
+          "dec": 56.172674,
+          "anomaly_score": 4120906.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "GALAXY",
+            "z_sdss": 0.09812069
+          }
+        },
+        {
+          "rank": 95,
+          "obj_id": "SDSS-792/52352/563",
+          "ra": 225.98377,
+          "dec": 56.71951,
+          "anomaly_score": 4089459.75,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.004020744
+          }
+        },
+        {
+          "rank": 96,
+          "obj_id": "SDSS-1385/53091/11",
+          "ra": 228.29794,
+          "dec": 33.246297,
+          "anomaly_score": 3934610.0,
+          "in_simbad": true,
+          "simbad_main_id": "[VV2006] J151311.5+331446",
+          "simbad_otype": "QSO",
+          "simbad_sep_arcsec": 0.04,
+          "extra": {
+            "class_sdss": "QSO",
+            "z_sdss": 2.162203
+          }
+        },
+        {
+          "rank": 97,
+          "obj_id": "SDSS-1747/53075/323",
+          "ra": 156.31514,
+          "dec": 14.148627,
+          "anomaly_score": 3818901.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.001939323
+          }
+        },
+        {
+          "rank": 98,
+          "obj_id": "SDSS-2827/54419/444",
+          "ra": 122.79554,
+          "dec": -6.3824154,
+          "anomaly_score": 3657442.5,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": 0.000110972
+          }
+        },
+        {
+          "rank": 99,
+          "obj_id": "SDSS-1468/52999/336",
+          "ra": 4.01487,
+          "dec": 36.244006,
+          "anomaly_score": 3635893.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.003705985
+          }
+        },
+        {
+          "rank": 100,
+          "obj_id": "SDSS-1421/53149/451",
+          "ra": 246.50577,
+          "dec": 30.2749,
+          "anomaly_score": 3615481.25,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {
+            "class_sdss": "STAR",
+            "z_sdss": -0.002418996
+          }
+        }
+      ]
+    },
+    "eROSITA": {
+      "survey": "eROSITA",
+      "n_queried": 100,
+      "n_matched_simbad": 27,
+      "n_novel": 73,
+      "match_fraction": 0.27,
+      "novel_fraction": 0.73,
+      "otype_breakdown": {
+        "LXB": 11,
+        "HXB": 5,
+        "X": 4,
+        "BLL": 2,
+        "EB*": 1,
+        "ISM": 1,
+        "*": 1,
+        "Sy1": 1,
+        "**": 1
+      },
+      "top_20_novel_objects": [
+        {
+          "rank": 1,
+          "obj_id": "1eRASS J053856.1-640457",
+          "ra": 84.73381920100519,
+          "dec": -64.08267319770148,
+          "anomaly_score": 34181.74609375,
+          "extra": {}
+        },
+        {
+          "rank": 4,
+          "obj_id": "1eRASS J062619.8-694546",
+          "ra": 96.5826459734513,
+          "dec": -69.76302399292453,
+          "anomaly_score": 5955.41162109375,
+          "extra": {}
+        },
+        {
+          "rank": 5,
+          "obj_id": "1eRASS J152039.9-570955",
+          "ra": 230.1666361259802,
+          "dec": -57.16552127427768,
+          "anomaly_score": 4424.3623046875,
+          "extra": {}
+        },
+        {
+          "rank": 6,
+          "obj_id": "1eRASS J112114.4-603720",
+          "ra": 170.31032669120899,
+          "dec": -60.622408734223214,
+          "anomaly_score": 4354.83056640625,
+          "extra": {}
+        },
+        {
+          "rank": 7,
+          "obj_id": "1eRASS J053428.3+220143",
+          "ra": 83.6180275262072,
+          "dec": 22.028721702771495,
+          "anomaly_score": 4297.35498046875,
+          "extra": {}
+        },
+        {
+          "rank": 8,
+          "obj_id": "1eRASS J053937.9-694431",
+          "ra": 84.90809400677617,
+          "dec": -69.74215060435408,
+          "anomaly_score": 3043.453369140625,
+          "extra": {}
+        },
+        {
+          "rank": 10,
+          "obj_id": "1eRASS J052521.9-655907",
+          "ra": 81.34155986971103,
+          "dec": -65.98533725576439,
+          "anomaly_score": 1759.6937255859375,
+          "extra": {}
+        },
+        {
+          "rank": 11,
+          "obj_id": "1eRASS J052501.3-693832",
+          "ra": 81.25544534988454,
+          "dec": -69.64226223720756,
+          "anomaly_score": 1427.08984375,
+          "extra": {}
+        },
+        {
+          "rank": 12,
+          "obj_id": "1eRASS J122637.8-624611",
+          "ra": 186.65789217960253,
+          "dec": -62.76974932343615,
+          "anomaly_score": 1416.0621337890625,
+          "extra": {}
+        },
+        {
+          "rank": 13,
+          "obj_id": "1eRASS J112428.9-591544",
+          "ra": 171.1207002726206,
+          "dec": -59.26232682945725,
+          "anomaly_score": 496.1199035644531,
+          "extra": {}
+        },
+        {
+          "rank": 15,
+          "obj_id": "1eRASS J052026.4-715725",
+          "ra": 80.1100603699733,
+          "dec": -71.95709817900475,
+          "anomaly_score": 479.6080322265625,
+          "extra": {}
+        },
+        {
+          "rank": 16,
+          "obj_id": "1eRASS J052600.3-660455",
+          "ra": 81.50166242237992,
+          "dec": -66.08205504829682,
+          "anomaly_score": 446.9156799316406,
+          "extra": {}
+        },
+        {
+          "rank": 17,
+          "obj_id": "1eRASS J164547.6-453640",
+          "ra": 251.4485112622076,
+          "dec": -45.61134640005411,
+          "anomaly_score": 399.2633972167969,
+          "extra": {}
+        },
+        {
+          "rank": 18,
+          "obj_id": "1eRASS J050542.2-675239",
+          "ra": 76.42613144453557,
+          "dec": -67.87766942906279,
+          "anomaly_score": 276.604248046875,
+          "extra": {}
+        },
+        {
+          "rank": 19,
+          "obj_id": "1eRASS J053435.2+220121",
+          "ra": 83.646708421702,
+          "dec": 22.022628166918494,
+          "anomaly_score": 265.9932861328125,
+          "extra": {}
+        },
+        {
+          "rank": 20,
+          "obj_id": "1eRASS J162010.7-153735",
+          "ra": 245.04496974464826,
+          "dec": -15.626414957331614,
+          "anomaly_score": 239.26414489746094,
+          "extra": {}
+        },
+        {
+          "rank": 21,
+          "obj_id": "1eRASS J053432.8+220006",
+          "ra": 83.6370364132895,
+          "dec": 22.00190371917617,
+          "anomaly_score": 206.5837860107422,
+          "extra": {}
+        },
+        {
+          "rank": 25,
+          "obj_id": "1eRASS J164550.3-453645",
+          "ra": 251.4598584638393,
+          "dec": -45.612636231798035,
+          "anomaly_score": 139.2379913330078,
+          "extra": {}
+        },
+        {
+          "rank": 27,
+          "obj_id": "1eRASS J173157.7-334909",
+          "ra": 262.9908245617736,
+          "dec": -33.81940864901516,
+          "anomaly_score": 108.68731689453125,
+          "extra": {}
+        },
+        {
+          "rank": 28,
+          "obj_id": "1eRASS J164055.0-534500",
+          "ra": 250.22946495425543,
+          "dec": -53.75005156438116,
+          "anomaly_score": 88.45879364013672,
+          "extra": {}
+        }
+      ],
+      "all_results": [
+        {
+          "rank": 1,
+          "obj_id": "1eRASS J053856.1-640457",
+          "ra": 84.73381920100519,
+          "dec": -64.08267319770148,
+          "anomaly_score": 34181.74609375,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 2,
+          "obj_id": "1eRASS J053544.3-660159",
+          "ra": 83.9347282828034,
+          "dec": -66.03316523005742,
+          "anomaly_score": 16269.943359375,
+          "in_simbad": true,
+          "simbad_main_id": "OGLE LMC-ECL-35869",
+          "simbad_otype": "EB*",
+          "simbad_sep_arcsec": 0.45,
+          "extra": {}
+        },
+        {
+          "rank": 3,
+          "obj_id": "1eRASS J170249.4-484724",
+          "ra": 255.70589130112992,
+          "dec": -48.790059721779826,
+          "anomaly_score": 8233.9482421875,
+          "in_simbad": true,
+          "simbad_main_id": "V* V821 Ara",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 1.16,
+          "extra": {}
+        },
+        {
+          "rank": 4,
+          "obj_id": "1eRASS J062619.8-694546",
+          "ra": 96.5826459734513,
+          "dec": -69.76302399292453,
+          "anomaly_score": 5955.41162109375,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 5,
+          "obj_id": "1eRASS J152039.9-570955",
+          "ra": 230.1666361259802,
+          "dec": -57.16552127427768,
+          "anomaly_score": 4424.3623046875,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 6,
+          "obj_id": "1eRASS J112114.4-603720",
+          "ra": 170.31032669120899,
+          "dec": -60.622408734223214,
+          "anomaly_score": 4354.83056640625,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 7,
+          "obj_id": "1eRASS J053428.3+220143",
+          "ra": 83.6180275262072,
+          "dec": 22.028721702771495,
+          "anomaly_score": 4297.35498046875,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 8,
+          "obj_id": "1eRASS J053937.9-694431",
+          "ra": 84.90809400677617,
+          "dec": -69.74215060435408,
+          "anomaly_score": 3043.453369140625,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 9,
+          "obj_id": "1eRASS J170544.5-362523",
+          "ra": 256.4356207264447,
+          "dec": -36.423197803617875,
+          "anomaly_score": 2349.215576171875,
+          "in_simbad": true,
+          "simbad_main_id": "V* V1101 Sco",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 0.83,
+          "extra": {}
+        },
+        {
+          "rank": 10,
+          "obj_id": "1eRASS J052521.9-655907",
+          "ra": 81.34155986971103,
+          "dec": -65.98533725576439,
+          "anomaly_score": 1759.6937255859375,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 11,
+          "obj_id": "1eRASS J052501.3-693832",
+          "ra": 81.25544534988454,
+          "dec": -69.64226223720756,
+          "anomaly_score": 1427.08984375,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 12,
+          "obj_id": "1eRASS J122637.8-624611",
+          "ra": 186.65789217960253,
+          "dec": -62.76974932343615,
+          "anomaly_score": 1416.0621337890625,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 13,
+          "obj_id": "1eRASS J112428.9-591544",
+          "ra": 171.1207002726206,
+          "dec": -59.26232682945725,
+          "anomaly_score": 496.1199035644531,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 14,
+          "obj_id": "1eRASS J090206.7-403316",
+          "ra": 135.52797006095065,
+          "dec": -40.554558594154116,
+          "anomaly_score": 486.51702880859375,
+          "in_simbad": true,
+          "simbad_main_id": "V* GP Vel",
+          "simbad_otype": "HXB",
+          "simbad_sep_arcsec": 1.76,
+          "extra": {}
+        },
+        {
+          "rank": 15,
+          "obj_id": "1eRASS J052026.4-715725",
+          "ra": 80.1100603699733,
+          "dec": -71.95709817900475,
+          "anomaly_score": 479.6080322265625,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 16,
+          "obj_id": "1eRASS J052600.3-660455",
+          "ra": 81.50166242237992,
+          "dec": -66.08205504829682,
+          "anomaly_score": 446.9156799316406,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 17,
+          "obj_id": "1eRASS J164547.6-453640",
+          "ra": 251.4485112622076,
+          "dec": -45.61134640005411,
+          "anomaly_score": 399.2633972167969,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 18,
+          "obj_id": "1eRASS J050542.2-675239",
+          "ra": 76.42613144453557,
+          "dec": -67.87766942906279,
+          "anomaly_score": 276.604248046875,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 19,
+          "obj_id": "1eRASS J053435.2+220121",
+          "ra": 83.646708421702,
+          "dec": 22.022628166918494,
+          "anomaly_score": 265.9932861328125,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 20,
+          "obj_id": "1eRASS J162010.7-153735",
+          "ra": 245.04496974464826,
+          "dec": -15.626414957331614,
+          "anomaly_score": 239.26414489746094,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 21,
+          "obj_id": "1eRASS J053432.8+220006",
+          "ra": 83.6370364132895,
+          "dec": 22.00190371917617,
+          "anomaly_score": 206.5837860107422,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 22,
+          "obj_id": "1eRASS J173157.6-335000",
+          "ra": 262.9900813690613,
+          "dec": -33.8336079890147,
+          "anomaly_score": 179.9763946533203,
+          "in_simbad": true,
+          "simbad_main_id": "SWIFT J173157.8-335003",
+          "simbad_otype": "X",
+          "simbad_sep_arcsec": 2.77,
+          "extra": {}
+        },
+        {
+          "rank": 23,
+          "obj_id": "1eRASS J163401.6-472335",
+          "ra": 248.5067977878815,
+          "dec": -47.39311794048061,
+          "anomaly_score": 166.33868408203125,
+          "in_simbad": true,
+          "simbad_main_id": "X Nor X-1",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 0.48,
+          "extra": {}
+        },
+        {
+          "rank": 24,
+          "obj_id": "1eRASS J053249.4-662212",
+          "ra": 83.20623399246273,
+          "dec": -66.37011369041385,
+          "anomaly_score": 153.2178497314453,
+          "in_simbad": true,
+          "simbad_main_id": "X LMC X-4",
+          "simbad_otype": "HXB",
+          "simbad_sep_arcsec": 0.87,
+          "extra": {}
+        },
+        {
+          "rank": 25,
+          "obj_id": "1eRASS J164550.3-453645",
+          "ra": 251.4598584638393,
+          "dec": -45.612636231798035,
+          "anomaly_score": 139.2379913330078,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 26,
+          "obj_id": "1eRASS J170356.6-375039",
+          "ra": 255.98618076106558,
+          "dec": -37.84425176056612,
+          "anomaly_score": 133.26528930664062,
+          "in_simbad": true,
+          "simbad_main_id": "HD 153919",
+          "simbad_otype": "HXB",
+          "simbad_sep_arcsec": 1.13,
+          "extra": {}
+        },
+        {
+          "rank": 27,
+          "obj_id": "1eRASS J173157.7-334909",
+          "ra": 262.9908245617736,
+          "dec": -33.81940864901516,
+          "anomaly_score": 108.68731689453125,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 28,
+          "obj_id": "1eRASS J164055.0-534500",
+          "ra": 250.22946495425543,
+          "dec": -53.75005156438116,
+          "anomaly_score": 88.45879364013672,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 29,
+          "obj_id": "1eRASS J174605.1-293054",
+          "ra": 266.52160673450834,
+          "dec": -29.515205199345075,
+          "anomaly_score": 88.3347396850586,
+          "in_simbad": true,
+          "simbad_main_id": "2XMMi J174605.1-293054",
+          "simbad_otype": "X",
+          "simbad_sep_arcsec": 0.76,
+          "extra": {}
+        },
+        {
+          "rank": 30,
+          "obj_id": "1eRASS J061707.3+090813",
+          "ra": 94.28080280012385,
+          "dec": 9.137160486155981,
+          "anomaly_score": 88.18817138671875,
+          "in_simbad": true,
+          "simbad_main_id": "V* V1055 Ori",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 0.6,
+          "extra": {}
+        },
+        {
+          "rank": 31,
+          "obj_id": "1eRASS J162802.9-491154",
+          "ra": 247.01212428089121,
+          "dec": -49.19854865850776,
+          "anomaly_score": 87.28840637207031,
+          "in_simbad": true,
+          "simbad_main_id": "4U 1624-49",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 0.85,
+          "extra": {}
+        },
+        {
+          "rank": 32,
+          "obj_id": "1eRASS J161934.5-153458",
+          "ra": 244.89379483297196,
+          "dec": -15.582880320355478,
+          "anomaly_score": 80.54827117919922,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 33,
+          "obj_id": "1eRASS J161938.8-153447",
+          "ra": 244.91194043897224,
+          "dec": -15.579916922388438,
+          "anomaly_score": 79.44554138183594,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 34,
+          "obj_id": "1eRASS J162004.9-154052",
+          "ra": 245.02081150276948,
+          "dec": -15.681133173814683,
+          "anomaly_score": 74.32925415039062,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 35,
+          "obj_id": "1eRASS J082411.0-425719",
+          "ra": 126.04591266851806,
+          "dec": -42.95548525134672,
+          "anomaly_score": 74.26499938964844,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 36,
+          "obj_id": "1eRASS J164057.7-534518",
+          "ra": 250.24055052350585,
+          "dec": -53.75510057675634,
+          "anomaly_score": 71.1000747680664,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 37,
+          "obj_id": "1eRASS J104503.4-594103",
+          "ra": 161.26421911965954,
+          "dec": -59.6843729292608,
+          "anomaly_score": 68.70098876953125,
+          "in_simbad": true,
+          "simbad_main_id": "NAME Homunculus Nebula",
+          "simbad_otype": "ISM",
+          "simbad_sep_arcsec": 0.71,
+          "extra": {}
+        },
+        {
+          "rank": 38,
+          "obj_id": "1eRASS J173857.7-442658",
+          "ra": 264.74070307037533,
+          "dec": -44.44947245168154,
+          "anomaly_score": 61.55477523803711,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 39,
+          "obj_id": "1eRASS J162005.7-153442",
+          "ra": 245.02388034585698,
+          "dec": -15.578554639341997,
+          "anomaly_score": 59.77096176147461,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 40,
+          "obj_id": "1eRASS J161950.7-154502",
+          "ra": 244.96129364602544,
+          "dec": -15.750777034499636,
+          "anomaly_score": 59.41257858276367,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 41,
+          "obj_id": "1eRASS J053527.5-691609",
+          "ra": 83.86487359748911,
+          "dec": -69.26927953567414,
+          "anomaly_score": 58.79438400268555,
+          "in_simbad": true,
+          "simbad_main_id": "[WLJ87] Star 2",
+          "simbad_otype": "*",
+          "simbad_sep_arcsec": 0.54,
+          "extra": {}
+        },
+        {
+          "rank": 42,
+          "obj_id": "1eRASS J162003.3-154517",
+          "ra": 245.01405955905508,
+          "dec": -15.754980643767047,
+          "anomaly_score": 56.93312072753906,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 43,
+          "obj_id": "1eRASS J170048.8-413922",
+          "ra": 255.20352669935954,
+          "dec": -41.656236603370075,
+          "anomaly_score": 53.703277587890625,
+          "in_simbad": true,
+          "simbad_main_id": "2MASS J17004888-4139214",
+          "simbad_otype": "HXB",
+          "simbad_sep_arcsec": 1.08,
+          "extra": {}
+        },
+        {
+          "rank": 44,
+          "obj_id": "1eRASS J162008.2-154249",
+          "ra": 245.03444300114353,
+          "dec": -15.713626513668192,
+          "anomaly_score": 48.15082931518555,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 45,
+          "obj_id": "1eRASS J161953.7-153151",
+          "ra": 244.97393635412558,
+          "dec": -15.531098969535295,
+          "anomaly_score": 47.00376510620117,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 46,
+          "obj_id": "1eRASS J173200.3-335041",
+          "ra": 263.00138084995433,
+          "dec": -33.84494610192019,
+          "anomaly_score": 46.15878677368164,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 47,
+          "obj_id": "1eRASS J162003.2-153607",
+          "ra": 245.01343248089327,
+          "dec": -15.602073338212126,
+          "anomaly_score": 44.45976638793945,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 48,
+          "obj_id": "1eRASS J033648.9+003444",
+          "ra": 54.20388034835385,
+          "dec": 0.5791355533481626,
+          "anomaly_score": 43.34374237060547,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 49,
+          "obj_id": "1eRASS J170615.2-430208",
+          "ra": 256.5634941640546,
+          "dec": -43.035634514978746,
+          "anomaly_score": 39.94838333129883,
+          "in_simbad": true,
+          "simbad_main_id": "X Ara X-1",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 2.8,
+          "extra": {}
+        },
+        {
+          "rank": 50,
+          "obj_id": "1eRASS J161941.5-153216",
+          "ra": 244.92306718917337,
+          "dec": -15.53781271455277,
+          "anomaly_score": 38.10258102416992,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 51,
+          "obj_id": "1eRASS J125736.7-691713",
+          "ra": 194.40308856443508,
+          "dec": -69.28702013559437,
+          "anomaly_score": 36.70112991333008,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 52,
+          "obj_id": "1eRASS J164540.0-453650",
+          "ra": 251.41669989748996,
+          "dec": -45.61405637849727,
+          "anomaly_score": 36.3642463684082,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 53,
+          "obj_id": "1eRASS J162015.8-153418",
+          "ra": 245.0658935025947,
+          "dec": -15.57177123858445,
+          "anomaly_score": 36.211978912353516,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 54,
+          "obj_id": "1eRASS J092026.3-551221",
+          "ra": 140.10975983478912,
+          "dec": -55.206003221777166,
+          "anomaly_score": 35.21171569824219,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 55,
+          "obj_id": "1eRASS J091202.1-645204",
+          "ra": 138.0089164561701,
+          "dec": -64.86792189466945,
+          "anomaly_score": 34.88066101074219,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 56,
+          "obj_id": "1eRASS J150207.0-414647",
+          "ra": 225.5293459778235,
+          "dec": -41.779811237588554,
+          "anomaly_score": 34.32450485229492,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 57,
+          "obj_id": "1eRASS J161958.4-154236",
+          "ra": 244.99367636497732,
+          "dec": -15.710214000015263,
+          "anomaly_score": 34.17951965332031,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 58,
+          "obj_id": "1eRASS J162006.1-153846",
+          "ra": 245.0257991537763,
+          "dec": -15.646231654988656,
+          "anomaly_score": 30.176223754882812,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 59,
+          "obj_id": "1eRASS J161935.9-154510",
+          "ra": 244.89991295066056,
+          "dec": -15.752793996844328,
+          "anomaly_score": 30.040542602539062,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 60,
+          "obj_id": "1eRASS J052844.6-652650",
+          "ra": 82.18593972957687,
+          "dec": -65.4474303668384,
+          "anomaly_score": 29.928892135620117,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 61,
+          "obj_id": "1eRASS J170144.1-405129",
+          "ra": 255.4339716662683,
+          "dec": -40.858265629161096,
+          "anomaly_score": 29.771718978881836,
+          "in_simbad": true,
+          "simbad_main_id": "4U 1701-407",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 2.0,
+          "extra": {}
+        },
+        {
+          "rank": 62,
+          "obj_id": "1eRASS J161959.0-153255",
+          "ra": 244.9958752467774,
+          "dec": -15.54873429712285,
+          "anomaly_score": 29.44355583190918,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 63,
+          "obj_id": "1eRASS J162026.3-153629",
+          "ra": 245.10960631324392,
+          "dec": -15.608123946883607,
+          "anomaly_score": 29.4255313873291,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 64,
+          "obj_id": "1eRASS J162020.1-153921",
+          "ra": 245.08414365289636,
+          "dec": -15.655880500947394,
+          "anomaly_score": 29.385562896728516,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 65,
+          "obj_id": "1eRASS J161930.0-154756",
+          "ra": 244.87529743543547,
+          "dec": -15.798890412570161,
+          "anomaly_score": 29.154916763305664,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 66,
+          "obj_id": "1eRASS J042600.6-571200",
+          "ra": 66.50254543614727,
+          "dec": -57.20018621229398,
+          "anomaly_score": 28.89936637878418,
+          "in_simbad": true,
+          "simbad_main_id": "LB  1727",
+          "simbad_otype": "Sy1",
+          "simbad_sep_arcsec": 1.41,
+          "extra": {}
+        },
+        {
+          "rank": 67,
+          "obj_id": "1eRASS J113929.2-652351",
+          "ra": 174.8717943222141,
+          "dec": -65.39766577031499,
+          "anomaly_score": 27.97532081604004,
+          "in_simbad": true,
+          "simbad_main_id": "*  12 Mus",
+          "simbad_otype": "**",
+          "simbad_sep_arcsec": 2.15,
+          "extra": {}
+        },
+        {
+          "rank": 68,
+          "obj_id": "1eRASS J082008.1-425008",
+          "ra": 125.03398902111266,
+          "dec": -42.83573721527202,
+          "anomaly_score": 27.61058235168457,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 69,
+          "obj_id": "1eRASS J161931.6-153653",
+          "ra": 244.88192856597306,
+          "dec": -15.614783496246572,
+          "anomaly_score": 27.461091995239258,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 70,
+          "obj_id": "1eRASS J082318.9-425803",
+          "ra": 125.82882729846796,
+          "dec": -42.96761892163637,
+          "anomaly_score": 26.762907028198242,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 71,
+          "obj_id": "1eRASS J173855.1-442728",
+          "ra": 264.72985228732693,
+          "dec": -44.45794939728743,
+          "anomaly_score": 26.432523727416992,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 72,
+          "obj_id": "1eRASS J154223.3-522310",
+          "ra": 235.59729669389026,
+          "dec": -52.386236199331734,
+          "anomaly_score": 26.258760452270508,
+          "in_simbad": true,
+          "simbad_main_id": "V* QV Nor",
+          "simbad_otype": "HXB",
+          "simbad_sep_arcsec": 0.88,
+          "extra": {}
+        },
+        {
+          "rank": 73,
+          "obj_id": "1eRASS J162031.9-153936",
+          "ra": 245.13308560174173,
+          "dec": -15.660143988343572,
+          "anomaly_score": 24.771825790405273,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 74,
+          "obj_id": "1eRASS J173324.5-332320",
+          "ra": 263.35244226798324,
+          "dec": -33.38902789918475,
+          "anomaly_score": 24.515756607055664,
+          "in_simbad": true,
+          "simbad_main_id": "CXOU J173324.6-332321",
+          "simbad_otype": "X",
+          "simbad_sep_arcsec": 1.01,
+          "extra": {}
+        },
+        {
+          "rank": 75,
+          "obj_id": "1eRASS J174535.7-290118",
+          "ra": 266.39899812675594,
+          "dec": -29.02190110454272,
+          "anomaly_score": 24.244359970092773,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 76,
+          "obj_id": "1eRASS J164546.5-453906",
+          "ra": 251.44392237328233,
+          "dec": -45.65181856364397,
+          "anomaly_score": 24.177875518798828,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 77,
+          "obj_id": "1eRASS J054357.0-553204",
+          "ra": 85.98786777937292,
+          "dec": -55.53468017962293,
+          "anomaly_score": 23.895450592041016,
+          "in_simbad": true,
+          "simbad_main_id": "PMN J0544-5532",
+          "simbad_otype": "BLL",
+          "simbad_sep_arcsec": 2.69,
+          "extra": {}
+        },
+        {
+          "rank": 78,
+          "obj_id": "1eRASS J082334.0-424630",
+          "ra": 125.89178067232272,
+          "dec": -42.77521804928878,
+          "anomaly_score": 23.738536834716797,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 79,
+          "obj_id": "1eRASS J125743.9-691632",
+          "ra": 194.43301056520573,
+          "dec": -69.27567564329962,
+          "anomaly_score": 23.292030334472656,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 80,
+          "obj_id": "1eRASS J121547.0-173140",
+          "ra": 183.94590166114273,
+          "dec": -17.527785127200293,
+          "anomaly_score": 22.697660446166992,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 81,
+          "obj_id": "1eRASS J174354.6-294447",
+          "ra": 265.9775259028279,
+          "dec": -29.746558969757373,
+          "anomaly_score": 22.650142669677734,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 82,
+          "obj_id": "1eRASS J051933.9-690205",
+          "ra": 79.89146239050199,
+          "dec": -69.03478161590942,
+          "anomaly_score": 22.375835418701172,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 83,
+          "obj_id": "1eRASS J132527.7-430112",
+          "ra": 201.36550894212303,
+          "dec": -43.0201569328878,
+          "anomaly_score": 22.34772300720215,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 84,
+          "obj_id": "1eRASS J050957.3-641741",
+          "ra": 77.48892903347962,
+          "dec": -64.29477555212306,
+          "anomaly_score": 22.212547302246094,
+          "in_simbad": true,
+          "simbad_main_id": "4FGL J0509.9-6417",
+          "simbad_otype": "BLL",
+          "simbad_sep_arcsec": 0.68,
+          "extra": {}
+        },
+        {
+          "rank": 85,
+          "obj_id": "1eRASS J134725.1-325003",
+          "ra": 206.85477331039826,
+          "dec": -32.83422027430766,
+          "anomaly_score": 21.82636070251465,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 86,
+          "obj_id": "1eRASS J161916.0-154119",
+          "ra": 244.81689020028367,
+          "dec": -15.688828612829143,
+          "anomaly_score": 21.201335906982422,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 87,
+          "obj_id": "1eRASS J182546.8-370618",
+          "ra": 276.4453984430591,
+          "dec": -37.10500306194026,
+          "anomaly_score": 21.096508026123047,
+          "in_simbad": true,
+          "simbad_main_id": "V* V691 CrA",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 1.06,
+          "extra": {}
+        },
+        {
+          "rank": 88,
+          "obj_id": "1eRASS J091311.3-694259",
+          "ra": 138.2972095536291,
+          "dec": -69.71663872793285,
+          "anomaly_score": 20.86193084716797,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 89,
+          "obj_id": "1eRASS J161958.4-153036",
+          "ra": 244.99362217314248,
+          "dec": -15.510045042826706,
+          "anomaly_score": 20.523487091064453,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 90,
+          "obj_id": "1eRASS J163216.3-672738",
+          "ra": 248.06822575439162,
+          "dec": -67.46057013530917,
+          "anomaly_score": 20.003055572509766,
+          "in_simbad": true,
+          "simbad_main_id": "V* KZ TrA",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 2.69,
+          "extra": {}
+        },
+        {
+          "rank": 91,
+          "obj_id": "1eRASS J160102.2-604419",
+          "ra": 240.25952750535595,
+          "dec": -60.738685459670435,
+          "anomaly_score": 19.58121681213379,
+          "in_simbad": true,
+          "simbad_main_id": "V* LU TrA",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 1.36,
+          "extra": {}
+        },
+        {
+          "rank": 92,
+          "obj_id": "1eRASS J161916.9-153705",
+          "ra": 244.82058451426292,
+          "dec": -15.618156395316873,
+          "anomaly_score": 18.662242889404297,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 93,
+          "obj_id": "1eRASS J161929.3-154042",
+          "ra": 244.87224934903907,
+          "dec": -15.678349014799187,
+          "anomaly_score": 18.284412384033203,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 94,
+          "obj_id": "1eRASS J161939.6-153407",
+          "ra": 244.9150460122327,
+          "dec": -15.568822781588944,
+          "anomaly_score": 18.142440795898438,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 95,
+          "obj_id": "1eRASS J173900.9-442718",
+          "ra": 264.7539833272729,
+          "dec": -44.455022610609234,
+          "anomaly_score": 18.13991355895996,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 96,
+          "obj_id": "1eRASS J175012.5-370306",
+          "ra": 267.55217865036644,
+          "dec": -37.05188180824819,
+          "anomaly_score": 18.063920974731445,
+          "in_simbad": true,
+          "simbad_main_id": "2XMM J175012.8-370306",
+          "simbad_otype": "X",
+          "simbad_sep_arcsec": 2.02,
+          "extra": {}
+        },
+        {
+          "rank": 97,
+          "obj_id": "1eRASS J170854.4-440608",
+          "ra": 257.2269635211054,
+          "dec": -44.102488782035095,
+          "anomaly_score": 18.018152236938477,
+          "in_simbad": true,
+          "simbad_main_id": "1RXS J170855.6-440653",
+          "simbad_otype": "LXB",
+          "simbad_sep_arcsec": 1.47,
+          "extra": {}
+        },
+        {
+          "rank": 98,
+          "obj_id": "1eRASS J152048.0-571117",
+          "ra": 230.20005955441434,
+          "dec": -57.18810928978365,
+          "anomaly_score": 17.35469627380371,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 99,
+          "obj_id": "1eRASS J053428.6+220012",
+          "ra": 83.61929456697524,
+          "dec": 22.00357986851032,
+          "anomaly_score": 16.524829864501953,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        },
+        {
+          "rank": 100,
+          "obj_id": "1eRASS J162010.9-153201",
+          "ra": 245.04580532786446,
+          "dec": -15.533695116748321,
+          "anomaly_score": 16.469030380249023,
+          "in_simbad": false,
+          "simbad_main_id": null,
+          "simbad_otype": null,
+          "simbad_sep_arcsec": null,
+          "extra": {}
+        }
+      ]
+    }
+  }
+}

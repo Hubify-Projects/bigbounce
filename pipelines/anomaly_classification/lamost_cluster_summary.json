@@ -1,0 +1,240 @@
+{
+  "survey": "LAMOST DR10 v2.0 LRS",
+  "input_files": 108,
+  "anomaly_threshold": 5.0,
+  "total_anomalies": 44075,
+  "n_clusters": 8,
+  "n_clustered": 44007,
+  "n_noise": 68,
+  "fraction_clustered": 0.99846,
+  "feature_space": "log(rB), log(rR), log(rZ), log(score)  [4D \u2014 no latent vectors in LAMOST output]",
+  "umap_params": {
+    "n_components": 2,
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "metric": "euclidean",
+    "random_state": 42
+  },
+  "hdbscan_params": {
+    "min_cluster_size": 50,
+    "min_samples": 10,
+    "cluster_selection_method": "eom"
+  },
+  "timing_seconds": {
+    "umap": 53.58,
+    "hdbscan": 1.72
+  },
+  "category_totals": {
+    "ARTIFACT": 644,
+    "UNCATEGORIZED": 132,
+    "BLUE_EXCESS_QSO": 43231,
+    "NOISE": 68
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "size": 78,
+      "fraction_of_anomalies": 0.00177,
+      "median_anomaly_score": 2037301510144.0,
+      "mean_anomaly_score": 2109458077853.5386,
+      "std_anomaly_score": 758012604182.0657,
+      "median_rB": 5557384904704.0,
+      "median_rR": 118328229888.0,
+      "median_rZ": 292502568960.0,
+      "median_z": -0.000142275,
+      "median_snr": 1.245,
+      "mean_umap_x": 13.24981689453125,
+      "mean_umap_y": 2.9245035648345947,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 77,
+        "GALAXY": 1
+      }
+    },
+    {
+      "cluster_id": 1,
+      "size": 83,
+      "fraction_of_anomalies": 0.00188,
+      "median_anomaly_score": 627004801024.0,
+      "mean_anomaly_score": 663278672636.9156,
+      "std_anomaly_score": 163192849122.44467,
+      "median_rB": 1709980647424.0,
+      "median_rR": 36177887232.0,
+      "median_rZ": 90176471040.0,
+      "median_z": -3.695e-05,
+      "median_snr": 1.52,
+      "mean_umap_x": 13.327807426452637,
+      "mean_umap_y": 6.063640594482422,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 83
+      }
+    },
+    {
+      "cluster_id": 2,
+      "size": 93,
+      "fraction_of_anomalies": 0.00211,
+      "median_anomaly_score": 194400878592.0,
+      "mean_anomaly_score": 211816407128.08603,
+      "std_anomaly_score": 86671223023.8582,
+      "median_rB": 531316703232.0,
+      "median_rR": 11170944000.0,
+      "median_rZ": 27793074176.0,
+      "median_z": -9.703e-05,
+      "median_snr": 1.93,
+      "mean_umap_x": 13.157882690429688,
+      "mean_umap_y": 8.690683364868164,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 92,
+        "GALAXY": 1
+      }
+    },
+    {
+      "cluster_id": 3,
+      "size": 102,
+      "fraction_of_anomalies": 0.00231,
+      "median_anomaly_score": 11569423974400.0,
+      "mean_anomaly_score": 449579348699818.7,
+      "std_anomaly_score": 2437905428635456.5,
+      "median_rB": 30291821330432.0,
+      "median_rR": 520290811904.0,
+      "median_rZ": 1284910546944.0,
+      "median_z": -0.00020805,
+      "median_snr": 0.6950000000000001,
+      "mean_umap_x": 13.281084060668945,
+      "mean_umap_y": 1.0438323020935059,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 100,
+        "QSO": 2
+      }
+    },
+    {
+      "cluster_id": 4,
+      "size": 116,
+      "fraction_of_anomalies": 0.00263,
+      "median_anomaly_score": 1924472242176.0,
+      "mean_anomaly_score": 2322989857121.1035,
+      "std_anomaly_score": 1295220432731.673,
+      "median_rB": 5394299617280.0,
+      "median_rR": 74762629120.0,
+      "median_rZ": 158959419392.0,
+      "median_z": -9.489000000000001e-05,
+      "median_snr": 1.3849999999999998,
+      "mean_umap_x": 12.215229988098145,
+      "mean_umap_y": 2.121894359588623,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 114,
+        "GALAXY": 1,
+        "QSO": 1
+      }
+    },
+    {
+      "cluster_id": 5,
+      "size": 132,
+      "fraction_of_anomalies": 0.00299,
+      "median_anomaly_score": 15356284.0,
+      "mean_anomaly_score": 51934310.28787879,
+      "std_anomaly_score": 119883049.27340497,
+      "median_rB": 6673156.5,
+      "median_rR": 19242625.0,
+      "median_rZ": 11688361.0,
+      "median_z": 2.08e-06,
+      "median_snr": 41.870000000000005,
+      "mean_umap_x": 6.776205539703369,
+      "mean_umap_y": 17.683948516845703,
+      "inferred_category": "UNCATEGORIZED",
+      "objtype_breakdown": {
+        "STAR": 132
+      }
+    },
+    {
+      "cluster_id": 6,
+      "size": 43231,
+      "fraction_of_anomalies": 0.98085,
+      "median_anomaly_score": 19.406139373779297,
+      "mean_anomaly_score": 237146051.68583882,
+      "std_anomaly_score": 3587517664.7317867,
+      "median_rB": 18.410297393798828,
+      "median_rR": 3.9433329105377197,
+      "median_rZ": 2.739147901535034,
+      "median_z": 7.45e-06,
+      "median_snr": 2.66,
+      "mean_umap_x": -0.17700444161891937,
+      "mean_umap_y": 5.223703861236572,
+      "inferred_category": "BLUE_EXCESS_QSO",
+      "objtype_breakdown": {
+        "STAR": 35984,
+        "GALAXY": 3800,
+        "QSO": 3447
+      }
+    },
+    {
+      "cluster_id": 7,
+      "size": 172,
+      "fraction_of_anomalies": 0.0039,
+      "median_anomaly_score": 351888605184.0,
+      "mean_anomaly_score": 391313413381.9535,
+      "std_anomaly_score": 218113986233.5212,
+      "median_rB": 986340818944.0,
+      "median_rR": 13662588928.0,
+      "median_rZ": 29078112256.0,
+      "median_z": -9.408499999999999e-05,
+      "median_snr": 1.64,
+      "mean_umap_x": 11.607748985290527,
+      "mean_umap_y": 9.294949531555176,
+      "inferred_category": "ARTIFACT",
+      "objtype_breakdown": {
+        "STAR": 170,
+        "GALAXY": 1,
+        "QSO": 1
+      }
+    }
+  ],
+  "noise": {
+    "cluster_id": -1,
+    "label": "noise",
+    "size": 68,
+    "fraction_of_anomalies": 0.00154,
+    "median_anomaly_score": 191.4234161376953,
+    "median_rB": 15.867629051208496,
+    "median_rR": 88.3633918762207,
+    "median_rZ": 238.83158111572266,
+    "median_z": -4.387e-05,
+    "inferred_category": "NOISE"
+  },
+  "cross_survey_comparison": {
+    "ARTIFACT": {
+      "sdss_count": 0,
+      "sdss_fraction": 0.0,
+      "lamost_count": 644,
+      "lamost_fraction": 0.01461
+    },
+    "BLUE_EXCESS_QSO": {
+      "sdss_count": 585,
+      "sdss_fraction": 0.00751,
+      "lamost_count": 43231,
+      "lamost_fraction": 0.98085
+    },
+    "HIGH_Z_CANDIDATE": {
+      "sdss_count": 4117,
+      "sdss_fraction": 0.05285,
+      "lamost_count": 0,
+      "lamost_fraction": 0.0
+    },
+    "NOISE": {
+      "sdss_count": 432,
+      "sdss_fraction": 0.00555,
+      "lamost_count": 68,
+      "lamost_fraction": 0.00154
+    },
+    "UNCATEGORIZED": {
+      "sdss_count": 72771,
+      "sdss_fraction": 0.9341,
+      "lamost_count": 132,
+      "lamost_fraction": 0.00299
+    }
+  }
+}
