@@ -18,11 +18,11 @@
 - [ ] Score distribution: is the anomaly score distribution physical or dominated by systematics?
 
 ### For CMB experiments (Planck, ACT):
-- [ ] Cross-match anomalous patches against known CMB cold/hot spots
+- [x] Cross-match Planck anomalies with ACT anomalies — **15 matches, expected 12.2 random. NOT significant (1.2x). Cold Spot and hemispherical asymmetry NOT confirmed by both.** (2026-04-03)
+- [x] Birefringence pipeline written + simulation validated — **injected β=0.27°, recovered 0.261±0.037° (unbiased). Caught factor-of-2 bug in standard formula. Ready for H200 deployment on real ACT IQU data.** (2026-04-03)
+- [ ] Deploy birefringence on H200 with real ACT 5.3GB IQU map → measure actual β
+- [ ] Cross-match anomalous patches against known CMB cold/hot spots (deeper analysis)
 - [ ] Check if anomalous patches correlate with galactic foreground residuals
-- [ ] Cross-match Planck anomalies with ACT anomalies (same sky regions?)
-- [ ] Compute power spectrum of anomaly locations — is it consistent with Gaussianity?
-- [ ] Birefringence measurement from ACT Q/U maps: compute β from EB correlation
 
 ### For time-domain (NEOWISE, Gaia):
 - [ ] Cross-match NEOWISE anomalies with ZTF alerts — any known transients?
