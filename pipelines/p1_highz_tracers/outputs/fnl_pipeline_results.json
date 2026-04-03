@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-03T17:26:24Z",
+    "description": "Full f_NL tracer bias measurement pipeline. Standard DESI QSO vs anomaly-enhanced multi-tracer Fisher forecast.",
+    "bounce_prediction": {
+      "f_NL": -4.375,
+      "formula": "f_NL = -35/8 (matter bounce, parameter-free, mechanism-independent)",
+      "reference": "Branch V matter bounce in bounce portfolio strategy"
+    },
+    "cosmology": {
+      "H0": 67.36,
+      "Omega_m": 0.3153,
+      "Omega_L": 0.6847,
+      "sigma8": 0.8111,
+      "n_s": 0.9649,
+      "A_s": 2.1e-09,
+      "f_sky_DESI": 0.34
+    },
+    "existing_partial_outputs": {
+      "fnl_forecast_json": true,
+      "bias_validation_json": true,
+      "step5_fnl_improvement_json": true
+    },
+    "desi_catalog": "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/p1_highz_tracers/outputs/enhanced_18M_deduped",
+    "sdss_catalog": "/Users/houstongolden/Desktop/CODE_2026/bigbounce/pipelines/h200_results/sdss_dr18"
+  },
+  "catalog_summary": {
+    "desi_total_spectra": 22504897,
+    "desi_qso_zwarn0": 1409615,
+    "sdss_total_anomaly": 2304830,
+    "sdss_z_method": "latent_space_proxy"
+  },
+  "bias_model": {
+    "formula": "b(z) = 0.53 + 0.289*(1+z)^2  [Laurent+2017]",
+    "bias_enhancement_formula": "b_anom = b_std * (1 + alpha * mean_anomaly_score)",
+    "alpha_bias_fiducial": 0.15,
+    "anomaly_score_window": [
+      0.5,
+      5.0
+    ],
+    "physical_basis": "BAL QSOs 20% higher clustering (Font-Ribera+2013); luminous outliers delta_b/b ~ 0.4/mag (Shen+2009)"
+  },
+  "redshift_bins": [
+    {
+      "label": "0.5-1.0",
+      "z_low": 0.5,
+      "z_high": 1.0,
+      "z_mid": 0.75,
+      "N_total": 180636,
+      "N_anomaly": 993,
+      "fraction_anomaly": 0.005497243074470205,
+      "V_Mpc3": 45511064258.3498,
+      "V_Gpc3": 45.5110642583498,
+      "nbar_total": 3.969056820438102e-06,
+      "nbar_anomaly": 2.1818870118332088e-08,
+      "nbar_complement": 3.94723795031977e-06,
+      "bias_standard": 1.4150625,
+      "bias_anomaly": 1.5713065158985553,
+      "bias_boost": 1.1104149222373962,
+      "mean_anomaly_score": 0.7360994815826416
+    },
+    {
+      "label": "1.0-1.5",
+      "z_low": 1.0,
+      "z_high": 1.5,
+      "z_mid": 1.25,
+      "N_total": 340253,
+      "N_anomaly": 6958,
+      "fraction_anomaly": 0.020449489056672536,
+      "V_Mpc3": 72271296398.165,
+      "V_Gpc3": 72.27129639816499,
+      "nbar_total": 4.707996354810638e-06,
+      "nbar_anomaly": 9.627611993655434e-08,
+      "nbar_complement": 4.6117202348740835e-06,
+      "bias_standard": 1.9930625,
+      "bias_anomaly": 2.217860946856439,
+      "bias_boost": 1.1127904653549194,
+      "mean_anomaly_score": 0.7519364356994629
+    },
+    {
+      "label": "1.5-2.0",
+      "z_low": 1.5,
+      "z_high": 2.0,
+      "z_mid": 1.75,
+      "N_total": 393765,
+      "N_anomaly": 44034,
+      "fraction_anomaly": 0.11182812083349206,
+      "V_Mpc3": 85322003732.54736,
+      "V_Gpc3": 85.32200373254736,
+      "nbar_total": 4.6150463277246315e-06,
+      "nbar_anomaly": 5.160919583889539e-07,
+      "nbar_complement": 4.0989543693356775e-06,
+      "bias_standard": 2.7155625,
+      "bias_anomaly": 3.077719371555559,
+      "bias_boost": 1.1333634823560714,
+      "mean_anomaly_score": 0.8890898823738098
+    },
+    {
+      "label": "2.0-2.5",
+      "z_low": 2.0,
+      "z_high": 2.5,
+      "z_mid": 2.25,
+      "N_total": 288439,
+      "N_anomaly": 58836,
+      "fraction_anomaly": 0.2039807376949719,
+      "V_Mpc3": 89623107213.03441,
+      "V_Gpc3": 89.6231072130344,
+      "nbar_total": 3.2183552765513875e-06,
+      "nbar_anomaly": 6.564824834754573e-07,
+      "nbar_complement": 2.56187279307593e-06,
+      "bias_standard": 3.5825625,
+      "bias_anomaly": 4.122161022586003,
+      "bias_boost": 1.1506180346012116,
+      "mean_anomaly_score": 1.0041202306747437
+    },
+    {
+      "label": "2.5-3.0",
+      "z_low": 2.5,
+      "z_high": 3.0,
+      "z_mid": 2.75,
+      "N_total": 136358,
+      "N_anomaly": 39499,
+      "fraction_anomaly": 0.28967130641399846,
+      "V_Mpc3": 89252321736.13101,
+      "V_Gpc3": 89.25232173613101,
+      "nbar_total": 1.5277809848256274e-06,
+      "nbar_anomaly": 4.4255431378890465e-07,
+      "nbar_complement": 1.0852266710367228e-06,
+      "bias_standard": 4.5940625,
+      "bias_anomaly": 5.274006678121164,
+      "bias_boost": 1.1480049908161163,
+      "mean_anomaly_score": 0.9866999387741089
+    },
+    {
+      "label": "3.0-4.0",
+      "z_low": 3.0,
+      "z_high": 4.0,
+      "z_mid": 3.5,
+      "N_total": 64472,
+      "N_anomaly": 18028,
+      "fraction_anomaly": 0.27962526368035734,
+      "V_Mpc3": 169379744444.52087,
+      "V_Gpc3": 169.37974444452087,
+      "nbar_total": 3.806358322917257e-07,
+      "nbar_anomaly": 1.0643539497076606e-07,
+      "nbar_complement": 2.7420043732095963e-07,
+      "bias_standard": 6.38225,
+      "bias_anomaly": 7.269611292245984,
+      "bias_boost": 1.1390358090400696,
+      "mean_anomaly_score": 0.9269053936004639
+    },
+    {
+      "label": "4.0-5.0",
+      "z_low": 4.0,
+      "z_high": 5.0,
+      "z_mid": 4.5,
+      "N_total": 4889,
+      "N_anomaly": 1819,
+      "fraction_anomaly": 0.3720597259153201,
+      "V_Mpc3": 153157419427.4272,
+      "V_Gpc3": 153.1574194274272,
+      "nbar_total": 3.1921404906646565e-08,
+      "nbar_anomaly": 1.1876669160398875e-08,
+      "nbar_complement": 2.004473574624769e-08,
+      "bias_standard": 9.272249999999998,
+      "bias_anomaly": 10.557435614320633,
+      "bias_boost": 1.1386055827140809,
+      "mean_anomaly_score": 0.9240372180938721
+    }
+  ],
+  "fisher_forecast": {
+    "standard_desi_qso": {
+      "sigma_fNL": 15.747517065590815,
+      "F_total": 0.00403251345056735,
+      "sigma_per_bin": {
+        "0.5-1.0": 249.64773790892332,
+        "1.0-1.5": 64.60294965524164,
+        "1.5-2.0": 32.17350837308036,
+        "2.0-2.5": 25.978111814524354,
+        "2.5-3.0": 32.84216177499881,
+        "3.0-4.0": 50.44811356032868,
+        "4.0-5.0": 333.7929133315477
+      }
+    },
+    "multi_tracer_desi_anomaly": {
+      "sigma_fNL": 14.78682531274671,
+      "F_total": 0.004573515080518493,
+      "improvement_pct": 6.100591914539133,
+      "sigma_per_bin": {
+        "0.5-1.0": 248.90664566633967,
+        "1.0-1.5": 64.16441499068698,
+        "1.5-2.0": 31.060615839028006,
+        "2.0-2.5": 24.322401563401115,
+        "2.5-3.0": 29.996105819128527,
+        "3.0-4.0": 46.37521726942659,
+        "4.0-5.0": 298.8840052729002
+      }
+    },
+    "multi_tracer_plus_sdss": {
+      "sigma_fNL": 13.15986114674823,
+      "improvement_pct": 16.43215186282766,
+      "sdss_z_method": "latent_space_proxy",
+      "sdss_highz_count": 64483
+    }
+  },
+  "combined_with_planck": {
+    "sigma_planck": 5.1,
+    "sigma_published_desi_sdb": 9.05,
+    "sigma_combined_published": 4.443067164039173,
+    "sigma_combined_standard": 4.85189623952385,
+    "sigma_combined_multi_tracer": 4.82129219392958,
+    "sigma_combined_mt_plus_sdss": 4.755384046493877
+  },
+  "detection_significance": {
+    "f_NL_prediction": -4.375,
+    "snr_published_baseline": 0.9846801406492147,
+    "snr_standard_pipeline": 0.9017093078703903,
+    "snr_multi_tracer": 0.9074330747903021,
+    "snr_mt_plus_sdss": 0.9200098156584573,
+    "snr_spherex_forecast": 4.375
+  },
+  "sensitivity_analysis": {
+    "parameter": "alpha_bias (bias enhancement per unit anomaly score)",
+    "results": [
+      {
+        "alpha": 0.05,
+        "sigma_mt": 15.430731626656053,
+        "sigma_combined": 4.842371700785688,
+        "snr": 0.9034828944027871,
+        "improvement_pct": 2.0116532505746854
+      },
+      {
+        "alpha": 0.1,
+        "sigma_mt": 15.110001808012662,
+        "sigma_combined": 4.832174344985618,
+        "snr": 0.9053895177726707,
+        "improvement_pct": 4.048354130513432
+      },
+      {
+        "alpha": 0.15,
+        "sigma_mt": 14.78682531274671,
+        "sigma_combined": 4.82129219392958,
+        "snr": 0.9074330747903021,
+        "improvement_pct": 6.100591914539133
+      },
+      {
+        "alpha": 0.2,
+        "sigma_mt": 14.462588537909403,
+        "sigma_combined": 4.80971425444248,
+        "snr": 0.9096174468075817,
+        "improvement_pct": 8.159562693785238
+      },
+      {
+        "alpha": 0.25,
+        "sigma_mt": 14.138560962701467,
+        "sigma_combined": 4.797430684422852,
+        "snr": 0.9119464746422549,
+        "improvement_pct": 10.217205011988872
+      },
+      {
+        "alpha": 0.3,
+        "sigma_mt": 13.81589244995863,
+        "sigma_combined": 4.784432949856024,
+        "snr": 0.9144239340069872,
+        "improvement_pct": 12.26621700161793
+      },
+      {
+        "alpha": 0.4,
+        "sigma_mt": 13.17863526979195,
+        "sigma_combined": 4.756268255748501,
+        "snr": 0.9198387821612681,
+        "improvement_pct": 16.312932287033433
+      },
+      {
+        "alpha": 0.5,
+        "sigma_mt": 12.557669009141797,
+        "sigma_combined": 4.725183288343136,
+        "snr": 0.9258900095564491,
+        "improvement_pct": 20.25619685416319
+      }
+    ]
+  },
+  "sdss_bin_counts_photo_z": {
+    "0.5-1.0": 2418,
+    "1.0-1.5": 4476,
+    "1.5-2.0": 4909,
+    "2.0-2.5": 3968,
+    "2.5-3.0": 3343,
+    "3.0-4.0": 52263,
+    "4.0-5.0": 0
+  },
+  "next_steps": [
+    {
+      "step": "Step 4 validation",
+      "action": "Run step4_bias_validation.py: measure angular clustering w(\u03b8) of anomaly-selected DESI QSOs to confirm b_anom > b_std. This validates the bias enhancement assumption used here.",
+      "priority": "HIGH \u2014 required before publishing bias improvement claim"
+    },
+    {
+      "step": "SDSS spectroscopic cross-match",
+      "action": "Download SDSS DR18 specObj catalog and cross-match by (plate, mjd, fiberid) to get precise spectroscopic redshifts for the 77K SDSS anomalies. Replace photo-z estimates.",
+      "priority": "HIGH \u2014 needed for SDSS contribution to be quantitative"
+    },
+    {
+      "step": "Tracer classification",
+      "action": "Classify anomalies into: genuine high-z QSOs (useful for f_NL), unusual AGN, stellar contaminants, pipeline artifacts. Use Legacy Survey photometry + color-color cuts. See step3 in pipeline1_tracer_purification_plan.md.",
+      "priority": "MEDIUM \u2014 sharpens the N_effective estimate"
+    },
+    {
+      "step": "Paper section",
+      "action": "Write Section 4 (Bias Measurement) and Section 5 (f_NL Improvement) of the DESI anomaly catalog paper using these Fisher results.",
+      "priority": "MEDIUM \u2014 after bias validation"
+    }
+  ],
+  "references": [
+    "Dalal+2008 arXiv:0710.4560 (scale-dependent bias from PNG)",
+    "Matarrese & Verde 2008 arXiv:0801.4826 (PNG galaxy bias)",
+    "Seljak 2009 arXiv:0907.2188 (multi-tracer technique)",
+    "Mueller+2022 arXiv:2106.00025 (DESI f_NL forecasts)",
+    "Laurent+2017 arXiv:1705.05442 (QSO bias model)",
+    "Eisenstein & Hu 1998 (transfer function)",
+    "Liang+2023 arXiv:2307.07664 (DESI EDR anomaly, 200K spectra)",
+    "Nicolaou+2026 arXiv:2506.17376 (DESI EDR VAE, 250K spectra)",
+    "Font-Ribera+2013 (BAL QSO clustering enhancement)",
+    "Shen+2009 (luminous QSO bias-luminosity relation)"
+  ]
+}

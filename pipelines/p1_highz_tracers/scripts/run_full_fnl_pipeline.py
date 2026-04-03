@@ -267,8 +267,8 @@ else:
 # ============================================================
 
 print("Sanity checks on cosmological functions:")
-P01 = matter_power_spectrum(0.01, 0.0)
-P10 = matter_power_spectrum(0.10, 0.0)
+P01 = float(matter_power_spectrum(0.01, 0.0)[0])
+P10 = float(matter_power_spectrum(0.10, 0.0)[0])
 print(f"  P(k=0.01 Mpc⁻¹, z=0) = {P01:.0f} Mpc³   [expect 30,000–50,000]")
 print(f"  P(k=0.10 Mpc⁻¹, z=0) = {P10:.0f} Mpc³   [expect  3,000–5,000]")
 print(f"  D(z=0) = {growth_factor_D(0):.4f}  [should be ~1.00]")
