@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-04-03 16:53:27",
+  "elapsed_seconds": 6.9,
+  "input_files": 46,
+  "anomaly_threshold": 5.0,
+  "total_anomalies": 77905,
+  "category_counts": {
+    "UNCATEGORIZED": 41065,
+    "NIR_EXCESS_HIGH_Z": 25733,
+    "UV_EXCESS_YOUNG_STAR": 6099,
+    "STAR_FORMING_HALPHA": 1232,
+    "QSO_BLUE_EXCESS": 1164,
+    "EMISSION_LINE_GALAXY": 780,
+    "REDSHIFTED_EMITTER": 547,
+    "ARTIFACT": 520,
+    "AGN_BROAD_EMISSION": 384,
+    "UNUSUAL_CONTINUUM": 381
+  },
+  "line_candidate_counts": {
+    "TiO 8430": 48539,
+    "[OII] 3727": 26766,
+    "[OI]": 2600
+  },
+  "rf_trained": false,
+  "rf_classes": [
+    ""
+  ],
+  "band_ranges_angstrom": {
+    "rB": [
+      3600,
+      6200
+    ],
+    "rR": [
+      6200,
+      8200
+    ],
+    "rZ": [
+      8200,
+      9800
+    ]
+  },
+  "known_lines_count": 28,
+  "categories": [
+    {
+      "category": "UNCATEGORIZED",
+      "count": 41065,
+      "fraction": 0.52712,
+      "median_score": 27.871,
+      "median_rB": 35.68132,
+      "median_rR": 11.59279,
+      "median_rZ": 35.97992,
+      "top_line": "TiO 8430"
+    },
+    {
+      "category": "NIR_EXCESS_HIGH_Z",
+      "count": 25733,
+      "fraction": 0.33031,
+      "median_score": 17.064,
+      "median_rB": 7.3253,
+      "median_rR": 4.37263,
+      "median_rZ": 40.88638,
+      "top_line": "TiO 8430"
+    },
+    {
+      "category": "UV_EXCESS_YOUNG_STAR",
+      "count": 6099,
+      "fraction": 0.07829,
+      "median_score": 24.428,
+      "median_rB": 55.90508,
+      "median_rR": 5.20898,
+      "median_rZ": 6.2981,
+      "top_line": "[OII] 3727"
+    },
+    {
+      "category": "STAR_FORMING_HALPHA",
+      "count": 1232,
+      "fraction": 0.01581,
+      "median_score": 31.074,
+      "median_rB": 6.54815,
+      "median_rR": 73.83153,
+      "median_rZ": 6.32224,
+      "top_line": "[OI]"
+    },
+    {
+      "category": "QSO_BLUE_EXCESS",
+      "count": 1164,
+      "fraction": 0.01494,
+      "median_score": 1846.04,
+      "median_rB": 4463.10156,
+      "median_rR": 240.96178,
+      "median_rZ": 450.85335,
+      "top_line": "[OII] 3727"
+    },
+    {
+      "category": "EMISSION_LINE_GALAXY",
+      "count": 780,
+      "fraction": 0.01001,
+      "median_score": 20.758,
+      "median_rB": 28.02735,
+      "median_rR": 24.37589,
+      "median_rZ": 6.26141,
+      "top_line": "[OII] 3727"
+    },
+    {
+      "category": "REDSHIFTED_EMITTER",
+      "count": 547,
+      "fraction": 0.00702,
+      "median_score": 30.305,
+      "median_rB": 15.0492,
+      "median_rR": 38.88763,
+      "median_rZ": 37.26218,
+      "top_line": "[OI]"
+    },
+    {
+      "category": "ARTIFACT",
+      "count": 520,
+      "fraction": 0.00667,
+      "median_score": 46750.863,
+      "median_rB": 5804.19653,
+      "median_rR": 29712.53223,
+      "median_rZ": 9127.36279,
+      "top_line": "[OI]"
+    },
+    {
+      "category": "AGN_BROAD_EMISSION",
+      "count": 384,
+      "fraction": 0.00493,
+      "median_score": 22.716,
+      "median_rB": 4.06114,
+      "median_rR": 46.93435,
+      "median_rZ": 18.14206,
+      "top_line": "[OI]"
+    },
+    {
+      "category": "UNUSUAL_CONTINUUM",
+      "count": 381,
+      "fraction": 0.00489,
+      "median_score": 40.456,
+      "median_rB": 42.52555,
+      "median_rR": 37.72187,
+      "median_rZ": 44.67051,
+      "top_line": "TiO 8430"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "timestamp": "2026-04-03T16:52:19Z",
+  "runtime_s": 227.8,
+  "n_objects": 50000,
+  "n_clusters": 3,
+  "n_noise": 1,
+  "parquet": "/workspace/bigbounce/outputs/taxonomy/taxonomy_clusters.parquet",
+  "summary": "/workspace/bigbounce/outputs/taxonomy/taxonomy_summary.json"
+}

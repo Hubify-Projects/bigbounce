@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-04-03 16:53:43",
+  "elapsed_seconds": 14.2,
+  "anomaly_threshold": 5.0,
+  "surveys": {
+    "SDSS": {
+      "total": 2304830,
+      "anomalies": 77905,
+      "rate": 0.033801,
+      "has_spatial": false,
+      "note": "plate/mjd/fiberid only \u2014 aggregate stats computed",
+      "score_median": 0.0486,
+      "score_p99": 77.1328
+    },
+    "LAMOST": {
+      "total": 11418594,
+      "anomalies": 44075,
+      "rate": 0.00386,
+      "has_spatial": true,
+      "n_healpix_occupied": 23201
+    },
+    "eROSITA": {
+      "total": 930203,
+      "anomalies": 298,
+      "rate": 0.00032,
+      "has_spatial": true,
+      "n_healpix_occupied": 24788
+    }
+  },
+  "total_sources_all_surveys": 14653627,
+  "total_anomalies_all_surveys": 122278,
+  "spatial_analysis": {
+    "uniformity_test": {
+      "chi2": 143935.63,
+      "dof": 38329,
+      "p_value": 0.0,
+      "reduced_chi2": 3.7553,
+      "interpretation": "NON-UNIFORM: anomaly rate varies across sky (p < 0.01)"
+    },
+    "galactic_latitude": {
+      "n_pixels": 37956,
+      "pearson_r": -0.06022,
+      "pearson_p": 7.7088e-32,
+      "spearman_r": 0.000498,
+      "spearman_p": 0.92271,
+      "interpretation": "UNCORRELATED with galactic latitude \u2014 anomalies likely astrophysical"
+    },
+    "planck_dust": {
+      "status": "computed",
+      "dust_file": "COM_CMB_IQU-smica_2048_R3.00_full.fits",
+      "pearson_r": 0.006359,
+      "pearson_p": 0.21312,
+      "n_pixels": 38330,
+      "interpretation": "UNCORRELATED with dust \u2014 anomalies not driven by Galactic foreground"
+    },
+    "healpix": {
+      "nside": 64,
+      "npix": 49152,
+      "n_occupied": 40537,
+      "sky_coverage_fraction": 0.8247,
+      "sky_coverage_deg2": 34022.4,
+      "global_anomaly_rate": 0.003593
+    }
+  }
+}
