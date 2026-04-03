@@ -171,6 +171,57 @@
   font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);
 }
 
+/* Galaxy detail panel */
+.gx-panel-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: 999; }
+.gx-panel-backdrop.open { display: block; }
+.gx-panel {
+  position: fixed; top: 0; right: -65%; width: 60%; max-width: 640px; height: 100vh;
+  background: var(--bg); border-left: 1px solid var(--border);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.25); z-index: 1000;
+  overflow-y: auto; transition: right 0.3s ease; padding: 0;
+}
+.gx-panel.open { right: 0; }
+.gx-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--bg); z-index: 1;
+}
+.gx-panel-header h3 { margin: 0; font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+.gx-panel-close {
+  background: none; border: 1px solid var(--border); padding: 4px 12px;
+  font-family: var(--font-mono); font-size: 12px; cursor: pointer;
+  color: var(--text-secondary); transition: all 150ms;
+}
+.gx-panel-close:hover { border-color: var(--text); color: var(--text); }
+.gx-panel-body { padding: 24px; }
+.gx-panel-img {
+  width: 100%; max-width: 400px; display: block; margin: 0 auto 20px;
+  border: 1px solid var(--border); background: var(--bg-code);
+}
+.gx-panel-detail-grid {
+  display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px;
+  font-family: var(--font-mono); font-size: 13px; margin-bottom: 20px;
+}
+.gx-panel-detail-grid dt { font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; align-self: center; }
+.gx-panel-detail-grid dd { margin: 0; color: var(--text); }
+.gx-panel-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.gx-panel-links a {
+  padding: 6px 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  border: 1px solid var(--border); color: var(--text-secondary);
+  text-decoration: none; transition: all 150ms;
+}
+.gx-panel-links a:hover { border-color: var(--text); color: var(--text); }
+.gx-panel-probs { margin-top: 16px; }
+.gx-panel-prob-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-family: var(--font-mono); font-size: 12px; }
+.gx-panel-prob-label { width: 80px; text-align: right; color: var(--text-muted); font-weight: 600; }
+.gx-panel-prob-bar { flex: 1; height: 10px; background: var(--border); overflow: hidden; }
+.gx-panel-prob-fill { height: 100%; transition: width 0.3s ease; }
+.gx-panel-prob-fill.cw { background: #3b82f6; }
+.gx-panel-prob-fill.ccw { background: #ef4444; }
+.gx-panel-prob-fill.ns { background: #94a3b8; }
+.gx-panel-prob-val { width: 50px; font-size: 12px; }
+.gx-table tr { cursor: pointer; }
+
 /* Responsive */
 @media (max-width: 900px) {
   .gx-stats { grid-template-columns: repeat(3, 1fr); }
@@ -179,6 +230,9 @@
   .gx-pipeline-grid { grid-template-columns: 1fr; }
   .gx-figures-grid { grid-template-columns: 1fr; }
   .gx-gallery-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .gx-panel { width: 100%; max-width: 100%; right: -105%; }
 }
 @media (max-width: 480px) {
   .gx-stats { grid-template-columns: repeat(2, 1fr); }
@@ -656,6 +710,16 @@
 </main>
 </div>
 
+<!-- ═══════════════════════ GALAXY DETAIL PANEL ═══════════════════════ -->
+<div class="gx-panel-backdrop" id="gxPanelBackdrop"></div>
+<div class="gx-panel" id="gxPanel">
+  <div class="gx-panel-header">
+    <h3 id="gxPanelTitle">Galaxy Detail</h3>
+    <button class="gx-panel-close" id="gxPanelClose">ESC &times;</button>
+  </div>
+  <div class="gx-panel-body" id="gxPanelBody"></div>
+</div>
+
 <!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
 <script>
 // Confidence slider
@@ -694,12 +758,14 @@ var placeholderGalaxies = [
 function renderTable(data) {
   var tbody = document.getElementById('gx-results-body');
   tbody.innerHTML = '';
-  data.forEach(function(g) {
+  data.forEach(function(g, idx) {
     var imgUrl = 'https://www.legacysurvey.org/viewer/jpeg-cutout?ra=' + g.ra + '&dec=' + g.dec + '&size=150&layer=ls-dr9';
     var clsClass = g.cls === 'CW' ? 'gx-class-cw' : g.cls === 'CCW' ? 'gx-class-ccw' : 'gx-class-ns';
     var clsLabel = g.cls === 'NOT_SPIRAL' ? 'NOT_SPIRAL' : g.cls;
     var conf = Math.max(g.p_cw, g.p_ccw, g.p_ns);
     var tr = document.createElement('tr');
+    tr.setAttribute('data-gx-idx', idx);
+    tr.addEventListener('click', function() { openGalaxyPanel(data[idx]); });
     tr.innerHTML =
       '<td><img class="gx-thumb" src="' + imgUrl + '" alt="' + g.dr8_id + '" loading="lazy" onerror="this.style.display=\'none\'"></td>' +
       '<td>' + g.dr8_id + '</td>' +
@@ -713,6 +779,73 @@ function renderTable(data) {
     tbody.appendChild(tr);
   });
 }
+
+// ── Galaxy detail panel ──
+var gxPanel = document.getElementById('gxPanel');
+var gxBackdrop = document.getElementById('gxPanelBackdrop');
+var gxPanelBody = document.getElementById('gxPanelBody');
+var gxPanelTitle = document.getElementById('gxPanelTitle');
+
+function openGalaxyPanel(g) {
+  var conf = Math.max(g.p_cw, g.p_ccw, g.p_ns);
+  var clsColor = g.cls === 'CW' ? '#1d4ed8' : g.cls === 'CCW' ? '#dc2626' : '#64748b';
+  var clsLabel = g.cls === 'NOT_SPIRAL' ? 'Not Spiral' : g.cls === 'CW' ? 'Clockwise' : 'Counter-Clockwise';
+  var imgUrl = 'https://www.legacysurvey.org/viewer/jpeg-cutout?ra=' + g.ra + '&dec=' + g.dec + '&size=256&layer=ls-dr9';
+  var viewerUrl = 'https://www.legacysurvey.org/viewer?ra=' + g.ra + '&dec=' + g.dec + '&layer=ls-dr9&zoom=15';
+
+  gxPanelTitle.textContent = g.dr8_id;
+  gxPanelBody.innerHTML =
+    '<img class="gx-panel-img" src="' + imgUrl + '" alt="' + g.dr8_id + '" onerror="this.alt=\'Image not available\'; this.style.opacity=0.3;">' +
+    '<div style="text-align:center; margin-bottom:20px;">' +
+      '<span style="font-family:var(--font-mono); font-size:18px; font-weight:700; color:' + clsColor + ';">' + clsLabel + '</span>' +
+      '<span style="font-family:var(--font-mono); font-size:13px; color:var(--text-muted); margin-left:12px;">conf ' + (conf * 100).toFixed(1) + '%</span>' +
+    '</div>' +
+    '<div class="gx-panel-probs">' +
+      '<div class="gx-panel-prob-row">' +
+        '<span class="gx-panel-prob-label">P(CW)</span>' +
+        '<div class="gx-panel-prob-bar"><div class="gx-panel-prob-fill cw" style="width:' + (g.p_cw * 100) + '%"></div></div>' +
+        '<span class="gx-panel-prob-val">' + (g.p_cw * 100).toFixed(1) + '%</span>' +
+      '</div>' +
+      '<div class="gx-panel-prob-row">' +
+        '<span class="gx-panel-prob-label">P(CCW)</span>' +
+        '<div class="gx-panel-prob-bar"><div class="gx-panel-prob-fill ccw" style="width:' + (g.p_ccw * 100) + '%"></div></div>' +
+        '<span class="gx-panel-prob-val">' + (g.p_ccw * 100).toFixed(1) + '%</span>' +
+      '</div>' +
+      '<div class="gx-panel-prob-row">' +
+        '<span class="gx-panel-prob-label">P(NS)</span>' +
+        '<div class="gx-panel-prob-bar"><div class="gx-panel-prob-fill ns" style="width:' + (g.p_ns * 100) + '%"></div></div>' +
+        '<span class="gx-panel-prob-val">' + (g.p_ns * 100).toFixed(1) + '%</span>' +
+      '</div>' +
+    '</div>' +
+    '<dl class="gx-panel-detail-grid">' +
+      '<dt>DR8 ID</dt><dd>' + g.dr8_id + '</dd>' +
+      '<dt>RA</dt><dd>' + g.ra.toFixed(6) + '&deg;</dd>' +
+      '<dt>Dec</dt><dd>' + g.dec.toFixed(6) + '&deg;</dd>' +
+      '<dt>Classification</dt><dd style="color:' + clsColor + '; font-weight:600;">' + g.cls + '</dd>' +
+      '<dt>Confidence</dt><dd>' + (conf * 100).toFixed(1) + '%</dd>' +
+    '</dl>' +
+    '<div class="gx-panel-links">' +
+      '<a href="' + viewerUrl + '" target="_blank" rel="noopener">Legacy Survey Viewer</a>' +
+      '<a href="https://simbad.u-strasbg.fr/simbad/sim-coo?Coord=' + g.ra + '+' + g.dec + '&CooFrame=FK5&Radius=10&Radius.unit=arcsec" target="_blank" rel="noopener">SIMBAD Lookup</a>' +
+      '<a href="https://ned.ipac.caltech.edu/conesearch?search_type=Near%20Position%20Search&RA=' + g.ra + '&DEC=' + g.dec + '&SR=0.01" target="_blank" rel="noopener">NED Search</a>' +
+    '</div>';
+
+  gxPanel.classList.add('open');
+  gxBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalaxyPanel() {
+  gxPanel.classList.remove('open');
+  gxBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+gxBackdrop.addEventListener('click', closeGalaxyPanel);
+document.getElementById('gxPanelClose').addEventListener('click', closeGalaxyPanel);
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && gxPanel.classList.contains('open')) closeGalaxyPanel();
+});
 
 renderTable(placeholderGalaxies);
 
