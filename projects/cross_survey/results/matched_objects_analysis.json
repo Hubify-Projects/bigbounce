@@ -1,0 +1,229 @@
+{
+  "analysis_date": "2026-04-02",
+  "analyst": "Claude (claude-sonnet-4-6)",
+  "cross_match_params": {
+    "match_radius_arcsec": 3.0,
+    "score_threshold_sdss": 5.0,
+    "score_threshold_desi": 5.0,
+    "total_matches": 3
+  },
+  "objects": [
+    {
+      "match_id": 1,
+      "label": "HIGH-Z QSO — PRIMARY INTEREST",
+      "coordinates": {
+        "ra": 220.96111,
+        "dec": 36.387542,
+        "ra_hms": "14h43m50.67s",
+        "dec_dms": "+36d23m15.2s"
+      },
+      "separation_arcsec": 0.170,
+      "sdss": {
+        "plate": 1382,
+        "mjd": 53115,
+        "fiberid": 16,
+        "class": "QSO",
+        "z": 5.285205,
+        "anomaly_score": 6.007,
+        "spectrum_url": "https://dr18.sdss.org/optical/spectrum/view?plateid=1382&mjd=53115&fiberid=16"
+      },
+      "desi": {
+        "targetid": 39633010877796273,
+        "spectype": "QSO",
+        "z": 5.267079,
+        "anomaly_score": 7.232,
+        "classification": "UNCLASSIFIED"
+      },
+      "known_status": "KNOWN",
+      "primary_designation": "SDSS J144350.66+362315.1",
+      "simbad_result": {
+        "found": true,
+        "main_id": "QSO J1443+3623",
+        "object_type": "QSO",
+        "object_type_verbose": "Quasar",
+        "aliases": [
+          "KODIAQ J144350+362315",
+          "QSO J1443+3623",
+          "WISE J144350.67+362315.5",
+          "SDSS J144350.66+362315.1",
+          "[SSO2007] 220.961110+36.387542",
+          "[VV2006] J144350.7+362315",
+          "[VV2010] J144350.7+362315"
+        ],
+        "simbad_z": 5.37,
+        "bibliographic_references": 28
+      },
+      "ned_result": {
+        "found": true,
+        "ned_name": "WISEA J144350.66+362315.3",
+        "object_type": "QSO",
+        "best_z": 5.287631,
+        "z_flag": "SLS",
+        "n_redshift_measurements": 17,
+        "n_references": 32,
+        "n_photometry_points": 47,
+        "n_positional_measurements": 13,
+        "n_diameter_estimates": 8,
+        "i_band_magnitude": 20.1,
+        "separation_from_query_arcsec": 0.18
+      },
+      "milliquas_result": {
+        "found": true,
+        "name": "SDSS J144350.66+362315.1",
+        "type": "Q",
+        "z": 5.12,
+        "note": "Milliquas z=5.12 is a rounded/earlier value; consensus z~5.27 from multi-epoch SDSS measurements"
+      },
+      "redshift_history": [
+        {"z": 5.415, "ref": "2009ApJS..180...67R", "note": "outlier"},
+        {"z": 5.290, "ref": "2016ApJ...816...85L"},
+        {"z": 5.287631, "ref": "2016SDSSD (NED best)"},
+        {"z": 5.285205, "ref": "SDSS DR18 (this match)"},
+        {"z": 5.275213, "ref": "2016SDSSD"},
+        {"z": 5.273000, "ref": "2012AJ....144...49W"},
+        {"z": 5.272640, "ref": "2005SDSS4 (cross-corr)"},
+        {"z": 5.272600, "ref": "2007AJ....134..102S, 2010AJ....139.2360S, 2011MNRAS.410..860A, 2021AJ....161...45O"},
+        {"z": 5.267079, "ref": "DESI (this match)"},
+        {"z": 5.259000, "ref": "2007AJ....133.2222S"},
+        {"z": 5.227272, "ref": "2010MNRAS.405.2302H"},
+        {"z": 5.120000, "ref": "2012A&A...547L...1N, 2016ApJ...819...24W, 2024MNRAS.527.3436P", "note": "discrepant — possible different line ID"},
+        {"z": 0.350706, "ref": "2005SDSS4", "note": "spurious — different epoch/pipeline"}
+      ],
+      "consensus_redshift": 5.272,
+      "z_scatter_note": "17 independent measurements. Consensus z~5.27. Three papers give z=5.12 (discrepant — likely different Lyman-alpha line identification). SIMBAD shows z=5.37 which may reflect a specific catalog version. The SDSS DR18 and DESI measurements (z=5.285 and z=5.267) are consistent within known pipeline scatter at this redshift.",
+      "significance_assessment": {
+        "is_discovery": false,
+        "verdict": "KNOWN OBJECT — well-cataloged high-z QSO",
+        "rationale": "This object has 32 NED references, 17 independent redshift measurements, 28 SIMBAD references, appears in KODIAQ (Keck Observatory Database of Ionized Absorption toward Quasars), VV2006, VV2010 catalogs, and Milliquas. It is not a new discovery.",
+        "autoencoder_interest": "HIGH",
+        "autoencoder_note": "Both SDSS and DESI autoencoders independently flagged this as anomalous (scores 6.0 and 7.2 respectively). For a z~5.27 QSO, this is expected: the Lyman-alpha forest completely blankets the blue end of the spectrum, making the spectral energy distribution highly unusual relative to typical low-z training objects. The independent flagging at 0.17 arcsec separation confirms the autoencoders are sensitive to genuinely exotic spectra, not noise.",
+        "scientific_value": "The double-flagging validates the pipeline sensitivity. The z-scatter across 17 measurements (5.12 to 5.415) is scientifically interesting — the z=5.12 outlier from 3 papers may reflect a Lyman-break vs Lyman-alpha line ID ambiguity worth investigating.",
+        "paper5_relevance": "Useful as a pipeline validation case. Not a new QSO. The z=5.12 vs z=5.27 discrepancy in the literature is a minor unresolved issue."
+      }
+    },
+    {
+      "match_id": 2,
+      "label": "HIGH-SCORE STELLAR ANOMALY",
+      "coordinates": {
+        "ra": 160.14894,
+        "dec": 5.091549,
+        "ra_hms": "10h40m35.75s",
+        "dec_dms": "+05d05m29.6s"
+      },
+      "separation_arcsec": 0.827,
+      "sdss": {
+        "plate": 578,
+        "mjd": 52339,
+        "fiberid": 473,
+        "class": "STAR",
+        "z": -0.000092,
+        "anomaly_score": 49.516,
+        "spectrum_url": "https://dr18.sdss.org/optical/spectrum/view?plateid=578&mjd=52339&fiberid=473",
+        "note": "EXTREMELY high anomaly score — 49.5 is ~8x higher than the other matches. This is the most anomalous SDSS object in the full 77K sample."
+      },
+      "desi": {
+        "targetid": 39627908125299000,
+        "spectype": "STAR",
+        "z": -0.000170,
+        "anomaly_score": 6.452,
+        "classification": "UNCLASSIFIED"
+      },
+      "known_status": "KNOWN",
+      "primary_designation": "SDSS J104035.75+050529.6",
+      "simbad_result": {
+        "found": true,
+        "main_id": "TIC 374313355",
+        "object_type": "Low-mass star",
+        "aliases": [
+          "TIC 374313355",
+          "EPIC 248570548",
+          "2MASS J10403573+0505297",
+          "SDSS J104035.74+050529.6",
+          "SDSS J104035.75+050529.6"
+        ],
+        "catalogs": ["TESS Input Catalog", "Kepler/K2 Ecliptic Plane Input Catalog", "2MASS"]
+      },
+      "ned_result": {
+        "found": true,
+        "ned_name": "WISEA J104035.76+050529.2",
+        "object_type": "Star",
+        "best_z": -0.000092,
+        "n_redshift_measurements": 1
+      },
+      "significance_assessment": {
+        "is_discovery": false,
+        "verdict": "KNOWN OBJECT — low-mass star (TESS/K2 target)",
+        "rationale": "Identified in SIMBAD as a low-mass star with TIC and EPIC designations, indicating it has been observed by TESS and Kepler/K2. The object is a known Milky Way stellar source.",
+        "autoencoder_interest": "VERY HIGH — score 49.5 is exceptional",
+        "autoencoder_note": "The SDSS anomaly score of 49.5 is the highest in the 77K-object sample by a large margin. For a low-mass star, this suggests an extremely unusual spectrum — possibly an M-dwarf flare, a CV (cataclysmic variable), an M-dwarf with strong emission lines (dMe), a white dwarf + M-dwarf binary (DA+M), or a cool dwarf with unusual molecular bands. The DESI score (6.5) is comparatively modest, suggesting the anomalous feature may be time-variable (flare/outburst captured in one epoch).",
+        "scientific_value": "HIGH — this is the most anomalous individual object in the SDSS sample. A low-mass star with SDSS anomaly score ~49 warrants spectral follow-up. Strong candidate for: flare star, CV, or unusual binary. The time-variability hypothesis (SDSS anomaly=49 vs DESI anomaly=6.5) is itself interesting.",
+        "paper5_relevance": "Strong candidate for a 'pipeline catches rare stellar anomaly' validation section. The score discrepancy between SDSS and DESI epochs is worth highlighting as evidence for temporal variability."
+      }
+    },
+    {
+      "match_id": 3,
+      "label": "CLASSIFICATION-DISCREPANT QSO/GALAXY",
+      "coordinates": {
+        "ra": 146.4665,
+        "dec": 56.344646,
+        "ra_hms": "09h45m51.96s",
+        "dec_dms": "+56d20m40.7s"
+      },
+      "separation_arcsec": 1.641,
+      "sdss": {
+        "plate": 556,
+        "mjd": 51991,
+        "fiberid": 563,
+        "class": "QSO",
+        "z": 0.859796,
+        "z_err": 0.000220,
+        "zwarning": 5,
+        "anomaly_score": 9.770,
+        "spectrum_url": "https://dr18.sdss.org/optical/spectrum/view?plateid=556&mjd=51991&fiberid=563",
+        "note": "zwarning=5 indicates a problematic redshift fit (bits 0+2: likely small delta-chi2 and/or many outlier pixels)"
+      },
+      "desi": {
+        "targetid": 616094090991240248,
+        "spectype": "GALAXY",
+        "z": 0.823249,
+        "anomaly_score": 5.883,
+        "classification": "UNCLASSIFIED",
+        "note": "SDSS says QSO at z=0.860, DESI says GALAXY at z=0.823 — classification and redshift discrepancy"
+      },
+      "known_status": "UNCATALOGED in NED and SIMBAD within 3 arcsec",
+      "primary_designation": null,
+      "simbad_result": {
+        "found": false,
+        "search_radius_arcsec": 10,
+        "note": "No SIMBAD object within 10 arcsec of these coordinates"
+      },
+      "ned_result": {
+        "found": false,
+        "search_radius_arcsec": 30,
+        "note": "No NED object within 0.5 arcmin. Wider search (0.5 arcmin) found only 3 nearby objects (two photometric galaxies, one star) with no redshifts — none consistent with this source."
+      },
+      "significance_assessment": {
+        "is_discovery": "POSSIBLY — not in NED/SIMBAD but low confidence given zwarning=5",
+        "verdict": "UNCATALOGED — but flagged data quality issues reduce confidence",
+        "rationale": "Neither NED nor SIMBAD contains an object at these coordinates within 10 arcsec. The SDSS zwarning=5 indicates a poor spectroscopic fit. The SDSS/DESI classification discrepancy (QSO vs GALAXY) and redshift offset (z=0.860 vs z=0.823, delta-z=0.037) further reduce confidence in both measurements. This may be a BAL QSO (broad absorption line, which confuses classifiers), a Seyfert galaxy misclassified as QSO, or simply a spurious match.",
+        "autoencoder_interest": "MODERATE",
+        "autoencoder_note": "Both autoencoders flagged it (scores 9.8 and 5.9) but at moderate levels. The classification discrepancy between surveys is the most interesting feature.",
+        "scientific_value": "MODERATE — the absence from NED/SIMBAD combined with the classification discrepancy makes this worth a spectrum re-examination. The z~0.86 QSO-like object with no catalog entry could be a BAL QSO, which are known to be misclassified by automated pipelines.",
+        "paper5_relevance": "Useful secondary case — illustrates how autoencoders catch pipeline failures (zwarning=5) and classification inconsistencies across surveys. Not a discovery-level result."
+      }
+    }
+  ],
+  "summary": {
+    "discoveries": 0,
+    "known_objects": 2,
+    "uncataloged_but_uncertain": 1,
+    "headline_result": "The z≈5.27 QSO (Match 1) is NOT a discovery — it is SDSS J144350.66+362315.1, a well-known high-z quasar with 32 NED references and 17 redshift measurements. However, the cross-match is scientifically valuable in three ways: (1) it validates that the autoencoders are sensitive to genuinely exotic spectra; (2) the extremely anomalous stellar object (Match 2, score=49.5, TIC 374313355) is a strong candidate for a rare stellar phenomenon — the score discrepancy between SDSS and DESI epochs suggests temporal variability; (3) Match 3 (z≈0.86) is absent from NED/SIMBAD but has data quality flags that require further investigation before claiming a discovery.",
+    "pipeline_validation": "The independent double-flagging of a z~5.27 QSO by SDSS and DESI autoencoders at 0.17 arcsec confirms the cross-survey methodology is working correctly. The autoencoders are genuinely detecting spectral outliers, not noise.",
+    "recommended_followup": [
+      "Match 2 (TIC 374313355, score=49.5): Retrieve full SDSS spectrum (plate 578, MJD 52339, fiber 473) and compare to archival TESS/K2 photometry. Determine if the anomalous spectrum is an M-dwarf flare, CV, or binary. The time-variable anomaly score (SDSS=49 vs DESI=6.5) is the strongest individual finding from this cross-match.",
+      "Match 3 (z≈0.86, uncataloged): Retrieve SDSS spectrum and check for BAL QSO features. The zwarning=5 means automatic redshift pipeline failed — a manual spectral inspection could determine true class. If BAL, this is a pipeline-failure recovery case study.",
+      "Match 1 (z≈5.27): Investigate the z=5.12 outlier from 3 papers (2012A&A..547L...1N, 2016ApJ...819...24W, 2024MNRAS.527.3436P). This may represent a line identification ambiguity at high-z (Lyman-alpha vs other UV lines) which, if resolved, is a minor but citable spectroscopic note."
+    ],
+    "paper5_status": "No new QSO discovery from this cross-match. The cross-match methodology itself (independent autoencoder flagging across surveys) is the Paper 5 contribution. The stellar anomaly (Match 2) may be the most scientifically interesting individual object."
+  }
+}
