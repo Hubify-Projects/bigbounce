@@ -4,166 +4,390 @@
       "id": "sdss-dr18-scan",
       "name": "SDSS DR18 Anomaly Scan",
       "status": "complete",
-      "pod": "7zong4jdj46yjp",
-      "script": "run_sdss_scan.py",
-      "log": "sdss_h200.log",
-      "est_hours": 3,
-      "est_cost": 50,
       "priority": 1,
-      "result": {
-        "total_scored": 2304830,
-        "total_anomalies": 77905,
-        "anomaly_rate": "3.4%",
-        "batches": 46,
-        "runtime_hours": 2.8,
-        "completed": "2026-04-02"
-      }
+      "result": { "total_scored": 2304830, "total_anomalies": 77905, "anomaly_rate": "3.4%", "runtime_hours": 2.8, "completed": "2026-04-02" }
     },
     {
       "id": "erosita-xray",
-      "name": "eROSITA X-ray Anomaly Scan",
+      "name": "eROSITA DR1 X-ray Anomaly Scan",
       "status": "complete",
-      "script": "erosita_scan.py",
-      "est_hours": 4,
-      "est_cost": 50,
       "priority": 2,
-      "result": {
-        "total_scored": 930203,
-        "n_anomalies_top1pct": 9303,
-        "max_score": 34181.7,
-        "train_time_s": 7.6,
-        "completed": "2026-04-02",
-        "top_anomaly": "1eRASS J053856.1-640457 (LMC region)"
-      }
+      "result": { "total_scored": 930203, "n_anomalies_top1pct": 9303, "completed": "2026-04-02" }
     },
     {
       "id": "lamost-dr10",
       "name": "LAMOST DR10 Anomaly Scan",
       "status": "complete",
-      "pod": "7zong4jdj46yjp",
-      "script": "lamost_scan.py",
-      "log": "lamost_h200.log",
-      "est_hours": 12,
-      "est_cost": 100,
       "priority": 3,
-      "result": {
-        "total_scored": 11418594,
-        "total_anomalies": 44075,
-        "anomaly_rate": "0.39%",
-        "runtime_hours": 18.3,
-        "completed": "2026-04-02"
-      }
+      "result": { "total_scored": 11418594, "total_anomalies": 44075, "runtime_hours": 18.3, "completed": "2026-04-02" }
     },
     {
       "id": "planck-cmb-full",
-      "name": "Planck CMB Full-Resolution Patch Anomaly Detection",
+      "name": "Planck CMB Patch Anomaly Detection",
       "status": "complete",
-      "script": "planck_full_scan.py",
-      "est_hours": 8,
-      "est_cost": 50,
       "priority": 4,
-      "result": {
-        "total_scored": 20000,
-        "total_anomalies": 200,
-        "anomaly_rate": "1%",
-        "training_time": "10s",
-        "completed": "2026-04-03"
-      }
+      "result": { "total_scored": 20000, "total_anomalies": 200, "completed": "2026-04-03" }
     },
     {
       "id": "neowise-full",
-      "name": "NEOWISE/unTimely Full Variability Scan",
+      "name": "NEOWISE Variability Scan",
       "status": "complete",
-      "script": "neowise_variability.py",
-      "est_hours": 48,
-      "est_cost": 300,
       "priority": 5,
-      "result": {
-        "detections_input": 679000,
-        "total_scored": 43500,
-        "total_anomalies": 436,
-        "anomaly_rate": "1%",
-        "runtime_minutes": 5,
-        "completed": "2026-04-03"
-      }
+      "result": { "total_scored": 43500, "total_anomalies": 436, "completed": "2026-04-03" }
     },
     {
       "id": "gaia-epoch",
-      "name": "Gaia DR3 Epoch Photometry Anomaly Detection",
+      "name": "Gaia DR3 Epoch Photometry",
       "status": "complete",
-      "script": "gaia_epoch_scan.py",
-      "est_hours": 96,
-      "est_cost": 500,
       "priority": 6,
-      "result": {
-        "total_scored": 50000,
-        "total_anomalies": 500,
-        "anomaly_rate": "1%",
-        "runtime_minutes": 1,
-        "completed": "2026-04-03"
-      }
+      "result": { "total_scored": 50000, "total_anomalies": 500, "completed": "2026-04-03" }
     },
     {
       "id": "act-dr6-cmb",
-      "name": "ACT DR6 High-Resolution CMB Analysis",
+      "name": "ACT DR6 CMB Analysis",
       "status": "complete",
-      "est_hours": 8,
-      "est_cost": 50,
       "priority": 7,
-      "result": {
-        "total_scored": 20000,
-        "total_anomalies": 200,
-        "anomaly_rate": "1%",
-        "data_size_gb": 5.3,
-        "runtime_minutes": 25,
-        "completed": "2026-04-03",
-        "note": "5.3GB flat-sky IQU map, ~20 min download + ~5 min scan"
-      }
+      "result": { "total_scored": 20000, "total_anomalies": 200, "data_size_gb": 5.3, "completed": "2026-04-03" }
     },
     {
       "id": "nanograv-template-fit",
-      "name": "NANOGrav 15yr Spectral Template Fit",
+      "name": "NANOGrav 15yr Template Fit",
       "status": "complete",
-      "est_hours": 2,
-      "est_cost": 10,
       "priority": 8,
-      "result": {
-        "gamma_predicted": 3.0,
-        "gamma_observed": 3.2,
-        "gamma_observed_err": 0.6,
-        "tension_sigma": 0.33,
-        "completed": "2026-04-02",
-        "note": "Confirmed 0.33sigma consistency. See reproducibility/pbh_nanograv_consistency.py"
-      }
+      "result": { "gamma_mcmc": 3.20, "gamma_err": 0.42, "tension_sigma": 0.48, "bic_favors": "bounce", "completed": "2026-04-03" }
     },
     {
       "id": "sdss-cross-validation",
-      "name": "SDSS x DESI Cross-Survey Anomaly Correlation",
+      "name": "SDSS x DESI Cross-Survey Correlation",
       "status": "complete",
-      "est_hours": 2,
-      "est_cost": 0,
       "priority": 9,
-      "result": {
-        "matches_found": 3,
-        "top_match": "z≈5.27 QSO independently flagged by both SDSS and DESI autoencoders",
-        "completed": "2026-04-02"
-      }
+      "result": { "matches_found": 3, "top_match": "z≈5.27 QSO", "completed": "2026-04-02" }
+    },
+
+    {"_section": "=== PHASE 2: VALIDATION & DEEP FOLLOW-ON (all require H200) ==="},
+
+    {
+      "id": "simbad-crossmatch-all",
+      "name": "Cross-match ALL anomaly catalogs against SIMBAD+NED+VizieR",
+      "status": "queued",
+      "est_hours": 2,
+      "est_cost": 7,
+      "priority": 11,
+      "notes": "For each survey: top 1000 anomalies vs SIMBAD, NED, VizieR. Classify known vs novel. This determines how many genuine discoveries we have."
     },
     {
-      "id": "super-resolution",
-      "name": "Ground to Space Super-Resolution for Anomaly Cutouts",
+      "id": "lamost-umap-classify",
+      "name": "LAMOST 44K Anomaly Classification (UMAP+HDBSCAN)",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 12,
+      "notes": "Same pipeline as SDSS classification. Run locally. Identify high-z candidates, QSO candidates, artifacts."
+    },
+    {
+      "id": "desi-umap-redo",
+      "name": "DESI 195K Anomaly Re-classification with optimized UMAP",
+      "status": "queued",
+      "est_hours": 2,
+      "est_cost": 0,
+      "priority": 13,
+      "notes": "Redo DESI clustering with tuned min_cluster_size. Compare taxonomy with SDSS/LAMOST."
+    },
+    {
+      "id": "planck-act-cmb-crossmatch",
+      "name": "Planck × ACT CMB Anomaly Cross-Match",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 14,
+      "notes": "Check if the same sky regions are anomalous in both Planck and ACT. Independent confirmation = real signal."
+    },
+    {
+      "id": "act-birefringence-eb",
+      "name": "ACT DR6 Birefringence β from EB Cross-Spectrum",
+      "status": "queued",
+      "est_hours": 2,
+      "est_cost": 7,
+      "priority": 15,
+      "notes": "Compute β = 0.5*arctan(2*C_EB/(C_EE-C_BB)) from ACT IQU map. Compare with prediction β=0.27°. HIGH VALUE — direct bounce test."
+    },
+    {
+      "id": "anomaly-spatial-clustering",
+      "name": "Anomaly Spatial Clustering Analysis (all surveys)",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 16,
+      "notes": "Angular correlation function of anomaly positions. Clustered = real large-scale structure signal. Uniform = systematic."
+    },
+    {
+      "id": "z527-qso-deep-analysis",
+      "name": "Deep Analysis of z≈5.27 QSO (SDSS×DESI match)",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 17,
+      "notes": "Download full spectrum from DESI+SDSS. Emission line analysis. Check SIMBAD/NED. If uncataloged → discovery paper."
+    },
+    {
+      "id": "neowise-optical-crossmatch",
+      "name": "NEOWISE 436 Anomalies × Optical Survey Cross-Match",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 18,
+      "notes": "Match NEOWISE IR anomalies against SDSS/DESI/PS1 photometry. Multi-wavelength characterization."
+    },
+    {
+      "id": "gaia-variable-catalog-crossmatch",
+      "name": "Gaia 500 Anomalies × AAVSO/GCVS Variable Star Catalogs",
+      "status": "queued",
+      "est_hours": 1,
+      "est_cost": 0,
+      "priority": 19,
+      "notes": "Separate known variables from genuinely anomalous variability."
+    },
+
+    {"_section": "=== PHASE 3: F_NL + BOUNCE SCIENCE (the actual goal) ==="},
+
+    {
+      "id": "fnl-pipeline-full",
+      "name": "f_NL Multi-Tracer Fisher Pipeline (DESI+SDSS+LAMOST)",
+      "status": "queued",
+      "est_hours": 2,
+      "est_cost": 0,
+      "priority": 20,
+      "notes": "Run run_full_fnl_pipeline.py. Measure b_g for anomaly-selected tracers. Compute σ(f_NL) improvement. THE key science deliverable."
+    },
+    {
+      "id": "nanograv-ptarcade",
+      "name": "NANOGrav Proper Analysis via PTArcade/enterprise",
+      "status": "queued",
+      "est_hours": 8,
+      "est_cost": 29,
+      "priority": 21,
+      "notes": "Full Bayesian noise-marginalized fit. Include EPTA+PPTA data. Proper bounce GW template (not just power-law)."
+    },
+    {
+      "id": "quintom-mcmc-desi-dr2",
+      "name": "Quintom Bounce MCMC with DESI DR2 + DES Y6",
       "status": "queued",
       "est_hours": 48,
-      "est_cost": 200,
-      "priority": 10,
-      "notes": "ESRGAN trained on COSMOS+CEERS paired ground/space images — not yet run"
+      "est_cost": 172,
+      "priority": 22,
+      "notes": "Rerun w0-wa CPL MCMC with latest data. Test quintom-B crossing. Confirm 2.3σ or update."
+    },
+    {
+      "id": "bounce-model-comparison-mcmc",
+      "name": "Full Bayesian Bounce Model Comparison (4 models)",
+      "status": "queued",
+      "est_hours": 96,
+      "est_cost": 345,
+      "priority": 23,
+      "notes": "Matter bounce vs Cuscuton vs Ekpyrotic vs Quintom vs ΛCDM+inflation. Nested sampling for Bayes factors."
+    },
+
+    {"_section": "=== PHASE 4: NEW SURVEY SCANS (H200) ==="},
+
+    {
+      "id": "boss-eboss-spectra",
+      "name": "BOSS/eBOSS DR16 Spectral Anomaly Scan",
+      "status": "queued",
+      "est_hours": 6,
+      "est_cost": 22,
+      "priority": 24,
+      "notes": "~4M spectra. Different instrument from SDSS. Independent anomaly catalog."
+    },
+    {
+      "id": "des-dr2-photometry",
+      "name": "DES DR2 Photometric Anomaly Scan",
+      "status": "queued",
+      "est_hours": 24,
+      "est_cost": 86,
+      "priority": 25,
+      "notes": "~700M objects. Photo-z + morphology + multi-band. Huge sample for f_NL tracers."
+    },
+    {
+      "id": "ztf-alerts-scan",
+      "name": "ZTF Transient Alert Anomaly Scan",
+      "status": "queued",
+      "est_hours": 12,
+      "est_cost": 43,
+      "priority": 26,
+      "notes": "~1B detections. Time-domain anomalies. Novel transients for follow-up."
+    },
+    {
+      "id": "jwst-public-archive",
+      "name": "JWST Public Archive Anomaly Scan (NIRCam+NIRSpec)",
+      "status": "queued",
+      "est_hours": 8,
+      "est_cost": 29,
+      "priority": 27,
+      "notes": "Public JWST data from MAST. Highest-redshift objects. Unique wavelength coverage."
+    },
+    {
+      "id": "chandra-source-catalog",
+      "name": "Chandra Source Catalog 2.1 X-ray Anomaly Scan",
+      "status": "queued",
+      "est_hours": 4,
+      "est_cost": 14,
+      "priority": 28,
+      "notes": "~400K X-ray sources. Deeper than eROSITA in pointed observations."
+    },
+    {
+      "id": "xmm-newton-archive",
+      "name": "XMM-Newton X-ray Archive Anomaly Scan",
+      "status": "queued",
+      "est_hours": 8,
+      "est_cost": 29,
+      "priority": 29,
+      "notes": "Largest X-ray observatory archive. Complements eROSITA and Chandra."
+    },
+    {
+      "id": "vlass-radio",
+      "name": "VLASS Radio Continuum Anomaly Scan",
+      "status": "queued",
+      "est_hours": 12,
+      "est_cost": 43,
+      "priority": 30,
+      "notes": "VLA Sky Survey. Radio-selected anomalies for AGN/jet studies."
+    },
+    {
+      "id": "spt3g-cmb",
+      "name": "SPT-3G CMB Maps Anomaly Scan",
+      "status": "queued",
+      "est_hours": 8,
+      "est_cost": 29,
+      "priority": 31,
+      "notes": "South Pole Telescope. Independent CMB experiment from Planck/ACT."
+    },
+    {
+      "id": "tess-lightcurves",
+      "name": "TESS Full-Frame Image Light Curve Anomaly Scan",
+      "status": "queued",
+      "est_hours": 24,
+      "est_cost": 86,
+      "priority": 32,
+      "notes": "Time-domain photometry across nearly all-sky. Novel variability patterns."
+    },
+    {
+      "id": "ps1-3pi",
+      "name": "Pan-STARRS1 3π Survey Anomaly Scan",
+      "status": "queued",
+      "est_hours": 24,
+      "est_cost": 86,
+      "priority": 33,
+      "notes": "~3B objects in 5 bands. Largest optical survey before LSST."
+    },
+    {
+      "id": "herschel-fir",
+      "name": "Herschel Far-IR Archive Anomaly Scan",
+      "status": "queued",
+      "est_hours": 8,
+      "est_cost": 29,
+      "priority": 34,
+      "notes": "Far-infrared. Dust-obscured galaxies and star-forming regions."
+    },
+
+    {"_section": "=== PHASE 5: ADVANCED RE-RUNS ==="},
+
+    {
+      "id": "desi-transformer",
+      "name": "DESI DR1 Re-scan with Vision Transformer Anomaly Detector",
+      "status": "queued",
+      "est_hours": 12,
+      "est_cost": 43,
+      "priority": 35,
+      "notes": "Replace autoencoder with transformer architecture. Different anomaly ranking. Compare catalogs."
+    },
+    {
+      "id": "sdss-vae",
+      "name": "SDSS DR18 Re-scan with Variational Autoencoder",
+      "status": "queued",
+      "est_hours": 4,
+      "est_cost": 14,
+      "priority": 36,
+      "notes": "VAE gives probabilistic anomaly scores + generative capability. Different anomaly distribution."
+    },
+    {
+      "id": "multimodal-cross-survey",
+      "name": "Multi-Modal Cross-Survey Joint Training",
+      "status": "queued",
+      "est_hours": 24,
+      "est_cost": 86,
+      "priority": 37,
+      "notes": "Train single model on ALL survey features jointly. Learn cross-wavelength anomaly patterns."
+    },
+    {
+      "id": "contrastive-learning",
+      "name": "Contrastive Learning: Cross-Wavelength Anomaly Discovery",
+      "status": "queued",
+      "est_hours": 12,
+      "est_cost": 43,
+      "priority": 38,
+      "notes": "Objects that look normal in optical but weird in X-ray (or vice versa). SimCLR/BYOL architecture."
+    },
+    {
+      "id": "neowise-fullsky",
+      "name": "NEOWISE Full-Sky Scan via AWS S3 Parquet",
+      "status": "queued",
+      "est_hours": 48,
+      "est_cost": 172,
+      "priority": 39,
+      "notes": "s3://nasa-irsa-wise/wise/neowiser/catalogs/p1bs_psd/healpix_k5/. Full 150B rows. The initial scan was only 1 sq deg."
+    },
+    {
+      "id": "gaia-fullsky",
+      "name": "Gaia DR3 Full Variable Star Scan (1.8B sources)",
+      "status": "queued",
+      "est_hours": 96,
+      "est_cost": 345,
+      "priority": 40,
+      "notes": "Initial scan was 50K. Full catalog is 1.8B. Use epoch photometry partitioned files."
+    },
+
+    {"_section": "=== PHASE 6: PAPERS ==="},
+
+    {
+      "id": "paper3-draft",
+      "name": "Paper 3 — Multi-Survey Anomaly Catalog Full Draft",
+      "status": "queued",
+      "est_hours": 0,
+      "est_cost": 0,
+      "priority": 41,
+      "notes": "Integrate all 8 surveys, cross-match analysis, f_NL improvement, taxonomy, novel discoveries."
+    },
+    {
+      "id": "paper5-novel-objects",
+      "name": "Paper 5 — Novel Objects from AI Archival Mining",
+      "status": "queued",
+      "est_hours": 0,
+      "est_cost": 0,
+      "priority": 42,
+      "notes": "If z≈5.27 QSO or NEOWISE/Gaia objects are genuinely uncataloged → discovery paper."
+    },
+    {
+      "id": "paper1-update-nanograv",
+      "name": "Paper 1 Update — NANOGrav BIC + Corrected Analysis",
+      "status": "queued",
+      "est_hours": 0,
+      "est_cost": 0,
+      "priority": 43,
+      "notes": "Add validated γ=3.20±0.42 result. BIC favors bounce. Update claims table."
     }
   ],
-  "total_est_cost": 1310,
-  "total_est_hours": 231,
-  "completed": 9,
-  "running": 0,
-  "grand_total_sources": 33500000,
-  "grand_total_anomalies": 328448,
+  "summary": {
+    "phase1_initial_scans": { "completed": 9, "total": 10 },
+    "phase2_validation": { "completed": 0, "total": 9 },
+    "phase3_science": { "completed": 0, "total": 4 },
+    "phase4_new_surveys": { "completed": 0, "total": 11 },
+    "phase5_advanced": { "completed": 0, "total": 6 },
+    "phase6_papers": { "completed": 0, "total": 3 },
+    "grand_total_experiments": 43,
+    "grand_total_sources_scored": 33500000,
+    "grand_total_anomalies": 328448,
+    "estimated_remaining_gpu_hours": 510,
+    "estimated_remaining_cost": 1830
+  },
   "last_updated": "2026-04-03"
 }

@@ -1,0 +1,155 @@
+# Post-Sweep Follow-On Plan — Every Experiment Gets Deep Analysis
+
+**Created:** 2026-04-03
+**Principle:** Nothing is "complete" after a first pass. Each experiment generates follow-on work that generates more follow-on work.
+
+---
+
+## Phase 1: Validation & Quality Checks (every experiment)
+
+### For EACH anomaly catalog (DESI, SDSS, eROSITA, LAMOST, NEOWISE, Gaia):
+- [ ] Cross-match top 1000 anomalies against SIMBAD → what fraction are known objects?
+- [ ] Cross-match against NED → what fraction have existing classifications?
+- [ ] Cross-match against VizieR → any matches in obscure catalogs?
+- [ ] Injection/recovery test: inject synthetic anomalies, measure detection rate
+- [ ] Contamination estimate: manually inspect top 50, classify as real/artifact/noise
+- [ ] Completeness estimate: what anomaly types are we missing?
+- [ ] Spatial distribution: are anomalies clustered (real) or uniform (instrumental)?
+- [ ] Score distribution: is the anomaly score distribution physical or dominated by systematics?
+
+### For CMB experiments (Planck, ACT):
+- [ ] Cross-match anomalous patches against known CMB cold/hot spots
+- [ ] Check if anomalous patches correlate with galactic foreground residuals
+- [ ] Cross-match Planck anomalies with ACT anomalies (same sky regions?)
+- [ ] Compute power spectrum of anomaly locations — is it consistent with Gaussianity?
+- [ ] Birefringence measurement from ACT Q/U maps: compute β from EB correlation
+
+### For time-domain (NEOWISE, Gaia):
+- [ ] Cross-match NEOWISE anomalies with ZTF alerts — any known transients?
+- [ ] Cross-match Gaia anomalies with known variable star catalogs (AAVSO, GCVS)
+- [ ] Check if NEOWISE anomalies correlate with AGN catalogs (Véron-Cetty, Milliquas)
+- [ ] Look for periodicity in anomalous light curves
+
+---
+
+## Phase 2: Cross-Survey Deep Analysis
+
+### Multi-wavelength cross-matching (ALL pairs):
+- [ ] DESI × SDSS (done: 3 matches — need deeper analysis of each)
+- [ ] DESI × eROSITA (optical × X-ray)
+- [ ] DESI × NEOWISE (optical × infrared)
+- [ ] DESI × Gaia (spectroscopic × astrometric)
+- [ ] SDSS × eROSITA
+- [ ] SDSS × NEOWISE
+- [ ] SDSS × Gaia
+- [ ] LAMOST × DESI (two optical spectroscopic surveys — different pipelines)
+- [ ] LAMOST × SDSS
+- [ ] eROSITA × NEOWISE (X-ray × infrared — AGN hunting)
+- [ ] Planck × ACT (CMB × CMB — independent anomaly confirmation)
+
+### The 3 SDSS×DESI matches need:
+- [ ] Download and plot actual spectra of all 3 objects
+- [ ] The z≈5.27 QSO: detailed emission line analysis, check if it's a known object
+- [ ] The z≈0.8 QSO/galaxy mismatch: check for lensing or blended sources
+- [ ] The anomalous star: check for variability, unusual spectral features
+
+### Anomaly taxonomy across surveys:
+- [ ] Run UMAP+HDBSCAN on LAMOST 44K anomalies (already done for SDSS)
+- [ ] Run UMAP+HDBSCAN on DESI 195K anomalies (done but redo with new parameters)
+- [ ] Merge SDSS + LAMOST + DESI classifications — are the same types found?
+- [ ] Build a unified anomaly taxonomy across all optical spectroscopic surveys
+
+---
+
+## Phase 3: Science Extraction — f_NL and Bounce Predictions
+
+### f_NL tracer purification (Pipeline 1 completion):
+- [ ] Run `run_full_fnl_pipeline.py` on DESI + SDSS anomalies
+- [ ] Measure galaxy bias b_g for anomaly-selected vs standard tracers
+- [ ] Compute multi-tracer σ(f_NL) improvement
+- [ ] If improvement > 5%: this is a Paper 3 result
+- [ ] Add LAMOST anomalies as third tracer population
+- [ ] Sensitivity analysis: how does σ(f_NL) depend on anomaly score threshold?
+
+### NANOGrav deeper analysis:
+- [ ] Use PTArcade or enterprise for proper noise-marginalized fit
+- [ ] Fit bounce-specific GW spectral templates (not just power-law)
+- [ ] Compare matter bounce vs ekpyrotic vs inflation GW predictions
+- [ ] Include EPTA + PPTA + IPTA data alongside NANOGrav
+
+### Birefringence from ACT:
+- [ ] Compute EB cross-spectrum from the ACT IQU maps
+- [ ] Estimate β = 0.5 * arctan(2*C_EB / (C_EE - C_BB))
+- [ ] Compare with bounce prediction β = 0.27°
+- [ ] Systematic checks: galactic dust, instrumental leakage
+
+### Quintom bounce MCMC with new data:
+- [ ] Add DESI DR2 BAO measurements (if released)
+- [ ] Add DES Y6 weak lensing
+- [ ] Rerun w0-wa MCMC with updated likelihoods
+- [ ] Test quintom-B vs quintom-A vs ΛCDM
+
+---
+
+## Phase 4: New Dataset Scans (H200)
+
+### High-priority new surveys to scan:
+- [ ] BOSS/eBOSS DR16 spectra (~4M spectra, different from SDSS imaging)
+- [ ] DES DR2 photometry (~700M objects, photo-z + morphology)
+- [ ] ZTF DR20+ alerts/light curves (~1B detections)
+- [ ] TESS full-frame images (time-domain anomalies)
+- [ ] JWST public archive (NIRCam + NIRSpec)
+- [ ] HST archive (decades of HST imaging — 150TB+)
+- [ ] VLASS (VLA Sky Survey — radio continuum)
+- [ ] FIRST/NVSS (radio surveys)
+- [ ] XMM-Newton archive (X-ray — deeper than eROSITA in pointed obs)
+- [ ] Chandra Source Catalog 2.1 (~400K X-ray sources)
+- [ ] SPT-3G CMB maps (independent of Planck/ACT)
+- [ ] HERA/CHIME 21cm data (if publicly released)
+- [ ] PS1 3π survey (~3B objects)
+- [ ] UKIDSS/VHS near-IR
+- [ ] Herschel archive (far-IR)
+
+### Advanced re-runs on existing data:
+- [ ] DESI DR1 with transformer architecture (not just autoencoder)
+- [ ] SDSS with variational autoencoder (VAE) — different anomaly ranking
+- [ ] Multi-modal: combine spectral + photometric + positional features
+- [ ] Train on ALL surveys jointly — learn cross-survey representations
+- [ ] Contrastive learning: which objects look different across wavelengths?
+
+---
+
+## Phase 5: Papers
+
+### Paper 3 — Multi-Survey Anomaly Catalog (target: ~95% → 100%)
+- [ ] Integrate ALL 8 survey results into unified catalog
+- [ ] Cross-match analysis section
+- [ ] f_NL improvement measurement
+- [ ] Anomaly taxonomy table
+- [ ] Novel object discoveries section
+- [ ] Compile LaTeX, compile PDF
+
+### Paper 5 — Novel Objects from AI Archival Mining
+- [ ] The z≈5.27 QSO: if confirmed uncataloged, this is a discovery
+- [ ] Any objects in NEOWISE/Gaia not in SIMBAD
+- [ ] Systematic discovery rates across surveys
+- [ ] Comparison with traditional discovery methods
+
+### Paper updates for Papers 1 & 2:
+- [ ] Update NANOGrav section with validated γ=3.20±0.42 result
+- [ ] Add BIC comparison (bounce favored over SMBHB)
+- [ ] Update f_NL forecast with corrected σ(f_NL) = 8.98
+
+---
+
+## Phase 6: Ongoing Monitoring & Site Updates
+
+After EVERY piece of follow-on work:
+- [ ] Update activity.html with new timeline entry
+- [ ] Update index.html stat cards if numbers change
+- [ ] Update paper.html readiness percentages
+- [ ] Update data-explorer.html if new datasets are embedded
+- [ ] Commit and push (auto-deploy)
+- [ ] Update research_queue.json
+- [ ] Update project-context/active_pods_and_pipelines.md
+- [ ] Backup new results to all locations (local, GitHub, B2, HuggingFace)
