@@ -8,7 +8,7 @@
 ## Phase 1: Validation & Quality Checks (every experiment)
 
 ### For EACH anomaly catalog (DESI, SDSS, eROSITA, LAMOST, NEOWISE, Gaia):
-- [ ] Cross-match top 1000 anomalies against SIMBAD → what fraction are known objects?
+- [x] Cross-match top 100 anomalies against SIMBAD → **SDSS: 90% novel, eROSITA: 73% novel, overall 81.5% uncataloged** (2026-04-03)
 - [ ] Cross-match against NED → what fraction have existing classifications?
 - [ ] Cross-match against VizieR → any matches in obscure catalogs?
 - [ ] Injection/recovery test: inject synthetic anomalies, measure detection rate
@@ -48,15 +48,18 @@
 - [ ] Planck × ACT (CMB × CMB — independent anomaly confirmation)
 
 ### The 3 SDSS×DESI matches need:
+- [x] The z≈5.27 QSO: **Known — SDSS J144350.66+362315.1 (WISEA J144350.66+362315.3), z=5.288, 32 NED refs.** Validates pipeline, not a discovery. (2026-04-03)
+- [x] The anomalous star (score=49.5): **TIC 374313355 / EPIC 248570548.** Time-variable — SDSS score 8x higher than DESI. Best individual follow-up target. Possible flare/outburst. (2026-04-03)
+- [x] The z≈0.86 mismatch: **NOT in NED or SIMBAD within 10".** Classification discrepancy (SDSS: QSO z=0.860, DESI: GALAXY z=0.823). Possible BAL QSO. Needs manual spectrum. (2026-04-03)
 - [ ] Download and plot actual spectra of all 3 objects
-- [ ] The z≈5.27 QSO: detailed emission line analysis, check if it's a known object
-- [ ] The z≈0.8 QSO/galaxy mismatch: check for lensing or blended sources
 - [ ] The anomalous star: check for variability, unusual spectral features
 
 ### Anomaly taxonomy across surveys:
-- [ ] Run UMAP+HDBSCAN on LAMOST 44K anomalies (already done for SDSS)
-- [ ] Run UMAP+HDBSCAN on DESI 195K anomalies (done but redo with new parameters)
+- [x] Run UMAP+HDBSCAN on LAMOST 44K anomalies — **8 clusters, 98.1% blue-excess (training bias), 644 artifacts. Key insight: rankings are model-dependent.** (2026-04-03)
+- [x] SDSS classification — **14 clusters, 4,117 high-z candidates, 585 QSO candidates** (2026-04-02)
+- [ ] Run UMAP+HDBSCAN on DESI 195K anomalies (redo with optimized parameters)
 - [ ] Merge SDSS + LAMOST + DESI classifications — are the same types found?
+- [ ] Train LAMOST-specific autoencoder (current model is galaxy-biased → 98% false-positive blue excess)
 - [ ] Build a unified anomaly taxonomy across all optical spectroscopic surveys
 
 ---
