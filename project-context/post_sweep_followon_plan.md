@@ -20,7 +20,9 @@
 ### For CMB experiments (Planck, ACT):
 - [x] Cross-match Planck anomalies with ACT anomalies — **15 matches, expected 12.2 random. NOT significant (1.2x). Cold Spot and hemispherical asymmetry NOT confirmed by both.** (2026-04-03)
 - [x] Birefringence pipeline written + simulation validated — **injected β=0.27°, recovered 0.261±0.037° (unbiased). Caught factor-of-2 bug in standard formula. Ready for H200 deployment on real ACT IQU data.** (2026-04-03)
-- [ ] Deploy birefringence on H200 with real ACT 5.3GB IQU map → measure actual β
+- [x] Deploy birefringence on H200 with real ACT 5.3GB IQU — **β = 17.4° ± 12.1° (dominated by foreground systematics). Need proper masking + cross-frequency cleaning. Our simple FFT estimator is insufficient for sub-degree birefringence.** (2026-04-03)
+- [ ] Re-run with galactic mask + point source mask + multipole-by-multipole estimator
+- [ ] Use NaMaster or PolSpice for proper pseudo-Cl estimation with mode-coupling correction
 - [ ] Cross-match anomalous patches against known CMB cold/hot spots (deeper analysis)
 - [ ] Check if anomalous patches correlate with galactic foreground residuals
 
