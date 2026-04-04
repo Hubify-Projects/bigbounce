@@ -246,7 +246,8 @@ def main():
 
     # Results table
     print(f"\n[3/3] Top cross-matched anomalies:")
-    print(f"  {'#':<4} {'SDSS RA':<10} {'SDSS Dec':<10} {'LAM RA':<10} {'LAM Dec':<10} {'Sep\"':<7} {'Comb':<8} {'Agree':<6}")
+    sep_hdr = 'Sep"'
+    print(f"  {'#':<4} {'SDSS RA':<10} {'SDSS Dec':<10} {'LAM RA':<10} {'LAM Dec':<10} {sep_hdr:<7} {'Comb':<8} {'Agree':<6}")
     print(f"  {'-'*62}")
     for i, m in enumerate(matches[:15], 1):
         ag = "Y" if m["score_agreement"] else "N"

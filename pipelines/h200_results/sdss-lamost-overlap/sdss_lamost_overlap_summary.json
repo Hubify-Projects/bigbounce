@@ -1,0 +1,533 @@
+{
+  "timestamp": "2026-04-04 21:33:04",
+  "experiment": "sdss-lamost-overlap",
+  "description": "SDSS x LAMOST optical spectral anomaly overlap within 3.0\"",
+  "n_sdss": 500,
+  "n_lamost": 500,
+  "sdss_data_mode": "synthetic",
+  "lamost_data_mode": "synthetic",
+  "match_radius_arcsec": 3.0,
+  "n_matched": 30,
+  "n_expected_random": 0.0001,
+  "significance_sigma": 29.9999,
+  "agreement_stats": {
+    "agreement_rate": 0.06,
+    "n_both": 30,
+    "n_score_agree": 21,
+    "score_correlation_rho": -0.1853,
+    "score_correlation_pval": 0.326879
+  },
+  "sep_stats": {
+    "mean_arcsec": 0.863,
+    "median_arcsec": 0.772
+  },
+  "n_sources": 1000,
+  "n_anomalies_top1pct": 30,
+  "best_val_loss": 0.033333,
+  "matched_pairs": [
+    {
+      "sdss_ra": 157.159187,
+      "sdss_dec": 48.421332,
+      "sdss_score": 83.6028,
+      "lamost_ra": 157.158924,
+      "lamost_dec": 48.421066,
+      "lamost_score": 969.8393,
+      "sep_arcsec": 1.145,
+      "combined_score": 1053.4421,
+      "score_ratio": 0.0862,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 179.587408,
+      "sdss_dec": 12.123014,
+      "sdss_score": 710.3208,
+      "lamost_ra": 179.58758,
+      "lamost_dec": 12.122979,
+      "lamost_score": 61.163,
+      "sep_arcsec": 0.618,
+      "combined_score": 771.4838,
+      "score_ratio": 11.6136,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 190.809856,
+      "sdss_dec": -2.371784,
+      "sdss_score": 96.8914,
+      "lamost_ra": 190.810021,
+      "lamost_dec": -2.371782,
+      "lamost_score": 616.7334,
+      "sep_arcsec": 0.594,
+      "combined_score": 713.6248,
+      "score_ratio": 0.1571,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 180.1196,
+      "sdss_dec": 44.817116,
+      "sdss_score": 35.5005,
+      "lamost_ra": 180.119675,
+      "lamost_dec": 44.817052,
+      "lamost_score": 650.5132,
+      "sep_arcsec": 0.3,
+      "combined_score": 686.0137,
+      "score_ratio": 0.0546,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 158.534712,
+      "sdss_dec": 29.432106,
+      "sdss_score": 445.4037,
+      "lamost_ra": 158.534433,
+      "lamost_dec": 29.432041,
+      "lamost_score": 91.2597,
+      "sep_arcsec": 0.906,
+      "combined_score": 536.6634,
+      "score_ratio": 4.8806,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 245.114372,
+      "sdss_dec": 7.326571,
+      "sdss_score": 321.3031,
+      "lamost_ra": 245.114455,
+      "lamost_dec": 7.32637,
+      "lamost_score": 104.7195,
+      "sep_arcsec": 0.782,
+      "combined_score": 426.0226,
+      "score_ratio": 3.0682,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 218.794513,
+      "sdss_dec": 39.112728,
+      "sdss_score": 9.9436,
+      "lamost_ra": 218.794767,
+      "lamost_dec": 39.112788,
+      "lamost_score": 397.6772,
+      "sep_arcsec": 0.742,
+      "combined_score": 407.6208,
+      "score_ratio": 0.025,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 161.862715,
+      "sdss_dec": 31.676013,
+      "sdss_score": 195.3173,
+      "lamost_ra": 161.862409,
+      "lamost_dec": 31.676509,
+      "lamost_score": 195.0149,
+      "sep_arcsec": 2.017,
+      "combined_score": 390.3322,
+      "score_ratio": 1.0016,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 115.881199,
+      "sdss_dec": -3.061683,
+      "sdss_score": 23.5279,
+      "lamost_ra": 115.881412,
+      "lamost_dec": -3.061947,
+      "lamost_score": 353.8306,
+      "sep_arcsec": 1.22,
+      "combined_score": 377.3585,
+      "score_ratio": 0.0665,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 264.8468,
+      "sdss_dec": 24.197192,
+      "sdss_score": 354.5483,
+      "lamost_ra": 264.846852,
+      "lamost_dec": 24.197335,
+      "lamost_score": 8.2198,
+      "sep_arcsec": 0.542,
+      "combined_score": 362.7681,
+      "score_ratio": 43.1334,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 162.646591,
+      "sdss_dec": 38.23355,
+      "sdss_score": 59.3271,
+      "lamost_ra": 162.646912,
+      "lamost_dec": 38.233711,
+      "lamost_score": 254.6357,
+      "sep_arcsec": 1.077,
+      "combined_score": 313.9628,
+      "score_ratio": 0.233,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 170.938514,
+      "sdss_dec": 42.458371,
+      "sdss_score": 310.6474,
+      "lamost_ra": 170.938635,
+      "lamost_dec": 42.458206,
+      "lamost_score": 3.2656,
+      "sep_arcsec": 0.675,
+      "combined_score": 313.913,
+      "score_ratio": 95.1272,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 266.191818,
+      "sdss_dec": 47.775272,
+      "sdss_score": 304.1299,
+      "lamost_ra": 266.191775,
+      "lamost_dec": 47.775436,
+      "lamost_score": 3.6051,
+      "sep_arcsec": 0.6,
+      "combined_score": 307.735,
+      "score_ratio": 84.361,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 105.233727,
+      "sdss_dec": 18.798984,
+      "sdss_score": 19.6911,
+      "lamost_ra": 105.233719,
+      "lamost_dec": 18.799053,
+      "lamost_score": 284.1737,
+      "sep_arcsec": 0.25,
+      "combined_score": 303.8648,
+      "score_ratio": 0.0693,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 112.978426,
+      "sdss_dec": 34.579865,
+      "sdss_score": 23.7005,
+      "lamost_ra": 112.978615,
+      "lamost_dec": 34.57988,
+      "lamost_score": 245.4091,
+      "sep_arcsec": 0.563,
+      "combined_score": 269.1096,
+      "score_ratio": 0.0966,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 104.388216,
+      "sdss_dec": 48.826505,
+      "sdss_score": 62.3545,
+      "lamost_ra": 104.388325,
+      "lamost_dec": 48.826164,
+      "lamost_score": 81.0516,
+      "sep_arcsec": 1.254,
+      "combined_score": 143.4061,
+      "score_ratio": 0.7693,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 147.729451,
+      "sdss_dec": -2.651739,
+      "sdss_score": 8.4557,
+      "lamost_ra": 147.729483,
+      "lamost_dec": -2.651727,
+      "lamost_score": 117.4555,
+      "sep_arcsec": 0.123,
+      "combined_score": 125.9112,
+      "score_ratio": 0.072,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 168.802894,
+      "sdss_dec": 56.811257,
+      "sdss_score": 41.7902,
+      "lamost_ra": 168.803017,
+      "lamost_dec": 56.811146,
+      "lamost_score": 81.7912,
+      "sep_arcsec": 0.467,
+      "combined_score": 123.5814,
+      "score_ratio": 0.5109,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 136.376255,
+      "sdss_dec": 36.162097,
+      "sdss_score": 53.1167,
+      "lamost_ra": 136.376016,
+      "lamost_dec": 36.162009,
+      "lamost_score": 63.5454,
+      "sep_arcsec": 0.763,
+      "combined_score": 116.6621,
+      "score_ratio": 0.8359,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 247.672427,
+      "sdss_dec": 4.822258,
+      "sdss_score": 46.0169,
+      "lamost_ra": 247.672654,
+      "lamost_dec": 4.822216,
+      "lamost_score": 69.8192,
+      "sep_arcsec": 0.828,
+      "combined_score": 115.8361,
+      "score_ratio": 0.6591,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 131.54679,
+      "sdss_dec": 36.866068,
+      "sdss_score": 104.1885,
+      "lamost_ra": 131.546514,
+      "lamost_dec": 36.866285,
+      "lamost_score": 5.5046,
+      "sep_arcsec": 1.115,
+      "combined_score": 109.6931,
+      "score_ratio": 18.9275,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 148.253443,
+      "sdss_dec": -4.626739,
+      "sdss_score": 16.4182,
+      "lamost_ra": 148.2533,
+      "lamost_dec": -4.627005,
+      "lamost_score": 90.7139,
+      "sep_arcsec": 1.086,
+      "combined_score": 107.1321,
+      "score_ratio": 0.181,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 108.713024,
+      "sdss_dec": -7.226463,
+      "sdss_score": 12.9567,
+      "lamost_ra": 108.71308,
+      "lamost_dec": -7.226851,
+      "lamost_score": 85.6938,
+      "sep_arcsec": 1.411,
+      "combined_score": 98.6505,
+      "score_ratio": 0.1512,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 266.254351,
+      "sdss_dec": 45.641254,
+      "sdss_score": 87.3777,
+      "lamost_ra": 266.254426,
+      "lamost_dec": 45.641192,
+      "lamost_score": 9.2862,
+      "sep_arcsec": 0.292,
+      "combined_score": 96.6639,
+      "score_ratio": 9.4094,
+      "score_agreement": false
+    },
+    {
+      "sdss_ra": 128.968994,
+      "sdss_dec": 6.606377,
+      "sdss_score": 43.952,
+      "lamost_ra": 128.968978,
+      "lamost_dec": 6.606685,
+      "lamost_score": 44.8941,
+      "sep_arcsec": 1.11,
+      "combined_score": 88.8461,
+      "score_ratio": 0.979,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 255.103248,
+      "sdss_dec": 43.30676,
+      "sdss_score": 36.3872,
+      "lamost_ra": 255.103223,
+      "lamost_dec": 43.306929,
+      "lamost_score": 32.9355,
+      "sep_arcsec": 0.612,
+      "combined_score": 69.3227,
+      "score_ratio": 1.1048,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 154.862329,
+      "sdss_dec": 6.75067,
+      "sdss_score": 13.5968,
+      "lamost_ra": 154.861958,
+      "lamost_dec": 6.75051,
+      "lamost_score": 53.4161,
+      "sep_arcsec": 1.446,
+      "combined_score": 67.0129,
+      "score_ratio": 0.2545,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 131.193872,
+      "sdss_dec": -5.12731,
+      "sdss_score": 5.6318,
+      "lamost_ra": 131.194082,
+      "lamost_dec": -5.127095,
+      "lamost_score": 50.7079,
+      "sep_arcsec": 1.08,
+      "combined_score": 56.3397,
+      "score_ratio": 0.1111,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 178.975204,
+      "sdss_dec": 42.113562,
+      "sdss_score": 0.6306,
+      "lamost_ra": 178.975059,
+      "lamost_dec": 42.113103,
+      "lamost_score": 42.2764,
+      "sep_arcsec": 1.697,
+      "combined_score": 42.907,
+      "score_ratio": 0.0149,
+      "score_agreement": true
+    },
+    {
+      "sdss_ra": 198.149948,
+      "sdss_dec": 37.274587,
+      "sdss_score": 21.8269,
+      "lamost_ra": 198.150095,
+      "lamost_dec": 37.274698,
+      "lamost_score": 7.0801,
+      "sep_arcsec": 0.581,
+      "combined_score": 28.907,
+      "score_ratio": 3.0829,
+      "score_agreement": false
+    }
+  ],
+  "train_time_s": 1.63,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 157.159056,
+      "dec": 48.421199,
+      "score": 1053.4421,
+      "sep_arcsec": 1.145
+    },
+    {
+      "rank": 2,
+      "ra": 179.587494,
+      "dec": 12.122996,
+      "score": 771.4838,
+      "sep_arcsec": 0.618
+    },
+    {
+      "rank": 3,
+      "ra": 190.809938,
+      "dec": -2.371783,
+      "score": 713.6248,
+      "sep_arcsec": 0.594
+    },
+    {
+      "rank": 4,
+      "ra": 180.119638,
+      "dec": 44.817084,
+      "score": 686.0137,
+      "sep_arcsec": 0.3
+    },
+    {
+      "rank": 5,
+      "ra": 158.534573,
+      "dec": 29.432074,
+      "score": 536.6634,
+      "sep_arcsec": 0.906
+    },
+    {
+      "rank": 6,
+      "ra": 245.114414,
+      "dec": 7.326471,
+      "score": 426.0226,
+      "sep_arcsec": 0.782
+    },
+    {
+      "rank": 7,
+      "ra": 218.79464,
+      "dec": 39.112758,
+      "score": 407.6208,
+      "sep_arcsec": 0.742
+    },
+    {
+      "rank": 8,
+      "ra": 161.862562,
+      "dec": 31.676261,
+      "score": 390.3322,
+      "sep_arcsec": 2.017
+    },
+    {
+      "rank": 9,
+      "ra": 115.881305,
+      "dec": -3.061815,
+      "score": 377.3585,
+      "sep_arcsec": 1.22
+    },
+    {
+      "rank": 10,
+      "ra": 264.846826,
+      "dec": 24.197263,
+      "score": 362.7681,
+      "sep_arcsec": 0.542
+    },
+    {
+      "rank": 11,
+      "ra": 162.646751,
+      "dec": 38.233631,
+      "score": 313.9628,
+      "sep_arcsec": 1.077
+    },
+    {
+      "rank": 12,
+      "ra": 170.938575,
+      "dec": 42.458288,
+      "score": 313.913,
+      "sep_arcsec": 0.675
+    },
+    {
+      "rank": 13,
+      "ra": 266.191797,
+      "dec": 47.775354,
+      "score": 307.735,
+      "sep_arcsec": 0.6
+    },
+    {
+      "rank": 14,
+      "ra": 105.233723,
+      "dec": 18.799019,
+      "score": 303.8648,
+      "sep_arcsec": 0.25
+    },
+    {
+      "rank": 15,
+      "ra": 112.978521,
+      "dec": 34.579873,
+      "score": 269.1096,
+      "sep_arcsec": 0.563
+    },
+    {
+      "rank": 16,
+      "ra": 104.388271,
+      "dec": 48.826335,
+      "score": 143.4061,
+      "sep_arcsec": 1.254
+    },
+    {
+      "rank": 17,
+      "ra": 147.729467,
+      "dec": -2.651733,
+      "score": 125.9112,
+      "sep_arcsec": 0.123
+    },
+    {
+      "rank": 18,
+      "ra": 168.802955,
+      "dec": 56.811201,
+      "score": 123.5814,
+      "sep_arcsec": 0.467
+    },
+    {
+      "rank": 19,
+      "ra": 136.376135,
+      "dec": 36.162053,
+      "score": 116.6621,
+      "sep_arcsec": 0.763
+    },
+    {
+      "rank": 20,
+      "ra": 247.67254,
+      "dec": 4.822237,
+      "score": 115.8361,
+      "sep_arcsec": 0.828
+    }
+  ]
+}

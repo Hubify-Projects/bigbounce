@@ -234,7 +234,8 @@ def main():
 
     # Results table
     print(f"\n[3/3] Top matched objects:")
-    print(f"  {'#':<4} {'DESI RA':<10} {'DESI Dec':<10} {'eR RA':<10} {'eR Dec':<10} {'Sep\"':<8} {'Score':<8} {'AGN?':<5}")
+    sep_hdr = 'Sep"'
+    print(f"  {'#':<4} {'DESI RA':<10} {'DESI Dec':<10} {'eR RA':<10} {'eR Dec':<10} {sep_hdr:<8} {'Score':<8} {'AGN?':<5}")
     print(f"  {'-'*68}")
     for i, m in enumerate(matches[:15], 1):
         agn = "Y" if m["agn_candidate"] else "N"
