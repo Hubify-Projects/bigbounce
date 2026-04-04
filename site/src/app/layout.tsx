@@ -44,39 +44,31 @@ export default function RootLayout({
             <a href="/" className="sidebar-brand">BigBounce</a>
             <nav className="sidebar-nav">
               <div className="sidebar-section">
-                <a href="/" className="sidebar-link" data-page="index">research/</a>
-                <a href="/paper" className="sidebar-link" data-page="paper">papers</a>
-                <a href="/explained" className="sidebar-link" data-page="explained">explainer</a>
+                <a href="/" className="sidebar-link">overview</a>
+                <a href="/explained" className="sidebar-link">explainer</a>
               </div>
               <div className="sidebar-section">
-                <div className="sidebar-section-label">data &amp; explore</div>
-                <a href="/data-explorer" className="sidebar-link" data-page="data-explorer">data explorer</a>
-                <a href="/anomaly-explorer" className="sidebar-link" data-page="anomaly-explorer">anomaly explorer</a>
-                <a href="/galaxy-explorer" className="sidebar-link" data-page="galaxy-explorer">galaxy explorer</a>
-                <a href="/figures" className="sidebar-link" data-page="figures">figures</a>
-                <a href="/datasets" className="sidebar-link" data-page="datasets">datasets</a>
+                <div className="sidebar-section-label">research</div>
+                <a href="/surveys" className="sidebar-link">surveys (8)</a>
+                <a href="/predictions" className="sidebar-link">predictions (4)</a>
+                <a href="/paper" className="sidebar-link">papers (4)</a>
               </div>
               <div className="sidebar-section">
-                <div className="sidebar-section-label">reference</div>
-                <a href="/glossary" className="sidebar-link" data-page="glossary">glossary</a>
-                <a href="/articles" className="sidebar-link" data-page="articles">articles</a>
-                <a href="/contributions" className="sidebar-link" data-page="contributions">contributions</a>
-                <a href="/methodology" className="sidebar-link" data-page="methodology">methodology</a>
-                <a href="/sources" className="sidebar-link" data-page="sources">sources</a>
+                <div className="sidebar-section-label">explore</div>
+                <a href="/data-explorer" className="sidebar-link">data explorer</a>
+                <a href="/figures" className="sidebar-link">figures</a>
+                <a href="/glossary" className="sidebar-link">glossary</a>
+                <a href="/timeline" className="sidebar-link">timeline</a>
               </div>
               <div className="sidebar-section">
-                <div className="sidebar-section-label">visualize</div>
-                <a href="/timeline" className="sidebar-link" data-page="timeline">timeline</a>
-                <a href="/visualize" className="sidebar-link" data-page="visualize">visualize</a>
-                <a href="/animations" className="sidebar-link" data-page="animations">animations</a>
+                <div className="sidebar-section-label">articles</div>
+                <a href="/articles" className="sidebar-link">all articles</a>
+                <a href="/speculations" className="sidebar-link">speculations</a>
               </div>
               <div className="sidebar-separator" />
               <div className="sidebar-section">
-                <a href="/speculations" className="sidebar-link" data-page="speculations">speculations</a>
-                <a href="/infrastructure" className="sidebar-link" data-page="infrastructure">infrastructure</a>
-                <a href="/activity" className="sidebar-link" data-page="activity">activity</a>
-                <a href="/status" className="sidebar-link" data-page="status">status</a>
-                <a href="/sitemap" className="sidebar-link" data-page="sitemap">sitemap</a>
+                <a href="/activity" className="sidebar-link">activity</a>
+                <a href="/status" className="sidebar-link">status</a>
               </div>
             </nav>
             <div className="sidebar-footer">
