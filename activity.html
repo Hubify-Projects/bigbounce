@@ -130,8 +130,8 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">Phase 2: Validation &amp; Deep Follow-On &mdash; 43 Experiments Across 6 Phases</div>
-  <p class="status-desc">Initial sweep DONE (8 surveys, 33.5M sources, 328K anomalies). Now running <strong>Phase 2: validation, SIMBAD cross-matching, anomaly classification, and cross-survey analysis.</strong> Expanded to 43 total experiments: 9 validation tasks, 4 f<sub>NL</sub> science, 11 new survey scans (DES DR2, VLASS, LOFAR, DECaLS, unWISE...), 6 advanced re-runs, 3 papers. Key finding: <strong>TIC 374313355 (score=49.5)</strong> is the strongest individual anomaly &mdash; time-variable stellar event. 43 new public datasets cataloged. Est. remaining: ~510 GPU-hours, ~$1,830.</p>
+  <div class="status-focus">Full Project Reset &mdash; Houston Method v2, Wiki, Next.js, H200 Queue v2 (50 experiments, 10 phases)</div>
+  <p class="status-desc"><strong>Quality audit revealed 6 of 10 H200 experiments have QC failures</strong> (null coords, undertrained models, survey systematics). Implementing Houston Method v2: mandatory 9-step completion loop (RUN&rarr;QC&rarr;ANALYZE&rarr;INTERPRET&rarr;CONNECT&rarr;SYNC&rarr;EXPAND&rarr;BACKUP&rarr;COMPLETE). Nothing marked "done" without full follow-up. New H200 pod pending with 50-experiment queue across 10 phases. Karpathy-style wiki created (25 pages). Site migrating to Next.js. Est. total: ~492 GPU-hours, ~$1,768.</p>
   <div class="status-meta">
     <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 &mdash; COMPLETE (18M spectra, 195K anomalies)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> SDSS DR18 &mdash; COMPLETE (2.3M spectra, 77,905 anomalies)</div>
@@ -148,11 +148,15 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">NOW</span> Cross-match all 8 survey anomaly catalogs into unified high-confidence candidate list</li>
-    <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> tracer pipeline: classify anomalies, validate bias, re-measure &sigma;(f<sub>NL</sub>)</li>
-    <li><span class="priority priority-next">NEXT</span> Paper 3 writing: 328K anomaly catalog across 8 surveys + cross-survey validation</li>
-    <li><span class="priority priority-later">LATER</span> Stop H200 pod to save $3.59/hr (all data backed up)</li>
-    <li><span class="priority priority-later">LATER</span> Super-resolution for anomaly cutouts (ESRGAN — not yet run)</li>
+    <li><span class="priority priority-now">NOW</span> Provision new H200 pod &mdash; re-run 6 broken experiments with proper QC gates</li>
+    <li><span class="priority priority-now">NOW</span> Validation: full SIMBAD+NED+VizieR cross-match, injection/recovery, spatial analysis</li>
+    <li><span class="priority priority-next">NEXT</span> f<sub>NL</sub> bias validation (step 4) + add LAMOST as 3rd tracer + sensitivity sweep</li>
+    <li><span class="priority priority-next">NEXT</span> Birefringence: ACT with NaMaster + galactic mask + multipole estimator</li>
+    <li><span class="priority priority-next">NEXT</span> NANOGrav: PTArcade proper Bayesian + EPTA+PPTA+IPTA combined</li>
+    <li><span class="priority priority-next">NEXT</span> Paper 3 compile + Paper 4 figures (confusion matrix, training curves)</li>
+    <li><span class="priority priority-later">LATER</span> New surveys: BOSS/eBOSS, DES DR2, VLASS, LOFAR, ZTF, JWST, Chandra</li>
+    <li><span class="priority priority-later">LATER</span> Speculations: Dyson sphere search, GW echo templates, FRB anomaly detection</li>
+    <li><span class="priority priority-later">LATER</span> Full-scale: NEOWISE 170B rows, Gaia DR3 1.8B epoch photometry</li>
   </ul>
 </div>
 
@@ -162,6 +166,20 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-04-04</div>
+    <div class="feed-title">Full Project Reset: Houston Method v2, Wiki Knowledge Base, Next.js Migration, H200 Queue v2</div>
+    <p class="feed-body">Quality audit of H200 results revealed <strong>6 of 10 experiments have QC failures:</strong> Planck CMB (galactic contamination at Dec&lt;-84&deg;), ACT DR6 (undertrained, val_loss=22,420), NEOWISE (ecliptic systematic at RA~180&deg;), super-resolution (null coordinates), taxonomy (degenerate clustering 84%), Gaia (sample too small). <strong>Only DESI, SDSS, eROSITA, and LAMOST have valid results.</strong> Implemented Houston Method v2: mandatory 9-step completion loop (RUN&rarr;QC&rarr;ANALYZE&rarr;INTERPRET&rarr;CONNECT&rarr;SYNC&rarr;EXPAND&rarr;BACKUP&rarr;COMPLETE). Created Karpathy-style wiki (25 pages across entities/concepts/comparisons). Scaffolded Next.js app for site migration. Updated status.html with honest QC flags. H200 pod terminated (credits expired overnight) &mdash; all results were safely backed up. New 50-experiment queue designed across 10 phases (~$1,768).</p>
+    <div class="feed-tags"><span class="feed-tag">Quality Audit</span><span class="feed-tag">Houston Method v2</span><span class="feed-tag">Wiki</span><span class="feed-tag">Next.js</span><span class="feed-tag">Project Reset</span></div>
+  </div>
+
+  <div class="feed-item negative">
+    <div class="feed-date">2026-04-04</div>
+    <div class="feed-title">H200 Pod Terminated &mdash; Credits Expired Overnight, All Data Safe</div>
+    <p class="feed-body">RunPod credits ran out during the night of Apr 3-4. H200 pod (7zong4jdj46yjp) terminated. <strong>No data lost</strong> &mdash; all 10 experiment results were already backed up to local disk as of Apr 3. The pod had completed its full queue and was idle. New pod will be provisioned with fresh credits for queue v2.</p>
+    <div class="feed-tags"><span class="feed-tag">Infrastructure</span><span class="feed-tag">Pod Terminated</span><span class="feed-tag">No Data Loss</span></div>
+  </div>
 
   <div class="feed-item">
     <div class="feed-date">2026-04-03</div>

@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "created": "2026-04-04",
+    "total_experiments": 50,
+    "total_phases": 10,
+    "est_gpu_hours": 492,
+    "est_cost_usd": 1768,
+    "houston_method": "v2 — mandatory 9-step completion loop",
+    "qc_gates": ["null_coordinates", "training_quality", "cluster_degeneracy", "score_explosion", "spatial_concentration", "output_nonempty"]
+  },
+  "experiments": [
+    {"id": "planck-cmb-masked", "name": "Planck CMB with GAL080 galactic mask", "phase": 1, "est_hours": 1, "script": "experiments/planck_cmb_masked.py", "fix": "Apply planck_mask_2018.fits GAL080 before patch extraction"},
+    {"id": "act-dr6-proper", "name": "ACT DR6 proper training (100 epochs, early stopping)", "phase": 1, "est_hours": 2, "script": "experiments/act_dr6_proper.py", "fix": "100 epochs, lr scheduler, early stopping on val_loss"},
+    {"id": "neowise-ecliptic-mask", "name": "NEOWISE with ecliptic masking", "phase": 1, "est_hours": 1, "script": "experiments/neowise_ecliptic.py", "fix": "Exclude |ecliptic lat| < 10 degrees"},
+    {"id": "gaia-dr3-expanded", "name": "Gaia DR3 expanded to 500K sources", "phase": 1, "est_hours": 2, "script": "experiments/gaia_expanded.py", "fix": "10x expansion, proper period folding"},
+    {"id": "superres-coord-fix", "name": "Super-resolution with coordinate propagation", "phase": 1, "est_hours": 1, "script": "experiments/superres_fixed.py", "fix": "Propagate RA/Dec through image pipeline"},
+    {"id": "taxonomy-retuned", "name": "UMAP taxonomy retuning (per-survey models)", "phase": 1, "est_hours": 1, "script": "experiments/taxonomy_retuned.py", "fix": "min_cluster_size=500, min_samples=50, per-survey"},
+
+    {"id": "simbad-ned-vizier-full", "name": "Full SIMBAD+NED+VizieR cross-match (all surveys)", "phase": 2, "est_hours": 2, "script": "experiments/full_crossmatch.py"},
+    {"id": "injection-recovery-multi", "name": "Injection/recovery for SDSS, LAMOST, eROSITA", "phase": 2, "est_hours": 2, "script": "experiments/injection_recovery.py"},
+    {"id": "spatial-clustering", "name": "Spatial clustering analysis (all surveys)", "phase": 2, "est_hours": 1, "script": "experiments/spatial_clustering.py"},
+    {"id": "manual-top50", "name": "Top-50 inspection per survey (automated classifier)", "phase": 2, "est_hours": 2, "script": "experiments/auto_inspect_top50.py"},
+    {"id": "desi-taxonomy-redo", "name": "DESI taxonomy redo (optimized UMAP+HDBSCAN)", "phase": 2, "est_hours": 1, "script": "experiments/desi_taxonomy.py"},
+    {"id": "score-distribution", "name": "Score distribution analysis + systematic flags", "phase": 2, "est_hours": 2, "script": "experiments/score_distributions.py"},
+
+    {"id": "planck-act-xmatch-fixed", "name": "Planck x ACT cross-match (with masked data)", "phase": 3, "est_hours": 1, "script": "experiments/planck_act_xmatch.py"},
+    {"id": "desi-erosita-xmatch", "name": "DESI x eROSITA (optical x X-ray)", "phase": 3, "est_hours": 1, "script": "experiments/desi_erosita_xmatch.py"},
+    {"id": "sdss-lamost-overlap", "name": "SDSS x LAMOST anomaly overlap", "phase": 3, "est_hours": 1, "script": "experiments/sdss_lamost_overlap.py"},
+    {"id": "neowise-ztf-xmatch", "name": "NEOWISE x ZTF alerts cross-match", "phase": 3, "est_hours": 1, "script": "experiments/neowise_ztf.py"},
+    {"id": "erosita-neowise-xmatch", "name": "eROSITA x NEOWISE (X-ray x IR — AGN hunting)", "phase": 3, "est_hours": 1, "script": "experiments/erosita_neowise.py"},
+    {"id": "multi-messenger-joint", "name": "Multi-messenger: DESI+NEOWISE+eROSITA+Gaia joint anomalies", "phase": 3, "est_hours": 1, "script": "experiments/multi_messenger.py"},
+
+    {"id": "fnl-bias-validation", "name": "f_NL bias validation (step4_bias_validation.py) — REQUIRED", "phase": 4, "est_hours": 2, "script": "experiments/fnl_bias_validation.py"},
+    {"id": "fnl-lamost-third-tracer", "name": "f_NL: add LAMOST as third tracer population", "phase": 4, "est_hours": 1, "script": "experiments/fnl_lamost_tracer.py"},
+    {"id": "fnl-threshold-sweep", "name": "f_NL: score threshold sensitivity sweep", "phase": 4, "est_hours": 1, "script": "experiments/fnl_threshold_sweep.py"},
+    {"id": "birefringence-namaster", "name": "Birefringence: ACT with NaMaster + galactic mask + multipole estimator", "phase": 4, "est_hours": 4, "script": "experiments/birefringence_namaster.py"},
+    {"id": "nanograv-ptarcade", "name": "NANOGrav: PTArcade proper Bayesian analysis", "phase": 4, "est_hours": 8, "script": "experiments/nanograv_ptarcade.py"},
+    {"id": "nanograv-combined-pta", "name": "NANOGrav: include EPTA+PPTA+IPTA combined", "phase": 4, "est_hours": 4, "script": "experiments/nanograv_combined.py"},
+    {"id": "quintom-mcmc-desi-dr2", "name": "Quintom MCMC with DESI DR2 BAO (if available)", "phase": 4, "est_hours": 48, "script": "experiments/quintom_mcmc.py"},
+
+    {"id": "boss-eboss-dr16", "name": "BOSS/eBOSS DR16 (~4M spectra)", "phase": 5, "est_hours": 6, "script": "experiments/boss_eboss.py"},
+    {"id": "des-dr2-photometry", "name": "DES DR2 photometry (~691M objects)", "phase": 5, "est_hours": 24, "script": "experiments/des_dr2.py"},
+    {"id": "vlass-radio", "name": "VLASS radio continuum (~5.3M sources)", "phase": 5, "est_hours": 12, "script": "experiments/vlass_radio.py"},
+    {"id": "lofar-lotss-dr2", "name": "LOFAR LoTSS DR2 (~4.4M sources)", "phase": 5, "est_hours": 8, "script": "experiments/lofar_lotss.py"},
+
+    {"id": "ztf-dr21", "name": "ZTF DR21 light curves (~1.2B)", "phase": 6, "est_hours": 24, "script": "experiments/ztf_dr21.py"},
+    {"id": "panstarrs-dr2", "name": "Pan-STARRS DR2 (~3B detections)", "phase": 6, "est_hours": 24, "script": "experiments/panstarrs.py"},
+    {"id": "jwst-mast", "name": "JWST MAST archive (NIRCam + NIRSpec)", "phase": 6, "est_hours": 8, "script": "experiments/jwst_mast.py"},
+    {"id": "chandra-csc21", "name": "Chandra CSC 2.1 (407K X-ray sources)", "phase": 6, "est_hours": 4, "script": "experiments/chandra_csc.py"},
+    {"id": "xmm-4xmm-dr14", "name": "XMM-Newton 4XMM-DR14 (660K X-ray)", "phase": 6, "est_hours": 8, "script": "experiments/xmm_newton.py"},
+    {"id": "hsc-ssp-pdr3", "name": "HSC-SSP PDR3 (600M objects)", "phase": 6, "est_hours": 24, "script": "experiments/hsc_ssp.py"},
+    {"id": "tess-ffi", "name": "TESS full-frame light curves", "phase": 6, "est_hours": 24, "script": "experiments/tess_ffi.py"},
+    {"id": "spt3g-cmb", "name": "SPT-3G CMB maps", "phase": 6, "est_hours": 4, "script": "experiments/spt3g.py"},
+
+    {"id": "dyson-sphere-search", "name": "Dyson sphere search: Gaia+AllWISE IR excess anomaly detection", "phase": 7, "est_hours": 8, "script": "experiments/dyson_sphere.py", "source": "speculations.html"},
+    {"id": "gw-echo-ligo", "name": "GW echo templates: LIGO O4 data search (Cai & Zhu 2026)", "phase": 7, "est_hours": 8, "script": "experiments/gw_echo_ligo.py", "source": "speculations.html"},
+    {"id": "smbh-jwst-xmatch", "name": "SMBH formation: cross-match anomaly catalog with JWST z>10 hosts", "phase": 7, "est_hours": 4, "script": "experiments/smbh_jwst.py", "source": "speculations.html"},
+    {"id": "frb-chime", "name": "FRB anomaly detection: CHIME/FRB catalog properties", "phase": 7, "est_hours": 4, "script": "experiments/frb_chime.py", "source": "speculations.html"},
+    {"id": "exoplanet-atmospheres", "name": "Exoplanet atmospheres: JWST transmission spectra autoencoder", "phase": 7, "est_hours": 4, "script": "experiments/exoplanet_atmos.py", "source": "speculations.html"},
+
+    {"id": "desi-transformer", "name": "DESI re-scan with Vision Transformer architecture", "phase": 8, "est_hours": 12, "script": "experiments/desi_transformer.py"},
+    {"id": "sdss-native-autoencoder", "name": "SDSS-native autoencoder (not transfer from DESI)", "phase": 8, "est_hours": 8, "script": "experiments/sdss_native.py"},
+    {"id": "lamost-native-autoencoder", "name": "LAMOST-native autoencoder (fix blue-excess bias)", "phase": 8, "est_hours": 8, "script": "experiments/lamost_native.py"},
+    {"id": "multi-modal-joint", "name": "Multi-modal cross-survey joint training", "phase": 8, "est_hours": 24, "script": "experiments/multi_modal.py"},
+
+    {"id": "neowise-fullsky", "name": "NEOWISE full-sky via AWS S3 Parquet (170B rows)", "phase": 9, "est_hours": 48, "script": "experiments/neowise_fullsky.py", "source": "The Window article"},
+    {"id": "gaia-full-epoch", "name": "Gaia DR3 full epoch photometry (1.8B sources)", "phase": 9, "est_hours": 96, "script": "experiments/gaia_full_epoch.py", "source": "The Window article"},
+
+    {"id": "paper3-compile", "name": "Compile Paper 3 LaTeX to PDF", "phase": 10, "est_hours": 2, "script": "experiments/compile_paper3.py"},
+    {"id": "paper4-figures", "name": "Paper 4: add confusion matrix, training curves, redshift dist", "phase": 10, "est_hours": 4, "script": "experiments/paper4_figures.py"}
+  ]
+}
