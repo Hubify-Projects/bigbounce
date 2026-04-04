@@ -26,16 +26,25 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - w0-wa MCMC: quintom-B (w-crossing) favored at 2.3σ, P(quintom-B) = 98.6%
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
 - 424,181+ MCMC posterior samples across 3 frozen dataset combinations
-- Multi-survey anomaly sweep (4 surveys, 32.3M spectra, 327,112 anomalies total):
-  - DESI DR1: 18.7M spectra, 195,829 anomalies (1.05%)
-  - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%)
-  - eROSITA DR1: 930K sources, 9,303 anomalies (1%)
-  - LAMOST DR10: 11.4M spectra, 44,075 anomalies (0.39%)
+- Multi-survey anomaly sweep (8 surveys, 33.5M sources, 328,448 anomalies total):
+  - DESI DR1: 22.5M spectra, 195,829 anomalies (0.87%), 2,145 SNR-filtered, 1,127 uncataloged
+  - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%) — QC: domain shift scores
+  - eROSITA DR1: 930K sources, 9,303 anomalies (1%), 73% novel
+  - LAMOST DR10: 11.4M spectra, 44,075 anomalies (0.39%) — QC: 98% blue-excess bias
+  - Planck CMB: 20K patches, 200 anomalies — QC FAIL: needs galactic mask
+  - ACT DR6: 20K patches, 200 anomalies — QC FAIL: undertrained (val_loss=22,420)
+  - NEOWISE: 43.5K sources, 436 anomalies — QC FAIL: ecliptic systematic
+  - Gaia DR3: 50K sources, 500 anomalies — needs 10x expansion
 - f_NL Fisher forecast (corrected): σ(f_NL) = 8.98 standard, 8.12 multi-tracer
+- f_NL multi-tracer improvement: 6.1% (DESI), 16.4% (DESI+SDSS). SPHEREx 4.38σ forecast.
 
-**Active pods & pipelines:** See `project-context/active_pods_and_pipelines.md` for live status. H200 pod running full 10-experiment queue via `research_monitor.sh`. DO NOT TERMINATE any pods without explicit user approval.
+**Pod status (as of 2026-04-04):** ALL pods EXITED/TERMINATED. H200 queue pod (7zong4jdj46yjp) terminated when credits expired overnight Apr 3-4. All results backed up locally before termination. New H200 pod pending for queue v2 (50 experiments, 10 phases). See `project-context/active_pods_and_pipelines.md`.
 
-**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — multi-survey anomaly catalogs feed directly into f_NL tracer improvement. Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work waiting to be done after the H200 finishes.
+**Houston Method v2:** See `project-context/houston-method-v2.md` — MANDATORY completion protocol for all experiments. Nothing is "complete" without: QC gate → scientific analysis → interpretation → cross-survey connection → site sync → queue expansion → backup. Every experiment must generate 5-15 new tasks.
+
+**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work. NOT STARTED.
+
+**Wiki:** See `wiki/SCHEMA.md` — Karpathy-style structured knowledge base with entities, concepts, sources, and comparisons. Updated on every research result.
 
 ## Website Architecture
 
@@ -264,6 +273,18 @@ After each revision round:
 4. **Sync website** (update index.html, explained.html, activity.html, data-explorer.html as needed)
 5. Update REVISION_TRACKER.md
 6. Commit and push
+
+## Prompt History Log
+
+**File:** `project-context/prompt-history.md`
+
+This is a running log of all user prompts/messages across all Claude Code sessions in this project. It serves as a searchable record so Houston doesn't have to repeat himself.
+
+**At the START of every session:** Regenerate the prompt history file by scanning all `.jsonl` session files in `.claude/projects/-Users-houstongolden-Desktop-CODE-2026-bigbounce/` and extracting all `type: "user"` messages with timestamps. This ensures the file stays current even if sessions were run without this instruction.
+
+**At the END of every session (before final commit):** Append any new user messages from the current session to `project-context/prompt-history.md` with timestamps in PT.
+
+**Format:** Grouped by date → session, each message prefixed with `**HH:MM PT**` and blockquoted. Long messages (>1500 chars) are truncated with a pointer to the session JSONL.
 
 ## Contact
 

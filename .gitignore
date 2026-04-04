@@ -36,3 +36,4 @@ pipelines/pipeline_a_cmb/outputs/*.pt
 pipelines/pipeline_a_cmb/outputs/*.json
 pipelines/pipeline_a_cmb/*.fits
 *.parquet
+project-context/prompt-history.md

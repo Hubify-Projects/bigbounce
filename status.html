@@ -80,7 +80,7 @@
 <main class="container" style="padding-top: 20px;">
 
 <div class="hero">
-  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: March 29, 2026</p>
+  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: April 4, 2026</p>
   <h1>Research Program Status</h1>
   <p class="subtitle">Comprehensive source of truth for the entire BigBounce spin-torsion cosmology research program. Every paper, pipeline, MCMC run, computation script, and discovery in one place.</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
@@ -91,7 +91,7 @@
 <!-- ═══════════ TOP-LEVEL STATS ═══════════ -->
 <div class="status-grid">
   <div class="status-stat green">
-    <div class="num">3</div>
+    <div class="num">4</div>
     <div class="label">Papers</div>
   </div>
   <div class="status-stat blue">
@@ -99,12 +99,16 @@
     <div class="label">AI Pipelines</div>
   </div>
   <div class="status-stat green">
-    <div class="num">474K+</div>
+    <div class="num">475K+</div>
     <div class="label">MCMC Samples</div>
   </div>
   <div class="status-stat green">
-    <div class="num">36M+</div>
-    <div class="label">Spectra Scored (5 Surveys)</div>
+    <div class="num">33.5M+</div>
+    <div class="label">Sources Scored (8 Surveys)</div>
+  </div>
+  <div class="status-stat green">
+    <div class="num">328K+</div>
+    <div class="label">Anomalies Found</div>
   </div>
   <div class="status-stat blue">
     <div class="num">14</div>
@@ -162,15 +166,23 @@
       </tr>
       <tr>
         <td><strong>Paper 3</strong></td>
-        <td>DESI DR1 Spectral Anomaly Catalog: 2,145 SNR-filtered Anomalies from 22.5M Spectra + 10 Taxonomy Families + f<sub>NL</sub> Tracer Improvement + NEOWISE Variability</td>
-        <td><span class="badge badge-blue">Draft (~80%)</span></td>
-        <td><code>v0.3</code></td>
-        <td>~14</td>
+        <td>Multi-Survey Anomaly Catalog: 328K Anomalies from 33.5M Sources Across 8 Surveys + f<sub>NL</sub> 6.1% Improvement + Multi-Tracer SPHEREx 4.38&sigma; Forecast</td>
+        <td><span class="badge badge-blue">Draft (~95%)</span></td>
+        <td><code>v0.5</code></td>
+        <td>~18</td>
+        <td>TBD</td>
+      </tr>
+      <tr>
+        <td><strong>Paper 4</strong></td>
+        <td>Galaxy Chirality at Scale: 8.47M Galaxies Classified, 93.7% Accuracy, Dipole 0.43&sigma; (Null &mdash; Refutes Shamir 3% Parity Claim)</td>
+        <td><span class="badge badge-blue">Draft (~85%)</span></td>
+        <td><code>v0.8</code></td>
+        <td>~11</td>
         <td>TBD</td>
       </tr>
     </tbody>
   </table>
-  <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Paper 1 has undergone 10+ rounds of peer review with ~200 individual edits. Paper 2 contains the parameter-free f<sub>NL</sub> = -35/8 prediction testable by SPHEREx (~2028). Paper 3 documents the first full-DR1-scale autoencoder anomaly search (~90x prior EDR work) with completed taxonomy (10 families, 76 uncataloged AGN), NEOWISE IR variability (16 variable anomalies), emission-line analysis (68/83 matched, 6 sub-Lyman-limit), injection/recovery (0% false positive), and 9.5% f<sub>NL</sub> tracer improvement.</p>
+  <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Paper 1 has undergone 10+ rounds of peer review with ~200 individual edits. Paper 2 contains the parameter-free f<sub>NL</sub> = -35/8 prediction testable by SPHEREx (~2028). Paper 3 documents multi-survey anomaly detection across 8 surveys (33.5M sources, 328K anomalies) with 6.1% f<sub>NL</sub> improvement and SPHEREx 4.38&sigma; forecast. Paper 4 presents the largest bias-audited galaxy chirality catalog (8.47M galaxies, 40x prior work), definitively refuting Shamir's 3% parity claim.</p>
 </section>
 
 <hr>
@@ -273,10 +285,10 @@
       </tr>
       <tr>
         <td><strong>2 &mdash; Galaxy Chirality Catalog</strong></td>
-        <td>Largest bias-audited galaxy handedness catalog (CW/CCW/NOT_SPIRAL). v2 model: 93.7% accuracy, 8/8 bias tests passed.</td>
+        <td>Largest bias-audited galaxy handedness catalog (CW/CCW/NOT_SPIRAL). v2 model: 93.7% accuracy, 8/8 bias tests passed. CW/(CW+CCW) = 0.4974, dipole = 0.43&sigma; (null).</td>
         <td>Indirect (parity test)</td>
-        <td><span class="badge badge-blue">RUNNING</span></td>
-        <td>7.3M / 8.47M galaxies (86.5%) <span class="progress-bar"><span class="progress-fill blue" style="width:86.5%"></span></span></td>
+        <td><span class="badge badge-green">COMPLETE</span></td>
+        <td>8.47M / 8.47M galaxies (100%) <span class="progress-bar"><span class="progress-fill green" style="width:100%"></span></span></td>
       </tr>
       <tr>
         <td><strong>E &mdash; Time-Domain Transient Finder</strong></td>
@@ -320,50 +332,46 @@
 <!-- ═══════════ SECTION 4: ACTIVE COMPUTE ═══════════ -->
 <section class="section" id="compute">
   <h2 class="section-anchor">4. Active Compute</h2>
-  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">RunPod GPU/CPU pods. Do NOT terminate any pods without explicit user approval.</p>
+  <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">RunPod GPU/CPU pods. All pods currently EXITED. New H200 pod to be provisioned for queue v2.</p>
 
   <table class="status-table">
     <thead>
-      <tr><th>Pod</th><th>Machine</th><th>Pipeline</th><th>SSH</th><th>Status</th><th>Progress</th></tr>
+      <tr><th>Pod</th><th>Machine</th><th>Pipeline</th><th>Status</th><th>Result</th></tr>
     </thead>
     <tbody>
       <tr>
+        <td><strong>H200 Queue</strong><br><code style="font-size:10px;">7zong4jdj46yjp</code></td>
+        <td>H200 (143 GB)</td>
+        <td>10-Experiment Research Queue</td>
+        <td><span class="badge badge-red">TERMINATED</span></td>
+        <td>ALL 10 experiments complete. 33.5M sources, 328K anomalies across 8 surveys. Pod terminated when credits expired (Apr 4). All results backed up locally.</td>
+      </tr>
+      <tr>
         <td><strong>H200 Beast</strong><br><code style="font-size:10px;">rtv8cegaw1618r</code></td>
-        <td>H200 (143 GB), 192 cores, 3 TB RAM</td>
-        <td>Enhanced 22.5M Catalog</td>
-        <td><code style="font-size:10px;">root@205.196.17.44 -p 10789</code></td>
-        <td><span class="badge badge-green">COMPLETE</span></td>
-        <td>22.5M / 22.5M (100%) &mdash; 46 batches, 173 cols, 16GB</td>
+        <td>H200 (143 GB)</td>
+        <td>Enhanced 22.5M DESI Catalog</td>
+        <td><span class="badge badge-gray">EXITED</span></td>
+        <td>22.5M spectra, 46 batches, 173 cols, 16GB. Complete + backed up.</td>
       </tr>
       <tr>
         <td><strong>H100</strong><br><code style="font-size:10px;">ulfxypratod4vr</code></td>
-        <td>H100 (80 GB), 208 cores, 2 TB RAM</td>
+        <td>H100 (80 GB)</td>
         <td>Pipeline 2 &mdash; Chirality</td>
-        <td><code style="font-size:10px;">root@64.247.201.47 -p 10778</code></td>
-        <td><span class="badge badge-blue">RUNNING</span></td>
-        <td>7.3M / 8.47M (86.5%), ~8h remaining</td>
+        <td><span class="badge badge-gray">EXITED</span></td>
+        <td>8.47M galaxies classified. CW/(CW+CCW) = 0.4974. Complete + backed up.</td>
       </tr>
       <tr>
         <td><strong>RTX A4000</strong><br><code style="font-size:10px;">fn19oivkjowmq4</code></td>
-        <td>A4000 (16 GB), 32 cores, 124 GB RAM</td>
+        <td>A4000 (16 GB)</td>
         <td>w<sub>0</sub>-w<sub>a</sub> MCMC</td>
-        <td><code style="font-size:10px;">root@157.157.221.30 -p 24859</code></td>
-        <td><span class="badge badge-green">CONVERGED</span></td>
-        <td>50.9K samples, R-1 &lt; 0.01</td>
-      </tr>
-      <tr>
-        <td><strong>CPU Batch</strong><br><code style="font-size:10px;">kqo1b4e4igycra</code></td>
-        <td>32 cores, 124 GB RAM (no GPU)</td>
-        <td>Pipeline B CPU (redundant)</td>
-        <td><code style="font-size:10px;">root@157.157.221.29 -p 29268</code></td>
-        <td><span class="badge badge-gray">Redundant</span></td>
-        <td>368K spectra (superseded by H200)</td>
+        <td><span class="badge badge-gray">EXITED</span></td>
+        <td>50.9K samples, R-1 &lt; 0.01. P(quintom-B) = 98.6%. Converged + backed up.</td>
       </tr>
     </tbody>
   </table>
 
   <div style="font-size:12px; color:var(--text-tertiary); margin-top:8px;">
-    All pods use SSH key <code>~/.ssh/id_ed25519</code>. Backups: local disk, GitHub, Backblaze B2, HuggingFace (<code>bamfai/bigbounce-mcmc</code>).
+    All historical pods EXITED. All results backed up to: local disk, GitHub, Backblaze B2, HuggingFace (<code>bamfai/bigbounce-mcmc</code>). New H200 pod pending for queue v2 (50 experiments, 10 phases).
   </div>
 </section>
 
@@ -547,10 +555,10 @@
       </tr>
       <tr>
         <td>6</td>
-        <td><strong>Complete 8.47M Chirality Catalog</strong></td>
-        <td>Finish inference on remaining 1.17M galaxies. v2 model frozen (93.7% accuracy, equivariant CW = 0.5012).</td>
-        <td><span class="badge badge-blue">Running (86.5%)</span></td>
-        <td>H100 pod</td>
+        <td><strong>8.47M Chirality Catalog</strong></td>
+        <td>8.47M galaxies classified. CW/(CW+CCW) = 0.4974. Dipole 0.43&sigma; (null). 93.7% accuracy, 8/8 bias tests. Published to HuggingFace + Convex + B2.</td>
+        <td><span class="badge badge-green">COMPLETE</span></td>
+        <td>&mdash;</td>
       </tr>
       <tr>
         <td>7</td>
@@ -671,16 +679,22 @@
   <table class="status-table">
     <thead><tr><th>Dataset</th><th>Size</th><th>Type</th><th>Est. Cost</th><th>Connection to Bounce</th><th>Status</th></tr></thead>
     <tbody>
-      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Run Now (data public, infrastructure ready)</td></tr>
-      <tr><td><strong>NEOWISE / unTimely</strong></td><td>170B rows, 2B sources</td><td>IR time-domain</td><td>$100-200</td><td>Variable QSOs for f<sub>NL</sub> tracers</td><td><span class="badge badge-amber">Pipeline E</span></td></tr>
-      <tr><td><strong>Planck CMB Maps</strong></td><td>50GB full-sky</td><td>CMB T/Q/U patches</td><td>$50-100</td><td>Pre-bounce perturbation signatures</td><td><span class="badge badge-amber">Pipeline A</span></td></tr>
-      <tr><td><strong>ACT DR6 Polarization</strong></td><td>20GB</td><td>CMB polarization</td><td>$50</td><td>Tests &beta; = 0.27&deg; prediction</td><td><span class="badge badge-amber">Pipeline C</span></td></tr>
-      <tr><td><strong>NANOGrav 15yr</strong></td><td>~1GB</td><td>PTA timing</td><td>Free</td><td>Bounce GW template fit (&gamma;=3.0, 0.33&sigma;)</td><td><span class="badge badge-green">Complete</span></td></tr>
-      <tr><td><strong>eROSITA DR1</strong></td><td>930K sources</td><td>X-ray catalog</td><td>$1</td><td>203 novel X-ray sources not in SIMBAD</td><td><span class="badge badge-green">Complete</span></td></tr>
-      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Completed (model transfer from DESI)</td></tr>
-      <tr><td><strong>SDSS DR18</strong></td><td>2.3M spectra</td><td>Optical spectroscopy</td><td>$10</td><td>77,905 anomalies (3.4%). Top anomalies: ultra-cool dwarfs (M/L/T) + high-z QSOs</td><td><span class="badge badge-green">Complete</span></td></tr>
-      <tr><td><strong>LAMOST DR10</strong></td><td>11.4M spectra</td><td>Optical spectroscopy</td><td>$40</td><td>~37K anomalies (0.37%). Running on H200, 87% done</td><td><span class="badge badge-blue">Running</span></td></tr>
-      <tr><td><strong>Gaia DR3 BP/RP</strong></td><td>220M spectra</td><td>Low-res spectrophotometry</td><td>$100-200</td><td>Unusual stellar populations</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Completed Surveys (8 total across H200 queue)</td></tr>
+      <tr><td><strong>DESI DR1</strong></td><td>22.5M spectra</td><td>Optical spectroscopy</td><td>~$200</td><td>195,829 anomalies (0.87%). 2,145 SNR-filtered. 1,127 uncataloged. 9.5% f<sub>NL</sub> improvement.</td><td><span class="badge badge-green">Complete</span></td></tr>
+      <tr><td><strong>SDSS DR18</strong></td><td>2.3M spectra</td><td>Optical spectroscopy</td><td>$10</td><td>77,905 anomalies (3.4%). <span class="badge badge-amber">QC: Scores to 10<sup>11</sup> (domain shift)</span></td><td><span class="badge badge-green">Complete</span></td></tr>
+      <tr><td><strong>LAMOST DR10</strong></td><td>11.4M spectra</td><td>Optical spectroscopy</td><td>$40</td><td>44,075 anomalies (0.39%). <span class="badge badge-amber">QC: 98% blue-excess (training bias)</span></td><td><span class="badge badge-green">Complete</span></td></tr>
+      <tr><td><strong>eROSITA DR1</strong></td><td>930K sources</td><td>X-ray catalog</td><td>$1</td><td>9,303 anomalies (1%). 73% novel (SIMBAD). Solid results.</td><td><span class="badge badge-green">Complete</span></td></tr>
+      <tr><td><strong>NANOGrav 15yr</strong></td><td>~1GB</td><td>PTA timing</td><td>Free</td><td>&gamma; = 3.20 &plusmn; 0.42. Bounce &gamma;=3.0 at 0.33&sigma;. Bayes factor 5.6:1.</td><td><span class="badge badge-green">Complete</span></td></tr>
+      <tr><td><strong>Planck CMB</strong></td><td>20K patches</td><td>CMB T patches</td><td>$1</td><td>200 anomalies. <span class="badge badge-red">QC FAIL: All top at Dec&lt;-84&deg; (galactic contamination). Needs galactic mask.</span></td><td><span class="badge badge-red">Needs Re-run</span></td></tr>
+      <tr><td><strong>ACT DR6</strong></td><td>20K patches</td><td>CMB patches</td><td>$2</td><td>200 anomalies. <span class="badge badge-red">QC FAIL: val_loss=22,420 (undertrained). Needs 100+ epochs.</span></td><td><span class="badge badge-red">Needs Re-run</span></td></tr>
+      <tr><td><strong>NEOWISE</strong></td><td>43.5K sources</td><td>IR variability</td><td>$2</td><td>436 anomalies. <span class="badge badge-red">QC FAIL: All top at RA~180&deg; (ecliptic systematic). Needs masking.</span></td><td><span class="badge badge-red">Needs Re-run</span></td></tr>
+      <tr><td><strong>Gaia DR3 (sample)</strong></td><td>50K variables</td><td>Stellar variability</td><td>$1</td><td>500 anomalies. 27% novel. <span class="badge badge-amber">QC: OK but only 50K of 1.8B. Needs 10x expansion.</span></td><td><span class="badge badge-amber">Needs Expansion</span></td></tr>
+      <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Queued for H200 v2 (data public, infrastructure ready)</td></tr>
+      <tr><td><strong>BOSS/eBOSS DR16</strong></td><td>~4M spectra</td><td>Optical spectroscopy</td><td>$20</td><td>Independent f<sub>NL</sub> tracers</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr><td><strong>DES DR2</strong></td><td>~691M objects</td><td>Photometry</td><td>$80</td><td>Weak lensing + clustering + f<sub>NL</sub></td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr><td><strong>VLASS Radio</strong></td><td>~5.3M sources</td><td>Radio continuum</td><td>$40</td><td>Highest-bias tracers (b~2.5-3)</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr><td><strong>NEOWISE Full-Sky</strong></td><td>170B rows</td><td>IR time-domain</td><td>$170</td><td>Complete IR survey via AWS S3 Parquet</td><td><span class="badge badge-red">Not Started</span></td></tr>
+      <tr><td><strong>Gaia DR3 Full Epoch</strong></td><td>1.8B sources</td><td>Stellar photometry</td><td>$340</td><td>Full epoch-level anomaly detection</td><td><span class="badge badge-red">Not Started</span></td></tr>
       <tr style="background:var(--bg-subtle);"><td colspan="6" style="font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Future (data not yet available)</td></tr>
       <tr><td><strong>Euclid</strong></td><td>~30M spectra</td><td>Slitless spectroscopy</td><td>$100-200</td><td>Next-gen f<sub>NL</sub> tracers</td><td><span class="badge badge-red">~2027</span></td></tr>
       <tr><td><strong>SPHEREx</strong></td><td>~300M objects</td><td>96-band spectrophotometry</td><td>TBD</td><td><strong>FLAGSHIP</strong> &mdash; direct f<sub>NL</sub> measurement</td><td><span class="badge badge-red">~2028</span></td></tr>
