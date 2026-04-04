@@ -261,7 +261,8 @@ def main():
 
     # Results table
     print(f"\n[3/3] Top X-ray + IR matched AGN candidates:")
-    print(f"  {'#':<4} {'eR RA':<10} {'eR Dec':<10} {'NW RA':<10} {'NW Dec':<10} {'Sep\"':<7} {'logLx':<7} {'AGN':<10}")
+    sep_hdr = 'Sep"'
+    print(f"  {'#':<4} {'eR RA':<10} {'eR Dec':<10} {'NW RA':<10} {'NW Dec':<10} {sep_hdr:<7} {'logLx':<7} {'AGN':<10}")
     print(f"  {'-'*65}")
     for i, m in enumerate(matches[:15], 1):
         logLx = f"{m['log_lx']:.1f}" if m['log_lx'] else "N/A"

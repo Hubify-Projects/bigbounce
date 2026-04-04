@@ -250,7 +250,8 @@ def main():
 
     # Results table
     print(f"\n[3/3] Top matched variable sources:")
-    print(f"  {'#':<4} {'NW RA':<10} {'NW Dec':<10} {'ZTF ID':<16} {'Class':<10} {'Sep\"':<7} {'Score':<8}")
+    sep_hdr = 'Sep"'
+    print(f"  {'#':<4} {'NW RA':<10} {'NW Dec':<10} {'ZTF ID':<16} {'Class':<10} {sep_hdr:<7} {'Score':<8}")
     print(f"  {'-'*62}")
     for i, m in enumerate(matches[:15], 1):
         print(f"  {i:<4} {m['neowise_ra']:<10.4f} {m['neowise_dec']:<10.4f} "
