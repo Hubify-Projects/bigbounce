@@ -1,0 +1,282 @@
+{
+  "timestamp": "2026-04-04 21:26:29",
+  "experiment": "simbad-ned-vizier-full",
+  "description": "Cross-match top 100 anomalies per survey against SIMBAD TAP (5\" cone)",
+  "simbad_available": true,
+  "n_surveys": 8,
+  "n_top_per_survey": 100,
+  "n_sources": 480,
+  "n_anomalies_top1pct": 479,
+  "total_queried": 480,
+  "total_matched": 1,
+  "total_novel": 479,
+  "overall_novelty_fraction": 0.9979,
+  "best_val_loss": 0.002083,
+  "all_matched_types": {
+    "*": 1
+  },
+  "per_survey": [
+    {
+      "survey": "desi-dr1",
+      "mode": "live",
+      "n_queried": 100,
+      "n_matched": 0,
+      "n_novel": 100,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "synthetic"
+    },
+    {
+      "survey": "sdss-dr18",
+      "mode": "live",
+      "n_queried": 100,
+      "n_matched": 0,
+      "n_novel": 100,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "synthetic"
+    },
+    {
+      "survey": "lamost-dr10",
+      "mode": "live",
+      "n_queried": 100,
+      "n_matched": 1,
+      "n_novel": 99,
+      "novelty_fraction": 0.99,
+      "n_errors": 0,
+      "matched_types": {
+        "*": 1
+      },
+      "unique_types": 1,
+      "data_source": "synthetic"
+    },
+    {
+      "survey": "erosita-dr1",
+      "mode": "live",
+      "n_queried": 100,
+      "n_matched": 0,
+      "n_novel": 100,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "synthetic"
+    },
+    {
+      "survey": "act-dr6",
+      "mode": "live",
+      "n_queried": 20,
+      "n_matched": 0,
+      "n_novel": 20,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "/workspace/bigbounce/outputs/act-dr6-proper/act_dr6_proper_summary.json"
+    },
+    {
+      "survey": "neowise",
+      "mode": "live",
+      "n_queried": 20,
+      "n_matched": 0,
+      "n_novel": 20,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "/workspace/bigbounce/outputs/neowise-ecliptic-mask/neowise_ecliptic_summary.json"
+    },
+    {
+      "survey": "gaia-dr3",
+      "mode": "live",
+      "n_queried": 20,
+      "n_matched": 0,
+      "n_novel": 20,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "/workspace/bigbounce/outputs/gaia-dr3-expanded/gaia_expanded_summary.json"
+    },
+    {
+      "survey": "planck-cmb",
+      "mode": "live",
+      "n_queried": 20,
+      "n_matched": 0,
+      "n_novel": 20,
+      "novelty_fraction": 1.0,
+      "n_errors": 0,
+      "matched_types": {},
+      "unique_types": 0,
+      "data_source": "/workspace/bigbounce/outputs/planck-cmb-masked/planck_cmb_masked_summary.json"
+    }
+  ],
+  "train_time_s": 439.03,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 269.632576,
+      "dec": -3.27904,
+      "score": 6868.7135,
+      "survey": "desi-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 2,
+      "ra": 173.83352,
+      "dec": 54.762938,
+      "score": 1758.431,
+      "survey": "desi-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 3,
+      "ra": 141.749667,
+      "dec": 22.87698,
+      "score": 1024.0047,
+      "survey": "desi-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 4,
+      "ra": 200.598213,
+      "dec": 41.165459,
+      "score": 5223.4397,
+      "survey": "sdss-dr18",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 5,
+      "ra": 172.918791,
+      "dec": 33.138416,
+      "score": 1005.0482,
+      "survey": "sdss-dr18",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 6,
+      "ra": 259.529073,
+      "dec": 64.726071,
+      "score": 709.4041,
+      "survey": "sdss-dr18",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 7,
+      "ra": 233.470556,
+      "dec": -33.058432,
+      "score": 9751.2744,
+      "survey": "erosita-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 8,
+      "ra": 43.296938,
+      "dec": -39.055073,
+      "score": 8750.3449,
+      "survey": "erosita-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 9,
+      "ra": 326.876016,
+      "dec": -30.922009,
+      "score": 1669.2511,
+      "survey": "erosita-dr1",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 97.025695,
+      "dec": 42.963365,
+      "score": 0.8539,
+      "survey": "act-dr6",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 279.959953,
+      "dec": 13.248738,
+      "score": 0.8507,
+      "survey": "act-dr6",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 347.322819,
+      "dec": 7.36857,
+      "score": 0.8495,
+      "survey": "act-dr6",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 271.841587,
+      "dec": 80.242599,
+      "score": 244412.9688,
+      "survey": "neowise",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 277.649677,
+      "dec": -43.772728,
+      "score": 208633.6562,
+      "survey": "neowise",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 358.601899,
+      "dec": 43.01837,
+      "score": 205881.1562,
+      "survey": "neowise",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 47.571233,
+      "dec": 7.299796,
+      "score": 0.6876,
+      "survey": "gaia-dr3",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 199.310258,
+      "dec": -41.039376,
+      "score": 0.446,
+      "survey": "gaia-dr3",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 156.213409,
+      "dec": 57.35305,
+      "score": 0.3179,
+      "survey": "gaia-dr3",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 208.476562,
+      "dec": -21.221793,
+      "score": 62.9988,
+      "survey": "planck-cmb",
+      "novelty_fraction": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 210.058594,
+      "dec": -21.061818,
+      "score": 42.3329,
+      "survey": "planck-cmb",
+      "novelty_fraction": 1.0
+    }
+  ]
+}
