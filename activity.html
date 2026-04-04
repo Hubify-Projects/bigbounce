@@ -165,6 +165,13 @@
 
   <div class="feed-item">
     <div class="feed-date">2026-04-03</div>
+    <div class="feed-title">ACT Birefringence: &beta; = 17.4&deg; &plusmn; 12.1&deg; &mdash; Systematic-Dominated, Needs Better Tools</div>
+    <p class="feed-body">Ran birefringence estimator on real ACT DR6 5.3GB IQU map (11.6 hours, 200 bootstraps on H200). Result: <strong>&beta; = 17.4&deg; &plusmn; 12.1&deg;</strong> &mdash; NOT consistent with 0.27&deg; prediction. Root cause: flat-sky FFT picks up galactic foreground Q/U leakage. The published 3.6&sigma; signal (0.342&plusmn;0.094&deg;) uses cross-frequency decorrelation + galactic masking + NaMaster pseudo-C<sub>l</sub>. <strong>Our simple estimator is insufficient for sub-degree birefringence.</strong> Next: proper analysis with NaMaster/PolSpice + galactic mask.</p>
+    <div class="feed-tags"><span class="feed-tag">Birefringence</span><span class="feed-tag">Systematic</span><span class="feed-tag">Needs NaMaster</span><span class="feed-tag">ACT DR6</span></div>
+  </div>
+
+  <div class="feed-item">
+    <div class="feed-date">2026-04-03</div>
     <div class="feed-title">Planck &times; ACT Cross-Match: Null Result &mdash; CMB Anomalies Are Noise</div>
     <p class="feed-body">Cross-matched top 200 Planck and ACT anomalous patches within 2&deg;. Found <strong>15 matches vs 12.2 expected random (1.2x, not significant).</strong> Cold Spot NOT confirmed by both instruments. Hemispherical asymmetry NOT confirmed. Score anti-correlation (r=&minus;0.953) suggests different instruments flag different noise patterns. CMB anomalies are likely instrumental, not cosmological. <strong>Birefringence estimator pipeline validated</strong> (simulation: injected &beta;=0.27&deg;, recovered 0.261&plusmn;0.037&deg;). Ready for H200 deployment on real ACT IQU data.</p>
     <div class="feed-tags"><span class="feed-tag">CMB Cross-Match</span><span class="feed-tag">Null Result</span><span class="feed-tag">Birefringence Ready</span><span class="feed-tag">Planck &times; ACT</span></div>
