@@ -36,20 +36,24 @@ def graphql(query):
     with urllib.request.urlopen(req) as resp:
         return json.loads(resp.read())
 
-# Existing pods to try resuming
+# Existing pods to try resuming (H200 first, then others)
 EXISTING_PODS = [
-    ('uktt3hghbs1djo', 'paper2-p6-eb', 'RTX A5000', 1),      # GPU pod
-    ('mz3srzbzxxv1yj', 'paper2-wp5-spin', 'RTX A5000', 1),    # GPU pod
-    ('83ubwlcdk0gat2', 'bigbounce-paper1-cpu5', 'CPU', 0),     # CPU pod
+    ('rtv8cegaw1618r', 'defeated_harlequin_lemming', 'H200', 1),  # Original H200 DESI
+    ('q8ck5iy4hlwvg7', 'bigbounce-v2', 'unknown', 1),             # bigbounce-v2
+    ('uktt3hghbs1djo', 'paper2-p6-eb', 'RTX A5000', 1),           # GPU pod
+    ('mz3srzbzxxv1yj', 'paper2-wp5-spin', 'RTX A5000', 1),        # GPU pod
+    ('83ubwlcdk0gat2', 'bigbounce-paper1-cpu5', 'CPU', 0),        # CPU pod
 ]
 
-# New pod configs to try if existing can't resume
+# New pod configs to try — H200 first, then fallbacks
 NEW_POD_CONFIGS = [
-    ('NVIDIA GeForce RTX 3090', 'COMMUNITY'),
+    ('NVIDIA H200 SXM', 'SECURE'),
+    ('NVIDIA H100 80GB HBM3', 'SECURE'),
+    ('NVIDIA A100 80GB PCIe', 'SECURE'),
+    ('NVIDIA RTX 6000 Ada Generation', 'SECURE'),
     ('NVIDIA GeForce RTX 4090', 'COMMUNITY'),
     ('NVIDIA RTX A5000', 'SECURE'),
     ('NVIDIA RTX A4000', 'SECURE'),
-    ('NVIDIA RTX 6000 Ada Generation', 'SECURE'),
 ]
 
 print("="*60)
@@ -90,12 +94,13 @@ print("\n--- Attempting to create new pod ---")
 for gpu_type, cloud_type in NEW_POD_CONFIGS:
     print(f"  Trying {gpu_type} ({cloud_type})...", end=" ")
     try:
+        vol_gb = 500 if 'H200' in gpu_type or 'H100' in gpu_type or 'A100' in gpu_type else 100
         result = graphql(f'''mutation {{ podFindAndDeployOnDemand(input: {{
-            name: "bigbounce-phase2",
+            name: "bigbounce-h200-phase2",
             imageName: "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04",
             gpuTypeId: "{gpu_type}",
             gpuCount: 1,
-            volumeInGb: 100,
+            volumeInGb: {vol_gb},
             containerDiskInGb: 30,
             startSsh: true,
             cloudType: {cloud_type}

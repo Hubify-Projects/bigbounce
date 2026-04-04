@@ -210,7 +210,10 @@ while true; do
     fi
   fi
 
-  # 7. Print full queue status
+  # 7. Credit balance check — auto-stop pod if running low
+  python3 "$SCRIPT_DIR/pipelines/runpod_credit_watchdog.py" --once 2>/dev/null || log "WARNING: Credit watchdog check failed"
+
+  # 8. Print full queue status
   print_queue_status
 
   log "Next check in ${INTERVAL}s ($(date -v+${INTERVAL}S '+%H:%M' 2>/dev/null || date -d "+${INTERVAL} seconds" '+%H:%M' 2>/dev/null || echo '?'))"
