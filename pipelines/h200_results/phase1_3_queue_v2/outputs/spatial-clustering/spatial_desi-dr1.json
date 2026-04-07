@@ -1,0 +1,80 @@
+{
+  "survey": "desi-dr1",
+  "data_source": "synthetic",
+  "source_file": "synthetic",
+  "n_objects": 50000,
+  "two_point_correlation": {
+    "bin_centers_deg": [
+      0.25,
+      0.75,
+      1.25,
+      1.75,
+      2.25,
+      2.75,
+      3.25,
+      3.75,
+      4.25,
+      4.75,
+      5.25,
+      5.75,
+      6.25,
+      6.75,
+      7.25,
+      7.75,
+      8.25,
+      8.75,
+      9.25,
+      9.75
+    ],
+    "w_theta": [
+      1.66715,
+      1.552866,
+      1.469995,
+      1.391023,
+      1.314442,
+      1.267122,
+      1.218271,
+      1.176423,
+      1.152036,
+      1.127231,
+      1.112998,
+      1.101535,
+      1.092694,
+      1.091551,
+      1.08753,
+      1.089227,
+      1.087664,
+      1.091374,
+      1.086175,
+      1.085266
+    ],
+    "mean_abs_w": 1.213129,
+    "max_abs_w": 1.66715
+  },
+  "nearest_neighbor": {
+    "mean_nn_deg": 0.77967,
+    "median_nn_deg": 0.679146,
+    "std_nn_deg": 0.542118,
+    "min_nn_deg": 0.005583,
+    "max_nn_deg": 3.153624,
+    "pct_within_1arcmin": 0.0016,
+    "pct_within_1deg": 0.6944
+  },
+  "healpix_uniformity": {
+    "nside": 32,
+    "total_pixels": 12288,
+    "occupied_pixels": 4189,
+    "sky_fraction": 0.3409,
+    "mean_per_pixel": 11.94,
+    "std_per_pixel": 21.67,
+    "max_per_pixel": 744,
+    "chi2_per_dof": 39.3436,
+    "is_uniform": false
+  },
+  "classification": "clustered",
+  "classification_reasons": [
+    "strong 2pt correlation: max |w|=1.667",
+    "moderate NN clustering: 69.4% within 1deg",
+    "highly non-uniform sky: chi2/dof=39.3"
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "timestamp": "2026-04-04 21:36:42",
+  "experiment": "neowise-ztf-xmatch",
+  "description": "NEOWISE x ZTF IR+optical variability cross-match within 5.0\"",
+  "n_neowise": 20,
+  "n_neowise_in_ztf_footprint": 15,
+  "neowise_data_mode": "real",
+  "ztf_data_mode": "simulated",
+  "match_radius_arcsec": 5.0,
+  "n_matched": 8,
+  "n_variable_agn": 4,
+  "ztf_class_breakdown": {
+    "Blazar": 2,
+    "CV": 2,
+    "YSO": 1,
+    "TDE": 1,
+    "LPV": 1,
+    "AGN": 1
+  },
+  "n_sources": 20,
+  "n_anomalies_top1pct": 8,
+  "best_val_loss": 0.5,
+  "matched_pairs": [
+    {
+      "neowise_ra": 358.601899,
+      "neowise_dec": 43.01837,
+      "neowise_score": 205881.1562,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF20nvzqqi",
+      "ztf_ra": 358.601913,
+      "ztf_dec": 43.018265,
+      "ztf_class": "YSO",
+      "ztf_peak_mag": 18.5,
+      "ztf_n_det": 23,
+      "n_ztf_alerts": 3,
+      "sep_arcsec": 0.38,
+      "combined_score": 514702.8906,
+      "variable_agn": false
+    },
+    {
+      "neowise_ra": 28.72247,
+      "neowise_dec": -19.030917,
+      "neowise_score": 134911.9375,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF21hbslcd",
+      "ztf_ra": 28.722733,
+      "ztf_dec": -19.030795,
+      "ztf_class": "TDE",
+      "ztf_peak_mag": 15.75,
+      "ztf_n_det": 10,
+      "n_ztf_alerts": 2,
+      "sep_arcsec": 0.997,
+      "combined_score": 269823.875,
+      "variable_agn": true
+    },
+    {
+      "neowise_ra": 226.576366,
+      "neowise_dec": 24.71094,
+      "neowise_score": 160031.9844,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF23yjnnyb",
+      "ztf_ra": 226.576225,
+      "ztf_dec": 24.711282,
+      "ztf_class": "Blazar",
+      "ztf_peak_mag": 17.5,
+      "ztf_n_det": 103,
+      "n_ztf_alerts": 1,
+      "sep_arcsec": 1.315,
+      "combined_score": 240047.9766,
+      "variable_agn": true
+    },
+    {
+      "neowise_ra": 173.493558,
+      "neowise_dec": 37.235241,
+      "neowise_score": 102314.5469,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF19gqdqam",
+      "ztf_ra": 173.49367,
+      "ztf_dec": 37.234866,
+      "ztf_class": "LPV",
+      "ztf_peak_mag": 21.81,
+      "ztf_n_det": 7,
+      "n_ztf_alerts": 2,
+      "sep_arcsec": 1.388,
+      "combined_score": 204629.0938,
+      "variable_agn": false
+    },
+    {
+      "neowise_ra": 183.920129,
+      "neowise_dec": 76.632342,
+      "neowise_score": 99524.4609,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF20segwaj",
+      "ztf_ra": 183.920177,
+      "ztf_dec": 76.632349,
+      "ztf_class": "CV",
+      "ztf_peak_mag": 15.03,
+      "ztf_n_det": 13,
+      "n_ztf_alerts": 2,
+      "sep_arcsec": 0.047,
+      "combined_score": 199048.9219,
+      "variable_agn": false
+    },
+    {
+      "neowise_ra": 304.246117,
+      "neowise_dec": 32.573602,
+      "neowise_score": 90702.6328,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF18lhjtdl",
+      "ztf_ra": 304.246322,
+      "ztf_dec": 32.573308,
+      "ztf_class": "AGN",
+      "ztf_peak_mag": 19.43,
+      "ztf_n_det": 19,
+      "n_ztf_alerts": 2,
+      "sep_arcsec": 1.228,
+      "combined_score": 181405.2656,
+      "variable_agn": true
+    },
+    {
+      "neowise_ra": 284.371158,
+      "neowise_dec": 71.911974,
+      "neowise_score": 85545.0,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF25dlovsv",
+      "ztf_ra": 284.371007,
+      "ztf_dec": 71.912222,
+      "ztf_class": "CV",
+      "ztf_peak_mag": 20.17,
+      "ztf_n_det": 34,
+      "n_ztf_alerts": 2,
+      "sep_arcsec": 0.909,
+      "combined_score": 171090.0,
+      "variable_agn": false
+    },
+    {
+      "neowise_ra": 345.97677,
+      "neowise_dec": 65.182204,
+      "neowise_score": 84101.6094,
+      "neowise_w1_var": null,
+      "ztf_objectId": "ZTF21ecyxyj",
+      "ztf_ra": 345.976953,
+      "ztf_dec": 65.182208,
+      "ztf_class": "Blazar",
+      "ztf_peak_mag": 16.36,
+      "ztf_n_det": 6,
+      "n_ztf_alerts": 1,
+      "sep_arcsec": 0.277,
+      "combined_score": 126152.4141,
+      "variable_agn": true
+    }
+  ],
+  "train_time_s": 0.61,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 358.601906,
+      "dec": 43.018317,
+      "score": 514702.8906
+    },
+    {
+      "rank": 2,
+      "ra": 28.722602,
+      "dec": -19.030856,
+      "score": 269823.875
+    },
+    {
+      "rank": 3,
+      "ra": 226.576296,
+      "dec": 24.711111,
+      "score": 240047.9766
+    },
+    {
+      "rank": 4,
+      "ra": 173.493614,
+      "dec": 37.235053,
+      "score": 204629.0938
+    },
+    {
+      "rank": 5,
+      "ra": 183.920153,
+      "dec": 76.632345,
+      "score": 199048.9219
+    },
+    {
+      "rank": 6,
+      "ra": 304.24622,
+      "dec": 32.573455,
+      "score": 181405.2656
+    },
+    {
+      "rank": 7,
+      "ra": 284.371082,
+      "dec": 71.912098,
+      "score": 171090.0
+    },
+    {
+      "rank": 8,
+      "ra": 345.976861,
+      "dec": 65.182206,
+      "score": 126152.4141
+    },
+    {
+      "rank": 9,
+      "ra": 319.36,
+      "dec": 26.4,
+      "score": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 287.64,
+      "dec": -13.43,
+      "score": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 21.86,
+      "dec": -7.26,
+      "score": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 280.04,
+      "dec": 15.03,
+      "score": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 61.98,
+      "dec": 38.03,
+      "score": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 218.47,
+      "dec": 71.69,
+      "score": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 335.35,
+      "dec": 17.91,
+      "score": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 80.25,
+      "dec": 33.94,
+      "score": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 57.75,
+      "dec": 5.7,
+      "score": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 143.21,
+      "dec": -28.81,
+      "score": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 116.56,
+      "dec": 73.7,
+      "score": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 133.18,
+      "dec": 5.88,
+      "score": 1.0
+    }
+  ]
+}

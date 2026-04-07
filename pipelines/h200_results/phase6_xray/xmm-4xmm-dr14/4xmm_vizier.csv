@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+ <DESCRIPTION>
+   VizieR Astronomical Server vizier.cds.unistra.fr
+    Date: 2026-04-07T03:10:51 [V7.5.6]
+   Explanations and Statistics of UCDs:			See LINK below
+   In case of problem, please report to:	cds-question@unistra.fr
+ </DESCRIPTION>
+<!-- VOTable description at http://www.ivoa.net/Documents/latest/VOT.html -->
+<INFO name="service_protocol" value="ASU">  IVOID of the protocol through which the data was retrieved</INFO>
+<INFO name="request_date" value="2026-04-07T03:10:51">  Query execution date</INFO>
+<INFO name="request" value="https://vizier.cds.unistra.fr/viz-bin/votable?-source=IX/68/4xmmdr14s&amp;-out.max=10000&amp;-out=IAUNAME,RA,DEC,Flux1,Flux2,Flux3,Flux4,Flux5,HR1,HR2,HR3,HR4,Ext,VarFlag">  Full request URL</INFO>
+<INFO name="contact" value="cds-question@unistra.fr">  Email or URL to contact publisher</INFO>
+<INFO name="server_software" value="VizieR/7.5.6">  Software version</INFO>
+<INFO name="publisher" value="CDS">  Data centre that produced the VOTable</INFO>
+<INFO ID="Error" name="Error" value="Table '4xmmdr14s' does not exist in catalog: IX/68"/>
+
+<INFO name="Warning" value="can't find table or catalogue: IX/68/4xmmdr14s"/>
+<INFO name="Error" value=" "/>
+<INFO name="Error" value=" --POSTGRES MSG db=0"/>
+<INFO name="Error" value=" Report from: stdb_pg,     Status: STDB_ERR "/>
+<INFO name="Error" value="ERROR:  syntax error at or near &quot;COMMIT&quot; LINE 1:  SELECT catid FROM METAcat WHER"/>
+<INFO name="Error" value="E name='No Results' COMMIT                                                      "/>
+<INFO name="Error" value="      ^ "/>
+<INFO name="Error" value="ERROR:  syntax error at or near &quot;COMMIT&quot; LINE 1:  SELECT catid FROM METAcat WHER"/>
+<INFO name="Error" value="E name='No Results' COMMIT                                                      "/>
+<INFO name="Error" value="      ^ "/>
+<INFO name="QUERY_STATUS" value="ERROR">
+
+ --POSTGRES MSG db=0
+ Report from: stdb_pg,     Status: STDB_ERR
+ERROR:  syntax error at or near "COMMIT" LINE 1:  SELECT catid FROM METAcat WHER
+E name='No Results' COMMIT
+      ^
+ERROR:  syntax error at or near "COMMIT" LINE 1:  SELECT catid FROM METAcat WHER
+E name='No Results' COMMIT
+      ^
+</INFO>
+<RESOURCE>
+</RESOURCE>
+</VOTABLE>

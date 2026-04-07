@@ -1,0 +1,198 @@
+{
+  "survey": "gaia-dr3",
+  "n_inspected": 20,
+  "n_good": 19,
+  "n_suspect": 1,
+  "n_bad": 0,
+  "good_fraction": 0.95,
+  "suspect_reasons": {
+    "near_galactic_plane (b=-1.6deg)": 1
+  },
+  "n_duplicates": 0,
+  "details": [
+    {
+      "index": 0,
+      "ra": 47.571233,
+      "dec": 7.299796,
+      "score": 0.68765,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 1,
+      "ra": 199.310258,
+      "dec": -41.039376,
+      "score": 0.445958,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 2,
+      "ra": 156.213409,
+      "dec": 57.35305,
+      "score": 0.317912,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 3,
+      "ra": 351.138712,
+      "dec": 23.492222,
+      "score": 0.277344,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 4,
+      "ra": 303.204027,
+      "dec": 75.894863,
+      "score": 0.247583,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 5,
+      "ra": 160.96415,
+      "dec": 28.440243,
+      "score": 0.240232,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 6,
+      "ra": 304.605703,
+      "dec": 77.491129,
+      "score": 0.22261,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 7,
+      "ra": 345.803601,
+      "dec": -11.721343,
+      "score": 0.216203,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 8,
+      "ra": 89.872083,
+      "dec": 59.598369,
+      "score": 0.205495,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 9,
+      "ra": 192.801582,
+      "dec": -64.49455,
+      "score": 0.205371,
+      "status": "suspect",
+      "issues": [
+        "near_galactic_plane (b=-1.6deg)"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 10,
+      "ra": 206.126284,
+      "dec": 53.611696,
+      "score": 0.202666,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 11,
+      "ra": 281.216341,
+      "dec": 48.717797,
+      "score": 0.195457,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 12,
+      "ra": 54.4358,
+      "dec": -51.846024,
+      "score": 0.193996,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 13,
+      "ra": 159.448678,
+      "dec": -85.476134,
+      "score": 0.192977,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 14,
+      "ra": 296.456053,
+      "dec": -47.730908,
+      "score": 0.186425,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 15,
+      "ra": 58.218099,
+      "dec": -9.326438,
+      "score": 0.180384,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 16,
+      "ra": 83.042838,
+      "dec": 64.080902,
+      "score": 0.1789,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 17,
+      "ra": 343.879357,
+      "dec": 52.117489,
+      "score": 0.176832,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 18,
+      "ra": 7.647879,
+      "dec": 5.627915,
+      "score": 0.176692,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 19,
+      "ra": 269.233587,
+      "dec": 10.681163,
+      "score": 0.174421,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    }
+  ],
+  "data_source": "real",
+  "source_file": "/workspace/bigbounce/outputs/gaia-dr3-expanded/gaia_expanded_summary.json"
+}

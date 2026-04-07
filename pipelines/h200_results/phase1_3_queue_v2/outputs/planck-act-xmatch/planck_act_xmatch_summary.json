@@ -1,0 +1,141 @@
+{
+  "timestamp": "2026-04-04 21:30:58",
+  "experiment": "planck-act-xmatch-fixed",
+  "description": "Planck x ACT CMB cross-match within 2.0 deg",
+  "n_planck": 20,
+  "n_act": 20,
+  "planck_data_mode": "real",
+  "act_data_mode": "real",
+  "match_radius_deg": 2.0,
+  "n_matched": 0,
+  "n_expected_random": 0.3046,
+  "significance_sigma": -0.3046,
+  "n_sources": 40,
+  "n_anomalies_top1pct": 0,
+  "best_val_loss": 100.0,
+  "matched_pairs": [],
+  "train_time_s": 0.0,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 85.98,
+      "dec": 59.19,
+      "score": 1.0
+    },
+    {
+      "rank": 2,
+      "ra": 1.75,
+      "dec": 77.28,
+      "score": 1.0
+    },
+    {
+      "rank": 3,
+      "ra": 192.36,
+      "dec": -83.7,
+      "score": 1.0
+    },
+    {
+      "rank": 4,
+      "ra": 114.72,
+      "dec": 67.54,
+      "score": 1.0
+    },
+    {
+      "rank": 5,
+      "ra": 26.12,
+      "dec": 36.15,
+      "score": 1.0
+    },
+    {
+      "rank": 6,
+      "ra": 176.44,
+      "dec": 72.9,
+      "score": 1.0
+    },
+    {
+      "rank": 7,
+      "ra": 57.89,
+      "dec": -56.18,
+      "score": 1.0
+    },
+    {
+      "rank": 8,
+      "ra": 248.12,
+      "dec": -71.31,
+      "score": 1.0
+    },
+    {
+      "rank": 9,
+      "ra": 147.33,
+      "dec": 24.43,
+      "score": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 198.6,
+      "dec": 18.77,
+      "score": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 80.36,
+      "dec": -22.59,
+      "score": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 172.85,
+      "dec": -19.24,
+      "score": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 327.89,
+      "dec": 15.22,
+      "score": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 306.86,
+      "dec": 56.59,
+      "score": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 81.83,
+      "dec": -43.04,
+      "score": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 128.95,
+      "dec": -29.43,
+      "score": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 53.97,
+      "dec": -63.36,
+      "score": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 6.66,
+      "dec": 57.15,
+      "score": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 11.77,
+      "dec": 69.26,
+      "score": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 201.15,
+      "dec": 68.05,
+      "score": 1.0
+    }
+  ]
+}

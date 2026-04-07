@@ -1,0 +1,129 @@
+{
+  "experiment_id": "nanograv_combined_pta",
+  "phase": 4,
+  "description": "Combined PTA analysis: NANOGrav + EPTA + PPTA + IPTA",
+  "pta_measurements": {
+    "NANOGrav_15yr": {
+      "gamma": 3.2,
+      "gamma_err": 0.6,
+      "log10_A": -14.62,
+      "log10_A_err": 0.22,
+      "reference": "Agazie et al. 2023, ApJ 951 L8",
+      "n_pulsars": 67,
+      "baseline_yr": 16.03
+    },
+    "EPTA_DR2": {
+      "gamma": 3.4,
+      "gamma_err": 0.8,
+      "log10_A": -14.57,
+      "log10_A_err": 0.3,
+      "reference": "Antoniadis et al. 2023, A&A 678 A50",
+      "n_pulsars": 25,
+      "baseline_yr": 24.7
+    },
+    "PPTA_DR3": {
+      "gamma": 3.6,
+      "gamma_err": 1.0,
+      "log10_A": -14.52,
+      "log10_A_err": 0.35,
+      "reference": "Reardon et al. 2023, ApJ 951 L6",
+      "n_pulsars": 30,
+      "baseline_yr": 18.0
+    },
+    "IPTA_DR2": {
+      "gamma": 3.3,
+      "gamma_err": 0.7,
+      "log10_A": -14.6,
+      "log10_A_err": 0.25,
+      "reference": "Antoniadis et al. 2022, MNRAS 510 4873",
+      "n_pulsars": 65,
+      "baseline_yr": 30.0
+    }
+  },
+  "individual_tensions": {
+    "NANOGrav_15yr": {
+      "tension_bounce_sigma": 0.33333333333333365,
+      "tension_smbhb_sigma": 1.8888888888888882,
+      "prefers": "bounce"
+    },
+    "EPTA_DR2": {
+      "tension_bounce_sigma": 0.4999999999999999,
+      "tension_smbhb_sigma": 1.1666666666666663,
+      "prefers": "bounce"
+    },
+    "PPTA_DR3": {
+      "tension_bounce_sigma": 0.6000000000000001,
+      "tension_smbhb_sigma": 0.733333333333333,
+      "prefers": "bounce"
+    },
+    "IPTA_DR2": {
+      "tension_bounce_sigma": 0.4285714285714283,
+      "tension_smbhb_sigma": 1.476190476190476,
+      "prefers": "bounce"
+    }
+  },
+  "combined_measurement": {
+    "gamma": 3.3241796432480175,
+    "gamma_err": 0.3680778036786195,
+    "log10_A": -14.58975299989011,
+    "log10_A_err": 0.13370760444887825,
+    "method": "inverse-variance weighting"
+  },
+  "consistency": {
+    "chi2": 0.12908738311476345,
+    "ndof": 3,
+    "p_value": 0.9881317122275233,
+    "consistent": true
+  },
+  "tensions_combined": {
+    "bounce_sigma": 0.8807367355709097,
+    "smbhb_sigma": 2.7416858066411414,
+    "bounce_p_value": 0.37846032869278756,
+    "smbhb_p_value": 0.006112477871765491
+  },
+  "bayes_factors": {
+    "individual": {
+      "NANOGrav_15yr": 5.631608267882816,
+      "EPTA_DR2": 1.742908998633457,
+      "PPTA_DR3": 1.092959209667233,
+      "IPTA_DR2": 2.7121249073604727
+    },
+    "combined_product": 29.09516276859397,
+    "from_combined_measurement": 29.095162768593944,
+    "mcmc_density_ratio": 27.630925097632094,
+    "interpretation": "Strong evidence for bounce"
+  },
+  "mcmc": {
+    "n_walkers": 32,
+    "n_steps": 10000,
+    "n_samples": 320000,
+    "n_effective": 9513.798148628426,
+    "posterior": {
+      "gamma_mean": 3.3167349134867967,
+      "gamma_std": 0.36800578182936483,
+      "gamma_median": 3.315555449317967,
+      "gamma_16": 2.9510931044539284,
+      "gamma_84": 3.6834425144269285,
+      "log10_A_mean": -14.587890259365068,
+      "log10_A_std": 0.13384245034414508
+    },
+    "posterior_fractions": {
+      "below_3": 0.194459375,
+      "range_2_to_4": 0.968425,
+      "above_4": 0.03140625,
+      "above_smbhb": 0.003165625
+    }
+  },
+  "exclusion": {
+    "smbhb_exclusion_sigma": 2.7416858066411414,
+    "bounce_exclusion_sigma": 0.8807367355709097
+  },
+  "conclusions": {
+    "combined_gamma": "3.324 +/- 0.368",
+    "all_ptas_prefer_bounce": true,
+    "bounce_consistency": "0.88 sigma",
+    "smbhb_tension": "2.74 sigma",
+    "combined_bayes_factor": 29.09516276859397,
+    "key_result": "Combined 4-PTA analysis: gamma = 3.324 +/- 0.368. Consistent with matter bounce (gamma=3.0) at 0.9 sigma. SMBHB (gamma=4.33) disfavored at 2.7 sigma. Combined Bayes factor (bounce/SMBHB) = 29.1."
+  }
+}

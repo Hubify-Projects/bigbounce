@@ -11,8 +11,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/.env.local" 2>/dev/null || true
 
-H200_HOST="root@103.196.86.169"
-H200_PORT=34546
+H200_HOST="root@205.196.19.52"
+H200_PORT=11452
 SSH_KEY="$HOME/.ssh/id_ed25519"
 SSH_CMD="ssh -o ConnectTimeout=30 -o StrictHostKeyChecking=no -o BatchMode=yes -i $SSH_KEY -p $H200_PORT $H200_HOST"
 SCP_CMD="scp -o ConnectTimeout=30 -o StrictHostKeyChecking=no -i $SSH_KEY -P $H200_PORT"

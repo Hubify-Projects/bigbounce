@@ -1,6 +1,6 @@
 # Current Status: BigBounce Research Program
 
-**Last updated: 2026-04-02**
+**Last updated: 2026-04-06**
 
 ## Papers
 
@@ -13,19 +13,36 @@
 
 ## Multi-Survey Anomaly Sweep
 
-**32.3M spectra processed, 327K anomalies detected across 4 surveys:**
+**33.5M sources processed, 328K+ anomalies detected across 8 surveys:**
 
-| Survey | Spectra | Anomalies | Status |
-|--------|---------|-----------|--------|
-| DESI DR1 | 18M | 196K | Complete |
-| SDSS | 3.9M | 78K | Complete |
-| LAMOST | 11.4M | 44K | Complete |
-| eROSITA | — | 9.3K | Complete |
+| Survey | Sources | Anomalies | QC Status |
+|--------|---------|-----------|-----------|
+| DESI DR1 | 22.5M | 195,829 (0.87%) | PASS — 2,145 SNR-filtered, 1,127 uncataloged |
+| SDSS DR18 | 2.3M | 77,905 (3.4%) | PASS — domain shift scores noted |
+| LAMOST DR10 | 11.4M | 44,075 (0.39%) | PASS — 98% blue-excess bias (known) |
+| eROSITA DR1 | 930K | 9,303 (1%) | PASS — 73% novel |
+| Planck CMB | 20K patches | 193 | FIXED — galactic GAL080 mask applied (was QC FAIL) |
+| ACT DR6 | 20K patches | 200 | FIXED — 100 epoch proper training (was QC FAIL) |
+| NEOWISE | 43.5K | 444 | FIXED — ecliptic mask applied (was QC FAIL) |
+| Gaia DR3 | 50K → 500K | 5,000 | FIXED — 10x expansion (was too small) |
+
+## Queue v2 Progress
+
+**Phases 1-3 COMPLETE (17/18 experiments). Phase 4 RUNNING.**
+
+| Phase | Status | Highlights |
+|-------|--------|------------|
+| 1: Re-run broken | **COMPLETE** | Planck masked, ACT trained, NEOWISE masked, Gaia 10x expanded |
+| 2: Validation | **COMPLETE** | SIMBAD cross-match (479 known), injection recovery, spatial clustering, score distributions |
+| 3: Cross-survey | **COMPLETE** | SDSS×LAMOST (30 overlap), multi-messenger (40 joint), Planck×ACT (0 — independent) |
+| 4: Science | **RUNNING** | f_NL bias validation, LAMOST tracer, threshold sweep, NANOGrav MCMC, combined PTA |
+| 5-10 | Pending | New surveys, ML re-runs, full-sky scans, papers |
 
 ## Active Compute
 
-- **H200 pod** running full research queue: Planck CMB → ACT DR6 → NEOWISE → Gaia → cross-match → super-res
-- Monitor with `research_monitor.sh`
+- **H200 pod** `o76k3jfzbfh25e`: SSH `root@205.196.19.52 -p 11452`
+- **Phase 4** running in tmux session `phase4` (5 experiments chained)
+- **Monitor**: `ssh root@205.196.19.52 -p 11452 -i ~/.ssh/id_ed25519 "tail -20 /workspace/bigbounce/phase4_runner.log"`
 
 ## MCMC Results
 
@@ -41,15 +58,10 @@
 - Branch V matter bounce: f_NL = -35/8 = -4.375 (parameter-free, mechanism-independent)
 - f_NL triple role: galaxy bispectrum + PBH abundance regulator + induced GW spectral shape
 - Bounce model discrimination table: matter bounce vs Cuscuton vs ekpyrotic vs quintom vs inflation
+- NANOGrav 15yr: γ = 3.0 (bounce) vs 3.2 ± 0.6 (observed) — 0.33σ consistent
 
 ## Website
 
 - **Live:** https://bigbounce.hubify.app
 - **Deployment:** Netlify auto-deploys from `main` branch
 - 12+ pages: Research, Papers, Explainer, Data Explorer, Figures, Glossary, Articles, Timeline, Visualize, Activity, Dossier, Datasets
-
-## Key Next Steps
-
-1. **Pipeline 1 tracer purification** — steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) after H200 queue finishes
-2. **Finish chirality paper** — add confusion matrix, training curves, redshift distribution to Paper 4
-3. **Back up H200 results** — download all outputs after queue completes before pod termination

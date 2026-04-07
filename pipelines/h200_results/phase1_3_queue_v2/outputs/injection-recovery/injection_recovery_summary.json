@@ -1,0 +1,397 @@
+{
+  "timestamp": "2026-04-04 21:19:29",
+  "experiment": "injection-recovery-multi",
+  "description": "Injection/recovery test for CMB autoencoder anomaly detection",
+  "model_source": "retrained",
+  "n_sources": 5000,
+  "n_normal_patches": 5000,
+  "n_amplitude_levels": 6,
+  "amplitude_multipliers": [
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "n_injections_per_level": 200,
+  "total_injected": 1200,
+  "total_detected_99pct": 4,
+  "overall_recovery_rate": 0.0033,
+  "false_positive_rate": 0.01,
+  "detection_threshold_99pct": 0.760976,
+  "n_anomalies_top1pct": 4,
+  "best_val_loss": 0.617495,
+  "recovery_rate_by_amplitude": {
+    "0.5": {
+      "amplitude_multiplier": 0.5,
+      "amplitude_value": 0.027647,
+      "n_injected": 200,
+      "n_detected_99pct": 2,
+      "n_detected_95pct": 6,
+      "recovery_rate_99pct": 0.01,
+      "recovery_rate_95pct": 0.03,
+      "mean_injected_score": 0.586553,
+      "max_injected_score": 0.817344,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 68,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0294,
+          "mean_score": 0.60237
+        },
+        "cold_spot": {
+          "n": 74,
+          "recovery_99": 0.027,
+          "recovery_95": 0.0541,
+          "mean_score": 0.614155
+        },
+        "edge_feature": {
+          "n": 58,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.532792
+        }
+      }
+    },
+    "1.0": {
+      "amplitude_multiplier": 1.0,
+      "amplitude_value": 0.055294,
+      "n_injected": 200,
+      "n_detected_99pct": 2,
+      "n_detected_95pct": 7,
+      "recovery_rate_99pct": 0.01,
+      "recovery_rate_95pct": 0.035,
+      "mean_injected_score": 0.52869,
+      "max_injected_score": 0.783742,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 66,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0152,
+          "mean_score": 0.61605
+        },
+        "cold_spot": {
+          "n": 62,
+          "recovery_99": 0.0323,
+          "recovery_95": 0.0968,
+          "mean_score": 0.602507
+        },
+        "edge_feature": {
+          "n": 72,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.385045
+        }
+      }
+    },
+    "2.0": {
+      "amplitude_multiplier": 2.0,
+      "amplitude_value": 0.110589,
+      "n_injected": 200,
+      "n_detected_99pct": 0,
+      "n_detected_95pct": 3,
+      "recovery_rate_99pct": 0.0,
+      "recovery_rate_95pct": 0.015,
+      "mean_injected_score": 0.449335,
+      "max_injected_score": 0.756432,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 60,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0333,
+          "mean_score": 0.609894
+        },
+        "cold_spot": {
+          "n": 68,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0147,
+          "mean_score": 0.536893
+        },
+        "edge_feature": {
+          "n": 72,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.232841
+        }
+      }
+    },
+    "5.0": {
+      "amplitude_multiplier": 5.0,
+      "amplitude_value": 0.276472,
+      "n_injected": 200,
+      "n_detected_99pct": 0,
+      "n_detected_95pct": 1,
+      "recovery_rate_99pct": 0.0,
+      "recovery_rate_95pct": 0.005,
+      "mean_injected_score": 0.356439,
+      "max_injected_score": 0.724006,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 67,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0149,
+          "mean_score": 0.590557
+        },
+        "cold_spot": {
+          "n": 71,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.328623
+        },
+        "edge_feature": {
+          "n": 62,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.135293
+        }
+      }
+    },
+    "10.0": {
+      "amplitude_multiplier": 10.0,
+      "amplitude_value": 0.552945,
+      "n_injected": 200,
+      "n_detected_99pct": 0,
+      "n_detected_95pct": 0,
+      "recovery_rate_99pct": 0.0,
+      "recovery_rate_95pct": 0.0,
+      "mean_injected_score": 0.305229,
+      "max_injected_score": 0.708661,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 76,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.57467
+        },
+        "cold_spot": {
+          "n": 63,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.159551
+        },
+        "edge_feature": {
+          "n": 61,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.119986
+        }
+      }
+    },
+    "20.0": {
+      "amplitude_multiplier": 20.0,
+      "amplitude_value": 1.105889,
+      "n_injected": 200,
+      "n_detected_99pct": 0,
+      "n_detected_95pct": 0,
+      "recovery_rate_99pct": 0.0,
+      "recovery_rate_95pct": 0.0,
+      "mean_injected_score": 0.268048,
+      "max_injected_score": 0.684085,
+      "per_type": {
+        "gaussian_bump": {
+          "n": 74,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.569903
+        },
+        "cold_spot": {
+          "n": 79,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.077769
+        },
+        "edge_feature": {
+          "n": 47,
+          "recovery_99": 0.0,
+          "recovery_95": 0.0,
+          "mean_score": 0.11262
+        }
+      }
+    }
+  },
+  "train_time_s": 17.99,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 79.036333,
+      "dec": -61.348242,
+      "score": 0.817344,
+      "injection_type": "cold_spot",
+      "amplitude": 0.027647,
+      "detected": true
+    },
+    {
+      "rank": 2,
+      "ra": 132.617634,
+      "dec": -11.040757,
+      "score": 0.783742,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": true
+    },
+    {
+      "rank": 3,
+      "ra": 97.985147,
+      "dec": -70.845889,
+      "score": 0.774339,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": true
+    },
+    {
+      "rank": 4,
+      "ra": 177.039138,
+      "dec": 67.444681,
+      "score": 0.765717,
+      "injection_type": "cold_spot",
+      "amplitude": 0.027647,
+      "detected": true
+    },
+    {
+      "rank": 5,
+      "ra": 205.43975,
+      "dec": 80.084452,
+      "score": 0.756432,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.110589,
+      "detected": false
+    },
+    {
+      "rank": 6,
+      "ra": 261.142059,
+      "dec": 76.639356,
+      "score": 0.753275,
+      "injection_type": "cold_spot",
+      "amplitude": 0.110589,
+      "detected": false
+    },
+    {
+      "rank": 7,
+      "ra": 344.662623,
+      "dec": -50.908905,
+      "score": 0.753136,
+      "injection_type": "cold_spot",
+      "amplitude": 0.027647,
+      "detected": false
+    },
+    {
+      "rank": 8,
+      "ra": 144.433538,
+      "dec": 88.924313,
+      "score": 0.752442,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 9,
+      "ra": 8.499611,
+      "dec": -67.905329,
+      "score": 0.747034,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 10,
+      "ra": 318.102791,
+      "dec": 72.24075,
+      "score": 0.737407,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.110589,
+      "detected": false
+    },
+    {
+      "rank": 11,
+      "ra": 212.160506,
+      "dec": 46.75467,
+      "score": 0.724006,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.276472,
+      "detected": false
+    },
+    {
+      "rank": 12,
+      "ra": 275.113942,
+      "dec": 4.357975,
+      "score": 0.723987,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 13,
+      "ra": 126.42838,
+      "dec": 17.051746,
+      "score": 0.723881,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 14,
+      "ra": 286.270374,
+      "dec": -33.174149,
+      "score": 0.723732,
+      "injection_type": "cold_spot",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 15,
+      "ra": 48.82246,
+      "dec": -1.959836,
+      "score": 0.723682,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.027647,
+      "detected": false
+    },
+    {
+      "rank": 16,
+      "ra": 218.807063,
+      "dec": 45.471193,
+      "score": 0.722361,
+      "injection_type": "cold_spot",
+      "amplitude": 0.027647,
+      "detected": false
+    },
+    {
+      "rank": 17,
+      "ra": 138.900202,
+      "dec": 62.732944,
+      "score": 0.721514,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.027647,
+      "detected": false
+    },
+    {
+      "rank": 18,
+      "ra": 356.295837,
+      "dec": -1.866824,
+      "score": 0.719319,
+      "injection_type": "edge_feature",
+      "amplitude": 0.027647,
+      "detected": false
+    },
+    {
+      "rank": 19,
+      "ra": 321.857557,
+      "dec": 77.367698,
+      "score": 0.717723,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.055294,
+      "detected": false
+    },
+    {
+      "rank": 20,
+      "ra": 43.791454,
+      "dec": 79.918395,
+      "score": 0.714806,
+      "injection_type": "gaussian_bump",
+      "amplitude": 0.055294,
+      "detected": false
+    }
+  ]
+}

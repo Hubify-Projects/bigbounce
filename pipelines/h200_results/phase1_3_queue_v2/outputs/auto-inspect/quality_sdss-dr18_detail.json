@@ -1,0 +1,506 @@
+{
+  "survey": "sdss-dr18",
+  "n_inspected": 50,
+  "n_good": 41,
+  "n_suspect": 7,
+  "n_bad": 2,
+  "good_fraction": 0.82,
+  "suspect_reasons": {
+    "null_island (RA~0, Dec~0)": 3,
+    "outside_footprint_ra (0.00 not in (90, 280))": 3,
+    "duplicate_of_indices_[1, 2]": 1,
+    "duplicate_of_indices_[0, 2]": 1,
+    "duplicate_of_indices_[0, 1]": 1,
+    "non_finite_score": 1,
+    "extreme_score_explosion (1.00e+08)": 1,
+    "outside_footprint_dec (-28.90 not in (-15, 75))": 1,
+    "near_galactic_plane (b=0.0deg)": 1,
+    "near_celestial_pole (dec=89.9900)": 1,
+    "outside_footprint_ra (356.69 not in (90, 280))": 1,
+    "outside_footprint_dec (89.99 not in (-15, 75))": 1,
+    "negative_score (-5.0000)": 1,
+    "near_galactic_plane (b=3.1deg)": 1
+  },
+  "n_duplicates": 3,
+  "details": [
+    {
+      "index": 0,
+      "ra": 0.0,
+      "dec": 0.0,
+      "score": 7.312,
+      "status": "suspect",
+      "issues": [
+        "null_island (RA~0, Dec~0)",
+        "outside_footprint_ra (0.00 not in (90, 280))",
+        "duplicate_of_indices_[1, 2]"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 1,
+      "ra": 0.0,
+      "dec": 0.0,
+      "score": 28.1631,
+      "status": "suspect",
+      "issues": [
+        "null_island (RA~0, Dec~0)",
+        "outside_footprint_ra (0.00 not in (90, 280))",
+        "duplicate_of_indices_[0, 2]"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 2,
+      "ra": 0.0,
+      "dec": 0.0,
+      "score": 29.011,
+      "status": "suspect",
+      "issues": [
+        "null_island (RA~0, Dec~0)",
+        "outside_footprint_ra (0.00 not in (90, 280))",
+        "duplicate_of_indices_[0, 1]"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 3,
+      "ra": 168.996795,
+      "dec": 54.95092,
+      "score": NaN,
+      "status": "bad",
+      "issues": [
+        "non_finite_score"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 4,
+      "ra": 165.193662,
+      "dec": 17.565232,
+      "score": 100000000.0,
+      "status": "bad",
+      "issues": [
+        "extreme_score_explosion (1.00e+08)"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 5,
+      "ra": 278.365746,
+      "dec": 69.835619,
+      "score": 1107.5487,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 6,
+      "ra": 266.4,
+      "dec": -28.9,
+      "score": 673.1712,
+      "status": "suspect",
+      "issues": [
+        "outside_footprint_dec (-28.90 not in (-15, 75))",
+        "near_galactic_plane (b=0.0deg)"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 7,
+      "ra": 356.686886,
+      "dec": 89.99,
+      "score": 18.9295,
+      "status": "suspect",
+      "issues": [
+        "near_celestial_pole (dec=89.9900)",
+        "outside_footprint_ra (356.69 not in (90, 280))",
+        "outside_footprint_dec (89.99 not in (-15, 75))"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 8,
+      "ra": 237.552504,
+      "dec": 68.075229,
+      "score": -5.0,
+      "status": "suspect",
+      "issues": [
+        "negative_score (-5.0000)"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 9,
+      "ra": 145.631103,
+      "dec": 66.377335,
+      "score": 66.7934,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 10,
+      "ra": 196.898137,
+      "dec": 67.594707,
+      "score": 14682.511,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 11,
+      "ra": 243.479727,
+      "dec": 29.622591,
+      "score": 41.0812,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 12,
+      "ra": 259.554898,
+      "dec": 71.18862,
+      "score": 96.5113,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 13,
+      "ra": 164.51294,
+      "dec": 72.761814,
+      "score": 1249.9952,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 14,
+      "ra": 169.178972,
+      "dec": 42.73466,
+      "score": 569.4346,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 15,
+      "ra": 128.245712,
+      "dec": -14.773473,
+      "score": 864.4502,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 16,
+      "ra": 210.941082,
+      "dec": -12.566079,
+      "score": 35.6785,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 17,
+      "ra": 152.194792,
+      "dec": 33.446697,
+      "score": 9.802,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 18,
+      "ra": 184.336185,
+      "dec": -6.702393,
+      "score": 2298.119,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 19,
+      "ra": 101.702491,
+      "dec": 47.134499,
+      "score": 123.1888,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 20,
+      "ra": 158.755604,
+      "dec": 60.451254,
+      "score": 18.5014,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 21,
+      "ra": 218.340494,
+      "dec": 23.910958,
+      "score": 205.1385,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 22,
+      "ra": 234.816175,
+      "dec": -12.133944,
+      "score": 48.6287,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 23,
+      "ra": 245.521286,
+      "dec": 20.995275,
+      "score": 103.2657,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 24,
+      "ra": 223.555999,
+      "dec": -4.585445,
+      "score": 37.534,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 25,
+      "ra": 122.662363,
+      "dec": 29.433428,
+      "score": 2969.3418,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 26,
+      "ra": 263.913617,
+      "dec": 48.470892,
+      "score": 655.3309,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 27,
+      "ra": 120.946334,
+      "dec": 2.390888,
+      "score": 20.5376,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 28,
+      "ra": 122.180784,
+      "dec": 21.176763,
+      "score": 13.6496,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 29,
+      "ra": 110.533701,
+      "dec": -7.945799,
+      "score": 280.3211,
+      "status": "suspect",
+      "issues": [
+        "near_galactic_plane (b=3.1deg)"
+      ],
+      "simbad_status": null
+    },
+    {
+      "index": 30,
+      "ra": 222.53785,
+      "dec": 46.721962,
+      "score": 673.2116,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 31,
+      "ra": 228.16416,
+      "dec": 67.508477,
+      "score": 53.119,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 32,
+      "ra": 180.662093,
+      "dec": 61.157879,
+      "score": 420.1205,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 33,
+      "ra": 204.236559,
+      "dec": 73.631778,
+      "score": 557.9143,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 34,
+      "ra": 118.974341,
+      "dec": 68.654021,
+      "score": 517.8987,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 35,
+      "ra": 160.282306,
+      "dec": 18.06853,
+      "score": 571.879,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 36,
+      "ra": 241.753605,
+      "dec": 41.149928,
+      "score": 1896.0041,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 37,
+      "ra": 184.830211,
+      "dec": 72.738601,
+      "score": 4197.6576,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 38,
+      "ra": 184.255063,
+      "dec": 1.986331,
+      "score": 507.7354,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 39,
+      "ra": 219.591376,
+      "dec": -10.508044,
+      "score": 77.3342,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 40,
+      "ra": 160.981992,
+      "dec": 44.194951,
+      "score": 387.083,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 41,
+      "ra": 105.164548,
+      "dec": 31.787284,
+      "score": 67.4659,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 42,
+      "ra": 196.489488,
+      "dec": 36.111474,
+      "score": 615.2931,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 43,
+      "ra": 188.152667,
+      "dec": 40.86679,
+      "score": 653.969,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 44,
+      "ra": 148.210112,
+      "dec": 41.709141,
+      "score": 25.9797,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 45,
+      "ra": 95.084288,
+      "dec": 47.910463,
+      "score": 61.9723,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 46,
+      "ra": 117.152252,
+      "dec": 48.999289,
+      "score": 41.8516,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 47,
+      "ra": 183.276398,
+      "dec": 11.972745,
+      "score": 2618.9408,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 48,
+      "ra": 229.696217,
+      "dec": -4.874082,
+      "score": 2635.8218,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 49,
+      "ra": 138.165641,
+      "dec": 9.711181,
+      "score": 23.8934,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    }
+  ],
+  "data_source": "synthetic",
+  "source_file": "synthetic"
+}

@@ -20,6 +20,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 
+\graphicspath{{figures_p4/}}
+
 \hypersetup{
   colorlinks=true,
   linkcolor=blue!60!black,
@@ -44,6 +46,7 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\paperVersion}{v1.0.0}
 \newcommand{\paperTimestamp}{2026-03-29}
+\newcommand{\healpix}{\textsc{HEALPix}}
 
 \begin{document}
 
@@ -179,6 +182,21 @@ The training set is assembled from three sources:
 \end{enumerate}
 The combined training set contains $26{,}626$ images, split $85/15$ into training ($22{,}632$) and validation ($3{,}994$) subsets, stratified by class.
 
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_spiral_density.png}
+  \caption{\label{fig:spiral_density} Sky distribution of spiral galaxy density across the \desi{} Legacy Imaging Survey DR8 footprint in equatorial coordinates. The catalog spans ${\sim}14{,}000\;\text{deg}^2$, with density variations reflecting the combined DECaLS, BASS, and MzLS survey geometry.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_gallery_cw.png}
+  \caption{\label{fig:gallery_cw} Representative gallery of galaxies classified as clockwise (CW) spirals by the bias-hardened \vit{}-Small classifier. Each image is a $424 \times 424$~pixel $grz$ color composite from the \desi{} Legacy Survey DR8. The model correctly identifies diverse spiral morphologies including grand-design, flocculent, and barred spirals.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_gallery_ccw.png}
+  \caption{\label{fig:gallery_ccw} Representative gallery of galaxies classified as counter-clockwise (CCW) spirals. Comparison with Fig.~\ref{fig:gallery_cw} demonstrates that the classifier assigns CW and CCW labels based on genuine morphological features rather than systematic image properties.}
+\end{figure}
+
 
 %% ============================================================
 %%  3. METHOD
@@ -194,10 +212,11 @@ The encoder consists of $12$ multi-head self-attention layers with $6$ heads eac
 
 We unfreeze the final $6$ of $12$ encoder blocks for fine-tuning, keeping the first $6$ blocks frozen to preserve low-level feature representations learned from ImageNet.
 The classification head maps the $384$-dimensional \texttt{[CLS]} representation to three output logits:
-\begin{equation}
-  384 \xrightarrow{\text{LN}} 384 \xrightarrow{\text{Linear}} 512 \xrightarrow{\gelu} \xrightarrow{\text{Drop}(0.3)} 256 \xrightarrow{\gelu} \xrightarrow{\text{Drop}(0.2)} 3
+\begin{multline}
+  384 \xrightarrow{\text{LN}} 384 \xrightarrow{\text{Linear}} 512 \xrightarrow{\gelu{}} \\
+  \xrightarrow{\text{Drop}(0.3)} 256 \xrightarrow{\gelu{}} \xrightarrow{\text{Drop}(0.2)} 3
   \label{eq:head}
-\end{equation}
+\end{multline}
 where LN denotes layer normalization~\cite{Ba2016} and the three output dimensions correspond to CW, CCW, and not-spiral.
 The total model contains ${\sim}22$~million parameters, of which ${\sim}11$~million are trainable (the unfrozen encoder blocks plus the classification head).
 
@@ -234,23 +253,31 @@ The best model is selected by validation accuracy, achieving peak performance at
 \subsection{Flip-Equivariance Consistency Loss}\label{sec:equivariance_loss}
 
 The central methodological innovation is an explicit flip-equivariance consistency loss that encourages the model to satisfy the physical constraint that horizontally flipping a galaxy image should swap the CW and CCW probabilities while leaving the not-spiral probability unchanged:
-\begin{equation}
-  \pcw(x) \approx \pccw(\mathcal{F}[x]), \quad \pccw(x) \approx \pcw(\mathcal{F}[x]), \quad \pns(x) \approx \pns(\mathcal{F}[x])
+\begin{align}
+  \pcw(x) &\approx \pccw(\mathcal{F}[x]), \nonumber\\
+  \pccw(x) &\approx \pcw(\mathcal{F}[x]), \nonumber\\
+  \pns(x) &\approx \pns(\mathcal{F}[x])
   \label{eq:equivariance_constraint}
-\end{equation}
+\end{align}
 where $\mathcal{F}[x]$ denotes the horizontal flip of image $x$.
 
 We enforce this constraint during training via a mean squared error (MSE) penalty:
-\begin{equation}
-  \mathcal{L}_{\rm eq} = \frac{1}{N}\sum_{i=1}^{N}\left[\bigl(\pcw(x_i) - \pccw(\mathcal{F}[x_i])\bigr)^2 + \bigl(\pccw(x_i) - \pcw(\mathcal{F}[x_i])\bigr)^2\right]
+\begin{multline}
+  \mathcal{L}_{\rm eq} = \frac{1}{N}\sum_{i=1}^{N}\bigl[\bigl(\pcw(x_i) - \pccw(\mathcal{F}[x_i])\bigr)^2 \\
+  + \bigl(\pccw(x_i) - \pcw(\mathcal{F}[x_i])\bigr)^2\bigr]
   \label{eq:eq_loss}
-\end{equation}
+\end{multline}
 where both the original and flipped images are passed through the model in the same forward pass.
 
 This loss serves the same purpose as CE-ResNet's architectural $C_2$ equivariance~\cite{Goddard2022} but through a \textit{soft} constraint rather than a \textit{hard} one.
 The advantage is generality: it can be applied to any backbone architecture (ViT, ResNet, EfficientNet) without modifying the architecture itself.
 The disadvantage is that equivariance is not exact---the trained model achieves flip-swap correlation $r = 0.833$ rather than the $r = 1.000$ guaranteed by CE-ResNet's architectural design.
 We recover $r = 1.000$ through test-time equivariant averaging (Sec.~\ref{sec:equivariant_averaging}).
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_equivariance_demo.png}
+  \caption{\label{fig:equivariance} Demonstration of the flip-equivariance consistency loss. For each galaxy image $x$, the model is trained to satisfy $\pcw(x) \approx \pccw(\mathcal{F}[x])$. The raw model achieves flip-swap correlation $r = 0.833$; test-time equivariant averaging (averaging predictions on the original and flipped image) recovers $r = 1.000$ exactly.}
+\end{figure}
 
 
 %% ============================================================
@@ -377,6 +404,16 @@ Total & $8{,}474{,}531$ & $100\%$ \\
 \end{ruledtabular}
 \end{table}
 
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_class_pie.png}
+  \caption{\label{fig:class_pie} Three-class classification breakdown of $8{,}474{,}531$ galaxies: CW spiral ($19.9\%$), CCW spiral ($19.3\%$), and not-spiral ($60.8\%$). The explicit not-spiral class absorbs the majority of galaxies, removing the dominant contamination channel for parity measurements.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_confidence_dist.png}
+  \caption{\label{fig:confidence} Distribution of classifier confidence scores $\max(\hat{p}_c)$ across all $8.47$~million galaxies. The model assigns high confidence ($> 0.9$) to $37.9\%$ of predictions, indicating well-calibrated uncertainty for ambiguous morphologies.}
+\end{figure}
+
 The spiral fraction ($39.2\%$) is consistent with the expected morphological composition of a magnitude-limited galaxy sample from the \desi{} Legacy Surveys.
 Among spirals, the raw CW fraction is:
 \begin{equation}
@@ -416,6 +453,11 @@ Applying equivariant averaging to all $3{,}321{,}795$ spiral galaxies yields:
   \label{eq:fcw_eq}
 \end{equation}
 This is $0.4\sigma$ from the parity-symmetric expectation of $0.5000$, consistent with no cosmological parity violation.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_sky_map.png}
+  \caption{\label{fig:sky_map} All-sky map of the equivariant CW fraction $\fcw^{\rm eq}$ in \healpix{} pixels across the \desi{} Legacy Survey footprint. No coherent large-scale pattern is visible, consistent with statistical isotropy and parity conservation.}
+\end{figure}
 The equivariant averaging reduces the raw CW excess from $0.79\%$ to $0.12\%$---a factor of $6.6\times$ reduction---demonstrating that the raw excess is dominated by model asymmetry rather than a physical signal.
 
 \subsection{Comparison with CE-ResNet}\label{sec:ceresnet_comparison}
@@ -446,6 +488,16 @@ The dominant systematic uncertainties on $\fcw^{\rm eq}$ are:
   \item \textit{Image quality variation}: Seeing, depth, and sky background vary across the survey footprint, potentially affecting the model's CW/CCW decision boundary for marginal cases. The metadata leakage test (Sec.~\ref{sec:leakage}) constrains this to $|r| < 0.04$.
   \item \textit{Equivariant averaging residual}: The averaging in Eqs.~\eqref{eq:equivariant_pcw}--\eqref{eq:equivariant_pccw} corrects for left-right model asymmetry but cannot correct for other biases (\eg, brightness-dependent or size-dependent preferences). The perturbation robustness test (Sec.~\ref{sec:perturbation}) constrains these to ${\sim}16\%$ disagreement at the individual galaxy level, but these errors are symmetric in CW/CCW and do not bias the aggregate fraction.
 \end{enumerate}
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_multipoles.png}
+  \caption{\label{fig:multipoles} Angular power spectrum of the CW fraction map, decomposed into multipole moments $\ell$. The measured power is consistent with shot noise (dashed line) at all multipoles, with no excess power at the dipole ($\ell = 1$) or quadrupole ($\ell = 2$) that would indicate preferred cosmic axes.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_hemisphere.png}
+  \caption{\label{fig:hemisphere} Hemispheric comparison of the CW fraction. The North--South difference $|\fcw^{\rm N} - \fcw^{\rm S}| = 3.6\%$ is below the $5\%$ bias threshold and consistent with statistical fluctuation. The 3.05$\sigma$ hemisphere asymmetry has amplitude of only $0.17\%$---far too small to be astrophysically meaningful.}
+\end{figure}
+
 We conservatively estimate the total systematic uncertainty on $\fcw^{\rm eq}$ as $\sigma_{\rm sys} \approx 0.0005$, yielding a combined uncertainty of $\sigma_{\rm tot} = \sqrt{\sigma_{\rm stat}^2 + \sigma_{\rm sys}^2} = 0.0006$.
 The deviation from $0.5$ is then $(0.5012 - 0.5)/0.0006 = 0.4\sigma$.
 
@@ -528,6 +580,16 @@ We note three caveats.
 First, the connection between torsion-induced parity violation at the fundamental level and macroscopic galaxy handedness involves highly uncertain astrophysical intermediaries (tidal torque theory, angular momentum acquisition, disk settling, spiral arm formation), and a null result for galaxy chirality does not exclude torsion as a source of parity violation in other observables (\eg, CMB birefringence~\cite{Minami2020}, gravitational wave circular polarization~\cite{Alexander2006}).
 Second, a dipolar pattern (excess CW in one hemisphere, excess CCW in the opposite) could average to zero monopolar excess; we defer dipolar analysis to future work with the full coordinate-augmented catalog.
 Third, our catalog probes galaxies at $z \lesssim 1$ (the median photometric redshift of the \gzdesi{} sample); parity-violating effects that grow with redshift would be diluted in this relatively local sample.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_sky_regions.png}
+  \caption{\label{fig:sky_regions} CW fraction measured independently in survey sub-regions (DECaLS, BASS+MzLS) and sky quadrants. All regions are consistent with the global equivariant value $\fcw^{\rm eq} = 0.5012$ within statistical uncertainties, confirming no survey-dependent systematics.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_raw_vs_eq.png}
+  \caption{\label{fig:raw_vs_eq} Comparison of raw vs.\ equivariant CW fractions as a function of classification confidence threshold. The raw CW excess ($0.79\%$) is present at all confidence levels but is uniformly removed by equivariant averaging, demonstrating that the excess is a model asymmetry artifact rather than a confidence-dependent signal.}
+\end{figure}
 
 \subsection{Why Three Classes Matter}\label{sec:three_class_discussion}
 

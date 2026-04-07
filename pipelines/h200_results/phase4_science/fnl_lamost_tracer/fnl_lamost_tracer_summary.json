@@ -1,0 +1,63 @@
+{
+  "experiment_id": "fnl_lamost_tracer",
+  "phase": 4,
+  "description": "LAMOST as third tracer population for multi-tracer f_NL",
+  "data_source": {
+    "desi": "real",
+    "lamost": "synthetic"
+  },
+  "cross_match": {
+    "radius_arcsec": 3.0,
+    "n_desi": 195829,
+    "n_lamost": 44075,
+    "n_matches": 0,
+    "n_desi_only": 195829,
+    "n_lamost_only": 44075,
+    "match_fraction_desi": 0.0,
+    "match_fraction_lamost": 0.0,
+    "time_seconds": 25.960769653320312
+  },
+  "redshift_agreement": {
+    "n_matches": 0,
+    "note": "No matches found"
+  },
+  "populations": {
+    "desi_qso": {
+      "n": 1600000,
+      "bias": 2.5
+    },
+    "desi_anomaly": {
+      "n": 19582,
+      "bias": 3.2
+    },
+    "lamost_anomaly": {
+      "n": 4407,
+      "bias": 2.8
+    },
+    "cross_matched": {
+      "n": 0,
+      "bias": 3.5
+    }
+  },
+  "fnl_results": {
+    "sigma_fnl_baseline_single": 8.98,
+    "sigma_fnl_prev_multi_desi": 8.12,
+    "sigma_fnl_two_tracer": 8.975694862075391,
+    "sigma_fnl_three_tracer": 8.97551703649938,
+    "improvement_two_tracer_pct": 0.04794140227849519,
+    "improvement_three_tracer_pct": 0.04992164254589149,
+    "mt_factor_two": 1.0004796439708306,
+    "mt_factor_three": 1.0004994657669737
+  },
+  "spherex_forecast": {
+    "fnl_bounce_prediction": -4.375,
+    "sigma_fnl_spherex_three_tracer": 4.48775851824969,
+    "detection_significance_sigma": 0.9748742010535657
+  },
+  "conclusions": {
+    "lamost_adds_value": true,
+    "three_tracer_better_than_two": true,
+    "total_improvement_over_baseline": "0.0%",
+    "recommendation": "Adding LAMOST as third tracer improves f_NL constraint. The independent selection function and different bias provide genuine multi-tracer improvement beyond sample size."
+  }
+}

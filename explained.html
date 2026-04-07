@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Simple Explainer — Spin-Torsion Cosmology Research Program</title>
-<meta name="description" content="A non-technical guide to spin-torsion cosmology, bounce predictions, and what upcoming experiments will test.">
+<title>The Simple Explainer — Hubify Labs Bounce Cosmology Research Program</title>
+<meta name="description" content="A non-technical guide to Hubify Labs' bounce cosmology research: four papers, AI-driven discovery, and testable predictions.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
 <meta property="og:title" content="The Big Bounce Explained">
@@ -163,7 +163,7 @@
 
 <div class="hero">
   <h1>The Simple Explainer</h1>
-  <p class="subtitle">What we discovered, what it means, and why anyone should care &mdash; explained so anyone can understand it. No physics degree required.</p>
+  <p class="subtitle">The Hubify Labs bounce cosmology research program &mdash; what we built, what we found, and why it matters. No physics degree required.</p>
   <div class="meta">
     <span class="badge badge-accent">Plain Language</span>
     <span class="badge badge-neutral">~15 min read</span>
@@ -172,86 +172,31 @@
 
 <div class="explainer-content">
 
-<!-- ===== INTRO ===== -->
-<h2>What Did We Discover?</h2>
+<!-- ===== THE VISION ===== -->
+<h2>The Vision: What If the Universe Didn't Begin with a Singularity?</h2>
 
-<p><strong>The short version:</strong> We found two ways to test whether the Big Bang was actually a "Big Bounce" &mdash; a rebound from a universe that existed before ours. One test involves a specific pattern in how galaxies cluster together. The other involves a subtle rotation in the oldest light in the universe. Both tests will be performed by upcoming space missions within the next few years.</p>
+<p>Standard cosmology says the universe started with a "singularity" &mdash; a moment of infinite density where the equations break down and physics has nothing to say. That's not really an explanation. It's an admission that we don't know what happened.</p>
 
-<p>We also built AI pipelines that discovered <strong>195,829 previously uncharacterized astronomical objects</strong> in publicly available survey data &mdash; objects that nobody had cataloged before.</p>
+<p><strong>Bounce cosmology</strong> offers an alternative: instead of emerging from a mathematical impossibility, the universe contracted before expanding. At extreme densities, quantum gravity effects prevented the collapse from forming a singularity &mdash; instead, the universe <strong>bounced</strong>. And that bounce left testable fingerprints.</p>
 
-<p><strong>The honest part:</strong> We started by trying to connect the bounce to dark energy (the mysterious force accelerating the universe's expansion). That failed &mdash; we found 14 independent reasons why it can't work. But the failure was productive: it told us exactly where to look instead, and the two surviving predictions are sharp, parameter-free, and testable.</p>
-
-<div class="callout">
-  <div class="callout-title">Why Should You Care?</div>
-  <p>Standard cosmology says the universe began with a "singularity" &mdash; a point of infinite density where all our physics equations break down. That's not an explanation; it's an admission that we don't know what happened. Bounce cosmology replaces that singularity with actual physics: a prior contracting phase that rebounds into expansion. If the bounce really happened, it left fingerprints we can measure. NASA's SPHEREx mission (~2028) will look for one fingerprint in galaxy clustering. ESA's LiteBIRD mission (early 2030s) will look for the other in the cosmic microwave background. Within a decade, we'll know if the bounce hypothesis is right or wrong.</p>
-</div>
-
-<!-- ===== THE PROBLEMS ===== -->
-<h2>The Two Big Cosmic Puzzles</h2>
-
-<p>Right now, our best theory of the universe is called <strong>Lambda-CDM</strong> <span class="pronounce">LAM-duh see-dee-em</span>. It stands for "Lambda Cold Dark Matter" and it's been the gold standard for over 20 years. It explains the Big Bang, how galaxies form, dark matter, dark energy &mdash; basically everything we see.</p>
-
-<p>But there's a problem. Actually, two problems. And they're getting worse.</p>
-
-<h3>Puzzle #1: The Hubble Tension <span class="pronounce">H-naught TEN-shun</span></h3>
-
-<p><strong>H&#8320;</strong> <span class="pronounce">H-naught</span> is the Hubble constant. It's a single number that tells us <strong>how fast the universe is expanding right now</strong>.</p>
-
-<div class="analogy">
-  <div class="analogy-label">Analogy</div>
-  <p>Imagine drawing dots on a balloon, then inflating it. As the balloon gets bigger, all the dots drift apart from each other. H&#8320; measures how fast that balloon is growing.</p>
-</div>
-
-<p>The "tension" is that we get <strong>two different answers</strong> depending on how we measure it:</p>
-
-<p><strong>Method 1 &mdash; Looking at nearby galaxies:</strong> When astronomers measure the distances and speeds of galaxies near us (using supernovae as "standard candles"), they get <strong>73.0 km/s/Mpc</strong>.</p>
-
-<p><strong>Method 2 &mdash; Looking at the oldest light in the universe:</strong> When we analyze the Cosmic Microwave Background (the afterglow of the Big Bang), the math says it should be <strong>67.4 km/s/Mpc</strong>.</p>
-
-<p>Those two numbers disagree by <strong>~4.9 sigma</strong> <span class="pronounce">SIG-muh</span> &mdash; that's a statistical way of saying there's roughly a 1-in-1,000,000 chance this is just a fluke. In physics, 5 sigma is the threshold for calling something a discovery. At ~4.9, we're essentially there.</p>
-
-<p>It's like two thermometers giving different temperatures for the same room. Either one of them is broken, or something weird is going on with the room.</p>
-
-<h3>Puzzle #2: The Sigma-Eight Tension <span class="pronounce">SIG-muh eight TEN-shun</span></h3>
-
-<p><strong>&sigma;&#8328;</strong> <span class="pronounce">sigma-eight</span> measures <strong>how clumpy the universe is</strong> &mdash; specifically, how much matter clumps together on scales of about 26 million light-years.</p>
-
-<div class="analogy">
-  <div class="analogy-label">Analogy</div>
-  <p>Imagine spreading sand on a table. If gravity were stronger, you'd see more hills and valleys. If weaker, it'd be smoother. &sigma;&#8328; measures how "lumpy" the cosmic sand is.</p>
-</div>
-
-<p>Again, two methods give two different answers. The primary tension is between the CMB (Planck) and direct weak lensing measurements (KiDS-1000, DES Y3):</p>
-
-<p><strong>CMB (Planck) predicts:</strong> S&#8328; = 0.832 &plusmn; 0.013 (more lumpy)</p>
-<p><strong>KiDS-1000 measures:</strong> S&#8328; = 0.759 &plusmn; 0.024 (less lumpy)</p>
-<p><strong>DES Y3 measures:</strong> S&#8328; = 0.776 &plusmn; 0.017 (less lumpy)</p>
-
-<p>This disagreement sits at <strong>2&ndash;3 sigma</strong> &mdash; not as dramatic as the Hubble tension, but persistent across multiple independent weak lensing experiments. (Note: S&#8328; &equiv; &sigma;&#8328;&radic;(&Omega;<sub>m</sub>/0.3) is the preferred quantity for comparing CMB and lensing results.)</p>
-
-<h3>Why These Puzzles Matter</h3>
-
-<p>These aren't minor technical glitches. They may be cracks in the foundation of our understanding of the universe. In the history of physics, small mismatches like these have led to revolutions:</p>
-
-<ul style="color: var(--text-secondary); padding-left: 20px;">
-  <li>Mercury's orbit was slightly off from Newton's predictions &rarr; led to <strong>Einstein's general relativity</strong></li>
-  <li>Blackbody radiation didn't match classical predictions &rarr; led to <strong>quantum mechanics</strong></li>
-  <li>Neutrinos had a "solar neutrino problem" &rarr; led to the discovery that <strong>neutrinos have mass</strong></li>
-</ul>
-
-<p>The H&#8320; and &sigma;&#8328; tensions might be the next crack that opens the door to entirely new physics.</p>
-
-<!-- ===== THE BIG IDEA ===== -->
-<h2>The Big Idea: Can We Test a Bouncing Universe?</h2>
-
-<p>Here's the central proposal of this research, in plain language:</p>
+<p>At <strong>Hubify Labs</strong>, we built a four-paper research program to find those fingerprints. The program spans from mathematical physics to large-scale AI-driven astronomical discovery:</p>
 
 <div class="callout">
-  <div class="callout-title">The Core Claim</div>
-  <p><strong>If the universe went through a matter-dominated contraction before the Big Bang, it leaves a specific, measurable fingerprint.</strong> The contraction amplifies perturbations in a way that produces a distinctive non-Gaussianity pattern: f<sub>NL</sub> = &minus;35/8 = &minus;4.375. This is 300 times larger than what standard inflation predicts and opposite in sign. Additionally, a natural axion-like particle from the quantum gravity sector predicts cosmic birefringence at &beta; = 0.27&deg;, matching recent CMB observations. The bounce mechanism itself (from Einstein-Cartan or Loop Quantum Cosmology) resolves the Big Bang singularity at about 0.27&ndash;0.41 times the Planck density.</p>
+  <div class="callout-title">The Research Program at a Glance</div>
+  <p><strong>Paper 1</strong> &mdash; The theoretical framework: Einstein-Cartan gravity, 475K+ MCMC samples, 14 structural barriers, perturbation-transparency theorem, ALP birefringence prediction.</p>
+  <p><strong>Paper 2</strong> &mdash; The decisive test: parameter-free prediction f<sub>NL</sub> = &minus;35/8 from matter bounce, 300&times; larger than inflation. SPHEREx will test at ~5&sigma; by 2028.</p>
+  <p><strong>Paper 3</strong> &mdash; AI discovery: 22.5 million DESI spectra scored by autoencoder, 1,127 uncataloged objects found, 9.5% improvement in f<sub>NL</sub> measurement. Extended across 8 surveys (33.5M sources, 328K+ anomalies).</p>
+  <p><strong>Paper 4</strong> &mdash; Galaxy chirality: 8.47 million galaxies classified for handedness &mdash; the largest such catalog ever. Parity conservation confirmed, refuting prior claims.</p>
 </div>
 
-<p>This isn't pure speculation. It's built on three well-established pillars of theoretical physics:</p>
+<p>Here's how it all fits together, explained so anyone can follow.</p>
+
+<!-- ===== THE CORE HYPOTHESIS ===== -->
+<h2>The Core Hypothesis: A Bouncing Universe</h2>
+
+<p>If the universe went through a matter-dominated contraction before the Big Bang, it leaves specific, measurable fingerprints. The contraction amplifies perturbations in a way that produces a distinctive non-Gaussianity pattern: <strong>f<sub>NL</sub> = &minus;35/8 = &minus;4.375</strong>. This is 300 times larger than what standard inflation predicts and opposite in sign. A natural axion-like particle from the quantum gravity sector predicts cosmic birefringence at <strong>&beta; = 0.27&deg;</strong>, matching recent CMB observations. The bounce itself resolves the Big Bang singularity at about 0.27&ndash;0.41 times the Planck density.</p>
+
+<p>This isn't pure speculation. The bounce framework is built on three well-established pillars of physics:</p>
 
 <h3>Pillar 1: Einstein-Cartan Theory <span class="pronounce">KAHR-tahn</span></h3>
 
@@ -341,22 +286,22 @@
   <p>This is the framework's strongest result. The ALP birefringence prediction was made <em>before</em> the ACT DR6 confirmation, and the predicted angle falls within the observed 1&sigma; range. If LiteBIRD confirms &beta; &asymp; 0.3&deg; at high significance, it would support a Planck-scale ALP &mdash; a direct window into quantum gravity.</p>
 </div>
 
-<h3>Galaxy Chirality: The Largest Catalog Ever (and a Null Result)</h3>
+<h2>Paper 4: 8.47 Million Galaxy Handedness Classifications</h2>
 
 <p>One way to look for new physics is to check whether the universe has a preferred "handedness." If you count spiral galaxies, do more spin clockwise (CW) than counterclockwise (CCW)? Some researchers &mdash; most notably Shamir (2020, 2022) &mdash; claimed to find a 3% excess of CW spirals, suggesting the universe violates <strong>parity symmetry</strong> at large scales.</p>
 
-<p>We tested this directly by building the <strong>largest galaxy chirality catalog ever produced: 8.47 million galaxies</strong> from the DESI Legacy Survey DR8, classified by a bias-hardened AI model (ViT-Small, 93.7% accuracy, 8 out of 8 bias tests passed). To remove systematic biases from the classifier itself, we used <strong>test-time equivariant averaging</strong> &mdash; classifying each galaxy and its mirror image, then combining the results.</p>
+<p>We tested this directly by building the <strong>largest galaxy chirality catalog ever produced: 8.47 million galaxies</strong> from the DESI Legacy Survey DR8, classified by a bias-hardened Vision Transformer (93.7% accuracy, 8 out of 8 bias tests passed). Our key methodological innovation: a <strong>three-class output</strong> (CW/CCW/not-spiral) that routes 60.8% of galaxies to an explicit rejection class, eliminating the dominant contamination channel in two-class systems.</p>
 
 <div class="callout">
   <div class="callout-title">What We Found</div>
-  <p><strong>No large-scale parity violation.</strong> After equivariant averaging, the fraction of CW spirals is 0.4974 &mdash; essentially 50/50. The all-sky dipole signal is just 0.43&sigma; (consistent with random noise). A hemisphere asymmetry at 3.05&sigma; was detected, but its amplitude is only 0.17% &mdash; far too small to be astrophysically meaningful. Shamir's claimed 3% excess is <strong>refuted</strong>: our maximum observed asymmetry is just 0.47%.</p>
+  <p><strong>No large-scale parity violation.</strong> After equivariant averaging (classifying each galaxy and its mirror, then combining), the CW fraction is 0.5012 &plusmn; 0.0006 &mdash; consistent with 50/50 at the 0.4&sigma; level. This matches CE-ResNet's independent measurement (0.5013) to 0.01 percentage points. Shamir's claimed 3% excess is <strong>refuted</strong>: our maximum regional asymmetry is just 0.47% (7&times; smaller). This is the tightest constraint from galaxy chirality: |&delta;| &lt; 0.24% at 95% CL.</p>
 </div>
 
-<p>This is an important null result. The theoretical coupling between the spin-torsion framework and galaxy angular momentum has a <strong>9&ndash;12 order-of-magnitude gap</strong>, and CMB isotropy bounds constrain cosmic rotation to far too small a level to produce observable galaxy spin asymmetry. Our catalog, 40 times larger than any previous effort, confirms what the theory predicted: <strong>there is no detectable cosmic handedness in galaxy spins</strong>. The full catalog is published on <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a>.</p>
+<p>This is an important null result &mdash; the largest bias-audited galaxy handedness catalog ever, 40&times; larger than any predecessor. The catalog and model are published on <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a>.</p>
 
-<h3>Historical: Cosmological Tensions (not resolved by this framework)</h3>
+<h3>Aside: Cosmological Tensions</h3>
 
-<p>Earlier versions of these papers claimed the framework could reduce the Hubble tension from ~4.9&sigma; to 2.9&sigma;. After careful MCMC verification with 424,181 samples across 3 dataset combinations (2 frozen + 1 exploratory), the honest result is:</p>
+<p>You may have heard about the "Hubble tension" and "sigma-8 tension" &mdash; disagreements in cosmological measurements. Earlier versions of these papers explored whether the bounce framework could resolve these tensions. After 475K+ MCMC samples, the honest result:</p>
 
 <div class="scorecard">
   <div class="scorecard-item">
@@ -437,33 +382,35 @@
 </div>
 
 <!-- ===== AI DISCOVERY PIPELINE ===== -->
-<h2>AI Discovery Pipeline</h2>
+<h2>Paper 3: AI Discovery at Survey Scale</h2>
 
-<p>Beyond the theoretical predictions, this research program now includes a large-scale observational discovery effort. We built an AI system (a "spectral autoencoder") that learns what normal astronomical spectra look like, then flags anything unusual. We pointed it at the entire DESI DR1 survey &mdash; nearly <strong>18 million spectra</strong>, the largest dataset of its kind.</p>
+<p>This is where the research goes from theory to large-scale observational discovery. We built an AI system called BigAE (a "spectral autoencoder") that learns what normal astronomical spectra look like, then flags anything unusual. We pointed it at the entire DESI DR1 survey &mdash; all <strong>22.5 million spectra</strong> &mdash; and then extended it across 7 more surveys for a total of <strong>33.5 million astronomical sources</strong>.</p>
 
 <h3>What We Found</h3>
 
-<p>The AI identified <strong>195,829 spectral anomalies</strong> &mdash; objects whose light signatures don't match anything the model learned as "normal." This is the largest autoencoder anomaly search ever run on DESI data, about 90 times bigger than previous efforts that only used early data releases.</p>
+<p>From DESI DR1 alone, the AI identified <strong>250,120 raw anomalies</strong>, which after rigorous quality filtering (injection/recovery testing with 0% false positive rate) yielded <strong>83 gold anomalies</strong> and <strong>2,145 silver-tier anomalies</strong>. Cross-matching against SIMBAD and NED revealed that <strong>1,127 objects (52.5%) are genuinely uncataloged</strong> &mdash; unknown to the major astronomical databases.</p>
 
-<p>The most striking result: <strong>galaxies are 20 times more anomalous than quasars.</strong> About 0.75% of galaxies trigger the anomaly detector, versus only 0.037% of quasars (the extremely bright galactic nuclei). This was unexpected &mdash; quasars are often considered the "weird" objects in astronomy, but it turns out galaxies harbor far more uncharacterized spectral behavior at scale.</p>
+<p>These 1,127 objects cluster into <strong>10 astrophysical families</strong>: 76 obscured AGN candidates (missed by pipeline classifications), 27 post-starburst galaxies in a critical evolutionary phase, 363 blue galaxies with anomalous UV features, and 7 more families. A single latent dimension ("lat_067") spontaneously learned to encode redshift from unsupervised training &mdash; a "redshift neuron" capturing 18% of redshift information with no labels.</p>
 
-<h3>Are These Real?</h3>
+<h3>Multi-Survey Extension: 33.5 Million Sources</h3>
 
-<p>We cross-matched every anomaly against <strong>6 major astronomical databases</strong>: SIMBAD, NED, AllWISE, Milliquas, Gaia, and SDSS. The result: <strong>99.8% of our anomalies are not cataloged in SIMBAD</strong>, the largest astronomical reference database. NED (the NASA/IPAC Extragalactic Database) recognizes 12.7% of them, AllWISE has 1.5%, and Gaia has 0.6%. The vast majority are genuinely uncataloged objects.</p>
+<p>We extended the anomaly sweep across <strong>8 major astronomical surveys</strong> (DESI, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB, Gaia DR3, ACT DR6, NEOWISE), processing 33.5 million sources on H200 GPUs and detecting <strong>328,000+ anomalies</strong>. Four surveys passed quality gates; the other four have identified systematics (galactic contamination, ecliptic bias, insufficient training) and are queued for re-runs with proper masks.</p>
 
-<p>This doesn't mean they're all astrophysically exotic &mdash; some may be instrument artifacts or unusual but understood phenomena. That's why the catalog is still in draft stage: we need to visually inspect the top candidates, run injection/recovery tests, and systematically investigate artifacts before making strong claims.</p>
+<h3>The 173-Column Enhanced Catalog</h3>
 
-<h3>The Enhanced 18M Catalog</h3>
-
-<p>Alongside the anomaly search, we're building an <strong>enhanced catalog of all 18 million DESI DR1 spectra</strong> with 45 computed columns per object &mdash; anomaly scores, spectral feature measurements, cross-match results, and quality flags. This is the first catalog of its kind: a uniform machine-learning characterization of every spectrum in DESI DR1. It's 36% complete and running on an H200 GPU.</p>
+<p>The complete catalog covers all <strong>22.5 million DESI DR1 spectra</strong> with 173 computed columns per object &mdash; the full 128-dimensional latent representation, anomaly scores, per-band residuals, pipeline cross-matches, and derived classifications. This is the first catalog of its kind: a uniform machine-learning characterization of every spectrum in DESI DR1.</p>
 
 <h3>The w<sub>0</sub>-w<sub>a</sub> Dark Energy Result</h3>
 
 <p>On the cosmology side, we ran a new MCMC analysis testing whether dark energy's equation of state changes over time. The result: <strong>w<sub>0</sub> = &minus;0.871 &plusmn; 0.061</strong> and <strong>w<sub>a</sub> = &minus;0.542 &plusmn; 0.247</strong>, with 98% probability of "quintom-B" behavior &mdash; meaning dark energy's equation of state crosses the w = &minus;1 boundary from below. This is consistent with DESI DR2 findings and supports the quintom bounce scenario as a viable cosmological model. The chains fully converged (R&minus;1 = 0.009).</p>
 
+<h3>The Key Result: 9.5% Improvement in f<sub>NL</sub></h3>
+
+<p>The most scientifically important outcome of Paper 3: by splitting the DESI QSO sample using the autoencoder's 128-dimensional latent space, we achieved a <strong>9.5% improvement in &sigma;(f<sub>NL</sub>)</strong> (from 8.98 to 8.12) via the multi-tracer technique. This directly improves our ability to test the matter bounce prediction f<sub>NL</sub> = &minus;35/8 from Paper 2. The top 10 latent dimensions show |r| = 0.30&ndash;0.42 correlation with scale-dependent bias &mdash; the AI learned to separate galaxy populations by their large-scale environment, without supervision.</p>
+
 <div class="callout">
   <div class="callout-title">Why This Matters for Bounce Cosmology</div>
-  <p>The anomaly catalog and the w<sub>0</sub>-w<sub>a</sub> result both feed into the broader bounce cosmology portfolio. The quintom w-crossing is a natural prediction of bounce models that unify the bounce with dark energy. The anomaly catalog may contain objects whose spectral signatures reveal new physics. Together with the f<sub>NL</sub> prediction, birefringence, and the 8.47M galaxy chirality catalog (82% complete, the largest ever), the case for bounce cosmology is being built across multiple independent observational channels.</p>
+  <p>The anomaly catalog and the w<sub>0</sub>-w<sub>a</sub> result both feed into the broader bounce cosmology portfolio. The quintom w-crossing is a natural prediction of bounce models that unify the bounce with dark energy. Together with the f<sub>NL</sub> prediction, birefringence, and the galaxy chirality catalog, the case for bounce cosmology is being built across multiple independent observational channels.</p>
 </div>
 
 <!-- ===== THE EQUATIONS ===== -->
@@ -536,16 +483,18 @@
 <!-- ===== CLOSING ===== -->
 <h2>The Bottom Line</h2>
 
-<p>This research program asked whether bounce cosmology can be tested. The answer is <strong>yes</strong>&mdash;through two specific, falsifiable predictions:</p>
+<p>This research program &mdash; four papers from Hubify Labs &mdash; asks whether bounce cosmology can be tested. The answer is <strong>yes</strong>:</p>
 
 <ol style="color: var(--text-secondary); padding-left: 20px; line-height: 2;">
-  <li><strong>f<sub>NL</sub> = &minus;35/8</strong> &mdash; a parameter-free non-Gaussianity prediction from matter-dominated contraction, testable by SPHEREx at ~5.0&ndash;5.5&sigma; (template-corrected, ~2028)</li>
-  <li><strong>&beta; = 0.27&deg;</strong> &mdash; a cosmic birefringence prediction from a natural Planck-scale axion, already matching a 3.6&sigma; observed signal, testable by LiteBIRD at 9&sigma; (early 2030s)</li>
+  <li><strong>Paper 1:</strong> Built the theoretical framework (Einstein-Cartan gravity), found 14 structural barriers, proved the perturbation-transparency theorem, and predicted ALP birefringence <strong>&beta; = 0.27&deg;</strong> matching the 3.6&sigma; observed signal</li>
+  <li><strong>Paper 2:</strong> Derived the decisive prediction <strong>f<sub>NL</sub> = &minus;35/8</strong> (no free parameters, 300&times; larger than inflation), with SPHEREx forecast at ~5.0&ndash;5.5&sigma; by 2028</li>
+  <li><strong>Paper 3:</strong> Scored 22.5M DESI spectra with AI, discovered 1,127 uncataloged objects, improved f<sub>NL</sub> measurement by 9.5%, and extended the sweep across 8 surveys (33.5M sources, 328K+ anomalies)</li>
+  <li><strong>Paper 4:</strong> Classified 8.47 million galaxies for handedness &mdash; the largest such catalog ever &mdash; confirming parity conservation and refuting prior claims of cosmic chirality</li>
 </ol>
 
-<p>The journey to these predictions involved building and systematically dismantling an ambitious theoretical framework (Einstein-Cartan-Holst gravity), cataloging 14 structural barriers, and proving a perturbation-transparency theorem. Most of what we tried didn't work&mdash;and we documented every failure honestly. But the predictions that survived are <strong>mechanism-independent</strong>: they don't depend on the specific bounce model, only on the contracting-phase dynamics.</p>
+<p>Most of what we tried didn't work &mdash; and we documented every failure honestly. But the predictions that survived are <strong>mechanism-independent</strong>: they don't depend on the specific bounce model, only on the contracting-phase dynamics. The AI discovery pipelines connect the theoretical predictions to real observational data at scale.</p>
 
-<p>We'll know within the next few years.</p>
+<p>SPHEREx (~2028) and LiteBIRD (early 2030s) will settle it. We'll know within the next few years.</p>
 
 <div style="margin: 48px 0; text-align: center;">
   <a href="paper.html" style="display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--text); color:var(--bg); border-radius:8px; font-weight:600; font-size:15px; text-decoration:none;">Read the Papers &rarr;</a>

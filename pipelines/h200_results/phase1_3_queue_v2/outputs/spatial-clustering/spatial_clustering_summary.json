@@ -1,0 +1,626 @@
+{
+  "timestamp": "2026-04-04 21:19:22",
+  "experiment": "spatial-clustering",
+  "description": "Spatial clustering analysis: 2pt correlation, NN distribution, HEALPix uniformity",
+  "n_surveys": 6,
+  "n_sources": 173398,
+  "n_anomalies_top1pct": 6,
+  "best_val_loss": 1.0,
+  "n_clustered": 6,
+  "n_uniform": 0,
+  "n_systematic": 0,
+  "per_survey": [
+    {
+      "survey": "desi-dr1",
+      "data_source": "synthetic",
+      "source_file": "synthetic",
+      "n_objects": 50000,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          1.66715,
+          1.552866,
+          1.469995,
+          1.391023,
+          1.314442,
+          1.267122,
+          1.218271,
+          1.176423,
+          1.152036,
+          1.127231,
+          1.112998,
+          1.101535,
+          1.092694,
+          1.091551,
+          1.08753,
+          1.089227,
+          1.087664,
+          1.091374,
+          1.086175,
+          1.085266
+        ],
+        "mean_abs_w": 1.213129,
+        "max_abs_w": 1.66715
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 0.77967,
+        "median_nn_deg": 0.679146,
+        "std_nn_deg": 0.542118,
+        "min_nn_deg": 0.005583,
+        "max_nn_deg": 3.153624,
+        "pct_within_1arcmin": 0.0016,
+        "pct_within_1deg": 0.6944
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 4189,
+        "sky_fraction": 0.3409,
+        "mean_per_pixel": 11.94,
+        "std_per_pixel": 21.67,
+        "max_per_pixel": 744,
+        "chi2_per_dof": 39.3436,
+        "is_uniform": false
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=1.667",
+        "moderate NN clustering: 69.4% within 1deg",
+        "highly non-uniform sky: chi2/dof=39.3"
+      ]
+    },
+    {
+      "survey": "sdss-dr18",
+      "data_source": "synthetic",
+      "source_file": "synthetic",
+      "n_objects": 50000,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          1.97829,
+          1.874032,
+          1.852407,
+          1.746274,
+          1.626277,
+          1.491422,
+          1.378926,
+          1.307335,
+          1.228119,
+          1.186756,
+          1.152738,
+          1.133951,
+          1.119797,
+          1.115596,
+          1.109116,
+          1.106137,
+          1.113049,
+          1.112735,
+          1.114991,
+          1.117371
+        ],
+        "mean_abs_w": 1.343266,
+        "max_abs_w": 1.97829
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 0.693655,
+        "median_nn_deg": 0.628298,
+        "std_nn_deg": 0.479243,
+        "min_nn_deg": 0.002868,
+        "max_nn_deg": 2.714978,
+        "pct_within_1arcmin": 0.0036,
+        "pct_within_1deg": 0.746
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 3320,
+        "sky_fraction": 0.2702,
+        "mean_per_pixel": 15.06,
+        "std_per_pixel": 31.75,
+        "max_per_pixel": 700,
+        "chi2_per_dof": 66.9594,
+        "is_uniform": false
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=1.978",
+        "moderate NN clustering: 74.6% within 1deg",
+        "highly non-uniform sky: chi2/dof=67.0"
+      ]
+    },
+    {
+      "survey": "lamost-dr10",
+      "data_source": "synthetic",
+      "source_file": "synthetic",
+      "n_objects": 44075,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          2.000614,
+          1.978945,
+          1.886965,
+          1.790391,
+          1.621166,
+          1.510562,
+          1.402507,
+          1.312121,
+          1.23789,
+          1.192762,
+          1.160075,
+          1.137569,
+          1.122827,
+          1.11982,
+          1.116333,
+          1.10579,
+          1.106368,
+          1.101466,
+          1.101682,
+          1.09938
+        ],
+        "mean_abs_w": 1.355262,
+        "max_abs_w": 2.000614
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 0.983651,
+        "median_nn_deg": 0.91289,
+        "std_nn_deg": 0.658031,
+        "min_nn_deg": 0.002756,
+        "max_nn_deg": 3.713304,
+        "pct_within_1arcmin": 0.0016,
+        "pct_within_1deg": 0.5508
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 6479,
+        "sky_fraction": 0.5273,
+        "mean_per_pixel": 6.8,
+        "std_per_pixel": 13.56,
+        "max_per_pixel": 298,
+        "chi2_per_dof": 27.0477,
+        "is_uniform": false
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=2.001",
+        "moderate NN clustering: 55.1% within 1deg",
+        "highly non-uniform sky: chi2/dof=27.0"
+      ]
+    },
+    {
+      "survey": "erosita-dr1",
+      "data_source": "synthetic",
+      "source_file": "synthetic",
+      "n_objects": 9303,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          3.401905,
+          2.416256,
+          2.144632,
+          1.889615,
+          1.670131,
+          1.530139,
+          1.426611,
+          1.337358,
+          1.267533,
+          1.217674,
+          1.184432,
+          1.154494,
+          1.145944,
+          1.142066,
+          1.133017,
+          1.120872,
+          1.135606,
+          1.130901,
+          1.139987,
+          1.147235
+        ],
+        "mean_abs_w": 1.48682,
+        "max_abs_w": 3.401905
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 1.252841,
+        "median_nn_deg": 1.058167,
+        "std_nn_deg": 1.027642,
+        "min_nn_deg": 0.0,
+        "max_nn_deg": 6.154998,
+        "pct_within_1arcmin": 0.0112,
+        "pct_within_1deg": 0.4796
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 5105,
+        "sky_fraction": 0.4154,
+        "mean_per_pixel": 1.82,
+        "std_per_pixel": 5.2,
+        "max_per_pixel": 177,
+        "chi2_per_dof": 14.851,
+        "is_uniform": false
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=3.402",
+        "highly non-uniform sky: chi2/dof=14.9"
+      ]
+    },
+    {
+      "survey": "act-dr6",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/act-dr6-proper/act_dr6_anomalies.csv",
+      "n_objects": 20000,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          1.110266,
+          1.088511,
+          1.114019,
+          1.090275,
+          1.113838,
+          1.098703,
+          1.103257,
+          1.10145,
+          1.108069,
+          1.099428,
+          1.110254,
+          1.107362,
+          1.112908,
+          1.108579,
+          1.107351,
+          1.104912,
+          1.104003,
+          1.097662,
+          1.10403,
+          1.102477
+        ],
+        "mean_abs_w": 1.104368,
+        "max_abs_w": 1.114019
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 1.377039,
+        "median_nn_deg": 1.28269,
+        "std_nn_deg": 0.75172,
+        "min_nn_deg": 0.04724,
+        "max_nn_deg": 5.585175,
+        "pct_within_1arcmin": 0.0,
+        "pct_within_1deg": 0.347
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 9283,
+        "sky_fraction": 0.7555,
+        "mean_per_pixel": 2.15,
+        "std_per_pixel": 1.26,
+        "max_per_pixel": 10,
+        "chi2_per_dof": 0.7362,
+        "is_uniform": true
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=1.114"
+      ]
+    },
+    {
+      "survey": "planck-cmb",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/planck-cmb-masked/planck_cmb_masked_summary.json",
+      "n_objects": 20,
+      "two_point_correlation": {
+        "bin_centers_deg": [
+          0.25,
+          0.75,
+          1.25,
+          1.75,
+          2.25,
+          2.75,
+          3.25,
+          3.75,
+          4.25,
+          4.75,
+          5.25,
+          5.75,
+          6.25,
+          6.75,
+          7.25,
+          7.75,
+          8.25,
+          8.75,
+          9.25,
+          9.75
+        ],
+        "w_theta": [
+          0.0,
+          0.0,
+          0.0,
+          21.526316,
+          0.0,
+          9.210526,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          -0.95,
+          -2.9,
+          0.0,
+          0.0,
+          1.0,
+          5.105263,
+          3.052632,
+          0.0
+        ],
+        "mean_abs_w": 2.287237,
+        "max_abs_w": 21.526316
+      },
+      "nearest_neighbor": {
+        "mean_nn_deg": 1.218047,
+        "median_nn_deg": 0.888047,
+        "std_nn_deg": 1.584219,
+        "min_nn_deg": 0.327722,
+        "max_nn_deg": 7.949374,
+        "pct_within_1arcmin": 0.0,
+        "pct_within_1deg": 0.6
+      },
+      "healpix_uniformity": {
+        "nside": 32,
+        "total_pixels": 12288,
+        "occupied_pixels": 16,
+        "sky_fraction": 0.0013,
+        "mean_per_pixel": 1.25,
+        "std_per_pixel": 0.56,
+        "max_per_pixel": 3,
+        "chi2_per_dof": 0.2667,
+        "is_uniform": true
+      },
+      "classification": "clustered",
+      "classification_reasons": [
+        "strong 2pt correlation: max |w|=21.526",
+        "moderate NN clustering: 60.0% within 1deg"
+      ]
+    }
+  ],
+  "train_time_s": 11.66,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 190.0,
+      "dec": 30.0,
+      "score": 39.3436,
+      "survey": "desi-dr1",
+      "classification": "clustered"
+    },
+    {
+      "rank": 2,
+      "ra": 185.0,
+      "dec": 30.0,
+      "score": 66.9594,
+      "survey": "sdss-dr18",
+      "classification": "clustered"
+    },
+    {
+      "rank": 3,
+      "ra": 180.0,
+      "dec": 25.0,
+      "score": 27.0477,
+      "survey": "lamost-dr10",
+      "classification": "clustered"
+    },
+    {
+      "rank": 4,
+      "ra": 180.0,
+      "dec": 0.0,
+      "score": 14.851,
+      "survey": "erosita-dr1",
+      "classification": "clustered"
+    },
+    {
+      "rank": 5,
+      "ra": 180.0,
+      "dec": 0.0,
+      "score": 0.7362,
+      "survey": "act-dr6",
+      "classification": "clustered"
+    },
+    {
+      "rank": 6,
+      "ra": 180.0,
+      "dec": 0.0,
+      "score": 0.2667,
+      "survey": "planck-cmb",
+      "classification": "clustered"
+    },
+    {
+      "rank": 7,
+      "ra": 77.2,
+      "dec": -51.8,
+      "score": 1.0
+    },
+    {
+      "rank": 8,
+      "ra": 188.75,
+      "dec": -43.55,
+      "score": 1.0
+    },
+    {
+      "rank": 9,
+      "ra": 36.72,
+      "dec": 11.28,
+      "score": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 40.29,
+      "dec": 53.64,
+      "score": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 260.79,
+      "dec": -29.27,
+      "score": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 185.38,
+      "dec": -47.95,
+      "score": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 234.06,
+      "dec": -47.57,
+      "score": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 96.46,
+      "dec": 79.7,
+      "score": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 169.5,
+      "dec": -70.99,
+      "score": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 187.91,
+      "dec": -5.03,
+      "score": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 262.45,
+      "dec": -47.28,
+      "score": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 240.55,
+      "dec": 34.01,
+      "score": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 163.44,
+      "dec": -45.49,
+      "score": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 345.85,
+      "dec": -20.72,
+      "score": 1.0
+    }
+  ]
+}

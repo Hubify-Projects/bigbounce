@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-04-04 21:29:34",
+  "experiment": "desi-taxonomy-redo",
+  "description": "DESI anomaly taxonomy with optimized UMAP + HDBSCAN",
+  "data_source": "synthetic",
+  "source_file": "synthetic (10 planted populations)",
+  "n_objects": 195000,
+  "n_sources": 195000,
+  "latent_dim": 128,
+  "umap_method": "umap",
+  "umap_params": {
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "n_components": 2
+  },
+  "cluster_method": "hdbscan",
+  "hdbscan_params": {
+    "min_cluster_size": 500,
+    "min_samples": 50
+  },
+  "global_metrics": {
+    "n_clusters": 10,
+    "n_noise": 731,
+    "noise_fraction": 0.0037,
+    "largest_cluster_fraction": 0.1794,
+    "degeneracy_check": "PASS",
+    "cluster_sizes": [
+      34981,
+      29516,
+      27776,
+      23415,
+      19667,
+      15993,
+      13662,
+      11700,
+      9750,
+      7809
+    ],
+    "adjusted_rand_index": 0.956,
+    "normalized_mutual_info": 0.9624
+  },
+  "n_clusters": 10,
+  "n_noise": 731,
+  "noise_fraction": 0.0037,
+  "largest_cluster_fraction": 0.1794,
+  "degeneracy_check": "PASS",
+  "n_anomalies_top1pct": 1950,
+  "best_val_loss": 1.0,
+  "clusters": [
+    {
+      "cluster_id": -1,
+      "is_noise": 

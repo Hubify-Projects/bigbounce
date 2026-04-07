@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-04-04 21:33:03",
+  "experiment": "desi-erosita-xmatch",
+  "description": "DESI x eROSITA optical-X-ray cross-match within 10.0\"",
+  "n_desi": 500,
+  "n_erosita": 200,
+  "desi_data_mode": "synthetic",
+  "erosita_data_mode": "synthetic",
+  "match_radius_arcsec": 10.0,
+  "n_matched": 12,
+  "n_agn_candidates": 12,
+  "n_expected_random": 0.0003,
+  "significance_sigma": 11.9997,
+  "sep_stats": {
+    "mean_arcsec": 1.624,
+    "median_arcsec": 1.424,
+    "std_arcsec": 0.684
+  },
+  "n_sources": 700,
+  "n_anomalies_top1pct": 12,
+  "best_val_loss": 0.083335,
+  "matched_pairs": [
+    {
+      "desi_ra": 236.982331,
+      "desi_dec": 17.089696,
+      "desi_score": 14122.8678,
+      "desi_z": 1.8721,
+      "desi_rmag": 17.29,
+      "erosita_ra": 236.982099,
+      "erosita_dec": 17.090236,
+      "erosita_score": 368.264,
+      "erosita_flux": 0.0,
+      "erosita_detlike": 8.74,
+      "sep_arcsec": 2.102,
+      "combined_score": 14491.1318,
+      "optical_xray_ratio": 38.3498,
+      "agn_candidate": 

@@ -1,0 +1,1913 @@
+{
+  "timestamp": "2026-04-04 21:35:23",
+  "experiment": "multi-messenger-joint",
+  "description": "Multi-messenger cross-correlation of ALL survey anomalies",
+  "n_surveys": 8,
+  "surveys": [
+    "desi-dr1",
+    "sdss-dr18",
+    "lamost-dr10",
+    "erosita-dr1",
+    "neowise",
+    "gaia-dr3",
+    "planck-cmb",
+    "act-dr6"
+  ],
+  "data_modes": {
+    "desi-dr1": "synthetic",
+    "sdss-dr18": "synthetic",
+    "lamost-dr10": "synthetic",
+    "erosita-dr1": "synthetic",
+    "neowise": "real",
+    "gaia-dr3": "real",
+    "planck-cmb": "real",
+    "act-dr6": "real"
+  },
+  "total_anomalies_input": 780,
+  "n_multi_survey_objects": 40,
+  "detection_counts": {
+    "4": 20,
+    "3": 14,
+    "2": 6
+  },
+  "max_surveys_per_object": 4,
+  "cross_match_matrix": {
+    "desi-dr1": {
+      "desi-dr1": 200,
+      "sdss-dr18": 28,
+      "lamost-dr10": 28,
+      "erosita-dr1": 20,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "sdss-dr18": {
+      "desi-dr1": 28,
+      "sdss-dr18": 200,
+      "lamost-dr10": 33,
+      "erosita-dr1": 20,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "lamost-dr10": {
+      "desi-dr1": 28,
+      "sdss-dr18": 33,
+      "lamost-dr10": 200,
+      "erosita-dr1": 20,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "erosita-dr1": {
+      "desi-dr1": 20,
+      "sdss-dr18": 20,
+      "lamost-dr10": 20,
+      "erosita-dr1": 100,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "neowise": {
+      "desi-dr1": 0,
+      "sdss-dr18": 0,
+      "lamost-dr10": 0,
+      "erosita-dr1": 0,
+      "neowise": 20,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "gaia-dr3": {
+      "desi-dr1": 0,
+      "sdss-dr18": 0,
+      "lamost-dr10": 0,
+      "erosita-dr1": 0,
+      "neowise": 0,
+      "gaia-dr3": 20,
+      "planck-cmb": 0,
+      "act-dr6": 0
+    },
+    "planck-cmb": {
+      "desi-dr1": 0,
+      "sdss-dr18": 0,
+      "lamost-dr10": 0,
+      "erosita-dr1": 0,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 20,
+      "act-dr6": 0
+    },
+    "act-dr6": {
+      "desi-dr1": 0,
+      "sdss-dr18": 0,
+      "lamost-dr10": 0,
+      "erosita-dr1": 0,
+      "neowise": 0,
+      "gaia-dr3": 0,
+      "planck-cmb": 0,
+      "act-dr6": 20
+    }
+  },
+  "pair_details": {
+    "desi-dr1_x_sdss-dr18": {
+      "n_matches": 28,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 1.8
+    },
+    "desi-dr1_x_lamost-dr10": {
+      "n_matches": 28,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 1.6
+    },
+    "desi-dr1_x_erosita-dr1": {
+      "n_matches": 20,
+      "radius_arcsec": 10.0,
+      "bands": "optical+xray",
+      "mean_sep": 1.92
+    },
+    "desi-dr1_x_neowise": {
+      "n_matches": 0,
+      "radius_arcsec": 5.0,
+      "bands": "optical+ir",
+      "mean_sep": 0
+    },
+    "desi-dr1_x_gaia-dr3": {
+      "n_matches": 0,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 0
+    },
+    "desi-dr1_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "desi-dr1_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "sdss-dr18_x_lamost-dr10": {
+      "n_matches": 33,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 1.86
+    },
+    "sdss-dr18_x_erosita-dr1": {
+      "n_matches": 20,
+      "radius_arcsec": 10.0,
+      "bands": "optical+xray",
+      "mean_sep": 2.15
+    },
+    "sdss-dr18_x_neowise": {
+      "n_matches": 0,
+      "radius_arcsec": 5.0,
+      "bands": "optical+ir",
+      "mean_sep": 0
+    },
+    "sdss-dr18_x_gaia-dr3": {
+      "n_matches": 0,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 0
+    },
+    "sdss-dr18_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "sdss-dr18_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "lamost-dr10_x_erosita-dr1": {
+      "n_matches": 20,
+      "radius_arcsec": 10.0,
+      "bands": "optical+xray",
+      "mean_sep": 2.6
+    },
+    "lamost-dr10_x_neowise": {
+      "n_matches": 0,
+      "radius_arcsec": 5.0,
+      "bands": "optical+ir",
+      "mean_sep": 0
+    },
+    "lamost-dr10_x_gaia-dr3": {
+      "n_matches": 0,
+      "radius_arcsec": 3.0,
+      "bands": "optical+optical",
+      "mean_sep": 0
+    },
+    "lamost-dr10_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "lamost-dr10_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "erosita-dr1_x_neowise": {
+      "n_matches": 0,
+      "radius_arcsec": 5.0,
+      "bands": "xray+ir",
+      "mean_sep": 0
+    },
+    "erosita-dr1_x_gaia-dr3": {
+      "n_matches": 0,
+      "radius_arcsec": 10.0,
+      "bands": "xray+optical",
+      "mean_sep": 0
+    },
+    "erosita-dr1_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "xray+cmb",
+      "mean_sep": 0
+    },
+    "erosita-dr1_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "xray+cmb",
+      "mean_sep": 0
+    },
+    "neowise_x_gaia-dr3": {
+      "n_matches": 0,
+      "radius_arcsec": 5.0,
+      "bands": "ir+optical",
+      "mean_sep": 0
+    },
+    "neowise_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "ir+cmb",
+      "mean_sep": 0
+    },
+    "neowise_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "ir+cmb",
+      "mean_sep": 0
+    },
+    "gaia-dr3_x_planck-cmb": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "gaia-dr3_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 60.0,
+      "bands": "optical+cmb",
+      "mean_sep": 0
+    },
+    "planck-cmb_x_act-dr6": {
+      "n_matches": 0,
+      "radius_arcsec": 120.0,
+      "bands": "cmb+cmb",
+      "mean_sep": 0
+    }
+  },
+  "multi_survey_objects": [
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 199.400858,
+      "mean_dec": 14.391824,
+      "total_score": 863.604,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 199.400897,
+          "dec": 14.391736,
+          "score": 137.2057
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 199.40126,
+          "dec": 14.392001,
+          "score": 29.4385
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 199.400881,
+          "dec": 14.392062,
+          "score": 694.3513
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 199.400393,
+          "dec": 14.391499,
+          "score": 2.6085
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 164.810716,
+      "mean_dec": 29.361892,
+      "total_score": 781.6368,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 164.810993,
+          "dec": 29.36131,
+          "score": 1.9378
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 164.811095,
+          "dec": 29.361882,
+          "score": 6.5098
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 164.81036,
+          "dec": 29.362114,
+          "score": 180.1261
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 164.810417,
+          "dec": 29.362264,
+          "score": 593.0631
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 212.028765,
+      "mean_dec": 43.051034,
+      "total_score": 660.0643,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 212.028489,
+          "dec": 43.050562,
+          "score": 55.7685
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 212.028553,
+          "dec": 43.051016,
+          "score": 467.0317
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 212.029201,
+          "dec": 43.050896,
+          "score": 74.9804
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 212.028819,
+          "dec": 43.051662,
+          "score": 62.2837
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 199.647114,
+      "mean_dec": 9.239634,
+      "total_score": 494.1954,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 199.646672,
+          "dec": 9.23953,
+          "score": 52.2862
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 199.647506,
+          "dec": 9.239545,
+          "score": 392.1889
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 199.647062,
+          "dec": 9.239189,
+          "score": 21.0354
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 199.647216,
+          "dec": 9.24027,
+          "score": 28.6849
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 123.282815,
+      "mean_dec": 31.550014,
+      "total_score": 457.7777,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 123.282756,
+          "dec": 31.550512,
+          "score": 15.1992
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 123.282852,
+          "dec": 31.550025,
+          "score": 44.3273
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 123.282759,
+          "dec": 31.550026,
+          "score": 355.7039
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 123.282892,
+          "dec": 31.549493,
+          "score": 42.5473
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 147.2924,
+      "mean_dec": 14.764242,
+      "total_score": 283.6886,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 147.292739,
+          "dec": 14.764623,
+          "score": 60.2084
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 147.29216,
+          "dec": 14.764198,
+          "score": 20.5223
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 147.29248,
+          "dec": 14.764493,
+          "score": 57.2613
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 147.292221,
+          "dec": 14.763653,
+          "score": 145.6966
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 227.990442,
+      "mean_dec": 34.29804,
+      "total_score": 202.6394,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 227.990512,
+          "dec": 34.297993,
+          "score": 89.232
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 227.989865,
+          "dec": 34.29802,
+          "score": 18.8698
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 227.991042,
+          "dec": 34.297747,
+          "score": 94.2131
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 227.990347,
+          "dec": 34.298399,
+          "score": 0.3245
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 169.881786,
+      "mean_dec": 58.209833,
+      "total_score": 201.1222,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 169.881309,
+          "dec": 58.209966,
+          "score": 121.7999
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 169.882565,
+          "dec": 58.209789,
+          "score": 6.294
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 169.881654,
+          "dec": 58.210044,
+          "score": 35.5069
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 169.881616,
+          "dec": 58.209532,
+          "score": 37.5214
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 187.613258,
+      "mean_dec": 15.341924,
+      "total_score": 167.2419,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 187.613636,
+          "dec": 15.342002,
+          "score": 71.5734
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 187.613573,
+          "dec": 15.3414,
+          "score": 28.695
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 187.613228,
+          "dec": 15.3419,
+          "score": 8.5539
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 187.612593,
+          "dec": 15.342392,
+          "score": 58.4196
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 235.196867,
+      "mean_dec": 59.017415,
+      "total_score": 123.6446,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 235.197157,
+          "dec": 59.017537,
+          "score": 20.0495
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 235.196985,
+          "dec": 59.017084,
+          "score": 81.0673
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 235.197365,
+          "dec": 59.017701,
+          "score": 13.742
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 235.195962,
+          "dec": 59.017339,
+          "score": 8.7858
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 235.768741,
+      "mean_dec": -3.8122,
+      "total_score": 105.6437,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 235.768598,
+          "dec": -3.812804,
+          "score": 6.1566
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 235.768619,
+          "dec": -3.812613,
+          "score": 59.9897
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 235.768376,
+          "dec": -3.811211,
+          "score": 13.7023
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 235.769369,
+          "dec": -3.812173,
+          "score": 25.7951
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 164.426009,
+      "mean_dec": -6.299207,
+      "total_score": 104.5845,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 164.425852,
+          "dec": -6.299189,
+          "score": 15.74
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 164.426064,
+          "dec": -6.299083,
+          "score": 58.2329
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 164.426426,
+          "dec": -6.299431,
+          "score": 11.147
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 164.425696,
+          "dec": -6.299124,
+          "score": 19.4646
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 245.420676,
+      "mean_dec": 30.202515,
+      "total_score": 94.5696,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 245.420473,
+          "dec": 30.202544,
+          "score": 32.9344
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 245.42078,
+          "dec": 30.202223,
+          "score": 9.442
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 245.421425,
+          "dec": 30.202597,
+          "score": 22.2547
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 245.420024,
+          "dec": 30.202696,
+          "score": 29.9385
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 215.372686,
+      "mean_dec": -7.093509,
+      "total_score": 85.6915,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 215.373425,
+          "dec": -7.0937,
+          "score": 48.5842
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 215.372849,
+          "dec": -7.094031,
+          "score": 3.6158
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 215.372232,
+          "dec": -7.092996,
+          "score": 7.5552
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 215.372239,
+          "dec": -7.093311,
+          "score": 25.9363
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 209.323444,
+      "mean_dec": 57.733278,
+      "total_score": 82.6417,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 209.323061,
+          "dec": 57.732481,
+          "score": 63.0668
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 209.323046,
+          "dec": 57.733523,
+          "score": 4.309
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 209.323756,
+          "dec": 57.733421,
+          "score": 10.7716
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 209.323914,
+          "dec": 57.733686,
+          "score": 4.4943
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 159.541798,
+      "mean_dec": 53.061308,
+      "total_score": 78.484,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 159.541564,
+          "dec": 53.061586,
+          "score": 15.4852
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 159.542435,
+          "dec": 53.06152,
+          "score": 7.2309
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 159.542024,
+          "dec": 53.061235,
+          "score": 13.8892
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 159.541168,
+          "dec": 53.060889,
+          "score": 41.8787
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 148.989183,
+      "mean_dec": 59.171059,
+      "total_score": 60.4931,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 148.988971,
+          "dec": 59.171229,
+          "score": 4.4353
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 148.988919,
+          "dec": 59.171173,
+          "score": 4.6229
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 148.989764,
+          "dec": 59.17097,
+          "score": 30.8556
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 148.989076,
+          "dec": 59.170865,
+          "score": 20.5793
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 181.306631,
+      "mean_dec": 35.31705,
+      "total_score": 59.7439,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 181.306753,
+          "dec": 35.317007,
+          "score": 4.4344
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 181.306523,
+          "dec": 35.317284,
+          "score": 28.9937
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 181.306641,
+          "dec": 35.316571,
+          "score": 3.0705
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 181.306607,
+          "dec": 35.317338,
+          "score": 23.2453
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 157.054584,
+      "mean_dec": 2.514609,
+      "total_score": 56.0985,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 157.054039,
+          "dec": 2.514822,
+          "score": 1.403
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 157.054584,
+          "dec": 2.51433,
+          "score": 14.0188
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 157.054529,
+          "dec": 2.514889,
+          "score": 2.5027
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 157.055183,
+          "dec": 2.514395,
+          "score": 38.174
+        }
+      ]
+    },
+    {
+      "n_surveys": 4,
+      "surveys": [
+        "desi-dr1",
+        "erosita-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical",
+        "xray"
+      ],
+      "mean_ra": 232.885658,
+      "mean_dec": 22.702276,
+      "total_score": 45.9324,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 232.885508,
+          "dec": 22.702289,
+          "score": 2.6137
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 232.885882,
+          "dec": 22.702373,
+          "score": 19.4039
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 232.885678,
+          "dec": 22.702105,
+          "score": 15.4948
+        },
+        {
+          "survey": "erosita-dr1",
+          "ra": 232.885564,
+          "dec": 22.702335,
+          "score": 8.42
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 229.749742,
+      "mean_dec": 54.633862,
+      "total_score": 510.9634,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 229.749988,
+          "dec": 54.634044,
+          "score": 16.4284
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 229.749847,
+          "dec": 54.633377,
+          "score": 3.4872
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 229.749392,
+          "dec": 54.634164,
+          "score": 491.0478
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 241.019143,
+      "mean_dec": 20.156959,
+      "total_score": 271.9905,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 241.019106,
+          "dec": 20.156657,
+          "score": 2.4756
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 241.019119,
+          "dec": 20.157229,
+          "score": 165.6657
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 241.019205,
+          "dec": 20.15699,
+          "score": 103.8492
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 158.254228,
+      "mean_dec": 10.104594,
+      "total_score": 239.4587,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 158.254392,
+          "dec": 10.104771,
+          "score": 197.8173
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 158.253885,
+          "dec": 10.104274,
+          "score": 10.3606
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 158.254408,
+          "dec": 10.104737,
+          "score": 31.2808
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 191.351113,
+      "mean_dec": -7.376031,
+      "total_score": 216.137,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 191.351308,
+          "dec": -7.376075,
+          "score": 12.1661
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 191.350815,
+          "dec": -7.375791,
+          "score": 195.6477
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 191.351216,
+          "dec": -7.376227,
+          "score": 8.3232
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 253.55292,
+      "mean_dec": 38.855766,
+      "total_score": 195.7967,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 253.552634,
+          "dec": 38.855446,
+          "score": 8.5989
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 253.552782,
+          "dec": 38.855859,
+          "score": 18.522
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 253.553343,
+          "dec": 38.855993,
+          "score": 168.6758
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 157.425015,
+      "mean_dec": 20.968836,
+      "total_score": 161.0421,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 157.424677,
+          "dec": 20.968231,
+          "score": 121.4607
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 157.425014,
+          "dec": 20.968905,
+          "score": 29.5634
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 157.425355,
+          "dec": 20.969371,
+          "score": 10.018
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 217.075754,
+      "mean_dec": 46.520113,
+      "total_score": 151.515,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 217.0753,
+          "dec": 46.520068,
+          "score": 7.009
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 217.075786,
+          "dec": 46.519957,
+          "score": 125.0248
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 217.076177,
+          "dec": 46.520313,
+          "score": 19.4812
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 171.467863,
+      "mean_dec": 47.613559,
+      "total_score": 113.6103,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 171.468222,
+          "dec": 47.614006,
+          "score": 9.7735
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 171.46765,
+          "dec": 47.613373,
+          "score": 5.354
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 171.467718,
+          "dec": 47.613297,
+          "score": 98.4828
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 204.378767,
+      "mean_dec": 50.033137,
+      "total_score": 108.0228,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 204.378556,
+          "dec": 50.033049,
+          "score": 29.5337
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 204.379369,
+          "dec": 50.033252,
+          "score": 54.3576
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 204.378375,
+          "dec": 50.03311,
+          "score": 24.1315
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 122.725727,
+      "mean_dec": 33.026146,
+      "total_score": 91.498,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 122.725512,
+          "dec": 33.02631,
+          "score": 20.3664
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 122.726102,
+          "dec": 33.025909,
+          "score": 12.7023
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 122.725566,
+          "dec": 33.026219,
+          "score": 58.4293
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 166.437311,
+      "mean_dec": 22.327015,
+      "total_score": 77.4526,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 166.437871,
+          "dec": 22.32698,
+          "score": 4.9288
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 166.437129,
+          "dec": 22.326743,
+          "score": 59.0633
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 166.436933,
+          "dec": 22.327322,
+          "score": 13.4605
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 226.994732,
+      "mean_dec": 44.054422,
+      "total_score": 70.2508,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 226.994424,
+          "dec": 44.054121,
+          "score": 4.6109
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 226.99481,
+          "dec": 44.054239,
+          "score": 61.2144
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 226.994963,
+          "dec": 44.054905,
+          "score": 4.4255
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 220.062381,
+      "mean_dec": 29.576597,
+      "total_score": 51.3441,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 220.062379,
+          "dec": 29.576618,
+          "score": 19.3174
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 220.062662,
+          "dec": 29.576525,
+          "score": 11.4537
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 220.062101,
+          "dec": 29.576649,
+          "score": 20.573
+        }
+      ]
+    },
+    {
+      "n_surveys": 3,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 121.67862,
+      "mean_dec": 49.704747,
+      "total_score": 18.2184,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 121.678652,
+          "dec": 49.704402,
+          "score": 4.5428
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 121.678334,
+          "dec": 49.704956,
+          "score": 9.1127
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 121.678873,
+          "dec": 49.704882,
+          "score": 4.5629
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "desi-dr1",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 129.908073,
+      "mean_dec": 31.276349,
+      "total_score": 1487.4795,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 129.908165,
+          "dec": 31.276301,
+          "score": 133.0034
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 129.907981,
+          "dec": 31.276397,
+          "score": 1354.4761
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 198.160172,
+      "mean_dec": 13.484707,
+      "total_score": 59.7232,
+      "members": [
+        {
+          "survey": "sdss-dr18",
+          "ra": 198.160353,
+          "dec": 13.485004,
+          "score": 33.9607
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 198.159991,
+          "dec": 13.48441,
+          "score": 25.7625
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 163.76714,
+      "mean_dec": 25.857219,
+      "total_score": 47.3712,
+      "members": [
+        {
+          "survey": "sdss-dr18",
+          "ra": 163.767499,
+          "dec": 25.857236,
+          "score": 45.953
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 163.766782,
+          "dec": 25.857203,
+          "score": 1.4182
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "lamost-dr10",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 190.910463,
+      "mean_dec": -9.421024,
+      "total_score": 30.0816,
+      "members": [
+        {
+          "survey": "sdss-dr18",
+          "ra": 190.910542,
+          "dec": -9.420834,
+          "score": 11.2949
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 190.910385,
+          "dec": -9.421215,
+          "score": 18.7867
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "desi-dr1",
+        "lamost-dr10"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 149.282339,
+      "mean_dec": -8.097306,
+      "total_score": 14.5374,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 149.282464,
+          "dec": -8.097213,
+          "score": 8.6007
+        },
+        {
+          "survey": "lamost-dr10",
+          "ra": 149.282213,
+          "dec": -8.097398,
+          "score": 5.9367
+        }
+      ]
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "desi-dr1",
+        "sdss-dr18"
+      ],
+      "bands": [
+        "optical"
+      ],
+      "mean_ra": 193.309032,
+      "mean_dec": 34.652969,
+      "total_score": 11.8419,
+      "members": [
+        {
+          "survey": "desi-dr1",
+          "ra": 193.309222,
+          "dec": 34.653209,
+          "score": 10.7695
+        },
+        {
+          "survey": "sdss-dr18",
+          "ra": 193.308841,
+          "dec": 34.65273,
+          "score": 1.0724
+        }
+      ]
+    }
+  ],
+  "n_sources": 780,
+  "n_anomalies_top1pct": 40,
+  "best_val_loss": 0.025,
+  "train_time_s": 2.16,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 199.400858,
+      "dec": 14.391824,
+      "score": 863.604,
+      "n_surveys": 4
+    },
+    {
+      "rank": 2,
+      "ra": 164.810716,
+      "dec": 29.361892,
+      "score": 781.6368,
+      "n_surveys": 4
+    },
+    {
+      "rank": 3,
+      "ra": 212.028765,
+      "dec": 43.051034,
+      "score": 660.0643,
+      "n_surveys": 4
+    },
+    {
+      "rank": 4,
+      "ra": 199.647114,
+      "dec": 9.239634,
+      "score": 494.1954,
+      "n_surveys": 4
+    },
+    {
+      "rank": 5,
+      "ra": 123.282815,
+      "dec": 31.550014,
+      "score": 457.7777,
+      "n_surveys": 4
+    },
+    {
+      "rank": 6,
+      "ra": 147.2924,
+      "dec": 14.764242,
+      "score": 283.6886,
+      "n_surveys": 4
+    },
+    {
+      "rank": 7,
+      "ra": 227.990442,
+      "dec": 34.29804,
+      "score": 202.6394,
+      "n_surveys": 4
+    },
+    {
+      "rank": 8,
+      "ra": 169.881786,
+      "dec": 58.209833,
+      "score": 201.1222,
+      "n_surveys": 4
+    },
+    {
+      "rank": 9,
+      "ra": 187.613258,
+      "dec": 15.341924,
+      "score": 167.2419,
+      "n_surveys": 4
+    },
+    {
+      "rank": 10,
+      "ra": 235.196867,
+      "dec": 59.017415,
+      "score": 123.6446,
+      "n_surveys": 4
+    },
+    {
+      "rank": 11,
+      "ra": 235.768741,
+      "dec": -3.8122,
+      "score": 105.6437,
+      "n_surveys": 4
+    },
+    {
+      "rank": 12,
+      "ra": 164.426009,
+      "dec": -6.299207,
+      "score": 104.5845,
+      "n_surveys": 4
+    },
+    {
+      "rank": 13,
+      "ra": 245.420676,
+      "dec": 30.202515,
+      "score": 94.5696,
+      "n_surveys": 4
+    },
+    {
+      "rank": 14,
+      "ra": 215.372686,
+      "dec": -7.093509,
+      "score": 85.6915,
+      "n_surveys": 4
+    },
+    {
+      "rank": 15,
+      "ra": 209.323444,
+      "dec": 57.733278,
+      "score": 82.6417,
+      "n_surveys": 4
+    },
+    {
+      "rank": 16,
+      "ra": 159.541798,
+      "dec": 53.061308,
+      "score": 78.484,
+      "n_surveys": 4
+    },
+    {
+      "rank": 17,
+      "ra": 148.989183,
+      "dec": 59.171059,
+      "score": 60.4931,
+      "n_surveys": 4
+    },
+    {
+      "rank": 18,
+      "ra": 181.306631,
+      "dec": 35.31705,
+      "score": 59.7439,
+      "n_surveys": 4
+    },
+    {
+      "rank": 19,
+      "ra": 157.054584,
+      "dec": 2.514609,
+      "score": 56.0985,
+      "n_surveys": 4
+    },
+    {
+      "rank": 20,
+      "ra": 232.885658,
+      "dec": 22.702276,
+      "score": 45.9324,
+      "n_surveys": 4
+    }
+  ]
+}

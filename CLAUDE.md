@@ -37,8 +37,10 @@ This repository contains a comprehensive spin-torsion cosmology research program
   - Gaia DR3: 50K sources, 500 anomalies — needs 10x expansion
 - f_NL Fisher forecast (corrected): σ(f_NL) = 8.98 standard, 8.12 multi-tracer
 - f_NL multi-tracer improvement: 6.1% (DESI), 16.4% (DESI+SDSS). SPHEREx 4.38σ forecast.
+- f_NL bias validation: extreme anomalies show 2.28x clustering bias vs baseline (Landy-Szalay w(θ))
+- Combined PTA (NANOGrav+EPTA+PPTA+IPTA): γ = 3.32 ± 0.37, bounce at 0.9σ, SMBHB excluded at 2.7σ, Bayes factor 27.6
 
-**Pod status (as of 2026-04-04):** ALL pods EXITED/TERMINATED. H200 queue pod (7zong4jdj46yjp) terminated when credits expired overnight Apr 3-4. All results backed up locally before termination. New H200 pod pending for queue v2 (50 experiments, 10 phases). See `project-context/active_pods_and_pipelines.md`.
+**Pod status (as of 2026-04-06):** H200 pod `o76k3jfzbfh25e` (sleepy_blush_crane) ACTIVE. SSH: `root@205.196.19.52 -p 11452`. Phases 1-3 COMPLETE (17/18 experiments). Phase 4 RUNNING (f_NL science + NANOGrav, 5 experiments in tmux `phase4`). See `project-context/active_pods_and_pipelines.md`.
 
 **Houston Method v2:** See `project-context/houston-method-v2.md` — MANDATORY completion protocol for all experiments. Nothing is "complete" without: QC gate → scientific analysis → interpretation → cross-survey connection → site sync → queue expansion → backup. Every experiment must generate 5-15 new tasks.
 
@@ -280,7 +282,7 @@ After each revision round:
 
 This is a running log of all user prompts/messages across all Claude Code sessions in this project. It serves as a searchable record so Houston doesn't have to repeat himself.
 
-**At the START of every session:** Regenerate the prompt history file by scanning all `.jsonl` session files in `.claude/projects/-Users-houstongolden-Desktop-CODE-2026-bigbounce/` and extracting all `type: "user"` messages with timestamps. This ensures the file stays current even if sessions were run without this instruction.
+**At the START of every session:** Regenerate the prompt history file by scanning all `.jsonl` session files in `.claude/projects/-Users-houstongolden-Desktop-CODE_2025-bigbounce/` and extracting all `type: "user"` messages with timestamps. This ensures the file stays current even if sessions were run without this instruction.
 
 **At the END of every session (before final commit):** Append any new user messages from the current session to `project-context/prompt-history.md` with timestamps in PT.
 

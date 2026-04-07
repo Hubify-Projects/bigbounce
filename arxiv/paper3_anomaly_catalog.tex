@@ -22,6 +22,8 @@
 \usepackage{float}
 \usepackage{longtable}
 
+\graphicspath{{figures_p3/}}
+
 \hypersetup{
   colorlinks=true,
   linkcolor=blue!60!black,
@@ -197,6 +199,21 @@ For autoencoder input, we resample each arm to a common wavelength grid and norm
 
 The \redrock{} pipeline~\cite{Guy2023} provides best-fit spectral type (\texttt{SPECTYPE}: \texttt{GALAXY}, \texttt{QSO}, \texttt{STAR}), redshift ($z$), redshift uncertainty ($\sigma_z$), template fit quality ($\Delta\chi^2$), and warning bitmask (\zwarn{}).\footnote{$\zwarn = 0$ indicates no warning flags; nonzero values encode catastrophic redshift failures, insufficient coverage, and low-confidence matches. See~\cite{Guy2023} for the complete bitmask definition.}
 We propagate all \redrock{} columns into the enhanced catalog.
+
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{anomaly_sky_distribution.png}
+  \caption{\label{fig:sky_distribution} Sky distribution of $250{,}120$ anomalies ($> 5\sigma$) across the \desi{} DR1 footprint in equatorial coordinates. The spatial distribution follows the survey geometry with no evident systematic concentration toward Galactic latitude or survey edges, confirming that \bigae{} detects intrinsic spectral outliers rather than observational artifacts. The anomaly rate is spatially uniform (Spearman $r = 0.03$ with depth).}
+\end{figure*}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{survey_depth_map.png}
+  \caption{\label{fig:depth_map} \desi{} DR1 survey depth map showing the $5\sigma$ point-source depth variation across the footprint. The anomaly rate is uncorrelated with depth (Spearman $r = 0.03$), confirming that \bigae{} anomaly scores reflect intrinsic spectral properties rather than data quality variation.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{depth_vs_rate_scatter.png}
+  \caption{\label{fig:depth_scatter} Anomaly rate as a function of survey depth per \healpix{} pixel. The flat relationship confirms spatial uniformity of the anomaly detection pipeline.}
+\end{figure}
 
 
 %% ============================================================
@@ -383,6 +400,11 @@ $10$--$50$ & $99.99\%$ & $10.0\%$ & $10.0\times$ \\
 \end{ruledtabular}
 \end{table}
 
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{injection_recovery.png}
+  \caption{\label{fig:injection} Injection/recovery results: fraction of $z > 3$ QSOs (orange) and normal galaxies (blue) exceeding the 90th-percentile anomaly threshold within each SNR bin. At all SNR levels, the autoencoder preferentially flags genuinely unusual spectra, with $10$--$1{,}377\times$ enrichment.}
+\end{figure}
+
 At $\snr > 5$, virtually all $z > 3$ QSOs ($95.6$--$99.99\%$) exceed the anomaly threshold, while only $5.8$--$10.0\%$ of normal galaxies do---a $10$--$17\times$ enrichment.
 For $z > 5$ QSOs, the enrichment reaches $128.8\times$ at the lowest SNR bin and $100\%$ recovery at $\snr > 5$.
 For white dwarfs versus normal stars, enrichment reaches $199\times$ at $\snr = 10$--$50$.
@@ -391,6 +413,11 @@ For white dwarfs versus normal stars, enrichment reaches $199\times$ at $\snr = 
 
 The Spearman rank correlation between anomaly score and SNR is $\rho = -0.89$ for the full catalog and $\rho = -0.81$ for high-$z$ QSOs specifically.
 Gold anomalies have mean $\snr = 6.44$ (median $4.43$), with 37 of 83 having $\snr > 5$, confirming that the quality-filtered catalog isolates genuine spectral outliers.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{anomaly_rate_map.png}
+  \caption{\label{fig:rate_map} Anomaly rate per \healpix{} pixel across the \desi{} DR1 footprint. The rate is spatially uniform ($\sigma_{\rm obs}/\sigma_{\rm Poisson} = 1.04 \pm 0.08$), with no correlation with survey depth ($r = 0.03$) or Galactic latitude ($r = 0.02$, $p = 0.74$). The uniformity confirms that \bigae{} flags intrinsic spectral outliers rather than systematic artifacts.}
+\end{figure}
 
 
 %% ============================================================
@@ -424,6 +451,16 @@ The 12 gold QSOs at $z > 6$ are in the epoch of reionization and exhibit complet
 
 The 83 gold anomalies have mean pairwise \umap{} distance of $3.81$, compared to $8.31$ for random objects (clustering ratio $0.46$)---they are $2.2\times$ more clustered in the 128-dimensional latent space than random.
 This validates the approach: the autoencoder identifies a \textit{coherent spectral population}, not random outliers.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{gold_grid_qso.png}
+  \caption{\label{fig:gold_qso} \desi{} DR1 spectra of gold-tier QSO anomalies at $z > 4$, showing the autoencoder reconstruction (blue) overlaid on the observed spectrum (gray). The residuals (orange) peak at Ly-$\alpha$, Ly-$\beta$, and Gunn--Peterson troughs, where the spectra deviate most from the learned manifold.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{z6_qso_spectra_grid.png}
+  \caption{\label{fig:z6_spectra} Grid of 12 reionization-era QSO spectra at $z > 6$ from the gold anomaly catalog. These objects exhibit complete Gunn--Peterson troughs, highly asymmetric Ly-$\alpha$ profiles, and proximity zone anomalies, making them high-priority targets for JWST follow-up.}
+\end{figure}
 
 
 %% ============================================================
@@ -559,6 +596,16 @@ F9 & Post-starburst (E+A) candidates & $27$ & $0.47$ & $4.5$ & $1.47$ & $-0.62$ 
 \end{ruledtabular}
 \end{table*}
 
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{taxonomy_umap.png}
+  \caption{\label{fig:taxonomy_umap} \umap{} projection of the 128-dimensional latent vectors for $1{,}127$ uncataloged objects, colored by the 10 astrophysical families identified through PCA$+$\umap{}$+$\hdbscan{} clustering. The families are spatially coherent in latent space, confirming that the autoencoder has learned astrophysically meaningful representations.}
+\end{figure*}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{uncataloged_top50_grid.png}
+  \caption{\label{fig:uncataloged_spectra} Spectra of the top 50 uncataloged anomalies sorted by anomaly score, showing the autoencoder reconstruction residuals. The diversity of spectral morphologies---including broad absorption lines, extreme emission-line ratios, and unusual continuum shapes---confirms that the catalog contains genuinely novel objects.}
+\end{figure}
+
 \subsection{Key Families}\label{sec:key_families}
 
 \paragraph{F6: IR-bright AGN candidates ($N = 76$).}
@@ -631,6 +678,11 @@ That $10.8\%$ of gold anomalies are IR-variable (vs.\ the ${\sim}1$--$3\%$ basel
 
 \subsection{UMAP Projection and HDBSCAN Clustering}\label{sec:umap}
 
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{umap_full_catalog_3panel.png}
+  \caption{\label{fig:umap_3panel} \umap{} projection of the 128-dimensional latent vectors for all $250{,}120$ anomalies, colored by (left) \redrock{} spectral type, (center) redshift, and (right) anomaly score. The latent space organizes objects into physically meaningful regions: QSOs (high-$z$, high-score) separate from galaxies and stars, confirming that the unsupervised representation captures astrophysical structure.}
+\end{figure*}
+
 We project the 128-dimensional latent vectors of all $250{,}120$ anomalies into two dimensions using \umap{}~\cite{McInnes2018} ($n_{\rm neighbors} = 30$, $\min_{\rm dist} = 0.1$, cosine metric) and apply \hdbscan{}~\cite{McInnes2017} ($\min_{\rm cluster\_size} = 50$, $\min_{\rm samples} = 10$).
 
 \begin{table}[t]
@@ -696,6 +748,16 @@ HistGradientBoosting & $0.039$ & $12.2$ & $0.722$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{photo_z_scatter.png}
+  \caption{\label{fig:photoz_scatter} Photometric redshift estimated from \bigae{} latent vectors vs.\ spectroscopic redshift for the MLP model. The tight correlation ($\sigmaNMAD = 0.028$, $R^2 = 0.79$) demonstrates that purely unsupervised spectral compression captures redshift information without supervision.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{photo_z_feature_importance.png}
+  \caption{\label{fig:redshift_neuron} Feature importance of the 128 latent dimensions for photometric redshift prediction. A single dimension (\texttt{lat\_067}) accounts for $18.0\%$ of total predictive importance---$5.8\times$ the next most important dimension---earning the designation ``redshift neuron.'' This emergence from purely unsupervised training demonstrates that the autoencoder spontaneously dedicates internal capacity to encoding the dominant spectral transformation.}
+\end{figure}
 
 The MLP achieves $\sigmaNMAD = 0.028$ with $R^2 = 0.79$, competitive with dedicated photo-$z$ codes operating on broadband photometry~\cite{Salvato2019}.
 This is remarkable: the latent vectors were learned from a purely unsupervised objective with no redshift information during training.
@@ -769,6 +831,16 @@ Anomaly-score multi-tracer & $8.83$ & $1.6\%$ \\
 \end{table}
 
 The $9.5\%$ improvement from latent-space splitting reflects the fact that the 128-dimensional representation encodes spectral features correlated with halo environment and bias.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{anomaly_angular_power.png}
+  \caption{\label{fig:angular_power} Angular power spectrum of the anomaly rate map across the \desi{} DR1 footprint. The measured power is consistent with Poisson shot noise (dashed line) at all multipoles, confirming spatial uniformity and the absence of systematic angular patterns in the anomaly distribution.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fnl_comparison.png}
+  \caption{\label{fig:fnl_comparison} Comparison of $\sigma(\fnl)$ for three multi-tracer methods: standard DESI QSO catalog ($\sigma = 8.98$), anomaly-score splitting ($\sigma = 8.83$, $1.6\%$ improvement), and latent-space splitting ($\sigma = 8.12$, $9.5\%$ improvement). The latent-space method exploits all 128 dimensions simultaneously, providing finer-grained bias differentiation than a single-threshold binary split.}
+\end{figure}
 The 10 most informative latent dimensions for bias splitting are listed in Table~\ref{tab:latent_bias}.
 
 \begin{table}[t]
