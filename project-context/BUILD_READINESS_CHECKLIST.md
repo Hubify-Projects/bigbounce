@@ -144,7 +144,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### C. macOS app mockup + spec complete
 
-- [ ] **Write `DESKTOP_APP_SPEC.md`** in `project-context/` — full native features inventory:
+- [x] **Write `DESKTOP_APP_SPEC.md`** in `project-context/` — full native features inventory (commit `pending-c1`) — Tauri 2 shell + 11 native features (window chrome, menu bar, dock badge, native notifications, file drop, hubify:// URL scheme, launchd service, keyboard shortcuts, iCloud notes sync, code signing, auto-updater) + menu bar app variant + iteration plan
   - Native window chrome (or borderless like Linear/Cursor)
   - Native menu bar (App / File / Edit / View / Window / Help) with keyboard shortcuts
   - Native notifications (NSUserNotification · unread badge in dock)
@@ -294,14 +294,14 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
 | B. Web mockup | 25 | 49 | 51% |
-| C. macOS app | 0 | 5 | 0% |
+| C. macOS app | 1 | 5 | 20% |
 | D. API spec | 0 | 7 | 0% |
 | E. MCP server | 0 | 7 | 0% |
 | F. CLI spec | 0 | 8 | 0% |
 | G. Deployment infra | 0 | 13 | 0% |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **72** | **156** | **46%** |
+| **OVERALL** | **73** | **156** | **47%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
