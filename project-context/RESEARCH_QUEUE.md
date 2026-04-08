@@ -1,8 +1,9 @@
 # Research Queue — Hubify Labs BigBounce Program
 
-**Last updated: 2026-04-07**
+**Last updated: 2026-04-08**
 **Scripts location:** `h200_scripts/experiments/`
 **Results location:** `pipelines/h200_results/`
+**Pod backup:** `pipelines/h200_results/pod_backup_20260408_full/` (3.4 GB, 134 experiment dirs)
 
 ---
 
@@ -108,21 +109,30 @@
 | 43 | Paper 3 final figures | — | 3h | Generate any remaining figures |
 | 44 | Paper 4 final figures | — | 3h | Confusion matrix, training curves |
 
-### Pipeline 1: f_NL Tracer Purification (NOT STARTED — highest priority novel work)
-| Step | Task | Status |
-|------|------|--------|
-| 1 | Anomaly detection (BigAE) | COMPLETE |
-| 2 | Cross-match with DESI clustering catalog | NOT STARTED |
-| 3 | Classify tracers by bias properties | NOT STARTED |
-| 4 | Validate bias enhancement (direct Landy-Szalay) | NOT STARTED |
-| 5 | Re-measure σ(f_NL) with calibrated α | NOT STARTED |
-| 6 | Write up for Paper 3 | NOT STARTED |
+### Pipeline 1: f_NL Tracer Purification (Step 3 COMPLETE 2026-04-07)
+| Step | Task | Status | Result |
+|------|------|--------|--------|
+| 1 | Anomaly detection (BigAE) | **COMPLETE** | 195,829 anomalies |
+| 2 | Cross-match Legacy DR10 photometry | **FAILED** | KeyError: 'z' in `p1_legacy_crossmatch.py` — needs script fix |
+| 3 | **High-z QSO classifier** | **COMPLETE** | **13,367 high-z QSO predictions, 12,902 high-confidence (P>0.7), F1=0.97, AUC=0.9997, median z=3.25** |
+| 4 | Validate bias enhancement (direct Landy-Szalay) | **PARTIAL** | bias_evolution.py: mean ratio 3.27x, z-dependent (6.4x low-z, ~1x high-z) |
+| 5 | Re-measure σ(f_NL) with calibrated α | PENDING | needs corrected α from Step 4 |
+| 6 | Write up for Paper 3 | PENDING | classifier results already in paper.html |
+
+### Bugs to Fix Before Next Pod Run
+
+| Script | Bug | Fix |
+|--------|-----|-----|
+| `redshift_tomography.py` | numpy 2.x removed `np.trapz` | use `np.trapezoid` |
+| `p1_legacy_crossmatch.py` | `KeyError: 'z'` in DESI dataframe | check column name |
+| `fisher_forecast_spherex.py` | divide-by-zero, NaN output | guard with epsilon |
+| `planck_lensing_xcorr.py` | only synthetic data, bias=977 nonsensical | needs real Planck lensing maps |
 
 ### Not Yet Deployed (need special dependencies)
 | Experiment | Script | Dependency | Est. Hours |
 |-----------|--------|------------|------------|
 | NaMaster birefringence | birefringence_namaster.py | NaMaster install | 4h |
-| Quintom MCMC | quintom_w0wa_reanalysis.py | Cobaya + CAMB | 48h |
+| Quintom MCMC (real DR2) | quintom_w0wa_reanalysis.py | Cobaya + CAMB + real DR2 BAO | 48h |
 
 ### Future Experiment Ideas
 | Experiment | Script | Priority | Notes |

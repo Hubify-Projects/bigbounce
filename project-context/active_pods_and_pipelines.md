@@ -1,21 +1,31 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-06 UTC
-**H200 QUEUE v2 — Phases 1-3 COMPLETE, Phase 4 RUNNING**
+**Last updated:** 2026-04-08 UTC
+**H200 QUEUE v2 — All 8 phases COMPLETE + Pipeline 1 Step 3 COMPLETE. Pod STOPPED. Phases 9-10 PENDING.**
 
 ---
 
-## Pod: H200 — Queue v2 — ACTIVE
+## Pod: H200 — Queue v2 — STOPPED (full backup taken)
 | Field | Value |
 |-------|-------|
 | **Pod ID** | `o76k3jfzbfh25e` (sleepy_blush_crane) |
-| **SSH (direct)** | `ssh root@205.196.19.52 -p 11452 -i ~/.ssh/id_ed25519` |
+| **SSH (direct)** | `ssh root@205.196.19.52 -p 11452 -i ~/.ssh/id_ed25519` (when running) |
 | **SSH (proxy)** | `ssh o76k3jfzbfh25e-64410a04@ssh.runpod.io -i ~/.ssh/id_ed25519` |
 | **Machine** | NVIDIA H200 SXM (143 GB VRAM), 24 vCPUs, 377 GB RAM |
-| **Pipeline** | Research Queue v2 — Phase 4 running (f_NL science + NANOGrav) |
-| **Status** | ACTIVE — Phase 4 experiments in tmux session `phase4` |
+| **Status** | **STOPPED 2026-04-08** — RunPod infrastructure error. Full backup pulled before stop. |
 | **Cost** | $3.59/hr |
-| **Uptime** | ~50h as of 2026-04-06 |
+| **Last backup** | 2026-04-08 — `pipelines/h200_results/pod_backup_20260408_full/` (3.4 GB) |
+
+### Why Stopped
+1. RunPod detected critical machine error on the host (alert in dashboard)
+2. Pipeline crashed at `redshift_tomography.py` due to numpy 2.x removing `np.trapz`
+3. All results safely backed up to local + GitHub before stopping
+
+### Bugs to Fix Before Next Pod
+- `redshift_tomography.py`: `np.trapz` → `np.trapezoid` (numpy 2.x)
+- `p1_legacy_crossmatch.py`: `KeyError: 'z'` (Pipeline 1 Step 2 — script needs column name fix)
+- `fisher_forecast_spherex.py`: divide-by-zero → NaN output
+- `planck_lensing_xcorr.py`: synthetic data only, needs real Planck lensing maps
 
 ### Queue v2 Phases
 | Phase | Experiments | Est. Hours | Est. Cost | Status |

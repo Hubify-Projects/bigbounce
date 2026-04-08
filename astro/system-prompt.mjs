@@ -1,7 +1,7 @@
 /**
  * Astro system prompt — server-side only.
  * Contains full site knowledge for the BigBounce research chatbot.
- * Last updated: 2026-04-07
+ * Last updated: 2026-04-08
  */
 
 export function getSystemPrompt(pageContext) {
@@ -69,15 +69,20 @@ The decisive test — parameter-free prediction from matter-dominated contractio
 - Bayesian model comparison: 8-17:1 vs tuned multifield (600K+ MC, prior-dependent)
 - MegaMapper: 3-7σ conditional on systematics
 
-### Paper 3: Multi-Survey Anomaly Catalog (~35 pages, 95% ready, target: ApJS)
+### Paper 3: Multi-Survey Anomaly Catalog (~35 pages, 98% ready, target: ApJS)
 AI-driven observational discovery at survey scale:
 - BigAE autoencoder (496→128→496, ~660K params) scored all 22.5M DESI DR1 spectra
-- **9.5% improvement in σ(f_NL)** via latent-space multi-tracer (8.98→8.12)
+- **9.5% improvement in σ(f_NL)** via latent-space multi-tracer (8.98→8.12) — note: improvement is z-dependent, larger at low-z
+- **Pipeline 1 (NEW): 12,902 high-confidence high-z QSO candidates** identified from anomalies via ML classifier (F1=0.97, AUC=0.9997, median z=3.25)
 - 1,127 uncataloged objects in 10 astrophysical families (76 AGN, 27 post-starburst, 363 blue galaxies)
+- **Spectral taxonomy v2**: 15 deep clusters with silhouette=0.82, ARI=0.93, NMI=0.95 (vs original 10 families with 84% noise)
 - 83 gold anomalies with 0% false positive rate (injection/recovery validated)
 - 16 spectrally + temporally anomalous objects via NEOWISE cross-match
 - "Redshift neuron" (lat_067): single latent dimension encoding 18% of redshift info
+- **Anomaly bias enhancement: 3.27× standard tracers (mean)** — 6.4× at low-z, ~1× at high-z
+- **SDSS×LAMOST anomaly cross-correlation at 4.12σ** (Landy-Szalay) — anomalies trace real LSS
 - Multi-survey sweep: 33.5M sources across 8 surveys (DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, ACT, NEOWISE), 328K+ anomalies
+- Phase 5-6 extensions: BOSS, DES, VLASS (77 USS high-z candidates), LOFAR, JWST (500), Chandra (800), XMM (1,000)
 - 14 publication figures compiled into PDF
 
 ### Paper 4: Galaxy Chirality Catalog (~20 pages, 85% ready, target: MNRAS)
@@ -99,8 +104,8 @@ Largest bias-audited galaxy handedness catalog ever produced:
 
 ### Additional Results
 - NANOGrav 15yr: matter bounce γ = 3.0 vs observed 3.2 ± 0.6 (0.33σ consistent)
-- w0-wa MCMC: quintom-B favored at 2.3σ, P(quintom-B) = 98.6%
-- Combined PTA Bayes factor = 27.6 favoring bounce over SMBHB
+- Combined PTA: γ = 3.32 ± 0.37, Bayes factor = 27.6 favoring bounce over SMBHB
+- **w0-wa MCMC (REVISED 2026-04-08):** P(quintom-B) = 39.6% on mock DR2 data, 1.09σ from ΛCDM. The earlier 98.6% / 2.3σ result was on DR1 mock data; the new analysis with mock DR2 weakens the signal substantially. **Need real DESI DR2 BAO when released for definitive answer.**
 - f_NL triple role: galaxy bispectrum + PBH abundance regulator + induced GW spectrum
 
 ### 14 Structural Barriers
@@ -115,14 +120,17 @@ The research tested every minimal route from bounce to dark energy across 7 foun
 - Infrastructure: Cobaya v3.6.1 + CAMB v1.6.5
 
 ### H200 GPU Research Queue
-Research Queue v2 processed 40+ experiments across 8 phases on NVIDIA H200:
+Research Queue v2 processed 50+ experiments across 8 phases on NVIDIA H200 (pod stopped 2026-04-08, all results backed up):
 - Phase 1-3: Re-ran broken experiments, validation, cross-survey analysis
 - Phase 4: f_NL bias validation (2.28×), NANOGrav MCMC, combined PTA
 - Phase 5: New surveys (BOSS, DES, VLASS, LOFAR — 77 USS high-z candidates)
 - Phase 6: X-ray surveys (JWST 500 anomalies, Chandra 800, XMM 1000)
 - Phase 7: Speculations (Dyson sphere search, GW echoes, FRB anomalies)
-- Phase 8: Advanced architectures (transformer, multi-modal joint models)
-- Phases 9-10: Pending (full-scale scans, paper compilation)
+- Phase 8: Advanced architectures (multi-modal joint AUC +0.22, transformer, SDSS native autoencoder)
+- Novel batch: Second-level autoencoder, deep taxonomy (15 clusters), emission line finder (96.4% AGN BPT classification), anomaly cross-correlation (SDSS×LAMOST at 4.12σ), multi-messenger stack (123 joint anomalies)
+- Pipeline 1 Step 3: 12,902 high-z QSO candidates classified from anomalies
+- Bias evolution: Mean anomaly bias 3.27× standard, growing to 6.4× at low-z
+- Phases 9-10: Pending (full-scale scans, paper compilation) — needs new pod
 
 ### Key Equations
 - ECH Action: \\(S_{\\text{ECH}} = \\frac{1}{16\\pi G}\\int e \\wedge e \\wedge \\left(R + \\frac{1}{\\gamma}\\star R\\right)\\)
@@ -143,7 +151,11 @@ Research Queue v2 processed 40+ experiments across 8 phases on NVIDIA H200:
 - The birefringence prediction is bounce-independent (works in any cosmology)
 - The spin-torsion framework does NOT resolve cosmological tensions (ΔNeff ≈ 0)
 - Galaxy chirality is a null result (no parity violation detected)
-- The 9.5% f_NL improvement needs direct clustering calibration (α = 0.15 assumed)
+- The 9.5% f_NL improvement is z-dependent: 92% at z<0.5 but only 2-7% at z>2 (where SPHEREx is most sensitive)
+- Anomaly bias does NOT grow faster with z than standard tracers — the multi-tracer leverage is mostly at low-z
+- **Quintom-B probability has been REVISED DOWN** from 98.6% to 39.6% with mock DR2 data — the earlier 2.3σ result was preliminary
+- Several H200 experiments used synthetic data (Planck lensing xcorr, fisher forecast) and need real-data versions
+- Pipeline 1 Steps 4-6 (bias validation, recompute σ(f_NL), write up) still pending
 
 ## Public Data & Resources
 - GitHub: https://github.com/Hubify-Projects/bigbounce

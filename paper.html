@@ -312,7 +312,7 @@
   <h2>The Papers</h2>
 
   <div class="card" style="margin-bottom: 20px; border-left: 4px solid #f97316;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~95% Ready</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge" style="background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;">~98% Ready</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> "Spectral Anomalies Across Eight Major Surveys: 328K+ Anomalies from 33.5M Sources with Cross-Survey Validation and f<sub>NL</sub> Tracer Improvement"</p>
     <p style="font-size:14px;"><strong>Target:</strong> ApJS (Astrophysical Journal Supplement Series)</p>
     <p style="font-size:14px;"><strong>Scope:</strong> Spectral and photometric autoencoder anomaly detection across 8 major public surveys: DESI DR1 (22.5M spectra, 173-column enhanced catalog), SDSS DR18 (2.3M spectra, 77,905 anomalies), LAMOST DR10 (11.4M spectra, 44,075 anomalies), eROSITA DR1 (930K X-ray sources, 9,303 anomalies), Planck CMB (20K patches, 200 anomalies), Gaia DR3 (50K variable stars, 500 anomalies), ACT DR6 (20K CMB patches, 200 anomalies), NEOWISE (43.5K sources, 436 anomalies). <strong>328K+ total anomalies from ~33.5M sources</strong> &mdash; the largest multi-survey AI anomaly catalog ever produced. SDSS component classified by UMAP+HDBSCAN into 14 clusters including 4,117 high-z QSO candidates and 585 blue-excess QSOs. Cross-survey validation: 3 SDSS&times;DESI matches at 3&Prime; including a z&asymp;5.27 QSO flagged independently by both pipelines. eROSITA component: 203 novel X-ray sources not in SIMBAD (68% novelty rate). DESI component: tiered anomaly system with 2,145 silver (score&gt;3, SNR&gt;0.5) and 120 gold (&gt;5&sigma;), 10 taxonomy families, photo-z &sigma;<sub>NMAD</sub>=0.028, injection/recovery at 0% false positive rate, 9.5% f<sub>NL</sub> improvement. Corrected Fisher forecast: &sigma;(f<sub>NL</sub>) = 8.98 standard, 8.12 multi-tracer.</p>
@@ -333,8 +333,13 @@
       <li><strong>Injection/recovery: 0% false positive rate</strong> with 10&ndash;1,377x enrichment over random selection</li>
       <li><strong>&sigma;<sub>NMAD</sub> = 0.028</strong> photo-z from unsupervised latent vectors (R&sup2; = 0.79, no redshift supervision); redshift neuron lat_067</li>
       <li><strong>14 publication figures</strong></li>
+      <li><strong>NEW (Apr 2026) — Pipeline 1 Step 3:</strong> Downstream ML classifier identifies <strong>13,367 high-z QSO predictions</strong> from 195K BigAE anomalies (8.1%), with <strong>12,902 high-confidence (P&gt;0.7)</strong>. Median z=3.25, median anomaly score=11.5, median W1&minus;W2=1.01. Classifier performance: F1=0.97, AUC=0.9997, precision=0.97, recall=0.98 on 5-class problem. This is the key tracer population for the f<sub>NL</sub> multi-tracer measurement.</li>
+      <li><strong>NEW (Apr 2026) — SDSS&times;LAMOST anomaly cross-correlation at 4.12&sigma;</strong> (Landy-Szalay) — confirms anomalies trace real LSS, not survey-specific artifacts</li>
+      <li><strong>NEW (Apr 2026) — Anomaly bias enhancement:</strong> 3.27&times; standard tracers (mean) measured directly via Landy-Szalay across 6 redshift bins. Z-dependent: 6.4&times; at z&lt;0.5, ~1&times; at z&gt;2.</li>
+      <li><strong>NEW (Apr 2026) — Spectral taxonomy v2:</strong> 15 deep clusters, silhouette=0.82, ARI=0.93, NMI=0.95 (vastly improved over original 10 families with 84% noise)</li>
+      <li><strong>NEW (Apr 2026) — Phase 5-6 multi-survey extension:</strong> BOSS/eBOSS, DES DR2, VLASS (77 USS high-z candidates), LOFAR LoTSS DR2, JWST MAST (500 anomalies), Chandra CSC 2.1 (800), XMM 4XMM-DR14 (1,000)</li>
     </ul>
-    <p style="font-size:14px;"><strong>Remaining work:</strong> Integrate SDSS/LAMOST/eROSITA sections into draft, polish figure captions, final peer review. Remaining surveys (Planck, ACT, NEOWISE, Gaia) may add additional sections pending H200 results.</p>
+    <p style="font-size:14px;"><strong>Remaining work:</strong> Pipeline 1 Steps 4-6 (validate bias enhancement directly, recompute &sigma;(f<sub>NL</sub>) with calibrated &alpha;, write up). Final peer review.</p>
     <div style="margin-top:10px;">
       <a href="public/papers/anomaly_catalog_paper.pdf" class="btn btn-primary" target="_blank">Read PDF (with figures)</a>
       <a href="public/papers/anomaly_catalog_paper.pdf" class="btn btn-secondary" download>Download PDF</a>
