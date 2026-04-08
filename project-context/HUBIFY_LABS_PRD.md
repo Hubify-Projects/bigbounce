@@ -7023,6 +7023,7 @@ These are smaller decisions that don't block §40 lock-in but should be answered
 
 Tracked as separate mockup tasks (see `.queue.md` polish passes):
 
+**Tier 1 — chat / hierarchy / project (§40 core):**
 - [ ] **Add third sidebar mode "Chats"** between Menu and Files (§40.7)
 - [ ] **Project Overview page** as a new view + sidepeek renderer (§40.12)
 - [ ] **Chat composer enrichments** — model switcher, mode pill, file upload, mic icon (§40.10)
@@ -7033,9 +7034,95 @@ Tracked as separate mockup tasks (see `.queue.md` polish passes):
 - [ ] **Project filter chips on Lab kanban** + experiment filter chips on Project kanban (§40.9)
 - [ ] **Project ↔ Paper many-to-many** — paper sidepeek shows associated projects, project page shows associated papers (§40.4)
 
+**Tier 2 — Files sidebar + Notes UX overhaul (Houston feedback 2026-04-08, with 3 screenshots):**
+- [ ] **Strip emojis from note file names** — looks ugly + off-brand. Houston: "no emojis in note file names as it's just clutter". Future scope: optional per-note icon (Notion-style) but never default and never with a wrapper fill.
+- [ ] **Kill the new-note sidepeek** entirely. Replace with a **full-page note editor** that opens in the right pane, like a blank file. Houston: "feel powerful like a blank Obsidian page (or Notion page) using our existing file system... not a sidepeek afterthought"
+- [ ] **Inline editable filename at the top** of the note editor (Obsidian/Notion pattern). No separate filename field at the bottom.
+- [ ] **The "How notes work" content** stays but moves to a hover/click `(i)` info popout next to the Notes section header. Inside the popout: the existing copy + a link to `hubify.com/docs#notes` (future docs page).
+- [ ] **Per-note scoped chat session** — each note has its own dedicated chat by default. User can vibe-edit: brain-dump or paste into the editor, then ask the chat agent "keep my brain dump for context, rewrite/summarize/improve the note". Toggle: hide/show the chat to focus solo, click chat icon to bring it back.
+- [ ] **Markdown slash commands** in the note editor — same blocks/shortcuts as Obsidian (or Notion if equivalent). Headings, lists, code blocks, links, callouts, quotes, etc.
+- [ ] **Files sidebar sub-tabs** — apply the existing top-tab pattern (Menu | Chats | Files) recursively inside the Files mode: **Files | Notes | Storage**. Three sub-modes inside the Files panel, same UI/UX pattern as the parent. Avoids stacking three vertical sections.
+- [ ] **Notes sub-mode behavior:**
+  - Section collapsed by default (all subdir groups closed). Currently opens with all subdirs expanded — annoying.
+  - **Star/favorite to pin** notes to the top for quick access. Stars are local-only state by default, syncable as a future feature.
+  - **Line limit + `[load more...]`** button — don't show all notes at once. Show ~10 most-recent or starred, then "load more" expands the list.
+- [ ] **Storage sub-mode cleanup** — kill GitHub from the storage tier list (it's the same thing as the Files Files tab — the project source). Mark S3 Glacier and Vercel as "pending Houston decision" until §40.17.S below is resolved. Keep Git LFS (it's actually a separate storage backend).
+- [ ] **T# storage tier labels** — Houston isn't sure they're useful to humans. Decision: keep them but de-emphasize visually (smaller, more muted) so they read as "engineering metadata" not "user navigation". The labels stay because agents need them; the human eye can ignore them.
+
+**§40.17.S — Storage tier inventory cleanup (pending Houston input):**
+
+Houston flagged 3 storage decisions in his 2026-04-08 batch:
+1. **S3 Glacier** — currently shown as empty in the mockup. Are we adopting AWS S3 Glacier for cold backup, or sticking with Backblaze B2 (current plan)? My recommendation: **Backblaze only**. B2 is ~5x cheaper than Glacier for the same redundancy class (~$0.005/GB/mo vs ~$0.024/GB/mo Glacier Deep Archive equivalent, after egress fee normalization), and Backblaze offers a free 10 GB tier. Unless Houston specifically wants AWS vendor diversity, kill S3 Glacier from the storage tier list.
+2. **Vercel Blob** — currently shown in the storage tier list. Vercel Blob is useful for binary assets that need CDN-fast public delivery (e.g., paper PDFs served from `<lab>.hubify.app/papers/main.pdf`). My recommendation: **keep Vercel Blob ONLY for the public-facing `Z5 Public` zone, not as a general-purpose storage tier**. The website itself is on Vercel deploys (a different thing — that's serverless functions + static site, not Blob).
+3. **GitHub vs GitHub LFS** — Houston correctly noticed that GitHub appears as a "storage tier" but it's also the main project file source (the `Files Files` tab content). My recommendation: **kill GitHub as a separate storage tier**. It's the project source, not "storage". Keep Git LFS as a separate tier because it really is a separate storage backend (large binary objects stored externally and referenced by pointer in the git tree). The Files | Files sub-tab IS the GitHub source — no need to duplicate it as a storage line.
+
+**Final decision matrix once Houston approves:**
+
+| Storage tier | Keep / Drop | Reason |
+|---|---|---|
+| T1 Local (laptop) | Keep | Houston's Mac, source of truth for in-flight edits |
+| T2 GitHub | **Drop** (it IS the Files tab) | Files \| Files sub-tab covers this |
+| T3 Git LFS | Keep | Real storage backend, separate from regular git |
+| T4 Convex DB | Keep | Application state |
+| T5 Pod root | Keep | RunPod ephemeral |
+| T6 RunPod vol | Keep | Pod persistent volume |
+| T7 S3 Glacier | **Drop** unless Houston wants AWS vendor diversity | Backblaze B2 is cheaper |
+| T8 Backblaze B2 | Keep (re-add if missing) | Cheap cold backup |
+| T9 Hugging Face | Keep | Public model + dataset hosting |
+| T10 Vercel deploys | Keep | Static site serving |
+| T11 Vercel Blob | **Drop** unless used for Z5 Public PDFs | Niche, easy to add later |
+
+**Tier 3 — Mintlify docs port (locked here so it's not lost):**
+- [ ] **Replicate the EXACT Mintlify docs setup** from the existing `~/Desktop/CODE_2025/hubify/` repo into the new `Hubify-Labs/hubify-labs` platform repo. Houston: "it was annoyingly complex (issue prone) to get it right on the hubify.com/docs subpath vs subdomain so don't wanna go through that nightmare again and need to make sure it all ports over nice and clean".
+- [ ] **The setup uses a SUBPATH (`hubify.com/docs/...`), not a subdomain (`docs.hubify.com`).** This is non-trivial because Mintlify defaults to the subdomain pattern; the subpath setup requires Vercel rewrite rules + Mintlify deployment configuration that took multiple iterations to get right in the original repo.
+- [ ] **Files to port verbatim** (do not regenerate from scratch — copy and adapt):
+  - `hubify/docs/mint.json` (Mintlify config)
+  - `hubify/docs/snippets/`, `hubify/docs/api-reference/`, `hubify/docs/essentials/` (the actual content directories — content gets rewritten for Hubify Labs but the directory structure + nav config stays identical)
+  - `hubify/vercel.json` (the rewrite rules for `/docs/*` → Mintlify)
+  - Any custom CSS / JS in `hubify/docs/css/` and `hubify/docs/js/`
+- [ ] **The rewritten docs content** for Hubify Labs will live at `Hubify-Labs/hubify-labs/docs/` and serve at `hubify-labs.com/docs/...` (or whatever the new platform domain is — TBD).
+- [ ] **First docs pages to write** for Hubify Labs:
+  - `/docs/notes` — the page Houston referenced in the Notes UX feedback (the (i) popout in the Files sidebar links here). Covers: what notes are, how the agent visibility contract works, the per-note chat, slash commands, sharing.
+  - `/docs/labs/getting-started` — how to create your first lab
+  - `/docs/labs/migration` — how to migrate an existing research repo into Hubify Labs (the public version of `MIGRATION_BOUNCE_COSMOLOGY_LAB.md`)
+  - `/docs/agents/hierarchy` — orchestrator → leads → workers explainer
+  - `/docs/agents/cross-provider` — peer review setup with GPT/Gemini/Grok/Perplexity
+  - `/docs/projects/lifecycle` — chat → project graduation flow
+  - `/docs/api/...` — API reference for the platform's own API + MCP server
+
+**Tier 4 — `hubify://` URL scheme (referenced in §40.8):**
+- [ ] Spec the `hubify://` URL scheme. Used by `/notechat` resume links and the broader deep-link system. Examples:
+  - `hubify://chats/<chat-id>` — open a specific chat
+  - `hubify://labs/<slug>/projects/<slug>` — open a specific project
+  - `hubify://labs/<slug>/files/<path>` — open a file in the file preview pane
+  - `hubify://labs/<slug>/notes/<filename>` — open a specific note in the note editor
+  - `hubify://agents/<name>` — open an agent sidepeek
+- [ ] The URL scheme works in: the desktop Mac app (registered via `Info.plist`), the web app (intercepts `hubify://` clicks via JS and routes), and the CLI (`hubify open hubify://...`).
+
 These get built in subsequent loop iterations once the PRD §40 + lab specs land.
 
-### 40.18 Why §40 supersedes §35
+### 40.18 Linked planning files (the 5-lab stress test)
+
+The full migration plan and the 5 lab spec files live in `project-context/` and are linked here so this PRD stays the single source of truth for "what's the plan":
+
+| # | Lab | File | Status |
+|---|---|---|---|
+| **#1** | **Bounce Cosmology Lab** (the migration — super-super-clear #1 priority) | [`MIGRATION_BOUNCE_COSMOLOGY_LAB.md`](./MIGRATION_BOUNCE_COSMOLOGY_LAB.md) | SPEC COMPLETE — awaiting execution |
+| **#2** | **Hubify Self-Improving Lab** (meta-lab — improves the platform) | [`LAB_HUBIFY_SELF_IMPROVING.md`](./LAB_HUBIFY_SELF_IMPROVING.md) | SPEC ONLY — Houston creates via platform |
+| **#3** | **Dark Energy Lab** (cross-lab sharing test, redeems Paper 1) | [`LAB_DARK_ENERGY.md`](./LAB_DARK_ENERGY.md) | SPEC ONLY — Houston creates via platform after #1 |
+| **#4** | **Dark Matter Lab** (domain-agnosticism test) | [`LAB_DARK_MATTER.md`](./LAB_DARK_MATTER.md) | SPEC ONLY — Houston creates via platform |
+| **#5** | **Extraterrestrial Intelligence Lab** (public-facing viral test) | [`LAB_ETI.md`](./LAB_ETI.md) | SPEC ONLY — Houston creates via platform after #3 |
+
+**Order of execution:**
+1. Lab #1 migration (Day 1 — see migration plan)
+2. Lab #2 spec'd, NOT built yet (waits until Lab #1 is stable, ~2-4 weeks post-migration)
+3. Lab #3 created via platform (after Lab #1 is stable) — first cross-lab sharing test
+4. Lab #4 spec'd, possibly never built (placeholder for domain-agnosticism test)
+5. Lab #5 created via platform (after Lab #3 succeeds) — first public-facing lab
+
+Houston explicitly does NOT want Labs #2-#5 seeded into the database. He wants to test the platform's "create new lab" flow himself. The specs above are templates that the orchestrator (and/or Houston) reads when bootstrapping each lab.
+
+### 40.19 Why §40 supersedes §35
 
 §35 (the original Hierarchy Taxonomy) was written before Houston pushed back. It described a 7-level model with "Idea" and "Preresearch Chat" as separate concepts. §40 collapses those into the 5-level model. Where they conflict:
 
