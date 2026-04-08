@@ -5066,21 +5066,123 @@ This pattern is **explicitly part of the product** — the platform improves its
 
 ## 33. Storage Strategy & Data Map — Single Source of Truth
 
-**Status:** This is the master storage plan for Hubify Labs. Houston flagged that without a single coherent storage strategy, both he and the agents lose track of where data lives, what's backed up, and which copy is canonical. **No development work begins until this section is locked.**
+**Status:** This is the master storage plan for Hubify Labs. Houston flagged that without a single coherent strategy, both he and the agents lose track of where data lives, what's backed up, and which copy is canonical. **No development work begins until this section is locked.**
 
-### 33.1 Why this section exists
+**v2 update (2026-04-08):** Restructured from "12 tiers" to **5 zones** as the primary mental model. Tiers are still real (they're how zones are built), but agents and Houston now think in zones, not tiers. This collapse came from a Houston review: the 12-tier list was accurate but it was an engineer's checklist, not a leader's mental model.
 
-Multi-agent research generates data in many shapes (MCMC chains, model weights, anomaly catalogs, paper sources, math proofs, wiki entries, standup transcripts, memory entries, etc.) and runs across many compute layers (local Mac, GitHub, RunPod pods, RunPod network volumes, Modal, Fly.io, Vercel, S3, Backblaze, Hugging Face, etc.). Without a single coherent strategy:
+### 33.1 The 5 zones (the leader's mental model)
 
-1. Houston doesn't know which copy is canonical and gets anxiety about data loss.
-2. Agents make wrong assumptions about where things live and either duplicate work or fail.
-3. Backups drift silently.
-4. Cost spirals because data ends up in expensive places.
-5. Cross-lab sharing doesn't work because the data isn't where the cross-lab agents look for it.
+Every file in Hubify Labs lives in **exactly one of 5 zones**. The zone is named by what the data DOES, not what tech runs it. Houston only ever asks himself one question: "which zone does this belong in?"
 
-This section solves all five.
+| Zone | Purpose | Tech | What lives here | Backup | Houston's question |
+|------|---------|------|-----------------|--------|---------------------|
+| **Z1 · Source** | Human-written code, docs, configs · version-controlled · diffable | GitHub (with LFS for binaries) · Local Mac is just a working mirror | `*.py`, `*.tex`, `*.md`, `*.yaml`, paper PDFs, figures, math proofs, configs | Git history is the backup · S3 Glacier nightly for catastrophic recovery | "Did I write this with my hands or did an agent compute it?" |
+| **Z2 · State** | Application state · realtime · structured · queryable | Convex (DB + blob storage in one) · Fly.io for ephemeral runtime | Experiments index, papers index, agents, comms, tasks, standups, memory (4 layers), peer reviews, costs, ideas, novelty audits | Convex PITR built-in + nightly export to S3 Glacier | "Will I query this from the UI?" |
+| **Z3 · Compute** | Heavy data, models, MCMC chains · agent-generated · large | RunPod network volume (the persistent part) · pod root disk = ephemeral scratch only | MCMC chains, anomaly catalogs (per-survey), trained model weights, training checkpoints, downloaded survey raw data | S3 Glacier nightly · pod root → volume every 600s checkpoint cycle | "Did a GPU produce this?" |
+| **Z4 · Backup** | Universal cold backstop · the one place that has everything | S3 Glacier Deep Archive (single bucket: `s3://hubify-cold/`) · optional Backblaze B2 mirror | Nightly snapshots of Z1 + Z2 + Z3 | (it IS the backup) | "If everything else burned down, what would I restore from?" |
+| **Z5 · Public** | What we share with the world · discoverable · downloadable | Hugging Face (models + datasets) · Vercel (the website) | Published models, public datasets, the bigbounce.hubify.app site | Z1 (site source) + Z3 (model source) are canonical · Z5 is derived | "Can the public see this?" |
 
-### 33.2 The 12 storage tiers
+**That's the whole mental model.** 5 zones. Five questions. Done.
+
+### 33.2 The data flow at a glance
+
+```
+                           ┌──────────────┐
+                           │  Z4 BACKUP   │  ← nightly cold copy of EVERYTHING
+                           │  S3 Glacier  │
+                           └──────▲───────┘
+                                  │ nightly
+   ┌─────────────┐    ┌───────────┴───┐    ┌───────────────┐
+   │  Z1 SOURCE  │    │  Z2 STATE     │    │  Z3 COMPUTE   │
+   │  GitHub +   │◄──►│  Convex +     │◄──►│  RunPod vol + │
+   │  LFS + Mac  │    │  Fly runtime  │    │  pod scratch  │
+   └─────┬───────┘    └───────────────┘    └───────┬───────┘
+         │                                          │
+         │ deploy                                   │ publish
+         ▼                                          ▼
+                           ┌──────────────┐
+                           │  Z5 PUBLIC   │
+                           │ Vercel + HF  │
+                           └──────────────┘
+```
+
+Five boxes. Three primary flows (Z1↔Z2, Z2↔Z3, Z1↔Z3 via Convex caches). Two output flows (Z1→Z5 deploy, Z3→Z5 publish). One universal backup (everything → Z4 nightly).
+
+### 33.3 The hubify.storage API — agent contract
+
+Every agent has **one line of system prompt** about storage:
+
+> *"You can read from Z1, Z2, Z3, Z5 via the standard tools. Writes go to Z1 via git, Z2 via convex, Z3 via the storage API. Backups (Z4) are automatic — never write there directly. Before any non-trivial operation, check `map.md` in the lab repo."*
+
+The **storage API** is one Python/TS library: `hubify.storage`. It exposes 4 verbs:
+
+```python
+from hubify import storage
+
+# Read — works for any zone the caller has permission for
+content = storage.read("code://arxiv/main.tex")          # Z1
+exp = storage.read("state://experiments/EXP-053")        # Z2 (returns Convex row)
+chain = storage.read("data://chains/dneff/spin_torsion.1.txt")  # Z3
+model = storage.read("public://models/spectral-autoencoder-47k") # Z5
+
+# Write — same path scheme · routes to the right tech
+storage.write("code://arxiv/main.tex", new_content)      # → git working copy + auto-commit
+storage.write("state://experiments/EXP-053", {...})      # → Convex mutation
+storage.write("data://chains/dneff/spin_torsion.1.txt", chunk)  # → RunPod vol + checkpoint cron
+
+# Publish — promotes to Z5
+storage.publish("data://models/spectral_ae_47k.safetensors",
+                public_id="hubify-projects/spectral-autoencoder-47k")  # → HF Hub
+
+# Locate — returns every zone where this file exists + last verified
+locs = storage.locate("desi_dr1_anomalies.csv")
+# → [{"zone":"Z3","tier":"runpod-vol","verified":"2026-04-08T02:14"},
+#    {"zone":"Z4","tier":"s3-glacier","verified":"2026-04-08T02:14"}]
+```
+
+**Path prefix routing:**
+
+| Prefix | Zone | Tech routed to |
+|--------|------|----------------|
+| `code://` or `arxiv://` or `wiki://` | Z1 | Git working copy (paper-lead, figure-worker) |
+| `state://...` | Z2 | Convex queries/mutations |
+| `data://chains/...` or `data://models/...` or `data://catalogs/...` | Z3 | RunPod volume (anomaly-lead, cosmology-worker) |
+| `public://models/...` | Z5 | Hugging Face Hub (paper-lead approves) |
+| `public://site/...` | Z5 | Vercel Blob (site-worker) |
+| `runtime://locks/...` | Z2 (Fly subset) | Fly.io machine state |
+
+Agents NEVER deal with S3 or LFS directly. The library handles routing, locking, retries, checksum verification, and the backup chain. Z4 writes happen automatically via the backup-worker cron.
+
+### 33.4 Tier implementations (engineering detail)
+
+The 5 zones are built on **8 tiers** that the engineering team needs to know about. This is the "what tech do we provision" view, not the "where does this belong" view.
+
+| Zone | Tier | Tech | Used | Cost/mo | Notes |
+|------|------|------|------|---------|-------|
+| **Z1 Source** | T1 | Local Mac SSD (`~/CODE_2025/<lab>/`) | 64 GB | $0 | Houston's working mirror of Z1 |
+| Z1 Source | T2 | GitHub (`github.com/hubify-projects/<lab>`) | 480 MB | $0 | Source of truth for Z1 |
+| Z1 Source | T2-LFS | GitHub LFS (within T2) | 340 MB | $0 (under 1GB) | Large versioned binaries — same repo, different storage backend |
+| **Z2 State** | T4 | Convex DB + blob storage | 8.4 GB | $25 | Application state · realtime sync |
+| Z2 State | T10 | Fly.io machine + 10 GB volume | 4 GB | $5 | Always-on agent runtime · process locks · ephemeral runtime state |
+| **Z3 Compute** | T7 | RunPod network volume (`bigbounce-data`, 1 TB) | 428 GB | $2.80 | Persistent shared compute storage |
+| Z3 Compute | T6 | RunPod pod root (`/workspace`, ephemeral) | 134 GB | (incl in pod $/hr) | Scratch only · dies with pod · checkpoints to T7 every 600s |
+| **Z4 Backup** | T8 | AWS S3 Glacier Deep Archive | 428 GB | $1.55 | Universal backstop · 12-48h restore |
+| Z4 Backup | T11 (opt) | Backblaze B2 (peace-of-mind redundant) | 0 (standby) | $0 standby / $0.32 enabled | Optional second backup · NOT in critical path |
+| **Z5 Public** | T9 | Hugging Face Hub | 8.9 GB | $0 | Public models + datasets |
+| Z5 Public | T12 | Vercel Blob + Vercel Sandbox | 200 MB | $0 | Static site + ephemeral vibe-coding |
+| **Total** | **8 active tiers** | (across 5 zones) | **~510 GB** | **~$35/mo** | (Backblaze adds $0.32 if enabled) |
+
+**What changed in v2 vs v1 (the original 12 tiers):**
+
+| v1 (engineer's view) | v2 (zone view) | Why |
+|----------------------|----------------|-----|
+| T1 Local + T2 GitHub + T3 GitHub LFS as 3 separate tiers | All inside **Z1 Source** (T1 + T2 + T2-LFS) | LFS is a GitHub feature, not a separate provider. Local is just a mirror of GitHub. |
+| T4 Convex + T5 Convex Storage as 2 separate tiers | Both inside **Z2 State** (T4 only) | Convex blobs are still Convex; not a separate provider. |
+| T6 Pod root + T7 Network vol as 2 separate tiers | Both inside **Z3 Compute** (T7 primary, T6 = ephemeral scratch) | Pod root is just the scratch space of the compute zone. |
+| T10 Fly machine as its own tier | Folded into **Z2 State** (Fly = ephemeral runtime state) | Fly state is conceptually app state |
+| T11 Backblaze as its own tier | Optional within **Z4 Backup** | Pure redundancy, not in critical path |
+
+**Net result:** 12 tiers → 8 tiers (5 main + 3 supporting), grouped into 5 zones. The data type matrix in §33.5 still works — just relabeled to use zones in the "Primary" column.
 
 Every file in Hubify Labs lives in **exactly one of these 12 tiers** (its "primary" location). It MAY also exist in a secondary location for backup or distribution. Anything not on this list is forbidden.
 
@@ -5105,44 +5207,44 @@ Every file in Hubify Labs lives in **exactly one of these 12 tiers** (its "prima
 - Local NAS: not in scope. Houston travels.
 - Direct S3 (hot storage): too expensive vs Glacier for our access patterns.
 
-### 33.3 Data type → primary tier matrix
+### 33.5 Data type → zone matrix
 
-Every data type in the lab has **one** primary tier. Agents and Houston always know where to look first.
+Every data type in the lab has **one** primary zone. Agents and Houston always know where to look first. The "Primary" column now uses zone names (Z1-Z5) — the underlying tier implementation is in §33.4.
 
-| Data type | Example file/object | Primary | Secondary (auto-backup) | Why this tier |
+| Data type | Example file/object | Primary | Secondary (auto-backup) | Why this zone |
 |-----------|---------------------|---------|------------------------|---------------|
-| **Source code** | `pipeline_p1.py` | T2 GitHub | T1 local · T8 nightly | Versioned, small, frequently edited |
-| **Paper LaTeX source** | `arxiv/main.tex` | T2 GitHub | T1 local · T3 LFS for figs · T8 | Versioned, small, peer-edited |
-| **Compiled paper PDF** | `arxiv/main.pdf` | T3 GitHub LFS | T1 local · T8 · T9 (when published) | Large binary, versioned |
-| **Wiki entries** | `wiki/quintom-b.md` | T2 GitHub | T1 local · T4 (indexed copy) · T8 | Versioned, structured markdown |
-| **Math proofs** | `proofs/f_nl_derivation.lean` or `.tex` | T2 GitHub | T1 local · T8 | Versioned, small, source-of-truth |
-| **Config files** | `cobaya/full_tension.yaml` | T2 GitHub | T1 local · T8 | Versioned, small |
-| **Notebooks** | `analysis/desi_qc.ipynb` | T2 GitHub | T1 local · T8 (with outputs stripped before commit) | Versioned, medium, outputs stripped to avoid bloat |
-| **MCMC chains** (raw) | `chains/dneff/spin_torsion.1.txt` | T7 RunPod vol | T8 nightly · T9 if shared | Large, append-only, used by GPU pipelines |
-| **MCMC chain summaries** | `chain_means_latest.csv` | T2 GitHub | T1 · T4 (cached) · T8 | Small, version-controlled with the paper |
-| **Anomaly catalogs** (per survey) | `desi_dr1_anomalies.csv` (14 GB) | T7 RunPod vol | T8 nightly · T9 (public release) | Large, written by anomaly-worker, shared across pods |
-| **Anomaly catalog samples** (first 100 rows) | `dataset_samples` Convex table | T4 Convex | T8 nightly export | Small, queried by Data view sample-row preview |
-| **Trained model weights** | `models/spectral_ae_47k.safetensors` | T7 RunPod vol | T8 nightly · T9 (when published) | Large, immutable post-training |
-| **Model training checkpoints** | `models/chirality_cnn/epoch_03.pt` | T6 pod root | T7 every 600s (checkpoint cron) · T8 nightly | Frequent writes during training, ephemeral after run |
-| **Survey raw spectra** (DESI, SDSS, etc.) | `desi_dr1/spectra.fits` (184 GB frozen) | T7 RunPod vol (frozen) | T8 (Glacier deep archive) · upstream survey is canonical | Huge, immutable, can be re-fetched from upstream if needed |
-| **Survey download cache** | `cache/desi_dr1/coadd_*.fits` | T6 pod root | (none — it's a cache) | Re-fetchable, ephemeral |
-| **Figures** (PNG/SVG/PDF) | `public/images/fig07_dneff.png` | T3 GitHub LFS | T1 local · T8 · T12 Vercel Blob (for site) | Versioned binaries, served by site |
-| **Figure source scripts** | `figures/fig07_dneff.py` | T2 GitHub | T1 local · T8 | Versioned, small, regenerates the binary |
-| **Site static assets** | `bigbounce.hubify.app/_next/...` | T12 Vercel Blob | T2 (source HTML in repo) · T8 | Built artifact, regenerated from T2 |
-| **Standup transcripts** | `standups[date].messages[]` | T4 Convex | T8 nightly export | Structured, queried by Standups view |
-| **Activity events** | `comm_events[]` | T4 Convex | T8 nightly export · 90d retention then archive | High-volume, time-ordered |
-| **Agent memory** (4 layers) | `memories_{user,agent,lab,global}` | T4 Convex | T8 nightly export | Realtime sync, cross-session |
-| **Tasks + comments + reviews** | `tasks[]`, `task_comments[]` | T4 Convex | T8 nightly export | Application state |
-| **Cross-model peer reviews** | `peer_reviews[]`, `interpretation_passes[]` | T4 Convex | T8 nightly export | Application state |
-| **Cost / billing logs** | `costs_daily[]`, `costs_provider[]` | T4 Convex | T8 nightly export | Application state |
-| **Agent runtime state** | process locks, websocket sessions, log tails | T10 Fly volumes | T4 (state mirrored) · T8 for log dumps | Per-process, ephemeral-ish |
-| **Vibe coding sandbox artifacts** | `sandbox/<id>/output.png` | T12 Vercel Sandbox | T5 Convex Storage (if Houston says "save") · T8 | Ephemeral by default, promotable |
-| **Hugging Face published model** | `hubify-projects/spectral-autoencoder-47k` | T9 HF Hub | T7 RunPod vol (source) · T8 | Public discovery + download |
-| **Hugging Face published dataset** | `hubify-projects/desi-anomalies-dr1` | T9 HF Hub | T7 RunPod vol (source) · T8 | Public discovery + download |
+| **Source code** | `pipeline_p1.py` | **Z1** Source | Z4 nightly | Human-written, versioned, frequently edited |
+| **Paper LaTeX source** | `arxiv/main.tex` | **Z1** Source | Z4 nightly | Human-written, versioned, peer-edited |
+| **Compiled paper PDF** | `arxiv/main.pdf` | **Z1** Source (LFS) | Z4 nightly · Z5 when published | Versioned binary |
+| **Wiki entries** | `wiki/quintom-b.md` | **Z1** Source | Z2 indexed cache · Z4 nightly | Human-written markdown · indexed in Z2 for fast queries |
+| **Math proofs** | `proofs/f_nl_derivation.lean` or `.tex` | **Z1** Source | Z4 nightly | Human-written source-of-truth |
+| **Config files** | `cobaya/full_tension.yaml` | **Z1** Source | Z4 nightly | Human-written, small |
+| **Notebooks** | `analysis/desi_qc.ipynb` | **Z1** Source | Z4 nightly (outputs stripped before commit) | Human-written, medium |
+| **MCMC chains** (raw) | `chains/dneff/spin_torsion.1.txt` | **Z3** Compute | Z4 nightly · Z5 if shared | Agent-generated, large, append-only |
+| **MCMC chain summaries** | `chain_means_latest.csv` | **Z1** Source | Z2 cached · Z4 nightly | Small enough to version-control |
+| **Anomaly catalogs** (per survey) | `desi_dr1_anomalies.csv` (14 GB) | **Z3** Compute | Z4 nightly · Z5 public release | Agent-generated, large, shared across pods |
+| **Anomaly catalog samples** (first 100 rows) | `dataset_samples` table | **Z2** State | Z4 nightly export | Queried by Data view sample-row preview |
+| **Trained model weights** | `models/spectral_ae_47k.safetensors` | **Z3** Compute | Z4 nightly · Z5 when published | Agent-generated, immutable post-training |
+| **Model training checkpoints** | `models/chirality_cnn/epoch_03.pt` | **Z3** Compute (scratch) | Z3 vol every 600s · Z4 nightly | Frequent writes during training, ephemeral until checkpointed |
+| **Survey raw spectra** (DESI, SDSS, etc.) | `desi_dr1/spectra.fits` (184 GB frozen) | **Z3** Compute | Z4 · upstream survey is canonical | Re-fetchable from upstream if needed |
+| **Survey download cache** | `cache/desi_dr1/coadd_*.fits` | **Z3** Compute (scratch) | (none — re-fetchable) | Ephemeral |
+| **Figures** (PNG/SVG/PDF) | `public/images/fig07_dneff.png` | **Z1** Source (LFS) | Z4 nightly · Z5 (Vercel Blob for site) | Versioned binaries served by site |
+| **Figure source scripts** | `figures/fig07_dneff.py` | **Z1** Source | Z4 nightly | Human-written, regenerates the binary |
+| **Site static assets** | `bigbounce.hubify.app/_next/...` | **Z5** Public | Z1 source HTML in repo · Z4 | Built artifact, regenerated from Z1 |
+| **Standup transcripts** | `standups[date].messages[]` | **Z2** State | Z4 nightly export | Queried by Standups view |
+| **Activity events** | `comm_events[]` | **Z2** State | Z4 nightly export · 90d retention | High-volume, time-ordered |
+| **Agent memory** (4 layers) | `memories_{user,agent,lab,global}` | **Z2** State | Z4 nightly export | Realtime sync, cross-session |
+| **Tasks + comments + reviews** | `tasks[]`, `task_comments[]` | **Z2** State | Z4 nightly export | Application state |
+| **Cross-model peer reviews** | `peer_reviews[]`, `interpretation_passes[]` | **Z2** State | Z4 nightly export | Application state |
+| **Cost / billing logs** | `costs_daily[]`, `costs_provider[]` | **Z2** State | Z4 nightly export | Application state |
+| **Agent runtime state** | process locks, websocket sessions, log tails | **Z2** State (Fly subset) | Z2 mirrored · Z4 dumps | Per-process, ephemeral-ish |
+| **Vibe coding sandbox artifacts** | `sandbox/<id>/output.png` | **Z5** Public (Vercel Sandbox) | Z2 if Houston says "save" · Z4 | Ephemeral by default, promotable |
+| **Hugging Face published model** | `hubify-projects/spectral-autoencoder-47k` | **Z5** Public | Z3 source · Z4 cold copy | Public discovery + download |
+| **Hugging Face published dataset** | `hubify-projects/desi-anomalies-dr1` | **Z5** Public | Z3 source · Z4 cold copy | Public discovery + download |
 
-**Backup rule:** every primary tier has at least one secondary that lives on a different provider. T8 (S3 Glacier) is the universal backstop — if 4 of the 11 other tiers vanished, T8 alone can rebuild everything.
+**Backup rule:** every primary zone has at least one secondary that lives in Z4. Z4 (S3 Glacier) is the universal backstop — if Z1 + Z2 + Z3 + Z5 all vanished, Z4 alone can rebuild everything.
 
-### 33.4 Data flow rules (the contract)
+### 33.6 Data flow rules (the contract)
 
 These rules are enforced by agents. Violations trigger alerts.
 
@@ -5166,7 +5268,7 @@ These rules are enforced by agents. Violations trigger alerts.
 
 10. **Restore drill** runs monthly. Pick a random file, delete the secondary, restore from primary, verify checksum.
 
-### 33.5 Per-project `map.md` — auto-updating storage atlas
+### 33.7 Per-project `map.md` — auto-updating storage atlas
 
 Every lab repo has a `map.md` file at the root that documents its storage layout. **Agents auto-update it when they create / move / delete data.** Houston can `cat map.md` from anywhere to see the full picture.
 
@@ -5241,7 +5343,7 @@ flowchart LR
 - **storage-map-worker** (this file's owner) reads everything, writes this file
 ```
 
-### 33.6 storage-map-worker — the new agent
+### 33.8 storage-map-worker — the new agent
 
 A new agent in the roster: `storage-map-worker` (haiku 4.5, LOW reasoning).
 
@@ -5263,7 +5365,7 @@ A new agent in the roster: `storage-map-worker` (haiku 4.5, LOW reasoning).
 
 **Routing:** LOW reasoning · scheduled fire only · 4 fires/day · ~$0.20/day cost.
 
-### 33.7 Agent storage knowledge contract
+### 33.9 Agent storage knowledge contract
 
 Every agent on the platform MUST know:
 
@@ -5274,7 +5376,7 @@ Every agent on the platform MUST know:
 
 Operational rule: **before any agent writes a file, it consults `map.md` and §33.3 to determine the correct primary tier.** If unclear, it pauses and asks the orchestrator. Wrong-tier writes are reverted by `storage-map-worker` on the next refresh and a `comm_events` warning is posted.
 
-### 33.8 The mockup's Files sidebar — grouping by tier
+### 33.10 The mockup's Files sidebar — grouping by zone
 
 This is the UX implementation of §33.7 in the mockup. The Files mode of the sidebar will show file groups toggled by storage tier:
 
@@ -5306,7 +5408,7 @@ This is the UX implementation of §33.7 in the mockup. The Files mode of the sid
 - Click the pill → opens a `file-locations` sidepeek showing every copy + sha256 + last verified.
 - "Open map.md" button at the bottom opens the auto-updated map in the file preview tab.
 
-### 33.9 The Data Map view (new view in the mockup)
+### 33.11 The Data Map view (new view in the mockup)
 
 A new top-level view in the sidebar nav: **Data Map**. Renders the per-project Mermaid diagram from `map.md` with:
 
@@ -5318,7 +5420,7 @@ A new top-level view in the sidebar nav: **Data Map**. Renders the per-project M
 
 This view is the **single page Houston opens to feel safe about his data.** It is the visual answer to "where is everything and is it backed up?"
 
-### 33.10 Estimated monthly storage cost (BigBounce scale)
+### 33.12 Estimated monthly storage cost (BigBounce scale)
 
 | Tier | Usage | $/mo |
 |------|-------|------|
@@ -5338,7 +5440,7 @@ This view is the **single page Houston opens to feel safe about his data.** It i
 
 For BigBounce-scale data, the entire storage spread costs less than a single dinner. The expensive tiers (Convex, Fly) are paying for **service** (realtime sync, always-on), not storage.
 
-### 33.11 Migration plan (week 1 of dev phase)
+### 33.13 Migration plan (week 1 of dev phase)
 
 When the dev phase begins:
 
@@ -5942,9 +6044,12 @@ When this section ships, Houston no longer needs to leave the platform to brains
 | 30 | Agent host & terminal integration | ✅ |
 | **31** | **UI Component Inventory — built and specified** | ✅ **NEW** |
 | **32** | **Development phase readiness** | ✅ **NEW** |
-| **33** | **Storage Strategy & Data Map — single source of truth** (12 tiers, 28 data types, primary→backup matrix, per-project map.md, storage-map-worker, Files sidebar grouping, Data Map view, monthly cost ~$35) | ✅ **NEW** |
+| **33** | **Storage Strategy & Data Map — single source of truth** (v2: **5 zones** Z1-Z5 as primary mental model · 8 tiers as impl detail · `hubify.storage` API · 28 data type → zone matrix · per-project map.md · storage-map-worker · Files sidebar zone grouping · Data Map view · monthly cost ~$35) | ✅ **v2 RESTRUCTURED** |
+| **34** | **Agent File Structure — indydevdan-style self-improving agents** (agent.md / soul.md / skills/ / learnings.jsonl / episodes.jsonl, weekly self-reflection cron, orchestrator scaffolds new agents from templates, agent sidepeek tabs) | ✅ **NEW** |
+| **35** | **Hierarchy Taxonomy — Global → Labs → Projects → Pipelines → Experiments → Ideas → Tasks** (7 levels with worked BigBounce example, definitions, transitions, where each lives in storage, common confusions resolved) | ✅ **NEW** |
+| **36** | **Preresearch Mode + CEO Brainstorm** (CEO orchestrator agent variant with 8 skills, 8-step session lifecycle, Research Planning Doc format, mockup chat panel 3rd mode, 6 PRD-locked workflow rules, ~$60/mo envelope) | ✅ **NEW** |
 
-**Total: 34 sections, ~5,500 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home. Ready for development phase handoff.**
+**Total: 37 sections, ~6,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Global → Tasks). Preresearch ideation has a home. Ready for development phase handoff.**
 
 ---
 
