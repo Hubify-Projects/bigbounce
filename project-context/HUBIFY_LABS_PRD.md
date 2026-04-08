@@ -6417,9 +6417,229 @@ This is the difference between a research IDE and a research **factory**.
 
 ---
 
+## 38. Human Research Journal — Obsidian-style notes inside Hubify
+
+**Status:** Houston has been keeping research notes in Notion throughout the BigBounce project. He wants those to live inside Hubify Labs as a first-class human-first space — free-form, agent-readable on request, but **not** something the agents auto-act on. This section locks the Notes pattern.
+
+### 38.1 Why this exists
+
+Houston jots down ideas constantly: paper drafts, brain dumps, future prompts, saved external links, code snippets, math sketches, voice memos transcribed, etc. Right now those live in Notion (separate app, no agent visibility, manual sync). Moving them into Hubify gives him:
+
+1. **One place** for everything (no app-switching mid-thought)
+2. **Agent visibility on request** (paste a note into chat → orchestrator reads + acts)
+3. **Searchable from the same memory layer** (when he opts in)
+4. **Visible in the activity graph** (so he can SEE his thinking connect to the research)
+5. **Version-controlled with the rest of the lab** (Z1 Source · git history is the backup)
+
+Critically: **agents do not auto-read or auto-act on notes.** The notes are Houston's space. They become agent-actionable only when Houston explicitly shares one with the orchestrator. This separation is what makes the notes feel safe to use — he can dump unfiltered thoughts without worrying about an agent racing off to "implement" his half-baked musing.
+
+### 38.2 What lives in notes
+
+| Type | Path | Example |
+|------|------|---------|
+| **Daily journal** | `notes/<YYYY-MM-DD>.md` | brain dumps · today's musings · raw thinking |
+| **Future prompts** | `notes/prompts/<title>.md` | ideas to share with orchestrator later (not now, don't derail) |
+| **Saved links** | `notes/links/<source>.md` | external papers · articles · threads worth coming back to |
+| **Snippets** | `notes/snippets/<topic>.md` | code fragments · quotes · saved bits |
+| **Evergreen** | `notes/evergreen/<topic>.md` | Obsidian-style permanent atomic notes (long-form thinking) |
+
+All notes are markdown. All notes live in `bigbounce/notes/` (or `<lab>/notes/` for other labs) which is **Z1 Source** — version-controlled, git-tracked, backed up to Z4 nightly with the rest of the source.
+
+### 38.3 Agent visibility contract
+
+This is the load-bearing rule. **Notes are private by default.** Specifically:
+
+| Operation | Default | Houston can opt in |
+|-----------|---------|--------------------|
+| Orchestrator reads on its own | ❌ never | ❌ no opt-in path |
+| Orchestrator reads on Houston's request | ✅ when Houston says "look at notes/2026-04-08.md" or pastes a note | always available |
+| Other agents read (paper-lead, anomaly-lead, etc.) | ❌ never | ✅ on explicit share via UI |
+| Indexed in the agent memory layer (T4 Convex) | ❌ off | ✅ per-note opt-in toggle |
+| Visible as nodes in the Activity Graph (§39) | ✅ on | ❌ per-note opt-out toggle |
+| Searchable via global memory search | ❌ off (until indexed) | ✅ when memory indexing is on |
+| Cross-lab readable | ❌ never | ❌ no opt-in path |
+
+The mockup's `new-note` sidepeek surfaces the 4 toggles ("indexed in memory," "show in graph view," etc.) so Houston can configure each note as he creates it.
+
+### 38.4 Mockup surface
+
+| Surface | Where | Status |
+|---------|-------|--------|
+| **Notes section** | Top of sidebar Files mode (above 'By storage tier' and the 'bigbounce/' folder tree) | ✅ shipped (commit `7b0d124`) |
+| **5 note groups** | Daily 📓 · Prompts 💭 · Snippets 📋 · Links 🔗 · Evergreen 🌳 | ✅ shipped |
+| **Click any note** | Opens in the existing file preview tab (with markdown Preview/Raw toggle already supported) | ✅ shipped |
+| **+ New note button** | Opens `new-note` sidepeek with 6 templates + agent visibility toggles + filename input | ✅ shipped |
+| **Quick links footer** | "Open today's note →" + "Open graph view" at the bottom of the Notes section | ✅ shipped |
+| **Daily journal auto-create** | If you click "Open today's note" and `notes/<today>.md` doesn't exist, scaffold it | planned |
+| **Note → orchestrator sharing** | Right-click any note → "Share with orchestrator" option (adds the note's content to the chat input) | planned |
+| **Graph view inclusion** | Notes appear as `note` nodes in the Activity Graph (§39) by default | planned |
+
+### 38.5 Why this isn't just "another file type"
+
+The Notes section is **separate from the storage tier groupings** for a reason. Houston flips between two mental modes when he opens the file manager:
+
+- **"Where is this file?"** → tier groupings (Z1 Source, Z3 Compute, etc.)
+- **"What was I thinking?"** → notes (Daily, Prompts, Links, Evergreen)
+
+These are different intents and should be different surfaces. The notes section sits ABOVE the storage groupings so it's the first thing visible — because that's the most common reason Houston opens the file manager (to dump or recall a thought, not to inspect storage).
+
+### 38.6 Future enhancements (post-v1)
+
+- **Note backlinks** (Obsidian-style `[[note name]]` syntax with auto-link rendering)
+- **Daily journal templates** (date-stamped scaffold that auto-fills today's standup highlights)
+- **Voice memo transcription** (record a memo on phone → auto-transcribed into a note via Whisper)
+- **Note → preresearch chat promotion** (one click to graduate a note into a multi-model brainstorm)
+- **Cross-note tag system** (`#publish-readiness`, `#cuscuton`, `#houston-method`)
+
+---
+
+## 39. Activity Graph — The Neural Brain View
+
+**Status:** Houston already built this for `hubify.com/activity/graph` (force-directed canvas with neuron pulses, 443 nodes, 5 groups, distance-tiered edges). He wants it replicated in Hubify Labs as a first-class view that shows the actual research brain (agents · skills · hubs · research · templates · notes · files · experiments · pipelines · ideas) connected and pulsing with live activity. **This is the singularity-vibes visualization that makes the whole platform feel alive.**
+
+### 39.1 What it is
+
+A full-screen dark-mode neural network visualization where every important entity in the research lab is a node, and every relationship is an edge. Live agent activity pulses through the edges as glowing dots traveling from source to target. Hover any node to see its metadata. Click to drill into the existing sidepeek for that entity type.
+
+Think: Obsidian graph view × IDE activity feed × singularity vibes.
+
+### 39.2 The 5 (or more) node groups
+
+The Hubify reference uses 5 colors. We adopt the same 5 for visual continuity, then add expansion groups as the lab grows:
+
+| Group | Color | Examples |
+|-------|-------|----------|
+| **skill** | `#D4A574` (warm tan) | named skills: revtex-compile, claims-audit, arxiv-search, pdf-visual-qa, etc. |
+| **agent** | `#5EE89A` (sage green) | every agent in the roster: orchestrator, leads, workers, cross-provider reviewers |
+| **hub** | `#5CA8E8` (cool blue) | top-level hubs: labs, research projects, pipelines |
+| **research** | `#B88AE8` (lavender) | findings, contributions, novelty audits, peer reviews |
+| **template** | `#E878A0` (rose) | scaffolding templates: lab template, agent template, paper template |
+
+**Future expansion groups:** `note` (📓 Houston's notes from §38), `experiment` (a specific GPU run), `paper` (a draft or published paper), `figure` (an image asset), `dataset` (a catalog or model artifact). These can be added later without breaking the visual vocabulary.
+
+### 39.3 The reference implementation (Hubify source)
+
+Houston already shipped this at `hubify/apps/web/app/(os)/activity/graph/page.tsx` (753 lines, canvas-based). Key components:
+
+- `simulate(nodes, edges, iters)` — force-directed layout with 4 forces: repulsion (inverse square), centering (per-group cluster center), spring (target edge length 30px), gravity (weak pull to center)
+- `NeuralGraph` — canvas component with pan/zoom, hover/pinned nodes, distance-tiered edge opacity, ambient breathing on nodes, neuron pulses traveling along edges
+- 5 group colors + glow tints
+- Top-N labels (zoom-dependent) with overlap avoidance
+- Search input with fly-to animation
+- Filters panel (toggle node groups on/off)
+- Pinned node info card with metadata + "Open" link
+
+### 39.4 The mockup implementation
+
+The mockup uses **SVG + SMIL** (not canvas) because:
+1. The mockup is a single static HTML file with no build step
+2. SVG nodes are clickable via standard DOM events (no canvas hit-testing required)
+3. SMIL animations work without requestAnimationFrame loops
+4. Easier to inspect/debug for the design phase
+
+Trade-off: SVG with 443 nodes + 2,000 edges + ~9 active pulses is fine performance-wise but wouldn't scale to the 5,000+ nodes the production version handles. The production v1 (week 2 of dev phase) port will use canvas matching the Hubify reference.
+
+**Mockup features (shipped commit `02d813d`):**
+
+| Feature | Built? | Notes |
+|---------|--------|-------|
+| 5-group node palette with exact Hubify colors | ✅ | skill #D4A574 / agent #5EE89A / hub #5CA8E8 / research #B88AE8 / template #E878A0 |
+| 443 nodes generated deterministically | ✅ | Same group sizes as Hubify (200 skills · 200 agents · 26 hubs · 14 research · 3 templates) |
+| Pre-laid layout (no runtime force sim) | ✅ | Each group clusters at a different angle around the center; deterministic seed-based RNG |
+| ~2,000 edges | ✅ | Each node connects to its 1-6 nearest neighbors |
+| Distance-tiered edge opacity | ✅ | Short edges 0.30 · medium 0.18 · long 0.10 · longest 0.05 (matches Hubify tiers) |
+| Node radius scaling | ✅ | Hubs largest, research mid, agents medium, skills/templates small |
+| White center dot on bigger nodes | ✅ | Same as Hubify |
+| Ambient glow rings | ✅ | Each node has a 3.5× radius semi-transparent glow ring in its group color |
+| Neuron pulses traveling along edges | ✅ | SVG circles with SMIL `animate` elements, 4-9 spawned every 500ms, drop-shadow glow, fade in/out, auto-cleanup |
+| Top-15 connection labels | ✅ | Labels for the 15 most-connected nodes shown above each node |
+| Hover node → info card update | ✅ | Top-left card shows name · group pill · connection count · accent color |
+| Click node → existing sidepeek | ✅ | Maps group → existing sidepeek (agent / contribution / lab / lab-templates) |
+| Right side: Groups + Keyboard panels | ✅ | 5 toggleable group checkboxes + 5 keyboard shortcut hints |
+| Footer status bar | ✅ | 443 nodes · 2.0K edges · 51% success · 6.1K executions · live pulses |
+| Header: Back · title · search · Timeline/Graph toggle · Filters button | ✅ | Matches Hubify exactly |
+| Pulse animation pauses when navigating away | ✅ | Performance optimization — clears the spawn timer on `navTo(other)` |
+| Pulse animation resumes on return | ✅ | When returning to the graph view, pulses re-spawn |
+
+**NOT yet built (planned for future polish):**
+
+- Force-directed runtime simulation (mockup uses pre-laid; production will be canvas + force sim)
+- Pan/zoom on mockup SVG (currently static viewBox)
+- Search input fly-to animation
+- Group filter actually re-rendering nodes (currently just toggles `display:none`)
+- Note nodes (Houston's §38 notes appearing as a 6th group)
+
+### 39.5 Data sources for nodes/edges
+
+In the production version (week 2-4 of dev phase), the graph data comes from Convex queries:
+
+```typescript
+// convex/graph.ts (similar to the existing api.graph.getNetworkData in Hubify)
+export const getNetworkData = query(async ({ db }) => {
+  const skills = await db.query("agent_skills").collect();
+  const agents = await db.query("agents").collect();
+  const hubs = await db.query("labs").union("research_projects").union("pipelines").collect();
+  const research = await db.query("contributions").collect();
+  const templates = await db.query("agent_templates").collect();
+  const notes = await db.query("notes").filter(...).collect();  // §38 notes
+
+  // Build nodes from each source, with consistent meta fields
+  const nodes = [
+    ...skills.map(s => ({ id: s._id, label: s.name, group: "skill", meta: {...} })),
+    ...agents.map(a => ({ id: a._id, label: a.name, group: "agent", meta: {...} })),
+    // etc
+  ];
+
+  // Build edges from explicit relations + co-occurrences
+  const edges = await db.query("graph_edges").collect();
+
+  return { nodes, edges };
+});
+```
+
+The graph_edges table is populated by:
+- **graph-builder cron** (nightly · walks all relations and rebuilds the edge list)
+- **on-mutation hooks** (when an agent runs a skill, it adds an edge if one doesn't exist)
+- **manual annotations** (Houston can pin specific notes to specific research nodes)
+
+### 39.6 Live activity = real pulses
+
+In the production version, neuron pulses correspond to **real agent activity**:
+
+- Every comm_event (§25) emitted spawns 1 pulse along the edge from source agent to target
+- Every Houston Method state transition spawns 1 pulse (run → qc → analyze → ...)
+- Every cron fire spawns 1 pulse (the cron's edge)
+- Every memory write spawns 1 pulse (agent → memory layer)
+- Every cross-model peer review spawns 1 pulse (publishing-lead → reviewer)
+
+The result: a constantly-flowing river of activity through the graph. The more research is happening, the brighter and busier the brain becomes. When the lab is idle, the pulses slow to a trickle.
+
+This is **the visualization** that makes the platform feel alive. It's the answer to "what is my research lab actually doing right now?" — as a single glance, not a tabular dashboard.
+
+### 39.7 Why this is non-negotiable
+
+Houston's quote: *"this is another thing i added that is visually cool and impressive that users/humans will appreciate seeing the full research brain/neural net kinda activity and research graph with actual live activity pulsing through the neurons/lines etc (really gives off singularity vibes, AGI vibes, self-improving agentic super-connected multi-agent exponentially learning/improving AGI Singularity agent brain.... just a little nod to my initial vision but actually more practical based on our new schema/db columns and files and everything that makes sense too)"*
+
+This isn't decoration. It's the **emotional core** of the platform — the moment a visiting researcher (or investor, or future Houston) opens the graph and goes "oh, this is alive. this is actually doing research right now." Every other view in the platform is functional. The Activity Graph is the **proof of life**.
+
+### 39.8 Cost / performance
+
+| Concern | Mockup (SVG/SMIL) | Production (Canvas + force sim) |
+|---------|-------------------|----------------------------------|
+| Initial render | ~50ms (deterministic layout) | ~500ms (500 force sim iterations) |
+| Frame rate | 60fps (browser handles SMIL) | 60fps (manual requestAnimationFrame) |
+| Max nodes | ~1,000 before SVG slows down | ~10,000 with canvas |
+| Pulse cost | ~9 SMIL animations active at any time | ~40 traveling dots in canvas drawing |
+| Memory | ~5 MB | ~15 MB |
+| GPU compute | 0 (browser GPU paint) | 0 (canvas 2D context) |
+
+The production version will need a force-directed sim (computed once on data load, then static), pan/zoom, and a custom hit-testing layer for hover. This is ~2-3 days of work in the React/canvas port phase.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
-**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33/§34/§35/§36/§37 additions)
+**Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)
 
 | Section | Topic | Status |
 |---------|-------|--------|
@@ -6463,6 +6683,8 @@ This is the difference between a research IDE and a research **factory**.
 | **35** | **Hierarchy Taxonomy — Global → Labs → Projects → Pipelines → Experiments → Ideas → Tasks** (7 levels with worked BigBounce example, definitions, transitions, where each lives in storage, common confusions resolved) | ✅ **NEW** |
 | **36** | **Preresearch Mode + CEO Brainstorm** (CEO orchestrator agent variant with 8 skills, 8-step session lifecycle, Research Planning Doc format, mockup chat panel 3rd mode, 6 PRD-locked workflow rules, ~$60/mo envelope) | ✅ **NEW** |
 | **37** | **Publishing Phase — Autonomous Publish-Ready Loop** (publishing-lead agent + 4 publishing workers, 5-round publish-ready loop algorithm, scorecard, 'no future research punts' Houston Method update §37.6, rejection mode, Houston escalation, kanban 'PUBLISH READY 95%' pillar, arXiv package format, ~$30/paper cost) | ✅ **NEW** |
+| **38** | **Human Research Journal — Obsidian-style notes inside Hubify** (5 note groups: Daily/Prompts/Snippets/Links/Evergreen · agent visibility contract · private by default · `notes/` lives in Z1 Source · sidebar Notes section + new-note sidepeek + 4 agent visibility toggles per note) | ✅ **NEW** |
+| **39** | **Activity Graph — The Neural Brain View** (replicates hubify.com/activity/graph faithfully · 5 group palette · 443 nodes · ~2K edges · neuron pulses traveling along edges · live agent activity visualization · the singularity-vibes proof of life view) | ✅ **NEW** |
 
 **Total: 37 sections, ~6,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Global → Tasks). Preresearch ideation has a home. Ready for development phase handoff.**
 
