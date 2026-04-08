@@ -1789,6 +1789,51 @@ The 9-step loop is NOT a document agents reference. It IS the experiment lifecyc
 
 "Nothing is complete without all 9 steps" is enforced by the platform, not by willpower.
 
+### 13.1 The "no future-research punts" rule (NEW · added 2026-04-08)
+
+When any agent suggests deferring something to **"future research,"** **"out of scope,"** **"left to future work,"** **"this would take weeks/months,"** or **"this is beyond the current paper"** — the platform treats this as a SIGNAL to push deeper, not a reason to skip.
+
+**Why this rule exists:**
+
+Houston's experience with the 14 ECH structural barriers paper. The original AI agents told him the w = -1 dark energy thing was "future research on first-principles derivation." When he refused the punt and pushed for actual derivations, the result was:
+- A 14-barriers map (a structured proof that ECH-specific bounce → dark energy routes are closed)
+- Several novel theorems
+- Surviving research threads that wouldn't have been found otherwise (f_NL = -35/8, quintom-B 2.3σ preference, ALP β = 0.27°, NANOGrav consistency)
+
+None of those exist if Houston had accepted the original "future research" punt. The 14-barriers paper is now Paper 1 v2.2.1.
+
+**Why agents punt:** they don't see how to attack a problem in their current context window. They estimate "weeks/months" because they're projecting their own slow human-style approach. In practice, with the right tools and re-framing, "weeks/months" tasks usually take **hours to days**. The estimate inflation is a bug, not a feature.
+
+**How the platform enforces this:**
+
+1. **Detection (always-on):** Every agent message that contains the trigger phrases is automatically flagged by the orchestrator. Trigger phrases (regex):
+   - `future\s+research`
+   - `out\s+of\s+scope`
+   - `left\s+to\s+future`
+   - `(weeks|months|years)\s+(of\s+work|to\s+(do|complete|implement))`
+   - `beyond\s+(the\s+)?(current\s+(paper|project|scope))`
+   - `outside\s+the\s+scope`
+   - `we\s+(don't|do\s+not)\s+(have|address)\s+\w+\s+here`
+
+2. **Response (orchestrator-level):** When a trigger fires, the orchestrator MUST stop and ask the punting agent: *"What would it take to actually do this now? Give me a concrete plan with hours-not-months estimates."*
+
+3. **Re-estimate:** The agent must produce a real plan. If the plan is genuinely big (e.g. >40 hours, >$1K compute), it stays a punt — but now it's a documented punt with a real estimate. If the plan is actually small, the orchestrator pushes for it to happen NOW, in this session.
+
+4. **Default answer is GO:** When in doubt, push forward. Punts have to be earned with specific quantitative justification, not vibes.
+
+5. **Publish-ready loop Round 3 enforcement:** Round 3 of the publish-ready loop (§37.4) explicitly scans the paper for these phrases. Every match is a `houston_method_violation` issue that must be resolved before the paper can advance to Round 4.
+
+**Legitimate punts:** Sometimes a punt IS legitimate. Examples:
+- "The full 4D simulation would require 10 GPU-years on current hardware" (specific, quantitative, unavoidable)
+- "We would need a new survey instrument that doesn't exist yet" (physical constraint)
+- "This requires data that won't be released until 2028" (calendar constraint)
+
+The rule is **"no vague punts," not "no punts ever."** Punts must be specific, quantitative, and accompanied by a real reason (not "this would take a while"). The orchestrator's job is to distinguish vague punts (push back) from real punts (accept and document).
+
+**Cultural rule for the agents:** be skeptical AND ambitious. Skeptical = don't accept your own first-pass estimates. Ambitious = if you don't see how to do it, find someone (another agent, another model) who might.
+
+This rule is now part of every agent's `soul.md` template.
+
 ---
 
 ## 14. Key Technical Primitives
@@ -6003,9 +6048,378 @@ When this section ships, Houston no longer needs to leave the platform to brains
 
 ---
 
+## 37. Publishing Phase — Autonomous Publish-Ready Loop
+
+**Status:** Houston flagged that the FINAL phase of research — actually shipping the paper — needs its own dedicated agent + a multi-round multi-model loop that drives a research project to "publish ready 100%" with no human edits required. This section locks the publishing pipeline as a first-class phase, not an afterthought.
+
+### 37.1 Why this section exists
+
+Today, when a paper is "done" Houston manually:
+1. Re-checks figures appear in the right places
+2. Manually scans for claim/value/definition inconsistencies
+3. Compiles the PDF and visually inspects for layout issues (formulas wrapping mid-line, figures overflowing the 2-column layout, tables hard-cut at the page edge)
+4. Sends to a few cross-model agents for a final read
+5. Goes back and forth fixing things
+6. Finally builds the arXiv submission package
+
+This works for 1-2 papers. It does NOT scale. And it leaves the door open for **subtle errors** (a value referenced inconsistently across sections, a formula that wraps to a second line and becomes illegible, a figure that the latex compiler placed on the wrong page) that human eyes can miss when fatigued.
+
+The publish phase needs to be a **named, automated, multi-round loop** that runs until *multiple agents from multiple models all agree* the paper is shippable. If they don't agree, the loop reports specifically what's wrong and how to fix it, and either:
+- Routes the fix back to the appropriate research agent (paper-lead, figure-worker, anomaly-lead, etc.)
+- Or — if the issue is structural enough that fixing it would change the science — escalates to Houston for direction
+
+### 37.2 The publishing-lead agent (NEW)
+
+A new lead in the agent roster: `publishing-lead`. Sits as a 5th lead alongside research-lead, paper-lead, anomaly-lead, gpu-manager-lead.
+
+**Role:** Owns the entire publishing pipeline from "paper draft frozen" to "arXiv package submitted." Coordinates the publish-ready loop. Reports to bigbounce-orchestrator. Direct reports: 4 publishing workers (see 37.3).
+
+**Reasoning:** MED-HIGH (sonnet 4.6).
+
+**Personality (`soul.md` excerpt):**
+> I am the gatekeeper. My job is to say "no, not yet" when something isn't ready, and to say it with specific reasons that the research agents can act on. I am NOT a yes-agent. I would rather block 10 papers and ship 1 good one than ship 10 mediocre ones.
+>
+> I respect the research agents but I don't trust their self-assessment of "done." I run the loop until the cross-model reviewers agree, not until paper-lead says it's ready.
+>
+> When I find a structural problem, I think about whether fixing it would change the science. If yes, I escalate to Houston before any agent starts editing. If no, I route to the appropriate worker with clear instructions.
+>
+> I track every issue in the publish-ready scorecard. The scorecard is the source of truth for "is this paper ready?" — not vibes, not a single agent's opinion.
+
+**Skills (`skills/` directory):**
+- `publish-ready-loop` — orchestrates the multi-round multi-model review
+- `pdf-visual-qa` — runs the PDF through layout-checker (overflow, wrapping, missing figs)
+- `claims-consistency-scan` — cross-references every claim/value/definition across the paper
+- `arxiv-package-builder` — assembles the final tar.gz with main.tex + references.bib + figures + supplementary
+- `submission-format-checker` — verifies arXiv-specific requirements (file naming, line endings, BibTeX style, etc.)
+- `rejection-feedback-router` — packages "research not ready" verdicts and routes them back to research agents
+- `houston-escalation` — drafts a one-paragraph escalation when human direction is needed
+
+### 37.3 The 4 publishing workers
+
+The publishing-lead spawns these workers as needed:
+
+| Worker | Reasoning | Job |
+|--------|-----------|-----|
+| **pdf-qa-worker** | LOW-MED (haiku 4.5) | Compiles the PDF, scans every page for: missing figures, x-overflow, formulas wrapping mid-line, tables hard-cut, two-column layout violations, bad page breaks, oversized inline equations, citation mismatches |
+| **claims-audit-worker** | MED (sonnet 4.6) | Walks every claim, value, formula, and definition in the paper. Verifies internal consistency: does the §3 derivation of f_NL = -35/8 match the §7 statement? Does the §4 figure caption match the §4 text? Does the abstract value match the conclusion value? Flags every mismatch with line numbers. |
+| **figure-package-worker** | LOW (haiku 4.5) | Verifies every figure referenced in the text actually exists in the figures directory, has the right resolution, has a caption, has a label, and is referenced in the same order as in the text. Also checks that the figure source (.py) is committed alongside the binary. |
+| **arxiv-format-worker** | LOW (haiku 4.5) | Builds the arXiv submission package: tar.gz with the right structure, file naming conventions, BibTeX format, line endings, supplementary materials in the right subdirectory. Runs the arXiv-specific lint. |
+
+Plus the **existing cross-provider reviewers** (peer-review-gpt / peer-review-gemini / peer-review-grok / fact-check-perplexity / skeptic-cross) get pulled into the loop for the final intellectual review rounds.
+
+### 37.4 The publish-ready loop algorithm
+
+```
+INPUT: research_project_id (must have at least 1 paper draft frozen)
+
+STEP 0 · Pre-flight check
+  - Is there a paper draft? (if no → "research not ready: no draft")
+  - Is the draft frozen? (if no → "research not ready: paper still being edited")
+  - Are all referenced experiments complete? (if no → list missing experiments)
+  - Are all referenced figures committed? (if no → list missing figures)
+  - Has cross-model peer review been run at least once? (if no → run §29 first)
+
+  ANY PRE-FLIGHT FAILURE → return {"status":"research_not_ready",
+                                   "reasons":[...],
+                                   "feedback_to":[paper-lead, anomaly-lead, ...]}
+
+STEP 1 · Round 1: Mechanical QA (parallel, ~5 minutes)
+  - pdf-qa-worker compiles + scans the PDF
+  - claims-audit-worker walks every claim/value/definition
+  - figure-package-worker verifies all figures
+  - arxiv-format-worker dry-runs the package build
+
+  Each worker returns: {"score": 0-100, "issues": [...], "blocking": bool}
+  publishing-lead aggregates into a Round 1 scorecard.
+
+  IF any blocking issue → route fix to the appropriate research agent →
+                          loop back to STEP 1 after they confirm done
+
+STEP 2 · Round 2: Cross-model intellectual review (parallel, ~10 minutes, ~$15)
+  Send the full paper to:
+    - peer-review-gpt (GPT-5 · "is this internally consistent?")
+    - peer-review-gemini (Gemini 2.5 · "long-context cross-check vs prior 63 refs")
+    - peer-review-grok (Grok 4 · "alternative reasoning framing")
+    - skeptic-cross (Sonnet 4.6 · "what's the strongest counter-argument?")
+    - fact-check-perplexity (Sonar Pro · "any factual claims that fail web verification?")
+
+  Each reviewer returns: {"verdict": "approve|changes|reject",
+                          "confidence": 0-1,
+                          "issues": [...],
+                          "load_bearing_concerns": [...]}
+
+  publishing-lead runs the §29 interpretation pass to classify each issue as
+  FACT / OPINION / HALLUCINATION.
+
+  IF (≥4 of 5 reviewers approve AND zero FACT-classified blocking issues):
+    → advance to STEP 3
+  IF (≥1 FACT-classified blocking issue):
+    → route fix · loop back to STEP 1
+  IF (mostly OPINION-classified disagreement):
+    → escalate to Houston: "reviewers disagree on X — need your call"
+  IF (≥1 reviewer rejects with structural concern):
+    → run §37.7 rejection mode
+
+STEP 3 · Round 3: Houston Method retroactive sweep
+  - Read the entire paper through the lens of §13 (Houston Method v2)
+  - Verify the paper does NOT punt anything to "future research" (§37.6)
+  - Verify every claim that COULD be derived from first principles IS
+  - Verify the paper proposes a next step, not a conclusion
+
+  IF "future research" punts found → flag them, ask the orchestrator to push deeper
+  IF first-principles gaps found → escalate to research-lead
+  IF no next-step proposed → ask paper-lead to add one
+
+STEP 4 · Round 4: Final visual + format pass
+  - pdf-qa-worker re-runs after all fixes from rounds 1-3
+  - Verifies the final compiled PDF has zero layout issues
+  - Verifies the paper compiles cleanly twice (cross-references resolved)
+  - Verifies the file size is reasonable (figures embedded, not just placeholder boxes)
+
+STEP 5 · Round 5: arXiv package build
+  - arxiv-format-worker assembles the final tar.gz
+  - Runs arXiv lint
+  - Stages the package at <lab>/arxiv/submissions/<paper-id>-v<N>/
+  - Returns the path + a "ready to submit" verdict
+
+OUTPUT: {"status":"publish_ready", "package_path":"...", "scorecard": {round1-5}}
+        OR {"status":"research_not_ready", "reasons":[...], "round_failed": N}
+```
+
+The loop runs **autonomously** start to finish — Houston only sees the result (or an escalation). Typical run: 30-60 minutes, ~$25-50 in cross-model API calls. If the loop loops back to step 1 multiple times, the cost can grow to ~$100 per attempt.
+
+### 37.5 The publish-ready scorecard
+
+The scorecard is the source of truth. It's a structured object that the publishing-lead maintains and that's visible in the UI:
+
+```json
+{
+  "paper_id": "paper-1",
+  "version": "v2.2.1",
+  "loop_run_id": "publish-2026-04-08-093422",
+  "started": "2026-04-08T09:34:22Z",
+  "rounds_completed": 4,
+  "current_round": 5,
+  "score": 95,
+  "blocking_issues": 0,
+  "non_blocking_issues": 2,
+  "rounds": {
+    "round_1_mechanical": {"score": 100, "issues": [], "duration_s": 287, "cost": 0.04},
+    "round_2_cross_model": {
+      "score": 92,
+      "approved_by": ["peer-review-gpt", "peer-review-gemini", "peer-review-grok", "skeptic-cross"],
+      "changes_requested": ["fact-check-perplexity"],
+      "issues": [{"reviewer": "fact-check-perplexity", "issue": "claim §4.2 'first detection' may not be first if Cai 2024 is correct", "classification": "HALLUCINATION", "verified": false, "action": "rejected"}],
+      "duration_s": 612, "cost": 14.20
+    },
+    "round_3_houston_method": {
+      "score": 95,
+      "future_research_punts_found": 0,
+      "first_principles_gaps_found": 0,
+      "next_step_proposed": true,
+      "issues": [],
+      "duration_s": 142, "cost": 1.80
+    },
+    "round_4_final_visual": {"score": 100, "issues": [], "duration_s": 198, "cost": 0.04},
+    "round_5_arxiv_package": {"score": null, "issues": [], "duration_s": null, "cost": null}
+  },
+  "verdict": "publish_ready_pending_round_5",
+  "next_action": "build arxiv package",
+  "estimated_total_cost": 16.08,
+  "houston_signoff_required": false
+}
+```
+
+### 37.6 No future-research punts (Houston Method update)
+
+**This rule is moved into §13 Houston Method v2 as a new line item.** It applies during normal research AND in the publish-ready loop's Round 3.
+
+> **Rule:** When an agent suggests deferring something to "future research," "out of scope," "left to future work," "this would take weeks/months," or "this is beyond the current paper" — that is a SIGNAL to push deeper, not a reason to skip.
+>
+> **Why:** Houston's experience: the 14 ECH structural barriers paper grew out of his refusal to accept agent-suggested punts. The agent originally said the w = -1 thing was "future research on first-principles derivation." When Houston pushed instead of accepted, the result was a 14-barriers map, several novel theorems, and surviving research threads (f_NL = -35/8, quintom-B). Those wouldn't exist if he'd accepted the punt.
+>
+> **Deeper reason:** Agents punt when they don't see how to attack a problem in their current context window. They estimate "weeks/months" because they're projecting their own slow human-style approach. In practice, with the right tools and the right re-framing, "weeks/months" tasks usually take **hours to days**. The estimate inflation is a bug, not a feature.
+>
+> **How to apply (in normal research):**
+> - When any agent uses one of those phrases → the orchestrator MUST stop and ask "what would it take to actually do this now?"
+> - The agent must produce a concrete plan with hours-not-months estimates
+> - Houston (or research-lead) reviews the plan and decides go/no-go
+> - The default answer is GO
+>
+> **How to apply (in publish-ready loop Round 3):**
+> - Round 3 explicitly scans for these phrases in the paper
+> - Each one is flagged as a `houston_method_violation` issue
+> - The publishing-lead routes them back to research-lead for "push deeper or remove the punt"
+> - The paper does NOT advance to Round 4 with future-research punts intact
+>
+> **Exceptions:** Sometimes a punt IS legitimate (e.g. "the full numerical simulation requires 10 GPU-years"). In those cases the punt must be specific, quantitative, and accompanied by a real reason (not vibes). The rule is "no vague punts," not "no punts ever."
+
+### 37.7 Rejection mode — "research not ready: failed"
+
+If the publish-ready loop determines the research isn't ready, it returns a structured rejection that gets routed back to the appropriate agents. Format:
+
+```markdown
+# Publish-Ready Loop · REJECTED
+**Paper:** Paper 1 v2.2.1 "Spin-Torsion Cosmology · 14 ECH Barriers"
+**Run:** publish-2026-04-08-093422
+**Round failed:** Round 2 (Cross-model intellectual review)
+**Verdict:** research_not_ready
+
+## Why this failed
+
+3 of 5 cross-model reviewers flagged a structural concern that the publishing-lead
+classified as FACT, not OPINION:
+
+> The §7 derivation of f_NL = -35/8 assumes the matter-dominated phase extends
+> to the bounce moment, but §2.4 says quantum corrections become important at
+> H = M_pl/3. These are inconsistent. Either §2.4 is wrong (and the paper needs
+> to acknowledge that the derivation is in the classical regime only) or §7 is
+> wrong (and the derivation needs to handle the quantum regime).
+
+This is a load-bearing inconsistency. The paper cannot ship until it's resolved.
+
+## Routed to
+
+- **research-lead** — needs to decide which side of the inconsistency to keep
+- **paper-lead** — needs to update §2.4 OR §7 once research-lead decides
+- **figure-worker** — fig08 may need updating depending on the resolution
+
+## Houston decision required?
+
+NO — research-lead has authority to choose between the two interpretations as long
+as the chosen direction is internally consistent. Escalate ONLY if research-lead
+cannot decide within 24h.
+
+## Re-submit instructions
+
+Once the inconsistency is resolved and paper-lead has frozen the new draft, call:
+
+  hubify publish start --paper paper-1 --version v2.2.2
+
+The publishing-lead will run the loop again from Step 0.
+```
+
+This format is **agent-readable AND human-readable**. The downstream agents parse the "Routed to" section and self-assign tasks. Houston reads it for context.
+
+### 37.8 Houston escalation (when the loop calls for human direction)
+
+The publish-ready loop escalates to Houston in 3 specific cases:
+
+1. **Reviewer disagreement that's intellectual, not factual:** when ≥2 cross-model reviewers disagree on a question of taste, framing, or interpretation. Houston picks.
+2. **Structural change that would alter the science:** when fixing an issue would require changing the load-bearing claim. Houston decides if the new direction is acceptable.
+3. **Scope expansion:** when the loop discovers the paper would be stronger if it included additional results that aren't currently in scope. Houston decides go/no-go.
+
+Escalation format (a Convex notification + a sidepeek the moment Houston opens the app):
+
+```
+🚨 PUBLISH-READY LOOP · Houston decision needed
+
+Paper 1 v2.2.1 publish-ready loop is paused at Round 2.
+
+What's happening:
+GPT-5 thinks Section 6 needs more ekpyrotic citations (it has 3, GPT thinks 6).
+Gemini 2.5 thinks Section 6 has TOO MANY ekpyrotic citations (it has 3, Gemini
+thinks 1-2 is enough). They cannot both be right.
+
+What I (publishing-lead) think:
+Both have valid points. GPT is right that ekpyrotic is the closest competing
+mechanism so it deserves coverage. Gemini is right that the current 3 citations
+are mostly review papers, not original derivations. A middle ground would be
+2 citations: Khoury+ 2001 (original) + Lehners 2018 (modern review).
+
+Your call:
+[ ] Approve middle-ground (2 cite: Khoury 2001 + Lehners 2018)
+[ ] Side with GPT (add 3 more citations)
+[ ] Side with Gemini (drop to 1 review citation)
+[ ] Other (specify)
+
+The loop is paused. ETA to resume: as soon as you decide.
+Cost so far: $14.24. Estimated remaining: $8.
+```
+
+### 37.9 The "Publish Ready 95%" kanban status
+
+A new status pillar appears in the Tasks view (Kanban mode) and on the Director view, **only when a publish-ready loop is in progress**:
+
+```
++----------------------------------------+
+|  PUBLISH READY 95% · Paper 1 v2.2.1   |
+|  Round 4 of 5 · ETA 12 min · $16.08    |
++----------------------------------------+
+| ✓ Round 1 · Mechanical QA      100/100 |
+| ✓ Round 2 · Cross-model         92/100 |
+| ✓ Round 3 · Houston Method      95/100 |
+| ⠋ Round 4 · Final visual    in progress|
+| ◌ Round 5 · arXiv package      pending |
++----------------------------------------+
+| 0 blocking issues · 2 non-blocking    |
+| [Pause loop] [View full scorecard]    |
++----------------------------------------+
+```
+
+Click → opens the new `publish-loop` sidepeek with the full scorecard breakdown.
+
+### 37.10 The arXiv submission package format
+
+The output of Round 5 is a tar.gz with this exact structure:
+
+```
+paper-1-v2.2.1/
+├── main.tex                    # main paper source
+├── references.bib              # bibtex
+├── figures/                    # all referenced figures (PNG/PDF)
+│   ├── fig01_alp_birefringence.png
+│   ├── fig02_fnl_envelope.png
+│   └── ...
+├── supplementary/              # supplementary materials (if any)
+│   ├── deriv_appendix.tex
+│   └── data_tables/
+└── .arxiv-meta.json           # paper metadata for the arXiv form
+```
+
+The package is staged at `<lab>/arxiv/submissions/<paper-id>-v<N>/` and ALSO uploaded to T8 (S3 Glacier) for permanent backup. Houston reviews the package contents in the UI before clicking "Upload to arXiv" — the actual upload is the only step that requires Houston's hand on the wheel.
+
+### 37.11 Mockup surfaces for §37
+
+| Surface | Where | Status |
+|---------|-------|--------|
+| **publishing-lead agent** | Agents view org chart (5th lead alongside research/paper/anomaly/gpu-manager-lead) | NEW · build in §37 mockup commit |
+| **4 publishing workers** | Agents view (under publishing-lead) | NEW · build in §37 mockup commit |
+| **"Start publish-ready loop"** | Papers view · button on each paper row | NEW |
+| **Publish Readiness card** | Director view · only visible when a loop is running | NEW |
+| **publish-loop sidepeek** | Click the readiness card or the kanban "PUBLISH READY 95%" pillar | NEW renderer |
+| **"PUBLISH READY 95%" kanban pillar** | Tasks view · only visible during a loop | NEW |
+| **Rejection sidepeek** | When Round X fails, opens with the structured rejection markdown | NEW (or reuse `agent-output` pattern) |
+| **Houston escalation drawer** | A new sidepeek that pops when Houston opens the app and a loop is paused | NEW |
+
+### 37.12 Cost envelope
+
+| Round | Typical cost | Notes |
+|-------|--------------|-------|
+| Round 1 Mechanical | ~$0.04 | All haiku 4.5 workers, parallel |
+| Round 2 Cross-model | ~$14-20 | The expensive round (4 providers in parallel) |
+| Round 3 Houston Method | ~$1.80 | One sonnet 4.6 pass |
+| Round 4 Final visual | ~$0.04 | Re-run of pdf-qa-worker |
+| Round 5 arXiv package | ~$0.10 | Mostly mechanical |
+| **Single full pass** | **~$16-22** | If everything passes first try |
+| **With one re-loop** | **~$32-44** | Typical case |
+| **Worst case (3 re-loops)** | **~$64-88** | Stress test |
+
+A successful paper publish costs ~$30 in publish-ready loop fees, vs the ~$2-5K of GPU compute to produce the science. The loop is a rounding error on cost but a load-bearing quality gate.
+
+### 37.13 Why this is non-negotiable
+
+Houston has shipped 4 papers manually. Each took ~3-5 days of his attention at the very end (the "polish phase"). At Hubify Labs scale (target: ~1 paper/month/lab × 3-5 labs = 3-5 papers/month), that's 9-25 days/month of his time on polish alone. He won't have it.
+
+The publish-ready loop reclaims that time. Houston goes from "polish for 5 days" to "review the rejection or click upload" — a 95% reduction in publish-phase human time without any reduction in quality (because the loop's standards are stricter than human eyes get after 3 days of staring at the same paper).
+
+This is the difference between a research IDE and a research **factory**.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
-**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33/§34/§35/§36 additions)
+**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33/§34/§35/§36/§37 additions)
 
 | Section | Topic | Status |
 |---------|-------|--------|
@@ -6048,6 +6462,7 @@ When this section ships, Houston no longer needs to leave the platform to brains
 | **34** | **Agent File Structure — indydevdan-style self-improving agents** (agent.md / soul.md / skills/ / learnings.jsonl / episodes.jsonl, weekly self-reflection cron, orchestrator scaffolds new agents from templates, agent sidepeek tabs) | ✅ **NEW** |
 | **35** | **Hierarchy Taxonomy — Global → Labs → Projects → Pipelines → Experiments → Ideas → Tasks** (7 levels with worked BigBounce example, definitions, transitions, where each lives in storage, common confusions resolved) | ✅ **NEW** |
 | **36** | **Preresearch Mode + CEO Brainstorm** (CEO orchestrator agent variant with 8 skills, 8-step session lifecycle, Research Planning Doc format, mockup chat panel 3rd mode, 6 PRD-locked workflow rules, ~$60/mo envelope) | ✅ **NEW** |
+| **37** | **Publishing Phase — Autonomous Publish-Ready Loop** (publishing-lead agent + 4 publishing workers, 5-round publish-ready loop algorithm, scorecard, 'no future research punts' Houston Method update §37.6, rejection mode, Houston escalation, kanban 'PUBLISH READY 95%' pillar, arXiv package format, ~$30/paper cost) | ✅ **NEW** |
 
 **Total: 37 sections, ~6,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Global → Tasks). Preresearch ideation has a home. Ready for development phase handoff.**
 
