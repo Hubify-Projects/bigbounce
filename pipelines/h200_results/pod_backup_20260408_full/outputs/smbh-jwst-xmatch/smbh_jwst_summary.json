@@ -1,0 +1,53 @@
+{
+  "experiment": "smbh_jwst_bounce_seeds",
+  "phase": "Phase 7 \u2014 Speculations",
+  "timestamp": "2026-04-07T03:56:50.016329+00:00",
+  "description": "MCMC comparison of bounce-seeded vs light-seeded SMBH formation at z>10",
+  "theory": "JWST has discovered overmassive SMBHs at z>10 that are difficult to form from standard light (Pop III) seeds. Bounce cosmology naturally produces primordial black holes (M_seed ~ 10^3-10^5 M_sun) during the bounce transition, which can grow to observed masses via sub-Eddington accretion.",
+  "config": {
+    "n_smbh": 10000,
+    "n_walkers": 32,
+    "n_steps": 8000,
+    "burn_frac": 0.3,
+    "n_subsample": 500,
+    "device": "cuda"
+  },
+  "results": {
+    "bounce_model": {
+      "best_fit": {
+        "log_M_seed_mean": 2.879934447319003,
+        "log_M_seed_sigma": 1.1120473181088923,
+        "f_edd_mean": 0.2618102220303776,
+        "sigma_int": 2.384051368556451
+      },
+      "max_log_posterior": -1428.754388499677,
+      "log_evidence": -1432.8501164939594,
+      "mcmc_time_s": 472.8568687438965,
+      "n_samples": 179200
+    },
+    "light_seed_model": {
+      "best_fit": {
+        "log_M_seed_mean": 2.8662071500009754,
+        "log_M_seed_sigma": 1.117386906338333,
+        "f_edd_mean": 0.6185068086628164,
+        "sigma_int": 2.3824458396862216
+      },
+      "max_log_posterior": -1428.7219319582646,
+      "log_evidence": -1433.5861362432968,
+      "mcmc_time_s": 450.79714703559875,
+      "n_samples": 179200
+    },
+    "model_comparison": {
+      "log_bayes_factor": 0.7360197493374017,
+      "bayes_factor": 2.0876097460883156,
+      "favored_model": "bounce_seeds",
+      "evidence_strength": "inconclusive"
+    },
+    "overmassive_analysis": {
+      "n_z_gt_10": 6625,
+      "n_overmassive": 824,
+      "overmassive_fraction": 0.12437735849056604
+    }
+  },
+  "interpretation": "MCMC analysis inconclusively favors bounce_seeds model. Bounce-seeded PBHs naturally produce heavy seeds that reach observed z>10 SMBH masses without super-Eddington accretion. The overmassive fraction at z>10 is a key discriminator between seed mechanisms. Future JWST observations at z>12 will tighten these constraints."
+}

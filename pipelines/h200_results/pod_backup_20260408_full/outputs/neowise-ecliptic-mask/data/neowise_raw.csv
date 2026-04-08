@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VOTABLE version="1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ivoa.net/xml/VOTable/v1.3" xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+  <DESCRIPTION>Caltech/IPAC-IRSA IVOA Table Access Protocol (sync) Service</DESCRIPTION>
+  <RESOURCE type="results">
+    <INFO name="QUERY_STATUS" value="ERROR">UsageFault: BAD_REQUEST: Invalid or unsupported ADQL query string. See TAP documentation here: https://irsa.ipac.caltech.edu/docs/program_interface/TAP.html</INFO>
+  </RESOURCE>
+</VOTABLE>

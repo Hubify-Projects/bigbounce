@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-04-04 21:36:41",
+  "experiment": "erosita-neowise-xmatch",
+  "description": "eROSITA x NEOWISE X-ray+IR AGN cross-match within 5.0\"",
+  "n_erosita": 200,
+  "n_neowise": 20,
+  "erosita_data_mode": "synthetic",
+  "neowise_data_mode": "real",
+  "match_radius_arcsec": 5.0,
+  "n_matched": 0,
+  "n_secure_agn": 0,
+  "n_stern_criterion": 0,
+  "agn_label_breakdown": {},
+  "lx_stats": {
+    "mean_log_lx": null,
+    "median_log_lx": null
+  },
+  "n_sources": 220,
+  "n_anomalies_top1pct": 0,
+  "best_val_loss": 1.0,
+  "matched_pairs": [],
+  "train_time_s": 0.02,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 80.12,
+      "dec": 56.36,
+      "score": 1.0
+    },
+    {
+      "rank": 2,
+      "ra": 115.33,
+      "dec": -27.98,
+      "score": 1.0
+    },
+    {
+      "rank": 3,
+      "ra": 197.11,
+      "dec": -26.02,
+      "score": 1.0
+    },
+    {
+      "rank": 4,
+      "ra": 332.07,
+      "dec": -54.64,
+      "score": 1.0
+    },
+    {
+      "rank": 5,
+      "ra": 86.36,
+      "dec": -6.68,
+      "score": 1.0
+    },
+    {
+      "rank": 6,
+      "ra": 7.63,
+      "dec": -15.98,
+      "score": 1.0
+    },
+    {
+      "rank": 7,
+      "ra": 31.21,
+      "dec": 42.57,
+      "score": 1.0
+    },
+    {
+      "rank": 8,
+      "ra": 60.29,
+      "dec": -75.18,
+      "score": 1.0
+    },
+    {
+      "rank": 9,
+      "ra": 87.45,
+      "dec": 59.08,
+      "score": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 89.59,
+      "dec": 28.8,
+      "score": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 202.88,
+      "dec": -3.31,
+      "score": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 298.62,
+      "dec": 48.88,
+      "score": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 236.14,
+      "dec": 61.82,
+      "score": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 57.53,
+      "dec": -35.97,
+      "score": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 67.98,
+      "dec": 56.27,
+      "score": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 187.96,
+      "dec": -60.12,
+      "score": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 299.27,
+      "dec": 70.9,
+      "score": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 263.81,
+      "dec": 23.83,
+      "score": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 328.91,
+      "dec": 51.52,
+      "score": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 149.52,
+      "dec": -12.86,
+      "score": 1.0
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "survey": "act-dr6",
+  "n_inspected": 20,
+  "n_good": 20,
+  "n_suspect": 0,
+  "n_bad": 0,
+  "good_fraction": 1.0,
+  "suspect_reasons": {},
+  "n_duplicates": 0,
+  "details": [
+    {
+      "index": 0,
+      "ra": 97.025695,
+      "dec": 42.963365,
+      "score": 0.853931,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 1,
+      "ra": 279.959953,
+      "dec": 13.248738,
+      "score": 0.850688,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 2,
+      "ra": 347.322819,
+      "dec": 7.36857,
+      "score": 0.849499,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 3,
+      "ra": 332.565441,
+      "dec": -38.238837,
+      "score": 0.847716,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 4,
+      "ra": 262.246532,
+      "dec": 25.338152,
+      "score": 0.836306,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 5,
+      "ra": 328.639689,
+      "dec": 0.056017,
+      "score": 0.832193,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 6,
+      "ra": 308.160788,
+      "dec": 65.459364,
+      "score": 0.828642,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 7,
+      "ra": 181.655736,
+      "dec": -24.843265,
+      "score": 0.827885,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 8,
+      "ra": 157.965014,
+      "dec": -47.055838,
+      "score": 0.826724,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 9,
+      "ra": 239.057609,
+      "dec": -39.26299,
+      "score": 0.826272,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 10,
+      "ra": 134.088596,
+      "dec": 17.657752,
+      "score": 0.825243,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 11,
+      "ra": 260.238459,
+      "dec": 21.579785,
+      "score": 0.824916,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 12,
+      "ra": 170.463093,
+      "dec": -0.152046,
+      "score": 0.824636,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 13,
+      "ra": 3.485934,
+      "dec": 38.392571,
+      "score": 0.818692,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 14,
+      "ra": 249.883649,
+      "dec": -16.564467,
+      "score": 0.818584,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 15,
+      "ra": 264.3023,
+      "dec": -45.970263,
+      "score": 0.818049,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 16,
+      "ra": 323.988419,
+      "dec": 59.957217,
+      "score": 0.815349,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 17,
+      "ra": 276.867885,
+      "dec": 20.902992,
+      "score": 0.813188,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 18,
+      "ra": 206.714369,
+      "dec": -24.249824,
+      "score": 0.812398,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 19,
+      "ra": 256.111266,
+      "dec": -31.239483,
+      "score": 0.812197,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    }
+  ],
+  "data_source": "real",
+  "source_file": "/workspace/bigbounce/outputs/act-dr6-proper/act_dr6_proper_summary.json"
+}

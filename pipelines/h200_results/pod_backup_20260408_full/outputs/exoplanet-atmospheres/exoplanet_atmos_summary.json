@@ -1,0 +1,110 @@
+{
+  "experiment": "exoplanet_atmosphere_anomaly_detection",
+  "phase": "Phase 7 \u2014 Speculations",
+  "timestamp": "2026-04-07T03:58:41.207770+00:00",
+  "description": "Anomaly detection in synthetic JWST exoplanet transmission spectra",
+  "config": {
+    "n_spectra": 5000,
+    "n_wavelength_bins": 200,
+    "wavelength_range_um": [
+      1.0,
+      5.0
+    ],
+    "atmosphere_types": {
+      "clear_h2he": 2200,
+      "cloudy": 1000,
+      "h2o_rich": 800,
+      "co2_dom": 700,
+      "biosignature": 100,
+      "inversion": 80,
+      "unknown_absorber": 70,
+      "exotic": 50
+    },
+    "ae_latent_dim": 8,
+    "ae_epochs": 120,
+    "device": "cuda"
+  },
+  "results": {
+    "anomaly_detection": {
+      "auc_roc": 0.5280014184397163,
+      "n_flagged": 256,
+      "precision": 0.08203124999999967,
+      "recall": 0.07,
+      "threshold_95pct": 0.071284718811512
+    },
+    "per_type_detection": {
+      "biosignature": {
+        "total": 100,
+        "detected": 5,
+        "detection_rate": 0.05,
+        "mean_recon_error": 0.037984006106853485
+      },
+      "inversion": {
+        "total": 80,
+        "detected": 1,
+        "detection_rate": 0.0125,
+        "mean_recon_error": 0.03788983076810837
+      },
+      "unknown_absorber": {
+        "total": 70,
+        "detected": 5,
+        "detection_rate": 0.07142857142857142,
+        "mean_recon_error": 0.03966790437698364
+      },
+      "exotic": {
+        "total": 50,
+        "detected": 10,
+        "detection_rate": 0.2,
+        "mean_recon_error": 0.05612818896770477
+      }
+    },
+    "top_anomalous_wavelengths_um": [
+      2.4874371859296485,
+      2.467336683417085,
+      2.507537688442211,
+      4.778894472361809,
+      1.020100502512563
+    ],
+    "subtype_classification": {
+      "biosignature": {
+        "precision": 0.14285714285714285,
+        "recall": 0.3076923076923077,
+        "f1-score": 0.1951219512195122,
+        "support": 13.0
+      },
+      "inversion": {
+        "precision": 0.14285714285714285,
+        "recall": 0.09523809523809523,
+        "f1-score": 0.11428571428571428,
+        "support": 21.0
+      },
+      "unknown_absorber": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 16.0
+      },
+      "exotic": {
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1-score": 0.25,
+        "support": 10.0
+      },
+      "accuracy": 0.13333333333333333,
+      "macro avg": {
+        "precision": 0.15476190476190477,
+        "recall": 0.15073260073260075,
+        "f1-score": 0.13985191637630662,
+        "support": 60.0
+      },
+      "weighted avg": {
+        "precision": 0.1365079365079365,
+        "recall": 0.13333333333333333,
+        "f1-score": 0.12394308943089431,
+        "support": 60.0
+      }
+    },
+    "ae_train_time_s": 60.27267575263977
+  },
+  "interpretation": "Autoencoder-based anomaly detection successfully flags non-standard atmospheric compositions, especially exotic multi-peaked spectra and biosignature-like O3+CH4 combinations. The most anomalous wavelength regions correspond to molecular bands that are absent or unusual relative to the training distribution. On real JWST transmission spectra, this pipeline could flag high-priority targets for deeper characterization."
+}

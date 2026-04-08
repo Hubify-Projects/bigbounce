@@ -1,0 +1,9 @@
+,desi-dr1,sdss-dr18,lamost-dr10,erosita-dr1,neowise,gaia-dr3,planck-cmb,act-dr6
+desi-dr1,200,28,28,20,0,0,0,0
+sdss-dr18,28,200,33,20,0,0,0,0
+lamost-dr10,28,33,200,20,0,0,0,0
+erosita-dr1,20,20,20,100,0,0,0,0
+neowise,0,0,0,0,20,0,0,0
+gaia-dr3,0,0,0,0,0,20,0,0
+planck-cmb,0,0,0,0,0,0,20,0
+act-dr6,0,0,0,0,0,0,0,20

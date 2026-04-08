@@ -1,0 +1,79 @@
+{
+  "survey": "planck-cmb",
+  "data_source": "real",
+  "source_file": "/workspace/bigbounce/outputs/planck-cmb-masked/planck_cmb_masked_summary.json",
+  "n_objects": 20,
+  "two_point_correlation": {
+    "bin_centers_deg": [
+      0.25,
+      0.75,
+      1.25,
+      1.75,
+      2.25,
+      2.75,
+      3.25,
+      3.75,
+      4.25,
+      4.75,
+      5.25,
+      5.75,
+      6.25,
+      6.75,
+      7.25,
+      7.75,
+      8.25,
+      8.75,
+      9.25,
+      9.75
+    ],
+    "w_theta": [
+      0.0,
+      0.0,
+      0.0,
+      21.526316,
+      0.0,
+      9.210526,
+      0.0,
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      -0.95,
+      -2.9,
+      0.0,
+      0.0,
+      1.0,
+      5.105263,
+      3.052632,
+      0.0
+    ],
+    "mean_abs_w": 2.287237,
+    "max_abs_w": 21.526316
+  },
+  "nearest_neighbor": {
+    "mean_nn_deg": 1.218047,
+    "median_nn_deg": 0.888047,
+    "std_nn_deg": 1.584219,
+    "min_nn_deg": 0.327722,
+    "max_nn_deg": 7.949374,
+    "pct_within_1arcmin": 0.0,
+    "pct_within_1deg": 0.6
+  },
+  "healpix_uniformity": {
+    "nside": 32,
+    "total_pixels": 12288,
+    "occupied_pixels": 16,
+    "sky_fraction": 0.0013,
+    "mean_per_pixel": 1.25,
+    "std_per_pixel": 0.56,
+    "max_per_pixel": 3,
+    "chi2_per_dof": 0.2667,
+    "is_uniform": true
+  },
+  "classification": "clustered",
+  "classification_reasons": [
+    "strong 2pt correlation: max |w|=21.526",
+    "moderate NN clustering: 60.0% within 1deg"
+  ]
+}

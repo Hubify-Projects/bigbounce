@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-04-04 21:29:34",
+  "experiment": "desi-taxonomy-redo",
+  "description": "DESI anomaly taxonomy with optimized UMAP + HDBSCAN",
+  "data_source": "synthetic",
+  "n_objects": 195000,
+  "latent_dim": 128,
+  "umap_params": {
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "n_components": 2
+  },
+  "cluster_method": "hdbscan",
+  "hdbscan_params": {
+    "min_cluster_size": 500,
+    "min_samples": 50
+  },
+  "n_clusters": 10,
+  "noise_count": 731,
+  "noise_fraction": 0.004,
+  "largest_cluster_fraction": 0.179,
+  "degeneracy": "PASS",
+  "ari": 0.956,
+  "nmi": 0.9624,
+  "status": "COMPLETE",
+  "note": "Reconstructed from log after numpy.bool_ JSON crash"
+}

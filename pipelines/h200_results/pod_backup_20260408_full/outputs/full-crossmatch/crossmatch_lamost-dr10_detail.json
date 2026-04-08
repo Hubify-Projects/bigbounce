@@ -1,0 +1,608 @@
+[
+  {
+    "ra": 79.075672,
+    "dec": 17.548957,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 157.144331,
+    "dec": 43.856661,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 112.496573,
+    "dec": 9.615438,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 246.922359,
+    "dec": 25.540225,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 271.408277,
+    "dec": 10.665524,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 294.17256,
+    "dec": 36.176689,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 196.330562,
+    "dec": 56.409175,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 117.217596,
+    "dec": 26.07692,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 45.211388,
+    "dec": 58.717849,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 180.331517,
+    "dec": 35.922046,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 122.347161,
+    "dec": 19.306271,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 35.559875,
+    "dec": 55.317284,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 46.899024,
+    "dec": -1.6443,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 48.143948,
+    "dec": 35.858005,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 303.9204,
+    "dec": 31.831913,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 292.431662,
+    "dec": 36.984754,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 239.584658,
+    "dec": 50.840532,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 177.882007,
+    "dec": 22.226662,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 211.52038,
+    "dec": 31.270995,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 77.595111,
+    "dec": 49.647148,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 81.647327,
+    "dec": 18.770434,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 113.76362,
+    "dec": 15.798704,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 145.809841,
+    "dec": 5.658455,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 237.172125,
+    "dec": 45.279868,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 214.210874,
+    "dec": 41.008493,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 41.377715,
+    "dec": 45.354373,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 179.959344,
+    "dec": 26.077225,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 272.860831,
+    "dec": 23.771318,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 44.407022,
+    "dec": 21.805168,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 64.022456,
+    "dec": -1.339388,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 164.963437,
+    "dec": 45.532278,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 16.75271,
+    "dec": 27.50641,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 28.283358,
+    "dec": 9.765545,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 259.890984,
+    "dec": 4.444179,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 350.732424,
+    "dec": 26.975369,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 299.030057,
+    "dec": 56.235321,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 116.193954,
+    "dec": 12.760351,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 133.342354,
+    "dec": 46.972862,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 77.836825,
+    "dec": 46.068674,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 333.159977,
+    "dec": 27.948771,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 349.750345,
+    "dec": 52.525795,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 162.899472,
+    "dec": 30.76063,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 331.30482,
+    "dec": 32.131189,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 25.22771,
+    "dec": 38.230443,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 261.579643,
+    "dec": 16.714744,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 203.144538,
+    "dec": -9.136974,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 6.119002,
+    "dec": 33.16689,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 181.103573,
+    "dec": 56.801357,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 189.373467,
+    "dec": 12.535735,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 131.404437,
+    "dec": 21.61082,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 17.712512,
+    "dec": 6.17415,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 159.265834,
+    "dec": 3.686739,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 293.255317,
+    "dec": 58.787557,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 160.344448,
+    "dec": -7.707877,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 252.605304,
+    "dec": 38.281941,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 199.070411,
+    "dec": 7.445546,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 131.023406,
+    "dec": 53.779198,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 158.531249,
+    "dec": 52.26297,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 104.87401,
+    "dec": -4.151555,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 77.948973,
+    "dec": 26.637409,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 269.772711,
+    "dec": 49.054097,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 236.703799,
+    "dec": 56.982648,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 46.64502,
+    "dec": 31.359162,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 144.722588,
+    "dec": 19.719935,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 223.710804,
+    "dec": 26.242161,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 25.429077,
+    "dec": 45.215238,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 127.179743,
+    "dec": 56.488237,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 63.810608,
+    "dec": 28.466935,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 41.303031,
+    "dec": 15.698332,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 266.64213,
+    "dec": 19.416566,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 294.249812,
+    "dec": 13.722404,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 225.346279,
+    "dec": -3.879715,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 240.966807,
+    "dec": 49.322282,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 111.677253,
+    "dec": 33.462361,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 226.67806,
+    "dec": 39.701748,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 331.668959,
+    "dec": 18.257093,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 243.47589,
+    "dec": -8.827149,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 308.56366,
+    "dec": 28.236461,
+    "status": "ok",
+    "matches": [
+      {
+        "main_id": "NGC  6940    89",
+        "otype": "*",
+        "sep_arcsec": 2.02
+      }
+    ]
+  },
+  {
+    "ra": 183.618516,
+    "dec": 42.747809,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 201.436059,
+    "dec": 18.268897,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 174.672192,
+    "dec": -8.447902,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 160.81294,
+    "dec": 58.944587,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 51.572046,
+    "dec": 24.920505,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 288.737903,
+    "dec": 1.075548,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 152.845428,
+    "dec": 14.053804,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 238.474093,
+    "dec": 9.990692,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 280.852204,
+    "dec": 19.045526,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 122.218052,
+    "dec": 1.825892,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 292.872807,
+    "dec": 9.490023,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 102.105007,
+    "dec": 33.965808,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 11.715291,
+    "dec": 15.375811,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 55.664053,
+    "dec": 34.996568,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 341.621762,
+    "dec": 43.910179,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 160.745293,
+    "dec": 29.73707,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 303.313108,
+    "dec": 37.236816,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 100.435095,
+    "dec": 53.893067,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 157.957036,
+    "dec": 14.884258,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 208.739447,
+    "dec": 14.333116,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 37.756873,
+    "dec": -5.566606,
+    "status": "ok",
+    "matches": []
+  },
+  {
+    "ra": 104.960149,
+    "dec": 40.845784,
+    "status": "ok",
+    "matches": []
+  }
+]

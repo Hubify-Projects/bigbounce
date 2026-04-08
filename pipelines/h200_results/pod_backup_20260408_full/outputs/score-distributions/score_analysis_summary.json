@@ -1,0 +1,641 @@
+{
+  "timestamp": "2026-04-04 21:24:25",
+  "experiment": "score-distribution",
+  "description": "Score distribution analysis with log-normal/power-law fits and systematic detection",
+  "n_surveys": 8,
+  "n_sources": 795644,
+  "n_anomalies_top1pct": 7955,
+  "best_val_loss": 1.0,
+  "n_clean": 0,
+  "n_warning": 2,
+  "n_critical": 5,
+  "all_systematic_flags": [
+    "desi-dr1: HEAVY_TAIL: Extreme kurtosis=3341.5 \u2014 outlier-dominated, check for score explosion",
+    "sdss-dr18: HEAVY_TAIL: Extreme kurtosis=4354.9 \u2014 outlier-dominated, check for score explosion",
+    "lamost-dr10: BIMODAL: Two distinct populations detected \u2014 may indicate pipeline artifact or mixed surveys",
+    "lamost-dr10: POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape",
+    "erosita-dr1: HEAVY_TAIL: Extreme kurtosis=3234.1 \u2014 outlier-dominated, check for score explosion",
+    "erosita-dr1: POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape",
+    "act-dr6: HEAVY_TAIL: Extreme kurtosis=17.3 \u2014 outlier-dominated, check for score explosion",
+    "act-dr6: POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape",
+    "planck-cmb: scipy_unavailable",
+    "neowise: HEAVY_TAIL: Extreme kurtosis=1962.9 \u2014 outlier-dominated, check for score explosion",
+    "neowise: POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape",
+    "gaia-dr3: HEAVY_TAIL: Extreme kurtosis=593.7 \u2014 outlier-dominated, check for score explosion",
+    "gaia-dr3: POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+  ],
+  "per_survey": [
+    {
+      "survey": "desi-dr1",
+      "data_source": "synthetic",
+      "source_file": "synthetic (100000 scores)",
+      "basic_stats": {
+        "n_scores": 100000,
+        "n_positive": 100000,
+        "mean": 399.7359,
+        "median": 54.559,
+        "std": 2465.1134,
+        "min": 0.005869,
+        "max": 264384.8005,
+        "percentile_90": 709.8172,
+        "percentile_95": 1451.6978,
+        "percentile_99": 5624.3715,
+        "percentile_999": 25297.6951
+      },
+      "lognormal_fit": {
+        "mu": 3.999135,
+        "sigma": 2.001013,
+        "ks_statistic": 0.002371,
+        "ks_pvalue": 0.626591,
+        "good_fit": true
+      },
+      "powerlaw_fit": {
+        "alpha": 1.626,
+        "x_min": 54.559,
+        "n_tail": 50000,
+        "ks_statistic": 0.085533,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": 3.9379,
+            "count": 3496
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 109.3232,
+        "top_1pct_range": 258760.1495,
+        "prev_1pct_range": 2366.9276
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 3341.497,
+        "skewness": 43.4851
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=3341.5 \u2014 outlier-dominated, check for score explosion"
+      ],
+      "severity": "critical"
+    },
+    {
+      "survey": "sdss-dr18",
+      "data_source": "synthetic",
+      "source_file": "synthetic (77905 scores)",
+      "basic_stats": {
+        "n_scores": 77905,
+        "n_positive": 77905,
+        "mean": 735.8725,
+        "median": 32.6062,
+        "std": 8375.2378,
+        "min": 0.000353,
+        "max": 921288.1721,
+        "percentile_90": 825.1971,
+        "percentile_95": 2073.5369,
+        "percentile_99": 11655.2163,
+        "percentile_999": 71855.5883
+      },
+      "lognormal_fit": {
+        "mu": 3.491819,
+        "sigma": 2.507793,
+        "ks_statistic": 0.002067,
+        "ks_pvalue": 0.892459,
+        "good_fit": true
+      },
+      "powerlaw_fit": {
+        "alpha": 1.4981,
+        "x_min": 32.6062,
+        "n_tail": 38953,
+        "ks_statistic": 0.084675,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": 3.4343,
+            "count": 2672
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 155.5449,
+        "top_1pct_range": 909630.8419,
+        "prev_1pct_range": 5848.0265
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 4354.9318,
+        "skewness": 55.875
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=4354.9 \u2014 outlier-dominated, check for score explosion"
+      ],
+      "severity": "critical"
+    },
+    {
+      "survey": "lamost-dr10",
+      "data_source": "synthetic",
+      "source_file": "synthetic (44075 scores)",
+      "basic_stats": {
+        "n_scores": 44075,
+        "n_positive": 44075,
+        "mean": 144.6168,
+        "median": 13.0989,
+        "std": 241.5254,
+        "min": 0.135481,
+        "max": 3049.1545,
+        "percentile_90": 493.359,
+        "percentile_95": 651.8946,
+        "percentile_99": 1000.5464,
+        "percentile_999": 1498.3969
+      },
+      "lognormal_fit": {
+        "mu": 3.201681,
+        "sigma": 2.02863,
+        "ks_statistic": 0.131444,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 1.4344,
+        "x_min": 13.0989,
+        "n_tail": 22038,
+        "ks_statistic": 0.248175,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": true,
+        "n_peaks": 2,
+        "peaks": [
+          {
+            "bin_center": 1.9596,
+            "count": 1247
+          },
+          {
+            "bin_center": 5.9682,
+            "count": 1042
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 13.0761,
+        "top_1pct_range": 2048.1765,
+        "prev_1pct_range": 156.6346
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": false,
+        "kurtosis": 5.9043,
+        "skewness": 2.1508
+      },
+      "systematic_flags": [
+        "BIMODAL: Two distinct populations detected \u2014 may indicate pipeline artifact or mixed surveys",
+        "POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+      ],
+      "severity": "warning"
+    },
+    {
+      "survey": "erosita-dr1",
+      "data_source": "synthetic",
+      "source_file": "synthetic (9303 scores)",
+      "basic_stats": {
+        "n_scores": 9303,
+        "n_positive": 9303,
+        "mean": 102.5535,
+        "median": 41.2496,
+        "std": 482.7334,
+        "min": 0.004686,
+        "max": 33439.1661,
+        "percentile_90": 214.4348,
+        "percentile_95": 340.4489,
+        "percentile_99": 866.2698,
+        "percentile_999": 2897.0319
+      },
+      "lognormal_fit": {
+        "mu": 3.604705,
+        "sigma": 1.502893,
+        "ks_statistic": 0.035597,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 1.9577,
+        "x_min": 41.2496,
+        "n_tail": 4652,
+        "ks_statistic": 0.09109,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": 3.8685,
+            "count": 413
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 116.5176,
+        "top_1pct_range": 32572.8301,
+        "prev_1pct_range": 279.5529
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 3234.0553,
+        "skewness": 51.4807
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=3234.1 \u2014 outlier-dominated, check for score explosion",
+        "POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+      ],
+      "severity": "critical"
+    },
+    {
+      "survey": "act-dr6",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/act-dr6-proper/act_dr6_anomalies.csv",
+      "basic_stats": {
+        "n_scores": 20000,
+        "n_positive": 20000,
+        "mean": 0.6062,
+        "median": 0.6035,
+        "std": 0.0723,
+        "min": 0.026223,
+        "max": 0.8539,
+        "percentile_90": 0.6913,
+        "percentile_95": 0.7175,
+        "percentile_99": 0.7626,
+        "percentile_999": 0.8116
+      },
+      "lognormal_fit": {
+        "mu": -0.514015,
+        "sigma": 0.211811,
+        "ks_statistic": 0.200436,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 13.1044,
+        "x_min": 0.6035,
+        "n_tail": 10000,
+        "ks_statistic": 0.072689,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": -0.5236,
+            "count": 2727
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 5.1533,
+        "top_1pct_range": 0.0912,
+        "prev_1pct_range": 0.0177
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 17.3293,
+        "skewness": -2.0968
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=17.3 \u2014 outlier-dominated, check for score explosion",
+        "POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+      ],
+      "severity": "warning"
+    },
+    {
+      "survey": "planck-cmb",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/planck-cmb-masked/planck_cmb_masked_summary.json",
+      "basic_stats": {
+        "n_scores": 20,
+        "n_positive": 20,
+        "mean": 8.3029,
+        "median": 1.492,
+        "std": 15.6395,
+        "min": 1.299018,
+        "max": 62.9988,
+        "percentile_90": 18.0273,
+        "percentile_95": 43.3662,
+        "percentile_99": 59.0722,
+        "percentile_999": 62.6061
+      },
+      "lognormal_fit": {
+        "mu": 0,
+        "sigma": 0,
+        "ks_statistic": 1,
+        "ks_pvalue": 0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 0,
+        "x_min": 0,
+        "ks_statistic": 1,
+        "ks_pvalue": 0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 0,
+        "peaks": []
+      },
+      "truncation": {
+        "is_truncated": false
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": false,
+        "kurtosis": 0,
+        "skewness": 0
+      },
+      "systematic_flags": [
+        "scipy_unavailable"
+      ],
+      "severity": "unknown"
+    },
+    {
+      "survey": "neowise",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/neowise-ecliptic-mask/neowise_anomalies.csv",
+      "basic_stats": {
+        "n_scores": 44341,
+        "n_positive": 44341,
+        "mean": 156.939,
+        "median": 0.4777,
+        "std": 3394.0836,
+        "min": 0.063801,
+        "max": 244412.9688,
+        "percentile_90": 0.984,
+        "percentile_95": 1.3154,
+        "percentile_99": 211.0358,
+        "percentile_999": 39069.847
+      },
+      "lognormal_fit": {
+        "mu": -0.588699,
+        "sigma": 1.084193,
+        "ks_statistic": 0.206291,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 2.5919,
+        "x_min": 0.4777,
+        "n_tail": 22171,
+        "ks_statistic": 0.118681,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": -0.8572,
+            "count": 6163
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 1189.9011,
+        "top_1pct_range": 244199.515,
+        "prev_1pct_range": 205.2267
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 1962.9476,
+        "skewness": 39.203
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=1962.9 \u2014 outlier-dominated, check for score explosion",
+        "POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+      ],
+      "severity": "critical"
+    },
+    {
+      "survey": "gaia-dr3",
+      "data_source": "real",
+      "source_file": "/workspace/bigbounce/outputs/gaia-dr3-expanded/gaia_anomalies.csv",
+      "basic_stats": {
+        "n_scores": 500000,
+        "n_positive": 500000,
+        "mean": 0.0038,
+        "median": 0.0022,
+        "std": 0.0059,
+        "min": 0.000103,
+        "max": 0.6877,
+        "percentile_90": 0.0077,
+        "percentile_95": 0.0124,
+        "percentile_99": 0.0264,
+        "percentile_999": 0.0645
+      },
+      "lognormal_fit": {
+        "mu": -6.001913,
+        "sigma": 0.807887,
+        "ks_statistic": 0.078874,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "powerlaw_fit": {
+        "alpha": 2.352,
+        "x_min": 0.0022,
+        "n_tail": 250000,
+        "ks_statistic": 0.019784,
+        "ks_pvalue": 0.0,
+        "good_fit": false
+      },
+      "bimodality": {
+        "is_bimodal": false,
+        "n_peaks": 1,
+        "peaks": [
+          {
+            "bin_center": -6.2332,
+            "count": 27161
+          }
+        ]
+      },
+      "truncation": {
+        "is_truncated": false,
+        "tail_compression_ratio": 99.5771,
+        "top_1pct_range": 0.6613,
+        "prev_1pct_range": 0.0066
+      },
+      "heavy_tail": {
+        "is_heavy_tailed": true,
+        "kurtosis": 593.6523,
+        "skewness": 12.4978
+      },
+      "systematic_flags": [
+        "HEAVY_TAIL: Extreme kurtosis=593.7 \u2014 outlier-dominated, check for score explosion",
+        "POOR_FIT: Neither log-normal nor power-law fits well \u2014 unusual distribution shape"
+      ],
+      "severity": "critical"
+    }
+  ],
+  "train_time_s": 2.82,
+  "status": "COMPLETE",
+  "top_20": [
+    {
+      "rank": 1,
+      "ra": 159.55,
+      "dec": 25.23,
+      "score": 5624.3715,
+      "survey": "desi-dr1",
+      "severity": "critical",
+      "best_fit": "lognormal"
+    },
+    {
+      "rank": 2,
+      "ra": 71.88,
+      "dec": 6.77,
+      "score": 11655.2163,
+      "survey": "sdss-dr18",
+      "severity": "critical",
+      "best_fit": "lognormal"
+    },
+    {
+      "rank": 3,
+      "ra": 277.45,
+      "dec": -61.19,
+      "score": 1000.5464,
+      "survey": "lamost-dr10",
+      "severity": "warning",
+      "best_fit": "none"
+    },
+    {
+      "rank": 4,
+      "ra": 76.62,
+      "dec": 44.65,
+      "score": 866.2698,
+      "survey": "erosita-dr1",
+      "severity": "critical",
+      "best_fit": "none"
+    },
+    {
+      "rank": 5,
+      "ra": 284.19,
+      "dec": -89.89,
+      "score": 0.7626,
+      "survey": "act-dr6",
+      "severity": "warning",
+      "best_fit": "none"
+    },
+    {
+      "rank": 6,
+      "ra": 251.32,
+      "dec": -44.8,
+      "score": 59.0722,
+      "survey": "planck-cmb",
+      "severity": "unknown",
+      "best_fit": "none"
+    },
+    {
+      "rank": 7,
+      "ra": 42.72,
+      "dec": -35.01,
+      "score": 211.0358,
+      "survey": "neowise",
+      "severity": "critical",
+      "best_fit": "none"
+    },
+    {
+      "rank": 8,
+      "ra": 283.22,
+      "dec": -59.17,
+      "score": 0.0264,
+      "survey": "gaia-dr3",
+      "severity": "critical",
+      "best_fit": "none"
+    },
+    {
+      "rank": 9,
+      "ra": 62.24,
+      "dec": 29.63,
+      "score": 1.0
+    },
+    {
+      "rank": 10,
+      "ra": 36.77,
+      "dec": -18.74,
+      "score": 1.0
+    },
+    {
+      "rank": 11,
+      "ra": 229.85,
+      "dec": -67.33,
+      "score": 1.0
+    },
+    {
+      "rank": 12,
+      "ra": 109.05,
+      "dec": -73.31,
+      "score": 1.0
+    },
+    {
+      "rank": 13,
+      "ra": 30.3,
+      "dec": -62.13,
+      "score": 1.0
+    },
+    {
+      "rank": 14,
+      "ra": 51.91,
+      "dec": -58.05,
+      "score": 1.0
+    },
+    {
+      "rank": 15,
+      "ra": 112.2,
+      "dec": -15.29,
+      "score": 1.0
+    },
+    {
+      "rank": 16,
+      "ra": 70.47,
+      "dec": 47.39,
+      "score": 1.0
+    },
+    {
+      "rank": 17,
+      "ra": 151.78,
+      "dec": -59.6,
+      "score": 1.0
+    },
+    {
+      "rank": 18,
+      "ra": 238.45,
+      "dec": 66.54,
+      "score": 1.0
+    },
+    {
+      "rank": 19,
+      "ra": 192.7,
+      "dec": -74.82,
+      "score": 1.0
+    },
+    {
+      "rank": 20,
+      "ra": 60.4,
+      "dec": -74.07,
+      "score": 1.0
+    }
+  ]
+}

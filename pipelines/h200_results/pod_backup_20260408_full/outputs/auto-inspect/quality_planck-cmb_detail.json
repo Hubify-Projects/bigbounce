@@ -1,0 +1,194 @@
+{
+  "survey": "planck-cmb",
+  "n_inspected": 20,
+  "n_good": 20,
+  "n_suspect": 0,
+  "n_bad": 0,
+  "good_fraction": 1.0,
+  "suspect_reasons": {},
+  "n_duplicates": 0,
+  "details": [
+    {
+      "index": 0,
+      "ra": 208.4765625,
+      "dec": -21.22179327290779,
+      "score": 62.99875259399414,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 1,
+      "ra": 210.05859375,
+      "dec": -21.06181760164931,
+      "score": 42.33291244506836,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 2,
+      "ra": 279.66796875,
+      "dec": -33.152887928619876,
+      "score": 15.326647758483887,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 3,
+      "ra": 278.0859375,
+      "dec": -32.266237144066636,
+      "score": 13.444732666015625,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 4,
+      "ra": 280.89843749999994,
+      "dec": -33.33128896168179,
+      "score": 6.991050720214844,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 5,
+      "ra": 279.4921875,
+      "dec": -32.619841939292115,
+      "score": 3.0690460205078125,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 6,
+      "ra": 158.73046875,
+      "dec": -21.702769403954832,
+      "score": 2.383697032928467,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 7,
+      "ra": 158.02734374999997,
+      "dec": -21.381942579838892,
+      "score": 2.2429847717285156,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 8,
+      "ra": 159.609375,
+      "dec": -22.50800455523705,
+      "score": 1.787402629852295,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 9,
+      "ra": 347.34375,
+      "dec": 21.22179327290779,
+      "score": 1.5152151584625244,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 10,
+      "ra": 158.37890625,
+      "dec": -22.669609871750396,
+      "score": 1.4687573909759521,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 11,
+      "ra": 84.7265625,
+      "dec": -39.257929850984596,
+      "score": 1.444254755973816,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 12,
+      "ra": 347.6953125,
+      "dec": 21.22179327290779,
+      "score": 1.441758155822754,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 13,
+      "ra": 348.3984375,
+      "dec": 21.22179327290779,
+      "score": 1.4416412115097046,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 14,
+      "ra": 346.46484374999994,
+      "dec": 21.061817601649295,
+      "score": 1.4108953475952148,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 15,
+      "ra": 86.484375,
+      "dec": -39.257929850984596,
+      "score": 1.397862195968628,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 16,
+      "ra": 157.5,
+      "dec": -22.18535796523392,
+      "score": 1.3897324800491333,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 17,
+      "ra": 88.06640625,
+      "dec": -39.065494664452615,
+      "score": 1.3372153043746948,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 18,
+      "ra": 86.8359375,
+      "dec": -39.644395843880886,
+      "score": 1.334643840789795,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    },
+    {
+      "index": 19,
+      "ra": 167.69531249999997,
+      "dec": -25.447729744851912,
+      "score": 1.2990176677703857,
+      "status": "good",
+      "issues": [],
+      "simbad_status": null
+    }
+  ],
+  "data_source": "real",
+  "source_file": "/workspace/bigbounce/outputs/planck-cmb-masked/planck_cmb_masked_summary.json"
+}

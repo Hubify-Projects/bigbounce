@@ -1,0 +1,109 @@
+{
+  "experiment_id": "nanograv_ptarcade",
+  "phase": 4,
+  "description": "NANOGrav 15yr Bayesian analysis: matter bounce vs SMBHB",
+  "reference": "Agazie et al. 2023, ApJ 951 L8",
+  "data": {
+    "n_bins_total": 14,
+    "n_bins_signal": 6,
+    "freqs_nhz": [
+      1.976798990270053,
+      3.953597980540106,
+      5.9303969708101585,
+      7.907195961080212,
+      9.883994951350264,
+      11.860793941620317
+    ],
+    "log10_hc_data": [
+      -14.484605223174249,
+      -14.53514021937783,
+      -14.521311231712524,
+      -14.48356115407698,
+      -14.581111316934352,
+      -14.589028620650407
+    ],
+    "log10_hc_sigma": [
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17
+    ],
+    "published_gamma": 3.2,
+    "published_gamma_err": 0.6,
+    "published_log10_A": -14.62
+  },
+  "ml_fits": {
+    "bounce": {
+      "gamma_fixed": 3.0,
+      "log10_A": -14.525578556979813,
+      "chi2": 0.46115738384982463,
+      "bic": 2.2529168530778794,
+      "dof": 5
+    },
+    "smbhb": {
+      "gamma_fixed": 4.333333333333333,
+      "log10_A": -15.053144971106523,
+      "chi2": 7.435809919385909,
+      "bic": 9.227569388613963,
+      "dof": 5
+    },
+    "free": {
+      "gamma": 3.195265527259594,
+      "log10_A": -14.602840215326394,
+      "chi2": 0.249606704003113,
+      "bic": 3.833125642459223,
+      "dof": 4
+    }
+  },
+  "mcmc": {
+    "n_walkers": 32,
+    "n_steps": 10000,
+    "burn_fraction": 0.3,
+    "n_samples": 320000,
+    "autocorr_time": [
+      32.17821698935507,
+      32.47445507733919
+    ],
+    "n_effective": 9853.89898730887,
+    "converged": true
+  },
+  "posterior": {
+    "gamma_mean": 3.1925093528951174,
+    "gamma_std": 0.42325846341529383,
+    "gamma_median": 3.1894797704499656,
+    "gamma_16": 2.7721332550995057,
+    "gamma_84": 3.6124683981535703,
+    "log10_A_mean": -14.602614129596267,
+    "log10_A_std": 0.1768862144965312
+  },
+  "model_comparison": {
+    "bayes_factor_bounce_vs_free": 6.427080223138324,
+    "bayes_factor_smbhb_vs_free": 0.20626225073506607,
+    "bayes_factor_bounce_vs_smbhb": 31.159750270511683,
+    "interpretation": "Strong evidence for bounce over SMBHB",
+    "model_probs_bic": {
+      "bounce": 0.6736819634183895,
+      "smbhb": 0.020602900511577846,
+      "free": 0.3057151360700326
+    }
+  },
+  "tensions": {
+    "gamma_vs_bounce_sigma": 0.4548269427189943,
+    "gamma_vs_smbhb_sigma": 2.6953364883311477,
+    "gamma_vs_nanograv_sigma": 0.017697571938527532
+  },
+  "posterior_fractions": {
+    "below_3": 0.3241875,
+    "range_2_to_4": 0.9683625,
+    "above_4": 0.029125
+  },
+  "conclusions": {
+    "best_fit_gamma": 3.1925093528951174,
+    "bounce_consistency": "0.45 sigma from bounce prediction",
+    "smbhb_consistency": "2.70 sigma from SMBHB prediction",
+    "preferred_model": "bounce",
+    "key_result": "NANOGrav 15yr: gamma = 3.19 +/- 0.42, consistent with matter bounce (gamma=3.0) at 0.5 sigma, Bayes factor bounce/SMBHB = 31.2"
+  }
+}

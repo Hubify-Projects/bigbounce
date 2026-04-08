@@ -1,0 +1,1802 @@
+{
+  "experiment": "multi_messenger_stack",
+  "description": "Objects anomalous in 2+ independent surveys",
+  "timestamp": "2026-04-07T04:01:57.360738+00:00",
+  "data_source": "real",
+  "n_surveys_loaded": 2,
+  "surveys": {
+    "neowise": {
+      "n_anomalies": 44341,
+      "source": "/workspace/bigbounce/outputs/neowise-ecliptic-mask/neowise_anomalies.csv"
+    },
+    "gaia-dr3": {
+      "n_anomalies": 300000,
+      "source": "/workspace/bigbounce/outputs/gaia-dr3-expanded/gaia_anomalies.csv"
+    }
+  },
+  "cross_match_config": {
+    "default_radius_arcsec": 3.0,
+    "xray_radius_arcsec": 10.0
+  },
+  "pairwise_results": {
+    "gaia-dr3_x_neowise": {
+      "survey_1": "gaia-dr3",
+      "survey_2": "neowise",
+      "n_1": 300000,
+      "n_2": 44341,
+      "match_radius_arcsec": 3.0,
+      "n_matches": 123,
+      "n_expected_random": 2.9021116636005213,
+      "excess_factor": 42.38293155384633,
+      "mean_separation_arcsec": 0.02110511135636495
+    }
+  },
+  "multi_survey_summary": {
+    "total_multi_survey": 123,
+    "by_n_surveys": {
+      "2": 123
+    }
+  },
+  "significance": {
+    "n_real": 123,
+    "mean_random": 0.0,
+    "std_random": 0.0,
+    "sigma": 123.0,
+    "n_mc_trials": 10
+  },
+  "top_50_multi_survey": [
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 16678.170707870508,
+      "rank_score": 33356.341415741015,
+      "mean_ra": 303.514137689405,
+      "mean_dec": -83.740318922755,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 185637,
+          "ra": 303.514137689405,
+          "dec": -83.740318922755,
+          "score": 0.0027391205076128
+        },
+        {
+          "survey": "neowise",
+          "index": 165,
+          "ra": 303.514137689405,
+          "dec": -83.740318922755,
+          "score": 8339.083984375
+        },
+        {
+          "survey": "neowise",
+          "index": 165,
+          "ra": 303.514137689405,
+          "dec": -83.740318922755,
+          "score": 8339.083984375
+        }
+      ],
+      "multi_messenger_id": "MM_0001"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 125.60742070130073,
+      "rank_score": 251.21484140260145,
+      "mean_ra": 185.90762820380107,
+      "mean_dec": 16.827324784386292,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 202905,
+          "ra": 185.90762820380107,
+          "dec": 16.827324784386292,
+          "score": 0.0025623028632253
+        },
+        {
+          "survey": "neowise",
+          "index": 541,
+          "ra": 185.90762820380107,
+          "dec": 16.827324784386292,
+          "score": 62.80242919921875
+        },
+        {
+          "survey": "neowise",
+          "index": 541,
+          "ra": 185.90762820380107,
+          "dec": 16.827324784386292,
+          "score": 62.80242919921875
+        }
+      ],
+      "multi_messenger_id": "MM_0002"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 60.26793037774041,
+      "rank_score": 120.53586075548083,
+      "mean_ra": 38.50130008905671,
+      "mean_dec": -1.510374544163966,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 77503,
+          "ra": 38.50130008905671,
+          "dec": -1.510374544163966,
+          "score": 0.0053685796447098
+        },
+        {
+          "survey": "neowise",
+          "index": 615,
+          "ra": 38.50130008905671,
+          "dec": -1.510374544163966,
+          "score": 30.13128089904785
+        },
+        {
+          "survey": "neowise",
+          "index": 615,
+          "ra": 38.50130008905671,
+          "dec": -1.510374544163966,
+          "score": 30.13128089904785
+        }
+      ],
+      "multi_messenger_id": "MM_0003"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 3.081378419883549,
+      "rank_score": 6.162756839767098,
+      "mean_ra": 3.1221838159753497,
+      "mean_dec": -42.38980529359373,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 47084,
+          "ra": 3.12218381597535,
+          "dec": -42.38980529359373,
+          "score": 0.0080492096021771
+        },
+        {
+          "survey": "neowise",
+          "index": 1596,
+          "ra": 3.12218381597535,
+          "dec": -42.38980529359373,
+          "score": 1.536664605140686
+        },
+        {
+          "survey": "neowise",
+          "index": 1596,
+          "ra": 3.12218381597535,
+          "dec": -42.38980529359373,
+          "score": 1.536664605140686
+        }
+      ],
+      "multi_messenger_id": "MM_0004"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.9043112783692777,
+      "rank_score": 5.808622556738555,
+      "mean_ra": 198.8688622782552,
+      "mean_dec": -73.07701670211259,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 69962,
+          "ra": 198.8688622782552,
+          "dec": -73.07701670211259,
+          "score": 0.0058425455354154
+        },
+        {
+          "survey": "neowise",
+          "index": 1799,
+          "ra": 198.8688622782552,
+          "dec": -73.07701670211259,
+          "score": 1.4492343664169312
+        },
+        {
+          "survey": "neowise",
+          "index": 1799,
+          "ra": 198.8688622782552,
+          "dec": -73.07701670211259,
+          "score": 1.4492343664169312
+        }
+      ],
+      "multi_messenger_id": "MM_0005"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.665389572968706,
+      "rank_score": 5.330779145937412,
+      "mean_ra": 51.9401456001464,
+      "mean_dec": 46.14000689715766,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 291947,
+          "ra": 51.9401456001464,
+          "dec": 46.14000689715766,
+          "score": 0.0018935555126518
+        },
+        {
+          "survey": "neowise",
+          "index": 2155,
+          "ra": 51.9401456001464,
+          "dec": 46.14000689715766,
+          "score": 1.3317480087280271
+        },
+        {
+          "survey": "neowise",
+          "index": 2155,
+          "ra": 51.9401456001464,
+          "dec": 46.14000689715766,
+          "score": 1.3317480087280271
+        }
+      ],
+      "multi_messenger_id": "MM_0006"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.2894463327247645,
+      "rank_score": 4.578892665449529,
+      "mean_ra": 323.23391873340194,
+      "mean_dec": -31.470233058776994,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 174636,
+          "ra": 323.23391873340194,
+          "dec": -31.47023305877699,
+          "score": 0.0028645780403167
+        },
+        {
+          "survey": "neowise",
+          "index": 3131,
+          "ra": 323.23391873340194,
+          "dec": -31.47023305877699,
+          "score": 1.143290877342224
+        },
+        {
+          "survey": "neowise",
+          "index": 3131,
+          "ra": 323.23391873340194,
+          "dec": -31.47023305877699,
+          "score": 1.143290877342224
+        }
+      ],
+      "multi_messenger_id": "MM_0007"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.2640870795585215,
+      "rank_score": 4.528174159117043,
+      "mean_ra": 261.7645518992287,
+      "mean_dec": 41.15533340852053,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 182216,
+          "ra": 261.7645518992287,
+          "dec": 41.15533340852053,
+          "score": 0.0027767405845224
+        },
+        {
+          "survey": "neowise",
+          "index": 3207,
+          "ra": 261.7645518992287,
+          "dec": 41.15533340852053,
+          "score": 1.1306551694869995
+        },
+        {
+          "survey": "neowise",
+          "index": 3207,
+          "ra": 261.7645518992287,
+          "dec": 41.15533340852053,
+          "score": 1.1306551694869995
+        }
+      ],
+      "multi_messenger_id": "MM_0008"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.18217454967089,
+      "rank_score": 4.36434909934178,
+      "mean_ra": 234.97152008205285,
+      "mean_dec": 39.83280376687165,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 132366,
+          "ra": 234.97152008205285,
+          "dec": 39.83280376687165,
+          "score": 0.0035213094670325
+        },
+        {
+          "survey": "neowise",
+          "index": 3530,
+          "ra": 234.97152008205285,
+          "dec": 39.83280376687165,
+          "score": 1.0893266201019287
+        },
+        {
+          "survey": "neowise",
+          "index": 3530,
+          "ra": 234.97152008205285,
+          "dec": 39.83280376687165,
+          "score": 1.0893266201019287
+        }
+      ],
+      "multi_messenger_id": "MM_0009"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 2.004466105485335,
+      "rank_score": 4.00893221097067,
+      "mean_ra": 315.2047179117273,
+      "mean_dec": -3.2671647583897965,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 298817,
+          "ra": 315.2047179117273,
+          "dec": -3.2671647583897965,
+          "score": 0.0018520841840654
+        },
+        {
+          "survey": "neowise",
+          "index": 4275,
+          "ra": 315.2047179117273,
+          "dec": -3.2671647583897965,
+          "score": 1.0013070106506348
+        },
+        {
+          "survey": "neowise",
+          "index": 4275,
+          "ra": 315.2047179117273,
+          "dec": -3.2671647583897965,
+          "score": 1.0013070106506348
+        }
+      ],
+      "multi_messenger_id": "MM_0010"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.980997553095221,
+      "rank_score": 3.961995106190442,
+      "mean_ra": 316.5084214795923,
+      "mean_dec": 85.52096255347038,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 74084,
+          "ra": 316.5084214795923,
+          "dec": 85.52096255347038,
+          "score": 0.0055671837180852
+        },
+        {
+          "survey": "neowise",
+          "index": 4401,
+          "ra": 316.5084214795923,
+          "dec": 85.52096255347038,
+          "score": 0.987715184688568
+        },
+        {
+          "survey": "neowise",
+          "index": 4401,
+          "ra": 316.5084214795923,
+          "dec": 85.52096255347038,
+          "score": 0.987715184688568
+        }
+      ],
+      "multi_messenger_id": "MM_0011"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.962798192165792,
+      "rank_score": 3.925596384331584,
+      "mean_ra": 330.65561716352,
+      "mean_dec": -58.461462623489446,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 175086,
+          "ra": 330.65561716352,
+          "dec": -58.46146262348945,
+          "score": 0.0028593083843588
+        },
+        {
+          "survey": "neowise",
+          "index": 4469,
+          "ra": 330.65561716352,
+          "dec": -58.46146262348945,
+          "score": 0.9799694418907166
+        },
+        {
+          "survey": "neowise",
+          "index": 4469,
+          "ra": 330.65561716352,
+          "dec": -58.46146262348945,
+          "score": 0.9799694418907166
+        }
+      ],
+      "multi_messenger_id": "MM_0012"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.9276672285050154,
+      "rank_score": 3.8553344570100307,
+      "mean_ra": 240.51655206582825,
+      "mean_dec": 67.3199156858719,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 55728,
+          "ra": 240.51655206582825,
+          "dec": 67.3199156858719,
+          "score": 0.0070489328354597
+        },
+        {
+          "survey": "neowise",
+          "index": 4693,
+          "ra": 240.51655206582825,
+          "dec": 67.3199156858719,
+          "score": 0.9603091478347778
+        },
+        {
+          "survey": "neowise",
+          "index": 4693,
+          "ra": 240.51655206582825,
+          "dec": 67.3199156858719,
+          "score": 0.9603091478347778
+        }
+      ],
+      "multi_messenger_id": "MM_0013"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.760699959937483,
+      "rank_score": 3.521399919874966,
+      "mean_ra": 117.80426805538512,
+      "mean_dec": 84.55101461296152,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 95454,
+          "ra": 117.80426805538512,
+          "dec": 84.55101461296152,
+          "score": 0.0045327865518629
+        },
+        {
+          "survey": "neowise",
+          "index": 5808,
+          "ra": 117.80426805538512,
+          "dec": 84.55101461296152,
+          "score": 0.8780835866928101
+        },
+        {
+          "survey": "neowise",
+          "index": 5808,
+          "ra": 117.80426805538512,
+          "dec": 84.55101461296152,
+          "score": 0.8780835866928101
+        }
+      ],
+      "multi_messenger_id": "MM_0014"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.7043735792394727,
+      "rank_score": 3.4087471584789455,
+      "mean_ra": 243.8904673867912,
+      "mean_dec": -54.92674277440596,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 177649,
+          "ra": 243.8904673867912,
+          "dec": -54.92674277440596,
+          "score": 0.002829056000337
+        },
+        {
+          "survey": "neowise",
+          "index": 6245,
+          "ra": 243.8904673867912,
+          "dec": -54.92674277440596,
+          "score": 0.8507722616195679
+        },
+        {
+          "survey": "neowise",
+          "index": 6245,
+          "ra": 243.8904673867912,
+          "dec": -54.92674277440596,
+          "score": 0.8507722616195679
+        }
+      ],
+      "multi_messenger_id": "MM_0015"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.6750103898812085,
+      "rank_score": 3.350020779762417,
+      "mean_ra": 76.30846783377291,
+      "mean_dec": 3.806706017473118,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 294586,
+          "ra": 76.30846783377291,
+          "dec": 3.806706017473118,
+          "score": 0.0018774934578686
+        },
+        {
+          "survey": "neowise",
+          "index": 6517,
+          "ra": 76.30846783377291,
+          "dec": 3.806706017473118,
+          "score": 0.8365664482116699
+        },
+        {
+          "survey": "neowise",
+          "index": 6517,
+          "ra": 76.30846783377291,
+          "dec": 3.806706017473118,
+          "score": 0.8365664482116699
+        }
+      ],
+      "multi_messenger_id": "MM_0016"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.6687588430941105,
+      "rank_score": 3.337517686188221,
+      "mean_ra": 107.27289551468414,
+      "mean_dec": -24.74958955917603,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 289250,
+          "ra": 107.27289551468414,
+          "dec": -24.74958955917603,
+          "score": 0.0019107796251773
+        },
+        {
+          "survey": "neowise",
+          "index": 6565,
+          "ra": 107.27289551468414,
+          "dec": -24.74958955917603,
+          "score": 0.8334240317344666
+        },
+        {
+          "survey": "neowise",
+          "index": 6565,
+          "ra": 107.27289551468414,
+          "dec": -24.74958955917603,
+          "score": 0.8334240317344666
+        }
+      ],
+      "multi_messenger_id": "MM_0017"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.5672702200245112,
+      "rank_score": 3.1345404400490224,
+      "mean_ra": 111.74108756928727,
+      "mean_dec": -47.25059043568885,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 219638,
+          "ra": 111.74108756928727,
+          "dec": -47.25059043568885,
+          "score": 0.0024104721378535
+        },
+        {
+          "survey": "neowise",
+          "index": 7596,
+          "ra": 111.74108756928727,
+          "dec": -47.25059043568885,
+          "score": 0.7824298739433289
+        },
+        {
+          "survey": "neowise",
+          "index": 7596,
+          "ra": 111.74108756928727,
+          "dec": -47.25059043568885,
+          "score": 0.7824298739433289
+        }
+      ],
+      "multi_messenger_id": "MM_0018"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.5333456192165613,
+      "rank_score": 3.0666912384331226,
+      "mean_ra": 205.38470080202856,
+      "mean_dec": -81.31942492086354,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 122008,
+          "ra": 205.38470080202856,
+          "dec": -81.31942492086354,
+          "score": 0.0037482175976037
+        },
+        {
+          "survey": "neowise",
+          "index": 8047,
+          "ra": 205.38470080202856,
+          "dec": -81.31942492086354,
+          "score": 0.7647987008094788
+        },
+        {
+          "survey": "neowise",
+          "index": 8047,
+          "ra": 205.38470080202856,
+          "dec": -81.31942492086354,
+          "score": 0.7647987008094788
+        }
+      ],
+      "multi_messenger_id": "MM_0019"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.5302387699484825,
+      "rank_score": 3.060477539896965,
+      "mean_ra": 292.14050912095786,
+      "mean_dec": 27.025928941999556,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 27632,
+          "ra": 292.14050912095786,
+          "dec": 27.025928941999556,
+          "score": 0.0116323456168174
+        },
+        {
+          "survey": "neowise",
+          "index": 8178,
+          "ra": 292.14050912095786,
+          "dec": 27.025928941999556,
+          "score": 0.7593032121658325
+        },
+        {
+          "survey": "neowise",
+          "index": 8178,
+          "ra": 292.14050912095786,
+          "dec": 27.025928941999556,
+          "score": 0.7593032121658325
+        }
+      ],
+      "multi_messenger_id": "MM_0020"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.524713144171983,
+      "rank_score": 3.049426288343966,
+      "mean_ra": 345.1034411160851,
+      "mean_dec": 61.92502529259923,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 172151,
+          "ra": 345.1034411160851,
+          "dec": 61.92502529259923,
+          "score": 0.0028948639519512
+        },
+        {
+          "survey": "neowise",
+          "index": 8136,
+          "ra": 345.1034411160851,
+          "dec": 61.92502529259923,
+          "score": 0.7609091401100159
+        },
+        {
+          "survey": "neowise",
+          "index": 8136,
+          "ra": 345.1034411160851,
+          "dec": 61.92502529259923,
+          "score": 0.7609091401100159
+        }
+      ],
+      "multi_messenger_id": "MM_0021"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.4867220246233046,
+      "rank_score": 2.973444049246609,
+      "mean_ra": 283.0894243191998,
+      "mean_dec": -73.53312622226636,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 110890,
+          "ra": 283.0894243191998,
+          "dec": -73.53312622226636,
+          "score": 0.0040340744890272
+        },
+        {
+          "survey": "neowise",
+          "index": 8660,
+          "ra": 283.0894243191998,
+          "dec": -73.53312622226636,
+          "score": 0.7413439750671387
+        },
+        {
+          "survey": "neowise",
+          "index": 8660,
+          "ra": 283.0894243191998,
+          "dec": -73.53312622226636,
+          "score": 0.7413439750671387
+        }
+      ],
+      "multi_messenger_id": "MM_0022"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.4785129895899445,
+      "rank_score": 2.957025979179889,
+      "mean_ra": 102.0005322850436,
+      "mean_dec": -16.718844582953963,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 182868,
+          "ra": 102.0005322850436,
+          "dec": -16.718844582953963,
+          "score": 0.0027693381998687
+        },
+        {
+          "survey": "neowise",
+          "index": 8751,
+          "ra": 102.0005322850436,
+          "dec": -16.718844582953963,
+          "score": 0.7378718256950378
+        },
+        {
+          "survey": "neowise",
+          "index": 8751,
+          "ra": 102.0005322850436,
+          "dec": -16.718844582953963,
+          "score": 0.7378718256950378
+        }
+      ],
+      "multi_messenger_id": "MM_0023"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.4670178913511336,
+      "rank_score": 2.934035782702267,
+      "mean_ra": 173.63783411952326,
+      "mean_dec": 54.76769766120896,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 95537,
+          "ra": 173.63783411952326,
+          "dec": 54.76769766120896,
+          "score": 0.0045292400754988
+        },
+        {
+          "survey": "neowise",
+          "index": 8933,
+          "ra": 173.63783411952326,
+          "dec": 54.76769766120896,
+          "score": 0.7312443256378174
+        },
+        {
+          "survey": "neowise",
+          "index": 8933,
+          "ra": 173.63783411952326,
+          "dec": 54.76769766120896,
+          "score": 0.7312443256378174
+        }
+      ],
+      "multi_messenger_id": "MM_0024"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.4195967896375805,
+      "rank_score": 2.839193579275161,
+      "mean_ra": 29.246809023860816,
+      "mean_dec": -46.618528442314194,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 279216,
+          "ra": 29.246809023860813,
+          "dec": -46.618528442314194,
+          "score": 0.00197315053083
+        },
+        {
+          "survey": "neowise",
+          "index": 9613,
+          "ra": 29.246809023860813,
+          "dec": -46.618528442314194,
+          "score": 0.7088118195533752
+        },
+        {
+          "survey": "neowise",
+          "index": 9613,
+          "ra": 29.246809023860813,
+          "dec": -46.618528442314194,
+          "score": 0.7088118195533752
+        }
+      ],
+      "multi_messenger_id": "MM_0025"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.392765276832506,
+      "rank_score": 2.785530553665012,
+      "mean_ra": 318.8269711043821,
+      "mean_dec": -60.50067989001568,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 224306,
+          "ra": 318.8269711043821,
+          "dec": -60.50067989001569,
+          "score": 0.0023704699706286
+        },
+        {
+          "survey": "neowise",
+          "index": 10043,
+          "ra": 318.8269711043821,
+          "dec": -60.50067989001569,
+          "score": 0.6951974034309387
+        },
+        {
+          "survey": "neowise",
+          "index": 10043,
+          "ra": 318.8269711043821,
+          "dec": -60.50067989001569,
+          "score": 0.6951974034309387
+        }
+      ],
+      "multi_messenger_id": "MM_0026"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.3095655392389745,
+      "rank_score": 2.619131078477949,
+      "mean_ra": 232.35157391859124,
+      "mean_dec": -68.6675502203415,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 154890,
+          "ra": 232.35157391859124,
+          "dec": -68.6675502203415,
+          "score": 0.0031292389612644
+        },
+        {
+          "survey": "neowise",
+          "index": 11476,
+          "ra": 232.35157391859124,
+          "dec": -68.6675502203415,
+          "score": 0.653218150138855
+        },
+        {
+          "survey": "neowise",
+          "index": 11476,
+          "ra": 232.35157391859124,
+          "dec": -68.6675502203415,
+          "score": 0.653218150138855
+        }
+      ],
+      "multi_messenger_id": "MM_0027"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2971535036340356,
+      "rank_score": 2.594307007268071,
+      "mean_ra": 154.7650125448252,
+      "mean_dec": 76.57525010424382,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 102512,
+          "ra": 154.7650125448252,
+          "dec": 76.57525010424382,
+          "score": 0.0042856046929955
+        },
+        {
+          "survey": "neowise",
+          "index": 11713,
+          "ra": 154.7650125448252,
+          "dec": 76.57525010424382,
+          "score": 0.64643394947052
+        },
+        {
+          "survey": "neowise",
+          "index": 11713,
+          "ra": 154.7650125448252,
+          "dec": 76.57525010424382,
+          "score": 0.64643394947052
+        }
+      ],
+      "multi_messenger_id": "MM_0028"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2969356896355748,
+      "rank_score": 2.5938713792711496,
+      "mean_ra": 48.15158235844273,
+      "mean_dec": 51.09809943861211,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 131488,
+          "ra": 48.15158235844273,
+          "dec": 51.09809943861211,
+          "score": 0.0035383822396397
+        },
+        {
+          "survey": "neowise",
+          "index": 11705,
+          "ra": 48.15158235844273,
+          "dec": 51.09809943861211,
+          "score": 0.6466986536979675
+        },
+        {
+          "survey": "neowise",
+          "index": 11705,
+          "ra": 48.15158235844273,
+          "dec": 51.09809943861211,
+          "score": 0.6466986536979675
+        }
+      ],
+      "multi_messenger_id": "MM_0029"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2891091238707304,
+      "rank_score": 2.578218247741461,
+      "mean_ra": 43.93466120040504,
+      "mean_dec": 63.84613807756261,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 105377,
+          "ra": 43.93466120040504,
+          "dec": 63.84613807756261,
+          "score": 0.0041955839842557
+        },
+        {
+          "survey": "neowise",
+          "index": 11872,
+          "ra": 43.93466120040504,
+          "dec": 63.84613807756261,
+          "score": 0.6424567699432373
+        },
+        {
+          "survey": "neowise",
+          "index": 11872,
+          "ra": 43.93466120040504,
+          "dec": 63.84613807756261,
+          "score": 0.6424567699432373
+        }
+      ],
+      "multi_messenger_id": "MM_0030"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2821189204696566,
+      "rank_score": 2.564237840939313,
+      "mean_ra": 27.94745695737861,
+      "mean_dec": 56.996843129842006,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 290186,
+          "ra": 27.94745695737861,
+          "dec": 56.996843129842006,
+          "score": 0.0019049684051424
+        },
+        {
+          "survey": "neowise",
+          "index": 11974,
+          "ra": 27.94745695737861,
+          "dec": 56.996843129842006,
+          "score": 0.6401069760322571
+        },
+        {
+          "survey": "neowise",
+          "index": 11974,
+          "ra": 27.94745695737861,
+          "dec": 56.996843129842006,
+          "score": 0.6401069760322571
+        }
+      ],
+      "multi_messenger_id": "MM_0031"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.280638097319752,
+      "rank_score": 2.561276194639504,
+      "mean_ra": 345.33085654402777,
+      "mean_dec": 79.01221989773413,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 157896,
+          "ra": 345.3308565440278,
+          "dec": 79.01221989773413,
+          "score": 0.0030859694816172
+        },
+        {
+          "survey": "neowise",
+          "index": 12038,
+          "ra": 345.3308565440278,
+          "dec": 79.01221989773413,
+          "score": 0.6387760639190674
+        },
+        {
+          "survey": "neowise",
+          "index": 12038,
+          "ra": 345.3308565440278,
+          "dec": 79.01221989773413,
+          "score": 0.6387760639190674
+        }
+      ],
+      "multi_messenger_id": "MM_0032"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2756388513371348,
+      "rank_score": 2.5512777026742697,
+      "mean_ra": 10.047781340524311,
+      "mean_dec": 38.174039051818255,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 173142,
+          "ra": 10.047781340524311,
+          "dec": 38.174039051818255,
+          "score": 0.0028823940083384
+        },
+        {
+          "survey": "neowise",
+          "index": 12136,
+          "ra": 10.047781340524311,
+          "dec": 38.174039051818255,
+          "score": 0.6363782286643982
+        },
+        {
+          "survey": "neowise",
+          "index": 12136,
+          "ra": 10.047781340524311,
+          "dec": 38.174039051818255,
+          "score": 0.6363782286643982
+        }
+      ],
+      "multi_messenger_id": "MM_0033"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2646722323261201,
+      "rank_score": 2.5293444646522403,
+      "mean_ra": 21.42856767792232,
+      "mean_dec": -31.67985480165019,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 118334,
+          "ra": 21.42856767792232,
+          "dec": -31.679854801650187,
+          "score": 0.0038369423709809
+        },
+        {
+          "survey": "neowise",
+          "index": 12374,
+          "ra": 21.42856767792232,
+          "dec": -31.679854801650187,
+          "score": 0.6304176449775696
+        },
+        {
+          "survey": "neowise",
+          "index": 12374,
+          "ra": 21.42856767792232,
+          "dec": -31.679854801650187,
+          "score": 0.6304176449775696
+        }
+      ],
+      "multi_messenger_id": "MM_0034"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2480196787510067,
+      "rank_score": 2.4960393575020134,
+      "mean_ra": 314.22917159027986,
+      "mean_dec": 28.65326791022693,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 190682,
+          "ra": 314.22917159027986,
+          "dec": 28.65326791022693,
+          "score": 0.0026854111347347
+        },
+        {
+          "survey": "neowise",
+          "index": 12708,
+          "ra": 314.22917159027986,
+          "dec": 28.65326791022693,
+          "score": 0.622667133808136
+        },
+        {
+          "survey": "neowise",
+          "index": 12708,
+          "ra": 314.22917159027986,
+          "dec": 28.65326791022693,
+          "score": 0.622667133808136
+        }
+      ],
+      "multi_messenger_id": "MM_0035"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2400732906535268,
+      "rank_score": 2.4801465813070536,
+      "mean_ra": 204.0838918996657,
+      "mean_dec": -45.362212254380665,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 155342,
+          "ra": 204.0838918996657,
+          "dec": -45.362212254380665,
+          "score": 0.0031227739527821
+        },
+        {
+          "survey": "neowise",
+          "index": 12899,
+          "ra": 204.0838918996657,
+          "dec": -45.362212254380665,
+          "score": 0.6184752583503723
+        },
+        {
+          "survey": "neowise",
+          "index": 12899,
+          "ra": 204.0838918996657,
+          "dec": -45.362212254380665,
+          "score": 0.6184752583503723
+        }
+      ],
+      "multi_messenger_id": "MM_0036"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.211631591198966,
+      "rank_score": 2.423263182397932,
+      "mean_ra": 136.73983989614135,
+      "mean_dec": -79.87486026672087,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 283104,
+          "ra": 136.73983989614135,
+          "dec": -79.87486026672087,
+          "score": 0.0019485305529087
+        },
+        {
+          "survey": "neowise",
+          "index": 13566,
+          "ra": 136.73983989614135,
+          "dec": -79.87486026672087,
+          "score": 0.6048415303230286
+        },
+        {
+          "survey": "neowise",
+          "index": 13566,
+          "ra": 136.73983989614135,
+          "dec": -79.87486026672087,
+          "score": 0.6048415303230286
+        }
+      ],
+      "multi_messenger_id": "MM_0037"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2080386572051793,
+      "rank_score": 2.4160773144103587,
+      "mean_ra": 50.98203083467843,
+      "mean_dec": 49.86521117508957,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 130504,
+          "ra": 50.98203083467843,
+          "dec": 49.86521117508957,
+          "score": 0.0035587244201451
+        },
+        {
+          "survey": "neowise",
+          "index": 13706,
+          "ra": 50.98203083467843,
+          "dec": 49.86521117508957,
+          "score": 0.6022399663925171
+        },
+        {
+          "survey": "neowise",
+          "index": 13706,
+          "ra": 50.98203083467843,
+          "dec": 49.86521117508957,
+          "score": 0.6022399663925171
+        }
+      ],
+      "multi_messenger_id": "MM_0038"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.2037721655797213,
+      "rank_score": 2.4075443311594427,
+      "mean_ra": 283.7579976991259,
+      "mean_dec": -86.43653589512219,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 255832,
+          "ra": 283.7579976991259,
+          "dec": -86.4365358951222,
+          "score": 0.0021289370488375
+        },
+        {
+          "survey": "neowise",
+          "index": 13768,
+          "ra": 283.7579976991259,
+          "dec": -86.4365358951222,
+          "score": 0.6008216142654419
+        },
+        {
+          "survey": "neowise",
+          "index": 13768,
+          "ra": 283.7579976991259,
+          "dec": -86.4365358951222,
+          "score": 0.6008216142654419
+        }
+      ],
+      "multi_messenger_id": "MM_0039"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1923458608798683,
+      "rank_score": 2.3846917217597365,
+      "mean_ra": 139.51905320119087,
+      "mean_dec": 71.40135030757804,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 190945,
+          "ra": 139.51905320119087,
+          "dec": 71.40135030757804,
+          "score": 0.0026825699023902
+        },
+        {
+          "survey": "neowise",
+          "index": 14063,
+          "ra": 139.51905320119087,
+          "dec": 71.40135030757804,
+          "score": 0.594831645488739
+        },
+        {
+          "survey": "neowise",
+          "index": 14063,
+          "ra": 139.51905320119087,
+          "dec": 71.40135030757804,
+          "score": 0.594831645488739
+        }
+      ],
+      "multi_messenger_id": "MM_0040"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1675075960811228,
+      "rank_score": 2.3350151921622455,
+      "mean_ra": 337.21450052378805,
+      "mean_dec": -66.87635432013181,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 194932,
+          "ra": 337.21450052378805,
+          "dec": -66.87635432013181,
+          "score": 0.0026413870509713
+        },
+        {
+          "survey": "neowise",
+          "index": 14731,
+          "ra": 337.21450052378805,
+          "dec": -66.87635432013181,
+          "score": 0.5824331045150757
+        },
+        {
+          "survey": "neowise",
+          "index": 14731,
+          "ra": 337.21450052378805,
+          "dec": -66.87635432013181,
+          "score": 0.5824331045150757
+        }
+      ],
+      "multi_messenger_id": "MM_0041"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1607147923205048,
+      "rank_score": 2.3214295846410096,
+      "mean_ra": 243.27733856434315,
+      "mean_dec": 79.39606242905614,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 251569,
+          "ra": 243.27733856434315,
+          "dec": 79.39606242905614,
+          "score": 0.0021586886141449
+        },
+        {
+          "survey": "neowise",
+          "index": 14898,
+          "ra": 243.27733856434315,
+          "dec": 79.39606242905614,
+          "score": 0.5792780518531799
+        },
+        {
+          "survey": "neowise",
+          "index": 14898,
+          "ra": 243.27733856434315,
+          "dec": 79.39606242905614,
+          "score": 0.5792780518531799
+        }
+      ],
+      "multi_messenger_id": "MM_0042"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1517723007127643,
+      "rank_score": 2.3035446014255285,
+      "mean_ra": 169.97906474866176,
+      "mean_dec": 61.48228626813312,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 244354,
+          "ra": 169.97906474866176,
+          "dec": 61.48228626813312,
+          "score": 0.002211014740169
+        },
+        {
+          "survey": "neowise",
+          "index": 15153,
+          "ra": 169.97906474866176,
+          "dec": 61.48228626813312,
+          "score": 0.5747806429862976
+        },
+        {
+          "survey": "neowise",
+          "index": 15153,
+          "ra": 169.97906474866176,
+          "dec": 61.48228626813312,
+          "score": 0.5747806429862976
+        }
+      ],
+      "multi_messenger_id": "MM_0043"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1454341462813318,
+      "rank_score": 2.2908682925626636,
+      "mean_ra": 65.82667158063832,
+      "mean_dec": 37.25862847868635,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 91144,
+          "ra": 65.82667158063832,
+          "dec": 37.25862847868635,
+          "score": 0.004705314990133
+        },
+        {
+          "survey": "neowise",
+          "index": 15440,
+          "ra": 65.82667158063832,
+          "dec": 37.25862847868635,
+          "score": 0.5703644156455994
+        },
+        {
+          "survey": "neowise",
+          "index": 15440,
+          "ra": 65.82667158063832,
+          "dec": 37.25862847868635,
+          "score": 0.5703644156455994
+        }
+      ],
+      "multi_messenger_id": "MM_0044"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1453865407966077,
+      "rank_score": 2.2907730815932155,
+      "mean_ra": 129.13794473410474,
+      "mean_dec": -13.499973768124576,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 197287,
+          "ra": 129.13794473410474,
+          "dec": -13.499973768124576,
+          "score": 0.0026170848868787
+        },
+        {
+          "survey": "neowise",
+          "index": 15372,
+          "ra": 129.13794473410474,
+          "dec": -13.499973768124576,
+          "score": 0.5713847279548645
+        },
+        {
+          "survey": "neowise",
+          "index": 15372,
+          "ra": 129.13794473410474,
+          "dec": -13.499973768124576,
+          "score": 0.5713847279548645
+        }
+      ],
+      "multi_messenger_id": "MM_0045"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1276584677398205,
+      "rank_score": 2.255316935479641,
+      "mean_ra": 6.97163663060218,
+      "mean_dec": 40.027639793153725,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 83368,
+          "ra": 6.97163663060218,
+          "dec": 40.027639793153725,
+          "score": 0.0050531439483165
+        },
+        {
+          "survey": "neowise",
+          "index": 16041,
+          "ra": 6.97163663060218,
+          "dec": 40.027639793153725,
+          "score": 0.561302661895752
+        },
+        {
+          "survey": "neowise",
+          "index": 16041,
+          "ra": 6.97163663060218,
+          "dec": 40.027639793153725,
+          "score": 0.561302661895752
+        }
+      ],
+      "multi_messenger_id": "MM_0046"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.1228522949386388,
+      "rank_score": 2.2457045898772776,
+      "mean_ra": 280.07664238469346,
+      "mean_dec": 59.82074623710679,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 299318,
+          "ra": 280.07664238469346,
+          "dec": 59.82074623710679,
+          "score": 0.0018491439986974
+        },
+        {
+          "survey": "neowise",
+          "index": 16085,
+          "ra": 280.07664238469346,
+          "dec": 59.82074623710679,
+          "score": 0.5605015754699707
+        },
+        {
+          "survey": "neowise",
+          "index": 16085,
+          "ra": 280.07664238469346,
+          "dec": 59.82074623710679,
+          "score": 0.5605015754699707
+        }
+      ],
+      "multi_messenger_id": "MM_0047"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.0947257168591022,
+      "rank_score": 2.1894514337182045,
+      "mean_ra": 303.1709630968666,
+      "mean_dec": 81.9740754445254,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 132529,
+          "ra": 303.1709630968666,
+          "dec": 81.9740754445254,
+          "score": 0.0035176165401935
+        },
+        {
+          "survey": "neowise",
+          "index": 17005,
+          "ra": 303.1709630968666,
+          "dec": 81.9740754445254,
+          "score": 0.5456040501594543
+        },
+        {
+          "survey": "neowise",
+          "index": 17005,
+          "ra": 303.1709630968666,
+          "dec": 81.9740754445254,
+          "score": 0.5456040501594543
+        }
+      ],
+      "multi_messenger_id": "MM_0048"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.094083257485181,
+      "rank_score": 2.188166514970362,
+      "mean_ra": 143.2850406297422,
+      "mean_dec": -88.97594869847381,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 149840,
+          "ra": 143.2850406297422,
+          "dec": -88.97594869847381,
+          "score": 0.0032072742469608
+        },
+        {
+          "survey": "neowise",
+          "index": 17016,
+          "ra": 143.2850406297422,
+          "dec": -88.97594869847381,
+          "score": 0.5454379916191101
+        },
+        {
+          "survey": "neowise",
+          "index": 17016,
+          "ra": 143.2850406297422,
+          "dec": -88.97594869847381,
+          "score": 0.5454379916191101
+        }
+      ],
+      "multi_messenger_id": "MM_0049"
+    },
+    {
+      "n_surveys": 2,
+      "surveys": [
+        "gaia-dr3",
+        "neowise"
+      ],
+      "combined_score": 1.092539737932384,
+      "rank_score": 2.185079475864768,
+      "mean_ra": 176.7049747473408,
+      "mean_dec": 30.14089795236552,
+      "detections": [
+        {
+          "survey": "gaia-dr3",
+          "index": 75454,
+          "ra": 176.70497474734083,
+          "dec": 30.14089795236552,
+          "score": 0.00548608135432
+        },
+        {
+          "survey": "neowise",
+          "index": 17129,
+          "ra": 176.70497474734083,
+          "dec": 30.14089795236552,
+          "score": 0.543526828289032
+        },
+        {
+          "survey": "neowise",
+          "index": 17129,
+          "ra": 176.70497474734083,
+          "dec": 30.14089795236552,
+          "score": 0.543526828289032
+        }
+      ],
+      "multi_messenger_id": "MM_0050"
+    }
+  ],
+  "n_planted_shared": null,
+  "total_time_s": 60.215686559677124,
+  "device": "cuda"
+}

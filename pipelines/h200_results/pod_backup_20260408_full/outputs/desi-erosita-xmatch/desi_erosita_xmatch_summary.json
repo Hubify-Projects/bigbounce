@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-04 21:33:03",
+  "experiment": "desi-erosita-xmatch",
+  "description": "DESI x eROSITA optical-X-ray cross-match within 10.0 arcsec",
+  "n_desi": 500,
+  "n_erosita": 200,
+  "data_mode": "synthetic",
+  "match_radius_arcsec": 10.0,
+  "n_matched": 12,
+  "n_agn_candidates": 12,
+  "n_expected_random": 0.0003,
+  "significance_sigma": 12.0,
+  "sep_stats": {
+    "mean_arcsec": 1.624,
+    "median_arcsec": 1.424,
+    "std_arcsec": 0.684
+  },
+  "status": "COMPLETE",
+  "note": "Reconstructed from log after numpy.bool_ JSON crash"
+}

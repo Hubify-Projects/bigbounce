@@ -1,0 +1,111 @@
+{
+  "experiment": "quintom_w0wa_reanalysis",
+  "timestamp": "2026-04-07T15:00:18.272002+00:00",
+  "elapsed_seconds": 24332.446467399597,
+  "config": {
+    "n_walkers": 32,
+    "n_steps": 20000,
+    "n_burn": 5000,
+    "n_dim": 4,
+    "fiducial": {
+      "w0": -0.85,
+      "wa": -0.65,
+      "Omega_m": 0.3111,
+      "H0": 67.68
+    },
+    "prior_ranges": {
+      "w0": [
+        -2.0,
+        0.0
+      ],
+      "wa": [
+        -3.0,
+        2.0
+      ],
+      "Omega_m": [
+        0.1,
+        0.5
+      ],
+      "H0": [
+        60.0,
+        80.0
+      ]
+    },
+    "dr2_volume_factor": 3.0
+  },
+  "mcmc_diagnostics": {
+    "n_samples_post_burnin": 480000,
+    "mean_acceptance_fraction": 0.5875765625,
+    "chain_shape": [
+      480000,
+      4
+    ]
+  },
+  "posteriors": {
+    "w0": {
+      "median": -1.0287498235702515,
+      "lower_68": -1.182131052017212,
+      "upper_68": -0.8815741539001465,
+      "mean": -1.0319526195526123,
+      "std": 0.1514672189950943
+    },
+    "wa": {
+      "median": -0.2777916491031647,
+      "lower_68": -0.8463617563247681,
+      "upper_68": 0.2247667759656906,
+      "mean": -0.3138183653354645,
+      "std": 0.5540648698806763
+    },
+    "Omega_m": {
+      "median": 0.31354868993987906,
+      "lower_68": 0.3073071897987426,
+      "upper_68": 0.3200531149058914,
+      "mean": 0.31369199644806917,
+      "std": 0.006438145950511894
+    },
+    "H0": {
+      "median": 69.13410967094104,
+      "lower_68": 67.74686546680459,
+      "upper_68": 70.5179650998624,
+      "mean": 69.13686715779703,
+      "std": 1.3896451486216894
+    },
+    "w_eff_z05": {
+      "median": -1.1209567785263062,
+      "lower_68": -1.2641007900238037,
+      "upper_68": -1.0089446306228638,
+      "mean": -1.1365587711334229,
+      "std": 0.1332550346851349
+    }
+  },
+  "quintom_analysis": {
+    "P_quintom_B": 0.3959020833333333,
+    "P_quintom_B_error": 0.0007058736072910818,
+    "P_quintom_B_percent": "39.6%",
+    "existing_result_percent": "98.6%",
+    "crossing_redshift_median": 0.26413270831108093,
+    "crossing_redshift_68CL": [
+      0.08180751651525497,
+      0.7669327855110168
+    ],
+    "sigma_from_LCDM": 1.0853267908096313
+  },
+  "dr1_vs_dr2_comparison": {
+    "P_quintom_B_dr1_mock": 0.84334375,
+    "P_quintom_B_dr2_mock": 0.3959020833333333,
+    "sigma_w0_dr1": 0.1836150468292007,
+    "sigma_w0_dr2": 0.1514672189950943,
+    "sigma_wa_dr1": 0.7272662254622763,
+    "sigma_wa_dr2": 0.5540648698806763,
+    "w0_improvement_pct": 17.508275268970973,
+    "wa_improvement_pct": 23.815399301886607
+  },
+  "interpretation": {
+    "question": "Does dark energy cross the phantom divide (w = -1)?",
+    "quintom_B_definition": "w0 > -1 AND w0 + wa < -1 (crossing from quintessence to phantom)",
+    "bounce_connection": "Quintom-B requires violation of the null energy condition, which is natural in bounce cosmology but forbidden in single-field LCDM",
+    "if_P_high": "Strong evidence for phantom crossing -> supports bounce cosmology dark energy",
+    "if_P_low": "LCDM-consistent -> dark energy constraint does not favor bounce",
+    "dr2_forecast": "3x volume tightens w0 constraint, sharpening the quintom-B test"
+  }
+}
