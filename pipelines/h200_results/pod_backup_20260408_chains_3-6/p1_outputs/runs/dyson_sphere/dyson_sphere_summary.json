@@ -1,0 +1,365 @@
+{
+  "experiment": "dyson_sphere_ir_excess_search",
+  "phase": "Phase 7 \u2014 Speculations",
+  "timestamp": "2026-04-08T21:50:28.630327+00:00",
+  "description": "Search for Dyson sphere candidates via IR excess anomaly detection",
+  "config": {
+    "n_stars": 100000,
+    "n_dyson_planted": 50,
+    "n_debris_planted": 200,
+    "n_agb_planted": 300,
+    "n_yso_planted": 200,
+    "latent_dim": 4,
+    "epochs": 100,
+    "batch_size": 1024,
+    "device": "cuda"
+  },
+  "results": {
+    "autoencoder": {
+      "train_time_s": 26.60477614402771,
+      "mean_recon_error": 0.09033402055501938,
+      "std_recon_error": 1.203331470489502,
+      "threshold_99pct": 0.09400498121976852
+    },
+    "anomaly_detection": {
+      "n_ir_anomalies_flagged": 451,
+      "dyson_recovered_by_ae": 50,
+      "dyson_recovery_rate": 1.0
+    },
+    "classification": {
+      "n_dyson_predicted": 49,
+      "dyson_precision": 1.0,
+      "dyson_recall": 0.9,
+      "confusion_matrix": [
+        [
+          19838,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          47,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          73,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          30,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          9
+        ]
+      ],
+      "class_names": [
+        "normal",
+        "debris_disk",
+        "agb",
+        "yso",
+        "dyson_candidate"
+      ]
+    },
+    "feature_importance_top10": [
+      {
+        "feature": "recon_error",
+        "importance": 0.19486643398660858
+      },
+      {
+        "feature": "G-W4",
+        "importance": 0.17244888898732663
+      },
+      {
+        "feature": "G-W1",
+        "importance": 0.15755633267422153
+      },
+      {
+        "feature": "W2-W3",
+        "importance": 0.12175880246138518
+      },
+      {
+        "feature": "ir_error_frac",
+        "importance": 0.08792986880478974
+      },
+      {
+        "feature": "BP-RP",
+        "importance": 0.07924474303560754
+      },
+      {
+        "feature": "W1-W2",
+        "importance": 0.06463978902596375
+      },
+      {
+        "feature": "W3-W4",
+        "importance": 0.03920136847917273
+      },
+      {
+        "feature": "W4",
+        "importance": 0.015978114244996542
+      },
+      {
+        "feature": "BP",
+        "importance": 0.015593474903859556
+      }
+    ],
+    "n_candidates": 49,
+    "top_candidates": [
+      {
+        "index": 79912,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 41.678367614746094,
+        "ir_error_frac": 0.9553262591362,
+        "G": 17.516267976342903,
+        "W3": 15.296835799123649,
+        "W4": 13.647859718798534,
+        "W3_W4": 1.6489760803251148,
+        "G_W4": 3.8684082575443686
+      },
+      {
+        "index": 68953,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 41.26127243041992,
+        "ir_error_frac": 0.8645688891410828,
+        "G": 16.15879963372652,
+        "W3": 13.473563790467445,
+        "W4": 13.515729786644624,
+        "W3_W4": -0.042165996177178755,
+        "G_W4": 2.6430698470818967
+      },
+      {
+        "index": 10389,
+        "true_label": "dyson_candidate",
+        "spectral_type": "F",
+        "recon_error": 37.85954284667969,
+        "ir_error_frac": 0.8370062112808228,
+        "G": 5.572919491035643,
+        "W3": 2.409608130845034,
+        "W4": 1.3190712438031218,
+        "W3_W4": 1.090536887041912,
+        "G_W4": 4.253848247232521
+      },
+      {
+        "index": 30948,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 36.98540115356445,
+        "ir_error_frac": 0.7138781547546387,
+        "G": 13.924272187856108,
+        "W3": 12.033319935130134,
+        "W4": 9.917131284987125,
+        "W3_W4": 2.116188650143009,
+        "G_W4": 4.007140902868983
+      },
+      {
+        "index": 88580,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 36.57160949707031,
+        "ir_error_frac": 0.980290412902832,
+        "G": 9.732888929897127,
+        "W3": 7.853340358510852,
+        "W4": 6.348989882522702,
+        "W3_W4": 1.5043504759881507,
+        "G_W4": 3.3838990473744257
+      },
+      {
+        "index": 99141,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 35.228946685791016,
+        "ir_error_frac": 0.873313844203949,
+        "G": 18.144983417024353,
+        "W3": 15.472372221735956,
+        "W4": 15.465981763409527,
+        "W3_W4": 0.006390458326428927,
+        "G_W4": 2.679001653614826
+      },
+      {
+        "index": 83110,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 34.247005462646484,
+        "ir_error_frac": 0.9538880586624146,
+        "G": 15.234107792284906,
+        "W3": 13.799985664925536,
+        "W4": 11.474582409920474,
+        "W3_W4": 2.325403255005062,
+        "G_W4": 3.7595253823644317
+      },
+      {
+        "index": 73908,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 33.76308059692383,
+        "ir_error_frac": 0.7865704894065857,
+        "G": 16.833697474116892,
+        "W3": 14.871821465107692,
+        "W4": 13.701628263662755,
+        "W3_W4": 1.1701932014449365,
+        "G_W4": 3.132069210454137
+      },
+      {
+        "index": 99070,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 33.314483642578125,
+        "ir_error_frac": 0.868594229221344,
+        "G": 14.79775814690063,
+        "W3": 13.089128533345916,
+        "W4": 11.602235205543916,
+        "W3_W4": 1.4868933278019991,
+        "G_W4": 3.195522941356714
+      },
+      {
+        "index": 15958,
+        "true_label": "dyson_candidate",
+        "spectral_type": "G",
+        "recon_error": 33.28582000732422,
+        "ir_error_frac": 0.9492550492286682,
+        "G": 10.274005418954838,
+        "W3": 7.50220882255182,
+        "W4": 6.129328311633096,
+        "W3_W4": 1.3728805109187237,
+        "G_W4": 4.144677107321741
+      },
+      {
+        "index": 68310,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 33.074119567871094,
+        "ir_error_frac": 0.9587368965148926,
+        "G": 10.543514787634553,
+        "W3": 8.095101368179382,
+        "W4": 8.30189409439332,
+        "W3_W4": -0.20679272621393885,
+        "G_W4": 2.2416206932412326
+      },
+      {
+        "index": 63038,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 32.806190490722656,
+        "ir_error_frac": 0.9800692796707153,
+        "G": 15.089579562714901,
+        "W3": 13.689617959438822,
+        "W4": 11.616768249756047,
+        "W3_W4": 2.0728497096827745,
+        "G_W4": 3.4728113129588536
+      },
+      {
+        "index": 36890,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 32.72390365600586,
+        "ir_error_frac": 0.7896108031272888,
+        "G": 6.163625261757663,
+        "W3": 3.3024221789081887,
+        "W4": 3.259543956828021,
+        "W3_W4": 0.04287822208016756,
+        "G_W4": 2.904081304929642
+      },
+      {
+        "index": 60836,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 32.36145782470703,
+        "ir_error_frac": 0.9863468408584595,
+        "G": 17.364263511751297,
+        "W3": 15.077826707446148,
+        "W4": 14.827186029288358,
+        "W3_W4": 0.2506406781577901,
+        "G_W4": 2.537077482462939
+      },
+      {
+        "index": 51556,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 32.07281494140625,
+        "ir_error_frac": 0.9084357619285583,
+        "G": 13.538491862979225,
+        "W3": 10.558064907471733,
+        "W4": 9.395164327727564,
+        "W3_W4": 1.1629005797441696,
+        "G_W4": 4.143327535251661
+      },
+      {
+        "index": 31292,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 32.039939880371094,
+        "ir_error_frac": 0.983189046382904,
+        "G": 13.724610065141867,
+        "W3": 11.677140494229622,
+        "W4": 10.078831441385429,
+        "W3_W4": 1.5983090528441934,
+        "G_W4": 3.6457786237564385
+      },
+      {
+        "index": 45662,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 31.84865379333496,
+        "ir_error_frac": 0.9705480337142944,
+        "G": 8.699484883784084,
+        "W3": 5.78726520323549,
+        "W4": 5.628532708936813,
+        "W3_W4": 0.1587324942986772,
+        "G_W4": 3.070952174847271
+      },
+      {
+        "index": 81663,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 31.298805236816406,
+        "ir_error_frac": 0.9612206220626831,
+        "G": 9.477640684682225,
+        "W3": 7.838564939341486,
+        "W4": 6.60990470136541,
+        "W3_W4": 1.2286602379760758,
+        "G_W4": 2.8677359833168143
+      },
+      {
+        "index": 31844,
+        "true_label": "dyson_candidate",
+        "spectral_type": "K",
+        "recon_error": 31.10196876525879,
+        "ir_error_frac": 0.8513919115066528,
+        "G": 13.121659641283237,
+        "W3": 10.798336643318905,
+        "W4": 9.287466202313077,
+        "W3_W4": 1.510870441005828,
+        "G_W4": 3.8341934389701606
+      },
+      {
+        "index": 55220,
+        "true_label": "dyson_candidate",
+        "spectral_type": "M",
+        "recon_error": 30.428133010864258,
+        "ir_error_frac": 0.9280313849449158,
+        "G": 12.691432930436944,
+        "W3": 11.52035331066716,
+        "W4": 9.50832443817528,
+        "W3_W4": 2.0120288724918804,
+        "G_W4": 3.183108492261665
+      }
+    ]
+  },
+  "interpretation": "This pipeline demonstrates that autoencoder + random forest can isolate Dyson sphere-like IR excess anomalies from astrophysical contaminants (debris disks, AGB, YSO). Key discriminator: W3-W4 color excess concentrated in the far-IR, consistent with a ~300K blackbody shell. On real Gaia+AllWISE data, this method could flag candidates for spectroscopic follow-up."
+}
