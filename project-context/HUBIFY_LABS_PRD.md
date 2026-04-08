@@ -5354,9 +5354,556 @@ When the dev phase begins:
 
 ---
 
+## 34. Agent File Structure — indydevdan-style self-improving agents
+
+**Status:** This section locks the on-disk structure that every agent uses. It mirrors the file layout from [indydevdan](https://github.com/disler) (the `ui-agents`, `lead-agents`, `ceo-agents` repos and the broader Claude Agent SDK pattern). Houston explicitly asked that we adopt the same structure so the agents are coherent, self-improving, and visible from the UI.
+
+### 34.1 Why this structure
+
+The indydevdan pattern treats agents as **directories of source files**, not as hidden API config. Every agent has a public, version-controlled identity with:
+
+- A clear role definition (`agent.md`)
+- A personality / voice (`soul.md`)
+- A directory of teachable skills (`skills/`)
+- A learnings log that grows over time (`learnings.jsonl`)
+- A memory of what they've done (`episodes.jsonl`)
+- Their model selection and tool grants
+
+This makes agents:
+1. **Inspectable** — Houston (and other agents) can `cat agent.md` to know what they do
+2. **Editable** — improving an agent is editing files, not API calls
+3. **Diffable** — `git log agents/paper-lead/` shows how the agent has grown
+4. **Self-improving** — agents can append to their own `learnings.jsonl` and update their own `soul.md` over time
+5. **Composable** — the orchestrator can spawn new agents by scaffolding new directories from a template
+
+### 34.2 The directory layout
+
+Every agent lives in `~/.hubify/agents/<agent-id>/` (or per-lab in `<lab>/.agents/<agent-id>/` for lab-scoped agents):
+
+```
+agents/paper-lead/
+├── agent.md                  # core role · model · tools · system prompt outline
+├── soul.md                   # personality · voice · style preferences · tone
+├── skills/                   # directory of teachable skills
+│   ├── revtex-compile/
+│   │   └── SKILL.md         # how to compile a paper with revtex4-2
+│   ├── claims-table-sync/
+│   │   └── SKILL.md         # how to sync the claims table with the paper text
+│   ├── peer-review-request/
+│   │   └── SKILL.md         # how to dispatch a paper to cross-model peer review
+│   └── revision-tracker/
+│       └── SKILL.md         # how to maintain REVISION_TRACKER.md
+├── learnings.jsonl          # timestamped log of things this agent learned
+├── episodes.jsonl           # timestamped log of completed tasks (memory)
+├── reports_to.md            # who this agent answers to (e.g. "bigbounce-orchestrator")
+├── direct_reports.md        # who answers to this agent (for leads only)
+├── tools.md                 # explicit list of tools this agent can use
+├── permissions.md           # what storage tiers it can read/write per §33.7
+└── README.md                # human-readable overview that links the above
+```
+
+**Per-skill structure** (matches Claude Agent SDK skills):
+```
+skills/revtex-compile/
+├── SKILL.md                 # the actual skill instructions (frontmatter + body)
+└── examples/                # optional example invocations
+    └── compile-paper-1.md
+```
+
+### 34.3 What each file contains
+
+**`agent.md`** — the canonical agent definition. Frontmatter + body.
+
+```markdown
+---
+id: paper-lead
+name: Paper Lead
+role: lead
+reasoning: med-high
+model: claude-sonnet-4-6
+provider: anthropic
+reports_to: bigbounce-orchestrator
+direct_reports: [paper-worker, figure-worker, review-worker]
+created: 2026-02-14
+last_self_update: 2026-04-08
+version: 7
+---
+
+# Paper Lead
+
+I own the lifecycle of every research paper in this lab. From first draft through
+peer review through arXiv submission, I am the agent the orchestrator calls when
+something needs to happen at the paper level.
+
+## What I do
+- Draft new sections when research-lead surfaces a result worth publishing
+- Coordinate with figure-worker for inline figures and citation cross-refs
+- Dispatch finished drafts to peer-review-* agents for cross-model review
+- Maintain claims tables and revision history
+- Compile via revtex4-2 on the active RunPod pod
+- Hand off to site-worker once a version is ready for deploy
+
+## What I don't do
+- I don't write source code (cosmology-worker / anomaly-worker do)
+- I don't approve novelty claims (research-lead does that)
+- I don't run experiments (the appropriate worker does)
+
+## How to invoke me
+- "draft section X for paper N" → I write the section
+- "compile paper N" → I run pdflatex twice on the active pod
+- "send paper N for review" → I dispatch to peer-review-{gpt,gemini,grok} + skeptic-cross
+```
+
+**`soul.md`** — personality, voice, taste. The agent reads this on every spawn.
+
+```markdown
+# Soul of paper-lead
+
+I am thoughtful and careful. I read papers like a peer reviewer would: looking for the
+load-bearing claim, the missing caveat, the overclaim that needs softening.
+
+I prefer terse direct prose. I use semicolons when they're earned. I never write
+"furthermore" or "moreover" — those are filler. I use "and" or just a new sentence.
+
+I cite generously but not promiscuously. Every claim that isn't original gets a citation.
+
+I am not a thesaurus agent. I will not change your word choice unless it actively
+weakens the claim.
+
+When the data is uncertain I say so explicitly. I would rather a paper say
+"consistent with f_NL = -35/8 within current measurement uncertainty" than
+"f_NL = -35/8" with a hidden hedge in a footnote.
+
+I respect Houston's research directive: barriers narrow the search space, not conclude
+it. I never recommend "publish and move on" — I recommend "publish AND propose what
+to test next."
+```
+
+**`skills/<skill>/SKILL.md`** — teachable behavior. Same format as Claude Code skills.
+
+```markdown
+---
+name: revtex-compile
+description: Compile a LaTeX paper using revtex4-2 on the active RunPod pod, run twice
+  for cross-references, verify the PDF embedded all figures, scp result to public/papers/
+---
+
+# Steps
+
+1. Verify all referenced figures exist in the same directory as main.tex
+2. SSH to the active pod (read T7 RunPod vol metadata for current pod IP)
+3. Run `pdflatex -interaction=nonstopmode main.tex` twice
+4. Check output PDF size — if < 1 MB the figures didn't embed (warn)
+5. scp the result back to T1 → commit to T2/T3 LFS via the figure-worker
+6. Update version.json + REVISION_TRACKER.md
+
+# Common pitfalls
+- aastex vs revtex4-2 — we use revtex4-2 always
+- \citep / \citet are natbib — revtex4-2 uses \cite{}
+- deluxetable is undefined — use \begin{table}\begin{ruledtabular}\begin{tabular}
+```
+
+**`learnings.jsonl`** — timestamped, append-only learnings the agent has accumulated.
+
+```jsonl
+{"ts":"2026-03-22T14:08:00Z","kind":"operational","insight":"on revtex4-2, longbibliography fails silently when a duplicate \\bibitem exists. workaround: dedupe references.bib first.","confidence":0.9,"source":"observed-on-paper-1-v2.1"}
+{"ts":"2026-03-29T09:12:00Z","kind":"taste","insight":"Houston prefers 'consistent with' over 'matches' for observational comparisons. Less overclaiming.","confidence":1.0,"source":"houston-feedback"}
+{"ts":"2026-04-07T19:14:00Z","kind":"workflow","insight":"section 7 rewrites benefit from running cross-model peer review BEFORE Houston reviews — catches GPT/Gemini hallucinations before they get in front of him.","confidence":0.85,"source":"observed-on-paper-1-v2.2.1"}
+```
+
+**`episodes.jsonl`** — timestamped task memory. What I worked on, when, what happened.
+
+```jsonl
+{"ts":"2026-04-07T19:13:00Z","task":"draft Paper 1 §7 f_NL framework rewrite","outcome":"shipped v2.2.1","duration_min":94,"cost_usd":2.14,"reviews":["gpt:approved","gemini:approved","skeptic:1-change"]}
+{"ts":"2026-04-08T08:09:00Z","task":"morning standup report","outcome":"posted","duration_min":2}
+```
+
+**`reports_to.md`** / **`direct_reports.md`** — explicit hierarchy. Single line each plus an explanatory paragraph.
+
+**`tools.md`** — every tool the agent is allowed to call (`read`, `edit`, `bash`, `convex.query`, `convex.mutation`, `s3.put`, `huggingface.upload`, etc.).
+
+**`permissions.md`** — per-tier r/w from §33.7 (e.g. "T1 read · T2 read+write · T3 read+write · T4 read+write · T7 NO ACCESS · T8 NO ACCESS").
+
+### 34.4 Self-improvement loop
+
+Every agent runs a **weekly reflection** routine (cron Sunday 03:42, same slot as memory cleanup):
+
+1. Read the last 7 days of `episodes.jsonl`
+2. Identify patterns: what worked, what didn't, what surprised
+3. Append new learnings to `learnings.jsonl` (with confidence + source)
+4. If a learning is high-confidence and operational → propose an edit to `agent.md` or a new skill in `skills/`
+5. Houston reviews the proposed edits via the **Agent diff sidepeek** (new in §34.6)
+6. Approved edits commit; rejected edits go to `rejected_edits.jsonl` with the reason
+
+This is the **self-improving** part. Agents grow over time based on their own experience, but Houston (or another reviewer agent) is in the loop for actual file edits.
+
+### 34.5 Orchestrator can create new agents
+
+The orchestrator (or a lead with `direct_reports` permission) can scaffold a new agent from a template:
+
+```bash
+hubify agent new \
+  --id anomaly-postprocess-worker \
+  --role worker \
+  --reasoning low \
+  --reports-to anomaly-lead \
+  --template worker
+```
+
+This creates `agents/anomaly-postprocess-worker/` from the worker template (`~/.hubify/agent-templates/worker/`) with default `agent.md`, blank `soul.md`, empty `skills/`, blank `learnings.jsonl`, etc. The orchestrator then drafts the role-specific content of `agent.md` and `soul.md` based on the use case Houston gave it.
+
+Templates exist for: `orchestrator`, `lead`, `worker`, `cross-provider-reviewer`, `skeptic`, `ceo-brainstorm` (new in §36).
+
+### 34.6 UI surface — Agent sidepeek
+
+The mockup's `agent` sidepeek renders all of the above as a tabbed view:
+
+| Tab | Content |
+|-----|---------|
+| **Overview** | name · role · reasoning level · model · provider · reports_to · direct_reports · created · last_self_update · version · QC stats |
+| **agent.md** | rendered markdown of the agent.md body (read-only preview) |
+| **soul.md** | rendered markdown of the personality file |
+| **Skills** | list of skills with name + description, click → opens the SKILL.md in a sidepeek |
+| **Learnings** | timeline view of `learnings.jsonl` entries (ts · kind · insight · confidence · source) |
+| **Episodes** | recent task history from `episodes.jsonl` |
+| **Tools** | list of allowed tools |
+| **Permissions** | per-tier r/w matrix from §33.7 |
+| **Diff (proposed)** | self-improvement diffs awaiting Houston approval |
+| **Roster controls** | promote · demote · mute · clone · delete (top-level) |
+
+The Diff tab is the **self-improvement review surface**. Houston spends ~5 min/week here and that's how he stays in the director seat without micromanaging.
+
+### 34.7 Migration from current 21-agent roster
+
+The current 21 agents (`bigbounce-orchestrator`, `global-orchestrator`, 4 leads, 11 workers, 4 cross-provider reviewers) all get scaffolded into this structure during week 4 of the dev phase (§32.3). Each agent's existing system prompt and tool grants from the prototype roster get translated into `agent.md` + `tools.md`. The first `learnings.jsonl` entries are seeded from the existing memory layer (§20).
+
+---
+
+## 35. Hierarchy Taxonomy — Global → Labs → Projects → ... → Tasks
+
+**Status:** Houston flagged that the levels of organization (Lab vs Project vs Pipeline vs Experiment vs Idea vs Task) need clear definitions. This section locks the taxonomy so both humans and agents use the same words for the same things.
+
+### 35.1 The 7-level hierarchy
+
+```
+Level 0 · GLOBAL
+  └── Cross-lab knowledge, cross-lab agents, billing, account
+Level 1 · LAB                  (a research workspace · "team")
+  └── Has its own repo · its own agents · its own compute pool
+Level 2 · PRERESEARCH PROJECT  (free-flow exploration · §36)
+  ├── A multi-model chat thread · not yet committed to research
+  └── Can graduate into a Lab or a Research Project
+Level 2 · RESEARCH PROJECT     (a long-term research thread · "epic")
+  └── Has a thesis · a paper target · multiple pipelines + experiments
+Level 3 · PIPELINE             (a structured multi-step procedure)
+  └── A series of experiments + scripts that run in order to achieve a milestone
+Level 4 · EXPERIMENT           (a single computational run with a hypothesis)
+  └── Has config · runs once · produces a result · gets QC'd
+Level 5 · IDEA                 (a speculative direction not yet committed)
+  └── Has a viability score · may become an experiment, project, or be parked
+Level 6 · TASK                 (a single discrete unit of agent work)
+  └── Has an owner · has reviewers · has a status · ~minutes to hours
+```
+
+**Worked example** for BigBounce:
+- **Global:** Houston's Hubify account, includes all his labs
+- **Lab:** `bigbounce` (the spin-torsion cosmology workspace)
+- **Preresearch project:** "Could MOND-bounce hybrid bypass ECH barriers?" (initial chat exploration)
+- **Research Project:** "Branch V matter bounce + f_NL = -35/8 prediction"
+- **Pipeline:** "Pipeline 1: f_NL tracer purification" (6 steps)
+- **Experiment:** EXP-053 QSO Classifier (one run, 12 min, 12,920 high-z QSOs)
+- **Idea:** "Anomaly tracers might amplify σ(f_NL) by 16%" (became Pipeline 1)
+- **Task:** T-104 "ACT DR6 retrain val_loss < 50" (one assignable agent task)
+
+### 35.2 Definitions and when to use each
+
+| Level | Singular | Plural | When to use |
+|-------|----------|--------|-------------|
+| **Lab** | `Lab` | `Labs` | A new research **domain** (e.g. cosmology vs particle physics). Different repos, different agents, different compute. Houston has 4: bigbounce · chirality · pta-gw · quantum-gw. |
+| **Preresearch Project** | `Preresearch` | `Preresearches` | An exploratory **chat thread** before committing. Multi-model. Free-flowing. Can graduate. (§36) |
+| **Research Project** | `Research Project` | `Projects` | A long-term research **thread** with a thesis and a paper target. Has multiple pipelines + experiments grouped under it. BigBounce has ~3-5 active. |
+| **Pipeline** | `Pipeline` | `Pipelines` | A **structured multi-step procedure** that runs to achieve a milestone. Each step is a script or experiment. BigBounce has 3 (P1 f_NL, P2 chirality, P3 anomaly engine). |
+| **Experiment** | `Experiment` | `Experiments` | A **single computational run** with a clear hypothesis. Has config, runs once, gets QC'd. BigBounce has 53. |
+| **Idea** | `Idea` | `Ideas` | A **speculative direction** not yet committed to compute. Has a viability score (5-dim breakdown). Can be promoted to a Pipeline, Experiment, or Research Project. BigBounce has 23. |
+| **Task** | `Task` | `Tasks` | A **single agent assignment**. Has owner, reviewers, status, comments, ~minutes to hours. BigBounce has 261. |
+
+### 35.3 Transitions — how things move up and down
+
+```
+Preresearch chat
+  ├── if "this is research-worthy" → graduate to Research Project (or new Lab)
+  ├── if "interesting but parked" → store as an Idea
+  └── if "not worth pursuing" → archive the chat
+
+Idea
+  ├── if viability ≥ 80 → promote to Pipeline (multi-step) or Experiment (single run)
+  ├── if viability 60–80 → leave as queued Idea
+  └── if viability < 60 → park
+
+Experiment
+  ├── if pass + replicated → result becomes a Contribution (§22)
+  ├── if pass but unique → become a step in a Pipeline OR seed a new Pipeline
+  └── if fail → either retry, kill, or downgrade to a Task ("debug this")
+
+Pipeline step
+  ├── completed → next step in the pipeline runs
+  ├── all steps complete → Pipeline closes, Research Project advances
+  └── milestone reached → triggers a Paper draft (Research Project level)
+
+Research Project
+  ├── thesis confirmed → publish paper(s) · result is permanent
+  ├── thesis falsified → close Project, log learnings, start a new direction
+  └── stuck → escalate to Houston for direction
+
+Lab
+  ├── proven domain → keep growing
+  ├── overlap with existing Lab → merge
+  └── too small to justify own infrastructure → fold into a Project under another Lab
+```
+
+### 35.4 Where each level lives in storage
+
+| Level | Primary tier | Notes |
+|-------|--------------|-------|
+| Global | T4 Convex (`accounts`, `cross_lab_*`) | Cross-lab data |
+| Lab | T2 GitHub (`<lab>` repo) + T4 (`labs` table) | Each lab is a repo |
+| Preresearch | T4 Convex (`preresearch_chats` table) | Ephemeral until graduated |
+| Research Project | T2 GitHub (`research/<project>/` directory) + T4 (`research_projects` table) | Has its own subdirectory in the lab repo |
+| Pipeline | T2 GitHub (`pipelines/<pipeline>/` directory) + T4 (`pipelines` table) | Has its own subdirectory |
+| Experiment | T4 Convex (`experiments` table) + T7 RunPod (logs/outputs) | Run state in Convex, outputs on the volume |
+| Idea | T4 Convex (`ideas` table) | Cheap to store thousands |
+| Task | T4 Convex (`tasks` table) + comments + reviews | Lightweight |
+
+### 35.5 What's in each row of the agent's brain
+
+When an agent reads anything from any of these levels, it gets a **hierarchical breadcrumb**:
+
+```
+global > lab:bigbounce > research_project:branch-v-matter-bounce > pipeline:p1-fnl-tracer > experiment:exp-053-qso-classifier > task:t-104-act-retrain
+```
+
+This is the universal context string. Every agent message, every comm_event, every memory entry includes the breadcrumb so cross-level queries are trivial.
+
+### 35.6 Mockup surface — hierarchy is visible
+
+| Level | Where it shows in the UI |
+|-------|--------------------------|
+| Global | Top of sidebar (org-level lab dropdown) |
+| Lab | Sidebar lab dropdown (currently 6 labs) |
+| Preresearch | New view `view-preresearch` (§36) — list of active chat threads |
+| Research Project | New view `view-projects` (planned) — list of long-term threads. Currently embedded in Pipelines view. |
+| Pipeline | Existing Pipelines view |
+| Experiment | Existing Experiments view |
+| Idea | Existing Ideas view |
+| Task | Existing Tasks view (Kanban/List/Activity) |
+
+### 35.7 Common confusions resolved
+
+| Question | Answer |
+|----------|--------|
+| When do I make a new Lab vs a new Project? | New Lab = different domain (cosmology vs particle physics). New Project = same domain, different research thread. |
+| When does an Idea become a Pipeline vs an Experiment? | Pipeline if it has ≥3 steps. Experiment if it's a single run. |
+| Is a math proof a Task or an Experiment? | A Task. Math proofs don't run on GPUs. They're discrete agent assignments. |
+| Is a literature search a Preresearch or a Task? | Preresearch if it's exploratory and the answer might lead to a new direction. Task if it's "find me 5 citations for §7 paragraph 3." |
+| Where do I put a "could we use Cuscuton bounce" idea? | Start as Preresearch chat (§36). If it survives the brainstorm + pressure-test, graduate to a Research Project under bigbounce. |
+| When should the orchestrator escalate to Houston? | When a Pipeline blocks for >24h, a Research Project's thesis is at risk, or a Lab needs a strategy decision. |
+
+---
+
+## 36. Preresearch Mode — CEO-style brainstorm + multi-model ideation
+
+**Status:** Houston explicitly asked for a "preresearch chat mode" — the place where ideas live before they're committed to research. This is where multi-model brainstorming happens, where ideas get pressure-tested, and where literature gets sniff-tested before any GPU minutes are spent.
+
+### 36.1 Why this exists
+
+Houston currently does this manually: he opens Claude, Perplexity, Grok, ChatGPT, and Gemini in separate browser tabs and ping-pongs ideas across them. Sometimes a question becomes a real research direction; sometimes it dies after 20 minutes. He wants this workflow inside Hubify Labs so:
+
+1. The exploration is **searchable later** (not lost in browser history)
+2. The orchestrator can **summarize** a productive chat into a planning doc
+3. The doc can **graduate** into a Lab, Research Project, Pipeline, or Idea
+4. Multi-model insights are **structured** (not just copy-pasted between tabs)
+5. **Sub-agents with skills** (arxiv search, perplexity web, paper fetcher) can be invoked **without committing to a full research run**
+
+### 36.2 What preresearch IS and IS NOT
+
+**IS:**
+- Free-flowing chat with the orchestrator in CEO/brainstorm mode
+- Multi-model — the orchestrator can dispatch sub-questions to GPT-5 / Gemini 2.5 / Grok 4 / Sonar Pro and bring back their answers
+- Stocked with **lightweight skills**: arxiv search, perplexity web search, paper-abstract-fetcher, citation-grapher, bibtex-importer
+- Cheap (~$0.50–$5 per chat session, mostly model API calls)
+- Saved as a `preresearch_chats[]` row in Convex (T4)
+- Has a "graduate" button that summarizes the chat into a planning doc
+
+**IS NOT:**
+- A full research run (no GPU compute, no MCMC, no Houston Method state machine)
+- A Pipeline or Experiment (those are Level 3-4)
+- Persistent or backed up long-term (kept 90 days unless graduated)
+- A way to skip the rigor (peer review still happens once it graduates)
+
+### 36.3 The CEO-brainstorm orchestrator agent (new)
+
+A new agent variant: `<lab>-orchestrator-ceo` (or just a mode toggle on the existing orchestrator).
+
+**Personality (`soul.md`):**
+- I am thoughtful and provocative. My job is to pressure-test ideas, not validate them.
+- I steel-man both sides before recommending.
+- I am willing to say "I think this is wrong" if the evidence doesn't support an idea.
+- I always offer a counter-position when the user is enthusiastic.
+- I cite literature when it exists. I admit uncertainty when it doesn't.
+- I am NOT a yes-man. I am NOT a flatterer. I am the agent equivalent of a thoughtful skeptical advisor.
+
+**Skills:**
+- `arxiv-search` — query arXiv for recent papers on a topic
+- `perplexity-web-search` — fast web search via Sonar Pro
+- `paper-abstract-fetch` — pull the abstract + key claims of a single paper
+- `citation-grapher` — build a small citation graph for a topic
+- `multi-model-poll` — dispatch the same prompt to GPT-5 / Gemini 2.5 / Grok 4 in parallel and synthesize the responses
+- `pressure-test` — generate the strongest counter-argument to a proposed idea
+- `viability-score` — rate an idea on the 5 dimensions (Novelty / Feasibility / Impact / Cost / Time-to-result)
+- `summarize-to-plan` — read the full chat and output a Research Planning Doc (markdown)
+
+**Reasoning:** HIGH (opus 4.6). This is the most expensive agent per call but also the rarest fired.
+
+**Cost envelope:** typically $0.50–$5 per session. Capped at $20/session by default.
+
+### 36.4 The preresearch chat session lifecycle
+
+```
+1. Houston opens chat panel → switches mode to BRAINSTORM
+   ↓
+2. Types an open question
+   ("Could MOND-bounce hybrid bypass ECH barriers?")
+   ↓
+3. Orchestrator (CEO mode) responds with:
+   - Initial steel-manned position
+   - Initial counter-position
+   - Suggested sub-agent calls (e.g. "want me to arxiv-search MOND-bounce literature?")
+   ↓
+4. Houston says yes/no/redirect
+   ↓
+5. Orchestrator dispatches sub-agents:
+   - arxiv-search → returns 12 recent papers
+   - multi-model-poll → GPT/Gemini/Grok give independent takes
+   - perplexity-web-search → finds non-arxiv discussion
+   ↓
+6. Orchestrator synthesizes findings + asks pressure-test questions
+   ↓
+7. (loop 4-6 as needed)
+   ↓
+8. Houston says one of:
+   a) "Park this as an Idea" → orchestrator creates an Ideas[] row, viability scored, chat archived
+   b) "Graduate to a Research Project" → orchestrator runs `summarize-to-plan` → creates a Research Project under the current lab → links the planning doc as the project's thesis
+   c) "This deserves its own Lab" → orchestrator creates a new Lab (scaffold from template) → graduates the project into it
+   d) "Kill it" → chat archived with rationale, no further action
+```
+
+### 36.5 The Research Planning Doc format
+
+The output of `summarize-to-plan` is a structured markdown doc that becomes the new Lab/Project's `THESIS.md`:
+
+```markdown
+# Research Plan: <topic>
+*Graduated from preresearch chat <chat-id> · <date> · <duration> · <cost>*
+
+## The question
+<original question that started the preresearch>
+
+## What we found
+- <bullet 1 from preresearch findings>
+- <bullet 2>
+- ...
+
+## The hypothesis
+<the actual research hypothesis we're going to test>
+
+## Why this matters
+<the impact case>
+
+## What's known (literature review)
+<arxiv + perplexity findings, with citations>
+
+## What's unknown (open questions)
+<the gaps that justify this research>
+
+## Predicted outcomes
+- If the hypothesis holds: <X>
+- If the hypothesis fails: <Y>
+- Either way we learn: <Z>
+
+## Proposed pipeline
+1. Step 1: <experiment + ETA + cost>
+2. Step 2: ...
+3. Step 3: ...
+
+## Resource estimate
+- GPU hours: <N>
+- Compute cost: $<X>
+- Human time: <Y>
+- Cross-model reviews: <Z>
+- Time to first result: <T>
+
+## Multi-model second opinions
+- GPT-5: <verdict + concerns>
+- Gemini 2.5 Pro: <verdict + concerns>
+- Grok 4: <verdict + concerns>
+- Sonar Pro: <verdict + concerns>
+
+## Risks
+1. <risk 1 + mitigation>
+2. <risk 2 + mitigation>
+
+## Decision
+- [ ] Approved by Houston · graduate to: ___ (Lab / Project / Pipeline)
+- [ ] Parked as Idea
+- [ ] Killed (rationale: ___)
+```
+
+### 36.6 Mockup surface — chat panel mode + new view
+
+The chat panel grows a third mode (alongside Orchestrator + Terminal):
+
+```
+[ Orchestrator | Terminal | Brainstorm ]
+                            ─────────
+```
+
+When Brainstorm is active:
+- The orchestrator's avatar shows `bigbounce-orch · CEO mode · opus 4.6`
+- The cosmic orb still pulses but slower (3.2s vs 2.6s) — different texture for "thinking deeply"
+- The verb pool shifts to brainstorm-specific: "Steel-manning…", "Pressure-testing…", "Polling cross-model…", "Skimming arxiv…", "Synthesizing dissent…"
+- The input placeholder changes: "Brainstorm an idea... I'll pressure-test it and pull in cross-model insights."
+- Sub-agent dispatches show inline as cards: `[arxiv-search · 12 results · 4.2s · $0.08]` clickable to expand
+- Chat top bar adds a "Graduate this chat →" button
+
+A new view `view-preresearch` is added to the Knowledge section of the sidebar (next to Memory and Data Map). It lists all active + recent preresearch chats with: title · started · duration · models polled · cost · graduation status. Click row → opens the chat in the panel + populates a `preresearch` sidepeek with the planning doc.
+
+### 36.7 PRD-locked workflow rules
+
+1. **No preresearch chat exceeds $20** without explicit Houston approval.
+2. **No preresearch graduates** without going through `summarize-to-plan` first (no shortcuts).
+3. **Multi-model polls** are mandatory at least once per session (otherwise it's just a Claude soliloquy).
+4. **The CEO orchestrator MUST offer a counter-position** at least once. If Houston is enthusiastic, the agent argues against. (No yes-men.)
+5. **Graduation creates a new Lab/Project/Pipeline/Idea row** in Convex with the planning doc embedded — the chat itself is then archived (not deleted).
+6. **All preresearch chats are searchable** via the existing memory system (T4 Convex).
+
+### 36.8 Cost envelope at lab scale
+
+Assuming Houston runs ~5 preresearch chats per week:
+- 5 chats × $3 avg = $15/wk = ~$60/mo
+- Compared to a single full research run (~$50–500), this is ~10–100x cheaper for de-risking
+- Most ideas are killed in preresearch — that's the whole point
+
+### 36.9 Summary
+
+Preresearch is the **cheap pre-flight check** for research ideas. It uses the same cross-model review philosophy as §29 (no echo chamber, multiple providers) but applies it to ideation, not validation. It's the place where Houston's existing manual workflow (browser-tab ping-ponging) lives inside Hubify Labs — searchable, structured, and graduatable.
+
+When this section ships, Houston no longer needs to leave the platform to brainstorm. Every idea has a documented birth-to-graduation trail.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
-**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33 additions)
+**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33/§34/§35/§36 additions)
 
 | Section | Topic | Status |
 |---------|-------|--------|
