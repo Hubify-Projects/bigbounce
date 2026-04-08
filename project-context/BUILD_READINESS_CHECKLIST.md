@@ -165,32 +165,15 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### D. API spec complete
 
-- [ ] **Write `API_SPEC.md`** + the OpenAPI YAML
-- [ ] **REST endpoint inventory:**
-  - Auth: `POST /v1/auth/login` · `POST /v1/auth/refresh` · `DELETE /v1/auth/logout`
-  - Labs: `GET/POST/PATCH/DELETE /v1/labs` · `GET /v1/labs/:slug`
-  - Projects: `GET/POST/PATCH/DELETE /v1/labs/:slug/projects`
-  - Pipelines: `GET/POST /v1/labs/:slug/projects/:id/pipelines`
-  - Experiments: `GET/POST /v1/labs/:slug/experiments` · `POST /v1/experiments/:id/dispatch`
-  - Files: `GET /v1/labs/:slug/files/*` · `PUT /v1/labs/:slug/files/*`
-  - Notes: `GET/POST/PATCH /v1/labs/:slug/notes`
-  - Chats: `GET/POST /v1/labs/:slug/chats` · `POST /v1/chats/:id/messages` · `POST /v1/chats/:id/promote`
-  - Agents: `GET /v1/labs/:slug/agents` · `POST /v1/agents/:name/invoke`
-  - Memory: `GET /v1/labs/:slug/memory/search`
-  - Contributions: `GET/POST /v1/labs/:slug/contributions`
-  - Compute: `GET /v1/compute/credits` · `POST /v1/compute/dispatch`
-  - Cross-lab comms: `POST /v1/comms/send` · `GET /v1/comms/inbox`
-  - Webhooks: `POST /v1/webhooks/runpod` · `POST /v1/webhooks/github`
-- [ ] **GraphQL schema (alternative surface):**
-  - Lab type with nested projects, experiments, agents, etc.
-  - Mutation types for dispatch, promote, share
-  - Subscription types for live activity feed
-- [ ] **Auth & rate limiting policy** — token format (JWT vs opaque) · refresh strategy · per-route rate limits
-- [ ] **Versioning policy** — `/v1/...` vs header-based versioning
-- [ ] **Error response format** — RFC 7807 Problem Details
-- [ ] **OpenAPI YAML lock** — full spec checked into the platform repo
+- [x] **Write `API_SPEC.md`** in `project-context/` (commit `pending-d1`) — comprehensive REST + GraphQL + auth + versioning + error format spec, ~500 lines · Category D bootstrap
+- [x] **REST endpoint inventory** (in API_SPEC.md §3) — 19 endpoint groups · ~85 endpoints across labs · projects · pipelines · experiments · files · chats · papers · notes · agents · memory · contributions · compute · cross-lab comms · webhooks · search · standups · routines · backups · costs
+- [ ] **GraphQL schema** — full schema TBD (mentioned in API_SPEC.md §7 with example query, full schema deferred to v1.1)
+- [x] **Auth & rate limiting policy** (in API_SPEC.md §2 + §4) — JWT HS256 with 3 token types (user/agent/service) · per-lab scopes enforcing Lab Sovereignty Rule · 3-tier rate limits + per-endpoint overrides
+- [x] **Versioning policy** (in API_SPEC.md §1) — URL path versioning (`/v1/...`) · 12-month deprecation policy · Sunset + Link headers
+- [x] **Error response format** (in API_SPEC.md §5) — RFC 7807 Problem Details · 11 standard error type slugs
+- [ ] **OpenAPI YAML lock** — `api-spec.openapi.yaml` (next item in Category D — turns this human-readable spec into the machine-readable contract)
 
-**D status:** 0% — entire category untouched.
+**D status:** ~71% (5 of 7) — entire category bootstrapped from 0% in one iteration.
 
 ### E. MCP server spec complete
 
@@ -295,13 +278,13 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | A. PRD lock | 41 | 51 | 80% |
 | B. Web mockup | 26 | 49 | 53% |
 | C. macOS app | 1 | 5 | 20% |
-| D. API spec | 0 | 7 | 0% |
+| D. API spec | 5 | 7 | 71% |
 | E. MCP server | 0 | 7 | 0% |
 | F. CLI spec | 0 | 8 | 0% |
 | G. Deployment infra | 0 | 13 | 0% |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **74** | **156** | **47%** |
+| **OVERALL** | **79** | **156** | **51%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
