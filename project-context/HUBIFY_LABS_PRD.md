@@ -3245,126 +3245,157 @@ If any metric drops below target for 2 consecutive weeks, the platform fires a s
 
 ---
 
-## 24. Compute Provider — RunPod (current) + Modal (coming soon)
+## 24. Compute Provider — RunPod ONLY (Pods + Serverless + CPU/GPU variants)
 
-**STATUS UPDATED 2026-04-07 PM:** Houston revised the compute roadmap. Ship **RunPod first**, get the implementation bulletproof, THEN add Modal as a second provider. Modal is listed as "coming soon" in the UI but not implemented in Phase 1. The per-pod proactive/save-credits toggle (§23.3) applies to RunPod pods.
+**STATUS LOCKED 2026-04-08:** Houston confirmed: drop Modal entirely. Modal and RunPod Serverless are functionally identical (both auto-scale, both $0 when idle, both per-second billing, both have ~24h soft caps for long jobs). Modal is slightly more dev-friendly via Python decorators but ~33% more expensive AND adds a second vendor / second billing relationship / second credentials store. **One vendor is simpler. RunPod for everything.**
 
-Phase 1 (now): RunPod only, with full Houston Method enforcement and per-pod behavior toggles.
-Phase 2 (later): Add Modal as a second provider via the abstraction described below. Lift this section's design from "spec" to "implementation" at that point.
+This section supersedes the earlier "RunPod first, Modal coming soon" plan. The full PRE-2026-04-08 architecture decision document `bigbounce/project-context/compute_architecture_decision.md` is now historical — it documents how we got to this decision but no longer reflects the locked architecture.
 
-The architecture decision document `bigbounce/project-context/compute_architecture_decision.md` (818 lines, 2026-04-07) still holds the full provider analysis and remains the reference for the eventual Modal integration. Sections 24.1-24.6 below are RESERVED FOR PHASE 2 — they define what the abstraction WILL look like when Modal is added.
+### 24.1 The two compute modes (one vendor, two surfaces)
 
-### 24.1 Why Dual-Provider (Phase 2 plan)
+RunPod offers two execution models. Both bill against the same RunPod credits balance, both use the same network volumes for persistent storage, both share the same SSH key + API token.
 
-- **RunPod is already working** for BigBounce. Don't break what works.
-- **Modal solves the credits-expire-mid-run pod death** pain. Useful for new pods and for the "spawn an experiment when needed" pattern.
-- **Users have their own RunPod credits** and relationships. Don't force migration.
-- **Pricing tradeoffs differ per workload.** Long stable runs may favor RunPod's fixed pricing. Bursty parallel work favors Modal's pay-per-second.
-- **Resilience.** If one provider has an outage, the other still works.
+**Pods (always-on, hourly billing):**
+- A dedicated VM (CPU or GPU) that you SSH into and use like a server
+- Hourly billing: charged for every hour the pod is running, even idle
+- Best for: long-running training jobs, MCMC chains > 30 min, persistent workloads (Jupyter sessions), workloads where you'll dispatch many sequential jobs in a row and want to avoid cold starts
+- Pricing examples: H200 SXM = $3.59/hr, A100 80GB = $1.69/hr, RTX 4090 = $0.79/hr, CPU-only (4 vCPU 16GB) = $0.16/hr
 
-The full architecture decision lives in `bigbounce/project-context/compute_architecture_decision.md` (818 lines, written 2026-04-07). Hard facts confirmed there:
-- Modal H200: $0.001261/sec = $4.54/hr active
-- RunPod H200: $3.59/hr fixed
-- Modal 24-hour cap per function (real constraint for multi-day MCMC)
-- Modal Volume pricing not on public page (open question)
-- Fly.io GPUs deprecated August 2026 (Fly is for orchestrator only)
+**Serverless (auto-scale, per-second billing, $0 when idle):**
+- Function-style invocation: deploy a Docker image with a handler.py, then trigger via REST API
+- Per-second billing: pay only for the wall-clock time the function is actually executing
+- Auto-scales from 0 to N parallel workers based on demand
+- Best for: spiky inference (process this batch of 1000 anomalies), short batch jobs < 30 min, embarrassingly parallel work, webhook-triggered tasks, anything where total duty cycle < 20% of wall time
+- Pricing examples: H100 ~$0.00088/sec ($3.17/hr equivalent), A100 ~$0.00060/sec ($2.16/hr equivalent), CPU-only ~$0.00003/sec ($0.11/hr equivalent)
 
-### 24.2 The Compute Abstraction
+**Both modes support BOTH CPU and GPU variants.** A "CPU pod" is just a pod with no GPU attached — much cheaper, fine for non-tensor work. Same for "CPU serverless" — a serverless function that runs on a CPU-only worker.
 
-Agents do not call provider-specific APIs. They call a unified interface:
+### 24.2 Why we dropped Modal
 
-```typescript
-interface ComputeProvider {
-  // Spin up compute (pod for RunPod, function invocation for Modal)
-  start(spec: ExperimentSpec): Promise<ComputeHandle>;
+Houston's instinct: *"modal is interesting and cool but we gotta keep simplicity wherever possible... it seems like basically the same thing as modal."*
 
-  // Stream logs back
-  logs(handle: ComputeHandle): AsyncIterable<LogLine>;
+He's correct. The honest comparison:
 
-  // Status
-  status(handle: ComputeHandle): Promise<ComputeStatus>;
+| Dimension | Modal | RunPod Serverless | Why RunPod wins |
+|---|---|---|---|
+| Billing model | Per-second, $0 idle | Per-second, $0 idle | tie |
+| Cold start | 2-15 sec | 5-30 sec | Modal slightly faster but RunPod is acceptable for our workloads |
+| Setup ergonomics | Python `@app.function` decorator | Docker image + `handler.py` | Modal is easier but the ergonomic gap is small once you have a handler template |
+| Pricing (H100) | ~$4.50/hr equivalent | ~$3.17/hr equivalent | **RunPod ~30% cheaper** |
+| Pricing (A100) | ~$3.50/hr equivalent | ~$2.16/hr equivalent | **RunPod ~38% cheaper** |
+| Long-running cap | 24h hard | 24h soft (varies by plan) | tie (both bad for multi-day jobs — use Pods instead) |
+| GPU variety | A10G, A100, H100, H200 | RTX 4090, A4000-A6000, A100, H100, H200, MI300X | **RunPod (more options including consumer cards for cheap)** |
+| Vendor count | +1 vendor | Same vendor as Pods | **RunPod (one billing, one auth, one credit pool)** |
+| Persistent state | Modal Volumes | RunPod Network Volumes | tie (both work, RunPod's are cheaper) |
 
-  // Stop (terminate pod or cancel function)
-  stop(handle: ComputeHandle): Promise<void>;
+**The bottom line:** Modal's only real advantage is decorator-style ergonomics. That's worth ~1 day of dev work to replicate against RunPod via a thin Python wrapper. The 30-38% pricing gap and the simplicity of one vendor outweigh the developer-experience gap.
 
-  // Persistent storage handle
-  volume(name: string): VolumeHandle;
-}
+**The trade-off we're accepting:** Modal's `@app.function(...)` API is genuinely cleaner. RunPod requires building a Docker image with `handler.py`. To narrow the gap, the platform ships a small Python helper:
 
-class RunPodProvider implements ComputeProvider { ... }
-class ModalProvider implements ComputeProvider { ... }
-
-// Router picks provider based on lab/pod config
-function getProvider(labId: string, podId?: string): ComputeProvider {
-  const config = loadComputeConfig(labId, podId);
-  return config.provider === "modal" ? new ModalProvider() : new RunPodProvider();
-}
+```python
+# hubify_labs/runpod_serverless.py — Modal-decorator-style wrapper around RunPod
+@hubify_serverless.function(gpu="H100", timeout=3600, volume="bigbounce-data")
+def run_anomaly_detection(survey: str, n_anomalies: int = 1000) -> dict:
+    # Body executes as a serverless function on RunPod
+    ...
 ```
 
-### 24.3 Per-Pod Configuration
+Under the hood this generates a Dockerfile + handler.py + the REST trigger code. The user writes Python; the framework handles the RunPod Serverless plumbing. This closes the dev-experience gap.
+
+### 24.3 Per-lab compute config
 
 `<lab>/.hubify-labs/compute.yaml`:
 ```yaml
-default_provider: runpod        # used when no per-pod override
+provider: runpod                    # the only provider, locked
 
+# Pods registered to this lab (always-on)
 pods:
   bigbounce-h200:
-    provider: runpod
     pod_id: o76k3jfzbfh25e
     gpu_type: H200_SXM
-    proactive_mode: true
+    cost_per_hour: 3.59
+    proactive_mode: true             # see §24.5
     proactive_max_cost_per_task: 25
-    idle_threshold_minutes: 5
+    idle_threshold_minutes: 10
+    auto_attach_volume: bigbounce-data
 
-  modal-bursty-runs:
-    provider: modal
-    app_name: bigbounce
-    gpu_type: H200
-    timeout_seconds: 86400      # 24h max per Modal
-    proactive_mode: false       # save credits — function-based, no idle pod
-    auto_volume: bigbounce-data
+# Serverless endpoints registered to this lab
+serverless:
+  anomaly-detector:
+    endpoint_id: <runpod-endpoint-id>
+    image: hubify-labs/anomaly-detector:latest
+    gpu_type: A100_80GB
+    timeout_seconds: 1800            # 30 min max per call
+    max_workers: 10                  # auto-scale up to this
+    cost_per_second: 0.00060
+
+  pdf-qa:
+    endpoint_id: <runpod-endpoint-id>
+    image: hubify-labs/pdf-qa:latest
+    gpu_type: cpu                    # CPU-only — pdftotext doesn't need a GPU
+    timeout_seconds: 300
+    max_workers: 5
+    cost_per_second: 0.00003
 ```
 
-### 24.4 Post-Run Behavior Toggle
+### 24.4 The Compute Abstraction (simplified — no provider polymorphism needed)
 
-Two modes per pod (already covered in §23.3 but worth restating in compute context):
+Since there's only one provider, the abstraction is now just a thin RunPod client with two methods + storage + monitoring:
+
+```typescript
+class RunPodCompute {
+  // Pods
+  startPod(spec: PodSpec): Promise<PodHandle>;
+  stopPod(handle: PodHandle): Promise<void>;
+  podStatus(handle: PodHandle): Promise<PodStatus>;
+
+  // Serverless
+  invokeServerless(endpointId: string, input: object): Promise<JobHandle>;
+  serverlessStatus(handle: JobHandle): Promise<JobStatus>;
+
+  // Shared
+  volume(name: string): VolumeHandle;
+  getCreditBalance(): Promise<number>;       // see §41
+  streamLogs(handle: PodHandle | JobHandle): AsyncIterable<LogLine>;
+}
+```
+
+No provider router. No polymorphism. No abstraction tax. Single-vendor simplicity.
+
+### 24.5 Post-Run Behavior Toggle (per Pod only — Serverless is always "save credits")
+
+Two modes for **Pods**:
 
 **Proactive Mode (default for active research):**
-- When current run finishes, immediately pick next from idea queue
+- When current run finishes, immediately pick next from queue
 - Pod stays running, GPU stays utilized
-- Backup happens AFTER successive runs, not before next run starts
-- Best for RunPod (fixed-price pods that benefit from continuous use)
+- Best for: active research weeks where Houston is dispatching many experiments
+- Cost: continuous burn, but no cold-start latency between dispatches
 
 **Save Credits Mode:**
 - When current run finishes, full backup → integrity check → stop pod
-- Used for tight budgets or experiments where the user explicitly wants pause
-- Best for Modal (pay-per-second functions where idle = $0)
+- Pod can be restarted later from the network volume
+- Best for: tight budgets, weekend pauses, post-experiment cooldown
+- Cost: $0 between runs, but ~30-90 sec startup cost when restarted
 
-**Hybrid pattern (recommended for most labs):**
-- Use RunPod in Proactive Mode for daily research (one always-on H200)
-- Use Modal in Save Credits Mode for bursty parallel experiments (spin up 8 functions for a sweep, then they all auto-shutdown)
+**Serverless mode is always implicit "save credits"** — functions auto-stop when the call returns. No toggle needed.
 
-### 24.5 Migration Plan
+**Hybrid pattern (recommended):**
+- One always-on Pod (RunPod) in Proactive Mode for the active research thread (currently the H200)
+- Serverless endpoints (RunPod) for everything bursty / parallel / low-duty-cycle (PDF QA, anomaly batches, claims audits)
+- CPU pods or CPU serverless for non-tensor work (LaTeX compile, cross-match, paper formatting)
 
-**Phase 1 (immediate):** Add Modal provider alongside RunPod. Keep BigBounce on RunPod. New labs default to Modal. No forced migration.
+### 24.6 Cost Tracking (single-provider, simpler aggregation)
 
-**Phase 2 (4 weeks):** Run a side-by-side comparison: same experiment on both providers. Compare cost, latency, reliability. Collect real numbers.
-
-**Phase 3 (8 weeks):** Based on real data, recommend a default per workload type. Houston decides whether to migrate BigBounce.
-
-**Phase 4 (forever):** Both providers supported indefinitely. The abstraction means switching providers is a config change, not a code rewrite.
-
-### 24.6 Cost Tracking Across Providers
-
-The cost system aggregates spend regardless of provider:
 ```
-Today's cost: $18.40
-  · RunPod (BigBounce H200): $14.20
-  · Modal (Phase 4 functions): $4.20
+Today's cost: $14.40
+  · RunPod Pod (bigbounce-h200): $14.10
+  · RunPod Serverless (anomaly-detector × 47 calls): $0.28
+  · RunPod Serverless (pdf-qa × 12 calls): $0.02
   · Vercel Sandbox (vibe coding): $0.00
 ```
 
-Per-experiment cost is logged to the experiments table with provider attribution. Top-N most expensive experiments view shows which provider each ran on.
+Per-experiment cost is logged to the experiments table with mode attribution (`pod` vs `serverless` vs `cpu-pod` vs `cpu-serverless`). Top-N most expensive experiments view shows which mode each ran on. Burn rate is tracked daily and forecasted to credits-zero per §41.
 
 ---
 
@@ -4850,12 +4881,12 @@ The two views of one machine pattern is the through-line that makes all of this 
 | `view-standups` | Standups | ✅ | 3-per-day card · today's 3 standups · full transcript view · recent transcripts timeline. Click standup row → standup sidepeek. |
 | `view-tasks` | Tasks | ✅ | View mode toggle (Kanban / List / Activity, **all 3 modes built**) · 261 tasks · cross-agent reviews · comments · paperclip pattern · 4 list groups · 20 activity events. |
 | `view-ideas` | Ideas & Insights | ✅ | 23 ideas · status filters (All/Active/Queued/Parked/High viability) · 5 active idea rows with viability scores · click → `idea` sidepeek (5-dimension breakdown: novelty/feasibility/impact/cost/time-to-result). |
-| `view-costs` | Costs | ✅ | Per-provider split (10 providers: Anthropic/OpenAI/Google/xAI/Perplexity/RunPod/Modal/Fly/Vercel/Convex) · daily + monthly + cap + usage bars · **30-day SVG line chart** (4 provider lines + gridlines + axis labels) · burn forecast. |
+| `view-costs` | Costs | ✅ | Per-provider split (9 providers: Anthropic/OpenAI/Google/xAI/Perplexity/RunPod/Fly/Vercel/Convex — Modal dropped 2026-04-08) · daily + monthly + cap + usage bars · **30-day SVG line chart** (4 provider lines + gridlines + axis labels) · burn forecast. |
 | `view-alerts` | Alerts | ✅ | 2 active alerts (disk crit, runway warn) with **contextual action buttons** (Clean up / New pod / Configure rule / Snooze) · category breakdown · 30-day history · escalation path L1-L4 · alert rules editor (5 rules, click → `alert-rule` sidepeek). |
 | `view-settings` | Settings | ✅ | 8 nav sections (Models / Providers / Cross-review / Budget / Backups / Keys / Repos / Agents) **all wired to scroll-to-section** with highlight pulse. Cross-provider config (5 providers + API keys + budget caps). 21-agent roster (clickable rows → agent sidepeek). |
 | `view-memory` | Memory | ✅ | **4-layer tabs** (User/Agent/Lab/Global, **wired** — clicking filters mem-results) · type filter chips · search · 18 sample memories · click row → `memory` sidepeek (4-layer detail with usage history + related memories). |
 | `view-profile` | Profile (Houston public) | ✅ | Avatar + bio + Follow/Share/Edit · **52-week activity heatmap with custom hover tooltip** (date + 4-quadrant breakdown of experiments/papers/agent/knowledge counts) · 4 pinned labs · 4 papers · 16 contributions with novelty bars · 3 public models · 5 public datasets · 7 articles. |
-| `view-compute` | Compute | ✅ | 4 stat cards · pod cards (bigbounce-h200 with SSH/Restart/Kill buttons; Modal "coming soon" card) · provider breakdown · idle GPU watchdog timeline. Kill button → `pod-kill` confirmation sidepeek (running impact + pre-kill steps + alternatives + name confirm). |
+| `view-compute` | Compute | ✅ | 4 stat cards · pod cards (bigbounce-h200 with SSH/Restart/Kill buttons; serverless endpoint cards for anomaly-detector + pdf-qa) · single-vendor RunPod breakdown · idle GPU watchdog timeline · credits history chart with 4 threshold lines (per §41). Kill button → `pod-kill` confirmation sidepeek (running impact + pre-kill steps + alternatives + name confirm). |
 | `view-vibe` | Vibe Coding | ✅ | Vercel Sandbox split layout · left chat with cosmic orb thinking block · code block · right preview iframe with CSS-built fake chart · 3 mode tabs (preview/code/logs, **wired**) · reload/open-browser/save buttons. |
 | `view-reviews` | Cross-model peer review | ✅ | 4 stat cards · active reviews table (click row → paper or contribution sidepeek) · review drilldown with **3 clickable reviewer cards** (GPT-5 / Gemini / Sonnet skeptic, click → agent sidepeek) · interpretation pass classification (FACT/OPINION/HALLUCINATION) · provider spend breakdown. |
 | `view-routines` | Routines | ✅ | 4 stat cards · 8 routine rows (3 standups + 5 watchdogs/maintenance, **all clickable** → `routine` sidepeek with schedule + last/next fire + recent fires) · recent fires timeline. |
@@ -5002,7 +5033,7 @@ This pattern is **explicitly part of the product** — the platform improves its
 **Architecture:**
 - Convex for backend state (memory, comms, tasks, standups, novelty reviews)
 - Fly.io for the always-on agent host (Claude Code as the runtime)
-- RunPod first for GPU compute (Modal "coming soon" placeholder, Phase 2)
+- RunPod ONLY for compute — Pods (always-on) + Serverless (auto-scale) + CPU/GPU variants (Modal dropped 2026-04-08 per §24, §41)
 - Vercel for static site hosting + Vercel Sandbox for vibe coding
 - Cross-model peer review with mandatory non-Anthropic agents (GPT-5 + Gemini 2.5 + Grok 4 + Sonar Pro)
 - 4-layer memory system (User / Agent / Lab / Global), built in-house from scratch on Convex Agent + OSS patterns
@@ -5017,7 +5048,7 @@ This pattern is **explicitly part of the product** — the platform improves its
 
 | Feature | Reason | Target phase |
 |---------|--------|--------------|
-| Modal pay-per-second GPU | RunPod-first focus; Modal added once Phase 1 is stable | Phase 2 |
+| ~~Modal pay-per-second GPU~~ | **DROPPED 2026-04-08** — RunPod Serverless covers the same workload at ~30% lower cost without adding a second vendor. See §24 + §41. | n/a |
 | DeepSeek + Local Ollama providers | Cost optimization unlocks after $1K/mo spend baseline | Phase 2 |
 | Real PNG screenshot in Site preview iframe | Self-contained mockup limitation; revisit when migrating to Vite/Next | Phase 2 |
 | External terminal app integration (iTerm2 spawn) | Requires desktop app shell · web-only for v1 | Phase 2 (desktop) |
@@ -5101,7 +5132,7 @@ This pattern is **explicitly part of the product** — the platform improves its
 - **Repo name:** `hubify-labs` confirmed? Or something else?
 - **Domain:** `hubify.app/labs` subpath, or `labs.hubify.app` subdomain, or fresh `hubifylabs.com`?
 - **Auth provider:** Convex Auth (free, integrated) vs Clerk (more features, $25/mo)?
-- **Agent host hosting:** Fly.io confirmed? Or Modal Labs as the host too?
+- **Agent host hosting:** Fly.io confirmed (Modal dropped from the platform 2026-04-08 per §24)
 - **Migration cutoff:** When does BigBounce switch from current Vercel deploy to the new Hubify Labs platform? Suggest week 7.
 
 ### 32.5 Risk register for the dev phase
@@ -7139,6 +7170,300 @@ Houston explicitly does NOT want Labs #2-#5 seeded into the database. He wants t
 
 ---
 
+## 41. Compute Routing & Credits Monitoring — How Agents Choose Where to Run
+
+**Status:** Locked 2026-04-08 by Houston after the Modal/RunPod Serverless equivalence question. Companion section to §24 (Compute Provider — RunPod ONLY).
+
+### 41.0 Why this section exists
+
+The orchestrator dispatches dozens to hundreds of jobs per week. Without clear rules, it would default to the wrong compute mode at the wrong time and burn money — most commonly by running CPU work on GPU pods (10-20× overpriced). This section locks the 4 routing rules every agent must follow before dispatching a job.
+
+Houston's quote: *"ensure our agents know when to spin up CPU pods/serverless vs GPUs pods/serverless etc too please so we don't waste GPU pods hours on basic cpu runs."*
+
+### 41.1 The 4 routing rules (HARD INVARIANTS)
+
+These 4 questions must be answered for every dispatch, in this order:
+
+#### Rule 1 — CPU vs GPU (THE most important rule, biggest cost lever)
+
+**The question:** Does this task have a tensor operation in the hot path?
+
+| Task type | Answer | Where to run |
+|---|---|---|
+| Autoencoder training | yes (matrix multiplies, backprop) | **GPU** |
+| CNN inference (galaxy chirality) | yes | **GPU** |
+| LLM inference (self-hosted) | yes | **GPU** |
+| Large MCMC chains with Stan/Cobaya GPU acceleration | yes (when GPU acceleration is configured) | **GPU** |
+| LaTeX compile (`pdflatex main.tex`) | no | **CPU** |
+| Pandas / numpy data wrangling | no (numpy uses BLAS, not GPU) | **CPU** |
+| CSV / JSON / parquet processing | no | **CPU** |
+| Cross-matching catalogs (TreeCorr, k-d trees) | no (CPU-bound spatial joins) | **CPU** |
+| Symbolic regression (CPU-bound search) | no | **CPU** |
+| Bibliography management, paper formatting | no | **CPU** |
+| Agent orchestration scripts | no | **CPU** |
+| File packaging (tar, zip) | no | **CPU** |
+| Webhook/API receiving | no | **CPU** |
+
+**The cost ratio:** GPU pods are $1.50-$4.00/hr. CPU pods are $0.10-$0.20/hr. GPU serverless is $2-$4/hr equivalent. CPU serverless is $0.10-$0.20/hr equivalent. **A GPU running CPU work is 10-20× overcharged.** This rule alone can cut compute spend by 30-50% on a typical research week.
+
+**Enforcement:** the orchestrator's `dispatch_experiment()` function MUST check the experiment's `requires_gpu` field before selecting a compute mode. If the field is missing, the orchestrator refuses to dispatch and asks the experiment author (or the agent that proposed it) to explicitly set the field. **No GPU dispatch without explicit `requires_gpu: true`.**
+
+#### Rule 2 — Pod vs Serverless (the duration question)
+
+**The question:** How long will this task run, and how often will it be invoked?
+
+**Use a Pod (always-on) when:**
+- Single job duration > 1 hour (e.g., MCMC chains, multi-epoch training)
+- You'll dispatch many sequential jobs in a row from the same context (cold-start cost > break-even)
+- The workload needs persistent state between calls (a Jupyter session, an in-memory cache)
+- Active research week — you're going to use this pod for many hours per day
+- The job needs SSH access for debugging
+
+**Use Serverless (auto-scale) when:**
+- Single job duration < 30 minutes
+- Bursty / spiky workload (anomaly batch processing — 1000 anomalies, then nothing for an hour)
+- Embarrassingly parallel — you can shard the work and run 100 workers concurrently for 30 sec each
+- Webhook-triggered (new paper submitted → run claims-audit)
+- Total duty cycle < 20% of wall time (the GPU would sit idle most of the day on a Pod)
+
+**The break-even math:** if you need < 4 hours of compute per 24 hours of wall time, Serverless wins. More than that, Pod wins. The orchestrator computes this on-the-fly per experiment dispatch.
+
+**Edge cases:**
+- A 5-hour single job → Pod (Serverless 24h cap is fine but Pod is cheaper for guaranteed run)
+- 100 × 1-minute calls per day → Serverless (Pod would idle 23h)
+- 20 × 30-minute calls per day → either works; default to Serverless (10 hours total = under break-even when you account for cold starts being amortized)
+- A 30-hour MCMC chain → Pod ONLY (Serverless 24h cap blocks this — must use Pod with checkpointing per §41.4)
+
+#### Rule 3 — When to spin up a NEW pod vs reuse an existing one
+
+**The question:** Is there a pod already running with the right GPU type and free capacity?
+
+| State | Action |
+|---|---|
+| Existing pod is running, right GPU, idle | **Reuse it** (dispatch the new job to the existing pod) |
+| Existing pod is running, right GPU, busy with another job | **Wait** (queue the new job, dispatch when current finishes) — UNLESS the queued job is high-priority, in which case spin up a second pod |
+| Existing pod is running, WRONG GPU (e.g. need H200, current is RTX 4090) | **Spin up a new pod** with the right GPU |
+| No existing pod | **Spin up a new pod** OR dispatch to Serverless if the job qualifies per Rule 2 |
+| Existing pod is stopped but volume preserved | **Restart it** (faster than fresh provision, ~30-90 sec) |
+
+**The orchestrator must NOT spin up a second H200 pod if the first one is idle.** Houston has been burned by this exact pattern before.
+
+#### Rule 4 — Always have a recovery checkpoint (the credits-don't-die rule)
+
+**The question:** If the credits run out mid-run, can this job recover from a checkpoint?
+
+**Mandatory for any job > 30 minutes:**
+- Write a checkpoint every 10 minutes (configurable per job type)
+- Checkpoint files go to RunPod network volume (T7) AND get backed up to Backblaze B2 (T8) on the next backup cron tick (every 15 min)
+- The job's resume logic must be tested before deploying: can it actually pick up from the checkpoint after a forced kill?
+
+**Optional for jobs < 30 minutes:** but recommended if the job is expensive (e.g., a 25-minute MCMC step that would cost $1.50 to redo).
+
+**Pod kill is graceful:**
+1. Send `SIGTERM` to the running process
+2. Wait 30 seconds for the checkpoint flush
+3. Send `SIGKILL` if still running
+4. Stop the pod (volumes preserved)
+
+This means even an "emergency" credit-out shutdown loses at most 30 seconds of work, not 30 hours.
+
+### 41.2 RunPod credits API (the live monitoring loop)
+
+**The endpoint:** `https://api.runpod.io/graphql` (GraphQL)
+**Auth:** `Authorization: Bearer $RUNPOD_API_KEY`
+**Query:**
+```graphql
+query {
+  myself {
+    clientBalance     # current credit balance in USD
+    spendDetails {    # spending history for burn-rate calculation
+      localStartDate
+      localEndDate
+      gpuTypeId
+      cost
+    }
+  }
+}
+```
+
+**The cron:** `gpu-manager-lead` runs a "credits check" cron every 15 minutes.
+
+```python
+# routines/credits_check.py
+import requests, os, datetime, json
+from pathlib import Path
+
+API_KEY = os.environ["RUNPOD_API_KEY"]
+QUERY = '{"query": "query { myself { clientBalance spendDetails { cost localStartDate } } }"}'
+
+def check_credits():
+    r = requests.post(
+        "https://api.runpod.io/graphql",
+        headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
+        data=QUERY,
+        timeout=10,
+    )
+    data = r.json()["data"]["myself"]
+    balance = data["clientBalance"]
+    # Compute 24h burn rate from spendDetails
+    yesterday = (datetime.datetime.utcnow() - datetime.timedelta(hours=24)).isoformat()
+    burn_24h = sum(s["cost"] for s in data["spendDetails"] if s["localStartDate"] >= yesterday)
+    burn_per_hour = burn_24h / 24.0
+    runway_hours = balance / burn_per_hour if burn_per_hour > 0 else 999
+    # Log to lab/compute/credits_log.jsonl
+    log = {"ts": datetime.datetime.utcnow().isoformat(), "balance": balance, "burn_24h": burn_24h, "burn_per_hour": burn_per_hour, "runway_hours": runway_hours}
+    with Path("lab/compute/credits_log.jsonl").open("a") as f:
+        f.write(json.dumps(log) + "\n")
+    # Trigger threshold actions per §41.3
+    return log
+```
+
+**The output gets surfaced in the UI:**
+- Director header pill: `$29.35 · 47h runway` (current balance + projected hours-until-zero based on 24h burn rate)
+- Compute view: full credits history chart (balance over time, burn rate per day)
+- Status bar: alert color changes per threshold (green / yellow / red / critical)
+
+### 41.3 The 4 credit thresholds (escalating actions)
+
+| Threshold | Balance | Action | Notification |
+|---|---|---|---|
+| **HIGH** | > $50 | Normal operations. Continue dispatching. | None |
+| **WARN** | $20 - $50 | Pause dispatching of "low-priority" experiments. Active research continues. | Director sees yellow pill. Next standup mentions it. |
+| **CRIT** | $5 - $20 | (1) Trigger full backup of all volumes to Backblaze B2 (2) Verify backup integrity (3) Pause ALL new dispatches (4) Existing jobs continue but will not auto-restart | Director sees red pill. Critical-tier comm event in activity feed. Houston gets a comm-event in his inbox. |
+| **EMERGENCY** | < $5 | (1) Send SIGTERM to all running pods (graceful kill, 30 sec checkpoint window) (2) Stop all pods (volumes preserved) (3) Cancel any in-flight serverless calls (4) Set lab status to "credits-exhausted" | Director sees critical-tier alert pill. Houston gets a phone push notification (if enabled). All standups paused until topped up. |
+
+**The 4 thresholds are configurable per lab** in `lab/compute/credit_thresholds.yaml`:
+```yaml
+thresholds:
+  high: 50
+  warn: 20
+  crit: 5
+  emergency: 1   # absolute floor — anything below this is full shutdown
+recovery:
+  resume_at: 30  # auto-resume normal operations when credits cross back above this
+```
+
+**Why these specific numbers** (for the BigBounce / single-H200 baseline):
+- $50 = ~14 hours of H200 at $3.59/hr = comfortable buffer
+- $20 = ~5.5 hours of H200 = enough for one substantial experiment
+- $5 = ~1.4 hours of H200 = enough to checkpoint and shut down gracefully
+- $1 = absolute floor, safety net
+
+For labs with multiple pods or more expensive GPUs, scale the thresholds proportionally.
+
+### 41.4 The pre-credit-out backup workflow (the "no data loss" guarantee)
+
+When CRIT threshold fires, this exact sequence runs:
+
+```
+1. gpu-manager-lead detects balance < $20
+   ↓
+2. Pause dispatcher (no new experiments accepted)
+   ↓
+3. For each running pod:
+     a. Send a "checkpoint please" signal to the running job (custom signal handler in the job's runner)
+     b. Wait up to 60 seconds for the job to flush its checkpoint
+     c. Verify the checkpoint file exists on the network volume
+   ↓
+4. For each network volume attached to a running pod:
+     a. Sync to Backblaze B2 (incremental sync — only changed files since last backup)
+     b. Verify the sync succeeded (checksum a sample of files)
+   ↓
+5. Mark the lab's compute status as "backup-complete · awaiting top-up"
+   ↓
+6. Send Houston a comm-event: "BigBounce credits at $18.40, all volumes backed up, pods still running but no new dispatches. Top up at: <runpod billing url>"
+   ↓
+7. Wait. Continue to monitor.
+   ↓
+8. If balance keeps dropping (i.e., active jobs still burning), and hits EMERGENCY ($5):
+     a. SIGTERM all running pods
+     b. 30 sec graceful checkpoint window
+     c. SIGKILL stragglers
+     d. Stop all pods
+     e. Final volume sync to Backblaze
+     f. Lab status = "credits-exhausted, all data safe"
+     g. Director gets a phone push if enabled
+```
+
+**Result:** even in the worst case (Houston is asleep, credits run out, no human intervention), the lab loses ZERO data. All checkpoints are flushed to network volume + Backblaze B2 before the pod stops. Resume on top-up is a single command.
+
+### 41.5 The auto-resume workflow (when credits get topped up)
+
+```
+1. gpu-manager-lead detects balance crosses above $30 (the recovery threshold)
+   ↓
+2. Lab status changes from "credits-exhausted" → "credits-restored"
+   ↓
+3. For each pod that was stopped during the credits-out event:
+     a. Restart the pod (RunPod API call: ~30-90 sec)
+     b. Verify the network volume is mounted
+     c. Verify the checkpoint file exists
+     d. Restart the job from the checkpoint
+   ↓
+4. Resume normal dispatcher operation
+   ↓
+5. Send Houston a comm-event: "Credits restored, all 3 pods resumed from checkpoint, no work lost"
+```
+
+**This is the key resilience guarantee:** the platform survives running out of credits without losing any in-flight work, as long as the recovery checkpoint discipline (Rule 4 of §41.1) is followed.
+
+### 41.6 Per-job dispatcher decision tree (the orchestrator's mental model)
+
+When the orchestrator receives a new experiment to dispatch:
+
+```
+new experiment received
+  │
+  ├─ Does it specify requires_gpu? (Rule 1)
+  │   ├─ NO → REJECT, ask author to specify
+  │   ├─ FALSE → CPU mode
+  │   └─ TRUE → GPU mode
+  │
+  ├─ How long will it run? (Rule 2)
+  │   ├─ < 30 min, bursty → Serverless
+  │   ├─ 30 min - 4h → either; default Serverless if duty cycle < 20%
+  │   ├─ 4h - 24h → Pod (better cost) or Serverless (if parallelizable)
+  │   └─ > 24h → Pod ONLY (Serverless cap blocks this; checkpoint required per Rule 4)
+  │
+  ├─ Is there an existing pod with the right GPU + free capacity? (Rule 3)
+  │   ├─ YES → reuse it
+  │   ├─ YES but busy → queue (or spin up second if priority)
+  │   └─ NO → provision new pod (or dispatch to Serverless)
+  │
+  ├─ Does the job have checkpoint discipline? (Rule 4)
+  │   ├─ Job > 30 min and no checkpoint → REJECT, require checkpointing
+  │   └─ OK → proceed
+  │
+  ├─ Check current credit balance (§41.2)
+  │   ├─ HIGH → dispatch
+  │   ├─ WARN → dispatch only if priority ≥ medium
+  │   ├─ CRIT → dispatch only if priority = critical
+  │   └─ EMERGENCY → REJECT
+  │
+  └─ DISPATCH
+       ↓
+     Log to experiments table with: mode (pod/serverless), gpu/cpu type, estimated cost, checkpoint plan
+```
+
+### 41.7 What changes in the mockup
+
+Tracked as separate mockup tasks (see `.queue.md`):
+
+- [ ] **Strip Modal references entirely** — Costs view table row, Settings → Modal API token field, Compute view "Modal coming soon" provider card, orchestrator sidepeek meta line "compute: RunPod (Modal coming soon)", vibe-coding command "modal logs"
+- [ ] **Add Compute Mode to experiment dispatch flow** — when Houston (or an agent) creates a new experiment, the form must include `requires_gpu` (boolean), `expected_duration_min` (number), `priority` (low/med/high/critical) so the orchestrator can route per §41.1
+- [ ] **Director header credits pill** — current balance + runway in hours (e.g., `$29.35 · 47h`) — color-coded by threshold (green/yellow/red/critical)
+- [ ] **Compute view enriched** — credits history chart (balance over time), burn rate per day, threshold lines on the chart, last credits-out event timeline
+- [ ] **Per-experiment cost mode** — top experiments table gets a new column "mode" showing pod/serverless/cpu-pod/cpu-serverless attribution
+
+### 41.8 Open questions
+
+1. **RunPod GraphQL endpoint stability** — RunPod's API has changed before. The credits-check cron should be wrapped in a retry-on-failure pattern with a fallback to "assume HIGH" (don't accidentally trigger credit-out shutdowns just because the API is briefly down).
+2. **Push notification for EMERGENCY** — does Houston have a phone push channel set up? Options: Pushover, Pushbullet, ntfy.sh, Telegram bot. Default = ntfy.sh (free, simple, no account needed).
+3. **Backblaze B2 alternative** — if the user doesn't have B2 set up, fallback to local-only checkpoints + Houston notification. Document this fallback in the gpu-manager-lead's agent.md.
+4. **Recovery threshold gap** — currently `recover_at: 30` (above the WARN threshold of 20). This prevents flapping. Confirm with Houston this gap is right.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
 **Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)
@@ -7172,7 +7497,8 @@ Houston explicitly does NOT want Labs #2-#5 seeded into the database. He wants t
 | 21 | User profile & public showcase | ✅ |
 | 22 | Scientific contributions & novelty scoring | ✅ |
 | 23 | Houston Method v2 — platform-level enforcement | ✅ |
-| 24 | Compute provider (RunPod first, Modal coming soon) | ✅ |
+| 24 | **Compute provider — RunPod ONLY** (Pods + Serverless + CPU/GPU variants · Modal dropped 2026-04-08) | ✅ updated 2026-04-08 |
+| **41** | **Compute Routing & Credits Monitoring** (4 routing rules: CPU-vs-GPU / Pod-vs-Serverless / pod-reuse / checkpoint discipline · 4 credit thresholds with escalating actions · pre-credits-out backup workflow · auto-resume on top-up · per-job dispatcher decision tree) | ✅ **NEW 2026-04-08** |
 | 25 | Agent communication / multi-agent activity feed | ✅ |
 | 26 | Task review pipeline & activity threads | ✅ |
 | 27 | All-hands standups (3x/day) | ✅ |
