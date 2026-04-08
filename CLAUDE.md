@@ -50,7 +50,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 
 ## Website Architecture
 
-The website at bigbounce.hubify.app is a multi-page static site deployed via Netlify from the `main` branch.
+The website at bigbounce.hubify.app is a multi-page static site deployed via Vercel from the `main` branch.
 
 ### Site Pages (all must stay in sync with research)
 
@@ -228,7 +228,7 @@ PDFs go in `public/papers/` and are linked from `paper.html`, `galaxy-explorer.h
 scp -P {PORT} -i ~/.ssh/id_ed25519 root@{IP}:/path/to/paper.pdf public/papers/
 git add public/papers/paper.pdf
 git commit -m "feat: compiled paper PDF"
-git push origin main  # auto-deploys to Netlify
+git push origin main  # auto-deploys to Vercel
 ```
 
 ### Common Pitfalls
@@ -247,7 +247,7 @@ node server.js     # http://localhost:3000
 ```
 
 ### Deployment
-- Netlify auto-deploys from `main` branch via `netlify.toml`
+- Vercel auto-deploys from `main` branch
 - `git push origin main` triggers deployment
 - No build step — purely static
 
@@ -276,17 +276,66 @@ After each revision round:
 5. Update REVISION_TRACKER.md
 6. Commit and push
 
-## Prompt History Log
+## Prompt History Log — CRITICAL: Houston worries about losing his thoughts to compaction
 
 **File:** `project-context/prompt-history.md`
 
-This is a running log of all user prompts/messages across all Claude Code sessions in this project. It serves as a searchable record so Houston doesn't have to repeat himself.
+This is the canonical running log of every substantive Houston message across all Claude Code sessions. Houston spends a lot of time writing brain dumps and strategic thoughts here that he cannot afford to lose. **The file is the safety net against context compaction.**
 
-**At the START of every session:** Regenerate the prompt history file by scanning all `.jsonl` session files in `.claude/projects/-Users-houstongolden-Desktop-CODE_2025-bigbounce/` and extracting all `type: "user"` messages with timestamps. This ensures the file stays current even if sessions were run without this instruction.
+### Save protocol — proactive, not deferred (Houston flagged 2026-04-08)
 
-**At the END of every session (before final commit):** Append any new user messages from the current session to `project-context/prompt-history.md` with timestamps in PT.
+**Save EVERY substantive Houston message immediately, verbatim, before continuing other work.** Do NOT batch. Do NOT wait for end-of-session. Compaction can happen at any time and the messages must already be on disk before that point.
 
-**Format:** Grouped by date → session, each message prefixed with `**HH:MM PT**` and blockquoted. Long messages (>1500 chars) are truncated with a pointer to the session JSONL.
+A "substantive" Houston message is one that contains:
+- Strategic direction, vision, or roadmap
+- Feature requests or design feedback
+- Architectural decisions or definitions
+- Brain dumps, musings, "thinking out loud"
+- Pushback, course-correction, or emphasis
+
+Do NOT save:
+- Cron-fired autonomous loop prompts (those are not Houston's words)
+- One-line acknowledgements ("ok", "yes", "go")
+- Pure tool invocations (`/loop`, `/qa`, etc.) unless they contain free-text context
+- Pod watchdog auto-prompts
+
+### Workflow — every iteration
+
+1. **When Houston sends a substantive message:** Append it to `project-context/prompt-history.md` BEFORE doing the work he asked for. The append takes ~2 seconds; doing it first guarantees survival.
+2. **At the START of every session:** Read the most recent section of `prompt-history.md` to recover context. If you need full history, scan `.jsonl` session files in `~/.claude/projects/-Users-houstongolden-Desktop-CODE-2025-bigbounce/`.
+3. **After context compaction:** Re-append any messages that came in DURING the work that was compacted (the summary may have lost the verbatim text).
+
+### Format
+
+Each session gets a `## YYYY-MM-DD — <session topic>` header. Within a session:
+- Brief framing line about the session
+- A sub-header `### Houston substantive messages, verbatim`
+- Each message prefixed with `**HH:MM PT — <one-line context>**` and blockquoted with `>`
+- Long messages stay verbatim — do NOT truncate Houston's brain dumps. The whole point is preservation. If a message is over 1500 chars, save it whole anyway. Disk is cheap.
+
+### Why this matters
+
+Houston has been writing detailed strategic messages for weeks. Several were lost in earlier sessions when compaction happened mid-conversation and the verbatim text only existed in the compacted summary. Each lost message is a real cost to him because he has to re-type the same idea. The file is the lossless backup. **Treat the save as load-bearing, not optional.**
+
+## Skill routing
+
+When the user's request matches an available skill, ALWAYS invoke it using the Skill
+tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
+The skill has specialized workflows that produce better results than ad-hoc answers.
+
+Key routing rules:
+- Product ideas, "is this worth building", brainstorming → invoke office-hours
+- Bugs, errors, "why is this broken", 500 errors → invoke investigate
+- Ship, deploy, push, create PR → invoke ship
+- QA, test the site, find bugs → invoke qa
+- Code review, check my diff → invoke review
+- Update docs after shipping → invoke document-release
+- Weekly retro → invoke retro
+- Design system, brand → invoke design-consultation
+- Visual audit, design polish → invoke design-review
+- Architecture review → invoke plan-eng-review
+- Save progress, checkpoint, resume → invoke checkpoint
+- Code quality, health check → invoke health
 
 ## Contact
 
