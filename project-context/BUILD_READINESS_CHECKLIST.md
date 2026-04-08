@@ -165,7 +165,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### D. API spec complete
 
-- [x] **Write `API_SPEC.md`** in `project-context/` (commit `pending-d1`) — comprehensive REST + GraphQL + auth + versioning + error format spec, ~500 lines · Category D bootstrap
+- [x] **Write `API_SPEC.md`** in `project-context/` (commit `eb3bcfd`) — comprehensive REST + GraphQL + auth + versioning + error format spec, ~500 lines · Category D bootstrap
 - [x] **REST endpoint inventory** (in API_SPEC.md §3) — 19 endpoint groups · ~85 endpoints across labs · projects · pipelines · experiments · files · chats · papers · notes · agents · memory · contributions · compute · cross-lab comms · webhooks · search · standups · routines · backups · costs
 - [ ] **GraphQL schema** — full schema TBD (mentioned in API_SPEC.md §7 with example query, full schema deferred to v1.1)
 - [x] **Auth & rate limiting policy** (in API_SPEC.md §2 + §4) — JWT HS256 with 3 token types (user/agent/service) · per-lab scopes enforcing Lab Sovereignty Rule · 3-tier rate limits + per-endpoint overrides
