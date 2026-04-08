@@ -51,6 +51,27 @@ Let's build Hubify Labs.
 
 ## 1. Safety-First Repository Strategy
 
+### Architecture lock — every Lab is its own repo (Houston confirmed 2026-04-08)
+
+There are TWO categories of repos in the Hubify Labs world. Do not confuse them.
+
+**Category A — The PLATFORM repo (one):**
+- Repo: `Hubify-Labs/hubify-labs` (currently `Hubify-Projects/hubify-labs` — org rename pending, very soon)
+- Contents: the platform code itself (Convex backend, web UI, CLI, MCP server, agent harness, etc.)
+- This is the SaaS-style multi-tenant platform that hosts all the labs.
+- Lives in `~/Desktop/CODE_2025/hubify-labs/` locally.
+
+**Category B — Per-Lab repos (one per lab):**
+- Repo: `Hubify-Labs/<lab-slug>` (e.g. `Hubify-Labs/bigbounce-hubify`, `Hubify-Labs/dark-energy-lab`)
+- Contents: that lab's actual research — papers, experiments, datasets, agents, contributions, projects, files, the whole filesystem.
+- Each lab gets its OWN: GitHub repo, subdomain (`<lab-slug>.hubify.app`), filesystem layout, agent roster, memory, and version history.
+- A **Project** does NOT get its own repo. Projects are subdirectories inside a Lab repo (`lab/projects/<project-slug>/`). The Lab is the unit of repo separation.
+- The internal Hubify orchestrator agent has full GitHub API access to the `Hubify-Labs` org and can create/manage per-lab repos autonomously when a new lab is created via the platform.
+
+**The migration path for BigBounce:** the existing `Hubify-Projects/bigbounce` (the original research repo) stays untouched as the historical canonical archive (frozen, read-only). A NEW Lab repo `Hubify-Labs/bigbounce-hubify` is created to host the BigBounce research migrated into Hubify Labs Lab format. The new lab's site lives at `bigbounce2.hubify.app` (or similar — final subdomain TBD in `MIGRATION_BOUNCE_COSMOLOGY_LAB.md`). The original `bigbounce.hubify.app` site keeps serving from the original repo until cutover.
+
+**Org rename note:** Houston is renaming the GitHub org from `Hubify-Projects` to `Hubify-Labs` very soon. All new repo references in this PRD and downstream lab specs should use `Hubify-Labs/...`. References to the OLD org name in archived sections of this PRD (Steps 0-1 below, where they document how the platform repo was bootstrapped) are historical and can stay as-is.
+
 ### IRON RULE: NEVER touch the original BigBounce repo or directory.
 
 The current `github.com/hubify-projects/bigbounce` repo, the local `~/CODE_2025/bigbounce/` directory, and the live `bigbounce.hubify.app` site contain irreplaceable research (4 papers, 50+ experiments, 328K anomalies, months of work). They MUST remain 100% untouched during and after migration.
@@ -6637,6 +6658,400 @@ The production version will need a force-directed sim (computed once on data loa
 
 ---
 
+## 40. Hierarchy v2 — The Locked Taxonomy (Lab → Project → Pipeline → Experiment → Task) + Chats + Intent Layer
+
+**Status:** Locked 2026-04-08 by Houston after the third elegance push. This section supersedes PRD §35 (Hierarchy Taxonomy v1) which collapses into this. Where §35 conflicts with §40, **§40 wins**. §35 stays in the doc as the historical record of how we got here.
+
+### 40.0 Why we redid this
+
+In early sessions Houston accepted a 7-level model (Global → Lab → Project → Preresearch Chat → Idea → Pipeline → Experiment → Task). Over the next two weeks of building the mockup, three things became clear:
+
+1. **"Idea" and "Preresearch Chat" were the same thing** wearing different costumes. Both meant "I'm thinking out loud, don't ship anything yet."
+2. **"Project" had no clear definition** — sometimes it meant "a paper", sometimes "a research thread", sometimes "a folder with stuff in it". Houston couldn't trust a UI built on a concept he couldn't define.
+3. **The mockup had no Project entity at all** — the build accidentally skipped that level. Tasks and experiments lived directly under Lab, which made the hierarchy 2 levels deep, not 7. The contradiction between the spec and the build was the smell that made Houston push hard for clarity.
+
+The fix: collapse the model from 7 levels to 5, define every level with one sentence and one example, and add an **intent layer** so every level has an explicit goal and a measurable. This section is the result.
+
+### 40.1 The locked 5-level model
+
+```
+Lab          — top container · has a Mission + a North Star metric
+  └─ Project — a research thread · has a Goal + a Deliverable
+       ├─ Pipeline    — multi-step Experiment sequence (optional, for projects that need one)
+       │    └─ Experiment (step 1, step 2, step N)
+       ├─ Experiment  — atomic compute work (one-off, not in a pipeline)
+       └─ Chat        — brainstorming with the orchestrator (no commitment)
+
+Tasks live INSIDE experiments (or chats, or projects, or pipelines).
+Tasks are agent work units, not user mental models. The user thinks
+"I'm working on Paper 1" or "I'm exploring Cuscuton bounce" — the
+orchestrator turns those into 47 tasks.
+
+Notes (per §38) live in Z1 Source as Houston's private journal.
+Notes are NOT a hierarchy level — they're an orthogonal capture surface.
+```
+
+### 40.2 Plain-English definitions
+
+| Concept | What it is | Has a goal? | Lives where | Example |
+|---|---|---|---|---|
+| **Lab** | A research domain you've committed to | **Mission** (multi-year vision) + **North Star** (single number) | top level | "Bounce Cosmology Lab" — Mission: prove bounce beats inflation. North Star: verified novel contributions toward bounce-vs-inflation per month, N-weighted. |
+| **Project** | A coherent research thread within a Lab | **Goal** (one sentence) + **Deliverable** (paper / catalog / model / tool) | inside a Lab | "f_NL Tracer Pipeline" — Goal: get σ(f_NL) ≈ 0.95 for SPHEREx forecast. Deliverable: Paper 2 + the 12,920 high-z QSO catalog. |
+| **Pipeline** | A multi-step sequence of experiments that share inputs/outputs | **Output** (the final dataset/model/result the sequence produces) | inside a Project (optional — only when the project needs a sequence) | "Pipeline 1: cross-match → classify → bias-validate → recompute σ(f_NL) → paper update". 5 sequenced experiments. |
+| **Experiment** | A single compute run with a measurable result | **Hypothesis** + **Metric** (number with units, or pass/fail) | inside a Pipeline (as a step) OR inside a Project (one-off) | "EXP-051 Combined PTA Bayes" — Metric: Bayes factor for bounce vs SMBHB across all 4 PTA datasets. Result: 27.6. |
+| **Chat** | Open-ended brainstorming with the orchestrator, no commitment | **Question** (the thing you're exploring) | inside a Lab (or inside a Project if scoped) | "What if Cuscuton bounce gives a different f_NL?" — exploratory, no agents take action until user explicitly graduates the chat. |
+| **Task** | An agent's atomic to-do | **Done / not-done** | inside an Experiment, Chat, Pipeline, or Project | "Re-run mask layer for T-104". Created and completed by an agent, not the user. |
+| **Note** | Houston's private journal (per §38) | **None — it's a thought** | `notes/` in any container | Today's brain dump. Agent-readable on request, never auto-acted-upon. |
+
+### 40.3 The collapses (what got killed and why)
+
+**Killed: "Idea" as a separate concept.**
+- Reason: It was just a Chat that hadn't been promoted yet, OR a Note in the journal. Two existing concepts already covered it.
+- Migration: any existing UI that referred to "Ideas" gets renamed/repurposed. The Ideas view in the mockup becomes the **Recent Chats** view (see §40.7 below) — same surface, accurate name.
+
+**Killed: "Preresearch Chat" as a separate concept.**
+- Reason: Same as Idea. It was a Chat with a flag. The flag isn't worth a separate noun.
+- Migration: `/preresearch` slash command is removed. **`/chat` is the only chat command.** Chats default to no-action mode — the orchestrator never silently triggers work from a chat. Houston explicitly graduates a chat to a Project when ready.
+
+**Killed: "Research Project" as distinct from "Project".**
+- Reason: Every project in a research lab is a research project. The "Research" prefix was redundant verbosity.
+- Migration: The PRD now uses **Project** uniformly. `lab/projects/<slug>/` is the canonical filesystem path. Old "research_project_*" naming gets normalized.
+
+**Killed: tasks as a top-level user mental model.**
+- Reason: Users don't think "what tasks do I want to create today?" They think "I'm working on Paper 1, what's the state?" Tasks are how the orchestrator operationalizes intent, not how the human plans.
+- Kept: the Tasks kanban view stays (it's load-bearing for monitoring agent activity), but it's now explicitly framed as **"agent work tracker"**, not "your project tool". The Project Overview page is the human mental model.
+
+**Killed: the 7-level deep hierarchy in any user-facing surface.**
+- Reason: Nobody should have to navigate 7 levels of breadcrumbs to find their work. 5 max.
+
+### 40.4 Many-to-many: Papers ↔ Projects
+
+Houston confirmed: **Project = research thread, NOT paper.** A paper can be associated with multiple projects (e.g. Paper 1 has barriers content from both the "14 ECH Barriers" project and the "ALP Birefringence" project). A project can produce multiple papers over time (e.g. the "f_NL Tracer Pipeline" project produces Paper 2 in 2026, Paper 5 in 2027).
+
+The relationship is **many-to-many** via a join table:
+
+```
+papers (id, title, ver, status, ...)
+projects (id, lab_id, slug, name, goal, deliverable, ...)
+project_papers (project_id, paper_id, role)
+  -- role: 'primary' (this paper IS the deliverable)
+  --     | 'contributing' (this paper draws from this project)
+  --     | 'derivative' (this paper extends a result from this project)
+```
+
+In the UI:
+- A Paper sidepeek shows the list of associated Projects (with role pills).
+- A Project Overview page shows the list of associated Papers (with role pills).
+- Searching "Paper 1" surfaces both the paper AND every project linked to it.
+
+### 40.5 The Intent Layer — every level has a goal AND a measurable
+
+Houston's hard rule: **every Lab, Project, Pipeline, and Experiment must have an explicit goal AND a measurable.** No exceptions. The orchestrator refuses to create one without both fields filled.
+
+| Level | Goal field (qualitative) | Measurable field (quantitative) |
+|---|---|---|
+| **Lab** | Mission — 1 to 3 sentences describing the long-term reason this lab exists | North Star — a single number that, if it goes up, the lab is winning |
+| **Project** | Goal — one sentence describing what success looks like | Deliverable — a concrete artifact (paper · catalog · model · tool · package) |
+| **Pipeline** | Output description — what dataset/model/result emerges from running all steps | Quality metric — precision, recall, σ, validation accuracy, etc. |
+| **Experiment** | Hypothesis — one sentence asserting what the run is testing | Metric — number with units, or pass/fail with a numeric threshold |
+| **Chat** | Question — the thing being explored | (n/a — chats are exploratory, no measurable required) |
+| **Task** | Action verb — "implement", "review", "fix", "investigate" | done / not-done |
+
+**UI implication:** Every Lab/Project/Pipeline/Experiment surface in the mockup shows three lines at the top:
+- **What** — the goal in plain English
+- **How we'll know** — the measurable
+- **Where we are** — current state vs target
+
+Houston's quote: *"adding clear structure and layered INTENT BASED action to all levels of agentics from the whole lab mission/vision guided by the human+orchestrator down to each project the project orchestrators, leads, workers etc and everything"*
+
+This is the load-bearing principle. The platform's value is **organized intent at every level**. Without it, the agents wander.
+
+### 40.6 The chat-to-project graduation flow
+
+This is the most important UX in the platform — the moment a half-baked thought becomes real research.
+
+**Flow:**
+
+1. **User opens a Chat** (`/chat` in the command palette, or "New chat" button in the sidebar).
+2. **User brainstorms with the orchestrator.** Multi-turn conversation, no agent actions taken. The orchestrator can suggest references, surface relevant prior contributions, etc., but **never spawns work** during the chat.
+3. **User signals graduation intent.** Examples: "let's make this a project", "ok let's actually build this", "spin this up", "make it real". The orchestrator interprets these loosely and intelligently (any reasonable graduation phrase triggers the flow).
+4. **Orchestrator drafts the spec.** It produces:
+   - A 1-paragraph project description
+   - **Goal** (one sentence — the qualitative target)
+   - **Deliverable** (one item — the concrete artifact)
+   - **First measurable** (the metric we'll watch)
+   - **Mini-plan** (3-7 bullet tasks/experiments)
+   - **Datasets needed** (if applicable)
+   - **Estimated effort** (rough — "1 week", "2-3 sprints")
+5. **Orchestrator asks "look good? (y/n)"** and waits.
+6. **On y:** orchestrator creates the Project. This is a multi-step bootstrap:
+   - Create `lab/projects/<slug>/` directory with `goal.md`, `deliverable.md`, `chats/preresearch.md` (the founding chat verbatim)
+   - Create initial Tasks from the mini-plan
+   - Assign existing agents OR spawn new specialized leads + workers if the project needs domain expertise
+   - Set up a heartbeat cron + standup cadence
+   - Create the project's North Star metric for tracking
+   - Open the new Project Overview page in the right pane
+7. **On n:** orchestrator asks "what's missing?" and iterates.
+
+**The graduation gate (Houston's pushback rule):** If the orchestrator can't write all 4 fields (goal, deliverable, measurable, mini-plan) from the chat content, **the chat isn't ready to graduate yet.** The orchestrator must say *"this needs more shape — ask me about [the specific gap]"* and not force a half-baked Project. This prevents the platform from being filled with vaguely-defined Project shells that never produce anything.
+
+**The founding chat is preserved.** When a chat graduates, the full chat history (every message, verbatim) is migrated into `lab/projects/<slug>/chats/preresearch.md` as the project's founding artifact. Future agents reading the project history can always trace back to the original brainstorm. **The orchestrator must not lose the founding chat.**
+
+### 40.7 Chats — the third sidebar mode
+
+Houston's confirmed addition: the sidebar gets a **third toggle mode** between Menu and Files: **Chats.**
+
+```
+Sidebar tri-mode:
+  ┌──────────┐
+  │ Menu     │  ← navigation (Director, Overview, Experiments, ...)
+  ├──────────┤
+  │ Chats    │  ← NEW · recent chats list + project chats grouping
+  ├──────────┤
+  │ Files    │  ← file tree, notes, storage zones (existing)
+  └──────────┘
+```
+
+**Chats mode contents:**
+
+- **Recent** (top section) — the 10 most-recent chats across all projects, ungrouped, sorted by last activity. Like ChatGPT or Claude.ai's recent list. Each row: chat title (auto-summarized by orchestrator) + last activity timestamp + project pill (if associated).
+- **By Project** (collapsible sections) — chats grouped by their parent Project. Lab-level chats (no project) live in a "Lab-wide" group at the bottom.
+- **+ New Chat** button at the top.
+- **Resume = full context.** Clicking a chat row opens it in the right pane with full history, just like ChatGPT/Claude.ai. The chat is a first-class persistent surface, not ephemeral.
+
+**Chat composer enrichments** (per §40.10):
+- Model switcher
+- Mode pill (default vs `/chat` no-action mode vs other modes)
+- File/image upload icon
+- Mic icon for voice dictation (Whisper integration)
+- Slash command autocomplete
+
+### 40.8 The `/notechat` slash command
+
+Houston's request: a one-shot slash command that saves the current chat to Notes with a summary, action items, and a resume link.
+
+**Behavior:**
+
+```
+User types: /notechat
+Orchestrator: 1. Generates a 3-5 bullet summary of the chat
+              2. Extracts any action items mentioned
+              3. Extracts any future-thoughts / "remember to" items
+              4. Creates a new note: notes/<YYYY-MM-DD>_<chat-slug>.md
+              5. Note format:
+                 ## Chat: <auto-title>
+                 **Saved:** <timestamp>
+                 **Resume:** [open chat](hubify://chats/<chat-id>)
+                 ### Summary
+                 - bullet 1
+                 - bullet 2
+                 ### Action items
+                 - [ ] item 1
+                 ### Future thoughts
+                 - thought 1
+                 ### Full transcript (collapsed)
+                 <details><summary>show messages</summary>
+                 ... full chat verbatim ...
+                 </details>
+              6. Toast: "Saved to notes/<filename> · open with ⌘K"
+```
+
+The note is markdown. The resume link uses a `hubify://` URL scheme that opens the chat in the right pane. This is part of the broader URL scheme spec (TBD).
+
+### 40.9 Tasks visible at BOTH Project and Experiment level
+
+Houston gave this one to me: "you decide". Decision: **both**, with filter chips.
+
+- **Project-level kanban** — shows ALL tasks across ALL experiments in this project, with experiment-filter chips at the top. Default view is "all experiments". Click a chip to filter to one experiment's tasks.
+- **Experiment-level kanban** — shows just that experiment's tasks. No filter chips needed.
+- **Lab-level kanban** — shows ALL tasks across ALL projects, with project-filter chips. Useful for the human director scanning lab-wide activity.
+
+This is the only way to scan project state without drilling into every experiment individually. Filter chips solve the "too many tasks" problem.
+
+### 40.10 The chat composer — what it needs
+
+Houston's list of must-haves:
+
+1. **Model switcher** — bottom-row dropdown. Options: Claude Haiku 4.5 / Sonnet 4.6 / Opus 4.6 + cross-provider toggles for GPT-5 / Gemini 2.5 Pro / Grok 4 / Sonar Pro. Default = Sonnet 4.6.
+2. **Mode pill** — small pill near the model switcher showing the current chat mode. Modes: `default` (orchestrator can take action), `/chat` (no-action brainstorm only), `/preresearch` (alias for `/chat` — same thing, different verb). Click to cycle.
+3. **File/image upload icon** — paperclip icon. Click → file picker. Supports drag-drop into the composer area. Uploaded files attach to the current chat message and become available to the orchestrator's read tool.
+4. **Mic icon for voice dictation** — Whisper integration. Click → start recording. Click again → stop, transcribe, insert into composer. Uses OpenAI Whisper API by default (cheapest, fastest, most accurate). Open-source alternative: faster-whisper (local). The platform should let users choose in Settings.
+5. **Slash command autocomplete** — type `/` and a popover appears with the available commands (filtered by what makes sense in chat context).
+6. **Send button** — primary sage-green button. Keyboard shortcut: ⌘↵ (cmd+enter) — never just enter, because Houston needs newlines in his brain dumps without accidentally sending.
+
+### 40.11 Lab Sharing — the cross-lab sovereignty model
+
+Houston's addition: Labs need explicit Sharing settings. Two dimensions: cross-lab (within the same Hubify user) and public (the world).
+
+**Cross-lab sharing (within a user's account):**
+
+- **Default:** read-only. Lab A can read Lab B's files but cannot write to them.
+- **Internal share level:**
+  - `none` (default for sensitive labs) — no other labs can see this one
+  - `read-only` (recommended default for most labs) — other labs can read all files
+  - `read-write` (rare, requires explicit per-lab approval) — other labs can read AND propose changes via PRs (still gated by the destination lab's orchestrator)
+- **Per-resource overrides:** individual datasets, models, learnings, or projects can have stricter or looser sharing than the lab default.
+
+**The Lab Sovereignty Rule (HARD invariant):**
+
+> **Agents from Lab A can read files in Lab B and can send comm-events to Lab B's orchestrator. Agents from Lab A CANNOT write to Lab B's filesystem.** The Lab B orchestrator decides whether to accept the suggestion and apply the edit itself.
+
+This prevents multi-lab agent chaos. Cross-lab edits would be the multi-agent equivalent of unbounded merge conflicts. Communication, suggestions, and learnings can flow freely. File edits are sovereign to each lab's own orchestrator.
+
+**The cross-lab comm gateway:**
+
+- Lab A's agent calls `comms.send(target_lab="lab_b", target_agent="orchestrator", payload={...})`
+- Lab B's orchestrator receives the message in its inbox
+- Lab B's orchestrator decides: ignore, reply with info, or apply (where "apply" means Lab B's own agents do the work)
+- All cross-lab comms are logged for audit
+- Comms can carry: suggestions, learnings to share, file deltas to consider, attribution chains, etc.
+
+**Public sharing (the world):**
+
+- **Default:** off. Labs are private by default.
+- **Public share modes:**
+  - `published-only` — only papers explicitly marked as published are visible to the world
+  - `published + datasets` — papers + the underlying datasets they cite
+  - `published + datasets + models` — papers + datasets + fine-tuned models
+  - `everything` — full lab read access (including in-progress work) — for users who explicitly want maximum transparency
+- **Granular per-resource:** any individual paper, dataset, model, or contribution can be marked public regardless of the lab default.
+
+The default for new labs starts at `none`. Houston explicitly upgrades to `published-only` when the first paper is ready to ship.
+
+### 40.12 The Project Overview page — the auto-maintained home
+
+Houston's request: every Project needs a simple home/profile/readme that the orchestrator auto-maintains. Don't overcomplicate it.
+
+**Layout:**
+
+```
+─── PROJECT NAME ──────────────────────────────────────────
+  📌 Goal: [one sentence]
+  🎯 Deliverable: [paper / catalog / model / tool]
+  📊 Measurable: [metric · current vs target]
+  Status: [active · stalled · completed · archived]
+  Last updated: [timestamp · who/what updated it]
+  Lab: [parent lab pill]
+
+─── DESCRIPTION ───────────────────────────────────────────
+  [orchestrator-maintained 1-2 paragraph description of the
+   project, what it's trying to do, why, and what's in flight]
+
+─── DELIVERABLES ──────────────────────────────────────────
+  Papers: [list of associated papers with role pills]
+  Datasets: [list]
+  Models: [list]
+  Contributions: [list with N-scores]
+
+─── ACTIVE WORK ───────────────────────────────────────────
+  Pipelines: [list with progress]
+  Experiments: [list with status]
+  Tasks: [count by status · open kanban]
+
+─── CHATS ─────────────────────────────────────────────────
+  Recent: [list of recent chats associated with this project]
+  + Start new chat in this project
+
+─── AGENTS ────────────────────────────────────────────────
+  Assigned: [list of agents with role + last activity]
+  + Spawn new agent for this project
+
+─── ACTIVITY ──────────────────────────────────────────────
+  [last 10 events: experiment completed, chat sent, contribution added, ...]
+```
+
+**Auto-maintained means:** the orchestrator updates the Description, Deliverables, Active Work, Recent Chats, and Activity sections automatically as the project progresses. The user can edit Goal, Deliverable, and Measurable manually (they're the human's intent); everything else is computed from the project's actual state.
+
+### 40.13 The 5 hardcoded slash commands for chats
+
+Locked set:
+
+| Command | Purpose | Action |
+|---|---|---|
+| `/chat` | Open a new chat in no-action mode | Creates a new chat with mode=`chat`, orchestrator can suggest but not act |
+| `/preresearch` | Alias for `/chat` (legacy verb, same behavior) | Creates a new chat, identical to `/chat` |
+| `/notechat` | Save current chat to Notes | Per §40.8 — generates summary + action items + resume link |
+| `/promote` | Graduate the current chat to a Project | Triggers the chat-to-project graduation flow per §40.6 |
+| `/share` | Share the current chat (or a project) with another lab or publicly | Opens the sharing settings sidepeek |
+
+All other slash commands are global (outside of chat scope) and live in the ⌘K command palette, not the chat composer.
+
+### 40.14 What this hierarchy stress-tests on the platform
+
+Houston wants to use 5 different labs as deliberate test cases for the platform's architecture. Each lab tests specific platform features:
+
+| Lab | Tests this platform feature |
+|---|---|
+| **#1 Bounce Cosmology** | The full migration import flow (real data, real history) — see `MIGRATION_BOUNCE_COSMOLOGY_LAB.md` |
+| **#2 Hubify Self-Improving** | Self-improvement loops (the lab's job is to improve the platform itself) — see `LAB_HUBIFY_SELF_IMPROVING.md` |
+| **#3 Dark Energy** | Cross-lab sharing (this lab shares with #1 Bounce Cosmology) — see `LAB_DARK_ENERGY.md` |
+| **#4 Dark Matter** | A cleanly separate domain — tests platform domain-agnosticism — see `LAB_DARK_MATTER.md` |
+| **#5 ETI (Extraterrestrial Intelligence)** | Public-facing, viral-potential lab — tests public sharing UX and the publish-loop with non-Anthropic peer review — see `LAB_ETI.md` |
+
+If the platform supports all 5 cleanly, the architecture is right. The lab spec files (above) live in `project-context/` and are linked from this PRD.
+
+### 40.15 Lab = repo (Houston confirmed 2026-04-08)
+
+**Every Lab is its own GitHub repo, its own subdomain, its own filesystem.** This is the load-bearing architecture invariant. Projects are subdirectories inside the Lab's repo, NOT separate repos.
+
+| Layer | What it is | Where it lives |
+|---|---|---|
+| **Platform** | The Hubify Labs SaaS platform itself | `Hubify-Labs/hubify-labs` (one repo, many tenants) |
+| **Lab** | A research domain | `Hubify-Labs/<lab-slug>` (one repo per lab) + `<lab-slug>.hubify.app` (one subdomain per lab) |
+| **Project** | A research thread inside a lab | `lab/projects/<project-slug>/` (subdirectory in the lab repo) |
+| **Pipeline** | A step sequence inside a project | `lab/projects/<project-slug>/pipelines/<pipeline-slug>/` |
+| **Experiment** | A single compute run | `lab/projects/<project-slug>/experiments/<exp-slug>/` (or under a pipeline) |
+| **Chat** | A conversation | `lab/chats/<chat-id>.md` (lab-wide) or `lab/projects/<slug>/chats/<chat-id>.md` (project-scoped) |
+
+**The internal Hubify orchestrator agent has GitHub API access to the `Hubify-Labs` org** and can create new lab repos autonomously when a new Lab is created via the platform (see chat-to-lab graduation flow in §40.6 — the lab-creation analogue happens at the orchestrator level when a user clicks "Create new Lab").
+
+**Cross-lab sharing (per §40.11) operates at the GIT level** — Lab A's read-only access to Lab B is implemented as Lab A's agents being able to clone/read Lab B's repo (via GitHub API with read-only permissions), but never push to it. Comms relay sits on top of this and replaces direct edits.
+
+See §1 (top of this PRD) for the full per-lab repo architecture and the ongoing org rename from `Hubify-Projects` → `Hubify-Labs`.
+
+### 40.16 Open questions still pending Houston input
+
+These are smaller decisions that don't block §40 lock-in but should be answered before the migration:
+
+1. ~~**GitHub strategy for Lab #1**~~ — **ANSWERED 2026-04-08:** option (a) — new repo `Hubify-Labs/bigbounce-hubify`. Confirmed by Houston with the architecture clarification that **every lab gets its own repo**. See §1 + §40.15.
+2. **Chat default model** — Sonnet 4.6 is my default proposal. Confirm or override.
+3. **Voice dictation provider** — Whisper API (cheap, fast, requires sending audio to OpenAI) vs faster-whisper local (privacy, slower setup). Default = Whisper API for v1, settings option to switch.
+4. **Cross-lab read-only enforcement layer** — at what level is the file-write block enforced? GitHub API permissions (read-only token per cross-lab pair), application-layer (Convex auth), or both? Default = both.
+5. **The exact subdomain for migrated BigBounce Lab** — Houston mentioned `bigbounce2.hubify.app` as a placeholder. Final answer goes in `MIGRATION_BOUNCE_COSMOLOGY_LAB.md`. Alternatives: `bb.hubify.app` (shorter), `bounce.hubify.app` (cleaner), or repurpose `bigbounce.hubify.app` after cutover (most aggressive — requires retiring the original site).
+
+### 40.17 What changes in the mockup as a result of §40
+
+Tracked as separate mockup tasks (see `.queue.md` polish passes):
+
+- [ ] **Add third sidebar mode "Chats"** between Menu and Files (§40.7)
+- [ ] **Project Overview page** as a new view + sidepeek renderer (§40.12)
+- [ ] **Chat composer enrichments** — model switcher, mode pill, file upload, mic icon (§40.10)
+- [ ] **`/chat`, `/notechat`, `/promote`, `/share` slash commands** wired into the chat surface (§40.13)
+- [ ] **Lab Sharing settings sidepeek** in the Settings view (§40.11)
+- [ ] **Cross-lab comm gateway visualization** — small panel showing inbound/outbound comms with other labs
+- [ ] **Rename "Ideas" view → "Recent Chats" view** (§40.3 collapse)
+- [ ] **Project filter chips on Lab kanban** + experiment filter chips on Project kanban (§40.9)
+- [ ] **Project ↔ Paper many-to-many** — paper sidepeek shows associated projects, project page shows associated papers (§40.4)
+
+These get built in subsequent loop iterations once the PRD §40 + lab specs land.
+
+### 40.18 Why §40 supersedes §35
+
+§35 (the original Hierarchy Taxonomy) was written before Houston pushed back. It described a 7-level model with "Idea" and "Preresearch Chat" as separate concepts. §40 collapses those into the 5-level model. Where they conflict:
+
+| Topic | §35 said | §40 says (final) |
+|---|---|---|
+| Levels | 7 (Global → Lab → Project → Preresearch → Idea → Pipeline → Experiment → Task) | 5 (Lab → Project → Pipeline → Experiment → Task) + Chat as a parallel surface |
+| Idea | Separate concept with own UI | Killed — collapses into Chat or Note |
+| Preresearch Chat | Separate concept with own UI | Killed — collapses into Chat with no-action default |
+| Project = paper or thread? | Ambiguous | Thread (M:M with papers) |
+| Goal/measurable per level | Optional | **Mandatory** at every level |
+| Tasks in user mental model | Top-level | Demoted — agents' work tracker, not user's planning tool |
+
+§35 stays in the doc for the historical record but should be considered **deprecated**. Future agents and developers must read §40 as the source of truth.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
 **Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)
@@ -6644,7 +7059,8 @@ The production version will need a force-directed sim (computed once on data loa
 | Section | Topic | Status |
 |---------|-------|--------|
 | 0 | Executive summary | ✅ |
-| 1 | Safety-first repo strategy + Convex schema (50 tables) | ✅ |
+| 1 | Safety-first repo strategy + Convex schema + **Lab=repo architecture lock** | ✅ updated 2026-04-08 |
+| **40** | **Hierarchy v2 — locked taxonomy (5-level) + intent layer + chats + sharing + Lab=repo** | ✅ **NEW · supersedes §35** |
 | 2 | Standardized Lab template + BigBounce COPY map | ✅ |
 | 3 | Agent hierarchy (21 agents) | ✅ |
 | 4 | Cross-lab sharing | ✅ |
