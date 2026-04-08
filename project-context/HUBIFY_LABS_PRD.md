@@ -5064,9 +5064,299 @@ This pattern is **explicitly part of the product** — the platform improves its
 
 ---
 
+## 33. Storage Strategy & Data Map — Single Source of Truth
+
+**Status:** This is the master storage plan for Hubify Labs. Houston flagged that without a single coherent storage strategy, both he and the agents lose track of where data lives, what's backed up, and which copy is canonical. **No development work begins until this section is locked.**
+
+### 33.1 Why this section exists
+
+Multi-agent research generates data in many shapes (MCMC chains, model weights, anomaly catalogs, paper sources, math proofs, wiki entries, standup transcripts, memory entries, etc.) and runs across many compute layers (local Mac, GitHub, RunPod pods, RunPod network volumes, Modal, Fly.io, Vercel, S3, Backblaze, Hugging Face, etc.). Without a single coherent strategy:
+
+1. Houston doesn't know which copy is canonical and gets anxiety about data loss.
+2. Agents make wrong assumptions about where things live and either duplicate work or fail.
+3. Backups drift silently.
+4. Cost spirals because data ends up in expensive places.
+5. Cross-lab sharing doesn't work because the data isn't where the cross-lab agents look for it.
+
+This section solves all five.
+
+### 33.2 The 12 storage tiers
+
+Every file in Hubify Labs lives in **exactly one of these 12 tiers** (its "primary" location). It MAY also exist in a secondary location for backup or distribution. Anything not on this list is forbidden.
+
+| Tier | What it is | Primary purpose | Persistence | Capacity | Cost | Backed up to |
+|------|------------|-----------------|-------------|----------|------|--------------|
+| **T1 · Local** | `~/CODE_2025/<lab>/` on Houston's Mac | Houston's working copy · daily editing | Until disk fails | 1 TB SSD | $0 | T2 (auto via git) + T11 (nightly rsync) |
+| **T2 · GitHub** | `github.com/hubify-projects/<lab>` | Source of truth for code, paper sources, wiki, configs | Forever (GitHub) | 100 GB soft / unlimited paid | $0–4/mo | T3 (GitHub LFS) for binaries · T8 (S3 Glacier) for full clones nightly |
+| **T3 · GitHub LFS** | Large files tracked via Git LFS in T2 | Versioned binaries (compiled PDFs, figures, small models) | Forever | 1 GB free / 50 GB $5/mo | $0–5/mo | T8 (S3 Glacier) |
+| **T4 · Convex DB** | Convex tables (50 from §31.8) | Application state · structured records · realtime sync | Forever (Convex managed) | Pay per row · ~10 GB at BigBounce scale | $25–100/mo | Convex's built-in PITR + nightly export to T8 |
+| **T5 · Convex Storage** | Convex blob storage (refs from T4 rows) | Small files referenced by application state (avatar PNGs, attached snippets, generated thumbnails) | Forever | Pay per GB | $0.20/GB/mo | T8 (S3 Glacier) |
+| **T6 · RunPod pod root** | `/workspace` on the active pod | Ephemeral compute scratch · current run's intermediate state | Dies with pod (47d uptime typical) | 100 GB ephemeral | included in pod $/hr | T7 (every checkpoint), T8 (nightly) |
+| **T7 · RunPod network volume** | `bigbounce-data` (1 TB) attached to pods | Persistent shared storage across pods · MCMC chains · model weights · downloaded survey data | Forever (until volume deleted) | 1 TB · $2.80/mo · expandable | $2.80/TB/mo | T8 (S3 Glacier nightly) + T9 (HF Datasets for public catalogs) |
+| **T8 · AWS S3 Glacier Deep Archive** | `s3://hubify-cold/` | Disaster recovery · long-term cold backup of every other tier | Forever | Unlimited | $0.0036/GB/mo · 12-48h restore | (it IS the backup) |
+| **T9 · Hugging Face Hub** | `huggingface.co/hubify-projects/<dataset-or-model>` | Public sharing of datasets and trained models · cross-lab discovery · external collaboration | Forever | Free for public · paid for private | $0 | T8 (we keep our own cold copy) |
+| **T10 · Fly.io machine** | `bigbounce-host.fly.dev` (Fly volumes) | Always-on agent runtime · small persistent state for orchestrator (process locks, websocket state, log tails) | Forever (paid plan) | 10 GB (small) | $5/mo | Convex (T4) for state · T8 for any file dumps |
+| **T11 · Backblaze B2** (optional) | `b2://hubify-redundant/` | Houston's "peace of mind" extra cold copy of T1 + T2 · pure redundancy, not in critical path | Forever | $0.005/GB/mo | $5–15/mo | (it IS a redundant backup) |
+| **T12 · Vercel Blob + Vercel Sandbox** | Vercel-managed blob storage + ephemeral sandboxes | Static site assets · vibe coding ephemeral artifacts | Forever (blob) / ephemeral (sandbox) | 5 GB free / paid | $0–20/mo | T8 for blob assets · sandbox is throwaway |
+
+**Layers we explicitly DO NOT use:**
+- Cloudflare R2, Wasabi: standby in the mockup but not in the data flow until cost justifies. (~$0/mo while standby.)
+- Google Drive, Dropbox: not in scope. Personal cloud, not for research.
+- Local NAS: not in scope. Houston travels.
+- Direct S3 (hot storage): too expensive vs Glacier for our access patterns.
+
+### 33.3 Data type → primary tier matrix
+
+Every data type in the lab has **one** primary tier. Agents and Houston always know where to look first.
+
+| Data type | Example file/object | Primary | Secondary (auto-backup) | Why this tier |
+|-----------|---------------------|---------|------------------------|---------------|
+| **Source code** | `pipeline_p1.py` | T2 GitHub | T1 local · T8 nightly | Versioned, small, frequently edited |
+| **Paper LaTeX source** | `arxiv/main.tex` | T2 GitHub | T1 local · T3 LFS for figs · T8 | Versioned, small, peer-edited |
+| **Compiled paper PDF** | `arxiv/main.pdf` | T3 GitHub LFS | T1 local · T8 · T9 (when published) | Large binary, versioned |
+| **Wiki entries** | `wiki/quintom-b.md` | T2 GitHub | T1 local · T4 (indexed copy) · T8 | Versioned, structured markdown |
+| **Math proofs** | `proofs/f_nl_derivation.lean` or `.tex` | T2 GitHub | T1 local · T8 | Versioned, small, source-of-truth |
+| **Config files** | `cobaya/full_tension.yaml` | T2 GitHub | T1 local · T8 | Versioned, small |
+| **Notebooks** | `analysis/desi_qc.ipynb` | T2 GitHub | T1 local · T8 (with outputs stripped before commit) | Versioned, medium, outputs stripped to avoid bloat |
+| **MCMC chains** (raw) | `chains/dneff/spin_torsion.1.txt` | T7 RunPod vol | T8 nightly · T9 if shared | Large, append-only, used by GPU pipelines |
+| **MCMC chain summaries** | `chain_means_latest.csv` | T2 GitHub | T1 · T4 (cached) · T8 | Small, version-controlled with the paper |
+| **Anomaly catalogs** (per survey) | `desi_dr1_anomalies.csv` (14 GB) | T7 RunPod vol | T8 nightly · T9 (public release) | Large, written by anomaly-worker, shared across pods |
+| **Anomaly catalog samples** (first 100 rows) | `dataset_samples` Convex table | T4 Convex | T8 nightly export | Small, queried by Data view sample-row preview |
+| **Trained model weights** | `models/spectral_ae_47k.safetensors` | T7 RunPod vol | T8 nightly · T9 (when published) | Large, immutable post-training |
+| **Model training checkpoints** | `models/chirality_cnn/epoch_03.pt` | T6 pod root | T7 every 600s (checkpoint cron) · T8 nightly | Frequent writes during training, ephemeral after run |
+| **Survey raw spectra** (DESI, SDSS, etc.) | `desi_dr1/spectra.fits` (184 GB frozen) | T7 RunPod vol (frozen) | T8 (Glacier deep archive) · upstream survey is canonical | Huge, immutable, can be re-fetched from upstream if needed |
+| **Survey download cache** | `cache/desi_dr1/coadd_*.fits` | T6 pod root | (none — it's a cache) | Re-fetchable, ephemeral |
+| **Figures** (PNG/SVG/PDF) | `public/images/fig07_dneff.png` | T3 GitHub LFS | T1 local · T8 · T12 Vercel Blob (for site) | Versioned binaries, served by site |
+| **Figure source scripts** | `figures/fig07_dneff.py` | T2 GitHub | T1 local · T8 | Versioned, small, regenerates the binary |
+| **Site static assets** | `bigbounce.hubify.app/_next/...` | T12 Vercel Blob | T2 (source HTML in repo) · T8 | Built artifact, regenerated from T2 |
+| **Standup transcripts** | `standups[date].messages[]` | T4 Convex | T8 nightly export | Structured, queried by Standups view |
+| **Activity events** | `comm_events[]` | T4 Convex | T8 nightly export · 90d retention then archive | High-volume, time-ordered |
+| **Agent memory** (4 layers) | `memories_{user,agent,lab,global}` | T4 Convex | T8 nightly export | Realtime sync, cross-session |
+| **Tasks + comments + reviews** | `tasks[]`, `task_comments[]` | T4 Convex | T8 nightly export | Application state |
+| **Cross-model peer reviews** | `peer_reviews[]`, `interpretation_passes[]` | T4 Convex | T8 nightly export | Application state |
+| **Cost / billing logs** | `costs_daily[]`, `costs_provider[]` | T4 Convex | T8 nightly export | Application state |
+| **Agent runtime state** | process locks, websocket sessions, log tails | T10 Fly volumes | T4 (state mirrored) · T8 for log dumps | Per-process, ephemeral-ish |
+| **Vibe coding sandbox artifacts** | `sandbox/<id>/output.png` | T12 Vercel Sandbox | T5 Convex Storage (if Houston says "save") · T8 | Ephemeral by default, promotable |
+| **Hugging Face published model** | `hubify-projects/spectral-autoencoder-47k` | T9 HF Hub | T7 RunPod vol (source) · T8 | Public discovery + download |
+| **Hugging Face published dataset** | `hubify-projects/desi-anomalies-dr1` | T9 HF Hub | T7 RunPod vol (source) · T8 | Public discovery + download |
+
+**Backup rule:** every primary tier has at least one secondary that lives on a different provider. T8 (S3 Glacier) is the universal backstop — if 4 of the 11 other tiers vanished, T8 alone can rebuild everything.
+
+### 33.4 Data flow rules (the contract)
+
+These rules are enforced by agents. Violations trigger alerts.
+
+1. **Source code edits** flow `T1 → T2` via `git push` (manual or paper-lead/site-worker). Backup `T2 → T8` nightly (via cron).
+
+2. **Large binary outputs** (compiled PDFs, figures, models) flow `T1 → T3` (Git LFS) on commit. Backup `T3 → T8` nightly.
+
+3. **MCMC chain runs** flow `T6 → T7` after each checkpoint cycle (every 600s by default). Backup `T7 → T8` nightly. Never on T6 alone past checkpoint window.
+
+4. **Anomaly catalog generation** writes directly to `T7` to avoid the ephemeral-T6-loss problem. Sample row preview (first 100 rows) is mirrored to `T4` for the Data view.
+
+5. **Wiki + paper edits** flow `T2 → T4` via a periodic indexing cron (every 5 min). The Wiki view reads from T4 (fast queries) but the source of truth is T2 (versioned).
+
+6. **Agent memory writes** flow only to `T4`. Periodic export `T4 → T8` nightly.
+
+7. **Site builds** flow `T2 → T12 Vercel` on push to main. Static assets land on Vercel Blob (T12); the source HTML is rebuilt fresh on every deploy.
+
+8. **Cross-lab dataset sharing** = `T7 → T9 Hugging Face` via the publish pipeline (manual approval). Once on HF, other labs can `pip install` or `huggingface_hub download` it.
+
+9. **Backup verification** runs nightly at 02:14 across T1-T9 + T11. Stale (>24h) backups trigger a warn alert.
+
+10. **Restore drill** runs monthly. Pick a random file, delete the secondary, restore from primary, verify checksum.
+
+### 33.5 Per-project `map.md` — auto-updating storage atlas
+
+Every lab repo has a `map.md` file at the root that documents its storage layout. **Agents auto-update it when they create / move / delete data.** Houston can `cat map.md` from anywhere to see the full picture.
+
+Format:
+
+```markdown
+# Storage Map · bigbounce
+*Auto-updated by storage-map-worker · last refresh: 2026-04-08 06:14*
+
+## Tier inventory
+
+| Tier | Used | Files | Notes |
+|------|------|-------|-------|
+| T1 Local | 64 GB | 12,840 | working copy on Houston's Mac |
+| T2 GitHub | 480 MB | 8,920 | source code, paper LaTeX, wiki, configs |
+| T3 GitHub LFS | 340 MB | 47 | compiled PDFs + figures |
+| T4 Convex DB | 8.4 GB | (50 tables) | application state |
+| T5 Convex Storage | 120 MB | 88 | thumbnails + small attachments |
+| T6 RunPod pod root | 134 GB | (ephemeral) | current Phase 4 run scratch |
+| T7 RunPod network vol | 428 GB | 12 datasets | MCMC chains, model weights, anomaly catalogs |
+| T8 S3 Glacier | 428 GB | 12 datasets + 8 nightly snapshots | disaster recovery |
+| T9 Hugging Face | 8.9 GB | 3 models + 5 datasets | public sharing |
+| T10 Fly volume | 4 GB | (ephemeral) | orchestrator state |
+
+## Critical files (top 20 by importance)
+
+1. `arxiv/main.tex` · T2 · also T1 + T8 nightly
+2. `arxiv/main.pdf` · T3 LFS · also T1 + T8 nightly
+3. `chains/dneff/spin_torsion.*.txt` · T7 RunPod vol · also T8 nightly
+4. `pipelines/p3_anomaly_engine/desi_dr1_anomalies.csv` · T7 (14.2 GB) · also T8 nightly
+5. `models/spectral_ae_47k.safetensors` · T7 (362 MB) · also T8 + T9 published
+... (full list)
+
+## Recent flows (last 24h)
+
+- 02:14 nightly: T2/T3/T4/T5 → T8 export (12 GB, 47m 12s, $0.03)
+- 04:13: T6 → T7 checkpoint cycle for EXP-054 (Planck mask re-run)
+- 06:14: storage-map-worker refreshed this file
+
+## Mermaid diagram
+
+\`\`\`mermaid
+flowchart LR
+  Houston[👤 Houston Mac<br/>T1 Local 64GB]
+  GitHub[GitHub<br/>T2 480MB]
+  LFS[GitHub LFS<br/>T3 340MB]
+  Convex[Convex DB<br/>T4 8.4GB]
+  Pod[RunPod /workspace<br/>T6 ephemeral]
+  Vol[RunPod bigbounce-data<br/>T7 428GB]
+  S3[S3 Glacier<br/>T8 428GB]
+  HF[Hugging Face<br/>T9 8.9GB published]
+  Vercel[Vercel<br/>T12 site assets]
+
+  Houston -- git push --> GitHub
+  Houston -- git lfs --> LFS
+  GitHub -- nightly export --> S3
+  LFS -- nightly --> S3
+  Convex -- nightly export --> S3
+  Pod -- checkpoint 600s --> Vol
+  Vol -- nightly backup --> S3
+  Vol -- publish flow --> HF
+  GitHub -- vercel deploy --> Vercel
+  Vercel -- nightly --> S3
+\`\`\`
+
+## Where each agent reads/writes
+
+- **paper-lead** reads T1/T2, writes T2 (paper sources)
+- **anomaly-lead + workers** read T7, write T7 (catalogs) + T4 (samples)
+- **figure-worker** reads T7, writes T1 (then T2/T3 via git)
+- **backup-worker** reads everything, writes T8 (and T11 if enabled)
+- **storage-map-worker** (this file's owner) reads everything, writes this file
+```
+
+### 33.6 storage-map-worker — the new agent
+
+A new agent in the roster: `storage-map-worker` (haiku 4.5, LOW reasoning).
+
+**Job:**
+- Owns the per-project `map.md` file
+- Refreshes every 6 hours OR on-demand (e.g. after a backup-worker run)
+- Walks each tier and inventories file count, total size, top files
+- Regenerates the Mermaid diagram from the actual flow data
+- Surfaces drift (e.g. "T7 has files not backed up to T8 in 48h")
+- Posts to comm_events when something is wrong
+
+**Tools:**
+- read git tree (T1, T2, T3)
+- query Convex (T4, T5)
+- ssh to RunPod pod for T6 + T7 walks
+- AWS CLI for T8 inventory
+- HF API for T9 inventory
+- Fly CLI for T10 inventory
+
+**Routing:** LOW reasoning · scheduled fire only · 4 fires/day · ~$0.20/day cost.
+
+### 33.7 Agent storage knowledge contract
+
+Every agent on the platform MUST know:
+
+1. **Which tiers exist** (the 12 from §33.2). Hardcoded in their system prompt. Listed in their knowledge base.
+2. **Which data types live where** (the matrix from §33.3). Updated automatically when the matrix changes.
+3. **The map.md location** for the current lab (always at repo root). They `cat map.md` before any non-trivial storage operation.
+4. **Their own read/write rights** per tier. (Not all agents have S3 credentials. Agent `paper-lead` cannot write to T7 directly; it must request via `anomaly-lead`.)
+
+Operational rule: **before any agent writes a file, it consults `map.md` and §33.3 to determine the correct primary tier.** If unclear, it pauses and asks the orchestrator. Wrong-tier writes are reverted by `storage-map-worker` on the next refresh and a `comm_events` warning is posted.
+
+### 33.8 The mockup's Files sidebar — grouping by tier
+
+This is the UX implementation of §33.7 in the mockup. The Files mode of the sidebar will show file groups toggled by storage tier:
+
+```
+─ bigbounce/ ────────────────────────
+  ▼ T1 Local (64 GB · 12,840 files)
+    ▼ arxiv/
+       main.tex      [T1·T2·T8]   ●
+       main.pdf      [T1·T3·T8]   ●
+       references.bib [T1·T2·T8]  ●
+    ▼ pipelines/
+       ...
+
+  ▼ T2 GitHub (480 MB · 8,920 files · in sync)
+    (mirror of T1 minus .gitignored)
+
+  ▶ T3 GitHub LFS (340 MB · 47 binaries)
+  ▶ T4 Convex (8.4 GB · 50 tables)
+  ▶ T7 RunPod vol (428 GB · 12 datasets)
+  ▶ T8 S3 Glacier (428 GB · backup snapshots)
+  ▶ T9 Hugging Face (8.9 GB · 3 models · 5 datasets)
+  ─────────
+  [+ New file]   [Open map.md]   [Refresh tiers]
+```
+
+**Conventions:**
+- The bracketed pill `[T1·T2·T8]` next to each file shows every tier it currently lives in. Sage tiers = primary. Grayscale tiers = backup. Red tier = stale (last sync >24h).
+- Each file row has a small **backup status dot**: ● = backed up to ≥2 tiers (safe), ◐ = 1 backup, ○ = primary only (warning).
+- Click the pill → opens a `file-locations` sidepeek showing every copy + sha256 + last verified.
+- "Open map.md" button at the bottom opens the auto-updated map in the file preview tab.
+
+### 33.9 The Data Map view (new view in the mockup)
+
+A new top-level view in the sidebar nav: **Data Map**. Renders the per-project Mermaid diagram from `map.md` with:
+
+- Storage tiers as nodes (with current usage / capacity)
+- Data flows as directed edges (with frequency / size)
+- Color-coded by tier type: local (gray), VCS (sage), Convex (sage), GPU compute (warn dim), backup (gray dim), public (sage bright)
+- Click any node → opens the corresponding sidepeek (`backup-dest` for tiers we already have, new sidepeeks for the rest)
+- "Drift" badge appears on any node where data is stale or out of sync
+
+This view is the **single page Houston opens to feel safe about his data.** It is the visual answer to "where is everything and is it backed up?"
+
+### 33.10 Estimated monthly storage cost (BigBounce scale)
+
+| Tier | Usage | $/mo |
+|------|-------|------|
+| T1 Local | 64 GB | $0 |
+| T2 GitHub | 480 MB | $0 |
+| T3 GitHub LFS | 340 MB | $0 (under 1 GB free) |
+| T4 Convex | 8.4 GB · 50 tables | $25 |
+| T5 Convex Storage | 120 MB | $0 |
+| T6 RunPod pod root | (in pod $/hr) | $0 (already counted) |
+| T7 RunPod network vol | 428 GB · 1 TB allocated | $2.80 |
+| T8 S3 Glacier Deep Archive | 428 GB | $1.55 |
+| T9 Hugging Face | 8.9 GB · public | $0 |
+| T10 Fly volume | 10 GB | $5 |
+| T11 Backblaze (optional) | 64 GB peace-of-mind | $0.32 |
+| T12 Vercel Blob | 200 MB | $0 |
+| **Total** | **~510 GB across all tiers** | **~$35/mo** |
+
+For BigBounce-scale data, the entire storage spread costs less than a single dinner. The expensive tiers (Convex, Fly) are paying for **service** (realtime sync, always-on), not storage.
+
+### 33.11 Migration plan (week 1 of dev phase)
+
+When the dev phase begins:
+
+1. **Day 1:** Provision T4 (Convex), T7 (RunPod network vol if not already), T8 (S3 bucket + Glacier transition policy), T9 (HF org), T10 (Fly machine), T11 (Backblaze if Houston wants it).
+2. **Day 2:** Wire backup crons. Verify nightly export `T4 → T8` works.
+3. **Day 3:** Run migration script: `T1 → T2` (commit anything not yet pushed) and `T1 → T7` (rsync chains and catalogs to network vol).
+4. **Day 4:** Initial backup pass: `T1-T7 → T8`. Estimate 6h for the first full sync.
+5. **Day 5:** Spawn `storage-map-worker` for the first time. Generate initial `map.md` for bigbounce.
+6. **Day 6:** Verify drift detection works (manually pause a backup, watch the alert fire).
+7. **Day 7:** Houston signs off on the Storage Map view in the UI. Lab is "storage-ready."
+
+**No experiments run until §33.11 day 7 is complete.** This is non-negotiable because losing data is catastrophic and storage architecture mistakes are expensive to fix later.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
-**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32 additions)
+**Last updated:** 2026-04-08 (post-mockup integration, post-§31/§32/§33 additions)
 
 | Section | Topic | Status |
 |---------|-------|--------|
@@ -5105,8 +5395,9 @@ This pattern is **explicitly part of the product** — the platform improves its
 | 30 | Agent host & terminal integration | ✅ |
 | **31** | **UI Component Inventory — built and specified** | ✅ **NEW** |
 | **32** | **Development phase readiness** | ✅ **NEW** |
+| **33** | **Storage Strategy & Data Map — single source of truth** (12 tiers, 28 data types, primary→backup matrix, per-project map.md, storage-map-worker, Files sidebar grouping, Data Map view, monthly cost ~$35) | ✅ **NEW** |
 
-**Total: 33 sections, ~5,200 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Ready for development phase handoff.**
+**Total: 34 sections, ~5,500 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home. Ready for development phase handoff.**
 
 ---
 
