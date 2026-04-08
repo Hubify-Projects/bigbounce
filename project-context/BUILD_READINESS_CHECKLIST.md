@@ -144,7 +144,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### C. macOS app mockup + spec complete
 
-- [x] **Write `DESKTOP_APP_SPEC.md`** in `project-context/` — full native features inventory (commit `pending-c1`) — Tauri 2 shell + 11 native features (window chrome, menu bar, dock badge, native notifications, file drop, hubify:// URL scheme, launchd service, keyboard shortcuts, iCloud notes sync, code signing, auto-updater) + menu bar app variant + iteration plan
+- [x] **Write `DESKTOP_APP_SPEC.md`** in `project-context/` — full native features inventory (commit `d025f47`) — Tauri 2 shell + 11 native features (window chrome, menu bar, dock badge, native notifications, file drop, hubify:// URL scheme, launchd service, keyboard shortcuts, iCloud notes sync, code signing, auto-updater) + menu bar app variant + iteration plan
   - Native window chrome (or borderless like Linear/Cursor)
   - Native menu bar (App / File / Edit / View / Window / Help) with keyboard shortcuts
   - Native notifications (NSUserNotification · unread badge in dock)
