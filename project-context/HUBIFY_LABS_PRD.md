@@ -8266,6 +8266,147 @@ The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
 
 ---
 
+## 51. Marketing Site Spec — `hubify-labs.com` Public Pages
+
+**Status:** Locked 2026-04-09 by Houston after the "I can see how it will all come together" milestone. The marketing site is the **public-facing front-end** of Hubify Labs — what visitors see before they sign up. Distinct from the in-app research IDE (which lives at `app.hubify-labs.com` or per-lab subdomains like `bigbounce.hubify.app`).
+
+### 51.0 Why this section exists
+
+The platform needs a clear public face that:
+1. **Pitches the value** in 5 seconds (above the fold)
+2. **Explains the 4-stack architecture** (Web/Desktop/CLI/Fly) elegantly — the "brain that doesn't blink" story
+3. **Showcases real labs** — community gallery with detail pages, "view lab site" + "remix this lab" buttons (the vibe-coding-app showcase pattern applied to research)
+4. **Drives urgency** via the **Window 2025-2027** essay — explains why independent researchers should act NOW
+5. **Builds the brand + SEO/AEO** through guides, blog, and docs
+
+### 51.1 Pages to ship in v1
+
+| Page | Path | Purpose | Length |
+|---|---|---|---|
+| Homepage | `/` | Pitch · 4-stack architecture · Window urgency · lab gallery preview · how it works · CTA | ~6 sections, scannable |
+| Features | `/features` | Full feature deep-dive · 14 sections · long-form | full-length, robust |
+| Labs gallery | `/labs` | Browse community labs · filter chips · search · 8-10 lab cards | grid view |
+| Lab detail | `/labs/<slug>` | Per-lab page · screenshot + mission + papers + contributions + remix button | 1 per lab |
+| Docs | `/docs` | Mintlify-style docs landing · search + sidebar nav | starter set, 7 pages per §47 |
+| Guides | `/guides` | Step-by-step tutorials · 6-8 cards | grid view |
+| Blog | `/blog` | Houston's articles · featured + recent posts | grid view |
+| Blog post | `/blog/<slug>` | Individual article · long-form essay layout | 1 per post |
+| Pricing | `/pricing` | (DEFERRED to v1.1) | — |
+
+### 51.2 Homepage layout (the elevator pitch in 6 sections)
+
+1. **Hero** — Above-the-fold pitch. H1 + sub + 2 CTAs (Get started · View live demo) + small architecture diagram + live BigBounce counter ("53 experiments · 4 papers · 328K anomalies · 16 contributions · day 218 active")
+2. **The Window 2025-2027 urgency band** — Quote/excerpt from the Houston essay + "Read the full essay →" link
+3. **The 4 surfaces philosophy** — One platform · 4 surfaces · all in parallel. 4 horizontal cards (Web · Desktop · CLI · Fly) with the philosophy of each. This is the explainer Houston specifically wanted on the homepage.
+4. **Lab gallery preview** — "What labs look like · community showcase" — 4 sample lab cards + "Explore all labs →" link
+5. **How it works** — 3 steps: Create lab → Talk to orchestrator → Watch lab grow
+6. **Footer CTA** — Big sage button + signup + "Or try the live demo →"
+
+### 51.3 The 4-stack architecture explainer (homepage section + features page deep-dive)
+
+Houston's framing — this is the canonical story to tell on the homepage:
+
+> **You** work on your **local Mac** — that's where you write notes, edit papers, talk to the orchestrator, and watch results come in. Whether you use the Tauri desktop app, the web app at `hubify-labs.com`, or the CLI in your terminal — they all talk to the same backend.
+>
+> **Vercel** hosts the public sites (the lab's public face — papers, figures, datasets that others can browse). It's read-only from the public's perspective and auto-rebuilds whenever you push a commit.
+>
+> **Fly.io** is the **always-on orchestrator**. Without Fly, the platform would only run when your laptop is open. With Fly, the orchestrator is alive 24/7: it runs the cron jobs, fires the 3-times-a-day standups, watches the credits balance, dispatches experiments to RunPod when GPU is idle, runs the publish-ready loop while you sleep. **Fly is the brain that doesn't blink.**
+>
+> **RunPod** is the muscle. Every GPU job, every MCMC chain, every figure render runs on RunPod.
+
+### 51.4 Lab gallery — the vibe-coding-app showcase pattern applied to research
+
+The Lab gallery is **central to the marketing motion**. It's the equivalent of how Vercel/Replit/Lovable show off community-generated sites. For Hubify Labs, we showcase real research labs.
+
+**Each lab in the gallery has:**
+- Cover image (hero render of the lab's Director view OR a custom uploaded banner)
+- Lab name + owner handle (`@username`)
+- 1-line mission
+- Stats: papers count, experiments count, contributions count, day-since-created
+- Status pills: `public` · `remixable` · `featured` (optional)
+
+**Lab detail page** (`/labs/<slug>`):
+- Hero banner with lab name + owner handle + 2 CTAs in the top right:
+  1. **View lab site →** (links to the lab's actual public site, e.g. `bigbounce.hubify.app`)
+  2. **Remix this lab →** (clones the lab's structure to the visitor's account, only shown if owner has enabled remixing)
+- Large screenshot of the actual lab Director view
+- Mission statement (1-2 paragraphs from the owner)
+- Key discoveries (3-5 bullet contributions with N-scores)
+- Papers section (clickable rows linking to arXiv-style URLs)
+- Stats grid (experiments / papers / GPU hours / agents / day-since-created)
+- Recent activity timeline
+- Owner profile card
+
+**Remix flow:** clicking "Remix this lab" creates a new lab in the visitor's account scaffolded with:
+- The same project structure (projects, pipelines, agent roster)
+- The same template files (paper templates, figure templates, wiki entries)
+- A blank experiments + chats history (no data leaks across the boundary)
+- A note in the new lab's README: "Cloned from `<original-lab>` by `<owner>` on <date>"
+
+**The Lab Sovereignty Rule still applies** (PRD §40.11): clones are independent labs, not forks. The original lab's data remains private to the original owner.
+
+### 51.5 The Window 2025-2027 article
+
+Houston is writing this essay. The thesis (paraphrased from his message):
+
+> There's a window between 2025 and 2027 where independent researchers can do work that the big AI labs and university groups can't, because the AI tooling is good enough to give a single person a leverage multiplier of 50-100x but the platforms haven't yet been captured by the big players. After 2027, the moats start closing. If you're going to do independent research that competes with institutions, the time is now.
+
+The article should live at `/blog/the-window-2025-2027`. It's the canonical urgency essay and gets featured on the homepage urgency band.
+
+Other blog posts to seed the blog (Houston will write these):
+- "Why Fly.io is the brain that doesn't blink"
+- "Houston Method v2: post-experiment rituals that scale"
+- "Building a research lab without a PhD lab"
+- "f_NL = -35/8: a parameter-free prediction from matter bounce" (cross-link to BigBounce paper)
+- "Cross-model peer review: avoiding the AI echo chamber"
+
+### 51.6 Features page — full deep-dive (14 sections)
+
+The Features page is intentionally LONG (Houston explicitly said "full length robust beautifully designed elegant on brand"). One section per major capability:
+
+1. The 4-surface architecture (full vertical diagram)
+2. AI-native experiment dispatch (PRD §41 routing)
+3. Always-on orchestrator (Fly.io cron + standups + watchdog)
+4. Lab Sovereignty Rule (read-OK, write-FORBIDDEN, triple-enforced)
+5. Cross-model peer review (no echo chamber)
+6. Houston Method v2 post-experiment ritual
+7. The hierarchy (Lab → Project → Pipeline → Experiment → Task)
+8. Memory architecture (4-layer)
+9. Publish-ready loop (autonomous 5-round, no future-research punts)
+10. Vibe coding sandbox (Vercel Sandbox)
+11. Activity Graph (neural-brain view)
+12. Cross-lab comm gateway
+13. MCP server (agents drive the platform)
+14. CLI + TUI (`hubify` Go binary)
+
+### 51.7 Docs / Guides / Blog (the SEO/AEO foundation)
+
+- **Docs**: Mintlify subpath at `hubify-labs.com/docs` (per PRD §47). Auto-generated API/CLI reference from the YAML specs. 7 starter pages.
+- **Guides**: 6-8 step-by-step tutorials covering common workflows (migrate research, set up peer review, configure §41, build a Lab template, etc.)
+- **Blog**: Houston's authored articles. Featured post on top, recent grid below.
+
+### 51.8 Tech stack for the marketing site
+
+- **Next.js 15** App Router (separate from the in-app web mockup which is a single-file demo)
+- **Vercel** for hosting (free tier, auto-deploy from main)
+- **MDX** for blog posts and guides
+- **Mintlify** for `/docs` subpath
+- **Same design system** as the in-app: dark theme, sage discipline, Cursor-style minimalism. CSS variables shared via a `tokens.css`.
+- **Lab gallery data** comes from a Convex `public_labs` table (read-only public view, populated by labs with `visibility: public` set in their `lab.yaml`)
+
+### 51.9 Mockup file
+
+The marketing site mockup lives at `hubify-labs-mockups/marketing-site-mockup.html` — a single self-contained HTML file (same pattern as `desktop-app-mockup.html` and `cli-tui-mockup.html`). All 7 pages navigable via top nav. Sage discipline preserved.
+
+### 51.10 What the marketing site is NOT
+
+- It's NOT the in-app research IDE (that lives at `app.hubify-labs.com` or the per-lab subdomain)
+- It does NOT host any private lab data (only public showcase data)
+- It does NOT have any chat/agent functionality (those live in the in-app)
+- It is NOT auto-generated from the YAML specs (only the docs section is)
+
+---
+
 ## Appendix A: Section Index — What This PRD Covers
 
 **Note:** this appendix was previously numbered §19 (an artifact from an early version of the PRD when it had only 18 sections + a session summary). It has been renamed to "Appendix A" to remove the numbering confusion — sections §0-§50 are the canonical PRD body, and this appendix provides a navigable index.
@@ -8327,6 +8468,7 @@ The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
 | **48** | **`hubify://` URL scheme spec** — universal deep-link catalog · `hubify://<lab-slug>/<entity-type>/<entity-id>` · 19 entity types · cross-lab read OK / write FORBIDDEN · 7 surface-specific handling rows · stability forever guarantee | ✅ **NEW 2026-04-08** |
 | **49** | **Authentication & authorization spec** — 5 auth providers + 4 token types · per-lab scope claim · Lab Sovereignty Rule TRIPLE enforcement (CLI + MCP + API) · 6 agent consent boundaries · audit logging · per-token-type rate limits | ✅ **NEW 2026-04-08** |
 | **50** | **Telemetry & observability spec** — 9 event categories · privacy boundaries (lab content NEVER leaves user's Convex deployment) · activity feed schema · per-experiment cost tracking schema · 8-row alert routing table · telemetry opt-out per-user not per-lab | ✅ **NEW 2026-04-08** |
+| **51** | **Marketing site spec** — `hubify-labs.com` public pages · 7 v1 pages (home, features, labs gallery, lab detail, docs, guides, blog) · The Window 2025-2027 essay urgency band · Lab gallery showcase pattern (community labs with view-site + remix CTAs) · 4-stack architecture explainer canonical text · separate from in-app research IDE | ✅ **NEW 2026-04-09** |
 
 **Total: 46 sections, ~8,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Lab → Task). Preresearch ideation has a home. The macOS app, REST/GraphQL API, MCP server, CLI, deployment plan, Mintlify docs port, `hubify://` URL scheme, auth/authz, and telemetry are all locked. Ready for development phase handoff.**
 
