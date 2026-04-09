@@ -129,7 +129,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round C #5 Lab Sharing settings sidepeek** (PRD §40.11)
 - [ ] **Round C #6 Cross-lab comm gateway visualization** — small panel showing inbound/outbound comms with other labs
 - [ ] **Round C #7 Rename Ideas view → Recent Chats view** (PRD §40.3) — 114 instances + data model adjustment
-- [ ] **Round C #8 Project filter chips on Lab kanban** + experiment filter chips on Project kanban (PRD §40.9)
+- [x] **Round C #8 Project filter chips on Lab kanban** (commit `79efa5a`) — Tasks view kanban filter row replaced 4 generic chips with 7 PRD §40 project-aware chips: All projects · P1 f_NL tracer · P2 chirality · P3 anomaly · P4 PTA · QC · Infra (each with title attribute documenting which pipeline/topic it covers). Each chip wired to `filterKanbanByProject()` which uses a keyword map (KANBAN_PROJECT_KEYWORDS) to match card content — chips actually filter the cards (not just visual). Column counts auto-update as cards are hidden. Search input wired to `searchKanban()` for free-text filtering across all columns. Toast confirms the active filter + visible card count. Experiment filter chips on Project kanban (the second half of the original task) deferred to Round C #2 (Project Overview page) where the project kanban will live.
 - [ ] **Round C #9 Project ↔ Paper many-to-many** UI — paper sidepeek shows associated projects, project page shows associated papers
 - [x] **Round D #1 Director header credits pill** (commit `6183915`) — 4-tier color coding by PRD §41 threshold: HIGH (sage dot, default), WARN (warn dot + warn text), CRIT (crit dot + crit text), EMERGENCY (pulsing crit dot + flashing background + bold text). Uses existing `--warn` and `--crit` CSS variables, no new accent colors. `data-threshold` attribute drives the styling — orchestrator updates it via the credits cron from PRD §41.2. Title attribute documents the 4-tier escalation policy.
 - [x] **Round D #2 Compute view credits history chart** (commit `7d287e7`) — full 30-day SVG line chart on the Compute view, 760×240 viewBox, sage line shows the credits balance dropping from ~$1850 to current $847 with 2 visible top-up bumps. Four PRD §41 threshold lines drawn across the chart: HIGH (≥$500, sage dashed), WARN (≥$100, amber dashed), CRIT (≥$25, red dashed), EMERGENCY (<$5, deep red solid). Legend strip below the chart names all 5 lines + current balance + zone label. Current balance ($847) annotated with a dot + label. Two top-up events annotated with vertical reference lines + "+$500 top-up" annotation. Header `forecast →` action shows the projected runway. Sage discipline preserved (only sage / warn / crit CSS variables, no new accent colors).
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 53 | 54 | 98% |
-| B. Web mockup | 38 | 49 | 78% |
+| B. Web mockup | 39 | 49 | 80% |
 | C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **138** | **159** | **87%** |
+| **OVERALL** | **139** | **159** | **87%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
