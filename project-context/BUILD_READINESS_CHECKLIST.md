@@ -139,7 +139,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Final color discipline scan** (commit `83a9f81`) — audited all 130 unique colors in the file, found a cluster of 10 bluish-gray tokens leaking blue tint in view-vibe (.vibe-frame-chart CSS) + view-datamap (SVG data flow arrows + boxes), 61 occurrences replaced with neutral grayscale equivalents (preserving lightness, removing blue); both views are NOT in the polished list — fair game per rule 7; view-site (polished, uses navy intentionally) untouched; mockup is now fully sage+grayscale discipline aligned
 - [x] **Settings · Compute & Runtime section + runtime sidepeek (3 variants)** (commit `6eb362b`) — Houston request 2026-04-08: Fly.io machine integration model + macOS app deep link from Settings. Adds Runtime nav item, new Compute & Runtime section with 4 cards (macOS desktop app · Fly.io orchestrator · RunPod compute · MCP server), each clickable to a `runtime` sidepeek showing live status + actions. Fly variant shows the 4-surface integration model (sidepeek inspector / terminal pane stream / out-of-band admin URL / CLI). DEPLOYMENT_INFRA_PLAN.md §2.3 updated with §2.3.1 (4 surfaces) and §2.3.2 (chat→action pipeline through the orchestrator).
 - [x] **Final dead-click audit** (verification gate, no commit needed) — audited 615 onclick handlers across the mockup. Zero "coming soon" / "not yet" / "tbd" toasts. Zero empty `onclick=""` handlers. Only 5 `<a href="#">` placeholder links found, all inside `view-site` (polished BigBounce site preview) where they simulate the static nav chrome of the real bigbounce.hubify.app — intentional, not dead. **Audit PASSES — every clickable element in the mockup either opens a sidepeek, navigates to a view, fires a real toast notification, or is intentional simulation chrome inside a polished view.**
-- [ ] **Final PRD↔mockup consistency review re-run** — verify the gaps from the last review are all closed
+- [x] **Final PRD↔mockup consistency review re-run** (commit `pending-prd13`) — audited all 28 mockup view divs against PRD §31 inventory. Found 6 drift gaps and fixed all 6 in PRD §31: (1) view-experiments now documents the §41 dispatch routing UI added in Round D #4, (2) view-comms now documents the cross-lab gateway card added in Round C #6, (3) view-tasks now documents the 7 §40 project filter chips added in Round C #8, (4) view-settings count corrected from 8 → 10 nav sections (added Lab Sharing + Runtime), (5) view-datamap added to inventory (was missing entirely), (6) view-graph added to inventory (was missing entirely). PRD §31 now lists all 28 views and matches the mockup 1:1.
 
 **B status:** ~70% — core views all built, polish + Round B/C/D refactors remaining.
 
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 53 | 54 | 98% |
-| B. Web mockup | 41 | 49 | 84% |
+| B. Web mockup | 42 | 49 | 86% |
 | C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **141** | **159** | **89%** |
+| **OVERALL** | **142** | **159** | **89%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
