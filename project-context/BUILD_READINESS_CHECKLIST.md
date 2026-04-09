@@ -132,7 +132,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round C #8 Project filter chips on Lab kanban** + experiment filter chips on Project kanban (PRD §40.9)
 - [ ] **Round C #9 Project ↔ Paper many-to-many** UI — paper sidepeek shows associated projects, project page shows associated papers
 - [x] **Round D #1 Director header credits pill** (commit `6183915`) — 4-tier color coding by PRD §41 threshold: HIGH (sage dot, default), WARN (warn dot + warn text), CRIT (crit dot + crit text), EMERGENCY (pulsing crit dot + flashing background + bold text). Uses existing `--warn` and `--crit` CSS variables, no new accent colors. `data-threshold` attribute drives the styling — orchestrator updates it via the credits cron from PRD §41.2. Title attribute documents the 4-tier escalation policy.
-- [ ] **Round D #2 Compute view credits history chart** with 4 threshold lines
+- [x] **Round D #2 Compute view credits history chart** (commit `7d287e7`) — full 30-day SVG line chart on the Compute view, 760×240 viewBox, sage line shows the credits balance dropping from ~$1850 to current $847 with 2 visible top-up bumps. Four PRD §41 threshold lines drawn across the chart: HIGH (≥$500, sage dashed), WARN (≥$100, amber dashed), CRIT (≥$25, red dashed), EMERGENCY (<$5, deep red solid). Legend strip below the chart names all 5 lines + current balance + zone label. Current balance ($847) annotated with a dot + label. Two top-up events annotated with vertical reference lines + "+$500 top-up" annotation. Header `forecast →` action shows the projected runway. Sage discipline preserved (only sage / warn / crit CSS variables, no new accent colors).
 - [x] **Round D #3 Per-experiment cost mode column** (commit `2f9b8f6`) — Top 5 experiments table on the Costs view gets a new "Mode" column showing PRD §41 routing attribution: `gpu·pod` (sage-bordered, sage-tinted, the heavy GPU work) / `gpu·srvless` (sage-bordered, transparent, bursty GPU calls) / `cpu·pod` (gray-bordered, surface-3 fill, long CPU work like MCMC) / `cpu·srvless` (gray-bordered, transparent, short CPU calls). Each pill has a `title` attribute explaining WHY the orchestrator routed it that way per the §41 rules. Real BigBounce data: EXP-050 (DESI×eROSITA gpu·pod), EXP-051 (PTA Bayes gpu·pod), EXP-049 (bounce discrimination gpu·srvless), EXP-046 (chirality 8.47M inference gpu·pod), EXP-053 (Quintom-B MCMC cpu·pod — Cobaya is CPU-bound, no tensor ops in hot path). Sage discipline preserved (only sage + grayscale neutrals, no new accent colors).
 - [ ] **Round D #4 Experiment dispatch flow CPU/GPU routing UI** — `requires_gpu` + `expected_duration_min` + `priority` fields
 - [ ] **Final mobile responsiveness audit re-run** — after all Round A-D work is in
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 51 | 54 | 94% |
-| B. Web mockup | 34 | 49 | 69% |
+| B. Web mockup | 35 | 49 | 71% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **130** | **159** | **82%** |
+| **OVERALL** | **131** | **159** | **82%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
