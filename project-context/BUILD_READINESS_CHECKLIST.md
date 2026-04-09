@@ -330,6 +330,7 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `d7ac28b` — What You Get lede "containerized" → "self-contained"
 - `fb54403` — CLI-TUI status bar "Go + bubbletea" → "go · tui" (consistent jargon sweep)
 - `917d98e` — Agents section "5 model providers / Grok" → "4 model providers" (aligns with 4-reviewer grid + CLAUDE.md spec)
+- `20975cf` — Guides peer-review card: added Perplexity, removed incorrect "non-Anthropic" framing, 3→4 reviewers
 
 ### Autonomous loop endpoint reached (master + polish items)
 
