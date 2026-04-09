@@ -8293,26 +8293,55 @@ The platform needs a clear public face that:
 | Blog post | `/blog/<slug>` | Individual article · long-form essay layout | 1 per post |
 | Pricing | `/pricing` | (DEFERRED to v1.1) | — |
 
-### 51.2 Homepage layout (the elevator pitch in 6 sections)
+### 51.2 Homepage layout (the elevator pitch in 7 sections — corrected 2026-04-09)
 
-1. **Hero** — Above-the-fold pitch. H1 + sub + 2 CTAs (Get started · View live demo) + small architecture diagram + live BigBounce counter ("53 experiments · 4 papers · 328K anomalies · 16 contributions · day 218 active")
+1. **Hero** — Above-the-fold pitch. H1 + sub + 2 CTAs (Get started · View live demo) + small **3-surface diagram** (Web · Desktop · CLI) + live BigBounce counter ("53 experiments · 4 papers · 328K anomalies · 16 contributions · day 218 active")
 2. **The Window 2025-2027 urgency band** — Quote/excerpt from the Houston essay + "Read the full essay →" link
-3. **The 4 surfaces philosophy** — One platform · 4 surfaces · all in parallel. 4 horizontal cards (Web · Desktop · CLI · Fly) with the philosophy of each. This is the explainer Houston specifically wanted on the homepage.
-4. **Lab gallery preview** — "What labs look like · community showcase" — 4 sample lab cards + "Explore all labs →" link
-5. **How it works** — 3 steps: Create lab → Talk to orchestrator → Watch lab grow
-6. **Footer CTA** — Big sage button + signup + "Or try the live demo →"
+3. **Surfaces · How you use it** — "Three surfaces. Same lab." 3 horizontal cards (Web app · Desktop app · CLI/TUI) — each is the FULL research IDE. Not 4 cards. Fly+RunPod are NOT in this section.
+4. **What you get with a Lab** — "A Lab is the unit." 6 cards (21 agents pre-wired · always-on GPU/CPU scale · public lab site · paper generation pipeline · 4-layer memory · 24/7 orchestrator). This is where Fly + RunPod show up, as infrastructure.
+5. **Lab gallery preview** — "What labs look like · community showcase" — 4 sample lab cards + "Explore all labs →" link
+6. **How it works** — 3 steps: Create lab → Talk to orchestrator → Watch lab grow
+7. **Footer CTA** — Big sage button + signup + "Or try the live demo →"
 
-### 51.3 The 4-stack architecture explainer (homepage section + features page deep-dive)
+### 51.3 Surfaces vs What You Get — the corrected framing (Houston 2026-04-09)
 
-Houston's framing — this is the canonical story to tell on the homepage:
+**Earlier framing was wrong.** I conflated two different concepts into a "4-stack architecture" (Local Mac / Web / Fly / RunPod). Houston corrected this — they're TWO separate concepts that need to be presented as separate sections on the marketing site.
 
-> **You** work on your **local Mac** — that's where you write notes, edit papers, talk to the orchestrator, and watch results come in. Whether you use the Tauri desktop app, the web app at `hubify-labs.com`, or the CLI in your terminal — they all talk to the same backend.
->
-> **Vercel** hosts the public sites (the lab's public face — papers, figures, datasets that others can browse). It's read-only from the public's perspective and auto-rebuilds whenever you push a commit.
->
-> **Fly.io** is the **always-on orchestrator**. Without Fly, the platform would only run when your laptop is open. With Fly, the orchestrator is alive 24/7: it runs the cron jobs, fires the 3-times-a-day standups, watches the credits balance, dispatches experiments to RunPod when GPU is idle, runs the publish-ready loop while you sleep. **Fly is the brain that doesn't blink.**
->
-> **RunPod** is the muscle. Every GPU job, every MCMC chain, every figure render runs on RunPod.
+**Concept 1 · Surfaces · How you use Hubify Labs**
+
+Three equivalent surfaces. Each is the FULL research IDE — you can do anything in any of them. They stay in sync via the always-on infrastructure underneath.
+
+| Surface | What it is | Tag |
+|---|---|---|
+| **Web app** | Full research IDE in the browser (the `index.html` mockup). No install. Open in any browser. | `full IDE in the browser` |
+| **Desktop app** | Full research IDE as a native macOS app. File drop, menu bar, dock badge, system notifications, hubify:// deep links. | `full IDE · native macOS` (NEVER call this "Tauri" in user-facing copy — Tauri is the implementation framework) |
+| **CLI · TUI** | Full research lab in your terminal. `hubify` Go binary, ~120 commands, bubbletea TUI mirror of the web views. | `terminal-native · ~120 commands` |
+
+The pitch: your laptop dies and you pick up on the web app on your phone, or jump into the CLI on a friend's machine. The work doesn't care which window you're in.
+
+**Concept 2 · What You Get with a Lab**
+
+Every Hubify Labs account starts with one Lab — your own containerized research environment with the agents, the compute, the public site, and the publishing pipeline already wired up. You're not assembling a stack — you're picking up a working lab.
+
+| Capability | What it includes |
+|---|---|
+| **21 agents pre-wired** | Orchestrator (Opus 4.6) + 4 leads + 11 workers + 4 cross-provider reviewers (GPT-5 · Gemini 2.5 · Sonnet skeptic · Perplexity). All running, all auditable. |
+| **Always-on GPU/CPU scale** | RunPod GPU pods + serverless on demand. The §41 router picks the cheapest credible target per job. Live credit monitoring + 4-tier alerts. You never log into RunPod directly. |
+| **Public lab site** | Your lab's own subdomain (e.g. `bigbounce.hubify.app`) — auto-generated from your papers, figures, datasets, and contributions. What the world sees when they search your work. |
+| **Paper generation pipeline** | Publish-ready loop: 5-round autonomous publishing with mechanical QA, cross-model peer review, Houston Method audit, final visual pass, and arXiv package. |
+| **4-layer memory** | User · agent · lab · global. Agents read the right scope automatically. |
+| **24/7 orchestrator** | Always-on Fly.io machine runs your lab while you sleep. Cron jobs every 5 min, standups 3x/day, idle-GPU watchdog, publish-ready loop overnight. |
+| Plus the rest of PRD §3-50 | Standups · routines · backups · cross-lab comms · Activity Graph · MCP server · vibe coding sandbox · etc. |
+
+**Why this framing matters:**
+
+The earlier conflation made it look like "Web" was just the public face / lab site. Houston pointed out that's wrong — the Web app IS the full IDE, and the public lab site is a SEPARATE thing (it's part of "what you get with a Lab," not a surface for interacting with the platform). Same way Cursor is "the IDE in your browser/desktop" — not "the public face."
+
+**Terminology rules:**
+- **Always say** "Web app" / "Desktop app" / "CLI · TUI" — these are the 3 surfaces
+- **Never say** "Tauri" in user-facing copy (it's the implementation framework, not the product)
+- **Never say** "Vercel is the public face" — Vercel hosts the public lab site, but the public lab site is one of the things you GET, not a surface
+- **Fly + RunPod** are infrastructure underneath the surfaces, not surfaces themselves. They appear in "What You Get" (24/7 orchestrator + GPU scale), not in the surfaces section.
 
 ### 51.4 Lab gallery — the vibe-coding-app showcase pattern applied to research
 
