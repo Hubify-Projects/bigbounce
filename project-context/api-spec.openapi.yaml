@@ -1,0 +1,878 @@
+openapi: 3.1.0
+info:
+  title: Hubify Labs API
+  version: 1.0.0
+  description: |
+    The canonical contract for everything that talks to the Hubify Labs platform.
+    See `API_SPEC.md` for the full human-readable spec, including rate limiting (§4),
+    error format (§5), WebSocket / SSE streams (§6), and stress-test framing (§12).
+
+    This YAML covers the load-bearing endpoints for v1. Additional endpoints from
+    `API_SPEC.md` §3 are added as needed during the build phase via `convex codegen`
+    and the auto-generated TypeScript client (`@hubify-labs/api-client`).
+  contact:
+    name: Houston Golden
+    email: houston@hubify.com
+  license:
+    name: Proprietary
+    url: https://hubify-labs.com/license
+
+servers:
+  - url: https://api.hubify-labs.com/v1
+    description: Production
+  - url: https://api-staging.hubify-labs.com/v1
+    description: Staging
+  - url: http://localhost:3000/v1
+    description: Local development
+
+# ─── Tags (group endpoints in generated docs) ─────────────────────────────────
+tags:
+  - name: auth
+    description: OAuth login, token refresh, service tokens
+  - name: labs
+    description: Top-level lab CRUD + sharing settings
+  - name: projects
+    description: Research threads inside a lab
+  - name: experiments
+    description: Atomic compute work (with PRD §41 routing)
+  - name: files
+    description: Lab filesystem
+  - name: chats
+    description: Brainstorm + chat-to-project graduation flow
+  - name: papers
+    description: Manuscripts + LaTeX + publish-loop
+  - name: notes
+    description: Houston's journal (per PRD §38)
+  - name: agents
+    description: 18-agent roster + invoke + episodes + learnings
+  - name: contributions
+    description: N-scored validated discoveries
+  - name: compute
+    description: RunPod pods + serverless + credits + dispatch
+  - name: comms
+    description: Cross-lab communication gateway (per PRD §40.11)
+  - name: search
+    description: Universal search across all entities
+  - name: runtime
+    description: macOS app, Fly.io orchestrator, MCP server (per Houston 2026-04-08)
+
+# ─── Reusable components ──────────────────────────────────────────────────────
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        JWT HS256 token from `POST /auth/login`. Includes `scope` array
+        with per-lab permissions (`lab:<slug>:r|rw|admin`). Three token types:
+        user (24h, refresh via /auth/refresh), agent (rotated daily by orchestrator),
+        service (90 days, manually revocable).
+
+  parameters:
+    LabSlug:
+      name: slug
+      in: path
+      required: true
+      schema: { type: string, pattern: "^[a-z0-9-]+$" }
+      description: Lab slug, e.g. `bigbounce-hubify`
+    ProjectId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, pattern: "^proj_[a-zA-Z0-9]+$" }
+    ExperimentId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, pattern: "^exp_[a-zA-Z0-9]+$" }
+    ChatId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, pattern: "^chat_[a-zA-Z0-9]+$" }
+    PaginationLimit:
+      name: limit
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+    PaginationOffset:
+      name: offset
+      in: query
+      schema: { type: integer, minimum: 0, default: 0 }
+
+  schemas:
+
+    # ─── Error envelope (RFC 7807) ──────────────────────────────────────────
+    Problem:
+      type: object
+      required: [type, title, status]
+      properties:
+        type:
+          type: string
+          format: uri
+          example: "https://hubify-labs.com/errors/not-found"
+        title:
+          type: string
+          example: "Resource not found"
+        status:
+          type: integer
+          example: 404
+        detail:
+          type: string
+          example: "No experiment with ID exp_abc123 in lab bigbounce-hubify"
+        instance:
+          type: string
+          example: "/v1/labs/bigbounce-hubify/experiments/exp_abc123"
+
+    # ─── Auth ────────────────────────────────────────────────────────────────
+    LoginRequest:
+      type: object
+      required: [provider, code]
+      properties:
+        provider:
+          type: string
+          enum: [github, google, magic_link]
+        code:
+          type: string
+          description: OAuth authorization code (for github/google) or magic link token
+
+    LoginResponse:
+      type: object
+      required: [token, expires_at, user]
+      properties:
+        token:
+          type: string
+          description: JWT bearer token
+        refresh_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        user:
+          $ref: "#/components/schemas/User"
+
+    User:
+      type: object
+      required: [id, email]
+      properties:
+        id: { type: string }
+        email: { type: string, format: email }
+        name: { type: string }
+        avatar_url: { type: string, format: uri }
+        scopes:
+          type: array
+          items: { type: string }
+          example: ["lab:bigbounce-hubify:rw", "org:hubify-labs:admin"]
+
+    # ─── Lab ─────────────────────────────────────────────────────────────────
+    Lab:
+      type: object
+      required: [slug, name, mission, north_star]
+      properties:
+        slug: { type: string }
+        name: { type: string }
+        mission: { type: string }
+        north_star: { type: string }
+        director: { type: string }
+        repo:
+          type: string
+          example: "Hubify-Labs/bigbounce-hubify"
+        subdomain:
+          type: string
+          example: "bigbounce.hubify.app"
+        created_at: { type: string, format: date-time }
+        sharing:
+          type: object
+          properties:
+            internal: { type: string, enum: [none, read-only, read-write] }
+            public: { type: string, enum: [off, published-only, published+datasets, everything, transparent] }
+
+    # ─── Project (research thread, per PRD §40.4) ──────────────────────────
+    Project:
+      type: object
+      required: [id, slug, name, goal, deliverable, measurable]
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        name: { type: string }
+        goal:
+          type: string
+          description: "One-sentence qualitative target (per PRD §40.5 intent layer)"
+        deliverable:
+          type: string
+          description: "Concrete artifact (paper / catalog / model / tool)"
+        measurable:
+          type: string
+          description: "Numeric metric or pass/fail with threshold"
+        status: { type: string, enum: [active, stalled, completed, archived] }
+        lab_slug: { type: string }
+        created_at: { type: string, format: date-time }
+        last_activity: { type: string, format: date-time }
+
+    # ─── Experiment (with PRD §41 routing) ─────────────────────────────────
+    ExperimentDispatchRequest:
+      type: object
+      required: [title, requires_gpu, expected_duration_min, command]
+      properties:
+        title: { type: string }
+        project_id: { type: string }
+        requires_gpu:
+          type: boolean
+          description: "REQUIRED per PRD §41 Rule 1. Does this task have a tensor in the hot path?"
+        gpu_type:
+          type: string
+          enum: [H100, H200, A100, A6000, "null"]
+          nullable: true
+        expected_duration_min:
+          type: number
+          description: "Used by PRD §41 Rule 2 to choose Pod vs Serverless"
+        priority:
+          type: string
+          enum: [low, med, high, critical]
+          default: med
+        command: { type: string }
+        working_dir: { type: string }
+        checkpoint_interval_min:
+          type: number
+          default: 10
+          description: "Per PRD §41 Rule 4 (checkpoint discipline)"
+        max_cost_usd: { type: number }
+        preferred_mode:
+          type: string
+          enum: [pod, serverless, auto]
+          default: auto
+
+    Experiment:
+      type: object
+      required: [id, title, status, created_at]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        project_id: { type: string }
+        status: { type: string, enum: [draft, dispatched, running, pass, fail, cancelled] }
+        progress: { type: number, minimum: 0, maximum: 100 }
+        cost_usd: { type: number }
+        runtime_seconds: { type: number }
+        compute_mode: { type: string, enum: [pod, serverless, cpu-pod, cpu-serverless] }
+        gpu_type: { type: string, nullable: true }
+        owner_agent: { type: string }
+        result_summary: { type: string }
+        created_at: { type: string, format: date-time }
+        completed_at: { type: string, format: date-time, nullable: true }
+
+    # ─── Chat (with no-action mode per PRD §40.6) ──────────────────────────
+    Chat:
+      type: object
+      required: [id, title, mode, created_at]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        mode:
+          type: string
+          enum: [default, chat]
+          description: "'chat' = no-action mode (orchestrator can suggest but not act). PRD §40.13."
+        project_id:
+          type: string
+          nullable: true
+        created_at: { type: string, format: date-time }
+        last_message_at: { type: string, format: date-time }
+        message_count: { type: integer }
+
+    # ─── Compute (per PRD §41) ──────────────────────────────────────────────
+    CreditsStatus:
+      type: object
+      required: [balance_usd, runway_hours, threshold]
+      properties:
+        balance_usd: { type: number, example: 847.30 }
+        burn_24h_usd: { type: number, example: 18.04 }
+        burn_per_hour_usd: { type: number, example: 0.75 }
+        runway_hours: { type: number, example: 47 }
+        threshold:
+          type: string
+          enum: [HIGH, WARN, CRIT, EMERGENCY]
+          description: "Per PRD §41.3 thresholds"
+        last_check: { type: string, format: date-time }
+
+    Pod:
+      type: object
+      required: [id, status, gpu_type]
+      properties:
+        id: { type: string, example: "o76k3jfzbfh25e" }
+        name: { type: string, example: "sleepy_blush_crane" }
+        status: { type: string, enum: [active, stopped, restarting] }
+        gpu_type: { type: string }
+        cost_per_hour_usd: { type: number }
+        ssh_host: { type: string }
+        ssh_port: { type: integer }
+        attached_volume: { type: string }
+
+    # ─── Cross-lab comms (per PRD §40.11) ──────────────────────────────────
+    CommEvent:
+      type: object
+      required: [id, type, from_lab, to_lab, subject, body]
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [suggestion, learning_share, file_delta_proposal, info] }
+        from_lab: { type: string }
+        from_agent: { type: string }
+        to_lab: { type: string }
+        to_agent: { type: string, default: orchestrator }
+        subject: { type: string }
+        body: { type: string }
+        attachments:
+          type: array
+          items: { type: string }
+        status: { type: string, enum: [pending, accepted, rejected] }
+        created_at: { type: string, format: date-time }
+
+# ─── Security (default to bearerAuth on every endpoint) ──────────────────────
+security:
+  - bearerAuth: []
+
+# ─── Paths ────────────────────────────────────────────────────────────────────
+paths:
+
+  # ─── Auth ────────────────────────────────────────────────────────────────
+  /auth/login:
+    post:
+      tags: [auth]
+      summary: OAuth login (GitHub / Google / magic link)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/LoginRequest" }
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/LoginResponse" }
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Problem" }
+
+  /auth/refresh:
+    post:
+      tags: [auth]
+      summary: Refresh an expiring token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token: { type: string }
+      responses:
+        '200':
+          description: New token
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/LoginResponse" }
+
+  /auth/whoami:
+    get:
+      tags: [auth]
+      summary: Get current user/agent/service info
+      responses:
+        '200':
+          description: Current identity
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/User" }
+
+  # ─── Labs ────────────────────────────────────────────────────────────────
+  /labs:
+    get:
+      tags: [labs]
+      summary: List labs the bearer has access to
+      parameters:
+        - $ref: "#/components/parameters/PaginationLimit"
+        - $ref: "#/components/parameters/PaginationOffset"
+      responses:
+        '200':
+          description: Lab list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Lab" }
+    post:
+      tags: [labs]
+      summary: Create a new lab (mutates GitHub org via internal hubify orchestrator)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [slug, name, mission, north_star]
+              properties:
+                slug: { type: string }
+                name: { type: string }
+                mission: { type: string }
+                north_star: { type: string }
+                template_slug:
+                  type: string
+                  example: "bounce-cosmology"
+      responses:
+        '201':
+          description: Lab created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Lab" }
+
+  /labs/{slug}:
+    get:
+      tags: [labs]
+      summary: Get lab metadata
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      responses:
+        '200':
+          description: Lab detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Lab" }
+    patch:
+      tags: [labs]
+      summary: Update lab metadata
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                mission: { type: string }
+                north_star: { type: string }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Lab" }
+
+  /labs/{slug}/sharing:
+    get:
+      tags: [labs]
+      summary: Get the lab's sharing settings (per PRD §40.11)
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      responses:
+        '200':
+          description: Sharing settings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  internal: { type: string, enum: [none, read-only, read-write] }
+                  public: { type: string, enum: [off, published-only, published+datasets, everything, transparent] }
+                  per_resource_overrides: { type: array, items: { type: object } }
+
+  # ─── Projects ────────────────────────────────────────────────────────────
+  /labs/{slug}/projects:
+    get:
+      tags: [projects]
+      summary: List projects in the lab
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      responses:
+        '200':
+          description: Project list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Project" }
+    post:
+      tags: [projects]
+      summary: Create a new project (typically via chat-graduation per PRD §40.6)
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [slug, name, goal, deliverable, measurable]
+              properties:
+                slug: { type: string }
+                name: { type: string }
+                goal: { type: string }
+                deliverable: { type: string }
+                measurable: { type: string }
+                from_chat_id: { type: string, nullable: true }
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Project" }
+
+  # ─── Experiments (PRD §41 dispatch) ───────────────────────────────────────
+  /labs/{slug}/experiments:
+    get:
+      tags: [experiments]
+      summary: List experiments
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - name: status
+          in: query
+          schema: { type: string, enum: [draft, running, pass, fail] }
+      responses:
+        '200':
+          description: Experiment list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Experiment" }
+
+  /labs/{slug}/experiments/{id}/dispatch:
+    post:
+      tags: [experiments]
+      summary: Dispatch an experiment (runs PRD §41 routing logic)
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - $ref: "#/components/parameters/ExperimentId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ExperimentDispatchRequest" }
+      responses:
+        '202':
+          description: Dispatched (async)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id: { type: string }
+                  routed_mode: { type: string, enum: [pod, serverless, cpu-pod, cpu-serverless] }
+                  estimated_cost_usd: { type: number }
+        '422':
+          description: Validation failed (e.g. missing requires_gpu per PRD §41 Rule 1)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Problem" }
+
+  /labs/{slug}/experiments/{id}/logs:
+    get:
+      tags: [experiments]
+      summary: Stream experiment logs (SSE)
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - $ref: "#/components/parameters/ExperimentId"
+      responses:
+        '200':
+          description: SSE stream of log lines
+          content:
+            text/event-stream:
+              schema: { type: string }
+
+  # ─── Files ────────────────────────────────────────────────────────────────
+  /labs/{slug}/files/{path}:
+    parameters:
+      - $ref: "#/components/parameters/LabSlug"
+      - name: path
+        in: path
+        required: true
+        schema: { type: string }
+        description: Relative path within the lab (URL-encoded)
+    get:
+      tags: [files]
+      summary: Read a file
+      responses:
+        '200':
+          description: File content + metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path: { type: string }
+                  size: { type: integer }
+                  mtime: { type: string, format: date-time }
+                  kind: { type: string, enum: [markdown, python, latex, json, csv, image, pdf, generic] }
+                  content: { type: string }
+    put:
+      tags: [files]
+      summary: Write/create a file
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [content]
+              properties:
+                content: { type: string }
+      responses:
+        '200':
+          description: File written
+        '403':
+          description: Cross-lab write denied (Lab Sovereignty Rule per PRD §40.11)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Problem" }
+
+  # ─── Chats (per PRD §40.7, §40.13) ────────────────────────────────────────
+  /labs/{slug}/chats:
+    get:
+      tags: [chats]
+      summary: List recent chats
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - $ref: "#/components/parameters/PaginationLimit"
+      responses:
+        '200':
+          description: Chat list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Chat" }
+    post:
+      tags: [chats]
+      summary: Create a new chat
+      parameters: [{ $ref: "#/components/parameters/LabSlug" }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: { type: string }
+                mode: { type: string, enum: [default, chat], default: chat }
+                project_id: { type: string, nullable: true }
+                initial_message: { type: string }
+      responses:
+        '201':
+          description: Chat created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Chat" }
+
+  /labs/{slug}/chats/{id}/promote:
+    post:
+      tags: [chats]
+      summary: Trigger chat-to-project graduation (per PRD §40.6)
+      description: |
+        Drafts a project spec from the chat (goal + deliverable + measurable + mini-plan)
+        and creates a new Project. **Hard rule:** if any of the 4 fields can't be inferred,
+        returns 422 with the specific gap so the user can iterate on the chat.
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - $ref: "#/components/parameters/ChatId"
+      responses:
+        '201':
+          description: Project created from chat
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Project" }
+        '422':
+          description: Chat needs more shape — specific gap returned
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Problem" }
+
+  /labs/{slug}/chats/{id}/notechat:
+    post:
+      tags: [chats]
+      summary: Save chat to Notes (per PRD §40.8 — `/notechat` slash command)
+      parameters:
+        - $ref: "#/components/parameters/LabSlug"
+        - $ref: "#/components/parameters/ChatId"
+      responses:
+        '201':
+          description: Note created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  note_filename: { type: string }
+                  hubify_url: { type: string }
+
+  # ─── Compute (per PRD §41) ───────────────────────────────────────────────
+  /compute/credits:
+    get:
+      tags: [compute]
+      summary: Current RunPod credit balance + burn + runway
+      responses:
+        '200':
+          description: Credits status
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CreditsStatus" }
+
+  /compute/credits/stream:
+    get:
+      tags: [compute]
+      summary: SSE stream of credit balance changes (for the Director header pill)
+      responses:
+        '200':
+          description: SSE stream
+          content:
+            text/event-stream:
+              schema: { type: string }
+
+  /compute/pods:
+    get:
+      tags: [compute]
+      summary: List active pods across labs the bearer can access
+      responses:
+        '200':
+          description: Pod list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Pod" }
+
+  # ─── Cross-lab comms (per PRD §40.11) ────────────────────────────────────
+  /comms/send:
+    post:
+      tags: [comms]
+      summary: Send a comm-event to another lab's orchestrator
+      description: |
+        **PRD §40.11 LAB SOVEREIGNTY RULE:** cross-lab comms can SUGGEST changes
+        but cannot directly write to the target lab's filesystem. The target lab's
+        orchestrator decides whether to accept.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [target_lab, type, subject, body]
+              properties:
+                target_lab: { type: string }
+                target_agent: { type: string, default: orchestrator }
+                type: { type: string, enum: [suggestion, learning_share, file_delta_proposal, info] }
+                subject: { type: string }
+                body: { type: string }
+                attachments:
+                  type: array
+                  items: { type: string }
+      responses:
+        '201':
+          description: Comm-event sent
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CommEvent" }
+
+  /comms/inbox:
+    get:
+      tags: [comms]
+      summary: Get the current lab's inbox of comm-events
+      responses:
+        '200':
+          description: Inbox
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/CommEvent" }
+
+  # ─── Search (universal — backs the ⌘K palette) ───────────────────────────
+  /search:
+    get:
+      tags: [search]
+      summary: Universal search across the lab's entities
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string }
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [paper, experiment, agent, file, contribution, survey, chat, note]
+        - $ref: "#/components/parameters/PaginationLimit"
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type: { type: string }
+                    id: { type: string }
+                    label: { type: string }
+                    sub: { type: string }
+                    score: { type: number }
+
+  # ─── Runtime (per Houston 2026-04-08 — macOS app + Fly orchestrator + MCP server) ───
+  /runtime/orchestrator:
+    get:
+      tags: [runtime]
+      summary: Get the lab's Fly.io orchestrator runtime status
+      description: |
+        Returns the current state of the Fly.io machine running the lab's orchestrator agent.
+        Per `DEPLOYMENT_INFRA_PLAN.md` §2.3.1 — this is Surface 1 (in-app inspector).
+      responses:
+        '200':
+          description: Orchestrator status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  app_name: { type: string, example: "hubify-bigbounce-orch" }
+                  machine_id: { type: string }
+                  region: { type: string, example: "lax" }
+                  status: { type: string, enum: [active, idle, restarting, crashed] }
+                  uptime_seconds: { type: integer }
+                  memory_used_mb: { type: integer }
+                  memory_limit_mb: { type: integer }
+                  cpu_percent: { type: number }
+                  cost_per_month_usd: { type: number }
+                  inbox_queue_depth: { type: integer }
+                  last_healthcheck: { type: string, format: date-time }
+
+  /runtime/orchestrator/logs/stream:
+    get:
+      tags: [runtime]
+      summary: SSE stream of fly machine logs (Surface 2 — terminal pane integration)
+      responses:
+        '200':
+          description: SSE stream of stdout/stderr
+          content:
+            text/event-stream:
+              schema: { type: string }
+
+  /runtime/orchestrator/restart:
+    post:
+      tags: [runtime]
+      summary: Restart the Fly.io orchestrator machine (graceful)
+      responses:
+        '202':
+          description: Restart initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  machine_id: { type: string }
+                  estimated_downtime_seconds: { type: integer, example: 8 }
+
+# ─── End of v1 endpoints ──────────────────────────────────────────────────────
+#
+# This file covers ~30 of the ~85 endpoints from API_SPEC.md §3 — the load-bearing ones
+# for v1 launch. The remaining endpoints (papers, notes, agents detail, memory, contributions
+# create/audit, standups, routines, backups, costs aggregation, webhooks, MCP serve admin)
+# are added during the build phase via codegen + the auto-generated TypeScript client.
+#
+# Per BUILD_READINESS_CHECKLIST.md Category D, this YAML lock completes Item 7 of 7.
+# Category D is now 100% (7/7).

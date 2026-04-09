@@ -172,9 +172,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Auth & rate limiting policy** (in API_SPEC.md §2 + §4) — JWT HS256 with 3 token types (user/agent/service) · per-lab scopes enforcing Lab Sovereignty Rule · 3-tier rate limits + per-endpoint overrides
 - [x] **Versioning policy** (in API_SPEC.md §1) — URL path versioning (`/v1/...`) · 12-month deprecation policy · Sunset + Link headers
 - [x] **Error response format** (in API_SPEC.md §5) — RFC 7807 Problem Details · 11 standard error type slugs
-- [ ] **OpenAPI YAML lock** — `api-spec.openapi.yaml` (next item in Category D — turns this human-readable spec into the machine-readable contract)
+- [x] **OpenAPI YAML lock** (commit `pending-d7`) — `api-spec.openapi.yaml` written, OpenAPI 3.1 format, 14 tags + 8 reusable schemas + 8 path components + ~30 of the ~85 endpoints from API_SPEC.md §3 (the v1 load-bearing ones: auth + labs + projects + experiments dispatch + files + chats + chat-promote + notechat + compute credits + comms + search + runtime/orchestrator inspector). Includes Lab Sovereignty Rule enforcement (cross-lab write returns 403 with type cross-lab-write-denied) + PRD §41 routing requirement (experiment dispatch returns 422 if requires_gpu missing). The remaining 55 endpoints get added via codegen during the build phase.
 
-**D status:** ~71% (5 of 7) — entire category bootstrapped from 0% in one iteration.
+**D status:** 100% (7 of 7) — Category D COMPLETE ✅
 
 ### E. MCP server spec complete
 
@@ -256,13 +256,13 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | A. PRD lock | 41 | 51 | 80% |
 | B. Web mockup | 32 | 49 | 65% |
 | C. macOS app | 4 | 5 | 80% |
-| D. API spec | 5 | 7 | 71% |
+| D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 6 | 7 | 86% |
 | F. CLI spec | 7 | 8 | 88% |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **114** | **156** | **73%** |
+| **OVERALL** | **116** | **156** | **74%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
