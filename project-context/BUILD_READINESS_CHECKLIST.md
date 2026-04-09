@@ -136,7 +136,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round D #3 Per-experiment cost mode column** — pod / serverless / cpu-pod / cpu-serverless attribution
 - [ ] **Round D #4 Experiment dispatch flow CPU/GPU routing UI** — `requires_gpu` + `expected_duration_min` + `priority` fields
 - [ ] **Final mobile responsiveness audit re-run** — after all Round A-D work is in
-- [ ] **Final color discipline scan** — verify zero leaks anywhere
+- [x] **Final color discipline scan** (commit `83a9f81`) — audited all 130 unique colors in the file, found a cluster of 10 bluish-gray tokens leaking blue tint in view-vibe (.vibe-frame-chart CSS) + view-datamap (SVG data flow arrows + boxes), 61 occurrences replaced with neutral grayscale equivalents (preserving lightness, removing blue); both views are NOT in the polished list — fair game per rule 7; view-site (polished, uses navy intentionally) untouched; mockup is now fully sage+grayscale discipline aligned
 - [ ] **Final dead-click audit** — every clickable opens a sidepeek or navigates somewhere
 - [ ] **Final PRD↔mockup consistency review re-run** — verify the gaps from the last review are all closed
 
@@ -253,7 +253,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
-| B. Web mockup | 29 | 49 | 59% |
+| B. Web mockup | 30 | 49 | 61% |
 | C. macOS app | 1 | 5 | 20% |
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
@@ -261,7 +261,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **108** | **156** | **69%** |
+| **OVERALL** | **109** | **156** | **70%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
