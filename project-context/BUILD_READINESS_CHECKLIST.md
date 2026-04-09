@@ -319,6 +319,11 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 
 **Translation:** **8 of 12 categories at 100% ✅** (B · C · D · E · F · G · J · K all locked end-to-end). **Category K just hit 100%** — K8 Mintlify subpath spec done. **Category L is 11/12 = 92%** — L1, L2, L3, L4, L5, L6, L7, L8, L10, L11, L12 shipped. Only L9 remains (hierarchy refactor — large architectural work, deferred). **This iteration shipped: L5** (Cursor-style entity tabs in preview-tabs strip), **L10** (4 new operational Settings sub-sections: Costs/Alerts/Routines/Memory with real BigBounce data), **L12** (chats scope-organized rebuild), **K8** (Mintlify subpath setup spec). Overall: 161/172 = 94%. Houston is asleep with full trust to continue across all surfaces.
 
+**Post-endpoint polish commits (loop continues with quality passes):**
+- `8c46742` — Scroll-reveal fade-up system added to marketing site (IntersectionObserver, 55ms stagger, 13 selectors, prefers-reduced-motion safe)
+- `53a4841` — Dead `.arch-block` selector removed from scroll-reveal (Explore agent review catch)
+- `dab87da` — Features page jargon sweep: 7 instances of Convex DB / fly / Vercel Sandbox / bubbletea stripped from user-facing copy → cloud database / cloud · always-on / cloud sandbox / interactive TUI
+
 ### Autonomous loop endpoint reached (master + polish items)
 
 **The autonomous loop has shipped everything it can ship without Houston's input.** As of 2026-04-09, 161/172 = 94% done. The remaining 11 items break down into:
