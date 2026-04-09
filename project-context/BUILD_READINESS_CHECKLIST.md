@@ -124,7 +124,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round B Files sidebar Round 2** — full-page note editor with inline filename + per-note scoped chat + markdown slash commands + star-to-pin notes
 - [ ] **Round C #1 Sidebar tri-mode adding Chats between Menu and Files** (PRD §40.7)
 - [ ] **Round C #2 Project Overview page + sidepeek renderer** (PRD §40.12)
-- [ ] **Round C #3 Chat composer enrichments** — model switcher · mode pill · file upload · mic icon · slash command autocomplete (PRD §40.10)
+- [x] **Round C #3 Chat composer enrichments** (commit `cc81400`) — chat input toolbar above the textarea with 4 elements: (1) **Model switcher pill** with sage dot + label + dropdown caret, cycles through 5 models (Sonnet 4.6 default per PRD App B.1, Opus 4.6, Haiku 4.5, GPT-5, Gemini 2.5 Pro) on click — toast confirms switch with model description, (2) **Mode pill** cycling through 3 chat modes (Research/CEO/Note per PRD §40.6+§40.13) with diamond icon variants (◆/◇/◌), (3) **File upload icon** (paperclip svg) opens new-file sidepeek for attachment flow, (4) **Mic icon** for Whisper API voice dictation (per PRD App B.2) with recording-state pulse animation. Slash command autocomplete already wired via existing meta-left chips. All 4 use the existing sage/grayscale palette — no new accent colors. Recording animation uses existing accent color with pulse-shadow keyframe scoped to `.chat-tool-btn.recording` only.
 - [ ] **Round C #4 Wire 4 chat slash commands** — `/chat`, `/notechat`, `/promote`, `/share` (PRD §40.13)
 - [ ] **Round C #5 Lab Sharing settings sidepeek** (PRD §40.11)
 - [ ] **Round C #6 Cross-lab comm gateway visualization** — small panel showing inbound/outbound comms with other labs
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 53 | 54 | 98% |
-| B. Web mockup | 36 | 49 | 73% |
+| B. Web mockup | 37 | 49 | 76% |
 | C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **136** | **159** | **86%** |
+| **OVERALL** | **137** | **159** | **86%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
