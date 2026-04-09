@@ -272,8 +272,15 @@ Houston's final cut on sidepeeks: "ok ive had it with sidepeeks bro we gotta rem
 - [ ] **L3: Delete the dead `<aside class="sidepeek">` DOM + all `.sidepeek*` CSS rules** — once L2 is done and nothing references the old DOM IDs, remove the element + the orphan CSS (~30 lines).
 - [ ] **L4: Rename `sidepeekRenderers` → `detailRenderers` + `openSidepeek` → `openDetail`** — final cleanup pass. Backward-compat alias the old names for one release cycle, then delete in v1.1.
 - [ ] **L5: Multi-tab support in detail view** — per Houston's earlier "real screens not overlays" framing, allow multiple detail tabs in the preview-tabs strip. Each opened entity becomes a tab, can be pinned, can be closed. Like Cursor / VSCode's editor tabs but for research entities.
+- [x] **L6: Director rebuild as decision list with chat hooks** (commit `24a0007`, Houston 2026-04-09) — Replaced view-director's 8-card stat-grid + briefing card + 4-review section + orchestrator activity + running-now + overnight-summary with the new shape: 3 sections (WHAT NEEDS YOU · WHAT'S RUNNING · MORNING BRIEF). Every actionable row has a `[💬 chat about this]` button that calls `chatAbout(scope, title, context)` — the new JS function that opens the existing chat panel with context preloaded as a system message. 11 chat-about-this buttons total: 3 in needs-you (Paper 1 §3.2 · EXP-056 dispatch · promote anomaly-worker), 3 in what's-running (EXP-055 · EXP-051 PTA · nightly backup), 1 in brief footer ("chat about the brief"), plus 4 footer drilldown links (general lab chat · all papers · all experiments · contributions · lab dossier). Brief is labeled "Morning brief" with auto-curation by brief-worker (sonnet 4.6) tied to the 06:00 PT standup per PRD §27 — afternoon at 13:00, evening at 21:00. Brief body has 2 columns: "Last 24h — what shipped" + "Next 24h — what to expect." De-dupe rule built in: clicking [💬] on the same scope reopens the existing chat instead of creating a new one. Director is now action-oriented, not info-dumping. The 8-card stat-grid is gone — moved to L11 Lab Dossier (the librarian view) which is the next ship target.
+- [ ] **L7: Papers as full pages (each paper has its own page, not a card)** — per Houston Q2 answer. M:M with projects. Page links to figures · projects · datasets · models · discoveries · contributions.
+- [ ] **L8: Sidebar drastic reduction to ~5 main items** — Director · Chats · Projects ▾ · Lab Papers · Lab Dossier · Settings (hides 8+ operational/catalog items into Settings).
+- [ ] **L9: Hierarchy refactor — Projects-as-threads, Papers as siblings, M:M wiring**
+- [ ] **L10: Operational view consolidation** — Backups/Compute/Costs/Routines/Alerts/Memory all into Settings sub-sections
+- [ ] **L11: Lab Dossier auto-generated view** — the librarian view. Auto-generated on every commit/pod completion/meaningful event. Single source of truth. Not editable. 10 sections (Mission · Status snapshot · Discoveries · Papers · Projects · Data+models · Roadmap · Spend+ops · Timeline · Glossary). Pulls from BigBounce dossier structure as reference.
+- [ ] **L12: Chats sidebar rebuild** — chats organized by scope (Director chats · Lab chats · Project chats ▾ · Paper chats), persist forever, auto-compact at ~150K tokens, de-dupe by scope.
 
-**L status:** 1/5 = 20% — L1 shipped this iteration. L2-L5 remain.
+**L status:** 2/12 = 16.7% — L1 (sidepeek kill iter 1) + L6 (Director rebuild, this iteration) shipped. L2-L5, L7-L12 remain. Category L expanded from 5 → 12 items after Houston locked the answers to Q1-Q6.
 
 ### K. K-Dense + Feynman parity / gap closure (Houston 2026-04-09)
 
@@ -307,10 +314,10 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 | I. Houston sign-off | 0 | 7 | 0% |
 | **J. SDP reframe** | **8** | **8** | **100% ✅** |
 | **K. K-Dense + Feynman parity** | **7** | **8** | **87.5%** |
-| L. Kill sidepeeks | 1 | 5 | 20% |
-| **OVERALL** | **150** | **165** | **90.9%** |
+| **L. UX rebuild (kill sidepeeks · director · papers · dossier)** | **2** | **12** | **16.7%** |
+| **OVERALL** | **151** | **172** | **87.8%** |
 
-**Translation:** **7 of 12 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category K is now **7/8 = 87.5%** — only K8 (Mintlify docs port) remains. Category L (kill sidepeeks) is at 1/5 = 20%, awaiting Houston's read on the strategic 3 questions before the L6-L10 rebuild can start. PRD A is 1 item from 100%. Migration H is ~78%. Houston sign-off I is 0%. Polish loop runway: K8 + the L category items + Houston's strategic answers.
+**Translation:** **7 of 12 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category K is **7/8 = 87.5%** (only K8 Mintlify docs port remains). **Category L expanded from 5 → 12 items** after Houston locked answers to Q1-Q6 (the UX rebuild now includes L6 Director rebuild, L7 Papers full pages, L8 sidebar drastic reduction, L9 hierarchy refactor, L10 operational consolidation, L11 Lab Dossier auto-generated view, L12 Chats sidebar rebuild). **L6 shipped this iteration (the proof of concept for the whole reframe).** Houston is asleep with full trust to continue across all surfaces. The polish loop will continue shipping L7-L12 over the next iterations.
 
 ### Autonomous loop endpoint reached (master items)
 
