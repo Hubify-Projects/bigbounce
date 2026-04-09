@@ -89,11 +89,11 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] §39 Activity graph (neural brain view)
 - [x] §40 Hierarchy v2 LOCKED (5-level model + intent layer + chats + sharing)
 - [x] §41 Compute routing & credits monitoring
-- [x] **§42 — macOS desktop app spec** (commit `pending-prd5`) — Tauri 2.x decision + 11 native features + menu bar variant + iOS deferral + distribution; PRD-resident summary that points at the canonical `DESKTOP_APP_SPEC.md`
-- [x] **§43 — REST + GraphQL API spec** (commit `pending-prd5`) — JWT HS256 + per-lab scopes + ~85 endpoints across 19 groups + RFC 7807 errors + §41 routing requirement; points at `API_SPEC.md` + `api-spec.openapi.yaml`
-- [x] **§44 — MCP server spec** (commit `pending-prd5`) — 4 MCP primitives + 3 transports + ~30 tools across 11 categories + 15 resources + 6 prompts + Lab Sovereignty enforcement + N4-not-claimable + audit logging; points at `MCP_SERVER_SPEC.md` + `mcp-server-spec.yaml`
-- [x] **§45 — CLI spec** (commit `pending-prd5`) — Go + Cobra + bubbletea TUI + ~120 commands across 19 categories + §41 routing CLI enforcement + OAuth/PKCE auth + plugin system deferred to v1.1; points at `CLI_SPEC.md` + `cli-spec.yaml`
-- [x] **§46 — Deployment infrastructure plan** (commit `pending-prd5`) — Vercel + Convex + Fly + RunPod + Backblaze + Cloudflare + GitHub Actions + monitoring stack + Fly 4-surface integration model + cost forecast; points at `DEPLOYMENT_INFRA_PLAN.md`
+- [x] **§42 — macOS desktop app spec** (commit `7fca50d`) — Tauri 2.x decision + 11 native features + menu bar variant + iOS deferral + distribution; PRD-resident summary that points at the canonical `DESKTOP_APP_SPEC.md`
+- [x] **§43 — REST + GraphQL API spec** (commit `7fca50d`) — JWT HS256 + per-lab scopes + ~85 endpoints across 19 groups + RFC 7807 errors + §41 routing requirement; points at `API_SPEC.md` + `api-spec.openapi.yaml`
+- [x] **§44 — MCP server spec** (commit `7fca50d`) — 4 MCP primitives + 3 transports + ~30 tools across 11 categories + 15 resources + 6 prompts + Lab Sovereignty enforcement + N4-not-claimable + audit logging; points at `MCP_SERVER_SPEC.md` + `mcp-server-spec.yaml`
+- [x] **§45 — CLI spec** (commit `7fca50d`) — Go + Cobra + bubbletea TUI + ~120 commands across 19 categories + §41 routing CLI enforcement + OAuth/PKCE auth + plugin system deferred to v1.1; points at `CLI_SPEC.md` + `cli-spec.yaml`
+- [x] **§46 — Deployment infrastructure plan** (commit `7fca50d`) — Vercel + Convex + Fly + RunPod + Backblaze + Cloudflare + GitHub Actions + monitoring stack + Fly 4-surface integration model + cost forecast; points at `DEPLOYMENT_INFRA_PLAN.md`
 - [ ] **§47 (TBD) — Mintlify docs port plan** — first 7 docs pages outline (started in §40.17 Tier 3, needs expansion)
 - [ ] **§48 (TBD) — `hubify://` URL scheme spec** — full URL pattern catalog
 - [ ] **§49 (TBD) — Authentication & authorization spec** — OAuth provider, token issuing, per-lab scoping, agent authentication
