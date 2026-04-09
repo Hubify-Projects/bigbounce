@@ -323,6 +323,12 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `8c46742` — Scroll-reveal fade-up system added to marketing site (IntersectionObserver, 55ms stagger, 13 selectors, prefers-reduced-motion safe)
 - `53a4841` — Dead `.arch-block` selector removed from scroll-reveal (Explore agent review catch)
 - `dab87da` — Features page jargon sweep: 7 instances of Convex DB / fly / Vercel Sandbox / bubbletea stripped from user-facing copy → cloud database / cloud · always-on / cloud sandbox / interactive TUI
+- `bc44efb` — Footer simplification: 4-column phantom links → 2-column working links only (Product / Learn)
+- `97b3819` — Blog header "AI-native discovery" → "independent discovery" (SDP alignment)
+- `b7578ee` — Feature title "AI-native experiment dispatch" → "Natural language experiment dispatch" + What You Get RunPod → generic compute (future-proof for Modal)
+- `f195508` — Hero lede tightened: 57 → 41 words, "containerized" jargon removed, direct access framing
+- `d7ac28b` — What You Get lede "containerized" → "self-contained"
+- `fb54403` — CLI-TUI status bar "Go + bubbletea" → "go · tui" (consistent jargon sweep)
 
 ### Autonomous loop endpoint reached (master + polish items)
 
