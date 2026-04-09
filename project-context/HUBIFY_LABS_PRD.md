@@ -8087,9 +8087,11 @@ The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
 
 ---
 
-## 19. Session Summary — What This PRD Covers
+## Appendix A: Section Index — What This PRD Covers
 
-**Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)
+**Note:** this appendix was previously numbered §19 (an artifact from an early version of the PRD when it had only 18 sections + a session summary). It has been renamed to "Appendix A" to remove the numbering confusion — sections §0-§50 are the canonical PRD body, and this appendix provides a navigable index.
+
+**Last updated:** 2026-04-08 (post-§42-§50 build-spec stub additions, post-mockup integration, post-§31-§39 additions)
 
 | Section | Topic | Status |
 |---------|-------|--------|
@@ -8137,8 +8139,17 @@ The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
 | **37** | **Publishing Phase — Autonomous Publish-Ready Loop** (publishing-lead agent + 4 publishing workers, 5-round publish-ready loop algorithm, scorecard, 'no future research punts' Houston Method update §37.6, rejection mode, Houston escalation, kanban 'PUBLISH READY 95%' pillar, arXiv package format, ~$30/paper cost) | ✅ **NEW** |
 | **38** | **Human Research Journal — Obsidian-style notes inside Hubify** (5 note groups: Daily/Prompts/Snippets/Links/Evergreen · agent visibility contract · private by default · `notes/` lives in Z1 Source · sidebar Notes section + new-note sidepeek + 4 agent visibility toggles per note) | ✅ **NEW** |
 | **39** | **Activity Graph — The Neural Brain View** (replicates hubify.com/activity/graph faithfully · 5 group palette · 443 nodes · ~2K edges · neuron pulses traveling along edges · live agent activity visualization · the singularity-vibes proof of life view) | ✅ **NEW** |
+| **42** | **macOS desktop app spec** — Tauri 2 shell · 11 native features · menu bar variant · iOS deferral · distribution · points at `DESKTOP_APP_SPEC.md` | ✅ **NEW 2026-04-08** |
+| **43** | **REST + GraphQL API spec** — JWT HS256 + per-lab scopes · ~85 endpoints across 19 groups · RFC 7807 errors · §41 routing requirement · points at `API_SPEC.md` + `api-spec.openapi.yaml` | ✅ **NEW 2026-04-08** |
+| **44** | **MCP server spec** — 4 MCP primitives + 3 transports · ~30 tools across 11 categories · 15 resources + 6 prompts · Lab Sovereignty enforcement · N4-not-claimable · audit logging · points at `MCP_SERVER_SPEC.md` + `mcp-server-spec.yaml` | ✅ **NEW 2026-04-08** |
+| **45** | **CLI spec** — Go + Cobra + bubbletea TUI · ~120 commands across 19 categories · §41 routing CLI enforcement · OAuth/PKCE · plugin system deferred to v1.1 · points at `CLI_SPEC.md` + `cli-spec.yaml` | ✅ **NEW 2026-04-08** |
+| **46** | **Deployment infrastructure plan** — Vercel + Convex + Fly + RunPod + Backblaze + Cloudflare + GitHub Actions + monitoring stack · Fly 4-surface integration model · cost forecast · points at `DEPLOYMENT_INFRA_PLAN.md` | ✅ **NEW 2026-04-08** |
+| **47** | **Mintlify docs port plan** — subpath at hubify-labs.com/docs · first 7 docs pages outline · codegen pipeline auto-generates API/CLI reference from YAML specs · Algolia DocSearch + Mintlify AI assistant | ✅ **NEW 2026-04-08** |
+| **48** | **`hubify://` URL scheme spec** — universal deep-link catalog · `hubify://<lab-slug>/<entity-type>/<entity-id>` · 19 entity types · cross-lab read OK / write FORBIDDEN · 7 surface-specific handling rows · stability forever guarantee | ✅ **NEW 2026-04-08** |
+| **49** | **Authentication & authorization spec** — 5 auth providers + 4 token types · per-lab scope claim · Lab Sovereignty Rule TRIPLE enforcement (CLI + MCP + API) · 6 agent consent boundaries · audit logging · per-token-type rate limits | ✅ **NEW 2026-04-08** |
+| **50** | **Telemetry & observability spec** — 9 event categories · privacy boundaries (lab content NEVER leaves user's Convex deployment) · activity feed schema · per-experiment cost tracking schema · 8-row alert routing table · telemetry opt-out per-user not per-lab | ✅ **NEW 2026-04-08** |
 
-**Total: 37 sections, ~6,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Global → Tasks). Preresearch ideation has a home. Ready for development phase handoff.**
+**Total: 46 sections, ~8,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Lab → Task). Preresearch ideation has a home. The macOS app, REST/GraphQL API, MCP server, CLI, deployment plan, Mintlify docs port, `hubify://` URL scheme, auth/authz, and telemetry are all locked. Ready for development phase handoff.**
 
 ---
 

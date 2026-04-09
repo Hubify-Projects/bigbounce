@@ -98,12 +98,12 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **§48 — `hubify://` URL scheme spec** (commit `cd1f87b`) — full URL pattern catalog: `hubify://<lab-slug>/<entity-type>/<entity-id>[?<query>]` + 19 entity types with example URLs + cross-lab read OK / write FORBIDDEN enforcement + 7 surface-specific handling rows (macOS / web / iOS / CLI / MCP / Slack / Mintlify) + URL stability forever guarantee
 - [x] **§49 — Authentication & authorization spec** (commit `cd1f87b`) — 5 auth providers (GitHub OAuth default + email magic + service tokens + agent tokens + MCP client auth) + 4 token types with lifetimes + per-lab scope claim format + Lab Sovereignty Rule TRIPLE enforcement (CLI + MCP + API) + 6 agent consent boundaries (N4 claim, notechat, public visibility flip, lab delete, token issue, auth provider settings) + audit logging schema + per-token-type rate limits
 - [x] **§50 — Telemetry & observability spec** (commit `cd1f87b`) — 9 event categories with destinations + retention + privacy boundaries (lab content NEVER leaves user's Convex deployment) + activity feed schema + per-experiment cost tracking schema + 8-row alert routing table (PRD §41.2) + telemetry opt-out (per-user, not per-lab) + 3 open questions
-- [ ] **PRD §19 numbering fix** — rename "Session Summary" to "Appendix A: Section Index" (currently sits at end despite being numbered 19, which is confusing)
+- [x] **PRD §19 numbering fix** (commit `pending-prd10`) — renamed "Session Summary — What This PRD Covers" to "Appendix A: Section Index — What This PRD Covers". Index table extended with §41-50 entries (10 new rows). Total section count corrected to 46 sections / ~8000 lines. Numbering confusion resolved — sections §0-§50 are the canonical PRD body, this appendix is the navigable index.
 - [ ] **PRD subsection fills** — view-figures (§37 sub), view-knowledge (§33 sub), view-vibe (§39 sub) — currently underspecified
 - [ ] **PRD open questions answered** — (1) chat default model: Sonnet 4.6 default · confirm? (2) voice dictation provider: Whisper API default · confirm? (3) cross-lab read-only enforcement layer: GitHub perms + Convex auth · confirm? (4) BigBounce migration final subdomain: `bigbounce2.hubify.app` placeholder vs alternatives
 - [ ] **5 lab spec files reviewed by Houston** (all 5 written, awaiting his read): MIGRATION_BOUNCE_COSMOLOGY_LAB · LAB_HUBIFY_SELF_IMPROVING · LAB_DARK_ENERGY · LAB_DARK_MATTER · LAB_ETI
 
-**A status:** ~98% — ALL 9 stub sections (§42-50) now written. 3 items remain: §19 numbering fix + 3 PRD subsection fills + open question answers + 5 lab spec Houston review pass.
+**A status:** ~94% — ALL 9 stub sections (§42-50) now written + §19 numbering fix DONE. 3 items remain: PRD subsection fills (view-figures, view-knowledge, view-vibe) + PRD open questions answered + 5 lab spec Houston review pass.
 
 ### B. Web mockup lock complete
 
@@ -253,7 +253,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 | Category | Done | Total | % |
 |---|---|---|---|
-| A. PRD lock | 50 | 51 | 98% |
+| A. PRD lock | 51 | 54 | 94% |
 | B. Web mockup | 33 | 49 | 67% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **128** | **156** | **82%** |
+| **OVERALL** | **129** | **159** | **81%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
