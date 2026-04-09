@@ -202,21 +202,22 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### G. Deployment infrastructure plan complete
 
-- [ ] **Write `DEPLOYMENT_INFRA_PLAN.md`**
-- [ ] **Vercel deploy config** — the web app deployment
-- [ ] **Convex deployment** — the backend (per-environment: dev, staging, prod)
-- [ ] **Fly.io deployment** — the orchestrator agent host (one machine per active lab)
-- [ ] **RunPod credentials store** — Convex env vars vs HashiCorp Vault vs 1Password CLI (default: Convex env vars per PRD §41 open question)
-- [ ] **Backblaze B2 backup pipeline** — nightly cron + per-credit-threshold trigger per PRD §41
-- [ ] **Database migrations strategy** — Convex schema versioning + migration scripts
-- [ ] **CI/CD pipeline** — GitHub Actions: on push to main → run tests → deploy to Vercel + Convex + Fly
-- [ ] **Domain/DNS setup** — `hubify-labs.com` (platform) + `<lab-slug>.hubify.app` (per-lab subdomains) via Cloudflare or Vercel DNS
-- [ ] **SSL/TLS** — Let's Encrypt via Vercel/Cloudflare automatic
-- [ ] **Monitoring stack** — Sentry for errors, Vercel Analytics for traffic, custom Convex dashboards for platform health
-- [ ] **Backup destination configs** — Backblaze B2 + Hugging Face (public) + iCloud (selected dirs)
-- [ ] **Cost monitoring + alerts** — per-tenant cost limits, alert thresholds, billing webhooks
+- [x] **Write `DEPLOYMENT_INFRA_PLAN.md`** (commit `pending-g1`) — comprehensive deployment plan ~750 lines, ALL 13 items covered in one iteration
+- [x] **Vercel deploy config** (in DEPLOYMENT_INFRA_PLAN §2.1) — Type A platform `hubify-labs.com` + Type B per-lab sites `<lab>.hubify.app`, vercel.json with security headers, auto-deploy from main branch
+- [x] **Convex deployment** (in §2.2) — 3 environments (dev/staging/prod), schema migration strategy, full env var inventory (15 secrets)
+- [x] **Fly.io deployment** (in §2.3) — one shared-CPU machine per active lab, ~$2-5/month each, auto-restart, no auto-scaling
+- [x] **RunPod credentials store** (in §2.4) — DECISION: Convex env vars (rejected Vault as overkill, rejected 1Password CLI as adding deps)
+- [x] **Backblaze B2 backup pipeline** (in §2.5) — bucket structure, nightly cron + pre-credits-out + on-demand triggers, retention policy, verification cadence
+- [x] **Database migrations strategy** (in §2.6) — Convex TypeScript schema versioning, additive-then-remove pattern, migration log
+- [x] **CI/CD pipeline** (in §2.7) — 3 GitHub Actions workflows (ci.yml, deploy-staging.yml, deploy-prod.yml) with manual approval gate + pre-deploy backup + post-deploy smoke test
+- [x] **Domain/DNS setup** (in §2.8) — Cloudflare DNS, wildcard `*.hubify.app` for per-lab subdomains, MX records for transactional email
+- [x] **SSL/TLS** (in §2.9) — Let's Encrypt auto-provisioned via Vercel + Convex, TLS 1.3, HSTS headers
+- [x] **Monitoring stack** (in §2.10) — Sentry (errors) + Vercel Analytics (perf) + Better Uptime (uptime) + custom Convex dashboards + ntfy.sh (phone push) + Slack (team)
+- [x] **Backup destination configs** (in §2.11) — 4-destination matrix (B2 cold + GitHub code + Git LFS binaries + Hugging Face public)
+- [x] **Cost monitoring + alerts** (in §2.12) — daily report + 4-tier alerts per PRD §41 thresholds + per-experiment cost cap enforcement
+- [x] **BONUS: Local development setup** (§2.13), Secrets management cross-cutting (§3), Incident response runbook (§4), Environment promotion path (§5), Cost forecast at v1 + 100-user scale (§6)
 
-**G status:** 0% — entire category untouched.
+**G status:** 100% (13 of 13) — entire category bootstrapped and FULLY COMPLETE in one iteration.
 
 ### H. Migration plan complete
 
@@ -257,10 +258,10 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
 | F. CLI spec | 7 | 8 | 88% |
-| G. Deployment infra | 0 | 13 | 0% |
+| G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **95** | **156** | **61%** |
+| **OVERALL** | **108** | **156** | **69%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
