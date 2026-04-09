@@ -280,17 +280,17 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 While the master checklist is endpoint-blocked, the autonomous loop has pivoted to Houston's most recent direction (2026-04-08): **reframe Hubify Labs from "AI research platform" to "Scientific Discovery Platform"** and rebuild the marketing site to inspire intensely. This work is tracked in `/Users/houstongolden/Desktop/CODE_2025/hubify-labs-mockups/.queue.md` under "Scientific Discovery Platform reframe (Houston 2026-04-08)" with 8 SDP-* items.
 
-**Polish loop progress (this iteration):**
+**Polish loop progress:**
 - [x] **SDP-6** Marketing site language sweep — 8 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing (commit `64a12f3`)
 - [x] **SDP-1** Marketing hero rewrite — eyebrow + h1 + lede + arch-foot all rewritten to lead with discovery, datasets, multi-agent peer review, and the 2025-2027 window (commits `64a12f3` + `bc87ee4`)
 - [x] **SDP-5** 2025-2027 Window urgency band — pre-existing window-band enhanced from passive blog quote into a real urgency CTA: countdown pill ("~32 months until the moats close"), "The window is closing. Make your discovery now." line, "Start your discovery" sage CTA + ghost demo CTA, reassurance meta line (commits `bc87ee4` + `d1e357e` regression fix)
-- [ ] SDP-2 datasets gallery section
+- [x] **SDP-2** Datasets gallery section — new full-width `.datasets-band` between window-band and 3-surfaces with: (a) 4 sage stat cards (10K+ datasets · 250+ database connectors · 200+ formats · 14 domains), (b) 16-cell logo grid (HuggingFace · NASA · arXiv · Wolfram · PubMed · ChEMBL · UniProt · Gaia · SDSS · DESI · LAMOST · eROSITA · Materials Project · NOAA · SEC EDGAR · +235 more), (c) 14 domain pills (K-Dense's 14 + Cosmology + Particle Physics + Finance & Macro), (d) K-Dense baseline credit + "Browse the full datasets catalog" CTA. ~15 new CSS rules, sage discipline preserved, 2 mobile breakpoints (commit pending)
 - [ ] SDP-3 agent team explainer (Director > Orchestrator > Leads > Workers)
 - [ ] SDP-4 multi-model peer review explainer
 - [ ] SDP-7 discovery showcase (3-4 example domains)
 - [ ] SDP-8 inspire-intensely homepage final pass
 
-**SDP polish loop progress: 3/8 = 37.5%.** Continuing to ship 1-2 commits per iteration on the next SDP item until the marketing site is fully reframed.
+**SDP polish loop progress: 4/8 = 50%.** Continuing to ship 1-2 commits per iteration on the next SDP item until the marketing site is fully reframed. SDP-3 (agent team explainer) is the next highest-impact item.
 
 ### What Houston needs to do (when he wakes)
 
