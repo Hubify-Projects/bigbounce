@@ -258,9 +258,9 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 - [x] **SDP-5: 2025-2027 Window urgency band** (commits `bc87ee4` + `d1e357e`) — pre-existing window-band enhanced with countdown pill ("~32 months until the moats close") + "The window is closing. Make your discovery now." line + sage Start CTA + ghost demo CTA + reassurance meta
 - [x] **SDP-6: Replace 'research' language sweep** (commit `64a12f3`) — 9 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing
 - [x] **SDP-7: Discovery showcase section** (commit pending) — new `.showcase-band` between review-band and 3-surfaces with 4 example discovery cards across 4 domains: bigbounce cosmology (REAL · the only one · day 218 · paper drafted · 8 surveys · 328K anomalies · links to live bigbounce.hubify.app), kinase-hunter drug discovery (CDK7 inhibitors via ChEMBL+UniProt+PubMed · custom GNN on 850K kinase ligands · 12 candidates → 3 in wet-lab), na-cathode materials science (Na-ion battery from 150K Materials Project crystals · paper at npj Computational Materials · provisional patent · 2-person team), samoc-watch climate (S Atlantic meridional overturning shift from NOAA+Argo+CMEMS · 22-yr time series · arXiv pre-print cited 14× in 4 months · solo researcher). Each card has domain pill · status pill · serif title with sage italic emphasis · datasets/compute/outputs stack · lab name + day count + visit link. Honest disclaimer footer "only bigbounce is real today, the other 3 are example archetypes — every dataset has a real connector, every compute pattern is what the orchestrator routes today." Counters K-Dense's domain breadth positioning while staying honest.
-- [ ] **SDP-8: Inspire-intensely homepage final pass** — read-through with one filter: "Does this make a smart independent researcher feel they can change history with this?" Push every weak section harder.
+- [x] **SDP-8: Inspire-intensely homepage final pass** (commit pending) — 3 surgical copy improvements (no new sections, no new CSS): (1) footer-cta capstone rewrite from transactional "Ready to start a lab?" → inspire-intensely close "The next big discovery could be yours" with permission-defying lede ("You don't need a university lab. You don't need a grant committee. You don't need to wait for permission.") + "Start your discovery" CTA + 32-month moats-closing urgency callback in the note line; (2) 3-surfaces h2 "Three surfaces. Same lab." → "Three surfaces. One lab. Zero compromise." with stronger concrete-situation lede; (3) how-it-works h2 "Three steps to a living lab." → "Ninety seconds from idea to live lab." with friction-removal lede ("No cluster admins. No infra weeks. No ticket queues. No grant applications.").
 
-**J status:** 7/8 = 87.5% — SDP-1, SDP-2, SDP-3, SDP-4, SDP-5, SDP-6, SDP-7 shipped. Only SDP-8 (inspire-intensely final pass) remains.
+**J status:** **8/8 = 100% ✅** — Category J COMPLETE. The Scientific Discovery Platform reframe is fully shipped on the marketing site.
 
 ---
 
@@ -277,10 +277,10 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **J. SDP reframe** | **7** | **8** | **87.5%** |
-| **OVERALL** | **140** | **151** | **92.7%** |
+| **J. SDP reframe** | **8** | **8** | **100% ✅** |
+| **OVERALL** | **141** | **151** | **93.4%** |
 
-**Translation:** **6 of 10 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). Category J (Scientific Discovery Platform reframe) is **7/8 = 87.5%** — only SDP-8 (inspire-intensely final pass) remains. Next iteration closes Category J at 100%.
+**Translation:** **7 of 10 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category J (Scientific Discovery Platform reframe) joined the 100% club this iteration. PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). **The autonomous loop is now fully endpoint-blocked again** — 10 remaining items are 8 Houston-blocked + 1 real infra (test-lab) + 1 final stamp. Next iteration must either (a) pivot to a NEW category K (Mintlify docs port, K-Dense skills catalog fork, view-workflows / view-data-formats / view-database-connectors mockup work, etc.) OR (b) wait for Houston.
 
 ### Autonomous loop endpoint reached (master items)
 
