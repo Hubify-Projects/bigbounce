@@ -5551,6 +5551,68 @@ When the dev phase begins:
 
 **No experiments run until §33.11 day 7 is complete.** This is non-negotiable because losing data is catastrophic and storage architecture mistakes are expensive to fix later.
 
+### 33.14 Knowledge Wiki view — how `view-knowledge` maps to storage
+
+**Status:** Locked 2026-04-08. Subsection fill for the underspecified `view-knowledge`.
+
+**The Wiki is the lab's structured long-term memory.** It's a Karpathy-style knowledge base of entities, concepts, sources, and comparisons. It's the place where "what we know" is recorded between experiments — distilled, deduplicated, citable. The mockup's `view-knowledge` is the human surface to this knowledge base.
+
+**Where the wiki lives (zone-aware).**
+
+| Wiki content | Storage zone | Tier | Format | Why |
+|---|---|---|---|---|
+| Entity files (e.g., `quintom-b.md`, `f_nl-prediction.md`) | Z1 (source) | T1 + T2 GitHub | Markdown with YAML frontmatter | Version-controlled, diffable, agents can read raw |
+| Concept files (e.g., `bayes-factor.md`, `landy-szalay.md`) | Z1 (source) | T1 + T2 GitHub | Markdown | Same — these are human-curated knowledge |
+| Source files (e.g., `cai-2024.bib`, `chen-2023.bib`) | Z1 (source) | T1 + T2 GitHub + T3 LFS for PDFs | BibTeX + PDF (LFS) | Source PDFs are large binaries |
+| Comparison tables (e.g., `bounce-discrimination.md`) | Z1 (source) | T1 + T2 GitHub | Markdown tables | Diffable, citable from papers |
+| Wiki search index | Z2 (state) | T4 Convex | Inverted index for fast search | Hot path for `⌘K` universal search |
+| Cross-lab share manifest | Z2 (state) | T4 Convex | JSON | What this lab shares with other labs |
+| Knowledge graph edges (citation graph) | Z2 (state) | T4 Convex | Adjacency list | Powers the citation graph SVG in the view |
+
+**View layout (full spec for `view-knowledge`).**
+
+```
+┌─ view-knowledge ────────────────────────────────────────────┐
+│  Section header: "Knowledge wiki — 142 entries · 89 entities│
+│                  · 47 sources · 6 comparisons"              │
+│  Filter chips: All | Entities | Concepts | Sources | Comp.  │
+│  Search input (⌘K compatible)                                │
+│                                                              │
+│  3-column grid:                                              │
+│  ┌─ Entities (89) ─┐ ┌─ Concepts (47) ─┐ ┌─ Sources (47) ─┐│
+│  │ • quintom-b     │ │ • bayes-factor  │ │ • cai-2024     ││
+│  │ • f_nl-pred     │ │ • landy-szalay  │ │ • chen-2023    ││
+│  │ • bounce-models │ │ • novelty-score │ │ • nanograv-15  ││
+│  │   (click → wiki │ │   ...           │ │   ...          ││
+│  │    sidepeek)    │ │                 │ │                ││
+│  └─────────────────┘ └─────────────────┘ └────────────────┘│
+│                                                              │
+│  Section: "Bounce model discrimination" (5×7 comparison tbl) │
+│                                                              │
+│  Section: "Citation graph" (SVG showing how sources connect) │
+│                                                              │
+│  Section: "Cross-lab sharing" (what we share with other labs)│
+└─────────────────────────────────────────────────────────────┘
+```
+
+**The agent contract.** Every lab has a `wiki-worker` agent (per PRD §3) that owns the wiki:
+- **Reads:** every agent in the lab can read the wiki (it's the shared knowledge layer)
+- **Writes:** ONLY `wiki-worker` writes to wiki files (after a 2-step propose-then-commit flow)
+- **Updates trigger:** every successful experiment that produces a result the orchestrator deems wiki-worthy fires a `wiki.propose_update` event
+- **Cross-lab sharing:** the wiki respects the Lab Sovereignty Rule (PRD §40.11) — other labs can READ this lab's wiki (if `public_visibility: published-only`) but never WRITE to it; updates from other labs come in as comm messages that the wiki-worker can accept or reject
+
+**Sidepeek behavior.** Clicking any entity, concept, source, or comparison in the view opens a sidepeek showing:
+- Full markdown content rendered
+- YAML frontmatter (created/updated/contributors/related)
+- Recent edit history (last 5 commits with diffs)
+- Outbound links (other wiki entries that reference this one)
+- Inbound links (what references this one)
+- "Open raw .md" button (jumps to `view-file` with the source open)
+
+**What's IN scope for view-knowledge v1:** the 3-column grid + search + filters + comparison table + citation graph + cross-lab sharing card + wiki sidepeek.
+
+**What's OUT of scope (deferred to v1.1):** wiki edit-in-place from the UI (v1 you edit via `view-file` or via the CLI `hubify note` style flow), wiki-graph view (the citation SVG is enough for v1), federated cross-lab wiki search.
+
 ---
 
 ## 34. Agent File Structure — indydevdan-style self-improving agents
@@ -6467,6 +6529,68 @@ The publish-ready loop reclaims that time. Houston goes from "polish for 5 days"
 
 This is the difference between a research IDE and a research **factory**.
 
+### 37.14 Figures view — how `view-figures` fits the publishing pipeline
+
+**Status:** Locked 2026-04-08. Subsection fill for the underspecified `view-figures`.
+
+**The Figures view is the visual asset layer of the publishing pipeline.** Every paper has 5-15 figures. They get generated in 4 places (Vibe Coding sandbox · experiment outputs · reproducibility scripts · hand-drawn LaTeX TikZ blocks) and need to be discoverable, version-controlled, citable, and easy to swap when the paper revises.
+
+**Where figures live (zone-aware).**
+
+| Figure source | Storage zone | Tier | Naming convention | When promoted |
+|---|---|---|---|---|
+| Vibe Coding session save | Z1 (source) → Z5 (public on submit) | T2-LFS | `vibe_<lab>_<date>_<slug>.png` | When Houston clicks "Save as figure" in `view-vibe` |
+| Experiment output (matplotlib auto-save) | Z3 (compute) → Z1 on selection | T7 RunPod vol → T2-LFS | `exp_<id>_<step>.png` | When the experiment Houston Method post-step picks it for the wiki/paper |
+| Reproducibility script (e.g., `paper1_make_figures.py`) | Z1 (source) | T2 GitHub + T2-LFS for outputs | `fig_<paper>_<num>.png` | Generated on every paper compile |
+| Hand-drawn TikZ in LaTeX | Z1 (source) | T2 GitHub | (inline, no separate file) | Compiled into the paper PDF |
+
+**View layout (full spec for `view-figures`).**
+
+```
+┌─ view-figures ──────────────────────────────────────────────┐
+│  Section header: "Figures — 38 total · 4 papers · 11 vibe   │
+│                  · 23 reproducible · 4 TikZ inline"          │
+│  Filter chips: All | P1 | P2 | P3 | P4 | Vibe | Orphaned    │
+│  Search input                                                │
+│                                                              │
+│  Grid layout (3-4 columns, responsive):                     │
+│  ┌─ thumb ─┐ ┌─ thumb ─┐ ┌─ thumb ─┐ ┌─ thumb ─┐           │
+│  │  fig 1  │ │  fig 2  │ │  fig 3  │ │  fig 4  │           │
+│  │ caption │ │ caption │ │ caption │ │ caption │           │
+│  │ P1 · n1 │ │ P1 · n2 │ │ P2 · n1 │ │ P3 · n1 │           │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘           │
+│                                                              │
+│  Each thumb clickable → figure sidepeek (lightbox view +    │
+│   dimensions + size + paper ref + provenance trail)         │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**The figure sidepeek (per `view-figures` click).**
+
+| Section | What it shows |
+|---|---|
+| Hero | Full-resolution render with zoom controls (already built per Round 1) |
+| Caption | The exact caption from the paper (e.g., `\caption{...}`) |
+| Paper reference | "Paper 1, §4, Figure 7" with click-to-open-paper |
+| Provenance | Who/what made this figure: vibe session ID, experiment ID, reproducibility script path |
+| Recent edits | Last 5 commits that touched this file (`git log --follow`) |
+| Cross-uses | Other papers/wiki entries that reference this figure |
+| Actions | Open raw file (jumps to `view-file`) · Replace (opens vibe coding session pre-loaded) · Mark as paper-ready · Download |
+
+**The publishing-lead's relationship to figures.** When the publish-ready loop runs (per §37.4), the Round 4 "Final visual pass" specifically:
+1. Walks every figure in the paper
+2. Verifies the file exists at the expected path (`public/images/<paper>/fig_*.png`)
+3. Verifies the dimensions are right (no broken aspect ratio)
+4. Verifies the caption matches the file (no orphaned captions)
+5. Verifies the figure is referenced in the text (`\ref{fig:...}`) at least once
+6. If any figure fails, the loop pauses and routes Houston to `view-figures` filtered to "P1 issues" with the broken figures highlighted
+
+**Orphaned figures.** A figure is "orphaned" when it exists in `public/images/` but is no longer referenced by any paper or wiki entry. The "Orphaned" filter chip surfaces these — Houston can either delete them (if truly dead) or restore the reference.
+
+**What's IN scope for view-figures v1:** the grid + filters + search + sidepeek + provenance trail + paper-ready marking.
+
+**What's OUT of scope (deferred to v1.1):** in-place figure editing (use Vibe Coding instead), figure version diffing (comparing two figure versions side-by-side), AI-generated alt-text for accessibility (will be added when the website generation pipeline runs).
+
 ---
 
 ## 38. Human Research Journal — Obsidian-style notes inside Hubify
@@ -6686,6 +6810,58 @@ This isn't decoration. It's the **emotional core** of the platform — the momen
 | GPU compute | 0 (browser GPU paint) | 0 (canvas 2D context) |
 
 The production version will need a force-directed sim (computed once on data load, then static), pan/zoom, and a custom hit-testing layer for hover. This is ~2-3 days of work in the React/canvas port phase.
+
+### 39.9 Vibe Coding view — how ephemeral artifacts feed the graph
+
+**Status:** Locked 2026-04-08. Subsection fill for the underspecified `view-vibe`.
+
+**The role of Vibe Coding in the platform.** Vibe Coding is the **fast-iteration, throwaway sandbox** for figure generation, prototype scripts, and one-off explorations. It runs on Vercel Sandbox (free tier, ephemeral), spawns a chat-driven build session, and renders the result inline in the preview pane. It is **NOT a long-running project surface** (those go through `view-experiments` with the §41 routing flow). It is the **scratch pad**.
+
+**Layout (full spec for the view).**
+
+```
+┌─ view-vibe ──────────────────────────────────────────────────┐
+│  ┌─ vibe-chat (left, 50% width) ──┐ ┌─ vibe-preview (right) │
+│  │  • cosmic orb thinking block   │ │  • browser-chrome bar │
+│  │    (3 modes: idle/thinking/    │ │    with sandbox URL   │
+│  │     building)                  │ │  • 3 mode tabs:       │
+│  │  • code blocks (syntax-        │ │    preview/code/logs  │
+│  │     highlighted with hand-     │ │  • reload/open/save   │
+│  │     rolled <pre><span> tags)   │ │    buttons            │
+│  │  • input textarea with         │ │  • iframe-style frame │
+│  │     send button                │ │    with rendered art  │
+│  │  • verb rotation in thinking   │ │     ("preview")       │
+│  │     orb (untouched per loop    │ │                       │
+│  │     rule)                      │ │                       │
+│  └────────────────────────────────┘ └────────────────────────┘
+└──────────────────────────────────────────────────────────────┘
+```
+
+**Save targets — where vibe artifacts go (ZONE-aware).**
+
+| Action | Destination | Storage zone |
+|---|---|---|
+| "save as figure" → `public/images/<lab>/<slug>.png` | T2-LFS or T12 Vercel Blob | Z1 (source) or Z5 (public) |
+| "save as snippet" → `notes/snippets/<date>.md` | T1 local + T2 GitHub | Z1 (source) |
+| "save as experiment" → graduation to `view-experiments` | T4 Convex (experiment row) + appropriate compute zone | Z2 (state) + Z3 (compute) |
+| "discard" → no save | (vanishes when sandbox times out, ~5 min idle) | (none) |
+
+**Activity Graph integration (the §39 hook).** Every vibe coding session emits an activity event:
+
+```jsonl
+{"ts":"2026-04-08T22:14:00Z","actor":"user:houston","action":"vibe.session_start","entity":{"type":"vibe","id":"vibe_2401"}}
+{"ts":"2026-04-08T22:14:30Z","actor":"agent:vibe-agent","action":"vibe.code_generated","entity":{"type":"vibe","id":"vibe_2401"},"payload":{"language":"python","lines":42}}
+{"ts":"2026-04-08T22:15:18Z","actor":"agent:vibe-agent","action":"vibe.preview_rendered","entity":{"type":"vibe","id":"vibe_2401"}}
+{"ts":"2026-04-08T22:16:05Z","actor":"user:houston","action":"vibe.saved_as_figure","entity":{"type":"figure","id":"fig_22"},"payload":{"source_vibe":"vibe_2401"}}
+```
+
+These events feed the Activity Graph as **ephemeral nodes** (vibe sessions live ~5min before being garbage-collected). The exception is **saved-as-figure** events, which create a permanent edge from the vibe session node to a real figure node — preserving provenance even after the sandbox dies.
+
+**Cost guardrails.** Vibe coding is on the Vercel Sandbox free tier ($0 idle, ~$0.20/hr active when running). The orchestrator caps active sessions at 1 concurrent and 10 sessions/day per user. If Houston wants more, he graduates the work to a real experiment (§41 routing).
+
+**What's IN scope for view-vibe v1:** chat → code generation → preview render → save targets → cosmic orb thinking → 3-mode tab toggle.
+
+**What's OUT of scope (deferred to v1.1):** multi-file projects, persistent vibe sessions across days, vibe → MCP tool exposure, vibe-to-PR workflow.
 
 ---
 
