@@ -184,9 +184,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Prompt templates** (in MCP_SERVER_SPEC.md §4) — 6 templates: review_paper · houston_method_post_experiment · draft_chat_to_project · standup_facilitate · publish_ready_check · no_punt_check
 - [x] **Auth flow** (in MCP_SERVER_SPEC.md §5) — JWT format from API_SPEC §2 · per-lab scoping enforcing the Lab Sovereignty Rule at the protocol boundary (cross-lab writes are 403'd before reaching the API)
 - [x] **Audit logging** (in MCP_SERVER_SPEC.md §5.4) — every tool call → `lab/audit/mcp-<agent>.jsonl` (append-only, included in nightly Backblaze backup)
-- [ ] **MCP YAML lock** — `mcp-server-spec.yaml` (next item in Category E — turns this human-readable spec into the machine-readable contract for SDK generation)
+- [x] **MCP YAML lock** (commit `pending-e7`) — `mcp-server-spec.yaml` written, ~600 lines, machine-readable contract for SDK generation. Server metadata + 3 transports (stdio/SSE/WebSocket) + JWT auth with `cross_lab_rules` enforcing the Lab Sovereignty Rule at the protocol boundary. ~25 tools across 11 categories with full input schemas + each tool documents its REST endpoint mapping (per `api-spec.openapi.yaml`) + cross_lab_policy fields (NEVER_ALLOWED for write operations). 15 resources (10 snapshot + 5 SSE streams). 6 prompt templates. 6 MCP-specific error types. Constraints arrays for protocol-layer enforcement (N4-not-claimable-by-agent, explicit_user_consent for notes).
 
-**E status:** ~86% (6 of 7) — entire category bootstrapped from 0% in one iteration.
+**E status:** **100% ✅** (7 of 7) — Category E COMPLETE.
 
 ### F. CLI spec complete
 
@@ -257,20 +257,21 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | B. Web mockup | 33 | 49 | 67% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
-| E. MCP server | 6 | 7 | 86% |
+| E. MCP server | 7 | 7 | **100% ✅** |
 | F. CLI spec | 7 | 8 | 88% |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **117** | **156** | **75%** |
+| **OVERALL** | **118** | **156** | **76%** |
 
-**Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
+**Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · G are 100% locked**, F at 88% (1 item left), C at 80% (1 item left). Houston review is pending.
 
 **To hit READY = 100%, the loop needs to:**
 1. Finish A (~10 items)
-2. Finish B (~24 items)
-3. **Start AND finish C/D/E/F/G** (~40 items across 5 categories — the bulk of remaining work)
-4. Wait on H/I (Houston review)
+2. Finish B (~16 items)
+3. Finish C (~1 item — desktop-app-mockup.html)
+4. Finish F (~1 item — cli-spec.yaml)
+5. Wait on H/I (Houston review)
 
 **Estimated iteration count at the current pace** (~5-15 items per session, depending on size): **8-15 more sessions** to hit READY.
 

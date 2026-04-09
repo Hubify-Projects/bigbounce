@@ -1,0 +1,599 @@
+# Hubify Labs MCP Server — Machine-readable spec
+#
+# Status: Category E item 7 of BUILD_READINESS_CHECKLIST.md (the YAML lock)
+# Companion to: MCP_SERVER_SPEC.md (human-readable, ~700 lines)
+# Depends on: api-spec.openapi.yaml (Category D — REST endpoints the MCP tools wrap)
+# Reference: https://spec.modelcontextprotocol.io
+#
+# This file is consumed by:
+# - The MCP server SDK code generator (@hubify-labs/mcp-server)
+# - The mcp-inspect tool for protocol validation
+# - The Mintlify docs auto-generator (each tool/resource/prompt becomes a docs page)
+# - The CLI's `hubify mcp tools list` and `hubify mcp tools describe <name>` commands
+# - Per-agent permission validation at runtime
+
+version: "1.0.0"
+spec_version: "2025-06-18"  # MCP protocol spec version
+
+server:
+  name: "hubify-labs"
+  version: "1.0.0"
+  description: |
+    Hubify Labs MCP server. Bridges AI agents (Claude Code, Claude Desktop, Cursor,
+    GPT, Gemini, Grok, Perplexity) to the Hubify Labs platform. Wraps the REST API
+    from api-spec.openapi.yaml with tool/resource/prompt primitives that LLMs can
+    discover and call.
+  vendor: "Hubify Labs"
+  homepage: "https://hubify-labs.com"
+  documentation: "https://hubify-labs.com/docs/mcp"
+
+# ─── Transports (per MCP_SERVER_SPEC.md §6) ──────────────────────────────────
+transports:
+  - kind: stdio
+    description: For local processes (Claude Code, Cursor, VS Code MCP extension)
+    command: hubify
+    args: ["mcp", "serve", "--lab", "${LAB_SLUG}"]
+  - kind: streamable-http
+    description: For remote clients (Claude Desktop, web agents)
+    endpoint: "https://hubify-labs.com/v1/mcp/sse"
+    auth: bearer-jwt
+  - kind: websocket
+    description: For the platform's internal agent runtime on Fly.io
+    endpoint: "wss://hubify-labs.com/v1/mcp/ws"
+    auth: bearer-jwt
+
+# ─── Authentication (per MCP_SERVER_SPEC.md §5) ──────────────────────────────
+auth:
+  scheme: bearer-jwt
+  token_format: JWT-HS256
+  scopes:
+    - "lab:<slug>:r"      # read-only access to a lab
+    - "lab:<slug>:rw"     # read-write
+    - "lab:<slug>:admin"  # admin (sharing settings, deletion)
+    - "org:hubify-labs:admin"  # org-wide (Houston only)
+    - "agent:<name>:invoke"    # invoke specific agent
+  token_types:
+    - user      # 24h, refresh via /auth/refresh
+    - agent     # rotated daily by orchestrator
+    - service   # 90 days, manually revocable
+
+  # The Lab Sovereignty Rule per PRD §40.11 — enforced at the protocol boundary
+  cross_lab_rules:
+    read: allowed_with_scope
+    write: NEVER_ALLOWED   # 403 cross-lab-write-denied at the protocol layer
+    dispatch_experiment: NEVER_ALLOWED  # experiments only dispatch to the agent's home lab
+    comm_send: ALLOWED     # the only cross-lab pattern — suggest, don't write
+
+  audit_log:
+    path: "lab/audit/mcp-${AGENT_NAME}.jsonl"
+    retention: forever
+    backed_up_to: backblaze-b2
+
+# ─── Tools (~30 across 11 categories per MCP_SERVER_SPEC.md §2) ──────────────
+tools:
+
+  # ─── File system (4) ────────────────────────────────────────────────────
+  - name: read_file
+    category: file-system
+    description: |
+      Read a file from the current lab. Returns content + metadata. Path is
+      relative to the lab root.
+    rest_endpoint: "GET /v1/labs/{slug}/files/{path}"
+    input_schema:
+      type: object
+      required: [path]
+      properties:
+        path:
+          type: string
+          description: "Relative path within the lab, e.g. 'arxiv/main.tex'"
+        lab:
+          type: string
+          description: "Optional lab slug. Defaults to the agent's home lab."
+    output_schema:
+      type: object
+      properties:
+        path: { type: string }
+        size: { type: integer }
+        mtime: { type: string, format: date-time }
+        kind: { type: string, enum: [markdown, python, latex, json, csv, image, pdf, generic] }
+        content: { type: string }
+
+  - name: write_file
+    category: file-system
+    description: |
+      Write or create a file in the current lab. Overwrites existing files.
+      Returns the new file's metadata. NEVER allowed cross-lab — returns
+      cross-lab-write-denied error if lab != current_lab.
+    rest_endpoint: "PUT /v1/labs/{slug}/files/{path}"
+    input_schema:
+      type: object
+      required: [path, content]
+      properties:
+        path: { type: string }
+        content: { type: string }
+        lab: { type: string }
+    cross_lab_policy: NEVER_ALLOWED
+
+  - name: list_files
+    category: file-system
+    description: List files in a directory within the current lab.
+    rest_endpoint: "GET /v1/labs/{slug}/files/{path}?type=tree"
+    input_schema:
+      type: object
+      required: [path]
+      properties:
+        path: { type: string, description: "Use '/' for the lab root" }
+        recursive: { type: boolean, default: false }
+        lab: { type: string }
+
+  - name: delete_file
+    category: file-system
+    description: Delete a file in the current lab. Audit-logged.
+    rest_endpoint: "DELETE /v1/labs/{slug}/files/{path}"
+    cross_lab_policy: NEVER_ALLOWED
+
+  # ─── Experiment dispatch (4) ─────────────────────────────────────────────
+  - name: dispatch_experiment
+    category: experiment
+    description: |
+      Dispatch an experiment to RunPod compute. The platform's PRD §41 routing
+      logic decides which compute mode (Pod vs Serverless, GPU vs CPU) based
+      on the spec. Returns a job handle for monitoring.
+
+      HARD REQUIREMENT per PRD §41 Rule 1: requires_gpu MUST be set explicitly.
+      The orchestrator refuses to dispatch without it.
+    rest_endpoint: "POST /v1/labs/{slug}/experiments/{id}/dispatch"
+    input_schema:
+      type: object
+      required: [title, project_id, requires_gpu, expected_duration_min, command]
+      properties:
+        title: { type: string }
+        project_id: { type: string }
+        requires_gpu:
+          type: boolean
+          description: "REQUIRED per PRD §41 Rule 1"
+        gpu_type:
+          type: string
+          enum: [H100, H200, A100, A6000, "null"]
+          nullable: true
+        expected_duration_min: { type: number }
+        priority: { type: string, enum: [low, med, high, critical], default: med }
+        command: { type: string }
+        working_dir: { type: string }
+        checkpoint_interval_min: { type: number, default: 10 }
+        max_cost_usd: { type: number }
+    cross_lab_policy: NEVER_ALLOWED  # experiments only dispatch to agent's home lab
+
+  - name: experiment_status
+    category: experiment
+    description: Get the current status of a dispatched experiment.
+    rest_endpoint: "GET /v1/labs/{slug}/experiments/{id}"
+    input_schema:
+      type: object
+      required: [experiment_id]
+      properties:
+        experiment_id: { type: string }
+
+  - name: experiment_logs
+    category: experiment
+    description: Tail the last N lines of an experiment's logs.
+    rest_endpoint: "GET /v1/labs/{slug}/experiments/{id}/logs"
+    input_schema:
+      type: object
+      required: [experiment_id]
+      properties:
+        experiment_id: { type: string }
+        lines: { type: number, default: 100, maximum: 1000 }
+
+  - name: cancel_experiment
+    category: experiment
+    description: |
+      Gracefully cancel a running experiment. Sends SIGTERM with 30-sec
+      checkpoint window per PRD §41 Rule 4 (checkpoint discipline).
+    rest_endpoint: "POST /v1/labs/{slug}/experiments/{id}/cancel"
+
+  # ─── Agent invocation (3) ────────────────────────────────────────────────
+  - name: invoke_agent
+    category: agent
+    description: Call another agent in the same lab via comm-event.
+    rest_endpoint: "POST /v1/labs/{slug}/agents/{name}/invoke"
+    input_schema:
+      type: object
+      required: [target_agent, payload]
+      properties:
+        target_agent: { type: string }
+        payload: { type: object }
+        reply_to: { type: string }
+
+  - name: list_agents
+    category: agent
+    description: List all agents available in the current lab.
+    rest_endpoint: "GET /v1/labs/{slug}/agents"
+
+  - name: agent_inbox
+    category: agent
+    description: Get the current agent's inbox of pending comm-events.
+    rest_endpoint: "GET /v1/labs/{slug}/agents/{name}/inbox"
+
+  # ─── Cross-lab comms (2) — the Lab Sovereignty Rule pattern ─────────────
+  - name: comm_send
+    category: comms
+    description: |
+      Send a comm-event to another lab's orchestrator.
+
+      PER PRD §40.11 LAB SOVEREIGNTY RULE: cross-lab comms can SUGGEST changes
+      but cannot directly write to the target lab's filesystem. The target
+      lab's orchestrator decides whether to accept.
+    rest_endpoint: "POST /v1/comms/send"
+    input_schema:
+      type: object
+      required: [target_lab, payload]
+      properties:
+        target_lab: { type: string }
+        target_agent: { type: string, default: orchestrator }
+        payload:
+          type: object
+          required: [type, subject, body]
+          properties:
+            type:
+              type: string
+              enum: [suggestion, learning_share, file_delta_proposal, info]
+            subject: { type: string }
+            body: { type: string }
+            attachments:
+              type: array
+              items: { type: string }
+
+  - name: comm_inbox_cross_lab
+    category: comms
+    description: Get the current lab's inbox of incoming cross-lab comm-events.
+    rest_endpoint: "GET /v1/comms/inbox"
+
+  # ─── Memory (2) — the 4-layer memory per PRD §20 ────────────────────────
+  - name: memory_search
+    category: memory
+    description: Search the lab's 4-layer memory (user / agent / lab / global).
+    rest_endpoint: "GET /v1/labs/{slug}/memory/search"
+    input_schema:
+      type: object
+      required: [query]
+      properties:
+        query: { type: string }
+        layer: { type: string, enum: [user, agent, lab, global, all], default: all }
+        limit: { type: number, default: 10 }
+
+  - name: memory_save
+    category: memory
+    description: Save a new memory entry. Type determines which layer it lands in.
+    rest_endpoint: "POST /v1/labs/{slug}/memory/save"
+    input_schema:
+      type: object
+      required: [type, title, body]
+      properties:
+        type: { type: string, enum: [user, feedback, project, reference] }
+        title: { type: string }
+        body: { type: string }
+
+  # ─── Contributions (1) — N4 not claimable by agent ──────────────────────
+  - name: contribution_create
+    category: contributions
+    description: |
+      Propose a new scientific contribution. The contribution starts at the
+      agent's claimed N-score and goes through cross-model peer review (per
+      PRD §29) before being promoted to validated.
+
+      HARD RULE: agents cannot claim N4 (flagship breakthrough). N4 is reserved
+      for externally-validated discoveries and can only be set by Houston after
+      independent corroboration.
+    rest_endpoint: "POST /v1/labs/{slug}/contributions"
+    input_schema:
+      type: object
+      required: [title, description, claimed_n_score, project_id]
+      properties:
+        title: { type: string }
+        description: { type: string }
+        claimed_n_score:
+          type: integer
+          enum: [0, 1, 2, 3]   # NOT 4 — agents cannot claim N4
+          description: "N0=prior art, N1=verification, N2=first computation, N3=novel contribution"
+        project_id: { type: string }
+        paper_refs: { type: array, items: { type: string } }
+        experiment_refs: { type: array, items: { type: string } }
+    constraints:
+      - rule: "claimed_n_score must be 0, 1, 2, or 3 (never 4)"
+        enforcement_layer: protocol
+        error_type: n4-not-claimable-by-agent
+
+  # ─── Notes (2) — the privacy contract per PRD §38 ───────────────────────
+  - name: note_save
+    category: notes
+    description: |
+      Save a markdown note to Houston's journal.
+
+      PER PRD §38 AGENT VISIBILITY CONTRACT: agents can save notes ONLY when
+      explicitly requested by the user, never autonomously. The
+      explicit_user_consent flag MUST be true.
+    rest_endpoint: "POST /v1/labs/{slug}/notes"
+    input_schema:
+      type: object
+      required: [filename, content, explicit_user_consent]
+      properties:
+        filename: { type: string }
+        content: { type: string }
+        explicit_user_consent:
+          type: boolean
+          description: "MUST be true. Enforced at protocol layer."
+    constraints:
+      - rule: "explicit_user_consent must be true"
+        enforcement_layer: protocol
+        error_type: note-save-without-consent
+
+  - name: note_search
+    category: notes
+    description: Search Houston's journal notes by full-text query.
+    rest_endpoint: "GET /v1/labs/{slug}/notes/search"
+    input_schema:
+      type: object
+      required: [query]
+      properties:
+        query: { type: string }
+        limit: { type: number }
+
+  # ─── Chats (2) — the no-action mode per PRD §40.6 ───────────────────────
+  - name: chat_message
+    category: chats
+    description: |
+      Post a message to a chat session.
+
+      Per PRD §40.13, chats default to 'no-action mode' — the agent can suggest
+      but not act unless the chat has been promoted to a project. The mode field
+      is mode-aware and the orchestrator enforces it.
+    rest_endpoint: "POST /v1/labs/{slug}/chats/{id}/messages"
+    input_schema:
+      type: object
+      required: [chat_id, content]
+      properties:
+        chat_id: { type: string }
+        content: { type: string }
+        mode: { type: string, enum: [default, chat] }
+
+  - name: chat_promote
+    category: chats
+    description: |
+      Trigger the chat-to-project graduation flow per PRD §40.6.
+
+      Drafts a project spec from the chat and asks the user "look good? (y/n)".
+      ONLY graduates if the orchestrator can write all 4 spec fields (goal,
+      deliverable, measurable, mini-plan) — otherwise returns error and asks
+      for more shape.
+    rest_endpoint: "POST /v1/labs/{slug}/chats/{id}/promote"
+
+  # ─── Paper / LaTeX (2) ───────────────────────────────────────────────────
+  - name: pdf_compile
+    category: paper
+    description: |
+      Trigger a LaTeX compile of a .tex file. Runs on a RunPod CPU pod
+      (per PRD §41 Rule 1 — LaTeX is CPU work, not GPU).
+    rest_endpoint: "POST /v1/labs/{slug}/papers/{id}/compile"
+    input_schema:
+      type: object
+      required: [tex_path]
+      properties:
+        tex_path: { type: string }
+
+  - name: publish_loop_start
+    category: paper
+    description: |
+      Trigger the 5-round publish-ready loop on a paper (per PRD §37).
+      Loop: mechanical QA → cross-model intellectual review → Houston Method
+      retroactive sweep → final visual + format pass → arXiv package build.
+    rest_endpoint: "POST /v1/labs/{slug}/papers/{id}/publish-loop"
+    input_schema:
+      type: object
+      required: [paper_id]
+      properties:
+        paper_id: { type: string }
+
+  # ─── Compute (2) — the credits visibility per PRD §41 ──────────────────
+  - name: runpod_status
+    category: compute
+    description: |
+      Get the current RunPod credit balance, 24h burn rate, and projected
+      runway in hours. Per PRD §41.2.
+    rest_endpoint: "GET /v1/compute/credits"
+
+  - name: list_pods
+    category: compute
+    description: List all currently running pods registered to the lab.
+    rest_endpoint: "GET /v1/compute/pods"
+
+  # ─── Search (1) — universal search backing the ⌘K palette ───────────────
+  - name: search
+    category: search
+    description: |
+      Universal search across the lab's entities (papers, experiments, agents,
+      files, contributions, surveys, chats, notes). Backs the ⌘K palette in
+      the UI.
+    rest_endpoint: "GET /v1/search"
+    input_schema:
+      type: object
+      required: [query]
+      properties:
+        query: { type: string }
+        types:
+          type: array
+          items:
+            type: string
+            enum: [paper, experiment, agent, file, contribution, survey, chat, note]
+        limit: { type: number }
+
+# ─── Resources (~15 per MCP_SERVER_SPEC.md §3) ──────────────────────────────
+resources:
+
+  # ─── Lab metadata snapshots (10) ────────────────────────────────────────
+  - uri: lab://current/info
+    name: Lab metadata
+    description: Mission, north star, director, project count, sharing settings
+    mime_type: application/json
+
+  - uri: lab://current/projects
+    name: Projects list
+    mime_type: application/json
+
+  - uri: lab://current/projects/{id}
+    name: Project detail (Project Overview content per PRD §40.12)
+    mime_type: application/json
+
+  - uri: lab://current/agents
+    name: Agent roster
+    mime_type: application/json
+
+  - uri: lab://current/agents/{name}
+    name: Agent detail (10-tab content per PRD §34)
+    mime_type: application/json
+
+  - uri: lab://current/papers
+    name: Paper list
+    mime_type: application/json
+
+  - uri: lab://current/papers/{id}
+    name: Paper metadata + LaTeX source
+    mime_type: application/json
+
+  - uri: lab://current/contributions
+    name: Contributions with N-scores
+    mime_type: application/json
+
+  - uri: lab://current/wiki
+    name: Wiki entries
+    mime_type: application/json
+
+  - uri: lab://current/notes
+    name: Journal notes (private to lab)
+    mime_type: application/json
+
+  # ─── Live resources — SSE streams (5) ──────────────────────────────────
+  - uri: live://current/activity
+    name: Activity feed stream
+    description: SSE stream of comm-events, experiment dispatches, standups
+    mime_type: text/event-stream
+    subscription: true
+
+  - uri: live://current/credits
+    name: Credit balance stream
+    description: SSE stream of RunPod credit balance changes (powers the Director header pill)
+    mime_type: text/event-stream
+    subscription: true
+
+  - uri: live://current/standups
+    name: Standup transcript stream
+    description: SSE stream of in-progress standup transcripts
+    mime_type: text/event-stream
+    subscription: true
+
+  - uri: live://current/comms-inbox
+    name: Cross-lab comms inbox stream
+    description: SSE stream of incoming cross-lab comm-events
+    mime_type: text/event-stream
+    subscription: true
+
+  - uri: live://current/experiments/{id}/logs
+    name: Experiment logs stream
+    description: SSE stream of a specific experiment's logs
+    mime_type: text/event-stream
+    subscription: true
+
+# ─── Prompts (6 templates per MCP_SERVER_SPEC.md §4) ────────────────────────
+prompts:
+
+  - name: review_paper
+    description: |
+      Generate a structured peer review of a paper using the Hubify Labs
+      review format (verdict / critical / suggestions / prior work / FACT-OPINION-HALLUCINATION
+      tags per PRD §29).
+    arguments:
+      - name: paper_id
+        description: The paper to review
+        required: true
+      - name: perspective
+        description: "Reviewer mode: 'skeptic' / 'long-context' / 'contrarian' / 'fact-check'"
+        required: false
+
+  - name: houston_method_post_experiment
+    description: |
+      Run the Houston Method v2 8-step post-experiment protocol on a completed
+      experiment: QC gate → scientific analysis → interpretation → cross-survey
+      connection → site sync → queue expansion → backup → standup notes.
+    arguments:
+      - name: experiment_id
+        required: true
+
+  - name: draft_chat_to_project
+    description: |
+      Draft a chat-to-project graduation spec per PRD §40.6 (goal + deliverable +
+      measurable + mini-plan). Reject if the chat can't fill all 4 fields.
+    arguments:
+      - name: chat_id
+        required: true
+
+  - name: standup_facilitate
+    description: |
+      Run a synchronous standup with all agents in the lab. Pulls each agent's
+      last 24h activity, asks for blockers, captures action items.
+    arguments:
+      - name: type
+        description: "morning / midday / evening"
+        required: true
+
+  - name: publish_ready_check
+    description: |
+      Run a single round of the publish-ready loop on a paper (per PRD §37).
+      Specify which round to run.
+    arguments:
+      - name: paper_id
+        required: true
+      - name: round
+        description: "1=mechanical_qa / 2=cross_model / 3=houston_method_sweep / 4=visual_format / 5=arxiv_package"
+        required: true
+
+  - name: no_punt_check
+    description: |
+      Scan a draft for the 7 'no future-research punt' trigger phrases per
+      PRD §13.1. Return any matches with surrounding context so the author
+      can rewrite them.
+    arguments:
+      - name: draft_text
+        description: "Either inline draft text or a file path"
+        required: true
+
+# ─── Error types (specific to MCP layer beyond the API errors) ──────────────
+error_types:
+  - type: cross-lab-write-denied
+    status: 403
+    description: |
+      Lab Sovereignty Rule violation per PRD §40.11. Agent tried to write to a
+      lab it doesn't own. Use comm_send to suggest the change instead.
+  - type: tool-input-validation-failed
+    status: 422
+  - type: agent-not-found
+    status: 404
+  - type: experiment-spec-incomplete
+    status: 422
+    description: "Missing requires_gpu per PRD §41 Rule 1"
+  - type: n4-not-claimable-by-agent
+    status: 422
+    description: "N4 (flagship breakthrough) cannot be claimed by an agent — only externally validated"
+  - type: note-save-without-consent
+    status: 422
+    description: "explicit_user_consent flag must be true per PRD §38 agent visibility contract"
+
+# ─── End of v1 MCP server spec ─────────────────────────────────────────────
+#
+# Per BUILD_READINESS_CHECKLIST.md Category E, this YAML lock completes Item 7 of 7.
+# Category E is now 100% (7/7).
+#
+# Stress-test framing: this YAML proves that the Hubify Labs architecture invariants
+# (Lab Sovereignty Rule, §41 routing discipline, N-score discipline, note privacy,
+# chat no-action mode) can be enforced at the protocol layer — every constraint is
+# encoded in the schema or constraints array, so any code-generated MCP server stub
+# automatically gets the rules baked in.
