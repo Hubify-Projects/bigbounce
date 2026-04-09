@@ -263,6 +263,18 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 
 **J status:** **8/8 = 100% ✅** — Category J COMPLETE. The Scientific Discovery Platform reframe is fully shipped on the marketing site.
 
+### L. Kill sidepeeks · convert to right-pane views (Houston 2026-04-09)
+
+Houston's final cut on sidepeeks: "ok ive had it with sidepeeks bro we gotta remove them and instead opt for actual screens using the right side pane always instead of a side peek and just have a little <-- back icon at the top of nested right side panes." All entity drilldowns become real right-pane screens with proper back navigation. Multi-iteration refactor.
+
+- [x] **L1: Backward-compat redirect — openSidepeek populates #view-detail** (commits `909bb6b` + `9cb25b5` regression fix) — Added new `view-detail` to .preview-content with sticky `.detail-back-bar` (back button + tag pill + title + actions). Rewrote `openSidepeek(type, id)` to call the existing `sidepeekRenderers[type](id)` and inject the HTML into `#detailBody` + push to `detailHistory` stack + `navTo('detail')`. Added `goBack()` (pops history, re-renders previous detail OR navTo's main view), `_renderDetail`, `_getCurrentMainView`, `_setBackLabel` (dynamic "← Papers" / "← Paper" labels). `closeSidepeek()` is now a backward-compat alias for `goBack()`. Esc key now calls `goBack()` when #view-detail is active. Click-outside listener REMOVED (no more dismiss-on-outside-click). Old `.sidepeek` aside force-hidden via `.sidepeek{display:none !important}` (DOM still in place for iter 2 cleanup). All 100+ existing call sites work without changes — backward-compat preserved by keeping the function name. **Review-caught regression fix:** `spAgentTab(safeId, name)` was querying `#sidepeekBody` for the agent's 10-tab interface — updated to query `#detailBody`.
+- [ ] **L2: Convert sidepeekRenderers to detail-view styling** — the renderers were designed for an overlay container; now they live in a real screen. Add more breathing room, less overlay-dense layouts, larger headings, more whitespace. Per-renderer pass.
+- [ ] **L3: Delete the dead `<aside class="sidepeek">` DOM + all `.sidepeek*` CSS rules** — once L2 is done and nothing references the old DOM IDs, remove the element + the orphan CSS (~30 lines).
+- [ ] **L4: Rename `sidepeekRenderers` → `detailRenderers` + `openSidepeek` → `openDetail`** — final cleanup pass. Backward-compat alias the old names for one release cycle, then delete in v1.1.
+- [ ] **L5: Multi-tab support in detail view** — per Houston's earlier "real screens not overlays" framing, allow multiple detail tabs in the preview-tabs strip. Each opened entity becomes a tab, can be pinned, can be closed. Like Cursor / VSCode's editor tabs but for research entities.
+
+**L status:** 1/5 = 20% — L1 shipped this iteration. L2-L5 remain.
+
 ### K. K-Dense + Feynman parity / gap closure (Houston 2026-04-09)
 
 K-Dense AI and Feynman are the two closest competitors. Houston flagged we need feature parity with both. This category tracks the in-app + spec gaps surfaced in the K-Dense and Feynman competitor memories. Most items are concrete mockup work the loop can ship without Houston.
