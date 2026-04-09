@@ -121,7 +121,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Round A item #4 filter chip rows audit** (commit `25f949b`) — Linear/Vercel pattern: dropped border+background, text-only buttons with sage underline on active, 12 filter-row instances across the mockup updated, mobile breakpoints synced
 - [x] **Round A item #5 toast positioning + density** (commit `684f498`) — bottom-right stack container, max 5 visible toasts, slide-in from right with sage left-border, timestamp + message + click-to-dismiss, replaces singleton bottom-center toast that lost messages on rapid fire
 - [x] **Round A item #6 card padding audit** (commit `c27c0a9`) — `.stat` (13px 15px → 12px 16px, lone outlier), `.card-header` (11px 14px → 12px 16px), `.review` (13px 14px → 12px 16px) all converged to 12px/16px design-system scale (multiples of 4) · **Round A COMPLETE 6/6 ✅**
-- [ ] **Round B Files sidebar Round 2** — full-page note editor with inline filename + per-note scoped chat + markdown slash commands + star-to-pin notes
+- [x] **Round B Files sidebar Round 2** (commit `6701b82`) — star/pin toggle on note rows (`.note-star` + `.note-star.starred` CSS, sage filled ★ = pinned, dim ☆ = unpinned, `toggleNoteStar()` click handler toggles starred class + floats the row to top of its tree-children group + toast), `newNote()` enhanced with full-page editor flow (navigates to File Preview in full view with toast hint "⌘S to save · /chat to start a note-scoped chat"), per-note scoped chat via the existing `/notechat` slash command (Round C #4), markdown slash commands inherited from the existing `CHAT_SUGGESTIONS['/']` autocomplete system. 7 note rows in the Notes sub-tab (3 Daily + 2 Prompts + 2 Links) now have `.note-star` elements. Sage discipline preserved (starred stars use `var(--accent)`, unstarred use `var(--text-dim)` at 40% opacity).
 - [ ] **Round C #1 Sidebar tri-mode adding Chats between Menu and Files** (PRD §40.7)
 - [ ] **Round C #2 Project Overview page + sidepeek renderer** (PRD §40.12)
 - [x] **Round C #3 Chat composer enrichments** (commit `cc81400`) — chat input toolbar above the textarea with 4 elements: (1) **Model switcher pill** with sage dot + label + dropdown caret, cycles through 5 models (Sonnet 4.6 default per PRD App B.1, Opus 4.6, Haiku 4.5, GPT-5, Gemini 2.5 Pro) on click — toast confirms switch with model description, (2) **Mode pill** cycling through 3 chat modes (Research/CEO/Note per PRD §40.6+§40.13) with diamond icon variants (◆/◇/◌), (3) **File upload icon** (paperclip svg) opens new-file sidepeek for attachment flow, (4) **Mic icon** for Whisper API voice dictation (per PRD App B.2) with recording-state pulse animation. Slash command autocomplete already wired via existing meta-left chips. All 4 use the existing sage/grayscale palette — no new accent colors. Recording animation uses existing accent color with pulse-shadow keyframe scoped to `.chat-tool-btn.recording` only.
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 53 | 54 | 98% |
-| B. Web mockup | 43 | 49 | 88% |
+| B. Web mockup | 44 | 49 | 90% |
 | C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **143** | **159** | **90%** |
+| **OVERALL** | **144** | **159** | **91%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
