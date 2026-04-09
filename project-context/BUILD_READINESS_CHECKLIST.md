@@ -350,6 +350,8 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `15b34cf` SDP-6 continuation: 5 remaining "research" → "discovery" language instances on Labs/Features/Blog/Guides pages
 - `930819a` Features page jargon audit: §06 "Houston Method v2" → completion protocol language, §08 anecdote removed, §12 "comm gateway" → "knowledge sharing"
 - `ff37424` Lab-detail page screenshot placeholder → full inline mini-IDE Director view (real BigBounce data: EXP-055/051 running, morning brief, orchestrator chat)
+- `baed995` Blog article typography: max-width 760→680px, Newsreader pull quotes, h2/h3 styles, breathing room, CTA "Make your discovery."
+- `e40284f` Docs/guides jargon audit: strip Fly.io refs, §41 PRD ref, "ritual"→"protocol" in docs cards
 
 ### What Houston needs to do (when he wakes)
 
