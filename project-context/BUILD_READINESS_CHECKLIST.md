@@ -202,7 +202,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### G. Deployment infrastructure plan complete
 
-- [x] **Write `DEPLOYMENT_INFRA_PLAN.md`** (commit `pending-g1`) — comprehensive deployment plan ~750 lines, ALL 13 items covered in one iteration
+- [x] **Write `DEPLOYMENT_INFRA_PLAN.md`** (commit `2e5f3e6`) — comprehensive deployment plan ~750 lines, ALL 13 items covered in one iteration
 - [x] **Vercel deploy config** (in DEPLOYMENT_INFRA_PLAN §2.1) — Type A platform `hubify-labs.com` + Type B per-lab sites `<lab>.hubify.app`, vercel.json with security headers, auto-deploy from main branch
 - [x] **Convex deployment** (in §2.2) — 3 environments (dev/staging/prod), schema migration strategy, full env var inventory (15 secrets)
 - [x] **Fly.io deployment** (in §2.3) — one shared-CPU machine per active lab, ~$2-5/month each, auto-restart, no auto-scaling
