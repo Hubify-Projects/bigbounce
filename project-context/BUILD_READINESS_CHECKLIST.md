@@ -120,7 +120,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Round A item #3 section labels thinning** (commit `5fa8960`) — `.section` 1.2px → 0.6px + `.sb-section-label` 1px → 0.6px letter-spacing, brings the 2 loudest classes in line with the rest of the uppercase label hierarchy (sp-section-label/stat-label/lab-dd-label all at 0.6-0.8px)
 - [x] **Round A item #4 filter chip rows audit** (commit `25f949b`) — Linear/Vercel pattern: dropped border+background, text-only buttons with sage underline on active, 12 filter-row instances across the mockup updated, mobile breakpoints synced
 - [x] **Round A item #5 toast positioning + density** (commit `684f498`) — bottom-right stack container, max 5 visible toasts, slide-in from right with sage left-border, timestamp + message + click-to-dismiss, replaces singleton bottom-center toast that lost messages on rapid fire
-- [ ] **Round A item #6 card padding audit** — pick one scale (12px vs 16px vs 20px vs 24px)
+- [x] **Round A item #6 card padding audit** (commit `c27c0a9`) — `.stat` (13px 15px → 12px 16px, lone outlier), `.card-header` (11px 14px → 12px 16px), `.review` (13px 14px → 12px 16px) all converged to 12px/16px design-system scale (multiples of 4) · **Round A COMPLETE 6/6 ✅**
 - [ ] **Round B Files sidebar Round 2** — full-page note editor with inline filename + per-note scoped chat + markdown slash commands + star-to-pin notes
 - [ ] **Round C #1 Sidebar tri-mode adding Chats between Menu and Files** (PRD §40.7)
 - [ ] **Round C #2 Project Overview page + sidepeek renderer** (PRD §40.12)
@@ -252,7 +252,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
-| B. Web mockup | 28 | 49 | 57% |
+| B. Web mockup | 29 | 49 | 59% |
 | C. macOS app | 1 | 5 | 20% |
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
@@ -260,7 +260,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 0 | 13 | 0% |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **94** | **156** | **60%** |
+| **OVERALL** | **95** | **156** | **61%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
