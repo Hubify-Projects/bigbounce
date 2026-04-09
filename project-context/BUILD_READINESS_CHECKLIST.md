@@ -247,6 +247,21 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 **I status:** 0% — pending Houston review pass.
 
+### J. Scientific Discovery Platform reframe (Houston 2026-04-08)
+
+Houston redirected the marketing positioning from "AI research platform" / "research IDE" to **Scientific Discovery Platform**. The marketing site must reinforce this narrative end-to-end and inspire intensely. This category is the polish loop's primary work surface while the master 9-category gate is endpoint-blocked. Full vision in `feedback_scientific_discovery_platform.md` memory file + `.queue.md` polish scope section.
+
+- [x] **SDP-1: Marketing hero rewrite** (commits `64a12f3` + `bc87ee4`) — eyebrow "HUBIFY LABS · THE SCIENTIFIC DISCOVERY PLATFORM" + h1 "Make discoveries that change history" + lede leads with thousands of datasets + multi-agent multi-model peer review + 2025-2027 window framing + arch-foot "discoveries moving 24/7"
+- [x] **SDP-2: Datasets gallery section** (commit `323c5b0`) — new full-width `.datasets-band` between window-band and 3-surfaces with: 4 sage stat cards (10K+ datasets · 250+ database connectors · 200+ formats · 14 domains) · 16-cell logo grid (HuggingFace · NASA · arXiv · Wolfram · PubMed · ChEMBL · UniProt · Gaia DR3 · SDSS · DESI DR1 · LAMOST · eROSITA · Materials Project · NOAA · SEC EDGAR · +235 more) · 14 domain pills · K-Dense baseline credit + Browse CTA
+- [x] **SDP-3: Agent team explainer section** (commit pending) — new `.agents-band` between datasets-band and 3-surfaces with 4-tier hierarchy table (Director · Orchestrator · 4 Leads · 11 Workers) + highlighted cross-provider reviewers card (GPT-5 · Gemini 2.5 Pro · Sonnet skeptic · Perplexity Sonar) with "zero echo chamber" tagline + 21 agents across 5 model providers footer
+- [x] **SDP-5: 2025-2027 Window urgency band** (commits `bc87ee4` + `d1e357e`) — pre-existing window-band enhanced with countdown pill ("~32 months until the moats close") + "The window is closing. Make your discovery now." line + sage Start CTA + ghost demo CTA + reassurance meta
+- [x] **SDP-6: Replace 'research' language sweep** (commit `64a12f3`) — 9 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing
+- [ ] **SDP-4: Multi-model peer review explainer** — separate deeper section just on the 4 cross-provider reviewers, their personalities, what each catches that the others miss. SDP-3 introduced them; SDP-4 dives deeper.
+- [ ] **SDP-7: Discovery showcase section** — 3-4 example discoveries the platform enables across different domains (cosmology / drug discovery / materials / climate). Demonstrates domain breadth (counters K-Dense's positioning).
+- [ ] **SDP-8: Inspire-intensely homepage final pass** — read-through with one filter: "Does this make a smart independent researcher feel they can change history with this?" Push every weak section harder.
+
+**J status:** 5/8 = 62.5% — SDP-1, SDP-2, SDP-3, SDP-5, SDP-6 shipped. SDP-4, SDP-7, SDP-8 remain.
+
 ---
 
 ## 3. The READY math (current state)
@@ -262,9 +277,10 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **133** | **143** | **93%** |
+| **J. SDP reframe** | **5** | **8** | **62.5%** |
+| **OVERALL** | **138** | **151** | **91.4%** |
 
-**Translation:** **6 of 9 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly).
+**Translation:** **6 of 10 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). NEW: Category J (Scientific Discovery Platform reframe) is the polish loop's active work surface — 5/8 items shipped, 3 remaining (SDP-4 multi-model peer review explainer, SDP-7 discovery showcase, SDP-8 inspire-intensely final pass).
 
 ### Autonomous loop endpoint reached (master items)
 
@@ -276,21 +292,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 **Master loop completion: 133/133 of the autonomously-checkable items = 100%.** The master 9-category gate is closed until Houston shows up.
 
-### Polish loop continues — Scientific Discovery Platform reframe
+### Polish loop continues — Scientific Discovery Platform reframe (now Category J)
 
-While the master checklist is endpoint-blocked, the autonomous loop has pivoted to Houston's most recent direction (2026-04-08): **reframe Hubify Labs from "AI research platform" to "Scientific Discovery Platform"** and rebuild the marketing site to inspire intensely. This work is tracked in `/Users/houstongolden/Desktop/CODE_2025/hubify-labs-mockups/.queue.md` under "Scientific Discovery Platform reframe (Houston 2026-04-08)" with 8 SDP-* items.
-
-**Polish loop progress:**
-- [x] **SDP-6** Marketing site language sweep — 8 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing (commit `64a12f3`)
-- [x] **SDP-1** Marketing hero rewrite — eyebrow + h1 + lede + arch-foot all rewritten to lead with discovery, datasets, multi-agent peer review, and the 2025-2027 window (commits `64a12f3` + `bc87ee4`)
-- [x] **SDP-5** 2025-2027 Window urgency band — pre-existing window-band enhanced from passive blog quote into a real urgency CTA: countdown pill ("~32 months until the moats close"), "The window is closing. Make your discovery now." line, "Start your discovery" sage CTA + ghost demo CTA, reassurance meta line (commits `bc87ee4` + `d1e357e` regression fix)
-- [x] **SDP-2** Datasets gallery section — new full-width `.datasets-band` between window-band and 3-surfaces with: (a) 4 sage stat cards (10K+ datasets · 250+ database connectors · 200+ formats · 14 domains), (b) 16-cell logo grid (HuggingFace · NASA · arXiv · Wolfram · PubMed · ChEMBL · UniProt · Gaia · SDSS · DESI · LAMOST · eROSITA · Materials Project · NOAA · SEC EDGAR · +235 more), (c) 14 domain pills (K-Dense's 14 + Cosmology + Particle Physics + Finance & Macro), (d) K-Dense baseline credit + "Browse the full datasets catalog" CTA. ~15 new CSS rules, sage discipline preserved, 2 mobile breakpoints (commit pending)
-- [ ] SDP-3 agent team explainer (Director > Orchestrator > Leads > Workers)
-- [ ] SDP-4 multi-model peer review explainer
-- [ ] SDP-7 discovery showcase (3-4 example domains)
-- [ ] SDP-8 inspire-intensely homepage final pass
-
-**SDP polish loop progress: 4/8 = 50%.** Continuing to ship 1-2 commits per iteration on the next SDP item until the marketing site is fully reframed. SDP-3 (agent team explainer) is the next highest-impact item.
+The polish loop is shipping the SDP reframe items as **Category J** above. See `J. Scientific Discovery Platform reframe (Houston 2026-04-08)` for the full task list and progress. As of this iteration, **5/8 SDP items shipped (62.5%)** — SDP-1, SDP-2, SDP-3, SDP-5, SDP-6 done; SDP-4, SDP-7, SDP-8 remain.
 
 ### What Houston needs to do (when he wakes)
 
