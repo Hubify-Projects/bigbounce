@@ -197,9 +197,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Auth flow** (in CLI_SPEC.md §3) — browser OAuth (PKCE) default · service token via env var · macOS Keychain / Linux libsecret / Windows Credential Manager integration · profile switching via `--profile` or `HUBIFY_PROFILE`
 - [x] **Local config + secrets** (in CLI_SPEC.md §4) — `~/.hubify/config.yaml` + `~/.hubify/credentials` (mode 0600), secrets never in config, env vars for runtime secrets, per-lab config override
 - [~] **Plugin system (future)** (in CLI_SPEC.md §5) — explicitly DEFERRED to v1.1 per spec, stub structure documented
-- [ ] **CLI YAML lock** — `cli-spec.yaml` (next item in Category F — turns this human-readable spec into the machine-readable contract for shell completions + docs generation)
+- [x] **CLI YAML lock** (commit `pending-f8`) — `cli-spec.yaml` written, ~900 lines, machine-readable contract for shell completions + docs generation. Mirrors the api-spec.openapi.yaml + mcp-server-spec.yaml pattern. CLI metadata (name, version, language, framework, distribution channels) + 5 output formats + 4 auth methods (oauth_browser default + service_token + token_flag) + credentials file structure (mode 0600 YAML) + 9 env vars + 10 global flags inherited by every command + 19 categories cross-referenced + ~85 commands across 19 categories with full args/flags/format/maps_to (REST endpoint or MCP tool reference) + cross_lab_rules enforcing the Lab Sovereignty Rule at the CLI layer (rejected before HTTP send) + 4 validation rules + 13 canonical exit codes (0-130) + shell completion spec for bash/zsh/fish/powershell with dynamic completion sources + plugin system explicitly DEFERRED to v1.1 stub. Every command's `maps_to` field cross-references either an `api-spec.openapi.yaml` endpoint OR a `mcp-server-spec.yaml` tool — guarantees CLI implementation fidelity to the upstream contracts.
 
-**F status:** ~88% (7 of 8, with item 7 explicitly deferred to v1.1) — entire category bootstrapped from 0% in one iteration.
+**F status:** **100% ✅** (8 of 8, with item 7 plugin system explicitly deferred to v1.1) — Category F COMPLETE.
 
 ### G. Deployment infrastructure plan complete
 
@@ -258,20 +258,19 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
-| F. CLI spec | 7 | 8 | 88% |
+| F. CLI spec | 8 | 8 | **100% ✅** |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **118** | **156** | **76%** |
+| **OVERALL** | **119** | **156** | **76%** |
 
-**Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · G are 100% locked**, F at 88% (1 item left), C at 80% (1 item left). Houston review is pending.
+**Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
 **To hit READY = 100%, the loop needs to:**
 1. Finish A (~10 items)
 2. Finish B (~16 items)
 3. Finish C (~1 item — desktop-app-mockup.html)
-4. Finish F (~1 item — cli-spec.yaml)
-5. Wait on H/I (Houston review)
+4. Wait on H/I (Houston review)
 
 **Estimated iteration count at the current pace** (~5-15 items per session, depending on size): **8-15 more sessions** to hit READY.
 

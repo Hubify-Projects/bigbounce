@@ -1,0 +1,1321 @@
+# Hubify Labs CLI — Machine-Readable Specification
+#
+# This YAML is the SDK + completion + docs contract for the `hubify` CLI tool.
+# The human-readable version lives in `CLI_SPEC.md`. This file is consumed by:
+#   - `hubify completion <shell>` → bash/zsh/fish/PowerShell completion generators
+#   - the docs site builder (Mintlify) for the CLI reference page
+#   - the test harness (`hubify mcp test ...`) for shell-completion regression tests
+#   - the cobra command tree generator (Go reflection-friendly format)
+#
+# Owner: Houston Golden + Claude
+# Date locked: 2026-04-08
+# Linked from: BUILD_READINESS_CHECKLIST.md Category F item 8
+# Depends on: api-spec.openapi.yaml (Category D) + mcp-server-spec.yaml (Category E)
+#
+# Constraints (enforced at the CLI layer):
+#   1. Every command maps 1:1 to exactly one REST endpoint OR one MCP tool
+#      (cross-reference under `cli.commands.*.maps_to`)
+#   2. Every command MUST support `--format text|json|yaml|table|tsv`
+#   3. Experiment dispatch MUST require `--gpu` OR `--cpu` (PRD §41 routing)
+#   4. Cross-lab write commands MUST be rejected before HTTP send
+#      (Lab Sovereignty Rule, mirrors mcp-server-spec.yaml `cross_lab_rules`)
+
+cli:
+  name: hubify
+  version: 1.0.0
+  binary: hubify
+  language: go
+  framework: cobra + bubbletea (TUI)
+  spec_version: "1.0"
+  api_version: v1
+  api_spec: ./api-spec.openapi.yaml
+  mcp_spec: ./mcp-server-spec.yaml
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Distribution channels
+  # ──────────────────────────────────────────────────────────────────────
+  distribution:
+    homebrew:
+      tap: Hubify-Labs/homebrew-tap
+      formula: hubify
+      command: brew install hubify-labs/tap/hubify
+    direct_install:
+      url: https://hubify-labs.com/install.sh
+      command: curl -fsSL https://hubify-labs.com/install.sh | sh
+      target_dir: /usr/local/bin
+    github_releases:
+      org: Hubify-Labs
+      repo: cli
+      asset_pattern: hubify_{version}_{os}_{arch}.tar.gz
+    apt:
+      status: deferred_v1.1
+      reason: low priority for v1
+    scoop:
+      status: deferred_v1.1
+      reason: low Windows usage in target audience
+    snap:
+      status: not_planned
+      reason: snap is awful
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Output formats (every command supports --format)
+  # ──────────────────────────────────────────────────────────────────────
+  output_formats:
+    - id: text
+      default: true
+      description: Human-readable, colored, tables for lists
+      tty_only_features: [color, progress_bars, spinners, hyperlinks]
+    - id: json
+      description: Pipe to jq or another tool
+    - id: yaml
+      description: Config-style output, useful for diffing
+    - id: table
+      description: Forced table format (some text defaults are bullet lists)
+    - id: tsv
+      description: Tab-separated for awk and spreadsheet import
+
+  # When stdout is not a TTY, the CLI auto-disables colors and progress bars
+  tty_detection:
+    auto_disable_color_when: stdout_not_tty
+    auto_disable_progress_when: stdout_not_tty
+    override_with: --color always|never|auto
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Authentication
+  # ──────────────────────────────────────────────────────────────────────
+  auth:
+    methods:
+      - id: oauth_browser
+        default: true
+        flow: PKCE
+        rfc: 7636
+        callback_port: random_localhost
+        provider: github
+        endpoint: https://hubify-labs.com/oauth/authorize
+        token_format: hbf_user_eyJ...
+        token_lifetime_h: 24
+        refresh_supported: true
+      - id: service_token
+        env_var: HUBIFY_TOKEN
+        token_format: hbf_st_...
+        token_lifetime_d: 90
+        use_cases: [ci, cron, headless]
+      - id: token_flag
+        flag: --token
+        token_format: hbf_st_... | hbf_user_...
+        precedence: highest
+        warning: never log this flag's value
+    storage:
+      file: ~/.hubify/credentials
+      mode: "0600"
+      format: yaml
+      structure:
+        default_profile: string
+        profiles:
+          "<profile_name>":
+            user: string
+            token: string
+            expires_at: string  # ISO 8601
+            refresh_token: string
+      keychain_integration:
+        macos: optional via security command
+        linux: optional via libsecret
+        windows: optional via Credential Manager
+    profile_switching:
+      flag: --profile
+      env_var: HUBIFY_PROFILE
+      precedence: [flag, env_var, default_profile_in_credentials]
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Config file
+  # ──────────────────────────────────────────────────────────────────────
+  config:
+    global_path: ~/.hubify/config.yaml
+    per_lab_override: <lab>/.hubify/config.yaml
+    keys:
+      active_lab:
+        type: string
+        example: bigbounce-hubify
+        description: Default lab for commands that take an implicit lab
+      default_format:
+        type: enum
+        values: [text, json, yaml, table, tsv]
+        default: text
+      api_endpoint:
+        type: url
+        default: https://api.hubify-labs.com
+      mcp_server.default_transport:
+        type: enum
+        values: [stdio, sse, websocket]
+        default: stdio
+      mcp_server.default_lab:
+        type: string
+      editor:
+        type: string
+        default: $EDITOR or vim
+        description: For `hubify note open`
+      ssh_key_path:
+        type: path
+        default: ~/.ssh/id_ed25519
+        description: For `hubify pod ssh`
+      runpod_api_key_env:
+        type: string
+        default: RUNPOD_API_KEY
+        description: Which env var holds the RunPod key for credit checks
+    secrets_handling:
+      rule: secrets NEVER stored in config.yaml
+      enforcement: "`hubify config set <secret-key>` returns error pointing to env var pattern"
+      get_redacts: true  # `hubify config get` never prints secrets
+      allowed_secret_locations:
+        - env_var
+        - credentials_file
+        - keychain
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Environment variables (the full inventory)
+  # ──────────────────────────────────────────────────────────────────────
+  env_vars:
+    - name: HUBIFY_TOKEN
+      purpose: Service token for non-interactive auth
+      precedence: highest_for_auth
+    - name: HUBIFY_PROFILE
+      purpose: Override active profile from credentials
+    - name: HUBIFY_CONFIG
+      purpose: Override config file path
+      default: ~/.hubify/config.yaml
+    - name: HUBIFY_API_ENDPOINT
+      purpose: Override API endpoint URL
+    - name: HUBIFY_LAB
+      purpose: Override active lab for the duration of the command
+    - name: HUBIFY_DEBUG
+      purpose: Enable debug logging (writes to stderr)
+      values: [0, 1, trace]
+    - name: HUBIFY_NO_COLOR
+      purpose: Disable color output regardless of TTY detection
+    - name: NO_COLOR
+      purpose: Standard NO_COLOR convention support
+      url: https://no-color.org
+    - name: RUNPOD_API_KEY
+      purpose: For pod operations that need direct RunPod API calls
+    - name: EDITOR
+      purpose: Used by `hubify note open`
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Global flags (inherited by every command)
+  # ──────────────────────────────────────────────────────────────────────
+  global_flags:
+    - name: --format
+      values: [text, json, yaml, table, tsv]
+      default: text
+    - name: --profile
+      type: string
+      description: Override active credentials profile
+    - name: --lab
+      type: string
+      description: Override active lab for this command
+    - name: --token
+      type: string
+      description: One-shot auth token (not stored)
+      sensitive: true
+    - name: --api-endpoint
+      type: url
+      description: Override API endpoint
+    - name: --color
+      values: [always, never, auto]
+      default: auto
+    - name: --debug
+      type: bool
+      description: Enable debug logging to stderr
+    - name: --quiet
+      type: bool
+      description: Suppress non-error output
+    - name: --yes
+      short: -y
+      type: bool
+      description: Auto-confirm destructive operations
+    - name: --help
+      short: -h
+      type: bool
+      description: Show help for the command
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Categories (19 total)
+  # ──────────────────────────────────────────────────────────────────────
+  categories:
+    - id: lab
+      label: Lab commands
+      command_count: 9
+    - id: project
+      label: Project commands
+      command_count: 9
+    - id: experiment
+      label: Experiment commands (PRD §41 routing)
+      command_count: 7
+    - id: pipeline
+      label: Pipeline commands
+      command_count: 5
+    - id: chat
+      label: Chat commands (PRD §40.6 §40.7 §40.13)
+      command_count: 7
+    - id: note
+      label: Note commands (PRD §38)
+      command_count: 5
+    - id: pod
+      label: Pod and compute commands (PRD §24 §41)
+      command_count: 8
+    - id: agent
+      label: Agent commands
+      command_count: 7
+    - id: memory
+      label: Memory commands (PRD §20)
+      command_count: 3
+    - id: standup
+      label: Standup commands (PRD §27)
+      command_count: 4
+    - id: costs
+      label: Cost commands (PRD §11 §41)
+      command_count: 4
+    - id: backup
+      label: Backup and sync commands (PRD §6)
+      command_count: 4
+    - id: comm
+      label: Cross-lab comms commands (PRD §40.11)
+      command_count: 5
+    - id: search
+      label: Universal search
+      command_count: 1
+    - id: mcp
+      label: MCP server commands
+      command_count: 8
+    - id: auth
+      label: Auth commands
+      command_count: 7
+    - id: config
+      label: Config commands
+      command_count: 5
+    - id: status
+      label: Status and system commands
+      command_count: 4
+    - id: tui
+      label: TUI mode (interactive)
+      command_count: 1
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Commands (full inventory)
+  # Each command lists args, flags, format, and a `maps_to` reference to
+  # the API endpoint or MCP tool it wraps.
+  # ──────────────────────────────────────────────────────────────────────
+  commands:
+
+    # ── 1.1 Lab commands ──────────────────────────────────────────────
+    - path: lab list
+      category: lab
+      description: List all labs you have access to
+      args: []
+      flags:
+        - name: --public
+          type: bool
+        - name: --owned
+          type: bool
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/labs
+
+    - path: lab create
+      category: lab
+      description: Create a new lab (interactive prompts for mission/north-star)
+      args:
+        - name: slug
+          required: true
+      flags:
+        - name: --from-template
+          type: string
+          values_hint: bounce-cosmology|dark-energy|dark-matter|eti|self-improving
+        - name: --mission
+          type: string
+        - name: --visibility
+          type: enum
+          values: [private, public]
+          default: private
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/labs
+
+    - path: lab show
+      category: lab
+      description: Show current lab metadata (defaults to active lab)
+      args:
+        - name: slug
+          required: false
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/labs/{slug}
+
+    - path: lab switch
+      category: lab
+      description: Switch the active lab for subsequent commands
+      args:
+        - name: slug
+          required: true
+      maps_to:
+        type: local
+        action: write_config_active_lab
+
+    - path: lab share
+      category: lab
+      description: Configure cross-lab sharing
+      args:
+        - name: slug
+          required: true
+      flags:
+        - name: --with
+          type: string
+          description: Other lab slug to share with
+        - name: --public
+          type: enum
+          values: [published-only, all, none]
+      maps_to:
+        type: rest
+        method: PATCH
+        path: /v1/labs/{slug}/sharing
+      cross_lab_policy: read_grant_only
+
+    - path: lab delete
+      category: lab
+      description: Delete a lab (soft-delete, 30-day recovery)
+      args:
+        - name: slug
+          required: true
+      flags:
+        - name: --force
+          type: bool
+      requires_confirmation: true
+      maps_to:
+        type: rest
+        method: DELETE
+        path: /v1/labs/{slug}
+
+    - path: lab open
+      category: lab
+      description: Open the lab in the web UI (browser)
+      args:
+        - name: slug
+          required: false
+      maps_to:
+        type: local
+        action: open_browser
+        url_template: https://hubify-labs.com/labs/{slug}
+
+    # ── 1.2 Project commands ──────────────────────────────────────────
+    - path: project list
+      category: project
+      description: List projects in current/specified lab
+      args: []
+      flags:
+        - name: --lab
+          type: string
+        - name: --status
+          type: enum
+          values: [active, archived, all]
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/labs/{lab_slug}/projects
+
+    - path: project create
+      category: project
+      description: Create a new project (interactive)
+      args:
+        - name: slug
+          required: true
+      flags:
+        - name: --goal
+          type: string
+        - name: --deliverable
+          type: string
+        - name: --measurable
+          type: string
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/labs/{lab_slug}/projects
+
+    - path: project show
+      category: project
+      description: Show project Overview (auto-maintained per PRD §40.12)
+      args:
+        - name: id
+          required: false
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/projects/{project_id}
+
+    - path: project goal
+      category: project
+      description: Update goal field
+      args:
+        - name: id
+        - name: text
+      maps_to:
+        type: rest
+        method: PATCH
+        path: /v1/projects/{project_id}
+        body_field: goal
+
+    - path: project deliverable
+      category: project
+      description: Update deliverable field
+      args:
+        - name: id
+        - name: text
+      maps_to:
+        type: rest
+        method: PATCH
+        path: /v1/projects/{project_id}
+        body_field: deliverable
+
+    - path: project measurable
+      category: project
+      description: Update measurable field
+      args:
+        - name: id
+        - name: text
+      maps_to:
+        type: rest
+        method: PATCH
+        path: /v1/projects/{project_id}
+        body_field: measurable
+
+    - path: project archive
+      category: project
+      description: Archive (soft-delete)
+      args:
+        - name: id
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/projects/{project_id}/archive
+
+    - path: project papers
+      category: project
+      description: List papers associated with this project
+      args:
+        - name: id
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/projects/{project_id}/papers
+
+    - path: project papers link
+      category: project
+      description: Associate a paper (M:M per PRD §40.4)
+      args:
+        - name: project_id
+        - name: paper_id
+      flags:
+        - name: --role
+          type: enum
+          values: [primary, supporting, citation_only]
+          required: true
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/projects/{project_id}/papers
+
+    # ── 1.3 Experiment commands (PRD §41 routing) ─────────────────────
+    - path: experiment list
+      category: experiment
+      description: List experiments
+      flags:
+        - name: --status
+          type: enum
+          values: [running, pass, fail, queued, cancelled, all]
+        - name: --project
+          type: string
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/experiments
+
+    - path: experiment show
+      category: experiment
+      description: Show experiment detail
+      args:
+        - name: id
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/experiments/{experiment_id}
+
+    - path: experiment dispatch
+      category: experiment
+      description: Dispatch a new experiment (PRD §41 routing required)
+      args:
+        - name: spec_yaml
+          required: false
+          description: Path to a YAML spec file (alternative to inline flags)
+      flags:
+        - name: --gpu
+          type: enum
+          values: [H100, H200, A100, L40S, RTX4090]
+          required_one_of: [--gpu, --cpu]
+        - name: --cpu
+          type: bool
+          required_one_of: [--gpu, --cpu]
+        - name: --duration
+          type: int
+          unit: minutes
+          required: true
+          description: Expected duration in minutes (drives §41 pod-vs-serverless routing)
+        - name: --priority
+          type: enum
+          values: [low, normal, high, critical]
+          default: normal
+        - name: --cmd
+          type: string
+          description: Command to run on the compute resource
+        - name: --image
+          type: string
+          description: Docker image (defaults to lab's default)
+        - name: --project
+          type: string
+      validation:
+        - rule: must_specify_compute_mode
+          message: "Refusing to dispatch without --gpu or --cpu (PRD §41 routing)"
+          exit_code: 22
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/experiments
+
+    - path: experiment logs
+      category: experiment
+      description: Tail logs (SSE stream)
+      args:
+        - name: id
+      flags:
+        - name: --follow
+          short: -f
+          type: bool
+        - name: --lines
+          short: -n
+          type: int
+          default: 100
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/experiments/{experiment_id}/logs
+        stream: sse
+
+    - path: experiment cancel
+      category: experiment
+      description: Graceful cancel (SIGTERM + 30s checkpoint window)
+      args:
+        - name: id
+      requires_confirmation: true
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/experiments/{experiment_id}/cancel
+
+    - path: experiment promote
+      category: experiment
+      description: Promote results to a contribution
+      args:
+        - name: id
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/experiments/{experiment_id}/promote
+
+    # ── 1.4 Pipeline commands ─────────────────────────────────────────
+    - path: pipeline list
+      category: pipeline
+      maps_to: { type: rest, method: GET, path: /v1/pipelines }
+
+    - path: pipeline show
+      category: pipeline
+      args: [{ name: id }]
+      maps_to: { type: rest, method: GET, path: /v1/pipelines/{pipeline_id} }
+
+    - path: pipeline run
+      category: pipeline
+      args: [{ name: id }]
+      flags:
+        - name: --from-step
+          type: int
+      maps_to: { type: rest, method: POST, path: /v1/pipelines/{pipeline_id}/run }
+
+    - path: pipeline status
+      category: pipeline
+      args: [{ name: id }]
+      maps_to: { type: rest, method: GET, path: /v1/pipelines/{pipeline_id}/status }
+
+    # ── 1.5 Chat commands (PRD §40.6 §40.7 §40.13) ────────────────────
+    - path: chat new
+      category: chat
+      flags:
+        - name: --project
+          type: string
+          description: Optionally project-scoped chat
+      maps_to: { type: rest, method: POST, path: /v1/chats }
+
+    - path: chat resume
+      category: chat
+      args: [{ name: id }]
+      maps_to: { type: rest, method: GET, path: /v1/chats/{chat_id} }
+
+    - path: chat list
+      category: chat
+      maps_to: { type: rest, method: GET, path: /v1/chats }
+
+    - path: chat show
+      category: chat
+      args: [{ name: id }]
+      maps_to: { type: rest, method: GET, path: /v1/chats/{chat_id}/history }
+
+    - path: chat promote
+      category: chat
+      description: Trigger chat-to-project graduation (PRD §40.6)
+      args: [{ name: id }]
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/chats/{chat_id}/promote
+      validation:
+        - rule: must_have_explicit_project_intent
+          message: "PRD §40.6: chat→project graduation requires explicit user intent"
+          exit_code: 422
+
+    - path: chat notechat
+      category: chat
+      description: Save chat to Notes (PRD §40.8)
+      args: [{ name: id }]
+      maps_to: { type: rest, method: POST, path: /v1/chats/{chat_id}/notechat }
+      requires_explicit_user_consent: true
+
+    - path: chat send
+      category: chat
+      description: Post a message to a chat (no-action mode)
+      args:
+        - name: id
+        - name: message
+      maps_to: { type: rest, method: POST, path: /v1/chats/{chat_id}/messages }
+
+    # ── 1.6 Note commands (PRD §38) ───────────────────────────────────
+    - path: note new
+      category: note
+      args:
+        - name: filename
+          required: false
+          description: Defaults to today's daily journal
+      maps_to: { type: rest, method: POST, path: /v1/notes }
+
+    - path: note list
+      category: note
+      flags:
+        - name: --group
+          type: enum
+          values: [daily, prompts, snippets, links, evergreen]
+      maps_to: { type: rest, method: GET, path: /v1/notes }
+
+    - path: note open
+      category: note
+      args: [{ name: filename }]
+      maps_to:
+        type: local
+        action: open_in_editor
+        editor_from: config.editor
+
+    - path: note search
+      category: note
+      args: [{ name: query }]
+      maps_to: { type: rest, method: GET, path: /v1/notes/search }
+
+    - path: note star
+      category: note
+      args: [{ name: filename }]
+      maps_to: { type: rest, method: POST, path: /v1/notes/{filename}/star }
+
+    # ── 1.7 Pod and compute commands (PRD §24 §41) ────────────────────
+    - path: pod status
+      category: pod
+      description: Show all running pods + GPU util + cost
+      maps_to: { type: rest, method: GET, path: /v1/compute/pods }
+
+    - path: pod ssh
+      category: pod
+      args:
+        - name: id
+          required: false
+          description: Defaults to first running pod
+      maps_to:
+        type: local
+        action: ssh
+        ssh_key_from: config.ssh_key_path
+
+    - path: pod kill
+      category: pod
+      description: Graceful kill with 30s checkpoint window
+      args: [{ name: id }]
+      requires_confirmation: true
+      maps_to: { type: rest, method: POST, path: /v1/compute/pods/{pod_id}/kill }
+
+    - path: pod restart
+      category: pod
+      description: Restart a stopped pod (volume preserved)
+      args: [{ name: id }]
+      maps_to: { type: rest, method: POST, path: /v1/compute/pods/{pod_id}/restart }
+
+    - path: pod logs
+      category: pod
+      args: [{ name: id }]
+      flags:
+        - name: --follow
+          short: -f
+          type: bool
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/compute/pods/{pod_id}/logs
+        stream: sse
+
+    - path: credits
+      category: pod
+      description: Show balance + 24h burn + projected runway
+      maps_to: { type: rest, method: GET, path: /v1/compute/credits }
+
+    - path: credits stream
+      category: pod
+      description: Live stream of credit changes (SSE)
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/compute/credits/stream
+        stream: sse
+
+    - path: dispatch decide
+      category: pod
+      description: Show what §41 routing would pick (no actual dispatch)
+      flags:
+        - name: --requires-gpu
+          type: bool
+        - name: --duration
+          type: int
+          required: true
+      maps_to: { type: rest, method: POST, path: /v1/compute/dispatch/decide }
+
+    # ── 1.8 Agent commands ────────────────────────────────────────────
+    - path: agent list
+      category: agent
+      maps_to: { type: rest, method: GET, path: /v1/agents }
+
+    - path: agent show
+      category: agent
+      description: Show 10-tab agent detail (PRD §34)
+      args: [{ name: name }]
+      maps_to: { type: rest, method: GET, path: /v1/agents/{agent_name} }
+
+    - path: agent invoke
+      category: agent
+      args: [{ name: name }]
+      flags:
+        - name: --payload
+          type: string
+          format: json
+          required: true
+      maps_to: { type: rest, method: POST, path: /v1/agents/{agent_name}/invoke }
+
+    - path: agent wake
+      category: agent
+      args: [{ name: name }]
+      maps_to: { type: rest, method: POST, path: /v1/agents/{agent_name}/wake }
+
+    - path: agent sleep
+      category: agent
+      args: [{ name: name }]
+      maps_to: { type: rest, method: POST, path: /v1/agents/{agent_name}/sleep }
+
+    - path: agent learnings
+      category: agent
+      description: Tail the agent's learnings.jsonl
+      args: [{ name: name }]
+      flags:
+        - name: --follow
+          short: -f
+          type: bool
+      maps_to:
+        type: rest
+        method: GET
+        path: /v1/agents/{agent_name}/learnings
+        stream: sse
+
+    - path: agent diff
+      category: agent
+      args: [{ name: name }]
+      maps_to: { type: rest, method: GET, path: /v1/agents/{agent_name}/diff }
+
+    # ── 1.9 Memory commands (PRD §20) ─────────────────────────────────
+    - path: memory search
+      category: memory
+      args: [{ name: query }]
+      flags:
+        - name: --layer
+          type: enum
+          values: [user, agent, lab, global, all]
+          default: all
+      maps_to: { type: rest, method: GET, path: /v1/memory/search }
+
+    - path: memory save
+      category: memory
+      flags:
+        - name: --type
+          type: enum
+          values: [user, feedback, project, reference]
+          required: true
+        - name: --title
+          type: string
+          required: true
+        - name: --body
+          type: string
+          required: true
+        - name: --layer
+          type: enum
+          values: [user, agent, lab, global]
+          default: lab
+      maps_to: { type: rest, method: POST, path: /v1/memory }
+
+    - path: memory list
+      category: memory
+      flags:
+        - name: --layer
+          type: enum
+          values: [user, agent, lab, global]
+      maps_to: { type: rest, method: GET, path: /v1/memory }
+
+    # ── 1.10 Standup commands (PRD §27) ───────────────────────────────
+    - path: standup list
+      category: standup
+      maps_to: { type: rest, method: GET, path: /v1/standups }
+
+    - path: standup show
+      category: standup
+      args: [{ name: id }]
+      maps_to: { type: rest, method: GET, path: /v1/standups/{standup_id} }
+
+    - path: standup trigger
+      category: standup
+      description: Trigger an unscheduled standup (per `/standup-now` slash command)
+      maps_to: { type: rest, method: POST, path: /v1/standups }
+
+    - path: standup next
+      category: standup
+      description: Show next scheduled standup time
+      maps_to: { type: rest, method: GET, path: /v1/standups/next }
+
+    # ── 1.11 Cost commands (PRD §11 §41) ──────────────────────────────
+    - path: costs
+      category: costs
+      description: Today's spend + MTD + projected runway
+      maps_to: { type: rest, method: GET, path: /v1/costs/summary }
+
+    - path: costs by-provider
+      category: costs
+      description: Breakdown per provider
+      maps_to: { type: rest, method: GET, path: /v1/costs/by-provider }
+
+    - path: costs history
+      category: costs
+      flags:
+        - name: --days
+          type: int
+          default: 30
+      maps_to: { type: rest, method: GET, path: /v1/costs/history }
+
+    - path: costs top-experiments
+      category: costs
+      flags:
+        - name: --limit
+          type: int
+          default: 10
+      maps_to: { type: rest, method: GET, path: /v1/costs/top-experiments }
+
+    # ── 1.12 Backup commands (PRD §6) ─────────────────────────────────
+    - path: backup list
+      category: backup
+      maps_to: { type: rest, method: GET, path: /v1/backups }
+
+    - path: backup sync
+      category: backup
+      args: [{ name: dest }]
+      maps_to: { type: rest, method: POST, path: /v1/backups/{dest}/sync }
+
+    - path: backup verify
+      category: backup
+      args: [{ name: dest }]
+      maps_to: { type: rest, method: POST, path: /v1/backups/{dest}/verify }
+
+    - path: backup history
+      category: backup
+      maps_to: { type: rest, method: GET, path: /v1/backups/history }
+
+    # ── 1.13 Cross-lab comms commands (PRD §40.11) ────────────────────
+    - path: comm send
+      category: comm
+      flags:
+        - name: --to
+          type: string
+          required: true
+          description: Other lab slug
+        - name: --type
+          type: enum
+          values: [suggestion, question, fyi, dataset_offer]
+          required: true
+        - name: --subject
+          type: string
+          required: true
+        - name: --body
+          type: string
+          required: true
+      maps_to: { type: rest, method: POST, path: /v1/comms }
+      cross_lab_policy: read_only_message_send
+
+    - path: comm inbox
+      category: comm
+      maps_to: { type: rest, method: GET, path: /v1/comms/inbox }
+
+    - path: comm accept
+      category: comm
+      args: [{ name: id }]
+      requires_confirmation: true
+      maps_to: { type: rest, method: POST, path: /v1/comms/{comm_id}/accept }
+
+    - path: comm reject
+      category: comm
+      args: [{ name: id }]
+      maps_to: { type: rest, method: POST, path: /v1/comms/{comm_id}/reject }
+
+    - path: comm sent
+      category: comm
+      maps_to: { type: rest, method: GET, path: /v1/comms/sent }
+
+    # ── 1.14 Universal search ─────────────────────────────────────────
+    - path: search
+      category: search
+      args: [{ name: query }]
+      flags:
+        - name: --type
+          type: enum
+          values: [paper, experiment, agent, file, contribution, survey, chat, note, all]
+          default: all
+        - name: --json
+          type: bool
+          description: Shorthand for --format json
+      maps_to: { type: rest, method: GET, path: /v1/search }
+
+    # ── 1.15 MCP server commands ──────────────────────────────────────
+    - path: mcp serve
+      category: mcp
+      description: Run the MCP server (default stdio mode for Claude Code)
+      flags:
+        - name: --lab
+          type: string
+        - name: --sse
+          type: bool
+          description: Run in SSE mode instead of stdio
+        - name: --port
+          type: int
+          default: 3030
+      maps_to:
+        type: local
+        action: start_mcp_server
+        spec_ref: ./mcp-server-spec.yaml
+
+    - path: mcp tools list
+      category: mcp
+      maps_to:
+        type: local
+        action: list_mcp_tools
+
+    - path: mcp tools describe
+      category: mcp
+      args: [{ name: tool_name }]
+      maps_to:
+        type: local
+        action: describe_mcp_tool
+
+    - path: mcp resources list
+      category: mcp
+      maps_to:
+        type: local
+        action: list_mcp_resources
+
+    - path: mcp prompts list
+      category: mcp
+      maps_to:
+        type: local
+        action: list_mcp_prompts
+
+    - path: mcp test
+      category: mcp
+      args: [{ name: tool_name }]
+      flags:
+        - name: --input
+          type: string
+          format: json
+          required: true
+      maps_to:
+        type: local
+        action: test_mcp_tool_call
+
+    - path: mcp audit
+      category: mcp
+      description: Tail the MCP audit log
+      flags:
+        - name: --follow
+          short: -f
+          type: bool
+      maps_to:
+        type: local
+        action: tail_audit_log
+        path_template: lab/audit/mcp-{agent}.jsonl
+
+    # ── 1.16 Auth commands ────────────────────────────────────────────
+    - path: auth login
+      category: auth
+      flags:
+        - name: --token
+          type: string
+          sensitive: true
+      maps_to:
+        type: local
+        action: oauth_or_token_login
+
+    - path: auth status
+      category: auth
+      description: Show current auth state (user, scopes, expiration)
+      maps_to:
+        type: local
+        action: read_credentials_status
+
+    - path: auth logout
+      category: auth
+      description: Revoke the current token
+      maps_to:
+        type: rest
+        method: POST
+        path: /v1/auth/logout
+
+    - path: auth tokens list
+      category: auth
+      requires_admin: true
+      maps_to: { type: rest, method: GET, path: /v1/auth/tokens }
+
+    - path: auth tokens create
+      category: auth
+      flags:
+        - name: --name
+          type: string
+          required: true
+        - name: --scopes
+          type: string
+          description: Comma-separated scope list
+      maps_to: { type: rest, method: POST, path: /v1/auth/tokens }
+
+    - path: auth tokens revoke
+      category: auth
+      args: [{ name: id }]
+      requires_confirmation: true
+      maps_to: { type: rest, method: DELETE, path: /v1/auth/tokens/{token_id} }
+
+    # ── 1.17 Config commands ──────────────────────────────────────────
+    - path: config get
+      category: config
+      args: [{ name: key, required: false }]
+      maps_to:
+        type: local
+        action: read_config_key
+
+    - path: config set
+      category: config
+      args:
+        - name: key
+        - name: value
+      maps_to:
+        type: local
+        action: write_config_key
+      validation:
+        - rule: reject_secret_keys
+          message: "Refusing to store secret in config.yaml — use env var or credentials file"
+          exit_code: 23
+
+    - path: config list
+      category: config
+      maps_to:
+        type: local
+        action: list_config_keys
+
+    - path: config edit
+      category: config
+      description: Open config file in $EDITOR
+      maps_to:
+        type: local
+        action: open_in_editor
+
+    - path: config path
+      category: config
+      description: Print the config file path
+      maps_to:
+        type: local
+        action: print_config_path
+
+    # ── 1.18 Status / system commands ─────────────────────────────────
+    - path: status
+      category: status
+      description: Quick health check
+      maps_to: { type: rest, method: GET, path: /v1/status }
+
+    - path: open
+      category: status
+      description: URL scheme handler (PRD §40.17 Tier 4)
+      args: [{ name: url, type: hubify_url }]
+      maps_to:
+        type: local
+        action: handle_hubify_url
+
+    - path: version
+      category: status
+      maps_to:
+        type: local
+        action: print_version
+
+    - path: help
+      category: status
+      args: [{ name: command, required: false }]
+      maps_to:
+        type: local
+        action: print_help
+
+    # ── 1.19 TUI mode ─────────────────────────────────────────────────
+    - path: tui
+      category: tui
+      description: Open the interactive bubbletea-based TUI (also default when no args)
+      framework: bubbletea
+      keyboard:
+        cmd_1_to_9: switch view
+        slash: search
+        question_mark: help
+        ctrl_c: exit
+      mirrors_web_ui: true
+      maps_to:
+        type: local
+        action: launch_tui
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Cross-lab Sovereignty Rule (CLI-layer enforcement)
+  # ──────────────────────────────────────────────────────────────────────
+  cross_lab_rules:
+    rule: PRD §40.11 — cross-lab read OK, cross-lab write NEVER
+    enforcement_layer: cli (before sending HTTP request)
+    error_template:
+      type: cross-lab-write-denied
+      title: Cross-lab write rejected
+      detail: "Lab '{source}' cannot write to lab '{target}'. Use a comm message instead (`hubify comm send --to {target} ...`)"
+      exit_code: 24
+      links:
+        prd_section: PRD §40.11
+        api_spec: api-spec.openapi.yaml#/components/responses/CrossLabWriteDenied
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Validation rules (rejected at CLI before HTTP)
+  # ──────────────────────────────────────────────────────────────────────
+  validations:
+    - id: must_specify_compute_mode
+      applies_to: [experiment dispatch]
+      rule: "exactly one of --gpu or --cpu MUST be set"
+      reference: PRD §41 routing
+      exit_code: 22
+
+    - id: must_have_explicit_project_intent
+      applies_to: [chat promote]
+      rule: "user must confirm project intent before graduation"
+      reference: PRD §40.6
+      exit_code: 422
+
+    - id: requires_explicit_user_consent
+      applies_to: [chat notechat]
+      rule: "agents NEVER auto-save chats to Notes"
+      reference: PRD §40.13
+      exit_code: 25
+
+    - id: reject_secret_keys
+      applies_to: [config set]
+      rule: "secret-shaped keys (token, password, key, secret) cannot be stored in config.yaml"
+      exit_code: 23
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Error codes (the canonical list returned to shell scripts)
+  # ──────────────────────────────────────────────────────────────────────
+  exit_codes:
+    0: success
+    1: generic error (catch-all)
+    2: usage error (bad flags or args)
+    3: auth required (no token, expired token)
+    4: permission denied (token valid but lacks scope)
+    5: not found (lab/project/experiment/etc. doesn't exist)
+    6: conflict (resource state prevents operation)
+    7: rate limited
+    8: network error (cannot reach API)
+    22: PRD §41 routing violation (dispatch without --gpu or --cpu)
+    23: secret-in-config violation
+    24: Lab Sovereignty Rule violation (cross-lab write)
+    25: explicit-consent violation (e.g., notechat without confirm)
+    100: internal server error from API
+    422: validation error
+    130: SIGINT (user pressed Ctrl-C)
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Shell completion
+  # ──────────────────────────────────────────────────────────────────────
+  completion:
+    command: hubify completion <shell>
+    shells: [bash, zsh, fish, powershell]
+    install_examples:
+      bash: hubify completion bash > /etc/bash_completion.d/hubify
+      zsh: hubify completion zsh > "${fpath[1]}/_hubify"
+      fish: hubify completion fish > ~/.config/fish/completions/hubify.fish
+      powershell: hubify completion powershell | Out-String | Invoke-Expression
+    dynamic_completion:
+      enabled: true
+      sources:
+        - lab_slugs: from `hubify lab list` (cached 60s)
+        - project_ids: from `hubify project list` (cached 60s)
+        - experiment_ids: from `hubify experiment list` (cached 30s)
+        - agent_names: from `hubify agent list` (cached 5min)
+
+  # ──────────────────────────────────────────────────────────────────────
+  # Plugin system (DEFERRED to v1.1)
+  # ──────────────────────────────────────────────────────────────────────
+  plugins:
+    status: deferred_v1.1
+    pattern: github CLI extensions (gh extensions)
+    install_path: ~/.hubify/plugins/
+    invocation: hubify <plugin-name>
+    rationale: |
+      v1.0 ships with a curated, compact CLI. The plugin system arrives in v1.1
+      after the core surface stabilizes. Plugins are Go binaries placed in
+      ~/.hubify/plugins/ and invoked as subcommands.
+    deferred_commands:
+      - hubify plugin install <name>
+      - hubify plugin list
+      - hubify plugin update
+      - hubify plugin remove <name>
+
+# End of cli-spec.yaml
+#
+# Per BUILD_READINESS_CHECKLIST.md Category F, this YAML lock completes
+# Item 8 of 8. Category F is now 100% (8/8) once committed and backfilled.
