@@ -333,6 +333,16 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `20975cf` — Guides peer-review card: added Perplexity, removed incorrect "non-Anthropic" framing, 3→4 reviewers
 - `9d7efcf` — How It Works step 03: added Perplexity to reviewer list (consistent with guides fix)
 - `03a2166` — Feature 05 peer review: "3 non-Anthropic" → "4 models from 4 providers" (Sonnet is Anthropic)
+- `b688c41` — Lab Detail discovery 03: SPHEREx forecast "4.6σ" → "4.38σ" (matches CLAUDE.md authoritative value)
+- `c36c4fc` — Blog article preview + timeline review entry: added Perplexity to reviewer list (4-reviewer consistency)
+- `a33a0c1` — Research IDE (index.html): 17× SPHEREx "4.6σ" → "4.38σ" across figure captions, SVG labels, paper abstract, JS data
+
+**Full data-accuracy audit completed 2026-04-09 (post-compaction continuation):**
+- All SPHEREx σ values now 4.38σ across all 4 mockup files (27 instances in index.html, 1 in marketing-site, 1 in lab detail)
+- All reviewer lists now consistent: 4 reviewers, 4 providers (GPT-5 · Gemini · Perplexity · Sonnet skeptic), no Grok, no "non-Anthropic" framing for Sonnet
+- All ALP birefringence, PTA/NANOGrav, w0-wa MCMC values verified correct
+- No remaining jargon leaks (bubbletea, containerized, AI-native, Grok, Fly.io in marketing copy)
+- All content entity click handlers verified: openSidepeek() for entities, toast() only for control/action buttons
 
 ### Autonomous loop endpoint reached (master + polish items)
 
