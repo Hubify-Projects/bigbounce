@@ -89,11 +89,11 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] §39 Activity graph (neural brain view)
 - [x] §40 Hierarchy v2 LOCKED (5-level model + intent layer + chats + sharing)
 - [x] §41 Compute routing & credits monitoring
-- [ ] **§42 (TBD) — macOS desktop app spec** — full native features + Tauri shell architecture
-- [ ] **§43 (TBD) — REST + GraphQL API spec** — complete endpoint inventory
-- [ ] **§44 (TBD) — MCP server spec** — tools, resources, auth, scoping
-- [ ] **§45 (TBD) — CLI spec** — commands, auth, output formats, plugin system
-- [ ] **§46 (TBD) — Deployment infrastructure plan** — Vercel/Convex/Fly/RunPod/Backblaze + DNS
+- [x] **§42 — macOS desktop app spec** (commit `pending-prd5`) — Tauri 2.x decision + 11 native features + menu bar variant + iOS deferral + distribution; PRD-resident summary that points at the canonical `DESKTOP_APP_SPEC.md`
+- [x] **§43 — REST + GraphQL API spec** (commit `pending-prd5`) — JWT HS256 + per-lab scopes + ~85 endpoints across 19 groups + RFC 7807 errors + §41 routing requirement; points at `API_SPEC.md` + `api-spec.openapi.yaml`
+- [x] **§44 — MCP server spec** (commit `pending-prd5`) — 4 MCP primitives + 3 transports + ~30 tools across 11 categories + 15 resources + 6 prompts + Lab Sovereignty enforcement + N4-not-claimable + audit logging; points at `MCP_SERVER_SPEC.md` + `mcp-server-spec.yaml`
+- [x] **§45 — CLI spec** (commit `pending-prd5`) — Go + Cobra + bubbletea TUI + ~120 commands across 19 categories + §41 routing CLI enforcement + OAuth/PKCE auth + plugin system deferred to v1.1; points at `CLI_SPEC.md` + `cli-spec.yaml`
+- [x] **§46 — Deployment infrastructure plan** (commit `pending-prd5`) — Vercel + Convex + Fly + RunPod + Backblaze + Cloudflare + GitHub Actions + monitoring stack + Fly 4-surface integration model + cost forecast; points at `DEPLOYMENT_INFRA_PLAN.md`
 - [ ] **§47 (TBD) — Mintlify docs port plan** — first 7 docs pages outline (started in §40.17 Tier 3, needs expansion)
 - [ ] **§48 (TBD) — `hubify://` URL scheme spec** — full URL pattern catalog
 - [ ] **§49 (TBD) — Authentication & authorization spec** — OAuth provider, token issuing, per-lab scoping, agent authentication
@@ -103,7 +103,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **PRD open questions answered** — (1) chat default model: Sonnet 4.6 default · confirm? (2) voice dictation provider: Whisper API default · confirm? (3) cross-lab read-only enforcement layer: GitHub perms + Convex auth · confirm? (4) BigBounce migration final subdomain: `bigbounce2.hubify.app` placeholder vs alternatives
 - [ ] **5 lab spec files reviewed by Houston** (all 5 written, awaiting his read): MIGRATION_BOUNCE_COSMOLOGY_LAB · LAB_HUBIFY_SELF_IMPROVING · LAB_DARK_ENERGY · LAB_DARK_MATTER · LAB_ETI
 
-**A status:** ~85% — most sections done, 9 new sections to write + a handful of fills + question answers + Houston review pass.
+**A status:** ~92% — 5 of the 9 stub sections (§42, §43, §44, §45, §46) now written as PRD-resident summaries that point at their canonical companion files. 4 stubs remain (§47 Mintlify port, §48 hubify:// URL scheme, §49 auth/authz, §50 telemetry).
 
 ### B. Web mockup lock complete
 
@@ -253,7 +253,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 | Category | Done | Total | % |
 |---|---|---|---|
-| A. PRD lock | 41 | 51 | 80% |
+| A. PRD lock | 46 | 51 | 90% |
 | B. Web mockup | 33 | 49 | 67% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **119** | **156** | **76%** |
+| **OVERALL** | **124** | **156** | **79%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 

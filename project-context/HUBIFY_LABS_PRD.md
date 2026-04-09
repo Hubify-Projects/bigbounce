@@ -7464,6 +7464,285 @@ Tracked as separate mockup tasks (see `.queue.md`):
 
 ---
 
+## 42. macOS Desktop App Spec (Tauri 2 Shell)
+
+**Status:** Locked 2026-04-08. Full spec lives in `project-context/DESKTOP_APP_SPEC.md` (700 lines). This section is the PRD-resident summary that points at the canonical file.
+
+### 42.0 Why this section exists
+
+Houston lives in macOS. The web app at `https://hubify-labs.com` covers the cross-platform case, but a real native chrome on macOS gives him: native window controls + system menu bar + Touch Bar + native notifications + dock badge + Finder file drop + `hubify://` URL scheme handler + launchd background service + iCloud sync for journal notes. The desktop app is the **primary surface for the founder**, the web app is the **backup surface and cross-platform fallback**.
+
+### 42.1 Decision: Tauri 2.x
+
+DECISION: Tauri 2.x (over Electron, native Swift, React Native).
+
+Reasons:
+- 5-10× smaller bundle than Electron (~10MB vs ~150MB)
+- Native WKWebView (no Chromium runtime shipped with the app)
+- Rust backend for filesystem + auth + IPC
+- Cross-compile to macOS / Linux / Windows from one toolchain
+- Mature signing + notarization via `tauri-action`
+
+Rejected:
+- **Electron** — bundle size + memory hog
+- **Native Swift / SwiftUI** — doubles the codebase, the team is solo (Houston)
+- **React Native macOS** — ecosystem fragmentation, Microsoft fork status uncertain
+
+### 42.2 The 11 native features (full spec in DESKTOP_APP_SPEC.md §1)
+
+1. Native window chrome (or borderless like Linear/Cursor)
+2. Native menu bar (App / File / Edit / View / Window / Help) with keyboard shortcuts
+3. Dock badge (unread notification count)
+4. Native notifications (`NSUserNotification`)
+5. Native file drop (Finder → app)
+6. `hubify://` URL scheme handler registered in `Info.plist`
+7. launchd background service (orchestrator runs even when the main app is closed)
+8. Native keyboard shortcuts (⌘N new note, ⌘K command palette, ⌘W close tab)
+9. iCloud sync for journal notes (optional toggle)
+10. Code signing identity + notarization (`tauri-action` workflow)
+11. Auto-update channel (Tauri's built-in updater, not Sparkle)
+
+### 42.3 Menu bar app variant (DESKTOP_APP_SPEC.md §2)
+
+A separate Tauri window with `decorations:false`, `alwaysOnTop:true`, `skipTaskbar:true`, anchored under the macOS menu bar icon via `tauri-plugin-positioner`. Uses the `NSStatusItem` API. Popover content: Director status · credits + runway · quick chat input · recent activity · "Open Hubify Labs" button.
+
+For users who want always-resident monitoring without the full app window taking screen space.
+
+### 42.4 iOS deferral (DESKTOP_APP_SPEC.md §3.5)
+
+iOS is **deferred to v2**. Reasons:
+- iOS is mostly a viewer not a driver — the work happens at a desk
+- Native iOS dev is expensive (Tauri 2 iOS is not production-ready, Swift/RN both multi-week investments)
+- Web app on Safari mobile + ntfy.sh + PWA manifest already covers ~80% of the iPhone use case
+- ntfy.sh handles the only thing that requires native iOS (push notifications)
+
+v1 ships with: mobile-responsive web + ntfy.sh + PWA manifest + universal links to handle `hubify://` URLs in Safari.
+v2 plan: re-evaluate Tauri 2 iOS in Q3 2026, fall back to Swift/SwiftUI if it's still not ready.
+
+### 42.5 Distribution
+
+- macOS Universal binary (Apple Silicon + Intel) signed + notarized
+- Direct download from `https://hubify-labs.com/download/mac`
+- Homebrew cask: `brew install --cask hubify-labs/tap/hubify-desktop`
+- Auto-update via Tauri's built-in updater (signed manifest at `https://hubify-labs.com/desktop/updates.json`)
+
+### 42.6 Linked file
+
+Full inventory + 700 lines of detail: `project-context/DESKTOP_APP_SPEC.md` (committed `d025f47`, iOS deferral statement added in commit `4695389`).
+
+---
+
+## 43. REST + GraphQL API Spec (the v1 contract)
+
+**Status:** Locked 2026-04-08. Human-readable spec in `project-context/API_SPEC.md` (~500 lines). Machine-readable contract in `project-context/api-spec.openapi.yaml` (OpenAPI 3.1, ~600 lines, commit `8ea7a93`).
+
+### 43.0 Why this section exists
+
+Hubify Labs is split across many surfaces (web · macOS · iOS web · CLI · MCP server · cron jobs). All of them talk to the same backend. The API spec is the **single contract** every surface depends on.
+
+### 43.1 Versioning
+
+URL path versioning (`/v1/...`). 12-month deprecation policy. `Sunset` and `Link` headers on deprecated endpoints.
+
+### 43.2 Auth (full detail in API_SPEC.md §2)
+
+- **JWT HS256** with 3 token types: `user` (interactive) · `agent` (per-agent service token) · `service` (CI / cron)
+- **Per-lab scopes** enforce the Lab Sovereignty Rule (`PRD §40.11`) at the auth layer — cross-lab writes return **403 with type `cross-lab-write-denied`** before reaching any handler
+- **3-tier rate limits** per token type, with per-endpoint overrides for expensive operations (search, dispatch)
+
+### 43.3 Endpoint inventory
+
+**~85 endpoints across 19 groups** (full list in API_SPEC.md §3):
+
+labs · projects · pipelines · experiments · files · chats · papers · notes · agents · memory · contributions · compute (pods + credits) · cross-lab comms · webhooks · search · standups · routines · backups · costs
+
+### 43.4 Error format
+
+**RFC 7807 Problem Details** (`application/problem+json`). 11 standard error type slugs (full list in API_SPEC.md §5). Every error has a `type`, `title`, `status`, `detail`, and instance-specific `links` to the relevant PRD section.
+
+### 43.5 GraphQL
+
+Single endpoint `/v1/graphql` for read-heavy queries that need joins (e.g. "give me all experiments for this project with their latest log line and current status"). REST is the primary surface for write operations. Full GraphQL schema deferred to v1.1 — example queries documented in API_SPEC.md §7.
+
+### 43.6 PRD §41 routing requirement
+
+The experiment dispatch endpoint (`POST /v1/experiments`) **MUST return 422** if `requires_gpu` is missing from the body. This is the API-layer enforcement of the §41 routing rule. The CLI (cli-spec.yaml) and MCP server (mcp-server-spec.yaml) enforce the same rule before sending the request.
+
+### 43.7 Linked files
+
+- Human spec: `project-context/API_SPEC.md` (commit `eb3bcfd`)
+- Machine spec: `project-context/api-spec.openapi.yaml` (commit `8ea7a93`)
+
+---
+
+## 44. MCP Server Spec — How AI Agents Drive Hubify Labs
+
+**Status:** Locked 2026-04-08. Human-readable spec in `project-context/MCP_SERVER_SPEC.md` (~700 lines, commit `0546d5d`). Machine-readable contract in `project-context/mcp-server-spec.yaml` (commit `19917e0`).
+
+### 44.0 Why this section exists
+
+Hubify Labs ships with a Model Context Protocol server so any MCP-aware client (Claude Code, Cursor, custom agents) can read lab state and drive actions. The MCP server is the **agent surface** to the platform — the API + CLI are for humans + scripts, the MCP server is for LLMs.
+
+### 44.1 The 4 MCP primitives
+
+1. **Tools** — actions agents can take (read file, dispatch experiment, save note, send comm, etc.)
+2. **Resources** — data agents can read (lab metadata, experiment logs as live SSE, projects list, papers, contributions)
+3. **Prompts** — reusable prompt templates the server provides to clients
+4. **Sampling** — the server can request the client to sample from the model (used by `houston_method_post_experiment` and `publish_ready_check` prompts)
+
+### 44.2 The 3 transports
+
+1. **stdio** — default, for CLI-spawned servers (Claude Code's pattern)
+2. **SSE** (HTTP server-sent events) — for web-based MCP clients
+3. **WebSocket** — for high-throughput streaming use cases
+
+### 44.3 Tool inventory
+
+**~30 tools across 11 categories** (full list in MCP_SERVER_SPEC.md §2):
+
+filesystem · experiment dispatch (with §41 routing) · agent invocation · cross-lab comms · memory · contributions · notes · chats · LaTeX/paper · compute · search
+
+Every tool documents its REST endpoint mapping (so the MCP server is a thin wrapper over the API, not a parallel implementation).
+
+### 44.4 Resources
+
+**~15 resources** total: 10 snapshot resources (lab metadata, projects, agents, papers, contributions, datasets, wiki, notes, pods, runtime status) + 5 live SSE streams (activity feed, credits, standups, comms inbox, experiment logs).
+
+### 44.5 Prompt templates
+
+6 templates: `review_paper` · `houston_method_post_experiment` · `draft_chat_to_project` · `standup_facilitate` · `publish_ready_check` · `no_punt_check`
+
+### 44.6 Lab Sovereignty enforcement
+
+The MCP server enforces the Lab Sovereignty Rule (PRD §40.11) **at the protocol boundary**. Cross-lab write tools (e.g. `experiment_dispatch` for a lab the agent doesn't own) are rejected before the underlying REST call is made. Every tool has a `cross_lab_policy` field set to `NEVER_ALLOWED` for write operations.
+
+### 44.7 Constraints (protocol-layer invariants)
+
+The YAML lock (`mcp-server-spec.yaml`) includes a `constraints` section that enforces:
+- N4 contributions (Flagship-level breakthrough) **cannot** be claimed by an agent — only Houston can stamp N4
+- The `notechat` tool requires `explicit_user_consent: true` — agents NEVER auto-save chats to Notes
+
+### 44.8 Audit logging
+
+Every MCP tool call writes to `lab/audit/mcp-<agent>.jsonl` (append-only, included in the nightly Backblaze backup). This is the agent equivalent of the API access log.
+
+### 44.9 Linked files
+
+- Human spec: `project-context/MCP_SERVER_SPEC.md` (commit `0546d5d`)
+- Machine spec: `project-context/mcp-server-spec.yaml` (commit `19917e0`)
+
+---
+
+## 45. CLI Spec — `hubify` (the terminal client)
+
+**Status:** Locked 2026-04-08. Human-readable spec in `project-context/CLI_SPEC.md` (~700 lines, commit `c7804a0`). Machine-readable contract in `project-context/cli-spec.yaml` (commit `378b58a`).
+
+### 45.0 Why this section exists
+
+Houston lives in the terminal. The CLI is **how he drives Hubify Labs without leaving his shell**. It's a thin client over the REST API + MCP server, plus an interactive TUI mode.
+
+### 45.1 Decision: Go + Cobra + bubbletea
+
+DECISION: Go (single static binary, ~10ms startup, easy distribution via Homebrew).
+Framework: Cobra for the command tree, bubbletea for the TUI mode.
+
+Rejected:
+- **Node.js / TypeScript** — slower startup, requires a runtime, harder distribution
+- **Python** — same problems plus dependency hell
+- **Rust** — great choice but Cobra in Go is more mature than Clap in Rust for our needs
+
+### 45.2 Command structure
+
+**~120 commands across 19 categories** (full list in CLI_SPEC.md §1):
+
+lab · project · experiment (with §41 routing) · pipeline · chat · note · pod/compute · agent · memory · standup · costs · backup · cross-lab comms · search · MCP server · auth · config · status · TUI
+
+Pattern: `hubify <noun> <verb> [args] [flags]` — the `gh` (GitHub CLI) convention.
+
+### 45.3 PRD §41 routing enforcement
+
+The `hubify experiment dispatch` command **refuses to dispatch** without `--gpu` or `--cpu`. Exits with code 22 ("PRD §41 routing violation") and a message pointing at the relevant PRD section. This is the CLI-layer enforcement of the routing rule (the API and MCP server enforce the same rule independently).
+
+### 45.4 TUI mode
+
+`hubify` with no args opens an interactive bubbletea-based TUI mirroring the web views (Director, Experiments, Papers, Agents, Compute). Keyboard: ⌘1-9 for views, `/` for search, `?` for help.
+
+For users who want to live entirely in the terminal — no browser at all. Houston specifically asked for this in PRD §30 ("hubify CLI in terminal — auto-launches 4 sessions").
+
+### 45.5 Auth
+
+- **Browser-based OAuth (PKCE, RFC 7636)** — default
+- **Service tokens** via `HUBIFY_TOKEN` env var — for CI / cron / headless
+- **Token storage** in `~/.hubify/credentials` (mode 0600), with optional Keychain / libsecret / Credential Manager integration
+- **Profile switching** via `--profile` flag or `HUBIFY_PROFILE` env var
+
+### 45.6 Output formats
+
+Every command supports `--format text|json|yaml|table|tsv`. Auto-disables colors and progress bars when stdout is not a TTY.
+
+### 45.7 Distribution
+
+- Homebrew tap (`Hubify-Labs/homebrew-tap`)
+- Direct install: `curl -fsSL https://hubify-labs.com/install.sh | sh`
+- GitHub releases (Universal macOS, Linux x86_64 + arm64, Windows)
+
+### 45.8 Plugin system (DEFERRED to v1.1)
+
+v1.0 ships compact and curated. The plugin system arrives in v1.1. Plugins will follow the `gh extensions` pattern (Go binaries in `~/.hubify/plugins/` invoked as subcommands).
+
+### 45.9 Linked files
+
+- Human spec: `project-context/CLI_SPEC.md` (commit `c7804a0`)
+- Machine spec: `project-context/cli-spec.yaml` (commit `378b58a`)
+
+---
+
+## 46. Deployment Infrastructure Plan
+
+**Status:** Locked 2026-04-08. Full plan in `project-context/DEPLOYMENT_INFRA_PLAN.md` (~750 lines, commit `2e5f3e6`, expanded by `6eb362b` and `d5999d5`).
+
+### 46.0 Why this section exists
+
+Going from "code on disk" to "live MVP at hubify-labs.com" requires explicit decisions about every layer of infrastructure: hosting, database, orchestrator, compute, backups, DNS, CI/CD, monitoring. This section is the PRD-resident summary; the canonical plan with cost forecasts and runbooks lives in DEPLOYMENT_INFRA_PLAN.md.
+
+### 46.1 The infrastructure stack
+
+| Layer | Provider | Type | Notes |
+|---|---|---|---|
+| Web hosting | **Vercel** | Type A platform `hubify-labs.com` + Type B per-lab `<lab>.hubify.app` | DEPLOYMENT_INFRA_PLAN §2.1 |
+| Backend | **Convex** | 3 envs (dev / staging / prod) | §2.2 |
+| Orchestrator | **Fly.io** | 1 shared-CPU machine per active lab, ~$2-5/mo each | §2.3 + §2.3.1 (4 surfaces) + §2.3.2 (chat→action) |
+| Compute | **RunPod** | Pods + Serverless, GPU + CPU variants | §2.4 (per PRD §24, §41) |
+| Backups | **Backblaze B2** | Cold storage, nightly + pre-credits-out + on-demand | §2.5 |
+| Code | **GitHub `Hubify-Labs` org** | One repo per lab (PRD §1 lock) + GitHub Actions for CI/CD | §2.7 |
+| DNS | **Cloudflare** | Wildcard `*.hubify.app` for per-lab subdomains | §2.8 |
+| SSL | **Let's Encrypt** auto-provisioned via Vercel + Convex | §2.9 |
+| Monitoring | **Sentry** (errors) + **Vercel Analytics** (perf) + **Better Uptime** + custom Convex dashboards + **ntfy.sh** (phone push) + **Slack** (team) | §2.10 |
+| Email | TBD (likely Postmark or Resend for transactional) | §2.11 |
+
+### 46.2 The Fly.io 4-surface model (DEPLOYMENT_INFRA_PLAN §2.3.1)
+
+How the Fly machine integrates into the Hubify Labs UI:
+
+1. **In-app sidepeek inspector** — a `runtime` sidepeek in Settings · Compute & Runtime that shows the Fly machine status, recent commands, output stream
+2. **Terminal pane stream** — the embedded terminal panel can stream the Fly orchestrator's output in real time
+3. **Out-of-band admin URL** — `https://orchestrator-<lab-slug>.fly.dev/` for direct admin access (auth-gated)
+4. **CLI** — `hubify pod ssh` and `hubify mcp serve` both work against the Fly machine
+
+### 46.3 Migration plan reference
+
+Lab #1 (Bounce Cosmology) migration from the existing `bigbounce.hubify.app` site to a Hubify Labs lab is fully spec'd in `project-context/MIGRATION_BOUNCE_COSMOLOGY_LAB.md` (~1500 lines). 9 executable steps + risk register + post-migration roadmap.
+
+### 46.4 Cost forecast
+
+DEPLOYMENT_INFRA_PLAN §6 has the full cost forecast at v1 (~$40-60/month) and at 100-user scale (~$300-500/month). Compute (RunPod) is the dominant variable, everything else is fixed-cost.
+
+### 46.5 Linked file
+
+Full plan: `project-context/DEPLOYMENT_INFRA_PLAN.md` (commit `2e5f3e6`).
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
 **Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)
