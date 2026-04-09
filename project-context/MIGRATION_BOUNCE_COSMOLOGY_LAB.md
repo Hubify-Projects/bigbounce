@@ -914,14 +914,83 @@ After the migration, the new BigBounce Lab gets its sharing settings configured:
 
 ## 6. Open questions for Houston
 
-These need answers before Day 1 of the migration:
+These need answers before Day 1 of the migration. **Default answers proposed below — Houston confirms or overrides at the migration sign-off step.**
 
-1. **Subdomain decision** (per §0.3): which option (a/b/c/d)?
-2. **SSH credentials store** (per Step 5): Convex env vars vs HashiCorp Vault vs 1Password CLI? Default = Convex env vars.
-3. **DNS cutover timing** (per Step 7): same day as migration, or wait 24-48h to let the new lab burn in?
-4. **Quiet day for migration** — when can Houston commit to a full day with no other research happening on the H200?
-5. **Test-lab pre-validation** — should we build a tiny test lab with synthetic data first, to validate the whole import + bootstrap + Step 6 pipeline before risking it on the real BigBounce data? My recommendation: **yes**, ~1 day of work, prevents catastrophe.
-6. **Mintlify docs port** (per PRD §40.17 Tier 3) — does this happen during the migration or as a separate post-migration project? My recommendation: **separate post-migration**, the docs aren't load-bearing for the lab's first cycle.
+### Question 1 — Subdomain decision (per §0.3)
+
+**Options:**
+- (a) `bigbounce.hubify.app` — keep the original; the new lab takes over the domain on cutover day
+- (b) `bigbounce2.hubify.app` — new lab gets a new subdomain; original site stays live indefinitely as a frozen archive
+- (c) `bounce-cosmology.hubify.app` — rename to the canonical lab slug; original 301-redirects
+- (d) `bigbounce.hubify-labs.com` — move to the new platform domain entirely
+
+**Default answer:** **(b) `bigbounce2.hubify.app`** for the burn-in window, then **graduate to (a) `bigbounce.hubify.app`** after Houston signs off (1-4 weeks of dual-running). This gives the safest cutover with zero downtime risk on the original site.
+
+**Why:** Option (a) is the right end state but flipping it in Day 1 means a single-point-of-failure event. Option (b) lets us run the new lab in parallel while the old site still serves traffic. Option (c) renames the brand which is a marketing decision, not a migration decision. Option (d) couples lab hosting to platform hosting which we can do later as a v1.1 cleanup.
+
+**Houston override expected:** likely confirms (b) → (a). Worth a single yes/no.
+
+### Question 2 — SSH credentials store (per Step 5)
+
+**Options:** Convex env vars · HashiCorp Vault · 1Password CLI · GitHub Actions secrets · macOS Keychain only
+
+**Default answer:** **Convex env vars** for production secrets the orchestrator needs (RunPod API key, GitHub token, Anthropic key) + **macOS Keychain** for Houston's interactive SSH key access (already in use).
+
+**Why:** Convex env vars are managed via the Convex dashboard, encrypted at rest, scoped per deployment (dev/staging/prod). Vault is overkill for solo dev. 1Password CLI adds a vendor and a runtime dep. GitHub Actions secrets are for CI only, not the orchestrator runtime. (See `DEPLOYMENT_INFRA_PLAN.md` §2.4 for the full reasoning — it landed at the same conclusion independently.)
+
+**Houston override expected:** likely confirms. Only override if Houston has a strong opinion about Vault.
+
+### Question 3 — DNS cutover timing (per Step 7)
+
+**Options:** same day · 24h burn-in · 1 week burn-in · indefinite (never cut over, run parallel forever)
+
+**Default answer:** **1-week burn-in** with `bigbounce2.hubify.app` (per Q1 default), then DNS cutover to `bigbounce.hubify.app` on a chosen quiet day. Manual trigger from Houston, no auto-cutover.
+
+**Why:** Same-day is too risky (couples the migration's success to the cutover's success — can't test the new lab in production conditions before committing). 24h is too short for Houston to actually exercise it. 1 week gives him 5-7 work sessions in the new lab, plenty of time to surface any deal-breakers. Indefinite parallel running creates 2 sources of truth — bad for the lab=repo architecture.
+
+**Houston override expected:** likely confirms 1-week. Could shorten to 3 days if Houston is impatient.
+
+### Question 4 — Quiet day for migration
+
+**Default answer:** **Saturday or Sunday morning, after Phase 4 completes** on the H200. Specifically: pick the next weekend day where the H200 has no scheduled experiments (per `project-context/active_pods_and_pipelines.md`).
+
+**Why:** Migration day will eat 1-2 hours of focused attention plus 6h of background sync. Doing it during weekday active research means GPU contention. Weekend morning + post-Phase 4 means GPU is idle and Houston has uninterrupted focus.
+
+**Houston override expected:** Houston picks the actual date. The default is "earliest weekend after Phase 4 done."
+
+### Question 5 — Test-lab pre-validation
+
+**Options:** YES build a synthetic-data test lab first (~1 day work) · NO go straight to BigBounce migration
+
+**Default answer:** **YES, build the test lab.**
+
+**Why:** A 1-day investment to prevent a catastrophic data event on real research data is the obvious trade. The test lab uses ~100 fake experiments, ~5 fake papers, ~10 fake figures — enough to exercise every Step 1-9 of the migration plan + the first end-to-end research cycle. If the test lab succeeds, we have high confidence the real migration will succeed. If it fails, we fix the failure cheaply (no real data lost).
+
+This question is explicitly tracked as a separate H category checklist item: **"Test-lab pre-validation built"** — currently unchecked, will be done after Houston confirms this default.
+
+**Houston override expected:** likely confirms. This is the kind of "more not less" / "boil the lake" call he reliably makes the safe way.
+
+### Question 6 — Mintlify docs port timing
+
+**Options:** during migration (Day 1) · separate post-migration project (Week 4+)
+
+**Default answer:** **Separate post-migration project (Week 4+).**
+
+**Why:** The docs port is a Tier 3 deliverable per PRD §40.17. It's a public marketing surface, not a load-bearing part of the lab's first research cycle. Doing it during migration adds scope without adding research velocity. Doing it after means the lab is already proven to work in production conditions before we burn cycles on docs polish.
+
+**Houston override expected:** likely confirms post-migration. Could prioritize earlier if there's a launch announcement that needs the docs live first.
+
+### Sign-off block
+
+When Houston has reviewed the above, he writes one of:
+
+```
+[CONFIRM ALL DEFAULTS]
+or
+[OVERRIDE: Q<n> → <new answer>]  (one line per override)
+```
+
+This converts all 6 open questions into "answered" status and unblocks the migration plan from H category. The defaults above are the current proposed answers, **but the migration plan does NOT proceed until Houston explicitly confirms them.**
 
 ---
 

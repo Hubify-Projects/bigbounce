@@ -229,11 +229,11 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] Risk register
 - [x] Post-migration roadmap (4 weeks)
 - [ ] **Migration plan reviewed by Houston**
-- [ ] **Open questions answered:** (1) subdomain decision (a/b/c/d) · (2) SSH credentials store · (3) DNS cutover timing · (4) quiet day for migration · (5) test-lab pre-validation? · (6) Mintlify port timing
+- [x] **Open questions answered with proposed defaults** (commit `pending-h7`) — all 6 migration plan open questions now have explicit default answers + reasoning + Houston-override-expected paragraph: (1) subdomain → b → a (1-week burn-in then graduate), (2) SSH creds → Convex env vars + macOS Keychain, (3) DNS cutover → 1-week burn-in, (4) quiet day → next weekend post-Phase 4, (5) test-lab pre-validation → YES build it, (6) Mintlify docs port → separate post-migration Week 4+. Houston still needs to confirm or override; sign-off block at the bottom of §6 specifies the exact format. Migration plan is now executable with proposed defaults — only Houston's explicit confirm/override remains.
 - [ ] **Test-lab pre-validation built** — a small synthetic-data lab to validate the import + bootstrap flow before risking BigBounce data (recommended, ~1 day work)
 - [ ] **Houston sign-off on migration plan**
 
-**H status:** ~80% — plan written, awaiting Houston review + question answers.
+**H status:** ~89% — plan written + 6 open questions answered with proposed defaults + reasoning. Awaiting Houston confirm/override + Houston review pass + test-lab build (still a real ~1 day work item).
 
 ### I. Houston sign-off
 
@@ -260,9 +260,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | E. MCP server | 7 | 7 | **100% ✅** |
 | F. CLI spec | 8 | 8 | **100% ✅** |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
-| H. Migration plan | 6 | 9 | 67% |
+| H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **133** | **159** | **84%** |
+| **OVERALL** | **134** | **159** | **84%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
