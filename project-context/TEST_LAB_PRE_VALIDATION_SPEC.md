@@ -204,9 +204,289 @@ This is **non-negotiable**. Running the BigBounce migration on a platform that f
 
 ---
 
-## 8. Status
+## 8. Synthetic seed data generator (executable pseudocode)
+
+The build phase needs to generate the synthetic data described in §2. Here's the executable pseudocode for `scripts/generate-test-lab-seed.py`:
+
+```python
+#!/usr/bin/env python3
+# scripts/generate-test-lab-seed.py
+# Generates synthetic seed data for the test lab pre-validation
+# Run: python scripts/generate-test-lab-seed.py --output ./test-lab-alpha-seed/
+
+import os, json, csv, random
+import numpy as np
+from pathlib import Path
+from datetime import datetime, timedelta
+
+# Reproducibility
+random.seed(42)
+np.random.seed(42)
+
+OUTPUT_DIR = Path("./test-lab-alpha-seed")
+OUTPUT_DIR.mkdir(exist_ok=True)
+
+# ── 2.1 Lab metadata ─────────────────────────────────────────
+def write_lab_yaml():
+    with open(OUTPUT_DIR / "lab.yaml", "w") as f:
+        f.write("""name: test-lab-alpha
+slug: test-alpha
+mission: |
+  Synthetic test lab for pre-validating the Hubify Labs migration + bootstrap pipeline.
+  All data is fake. No real research. This lab exists to be migrated and torn down.
+visibility: private
+created: {today}
+owner: houston@hubify.com
+""".format(today=datetime.now().date().isoformat()))
+
+# ── 2.2 Synthetic projects (3) ───────────────────────────────
+def write_projects():
+    projects = {
+        "p1-fake-mcmc": {
+            "goal": "Recover the synthetic injected H0 value from a fake MCMC chain",
+            "deliverable": "Test paper compile run + a fake MCMC posterior plot",
+            "measurable": "H0 recovered within 1.5 sigma of injected 67.5",
+            "experiments": [f"exp_mcmc_{i:02d}" for i in range(5)],
+            "pipeline_steps": ["seed-chain", "burn-in", "diagnostic"],
+        },
+        "p2-fake-anomaly": {
+            "goal": "Find the 100 injected anomalies in the synthetic catalog",
+            "deliverable": "Anomaly catalog with confusion matrix",
+            "measurable": "Recall >= 90% on injected anomalies",
+            "experiments": [f"exp_anom_{i:02d}" for i in range(8)],
+            "pipeline_steps": ["preprocess", "score", "threshold", "validate"],
+        },
+        "p3-fake-paper": {
+            "goal": "Compile the test paper end-to-end through the publish-ready loop",
+            "deliverable": "fake_paper.pdf at 100% publish-ready",
+            "measurable": "Publish-ready loop reaches Round 5 with 0 blocking issues",
+            "experiments": [f"exp_paper_{i:02d}" for i in range(3)],
+            "pipeline_steps": ["draft", "peer-review", "compile", "scorecard", "submit"],
+        },
+    }
+    proj_dir = OUTPUT_DIR / "projects"
+    proj_dir.mkdir(exist_ok=True)
+    for slug, data in projects.items():
+        with open(proj_dir / f"{slug}.json", "w") as f:
+            json.dump(data, f, indent=2)
+
+# ── 2.3 Synthetic data ───────────────────────────────────────
+def write_fake_mcmc_chain():
+    """50K rows × 8 columns. H0 injected at 67.5 ± 0.5."""
+    n = 50_000
+    H0 = np.random.normal(67.5, 0.5, n)
+    Om = np.random.normal(0.315, 0.012, n)
+    n_eff = np.random.normal(3.046, 0.18, n)
+    sigma8 = np.random.normal(0.811, 0.014, n)
+    weight = np.ones(n)
+    loglike = -0.5 * (((H0 - 67.5) / 0.5) ** 2 + ((Om - 0.315) / 0.012) ** 2)
+    omega_b = np.random.normal(0.0224, 0.00015, n)
+    omega_cdm = np.random.normal(0.120, 0.001, n)
+    data_dir = OUTPUT_DIR / "data"
+    data_dir.mkdir(exist_ok=True)
+    with open(data_dir / "fake_mcmc_chain.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow(["weight", "loglike", "H0", "Om", "n_eff", "sigma8", "omega_b", "omega_cdm"])
+        for i in range(n):
+            writer.writerow([weight[i], loglike[i], H0[i], Om[i], n_eff[i], sigma8[i], omega_b[i], omega_cdm[i]])
+
+def write_fake_anomaly_catalog():
+    """1000 rows × 12 columns. 100 tagged as anomaly=true."""
+    n_total, n_anomaly = 1000, 100
+    is_anomaly = [True] * n_anomaly + [False] * (n_total - n_anomaly)
+    random.shuffle(is_anomaly)
+    data_dir = OUTPUT_DIR / "data"
+    data_dir.mkdir(exist_ok=True)
+    with open(data_dir / "fake_anomaly_catalog.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow(["id", "ra", "dec", "z", "snr", "anomaly_score", "flux", "mag",
+                         "class", "uncertainty", "is_anomaly", "notes"])
+        for i in range(n_total):
+            ra = random.uniform(0, 360)
+            dec = random.uniform(-90, 90)
+            z = random.uniform(0.05, 3.5)
+            snr = random.uniform(3, 50)
+            score = random.uniform(0.95, 1.0) if is_anomaly[i] else random.uniform(0, 0.4)
+            flux = 10 ** random.uniform(-18, -14)
+            mag = random.uniform(15, 22)
+            cls = random.choice(["star", "galaxy", "qso"])
+            unc = random.uniform(0.01, 0.3)
+            notes = "INJECTED" if is_anomaly[i] else ""
+            writer.writerow([f"obj_{i:05d}", ra, dec, z, snr, score, flux, mag, cls, unc, is_anomaly[i], notes])
+
+def write_fake_paper_tex():
+    """4-page revtex4-2 paper that compiles cleanly."""
+    paper_dir = OUTPUT_DIR / "paper"
+    paper_dir.mkdir(exist_ok=True)
+    with open(paper_dir / "fake_paper.tex", "w") as f:
+        f.write(r"""\documentclass[aps,prd,twocolumn,superscriptaddress,floatfix]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Test Paper for Hubify Labs Migration Validation}
+
+\author{test-lab-alpha}
+\email{test@test-lab.example}
+\affiliation{Synthetic Data, No Real Research, USA}
+
+\begin{abstract}
+This is a synthetic paper used to validate the Hubify Labs migration pipeline.
+We recover an injected H0 value of 67.5 km/s/Mpc from a fake MCMC chain at 0.4 sigma.
+This paper exists to be compiled, peer-reviewed, scorecarded, and submitted by the
+test-lab-alpha lab. No real scientific claims are made.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+This paper validates that the publish-ready loop (PRD section 37) can run end-to-end
+on a synthetic input.
+
+\section{Methods}
+We generated 50,000 fake MCMC samples with H0 injected at 67.5 plus/minus 0.5 km/s/Mpc.
+
+\section{Results}
+The recovered posterior mean is consistent with the injection.
+
+\section{Conclusions}
+The pipeline works.
+
+\bibliographystyle{apsrev4-2}
+\begin{thebibliography}{1}
+\bibitem{none} N. None, ``Nothing,'' Test Journal \textbf{1}, 1 (2026).
+\end{thebibliography}
+
+\end{document}
+""")
+
+# ── 2.4 Synthetic figures (5 placeholder PNGs) ────────────────
+def write_fake_figures():
+    """5 matplotlib placeholders."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        print("WARN: matplotlib not installed, skipping figure generation")
+        return
+    fig_dir = OUTPUT_DIR / "paper" / "figures"
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    for i in range(1, 6):
+        fig, ax = plt.subplots(figsize=(5, 4))
+        x = np.linspace(0, 10, 100)
+        y = np.sin(x + i) + np.random.normal(0, 0.1, 100)
+        ax.plot(x, y, color="#5fb88a", linewidth=2)
+        ax.set_xlabel("X axis")
+        ax.set_ylabel("Y axis")
+        ax.set_title(f"Test figure {i}")
+        ax.set_facecolor("#0a0c10")
+        fig.set_facecolor("#0a0c10")
+        for spine in ax.spines.values():
+            spine.set_color("#5a5e66")
+        ax.tick_params(colors="#5a5e66")
+        ax.xaxis.label.set_color("#b5b8bb")
+        ax.yaxis.label.set_color("#b5b8bb")
+        ax.title.set_color("#ebedef")
+        fig.savefig(fig_dir / f"fig_{i:02d}.png", dpi=120, bbox_inches="tight")
+        plt.close(fig)
+
+# ── Main ─────────────────────────────────────────────────────
+if __name__ == "__main__":
+    print(f"Generating test-lab-alpha seed data → {OUTPUT_DIR}/")
+    write_lab_yaml()
+    write_projects()
+    write_fake_mcmc_chain()
+    write_fake_anomaly_catalog()
+    write_fake_paper_tex()
+    write_fake_figures()
+    print("Done. Run the import script next:")
+    print(f"  hubify lab create test-alpha --import-from {OUTPUT_DIR}")
+```
+
+## 9. Executable validation commands (per step)
+
+When the test lab is built, run these commands in order to execute the validation script from §3:
+
+### Step 0 — Pre-migration backup
+```bash
+# Tarball the seed dir, upload to B2 test bucket
+tar czf test-lab-pre.tar.gz test-lab-alpha-seed/
+b2 upload-file --bucket test-cold test-lab-pre.tar.gz pre/test-lab-pre.tar.gz
+b2 ls --json test-cold pre/  # verify
+```
+
+### Step 1 — Repo creation
+```bash
+gh repo create Hubify-Labs/test-lab-alpha --private --template Hubify-Labs/lab-template
+git clone https://github.com/Hubify-Labs/test-lab-alpha.git
+cd test-lab-alpha && ls  # verify lab.yaml + standard dirs
+```
+
+### Step 2 — File system import
+```bash
+cd /Users/houstongolden/Desktop/CODE_2025/bigbounce
+python scripts/generate-test-lab-seed.py --output ./test-lab-alpha-seed/
+hubify lab create test-alpha --import-from ./test-lab-alpha-seed/
+hubify lab show test-alpha  # verify all 3 projects, 16 experiments, 1 paper
+```
+
+### Step 3 — Orchestrator bootstrap
+```bash
+fly apps create orchestrator-test-alpha --org hubify-labs
+fly machine run --app orchestrator-test-alpha hubify-labs/orchestrator:latest
+fly logs --app orchestrator-test-alpha | grep "ready"
+hubify agent list --lab test-alpha  # should show 21 agents
+```
+
+### Step 4 — Site deploy
+```bash
+vercel --prod --scope hubify-labs --name test-alpha-hubify
+curl -I https://test-alpha.hubify.app  # 200 OK
+```
+
+### Step 5 — Compute handoff (mock dispatch)
+```bash
+hubify experiment dispatch --gpu H100 --duration 30 --cmd "echo test" --lab test-alpha --dry-run
+# Verify the dispatch returns mock pod_id "test_001" without spending real GPU
+```
+
+### Step 6 — End-to-end research cycle
+```bash
+hubify chat new --lab test-alpha
+# Houston (or test bot) types: "look at the fake MCMC results"
+# Verify orchestrator routes to cosmology-worker
+# Verify wiki-worker writes a result entry
+hubify lab show test-alpha --activity  # should show 5+ events
+hubify paper publish-loop --lab test-alpha --paper fake_paper
+# Wait for Round 5 PASS
+```
+
+### Step 7 — DNS cutover
+```bash
+# SKIPPED for test lab — uses test-alpha.hubify.app directly
+```
+
+### Step 8 — Verification
+```bash
+hubify lab show test-alpha --verify
+# Expected output: 3 projects, 16 experiments, 1 paper at 100%
+# Verify Lab Sovereignty Rule:
+hubify experiment dispatch --lab bigbounce-hubify --as test-alpha  # should fail with cross-lab-write-denied (exit 24)
+```
+
+### Step 9 — Backup
+```bash
+hubify backup sync --lab test-alpha --dest b2
+b2 ls --json test-cold validated/  # verify tarball exists
+```
+
+## 10. Status
 
 **Spec written:** 2026-04-08 (this file).
+**Seed generator pseudocode:** added 2026-04-08.
+**Executable validation commands:** added 2026-04-08.
 **Build started:** TBD — happens after Houston signs off on the rest of the BUILD_READINESS_CHECKLIST and the platform reaches the "rebuild + deploy" phase.
 **Build complete:** TBD.
 **BigBounce migration unblocked:** TBD (only after this passes).
