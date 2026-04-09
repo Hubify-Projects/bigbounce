@@ -355,6 +355,7 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `63d7edf` + `a502cbc` Comprehensive marketing site jargon sweep: 8 Fly.io/Vercel Sandbox/§41/ritual instances → clean user-facing copy across Features/Guides/Blog/Timeline pages
 - `0efdcbb` Survey sidepeek: ACT DR6 + Planck CMB novel%/SNR TBD → — (cleaner data table for retrain-in-progress surveys)
 - `23f8424` Hero CTA: "Get started" → "Start your discovery"; hero note updated; STEP 01 strips Fly machine/Vercel deploy leaks
+- `90a71dc` What You Get card: "Houston Method audit" → "completeness audit"; features footer CTA copy upgrade + "Start your discovery" CTA consistency
 
 ### What Houston needs to do (when he wakes)
 
