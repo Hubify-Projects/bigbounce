@@ -141,7 +141,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Final dead-click audit** (verification gate, no commit needed) — audited 615 onclick handlers across the mockup. Zero "coming soon" / "not yet" / "tbd" toasts. Zero empty `onclick=""` handlers. Only 5 `<a href="#">` placeholder links found, all inside `view-site` (polished BigBounce site preview) where they simulate the static nav chrome of the real bigbounce.hubify.app — intentional, not dead. **Audit PASSES — every clickable element in the mockup either opens a sidepeek, navigates to a view, fires a real toast notification, or is intentional simulation chrome inside a polished view.**
 - [x] **Final PRD↔mockup consistency review re-run** (commit `e99ab85`) — audited all 28 mockup view divs against PRD §31 inventory. Found 6 drift gaps and fixed all 6 in PRD §31: (1) view-experiments now documents the §41 dispatch routing UI added in Round D #4, (2) view-comms now documents the cross-lab gateway card added in Round C #6, (3) view-tasks now documents the 7 §40 project filter chips added in Round C #8, (4) view-settings count corrected from 8 → 10 nav sections (added Lab Sharing + Runtime), (5) view-datamap added to inventory (was missing entirely), (6) view-graph added to inventory (was missing entirely). PRD §31 now lists all 28 views and matches the mockup 1:1.
 
-**B status:** ~70% — core views all built, polish + Round B/C/D refactors remaining.
+**B status:** ~100% ✅ — all autonomous items shipped across Rounds A/B/C/D. Remaining: L9 hierarchy refactor (needs Houston's architectural input) + data-accuracy audit complete (SPHEREx 4.38σ all files, 4-reviewer consistency all files).
 
 ### C. macOS app mockup + spec complete
 
