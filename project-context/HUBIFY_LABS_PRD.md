@@ -7743,6 +7743,350 @@ Full plan: `project-context/DEPLOYMENT_INFRA_PLAN.md` (commit `2e5f3e6`).
 
 ---
 
+## 47. Mintlify Docs Port — Public Documentation Site
+
+**Status:** Locked 2026-04-08. Expansion of §40.17 Tier 3 (the public docs subpath plan).
+
+### 47.0 Why this section exists
+
+Hubify Labs needs a **public documentation site** that mirrors the existing `hubify.com/docs` Mintlify pattern. The docs site is the **first thing a new user sees** before signing up — it must explain what Hubify Labs is, how the 5-level hierarchy works, what the agents do, how to get started, and how to use the CLI / API / MCP server.
+
+### 47.1 Decision: Mintlify (matches existing Hubify Labs pattern)
+
+DECISION: Mintlify, hosted at `hubify-labs.com/docs` (subpath, NOT subdomain — keeps everything on one domain for SEO + cross-linking simplicity).
+
+Rejected:
+- **Docusaurus** — heavier, more setup, less polished out of the box
+- **VitePress** — great but smaller ecosystem
+- **Custom Astro/Next.js docs** — too much work for v1
+- **GitBook** — vendor lock-in
+- **`docs.hubify-labs.com` subdomain** — fragments the domain authority
+
+### 47.2 The first 7 docs pages (v1 launch set)
+
+1. **`/docs`** — Welcome + 1-paragraph "what is Hubify Labs"
+2. **`/docs/quickstart`** — 5-minute quickstart: signup → create lab → first chat → first experiment
+3. **`/docs/concepts/hierarchy`** — The 5-level taxonomy (Lab → Project → Pipeline → Experiment → Task) with the chat-as-intent-layer explanation (PRD §40)
+4. **`/docs/concepts/agents`** — The 21 agents, the lead/orchestrator pattern, the 10-tab agent inspector (PRD §3 + §34)
+5. **`/docs/concepts/compute`** — How RunPod routing works (CPU/GPU + Pod/Serverless), credits, the 4-tier alert system (PRD §24 + §41)
+6. **`/docs/api`** — API reference auto-generated from `api-spec.openapi.yaml`
+7. **`/docs/cli`** — CLI reference auto-generated from `cli-spec.yaml`
+
+### 47.3 Codegen pipeline
+
+The API + CLI reference pages are **auto-generated** from the OpenAPI YAML and the cli-spec YAML on every commit to `main`. GitHub Actions workflow:
+1. Read `api-spec.openapi.yaml` → run `mintlify-openapi` → write to `docs/api/`
+2. Read `cli-spec.yaml` → run a custom Go script → write to `docs/cli/`
+3. Commit changes back to `docs/` if non-empty
+4. Mintlify auto-deploys on the commit
+
+This guarantees the docs **never drift** from the spec.
+
+### 47.4 Search + AI assistant
+
+Mintlify ships with:
+- **Algolia DocSearch** for full-text search (free for OSS)
+- **AI assistant** (Mintlify's built-in, powered by GPT-4) for "ask a question about the docs"
+
+Both are enabled in `mintlify.json` from day 1.
+
+### 47.5 Linked planning
+
+- The full Mintlify replication plan is referenced in PRD §40.17 Tier 3
+- The doc page outlines + naming conventions live in `project-context/MINTLIFY_PORT_PLAN.md` (TBD — to be written when the docs port begins)
+
+---
+
+## 48. `hubify://` URL Scheme — The Universal Deep-Link Catalog
+
+**Status:** Locked 2026-04-08. Companion to §40.17 Tier 4 (the URL scheme tier).
+
+### 48.0 Why this section exists
+
+Hubify Labs spans **many surfaces** (web · macOS app · iOS web · CLI · MCP server · Slack messages · Mintlify docs). Every surface needs a way to **deep-link** into a specific entity (a paper, an experiment, a chat, a memory entry). The `hubify://` URL scheme is the universal address.
+
+### 48.1 The pattern
+
+```
+hubify://<lab-slug>/<entity-type>/<entity-id>[?<query-params>]
+```
+
+- **`<lab-slug>`** — kebab-case slug of the lab (e.g., `bigbounce-hubify`, `dark-energy`)
+- **`<entity-type>`** — one of the 19 entity types (see §48.2)
+- **`<entity-id>`** — the entity's stable identifier (UUID, slug, or numeric ID depending on type)
+- **`<query-params>`** — optional view-state (e.g., `?tab=skills`, `?line=42`, `?range=2026-04-01..2026-04-08`)
+
+### 48.2 The 19 entity types
+
+| Entity type | URL pattern example | Opens in |
+|---|---|---|
+| `lab` | `hubify://bigbounce-hubify/lab` | Director view |
+| `project` | `hubify://bigbounce-hubify/project/p_42` | Project Overview sidepeek |
+| `pipeline` | `hubify://bigbounce-hubify/pipeline/pl_7` | Pipeline detail view |
+| `experiment` | `hubify://bigbounce-hubify/experiment/exp_2401` | Experiment sidepeek |
+| `task` | `hubify://bigbounce-hubify/task/t_88` | Task sidepeek |
+| `chat` | `hubify://bigbounce-hubify/chat/ch_19?tab=history` | Chat history sidepeek |
+| `paper` | `hubify://bigbounce-hubify/paper/spin-torsion-v2` | Paper sidepeek (PDF mode) |
+| `note` | `hubify://bigbounce-hubify/note/2026-04-08-daily.md` | Notes view, file open |
+| `agent` | `hubify://bigbounce-hubify/agent/orchestrator?tab=learnings` | Agent 10-tab sidepeek |
+| `memory` | `hubify://bigbounce-hubify/memory/m_551` | Memory inspector sidepeek |
+| `contribution` | `hubify://bigbounce-hubify/contribution/c_104` | Contribution sidepeek (with N-score) |
+| `dataset` | `hubify://bigbounce-hubify/dataset/desi-dr1` | Dataset sidepeek (schema + sample rows) |
+| `figure` | `hubify://bigbounce-hubify/figure/fig_22` | Figure sidepeek |
+| `survey` | `hubify://bigbounce-hubify/survey/sdss-dr18` | Survey sidepeek |
+| `pod` | `hubify://bigbounce-hubify/pod/o76k3jfzbfh25e` | Compute view, pod expanded |
+| `comm` | `hubify://bigbounce-hubify/comm/cm_7` | Comm sidepeek |
+| `standup` | `hubify://bigbounce-hubify/standup/2026-04-08-morning` | Standup transcript sidepeek |
+| `routine` | `hubify://bigbounce-hubify/routine/credits-watchdog` | Routine sidepeek |
+| `runtime` | `hubify://bigbounce-hubify/runtime/fly` | Runtime inspector sidepeek (3 variants: macos / fly / mcp) |
+
+### 48.3 Cross-lab references
+
+Cross-lab links work the same way — the URL just points at a different lab slug:
+
+```
+hubify://dark-energy/paper/quintom-fnl-forecast
+hubify://bigbounce-hubify/experiment/exp_2401
+```
+
+The receiving surface checks read-permission against the Lab Sovereignty Rule. If the user has read access (or the lab is `public_visibility: published-only`), the link opens. If not, the surface shows a "this lab is private" error with a request-access button.
+
+**Cross-lab WRITE links are explicitly forbidden** — there is no `hubify://<other-lab>/experiment/dispatch?...` URL. Writes always go through the comm-message gateway (PRD §40.11).
+
+### 48.4 Surface-specific handling
+
+| Surface | How it handles `hubify://` |
+|---|---|
+| **macOS app** (Tauri) | Registered in `Info.plist` as a URL scheme handler. macOS routes all `hubify://` clicks to the app, which then routes internally to the right view |
+| **Web app** | `https://hubify-labs.com/open?url=hubify://...` redirects to the in-app handler |
+| **iOS web** (Safari) | Universal links: `https://hubify-labs.com/u/<lab>/<entity>/<id>` is registered as a universal link, opens the web app in Safari |
+| **CLI** | `hubify open <hubify://...>` resolves the URL and either prints the entity to stdout or opens the web app in a browser (`--browser` flag) |
+| **MCP server** | Returns `hubify://` URLs in tool responses; the MCP client (e.g., Claude Code) is responsible for handling them |
+| **Slack / Discord** | The Hubify Labs Slack bot unfurls `hubify://` URLs into rich previews with the entity title + status |
+| **Mintlify docs** | Doc pages can link to `hubify://` URLs for cross-references between docs and the live app |
+
+### 48.5 Versioning
+
+The URL scheme is **stable forever**. Once an entity gets a `hubify://` URL, that URL never changes — even if the underlying entity is renamed, archived, or moved between projects. Old IDs remain resolvable (with a redirect to the new location if applicable).
+
+### 48.6 Open questions
+
+1. **Short-link service?** — Should `hubify://` URLs have a short-link form (e.g., `hubify://bb/e/2401`)? Defer to v1.1 unless there's a compelling Slack/Discord pasting use case.
+2. **Deep-link analytics** — Should we track which `hubify://` URLs are clicked, from which surface? Answer: yes, but anonymized — telemetry handled in §50.
+
+---
+
+## 49. Authentication & Authorization Spec
+
+**Status:** Locked 2026-04-08. The single source of truth for who can do what across all surfaces.
+
+### 49.0 Why this section exists
+
+Hubify Labs has many actors (users, agents, service tokens, cron jobs) and many resources (labs, projects, experiments, files). Without explicit auth + authz rules, the platform leaks information across labs (Lab Sovereignty Rule violation), allows agents to make irreversible changes without consent, or accidentally exposes private data to public users.
+
+### 49.1 Authentication providers
+
+| Provider | When used | Token format |
+|---|---|---|
+| **GitHub OAuth** | Default for human users; gives the platform GitHub repo write access for the lab=repo architecture (PRD §1) | `hbf_user_eyJ...` (JWT HS256) |
+| **Email magic link** | Fallback for users without GitHub | `hbf_user_eyJ...` (JWT HS256) |
+| **Service tokens** | CI / cron / headless agents | `hbf_st_...` (HMAC-signed, no JWT envelope) |
+| **Agent tokens** | Per-agent, per-lab, issued by the orchestrator on first agent boot | `hbf_agent_eyJ...` (JWT HS256, very short lived: 1 hour with auto-renew) |
+| **MCP client auth** | The MCP server asks the client to authenticate via OAuth at first connection (Anthropic's MCP auth pattern) | `hbf_mcp_eyJ...` (JWT HS256, lab-scoped) |
+
+### 49.2 Token types and lifetimes
+
+| Token type | Issued by | Lifetime | Refreshable | Stored where |
+|---|---|---|---|---|
+| `user` | OAuth callback | 24h | Yes (refresh token, 30d) | `~/.hubify/credentials` (CLI) · cookie (web) · keychain (desktop app) |
+| `agent` | Orchestrator | 1h | Yes (auto, no refresh token needed) | Agent's process memory only — never on disk |
+| `service` | User-issued via `hubify auth tokens create` | 90d | No (must rotate) | User-managed (env var, CI secrets) |
+| `mcp` | OAuth callback at MCP connect | 1h | Yes | MCP client's process memory |
+
+### 49.3 Per-lab scope
+
+Every token carries a `labs` claim listing which labs the token has read/write access to. Cross-lab access is **always explicit** — there's no "global admin" token (with one exception: Houston's super-admin token, which exists for emergency recovery only).
+
+```json
+{
+  "sub": "houston@hubify.com",
+  "labs": [
+    {"slug": "bigbounce-hubify", "perms": ["read", "write"]},
+    {"slug": "dark-energy", "perms": ["read", "write"]},
+    {"slug": "dark-matter", "perms": ["read"]}
+  ],
+  "exp": 1735689600,
+  "iss": "https://hubify-labs.com",
+  "aud": "https://api.hubify-labs.com"
+}
+```
+
+### 49.4 The Lab Sovereignty Rule (PRD §40.11) — auth-layer enforcement
+
+Cross-lab WRITE attempts are rejected at **THREE independent layers**:
+
+1. **CLI layer** — `cli-spec.yaml` `cross_lab_rules` validation rejects before sending the HTTP request (exit code 24)
+2. **MCP server layer** — `mcp-server-spec.yaml` `cross_lab_policy: NEVER_ALLOWED` for write tools rejects before the underlying API call
+3. **API layer** — `api-spec.openapi.yaml` returns **403 with `type: cross-lab-write-denied`** if a request reaches the handler with a token that lacks write permission for the target lab
+
+The triple enforcement is **deliberately redundant** — if any layer is bypassed (e.g. a malicious MCP client hits the API directly), the next layer catches it.
+
+### 49.5 Agent consent boundaries
+
+Some actions REQUIRE explicit user consent (an agent cannot do them autonomously even if its token has write permission):
+
+| Action | Consent reason | Enforcement |
+|---|---|---|
+| **N4 contribution claim** | "Flagship-level breakthrough" — only Houston can stamp this; agents cap at N3 | `mcp-server-spec.yaml` constraints array |
+| **Save chat to Notes** | The Notes file is the user's personal journal; agents don't get write access without per-call consent | `requires_explicit_user_consent: true` on the `notechat` tool |
+| **Public lab visibility flip** | Privacy-sensitive change | API returns 403 for non-user tokens |
+| **Delete a lab** | Irreversible (30d soft delete, but still) | API requires `user` token type, not `agent` or `service` |
+| **Issue a new service token** | Auth-sensitive | API requires `user` token type |
+| **Change auth provider settings** | Auth-sensitive | API requires `user` token type |
+
+### 49.6 Audit logging
+
+Every write action (across all surfaces) writes to `lab/audit/access.jsonl`:
+
+```jsonl
+{"ts":"2026-04-08T23:14:00Z","actor":"agent:orchestrator","action":"experiment.dispatch","lab":"bigbounce-hubify","resource":"exp_2401","result":"success","token_type":"agent","ip":null}
+{"ts":"2026-04-08T23:14:30Z","actor":"user:houston@hubify.com","action":"note.create","lab":"bigbounce-hubify","resource":"2026-04-08-daily.md","result":"success","token_type":"user","ip":"192.0.2.42"}
+```
+
+The audit log is included in the nightly Backblaze backup. It is the source of truth for "who did what when" investigations.
+
+### 49.7 Rate limits (per token type)
+
+| Token type | Read endpoints | Write endpoints | Search endpoints |
+|---|---|---|---|
+| `user` | 1000/min | 100/min | 30/min |
+| `agent` | 5000/min | 500/min | 100/min |
+| `service` | 10000/min | 1000/min | 200/min |
+
+Per-endpoint overrides (e.g., experiment dispatch is 10/min regardless of token type, to prevent runaway agents from burning the credits balance).
+
+---
+
+## 50. Telemetry & Observability Spec
+
+**Status:** Locked 2026-04-08. Companion to DEPLOYMENT_INFRA_PLAN §2.10 (monitoring stack).
+
+### 50.0 Why this section exists
+
+To operate Hubify Labs reliably, we need to know:
+- **What's happening** (live activity feed, comms inbox, current experiments)
+- **What broke** (errors, slow endpoints, failed dispatches)
+- **Who's spending what** (compute costs per lab, per experiment, per provider)
+- **What users are doing** (which views are used, where users get stuck)
+
+This section catalogs every event the platform emits, where it goes, how long it's retained, and what privacy guarantees apply.
+
+### 50.1 Event categories
+
+| Category | Examples | Destination | Retention |
+|---|---|---|---|
+| **Errors** | Uncaught exceptions, 500s, panicked agents | Sentry | 90 days |
+| **Performance** | Endpoint latency, page TTI, API request volume | Vercel Analytics + custom Convex dashboards | 30 days |
+| **Uptime** | Health-check pings to public surfaces | Better Uptime | 12 months |
+| **Audit** | Every write action across the platform | `lab/audit/access.jsonl` (per-lab), backed up nightly | Forever (lab data) |
+| **Cost** | Per-experiment GPU-hours, per-call LLM token spend, daily totals | Convex `costs` table + nightly aggregation | 12 months |
+| **Activity** | Agent actions, Houston actions, system events | Convex `activity` table (drives the activity feed sidebar) | 90 days |
+| **Standups** | Morning/midday/evening agent transcripts | Convex `standups` table | 12 months |
+| **Telemetry (anonymized)** | Page views, click events, view-switch events | Convex `telemetry` table | 90 days |
+| **Crash reports** | Tauri desktop app crashes | Sentry (separate project) | 90 days |
+
+### 50.2 Privacy boundaries
+
+| Class | Stored? | Sent to 3rd parties? | Notes |
+|---|---|---|---|
+| User email + name | Yes (Convex `users` table) | Sentry (for crash attribution, opt-in) | Required for auth |
+| Lab content (experiments, papers, notes, chats) | Yes (Convex per-lab tables) | NEVER | Lab data is sovereign |
+| Memory entries | Yes (Convex `memory` table, layered) | NEVER | Memory is sovereign |
+| Audit logs | Yes (per-lab JSONL files + Convex) | NEVER | Lab data is sovereign |
+| Telemetry (anonymized) | Yes (Convex `telemetry` table, no PII) | Aggregate counters only, no per-user data | For platform improvement |
+| Crash reports | Yes (Sentry) | Sentry (the whole point) | User can opt out via settings |
+
+**Lab content NEVER leaves the user's Convex deployment.** The only thing that goes to 3rd parties is anonymized telemetry, error stack traces (Sentry, opt-in), and uptime pings (Better Uptime, no payload).
+
+### 50.3 The activity feed (PRD §39)
+
+Every event in the `activity` category writes to the Convex `activity` table, which powers:
+- The sidebar activity feed in the web app
+- The morning standup ("here's what happened overnight")
+- The Activity Graph view (the neural-brain visualization)
+- The desktop app dock badge counter
+- ntfy.sh phone push for high-priority events
+
+Schema (simplified):
+
+```typescript
+{
+  id: string,
+  lab: string,
+  ts: timestamp,
+  actor: { type: "user" | "agent" | "system", id: string },
+  action: string,  // e.g., "experiment.dispatched", "paper.published", "credits.warn"
+  entity: { type: string, id: string },  // e.g., { type: "experiment", id: "exp_2401" }
+  payload: object,  // action-specific
+  priority: "low" | "normal" | "high" | "critical"
+}
+```
+
+### 50.4 Cost tracking (PRD §41)
+
+Per-experiment cost is tracked **in real time** by the orchestrator:
+
+```typescript
+{
+  experiment_id: "exp_2401",
+  lab: "bigbounce-hubify",
+  start_ts: "2026-04-08T22:00:00Z",
+  end_ts: "2026-04-08T23:30:00Z",
+  duration_min: 90,
+  compute_mode: "gpu_pod",  // gpu_pod | gpu_serverless | cpu_pod | cpu_serverless
+  gpu_type: "H200",
+  cost_usd: 6.00,
+  cost_breakdown: {
+    runpod_gpu: 5.40,
+    runpod_storage: 0.10,
+    anthropic_tokens: 0.30,
+    openai_embeddings: 0.20
+  }
+}
+```
+
+The Costs view in the web app reads from this table, grouped by day / week / month / per-provider / per-experiment.
+
+### 50.5 Alert routing (PRD §41.2 + DEPLOYMENT_INFRA_PLAN §2.10)
+
+| Alert type | Severity | Channel | Throttle |
+|---|---|---|---|
+| Credits HIGH (default) | low | activity feed only | n/a |
+| Credits WARN | medium | Slack | 1/hour |
+| Credits CRIT | high | Slack + ntfy.sh push | 1/15min |
+| Credits EMERGENCY | critical | Slack + ntfy.sh push + email + auto-shutdown | immediate, no throttle |
+| Pod idle > 30min | medium | Slack + activity feed | 1/15min |
+| Experiment failed | medium | Slack | 1/min |
+| Auth attempt failed (5×) | high | Slack + email | 1/hour |
+| Agent stuck (no output > 10min) | high | Slack | 1/15min |
+
+### 50.6 Telemetry opt-out
+
+Every user can opt out of anonymized telemetry via Settings → Privacy → "Send anonymous usage data". When disabled:
+- Telemetry events are NOT written to the `telemetry` table
+- Sentry crash reports are NOT sent (if also disabled)
+- All other categories (errors, audit, cost) continue normally — those are operational, not analytics
+
+The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
+
+### 50.7 Open questions
+
+1. **PostHog vs custom Convex dashboards for product analytics?** — currently planning custom Convex dashboards (no 3rd-party data sharing). Re-evaluate if we need funnel analysis at scale.
+2. **Anonymized telemetry — opt-in or opt-out by default?** — current default is opt-in disabled (privacy-first). Re-evaluate after launch if we need usage data to make product decisions.
+3. **Crash report scrubbing** — what fields in a stack trace might leak PII? Need a scrubbing pass before sending to Sentry. Sentry has a built-in `before_send` hook for this.
+
+---
+
 ## 19. Session Summary — What This PRD Covers
 
 **Last updated:** 2026-04-08 (post-mockup integration, post-§31-§39 additions)

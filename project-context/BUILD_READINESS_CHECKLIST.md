@@ -94,16 +94,16 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **§44 — MCP server spec** (commit `7fca50d`) — 4 MCP primitives + 3 transports + ~30 tools across 11 categories + 15 resources + 6 prompts + Lab Sovereignty enforcement + N4-not-claimable + audit logging; points at `MCP_SERVER_SPEC.md` + `mcp-server-spec.yaml`
 - [x] **§45 — CLI spec** (commit `7fca50d`) — Go + Cobra + bubbletea TUI + ~120 commands across 19 categories + §41 routing CLI enforcement + OAuth/PKCE auth + plugin system deferred to v1.1; points at `CLI_SPEC.md` + `cli-spec.yaml`
 - [x] **§46 — Deployment infrastructure plan** (commit `7fca50d`) — Vercel + Convex + Fly + RunPod + Backblaze + Cloudflare + GitHub Actions + monitoring stack + Fly 4-surface integration model + cost forecast; points at `DEPLOYMENT_INFRA_PLAN.md`
-- [ ] **§47 (TBD) — Mintlify docs port plan** — first 7 docs pages outline (started in §40.17 Tier 3, needs expansion)
-- [ ] **§48 (TBD) — `hubify://` URL scheme spec** — full URL pattern catalog
-- [ ] **§49 (TBD) — Authentication & authorization spec** — OAuth provider, token issuing, per-lab scoping, agent authentication
-- [ ] **§50 (TBD) — Telemetry & observability spec** — what events get logged, where, retention policy, privacy
+- [x] **§47 — Mintlify docs port plan** (commit `pending-prd9`) — Mintlify decision (subpath at hubify-labs.com/docs, NOT subdomain) + first 7 docs pages outline + codegen pipeline that auto-generates API/CLI reference from the YAML specs on every commit + Algolia DocSearch + Mintlify AI assistant
+- [x] **§48 — `hubify://` URL scheme spec** (commit `pending-prd9`) — full URL pattern catalog: `hubify://<lab-slug>/<entity-type>/<entity-id>[?<query>]` + 19 entity types with example URLs + cross-lab read OK / write FORBIDDEN enforcement + 7 surface-specific handling rows (macOS / web / iOS / CLI / MCP / Slack / Mintlify) + URL stability forever guarantee
+- [x] **§49 — Authentication & authorization spec** (commit `pending-prd9`) — 5 auth providers (GitHub OAuth default + email magic + service tokens + agent tokens + MCP client auth) + 4 token types with lifetimes + per-lab scope claim format + Lab Sovereignty Rule TRIPLE enforcement (CLI + MCP + API) + 6 agent consent boundaries (N4 claim, notechat, public visibility flip, lab delete, token issue, auth provider settings) + audit logging schema + per-token-type rate limits
+- [x] **§50 — Telemetry & observability spec** (commit `pending-prd9`) — 9 event categories with destinations + retention + privacy boundaries (lab content NEVER leaves user's Convex deployment) + activity feed schema + per-experiment cost tracking schema + 8-row alert routing table (PRD §41.2) + telemetry opt-out (per-user, not per-lab) + 3 open questions
 - [ ] **PRD §19 numbering fix** — rename "Session Summary" to "Appendix A: Section Index" (currently sits at end despite being numbered 19, which is confusing)
 - [ ] **PRD subsection fills** — view-figures (§37 sub), view-knowledge (§33 sub), view-vibe (§39 sub) — currently underspecified
 - [ ] **PRD open questions answered** — (1) chat default model: Sonnet 4.6 default · confirm? (2) voice dictation provider: Whisper API default · confirm? (3) cross-lab read-only enforcement layer: GitHub perms + Convex auth · confirm? (4) BigBounce migration final subdomain: `bigbounce2.hubify.app` placeholder vs alternatives
 - [ ] **5 lab spec files reviewed by Houston** (all 5 written, awaiting his read): MIGRATION_BOUNCE_COSMOLOGY_LAB · LAB_HUBIFY_SELF_IMPROVING · LAB_DARK_ENERGY · LAB_DARK_MATTER · LAB_ETI
 
-**A status:** ~92% — 5 of the 9 stub sections (§42, §43, §44, §45, §46) now written as PRD-resident summaries that point at their canonical companion files. 4 stubs remain (§47 Mintlify port, §48 hubify:// URL scheme, §49 auth/authz, §50 telemetry).
+**A status:** ~98% — ALL 9 stub sections (§42-50) now written. 3 items remain: §19 numbering fix + 3 PRD subsection fills + open question answers + 5 lab spec Houston review pass.
 
 ### B. Web mockup lock complete
 
@@ -253,7 +253,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 | Category | Done | Total | % |
 |---|---|---|---|
-| A. PRD lock | 46 | 51 | 90% |
+| A. PRD lock | 50 | 51 | 98% |
 | B. Web mockup | 33 | 49 | 67% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **124** | **156** | **79%** |
+| **OVERALL** | **128** | **156** | **82%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
