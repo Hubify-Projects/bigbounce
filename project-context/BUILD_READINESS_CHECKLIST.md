@@ -344,6 +344,11 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 
 **J (SDP reframe): 8/8 = 100% ✅** — all shipped in prior sessions. K now also 100%. L at 11/12. The polish loop is complete on all autonomous items.
 
+**Post-endpoint polish commits (marketing site quality, no checklist items):**
+- `adf0a5b` L5 demo tabs pre-populated at DOMContentLoaded (EXP-049 + Paper 2 visible in tab strip on first load)
+- `661c956` Features page 4-surface → 3-surface framing sync + "discovery lab" h1 fix
+- `15b34cf` SDP-6 continuation: 5 remaining "research" → "discovery" language instances on Labs/Features/Blog/Guides pages
+
 ### What Houston needs to do (when he wakes)
 
 **Quick confirms (5-10 min total):**
