@@ -157,12 +157,12 @@ Each section lists the discrete deliverables. The loop walks this list every ite
   - iCloud sync for journal notes (optional toggle)
   - Code signing identity + notarization plan
   - Auto-update channel (Sparkle vs Tauri's built-in updater)
-- [ ] **Tauri shell architecture decision** — Tauri 2.x vs Electron vs native Swift. Tauri 2 default, Swift considered for the menu bar app variant.
+- [x] **Tauri shell architecture decision** (DESKTOP_APP_SPEC.md §0, commit `d025f47`) — DECISION: Tauri 2.x. Reasons: 5-10x smaller bundle than Electron, native WKWebView, Rust backend, easy cross-compile, mature signing/notarization via tauri-action. Rejected Electron (bundle size + memory). Rejected native Swift (doubling the codebase too expensive for solo team).
 - [ ] **Build `desktop-app-mockup.html`** — a separate self-contained HTML mockup showing the macOS-specific chrome wrapping the existing web app: native title bar with traffic lights, native menu bar visualization, dock badge, native file drop indicator, system notification preview
-- [ ] **Spec the menu bar app variant** — a small `Hubify Labs` icon in the macOS menu bar that shows: live agent count · current Director status · quick chat input · "click to open full app". For users who want the platform always-resident.
-- [ ] **iOS app deferral statement** — write a note in §42 about why iOS is deferred to v2 and what the rough timeline is
+- [x] **Spec the menu bar app variant** (DESKTOP_APP_SPEC.md §2, commit `d025f47`) — separate Tauri window with `decorations:false`, `alwaysOnTop:true`, `skipTaskbar:true`, anchored under macOS menu bar icon via `tauri-plugin-positioner`, uses `NSStatusItem` API. Popover content: Director status · credits + runway · quick chat input · recent activity · "Open Hubify Labs". Optional companion app for users who want always-resident monitoring.
+- [x] **iOS app deferral statement** (DESKTOP_APP_SPEC.md §3.5, commit `pending-c5`) — explicit deferral to v2. Reasons: iOS is mostly a viewer not a driver, native dev expensive (Tauri 2 iOS not production-ready, Swift/RN both multi-week), web app on Safari mobile already covers 80% of the use case, ntfy.sh handles the only thing that requires native iOS (push). v1 ships with mobile-responsive web + ntfy.sh + PWA manifest + universal links. v2 plan: re-evaluate Tauri 2 iOS in Q3 2026, fall back to Swift/SwiftUI if not ready.
 
-**C status:** 0% — entire category untouched.
+**C status:** 80% (4 of 5) — only the desktop-app-mockup.html build remains.
 
 ### D. API spec complete
 
@@ -255,14 +255,14 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
 | B. Web mockup | 31 | 49 | 63% |
-| C. macOS app | 1 | 5 | 20% |
+| C. macOS app | 4 | 5 | 80% |
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
 | F. CLI spec | 7 | 8 | 88% |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **110** | **156** | **71%** |
+| **OVERALL** | **113** | **156** | **72%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 

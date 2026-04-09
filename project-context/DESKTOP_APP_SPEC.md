@@ -389,6 +389,37 @@ The web mockup is the canonical reference for the inside of the app. The desktop
 
 ---
 
+## 3.5 iOS app — explicit deferral statement (Category C item 5)
+
+**Status:** DEFERRED to v2 (not in the v1 BUILD_READINESS scope).
+
+**Why iOS waits for v2:**
+
+1. **The iOS app is mostly a viewer, not a driver.** Houston does his real work in the terminal (CLI), the desktop app, and the web. The iOS use case is "check on the lab while away from the laptop" — read activity feed, see standup transcripts, glance at credits, maybe send a quick chat. None of that is critical for the v1 launch.
+
+2. **Native iOS development is expensive.** Tauri 2 has experimental iOS support but it's not production-ready as of 2026-04. The clean iOS path is either Swift (a separate codebase to maintain) or React Native (a separate runtime). Either is a multi-week investment.
+
+3. **The web app on Safari mobile already covers 80% of the use case.** A user can open `hubify-labs.com` on their phone and get a responsive mobile view (already audited per Round A). It's not as nice as a native app but it's not blocking.
+
+4. **Push notifications are the only thing that REQUIRES native iOS.** And we have a fallback for v1: the platform fires push notifications via `ntfy.sh` (or similar) which works as a generic phone push without needing an iOS app.
+
+**What we ship for iOS in v1 (the fallback):**
+- The web app at `hubify-labs.com` is mobile-responsive (per Round A audit)
+- Push notifications via `ntfy.sh` (web push or the ntfy iOS app — Houston installs that, no Hubify Labs iOS app needed)
+- A "Add to Home Screen" PWA manifest so the web app gets a home-screen icon
+- Universal links: `hubify://...` URLs open in the web app on iOS (with a graceful fallback to the web URL if Hubify Labs isn't installed)
+
+**v2 plan for native iOS:**
+- Re-evaluate Tauri 2 iOS support in Q3 2026
+- If still not production-ready, build a Swift/SwiftUI app from scratch — focused on the read-mostly use case (activity feed, standups, credits, chat read + send)
+- Share the same `hubify://` URL scheme + deep links + auth tokens with the macOS app
+- Submit to Apple App Store (requires Apple Developer Program, which Houston already has)
+- Estimated effort: ~3-4 weeks of focused work
+
+**The decision is locked:** v1 ships without a native iOS app. The mobile web + ntfy.sh combination is the v1 mobile story. iOS is v2.
+
+---
+
 ## 4. Iteration plan (how this spec gets to 100%)
 
 The macOS spec category has 5 items in the BUILD_READINESS_CHECKLIST. Here's the order:
