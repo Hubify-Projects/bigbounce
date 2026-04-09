@@ -177,28 +177,15 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### E. MCP server spec complete
 
-- [ ] **Write `MCP_SERVER_SPEC.md`**
-- [ ] **Tool definitions** (a Hubify Labs MCP server exposes these tools to AI agents):
-  - `read_file(path)` — scoped to current lab
-  - `write_file(path, content)` — scoped, with audit log
-  - `list_files(path)` — directory listing
-  - `dispatch_experiment(spec)` — runs the §41 routing logic
-  - `invoke_agent(name, payload)` — call another agent in the same lab
-  - `comm_send(target_lab, target_agent, payload)` — cross-lab message
-  - `memory_search(query)` — search the lab's memory layer
-  - `contribution_create(payload)` — propose a new contribution
-  - `note_save(filename, content)` — save to journal
-  - `chat_message(chat_id, content)` — post to a chat
-  - `pdf_compile(tex_path)` — trigger LaTeX compile
-  - `runpod_status()` — check pod + credit status
-- [ ] **Resource definitions** — what resources the server exposes (lab metadata, project metadata, etc.)
-- [ ] **Prompt templates** — reusable prompts the server provides
-- [ ] **Auth flow** — how Claude / GPT / Gemini authenticate to the MCP server
-- [ ] **Per-lab + per-agent scoping** — token grants access to specific labs/agents only
-- [ ] **Audit logging** — every tool call logged
-- [ ] **MCP YAML / TOML lock**
+- [x] **Write `MCP_SERVER_SPEC.md`** (commit `pending-e1`) — comprehensive MCP server spec ~700 lines covering 4 MCP primitives (tools/resources/prompts/sampling) + 3 transports (stdio/SSE/WebSocket) + Lab Sovereignty Rule enforcement at the protocol boundary
+- [x] **Tool definitions** (in MCP_SERVER_SPEC.md §2) — **~30 tools across 11 categories**: file system (read/write/list/delete) · experiment dispatch (with PRD §41 routing) · agent invocation · cross-lab comms · memory · contributions · notes · chats · LaTeX/paper · compute · search
+- [x] **Resource definitions** (in MCP_SERVER_SPEC.md §3) — ~15 resources including 5 live SSE streams (activity feed, credits, standups, comms inbox, experiment logs) + 10 snapshot resources (lab metadata, projects, agents, papers, contributions, datasets, wiki, notes, pods)
+- [x] **Prompt templates** (in MCP_SERVER_SPEC.md §4) — 6 templates: review_paper · houston_method_post_experiment · draft_chat_to_project · standup_facilitate · publish_ready_check · no_punt_check
+- [x] **Auth flow** (in MCP_SERVER_SPEC.md §5) — JWT format from API_SPEC §2 · per-lab scoping enforcing the Lab Sovereignty Rule at the protocol boundary (cross-lab writes are 403'd before reaching the API)
+- [x] **Audit logging** (in MCP_SERVER_SPEC.md §5.4) — every tool call → `lab/audit/mcp-<agent>.jsonl` (append-only, included in nightly Backblaze backup)
+- [ ] **MCP YAML lock** — `mcp-server-spec.yaml` (next item in Category E — turns this human-readable spec into the machine-readable contract for SDK generation)
 
-**E status:** 0% — entire category untouched.
+**E status:** ~86% (6 of 7) — entire category bootstrapped from 0% in one iteration.
 
 ### F. CLI spec complete
 
@@ -279,12 +266,12 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | B. Web mockup | 27 | 49 | 55% |
 | C. macOS app | 1 | 5 | 20% |
 | D. API spec | 5 | 7 | 71% |
-| E. MCP server | 0 | 7 | 0% |
+| E. MCP server | 6 | 7 | 86% |
 | F. CLI spec | 0 | 8 | 0% |
 | G. Deployment infra | 0 | 13 | 0% |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **80** | **156** | **51%** |
+| **OVERALL** | **86** | **156** | **55%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
