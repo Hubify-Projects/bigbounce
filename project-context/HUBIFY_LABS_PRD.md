@@ -8436,6 +8436,126 @@ The marketing site mockup lives at `hubify-labs-mockups/marketing-site-mockup.ht
 
 ---
 
+## 52. Competitive Frame — K-Dense + Feynman + the AI research agent landscape
+
+**Status:** Locked 2026-04-09 · Houston flagged multiple competitors.
+**Full reference:** `project-context/COMPETITIVE_ANALYSIS.md` (renamed from K-Dense-only)
+**Memory:** `feedback_kdense_competitor.md`
+**Competitors covered:** K-Dense AI (closest by vision · web-only · 250+ DBs) · Feynman (open-source CLI-first · multi-agent · cite-every-claim · built on Pi+alphaXiv)
+**Reference repos to audit:** `K-Dense-AI/claude-scientific-skills`, `K-Dense-AI/claude-scientific-writer`, `K-Dense-AI/k-dense-byok`, `getcompanion-ai/feynman`
+
+### 52.0 Why this section exists
+
+K-Dense AI (`k-dense.ai`) is the closest competitor to Hubify Labs by vision. We need parity on their headline capabilities (databases, scientific data formats, skills catalog) AND we need to clearly differentiate where Hubify Labs wins (multi-surface IDE, multi-lab, always-on orchestrator, agent system, lab sovereignty). Houston explicitly said: "legitimately for improving our PRD and platform too not just for marketing copy purposes."
+
+### 52.1 K-Dense's headline capabilities (the bar to match)
+
+| Stat | What it means |
+|---|---|
+| **250+ databases** | PubMed, ChEMBL, UniProt, SEC EDGAR, FRED, BioServices, BioPython, etc. |
+| **Unlimited tools, generated on demand** | Any Python function in any package becomes a callable tool |
+| **500K+ Python packages** | Full PyPI access. Curated optimizations for 200+ scientific packages |
+| **200+ scientific data formats** | Native support across 14 scientific domains |
+| **Publish-ready outputs** | Manuscripts, slides, posters, PDFs, viz, schematics |
+
+### 52.2 14 data format domains we need to support
+
+Genomics & Sequencing · Sequence & Phylogenetics · Chemistry & Molecular · Materials Science · Medical Imaging & Pathology · Mass Spectrometry · **Astronomy** (already covered by BigBounce) · Neuroscience & Electrophysiology · Single-Cell & Array Storage · Geospatial · Data & Interchange · Documents & Outputs
+
+### 52.3 K-Dense's "vs traditional LLMs" frame
+
+K-Dense markets themselves against traditional LLMs (single-turn Q&A, hallucinations, plain text, no execution, generic). Their wins: end-to-end research automation, grounded in your data, publication-ready outputs, real Python/R/ML execution, AI does the work while you guide, deep domain expertise.
+
+**This is the same fight we're in.** Hubify Labs needs the same baseline (real execution + publication-ready + grounded + deep domain) but we have a richer story on top (multi-surface, multi-lab, always-on, agent system).
+
+### 52.4 Where Hubify Labs wins over K-Dense
+
+1. **Multi-surface IDE** — Web + Desktop + CLI/TUI all equivalent. K-Dense is web-only.
+2. **Always-on orchestrator (Fly.io)** — 24/7 work continues. K-Dense is session-based.
+3. **Multi-lab framework** — own containerized labs you grow over time. Each lab has its own GitHub repo, Convex DB, Fly machine, public site.
+4. **21-agent system** — orchestrator + 4 leads + 11 workers + 4 cross-provider reviewers. K-Dense has one agent.
+5. **Cross-model peer review** — every paper/claim reviewed by GPT/Gemini/Sonnet/Perplexity. No echo chamber.
+6. **Lab Sovereignty Rule** — read across labs OK, write FORBIDDEN. Triple-enforced (CLI/MCP/API).
+7. **Public lab sites** — auto-deployed marketing sites for each lab.
+8. **Houston Method v2** — opinionated post-experiment ritual the platform enforces.
+9. **Lab community + remix** — public labs visitors can clone with one click.
+10. **CLI/TUI as first-class** — `hubify` Go binary with bubbletea TUI.
+11. **Memory architecture (4-layer)** — user/agent/lab/global. Agents remember.
+12. **Vibe coding sandbox** — Vercel Sandbox for one-off figure generation.
+13. **Activity Graph** — neural-brain view of your lab's living state.
+14. **Publish-ready loop** — 5-round autonomous publishing with no-future-research-punts rule.
+
+### 52.5 Where we need to catch up (action items)
+
+1. **Database connectors (250+ target)** — currently we have BigBounce-specific: DESI, SDSS, LAMOST, eROSITA, NEOWISE, ACT, Planck, NANOGrav. Need to expand to ~250 general-purpose connectors. Short-term: claim parity by leveraging BioServices/BioPython package wrappers (each unlocks 30-40 sources). Long-term: dedicated connector catalog in the platform with discoverable schemas.
+
+2. **Scientific data formats (200+ target across 14 domains)** — currently strong on Astronomy (FITS, VOTable). Need explicit support documented for the other 13 domains. **Action:** add a `view-data-formats` to the in-app mockup OR extend the existing Data Map view with a formats matrix.
+
+3. **Skills catalog** — Houston wants us to fork/audit/extend `github.com/K-Dense-AI/claude-scientific-skills` as a starting baseline for our own skills catalog. **Action:** add a `view-skills` to the in-app showing the full skills catalog (their skills + our custom skills + per-domain organization).
+
+4. **Domain breadth** — currently cosmology-leaning. Need explicit demos in healthcare, finance, materials science, etc. **Action:** add 2-3 more sample lab specs for non-cosmology domains.
+
+### 52.6 What changes in the marketing site
+
+The marketing site needs to **claim parity** with K-Dense's headline stats, even if some are aspirational. Specifically:
+
+- Add a "by the numbers" stat band on the homepage with: `250+ databases · 200+ data formats · 14 scientific domains · 500K+ packages`
+- Update the Features page section 1 to lead with these capabilities
+- Add a "Skills catalog" link/card that points to the skills view (when built)
+- Add a "vs K-Dense" comparison page (the Cursor pattern) showing the 14 wins above
+
+### 52.7 Feynman (open-source CLI-first research agent)
+
+**Source:** `feynman.is` · `github.com/getcompanion-ai/feynman` · built by Companion, Inc.
+**Pitch:** "The open source AI research agent · Reads papers, searches the web, writes drafts, runs experiments, and cites every claim. All locally on your computer."
+**Most architecturally similar to:** Hubify Labs CLI/TUI (PRD §45)
+
+**Key features we should match or exceed:**
+
+| Feynman feature | Hubify Labs status |
+|---|---|
+| `feynman "<question>"` cited research brief | Need: equivalent `hubify ask` command + cite-every-claim grounding |
+| `/deepresearch` multi-agent investigation | Have: orchestrator + leads + workers, but no explicit "deep research" workflow |
+| `/lit` literature review with consensus mapping | Need: add as a workflow |
+| `/audit` paper claims vs code mismatch check | **Gap** — add as a skill + slash command |
+| `/replicate` replication plan + sandboxed Docker execution | **Gap** — add as a workflow (we have publish-ready loop but no formal replication-of-others'-work) |
+| `/compare` side-by-side source agreement/conflict matrix | Need: add as a workflow |
+| `/draft` polished paper draft with inline citations | Have: publish-ready loop is more rigorous, but lighter `/draft` mode missing |
+| `/autoresearch` autonomous loop (hypothesize → experiment → measure → repeat) | Have: this is essentially the orchestrator + Houston Method v2 + publish-ready loop |
+| `/watch` recurring monitor for new papers/code/products | Need: add as a routine type (PRD §18 extension) |
+| 4 agents (Researcher · Reviewer · Writer · Verifier) | **Win:** we have 21 agents pre-wired |
+| AlphaXiv integration (paper search + Q&A + code reading) | **Gap** — add AlphaXiv as a skill in the catalog |
+| Web search via Gemini/Perplexity | Have: cross-model peer review uses these |
+| Session search (indexed recall) | Have: 4-layer memory architecture (PRD §20) |
+| Browser + PDF export | Have: file preview tab + publish-ready PDF generation |
+| **Local-first / Docker isolation** | **Gap** — add a local-only mode where the orchestrator runs in a local Docker container instead of Fly.io |
+| Modal serverless GPU (compute backend) | Dropped per PRD §24 (RunPod-only). Re-evaluate as fallback after launch. |
+| RunPod persistent GPU pods | Have (PRD §24) |
+| Built on Pi (companion AI framework) + alphaXiv | We're building from scratch. Decision: stay independent. |
+
+### 52.8 Cross-cutting action items (across all competitors)
+
+1. **Skills catalog is non-negotiable** — both K-Dense and Feynman have explicit skills/tools catalogs. Build `view-skills` ASAP. Fork `K-Dense-AI/claude-scientific-skills` as baseline.
+2. **Workflows / slash commands inventory** — both competitors have explicit workflow vocabularies. Document and grow ours. Houston already chose 4 chat slash commands (`/chat`, `/notechat`, `/promote`, `/share`); expand via the Feynman pattern: `/deepresearch`, `/lit`, `/review`, `/audit`, `/replicate`, `/compare`, `/draft`, `/autoresearch`, `/watch`.
+3. **Cite-every-claim grounding** — Feynman emphasizes inline citations on every output. We have rigorous cross-model peer review but should also enforce inline citation discipline.
+4. **Local-first / Docker isolation mode** — Feynman's "all locally" pitch is compelling for privacy-sensitive users. Add a local-only mode where the orchestrator runs in a local Docker container instead of Fly.io.
+5. **AlphaXiv-style paper search infrastructure** — both competitors lean on existing paper search infra. Either integrate or build our own.
+
+### 52.9 PRD impact
+
+This section adds the following to the PRD as required reading:
+- Section 52 (this section) — the competitive frame
+- The companion file `COMPETITIVE_ANALYSIS.md` — full analysis with format lists, Feynman workflows, and reference repo list
+- Future PRD sections to add:
+  - `view-skills` spec (when built)
+  - `view-workflows` spec (slash command catalog organized by category)
+  - `view-data-formats` spec (200+ formats across 14 domains)
+  - Expanded database connector inventory in §33 (Storage Strategy)
+  - Local-first Docker mode spec (alternative to Fly.io for privacy-sensitive users)
+  - `audit` / `replicate` / `watch` / `draft` workflow specs
+
+---
+
 ## Appendix A: Section Index — What This PRD Covers
 
 **Note:** this appendix was previously numbered §19 (an artifact from an early version of the PRD when it had only 18 sections + a session summary). It has been renamed to "Appendix A" to remove the numbering confusion — sections §0-§50 are the canonical PRD body, and this appendix provides a navigable index.
