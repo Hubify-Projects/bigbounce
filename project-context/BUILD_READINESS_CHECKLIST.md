@@ -131,7 +131,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round C #7 Rename Ideas view → Recent Chats view** (PRD §40.3) — 114 instances + data model adjustment
 - [ ] **Round C #8 Project filter chips on Lab kanban** + experiment filter chips on Project kanban (PRD §40.9)
 - [ ] **Round C #9 Project ↔ Paper many-to-many** UI — paper sidepeek shows associated projects, project page shows associated papers
-- [ ] **Round D #1 Director header credits pill** — `$29.35 · 47h runway` color-coded (per PRD §41)
+- [x] **Round D #1 Director header credits pill** (commit `6183915`) — 4-tier color coding by PRD §41 threshold: HIGH (sage dot, default), WARN (warn dot + warn text), CRIT (crit dot + crit text), EMERGENCY (pulsing crit dot + flashing background + bold text). Uses existing `--warn` and `--crit` CSS variables, no new accent colors. `data-threshold` attribute drives the styling — orchestrator updates it via the credits cron from PRD §41.2. Title attribute documents the 4-tier escalation policy.
 - [ ] **Round D #2 Compute view credits history chart** with 4 threshold lines
 - [ ] **Round D #3 Per-experiment cost mode column** — pod / serverless / cpu-pod / cpu-serverless attribution
 - [ ] **Round D #4 Experiment dispatch flow CPU/GPU routing UI** — `requires_gpu` + `expected_duration_min` + `priority` fields
@@ -254,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
-| B. Web mockup | 32 | 49 | 65% |
+| B. Web mockup | 33 | 49 | 67% |
 | C. macOS app | 4 | 5 | 80% |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 6 | 7 | 86% |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **116** | **156** | **74%** |
+| **OVERALL** | **117** | **156** | **75%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
