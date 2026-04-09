@@ -331,6 +331,8 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `fb54403` — CLI-TUI status bar "Go + bubbletea" → "go · tui" (consistent jargon sweep)
 - `917d98e` — Agents section "5 model providers / Grok" → "4 model providers" (aligns with 4-reviewer grid + CLAUDE.md spec)
 - `20975cf` — Guides peer-review card: added Perplexity, removed incorrect "non-Anthropic" framing, 3→4 reviewers
+- `9d7efcf` — How It Works step 03: added Perplexity to reviewer list (consistent with guides fix)
+- `03a2166` — Feature 05 peer review: "3 non-Anthropic" → "4 models from 4 providers" (Sonnet is Anthropic)
 
 ### Autonomous loop endpoint reached (master + polish items)
 
