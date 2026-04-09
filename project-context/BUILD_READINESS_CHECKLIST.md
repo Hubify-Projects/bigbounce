@@ -253,14 +253,14 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 
 - [x] **SDP-1: Marketing hero rewrite** (commits `64a12f3` + `bc87ee4`) — eyebrow "HUBIFY LABS · THE SCIENTIFIC DISCOVERY PLATFORM" + h1 "Make discoveries that change history" + lede leads with thousands of datasets + multi-agent multi-model peer review + 2025-2027 window framing + arch-foot "discoveries moving 24/7"
 - [x] **SDP-2: Datasets gallery section** (commit `323c5b0`) — new full-width `.datasets-band` between window-band and 3-surfaces with: 4 sage stat cards (10K+ datasets · 250+ database connectors · 200+ formats · 14 domains) · 16-cell logo grid (HuggingFace · NASA · arXiv · Wolfram · PubMed · ChEMBL · UniProt · Gaia DR3 · SDSS · DESI DR1 · LAMOST · eROSITA · Materials Project · NOAA · SEC EDGAR · +235 more) · 14 domain pills · K-Dense baseline credit + Browse CTA
-- [x] **SDP-3: Agent team explainer section** (commit pending) — new `.agents-band` between datasets-band and 3-surfaces with 4-tier hierarchy table (Director · Orchestrator · 4 Leads · 11 Workers) + highlighted cross-provider reviewers card (GPT-5 · Gemini 2.5 Pro · Sonnet skeptic · Perplexity Sonar) with "zero echo chamber" tagline + 21 agents across 5 model providers footer
+- [x] **SDP-3: Agent team explainer section** (commit `7da922e`) — new `.agents-band` between datasets-band and 3-surfaces with 4-tier hierarchy table (Director · Orchestrator · 4 Leads · 11 Workers) + highlighted cross-provider reviewers card (GPT-5 · Gemini 2.5 Pro · Sonnet skeptic · Perplexity Sonar) with "zero echo chamber" tagline + 21 agents across 5 model providers footer
+- [x] **SDP-4: Multi-model peer review explainer** (commit pending) — new `.review-band` section between agents-band and 3-surfaces with WORKED EXAMPLE using real BigBounce data: Branch V matter bounce f_NL = -4.375 claim flowing through the 4 cross-provider reviewers, each step shows the actual italic blockquote of what that reviewer caught (GPT-5 catches Fisher matrix ambiguity · Gemini 2.5 cross-checks long context · Sonnet skeptic flags Pipeline 1 dependency · Perplexity Sonar verifies 11/11 citations) with PASS/CONCERN verdict pills, then a sage-bordered consensus verdict card with auto-orchestrator-generated text + 3 stat counters (3/4 PASS · 1 CONCERN · 11/11 CITES OK). Differentiates from SDP-3 by being CONCRETE (real claim, real reviewer text) rather than abstract.
 - [x] **SDP-5: 2025-2027 Window urgency band** (commits `bc87ee4` + `d1e357e`) — pre-existing window-band enhanced with countdown pill ("~32 months until the moats close") + "The window is closing. Make your discovery now." line + sage Start CTA + ghost demo CTA + reassurance meta
 - [x] **SDP-6: Replace 'research' language sweep** (commit `64a12f3`) — 9 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing
-- [ ] **SDP-4: Multi-model peer review explainer** — separate deeper section just on the 4 cross-provider reviewers, their personalities, what each catches that the others miss. SDP-3 introduced them; SDP-4 dives deeper.
 - [ ] **SDP-7: Discovery showcase section** — 3-4 example discoveries the platform enables across different domains (cosmology / drug discovery / materials / climate). Demonstrates domain breadth (counters K-Dense's positioning).
 - [ ] **SDP-8: Inspire-intensely homepage final pass** — read-through with one filter: "Does this make a smart independent researcher feel they can change history with this?" Push every weak section harder.
 
-**J status:** 5/8 = 62.5% — SDP-1, SDP-2, SDP-3, SDP-5, SDP-6 shipped. SDP-4, SDP-7, SDP-8 remain.
+**J status:** 6/8 = 75% — SDP-1, SDP-2, SDP-3, SDP-4, SDP-5, SDP-6 shipped. SDP-7, SDP-8 remain.
 
 ---
 
@@ -277,10 +277,10 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **J. SDP reframe** | **5** | **8** | **62.5%** |
-| **OVERALL** | **138** | **151** | **91.4%** |
+| **J. SDP reframe** | **6** | **8** | **75%** |
+| **OVERALL** | **139** | **151** | **92.1%** |
 
-**Translation:** **6 of 10 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). NEW: Category J (Scientific Discovery Platform reframe) is the polish loop's active work surface — 5/8 items shipped, 3 remaining (SDP-4 multi-model peer review explainer, SDP-7 discovery showcase, SDP-8 inspire-intensely final pass).
+**Translation:** **6 of 10 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). Category J (Scientific Discovery Platform reframe) is the polish loop's active work surface — **6/8 items shipped, 2 remaining** (SDP-7 discovery showcase, SDP-8 inspire-intensely final pass).
 
 ### Autonomous loop endpoint reached (master items)
 
