@@ -158,11 +158,11 @@ Each section lists the discrete deliverables. The loop walks this list every ite
   - Code signing identity + notarization plan
   - Auto-update channel (Sparkle vs Tauri's built-in updater)
 - [x] **Tauri shell architecture decision** (DESKTOP_APP_SPEC.md §0, commit `d025f47`) — DECISION: Tauri 2.x. Reasons: 5-10x smaller bundle than Electron, native WKWebView, Rust backend, easy cross-compile, mature signing/notarization via tauri-action. Rejected Electron (bundle size + memory). Rejected native Swift (doubling the codebase too expensive for solo team).
-- [ ] **Build `desktop-app-mockup.html`** — a separate self-contained HTML mockup showing the macOS-specific chrome wrapping the existing web app: native title bar with traffic lights, native menu bar visualization, dock badge, native file drop indicator, system notification preview
+- [x] **Build `desktop-app-mockup.html`** (commit `891e34f`) — separate self-contained HTML file at `hubify-labs-mockups/desktop-app-mockup.html` showing the macOS-specific chrome wrapping the existing web app per DESKTOP_APP_SPEC.md §3. All 7 native chrome elements built: (1) macOS menu bar with Hubify Labs · File · Edit · View · Lab · Window · Help + status icons + clock, (2) borderless Tauri window with traffic lights + draggable titlebar containing the Director credits pill ($847 sage HIGH zone) + cosmic orb status indicator, (3) faux sidebar + content area with stat-grid + overnight briefing card + top experiments rows (real EXP-050/051/049 IDs), (4) macOS Dock with Finder/Cursor/Terminal/Hubify icons + Hubify icon shows running dot + red unread badge "3", (5) native NSUserNotification banner sliding in from top-right with sage Hubify icon + "GPU IDLE — deploy next phase" sample notification, (6) file-drop overlay (toggled on/off) showing sage-tinted dashed-border drop zone, (7) menu bar app popover anchored under the menu bar icon with always-on-top mini Director view (lab + credits + runway + recent activity + quick chat input + open-app button). Plus 8 annotation flags labeling each native element + bottom-left toggle bar (Notification/Menu bar app/File drop/Annotations on-off). Sage discipline preserved (sage/grayscale/--warn/--crit only, no new accent colors). Standard macOS native colors (red traffic light #ff5f57 etc.) used where required for native fidelity.
 - [x] **Spec the menu bar app variant** (DESKTOP_APP_SPEC.md §2, commit `d025f47`) — separate Tauri window with `decorations:false`, `alwaysOnTop:true`, `skipTaskbar:true`, anchored under macOS menu bar icon via `tauri-plugin-positioner`, uses `NSStatusItem` API. Popover content: Director status · credits + runway · quick chat input · recent activity · "Open Hubify Labs". Optional companion app for users who want always-resident monitoring.
 - [x] **iOS app deferral statement** (DESKTOP_APP_SPEC.md §3.5, commit `4695389`) — explicit deferral to v2. Reasons: iOS is mostly a viewer not a driver, native dev expensive (Tauri 2 iOS not production-ready, Swift/RN both multi-week), web app on Safari mobile already covers 80% of the use case, ntfy.sh handles the only thing that requires native iOS (push). v1 ships with mobile-responsive web + ntfy.sh + PWA manifest + universal links. v2 plan: re-evaluate Tauri 2 iOS in Q3 2026, fall back to Swift/SwiftUI if not ready.
 
-**C status:** 80% (4 of 5) — only the desktop-app-mockup.html build remains.
+**C status:** **100% ✅** (5 of 5) — Category C COMPLETE.
 
 ### D. API spec complete
 
@@ -255,14 +255,14 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 |---|---|---|---|
 | A. PRD lock | 52 | 54 | 96% |
 | B. Web mockup | 36 | 49 | 73% |
-| C. macOS app | 4 | 5 | 80% |
+| C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
 | F. CLI spec | 8 | 8 | **100% ✅** |
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **134** | **159** | **84%** |
+| **OVERALL** | **135** | **159** | **85%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
