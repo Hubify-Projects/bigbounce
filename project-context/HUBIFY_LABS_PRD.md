@@ -8329,4 +8329,83 @@ The opt-out is **per-user, not per-lab**. Lab data remains sovereign regardless.
 
 ---
 
+## Appendix B: Open Question Defaults
+
+**Status:** Locked 2026-04-08. The PRD has 4 open questions that need Houston's confirmation before the rebuild begins. This appendix proposes a default answer + reasoning for each, so the loop can continue without blocking on Houston. Houston confirms or overrides at sign-off.
+
+### B.1 Chat default model
+
+**Question:** What's the default model for new chats in the web app + CLI + MCP server?
+
+**Default answer:** **Claude Sonnet 4.6** (`claude-sonnet-4-6`).
+
+**Why:**
+- Sonnet 4.6 is the newest model in the Sonnet line as of 2026-04-08 (per the system environment knowledge cutoff)
+- Best cost/quality ratio for the chat surface (long-form reasoning, code generation, file editing)
+- Houston explicitly uses Claude Code daily and Claude Code defaults to Sonnet — staying consistent reduces cognitive overhead
+- Opus 4.6 is the heavy-lifting model for orchestrator-level decisions (per PRD §3 routing) but is overkill for everyday chat
+- Haiku 4.5 is the bursty/parallel model for cheap subagent calls but is undersized for the main chat
+- The user can swap models per chat via the chat composer's model switcher (coming in Round C #3)
+
+**Houston override expected:** likely confirms Sonnet 4.6 default. May override to Opus for high-stakes papers, but that's per-chat not global.
+
+### B.2 Voice dictation provider
+
+**Question:** What service handles voice → text for chat input on the desktop app?
+
+**Default answer:** **Whisper API** (OpenAI).
+
+**Why:**
+- Whisper is the de facto standard for voice → text in 2026; it's accurate, multilingual, fast
+- Already in the OpenAI account (we use OpenAI for `peer-review-gpt` per cross-model peer review §29)
+- ~$0.006/min — negligible at any reasonable usage volume
+- Tauri 2 has a native audio capture plugin that ships PCM directly to a Whisper API call without needing intermediate file storage
+- Open-source Whisper (whisper.cpp running locally) is the fallback if Houston wants offline mode
+
+**Rejected:**
+- Apple Speech Framework: Apple-only, doesn't help on Linux/Windows builds
+- AssemblyAI: extra vendor, no advantage over Whisper
+- Google Speech-to-Text: Google account dependency, no advantage
+- Local Whisper: CPU/GPU usage on the user's Mac is non-trivial; cloud is better for v1
+
+**Houston override expected:** likely confirms. May want offline whisper.cpp later for privacy-sensitive notes.
+
+### B.3 Cross-lab read-only enforcement layer
+
+**Question:** Where is the Lab Sovereignty Rule (PRD §40.11) actually enforced for cross-lab READS?
+
+**Default answer:** **GitHub repo permissions + Convex auth** (the redundant pair).
+
+**Layer 1 — GitHub repo permissions:** Each lab is a separate GitHub repo (per PRD §1 Lab=repo lock). Public labs are public repos; private labs are private repos. Cross-lab read is GATED by GitHub's standard repo permission system — if Houston grants read access to Lab A on Lab B's repo, Lab B can clone Lab A's source. If not, it can't.
+
+**Layer 2 — Convex auth:** The Convex backend stores per-lab data (experiments, papers, agents) in per-lab tables. Convex auth tokens carry a `labs` claim per PRD §49. Read queries against Lab A's tables from a token without `labs[A].read` permission return empty arrays (not errors — silent denial, like Postgres row-level security).
+
+**Why redundant:** Belt + suspenders. If GitHub permissions are misconfigured, Convex auth catches it. If Convex auth is misconfigured, GitHub permissions catch it. Either layer alone is sufficient for the legal/contractual requirement; the combination is for safety against misconfiguration.
+
+**Houston override expected:** likely confirms. The redundant model is the obvious right answer.
+
+### B.4 BigBounce migration final subdomain
+
+**Question:** What's the final URL for the migrated bigbounce lab?
+
+**Default answer:** **`bigbounce2.hubify.app` for the burn-in window, then graduate to `bigbounce.hubify.app` after sign-off.**
+
+This is the same answer as `MIGRATION_BOUNCE_COSMOLOGY_LAB.md` §6 Q1 — restated here so the PRD has the canonical answer. See the migration plan for the full reasoning.
+
+**Houston override expected:** confirmed at the migration sign-off.
+
+### B.5 Sign-off block
+
+When Houston has reviewed B.1-B.4, he writes:
+
+```
+[CONFIRM ALL DEFAULTS]
+or
+[OVERRIDE: B<n> → <new answer>]
+```
+
+This unblocks the PRD from the "open questions" gate in `BUILD_READINESS_CHECKLIST.md` Category A. The defaults above stand until Houston explicitly overrides them.
+
+---
+
 *This PRD is the definitive specification for Hubify Labs. Every section is implementation-ready. Nothing is punted. Build from Week 1 Day 1.*

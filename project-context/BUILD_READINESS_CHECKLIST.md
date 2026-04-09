@@ -100,10 +100,10 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **§50 — Telemetry & observability spec** (commit `cd1f87b`) — 9 event categories with destinations + retention + privacy boundaries (lab content NEVER leaves user's Convex deployment) + activity feed schema + per-experiment cost tracking schema + 8-row alert routing table (PRD §41.2) + telemetry opt-out (per-user, not per-lab) + 3 open questions
 - [x] **PRD §19 numbering fix** (commit `de1ea50`) — renamed "Session Summary — What This PRD Covers" to "Appendix A: Section Index — What This PRD Covers". Index table extended with §41-50 entries (10 new rows). Total section count corrected to 46 sections / ~8000 lines. Numbering confusion resolved — sections §0-§50 are the canonical PRD body, this appendix is the navigable index.
 - [x] **PRD subsection fills** (commit `a2f62ed`) — 3 new subsections written: §39.9 Vibe Coding view (layout + 4 save targets + Activity Graph integration with example JSONL events + cost guardrails + IN/OUT-of-scope), §33.14 Knowledge Wiki view (zone-aware storage table for entity/concept/source/comparison files + 3-column grid layout + agent contract with wiki-worker + sidepeek behavior), §37.14 Figures view (zone-aware storage table for vibe/experiment/reproducibility/TikZ figure sources + grid layout + figure sidepeek with provenance trail + publishing-lead Round 4 final visual pass walking every figure + orphaned figures filter). All 3 fills include IN-scope and OUT-of-scope cuts for v1 vs v1.1.
-- [ ] **PRD open questions answered** — (1) chat default model: Sonnet 4.6 default · confirm? (2) voice dictation provider: Whisper API default · confirm? (3) cross-lab read-only enforcement layer: GitHub perms + Convex auth · confirm? (4) BigBounce migration final subdomain: `bigbounce2.hubify.app` placeholder vs alternatives
+- [x] **PRD open questions answered with proposed defaults** (commit `pending-prd12`) — new "Appendix B: Open Question Defaults" added to PRD with detailed answer + reasoning + Houston-override-expected paragraph for all 4: B.1 chat default model = Claude Sonnet 4.6 (best cost/quality, matches Houston's daily Claude Code workflow, Opus reserved for orchestrator/papers, Haiku for parallel subagents, per-chat switcher), B.2 voice provider = Whisper API ($0.006/min, native Tauri 2 audio capture, OpenAI account already exists, whisper.cpp local fallback), B.3 cross-lab read enforcement = GitHub repo permissions + Convex auth (redundant belt+suspenders, both layers independently sufficient), B.4 BigBounce subdomain = bigbounce2.hubify.app burn-in then graduate to bigbounce.hubify.app (same as MIGRATION_BOUNCE_COSMOLOGY_LAB.md §6 Q1, restated as PRD-canonical). Sign-off block at B.5 specifies Houston's confirm/override format.
 - [ ] **5 lab spec files reviewed by Houston** (all 5 written, awaiting his read): MIGRATION_BOUNCE_COSMOLOGY_LAB · LAB_HUBIFY_SELF_IMPROVING · LAB_DARK_ENERGY · LAB_DARK_MATTER · LAB_ETI
 
-**A status:** ~96% — ALL 9 stub sections (§42-50) DONE + §19 → Appendix A renumber DONE + 3 PRD subsection fills DONE (§33.14 Knowledge Wiki view, §37.14 Figures view, §39.9 Vibe Coding view). 2 items remain: PRD open questions answered (4 questions need confirmation) + 5 lab spec Houston review pass (waiting on Houston).
+**A status:** ~98% — ALL 9 stub sections (§42-50) DONE + §19 → Appendix A renumber DONE + 3 PRD subsection fills DONE (§33.14 Knowledge Wiki view, §37.14 Figures view, §39.9 Vibe Coding view) + 4 PRD open questions answered with proposed defaults in new Appendix B. 1 item remains: 5 lab spec Houston review pass (waiting on Houston).
 
 ### B. Web mockup lock complete
 
@@ -253,7 +253,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 | Category | Done | Total | % |
 |---|---|---|---|
-| A. PRD lock | 52 | 54 | 96% |
+| A. PRD lock | 53 | 54 | 98% |
 | B. Web mockup | 36 | 49 | 73% |
 | C. macOS app | 5 | 5 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
@@ -262,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **135** | **159** | **85%** |
+| **OVERALL** | **136** | **159** | **86%** |
 
 **Translation:** we're past three-quarters. The PRD is in great shape (80%), the web mockup is past the midpoint (67%), the migration plan is mostly done (67%). **D · E · F · G are all 100% locked** (4 categories shipped end-to-end), C at 80% (1 item left). Houston review is pending.
 
