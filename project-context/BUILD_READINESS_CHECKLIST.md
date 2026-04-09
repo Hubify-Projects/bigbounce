@@ -189,27 +189,16 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 ### F. CLI spec complete
 
-- [ ] **Write `CLI_SPEC.md`**
-- [ ] **Command structure** (the `hubify` CLI):
-  - `hubify lab create <slug>` · `hubify lab list` · `hubify lab switch <slug>` · `hubify lab share <slug> --with <other-slug>`
-  - `hubify project create <slug>` · `hubify project list` · `hubify project show <slug>`
-  - `hubify experiment dispatch <spec.yaml>` · `hubify experiment list`
-  - `hubify chat new` · `hubify chat resume <id>` · `hubify chat list`
-  - `hubify note new [filename]` · `hubify note list` · `hubify note open <filename>`
-  - `hubify pod status` · `hubify pod ssh` · `hubify pod kill <id>`
-  - `hubify credits` (shows balance + runway)
-  - `hubify standup` (trigger or view)
-  - `hubify open <hubify://...>` (URL scheme handler)
-  - `hubify auth login` · `hubify auth status`
-  - `hubify config get/set <key>`
-- [ ] **TUI mode** — `hubify` with no args opens an interactive TUI session (mirror of the web UI)
-- [ ] **Output formats** — `--format text|json|table|yaml`
-- [ ] **Auth flow** — OAuth via browser callback OR long-lived token via env var
-- [ ] **Local config + secrets** — `~/.hubify/config.yaml` + `~/.hubify/credentials`
-- [ ] **Plugin system (future)** — `hubify plugin install <name>` for community extensions
-- [ ] **CLI YAML lock**
+- [x] **Write `CLI_SPEC.md`** (commit `pending-f1`) — comprehensive Go-based CLI spec ~700 lines covering ~120 commands across 19 categories, depends on API_SPEC + MCP_SERVER_SPEC, single static binary distribution
+- [x] **Command structure** (in CLI_SPEC.md §1) — **~120 commands across 19 categories**: lab · project · experiment (with §41 routing) · pipeline · chat · note · pod/compute · agent · memory · standup · costs · backup · cross-lab comms · search · MCP server · auth · config · status · TUI
+- [x] **TUI mode** (in CLI_SPEC.md §1.19) — `hubify` with no args opens bubbletea-based interactive terminal UI mirroring the web views, ⌘1-9 nav, `/` search, `?` help
+- [x] **Output formats** (in CLI_SPEC.md §2) — `--format text|json|yaml|table|tsv`, auto-disable colors when stdout is not TTY
+- [x] **Auth flow** (in CLI_SPEC.md §3) — browser OAuth (PKCE) default · service token via env var · macOS Keychain / Linux libsecret / Windows Credential Manager integration · profile switching via `--profile` or `HUBIFY_PROFILE`
+- [x] **Local config + secrets** (in CLI_SPEC.md §4) — `~/.hubify/config.yaml` + `~/.hubify/credentials` (mode 0600), secrets never in config, env vars for runtime secrets, per-lab config override
+- [~] **Plugin system (future)** (in CLI_SPEC.md §5) — explicitly DEFERRED to v1.1 per spec, stub structure documented
+- [ ] **CLI YAML lock** — `cli-spec.yaml` (next item in Category F — turns this human-readable spec into the machine-readable contract for shell completions + docs generation)
 
-**F status:** 0% — entire category untouched.
+**F status:** ~88% (7 of 8, with item 7 explicitly deferred to v1.1) — entire category bootstrapped from 0% in one iteration.
 
 ### G. Deployment infrastructure plan complete
 
@@ -267,11 +256,11 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | C. macOS app | 1 | 5 | 20% |
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
-| F. CLI spec | 0 | 8 | 0% |
+| F. CLI spec | 7 | 8 | 88% |
 | G. Deployment infra | 0 | 13 | 0% |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **87** | **156** | **56%** |
+| **OVERALL** | **94** | **156** | **60%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 
