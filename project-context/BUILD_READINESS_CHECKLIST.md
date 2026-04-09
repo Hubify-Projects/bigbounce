@@ -161,8 +161,9 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] **Build `desktop-app-mockup.html`** (commit `891e34f`) — separate self-contained HTML file at `hubify-labs-mockups/desktop-app-mockup.html` showing the macOS-specific chrome wrapping the existing web app per DESKTOP_APP_SPEC.md §3. All 7 native chrome elements built: (1) macOS menu bar with Hubify Labs · File · Edit · View · Lab · Window · Help + status icons + clock, (2) borderless Tauri window with traffic lights + draggable titlebar containing the Director credits pill ($847 sage HIGH zone) + cosmic orb status indicator, (3) faux sidebar + content area with stat-grid + overnight briefing card + top experiments rows (real EXP-050/051/049 IDs), (4) macOS Dock with Finder/Cursor/Terminal/Hubify icons + Hubify icon shows running dot + red unread badge "3", (5) native NSUserNotification banner sliding in from top-right with sage Hubify icon + "GPU IDLE — deploy next phase" sample notification, (6) file-drop overlay (toggled on/off) showing sage-tinted dashed-border drop zone, (7) menu bar app popover anchored under the menu bar icon with always-on-top mini Director view (lab + credits + runway + recent activity + quick chat input + open-app button). Plus 8 annotation flags labeling each native element + bottom-left toggle bar (Notification/Menu bar app/File drop/Annotations on-off). Sage discipline preserved (sage/grayscale/--warn/--crit only, no new accent colors). Standard macOS native colors (red traffic light #ff5f57 etc.) used where required for native fidelity.
 - [x] **Spec the menu bar app variant** (DESKTOP_APP_SPEC.md §2, commit `d025f47`) — separate Tauri window with `decorations:false`, `alwaysOnTop:true`, `skipTaskbar:true`, anchored under macOS menu bar icon via `tauri-plugin-positioner`, uses `NSStatusItem` API. Popover content: Director status · credits + runway · quick chat input · recent activity · "Open Hubify Labs". Optional companion app for users who want always-resident monitoring.
 - [x] **iOS app deferral statement** (DESKTOP_APP_SPEC.md §3.5, commit `4695389`) — explicit deferral to v2. Reasons: iOS is mostly a viewer not a driver, native dev expensive (Tauri 2 iOS not production-ready, Swift/RN both multi-week), web app on Safari mobile already covers 80% of the use case, ntfy.sh handles the only thing that requires native iOS (push). v1 ships with mobile-responsive web + ntfy.sh + PWA manifest + universal links. v2 plan: re-evaluate Tauri 2 iOS in Q3 2026, fall back to Swift/SwiftUI if not ready.
+- [x] **Desktop mockup wraps real web app via iframe** (commit pending, Houston 2026-04-09) — replaced the desktop mockup's faux sidebar + faux Director content (single static view with hardcoded stat-grid + activity rows) with `<iframe class="web-app-frame" src="index.html">` filling the entire `.win-body`. The desktop mockup now loads the FULL web app inside its Tauri chrome — true mirror surface like Notion Desktop wrapping Notion Web. This mirrors the actual Tauri 2 production architecture: WKWebView loads `index.html`, native chrome (titlebar · menu bar · dock · notifications · file drop) wraps it, single source of truth for everything inside. Removed ~125 lines of dead code (faux sidebar + faux content markup AND the orphaned `.sidebar`/`.sb-*`/`.content`/`.section`/`.stat-*`/`.card-*`/`.activity-row*` CSS rules — sections 5 + 6 of the original CSS gone). File slimmed 653 → 528 lines. All Tauri chrome preserved: macOS menu bar · borderless window with traffic lights · titlebar with credits pill + cosmic orb · dock with running dot + unread badge · notification banner · file-drop overlay · annotation flags · toggle controls. Closes the loop on Houston's "marry the desktop and web" directive: theme transplant aligned the visual surface (commit `d03c64a`), iframe wrap aligns the architectural surface.
 
-**C status:** **100% ✅** (5 of 5) — Category C COMPLETE.
+**C status:** **100% ✅** (6 of 6) — Category C COMPLETE.
 
 ### D. API spec complete
 
@@ -285,7 +286,7 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 |---|---|---|---|
 | A. PRD lock | 53 | 54 | 98% |
 | B. Web mockup | 33 | 33 | **100% ✅** |
-| C. macOS app | 5 | 5 | **100% ✅** |
+| C. macOS app | 6 | 6 | **100% ✅** |
 | D. API spec | 7 | 7 | **100% ✅** |
 | E. MCP server | 7 | 7 | **100% ✅** |
 | F. CLI spec | 8 | 8 | **100% ✅** |
@@ -294,9 +295,9 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 | I. Houston sign-off | 0 | 7 | 0% |
 | **J. SDP reframe** | **8** | **8** | **100% ✅** |
 | **K. K-Dense + Feynman parity** | **6** | **8** | **75%** |
-| **OVERALL** | **147** | **159** | **92.5%** |
+| **OVERALL** | **148** | **160** | **92.5%** |
 
-**Translation:** **7 of 11 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category K is now **6/8 = 75%** with K1 + K3 + K4 + K5 + K6 + K7 shipped — K-Dense parity stats met (256 DBs · 204 formats · 87 skills · 23 workflows) AND both Feynman gap closures specced (AlphaXiv skill K6 + Local Docker mode K7). PRD A is 1 item from 100%. Migration H is ~78%. Houston sign-off I is 0%. Polish loop runway: **2 K items remaining** (K2 K-Dense skills repo audit + K8 Mintlify docs port).
+**Translation:** **7 of 11 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category C grew to 6/6 with the desktop iframe wrap added this iteration (Houston 2026-04-09: marry desktop+web). Category K is **6/8 = 75%** with K1+K3+K4+K5+K6+K7 shipped. PRD A is 1 item from 100%. Migration H is ~78%. Houston sign-off I is 0%. Polish loop runway: **2 K items remaining** (K2 K-Dense skills repo audit + K8 Mintlify docs port).
 
 ### Autonomous loop endpoint reached (master items)
 
