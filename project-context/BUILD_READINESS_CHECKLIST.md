@@ -266,15 +266,31 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 
 **Translation:** **6 of 9 categories at 100% ✅** (B · C · D · E · F · G all locked end-to-end). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly).
 
-### Autonomous loop endpoint reached
+### Autonomous loop endpoint reached (master items)
 
-**The autonomous loop has shipped everything it can ship without Houston's input.** The remaining 10 items break down into:
+**The autonomous loop has shipped everything it can ship in the master 9-category checklist without Houston's input.** The remaining 10 items break down into:
 
 - **Houston-blocked (8):** 5-lab Houston review (A) + Migration plan Houston review (H) + Houston sign-off on migration (H) + 5 PRD/lab/migration review items (I) — these are the 5-min confirms and the longer review pass items that require Houston to actually look at the work.
 - **Real infrastructure work (1):** Test-lab pre-validation build (H) — requires actual Convex deployment + synthetic data generation + 9 validation steps. ~1 day of focused work, NOT a loop iteration item.
 - **Houston-only sign-offs (1):** Houston confirmed READY status by signing this checklist (I.7) — only Houston can do this final stamp.
 
-**Loop completion: 133/133 of the autonomously-checkable items = 100%.** The loop has done its job. Further iterations cannot make meaningful progress until Houston shows up.
+**Master loop completion: 133/133 of the autonomously-checkable items = 100%.** The master 9-category gate is closed until Houston shows up.
+
+### Polish loop continues — Scientific Discovery Platform reframe
+
+While the master checklist is endpoint-blocked, the autonomous loop has pivoted to Houston's most recent direction (2026-04-08): **reframe Hubify Labs from "AI research platform" to "Scientific Discovery Platform"** and rebuild the marketing site to inspire intensely. This work is tracked in `/Users/houstongolden/Desktop/CODE_2025/hubify-labs-mockups/.queue.md` under "Scientific Discovery Platform reframe (Houston 2026-04-08)" with 8 SDP-* items.
+
+**Polish loop progress (this iteration):**
+- [x] **SDP-6** Marketing site language sweep — 8 user-visible swaps from "research platform" / "research IDE" / "AI-native research" → "Scientific Discovery Platform" / "Discovery IDE" / discovery framing (commit `64a12f3`)
+- [x] **SDP-1** Marketing hero rewrite — eyebrow + h1 + lede + arch-foot all rewritten to lead with discovery, datasets, multi-agent peer review, and the 2025-2027 window (commits `64a12f3` + `bc87ee4`)
+- [x] **SDP-5** 2025-2027 Window urgency band — pre-existing window-band enhanced from passive blog quote into a real urgency CTA: countdown pill ("~32 months until the moats close"), "The window is closing. Make your discovery now." line, "Start your discovery" sage CTA + ghost demo CTA, reassurance meta line (commits `bc87ee4` + `d1e357e` regression fix)
+- [ ] SDP-2 datasets gallery section
+- [ ] SDP-3 agent team explainer (Director > Orchestrator > Leads > Workers)
+- [ ] SDP-4 multi-model peer review explainer
+- [ ] SDP-7 discovery showcase (3-4 example domains)
+- [ ] SDP-8 inspire-intensely homepage final pass
+
+**SDP polish loop progress: 3/8 = 37.5%.** Continuing to ship 1-2 commits per iteration on the next SDP item until the marketing site is fully reframed.
 
 ### What Houston needs to do (when he wakes)
 
