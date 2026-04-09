@@ -348,6 +348,8 @@ K-Dense AI and Feynman are the two closest competitors. Houston flagged we need 
 - `adf0a5b` L5 demo tabs pre-populated at DOMContentLoaded (EXP-049 + Paper 2 visible in tab strip on first load)
 - `661c956` Features page 4-surface → 3-surface framing sync + "discovery lab" h1 fix
 - `15b34cf` SDP-6 continuation: 5 remaining "research" → "discovery" language instances on Labs/Features/Blog/Guides pages
+- `930819a` Features page jargon audit: §06 "Houston Method v2" → completion protocol language, §08 anecdote removed, §12 "comm gateway" → "knowledge sharing"
+- `ff37424` Lab-detail page screenshot placeholder → full inline mini-IDE Director view (real BigBounce data: EXP-055/051 running, morning brief, orchestrator chat)
 
 ### What Houston needs to do (when he wakes)
 
