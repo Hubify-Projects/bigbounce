@@ -262,6 +262,21 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 
 **J status:** **8/8 = 100% ✅** — Category J COMPLETE. The Scientific Discovery Platform reframe is fully shipped on the marketing site.
 
+### K. K-Dense + Feynman parity / gap closure (Houston 2026-04-09)
+
+K-Dense AI and Feynman are the two closest competitors. Houston flagged we need feature parity with both. This category tracks the in-app + spec gaps surfaced in the K-Dense and Feynman competitor memories. Most items are concrete mockup work the loop can ship without Houston.
+
+- [x] **K1: Skills view** (commit `b2a69df`) — agent skills catalog (87 skills · 12 categories · forked from K-Dense scientific-skills) shipped before Category K was formalized. Already done — credited retroactively.
+- [x] **K3: Workflows view** (commit pending) — slash command catalog at `view-workflows` in index.html. 23 workflows across 7 categories: Research workflows (6 · /deepresearch · /lit · /brief · /draft · /autoresearch · /watch — Feynman parity), Audit & replication (3 · /audit · /replicate · /compare — Feynman parity), Lab management (5 · /chat · /notechat · /promote · /share · /queue — PRD §40), Houston Method (3 custom · /houston · /no-punt · /publish — PRD §13.1 + §37), Operations & runtime (4 · /cost · /idle · /proactive · /kill), Daily routines (2 · /standup · /retro). New sidebar item between Skills and Backups, registered in tabNames + tabIcons + cmds. Reuses existing skills view CSS classes (no new CSS). Closes the Feynman gap on /audit · /replicate · /watch · /draft · /compare · /lit · /deepresearch.
+- [ ] **K2: K-Dense scientific-skills repo fork + audit** — fork github.com/K-Dense-AI/claude-scientific-skills, audit which skills we should include in the Hubify Labs default catalog, extend with our additions (cosmology, anomaly detection, Houston Method). Currently the Skills view in K1 lists the curated 87 — this item is the upstream sync infra.
+- [ ] **K4: view-data-formats** — 200+ scientific data formats matrix per K-Dense parity (FITS · HDF5 · BAM · VCF · mzML · DICOM · CIF · GeoTIFF · NWB · Zarr · Parquet · ...) organized by domain. Mockup view in index.html.
+- [ ] **K5: view-database-connectors** — 250+ database connector inventory per K-Dense parity (PubMed · ChEMBL · UniProt · SDSS · Gaia · DESI · SEC EDGAR · FRED · BioPython · BioServices · ...) organized by domain. Mockup view in index.html.
+- [ ] **K6: AlphaXiv skill spec** — add AlphaXiv (paper search · Q&A · code reading) to the skills catalog per Feynman feedback memory. Currently the skill is referenced in K1 list but the spec + integration design is not written.
+- [ ] **K7: Local-first Docker mode spec** — write the spec for an alternative deployment mode where the orchestrator runs in a local Docker container instead of Fly.io. For privacy-sensitive users. Per Feynman feedback memory.
+- [ ] **K8: Mintlify docs port carry-over** — replicate the exact hubify subpath setup (PRD §40.17 Tier 3). Carry-over from .queue.md.
+
+**K status:** 2/8 = 25% — K1 (Skills view) credited retroactively + K3 (Workflows view) shipped this iteration. K2, K4, K5, K6, K7, K8 remain.
+
 ---
 
 ## 3. The READY math (current state)
@@ -278,9 +293,10 @@ Houston redirected the marketing positioning from "AI research platform" / "rese
 | H. Migration plan | 7 | 9 | 78% |
 | I. Houston sign-off | 0 | 7 | 0% |
 | **J. SDP reframe** | **8** | **8** | **100% ✅** |
-| **OVERALL** | **141** | **151** | **93.4%** |
+| **K. K-Dense + Feynman parity** | **2** | **8** | **25%** |
+| **OVERALL** | **143** | **159** | **89.9%** |
 
-**Translation:** **7 of 10 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category J (Scientific Discovery Platform reframe) joined the 100% club this iteration. PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). **The autonomous loop is now fully endpoint-blocked again** — 10 remaining items are 8 Houston-blocked + 1 real infra (test-lab) + 1 final stamp. Next iteration must either (a) pivot to a NEW category K (Mintlify docs port, K-Dense skills catalog fork, view-workflows / view-data-formats / view-database-connectors mockup work, etc.) OR (b) wait for Houston.
+**Translation:** **7 of 11 categories at 100% ✅** (B · C · D · E · F · G · J all locked end-to-end). Category K (K-Dense + Feynman parity / gap closure) formalized this iteration with 8 items, 2 already shipped (K1 Skills view retroactive credit + K3 Workflows view fresh ship). PRD A is 1 item from 100% (5-lab Houston review). Migration H is ~78% with 2 items remaining (test-lab build + Houston review). Houston sign-off I is 0% (all 7 items require Houston explicitly). The polish loop now has 6 new tracked items in K (K2, K4, K5, K6, K7, K8) — enough work for ~6 more iterations before Category K closes.
 
 ### Autonomous loop endpoint reached (master items)
 
