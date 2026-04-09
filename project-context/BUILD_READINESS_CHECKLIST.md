@@ -137,6 +137,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [ ] **Round D #4 Experiment dispatch flow CPU/GPU routing UI** — `requires_gpu` + `expected_duration_min` + `priority` fields
 - [ ] **Final mobile responsiveness audit re-run** — after all Round A-D work is in
 - [x] **Final color discipline scan** (commit `83a9f81`) — audited all 130 unique colors in the file, found a cluster of 10 bluish-gray tokens leaking blue tint in view-vibe (.vibe-frame-chart CSS) + view-datamap (SVG data flow arrows + boxes), 61 occurrences replaced with neutral grayscale equivalents (preserving lightness, removing blue); both views are NOT in the polished list — fair game per rule 7; view-site (polished, uses navy intentionally) untouched; mockup is now fully sage+grayscale discipline aligned
+- [x] **Settings · Compute & Runtime section + runtime sidepeek (3 variants)** (commit `6eb362b`) — Houston request 2026-04-08: Fly.io machine integration model + macOS app deep link from Settings. Adds Runtime nav item, new Compute & Runtime section with 4 cards (macOS desktop app · Fly.io orchestrator · RunPod compute · MCP server), each clickable to a `runtime` sidepeek showing live status + actions. Fly variant shows the 4-surface integration model (sidepeek inspector / terminal pane stream / out-of-band admin URL / CLI). DEPLOYMENT_INFRA_PLAN.md §2.3 updated with §2.3.1 (4 surfaces) and §2.3.2 (chat→action pipeline through the orchestrator).
 - [ ] **Final dead-click audit** — every clickable opens a sidepeek or navigates somewhere
 - [ ] **Final PRD↔mockup consistency review re-run** — verify the gaps from the last review are all closed
 
@@ -253,7 +254,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | Category | Done | Total | % |
 |---|---|---|---|
 | A. PRD lock | 41 | 51 | 80% |
-| B. Web mockup | 30 | 49 | 61% |
+| B. Web mockup | 31 | 49 | 63% |
 | C. macOS app | 1 | 5 | 20% |
 | D. API spec | 5 | 7 | 71% |
 | E. MCP server | 6 | 7 | 86% |
@@ -261,7 +262,7 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 | G. Deployment infra | 13 | 13 | **100% ✅** |
 | H. Migration plan | 6 | 9 | 67% |
 | I. Houston sign-off | 0 | 7 | 0% |
-| **OVERALL** | **109** | **156** | **70%** |
+| **OVERALL** | **110** | **156** | **71%** |
 
 **Translation:** we're roughly halfway. The PRD is in great shape (80%), the web mockup is past the midpoint (51%), the migration plan is mostly done (67%). The 4 untouched categories — **macOS / API / MCP / CLI / Deployment** — are the biggest gaps, all at 0%. Houston review is pending.
 

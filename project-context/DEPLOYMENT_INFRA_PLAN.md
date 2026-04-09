@@ -226,6 +226,91 @@ primary_region = "lax"
 
 **Auto-scaling:** disabled. We always want exactly 1 machine running per lab. If it goes down, Fly auto-restarts it (`auto_start_machines = true`).
 
+### 2.3.1 How the Fly.io machine integrates with the UI (Houston request 2026-04-08)
+
+The Fly.io machine is **invisible by default** — it just runs the orchestrator agent in the background and Houston interacts with the platform via the web app or CLI. But there are 4 explicit surfaces where the machine itself is visible and controllable. Pick the right one for the task.
+
+**Surface 1 — The orchestrator sidepeek (in-app, the primary surface):**
+
+- **Where:** Settings → Compute & Runtime → Fly.io Orchestrator card → click → opens the `orchestrator` sidepeek
+- **What it shows:**
+  - Live status pill (active / idle / restarting / crashed)
+  - Current process state: PID, uptime, memory, CPU
+  - Last 50 stdout/stderr lines (live tail via Convex SSE stream)
+  - Inbox queue depth (number of pending comm-events)
+  - Last 10 actions taken with timestamps
+  - "SSH into machine" button (opens `fly ssh console` in a new browser tab via Fly's web SSH)
+  - "Restart machine" button (calls Fly API)
+  - "Stop machine" button (admin only)
+  - "Open in Fly dashboard" link → `https://fly.io/apps/hubify-<lab>-orch`
+- **When to use:** day-to-day monitoring. Houston glances at this when something feels off.
+
+**Surface 2 — The terminal pane integration (workspace embedded):**
+
+- **Where:** the existing chat/terminal pane in the workspace has a mode dropdown (chat / terminal / etc.). Add a new mode: **`orch logs`**
+- **What it shows:** raw live tail of the Fly machine's stdout/stderr, scrolling in the terminal pane like `fly logs -a hubify-<lab>-orch -f`
+- **Behavior:** SSE stream from the platform's `/v1/labs/:slug/orch/logs/stream` endpoint, rendered in the terminal pane
+- **When to use:** debugging an in-flight problem. Houston wants the orchestrator's raw output streaming alongside whatever else he's doing.
+
+**Surface 3 — The dedicated admin URL (full-page, out-of-band):**
+
+- **Where:** `https://orch.hubify-labs.com/<lab-slug>` — a separate admin page hosted on Vercel, NOT inside the main app
+- **What it shows:** everything Surface 1 shows, but full-page with bigger log viewer + machine metrics charts (memory/cpu over 24h) + audit log + secret rotation controls
+- **Why a separate URL:** when the main app is broken (e.g., the orchestrator crashed and the activity feed is stale), Houston needs an out-of-band admin surface that doesn't depend on the main app being healthy. Same pattern as Vercel's dashboard being separate from your deployed site.
+- **Auth:** same JWT token, but admin scope required (`org:hubify-labs:admin` per `API_SPEC.md` §2.4)
+- **When to use:** incident response. The main app is broken or you're debugging an outage.
+
+**Surface 4 — The CLI:**
+
+- **Where:** `hubify pod ssh` (existing) and new `hubify orch <subcommand>`:
+  - `hubify orch status` — current state
+  - `hubify orch logs [--follow]` — tail logs from the terminal
+  - `hubify orch ssh` — SSH into the machine via Fly
+  - `hubify orch restart` — restart with confirmation
+  - `hubify orch metrics` — print memory/CPU snapshot
+- **When to use:** scripting, CI, headless workflows. The CLI is the deepest integration — it talks directly to the Fly API + the platform's REST API.
+
+**The 4 surfaces are layered, not competing.** Surface 1 is for "is this OK?", Surface 2 is for "what is it doing right now?", Surface 3 is for "the main app is broken, give me direct admin", Surface 4 is for "I'm scripting it".
+
+**The Settings → Compute & Runtime panel** (per Houston request 2026-04-08) is the entry point that ties them together. It contains:
+
+- **macOS App card** — current installed version, "Install / Upgrade" button, "Open in Mac App Store" link, "Configure menu bar variant" link, install instructions for first-time users
+- **Fly.io Orchestrator card** — machine ID + region + status pill + uptime + memory + cost/month, "Open orchestrator inspector →" (Surface 1), "Open in Fly dashboard ↗" (out-of-band), "Open admin URL ↗" (Surface 3), "Restart" button, "View raw logs in terminal" toggle (Surface 2)
+- **Compute Resources card** — RunPod credits + active pods (links to existing Compute view per PRD §24/§41)
+- **MCP Server card** — current MCP server status (running/stopped), `hubify mcp serve` command, link to MCP_SERVER_SPEC.md
+
+These 4 cards form the Settings → Compute & Runtime section. Each card is clickable → opens a sidepeek (Surface 1 pattern) → which has a button to escape to Surface 3 (the out-of-band admin URL) when needed.
+
+### 2.3.2 The orchestrator's role in the chat → action pipeline
+
+When Houston sends a message in chat:
+
+```
+User types in chat
+  ↓
+Web app POST /v1/labs/:slug/chats/:id/messages
+  ↓
+Convex action receives the message
+  ↓
+Convex enqueues a comm-event in the lab's orchestrator inbox
+  ↓
+Orchestrator agent on Fly.io polls the inbox (or receives via WebSocket)
+  ↓
+Orchestrator processes the message:
+  - Decides which sub-agent to invoke
+  - May dispatch experiments via RunPod
+  - May trigger the publish-loop
+  - May write notes / contributions
+  ↓
+Orchestrator writes the response back to the chat (Convex mutation)
+  ↓
+Web app's real-time query receives the update, renders the response in the UI
+```
+
+**The Fly machine is the bridge** — it owns the long-running agent process state that Convex (which is request-response) cannot. Without Fly, the orchestrator would have to be re-instantiated per message, losing context. With Fly, the orchestrator is always alive, watching the inbox, ready to act.
+
+**The "always-on" property is load-bearing** for autonomous research. The orchestrator must be able to fire standups at 08:07 / 13:07 / 18:07 PT regardless of whether Houston has the web app open. The Fly machine is what makes that possible.
+
 ### 2.4 RunPod credentials store
 
 **Decision: Convex env vars** (per PRD §41 open question).
