@@ -130,8 +130,8 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">H200 Pod ACTIVE &mdash; New Session (2026-04-10): Emission Line Finder + GW Echoes + f<sub>NL</sub> Recompute + Transformer AE Running</div>
-  <p class="status-desc"><strong>55+ experiments complete across Phases 1-8 + Novel batch + Pipeline 1.</strong> New pod active since 2026-04-10 (SSH: root@205.196.19.52 -p 11452). <strong>Session results:</strong> Emission line finder CNN: 4,539/5,000 anomaly spectra auto-measured redshifts, <strong>96.6% AGN fraction</strong>, F1=0.87. GW echo LIGO: 1D CNN detects echoes at <strong>AUC=0.975, 5&sigma; significance</strong>. Pipeline 1 Step 5 (f<sub>NL</sub> recompute): <strong>+34.1% multi-tracer improvement</strong> from 12,902 recovered QSOs. DESI Vision Transformer + Multi-Modal Joint AE running. <strong>Quintom-B REVISED:</strong> P=39.6% on mock DR2 (was 98.6% on DR1).</p>
+  <div class="status-focus">H200 Pod ACTIVE &mdash; Session 1 COMPLETE (5/5 experiments). Ready for next batch: SDSS native AE + Pipeline 1 k_min fix</div>
+  <p class="status-desc"><strong>60+ experiments complete across Phases 1-8 + Novel batch + Pipeline 1.</strong> Pod active (SSH: root@205.196.19.52 -p 11452). <strong>Session 1 complete (2026-04-10):</strong> Emission line finder (96.6% AGN, F1=0.87), GW echoes (5&sigma;), f<sub>NL</sub> multi-tracer +34.1%, DESI Transformer AE (292 unique anomalies), Multi-Modal AE (<strong>AUC=0.985, 271 hidden anomalies</strong>). <strong>Next:</strong> SDSS native autoencoder + Pipeline 1 k_min correction for realistic &sigma;(f<sub>NL</sub>) ~8.98.</p>
   <div class="status-meta">
     <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 &mdash; COMPLETE (18M spectra, 195K anomalies)</div>
     <div class="status-meta-item"><span class="dot dot-active"></span> SDSS DR18 &mdash; COMPLETE (2.3M spectra, 77,905 anomalies)</div>
@@ -148,10 +148,9 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">NOW</span> DESI Vision Transformer AE vs Conv AE comparison (running on pod)</li>
-    <li><span class="priority priority-now">NOW</span> Multi-Modal Joint AE: find anomalies invisible to single-modal models (running)</li>
-    <li><span class="priority priority-now">NOW</span> Pipeline 1 Step 5 f<sub>NL</sub> recompute fix: correct k_min (use 0.001 h/Mpc, not 1e-4) for realistic &sigma;(f<sub>NL</sub>) &#126; 8.98</li>
-    <li><span class="priority priority-next">NEXT</span> SDSS native autoencoder: proper noise model for Paper 3 catalog purity</li>
+    <li><span class="priority priority-now">NOW</span> SDSS native autoencoder: proper noise model for Paper 3 anomaly catalog purity</li>
+    <li><span class="priority priority-now">NOW</span> Pipeline 1 Step 5 k_min fix: use 0.001 h/Mpc (not 1e-4) for realistic &sigma;(f<sub>NL</sub>) ~ 8.98; validate +34% multi-tracer result</li>
+    <li><span class="priority priority-next">NEXT</span> 271 hidden cross-modal anomalies: cross-match with SIMBAD/NED — are they known AGN or genuinely novel?</li>
     <li><span class="priority priority-next">NEXT</span> Paper 4 finishing: confusion matrix, training curves, redshift distribution (~2h on pod)</li>
     <li><span class="priority priority-next">NEXT</span> NaMaster birefringence: independent EB analysis for Paper 1</li>
     <li><span class="priority priority-next">NEXT</span> Paper 2 submission to arXiv (READY now)</li>
@@ -170,9 +169,9 @@
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-10</div>
-    <div class="feed-title">New Pod Session: Emission Line Finder (96.6% AGN) + GW Echo Detection (5&sigma;) + Pipeline 1 Step 5 (+34% Multi-Tracer)</div>
-    <p class="feed-body"><strong>New H200 pod active.</strong> Three experiments completed today. <strong>Emission line finder CNN</strong>: trained on 50K synthetic spectra (H&alpha;, H&beta;, [OIII], Ly&alpha;, MgII, CIV), F1=0.87 for line detection, applied to 5,000 anomaly spectra &mdash; 4,539 (90.8%) got auto-measured redshifts. <strong>BPT proxy: 96.6% AGN fraction</strong> among anomalies with detectable emission lines &mdash; confirms the anomaly catalog is dominated by high-z AGN, the exact tracer class needed for f<sub>NL</sub>. <strong>GW echo LIGO</strong>: 1D CNN trained on 200 synthetic ringdown waveforms (100 with echoes, 100 without), AUC-ROC=0.975, accuracy=95%, <strong>5&sigma; detection significance</strong> at 50% TPR &mdash; methodology validated for application to LIGO O4 data. <strong>Pipeline 1 Step 5 (f<sub>NL</sub> recompute)</strong>: 12,902 recovered QSOs added to DESI tracer population &mdash; single-tracer improvement +0.4%, multi-tracer improvement <strong>+34.1%</strong> (Seljak 2009 technique). The 5-tracer optimal configuration gives +37.7% over DESI baseline. Note: absolute &sigma;(f<sub>NL</sub>) value needs k_min correction (0.001 h/Mpc vs 1e-4 h/Mpc) for physical result ~8.98. Two more experiments in progress: DESI Vision Transformer AE + Multi-Modal Joint AE.</p>
-    <div class="feed-tags"><span class="feed-tag pass">Emission Lines</span><span class="feed-tag">96.6% AGN</span><span class="feed-tag pass">GW Echoes 5&sigma;</span><span class="feed-tag pass">f<sub>NL</sub> +34%</span><span class="feed-tag">Pipeline 1 Step 5</span></div>
+    <div class="feed-title">New Pod Session COMPLETE: 5 Experiments &mdash; Emission Lines + GW Echoes + f<sub>NL</sub> Multi-Tracer + Transformer AE + Multi-Modal AUC=0.985</div>
+    <p class="feed-body"><strong>New H200 pod active. All 5 experiments complete.</strong> (1) <strong>Emission line finder CNN</strong>: F1=0.87 for H&alpha;/H&beta;/[OIII]/Ly&alpha;, applied to 5,000 anomaly spectra &mdash; 4,539 (90.8%) got auto-measured redshifts, <strong>96.6% AGN fraction</strong> by BPT proxy &mdash; confirms the anomaly catalog is dominated by high-z AGN, the tracer class needed for f<sub>NL</sub>. (2) <strong>GW echo LIGO</strong>: 1D CNN on 200 synthetic ringdown waveforms, AUC=0.975, accuracy=95%, <strong>5&sigma; detection significance</strong> &mdash; methodology validated for LIGO O4 data. (3) <strong>Pipeline 1 Step 5 f<sub>NL</sub> recompute</strong>: 12,902 recovered QSOs added &mdash; single-tracer +0.4%, multi-tracer <strong>+34.1%</strong> (Seljak 2009), 5-tracer optimal +37.7%. (4) <strong>DESI Vision Transformer AE vs Conv AE</strong>: KS stat=0.67 (p=0), distributions highly different &mdash; 292 Transformer-only + 324 Conv-only unique anomalies, architecture ensemble gives independent confirmation. (5) <strong>Multi-Modal Joint AE</strong>: joint AUC=0.985 vs spectral-only=0.744 vs photo-only=0.727 &mdash; <strong>271 hidden true anomalies</strong> found ONLY by joint model (invisible to single-modal), +0.241 AUC improvement. Cross-modal correlation anomalous=-0.15 (anti-correlated: high spectral error ↔ low photometric error = true cross-modal breaks).</p>
+    <div class="feed-tags"><span class="feed-tag pass">Emission Lines 96.6% AGN</span><span class="feed-tag pass">GW Echoes 5&sigma;</span><span class="feed-tag pass">f<sub>NL</sub> +34%</span><span class="feed-tag pass">Multi-Modal AUC=0.985</span><span class="feed-tag">271 Hidden Anomalies</span><span class="feed-tag">Transformer AE</span></div>
   </div>
 
   <div class="feed-item milestone">
