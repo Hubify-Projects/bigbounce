@@ -136,11 +136,22 @@ All sourced from Figma MCP. Cabinet brand preserved throughout. Departure Mono o
 - [x] **Checkbox** — Figma node 4067:1119 — 24×24px container, 16×16px box, r-sm, checked/indeterminate/disabled states, CSS ::after checkmark/dash. `.checkbox-row` + `.checkbox-label` + `.checkbox-sub` for inline label rows. Wired into Settings Cross-model review: 6-provider multi-select grid (GPT-4o ✓, Gemini 2.5 ✓, Perplexity ✓, Grok, Sonar Pro, o3-disabled).
 - [x] **Tooltip** — Figma node 2001:2681 — `.tooltip-wrap` + `.tip` CSS class system (hover-reveal, all 4 positions). `[data-tip]` auto-tooltip via ::before/::after (no wrapper needed), dark bg #191919, Geist 12px, r-sm, caret arrow. Wired to 22 elements: all icon-btn toolbar buttons, sb-collapse-btn, sb-footer-btn, sb-action items.
 - [x] **Progress bar** — Figma node 4072:6991 — AgenticUI barcode tick style: 1px bars + 2px gaps via `repeating-linear-gradient`, `--prog` CSS var drives fill, sage accent fill. Sizes: sm(4px)/default(6px)/lg(16px). Wired to all 3 pipeline cards, EXP-054 (67%), EXP-055 (30%), Director backup row (89%). Old 2px solid `.pipeline-progress-bar` replaced.
-- [ ] **Radio button** — node 124:2977 — dispatch form uses native radio; upgrade to AgenticUI spec (deferred — native radios functional)
+- [x] **Radio button** — Figma node 124:2977 — `appearance:none` 16×16px circle, `border:1px solid border-strong` unselected, `radial-gradient` sage inner dot (44%) + `border:1.5px solid accent` selected. `input[type="radio"].radio-input` standalone class + `.dispatch-radio input` wired to dispatch form. `.dispatch-radio` upgraded to Geist 12px / r-md / `gap:7px`.
+- [x] **Search** — Figma node 338:6162 — sm: `h:32px`, `surface-2 bg`, `0.5px border`, `r-lg`, Geist 13px, SVG magnifier via CSS `background-image` (zero HTML changes). Focus: `bg→white`, `border→border-strong`, 2px ring. Applies to `.filter-search` + `.filter-search-minimal` — wires automatically to all 6 view header search inputs.
 - [ ] Remaining inline style radii (in HTML, not CSS) — deferred, lower impact
 - [ ] Houston side-by-side review
 
-### Phase 7 STATUS: All high-value components complete. Remaining items are lower-priority polish.
+### Phase 7 STATUS: All planned components complete. ✅
+
+### Phase 8 — Remaining unimplemented AgenticUI components (for future iterations)
+Ordered by impact:
+- [ ] **Breadcrumbs** — node 549:163 — currently no breadcrumbs in mockup
+- [ ] **Stepper** — node 4001:1347 — could replace pipeline-step indicators
+- [ ] **Skeleton** — node 761:23192 — loading states (data tables, experiment cards)
+- [ ] **Code block** — node 4126:5640 — inline code + advanced multi-line block
+- [ ] **File upload** — node 4028:6200 — dispatcher attachment zone
+- [ ] **Pagination** — node 716:3790 — experiment table (53 rows needs paging)
+- [ ] **Helper text** — node 4066:7445 — form field validation hints
 
 ### Phase 6 — Remaining component passes (2026-04-09 iteration)
 - [x] **Navbar/sidebar nav-link** — Figma node 230:699 — Departure Mono 13px uppercase 0-track, `padding:7px 8px`, `margin:0 6px`, `border-radius:8px`, hover `background:surface-2`, sub-link border-left track, active rail at `left:-6px`
