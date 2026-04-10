@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** ALL 27 COMPONENTS EXTRACTED (Phases 3–26). Phase 32 complete: ⌘N bug fix (navigates to experiments view + expands dispatchFlowCard instead of broken navTo('dispatch')), org-chart click delegation handler (all 22 .org-node cards → openDetail('agent', name), no individual onclick required), experiment table View/Logs buttons wired to openDetail (9 buttons, was toast-only). Committed as Phases 27-32 batch.
+**Status:** ALL 27 COMPONENTS EXTRACTED (Phases 3–26). Phase 33 complete: merged duplicate keydown handlers (two conflicting document.addEventListener('keydown') handlers replaced with single canonical handler, capture=true; fixes double-fire bugs on ⌘B/⌘J/⌘`/⌘1/2/3; ⌘P now opens cmdPalette only; added ? shortcut, ⌘W, improved Esc, improved ⌘`); updated ⌘P Settings row to "Command palette (alias)"; added ? and ⌘W rows to Settings keyboard shortcuts section. Committed.
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
@@ -262,6 +262,40 @@ No Figma calls.
 - [x] EXP-056 "Run now" kept as `toast()` (queued, not yet run)
 
 **Committed:** Phase 32 changes committed alongside Phases 27-31 as batch commit `356a294` in hubify-labs-mockups.
+
+---
+
+### Phase 33 — Duplicate keydown handler merge + Settings shortcut rows (2026-04-10) ✅ COMPLETE
+
+No Figma calls.
+
+**Root cause:** Two separate `document.addEventListener('keydown', ...)` handlers existed on `document`. First (Phase 30, capture=true) had ⌘B/⌘J/⌘1/2/3/⌘` + ⌘P → `.sb-search.click()`. Second (pre-existing, bubble phase) also had ⌘B/⌘J/⌘1/2/3/⌘` + ⌘P → `openCmdPalette()`. Both fire since both are on `document` — capture fires before bubble, but both complete.
+
+**Bugs fixed:**
+- ⌘B toggleSidebar fires twice → sidebar flickers then ends up same state (net = no effect)
+- ⌘J/⌘/ toggleChatVisible fires twice → chat hides then shows (net = no effect)
+- ⌘` setChatMode fires twice → terminal toggle cancels itself (net = no effect)
+- ⌘P fires `.sb-search.click()` AND `openCmdPalette()` simultaneously
+
+**33A — Merged canonical keydown handler**
+- [x] Replaced first handler with merged version (single `capture=true` handler)
+- [x] Kept all unique features from both handlers
+- [x] Added: `?` key → opens shortcuts help overlay (guards: not inside input/textarea/select)
+- [x] Added: ⌘W → closes active file preview tab (guards: `fpActiveTab` defined and truthy)
+- [x] Improved: ⌘` now shows chat panel first if `chatPos==='hidden'` before toggling mode
+- [x] Improved: Esc now also closes `#labDD` and `#chatPosDD` dropdowns
+- [x] Improved: ⌘P opens cmdPalette only (no more sidebar search click)
+
+**33B — Deleted duplicate second handler**
+- [x] Second handler body replaced with single comment: `// (duplicate keydown handler removed in Phase 33 — all shortcuts merged into canonical handler above)`
+
+**33C — Settings keyboard shortcut rows updated/added**
+- [x] ⌘P row: title → "Command palette (alias)", desc → "Same as ⌘K · Cursor/VSCode convention"
+- [x] ⌘1/2/3 row: added `border-bottom:1px solid var(--border)` separator
+- [x] New `?` row added: "Shortcuts help" / "Show keyboard shortcuts overlay · works outside text inputs"
+- [x] New ⌘W row added: "Close file tab" / "Close active file preview tab · only fires when a tab is open"
+
+**Committed:** Phase 33 committed in hubify-labs-mockups.
 
 ---
 
