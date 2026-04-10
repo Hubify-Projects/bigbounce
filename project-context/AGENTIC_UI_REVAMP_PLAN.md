@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** Phase 3 component merge COMPLETE (2026-04-10). All 9 AgenticUI components extracted + CSS applied to index.html: Text Input · Badge · Toast · Menu · Button · Search Input · Dropdown · Tooltip · Progress. Phase 4 next: wire new CSS classes into actual HTML markup (replace ad-hoc inline styles with canonical classes), then Phase 5 surface parity (marketing-site, desktop, cli-tui where applicable).
+**Status:** ALL 27 COMPONENTS EXTRACTED (Phases 3–26). Phase 32 complete: ⌘N bug fix (navigates to experiments view + expands dispatchFlowCard instead of broken navTo('dispatch')), org-chart click delegation handler (all 22 .org-node cards → openDetail('agent', name), no individual onclick required), experiment table View/Logs buttons wired to openDetail (9 buttons, was toast-only). Committed as Phases 27-32 batch.
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
@@ -219,6 +219,327 @@ No Figma calls — all components now extracted. Focus: replace remaining inline
 - [x] **`.sp-select` + contextual select CSS** — canonical CSS class added near `.sp-text input` rules.
 - [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
 - [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
+
+### Phase 23 — Pagination 32px + Switch hover/focus spec (2026-04-10) ✅ COMPLETE
+
+Figma calls: `get_metadata(123:376)` Pagination · `get_metadata(814:72)` Switch.
+
+**23A — Pagination component (AgenticUI 716:3790)**
+- [x] **`.pg-btn`** — upgraded 26×26px → **32×32px**, `font-size:9px → 11px`, `border-radius:r-sm(3px) → r-md(5px)`, `gap:3px → 2px`
+- [x] **`.pg-num`** — upgraded 26×26px → **32×32px**, `font-size:10px → 11px`, `border-radius:r-sm → r-md`
+- [x] **`.pg-dots`** — upgraded 26×26px → **32×32px** (consistent sizing)
+- [x] **Comment block** added: `/* ══ PAGINATION — AgenticUI 716:3790 · item 32×32px · simple 48h · numbered 64h ══ */`
+
+**23B — Switch component (AgenticUI 814:110)**
+- [x] **Thumb inset** — fixed 0-inset → **2px inset**: `top:2px;left:2px;width:12px;height:12px` (was `top:0;left:0;width:16px;height:16px`)
+- [x] **On position** — `left:13px → left:15px` (29-12-2=15, correct for 2px inset)
+- [x] **Border added** — `border:0.5px solid var(--border-strong)` when off; `border-color:var(--accent-dim)` when on
+- [x] **Hover state** — `background:var(--surface-4);border-color:var(--border-bright)` (off), `filter:brightness(1.07)` (on). Guards: `:not(.disabled):not([disabled])`
+- [x] **Focus ring** — `0 0 0 2px var(--bg), 0 0 0 4px var(--accent)` focus ring on `:focus-visible`
+- [x] **lg thumb** — corrected 24×24 → **20×20px**, `on::after{left:21px}` (43-20-2=21, was 19)
+- [x] **Comment block** added: `/* ══ SWITCH — AgenticUI 814:110 · sm 29×16 · lg 43×24 · thumb inset 2px ══ */`
+
+### Phase 32 — ⌘N fix + org-chart delegation + experiment View buttons (2026-04-10) ✅ COMPLETE
+
+No Figma calls.
+
+**32A — ⌘N keyboard shortcut bug fix**
+- [x] **Was**: `navTo('dispatch')` — no `view-dispatch` exists anywhere in the DOM. Silently fails.
+- [x] **Root cause**: dispatch form is `.card.collapsible#dispatchFlowCard` inside `#view-experiments`, toggled via `.expanded` class.
+- [x] **Fix**: `navTo('experiments'); setTimeout(()=>{ card.classList.add('expanded'); card.scrollIntoView({behavior:'smooth'}) }, 60)`
+- [x] Settings row description updated: "Go to Experiments · open dispatch form"
+
+**32B — Org-chart click delegation (22 agents)**
+- [x] `.org-node` cards already had `cursor:pointer` and `:hover` border-color transition in CSS, but zero onclick handlers
+- [x] Added `document.addEventListener('click', e=>{ const node = e.target.closest('.org-node'); ... openDetail('agent', name) })` — single handler covers all 22 nodes
+- [x] Guard: skips if target is `button` or `a` inside node (prevents double-firing on inner actions)
+- [x] Guard: skips if name === 'houston' (director = user, no agent detail needed)
+
+**32C — Experiment table View/Logs buttons wired**
+- [x] 9 buttons updated: EXP-047, 048, 049, 050, 051, 052, 053 → "View" calls `openDetail('experiment', id)`
+- [x] EXP-054, 055 → "Logs" buttons call `openDetail('experiment', id)` (shows tail logs in detail view)
+- [x] Re-run/Stop buttons kept as `toast()` (destructive actions — confirmation via toast is correct for mockup)
+- [x] EXP-056 "Run now" kept as `toast()` (queued, not yet run)
+
+**Committed:** Phase 32 changes committed alongside Phases 27-31 as batch commit `356a294` in hubify-labs-mockups.
+
+---
+
+### Phase 31 — Shortcut bug fix + ⌘J/1/2/3 wiring + notif drawer fade (2026-04-10) ✅ COMPLETE
+
+No Figma calls.
+
+**31A — ⌘/ bug fix**
+- [x] **Was**: `const cp=document.getElementById('chatPane');if(cp){const hidden=cp.classList.contains('pos-hidden');...}` — `#chatPane` doesn't exist, `pos-hidden` not used
+- [x] **Fix**: `toggleChatVisible()` — already defined at line 14895, correctly checks `chatPos==='hidden'` and calls `setChatPos('left'/'hidden')`
+
+**31B — ⌘J wired (matches existing "Hide chat (⌘J)" tooltip in header)**
+- [x] `e.key==='j'` → `toggleChatVisible()` (same behavior as ⌘/)
+
+**31C — ⌘1/2/3 wired (matches existing dropdown ⌘1/2/3 hints)**
+- [x] `e.key==='1'` → `setChatPos('left')` — Left (default)
+- [x] `e.key==='2'` → `setChatPos('right')` — Right
+- [x] `e.key==='3'` → `setChatPos('bottom')` — Bottom
+
+**31D — Notification drawer scroll-fade**
+- [x] `.notif-drawer-body` → added `scroll-fade-y` class
+- [x] All 6 scroll-fade containers now complete: sb-body, chat-body, vibe-chat-body, notif-drawer-body, settings-nav, (scroll-fade-x unused but ready)
+
+**31E — Keyboard shortcuts section updated to 10 rows**
+- [x] Added ⌘J (Hide chat) and ⌘1/⌘2/⌘3 (Chat position) rows
+- [x] Last row (Focus search) gained `border-bottom` to match spacing pattern before new rows
+- [x] ⌘1/2/3 displayed as 3 kbd chips on a single row
+
+### Phase 30 — Theme button fix + Keyboard shortcuts + scroll-fade (2026-04-10) ✅ COMPLETE
+
+No Figma calls.
+
+**30A — Appearance section theme buttons fixed (critical bug)**
+- [x] **Bug**: buttons called `document.documentElement.classList.remove/add('dark-mode')` — class that doesn't exist in CSS
+- [x] **Fix**: buttons now call `classList.add/remove('light')` (correct class) + `localStorage.setItem('hubify-theme',...)` + `_updateThemeIcons(isLight)`
+- [x] **System button**: uses `window.matchMedia('(prefers-color-scheme:light)').matches` to detect OS preference, removes localStorage key so future OS changes are followed
+- [x] **`_updateThemeIcons` extended**: now also syncs `#theme-light-btn` and `#theme-dark-btn` class names — `_applySavedTheme()` runs this on init, so Settings buttons show correct active state on first load
+
+**30B — vibe-chat-body scroll-fade**
+- [x] **`vibe-chat-body`** — added `scroll-fade-bottom` class (sandbox chat panel fades into input)
+
+**30C — Keyboard shortcuts settings section (21st settings section)**
+- [x] **"Shortcuts" nav item** added between Terminal and Appearance (keyboard icon)
+- [x] **Section content**: 7 shortcut rows using `<kbd>` chips (label-mono / surface-3 / border-strong / r-sm):
+  - `⌘K` — Command palette
+  - `⌘N` — New experiment (dispatch)
+  - `⌘/` — Toggle chat
+  - `` ⌘` `` — Toggle terminal
+  - `⌘B` — Toggle sidebar
+  - `⌘,` — Open settings
+  - `⌘P` — Focus sidebar search
+- [x] **All 7 shortcuts wired** in the existing `keydown` listener (extended from Esc-only):
+  - `⌘K` → `openCmdPalette()`
+  - `⌘N` → `navTo('dispatch')`
+  - `⌘/` → toggle `setChatPos('hidden')` / `setChatPos('left')`
+  - `` ⌘` `` → `setChatMode(chatMode==='term'?'chat':'term')`
+  - `⌘B` → `toggleSidebar()`
+  - `⌘,` → `navTo('settings')`
+  - `⌘P` → `.sb-search` click
+- [x] **Esc** also now closes command palette if open
+
+### Phase 29 — Scroll fade wiring + Terminal settings section (2026-04-10) ✅ COMPLETE
+
+No Figma calls — targeted wiring pass.
+
+**29A — Scroll fade wiring**
+- [x] **`.sb-body`** — added `scroll-fade-y` class. Sidebar nav list now fades at both top and bottom edges as user scrolls, indicating overflow content.
+- [x] **`.chat-body`** — added `scroll-fade-bottom` class (bottom-only). Chat messages fade into the input bar at the bottom; top stays fully visible.
+
+**29B — Settings nav default active fix**
+- [x] **Profile** nav item promoted to default `active` state (was Models). Conventional settings UX: account/profile is shown first on open. Models item reverted to no `active` class.
+
+**29C — Terminal settings section (20th settings section)**
+- [x] **Terminal nav item** added between Notifications and Appearance (terminal `>_` icon)
+- [x] **Terminal content section**: 5 settings rows + 2 switch-with-label rows:
+  - Font family: `<select>` (JetBrains Mono selected / Fira Code / Cascadia / SF Mono / Menlo)
+  - Font size: 4-button segmented (11 / **12** / 13 / 14) — 12 btn-primary
+  - Shell: `/bin/zsh` display row
+  - Scrollback buffer: 3-button (5K / **10K** / 50K) — 10K btn-primary
+  - Cursor style: 3-button (Block / Bar / Underline) — Block btn-primary
+  - Copy on select (ON), Bell sound (OFF) — both as switch-with-label rows
+
+### Phase 28 — Settings nav sticky + Profile + Appearance sections (2026-04-10) ✅ COMPLETE
+
+No Figma calls — polish pass on settings view.
+
+**28A — Settings nav sticky rail**
+- [x] **`.settings-nav`** — `overflow:hidden → overflow-y:auto`, added `position:sticky;top:16px;max-height:calc(100vh - 100px)`. Nav now sticks as user scrolls the right-pane content, scrolls itself if viewport is short.
+- [x] **`scroll-fade-bottom`** class added to `.settings-nav` div in HTML — masks last items at bottom edge when nav overflows.
+
+**28B — Profile settings section (first in nav + content)**
+- [x] **Profile nav item** added as first item in settings nav (user icon, `scrollToSettingsSection(this,'Profile')`)
+- [x] **Profile content section**: HG avatar initials (48px sage circle), 2×2 input grid (Display name / Email / Affiliation / Location), real BigBounce data (houston@hubify.com · Independent Researcher · Los Angeles, CA)
+- [x] **Public profile row**: badge-success "Public" + description citing 328K anomalies / 4 papers / 53 experiments
+- [x] **Researcher verification row**: "Verify →" ghost button with toast feedback
+
+**28C — Appearance settings section (last in nav + content)**
+- [x] **Appearance nav item** added as last item in settings nav (sun icon)
+- [x] **Theme row**: 3-button segmented group (Light/Dark/System) — Light btn-primary by default, Dark toggles `dark-mode` class on `<html>`, System shows toast
+- [x] **Accent color row**: locked sage #5fb88a swatch + label-mono hex display
+- [x] **3 switch-with-label rows**: Reduce motion (OFF), Compact layout (OFF), Sidebar labels (ON)
+- [x] Wires the Phase 25 `.switch-with-label` compound for all 3 rows
+
+### Phase 27 — Scroll fade utility + Notifications settings section (2026-04-10) ✅ COMPLETE
+
+No Figma calls — all 27 component spec pages exhausted. STYLE TESTER + PLAYGROUND are showcase-only.
+
+**27A — Scroll Fade utility CSS (AgenticUI MISC 4092:1131)**
+- [x] **`.scroll-fade-y`** — vertical mask-image gradient: `transparent 0 → #000 20px` top edge, `#000 calc(100%-20px) → transparent 100%` bottom edge
+- [x] **`.scroll-fade-x`** — horizontal variant (left→right same pattern)
+- [x] **`.scroll-fade-bottom`** — bottom-only fade: `#000 80% → transparent 100%` (for lists that overflow at bottom)
+- [x] Placed after `.chat-divider-label` block, before `/* ══ PREVIEW ══ */` section comment
+
+**27B — Notifications settings section (wires Phase 25 `.switch-with-label` compound)**
+- [x] **"Notifications" nav item** added to Settings sidebar (bell SVG icon, after "Lab Operations")
+- [x] **`settings-section` block** with 7 `.switch-with-label` rows using real BigBounce notification context:
+  - `Experiment completed` (ON) — "when any run finishes — pass or fail"
+  - `New anomaly result` (ON) — "DESI · SDSS · eROSITA · LAMOST sweep results"
+  - `Credit threshold` (ON) — "warn at 20% remaining GPU credits"
+  - `Cross-model review ready` (ON) — "GPT-4o / Gemini / Perplexity review complete"
+  - `Paper readiness change` (ON) — "when paper crosses a readiness milestone"
+  - `Daily standup transcript` (OFF) — "08:00 / 13:00 / 18:00 PT summaries"
+  - `Pod status changes` (OFF) — "SSH ready · idle · stopped · failed"
+- [x] Each row: `onclick` toggle + `toast(...)` feedback, `swl-sub` description, `border-bottom` separators except last
+- [x] Wires the Phase 25 `.switch-with-label` compound that was CSS-only with no HTML usage
+
+### Phase 26 — Chat page audit: ChatInput calibration + AiState + ChatDivider (2026-04-10) ✅ COMPLETE
+
+Figma calls: `get_metadata(833:15476)` Chat page — 5 frames: DEMO × 2, AI THINKING STATES × 2, CHAT MESSAGE, CHAT INPUT, CHAT DIVIDER.
+
+**Specs extracted:**
+- **ChatInput** (`4133:11200`): 716×128px total, 6 states (default/disabled/hover/active/filled/drag-drop). Textarea fills ~58px, actions bar ~70px.
+- **AiState** (`4119:17980`): 113×16px, 3 states (default/disabled/active). Inline compact thinking indicator. 8 stacked instances in DEMO at 28px gaps.
+- **ChatMessage** (`4119:17617`): 204×40px minimum per state. Multi-line messages expand above this.
+- **ChatDivider** (`4119:17645`): 720×18px session separator.
+
+**26A — ChatInput height calibration**
+- [x] **`.chat-input`** — `min-height:72px → 58px` (default pill now ~128px total per spec)
+- [x] **Comment** updated with spec note
+
+**26B — AiState component CSS**
+- [x] **`.ai-state`** — 16px height, `inline-flex;align-items:center;gap:6px`, Geist text-xs
+- [x] **`.ais-dot`** — 6px circle, `text-dim` default, `accent + glow` when `.active`
+- [x] **`.ai-state.active`** — sage dot + `ais-dots` 3-dot loading animation (reuses `ag-load-dot` keyframe)
+- [x] **`.ai-state.disabled`** — opacity:.4
+- [x] **`.chat-ai-state-row`** — full-width wrapper row, `min-height:20px`
+- [x] **Wired** — `<div class="chat-ai-state-row"><span class="ai-state active">bigbounce-orch<dots></span>` inserted immediately before the orchestrator thinking block in chat body
+
+**26C — ChatDivider component CSS**
+- [x] **`.chat-divider`** — `flex;align-items:center;gap:10px;height:18px`, `::before/::after` rules create flanking `var(--border)` lines
+- [x] **`.chat-divider-label`** — `label-mono / label-sm-size / text-dim / uppercase`
+- [x] **Wired** — `<div class="chat-divider"><span class="chat-divider-label">Today · 08:42</span>` inserted after system message, before first user message
+
+### Phase 25 — STYLE TESTER audit + sidebar spec corrections (2026-04-10) ✅ COMPLETE
+
+Figma calls: `get_metadata(4145:17200)` STYLE TESTER (3 frames: color ramps, form showcase, chat/code showcase).
+
+**25A — Sidebar spec corrections from STYLE TESTER - 2 (nav-logo / nav-footer / nav-link dimensions)**
+- [x] **`.sb-brand`** — `height:54px → height:64px` (STYLE TESTER nav-logo 235×64px)
+- [x] **`.sb-footer`** — `height:46px → height:66px` (STYLE TESTER nav-footer 235×66px)
+- [x] **`.sb-item`** — `padding:7px 8px → padding:0 8px;min-height:31px` (STYLE TESTER nav-link 31-32px)
+- [x] **Comment** updated: added `STYLE TESTER - 2: nav-link height 31-32px` note to nav-link CSS comment block
+
+**25B — Switch with label compound CSS (STYLE TESTER - 3: Switch with label 37px)**
+- [x] **`.switch-with-label`** — 37px `min-height`, `flex;align-items:center;gap:10px`. Label side: `flex:1;Geist/--text-xs/--lh-xs`. Switch sits right-aligned. `swl-sub` sub-label at 11px/text-muted.
+- [x] **Status** — CSS added and ready. No HTML wiring yet (Notifications settings section doesn't exist; will wire when that section is built).
+
+**25C — AGENTIC_UI_KIT_AUDIT.md page map corrections**
+- [x] **Status header** — updated: "ALL 27 COMPONENTS EXTRACTED · MISC + TYPOGRAPHY confirmed · Phase 24 complete"
+- [x] **MISC row** — `pending` → `✅ extracted — Phase 22: PULSATING-DOT · LOADING-DOTS · SKELETON shimmer`
+- [x] **TYPOGRAPHY row** — `📋 tokens extracted, frames pending` → `✅ extracted — Phase 24: 7 CSS vars added to :root, wired to .tbl/.btn`
+
+### Phase 24 — Typography CSS vars + token wiring (2026-04-10) ✅ COMPLETE
+
+Figma calls: `get_metadata(2003:4067)` TYPOGRAPHY · `get_metadata(230:839)` PLAYGROUND (too large, skipped).
+
+**24A — Typography CSS vars added to `:root` (AgenticUI TYPOGRAPHY 2003:4067)**
+- [x] **`--text-xs:13px / --lh-xs:15px`** — SYSTEM/Body/xs · `body-text-style-1` height=15px confirmed
+- [x] **`--text-sm:14px / --lh-sm:18px`** — SYSTEM/Body/sm
+- [x] **`--text-md:16px / --lh-md:24px`** — SYSTEM/Body/md
+- [x] **`--label-md-size:12px / --label-md-lh:18px / --label-md-track:0.3px`** — Label/md Departure Mono
+- [x] **`--label-sm-size:10px / --label-sm-lh:18px / --label-sm-track:0px`** — Label/sm
+- [x] **`--btn-md-size:13px / --btn-md-lh:15px`** — BUTTON/Label/md · height=15px confirmed
+- [x] **`--btn-sm-size:10px / --btn-sm-lh:11px`** — BUTTON/Label/sm · height=11px confirmed
+
+**24B — Token wiring into canonical classes**
+- [x] **`.tbl thead th`** — `font-size:var(--label-sm-size);line-height:var(--label-sm-lh)` (was hardcoded `var(--label-sm-size)` duplicate)
+- [x] **`.tbl tbody td`** — `font-size:var(--text-xs);line-height:var(--lh-xs)` (was `line-height:var(--lh-xs)` without the xs font-size token)
+- [x] **`.btn`** — `font-size:var(--btn-md-size);line-height:var(--btn-md-lh)` (was `font-size:var(--btn-md-size)` with hardcoded `font-weight:500`)
+- [x] **`.btn-sm`** — `font-size:var(--btn-sm-size);line-height:var(--btn-sm-lh)` (was `font-size:10px` hardcoded)
+
+### Phase 22 — Table row heights + AgenticUI MISC components (2026-04-10) ✅ COMPLETE
+
+Figma calls: `get_metadata(123:395)` Table page · `get_metadata(178:121)` MISC page.
+
+**22A — Table component spec (AgenticUI 123:395)**
+- [x] **`.tbl-wrap`** — added `box-shadow:var(--elev-2)` for proper AgenticUI card elevation
+- [x] **`.tbl thead th`** — upgraded from `padding:8px 12px` → `height:40px;padding:0 12px;vertical-align:middle` (Figma header row = 40px)
+- [x] **`.tbl tbody td`** — upgraded from `padding:8px 12px` → `height:64px;padding:0 12px;vertical-align:middle` (Figma data row = 64px). All experiments/surveys/papers tables now match AgenticUI spec.
+- [x] **Comment block** added: `/* ══ TABLE — AgenticUI 123:395 · header 40px · data-row 64px · 10 cell-type spec ══ */`
+
+**22B — PULSATING-DOT (AgenticUI MISC 4004:93)**
+- [x] **`.ag-dot`** base class: `16×16px` circle, `border-radius:50%`
+- [x] **`.ag-dot.low`** keyframe: `ag-pulse-low` — scale .72→.82, opacity .38→.55, 3s cycle (idle state)
+- [x] **`.ag-dot.high`** keyframe: `ag-pulse-high` — scale 1→1.08, opacity .9→1, glow ring `0 0 0 4px rgba(95,184,138,0)`, 2.2s cycle (active state)
+- [x] **Wired** — 7px `ag-dot.high` added to both live `run-exp-card` headers (EXP-054, EXP-055) alongside existing `run-exp-badge.running`
+- [x] **Wired** — 8px `ag-dot.high` added to "Live experiments · 2 running" section count
+
+**22C — LOADING-DOTS (AgenticUI MISC 4030:7034)**
+- [x] **`.ag-loading-dots`** + `span` children: 4-dot stagger, `ag-load-dot` keyframe (scale .55→1, opacity .25→1), 1.4s cycle with 160ms stagger per dot
+- [x] **`.ag-skeleton`** + size variants `.w-sm/.w-md/.w-lg`: shimmer animation `ag-shimmer` (200%→-200% gradient sweep, 1.8s), 14px height, cabinet-warm surface-3/surface-4 gradient
+
+### Phase 21 — Marketing site light-first flip + accent reduction + desktop cream ✅ COMPLETE (2026-04-10)
+
+Houston request: "remove the green accent keep it consistent with the cabinent cocao sage and the marketing site you should REALLY go heavey on reusing exactly the code from AGENTICUI DESIGN SYSTEM figma PLEASE PLEASE and don't forget to also make the desktop app consistent with the web app for v3 too"
+
+**21A — Marketing site: Cabinet cream as CSS default (light-first flip)**
+- [x] **`:root` flipped** — Cabinet cream is now the true default `:root`. Dark values moved to `:root.dark`. No more "inside-out" CSS.
+- [x] **Theme toggle JS** — `_applyMktTheme()` now adds/removes `dark` class instead of `light`. Default is `||'light'` (no class = cream).
+- [x] **`.topnav` base rule** — `rgba(250,246,241,0.92)` as default + `.dark .topnav{rgba(10,12,16,0.8)}`.
+- [x] **Card covers use CSS vars** — `.lab-card-cover` and `.blog-card-cover` backgrounds changed from hardcoded `#0f1115` → `var(--surface)` so they auto-adapt between cream and dark.
+- [x] **`.detail-cover` / `.blog-featured-cover`** — hardcoded dark backgrounds → `var(--surface)`.
+- [x] **Hero/grid/shadows** — `.hero::before`, `.hero-grid`, `.demo-frame`, `.toast` shadows all use warm `rgba(59,47,47,...)` in cream; `.dark` overrides keep the dark values.
+- [x] **`.hero-h1 .accent`** — uses `var(--accent-dim)` as cream default, `.dark` gets `var(--accent)`.
+
+**21B — Marketing site: Accent reduction**
+- [x] **`.eyebrow .dot`** — changed from `background:var(--accent);box-shadow:0 0 4px var(--accent)` to `background:var(--text-dim);opacity:.5`. Sage dots on every section header were excessive.
+- [x] **`.em` in body sections** — 7 locations changed from `color:var(--accent)` → `color:var(--text-bright)` (often with `font-style:italic`): `.window-quote .em`, `.arb-tagline .em`, `.review-claim-text .em`, `.review-consensus-text .em`, `.sc-title .em`, `.showcase-foot-meta .em`, `.page-header h1 .em`.
+- [x] **KEPT sage** — `h1.hero-h1 .accent` (THE hero moment), `.footer-cta h2 .em` (CTA conversion), `.article h1 .em` (article headlines). Sage is now earned.
+
+**21C — AgenticUI navbar: Departure Mono applied**
+- [x] **`.tn-link`** — upgraded from 13px default font to `font-family:'Departure Mono',var(--mono)`, `text-transform:uppercase`, `letter-spacing:.35px`, `font-size:11.5px`. Matches AgenticUI Navbar (230:699) spec directly.
+
+**21D — Desktop app: Cabinet cream overhaul**
+- [x] **`:root` vars** — full flip to Cabinet cream palette (`--bg:#fdfaf4`, `--surface-3:#eae2d0`, `--text:#5a4a3e`, etc.)
+- [x] **Body background** — dark space radial → warm sand/parchment: `radial-gradient(ellipse at 40% 35%,#f0e8d5 0%,#ddd0b0 45%,#c8b88c 100%)`
+- [x] **macOS menu bar** — `rgba(232,222,206,0.88)` frosted warm glass + `border-bottom: 1px solid rgba(90,74,62,0.15)` + `color:var(--text-bright)` for menu labels
+- [x] **Window chrome** — `border:var(--border-strong)`, box-shadow uses warm `rgba(90,74,62,...)` tones + `inset 0 0 0 1px rgba(255,255,255,0.6)`
+- [x] **Titlebar** — `linear-gradient(180deg,var(--surface-3),var(--surface-2))` + `border-bottom:var(--border-strong)`
+- [x] **Dock** — `rgba(232,222,206,0.75)` frosted glass, warm border, warm box-shadow
+- [x] **Notification** — `rgba(253,250,244,0.92)` frosted glass, warm shadows + all text colors via CSS vars
+- [x] **Menu bar popover** — warm frosted `rgba(253,250,244,0.95)`, warm border/shadow
+- [x] **Mockup controls** — warm frosted `rgba(253,250,244,0.92)`
+- [x] **AgenticUI elevation vars** — all `rgba(0,0,0,...)` changed to `rgba(90,74,62,...)` warm brown shadows
+- [x] **Annotations** — `box-shadow` changed to warm `rgba(90,74,62,0.14)`
+
+### Phase 20 — Marketing site: "vs. alternatives" comparison (2026-04-10) ✅ COMPLETE
+
+No Figma calls. 109 lines added to `v3/marketing-site-mockup.html` (5,553 → 5,662).
+
+- [x] **"WHY NOT JUST USE X?" section** — added before footer-cta on the home page
+- [x] **11-row comparison table** — Hubify Labs vs. k-dense.ai vs. feynman.is vs. Jupyter/Colab
+  - Hubify ✓: multi-agent orchestration, cross-model review, GPU, publish loop, novelty scoring, 4-layer memory, public lab site, 3 IDEs, always-on orchestrator
+  - k-dense ✓: 250+ datasets, skills catalog; ✗ everything agent-related
+  - feynman.is ~: partial publish/skills/CLI; ✗ GPU, agents, memory
+  - Jupyter/Colab ~: partial GPU (Colab); ✗ agents, memory, novelty, paper pipeline
+- [x] **`.compare-alt` CSS modifier** — `td:not(:first-child)` center alignment via CSS (no inline text-align attrs)
+- [x] **`.ct-no/.ct-us/.feat-us` classes** — dim ✗ for "not supported", sage ✓ for Hubify column data, highlighted Hubify header
+- [x] **`.feat-us-col` on Hubify data cells** — subtle `var(--surface-2)` background to visually anchor the "us" column
+- [x] **Comparison note footnote** — `compare-note` below table with legend + fairness caveat
+- [x] **Inline style cleanup** — removed `display:inline` from span.compare-note (redundant, spans are inline by default)
+
+### Phase 19 — In-app novelty scoring (experiments table) ✅ COMPLETE (2026-04-10)
+
+No Figma calls. No new CSS needed — reuses `c-accent-bold`, `c-bright-600`, `c-text`, `dim`, `mono` classes already present.
+
+- [x] **Novelty column added to experiments table** — 9-column header: ID / Experiment / Phase / Survey / Status / Runtime / Result / Novelty / [actions]. Novelty is sortable with `data-tip` explaining scoring methodology.
+- [x] **All 10 experiment rows scored**:
+  - EXP-051 Combined PTA Bayes: `9.2` (c-accent-bold · sage — novel multi-array Bayes, strong new result)
+  - EXP-050 DESI×eROSITA 4.1σ: `8.7` (c-accent-bold · sage — novel cross-survey detection)
+  - EXP-049 Bounce discrimination: `8.4` (c-bright-600 · 5 models, new framework)
+  - EXP-047 eROSITA X-ray sweep: `7.8` (c-bright-600 · 73% novel anomalies)
+  - EXP-053 QSO Classifier: `7.4` (c-bright-600 · solid but expected methodology)
+  - EXP-048 SDSS DR18 QSO: `6.1` (c-text · substantial catalog, routine sweep)
+  - EXP-052 Legacy DR10 cross-match: `4.1` (dim · routine catalog cross-match)
+  - EXP-055 ACT retrain / EXP-054 Planck re-run / EXP-056 queued: `—` (dim · not scored yet)
+- [x] **Experiments section header** — `avg novelty 7.4` clickable callout next to "53 total" (navigates to Contributions view for full breakdown)
+- [x] **Scoring rationale** — high (≥8.5, sage): unexpected + paper-ready; mid-high (7–8.4, bright): solid new result; mid (5–7, text): expected outcome; low (<5, dim): QC/correction work
 
 ### Phase 18 — Marketing site: Pricing page ✅ COMPLETE (2026-04-10)
 
