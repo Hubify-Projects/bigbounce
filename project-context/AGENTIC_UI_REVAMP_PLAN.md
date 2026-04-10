@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** Phase 3 component merge IN PROGRESS (2026-04-10) — Text Input + Badge specs extracted from Figma (761:20738 + 124:2898). Applied: input border/hover/focus fix, 40px height, 14px font, full badge color spectrum (blue/orange/purple/teal added), btn height 36→40px, btn-sm 32px, btn-xs utility added. Next: Toast (4008:197), Menu (558:659), or Button (147:2305) full extraction.
+**Status:** Phase 3 component merge COMPLETE (2026-04-10). All 9 AgenticUI components extracted + CSS applied to index.html: Text Input · Badge · Toast · Menu · Button · Search Input · Dropdown · Tooltip · Progress. Phase 4 next: wire new CSS classes into actual HTML markup (replace ad-hoc inline styles with canonical classes), then Phase 5 surface parity (marketing-site, desktop, cli-tui where applicable).
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
@@ -170,7 +170,63 @@ Implements the AGENTICUI_DEEP_PHILOSOPHY_PLAN.md north star in full.
 - [x] **Color discipline** — pill-pass = sage (earned status), pill-run = neutral
 - [x] **Typography** — chat-msg-body 14px/Geist (was 12.5px)
 - [x] **Pulsating asterisk** — ✳ glyph with ast-pulse, replaces spinning orb
+  → **REVERTED (2026-04-10)**: Cosmic orb restored. HTML `<div class="thinking-orb mode-saturn">` + `setInterval(rotateOrb,24000)` both back. The orb CSS (10 modes: SATURN/PULSE/ORBIT/TWINKLE/BEAKER/GRID/SATELLITE/ATOM/FACE/DNA) was already intact; Phase 9 had incorrectly disabled both the HTML and the JS interval.
 - [x] **Status dot pulse** — dot.good has dot-pulse halo animation (active labs feel alive)
+
+### Phase 10 — Button wiring + nav active fix ✅ COMPLETE (2026-04-10)
+
+- [x] **Phase 4 button wiring** — All `dir-action-btn` HTML replaced with canonical `.btn` classes throughout Director view + Papers view:
+  - `dir-action-btn primary` (approve, promote) → `.btn.btn-xs.btn-primary` (sage fill — earned confirmation)
+  - `dir-action-btn primary` (open in editor) → `.btn.btn-xs.btn-ghost` (visible but not sage)
+  - `dir-action-btn` (later, defer) → `.btn.btn-xs.btn-link` (least visual weight — dismissive)
+  - `dir-action-btn danger` (deny) → `.btn.btn-xs.btn-danger` (red hover on danger)
+  - Papers PDF buttons: emoji removed (`📄 Open PDF`→`Open PDF`), proper `.btn.btn-sm.btn-ghost/.btn-link` classes
+- [x] **dir-chat-btn upgrade** — All 7 instances now compose with `.btn.btn-xs.btn-ghost dir-chat-btn`. CSS trimmed to just sage hover override (no duplicate base styles). "chat about this" renders in Departure Mono uppercase.
+- [x] **Nav active indicator conflict** — Added `.nav-sub-links-track .sb-child-item.active::before{display:none!important}` to suppress old dot that was conflicting with the `../` + `■` active indicator.
+- [x] **Section name typography** — `.dir-section-name` switched from `var(--mono)` to `var(--label-mono)` (Departure Mono). Section meta emoji `[💬]` removed.
+
+### Phase 11 — Tabs + Chat Input spec upgrade ✅ COMPLETE (2026-04-10)
+
+Figma calls: Tabs (4056:1314) + Chat Input (4127:18971).
+
+- [x] **Preview tabs — underline style**: Replaced sagdot `::before` active indicator with `box-shadow:inset 0 -2px 0 var(--text-bright)`. Matches AgenticUI underline variant (active `border-b border-[var(--border/strong)]`). `::before{display:none}`.
+- [x] **Sidebar mode tabs — segmented pill**: `.sb-mode` converted to pill tray with `background:var(--surface-2)`, `border-radius:var(--r-pill)`, `padding:4px`, `margin:0 10px 8px`. Individual `.sb-mode-tab` now `background:transparent; border:none; border-radius:var(--r-pill)`. Active tab: `background:var(--surface)` + `box-shadow:0 1px 2px rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.08)`. Perfectly matches AgenticUI segmented chip with raised active state.
+- [x] **Chat input wrapper**: `chat-input-wrap` changed from `border-top + var(--surface)` to `background:var(--surface-2)` (no divider line) — matches Figma outer `bg-secondary` container.
+- [x] **Chat action buttons**: `chat-act-btn` bumped from 32×32 to 40×40px, icons from 16×16 to 20×20 — matches Figma 40px circle spec.
+- [x] **Chat pill hover**: Added `.chat-input-pill:hover{border-color:var(--border-strong)}` — matches Figma `border/medium` hover state.
+- [x] **Textarea padding + lineHeight**: `padding:12px 14px 6px`, `line-height:24px`, `min-height:72px` — closer to Figma 8px all-around with 24px line height.
+- [x] **Actions bar padding**: tightened `chat-input-actions` to `padding:4px 6px 8px` + `gap:4px` — snugger to match Figma.
+
+### Phase 12 — TextArea spec + Settings input sweep ✅ COMPLETE (2026-04-10)
+
+Figma calls: TextArea (4092:1380).
+
+- [x] **Canonical `.textarea` class** — AgenticUI spec applied: `1px solid border/subtle`, `r-lg`, `12px padding`, `bg-primary (var(--bg))`, Geist 14px / 18px line-height, focus → `border-bright`, disabled → `surface-2 + opacity:.4`, error → `#d50b0b border`. `.textarea-error` for error helper text (pink bg `#ffdede`, red text).
+- [x] **`.textarea-label`** — Departure Mono 12px uppercase 0.3px tracking (matches AgenticUI input label spec). Added as standalone class.
+- [x] **Dispatch form label upgrade** — `.dispatch-field label` updated from `var(--mono)` to `var(--label-mono)` (Departure Mono), size 12px → 12px, tracking 0.6px → 0.3px. Now consistent with AgenticUI.
+- [x] **Inline textareas replaced** — System prompt + Bio textareas in Agents/Settings view: inline styles removed, now use `.textarea` class (+ `style="min-height:..."` override only where needed). System prompt keeps `font-family:var(--mono)` per technical content convention.
+- [x] **Settings panel input sweep** — All `input[type="text"]` within `.sp-text` and `.sp-row .v` upgraded via contextual CSS selectors. Full-width: `h:32px`, `r-lg`, `0.5px border`. Inline-row: `h:26px`, `r-md`, `0.5px border`. All use `bg-primary (var(--bg))`, Departure Mono labels, focus `border-bright`. Covers 10+ inputs across Chat History, Agent config, Notes, Profile, Terminal settings panels.
+
+### Phase 13 — Inline style cleanup sweep ✅ COMPLETE (2026-04-10)
+
+No Figma calls — all components now extracted. Focus: replace remaining inline styles with canonical classes.
+
+- [x] **`.card-body-pad` class** — added CSS utility `padding:14px 16px`. Replaced all 11 inline `class="card-body" style="padding:14px 16px"` → `class="card-body card-body-pad"` via `replace_all`.
+- [x] **`.chart-pad` class** — `padding:18px 16px 14px` for SVG chart wrappers. 2 instances replaced (`style="padding:18px 16px 14px"` → `class="chart-pad"`).
+- [x] **`.content-pad` class** — `padding:14px` for generic content wrapper divs. 1 instance replaced.
+- [x] **`.standup-list` padding** — moved `padding:14px` from inline style into CSS class. Removed from all `class="standup-list" style="padding:14px"` instances.
+- [x] **Settings `<select>` elements** — 3 `<select>` with identical inline style removed. Now styled via `.sp-row .v select` contextual CSS (same spec as settings text inputs: `bg-primary`, `0.5px border`, `r-lg`, `h-32px`, mono font, focus `border-bright`, custom `-webkit-appearance:none`).
+- [x] **`.sp-select` + contextual select CSS** — canonical CSS class added near `.sp-text input` rules.
+- [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
+- [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
+
+### Phase 14 — `<pre>` block canonicalization ✅ COMPLETE (2026-04-10)
+
+No Figma calls. Final inline style sweep for pre/code display blocks.
+
+- [x] **`.log-pre` class** — canonical terminal/log output: `bg-primary`, `1px border`, `r-sm`, `10px 12px padding`, `mono 10px`, `text-muted`, `1.55 line-height`, `overflow-x:auto`. Applied to 4 log pre blocks (2 with max-height inline override, 1 with r-md override, 1 exact match).
+- [x] **`.code-pre` class** — canonical code/content display: `bg-primary`, `1px border`, `r-md`, `14px padding`, `mono 11px`, `text color`, `1.6 line-height`, `overflow-x:auto`. Applied to 5 static HTML `<pre>` elements (2 with `border-color:var(--border-bright)` override) and 3 JS template string `<pre>` elements (with padding/white-space minimal overrides).
+- [x] **Remaining** — 1 bare raw-md `<pre style="font-size:11px">` intentionally left (no border/padding, unique context — override list would exceed the boilerplate it replaces).
 
 ### Phase 6 — Remaining component passes (2026-04-09 iteration)
 - [x] **Navbar/sidebar nav-link** — Figma node 230:699 — Departure Mono 13px uppercase 0-track, `padding:7px 8px`, `margin:0 6px`, `border-radius:8px`, hover `background:surface-2`, sub-link border-left track, active rail at `left:-6px`
