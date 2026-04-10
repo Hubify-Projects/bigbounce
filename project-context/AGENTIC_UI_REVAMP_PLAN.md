@@ -135,9 +135,12 @@ All sourced from Figma MCP. Cabinet brand preserved throughout. Departure Mono o
 - [x] **Switch/Toggle** — Figma node 814:110 — rebuilt to spec: 29×16px pill (sm), 43×24px (lg), sage active bg, thumb circle same height, inset shadow on track, left↔right transition. `.toggle-sw-lg` variant added. Disabled state at 40% opacity.
 - [x] **Checkbox** — Figma node 4067:1119 — 24×24px container, 16×16px box, r-sm, checked/indeterminate/disabled states, CSS ::after checkmark/dash. `.checkbox-row` + `.checkbox-label` + `.checkbox-sub` for inline label rows. Wired into Settings Cross-model review: 6-provider multi-select grid (GPT-4o ✓, Gemini 2.5 ✓, Perplexity ✓, Grok, Sonar Pro, o3-disabled).
 - [x] **Tooltip** — Figma node 2001:2681 — `.tooltip-wrap` + `.tip` CSS class system (hover-reveal, all 4 positions). `[data-tip]` auto-tooltip via ::before/::after (no wrapper needed), dark bg #191919, Geist 12px, r-sm, caret arrow. Wired to 22 elements: all icon-btn toolbar buttons, sb-collapse-btn, sb-footer-btn, sb-action items.
-- [ ] **Progress bar** — node 4072:6991 — used in experiment cards, pipeline steps (deferred)
+- [x] **Progress bar** — Figma node 4072:6991 — AgenticUI barcode tick style: 1px bars + 2px gaps via `repeating-linear-gradient`, `--prog` CSS var drives fill, sage accent fill. Sizes: sm(4px)/default(6px)/lg(16px). Wired to all 3 pipeline cards, EXP-054 (67%), EXP-055 (30%), Director backup row (89%). Old 2px solid `.pipeline-progress-bar` replaced.
+- [ ] **Radio button** — node 124:2977 — dispatch form uses native radio; upgrade to AgenticUI spec (deferred — native radios functional)
 - [ ] Remaining inline style radii (in HTML, not CSS) — deferred, lower impact
 - [ ] Houston side-by-side review
+
+### Phase 7 STATUS: All high-value components complete. Remaining items are lower-priority polish.
 
 ### Phase 6 — Remaining component passes (2026-04-09 iteration)
 - [x] **Navbar/sidebar nav-link** — Figma node 230:699 — Departure Mono 13px uppercase 0-track, `padding:7px 8px`, `margin:0 6px`, `border-radius:8px`, hover `background:surface-2`, sub-link border-left track, active rail at `left:-6px`
