@@ -143,15 +143,34 @@ All sourced from Figma MCP. Cabinet brand preserved throughout. Departure Mono o
 
 ### Phase 7 STATUS: All planned components complete. ✅
 
-### Phase 8 — Remaining unimplemented AgenticUI components (for future iterations)
-Ordered by impact:
-- [ ] **Breadcrumbs** — node 549:163 — currently no breadcrumbs in mockup
-- [ ] **Stepper** — node 4001:1347 — could replace pipeline-step indicators
-- [ ] **Skeleton** — node 761:23192 — loading states (data tables, experiment cards)
-- [ ] **Code block** — node 4126:5640 — inline code + advanced multi-line block
-- [ ] **File upload** — node 4028:6200 — dispatcher attachment zone
-- [ ] **Pagination** — node 716:3790 — experiment table (53 rows needs paging)
-- [ ] **Helper text** — node 4066:7445 — form field validation hints
+### Phase 8 — Remaining unimplemented AgenticUI components ✅ COMPLETE (2026-04-09)
+- [x] **Breadcrumbs** — proj-scope bar IS the breadcrumb (bigbounce › all projects › Experiments)
+- [x] **Stepper** — node 4001:1347 — pill-shaped step indicators in all 3 pipeline cards
+- [x] **Skeleton** — node 761:23192 — shimmer loading cards in overview Live experiments section
+- [x] **Code block** — node 4126:5640 — syntax-highlighted blocks in chat messages (bash + python)
+- [x] **File upload** — node 4028:6200 — drag-drop zone in dispatch form with file chips
+- [x] **Pagination** — node 716:3790 — "10 of 53 experiments" + prev/next/page pills
+- [x] **Helper text** — node 4066:7445 — helper text below dispatch form title input
+
+### Phase 9 — Workspace Shell Redesign ✅ COMPLETE (2026-04-09)
+Implements the AGENTICUI_DEEP_PHILOSOPHY_PLAN.md north star in full.
+
+- [x] **9.1 Chat input pill** — 20px radius, floating, elev-2, send btn black when text present
+- [x] **9.2 Survey grid → table** — 7 columns, sortable, all 8 surveys with real BigBounce data
+- [x] **9.3 Text input spec** — 40px height, 0.5px border, r-lg, Departure Mono labels, helper text
+- [x] **9.4 cmdK elevation-4** — r-3xl (20px), Geist 15px input, Departure Mono keyboard chips
+- [x] **9.5 Stat cards** — 0.5px border, label-mono labels, hover bg, stat-trend badges, tabindex
+- [x] **9.6 Section headers** — label-mono + action buttons (SSH/Manage, Refresh/All, New, Spawn/Config)
+- [x] **9.7 Breadcrumbs** — proj-scope bar applied with .breadcrumb semantics to all relevant views
+- [x] **9.8 File upload zone** — drag-drop in dispatch form, file chip list, JS handlers
+- [x] **9.9 Icon audit** — .ic 14→16px, icon-btn/footer-btn 28→32px, --btn-icon-sm/md tokens
+- [x] **9.10 Interaction states** — global disabled (40% opacity), expanded focus-visible, tabindex
+- [x] **Sortable columns** — sortTbl() JS, ↕/↑/↓ indicators, default ID desc sort
+- [x] **Row actions** — View/Re-run/Logs/Stop/Run now context buttons on all 10 experiment rows
+- [x] **Color discipline** — pill-pass = sage (earned status), pill-run = neutral
+- [x] **Typography** — chat-msg-body 14px/Geist (was 12.5px)
+- [x] **Pulsating asterisk** — ✳ glyph with ast-pulse, replaces spinning orb
+- [x] **Status dot pulse** — dot.good has dot-pulse halo animation (active labs feel alive)
 
 ### Phase 6 — Remaining component passes (2026-04-09 iteration)
 - [x] **Navbar/sidebar nav-link** — Figma node 230:699 — Departure Mono 13px uppercase 0-track, `padding:7px 8px`, `margin:0 6px`, `border-radius:8px`, hover `background:surface-2`, sub-link border-left track, active rail at `left:-6px`
