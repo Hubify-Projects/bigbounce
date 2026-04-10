@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** ALL 27 COMPONENTS EXTRACTED (Phases 3–26). Phase 33 complete: merged duplicate keydown handlers (two conflicting document.addEventListener('keydown') handlers replaced with single canonical handler, capture=true; fixes double-fire bugs on ⌘B/⌘J/⌘`/⌘1/2/3; ⌘P now opens cmdPalette only; added ? shortcut, ⌘W, improved Esc, improved ⌘`); updated ⌘P Settings row to "Command palette (alias)"; added ? and ⌘W rows to Settings keyboard shortcuts section. Committed.
+**Status:** ALL 27 COMPONENTS EXTRACTED (Phases 3–26). Phase 34 complete: experiment detail renderer expanded — EXP-047/048/049 added (were falling back to EXP-054 data), EXP-052 corrected (Gaia→Legacy DR10 cross-match), per-experiment `logs` field with realistic tail log content, conditional Stop/Re-run actions, "Chat about this" action. Phase 33 complete: merged duplicate keydown handlers (two conflicting document.addEventListener('keydown') handlers replaced with single canonical handler, capture=true; fixes double-fire bugs on ⌘B/⌘J/⌘`/⌘1/2/3; ⌘P now opens cmdPalette only; added ? shortcut, ⌘W, improved Esc, improved ⌘`); updated ⌘P Settings row to "Command palette (alias)"; added ? and ⌘W rows to Settings keyboard shortcuts section. Committed.
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
@@ -296,6 +296,33 @@ No Figma calls.
 - [x] New ⌘W row added: "Close file tab" / "Close active file preview tab · only fires when a tab is open"
 
 **Committed:** Phase 33 committed in hubify-labs-mockups.
+
+---
+
+### Phase 34 — Experiment renderer data expansion (2026-04-10) ✅ COMPLETE
+
+No Figma calls.
+
+**Root cause:** Experiment detail renderer only had 6 entries (EXP-050—055). Clicking View on EXP-047/048/049 fell back to EXP-054 (Planck galactic mask) data — wrong experiment shown. EXP-052 was also wrong (showing Gaia DR3 10× expansion instead of Legacy DR10 cross-match).
+
+**34A — Added EXP-047/048/049 with real BigBounce data**
+- [x] **EXP-047** — eROSITA X-ray sweep · P3 · 930K sources · 9,303 anomalies · 73% novel vs NED/Simbad · 1h 8m · $12.80
+- [x] **EXP-048** — SDSS DR18 QSO photometry · P3 · 2.3M spectra · 77,905 anomalies · 3.4% rate · QC: 98% blue-excess bias · 44m · $6.40
+- [x] **EXP-049** — Bounce model discrimination · Branch · 5 models · matter bounce preferred 2.3σ · quintom-B viable · 1h 56m · $3.20
+
+**34B — Fixed EXP-052**
+- [x] Was: Gaia DR3 10× expansion (wrong survey, wrong result, wrong runtime)
+- [x] Now: Legacy DR10 cross-match · P1 · DESI 195,829 anomalies × LS DR10 photometric · 6-band added · 8m · $1.80
+
+**34C — Per-experiment logs field**
+- [x] Added `logs:` field to all 9 experiments with realistic timestamped output
+- [x] Renderer template now renders `${e.logs}` instead of hardcoded Planck log lines
+
+**34D — Conditional actions bar**
+- [x] Stop button only shown when `e.status === 'running'`; Re-run only when not running
+- [x] Added "Chat about this" action that calls `chatAbout()` with full experiment context preloaded
+
+**Committed:** Phase 34 committed in hubify-labs-mockups (`b5a0654`).
 
 ---
 
