@@ -220,6 +220,20 @@ No Figma calls — all components now extracted. Focus: replace remaining inline
 - [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
 - [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
 
+### Phase 18 — Marketing site: Pricing page ✅ COMPLETE (2026-04-10)
+
+No Figma calls. 232 lines added to `v3/marketing-site-mockup.html`.
+
+- [x] **`#mp-pricing` page** — full SaaS pricing page wired into nav + footer
+- [x] **3 pricing tiers**: Free ($0 · 1 lab) · Pro ($49/mo, featured w/ "Most popular" pill) · Studio ($149/mo · 5 team seats)
+- [x] **Plan cards** — CSS-only `::before` badge on `.plan-card.featured`, sage border highlight, check/X feature lists
+- [x] **Credits explainer** — "What's a credit?" section with 3 real cost examples (MCMC ~800-2K, publish-ready loop ~5-15K, 24h monitoring ~200-500)
+- [x] **Comparison table** — 13 rows × 3 tiers (labs, credits, pods, providers, paper pipeline, model training, team seats, API, novelty scoring, cross-model review, memory, support)
+- [x] **FAQ** — 6 Q&As (labs definition, GPU credits, credit limits, cancellation, free forever, novelty scoring)
+- [x] **Responsive** — collapses to 1-column at 900px
+- [x] **Nav** — "Pricing" added between Labs and Docs
+- [x] **Footer** — Pricing link added to Product column
+
 ### Phase 17 — Final utility sweep ✅ COMPLETE (2026-04-10)
 
 No Figma calls. 406 → 336 inline styles (-70, combined 744→336 = -55% total).
