@@ -220,6 +220,26 @@ No Figma calls — all components now extracted. Focus: replace remaining inline
 - [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
 - [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
 
+### Phase 16 — Color/typography utility sweep ✅ COMPLETE (2026-04-10)
+
+No Figma calls. 564 → 406 inline styles (-158, combined 744→406 = -45% total).
+
+- [x] **`.c-text/.c-bright/.c-dim/.c-muted`** — single-prop color utilities. 15+35+18 standalone `<span>` tags replaced.
+- [x] **`.c-dim-xs`** — `color:var(--text-dim);font-size:9px` × 20 standalone.
+- [x] **`.meta-mono-sm`** — `color:var(--text-dim);font-family:var(--mono);font-size:10px;font-weight:400` × 16 — metadata labels.
+- [x] **`.meta-mono-xs`** — 9px dim mono, two property-order variants merged into one class × 17.
+- [x] **`.c-accent-bold`** — `color:var(--accent);font-weight:600` × 12.
+- [x] **`.c-text-bold`** — `color:var(--text);font-weight:600` × 5.
+- [x] **`.col-end`** — `display:flex;flex-direction:column;align-items:flex-end;gap:2px` × 8.
+- [x] **`.section-sep`** — `margin-top:14px;padding-top:14px;border-top:1px solid var(--border)` × 8.
+- [x] **`.sp-group-head`** — settings section group header (label-mono 9px uppercase) × 6.
+- [x] **`.sp-narrow-input/.sp-full-input`** — settings panel input field styles × 6 + 4.
+- [x] **`.mono-10`** — `font-family:var(--mono);font-size:10px` × 8.
+- [x] **`.para-11`** — `font-size:11px;margin-bottom:9px;text-align:justify` × 7 (paper abstract paragraphs).
+- [x] **`.row-8/.row-end-6`** — flex row utilities × 5+5.
+- [x] **`sp-pill good` font-size:9px removed** × 8 — redundant with `.sp-pill{font-size:9px}` already in CSS.
+- [x] **Practical floor reached** — remaining 406: display:none (17, JS-controlled), cursor:pointer (12, SVG `<g>`), cursor:default (7), border:none (7), single-prop spacings (margin-top/left variants), SVG color attrs with viewBox between class+style (complex merge). No more clean batch wins.
+
 ### Phase 15 — Utility class sweep ✅ COMPLETE (2026-04-10)
 
 No Figma calls. Largest inline-style reduction pass: 744 → 564 (180 removed).
