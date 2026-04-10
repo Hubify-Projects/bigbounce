@@ -35,12 +35,13 @@ This repository contains a comprehensive spin-torsion cosmology research program
   - ACT DR6: 20K patches, 200 anomalies — QC FAIL: undertrained (val_loss=22,420)
   - NEOWISE: 43.5K sources, 436 anomalies — QC FAIL: ecliptic systematic
   - Gaia DR3: 50K sources, 500 anomalies — needs 10x expansion
-- f_NL Fisher forecast (corrected): σ(f_NL) = 8.98 standard, 8.12 multi-tracer
-- f_NL multi-tracer improvement: 6.1% (DESI), 16.4% (DESI+SDSS). SPHEREx 4.38σ forecast.
+- f_NL Fisher forecast (corrected, 2026-04-10): σ(f_NL) = 16.85 baseline, 12.72 standard multi-tracer, 11.71 5-tracer (anomaly-optimized); +7.93% improvement over standard
 - f_NL bias validation: extreme anomalies show 2.28x clustering bias vs baseline (Landy-Szalay w(θ))
-- Combined PTA (NANOGrav+EPTA+PPTA+IPTA): γ = 3.32 ± 0.37, bounce at 0.9σ, SMBHB excluded at 2.7σ, Bayes factor 27.6
+- SPHEREx f_NL forecast (2026-04-10): σ=0.36 (Fisher ideal) / 0.93 (Munchmeyer+2019 conservative) → 4.7-12σ detection of f_NL=-4.375 (bounce) by 2027
+- NaMaster birefringence (2026-04-10): β=0.27° (bounce prediction) detected at SNR=20.74σ in Monte Carlo; β=0.342° (ACT observed) at 26.26σ; tension=0.77σ (excellent agreement)
+- Combined PTA GPU MCMC (2026-04-10): γ = 3.33 ± 0.40, bounce at 0.81σ, SMBHB excluded at 2.26σ, Bayes factor 8.54 favoring bounce
 
-**Pod status (as of 2026-04-06):** H200 pod `o76k3jfzbfh25e` (sleepy_blush_crane) ACTIVE. SSH: `root@205.196.19.52 -p 11452`. Phases 1-3 COMPLETE (17/18 experiments). Phase 4 RUNNING (f_NL science + NANOGrav, 5 experiments in tmux `phase4`). See `project-context/active_pods_and_pipelines.md`.
+**Pod status (as of 2026-04-10):** H200 pod `o76k3jfzbfh25e` ACTIVE. SSH: `root@205.196.19.52 -p 11452`. Phases 1-4 COMPLETE. Sessions 1-4 complete: SDSS native AE, corrected f_NL, NaMaster birefringence, NANOGrav Bayesian, SPHEREx forecast, quintom MCMC v2 (running). See `project-context/active_pods_and_pipelines.md`.
 
 **Houston Method v2:** See `project-context/houston-method-v2.md` — MANDATORY completion protocol for all experiments. Nothing is "complete" without: QC gate → scientific analysis → interpretation → cross-survey connection → site sync → queue expansion → backup. Every experiment must generate 5-15 new tasks.
 
