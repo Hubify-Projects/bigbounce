@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** Phase 7 IN PROGRESS — Token QA sweep + Switch component (2026-04-09)
+**Status:** Surface parity COMPLETE (2026-04-10) — Phase 9 + token sync across all 4 surfaces done. Next: desktop chrome polish + inline style radius cleanup (lower priority).
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
