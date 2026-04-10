@@ -1,0 +1,64 @@
+{
+  "experiment": "SPHEREx f_NL Fisher Forecast: Bounce Detection Timeline",
+  "device": "cuda",
+  "f_NL_bounce_target": -4.375,
+  "cosmology": {
+    "H0": 67.68,
+    "Omega_m": 0.3089,
+    "sigma8": 0.8159,
+    "n_s": 0.9667
+  },
+  "results": {
+    "current_desi_sdss": {
+      "description": "Current DESI+SDSS multi-tracer (our baseline)",
+      "n_tracers": 4,
+      "sigma_fnl_single": 1.5028,
+      "sigma_fnl_multitracer": 0.005,
+      "improvement_pct": 99.67,
+      "bounce_detection_sigma_single": 2.911,
+      "bounce_detection_sigma_mt": 872.697
+    },
+    "spherex_alone": {
+      "description": "SPHEREx standalone forecast (Munchmeyer+2019)",
+      "n_tracers": 5,
+      "sigma_fnl_single": 0.3555,
+      "sigma_fnl_multitracer": 0.0002,
+      "improvement_pct": 99.94,
+      "bounce_detection_sigma_single": 12.307,
+      "bounce_detection_sigma_mt": 19099.444
+    },
+    "spherex_plus_desi": {
+      "description": "SPHEREx + DESI combined (multi-tracer)",
+      "n_tracers": 6,
+      "sigma_fnl_single": 0.4942,
+      "sigma_fnl_multitracer": 0.0003,
+      "improvement_pct": 99.94,
+      "bounce_detection_sigma_single": 8.853,
+      "bounce_detection_sigma_mt": 15939.56
+    },
+    "spherex_plus_anomalies": {
+      "description": "SPHEREx + our anomaly tracers (bounce-optimized)",
+      "n_tracers": 5,
+      "sigma_fnl_single": 0.5108,
+      "sigma_fnl_multitracer": 0.0005,
+      "improvement_pct": 99.91,
+      "bounce_detection_sigma_single": 8.564,
+      "bounce_detection_sigma_mt": 9367.026
+    }
+  },
+  "timeline": {
+    "current_status": "\u03c3=0.01, SNR=872.70\u03c3 \u2014 NOT YET DETECTABLE",
+    "spherex_2027_status": "\u03c3=0.00, SNR=19099.44\u03c3 \u2014 DETECTABLE at 3\u03c3",
+    "spherex_plus_desi_status": "\u03c3=0.00, SNR=15939.56\u03c3 \u2014 DETECTABLE at 3\u03c3"
+  },
+  "detection_thresholds": {
+    "2sigma": 2.1875,
+    "3sigma": 1.4583,
+    "5sigma": 0.875
+  },
+  "key_comparison": {
+    "current_sigma": 0.005,
+    "spherex_sigma": 0.0,
+    "spherex_plus_desi_sigma": 0.0,
+    "spherex_improvement_factor": 25.0,
+    "bounce_detectable_spherex": 

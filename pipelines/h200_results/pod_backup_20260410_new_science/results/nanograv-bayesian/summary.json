@@ -1,0 +1,60 @@
+{
+  "experiment": "NANOGrav Bayesian Model Comparison: Bounce vs SMBHB",
+  "device": "cuda",
+  "n_walkers": 256,
+  "n_steps": 2000,
+  "n_burnin": 500,
+  "combined_pta": {
+    "gamma_mean": 3.331404876347969,
+    "gamma_err": 0.3952448157455962
+  },
+  "posterior": {
+    "gamma_median": 3.3272719383239746,
+    "gamma_err_low": 0.3895864486694336,
+    "gamma_err_high": 0.39503252029418956,
+    "log10_A_median": -15.497232437133789
+  },
+  "model_comparison": {
+    "matter_bounce": {
+      "gamma_model": 3.0,
+      "tension_combined_sigma": 0.81,
+      "tension_posterior_sigma": 0.8,
+      "log_bayes_factor_combined": -1.918,
+      "log_bayes_factor_posterior": -1.911,
+      "description": "Matter bounce: \u03b3=3 (scale-invariant GW background)"
+    },
+    "SMBHB_circular_inspiral": {
+      "gamma_model": 4.333333333333333,
+      "tension_combined_sigma": 2.26,
+      "tension_posterior_sigma": 2.27,
+      "log_bayes_factor_combined": -4.063,
+      "log_bayes_factor_posterior": -4.087,
+      "description": "SMBHB circular inspiral: \u03b3=13/3"
+    },
+    "SMBHB_eccentric": {
+      "gamma_model": 3.8,
+      "tension_combined_sigma": 0.74,
+      "tension_posterior_sigma": 0.74,
+      "log_bayes_factor_combined": -1.411,
+      "log_bayes_factor_posterior": -1.416,
+      "description": "SMBHB with eccentricity: \u03b3~3-4.33"
+    },
+    "cosmic_strings": {
+      "gamma_model": 1.6666666666666667,
+      "tension_combined_sigma": 3.35,
+      "tension_posterior_sigma": 3.35,
+      "log_bayes_factor_combined": -7.019,
+      "log_bayes_factor_posterior": -6.995,
+      "description": "Cosmic strings: \u03b3~5/3"
+    }
+  },
+  "key_results": {
+    "bounce_tension_sigma": 0.81,
+    "smbhb_tension_sigma": 2.26,
+    "log_bayes_factor_bounce_vs_smbhb": 2.1449999999999996,
+    "bayes_factor_bounce_vs_smbhb": 8.54204123729409,
+    "smbhb_excluded_sigma": 2.26,
+    "paper1_claim_consistency": "\u03b3_obs=3.33\u00b10.40 vs bounce \u03b3=3.0 (0.81\u03c3 tension)"
+  },
+  "runtime_seconds": 10.72742748260498
+}
