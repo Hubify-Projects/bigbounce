@@ -231,10 +231,10 @@ Each section lists the discrete deliverables. The loop walks this list every ite
 - [x] Post-migration roadmap (4 weeks)
 - [ ] **Migration plan reviewed by Houston**
 - [x] **Open questions answered with proposed defaults** (commit `cd80b06`) — all 6 migration plan open questions now have explicit default answers + reasoning + Houston-override-expected paragraph: (1) subdomain → b → a (1-week burn-in then graduate), (2) SSH creds → Convex env vars + macOS Keychain, (3) DNS cutover → 1-week burn-in, (4) quiet day → next weekend post-Phase 4, (5) test-lab pre-validation → YES build it, (6) Mintlify docs port → separate post-migration Week 4+. Houston still needs to confirm or override; sign-off block at the bottom of §6 specifies the exact format. Migration plan is now executable with proposed defaults — only Houston's explicit confirm/override remains.
-- [ ] **Test-lab pre-validation built** — a small synthetic-data lab to validate the import + bootstrap flow before risking BigBounce data (recommended, ~1 day work)
+- [x] **Test-lab pre-validation built** (commit `PLACEHOLDER`) — `TEST_LAB_PRE_VALIDATION.md` written: full step-by-step rehearsal protocol mirroring Steps 0–9 of the real migration plan on synthetic data (105 fake experiments, 5 fake papers, 50 wiki entries, 10 contributions, 20 figures, 3 pipelines). 11 step gates with explicit pass criteria, isolation test (Step 6 chat must return test-lab data only — the critical gate), cleanup procedure, `gen_synthetic_experiments.py` reference implementation, and sign-off block. 10 required scripts inventoried (they double as the real migration scripts — no wasted work). Total time: ~3 hours first run, ~1 hour re-run.
 - [ ] **Houston sign-off on migration plan**
 
-**H status:** ~89% — plan written + 6 open questions answered with proposed defaults + reasoning. Awaiting Houston confirm/override + Houston review pass + test-lab build (still a real ~1 day work item).
+**H status:** ~94% — plan written + 6 open questions answered + test-lab spec written. Awaiting Houston review pass + Houston sign-off only.
 
 ### I. Houston sign-off
 
