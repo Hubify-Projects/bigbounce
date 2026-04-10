@@ -220,6 +220,23 @@ No Figma calls — all components now extracted. Focus: replace remaining inline
 - [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
 - [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
 
+### Phase 17 — Final utility sweep ✅ COMPLETE (2026-04-10)
+
+No Figma calls. 406 → 336 inline styles (-70, combined 744→336 = -55% total).
+
+- [x] **`.c-bright-600/.c-muted-10/.fs9-dim-mt2/.fs12-bright-500/.fs8-light`** — color+size combos × 4 each.
+- [x] **`.dot-6-accent/.dot-5-accent/.dot-5-dim`** — inline status dot indicators × 4+3+3.
+- [x] **`.col-end-4`** — flex column right-align gap:4px. `class="settings-row-value"` merge × 4.
+- [x] **`.mono-10-dim-auto`** — mono metadata right-aligned × 4.
+- [x] **`.desc-22`** — muted desc text padding-left:22px × 3.
+- [x] **`.rt-action-row/.flex-wrap-8/.flex-1-min0`** — flex row utilities × 3 each.
+- [x] **`.inline-code-chip`** — `<kbd>` keyboard shortcut chips × 3.
+- [x] **`.js-fig-row/.js-tmpl-card`** — JS template card hover via CSS :hover, eliminates last 2 `onmouseover/onmouseout` JS handlers.
+- [x] **`<b class="c-text">` sweep** — `<b style="color:var(--text)">` × 15 static HTML instances.
+- [x] **`.sp-row .v.text` modifier** — `class="v" style="color:var(--text)"` → `class="v text"` × 14 (all in JS template strings).
+- [x] **`.dim.fs8-light` / `.sp-pill.fs8-light` merges** — `font-size:8px` overrides on elements with existing class × 4+3.
+- [x] **True practical floor at 336** — remaining: `display:none` (17, JS), SVG `color:var(--text-muted)` on viewBox icons (21), `cursor:pointer` SVG `<g>` (12), `cursor:default` (7), `border:none` form resets (7), SVG dimension attrs (11), single-prop margin spacings (~40). No clean batch wins remain.
+
 ### Phase 16 — Color/typography utility sweep ✅ COMPLETE (2026-04-10)
 
 No Figma calls. 564 → 406 inline styles (-158, combined 744→406 = -45% total).
