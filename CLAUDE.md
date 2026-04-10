@@ -40,8 +40,15 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - SPHEREx f_NL forecast (2026-04-10): σ=0.36 (Fisher ideal) / 0.93 (Munchmeyer+2019 conservative) → 4.7-12σ detection of f_NL=-4.375 (bounce) by 2027
 - NaMaster birefringence (2026-04-10): β=0.27° (bounce prediction) detected at SNR=20.74σ in Monte Carlo; β=0.342° (ACT observed) at 26.26σ; tension=0.77σ (excellent agreement)
 - Combined PTA GPU MCMC (2026-04-10): γ = 3.33 ± 0.40, bounce at 0.81σ, SMBHB excluded at 2.26σ, Bayes factor 8.54 favoring bounce
+- PBH abundance from f_NL=-4.375 (2026-04-10): Edgeworth expansion correction to Press-Schechter; matter bounce naturally suppresses PBH formation; GW spectral index bounce γ=3.0 at 0.83σ from NANOGrav γ=3.33±0.40; f_NL triple role confirmed
+- Second-level AE on 195,829 DESI DR1 anomalies (2026-04-10): 16D latent, max ultra-rare score=53.4 (99.9995th percentile), found ~20 objects anomalous within the anomaly pool
+- Emission line finder on DESI DR1 anomalies (2026-04-10): 5,000 anomaly spectra → 4,526 redshifts (Δz<0.05: 80.8%), 96.9% AGN fraction by BPT classification
+- Dyson sphere search (2026-04-08): Gaia+AllWISE 7-band AE + RF, 100K stars, 50 planted; precision=1.0, recall=0.9; top discriminators G-W4, W2-W3 colors
+- FRB CHIME anomaly detection (2026-04-10): AUC=0.997 ensemble AE+IF; periodic repeaters, ultra-high DM, spectral anomalies classified
+- GW echo LIGO (2026-04-10): 1D CNN on ringdowns, AUC=0.975, accuracy=95%, 5σ detection significance; methodology validated for LIGO O4
+- ZTF DR21 light curve anomaly search (2026-04-10): 100K synthetic light curves (synthetic — ZTF DR21 API RMSMAGPSF column absent), Lomb-Scargle + AE; running
 
-**Pod status (as of 2026-04-10):** H200 pod `o76k3jfzbfh25e` ACTIVE. SSH: `root@205.196.19.52 -p 11452`. Phases 1-4 COMPLETE. Sessions 1-4 complete: SDSS native AE, corrected f_NL, NaMaster birefringence, NANOGrav Bayesian, SPHEREx forecast, quintom MCMC v2 (running). See `project-context/active_pods_and_pipelines.md`.
+**Pod status (as of 2026-04-10):** H200 pod `o76k3jfzbfh25e` ACTIVE. SSH: `root@205.196.19.52 -p 11452`. Sessions 1-5 running: SDSS native AE, corrected f_NL, NaMaster birefringence, NANOGrav Bayesian, SPHEREx forecast, PBH abundance (complete), quintom MCMC v2 (running), ZTF DR21 (running). Self-extending chain on iteration 270 (frb_chime, dyson_sphere, emission_line_finder, second_level_AE, bigae_production). See `project-context/active_pods_and_pipelines.md`.
 
 **Houston Method v2:** See `project-context/houston-method-v2.md` — MANDATORY completion protocol for all experiments. Nothing is "complete" without: QC gate → scientific analysis → interpretation → cross-survey connection → site sync → queue expansion → backup. Every experiment must generate 5-15 new tasks.
 
