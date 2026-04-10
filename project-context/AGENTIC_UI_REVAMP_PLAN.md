@@ -1,7 +1,7 @@
 # AgenticUI Revamp Plan — Canonical
 
 **Created:** 2026-04-09 (post-compaction recovery save)
-**Status:** Surface parity COMPLETE (2026-04-10) — Phase 9 + token sync across all 4 surfaces done. Next: desktop chrome polish + inline style radius cleanup (lower priority).
+**Status:** Phase 3 component merge IN PROGRESS (2026-04-10) — Text Input + Badge specs extracted from Figma (761:20738 + 124:2898). Applied: input border/hover/focus fix, 40px height, 14px font, full badge color spectrum (blue/orange/purple/teal added), btn height 36→40px, btn-sm 32px, btn-xs utility added. Next: Toast (4008:197), Menu (558:659), or Button (147:2305) full extraction.
 **Owner:** Houston + Claude
 **Supersedes:** none yet (merges Cabinet light-mode work + new AgenticUI kit)
 
