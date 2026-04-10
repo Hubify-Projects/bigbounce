@@ -220,6 +220,16 @@ No Figma calls — all components now extracted. Focus: replace remaining inline
 - [x] **Compute management buttons** — 4 `.btn.btn-ghost` with `style="font-size:10px;padding:3px 9px"` replaced with `.btn.btn-xs.btn-ghost` (clean 24px canonical size).
 - [x] **`.org-node-role` font-size** — `font-size:10px` moved from per-element inline style into CSS class definition. 4 elements cleaned up.
 
+### Phase 15 — Utility class sweep ✅ COMPLETE (2026-04-10)
+
+No Figma calls. Largest inline-style reduction pass: 744 → 564 (180 removed).
+
+- [x] **`.cp`** — `cursor:pointer` utility. Merged into: `class="sp-row cp"` (64), `settings-row cp` (4), `rt-info-row cp` (4), `chat-header-title cp` (1). Removed from `<a class="sp-pill">` (redundant on anchors). SVG `<g>` instances left.
+- [x] **`.c-accent` / `.c-warn`** — single-property color utilities. Replaced 81 `<span>` + 5 `<b>` with accent, 4+4 with warn.
+- [x] **Removed 77 redundant `style="text-align:left;flex:1"`** from `.v` elements inside `.sp-row` — already defined in `.sp-row .v{flex:1}` CSS.
+- [x] **`.settings-link-row` + 4 sub-classes** — canonical nav-link card system. 16 rows × 5 inline styles = 80 attrs removed. Also eliminated 16 pairs of inline `onmouseover/onmouseout` JS hover handlers (CSS `:hover` handles it).
+- [x] **`.settings-nav-card`** — variant for features nav (Skills/Workflows/Databases/Formats). 4 rows × 5 attrs = 20 attrs removed + 4 JS handler pairs.
+
 ### Phase 14 — `<pre>` block canonicalization ✅ COMPLETE (2026-04-10)
 
 No Figma calls. Final inline style sweep for pre/code display blocks.
