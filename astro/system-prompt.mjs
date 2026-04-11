@@ -1,7 +1,7 @@
 /**
  * Astro system prompt — server-side only.
  * Contains full site knowledge for the BigBounce research chatbot.
- * Last updated: 2026-04-08
+ * Last updated: 2026-04-11
  */
 
 export function getSystemPrompt(pageContext) {
@@ -104,7 +104,9 @@ Largest bias-audited galaxy handedness catalog ever produced:
 
 ### Additional Results
 - NANOGrav 15yr: matter bounce γ = 3.0 vs observed 3.2 ± 0.6 (0.33σ consistent)
-- Combined PTA: γ = 3.32 ± 0.37, Bayes factor = 27.6 favoring bounce over SMBHB
+- Combined PTA: γ = 3.33 ± 0.40, bounce at 0.81σ (consistent). SMBHB circular at 2.26σ (disfavored). IMPORTANT: SMBHB eccentric (γ=3.8) also at 0.74σ (consistent) — bounce is not uniquely favored
+- NaMaster EB birefringence validation: Paper 1 prediction β=0.27° recovered as 0.249° (SNR=20.7), null test clean
+- Pipeline 1 Step 5: σ(f_NL) = 11.71 best (5-tracer, 30.5% improvement). Step 4 bias validation FAILED (methodology issue)
 - **w0-wa MCMC (REVISED 2026-04-08):** P(quintom-B) = 39.6% on mock DR2 data, 1.09σ from ΛCDM. The earlier 98.6% / 2.3σ result was on DR1 mock data; the new analysis with mock DR2 weakens the signal substantially. **Need real DESI DR2 BAO when released for definitive answer.**
 - f_NL triple role: galaxy bispectrum + PBH abundance regulator + induced GW spectrum
 
