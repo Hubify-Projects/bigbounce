@@ -1,6 +1,8 @@
 # Current Status: BigBounce Research Program
 
-**Last updated: 2026-04-08**
+**Last updated: 2026-04-11 (v2.3.0)**
+
+**NEXT RESEARCH QUEUE:** See `NEXT_GEN_RESEARCH_QUEUE.md` — 9 real-data experiments with novel AI models, massive datasets, and genuine scientific questions. No more synthetic loops.
 
 ## Papers
 
