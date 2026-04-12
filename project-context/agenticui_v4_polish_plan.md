@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 92: aspect-ratio on Media Containers ✅ COMPLETE (bonus)
+**Target:** Layout stability — reserve space before content loads
+- [x] index.html: .fig-thumb (16/10 for figure thumbnails)
+- [x] marketing-site-mockup.html: .demo-frame iframe (16/9 for embedded app previews)
+- [x] Git committed `902c87d` — 2 files
+
+### Pass 91: font-kerning:normal on Body ✅ COMPLETE (bonus)
+**Target:** Explicit kerning for proportional fonts (Geist, Inter)
+- [x] index.html, marketing-site-mockup.html, desktop-app-mockup.html, agent-management-clone.html (4 files)
+- [x] cli-tui: N/A (monospace only, kerning irrelevant)
+- [x] Git committed `902c87d` — 4 files
+
+### Pass 90: font-synthesis:none on Code Elements ✅ COMPLETE (bonus)
+**Target:** Prevent browser-generated faux bold/italic on monospace fonts
+- [x] index.html: code,pre,kbd,.term-body,.file-preview-code
+- [x] marketing-site-mockup.html: code,pre,kbd
+- [x] Git committed `902c87d` — 2 files
+
 ### Pass 89: widows:2;orphans:2 on Prose Content ✅ COMPLETE (bonus)
 **Target:** Prevent single-line fragments at page/column breaks
 - [x] index.html: .sp-md p, .chat-msg-body (2 elements)
