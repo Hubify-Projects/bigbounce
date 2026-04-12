@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 122: @media (dynamic-range:high) HDR Enhancement ✅ COMPLETE (bonus)
+**Target:** Enhanced accent colors on HDR displays
+- [x] index.html: @media (dynamic-range:high) block with wider-gamut --accent and --success values
+- [x] marketing-site-mockup.html: same @media block with --accent override
+- [x] Progressive enhancement — standard displays see normal sRGB colors
+- [x] Git committed `bb9e53b` — 2 files
+
+### Pass 121: @media (scripting:none) Graceful Degradation ✅ COMPLETE (bonus)
+**Target:** Hide JS-dependent overlays and interactive toggles when scripting is unavailable
+- [x] index.html: hide cmdp-overlay, notif-drawer, dropdowns, chat-show-tab; show .view; disable pointer-events on tree items
+- [x] marketing-site-mockup.html: hide mobile menu btn/menu, demo tab bar; show .mp-page
+- [x] Git committed `bb9e53b` — 2 files
+
+### Pass 120: scroll-timeline Named Scroll Progress ✅ COMPLETE (bonus)
+**Target:** Named scroll timeline on .chat-body driving scroll progress indicator on .chat-header
+- [x] index.html: .chat-body gets scroll-timeline:--chat-scroll block; .chat-header gets position:relative
+- [x] index.html: .chat-header::after pseudo-element with animation-timeline:--chat-scroll, scale(0,1)→scale(1,1)
+- [x] marketing-site-mockup.html: N/A — already has page-level scroll progress from Pass 107
+- [x] Git committed `bb9e53b` — 1 file
+
 ### Pass 119: initial-letter Drop Cap ✅ COMPLETE (bonus)
 **Target:** Typographic drop-cap for paper content first paragraphs (Chrome 110+, Safari 9+)
 - [x] index.html: .sp-md p:first-of-type::first-letter gets initial-letter:2 with serif font
