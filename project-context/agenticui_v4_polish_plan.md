@@ -398,6 +398,27 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 83: view-transition-name on Major Layout Sections ✅ COMPLETE (bonus)
+**Target:** Future View Transitions API — named sections for cross-document transitions
+- [x] index.html: sidebar, chat, preview, statusbar (4 sections named)
+- [x] Progressive enhancement — browsers without View Transitions API ignore
+- [x] Git committed `0517ddd` — 1 file
+
+### Pass 82: @starting-style Entry Animations ✅ COMPLETE (bonus)
+**Target:** CSS-only entry animations when display:none → display:flex toggles
+- [x] index.html: .notif-drawer.open (slide-in from left + fade)
+- [x] index.html: .cmdp-overlay.open (fade-in)
+- [x] Added `display allow-discrete` to transition lists for both elements
+- [x] Progressive enhancement — unsupported browsers fall back to instant show
+- [x] Git committed `0517ddd` — 1 file
+
+### Pass 81: field-sizing:content on Textareas ✅ COMPLETE (bonus)
+**Target:** Auto-sizing textareas that grow with content
+- [x] index.html: .textarea (generic component), .chat-input, .vibe-input textarea
+- [x] Added max-height:200px cap on chat inputs to prevent runaway growth
+- [x] Progressive enhancement — Chrome 123+, others use fixed min-height fallback
+- [x] Git committed `0517ddd` — 1 file
+
 ### Pass 80: interpolate-size:allow-keywords on :root ✅ COMPLETE (bonus)
 **Target:** Future-proof CSS animate-to-auto height transitions
 - [x] All 5 files: added to :root block
