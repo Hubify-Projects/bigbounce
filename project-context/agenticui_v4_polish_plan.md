@@ -398,6 +398,23 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 89: widows:2;orphans:2 on Prose Content ✅ COMPLETE (bonus)
+**Target:** Prevent single-line fragments at page/column breaks
+- [x] index.html: .sp-md p, .chat-msg-body (2 elements)
+- [x] marketing-site-mockup.html: .lede, .article-body p (2 elements)
+- [x] Git committed `d421a0e` — 2 files
+
+### Pass 88: overflow-anchor:auto on Scroll Containers ✅ COMPLETE (bonus)
+**Target:** Stable scroll anchoring — prevent scroll position jumping on content insert
+- [x] index.html: .chat-body, .term-body (2 scroll containers)
+- [x] Git committed `d421a0e` — 1 file
+
+### Pass 87: font-variant-ligatures:none on Code Elements ✅ COMPLETE (bonus)
+**Target:** Disable ligatures in monospace/code context (ligatures break code readability)
+- [x] index.html: code,pre,kbd,.term-body,.file-preview-code (global rule)
+- [x] marketing-site-mockup.html: code,pre,kbd (global rule)
+- [x] Git committed `d421a0e` — 2 files
+
 ### Pass 86: scroll-padding + scroll-margin on Scrollable Containers ✅ COMPLETE (bonus)
 **Target:** Proper scroll offset for snap targets and anchor-linked sections
 - [x] index.html: scroll-padding-inline:8px on .term-tabs + .preview-tabs
