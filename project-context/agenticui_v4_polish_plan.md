@@ -398,6 +398,27 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 119: initial-letter Drop Cap ✅ COMPLETE (bonus)
+**Target:** Typographic drop-cap for paper content first paragraphs (Chrome 110+, Safari 9+)
+- [x] index.html: .sp-md p:first-of-type::first-letter gets initial-letter:2 with serif font
+- [x] marketing-site-mockup.html: N/A — no long-form prose content
+- [x] Progressive enhancement — unsupported browsers show normal first letter
+- [x] Git committed `8178e98` — 1 file
+
+### Pass 118: @starting-style Expansion ✅ COMPLETE (bonus)
+**Target:** Entry animations for display-toggled elements added in Pass 112
+- [x] index.html: @starting-style for .lab-dropdown.open, .proj-dropdown.open, .hm-tooltip.show (opacity:0 entry state)
+- [x] marketing-site-mockup.html: @starting-style for .tn-mobile-menu.open
+- [x] Consolidated duplicate .open rules into single declarations
+- [x] Git committed `8178e98` — 2 files
+
+### Pass 117: text-box-trim + text-box-edge ✅ COMPLETE (bonus)
+**Target:** Trim leading whitespace from headings for tighter vertical alignment (Chrome 133+)
+- [x] index.html: .sp-h1, .greeting, .captain-heading get text-box-trim:trim-start;text-box-edge:cap alphabetic
+- [x] marketing-site-mockup.html: h1.hero-h1, h2.section-h2 get same properties
+- [x] Progressive enhancement — unsupported browsers ignore silently
+- [x] Git committed `8178e98` — 2 files
+
 ### Pass 116: print-color-adjust:exact ✅ COMPLETE (bonus)
 **Target:** Preserve dark-mode colors when printing or exporting to PDF
 - [x] index.html: html,body gets -webkit-print-color-adjust:exact;print-color-adjust:exact
