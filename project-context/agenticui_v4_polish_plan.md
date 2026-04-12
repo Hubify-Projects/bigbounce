@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 131: counter-set Dynamic Line Numbers ✅ COMPLETE (bonus)
+**Target:** CSS counter-set for dynamic starting line numbers in code preview
+- [x] index.html: .file-preview-code gets counter-set:ln var(--start-line,0) alongside counter-reset
+- [x] Allows setting --start-line via inline style for non-zero starting lines
+- [x] Git committed `b3c0964` — 1 file
+
+### Pass 130: text-decoration-color Themed Underlines ✅ COMPLETE (bonus)
+**Target:** Replace border-bottom underlines with proper text-decoration-color for links
+- [x] index.html: .sp-md a converted from border-bottom to text-decoration:underline + text-decoration-color:var(--border-strong)
+- [x] marketing-site-mockup.html: .pricing-note a gets text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent)
+- [x] Git committed `b3c0964` — 2 files
+
+### Pass 129: border-block/border-inline Logical Borders ✅ COMPLETE (bonus)
+**Target:** Flow-relative border shorthands alongside physical border-bottom/border-right
+- [x] index.html: .sidebar gets border-inline-end; .chat-header, .notif-drawer-head get border-block-end
+- [x] marketing-site-mockup.html: .topnav gets border-block-end
+- [x] Git committed `b3c0964` — 2 files
+
 ### Pass 128: @media (update:slow) E-Ink Safety ✅ COMPLETE (bonus)
 **Target:** Kill all animations/transitions on slow-refresh displays (e-ink, low-power mode)
 - [x] index.html: @media (update:slow) with *,*::before,*::after animation/transition/scroll-behavior reset
