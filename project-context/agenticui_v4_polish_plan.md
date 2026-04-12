@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 104: margin-block/padding-block Logical Properties ✅ COMPLETE (bonus)
+**Target:** Flow-relative logical properties for internationalization-ready layout
+- [x] index.html: .stat (padding-block/padding-inline), .sp-section (margin-block-end), .sp-section-label (margin-block-end)
+- [x] marketing-site-mockup.html: .section (padding-block/padding-inline)
+- [x] Git committed `3cd603a` — 2 files
+
+### Pass 103: @media (hover:hover) Touch-Safe Hover ✅ COMPLETE (bonus)
+**Target:** Gate hover effects behind pointer capability, :active fallbacks for touch
+- [x] index.html: (hover:hover) for .sb-item, .sb-child-item, .tree-row, .chat-msg, .preview-tab; (hover:none) :active fallbacks
+- [x] marketing-site-mockup.html: (hover:hover) for .get-card, .paper-card, .lab-card, .blog-card, .tn-link; (hover:none) :active fallbacks
+- [x] Git committed `3cd603a` — 2 files
+
+### Pass 102: @media (color-gamut:p3) Wide-Gamut Colors ✅ COMPLETE (bonus)
+**Target:** Display-P3 accent/status colors for wide-gamut displays (Mac Retina, iPhone, etc.)
+- [x] index.html: --accent, --accent-dim, --success, --warn, --crit in P3 color space (dark + light)
+- [x] marketing-site-mockup.html: --accent, --accent-dim, --warn, --crit in P3 (dark + light)
+- [x] Progressive enhancement — non-P3 displays use existing hex fallbacks
+- [x] Git committed `3cd603a` — 2 files
+
 ### Pass 101: font-variant-caps:all-small-caps on Labels ✅ COMPLETE (bonus)
 **Target:** True small-caps rendering for uppercase label elements (more refined than text-transform alone)
 - [x] index.html: .sb-section-label, .notif-drawer-title, .chat-header-title (3 label selectors)
