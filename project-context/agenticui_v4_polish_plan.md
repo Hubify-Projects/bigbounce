@@ -398,6 +398,27 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 116: print-color-adjust:exact ✅ COMPLETE (bonus)
+**Target:** Preserve dark-mode colors when printing or exporting to PDF
+- [x] index.html: html,body gets -webkit-print-color-adjust:exact;print-color-adjust:exact
+- [x] marketing-site-mockup.html: html root block gets same property pair
+- [x] Progressive enhancement — no visual change on screen, only affects print/PDF
+- [x] Git committed `8ead072` — 2 files
+
+### Pass 115: text-spacing-trim:space-all ✅ COMPLETE (bonus)
+**Target:** Tighten punctuation spacing globally (Chrome 123+)
+- [x] index.html: body gets text-spacing-trim:space-all
+- [x] marketing-site-mockup.html: html root block gets text-spacing-trim:space-all
+- [x] Progressive enhancement — unsupported browsers ignore silently
+- [x] Git committed `8ead072` — 2 files
+
+### Pass 114: content-visibility:auto Lazy Rendering ✅ COMPLETE (bonus)
+**Target:** Defer rendering of off-screen sections for paint performance
+- [x] index.html: .settings-section gets content-visibility:auto;contain-intrinsic-size:auto 200px
+- [x] index.html: .cmdp-results gets content-visibility:auto;contain-intrinsic-size:auto 300px
+- [x] marketing-site-mockup.html: already has content-visibility:auto on .section (pass N/A)
+- [x] Git committed `8ead072` — 2 files
+
 ### Pass 113: :-webkit-autofill/:autofill Theme-Matched Styling ✅ COMPLETE (bonus)
 **Target:** Prevent browser autofill from overriding dark/light theme colors
 - [x] index.html: input:-webkit-autofill (3 pseudo-states) + input:autofill — uses -webkit-box-shadow hack + var(--surface)/var(--text)
