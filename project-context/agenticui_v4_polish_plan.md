@@ -398,6 +398,29 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 113: :-webkit-autofill/:autofill Theme-Matched Styling ✅ COMPLETE (bonus)
+**Target:** Prevent browser autofill from overriding dark/light theme colors
+- [x] index.html: input:-webkit-autofill (3 pseudo-states) + input:autofill — uses -webkit-box-shadow hack + var(--surface)/var(--text)
+- [x] marketing-site-mockup.html: same autofill rules after :where(button) reset
+- [x] desktop-app-mockup.html: N/A — no input elements in native menubar
+- [x] agent-management-clone.html: N/A — no text inputs
+- [x] cli-tui-mockup.html: N/A — terminal, no browser autofill
+- [x] Git committed `e9723aa` — 2 files
+
+### Pass 112: transition-behavior:allow-discrete ✅ COMPLETE (bonus)
+**Target:** Standalone transition-behavior property for display-toggled overlays
+- [x] index.html: .lab-dropdown, .proj-dropdown (+ opacity fade), .chat-show-tab, .hm-tooltip — all toggle display:none
+- [x] marketing-site-mockup.html: .tn-mobile-menu (+ opacity fade) — display:none toggle
+- [x] .notif-drawer and .cmdp-overlay already had allow-discrete inline in transition shorthand (kept)
+- [x] Git committed `e9723aa` — 2 files
+
+### Pass 111: @layer Cascade Layer Declaration ✅ COMPLETE (bonus)
+**Target:** CSS @layer for cascade organization (reset, tokens, base, components, utilities, overrides)
+- [x] index.html: @layer reset, tokens, base, components, utilities, overrides; added at top of <style>
+- [x] marketing-site-mockup.html: same @layer declaration at top of <style>
+- [x] Progressive enhancement — unsupported browsers ignore @layer, no visual difference
+- [x] Git committed `e9723aa` — 2 files
+
 ### Pass 110: anchor-name/position-anchor CSS Anchor Positioning ✅ COMPLETE (bonus)
 **Target:** Modern CSS Anchor Positioning API for tooltip positioning (Chrome 125+)
 - [x] index.html: .tooltip-wrap gets anchor-name:--tooltip-anchor, .tip gets position-anchor:--tooltip-anchor
