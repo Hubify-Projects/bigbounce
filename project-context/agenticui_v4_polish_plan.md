@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 110: anchor-name/position-anchor CSS Anchor Positioning ✅ COMPLETE (bonus)
+**Target:** Modern CSS Anchor Positioning API for tooltip positioning (Chrome 125+)
+- [x] index.html: .tooltip-wrap gets anchor-name:--tooltip-anchor, .tip gets position-anchor:--tooltip-anchor
+- [x] Progressive enhancement — unsupported browsers fall back to existing absolute positioning
+- [x] Git committed `9f758f6` — 1 file
+
+### Pass 109: @scope Component-Level Scoping ✅ COMPLETE (bonus)
+**Target:** CSS @scope for encapsulated component styles (Chrome 118+)
+- [x] index.html: @scope (.status-bar) scopes kbd styling to status bar context
+- [x] Progressive enhancement — unsupported browsers use existing .sb-stat kbd rule
+- [x] Git committed `9f758f6` — 1 file
+
+### Pass 108: :is() Selector Consolidation ✅ COMPLETE (bonus)
+**Target:** Consolidate duplicate selectors using :is() for DRY CSS
+- [x] index.html: :is(.chat-mode-tab,.term-tab):hover, :is(.chat-mode-tab,.term-tab).active, ::after
+- [x] Removed 4 duplicate .term-tab rules now covered by :is() consolidation
+- [x] Net reduction: 2 fewer CSS rules
+- [x] Git committed `9f758f6` — 1 file
+
 ### Pass 107: animation-timeline:scroll() Scroll Progress ✅ COMPLETE (bonus)
 **Target:** CSS-only scroll-driven progress bar using Scroll-Driven Animations API
 - [x] marketing-site-mockup.html: .scroll-progress element + @keyframes scroll-grow + animation-timeline:scroll()
