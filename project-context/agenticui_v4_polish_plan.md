@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 98: Individual Transform Properties (rotate:) ✅ COMPLETE (bonus)
+**Target:** Modern CSS individual transform properties alongside legacy `transform:` for progressive enhancement
+- [x] index.html: .sb-group-header.open .sb-group-arrow, .sb-item-with-children.open .sb-item-chevron, .tree-arrow.open (3 selectors — `rotate:90deg`)
+- [x] desktop-app-mockup.html: .menubar-popover .arrow (`rotate:45deg`)
+- [x] marketing-site-mockup.html: N/A (no static transform:rotate found)
+- [x] Git committed `b6613ab` — 2 files
+
+### Pass 97: image-rendering:high-quality on Figure/Media Containers ✅ COMPLETE (bonus)
+**Target:** Crisp rendering for scientific figures and embedded previews
+- [x] index.html: .fig-thumb, .sp-img (figure thumbnails + sidepeek images)
+- [x] marketing-site-mockup.html: .demo-frame iframe (embedded app previews)
+- [x] Progressive enhancement — unsupported browsers ignore it
+- [x] Git committed `b6613ab` — 2 files
+
+### Pass 96: clamp() for Fluid Responsive Sizing ✅ COMPLETE (bonus)
+**Target:** Replace fixed font-size with clamp() for fluid scaling without breakpoints
+- [x] index.html: .stat .stat-value `font-size:clamp(22px,2.4vw,28px)` (replaces fixed 28px)
+- [x] marketing-site-mockup.html: h1.hero-h1 `clamp(32px,5vw,54px)`, h2.section-h2 `clamp(22px,3vw,28px)`, .hero-stat-num `clamp(32px,4.5vw,48px)` (3 heading/stat levels)
+- [x] Git committed `b6613ab` — 2 files
+
 ### Pass 95: initial-letter Drop Cap on Article Lede ✅ COMPLETE (bonus)
 **Target:** Editorial drop cap on article opening paragraphs
 - [x] marketing-site-mockup.html: .article-body p.lede-para::first-letter (2-line drop, serif, sage accent)
