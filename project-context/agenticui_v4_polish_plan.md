@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 125: text-emphasis Dot Marks ✅ COMPLETE (bonus)
+**Target:** Typographic emphasis dots for marked terms in paper content
+- [x] index.html: .sp-md mark gets text-emphasis:dot var(--accent), text-emphasis-position:under left
+- [x] marketing-site-mockup.html: N/A — no paper prose content
+- [x] Progressive enhancement — unsupported browsers show plain text
+- [x] Git committed `38f5d05` — 1 file
+
+### Pass 124: @supports Feature Queries ✅ COMPLETE (bonus)
+**Target:** Explicit @supports blocks for graceful enhancement gating
+- [x] index.html: @supports (text-box-trim) adjusts heading margin-top; @supports (scrollbar-width) ensures scrollbar-gutter:stable
+- [x] marketing-site-mockup.html: @supports (text-box-trim) adjusts hero/section heading margin-top
+- [x] Git committed `38f5d05` — 2 files
+
+### Pass 123: timeline-scope ✅ COMPLETE (bonus)
+**Target:** Extend scroll-timeline scope beyond scroll container subtree (Chrome 116+)
+- [x] index.html: .chat gets timeline-scope:--chat-scroll so .chat-header::after can reference it
+- [x] Complements Pass 120 (scroll-timeline) by hoisting the timeline to the parent
+- [x] Git committed `38f5d05` — 1 file
+
 ### Pass 122: @media (dynamic-range:high) HDR Enhancement ✅ COMPLETE (bonus)
 **Target:** Enhanced accent colors on HDR displays
 - [x] index.html: @media (dynamic-range:high) block with wider-gamut --accent and --success values
