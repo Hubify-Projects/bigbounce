@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 86: scroll-padding + scroll-margin on Scrollable Containers ✅ COMPLETE (bonus)
+**Target:** Proper scroll offset for snap targets and anchor-linked sections
+- [x] index.html: scroll-padding-inline:8px on .term-tabs + .preview-tabs
+- [x] marketing-site-mockup.html: scroll-margin-top:72px on .section (navbar offset)
+- [x] Git committed `a22823d` — 2 files
+
+### Pass 85: text-underline-position:from-font on Links ✅ COMPLETE (bonus)
+**Target:** Font-metric-aware underline positioning
+- [x] index.html: global `a` reset
+- [x] marketing-site-mockup.html: global `a` reset
+- [x] Completes the full underline control chain: skip-ink + offset + thickness + position
+- [x] Git committed `a22823d` — 2 files
+
+### Pass 84: @property Typed CSS Custom Properties ✅ COMPLETE (bonus)
+**Target:** Register accent colors as typed properties for future animated transitions
+- [x] index.html: @property --accent + @property --accent-dim
+- [x] marketing-site-mockup.html: same 2 properties
+- [x] Enables `transition:--accent .3s` for smooth theme color changes
+- [x] Git committed `a22823d` — 2 files
+
 ### Pass 83: view-transition-name on Major Layout Sections ✅ COMPLETE (bonus)
 **Target:** Future View Transitions API — named sections for cross-document transitions
 - [x] index.html: sidebar, chat, preview, statusbar (4 sections named)
