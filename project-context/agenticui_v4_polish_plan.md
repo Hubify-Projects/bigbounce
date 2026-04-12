@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 101: font-variant-caps:all-small-caps on Labels ✅ COMPLETE (bonus)
+**Target:** True small-caps rendering for uppercase label elements (more refined than text-transform alone)
+- [x] index.html: .sb-section-label, .notif-drawer-title, .chat-header-title (3 label selectors)
+- [x] marketing-site-mockup.html: .hero-stat-label
+- [x] Progressive enhancement — fonts without small-caps show synthesized glyphs
+- [x] Git committed `94a3c45` — 2 files
+
+### Pass 100: overflow:clip Replacing overflow:hidden ✅ COMPLETE (bonus)
+**Target:** Modern overflow:clip on visual-clipping containers (no scroll container created, better perf)
+- [x] index.html: .app, .fig-card, .fig-thumb (3 containers — border-radius clipping only)
+- [x] marketing-site-mockup.html: .mock-frame (demo mockup frame)
+- [x] Text truncation elements left as overflow:hidden (still need scroll containment for ellipsis)
+- [x] Git committed `94a3c45` — 2 files
+
+### Pass 99: @media (prefers-reduced-transparency) ✅ COMPLETE (bonus)
+**Target:** Accessibility — solidify transparent/glass backgrounds for users who prefer reduced transparency
+- [x] index.html: .notif-drawer, .cmdp-overlay, .cmdp, .lab-dropdown, .proj-dropdown, .toast, .sidebar, .chat, .preview, .status-bar
+- [x] marketing-site-mockup.html: .topnav, .hero, .section, .hero-stat, .get-card, .surface-card
+- [x] Git committed `94a3c45` — 2 files
+
 ### Pass 98: Individual Transform Properties (rotate:) ✅ COMPLETE (bonus)
 **Target:** Modern CSS individual transform properties alongside legacy `transform:` for progressive enhancement
 - [x] index.html: .sb-group-header.open .sb-group-arrow, .sb-item-with-children.open .sb-item-chevron, .tree-arrow.open (3 selectors — `rotate:90deg`)
