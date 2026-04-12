@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 107: animation-timeline:scroll() Scroll Progress ✅ COMPLETE (bonus)
+**Target:** CSS-only scroll-driven progress bar using Scroll-Driven Animations API
+- [x] marketing-site-mockup.html: .scroll-progress element + @keyframes scroll-grow + animation-timeline:scroll()
+- [x] HTML: `<div class="scroll-progress" aria-hidden="true">` added after `<body>`
+- [x] Progressive enhancement — Chrome 115+, unsupported browsers show nothing
+- [x] Git committed `a2b35a4` — 1 file (HTML + CSS)
+
+### Pass 106: :where() Zero-Specificity Resets ✅ COMPLETE (bonus)
+**Target:** Wrap element resets in :where() for zero specificity — easier to override downstream
+- [x] index.html: :where(a), :where(button), :where(input,textarea,select)
+- [x] marketing-site-mockup.html: :where(a), :where(button)
+- [x] Git committed `a2b35a4` — 2 files
+
+### Pass 105: light-dark() CSS Function ✅ COMPLETE (bonus)
+**Target:** Inline theme-aware values using CSS light-dark() function (replaces separate light/dark blocks)
+- [x] index.html: ::selection background consolidated from 2 rules into 1 using light-dark()
+- [x] marketing-site-mockup.html: ::selection background using light-dark()
+- [x] Progressive enhancement — Chrome 123+, Safari 17.5+
+- [x] Git committed `a2b35a4` — 2 files
+
 ### Pass 104: margin-block/padding-block Logical Properties ✅ COMPLETE (bonus)
 **Target:** Flow-relative logical properties for internationalization-ready layout
 - [x] index.html: .stat (padding-block/padding-inline), .sp-section (margin-block-end), .sp-section-label (margin-block-end)
