@@ -398,6 +398,23 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 95: initial-letter Drop Cap on Article Lede ✅ COMPLETE (bonus)
+**Target:** Editorial drop cap on article opening paragraphs
+- [x] marketing-site-mockup.html: .article-body p.lede-para::first-letter (2-line drop, serif, sage accent)
+- [x] Progressive enhancement — Safari/Chrome support, others show normal first letter
+- [x] Git committed `4b9063f` — 1 file
+
+### Pass 94: box-decoration-break:clone on Inline Badges ✅ COMPLETE (bonus)
+**Target:** Intact border/padding/background if inline element wraps across lines
+- [x] index.html: .badge, .detail-tag (with -webkit- prefix)
+- [x] Git committed `4b9063f` — 1 file
+
+### Pass 93: break-inside:avoid on Cards ✅ COMPLETE (bonus)
+**Target:** Prevent cards from splitting across page/column breaks
+- [x] index.html: .stat, .lab-card, .fig-card, .kanban-card (4 card types)
+- [x] marketing-site-mockup.html: .get-card, .paper-card (2 card types)
+- [x] Git committed `4b9063f` — 2 files
+
 ### Pass 92: aspect-ratio on Media Containers ✅ COMPLETE (bonus)
 **Target:** Layout stability — reserve space before content loads
 - [x] index.html: .fig-thumb (16/10 for figure thumbnails)
