@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 128: @media (update:slow) E-Ink Safety ✅ COMPLETE (bonus)
+**Target:** Kill all animations/transitions on slow-refresh displays (e-ink, low-power mode)
+- [x] index.html: @media (update:slow) with *,*::before,*::after animation/transition/scroll-behavior reset
+- [x] marketing-site-mockup.html: same universal reset block
+- [x] Git committed `f854fdd` — 2 files
+
+### Pass 127: inset-block/inset-inline Logical Properties ✅ COMPLETE (bonus)
+**Target:** Flow-relative positioning shorthands alongside physical top/left/bottom/right
+- [x] index.html: .notif-drawer gets inset-block:54px 24px;inset-inline-start:240px; .chat-show-tab gets inset-inline-start:0;inset-block-start:50%
+- [x] marketing-site-mockup.html: .tn-mobile-menu gets inset-block-start:60px
+- [x] Git committed `f854fdd` — 2 files
+
+### Pass 126: hyphenate-limit-chars/lines ✅ COMPLETE (bonus)
+**Target:** Fine-tune auto-hyphenation behavior on prose text
+- [x] index.html: .chat-msg-body, .sp-text, .vibe-msg-body — all 3 elements with hyphens:auto
+- [x] hyphenate-limit-chars:6 3 2 (min 6 chars, 3 before break, 2 after) + hyphenate-limit-lines:2
+- [x] marketing-site-mockup.html: N/A — no hyphens:auto elements
+- [x] Git committed `f854fdd` — 1 file
+
 ### Pass 125: text-emphasis Dot Marks ✅ COMPLETE (bonus)
 **Target:** Typographic emphasis dots for marked terms in paper content
 - [x] index.html: .sp-md mark gets text-emphasis:dot var(--accent), text-emphasis-position:under left
