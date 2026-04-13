@@ -495,6 +495,30 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Help text updated
 - [x] Git committed `2ac5f51`
 
+### Lab Creation Wizard — 4-step interactive flow ✅ COMPLETE
+- [x] "Launch This Lab" button now opens multi-step wizard (was: toast)
+- [x] Step 1: Identity — name, mission, subdomain, sharing mode (pre-filled from LAB_DATA)
+- [x] Step 2: Agents — 12-agent grid with toggle selection, model labels, count tracker
+- [x] Step 3: Compute — GPU type, pod mode, budget cap, orchestrator region
+- [x] Step 4: Review & Launch — summary table, estimated monthly cost, bootstrap sequence
+- [x] Stepper UI with done/active/pending states (matches hm2-stepper pattern)
+- [x] Full CSS for wizard fields, agent cards, summary rows, cost display
+- [x] `exitLabWizard()` returns to planned-lab view cleanly
+
+### Lab Deletion/Archive — confirmation flow ✅ COMPLETE
+- [x] "Archive this lab" button on planned-lab view (subtle, below main CTAs)
+- [x] `confirmArchiveLab()` — destructive confirmation screen with red styling
+- [x] Explains consequences: B2 backup, agent shutdown, repo preserved
+- [x] Cancel returns to planned-lab view
+
+### CLI/TUI — :lab commands ✅ COMPLETE
+- [x] `:lab` — shows all lab subcommands (list/create/switch/delete)
+- [x] `:lab list` — 5 labs with status dots and metadata
+- [x] `:lab create` — ASCII wireframe of 4-step creation wizard
+- [x] `:lab switch` — usage hint with examples
+- [x] `:lab delete` — destructive warning with --confirm requirement
+- [x] Help text updated with `:lab`
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
