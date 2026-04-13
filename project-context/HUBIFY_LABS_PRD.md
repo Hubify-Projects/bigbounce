@@ -7649,6 +7649,140 @@ Tracked as separate mockup tasks (see `.queue.md`):
 3. **Backblaze B2 alternative** — if the user doesn't have B2 set up, fallback to local-only checkpoints + Houston notification. Document this fallback in the gpu-manager-lead's agent.md.
 4. **Recovery threshold gap** — currently `recover_at: 30` (above the WARN threshold of 20). This prevents flapping. Confirm with Houston this gap is right.
 
+### 41.9 Pre-run optimization & speed/cost intelligence (the "benchmark before burn" rule)
+
+**Status:** Added 2026-04-13 per Houston. Based on real lessons from 8.47M-galaxy chirality pipeline and 33.5M-source anomaly sweep.
+
+**Houston's quote:** *"Is there a way we can run this faster? How can we chunk things differently, process things differently, to speed it up, and then run a few little test runs before you run any job, like a long-running big data set? Those learnings, figuring out how to optimize before you run it, can be almost as valuable as what you find when you run it."*
+
+#### 41.9.1 Rule 5 — Always run a test batch first (HARD INVARIANT)
+
+**Before dispatching ANY job that will process > 10,000 items or run > 30 minutes, the agent MUST:**
+
+1. **Run a micro-batch (1% or 1,000 items, whichever is smaller)** and measure:
+   - Wall time per item
+   - GPU utilization % (via `nvidia-smi`)
+   - CPU utilization % (are CPU cores saturated before GPU?)
+   - Memory high-water mark (VRAM + system RAM)
+   - I/O wait time (is the job disk-bound? network-bound?)
+
+2. **Extrapolate the full-run cost** from the micro-batch timing:
+   ```
+   estimated_hours = (total_items / items_per_second_from_test) / 3600
+   estimated_cost = estimated_hours × pod_cost_per_hour
+   ```
+
+3. **Log the estimate** to the experiment record before proceeding. If the estimated cost exceeds $50, require Houston sign-off.
+
+4. **Try at least 2 configurations** in the test batch (e.g., batch_size=128 vs 512, num_workers=4 vs 16) and pick the faster one.
+
+**Real example — the 32× speedup that saved $300+:**
+
+The galaxy chirality pipeline (`pipelines/p2_chirality/`) processed 8.47M images across 192 shards on an H200.
+
+| Configuration | Time per shard (44K images) | Total estimated time | Estimated cost |
+|---|---|---|---|
+| Serial PIL decode, BS=128 | 29 min | 92 hours | **$330** |
+| ProcessPoolExecutor (32 workers) | 27 min | 86 hours | $309 |
+| HuggingFace streaming | died after 1 shard | ∞ | ∞ |
+| **DataLoader(num_workers=16, pin_memory=True, prefetch_factor=4, BS=512)** | **65 sec** | **3.5 hours** | **$12.60** |
+
+The winning config was discovered by testing 4 approaches on a single shard. A 5-minute test batch saved 88 hours and $317. **This is why test batches are mandatory.**
+
+#### 41.9.2 Rule 6 — Optimize chunking and parallelism before full dispatch
+
+**The agent must evaluate these optimization levers before any large job:**
+
+| Lever | What to test | BigBounce example |
+|---|---|---|
+| **Batch size** | Double until VRAM is ~80% full, then step back | BS=512 filled 3.5GB of 143GB on H200 (headroom for multi-job) |
+| **DataLoader workers** | Match CPU cores / 8 (rough heuristic). Test 4, 8, 16. | 16 workers on 176-core H200 = 11:1 core ratio, no contention |
+| **pin_memory** | Always True when using GPU. Free 10-20% speedup. | Eliminated PCIe transfer stalls in chirality pipeline |
+| **prefetch_factor** | 2-4. Higher = more CPU memory used but fewer GPU stalls. | prefetch_factor=4 kept GPU fed continuously |
+| **Non-blocking transfers** | `tensor.to(device, non_blocking=True)` overlaps transfer + compute | Used in `run_eq_dataloader.py:141-142` |
+| **Shard-by-shard vs all-at-once** | Process in chunks, checkpoint each, free memory between. | 192 shards × 44K images, checkpoint + gc.collect() + torch.cuda.empty_cache() per shard |
+| **Download-then-process vs streaming** | Always download to local disk first for large datasets. | HF streaming died after 1 shard (35 items/s). Local disk: 678 items/s |
+
+**The bottleneck is almost never the GPU.** In every BigBounce pipeline, the bottleneck was CPU-side data decoding and I/O. The GPU sat idle 95% of the time until DataLoader parallelism was introduced.
+
+#### 41.9.3 Rule 7 — Speed/cost pod selection (the "cheap pod paradox")
+
+**Houston's quote:** *"If I choose a cheaper pod but it runs for longer, that may actually end up costing more than if I pick the faster pod that finishes faster, even if it's more expensive."*
+
+**The agent MUST compute total job cost, not hourly rate, when selecting a pod:**
+
+```
+total_cost = hourly_rate × estimated_hours
+```
+
+**Decision matrix:**
+
+| Pod | $/hr | Relative speed | Job: 8.47M images | Job: 6-chain MCMC |
+|---|---|---|---|---|
+| **H200 SXM** | $3.59 | 1.0× (baseline) | 3.5h = **$12.60** | 8h = $28.72 |
+| **H100 SXM** | $2.49 | ~0.7× (80GB VRAM, smaller batches) | 5h = $12.45 | 8h = $19.92 |
+| **A100 80GB** | $1.64 | ~0.5× | 7h = $11.48 | 12h = $19.68 |
+| **RTX 4090** | $0.69 | ~0.3× (24GB VRAM, much smaller batches) | 12h = $8.28 | 20h = $13.80 |
+| **RTX A4000** | $0.36 | ~0.15× (16GB VRAM) | 24h = $8.64 | 36h = $12.96 |
+
+**Key insights:**
+- For **VRAM-bound** jobs (large batch inference): H200 is cheapest because huge VRAM (143GB) allows BS=512. Smaller GPUs must use BS=32-64, losing throughput non-linearly.
+- For **compute-bound** jobs (MCMC, training): total cost is similar across tiers. Pick the cheapest that meets the VRAM floor.
+- For **time-sensitive** jobs (Houston is waiting): pick the fastest, period. Houston's time > $3/hr delta.
+- **The cheap-pod trap:** an RTX A4000 at $0.36/hr looks cheap, but if a VRAM-limited batch size forces 24h runtime, the total ($8.64) is barely cheaper than an H200 at 3.5h ($12.60) — and Houston waits 7× longer.
+
+**The orchestrator's pod selection algorithm:**
+
+```
+1. Determine VRAM requirement (model size + batch_size × item_size)
+2. Filter pods that have enough VRAM
+3. For each qualifying pod:
+     a. Estimate runtime from test-batch throughput × (143GB/pod_vram) scaling factor
+     b. Compute total_cost = runtime × hourly_rate
+4. Sort by total_cost ascending
+5. If top-2 are within 20% cost:
+     a. Pick the faster one (Houston's time matters)
+6. Present the recommendation with the math shown
+```
+
+#### 41.9.4 Memory management discipline
+
+Every job that runs > 30 minutes on a pod MUST implement this cleanup pattern between processing units (shards, epochs, batches):
+
+```python
+# After each shard/epoch/major unit:
+del dataframe, dataset, loader, results  # free Python references
+gc.collect()                              # force garbage collection
+torch.cuda.empty_cache()                  # release VRAM back to allocator
+```
+
+**Why:** without explicit cleanup, Python's garbage collector and PyTorch's CUDA allocator hold onto memory indefinitely. On a 12-hour job processing 192 shards, this causes OOM crashes around shard 50-80. The chirality pipeline (`run_eq_dataloader.py:175-178`) implements this pattern and ran all 192 shards without a single OOM.
+
+Additionally: clean HuggingFace cache every 10 shards (`shutil.rmtree(HF_CACHE)`) to prevent disk fill on pods with limited root storage.
+
+#### 41.9.5 The optimization log (learnings persist across experiments)
+
+Every test-batch result MUST be logged to `lab/compute/optimization_log.jsonl`:
+
+```json
+{
+  "ts": "2026-04-10T14:22:00Z",
+  "experiment": "chirality_8.47M_inference",
+  "pod_type": "H200",
+  "config_tested": {"batch_size": 512, "num_workers": 16, "pin_memory": true, "prefetch_factor": 4},
+  "items_per_second": 678,
+  "gpu_util_pct": 94,
+  "cpu_util_pct": 68,
+  "vram_used_gb": 3.5,
+  "wall_time_test_sec": 65,
+  "items_in_test": 44139,
+  "extrapolated_full_hours": 3.5,
+  "extrapolated_cost_usd": 12.60
+}
+```
+
+**Why this matters:** when a similar experiment comes through later (e.g., "run inference on 12M galaxies with a different model"), the orchestrator can look up past optimization logs for the same pod type + similar data shape and start from the best-known config instead of rediscovering it from scratch.
+
 ---
 
 ## 42. macOS Desktop App Spec (Tauri 2 Shell)
