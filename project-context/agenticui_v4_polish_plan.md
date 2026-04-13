@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 200: overflow-x Clip ✅ COMPLETE (bonus)
+**Target:** Explicit overflow-x:clip on app container
+- [x] index.html: .app gets overflow-x:clip alongside overflow:clip
+- [x] marketing-site-mockup.html: N/A
+- [x] Git committed `69bb015` — 2 files
+
+### Pass 199: background-attachment Scroll ✅ COMPLETE (bonus)
+**Target:** Explicit background-attachment:scroll on gradient elements
+- [x] index.html: .thinking-verb, .chat-input-pill.dragover get background-attachment:scroll
+- [x] marketing-site-mockup.html: .paper-cover-1/2/3 get background-attachment:scroll
+- [x] Git committed `69bb015` — 2 files
+
+### Pass 198: background-origin Padding-Box ✅ COMPLETE (bonus)
+**Target:** Explicit background-origin:padding-box on gradient elements
+- [x] index.html: .thinking-verb, .chat-input-pill.dragover get background-origin:padding-box
+- [x] marketing-site-mockup.html: .paper-cover-1/2/3 get background-origin:padding-box
+- [x] Git committed `69bb015` — 2 files
+
 ### Pass 197: flex-grow Explicit Growth ✅ COMPLETE (bonus)
 **Target:** Explicit flex-grow:1 alongside flex:1 on key flex children
 - [x] index.html: .brand-text, .sb-lab-btn .lab-name, .sb-search-text get flex-grow:1
