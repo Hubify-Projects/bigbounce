@@ -2129,3 +2129,13 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 5. **Scrollbar**: `.tn-mobile-menu` — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent;overscroll-behavior:contain`
 6. **Scrollbar**: `.docs-sidebar` — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent`
 **Total marketing :active rules:** 18 → 36 (18 new)
+
+### Pass 70: user-select:none on all interactive elements ✅ COMPLETE
+**Files:** all 5 v4 files
+**Changes (20 insertions across 5 files):**
+1. **index.html** — `:where(button)` gets `user-select:none` (covers ALL buttons globally); consolidated rule block covers 50 non-button interactive selectors (cards, rows, tabs, pills, links, dropdowns, sidebar items)
+2. **marketing-site-mockup.html** — same button reset fix + 28 non-button selectors (nav buttons, cards, links, chips, tabs, ctrl)
+3. **desktop-app-mockup.html** — `.dock-icon,.mp-open-app,.mockup-controls .ctrl` get `user-select:none`
+4. **cli-tui-mockup.html** — `.tui-tab,.mockup-controls .ctrl` get `user-select:none`
+5. **agent-management-clone.html** — `.nav-sub-link,.btn,.perf-feed-item` get `user-select:none`
+**Coverage:** ~80 interactive non-button selectors + all `<button>` elements now prevent accidental text selection
