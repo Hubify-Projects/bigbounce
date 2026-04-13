@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 203: grid-auto-rows Auto ✅ COMPLETE (bonus)
+**Target:** Explicit grid-auto-rows:auto on grid containers for consistent row sizing
+- [x] index.html: .stat-grid, .briefing-grid, .pipeline-steps get grid-auto-rows:auto
+- [x] marketing-site-mockup.html: .get-grid gets grid-auto-rows:auto
+- [x] Git committed `977db0a` — 2 files
+
+### Pass 202: justify-items Stretch ✅ COMPLETE (bonus)
+**Target:** Explicit justify-items:stretch on grid containers for consistent item alignment
+- [x] index.html: .stat-grid, .briefing-grid, .pipeline-steps get justify-items:stretch
+- [x] marketing-site-mockup.html: .get-grid gets justify-items:stretch
+- [x] Git committed `977db0a` — 2 files
+
+### Pass 201: align-content Flex-Start ✅ COMPLETE (bonus)
+**Target:** Explicit align-content:flex-start on column flex containers
+- [x] index.html: .sidebar, .chat, .workspace get align-content:flex-start
+- [x] marketing-site-mockup.html: body gets align-content:flex-start
+- [x] Git committed `977db0a` — 2 files
+
 ### Pass 200: overflow-x Clip ✅ COMPLETE (bonus)
 **Target:** Explicit overflow-x:clip on app container
 - [x] index.html: .app gets overflow-x:clip alongside overflow:clip
