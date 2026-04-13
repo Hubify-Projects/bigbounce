@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 140: white-space-collapse Modern Whitespace ✅ COMPLETE (bonus)
+**Target:** Modern whitespace-collapse property as progressive enhancement alongside white-space
+- [x] index.html: .code-block pre gets white-space-collapse:preserve
+- [x] index.html: .file-preview-code gets white-space-collapse:preserve
+- [x] index.html: .sp-jsonl gets white-space-collapse:preserve-breaks (wraps but keeps line breaks)
+- [x] Git committed `266f1e2` — 1 file
+
+### Pass 139: column-rule Multi-Column Separators ✅ COMPLETE (bonus)
+**Target:** Visual separator lines between CSS multi-column layouts
+- [x] index.html: .fp-pdf-refs gets column-rule:0.5px solid #d8d2bf + column-gap:18px
+- [x] marketing-site-mockup.html: N/A (no multi-column usage)
+- [x] Git committed `266f1e2` — 1 file
+
+### Pass 138: object-position Focal Points ✅ COMPLETE (bonus)
+**Target:** Control focal point of object-fit:cover images (faces bias upward)
+- [x] index.html: .avatar-photo img gets object-position:center 20% (face-biased crop)
+- [x] index.html: .avatar img gets object-position:center 20%
+- [x] index.html: .fig-thumb img rule added with object-fit:cover;object-position:center top
+- [x] Git committed `266f1e2` — 1 file
+
 ### Pass 137: word-spacing Fine-Tuning ✅ COMPLETE (bonus)
 **Target:** Tighter word-spacing for dense UI chrome, slightly wider for readable paper content
 - [x] index.html: .sb-item gets word-spacing:-0.02em (tighter sidebar labels)
