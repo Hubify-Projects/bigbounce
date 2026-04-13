@@ -1948,3 +1948,15 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 4. Git commit after each pass completion
 5. Houston must approve and confirm DONE — not auto-closeable
 6. Reference agenticui/ components as the source of truth for styles
+
+---
+
+### Pass 55: Houston Feedback Batch (Settings CSS + Mobile Popout + Chat Scroll + Agents Nav + Heatmap) ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (6 fixes):**
+1. **Settings tab CSS complete** — added all missing CSS for `.ss-subdomain-input`, `.ss-subdomain-suffix`, `.ss-toggle`/`.ss-toggle-track` (toggle switch), `.ss-template-grid`/`.ss-template-card` (4-col template picker), `.ss-template-preview` + all `.ss-tp-*` mini wireframe elements. Responsive 2-col at 768px.
+2. **Mobile profile popout fix** — repositioned `.profile-popout` inside viewport on mobile (`left:8px` instead of `right:8px`), max-width constrained to `calc(100vw - 16px)`.
+3. **Agents nav restored** — added `Agents` as top-level sidebar nav item (between Papers and Lab Site) with `data-view="agents"` wired to existing `#view-agents` org chart view. Icon: users SVG.
+4. **Heatmap simplified** — replaced chaotic 4-quadrant grid per cell with single solid square per day. Level class based on total activity. Legend updated. Tooltip still shows category breakdown on hover.
+5. **Chat auto-scroll** — added `scrollChatToBottom()` + MutationObserver on `.chat-body`. Auto-scrolls on load and new messages. Respects user scroll-up (pauses auto-scroll when user is >80px from bottom). Also scrolls when switching from terminal back to chat mode.
+6. **Heatmap CSS cleanup** — removed `.heatmap-cell .q` sub-element styles, replaced with direct `.heatmap-cell.l1`..`.l5` classes.

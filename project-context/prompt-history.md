@@ -7,11 +7,29 @@
 **~afternoon PT — Compute self-optimization for PRD**
 > Okay, one thing that we need to add is some self-optimizations on scripts and things when we're running large data on RunPod. There have been many times where a few things have happened that I just want to make sure we account for in the PRD. That would be like: - Hey, is there a way we can run this faster? How can we chunk things differently, process things differently, to speed it up, and then run a few little test runs before you run any job, like a long-running big data set? - Those learnings, I'm just figuring out how to optimize before you run it, can be almost as valuable as what you find when you run it. The other thing would be just balancing time, speed, and cost when deciding what pod or CPU or GPU to run on RunPod. If I choose a cheaper pod but it runs for longer, that may actually end up costing more than if I pick the faster pod that finishes faster, even if it's more expensive. I just want to add some notes on this stuff to the PRD. I'm going to look through our actual big bounce project for any speed and selection and any sort of things related to whatever I'm talking about here, to add to the PRD with real examples and actually get it going.
 
+**~afternoon PT — Lab Site chat is redundant, use orchestrator**
+> you need to continue refining the vibe coding layout and ui/ux as much as possible - it should use the existing built in orchestrator agent chat we do not need a NEW chat for the vibe coding site stuff please ... that is totally redundant
+
 **~afternoon PT — Lab Site vibe coding layout is terrible, fix it**
 > the vibe coding style layout for the Lab Site is TERRIBLE ... that right side panel should not exist but it can just be another view for details on top of the right side tab view - which should have highest quality views for Code where you should basically just reuse our existing files in the right side there just like most vibe coding platforms typically have like Code (files), Preview (live sandbox render/testing), Settings (for env vars, subdomain, etc etc), a deploy button on the top, etc... and the main left side menu should be collapsed by default when the lab site view is open too please
 
 **~afternoon PT — Sidebar collapse CSS bug report**
 > Okay, one other thing I notice also is that the main side menu, when it's collapsed, is like the icons and everything properly collapse, but it stays the same size. It's just like a wide single column side panel, so it looks really weird to fix that.
+
+**~afternoon PT — Lab Site subdomain, templates, version control, responsive standards**
+> subdomain should only allow you to edit before hubify.app - ie {subdomain}.hubify.app - let's add easy way to password protect the site too - and the sites should have some standard templates to pick from by default before customization - and they should always be responsive with light/dark/system theme modes built in with a left vertical side menu just like our website (and most modern sites have) and a standard structure based on what makes most sense and also proper version control since these are all going to basically either in their own repo OR ideally in a turborepo type structure where the site has its own repo in the main lab repo probably makes most sense etc..
+
+**~afternoon PT — Mobile profile popout bug**
+> also i cannot see the popout menu on mobile when i click my user thing on the bottom it needs to load inside the view but gets cutoff on the left side (on main app side menu not vibe site)
+
+**~afternoon PT — Orchestrator chat should auto-scroll to latest**
+> also a small annoying thing is i have to keep scrolling down in the orcehstrator chat the main one it should be auto-scrolled or auto-positioned with the most recent message right above the chatui or something (A little white space between actually is nice) but i should not have to scroll down to get to most recent messages everytime orcehstrator chat loads etc
+
+**~afternoon PT — Agents view missing, need org chart + editable agents back**
+> also i no longer see the Agents view where we worked on the Agents org chart thing and had them fully editable/agent/soul/tools/skills etc per agent and all that.... -- please find that code and add back to where it belongs best in the sidemenu to access it - and look up the PRD to ensure you do it correct too
+
+**~afternoon PT — User profile activity grid too chaotic**
+> also the 4-square activity grid on the user profiles feels a bit chaotic and messy please keep to one square per day with some other way to symbolize activity heatmap etc
 
 ---
 
