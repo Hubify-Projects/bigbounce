@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 212: border-image-width Zero ✅ COMPLETE (bonus)
+**Target:** Explicit border-image-width:0 on divider/separator elements (companion to border-image-source:none)
+- [x] index.html: .divider-v, .divider-h get border-image-width:0
+- [x] marketing-site-mockup.html: .arch-flow gets border-image-width:0
+- [x] Git committed `abe9357` — 2 files
+
+### Pass 211: color-interpolation sRGB ✅ COMPLETE (bonus)
+**Target:** Explicit color-interpolation:sRGB on gradient-heavy elements for consistent color math
+- [x] index.html: .captain-feed-fade, .briefing get color-interpolation:sRGB
+- [x] marketing-site-mockup.html: .lab-card-cover gets color-interpolation:sRGB
+- [x] Git committed `abe9357` — 2 files
+
+### Pass 210: outline-style Solid ✅ COMPLETE (bonus)
+**Target:** Explicit outline-style:solid in focus-visible blocks to prevent UA style override
+- [x] index.html: master focus-visible block gets outline-style:solid
+- [x] marketing-site-mockup.html: CTA/nav focus-visible block gets outline-style:solid
+- [x] Git committed `abe9357` — 2 files
+
 ### Pass 209: border-image-source None ✅ COMPLETE (bonus)
 **Target:** Explicit border-image-source:none on divider/separator elements to prevent UA surprises
 - [x] index.html: .divider-v, .divider-h get border-image-source:none
