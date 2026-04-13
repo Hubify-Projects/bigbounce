@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 224: animation-fill-mode None ✅ COMPLETE (bonus)
+**Target:** Explicit animation-fill-mode:none on infinite animations (no fill needed for looping)
+- [x] index.html: .sb-item .dot.good, .thinking-ast get animation-fill-mode:none
+- [x] marketing-site-mockup.html: .arch-node::before pulse gets animation-fill-mode:none
+- [x] Git committed `fb5d940` — 2 files
+
+### Pass 223: background-position-y Center ✅ COMPLETE (bonus)
+**Target:** Explicit background-position-y longhand on positioned background elements
+- [x] index.html: select[appearance:none] chevron gets background-position-y:center
+- [x] marketing-site-mockup.html: N/A (no background-position elements)
+- [x] Git committed `fb5d940` — 1 file
+
+### Pass 222: background-position-x Right ✅ COMPLETE (bonus)
+**Target:** Explicit background-position-x longhand on positioned background elements
+- [x] index.html: select[appearance:none] chevron gets background-position-x:right 6px
+- [x] marketing-site-mockup.html: N/A (no background-position elements)
+- [x] Git committed `fb5d940` — 1 file
+
 ### Pass 221: font-variant-east-asian Normal ✅ COMPLETE (bonus)
 **Target:** Explicit font-variant-east-asian:normal on body for CJK glyph robustness
 - [x] index.html: body gets font-variant-east-asian:normal
