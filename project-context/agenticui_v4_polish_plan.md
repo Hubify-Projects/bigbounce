@@ -428,6 +428,16 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Metadata drawer: added "Override files" panel (4 custom template overrides)
 - [x] Git committed `54d1b29`
 
+### Labs view — Dark Matter Lab + subdomain URLs ✅ COMPLETE
+- [x] Added missing Dark Matter Lab card (Lab #4 per LAB_DARK_MATTER.md spec)
+- [x] Updated labs count: 4 → 5 labs, 3 → 4 planned
+- [x] Added subdomain URL display to all 5 lab cards (live dot for BigBounce, pending for others)
+- [x] BigBounce card: "Edit Site" + "Open" action buttons
+- [x] Settings Lab Site link: full globe SVG, "live" badge, "6 custom sections"
+- [x] CSS: .lab-card-subdomain, .lab-card-actions classes
+- [x] Fixed CSS comments: "site preview" → "lab site builder"
+- [x] Git committed `0495159`
+
 ### Migration plan — §53 integration ✅ COMPLETE
 - [x] Added Step 4.5 (Lab Site Builder bootstrap) to MIGRATION_BOUNCE_COSMOLOGY_LAB.md
 - [x] Updated §1.11 with Phase A/B site transition plan
