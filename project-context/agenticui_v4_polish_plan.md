@@ -2003,3 +2003,14 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 2. **Desktop**: menubar status-icon gap 3→4px, titlebar sep margin 5→4px, titlebar-pill gap 5→4px + padding 7→8px, mp-row padding 3→4px, mp-recent gap 5→4px, annotation padding 3px 6px→4px 8px, shell-badge padding 3px 7px→4px 8px
 3. **Marketing**: 15× `.12s`→`.1s` transition fixes, mock-row padding 3→4px, mock-row-status gap 3→4px, sc-status padding 3→4px, paper-card-pills gap 5→4px, ss-traffic gap 5→4px
 4. **Agent mgmt**: transition .12s→.1s
+
+### Pass 60: Accessibility + Interaction Polish + Logical Properties ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (30 insertions, 15 deletions):**
+1. **`.ic` SVG pointer-events:none** — prevents SVG icons from intercepting clicks meant for parent buttons
+2. **sidebar-overlay cursor:pointer** — overlay now shows pointer cursor on mobile (tap-to-close affordance)
+3. **brand-mark role=button + tabindex=0** — keyboard-accessible logo link
+4. **JS a11y auto-upgrade** — all `div[onclick]`/`span[onclick]` get `tabindex="0"` + `role="button"` at runtime; global Enter/Space keydown handler for keyboard activation
+5. **chat-body scroll-behavior:smooth** — smooth scroll for auto-scroll and manual navigation
+6. **11 CSS rules: margin-right → margin-inline-end** — tier-tag, term-pill, sp-pill, first-letter, site-statusbar dot, sft-item dir, line-num, rt-tab, hm2-step, wiz-step, provider-badge
+7. **Spacing grid**: hm2-step margin 5→4px, wiz-step margin 6→8px, sp-pill margin 5→4px
