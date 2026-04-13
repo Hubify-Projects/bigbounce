@@ -1995,3 +1995,11 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 3. **13 CSS rules 3px→4px**: notif-filter, sp-tabs, detail-tag, briefing-pill, filter-btn ×3, lab-card btn, rt-info-row, ps-picker, hm2-check, routing-badge, act-filter, compute-pod-setting, routine-cron
 4. **3 inline style fixes**: journal buttons + model pill `padding:3px 8px`→`4px 8px`
 5. **Upvote triangle SVGs**: `fill="#4a7d6a"` attribute → `style="fill:var(--accent-dim,#4a7d6a)"` for theme responsiveness
+
+### Pass 59: Grid Sweep Across 4 Supporting Mockup Files ✅ COMPLETE (bonus)
+**Files:** `v4/cli-tui-mockup.html`, `v4/desktop-app-mockup.html`, `v4/marketing-site-mockup.html`, `v4/agent-management-clone.html`
+**Changes (36 insertions, 36 deletions):**
+1. **CLI/TUI**: session-tab gap 5→4px, tui-nav gap 3→4px, tui-badge padding 1px 7px→2px 8px, tui-view animation .12s→.1s
+2. **Desktop**: menubar status-icon gap 3→4px, titlebar sep margin 5→4px, titlebar-pill gap 5→4px + padding 7→8px, mp-row padding 3→4px, mp-recent gap 5→4px, annotation padding 3px 6px→4px 8px, shell-badge padding 3px 7px→4px 8px
+3. **Marketing**: 15× `.12s`→`.1s` transition fixes, mock-row padding 3→4px, mock-row-status gap 3→4px, sc-status padding 3→4px, paper-card-pills gap 5→4px, ss-traffic gap 5→4px
+4. **Agent mgmt**: transition .12s→.1s
