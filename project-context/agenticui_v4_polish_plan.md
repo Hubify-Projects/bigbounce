@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 215: border-image-outset Zero ✅ COMPLETE (bonus)
+**Target:** Explicit border-image-outset:0 completing full border-image longhand set on dividers
+- [x] index.html: .divider-v, .divider-h get border-image-outset:0
+- [x] marketing-site-mockup.html: .arch-flow gets border-image-outset:0
+- [x] Git committed `b39cc0b` — 2 files
+
+### Pass 214: border-image-repeat Stretch ✅ COMPLETE (bonus)
+**Target:** Explicit border-image-repeat:stretch on divider/separator elements
+- [x] index.html: .divider-v, .divider-h get border-image-repeat:stretch
+- [x] marketing-site-mockup.html: .arch-flow gets border-image-repeat:stretch
+- [x] Git committed `b39cc0b` — 2 files
+
+### Pass 213: border-image-slice Zero ✅ COMPLETE (bonus)
+**Target:** Explicit border-image-slice:0 on divider/separator elements
+- [x] index.html: .divider-v, .divider-h get border-image-slice:0
+- [x] marketing-site-mockup.html: .arch-flow gets border-image-slice:0
+- [x] Git committed `b39cc0b` — 2 files
+
 ### Pass 212: border-image-width Zero ✅ COMPLETE (bonus)
 **Target:** Explicit border-image-width:0 on divider/separator elements (companion to border-image-source:none)
 - [x] index.html: .divider-v, .divider-h get border-image-width:0
