@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 230: transition-delay 0s ✅ COMPLETE (bonus)
+**Target:** Explicit transition-delay:0s longhand on key transitioned elements
+- [x] index.html: .sb-lab-btn, .sb-footer-btn get transition-delay:0s
+- [x] marketing-site-mockup.html: .tn-theme-btn gets transition-delay:0s
+- [x] Git committed `d804fbe` — 2 files
+
+### Pass 229: transition-timing-function Ease ✅ COMPLETE (bonus)
+**Target:** Explicit transition-timing-function:ease longhand on transitioned elements
+- [x] index.html: .sb-lab-btn, .sb-footer-btn get transition-timing-function:ease
+- [x] marketing-site-mockup.html: .tn-theme-btn gets transition-timing-function:ease
+- [x] Git committed `d804fbe` — 2 files
+
+### Pass 228: transition-property All ✅ COMPLETE (bonus)
+**Target:** Explicit transition-property:all longhand on transitioned elements
+- [x] index.html: .sb-lab-btn, .sb-footer-btn get transition-property:all
+- [x] marketing-site-mockup.html: .tn-theme-btn gets transition-property:all
+- [x] Git committed `d804fbe` — 2 files
+
 ### Pass 227: animation-timing-function Ease-in-out ✅ COMPLETE (bonus)
 **Target:** Explicit animation-timing-function longhand on pulse/shimmer animations
 - [x] index.html: .dot.good, .thinking-ast get animation-timing-function:ease-in-out
