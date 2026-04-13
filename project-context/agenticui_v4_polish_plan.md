@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 245: vector-effect None ✅ COMPLETE (bonus)
+**Target:** Explicit vector-effect:none on SVG icon containers for stroke scaling default
+- [x] index.html: `.icon-btn svg` gets vector-effect:none
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets vector-effect:none
+- [x] Git committed `423ef04` — 2 files
+
+### Pass 244: color-interpolation-filters LinearRGB ✅ COMPLETE (bonus)
+**Target:** Explicit color-interpolation-filters:linearRGB on SVG icons for filter color space
+- [x] index.html: `.icon-btn svg` gets color-interpolation-filters:linearRGB
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets color-interpolation-filters:linearRGB
+- [x] Git committed `423ef04` — 2 files
+
+### Pass 243: clip-rule Nonzero ✅ COMPLETE (bonus)
+**Target:** Explicit clip-rule:nonzero on SVG icon containers for clipping algorithm default
+- [x] index.html: `.icon-btn svg` gets clip-rule:nonzero
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets clip-rule:nonzero
+- [x] Git committed `423ef04` — 2 files
+
 ### Pass 242: fill-rule Nonzero ✅ COMPLETE (bonus)
 **Target:** Explicit fill-rule:nonzero on SVG icon containers for path winding default
 - [x] index.html: `.icon-btn svg` gets fill-rule:nonzero
