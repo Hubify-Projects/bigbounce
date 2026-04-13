@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 152: border-spacing Explicit Zero ✅ COMPLETE (bonus)
+**Target:** Explicit border-spacing:0 alongside border-collapse:collapse on all tables
+- [x] index.html: .tbl, .backup-matrix, .file-preview-csv table get border-spacing:0
+- [x] marketing-site-mockup.html: .compare-table gets border-spacing:0
+- [x] Git committed `3744bab` — 2 files
+
+### Pass 151: hyphenate-character Custom Hyphen ✅ COMPLETE (bonus)
+**Target:** Unicode hyphen U+2010 as explicit hyphenation glyph on all hyphens:auto elements
+- [x] index.html: .chat-msg-body, .sp-text, .vibe-msg-body get hyphenate-character:"\2010"
+- [x] marketing-site-mockup.html: N/A (no hyphens:auto elements)
+- [x] Git committed `3744bab` — 1 file
+
+### Pass 150: font-synthesis-weight/style/small-caps Granular Control ✅ COMPLETE (bonus)
+**Target:** Individual font-synthesis sub-properties alongside shorthand font-synthesis:none
+- [x] index.html: code,pre,kbd,.term-body,.file-preview-code get font-synthesis-weight:none;font-synthesis-style:none;font-synthesis-small-caps:none
+- [x] marketing-site-mockup.html: code,pre,kbd get same granular properties
+- [x] Git committed `3744bab` — 2 files
+
 ### Pass 149: font-palette ✅ COMPLETE (bonus)
 **Target:** Color font palette selection as progressive enhancement for color font readiness
 - [x] index.html: body gets font-palette:normal alongside existing font-feature-settings
