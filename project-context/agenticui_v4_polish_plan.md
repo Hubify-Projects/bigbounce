@@ -2244,3 +2244,25 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 **Changes:**
 1. 6 new `:root.light .ss-*` overrides — status/status-dot/section-label sage adjusted (#3d7a5c), nav-item.active border, exp-status/pulse amber adjusted (#9e7828)
 2. `.pricing-note a` — added transition + hover state
+
+### Pass 81: index.html — 9 missing :active pressed states ✅ COMPLETE
+**File:** `v4/index.html`
+**Commit:** `aa8dd84` (9 insertions)
+**Changes:**
+1. `.preview-tab:active` — color bright + bg surface-2
+2. `.dir-row:active` — bg surface-3
+3. `.tbl tbody tr:active` — bg surface-3
+4. `.pipeline-step:active` — bg surface-2 + border bright
+5. `.pg-btn:active` / `.pg-btn-lg:active` — color bright + bg surface-2
+6. `.project-card-min:active` — padding-left 20px + bg surface-2
+7. `.wiki-entry:active` — bg surface-3
+8. `.routine-row:active` — bg surface-3
+
+### Pass 82: Marketing — remaining light mode gaps + :active ✅ COMPLETE
+**File:** `v4/marketing-site-mockup.html`
+**Commit:** `e3962f3` (7 insertions)
+**Changes:**
+1. `:root.light .detail-screenshot::before` — grid pattern switched from white to cocoa-tinted rgba(59,47,47,.015)
+2. `:root.light .mockup-controls` — bg→cream .92 opacity, border→cocoa rgba
+3. `--elev-1` through `--elev-4` light overrides — replaced rgba(0,0,0) with rgba(90,74,62), removed white insets
+4. `.pricing-note a:active` — opacity .75 pressed state
