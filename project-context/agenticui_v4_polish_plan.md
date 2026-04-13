@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 227: animation-timing-function Ease-in-out ✅ COMPLETE (bonus)
+**Target:** Explicit animation-timing-function longhand on pulse/shimmer animations
+- [x] index.html: .dot.good, .thinking-ast get animation-timing-function:ease-in-out
+- [x] marketing-site-mockup.html: .arch-node::before pulse gets animation-timing-function:ease-in-out
+- [x] Git committed `0e78b46` — 2 files
+
+### Pass 226: animation-play-state Running ✅ COMPLETE (bonus)
+**Target:** Explicit animation-play-state:running on animated elements for programmatic pause control
+- [x] index.html: .dot.good, .thinking-ast get animation-play-state:running
+- [x] marketing-site-mockup.html: .arch-node::before pulse gets animation-play-state:running
+- [x] Git committed `0e78b46` — 2 files
+
+### Pass 225: animation-direction Normal ✅ COMPLETE (bonus)
+**Target:** Explicit animation-direction:normal on forward-playing infinite animations
+- [x] index.html: .dot.good, .thinking-ast get animation-direction:normal
+- [x] marketing-site-mockup.html: .arch-node::before pulse gets animation-direction:normal
+- [x] Git committed `0e78b46` — 2 files
+
 ### Pass 224: animation-fill-mode None ✅ COMPLETE (bonus)
 **Target:** Explicit animation-fill-mode:none on infinite animations (no fill needed for looping)
 - [x] index.html: .sb-item .dot.good, .thinking-ast get animation-fill-mode:none
