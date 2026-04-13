@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 221: font-variant-east-asian Normal ✅ COMPLETE (bonus)
+**Target:** Explicit font-variant-east-asian:normal on body for CJK glyph robustness
+- [x] index.html: body gets font-variant-east-asian:normal
+- [x] marketing-site-mockup.html: body gets font-variant-east-asian:normal
+- [x] Git committed `e7e917f` — 2 files
+
+### Pass 220: list-style-image None ✅ COMPLETE (bonus)
+**Target:** Explicit list-style-image:none on list containers to prevent UA image markers
+- [x] index.html: .thinking-tasks ul, .fp-pdf-refs get list-style-image:none
+- [x] marketing-site-mockup.html: .sf-col ul gets list-style-image:none
+- [x] Git committed `e7e917f` — 2 files
+
+### Pass 219: list-style-position Inside ✅ COMPLETE (bonus)
+**Target:** Explicit list-style-position:inside on reset list elements
+- [x] index.html: .thinking-tasks ul, .dir-brief-col ul get list-style-position:inside
+- [x] marketing-site-mockup.html: .sf-col ul gets list-style-position:inside
+- [x] Git committed `e7e917f` — 2 files
+
 ### Pass 218: column-width Auto ✅ COMPLETE (bonus)
 **Target:** Explicit column-width:auto on multi-column containers alongside column-count
 - [x] index.html: .fp-pdf-refs gets column-width:auto
