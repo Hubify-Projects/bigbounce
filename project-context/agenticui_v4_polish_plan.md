@@ -2214,3 +2214,33 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 6. **Badge palette** — 8 colors (green/yellow/red/blue/gray/orange/purple/teal)
 7. **Component overrides** — nav-sub-link hover/active, agent-avatar highlight, scrollbar, dots pattern
 8. **Mockup controls bar** — nav links + theme toggle (file had none previously)
+
+### Pass 78: index.html — add missing :hover states to 11 interactive elements ✅ COMPLETE
+**File:** `v4/index.html`
+**Commit:** `53d2782` (15 insertions)
+**Changes:**
+1. `.sb-item-with-children .ic` + `.sb-item-label` — color→text on hover
+2. `.sp-toggle button` (non-active) — bg→surface-2 on hover
+3. `.dir-brief-foot a` — color transition + bright on hover
+4. `.graph-filters-btn` — bg/border intensify on hover
+5. `.heatmap-cell` — ring highlight on hover (box-shadow 2px)
+6. `.checkbox` — border→text-muted on hover, `.checkbox-row` color on hover
+7. `.sb-collapsible-hdr` — chevron brightens on hover
+8. `.compute-pod-setting-toggle` — color transition on hover
+9. `.ss-toggle` — track border brightens on hover
+
+### Pass 79: All files — add missing transitions to hover states ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/desktop-app-mockup.html`, `v4/marketing-site-mockup.html`, `v4/cli-tui-mockup.html`
+**Commit:** `7d14d28` (14 insertions, 4 files)
+**Changes:**
+- **index.html (8):** sb-collapse-btn, lab-dd-item, lab-dd-foot, sb-item, tree-row, sb-link, notif-filter, chat-header-btn
+- **desktop-app (2):** macos-menubar .menu-item, mockup-controls .ctrl
+- **marketing (2):** tn-brand (opacity hover + transition), tn-mobile-btn
+- **cli-tui (1):** mockup-controls .ctrl
+
+### Pass 80: Marketing .ss-* light mode completion + hover gaps ✅ COMPLETE
+**File:** `v4/marketing-site-mockup.html`
+**Commit:** `f4055f8` (8 insertions)
+**Changes:**
+1. 6 new `:root.light .ss-*` overrides — status/status-dot/section-label sage adjusted (#3d7a5c), nav-item.active border, exp-status/pulse amber adjusted (#9e7828)
+2. `.pricing-note a` — added transition + hover state
