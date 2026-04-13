@@ -2301,3 +2301,11 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - **marketing:** Removed 8 redundant `gap:0` declarations
 - **cli-tui:** Removed 2 redundant `gap:0` declarations
 - Total: 24 dead `gap:0` values removed across 3 files
+
+### Pass 87: Webkit scrollbar consistency ✅ COMPLETE
+**Files:** `v4/agent-management-clone.html`, `v4/desktop-app-mockup.html`
+**Commit:** `0846b23` (12 insertions)
+**Changes:**
+- **agent-management:** Added `::-webkit-scrollbar` (8px), `::-webkit-scrollbar-track`, `::-webkit-scrollbar-thumb` + `:hover` (dark mode: white/.1, light mode: cocoa/.15)
+- **desktop-app:** Added same webkit scrollbar rules using `var(--surface-4)` / `var(--border-bright)` tokens (dark) + cocoa overrides (light)
+- Both files already had Firefox `scrollbar-width:thin` + `scrollbar-color` — now all 5 v4 files have cross-browser scrollbar styling
