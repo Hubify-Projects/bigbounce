@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 170: overflow-inline Logical Horizontal Overflow ✅ COMPLETE (bonus)
+**Target:** Logical overflow-inline alongside overflow-x on scrollable containers
+- [x] index.html: .sb-body gets overflow-inline:hidden; .term-tabs and .preview-tabs get overflow-inline:auto
+- [x] marketing-site-mockup.html: N/A (no overflow-x elements in CSS rules)
+- [x] Git committed `f97b7f9` — 1 file
+
+### Pass 169: text-decoration-line Explicit Decoration ✅ COMPLETE (bonus)
+**Target:** Explicit text-decoration-line alongside text-decoration shorthand
+- [x] index.html: .sp-md a gets text-decoration-line:underline; .sb-link gets text-decoration-line:none
+- [x] marketing-site-mockup.html: .pricing-note a gets text-decoration-line:underline
+- [x] Git committed `f97b7f9` — 2 files
+
+### Pass 168: border-inline-end Logical Panel Borders ✅ COMPLETE (bonus)
+**Target:** Logical border-inline-end alongside border-right on panel dividers
+- [x] index.html: .chat, .term-tab, .preview-tab get border-inline-end:1px solid var(--border)
+- [x] marketing-site-mockup.html: .mock-sb gets border-inline-end
+- [x] Git committed `f97b7f9` — 2 files
+
 ### Pass 167: scroll-timeline-axis Explicit Block Axis ✅ COMPLETE (bonus)
 **Target:** Explicit scroll-timeline-axis:block alongside scroll-timeline shorthand
 - [x] index.html: .chat-body gets scroll-timeline-axis:block alongside scroll-timeline:--chat-scroll block
