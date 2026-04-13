@@ -2284,3 +2284,10 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - `.mp-input:focus-visible` (desktop-app) — focus ring
 - `.term-input input:focus-visible` (cli-tui) — focus ring
 - All use `box-shadow:var(--focus-ring)` for consistent accent ring on keyboard nav
+
+### Pass 85: Token alignment + transition timing normalization ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/marketing-site-mockup.html`
+**Commit:** `cafc67d` (6 changes, 2 files)
+**Changes:**
+- **index.html:** `.ss-toggle-track` border-radius:9px → var(--r-pill), `.bb-qc` border-radius:3px → var(--r-sm)
+- **marketing:** scrollbar-thumb border-radius:5px → var(--r-sm), `.reveal` 460ms → 300ms, `.section` 500ms → 300ms, `.btt` normalize mixed .15s/.2s → uniform .2s
