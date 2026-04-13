@@ -2177,3 +2177,40 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 3. **`.sidebar-overlay`** — backdrop `rgba(0,0,0,.45)` → `rgba(59,47,47,.35)` (warm cocoa)
 4. **`.notif-drawer`** — shadow `rgba(0,0,0,.5)` → `rgba(59,47,47,.18)` (softer, warm)
 5. **New tokens**: `--backdrop-overlay` and `--backdrop-heavy` in `:root.light` for future use
+
+### Pass 75: Desktop app — complete light mode token coverage ✅ COMPLETE
+**File:** `v4/desktop-app-mockup.html`
+**Commit:** `6ae7ed0` (18 insertions)
+**Changes:**
+1. **Menu-item `:active`** — added `:root.light .macos-menubar .menu-item:active{background:rgba(90,74,62,.18)}`
+2. **`.mp-input`** — added light border override `rgba(90,74,62,.15)`
+3. **Elevation-1 through elevation-4** — full light mode overrides (cocoa shadows)
+4. **Badge palette** — all 5 colors (green/yellow/red/blue/gray) with light mode values
+5. **Status tokens** — success/error/warning/info with saturated light mode values
+6. **Neutral ramp** — n100-n900 reversed for cream palette
+
+### Pass 76: CLI-TUI — full :root.light Cabinet cream palette ✅ COMPLETE
+**File:** `v4/cli-tui-mockup.html`
+**Commit:** `1d911d7` (56 insertions)
+**Changes:**
+1. **Complete `:root.light` token block** — 35 variables covering bg/surface/border/text/accent/warn/crit + badge palette + elevations + status tokens + neutral ramp
+2. **Body background** — `:root.light body{background:var(--bg)}` override
+3. **Terminal window shadow** — cocoa-tinted `rgba(90,74,62,...)` replacing black
+4. **CRT scanlines** — `rgba(59,47,47,.006)` replacing white
+5. **Traffic lights** — warm saturated colors for light mode (#b87070, #c4a85e, #5fb88a)
+6. **Interactive states** — session-tab, tui-tab, ctrl `:active` overrides
+7. **Scrollbar** — cocoa-tinted scrollbar color
+8. **Theme toggle button** — added to mockup controls
+
+### Pass 77: Agent management — full :root.light Cabinet cream palette ✅ COMPLETE
+**File:** `v4/agent-management-clone.html`
+**Commit:** `1d42220` (64 insertions)
+**Changes:**
+1. **Complete `:root.light` token block** — 50+ variables overriding the file's custom naming (--bg-primary, --content-primary, etc.)
+2. **All semantic colors** — bg-primary/secondary/tertiary, content-primary/secondary/disabled/success/attention
+3. **Border + button** — border-subtle/strong, btn-primary/secondary
+4. **Semantic accent colors** — red-100/200/700, orange-100/200/700, green-light/lighter
+5. **Elevation shadows** — elev-1, elev-4, elevation-1 through elevation-4
+6. **Badge palette** — 8 colors (green/yellow/red/blue/gray/orange/purple/teal)
+7. **Component overrides** — nav-sub-link hover/active, agent-avatar highlight, scrollbar, dots pattern
+8. **Mockup controls bar** — nav links + theme toggle (file had none previously)
