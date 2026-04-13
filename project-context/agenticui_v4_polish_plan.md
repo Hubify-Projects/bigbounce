@@ -519,6 +519,26 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] `:lab delete` — destructive warning with --confirm requirement
 - [x] Help text updated with `:lab`
 
+### Agent Edit/Retire — full CRUD for agent roster ✅ COMPLETE
+- [x] Hover actions on agent org-chart cards: Edit + Retire buttons (leads), Edit + Detail (orchestrator)
+- [x] CSS: `.org-node-actions` hidden by default, shown on hover, `.btn-xs` + `.btn-xs.retire` styling
+- [x] `agent-edit` detail renderer: editable name, model, reports-to, system prompt textarea, capability toggles, cost/time limits, Save/Validate/Retire/Cancel actions
+- [x] 6 agents pre-populated with real data (orchestrator + 5 leads)
+- [x] `retireAgent()` function: destructive confirmation screen, archive learnings, reassign tasks
+- [x] CLI/TUI: `:agent` command group (list/edit/retire/spawn)
+- [x] `:agent list` — 12 agents with status dots, model, tier, metrics
+- [x] `:agent edit` — usage with examples
+- [x] `:agent retire` — destructive warning with --confirm
+- [x] `:agent spawn` — interactive wizard description
+
+### Knowledge Wiki — add entry form ✅ COMPLETE
+- [x] "+ Add entry" button on Knowledge Wiki view header
+- [x] `wiki-new` detail renderer: entity type radio buttons, name/slug fields, description textarea, relationships (related entities, source papers, discovered-by), Create/Ask agent/Cancel actions
+- [x] CLI/TUI: `:wiki` command group (add/search)
+- [x] `:wiki add` — typed entry creation with examples
+- [x] `:wiki search` — query across all wiki entries
+- [x] Help text updated with `:agent` and `:wiki`
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
