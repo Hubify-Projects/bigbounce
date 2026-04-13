@@ -2291,3 +2291,13 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 **Changes:**
 - **index.html:** `.ss-toggle-track` border-radius:9px → var(--r-pill), `.bb-qc` border-radius:3px → var(--r-sm)
 - **marketing:** scrollbar-thumb border-radius:5px → var(--r-sm), `.reveal` 460ms → 300ms, `.section` 500ms → 300ms, `.btt` normalize mixed .15s/.2s → uniform .2s
+
+### Pass 86: ::selection + gap:0 dead code removal ✅ COMPLETE
+**Files:** `v4/agent-management-clone.html`, `v4/index.html`, `v4/marketing-site-mockup.html`, `v4/cli-tui-mockup.html`
+**Commit:** `3862ebc` (22 insertions, 24 deletions — net -2 lines)
+**Changes:**
+- **agent-management:** Added `::selection` + `:root.light ::selection` (sage-tinted, dark+light)
+- **index.html:** Removed 14 redundant `gap:0` declarations (CSS default)
+- **marketing:** Removed 8 redundant `gap:0` declarations
+- **cli-tui:** Removed 2 redundant `gap:0` declarations
+- Total: 24 dead `gap:0` values removed across 3 files
