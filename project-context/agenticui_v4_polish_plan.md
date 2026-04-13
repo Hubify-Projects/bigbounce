@@ -2316,3 +2316,11 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 **Changes:**
 - **marketing-site:** Added `overscroll-behavior:contain` to `.compare-wrap` (horizontal scroll table lacked scroll isolation)
 - **desktop-app:** Added `cursor:pointer` to `.menubar-app-icon` (has onclick but no pointer cursor)
+
+### Pass 89: font-display:swap + duplicate rule consolidation ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/desktop-app-mockup.html`, `v4/marketing-site-mockup.html`, `v4/cli-tui-mockup.html`
+**Commit:** `e92af2c` (5 insertions, 6 deletions)
+**Changes:**
+- **3 files:** Added `?display=swap` to fonts.cdnfonts.com Departure Mono link (prevents FOIT/flash of invisible text)
+- **cli-tui:** Consolidated duplicate `.session-tab` rule (transition .15s defined at base, overridden to .1s 5 lines later — merged into base)
+- **cli-tui:** Consolidated duplicate `.tui-tab` rule (same pattern — merged transition into base definition)
