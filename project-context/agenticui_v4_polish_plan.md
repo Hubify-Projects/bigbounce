@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 236: math-depth Zero ✅ COMPLETE (bonus)
+**Target:** Explicit math-depth:0 on body for MathML nesting depth default
+- [x] index.html: body gets math-depth:0
+- [x] marketing-site-mockup.html: body gets math-depth:0
+- [x] Git committed `7007368` — 2 files
+
+### Pass 235: math-style Normal ✅ COMPLETE (bonus)
+**Target:** Explicit math-style:normal on body for MathML rendering default
+- [x] index.html: body gets math-style:normal
+- [x] marketing-site-mockup.html: body gets math-style:normal
+- [x] Git committed `7007368` — 2 files
+
+### Pass 234: ruby-position Over ✅ COMPLETE (bonus)
+**Target:** Explicit ruby-position:over on body for CJK ruby annotation positioning
+- [x] index.html: body gets ruby-position:over
+- [x] marketing-site-mockup.html: body gets ruby-position:over
+- [x] Git committed `7007368` — 2 files
+
 ### Pass 233: grid-row-start Auto ✅ COMPLETE (bonus)
 **Target:** Explicit grid-row-start:auto on grid children with column placement
 - [x] index.html: .rt-surf-role gets grid-row-start:auto
