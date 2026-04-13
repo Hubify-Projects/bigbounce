@@ -398,6 +398,27 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 149: font-palette ✅ COMPLETE (bonus)
+**Target:** Color font palette selection as progressive enhancement for color font readiness
+- [x] index.html: body gets font-palette:normal alongside existing font-feature-settings
+- [x] marketing-site-mockup.html: root *{} block gets font-palette:normal alongside font-kerning
+- [x] Git committed `843fa39` — 2 files
+
+### Pass 148: scroll-margin-block-start ✅ COMPLETE (bonus)
+**Target:** Logical scroll-margin prevents fixed headers from clipping scroll targets
+- [x] index.html: .settings-section gets scroll-margin-block-start:40px
+- [x] index.html: .sp-md h1 and .sp-md h2 get scroll-margin-block-start:24px
+- [x] marketing-site-mockup.html: .section gets scroll-margin-block-start:72px alongside existing scroll-margin-top
+- [x] Git committed `843fa39` — 2 files
+
+### Pass 147: text-decoration-style Semantic Underlines ✅ COMPLETE (bonus)
+**Target:** Semantic underline differentiation by link type (solid/dotted/dashed)
+- [x] index.html: .sp-md a gets text-decoration-style:solid (default)
+- [x] index.html: .sp-md a[href^="http"] gets text-decoration-style:dotted (external links)
+- [x] index.html: .sp-md a[href^="#"] gets text-decoration-style:dashed (anchor links)
+- [x] marketing-site-mockup.html: .pricing-note a gets text-decoration-style:dotted
+- [x] Git committed `843fa39` — 2 files
+
 ### Pass 146: Logical Border-Radius ✅ COMPLETE (bonus)
 **Target:** Flow-relative border-radius properties alongside physical border-radius
 - [x] index.html: .notif-drawer gets border-start-end-radius/border-end-end-radius:var(--r-md), start-start/end-start:0
