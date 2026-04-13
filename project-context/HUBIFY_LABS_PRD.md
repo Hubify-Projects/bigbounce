@@ -8556,6 +8556,119 @@ This section adds the following to the PRD as required reading:
 
 ---
 
+## 53. Lab Site Builder — Vibe-Codable Public Research Sites
+
+**Status:** Added 2026-04-12 by Houston. The original BigBounce website was manually maintained to track research progress. Hubify Labs solves the tracking problem in-app, but every lab still needs a public-facing site. This section specifies the Lab Site Builder: a chat-driven, auto-syncing, vibe-codable system that gives every lab a professional research website by default.
+
+### 53.0 Why this section exists
+
+Houston identified a gap: the existing mockup had a read-only "Site Preview" dashboard (deploy metadata, analytics) completely disconnected from the "Vibe Coding" sandbox (figure generation). The lab site should be the thing you vibe-code, not a separate dashboard. The two views should be unified, and the site itself should be a first-class product feature with standard templates, auto-sync from research outputs, and dedicated agents.
+
+### 53.1 Core architecture
+
+Each lab gets a public site at `<lab-slug>.hubify.app`. The site is:
+- **Auto-generated** from a standard template on lab creation
+- **Auto-synced** from research outputs (papers, experiments, figures, datasets, activity)
+- **Vibe-codable** — the lab owner chats with a site agent to customize style, layout, content, and structure
+- **Deployed via Vercel** from the `site/` subdirectory in the lab's GitHub repo
+- **DNS provisioned automatically** via wildcard `*.hubify.app` on Cloudflare
+
+### 53.2 Standard lab site template — `hubify-lab-default`
+
+Every new lab gets a default template that matches the Hubify Labs design language:
+
+**Default sections (10):**
+1. **Hero** — Lab name, PI name, one-line mission, key stats (auto-populated from lab metadata)
+2. **Key Results** — Top N findings with stat cards (auto-populated from experiments with `status=published`)
+3. **Papers** — List of papers with readiness %, abstract, links to PDF/arXiv (auto-populated from papers view)
+4. **Experiments** — Summary table with status badges (auto-populated from experiments)
+5. **Figures** — Gallery grid with lightbox (auto-populated from figures view)
+6. **Datasets** — Cards with descriptions, row counts, download links (auto-populated from datasets view)
+7. **Activity** — Timeline feed of recent lab events (auto-populated from activity graph)
+8. **Team** — Agent roster and PI info (auto-populated from agents view)
+9. **Anomaly Catalog** — Survey table with QC badges (auto-populated from anomaly sweep results, if applicable)
+10. **Footer** — "Powered by Hubify Labs" badge, GitHub link, last updated timestamp
+
+**Design tokens:** Inherits from the Hubify Labs token system (`--bg`, `--surface`, `--accent`, etc.). Dark mode by default. The lab owner can override any token via chat.
+
+**Typography:** Inter for UI chrome, Newsreader for paper/content sections, JetBrains Mono for data/stats. Same as the in-app IDE.
+
+### 53.3 In-app Lab Site Builder UI
+
+The Lab Site view in the IDE is a three-pane layout:
+
+| Pane | Width | Purpose |
+|------|-------|---------|
+| **Left: Site Agent Chat** | 380px | Chat with the site-worker agent to customize the site. Shows auto-sync events, user messages, agent responses with code diffs |
+| **Center: Live Preview** | flex | Vercel Sandbox rendering the actual lab site. Preview/Code/Logs tabs. Device preview (mobile/tablet/desktop). Refresh + open-in-browser + responsive toggle |
+| **Right: Metadata Drawer** | 300px (collapsible) | Deploy status, Lighthouse scores, template config, site agent status, recent deploys, 7-day analytics. Toggled via "Analytics" button in top bar |
+
+**Top bar:** Subdomain URL display, deploy status badge, branch selector, "Subdomain" settings button, "Analytics" toggle, "Publish" button.
+
+### 53.4 Auto-sync hooks
+
+The site agent listens to lab events and automatically updates the site content:
+
+| Event | Action | Sections Updated |
+|-------|--------|-----------------|
+| `paper.published` | Add paper card with PDF link, abstract, citation count | Papers, Hero (paper count stat) |
+| `experiment.completed` | Update experiment table row, refresh stats | Experiments, Key Results (if published) |
+| `figure.generated` | Add to gallery, update lightbox | Figures |
+| `dataset.created` | Add dataset card with download link | Datasets |
+| `lab.settings_changed` | Update hero, team, branding | Hero, Team, Footer |
+| `activity.event` | Append to activity timeline | Activity |
+
+Auto-sync is **enabled by default**. The lab owner can disable per-section or globally via the metadata drawer.
+
+### 53.5 Vibe-coding customization
+
+The lab owner can customize anything about the site via chat:
+
+**Style changes:** "Change the accent color to blue" → agent updates CSS custom properties and previews
+**Layout changes:** "Move the figures section above experiments" → agent reorders template sections
+**Content changes:** "Add a section about our methodology" → agent creates new section with content
+**Template override:** "I want a completely different layout for the papers page" → agent generates custom page, saves as template override in `site/overrides/papers.html`
+
+All changes are committed to the lab's `site/` directory in GitHub. The lab owner can review diffs, revert, or branch.
+
+### 53.6 Site agent spec
+
+**Agent:** `site-worker` (Worker tier, N3 group)
+**Reports to:** `writing-lead` (Lead tier)
+**Model:** Claude Sonnet (cost-efficient for HTML/CSS generation)
+
+**Capabilities:**
+- Generate and modify HTML/CSS/JS for the lab site template
+- Read lab data via MCP tools (experiments, papers, figures, datasets)
+- Commit changes to the `site/` subdirectory
+- Trigger Vercel deploys
+- Run Lighthouse audits and report scores
+- Handle SEO (meta tags, OpenGraph, structured data, sitemap.xml)
+
+**Event listeners:**
+- `paper.published` → auto-update Papers section
+- `experiment.completed` → auto-update Experiments table
+- `figure.generated` → auto-update Figures gallery
+- `lab.settings_changed` → auto-update branding/hero
+
+**Escalation:** If the site-worker cannot fulfill a request (e.g., complex interactive features), it escalates to the writing-lead, who may delegate to a more capable model.
+
+### 53.7 Migration: BigBounce → Lab Site
+
+When BigBounce migrates to Hubify Labs (per `MIGRATION_BOUNCE_COSMOLOGY_LAB.md`):
+
+1. The existing `bigbounce.hubify.app` content is preserved as a snapshot
+2. A new lab site is generated from the `hubify-lab-default` template, auto-populated with all BigBounce data (4 papers, 53 experiments, 328K anomalies, 22 figures, 15 datasets)
+3. Houston vibe-codes any custom sections (the current BigBounce site has custom pages like Explainer, Timeline, Visualize that go beyond the default template)
+4. DNS cutover: `bigbounce.hubify.app` points to the new lab site
+5. The old static site is archived at `bigbounce-archive.hubify.app` or in Backblaze B2
+
+### 53.8 Template marketplace (v1.1)
+
+Future: community-contributed templates. Labs can share their custom templates. One-click remix from the Lab Gallery. Deferred to v1.1.
+
+---
+
 ## Appendix A: Section Index — What This PRD Covers
 
 **Note:** this appendix was previously numbered §19 (an artifact from an early version of the PRD when it had only 18 sections + a session summary). It has been renamed to "Appendix A" to remove the numbering confusion — sections §0-§50 are the canonical PRD body, and this appendix provides a navigable index.
@@ -8618,8 +8731,10 @@ This section adds the following to the PRD as required reading:
 | **49** | **Authentication & authorization spec** — 5 auth providers + 4 token types · per-lab scope claim · Lab Sovereignty Rule TRIPLE enforcement (CLI + MCP + API) · 6 agent consent boundaries · audit logging · per-token-type rate limits | ✅ **NEW 2026-04-08** |
 | **50** | **Telemetry & observability spec** — 9 event categories · privacy boundaries (lab content NEVER leaves user's Convex deployment) · activity feed schema · per-experiment cost tracking schema · 8-row alert routing table · telemetry opt-out per-user not per-lab | ✅ **NEW 2026-04-08** |
 | **51** | **Marketing site spec** — `hubify-labs.com` public pages · 7 v1 pages (home, features, labs gallery, lab detail, docs, guides, blog) · The Window 2025-2027 essay urgency band · Lab gallery showcase pattern (community labs with view-site + remix CTAs) · 4-stack architecture explainer canonical text · separate from in-app research IDE | ✅ **NEW 2026-04-09** |
+| **52** | **Competitive Frame** — K-Dense + Feynman + AI research agent landscape · 14 feature advantages · gaps to close | ✅ **2026-04-09** |
+| **53** | **Lab Site Builder** — vibe-codable public research sites · `hubify-lab-default` template (10 sections) · auto-sync from research outputs · 3-pane UI (site agent chat + Vercel Sandbox preview + collapsible analytics) · `site-worker` agent spec · BigBounce migration plan · template marketplace v1.1 | ✅ **NEW 2026-04-12** |
 
-**Total: 46 sections, ~8,000 lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Lab → Task). Preresearch ideation has a home. The macOS app, REST/GraphQL API, MCP server, CLI, deployment plan, Mintlify docs port, `hubify://` URL scheme, auth/authz, and telemetry are all locked. Ready for development phase handoff.**
+**Total: 48 sections, ~8,700+ lines. Mockup ↔ PRD parity at 1:1. Every system specified. Every cron scheduled. Every failure handled. Every UI surface inventoried. Every byte of data has a known home (5 zones). Every agent has a coherent file structure (indydevdan-style). Every level of organization is named (Lab → Task). Preresearch ideation has a home. The macOS app, REST/GraphQL API, MCP server, CLI, deployment plan, Mintlify docs port, `hubify://` URL scheme, auth/authz, telemetry, and lab site builder are all locked. Ready for development phase handoff.**
 
 ---
 
