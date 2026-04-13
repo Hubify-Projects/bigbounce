@@ -551,6 +551,48 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 
 ---
 
+### Pass 61: Missing Hover/Active States on Interactive Elements ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (12 insertions, 4 deletions):**
+1. **.brand-mark** — added `:hover` (opacity .75) + `:active` (opacity .5) — logo link had no visual feedback
+2. **.sb-toolbar-btn** — added transition + `:hover` (text-bright) + `:active` (text) — toolbar search/files buttons were static
+3. **.settings-row** — added transition + `:hover` (border-strong) — settings rows had no hover affordance
+4. **.vibe-tab** — added `:hover` (text + border-bright) before `.active` rule — vibe coding tabs had no hover
+5. **.chat-send-btn** — added base `:hover` (surface-4 bg) for disabled state — only `.ready:hover` existed before
+6. **.sp-pill** — added cursor:pointer + transition + `:hover` (text + border-bright) — file pills were clickable but static
+- [x] Git committed `dd36f4b`
+
+### Pass 62: A11y aria-label Auto-Upgrade + Destructive Button Token Fix ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (6 insertions, 2 deletions):**
+1. **JS a11y: data-tip→aria-label** — auto-copies `data-tip` to `aria-label` on 13 icon-only buttons for screen reader accessibility
+2. **Destructive button token fix** — 2× inline `color:#fff` → `color:var(--bg)` on archive/retire confirmation buttons (theme-responsive)
+- [x] Git committed `c6163ed`
+
+### Pass 63: transition:all→Specific Properties on 18 Elements ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (18 insertions, 18 deletions):**
+Replaced `transition:all .1s` with explicit property lists on 18 interactive elements:
+1. **.sb-proj-btn** → `background,border-color`
+2. **.sb-sub-mode-tab** → `color,background,border-color`
+3. **.profile-popout-item** → `background,color`
+4. **.detail-back-btn** → `background,color,border-color`
+5. **.dir-action-btn** → `color,background,border-color`
+6. **.filter-btn** → `color,border-color`
+7. **.pipeline-step** → `background,border-color`
+8. **.pg-btn** → `color,background`
+9. **.pg-btn-lg** → `color,background,border-color`
+10. **.pg-num** → `color,background`
+11. **.code-block-copy** → `color,border-color`
+12. **.paper-row** → `background,border-color,box-shadow`
+13. **.survey-cell** → `background,border-color,box-shadow`
+14. **.fig-card** → `border-color,box-shadow`
+15. **.org-node** → `border-color,box-shadow`
+16. **.org-node-actions .btn-xs** → `background,color,border-color`
+17. **.view-mode-btn** → `color,background`
+18. **.js-tmpl-card** → `border-color,box-shadow`
+- [x] Git committed `34e9b68`
+
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
 **Target:** Explicit lighting-color:white on SVG icon containers for filter lighting default
 - [x] index.html: `.icon-btn svg` gets lighting-color:white
