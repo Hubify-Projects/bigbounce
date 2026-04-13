@@ -1,0 +1,14 @@
+{
+  "total_anomalies": 195829,
+  "match_radius_arcsec": 5.0,
+  "with_wise": 30747,
+  "with_gaia": 3975,
+  "with_sdss": 24210,
+  "known_qsos_milliquas": 74,
+  "likely_stars_gaia": 986,
+  "in_any_catalog": 43888,
+  "genuinely_new": 151941,
+  "wise_w1w2_gt_0.8_qso_color": 5431,
+  "wise_w1w2_available": 30747,
+  "timestamp": "2026-04-12 02:39:55 UTC"
+}

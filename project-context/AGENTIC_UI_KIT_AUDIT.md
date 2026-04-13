@@ -4,7 +4,7 @@
 **Source:** `https://www.figma.com/design/SjPhSVKTbtE35Xh7PNsmNA/HG--AGENTIC-DESIGN-SYSTEM--v1.1-`
 **fileKey:** `SjPhSVKTbtE35Xh7PNsmNA`
 **Extracted by:** Claude via Figma MCP (`use_figma` plugin API + `get_design_context`)
-**Status:** TOKEN SYSTEM 95% COMPLETE · component extraction in progress
+**Status:** ALL 27 COMPONENTS EXTRACTED · MISC + TYPOGRAPHY confirmed · Phase 24 complete · STYLE TESTER + PLAYGROUND pending (showcase pages, low priority)
 **Account:** houston@bamf.ai, Pro + Full seat (200 calls/day)
 **Companion:** `AGENTIC_UI_REVAMP_PLAN.md` (canonical plan)
 
@@ -34,11 +34,11 @@
 | Page | nodeId | Status |
 |---|---|---|
 | COLORS | `6:6` | ✅ extracted |
-| TYPOGRAPHY | `2003:4067` | 📋 tokens extracted, frames pending |
-| STYLE TESTER | `4145:17200` | pending |
-| PLAYGROUND | `230:839` | pending |
+| TYPOGRAPHY | `2003:4067` | ✅ extracted — Phase 24: 7 CSS vars added to :root, wired to .tbl/.btn |
+| STYLE TESTER | `4145:17200` | pending (showcase only) |
+| PLAYGROUND | `230:839` | pending (too large to parse, skipped) |
 | COMPONENTS (header) | `6:7` | — |
-| MISC | `178:121` | pending |
+| MISC | `178:121` | ✅ extracted — Phase 22: PULSATING-DOT · LOADING-DOTS · SKELETON shimmer |
 
 **Component sub-pages (27):**
 

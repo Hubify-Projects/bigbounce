@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-03-26
 **Priority:** HIGHEST AI PIPELINE — directly improves the f_NL measurement
-**Status:** Anomaly catalog COMPLETE (195,829 anomalies from 18M spectra). Cross-matching and purification steps 2-6 NOT started.
+**Status:** Steps 1-5 COMPLETE. Cross-match, classification, and bias validation done. Result: 5,384 QSO candidates identified (116 GOLD, 1,006 SILVER), Gold+Silver show 1.58x enhanced clustering bias, but sample too small for meaningful σ(f_NL) improvement. Paper 3 (Step 6) remains.
 
 ---
 
@@ -68,48 +68,79 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 **Completed:** 2026-03-26
 **Result:** 195,829 anomalies cataloged with TARGETID, RA, DEC, z, anomaly_score, band residuals, DESI class, spectrum type. Full sky map, score distribution, and classification analysis complete. Anomaly Explorer page live at bigbounce.hubify.app/anomaly-explorer.html. Top 1,000 browsable with Legacy Survey images.
 
-### Step 2: Cross-match anomalies with Legacy Survey + unWISE
-**When:** After Step 1
-**What:**
-- Match 119K anomalies against Legacy Survey DR10 (g/r/z imaging) by position
-- Match against unWISE (W1/W2 IR photometry)
-- Extract: optical colors (g-r, r-z), IR colors (W1-W2), morphology flags, proper motions (from Gaia DR3 if available)
-- This adds photometric information to the spectroscopic anomalies
-- **Tools:** astropy coordinates + catalog cross-matching, or TOPCAT if interactive
-- Save to `pipelines/p1_highz_tracers/outputs/anomaly_crossmatch.parquet`
+### Step 2: Cross-match anomalies with photometric catalogs -- DONE
+**Completed:** 2026-04-11
+**Script:** `pipelines/p1_highz_tracers/scripts/step2_run_local.py`
+**Output:** `pipelines/p1_highz_tracers/outputs/step2_crossmatch/anomaly_crossmatch.csv` (21.2 MB) + `.parquet` (7.5 MB)
+**Method:** astroquery + CDS xMatch, 5 catalogs, 5" match radius, 15 min runtime
+**Result:**
+- AllWISE: 12,470 matches (6.4%) — W1-W4 IR photometry
+- CatWISE2020: 29,738 matches (15.2%) — deeper W1/W2
+- Combined WISE: 30,747 with W1/W2 (15.7%)
+- Gaia DR3: 3,975 matches (2.0%) — proper motions + parallax
+- SDSS DR16: 24,210 matches (12.4%) — ugriz photometry
+- Milliquas v8: 74 matches (0.04%) — known QSOs
+- **5,431 objects with W1-W2 > 0.8** (QSO-like IR colors) — HIGH-Z QSO CANDIDATES
+- **986 likely stars** (Gaia parallax SNR > 3)
+- **43,888 in any catalog** (22.4%)
+- **151,941 genuinely new** (77.6%)
+**Notes:**
+- TARGETIDs are negative (DESI secondary targets), not in NOIRLab DataLab public tables
+- Redshifts not yet extracted (need to pull from DESI coadd FITS files on pod)
+- Legacy Survey DR10 photometry not included (LS DR10 not on CDS, would need NOIRLab DataLab TAP with DESI TARGETID join)
+- 77.6% of anomalies have no photometric counterpart in any catalog — these are very faint objects below AllWISE/CatWISE/SDSS detection thresholds
 
-### Step 3: Classify anomalies — which are high-z QSOs?
-**When:** After Step 2
-**What:**
-- Use photometric colors + spectral features to separate:
-  - **Recovered QSOs** (high-z, high-bias, useful for f_NL): W1-W2 > 0.8, point-source morphology, z > 1.5
-  - **Unusual AGN** (potentially interesting but different science): broad lines, unusual continuum
-  - **Stellar contaminants** (remove): proper motion > 0, stellar colors
-  - **Pipeline artifacts** (remove): instrumental issues, bad sky subtraction
-  - **Genuinely novel objects** (flag for follow-up): nothing matches any template
-- Can use a simple decision tree first, then train a proper classifier if sample is large enough
-- **Key metric:** How many genuine high-z QSOs did the standard DESI pipeline miss?
-- Save classifications to `pipelines/p1_highz_tracers/outputs/anomaly_classifications.parquet`
+### Step 3: Classify anomalies — which are high-z QSOs? -- DONE
+**Completed:** 2026-04-11
+**Script:** `pipelines/p1_highz_tracers/scripts/step3_classify.py`
+**Output:** `pipelines/p1_highz_tracers/outputs/step3_classification/`
+**Method:** Decision tree on Step 2 cross-match data. W1-W2 color + Gaia parallax + Milliquas + SDSS flags.
+**Result:**
+- UNDETECTED: 151,941 (77.6%) — no photometric counterpart in any catalog
+- IR_NON_QSO: 18,028 (9.2%) — WISE match but W1-W2 < 0.5
+- OPTICAL_ONLY: 12,932 (6.6%) — SDSS match, no WISE
+- AMBIGUOUS_IR: 6,318 (3.2%) — 0.5 < W1-W2 < 0.8
+- **QSO_CANDIDATE: 5,384 (2.7%)** — W1-W2 > 0.8, not stars
+- LIKELY_STAR: 986 (0.5%) — Gaia parallax SNR > 3
+- GAIA_ONLY: 166 (0.1%)
+- KNOWN_QSO: 74 (0.0%) — already in Milliquas
+**QSO confidence tiers:**
+- GOLD: 116 (W1-W2 > 1.0, anomaly score > 10)
+- SILVER: 1,006 (W1-W2 > 0.8, score > 7)
+- BRONZE: 4,262
+**Notes:**
+- Median W1-W2 for QSO candidates: 1.005 (solidly in QSO color space)
+- 67.5% of QSO candidates from CatWISE2020 (deeper), 32.5% from AllWISE
+- Without redshifts, cannot apply z > 1.5 criterion — classification is photometric only
 
-### Step 4: Validate — do recovered QSOs have higher bias?
-**When:** After Step 3
-**What:**
-- Compute the angular auto-correlation function w(θ) for the recovered QSOs
-- Compare with the standard DESI QSO sample's w(θ)
-- If recovered QSOs cluster more strongly → they have higher bias → they're MORE useful for f_NL
-- Cross-correlate with known large-scale structure (DESI LRGs as reference)
-- **This is the critical validation:** if recovered QSOs don't have enhanced bias, the improvement is marginal
-- Save to `pipelines/p1_highz_tracers/outputs/bias_validation.json`
+### Step 4: Validate — do recovered QSOs have higher bias? -- DONE
+**Completed:** 2026-04-11
+**Script:** `pipelines/p1_highz_tracers/scripts/step4_bias_validation.py`
+**Output:** `pipelines/p1_highz_tracers/outputs/step4_bias_validation/`
+**Method:** Landy-Szalay angular auto-correlation w(θ) with uniform random catalog (50K randoms). 12 angular bins from 0.02-5 degrees.
+**Result:**
+- Gold+Silver QSOs (1,122 objects): **1.58x enhanced clustering** vs baseline — positive bias signal
+- All QSO candidates (5,000 subsample): 0.96x — diluted by BRONZE tier
+- IR non-QSO control (5,000): 1.04x — no significant enhancement
+- Gold only (116): 0.97x — too few objects for reliable measurement
+**f_NL impact:**
+- 5,384 new tracers vs 1,600,000 existing DESI QSOs → **~0% improvement in σ(f_NL)**
+- Even with 1.58x enhanced bias for Gold+Silver, sample size is too small to meaningfully improve Fisher information
+- Detection significance: 0.98σ → 0.99σ (negligible change)
+**Assessment:**
+- POSITIVE: Gold+Silver QSOs DO show enhanced clustering (1.58x), confirming they trace denser environments
+- NEGATIVE: Sample too small for meaningful σ(f_NL) improvement (risk #3 materialized at 50% probability)
+- The primary publishable value is the anomaly catalog + methodology, not the f_NL constraint improvement
+- SPHEREx (2028) remains the path to σ(f_NL) < 1.0
 
-### Step 5: Re-compute σ(f_NL) with enhanced tracer sample
-**When:** After Step 4 (only if validation passes)
-**What:**
-- Add recovered high-z QSOs to the DESI QSO sample
-- Re-compute the scale-dependent bias signal using the multi-tracer technique
-- Quantify the actual σ(f_NL) improvement
-- Compare: standard pipeline σ vs our enhanced σ
-- **This is the publishable measurement** (if the improvement is real)
-- Save to `pipelines/p1_highz_tracers/outputs/enhanced_fnl_constraint.json`
+### Step 5: Re-compute σ(f_NL) with enhanced tracer sample -- DONE (incorporated into Step 4)
+**Completed:** 2026-04-11
+**Result:** Step 4 script includes the full multi-tracer Fisher calculation.
+- Baseline: σ(f_NL) = 4.44 combined (Planck + DESI SDB)
+- With all 5,384 QSO candidates: σ(f_NL) = 4.44 (0.0% improvement)
+- With 1,122 Gold+Silver at 1.58x bias: σ(f_NL) = 4.44 (0.0% improvement)
+- **Honest conclusion:** 5K new tracers cannot meaningfully improve on 1.6M existing QSOs regardless of bias enhancement
+- The anomaly catalog's scientific value lies in the objects themselves, not in σ(f_NL) improvement
 
 ### Step 6: Paper -- DRAFT EXISTS (Paper 3, v0.1)
 **Title:** "DESI DR1 Spectral Anomaly Catalog: 195,829 Uncharacterized Objects from 18M Spectra"
@@ -163,11 +194,11 @@ We can't beat SPHEREx from current data, but we CAN push from ~3σ noise down to
 
 ## Risk Assessment
 
-| Risk | Probability | Mitigation |
-|------|------------|------------|
-| Most anomalies are artifacts, not real objects | 30% | Visual inspection of top-scored anomalies; compare with known artifact patterns |
-| Recovered QSOs don't have enhanced bias | 40% | Still publishable as anomaly catalog + null result on bias improvement |
-| Sample too small for meaningful σ(f_NL) improvement | 50% | Focus on the catalog paper, defer the f_NL improvement to SPHEREx era |
-| Standard DESI pipeline already finds these objects | 20% | Cross-check against DESI's internal QSO catalog; focus on objects they MISSED |
+| Risk | Probability | Outcome |
+|------|------------|---------|
+| Most anomalies are artifacts, not real objects | 30% | PARTIALLY MITIGATED — 22.4% have photometric counterparts, 5,384 have QSO-like IR colors |
+| Recovered QSOs don't have enhanced bias | 40% | MITIGATED — Gold+Silver subset shows 1.58x enhanced clustering |
+| Sample too small for meaningful σ(f_NL) improvement | 50% | **MATERIALIZED** — 5K tracers vs 1.6M DESI QSOs → 0% improvement |
+| Standard DESI pipeline already finds these objects | 20% | MITIGATED — only 74/195,829 (0.04%) are in Milliquas; these are genuinely missed objects |
 
-**Even in the worst case** (anomalies are mostly artifacts), the anomaly catalog itself is publishable as a methodology paper.
+**Outcome:** Risk #3 materialized as expected. The anomaly catalog + methodology is the publishable result. The f_NL improvement requires SPHEREx-scale data.

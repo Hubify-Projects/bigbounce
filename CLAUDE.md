@@ -52,7 +52,9 @@ This repository contains a comprehensive spin-torsion cosmology research program
 
 **Houston Method v2:** See `project-context/houston-method-v2.md` — MANDATORY completion protocol for all experiments. Nothing is "complete" without: QC gate → scientific analysis → interpretation → cross-survey connection → site sync → queue expansion → backup. Every experiment must generate 5-15 new tasks.
 
-**Pipeline 1 next steps:** See `project-context/pipeline1_tracer_purification_plan.md` — Steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL), paper) are the novel work. NOT STARTED.
+**Pipeline 1 status:** See `project-context/pipeline1_tracer_purification_plan.md` — Steps 1-5 COMPLETE (2026-04-11). 5,384 QSO candidates classified (116 GOLD, 1,006 SILVER). Gold+Silver show 1.58x enhanced clustering bias but sample too small for σ(f_NL) improvement. Step 6 (Paper 3) remains.
+
+**CURRENT WORK: AgenticUI → v4 Polish Sprint.** See `project-context/agenticui_v4_polish_plan.md`. 4-pass plan: Token foundation → Component swap → Spacing/density → Typography polish. Working on `/Users/houstongolden/Desktop/CODE_2025/hubify-labs-mockups/v4/` files. Reference: `hubify-labs-mockups/agenticui/` (26 components). Figma MCP for screenshot cross-checks only. Houston must approve DONE. Cron-looped until complete.
 
 **Wiki:** See `wiki/SCHEMA.md` — Karpathy-style structured knowledge base with entities, concepts, sources, and comparisons. Updated on every research result.
 

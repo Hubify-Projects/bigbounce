@@ -26,8 +26,8 @@ The BigBounce project uses a minimal, academic-focused tech stack optimized for 
 - **Features**: Static file serving, minimal overhead
 
 ### Deployment Platform
-- **Provider**: Netlify
-- **Configuration**: `netlify.toml`
+- **Provider**: Vercel
+- **Configuration**: `vercel.json`
 - **Features**: Global CDN, automatic HTTPS, security headers
 - **Build**: No build process required
 
@@ -62,7 +62,7 @@ The BigBounce project uses a minimal, academic-focused tech stack optimized for 
 - **Images**: PNG format, direct file serving
 - **Data**: Excel spreadsheets, direct download
 - **Optimization**: Manual optimization, no automated pipeline
-- **CDN**: Netlify automatic asset optimization
+- **CDN**: Vercel automatic asset optimization
 
 ### Responsive Design
 - **Approach**: Mobile-first design
@@ -163,7 +163,7 @@ git add .
 git commit -m "Update content"
 git push origin main
 
-# Automatic Netlify deployment
+# Automatic Vercel deployment
 # No build process required
 ```
 
@@ -177,7 +177,7 @@ git push origin main
 
 ### Caching Strategy
 ```toml
-# netlify.toml caching configuration
+# vercel.json caching configuration
 [[headers]]
   for = "/public/*"
   [headers.values]
@@ -216,11 +216,11 @@ git push origin main
 - **Password Protection**: Cosmetic only (visible in source)
 - **No Sensitive Data**: All content is public
 - **XSS Protection**: Content sanitization
-- **CSP Headers**: Netlify automatic security headers
+- **CSP Headers**: Vercel automatic security headers
 
 ### Deployment Security
 ```toml
-# Security headers in netlify.toml
+# Security headers in vercel.json
 [[headers]]
   for = "/*"
   [headers.values]
@@ -294,7 +294,7 @@ git push origin main
 - **Documentation**: Clear content organization
 
 ### Deployment
-- **Automated Deployment**: Git-based Netlify deployment
+- **Automated Deployment**: Git-based Vercel deployment
 - **Environment Parity**: Development matches production
 - **Rollback Strategy**: Git-based version control
 - **Monitoring**: Regular performance and uptime checks

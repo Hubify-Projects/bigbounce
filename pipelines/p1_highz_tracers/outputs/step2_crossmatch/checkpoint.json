@@ -1,0 +1,17 @@
+{
+  "completed_catalogs": [
+    "AllWISE",
+    "CatWISE2020",
+    "Gaia_DR3",
+    "SDSS_DR16",
+    "Milliquas"
+  ],
+  "match_counts": {
+    "AllWISE": 12470,
+    "CatWISE2020": 29738,
+    "Gaia_DR3": 3975,
+    "SDSS_DR16": 24205,
+    "Milliquas": 74
+  },
+  "elapsed_seconds": 895
+}

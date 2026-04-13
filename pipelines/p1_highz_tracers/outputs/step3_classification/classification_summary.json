@@ -1,0 +1,25 @@
+{
+  "total_anomalies": 195829,
+  "classifications": {
+    "UNDETECTED": 151941,
+    "IR_NON_QSO": 18028,
+    "OPTICAL_ONLY": 12932,
+    "AMBIGUOUS_IR": 6318,
+    "QSO_CANDIDATE": 5384,
+    "LIKELY_STAR": 986,
+    "GAIA_ONLY": 166,
+    "KNOWN_QSO": 74
+  },
+  "qso_candidates_total": 5384,
+  "qso_confidence_tiers": {
+    "BRONZE": 4262,
+    "SILVER": 1006,
+    "GOLD": 116
+  },
+  "qso_w1w2_median": 1.005,
+  "qso_score_median": 5.525,
+  "likely_stars": 986,
+  "known_qsos": 74,
+  "genuinely_new_no_match": 151941,
+  "for_step4_bias_validation": 5384
+}

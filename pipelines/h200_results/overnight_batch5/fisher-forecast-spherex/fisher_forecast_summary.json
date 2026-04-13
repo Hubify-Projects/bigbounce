@@ -1,0 +1,432 @@
+{
+  "experiment": "fisher_forecast_spherex",
+  "cosmology": {
+    "H0": 67.36,
+    "Omega_m": 0.3153,
+    "Omega_b": 0.0493,
+    "sigma8": 0.8111,
+    "n_s": 0.9649
+  },
+  "k_range": [
+    0.0001,
+    0.2
+  ],
+  "n_k_bins": 50,
+  "z_range": [
+    0.2,
+    3.0
+  ],
+  "z_centers": [
+    0.30000000000000004,
+    0.5,
+    0.7000000000000001,
+    0.9,
+    1.1,
+    1.3,
+    1.5,
+    1.7000000000000002,
+    1.9,
+    2.1,
+    2.3000000000000003,
+    2.5000000000000004,
+    2.7,
+    2.9000000000000004
+  ],
+  "n_z_bins": 14,
+  "f_NL_fiducial": 0.0,
+  "f_NL_matter_bounce": -4.375,
+  "tracer_configs": {
+    "SPHEREx_only": {
+      "n_tracers": 3,
+      "tracers": [
+        "SPHEREx_LRG",
+        "SPHEREx_ELG",
+        "SPHEREx_QSO"
+      ],
+      "f_sky": 0.75
+    },
+    "SPHEREx_plus_anomaly": {
+      "n_tracers": 6,
+      "tracers": [
+        "SPHEREx_LRG",
+        "SPHEREx_ELG",
+        "SPHEREx_QSO",
+        "Anomaly_HighBias",
+        "Anomaly_UltraHighZ",
+        "Anomaly_XraySelected"
+      ],
+      "f_sky": 0.75
+    },
+    "DESI_only": {
+      "n_tracers": 3,
+      "tracers": [
+        "DESI_LRG",
+        "DESI_ELG",
+        "DESI_QSO"
+      ],
+      "f_sky": 0.34
+    },
+    "DESI_plus_anomaly": {
+      "n_tracers": 6,
+      "tracers": [
+        "DESI_LRG",
+        "DESI_ELG",
+        "DESI_QSO",
+        "Anomaly_HighBias",
+        "Anomaly_UltraHighZ",
+        "Anomaly_XraySelected"
+      ],
+      "f_sky": 0.34
+    },
+    "SPHEREx_DESI_combined": {
+      "n_tracers": 6,
+      "tracers": [
+        "SPHEREx_LRG",
+        "SPHEREx_ELG",
+        "SPHEREx_QSO",
+        "DESI_LRG",
+        "DESI_ELG",
+        "DESI_QSO"
+      ],
+      "f_sky": 0.75
+    },
+    "SPHEREx_DESI_plus_anomaly": {
+      "n_tracers": 9,
+      "tracers": [
+        "SPHEREx_LRG",
+        "SPHEREx_ELG",
+        "SPHEREx_QSO",
+        "DESI_LRG",
+        "DESI_ELG",
+        "DESI_QSO",
+        "Anomaly_HighBias",
+        "Anomaly_UltraHighZ",
+        "Anomaly_XraySelected"
+      ],
+      "f_sky": 0.75
+    }
+  },
+  "results": {
+    "single_SPHEREx_only": {
+      "fisher_total": 9235386894362.977,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 13295528.47,
+      "fisher_per_z": [
+        67519460359.19684,
+        465616507704.541,
+        1072453444368.1777,
+        1451167066391.7292,
+        1221976233305.7527,
+        872098983015.5829,
+        941236768588.1738,
+        930963864956.8394,
+        763388431512.2427,
+        537759357956.4615,
+        423734623995.90497,
+        280731930882.8003,
+        148669064656.83398,
+        58071156668.74027
+      ]
+    },
+    "single_SPHEREx_plus_anomaly": {
+      "fisher_total": 11866449478720.072,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 15070874.55,
+      "fisher_per_z": [
+        72263679663.99065,
+        529692590706.2236,
+        1277196279675.1445,
+        1736144329609.0957,
+        1440813750758.9375,
+        971982628471.8387,
+        1047615762348.0931,
+        1154219407895.1716,
+        1108703316323.1724,
+        932952041675.0973,
+        766233090418.891,
+        499994262075.429,
+        244771253607.51285,
+        83867085491.49321
+      ]
+    },
+    "single_DESI_only": {
+      "fisher_total": 4285313943042.9663,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 9056687.43,
+      "fisher_per_z": [
+        46052596356.31102,
+        266286144440.67014,
+        548243926833.07104,
+        770158810549.5504,
+        685280146252.4924,
+        368382811048.7153,
+        491414967694.14575,
+        335572713319.0745,
+        324377930143.7176,
+        267038621323.59003,
+        182505275081.6267,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "single_DESI_plus_anomaly": {
+      "fisher_total": 5478062314618.193,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 10239801.58,
+      "fisher_per_z": [
+        48203309107.81758,
+        295333968734.76636,
+        641060678838.8958,
+        899348503208.0887,
+        784486487497.936,
+        413663396988.8844,
+        539640111531.97577,
+        436781892784.4517,
+        480920677924.67255,
+        446192637942.7051,
+        337771246526.7137,
+        99398923473.99161,
+        43566325657.64111,
+        11694154399.647987
+      ]
+    },
+    "single_SPHEREx_DESI_combined": {
+      "fisher_total": 18688285298134.207,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 18913102.89,
+      "fisher_per_z": [
+        169106069968.70642,
+        1053012414558.9601,
+        2281815047676.4224,
+        3150046795545.1523,
+        2733623614745.0723,
+        1684708125034.807,
+        2025240373795.8489,
+        1671197791395.9749,
+        1478927983299.8547,
+        1126815140287.9104,
+        826319789617.14,
+        280731930882.8003,
+        148669064656.83398,
+        58071156668.74027
+      ]
+    },
+    "single_SPHEREx_DESI_plus_anomaly": {
+      "fisher_total": 21319347882491.355,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 20200634.72,
+      "fisher_per_z": [
+        173850289273.5004,
+        1117088497560.6418,
+        2486557882983.389,
+        3435024058762.5195,
+        2952461132198.256,
+        1784591770491.062,
+        2131619367555.769,
+        1894453334334.3064,
+        1824242868110.7842,
+        1522007824006.5464,
+        1168818256040.126,
+        499994262075.429,
+        244771253607.51285,
+        83867085491.49321
+      ]
+    },
+    "multi_SPHEREx_only": {
+      "fisher_total": 10707708301228.334,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 14316152.74,
+      "fisher_per_z": [
+        91880045996.6087,
+        753287792129.2683,
+        1919937249946.5242,
+        2226366471726.052,
+        1240939947369.3384,
+        751509999682.0105,
+        786525814845.7946,
+        789984716225.2778,
+        698310129146.7306,
+        537759357956.4614,
+        423734623995.90497,
+        280731930882.80023,
+        148669064656.83398,
+        58071156668.74029
+      ]
+    },
+    "multi_SPHEREx_plus_anomaly": {
+      "fisher_total": 13827272939628.709,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 16268455.55,
+      "fisher_per_z": [
+        108397378114.91669,
+        839605619519.8375,
+        2120659287687.6685,
+        2531940855316.6914,
+        1542759703839.33,
+        949516100363.4202,
+        970587129118.6492,
+        1049757627198.605,
+        1044549490265.7742,
+        927057598348.4307,
+        782404787054.694,
+        544714897757.82513,
+        297863531185.693,
+        117458933857.14975
+      ]
+    },
+    "multi_DESI_only": {
+      "fisher_total": 4366129675245.2354,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 9141687.53,
+      "fisher_per_z": [
+        46052596356.31102,
+        266286144440.67014,
+        590120553459.5635,
+        854192484594.2269,
+        699441465049.4932,
+        353957215569.5613,
+        446584675907.40137,
+        335572713319.0744,
+        324377930143.71747,
+        267038621323.59006,
+        182505275081.6267,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "multi_DESI_plus_anomaly": {
+      "fisher_total": 5526874003068.494,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 10285320.74,
+      "fisher_per_z": [
+        51435511431.614784,
+        289201168193.2765,
+        638118606271.3173,
+        927389647648.1929,
+        800297929405.9624,
+        440786546764.4574,
+        526362477552.7929,
+        439939529588.86273,
+        472275377372.5834,
+        440107799966.4765,
+        346300005341.66626,
+        99398923473.9916,
+        43566325657.64111,
+        11694154399.647991
+      ]
+    },
+    "multi_SPHEREx_DESI_combined": {
+      "fisher_total": 18092623076587.543,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 18609248.07,
+      "fisher_per_z": [
+        193132081711.1478,
+        1196734967945.3674,
+        2944536520630.297,
+        3967641640362.1987,
+        2540294881994.4517,
+        1194996653611.5278,
+        1348181084873.325,
+        1282565272529.2053,
+        1188483531745.7236,
+        985476817928.3195,
+        763107471047.5995,
+        280731930882.80023,
+        148669064656.83398,
+        58071156668.74029
+      ]
+    },
+    "multi_SPHEREx_DESI_plus_anomaly": {
+      "fisher_total": 20799467985453.18,
+      "sigma_fnl": 0.0,
+      "detection_sigma_matter_bounce": 19952814.76,
+      "fisher_per_z": [
+        206474959358.5187,
+        1255625637908.2292,
+        3079519500240.169,
+        4185718772195.0254,
+        2799424868604.938,
+        1385003289152.5847,
+        1519578703478.939,
+        1507823308116.2424,
+        1486404116594.7793,
+        1325715623648.935,
+        1088141843354.1531,
+        544714897757.82513,
+        297863531185.693,
+        117458933857.14975
+      ]
+    }
+  },
+  "anomaly_improvements": {
+    "single_SPHEREx_only_to_single_SPHEREx_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    },
+    "single_DESI_only_to_single_DESI_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    },
+    "single_SPHEREx_DESI_combined_to_single_SPHEREx_DESI_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    },
+    "multi_SPHEREx_only_to_multi_SPHEREx_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    },
+    "multi_DESI_only_to_multi_DESI_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    },
+    "multi_SPHEREx_DESI_combined_to_multi_SPHEREx_DESI_plus_anomaly": {
+      "sigma_base": 0.0,
+      "sigma_enhanced": 0.0,
+      "improvement_pct": NaN
+    }
+  },
+  "multi_tracer_improvements": {
+    "SPHEREx_only": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    },
+    "SPHEREx_plus_anomaly": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    },
+    "DESI_only": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    },
+    "DESI_plus_anomaly": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    },
+    "SPHEREx_DESI_combined": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    },
+    "SPHEREx_DESI_plus_anomaly": {
+      "single_sigma": 0.0,
+      "multi_sigma": 0.0,
+      "improvement_pct": NaN
+    }
+  },
+  "best_config": "single_SPHEREx_only",
+  "best_sigma_fnl": 0.0,
+  "matter_bounce_detection_sigma": Infinity,
+  "device": "cuda",
+  "elapsed_seconds": 2.0
+}
