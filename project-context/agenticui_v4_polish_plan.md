@@ -539,6 +539,16 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] `:wiki search` — query across all wiki entries
 - [x] Help text updated with `:agent` and `:wiki`
 
+### CRUD wiring across all views ✅ COMPLETE
+- [x] Spawn button wired to `openDetail('agent-new')` (was chatAbout toast)
+- [x] Experiment dispatch: `dispatchExperiment()` with proper success toasts + routing info (was chatAbout)
+- [x] `task-new` detail renderer: title, description, assign-to, priority, linked entity, multi-select reviewers
+- [x] `pod-new` detail renderer: GPU type/count, volume, container, ports, SSH, budget guard, cost estimate
+- [x] `share-grant-new` detail renderer: direction-aware (outbound grant / inbound request), Lab Sovereignty Rule enforced, scope toggles
+- [x] "+ New pod" button on Compute view header
+- [x] "+ add" / "+ request" pills on Settings Lab Sharing (outbound/inbound columns)
+- [x] Tasks "New" button wired to `openDetail('task-new')` (was chatAbout toast)
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
