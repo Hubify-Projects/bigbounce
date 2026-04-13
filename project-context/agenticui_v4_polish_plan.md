@@ -1804,6 +1804,18 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] index.html + marketing already had both — no changes
 - [x] Git committed `0d2a801` — 3 files
 
+### Pass 51: Grid-align CRUD + Lab Site CSS ✅ COMPLETE (bonus)
+**Target:** Snap off-grid values in recently added code (Lab wizard, CRUD detail renderers, Lab Site redesign)
+- [x] wiz-field label margin-bottom: 6→8px
+- [x] wiz-field input padding: 10px 12px → 12px
+- [x] wiz-agent-card padding: 10px 12px → 12px
+- [x] wiz-agent-check border-radius: 3px → var(--r-sm)
+- [x] wiz-summary-row font-size: 13→12px
+- [x] vibe-frame-chart legend gap: 14→12px, margin-top: 10→12px
+- [x] org-chart padding: 6px→8px
+- [x] overscroll-behavior:contain on 3 new scrollable containers (site-file-tree, site-code-editor, site-settings)
+- [x] Git committed `305cff5` — 10 edits
+
 ### Pass 49: touch-action:manipulation on All 5 Files ✅ COMPLETE (bonus)
 **Target:** All 5 files — remove 300ms tap delay on iOS, disable double-tap-to-zoom
 - [x] All 5 files: `touch-action:manipulation` on html,body (or body)
