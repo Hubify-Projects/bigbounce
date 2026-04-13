@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 188: outline-color Explicit Focus Color ✅ COMPLETE (bonus)
+**Target:** Explicit outline-color on focus-visible elements for consistent focus indication
+- [x] index.html: focus-visible block gets outline-color:var(--accent)
+- [x] marketing-site-mockup.html: CTA/nav focus-visible block gets outline-color:var(--accent)
+- [x] Git committed `8cb38b9` — 2 files
+
+### Pass 187: empty-cells Show ✅ COMPLETE (bonus)
+**Target:** Explicit empty-cells:show on table elements for consistent empty cell rendering
+- [x] index.html: .tbl gets empty-cells:show
+- [x] marketing-site-mockup.html: .compare-table gets empty-cells:show
+- [x] Git committed `8cb38b9` — 2 files
+
+### Pass 186: caption-side Top ✅ COMPLETE (bonus)
+**Target:** Explicit caption-side:top on table elements for consistent caption positioning
+- [x] index.html: .tbl gets caption-side:top
+- [x] marketing-site-mockup.html: .compare-table gets caption-side:top
+- [x] Git committed `8cb38b9` — 2 files
+
 ### Pass 185: line-break Explicit Auto ✅ COMPLETE (bonus)
 **Target:** Explicit line-break:auto on body for proper mixed-script line breaking
 - [x] index.html: body gets line-break:auto
