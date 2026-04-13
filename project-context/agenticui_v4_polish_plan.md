@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 239: dominant-baseline Central ✅ COMPLETE (bonus)
+**Target:** Explicit dominant-baseline:central on SVG icon containers for vertical centering
+- [x] index.html: `.icon-btn` gets dominant-baseline:central
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets dominant-baseline:central
+- [x] Git committed `097ede3` — 2 files
+
+### Pass 238: text-orientation Mixed ✅ COMPLETE (bonus)
+**Target:** Explicit text-orientation:mixed on body for vertical writing mode glyph orientation
+- [x] index.html: body gets text-orientation:mixed
+- [x] marketing-site-mockup.html: body gets text-orientation:mixed
+- [x] Git committed `097ede3` — 2 files
+
+### Pass 237: text-combine-upright None ✅ COMPLETE (bonus)
+**Target:** Explicit text-combine-upright:none on body for vertical text digit combining default
+- [x] index.html: body gets text-combine-upright:none
+- [x] marketing-site-mockup.html: body gets text-combine-upright:none
+- [x] Git committed `097ede3` — 2 files
+
 ### Pass 236: math-depth Zero ✅ COMPLETE (bonus)
 **Target:** Explicit math-depth:0 on body for MathML nesting depth default
 - [x] index.html: body gets math-depth:0
