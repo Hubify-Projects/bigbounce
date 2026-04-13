@@ -462,6 +462,20 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Help text and tab index updated
 - [x] Git committed `7b89a40`
 
+### Multi-lab experience — planned lab views + create lab flow ✅ COMPLETE
+- [x] Enriched LAB_DATA with missions, subdomains, agents, datasets, initial projects (all 5 specs)
+- [x] Added Dark Matter Lab to sidebar dropdown (was missing)
+- [x] switchLab() shows rich planned-lab placeholder: name, status, mission, 4-stat grid, projects list, CTAs
+- [x] Switching back to bigbounce restores Captain view
+- [x] "+ New lab" card now opens templates sidepeek (was circular)
+- [x] Sidebar dropdown "New lab" also opens templates sidepeek
+- [x] Git committed `473a050`
+
+### PRD §8 CLI — :site command group expansion ✅ COMPLETE
+- [x] Expanded `hubify-labs site deploy` to 8 subcommands matching TUI mockup
+- [x] Updated Key Interactions table with §53 references
+- [x] Git committed `8d05cf6`
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
