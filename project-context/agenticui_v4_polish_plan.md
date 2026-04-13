@@ -1960,3 +1960,13 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 4. **Heatmap simplified** — replaced chaotic 4-quadrant grid per cell with single solid square per day. Level class based on total activity. Legend updated. Tooltip still shows category breakdown on hover.
 5. **Chat auto-scroll** — added `scrollChatToBottom()` + MutationObserver on `.chat-body`. Auto-scrolls on load and new messages. Respects user scroll-up (pauses auto-scroll when user is >80px from bottom). Also scrolls when switching from terminal back to chat mode.
 6. **Heatmap CSS cleanup** — removed `.heatmap-cell .q` sub-element styles, replaced with direct `.heatmap-cell.l1`..`.l5` classes.
+
+### Pass 56: Deep Grid Sweep + Color Tokenization ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (188 insertions, 179 deletions):**
+1. **Transition grid**: `.12s`→`.1s` (100 instances), `.08s`→`.1s` (3 instances) — entire file now on 50ms grid
+2. **Gap grid**: `gap:5px`→`4px`, `gap:3px`→`4px` — all gaps on 4px grid
+3. **Padding grid**: `1px 5px`→`2px 4px`, `0 5px`→`0 4px`, `5px 8px`→`4px 8px`, `2px 5px`→`2px 4px`, `4px 5px`→`4px` — 29 fixes
+4. **Margin grid**: `9px`→`8px`, `11px`→`12px`, `5px`→`4px`, `7px`→`8px`
+5. **New `:root` tokens**: `--site-bg/text/surface/border` (6 site-frame colors), `--hm-l0..l3` (heatmap), `--macos-red/yellow/green`, `--qc-pass/warn/fail-bg` (badge QC)
+6. **Tokenized**: 14 `.bb-*` rules, `.site-frame`, heatmap cells, traffic dots, QC badges, destructive button text, loading spinner
