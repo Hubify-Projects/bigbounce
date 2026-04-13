@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 206: overflow-y Clip ✅ COMPLETE (bonus)
+**Target:** Explicit overflow-y:clip alongside overflow:clip on clipped containers
+- [x] index.html: .app, .fig-card, .fig-thumb get overflow-y:clip
+- [x] marketing-site-mockup.html: N/A
+- [x] Git committed `3979c86` — 2 files
+
+### Pass 205: flex-flow Shorthand ✅ COMPLETE (bonus)
+**Target:** flex-flow:column nowrap shorthand on column flex containers
+- [x] index.html: .sidebar, .chat, .workspace get flex-flow:column nowrap
+- [x] marketing-site-mockup.html: body gets flex-flow:column nowrap
+- [x] Git committed `3979c86` — 2 files
+
+### Pass 204: grid-auto-columns Auto ✅ COMPLETE (bonus)
+**Target:** Explicit grid-auto-columns:auto on grid containers
+- [x] index.html: .briefing-grid, .stat-grid, .pipeline-steps get grid-auto-columns:auto
+- [x] marketing-site-mockup.html: .get-grid gets grid-auto-columns:auto
+- [x] Git committed `3979c86` — 2 files
+
 ### Pass 203: grid-auto-rows Auto ✅ COMPLETE (bonus)
 **Target:** Explicit grid-auto-rows:auto on grid containers for consistent row sizing
 - [x] index.html: .stat-grid, .briefing-grid, .pipeline-steps get grid-auto-rows:auto
