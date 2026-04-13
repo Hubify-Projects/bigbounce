@@ -1780,6 +1780,16 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Prevents layout recalculation from propagating across panel boundaries
 - [x] Git committed `50f84e6` — 1 file
 
+### Pass 54: Grid-snap transitions + gap:5px + color tokenization ✅ COMPLETE (bonus)
+**Target:** index.html — snap off-grid timing, gap:5px→4px, tokenize hardcoded colors
+- [x] 7 transition durations: .18s→.2s, .22s→.2s (notif-drawer, now-strip, cmdp-overlay, fadeIn, sidebar mobile, toast, graph-node-card)
+- [x] 9 gap:5px→4px: sb-stat, ps-picker, xlab-comm, hm2-step, view-mode-btn, heatmap-legend, compute-toggle, file-preview-crumb, file-preview-btn
+- [x] cfeed-header/body: hardcoded rgba→badge-red/yellow-bg + crit/warn/accent-bg tokens
+- [x] sp-group-head: #7a7872→var(--text-dim)
+- [x] hm-tip-dot.exp: #131a15→var(--accent-bg)
+- [x] cfeed-body border-radius: 4px→var(--r-sm)
+- [x] Git committed `4ba6714` — 27 edits
+
 ### Pass 53: Lab Site UX refinements — redundant chat removal + polish ✅ COMPLETE (bonus)
 **Target:** index.html — Houston feedback: remove redundant site-chat-col, refine vibe-coding layout
 - [x] Removed site-chat-col HTML (already done in prev session)
