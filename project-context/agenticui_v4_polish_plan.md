@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 167: scroll-timeline-axis Explicit Block Axis ✅ COMPLETE (bonus)
+**Target:** Explicit scroll-timeline-axis:block alongside scroll-timeline shorthand
+- [x] index.html: .chat-body gets scroll-timeline-axis:block alongside scroll-timeline:--chat-scroll block
+- [x] marketing-site-mockup.html: N/A (no scroll-timeline elements)
+- [x] Git committed `1c1d605` — 1 file
+
+### Pass 166: font-stretch Width Axis Control ✅ COMPLETE (bonus)
+**Target:** font-stretch for variable font width axis as progressive enhancement
+- [x] index.html: body gets font-stretch:normal; .status-bar gets font-stretch:semi-condensed (tighter mono)
+- [x] marketing-site-mockup.html: root *{} gets font-stretch:normal
+- [x] Git committed `1c1d605` — 2 files
+
+### Pass 165: padding-inline Logical Inline Padding ✅ COMPLETE (bonus)
+**Target:** Logical padding-inline alongside physical padding-left/right
+- [x] index.html: .chat-header gets padding-inline-start:12px;padding-inline-end:4px; #detailBody gets padding-inline:28px
+- [x] marketing-site-mockup.html: .topnav-inner gets padding-inline:var(--gutter)
+- [x] Git committed `1c1d605` — 2 files
+
 ### Pass 164: object-view-box Intrinsic Image Viewport ✅ COMPLETE (bonus)
 **Target:** object-view-box:inset(0) as progressive enhancement on object-fit:cover images
 - [x] index.html: .fig-thumb img and .avatar-photo img get object-view-box:inset(0)
