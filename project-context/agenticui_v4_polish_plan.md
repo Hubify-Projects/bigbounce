@@ -2087,3 +2087,14 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 11. **`.icon-btn:active`** — surface-3 + translateY(1px)
 12. **Tabs/pills**: `.sp-pill`, `.filter-btn`, `.vibe-tab` — deeper color/background on press
 **Total :active rules:** 9 → 47 (38 new)
+
+### Pass 66: :active pressed states for marketing site (17 elements) ✅ COMPLETE
+**File:** `v4/marketing-site-mockup.html`
+**Changes (17 insertions):**
+1. **Buttons**: `.btn-sage:active` (translateY+no shadow), `.btn-ghost:active`, `.btn-quiet:active` (translateY+deeper bg)
+2. **Grid cards**: `.dl-cell:active` (translateY+deeper), `.showcase-card:active`, `.surface-card:active` (surface-3)
+3. **Elevated cards**: `.paper-card:active`, `.lab-card:active`, `.doc-card:active`, `.guide-card:active`, `.blog-card:active` (translateY(1px))
+4. **Flat items**: `.blog-featured:active` (surface-3), `.paper-row:active` (surface-3), `.hf-card:active` (surface-2)
+5. **Tabs/pills**: `.demo-tab:active` (surface-2+bright), `.chip:active` (bright text+surface-3)
+6. **`.btt:active`** — scale(.9) for back-to-top circular button
+**Total marketing :active rules:** 1 → 18 (17 new)
