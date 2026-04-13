@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 134: fit-content Intrinsic Sizing ✅ COMPLETE (bonus)
+**Target:** Use fit-content for elements with arbitrary fixed widths that should shrink to content
+- [x] index.html: .hm-tooltip gets width:fit-content (with existing min-width:200px)
+- [x] index.html: .toast gets width:fit-content;min-width:280px (replacing width:320px)
+- [x] marketing-site-mockup.html: already has fit-content on 2 elements (no change needed)
+- [x] Git committed `55a4423` — 1 file
+
+### Pass 133: @media (inverted-colors:inverted) Image Protection ✅ COMPLETE (bonus)
+**Target:** Prevent double-inversion of images/videos when OS inverted-colors is active
+- [x] index.html: @media (inverted-colors:inverted) re-inverts img,svg,.fig-thumb,.sp-img,iframe,.demo-frame
+- [x] marketing-site-mockup.html: same pattern for img,svg,iframe,.mock-frame,.demo-frame
+- [x] Git committed `55a4423` — 2 files
+
+### Pass 132: place-items:center Grid/Flex Shorthand ✅ COMPLETE (bonus)
+**Target:** Progressive enhancement shorthand alongside existing align-items+justify-content
+- [x] index.html: .brand-mark, .sb-collapse-btn, .sp-img get place-items:center
+- [x] Kept existing align-items/justify-content as fallback
+- [x] Git committed `55a4423` — 1 file
+
 ### Pass 131: counter-set Dynamic Line Numbers ✅ COMPLETE (bonus)
 **Target:** CSS counter-set for dynamic starting line numbers in code preview
 - [x] index.html: .file-preview-code gets counter-set:ln var(--start-line,0) alongside counter-reset
