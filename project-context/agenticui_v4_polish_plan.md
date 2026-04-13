@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 146: Logical Border-Radius ✅ COMPLETE (bonus)
+**Target:** Flow-relative border-radius properties alongside physical border-radius
+- [x] index.html: .notif-drawer gets border-start-end-radius/border-end-end-radius:var(--r-md), start-start/end-start:0
+- [x] index.html: .chat-show-tab gets same logical border-radius pattern
+- [x] marketing-site-mockup.html: N/A (no directional radius elements)
+- [x] Git committed `209d48c` — 1 file
+
+### Pass 145: max-inline-size Logical Width Constraints ✅ COMPLETE (bonus)
+**Target:** Flow-relative width constraints as progressive enhancement
+- [x] index.html: .cmdp gets max-inline-size:90vw; .notif-drawer gets inline-size:380px
+- [x] index.html: .chat-msg-body gets max-inline-size:75ch (optimal reading width)
+- [x] marketing-site-mockup.html: h1.hero-h1 gets max-inline-size:880px
+- [x] Git committed `209d48c` — 2 files
+
+### Pass 144: block-size Logical Height ✅ COMPLETE (bonus)
+**Target:** Flow-relative block-size alongside physical height on fixed-height chrome
+- [x] index.html: .chat-header (34px), .preview-tabs (32px), .status-bar (24px) get block-size
+- [x] marketing-site-mockup.html: .topnav-inner gets block-size:60px
+- [x] Git committed `209d48c` — 2 files
+
 ### Pass 143: list-style-type Custom Markers ✅ COMPLETE (bonus)
 **Target:** Modern CSS list-style-type string values for refined list markers
 - [x] index.html: .sp-md ul gets list-style-type:"  \2022  " (spaced bullet)
