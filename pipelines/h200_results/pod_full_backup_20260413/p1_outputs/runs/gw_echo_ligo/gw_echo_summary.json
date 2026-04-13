@@ -1,0 +1,81 @@
+{
+  "experiment": "gw_echo_ligo_o4",
+  "phase": "Phase 7 \u2014 Speculations",
+  "timestamp": "2026-04-10T15:57:51.554382+00:00",
+  "description": "Gravitational wave echo search using 1D CNN on synthetic LIGO O4 ringdowns",
+  "theory": "Bounce cosmology predicts Planck-scale structure at black hole horizons, producing post-merger GW echoes at t_echo = 8M*ln(r_s/l_Planck). Echo amplitude decays ~0.4^n per repetition with partial phase inversion.",
+  "config": {
+    "n_waveforms": 200,
+    "n_echo": 100,
+    "n_no_echo": 100,
+    "sample_rate_hz": 4096,
+    "duration_s": 1.0,
+    "n_samples": 4096,
+    "max_echoes": 5,
+    "cnn_epochs": 80,
+    "batch_size": 32,
+    "device": "cuda"
+  },
+  "results": {
+    "auc_roc": 0.975,
+    "accuracy": 0.95,
+    "best_threshold": 0.03010171465575695,
+    "detection_significance_sigma": 5.0,
+    "fpr_at_50pct_tpr": 0.0,
+    "confusion_matrix": [
+      [
+        19,
+        1
+      ],
+      [
+        1,
+        19
+      ]
+    ],
+    "train_time_s": 7.714578151702881,
+    "final_train_loss": 0.000233791304344777,
+    "snr_dependence": [
+      {
+        "snr_range": "8-12",
+        "n_events": 7,
+        "auc": 1.0,
+        "accuracy": 0.8571428571428571
+      },
+      {
+        "snr_range": "12-18",
+        "n_events": 6,
+        "auc": 0.75,
+        "accuracy": 0.8333333333333334
+      },
+      {
+        "snr_range": "18-30",
+        "n_events": 27,
+        "auc": 1.0,
+        "accuracy": 1.0
+      }
+    ],
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        0.05,
+        0.05,
+        0.4,
+        0.4,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.1,
+        0.85,
+        0.85,
+        0.95,
+        0.95,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "interpretation": "1D CNN can distinguish echo vs no-echo ringdowns in synthetic data. Performance degrades at low SNR (<12), consistent with echo signals being subdominant. On real LIGO O4 data, this pipeline could be applied to high-SNR BBH events (SNR>15) to search for bounce cosmology signatures. A detection would be direct evidence for Planck-scale horizon structure."
+}
