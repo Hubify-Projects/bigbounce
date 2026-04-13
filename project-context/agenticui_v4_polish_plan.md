@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 182: transform-style Explicit Flat 3D Context ✅ COMPLETE (bonus)
+**Target:** Explicit transform-style:flat on transformed parent containers
+- [x] index.html: .sidebar, .chat, .preview get transform-style:flat
+- [x] marketing-site-mockup.html: .mock-frame gets transform-style:flat
+- [x] Git committed `2167baa` — 2 files
+
+### Pass 181: animation-range Explicit Range ✅ COMPLETE (bonus)
+**Target:** Explicit animation-range:0% 100% on scroll-driven animations
+- [x] index.html: .chat-header::after gets animation-range:0% 100%
+- [x] marketing-site-mockup.html: .scroll-progress gets animation-range:0% 100%
+- [x] Git committed `2167baa` — 2 files
+
+### Pass 180: margin-inline-end Logical Right Margins ✅ COMPLETE (bonus)
+**Target:** Logical margin-inline-end alongside margin-right on inline-spaced elements
+- [x] index.html: .term-body .prompt-path, .prompt-git, .prompt-mark (8px), .score-bar (8px), .dot-6-accent, .dot-5-accent, .dot-5-dim (8px) get margin-inline-end
+- [x] marketing-site-mockup.html: 1 marketing dot gets margin-inline-end:8px
+- [x] Git committed `2167baa` — 2 files
+
 ### Pass 179: place-content Centering Shorthand ✅ COMPLETE (bonus)
 **Target:** place-content:center alongside align-items+justify-content on icon containers
 - [x] index.html: .sb-section-label .sb-action, .sb-footer-btn, .chat-header-btn, .term-tab .x, .term-new-btn get place-content:center
