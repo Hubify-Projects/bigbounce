@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 248: lighting-color White ✅ COMPLETE (bonus)
+**Target:** Explicit lighting-color:white on SVG icon containers for filter lighting default
+- [x] index.html: `.icon-btn svg` gets lighting-color:white
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets lighting-color:white
+- [x] Git committed `660c6a6` — 2 files
+
+### Pass 247: flood-opacity One ✅ COMPLETE (bonus)
+**Target:** Explicit flood-opacity:1 on SVG icon containers for filter flood opacity default
+- [x] index.html: `.icon-btn svg` gets flood-opacity:1
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets flood-opacity:1
+- [x] Git committed `660c6a6` — 2 files
+
+### Pass 246: flood-color Black ✅ COMPLETE (bonus)
+**Target:** Explicit flood-color:black on SVG icon containers for filter flood color default
+- [x] index.html: `.icon-btn svg` gets flood-color:black
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets flood-color:black
+- [x] Git committed `660c6a6` — 2 files
+
 ### Pass 245: vector-effect None ✅ COMPLETE (bonus)
 **Target:** Explicit vector-effect:none on SVG icon containers for stroke scaling default
 - [x] index.html: `.icon-btn svg` gets vector-effect:none
