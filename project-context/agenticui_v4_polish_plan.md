@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 158: scroll-snap-stop on Tab Children ✅ COMPLETE (bonus)
+**Target:** Force snap stop on scroll-snap-align children so flings don't skip tabs
+- [x] index.html: .term-tab and .preview-tab get scroll-snap-stop:always
+- [x] marketing-site-mockup.html: N/A (no scroll-snap elements)
+- [x] Git committed `2237a86` — 1 file
+
+### Pass 157: margin-inline Logical Centering ✅ COMPLETE (bonus)
+**Target:** Logical margin-inline alongside physical margin:0 auto and margin-left:auto
+- [x] index.html: .sidebar.collapsed .sb-lab-btn gets margin-inline:auto; .sb-section-label .sb-action and .sb-footer-user get margin-inline-start:auto
+- [x] marketing-site-mockup.html: .container and .container-narrow get margin-inline:auto; .tn-right gets margin-inline-start:auto
+- [x] Git committed `2237a86` — 2 files
+
+### Pass 156: min-inline-size Logical Minimum Width ✅ COMPLETE (bonus)
+**Target:** Logical min-inline-size:0 alongside min-width:0 on flex overflow containers
+- [x] index.html: .workspace, .chat-header, .notif-content get min-inline-size:0
+- [x] marketing-site-mockup.html: N/A (no min-width:0 flex containers)
+- [x] Git committed `2237a86` — 1 file
+
 ### Pass 155: clip-path Circle on Round Elements ✅ COMPLETE (bonus)
 **Target:** clip-path:circle(50%) as progressive enhancement alongside border-radius:50%
 - [x] index.html: .avatar gets clip-path:circle(50%); .captain-status-row .status-dot gets same
