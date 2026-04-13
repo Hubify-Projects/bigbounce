@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 155: clip-path Circle on Round Elements ✅ COMPLETE (bonus)
+**Target:** clip-path:circle(50%) as progressive enhancement alongside border-radius:50%
+- [x] index.html: .avatar gets clip-path:circle(50%); .captain-status-row .status-dot gets same
+- [x] marketing-site-mockup.html: .btt (back-to-top) and .eyebrow .dot get clip-path:circle(50%)
+- [x] Git committed `0b5aa35` — 2 files
+
+### Pass 154: text-align-last Explicit Last-Line Alignment ✅ COMPLETE (bonus)
+**Target:** Explicit text-align-last for deterministic last-line alignment
+- [x] index.html: .chat-msg-body gets text-align-last:start; .sp-md p gets text-align-last:start; .briefing-cell gets text-align-last:center
+- [x] marketing-site-mockup.html: .surfaces-foot gets text-align-last:center
+- [x] Git committed `0b5aa35` — 2 files
+
+### Pass 153: caret-shape Input Caret Style ✅ COMPLETE (bonus)
+**Target:** Explicit caret-shape:bar on text inputs alongside caret-color
+- [x] index.html: :where(input,textarea,select) gets caret-shape:bar
+- [x] marketing-site-mockup.html: input,textarea gets caret-shape:bar
+- [x] Git committed `0b5aa35` — 2 files
+
 ### Pass 152: border-spacing Explicit Zero ✅ COMPLETE (bonus)
 **Target:** Explicit border-spacing:0 alongside border-collapse:collapse on all tables
 - [x] index.html: .tbl, .backup-matrix, .file-preview-csv table get border-spacing:0
