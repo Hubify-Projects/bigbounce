@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 209: border-image-source None ✅ COMPLETE (bonus)
+**Target:** Explicit border-image-source:none on divider/separator elements to prevent UA surprises
+- [x] index.html: .divider-v, .divider-h get border-image-source:none
+- [x] marketing-site-mockup.html: .arch-flow gets border-image-source:none
+- [x] Git committed `f7e7571` — 2 files
+
+### Pass 208: background-blend-mode Normal ✅ COMPLETE (bonus)
+**Target:** Explicit background-blend-mode:normal on gradient-layered elements
+- [x] index.html: .briefing, .skel, .ag-skeleton get background-blend-mode:normal
+- [x] marketing-site-mockup.html: .lab-card-cover gets background-blend-mode:normal
+- [x] Git committed `f7e7571` — 2 files
+
+### Pass 207: quotes Typographic ✅ COMPLETE (bonus)
+**Target:** Explicit curly quote pairs via quotes property on quotation/blockquote elements
+- [x] index.html: .file-preview-md .md-bq gets quotes:"\201C" "\201D" "\2018" "\2019"
+- [x] marketing-site-mockup.html: .window-quote, .review-step-quote get quotes property
+- [x] Git committed `f7e7571` — 2 files
+
 ### Pass 206: overflow-y Clip ✅ COMPLETE (bonus)
 **Target:** Explicit overflow-y:clip alongside overflow:clip on clipped containers
 - [x] index.html: .app, .fig-card, .fig-thumb get overflow-y:clip
