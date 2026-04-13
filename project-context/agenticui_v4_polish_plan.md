@@ -398,6 +398,25 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 143: list-style-type Custom Markers ✅ COMPLETE (bonus)
+**Target:** Modern CSS list-style-type string values for refined list markers
+- [x] index.html: .sp-md ul gets list-style-type:"  \2022  " (spaced bullet)
+- [x] index.html: .sp-md ol rule added with list-style-type:decimal-leading-zero
+- [x] marketing-site-mockup.html: N/A (no visible lists)
+- [x] Git committed `c1ce8d3` — 1 file
+
+### Pass 142: font-variant-alternates Stylistic Alternates ✅ COMPLETE (bonus)
+**Target:** OpenType stylistic alternates for serif headings
+- [x] index.html: .sp-h1, .greeting, .sp-md h1 get font-variant-alternates:stylistic(salt)
+- [x] marketing-site-mockup.html: h1.hero-h1 gets font-variant-alternates:stylistic(salt)
+- [x] Git committed `c1ce8d3` — 2 files
+
+### Pass 141: translate Standalone Transform ✅ COMPLETE (bonus)
+**Target:** Individual translate property alongside transform for independent animation
+- [x] index.html: .chat-show-tab gets translate:0 -50%; .toast gets translate:16px/0/16px states
+- [x] marketing-site-mockup.html: .section gets translate:0 16px / translate:none for scroll reveal
+- [x] Git committed `c1ce8d3` — 2 files
+
 ### Pass 140: white-space-collapse Modern Whitespace ✅ COMPLETE (bonus)
 **Target:** Modern whitespace-collapse property as progressive enhancement alongside white-space
 - [x] index.html: .code-block pre gets white-space-collapse:preserve
