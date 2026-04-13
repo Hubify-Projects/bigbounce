@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 197: flex-grow Explicit Growth ✅ COMPLETE (bonus)
+**Target:** Explicit flex-grow:1 alongside flex:1 on key flex children
+- [x] index.html: .brand-text, .sb-lab-btn .lab-name, .sb-search-text get flex-grow:1
+- [x] marketing-site-mockup.html: N/A
+- [x] Git committed `7add482` — 2 files
+
+### Pass 196: grid-auto-flow Row ✅ COMPLETE (bonus)
+**Target:** Explicit grid-auto-flow:row on grid containers
+- [x] index.html: .stat-grid, .briefing-grid get grid-auto-flow:row
+- [x] marketing-site-mockup.html: .get-grid gets grid-auto-flow:row
+- [x] Git committed `7add482` — 2 files
+
+### Pass 195: place-self Center ✅ COMPLETE (bonus)
+**Target:** place-self:center on centered icon button elements
+- [x] index.html: .sb-footer-btn, .chat-header-btn, .term-new-btn get place-self:center
+- [x] marketing-site-mockup.html: N/A
+- [x] Git committed `7add482` — 2 files
+
 ### Pass 194: justify-self End Alignment ✅ COMPLETE (bonus)
 **Target:** Explicit justify-self:end on margin-left:auto flex children
 - [x] index.html: .sb-section-label .sb-action, .sb-footer-user, .chat-header-meta get justify-self:end
