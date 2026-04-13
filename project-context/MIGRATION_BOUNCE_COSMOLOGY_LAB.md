@@ -220,7 +220,9 @@ Migration: copy verbatim. Each standup becomes a `standup` entity in the new lab
 
 Source: `bigbounce/*.html`, `bigbounce/style.css`, `bigbounce/articles/`, `bigbounce/public/`, `bigbounce/research/project_master_dossier/`.
 
-Migration: copy verbatim into `lab/site/` in the new repo. The new lab's Vercel deploy serves from this directory. The original site keeps serving from the original repo until cutover (per §3 below).
+Migration: copy verbatim into `lab/site/` in the new repo as a **Phase A static snapshot**. The new lab's Vercel deploy serves from this directory. The original site keeps serving from the original repo until cutover (per §3 below).
+
+**Phase B (post-cutover):** transition `lab/site/` to the Lab Site Builder template system per PRD §53. The static HTML becomes the starting point for the `hubify-lab-default` template auto-population. Houston vibe-codes custom sections (Explainer, Timeline, Visualize, etc.) that go beyond the standard 10-section template. The `site-worker` agent takes over ongoing site maintenance, auto-syncing from research outputs. See Step 4.5 and §7 below.
 
 ### 1.12 What does NOT migrate (stays in the original repo only)
 
@@ -531,13 +533,16 @@ The import script generates the directory tree:
 │   │   ├── crossmatch-worker/
 │   │   ├── cosmology-worker/
 │   │   ├── figure-worker/
-│   │   └── ... (~21 total per PRD §3)
+│   │   ├── site-worker/              ← NEW per PRD §53.6 (Lab Site Builder agent)
+│   │   └── ... (~22 total per PRD §3 + §53)
 │   ├── chats/                      ← lab-wide chats (not project-scoped)
 │   ├── notes/                      ← Houston's lab-wide journal (per PRD §38)
 │   ├── memory/                     ← 4-layer memory store (user/agent/lab/global)
 │   ├── routines/                   ← cron schedules
 │   ├── backups/                    ← backup destination configs
-│   └── site/                       ← migrated bigbounce.hubify.app HTML/CSS/JS
+│   └── site/                       ← migrated bigbounce.hubify.app HTML/CSS/JS + Lab Site Builder template (PRD §53)
+│       ├── template.yaml           ← Lab Site Builder config (Step 4.5)
+│       └── overrides/              ← custom sections (Explainer, Timeline, Visualize, etc.)
 └── .gitignore
 ```
 
@@ -721,6 +726,65 @@ curl -I https://bigbounce2.hubify.app/  # should return 200
 
 **Rollback:** unlink Vercel project. Subdomain DNS reverts to NXDOMAIN. Original site unaffected.
 
+### Step 4.5 — Lab Site Builder bootstrap (1-2 hours, can run in parallel with Step 5)
+
+**Goal:** Transition the static HTML site snapshot from Step 4 into the Lab Site Builder template system (PRD §53), so the site is vibe-codable and auto-syncs from research outputs.
+
+**Sub-steps:**
+
+1. **Generate template config** — create `lab/site/template.yaml`:
+   ```yaml
+   template: hubify-lab-default
+   version: 1.0.0
+   auto_sync: true
+   sections:
+     hero: { enabled: true, auto_populate: true }
+     key_results: { enabled: true, auto_populate: true }
+     papers: { enabled: true, auto_populate: true }
+     experiments: { enabled: true, auto_populate: true }
+     figures: { enabled: true, auto_populate: true }
+     datasets: { enabled: true, auto_populate: true }
+     activity: { enabled: true, auto_populate: true }
+     team: { enabled: true, auto_populate: true }
+     anomaly_catalog: { enabled: true, auto_populate: true }
+     footer: { enabled: true }
+   custom_sections:   # BigBounce-specific pages beyond the default template
+     - slug: explainer
+       source: explained.html
+       auto_sync: false  # Houston vibe-codes this manually
+     - slug: timeline
+       source: timeline.html
+       auto_sync: false
+     - slug: visualize
+       source: visualize.html
+       auto_sync: false
+     - slug: glossary
+       source: glossary.html
+       auto_sync: true   # equations/glossary auto-populate from wiki entries
+     - slug: data-explorer
+       source: data-explorer.html
+       auto_sync: true   # new datasets auto-embed
+     - slug: dossier
+       source: research/project_master_dossier/index.html
+       auto_sync: true
+   design_tokens:
+     accent: "#4a7d6a"   # sage, inherited from Hubify Labs
+     bg: "#0b0d11"
+     surface: "#0e1016"
+   ```
+2. **Register the `site-worker` agent** under `lab/agents/site-worker/` per PRD §53.6. Wire its event listeners for `paper.published`, `experiment.completed`, `figure.generated`, `lab.settings_changed`.
+3. **First auto-population test** — run the `site-worker` against the migrated data (4 papers, 53 experiments, 22 figures, 8 surveys) and verify it produces the correct template sections.
+4. **Verify custom sections** — the 6 custom sections from the original BigBounce site are preserved as `lab/site/overrides/` and rendered alongside the template sections.
+
+**Step 4.5 checklist:**
+- [ ] `lab/site/template.yaml` exists with correct section config
+- [ ] `site-worker` agent bootstrapped with event listeners
+- [ ] Auto-populated sections match the original site content
+- [ ] Custom sections (Explainer, Timeline, Visualize, Glossary, Data Explorer, Dossier) render correctly
+- [ ] Lab Site Builder 3-pane UI (chat + preview + analytics) shows the site correctly in-app
+
+**Rollback:** revert to the static HTML from Step 4. The Vercel deploy keeps working with the static files.
+
 ### Step 5 — Compute handoff (1 hour)
 
 **Goal:** The H200 pod is now managed by the new lab's `gpu-manager-lead` agent instead of any local Claude Code session.
@@ -869,17 +933,18 @@ echo "All backups verified — migration officially complete"
 ```
 Day 1 — Migration day (estimated 8-12 hours total)
 
-Hour 0      Step 0   Pre-migration backups (1h)             [SAFETY GATE]
-Hour 1      Step 1   Create new repo (15min)
-Hour 1.25   Step 2   File-system import (2-3h)
-Hour 4      Step 3   Bootstrap orchestrator + agents (1-2h)
-Hour 6      Step 4   Site deploy (30min)
-Hour 6.5    Step 5   Compute handoff (1h)
-Hour 7.5    Step 6   First end-to-end research cycle (2-4h)  [REAL PROOF]
-Hour 11     Step 7   DNS cutover decision (Houston, 5min)
-Hour 11     Step 8   Post-migration verification (1h)
-Hour 12     Step 9   Backup the new lab (30min)
-Hour 12.5   DONE     Houston sign-off
+Hour 0      Step 0     Pre-migration backups (1h)                [SAFETY GATE]
+Hour 1      Step 1     Create new repo (15min)
+Hour 1.25   Step 2     File-system import (2-3h)
+Hour 4      Step 3     Bootstrap orchestrator + agents (1-2h)
+Hour 6      Step 4     Site deploy — static snapshot (30min)
+Hour 6.5    Step 4.5   Lab Site Builder bootstrap (1-2h)        [PARALLEL WITH STEP 5]
+Hour 6.5    Step 5     Compute handoff (1h)                     [PARALLEL WITH STEP 4.5]
+Hour 8      Step 6     First end-to-end research cycle (2-4h)   [REAL PROOF]
+Hour 12     Step 7     DNS cutover decision (Houston, 5min)
+Hour 12     Step 8     Post-migration verification (1h)
+Hour 13     Step 9     Backup the new lab (30min)
+Hour 13.5   DONE       Houston sign-off
 ```
 
 ---
@@ -998,11 +1063,11 @@ This converts all 6 open questions into "answered" status and unblocks the migra
 
 Once the migration is complete and signed off, the next 30 days:
 
-- **Week 1** — Houston uses the new lab daily. Reports any UX issues. Mockup polish work continues to fix the issues.
-- **Week 2** — First chat-to-project graduation in earnest (something Houston actually wants to research, not just the test cycle from Step 6). The chat-graduation flow gets battle-tested.
-- **Week 3** — First publish-ready loop run on Paper 1 in the new lab. The 5-round loop per PRD §37 runs end-to-end. Any failures in the loop become priority bug fixes.
-- **Week 4** — Cross-lab sharing test: create Lab #3 (Dark Energy) using the platform's "create new lab" flow, share Bounce Cosmology with it, verify the read-only access + comm gateway work. This is the second platform stress test.
-- **End of month** — retrospective. What worked, what didn't, what needs to ship in v1.1.
+- **Week 1** — Houston uses the new lab daily. Reports any UX issues. Mockup polish work continues to fix the issues. **Lab Site Builder: Houston vibe-codes the custom sections** (Explainer, Timeline, Visualize) via the site agent chat to match or exceed the original BigBounce site. Auto-sync verified for papers/experiments/figures.
+- **Week 2** — First chat-to-project graduation in earnest (something Houston actually wants to research, not just the test cycle from Step 6). The chat-graduation flow gets battle-tested. **Lab Site auto-sync stress test:** complete 2-3 experiments and verify the site updates automatically (Key Results stats, Experiments table, Figures gallery).
+- **Week 3** — First publish-ready loop run on Paper 1 in the new lab. The 5-round loop per PRD §37 runs end-to-end. Any failures in the loop become priority bug fixes. **Lab Site: verify `paper.published` auto-sync** updates the Papers section correctly.
+- **Week 4** — Cross-lab sharing test: create Lab #3 (Dark Energy) using the platform's "create new lab" flow, share Bounce Cosmology with it, verify the read-only access + comm gateway work. This is the second platform stress test. **Lab #3 gets its own lab site from the default template** — zero custom sections, pure auto-population, proving the template works for a new lab.
+- **End of month** — retrospective. What worked, what didn't, what needs to ship in v1.1. **DNS cutover to `bigbounce.hubify.app`** if the vibe-coded lab site meets or exceeds the original.
 
 ---
 
@@ -1025,8 +1090,11 @@ For Houston (and future agents) to find things during and after the migration:
 | Peer reviews | `project-context/peer-reviews/` | `lab/peer-reviews/` |
 | CLAUDE.md | `CLAUDE.md` | `CLAUDE.md` (rewritten for the new lab structure) |
 | Project context | `project-context/` | `lab/project-context/` (lab-specific bits) + `lab/projects/<slug>/` (project-specific bits) |
-| Site HTML | `*.html`, `style.css`, `articles/` | `lab/site/` |
+| Site HTML (static snapshot) | `*.html`, `style.css`, `articles/` | `lab/site/` |
+| Site template config | — (new) | `lab/site/template.yaml` |
+| Site custom overrides | Explainer, Timeline, Visualize, etc. | `lab/site/overrides/` |
 | Dossier | `research/project_master_dossier/index.html` | `lab/site/dossier/index.html` |
+| Site agent | — (new) | `lab/agents/site-worker/` |
 
 ---
 

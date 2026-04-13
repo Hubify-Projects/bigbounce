@@ -5,6 +5,7 @@
 **Slug:** `dark-matter-lab` (working name)
 **Target repo:** `Hubify-Labs/dark-matter-lab`
 **Target subdomain:** `darkmatter.hubify.app` or `dm.hubify.app`
+**Lab Site (per PRD §53):** Auto-generated from `hubify-lab-default` template. Vibe-codable via site agent chat. Auto-syncs from research outputs.
 **Stress-test target:** **a cleanly separate domain** — tests platform domain-agnosticism with no shared content from Lab #1
 **Author:** Houston Golden + Claude
 **Date:** 2026-04-08

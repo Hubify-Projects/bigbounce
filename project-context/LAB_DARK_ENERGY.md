@@ -119,6 +119,8 @@ This is the lab that **stress-tests cross-lab sharing**.
 
 **Public sharing:** `published-only`. Papers ship to `darkenergy.hubify.app`. Internal MCMC chains stay private until paper publication.
 
+**Lab Site (per PRD §53):** Auto-generated from `hubify-lab-default` template on creation. Auto-syncs papers, experiments, figures. Houston can vibe-code custom sections via the site agent chat. The `site-worker` agent handles ongoing maintenance.
+
 ---
 
 ## 6. Initial datasets

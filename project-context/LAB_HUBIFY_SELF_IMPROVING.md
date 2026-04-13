@@ -5,6 +5,7 @@
 **Slug:** `hubify-meta` (working name — see §0.1)
 **Target repo:** `Hubify-Labs/hubify-meta`
 **Target subdomain:** `meta.hubify-labs.com` or `lab.hubify-labs.com`
+**Lab Site (per PRD §53):** Auto-generated from `hubify-lab-default` template. Unique stress test: the meta-lab's public site showcases platform improvements, not scientific results. Vibe-codable via site agent chat.
 **Stress-test target:** **self-improvement loops** — the lab's job is to make Hubify Labs (the platform) better
 **Author:** Houston Golden + Claude
 **Date:** 2026-04-08
