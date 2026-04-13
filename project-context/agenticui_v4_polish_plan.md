@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 233: grid-row-start Auto ✅ COMPLETE (bonus)
+**Target:** Explicit grid-row-start:auto on grid children with column placement
+- [x] index.html: .rt-surf-role gets grid-row-start:auto
+- [x] marketing-site-mockup.html: N/A (no grid-column children)
+- [x] Git committed `775e795` — 1 file
+
+### Pass 232: grid-column-start Longhand ✅ COMPLETE (bonus)
+**Target:** Explicit grid-column-start longhand alongside grid-column shorthand
+- [x] index.html: .rt-surf-role gets grid-column-start:2
+- [x] marketing-site-mockup.html: N/A (no grid-column children)
+- [x] Git committed `775e795` — 1 file
+
+### Pass 231: grid-template-areas None ✅ COMPLETE (bonus)
+**Target:** Explicit grid-template-areas:none on auto-flow grids
+- [x] index.html: .briefing-grid, .stat-grid get grid-template-areas:none
+- [x] marketing-site-mockup.html: .surfaces-grid gets grid-template-areas:none
+- [x] Git committed `775e795` — 2 files
+
 ### Pass 230: transition-delay 0s ✅ COMPLETE (bonus)
 **Target:** Explicit transition-delay:0s longhand on key transitioned elements
 - [x] index.html: .sb-lab-btn, .sb-footer-btn get transition-delay:0s
