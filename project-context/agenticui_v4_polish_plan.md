@@ -398,6 +398,46 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+---
+
+## Lab Site Builder Sprint (Houston pivot 2026-04-12)
+
+Houston redirected the loop from CSS property passes to Lab Site Builder integration work per his directive:
+> "this is what the loop should focus on now and ensuring our PRD and full plan to go from mockup to fully migrating existing bigbounce to the new lab setup and launch the new labs etc all ready to rock"
+
+### Lab Site Builder — Mockup redesign ✅ COMPLETE
+- [x] Replaced read-only Site Preview with 3-pane Lab Site Builder (chat + sandbox + analytics)
+- [x] Added site agent chat with auto-sync events, vibe-coding messages
+- [x] Added Vercel Sandbox preview (Preview/Code/Logs tabs, device preview)
+- [x] Added collapsible metadata drawer (deployment, Lighthouse, template config, agent, domains, deploys, analytics)
+- [x] Added Anomaly Catalog table with 9 surveys and QC badges in preview
+- [x] Git committed `b769fb2`
+
+### Lab Site Builder — Sidebar nav ✅ COMPLETE
+- [x] Added "Lab Site" as top-level sidebar nav item (globe icon)
+- [x] Git committed `a711554`
+
+### Lab Site Builder — Cross-view wiring ✅ COMPLETE
+- [x] Vibe Coding view: added "Edit Lab Site instead →" button
+- [x] Marketing site: "Public lab site" → "Vibe-codable lab site" with updated descriptions
+- [x] Git committed `864575a`
+
+### Lab Site Builder — Polish pass ✅ COMPLETE
+- [x] Tab name: "Site Preview" → "Lab Site"
+- [x] Metadata drawer: added "Custom sections (6)" panel (vibe-coded vs auto-sync)
+- [x] Metadata drawer: added "Override files" panel (4 custom template overrides)
+- [x] Git committed `54d1b29`
+
+### Migration plan — §53 integration ✅ COMPLETE
+- [x] Added Step 4.5 (Lab Site Builder bootstrap) to MIGRATION_BOUNCE_COSMOLOGY_LAB.md
+- [x] Updated §1.11 with Phase A/B site transition plan
+- [x] Updated §7 post-migration roadmap with vibe-coding milestones
+- [x] Updated directory tree with template.yaml, overrides/, site-worker agent
+- [x] Added §53 cross-references to all 5 lab specs
+- [x] Git committed `7a247cc`
+
+---
+
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
 **Target:** Explicit lighting-color:white on SVG icon containers for filter lighting default
 - [x] index.html: `.icon-btn svg` gets lighting-color:white
