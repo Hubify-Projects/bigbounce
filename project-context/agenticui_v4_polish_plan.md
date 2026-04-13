@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 185: line-break Explicit Auto ✅ COMPLETE (bonus)
+**Target:** Explicit line-break:auto on body for proper mixed-script line breaking
+- [x] index.html: body gets line-break:auto
+- [x] marketing-site-mockup.html: body gets line-break:auto
+- [x] Git committed `5c25dfc` — 2 files
+
+### Pass 184: unicode-bidi Isolation ✅ COMPLETE (bonus)
+**Target:** Explicit unicode-bidi:isolate on body for proper bidirectional text isolation
+- [x] index.html: body gets unicode-bidi:isolate
+- [x] marketing-site-mockup.html: body gets unicode-bidi:isolate
+- [x] Git committed `5c25dfc` — 2 files
+
+### Pass 183: table-layout Fixed Column Sizing ✅ COMPLETE (bonus)
+**Target:** table-layout:fixed on table elements for consistent column sizing
+- [x] index.html: .tbl gets table-layout:fixed
+- [x] marketing-site-mockup.html: .compare-table gets table-layout:fixed
+- [x] Git committed `5c25dfc` — 2 files
+
 ### Pass 182: transform-style Explicit Flat 3D Context ✅ COMPLETE (bonus)
 **Target:** Explicit transform-style:flat on transformed parent containers
 - [x] index.html: .sidebar, .chat, .preview get transform-style:flat
