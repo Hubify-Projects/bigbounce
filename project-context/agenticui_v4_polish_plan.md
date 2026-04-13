@@ -2098,3 +2098,23 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 5. **Tabs/pills**: `.demo-tab:active` (surface-2+bright), `.chip:active` (bright text+surface-3)
 6. **`.btt:active`** — scale(.9) for back-to-top circular button
 **Total marketing :active rules:** 1 → 18 (17 new)
+
+### Pass 67: CSS cleanup + scrollbar consistency ✅ COMPLETE
+**File:** `v4/index.html`
+**Changes (7 edits):**
+1. **Removed duplicate `.filter-btn:hover`** dead code (line 1442 overridden by line 1443)
+2. **`.chat-hint`** — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent;overscroll-behavior:contain`
+3. **`.act-body`** — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent;overscroll-behavior:contain`
+4. **`.gnc-conns-list`** — added `scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent;overscroll-behavior:contain` (dark graph context)
+5. **`.sb-body`** — added `scrollbar-gutter:stable`
+6. **`.chat-body`** — added `scrollbar-gutter:stable`
+7. **`.term-body`** — added `scrollbar-gutter:stable`
+
+### Pass 68: :active states + scrollbar fixes across 3 secondary files ✅ COMPLETE
+**Files:** `v4/desktop-app-mockup.html`, `v4/agent-management-clone.html`, `v4/cli-tui-mockup.html`
+**Changes (13 insertions across 3 files):**
+1. **desktop-app** — 4 `:active` states: `.macos-menubar .menu-item`, `.dock-icon` (reduced bounce), `.mp-open-app`, `.mockup-controls .ctrl`
+2. **agent-mgmt** — 2 `:active` states: `.nav-sub-link`, `.btn` (opacity+translateY)
+3. **agent-mgmt** — `.perf-feed` scrollbar: `scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent;overscroll-behavior:contain`
+4. **cli-tui** — 3 `:active` states: `.session-tab`, `.tui-tab`, `.mockup-controls .ctrl`
+5. **cli-tui** — `.term-body` added `scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent`
