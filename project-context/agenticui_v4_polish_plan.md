@@ -2324,3 +2324,24 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - **3 files:** Added `?display=swap` to fonts.cdnfonts.com Departure Mono link (prevents FOIT/flash of invisible text)
 - **cli-tui:** Consolidated duplicate `.session-tab` rule (transition .15s defined at base, overridden to .1s 5 lines later — merged into base)
 - **cli-tui:** Consolidated duplicate `.tui-tab` rule (same pattern — merged transition into base definition)
+
+### Pass 90: Light mode :active states for Activity Graph ✅ COMPLETE
+**Files:** `v4/index.html`
+**Changes:**
+- Added 4 missing `:root.light` `:active` states: `.graph-back`, `.graph-mode`, `.gnc-conn-row`, `.graph-group-row`
+- Completes interaction triad (normal → hover → active) for all graph interactive elements in light mode
+
+### Pass 91: fig-overlay accessibility fix ✅ COMPLETE
+**Files:** `v4/index.html`
+**Commit:** `f7aa0e8` (passes 90+91 combined)
+**Changes:**
+- `.fig-overlay`: Added `visibility:hidden` alongside `opacity:0` so hidden overlays are not keyboard-focusable
+- `.fig-card:hover .fig-overlay`: Added `visibility:visible` to restore on hover
+- Fixes a11y issue where opacity:0 elements remain in tab order
+
+### Pass 92: cli-tui scrollbar thumb hover + light mode ✅ COMPLETE
+**Files:** `v4/cli-tui-mockup.html`
+**Commit:** `0f0a273`
+**Changes:**
+- Added `::-webkit-scrollbar-thumb:hover` for `.term-body` (hover feedback on scrollbar grab)
+- Added light mode cocoa-tinted scrollbar thumb overrides (`:root.light .term-body::-webkit-scrollbar-thumb` + `:hover`)
