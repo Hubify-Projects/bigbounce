@@ -2158,3 +2158,22 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 3. **Color swap**: all `rgba(255,255,255,...)` → `rgba(59,47,47,...)` cocoa equivalents matching Cabinet light theme
 4. **JS SVG fix**: node emphasis circles now theme-aware via `document.documentElement.classList.contains('light')` check
 **Impact:** Activity Graph was previously 100% invisible in light mode (all white-on-cream). Now fully functional.
+
+### Pass 73: Marketing site embedded mockup light mode + badges ✅ COMPLETE
+**File:** `v4/marketing-site-mockup.html`
+**Changes (41 insertions):**
+1. **30 `:root.light` overrides** for `.ss-*` embedded IDE mockup — swaps all hardcoded dark hex (#0d0d0d, #141414, #0f0f0f, #111, #ccc, #888, #e0e0e0, etc.) to Cabinet cream equivalents (#fdfaf4, #f4eee3, #faf6f1, #5a4a3e, #806852, etc.)
+2. **Badge variable overrides** in `:root.light`: `--badge-gray-bg`, `--badge-green-bg`, `--badge-yellow-bg`, `--badge-red-bg`, `--badge-blue-bg` and their label colors
+3. **Elevation overrides**: `--elevation-1`, `--elevation-4` with cocoa-tinted shadows
+4. **Blog-featured grid pattern**: `rgba(255,255,255,.014)` → `rgba(59,47,47,.02)` for light mode
+5. **Grid patterns**: `.ss-frame::before`, `.demo-frame::before` get cocoa grid lines in light mode
+**Impact:** Entire `.ss-*` embedded mockup was hardcoded dark-only. Now themed warm cream.
+
+### Pass 74: Light mode overlays + spinner + backdrop warmth ✅ COMPLETE
+**File:** `v4/index.html`
+**Changes (7 insertions):**
+1. **`.btn-loading::after`** — spinner border swaps from `rgba(255,255,255,.3)` to `rgba(59,47,47,.15)` in light mode
+2. **`.cmdp-overlay`** — backdrop `rgba(0,0,0,.7)` → `rgba(59,47,47,.55)` (warm cocoa overlay)
+3. **`.sidebar-overlay`** — backdrop `rgba(0,0,0,.45)` → `rgba(59,47,47,.35)` (warm cocoa)
+4. **`.notif-drawer`** — shadow `rgba(0,0,0,.5)` → `rgba(59,47,47,.18)` (softer, warm)
+5. **New tokens**: `--backdrop-overlay` and `--backdrop-heavy` in `:root.light` for future use
