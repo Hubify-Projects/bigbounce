@@ -1780,6 +1780,24 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Prevents layout recalculation from propagating across panel boundaries
 - [x] Git committed `50f84e6` — 1 file
 
+### Pass 53: Lab Site UX refinements — redundant chat removal + polish ✅ COMPLETE (bonus)
+**Target:** index.html — Houston feedback: remove redundant site-chat-col, refine vibe-coding layout
+- [x] Removed site-chat-col HTML (already done in prev session)
+- [x] Removed 12 CSS rules for .site-chat-col, .site-chat-head, .site-chat-body, .site-chat-event, .site-chat-input
+- [x] Removed responsive breakpoint for .site-chat-col
+- [x] Removed deprecated .site-meta-drawer CSS
+- [x] Traffic light dots: colored red/yellow/green like real browser chrome
+- [x] File tree: directory chevrons (▸/▾) with ::before pseudo-elements
+- [x] File tree: indent guide lines via border-left on .indent-1 and .indent-2
+- [x] Code tab: breadcrumb bar (file path + modified indicator + encoding/line count)
+- [x] Code editor: syntax highlighting tokens (.kw, .str, .cm) + dimmed line numbers
+- [x] Settings: hover state on rows + focus state on inputs (accent border + subtle box-shadow)
+- [x] Lock icon: colored accent green (ssl indicator)
+- [x] Publish button: added cloud-upload icon, renamed "Subdomain" → "Settings"
+- [x] Logs tab: added toolbar with copy/clear buttons, expanded log lines (post-build checks)
+- [x] Status bar: VS Code-style bottom bar with deploy status, file count, lighthouse scores
+- [x] Git committed — 15+ edits
+
 ### Pass 52: font-feature-settings Geist Alternates ✅ COMPLETE (bonus)
 **Target:** 2 files missing Geist cv02/cv03/cv04/cv11 character alternates
 - [x] desktop-app-mockup.html: added to body
