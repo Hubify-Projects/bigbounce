@@ -1986,3 +1986,12 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 10. **Destructive button**: `color:#fff` → `color:var(--bg)`
 11. **Loading spinner**: `border-top-color:#fff` → `border-top-color:var(--text-bright)`
 12. **Toast icon SVG**: `stroke:#fff` → `stroke:var(--bg)`
+
+### Pass 58: Spacing Grid Sweep + Light Mode Overlay Fix ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (23 insertions, 23 deletions):**
+1. **hm2 active dot light mode fix**: `rgba(255,255,255,.08)` → `var(--overlay-selected,...)` fallback — same pattern as wizard step fix
+2. **sb-lab padding**: `10px`→`8px` (4px grid alignment)
+3. **13 CSS rules 3px→4px**: notif-filter, sp-tabs, detail-tag, briefing-pill, filter-btn ×3, lab-card btn, rt-info-row, ps-picker, hm2-check, routing-badge, act-filter, compute-pod-setting, routine-cron
+4. **3 inline style fixes**: journal buttons + model pill `padding:3px 8px`→`4px 8px`
+5. **Upvote triangle SVGs**: `fill="#4a7d6a"` attribute → `style="fill:var(--accent-dim,#4a7d6a)"` for theme responsiveness
