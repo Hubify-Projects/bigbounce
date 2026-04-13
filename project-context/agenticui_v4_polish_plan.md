@@ -2309,3 +2309,10 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - **agent-management:** Added `::-webkit-scrollbar` (8px), `::-webkit-scrollbar-track`, `::-webkit-scrollbar-thumb` + `:hover` (dark mode: white/.1, light mode: cocoa/.15)
 - **desktop-app:** Added same webkit scrollbar rules using `var(--surface-4)` / `var(--border-bright)` tokens (dark) + cocoa overrides (light)
 - Both files already had Firefox `scrollbar-width:thin` + `scrollbar-color` — now all 5 v4 files have cross-browser scrollbar styling
+
+### Pass 88: overscroll-behavior + cursor:pointer fixes ✅ COMPLETE
+**Files:** `v4/marketing-site-mockup.html`, `v4/desktop-app-mockup.html`
+**Commit:** `58ad036`
+**Changes:**
+- **marketing-site:** Added `overscroll-behavior:contain` to `.compare-wrap` (horizontal scroll table lacked scroll isolation)
+- **desktop-app:** Added `cursor:pointer` to `.menubar-app-icon` (has onclick but no pointer cursor)
