@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 164: object-view-box Intrinsic Image Viewport ✅ COMPLETE (bonus)
+**Target:** object-view-box:inset(0) as progressive enhancement on object-fit:cover images
+- [x] index.html: .fig-thumb img and .avatar-photo img get object-view-box:inset(0)
+- [x] marketing-site-mockup.html: N/A (no object-fit:cover images in CSS rules)
+- [x] Git committed `339c4a2` — 1 file
+
+### Pass 163: min-block-size Logical Min-Height ✅ COMPLETE (bonus)
+**Target:** Logical min-block-size:0 alongside min-height:0 on flex overflow containers
+- [x] index.html: .app, .workspace-top, .term get min-block-size:0
+- [x] marketing-site-mockup.html: body gets min-block-size:100vh
+- [x] Git committed `339c4a2` — 2 files
+
+### Pass 162: flex-basis on Fixed-Width Flex Children ✅ COMPLETE (bonus)
+**Target:** Explicit flex-basis alongside width on major flex children for correct sizing
+- [x] index.html: .sidebar gets flex-basis:240px; .chat gets flex-basis:400px
+- [x] marketing-site-mockup.html: N/A (no fixed-width flex children in main layout)
+- [x] Git committed `339c4a2` — 1 file
+
 ### Pass 161: font-variant-position OpenType Sub/Superscript ✅ COMPLETE (bonus)
 **Target:** OpenType font-variant-position for proper typographic sub/superscript in paper content
 - [x] index.html: new rules .sp-md sub{font-variant-position:sub} and .sp-md sup{font-variant-position:super}
