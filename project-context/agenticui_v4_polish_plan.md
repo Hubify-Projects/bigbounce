@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 173: animation-composition Explicit Compositing ✅ COMPLETE (bonus)
+**Target:** Explicit animation-composition:replace on animated elements
+- [x] index.html: .sb-item .dot.good, .thinking-ast, .term-cursor, .thinking-orb.mode-saturn .l1/.l2 get animation-composition:replace
+- [x] marketing-site-mockup.html: .scroll-progress, pulse dot get animation-composition:replace
+- [x] Git committed `8dd514c` — 2 files
+
+### Pass 172: margin-block Logical Vertical Margins ✅ COMPLETE (bonus)
+**Target:** Logical margin-block-start alongside margin-top on structural elements
+- [x] index.html: .section gets margin-block:24px 16px; .dir-foot, .dir-brief-foot, .skills-foot, .section-sep, .task-detail, .heatmap-legend, .contrib-drilldown get margin-block-start
+- [x] marketing-site-mockup.html: .mock-frame, .arch-diagram, .surfaces-foot, .arch-foot get margin-block-start
+- [x] Git committed `8dd514c` — 2 files
+
+### Pass 171: border-block-start Logical Top Borders ✅ COMPLETE (bonus)
+**Target:** Logical border-block-start alongside border-top on separator elements
+- [x] index.html: .lab-dd-foot, .lab-dd-foot-actions, .proj-dd-foot, .sb-app-links, .sb-footer, .notif-drawer-foot, .workspace.chat-bottom .chat, .term-input-wrap get border-block-start
+- [x] marketing-site-mockup.html: .tn-mobile-menu, .section.section-sep, .window-band, .datasets-band, .review-band, .sc-foot, .footer-cta, .site-footer, .sf-bottom, .article-cta get border-block-start
+- [x] Git committed `8dd514c` — 2 files
+
 ### Pass 170: overflow-inline Logical Horizontal Overflow ✅ COMPLETE (bonus)
 **Target:** Logical overflow-inline alongside overflow-x on scrollable containers
 - [x] index.html: .sb-body gets overflow-inline:hidden; .term-tabs and .preview-tabs get overflow-inline:auto
