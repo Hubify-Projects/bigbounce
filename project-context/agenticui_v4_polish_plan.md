@@ -2375,3 +2375,13 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - **index.html:** Added `contain:layout style` to `#detailBody`, `.captain-feed-list`, `.file-preview-body` (scroll paint performance)
 - **marketing-site:** Added `contain:layout style` to `.tn-mobile-menu` + `scrollbar-gutter:stable` to `.compare-wrap`
 - Prevents reflow cascades on scroll, prevents CLS when scrollbar appears
+
+### Pass 97: Color tokens + type scale + a11y href fixes ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/marketing-site-mockup.html`, `v4/desktop-app-mockup.html`
+**Commit:** `97521c5`
+**Changes:**
+- **desktop-app:** `.dock-icon` color:white → var(--text-bright) (theme-responsive)
+- **marketing:** `.plan-card.featured::before` color:#fff → var(--bg) (theme-responsive)
+- **marketing:** Type scale snap: font-size 17px→18px on `.card-h3` + `.step h3`, 21px→20px on `.sc-title` + `.lede-para`
+- **index.html:** 16 static `<a onclick>` tags given `href="#"` + `return false` for keyboard navigation (sb-app-link, sp-pill, captain footer links)
+- **index.html:** Global delegated click handler prevents page-jump on ALL `<a onclick>` without href (covers 50+ dynamic JS template links too)
