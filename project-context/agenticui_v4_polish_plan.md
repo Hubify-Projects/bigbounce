@@ -593,6 +593,15 @@ Replaced `transition:all .1s` with explicit property lists on 18 interactive ele
 18. **.js-tmpl-card** → `border-color,box-shadow`
 - [x] Git committed `34e9b68`
 
+### Pass 64: Eliminate All transition:all Across All 5 Files ✅ COMPLETE (bonus)
+**Files:** `v4/index.html`, `v4/marketing-site-mockup.html`
+**Changes (33 insertions, 33 deletions):**
+Converted every `transition:all` to explicit property lists. `transition:all` causes browsers to check every animatable property on every hover frame.
+- **index.html (24 elements):** sb-lab-btn, sb-footer-btn, sb-footer-user, chat-show-tab, chat-mode-tab, term-tab, chat-send-btn, briefing, stepper-step, hm2-dot, wiz-num, wiz-agent-check, standup-row, kanban-card, settings-nav-item, mem-layer, graph-mode, graph-group-check, zone-card, dest-card, pinned-lab, compute-pod, file-preview-btn, file-preview-md .md-link
+- **marketing-site (9 elements):** tn-mobile-link, tn-theme-btn, .btn, lab-card, chip, doc-card, guide-card, blog-featured, blog-card
+- Zero `transition:all` remains across all 5 v4 files
+- [x] Git committed `8a306a5`
+
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
 **Target:** Explicit lighting-color:white on SVG icon containers for filter lighting default
 - [x] index.html: `.icon-btn svg` gets lighting-color:white
