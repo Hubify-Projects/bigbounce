@@ -2367,3 +2367,11 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 - **index.html:** Added `pointer-events:none` to 4 decorative pseudo-elements: `.briefing::before` (gradient line), `.zone-card::before` (colored border), `.chat-pos-item .pos-mini::after` (indicator fill), `.chat-header::after` (scroll-progress bar)
 - **agent-management:** Added `pointer-events:none` to `.agent-avatar::after` (gloss overlay) and `.metric-bar-delta::before` (barcode tick pattern)
 - Prevents invisible overlays from intercepting clicks on underlying interactive content
+
+### Pass 96: CSS containment + scrollbar-gutter ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/marketing-site-mockup.html`
+**Commit:** `f08e076`
+**Changes:**
+- **index.html:** Added `contain:layout style` to `#detailBody`, `.captain-feed-list`, `.file-preview-body` (scroll paint performance)
+- **marketing-site:** Added `contain:layout style` to `.tn-mobile-menu` + `scrollbar-gutter:stable` to `.compare-wrap`
+- Prevents reflow cascades on scroll, prevents CLS when scrollbar appears
