@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 176: writing-mode Explicit Default ✅ COMPLETE (bonus)
+**Target:** Explicit writing-mode:horizontal-tb on body element
+- [x] index.html: body gets writing-mode:horizontal-tb
+- [x] marketing-site-mockup.html: body gets writing-mode:horizontal-tb
+- [x] Git committed `a467e81` — 2 files
+
+### Pass 175: inset-block-end Logical Bottom Positioning ✅ COMPLETE (bonus)
+**Target:** Logical inset-block-end alongside physical bottom on positioned elements
+- [x] index.html: .profile-popout (48px), .toast-stack (44px), .fp-pdf-prn (24px) get inset-block-end
+- [x] marketing-site-mockup.html: .btt (24px) gets inset-block-end
+- [x] Git committed `a467e81` — 2 files
+
+### Pass 174: padding-block Logical Vertical Padding ✅ COMPLETE (bonus)
+**Target:** Logical padding-block-start/end alongside padding-top/bottom on structural separators
+- [x] index.html: .section (block-end:8px), .dir-foot (block-start:20px), .dir-brief-foot (block-start:12px), .section-sep (block-start:16px), .dir-section-head (block-end:8px), .skills-foot (block:20px 8px), .chat-list-footer (block-start:12px), .dossier-footer (block-start:12px)
+- [x] marketing-site-mockup.html: .section.section-sep (block-start:80px), .sf-bottom (block-start:24px), .section-sep.mt-xl (block-start:32px)
+- [x] Git committed `a467e81` — 2 files
+
 ### Pass 173: animation-composition Explicit Compositing ✅ COMPLETE (bonus)
 **Target:** Explicit animation-composition:replace on animated elements
 - [x] index.html: .sb-item .dot.good, .thinking-ast, .term-cursor, .thinking-orb.mode-saturn .l1/.l2 get animation-composition:replace
