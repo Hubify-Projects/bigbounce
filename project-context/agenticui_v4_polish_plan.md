@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 191: text-justify Explicit Auto ✅ COMPLETE (bonus)
+**Target:** Explicit text-justify:auto on body for proper justification behavior
+- [x] index.html: body gets text-justify:auto
+- [x] marketing-site-mockup.html: body gets text-justify:auto
+- [x] Git committed `4d4160c` — 2 files
+
+### Pass 190: perspective Explicit None ✅ COMPLETE (bonus)
+**Target:** Explicit perspective:none on transform-style:flat containers
+- [x] index.html: .sidebar, .chat, .preview get perspective:none
+- [x] marketing-site-mockup.html: .mock-frame gets perspective:none
+- [x] Git committed `4d4160c` — 2 files
+
+### Pass 189: outline-width Explicit Width ✅ COMPLETE (bonus)
+**Target:** Explicit outline-width on focus-visible elements
+- [x] index.html: focus-visible block gets outline-width:2px
+- [x] marketing-site-mockup.html: CTA/nav focus-visible block gets outline-width:0
+- [x] Git committed `4d4160c` — 2 files
+
 ### Pass 188: outline-color Explicit Focus Color ✅ COMPLETE (bonus)
 **Target:** Explicit outline-color on focus-visible elements for consistent focus indication
 - [x] index.html: focus-visible block gets outline-color:var(--accent)
