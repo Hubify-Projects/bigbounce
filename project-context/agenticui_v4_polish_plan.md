@@ -2118,3 +2118,14 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 3. **agent-mgmt** — `.perf-feed` scrollbar: `scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent;overscroll-behavior:contain`
 4. **cli-tui** — 3 `:active` states: `.session-tab`, `.tui-tab`, `.mockup-controls .ctrl`
 5. **cli-tui** — `.term-body` added `scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent`
+
+### Pass 69: Marketing site remaining :active states + scrollbar fixes ✅ COMPLETE
+**File:** `v4/marketing-site-mockup.html`
+**Changes (20 insertions):**
+1. **Nav buttons**: `.tn-mobile-btn:active`, `.tn-signin:active`, `.tn-theme-btn:active`
+2. **Foot-links**: `.datasets-foot-link`, `.agents-foot-link`, `.review-foot-link`, `.showcase-foot-link` — opacity:.75
+3. **Inline links**: `.window-link`, `.section-link`, `.sc-link`, `.sf-col a`, `.sf-bottom .lr a`, `.article-back` — opacity:.75
+4. **Interactive elements**: `.dd-pill:active` (surface-2), `.bc-link:active` (surface-4), `.docs-nav-item:active` (surface-2), `.compare-table tbody tr:active td` (surface-2), `.mockup-controls .ctrl:active` (surface-3 + translateY)
+5. **Scrollbar**: `.tn-mobile-menu` — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent;overscroll-behavior:contain`
+6. **Scrollbar**: `.docs-sidebar` — added `scrollbar-width:thin;scrollbar-color:var(--border) transparent`
+**Total marketing :active rules:** 18 → 36 (18 new)
