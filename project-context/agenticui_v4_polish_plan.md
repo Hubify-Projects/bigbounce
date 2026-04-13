@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 179: place-content Centering Shorthand ✅ COMPLETE (bonus)
+**Target:** place-content:center alongside align-items+justify-content on icon containers
+- [x] index.html: .sb-section-label .sb-action, .sb-footer-btn, .chat-header-btn, .term-tab .x, .term-new-btn get place-content:center
+- [x] marketing-site-mockup.html: .tn-theme-btn, .get-icon, .bc-link get place-content:center
+- [x] Git committed `d0350eb` — 2 files
+
+### Pass 178: border-inline-start Logical Left Borders ✅ COMPLETE (bonus)
+**Target:** Logical border-inline-start alongside border-left on accent/separator elements
+- [x] index.html: .sb-item-children, .sp-perm-row.allow, .sp-perm-row.deny, .dir-brief, .dispatch-preview, .file-preview-md .md-bq get border-inline-start
+- [x] marketing-site-mockup.html: review-card accent (3px), blockquote (2px), article-pullquote (2px) get border-inline-start
+- [x] Git committed `d0350eb` — 2 files
+
+### Pass 177: inset-inline-end Logical Right Positioning ✅ COMPLETE (bonus)
+**Target:** Logical inset-inline-end alongside physical right on positioned elements
+- [x] index.html: .profile-popout (8px), .sb-footer-btn .badge-dot (5px), .stat .stat-trend (16px), .toast-stack (16px), .graph-side (14px)
+- [x] marketing-site-mockup.html: .btt (24px)
+- [x] Git committed `d0350eb` — 2 files
+
 ### Pass 176: writing-mode Explicit Default ✅ COMPLETE (bonus)
 **Target:** Explicit writing-mode:horizontal-tb on body element
 - [x] index.html: body gets writing-mode:horizontal-tb
