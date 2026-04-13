@@ -2065,3 +2065,25 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 5. **chat-body scroll-behavior:smooth** — smooth scroll for auto-scroll and manual navigation
 6. **11 CSS rules: margin-right → margin-inline-end** — tier-tag, term-pill, sp-pill, first-letter, site-statusbar dot, sft-item dir, line-num, rt-tab, hm2-step, wiz-step, provider-badge
 7. **Spacing grid**: hm2-step margin 5→4px, wiz-step margin 6→8px, sp-pill margin 5→4px
+
+### Pass 61: Hover/active states for sidebar + chat elements ✅ COMPLETE
+### Pass 62: A11y aria-label + destructive btn color fix ✅ COMPLETE
+### Pass 63: transition:all → specific properties (first 18) ✅ COMPLETE
+### Pass 64: transition:all → specific properties (remaining 24 + 9 marketing) ✅ COMPLETE
+
+### Pass 65: :active pressed states for 38 interactive elements ✅ COMPLETE
+**File:** `v4/index.html`
+**Changes (34 insertions):**
+1. **Base `.btn:active`** — translateY(1px) + opacity:.75 for all buttons
+2. **`.btn-danger:active`** — brightness(.9) + translateY(1px)
+3. **`.btn-link:active`** — surface-3 background
+4. **Cards with elevation**: `.stat:active`, `.card:active` — translateY(1px) + reduced shadow
+5. **Flat list cards**: `.paper-row`, `.paper-row-min`, `.run-exp-card`, `.survey-cell`, `.review`, `.task-list-row`, `.idea-row` — surface-3 pressed background
+6. **Bordered cards**: `.lab-card`, `.org-node`, `.kanban-card`, `.mem-layer`, `.zone-card`, `.dest-card`, `.pinned-lab`, `.js-tmpl-card`, `.wiz-agent-card`, `.reviewer-card`, `.compute-pod`, `.standup-row` — deeper surface-N background on press
+7. **`.fig-card:active`** — translateY(1px) (gallery card press)
+8. **`.briefing:active`** — translateY(1px) (overnight briefing card)
+9. **Toolbar buttons**: `.chat-header-btn`, `.sidepeek-btn`, `.sb-footer-btn` — surface-4 pressed background
+10. **`.chat-send-btn:active`** — scale(.95) for circular send button press
+11. **`.icon-btn:active`** — surface-3 + translateY(1px)
+12. **Tabs/pills**: `.sp-pill`, `.filter-btn`, `.vibe-tab` — deeper color/background on press
+**Total :active rules:** 9 → 47 (38 new)
