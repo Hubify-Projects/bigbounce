@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 242: fill-rule Nonzero ✅ COMPLETE (bonus)
+**Target:** Explicit fill-rule:nonzero on SVG icon containers for path winding default
+- [x] index.html: `.icon-btn svg` gets fill-rule:nonzero
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets fill-rule:nonzero
+- [x] Git committed `00bf04d` — 2 files
+
+### Pass 241: baseline-shift Zero ✅ COMPLETE (bonus)
+**Target:** Explicit baseline-shift:0 on SVG icon containers for baseline offset default
+- [x] index.html: `.icon-btn` gets baseline-shift:0
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets baseline-shift:0
+- [x] Git committed `00bf04d` — 2 files
+
+### Pass 240: alignment-baseline Central ✅ COMPLETE (bonus)
+**Target:** Explicit alignment-baseline:central on SVG icon containers for text alignment baseline
+- [x] index.html: `.icon-btn` gets alignment-baseline:central
+- [x] marketing-site-mockup.html: `.tn-theme-btn .ic` gets alignment-baseline:central
+- [x] Git committed `00bf04d` — 2 files
+
 ### Pass 239: dominant-baseline Central ✅ COMPLETE (bonus)
 **Target:** Explicit dominant-baseline:central on SVG icon containers for vertical centering
 - [x] index.html: `.icon-btn` gets dominant-baseline:central
