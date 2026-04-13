@@ -476,6 +476,25 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Updated Key Interactions table with §53 references
 - [x] Git committed `8d05cf6`
 
+### Activity — Current Focus + Up Next banners ✅ COMPLETE
+- [x] Added "Current Focus" banner (EXP-054 progress, agent, GPU, time estimate)
+- [x] Added "Up Next" queue (5 queued experiments with compute mode labels)
+- [x] 2-column grid layout above activity feed stream
+- [x] Git committed `e1723df`
+
+### Captain — Today's Standups widget ✅ COMPLETE
+- [x] 3 standup rows (morning done/clickable, mid-day + evening scheduled/dimmed)
+- [x] Morning row opens standup sidepeek
+- [x] "all standups" link added to Captain footer
+- [x] Git committed `e1723df`
+
+### CLI/TUI — :focus, :queue, enriched :standups ✅ COMPLETE
+- [x] :focus — current focus + up next queue
+- [x] :queue — experiment queue with running/queued status
+- [x] :standups — 3 rows with attendee count, action items, duration
+- [x] Help text updated
+- [x] Git committed `2ac5f51`
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
