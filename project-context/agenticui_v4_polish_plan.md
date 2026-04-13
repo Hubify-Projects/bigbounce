@@ -2266,3 +2266,21 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 2. `:root.light .mockup-controls` — bg→cream .92 opacity, border→cocoa rgba
 3. `--elev-1` through `--elev-4` light overrides — replaced rgba(0,0,0) with rgba(90,74,62), removed white insets
 4. `.pricing-note a:active` — opacity .75 pressed state
+
+### Pass 83: All files — interaction triad gaps ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/desktop-app-mockup.html`, `v4/agent-management-clone.html`
+**Commit:** `4b8d13b` (12 insertions, 3 files)
+**Changes:**
+- **index.html:** `.graph-group-row:active` — full brightness on press
+- **desktop-app:** `.mp-open-app` transition (background + transform smoothing)
+- **agent-management:** `.nav-menu-btn` hover/active (opacity ramp), `.nav-footer-menu` hover/active, `.time-tab` hover/active + transition
+
+### Pass 84: All files — focus-visible rings on outline:none inputs ✅ COMPLETE
+**Files:** `v4/index.html`, `v4/marketing-site-mockup.html`, `v4/desktop-app-mockup.html`, `v4/cli-tui-mockup.html`
+**Commit:** `e62756c` (5 insertions, 4 files)
+**Changes:**
+- `.term-input-field:focus-visible` (index.html) — box-shadow focus ring
+- `.search-input input:focus-visible` + `.docs-search input:focus-visible` (marketing) — focus ring
+- `.mp-input:focus-visible` (desktop-app) — focus ring
+- `.term-input input:focus-visible` (cli-tui) — focus ring
+- All use `box-shadow:var(--focus-ring)` for consistent accent ring on keyboard nav
