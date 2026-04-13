@@ -398,6 +398,26 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 137: word-spacing Fine-Tuning ✅ COMPLETE (bonus)
+**Target:** Tighter word-spacing for dense UI chrome, slightly wider for readable paper content
+- [x] index.html: .sb-item gets word-spacing:-0.02em (tighter sidebar labels)
+- [x] index.html: .chat-msg-body gets word-spacing:-0.01em (tighter chat text)
+- [x] index.html: .sp-md p gets word-spacing:0.02em (wider paper paragraphs)
+- [x] marketing-site-mockup.html: .tn-link gets word-spacing:-0.02em (tighter nav)
+- [x] Git committed `9c72b48` — 2 files
+
+### Pass 136: overflow-clip-margin Controlled Bleed ✅ COMPLETE (bonus)
+**Target:** Allow focus rings and shadows to bleed slightly from overflow:clip containers
+- [x] index.html: .app gets overflow-clip-margin:4px; .fig-card gets 2px; .fig-thumb gets 1px
+- [x] marketing-site-mockup.html: .mock-frame gets overflow-clip-margin:2px
+- [x] Git committed `9c72b48` — 2 files
+
+### Pass 135: margin-trim Block Trim ✅ COMPLETE (bonus)
+**Target:** Trim first/last child margins that bleed against scrollable container edges
+- [x] index.html: .chat-body, .cmdp-results, .notif-drawer-body get margin-trim:block
+- [x] marketing-site-mockup.html: .tn-mobile-menu gets margin-trim:block
+- [x] Git committed `9c72b48` — 2 files
+
 ### Pass 134: fit-content Intrinsic Sizing ✅ COMPLETE (bonus)
 **Target:** Use fit-content for elements with arbitrary fixed widths that should shrink to content
 - [x] index.html: .hm-tooltip gets width:fit-content (with existing min-width:200px)
