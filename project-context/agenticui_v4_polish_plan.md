@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 218: column-width Auto ✅ COMPLETE (bonus)
+**Target:** Explicit column-width:auto on multi-column containers alongside column-count
+- [x] index.html: .fp-pdf-refs gets column-width:auto
+- [x] marketing-site-mockup.html: N/A (no multi-column elements)
+- [x] Git committed `2ba4fbb` — 1 file
+
+### Pass 217: column-span All ✅ COMPLETE (bonus)
+**Target:** column-span:all on headings inside multi-column containers so they break across columns
+- [x] index.html: .fp-pdf-section gets column-span:all
+- [x] marketing-site-mockup.html: N/A (no multi-column elements)
+- [x] Git committed `2ba4fbb` — 1 file
+
+### Pass 216: column-fill Balance ✅ COMPLETE (bonus)
+**Target:** Explicit column-fill:balance on multi-column containers for even content distribution
+- [x] index.html: .fp-pdf-refs gets column-fill:balance
+- [x] marketing-site-mockup.html: N/A (no multi-column elements)
+- [x] Git committed `2ba4fbb` — 1 file
+
 ### Pass 215: border-image-outset Zero ✅ COMPLETE (bonus)
 **Target:** Explicit border-image-outset:0 completing full border-image longhand set on dividers
 - [x] index.html: .divider-v, .divider-h get border-image-outset:0
