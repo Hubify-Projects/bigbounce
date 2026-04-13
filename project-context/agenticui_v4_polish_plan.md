@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 161: font-variant-position OpenType Sub/Superscript ✅ COMPLETE (bonus)
+**Target:** OpenType font-variant-position for proper typographic sub/superscript in paper content
+- [x] index.html: new rules .sp-md sub{font-variant-position:sub} and .sp-md sup{font-variant-position:super}
+- [x] marketing-site-mockup.html: N/A (no scientific sub/sup content)
+- [x] Git committed `104bba0` — 1 file
+
+### Pass 160: max-block-size Logical Max-Height ✅ COMPLETE (bonus)
+**Target:** Logical max-block-size alongside physical max-height on constrained panels
+- [x] index.html: .chat-input (200px), .cmdp-results (440px), .settings-nav (calc(100vh-100px)) get max-block-size
+- [x] marketing-site-mockup.html: docs sidebar gets max-block-size:calc(100vh-100px)
+- [x] Git committed `104bba0` — 2 files
+
+### Pass 159: overflow-block Logical Overflow ✅ COMPLETE (bonus)
+**Target:** Logical overflow-block:auto alongside overflow-y:auto on scrollable containers
+- [x] index.html: .sb-body, .chat-body, .view get overflow-block:auto
+- [x] marketing-site-mockup.html: .tn-mobile-menu and docs sidebar get overflow-block:auto
+- [x] Git committed `104bba0` — 2 files
+
 ### Pass 158: scroll-snap-stop on Tab Children ✅ COMPLETE (bonus)
 **Target:** Force snap stop on scroll-snap-align children so flings don't skip tabs
 - [x] index.html: .term-tab and .preview-tab get scroll-snap-stop:always
