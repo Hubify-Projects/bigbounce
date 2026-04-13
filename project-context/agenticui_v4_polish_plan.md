@@ -398,6 +398,24 @@ v4 mockups use ad-hoc CSS variables (`--bg`, `--surface`, `--text`) while Agenti
 - [x] desktop-app-mockup.html: .menu-item, .dock-icon
 - [x] Git committed `10fa0bc` — 23 edits across all 5 files
 
+### Pass 194: justify-self End Alignment ✅ COMPLETE (bonus)
+**Target:** Explicit justify-self:end on margin-left:auto flex children
+- [x] index.html: .sb-section-label .sb-action, .sb-footer-user, .chat-header-meta get justify-self:end
+- [x] marketing-site-mockup.html: N/A (no margin-left:auto flex children needing it)
+- [x] Git committed `b0f9cca` — 2 files
+
+### Pass 193: font-size-adjust Metric Normalization ✅ COMPLETE (bonus)
+**Target:** Explicit font-size-adjust:from-font on body for cross-font metric normalization
+- [x] index.html: body gets font-size-adjust:from-font
+- [x] marketing-site-mockup.html: body gets font-size-adjust:from-font
+- [x] Git committed `b0f9cca` — 2 files
+
+### Pass 192: letter-spacing Normal Reset ✅ COMPLETE (bonus)
+**Target:** Explicit letter-spacing:normal on body text inputs to reset tracking
+- [x] index.html: .chat-input, .textarea, .cmdp-input get letter-spacing:normal
+- [x] marketing-site-mockup.html: N/A (no body text inputs)
+- [x] Git committed `b0f9cca` — 2 files
+
 ### Pass 191: text-justify Explicit Auto ✅ COMPLETE (bonus)
 **Target:** Explicit text-justify:auto on body for proper justification behavior
 - [x] index.html: body gets text-justify:auto
