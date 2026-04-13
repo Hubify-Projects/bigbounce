@@ -2139,3 +2139,22 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 4. **cli-tui-mockup.html** — `.tui-tab,.mockup-controls .ctrl` get `user-select:none`
 5. **agent-management-clone.html** — `.nav-sub-link,.btn,.perf-feed-item` get `user-select:none`
 **Coverage:** ~80 interactive non-button selectors + all `<button>` elements now prevent accidental text selection
+
+### Pass 71: focus-visible keyboard accessibility across all files ✅ COMPLETE
+**Files:** all 5 v4 files
+**Changes (30 insertions across 5 files):**
+1. **index.html** — 17 new selectors added to compound `:focus-visible` rule: `.tree-row`, `.sb-chat-row`, `.notif-row`, `.chat-pos-item`, `.profile-popout-item`, `.kanban-card`, `.task-list-row`, `.tbl tbody tr`, `.run-exp-card`, `.paper-row`, `.survey-cell`, `.standup-row`, `.org-node`, `.lab-card`, `.zone-card`, `.dest-card`
+2. **marketing-site-mockup.html** — 22 new selectors: all button variants, cards, tabs, pills, nav buttons, links
+3. **desktop-app-mockup.html** — new rule for 4 selectors (dock-icon, mp-open-app, ctrl, menu-item)
+4. **cli-tui-mockup.html** — new rule for 3 selectors (session-tab, tui-tab, ctrl)
+5. **agent-management-clone.html** — extended existing rule to include `.nav-sub-link`
+**Pattern:** `outline:2px solid var(--accent);outline-offset:2px;box-shadow:var(--focus-ring)`
+
+### Pass 72: Activity Graph light mode support ✅ COMPLETE
+**File:** `v4/index.html`
+**Changes (38 insertions):**
+1. **36 `:root.light` overrides** for graph CSS — background, header, text, borders, search, mode toggle, node card, connections list, side panels, footer
+2. **Background swap**: `#06060A` → `#faf6f1`; `rgba(6,6,10,.9)` → `rgba(253,250,244,.92)` for header/footer chrome
+3. **Color swap**: all `rgba(255,255,255,...)` → `rgba(59,47,47,...)` cocoa equivalents matching Cabinet light theme
+4. **JS SVG fix**: node emphasis circles now theme-aware via `document.documentElement.classList.contains('light')` check
+**Impact:** Activity Graph was previously 100% invisible in light mode (all white-on-cream). Now fully functional.
