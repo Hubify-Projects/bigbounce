@@ -1970,3 +1970,19 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 4. **Margin grid**: `9px`→`8px`, `11px`→`12px`, `5px`→`4px`, `7px`→`8px`
 5. **New `:root` tokens**: `--site-bg/text/surface/border` (6 site-frame colors), `--hm-l0..l3` (heatmap), `--macos-red/yellow/green`, `--qc-pass/warn/fail-bg` (badge QC)
 6. **Tokenized**: 14 `.bb-*` rules, `.site-frame`, heatmap cells, traffic dots, QC badges, destructive button text, loading spinner
+
+### Pass 57: Light Mode Fixes + Extended Color Tokenization ✅ COMPLETE (bonus)
+**File:** `v4/index.html`
+**Changes (35 insertions, 35 deletions):**
+1. **Wizard step light mode fix**: `box-shadow:0 0 0 3px rgba(255,255,255,.08)` → `var(--overlay-selected,...)` fallback pattern — white glow invisible on cream bg
+2. **Vibe frame tokenized**: 7 hardcoded colors → `var(--vibe-*,fallback)` pattern
+3. **SVG fill currentColor**: 12 instances `fill="#ebedef"` → `fill="currentColor"` — architecture diagram labels now theme-responsive
+4. **Toast tokenized**: 8 rules → `var(--toast-*-icon/bg/text,fallback)` pattern
+5. **PDF preview bg**: `#0a0a10` → `var(--surface-2)`
+6. **Captain dots**: `#5fb88a` → `var(--success)`, `#d4a054` → `var(--warn)`
+7. **Graph check SVG**: `color:#fff` → `color:var(--bg)`
+8. **Text input success**: `#288034` → `var(--success)`
+9. **Light mode gradient**: `#fdfaf4/#faf6f1` → `var(--surface)/var(--bg)`
+10. **Destructive button**: `color:#fff` → `color:var(--bg)`
+11. **Loading spinner**: `border-top-color:#fff` → `border-top-color:var(--text-bright)`
+12. **Toast icon SVG**: `stroke:#fff` → `stroke:var(--bg)`
