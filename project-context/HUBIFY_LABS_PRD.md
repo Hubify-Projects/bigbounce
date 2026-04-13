@@ -1116,7 +1116,14 @@ hubify-labs pod status                # Check GPU pod
 hubify-labs pod ssh                   # SSH into pod
 hubify-labs backup                    # Trigger backup
 hubify-labs papers                    # List papers with status
-hubify-labs site deploy               # Deploy website
+hubify-labs site status               # Lab site overview + Lighthouse score
+hubify-labs site deploy               # Trigger manual deploy
+hubify-labs site preview              # Open preview URL in browser
+hubify-labs site open                 # Open live site in browser
+hubify-labs site sections             # List all sections + sync status
+hubify-labs site logs                 # Recent site-worker activity
+hubify-labs site edit                 # Start vibe-coding chat session (§53)
+hubify-labs site template             # Show template.yaml config
 hubify-labs share <dataset>           # Share dataset across Labs
 hubify-labs learnings                 # View/search shared learnings
 ```
@@ -1157,7 +1164,8 @@ hubify-labs learnings                 # View/search shared learnings
 |-----------|-------------|
 | "run overnight" | Research Lead designs batch, Infra Lead deploys, queue auto-chains, 10-min cron monitors |
 | "what happened last night" | Reads activity_stream, summarizes completed experiments + key results |
-| "update the website" | Writing Lead delegates to Site Updater, commits + deploys |
+| "update the website" | site-worker auto-syncs changed sections, commits to site/ dir, triggers Vercel deploy (§53) |
+| "change the hero section on the site" | Opens vibe-coding chat with site-worker agent, edits applied live in Vercel Sandbox preview |
 | "write the paper" | Writing Lead delegates to Paper Writer for LaTeX, Figure Generator for plots |
 | "how much have we spent" | Reads cost_tracking, shows daily/weekly/total per lab |
 | "share the anomaly catalog with lab X" | Global Orchestrator registers in shared_datasets, notifies Lab X |

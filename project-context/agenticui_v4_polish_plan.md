@@ -446,6 +446,22 @@ Houston redirected the loop from CSS property passes to Lab Site Builder integra
 - [x] Added §53 cross-references to all 5 lab specs
 - [x] Git committed `7a247cc`
 
+### Captain/Overview — Lab Site status widget ✅ COMPLETE
+- [x] Added 4-stat grid (visitors/7d, page views, lighthouse, sections) to Captain dashboard
+- [x] Subdomain + deploy time + auto-sync status footer
+- [x] Clickable header navigates to Lab Site tab
+- [x] "lab site" link added to Captain footer nav
+- [x] Git committed `2cede7d`
+
+### CLI/TUI — :site command group ✅ COMPLETE
+- [x] New "Site" tab with full Lab Site Builder dashboard (16-section template table)
+- [x] site-worker agent info panel (events, report chain, error count)
+- [x] 5 recent deploys with auto-sync/vibe-code labels
+- [x] 8 :site subcommands: status, deploy, preview, open, sections, logs, edit, template
+- [x] Aliases: :site, :web, :www navigate to Site view
+- [x] Help text and tab index updated
+- [x] Git committed `7b89a40`
+
 ---
 
 ### Pass 248: lighting-color White ✅ COMPLETE (bonus)
