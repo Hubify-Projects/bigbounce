@@ -2345,3 +2345,17 @@ Converted every `transition:all` to explicit property lists. `transition:all` ca
 **Changes:**
 - Added `::-webkit-scrollbar-thumb:hover` for `.term-body` (hover feedback on scrollbar grab)
 - Added light mode cocoa-tinted scrollbar thumb overrides (`:root.light .term-body::-webkit-scrollbar-thumb` + `:hover`)
+
+### Pass 93: tabular-nums for agent-management metrics ✅ COMPLETE
+**Files:** `v4/agent-management-clone.html`
+**Commit:** `21992e7`
+**Changes:**
+- `.stat-number`: Added `font-variant-numeric:tabular-nums` (prevents layout jitter when stats update)
+- `.metric-bar-value`: Same treatment for metric bar values
+
+### Pass 94: caret-color + tabular-nums refinements ✅ COMPLETE
+**Files:** `v4/desktop-app-mockup.html`, `v4/cli-tui-mockup.html`
+**Commit:** `a398cff`
+**Changes:**
+- **desktop-app:** Added `caret-color:var(--accent)` to `.mp-input` (sage green cursor in search)
+- **cli-tui:** Added `font-variant-numeric:tabular-nums` to `.tui-tab .num` (consistent number width in tab badges)
