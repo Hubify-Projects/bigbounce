@@ -250,6 +250,11 @@ We train for $100$ epochs using AdamW~\cite{Loshchilov2019} with differential le
 The learning rate follows a cosine annealing schedule with warm restarts~\cite{Loshchilov2017} ($T_0 = 10$, $T_{\rm mult} = 2$).
 The best model is selected by validation accuracy, achieving peak performance at epoch $79$ with $93.7\%$ validation accuracy.
 
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{fig_training_curves.png}
+  \caption{\label{fig:training} Training and validation curves for the \vit{}-Small chirality classifier. \textit{Left:} Cross-entropy loss converges within ${\sim}40$ epochs, with validation loss minimum at epoch~79. Mild overfitting is visible after epoch~80. \textit{Center:} Classification accuracy reaches $93.7\%$ on the validation set at epoch~79. \textit{Right:} Cosine annealing learning rate schedule from $3 \times 10^{-4}$ to ${\sim}10^{-7}$.}
+\end{figure*}
+
 \subsection{Flip-Equivariance Consistency Loss}\label{sec:equivariance_loss}
 
 The central methodological innovation is an explicit flip-equivariance consistency loss that encourages the model to satisfy the physical constraint that horizontally flipping a galaxy image should swap the CW and CCW probabilities while leaving the not-spiral probability unchanged:
@@ -318,6 +323,11 @@ We measure the Pearson correlation between $\pcw(x)$ and $\pccw(\mathcal{F}[x])$
 \end{equation}
 This exceeds our threshold of $r > 0.7$ and demonstrates that the flip-equivariance loss (Eq.~\ref{eq:eq_loss}) successfully trains the model to approximate the physical symmetry.
 The residual deviation from $r = 1.0$ reflects the soft nature of the constraint and is fully corrected by test-time equivariant averaging.
+
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{fig_confusion_matrix.png}
+  \caption{\label{fig:confusion} Confusion matrix for the 3-class \vit{}-Small classifier on the validation set ($N = 3{,}994$). \textit{Left:} Raw counts. \textit{Right:} Row-normalized fractions. The dominant error mode is CW$\leftrightarrow$CCW misclassification (${\sim}5\%$ swap rate), consistent with ambiguous spiral morphology in face-on galaxies. Not-spiral classification is highly reliable ($96.5\%$ precision), confirming that the three-class design successfully routes non-spirals to the rejection class.}
+\end{figure*}
 
 \subsection{Test 2: Rotation Stability}\label{sec:rotation}
 
@@ -562,6 +572,11 @@ These works support the emerging consensus that galaxy chirality is consistent w
 %%  8. DISCUSSION
 %% ============================================================
 \section{Discussion}\label{sec:discussion}
+
+\begin{figure*}[tb]
+  \includegraphics[width=\textwidth]{fig_redshift_distribution.png}
+  \caption{\label{fig:redshift} \textit{Left:} Photometric redshift distribution of the full catalog (gray), CW spirals (blue), and CCW spirals (red). The distributions are statistically indistinguishable, consistent with parity conservation at all redshifts probed. \textit{Right:} Equivariant CW fraction $\fcw^{\rm eq}$ as a function of photometric redshift. All bins are consistent with $0.5$ within statistical uncertainties, with no trend indicating redshift-dependent parity violation. The green band shows the global measurement $\fcw^{\rm eq} = 0.5012 \pm 0.0006$.}
+\end{figure*}
 
 \subsection{Implications for Torsion-Induced Parity Violation}\label{sec:torsion}
 
