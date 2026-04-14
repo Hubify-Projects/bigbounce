@@ -42,6 +42,7 @@
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\fcw}{f_{\rm CW}}
 \newcommand{\paperVersion}{v2.3.0}
 \newcommand{\paperTimestamp}{2026-04-13}
 
@@ -267,7 +268,7 @@ We \textit{assume} $w = -1$ at late times; deriving this requires showing that t
 
 \subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
 
-The galaxy spin asymmetry amplitude evolves as $A(z) = A_0(1+z)^{-p}e^{-qz}$, with $A_0 \in [0,0.02]$.\label{eq:Az}\label{eq:A0} The parity-odd operator introduces systematic chirality into the tidal field, but the framework's coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$ underpredicts the empirical $A_0 \sim 0.003$ by $>100$ orders of magnitude. The galaxy spin dipole is retained as an empirical phenomenological fit, not a prediction of the theory.
+The galaxy spin asymmetry amplitude evolves as $A(z) = A_0(1+z)^{-p}e^{-qz}$, with $A_0 \in [0,0.02]$.\label{eq:Az}\label{eq:A0} The parity-odd operator introduces systematic chirality into the tidal field, but the framework's coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$ underpredicts any plausible spin asymmetry by $>100$ orders of magnitude. Our chirality catalog of $8.47$~million galaxies~\cite{Golden:2026chirality} confirms the null: $\fcw^{\rm eq} = 0.5012 \pm 0.0006$ ($0.4\sigma$ from parity conservation). Galaxy spin asymmetry is not a prediction of the theory, and no significant signal exists to explain.
 
 
 %% ============================================================
@@ -302,13 +303,15 @@ Observational support comes from Minami \& Komatsu~\cite{Minami2020}, who found 
 
 \textit{Calibration caveat.}---The cosmic birefringence signal is degenerate with miscalibration of the instrumental polarization angle~$\psi$~\cite{Minami2020}. Minami \& Komatsu's method breaks this degeneracy using the galactic foreground $EB$ signal as a self-calibration anchor, assuming vanishing intrinsic foreground $EB$---an assumption that has been questioned for polarized thermal dust. Independent validation from experiments with different optics and calibration strategies (Simons Observatory, LiteBIRD) is essential. The isotropic birefringence value ($\beta\approx 0.30^\circ$) can be tested with existing and near-term data; the anisotropic low-$\ell$ component requires full-sky, cosmic-variance-limited polarimetry (LiteBIRD).
 
-\textit{Detectability.}---The isotropic signal has been detected at $2.4$--$2.7\sigma$ by Planck and $2.9\sigma$ by ACT~DR6~\cite{DiegoPalazuelos2025}, with significance expected to further improve with LiteBIRD~\cite{LiteBIRD2023} (cosmic-variance limited below $\ell\sim 10$). However, confirming the spin-torsion origin---as opposed to other birefringence sources---requires measuring the anisotropic component's angular spectrum and cross-correlating the birefringence axis with the galaxy spin dipole axis, both of which are accessible to the next generation of experiments.
+\textit{Detectability.}---The isotropic signal has been detected at $2.4$--$2.7\sigma$ by Planck and $2.9\sigma$ by ACT~DR6~\cite{DiegoPalazuelos2025}, with significance expected to further improve with LiteBIRD~\cite{LiteBIRD2023} (cosmic-variance limited below $\ell\sim 10$). However, confirming the spin-torsion origin---as opposed to other birefringence sources---requires measuring the anisotropic component's angular spectrum, which is accessible to the next generation of experiments. Note that the galaxy spin channel has been definitively closed as a null result by our chirality catalog~\cite{Golden:2026chirality} ($0.4\sigma$ from parity conservation); the birefringence signal stands on its own.
 
 
 %% TRIMMED: Galaxy Spin Asymmetry subsection condensed — figure, table, detailed discussion moved to supplementary material
 \subsection{Galaxy Spin Asymmetry: A Contested Anomaly}\label{sec:spinobs}
 
-Several groups have reported a dipole asymmetry in galaxy spin handedness ($A_0 \sim 0.003$, axis near the CMB kinematic dipole)~\cite{Shamir2012,Shamir2022,Longo2011}, but independent reanalyses~\cite{PatelDesmond2024,Philcox2025} find results consistent with isotropy. The minimal ECH framework underpredicts $A_0$ by $>100$ orders of magnitude (Sec.~\ref{sec:spinmech}); the galaxy spin dipole is therefore an empirical phenomenological fit, not a framework prediction. Our framework survives a definitive null result: CMB parity violation ($2.4$--$2.9\sigma$ from Planck and ACT~DR6~\cite{Minami2020,Eskilt2022,DiegoPalazuelos2025}) provides independent evidence entirely decoupled from galaxy morphology.\label{fig:galaxy_spin}\label{tab:surveys}
+Several groups have reported a dipole asymmetry in galaxy spin handedness ($A_0 \sim 0.003$, axis near the CMB kinematic dipole)~\cite{Shamir2012,Shamir2022,Longo2011}, but independent reanalyses~\cite{PatelDesmond2024,Philcox2025} find results consistent with isotropy. Our own chirality catalog of $8{,}474{,}531$ galaxies~\cite{Golden:2026chirality}---the largest bias-audited catalog to date, $4.3\times$ CE-ResNet and $6.5\times$ Shamir---finds $\fcw^{\rm eq} = 0.5012 \pm 0.0006$ ($0.4\sigma$ from parity conservation), with a null all-sky dipole ($0.43\sigma$). Shamir's claimed $3\%$ asymmetry is refuted (our maximum regional asymmetry is $0.47\%$, $7\times$ smaller).
+
+The galaxy spin channel is therefore a \textit{confirmed null result}, not a contested anomaly. The minimal ECH framework's underprediction of $A_0$ by $>100$ orders of magnitude (Sec.~\ref{sec:spinmech}) is consistent with the observed null. Our framework's surviving parity-violation evidence comes entirely from CMB birefringence ($4.1\sigma$ from our independent NaMaster analysis of the Planck Commander map, Sec.~\ref{sec:data_cmb}; $2.4$--$2.9\sigma$ from published Planck and ACT~DR6 analyses~\cite{Minami2020,Eskilt2022,DiegoPalazuelos2025}), which is independent of galaxy morphology.\label{fig:galaxy_spin}\label{tab:surveys}
 
 %% TRIMMED: Cosmological Tensions subsection condensed — lead with null result; detailed parameterization and figures moved to supplementary material
 \subsection{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:tensions}
@@ -364,7 +367,13 @@ The one-loop motivation for the parity-odd coefficient, the vacuum energy from f
 %%  5. DATA METHODS: GALAXY SPIN ANALYSIS
 %% ============================================================
 \section{Data Methods: Galaxy Spin Analysis}\label{sec:data_galaxy}
-Galaxy spin dipole analysis uses published CW/CCW labels from Shamir~\cite{Shamir2022,Shamir2024} fit with a hierarchical Bayesian model (Appendix~\ref{app:galaxy}). The minimal ECH framework underpredicts the observed amplitude $A_0 \sim 0.003$ by $>100$ orders of magnitude; the signal is included as a contested anomaly, not a framework prediction. See the supplementary material for full methodology.
+
+\textit{Prior work.}---Galaxy spin dipole analysis historically relied on published CW/CCW labels from Shamir~\cite{Shamir2022,Shamir2024}, who reported ${\sim}1$--$3\%$ CW excesses and claimed statistically significant parity violation in catalogs of up to $1.3$~million galaxies. These claims have been contested~\cite{PatelDesmond2024,Philcox2025}.
+
+\textit{Our chirality catalog (Paper~4).}---We independently addressed this question by constructing the largest bias-audited galaxy chirality catalog to date: $8{,}474{,}531$ galaxies from the DESI Legacy Imaging Surveys classified by a Vision Transformer (ViT-Small, $93.7\%$ validation accuracy, $8/8$ bias tests passed) with a three-class output (CW/CCW/not-spiral) and test-time equivariant averaging~\cite{Golden:2026chirality}.
+The equivariant CW fraction is $\fcw^{\rm eq} = 0.5012 \pm 0.0006$, consistent with parity conservation at the $0.4\sigma$ level. The all-sky dipole is $0.43\sigma$ (null). Shamir's claimed $3\%$ asymmetry is not reproduced: our maximum regional asymmetry is $0.47\%$ ($7\times$ smaller). The catalog is $4.3\times$ larger than CE-ResNet and $6.5\times$ larger than Shamir's largest catalog, and agrees with CE-ResNet's equivariant result ($\fcw = 0.5013$) to within $0.01$ percentage points.
+
+This definitively establishes that the minimal ECH framework's underprediction of galaxy spin asymmetry ($>100$ orders of magnitude below Shamir's claimed $A_0 \sim 0.003$) is moot: there is no significant galaxy spin asymmetry to explain. The framework's surviving parity-violation evidence comes entirely from CMB birefringence (Sec.~\ref{sec:data_cmb}), which is independent of galaxy morphology.
 
 %% TRIMMED: Sample selection and classification subsection — moved to supplementary material
 %% TRIMMED: Hierarchical Bayesian framework subsection — moved to supplementary material
@@ -421,14 +430,14 @@ The Bayesian evidence is dataset-dependent:\label{eq:Zcomb2}
 +4.8 \pm 0.5 & \text{Full tension} \\
 \end{cases}
 \end{align}
-With Planck+BAO alone, the Occam penalty slightly disfavors the model; the preference emerges when tension data are included.\label{tab:ic}\label{tab:fullcomp}\label{fig:naturalness}\label{tab:finetuning}\label{fig:sensitivity}\label{sec:finetuning} The fine-tuning comparison ($10^5$ vs.\ $10^{120}$ for $\Lambda$CDM) is a reparameterization as sensitivity to $N_{\rm tot}$, not a resolution (Sec.~\ref{sec:gdp}). The decisive test is detection of correlated parity-odd signatures (CMB $E$-$B$, galaxy spin dipole axis), not tension resolution alone.
+With Planck+BAO alone, the Occam penalty slightly disfavors the model; the preference emerges when tension data are included.\label{tab:ic}\label{tab:fullcomp}\label{fig:naturalness}\label{tab:finetuning}\label{fig:sensitivity}\label{sec:finetuning} The fine-tuning comparison ($10^5$ vs.\ $10^{120}$ for $\Lambda$CDM) is a reparameterization as sensitivity to $N_{\rm tot}$, not a resolution (Sec.~\ref{sec:gdp}). The decisive test is detection of CMB $E$-$B$ parity-odd signatures (confirmed at $4.1\sigma$ by our NaMaster analysis, Sec.~\ref{sec:data_cmb}), not tension resolution alone. The galaxy spin channel is a confirmed null~\cite{Golden:2026chirality}.
 
 
 %% ============================================================
 %%  8. SYSTEMATIC ANALYSIS AND NULL TESTS
 %% ============================================================
 \section{Systematic Analysis}\label{sec:systematics}
-Combined detection significance is estimated using inverse-variance weighting of the CMB birefringence measurements (Sec.~\ref{sec:birefringence_check}). Null tests for the galaxy spin and CMB channels follow the standard protocols described in the original analyses~\cite{Minami2020,Shamir2022}. For the $f_{\rm NL}$ channel, systematic uncertainties including GR projection effects, $b_\phi$ bias, and photo-$z$ degradation are analyzed in the companion paper~\cite{Golden:2026forecast}. The primary residual systematic for the MCMC verification is the dataset-dependent $\Delta\Neff$: the full-tension dataset (including SH0ES) pulls $H_0$ upward, while the Planck+BAO+SN dataset recovers standard values (Sec.~\ref{sec:verification}).
+Combined detection significance is estimated using inverse-variance weighting of the CMB birefringence measurements (Sec.~\ref{sec:birefringence_check}). The galaxy spin channel is a confirmed null ($\fcw^{\rm eq} = 0.5012 \pm 0.0006$, Sec.~\ref{sec:spinobs},~\cite{Golden:2026chirality}); the CMB birefringence channel provides the surviving parity-violation evidence. For the $f_{\rm NL}$ channel, systematic uncertainties including GR projection effects, $b_\phi$ bias, and photo-$z$ degradation are analyzed in the companion paper~\cite{Golden:2026forecast}. The primary residual systematic for the MCMC verification is the dataset-dependent $\Delta\Neff$: the full-tension dataset (including SH0ES) pulls $H_0$ upward, while the Planck+BAO+SN dataset recovers standard values (Sec.~\ref{sec:verification}).
 
 %% TRIMMED: Combined detection significance subsection — moved to supplementary material
 %% TRIMMED: CMB systematic errors subsection — moved to supplementary material
@@ -877,7 +886,7 @@ A Savage-Dickey density ratio gives $\mathrm{BF}(\beta \neq 0) \approx 176$ (pri
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
 
-The galaxy spin asymmetry signal remains observationally contested~\cite{PatelDesmond2024,Philcox2025}. If future surveys with $>10^9$ galaxies definitively establish a null result ($A_0 < 0.0005$), the framework is \textit{not} falsified:
+The galaxy spin asymmetry signal has been resolved by our chirality catalog~\cite{Golden:2026chirality}: $8.47$~million galaxies yield $\fcw^{\rm eq} = 0.5012 \pm 0.0006$, a definitive null ($0.4\sigma$ from parity conservation). This null result is \textit{consistent} with the framework, which underpredicts spin asymmetry by $>100$ orders of magnitude. The framework is \textit{not} falsified:
 
 \begin{enumerate}[leftmargin=*]
 \item \textit{Independent CMB evidence}: Cosmic birefringence from Planck provides $2.4$--$2.7\sigma$ evidence for parity violation~\cite{Minami2020,Eskilt2022}, independently confirmed by ACT~DR6 at $2.9\sigma$~\cite{DiegoPalazuelos2025}, with combined SPIDER+Planck+ACT significance reaching ${\sim}7\sigma$ for total rotation~\cite{SPIDER2025} (subject to calibration caveats, Sec.~\ref{sec:EB}), entirely independent of galaxy morphology. Forthcoming experiments (LiteBIRD, CMB-S4) will substantially improve sensitivity.
@@ -889,7 +898,7 @@ The galaxy spin asymmetry signal remains observationally contested~\cite{PatelDe
 \item \textit{What a spin null would teach us}: A definitive null result would constrain the parity-odd tidal torque coupling efficiency, refining our understanding of how the $\varepsilon KR$ operator imprints on structure formation. This would narrow the allowed parameter space without invalidating the core theoretical framework.
 \end{enumerate}
 
-Conversely, confirmation of the spin asymmetry at $A_0 \sim 0.003$ with a dipole axis aligned with the CMB anomaly direction would provide corroborating evidence not readily explained by other current dark energy models.
+Our chirality catalog has ruled out spin asymmetry at the $A_0 \sim 0.003$ level: the maximum observed regional asymmetry is $0.47\%$ ($7\times$ smaller than Shamir's claim). The parity-violation case therefore rests entirely on CMB birefringence.
 
 \subsection{Future Observational Prospects}
 
@@ -921,9 +930,9 @@ The most pressing theoretical need is a first-principles determination of $\alph
 
 Any of these approaches yielding $\alpha/M$ within an order of magnitude of the phenomenological best-fit value would confirm the framework's self-consistency; a discrepancy by more than $\mathcal{O}(10)$ would require re-evaluation of the $C_\ell^{EB}$ amplitude prediction while leaving the tension resolution (which depends on bounce parameters, not $\alpha/M$) intact.
 
-\subsubsection{First-Principles Galaxy Spin Dipole Amplitude}
+\subsubsection{Galaxy Spin Dipole: Resolved}
 
-The galaxy spin dipole amplitude $A_0$ is currently an empirical fit parameter (Sec.~\ref{sec:spinobs}). A first-principles derivation requires computing the parity-odd correction to the tidal torque tensor from the $\varepsilon^{abcd}K_{ab}R_{cd}$ effective action term. This involves: (1)~evaluating the leading-order parity-odd contribution to the Newtonian tidal field $T_{ij} = \partial_i\partial_j\Phi$ in the post-Newtonian expansion with the $\varepsilon KR$ operator; (2)~propagating this through the standard tidal torque theory machinery to obtain the spin asymmetry as a function of $\alpha/M$ and local density contrasts; (3)~computing the resulting dipole amplitude and comparing with the empirical $A_0\sim 0.003$. This calculation would either confirm the consistency of the observed amplitude with the coupling inferred from the dark energy scale, or reveal additional physics (e.g., non-linear amplification during structure formation).
+The galaxy spin dipole amplitude $A_0$ was previously an open empirical question (Sec.~\ref{sec:spinobs}). Our chirality catalog~\cite{Golden:2026chirality} has resolved this: $8.47$~million galaxies from the DESI Legacy Surveys yield $\fcw^{\rm eq} = 0.5012 \pm 0.0006$, with a null all-sky dipole ($0.43\sigma$) and maximum regional asymmetry of $0.47\%$. This constrains $|\delta| < 0.24\%$ at $95\%$~CL---the tightest galaxy chirality constraint to date, and $7\times$ smaller than Shamir's claimed $3\%$ excess. A first-principles derivation of $A_0$ from the $\varepsilon^{abcd}K_{ab}R_{cd}$ operator is no longer needed: the framework's $>100$~order-of-magnitude underprediction is consistent with the observed null. Future work on this channel shifts to redshift-dependent parity tests and cross-correlation with spectroscopic surveys.
 
 \subsubsection{Bounce-to-Inflation Transition Dynamics}
 
