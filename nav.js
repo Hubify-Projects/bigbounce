@@ -137,8 +137,8 @@
 
   // ── Build topbar ──
   var topbar = '<div class="topbar">'
-    + '<span>March 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>'
-    + '<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>'
+    + '<span>April 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>'
+    + '<span class="topbar-right">Houston Golden &middot; Hubify Labs &middot; Independent Researcher</span>'
     + '</div>';
 
   // ── Build inline nav ──
