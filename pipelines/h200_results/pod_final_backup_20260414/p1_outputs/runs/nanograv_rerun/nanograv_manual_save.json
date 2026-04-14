@@ -1,0 +1,16 @@
+{
+  "experiment": "nanograv_ptarcade",
+  "run_date": "2026-04-10",
+  "status": "results_from_terminal_rerun_needed_for_chains",
+  "gamma": 3.193,
+  "gamma_error": 0.423,
+  "bounce_prediction_gamma": 3.0,
+  "smbhb_prediction_gamma": 4.33,
+  "bayes_factor_bounce_vs_smbhb": 31.16,
+  "tension_with_bounce_sigma": 0.45,
+  "tension_with_smbhb_sigma": 2.70,
+  "P_bounce": 0.674,
+  "P_smbhb": 0.021,
+  "verdict": "Strong evidence for bounce",
+  "source": "Manual save from terminal output after /workspace write failure, captured 2026-04-10 02:28 UTC. Full MCMC chains not preserved - need re-run for publication"
+}

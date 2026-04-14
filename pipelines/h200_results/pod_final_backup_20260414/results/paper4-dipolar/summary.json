@@ -1,0 +1,20 @@
+{
+  "experiment": "Paper 4 Dipolar Analysis",
+  "timestamp": "2026-04-14T06:24:01.485342",
+  "catalog": {
+    "n_total": 8474531,
+    "n_spirals": 3321795,
+    "fcw_eq": 0.5012,
+    "fcw_err": 0.0006,
+    "nside": 64,
+    "n_valid_pixels": 22637,
+    "f_sky": 0.4605509440104167
+  },
+  "dipole": {
+    "amplitude": 0.0019021838914284534,
+    "ra_deg": 46.57806199786201,
+    "dec_deg": 39.338574889983725,
+    "significance_sigma": 2.3119654291443537,
+    "mc_mean": 0.0009239902804916001,
+    "mc_std": 0.00042310044891063857,
+    "consistent_with_null": 
