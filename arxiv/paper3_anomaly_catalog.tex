@@ -52,8 +52,8 @@
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\sigmaNMAD}{\sigma_{\rm NMAD}}
 \newcommand{\MPl}{M_{\rm Pl}}
-\newcommand{\paperVersion}{v1.0.0}
-\newcommand{\paperTimestamp}{2026-03-29}
+\newcommand{\paperVersion}{v1.1.0}
+\newcommand{\paperTimestamp}{2026-04-13}
 
 \begin{document}
 
@@ -68,7 +68,7 @@ Latent-Space Multi-Tracer Selection}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 29, 2026 --- \paperVersion}
+\date{April 13, 2026 --- \paperVersion}
 
 % ============================================================
 % ABSTRACT
@@ -887,6 +887,17 @@ Combined with the upcoming SPHEREx mission, which will probe $\sigma(\fnl) \appr
 %%  15. DISCUSSION
 %% ============================================================
 \section{Discussion}\label{sec:discussion}
+
+\subsection{Photometric Cross-Match and Tracer Purification}\label{sec:pipeline1}
+
+Subsequent to the autoencoder analysis, we performed a 5-catalog photometric cross-match of all $195{,}829$ anomalies against AllWISE, CatWISE2020, SDSS~DR16, Milliquas, and Gaia~DR3 ($3''$ matching radius).
+Of the full anomaly sample, $22.4\%$ have photometric counterparts in at least one catalog, while $77.6\%$ ($151{,}941$ objects) have \textit{no photometric counterpart}---either genuinely faint or spectroscopically unusual objects below the detection thresholds of broadband surveys.
+
+A downstream random forest classifier trained on photometric colors, anomaly scores, and spectral features identifies $5{,}384$ QSO candidates: $116$ GOLD (extreme IR colors $W1{-}W2 > 0.8$, high anomaly scores $> 8\sigma$), $1{,}006$ SILVER, and $4{,}262$ BRONZE.
+Landy-Szalay angular clustering measurements show that Gold+Silver QSO candidates cluster $1.58\times$ more strongly than the standard DESI QSO sample, confirming that these are real astrophysical objects preferentially residing in dense environments---not artifacts.
+
+The $\fnl$ improvement from adding these $5{,}384$ purified tracers to the standard DESI QSO sample is ${\sim}0\%$: at $5{,}384$ objects versus $1.6$~million standard QSOs, the additional tracers are too few to meaningfully constrain the large-scale power spectrum.
+This is an honest null result---the multi-tracer improvement demonstrated in Sec.~\ref{sec:fnl} ($9.5\%$ from latent-space splitting) operates on the full QSO catalog's internal substructure, not on the small purified subset.
 
 \subsection{The Autoencoder as Survey Infrastructure}\label{sec:infrastructure}
 

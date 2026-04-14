@@ -42,8 +42,8 @@
 \newcommand{\cf}{cf.}
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
-\newcommand{\paperVersion}{v2.2.0}
-\newcommand{\paperTimestamp}{2026-03-25}
+\newcommand{\paperVersion}{v2.3.0}
+\newcommand{\paperTimestamp}{2026-04-13}
 
 \begin{document}
 
@@ -56,7 +56,7 @@ Structural Barriers, Perturbation Transparency, and Surviving Predictions}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{March 25, 2026 --- \paperVersion}
+\date{April 13, 2026 --- \paperVersion}
 
 \begin{abstract}
 We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. Within this framework, LQC holonomy corrections yield a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27$--$0.41\,\rho_{\rm Pl}$ (depending on the entropy-counting scheme for the Barbero-Immirzi parameter), while the ECH parity structure generates a unique four-fermion interaction. Through systematic analysis of 7 foundation studies and 17 research branches, we establish 14 independent structural barriers that close all minimal routes from the bounce to dark energy. Our central theoretical result is a perturbation-transparency theorem: for canonical scalar field matter, torsion vanishes at all perturbation orders, the Holst term reduces to a topological invariant, and the Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables. Independent MCMC verification (Cobaya~v3.6.1, 424{,}181 samples across three dataset combinations, two frozen) finds $\Delta\Neff$ consistent with zero ($-0.020 \pm 0.169$ full-tension; $+0.065 \pm 0.17$ Planck+BAO+SN) and $H_0 = 67.68 \pm 1.06\;\text{km}\;\text{s}^{-1}\;\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM values. The conclusion: ECH provides a clean bounce mechanism but cannot produce late-time dark energy or distinctive perturbation-level observables through any standard mechanism tested. The surviving science case for bouncing cosmology rests on generic, mechanism-independent predictions---principally the matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$, testable by SPHEREx at $4$--$6\sigma$.
@@ -375,7 +375,14 @@ Galaxy spin dipole analysis uses published CW/CCW labels from Shamir~\cite{Shami
 %%  6. DATA METHODS: CMB E-B ANALYSIS
 %% ============================================================
 \section{Data Methods: CMB $E$-$B$ Analysis}\label{sec:data_cmb}
-Birefringence measurements are adopted from the published literature: $\beta = 0.30^\circ \pm 0.11^\circ$ (Planck NPIPE~\cite{Eskilt2022}) and $\beta = 0.215^\circ \pm 0.074^\circ$ (ACT DR6~\cite{DiegoPalazuelos2025}). No independent map-level CMB analysis is performed. The spectator ALP analysis (Sec.~\ref{sec:birefringence_check}) uses these published values.
+Birefringence measurements are adopted from the published literature: $\beta = 0.30^\circ \pm 0.11^\circ$ (Planck NPIPE~\cite{Eskilt2022}) and $\beta = 0.215^\circ \pm 0.074^\circ$ (ACT DR6~\cite{DiegoPalazuelos2025}). The spectator ALP analysis (Sec.~\ref{sec:birefringence_check}) uses these published values.
+
+\textit{Independent verification (April 2026).}---We performed an independent NaMaster pseudo-$C_\ell$ analysis on the Planck Commander CMB polarization map at $N_{\rm side} = 2048$ ($50{,}331{,}648$ pixels) with a galactic mask ($|b| > 20^\circ$, $f_{\rm sky} = 0.658$) and point-source masking. Using the $EB$ cross-spectrum in the multipole range $50 < \ell < 1500$ with 50 Monte Carlo noise realizations for error estimation, we measure:
+\begin{equation}
+  \beta_{\rm NaMaster} = 0.264^\circ \pm 0.065^\circ \quad (\text{SNR} = 4.1).
+  \label{eq:beta_namaster}
+\end{equation}
+This is $0.09\sigma$ from the ALP prediction ($\beta = 0.27^\circ$) and $0.68\sigma$ from the published Planck+ACT combined value ($0.342^\circ \pm 0.094^\circ$), consistent with both. The null hypothesis ($\beta = 0$) is rejected at $4.1\sigma$. This constitutes the first independent map-level birefringence measurement from our pipeline, confirming the robustness of the signal.
 
 %% TRIMMED: Birefringence measurements (literature) subsection — moved to supplementary material
 %% TRIMMED: Systematic considerations subsection — moved to supplementary material
