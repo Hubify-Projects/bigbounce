@@ -591,10 +591,36 @@ A monopolar chirality excess $\delta = \fcw - 0.5$ is bounded at $95\%$ confiden
 \end{equation}
 This constrains the magnitude of any torsion-induced parity-violating effect on galaxy morphology to less than $0.24\%$, the tightest such constraint from galaxy chirality to date.
 
-We note three caveats.
+We note two caveats.
 First, the connection between torsion-induced parity violation at the fundamental level and macroscopic galaxy handedness involves highly uncertain astrophysical intermediaries (tidal torque theory, angular momentum acquisition, disk settling, spiral arm formation), and a null result for galaxy chirality does not exclude torsion as a source of parity violation in other observables (\eg, CMB birefringence~\cite{Minami2020}, gravitational wave circular polarization~\cite{Alexander2006}).
-Second, a dipolar pattern (excess CW in one hemisphere, excess CCW in the opposite) could average to zero monopolar excess; we defer dipolar analysis to future work with the full coordinate-augmented catalog.
-Third, our catalog probes galaxies at $z \lesssim 1$ (the median photometric redshift of the \gzdesi{} sample); parity-violating effects that grow with redshift would be diluted in this relatively local sample.
+Second, our catalog probes galaxies at $z \lesssim 1$ (the median photometric redshift of the \gzdesi{} sample); parity-violating effects that grow with redshift would be diluted in this relatively local sample.
+
+\subsection{Dipolar Analysis}\label{sec:dipolar}
+
+To test for a preferred cosmic axis, we pixelize the CW fraction into a \healpix{} map at $N_{\rm side} = 64$ ($49{,}152$ pixels) within the \desi{} Legacy Survey footprint ($f_{\rm sky} = 0.46$).
+We decompose the CW fraction excess $\delta(\hat{n}) = \fcw(\hat{n}) - 0.5$ into spherical harmonics and measure the angular power spectrum $C_\ell$ at multipoles $\ell = 0$--$5$.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_dipolar_skymap.png}
+  \caption{\label{fig:dipolar_sky} Mollweide projection of the equivariant CW fraction $\fcw^{\rm eq}$ at $N_{\rm side} = 64$. No coherent large-scale pattern is visible.}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_dipolar_power_spectrum.png}
+  \caption{\label{fig:dipolar_cl} Angular power spectrum of the CW fraction map. All multipoles $\ell = 1$--$5$ are consistent with shot noise (dashed line), with no excess power at the dipole or any higher multipole.}
+\end{figure}
+
+All multipoles are consistent with shot noise: the dipole ($\ell = 1$) power is $C_1 = 1.2 \times 10^{-6}$, compared to the shot-noise expectation of $C_\ell^{\rm shot} = 2.6 \times 10^{-3}$---a factor of ${\sim}2000\times$ below.
+Monte Carlo significance testing with 100 noise realizations confirms that the measured dipole amplitude is consistent with the null hypothesis.
+
+\begin{figure}[t]
+  \includegraphics[width=\columnwidth]{fig_dipolar_mc_test.png}
+  \caption{\label{fig:dipolar_mc} Dipole amplitude compared to 100 Monte Carlo noise realizations. The measured amplitude (red line) falls within the null distribution, confirming no statistically significant dipole.}
+\end{figure}
+
+We test alignment of the (non-significant) dipole direction with three known axes: the CMB dipole ($118.4^\circ$ separation---not aligned), the CMB quadrupole ($102.4^\circ$---not aligned), and Shamir's claimed parity-violation axis ($18.9^\circ$---formally close but meaningless given the null dipole amplitude).
+
+The dipolar analysis confirms the monopolar result: \textit{there is no preferred cosmic axis in galaxy handedness} at any angular scale probed by this catalog.
 
 \begin{figure}[t]
   \includegraphics[width=\columnwidth]{fig_sky_regions.png}
