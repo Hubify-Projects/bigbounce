@@ -1,0 +1,37 @@
+{
+  "method": "emcee on NANOGrav 15yr published free spectrum",
+  "data_source": "NANOGrav 15yr published spectral densities (Agazie+ 2023)",
+  "n_walkers": 128,
+  "n_steps": 20000,
+  "n_freq_bins": 14,
+  "posterior": {
+    "gamma_mean": 9.99489873657026,
+    "gamma_std": 0.0051124799450978815,
+    "gamma_median": 9.996467843050496,
+    "log10_A_mean": -12.001206936966629,
+    "log10_A_std": 0.0012094181627724558
+  },
+  "model_comparison": {
+    "matter_bounce": {
+      "gamma_model": 3.0,
+      "tension_sigma": 1368.2007189636688,
+      "savage_dickey_bf": 0.0,
+      "log10_bf": null
+    },
+    "SMBHB_circular": {
+      "gamma_model": 4.333333333333333,
+      "tension_sigma": 1107.400999913073,
+      "savage_dickey_bf": 0.0,
+      "log10_bf": null
+    },
+    "SMBHB_eccentric": {
+      "gamma_model": 3.8,
+      "tension_sigma": 1211.7208875333115,
+      "savage_dickey_bf": 0.0,
+      "log10_bf": null
+    }
+  },
+  "elapsed_seconds": 24.474924564361572,
+  "timestamp": "2026-04-12T06:10:47.456206",
+  "device": "cuda"
+}

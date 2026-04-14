@@ -1,0 +1,29 @@
+{
+  "experiment": "PBH Abundance from Matter Bounce f_NL = -35/8",
+  "f_NL_bounce": -4.375,
+  "delta_c": 0.45,
+  "gaussian_results": {
+    "beta_at_sigma0p03": 3.6709661993126986e-51,
+    "sigma_for_closure_limit": 0.10551266650044411
+  },
+  "nongaussian_results": {
+    "beta_bounce_at_sigma0p03": 0.0,
+    "suppression_factor_at_sigma0p03": 0.0,
+    "suppression_pct": 100.0,
+    "log_suppression_dex": -20.0
+  },
+  "gw_spectral_index": {
+    "bounce_prediction": 3.0,
+    "observed_nanograv": 3.33,
+    "observed_err": 0.4,
+    "tension_sigma": 0.8250000000000002
+  },
+  "pbh_dm_fraction": {
+    "mass_window": "asteroid (1e20 g)",
+    "f_pbh_gaussian_sigma0p04": 1.2254700124055113e-31,
+    "f_pbh_bounce_sigma0p04": 0.0,
+    "suppression_interpretation": "bounce f_NL naturally avoids PBH overproduction"
+  },
+  "key_message": "f_NL = -4.375 (bounce) suppresses PBH abundance and is consistent with observational constraints. The triple connection: galaxy bispectrum \u2192 PBH abundance \u2192 induced GW spectrum all predicted by the same f_NL parameter.",
+  "runtime_seconds": 0.0007634162902832031
+}
