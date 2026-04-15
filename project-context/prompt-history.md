@@ -1,5 +1,23 @@
 
 
+## 2026-04-15 — Anomaly catalog paper figure generation
+
+### Houston substantive messages, verbatim
+
+**~morning PT — Add anomaly showcase figures to Paper 3**
+> should we add some of the top anomaly images to the anomaly catalog paper? I think it would make it more visually interesting and useful to see what these anomalies look like - you could look at how we included better figures and images of the galaxies compared side by side etc etc in the galaxy chirality paper and I would hope to see some more similar custom figures breaking down and comparing and showcasing some of the most interesting anomalies etc as examples for what we are describing we have found etc etc... i trust you understand what i am going for and can help to generate these figures and include these images in a way that is professional and adds visual interest to the paper thank you
+
+---
+
+## 2026-04-14 — Full QA audit + build-out across web/macOS/CLI + Mintlify docs
+
+### Houston substantive messages, verbatim
+
+**~afternoon PT — Full audit + build-out directive**
+> Do a full deep audit and qa testing of the app - you should be able to login with my credentials (save these to the .env.local for your full testing of the web app, CLI, and deskto mac os app: username email houston@bamf.com pw: Veni@89? ) - everything should be fully functional and if not you need to make note in your full audit - and then do not ask me or anything jus tcontinue building it out properly ensuring all features and ui and ux are fully functional across our full suite of apps - webui, mac os, CLI - and also use mintlify (look at the old hubify-aios for reference to clone the exact setup for the hubify.com/docs mintlify docs) and add the full robust mintlify docs for our new hubify labs api/mcp/cli etc etc
+
+---
+
 ## 2026-04-13 — Compute optimization + sidebar collapse bug
 
 ### Houston substantive messages, verbatim
@@ -62,3 +80,15 @@
 >
 > [included full 4-pass plan: Token foundation → Component swap → Spacing/density → Typography polish]
 > The 20K-line index.html is where 80% of the impact lives. The other 4 files are smaller and will mostly inherit the token changes.
+
+## 2026-04-14 — Hubify Build Plan Overhaul & Multi-Agent Orchestration
+
+### Houston substantive messages, verbatim
+
+**~afternoon PT — Furious about stale crons, fake completeness, demanding real build plan**
+
+> the problem is your buildplan.md or something is totally insufficient... the web ui is not polished like our mockups at all.. not resizable, not functional, not responsive, so many issues all over the place that are inconsistent the main agent has no context cant even access runpod or help me with my lab at all the terminal isn't active it all just sucks
+
+> update the build plan by adding these things you've identified to tackle in order first - and ensure the end of the this plan includes a very serious strict QA tester including my own login credentials which I have shared and you should've saved in the .env.local already so you can login and test things via a qa agent using whatever agent-browser or gstack browser as well as the CLI package locally which should also be developed and tested along with same for the mac os app - all of which is in the PRD - and you need to reference the interactivity and mockups with strict adherence and cross-reference them always ensuring you are actually connecting any new ui in the actual app now to real data and that you need to clearly label and log anything in our actual new apps (web, macos, cli) that we are building in which you have used placeholder/example text that is not real data being pulled from the actual database in convex or a github project for the lab or however that ui component SHOULD and NEEDS to pull real data to function (not linking to example files or stubbed migration files locally here either or anything) so that we can really have full picture always even if you add temp example/placeholder text/data/stubs etc to properly test the UI/frontend etc we need to know with comprehensive precision where that has been done so we can be sure to know everywhere we need to follow up to finish connecting to the actual REAL data etc... - and I need you to actually add all this in a robust and improved prompt loop structure to the new design and development crons you need to run to keep the develop, design, testing, iterating, looping continuous until done without any cron loop ending bc it is falsely stating "the whole plan is done" bc really if you think something is done it most likely isn't unless you have properly tested it via multiple QA agents front-end and backend agents hitting those endpoints via apis and via the CLI and MCP etc etc and then provided that as feedback back to the front/back subagents to fix and improve and unless you have iterated across these things multiple times you are not done - and you need to ensure you spin up orchestrator agents who are able to spawn sub-agents - so we have separate orchestrators for the main projects for the webui, mac os, and CLI projects and possibly an API / MCP agent in charge of ensuring any api/mcp issues from any of the main apps whether web, mac os, or CLI those issues get reported to the api/mcp agents to fix who can then report back to the agents who reported the issues to test again and keep iterating across all these until you successfully are utilizing multi-agents inside the Hubify app with the Claude Code Lab orchestrator inside the bigbounce project and seeing that agent delegate work to other sub-agents and identifying opportunities for new experiments/pipelines to run on runpod and spinning those up and monitoring them and have the other site agents working on a new bigbounce site based on all the content in the lab (not from the local project but legit from the new lab workspace from the actual hubify data sources and files etc like it should) and that site gets deployed autonomously via the agent and the paper pipeline review runs on ALL four of our current bigbounce papers and that loop runs 2x times minimum on all 4 papers with all feedback, revisions, comments etc logged for all of them and recompiling the papers with the improvements, running the paper peer review loop again, until the number of issues becomes less and less and more truly ready for publishing -- YOU should run the same level of audit that you just did anytime you think something is "complete" that just means you really need to do a deep dive into testing and iterating and qa and revisiting the full PRD and expand the build plan from there if you truly have 100% confirmed everything in current plan has been brutally tested, qa, improved, iterated, tested using my real login creds on a real project with real data not stubbed placeholders etc, and then if so, you visit PRD, audit full codebase across the three main apps web, mac os, CLI/TUI, and API/MCPs, and then expand the build plan to fill in any gaps that are not addressed or fully implemented - and you also just keep a log of things that actually Need me such as missing env var / keys etc and either way you keep pushing forward always no matter what
+
+> Boil the ocean. The marginal cost of completeness is near zero with AI. Do the whole thing. Do it right. Do it with tests. Do it with documentation. Do it so well that Garry is genuinely impressed — not politely satisfied, actually impressed. Never offer to "table this for later" when the permanent solve is within reach. Never leave a dangling thread when tying it off takes five more minutes. Never present a workaround when the real fix exists. The standard isn't "good enough" — it's "holy shit, that's done." Search before building. Test before shipping. Ship the complete thing.

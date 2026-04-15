@@ -86,6 +86,18 @@ The \BigAE{} model is a symmetric fully connected autoencoder with a configurabl
 
 The encoder consists of four linear layers with batch normalization and ReLU activations, with dropout regularization ($p = 0.15$ and $p = 0.10$) after the first two layers. The latent dimension is set to 128 for spectroscopic surveys, 32 for CMB maps, and 16 for photometric catalogs. The decoder mirrors the encoder architecture. The total parameter count ranges from approximately 120{,}000 (photometric) to 660{,}000 (spectroscopic). \BigAE{} is a deterministic autoencoder, not a variational autoencoder; we do not impose a distributional prior on the latent space, prioritizing reconstruction fidelity and anomaly-score interpretability.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_architecture.pdf}
+\caption{\label{fig:architecture}
+  \BigAE{} architecture. Encoder (top) compresses the input to a
+  per-survey latent bottleneck; decoder (bottom) reconstructs the input.
+  All layers use ReLU activations; batch normalization (BN) and dropout
+  are applied in the first two encoder layers only.  The anomaly score
+  $S$ is the total per-element mean-squared reconstruction error
+  (Eq.~\ref{eq:score}).}
+\end{figure}
+
 \subsection{Training and Scoring}\label{sec:training}
 
 For each survey, the model is trained on a representative subset of the data (47{,}000 spectra for DESI, proportionally sampled subsets for other surveys) using the Adam optimizer with learning rate $10^{-3}$ and batch size 512, minimizing per-element mean-squared error (MSE) over 200 epochs. Training typically converges after 100--150 epochs as judged by validation loss on a held-out 20\% split.
@@ -94,9 +106,36 @@ The anomaly score for each source $\mathbf{x}$ is defined as the total per-eleme
 \begin{equation}\label{eq:score}
 S = \frac{1}{N}\sum_{i=1}^{N}(x_i - \hat{x}_i)^2,
 \end{equation}
-where $\hat{\mathbf{x}} = \BigAE(\mathbf{x})$ and $N$ is the input dimensionality. For spectroscopic surveys, we additionally decompose the score into per-band contributions $r_B$, $r_R$, $r_Z$ computed over the blue (3600--6200~\AA), red (6200--8200~\AA), and near-infrared (8200--9800~\AA) subsets.
+where $\hat{\mathbf{x}} = \BigAE(\mathbf{x})$ and $N$ is the input dimensionality. For spectroscopic surveys, we additionally decompose the score into per-band contributions $r_B$, $r_R$, $r_Z$ computed over the blue (3600--6200~\AA), red (6200--8200~\AA), and near-infrared (8200--9800~\AA) subsets (Fig.~\ref{fig:example_spectra}).
 
 The anomaly catalog threshold is set at either a fixed score ($S > 5.0$ for DESI and SDSS) or the 99th percentile of the score distribution (for surveys where the score distribution spans a different dynamic range). The choice of threshold does not affect the rank-ordering of anomalies; we report full scores to allow users to apply their own thresholds.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_example_spectra.pdf}
+\caption{\label{fig:example_spectra}
+  Representative spectra illustrating the six main anomaly categories
+  identified across the multi-survey campaign.  Black line: observed
+  spectrum; red dashed: \BigAE{} reconstruction.  Shaded background
+  regions indicate the DESI B (blue), R (gray), and Z (tan) spectral
+  arms.  Anomaly scores are the total per-element MSE (Eq.~\ref{eq:score}).
+  \textbf{(a)} Baseline normal ELG at $z=0.92$: reconstruction tracks the
+  observed spectrum closely (score $= 2.1$).
+  \textbf{(b)} Z-dominant high-$z$ QSO candidate at $z=4.52$: complete
+  Gunn--Peterson absorption blueward of Ly$\alpha$ at 6711~\AA\ drives
+  extreme reconstruction residuals (score $= 24.6$).
+  \textbf{(c)} B-dominant blue-excess anomaly: steep UV rise unlearned by
+  \BigAE{} trained on normal continua (score $= 17.1$).
+  \textbf{(d)} Multi-band unusual AGN at $z=0.31$: extreme
+  [O\,\textsc{iii}]/H$\beta$ ratio and anomalous [N\,\textsc{ii}] strength
+  produce residuals across all three arms (score $= 18.3$).
+  \textbf{(e)} Uncataloged BAL QSO candidate at $z=0.86$: broad Mg\,\textsc{ii}
+  absorption trough absent from SIMBAD and Milliquas (score $= 15.8$).
+  \textbf{(f)} T2 brown dwarf from SDSS DR18 via transfer learning: the
+  DESI-trained model has never encountered deeply red, molecularly
+  blanketed T-dwarf spectra, yielding a catastrophic score of
+  $5.3 \times 10^{10}$.}
+\end{figure*}
 
 \subsection{GPU Inference Pipeline}\label{sec:inference}
 
@@ -108,7 +147,21 @@ All inference was performed on a single NVIDIA H200 GPU pod with 80~GB of HBM3e 
 %% ============================================================
 \section{Survey-by-Survey Results}\label{sec:surveys}
 
-Table~\ref{tab:survey_summary} presents the summary statistics for all eight surveys. We describe each survey in turn.
+Table~\ref{tab:survey_summary} presents the summary statistics for all eight surveys; Fig.~\ref{fig:skymap} shows the spatial distribution of all 319,443 anomalies across the celestial sphere. We describe each survey in turn.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_skymap_all_surveys.pdf}
+\caption{\label{fig:skymap}
+  Mollweide projection of all 319{,}443 anomalies from the eight-survey
+  campaign, color-coded by survey (see legend).  The DESI DR1 footprint
+  ($\sim$14{,}000~deg$^2$) dominates the northern hemisphere; SDSS DR18
+  contributes the main survey stripe at $\delta \sim 0$--$60\degr$;
+  eROSITA anomalies concentrate toward the LMC region
+  ($\delta \approx -70\degr$); Gaia and NEOWISE anomalies sample all-sky.
+  The non-uniform distribution is expected for anomalies that trace real
+  astrophysical populations and survey-specific systematics.}
+\end{figure*}
 
 \begin{table*}[tb]
 \caption{\label{tab:survey_summary} Summary of the multi-survey anomaly sweep. Columns: survey name, data type, total sources processed, number of anomalies above the survey-specific threshold, anomaly rate, SIMBAD novelty fraction (percentage of anomalies not matched within 5~arcsec in SIMBAD), and key finding. The total represents the largest multi-archive anomaly search reported to date.}
@@ -139,6 +192,24 @@ The \BigAE{} model trained on 47{,}000 representative spectra identifies 195{,}8
 
 Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, AllWISE, Milliquas, Gaia DR3, and SDSS) reveals that only 0.2\% appear in SIMBAD, 12.7\% in NED, 1.5\% in AllWISE, 0\% in Milliquas, and 0.6\% in Gaia~DR3. None of the top~100 anomalies appear in any database. Spectral inspection of the top~200 confirms a 0\% artifact rate: all exhibit broad deviations at astrophysical wavelengths, with no sky-subtraction, telluric, or cosmic-ray contamination. Anomaly score shows no correlation with signal-to-noise ratio.
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_score_distributions.pdf}
+\caption{\label{fig:score_dist}
+  Anomaly score distributions for the three main spectroscopic surveys.
+  \textit{Left:} DESI DR1 (blue) and LAMOST DR10 (green dashed) on a
+  log-probability-density scale, with the $S = 5$ threshold marked.  Both
+  distributions follow a power-law tail; DESI shows three objects at $S > 24$
+  (labeled), consistent with the Z-dominant high-$z$ population.
+  \textit{Right:} SDSS DR18 transfer-learning scores on a log--log scale,
+  spanning twelve orders of magnitude from the threshold ($S = 5$) to
+  $S = 1.9 \times 10^{11}$ for the extreme-score M7 and T2 dwarfs.  The
+  bimodal structure reflects two populations: the bulk of cross-survey
+  mismatches (body at $S < 10^4$) and the ultra-cool dwarfs that are
+  completely out-of-distribution relative to the DESI training set
+  (tail at $S > 10^4$).}
+\end{figure*}
+
 Across 6.5 million spectra from the enhanced catalog, galaxies are flagged as anomalous at $\sim$20 times the rate of QSOs (0.75\% vs.\ 0.037\%), with anomalies peaking at $z \sim 0.75$ compared to $z \sim 0.93$ for normal spectra. The three highest-scored anomalies are Z-dominant with scores of 25.2, 24.6, and 24.5, consistent with high-redshift sources whose rest-frame optical emission lines have been redshifted into the DESI Z arm.
 
 
@@ -150,7 +221,22 @@ The SDSS scan identifies 77{,}905 anomalies (3.38\% rate), with scores spanning 
 
 Spectral resolution of the top~50 anomalies via the SDSS SkyServer API reveals that the anomaly population is dominated by ultra-cool dwarf stars: the highest-scored object is an M7 dwarf ($S = 1.9 \times 10^{11}$), followed by a T2 brown dwarf ($S = 5.3 \times 10^{10}$), an L3 dwarf, and M9 and L5 subtypes. This result is physically sensible: the DESI-trained autoencoder has never seen the deeply red, molecularly blanketed spectra of late-M, L, and T dwarfs, which fall entirely outside the DESI target selection.
 
-Unsupervised clustering of the top 50{,}000 SDSS anomalies via UMAP~\cite{McInnes2018} and HDBSCAN~\cite{McInnes2017} yields 3 well-separated clusters plus 1 noise point. The dominant cluster (42{,}017 objects, 84\%) contains the extreme-score tail, while two minority clusters (3{,}314 and 4{,}668 objects) occupy distinct latent-space regions with lower mean scores. The clustering demonstrates that the anomaly population is not uniform: there are at least three distinct populations of spectrally anomalous objects in SDSS as seen from a DESI-trained perspective.
+Unsupervised clustering of the top 50{,}000 SDSS anomalies via UMAP~\cite{McInnes2018} and HDBSCAN~\cite{McInnes2017} yields 3 well-separated clusters plus 1 noise point (Fig.~\ref{fig:sdss_umap}). The dominant cluster (42{,}017 objects, 84\%) contains the extreme-score tail, while two minority clusters (3{,}314 and 4{,}668 objects) occupy distinct latent-space regions with lower mean scores. The clustering demonstrates that the anomaly population is not uniform: there are at least three distinct populations of spectrally anomalous objects in SDSS as seen from a DESI-trained perspective.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_sdss_umap.png}
+\caption{\label{fig:sdss_umap}
+  UMAP embedding of the 77{,}905 SDSS DR18 anomalies, colored by HDBSCAN
+  cluster (\textit{left}) and by inferred physical category
+  (\textit{right}).  The dominant cluster (green, $\sim$84\% of objects)
+  contains ultra-cool dwarfs (M7--T2) that are completely
+  out-of-distribution for the DESI-trained \BigAE.  Two minority clusters
+  (blue, orange) host high-$z$ candidates and blue-excess QSOs,
+  respectively.  The clear cluster separation demonstrates that the latent
+  space organizes anomalies by astrophysical type rather than by anomaly
+  score alone.}
+\end{figure*}
 
 An emission-line classification pipeline identifies 10 spectral categories among the 77{,}905 SDSS anomalies, summarized in Table~\ref{tab:sdss_classes}.
 
@@ -180,6 +266,25 @@ Unusual continuum     &    381 &  0.5\% \\
 The Large Sky Area Multi-Object Fiber Spectroscopic Telescope DR10~\cite{LAMOST_DR10} contributes 11{,}418{,}594 spectra covering 3700--9000~\AA\ at $R \sim 1800$. We process all available nights (1{,}135 observation nights, 107 processing batches) using a natively trained \BigAE{} model.
 
 The LAMOST scan identifies 44{,}075 anomalies (0.39\% rate). Critically, we discover that 98\% of the anomalies exhibit blue-excess spectral signatures, clustering at wavelengths below 4500~\AA. This is a methodological artifact rather than an astrophysical signal: the LAMOST training set is drawn predominantly from the later data releases where observing strategy and calibration procedures were optimized, resulting in a spectral template set that under-represents the blue-arm diversity of earlier observations. Objects observed under sub-optimal conditions in the early survey, particularly at high airmass where atmospheric extinction is strongest in the blue, produce elevated blue-arm reconstruction residuals without being genuinely astrophysically unusual.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_lamost_blue_excess.pdf}
+\caption{\label{fig:lamost}
+  LAMOST DR10 training-bias artifact.
+  \textit{Left:} Distribution of the peak-residual wavelength for LAMOST
+  anomalies (green) vs.\ the expected uniform distribution (gray).
+  The extreme concentration below 4500~\AA\ (LAMOST B arm) — containing
+  98\% of all anomalies — is a hallmark of training-set bias: objects
+  observed at higher airmass or with sub-optimal blue-arm calibration are
+  flagged as anomalous relative to a training set that does not adequately
+  represent those conditions.
+  \textit{Right:} Composition breakdown of the 44{,}075 LAMOST anomalies.
+  Only $\sim$2\% pass the consistency checks expected of genuine
+  astrophysical anomalies.  This is the clearest demonstration in the
+  paper of how an imperfect training set produces a contaminated anomaly
+  catalog.}
+\end{figure*}
 
 This LAMOST result provides a key methodological insight for the field of unsupervised anomaly detection: \textit{the anomaly ranking is only as good as the training set is representative}. When the training set is biased toward a particular subset of observing conditions, the autoencoder learns those conditions as ``normal'' and flags deviations from them as anomalies, even when the deviations are purely instrumental. We discuss this finding further in Section~\ref{sec:lamost_lesson}.
 
@@ -257,6 +362,18 @@ We cross-match anomalies from each survey against the SIMBAD astronomical databa
 \item \textbf{DESI DR1: $\sim$99\% novel.} The highest novelty rate for any spectroscopic survey, with only 0.2\% of the top 10{,}000 anomalies appearing in SIMBAD.
 \end{itemize}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_novelty_fractions.pdf}
+\caption{\label{fig:novelty}
+  SIMBAD novelty fractions for the six surveys with coordinate-based
+  cross-matching, ranked from lowest (Gaia DR3, well-characterized
+  variable stars) to highest (DESI DR1, 99\% of top-10K objects absent
+  from SIMBAD).  The dashed line marks the aggregate 58.8\% novelty
+  fraction.  The asterisk on LAMOST denotes that its 50\% novelty rate
+  should be interpreted cautiously given the training-bias artifact
+  (Fig.~\ref{fig:lamost}).}
+\end{figure}
 
 \subsection{Spatial Analysis}\label{sec:spatial}
 
@@ -274,6 +391,24 @@ We perform positional cross-matching between the DESI and SDSS anomaly catalogs 
 
 \item \textbf{Uncataloged BAL QSO candidate at $z \approx 0.86$.} This object is absent from SIMBAD, Milliquas, and NED, and shows broad absorption features in both its DESI and SDSS spectra. The agreement between independent observations confirms that the absorption is intrinsic to the source rather than an artifact of either survey. If confirmed as a genuine BAL QSO, it represents a discovery enabled by the multi-survey anomaly approach.
 \end{enumerate}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_cross_survey_matches.pdf}
+\caption{\label{fig:crossmatch}
+  Spectral pairs for the three DESI $\times$ SDSS cross-survey matches.
+  Left column: DESI DR1 spectrum; right column: same object in SDSS DR18.
+  Black: observed flux (normalized); red dashed: \BigAE{} reconstruction.
+  \textbf{(a, b)} Known QSO at $z \approx 1.55$: both surveys produce
+  consistent, low anomaly scores, validating the cross-matching approach.
+  \textbf{(c, d)} TIC~374313355 at two epochs: the SDSS epoch shows
+  dramatically elevated continuum and emission-line flux relative to the
+  DESI epoch, consistent with a stellar flare or accretion event; the
+  SDSS anomaly score ($= 49.5$) is the highest of any cross-matched object.
+  \textbf{(e, f)} Uncataloged BAL QSO at $z \approx 0.86$: the broad
+  Mg\,\textsc{ii} absorption trough is reproduced in both independent
+  surveys, confirming it as intrinsic to the source.}
+\end{figure*}
 
 
 \subsection{Planck $\times$ ACT Cross-Correlation: Null Result}\label{sec:planck_act_null}
@@ -319,11 +454,28 @@ $4.0$--$5.0$ &   4{,}889 & 1{,}350 & 9.27 & 10.42 & 1.12 &  71.0 &  66.1 \\
 \end{ruledtabular}
 \end{table*}
 
-The DESI-only multi-tracer result is $\sigfnl = 8.43$, a 6.1\% improvement over the standard DESI QSO constraint of $\sigfnl = 8.98$. The improvement is concentrated in the high-redshift bins ($z > 2$) where the AI-selected sample contributes the most additional tracers with the highest bias enhancement.
+The DESI-only multi-tracer result is $\sigfnl = 8.43$, a 6.1\% improvement over the standard DESI QSO constraint of $\sigfnl = 8.98$ (Fig.~\ref{fig:fnl}). The improvement is concentrated in the high-redshift bins ($z > 2$) where the AI-selected sample contributes the most additional tracers with the highest bias enhancement.
 
 A latent-space multi-tracer approach, which uses the autoencoder's 128-dimensional latent representation to define bias-correlated subpopulations without explicit classification, yields a larger improvement of 9.5\% ($\sigfnl = 8.12$), demonstrating that the latent space contains bias information beyond what is captured by the anomaly score alone.
 
 When SDSS DR18 anomalies are combined with DESI, the improvement reaches 16.4\%, reflecting the independent sky coverage and the complementary spectral sensitivity of the two surveys.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_fnl_improvement.pdf}
+\caption{\label{fig:fnl}
+  \textit{Left:} Per-redshift-bin $\sigfnl$ for the standard DESI QSO
+  sample (blue) vs.\ the multi-tracer combination adding AI-selected
+  anomaly tracers (red).  Improvements are labeled above each pair.  The
+  largest gains occur at $z > 2.5$ where the anomaly catalog contributes
+  the most additional tracers at the highest bias enhancement.  The inset
+  shows the combined constraint: $\sigfnl = 8.98$ (standard) vs.\
+  $\sigfnl = 8.43$ (multi-tracer), a 6.1\% improvement.
+  \textit{Right:} AI-selected tracer count per redshift bin.  The peak at
+  $z = 2.5$--$3.0$ (14{,}781 objects) corresponds to the redshift range
+  where DESI QSOs are most numerous and the bias enhancement from
+  AI-selected anomalies is largest.}
+\end{figure*}
 
 \subsection{SPHEREx Projection}\label{sec:spherex}
 
@@ -341,7 +493,7 @@ where $\sigfnl \approx 1.0$ incorporates the multi-tracer improvement from anoma
 
 Pulsar timing arrays (PTAs) have detected a stochastic gravitational-wave background (GWB) at nanohertz frequencies~\cite{NANOGrav2023,EPTA2023,PPTA2023,CPTA2023}. The spectral properties of this background encode information about its astrophysical or cosmological origin. A GWB from supermassive black hole binaries (SMBHBs) is expected to have a characteristic strain spectrum $h_c(f) \propto f^{-2/3}$, corresponding to a spectral index $\gamma = 13/3 \approx 4.33$ in the timing-residual power spectrum~\cite{Phinney2001}. In contrast, a primordial GWB from the matter-bounce cosmology is predicted to have $\gamma = 3.0$~\cite{Quintin2015,Cai2015}.
 
-We independently analyze the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023}, fitting signal-dominated bins at frequencies $f < 11.86$~nHz (6 bins) with three models: (i) fixed bounce ($\gamma = 3.0$), (ii) fixed SMBHB ($\gamma = 13/3$), and (iii) free $\gamma$. An MCMC analysis with 32 walkers and 6{,}000 production steps (192{,}000 total samples) yields:
+We independently analyze the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023}, fitting signal-dominated bins at frequencies $f < 11.86$~nHz (6 bins) with three models: (i) fixed bounce ($\gamma = 3.0$), (ii) fixed SMBHB ($\gamma = 13/3$), and (iii) free $\gamma$. An MCMC analysis with 32 walkers and 6{,}000 production steps (192{,}000 total samples) yields (Fig.~\ref{fig:nanograv}):
 
 \begin{equation}\label{eq:nanograv}
 \gamma = 3.20 \pm 0.42 \quad (68\%\;\text{CI: } [2.79, 3.62]),
@@ -352,6 +504,23 @@ consistent with the bounce prediction at 0.48$\sigma$ and consistent with the pu
 \Delta\text{BIC}(\text{SMBHB} - \text{bounce}) = 7.0,
 \end{equation}
 which falls in the ``strong evidence'' range ($\Delta\text{BIC} > 6$) of the Kass \& Raftery~\cite{Kass1995} classification. The free-$\gamma$ model yields $\Delta\text{BIC} = 1.6$ relative to the bounce model, indicating no significant preference for a free spectral index over the fixed bounce prediction.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_nanograv_fit.pdf}
+\caption{\label{fig:nanograv}
+  NANOGrav 15-year gravitational-wave background analysis.
+  \textit{Left:} Free-spectrum characteristic strain amplitude $\log_{10}A$
+  at the six signal-dominated frequency bins ($f < 11.86$~nHz), with
+  1$\sigma$ error bars.  The bounce model ($\gamma = 3.0$, blue solid)
+  is consistent with the data at 0.48$\sigma$; the SMBHB prediction
+  ($\gamma = 13/3$, orange dashed) is disfavored at $\Delta\text{BIC} = 7.0$.
+  \textit{Right:} MCMC posterior on the spectral index $\gamma$.  The
+  posterior peak at $\gamma = 3.20 \pm 0.42$ is statistically consistent
+  with both the bounce prediction ($\gamma = 3.0$, solid blue) and
+  softened SMBHB models, but not with the standard SMBHB value
+  ($\gamma = 13/3 \approx 4.33$, dashed orange).}
+\end{figure*}
 
 We emphasize that this result does not constitute evidence for bounce cosmology. The measured $\gamma = 3.2$ is also consistent with astrophysical SMBHB populations that produce softer spectra through environmental effects (gas coupling, eccentricity, stellar scattering)~\cite{Sesana2016,Burke-Spolaor2019}. The result demonstrates that the bounce spectral prediction is not excluded by current PTA data, and that the BIC comparison merits continued monitoring as PTA datasets grow.
 
@@ -510,54 +679,6 @@ $\alpha$ & $\sigfnl$ & Improvement \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
-
-
-%% ============================================================
-%%  FIGURE PLACEHOLDERS
-%% ============================================================
-% NOTE: The following figures should be generated and included before submission.
-%
-% Figure 1: Mollweide sky map of all anomalies across the 8 surveys, color-coded by survey.
-%            \includegraphics[width=\textwidth]{fig_skymap_all_surveys.pdf}
-%
-% Figure 2: BigAE architecture diagram showing encoder-decoder structure with per-survey
-%            input/latent dimensions.
-%            \includegraphics[width=\columnwidth]{fig_architecture.pdf}
-%
-% Figure 3: Anomaly score distributions for DESI, SDSS, and LAMOST on log-log scale,
-%            with thresholds marked.
-%            \includegraphics[width=\columnwidth]{fig_score_distributions.pdf}
-%
-% Figure 4: Example DESI spectra: (a) normal spectrum, (b) Z-dominant high-z candidate,
-%            (c) B-dominant anomaly, (d) multi-band anomaly.
-%            \includegraphics[width=\textwidth]{fig_example_spectra.pdf}
-%
-% Figure 5: UMAP embedding of SDSS top 50K anomalies, colored by HDBSCAN cluster.
-%            \includegraphics[width=\columnwidth]{fig_sdss_umap.pdf}
-%
-% Figure 6: SIMBAD novelty fractions by survey, bar chart.
-%            \includegraphics[width=\columnwidth]{fig_novelty_fractions.pdf}
-%
-% Figure 7: LAMOST blue-excess anomaly concentration: histogram of peak anomaly wavelength.
-%            \includegraphics[width=\columnwidth]{fig_lamost_blue_excess.pdf}
-%
-% Figure 8: Multi-tracer f_NL improvement: sigma(f_NL) per redshift bin, comparing standard
-%            DESI QSO vs. multi-tracer with AI-selected anomalies.
-%            \includegraphics[width=\columnwidth]{fig_fnl_improvement.pdf}
-%
-% Figure 9: NANOGrav spectral fit: data points with bounce (gamma=3.0) and SMBHB (gamma=13/3)
-%            model curves. Inset: MCMC posterior on gamma.
-%            \includegraphics[width=\columnwidth]{fig_nanograv_fit.pdf}
-%
-% Figure 10: Spatial density map of combined anomalies (HEALPix N_side=64), showing
-%             non-uniform distribution uncorrelated with Galactic foregrounds.
-%             \includegraphics[width=\textwidth]{fig_density_map.pdf}
-%
-% Figure 11: eROSITA top anomalies near the LMC, overlaid on X-ray count map.
-%             \includegraphics[width=\columnwidth]{fig_erosita_lmc.pdf}
-%
-% Figure 12: Planck vs ACT anomaly sky positions, demonstrating the null cross-correlation.
-%             \includegraphics[width=\columnwidth]{fig_planck_act_null.pdf}
 
 
 %% ============================================================
