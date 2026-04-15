@@ -48,7 +48,7 @@ from 37 Million Sources Across Eight Astronomical Archives}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 2026}
+\date{April 15, 2026}
 
 \begin{abstract}
 We present a unified autoencoder-based anomaly detection pipeline applied to eight astronomical archives spanning optical spectroscopy, X-ray photometry, infrared variability, microwave sky maps, and gravitational-wave timing residuals, comprising 37.3 million individual sources---the largest multi-survey anomaly sweep reported to date. A convolutional autoencoder (\BigAE{}) trained per survey identifies 319{,}443 anomalies across the Dark Energy Spectroscopic Instrument DR1 (195{,}829 from 22.5M spectra), the Sloan Digital Sky Survey DR18 (77{,}905 from 2.3M), LAMOST DR10 (44{,}075 from 11.4M), eROSITA DR1 (298 from 930K X-ray sources), Planck CMB (200 patches from 20K), ACT DR6 (200 patches from 20K), Gaia DR3 (500 variable stars from 50K), and NEOWISE (436 from 43.5K infrared sources). Cross-matching against SIMBAD reveals that 58.8\% of cataloged anomalies are genuinely uncataloged, with survey-level novelty fractions ranging from 27\% (Gaia) to 90\% (SDSS). SDSS anomalies cluster into 3 latent-space groups dominated by ultra-cool dwarf stars (M7--L9 subtypes), while LAMOST reveals a methodological insight: 98\% of its anomalies are blue-excess objects reflecting training-set bias rather than astrophysical rarity. We identify three cross-survey matches between DESI and SDSS, including a time-variable source (TIC~374313355, anomaly score $= 49.5$) and an uncataloged broad-absorption-line QSO candidate at $z \approx 0.86$. A multi-tracer Fisher forecast shows that anomaly-recovered tracers improve $\sigfnl$ by 6.1\% (DESI alone) and 16.4\% (DESI+SDSS combined), yielding a projected 4.38$\sigma$ detection threshold for the matter-bounce prediction $\fnl = -35/8$ with SPHEREx. Planck$\times$ACT cross-correlation of CMB patch anomalies yields a null result, confirming that microwave anomalies trace foreground or noise rather than primordial signals. Independent analysis of the NANOGrav 15-year gravitational-wave background finds a spectral index $\gamma = 3.20 \pm 0.42$, consistent with the matter-bounce prediction $\gamma = 3.0$ at 0.48$\sigma$, with BIC favoring the bounce model over the supermassive black hole binary model by $\Delta\text{BIC} = 7.0$.
@@ -156,9 +156,9 @@ Table~\ref{tab:survey_summary} presents the summary statistics for all eight sur
   Mollweide projection of all 319{,}443 anomalies from the eight-survey
   campaign, color-coded by survey (see legend).  The DESI DR1 footprint
   ($\sim$14{,}000~deg$^2$) dominates the northern hemisphere; SDSS DR18
-  contributes the main survey stripe at $\delta \sim 0$--$60\degr$;
+  contributes the main survey stripe at $\delta \sim 0^\circ$--$60^\circ$;
   eROSITA anomalies concentrate toward the LMC region
-  ($\delta \approx -70\degr$); Gaia and NEOWISE anomalies sample all-sky.
+  ($\delta \approx -70^\circ$); Gaia and NEOWISE anomalies sample all-sky.
   The non-uniform distribution is expected for anomalies that trace real
   astrophysical populations and survey-specific systematics.}
 \end{figure*}
@@ -166,7 +166,7 @@ Table~\ref{tab:survey_summary} presents the summary statistics for all eight sur
 \begin{table*}[tb]
 \caption{\label{tab:survey_summary} Summary of the multi-survey anomaly sweep. Columns: survey name, data type, total sources processed, number of anomalies above the survey-specific threshold, anomaly rate, SIMBAD novelty fraction (percentage of anomalies not matched within 5~arcsec in SIMBAD), and key finding. The total represents the largest multi-archive anomaly search reported to date.}
 \begin{ruledtabular}
-\begin{tabular}{llrrrlp{5cm}}
+\begin{tabular}{llrrrll}
 \textbf{Survey} & \textbf{Type} & \textbf{$N_{\rm total}$} & \textbf{$N_{\rm anom}$} & \textbf{Rate (\%)} & \textbf{Novel (\%)} & \textbf{Key Finding} \\
 \hline
 DESI DR1      & Optical spec.  & 22{,}504{,}897 & 195{,}829 & 0.87 & $\sim$99  & 100/100 top objects absent from SIMBAD \\
