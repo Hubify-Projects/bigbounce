@@ -4,7 +4,7 @@
 %
 % Compile: pdflatex paper3_draft && bibtex paper3_draft && pdflatex paper3_draft && pdflatex paper3_draft
 
-\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\documentclass[aps,prd,twocolumn,superscriptaddress,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
@@ -17,7 +17,6 @@
 \usepackage{enumitem}
 \usepackage{mathtools}
 \usepackage[utf8]{inputenc}
-\usepackage{float}
 
 \hypersetup{
   colorlinks=true,
@@ -51,14 +50,12 @@ from 37 Million Sources Across Eight Astronomical Archives}
 \date{April 15, 2026}
 
 \begin{abstract}
-We present a unified autoencoder-based anomaly detection pipeline applied to eight astronomical archives spanning optical spectroscopy, X-ray photometry, infrared variability, microwave sky maps, and gravitational-wave timing residuals, comprising 37.3 million individual sources---the largest multi-survey anomaly sweep reported to date. A convolutional autoencoder (\BigAE{}) trained per survey identifies 319{,}443 anomalies across the Dark Energy Spectroscopic Instrument DR1 (195{,}829 from 22.5M spectra), the Sloan Digital Sky Survey DR18 (77{,}905 from 2.3M), LAMOST DR10 (44{,}075 from 11.4M), eROSITA DR1 (298 from 930K X-ray sources), Planck CMB (200 patches from 20K), ACT DR6 (200 patches from 20K), Gaia DR3 (500 variable stars from 50K), and NEOWISE (436 from 43.5K infrared sources). Cross-matching against SIMBAD reveals that 58.8\% of cataloged anomalies are genuinely uncataloged, with survey-level novelty fractions ranging from 27\% (Gaia) to 90\% (SDSS). SDSS anomalies cluster into 3 latent-space groups dominated by ultra-cool dwarf stars (M7--L9 subtypes), while LAMOST reveals a methodological insight: 98\% of its anomalies are blue-excess objects reflecting training-set bias rather than astrophysical rarity. We identify three cross-survey matches between DESI and SDSS, including a time-variable source (TIC~374313355, anomaly score $= 49.5$) and an uncataloged broad-absorption-line QSO candidate at $z \approx 0.86$. A multi-tracer Fisher forecast shows that anomaly-recovered tracers improve $\sigfnl$ by 6.1\% (DESI alone) and 16.4\% (DESI+SDSS combined), yielding a projected 4.38$\sigma$ detection threshold for the matter-bounce prediction $\fnl = -35/8$ with SPHEREx. Planck$\times$ACT cross-correlation of CMB patch anomalies yields a null result, confirming that microwave anomalies trace foreground or noise rather than primordial signals. Independent analysis of the NANOGrav 15-year gravitational-wave background finds a spectral index $\gamma = 3.20 \pm 0.42$, consistent with the matter-bounce prediction $\gamma = 3.0$ at 0.48$\sigma$, with BIC favoring the bounce model over the supermassive black hole binary model by $\Delta\text{BIC} = 7.0$.
+We present a unified autoencoder-based anomaly detection pipeline applied to eight astronomical archives spanning optical spectroscopy, X-ray photometry, infrared variability, microwave sky maps, and gravitational-wave timing residuals, comprising 37.3 million individual sources---the largest multi-survey anomaly sweep reported to date. A fully connected autoencoder (\BigAE{}) trained per survey identifies 319{,}443 anomalies across the Dark Energy Spectroscopic Instrument DR1 (195{,}829 from 22.5M spectra), the Sloan Digital Sky Survey DR18 (77{,}905 from 2.3M), LAMOST DR10 (44{,}075 from 11.4M), eROSITA DR1 (298 from 930K X-ray sources), Planck CMB (200 patches from 20K), ACT DR6 (200 patches from 20K), Gaia DR3 (500 variable stars from 50K), and NEOWISE (436 from 43.5K infrared sources). Cross-matching against SIMBAD reveals that 58.8\% of cataloged anomalies are genuinely uncataloged, with survey-level novelty fractions ranging from 27\% (Gaia) to 90\% (SDSS). SDSS anomalies cluster into 3 latent-space groups dominated by ultra-cool dwarf stars (M7--L9 subtypes), while LAMOST reveals a methodological insight: 98\% of its anomalies are blue-excess objects reflecting training-set bias rather than astrophysical rarity. We identify three cross-survey matches between DESI and SDSS, including a time-variable source (TIC~374313355, anomaly score $= 49.5$) and an uncataloged broad-absorption-line QSO candidate at $z \approx 0.86$. A multi-tracer Fisher forecast shows that anomaly-recovered tracers improve $\sigfnl$ by 6.1\% (DESI alone) and 16.4\% (DESI+SDSS combined), yielding a projected 4.38$\sigma$ detection threshold for the matter-bounce prediction $\fnl = -35/8$ with SPHEREx. Planck$\times$ACT cross-correlation of CMB patch anomalies yields a null result, confirming that microwave anomalies trace foreground or noise rather than primordial signals. Independent analysis of the NANOGrav 15-year gravitational-wave background finds a spectral index $\gamma = 3.20 \pm 0.42$, consistent with the matter-bounce prediction $\gamma = 3.0$ at 0.48$\sigma$, with BIC favoring the bounce model over the supermassive black hole binary model by $\Delta\text{BIC} = 7.0$.
 \end{abstract}
 
-\pacs{95.75.Mn, 98.80.-k, 07.05.Mh, 95.85.Pw}
 \keywords{anomaly detection, machine learning, spectroscopic surveys, primordial non-Gaussianity, gravitational-wave background}
 
 \maketitle
-\tableofcontents
 
 
 %% ============================================================
@@ -358,7 +355,7 @@ The most extreme anomaly (Gaia source 5854407871819325184, score $= 9.07$) is a 
 
 We apply \BigAE{} to 43{,}518 infrared sources from the NEOWISE time-domain catalog~\cite{NEOWISE}, characterized by 15 features including W1 and W2 magnitudes, variability indices, and positional uncertainties. The scan identifies 436 anomalies (top 1\%).
 
-The top anomaly (score $= 11.5$) is located at $(\alpha, \delta) = (180.59^\circ, 0.56^\circ)$, a compact source with extreme W1$-$W2 color excess (Fig.~\ref{fig:neowise_top}). Its infrared excess is inconsistent with normal stellar photospheres and may indicate a circumstellar dust excess, an active galactic nucleus, or an unusual compact object. The SIMBAD novelty rate of 45\% is intermediate between the well-characterized Gaia sample (27\%) and the largely uncataloged spectroscopic samples ($>$68\%).
+The top anomaly (score $= 11.5$) is located at $(\alpha, \delta) = (180.59^\circ, 0.56^\circ)$, with extreme W1$-$W2 color excess (Fig.~\ref{fig:neowise_top}). Its infrared excess is inconsistent with normal stellar photospheres and may indicate circumstellar dust around an evolved giant, an active galactic nucleus, or a luminous red quasi-stellar object. The SIMBAD novelty rate of 45\% is intermediate between the well-characterized Gaia sample (27\%) and the largely uncataloged spectroscopic samples ($>$68\%).
 
 \begin{figure}[t]
 \centering
@@ -367,9 +364,11 @@ The top anomaly (score $= 11.5$) is located at $(\alpha, \delta) = (180.59^\circ
   \textbf{NEOWISE top infrared anomaly at $(\alpha, \delta) = (180.59^\circ, 0.56^\circ)$,
   score $= 11.5$.}
   DESI Legacy Survey DR9 grz composite, $256 \times 256$ pixels ($108'' \times 108''$).
-  Compact source morphology with extreme W1$-$W2 color excess; no prior SIMBAD entry
-  within $5''$. Physical interpretation uncertain: circumstellar dust excess, buried
-  AGN, and unusual compact object hypotheses are consistent with the infrared photometry.}
+  Extreme W1$-$W2 infrared color excess; no prior SIMBAD entry within $5''$.
+  The optical counterpart is a bright, saturated source with diffraction spikes
+  indicative of a luminous red stellar or quasi-stellar object.
+  Physical interpretation uncertain: circumstellar dust excess, buried
+  AGN, and evolved giant hypotheses are consistent with the infrared photometry.}
 \end{figure}
 
 
@@ -419,7 +418,7 @@ A spatial uniformity test across 38{,}330 HEALPix pixels ($N_{\rm side} = 64$) r
 We perform positional cross-matching between the DESI and SDSS anomaly catalogs using a 3-arcsecond matching radius. Three objects are flagged in both surveys:
 
 \begin{enumerate}[leftmargin=*]
-\item \textbf{Known QSO at $z \approx 5.27$.} This object is detected as anomalous in both DESI and SDSS, confirming that the autoencoder independently identifies the same unusual spectral features across the two surveys. Its presence in both catalogs validates the cross-survey approach but does not represent a new discovery.
+\item \textbf{Known QSO at $z \approx 1.55$.} This object is detected as anomalous in both DESI and SDSS, confirming that the autoencoder independently identifies the same unusual spectral features across the two surveys. Its presence in both catalogs validates the cross-survey approach but does not represent a new discovery.
 
 \item \textbf{TIC~374313355 (time-variable, score $= 49.5$).} This object appears in the TESS Input Catalog as a variable source and is flagged as anomalous by both DESI and SDSS with an anomaly score of 49.5 in the DESI scan. The combination of spectroscopic anomaly and time variability makes it a strong candidate for follow-up observations to determine whether the variability is periodic (suggesting a binary system or pulsating star) or aperiodic (suggesting accretion or transient phenomena).
 
@@ -639,6 +638,8 @@ The anomaly catalogs from all eight surveys, including positions, scores, per-ba
 %% ============================================================
 \begin{acknowledgments}
 This research used data from the Dark Energy Spectroscopic Instrument (DESI), the Sloan Digital Sky Survey (SDSS), the Large Sky Area Multi-Object Fiber Spectroscopic Telescope (LAMOST), the extended ROentgen Survey with an Imaging Telescope Array (eROSITA), the Planck satellite, the Atacama Cosmology Telescope (ACT), the Gaia satellite, and the Near-Earth Object Wide-field Infrared Survey Explorer (NEOWISE). Computations were performed on an NVIDIA H200 GPU pod via RunPod. This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and the NASA/IPAC Extragalactic Database (NED), operated by the Jet Propulsion Laboratory, California Institute of Technology, under contract with the National Aeronautics and Space Administration.
+
+\textit{Data availability.} The full anomaly catalogs for all eight surveys (positions, scores, per-band residuals, latent-space coordinates, and SIMBAD cross-match status) will be made publicly available upon acceptance. The \BigAE{} model weights and training code are available at \url{https://github.com/Hubify-Projects/bigbounce}.
 \end{acknowledgments}
 
 
@@ -729,7 +730,6 @@ family.  All images were retrieved via the public Legacy Survey viewer API
 at the sky coordinates of the respective DESI anomaly.  Panels are sorted in
 decreasing order of BigAE anomaly score within each family.
 
-\clearpage
 \begin{figure*}[p]
 \centering
 \includegraphics[width=0.97\textwidth]{figures/fig_gallery_top10.pdf}
