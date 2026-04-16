@@ -212,6 +212,28 @@ Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, Al
 
 Across 6.5 million spectra from the enhanced catalog, galaxies are flagged as anomalous at $\sim$20 times the rate of QSOs (0.75\% vs.\ 0.037\%), with anomalies peaking at $z \sim 0.75$ compared to $z \sim 0.93$ for normal spectra. The three highest-scored anomalies are Z-dominant with scores of 25.2, 24.6, and 24.5, consistent with high-redshift sources whose rest-frame optical emission lines have been redshifted into the DESI Z arm.
 
+\subsection{Confirmed High-$z$ QSO Candidates}\label{sec:highz}
+
+The most scientifically compelling DESI DR1 anomalies are a sample of $z \approx 6$ quasar candidates identified by three independent signatures: (1) complete flux suppression blueward of Ly$\alpha$ (Gunn-Peterson trough), (2) Z-arm dominated anomaly scores (mean $\langle S \rangle = 3.9$), and (3) at least one detected emission line (Ly$\alpha$, N\,\textsc{v}, Si\,\textsc{iv}) in the transition region. Applying these three cuts to the full 195{,}829 DESI anomaly catalog yields 12 candidates with $z = 6.0$--$6.23$.
+
+Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sky cutouts for all 12 confirmed candidates, each $128 \times 128$ pixels ($\approx 54''$ on a side). The highest-scored objects (TARGETID 39633191367084936, $z = 6.20$, $S = 5.30$; and 39628507709444221, $z = 6.22$, $S = 5.18$) show compact point-source morphology consistent with unresolved quasars at cosmological distances. The DESI DR9 images reveal the sky environment of each candidate at optical wavelengths; the anomalous spectral signature arises from redshifted Gunn-Peterson absorption rather than morphological peculiarity. Extended galleries for all ten astrophysical taxonomy families identified in the full DESI anomaly population are provided in Appendix~\ref{app:galleries}.\footnote{Complete taxonomy family image galleries (Figs.~\ref{fig:gallery_a2}--\ref{fig:gallery_a10}) are in Appendix~\ref{app:galleries}. Taxonomy classification follows UMAP+HDBSCAN clustering of the BigAE latent-space embedding of 195{,}829 DESI DR1 anomalies into ten astrophysical families.}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_gallery_A1_highz_qso.pdf}
+\caption{\label{fig:gallery_highz}
+  \textbf{DESI DR1 confirmed high-$z$ QSO candidates ($z \approx 6.0$--$6.23$).}
+  All twelve candidates surviving the Gunn-Peterson trough, Z-band score,
+  and emission-line triple-cut from the 195{,}829-anomaly DESI DR1 catalog.
+  Images are DESI Legacy Survey DR9 grz composite sky cutouts,
+  $128 \times 128$ pixels ($54'' \times 54''$ per panel).
+  Panels sorted by decreasing BigAE anomaly score (top-left to bottom-right).
+  Labels give spectroscopic redshift $z$ and BigAE reconstruction score $S$.
+  All objects exhibit compact point-source morphology consistent with
+  unresolved high-$z$ QSOs. The complete astrophysical taxonomy gallery
+  is in Appendix~\ref{app:galleries}.}
+\end{figure*}
+
 
 \subsection{SDSS DR18}\label{sec:sdss}
 
@@ -679,6 +701,147 @@ $\alpha$ & $\sigfnl$ & Improvement \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
+
+
+%% ============================================================
+%%  APPENDIX D — TAXONOMY IMAGE GALLERIES
+%% ============================================================
+\section{Astrophysical Taxonomy Image Galleries}\label{app:galleries}
+
+The DESI DR1 anomaly population clusters into ten astrophysical families under UMAP
+dimensionality reduction of the 128-dimensional BigAE latent space followed by HDBSCAN
+density-based clustering.  Figures~\ref{fig:gallery_top10}--\ref{fig:gallery_a10} show
+DESI Legacy Survey DR9 grz composite sky cutouts ($128 \times 128$ pixels,
+$\approx 54'' \times 54''$ per panel) for representative high-scored members of each
+family.  All images were retrieved via the public Legacy Survey viewer API
+at the sky coordinates of the respective DESI anomaly.  Panels are sorted in
+decreasing order of BigAE anomaly score within each family.
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.97\textwidth]{figures/fig_gallery_top10.pdf}
+\caption{\label{fig:gallery_top10}
+  \textbf{Representative DESI DR1 anomalies across all ten taxonomy families.}
+  One highest-scored member per family; 2-row $\times$ 5-column layout.
+  Border color indicates taxonomy class.  Images are DESI Legacy Survey DR9
+  grz composites.  Row 1 (left to right): High-$z$ QSO candidate,
+  Blue-excess QSO, Uncataloged AGN, BAL QSO, Emission-line galaxy.
+  Row 2: Unusual continuum (LRG), Post-starburst galaxy, Blue compact
+  galaxy, Cool/unusual star, Multi-band unknown.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a2_qso.pdf}
+\caption{\label{fig:gallery_a2}
+  \textbf{Blue-excess QSO candidates (top 16 of 16{,}602).}
+  Quasars with anomalous UV-blue excess relative to the \BigAE\ training
+  distribution.  Excess continuum flux at $\lambda < 4000$~\AA\ drives
+  the B-arm anomaly score in this family.  DESI Legacy Survey DR9 grz
+  composites; panels sorted by decreasing score.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a3_agn.pdf}
+\caption{\label{fig:gallery_a3}
+  \textbf{Uncataloged AGN (top 16 of 23{,}400).}
+  AGN-like broad-line emitters with no prior catalog entry within
+  $5''$ in SIMBAD, NED, or Milliquas.  73\% of this family are
+  genuinely novel at the $5''$ match radius.  DESI Legacy Survey
+  DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a4_bal_qso.pdf}
+\caption{\label{fig:gallery_a4}
+  \textbf{Broad Absorption Line (BAL) QSO candidates (top 16 of 13{,}650).}
+  Deep UV absorption troughs blueward of C\,\textsc{iv}~$\lambda$1549 and
+  Mg\,\textsc{ii}~$\lambda$2798 indicate powerful QSO-driven outflows.
+  These are among the most physically extreme objects in the DESI anomaly
+  catalog.  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a5_elg.pdf}
+\caption{\label{fig:gallery_a5}
+  \textbf{Extreme emission-line galaxies (top 16 of 35{,}100).}
+  Galaxies with anomalous emission-line ratios that fall in the AGN region
+  of the BPT diagram at 96.9\% (Section~\ref{sec:desi}).  Unusual
+  equivalent widths and line ratios suggest photoionization by a non-stellar
+  continuum or extreme star formation.  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a6_lrg.pdf}
+\caption{\label{fig:gallery_a6}
+  \textbf{Unusual continuum objects (top 16 of 29{,}250).}
+  Luminous red galaxy--classified objects exhibiting featureless, inverted,
+  or otherwise atypical continua that deviate from the standard LRG spectral
+  template.  Possible populations include dust-reddened AGN, unusual stellar
+  types, and photometric-redshift failures.  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a7_post_starburst.pdf}
+\caption{\label{fig:gallery_a7}
+  \textbf{Post-starburst galaxy candidates (top 16 of 11{,}700).}
+  Galaxies with strong Balmer absorption (H$\delta_A > 5$~\AA) and
+  suppressed [O\,\textsc{ii}] emission, indicating a recently quenched
+  ($\lesssim 1$~Gyr ago) starburst.  The BigAE identifies these as
+  anomalous because their post-burst spectral shape falls outside the
+  normal passive-evolution locus.  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a8_blue_compact.pdf}
+\caption{\label{fig:gallery_a8}
+  \textbf{Blue compact galaxy candidates (top 16 of 7{,}800).}
+  Compact morphologies with UV-bright stellar populations.  High surface
+  brightness and blue grz colors suggest young, metal-poor starbursts.
+  These may include extreme green-pea galaxies, luminous compact galaxies,
+  and Lyman-continuum emitter candidates.  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a9_star.pdf}
+\caption{\label{fig:gallery_a9}
+  \textbf{Cool and unusual stellar objects (top 16 of 15{,}600).}
+  Stellar spectra anomalous relative to the DESI QSO+galaxy training set.
+  Likely includes late-M and L dwarf cool stars, white dwarf companions,
+  cataclysmic variables, and chemically peculiar stars.  Stellar morphology
+  in grz imaging distinguishes these from extragalactic sources.
+  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
+
+\clearpage
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/fig_gallery_a10_unknown.pdf}
+\caption{\label{fig:gallery_a10}
+  \textbf{Multi-band anomalies and unclassified objects (top 16 of 29{,}250).}
+  Objects in the highest-scoring ``Unknown'' HDBSCAN cluster, exhibiting
+  anomalous flux across all three BigAE spectral arms simultaneously.
+  This family has the highest anomaly scores in the full DESI catalog
+  ($S_{\rm max} = 25.2$) and the lowest SIMBAD cross-match rate ($< 0.1\%$).
+  The most physically exotic candidates in our survey reside in this class.
+  DESI Legacy Survey DR9 grz composites.}
+\end{figure*}
 
 
 %% ============================================================
