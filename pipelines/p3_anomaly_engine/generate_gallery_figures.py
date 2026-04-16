@@ -76,10 +76,20 @@ FALLBACK_URL = (
 CUTOUT_SIZE = 128   # pixels — gives ~0.43" pix⁻¹ with ls-dr9
 
 
+LAYER_FALLBACKS = [
+    "ls-dr9", "ls-dr10", "sdss", "decals",
+]
+
+
+def _is_real_image(img: np.ndarray) -> bool:
+    """Return True if image has actual sky content (not blank/error)."""
+    return float(img.std()) > 3.0
+
+
 def fetch_cutout(ra: float, dec: float, size: int = CUTOUT_SIZE) -> np.ndarray:
     """Return an (H, W, 3) uint8 RGB array from the Legacy Survey viewer.
-    Uses curl subprocess to avoid macOS Python SSL issues.
-    Returns a dark-field placeholder if the download fails."""
+    Tries ls-dr9 → ls-dr10 → sdss → decals. Uses curl to avoid macOS SSL.
+    Validates image content via pixel std. Returns dark placeholder on fail."""
     import subprocess
     from PIL import Image
 
@@ -89,43 +99,39 @@ def fetch_cutout(ra: float, dec: float, size: int = CUTOUT_SIZE) -> np.ndarray:
     if cache_path.exists() and cache_path.stat().st_size > 500:
         try:
             img = np.array(Image.open(cache_path).convert("RGB"))
-            return img
+            if _is_real_image(img):
+                return img
         except Exception:
-            cache_path.unlink(missing_ok=True)
+            pass
+        cache_path.unlink(missing_ok=True)
 
-    for url_template in [LEGACY_URL, FALLBACK_URL]:
-        url = url_template.format(ra=ra, dec=dec, size=size)
+    base = "https://www.legacysurvey.org/viewer/jpeg-cutout"
+    for layer in LAYER_FALLBACKS:
+        url = f"{base}?ra={ra:.6f}&dec={dec:.6f}&size={size}&layer={layer}"
         try:
             result = subprocess.run(
-                ["curl", "-s", "--max-time", "20", "-o", str(cache_path), url],
-                capture_output=True, timeout=25,
+                ["curl", "-s", "--max-time", "25", "-o", str(cache_path), url],
+                capture_output=True, timeout=30,
             )
             if result.returncode == 0 and cache_path.exists() and cache_path.stat().st_size > 500:
                 img = np.array(Image.open(cache_path).convert("RGB"))
-                print(f"  [ok] {ra:.3f},{dec:.3f} → {cache_path.stat().st_size} bytes", flush=True)
-                return img
-            elif cache_path.exists():
+                if _is_real_image(img):
+                    print(f"  [ok:{layer}] {ra:.3f},{dec:.3f} → {cache_path.stat().st_size}B", flush=True)
+                    return img
+            if cache_path.exists():
                 cache_path.unlink(missing_ok=True)
         except Exception as exc:
-            print(f"  [warn] curl failed ({exc})", flush=True)
+            print(f"  [warn] {layer} curl failed: {exc}", flush=True)
             if cache_path.exists():
                 cache_path.unlink(missing_ok=True)
 
-    # Placeholder: dark image with faint target reticle
+    print(f"  [miss] {ra:.3f},{dec:.3f} — no coverage in any layer", flush=True)
+    # Dark placeholder with minimal marker
     img = np.zeros((size, size, 3), dtype=np.uint8)
-    img[:, :] = [12, 15, 20]  # very dark blue-grey
+    img[:, :] = [10, 12, 18]
     mid = size // 2
-    # Draw a faint reticle
-    img[mid - 1 : mid + 2, mid - size // 4 : mid + size // 4] = [40, 40, 60]
-    img[mid - size // 4 : mid + size // 4, mid - 1 : mid + 2] = [40, 40, 60]
-    # Small circle approximation
-    for t in range(0, 360, 10):
-        import math
-        r = size // 6
-        x = int(mid + r * math.cos(math.radians(t)))
-        y = int(mid + r * math.sin(math.radians(t)))
-        if 0 <= x < size and 0 <= y < size:
-            img[y, x] = [60, 60, 80]
+    img[mid - 1 : mid + 2, mid - size // 5 : mid + size // 5] = [35, 35, 55]
+    img[mid - size // 5 : mid + size // 5, mid - 1 : mid + 2] = [35, 35, 55]
     return img
 
 
@@ -344,22 +350,101 @@ def make_gallery_figure(
     plt.close(fig)
 
 
+# NEOWISE top anomaly — extreme W1-W2 color excess (paper §2.7)
+NEOWISE_TOP = {
+    "ra": 180.59, "dec": 0.56, "score": 11.5,
+    "label": "NEOWISE",
+    "note": "NEOWISE top anomaly: extreme W1-W2",
+}
+
+
+def predownload_all(all_objects: list):
+    """Download all sky cutouts BEFORE generating figures.
+    This lets us print a clean summary of coverage before committing to
+    slow matplotlib rendering.
+    """
+    print(f"\nPre-downloading {len(all_objects)} unique sky positions...", flush=True)
+    n_ok, n_miss = 0, 0
+    for obj in all_objects:
+        img = fetch_cutout(obj["ra"], obj["dec"])
+        if _is_real_image(img):
+            n_ok += 1
+        else:
+            n_miss += 1
+    print(f"  Done: {n_ok} real images, {n_miss} placeholders\n", flush=True)
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
+    from PIL import Image
+
     print("Loading DESI taxonomy catalog...", flush=True)
     families = load_taxonomy()
     print(f"  Loaded families: {sorted(families.keys())}", flush=True)
 
-    # ------------------------------------------------------------------
-    # Figure 1: Top-10 representative anomalies (main paper body)
-    # One object per family, 2 rows × 5 columns
-    # ------------------------------------------------------------------
+    # Collect all unique positions needed
     family_order = [
         "High-z QSO", "QSO", "AGN", "BAL-QSO", "ELG",
         "LRG", "Post-starburst", "Blue-compact", "Star", "Unknown",
     ]
+    appendix_map = [
+        ("QSO",            "A2", "Blue-excess QSO Candidates",
+         "Top 16 of 16,602 QSO anomalies. Excess blue continuum relative to normal quasar template."),
+        ("AGN",            "A3", "Uncataloged AGN",
+         "Top 16 of 23,400 AGN-like anomalies. 73% lack prior catalog entries within 5\"."),
+        ("BAL-QSO",        "A4", "Broad Absorption Line (BAL) QSO Candidates",
+         "Top 16 of 13,650 BAL QSO anomalies. Deep UV absorption troughs indicate powerful outflows."),
+        ("ELG",            "A5", "Extreme Emission-Line Galaxies",
+         "Top 16 of 35,100 ELG anomalies. Anomalous line ratios classified BPT-AGN at 96.9%."),
+        ("LRG",            "A6", "Unusual Continuum Objects",
+         "Top 16 of 29,250 LRG-classified anomalies. Featureless or inverted continua."),
+        ("Post-starburst", "A7", "Post-starburst Galaxies",
+         "Top 16 of 11,700 post-starburst anomalies. Strong Balmer absorption, suppressed [O II]."),
+        ("Blue-compact",   "A8", "Blue Compact Galaxies",
+         "Top 16 of 7,800 blue compact anomalies. Compact morphology with UV-bright stellar populations."),
+        ("Star",           "A9", "Cool/Unusual Stellar Objects",
+         "Top 16 of 15,600 stellar anomalies. Candidate ultra-cool dwarfs and peculiar stellar types."),
+        ("Unknown",        "A10", "Multi-band Anomalies (Uncataloged)",
+         "Top 16 of 29,250 highest-uncertainty anomalies. No spectral template match."),
+    ]
+
+    # Build complete object list for pre-download
+    all_positions = list(HIGHZ_QSO_OBJECTS)  # 12 high-z QSOs
+    all_positions.append(NEOWISE_TOP)
+    for fam_key, _, _, _ in appendix_map:
+        for item in families.get(fam_key, [])[:16]:
+            all_positions.append(item)
+    # Remove duplicates by (ra, dec) rounding
+    seen = set()
+    unique_positions = []
+    for obj in all_positions:
+        key = (round(obj["ra"], 4), round(obj["dec"], 4))
+        if key not in seen:
+            seen.add(key)
+            unique_positions.append(obj)
+
+    # PRE-DOWNLOAD PHASE — download all images before any figure rendering
+    predownload_all(unique_positions)
+
+    # ------------------------------------------------------------------
+    # NEOWISE top anomaly single-panel figure
+    # ------------------------------------------------------------------
+    make_gallery_figure(
+        objects=[NEOWISE_TOP],
+        ncols=1,
+        title="NEOWISE Top Anomaly — Extreme W1−W2 Color Excess",
+        subtitle=r"Score = 11.5. Position: (α, δ) = (180.59°, 0.56°). "
+                 "Compact source, 73% SIMBAD-novel. DESI Legacy Survey DR9 grz composite.",
+        outname="fig_neowise_top_anomaly",
+        show_family_label=False,
+        thumb_size=256,
+    )
+
+    # ------------------------------------------------------------------
+    # Figure top10: representative anomalies (main paper body)
+    # ------------------------------------------------------------------
     top_per_family = []
     for fam in family_order:
         if fam == "High-z QSO":
@@ -395,9 +480,9 @@ def main():
     make_gallery_figure(
         objects=highz_objs,
         ncols=4,
-        title=r"Appendix A1 — High-z QSO Candidates (z $\approx$ 6)",
+        title="Appendix A1 — High-z QSO Candidates (z ~ 6)",
         subtitle=(
-            "All 12 DESI DR1 z≥6 anomalies surviving AE + Gunn-Peterson + SNR cuts. "
+            "All 12 DESI DR1 z>=6 anomalies surviving AE + Gunn-Peterson + SNR cuts. "
             "Scores are BigAE reconstruction MSE (lower SNR = more anomalous)."
         ),
         outname="fig_gallery_A1_highz_qso",
@@ -407,18 +492,6 @@ def main():
     # ------------------------------------------------------------------
     # Appendix A2–A10: Top 16 per taxonomy family (4×4 grids)
     # ------------------------------------------------------------------
-    appendix_map = [
-        ("QSO",            "A2", "Blue-excess QSO Candidates",         "Top 16 of 16,602 QSO anomalies. Excess blue continuum relative to normal quasar template."),
-        ("AGN",            "A3", "Uncataloged AGN",                     "Top 16 of 23,400 AGN-like anomalies. 73\\% lack prior catalog entries within 5\\arcsec."),
-        ("BAL-QSO",        "A4", "Broad Absorption Line (BAL) QSO Candidates", "Top 16 of 13,650 BAL QSO anomalies. Deep UV absorption troughs indicate powerful outflows."),
-        ("ELG",            "A5", "Extreme Emission-Line Galaxies",      "Top 16 of 35,100 ELG anomalies. Anomalous line ratios classified BPT-AGN at 96.9\\%."),
-        ("LRG",            "A6", "Unusual Continuum Objects",           "Top 16 of 29,250 LRG-classified anomalies. Featureless or inverted continua."),
-        ("Post-starburst",  "A7", "Post-starburst Galaxies",            "Top 16 of 11,700 post-starburst anomalies. Strong Balmer absorption, suppressed [O\\,\\textsc{ii}]."),
-        ("Blue-compact",   "A8", "Blue Compact Galaxies",               "Top 16 of 7,800 blue compact anomalies. Compact morphology with UV-bright stellar populations."),
-        ("Star",           "A9", "Cool/Unusual Stellar Objects",        "Top 16 of 15,600 stellar anomalies. Candidate ultra-cool dwarfs and peculiar stellar types."),
-        ("Unknown",        "A10", "Multi-band Anomalies (Uncataloged)", "Top 16 of 29,250 highest-uncertainty anomalies. No spectral template match; possible exotic objects."),
-    ]
-
     for fam_key, app_id, title_str, subtitle_str in appendix_map:
         items = families.get(fam_key, [])[:16]
         if not items:
@@ -440,7 +513,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # Check PIL availability
     try:
         from PIL import Image
     except ImportError:
