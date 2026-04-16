@@ -410,11 +410,17 @@ def main():
          "Top 16 of 29,250 highest-uncertainty anomalies. No spectral template match."),
     ]
 
-    # Build complete object list for pre-download
+    # Build complete object list for pre-download (top 40 per family + top10 for top_per_family)
     all_positions = list(HIGHZ_QSO_OBJECTS)  # 12 high-z QSOs
     all_positions.append(NEOWISE_TOP)
     for fam_key, _, _, _ in appendix_map:
-        for item in families.get(fam_key, [])[:16]:
+        for item in families.get(fam_key, [])[:40]:  # 40 candidates per appendix family
+            all_positions.append(item)
+    # Extra candidates for top10 figure (in case top-1 has no coverage)
+    for fam in family_order:
+        if fam == "High-z QSO":
+            continue
+        for item in families.get(fam, [])[:10]:
             all_positions.append(item)
     # Remove duplicates by (ra, dec) rounding
     seen = set()
@@ -429,18 +435,44 @@ def main():
     predownload_all(unique_positions)
 
     # ------------------------------------------------------------------
-    # NEOWISE top anomaly single-panel figure
+    # NEOWISE top anomaly — proper large single-panel figure
     # ------------------------------------------------------------------
-    make_gallery_figure(
-        objects=[NEOWISE_TOP],
-        ncols=1,
-        title="NEOWISE Top Anomaly — Extreme W1−W2 Color Excess",
-        subtitle=r"Score = 11.5. Position: (α, δ) = (180.59°, 0.56°). "
-                 "Compact source, 73% SIMBAD-novel. DESI Legacy Survey DR9 grz composite.",
-        outname="fig_neowise_top_anomaly",
-        show_family_label=False,
-        thumb_size=256,
+    nw = NEOWISE_TOP
+    nw_img = fetch_cutout(nw["ra"], nw["dec"], size=256)
+
+    fig_nw, ax_nw = plt.subplots(1, 1, figsize=(3.5, 3.5))
+    fig_nw.patch.set_facecolor(BG_COLOR)
+    ax_nw.set_facecolor(BG_COLOR)
+    ax_nw.imshow(nw_img, origin="upper", aspect="equal", interpolation="lanczos")
+    ax_nw.set_xlim(0, 256)
+    ax_nw.set_ylim(256, 0)
+    ax_nw.set_xticks([])
+    ax_nw.set_yticks([])
+    for spine in ax_nw.spines.values():
+        spine.set_edgecolor("#555555")
+        spine.set_linewidth(0.5)
+
+    fig_nw.suptitle(
+        "NEOWISE Top Anomaly \u2014 Extreme W1\u2212W2 Color Excess",
+        color=LABEL_COLOR,
+        fontsize=8.5,
+        fontweight="bold",
+        y=0.98,
     )
+    fig_nw.text(
+        0.5, 0.015,
+        r"Score = 11.5 | ($\alpha$, $\delta$) = (180.59°, 0.56°) | DESI Legacy Survey DR9 grz",
+        ha="center", va="bottom",
+        fontsize=6.5, color="#aaaaaa",
+        style="italic",
+    )
+
+    plt.subplots_adjust(left=0.04, right=0.96, top=0.91, bottom=0.07)
+    for ext in ("pdf", "png"):
+        nw_path = FIGURES_DIR / f"fig_neowise_top_anomaly.{ext}"
+        fig_nw.savefig(nw_path, facecolor=BG_COLOR, dpi=300, bbox_inches="tight")
+        print(f"  Saved: {nw_path}", flush=True)
+    plt.close(fig_nw)
 
     # ------------------------------------------------------------------
     # Figure top10: representative anomalies (main paper body)
@@ -452,8 +484,19 @@ def main():
             obj["label"] = "High-z QSO"
             top_per_family.append(obj)
         else:
-            items = families.get(fam, [])
-            if items:
+            items = families.get(fam, [])[:10]
+            picked = None
+            for candidate in items:
+                img = fetch_cutout(candidate["ra"], candidate["dec"])
+                if _is_real_image(img):
+                    picked = dict(candidate)
+                    picked["label"] = fam
+                    break
+                print(f"  [top10 skip] {candidate['ra']:.1f},{candidate['dec']:.1f} — no coverage, trying next", flush=True)
+            if picked is not None:
+                top_per_family.append(picked)
+            elif items:
+                # fallback: use top-scored even if no coverage
                 obj = dict(items[0])
                 obj["label"] = fam
                 top_per_family.append(obj)
@@ -491,15 +534,29 @@ def main():
 
     # ------------------------------------------------------------------
     # Appendix A2–A10: Top 16 per taxonomy family (4×4 grids)
+    # Fetch from top 40 candidates, skipping positions with no coverage.
     # ------------------------------------------------------------------
     for fam_key, app_id, title_str, subtitle_str in appendix_map:
-        items = families.get(fam_key, [])[:16]
-        if not items:
+        items_all = families.get(fam_key, [])[:40]
+        if not items_all:
             print(f"  [warn] no objects for family {fam_key}, skipping", flush=True)
             continue
-        objs = [dict(o) for o in items]
-        for o in objs:
-            o["label"] = fam_key
+        objs = []
+        for item in items_all:
+            if len(objs) >= 16:
+                break
+            img = fetch_cutout(item["ra"], item["dec"])
+            if _is_real_image(img):
+                o = dict(item)
+                o["label"] = fam_key
+                objs.append(o)
+            else:
+                print(f"  [skip] {item['ra']:.1f},{item['dec']:.1f} — no coverage, trying next", flush=True)
+        if len(objs) < 16:
+            print(f"  [warn] only {len(objs)}/16 real images for {fam_key}", flush=True)
+        if not objs:
+            print(f"  [warn] zero real images for {fam_key}, skipping", flush=True)
+            continue
         make_gallery_figure(
             objects=objs,
             ncols=4,
