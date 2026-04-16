@@ -86,12 +86,21 @@ def _is_real_image(img: np.ndarray) -> bool:
     return float(img.std()) > 3.0
 
 
+# In-memory set of (ra_rounded, dec_rounded) positions with confirmed no coverage
+_KNOWN_MISSES: set = set()
+
+
 def fetch_cutout(ra: float, dec: float, size: int = CUTOUT_SIZE) -> np.ndarray:
     """Return an (H, W, 3) uint8 RGB array from the Legacy Survey viewer.
     Tries ls-dr9 → ls-dr10 → sdss → decals. Uses curl to avoid macOS SSL.
-    Validates image content via pixel std. Returns dark placeholder on fail."""
+    Validates image content via pixel std. Returns pure-zero placeholder on fail
+    (std=0 so _is_real_image() correctly rejects it)."""
     import subprocess
     from PIL import Image
+
+    pos_key = (round(ra, 3), round(dec, 3))
+    if pos_key in _KNOWN_MISSES:
+        return np.zeros((size, size, 3), dtype=np.uint8)
 
     cache_name = f"ra{ra:.5f}_dec{dec:.5f}_s{size}.jpg"
     cache_path = CUTOUT_CACHE / cache_name
@@ -126,13 +135,9 @@ def fetch_cutout(ra: float, dec: float, size: int = CUTOUT_SIZE) -> np.ndarray:
                 cache_path.unlink(missing_ok=True)
 
     print(f"  [miss] {ra:.3f},{dec:.3f} — no coverage in any layer", flush=True)
-    # Dark placeholder with minimal marker
-    img = np.zeros((size, size, 3), dtype=np.uint8)
-    img[:, :] = [10, 12, 18]
-    mid = size // 2
-    img[mid - 1 : mid + 2, mid - size // 5 : mid + size // 5] = [35, 35, 55]
-    img[mid - size // 5 : mid + size // 5, mid - 1 : mid + 2] = [35, 35, 55]
-    return img
+    _KNOWN_MISSES.add(pos_key)
+    # Pure solid placeholder (std=0) so _is_real_image() correctly rejects it
+    return np.zeros((size, size, 3), dtype=np.uint8)
 
 
 # ---------------------------------------------------------------------------
@@ -410,11 +415,11 @@ def main():
          "Top 16 of 29,250 highest-uncertainty anomalies. No spectral template match."),
     ]
 
-    # Build complete object list for pre-download (top 40 per family + top10 for top_per_family)
+    # Build complete object list for pre-download (top 100 per family + top10 for top_per_family)
     all_positions = list(HIGHZ_QSO_OBJECTS)  # 12 high-z QSOs
     all_positions.append(NEOWISE_TOP)
     for fam_key, _, _, _ in appendix_map:
-        for item in families.get(fam_key, [])[:40]:  # 40 candidates per appendix family
+        for item in families.get(fam_key, [])[:100]:  # 100 candidates per appendix family
             all_positions.append(item)
     # Extra candidates for top10 figure (in case top-1 has no coverage)
     for fam in family_order:
@@ -537,7 +542,7 @@ def main():
     # Fetch from top 40 candidates, skipping positions with no coverage.
     # ------------------------------------------------------------------
     for fam_key, app_id, title_str, subtitle_str in appendix_map:
-        items_all = families.get(fam_key, [])[:40]
+        items_all = families.get(fam_key, [])[:100]
         if not items_all:
             print(f"  [warn] no objects for family {fam_key}, skipping", flush=True)
             continue
