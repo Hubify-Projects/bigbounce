@@ -1,5 +1,32 @@
 
 
+## 2026-04-17 — SSOT viewer page on bigbounce site
+
+### Houston substantive messages, verbatim
+
+**~evening PT — Commit/push SSOT restructure + build a proper SSOT viewer HTML page**
+> commit and push to main please ... where can I view the tasks - please make a proper html view on the bigbounce site where I can see the SSOT and work through the tasks etc and view everything for each SSOT for each paper etc
+
+---
+
+## 2026-04-17 — Full 4-paper arXiv-readiness audit + Houston Method amendment
+
+### Houston substantive messages, verbatim
+
+**~afternoon PT — Audit all 4 papers, amend Houston Method on "future work → do NOW", improve paper pages on site**
+> can you check the actual status of each of my main 4 research papers - analyze how ready they actually are for submission to ArXiv - and if not ready make a plan for each to get them 100% ready for submission - also a pattern I noticed in reading the papers (which we should pick up to add to the 'houston-method') is multiple places where papers mention theyve found things that are worthy of future research or deeper discovery etc .. and yet those things are not properly added to our research queue and considered as things we should just run NOW to enhance the research and paper itself instead of punting it to be done in the future - as a rule we can do almost everything now unless it 100% relies on future satellite or telescope survey or something that is going to be launched etc but even then we can often find other ways to simulate data or enhance existing data with AI etc etc... anyways ... I am trying to bring our bigbounce research project up to date - get proper status on everything - also have a more clear paper for each paper on the site that showcases the papers themselves ie I saw a markdown file going over the keytakeaways and discoveries of paper 3 and it was actually quite useful and would be nice to have that with the summary list that was at the bottom actually moved to the top of it but on the paper page too etc etc... please audit full research project in bigbounce especially all real research related to everything in our main 4 papers and how we can get our research all properly to the finish line where the data and figures and papers and the site are all publishable and I can submit to ArXiv before someone else beats me to it :) thank you
+
+---
+
+## 2026-04-15 — Anomaly paper: sky cutout image galleries (chirality-style)
+
+### Houston substantive messages, verbatim
+
+**~afternoon PT — Add real DESI cutout image galleries to Paper 3**
+> hey i love the updated figures in the paper - but as requested i was hoping for more actual visuals of the spectra themselves like the actual images compared in the different catagories kinda like how this was done in the galaxy chirality catalog paper we did - we describe these anomalies and their spectra on grpahs etc its all fine and great science but I want to see the actual image from DESI like how our anomaly explorer you can see the images ... ideally some grouped images of each of the ten astrophysical families - as well as maybe images of the top 10+ most interesting anomalies we have discovered with a few included in the paper itself and rest included as an appendum or whatever after the citations at the end that is linked if user wants to view more they can click a footnote or link in the paper to see more of them at the bottom of the paper ya know? keep it professional and scientific etc... again showing some examples from galaxy chirality catalog for reference on what i am expecting within the paper to be added - try again and keep the figures from the last compile too ensure the paper is top notch ready for scientific publication and feel free to push back if i am asking to include too many figures/images that would make it feel unprofessional and if so just add some like in the galaxy paper examples that kinda format for the top interesting anomalies and families and include an addendum with more at the bottom which we can decide to include or exclude before we officially publish later thanks
+
+---
+
 ## 2026-04-15 — Anomaly catalog paper figure generation
 
 ### Houston substantive messages, verbatim

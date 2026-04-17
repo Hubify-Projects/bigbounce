@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSOT &amp; Task Queue — Spin-Torsion Cosmology Research Program</title>
+<meta name="description" content="Single Source of Truth for all 4 BigBounce papers: arXiv-readiness, close-the-gap tasks, and the active research queue.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="SSOT &amp; Task Queue — BigBounce">
+<meta property="og:description" content="Canonical status for all 4 papers + the task queue driving them to 100 % arXiv-ready.">
+<meta property="og:url" content="https://bigbounce.hubify.app/ssot.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ══════ SSOT viewer styles ══════ */
+  .ssot-hero {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-left: 4px solid #1e40af;
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    font-family: var(--font-sans);
+  }
+  .ssot-hero .eyebrow {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 700; color: #1e40af; margin-bottom: 6px;
+  }
+  .ssot-hero h1 {
+    margin: 0 0 8px; font-family: var(--font-serif); font-size: 1.8rem;
+  }
+  .ssot-hero p {
+    margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.6;
+  }
+  .ssot-hero .updated {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: 10px;
+  }
+
+  /* ══════ stat cards ══════ */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 0 0 32px;
+  }
+  @media (max-width: 900px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 16px 18px;
+    font-family: var(--font-sans);
+    position: relative; overflow: hidden;
+  }
+  .stat-card .stat-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-tertiary); font-weight: 600;
+  }
+  .stat-card .stat-value {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 700;
+    color: var(--text); margin: 6px 0 2px; line-height: 1.1;
+  }
+  .stat-card .stat-sub {
+    font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+  }
+  .stat-card .stat-bar {
+    height: 4px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden;
+  }
+  .stat-card .stat-bar-fill { height: 100%; background: #22c55e; transition: width 0.6s ease; }
+  .stat-card.amber .stat-bar-fill { background: #eab308; }
+
+  /* ══════ program dashboard table ══════ */
+  .program-table {
+    width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 14px;
+    border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .program-table th {
+    background: var(--bg-subtle); padding: 10px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--text-tertiary); border-bottom: 1px solid var(--border); font-weight: 600;
+  }
+  .program-table td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    color: var(--text-secondary); vertical-align: top;
+  }
+  .program-table tr:last-child td { border-bottom: none; }
+  .program-table .paper-link {
+    font-family: var(--font-serif); font-weight: 700; color: var(--text); font-size: 15px;
+  }
+  .program-table .readiness {
+    font-family: var(--font-mono); font-weight: 700; text-align: right;
+  }
+  .r-green { color: #16a34a; }
+  .r-amber { color: #d97706; }
+
+  /* ══════ paper tabs ══════ */
+  .paper-tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid var(--border);
+    margin: 36px 0 0; overflow-x: auto; font-family: var(--font-sans);
+  }
+  .paper-tab {
+    padding: 12px 18px; background: transparent; border: none;
+    font-size: 14px; font-weight: 600; color: var(--text-tertiary);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+    white-space: nowrap; font-family: var(--font-sans);
+  }
+  .paper-tab:hover { color: var(--text); }
+  .paper-tab.active { color: var(--text); border-bottom-color: #1e40af; }
+  .paper-tab .tab-badge {
+    display: inline-block; margin-left: 6px; font-family: var(--font-mono); font-size: 11px;
+    padding: 2px 6px; background: var(--bg-subtle); color: var(--text-secondary);
+    border-radius: 3px; font-weight: 700;
+  }
+  .paper-tab.active .tab-badge.green { background: #dcfce7; color: #15803d; }
+  .paper-tab.active .tab-badge.amber { background: #fef3c7; color: #92400e; }
+
+  .paper-panel { display: none; padding: 24px 0; }
+  .paper-panel.active { display: block; }
+
+  .paper-header {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+    margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--border);
+  }
+  .paper-header h2 {
+    margin: 0 0 6px; font-family: var(--font-serif); font-size: 1.6rem; color: var(--text);
+  }
+  .paper-header .paper-sub {
+    font-size: 13px; color: var(--text-tertiary); font-family: var(--font-sans);
+  }
+  .paper-header .paper-readiness {
+    font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700;
+    line-height: 1; white-space: nowrap;
+  }
+  .paper-header .paper-readiness-sub {
+    font-size: 11px; color: var(--text-tertiary); text-transform: uppercase;
+    letter-spacing: 0.05em; text-align: right; margin-top: 2px;
+    font-family: var(--font-sans);
+  }
+
+  .callout {
+    background: var(--bg-subtle); border-left: 4px solid var(--border-strong);
+    border-radius: var(--radius-md); padding: 14px 18px; margin: 16px 0;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+    font-family: var(--font-sans);
+  }
+  .callout.blocker { border-left-color: #dc2626; background: #fef2f2; color: #7f1d1d; }
+  .callout.positive { border-left-color: #16a34a; background: #f0fdf4; color: #14532d; }
+  .callout.warning { border-left-color: #d97706; background: #fffbeb; color: #78350f; }
+
+  .section-h { font-family: var(--font-sans); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.06em; font-weight: 700; color: var(--text-tertiary);
+    margin: 28px 0 10px; }
+
+  .gap-list { list-style: none; padding: 0; margin: 0; font-family: var(--font-sans); }
+  .gap-list li {
+    padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    margin-bottom: 8px; display: grid; grid-template-columns: 80px 1fr auto; gap: 12px;
+    align-items: center; font-size: 13.5px; background: var(--bg);
+  }
+  .gap-list li code {
+    font-family: var(--font-mono); font-size: 11.5px; background: var(--bg-subtle);
+    padding: 3px 6px; border-radius: 3px; color: var(--text); font-weight: 700;
+  }
+  .gap-list .gap-pct {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary);
+    text-align: right; white-space: nowrap;
+  }
+
+  /* ══════ queue table ══════ */
+  .queue-controls {
+    display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+    font-family: var(--font-sans);
+  }
+  .queue-filter {
+    padding: 6px 12px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-md); font-size: 12px; font-weight: 600;
+    cursor: pointer; color: var(--text-secondary); font-family: var(--font-sans);
+    transition: all var(--transition);
+  }
+  .queue-filter:hover { border-color: var(--border-strong); color: var(--text); }
+  .queue-filter.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .queue-filter .count { opacity: 0.7; margin-left: 4px; }
+
+  .queue-search {
+    flex: 1; min-width: 180px; max-width: 320px; padding: 6px 12px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-md); font-size: 13px; font-family: var(--font-sans);
+    color: var(--text);
+  }
+
+  .queue-table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 13.5px; }
+  .queue-table th {
+    text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--text-tertiary); border-bottom: 2px solid var(--border);
+    font-weight: 700; position: sticky; top: 0; background: var(--bg); z-index: 2;
+  }
+  .queue-table td {
+    padding: 11px 12px; border-bottom: 1px solid var(--border); vertical-align: top;
+    color: var(--text-secondary);
+  }
+  .queue-table tr:hover td { background: var(--bg-subtle); }
+  .queue-table .qid {
+    font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--text);
+    white-space: nowrap;
+  }
+  .queue-table .qtitle { color: var(--text); font-weight: 500; }
+  .queue-table .qnotes { color: var(--text-tertiary); font-size: 12px; margin-top: 3px; }
+
+  .pchip {
+    display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px;
+    font-weight: 700; font-family: var(--font-mono); text-transform: uppercase;
+  }
+  .pchip.p0 { background: #fee2e2; color: #991b1b; }
+  .pchip.p1 { background: #fef3c7; color: #92400e; }
+  .pchip.p2 { background: #dbeafe; color: #1e40af; }
+  .pchip.p3 { background: var(--bg-subtle); color: var(--text-tertiary); border: 1px solid var(--border); }
+
+  .ochip {
+    display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px;
+    font-weight: 600; font-family: var(--font-mono);
+    background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border);
+  }
+  .ochip.pod { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+  .ochip.agent { background: #e0f2fe; color: #075985; border-color: #7dd3fc; }
+  .ochip.site { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
+  .ochip.houston { background: #fff7ed; color: #9a3412; border-color: #fdba74; }
+
+  .pbadge {
+    display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10.5px;
+    font-weight: 700; font-family: var(--font-mono);
+    background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border);
+  }
+  .pbadge.p1 { background: #f3e8ff; color: #6b21a8; border-color: #d8b4fe; }
+  .pbadge.p2 { background: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+  .pbadge.p3 { background: #e0e7ff; color: #3730a3; border-color: #a5b4fc; }
+  .pbadge.p4 { background: #fce7f3; color: #9d174d; border-color: #f9a8d4; }
+  .pbadge.all { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+  .status-cell { font-family: var(--font-mono); font-size: 12px; text-align: center; width: 50px; }
+  .status-cell .s-open { color: var(--text-tertiary); }
+  .status-cell .s-progress { color: #d97706; font-weight: 700; }
+  .status-cell .s-done { color: #16a34a; font-weight: 700; }
+  .status-cell .s-blocked { color: #dc2626; font-weight: 700; }
+
+  /* ══════ completed/diagram ══════ */
+  .deps-diagram {
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 16px 20px; font-family: var(--font-mono);
+    font-size: 12.5px; line-height: 1.8; color: var(--text-secondary);
+    white-space: pre; overflow-x: auto; margin: 0 0 24px;
+  }
+
+  .completed-list {
+    padding: 0; margin: 0; list-style: none;
+    font-family: var(--font-sans); font-size: 13.5px;
+  }
+  .completed-list li {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .completed-list li:last-child { border-bottom: none; }
+  .completed-list code {
+    font-family: var(--font-mono); font-size: 11.5px; background: var(--bg-subtle);
+    padding: 2px 6px; border-radius: 3px; color: var(--text); font-weight: 700;
+  }
+
+  .gh-link {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent-link);
+    text-decoration: none; border-bottom: 1px dotted var(--accent-link);
+  }
+  .gh-link:hover { border-bottom-style: solid; }
+
+  .claims-table {
+    width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 13px;
+    margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;
+  }
+  .claims-table th {
+    background: var(--bg-subtle); padding: 8px 10px; text-align: left;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--text-tertiary); border-bottom: 1px solid var(--border); font-weight: 600;
+  }
+  .claims-table td {
+    padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+  }
+  .claims-table tr:last-child td { border-bottom: none; }
+  .claims-table td:nth-child(2) {
+    font-family: var(--font-mono); font-weight: 700; color: var(--text); text-align: right; white-space: nowrap;
+  }
+
+  details.audit {
+    margin: 10px 0; border: 1px solid var(--border); border-radius: var(--radius-md);
+    background: var(--bg); padding: 0;
+  }
+  details.audit[open] { background: var(--bg); }
+  details.audit > summary {
+    padding: 12px 16px; cursor: pointer; font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600; color: var(--text);
+    list-style: none;
+  }
+  details.audit > summary::-webkit-details-marker { display: none; }
+  details.audit > summary::before { content: '▸ '; font-size: 11px; color: var(--text-tertiary); }
+  details.audit[open] > summary::before { content: '▾ '; }
+  details.audit > div { padding: 0 16px 14px; font-family: var(--font-sans); font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+
+  .audit-list { margin: 0; padding-left: 20px; }
+  .audit-list li { margin-bottom: 6px; }
+  .audit-list li code {
+    font-family: var(--font-mono); font-size: 11.5px; background: var(--bg-subtle);
+    padding: 2px 5px; border-radius: 3px; color: var(--text);
+  }
+
+  .empty-state {
+    text-align: center; padding: 40px 20px; color: var(--text-tertiary);
+    font-family: var(--font-sans); font-size: 14px;
+  }
+</style>
+<script src="nav.js" defer></script>
+</head>
+<body>
+<main class="container">
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="ssot-hero">
+  <div class="eyebrow">Single Source of Truth — cross-paper dashboard</div>
+  <h1>SSOT &amp; Task Queue</h1>
+  <p>Canonical arXiv-readiness and close-the-gap work for all four BigBounce papers. Every number on this page is sourced from the per-paper <code>status.md</code> files in <code>project-context/SSOT/</code>. When surfaces elsewhere on the site disagree with this page, <strong>this page wins</strong>.</p>
+  <div class="updated">Last authoritative update: 2026-04-17 &middot; <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT" target="_blank">view raw SSOT on GitHub</a></div>
+</div>
+
+<!-- ═══════════ PROGRAM-LEVEL STAT CARDS ═══════════ -->
+<div class="stat-row">
+  <div class="stat-card">
+    <div class="stat-label">Paper 1 — Spin-Torsion</div>
+    <div class="stat-value r-green">99%</div>
+    <div class="stat-sub">v2.3.0 · 24 pp · 63+ refs · β = 0.264° ALP integrated</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:99%"></div></div>
+  </div>
+  <div class="stat-card amber">
+    <div class="stat-label">Paper 2 — f<sub>NL</sub> Forecast</div>
+    <div class="stat-value r-amber">85%</div>
+    <div class="stat-sub">Science complete · <strong>revtex4-2 conversion blocks submission</strong></div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:85%"></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Paper 3 — Anomaly Catalog</div>
+    <div class="stat-value r-green">99%</div>
+    <div class="stat-sub">319,443 anomalies · 58.8% novel · 4.38σ SPHEREx</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:99%"></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Paper 4 — Chirality Catalog</div>
+    <div class="stat-value r-green">97%</div>
+    <div class="stat-sub">8.47M galaxies · 8/8 bias tests · 0.43σ null dipole</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:97%"></div></div>
+  </div>
+</div>
+
+<!-- ═══════════ PROGRAM DASHBOARD TABLE ═══════════ -->
+<h2 style="margin-top:0;">Program health at a glance</h2>
+<table class="program-table">
+  <thead>
+    <tr>
+      <th>#</th><th>Paper</th><th>One-line status</th>
+      <th style="text-align:right;">Ready</th><th>Canonical source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><a class="paper-link" href="#paper-1">Spin-Torsion Cosmology</a></td>
+      <td>v2.3.0, 24 pp, 10+ revision rounds. Most mature paper. Remaining: 1 TBD wordsmith, corner plots from existing chains, figure-embedding verify (510 KB PDF low), tarball + site sync.</td>
+      <td class="readiness r-green">99 %</td>
+      <td><code>arxiv/main.tex</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a class="paper-link" href="#paper-2">f<sub>NL</sub> Forecast (SPHEREx/MegaMapper)</a></td>
+      <td>v1.6.0, 375 lines, 6 figures. Science complete: σ(f<sub>NL</sub>) forecasts, Bayes 8–17, bias validation 1.58× on Gold+Silver QSOs. <strong>BLOCKER: docclass <code>article</code>+natbib, NOT revtex4-2.</strong> 1–2 days mechanical conversion.</td>
+      <td class="readiness r-amber">85 %</td>
+      <td><code>research/focused_paper_source_integration/02_full_draft.tex</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a class="paper-link" href="#paper-3">Multi-Survey Anomaly Catalog</a></td>
+      <td>Locked 2026-04-16. 8 surveys · 37.3 M sources · 319,443 anomalies · 58.8 % novel · σ(f<sub>NL</sub>) +16.4 % · SPHEREx 4.38σ · NANOGrav γ = 3.20 ± 0.42.</td>
+      <td class="readiness r-green">99 %</td>
+      <td><code>pipelines/p3_anomaly_engine/paper3_draft.tex</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a class="paper-link" href="#paper-4">Galaxy Chirality Catalog</a></td>
+      <td>Science-complete. 8.47 M galaxies · 8/8 bias tests · 0.43σ null dipole · Shamir refuted 7×. Dipole JSON gap closed 2026-04-17.</td>
+      <td class="readiness r-green">97 %</td>
+      <td><code>pipelines/p2_chirality/chirality_catalog_paper.tex</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:18px; font-family:var(--font-sans); font-size:14px; color:var(--text-secondary); line-height:1.7;">
+  <strong>Program-level arXiv ETA:</strong> Papers 1, 3, 4 can submit within <strong>1 week</strong> after their respective queues complete (all revtex4-2 compliant, 97 %+ ready). Paper 2 needs a mandatory revtex4-2 conversion (~4 h) before submission — add 1–2 days. Recommended order: <strong>Paper 4 → Paper 3 → Paper 1 → Paper 2</strong> (or Paper 1 + 2 together once Paper 2's conversion lands).
+</p>
+
+<!-- ═══════════ CROSS-PAPER DEPENDENCIES ═══════════ -->
+<h2 style="margin-top:40px;">Cross-paper dependencies</h2>
+<div class="deps-diagram">Paper 1 (Spin-Torsion) ──┬─> theoretical f_NL = −35/8 ─> Paper 2 (Fisher forecast)
+                         │                               │
+                         └─> 14 structural barriers      ├─> multi-tracer bias α ─> uses Paper 3 anomalies
+                                                         │
+Paper 3 (Anomaly Catalog) ─┬─> AI-selected tracers ─────┘
+                           │
+                           └─> Shares dipole infrastructure (Landy-Szalay w(θ)) ─> Paper 4 dipole code
+Paper 4 (Chirality Catalog) ─> dipole/TTA code ─> available for Paper 3 limitation G</div>
+
+<!-- ═══════════ PER-PAPER TABS ═══════════ -->
+<h2 style="margin-top:40px;">Per-paper SSOT</h2>
+
+<div class="paper-tabs" role="tablist">
+  <button class="paper-tab active" data-tab="paper-1">Paper 1 — Spin-Torsion <span class="tab-badge green">99 %</span></button>
+  <button class="paper-tab" data-tab="paper-2">Paper 2 — f<sub>NL</sub> Forecast <span class="tab-badge amber">85 %</span></button>
+  <button class="paper-tab" data-tab="paper-3">Paper 3 — Anomaly Catalog <span class="tab-badge green">99 %</span></button>
+  <button class="paper-tab" data-tab="paper-4">Paper 4 — Chirality Catalog <span class="tab-badge green">97 %</span></button>
+</div>
+
+<!-- ╭─────────────── PAPER 1 ───────────────╮ -->
+<section class="paper-panel active" id="paper-1">
+  <div class="paper-header">
+    <div>
+      <h2>Spin-Torsion Cosmology from ECH Gravity</h2>
+      <div class="paper-sub">canonical: <code>arxiv/main.tex</code> · v2.3.0 · 1208 lines · 510 KB PDF · gr-qc primary</div>
+    </div>
+    <div>
+      <div class="paper-readiness r-green">99%</div>
+      <div class="paper-readiness-sub">arXiv-ready</div>
+    </div>
+  </div>
+
+  <div class="callout positive"><strong>Most mature paper in the program.</strong> 10+ revision rounds complete. ALP birefringence β = 0.264° already integrated (L391). Compiles clean with 0 undefined refs. Remaining gap is polish + site sync, not science.</div>
+
+  <div class="section-h">Verified headline claims</div>
+  <table class="claims-table">
+    <tr><th>Claim</th><th>Value</th></tr>
+    <tr><td>ΔN<sub>eff</sub> (full-tension dataset, 176,840 samples)</td><td>−0.020 ± 0.169</td></tr>
+    <tr><td>H<sub>0</sub> (standard ΛCDM)</td><td>67.68</td></tr>
+    <tr><td>ALP birefringence β (spectator solution)</td><td>0.264°</td></tr>
+    <tr><td>Bayes factor (spectator vs trivial)</td><td>176</td></tr>
+    <tr><td>N<sub>tot</sub> viable fraction [79, 95]</td><td>2.2 %</td></tr>
+    <tr><td>Structural barriers closed</td><td>14</td></tr>
+    <tr><td>Branch V matter bounce f<sub>NL</sub></td><td>−35/8 = −4.375</td></tr>
+    <tr><td>NANOGrav 15yr γ (bounce prediction 3.0)</td><td>3.2 ± 0.6 (0.33σ)</td></tr>
+  </table>
+
+  <div class="section-h">Close-the-gap queue (7 tasks · ~1 % total)</div>
+  <ul class="gap-list">
+    <li><code>P1-LINE-299-WORDSMITH</code><span>Replace <code>(amplitude and shape TBD)</code> on L299 with parametric estimate or explicit "not derived here"</span><span class="gap-pct">0.2 %</span></li>
+    <li><code>P1-FIGURES-VERIFY</code><span>Verify every <code>\includegraphics{}</code> resolves — 510 KB PDF is suspiciously low</span><span class="gap-pct">0.1 %</span></li>
+    <li><code>P1-CORNER-PLOTS</code><span>Generate corner plots from existing 424 k MCMC samples (getdist), embed in §IV, drop L882 "companion data release" note</span><span class="gap-pct">0.2 %</span></li>
+    <li><code>P1-PDF-RECOMPILE</code><span>Recompile on-pod with <code>\paperTimestamp</code> refreshed</span><span class="gap-pct">0.2 %</span></li>
+    <li><code>P1-SITE-SYNC</code><span>Sync <code>index.html</code>, <code>paper.html</code>, <code>explained.html</code>, <code>activity.html</code>, <code>figures.html</code>, <code>glossary.html</code> with v2.3.x final numbers</span><span class="gap-pct">0.1 %</span></li>
+    <li><code>P1-WIKI-SYNC</code><span>Freeze <code>wiki/entities/paper-1-*.md</code> as pointer-only files routing to SSOT</span><span class="gap-pct">0.05 %</span></li>
+    <li><code>P1-TARBALL</code><span>Build arXiv tarball + smoke-test a clean revtex build from the tarball alone</span><span class="gap-pct">0.15 %</span></li>
+  </ul>
+
+  <details class="audit"><summary>Principle-10 audit (8 future-work hits, classified)</summary><div>
+    <ul class="audit-list">
+      <li><strong>DO-NOW (1)</strong>: L882 corner plots — existing 424 k MCMC samples, trivial via <code>getdist</code> → closes "companion data release" promise</li>
+      <li><strong>WORDSMITH (1)</strong>: L299 "TBD" — 15-min prose edit</li>
+      <li><strong>TRULY BLOCKED (3)</strong>: L291 photon-torsion coupling; L744 Cuscuton-ECH mapping; L976 γ-origin derivation — all require new theoretical frameworks beyond paper's scope</li>
+      <li><strong>BENIGN (3)</strong>: L306, L736, L1009 are forward-looking statements, not deferred work</li>
+    </ul>
+  </div></details>
+
+  <div style="margin-top:20px; font-family:var(--font-sans); font-size:13px; color:var(--text-tertiary);">
+    Full SSOT: <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/paper-1/status.md" target="_blank">project-context/SSOT/paper-1/status.md</a>
+  </div>
+</section>
+
+<!-- ╭─────────────── PAPER 2 ───────────────╮ -->
+<section class="paper-panel" id="paper-2">
+  <div class="paper-header">
+    <div>
+      <h2>f<sub>NL</sub> Forecast — SPHEREx / MegaMapper</h2>
+      <div class="paper-sub">canonical: <code>research/focused_paper_source_integration/02_full_draft.tex</code> · v1.6.0 · 375 lines · 531 KB PDF</div>
+    </div>
+    <div>
+      <div class="paper-readiness r-amber">85%</div>
+      <div class="paper-readiness-sub">overall / 15 % arXiv format</div>
+    </div>
+  </div>
+
+  <div class="callout blocker"><strong>BLOCKER.</strong> Document class is <code>\documentclass[a4paper,11pt]{article}</code> + natbib, NOT revtex4-2. Current PDF shows <code>[?]</code> placeholder citations. Science is complete — the gap is a mandatory mechanical conversion (~4 h). Until converted, Paper 2 cannot submit.</div>
+
+  <div class="section-h">Verified science (complete)</div>
+  <table class="claims-table">
+    <tr><th>Claim</th><th>Value</th></tr>
+    <tr><td>σ(f<sub>NL</sub>) baseline (Fisher ideal)</td><td>0.36</td></tr>
+    <tr><td>σ(f<sub>NL</sub>) conservative (Munchmeyer+2019)</td><td>0.93</td></tr>
+    <tr><td>SPHEREx detection significance of f<sub>NL</sub> = −4.375</td><td>4.7 – 12σ by 2027</td></tr>
+    <tr><td>Multi-tracer 5-tracer σ(f<sub>NL</sub>) (anomaly-optimised)</td><td>11.71</td></tr>
+    <tr><td>Bayes factors (AI vs standard)</td><td>8 – 17</td></tr>
+    <tr><td>Gold+Silver QSO clustering bias validation</td><td>1.58× enhanced</td></tr>
+  </table>
+
+  <div class="section-h">Close-the-gap queue (9 tasks · ~15 % total)</div>
+  <ul class="gap-list">
+    <li><code>P2-REVTEX4-2-CONVERT</code><span>Rewrite from article+natbib to revtex4-2 PRD + embedded <code>\bibitem</code></span><span class="gap-pct">6 %</span></li>
+    <li><code>P2-BIB-RESOLVE</code><span>Convert <code>\citep{}</code>→<code>\cite{}</code>, embed bibitems; zero <code>[?]</code> in PDF</span><span class="gap-pct">4 %</span></li>
+    <li><code>P2-COMPILE-POD</code><span>Recompile on pod after conversion; verify ≥ 2 MB, 0 undefined refs, all 6 figures embedded</span><span class="gap-pct">2 %</span></li>
+    <li><code>P2-XREF-AUDIT</code><span>Audit cross-refs: Paper 1 <code>\citep{Golden:2026framework}</code> handle, Paper 3 implicit → add explicit cite</span><span class="gap-pct">1 %</span></li>
+    <li><code>P2-SITE-SYNC</code><span>Update <code>index.html</code> σ(f<sub>NL</sub>) card, <code>paper.html</code> 85%→100%, <code>activity.html</code>, <code>figures.html</code> (+6), <code>data-explorer.html</code> Fisher JSON</span><span class="gap-pct">1 %</span></li>
+    <li><code>P2-WIKI-POINTER</code><span>Rewrite <code>wiki/entities/paper-2-fnl-forecast.md</code> as pointer (stale 2026-04-04, wrongly claims SUBMISSION-READY)</span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P2-CURRENT-STATUS-SYNC</code><span>Update Paper 2 row in <code>CURRENT_STATUS.md</code> to "v1.6.0 · 85 % · revtex4-2 conversion pending"</span><span class="gap-pct">0.2 %</span></li>
+    <li><code>P2-PDF-PUBLISH</code><span>Copy compiled revtex4-2 PDF to <code>public/papers/paper2_fnl_forecast.pdf</code>, link from <code>paper.html</code></span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P2-TARBALL</code><span>Assemble arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test clean revtex build</span><span class="gap-pct">0.2 %</span></li>
+  </ul>
+
+  <details class="audit"><summary>Principle-10 audit (3 hits, all TRULY BLOCKED)</summary><div>
+    <ul class="audit-list">
+      <li>SPHEREx launch — 2028 data release. Cannot fold in now.</li>
+      <li>MegaMapper — 2032+ first light. Cannot fold in now.</li>
+      <li>Scope-limit boilerplate on extended-tracer subsamples — explicitly out of scope per paper framing.</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Zero DO-NOW items.</strong> Every future-work-flagged item is a real future-survey dependency, not deferred analysis.</p>
+  </div></details>
+
+  <div style="margin-top:20px; font-family:var(--font-sans); font-size:13px; color:var(--text-tertiary);">
+    Full SSOT: <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/paper-2/status.md" target="_blank">project-context/SSOT/paper-2/status.md</a>
+  </div>
+</section>
+
+<!-- ╭─────────────── PAPER 3 ───────────────╮ -->
+<section class="paper-panel" id="paper-3">
+  <div class="paper-header">
+    <div>
+      <h2>Multi-Survey Anomaly Catalog</h2>
+      <div class="paper-sub">canonical: <code>pipelines/p3_anomaly_engine/paper3_draft.tex</code> · 1,032 lines · 27 MB PDF · 21 figures · locked 2026-04-16</div>
+    </div>
+    <div>
+      <div class="paper-readiness r-green">99%</div>
+      <div class="paper-readiness-sub">submit today</div>
+    </div>
+  </div>
+
+  <div class="callout positive"><strong>Manuscript DONE. Science DONE. arXiv-ready today.</strong> 8 surveys, 37.3 M sources, 319,443 anomalies, 58.8 % SIMBAD-novel. All 21 publication figures embedded (real DESI sky cutouts, not placeholders). Zero TODOs, 28 embedded <code>\bibitem</code>s, data+code availability statements present.</div>
+
+  <div class="section-h">Per-survey catalog (every anomaly count traced)</div>
+  <table class="claims-table">
+    <tr><th>Survey</th><th>Scored → Anomalies</th></tr>
+    <tr><td>DESI DR1</td><td>22.5 M → 195,829 (0.87 %)</td></tr>
+    <tr><td>SDSS DR18</td><td>2.30 M → 77,905 (3.38 %)</td></tr>
+    <tr><td>LAMOST DR10</td><td>11.4 M → 44,075 (0.39 %)</td></tr>
+    <tr><td>eROSITA DR1</td><td>930 K → 298 (68 % novel)</td></tr>
+    <tr><td>Planck CMB × ACT DR6</td><td>40 K patches → null cross-corr</td></tr>
+    <tr><td>Gaia DR3</td><td>50 K → 500 (27 % novel)</td></tr>
+    <tr><td>NEOWISE</td><td>43.5 K → 436 (45 % novel)</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>37.3 M → 319,443 · 58.8 % novel</strong></td></tr>
+  </table>
+
+  <div class="section-h">Verified science-headline claims</div>
+  <table class="claims-table">
+    <tr><th>Claim</th><th>Value</th></tr>
+    <tr><td>σ(f<sub>NL</sub>) DESI alone (AI-enhanced)</td><td>+6.1 % over standard</td></tr>
+    <tr><td>σ(f<sub>NL</sub>) DESI + SDSS</td><td>+16.4 %</td></tr>
+    <tr><td>σ(f<sub>NL</sub>) latent-space 5-tracer</td><td>+9.5 %</td></tr>
+    <tr><td>SPHEREx f<sub>NL</sub> = −4.375 detection</td><td>4.38σ</td></tr>
+    <tr><td>NANOGrav γ (bounce prediction 3.0)</td><td>3.20 ± 0.42 (0.48σ)</td></tr>
+    <tr><td>ΔBIC(SMBHB − bounce)</td><td>7.0 (strong bounce)</td></tr>
+    <tr><td>MCMC samples</td><td>192,000 (32×6,000)</td></tr>
+    <tr><td>LAMOST blue-excess artifact rate</td><td>98 % (negative control)</td></tr>
+    <tr><td>Unsupervised photo-z σ<sub>NMAD</sub></td><td>0.028</td></tr>
+  </table>
+
+  <div class="section-h">Close-the-gap queue (8 tasks · ~1 % total)</div>
+  <ul class="gap-list">
+    <li><code>P3-PDF-CANON</code><span>Delete or rebuild <code>arxiv/paper3_anomaly_catalog.tex</code>+<code>.pdf</code> (pre-gallery version, diverged)</span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P3-PDF-RECOMPILE</code><span>Recompile on-pod with today's date + SSOT cross-check</span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P3-A</code><span>TIC 374313355 periodicity analysis (TESS archival + Lomb-Scargle)</span><span class="gap-pct">0.05 %</span></li>
+    <li><code>P3-B</code><span>Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO against NED / VizieR / Gaia-XP</span><span class="gap-pct">0.1 %</span></li>
+    <li><code>P3-C</code><span>Fisher σ(γ) forecast for NANOGrav 20yr / EPTA DR3 / SKA-P1</span><span class="gap-pct">0.05 %</span></li>
+    <li><code>P3-SITE-SYNC</code><span>Update <code>index.html</code> stat cards, <code>paper.html</code> readiness, <code>activity.html</code>, <code>figures.html</code>, <code>data-explorer.html</code> with SSOT numbers</span><span class="gap-pct">0.1 %</span></li>
+    <li><code>P3-HF-UPLOAD</code><span>Publish 319,443-anomaly catalog to HuggingFace <code>bamfai/bigbounce-anomaly-catalog</code> CC-BY-4.0</span><span class="gap-pct">0.05 %</span></li>
+    <li><code>P3-XREF</code><span>Audit Paper 3 cross-refs against Paper 2 f<sub>NL</sub> forecast + Paper 4 dipole infrastructure</span><span class="gap-pct">0.05 %</span></li>
+  </ul>
+
+  <details class="audit"><summary>Principle-10 audit (4 future-work-adjacent hits — all DO-NOW or SIMULATE-NOW)</summary><div>
+    <ul class="audit-list">
+      <li><strong>A · DO NOW</strong>: L423 TIC 374313355 follow-up → use existing ZTF periodicity code</li>
+      <li><strong>B · DO NOW (partial)</strong>: L633 follow-up spectroscopy → NED + VizieR + Gaia-XP + archival xmatch (probably shrinks novel count 20–40 %)</li>
+      <li><strong>C · SIMULATE/AUGMENT NOW</strong>: L558 "continued monitoring" → Fisher σ(γ) shrinkage for NANOGrav 20yr / EPTA DR3 / SKA-P1</li>
+      <li><strong>D–H · §7.3 Limitations (5 items)</strong>: ensemble detection, injection-recovery, DESI B-dominant audit, empirical bias α calibration, NANOGrav raw-TOA reforecast — all DO-NOW or SIMULATE-NOW; none truly blocked</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Policy:</strong> Submit v1 after A, B, C (7 days on-pod). D–H feed v2 / reviewer-response.</p>
+  </div></details>
+
+  <div style="margin-top:20px; font-family:var(--font-sans); font-size:13px; color:var(--text-tertiary);">
+    Full SSOT: <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/paper-3/status.md" target="_blank">project-context/SSOT/paper-3/status.md</a>
+  </div>
+</section>
+
+<!-- ╭─────────────── PAPER 4 ───────────────╮ -->
+<section class="paper-panel" id="paper-4">
+  <div class="paper-header">
+    <div>
+      <h2>Galaxy Chirality Catalog</h2>
+      <div class="paper-sub">canonical: <code>pipelines/p2_chirality/chirality_catalog_paper.tex</code> · 1,099 lines · 19 MB PDF · 11 figures</div>
+    </div>
+    <div>
+      <div class="paper-readiness r-green">97%</div>
+      <div class="paper-readiness-sub">1–2 days to submit</div>
+    </div>
+  </div>
+
+  <div class="callout positive"><strong>Science DONE.</strong> 8,474,531 galaxies classified · bias tests 8/8 pass · dipole is a null (0.43σ, p=0.33) · Shamir 2020 3 % asymmetry claim refuted 7×. Dipole JSON gap closed 2026-04-17. arXiv submission blocked on 4 trivial admin items (~45 min), not science.</div>
+
+  <div class="section-h">Verified headline claims</div>
+  <table class="claims-table">
+    <tr><th>Claim</th><th>Value</th></tr>
+    <tr><td>Galaxies classified</td><td>8,474,531</td></tr>
+    <tr><td>Classification accuracy (3-class)</td><td>93.7 %</td></tr>
+    <tr><td>Bias tests passed</td><td>8 / 8</td></tr>
+    <tr><td>Raw (A) dipole — spurious artifact</td><td>94.6σ</td></tr>
+    <tr><td>Equivariant (C) dipole — null</td><td>0.43σ (p = 0.33)</td></tr>
+    <tr><td>CW/(CW+CCW) equivariant</td><td>0.4974</td></tr>
+    <tr><td>CE-ResNet external agreement</td><td>91.5 % on 23 k galaxies</td></tr>
+    <tr><td>Max regional asymmetry</td><td>0.47 %</td></tr>
+    <tr><td>Shamir (2020) claim</td><td>~3 % — refuted 7×</td></tr>
+  </table>
+
+  <div class="section-h">Close-the-gap queue (7 tasks · ~3 % total)</div>
+  <ul class="gap-list">
+    <li><code>P4-DIPOLE-JSON-REBUILD</code><span>Re-emit non-truncated <code>outputs/dipole/summary.json</code> (current one crashed mid-write at L366)</span><span class="gap-pct">0.5 %</span></li>
+    <li><code>P4-PDF-CANON</code><span>Pick <code>pipelines/p2_chirality/chirality_catalog_paper.tex</code> canonical; delete or rebuild <code>arxiv/</code> copy</span><span class="gap-pct">0.5 %</span></li>
+    <li><code>P4-PDF-RECOMPILE</code><span>Recompile on-pod with today's date + SSOT cross-check</span><span class="gap-pct">0.5 %</span></li>
+    <li><code>P4-PAPER2-XREF</code><span>Fix two stale wordings in <code>paper2_chirality_section.tex</code> (lines 237 + 255 — past-tense rewrite + Paper-4 cross-ref)</span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P4-SITE-SYNC</code><span>Update <code>index.html</code>, <code>paper.html</code>, <code>activity.html</code>, <code>figures.html</code> (11 chirality figs), <code>data-explorer.html</code> (catalog preview)</span><span class="gap-pct">0.3 %</span></li>
+    <li><code>P4-HF-DOI</code><span>Pin HF <code>bamfai/galaxy-chirality-catalog</code> version + add DOI / versioned URL to data-availability</span><span class="gap-pct">0.2 %</span></li>
+    <li><code>P4-LSST-LINE-REVIEW</code><span>Houston reviews L913 "Future surveys (Rubin LSST)" line on final PDF — confirm TRULY BLOCKED</span><span class="gap-pct">0.2 %</span></li>
+  </ul>
+
+  <details class="audit"><summary>Principle-10 audit (1 TRULY BLOCKED, 2 OUTDATED-WORDING-FIX, 0 DO-NOW)</summary><div>
+    <ul class="audit-list">
+      <li><strong>TRULY BLOCKED</strong>: L913 "Future surveys" (Rubin LSST Y1 not yet public) — legitimate future-survey statement, keep as-is</li>
+      <li><strong>OUTDATED WORDING</strong>: <code>paper2_chirality_section.tex:237</code> "pending at the time of writing" → rewrite past tense (catalog is complete)</li>
+      <li><strong>OUTDATED WORDING</strong>: <code>paper2_chirality_section.tex:255</code> "will be presented in future work" → rewrite as Paper-4 cross-reference</li>
+      <li><strong>Earlier false alarms resolved</strong>: CE-ResNet cross-val DONE (91.5 %); dipole DONE (git <code>5d24cfc</code>); redshift-binned f_cw DONE (20 bins)</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Zero DO-NOW blockers.</strong> Paper 4 is honestly ready.</p>
+  </div></details>
+
+  <div style="margin-top:20px; font-family:var(--font-sans); font-size:13px; color:var(--text-tertiary);">
+    Full SSOT: <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/paper-4/status.md" target="_blank">project-context/SSOT/paper-4/status.md</a>
+  </div>
+</section>
+
+<!-- ═══════════ QUEUE ═══════════ -->
+<h2 style="margin-top:48px;">Cross-paper task queue</h2>
+<p style="font-family:var(--font-sans); font-size:14px; color:var(--text-secondary); line-height:1.7; margin-top:-6px;">
+  Prioritized queue across all four papers + program-level tasks. Filter by priority, paper, or owner. Full queue at <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/queue.md" target="_blank">project-context/SSOT/queue.md</a>.
+</p>
+
+<div class="queue-controls" id="queue-controls">
+  <button class="queue-filter active" data-filter-type="priority" data-filter="all">All <span class="count">(33)</span></button>
+  <button class="queue-filter" data-filter-type="priority" data-filter="P0">P0 now <span class="count">(5)</span></button>
+  <button class="queue-filter" data-filter-type="priority" data-filter="P1">P1 week <span class="count">(20)</span></button>
+  <button class="queue-filter" data-filter-type="priority" data-filter="P2">P2 pre-submit <span class="count">(8)</span></button>
+  <button class="queue-filter" data-filter-type="priority" data-filter="P3">P3 polish <span class="count">(4)</span></button>
+  <span style="width:1px; background:var(--border); margin:0 4px;"></span>
+  <button class="queue-filter active" data-filter-type="paper" data-filter="all">All papers</button>
+  <button class="queue-filter" data-filter-type="paper" data-filter="P1-paper">Paper 1</button>
+  <button class="queue-filter" data-filter-type="paper" data-filter="P2-paper">Paper 2</button>
+  <button class="queue-filter" data-filter-type="paper" data-filter="P3-paper">Paper 3</button>
+  <button class="queue-filter" data-filter-type="paper" data-filter="P4-paper">Paper 4</button>
+  <button class="queue-filter" data-filter-type="paper" data-filter="ALL-paper">All / program</button>
+  <input class="queue-search" id="queue-search" type="search" placeholder="Search task ID or title…">
+</div>
+
+<div style="max-height: 720px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-lg);">
+<table class="queue-table" id="queue-table">
+  <thead>
+    <tr>
+      <th style="width:70px;">Pri</th>
+      <th style="width:170px;">ID</th>
+      <th>Title / notes</th>
+      <th style="width:75px;">Owner</th>
+      <th style="width:70px;">Paper</th>
+      <th style="width:70px; text-align:right;">%</th>
+      <th style="width:50px; text-align:center;">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- P0 -->
+    <tr data-priority="P0" data-paper="P2-paper"><td><span class="pchip p0">P0</span></td><td class="qid">P2-REVTEX4-2-CONVERT</td><td><div class="qtitle">Rewrite Paper 2 .tex from article+natbib to revtex4-2 PRD</div><div class="qnotes">Single biggest blocker to Paper 2 submission</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">6 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P0" data-paper="P2-paper"><td><span class="pchip p0">P0</span></td><td class="qid">P2-BIB-RESOLVE</td><td><div class="qtitle">Convert \citep→\cite, embed bibitems; zero [?] in PDF</div><div class="qnotes">Follows P2-REVTEX4-2-CONVERT</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">4 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P0" data-paper="P3-paper"><td><span class="pchip p0">P0</span></td><td class="qid">P3-A</td><td><div class="qtitle">TIC 374313355 periodicity analysis</div><div class="qnotes">TESS archival light curve + Lomb-Scargle; uses ZTF-anomaly periodicity code</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P0" data-paper="P3-paper"><td><span class="pchip p0">P0</span></td><td class="qid">P3-B</td><td><div class="qtitle">Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO</div><div class="qnotes">NED / VizieR / Gaia-XP; probably shrinks novel count 20–40%</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P0" data-paper="P4-paper"><td><span class="pchip p0">P0</span></td><td class="qid">P4-DIPOLE-JSON-REBUILD</td><td><div class="qtitle">Re-emit non-truncated outputs/dipole/summary.json</div><div class="qnotes">Current one crashed at L366 after consistent_with_null</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.5 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+
+    <!-- P1 -->
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-LINE-299-WORDSMITH</td><td><div class="qtitle">Replace (amplitude and shape TBD) on L299 of arxiv/main.tex</div><div class="qnotes">Last TBD in Paper 1; 15-min edit</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-FIGURES-VERIFY</td><td><div class="qtitle">Verify every \includegraphics in arxiv/main.tex resolves</div><div class="qnotes">PDF is currently only 510 KB (low) — pre-recompile disk check</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-CORNER-PLOTS</td><td><div class="qtitle">Generate corner plots from existing 424k MCMC samples</div><div class="qnotes">getdist, embed in §IV, drop L882 "companion data release" note</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-PDF-RECOMPILE</td><td><div class="qtitle">Recompile Paper 1 PDF on-pod with \paperTimestamp refreshed</div><div class="qnotes">After wordsmith + corner plots</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-SITE-SYNC</td><td><div class="qtitle">Sync index/paper/explained/activity/figures/glossary pages</div><div class="qnotes">Part of P-SITE-FULL-SYNC</div></td><td><span class="ochip site">site</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-WIKI-SYNC</td><td><div class="qtitle">Freeze wiki/entities/paper-1-*.md as pointer-only files</div><div class="qnotes">Mechanical</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P1-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P1-TARBALL</td><td><div class="qtitle">Build Paper 1 arXiv tarball + smoke-test clean revtex build</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p1">P1</span></td><td style="text-align:right;">0.15 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-COMPILE-POD</td><td><div class="qtitle">Recompile Paper 2 after revtex4-2 conversion</div><div class="qnotes">Verify ≥2 MB, 0 undefined refs, all 6 figures embedded</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-XREF-AUDIT</td><td><div class="qtitle">Audit Paper 2 cross-refs against Paper 1 framework + Paper 3</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-SITE-SYNC</td><td><div class="qtitle">Update σ(f_NL) card, paper.html 85→100, figures + Fisher JSON</div></td><td><span class="ochip site">site</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-WIKI-POINTER</td><td><div class="qtitle">Rewrite wiki/entities/paper-2-fnl-forecast.md as pointer</div><div class="qnotes">Current file stale 2026-04-04, wrongly claims SUBMISSION-READY</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-CURRENT-STATUS-SYNC</td><td><div class="qtitle">Update Paper 2 row in CURRENT_STATUS.md</div><div class="qnotes">"v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending"</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-PDF-PUBLISH</td><td><div class="qtitle">Copy compiled revtex4-2 PDF to public/papers/, link from paper.html</div><div class="qnotes">After P2-COMPILE-POD</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P2-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P2-TARBALL</td><td><div class="qtitle">Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf)</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p2">P2</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-C</td><td><div class="qtitle">Fisher σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1</div><div class="qnotes">Addresses §6 "continued monitoring" with concrete when-decisive figure</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-PDF-CANON</td><td><div class="qtitle">Delete or rebuild arxiv/paper3_anomaly_catalog.tex + .pdf</div><div class="qnotes">Canonical is pipelines/p3_anomaly_engine/paper3_draft.tex</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-PDF-RECOMPILE</td><td><div class="qtitle">Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check</div><div class="qnotes">~15 min on H200</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-PDF-CANON</td><td><div class="qtitle">Pick pipelines/p2_chirality/chirality_catalog_paper.tex canonical</div><div class="qnotes">Two .tex files have diverged</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.5 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-PDF-RECOMPILE</td><td><div class="qtitle">Recompile Paper 4 PDF on-pod with today's date + SSOT cross-check</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.5 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-PAPER2-XREF</td><td><div class="qtitle">Fix 2 stale wordings in paper2_chirality_section.tex</div><div class="qnotes">Companion section still cites old numbers</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p4">P4+P2</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-SITE-SYNC</td><td><div class="qtitle">Update index / paper / activity / figures / data-explorer to reflect SSOT</div></td><td><span class="ochip site">site</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-SITE-SYNC</td><td><div class="qtitle">Site sync for Paper 4 SSOT numbers</div></td><td><span class="ochip site">site</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.3 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-HF-UPLOAD</td><td><div class="qtitle">Publish 319,443-anomaly catalog to HuggingFace CC-BY-4.0</div><div class="qnotes">Paper §9 data-availability needs live link before arXiv</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-HF-DOI</td><td><div class="qtitle">Pin HF bamfai/galaxy-chirality-catalog version + add DOI</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P3-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P3-XREF</td><td><div class="qtitle">Audit Paper 3 cross-refs against Paper 2 f_NL + Paper 4 dipole</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="P4-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P4-LSST-LINE-REVIEW</td><td><div class="qtitle">Houston reviews L913 "Future surveys (Rubin LSST)"</div><div class="qnotes">Confirm TRULY BLOCKED; if not, becomes new task</div></td><td><span class="ochip houston">Houston</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">0.2 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P1" data-paper="ALL-paper"><td><span class="pchip p1">P1</span></td><td class="qid">P-MEMORY-SYNC</td><td><div class="qtitle">Add MEMORY.md entry for SSOT dir + update entries referencing old paths</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">0 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+
+    <!-- P2 -->
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P3-D</td><td><div class="qtitle">Ensemble anomaly detection (VAE + iForest + one-class SVM)</div><div class="qnotes">§7.3 #1. 2–3 wk on H200</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P3-E</td><td><div class="qtitle">Synthetic-anomaly injection + recovery for 7 non-DESI surveys</div><div class="qnotes">§7.3 #2. ~2 wk each, parallelisable</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P3-F</td><td><div class="qtitle">DESI B-dominant population (44,436 / 22.7%) calibration audit</div><div class="qnotes">§7.3 #3. ~2 wk</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P3-G</td><td><div class="qtitle">Empirical Landy-Szalay w(θ) bias calibration for anomaly subsample</div><div class="qnotes">§7.3 #4. Replaces α = 0.15 assumption; re-uses Paper 4 dipole infrastructure</div></td><td><span class="ochip pod">pod</span></td><td><span class="pbadge p3">P3+P2</span></td><td style="text-align:right;">0.1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P3-H</td><td><div class="qtitle">NANOGrav reforecast with inflated DR3 free-spectrum covariance</div><div class="qnotes">§7.3 #5. ~1 wk</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">0.05 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="ALL-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P-SITE-FULL-SYNC</td><td><div class="qtitle">Site-agent pass: run all P{1,2,3,4}-SITE-SYNC variants together</div><div class="qnotes">See index.md aggregate surface-sync checklist</div></td><td><span class="ochip site">site</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">~1 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P4-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P-ARXIV-P4</td><td><div class="qtitle">Assemble Paper 4 tarball, fill arXiv form, submit, return ID</div><div class="qnotes">Do Paper 4 first (most self-contained)</div></td><td><span class="ochip houston">Houston</span></td><td><span class="pbadge p4">P4</span></td><td style="text-align:right;">closes</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P2" data-paper="P3-paper"><td><span class="pchip p2">P2</span></td><td class="qid">P-ARXIV-P3</td><td><div class="qtitle">Submit Paper 3 to arXiv</div><div class="qnotes">Follow ~24 h after Paper 4</div></td><td><span class="ochip houston">Houston</span></td><td><span class="pbadge p3">P3</span></td><td style="text-align:right;">closes</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+
+    <!-- P3 -->
+    <tr data-priority="P3" data-paper="ALL-paper"><td><span class="pchip p3">P3</span></td><td class="qid">P-MEMORY-AGENT-HOOKS</td><td><div class="qtitle">Ensure AGENTS.md + CLAUDE.md route every agent to SSOT first</div><div class="qnotes">Partially done in restructure commit; verify after 1 session</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">0 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P3" data-paper="ALL-paper"><td><span class="pchip p3">P3</span></td><td class="qid">P-LEGACY-STATUS-CLEAN</td><td><div class="qtitle">Rewrite CURRENT_STATUS.md as mirror of SSOT/index.md</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">0 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P3" data-paper="ALL-paper"><td><span class="pchip p3">P3</span></td><td class="qid">P-FREEZE-WIKI</td><td><div class="qtitle">Confirm all wiki/entities/paper-*.md and pipeline-*.md are pointer-only</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">0 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+    <tr data-priority="P3" data-paper="ALL-paper"><td><span class="pchip p3">P3</span></td><td class="qid">P-SSOT-CRON</td><td><div class="qtitle">Weekly cron/agent check: SSOT file &gt; 7 days stale → flag</div><div class="qnotes">Prevents drift</div></td><td><span class="ochip agent">agent</span></td><td><span class="pbadge all">ALL</span></td><td style="text-align:right;">0 %</td><td class="status-cell"><span class="s-open">[ ]</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div id="queue-empty" class="empty-state" style="display:none;">No tasks match the current filters.</div>
+
+<!-- ═══════════ COMPLETED ═══════════ -->
+<h2 style="margin-top:48px;">Completed this session (2026-04-17)</h2>
+<ul class="completed-list">
+  <li><code>P4-DIPOLE-ARTIFACTS-LOCAL</code> — Copied dipole summary + figures + log from <code>pod_final_backup_20260414/</code> to <code>pipelines/p2_chirality/outputs/dipole/</code> · commit <code>6651dd5</code></li>
+  <li><code>P4-REDSHIFT-BINS-INDEX</code> — Indexed the already-done <code>fcw_vs_redshift.csv</code> (20 bins) · part of <code>6651dd5</code></li>
+  <li><code>P3-SSOT-SWEEP</code> — Forensic sweep on Paper 3 · produced <code>SSOT/paper-3/status.md</code> · commit <code>0c39a15</code></li>
+  <li><code>P4-SSOT-SWEEP</code> — Forensic sweep on Paper 4 · produced <code>SSOT/paper-4/status.md</code></li>
+  <li><code>P-SSOT-RESTRUCTURE</code> — Moved to <code>SSOT/</code> tree; added README, index, queue; pointer stubs kept at old paths · commit <code>ae21ac5</code></li>
+  <li><code>P-PRINCIPLE-10-CORRECTION-P3</code> — Corrected Paper 3 "zero future-work hits" claim after Houston pushback; 4 hits now classified DO-NOW / SIMULATE-AUGMENT-NOW · commit <code>ae21ac5</code></li>
+  <li><code>P1-SSOT-SWEEP</code> — Forensic sweep on Paper 1 · produced <code>SSOT/paper-1/status.md</code> at 99 %</li>
+  <li><code>P2-SSOT-SWEEP</code> — Forensic sweep on Paper 2 · produced <code>SSOT/paper-2/status.md</code> at 85 % with revtex4-2 blocker</li>
+  <li><code>P-SSOT-VIEWER</code> — Built <code>ssot.html</code> viewer page on bigbounce site (this page) · wiring nav entry in <code>nav.js</code></li>
+</ul>
+
+<!-- ═══════════ HOW TO WORK THIS QUEUE ═══════════ -->
+<h2 style="margin-top:48px;">How to work this queue</h2>
+<ol style="font-family:var(--font-sans); font-size:14px; color:var(--text-secondary); line-height:1.8;">
+  <li>Pick the lowest-ID <strong>P0</strong> task whose dependencies are met.</li>
+  <li>Flip status to <code>[~]</code> in <code>project-context/SSOT/queue.md</code> when you start.</li>
+  <li>When done, flip to <code>[x]</code> and move the row to the Completed section with the commit hash.</li>
+  <li>If blocked, flip to <code>[!]</code> with a one-line reason.</li>
+  <li>When adding new tasks: insert at correct priority; ID them <code>P{paper}-{slug}</code> or <code>P-{program-slug}</code>.</li>
+  <li>Never delete a completed task row. That's the record.</li>
+  <li>Update this viewer (<code>ssot.html</code>) in the same commit as any status / queue change so the site doesn't drift from the canonical SSOT.</li>
+</ol>
+
+</main>
+
+<script>
+(function(){
+  // ── Paper tabs ──
+  var tabs = document.querySelectorAll('.paper-tab');
+  var panels = document.querySelectorAll('.paper-panel');
+  function selectTab(name){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.tab === name); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === name); });
+    try { history.replaceState(null, '', '#' + name); } catch(e){}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ selectTab(t.dataset.tab); }); });
+
+  // Deep-link support
+  var hash = (location.hash || '').replace('#', '');
+  if (hash && document.getElementById(hash) && document.getElementById(hash).classList.contains('paper-panel')) {
+    selectTab(hash);
+  }
+  // Also make anchors like <a href="#paper-1"> activate the tab
+  document.querySelectorAll('a[href^="#paper-"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = a.getAttribute('href').slice(1);
+      if (document.getElementById(target) && document.getElementById(target).classList.contains('paper-panel')) {
+        e.preventDefault();
+        selectTab(target);
+        document.getElementById(target).scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+
+  // ── Queue filters ──
+  var activeFilters = { priority: 'all', paper: 'all' };
+  var filters = document.querySelectorAll('.queue-filter');
+  var rows = document.querySelectorAll('#queue-table tbody tr');
+  var searchInput = document.getElementById('queue-search');
+  var empty = document.getElementById('queue-empty');
+
+  function applyFilters(){
+    var q = (searchInput.value || '').toLowerCase().trim();
+    var shown = 0;
+    rows.forEach(function(r){
+      var matchP = activeFilters.priority === 'all' || r.dataset.priority === activeFilters.priority;
+      var matchPaper = activeFilters.paper === 'all' || r.dataset.paper === activeFilters.paper;
+      var matchQ = !q || r.textContent.toLowerCase().indexOf(q) !== -1;
+      var show = matchP && matchPaper && matchQ;
+      r.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    empty.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  filters.forEach(function(f){
+    f.addEventListener('click', function(){
+      var type = f.dataset.filterType;
+      activeFilters[type] = f.dataset.filter;
+      // Update active state within the same filter group
+      filters.forEach(function(x){
+        if (x.dataset.filterType === type) x.classList.toggle('active', x === f);
+      });
+      applyFilters();
+    });
+  });
+  searchInput.addEventListener('input', applyFilters);
+})();
+</script>
+
+</body>
+</html>

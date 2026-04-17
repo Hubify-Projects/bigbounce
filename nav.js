@@ -59,6 +59,7 @@
   else if (path.indexOf('/contributions') !== -1) activePage = 'contributions';
   else if (path.indexOf('/activity') !== -1) activePage = 'activity';
   else if (path.indexOf('/status') !== -1) activePage = 'status';
+  else if (path.indexOf('/ssot') !== -1) activePage = 'ssot';
   else if (path.indexOf('/speculations') !== -1) activePage = 'speculations';
   else if (path.indexOf('/infrastructure') !== -1) activePage = 'infrastructure';
   else if (path.indexOf('/sitemap') !== -1) activePage = 'sitemap';
@@ -96,6 +97,7 @@
     + '<a href="' + p('index.html') + '" class="' + sidebarActiveClass('index', 'sidebar-section') + '" data-page="index">research/</a>'
     + '<a href="' + p('projects.html') + '" class="' + sidebarActiveClass('projects', 'sidebar-link') + '" data-page="projects">projects</a>'
     + '<a href="' + p('paper.html') + '" class="' + sidebarActiveClass('paper', 'sidebar-link') + '" data-page="paper">papers</a>'
+    + '<a href="' + p('ssot.html') + '" class="' + sidebarActiveClass('ssot', 'sidebar-link') + '" data-page="ssot">ssot &amp; tasks</a>'
     + '<a href="' + p('explained.html') + '" class="' + sidebarActiveClass('explained', 'sidebar-link') + '" data-page="explained">explainer</a>'
 
     + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">data &amp; explore</div>'
@@ -148,6 +150,7 @@
     + '<div class="nav-links">'
     + '<a href="' + p('index.html') + '" data-page="index"' + activeAttr('index') + '>research</a>'
     + '<a href="' + p('paper.html') + '" data-page="paper"' + activeAttr('paper') + '>papers</a>'
+    + '<a href="' + p('ssot.html') + '" data-page="ssot"' + activeAttr('ssot') + '>ssot</a>'
     + '<a href="' + p('explained.html') + '" data-page="explained"' + activeAttr('explained') + '>explainer</a>'
     + '<a href="' + p('data-explorer.html') + '" data-page="datasets"' + activeAttr('datasets') + '>data</a>'
     + '<a href="' + p('figures.html') + '" data-page="figures"' + activeAttr('figures') + '>figures</a>'
