@@ -18,8 +18,8 @@ Last authoritative update: 2026-04-17
 
 | ID | Title | Owner | Paper | % closed | Status | Notes |
 |---|---|---|---|---:|---|---|
-| `P1-SSOT-SWEEP` | Forensic sweep on Paper 1 (Spin-Torsion) → produce verified `paper-1/status.md` | agent | P1 | sets baseline | [ ] | Same pattern as P3/P4 sweeps (Explore subagent + verification greps) |
-| `P2-SSOT-SWEEP` | Forensic sweep on Paper 2 (f_NL Forecast) → produce verified `paper-2/status.md` | agent | P2 | sets baseline | [ ] | Same pattern as P3/P4 |
+| `P2-REVTEX4-2-CONVERT` | Rewrite Paper 2 `.tex` from `\documentclass[a4paper,11pt]{article}`+natbib to `revtex4-2` PRD + embedded `\bibitem` | agent | P2 | 6 % | [ ] | Single biggest blocker to Paper 2 submission |
+| `P2-BIB-RESOLVE` | Convert all `\citep{}`→`\cite{}`, embed bibitems from `03_references.bib` + `focused_paper_refs.bib`; zero `[?]` in PDF | agent | P2 | 4 % | [ ] | Follows P2-REVTEX4-2-CONVERT |
 | `P3-A` | TIC 374313355 periodicity analysis (TESS archival light curve + Lomb-Scargle) | pod | P3 | 0.05 % | [ ] | Uses existing ZTF-anomaly periodicity code |
 | `P3-B` | Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO against NED / VizieR / Gaia-XP | agent | P3 | 0.1 % | [ ] | Reclassify "uncatalogued" → "archival-identified" vs "truly uncatalogued"; probably shrinks novel count 20–40 % |
 | `P4-DIPOLE-JSON-REBUILD` | Re-emit non-truncated `outputs/dipole/summary.json` (current one crashed at L366 after `consistent_with_null:`) | pod | P4 | 0.5 % | [ ] | Either rerun on-pod or reconstruct from existing log |
@@ -28,6 +28,20 @@ Last authoritative update: 2026-04-17
 
 | ID | Title | Owner | Paper | % closed | Status | Notes |
 |---|---|---|---|---:|---|---|
+| `P1-LINE-299-WORDSMITH` | Replace `(amplitude and shape TBD)` on L299 of `arxiv/main.tex` with a parametric estimate or explicit "not derived here" phrasing | agent | P1 | 0.2 % | [ ] | Last TBD in Paper 1; 15-min edit |
+| `P1-FIGURES-VERIFY` | Verify every `\includegraphics{}` in `arxiv/main.tex` resolves; PDF is currently only 510 KB (low) | agent | P1 | 0.1 % | [ ] | Pre-recompile disk check |
+| `P1-CORNER-PLOTS` | Generate corner plots from existing 424 k MCMC samples (`getdist`), embed in §IV, drop L882 "companion data release" note | pod | P1 | 0.2 % | [ ] | Closes L882 DO-NOW deferral |
+| `P1-PDF-RECOMPILE` | Recompile Paper 1 PDF on-pod with `\paperTimestamp` refreshed | pod | P1 | 0.2 % | [ ] | After wordsmith + corner plots |
+| `P1-SITE-SYNC` | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` with v2.3.x final numbers | site | P1 | 0.1 % | [ ] | Part of `P-SITE-FULL-SYNC` |
+| `P1-WIKI-SYNC` | Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to SSOT | agent | P1 | 0.05 % | [ ] | Mechanical |
+| `P1-TARBALL` | Build Paper 1 arXiv tarball + smoke-test a clean revtex build from the tarball alone | agent | P1 | 0.15 % | [ ] | |
+| `P2-COMPILE-POD` | Recompile Paper 2 PDF on pod after revtex4-2 conversion; verify ≥2 MB, 0 undefined refs, all 6 figures embedded | pod | P2 | 2 % | [ ] | Follows P2-BIB-RESOLVE |
+| `P2-XREF-AUDIT` | Audit Paper 2 cross-refs: Paper 1 `\citep{Golden:2026framework}` handle, Paper 3 implicit in §4/§5 → add explicit cite if present | agent | P2 | 1 % | [ ] | |
+| `P2-SITE-SYNC` | Update `index.html` σ(f_NL) card, `paper.html` readiness 85%→100%, `activity.html`, `figures.html` (+6 figs), `data-explorer.html` (embed Fisher JSON) | site | P2 | 1 % | [ ] | Part of `P-SITE-FULL-SYNC` |
+| `P2-WIKI-POINTER` | Rewrite `wiki/entities/paper-2-fnl-forecast.md` as pointer-only to SSOT (current file stale 2026-04-04, wrongly claims SUBMISSION-READY) | agent | P2 | 0.3 % | [ ] | |
+| `P2-CURRENT-STATUS-SYNC` | Update Paper 2 row in `CURRENT_STATUS.md` from "v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending" | agent | P2 | 0.2 % | [ ] | |
+| `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [ ] | After P2-COMPILE-POD |
+| `P2-TARBALL` | Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test a clean revtex build | agent | P2 | 0.2 % | [ ] | |
 | `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [ ] | Addresses §6 "continued monitoring" deferral with a concrete when-decisive figure |
 | `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [ ] | Canonical .tex is `pipelines/p3_anomaly_engine/paper3_draft.tex` |
 | `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [ ] | Requires texlive on H200; ~15 min |
@@ -72,8 +86,10 @@ Last authoritative update: 2026-04-17
 - `P4-REDSHIFT-BINS-INDEX` — Indexed the already-done `fcw_vs_redshift.csv` (20 bins) — stretch goal turned out done · part of `6651dd5`
 - `P3-SSOT-SWEEP` — Forensic sweep on Paper 3 · produced `SSOT/paper-3/status.md` · commit `0c39a15`
 - `P4-SSOT-SWEEP` — Forensic sweep on Paper 4 · produced `SSOT/paper-4/status.md` (pre-restructure: `paper4_chirality_status.md`) · earlier commit
-- `P-SSOT-RESTRUCTURE` — Moved to `SSOT/` tree; added `README`, `index`, `queue`; pointer stubs kept at old paths — **this commit**
-- `P-PRINCIPLE-10-CORRECTION-P3` — Corrected Paper 3 "zero future-work hits" claim after Houston pushback; 4 future-work-adjacent hits now classified DO-NOW / SIMULATE-AUGMENT-NOW — **this commit**
+- `P-SSOT-RESTRUCTURE` — Moved to `SSOT/` tree; added `README`, `index`, `queue`; pointer stubs kept at old paths — commit `ae21ac5`
+- `P-PRINCIPLE-10-CORRECTION-P3` — Corrected Paper 3 "zero future-work hits" claim after Houston pushback; 4 future-work-adjacent hits now classified DO-NOW / SIMULATE-AUGMENT-NOW — commit `ae21ac5`
+- `P1-SSOT-SWEEP` — Forensic sweep on Paper 1 · produced `SSOT/paper-1/status.md` at 99 % · **this commit**
+- `P2-SSOT-SWEEP` — Forensic sweep on Paper 2 (via background agent `a4cb732018c8ccc35`) · produced `SSOT/paper-2/status.md` at 85 % with revtex4-2 blocker clearly identified · **this commit**
 
 ---
 
