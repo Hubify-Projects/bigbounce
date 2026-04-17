@@ -2,15 +2,19 @@
 title: "Pipeline B: DESI Anomaly Detection"
 type: entity
 tags: [pipeline, desi, autoencoder, anomaly]
-last_updated: 2026-04-04
+last_updated: 2026-04-17
+canonical_status_file: project-context/paper3_anomaly_catalog_status.md
 sources:
+  - project-context/paper3_anomaly_catalog_status.md
   - project-context/pipeline1_tracer_purification_plan.md
   - project-context/enhanced_18M_rerun_spec.md
 ---
 
 # Pipeline B: DESI Anomaly Detection
 
-**Status:** COMPLETE
+> Paper-side status of record: [`project-context/paper3_anomaly_catalog_status.md`](../../project-context/paper3_anomaly_catalog_status.md). This page covers the pipeline mechanics; the SSOT covers artifacts, claims, and arXiv readiness.
+
+**Status:** COMPLETE (Paper 3 locked 2026-04-16, arXiv-ready)
 
 ## Summary
 

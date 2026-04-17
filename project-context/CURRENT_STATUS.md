@@ -17,8 +17,8 @@
 |-------|---------|-------|--------|
 | Paper 1 (Spin-Torsion) | v2.3.0 | 24 | Ready — add real birefringence result (β=0.264°) |
 | Paper 2 (f_NL Forecast) | v1.3.0 | 12 | Ready for submission |
-| Paper 3 (Anomaly Catalog) | v1.0 | ~35 | ~98% — Pipeline 1 Steps 1-5 complete |
-| Paper 4 (Chirality Catalog) | v1.0 | ~20 | ~85% — needs confusion matrix |
+| Paper 3 (Anomaly Catalog) | v1.0 | 24 | **99% — arXiv-ready, compiled 2026-04-15.** See `paper3_anomaly_catalog_status.md` |
+| Paper 4 (Chirality Catalog) | v1.0 | ~20 | **97% — arXiv-ready, 4 trivial admin items.** See `paper4_chirality_status.md` |
 
 ## Pipeline 1 Final Status (Steps 1-5 COMPLETE)
 
