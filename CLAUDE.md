@@ -2,6 +2,20 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## PAPER STATUS — ALWAYS CHECK THE SSOT FIRST
+
+**Canonical status for all 4 papers lives in `project-context/SSOT/`.** Before doing any paper-related work:
+
+1. Read [`project-context/SSOT/index.md`](project-context/SSOT/index.md) — cross-paper dashboard (one-line status, % ready, gaps, canonical source files).
+2. Read the relevant [`project-context/SSOT/paper-N/status.md`](project-context/SSOT/) — every paper number traced to a data file, plus a "Close the gap to 100 %" section.
+3. Check [`project-context/SSOT/queue.md`](project-context/SSOT/queue.md) before inventing a task — you may be duplicating a queued item or starting something lower-priority than what's open.
+
+**Do NOT rely on `CURRENT_STATUS.md`, `wiki/entities/paper-*.md`, or site HTML for paper status.** Those are downstream surfaces that go stale. They should mirror the SSOT, not drive it.
+
+**When you finish work that changes a paper's state** (new result, new compile, new figure, new site sync, new cross-match, closed queue task): update the relevant SSOT `status.md` AND mark the queue row AND the `index.md` headline IN THE SAME COMMIT. The SSOT protocol is in [`project-context/SSOT/README.md`](project-context/SSOT/README.md).
+
+---
+
 ## CRITICAL RESEARCH DIRECTIVE
 
 **DO NOT suggest "write up the results and publish" or "document the barriers as a paper" as a next step.** The goal of this project is continued active research toward positive scientific discoveries — specifically, finding meaningful evidence that bounce cosmology fits observational and mathematical constraints better than ΛCDM + inflation. After negative results, always propose the next research direction that could yield a positive discovery. Treat barriers as constraints that narrow the search space, not as conclusions. Continue researching until genuine positive results are found.

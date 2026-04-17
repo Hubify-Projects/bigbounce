@@ -24,7 +24,17 @@ This file provides complete context for any AI agent (Claude Code, Cursor, Codex
 
 ## The Golden Rule
 
-**`arxiv/main.tex` is the single source of truth.** Every number, claim, and caveat in the HTML pages must match the LaTeX source. When in doubt, the LaTeX wins.
+**`arxiv/main.tex` is the single source of truth for Paper 1.** Every number, claim, and caveat in the HTML pages must match the LaTeX source. When in doubt, the LaTeX wins.
+
+**For all FOUR papers, check `project-context/SSOT/` first.** This directory contains per-paper canonical status files plus a cross-paper dashboard and close-the-gap queue. Before doing any paper-related work:
+
+1. Read [`project-context/SSOT/index.md`](project-context/SSOT/index.md) — cross-paper dashboard.
+2. Read [`project-context/SSOT/paper-N/status.md`](project-context/SSOT/) for the specific paper you're touching.
+3. Check [`project-context/SSOT/queue.md`](project-context/SSOT/queue.md) before picking up a task on your own — you may be duplicating a queued item or starting something lower-priority than what's open.
+
+When you finish work that changes a paper's state (new result, new compile, new site-sync, new cross-match, closed queue task), **update the relevant SSOT `status.md` AND mark the queue row** in the same commit. Do not rely on `CURRENT_STATUS.md`, wiki entries, or the site to carry paper status — those are downstream surfaces and go stale.
+
+The SSOT protocol is documented in [`project-context/SSOT/README.md`](project-context/SSOT/README.md).
 
 ---
 
