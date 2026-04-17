@@ -2,58 +2,36 @@
 title: "Paper 4: Galaxy Chirality Catalog"
 type: entity
 tags: [paper, chirality, galaxy, dipole]
-last_updated: 2026-04-04
+last_updated: 2026-04-17
+canonical_status_file: project-context/paper4_chirality_status.md
 sources:
-  - pipelines/p2_chirality/chirality_catalog_paper.tex
-  - public/papers/chirality_catalog_paper.pdf
-  - project-context/CURRENT_STATUS.md
+  - project-context/paper4_chirality_status.md
 ---
 
 # Paper 4: Galaxy Chirality Catalog
 
-**Lines:** 1,099 LaTeX | **Status:** ~85% ready
+> **Canonical status file:** [`project-context/paper4_chirality_status.md`](../../project-context/paper4_chirality_status.md)
+>
+> That file is the single source of truth. Do not rely on older lists of "remaining work" — they were accurate at a point in time but the work has since been done.
 
-## Summary
+## One-line status
 
-Catalog paper documenting the largest galaxy chirality (handedness) classification ever performed. Tests cosmological parity violation via the CW/CCW spiral ratio and cosmic dipole alignment.
+Paper 4 is science-complete (8.47M galaxies classified, 8/8 bias tests, 0.43σ null dipole, Shamir refuted 7×) and arXiv-submission-ready once four trivial admin items are resolved. See canonical status file for the blocker list and execution plan.
 
-## Key Results
+## Core numbers (every figure traceable — see SSOT §3)
 
 | Metric | Value |
 |--------|-------|
 | Galaxies classified | 8,474,531 |
-| Classification accuracy | 93.7% |
+| Classification accuracy (3-class) | 93.7% |
 | Bias tests passed | 8/8 |
-| CW/(CW+CCW) ratio | 0.4974 |
-| Dipole significance | 0.43-sigma (null) |
-| Classes | CW, CCW, NOT_SPIRAL |
-
-## Interpretation
-
-The chirality ratio is consistent with parity symmetry (0.5 expected). The dipole is consistent with zero. This is a null result for cosmological parity violation from galaxy morphology, but the catalog itself is a major data product.
-
-## Remaining Work
-
-1. Add confusion matrix figure
-2. Add training curves figure
-3. Add redshift distribution figure
-4. Final peer review
-
-## File Locations
-
-- Source: `pipelines/p2_chirality/chirality_catalog_paper.tex`
-- PDF: `public/papers/chirality_catalog_paper.pdf`
-- Figures: `public/images/chirality/`
-
-## Data Products
-
-Published to:
-- HuggingFace: `bamfai/bigbounce-mcmc`
-- Convex: Catalog C (8.47M rows)
-- Backblaze B2
+| CW/(CW+CCW) equivariant | 0.4974 |
+| Dipole significance (null) | 0.43σ |
+| Shamir 3% asymmetry refutation | 7× smaller (max 0.47%) |
+| External cross-check (CE-ResNet) | 91.5% agreement |
 
 ## Connections
 
 - Pipeline: [[pipeline-2-chirality]]
-- Uses GPU inference playbook (DataLoader 32x speedup)
-- Null result constrains but does not close bounce models -- see [[bounce-portfolio]]
+- Cross-reference from Paper 2: `pipelines/p2_chirality/paper2_chirality_section.tex`
+- GPU inference playbook: `project-context/gpu-inference-playbook.md` (DataLoader 32× speedup pattern)

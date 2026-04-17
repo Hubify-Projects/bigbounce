@@ -279,6 +279,66 @@ This is the Houston Method: relentless forward progress through rigorous, system
 
 ---
 
+## Principle 10: Future Work Is Code Smell — Do It NOW
+
+Added 2026-04-17 after Houston flagged the pattern in Paper 1–4 drafts.
+
+Every phrase in a paper that sounds like "left to future work," "will be presented elsewhere," "defer to a future study," "beyond the scope," "in preparation," "we plan to," "forthcoming," or "further investigation is needed" is a **red flag**, not a convenience.
+
+### The Rule
+
+If the paper mentions it as future work, the default answer is: **run it NOW and fold the result into the paper itself.**
+
+Papers get stronger when every flagged "future direction" becomes a finished result in the manuscript. A referee who sees five future-work items will ding the paper. A referee who sees the same five items resolved in a new appendix will accept it.
+
+### When Is "Future Work" Actually Acceptable?
+
+Only one test passes:
+
+> Does this require a specific piece of hardware or a specific dataset that physically does not exist yet and cannot be simulated, augmented with AI, or proxied with existing data?
+
+Examples of **legitimate** future work:
+- LiteBIRD (launches 2028) full-sky measurement — the detector literally does not exist
+- LISA (launches 2035) GW band — no ground analogue at mHz
+- CMB-S4 cosmic-variance-limited polarization — detector not built
+- SKA Phase 2 radio polarization — array not built
+
+Examples of **FAKE** future work (do it now):
+- "A full two-loop calculation is left to future work" — it's just more math, do it
+- "A dedicated MCMC analysis is beyond the scope" — run the chains
+- "Independent derivation using another formalism is deferred" — do the second derivation
+- "Cross-match against NED/VizieR will be presented elsewhere" — query the service today
+- "Injection/recovery test is forthcoming" — write the 200 lines of Python
+- "Further investigation of spatial clustering is planned" — angular correlation is an hour of work
+- "A systematic bias audit using an alternative classifier" — retrain on H200
+
+### The Augmentation Test (For Items That Look Blocked)
+
+Before classifying something as truly-blocked, ask three questions:
+
+1. **Can we simulate it?** Fisher forecasts, mock catalogs, synthetic data through the same pipeline — all count as "doing it now" for a paper.
+2. **Can we AI-augment it?** Super-resolution models, synthetic label generation from generative models, proxy datasets that approximate the future survey.
+3. **Can we proxy with existing data?** Many future surveys have public precursors (Euclid Flagship sim, LSST DC2, SPHEREx mocks). Build the pipeline against the proxy today, re-run when real data lands.
+
+If any of the three pass, the item is **simulate/augment NOW**, not future work.
+
+### Enforcement: The Future-Work Sweep
+
+Before any paper is marked arXiv-ready:
+
+1. `grep -i` the manuscript for the trigger phrases listed above.
+2. For each hit, classify: **DO NOW** / **SIMULATE/AUGMENT NOW** / **TRULY BLOCKED (specify launch date)**.
+3. Add every DO NOW and SIMULATE/AUGMENT item to `research_queue.json` with the paper it originated from, in PRIORITY-0 slots.
+4. Run them. Fold results back into the paper. Re-grep. Repeat until the only remaining hits are TRULY BLOCKED.
+
+This sweep is a mandatory QC gate. A paper with unresolved DO-NOW items in its text is **not ready for submission**, even if every other gate passes.
+
+### Why This Matters
+
+Papers on arXiv are permanent. The "future work" in a paper today is either a gift to a competitor who runs it first, or a 6-month delay to your own stronger v2. Houston's rule: we have H200 compute, we have the pipelines, we have the time. The "future" referred to in the paper is usually *this week*. Do the work now, ship the stronger paper.
+
+---
+
 ## Anti-Patterns (Things That Are NOT Completion)
 
 | What Happened | Why It's Not Complete |

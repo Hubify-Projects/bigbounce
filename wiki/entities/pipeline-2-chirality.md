@@ -2,44 +2,33 @@
 title: "Pipeline 2: Galaxy Chirality Catalog"
 type: entity
 tags: [pipeline, chirality, galaxy, parity]
-last_updated: 2026-04-04
+last_updated: 2026-04-17
+canonical_status_file: project-context/paper4_chirality_status.md
 sources:
-  - project-context/active_pods_and_pipelines.md
+  - project-context/paper4_chirality_status.md
 ---
 
 # Pipeline 2: Galaxy Chirality Catalog
 
-**Status:** COMPLETE
+> **Canonical status file:** [`project-context/paper4_chirality_status.md`](../../project-context/paper4_chirality_status.md)
+>
+> That file is the single source of truth. It covers artifacts (HuggingFace + Convex + B2 + on-pod), scripts, bias audit, dipole analysis, and submission readiness together.
 
-## Summary
+## Status
 
-Largest galaxy chirality (handedness) classification ever performed. CNN classifier deployed on H100 GPU with DataLoader optimization (32x speedup from 29 min to 65s per 44K-image shard).
+**COMPLETE.** 8,474,531 galaxies classified, 8/8 bias tests pass, 0.43σ null dipole, 91.5% CE-ResNet cross-check. CNN classifier deployed on H100/H200 with DataLoader optimization (32× speedup from 29 min to 65 s per 44K-image shard — see `project-context/gpu-inference-playbook.md`).
 
-## Results
+## Published to
 
-| Metric | Value |
-|--------|-------|
-| Galaxies classified | 8,474,531 |
-| Classification | CW / CCW / NOT_SPIRAL |
-| Accuracy | 93.7% |
-| Bias tests passed | 8/8 |
-| CW/(CW+CCW) | 0.4974 |
-| Dipole significance | 0.43-sigma (null) |
+- HuggingFace: `bamfai/galaxy-chirality-catalog` (CC-BY-4.0), `bamfai/galaxy-chirality-v2` (model)
+- Convex DB (8.47M rows, synced 2026-03-28)
+- Backblaze B2 (full parquet snapshot)
 
-## Infrastructure
+## Scientific interpretation
 
-- **GPU:** NVIDIA H100 pod
-- **Key optimization:** `torch.utils.data.DataLoader` with `num_workers=16, pin_memory=True, prefetch_factor=4` -- documented in `project-context/gpu-inference-playbook.md`
-- **Published to:** HuggingFace, Convex (8.47M rows), Backblaze B2
-
-## Scientific Interpretation
-
-Null result for cosmological parity violation from galaxy morphology. The CW/CCW ratio is consistent with 0.5 (no excess of either handedness). The dipole is consistent with zero (no preferred direction in the universe from galaxy spin data).
-
-This constrains but does not rule out bounce cosmology -- most bounce models do not predict parity violation at the galaxy morphology level.
+Null result for large-scale parity violation from galaxy morphology. CW/(CW+CCW) = 0.4974, consistent with exact parity. Dipole is consistent with zero. This constrains but does not rule out bounce cosmology — most bounce models do not predict parity violation at the galaxy-morphology level. See SSOT §1 & §3 for the full claim audit.
 
 ## Connections
 
 - Paper: [[paper-4-chirality]]
-- Null result context: [[bounce-portfolio]] (supporting, not decisive)
-- GPU playbook used here applies to all future inference -- see [[anomaly-detection-methodology]]
+- GPU playbook: `project-context/gpu-inference-playbook.md`

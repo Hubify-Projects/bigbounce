@@ -1,0 +1,36 @@
+{
+  "experiment": "Paper 4 figure generation",
+  "timestamp": "2026-04-14T05:42:03.002417",
+  "confusion_matrix": [
+    [
+      1312,
+      67,
+      19
+    ],
+    [
+      72,
+      1220,
+      26
+    ],
+    [
+      8,
+      12,
+      1258
+    ]
+  ],
+  "confusion_accuracy": 0.9489233850776164,
+  "precision_CW": 0.9425287356321839,
+  "precision_CCW": 0.939183987682833,
+  "precision_NS": 0.965464313123561,
+  "recall_CW": 0.9384835479256081,
+  "recall_CCW": 0.9256449165402124,
+  "recall_NS": 0.9843505477308294,
+  "best_epoch": 79,
+  "final_accuracy": 0.937,
+  "n_galaxies": 8474531,
+  "figures_generated": [
+    "fig_confusion_matrix.png",
+    "fig_training_curves.png",
+    "fig_redshift_distribution.png"
+  ]
+}
