@@ -233,7 +233,7 @@ Cloud artifacts:
 | **Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers. | 0.3 | agent | `P4-PAPER2-XREF` |
 | **Site sync** — `index.html` (CW/CCW fraction, dipole σ, 8.47 M count), `paper.html` (readiness 97 → 100), `activity.html` (new dipole-JSON-closed entry), `figures.html` (11 chirality figures), `data-explorer.html` (catalog preview). | 0.3 | agent | `P4-SITE-SYNC` |
 | **§ 913 "Future surveys" (LSST) line review.** TRULY BLOCKED per Principle 10 (needs Rubin 2025+ data; can be Fisher-forecasted but paper already uses that framing). Keep as-is, but re-read on PDF review to make sure the wording doesn't sneak in a DO-NOW item. | 0.2 | Houston | `P4-LSST-LINE-REVIEW` |
-| **Public catalog product.** HF `bamfai/galaxy-chirality-catalog` is already live + CC-BY-4.0, but the arXiv submission needs the precise version/DOI link in the data-availability statement. | 0.2 | agent | `P4-HF-DOI` |
+| ~~**Public catalog product.**~~ ✓ DONE 2026-04-17: Data Availability section in `chirality_catalog_paper.tex` now pins `v2026.04` tags on both HF catalog (`huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/v2026.04`) and model (`huggingface.co/bamfai/galaxy-chirality-v2/tree/v2026.04`). GitHub release tag `paper4-v1.0` added. Zenodo DOI mirror note included (mint at arXiv submission time). | 0.2 | agent | `P4-HF-DOI` ✓ |
 
 ### 97 % → 100 % definition of done
 

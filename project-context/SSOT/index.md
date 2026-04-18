@@ -2,7 +2,7 @@
 
 **Read this first.** Every number here is sourced from the per-paper `status.md` files in this directory. If you catch a contradiction, the per-paper file wins — update this index.
 
-Last authoritative update: 2026-04-17
+Last authoritative update: 2026-04-17 (post P2-REVTEX4-2-CONVERT + P2-TARBALL)
 
 ---
 
@@ -11,7 +11,7 @@ Last authoritative update: 2026-04-17
 | # | Paper | One-line status | Ready for arXiv | Gap to 100 % | Canonical source | SSOT |
 |---|---|---|---:|---|---|---|
 | **1** | **Spin-Torsion Cosmology** | v2.3.0, 24 pp, 63+ refs, 10+ revision rounds. Most mature paper. β = 0.264° ALP already integrated (L391). Compiles clean, 0 undefined refs. **2026-04-17:** P1-LINE-299-WORDSMITH ✓ + P1-FIGURES-VERIFY ✓ + P1-WIKI-SYNC ✓ + P1-TARBALL (partial, tarball built). Remaining: corner plots on pod, final PDF recompile on pod, site sync. | **99 %** | 7 queue tasks — 3 done + 1 partial + 3 open (P1-CORNER-PLOTS, P1-PDF-RECOMPILE, P1-SITE-SYNC) | `arxiv/main.tex` | [paper-1/status.md](paper-1/status.md) |
-| **2** | **f_NL Forecast (SPHEREx / MegaMapper)** | v1.6.0, 375 lines, 6 figures. Science complete: σ(f_NL) forecasts, Bayes factors 8–17, bias validation 1.58× on Gold+Silver QSOs. **BLOCKER: document class is `article` + `natbib`, NOT revtex4-2.** Current PDF has `[?]` placeholder refs. **2026-04-17:** P2-CURRENT-STATUS-SYNC ✓ + P2-WIKI-POINTER ✓ + P2-XREF-AUDIT ✓. 1–2 days of mechanical conversion still needed. | **85 %** | 9 queue tasks — 3 done + 6 open (P2-REVTEX4-2-CONVERT, P2-BIB-RESOLVE, P2-COMPILE-POD, P2-SITE-SYNC, P2-PDF-PUBLISH, P2-TARBALL) | `research/focused_paper_source_integration/02_full_draft.tex` | [paper-2/status.md](paper-2/status.md) |
+| **2** | **f_NL Forecast (SPHEREx / MegaMapper)** | v1.6.0, 375 lines, 6 figures. Science complete: σ(f_NL) forecasts, Bayes factors 8–17, bias validation 1.58× on Gold+Silver QSOs. **2026-04-17:** P2-CURRENT-STATUS-SYNC ✓ + P2-WIKI-POINTER ✓ + P2-XREF-AUDIT ✓ + **P2-REVTEX4-2-CONVERT ✓** (preamble, 23 cite conversions, 6 figure widths) + **P2-TARBALL ✓** (311 KB). Remaining: pod compile to verify `\bibliography` resolves cleanly (0 `[?]`), site sync, PDF publish. | **92 %** | 9 queue tasks — 5 done + 4 open (P2-BIB-RESOLVE/verify, P2-COMPILE-POD, P2-SITE-SYNC, P2-PDF-PUBLISH) | `research/focused_paper_source_integration/02_full_draft.tex` | [paper-2/status.md](paper-2/status.md) |
 | **3** | **Multi-Survey Anomaly Catalog** | Locked 2026-04-16. 8 surveys · 37.3 M sources · 319,443 anomalies · 58.8 % novel · σ(f_NL) +16.4 % · SPHEREx 4.38σ · NANOGrav γ = 3.20 ± 0.42. | **99 %** | 8 queue tasks (P3-A..H, PDF, site sync, HF upload) | `pipelines/p3_anomaly_engine/paper3_draft.tex` | [paper-3/status.md](paper-3/status.md) |
 | **4** | **Galaxy Chirality Catalog** | Science-complete. 8.47 M galaxies · 8/8 bias tests · 0.43σ null dipole · Shamir refuted 7×. Dipole JSON gap closed 2026-04-17. | **97 %** | 7 queue tasks (JSON rebuild, PDF recompile, site sync, Paper 2 cross-ref) | `pipelines/p2_chirality/chirality_catalog_paper.tex` | [paper-4/status.md](paper-4/status.md) |
 
