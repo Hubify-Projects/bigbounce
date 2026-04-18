@@ -1,12 +1,20 @@
 {
   "experiment": "Paper 4 Dipolar Analysis",
   "timestamp": "2026-04-14T06:24:01.485342",
+  "rebuild_note": "Original run crashed during json.dump (bool serialization bug). Rebuilt 2026-04-17 from dipolar_analysis.log — all numerical values are verbatim from the log; no re-computation was performed. This is the PRE-TTA pipeline run (2.31 sigma). The paper headline 0.43 sigma is the POST-TTA equivariant correction, tracked separately in Tables I–III of chirality_catalog_paper.tex §V.",
   "catalog": {
     "n_total": 8474531,
-    "n_spirals": 3321795,
+    "n_cw": 1687069,
+    "n_ccw": 1634726,
+    "n_ns": 5152736,
+    "cw_fraction_raw": 0.199,
+    "ccw_fraction_raw": 0.193,
+    "ns_fraction": 0.608,
     "fcw_eq": 0.5012,
     "fcw_err": 0.0006,
     "nside": 64,
+    "npix": 49152,
+    "n_galaxies_in_footprint": 2220382,
     "n_valid_pixels": 22637,
     "f_sky": 0.4605509440104167
   },
@@ -15,6 +23,57 @@
     "ra_deg": 46.57806199786201,
     "dec_deg": 39.338574889983725,
     "significance_sigma": 2.3119654291443537,
+    "mc_n_realizations": 1000,
     "mc_mean": 0.0009239902804916001,
     "mc_std": 0.00042310044891063857,
-    "consistent_with_null": 
+    "consistent_with_null": false,
+    "pre_tta": true,
+    "note": "Pre-TTA dipole — see post-TTA 0.43 sigma result in paper Table I"
+  },
+  "hemisphere_asymmetry": {
+    "north_vs_south": {
+      "delta_fcw": 0.00059,
+      "error": 0.00082,
+      "significance_sigma": 0.72
+    },
+    "east_vs_west": {
+      "delta_fcw": -0.00015,
+      "error": 0.00070,
+      "significance_sigma": 0.22
+    }
+  },
+  "multipole_decomposition": {
+    "shot_noise_cl": 0.00255,
+    "lmax": 5,
+    "multipoles": [
+      {"l": 0, "Cl": 6.32e-06, "excess_over_shot_noise": 0.00},
+      {"l": 1, "Cl": 1.21e-06, "excess_over_shot_noise": 0.00},
+      {"l": 2, "Cl": 6.23e-07, "excess_over_shot_noise": 0.00},
+      {"l": 3, "Cl": 9.89e-07, "excess_over_shot_noise": 0.00},
+      {"l": 4, "Cl": 1.95e-07, "excess_over_shot_noise": 0.00},
+      {"l": 5, "Cl": 1.86e-07, "excess_over_shot_noise": 0.00}
+    ]
+  },
+  "axis_alignment_tests": {
+    "cmb_dipole": {
+      "separation_deg": 118.4,
+      "aligned": false
+    },
+    "cmb_quadrupole": {
+      "separation_deg": 102.4,
+      "aligned": false
+    },
+    "shamir_claimed_axis": {
+      "separation_deg": 18.9,
+      "aligned": true,
+      "note": "Pre-TTA alignment only. Post-TTA equivariance correction reduces effective alignment to <1 sigma per paper §V and Table II."
+    }
+  },
+  "figures": [
+    "fig_dipolar_skymap.png",
+    "fig_dipolar_power_spectrum.png",
+    "fig_dipolar_mc_test.png"
+  ],
+  "source_log": "pipelines/p2_chirality/outputs/dipole/dipolar_analysis.log",
+  "source_script": "/root/experiments/chirality_dipolar_analysis.py (pod snapshot, see paper Appendix D)"
+}
