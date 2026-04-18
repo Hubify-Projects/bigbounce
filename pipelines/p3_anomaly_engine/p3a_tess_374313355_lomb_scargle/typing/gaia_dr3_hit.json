@@ -1,0 +1,64 @@
+{
+  "queries": [
+    {
+      "radius_arcsec": 5.0,
+      "n_hits": 0,
+      "hits": []
+    },
+    {
+      "radius_arcsec": 30.0,
+      "n_hits": 1,
+      "columns_returned": [
+        "source_id",
+        "ra",
+        "dec",
+        "parallax",
+        "parallax_error",
+        "pmra",
+        "pmdec",
+        "phot_g_mean_mag",
+        "phot_bp_mean_mag",
+        "phot_rp_mean_mag",
+        "bp_rp",
+        "ruwe",
+        "phot_variable_flag",
+        "dist",
+        "in_qso_candidates",
+        "in_galaxy_candidates",
+        "non_single_star",
+        "has_xp_continuous",
+        "has_xp_sampled",
+        "teff_gspphot"
+      ],
+      "hits": [
+        {
+          "source_id": 3859046119958978432,
+          "ra": 160.14260797283234,
+          "dec": 5.093070386576906,
+          "parallax": 1.150116384275882,
+          "parallax_error": 0.40826448798179626,
+          "pmra": -8.586833133685932,
+          "pmdec": 0.8967278670867849,
+          "phot_g_mean_mag": 19.52067756652832,
+          "phot_bp_mean_mag": 20.58509635925293,
+          "phot_rp_mean_mag": 18.54918098449707,
+          "bp_rp": 2.0359153747558594,
+          "ruwe": 0.9249100089073181,
+          "phot_variable_flag": "NOT_AVAILABLE",
+          "dist": 0.006433700003646481,
+          "in_qso_candidates": false,
+          "in_galaxy_candidates": false,
+          "non_single_star": 0,
+          "has_xp_continuous": false,
+          "has_xp_sampled": false,
+          "teff_gspphot": null,
+          "_dist_arcsec": 23.161320013127334
+        }
+      ]
+    }
+  ],
+  "target": {
+    "ra_deg": 160.148889,
+    "dec_deg": 5.091599
+  }
+}

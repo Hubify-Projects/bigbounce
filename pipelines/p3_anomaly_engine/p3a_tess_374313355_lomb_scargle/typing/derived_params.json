@@ -1,0 +1,16 @@
+{
+  "G": 19.52067756652832,
+  "BP": 20.58509635925293,
+  "RP": 18.54918098449707,
+  "bp_rp": 2.0359153747558594,
+  "parallax_mas": 1.150116384275882,
+  "parallax_error_mas": 0.40826448798179626,
+  "ruwe": 0.9249100089073181,
+  "phot_variable_flag": "NOT_AVAILABLE",
+  "parallax_snr": 2.817086516540629,
+  "distance_pc_naive": 869.4772230634765,
+  "abs_G_naive": 9.824386518258532,
+  "nearest_hit_radius_query_arcsec": 30.0,
+  "nearest_hit_source_id": 3859046119958978432,
+  "nearest_hit_dist_arcsec": 23.161320013127334
+}

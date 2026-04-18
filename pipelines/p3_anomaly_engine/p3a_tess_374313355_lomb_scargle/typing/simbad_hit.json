@@ -1,0 +1,82 @@
+{
+  "queries": [
+    {
+      "radius_arcsec": 5.0,
+      "n_hits": 1,
+      "columns": [
+        "main_id",
+        "ra",
+        "dec",
+        "coo_err_maj",
+        "coo_err_min",
+        "coo_err_angle",
+        "coo_wavelength",
+        "coo_bibcode",
+        "G",
+        "V",
+        "otype",
+        "sp_type",
+        "ids"
+      ],
+      "hits": [
+        {
+          "main_id": "2MASS J10403573+0505297",
+          "ra": 160.14893,
+          "dec": 5.091561000000001,
+          "coo_err_maj": 81.0,
+          "coo_err_min": 81.0,
+          "coo_err_angle": 90,
+          "coo_wavelength": "O",
+          "coo_bibcode": "2009ApJS..182..543A",
+          "G": null,
+          "V": null,
+          "otype": "LM*",
+          "sp_type": "M9V",
+          "ids": "TIC 374313355|EPIC 248570548|2MASS J10403573+0505297|SDSS J104035.74+050529.6|SDSS J104035.75+050529.6",
+          "_dist_arcsec": 0.20081934953829486
+        }
+      ]
+    },
+    {
+      "radius_arcsec": 30.0,
+      "n_hits": 1,
+      "columns": [
+        "main_id",
+        "ra",
+        "dec",
+        "coo_err_maj",
+        "coo_err_min",
+        "coo_err_angle",
+        "coo_wavelength",
+        "coo_bibcode",
+        "G",
+        "V",
+        "otype",
+        "sp_type",
+        "ids"
+      ],
+      "hits": [
+        {
+          "main_id": "2MASS J10403573+0505297",
+          "ra": 160.14893,
+          "dec": 5.091561000000001,
+          "coo_err_maj": 81.0,
+          "coo_err_min": 81.0,
+          "coo_err_angle": 90,
+          "coo_wavelength": "O",
+          "coo_bibcode": "2009ApJS..182..543A",
+          "G": null,
+          "V": null,
+          "otype": "LM*",
+          "sp_type": "M9V",
+          "ids": "TIC 374313355|EPIC 248570548|2MASS J10403573+0505297|SDSS J104035.74+050529.6|SDSS J104035.75+050529.6",
+          "_dist_arcsec": 0.20081934953829486
+        }
+      ]
+    }
+  ],
+  "target": {
+    "ra_deg": 160.148889,
+    "dec_deg": 5.091599
+  }
+}
