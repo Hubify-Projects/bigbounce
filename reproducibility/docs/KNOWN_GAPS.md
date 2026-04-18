@@ -80,9 +80,6 @@ latent vectors, redshifts, photometry, morphology. Running on H200.
 Currently at 44% (7.9M/17.9M spectra). Output: Parquet format.
 Code at: `pipelines/p1_highz_tracers/scripts/enhanced_18M_inference.py`
 
-## 8. w0-wa MCMC — COMPLETE
+## 8. w0-wa MCMC — RETRACTED fire #25 (2026-04-18)
 
-**What exists:** Converged CPL parameterization MCMC (R-1 = 0.009,
-50,880 samples). w0 = -0.871 ± 0.061, wa = -0.542 ± 0.247.
-P(quintom-B) = 98%. Config at: `reproducibility/cosmology/cobaya_w0wa_quintom_test.yaml`
-Chains at: `reproducibility/cosmology/chains/w0wa_quintom/`
+**What exists:** The Cobaya config (`reproducibility/cosmology/cobaya_w0wa_quintom_test.yaml`) and chain directory skeleton are retained for reproducibility history, but the previously advertised results "Converged CPL MCMC (R-1 = 0.009, 50,880 samples), w0 = -0.871 ± 0.061, wa = -0.542 ± 0.247, P(quintom-B) = 98%" were fire-#21 bookkeeping confabulation. Paper 1 §VII.H is explicit: zero free w0-wa samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2σ w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result.

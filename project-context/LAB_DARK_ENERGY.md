@@ -60,7 +60,7 @@
 
 **Deliverable:** A peer-reviewable paper draft + the chains + a contribution at N3 if the result is novel.
 
-**Measurable:** w-crossing significance σ (target: trend toward 5σ). P(quintom-B | data) (currently 98.6% with DR1 — target: > 99.9% with DR2).
+**Measurable:** w-crossing significance σ (target: trend toward 5σ) against the community DESI DR2 result (2.8-4.2σ, dataset-dependent). Note: this program contributes no free w0-wa MCMC (Paper 1 §VII.H: zero free w0-wa samples); earlier "P(quintom-B) = 98.6% with DR1" figure was fire-#21 confabulation, retracted fire #25 (2026-04-18). Lab #3 would start from community posteriors rather than extending an in-house chain.
 
 **Source from Lab #1:** the existing quintom-B chains in `bigbounce-hubify/lab/projects/quintom-b-discrimination/datasets/chains/`. Read-only cross-lab access. Lab #3's agents can read these chains, run new analyses on them, and propose updates back to Lab #1 via the comm gateway.
 

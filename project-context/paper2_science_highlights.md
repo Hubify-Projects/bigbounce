@@ -2,11 +2,11 @@
 
 **Purpose:** Distill the genuine scientific contributions of the f_NL forecast paper beyond "we computed a Fisher matrix" and "SPHEREx will detect it."
 
-**Canonical paper:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, v1.6.0, PDF dated 2026-03-24).
+**Canonical paper:** `research/focused_paper_source_integration/02_full_draft.tex` (v1.6.1). Compiled PDF mirrored to `public/papers/paper2_fnl_forecast.pdf` (632 KB, 0 undefined refs).
 **SSOT:** [`project-context/SSOT/paper-2/status.md`](SSOT/paper-2/status.md).
-**Last updated:** 2026-04-17.
+**Last updated:** 2026-04-18 (fire #32 sweep).
 
-**Format status:** Science 100 % done, manuscript 100 % written, but NOT arXiv-ready — document class is `article`+natbib and must be converted to `revtex4-2` per the program-wide mandate. See SSOT §0.
+**Format status:** 100 % — revtex4-2 conversion landed fire #9 (2026-04-17). All bibitems embedded, Docker TeX Live compile clean. arXiv-ready pending Houston's form-fill.
 
 ---
 

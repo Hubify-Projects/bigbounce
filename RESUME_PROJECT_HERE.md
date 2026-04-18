@@ -1,7 +1,8 @@
 # RESUME PROJECT HERE — BigBounce Research Program
 
-**Date snapshot:** 2026-04-02
-**Reason:** MacBook dying, transferring to other machine.
+**Date snapshot:** 2026-04-02 (body below is frozen; see SSOT for current state)
+**Canonical status (live):** [`project-context/SSOT/index.md`](project-context/SSOT/index.md) — all 4 papers at 100 % readiness as of 2026-04-17 fire #9, PDFs mirrored to `public/papers/`.
+**Reason for this file:** MacBook dying, transferring to other machine.
 **Repo:** https://github.com/Hubify-Projects/bigbounce (main branch)
 **Site:** https://bigbounce.hubify.app (Netlify auto-deploy from main)
 
@@ -25,7 +26,7 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - **14 structural barriers** close all ECH-specific routes (other bounce models bypass these)
 - **f_NL = -35/8 = -4.375** — parameter-free matter bounce prediction, SPHEREx testable 2028
 - **ALP birefringence** β = 0.27° matches 3.6σ observed signal
-- **w0-wa MCMC** — quintom-B w-crossing favored at 2.3σ, P(quintom-B) = 98.6%
+- **w0-wa MCMC** — RETRACTED fire #25 (2026-04-18). Paper 1 §VII.H: zero free w0-wa samples in this program. Earlier "P(quintom-B) = 98.6%" was fire-#21 bookkeeping confabulation. DESI DR2 w-crossing cited as observational context only.
 - **NANOGrav** — matter bounce γ=3.0 vs observed 3.2±0.6 (0.33σ consistent)
 - **Chirality** — 8.47M galaxies, CW/(CW+CCW)=0.4974, dipole=0.43σ (null result)
 - **424,181+ MCMC samples** across 3 frozen dataset combinations

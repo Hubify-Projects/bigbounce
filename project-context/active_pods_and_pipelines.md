@@ -1,7 +1,9 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-08 UTC
-**H200 QUEUE v2 — All 8 phases COMPLETE + Pipeline 1 Step 3 COMPLETE. Pod STOPPED. Phases 9-10 PENDING.**
+**Last updated:** 2026-04-18 UTC (fire #32)
+**CURRENT POD:** A100 80GB PCIe community pod `ktds4mkmzb7ven` @ $1.19/hr, SSH `104.255.9.187:11759`. Deployed fire #26 (2026-04-18). eROSITA DR1 scan COMPLETE (930,203 sources → 298 BigAE top-cut anomalies, Paper 3 Table 1 canonical; HF upload done). SDSS DR18 + LAMOST DR10 scans running in tmux — multi-day wall clock. Budget consumed ~$0.25 of $140 cap. See `pipelines/p3_anomaly_engine/pod_runs/HANDOFF.md` for finish procedure.
+
+**H200 history (STOPPED):** `o76k3jfzbfh25e` (sleepy_blush_crane) stopped 2026-04-08 after RunPod infrastructure error. Full backup preserved.
 
 ---
 
@@ -86,7 +88,7 @@
 | H200 Queue v1 | 7zong4jdj46yjp | 10 experiments complete (6 QC fail). 33.5M sources, 328K anomalies. Terminated Apr 4 (credits). |
 | H200 Beast (DESI) | rtv8cegaw1618r | 22.5M spectra, 195,829 anomalies. Complete + backed up. |
 | H100 (Chirality) | ulfxypratod4vr | 8.47M galaxies classified. Complete + backed up. |
-| RTX A4000 (MCMC) | fn19oivkjowmq4 | 50.9K samples, P(quintom-B)=98.6%. Converged + backed up. |
+| RTX A4000 (MCMC) | fn19oivkjowmq4 | Run dropped — the "50.9K samples, P(quintom-B)=98.6%" claim was fire-#21 bookkeeping confabulation, retracted fire #25 (2026-04-18). Paper 1 §VII.H: zero free w0-wa samples in this program. |
 
 ---
 

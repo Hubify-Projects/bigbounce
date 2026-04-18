@@ -58,7 +58,7 @@ Our chirality pipeline follows the same structure: real survey-scale data, expli
 
 | Track | What | Status |
 |-------|------|--------|
-| w0-wa Quintom MCMC | CPL dark energy EOS test (quintom-B w-crossing) | **🟢 RUNNING — 9.4K samples, R-1=0.098, on RTX A4000** |
+| w0-wa Quintom MCMC | CPL dark energy EOS test (quintom-B w-crossing) | **🔴 RETRACTED fire #25 (2026-04-18)** — Paper 1 §VII.H: zero free w0-wa samples in this program. Earlier "RUNNING — 9.4K samples, R-1=0.098" was fire-#21 bookkeeping confabulation. |
 | Pipeline B CPU batch | Earlier/slower CPU version of Pipeline B | **🟡 RUNNING — 19% (368K spectra) but redundant with H200 run** |
 
 B and E feed f_NL directly. A and C are more validation-heavy. D depends on the others being mature.
@@ -472,7 +472,7 @@ RunPod GPU for classifier; CPU for feature engineering on 2B sources. **4–6 se
 | Bounce model discrimination table | Strengthens Paper 2 | Done | **Yes** | ✅ Added to Paper 1 |
 | NANOGrav model comparison | γ=3 vs SMBH γ=13/3 | Done | **Yes** | ✅ B(bounce/SMBH)=5.6 |
 | PBH regulation by f_NL | Triple role of -35/8 | Done | **Yes** | ✅ Script + figure done |
-| w0-wa MCMC (quintom-B test) | Bounce-DE unification | Running | **Yes** | 🟢 98.6% quintom-B |
+| w0-wa MCMC (quintom-B test) | Bounce-DE unification | RETRACTED | **No in-house MCMC** | 🔴 Retracted fire #25 — Paper 1 §VII.H: zero free w0-wa samples; DESI DR2 2.8-4.2σ cited as observational context only |
 | Full in-in integral | Independent derivation | Multi-month | No | Polynomial proof sufficient |
 | Exact ε correction | Narrows [1–8%] | All-vertex cancellation | Low | Not started |
 
