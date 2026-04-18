@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (late + drive-to-100 fire #1) — queue reconciled to match `index.md` done markers: 11 additional rows closed (P1-FIGURES-VERIFY, P1-CORNER-PLOTS, P1-PDF-RECOMPILE, P1-WIKI-SYNC, P2-COMPILE-POD, P2-XREF-AUDIT, P2-WIKI-POINTER, P2-CURRENT-STATUS-SYNC, P2-PDF-PUBLISH, P2-TARBALL, P3-PDF-RECOMPILE, P4-PDF-RECOMPILE, P4-HF-DOI). Two V2 recompile follow-ups filed. P1-TARBALL partial.
+Last authoritative update: 2026-04-17 (drive-to-100 fire #2) — P3-PDF-CANON + P3-XREF closed; Paper 3 .tex gains 3 Golden companion bibitems + 4 new `\cite{}` calls; P3-PDF-RECOMPILE-V2 filed.
 
 ## Legend
 
@@ -43,7 +43,7 @@ Last authoritative update: 2026-04-17 (late + drive-to-100 fire #1) — queue re
 | `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [x] | DONE 2026-04-17 — file committed |
 | `P2-TARBALL` | Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test a clean revtex build | agent | P2 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [ ] | Addresses §6 "continued monitoring" deferral with a concrete when-decisive figure |
-| `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [ ] | Canonical .tex is `pipelines/p3_anomaly_engine/paper3_draft.tex` |
+| `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [x] | DONE 2026-04-17 — verified `arxiv/paper3_anomaly_catalog.tex` is a 40-line pointer stub; stale `.pdf` already removed; 27 MB canonical PDF mirrored at `public/papers/paper3_anomaly_catalog.pdf` |
 | `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [x] | DONE 2026-04-17 — 27 MB, 27 pp, 21 figs embedded, 0 undef |
 | `P4-PDF-CANON` | Pick `pipelines/p2_chirality/chirality_catalog_paper.tex` as canonical; delete or rebuild arxiv/ copy | agent | P4 | 0.5 % | [x] | DONE 2026-04-17 — canonical set + cross-ref xref cleaned; see `SSOT/paper-4/status.md` |
 | `P4-PDF-RECOMPILE` | Recompile Paper 4 PDF on-pod with today's date + SSOT cross-check | pod | P4 | 0.5 % | [x] | DONE 2026-04-17 — 25 MB, 11 pp, 0 undef. Follow-up recompile needed for new LSST projection line — tracked as `P4-PDF-RECOMPILE-V2` below |
@@ -52,11 +52,12 @@ Last authoritative update: 2026-04-17 (late + drive-to-100 fire #1) — queue re
 | `P4-SITE-SYNC` | Same for Paper 4 SSOT numbers | site | P4 | 0.3 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview + TTA entry added to data-explorer |
 | `P3-HF-UPLOAD` | Publish aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` with CC-BY-4.0 | agent | P3 | 0.05 % | [ ] | Paper §9 data-availability needs live link before arXiv |
 | `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [x] | DONE 2026-04-17 |
-| `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [ ] | |
+| `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [x] | DONE 2026-04-17 — added 3 Golden companion bibitems (framework, fnl, chirality) + 4 `\cite{}` calls at L70, L515, L597; triggers `P3-PDF-RECOMPILE-V2` (filed below) |
 | `P4-LSST-LINE-REVIEW` | Houston reviews paper4 L913 "Future surveys (Rubin LSST)" line on final PDF read — confirm TRULY BLOCKED | Houston | P4 | 0.2 % | [ ] | If it's not blocked per Principle 10 it becomes a new task |
 | `P-MEMORY-SYNC` | Add MEMORY.md entry for SSOT directory + update existing entries that reference old paper-N-status.md paths | agent | ALL | 0 % | [ ] | One-time housekeeping after restructure lands |
 | `P1-PDF-RECOMPILE-V2` | Recompile `arxiv/main.pdf` to render the §IV corner figure inserted at L882 | pod | P1 | 0.1 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P4-PDF-RECOMPILE-V2` | Recompile `public/papers/chirality_catalog_paper.pdf` to render the new LSST 10-yr projection line in Future Directions | pod | P4 | 0.3 % | [ ] | Existing PDF is pre-insert; tex ready |
+| `P3-PDF-RECOMPILE-V2` | Recompile `pipelines/p3_anomaly_engine/paper3_draft.pdf` + mirror to `public/papers/paper3_anomaly_catalog.pdf` to render the 3 new Golden companion-paper bibitems + 4 new `\cite{}` calls added 2026-04-17 fire #2 | pod | P3 | 0.05 % | [ ] | Existing PDF is pre-xref; tex ready |
 
 ## P2 — before submission
 

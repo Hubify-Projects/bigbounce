@@ -67,7 +67,7 @@ The volume of astronomical data has grown by more than two orders of magnitude i
 
 Anomaly detection---the unsupervised identification of data points that deviate significantly from the bulk population---has emerged as a powerful tool for extracting scientific value from these archives. In spectroscopic surveys, autoencoder-based methods have proven particularly effective. Baron \& Poznanski~\cite{Baron2017} demonstrated the approach on SDSS spectra, identifying unusual white dwarfs, cataclysmic variables, and previously unclassified objects. Liang \etal~\cite{Liang2023} applied an autoencoder coupled with a normalizing flow to approximately 250{,}000 DESI Early Data Release (EDR) spectra, finding 2{,}685 anomalies at a 1.07\% rate. Nicolaou \etal~\cite{Nicolaou2026} extended this with a variational autoencoder and the Astronomaly active-learning framework on 208{,}000 EDR spectra. However, all prior anomaly searches have been limited to individual surveys at sub-million scale.
 
-We are motivated by two scientific goals. The first is purely observational: the systematic discovery of rare and uncataloged objects across multiple wavelength domains. Objects that are anomalous in multiple independent surveys are the strongest candidates for genuinely novel astrophysical phenomena. The second motivation connects to fundamental cosmology. The quasi-matter bounce model predicts a parameter-free local non-Gaussianity $\fnl = -35/8 = -4.375$~\cite{Wands2010,Cai2009}, testable by the SPHEREx satellite~\cite{SPHEREx2014} at $4$--$6\sigma$ significance. The sensitivity of this measurement depends critically on the availability of high-bias tracer populations at high redshift. Anomaly-detected objects---particularly high-redshift QSO candidates and unusual emission-line galaxies absent from standard catalogs---represent a previously unexploited tracer reservoir that can improve $\fnl$ constraints through the multi-tracer technique~\cite{Seljak2009,Hamaus2012}.
+We are motivated by two scientific goals. The first is purely observational: the systematic discovery of rare and uncataloged objects across multiple wavelength domains. Objects that are anomalous in multiple independent surveys are the strongest candidates for genuinely novel astrophysical phenomena. The second motivation connects to fundamental cosmology. The quasi-matter bounce model predicts a parameter-free local non-Gaussianity $\fnl = -35/8 = -4.375$~\cite{Wands2010,Cai2009,Golden:2026framework}, testable by the SPHEREx satellite~\cite{SPHEREx2014} at $4$--$6\sigma$ significance~\cite{Golden:2026fnl}. The sensitivity of this measurement depends critically on the availability of high-bias tracer populations at high redshift. Anomaly-detected objects---particularly high-redshift QSO candidates and unusual emission-line galaxies absent from standard catalogs---represent a previously unexploited tracer reservoir that can improve $\fnl$ constraints through the multi-tracer technique~\cite{Seljak2009,Hamaus2012}.
 
 In this work, we present the first multi-survey anomaly detection campaign at combined scale exceeding 37 million sources. We apply a unified autoencoder architecture (\BigAE{}) to eight distinct archives, cross-match the resulting catalogs against SIMBAD and each other, classify the anomaly populations, and assess their utility for improving cosmological constraints. The paper is organized as follows. Section~\ref{sec:method} describes the \BigAE{} architecture, training, and scoring methodology. Section~\ref{sec:surveys} presents survey-by-survey results. Section~\ref{sec:crosssurvey} reports cross-survey analysis including SIMBAD novelty fractions and inter-survey matches. Section~\ref{sec:fnl} presents the $\fnl$ multi-tracer Fisher forecast. Section~\ref{sec:nanograv} reports the NANOGrav bounce-consistency analysis. Section~\ref{sec:discussion} discusses limitations and the LAMOST training-bias lesson. Section~\ref{sec:conclusions} summarizes our conclusions.
 
@@ -512,7 +512,7 @@ When SDSS DR18 anomalies are combined with DESI, the improvement reaches 16.4\%,
 
 \subsection{SPHEREx Projection}\label{sec:spherex}
 
-The matter-bounce cosmology predicts $\fnl = -35/8 = -4.375$ as a parameter-free consequence of the quasi-matter bounce~\cite{Wands2010,Cai2009}. With the DESI+SDSS multi-tracer constraint projected to SPHEREx survey parameters~\cite{SPHEREx2014} (full-sky coverage, $f_{\rm sky} = 0.75$, 300 million galaxies with spectroscopic redshifts), the forecast detection significance is:
+The matter-bounce cosmology predicts $\fnl = -35/8 = -4.375$ as a parameter-free consequence of the quasi-matter bounce~\cite{Wands2010,Cai2009,Golden:2026framework}. With the DESI+SDSS multi-tracer constraint projected to SPHEREx survey parameters~\cite{SPHEREx2014} (full-sky coverage, $f_{\rm sky} = 0.75$, 300 million galaxies with spectroscopic redshifts), the forecast detection significance~\cite{Golden:2026fnl} is:
 \begin{equation}\label{eq:spherex}
 \frac{|\fnl|}{\sigfnl} = \frac{4.375}{1.0} = 4.38\sigma,
 \end{equation}
@@ -594,7 +594,7 @@ The transfer-learning approach used for SDSS (Section~\ref{sec:sdss}) deliberate
 
 \subsection{Limitations}\label{sec:limitations}
 
-We identify several limitations. First, the \BigAE{} model is a single architecture applied uniformly; ensemble approaches combining autoencoders, variational autoencoders, isolation forests, and one-class SVMs would provide more robust anomaly rankings. Second, injection-and-recovery tests have not been performed for all surveys; we cannot quantify the completeness of the anomaly catalogs. Third, the DESI B-dominant population (44{,}436 objects, 22.7\%) has not been fully investigated for calibration-systematic contamination. Fourth, the $\fnl$ multi-tracer forecast assumes a bias enhancement factor $\alpha = 0.15$ motivated by theoretical arguments but not empirically calibrated; the actual bias of anomaly-detected objects may be higher or lower. Fifth, the NANOGrav analysis uses derived free-spectrum values consistent with published results rather than raw timing residual data.
+We identify several limitations. First, the \BigAE{} model is a single architecture applied uniformly; ensemble approaches combining autoencoders, variational autoencoders, isolation forests, and one-class SVMs would provide more robust anomaly rankings. Second, injection-and-recovery tests have not been performed for all surveys; we cannot quantify the completeness of the anomaly catalogs. Third, the DESI B-dominant population (44{,}436 objects, 22.7\%) has not been fully investigated for calibration-systematic contamination. Fourth, the $\fnl$ multi-tracer forecast assumes a bias enhancement factor $\alpha = 0.15$ motivated by theoretical arguments but not empirically calibrated; the actual bias of anomaly-detected objects may be higher or lower. Empirical calibration via Landy-Szalay two-point correlation on the anomaly subsample---reusing the dipole infrastructure of the companion chirality catalog~\cite{Golden:2026chirality}---is the natural next step to replace this theoretical prior with a measured value. Fifth, the NANOGrav analysis uses derived free-spectrum values consistent with published results rather than raw timing residual data.
 
 
 \subsection{Comparison with Prior Work}\label{sec:comparison}
@@ -1026,6 +1026,29 @@ arXiv:1802.03426 (2018).
 L.\ McInnes, J.\ Healy, and S.\ Astels,
 ``hdbscan: Hierarchical density based clustering,''
 J.\ Open Source Softw.\ \textbf{2}, 205 (2017).
+
+\bibitem{Golden:2026framework}
+H.\ Golden,
+``Spin-Torsion Cosmology: A Framework for the Quasi-Matter Bounce,''
+companion paper (2026).
+Derives $\fnl = -35/8 = -4.375$ from the parameter-free quasi-matter bounce and
+enumerates the 14 structural barriers that close ECH-specific routes to dark energy.
+
+\bibitem{Golden:2026fnl}
+H.\ Golden,
+``SPHEREx / MegaMapper Multi-Tracer $\fnl$ Forecast with AI-Selected High-Bias Tracers,''
+companion paper (2026).
+Formal Fisher forecast ($\sigma(\fnl) = 11.71$ for five-tracer, anomaly-optimized
+configuration; Bayes factors 8--17 favoring bounce). Uses the anomaly catalog of
+the present work as one of its tracer populations.
+
+\bibitem{Golden:2026chirality}
+H.\ Golden,
+``A Galaxy Chirality Catalog of 8.47 Million Resolved Spirals with D4 Test-Time Equivariance,''
+companion paper (2026).
+Null dipole ($0.43\sigma$), Shamir claims refuted at $7\sigma$. Provides the
+Landy-Szalay dipole infrastructure reused here for limitation-G bias calibration
+of the anomaly subsample (see \S\ref{sec:limitations}).
 
 \end{thebibliography}
 
