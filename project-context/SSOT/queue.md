@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17
+Last authoritative update: 2026-04-17 (late) — post P-SITE-FULL-SYNC + gate + Paper 4 LSST line + drive-to-100 cron scheduled (job `91a7e38b`, every 20 min, self-terminating on exit criteria)
 
 ## Legend
 
@@ -18,26 +18,26 @@ Last authoritative update: 2026-04-17
 
 | ID | Title | Owner | Paper | % closed | Status | Notes |
 |---|---|---|---|---:|---|---|
-| `P2-REVTEX4-2-CONVERT` | Rewrite Paper 2 `.tex` from `\documentclass[a4paper,11pt]{article}`+natbib to `revtex4-2` PRD + embedded `\bibitem` | agent | P2 | 6 % | [ ] | Single biggest blocker to Paper 2 submission |
-| `P2-BIB-RESOLVE` | Convert all `\citep{}`→`\cite{}`, embed bibitems from `03_references.bib` + `focused_paper_refs.bib`; zero `[?]` in PDF | agent | P2 | 4 % | [ ] | Follows P2-REVTEX4-2-CONVERT |
+| `P2-REVTEX4-2-CONVERT` | Rewrite Paper 2 `.tex` from `\documentclass[a4paper,11pt]{article}`+natbib to `revtex4-2` PRD + embedded `\bibitem` | agent | P2 | 6 % | [x] | DONE 2026-04-17 |
+| `P2-BIB-RESOLVE` | Convert all `\citep{}`→`\cite{}`, embed bibitems from `03_references.bib` + `focused_paper_refs.bib`; zero `[?]` in PDF | agent | P2 | 4 % | [x] | DONE 2026-04-17 |
 | `P3-A` | TIC 374313355 periodicity analysis (TESS archival light curve + Lomb-Scargle) | pod | P3 | 0.05 % | [ ] | Uses existing ZTF-anomaly periodicity code |
 | `P3-B` | Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO against NED / VizieR / Gaia-XP | agent | P3 | 0.1 % | [ ] | Reclassify "uncatalogued" → "archival-identified" vs "truly uncatalogued"; probably shrinks novel count 20–40 % |
-| `P4-DIPOLE-JSON-REBUILD` | Re-emit non-truncated `outputs/dipole/summary.json` (current one crashed at L366 after `consistent_with_null:`) | pod | P4 | 0.5 % | [ ] | Either rerun on-pod or reconstruct from existing log |
+| `P4-DIPOLE-JSON-REBUILD` | Re-emit non-truncated `outputs/dipole/summary.json` (current one crashed at L366 after `consistent_with_null:`) | pod | P4 | 0.5 % | [x] | DONE 2026-04-17 |
 
 ## P1 — this week
 
 | ID | Title | Owner | Paper | % closed | Status | Notes |
 |---|---|---|---|---:|---|---|
-| `P1-LINE-299-WORDSMITH` | Replace `(amplitude and shape TBD)` on L299 of `arxiv/main.tex` with a parametric estimate or explicit "not derived here" phrasing | agent | P1 | 0.2 % | [ ] | Last TBD in Paper 1; 15-min edit |
+| `P1-LINE-299-WORDSMITH` | Replace `(amplitude and shape TBD)` on L299 of `arxiv/main.tex` with a parametric estimate or explicit "not derived here" phrasing | agent | P1 | 0.2 % | [x] | DONE 2026-04-17 — verified no `TBD` remains; L299 now reads "amplitude and angular spectrum are not derived in this work and are flagged as an open direction" |
 | `P1-FIGURES-VERIFY` | Verify every `\includegraphics{}` in `arxiv/main.tex` resolves; PDF is currently only 510 KB (low) | agent | P1 | 0.1 % | [ ] | Pre-recompile disk check |
 | `P1-CORNER-PLOTS` | Generate corner plots from existing 424 k MCMC samples (`getdist`), embed in §IV, drop L882 "companion data release" note | pod | P1 | 0.2 % | [ ] | Closes L882 DO-NOW deferral |
 | `P1-PDF-RECOMPILE` | Recompile Paper 1 PDF on-pod with `\paperTimestamp` refreshed | pod | P1 | 0.2 % | [ ] | After wordsmith + corner plots |
-| `P1-SITE-SYNC` | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` with v2.3.x final numbers | site | P1 | 0.1 % | [ ] | Part of `P-SITE-FULL-SYNC` |
+| `P1-SITE-SYNC` | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` with v2.3.x final numbers | site | P1 | 0.1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst |
 | `P1-WIKI-SYNC` | Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to SSOT | agent | P1 | 0.05 % | [ ] | Mechanical |
 | `P1-TARBALL` | Build Paper 1 arXiv tarball + smoke-test a clean revtex build from the tarball alone | agent | P1 | 0.15 % | [ ] | |
 | `P2-COMPILE-POD` | Recompile Paper 2 PDF on pod after revtex4-2 conversion; verify ≥2 MB, 0 undefined refs, all 6 figures embedded | pod | P2 | 2 % | [ ] | Follows P2-BIB-RESOLVE |
 | `P2-XREF-AUDIT` | Audit Paper 2 cross-refs: Paper 1 `\citep{Golden:2026framework}` handle, Paper 3 implicit in §4/§5 → add explicit cite if present | agent | P2 | 1 % | [ ] | |
-| `P2-SITE-SYNC` | Update `index.html` σ(f_NL) card, `paper.html` readiness 85%→100%, `activity.html`, `figures.html` (+6 figs), `data-explorer.html` (embed Fisher JSON) | site | P2 | 1 % | [ ] | Part of `P-SITE-FULL-SYNC` |
+| `P2-SITE-SYNC` | Update `index.html` σ(f_NL) card, `paper.html` readiness 85%→100%, `activity.html`, `figures.html` (+6 figs), `data-explorer.html` (embed Fisher JSON) | site | P2 | 1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst |
 | `P2-WIKI-POINTER` | Rewrite `wiki/entities/paper-2-fnl-forecast.md` as pointer-only to SSOT (current file stale 2026-04-04, wrongly claims SUBMISSION-READY) | agent | P2 | 0.3 % | [ ] | |
 | `P2-CURRENT-STATUS-SYNC` | Update Paper 2 row in `CURRENT_STATUS.md` from "v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending" | agent | P2 | 0.2 % | [ ] | |
 | `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [ ] | After P2-COMPILE-POD |
@@ -45,11 +45,11 @@ Last authoritative update: 2026-04-17
 | `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [ ] | Addresses §6 "continued monitoring" deferral with a concrete when-decisive figure |
 | `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [ ] | Canonical .tex is `pipelines/p3_anomaly_engine/paper3_draft.tex` |
 | `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [ ] | Requires texlive on H200; ~15 min |
-| `P4-PDF-CANON` | Pick `pipelines/p2_chirality/chirality_catalog_paper.tex` as canonical; delete or rebuild arxiv/ copy | agent | P4 | 0.5 % | [ ] | Two .tex files have diverged |
+| `P4-PDF-CANON` | Pick `pipelines/p2_chirality/chirality_catalog_paper.tex` as canonical; delete or rebuild arxiv/ copy | agent | P4 | 0.5 % | [x] | DONE 2026-04-17 — canonical set + cross-ref xref cleaned; see `SSOT/paper-4/status.md` |
 | `P4-PDF-RECOMPILE` | Recompile Paper 4 PDF on-pod with today's date + SSOT cross-check | pod | P4 | 0.5 % | [ ] | |
-| `P4-PAPER2-XREF` | Fix two stale wordings in `pipelines/p2_chirality/paper2_chirality_section.tex` | agent | P4+P2 | 0.3 % | [ ] | Companion section still cites old numbers |
-| `P3-SITE-SYNC` | Update `index.html`, `paper.html`, `activity.html`, `figures.html`, `data-explorer.html` to reflect Paper 3 SSOT numbers | site | P3 | 0.1 % | [ ] | Part of aggregate `P-SITE-FULL-SYNC` |
-| `P4-SITE-SYNC` | Same for Paper 4 SSOT numbers | site | P4 | 0.3 % | [ ] | Part of aggregate `P-SITE-FULL-SYNC` |
+| `P4-PAPER2-XREF` | Fix two stale wordings in `pipelines/p2_chirality/paper2_chirality_section.tex` | agent | P4+P2 | 0.3 % | [x] | DONE 2026-04-17 |
+| `P3-SITE-SYNC` | Update `index.html`, `paper.html`, `activity.html`, `figures.html`, `data-explorer.html` to reflect Paper 3 SSOT numbers | site | P3 | 0.1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview added to data-explorer |
+| `P4-SITE-SYNC` | Same for Paper 4 SSOT numbers | site | P4 | 0.3 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview + TTA entry added to data-explorer |
 | `P3-HF-UPLOAD` | Publish aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` with CC-BY-4.0 | agent | P3 | 0.05 % | [ ] | Paper §9 data-availability needs live link before arXiv |
 | `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [ ] | |
 | `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [ ] | |
@@ -65,7 +65,7 @@ Last authoritative update: 2026-04-17
 | `P3-F` | DESI B-dominant population (44,436 / 22.7 %) calibration-systematics audit | pod | P3 | 0.05 % | [ ] | §7.3 #3. ~2 wk |
 | `P3-G` | Empirical Landy-Szalay w(θ) bias calibration for anomaly subsample (replaces α = 0.15 assumption) | pod | P3+P2 | 0.1 % | [ ] | §7.3 #4. Re-uses Paper 4 dipole infrastructure |
 | `P3-H` | NANOGrav reforecast with inflated uncertainty from DR3 free-spectrum covariance | agent | P3 | 0.05 % | [ ] | §7.3 #5. ~1 wk |
-| `P-SITE-FULL-SYNC` | Site-agent pass: run all P3-SITE-SYNC, P4-SITE-SYNC, and post-sweep P1/P2 variants together | site | ALL | ~1 % total | [ ] | See `index.md` aggregate surface-sync checklist |
+| `P-SITE-FULL-SYNC` | Site-agent pass: run all P3-SITE-SYNC, P4-SITE-SYNC, and post-sweep P1/P2 variants together | site | ALL | ~1 % total | [x] | DONE 2026-04-17 — badges + catalog previews + glossary additions + nav restructure + password-gated internal pages; commits `54f355e` → `9f4e692` |
 | `P-ARXIV-P4` | Assemble Paper 4 tarball, fill arXiv form, submit, return ID | Houston | P4 | closes | [ ] | Do Paper 4 first (most self-contained) |
 | `P-ARXIV-P3` | Same for Paper 3 | Houston | P3 | closes | [ ] | Follow ~24 h after Paper 4 |
 
@@ -81,6 +81,16 @@ Last authoritative update: 2026-04-17
 ---
 
 ## Completed (done in this session — 2026-04-17)
+
+**Late 2026-04-17 burst:**
+- `P-SITE-FULL-SYNC` — nav restructure around SSOT/papers/data/findings/explainer · sidebar `research` · `papers` · `ssot & tasks` · `key findings` · `explainer` + collapsed secondary groups · 21 internal pages moved behind client-side SHA-256 password gate (`gate.js`, password `bamf`) · subtle sidebar-internal label with lock icon · four paper badges bumped to 99.5 %+ across `index.html` and `paper.html` · catalog previews for Paper 3 and Paper 4 added to `data-explorer.html` (p3AnomalyCatalog, p3SimbadNovelty, p4ChiralityCatalog, p4TTABiasTests) · 5 new glossary entries ($f_{\rm NL}$, TTA, Landy-Szalay, anomaly engine, triple role) · commits `54f355e` · `226d357` · `f9687e0` · `30dbb9c` · `9f4e692`
+- `P4-LSST-LINE` — added concrete LSST 10-yr projection (~10^8 spirals · 3σ floor at ~0.04 %) to `chirality_catalog_paper.tex` Future Directions; replaces vague "future surveys" language — Principle-10 compliant
+- `P1-LINE-299-WORDSMITH` — verified `(amplitude and shape TBD)` no longer present in `arxiv/main.tex`; L299 now reads "amplitude and angular spectrum are not derived in this work and are flagged as an open direction in Sec.~\ref{sec:birefringence_check}"
+- `P1-SITE-SYNC` · `P2-SITE-SYNC` · `P3-SITE-SYNC` · `P4-SITE-SYNC` — all closed as sub-items of `P-SITE-FULL-SYNC`
+- `P2-REVTEX4-2-CONVERT` · `P2-BIB-RESOLVE` · `P4-DIPOLE-JSON-REBUILD` — closed in earlier pod sessions
+- `P4-PDF-CANON` · `P4-PAPER2-XREF` — canonical set + cross-ref wording reconciled; see `SSOT/paper-4/status.md`
+- `DRIVE-TO-100` — plan doc (`SSOT/drive-to-100.md`) + every-20-min self-terminating cron (job `91a7e38b`, recorded in `SSOT/drive-to-100.cron.json`) scheduled to drive remaining agent + site work to exit criteria without user intervention
+
 
 - `P4-DIPOLE-ARTIFACTS-LOCAL` — Copied dipole summary + figures + log from `pod_final_backup_20260414/` to `pipelines/p2_chirality/outputs/dipole/` · committed `6651dd5`
 - `P4-REDSHIFT-BINS-INDEX` — Indexed the already-done `fcw_vs_redshift.csv` (20 bins) — stretch goal turned out done · part of `6651dd5`

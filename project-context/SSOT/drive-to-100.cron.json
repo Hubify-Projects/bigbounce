@@ -1,0 +1,7 @@
+{
+  "job_id": "91a7e38b",
+  "schedule": "*/20 * * * *",
+  "created": "2026-04-17",
+  "session_only": true,
+  "note": "Cron is session-only — dies when this Claude session exits. If you need it to survive a session restart, re-run CronCreate in the new session. Self-terminates via CronDelete(91a7e38b) when exit criteria in drive-to-100.md are all green."
+}
