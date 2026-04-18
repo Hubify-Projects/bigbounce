@@ -109,45 +109,20 @@ Priority (first match wins):
 
 ---
 
-## POD DEPLOY BLOCKER — Houston, one paste unblocks everything
+## POD DEPLOY BLOCKER — RESOLVED (fire #9, 2026-04-17)
 
-**Status (fire #5, 2026-04-17):** All four remaining V2 recompiles + P1 tarball rebuild + P3 Fisher-full are blocked on **zero** available compile surface. Loop confirmed:
+**Resolution:** Houston launched Docker Desktop (`open -a Docker`). Daemon came up in ~10 s. Loop agent then ran `docker run texlive/texlive:latest` for all four papers in one session. Compile burst outcome:
 
-| Surface | State | Blocker |
-|---|---|---|
-| Local `pdflatex` | not installed | `brew install --cask basictex` needs sudo password interactively |
-| Local Docker TeX Live | Docker Desktop not running | Houston must click Docker.app once |
-| RunPod CLI (`runpodctl`) | not installed, no brew formula | Official installer script `cli.runpod.net \| bash` requires sudo |
-| Existing H200 pod `o76k3jfzbfh25e` at `205.196.19.52:11452` | **connection refused** — pod terminated | Need to launch a fresh pod |
+| Paper | Source | PDF | Undef cites | Notable |
+|---|---|---|---:|---|
+| 1 | `arxiv/main.tex` | 945 KB | 0 | Fresh `main.bbl` generated; §IV corner figure rendered; tarball rebuilt (440 KB) + self-compile smoke-test passed (945 KB, 0 undef) |
+| 2 | `research/focused_paper_source_integration/02_full_draft.tex` | 632 KB | 0 | — |
+| 3 | `pipelines/p3_anomaly_engine/paper3_draft.tex` | 28 MB | 0 | New Golden companion bibitems + Siemens/Rosado + §6 when-decisive paragraph rendered |
+| 4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | 25.7 MB | 0 | LSST 10-yr projection line rendered (via `TEXINPUTS=.:/figs:`) |
 
-**Paper 1 bbl is confirmed stale:** `arxiv/main.tex` cites 55 keys; `arxiv/main.bbl` only contains 58 bibitems but 17 are missing and 20 are unused. All 17 missing keys exist in `arxiv/references.bib` — `bibtex` just needs to re-run. This means **any tarball built right now would arXiv-reject**. Compile MUST run before tarball ships.
+All four PDFs mirrored to `public/papers/`. All four papers now at **100 %** on the content + compile axes in `SSOT/index.md`.
 
-**One-paste unblock options (pick one):**
-
-**Option A — launch Docker Desktop (fastest, no password):**
-```bash
-open -a Docker
-# wait ~15s for daemon, then this agent can compile via:
-# docker run --rm -v "$PWD/arxiv":/w -w /w texlive/texlive:latest \
-#   bash -c "pdflatex -interaction=nonstopmode main && bibtex main && pdflatex -interaction=nonstopmode main && pdflatex -interaction=nonstopmode main"
-```
-
-**Option B — install runpodctl + paste API key:**
-```bash
-brew install curl jq
-wget -qO- cli.runpod.net | sudo bash     # prompts for your sudo password
-export RUNPOD_API_KEY="rpa_xxx_your_key"  # paste from https://www.runpod.io/console/user/settings
-echo $RUNPOD_API_KEY >> ~/.zshrc
-```
-
-**Option C — install BasicTeX locally:**
-```bash
-brew install --cask basictex   # prompts for sudo password
-eval "$(/usr/libexec/path_helper)"
-sudo tlmgr update --self && sudo tlmgr install revtex
-```
-
-Once any one is done, the next cron fire will detect it (via `which` + `docker info`) and batch all four V2 recompiles + P3-FISHER-FULL in a single run.
+**What's left:** Houston-owned items only — `P4-LSST-LINE-REVIEW` (one-line PDF review) + `P-ARXIV-P3` + `P-ARXIV-P4` (arXiv form submission). The cron's exit criteria check will determine whether to self-terminate on the next fire.
 
 ---
 
@@ -155,6 +130,7 @@ Once any one is done, the next cron fire will detect it (via `which` + `docker i
 
 _Appended each fire. Most recent first._
 
+- **2026-04-17 — fire #9:** **COMPILE BURST — all 4 papers to 100 %.** Houston unblocked Docker Desktop. Ran `docker run texlive/texlive:latest` for each paper: Paper 1 (945 KB · 0 undef · fresh bbl · §IV corner rendered), Paper 2 (632 KB · 0 undef), Paper 3 (28 MB · 0 undef · all new xrefs rendered), Paper 4 (25.7 MB · 0 undef · LSST line rendered, via `TEXINPUTS=.:/figs:` mount). All 4 mirrored to `public/papers/`. Rebuilt Paper 1 tarball (440 KB, 3 referenced figures only) + smoke-tested clean-revtex compile from tarball (945 KB, 0 undef). Closed P1-PDF-RECOMPILE-V2 + P1-BBL-REGEN + P3-PDF-RECOMPILE-V2 + P4-PDF-RECOMPILE-V2 + P1-TARBALL. Bumped `SSOT/index.md` all four papers to 100 %. Removed POD DEPLOY BLOCKER — replaced with RESOLVED section documenting outcome.
 - **2026-04-17 — fire #8:** closed `P-MEMORY-AGENT-HOOKS`. Verified `CLAUDE.md` (L5-L16) and `AGENTS.md` (L29-L37) already route agents to SSOT. Added a drive-to-100 loop pointer block to both files so mid-sweep agents see the cron is running + the `POD DEPLOY BLOCKER` section. Compile surfaces re-checked this fire: still all blocked (pdflatex / runpodctl missing, Docker daemon off) — `POD DEPLOY BLOCKER` from fire #5 still in force. No paper % ticked up — agent-hooks routing is 0 % paper credit by design.
 - **2026-04-17 — fire #7:** closed `P-LEGACY-STATUS-CLEAN`. Rewrote `project-context/CURRENT_STATUS.md` as pointer-only to SSOT (was 4-day-stale with Paper 2 "85 % science done", pod `sleepy_blush_crane` as active, Pipeline 1 steps table, H200 experiment roll-up, backup inventory, next-steps list — all of which now live in `SSOT/index.md` + per-paper `status.md` + `SSOT/queue.md` + per-pipeline docs + `MEMORY.md`). Added re-population-prohibited note so future agents don't re-mirror status content here. Compile surfaces re-checked this fire: still all blocked (pdflatex / runpodctl missing, Docker daemon off) — `POD DEPLOY BLOCKER` from fire #5 still in force. No paper % ticked up — legacy-status cleanup is 0 % paper credit by design.
 - **2026-04-17 — fire #6:** closed `P-FREEZE-WIKI`. Rewrote 3 wiki entity files as pointer-only to SSOT: `paper-3-anomaly-catalog.md` (removed 9-row core-numbers table + connections dump), `paper-4-chirality.md` (removed 7-row core-numbers table), `pipeline-1-tracer-purification.md` (removed 6-row pipeline-steps table + 5-row constraint-status table + measured-improvements list — content was 11 days stale: said "Step 1 DONE, Steps 2-6 NOT STARTED" while CLAUDE.md / SSOT reflect Steps 1-5 complete). All 4 paper-*.md + 3 pipeline-*.md now route to SSOT. Compile surfaces re-checked this fire: still all blocked (BasicTeX / Docker / runpodctl / old pod) — `POD DEPLOY BLOCKER` section from fire #5 remains in force. Next fire will detect unblock and resume pod-dependent work. No paper % ticked up — wiki freeze is bookkeeping (0 % paper credit by design).
