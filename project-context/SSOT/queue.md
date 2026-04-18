@@ -80,7 +80,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #5) — filed `POD DEPL
 |---|---|---|---|---:|---|---|
 | `P-MEMORY-AGENT-HOOKS` | Ensure `AGENTS.md` + `CLAUDE.md` routing tells every agent to check SSOT first on any paper-related prompt | agent | ALL | 0 % | [ ] | Partially done in this restructure commit; verify after 1 session cycle |
 | `P-LEGACY-STATUS-CLEAN` | Rewrite `CURRENT_STATUS.md` as a mirror of `index.md` (single source of derived status) | agent | ALL | 0 % | [ ] | |
-| `P-FREEZE-WIKI` | Confirm all `wiki/entities/paper-*.md` and `wiki/entities/pipeline-*.md` are pointer-only, no status content | agent | ALL | 0 % | [ ] | |
+| `P-FREEZE-WIKI` | Confirm all `wiki/entities/paper-*.md` and `wiki/entities/pipeline-*.md` are pointer-only, no status content | agent | ALL | 0 % | [x] | DONE 2026-04-17 drive-to-100 fire #6 — rewrote `paper-3-anomaly-catalog.md` + `paper-4-chirality.md` + `pipeline-1-tracer-purification.md` as pointer-only to SSOT (removed 42 lines of stale status content: 8 core-number tables, 6 pipeline steps, 5 measured-improvement entries). `paper-1`, `paper-2`, `pipeline-2-chirality`, `pipeline-b-desi-anomaly` were already pointer-only |
 | `P-SSOT-CRON` | Add a weekly cron/agent check: "any SSOT file > 7 days stale → flag" | agent | ALL | 0 % | [ ] | Prevents drift |
 
 ---
