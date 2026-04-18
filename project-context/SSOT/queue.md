@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (drive-to-100 fire #9) — **Docker TeX Live compile burst unblocked**: all 4 papers recompiled cleanly (0 undef cites, PDFs mirrored to `public/papers/`), Paper 1 tarball rebuilt clean + smoke-tested, `P1-BBL-REGEN` + `P1-PDF-RECOMPILE-V2` + `P3-PDF-RECOMPILE-V2` + `P4-PDF-RECOMPILE-V2` + `P1-TARBALL` all closed. All 4 papers at 100 % on compile + content axes. Only Houston-owned items remain (P4-LSST-LINE-REVIEW + `P-ARXIV-P3/P4` form submission).
+Last authoritative update: 2026-04-18 (drive-to-100 fire #10) — `P3-B` moved to `[~]` partial after NED-only pass on 80 SIMBAD-novel exemplars (5 NED-matched · 6 still-uncatalogued · 69 rate-limit errors). 45 % NED archival-ID rate on the usable 11-object sub-sample suggests Paper 3's SIMBAD-only novel fraction over-estimates true novelty; not yet reflected in paper numbers (needs clean retry). Filed follow-ups `P3-B-NED-RETRY`, `P3-B-VIZIER`, `P3-B-GAIA-XP`.
 
 ## Legend
 
@@ -21,7 +21,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #9) — **Docker TeX Li
 | `P2-REVTEX4-2-CONVERT` | Rewrite Paper 2 `.tex` from `\documentclass[a4paper,11pt]{article}`+natbib to `revtex4-2` PRD + embedded `\bibitem` | agent | P2 | 6 % | [x] | DONE 2026-04-17 |
 | `P2-BIB-RESOLVE` | Convert all `\citep{}`→`\cite{}`, embed bibitems from `03_references.bib` + `focused_paper_refs.bib`; zero `[?]` in PDF | agent | P2 | 4 % | [x] | DONE 2026-04-17 |
 | `P3-A` | TIC 374313355 periodicity analysis (TESS archival light curve + Lomb-Scargle) | pod | P3 | 0.05 % | [ ] | Uses existing ZTF-anomaly periodicity code |
-| `P3-B` | Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO against NED / VizieR / Gaia-XP | agent | P3 | 0.1 % | [ ] | Reclassify "uncatalogued" → "archival-identified" vs "truly uncatalogued"; probably shrinks novel count 20–40 % |
+| `P3-B` | Deep cross-match of top-100 DESI + 203 eROSITA + BAL-QSO against NED / VizieR / Gaia-XP | agent | P3 | 0.1 % | [~] | PARTIAL 2026-04-18 drive-to-100 fire #10 — NED-only pass on 80 SIMBAD-novel exemplars (4 surveys × 20). Usable sub-sample (top-11 SDSS): 45 % NED archival-identification rate (5 / 11). 69 / 80 returned rate-limit errors; filed `P3-B-NED-RETRY` + `P3-B-VIZIER` (P2) + `P3-B-GAIA-XP` (P3). Findings note: `projects/cross_survey/results/P3-B_findings.md`. Classification JSON: `projects/cross_survey/results/ned_crossmatch_summary.json`. Paper 3 §7 gets honesty footnote, not a headline-number rewrite |
 | `P4-DIPOLE-JSON-REBUILD` | Re-emit non-truncated `outputs/dipole/summary.json` (current one crashed at L366 after `consistent_with_null:`) | pod | P4 | 0.5 % | [x] | DONE 2026-04-17 |
 
 ## P1 — this week
@@ -70,6 +70,8 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #9) — **Docker TeX Li
 | `P3-F` | DESI B-dominant population (44,436 / 22.7 %) calibration-systematics audit | pod | P3 | 0.05 % | [ ] | §7.3 #3. ~2 wk |
 | `P3-G` | Empirical Landy-Szalay w(θ) bias calibration for anomaly subsample (replaces α = 0.15 assumption) | pod | P3+P2 | 0.1 % | [ ] | §7.3 #4. Re-uses Paper 4 dipole infrastructure |
 | `P3-H` | NANOGrav reforecast with inflated uncertainty from DR3 free-spectrum covariance | agent | P3 | 0.05 % | [ ] | §7.3 #5. ~1 wk |
+| `P3-B-NED-RETRY` | Retry 80-sample NED cross-match with ≥5 s inter-query delay + 3-retry on HTTP 429 | agent | P3 | 0.05 % | [ ] | 69/80 objects rate-limit-errored on first pass; rerun needed to finalize archival-ID fraction |
+| `P3-B-VIZIER` | VizieR all-catalogs cone search on residual NED-novel objects | agent | P3 | 0.05 % | [ ] | Initial attempt hung the VizieR TAP; needs timeout-aware retry budget 20-30 min |
 | `P-SITE-FULL-SYNC` | Site-agent pass: run all P3-SITE-SYNC, P4-SITE-SYNC, and post-sweep P1/P2 variants together | site | ALL | ~1 % total | [x] | DONE 2026-04-17 — badges + catalog previews + glossary additions + nav restructure + password-gated internal pages; commits `54f355e` → `9f4e692` |
 | `P-ARXIV-P4` | Assemble Paper 4 tarball, fill arXiv form, submit, return ID | Houston | P4 | closes | [ ] | Do Paper 4 first (most self-contained) |
 | `P-ARXIV-P3` | Same for Paper 3 | Houston | P3 | closes | [ ] | Follow ~24 h after Paper 4 |
@@ -82,6 +84,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #9) — **Docker TeX Li
 | `P-LEGACY-STATUS-CLEAN` | Rewrite `CURRENT_STATUS.md` as a mirror of `index.md` (single source of derived status) | agent | ALL | 0 % | [x] | DONE 2026-04-17 drive-to-100 fire #7 — rewrote `project-context/CURRENT_STATUS.md` as pointer-only to SSOT. Removed 4-day-stale status mirror (Paper 2 "85 % science done", pod `sleepy_blush_crane`, H200 roll-up table, Pipeline 1 steps table, backup inventory, next-steps list). File now points at SSOT/index.md + per-paper status files + SSOT/queue.md. Noted re-population-prohibited note at bottom |
 | `P-FREEZE-WIKI` | Confirm all `wiki/entities/paper-*.md` and `wiki/entities/pipeline-*.md` are pointer-only, no status content | agent | ALL | 0 % | [x] | DONE 2026-04-17 drive-to-100 fire #6 — rewrote `paper-3-anomaly-catalog.md` + `paper-4-chirality.md` + `pipeline-1-tracer-purification.md` as pointer-only to SSOT (removed 42 lines of stale status content: 8 core-number tables, 6 pipeline steps, 5 measured-improvement entries). `paper-1`, `paper-2`, `pipeline-2-chirality`, `pipeline-b-desi-anomaly` were already pointer-only |
 | `P-SSOT-CRON` | Add a weekly cron/agent check: "any SSOT file > 7 days stale → flag" | agent | ALL | 0 % | [ ] | Prevents drift |
+| `P3-B-GAIA-XP` | Gaia-XP spectral cross-match on optically bright residual-novel objects (SDSS + Gaia_DR3 only) | agent | P3 | 0.05 % | [ ] | Catches spectroscopic IDs SIMBAD/NED would miss |
 
 ---
 
