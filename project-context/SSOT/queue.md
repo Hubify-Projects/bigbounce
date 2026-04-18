@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (drive-to-100 fire #2) — P3-PDF-CANON + P3-XREF closed; Paper 3 .tex gains 3 Golden companion bibitems + 4 new `\cite{}` calls; P3-PDF-RECOMPILE-V2 filed.
+Last authoritative update: 2026-04-17 (drive-to-100 fire #3) — P3-C closed; Paper 3 §6 "continued monitoring" language replaced with concrete when-decisive paragraph (σ(γ) scaling for NG20yr/EPTA DR3/SKA-P1). Siemens2013 + Rosado2015 bibitems added. Forecast note filed. P3-FISHER-FULL queued for pod.
 
 ## Legend
 
@@ -42,7 +42,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #2) — P3-PDF-CANON + 
 | `P2-CURRENT-STATUS-SYNC` | Update Paper 2 row in `CURRENT_STATUS.md` from "v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending" | agent | P2 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [x] | DONE 2026-04-17 — file committed |
 | `P2-TARBALL` | Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test a clean revtex build | agent | P2 | 0.2 % | [x] | DONE 2026-04-17 |
-| `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [ ] | Addresses §6 "continued monitoring" deferral with a concrete when-decisive figure |
+| `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [x] | DONE 2026-04-17 — scaling-only forecast note at `pipelines/p3_anomaly_engine/fisher_forecast_gamma_future_ptas.md` (σ(γ)≈0.22 NG20yr · 0.16 EPTA DR3 · 0.15 SKA-P1; 3σ discrimination threshold σ(γ)≤0.44 already at NG15 edge). Paper 3 §6 "continued monitoring" language replaced with concrete paragraph + Siemens2013 + Rosado2015 bibitems. Filed companion `P3-FISHER-FULL` (pod) for full free-spectrum Fisher. Triggers `P3-PDF-RECOMPILE-V2`. |
 | `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [x] | DONE 2026-04-17 — verified `arxiv/paper3_anomaly_catalog.tex` is a 40-line pointer stub; stale `.pdf` already removed; 27 MB canonical PDF mirrored at `public/papers/paper3_anomaly_catalog.pdf` |
 | `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [x] | DONE 2026-04-17 — 27 MB, 27 pp, 21 figs embedded, 0 undef |
 | `P4-PDF-CANON` | Pick `pipelines/p2_chirality/chirality_catalog_paper.tex` as canonical; delete or rebuild arxiv/ copy | agent | P4 | 0.5 % | [x] | DONE 2026-04-17 — canonical set + cross-ref xref cleaned; see `SSOT/paper-4/status.md` |
@@ -57,7 +57,8 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #2) — P3-PDF-CANON + 
 | `P-MEMORY-SYNC` | Add MEMORY.md entry for SSOT directory + update existing entries that reference old paper-N-status.md paths | agent | ALL | 0 % | [ ] | One-time housekeeping after restructure lands |
 | `P1-PDF-RECOMPILE-V2` | Recompile `arxiv/main.pdf` to render the §IV corner figure inserted at L882 | pod | P1 | 0.1 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P4-PDF-RECOMPILE-V2` | Recompile `public/papers/chirality_catalog_paper.pdf` to render the new LSST 10-yr projection line in Future Directions | pod | P4 | 0.3 % | [ ] | Existing PDF is pre-insert; tex ready |
-| `P3-PDF-RECOMPILE-V2` | Recompile `pipelines/p3_anomaly_engine/paper3_draft.pdf` + mirror to `public/papers/paper3_anomaly_catalog.pdf` to render the 3 new Golden companion-paper bibitems + 4 new `\cite{}` calls added 2026-04-17 fire #2 | pod | P3 | 0.05 % | [ ] | Existing PDF is pre-xref; tex ready |
+| `P3-PDF-RECOMPILE-V2` | Recompile `pipelines/p3_anomaly_engine/paper3_draft.pdf` + mirror to `public/papers/paper3_anomaly_catalog.pdf` to render (a) 3 new Golden companion-paper bibitems + 4 new `\cite{}` calls (fire #2) AND (b) Siemens2013 + Rosado2015 bibitems + §6 "when-decisive" paragraph (fire #3) | pod | P3 | 0.1 % | [ ] | Existing PDF is pre-xref; tex ready |
+| `P3-FISHER-FULL` | Full Fisher-matrix calculation over the NANOGrav free-spectrum covariance to replace the scaling-only forecast with a properly marginalized σ(γ) projection | pod | P3 | 0.05 % | [ ] | Companion deliverable to the scaling note at `fisher_forecast_gamma_future_ptas.md` |
 
 ## P2 — before submission
 
