@@ -1,0 +1,4685 @@
+{
+  "meta": {
+    "description": "P3-B v2 \u2014 NED retry + VizieR + Gaia-XP cross-match sweep. Builds on fire #10's ned_crossmatch_summary.json.",
+    "v1_input": "projects/cross_survey/results/ned_crossmatch_summary.json",
+    "ned_radius_arcsec": 5.0,
+    "vizier_radius_arcsec": 10.0,
+    "gaia_match_radius_arcsec": 2.0,
+    "ned_delay_sec": 8.0,
+    "ned_retries": 3,
+    "ned_timeout_sec": 15.0,
+    "vizier_total_budget_sec": 1500,
+    "g_mag_max_gaia": 19.0,
+    "n_objects_total": 80,
+    "stage1_ned_ok": 0,
+    "stage1_ned_fail": 3,
+    "stage2_vizier_ok": 70,
+    "stage2_vizier_fail": 0,
+    "stage3_gaia_ok": 0,
+    "stage3_gaia_fail": 0,
+    "stage3_xp_available": 0,
+    "service_status": {
+      "NED": "degraded",
+      "VizieR": "ok",
+      "Gaia": "skipped"
+    },
+    "elapsed_sec": 1721.0586400032043,
+    "status": "complete"
+  },
+  "global_counts": {
+    "ned_matched": 5,
+    "vizier_matched": 70,
+    "residual_novel": 0,
+    "ned_error_unresolved": 0,
+    "vizier_error_unresolved": 0,
+    "vizier_skipped_budget": 5
+  },
+  "per_survey": {
+    "SDSS_DR18": {
+      "ned_matched": 5,
+      "vizier_matched": 15,
+      "residual_novel": 0,
+      "ned_error_unresolved": 0,
+      "vizier_error_unresolved": 0,
+      "vizier_skipped_budget": 0
+    },
+    "eROSITA": {
+      "ned_matched": 0,
+      "vizier_matched": 20,
+      "residual_novel": 0,
+      "ned_error_unresolved": 0,
+      "vizier_error_unresolved": 0,
+      "vizier_skipped_budget": 0
+    },
+    "NEOWISE": {
+      "ned_matched": 0,
+      "vizier_matched": 20,
+      "residual_novel": 0,
+      "ned_error_unresolved": 0,
+      "vizier_error_unresolved": 0,
+      "vizier_skipped_budget": 0
+    },
+    "Gaia_DR3": {
+      "ned_matched": 0,
+      "vizier_matched": 15,
+      "residual_novel": 0,
+      "ned_error_unresolved": 0,
+      "vizier_error_unresolved": 0,
+      "vizier_skipped_budget": 5
+    }
+  },
+  "objects": [
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-341/51690/285",
+      "ra": 199.38212,
+      "dec": -3.1620115,
+      "anomaly_score": 194532737024.0,
+      "v1_classification": "ned_matched",
+      "v1_ned": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J131731.70-030942.8",
+          "type": "*",
+          "z": "0.000188"
+        }
+      },
+      "ned_v2": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J131731.70-030942.8",
+          "type": "*",
+          "z": "0.000188"
+        },
+        "source": "v1"
+      },
+      "ned_v2_cls": "ned_matched",
+      "final_cls": "ned_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1391/52817/372",
+      "ra": 238.89964,
+      "dec": 28.918757,
+      "anomaly_score": 52905955328.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 5,
+        "catalogs": [
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "VII/292/south",
+            "n_rows": 3
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2934/54625/258",
+      "ra": 221.27547,
+      "dec": -0.95752818,
+      "anomaly_score": 8330577408.0,
+      "v1_classification": "ned_matched",
+      "v1_ned": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J144505.88-005726.9",
+          "type": "IrS",
+          "z": "--"
+        }
+      },
+      "ned_v2": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J144505.88-005726.9",
+          "type": "IrS",
+          "z": "--"
+        },
+        "source": "v1"
+      },
+      "ned_v2_cls": "ned_matched",
+      "final_cls": "ned_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2145/54210/417",
+      "ra": 223.8155,
+      "dec": 27.388249,
+      "anomaly_score": 5966980096.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 5,
+        "catalogs": [
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 1
+          },
+          {
+            "catalog": "VII/292/south",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/AJ/141/189/table4",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2639/54454/583",
+      "ra": 56.373952,
+      "dec": 0.60000521,
+      "anomaly_score": 2667632896.0,
+      "v1_classification": "ned_matched",
+      "v1_ned": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J034529.74+003600.2",
+          "type": "G",
+          "z": "0.668077"
+        }
+      },
+      "ned_v2": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J034529.74+003600.2",
+          "type": "G",
+          "z": "0.668077"
+        },
+        "source": "v1"
+      },
+      "ned_v2_cls": "ned_matched",
+      "final_cls": "ned_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-287/52023/584",
+      "ra": 184.22823,
+      "dec": 0.11929438,
+      "anomaly_score": 1293585792.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 21,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_tm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/382/viking4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/383/kids_dr5",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/384/kids_shear",
+            "n_rows": 3
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2068/53381/491",
+      "ra": 47.009357,
+      "dec": 0.30744581,
+      "anomaly_score": 1075601408.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 6,
+        "catalogs": [
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "V/154/sdss16",
+            "n_rows": 5
+          },
+          {
+            "catalog": "VII/292/south",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/A+A/659/A95/sos",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/MNRAS/456/1359/catalog",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2150/54508/367",
+      "ra": 224.98854,
+      "dec": 22.890159,
+      "anomaly_score": 901522880.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 1,
+        "catalogs": [
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2333/53676/64",
+      "ra": 298.62816,
+      "dec": 18.778869,
+      "anomaly_score": 413987840.0,
+      "v1_classification": "ned_matched",
+      "v1_ned": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J195430.75+184643.8",
+          "type": "*",
+          "z": "-0.000102"
+        }
+      },
+      "ned_v2": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J195430.75+184643.8",
+          "type": "*",
+          "z": "-0.000102"
+        },
+        "source": "v1"
+      },
+      "ned_v2_cls": "ned_matched",
+      "final_cls": "ned_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1130/52647/624",
+      "ra": 13.803408,
+      "dec": 0.90063703,
+      "anomaly_score": 402178496.0,
+      "v1_classification": "ned_matched",
+      "v1_ned": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J005512.74+005400.0",
+          "type": "IrS",
+          "z": "--"
+        }
+      },
+      "ned_v2": {
+        "matched": true,
+        "n_matches": 1,
+        "top_match": {
+          "name": "WISEA J005512.74+005400.0",
+          "type": "IrS",
+          "z": "--"
+        },
+        "source": "v1"
+      },
+      "ned_v2_cls": "ned_matched",
+      "final_cls": "ned_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1402/52872/63",
+      "ra": 236.14808,
+      "dec": 34.573559,
+      "anomaly_score": 248054752.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=15.0)",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 2,
+        "catalogs": [
+          {
+            "catalog": "VII/292/north",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1472/52903/78",
+      "ra": 18.629789,
+      "dec": 46.255645,
+      "anomaly_score": 190073680.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=15.0)",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 3,
+        "catalogs": [
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "VI/137/gum_mw",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2116/53853/272",
+      "ra": 207.59446,
+      "dec": 29.621748,
+      "anomaly_score": 175053680.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=15.0)",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 3,
+        "catalogs": [
+          {
+            "catalog": "I/327/cmc15",
+            "n_rows": 1
+          },
+          {
+            "catalog": "VII/292/south",
+            "n_rows": 3
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1638/52999/232",
+      "ra": 64.549,
+      "dec": 27.6542,
+      "anomaly_score": 165117088.0,
+      "v1_classification": "still_uncatalogued",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "top_match": null,
+        "source": "v1"
+      },
+      "ned_v2_cls": "still_uncatalogued",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 3,
+        "catalogs": [
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-498/51973/333",
+      "ra": 209.66753,
+      "dec": 65.889317,
+      "anomaly_score": 141777456.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 3,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/389/ps1_dr2",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2333/53676/234",
+      "ra": 298.35671,
+      "dec": 18.678758,
+      "anomaly_score": 115300352.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 70,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/306A/stars",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 3
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1154/53083/487",
+      "ra": 126.33308,
+      "dec": 0.127954,
+      "anomaly_score": 89279264.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 5,
+        "catalogs": [
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "VI/137/gum_mw",
+            "n_rows": 3
+          },
+          {
+            "catalog": "VII/292/south",
+            "n_rows": 2
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-2586/54167/486",
+      "ra": 151.78752,
+      "dec": 14.965037,
+      "anomaly_score": 80125904.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 2,
+        "catalogs": [
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/AJ/141/189/table4",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-1164/52673/149",
+      "ra": 225.32185,
+      "dec": 52.7889,
+      "anomaly_score": 77749168.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 1,
+        "catalogs": [
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "SDSS_DR18",
+      "obj_id": "SDSS-731/52460/205",
+      "ra": 323.33497,
+      "dec": 10.372361,
+      "anomaly_score": 59550588.0,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 4,
+        "catalogs": [
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "V/154/sdss16",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/ApJS/223/20/spec",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J053856.1-640457",
+      "ra": 84.73381920100519,
+      "dec": -64.08267319770148,
+      "anomaly_score": 34181.74609375,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 154,
+        "catalogs": [
+          {
+            "catalog": "METAobj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "ReadMeObj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/221/lmc",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J062619.8-694546",
+      "ra": 96.5826459734513,
+      "dec": -69.76302399292453,
+      "anomaly_score": 5955.41162109375,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 37,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/281/2mass6x",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/335/galex_ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/367/vhs_dr5",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/378/xmmom6s",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/379/smssdr4",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J152039.9-570955",
+      "ra": 230.1666361259802,
+      "dec": -57.16552127427768,
+      "anomaly_score": 4424.3623046875,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 181,
+        "catalogs": [
+          {
+            "catalog": "METAobj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "ReadMeObj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J112114.4-603720",
+      "ra": 170.31032669120899,
+      "dec": -60.622408734223214,
+      "anomaly_score": 4354.83056640625,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 176,
+        "catalogs": [
+          {
+            "catalog": "METAobj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "ReadMeObj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J053428.3+220143",
+      "ra": 83.6180275262072,
+      "dec": 22.028721702771495,
+      "anomaly_score": 4297.35498046875,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 50,
+        "catalogs": [
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/327/cmc15",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/329/urat1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/340/ucac5",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/349/starhorse",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J053937.9-694431",
+      "ra": 84.90809400677617,
+      "dec": -69.74215060435408,
+      "anomaly_score": 3043.453369140625,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 200,
+        "catalogs": [
+          {
+            "catalog": "I/108/cpd",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/340/ucac5",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/345/rrlyrae",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/345/varres",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J052521.9-655907",
+      "ra": 81.34155986971103,
+      "dec": -65.98533725576439,
+      "anomaly_score": 1759.6937255859375,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 76,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 4
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J052501.3-693832",
+      "ra": 81.25544534988454,
+      "dec": -69.64226223720756,
+      "anomaly_score": 1427.08984375,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 148,
+        "catalogs": [
+          {
+            "catalog": "METAobj",
+            "n_rows": 2
+          },
+          {
+            "catalog": "ReadMeObj",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 2
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J122637.8-624611",
+      "ra": 186.65789217960253,
+      "dec": -62.76974932343615,
+      "anomaly_score": 1416.0621337890625,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 181,
+        "catalogs": [
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/tyc_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/246/act",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/259/tyc2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/275/ac2002",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/280B/ascc",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J112428.9-591544",
+      "ra": 171.1207002726206,
+      "dec": -59.26232682945725,
+      "anomaly_score": 496.1199035644531,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 74,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J052026.4-715725",
+      "ra": 80.1100603699733,
+      "dec": -71.95709817900475,
+      "anomaly_score": 479.6080322265625,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 51,
+        "catalogs": [
+          {
+            "catalog": "I/284/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/350/gaiaedr3",
+            "n_rows": 2
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J052600.3-660455",
+      "ra": 81.50166242237992,
+      "dec": -66.08205504829682,
+      "anomaly_score": 446.9156799316406,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 125,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 4
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J164547.6-453640",
+      "ra": 251.4485112622076,
+      "dec": -45.61134640005411,
+      "anomaly_score": 399.2633972167969,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 97,
+        "catalogs": [
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/361/ssoobs",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/225/catalog",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/225/names",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/246/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/293/glimpse",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/337/vvv1",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/341/vphasp",
+            "n_rows": 4
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J050542.2-675239",
+      "ra": 76.42613144453557,
+      "dec": -67.87766942906279,
+      "anomaly_score": 276.604248046875,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 97,
+        "catalogs": [
+          {
+            "catalog": "I/284/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/350/gaiaedr3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/352/gedr3dis",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J053435.2+220121",
+      "ra": 83.646708421702,
+      "dec": 22.022628166918494,
+      "anomaly_score": 265.9932861328125,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 14,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/319/gcs9",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/342/hsc1",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/342/hsc2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/378/xmmom6s",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_mh",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_tm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/389/ps1_dr2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "VI/90/maindata",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J162010.7-153735",
+      "ra": 245.04496974464826,
+      "dec": -15.626414957331614,
+      "anomaly_score": 239.26414489746094,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 11,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/359/vhs_dr4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/367/vhs_dr5",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/A+A/665/A78/bkgev",
+            "n_rows": 2
+          },
+          {
+            "catalog": "J/A+A/682/A34/erass1-m",
+            "n_rows": 1
+          },
+          {
+            "catalog": "J/A+A/700/A61/varcat",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J053432.8+220006",
+      "ra": 83.6370364132895,
+      "dec": 22.00190371917617,
+      "anomaly_score": 206.5837860107422,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 32,
+        "catalogs": [
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/246/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/319/gcs9",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/339/uvotssc1",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/339/summary",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/340/xmmom2_1",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/342/hsc1",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J164550.3-453645",
+      "ra": 251.4598584638393,
+      "dec": -45.612636231798035,
+      "anomaly_score": 139.2379913330078,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 48,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J173157.7-334909",
+      "ra": 262.9908245617736,
+      "dec": -33.81940864901516,
+      "anomaly_score": 108.68731689453125,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 30,
+        "catalogs": [
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/350/gaiaedr3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/355/gaiadr3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/355/paramp",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/246/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/293/glimpse",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "eROSITA",
+      "obj_id": "1eRASS J164055.0-534500",
+      "ra": 250.22946495425543,
+      "dec": -53.75005156438116,
+      "anomaly_score": 88.45879364013672,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 131,
+        "catalogs": [
+          {
+            "catalog": "METAobj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "ReadMeObj",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/320/spm4",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.1246_0.9253",
+      "ra": 180.124626,
+      "dec": 0.925256,
+      "anomaly_score": 9.460638999938965,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 77,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.2_0.2054",
+      "ra": 180.2000221,
+      "dec": 0.2053924,
+      "anomaly_score": 8.06345272064209,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 33,
+        "catalogs": [
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/312/ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/335/galex_ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.3186_0.7295",
+      "ra": 180.3185586,
+      "dec": 0.7295365,
+      "anomaly_score": 3.9996774196624756,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 34,
+        "catalogs": [
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/351/gps1_p",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.5602_0.7906",
+      "ra": 180.5601622,
+      "dec": 0.7905552,
+      "anomaly_score": 2.684309482574463,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 37,
+        "catalogs": [
+          {
+            "catalog": "I/267/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.764_0.5258",
+      "ra": 180.7639873,
+      "dec": 0.5257960999999999,
+      "anomaly_score": 2.560474395751953,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 38,
+        "catalogs": [
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 4
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.5821_0.5831",
+      "ra": 180.582088,
+      "dec": 0.5831239,
+      "anomaly_score": 2.303239345550537,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 62,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.6371_0.5469",
+      "ra": 180.6371228,
+      "dec": 0.5468511,
+      "anomaly_score": 2.1636650562286377,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 29,
+        "catalogs": [
+          {
+            "catalog": "I/351/gps1_p",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 3
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.3869_0.5795",
+      "ra": 180.3868698,
+      "dec": 0.5794555,
+      "anomaly_score": 2.0262579917907715,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 82,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.417_0.7636",
+      "ra": 180.417039,
+      "dec": 0.7636066999999999,
+      "anomaly_score": 1.9713191986083984,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 27,
+        "catalogs": [
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_tm",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.9439_0.9156",
+      "ra": 180.9439132,
+      "dec": 0.9155538,
+      "anomaly_score": 1.9121414422988892,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 27,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_tm",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.4848_0.1276",
+      "ra": 180.4847858,
+      "dec": 0.1275745,
+      "anomaly_score": 1.811366319656372,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 89,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.7674_0.7821",
+      "ra": 180.7673711,
+      "dec": 0.7821451999999999,
+      "anomaly_score": 1.6120235919952393,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 37,
+        "catalogs": [
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/312/ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/335/galex_ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 2
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.497_0.0363",
+      "ra": 180.4970156,
+      "dec": 0.036282,
+      "anomaly_score": 1.4111324548721313,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 24,
+        "catalogs": [
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 3
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/381/hlsp_ps1_tm",
+            "n_rows": 4
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.1675_0.2573",
+      "ra": 180.1674527,
+      "dec": 0.2572864,
+      "anomaly_score": 1.389630913734436,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 63,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/329/urat1",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.3359_0.37",
+      "ra": 180.335865,
+      "dec": 0.3699570999999999,
+      "anomaly_score": 1.3420507907867432,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 38,
+        "catalogs": [
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/312/ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/335/galex_ais",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "II/349/ps1",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.6779_0.3926",
+      "ra": 180.6778846,
+      "dec": 0.3925711,
+      "anomaly_score": 1.237396240234375,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 102,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.5819_0.5824",
+      "ra": 180.58193,
+      "dec": 0.5824399999999998,
+      "anomaly_score": 1.129708170890808,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 60,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.2797_0.9753",
+      "ra": 180.2797153,
+      "dec": 0.9753038,
+      "anomaly_score": 1.1286484003067017,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 42,
+        "catalogs": [
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/350/gaiaedr3",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/351/gps1_p",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/352/gedr3dis",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 3
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.6614_0.2333",
+      "ra": 180.661366,
+      "dec": 0.233331,
+      "anomaly_score": 1.119916558265686,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 28,
+        "catalogs": [
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/353/gsc242",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/311/wise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/319/las9",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/328/allwise",
+            "n_rows": 1
+          },
+          {
+            "catalog": "II/344/kids_dr2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/347/kids_dr3",
+            "n_rows": 5
+          },
+          {
+            "catalog": "II/363/unwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/365/catwise",
+            "n_rows": 2
+          },
+          {
+            "catalog": "II/368/sstsl2",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "NEOWISE",
+      "obj_id": "NEOWISE-180.5618_0.6066",
+      "ra": 180.5617972,
+      "dec": 0.6066274,
+      "anomaly_score": 1.0378050804138184,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 78,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5038817840251308288",
+      "ra": 23.317199266738957,
+      "dec": -24.178664853360644,
+      "anomaly_score": 1.3102656602859497,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 260,
+        "catalogs": [
+          {
+            "catalog": "I/130/main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/193/ppm2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/195/catalog",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/196/main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/196/annex1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/hip_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/tyc_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/246/act",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-4446551024188835584",
+      "ra": 247.8136851964393,
+      "dec": 9.585593830254536,
+      "anomaly_score": 0.8821053504943848,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 110,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-6883925963727177984",
+      "ra": 318.5274105817421,
+      "dec": -15.833945898120437,
+      "anomaly_score": 0.8194354772567749,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 84,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5870010663423841280",
+      "ra": 203.12214554531,
+      "dec": -59.16853568119216,
+      "anomaly_score": 0.8059825301170349,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 71,
+        "catalogs": [
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/275/ac2002",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-2257809542383041024",
+      "ra": 270.36028980788456,
+      "dec": 66.58757148963699,
+      "anomaly_score": 0.7186120748519897,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 104,
+        "catalogs": [
+          {
+            "catalog": "I/87B/catalog",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/279/catalog",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/298/lspm_n",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/306A/stars",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/329/urat1",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-1474856658091409792",
+      "ra": 200.00403164726245,
+      "dec": 38.15891684404306,
+      "anomaly_score": 0.6898823976516724,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 163,
+        "catalogs": [
+          {
+            "catalog": "I/146/ppm1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/196/main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/246/act",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/259/tyc2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/261/fonac",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/294A/ucac2bss",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-4466944284819435776",
+      "ra": 245.77463456159464,
+      "dec": 17.470139813404693,
+      "anomaly_score": 0.5324734449386597,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 182,
+        "catalogs": [
+          {
+            "catalog": "I/146/ppm1",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/196/main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/hip_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/tyc_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/246/act",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/259/tyc2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/261/fonac",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5063464836499515648",
+      "ra": 37.51938288301753,
+      "dec": -33.174926301437885,
+      "anomaly_score": 0.5314922332763672,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 90,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/275/ac2002",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 2
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-6433604174665561344",
+      "ra": 285.52889903344067,
+      "dec": -68.18834826331717,
+      "anomaly_score": 0.5277528166770935,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 79,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5422157621475981440",
+      "ra": 150.8359243697251,
+      "dec": -36.84980288794599,
+      "anomaly_score": 0.5068102478981018,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 72,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/275/ac2002",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5059411727402437120",
+      "ra": 48.814740869763696,
+      "dec": -28.838689199960765,
+      "anomaly_score": 0.505669891834259,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 85,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-6454954010413575296",
+      "ra": 309.4637255286067,
+      "dec": -60.63477398598136,
+      "anomaly_score": 0.5046165585517883,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 299,
+        "catalogs": [
+          {
+            "catalog": "I/86A/primary",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/193/ppm2",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/195/catalog",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/196/main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/230/shb",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/hip_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/239/tyc_main",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/246/act",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-1633313119927408640",
+      "ra": 268.86073576999564,
+      "dec": 66.37599088400144,
+      "anomaly_score": 0.48026540875434875,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 74,
+        "catalogs": [
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/267/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/319/xpm",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-4532948311447150336",
+      "ra": 283.6149715241538,
+      "dec": 22.49946717676467,
+      "anomaly_score": 0.4636143743991852,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 79,
+        "catalogs": [
+          {
+            "catalog": "I/197A/tic",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/243/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/252/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/254/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/255/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/284/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/304/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 3
+          },
+          {
+            "catalog": "I/312/sample",
+            "n_rows": 1
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5824772425687553152",
+      "ra": 228.4276886745316,
+      "dec": -65.36039460937921,
+      "anomaly_score": 0.4604213237762451,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": true,
+        "n_catalogs": 82,
+        "catalogs": [
+          {
+            "catalog": "I/284/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/297/out",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/305/out",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/317/sample",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/322A/out",
+            "n_rows": 1
+          },
+          {
+            "catalog": "I/324/igsl3",
+            "n_rows": 4
+          },
+          {
+            "catalog": "I/337/gaia",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/339/hsoy",
+            "n_rows": 2
+          },
+          {
+            "catalog": "I/345/gaia2",
+            "n_rows": 5
+          },
+          {
+            "catalog": "I/347/gaia2dis",
+            "n_rows": 5
+          }
+        ]
+      },
+      "final_cls": "vizier_matched"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-423836241887098496",
+      "ra": 12.57327248872636,
+      "dec": 56.44637062986626,
+      "anomaly_score": 0.45230740308761597,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": false,
+        "skipped": "budget_exhausted"
+      },
+      "final_cls": "vizier_skipped_budget"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-417976463385643136",
+      "ra": 9.761972847510927,
+      "dec": 54.72819161509576,
+      "anomaly_score": 0.4373529851436615,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": false,
+        "skipped": "budget_exhausted"
+      },
+      "final_cls": "vizier_skipped_budget"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5812130408453263360",
+      "ra": 267.01545584774226,
+      "dec": -67.88590295782589,
+      "anomaly_score": 0.42826470732688904,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": false,
+        "skipped": "budget_exhausted"
+      },
+      "final_cls": "vizier_skipped_budget"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-6061727381977068288",
+      "ra": 193.7237039713665,
+      "dec": -55.46773208039708,
+      "anomaly_score": 0.42484426498413086,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": false,
+        "skipped": "budget_exhausted"
+      },
+      "final_cls": "vizier_skipped_budget"
+    },
+    {
+      "survey": "Gaia_DR3",
+      "obj_id": "Gaia-5867275662552802560",
+      "ra": 209.6679750791353,
+      "dec": -60.7728595511029,
+      "anomaly_score": 0.4232075810432434,
+      "v1_classification": "error",
+      "v1_ned": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "HTTPSConnectionPool(host='ned.ipac.caltech.edu', port=443): Read timed out. (read timeout=8.0)"
+      },
+      "ned_v2": {
+        "matched": false,
+        "n_matches": 0,
+        "error": "skipped_service_degraded",
+        "source": "v2"
+      },
+      "ned_v2_cls": "error",
+      "vizier": {
+        "matched": false,
+        "skipped": "budget_exhausted"
+      },
+      "final_cls": "vizier_skipped_budget"
+    }
+  ]
+}
