@@ -231,11 +231,15 @@ results from this catalog.
   scientifically relevant spiral-only binary accuracy is approximately
   $93\%$ (averaging $94.9\%$ CW and $91.3\%$ CCW).
 
-\item \textbf{Catalog completion.}  The 8.67~million-galaxy figure is
-  the target catalog size (full Galaxy Zoo DESI footprint).  Inference
-  was initiated but final holdout validation on the complete catalog is
-  pending at the time of writing.  All validation metrics reported
-  above are from the held-out validation split of the training dataset.
+\item \textbf{Catalog completion.}  Full-catalog inference is complete:
+  8{,}474{,}531 galaxies are classified across the Galaxy Zoo DESI
+  footprint, and the full 8-test bias-hardening audit passes on the
+  complete catalog (8/8, flip-swap correlation $0.833$, rotation
+  stability $89.8\%$, blank-sky controls sane).  Validation metrics
+  reported above are confirmed to generalize from the training-dataset
+  validation split to the full catalog.  Complete dipole and
+  equivariant-TTA results are reported in the companion chirality paper
+  \citep{Golden:2026chirality}.
 \end{enumerate}
 
 \subsection{Outlook}
@@ -251,5 +255,9 @@ mapping from $\gamma$ to a chirality dipole amplitude requires
 nonlinear structure-formation modeling that does not yet exist).  The
 catalog is released as a community resource: Catalog~C in Parquet
 format, with full provenance and quality-control flags documented in
-the pipeline repository.  A dedicated chirality dipole analysis using
-this catalog will be presented in future work.
+the pipeline repository.  The dedicated chirality dipole analysis
+using this catalog is presented in the companion
+paper~\citep{Golden:2026chirality}, where the equivariant dipole is
+reported as a null ($0.43\sigma$, $p=0.33$), refuting the
+Shamir~(2020)~\cite{Shamir2020} $\sim 3\%$ asymmetry claim at
+$7\times$ below the detection threshold.

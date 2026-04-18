@@ -287,7 +287,7 @@
 
       <div style="font-weight: 700; color: #a855f7; font-family: var(--font-sans); text-align: right; padding-top: 2px;">4.</div>
       <div>
-        <strong>The Chirality Catalog.</strong> Paper 4 &mdash; &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology&rdquo; &mdash; presents an 8.47-million galaxy chirality catalog, the largest bias-audited handedness measurement ever produced (40x larger than prior work). ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) at 93.7% accuracy, 8/8 bias tests passed, equivariant CW fraction = 0.4974. No large-scale parity violation found; Shamir's 3% claim refuted. Draft complete (1,096 lines, 11 figures, 4 tables). Targeting MNRAS. ~75% ready.
+        <strong>The Chirality Catalog.</strong> Paper 4 &mdash; &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology&rdquo; &mdash; presents an 8.47-million galaxy chirality catalog, the largest bias-audited handedness measurement ever produced (40x larger than prior work). ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) at 93.7% accuracy, 8/8 bias tests passed, equivariant CW fraction = 0.4974. No large-scale parity violation found; Shamir's 3% claim refuted. Draft complete (1,099 lines, 11 figures, PDF compiled 19 MB). Targeting MNRAS. ~97% ready &mdash; 1&ndash;2 days of admin fixes to submit.
       </div>
 
       <div style="font-weight: 700; color: #16a34a; font-family: var(--font-sans); text-align: right; padding-top: 2px;">2.</div>
@@ -343,26 +343,27 @@
     <div style="margin-top:10px;">
       <a href="public/papers/paper3_anomaly_catalog.pdf" class="btn btn-primary" target="_blank">Read PDF (with figures, Apr 15 2026)</a>
       <a href="public/papers/paper3_anomaly_catalog.pdf" class="btn btn-secondary" download>Download PDF</a>
-      <a href="arxiv/paper3_anomaly_catalog.tex" class="btn btn-secondary" download>LaTeX Source</a>
+      <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex" class="btn btn-secondary" target="_blank">LaTeX Source (canonical)</a>
+      <a href="project-context/paper3_science_highlights.md" class="btn btn-secondary" target="_blank">Science Highlights (N0&ndash;N4)</a>
       <a href="anomaly-explorer.html" class="btn btn-secondary" style="margin-left:8px;">Anomaly Explorer</a>
       <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Model on HuggingFace</a>
     </div>
   </div>
 
   <div class="card" style="margin-bottom: 20px; border-left: 4px solid #a855f7;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge" style="background:#faf5ff;color:#7c3aed;border:1px solid #ddd6fe;">~85% Ready</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge" style="background:#faf5ff;color:#7c3aed;border:1px solid #ddd6fe;">~97% Ready</span> <span class="badge" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;">PDF compiled</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies&rdquo;</p>
     <p style="font-size:14px;"><strong>Author:</strong> Houston Golden</p>
     <p style="font-size:14px;"><strong>Target:</strong> MNRAS (Monthly Notices of the Royal Astronomical Society)</p>
-    <p style="font-size:14px;"><strong>Status:</strong> Draft complete &mdash; 1,096 lines, 11 figures, 4 tables. Pending peer review and PDF compilation.</p>
+    <p style="font-size:14px;"><strong>Status:</strong> Submission-locked &mdash; 1,099 lines, 11 figures, 19 MB PDF compiled. arXiv-ready after 4 trivial admin items (~45 min). See <a href="ssot.html#paper-4">SSOT</a> for the close-the-gap queue.</p>
     <p style="font-size:14px;"><strong>Scope:</strong> Production chirality pipeline applied to the full Smith42/galaxies dataset (DESI Legacy Survey DR8). Bias-hardened ViT-Small 3-class classifier (CW/CCW/NOT_SPIRAL) with 93.7% accuracy, 8/8 bias tests passed. Test-time equivariant averaging gives CW/(CW+CCW) = 0.4974. Largest bias-audited galaxy handedness catalog ever produced (40x larger than prior work). Definitive refutation of Shamir's 3% parity asymmetry claims. Published on HuggingFace.</p>
     <p style="font-size:14px;"><strong>Key result:</strong> No large-scale parity violation in 8.47M galaxies. 8,474,531 galaxies classified. Equivariant CW/(CW+CCW) = 0.4974 (parity conserved). All-sky dipole = 0.43&sigma; (null). Hemisphere asymmetry = 3.05&sigma; but only 0.17% amplitude. Shamir's 3% claim refuted (our max 0.47%). 32x GPU inference speedup via DataLoader optimization. Catalog published: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank"><code>bamfai/galaxy-chirality-catalog</code></a> (909 MB). Model: <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank"><code>bamfai/galaxy-chirality-v2</code></a>.</p>
-    <p style="font-size:14px;"><strong>Remaining work:</strong> Peer review, PDF compilation, final formatting. Possible additions: redshift tomography, cross-correlation with spectral anomaly catalog.</p>
+    <p style="font-size:14px;"><strong>Remaining work:</strong> P4-DIPOLE-JSON-REBUILD (pod), P4-PDF-RECOMPILE (pod, today's date), P4-HF-DOI (pin version), P4-LSST-LINE-REVIEW (Houston). Full queue: <a href="ssot.html#paper-4">SSOT</a>.</p>
     <div style="margin-top:10px;">
-      <span class="badge" style="font-size: 13px; background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;">Draft complete &mdash; pending peer review</span>
+      <span class="badge" style="font-size: 13px; background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;">Submission-locked &mdash; 1&ndash;2 days to arXiv</span>
       <a href="public/papers/chirality_catalog_paper.pdf" class="btn btn-primary" target="_blank" style="margin-left:8px;">Read PDF (with figures)</a>
-      <a href="arxiv/paper4_chirality_catalog.pdf" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Draft PDF</a>
-      <a href="arxiv/paper4_chirality_catalog.tex" class="btn btn-secondary" target="_blank" style="margin-left:8px;">LaTeX Source</a>
+      <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex" class="btn btn-secondary" target="_blank" style="margin-left:8px;">LaTeX Source (canonical)</a>
+      <a href="project-context/paper4_science_highlights.md" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Science Highlights (N0&ndash;N4)</a>
       <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Catalog on HuggingFace</a>
       <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" class="btn btn-secondary" target="_blank" style="margin-left:8px;">Model on HuggingFace</a>
       <a href="galaxy-explorer.html" class="btn btn-secondary" style="margin-left:8px;">Galaxy Explorer</a>
