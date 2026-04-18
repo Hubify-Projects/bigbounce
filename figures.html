@@ -191,7 +191,7 @@
 <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px;"><strong>How these figures tell the story.</strong> The figures are organized by paper, leading with the latest DESI spectral anomaly results (Paper 3), followed by the chirality catalog (Paper 4), the f<sub>NL</sub> prediction (Paper 2), and the framework investigation (Paper 1) that started it all.</p>
 <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
   <strong>Paper 3</strong> (DESI Spectral Anomalies): Figures 53&ndash;64 present the complete 22.5M DESI DR1 catalog analysis &mdash; reionization-era QSO spectra, UMAP clustering (both anomaly-only and full-catalog), anomaly rate sky maps, survey depth, depth-rate systematics, photo-z from unsupervised latent vectors, redshift neuron feature importance, photo-z residuals, taxonomy UMAP (10 families), f<sub>NL</sub> tracer comparison, and top 50 uncataloged anomaly spectra grid.<br>
-  <strong>Paper 4</strong> (Galaxy Chirality Catalog): Figures 34&ndash;46 present the equivariant chirality classification of 949K spiral galaxies, all-sky asymmetry maps, angular power spectra, hemisphere analysis (3.05&sigma;), and the critical raw-vs-equivariant systematics elimination.<br>
+  <strong>Paper 4</strong> (Galaxy Chirality Catalog): Figures 34&ndash;46 present the equivariant chirality classification of 8.47 M galaxies (CW/CCW/NOT_SPIRAL ViT-Small), all-sky asymmetry maps, angular power spectra, hemisphere analysis, and the critical raw-vs-equivariant systematics elimination that drives the post-TTA 0.43&sigma; null dipole.<br>
   <strong>Paper 2</strong> (The Decisive Test): Figures 23&ndash;27 present the f<sub>NL</sub> shape function, survey forecasts, k<sub>min</sub> sensitivity, Bayesian decision thresholds, and bounce-vs-inflation comparison. Figures 28&ndash;30 cover the template mismatch analysis and corrected forecasts. Figures 31&ndash;33 add the true polynomial shape comparison, NaMaster birefringence resolution study, and updated forecasts with the physics-derived polynomial. These are the flagship results.<br>
   <strong>Paper 1 &mdash; ALP Birefringence</strong>: Figures 20&ndash;21 show ALP birefringence posteriors and model comparisons (now part of Paper 1 &sect;11.5).<br>
   <strong>Paper 1 &mdash; Framework</strong>: Figures 1&ndash;8 are from the original framework investigation. <em>Note: Some figures (3a, 3b, 6) reflect analysis that was later corrected by MCMC verification</em>. Figures 10&ndash;19 show the MCMC verification that established the corrected results.
@@ -332,7 +332,7 @@
      Section 1: Paper 4 — Galaxy Chirality Catalog
      ═══════════════════════════════════════════════ -->
 <h2>Paper 4 &mdash; Galaxy Chirality Catalog <span class="section-count">13 figures</span></h2>
-<p>Figures from Paper 4 ("Galaxy Chirality Catalog"). Equivariant CNN classification of 949K spiral galaxies from Galaxy Zoo DECaLS, producing the largest systematics-controlled chirality catalog to date. Key results: hemisphere asymmetry at 3.05&sigma;, dipole signal at 2.75&sigma;, and dramatic demonstration that equivariant averaging eliminates 94.6&sigma; survey systematics to null.</p>
+<p>Figures from Paper 4 ("Galaxy Chirality Catalog"). ViT-Small 3-class (CW/CCW/NOT_SPIRAL) classification of 8.47 million galaxies from Smith42 / DESI Legacy Survey DR8, producing the largest bias-audited galaxy handedness catalog ever (40&times; larger than Shamir). Key results: post-TTA all-sky dipole 0.43&sigma; (null), raw hemisphere asymmetry 3.05&sigma; collapses to &lt;1&sigma; under equivariant averaging, and dramatic demonstration that equivariant test-time augmentation eliminates survey-correlated systematics. Shamir's 3% chirality asymmetry claim refuted (our max regional asymmetry 0.47%).</p>
 
 <div class="gallery-grid">
 
@@ -351,7 +351,7 @@
     <div class="gallery-item-info">
       <div class="gallery-item-number">Figure 35</div>
       <div class="gallery-item-title">Galaxy Chirality Asymmetry Map (Mollweide)</div>
-      <p class="gallery-desc">All-sky map of CW&ndash;CCW asymmetry from 949K equivariant spiral classifications at NSIDE=32. Blue pixels indicate clockwise excess; red pixels indicate counter-clockwise excess. The dipole axis and hemisphere boundary are visible.</p>
+      <p class="gallery-desc">All-sky map of CW&ndash;CCW asymmetry from 8.47&nbsp;M equivariant spiral classifications at NSIDE=64. Blue pixels indicate clockwise excess; red pixels indicate counter-clockwise excess. Post-TTA dipole amplitude 0.0019, 0.43&sigma; &mdash; consistent with parity conservation.</p>
       <span class="gallery-source">Paper 4, Figure 7</span>
     </div>
   </div>
@@ -651,10 +651,20 @@
 <!-- ═══════════════════════════════════════════════
      Section 3: Paper 1 — ALP Birefringence
      ═══════════════════════════════════════════════ -->
-<h2>Paper 1 &mdash; ALP Birefringence <span class="section-count">2 figures</span></h2>
-<p>Figures from Paper 1 &sect;11.5 (ALP birefringence analysis). These show the &beta; posterior comparison across 3 model configurations and the ALP parameter corner plot from 9,720 MCMC samples.</p>
+<h2>Paper 1 &mdash; ALP Birefringence + MCMC Corner <span class="section-count">3 figures</span></h2>
+<p>Figures from Paper 1 &sect;11.5 (ALP birefringence analysis) and &sect;IV (MCMC verification). These show the &beta; posterior comparison, the ALP parameter corner plot (9,720 samples), and the full-tension cosmological corner plot (119,617 post-burnin samples).</p>
 
 <div class="gallery-grid">
+
+  <div class="gallery-item">
+    <img src="public/images/paper1_corner_full_tension.png" alt="Full-Tension MCMC Corner Plot" loading="lazy">
+    <div class="gallery-item-info">
+      <div class="gallery-item-number">Figure 22 (new, 2026-04-17)</div>
+      <div class="gallery-item-title">Full-Tension MCMC Corner Plot (H<sub>0</sub>, &Omega;<sub>m</sub>, &sigma;<sub>8</sub>, S<sub>8</sub>, &Delta;N<sub>eff</sub>)</div>
+      <p class="gallery-desc">Joint posterior over the Planck+BAO+SN+H0+S<sub>8</sub> full-tension combination from 119,617 post-burnin MCMC samples via <code>getdist</code>. Marginal results: H<sub>0</sub>=67.69&plusmn;1.06, &Omega;<sub>m</sub>=0.308&plusmn;0.006, &sigma;<sub>8</sub>=0.803&plusmn;0.008, S<sub>8</sub>=0.814&plusmn;0.009, &Delta;N<sub>eff</sub>=&minus;0.019&plusmn;0.169 &mdash; consistent with zero, confirming the framework's compatibility with standard cosmology.</p>
+      <span class="gallery-source">Paper 1, &sect;IV &mdash; Fig. corner_full_tension</span>
+    </div>
+  </div>
 
   <div class="gallery-item">
     <img src="arxiv_v2/figures/beta_comparison_all_models.png" alt="Beta Comparison Across Models" loading="lazy">

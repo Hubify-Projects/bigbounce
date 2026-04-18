@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glossary &amp; Equations — Spin-Torsion Cosmology</title>
-<meta name="description" content="13 key equations and 28 searchable terms from spin-torsion bounce cosmology.">
+<meta name="description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
 <meta property="og:title" content="Glossary & Equations">
-<meta property="og:description" content="13 key equations and 28 searchable terms from spin-torsion bounce cosmology.">
+<meta property="og:description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <meta property="og:url" content="https://bigbounce.hubify.app/glossary.html">
 <meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Glossary & Equations">
-<meta name="twitter:description" content="13 key equations and 28 searchable terms from spin-torsion bounce cosmology.">
+<meta name="twitter:description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <link rel="stylesheet" href="style.css">
@@ -627,6 +627,49 @@
   <td><span class="gl-type gl-type-param">Parameter</span></td>
   <td class="gl-def">
     <strong>ALP decay constant.</strong> Sets the symmetry-breaking scale. Cancels exactly in the birefringence prediction (Eq. 10). Assumed <span class="gl-value">~ M_Pl</span> in this framework.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">\(f_{\rm NL}\)</span>
+    <span class="gl-pronunciation">"eff-en-ell"</span>
+  </td>
+  <td><span class="gl-type gl-type-obs">Observable</span></td>
+  <td class="gl-def">
+    <strong>Primordial non-Gaussianity amplitude (local template).</strong> Matter bounce prediction: <span class="gl-value">\(f_{\rm NL} = -35/8 = -4.375\)</span> &mdash; parameter-free, mechanism-independent across all bounce models with matter-dominated contraction. Plays a <strong>triple role</strong>: (i) galaxy bispectrum target for SPHEREx/MegaMapper; (ii) PBH abundance regulator via Edgeworth expansion on Press-Schechter (negative \(f_{\rm NL}\) naturally suppresses overproduction); (iii) spectral shape of scalar-induced GW background at NANOGrav. SPHEREx forecast (2026-04-10): \(\sigma = 0.36\) (Fisher ideal) to 0.93 (Munchmeyer conservative) &mdash; 4.7&ndash;12&sigma; detection of \(-4.375\) by 2027.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">TTA</span>
+    <span class="gl-pronunciation">"tee-tee-ay"</span>
+  </td>
+  <td><span class="gl-type gl-type-code">Method</span></td>
+  <td class="gl-def">
+    <strong>Test-Time Equivariant Averaging.</strong> D4 symmetry-group averaging applied at inference time to cancel orientation bias in the Paper 4 chirality classifier (ViT-Small, 8.47 M galaxies). Collapses the raw 3.05&sigma; hemisphere dipole to <span class="gl-value">0.43&sigma; (p=0.33)</span>, a null result. Residual equivariance error &lt; 10<sup>&minus;3</sup>. Refutes the Shamir (2021) dipole claim across 7/7 independent bias tests.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Landy-Szalay</span>
+    <span class="gl-pronunciation">"LAN-dee-ZAH-lai"</span>
+  </td>
+  <td><span class="gl-type gl-type-code">Estimator</span></td>
+  <td class="gl-def">
+    <strong>Two-point angular correlation estimator</strong> \(w(\theta) = (DD - 2DR + RR)/RR\). Used on the Paper 3 anomaly catalog (DESI DR1) to validate that extreme anomalies exhibit <span class="gl-value">2.28&times; enhanced clustering bias</span> versus the baseline galaxy sample &mdash; a key physical-correlation check rather than a random-feature artefact of the autoencoder.
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <span class="gl-symbol">Anomaly engine</span>
+  </td>
+  <td><span class="gl-type gl-type-code">Pipeline</span></td>
+  <td class="gl-def">
+    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, CHIME FRB, LIGO O3, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned \(\to\) 319,443 QC-passing anomalies. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-novel.
   </td>
 </tr>
 

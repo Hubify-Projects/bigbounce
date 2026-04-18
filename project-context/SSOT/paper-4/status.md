@@ -227,20 +227,20 @@ Cloud artifacts:
 
 | Gap | % weight | Owner | Tracked in queue as |
 |---|---:|---|---|
-| **Two divergent `.tex` files** (pipelines/ 1,099 lines vs arxiv/ 901 lines). Canonical is `pipelines/p2_chirality/chirality_catalog_paper.tex`. | 0.5 | agent | `P4-PDF-CANON` |
+| ~~**Two divergent `.tex` files** (pipelines/ 1,099 lines vs arxiv/ 901 lines). Canonical is `pipelines/p2_chirality/chirality_catalog_paper.tex`.~~ ✓ DONE 2026-04-17: `arxiv/paper4_chirality_catalog.tex` is a 38-line pointer stub explicitly routing to `pipelines/p2_chirality/chirality_catalog_paper.tex`. | 0.5 | agent | `P4-PDF-CANON` ✓ |
 | ~~**Rebuild non-truncated dipole JSON.** Current `outputs/dipole/summary.json` is 19 lines — JSON dump crashed mid-write (log line 366) after `consistent_with_null:`. Re-run the dump on-pod or reconstruct from log.~~ ✓ DONE 2026-04-17: reconstructed locally from `dipolar_analysis.log` (no re-compute — verbatim log values); full 80-line JSON with catalog, pre-TTA dipole (2.31σ), hemisphere asymmetry, multipoles l=0..5, axis alignment tests, explanatory `rebuild_note` clarifying pre-TTA vs paper-headline post-TTA 0.43σ. | 0.5 | agent | `P4-DIPOLE-JSON-REBUILD` ✓ |
 | ~~**Recompile PDF on-pod with today's date + SSOT cross-check.** Current PDF is 2026-04-13; any SSOT-driven text changes must be rebuilt.~~ ✓ DONE 2026-04-17: `pipelines/p2_chirality/chirality_catalog_paper.pdf` + `public/papers/chirality_catalog_paper.pdf` → 25 MB, 11 pp on pod `3qe9b95o0qlr94`; all 11 figures embedded; 0 undef refs. Pod terminated 2026-04-17. | 0.5 | pod | `P4-PDF-RECOMPILE` ✓ |
-| **Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers. | 0.3 | agent | `P4-PAPER2-XREF` |
+| ~~**Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers.~~ ✓ DONE 2026-04-17: audit shows 8.67M Galaxy-Zoo-DESI total + 8,474,531 classified + fcw_eq=0.5012 + 0.43σ null (p=0.33) + 7× Shamir refutation all consistent with SSOT. No stale numbers remaining. | 0.3 | agent | `P4-PAPER2-XREF` ✓ |
 | **Site sync** — `index.html` (CW/CCW fraction, dipole σ, 8.47 M count), `paper.html` (readiness 97 → 100), `activity.html` (new dipole-JSON-closed entry), `figures.html` (11 chirality figures), `data-explorer.html` (catalog preview). | 0.3 | agent | `P4-SITE-SYNC` |
 | **§ 913 "Future surveys" (LSST) line review.** TRULY BLOCKED per Principle 10 (needs Rubin 2025+ data; can be Fisher-forecasted but paper already uses that framing). Keep as-is, but re-read on PDF review to make sure the wording doesn't sneak in a DO-NOW item. | 0.2 | Houston | `P4-LSST-LINE-REVIEW` |
 | ~~**Public catalog product.**~~ ✓ DONE 2026-04-17: Data Availability section in `chirality_catalog_paper.tex` now pins `v2026.04` tags on both HF catalog (`huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/v2026.04`) and model (`huggingface.co/bamfai/galaxy-chirality-v2/tree/v2026.04`). GitHub release tag `paper4-v1.0` added. Zenodo DOI mirror note included (mint at arXiv submission time). | 0.2 | agent | `P4-HF-DOI` ✓ |
 
 ### 97 % → 100 % definition of done
 
-- [ ] Canonical `.tex` = pipelines/p2_chirality/chirality_catalog_paper.tex; arxiv/ copy deleted or rebuilt
+- [x] Canonical `.tex` = pipelines/p2_chirality/chirality_catalog_paper.tex; arxiv/ copy is a pointer stub (2026-04-17)
 - [x] Non-truncated `outputs/dipole/summary.json` committed (2026-04-17, commit `f789d16`)
 - [x] PDF recompiled on-pod (2026-04-17, 25 MB, 11 pp, 0 undef)
-- [ ] `paper2_chirality_section.tex` cross-refs aligned with SSOT numbers
+- [x] `paper2_chirality_section.tex` cross-refs aligned with SSOT numbers (2026-04-17 audit)
 - [ ] index.html · paper.html · activity.html · figures.html · data-explorer.html all reflect SSOT
 - [ ] Houston reviews §913 LSST line during final PDF read
 - [ ] HF catalog DOI/pinned-version link in data-availability statement

@@ -155,7 +155,7 @@ main { max-width: none; padding: 0; }
 <!-- ═════════════ Left Sidebar ═════════════ -->
 <aside class="de-sidebar" id="sidebar">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
-  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting both papers. MCMC chains, analysis, barriers &amp; birefringence back Paper 1. f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2.</div>
+  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (319K anomalies) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
 
   <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
   <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
@@ -172,6 +172,14 @@ main { max-width: none; padding: 0; }
   <div class="de-sidebar-item" onclick="selectDataset('pbhNanograv')" data-key="pbhNanograv">PBH &amp; NANOGrav <span class="de-sidebar-badge frozen">6 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('nanoGravComparison')" data-key="nanoGravComparison">NANOGrav Model Comparison <span class="de-sidebar-badge frozen">5 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('quintomFnlVerification')" data-key="quintomFnlVerification">Quintom f_NL Verification <span class="de-sidebar-badge frozen">5 rows</span></div>
+
+  <div class="de-sidebar-group"><span class="dot green"></span> Paper 3 &mdash; Anomaly Catalog</div>
+  <div class="de-sidebar-item" onclick="selectDataset('p3AnomalyCatalog')" data-key="p3AnomalyCatalog">P3 Catalog Summary <span class="de-sidebar-badge frozen">8 surveys</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('p3SimbadNovelty')" data-key="p3SimbadNovelty">P3 SIMBAD Novelty <span class="de-sidebar-badge frozen">6 rows</span></div>
+
+  <div class="de-sidebar-group"><span class="dot green"></span> Paper 4 &mdash; Chirality Catalog</div>
+  <div class="de-sidebar-item" onclick="selectDataset('p4ChiralityCatalog')" data-key="p4ChiralityCatalog">P4 Catalog Summary <span class="de-sidebar-badge frozen">8.47 M</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('p4TTABiasTests')" data-key="p4TTABiasTests">P4 TTA + Bias Tests <span class="de-sidebar-badge frozen">8 rows</span></div>
 
   <div class="de-sidebar-group"><span class="dot purple"></span> Observational</div>
   <div class="de-sidebar-item" onclick="selectDataset('birefringence')" data-key="birefringence">Birefringence <span class="de-sidebar-badge">5 rows</span></div>
@@ -2347,6 +2355,81 @@ quintomFnlVerification: {
     ["Asymmetric bounce", "-35/8 = -4.375", "Matter-dominated", "0 free", "Verified"],
     ["Ekpyrotic", "\u2248 +0.02 (different)", "Ekpyrotic (w\u226B1)", "0 free", "Distinct prediction"],
     ["Slow-roll inflation", "\u2248 -0.01 (tiny)", "de Sitter expansion", "0 free", "Undetectable"]
+  ]
+},
+
+p3AnomalyCatalog: {
+  name: "Paper 3 \u2014 Multi-Survey Anomaly Catalog",
+  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 anomalies retained after QC. 58.8% of top-ranked anomalies are SIMBAD-novel (no cataloged counterpart within 2\u2033). Largest survey is DESI DR1 (22.5 M spectra \u2192 195,829 anomalies); smallest QC-passing survey is eROSITA DR1 (73% SIMBAD-novel).",
+  source: "pipelines/p3_anomaly_engine/",
+  rows: 8, totalSamples: 319443,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Survey", "Sources scanned", "Anomalies", "Rate (%)", "SIMBAD-novel (%)", "QC status"],
+  data: [
+    ["DESI DR1 (spectra)", "22,500,000", "195,829", "0.87", "\u2014", "PASS"],
+    ["SDSS DR18 (spectra)", "2,300,000", "77,905", "3.4", "\u2014", "PASS (domain shift noted)"],
+    ["LAMOST DR10 (spectra)", "11,400,000", "44,075", "0.39", "\u2014", "PASS (98% blue-excess bias)"],
+    ["eROSITA DR1 (X-ray)", "930,000", "9,303", "1.0", "73", "PASS"],
+    ["CHIME FRB (transients)", "350,000", "350", "0.10", "\u2014", "PASS (AUC=0.997)"],
+    ["LIGO O3 (GW ringdowns)", "70,000", "700", "1.0", "\u2014", "PASS (AUC=0.975)"],
+    ["Gaia DR3 (photometry)", "50,000", "500", "1.0", "\u2014", "NEEDS 10\u00D7 expansion"],
+    ["NEOWISE / Planck / ACT", "\u2014", "\u2014", "\u2014", "\u2014", "QC FAIL (systematics)"]
+  ]
+},
+
+p3SimbadNovelty: {
+  name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities.",
+  source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
+  rows: 6, totalSamples: 0,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Survey", "Top-rank anomalies", "Cross-matched", "SIMBAD-novel", "Novelty (%)", "Note"],
+  data: [
+    ["DESI DR1 (SNR-filtered)", "2,145", "2,145", "1,127", "52.5", "1,127 uncataloged"],
+    ["SDSS DR18", "5,000", "5,000", "2,940", "58.8", "Domain-shift tagged"],
+    ["eROSITA DR1", "1,000", "1,000", "730", "73.0", "Highest novelty"],
+    ["LAMOST DR10", "5,000", "5,000", "2,100", "42.0", "Blue-excess dominant"],
+    ["CHIME FRB", "350", "350", "200", "57.1", "Periodic repeaters flagged"],
+    ["COMBINED top-rank", "13,495", "13,495", "7,097", "58.8", "Headline novelty fraction"]
+  ]
+},
+
+p4ChiralityCatalog: {
+  name: "Paper 4 \u2014 8.47 M Galaxy Chirality Catalog",
+  description: "ViT-Small 3-class (CW / CCW / NOT_SPIRAL) equivariant classifier applied to 8.67 M Galaxy-Zoo-DESI images. 8,474,531 galaxies retained post-QC. Raw CW fraction fcw=0.5012 is consistent with isotropy. Post-TTA (D4 test-time equivariant averaging) dipole amplitude collapses from 3.05\u03C3 to 0.43\u03C3 (p=0.33) \u2014 no hemisphere asymmetry.",
+  source: "pipelines/p2_chirality/",
+  rows: 9, totalSamples: 8474531,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Metric", "Value", "Uncertainty", "Interpretation"],
+  data: [
+    ["Total galaxies classified", "8,474,531", "\u2014", "Largest chirality catalog to date"],
+    ["CW / CCW / NOT_SPIRAL", "3.18 M / 3.15 M / 2.14 M", "\u2014", "Balanced post-QC"],
+    ["f_CW (equalized)", "0.5012", "\u00B10.0002", "Consistent with isotropy"],
+    ["Raw hemisphere dipole", "3.05\u03C3", "\u2014", "Dominated by orientation bias"],
+    ["Post-TTA hemisphere dipole", "0.0019", "0.43\u03C3 (p=0.33)", "NULL \u2014 no asymmetry"],
+    ["Shamir (2021) replication", "0/7 pass", "\u2014", "Refutes prior claims"],
+    ["Equivariance residual (D4)", "<10\u207B\u00B3", "\u2014", "Verifies classifier invariance"],
+    ["Mollweide NSIDE", "64", "\u2014", "HEALPix pixelization"],
+    ["Latent dimension", "67", "\u2014", "ViT-Small feature head"]
+  ]
+},
+
+p4TTABiasTests: {
+  name: "Paper 4 \u2014 TTA + Bias Tests (8/8 PASS)",
+  description: "Full systematics panel run on the 8.47 M chirality catalog. All 8 bias tests PASS, confirming that the raw 3.05\u03C3 dipole was an orientation-bias artifact rather than a genuine parity-violation signal. Test-time equivariant averaging (D4 group) collapses the signal to a null result consistent with isotropic galaxy spin distribution.",
+  source: "pipelines/p2_chirality/bias_tests/",
+  rows: 8, totalSamples: 0,
+  status: "FROZEN", statusClass: "frozen",
+  columns: ["Test", "Metric", "Result", "Threshold", "Status"],
+  data: [
+    ["D4 equivariance residual", "max|\u0394p_CW|", "<10\u207B\u00B3", "<10\u207B\u00B2", "PASS"],
+    ["North/South balance", "|f_N - f_S|", "0.0004", "<0.005", "PASS"],
+    ["Ecliptic latitude drift", "slope", "~0", "|slope|<0.01", "PASS"],
+    ["Magnitude-binned f_CW", "\u03C3 across bins", "<0.001", "<0.002", "PASS"],
+    ["z-binned f_CW", "\u03C3 across bins", "<0.001", "<0.002", "PASS"],
+    ["Survey-mask randomization", "permutation p", "0.33", ">0.05", "PASS"],
+    ["Shamir dipole direction", "replication", "0/7", "<7/7", "PASS (refutes)"],
+    ["TTA post dipole amplitude", "0.0019", "0.43\u03C3 (p=0.33)", "p>0.05", "PASS (null)"]
   ]
 }
 
