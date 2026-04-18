@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (drive-to-100 fire #3) — P3-C closed; Paper 3 §6 "continued monitoring" language replaced with concrete when-decisive paragraph (σ(γ) scaling for NG20yr/EPTA DR3/SKA-P1). Siemens2013 + Rosado2015 bibitems added. Forecast note filed. P3-FISHER-FULL queued for pod.
+Last authoritative update: 2026-04-17 (drive-to-100 fire #4) — P-MEMORY-SYNC closed; MEMORY.md + 3 memory files refreshed to reflect current SSOT tree + drive-to-100 loop; `project_papers_status.md` converted from stale mirror to SSOT pointer.
 
 ## Legend
 
@@ -54,7 +54,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #3) — P3-C closed; Pa
 | `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [x] | DONE 2026-04-17 — added 3 Golden companion bibitems (framework, fnl, chirality) + 4 `\cite{}` calls at L70, L515, L597; triggers `P3-PDF-RECOMPILE-V2` (filed below) |
 | `P4-LSST-LINE-REVIEW` | Houston reviews paper4 L913 "Future surveys (Rubin LSST)" line on final PDF read — confirm TRULY BLOCKED | Houston | P4 | 0.2 % | [ ] | If it's not blocked per Principle 10 it becomes a new task |
-| `P-MEMORY-SYNC` | Add MEMORY.md entry for SSOT directory + update existing entries that reference old paper-N-status.md paths | agent | ALL | 0 % | [ ] | One-time housekeeping after restructure lands |
+| `P-MEMORY-SYNC` | Add MEMORY.md entry for SSOT directory + update existing entries that reference old paper-N-status.md paths | agent | ALL | 0 % | [x] | DONE 2026-04-17 — refreshed `project_ssot_structure.md` (layout + drive-to-100 loop block), rewrote `project_papers_status.md` as SSOT pointer (was 11 days stale with Paper 2 v1.3.0, Paper 4 ~85 %), added new `project_drive_to_100.md` memory + index entry in `MEMORY.md` |
 | `P1-PDF-RECOMPILE-V2` | Recompile `arxiv/main.pdf` to render the §IV corner figure inserted at L882 | pod | P1 | 0.1 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P4-PDF-RECOMPILE-V2` | Recompile `public/papers/chirality_catalog_paper.pdf` to render the new LSST 10-yr projection line in Future Directions | pod | P4 | 0.3 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P3-PDF-RECOMPILE-V2` | Recompile `pipelines/p3_anomaly_engine/paper3_draft.pdf` + mirror to `public/papers/paper3_anomaly_catalog.pdf` to render (a) 3 new Golden companion-paper bibitems + 4 new `\cite{}` calls (fire #2) AND (b) Siemens2013 + Rosado2015 bibitems + §6 "when-decisive" paragraph (fire #3) | pod | P3 | 0.1 % | [ ] | Existing PDF is pre-xref; tex ready |
