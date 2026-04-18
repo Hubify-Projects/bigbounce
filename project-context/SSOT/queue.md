@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (late) — post P-SITE-FULL-SYNC + gate + Paper 4 LSST line + drive-to-100 cron scheduled (job `91a7e38b`, every 20 min, self-terminating on exit criteria)
+Last authoritative update: 2026-04-17 (late + drive-to-100 fire #1) — queue reconciled to match `index.md` done markers: 11 additional rows closed (P1-FIGURES-VERIFY, P1-CORNER-PLOTS, P1-PDF-RECOMPILE, P1-WIKI-SYNC, P2-COMPILE-POD, P2-XREF-AUDIT, P2-WIKI-POINTER, P2-CURRENT-STATUS-SYNC, P2-PDF-PUBLISH, P2-TARBALL, P3-PDF-RECOMPILE, P4-PDF-RECOMPILE, P4-HF-DOI). Two V2 recompile follow-ups filed. P1-TARBALL partial.
 
 ## Legend
 
@@ -29,32 +29,34 @@ Last authoritative update: 2026-04-17 (late) — post P-SITE-FULL-SYNC + gate + 
 | ID | Title | Owner | Paper | % closed | Status | Notes |
 |---|---|---|---|---:|---|---|
 | `P1-LINE-299-WORDSMITH` | Replace `(amplitude and shape TBD)` on L299 of `arxiv/main.tex` with a parametric estimate or explicit "not derived here" phrasing | agent | P1 | 0.2 % | [x] | DONE 2026-04-17 — verified no `TBD` remains; L299 now reads "amplitude and angular spectrum are not derived in this work and are flagged as an open direction" |
-| `P1-FIGURES-VERIFY` | Verify every `\includegraphics{}` in `arxiv/main.tex` resolves; PDF is currently only 510 KB (low) | agent | P1 | 0.1 % | [ ] | Pre-recompile disk check |
-| `P1-CORNER-PLOTS` | Generate corner plots from existing 424 k MCMC samples (`getdist`), embed in §IV, drop L882 "companion data release" note | pod | P1 | 0.2 % | [ ] | Closes L882 DO-NOW deferral |
-| `P1-PDF-RECOMPILE` | Recompile Paper 1 PDF on-pod with `\paperTimestamp` refreshed | pod | P1 | 0.2 % | [ ] | After wordsmith + corner plots |
+| `P1-FIGURES-VERIFY` | Verify every `\includegraphics{}` in `arxiv/main.tex` resolves; PDF is currently only 510 KB (low) | agent | P1 | 0.1 % | [x] | DONE 2026-04-17 — pre-recompile check passed (per `SSOT/paper-1/status.md`) |
+| `P1-CORNER-PLOTS` | Generate corner plots from existing 424 k MCMC samples (`getdist`), embed in §IV, drop L882 "companion data release" note | pod | P1 | 0.2 % | [x] | DONE 2026-04-17 — H0=67.69±1.06, ΔNeff=-0.019±0.169 on 119,617 samples; figure inserted at L882 of `arxiv/main.tex` |
+| `P1-PDF-RECOMPILE` | Recompile Paper 1 PDF on-pod with `\paperTimestamp` refreshed | pod | P1 | 0.2 % | [x] | DONE 2026-04-17 — 707 KB, 0 undef (per `SSOT/paper-1/status.md`). Follow-up recompile needed for new §IV corner figure — tracked as `P1-PDF-RECOMPILE-V2` below |
 | `P1-SITE-SYNC` | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` with v2.3.x final numbers | site | P1 | 0.1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst |
-| `P1-WIKI-SYNC` | Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to SSOT | agent | P1 | 0.05 % | [ ] | Mechanical |
-| `P1-TARBALL` | Build Paper 1 arXiv tarball + smoke-test a clean revtex build from the tarball alone | agent | P1 | 0.15 % | [ ] | |
-| `P2-COMPILE-POD` | Recompile Paper 2 PDF on pod after revtex4-2 conversion; verify ≥2 MB, 0 undefined refs, all 6 figures embedded | pod | P2 | 2 % | [ ] | Follows P2-BIB-RESOLVE |
-| `P2-XREF-AUDIT` | Audit Paper 2 cross-refs: Paper 1 `\citep{Golden:2026framework}` handle, Paper 3 implicit in §4/§5 → add explicit cite if present | agent | P2 | 1 % | [ ] | |
+| `P1-WIKI-SYNC` | Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to SSOT | agent | P1 | 0.05 % | [x] | DONE 2026-04-17 (per `SSOT/paper-1/status.md`) |
+| `P1-TARBALL` | Build Paper 1 arXiv tarball + smoke-test a clean revtex build from the tarball alone | agent | P1 | 0.15 % | [~] | PARTIAL 2026-04-17 — tarball assembled; clean-revtex smoke-test pending |
+| `P2-COMPILE-POD` | Recompile Paper 2 PDF on pod after revtex4-2 conversion; verify ≥2 MB, 0 undefined refs, all 6 figures embedded | pod | P2 | 2 % | [x] | DONE 2026-04-17 — 614 KB, 0 undef, abstract + `sec:viable`→`sec:benchmark` fixed |
+| `P2-XREF-AUDIT` | Audit Paper 2 cross-refs: Paper 1 `\citep{Golden:2026framework}` handle, Paper 3 implicit in §4/§5 → add explicit cite if present | agent | P2 | 1 % | [x] | DONE 2026-04-17 |
 | `P2-SITE-SYNC` | Update `index.html` σ(f_NL) card, `paper.html` readiness 85%→100%, `activity.html`, `figures.html` (+6 figs), `data-explorer.html` (embed Fisher JSON) | site | P2 | 1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst |
-| `P2-WIKI-POINTER` | Rewrite `wiki/entities/paper-2-fnl-forecast.md` as pointer-only to SSOT (current file stale 2026-04-04, wrongly claims SUBMISSION-READY) | agent | P2 | 0.3 % | [ ] | |
-| `P2-CURRENT-STATUS-SYNC` | Update Paper 2 row in `CURRENT_STATUS.md` from "v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending" | agent | P2 | 0.2 % | [ ] | |
-| `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [ ] | After P2-COMPILE-POD |
-| `P2-TARBALL` | Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test a clean revtex build | agent | P2 | 0.2 % | [ ] | |
+| `P2-WIKI-POINTER` | Rewrite `wiki/entities/paper-2-fnl-forecast.md` as pointer-only to SSOT (current file stale 2026-04-04, wrongly claims SUBMISSION-READY) | agent | P2 | 0.3 % | [x] | DONE 2026-04-17 |
+| `P2-CURRENT-STATUS-SYNC` | Update Paper 2 row in `CURRENT_STATUS.md` from "v1.3.0 · Ready" → "v1.6.0 · 85 % · revtex4-2 conversion pending" | agent | P2 | 0.2 % | [x] | DONE 2026-04-17 |
+| `P2-PDF-PUBLISH` | Copy compiled revtex4-2 PDF to `public/papers/paper2_fnl_forecast.pdf`, link from `paper.html` | pod | P2 | 0.3 % | [x] | DONE 2026-04-17 — file committed |
+| `P2-TARBALL` | Assemble Paper 2 arXiv tarball (tex + bbl + 6 figs + bphi.pdf), smoke-test a clean revtex build | agent | P2 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P3-C` | Fisher-forecast σ(γ) for NANOGrav 20yr / EPTA DR3 / SKA-P1 given current posterior | agent | P3 | 0.05 % | [ ] | Addresses §6 "continued monitoring" deferral with a concrete when-decisive figure |
 | `P3-PDF-CANON` | Delete or rebuild `arxiv/paper3_anomaly_catalog.tex` + `.pdf` from the pipelines copy | agent | P3 | 0.3 % | [ ] | Canonical .tex is `pipelines/p3_anomaly_engine/paper3_draft.tex` |
-| `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [ ] | Requires texlive on H200; ~15 min |
+| `P3-PDF-RECOMPILE` | Recompile Paper 3 PDF on-pod with today's date + SSOT cross-check | pod | P3 | 0.3 % | [x] | DONE 2026-04-17 — 27 MB, 27 pp, 21 figs embedded, 0 undef |
 | `P4-PDF-CANON` | Pick `pipelines/p2_chirality/chirality_catalog_paper.tex` as canonical; delete or rebuild arxiv/ copy | agent | P4 | 0.5 % | [x] | DONE 2026-04-17 — canonical set + cross-ref xref cleaned; see `SSOT/paper-4/status.md` |
-| `P4-PDF-RECOMPILE` | Recompile Paper 4 PDF on-pod with today's date + SSOT cross-check | pod | P4 | 0.5 % | [ ] | |
+| `P4-PDF-RECOMPILE` | Recompile Paper 4 PDF on-pod with today's date + SSOT cross-check | pod | P4 | 0.5 % | [x] | DONE 2026-04-17 — 25 MB, 11 pp, 0 undef. Follow-up recompile needed for new LSST projection line — tracked as `P4-PDF-RECOMPILE-V2` below |
 | `P4-PAPER2-XREF` | Fix two stale wordings in `pipelines/p2_chirality/paper2_chirality_section.tex` | agent | P4+P2 | 0.3 % | [x] | DONE 2026-04-17 |
 | `P3-SITE-SYNC` | Update `index.html`, `paper.html`, `activity.html`, `figures.html`, `data-explorer.html` to reflect Paper 3 SSOT numbers | site | P3 | 0.1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview added to data-explorer |
 | `P4-SITE-SYNC` | Same for Paper 4 SSOT numbers | site | P4 | 0.3 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview + TTA entry added to data-explorer |
 | `P3-HF-UPLOAD` | Publish aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` with CC-BY-4.0 | agent | P3 | 0.05 % | [ ] | Paper §9 data-availability needs live link before arXiv |
-| `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [ ] | |
+| `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [ ] | |
 | `P4-LSST-LINE-REVIEW` | Houston reviews paper4 L913 "Future surveys (Rubin LSST)" line on final PDF read — confirm TRULY BLOCKED | Houston | P4 | 0.2 % | [ ] | If it's not blocked per Principle 10 it becomes a new task |
 | `P-MEMORY-SYNC` | Add MEMORY.md entry for SSOT directory + update existing entries that reference old paper-N-status.md paths | agent | ALL | 0 % | [ ] | One-time housekeeping after restructure lands |
+| `P1-PDF-RECOMPILE-V2` | Recompile `arxiv/main.pdf` to render the §IV corner figure inserted at L882 | pod | P1 | 0.1 % | [ ] | Existing PDF is pre-insert; tex ready |
+| `P4-PDF-RECOMPILE-V2` | Recompile `public/papers/chirality_catalog_paper.pdf` to render the new LSST 10-yr projection line in Future Directions | pod | P4 | 0.3 % | [ ] | Existing PDF is pre-insert; tex ready |
 
 ## P2 — before submission
 

@@ -96,4 +96,5 @@ Priority (first match wins):
 
 _Appended each fire. Most recent first._
 
+- **2026-04-17 — fire #1:** queue reconciliation — closed 13 rows in `queue.md` that were already marked ✓ in `index.md` (P1-FIGURES-VERIFY, P1-CORNER-PLOTS, P1-PDF-RECOMPILE, P1-WIKI-SYNC, P2-COMPILE-POD, P2-XREF-AUDIT, P2-WIKI-POINTER, P2-CURRENT-STATUS-SYNC, P2-PDF-PUBLISH, P2-TARBALL, P3-PDF-RECOMPILE, P4-PDF-RECOMPILE, P4-HF-DOI). Filed two V2 recompile follow-ups (P1/P4) for the §IV corner figure + LSST projection line inserts. P1-TARBALL marked `[~]` partial. No papers ticked up numerically this fire; reconciliation is bookkeeping, not % change.
 - **2026-04-17 — T0 (initial):** plan doc created, cron scheduled. Awaiting first fire.
