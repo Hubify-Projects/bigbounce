@@ -5,6 +5,8 @@
 Last authoritative update: 2026-04-17
 Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this), `wiki/entities/pipeline-2-chirality.md` (stale), any "remaining work" list on the site.
 
+**Science highlights with N0–N4 novelty tags:** [`project-context/paper4_science_highlights.md`](../../paper4_science_highlights.md) — 7 contributions, N3×3 / N2×3 / N1×1.
+
 ---
 
 ## TL;DR (30 seconds)

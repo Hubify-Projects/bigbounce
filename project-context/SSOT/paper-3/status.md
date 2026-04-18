@@ -3,6 +3,8 @@
 **Canonical status file. When in doubt about Paper 3, read this.**
 
 Last authoritative update: 2026-04-17
+
+**Science highlights with N0–N4 novelty tags:** [`project-context/paper3_science_highlights.md`](../../paper3_science_highlights.md) — 10 contributions, N3×4 / N2×6.
 Supersedes: `wiki/entities/paper-3-anomaly-catalog.md` (stale since 2026-04-04 — claimed "~95% ready, LaTeX not yet compiled" when paper was in fact fully compiled 2026-04-15), `project-context/CURRENT_STATUS.md` (stale — claimed "~35%"), any site page referencing Paper 3.
 
 ---

@@ -17,6 +17,8 @@ submission_status: arXiv-ready after P1 queue items close
 **Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
 **Last authoritative update:** 2026-04-17 (post forensic sweep)
 
+**Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
+
 ---
 
 ## 0 · TL;DR (for humans in a hurry)

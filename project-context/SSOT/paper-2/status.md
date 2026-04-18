@@ -15,6 +15,8 @@ submission_status: NOT arXiv-ready — needs revtex4-2 document-class conversion
 **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, finalized 2026-04-07)
 **Canonical PDF:** `research/focused_paper_source_integration/02_full_draft.pdf` (531 KB, v1.6.0 dated March 24 2026)
 **Last authoritative update:** 2026-04-17 (post forensic sweep)
+
+**Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)
 
 ---
