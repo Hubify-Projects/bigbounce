@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-18 (drive-to-100 fire #10) — `P3-B` moved to `[~]` partial after NED-only pass on 80 SIMBAD-novel exemplars (5 NED-matched · 6 still-uncatalogued · 69 rate-limit errors). 45 % NED archival-ID rate on the usable 11-object sub-sample suggests Paper 3's SIMBAD-only novel fraction over-estimates true novelty; not yet reflected in paper numbers (needs clean retry). Filed follow-ups `P3-B-NED-RETRY`, `P3-B-VIZIER`, `P3-B-GAIA-XP`.
+Last authoritative update: 2026-04-18 (drive-to-100 fire #11) — `P3-HF-UPLOAD` moved to `[~]` partial. Created **private** HF dataset `bamfai/bigbounce-anomaly-catalog` (per Houston: private until arXiv submit). Uploaded DESI DR1 block (195,829 rows · 10.5 MB parquet · 61 % of paper aggregate) + dataset card. Paper 3 §9 data-availability updated with the URL. Filed `P3-HF-UPLOAD-EXTEND` (P2) for the remaining 7 surveys. Paper 3 still triggers recompile to render updated data-availability line (but PDF is cosmetic, not a headline number change).
 
 ## Legend
 
@@ -50,7 +50,7 @@ Last authoritative update: 2026-04-18 (drive-to-100 fire #10) — `P3-B` moved t
 | `P4-PAPER2-XREF` | Fix two stale wordings in `pipelines/p2_chirality/paper2_chirality_section.tex` | agent | P4+P2 | 0.3 % | [x] | DONE 2026-04-17 |
 | `P3-SITE-SYNC` | Update `index.html`, `paper.html`, `activity.html`, `figures.html`, `data-explorer.html` to reflect Paper 3 SSOT numbers | site | P3 | 0.1 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview added to data-explorer |
 | `P4-SITE-SYNC` | Same for Paper 4 SSOT numbers | site | P4 | 0.3 % | [x] | DONE 2026-04-17 — via `P-SITE-FULL-SYNC` burst; catalog preview + TTA entry added to data-explorer |
-| `P3-HF-UPLOAD` | Publish aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` with CC-BY-4.0 | agent | P3 | 0.05 % | [ ] | Paper §9 data-availability needs live link before arXiv |
+| `P3-HF-UPLOAD` | Publish aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` with CC-BY-4.0 | agent | P3 | 0.05 % | [~] | PARTIAL 2026-04-18 drive-to-100 fire #11 — private repo `bamfai/bigbounce-anomaly-catalog` created, **DESI DR1 block (195,829 rows · 10.5 MB parquet · 61 % of paper aggregate) uploaded**, dataset card committed. Paper 3 §9 data-availability updated to point at HF dataset (private-until-acceptance wording). Remaining 7 surveys filed as `P3-HF-UPLOAD-EXTEND` (P2) — need explicit score-cut re-derivation per survey. Script: `pipelines/p3_anomaly_engine/hf_upload_catalog.py` |
 | `P4-HF-DOI` | Pin HF `bamfai/galaxy-chirality-catalog` version + add DOI / versioned URL to Paper 4 data-availability statement | agent | P4 | 0.2 % | [x] | DONE 2026-04-17 |
 | `P3-XREF` | Audit Paper 3 cross-references against Paper 2 f_NL forecast + Paper 4 dipole infrastructure | agent | P3 | 0.05 % | [x] | DONE 2026-04-17 — added 3 Golden companion bibitems (framework, fnl, chirality) + 4 `\cite{}` calls at L70, L515, L597; triggers `P3-PDF-RECOMPILE-V2` (filed below) |
 | `P4-LSST-LINE-REVIEW` | Houston reviews paper4 L913 "Future surveys (Rubin LSST)" line on final PDF read — confirm TRULY BLOCKED | Houston | P4 | 0.2 % | [ ] | If it's not blocked per Principle 10 it becomes a new task |
@@ -72,6 +72,7 @@ Last authoritative update: 2026-04-18 (drive-to-100 fire #10) — `P3-B` moved t
 | `P3-H` | NANOGrav reforecast with inflated uncertainty from DR3 free-spectrum covariance | agent | P3 | 0.05 % | [ ] | §7.3 #5. ~1 wk |
 | `P3-B-NED-RETRY` | Retry 80-sample NED cross-match with ≥5 s inter-query delay + 3-retry on HTTP 429 | agent | P3 | 0.05 % | [ ] | 69/80 objects rate-limit-errored on first pass; rerun needed to finalize archival-ID fraction |
 | `P3-B-VIZIER` | VizieR all-catalogs cone search on residual NED-novel objects | agent | P3 | 0.05 % | [ ] | Initial attempt hung the VizieR TAP; needs timeout-aware retry budget 20-30 min |
+| `P3-HF-UPLOAD-EXTEND` | Aggregate + upload remaining 7 surveys (SDSS 77,905 · LAMOST 44,075 · eROSITA 298 · NEOWISE 436 · Planck 200 · ACT 200 · Gaia 500) to the private HF dataset | agent | P3 | 0.03 % | [ ] | Each survey needs explicit score-cut re-derivation from the H200 snapshot. Once all 8 are uploaded, extend the dataset card with the full 8-survey table |
 | `P-SITE-FULL-SYNC` | Site-agent pass: run all P3-SITE-SYNC, P4-SITE-SYNC, and post-sweep P1/P2 variants together | site | ALL | ~1 % total | [x] | DONE 2026-04-17 — badges + catalog previews + glossary additions + nav restructure + password-gated internal pages; commits `54f355e` → `9f4e692` |
 | `P-ARXIV-P4` | Assemble Paper 4 tarball, fill arXiv form, submit, return ID | Houston | P4 | closes | [ ] | Do Paper 4 first (most self-contained) |
 | `P-ARXIV-P3` | Same for Paper 3 | Houston | P3 | closes | [ ] | Follow ~24 h after Paper 4 |
