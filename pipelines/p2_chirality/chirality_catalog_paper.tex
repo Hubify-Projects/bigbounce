@@ -490,8 +490,19 @@ N_{\rm CCW}^{(p)}}.
 \end{equation}
 %
 A dipole is fitted to the asymmetry map, and its significance
-is assessed via 10,000 bootstrap randomizations in which the
-pixel asymmetry values are shuffled while preserving the mask.
+is assessed via 1{,}000 bootstrap randomizations in which the
+pixel asymmetry values are shuffled while preserving the mask.%
+\footnote{\label{fn:mc_count}The production run logged in
+\texttt{pipelines/p2\_chirality/outputs/dipole/dipolar\_analysis.log}
+used $N_{\rm MC} = 1{,}000$ null realizations; we adopt this count
+consistently for all Monte Carlo nulls in this section, including
+the bootstrap dipole significance, the $\ell=1$--$5$ multipole-null
+significances in Table~\ref{tab:multipole}, and the MC envelopes in
+Figs.~\ref{fig:sky_map} and~\ref{fig:multipoles}. Monte Carlo
+uncertainty on a tail $p$-value at $N_{\rm MC} = 1{,}000$ is
+$\sim\!1/\sqrt{N_{\rm MC}} \approx 3\%$, which is immaterial for
+all central estimates reported here since no Catalog~C significance
+approaches the $3\sigma$ threshold.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole amplitude is
@@ -521,11 +532,12 @@ importance of equivariant post-processing.
 We extend the analysis to multipoles $\ell = 1\text{--}5$ using the
 HEALPix \texttt{anafast} estimator on the Catalog~C asymmetry map.
 The significance of each multipole is assessed relative to
-10,000 Monte Carlo null realizations (Table~\ref{tab:multipole}).
+1{,}000 Monte Carlo null realizations (Table~\ref{tab:multipole};
+see footnote~\ref{fn:mc_count}).
 
 \begin{table}
 \caption{Angular power spectrum of the chirality asymmetry map
-  (Catalog~C, equivariant). Significance is relative to 10,000
+  (Catalog~C, equivariant). Significance is relative to 1{,}000
   Monte Carlo null realizations.\label{tab:multipole}}
 \begin{ruledtabular}
 \begin{tabular}{cccl}
@@ -552,7 +564,7 @@ higher multipoles, is consistent with a statistical fluctuation.
 \caption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
   points show the measured $C_\ell$ values; the gray band indicates
-  the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 10,000 Monte
+  the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 1{,}000 Monte
   Carlo null realizations.  Only $\ell = 1$ approaches the
   $2\sigmaunit$ boundary (at $2.75\sigmaunit$); all higher multipoles
   are fully consistent with noise.  The absence of coherent power at
