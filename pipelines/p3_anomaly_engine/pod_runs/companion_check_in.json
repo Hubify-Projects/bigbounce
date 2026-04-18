@@ -1,0 +1,21 @@
+{
+  "agent": "companion_v2",
+  "checked_in_at_utc": "2026-04-18T11:05:00Z",
+  "pod_id": "ktds4mkmzb7ven",
+  "pod_state": "HEALTHY",
+  "existing_sessions": ["sdss", "lamost"],
+  "sdss_progress": "downloading spAll-v5_13_2.fits (~4GB)",
+  "lamost_progress": "10/1177 nights, 90,790 scored, 521 anom, ETA 31.1h",
+  "gpu_utilization_pct": 0,
+  "gpu_memory_used_mib": 1309,
+  "gpu_memory_total_mib": 81920,
+  "disk_used_gb": 2.4,
+  "disk_total_gb": 500,
+  "budget_remaining_usd_est": 139.75,
+  "tasks_planned": ["P3-D", "P3-G", "P3-A-TYPING-PHASE"],
+  "input_files_present": {
+    "desi_anomalies_json": "pipelines/h200_results/pod_backup_20260408_full/dr1_all_anomalies.json (36M, no latents — has ra/dec/score/worst/rB/rR/rZ)",
+    "p1_bias_validation_json": "pipelines/p1_highz_tracers/outputs/step4_bias_validation/bias_validation.json (canonical path — note: cross_survey path in task spec does not exist)",
+    "tess_fire15_results": "pipelines/p3_anomaly_engine/p3a_tess_374313355_lomb_scargle/ (fire #15 complete, sector 46 only)"
+  }
+}

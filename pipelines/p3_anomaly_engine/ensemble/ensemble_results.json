@@ -1,0 +1,29 @@
+{
+  "task": "P3-D",
+  "input": "/workspace/bigbounce_scan/inputs/dr1_all_anomalies.json",
+  "n_anomalies": 195829,
+  "feature_source": "derived_8d",
+  "feature_dims": 8,
+  "methods": [
+    "IsolationForest",
+    "LocalOutlierFactor(novelty)",
+    "OneClassSVM"
+  ],
+  "spearman_rho": {
+    "iso_lof": 0.2858668567704462,
+    "iso_ocsvm": 0.07778008122383344,
+    "lof_ocsvm": 0.20378437798380844
+  },
+  "top500_triple_intersection_count": 0,
+  "top100_rank_sum_range": [
+    651,
+    2190
+  ],
+  "top100_score_range": [
+    5.012688636779785,
+    25.15802574157715
+  ],
+  "auc_note": "no ground-truth column in input; AUC not computed",
+  "runtime_s": 20.5,
+  "completed_at_utc": "2026-04-18T11:00:44Z"
+}

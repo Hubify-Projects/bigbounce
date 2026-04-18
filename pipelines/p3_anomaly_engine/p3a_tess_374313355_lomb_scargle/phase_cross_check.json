@@ -1,0 +1,52 @@
+{
+  "task": "P3-A-TYPING-PHASE",
+  "target": "TIC 374313355",
+  "ra_deg": 160.148889,
+  "dec_deg": 5.091599,
+  "sec46_reference": {
+    "period_days": 13.782472108082912,
+    "peak_power": 0.31042915728740045,
+    "false_alarm_prob": 3.8853139892386195e-263,
+    "source": "fire #15 FFI-cutout"
+  },
+  "sectors": {
+    "46": {
+      "sector": 46,
+      "n_points": 3509,
+      "status": "ok",
+      "peak_period_days": 15.407157692331396,
+      "peak_power": 0.02704313034812258,
+      "false_alarm_prob": 8.419656186150589e-17,
+      "phase_max_deg_at_P_ref": 25.200000000000003,
+      "period_frac_diff_vs_sec46": 0.11788056391535634,
+      "runtime_s": 9.8
+    },
+    "45": {
+      "sector": 45,
+      "n_points": 3314,
+      "status": "ok",
+      "peak_period_days": 14.058089186301522,
+      "peak_power": 0.022860107651961715,
+      "false_alarm_prob": 1.2491300678358059e-12,
+      "phase_max_deg_at_P_ref": 3.6,
+      "period_frac_diff_vs_sec46": 0.0199976518042051,
+      "runtime_s": 13.5,
+      "phase_offset_deg_vs_sector46": 21.6
+    },
+    "72": {
+      "sector": 72,
+      "n_points": 10689,
+      "status": "ok",
+      "peak_period_days": 14.522012907423221,
+      "peak_power": 0.11315667054710159,
+      "false_alarm_prob": 1.5936662384656392e-273,
+      "phase_max_deg_at_P_ref": 349.2,
+      "period_frac_diff_vs_sec46": 0.05365806609589262,
+      "runtime_s": 15.8,
+      "phase_offset_deg_vs_sector46": 36.0
+    }
+  },
+  "verdict": "artifact_rejected",
+  "runtime_s": 41.8,
+  "completed_at_utc": "2026-04-18T11:01:04Z"
+}
