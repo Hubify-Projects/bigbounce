@@ -1,5 +1,7 @@
 # Research Queue — Hubify Labs BigBounce Program
 
+**Canonical live queue (as of 2026-04-18):** [`project-context/SSOT/queue.md`](SSOT/queue.md) — that is the source-of-truth for all open/closed work. This file is a dated 2026-04-08 snapshot retained for historical experiment audit; paper-readiness %s and live priorities below should be cross-checked against `SSOT/index.md`.
+
 **Last updated: 2026-04-08**
 **Scripts location:** `h200_scripts/experiments/`
 **Results location:** `pipelines/h200_results/`

@@ -1,5 +1,7 @@
 # Lab #1 — Bounce Cosmology Lab Migration Plan
 
+**Canonical live paper status (as of 2026-04-18):** [`SSOT/index.md`](SSOT/index.md) — all 4 papers at 100%. Inline references in this spec to "P(quintom-B) = 98.6%", "eROSITA 9,303 anomalies (1%)", and "328,448 total anomalies" are historical snapshot values and were **retracted fire #25 (2026-04-18)**: quintom-B is a theoretical channel only per Paper 1 §VII.H (zero free w0-wa samples in this program); eROSITA DR1 = 298 BigAE top-cut per Paper 3 Table 1; multi-survey total = 319,443 per Paper 3 §1.
+
 **Status:** SPEC COMPLETE · awaiting execution
 **Priority:** #1 (super super super clear main goal per Houston)
 **Target lab slug:** `bigbounce-hubify` (final name TBD — see §0.3 below)

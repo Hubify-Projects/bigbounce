@@ -1,5 +1,7 @@
 # Hubify Labs — Research Quality Argument
 
+**Canonical live paper status (as of 2026-04-18):** [`SSOT/index.md`](SSOT/index.md). Inline BigBounce figures in this document (424,181+ MCMC samples, 328,448 anomalies, 15-survey framing) are 2026-04-07 snapshot values. Current canonical: 309,789 frozen posterior samples across 3 dataset combinations (zero free w0-wa per Paper 1 §VII.H, "P(quintom-B) = 98.6%" retracted fire #25), 319,443 anomalies across 8 surveys (Paper 3 §1).
+
 **Author:** Claude (synthesized from BigBounce ground truth + Hubify Labs PRD)
 **Date:** 2026-04-07
 **Audience:** Houston Golden

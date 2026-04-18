@@ -1,5 +1,7 @@
 # BigBounce Research Infrastructure Map
 
+**Canonical live status (as of 2026-04-18):** [`SSOT/index.md`](SSOT/index.md) — all 4 papers at 100%. This file is a dated 2026-04-07 snapshot; inline figures (MCMC sample counts, anomaly totals, eROSITA anomaly counts, quintom probabilities) are historical and **do not** reflect the fire #25 (2026-04-18) bookkeeping correction. Specifically: (a) chain sample count 424,181+ → 309,789 frozen across 3 datasets (zero free w0-wa samples per Paper 1 §VII.H); (b) anomaly total 328,448 → 319,443 (Paper 3 §1 canonical); (c) eROSITA DR1 = 298 BigAE top-cut (not 9,303 which was the pre-top-cut 1% placeholder); (d) "P(quintom-B) = 98.6%" was fire-#21 bookkeeping confabulation, retracted fire #25.
+
 **Living Document — Last Updated: 2026-04-07**
 **Version: v2.2.0** | **Author: Houston Golden** | **Lab: Hubify Labs**
 

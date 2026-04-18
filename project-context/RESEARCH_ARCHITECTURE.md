@@ -9,13 +9,13 @@
 
 ## Current Status (April 2026)
 
-> **This architecture document was written in March 2026. The sections below remain accurate for infrastructure and API details. Here is what has changed since then:**
+> **This architecture document was written in March 2026. The sections below remain accurate for infrastructure and API details. Canonical live status is in [`SSOT/index.md`](SSOT/index.md). Here is what has changed since then:**
 
-- **Multi-survey anomaly sweep complete.** 32.3M spectra processed across DESI DR1 (196K anomalies), SDSS (78K), LAMOST (44K), and eROSITA (9.3K) — 327K total anomalies detected using recursive autoencoder pipeline.
-- **Bounce portfolio strategy adopted.** Research is now bounce-model-agnostic (not ECH-specific). Active tracks: quintom bounce-DE unification (DESI 4.2σ w0-wa), PBH f_NL triple role, NANOGrav 15yr consistency, matter bounce f_NL = -35/8. See `bounce_portfolio_strategy.md`.
+- **Multi-survey anomaly sweep complete.** 37.3M sources processed across 8 surveys → 319,443 total anomalies (Paper 3 §1 canonical). eROSITA DR1 = 298 BigAE top-cut (Paper 3 Table 1; the earlier 9.3K figure was a pre-top-cut 1% placeholder).
+- **Bounce portfolio strategy adopted.** Research is now bounce-model-agnostic (not ECH-specific). Active tracks: quintom bounce-DE as a *theoretical channel only* (this program uses no free w0-wa samples per Paper 1 §VII.H; DESI DR2 2.8-4.2σ is observational context, not a BigBounce-group MCMC result), PBH f_NL triple role, NANOGrav 15yr consistency, matter bounce f_NL = -35/8. See `bounce_portfolio_strategy.md`.
 - **H200 pod running extended queue.** Planck CMB, ACT DR6, NEOWISE, Gaia, cross-match, and super-resolution jobs queued. Monitor with `research_monitor.sh`.
-- **Paper count: 4.** Paper 1 (v2.2.0, 24pp) and Paper 2 (v1.3.0, 12pp) ready for submission. Paper 3 (DESI anomaly catalog, v0.1 draft). Paper 4 (chirality catalog, 8.47M galaxies, ~85% ready).
-- **MCMC: 424K+ samples.** w0-wa quintom converged at P(quintom-B) = 98.6%.
+- **Paper count: 4** — all four at ~100% readiness per `SSOT/index.md`. Paper 1 (Spin-Torsion v2.3.0), Paper 2 (f_NL Forecast v1.6.1, revtex4-2 conversion landed fire #9), Paper 3 (Anomaly Catalog, 28 MB PDF / 319,443 anomalies), Paper 4 (Chirality Catalog, 8.47M galaxies, LSST 10-yr projection line landed fire #9).
+- **MCMC: 309,789 frozen posterior samples across 3 dataset combinations.** Zero free w0-wa samples in this program per Paper 1 §VII.H. The prior "424K+ samples / P(quintom-B) = 98.6%" figures were fire-#21 bookkeeping confabulation, corrected fire #25 (2026-04-18).
 - **Pipeline 1 next phase.** Tracer purification steps 2-6 (cross-match, classify, validate bias, re-measure σ(f_NL)) pending H200 queue completion. See `pipeline1_tracer_purification_plan.md`.
 
 ---

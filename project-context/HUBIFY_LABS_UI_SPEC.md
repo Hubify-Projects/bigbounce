@@ -1,5 +1,7 @@
 # Hubify Labs — UI/UX Design Specification
 
+**Note on fixture text (2026-04-18 fire #33):** This spec contains mockup-wireframe strings such as "Quintom MCMC: P(quintom-B) = 84.3%", "Anomalies: 328,448", and "eROSITA 9,303" (used as example seeded UI content). These are intentionally-frozen mockup fixtures, not fact claims. Live paper status: [`SSOT/index.md`](SSOT/index.md). Current canonical: quintom-B is a theoretical channel only per Paper 1 §VII.H (zero free w0-wa samples; "P(quintom-B) = 98.6%" retracted fire #25); 319,443 anomalies across 8 surveys (Paper 3 §1); eROSITA DR1 = 298 BigAE top-cut (Paper 3 Table 1).
+
 **Version:** 1.0 | **Date:** 2026-04-07
 **Companion to:** `HUBIFY_LABS_PRD.md`
 
