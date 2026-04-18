@@ -1,0 +1,37 @@
+{
+  "method": "full Fisher-matrix over 14-bin free-spectrum covariance with leakage",
+  "fiducial": {
+    "A_GW": 2.4e-15,
+    "gamma": 3.2
+  },
+  "ng15_current": {
+    "sigma_log10A": 0.13501862833561454,
+    "sigma_gamma": 0.5064805964756603,
+    "correlation_rho": -0.7942423399268717,
+    "tension_vs_SMBHB_sigma": 2.237663873442774
+  },
+  "forecast": {
+    "NG15_current": {
+      "sigma_log10A": 0.13501862833561454,
+      "sigma_gamma": 0.5064805964756603,
+      "tension_vs_SMBHB_sigma": 2.237663873442774
+    },
+    "NG20_est": {
+      "sigma_log10A": 0.13501862833561454,
+      "sigma_gamma": 0.5064805964756603,
+      "tension_vs_SMBHB_sigma": 2.237663873442774
+    },
+    "CPTA_2030": {
+      "sigma_log10A": 0.13501862833561448,
+      "sigma_gamma": 0.5064805964756601,
+      "tension_vs_SMBHB_sigma": 2.2376638734427754
+    },
+    "SKA_PTA_2035": {
+      "sigma_log10A": 0.13501862833561448,
+      "sigma_gamma": 0.5064805964756601,
+      "tension_vs_SMBHB_sigma": 2.2376638734427754
+    }
+  },
+  "notes": "Proxy covariance built from NG15 public free-spectrum shape; replaces scaling-only forecast. Replace C with actual NG15 covariance matrix (public numpy file) for final paper table.",
+  "runtime_s": 0.0010678768157958984
+}
