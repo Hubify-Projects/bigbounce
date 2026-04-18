@@ -317,22 +317,22 @@
       <table style="font-size:13px; margin-top:8px;">
         <thead><tr><th>Survey</th><th>Sources</th><th>Anomalies</th><th>Status</th></tr></thead>
         <tbody>
-          <tr style="background:#f0fdf4;"><td>DESI DR1</td><td>22.5M</td><td>195,829</td><td>PASS</td></tr>
-          <tr style="background:#f0fdf4;"><td>SDSS DR18</td><td>2.3M</td><td>77,905</td><td>PASS</td></tr>
-          <tr style="background:#f0fdf4;"><td>LAMOST DR10</td><td>11.4M</td><td>44,075</td><td>PASS</td></tr>
-          <tr style="background:#f0fdf4;"><td>eROSITA DR1</td><td>930K</td><td>298</td><td>PASS</td></tr>
-          <tr style="background:#f0fdf4;"><td>Planck CMB (masked)</td><td>20K</td><td>193</td><td>FIXED</td></tr>
-          <tr style="background:#f0fdf4;"><td>ACT DR6 (proper)</td><td>20K</td><td>200</td><td>FIXED</td></tr>
-          <tr style="background:#f0fdf4;"><td>NEOWISE (eclip mask)</td><td>43.5K</td><td>444</td><td>FIXED</td></tr>
-          <tr style="background:#f0fdf4;"><td>Gaia DR3 (10x exp)</td><td>500K</td><td>5,000</td><td>FIXED</td></tr>
-          <tr style="background:#fef3c7;"><td colspan="4"><strong>Phase 5-6 Extensions:</strong></td></tr>
-          <tr style="background:#fef3c7;"><td>BOSS/eBOSS DR16</td><td colspan="3">COMPLETE</td></tr>
-          <tr style="background:#fef3c7;"><td>DES DR2</td><td colspan="3">COMPLETE</td></tr>
-          <tr style="background:#fef3c7;"><td>VLASS Radio</td><td colspan="3">COMPLETE — 77 ultra-steep-spectrum candidates</td></tr>
-          <tr style="background:#fef3c7;"><td>LOFAR LoTSS DR2</td><td colspan="3">COMPLETE</td></tr>
-          <tr style="background:#fef3c7;"><td>JWST MAST</td><td colspan="2">500</td><td>COMPLETE</td></tr>
-          <tr style="background:#fef3c7;"><td>Chandra CSC 2.1</td><td colspan="2">800</td><td>COMPLETE</td></tr>
-          <tr style="background:#fef3c7;"><td>XMM 4XMM-DR14</td><td colspan="2">1,000</td><td>COMPLETE</td></tr>
+          <tr class="row-novel"><td>DESI DR1</td><td>22.5M</td><td>195,829</td><td>PASS</td></tr>
+          <tr class="row-novel"><td>SDSS DR18</td><td>2.3M</td><td>77,905</td><td>PASS</td></tr>
+          <tr class="row-novel"><td>LAMOST DR10</td><td>11.4M</td><td>44,075</td><td>PASS</td></tr>
+          <tr class="row-novel"><td>eROSITA DR1</td><td>930K</td><td>298</td><td>PASS</td></tr>
+          <tr class="row-novel"><td>Planck CMB (masked)</td><td>20K</td><td>193</td><td>FIXED</td></tr>
+          <tr class="row-novel"><td>ACT DR6 (proper)</td><td>20K</td><td>200</td><td>FIXED</td></tr>
+          <tr class="row-novel"><td>NEOWISE (eclip mask)</td><td>43.5K</td><td>444</td><td>FIXED</td></tr>
+          <tr class="row-novel"><td>Gaia DR3 (10x exp)</td><td>500K</td><td>5,000</td><td>FIXED</td></tr>
+          <tr class="row-honest"><td colspan="4"><strong>Phase 5-6 Extensions:</strong></td></tr>
+          <tr class="row-honest"><td>BOSS/eBOSS DR16</td><td colspan="3">COMPLETE</td></tr>
+          <tr class="row-honest"><td>DES DR2</td><td colspan="3">COMPLETE</td></tr>
+          <tr class="row-honest"><td>VLASS Radio</td><td colspan="3">COMPLETE — 77 ultra-steep-spectrum candidates</td></tr>
+          <tr class="row-honest"><td>LOFAR LoTSS DR2</td><td colspan="3">COMPLETE</td></tr>
+          <tr class="row-honest"><td>JWST MAST</td><td colspan="2">500</td><td>COMPLETE</td></tr>
+          <tr class="row-honest"><td>Chandra CSC 2.1</td><td colspan="2">800</td><td>COMPLETE</td></tr>
+          <tr class="row-honest"><td>XMM 4XMM-DR14</td><td colspan="2">1,000</td><td>COMPLETE</td></tr>
         </tbody>
       </table>
       <p style="font-size:12px; color:var(--text-tertiary); margin-top:6px;">All 8 core surveys passed QC after Phase 1 re-runs. Phase 5-6 added 7 more surveys (radio, optical, X-ray, IR). Total: 33.5M+ sources, 328K+ anomalies.</p>
@@ -577,7 +577,7 @@
       <tr><th>Model</th><th style="text-align:center;">f<sub>NL</sub><sup>local</sup></th><th style="text-align:center;">Shape</th><th style="text-align:center;">Parameter-free?</th><th style="text-align:center;">SPHEREx testable?</th><th>Reference</th></tr>
     </thead>
     <tbody>
-      <tr style="background: #f0fdf4;">
+      <tr class="row-novel">
         <td style="font-weight:600;">&Lambda;CDM Matter Bounce</td>
         <td style="text-align:center; font-family:var(--font-mono); font-weight:700; color:#166534;">&minus;35/8 = &minus;4.375</td>
         <td style="text-align:center;">Local</td>
@@ -631,14 +631,14 @@
       <tr><th>Channel</th><th>Best Bounce Model</th><th>Prediction</th><th>Experiment</th><th style="text-align:center;">Status</th></tr>
     </thead>
     <tbody>
-      <tr style="background: #f0fdf4;">
+      <tr class="row-novel">
         <td style="font-weight:600;">Galaxy bispectrum</td>
         <td>Matter bounce</td>
         <td>f<sub>NL</sub> = &minus;35/8 (parameter-free)</td>
         <td>SPHEREx ~2028</td>
         <td style="text-align:center; font-weight:600; color:#166534;">FLAGSHIP</td>
       </tr>
-      <tr style="background: #f0fdf4;">
+      <tr class="row-novel">
         <td style="font-weight:600;">Bounce &rarr; DE unification</td>
         <td>Quintom bounce</td>
         <td>w(z) crosses &minus;1</td>

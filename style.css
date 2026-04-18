@@ -551,6 +551,113 @@ tbody tr.row-retracted    { background: rgba(185,28,28,0.06); }
 .chip-info     { background: #2563eb; }
 .chip-neutral  { background: #6b7280; }
 
+/* Readiness / PDF badges (replace inline light-bg hex on paper.html etc.) */
+.badge-ready      { background: rgba(22,163,74,0.12);  color: #166534; border: 1px solid rgba(22,163,74,0.35); }
+.badge-ready-amber{ background: rgba(217,119,6,0.12);  color: #9a3412; border: 1px solid rgba(217,119,6,0.35); }
+.badge-ready-purple{background: rgba(124,58,237,0.12); color: #7c3aed; border: 1px solid rgba(124,58,237,0.35); }
+.badge-pdf        { background: rgba(22,163,74,0.10);  color: #166534; border: 1px solid rgba(22,163,74,0.30); }
+[data-theme="dark"] .badge-ready,
+[data-theme="dark"] .badge-pdf       { color: #4ade80; border-color: rgba(74,222,128,0.45); }
+[data-theme="dark"] .badge-ready-amber { color: #fbbf24; border-color: rgba(251,191,36,0.45); }
+[data-theme="dark"] .badge-ready-purple{ color: #c4b5fd; border-color: rgba(196,181,253,0.45); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .badge-ready,
+  :root:not([data-theme="light"]) .badge-pdf       { color: #4ade80; border-color: rgba(74,222,128,0.45); }
+  :root:not([data-theme="light"]) .badge-ready-amber { color: #fbbf24; border-color: rgba(251,191,36,0.45); }
+  :root:not([data-theme="light"]) .badge-ready-purple{ color: #c4b5fd; border-color: rgba(196,181,253,0.45); }
+}
+
+/* ══════════════════════════════════
+   Dark-mode overrides for legacy per-page bg+color badge classes
+   (these are defined in page-local <style> blocks with light-only
+   hex pairs — override to readable dark equivalents so we don't
+   have to rewrite every inline <style> in every page)
+   ══════════════════════════════════ */
+
+/* Green family — .badge-pass, .n3, .feed-tag.pass, .mcmc-badge.converged,
+   .status-badge.frozen, .de-sidebar-badge.frozen, .gl-type-obs, .callout.positive,
+   .highlight-box, tr.row-pass td, .status-ready */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .badge-pass,
+  :root:not([data-theme="light"]) .n3,
+  :root:not([data-theme="light"]) .feed-tag.pass,
+  :root:not([data-theme="light"]) .mcmc-badge.converged,
+  :root:not([data-theme="light"]) .status-badge.frozen,
+  :root:not([data-theme="light"]) .de-sidebar-badge.frozen,
+  :root:not([data-theme="light"]) .gl-type-obs,
+  :root:not([data-theme="light"]) .callout.positive,
+  :root:not([data-theme="light"]) .highlight-box,
+  :root:not([data-theme="light"]) .ochip.site { background: rgba(22,163,74,0.14) !important; color: #86efac !important; border-color: rgba(74,222,128,0.4) !important; }
+  :root:not([data-theme="light"]) tr.row-pass td { background: rgba(22,163,74,0.08) !important; color: var(--text-secondary) !important; }
+
+  /* Red family */
+  :root:not([data-theme="light"]) .badge-fail,
+  :root:not([data-theme="light"]) .mcmc-badge.not-converged,
+  :root:not([data-theme="light"]) .status-badge.fail,
+  :root:not([data-theme="light"]) .gl-type-instrument,
+  :root:not([data-theme="light"]) .callout.blocker,
+  :root:not([data-theme="light"]) .caution-box,
+  :root:not([data-theme="light"]) .feed-tag.fail,
+  :root:not([data-theme="light"]) .pchip.p0,
+  :root:not([data-theme="light"]) .badge-red,
+  :root:not([data-theme="light"]) .badge-deprecated,
+  :root:not([data-theme="light"]) .label-badge.ARTIFACT,
+  :root:not([data-theme="light"]) .d-frontier,
+  :root:not([data-theme="light"]) .l-platform { background: rgba(185,28,28,0.16) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+  :root:not([data-theme="light"]) .error { background: rgba(185,28,28,0.10) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+
+  /* Amber family */
+  :root:not([data-theme="light"]) .badge-ai,
+  :root:not([data-theme="light"]) .badge-amber,
+  :root:not([data-theme="light"]) .pchip.p1,
+  :root:not([data-theme="light"]) .label-badge.NEEDS_SPECTRUM,
+  :root:not([data-theme="light"]) .priority-next,
+  :root:not([data-theme="light"]) .status-ready,
+  :root:not([data-theme="light"]) .paper-tab.active .tab-badge.amber { background: rgba(217,119,6,0.16) !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4) !important; }
+  :root:not([data-theme="light"]) .de-sidebar-badge.ref,
+  :root:not([data-theme="light"]) .status-badge.ref { background: rgba(234,179,8,0.14) !important; color: #fde68a !important; border-color: rgba(253,230,138,0.4) !important; }
+
+  /* Purple family */
+  :root:not([data-theme="light"]) .gl-type-theory { background: rgba(124,58,237,0.14) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
+}
+
+/* Same but for manual [data-theme="dark"] */
+[data-theme="dark"] .badge-pass,
+[data-theme="dark"] .n3,
+[data-theme="dark"] .feed-tag.pass,
+[data-theme="dark"] .mcmc-badge.converged,
+[data-theme="dark"] .status-badge.frozen,
+[data-theme="dark"] .de-sidebar-badge.frozen,
+[data-theme="dark"] .gl-type-obs,
+[data-theme="dark"] .callout.positive,
+[data-theme="dark"] .highlight-box,
+[data-theme="dark"] .ochip.site { background: rgba(22,163,74,0.14) !important; color: #86efac !important; border-color: rgba(74,222,128,0.4) !important; }
+[data-theme="dark"] tr.row-pass td { background: rgba(22,163,74,0.08) !important; color: var(--text-secondary) !important; }
+[data-theme="dark"] .badge-fail,
+[data-theme="dark"] .mcmc-badge.not-converged,
+[data-theme="dark"] .status-badge.fail,
+[data-theme="dark"] .gl-type-instrument,
+[data-theme="dark"] .callout.blocker,
+[data-theme="dark"] .caution-box,
+[data-theme="dark"] .feed-tag.fail,
+[data-theme="dark"] .pchip.p0,
+[data-theme="dark"] .badge-red,
+[data-theme="dark"] .badge-deprecated,
+[data-theme="dark"] .label-badge.ARTIFACT,
+[data-theme="dark"] .d-frontier,
+[data-theme="dark"] .l-platform { background: rgba(185,28,28,0.16) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+[data-theme="dark"] .error { background: rgba(185,28,28,0.10) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+[data-theme="dark"] .badge-ai,
+[data-theme="dark"] .badge-amber,
+[data-theme="dark"] .pchip.p1,
+[data-theme="dark"] .label-badge.NEEDS_SPECTRUM,
+[data-theme="dark"] .priority-next,
+[data-theme="dark"] .status-ready,
+[data-theme="dark"] .paper-tab.active .tab-badge.amber { background: rgba(217,119,6,0.16) !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4) !important; }
+[data-theme="dark"] .de-sidebar-badge.ref,
+[data-theme="dark"] .status-badge.ref { background: rgba(234,179,8,0.14) !important; color: #fde68a !important; border-color: rgba(253,230,138,0.4) !important; }
+[data-theme="dark"] .gl-type-theory { background: rgba(124,58,237,0.14) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
+
 /* ══════════════════════════════════
    Print Styles
    ══════════════════════════════════ */
