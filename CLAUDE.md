@@ -42,7 +42,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - w0-wa bound discussed theoretically only — not implemented computationally in this program (Paper 1 §VII.H explicitly: zero free-w0-wa samples among the 309,789 frozen posterior samples; earlier "quintom-B at 98.6%" bookkeeping was fire-#21 confabulation, corrected fire #25)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
 - 424,181+ MCMC posterior samples across 3 frozen dataset combinations
-- Multi-survey anomaly sweep (8 surveys, 33.5M sources, 319,443 anomalies total after eROSITA top-cut correction — matches Paper 3 §1 "319,443" figure):
+- Multi-survey anomaly sweep (8 surveys, 37.3M sources, 319,443 anomalies total after eROSITA top-cut correction — matches Paper 3 Table 1 canonical total 37,292,042 / 319,443):
   - DESI DR1: 22.5M spectra, 195,829 anomalies (0.87%), 2,145 SNR-filtered, 1,127 uncataloged
   - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%) — QC: domain shift scores
   - eROSITA DR1: 930K sources, 298 anomalies (0.03%, BigAE top cut — Paper 3 Table 1 canonical; earlier 9,303 figure was a 1% placeholder before the top-cut policy was applied)
@@ -56,7 +56,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - SPHEREx f_NL forecast (2026-04-10): σ=0.36 (Fisher ideal) / 0.93 (Munchmeyer+2019 conservative) → 4.7-12σ detection of f_NL=-4.375 (bounce) by 2027
 - NaMaster birefringence (2026-04-10): β=0.27° (bounce prediction) detected at SNR=20.74σ in Monte Carlo; β=0.342° (ACT observed) at 26.26σ; tension=0.77σ (excellent agreement)
 - Combined PTA GPU MCMC: γ = 3.20 ± 0.42 (Paper 3 §6 canonical — 2026-04-17 v2b Fisher recompute), bounce γ=3.0 at 0.48σ, SMBHB excluded at ≳2σ. (Earlier 2026-04-10 CLAUDE.md figure γ = 3.33 ± 0.40 predated the v2b Fisher; corrected fire #25 per theorist peer review.)
-- PBH abundance from f_NL=-4.375 (2026-04-10): Edgeworth expansion correction to Press-Schechter; matter bounce naturally suppresses PBH formation; GW spectral index bounce γ=3.0 at 0.83σ from NANOGrav γ=3.33±0.40; f_NL triple role confirmed
+- PBH abundance from f_NL=-4.375 (2026-04-10): Edgeworth expansion correction to Press-Schechter; matter bounce naturally suppresses PBH formation; GW spectral index bounce γ=3.0 at 0.48σ from Paper 3 §6 canonical γ=3.20±0.42 (fire #50 2026-04-18: was stale γ=3.33±0.40 / 0.83σ predating the v2b Fisher recompute; harmonized with line-58 PTA GPU MCMC figure); f_NL triple role confirmed
 - Second-level AE on 195,829 DESI DR1 anomalies (2026-04-10): 16D latent, max ultra-rare score=53.4 (99.9995th percentile), found ~20 objects anomalous within the anomaly pool
 - Emission line finder on DESI DR1 anomalies (2026-04-10): 5,000 anomaly spectra → 4,526 redshifts (Δz<0.05: 80.8%), 96.9% AGN fraction by BPT classification
 - Dyson sphere search (2026-04-08): Gaia+AllWISE 7-band AE + RF, 100K stars, 50 planted; precision=1.0, recall=0.9; top discriminators G-W4, W2-W3 colors
