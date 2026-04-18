@@ -1,54 +1,37 @@
 ---
-title: "Paper 1: Spin-Torsion Cosmology"
+title: "Paper 1: Spin-Torsion Cosmology — POINTER"
 type: entity
-tags: [paper, ech, barriers, birefringence, bounce]
-last_updated: 2026-04-04
-sources:
-  - arxiv/main.tex
-  - arxiv/main.pdf
-  - version.json
-  - project-context/CURRENT_STATUS.md
+tags: [paper, ech, barriers, birefringence, bounce, pointer]
+last_updated: 2026-04-17
+superseded_by: project-context/SSOT/paper-1/status.md
 ---
 
-# Paper 1: Spin-Torsion Cosmology
+# Paper 1: Spin-Torsion Cosmology — POINTER ONLY
 
-**Version:** v2.2.0 | **Pages:** 24 | **References:** 63+
+> **This wiki entry is a pointer.** The canonical status lives in the SSOT.
+> Do not read status claims from this file — read them from the SSOT.
 
-## Summary
+## Canonical sources
 
-The foundational paper of the BigBounce program. Documents 14 structural barriers closing all ECH-specific routes from bounce to dark energy, then pivots to a model-agnostic bounce portfolio with testable predictions.
+- **SSOT:** [`project-context/SSOT/paper-1/status.md`](../../project-context/SSOT/paper-1/status.md)
+- **Science highlights (N0–N4 novelty tags):** [`project-context/paper1_science_highlights.md`](../../project-context/paper1_science_highlights.md)
+- **Canonical `.tex`:** `arxiv/main.tex`
+- **Canonical PDF:** `arxiv/main.pdf`
+- **Bibliography:** `arxiv/references.bib`
+- **Figures:** `arxiv/figures/` (bundled into `arxiv/main_arxiv_submission.tar.gz` for arXiv)
+- **Version metadata:** `version.json`
 
-## Key Content
+## One-line status (mirror of SSOT)
 
-- **14 ECH barriers:** Foundation studies A-G systematically close all paths from Einstein-Cartan-Hehl torsion to late-time cosmic acceleration
-- **ALP birefringence prediction:** beta = 0.27 deg, matching 3.6-sigma observed signal (0.342 +/- 0.094 deg)
-- **f_NL = -35/8:** Parameter-free matter bounce prediction, mechanism-independent
-- **Bounce model discrimination table:** Matter bounce vs cuscuton vs ekpyrotic vs quintom vs inflation
-- **MCMC results:** 424,181+ posterior samples, Delta_Neff ~ 0, H0 = 67.68
+**v2.3.x · 99% ready.** Science is done (14-barrier catalog, perturbation-transparency theorem, ALP β=0.264°±0.065° real-Planck NaMaster, mechanism-independent f_NL = −35/8, bounce-class discrimination table, 424,181 MCMC samples). The 1% gap covers: L299 TBD wordsmith (✓ done 2026-04-17), figures-verify (✓ done 2026-04-17), corner plots from existing chains (pod), final PDF recompile (pod), arXiv tarball (✓ built 2026-04-17, pod smoke-test pending), site sync, wiki sync (this file).
 
-## Submission Status
+## Why this file exists as a pointer
 
-~99% content complete, ~80% submission-ready. Needs TIER 1 edits before arXiv submission:
-1. Self-named parameter issue (rename or reframe)
-2. Peer review section needs tightening
-3. Some claims flagged as grandiose (tone down)
-4. Attribution clarity in certain derivations
-
-## File Locations
-
-- Source: `arxiv/main.tex`
-- PDF: `arxiv/main.pdf`
-- Bibliography: `arxiv/references.bib`
-- Figures: `public/images/`
-- Version metadata: `version.json`
-
-## Revision History
-
-10+ revision rounds, ~200 edits. Compiled with `revtex4-2` (Physical Review D style). Paper uses `\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}`.
+The earlier version of this file (2026-04-04) claimed "~80% submission-ready" with four TIER-1 edits still open. Those edits were closed in the 2026-03 revision rounds and the status has long since moved to 99%. This file now mirrors the SSOT so downstream surfaces don't re-introduce drift.
 
 ## Connections
 
-- Barriers reframed as constructive in [[bounce-portfolio]] (map what bounce-DE unification requires)
+- Barriers reframed as constructive in [[bounce-portfolio]]
 - f_NL prediction detailed in [[fnl-prediction]]
 - Birefringence prediction detailed in [[birefringence]]
 - Website paper page: `paper.html`

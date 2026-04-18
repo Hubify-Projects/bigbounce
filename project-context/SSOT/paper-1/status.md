@@ -143,13 +143,13 @@ Itemized list of everything that must happen for Paper 1 to be submission-grade,
 
 | # | Task | Queue ID | Owner | % weight | Status |
 |---|---|---|---|---:|---|
-| 1 | Replace L299 "amplitude and shape TBD" with a parametric estimate or an explicit "not derived here; noted as open" phrasing | `P1-LINE-299-WORDSMITH` | agent | 0.2 % | [ ] |
-| 2 | Verify every `\includegraphics{...}` in main.tex resolves to a file in `arxiv/figures/` and that the PDF ≥ 1 MB after recompile | `P1-FIGURES-VERIFY` | agent | 0.1 % | [ ] |
+| 1 | ~~Replace L299 "amplitude and shape TBD" with a parametric estimate or an explicit "not derived here; noted as open" phrasing~~ ✓ DONE 2026-04-17: rewritten to cite Sec. `futuredirections` explicitly and reference the spectator-ALP photon-torsion coupling channel for the isotropic angle. | `P1-LINE-299-WORDSMITH` ✓ | agent | 0.2 % | [x] |
+| 2 | ~~Verify every `\includegraphics{...}` in main.tex resolves to a file in `arxiv/figures/`~~ ✓ DONE 2026-04-17: grep → 2 `\includegraphics` calls, both resolve (`figure1_lqg_holst_derivation_enhanced.png`, `consistency_window_birefringence.pdf`). PDF ≥ 1 MB check deferred to P1-PDF-RECOMPILE on pod. | `P1-FIGURES-VERIFY` ✓ | agent | 0.1 % | [x] |
 | 3 | Generate corner plots from existing chains (`getdist`), add a figure to §IV, drop the "will be presented in a companion data release" wording at L882 | `P1-CORNER-PLOTS` | pod | 0.2 % | [ ] |
 | 4 | Recompile PDF on-pod with texlive-publishers; refresh `\paperTimestamp` to compile date | `P1-PDF-RECOMPILE` | pod | 0.2 % | [ ] |
 | 5 | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` to show v2.3.x final numbers after recompile | `P1-SITE-SYNC` | site | 0.1 % | [ ] |
-| 6 | Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to this SSOT | `P1-WIKI-SYNC` | agent | 0.05 % | [ ] |
-| 7 | Build arXiv tarball (main.tex + references.bib + figures/ + aux) and smoke-test a clean revtex build from the tarball alone | `P1-TARBALL` | agent | 0.15 % | [ ] |
+| 6 | ~~Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to this SSOT~~ ✓ DONE 2026-04-17: `paper-1-spin-torsion.md` rewritten as pointer-only; SSOT + science-highlights links added; stale "80% submission-ready / TIER-1 edits" claim removed. | `P1-WIKI-SYNC` ✓ | agent | 0.05 % | [x] |
+| 7 | Build arXiv tarball (main.tex + references.bib + figures/ + aux) and smoke-test a clean revtex build from the tarball alone | `P1-TARBALL` (partial) | agent | 0.15 % | [~] Tarball built at `arxiv/main_arxiv_submission.tar.gz` (2.0 MB, 14 figures, main.tex + references.bib + main.bbl). Clean-revtex smoke-test from tarball alone still pending pod (requires texlive-publishers). |
 
 **Sum: 1.0 %** — closing all seven tasks lands Paper 1 at 100 % / submission-ready.
 
