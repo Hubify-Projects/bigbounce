@@ -264,19 +264,19 @@ The 99 % headline number is arXiv-submit-readiness of the *manuscript itself*. "
 
 | Gap | % weight | Owner | Tracked in queue as |
 |---|---:|---|---|
-| **1 %** — Two divergent `.tex` files (pipelines vs arxiv). Canonical is `pipelines/p3_anomaly_engine/paper3_draft.tex`. | 0.3 | agent | `P3-PDF-CANON` — delete or rebuild `arxiv/paper3_anomaly_catalog.tex/.pdf` from the pipelines copy |
+| ~~**1 %** — Two divergent `.tex` files (pipelines vs arxiv). Canonical is `pipelines/p3_anomaly_engine/paper3_draft.tex`.~~ ✓ DONE 2026-04-17: `arxiv/paper3_anomaly_catalog.tex` replaced with a pointer stub; matching stale `.pdf` removed. | 0.3 | agent | `P3-PDF-CANON` ✓ |
 | **Recompile PDF with today's date + current SSOT cross-check.** Current PDF is dated 2026-04-15; any SSOT-driven text changes (limitations, data-availability link to SSOT) need a rebuild. Requires H200 pod with texlive. | 0.3 | pod | `P3-PDF-RECOMPILE` |
 | **Principle-10 DO-NOW items A, B, C (follow-up ops, extended cross-match, NANOGrav horizon forecast)** to honestly close the 3 "follow-up is needed" deferrals found in the paper text. | 0.2 | H200 | `P3-A`, `P3-B`, `P3-C` in queue |
-| **Site sync** — `index.html` (stat cards), `paper.html` (readiness %, version history), `activity.html` (new timeline entry), `figures.html` (new Paper 3 figures), `data-explorer.html` (anomaly catalog preview dataset) must all reflect SSOT numbers (37.3 M / 319,443 / 58.8 % / 4.38σ / γ=3.20±0.42). | 0.1 | agent | `P3-SITE-SYNC` |
+| **Site sync** (partial 2026-04-17) — `index.html` Paper 3 card + two stat cards + `paper.html` subtitle + "How these papers fit together" paragraph + Paper 3 listing all now quote SSOT canonical **319,443 / 37.3M / 58.8%** and SPHEREx 4.38σ / NANOGrav γ=3.20±0.42; `activity.html` received a 2026-04-17 timeline entry. `figures.html` and `data-explorer.html` still pending. | 0.1 | agent | `P3-SITE-SYNC` [~] |
 | **Cross-paper cross-references.** Paper 2 (f_NL forecast) cites Paper 3 results; Paper 4 shares the dipole infrastructure Paper 3 limitation G wants to use. Those sections need alignment. | 0.05 | agent | `P3-XREF` |
 | **Public data product.** Paper's data-availability line says "will be released as a community data product" — publish the aggregated 319,443-anomaly catalog to HuggingFace `bamfai/bigbounce-anomaly-catalog` (or similar) BEFORE arXiv submission so the link is live on day 1. | 0.05 | agent | `P3-HF-UPLOAD` |
 
 ### 99 % → 100 % definition of done
 
-- [ ] Canonical `.tex` is the pipelines copy; arxiv/ copy is deleted or rebuilt from it
+- [x] Canonical `.tex` is the pipelines copy; arxiv/ copy is a pointer stub (2026-04-17)
 - [ ] PDF recompiled on-pod with date bumped to submission date
 - [ ] Items A, B, C folded into §4.2 / §6 / §7.3
-- [ ] index.html · paper.html · activity.html · figures.html · data-explorer.html reflect SSOT numbers
+- [~] index.html · paper.html · activity.html updated (2026-04-17); figures.html · data-explorer.html still pending
 - [ ] HuggingFace catalog live with DOI (or stable versioned URL) referenced from §9 data-availability
 - [ ] wiki/entities/paper-3-anomaly-catalog.md is a pointer to this SSOT (✓ done 2026-04-17)
 - [ ] CURRENT_STATUS.md row updated (✓ done 2026-04-17)
