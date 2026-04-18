@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-18 (drive-to-100 fire #11) — `P3-HF-UPLOAD` moved to `[~]` partial. Created **private** HF dataset `bamfai/bigbounce-anomaly-catalog` (per Houston: private until arXiv submit). Uploaded DESI DR1 block (195,829 rows · 10.5 MB parquet · 61 % of paper aggregate) + dataset card. Paper 3 §9 data-availability updated with the URL. Filed `P3-HF-UPLOAD-EXTEND` (P2) for the remaining 7 surveys. Paper 3 still triggers recompile to render updated data-availability line (but PDF is cosmetic, not a headline number change).
+Last authoritative update: 2026-04-18 (drive-to-100 fire #12) — `P3-HF-UPLOAD-EXTEND` advanced one block: ACT DR6 (200 top-1% anomalies · 8.9 KB parquet) added to private HF dataset `bamfai/bigbounce-anomaly-catalog`. Coverage now DESI + ACT = 196,029 / 319,443 rows (61.4 %). Dataset card refreshed to a multi-block table with per-survey status + remaining-blocks roadmap. Still-agent-doable-next: SDSS, LAMOST, eROSITA, NEOWISE, Planck, Gaia (each needs explicit score-cut re-derivation). Script: `pipelines/p3_anomaly_engine/hf_upload_act.py`. Prior fire #11 DESI DR1 block remains unchanged.
 
 ## Legend
 
@@ -72,7 +72,7 @@ Last authoritative update: 2026-04-18 (drive-to-100 fire #11) — `P3-HF-UPLOAD`
 | `P3-H` | NANOGrav reforecast with inflated uncertainty from DR3 free-spectrum covariance | agent | P3 | 0.05 % | [ ] | §7.3 #5. ~1 wk |
 | `P3-B-NED-RETRY` | Retry 80-sample NED cross-match with ≥5 s inter-query delay + 3-retry on HTTP 429 | agent | P3 | 0.05 % | [ ] | 69/80 objects rate-limit-errored on first pass; rerun needed to finalize archival-ID fraction |
 | `P3-B-VIZIER` | VizieR all-catalogs cone search on residual NED-novel objects | agent | P3 | 0.05 % | [ ] | Initial attempt hung the VizieR TAP; needs timeout-aware retry budget 20-30 min |
-| `P3-HF-UPLOAD-EXTEND` | Aggregate + upload remaining 7 surveys (SDSS 77,905 · LAMOST 44,075 · eROSITA 298 · NEOWISE 436 · Planck 200 · ACT 200 · Gaia 500) to the private HF dataset | agent | P3 | 0.03 % | [ ] | Each survey needs explicit score-cut re-derivation from the H200 snapshot. Once all 8 are uploaded, extend the dataset card with the full 8-survey table |
+| `P3-HF-UPLOAD-EXTEND` | Aggregate + upload remaining surveys (SDSS 77,905 · LAMOST 44,075 · eROSITA 298 · NEOWISE 436 · Planck 200 · Gaia 500) to the private HF dataset | agent | P3 | 0.03 % | [~] | PARTIAL 2026-04-18 drive-to-100 fire #12 — ACT DR6 block (200 top-1% anomalies) uploaded via `pipelines/p3_anomaly_engine/hf_upload_act.py` (filter `is_top1pct==1` on 20k scored patches → 200, matches Paper 3 Table 1). Coverage: DESI + ACT = 196,029 / 319,443 (61.4 %). Dataset card now shows per-block coverage table. Remaining 6 surveys still need per-survey score-cut re-derivation. Once all are uploaded, extend card to final 8-survey summary |
 | `P-SITE-FULL-SYNC` | Site-agent pass: run all P3-SITE-SYNC, P4-SITE-SYNC, and post-sweep P1/P2 variants together | site | ALL | ~1 % total | [x] | DONE 2026-04-17 — badges + catalog previews + glossary additions + nav restructure + password-gated internal pages; commits `54f355e` → `9f4e692` |
 | `P-ARXIV-P4` | Assemble Paper 4 tarball, fill arXiv form, submit, return ID | Houston | P4 | closes | [ ] | Do Paper 4 first (most self-contained) |
 | `P-ARXIV-P3` | Same for Paper 3 | Houston | P3 | closes | [ ] | Follow ~24 h after Paper 4 |
