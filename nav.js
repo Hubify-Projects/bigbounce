@@ -6,6 +6,13 @@
  * The script auto-detects its depth from its own src path and
  * sets all href prefixes accordingly.
  *
+ * Public nav is structured around the research story:
+ *   Research · Papers · SSOT · Findings · Explainer · Data · Figures · Glossary
+ *
+ * Internal / work-log / debug pages live in a subtle collapsed group at the
+ * bottom of the sidebar behind a 🔒 indicator. They are also password-gated
+ * at the page level via gate.js.
+ *
  * Active page is determined by matching data-page to the current URL.
  */
 (function () {
@@ -40,8 +47,7 @@
   var path = location.pathname;
   var activePage = '';
   if (/\/index\.html$/.test(path) || /\/$/.test(path)) {
-    if (path.indexOf('/review') !== -1) activePage = 'review';
-    else if (path.indexOf('/dossier') !== -1 || path.indexOf('/project_master_dossier') !== -1) activePage = 'dossier';
+    if (path.indexOf('/project_master_dossier') !== -1) activePage = 'dossier';
     else activePage = 'index';
   } else if (path.indexOf('/projects') !== -1 && path.indexOf('/project_master') === -1) activePage = 'projects';
   else if (path.indexOf('/paper') !== -1) activePage = 'paper';
@@ -50,6 +56,8 @@
   else if (path.indexOf('/data-explorer') !== -1) activePage = 'data-explorer';
   else if (path.indexOf('/anomaly-explorer') !== -1) activePage = 'anomaly-explorer';
   else if (path.indexOf('/methodology-anomaly') !== -1) activePage = 'methodology-anomaly';
+  else if (path.indexOf('/methodology') !== -1) activePage = 'methodology';
+  else if (path.indexOf('/mathematics') !== -1) activePage = 'mathematics';
   else if (path.indexOf('/galaxy-explorer') !== -1) activePage = 'galaxy-explorer';
   else if (path.indexOf('/figures') !== -1) activePage = 'figures';
   else if (path.indexOf('/glossary') !== -1) activePage = 'glossary';
@@ -63,74 +71,87 @@
   else if (path.indexOf('/speculations') !== -1) activePage = 'speculations';
   else if (path.indexOf('/infrastructure') !== -1) activePage = 'infrastructure';
   else if (path.indexOf('/sitemap') !== -1) activePage = 'sitemap';
-  else if (path.indexOf('/review') !== -1) activePage = 'review';
-  else if (path.indexOf('/chat') !== -1) activePage = 'astro';
+  else if (path.indexOf('/chat') !== -1) activePage = 'chat';
   else if (path.indexOf('/admin') !== -1) activePage = 'admin';
   else if (path.indexOf('/sources') !== -1) activePage = 'sources';
-  else if (path.indexOf('/dossier') !== -1 || path.indexOf('/project_master_dossier') !== -1) activePage = 'dossier';
+  else if (path.indexOf('/versions') !== -1) activePage = 'versions';
+  else if (path.indexOf('/animations') !== -1) activePage = 'animations';
+  else if (path.indexOf('/bigbounce-md') !== -1) activePage = 'bigbounce-md';
+  else if (path.indexOf('/interactive-data') !== -1) activePage = 'interactive-data';
+  else if (path.indexOf('/galaxy-zoo') !== -1) activePage = 'galaxy-zoo';
+  else if (path.indexOf('/project_master_dossier') !== -1) activePage = 'dossier';
 
-  // ── Helper: mark active ──
   function activeAttr(page) {
     return page === activePage ? ' class="active"' : '';
   }
-
   function sidebarActiveClass(page, baseClass) {
     return baseClass + (page === activePage ? ' active' : '');
   }
-
-  // ── Path helper ──
   function p(file) { return prefix + file; }
 
-  // ── GitHub SVG icon ──
   var ghIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>';
-
-  // ── Hamburger SVG ──
   var menuIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="16" y2="16"/></svg>';
+  var lockIcon = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;opacity:0.6"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>';
 
-  // ── Build sidebar ──
+  // ── Determine if the viewer has unlocked the internal area ──
+  var isInternalUnlocked = false;
+  try { isInternalUnlocked = sessionStorage.getItem('bb_internal_unlocked') === '1'; } catch (e) {}
+  var internalOpenClass = isInternalUnlocked ? '' : ' collapsed';
+
+  // ── Build sidebar (public-first, internal collapsed at the bottom) ──
   var sidebar = ''
     + '<button class="sidebar-toggle" aria-label="Menu">' + menuIcon + '</button>'
     + '<aside class="sidebar">'
     + '<a href="' + p('index.html') + '" class="sidebar-brand">bigbounce</a>'
     + '<button class="sidebar-close">&laquo;</button>'
     + '<nav class="sidebar-nav">'
+
+    // ── Core story (always expanded) ──
     + '<a href="' + p('index.html') + '" class="' + sidebarActiveClass('index', 'sidebar-section') + '" data-page="index">research/</a>'
-    + '<a href="' + p('projects.html') + '" class="' + sidebarActiveClass('projects', 'sidebar-link') + '" data-page="projects">projects</a>'
     + '<a href="' + p('paper.html') + '" class="' + sidebarActiveClass('paper', 'sidebar-link') + '" data-page="paper">papers</a>'
     + '<a href="' + p('ssot.html') + '" class="' + sidebarActiveClass('ssot', 'sidebar-link') + '" data-page="ssot">ssot &amp; tasks</a>'
+    + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">key findings</a>'
     + '<a href="' + p('explained.html') + '" class="' + sidebarActiveClass('explained', 'sidebar-link') + '" data-page="explained">explainer</a>'
 
     + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">data &amp; explore</div>'
     + '<div class="sidebar-group">'
-    + '<a href="' + p('anomaly-explorer.html') + '" class="' + sidebarActiveClass('anomaly-explorer', 'sidebar-link') + '" data-page="anomaly-explorer">anomaly explorer</a>'
-    + '<a href="' + p('data-explorer.html') + '" class="' + sidebarActiveClass('data-explorer', 'sidebar-link') + '" data-page="data-explorer">data explorer</a>'
-    + '<a href="' + p('galaxy-explorer.html') + '" class="' + sidebarActiveClass('galaxy-explorer', 'sidebar-link') + '" data-page="galaxy-explorer">galaxy explorer</a>'
+    + '<a href="' + p('data-explorer.html') + '" class="' + sidebarActiveClass('data-explorer', 'sidebar-link') + '" data-page="data-explorer">data catalog</a>'
+    + '<a href="' + p('anomaly-explorer.html') + '" class="' + sidebarActiveClass('anomaly-explorer', 'sidebar-link') + '" data-page="anomaly-explorer">paper 3 · anomalies</a>'
+    + '<a href="' + p('galaxy-explorer.html') + '" class="' + sidebarActiveClass('galaxy-explorer', 'sidebar-link') + '" data-page="galaxy-explorer">paper 4 · chirality</a>'
     + '<a href="' + p('datasets.html') + '" class="' + sidebarActiveClass('datasets', 'sidebar-link') + '" data-page="datasets">datasets</a>'
-    + '<a href="' + p('methodology-anomaly.html') + '" class="' + sidebarActiveClass('methodology-anomaly', 'sidebar-link') + '" data-page="methodology-anomaly">methodology</a>'
     + '</div>'
 
     + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">reference</div>'
     + '<div class="sidebar-group">'
     + '<a href="' + p('figures.html') + '" class="' + sidebarActiveClass('figures', 'sidebar-link') + '" data-page="figures">figures</a>'
-    + '<a href="' + p('glossary.html') + '" class="' + sidebarActiveClass('glossary', 'sidebar-link') + '" data-page="glossary">glossary</a>'
+    + '<a href="' + p('glossary.html') + '" class="' + sidebarActiveClass('glossary', 'sidebar-link') + '" data-page="glossary">glossary &amp; equations</a>'
     + '<a href="' + p('articles.html') + '" class="' + sidebarActiveClass('articles', 'sidebar-link') + '" data-page="articles">articles</a>'
-    + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">contributions</a>'
+    + '<a href="' + p('methodology.html') + '" class="' + sidebarActiveClass('methodology', 'sidebar-link') + '" data-page="methodology">methodology</a>'
+    + '<a href="' + p('mathematics.html') + '" class="' + sidebarActiveClass('mathematics', 'sidebar-link') + '" data-page="mathematics">mathematics</a>'
+    + '<a href="' + p('sources.html') + '" class="' + sidebarActiveClass('sources', 'sidebar-link') + '" data-page="sources">sources</a>'
+    + '</div>'
+
+    + '<div class="sidebar-group-label collapsed" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">visualize</div>'
+    + '<div class="sidebar-group collapsed">'
+    + '<a href="' + p('timeline.html') + '" class="' + sidebarActiveClass('timeline', 'sidebar-link') + '" data-page="timeline">cosmic timeline</a>'
+    + '<a href="' + p('visualize.html') + '" class="' + sidebarActiveClass('visualize', 'sidebar-link') + '" data-page="visualize">simulation</a>'
+    + '</div>'
+
+    // ── Subtle internal group, collapsed by default unless already unlocked ──
+    + '<div class="sidebar-sep"></div>'
+    + '<div class="sidebar-group-label sidebar-internal-label' + internalOpenClass + '" style="opacity:0.55" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">' + lockIcon + ' &nbsp;internal</div>'
+    + '<div class="sidebar-group sidebar-internal-group' + internalOpenClass + '">'
+    + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
+    + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
+    + '<a href="' + p('projects.html') + '" class="' + sidebarActiveClass('projects', 'sidebar-link') + '" data-page="projects">projects</a>'
+    + '<a href="' + p('speculations.html') + '" class="' + sidebarActiveClass('speculations', 'sidebar-link') + '" data-page="speculations">speculations</a>'
+    + '<a href="' + p('infrastructure.html') + '" class="' + sidebarActiveClass('infrastructure', 'sidebar-link') + '" data-page="infrastructure">infrastructure</a>'
+    + '<a href="' + p('versions.html') + '" class="' + sidebarActiveClass('versions', 'sidebar-link') + '" data-page="versions">versions</a>'
+    + '<a href="' + p('sitemap.html') + '" class="' + sidebarActiveClass('sitemap', 'sidebar-link') + '" data-page="sitemap">sitemap</a>'
+    + '<a href="' + p('admin.html') + '" class="' + sidebarActiveClass('admin', 'sidebar-link') + '" data-page="admin">admin</a>'
     + '<a href="' + p('research/project_master_dossier/index.html') + '" class="' + sidebarActiveClass('dossier', 'sidebar-link') + '" data-page="dossier">dossier</a>'
     + '</div>'
 
-    + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">visualize</div>'
-    + '<div class="sidebar-group">'
-    + '<a href="' + p('timeline.html') + '" class="' + sidebarActiveClass('timeline', 'sidebar-link') + '" data-page="timeline">timeline</a>'
-    + '<a href="' + p('visualize.html') + '" class="' + sidebarActiveClass('visualize', 'sidebar-link') + '" data-page="visualize">simulation</a>'
-    + '<a href="' + p('chat.html') + '" class="' + sidebarActiveClass('astro', 'sidebar-link') + '" data-page="astro">astro chat</a>'
-    + '</div>'
-
-    + '<div class="sidebar-sep"></div>'
-    + '<a href="' + p('speculations.html') + '" class="' + sidebarActiveClass('speculations', 'sidebar-link') + '" data-page="speculations">speculations</a>'
-    + '<a href="' + p('infrastructure.html') + '" class="' + sidebarActiveClass('infrastructure', 'sidebar-link') + '" data-page="infrastructure">infrastructure</a>'
-    + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
-    + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
-    + '<a href="' + p('sitemap.html') + '" class="' + sidebarActiveClass('sitemap', 'sidebar-link') + '" data-page="sitemap">sitemap</a>'
     + '</nav>'
     + '<div class="sidebar-footer">Houston Golden<br>Independent Researcher<br>houston@hubify.com<br>'
     + '<a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:var(--text-tertiary);text-decoration:none;font-size:12px;">' + ghIcon + 'GitHub</a>'
@@ -139,11 +160,11 @@
 
   // ── Build topbar ──
   var topbar = '<div class="topbar">'
-    + '<span>April 2026 &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>'
-    + '<span class="topbar-right">Houston Golden &middot; Hubify Labs &middot; Independent Researcher</span>'
+    + '<span>Hubify Labs &middot; Bounce Cosmology &middot; GR-QC &middot; ASTRO-PH.CO &middot; HEP-TH</span>'
+    + '<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>'
     + '</div>';
 
-  // ── Build inline nav ──
+  // ── Build inline nav (public only) ──
   var inlineNav = '<nav><div class="nav-inner">'
     + '<a href="' + p('index.html') + '" class="brand">bigbounce</a>'
     + '<button class="nav-toggle" aria-label="Menu">' + menuIcon + '</button>'
@@ -151,39 +172,29 @@
     + '<a href="' + p('index.html') + '" data-page="index"' + activeAttr('index') + '>research</a>'
     + '<a href="' + p('paper.html') + '" data-page="paper"' + activeAttr('paper') + '>papers</a>'
     + '<a href="' + p('ssot.html') + '" data-page="ssot"' + activeAttr('ssot') + '>ssot</a>'
-    + '<a href="' + p('explained.html') + '" data-page="explained"' + activeAttr('explained') + '>explainer</a>'
-    + '<a href="' + p('data-explorer.html') + '" data-page="datasets"' + activeAttr('datasets') + '>data</a>'
+    + '<a href="' + p('contributions.html') + '" data-page="contributions"' + activeAttr('contributions') + '>findings</a>'
+    + '<a href="' + p('data-explorer.html') + '" data-page="data-explorer"' + activeAttr('data-explorer') + '>data</a>'
     + '<a href="' + p('figures.html') + '" data-page="figures"' + activeAttr('figures') + '>figures</a>'
+    + '<a href="' + p('explained.html') + '" data-page="explained"' + activeAttr('explained') + '>explainer</a>'
     + '<a href="' + p('glossary.html') + '" data-page="glossary"' + activeAttr('glossary') + '>glossary</a>'
-    + '<a href="' + p('articles.html') + '" data-page="articles"' + activeAttr('articles') + '>articles</a>'
-    + '<a href="' + p('activity.html') + '" data-page="activity"' + activeAttr('activity') + '>activity</a>'
-    + '<a href="' + p('status.html') + '" data-page="status"' + activeAttr('status') + '>status</a>'
-    + '<a href="' + p('review/index.html') + '" data-page="review"' + activeAttr('review') + '>review</a>'
-    + '<a href="' + p('chat.html') + '" data-page="astro"' + activeAttr('astro') + '>astro</a>'
-    + '<a href="' + p('research/project_master_dossier/index.html') + '" data-page="dossier"' + activeAttr('dossier') + '>dossier</a>'
     + '</div>'
     + '<span class="nav-meta">Houston Golden &middot; gr-qc</span>'
     + '<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>'
     + '</div></nav>';
 
   // ── Inject into page ──
-  // 1. Inject sidebar + topbar at the start of <body>
-  // 2. Wrap ALL remaining body content in .site-content for proper layout offset
   var navFragment = sidebar + topbar;
   document.body.insertAdjacentHTML('afterbegin', navFragment);
 
-  // Build the .site-content wrapper via DOM so it properly contains page content
   var siteContent = document.createElement('div');
   siteContent.className = 'site-content';
   siteContent.insertAdjacentHTML('afterbegin', inlineNav);
 
-  // Move all body children (except sidebar, toggle, topbar) into the wrapper
   var nodesToMove = [];
   var child = document.body.firstChild;
   while (child) {
     var next = child.nextSibling;
     if (child.nodeType === 1) {
-      var tag = child.tagName;
       var cl = child.classList || { contains: function() { return false; } };
       if (!cl.contains('sidebar') && !cl.contains('sidebar-toggle') && !cl.contains('topbar')) {
         nodesToMove.push(child);
@@ -207,11 +218,9 @@
   if (toggle && sidebarEl) {
     toggle.addEventListener('click', function () {
       if (isMobile()) {
-        // Mobile: slide sidebar open as overlay
         sidebarEl.classList.toggle('open');
         toggle.style.visibility = sidebarEl.classList.contains('open') ? 'hidden' : 'visible';
       } else {
-        // Desktop: uncollapse sidebar
         document.body.classList.remove('sidebar-collapsed');
         toggle.style.display = 'none';
       }
@@ -223,13 +232,11 @@
         sidebarEl.classList.remove('open');
         if (toggle) toggle.style.visibility = 'visible';
       } else {
-        // Desktop: collapse sidebar
         document.body.classList.add('sidebar-collapsed');
       }
     });
   }
 
-  // ── Wire up mobile nav toggle ──
   var navToggle = document.querySelector('.nav-toggle');
   if (navToggle) {
     navToggle.addEventListener('click', function () {
@@ -241,7 +248,6 @@
   function getEffectiveTheme() {
     var attr = document.documentElement.getAttribute('data-theme');
     if (attr === 'dark' || attr === 'light') return attr;
-    // No explicit preference — check system
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
     return 'light';
   }
@@ -262,7 +268,6 @@
       updateToggleIcon(themeBtn);
     });
 
-    // Update icon if system preference changes (and no manual override)
     if (window.matchMedia) {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
         updateToggleIcon(themeBtn);
