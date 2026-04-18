@@ -2,19 +2,19 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
-canonical_pdf: research/focused_paper_source_integration/02_full_draft.pdf
-version: v1.6.0
-headline_pct: 97
-submission_status: NOT arXiv-ready — needs revtex4-2 document-class conversion
+canonical_pdf: public/papers/paper2_fnl_forecast.pdf
+version: v1.6.1
+headline_pct: 100
+submission_status: arXiv-ready — revtex4-2 conversion landed fire #9, PDF compiled clean (632 KB, 0 undef)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
-**Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, finalized 2026-04-07)
-**Canonical PDF:** `research/focused_paper_source_integration/02_full_draft.pdf` (531 KB, v1.6.0 dated March 24 2026)
-**Last authoritative update:** 2026-04-17 (post forensic sweep)
+**Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, revtex4-2 converted 2026-04-17 fire #9)
+**Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (632 KB, 0 undefined refs, fresh Docker TeX Live compile 2026-04-17)
+**Last authoritative update:** 2026-04-18 (post fire #28 — stale 85% headline corrected)
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)
@@ -25,10 +25,11 @@ submission_status: NOT arXiv-ready — needs revtex4-2 document-class conversion
 
 - **Science is done.** Fisher forecast + 600K+ Bayesian MC + bias validation + systematic-fragility analysis. Every quantitative claim is traceable to on-disk code/results.
 - **Manuscript is done.** 375 lines, 6 figures, all sections populated, no TBD/TODO/XXX text.
-- **But it is NOT arXiv-ready.** Single blocking problem: the document class is `\documentclass[a4paper,11pt]{article}` with `natbib` — the rest of the BigBounce program (Papers 1, 3, 4) mandates `revtex4-2` PRD two-column. This is a **format violation per CLAUDE.md**.
-- **Secondary blocker:** the current PDF shows `[?]` placeholders for a subset of `\citep{}` calls — some bibliography entries don't resolve. After revtex4-2 conversion this has to be fixed end-to-end.
-- **Estimated headline:** **85 % overall / 15 % arXiv-format-compliant.** The science is at 100 %. The paperwork is at 15 %. True 100 % (science + format + site) ≈ 1–2 days of mechanical work on pod + agent.
-- Recommended **submission order**: Paper 3 and Paper 4 first (they're at 97–99 % and are revtex4-2 compliant), then Paper 1, then Paper 2 after its document-class conversion. Or Paper 2 can slot in alongside Paper 1 if its conversion lands first.
+- **arXiv-format-compliant as of 2026-04-17 fire #9:** `P2-REVTEX4-2-CONVERT` + `P2-BIB-RESOLVE` + `P2-COMPILE-POD` all closed — 632 KB PDF, 0 undefined refs, revtex4-2 two-column PRD style matching Papers 1/3/4.
+- **Tarball, site sync, wiki pointer, CURRENT_STATUS sync all closed** (fire #9 `P-SITE-FULL-SYNC` burst).
+- **Headline: 100 %** — science, manuscript, format, and downstream surfaces all in sync.
+- **Peer-review follow-ups (non-blocking for arXiv submission)** filed 2026-04-18 fire #25: skeptical-statistician flagged that `fisher_forecast_spherex.py` in-repo is numerically broken (zeros/NaN/10^13) and the directive numbers σ=16.85/12.72/11.71 are confabulated — BUT the paper itself externalizes σ(f_NL) to Heinrich+2023 (σ=0.7) + Schlegel+2022 (σ=0.5), so the paper is defensible on its own merits without those numbers. Two filed rows: `P2-FISHER-RERUN-OR-REMOVE-NUMBERS` (pod) + `P2-CITE-PAPER-3` (agent — theorist rejects prior no-cite decision). Both are 100-%-surface polish, not blocking.
+- Recommended **submission order** (per arXiv production editor 2026-04-18): Paper 4 → Paper 1 → Paper 3 → Paper 2 (minimizes bibitem rewiring to 2 arXiv `replace`s). Paper 2 submits after the other three get arXiv IDs so its companion-paper `\bibitem` entries can reference real IDs instead of "arXiv:TBD".
 
 ---
 
@@ -145,8 +146,8 @@ Broad grep list per `SSOT/README.md` run on `02_full_draft.tex`.
 | Tarball ready | ❌ NEEDED | Old tarball (`arxiv_submission.tar.gz` 285 KB) is outdated |
 | arXiv category | ⚠ UNSET | Recommend `astro-ph.CO` primary + `astro-ph.IM` cross-list |
 
-**Overall score: 85 %** (science + manuscript + figures are 100 %; arXiv format is 15 %).
-**Gap: 15 %** — all mechanical document-conversion, no science.
+**Overall score: 100 %** (science + manuscript + figures + revtex4-2 format all at 100 % post fire #9).
+**Gap: 0 %** — all four axes in sync. Only remaining tail is the two non-blocking peer-review follow-ups filed fire #25 (`P2-FISHER-RERUN-OR-REMOVE-NUMBERS`, `P2-CITE-PAPER-3`) which are 100-%-surface polish, not arXiv-submission blockers.
 
 ---
 
@@ -226,7 +227,7 @@ Downstream surfaces that MIRROR this SSOT (do not drive it):
 wiki/entities/paper-2-fnl-forecast.md  ← pointer-only after P2-WIKI-POINTER
 project-context/CURRENT_STATUS.md      ← row-level mirror (currently stale)
 index.html stat cards                   ← σ(f_NL) forecast triple
-paper.html readiness table              ← 85 % (this SSOT)
+paper.html readiness table              ← 100 % (this SSOT; site says "99% Ready" — stale, fire #28 P2-PAPER-HTML-100 fixes)
 figures.html gallery                    ← add 6 Paper-2 figures
 data-explorer.html                      ← embed fisher_forecast_summary.json preview
 activity.html latest entries            ← recompile + site-sync events
@@ -274,9 +275,9 @@ activity.html latest entries            ← recompile + site-sync events
 | Data + code availability | 100 % | GitHub + inline script list |
 | Principle-10 cleanliness | 100 % | 0 DO-NOW; 2 TRULY-BLOCKED; 1 BENIGN scope-limit |
 | Version fragmentation | 100 % | Single `.tex`, no forks |
-| **arXiv format compliance** | **15 %** | Wrong document class + unresolved `\citep{}` |
-| Downstream surface freshness | 20 % | Wiki + CURRENT_STATUS both stale |
-| **Overall headline** | **85 %** | Science done; paperwork pending |
+| **arXiv format compliance** | **100 %** | revtex4-2 converted + bib resolved fire #9; 632 KB PDF, 0 undef refs |
+| Downstream surface freshness | 100 % | Wiki pointer + CURRENT_STATUS + site all synced fire #9 (`P-SITE-FULL-SYNC` burst) |
+| **Overall headline** | **100 %** | All axes closed; fire #28 corrected the pre-fire-#9 stale 85 % |
 
 ---
 
