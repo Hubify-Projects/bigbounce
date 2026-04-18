@@ -510,6 +510,48 @@ details[open] summary { margin-bottom: 6px; }
 .theme-toggle:hover { color: var(--text); }
 
 /* ══════════════════════════════════
+   Callout components (theme-aware)
+   Use these instead of inline light-bg styles so dark mode
+   stays readable. Accent is semantic (green = novel, red = retracted,
+   purple = verification, amber = honest disclosure, blue = info).
+   ══════════════════════════════════ */
+.callout {
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 3px solid var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.callout strong { color: var(--text); }
+.callout-novel        { border-left-color: #16a34a; background: rgba(22,163,74,0.08); }
+.callout-verification { border-left-color: #7c3aed; background: rgba(124,58,237,0.08); }
+.callout-honest       { border-left-color: #d97706; background: rgba(217,119,6,0.08); }
+.callout-retracted    { border-left-color: #b91c1c; background: rgba(185,28,28,0.10); }
+.callout-info         { border-left-color: #2563eb; background: rgba(37,99,235,0.08); }
+
+/* Card variants that used inline hex backgrounds */
+.card-retracted { border-left: 3px solid #9a3412; background: rgba(185,28,28,0.06); }
+
+/* Table row variants (replace inline background: #f0fdf4 etc.) */
+tbody tr.row-novel        { background: rgba(22,163,74,0.06); }
+tbody tr.row-verification { background: rgba(124,58,237,0.06); }
+tbody tr.row-honest       { background: rgba(217,119,6,0.06); }
+tbody tr.row-retracted    { background: rgba(185,28,28,0.06); }
+
+/* Inline badge chips (solid bg, white text) — work in both themes */
+.chip          { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; color: #fff; font-family: var(--font-sans); letter-spacing: 0.02em; }
+.chip-sm       { padding: 1px 6px; border-radius: 3px; font-size: 10px; }
+.chip-novel    { background: #16a34a; }
+.chip-verif    { background: #7c3aed; }
+.chip-honest   { background: #d97706; }
+.chip-retracted{ background: #b91c1c; }
+.chip-info     { background: #2563eb; }
+.chip-neutral  { background: #6b7280; }
+
+/* ══════════════════════════════════
    Print Styles
    ══════════════════════════════════ */
 @media print {
