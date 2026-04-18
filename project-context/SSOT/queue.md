@@ -2,7 +2,7 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-17 (drive-to-100 fire #4) — P-MEMORY-SYNC closed; MEMORY.md + 3 memory files refreshed to reflect current SSOT tree + drive-to-100 loop; `project_papers_status.md` converted from stale mirror to SSOT pointer.
+Last authoritative update: 2026-04-17 (drive-to-100 fire #5) — filed `POD DEPLOY BLOCKER` in `drive-to-100.md` after confirming all compile surfaces blocked (BasicTeX sudo, Docker daemon off, runpodctl missing, existing H200 pod terminated). Discovered Paper 1 `main.bbl` is 17 bibitems stale vs live `main.tex` (all 17 keys present in `references.bib` — bibtex just needs to re-run). Filed `P1-BBL-REGEN` below; blocks `P1-TARBALL`.
 
 ## Legend
 
@@ -58,6 +58,7 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #4) — P-MEMORY-SYNC c
 | `P1-PDF-RECOMPILE-V2` | Recompile `arxiv/main.pdf` to render the §IV corner figure inserted at L882 | pod | P1 | 0.1 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P4-PDF-RECOMPILE-V2` | Recompile `public/papers/chirality_catalog_paper.pdf` to render the new LSST 10-yr projection line in Future Directions | pod | P4 | 0.3 % | [ ] | Existing PDF is pre-insert; tex ready |
 | `P3-PDF-RECOMPILE-V2` | Recompile `pipelines/p3_anomaly_engine/paper3_draft.pdf` + mirror to `public/papers/paper3_anomaly_catalog.pdf` to render (a) 3 new Golden companion-paper bibitems + 4 new `\cite{}` calls (fire #2) AND (b) Siemens2013 + Rosado2015 bibitems + §6 "when-decisive" paragraph (fire #3) | pod | P3 | 0.1 % | [ ] | Existing PDF is pre-xref; tex ready |
+| `P1-BBL-REGEN` | Re-run `bibtex arxiv/main` then `pdflatex` twice to regenerate `arxiv/main.bbl` against current `arxiv/main.tex` | pod | P1 | 0.15 % | [ ] | Discovered fire #5: live `main.tex` cites 55 keys but `main.bbl` is 17 bibitems short (all 17 present in `references.bib`). Blocks `P1-TARBALL` — arXiv would reject current tarball with undef refs. Batch with `P1-PDF-RECOMPILE-V2` in same pod session |
 | `P3-FISHER-FULL` | Full Fisher-matrix calculation over the NANOGrav free-spectrum covariance to replace the scaling-only forecast with a properly marginalized σ(γ) projection | pod | P3 | 0.05 % | [ ] | Companion deliverable to the scaling note at `fisher_forecast_gamma_future_ptas.md` |
 
 ## P2 — before submission

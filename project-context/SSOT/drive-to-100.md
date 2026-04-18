@@ -68,11 +68,28 @@ Each cron fire runs this loop:
 1. `cd /Users/houstongolden/Desktop/CODE_2025/bigbounce`
 2. Read `SSOT/drive-to-100.md` (this file) + `SSOT/queue.md` + `SSOT/index.md`.
 3. **Check exit criteria.** If all green: (a) commit a CLOSED marker in this file, (b) call `CronDelete` on the loop's job ID (stored in `SSOT/drive-to-100.cron.json` after first fire), (c) append a `## Houston-reviewable` note to `SSOT/index.md` with the deploy URL, (d) halt.
-4. Otherwise: pick the highest-priority open task this fire can do without a pod (agent + site tasks first; mark pod tasks as `[!] waiting-on-pod` when no session is active).
+4. Otherwise: pick the highest-priority open task (agent + site tasks first).
 5. Do the task. Commit with `feat/chore/docs:` prefix + task ID. Push to `origin/main`.
 6. Update `SSOT/queue.md` (move row to Completed section with commit hash). Update `SSOT/index.md` headline % if a paper ticked up. Update this file's "Last loop ran" line.
 7. If a task uncovered a new task, add it to `SSOT/queue.md` at correct priority.
-8. If nothing agent-doable is left and only pod tasks remain: mark this file `## BLOCKED-ON-POD` with exact pod commands needed, keep cron running at 20-min (so once pod finishes out-of-band the next fire will pick up the site-sync follow-ups).
+8. **If nothing agent-doable is left and only pod tasks remain: do NOT stop — deploy a pod.** See "Pod-deploy escalation" below. Houston's instruction (2026-04-17 fire #5): "if pod needed dont stop just deploy a pod."
+
+## Pod-deploy escalation
+
+When only pod-owned tasks remain in `queue.md`:
+
+1. **Check the pod-deploy prerequisite chain:**
+   - `runpodctl` installed? (`which runpodctl`)
+   - API key present? (`$RUNPOD_API_KEY` env var, or `~/.runpod/config.toml`, or `gh secret get RUNPOD_API_KEY` if stored in GH)
+   - SSH key: `~/.ssh/id_ed25519` (verified present 2026-04-17)
+2. **If all present** → launch pod with the recipe at `arxiv/compile_on_pod.sh` (which installs `texlive-publishers` + `texlive-latex-extra` and runs `pdflatex -interaction=nonstopmode` twice on each `.tex`). Batch all three outstanding V2 recompiles (P1, P3, P4) + `P3-FISHER-FULL` + `P3-A` TESS periodicity into a single pod session, ≤60 min, ≤ $4 on an H200.
+3. **If any prerequisite missing** → emit a `## POD DEPLOY BLOCKER` section in this file with:
+   - The exact command Houston needs to paste (install `runpodctl` + export API key), OR
+   - A note that Houston should run `/deploy-pod` if a higher-level skill exists.
+   Keep the cron running — next fire will retry after Houston unblocks.
+4. **While pod is running** — subsequent fires pull `~/.claude/pod-drive-to-100.log` from the pod via `rsync` to check progress; fold results back into SSOT when complete.
+
+No fire may `return early` because "only pod work remains." Either deploy, or file a precise blocker that Houston can act on in one paste.
 
 ## Task selection order each fire
 
@@ -92,10 +109,53 @@ Priority (first match wins):
 
 ---
 
+## POD DEPLOY BLOCKER — Houston, one paste unblocks everything
+
+**Status (fire #5, 2026-04-17):** All four remaining V2 recompiles + P1 tarball rebuild + P3 Fisher-full are blocked on **zero** available compile surface. Loop confirmed:
+
+| Surface | State | Blocker |
+|---|---|---|
+| Local `pdflatex` | not installed | `brew install --cask basictex` needs sudo password interactively |
+| Local Docker TeX Live | Docker Desktop not running | Houston must click Docker.app once |
+| RunPod CLI (`runpodctl`) | not installed, no brew formula | Official installer script `cli.runpod.net \| bash` requires sudo |
+| Existing H200 pod `o76k3jfzbfh25e` at `205.196.19.52:11452` | **connection refused** — pod terminated | Need to launch a fresh pod |
+
+**Paper 1 bbl is confirmed stale:** `arxiv/main.tex` cites 55 keys; `arxiv/main.bbl` only contains 58 bibitems but 17 are missing and 20 are unused. All 17 missing keys exist in `arxiv/references.bib` — `bibtex` just needs to re-run. This means **any tarball built right now would arXiv-reject**. Compile MUST run before tarball ships.
+
+**One-paste unblock options (pick one):**
+
+**Option A — launch Docker Desktop (fastest, no password):**
+```bash
+open -a Docker
+# wait ~15s for daemon, then this agent can compile via:
+# docker run --rm -v "$PWD/arxiv":/w -w /w texlive/texlive:latest \
+#   bash -c "pdflatex -interaction=nonstopmode main && bibtex main && pdflatex -interaction=nonstopmode main && pdflatex -interaction=nonstopmode main"
+```
+
+**Option B — install runpodctl + paste API key:**
+```bash
+brew install curl jq
+wget -qO- cli.runpod.net | sudo bash     # prompts for your sudo password
+export RUNPOD_API_KEY="rpa_xxx_your_key"  # paste from https://www.runpod.io/console/user/settings
+echo $RUNPOD_API_KEY >> ~/.zshrc
+```
+
+**Option C — install BasicTeX locally:**
+```bash
+brew install --cask basictex   # prompts for sudo password
+eval "$(/usr/libexec/path_helper)"
+sudo tlmgr update --self && sudo tlmgr install revtex
+```
+
+Once any one is done, the next cron fire will detect it (via `which` + `docker info`) and batch all four V2 recompiles + P3-FISHER-FULL in a single run.
+
+---
+
 ## Loop log
 
 _Appended each fire. Most recent first._
 
+- **2026-04-17 — fire #5:** confirmed all compile surfaces blocked (local BasicTeX sudo, Docker daemon off, runpodctl missing, existing pod terminated). Ran standalone bbl integrity check via `/tmp/bib_check.py` and discovered Paper 1 bbl is 17 bibitems short vs live main.tex (all 17 keys DO exist in references.bib — bbl just needs bibtex re-run). Filed consolidated `POD DEPLOY BLOCKER` section above with three one-paste unblock options for Houston. Filed new queue task `P1-BBL-REGEN` (pod, blocks P1-TARBALL). No paper % ticked up; unblock cascades once Houston pastes one command.
 - **2026-04-17 — fire #4:** closed P-MEMORY-SYNC. Refreshed `project_ssot_structure.md` with current SSOT layout (all 4 paper status files exist; added drive-to-100.md + drive-to-100.cron.json entries). Rewrote `project_papers_status.md` from stale 11-day-old mirror (Paper 2 v1.3.0, Paper 4 ~85 %) to pointer-only memory that refuses to quote %. Added new `project_drive_to_100.md` memory + index entry in `MEMORY.md`. No paper % ticked up — memory housekeeping has 0 % paper credit by design.
 - **2026-04-17 — fire #3:** closed P3-C (Fisher-forecast σ(γ) for future PTAs). Produced scaling-only forecast note (`pipelines/p3_anomaly_engine/fisher_forecast_gamma_future_ptas.md`) with σ(γ)≈0.22 NG20yr, 0.16 EPTA DR3, 0.15 SKA-P1 against 3σ threshold σ(γ)≤0.44. Replaced Paper 3 §6 "continued monitoring" hand-wave with concrete paragraph. Added Siemens2013 + Rosado2015 bibitems. Filed `P3-FISHER-FULL` (pod) for the proper Fisher calculation. Triggers `P3-PDF-RECOMPILE-V2`. No paper % ticked up this fire — credit unlocks after recompile.
 - **2026-04-17 — fire #2:** closed P3-PDF-CANON (verified pointer stub + mirror PDF) and P3-XREF (added 3 Golden companion bibitems — framework, fnl, chirality — plus 4 `\cite{}` calls at the f_NL=-35/8 theory line, the SPHEREx Fisher-forecast line, and the bias-calibration limitation). Filed `P3-PDF-RECOMPILE-V2` for the next pod session. No paper % ticked up — xref credit unlocks after recompile.
