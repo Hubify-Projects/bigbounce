@@ -183,9 +183,9 @@
 
 <div class="callout">
   <div class="callout-title">The Research Program at a Glance</div>
-  <p><strong>Paper 1</strong> &mdash; The theoretical framework: Einstein-Cartan gravity, 475K+ MCMC samples, 14 structural barriers, perturbation-transparency theorem, ALP birefringence prediction.</p>
+  <p><strong>Paper 1</strong> &mdash; The theoretical framework: Einstein-Cartan gravity, 309,789 frozen MCMC posterior samples (3 dataset combos), 14 structural barriers, perturbation-transparency theorem, ALP birefringence prediction.</p>
   <p><strong>Paper 2</strong> &mdash; The decisive test: parameter-free prediction f<sub>NL</sub> = &minus;35/8 from matter bounce, 300&times; larger than inflation. SPHEREx will test at ~5&sigma; by 2028.</p>
-  <p><strong>Paper 3</strong> &mdash; AI discovery: 22.5 million DESI spectra scored by autoencoder, 1,127 uncataloged objects found, plus a downstream classifier (Apr 2026) that identified <strong>5,384 QSO candidates (116 GOLD, 1,006 SILVER, 4,262 BRONZE)</strong> (median z=3.25) from the anomaly catalog. 9.5% improvement in f<sub>NL</sub> measurement. Extended across 8 core surveys + 7 Phase 5-6 surveys (BOSS, DES, VLASS, LOFAR, JWST, Chandra, XMM): 33.5M sources, 328K+ anomalies.</p>
+  <p><strong>Paper 3</strong> &mdash; AI discovery: 22.5 million DESI spectra scored by autoencoder, 1,127 uncataloged objects found, plus a downstream classifier (Apr 2026) that identified <strong>5,384 QSO candidates (116 GOLD, 1,006 SILVER, 4,262 BRONZE)</strong> (median z=3.25) from the anomaly catalog. 9.5% improvement in f<sub>NL</sub> measurement. Extended across 8 core surveys + 7 Phase 5-6 surveys (BOSS, DES, VLASS, LOFAR, JWST, Chandra, XMM): <strong>37.3M sources, 319,443 anomalies, 58.8% SIMBAD-novel</strong>.</p>
   <p><strong>Paper 4</strong> &mdash; Galaxy chirality: 8.47 million galaxies classified for handedness &mdash; the largest such catalog ever. Parity conservation confirmed, refuting prior claims.</p>
 </div>
 
@@ -301,7 +301,7 @@
 
 <h3>Aside: Cosmological Tensions</h3>
 
-<p>You may have heard about the "Hubble tension" and "sigma-8 tension" &mdash; disagreements in cosmological measurements. Earlier versions of these papers explored whether the bounce framework could resolve these tensions. After 475K+ MCMC samples, the honest result:</p>
+<p>You may have heard about the "Hubble tension" and "sigma-8 tension" &mdash; disagreements in cosmological measurements. Earlier versions of these papers explored whether the bounce framework could resolve these tensions. After 309,789 frozen MCMC posterior samples across 3 dataset combinations, the honest result:</p>
 
 <div class="scorecard">
   <div class="scorecard-item">
@@ -384,7 +384,7 @@
 <!-- ===== AI DISCOVERY PIPELINE ===== -->
 <h2>Paper 3: AI Discovery at Survey Scale</h2>
 
-<p>This is where the research goes from theory to large-scale observational discovery. We built an AI system called BigAE (a "spectral autoencoder") that learns what normal astronomical spectra look like, then flags anything unusual. We pointed it at the entire DESI DR1 survey &mdash; all <strong>22.5 million spectra</strong> &mdash; and then extended it across 7 more surveys for a total of <strong>33.5 million astronomical sources</strong>.</p>
+<p>This is where the research goes from theory to large-scale observational discovery. We built an AI system called BigAE (a "spectral autoencoder") that learns what normal astronomical spectra look like, then flags anything unusual. We pointed it at the entire DESI DR1 survey &mdash; all <strong>22.5 million spectra</strong> &mdash; and then extended it across 7 more surveys for a total of <strong>37.3 million astronomical sources</strong> (<strong>319,443 anomalies</strong>, <strong>58.8% SIMBAD-novel</strong>).</p>
 
 <h3>What We Found</h3>
 
@@ -392,9 +392,9 @@
 
 <p>These 1,127 objects cluster into <strong>10 astrophysical families</strong>: 76 obscured AGN candidates (missed by pipeline classifications), 27 post-starburst galaxies in a critical evolutionary phase, 363 blue galaxies with anomalous UV features, and 7 more families. A single latent dimension ("lat_067") spontaneously learned to encode redshift from unsupervised training &mdash; a "redshift neuron" capturing 18% of redshift information with no labels.</p>
 
-<h3>Multi-Survey Extension: 33.5 Million Sources</h3>
+<h3>Multi-Survey Extension: 37.3 Million Sources</h3>
 
-<p>We extended the anomaly sweep across <strong>8 major astronomical surveys</strong> (DESI, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB, Gaia DR3, ACT DR6, NEOWISE), processing 33.5 million sources on H200 GPUs and detecting <strong>328,000+ anomalies</strong>. Four surveys passed quality gates; the other four have identified systematics (galactic contamination, ecliptic bias, insufficient training) and are queued for re-runs with proper masks.</p>
+<p>We extended the anomaly sweep across <strong>8 major astronomical surveys</strong> (DESI, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB, Gaia DR3, ACT DR6, NEOWISE), processing 37.3 million sources on H200 GPUs and detecting <strong>319,443 anomalies</strong> (<strong>58.8% SIMBAD-novel</strong>). Four surveys passed quality gates; the other four have identified systematics (galactic contamination, ecliptic bias, insufficient training) and are queued for re-runs with proper masks.</p>
 
 <h3>The 173-Column Enhanced Catalog</h3>
 
@@ -496,7 +496,7 @@
 <ol style="color: var(--text-secondary); padding-left: 20px; line-height: 2;">
   <li><strong>Paper 1:</strong> Built the theoretical framework (Einstein-Cartan gravity), found 14 structural barriers, proved the perturbation-transparency theorem, and predicted ALP birefringence <strong>&beta; = 0.27&deg;</strong> matching the 3.6&sigma; observed signal</li>
   <li><strong>Paper 2:</strong> Derived the decisive prediction <strong>f<sub>NL</sub> = &minus;35/8</strong> (no free parameters, 300&times; larger than inflation), with SPHEREx forecast at ~5.0&ndash;5.5&sigma; by 2028</li>
-  <li><strong>Paper 3:</strong> Scored 22.5M DESI spectra with AI, discovered 1,127 uncataloged objects, improved f<sub>NL</sub> measurement by 9.5%, and extended the sweep across 8 surveys (33.5M sources, 328K+ anomalies)</li>
+  <li><strong>Paper 3:</strong> Scored 22.5M DESI spectra with AI, discovered 1,127 uncataloged objects, improved f<sub>NL</sub> measurement by 9.5%, and extended the sweep across 8 surveys (37.3M sources, 319,443 anomalies, 58.8% SIMBAD-novel)</li>
   <li><strong>Paper 4:</strong> Classified 8.47 million galaxies for handedness &mdash; the largest such catalog ever &mdash; confirming parity conservation and refuting prior claims of cosmic chirality</li>
 </ol>
 
