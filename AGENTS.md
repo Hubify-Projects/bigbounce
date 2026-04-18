@@ -36,6 +36,19 @@ When you finish work that changes a paper's state (new result, new compile, new 
 
 The SSOT protocol is documented in [`project-context/SSOT/README.md`](project-context/SSOT/README.md).
 
+### Drive-to-100 autonomous loop
+
+There may be a cron-driven autonomous sweep active in this repo: **drive-to-100**. Plan doc: [`project-context/SSOT/drive-to-100.md`](project-context/SSOT/drive-to-100.md). Cron pointer: [`project-context/SSOT/drive-to-100.cron.json`](project-context/SSOT/drive-to-100.cron.json).
+
+If you open this repo and see recent auto-commits prefixed `chore(drive-to-100): fire #N`, the loop is running and you should:
+
+1. Read the plan doc's **Loop log** (bottom) for the latest fire's outcome.
+2. Check the **POD DEPLOY BLOCKER** section if present — it tells you what Houston needs to paste to unblock compile work.
+3. Do NOT start your own parallel work on the same queue rows. Either wait for the next fire or coordinate.
+4. If you're running as the loop agent, follow the **Loop protocol** (exit-criteria check → pick highest-priority open P0/P1 agent-or-site task → atomic commit → push → log).
+
+The loop self-terminates when all four papers read 100 % in `SSOT/index.md` and the other exit criteria are green.
+
 ---
 
 ## Architecture

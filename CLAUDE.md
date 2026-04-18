@@ -14,6 +14,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **When you finish work that changes a paper's state** (new result, new compile, new figure, new site sync, new cross-match, closed queue task): update the relevant SSOT `status.md` AND mark the queue row AND the `index.md` headline IN THE SAME COMMIT. The SSOT protocol is in [`project-context/SSOT/README.md`](project-context/SSOT/README.md).
 
+**Drive-to-100 loop may be active.** If you see recent `chore(drive-to-100): fire #N` commits on `main`, an autonomous cron is driving `SSOT/queue.md` to exit criteria. Read [`project-context/SSOT/drive-to-100.md`](project-context/SSOT/drive-to-100.md) "Loop log" and "POD DEPLOY BLOCKER" before starting parallel work on the same queue rows.
+
 ---
 
 ## CRITICAL RESEARCH DIRECTIVE
