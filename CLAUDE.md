@@ -39,23 +39,23 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - Bounce model discrimination table: matter bounce vs Cuscuton vs ekpyrotic vs quintom vs inflation
 - f_NL triple role: galaxy bispectrum + PBH abundance regulator + induced GW spectral shape
 - NANOGrav 15yr consistency: matter bounce γ = 3.0 vs observed 3.2 ± 0.6 (0.33σ)
-- w0-wa MCMC: quintom-B (w-crossing) favored at 2.3σ, P(quintom-B) = 98.6%
+- w0-wa bound discussed theoretically only — not implemented computationally in this program (Paper 1 §VII.H explicitly: zero free-w0-wa samples among the 309,789 frozen posterior samples; earlier "quintom-B at 98.6%" bookkeeping was fire-#21 confabulation, corrected fire #25)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
 - 424,181+ MCMC posterior samples across 3 frozen dataset combinations
-- Multi-survey anomaly sweep (8 surveys, 33.5M sources, 328,448 anomalies total):
+- Multi-survey anomaly sweep (8 surveys, 33.5M sources, 319,443 anomalies total after eROSITA top-cut correction — matches Paper 3 §1 "319,443" figure):
   - DESI DR1: 22.5M spectra, 195,829 anomalies (0.87%), 2,145 SNR-filtered, 1,127 uncataloged
   - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%) — QC: domain shift scores
-  - eROSITA DR1: 930K sources, 9,303 anomalies (1%), 73% novel
+  - eROSITA DR1: 930K sources, 298 anomalies (0.03%, BigAE top cut — Paper 3 Table 1 canonical; earlier 9,303 figure was a 1% placeholder before the top-cut policy was applied)
   - LAMOST DR10: 11.4M spectra, 44,075 anomalies (0.39%) — QC: 98% blue-excess bias
   - Planck CMB: 20K patches, 200 anomalies — QC FAIL: needs galactic mask
   - ACT DR6: 20K patches, 200 anomalies — QC FAIL: undertrained (val_loss=22,420)
   - NEOWISE: 43.5K sources, 436 anomalies — QC FAIL: ecliptic systematic
   - Gaia DR3: 50K sources, 500 anomalies — needs 10x expansion
 - f_NL Fisher forecast (corrected, 2026-04-10): σ(f_NL) = 16.85 baseline, 12.72 standard multi-tracer, 11.71 5-tracer (anomaly-optimized); +7.93% improvement over standard
-- f_NL bias validation: extreme anomalies show 2.28x clustering bias vs baseline (Landy-Szalay w(θ))
+- f_NL bias validation: Pipeline-1 Gold+Silver tracers show 1.58× enhanced clustering bias vs baseline (Landy-Szalay w(θ) on 5,384 QSO candidates). Earlier "2.28×" CLAUDE.md figure had no paper anchor (theorist peer review 2026-04-18) — corrected to the on-disk 1.58× number from `projects/cross_survey/results/bias_validation.json`
 - SPHEREx f_NL forecast (2026-04-10): σ=0.36 (Fisher ideal) / 0.93 (Munchmeyer+2019 conservative) → 4.7-12σ detection of f_NL=-4.375 (bounce) by 2027
 - NaMaster birefringence (2026-04-10): β=0.27° (bounce prediction) detected at SNR=20.74σ in Monte Carlo; β=0.342° (ACT observed) at 26.26σ; tension=0.77σ (excellent agreement)
-- Combined PTA GPU MCMC (2026-04-10): γ = 3.33 ± 0.40, bounce at 0.81σ, SMBHB excluded at 2.26σ, Bayes factor 8.54 favoring bounce
+- Combined PTA GPU MCMC: γ = 3.20 ± 0.42 (Paper 3 §6 canonical — 2026-04-17 v2b Fisher recompute), bounce γ=3.0 at 0.48σ, SMBHB excluded at ≳2σ. (Earlier 2026-04-10 CLAUDE.md figure γ = 3.33 ± 0.40 predated the v2b Fisher; corrected fire #25 per theorist peer review.)
 - PBH abundance from f_NL=-4.375 (2026-04-10): Edgeworth expansion correction to Press-Schechter; matter bounce naturally suppresses PBH formation; GW spectral index bounce γ=3.0 at 0.83σ from NANOGrav γ=3.33±0.40; f_NL triple role confirmed
 - Second-level AE on 195,829 DESI DR1 anomalies (2026-04-10): 16D latent, max ultra-rare score=53.4 (99.9995th percentile), found ~20 objects anomalous within the anomaly pool
 - Emission line finder on DESI DR1 anomalies (2026-04-10): 5,000 anomaly spectra → 4,526 redshifts (Δz<0.05: 80.8%), 96.9% AGN fraction by BPT classification

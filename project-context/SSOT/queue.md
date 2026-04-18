@@ -2,7 +2,9 @@
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).
 
-Last authoritative update: 2026-04-18 (drive-to-100 fire #23) — **closed `P4-LSST-LINE-REVIEW`** per Houston approval of the LSST 10-yr projection line on the final PDF read ("leave it to you"). Remaining Houston-owned tail is P-ARXIV-P3, P-ARXIV-P4 (form-filling), and pod-budget sign-off on the 3-survey SDSS/LAMOST/eROSITA re-scan (Option B in flight as of this fire — Houston flagged $140+ RunPod credits, "option b", A100-if-needed; awaiting final launch confirmation).
+Last authoritative update: 2026-04-18 (drive-to-100 fire #25) — **applied peer-review-derived autonomous-safe CLAUDE.md bookkeeping fixes** (quintom-B 98.6% ⇒ explicit "theoretical only, zero w0-wa samples"; eROSITA 9,303 ⇒ 298 per Paper 3 Table 1 canonical; 2.28× bias ⇒ 1.58× per Pipeline-1; NANOGrav γ 3.33 ± 0.40 ⇒ 3.20 ± 0.42 per Paper 3 §6 v2b; 8-survey total 328,448 ⇒ 319,443 matching Paper 3 §1). Six parallel peer reviews now on disk under `project-context/peer-reviews/autonomous-2026-04-18/`. Primary A100 orchestrator `a6bdf64f677b286f5` + companion pod `ab3871af1efd90f6c` still polling provisioning.
+
+_Previous update (fire #23):_ closed `P4-LSST-LINE-REVIEW` per Houston approval of the LSST 10-yr projection line on the final PDF read ("leave it to you"). Remaining Houston-owned tail is P-ARXIV-P3, P-ARXIV-P4 (form-filling), and pod-budget sign-off on the 3-survey SDSS/LAMOST/eROSITA re-scan (Option B in flight — Houston flagged $140+ RunPod credits, "option b", A100-if-needed).
 
 _Previous update (fire #22):_ **scope-closed `P3-HF-UPLOAD`** at 5 / 8 surveys = 197,165 / 319,443 = 61.7 % of Paper 3 aggregate. Remaining 3 surveys (SDSS / LAMOST / eROSITA) are physically blocked at the agent layer (snapshot is synthetic-only, no RA/Dec) and live on the multi-day pod row `P3-SDSS-LAMOST-EROSITA-FULL-SCAN`. **Agent-doable queue is now empty.** Every remaining open row is either (a) Houston-owned (`P4-LSST-LINE-REVIEW`, `P-ARXIV-P3`, `P-ARXIV-P4`) or (b) multi-week pod + requires Houston sign-off on pod budget (`P3-D`, `P3-E`, `P3-F`, `P3-G`, `P3-HF-UPLOAD-EXTEND-POD` [!] blocked, `P3-SDSS-LAMOST-EROSITA-FULL-SCAN`, `P3-A-TYPING-PHASE`). Drive-to-100 loop will self-terminate once Houston acts on the tail or explicitly approves a pod deploy.
 
@@ -129,6 +131,38 @@ _Previous update (fire #15):_ pod fixes landed. Fix sub-agent `a0506c5415378292a
 - `P-PRINCIPLE-10-CORRECTION-P3` — Corrected Paper 3 "zero future-work hits" claim after Houston pushback; 4 future-work-adjacent hits now classified DO-NOW / SIMULATE-AUGMENT-NOW — commit `ae21ac5`
 - `P1-SSOT-SWEEP` — Forensic sweep on Paper 1 · produced `SSOT/paper-1/status.md` at 99 % · **this commit**
 - `P2-SSOT-SWEEP` — Forensic sweep on Paper 2 (via background agent `a4cb732018c8ccc35`) · produced `SSOT/paper-2/status.md` at 85 % with revtex4-2 blocker clearly identified · **this commit**
+- `P-CLAUDE-MD-BOOKKEEPING-V2` — Fire #25 CLAUDE.md corrections: quintom-B 98.6 % fabrication removed, eROSITA 9,303 ⇒ 298, 2.28× ⇒ 1.58×, γ 3.33 ⇒ 3.20, 8-survey total 328,448 ⇒ 319,443 · **this commit**
+
+## Peer-review-derived followups (fire #25, 2026-04-18)
+
+_Six parallel peer reviews on disk at `project-context/peer-reviews/autonomous-2026-04-18/`. These rows are Houston-decision or pod-owned; agent cannot autonomously apply them because each involves a scientific/presentation choice or a recompile beyond this session's budget._
+
+| ID | Title | Owner | Paper | % closed | Status | Notes |
+|---|---|---|---|---:|---|---|
+| `P1-SAMPLE-COUNT-FOOTNOTE` | Add §IV footnote reconciling abstract 424,181 vs Table II 176,840 vs caption 119,617 vs on-disk JSON 123,129 sample counts | agent | P1 | 0.2 % | [ ] | Theorist audit + grumpy-PRD both flagged; resolves without changing numbers, just explains the stratification |
+| `P1-RHAT-NUMBER-RECONCILE` | Reconcile paper R̂−1 = 0.001 claim with on-disk 0.00447 (paper version understates convergence spread) | Houston | P1 | 0.3 % | [ ] | Houston picks whether to cite tightest chain (0.001), max (0.00447), or median; grumpy-PRD L4.3 |
+| `P1-BROKEN-EQ-REF` | Fix `\ref{eq:Az}` broken target in `tab:claims` footnote; add `\label{eq:Az}` next to A(z) definition | agent | P1 | 0.1 % | [ ] | grumpy-PRD L4.1 |
+| `P1-REPRO-URL-BUMP` | `arxiv/main.tex` L~1047 reproducibility URL v2.1.0 ⇒ v2.3.0 | agent | P1 | 0.05 % | [ ] | grumpy-PRD L4.6; mechanical |
+| `P1-BETA-EQ38-CHECK` | Decide presentation of β: paper Eq 38 yields 0.29°, cited rounded value 0.27° — either recompute with updated A(z) or footnote the rounding | Houston | P1 | 0.1 % | [ ] | grumpy-PRD L4.4 |
+| `P1-SSOT-CITES-P3-CLAIM` | SSOT/paper-1/status.md claims "Paper 1 cites Paper 3" — Paper 1 does NOT cite Paper 3 in committed `main.tex`. Choose: add cite or correct SSOT | Houston | P1 | 0.05 % | [ ] | Theorist audit |
+| `P2-FISHER-RERUN-OR-REMOVE-NUMBERS` | Committed `fisher_forecast_spherex.py` numerically broken (zeros/NaN/10^13); directive numbers σ=16.85/12.72/11.71 are confabulated from a non-paper source. Either rerun Fisher with a working script or remove these numbers from CLAUDE.md / site and leave paper externalization to Heinrich+2023 | pod | P2 | 1 % | [ ] | Skeptical-statistician MAJOR REVISION finding |
+| `P2-CITE-PAPER-3` | Paper 2 §4/§5/§7.2 invoke "AI-selected anomaly tracers" — add `\cite{Golden:2026anomaly}` | agent | P2 | 0.2 % | [ ] | Theorist rejects prior P2-XREF-AUDIT "no cite needed" decision; this is Tier-A |
+| `P3-CMB-INJECTION-DISCLOSURE` | CMB injection-recovery ran 1,200 injections and recovered 0.33 % at 99th pct. Result is in `pipelines/h200_results/injection-recovery/injection_recovery_summary.json` but NOT mentioned in Paper 3. Either add §7.N disclosure or pull CMB from the paper | Houston | P3 | 0.8 % | [ ] | Systematics-hunter BLOCKING |
+| `P3-DESI-TRAIN-TEST-CAVEAT` | BigAE trained on 47K DESI, scored on 22.5M DESI (in-sample). Paper 3 §3 does not acknowledge; add explicit caveat | Houston | P3 | 0.5 % | [ ] | Systematics-hunter BLOCKING |
+| `P3-TIC-374313355-RETRACT` | Drive-to-100 fire #21 log claims TIC 374313355 classified as M9V — no on-disk evidence. Retract from SSOT + drive-to-100 log unless SIMBAD/Gaia typing run finds it | agent | P3 | 0.05 % | [ ] | Systematics-hunter + Houston's prior "never falsely claim done" directive |
+| `P3-TABLE1-THRESHOLD-AUDIT` | Paper 3 Table 1 mixes fixed-score and 99th-pct thresholds across surveys; add threshold column or footnote | agent | P3 | 0.2 % | [ ] | Systematics-hunter Major |
+| `P3-QC-FAIL-ABSTRACT-DISCLOSURE` | 3 of 8 surveys failed QC (Planck, ACT, NEOWISE) — currently buried in §3; surface in abstract sweep summary | Houston | P3 | 0.3 % | [ ] | Systematics-hunter Major |
+| `P4-D4-VS-Z2-RENAME` | Committed TTA is single `torch.flip([3])` = Z2, not D4. Either rename throughout paper (D4 ⇒ Z2) or run real D4 TTA on pod | Houston | P4 | 0.4 % | [ ] | Dipole-skeptic; mechanical rename is safe but real D4 run adds a row to the robustness table |
+| `P4-MC-REALIZATIONS-HARMONIZE` | MC realizations inconsistent across sections (10K / 1K / partial); normalize to one canonical number per statistic | agent | P4 | 0.2 % | [ ] | Dipole-skeptic |
+| `P4-POST-TTA-043SIGMA-TRACE` | Post-TTA 0.43σ result not reproducible from any committed script; add generator or retract | agent | P4 | 0.3 % | [ ] | Dipole-skeptic |
+| `P4-RAW-AXIS-18P9DEG-DISCLOSE` | Hidden positive: pre-TTA raw axis is 18.9° from Shamir axis. This supports the null-dipole thesis (refutes Shamir via alignment decorrelation). Paper 4 does not mention — add as a strengthening side-fact in §5 or §7 | agent | P4 | 0.3 % | [ ] | Dipole-skeptic |
+| `P-ARXIV-P2-ABSTRACT-TRIM` | Paper 2 abstract 2,273 chars exceeds arXiv 1,920 web-form limit; trim 353 chars | agent | P2 | 0.2 % | [ ] | arXiv editor P1 |
+| `P-ARXIV-P3-ABSTRACT-TRIM` | Paper 3 abstract 2,194 chars exceeds arXiv 1,920 web-form limit; trim 274 chars | agent | P3 | 0.2 % | [ ] | arXiv editor P1 |
+| `P-ARXIV-P4-ABSTRACT-TRIM` | Paper 4 abstract 2,067 chars exceeds arXiv 1,920 web-form limit; trim 147 chars | agent | P4 | 0.2 % | [ ] | arXiv editor P1 |
+| `P-ARXIV-P3-TARBALL-BUILD` | Build Paper 3 arXiv tarball (missing); stage .tex + 21 figs + verify | agent | P3 | 0.3 % | [ ] | arXiv editor P1 |
+| `P-ARXIV-P4-TARBALL-BUILD` | Build Paper 4 arXiv tarball (missing); copy 11 figs from `public/images/chirality/` into `pipelines/p2_chirality/`, stage .tex+.bbl+figs, verify | agent | P4 | 0.3 % | [ ] | arXiv editor P1 |
+| `P-ARXIV-P2-TARBALL-REBUILD` | Paper 2 tarball missing `.bbl` — add `.bbl` to avoid arXiv-side bibtex failure | agent | P2 | 0.1 % | [ ] | arXiv editor P1 |
+| `P-CLAUDEMD-NANOGRAV-QUINTOM-TRIPLE-VERIFY` | Re-verify every CLAUDE.md stat card against committed paper .tex sources now that fire #25 caught 5 discrepancies | agent | P-all | 0.2 % | [ ] | Theorist audit uncovered 5; there may be more |
 
 ---
 
