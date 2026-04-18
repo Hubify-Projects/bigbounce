@@ -55,39 +55,33 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \date{March 28, 2026 --- \paperVersion}
 
 \begin{abstract}
-We present the largest galaxy chirality catalog to date, comprising
-8,474,531 galaxies from the DESI Legacy Imaging Surveys Data Release~8
-(Smith42/galaxies). Each galaxy is classified as clockwise~(\CW),
-counter-clockwise~(\CCW), or not spiral~(\NS) by a Vision Transformer
-(\vit) fine-tuned on 26,626 images from Galaxy Zoo~1 citizen-science
-labels, high-confidence CE-ResNet classifications, and synthetic hard
-negatives. The classifier achieves 93.7\% three-class validation accuracy.
-All eight tests in a purpose-built bias hardening suite pass their
-predefined thresholds, including flip-equivariance consistency, rotation
-stability, artifact rejection, brightness robustness, and metadata
-leakage. A flip-equivariance consistency loss during training and
-test-time equivariant averaging at inference eliminate
-orientation-dependent classification bias by construction, yielding
-a global clockwise fraction of $\CW/(\CW+\CCW) = 0.4974$ after
-equivariant post-processing.
-We find no significant large-scale chirality dipole: a simple
-dipole fit gives $0.43\sigmaunit$, while a full angular power spectrum
-analysis yields a marginal $2.75\sigmaunit$ at $\ell = 1$. A
-hemisphere asymmetry of $3.05\sigmaunit$ is detected, but its amplitude
-of only 0.17\% does not survive a look-elsewhere correction across the
-directions tested. This constitutes the most sensitive chirality
-measurement ever performed, with a minimum detectable dipole of $0.2\%$
-at $3\sigmaunit$ significance.  The $\sim\!3\%$ large-scale chirality
-asymmetry reported by Shamir~\cite{Shamir:2020,Shamir:2022} is definitively
-refuted: our maximum regional asymmetry is 0.47\%, a factor of~7
-smaller.  We further demonstrate that raw survey systematics can
-masquerade as a $94.6\sigmaunit$ dipole signal from a classifier \CW{}
-bias of only 0.79\%, underscoring the necessity of equivariant
-post-processing.
-All sky regions are balanced to within 0.5\% of 50/50. The catalog
-is publicly available at
+We present the largest galaxy chirality catalog to date: 8,474,531
+galaxies from the DESI Legacy Imaging Surveys DR8 (Smith42/galaxies),
+each classified as clockwise~(\CW), counter-clockwise~(\CCW), or not
+spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
+from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
+synthetic hard negatives. The classifier achieves 93.7\% three-class
+validation accuracy and passes all eight tests in a purpose-built
+bias-hardening suite (flip-equivariance, rotation stability, artifact
+rejection, brightness robustness, metadata leakage). A flip-equivariance
+consistency loss plus test-time equivariant averaging eliminate
+orientation-dependent bias by construction, yielding a global clockwise
+fraction $\CW/(\CW+\CCW) = 0.4974$.
+We find no significant large-scale chirality dipole: a simple fit gives
+$0.43\sigmaunit$, while a full angular power spectrum yields a marginal
+$2.75\sigmaunit$ at $\ell = 1$. A $3.05\sigmaunit$ hemisphere asymmetry
+is detected at only 0.17\% amplitude and does not survive a
+look-elsewhere correction. This is the most sensitive chirality
+measurement performed, with a minimum detectable dipole of $0.2\%$ at
+$3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
+Shamir~\cite{Shamir:2020,Shamir:2022} is definitively refuted: our
+maximum regional asymmetry is 0.47\%, a factor of~7 smaller. We further
+show that raw survey systematics can masquerade as a $94.6\sigmaunit$
+dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
+necessity of equivariant post-processing. All sky regions are balanced
+to within 0.5\% of 50/50. The catalog is available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
-under a CC-BY-4.0 license.
+under CC-BY-4.0.
 \end{abstract}
 
 \pacs{98.80.-k, 98.62.Ai, 95.75.Mn}
