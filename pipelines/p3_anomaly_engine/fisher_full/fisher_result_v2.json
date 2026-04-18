@@ -1,0 +1,63 @@
+{
+  "method": "Fisher v2b: Gaussian diagonal Fisher on PTA free-spectrum bins. mu_k = P(f_k|A,gamma) = A^2 (f_k/fref)^-gamma. var_k = (sigma_base_frac*P_fid(f_k))^2 * alpha_noise. Only var scales with scenario; dmu/dtheta depends only on signal. F_ij = sum_k dmu_i dmu_j / var_k.",
+  "fiducial": {
+    "A_GW": 2.4e-15,
+    "gamma": 3.2
+  },
+  "calibration": {
+    "sigma_base_frac": 1.4122834044586112,
+    "calibrated_to": "NG15 published sigma(gamma)=0.506"
+  },
+  "ng15_current": {
+    "sigma_log10A": 0.13489478317480816,
+    "sigma_gamma": 0.5059999999999997,
+    "correlation_rho": -0.7942440067538112,
+    "tension_vs_SMBHB_sigma": 2.239789196310936
+  },
+  "forecast": {
+    "NG15_current": {
+      "sigma_log10A": 0.13489478317480816,
+      "sigma_gamma": 0.5059999999999997,
+      "correlation_rho": -0.7942440067538112,
+      "tension_vs_SMBHB_sigma": 2.239789196310936
+    },
+    "NG20_est": {
+      "sigma_log10A": 0.09538501592959585,
+      "sigma_gamma": 0.35779603128039283,
+      "correlation_rho": -0.7942440067538112,
+      "tension_vs_SMBHB_sigma": 3.16754025827966
+    },
+    "CPTA_2030": {
+      "sigma_log10A": 0.0603267809977932,
+      "sigma_gamma": 0.2262900793229786,
+      "correlation_rho": -0.7942440067538111,
+      "tension_vs_SMBHB_sigma": 5.008320898220873
+    },
+    "SKA_PTA_2035": {
+      "sigma_log10A": 0.0301633904988966,
+      "sigma_gamma": 0.1131450396614893,
+      "correlation_rho": -0.7942440067538111,
+      "tension_vs_SMBHB_sigma": 10.016641796441746
+    }
+  },
+  "scenarios": {
+    "NG15_current": {
+      "alpha_noise": 1.0,
+      "interpretation": "published 2023 result"
+    },
+    "NG20_est": {
+      "alpha_noise": 0.5,
+      "interpretation": "~5 more yr of current PTA (half the noise variance)"
+    },
+    "CPTA_2030": {
+      "alpha_noise": 0.2,
+      "interpretation": "CPTA full sensitivity, 1/5 noise variance of NG15"
+    },
+    "SKA_PTA_2035": {
+      "alpha_noise": 0.05,
+      "interpretation": "SKA-class PTA, 1/20 noise variance of NG15"
+    }
+  },
+  "notes": "Supersedes fisher_result.json which scaled full C and saw zero change in sigma(gamma). v2b scales only the noise variance, so future PTAs correctly tighten sigma(gamma) monotonically.",
+  "runtime_s": 0.004349946975708008
+}

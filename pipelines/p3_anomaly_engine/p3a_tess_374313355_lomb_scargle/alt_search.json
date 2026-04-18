@@ -1,0 +1,25 @@
+{
+  "TIC": 374313355,
+  "attempts": [
+    {
+      "method": "search_tesscut",
+      "n_products": 3
+    }
+  ],
+  "lightcurve_retrieved": true,
+  "lomb_scargle": {
+    "peak_freq_per_day": 0.07255592408661846,
+    "peak_period_days": 13.782472108082912,
+    "peak_power": 0.31042915728740045,
+    "false_alarm_prob": 3.8853139892386195e-263
+  },
+  "lightcurve_source": "tesscut_sector46",
+  "n_points": 3321,
+  "coordinates": {
+    "ra_deg": 160.148889,
+    "dec_deg": 5.091599,
+    "Tmag": 18.517
+  },
+  "outcome": "lightcurve_retrieved_and_analysed",
+  "runtime_s": 25.548104763031006
+}
