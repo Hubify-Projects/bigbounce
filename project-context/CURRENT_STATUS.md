@@ -16,7 +16,7 @@
 | Paper | Version | Pages | Status |
 |-------|---------|-------|--------|
 | Paper 1 (Spin-Torsion) | v2.3.0 | 24 | Ready — add real birefringence result (β=0.264°) |
-| Paper 2 (f_NL Forecast) | v1.3.0 | 12 | Ready for submission |
+| Paper 2 (f_NL Forecast) | v1.6.0 | 12 | **85% — science done, NOT arXiv-ready.** Blocker: `\documentclass{article}` must be converted to `revtex4-2` per program format policy + bibliography entries need full resolution. See `SSOT/paper-2/status.md`. |
 | Paper 3 (Anomaly Catalog) | v1.0 | 24 | **99% — arXiv-ready, compiled 2026-04-15.** See `paper3_anomaly_catalog_status.md` |
 | Paper 4 (Chirality Catalog) | v1.0 | ~20 | **97% — arXiv-ready, 4 trivial admin items.** See `paper4_chirality_status.md` |
 
