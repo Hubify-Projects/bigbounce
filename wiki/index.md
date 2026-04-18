@@ -23,15 +23,17 @@ Categorized catalog of all wiki pages.
 
 ## Entities: Papers
 
-- [[paper-1-spin-torsion]] -- v2.2.0, 24pp. 14 barriers, ALP birefringence, bounce discrimination. ~80% submission-ready.
-- [[paper-2-fnl-forecast]] -- v1.3.0, 12pp. f_NL = -35/8 prediction + Fisher forecast. SUBMISSION-READY.
-- [[paper-3-anomaly-catalog]] -- 735 lines LaTeX. 8 surveys, 328K anomalies. ~95% ready.
-- [[paper-4-chirality]] -- 1,099 lines LaTeX. 8.47M galaxies, dipole null. ~85% ready.
+Pointer-only rows. Canonical % readiness lives in [`project-context/SSOT/index.md`](../project-context/SSOT/index.md) — do NOT quote % from this wiki index.
+
+- [[paper-1-spin-torsion]] -- v2.3.0. Pointer to SSOT.
+- [[paper-2-fnl-forecast]] -- v1.6.1. Pointer to SSOT (revtex4-2, arXiv-ready per fire #9).
+- [[paper-3-anomaly-catalog]] -- 319,443 anomalies across 8 surveys. Pointer to SSOT.
+- [[paper-4-chirality]] -- 8.47M galaxies, dipole null. Pointer to SSOT.
 
 ## Entities: Pipelines
 
 - [[pipeline-b-desi-anomaly]] -- BigAE autoencoder on full DESI DR1. COMPLETE.
-- [[pipeline-1-tracer-purification]] -- Anomaly-to-f_NL improvement. Steps 2-6 NOT STARTED.
+- [[pipeline-1-tracer-purification]] -- Anomaly-to-f_NL improvement. Steps 1-5 complete (per CLAUDE.md).
 - [[pipeline-2-chirality]] -- 8.47M galaxy chirality catalog. COMPLETE.
 
 ## Concepts

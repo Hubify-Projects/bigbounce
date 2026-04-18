@@ -38,9 +38,9 @@ Paper 1 updated with bounce model discrimination table, quintom references, port
 
 Pipeline 2 complete: 8.47M galaxies classified (CW/CCW/NOT_SPIRAL). 93.7% accuracy, 8/8 bias tests passed. CW/(CW+CCW) = 0.4974, dipole = 0.43-sigma (null). Published to HuggingFace, Convex, B2. See [[pipeline-2-chirality]], [[paper-4-chirality]].
 
-## [2026-03-29] completed | w0-wa MCMC Convergence
+## [2026-03-29] retracted | w0-wa MCMC Convergence — CONFABULATION
 
-Quintom-B (w-crossing) favored at 2.3-sigma, P(quintom-B) = 98.6%. w0 = -0.871 +/- 0.060, wa = -0.542 +/- 0.245. 50,900 samples, R-1 < 0.01. See [[bounce-portfolio]].
+The earlier "Quintom-B favored at 2.3-sigma, P(quintom-B) = 98.6%, w0 = -0.871 +/- 0.060, wa = -0.542 +/- 0.245" log entry was fire-#21 confabulation — corrected fire #25 (2026-04-18). Paper 1 §VII.H is explicit: zero free w0-wa samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2 sigma w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result. See [[bounce-portfolio]] + `project-context/SSOT/drive-to-100.md` fire #25.
 
 ## [2026-04-01] started | H200 Multi-Survey Queue
 

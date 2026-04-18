@@ -17,8 +17,8 @@ The observational discriminators between bounce cosmology and standard LCDM + in
 | Observable | Bounce Prediction | Inflation Prediction | Current Data | Status |
 |-----------|-------------------|---------------------|-------------|--------|
 | f_NL (local) | -35/8 = -4.375 | ~0.01 | -0.9 +/- 5.1 (Planck) | Consistent with both. SPHEREx decisive (~2028). |
-| w(z) crossing -1 | Yes (quintom bounce) | No (Lambda) | w0=-0.871, wa=-0.542 (2.3-sigma) | Favors bounce at 98.6% |
-| GW spectral index gamma | 3.0 (matter bounce) | -- | 3.2 +/- 0.6 (NANOGrav) | 0.33-sigma consistent with bounce |
+| w(z) crossing -1 | Yes (quintom bounce) | No (Lambda) | DESI DR2: 2.8-4.2 sigma (survey-dependent) | Theoretical channel; Paper 1 §VII.H: zero free w0-wa samples in this program |
+| GW spectral index gamma | 3.0 (matter bounce) | -- | 3.20 +/- 0.42 (Paper 3 §6 v2b GPU MCMC) | 0.48-sigma consistent with bounce; SMBHB excluded at ~2 sigma |
 | CMB birefringence beta | 0.27 deg (ALP) | 0 | 0.342 +/- 0.094 deg (3.6-sigma) | 0.8-sigma from prediction |
 | PBH abundance | Naturally regulated | Overproduction (fine-tuning) | Unconstrained | Theoretical advantage for bounce |
 | Tensor-to-scalar r | Model-dependent | 0.003-0.06 | r < 0.036 (95%) | Not yet discriminating |

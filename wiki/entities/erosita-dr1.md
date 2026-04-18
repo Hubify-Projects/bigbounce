@@ -20,9 +20,12 @@ X-ray anomaly detection on the eROSITA Data Release 1 catalog. Fast execution (8
 | Metric | Value |
 |--------|-------|
 | Sources scored | 930,203 |
-| Anomalies (top 1%) | 9,303 |
-| Runtime | 8 seconds |
-| Novelty fraction (not in SIMBAD) | 73% |
+| Anomalies (BigAE top-cut) | 298 (0.03%, Paper 3 Table 1 canonical) |
+| Runtime | ~7 minutes (A100 80 GB, full train+score, fire #26) |
+| Novelty fraction (not in SIMBAD) | 68% |
+| HuggingFace block | `bamfai/bigbounce-anomaly-catalog::blocks/erosita_dr1/erosita_dr1_anomalies.parquet` (uploaded fire #26) |
+
+> **Historical note:** An earlier 2026-04-02 scan used a 1% cut returning 9,303 anomalies. The canonical Paper 3 Table 1 figure is 298 BigAE top-cut (score ≥ 3.412). The 1% figure was a placeholder before the top-cut policy landed.
 
 ## QC Assessment
 

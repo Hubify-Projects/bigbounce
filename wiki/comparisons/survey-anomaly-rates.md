@@ -19,12 +19,12 @@ Side-by-side comparison of all 8 surveys in the multi-survey anomaly sweep.
 | [[desi-dr1]] | 22,500,000 | 195,829 | 0.87% | PASS | -- |
 | [[sdss-dr18]] | 2,304,830 | 77,905 | 3.4% | CAUTION | Score explosion (10^11), domain shift |
 | [[lamost-dr10]] | 11,418,594 | 44,075 | 0.39% | CAUTION | 98% blue-excess (training bias) |
-| [[erosita-dr1]] | 930,203 | 9,303 | 1.0% | PASS | -- |
-| [[planck-cmb]] | 20,000 | 200 | 1.0% | FAIL | All at Dec<-84 deg (galactic) |
-| [[act-dr6]] | 20,000 | 200 | 1.0% | FAIL | val_loss=22,420 (undertrained) |
-| [[neowise]] | 43,500 | 436 | 1.0% | FAIL | All at RA~180 deg (systematic) |
-| [[gaia-dr3]] | 50,000 | 500 | 1.0% | PASS | Needs expansion to 500K+ |
-| **TOTAL** | **~33,500,000** | **~328,448** | -- | -- | -- |
+| [[erosita-dr1]] | 930,203 | 298 | 0.03% | PASS | BigAE top-cut (Paper 3 Table 1 canonical) |
+| [[planck-cmb]] | 20,000 | 200 | 1.0% | FIXED (masked) | galactic-mask applied post-fire-#9 |
+| [[act-dr6]] | 20,000 | 200 | 1.0% | FIXED | retrained, val_loss now acceptable |
+| [[neowise]] | 43,500 | 436 | 1.0% | FIXED (ecliptic mask) | ecliptic-mask applied |
+| [[gaia-dr3]] | 50,000 | 500 | 1.0% | PASS | expanded to 500K in later pass |
+| **TOTAL** | **~37,300,000** | **319,443** | -- | -- | matches Paper 3 §1 canonical |
 
 ## QC Status Breakdown
 

@@ -2,7 +2,7 @@
 title: "Paper 2: f_NL Forecast — POINTER"
 type: entity
 tags: [paper, fnl, spherex, fisher, pointer]
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 superseded_by: project-context/SSOT/paper-2/status.md
 ---
 
@@ -16,15 +16,15 @@ superseded_by: project-context/SSOT/paper-2/status.md
 - **SSOT:** [`project-context/SSOT/paper-2/status.md`](../../project-context/SSOT/paper-2/status.md)
 - **Science highlights (N0–N4 novelty tags):** [`project-context/paper2_science_highlights.md`](../../project-context/paper2_science_highlights.md)
 - **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex`
-- **Canonical PDF:** `research/focused_paper_source_integration/02_full_draft.pdf`
+- **Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (fire #9 Docker TeX Live compile — 632 KB, 0 undef refs, revtex4-2)
 
 ## One-line status (mirror of SSOT)
 
-**v1.6.0 · 85 % ready · NOT arXiv-ready.** Science is done; blocker is the `\documentclass{article}` → `revtex4-2` conversion plus bibliography resolution. See §7 of the SSOT for the close-the-gap queue.
+**v1.6.1 · 100 % ready · arXiv-ready.** Revtex4-2 conversion + bibliography resolution landed fire #9 (2026-04-17). Peer-review follow-ups tracked in queue but non-blocking for submission.
 
 ## Why this file exists as a pointer
 
-The earlier version of this file (2026-04-04) claimed "SUBMISSION-READY" — that was wrong on both version (v1.3.0 → v1.6.0) and readiness (Ready → 85 %). Rather than let downstream surfaces drift, this file now mirrors the SSOT and nothing else.
+The earlier version of this file (2026-04-04) claimed "SUBMISSION-READY" on v1.3.0, then was corrected to "85 % ready · NOT arXiv-ready" on v1.6.0 (pre-fire-#9). Fire #9 landed the revtex4-2 conversion + bib-resolution on 2026-04-17, bumping state to 100 %. Fire #29 (2026-04-18) updated this pointer to match SSOT after Houston flagged the 85 % stale number on the site. Rather than let downstream surfaces drift, this file mirrors the SSOT and nothing else.
 
 ## Connections
 
