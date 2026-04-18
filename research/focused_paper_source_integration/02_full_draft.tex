@@ -1,12 +1,9 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[aps,prd,reprint,superscriptaddress,nofootinbib,longbibliography,floatfix]{revtex4-2}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{booktabs}
-\usepackage[margin=1in]{geometry}
-\usepackage{natbib}
-\bibliographystyle{unsrtnat}
 
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\BNL}{|B|_{\rm NL}}
@@ -14,16 +11,17 @@
 \newcommand{\eg}{e.g.}
 \newcommand{\ie}{i.e.}
 
-\title{Testing the Matter Bounce with Primordial Non-Gaussianity:\\Forecasts for SPHEREx and MegaMapper}
-
-\author{Houston Golden\\[4pt]
-{\small\textit{Independent Researcher, Los Angeles, California, USA}}\\[2pt]
-{\small\texttt{houston@hubify.com}}\\[2pt]
-{\small\url{https://bigbounce.hubify.app}}}
-
-\date{March 24, 2026 --- v1.6.0}
-
 \begin{document}
+
+\title{Testing the Matter Bounce with Primordial Non-Gaussianity:\\
+Forecasts for SPHEREx and MegaMapper}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\today}
+
 \maketitle
 
 % ============================================================
@@ -35,17 +33,17 @@ A matter-dominated contracting phase preceding a nonsingular bounce produces a s
 \section{Introduction}
 \label{sec:intro}
 
-The inflationary paradigm provides a remarkably successful framework for generating the observed spectrum of primordial perturbations. Standard single-field slow-roll inflation predicts a nearly scale-invariant, nearly Gaussian spectrum with a small, positive local-type non-Gaussianity $\fnl \approx (5/12)(1-n_s) \approx 0.015$, set by the Maldacena consistency relation~\citep{Maldacena:2002vr}.
+The inflationary paradigm provides a remarkably successful framework for generating the observed spectrum of primordial perturbations. Standard single-field slow-roll inflation predicts a nearly scale-invariant, nearly Gaussian spectrum with a small, positive local-type non-Gaussianity $\fnl \approx (5/12)(1-n_s) \approx 0.015$, set by the Maldacena consistency relation~\cite{Maldacena:2002vr}.
 
-Bouncing cosmology offers an alternative origin for primordial perturbations: modes exit the Hubble radius during a contracting phase and re-enter after a nonsingular bounce. In particular, a matter-dominated contraction ($w \approx 0$) produces a scale-invariant scalar spectrum through the growth of the curvature perturbation $\zeta$ on superhorizon scales~\citep{Wands:1998yp,Finelli:2001sr}.
+Bouncing cosmology offers an alternative origin for primordial perturbations: modes exit the Hubble radius during a contracting phase and re-enter after a nonsingular bounce. In particular, a matter-dominated contraction ($w \approx 0$) produces a scale-invariant scalar spectrum through the growth of the curvature perturbation $\zeta$ on superhorizon scales~\cite{Wands:1998yp,Finelli:2001sr}.
 
-A distinctive prediction of the matter bounce is a large, negative, parameter-free local-type non-Gaussianity $\fnl = -35/8 = -4.375$~\citep{Cai:2009fn}. This value is determined entirely by the equation of state during contraction ($\epsilon = 3/2$ for matter) and the structure of the Maldacena cubic action, with no free parameters. The prediction is mechanism-independent in the sense that it depends only on the contracting-phase dynamics, not on the specific UV completion that produces the bounce~\citep{WilsonEwing:2012}; it is conditional on assumptions about the bounce transition (Sec.~\ref{sec:assumptions}). In minimal Einstein-Cartan-Holst gravity, scalar perturbations reduce exactly to the standard Mukhanov-Sasaki sector because the Holst term becomes a topological invariant when torsion vanishes for canonical scalar field matter, rendering the Barbero-Immirzi parameter invisible in all scalar observables; see the companion paper~\citep{Golden:2026framework} for the full derivation and structural barrier catalog.
+A distinctive prediction of the matter bounce is a large, negative, parameter-free local-type non-Gaussianity $\fnl = -35/8 = -4.375$~\cite{Cai:2009fn}. This value is determined entirely by the equation of state during contraction ($\epsilon = 3/2$ for matter) and the structure of the Maldacena cubic action, with no free parameters. The prediction is mechanism-independent in the sense that it depends only on the contracting-phase dynamics, not on the specific UV completion that produces the bounce~\cite{WilsonEwing:2012}; it is conditional on assumptions about the bounce transition (Sec.~\ref{sec:assumptions}). In minimal Einstein-Cartan-Holst gravity, scalar perturbations reduce exactly to the standard Mukhanov-Sasaki sector because the Holst term becomes a topological invariant when torsion vanishes for canonical scalar field matter, rendering the Barbero-Immirzi parameter invisible in all scalar observables; see the companion paper~\cite{Golden:2026framework} for the full derivation and structural barrier catalog.
 
-The next generation of galaxy surveys---SPHEREx~\citep{Dore:2014} and
-MegaMapper~\citep{Schlegel:2022}---will constrain local-type $\fnl$ at
+The next generation of galaxy surveys---SPHEREx~\cite{Dore:2014} and
+MegaMapper~\cite{Schlegel:2022}---will constrain local-type $\fnl$ at
 unprecedented precision through the scale-dependent bias
-effect~\citep{Dalal:2007cu} and the galaxy
-bispectrum~\citep{Heinrich:2023}. In this paper, we present hardened
+effect~\cite{Dalal:2007cu} and the galaxy
+bispectrum~\cite{Heinrich:2023}. In this paper, we present hardened
 forecasts for testing $\fnl = -35/8$ with these surveys, including a
 systematic assessment of the dominant observational fragilities and a
 Bayesian model comparison quantifying the discrimination power against
@@ -57,7 +55,7 @@ inflationary alternatives.
 
 \subsection{The Prediction}
 
-In a matter-dominated contracting universe with standard GR perturbation theory and Bunch-Davies vacuum, the curvature perturbation $\zeta$ grows as $|\eta|^{-3}$ on superhorizon scales during contraction. The cubic interactions, governed by the Maldacena action~\citep{Maldacena:2002vr} specialized to $\epsilon = 3/2$, produce a bispectrum with shape function~\citep{Cai:2009fn}:
+In a matter-dominated contracting universe with standard GR perturbation theory and Bunch-Davies vacuum, the curvature perturbation $\zeta$ grows as $|\eta|^{-3}$ on superhorizon scales during contraction. The cubic interactions, governed by the Maldacena action~\cite{Maldacena:2002vr} specialized to $\epsilon = 3/2$, produce a bispectrum with shape function~\cite{Cai:2009fn}:
 \begin{equation}
 A_T(k_1, k_2, k_3) = \frac{3}{256\, k_1^2 k_2^2 k_3^2}\, P(k_1, k_2, k_3)\,,
 \end{equation}
@@ -66,11 +64,11 @@ where $P$ is a degree-9 homogeneous polynomial in the wavenumbers. The nonlinear
 \BNL = \frac{10}{3}\frac{A_T}{\sum_i k_i^3} \to -\frac{35}{8}\quad\text{as}\quad k_1/k \to 0\,.
 \end{equation}
 
-We have confirmed the published numerical values of this result by evaluating the shape function at three distinct momentum configurations (Table~\ref{tab:benchmarks} and Fig.~\ref{fig:shape}). The degree-9 polynomial $P$ has coefficients $(c_1,\ldots,c_6) = (6, 2, -18, 10, -66, 18)$ in the basis $\{\sum k_i^9,\;\sum_{i\neq j}k_i^7k_j^2,\;\ldots\}$. These are derived from the physics: using exact rational arithmetic, we verified that $2 \times (\text{Eqs.~34+35+36})$ with $\epsilon = 3/2$ reproduces these coefficients at all tested configurations. The factor of 2 is the in-in commutator factor. The coefficients printed in Eq.~(37) of~\citet{Cai:2009fn}, $(3, 1, -9, 5, -66, 9)$, are the single-time-ordering values (before the commutator doubling). An injection/recovery test using 200 Monte Carlo realizations confirms that a local-template estimator applied to a bounce-shaped signal recovers $r_{\rm measured} = 0.90 \pm 0.01$, consistent with the analytically computed overlap (Sec.~\ref{sec:template}).
+We have confirmed the published numerical values of this result by evaluating the shape function at three distinct momentum configurations (Table~\ref{tab:benchmarks} and Fig.~\ref{fig:shape}). The degree-9 polynomial $P$ has coefficients $(c_1,\ldots,c_6) = (6, 2, -18, 10, -66, 18)$ in the basis $\{\sum k_i^9,\;\sum_{i\neq j}k_i^7k_j^2,\;\ldots\}$. These are derived from the physics: using exact rational arithmetic, we verified that $2 \times (\text{Eqs.~34+35+36})$ with $\epsilon = 3/2$ reproduces these coefficients at all tested configurations. The factor of 2 is the in-in commutator factor. The coefficients printed in Eq.~(37) of~\cite{Cai:2009fn}, $(3, 1, -9, 5, -66, 9)$, are the single-time-ordering values (before the commutator doubling). An injection/recovery test using 200 Monte Carlo realizations confirms that a local-template estimator applied to a bounce-shaped signal recovers $r_{\rm measured} = 0.90 \pm 0.01$, consistent with the analytically computed overlap (Sec.~\ref{sec:template}).
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{fig1_shape_function.png}
+\includegraphics[width=\columnwidth]{fig1_shape_function.png}
 \caption{Matter-bounce bispectrum shape function $\BNL(k_1, k, k)$ as a function of the squeeze ratio $k_1/k$, showing convergence to $-35/8$ in the squeezed limit. Red circle: squeezed benchmark. Orange square: equilateral. Green triangle: folded.}
 \label{fig:shape}
 \end{figure}
@@ -86,7 +84,7 @@ Equilateral ($k_1 = k_2 = k_3$) & $-3.984$ & $-255/64$ \\
 Folded ($k_1 = 2k_2 = 2k_3$) & $-2.250$ & $-9/4$ \\
 \bottomrule
 \end{tabular}
-\caption{Confirmation of the matter-bounce shape function at three benchmark momentum configurations. All values match the published results~\citep{Cai:2009fn} exactly.}
+\caption{Confirmation of the matter-bounce shape function at three benchmark momentum configurations. All values match the published results~\cite{Cai:2009fn} exactly.}
 \label{tab:benchmarks}
 \end{table}
 
@@ -96,11 +94,11 @@ The prediction depends only on: (a)~matter-dominated contraction ($w \approx 0$,
 
 \subsection{Assumptions}\label{sec:assumptions}
 
-The $\fnl = -35/8$ prediction rests on five assumptions: (a)~exact matter domination during contraction ($w = 0$, $\epsilon = 3/2$); (b)~standard GR perturbation theory during contraction (no higher-order corrections from the bounce UV completion); (c)~Bunch-Davies vacuum initial conditions; (d)~faithful transmission of the bispectrum through the bounce at third order in perturbation theory; and (e)~the CMB-observable modes originate from the contracting phase, not from a prolonged post-bounce inflationary epoch. Assumption (e) is satisfied in the Wilson-Ewing model (Sec.~\ref{sec:viable}), where the bounce connects directly to radiation domination with at most a brief inflationary transient ($N \ll 55$). Models that invoke prolonged post-bounce inflation ($N_{\rm tot} \gg 60$, as required for certain dark energy mechanisms~\citep{Golden:2026framework}) would push the bounce-imprinted modes far beyond the observable horizon, erasing the $\fnl$ signal and replacing it with the standard slow-roll value $\fnl \approx 0.015$. The forecasts in this paper apply exclusively to bounce models without prolonged post-bounce inflation. The viable Wilson-Ewing model uses $w = -0.003$, not exactly zero. The correction from exact matter domination depends on how the bispectrum integral scales with $\epsilon$ near the singular point $\epsilon = 3/2$, where the mode function Hankel index diverges. Explicit cubic-action prefactors give a correction of ${\sim}\,0.6\%$, but the mode-function growth rate also changes with $\epsilon$, potentially amplifying the correction to ${\sim}\,1$--$8\%$. At the Planck best-fit spectral tilt, $\fnl \in [-4.35,\;-4.02]$. Both bounds are well within $\sigma(\fnl) \approx 0.7$. Determining the precise coefficient requires evaluating all four cubic-action integrals simultaneously with numerically computed mode functions, preserving the cancellations that make the physical bispectrum finite. Assumption (d) has been verified at linear order~\citep{WilsonEwing:2012}. At cubic order, a semi-analytic estimate based on the superhorizon approximation for mode functions near the LQC bounce shows that the bounce contribution to $\fnl$ is suppressed by $(k\,\eta_{\rm bounce})^2 \sim 10^{-4}$ for modes of observational interest, giving a correction $\delta\fnl \sim 10^{-3}$ (negligible). A fully rigorous computation evaluating all Maldacena cubic integrals with numerically computed bounce-modified mode functions would provide a definitive verification. A factor-of-two discrepancy exists in the literature: Li et al.~\citep{LiBrandenberger:2014} obtain $\fnl = -35/16 = -2.19$ when evaluated at $c_s = 1$. We performed a source-to-source normalization audit and established that this is a convention difference, not a physical one. Specifically: all four individual vertex contributions (field redefinition, $\zeta\dot\zeta^2$, $\dot\zeta\partial\zeta\partial\chi$, and $\zeta(\partial_i\partial_j\chi)^2$) agree exactly between the two papers at $c_s = 1$ (verified numerically to six significant figures). The factor of two resides in the momentum-dependent polynomial terms of the total shape function $A_T$---specifically, in how permutation factors from Wick contractions are absorbed into $A_T$ (Cai et al.\ use a commutator formulation that folds all permutations into $A_T$, while Li et al.\ write explicit permutation prefactors that produce a differently normalized $A_{\rm tot}$). The physical bispectrum is identical. In the Planck convention ($\zeta = \zeta_g + \tfrac{3}{5}\fnl\zeta_g^2$), which matches Cai et al.'s explicit Eq.~(20), the canonical value is $\fnl = -35/8 = -4.375$. We further verified that Cai et al.'s intermediate $\epsilon$-order decomposition (their Eqs.~34--36) sums to exactly $-35/16$ at all three benchmark configurations, while Eq.~37 gives $-35/8$---a ratio of precisely $0.5000$. The factor of two is the standard in-in commutator factor: $i\langle[\zeta^3, L]\rangle = -2\,\text{Im}\,\langle\zeta^3 L\rangle$. Eqs.~34--36 give the single time-ordered correlator; Eq.~37 includes both orderings. The Planck convention uses the full bispectrum, so $-35/8$ is the correct observational value. We assign 92\% confidence to this normalization.
+The $\fnl = -35/8$ prediction rests on five assumptions: (a)~exact matter domination during contraction ($w = 0$, $\epsilon = 3/2$); (b)~standard GR perturbation theory during contraction (no higher-order corrections from the bounce UV completion); (c)~Bunch-Davies vacuum initial conditions; (d)~faithful transmission of the bispectrum through the bounce at third order in perturbation theory; and (e)~the CMB-observable modes originate from the contracting phase, not from a prolonged post-bounce inflationary epoch. Assumption (e) is satisfied in the Wilson-Ewing model (Sec.~\ref{sec:viable}), where the bounce connects directly to radiation domination with at most a brief inflationary transient ($N \ll 55$). Models that invoke prolonged post-bounce inflation ($N_{\rm tot} \gg 60$, as required for certain dark energy mechanisms~\cite{Golden:2026framework}) would push the bounce-imprinted modes far beyond the observable horizon, erasing the $\fnl$ signal and replacing it with the standard slow-roll value $\fnl \approx 0.015$. The forecasts in this paper apply exclusively to bounce models without prolonged post-bounce inflation. The viable Wilson-Ewing model uses $w = -0.003$, not exactly zero. The correction from exact matter domination depends on how the bispectrum integral scales with $\epsilon$ near the singular point $\epsilon = 3/2$, where the mode function Hankel index diverges. Explicit cubic-action prefactors give a correction of ${\sim}\,0.6\%$, but the mode-function growth rate also changes with $\epsilon$, potentially amplifying the correction to ${\sim}\,1$--$8\%$. At the Planck best-fit spectral tilt, $\fnl \in [-4.35,\;-4.02]$. Both bounds are well within $\sigma(\fnl) \approx 0.7$. Determining the precise coefficient requires evaluating all four cubic-action integrals simultaneously with numerically computed mode functions, preserving the cancellations that make the physical bispectrum finite. Assumption (d) has been verified at linear order~\cite{WilsonEwing:2012}. At cubic order, a semi-analytic estimate based on the superhorizon approximation for mode functions near the LQC bounce shows that the bounce contribution to $\fnl$ is suppressed by $(k\,\eta_{\rm bounce})^2 \sim 10^{-4}$ for modes of observational interest, giving a correction $\delta\fnl \sim 10^{-3}$ (negligible). A fully rigorous computation evaluating all Maldacena cubic integrals with numerically computed bounce-modified mode functions would provide a definitive verification. A factor-of-two discrepancy exists in the literature: Li et al.~\cite{LiBrandenberger:2014} obtain $\fnl = -35/16 = -2.19$ when evaluated at $c_s = 1$. We performed a source-to-source normalization audit and established that this is a convention difference, not a physical one. Specifically: all four individual vertex contributions (field redefinition, $\zeta\dot\zeta^2$, $\dot\zeta\partial\zeta\partial\chi$, and $\zeta(\partial_i\partial_j\chi)^2$) agree exactly between the two papers at $c_s = 1$ (verified numerically to six significant figures). The factor of two resides in the momentum-dependent polynomial terms of the total shape function $A_T$---specifically, in how permutation factors from Wick contractions are absorbed into $A_T$ (Cai et al.\ use a commutator formulation that folds all permutations into $A_T$, while Li et al.\ write explicit permutation prefactors that produce a differently normalized $A_{\rm tot}$). The physical bispectrum is identical. In the Planck convention ($\zeta = \zeta_g + \tfrac{3}{5}\fnl\zeta_g^2$), which matches Cai et al.'s explicit Eq.~(20), the canonical value is $\fnl = -35/8 = -4.375$. We further verified that Cai et al.'s intermediate $\epsilon$-order decomposition (their Eqs.~34--36) sums to exactly $-35/16$ at all three benchmark configurations, while Eq.~37 gives $-35/8$---a ratio of precisely $0.5000$. The factor of two is the standard in-in commutator factor: $i\langle[\zeta^3, L]\rangle = -2\,\text{Im}\,\langle\zeta^3 L\rangle$. Eqs.~34--36 give the single time-ordered correlator; Eq.~37 includes both orderings. The Planck convention uses the full bispectrum, so $-35/8$ is the correct observational value. We assign 92\% confidence to this normalization.
 
 \subsection{The Viable Model}
 
-The Wilson-Ewing $\Lambda$CDM quasi-dust model~\citep{WilsonEwing:2012} provides a complete observational package: $n_s = 0.964$ (from $w = -0.003$, one free parameter; the spectral index formula $n_s = 1 + 12w$ for $w < 0$ follows from the growing-mode solution in quasi-dust contraction~\citep{WilsonEwing:2012}), $r \approx 10^{-4}$ (from LQC quantum-geometry tensor suppression), and $\fnl = -35/8$ (no free parameters in the cubic sector; conditional on assumptions (a)--(e) in Sec.~\ref{sec:assumptions}). This model has no current observational tensions.
+The Wilson-Ewing $\Lambda$CDM quasi-dust model~\cite{WilsonEwing:2012} provides a complete observational package: $n_s = 0.964$ (from $w = -0.003$, one free parameter; the spectral index formula $n_s = 1 + 12w$ for $w < 0$ follows from the growing-mode solution in quasi-dust contraction~\cite{WilsonEwing:2012}), $r \approx 10^{-4}$ (from LQC quantum-geometry tensor suppression), and $\fnl = -35/8$ (no free parameters in the cubic sector; conditional on assumptions (a)--(e) in Sec.~\ref{sec:assumptions}). This model has no current observational tensions.
 
 % ============================================================
 \section{Observable Mapping to Large-Scale Structure}
@@ -108,7 +106,7 @@ The Wilson-Ewing $\Lambda$CDM quasi-dust model~\citep{WilsonEwing:2012} provides
 
 \subsection{Scale-Dependent Bias}
 
-Primordial local non-Gaussianity induces a scale-dependent correction to galaxy bias~\citep{Dalal:2007cu}:
+Primordial local non-Gaussianity induces a scale-dependent correction to galaxy bias~\cite{Dalal:2007cu}:
 \begin{equation}
 \Delta b(k) = \frac{2(b_1 - 1)\, \fnl\, \delta_c}{D(z)\, T(k)\, \alpha(k)}\,,
 \end{equation}
@@ -135,19 +133,19 @@ For the SPHEREx bispectrum forecast ($\sigma(\fnl^{\rm local}) = 0.7$), the temp
 
 \subsection{Galaxy Bispectrum}
 
-The galaxy bispectrum provides an independent measurement channel that accesses information at shorter wavelengths, reducing the dependence on ultra-large-scale modes~\citep{Heinrich:2023}. This makes bispectrum-based constraints more robust to large-scale systematics than power-spectrum-based scale-dependent bias alone.
+The galaxy bispectrum provides an independent measurement channel that accesses information at shorter wavelengths, reducing the dependence on ultra-large-scale modes~\cite{Heinrich:2023}. This makes bispectrum-based constraints more robust to large-scale systematics than power-spectrum-based scale-dependent bias alone.
 
 % ============================================================
 \section{SPHEREx Forecast}
 \label{sec:spherex}
 
-SPHEREx is an all-sky spectrophotometric survey ($0.75$--$5\,\mu$m) with spectral resolution $R \approx 40$--$130$ and approximately 450 million galaxies. A dedicated multi-tracer bispectrum analysis~\citep{Heinrich:2023} forecasts $\sigma(\fnl) = 0.7$ from the bispectrum alone, with $\sigma(\fnl) = 0.5$ when combined with the power spectrum.
+SPHEREx is an all-sky spectrophotometric survey ($0.75$--$5\,\mu$m) with spectral resolution $R \approx 40$--$130$ and approximately 450 million galaxies. A dedicated multi-tracer bispectrum analysis~\cite{Heinrich:2023} forecasts $\sigma(\fnl) = 0.7$ from the bispectrum alone, with $\sigma(\fnl) = 0.5$ when combined with the power spectrum.
 
 For our target signal $\fnl = -4.375$, the template-corrected detection significance (Eq.~\ref{eq:projection}) ranges from $5.5\sigma$ (bispectrum only, $r = 0.876$) to $3.0\sigma$ (conservative, with GR marginalization at $\sigma_{\rm GR} = 1.0$). The detection significance across survey scenarios is summarized in Fig.~\ref{fig:surveys}. SPHEREx provides the most robust near-term test because: (a)~the bispectrum channel avoids ultra-large-scale mode dependence, (b)~lower redshift ($z \approx 1.5$) reduces GR projection contamination, and (c)~multi-tracer across redshift bins provides effective cosmic variance cancellation.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{fig2_survey_comparison.png}
+\includegraphics[width=\columnwidth]{fig2_survey_comparison.png}
 \caption{Detection significance for $\fnl = -35/8$ across survey configurations. Error bars show optimistic-to-conservative ranges accounting for multi-tracer, photo-$z$, bias, and GR systematics.}
 \label{fig:surveys}
 \end{figure}
@@ -156,9 +154,9 @@ For our target signal $\fnl = -4.375$, the template-corrected detection signific
 \section{MegaMapper Forecast}
 \label{sec:megamapper}
 
-MegaMapper is a proposed Stage-V spectroscopic survey targeting $\sim 10$ million Lyman-break galaxies at $z = 2$--$5$ with multi-tracer capability~\citep{Schlegel:2022}. Published forecasts give $\sigma(\fnl) \approx 0.5$ under ideal conditions.
+MegaMapper is a proposed Stage-V spectroscopic survey targeting $\sim 10$ million Lyman-break galaxies at $z = 2$--$5$ with multi-tracer capability~\cite{Schlegel:2022}. Published forecasts give $\sigma(\fnl) \approx 0.5$ under ideal conditions.
 
-The significance ranges from $8.75\sigma$ (design goal) to $3$--$5\sigma$ (conservative, after GR marginalization and $b_\phi$ uncertainty). MegaMapper's forecast is more sensitive than SPHEREx's to: (a)~relativistic projection effects, which create substantial GR-induced bias at $z > 2$~\citep{Maartens:2025}; (b)~PNG bias parameter $b_\phi$ uncertainty, which can degrade constraints if uncalibrated~\citep{Barreira:2022}; and (c)~multi-tracer implementation quality.
+The significance ranges from $8.75\sigma$ (design goal) to $3$--$5\sigma$ (conservative, after GR marginalization and $b_\phi$ uncertainty). MegaMapper's forecast is more sensitive than SPHEREx's to: (a)~relativistic projection effects, which create substantial GR-induced bias at $z > 2$~\cite{Maartens:2025}; (b)~PNG bias parameter $b_\phi$ uncertainty, which can degrade constraints if uncalibrated~\cite{Barreira:2022}; and (c)~multi-tracer implementation quality.
 
 % ============================================================
 \section{Inflation Mimicry and Bayesian Comparison}
@@ -166,13 +164,13 @@ The significance ranges from $8.75\sigma$ (design goal) to $3$--$5\sigma$ (conse
 
 \subsection{Can Inflation Reproduce the Signal?}
 
-Standard single-field slow-roll inflation predicts $\fnl = (5/12)(1-n_s) \approx +0.015$~\citep{Maldacena:2002vr}---wrong by a factor of 300 and opposite in sign. Non-canonical single-field models (DBI, etc.) produce equilateral-shape $\fnl$, not local.
+Standard single-field slow-roll inflation predicts $\fnl = (5/12)(1-n_s) \approx +0.015$~\cite{Maldacena:2002vr}---wrong by a factor of 300 and opposite in sign. Non-canonical single-field models (DBI, etc.) produce equilateral-shape $\fnl$, not local.
 
-Non-attractor single-field inflation naturally gives $\fnl = +5/2$ (wrong sign)~\citep{Cai:2018non}. Reaching $-4.375$ requires engineering the attractor-to-slow-roll transition. The standard quadratic curvaton gives minimum $\fnl \approx -1.25$ (insufficient). Self-interacting curvatons or curved field-space models can reach $-4.375$ but require $\geq 2$ tuned parameters.
+Non-attractor single-field inflation naturally gives $\fnl = +5/2$ (wrong sign)~\cite{Cai:2018non}. Reaching $-4.375$ requires engineering the attractor-to-slow-roll transition. The standard quadratic curvaton gives minimum $\fnl \approx -1.25$ (insufficient). Self-interacting curvatons or curved field-space models can reach $-4.375$ but require $\geq 2$ tuned parameters.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{fig5_inflation_comparison.png}
+\includegraphics[width=\columnwidth]{fig5_inflation_comparison.png}
 \caption{$\fnl$ landscape: matter bounce vs.\ inflationary alternatives. The bounce prediction (red diamond) is parameter-free; inflationary alternatives require free parameters to reach the same region. SPHEREx $1\sigma$ error bar shown in blue.}
 \label{fig:inflation}
 \end{figure}
@@ -215,11 +213,11 @@ Varying the multifield competitor prior width gives Bayes factors from 7 (narrow
 
 \subsection{Dominant Fragilities}
 
-Our Fisher robustness scan identified three dominant threats to the forecast: (1)~ultra-large-scale mode access ($k_{\min}$), where the SDB signal is concentrated in the lowest $k$-modes (Fig.~\ref{fig:kmin}); (2)~relativistic projection effects, which create a GR-induced bias at large scales; and (3)~PNG bias ($b_\phi$) uncertainty, which degrades the SDB calibration~\citep{Barreira:2022}.
+Our Fisher robustness scan identified three dominant threats to the forecast: (1)~ultra-large-scale mode access ($k_{\min}$), where the SDB signal is concentrated in the lowest $k$-modes (Fig.~\ref{fig:kmin}); (2)~relativistic projection effects, which create a GR-induced bias at large scales; and (3)~PNG bias ($b_\phi$) uncertainty, which degrades the SDB calibration~\cite{Barreira:2022}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{fig3_kmin_cliff.png}
+\includegraphics[width=\columnwidth]{fig3_kmin_cliff.png}
 \caption{Left: $\sigma(\fnl)$ vs.\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel ($\sigma = 0.7$, dotted) avoids the ultra-large-scale fragility. Right: corresponding detection significance for $\fnl = -35/8$.}
 \label{fig:kmin}
 \end{figure}
@@ -230,7 +228,7 @@ The scale-dependent bias signal is proportional to $\fnl \times b_\phi$, where $
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\textwidth]{bphi_sensitivity.pdf}
+\includegraphics[width=\columnwidth]{bphi_sensitivity.pdf}
 \caption{Left: $\sigma(\fnl)$ as a function of $b_\phi$ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constraint (red dashed) is nearly independent of $b_\phi$. Right: corresponding detection significance for $\fnl = -35/8$. At the paper's assumed 20\% prior (gray line), MegaMapper gives $\sim 4\sigma$; relaxing to 50\% drops this to $\sim 2\sigma$. The bispectrum channel remains at $\sim 6\sigma$ regardless.}
 \label{fig:bphi}
 \end{figure}
@@ -317,7 +315,7 @@ A detection of $\fnl \approx -4$ by SPHEREx, if confirmed by any of these indepe
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{fig4_decision_thresholds.png}
+\includegraphics[width=\columnwidth]{fig4_decision_thresholds.png}
 \caption{Observational decision thresholds. Green: strongly favors bounce. Red: strongly disfavors the quasi-dust matter bounce. Blue vertical line: bounce prediction $\fnl = -35/8$. Error bars: SPHEREx ($\sigma = 0.7$) and MegaMapper conservative ($\sigma = 1.5$).}
 \label{fig:thresholds}
 \end{figure}
@@ -330,7 +328,7 @@ We emphasize that a detection of $\fnl \approx -4$ would constitute evidence \em
 
 We also note that appending late-time dynamical-dark-energy freedom (e.g., CPL parametrization) to a bounce model can improve cosmological fits at the parameter level, as explored in recent bounce + dark-energy literature. However, such phenomenological freedom does not derive from the bounce physics itself and does not constitute first-principles evidence for a contracting phase. Our analysis restricts attention to the parameter-free prediction $\fnl = -35/8$, which is controlled by the contraction dynamics.
 
-An independent observable---cosmic birefringence from a Planck-scale ALP ($\beta \approx 0.27^\circ$, consistent with the $3.6\sigma$ Eskilt et al.\ joint Planck analysis)---is analyzed in the companion paper~\citep{Golden:2026framework}. As a robustness check, we performed an independent EB cross-power analysis on the Planck SMICA map using NaMaster with B-mode purification. At NSIDE${}=1024$ ($\ell_{\max} = 3071$), we find $\beta = 0.19 \pm 0.03^\circ$, lower than the published value (${\sim}\,0.3^\circ$) because our $EB/EE$ estimator does not marginalize over the instrumental polarization miscalibration angle. The null test passes ($\chi^2/\text{dof} = 0.11$). The signal is positive at all three HFI frequencies (100, 143, 217\,GHz), consistent with a cosmological rather than foreground origin. At NSIDE${}=2048$ ($\ell_{\max} = 6143$), $\beta$ drops to $0.07 \pm 0.02^\circ$, suggesting contamination or noise bias at high~$\ell$; we adopt the NSIDE${}=1024$ value as more reliable. Injection tests with NaMaster recover $\beta = 0.27^\circ$ with zero bias ($\pm 0.000^\circ$), validating the estimator in our science range.
+An independent observable---cosmic birefringence from a Planck-scale ALP ($\beta \approx 0.27^\circ$, consistent with the $3.6\sigma$ Eskilt et al.\ joint Planck analysis)---is analyzed in the companion paper~\cite{Golden:2026framework}. As a robustness check, we performed an independent EB cross-power analysis on the Planck SMICA map using NaMaster with B-mode purification. At NSIDE${}=1024$ ($\ell_{\max} = 3071$), we find $\beta = 0.19 \pm 0.03^\circ$, lower than the published value (${\sim}\,0.3^\circ$) because our $EB/EE$ estimator does not marginalize over the instrumental polarization miscalibration angle. The null test passes ($\chi^2/\text{dof} = 0.11$). The signal is positive at all three HFI frequencies (100, 143, 217\,GHz), consistent with a cosmological rather than foreground origin. At NSIDE${}=2048$ ($\ell_{\max} = 6143$), $\beta$ drops to $0.07 \pm 0.02^\circ$, suggesting contamination or noise bias at high~$\ell$; we adopt the NSIDE${}=1024$ value as more reliable. Injection tests with NaMaster recover $\beta = 0.27^\circ$ with zero bias ($\pm 0.000^\circ$), validating the estimator in our science range.
 
 % ============================================================
 \section{Conclusion}
@@ -345,7 +343,7 @@ The matter-bounce bispectrum provides what may be the sharpest single observable
 % ============================================================
 \section*{Data and Code Availability}
 
-All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.1.0/research/} (pinned to release tag \texttt{v2.1.0}). The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\citep{Heinrich:2023,Schlegel:2022}.
+All analysis code, Monte Carlo scripts, and shape-function verification routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.1.0/research/} (pinned to release tag \texttt{v2.1.0}). The Fisher robustness scan, Bayesian discrimination, and GR-aware comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\cite{Heinrich:2023,Schlegel:2022}.
 
 % ============================================================
 \appendix
@@ -353,7 +351,7 @@ All analysis code, Monte Carlo scripts, and shape-function verification routines
 \section{Bispectrum Convention: Cai vs.\ Li-Brandenberger}
 \label{app:convention}
 
-The factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\citep{Cai:2009fn}) and $\fnl = -35/16$ (Li \& Brandenberger~\citep{LiBrandenberger:2014}) arises from differing bispectrum normalization conventions. The local-type bispectrum is defined as:
+The factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\cite{Cai:2009fn}) and $\fnl = -35/16$ (Li \& Brandenberger~\cite{LiBrandenberger:2014}) arises from differing bispectrum normalization conventions. The local-type bispectrum is defined as:
 \begin{equation}
 B_\zeta(k_1,k_2,k_3) = c \cdot \fnl \left[P_\zeta(k_1)P_\zeta(k_2) + \text{2 perms}\right],
 \end{equation}
