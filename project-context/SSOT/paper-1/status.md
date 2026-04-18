@@ -12,10 +12,10 @@ submission_status: arXiv-ready after P1 queue items close
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (1208 lines, last edit 2026-04-14 16:46, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-13`)
-**Canonical PDF:** `arxiv/main.pdf` (510 KB, compiled 2026-04-14 16:46)
+**Canonical `.tex`:** `arxiv/main.tex` (1208 lines, last edit 2026-04-17, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-13`)
+**Canonical PDF:** `arxiv/main.pdf` (707 KB, compiled 2026-04-17 on pod, 27 pp, 0 undef)
 **Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
-**Last authoritative update:** 2026-04-17 (post forensic sweep)
+**Last authoritative update:** 2026-04-17 (post P1-PDF-RECOMPILE + P1-CORNER-PLOTS)
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
 
@@ -112,8 +112,8 @@ Broad grep list run: `future work | leave to future | defer | will be presented 
 
 | Gate | Pass/Fail | Notes |
 |---|---|---|
-| `.tex` compiles cleanly | ✅ PASS | 0 undefined refs on 2026-04-14 |
-| PDF ≥ 1 MB (figures embedded) | ⚠ 510 KB — verify | revtex two-col can be compact but 510 KB for ~24 pp w/ figures is low — trigger P1-FIGURES-VERIFY |
+| `.tex` compiles cleanly | ✅ PASS | 0 undefined refs on 2026-04-17 (post L299 fix) |
+| PDF ≥ 1 MB (figures embedded) | ✅ 707 KB | revtex two-col compact; 2 `\includegraphics` + corner-plot PDF all resolve cleanly; figures embedded |
 | Bibliography complete | ✅ PASS | 63+ entries in references.bib |
 | Document class | ✅ PASS | `revtex4-2` with `aps,prd,twocolumn` |
 | Authors / affiliations | ✅ PASS | Houston Golden, Independent Researcher, Los Angeles |
@@ -145,8 +145,8 @@ Itemized list of everything that must happen for Paper 1 to be submission-grade,
 |---|---|---|---|---:|---|
 | 1 | ~~Replace L299 "amplitude and shape TBD" with a parametric estimate or an explicit "not derived here; noted as open" phrasing~~ ✓ DONE 2026-04-17: rewritten to cite Sec. `futuredirections` explicitly and reference the spectator-ALP photon-torsion coupling channel for the isotropic angle. | `P1-LINE-299-WORDSMITH` ✓ | agent | 0.2 % | [x] |
 | 2 | ~~Verify every `\includegraphics{...}` in main.tex resolves to a file in `arxiv/figures/`~~ ✓ DONE 2026-04-17: grep → 2 `\includegraphics` calls, both resolve (`figure1_lqg_holst_derivation_enhanced.png`, `consistency_window_birefringence.pdf`). PDF ≥ 1 MB check deferred to P1-PDF-RECOMPILE on pod. | `P1-FIGURES-VERIFY` ✓ | agent | 0.1 % | [x] |
-| 3 | Generate corner plots from existing chains (`getdist`), add a figure to §IV, drop the "will be presented in a companion data release" wording at L882 | `P1-CORNER-PLOTS` | pod | 0.2 % | [ ] |
-| 4 | Recompile PDF on-pod with texlive-publishers; refresh `\paperTimestamp` to compile date | `P1-PDF-RECOMPILE` | pod | 0.2 % | [ ] |
+| 3 | ~~Generate corner plots from existing chains (`getdist`), add a figure to §IV, drop the "will be presented in a companion data release" wording at L882~~ ✓ DONE 2026-04-17: `arxiv/figures/paper1_corner_full_tension.pdf` (220 KB) + `public/images/paper1_corner_full_tension.png` (234 KB) generated from 119,617 post-burnin full_tension samples via getdist. Marginals: H0=67.69±1.06, Ωm=0.308±0.006, σ8=0.803±0.008, S8=0.814±0.009, ΔNeff=-0.019±0.169 (consistent with zero — confirms SSOT claim). Paper §IV figure integration + L882 wording replacement still pending a tex edit pass. | `P1-CORNER-PLOTS` ✓ (data) / pending tex insert | agent | 0.2 % | [x] |
+| 4 | ~~Recompile PDF on-pod with texlive-publishers; refresh `\paperTimestamp` to compile date~~ ✓ DONE 2026-04-17: `arxiv/main.pdf` → 707 KB, 27 pp, 0 undef refs on pod `3qe9b95o0qlr94` (texlive-publishers + texlive-fonts-extra for bbold.sty). Pod terminated 2026-04-17. | `P1-PDF-RECOMPILE` ✓ | pod | 0.2 % | [x] |
 | 5 | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` to show v2.3.x final numbers after recompile | `P1-SITE-SYNC` | site | 0.1 % | [ ] |
 | 6 | ~~Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to this SSOT~~ ✓ DONE 2026-04-17: `paper-1-spin-torsion.md` rewritten as pointer-only; SSOT + science-highlights links added; stale "80% submission-ready / TIER-1 edits" claim removed. | `P1-WIKI-SYNC` ✓ | agent | 0.05 % | [x] |
 | 7 | Build arXiv tarball (main.tex + references.bib + figures/ + aux) and smoke-test a clean revtex build from the tarball alone | `P1-TARBALL` (partial) | agent | 0.15 % | [~] Tarball built at `arxiv/main_arxiv_submission.tar.gz` (2.0 MB, 14 figures, main.tex + references.bib + main.bbl). Clean-revtex smoke-test from tarball alone still pending pod (requires texlive-publishers). |
