@@ -42,3 +42,7 @@ pipelines/h200_results/phase1_3_queue_v2/outputs/gaia-dr3-expanded/gaia_anomalie
 pipelines/h200_results/pod_backup_20260408_full/bigbounce/data/planck/
 pipelines/h200_results/pod_backup_20260408_full/bigbounce/backups/
 pipelines/h200_results/pod_backup_20260408_full/outputs/gaia-dr3-expanded/gaia_anomalies.csv
+
+# Paper 3 pod-regenerated raw scan outputs (too large for git; reproducible from pod_runs/HANDOFF.md)
+pipelines/p3_anomaly_engine/pod_runs/*_raw/
+pipelines/p3_anomaly_engine/hf_staging_pod/

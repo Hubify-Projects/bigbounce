@@ -1,0 +1,34 @@
+{
+  "pod_id": "ktds4mkmzb7ven",
+  "machine_id": "4o02unscakdn",
+  "gpu_type": "NVIDIA A100 80GB PCIe",
+  "cloud_type": "COMMUNITY",
+  "cost_per_hr_usd": 1.19,
+  "image": "runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04",
+  "container_disk_gb": 50,
+  "volume_gb": 500,
+  "volume_mount": "/workspace",
+  "ssh_host": "104.255.9.187",
+  "ssh_port": 11759,
+  "ssh_user": "root",
+  "deployed_at_utc": "2026-04-18T10:30:00Z",
+  "deploy_context": "drive-to-100 fire #24 — P3-SDSS-LAMOST-EROSITA-FULL-SCAN",
+  "houston_budget_cap_usd": 140,
+  "previous_failed_attempts": [
+    {
+      "pod_id": "kekbyntfw2jzkx",
+      "gpu": "A100 SXM 40GB community $1/hr",
+      "reason": "machine xentx7wl3249 only exposes http ports, no TCP SSH. Proxy ssh.runpod.io rejects command execution with PTY error. Terminated."
+    },
+    {
+      "pod_id": "c5u55zewydpkxo",
+      "gpu": "A100 SXM 40GB community $1/hr (redeployed with 22/tcp + 8888/http ports)",
+      "reason": "Same machine xentx7wl3249, same no-TCP-support result. Terminated."
+    },
+    {
+      "pod_id": "0sfhhgoc4ys45n",
+      "gpu": "A100 SXM 80GB SECURE $1.49/hr",
+      "reason": "Deployed in parallel with 80GB PCIe; terminated to stay under budget."
+    }
+  ]
+}
