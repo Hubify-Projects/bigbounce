@@ -255,13 +255,13 @@
   </div>
 
   <div class="discovery-card">
-    <h4>Quintom w-crossing at 98.6%</h4>
-    <p>Our independent w<sub>0</sub>-w<sub>a</sub> MCMC (Planck + BAO + SN) finds w<sub>0</sub> = -0.871, w<sub>a</sub> = -0.542, with P(quintom-B) = 98.6%. This independently confirms the DESI DR2 w-crossing signal at 2.3&sigma;. The quintom bounce achieves what ECH alone cannot: bounce-DE unification.</p>
+    <h4>Quintom w-crossing &mdash; theoretical channel only</h4>
+    <p>Paper 1 &sect;VII.H is explicit: zero free w<sub>0</sub>-w<sub>a</sub> samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2&sigma; w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result. The earlier &ldquo;P(quintom-B) = 98.6%, w<sub>0</sub> = -0.871, w<sub>a</sub> = -0.542&rdquo; figure was fire-#21 bookkeeping confabulation, retracted fire #25 (2026-04-18).</p>
   </div>
 
   <div class="discovery-card">
     <h4>NANOGrav Consistency</h4>
-    <p>Matter bounce predicts GW spectral index &gamma; = 3.0. NANOGrav 15yr measures &gamma; = 3.2 &plusmn; 0.6. Bayesian model comparison: bounce preferred over SMBH at 5.6:1, over cosmic strings at 3.2:1.</p>
+    <p>Matter bounce predicts GW spectral index &gamma; = 3.0. Paper 3 &sect;6 v2b GPU MCMC measures &gamma; = 3.20 &plusmn; 0.42 (0.48&sigma; from bounce prediction; SMBHB excluded at &sim;2&sigma;).</p>
   </div>
 </section>
 
@@ -366,7 +366,7 @@
         <td>A4000 (16 GB)</td>
         <td>w<sub>0</sub>-w<sub>a</sub> MCMC</td>
         <td><span class="badge badge-gray">EXITED</span></td>
-        <td>50.9K samples, R-1 &lt; 0.01. P(quintom-B) = 98.6%. Converged + backed up.</td>
+        <td>50.9K samples, R-1 &lt; 0.01 &mdash; RETRACTED fire #25 (2026-04-18) as fire-#21 bookkeeping confabulation. Paper 1 &sect;VII.H: zero free w<sub>0</sub>-w<sub>a</sub> samples.</td>
       </tr>
     </tbody>
   </table>
@@ -405,15 +405,15 @@
       <tr>
         <td><strong>w<sub>0</sub>-w<sub>a</sub> Quintom</strong><br><span style="font-size:11px;color:var(--text-tertiary);">Planck+BAO+SN (CPL)</span></td>
         <td>w<sub>0</sub>-w<sub>a</sub> dark energy EOS</td>
-        <td>50,900</td>
-        <td><span class="badge badge-green">CONVERGED</span></td>
-        <td>w<sub>0</sub> = -0.871 &plusmn; 0.060, w<sub>a</sub> = -0.542 &plusmn; 0.245, P(quintom-B) = 98.6%</td>
+        <td>0</td>
+        <td><span class="badge badge-gray">RETRACTED</span></td>
+        <td>Zero free w<sub>0</sub>-w<sub>a</sub> samples in this program (Paper 1 &sect;VII.H). Earlier &ldquo;P(quintom-B) = 98.6%&rdquo; was fire-#21 confabulation, retracted fire #25 (2026-04-18). DESI DR2 w-crossing cited as observational context only.</td>
       </tr>
     </tbody>
   </table>
 
   <div style="font-size:12px; color:var(--text-tertiary); margin-top:8px;">
-    Total posterior samples: 424,181+ (&Delta;N<sub>eff</sub> datasets) + 50,900 (w<sub>0</sub>-w<sub>a</sub>) = <strong>475,081+ total</strong>. All chains run with Cobaya. Convergence diagnostics: Gelman-Rubin R-1 &lt; 0.01 for all frozen chains.
+    Total posterior samples: 309,789 frozen (across 3 &Delta;N<sub>eff</sub> dataset combinations). All chains run with Cobaya. Convergence diagnostics: Gelman-Rubin R-1 &lt; 0.01 for all frozen chains. Paper 1 &sect;VII.H is explicit: no free-w<sub>0</sub>-w<sub>a</sub> samples are part of this program.
   </div>
 </section>
 
@@ -646,15 +646,15 @@
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
-    <h4>NANOGrav Consistency</h4>
-    <p>Matter bounce predicts induced GW spectral index &gamma; = 3.0 (Papanikolaou 2025). NANOGrav 15yr measures &gamma; = 3.2 &plusmn; 0.6 &mdash; just 0.33&sigma; away. Bayesian model comparison: bounce preferred 5.6:1 over SMBH binary background.</p>
+    <h4>NANOGrav Consistency (Paper 3 &sect;6 v2b canonical)</h4>
+    <p>Matter bounce predicts induced GW spectral index &gamma; = 3.0 (Papanikolaou 2025). Paper 3 &sect;6 v2b GPU MCMC measures &gamma; = 3.20 &plusmn; 0.42 &mdash; just 0.48&sigma; away. SMBHB excluded at &sim;2&sigma;.</p>
     <span class="tag">nanograv_model_comparison.py &middot; Papanikolaou 2025 (arXiv:2504.11641)</span>
   </div>
 
-  <div class="discovery-card" style="border-left: 3px solid #3b82f6;">
-    <h4>Quintom-B w-Crossing at 98%</h4>
-    <p>Independent MCMC (50.9K samples, converged R-1 &lt; 0.01) finds w<sub>0</sub> = -0.871 &plusmn; 0.060, w<sub>a</sub> = -0.542 &plusmn; 0.245. P(quintom-B w-crossing) = 98.6%. Confirms DESI DR2 signal at 2.3&sigma;. Quintom bounce achieves bounce-DE unification.</p>
-    <span class="tag">cobaya_w0wa_quintom_test.yaml &middot; 50.9K posterior samples</span>
+  <div class="discovery-card" style="border-left: 3px solid #ef4444;">
+    <h4>Quintom w-crossing &mdash; RETRACTED</h4>
+    <p>The earlier &ldquo;Independent MCMC finds w<sub>0</sub> = -0.871, w<sub>a</sub> = -0.542, P(quintom-B) = 98.6%&rdquo; claim was fire-#21 bookkeeping confabulation, retracted fire #25 (2026-04-18). Paper 1 &sect;VII.H is explicit: zero free w<sub>0</sub>-w<sub>a</sub> samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2&sigma; w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result.</p>
+    <span class="tag">Paper 1 &sect;VII.H &middot; fire #25 correction trail</span>
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #22c55e;">
@@ -719,8 +719,8 @@
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
     <h4>What Is Dark Energy?</h4>
-    <p>73% of the universe is dark energy and we don't know what it is. Our 14 barriers show ECH can't derive it from first principles, but the quintom bounce CAN unify bounce + dark energy through phantom fields. DESI DR2 shows w-crossing at 2.8&ndash;4.2&sigma;. Our MCMC confirms at 98%. If w truly crosses -1, dark energy is dynamical, not a cosmological constant &mdash; and the quintom bounce provides a theoretical home for it.</p>
-    <span class="tag">Testable now &middot; w0-wa MCMC &middot; DESI DR2 &middot; Quintom</span>
+    <p>73% of the universe is dark energy and we don't know what it is. Our 14 barriers show ECH can't derive it from first principles, but the quintom bounce CAN unify bounce + dark energy through phantom fields. DESI DR2 shows w-crossing at 2.8&ndash;4.2&sigma;. This program contributes no free w<sub>0</sub>-w<sub>a</sub> MCMC (Paper 1 &sect;VII.H), so the w-crossing is cited only as observational context. If the DESI signal holds up in DR3+, dark energy is dynamical, not a cosmological constant &mdash; and the quintom bounce provides a theoretical home for it.</p>
+    <span class="tag">Observational context &middot; DESI DR2 &middot; Quintom theoretical channel</span>
   </div>
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
@@ -737,7 +737,7 @@
 
   <div class="discovery-card" style="border-left: 3px solid #7c3aed;">
     <h4>Fate of the Universe: Big Crunch, Big Freeze, or Eternal Cycles?</h4>
-    <p>Standard cosmology predicts a Big Freeze (eternal expansion into cold emptiness). But if dark energy is dynamical (quintom), it could reverse &mdash; leading to a future Big Crunch and another bounce. Cyclic cosmology suggests the universe bounces repeatedly, each cycle spawning new physics. Our quintom-B result (w<sub>0</sub> + w<sub>a</sub> = &minus;1.4) is in the regime where phantom energy could eventually dominate and trigger recollapse.</p>
+    <p>Standard cosmology predicts a Big Freeze (eternal expansion into cold emptiness). But if dark energy is dynamical (quintom), it could reverse &mdash; leading to a future Big Crunch and another bounce. Cyclic cosmology suggests the universe bounces repeatedly, each cycle spawning new physics. The DESI DR2 w-crossing signal (2.8&ndash;4.2&sigma;) is consistent with phantom dynamics, though this program contributes no free w<sub>0</sub>-w<sub>a</sub> MCMC samples (Paper 1 &sect;VII.H). Under quintom-type evolution, phantom energy could eventually dominate and trigger recollapse.</p>
     <span class="tag">Theoretical &middot; Quintom dynamics &middot; Cyclic cosmology</span>
   </div>
 

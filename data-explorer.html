@@ -2266,22 +2266,14 @@ truePolynomial: {
 },
 
 w0waQuintom: {
-  name: "w0-wa Quintom MCMC Results",
-  description: "50,880 MCMC samples testing quintom-B dark energy (w-crossing from w>-1 to w<-1). Joint fit: Planck 2018 NPIPE + SDSS DR16 BAO + Pantheon+. Result: quintom-B (w-crossing) favored at P=98.0%, w\u2080=-0.87\u00B10.06, w\u2090=-0.54\u00B10.25. H\u2080=81.4\u00B10.9 (high \u2014 dataset combination specific).",
+  name: "w0-wa Quintom MCMC Results \u2014 RETRACTED",
+  description: "RETRACTED fire #25 (2026-04-18). Paper 1 \u00A7VII.H is explicit: zero free w\u2080-w\u2090 samples among the 309,789 frozen posterior samples in this program. The earlier \"50,880 samples, P(quintom-B) = 98.0%, w\u2080 = -0.871, w\u2090 = -0.542\" claim was fire-#21 bookkeeping confabulation. The DESI DR2 2.8-4.2\u03C3 w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result. Table retained for audit history only.",
   source: "chains/w0wa_quintom/",
-  rows: 9, totalSamples: 50880,
-  status: "FROZEN", statusClass: "frozen",
-  columns: ["Parameter", "Mean", "Std", "95% Lo", "95% Hi", "Note"],
+  rows: 1, totalSamples: 0,
+  status: "RETRACTED", statusClass: "retracted",
+  columns: ["Parameter", "Value", "Note"],
   data: [
-    ["w\u2080", "-0.871", "0.061", "-0.990", "-0.749", "2.1\u03C3 from \u039BCDM (w\u2080=-1)"],
-    ["w\u2090", "-0.542", "0.247", "-1.046", "-0.084", "2.2\u03C3 from \u039BCDM (w\u2090=0)"],
-    ["w\u2080+w\u2090", "-1.413", "\u2014", "\u2014", "\u2014", "Quintom-B crossing signature"],
-    ["P(quintom-B)", "98.0%", "\u2014", "\u2014", "\u2014", "w-crossing probability"],
-    ["H\u2080", "81.42", "0.89", "\u2014", "\u2014", "km/s/Mpc"],
-    ["\u03C3\u2088", "0.832", "0.010", "\u2014", "\u2014", "\u2014"],
-    ["\u0394DESI DR2 w\u2080", "\u2014", "\u2014", "\u2014", "\u2014", "1.28\u03C3 from DESI DR2 best-fit"],
-    ["\u0394DESI DR2 w\u2090", "\u2014", "\u2014", "\u2014", "\u2014", "1.20\u03C3 from DESI DR2 best-fit"],
-    ["R-1 (Gelman-Rubin)", "0.009", "\u2014", "\u2014", "\u2014", "Converged"]
+    ["All w\u2080-w\u2090 parameters", "RETRACTED", "Paper 1 \u00A7VII.H: zero free w\u2080-w\u2090 samples in this program"]
   ]
 },
 

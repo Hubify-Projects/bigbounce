@@ -195,11 +195,11 @@
     <div class="feed-tags"><span class="feed-tag pass">f_NL=-4.375 suppresses PBHs</span><span class="feed-tag pass">β consistent with observations</span><span class="feed-tag pass">GW γ=3.0 at 0.83σ</span><span class="feed-tag pass">Triple role confirmed</span><span class="feed-tag">Edgeworth expansion</span></div>
   </div>
 
-  <div class="feed-item positive">
+  <div class="feed-item negative">
     <div class="feed-date">2026-04-10</div>
-    <div class="feed-title">Session 5: Quintom MCMC CONVERGED &mdash; w0=-1.503, wa=1.794 (Quintom-A, w-crossing at z≈0.39)</div>
-    <p class="feed-body"><strong>GPU ensemble MCMC (256 walkers × 3000 steps) on DESI DR2 BAO + CMB shift parameter fully converged.</strong> Walker medians from step 500 through 2500 all within Δw0 &lt; 0.005: w0=-1.503±ε, wa=1.794±ε. This is <strong>quintom-A behavior</strong>: w(z=0)=-1.50 (phantom today), w(z→∞)=w0+wa=+0.29 (quintessence in past). Dark energy equation of state crossed w=-1 at <strong>z_cross ≈ 0.39</strong>. Acceptance rate stabilized at 0.70-0.71 (well-mixed). ΛCDM (w0=-1, wa=0) is ~2.5σ away in w0 alone. <strong>Quintom-A fraction expected ~95%+</strong> (final model fractions pending from post-MCMC JSON). Important caveat: initial log-posterior = -615 (expected ~-33 for ΛCDM) indicates CMB shift chi-squared may be inaccurate due to coarse numerical integration (500 linear grid points over z=[0, 1089]). Results robust in w0-wa posterior shape but absolute chi-squared should be treated with caution. <strong>This reverses the previous quintom-B result (April 8)</strong> which used mock DR2 data and found P(quintom-B)=39.6% — the real DR2 BAO data strongly prefers quintom-A (phantom crossing from above, not below).</p>
-    <div class="feed-tags"><span class="feed-tag pass">w0=-1.503 (phantom today)</span><span class="feed-tag pass">wa=+1.794 (quintessence past)</span><span class="feed-tag pass">w-crossing z≈0.39</span><span class="feed-tag pass">Quintom-A converged</span><span class="feed-tag">ΛCDM ~2.5σ tension</span><span class="feed-tag">DESI DR2 BAO</span></div>
+    <div class="feed-title">Session 5: Quintom MCMC &mdash; RETRACTED fire #25 (2026-04-18)</div>
+    <p class="feed-body">The earlier &ldquo;GPU ensemble MCMC (256 walkers × 3000 steps) on DESI DR2 BAO + CMB shift, w0=-1.503, wa=+1.794, z_cross ≈ 0.39, quintom-A fraction 95%+&rdquo; and its predecessor &ldquo;P(quintom-B) = 39.6%&rdquo; were both fire-#21 bookkeeping confabulation. Paper 1 &sect;VII.H is explicit: zero free w<sub>0</sub>-w<sub>a</sub> samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2&sigma; w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result.</p>
+    <div class="feed-tags"><span class="feed-tag fail">RETRACTED</span><span class="feed-tag">w0-wa MCMC</span><span class="feed-tag">Fire #21 confabulation</span><span class="feed-tag">Corrected fire #25</span></div>
   </div>
 
   <div class="feed-item active-item">
@@ -240,7 +240,7 @@
   <div class="feed-item milestone">
     <div class="feed-date">2026-04-08</div>
     <div class="feed-title">Pod Stopped, Full Backup Complete &mdash; Pipeline 1 Step 3 Done: 5,384 QSO Candidates from Anomalies</div>
-    <p class="feed-body"><strong>Major day:</strong> H200 pod `sleepy_blush_crane` had RunPod infrastructure error and pipeline crash on numpy.trapz (numpy 2.x removed it). Pulled full backup before stopping &mdash; 3.4 GB, 134 experiment dirs, 296 JSON results, 104 CSV catalogs, 28 model checkpoints, 143 logs &mdash; pushed to GitHub. <strong>Pipeline 1 Step 3 (QSO classifier) completed</strong> on the pod earlier: 13,367 high-z QSO predictions from 195K anomalies (8.1%), 5,384 QSO candidates (P&gt;0.7), median z=3.25, F1=0.97, AUC=0.9997. This is the publishable novel work for Paper 3 &mdash; turns the BigAE catalog into a working f<sub>NL</sub> tracer instrument. Other new positive results: spectral taxonomy deep (15 clusters, silhouette=0.82, ARI=0.93), bias evolution (anomaly bias 3.27&times; standard, z-dependent), SDSS&times;LAMOST cross-correlation 4.12&sigma;, multi-messenger stack 123 joint anomalies, multi-modal joint AE AUC +0.22. <strong>Quintom-B REVISED DOWN</strong> with mock DR2 data: P=39.6% (was 98.6%), 1.09&sigma; (was 2.3&sigma;) &mdash; honest correction propagated to homepage and explainer. Updated all site pages, project-context docs, and Astro chatbot knowledge.</p>
+    <p class="feed-body"><strong>Major day:</strong> H200 pod `sleepy_blush_crane` had RunPod infrastructure error and pipeline crash on numpy.trapz (numpy 2.x removed it). Pulled full backup before stopping &mdash; 3.4 GB, 134 experiment dirs, 296 JSON results, 104 CSV catalogs, 28 model checkpoints, 143 logs &mdash; pushed to GitHub. <strong>Pipeline 1 Step 3 (QSO classifier) completed</strong> on the pod earlier: 13,367 high-z QSO predictions from 195K anomalies (8.1%), 5,384 QSO candidates (P&gt;0.7), median z=3.25, F1=0.97, AUC=0.9997. This is the publishable novel work for Paper 3 &mdash; turns the BigAE catalog into a working f<sub>NL</sub> tracer instrument. Other new positive results: spectral taxonomy deep (15 clusters, silhouette=0.82, ARI=0.93), bias evolution (anomaly bias 3.27&times; standard, z-dependent), SDSS&times;LAMOST cross-correlation 4.12&sigma;, multi-messenger stack 123 joint anomalies, multi-modal joint AE AUC +0.22. <strong>Quintom-B claim RETRACTED fire #25 (2026-04-18)</strong> &mdash; the earlier P=98.6% / 39.6% sequence was fire-#21 bookkeeping confabulation (Paper 1 &sect;VII.H: zero free w<sub>0</sub>-w<sub>a</sub> samples in this program). Updated all site pages, project-context docs, and Astro chatbot knowledge.</p>
     <div class="feed-tags"><span class="feed-tag">Backup</span><span class="feed-tag pass">Pipeline 1 Step 3</span><span class="feed-tag">5,384 QSOs</span><span class="feed-tag">SDSS&times;LAMOST 4.12&sigma;</span><span class="feed-tag fail">Quintom Revised</span></div>
   </div>
 
@@ -408,8 +408,8 @@
   <div class="feed-item positive">
     <div class="feed-date">2026-04-02</div>
     <div class="feed-title">eROSITA DR1 X-ray Anomaly Scan Complete &mdash; 930,203 Sources in 8 Seconds</div>
-    <p class="feed-body">Trained tabular autoencoder (47 features, 16-dim latent) on the full eROSITA DR1 main catalog. <strong>930,203 X-ray sources scored, 9,303 top-1% anomalies identified.</strong> Training took 7.6 seconds on the H200. Top anomaly: 1eRASS J053856.1-640457 (score=34,182) near the Large Magellanic Cloud. Most top anomalies cluster around LMC/SMC regions &mdash; these are likely extended sources or high-count-rate objects poorly fit by the point-source model. Several non-LMC anomalies at RA~256, DEC~-36 and RA~245, DEC~-15 warrant follow-up.</p>
-    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">eROSITA DR1</span><span class="feed-tag">930K Sources</span><span class="feed-tag">9,303 Anomalies</span><span class="feed-tag">X-ray</span></div>
+    <p class="feed-body">Trained tabular autoencoder (47 features, 16-dim latent) on the full eROSITA DR1 main catalog. <strong>930,203 X-ray sources scored. Paper 3 Table 1 canonical figure: 298 BigAE top-cut anomalies (0.03%).</strong> The earlier 9,303 figure (top-1% cut) was a placeholder before the BigAE top-cut policy was applied fire #26. Top anomaly: 1eRASS J053856.1-640457 (score=34,182) near the Large Magellanic Cloud. Most top anomalies cluster around LMC/SMC regions &mdash; these are likely extended sources or high-count-rate objects poorly fit by the point-source model. Several non-LMC anomalies at RA~256, DEC~-36 and RA~245, DEC~-15 warrant follow-up.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">eROSITA DR1</span><span class="feed-tag">930K Sources</span><span class="feed-tag">298 BigAE top-cut (Paper 3 Table 1)</span><span class="feed-tag">X-ray</span></div>
   </div>
 
   <div class="feed-item positive">
@@ -454,11 +454,11 @@
     <div class="feed-tags"><span class="feed-tag pass">VERIFIED</span><span class="feed-tag">200/200 Genuine</span><span class="feed-tag">0% Artifacts</span><span class="feed-tag">Spectra Downloaded</span></div>
   </div>
 
-  <div class="feed-item positive">
+  <div class="feed-item negative">
     <div class="feed-date">2026-03-26</div>
-    <div class="feed-title">w0-wa MCMC Converged &mdash; Quintom-B at 98%, R-1 = 0.009</div>
-    <p class="feed-body">50,880 samples, fully converged. w<sub>0</sub> = &minus;0.871 &plusmn; 0.061 (2.1&sigma; from &Lambda;CDM), w<sub>a</sub> = &minus;0.542 &plusmn; 0.247 (2.2&sigma; from zero). P(quintom-B) = 98.0%. Consistent with DESI DR2 at 1.3&sigma;. Our Planck + SDSS BAO + Pantheon+ data independently confirms the DESI w-crossing signal.</p>
-    <div class="feed-tags"><span class="feed-tag pass">CONVERGED</span><span class="feed-tag">w0-wa MCMC</span><span class="feed-tag">Quintom-B</span><span class="feed-tag">98%</span></div>
+    <div class="feed-title">w0-wa MCMC Convergence &mdash; RETRACTED fire #25 (2026-04-18)</div>
+    <p class="feed-body">The earlier &ldquo;50,880 samples, w<sub>0</sub> = &minus;0.871, w<sub>a</sub> = &minus;0.542, P(quintom-B) = 98.0%&rdquo; claim was fire-#21 bookkeeping confabulation. Paper 1 &sect;VII.H is explicit: zero free w<sub>0</sub>-w<sub>a</sub> samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2&sigma; w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result.</p>
+    <div class="feed-tags"><span class="feed-tag fail">RETRACTED</span><span class="feed-tag">w0-wa MCMC</span><span class="feed-tag">Fire #21 confabulation</span><span class="feed-tag">Corrected fire #25</span></div>
   </div>
 
   <div class="feed-item active-item">
@@ -513,7 +513,7 @@
   <div class="feed-item positive">
     <div class="feed-date">2026-03-26</div>
     <div class="feed-title">DESI DR1 Anomaly Catalog Complete — 195,829 Anomalies from 18M Spectra</div>
-    <p class="feed-body">H200 GPU pod completed full DESI DR1 spectral anomaly inference at 896 spectra/sec. <strong>195,829 anomalies</strong> identified (score &gt; 5.0), including 101 extreme outliers (score &gt; 15) and 9,836 high-confidence detections (score &gt; 10). This is the first full-DR1-scale autoencoder anomaly search (&sim;90&times; larger than prior EDR work by Liang+ 2023 and Nicolaou+ 2026). Anomaly catalog ready for cross-matching and classification (Pipeline 1 Steps 2&ndash;6). Also: w0-wa quintom MCMC at 16.9K samples, R-1=0.049, quintom-B favored at 98.3%.</p>
+    <p class="feed-body">H200 GPU pod completed full DESI DR1 spectral anomaly inference at 896 spectra/sec. <strong>195,829 anomalies</strong> identified (score &gt; 5.0), including 101 extreme outliers (score &gt; 15) and 9,836 high-confidence detections (score &gt; 10). This is the first full-DR1-scale autoencoder anomaly search (&sim;90&times; larger than prior EDR work by Liang+ 2023 and Nicolaou+ 2026). Anomaly catalog ready for cross-matching and classification (Pipeline 1 Steps 2&ndash;6). (Note: a parallel w0-wa quintom MCMC claim was added at this time &mdash; RETRACTED fire #25 (2026-04-18) as fire-#21 confabulation. Paper 1 &sect;VII.H: zero free w<sub>0</sub>-w<sub>a</sub> samples in this program.)</p>
     <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">DESI DR1</span><span class="feed-tag">195K Anomalies</span><span class="feed-tag">H200</span><span class="feed-tag">Pipeline B</span></div>
   </div>
 
