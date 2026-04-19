@@ -4,6 +4,35 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-19T07:56:36Z — fire #77 (P3-PATHC-SDSS-NATIVE-RETRAIN kickoff)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
+**Tmux state after kickoff:**
+
+| Session | Created | Status |
+|---|---|---|
+| `sdss_native` | 2026-04-19 07:56:36 UTC | **LIVE — P3-PATHC-SDSS-NATIVE-RETRAIN** — shard builder running with 32 parallel download workers, 300 K candidates (55.2 % GAL / 27.6 % QSO / 17.3 % STAR) to preprocess to `temp/sdss_native/shards/`. Target gate val_loss ≤ 0.30. |
+| `lamost` | 2026-04-18 10:33:11 UTC | RUNNING — 520+/1177 nights, §7.1 cross-transfer baseline preserved. Untouched this fire. |
+| `sdss` (old) | 2026-04-18 10:32:00 UTC | **KILLED this fire** — was stuck at "Step 2" for ~21 h. Path C native retrain replaces the cross-transfer scan entirely, so no §7 SDSS baseline is recoverable (acceptable: §7 will note "no SDSS cross-transfer output obtained"). |
+
+**Script deployed:** `/workspace/bigbounce_scan/sdss_native_retrain.py` (467 lines, committed to repo at `pipelines/p3_anomaly_engine/sdss_native_retrain.py`).
+
+**Bug caught + fixed mid-fire:** FITS `FITS_rec` objects don't support `.get()` dict-style fallback; patched to use `t.dtype.names` membership check + auto-reduce 4-vector-per-band SN into max-over-bands. Re-uploaded + relaunched successfully.
+
+**Candidate selection diagnostics:**
+- spAll total rows: 3,958,000
+- After quality cuts (`ZWARNING==0 & SN_MEDIAN_ALL>2 & SPECPRIMARY==1 & CLASS∈{STAR,GALAXY,QSO}`): 1,928,673 candidates
+- Random-sampled (seed=20260419) to target: 300,000
+- Class mix: GALAXY 165,463 (55.2 %) / QSO 82,781 (27.6 %) / STAR 51,756 (17.3 %)
+
+**ETA to first checkpoint:** ~1–1.5 h (30–50 min shard build + ~30 min training on A100).
+
+**Budget snapshot:** ~$26 / $400 ceiling after this fire (~$1.20–1.80 incremental).
+
+**Next fire (#78):** monitor `sdss_native` tmux + `sdss_native_retrain.log`; if training still in progress, watchdog-only fire. If training complete (val_loss gate PASS/FAIL known), either kick off LAMOST native retrain (Path C order step 2b) OR the SDSS re-score-all-2.3M step depending on whether gate passed.
+
+---
+
 ## 2026-04-19T07:34:53Z — fire #76 (first Phase 2 Path C fire)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80GB PCIe, $1.19/hr)
