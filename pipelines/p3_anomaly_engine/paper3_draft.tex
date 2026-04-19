@@ -524,7 +524,11 @@ where $\sigfnl \approx 1.0$ incorporates the multi-tracer improvement from anoma
 %% ============================================================
 \section{NANOGrav Bounce Consistency}\label{sec:nanograv}
 
-Pulsar timing arrays (PTAs) have detected a stochastic gravitational-wave background (GWB) at nanohertz frequencies~\cite{NANOGrav2023,EPTA2023,PPTA2023,CPTA2023}. The spectral properties of this background encode information about its astrophysical or cosmological origin. A GWB from supermassive black hole binaries (SMBHBs) is expected to have a characteristic strain spectrum $h_c(f) \propto f^{-2/3}$, corresponding to a spectral index $\gamma = 13/3 \approx 4.33$ in the timing-residual power spectrum~\cite{Phinney2001}. In contrast, a primordial GWB from the matter-bounce cosmology is predicted to have $\gamma = 3.0$~\cite{Quintin2015,Cai2015}.
+Pulsar timing arrays (PTAs) have detected a stochastic gravitational-wave background (GWB) at nanohertz frequencies~\cite{NANOGrav2023,EPTA2023,PPTA2023,CPTA2023}. The spectral properties of this background encode information about its astrophysical or cosmological origin. A GWB from supermassive black hole binaries (SMBHBs) is expected to have a characteristic strain spectrum $h_c(f) \propto f^{-2/3}$, corresponding to a spectral index $\gamma = 13/3 \approx 4.33$ in the timing-residual power spectrum~\cite{Phinney2001}. In contrast, a primordial GWB from the matter-bounce cosmology is predicted to have $\gamma = 3.0$~\cite{Quintin2015,Cai2015}. Explicitly, the characteristic strain and the timing-residual spectral index $\gamma$ are related by
+\begin{equation}\label{eq:hc_gamma}
+h_c(f) = A\,\left(\frac{f}{\mathrm{yr}^{-1}}\right)^{(3-\gamma)/2},
+\end{equation}
+so that $\gamma = 3.0$ (matter bounce) corresponds to a scale-invariant strain ($h_c \propto f^0$) and $\gamma = 13/3$ (SMBHB) corresponds to $h_c \propto f^{-2/3}$. This convention allows readers to derive $\gamma$ directly from the free-spectrum points plotted in Fig.~\ref{fig:nanograv}.
 
 We independently analyze the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023}, fitting signal-dominated bins at frequencies $f < 11.86$~nHz (6 bins) with three models: (i) fixed bounce ($\gamma = 3.0$), (ii) fixed SMBHB ($\gamma = 13/3$), and (iii) free $\gamma$. An MCMC analysis with 32 walkers and 6{,}000 production steps (192{,}000 total samples) yields (Fig.~\ref{fig:nanograv}):
 
