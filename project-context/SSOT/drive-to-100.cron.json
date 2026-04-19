@@ -1,7 +1,12 @@
 {
-  "job_id": "91a7e38b",
-  "schedule": "*/20 * * * *",
-  "created": "2026-04-17",
+  "job_id": "9f44c29e",
+  "schedule": "7,27,47 * * * *",
+  "created": "2026-04-19",
+  "phase": "Phase 2 Path C (full Paper 3 rebuild)",
   "session_only": true,
-  "note": "Cron is session-only — dies when this Claude session exits. If you need it to survive a session restart, re-run CronCreate in the new session. Self-terminates via CronDelete(91a7e38b) when exit criteria in drive-to-100.md are all green."
+  "previous_job_ids": [
+    "91a7e38b (Phase 1, self-terminated fire #75 2026-04-18)",
+    "ad539b7a (Phase 2 Path B, superseded by Path C 2026-04-19)"
+  ],
+  "note": "Cron is session-only — dies when this Claude session exits. If you need it to survive a session restart, re-run CronCreate in the new session. Self-terminates via CronDelete(9f44c29e) when all 12 Path C exit criteria in SSOT/drive-to-100.md 🟡 RE-OPENED Phase 2 section are green."
 }
