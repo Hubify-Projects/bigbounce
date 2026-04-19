@@ -6,9 +6,21 @@ Last authoritative update: 2026-04-17 (drive-to-100 fire #9 — Docker TeX Live 
 
 ---
 
-## 🟢 Houston-reviewable — 2026-04-18 fire #75
+## 🟠 Phase 2 → Path C full Paper 3 rebuild — scope widened 2026-04-19
 
-**Drive-to-100 loop self-terminated.** All four papers 100 % arXiv-ready on the .tex + compile axes. Exit criteria met per strict reading of `SSOT/drive-to-100.md`; cron job `91a7e38b` deleted. **Review site at** https://bigbounce.hubify.app. See `SSOT/drive-to-100.md` top-of-file 🛑 CLOSED banner for full exit-criteria evaluation, peer-review-surface exhaustion notice, and the single non-blocking pod-followup (`P1-PDF-RECOMPILE-V3` — 14 bundled non-scientific Paper-1 edits pending one pod recompile; does not gate arXiv submission). Next actions are Houston's: optional sign-off on Houston-owned peer-review rows, then arXiv form fill for all four papers (recommended order: Paper 4 → Paper 3 → Paper 2 → Paper 1).
+**Papers 1, 2, 4 are at 100 % on .tex + compile axes** (content stable; Houston-owned scientific decisions remain self-paced).
+
+**Paper 3 is being rebuilt to Path C scope** after Houston novelty-integrity pushback 2026-04-19. Root cause: the BigAE model was trained on 47K DESI spectra and then *cross-applied* to SDSS + LAMOST (inflating those anomaly rates via catalog-cross-calibration artifacts), while the CMB autoencoder was catastrophically undertrained (0.33 % injection-recovery). The "58.8 % novel" headline is bookkeeping against SIMBAD at 5-arcsec, not true astrophysical novelty, and the 319,443 total is sum-over-surveys, not unique physical objects.
+
+**Path C scope** (Houston chose over Path A "ship with caveats" and Path B "native retrain only"): native BigAE retrain for SDSS + LAMOST, CMB autoencoder retrain with proper galactic mask, DESI 5-fold out-of-sample validation, NEOWISE ecliptic mask, injection-recovery on every retained survey, 8-way positional dedup at 5 arcsec. Current cross-transfer (DESI-trained on SDSS/LAMOST) scans preserved as Paper 3 §7 "before / after native retrain" comparison baseline. Paper 3 gets a new §2.X methodology subsection + rewritten abstract + Table 1 with unique-object counts alongside sum-over-surveys.
+
+**Scope + budget:** ~10–14 days, ~$300–500 pod (Houston's prior $140 cap exceeded via Path C choice). See `SSOT/drive-to-100.md` "🟡 RE-OPENED Phase 2" banner + Path C exit criteria (12 gates). 7 new `P3-PATHC-*` queue rows filed.
+
+**Papers 1, 2, 4 carryover:** `P1-PDF-RECOMPILE-V3` (14 bundled non-scientific Paper 1 edits) folds into Phase 2 as a single pod recompile session. Houston-owned decisions (`P1-RHAT-NUMBER-RECONCILE`, `P1-BETA-EQ38-CHECK`, `P4-D4-VS-Z2-RENAME`) remain self-paced.
+
+**"Peer review" caveat:** the 6 review files at `project-context/peer-reviews/autonomous-2026-04-18/` (1,434 lines total) are adversarial reviewer personas I generated, NOT external academic review. Real peer review happens post-arXiv.
+
+**Do NOT submit arXiv forms yet.** Review site at https://bigbounce.hubify.app.
 
 ---
 

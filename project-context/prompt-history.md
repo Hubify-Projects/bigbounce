@@ -1,5 +1,20 @@
 
 
+## 2026-04-17 — Drive-to-100 autonomous loop + plan doc + cron
+
+### Houston substantive messages, verbatim
+
+**early PT — spin up a plan doc + every-20-min self-terminating cron to drive all papers + site to 100 %**
+> create a plan doc in SSOT and a cron that runs ever 20mins until everthing is 100% across papers and site and everything please and you can stop the cron once all are 100% ready and done and deployed and I can review it all on the site etc
+
+**mid — if the loop hits pod-only work, don't stop — deploy a pod and run it**
+> if pod needed dont stop just deploy a pod...
+
+**mid — local compile should also be possible**
+> you should be able to compile pdfs locally or on a pod
+
+---
+
 ## 2026-04-17 — Finish remaining tasks + full site cleanup & password gate
 
 ### Houston substantive messages, verbatim
@@ -139,3 +154,29 @@
 **~PT — Directive: finish remaining tasks, recompile PDFs, launch simultaneous pods where needed**
 
 > ok finish the other final tasks and update site/SSOT/recompile pdfs etc - continue - and launch pods to finish anything else where runpod is needed simultaneously with each on their own pods
+
+## 2026-04-18 — Pod status check + course-correction on premature "ready to submit" framing
+
+Session context: drive-to-100 loop self-terminated at fire #75 with Houston-reviewable banner prepended to `SSOT/index.md`. Immediately after, Houston checked in on the pod and then pushed back on the "ready to submit" framing while SDSS + LAMOST scans are still running and site/paper integrations are still pending.
+
+### Houston substantive messages, verbatim
+
+**~PT — Conversational pod + everything check-in**
+
+> yo how is the runpod going and how is everything else?
+
+**~PT — Course-correction: stop claiming ready-to-submit while work is running**
+
+> seems like there are other things pending? - One bundled pod-followup: P1-PDF-RECOMPILE-V3 — 14 non-scientific Paper 1 edits waiting for one pod recompile. Doesn't gate arXiv submission (content axis is at 100%). - Pending Houston decisions (not blocking, but if you want to clear them): P1-RHAT-NUMBER-RECONCILE (0.001 vs 0.00447), P1-BETA-EQ38-CHECK (0.27 vs 0.29°), P3-CMB-INJECTION-DISCLOSURE, P3-DESI-TRAIN-TEST-CAVEAT, P3-QC-FAIL-ABSTRACT-DISCLOSURE, P4-D4-VS-Z2-RENAME. and 28 hours left ... how much time left on all this? i do not want to submit the papers until the things we have running on runpod are complete and our papers and site and research updated accordingly come on stop saying we are ready to submit papers when there are things actively running and things not completed yet..
+
+**~PT — Challenging peer-review quality + anomaly-novelty claim**
+
+> and did you really peer review all the papers properly and whats the deal on anomalies didnt we discover they were not truly never before observed or truly anomalous or something?
+
+**~PT — Reaction to CMB/QC-fail/dedup summary — refuses to accept low quality, asks if rebuild is needed**
+
+> wait this sounds really bad wtf? 3. CMB injection-recovery failed catastrophically. injection_recovery_summary.json reports 0.33% recovery at 99th percentile across 1,200 planted anomalies (0% recovery at 5×, 10×, 20× noise amplitude). So Paper 3 §4.4's "Planck × ACT null result" is measuring detector undertraining, not sky emptiness. This is filed as P3-CMB-INJECTION-DISCLOSURE but not yet in abstract. 4. 3 of 8 surveys have QC failures (Planck, ACT, NEOWISE; plus LAMOST blue-excess bias) and the abstract doesn't flag this. Filed as P3-QC-FAIL-ABSTRACT-DISCLOSURE, not yet in abstract. 5. Cross-survey dedup is not addressed. 319,443 is sum-over-surveys, not unique physical objects. DESI × SDSS overlap showed only 3 matched anomalies at 3 arcsec which is implausibly small — likely means dedup was never done properly. A DESI quasar can be counted once as a DESI anomaly AND once as an SDSS anomaly. This wasn't filed anywhere — I'll file it now. -- do we need to redo a bunch of shit or what? like do we need to retrain on larger sample? is our BigAE model just shitty or what? we do not have to accept this low quality
+
+**~PT — Chose Path C: full Cadillac Paper 3 rebuild**
+
+> Path C ...

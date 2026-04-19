@@ -7,7 +7,76 @@
 
 ---
 
-## 🛑 CLOSED — 2026-04-18 fire #75
+## 🟡 RE-OPENED Phase 2 — 2026-04-19 (post-scan integration phase)
+
+**Houston course-correction 2026-04-18 evening:** Phase 1 closure at fire #75 (below) was correct on the strict .tex+compile axes, but **practically misleading** while pod scans are actively running and Paper 3 Table 1 + site stats still reflect 5-of-8-survey state. Houston explicitly stated: *"i do not want to submit the papers until the things we have running on runpod are complete and our papers and site and research updated accordingly come on stop saying we are ready to submit papers when there are things actively running and things not completed yet.."*
+
+Re-opening the loop with a new **Phase 2** targeting post-scan integration. Loop resumes every 20 min via fresh `CronCreate` job (replacing the deleted `91a7e38b`).
+
+### Phase 2 — Path C ("full Cadillac") exit criteria (Houston chose 2026-04-19 after novelty-integrity pushback)
+
+Path C scope replaces the initial Phase-2 "fold current scans into HF" plan. Houston explicit directive: *"we do not have to accept this low quality"* — the target is now a genuinely defensible Paper 3 catalog, not a patched-with-caveats one. ETA 10–14 days, ~$300–500 pod budget. Cross-transfer (DESI-trained → SDSS/LAMOST) scans currently in flight are PRESERVED as Paper 3 §7 "before / after native retrain" comparison baseline — they are not wasted.
+
+**All 12 criteria must be green to self-terminate.**
+
+1. **Native-retrained BigAE for SDSS DR18** — trained on 200K–500K SDSS spectra, val_loss ≤ 0.30. All 2.3M SDSS spectra re-scored. Native anomaly set published to HF alongside the cross-transfer set for comparison. (`P3-PATHC-SDSS-NATIVE-RETRAIN`)
+2. **Native-retrained BigAE for LAMOST DR10** — trained on 300K–1M LAMOST spectra, val_loss ≤ 0.30. All 11.4M LAMOST spectra re-scored. Blue-excess contamination rate (currently 98%) must drop below 20% in the native set. (`P3-PATHC-LAMOST-NATIVE-RETRAIN`)
+3. **Native-retrained CMB autoencoder** — 200K+ patches, galactic-plane mask, longer schedule. Injection-recovery ≥ 50% at 5× noise amplitude (currently 0%). If retrain fails to meet the gate after ≤ 3 attempts, pull CMB from Paper 3 with a §7 paragraph explaining why. (`P3-PATHC-CMB-NATIVE-RETRAIN`)
+4. **DESI k-fold out-of-sample validation** — 5-fold holdout on 22.5M spectra. Paper 3 quotes out-of-sample anomaly rate + novelty-fraction (not in-sample 0.87% / 99%). (`P3-PATHC-DESI-KFOLD`)
+5. **NEOWISE ecliptic mask applied** — `|ecliptic_lat| < 80°` filter, re-score, replace prior NEOWISE anomaly set. (`P3-PATHC-NEOWISE-ECLIPTIC-MASK`)
+6. **Injection-recovery data for every retained survey** — 200 synthetic anomalies × 6 amplitude levels per survey (DESI, SDSS, LAMOST, eROSITA, NEOWISE, Gaia + CMB if retained). Recovery rate ≥ 20% at 5× noise is the gate for staying in Paper 3. (`P3-PATHC-INJECTION-RECOVERY-ALL-SURVEYS`)
+7. **8-way positional dedup at 5 arcsec** — unique-physical-object count computed. Abstract + Table 1 quote BOTH "N survey-level detections" and "M unique objects." (`P3-PATHC-DEDUP-LOCAL` + `P3-CROSS-SURVEY-DEDUP`)
+8. **Paper 3 §2.X "Path C rebuild methodology" subsection added** documenting: cross-transfer baseline (DESI-trained on SDSS/LAMOST) → contamination analysis → native retrain → post-retrain anomaly set. Plus §7.3 caveats for DESI k-fold, LAMOST native-retrain residual bias, CMB status. (`P3-PATHC-INTEGRATION`)
+9. **Paper 3 recompiled** with rebuilt Table 1, new §2.X subsection, updated abstract numbers — mirrored to `public/papers/paper3_anomaly_catalog.pdf`, 0 undef refs.
+10. **HuggingFace catalog rebuilt** — native anomaly sets for SDSS + LAMOST (+ CMB if retained) replace cross-transfer sets. README documents the Path C methodology. 8/8 survey coverage (or 7/8 if CMB is pulled, with explicit note).
+11. **`P1-PDF-RECOMPILE-V3` folded in** — 14 bundled non-scientific Paper 1 edits compiled into fresh `arxiv/main.pdf` + tarball. (Non-Paper-3 carryover from Phase-1 closure.)
+12. **Site sync + pod terminated + `git status` clean** — `index.html` / `paper.html` / `activity.html` / `data-explorer.html` reflect Path C numbers. Pod `ktds4mkmzb7ven` terminated (or replaced mid-run if new pod required for higher GPU). Final spend logged. Last commit pushed to `origin/main`, Vercel deploy succeeded.
+
+### Phase 2 — Path C task selection order each fire
+
+1. **Pod watchdog** — SSH check tmux + spend + disk. If current cross-transfer scans still running, let them finish (they're the §7 baseline). Log snapshot to `pipelines/p3_anomaly_engine/pod_runs/phase2_pathc_status.log`.
+2. **If native-retrain kickoffs not yet deployed** → next fire launches the SDSS-NATIVE retrain (highest-value, smallest data volume). Fire after that launches LAMOST-NATIVE. Fire after that launches CMB-NATIVE. Parallel execution on same pod if GPU budget allows; otherwise split across pods.
+3. **If any retrain completes** → run post-retrain scoring → injection-recovery → upload native anomaly set to HF → site sync. Atomic commit per retrain.
+4. **If all retrains + cross-transfer scans complete** → DESI k-fold kickoff (largest compute — can also run in parallel with retrains if separate pod).
+5. **After all retrains + k-fold** → NEOWISE ecliptic mask + injection-recovery per-survey + dedup (local + pod).
+6. **After all data work** → Paper 3 §2.X + §7 rewrite → recompile → site sync.
+7. **Then P1-PDF-RECOMPILE-V3 pod session** (15 min).
+8. **Then pod terminate + close loop.**
+
+### Phase 2 — Path C NON-goals (still Houston-owned, still self-paced)
+
+Path C does **not** address: `P1-RHAT-NUMBER-RECONCILE`, `P1-BETA-EQ38-CHECK`, `P4-D4-VS-Z2-RENAME`. Those remain Houston-owned scientific decisions; Houston can resolve at leisure before arXiv submission.
+
+### Phase 2 — Path C budget discipline
+
+- Total pod-budget estimate: **$300–500** (Houston's original $140 cap is EXCEEDED — Houston approved the higher ceiling via Path C choice).
+- Per-fire budget check: if cumulative spend > $400, emit BUDGET-NEAR-CAP note and stop further pod work until Houston explicitly acks.
+- Monitor pod hourly via `runpodctl get pod ktds4mkmzb7ven`.
+
+### Phase 2 task selection order each fire
+
+1. **Pod watchdog** — every fire checks SSH to `root@104.255.9.187:11759`, reads tmux `sdss` + `lamost` session status, writes a snapshot to `pipelines/p3_anomaly_engine/pod_runs/phase2_status.log`. If SDSS has no batch-progress line for 2+ hrs past catalog download, emit an SDSS-NUDGE note into this file and stop fire.
+2. **If either scan just completed** (detected via new parquet files on pod) → rsync + HF upload → paper + site sync. Atomic commit per scan.
+3. **If both scans complete** → run Paper 3 Table 1 reconciliation: top-cut (rank-by-anomaly-score) to 77,905 SDSS + 44,075 LAMOST + 298 eROSITA per Paper 3 Table 1 canonical totals. Recompile Paper 3 on pod. Site sync.
+4. **After Paper 3 done** → trigger P1-PDF-RECOMPILE-V3 pod session (one `pdflatex + bibtex + pdflatex × 2` on `arxiv/main.tex`). Drop fresh `arxiv/main.pdf` + tarball. Site sync.
+5. **After both pod sessions done** → terminate pod (RunPod GraphQL mutation), log final spend, close `P3-SDSS-LAMOST-EROSITA-FULL-SCAN`.
+6. **Final site + SSOT sync** → update `index.md` banner to 🟢 truly submission-ready, update per-paper `status.md` files, close loop.
+
+### Phase 2 NON-goal
+
+Phase 2 does **not** wait on Houston-owned peer-review decisions (`P1-RHAT-NUMBER-RECONCILE`, `P1-BETA-EQ38-CHECK`, `P3-CMB-INJECTION-DISCLOSURE`, `P3-DESI-TRAIN-TEST-CAVEAT`, `P3-QC-FAIL-ABSTRACT-DISCLOSURE`, `P4-D4-VS-Z2-RENAME`). Those remain Houston-owned and self-paced; they do not gate the loop. Phase 2 exits when the 7 criteria above are met, after which Houston can fill the six decisions at leisure before filling arXiv forms.
+
+### Phase 2 safety
+
+- Never force-push. Never touch `main` history.
+- Every fire = atomic commit. Skip fire if `git status` dirty from Houston edit.
+- Chronic Houston files (`HUBIFY_LABS_PRD.md`, `prompt-history.md`) untouched per protocol §7.
+- Pod-deploy escalation still applies: if pod gets stuck or dies, file precise blocker note, do not burn budget silently.
+- Budget ceiling: pod spend already ~$16 of $140 Houston cap as of 2026-04-19; if cumulative spend crosses $100, emit BUDGET-NEAR-CAP note and stop further pod work until Houston acks.
+
+---
+
+## 🛑 Phase 1 CLOSED — 2026-04-18 fire #75
 
 **Loop self-terminated.** `CronDelete` called on job `91a7e38b`; the every-20-min drive-to-100 cron is no longer scheduled. Exit criteria evaluation at fire-#75 (strict reading against `SSOT/index.md` as the authoritative surface):
 
