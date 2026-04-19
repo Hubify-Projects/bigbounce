@@ -4,6 +4,56 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-19T08:40:00Z — fire #79 (P3-PATHC-LAMOST-NATIVE-RETRAIN kickoff)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
+**Three tmux sessions now LIVE:**
+
+| Session | Created | Status |
+|---|---|---|
+| `lamost_native` | 2026-04-19 08:37:38 UTC | **LIVE — P3-PATHC-LAMOST-NATIVE-RETRAIN** — fetched first night tar `20111123.tar.gz` (266 MB, 23.4 s, 11.4 MB/s), extract+decode phase in progress. Target 300 K spectra from 50 randomly-sampled nights seed=20260419. Target gate val_loss ≤ 0.30. |
+| `sdss_native` | 2026-04-19 08:15:08 UTC | **LIVE — P3-PATHC-SDSS-NATIVE-RETRAIN** — 15,000/300,000 (5 %) downloaded @ 11.2 specs/s, 3 shards written, 0 failures. Healthy. |
+| `lamost` (cross-transfer) | 2026-04-18 10:33:11 UTC | **RUNNING — §7.1 BASELINE PRESERVATION** — 540/1,177 nights scored, ETA 25.8 h. Untouched this fire per Houston directive. |
+
+**Script deployed:** `/workspace/bigbounce_scan/lamost_native_retrain.py` (337 lines, committed to repo).
+
+**Candidate selection:**
+- 1,177 LAMOST DR10 LRS nights advertised at `http://www.lamost.org/dr10/v2.0/tar/lrs-fits/`
+- Random-sampled 50 nights (seed=20260419 — distinct from SDSS's use of same seed for pipeline reproducibility within task; different sampling populations)
+- First 5: 20111123, 20120516, 20121221, 20130504, 20130519
+
+**Pipeline architecture:**
+- Download one night tar at a time (single-threaded HTTP, polite for `lamost.org`)
+- Extract in-memory + 16-thread parallel `gzip + astropy.io.fits` decode
+- Resample FLUX+WAVELENGTH BINTABLE to 496-bin DESI grid via `np.interp` (matches cross-transfer `lamost_scan_v2.py` exactly)
+- Median-normalize + reject flat/NaN/Inf
+- Shard into 5,000-spec `.npy` chunks + per-spectrum CLASS string (FITS `CLASS` header: STAR/GALAXY/QSO)
+- Delete tar after each night processed; `.processed_nights.txt` for resume
+- Train `BigAE(496→128 latent)` same arch as SDSS native + DESI-trained
+
+**Pre-deploy URL probe:** `curl -sL http://www.lamost.org/dr10/v2.0/tar/lrs-fits/20111024.tar.gz` returned HTTP 200 + real tarball. Unlike fire #78's SDSS URL surprise, this endpoint is identical to what the cross-transfer scan already uses successfully — no URL blocker expected.
+
+**Isolation:** All artifacts under `temp/lamost_native/` + `outputs/lamost_native/`. Zero path collision with cross-transfer `lamost` tmux.
+
+**Bandwidth budget observation:**
+- SDSS native: ~2 MB/s
+- LAMOST cross-transfer: ~2-3 MB/s sustained (25 nights/h × ~300 MB / 144 s/night)
+- LAMOST native: ~11 MB/s burst during tar fetch, ~0 during extract phase
+- All three fit comfortably within typical pod egress
+
+**Disk projection:**
+- SDSS native peak: ~600 MB shards + ~300 MB raw cache at any moment
+- LAMOST native peak: ~300 MB tar + 600 MB shards
+- Combined: < 2 GB peak; 482 GB free — safe
+
+**ETA:** ~3-5 h tar download+extract + ~30 min training = **~4-5 h to first checkpoint**. Sooner than SDSS native's ~8 h because 50 tar fetches at ~25 s each = ~20 min of download, rest is CPU-bound extract/decode.
+
+**Budget:** ~$28 / $400 (~$1 delta this fire).
+
+**Next fire (#80):** Path C task selection order step 2 has one more "kickoff" left — `P3-PATHC-CMB-NATIVE-RETRAIN` (third and last native retrain). Fire #80 expected to kick that off unless SDSS / LAMOST download hits a new class of failure requiring intervention.
+
+---
+
 ## 2026-04-19T08:20:00Z — fire #78 (P3-PATHC-SDSS-NATIVE-RETRAIN URL fix + re-launch)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
