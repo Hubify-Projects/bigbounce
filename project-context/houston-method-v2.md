@@ -339,6 +339,53 @@ Papers on arXiv are permanent. The "future work" in a paper today is either a gi
 
 ---
 
+## Principle 11: Default to the Hardest/Fullest/Highest-Quality Path — Never the Easy One
+
+Added 2026-04-19 after Houston caught the pattern during the Paper 3 novelty-integrity rebuild.
+
+> "you identified issues that were possible for us to solve even if they were hard and yet i still had to decipher your messages and push back on your suggestion that we do the easy thing when we should ALWAYS do the harder fullest highest quality option every time"
+
+### The Rule
+
+When a defect is surfaced (data-quality issue, contamination, missing validation, undertrained model, systematic bias, etc.) AND multiple fix paths exist ranging from easy-with-caveats to full-rebuild, **the default recommendation is the hardest/fullest/highest-quality path.** Period.
+
+Do NOT list "Path A ship-with-caveats / Path B minimum-real-fix / Path C full-Cadillac" and leave the choice ambiguous. **Path C is the answer** unless there is a hard blocker (budget cap, timeline deadline, missing data that cannot be proxied).
+
+### What Triggered This Principle
+
+2026-04-19 Paper 3 novelty-integrity audit surfaced 5 major quality issues:
+1. CMB autoencoder injection-recovery at 0.33% (catastrophically undertrained)
+2. DESI in-sample bias (BigAE scored on its own training set)
+3. LAMOST 98% blue-excess contamination
+4. NEOWISE ecliptic-latitude systematic
+5. Missing 8-way cross-survey positional dedup
+
+I correctly identified the issues, then presented Path A (ship-with-caveats, 2 days, cheap) as a reasonable option and only reluctantly recommended Path B with Path C framed as an "upgrade." Houston had to explicitly push back: *"we do not have to accept this low quality"* — and then choose Path C himself. This should never have required pushback.
+
+### How to Apply
+
+- When a defect is surfaced AND a fix is possible (even if hard or expensive), **default recommendation = the full fix.**
+- When presenting options, the ordering must be:
+  1. **"Recommended: Path C — do it right"** with cost/time called out.
+  2. Alternatives below, clearly labeled as weaker (not "also reasonable").
+- Do NOT frame the easy option as "also reasonable." It is not. Houston's emotional investment + AI-compression-of-effort means the "full rebuild" cost is genuinely affordable relative to the scientific upgrade.
+- If budget or timeline blocks the full path, say so explicitly as a blocker — do not downgrade the recommendation silently.
+- Applies across all domains: data pipelines (retrain > caveat), papers (rewrite > patch), code (refactor > band-aid), site (redesign > style tweak), infrastructure (proper fix > monkey-patch).
+
+### Relation to Other Principles
+
+- **Stronger than Principle 2 ("Always do more, not less")**: Principle 2 is about *scope* (scan all, not a sample). Principle 11 is about *quality ceilings* (when there's a choice between known-contaminated and cleanly-retrained, always recommend the retrain).
+- **Reinforces Principle 10 ("Future Work Is Code Smell")**: Deferring the hard fix to "v2 of the paper" is the same pattern as calling it "future work." Do it now, do it right.
+- **Enforces "Do It RIGHT, Not Fast"** (below): this is the operational rule that prevents ever slipping back into fast-cheap mode.
+
+### Test for Future Self
+
+Before presenting any "Path A/B/C" menu to Houston, ask: *"Am I about to make Houston push back and tell me to pick C?"* If yes — just recommend C up front with the alternatives as footnotes.
+
+Full memory: `~/.claude/projects/-Users-houstongolden-Desktop-CODE-2025-bigbounce/memory/feedback_default_hardest_path.md`
+
+---
+
 ## Anti-Patterns (Things That Are NOT Completion)
 
 | What Happened | Why It's Not Complete |
@@ -355,7 +402,7 @@ Papers on arXiv are permanent. The "future work" in a paper today is either a gi
 
 ## Integration with Existing Principles
 
-This protocol builds on the 8 existing Houston Method principles:
+This protocol builds on the existing Houston Method principles:
 
 1. **Never accept "publish the failure"** → Step 4 forces interpretation of every result
 2. **Always do more, not less** → Step 7 generates 3-10 new tasks per experiment
@@ -366,6 +413,8 @@ This protocol builds on the 8 existing Houston Method principles:
 7. **Multi-model cross-validation** → Steps 3-4 use multiple analysis approaches
 8. **Emotional investment is a feature** → The loop channels urgency into systematic progress
 9. **THE COMPLETION LOOP** → This document. The enforcement mechanism for all of the above.
+10. **Future Work Is Code Smell** → Do it NOW; the only exceptions are hardware/datasets that literally don't exist yet.
+11. **Default to the hardest path** → When a defect has multiple fix paths, recommend the full-rebuild up front; never make Houston push back to pick quality.
 
 ---
 
