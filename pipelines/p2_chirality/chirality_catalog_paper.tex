@@ -171,6 +171,15 @@ identifiers. Sky coordinates (right ascension and declination, J2000
 ICRS) are obtained by cross-matching \texttt{dr8\_id} against the
 Galaxy Zoo DESI predictions catalog~\cite{Walmsley:2023}.
 
+Redshift estimates, when propagated through the Galaxy Zoo DESI
+cross-match~\cite{Walmsley:2023}, are photometric (DESI Legacy Imaging
+Surveys photo-$z$ catalog) with typical precision
+$\sigma_z / (1+z) \approx 0.03$ for the magnitude range of our spiral
+sample. No spectroscopic redshifts are used in this analysis; the
+implied redshift-smearing floor of $\Delta z \sim 0.05$ at
+$z \sim 0.5$ is carried forward as a limitation on future
+redshift-binned dipole analyses (Sec.~\ref{sec:sensitivity}).
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_spiral_density.png}
@@ -871,6 +880,16 @@ detectable dipole amplitude rises to approximately $0.2\%$ at
 $3\sigmaunit$.  This represents the most sensitive chirality
 measurement ever performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a factor of $\sim\!2$ in sensitivity owing to
 the $4.3\times$ larger sample and the reduced per-pixel variance.
+
+Any future redshift-binned extension of this analysis must additionally
+contend with the photo-$z$ smearing floor introduced in
+Sec.~\ref{sec:images}: with $\sigma_z / (1+z) \approx 0.03$ from the
+underlying DESI Legacy photo-$z$ catalog, individual galaxies can
+migrate across redshift-bin boundaries by $\Delta z \sim 0.05$ at
+$z \sim 0.5$, diluting any narrow-redshift-shell dipole signal.
+Spectroscopic follow-up (e.g.\ DESI DR1+ spectra) is required to
+recover the full sensitivity floor in redshift-resolved dipole
+searches.
 
 \subsection{Edge-On Galaxy Contamination}
 \label{sec:edge_on}
