@@ -50,7 +50,7 @@ from astropy.io import fits
 DESI_WMIN, DESI_WMAX = 3600.0, 9800.0
 N_BINS = 496
 SHARD_SIZE = 5000
-DOWNLOAD_BASE = "https://data.sdss.org/sas/dr18/spectro/sdss/redux/26/spectra/lite"
+DOWNLOAD_BASE = "https://data.sdss.org/sas/dr18/spectro/sdss/redux/v5_13_2/spectra/lite"
 
 DEFAULTS = dict(
     spall_path="/workspace/bigbounce_scan/temp/sdss/spAll-v5_13_2.fits",

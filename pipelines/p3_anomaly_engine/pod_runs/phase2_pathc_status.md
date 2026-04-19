@@ -4,6 +4,64 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-19T08:20:00Z — fire #78 (P3-PATHC-SDSS-NATIVE-RETRAIN URL fix + re-launch)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
+
+**Watchdog finding on fire #77's kickoff:**
+
+```
+[shard] progress 58,000/300,000 success=0 failed=58,000 rate=0.0/s
+```
+
+Every download 404-ing. Hit rate: **0 / 58,000**.
+
+**Root cause:** `DOWNLOAD_BASE` hard-coded to `/redux/26/` (legacy BOSS/eBOSS path). DR18 legacy-survey spectra live under `RUN2D=v5_13_2` at `/redux/v5_13_2/`. spAll inspection confirmed 3,958,000/3,958,000 rows have `RUN2D=v5_13_2`.
+
+**Empirical URL probe:**
+
+| URL | HTTP | size |
+|---|---|---|
+| `/redux/v5_13_2/spectra/lite/3586/spec-3586-55181-0002.fits` | 200 | 218,880 bytes (real FITS) |
+| `/redux/26/spectra/lite/3586/spec-3586-55181-0002.fits` | 404 | 0 bytes |
+
+**Patch:** one-line change in `sdss_native_retrain.py`:
+
+```python
+- DOWNLOAD_BASE = "https://data.sdss.org/sas/dr18/spectro/sdss/redux/26/spectra/lite"
++ DOWNLOAD_BASE = "https://data.sdss.org/sas/dr18/spectro/sdss/redux/v5_13_2/spectra/lite"
+```
+
+**Re-launch sequence:**
+1. `tmux kill-session -t sdss_native` (broken run)
+2. Wiped empty shard + raw-cache dirs
+3. `scp sdss_native_retrain.py` → pod
+4. `tmux new-session -d -s sdss_native 'python3 -u sdss_native_retrain.py ...'`
+5. Verified new run selects candidates + begins downloads
+
+**Post-fix verification (log tail):**
+
+```
+[shard] progress 2,000/300,000 success=2,000 failed=0 rate=10.9/s
+```
+
+32-worker download sustained at 10.9 spectra/s, zero failures.
+
+**Revised ETA:**
+- Download: 300,000 / 10.9 = **~7.6 h** (prior fire-#77 estimate of 30–50 min was optimistic)
+- Training on A100: **~30 min**
+- Total to first checkpoint: **~8 h**
+
+**Disk projection:** 300K × 218 KB = ~65 GB raw download pulled sequentially (unlinks after preprocess), shards peak ~600 MB total — well within 483 GB `/workspace` headroom.
+
+**Budget delta:** ~$1 this fire (diagnostic SSH + relaunch). Running total ~$27 / $400 ceiling.
+
+**Lesson captured:** Probe one URL with `curl -sI` before spinning up a 32-worker downloader on an unfamiliar SDSS `RUN2D`.
+
+**Next fire (#79):** watchdog-only unless a new class of failure appears. Expect download phase to run through fires #79-#87 ( ~3 h × 3 fires/h cadence ≈ 9 fires × 20 min = 3 h between checkpoint… actually cron is `7,27,47` = every 20 min so 8 h ÷ 20 min = **~24 watchdog-only fires** before training starts). If training starts mid-fire, the fire after switches to val_loss-gate evaluation.
+
+---
+
 ## 2026-04-19T07:56:36Z — fire #77 (P3-PATHC-SDSS-NATIVE-RETRAIN kickoff)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
