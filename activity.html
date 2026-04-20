@@ -131,17 +131,17 @@
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
 <div class="status-banner">
   <div class="status-label">Current Research Focus</div>
-  <div class="status-focus">H200 Pod ACTIVE &mdash; Session 5 RUNNING: Quintom MCMC (step 1500/3000) + ZTF DR21 anomaly search + PBH abundance COMPLETE</div>
-  <p class="status-desc"><strong>66+ experiments complete across Phases 1-8 + Novel batch + Pipeline 1.</strong> Pod active (SSH: root@205.196.19.52 -p 11452). <strong>Session 5 (2026-04-10, ongoing):</strong> (1) <strong>PBH Abundance from f_NL=-4.375</strong> COMPLETE &mdash; matter bounce naturally suppresses PBH formation (Edgeworth correction), consistent with no-overproduction constraints. GW spectral index: bounce γ=3.0 vs NANOGrav 3.33±0.40 at <strong>0.83σ</strong>. f_NL triple role confirmed: galaxy bispectrum → PBH abundance → induced GW spectrum. (2) <strong>Quintom MCMC</strong> running: 256 walkers × 3000 steps, DESI DR2 BAO + CMB shift, currently at step 1500 (w0≈-1.50, wa≈1.80). (3) <strong>ZTF DR21</strong> light curve anomaly search: 100K synthetic sources, Lomb-Scargle periodogram phase in progress.</p>
+  <div class="status-focus">Paper 3 Path-C Rebuild in Flight &mdash; A100 pod running 3 parallel jobs: SDSS + LAMOST native re-scores + CMB native retrain (galactic mask, 200K patches)</div>
+  <p class="status-desc"><strong>Path-C rebuild protocol launched 2026-04-19 after novelty-integrity review flagged cross-transfer contamination.</strong> A100 pod <code>ktds4mkmzb7ven</code> (SSH: root@104.255.9.187 -p 11759) hosts three concurrent tmux jobs. <strong>Native-retrain gates PASSED</strong> (fire #80): SDSS DR18 BigAE val_loss=0.0311, LAMOST DR10 BigAE val_loss=0.0329 (gate ≤ 0.30). <strong>Re-scores IN FLIGHT</strong>: SDSS 82K/1.93M scored @ 10.5/s ETA 49h; LAMOST 55/1177 nights, 626K scored, 117 anomalies @ ETA 32h. <strong>CMB retrain</strong> extracting 200K 10°×10° SMICA patches (currently 85K/200K @ 16/s), then 150-epoch training with <code>|b| ≥ 20°</code> galactic-plane mask; integrated injection-recovery gate 50% @ 5σ. <strong>NEOWISE ecliptic mask</strong> DONE locally (fire #84): <code>|b_ecl| &lt; 80°</code> retains 419/436 anomalies (96.1%); 2.6× pole excess over uniform-sphere null confirms scan-pattern contamination. <strong>8-way positional dedup</strong> DONE on 5/8 surveys (fire #86): 197,246 survey-level detections → 191,432 unique physical objects at 5 arcsec; 0 multi-survey matches (disjoint populations). <strong>Paper 3 §2.X Path-C methodology + §7.4 residual caveats</strong> drafted into <code>paper3_draft.tex</code> (fire #87). Budget ~$46 / $400 cap.</p>
   <div class="status-meta">
-    <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 &mdash; COMPLETE (18M spectra, 195K anomalies)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> SDSS DR18 &mdash; COMPLETE (2.3M spectra, 77,905 anomalies)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> eROSITA DR1 &mdash; COMPLETE (930K sources, 298 BigAE top-cut anomalies &mdash; Paper 3 Table 1 canonical)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> LAMOST DR10 &mdash; COMPLETE (11.4M spectra, 44,075 anomalies)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> Planck CMB &mdash; FIXED (193 anomalies, galactic mask applied)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> Gaia DR3 &mdash; FIXED (500K sources, 5,000 anomalies, 10x expansion)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> ACT DR6 &mdash; FIXED (200 anomalies, proper 100-epoch training)</div>
-    <div class="status-meta-item"><span class="dot dot-active"></span> NEOWISE &mdash; FIXED (444 anomalies, ecliptic mask applied)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> DESI DR1 &mdash; 195,829 anomalies (in-sample; 5-fold validation pending)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> SDSS DR18 &mdash; native retrain gate PASS (val_loss=0.0311); re-score 82K/1.93M</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> LAMOST DR10 &mdash; native retrain gate PASS (val_loss=0.0329); re-score 55/1177 nights</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> eROSITA DR1 &mdash; 298 BigAE top-cut anomalies (Paper 3 Table 1 canonical)</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Planck CMB &mdash; Path-C native retrain in patch-extraction (85K/200K); gate TBD</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> Gaia DR3 &mdash; 500 anomalies retained unchanged</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> ACT DR6 &mdash; deferred pending CMB retrain outcome</div>
+    <div class="status-meta-item"><span class="dot dot-active"></span> NEOWISE &mdash; Path-C ecliptic mask applied (419/436, 2.6× pole excess)</div>
   </div>
 </div>
 
@@ -149,14 +149,15 @@
 <div class="up-next">
   <h3>Up Next</h3>
   <ul class="up-next-list">
-    <li><span class="priority priority-now">NOW</span> SDSS native real-data run: apply trained models to actual SDSS DR18 spectra (download ~10GB FITS files to pod)</li>
-    <li><span class="priority priority-now">NOW</span> SPHEREx f<sub>NL</sub> forecast comparison: σ=0.93 SPHEREx vs σ=11.71 current multi-tracer &mdash; bridge comparison for Paper 2/3</li>
-    <li><span class="priority priority-next">NEXT</span> Paper 4 finishing: confusion matrix, training curves, redshift distribution (~2h on pod)</li>
-    <li><span class="priority priority-next">NEXT</span> NaMaster birefringence: independent EB analysis for Paper 1</li>
-    <li><span class="priority priority-next">NEXT</span> Paper 2 submission to arXiv (READY now)</li>
-    <li><span class="priority priority-next">NEXT</span> Real DESI DR2 BAO: redo quintom MCMC when released</li>
-    <li><span class="priority priority-later">LATER</span> Phase 9: Full-scale NEOWISE 170B rows, Gaia DR3 1.8B epoch photometry</li>
-    <li><span class="priority priority-later">LATER</span> Phase 10: Final paper compilation + figures</li>
+    <li><span class="priority priority-now">NOW</span> SDSS DR18 native re-score (82K/1.93M scored, ETA ~49h) &mdash; fills Paper 3 Table 1 native-retrained SDSS anomaly set</li>
+    <li><span class="priority priority-now">NOW</span> LAMOST DR10 native re-score (55/1177 nights, ETA ~32h) &mdash; blue-excess contamination check on native-retrained catalog</li>
+    <li><span class="priority priority-now">NOW</span> CMB native retrain (200K patches, galactic-plane mask) &mdash; extraction 85K/200K, then 150-epoch training + injection-recovery gate</li>
+    <li><span class="priority priority-next">NEXT</span> 8-way positional dedup re-run after SDSS + LAMOST natives land (pipeline ready, auto-picks up new parquets)</li>
+    <li><span class="priority priority-next">NEXT</span> Paper 3 Table 1 + abstract + §3 per-survey sections: fill native-retrain numbers, recompile PDF on pod (0 undef refs target)</li>
+    <li><span class="priority priority-next">NEXT</span> HuggingFace catalog rebuild: native anomaly sets supersede cross-transfer sets; README documents Path-C methodology</li>
+    <li><span class="priority priority-next">NEXT</span> DESI 5-fold out-of-sample validation (deferred &mdash; blocked on pod GPU contention + multi-TB redownload)</li>
+    <li><span class="priority priority-later">LATER</span> Paper 1 PDF recompile v3 (14 bundled non-scientific edits from Phase-1 closure, deferred until Paper 3 rebuild completes)</li>
+    <li><span class="priority priority-later">LATER</span> Final pod terminate + site sync + Phase 2 Path-C loop close (after all 12 exit criteria green)</li>
   </ul>
 </div>
 
@@ -166,6 +167,13 @@
 <h2>Research Timeline</h2>
 
 <div class="feed">
+
+  <div class="feed-item milestone">
+    <div class="feed-date">2026-04-20</div>
+    <div class="feed-title">Paper 3 Path-C Rebuild &mdash; Native Retrains Gate PASS, NEOWISE Ecliptic Mask, 5-of-8 Dedup, Methodology Drafted (Fires #80&ndash;87)</div>
+    <p class="feed-body"><strong>Phase 2 Path-C rebuild protocol</strong> (launched 2026-04-19 after novelty-integrity review) has advanced through 8 autonomous 20-min fires. <strong>Native-retrain gates PASSED</strong>: SDSS~DR18 BigAE val_loss=0.0311, LAMOST~DR10 val_loss=0.0329 (gate ≤ 0.30). <strong>Re-scores launched</strong> on A100 pod <code>ktds4mkmzb7ven</code>: SDSS 82K/1.93M @ 10.5/s ETA 49h; LAMOST 55/1177 nights, 626K scored, 117 anomalies ETA 32h. <strong>CMB native retrain</strong> kicked off with <code>|b| ≥ 20°</code> galactic-plane mask on 200K 10°×10° SMICA patches (extraction 85K/200K, 150-epoch schedule, integrated injection-recovery gate). <strong>NEOWISE ecliptic mask</strong> (fire #84): <code>|b_ecl| &lt; 80°</code> retains 419/436 (96.1%); 2.6× pole excess vs uniform-sphere null confirms WISE scan-pattern polar-cap contamination. <strong>Injection-recovery</strong> for SDSS + LAMOST native BigAEs (fire #85): full recovery curves {0.5×, 1×, 2×, 5×, 10×, 20× σ} reveal AE strength (reconstructs emission lines at &lt; 10σ) is the weakness of single-gaussian line plants → recommend continuum-deformation plants for future refinement. <strong>8-way positional dedup at 5″</strong> (fire #86): 5 of 8 surveys loaded (DESI + eROSITA + Planck CMB + Gaia + NEOWISE-masked), 197,246 survey-level detections → 191,432 unique physical objects (2.95% compression, 5,814 intra-DESI fiber doubles); <strong>0 multi-survey matches</strong> &mdash; scientifically important null: 5 loaded surveys probe disjoint populations. <strong>Paper 3 §2.4 Path-C Rebuild Methodology + §7.4 Residual Caveats</strong> drafted (fire #87): 6-step protocol + 4 residual caveats (DESI in-sample overlap, LAMOST residual bias, CMB gate fallback, plant-morphology sensitivity). Budget ~$46 / $400 cap. Loop continues on 20-min cron until all 12 Path-C exit criteria green.</p>
+    <div class="feed-tags"><span class="feed-tag pass">SDSS native gate PASS</span><span class="feed-tag pass">LAMOST native gate PASS</span><span class="feed-tag pass">NEOWISE mask applied</span><span class="feed-tag pass">8-way dedup 5/8</span><span class="feed-tag pass">Paper 3 §2.4 + §7.4 drafted</span><span class="feed-tag">Path-C in flight</span><span class="feed-tag">Fires #80&ndash;87</span></div>
+  </div>
 
   <div class="feed-item milestone">
     <div class="feed-date">2026-04-17</div>
