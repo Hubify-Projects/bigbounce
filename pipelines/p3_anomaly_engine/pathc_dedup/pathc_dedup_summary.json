@@ -1,0 +1,56 @@
+{
+  "task": "P3-PATHC-DEDUP-LOCAL (8-way-aspirational, N-way actual)",
+  "match_radius_arcsec": 5.0,
+  "surveys_planned": [
+    "desi_dr1",
+    "erosita_dr1",
+    "planck_cmb",
+    "gaia_dr3",
+    "neowise_pathc",
+    "sdss_dr18",
+    "lamost_dr10",
+    "act_dr6"
+  ],
+  "surveys_loaded": [
+    "desi_dr1",
+    "gaia_dr3",
+    "neowise_pathc",
+    "erosita_dr1",
+    "planck_cmb"
+  ],
+  "surveys_pending": [
+    "sdss_dr18",
+    "lamost_dr10",
+    "act_dr6"
+  ],
+  "survey_load_status": {
+    "desi_dr1": "loaded 195829 rows (dropped 0 non-finite)",
+    "erosita_dr1": "loaded 298 rows (dropped 0 non-finite)",
+    "planck_cmb": "loaded 200 rows (dropped 0 non-finite)",
+    "gaia_dr3": "loaded 500 rows (dropped 0 non-finite)",
+    "neowise_pathc": "loaded 419 rows (dropped 0 non-finite)",
+    "sdss_dr18": "pending (file not on disk: pipelines/p3_anomaly_engine/hf_staging/sdss_native_anomalies.parquet)",
+    "lamost_dr10": "pending (file not on disk: pipelines/p3_anomaly_engine/hf_staging/lamost_native_anomalies.parquet)",
+    "act_dr6": "pending (file not on disk: pipelines/p3_anomaly_engine/hf_staging/act_native_anomalies.parquet)"
+  },
+  "per_survey_detections": {
+    "desi_dr1": 195829,
+    "gaia_dr3": 500,
+    "neowise_pathc": 419,
+    "erosita_dr1": 298,
+    "planck_cmb": 200
+  },
+  "total_survey_detections_loaded": 197246,
+  "n_unique_objects": 191432,
+  "compression_fraction": 0.02947588290763818,
+  "n_multi_survey_matches_ge2": 0,
+  "clusters_in_k_surveys": {
+    "1": 191432
+  },
+  "paper3_table1_numbers_now": {
+    "survey_level_detections": 197246,
+    "unique_physical_objects": 191432,
+    "note": "Reported across 5 of 8 planned surveys. SDSS DR18 + LAMOST DR10 native re-scores are in flight on pod `ktds4mkmzb7ven` (ETA 50 / 33 h); ACT DR6 is deferred. Re-run this script after each rescore completes \u2014 it degrades gracefully and picks up new survey parquets automatically."
+  },
+  "note_multi_survey_meaning": "A multi-survey match at 5\" is rare and scientifically valuable: the same physical position flagged as anomalous by two independent pipelines is strong evidence of a genuine astrophysical feature rather than a survey-specific systematic."
+}
