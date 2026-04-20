@@ -85,9 +85,14 @@ SURVEYS = [
     ('lamost_dr10',
      'pipelines/p3_anomaly_engine/hf_staging/lamost_native_anomalies.parquet',   # <- will appear post-rescore
      'obsid'),
+    # ACT DR6: NOT retrained under Path-C (CMB coverage via Planck native, fire #95).
+    # Loaded as cross-transfer top-200 (from the DESI-trained model) so ACT participates
+    # in 8-way positional dedup per criterion #7. Honest framing matches fire #114
+    # status.html amber "Cross-transfer baseline" row — ACT is in the §7 before/after
+    # baseline only, not in the final Path-C native catalog headline.
     ('act_dr6',
-     'pipelines/p3_anomaly_engine/hf_staging/act_native_anomalies.parquet',      # <- will appear post-retrain
-     None),
+     'pipelines/p3_anomaly_engine/hf_staging/act_dr6_cross_transfer_anomalies.parquet',
+     'patch_idx'),
 ]
 
 
@@ -228,9 +233,12 @@ def main():
             'note': (
                 f'Reported across {len(loaded_parts)} of {len(SURVEYS)} planned surveys. '
                 'SDSS DR18 + LAMOST DR10 native re-scores are in flight on pod '
-                '`ktds4mkmzb7ven` (ETA 50 / 33 h); ACT DR6 is deferred. Re-run this '
-                'script after each rescore completes — it degrades gracefully and '
-                'picks up new survey parquets automatically.'
+                '`ktds4mkmzb7ven` (ETA ~26 / 36 h). ACT DR6 is loaded as cross-transfer '
+                'top-200 (not Path-C native-retrained — CMB coverage is provided by the '
+                'native Planck CMB retrain, fire #95) and is included in positional '
+                'dedup only so ACT anomalies participate in multi-survey coincidence '
+                'search. Re-run this script after each SDSS/LAMOST rescore completes — '
+                'it degrades gracefully and picks up new survey parquets automatically.'
             ),
         },
         'note_multi_survey_meaning': (
