@@ -4,6 +4,97 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-20T06:05:00Z — fire #80 (P3-PATHC-LAMOST-NATIVE-RETRAIN outlier-clipping FIX + triple gate PASS)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
+
+**Three completion milestones this fire:**
+
+| Task | Result | Artifact |
+|---|---|---|
+| SDSS native retrain | **gate PASS** val_loss=**0.0311** (epoch 17 early stop, 138 s) | `outputs/sdss_native/best_sdss_native.pt` (3.5 MB) |
+| LAMOST native retrain (attempt 2) | **gate PASS** val_loss=**0.0329** (epoch 39, full 40) | `outputs/lamost_native/best_lamost_native.pt` (3.5 MB) |
+| LAMOST cross-transfer §7.1 baseline | **COMPLETE** | 11,240,648 scored / 43,915 anom / 40 h |
+
+**Debug trace — LAMOST attempt 1 gate FAIL → attempt 2 gate PASS:**
+
+Attempt 1 log tail:
+```
+[train] epoch 11/40  train=6171143363  val=4627472384  best_val=4598493696
+[train] early stop at epoch 11 (no improvement 5 epochs)
+[train] DONE  best_val=4598493696.0000@epoch6  gate_FAIL(<=0.30)
+```
+
+Shard inspection on pod:
+```python
+X = np.load('shards/shard_00000.npy')  # (5000, 496)
+X.min(), X.max()                       # -2.58e8, +3.05e8
+(np.abs(X) > 1e6).sum()                # 241 pixels per shard
+```
+
+Root cause: raw LAMOST `FLUX` has cosmic-ray / dead-pixel / edge-artifact spikes at ±3×10^8 that survive median-normalize (median = body-of-spectrum ~ 1, but tails remain at 1e8). BigAE MSE on those tails explodes to 4.6 billion.
+
+**Patch** (diff):
+
+```python
+# read_one_fitsgz — after resampled /= med:
++ if np.abs(resampled).max() > 100.0:
++     return None
++ np.clip(resampled, -10.0, 10.0, out=resampled)
+```
+
+```python
+# load_all_shards — defensive filter+clip for existing shards:
++ row_max = np.abs(X).max(axis=1)
++ keep = (row_max <= 100.0) & np.isfinite(row_max)
++ X = X[keep]
++ np.clip(X, -10.0, 10.0, out=X)
+```
+
+Load-time filter output on attempt 2:
+
+```
+[load] filtered 300,000 -> 299,607 rows (rejected 393 with max|x|>100)
+```
+
+Only 393 / 300,000 rows (0.13 %) rejected — the "poison" was a handful of pathological spectra, not systemic.
+
+**Attempt 2 training log (final epochs):**
+
+```
+[train] epoch 35/40  train=0.0364  val=0.0337  best_val=0.0337
+[train] epoch 36/40  train=0.0360  val=0.0334  best_val=0.0337
+[train] epoch 37/40  train=0.0361  val=0.0335  best_val=0.0334
+[train] epoch 38/40  train=0.0356  val=0.0360  best_val=0.0334
+[train] epoch 39/40  train=0.0354  val=0.0329  best_val=0.0334
+[train] epoch 40/40  train=0.0354  val=0.0330  best_val=0.0329
+[train] DONE  best_val=0.0329@epoch39  gate_PASS(<=0.30)
+```
+
+**Path C criterion state after this fire:**
+
+| # | Criterion | Row % | Status |
+|---|---|---|---|
+| 1 | SDSS native retrain (val ≤ 0.30 + re-score 2.3M + HF upload) | 50 % | Training DONE. Re-score + HF upload remain. |
+| 2 | LAMOST native retrain (val ≤ 0.30 + re-score 11.4M + blue-excess < 20 %) | 50 % | Training DONE. Re-score + blue-excess check + HF upload remain. |
+| 3 | CMB native retrain | 0 % | Kickoff deferred to fire #81 |
+| 4-12 | (unchanged) | — | — |
+
+**Pod state:** zero active tmux. Workspace 19 GB / 482 GB free. Pod billable but idle — next fire should either kick off re-score jobs or CMB retrain.
+
+**Budget:** ~$32 / $400 ceiling (~$4 this fire; includes ~2-3 h of idle A100 time while tmux sessions completed independently).
+
+**Lesson captured:** Post-normalize extreme-outlier rejection belongs in the FIRST draft of any preprocessing pipeline for a new survey. Median-normalize passes 1e8-scale spikes straight through. Took one full gate-FAIL to diagnose — won't repeat this class of mistake on CMB.
+
+**Next fire (#81):** Path C options (pick one per fire):
+- Launch SDSS native re-score-all-2.3M (criterion #1 → green)
+- Launch LAMOST native re-score-all-11.4M (criterion #2 → green)
+- Kick off CMB native retrain (criterion #3)
+
+Likely order: SDSS re-score (smallest, fastest to finish) → LAMOST re-score → CMB retrain kickoff. Pod idle now, so fire-#81 kickoff is cheap.
+
+---
+
 ## 2026-04-19T08:40:00Z — fire #79 (P3-PATHC-LAMOST-NATIVE-RETRAIN kickoff)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)

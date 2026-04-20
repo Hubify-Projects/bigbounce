@@ -130,6 +130,13 @@ def read_one_fitsgz(blob: bytes):
                 return None
             if resampled.std() < 1e-3:
                 return None
+            # Reject spectra with extreme outliers (cosmic rays / dead pixels / edge
+            # artifacts survive median-normalize because median is scale-only, not
+            # robust to heavy tails). Without this, training MSE explodes to 1e9+.
+            if np.abs(resampled).max() > 100.0:
+                return None
+            # Clip remaining tails to keep BigAE inputs in a reasonable range.
+            np.clip(resampled, -10.0, 10.0, out=resampled)
             return resampled, klass
     except Exception:
         return None
@@ -284,6 +291,13 @@ def build_shards(nights, tars_dir: Path, shard_dir: Path, processed_file: Path,
 # Training
 # ============================================================
 def load_all_shards(shard_dir: Path):
+    """Load + filter + clip.
+
+    Defensive-dual-layer: even though `read_one_fitsgz` now rejects pre-normalized
+    extremes, shards generated before that fix (fire #79 attempt 1) contain rows
+    with max|x| up to 3e8. We reject rows with max|x| > 100 and then clip to
+    [-10, 10] here, so existing shards are usable without a 3-5 h re-extract.
+    """
     arrs = []
     for f in sorted(shard_dir.glob("shard_*.npy")):
         if "_class" in f.name:
@@ -291,7 +305,15 @@ def load_all_shards(shard_dir: Path):
         arrs.append(np.load(f, mmap_mode=None))
     if not arrs:
         return None
-    return np.concatenate(arrs, axis=0).astype(np.float32)
+    X = np.concatenate(arrs, axis=0).astype(np.float32)
+    n_before = len(X)
+    row_max = np.abs(X).max(axis=1)
+    keep = (row_max <= 100.0) & np.isfinite(row_max)
+    X = X[keep]
+    np.clip(X, -10.0, 10.0, out=X)
+    print(f"[load] filtered {n_before:,} -> {len(X):,} rows "
+          f"(rejected {n_before - len(X):,} with max|x|>100)", flush=True)
+    return X
 
 
 def train(X: np.ndarray, output_dir: Path, *, batch_size, lr, max_epochs, patience,
