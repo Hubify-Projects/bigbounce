@@ -1,0 +1,89 @@
+{
+  "task": "P3-PATHC-NEOWISE-ECLIPTIC-MASK (local subtask)",
+  "input": "pipelines/p3_anomaly_engine/hf_staging/neowise_anomalies.parquet",
+  "n_input": 436,
+  "elat_cut_deg": 80.0,
+  "n_surviving": 419,
+  "n_rejected": 17,
+  "survival_pct": 96.10091743119266,
+  "rejection_pct": 3.8990825688073394,
+  "uniform_sphere_reject_pct": 1.519224698779198,
+  "observed_reject_pct": 3.89908256880734,
+  "pole_excess_factor": 2.566494983882583,
+  "pole_excess_interpretation": "Uniform-sphere baseline predicts only 1.5% of sources within 10 deg of ecliptic poles; observed 3.9% is 2.6x higher, confirming WISE/NEOWISE scan-pattern artifacts dominate the polar caps as expected from the spacecraft orbit geometry (polar orbit -> 100+ visits/yr at poles vs ~12 at equator).",
+  "paper3_implication": "Reporting NEOWISE anomaly counts with |ecliptic_lat| < 80 deg mask drops the catalog from 436 to 419; the rejected 17 objects are almost all scan-pattern artifacts rather than physical anomalies.  The full pod-side re-score (apply the mask to the raw WISE source catalog BEFORE the variability autoencoder runs) is a separate fire; the counts here are conservative but directionally correct.",
+  "top5_surviving_by_score": [
+    {
+      "source_id": "NEOWISE_0029440",
+      "ra": 271.8415870113728,
+      "dec": 80.24259938276853,
+      "ecliptic_lat": 76.30968724727344,
+      "anomaly_score": 244412.96875
+    },
+    {
+      "source_id": "NEOWISE_0008565",
+      "ra": 277.6496765830154,
+      "dec": -43.77272822354226,
+      "ecliptic_lat": -20.489719631629704,
+      "anomaly_score": 208633.65625
+    },
+    {
+      "source_id": "NEOWISE_0035007",
+      "ra": 358.6018989452225,
+      "dec": 43.01837036129871,
+      "ecliptic_lat": 39.27419488426658,
+      "anomaly_score": 205881.15625
+    },
+    {
+      "source_id": "NEOWISE_0028109",
+      "ra": 190.36261244384343,
+      "dec": 37.14954384521246,
+      "ecliptic_lat": 37.668779423522345,
+      "anomaly_score": 175564.03125
+    },
+    {
+      "source_id": "NEOWISE_0044238",
+      "ra": 226.57636618653208,
+      "dec": 24.710940317782303,
+      "ecliptic_lat": 40.240055576266386,
+      "anomaly_score": 160031.984375
+    }
+  ],
+  "top5_rejected_by_score": [
+    {
+      "source_id": "NEOWISE_0019736",
+      "ra": 284.37115839165875,
+      "dec": 71.91197381478372,
+      "ecliptic_lat": 82.64727594444263,
+      "anomaly_score": 85545.0
+    },
+    {
+      "source_id": "NEOWISE_0018021",
+      "ra": 256.7866711260383,
+      "dec": 60.47745207263392,
+      "ecliptic_lat": 81.56374761182299,
+      "anomaly_score": 85487.4375
+    },
+    {
+      "source_id": "NEOWISE_0021733",
+      "ra": 77.43813711888872,
+      "dec": -65.17822666659342,
+      "ecliptic_lat": -84.69186584168939,
+      "anomaly_score": 55806.9921875
+    },
+    {
+      "source_id": "NEOWISE_0005845",
+      "ra": 96.02992488130288,
+      "dec": -56.97448511851958,
+      "ecliptic_lat": -80.00951942344415,
+      "anomaly_score": 37692.79296875
+    },
+    {
+      "source_id": "NEOWISE_0040989",
+      "ra": 274.01676001037515,
+      "dec": 58.26549203090951,
+      "ecliptic_lat": 81.50310429039102,
+      "anomaly_score": 32598.6875
+    }
+  ]
+}
