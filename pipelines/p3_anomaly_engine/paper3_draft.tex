@@ -161,7 +161,7 @@ The native retrains, systematics masks, and dedup pipeline are all deterministic
 %% ============================================================
 \section{Survey-by-Survey Results}\label{sec:surveys}
 
-Table~\ref{tab:survey_summary} presents the summary statistics for all eight surveys; Fig.~\ref{fig:skymap} shows the spatial distribution of all 319,443 anomalies across the celestial sphere. We describe each survey in turn.
+Table~\ref{tab:survey_summary} presents the summary statistics for all eight surveys; Fig.~\ref{fig:skymap} shows the spatial distribution of all 319,443 cross-transfer anomalies across the celestial sphere. The per-survey results below describe the \emph{cross-transfer} scan (a DESI-trained \BigAE{} applied to SDSS + LAMOST + eROSITA + NEOWISE + Gaia + a separately cross-transferred Planck/ACT CMB autoencoder) and are preserved as the \S\ref{sec:pathc} ``before / after native retrain'' baseline; Path-C-updated native-retrained counts for SDSS + LAMOST (gate-PASS val\_loss $0.0311$ / $0.0329$; \S\ref{sec:pathc}) and a native Planck CMB autoencoder with $500/500 = 100\%$ injection-recovery at $5\sigma$ will supersede the sum-over-surveys $319{,}443$ headline with the 8-way positional-dedup unique-physical-object count ($191{,}432$ from 5-of-8 surveys loaded pre-native-rescore; \S\ref{sec:pathc}) upon re-score completion. We describe each survey in turn.
 
 \begin{figure*}[t]
 \centering
