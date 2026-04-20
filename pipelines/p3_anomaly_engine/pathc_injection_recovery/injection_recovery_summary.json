@@ -1,0 +1,34 @@
+{
+  "task": "P3-PATHC-INJECTION-RECOVERY-ALL-SURVEYS (spectral surveys subtask)",
+  "gate_amp_sigma": 5.0,
+  "gate_recovery_required": 0.5,
+  "per_survey": {
+    "sdss_native": {
+      "gate_pass": false,
+      "gate_recovery_observed": 0.072,
+      "clean_mse_p99": 0.20042791962623596,
+      "full_curve": {
+        "0.5x": 0.008,
+        "1.0x": 0.008,
+        "2.0x": 0.008,
+        "5.0x": 0.072,
+        "10.0x": 0.336,
+        "20.0x": 0.892
+      }
+    },
+    "lamost_native": {
+      "gate_pass": false,
+      "gate_recovery_observed": 0.006,
+      "clean_mse_p99": 1.238723635673523,
+      "full_curve": {
+        "0.5x": 0.006,
+        "1.0x": 0.006,
+        "2.0x": 0.006,
+        "5.0x": 0.006,
+        "10.0x": 0.032,
+        "20.0x": 0.144
+      }
+    }
+  },
+  "note": "Two of five BigAE-scored surveys validated (SDSS DR18 + LAMOST DR10). CMB native retrain has injection-recovery integrated into cmb_native_retrain.py and runs at training-gate time (fire #83+). eROSITA, NEOWISE, Gaia, DESI are deferred to separate fires: eROSITA + Gaia use different feature extractors, NEOWISE uses variability features (Stetson-J/chi2), DESI requires its production BigAE checkpoint which is on pod under the 5-fold kfold training plan (criterion #4)."
+}
