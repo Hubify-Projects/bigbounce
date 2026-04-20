@@ -1,0 +1,39 @@
+{
+  "task": "P3-PATHC-INJECTION-RECOVERY (criterion #6) \u2014 NEOWISE mask analog",
+  "seed": 20260420,
+  "mask_cut_deg": 80.0,
+  "specificity": {
+    "theory_reject_fraction": 0.01519224698779198,
+    "observed_reject_fraction": 0.01512,
+    "n_isotropic_sample": 100000,
+    "tolerance": 0.003,
+    "pass": true,
+    "note": "Isotropic-sphere rejection rate must match the spherical-cap area fraction `1 - sin(80\u00b0)` \u2248 1.52 %. This validates the mask does not over-reject the clean NEOWISE catalog."
+  },
+  "sensitivity": {
+    "bands": {
+      "|b_ecl|>85deg": {
+        "n_injected": 1000,
+        "rejected_by_mask": 1000,
+        "recovery_fraction": 1.0
+      },
+      "|b_ecl|>82deg": {
+        "n_injected": 1000,
+        "rejected_by_mask": 1000,
+        "recovery_fraction": 1.0
+      },
+      "|b_ecl|>80.5deg": {
+        "n_injected": 1000,
+        "rejected_by_mask": 1000,
+        "recovery_fraction": 1.0
+      }
+    },
+    "gate_band": "|b_ecl|>85deg",
+    "gate_threshold": 0.95,
+    "observed_at_gate_band": 1.0,
+    "pass": true,
+    "note": "Polar-cap-injected anomaly population at |\u03b2_ecl| > 85\u00b0 must be rejected at \u2265 95 % by the Path-C mask. This validates the mask catches the scan-pattern-systematic population motivating fire #84 (2.57\u00d7 observed pole excess vs isotropic)."
+  },
+  "gate_pass": true,
+  "interpretation": "gate_pass=True \u21d2 Path-C NEOWISE mask is both specific (clean-catalog false-positive rate matches theory) and sensitive (polar-cap injected anomalies are fully caught). Criterion #6 bullet for NEOWISE row is satisfied; remaining surveys (eROSITA, Gaia) deferred as non-spectral feature extractors."
+}
