@@ -4,6 +4,64 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-20T07:15:00Z — fire #81 (P3-PATHC-SDSS-NATIVE-RETRAIN re-score kickoff)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h); GPU now busy (~60% util on 4096-batch forward every few minutes, idle between), 19 GB `/workspace` used.
+
+**Task picked this fire:** Path C task-selection step 3 ("If any retrain completes → run post-retrain scoring"). Both SDSS + LAMOST native retrains finished fire #80, so both re-score jobs were open. Picked SDSS first because (a) 1.93M candidates vs 11.4M LAMOST → fastest path to first green criterion, (b) the `best_sdss_native.pt` at val_loss=0.0311 is the cleanest checkpoint we have, and (c) LAMOST blue-excess contamination verification needs separate logic that's better split into its own fire.
+
+**Deliverable:** new script `pipelines/p3_anomaly_engine/sdss_native_rescore.py` (319 lines) — self-contained, resumable, batched GPU scoring pipeline. Design:
+
+1. Load `best_sdss_native.pt` onto `cuda:0` in eval mode (same BigAE(496→128) architecture).
+2. Re-apply the SAME spAll quality cut as training (`ZWARNING==0 & SN_MEDIAN>2 & SPECPRIMARY==1 & CLASS∈{STAR,GALAXY,QSO}`) → 1,928,673 candidates. Note: training sampled 300K of these; re-score does the FULL set (including the 300K trained on — in-sample is expected baseline and paper can note it).
+3. Sort candidates by `(plate, mjd, fiberid)` for deterministic order across resumes.
+4. For each batch of 4,096: `ThreadPoolExecutor(workers=64)` parallel-downloads lite-spec FITS from `data.sdss.org/.../redux/v5_13_2/spectra/lite/` (URL fixed fire #78), preprocesses on the fly (`np.interp` to 496-bin DESI grid, median-normalize, defensive `|x|>100` reject + `np.clip(-10,10)` learned from LAMOST fire #80), stacks successful specs → GPU → forward pass → per-spec MSE → writes `batch_NNNNNN.parquet` (8 cols: plate, mjd, fiberid, ra, dec, z, class, anomaly_score) + appends batch_id to `processed_batches.txt`.
+5. After full pass, reads all batch parquets with pyarrow.dataset, concatenates + sorts by anomaly_score descending, writes two outputs: `sdss_native_all_scores.parquet` (all ~1.93M scored) and `sdss_native_anomalies_top_77905.parquet` (top-N matching Paper 3 Table 1 canonical SDSS count).
+
+**Pre-flight:** verified pyarrow 23.0.1 + torch 2.1.0+cu118 on pod; uploaded script via scp.
+
+**Launch verified end-to-end:**
+
+- tmux session `sdss_native_rescore` created 2026-04-20T07:13:20Z
+- Model load OK: `loaded model from /workspace/bigbounce_scan/outputs/sdss_native/best_sdss_native.pt`
+- spAll parse OK: `rows: 3,958,000 → candidates: 1,928,673 → 471 batches × 4,096`
+- First-record ordering sanity: `plate=3586 mjd=55181 fiberid=2` (first numeric plate with valid quality cut)
+- **First batch completed**: `[score] batch 1/471 scored=4,096 success=4,096 failed=0 rate=13.7/s eta_h=39.1`
+- **Parquet inspection** on pod (via python3 pyarrow read): shape (4096, 8), columns `[plate, mjd, fiberid, ra, dec, z, class, anomaly_score]`, first 3 rows all GALAXY with scores {0.059, 0.003, 0.004}, **batch statistics** `min=5.6e-4, median=0.018, max=0.925` — healthy long-tail distribution, no NaN/Inf, no blowups. This confirms: (a) the model forward is producing sensible MSE values (not near-zero collapse, not all saturated), (b) the preprocessing doesn't contain poisoned spectra (the clip-and-reject filter is doing its job), (c) pyarrow+snappy writes are correct.
+
+**ETA @ 13.7 specs/s × 64 workers:** 1,928,673 spec / 13.7 = **~39 h** = ~1.6 days to full completion. Pod spend over that window: 39 × $1.19 = ~$46. Running total after this fire: ~$33 / $400 ceiling; at completion ~$79 / $400 — well within budget.
+
+**What the first green criterion buys us:** once the top-77,905 anomaly parquet is written + blue-excess-style QC checks pass, we (a) have a native SDSS anomaly set to replace the cross-transfer reference in Paper 3 Table 1, (b) can start the HF upload which closes criterion #1 → green, (c) free up the pod for LAMOST re-score (fire #82) or parallel CMB retrain kickoff (fire #83) depending on disk/bandwidth headroom.
+
+**Pod state after fire:** 1 active tmux (`sdss_native_rescore`), GPU periodically busy during batch forwards, 19 GB disk used. No other active jobs — LAMOST re-score will need its own tmux on fire #82 (independent scripts, no path collision).
+
+**Path C exit criterion state after fire:**
+
+| # | Criterion | Row % | Status |
+|---|---|---|---|
+| 1 | SDSS native retrain | 75 % | re-score IN PROGRESS 39h ETA (training DONE prior) |
+| 2 | LAMOST native retrain | 50 % | re-score NOT STARTED (next fire target) |
+| 3 | CMB native retrain | 0 % | not started |
+| 4 | DESI 5-fold | 0 % | not started |
+| 5 | NEOWISE ecliptic mask | 0 % | not started |
+| 6 | Injection-recovery | 0 % | not started |
+| 7 | 8-way dedup | 0 % | not started |
+| 8-12 | integration/recompile/site | 0 % | not started |
+
+**Budget delta this fire:** ~$1 (write+upload+launch+verify); running total ~$33 of $400 ceiling. Under cap.
+
+**Files staged this fire** (1 atomic commit, `feat(phase2-pathc):` prefix):
+- `pipelines/p3_anomaly_engine/sdss_native_rescore.py` (new, 319 lines)
+- `project-context/SSOT/queue.md` (row bumped 50 % → 75 %)
+- `project-context/SSOT/drive-to-100.md` (Loop log entry appended below)
+- `pipelines/p3_anomaly_engine/pod_runs/phase2_pathc_status.md` (this snapshot)
+
+Chronic Houston files (`HUBIFY_LABS_PRD.md`, `prompt-history.md`) untouched per protocol §7.
+
+**Next fire (#82):** Pod watchdog first. If SDSS re-score is running healthily (expected yes, ~30-60 batches completed), launch LAMOST re-score (parallel tmux, same pod, independent paths). If SDSS re-score has stalled, diagnose before adding load. CMB native retrain kickoff (criterion #3, the hardest remaining) stays fire #83 target — it's GPU-heavy and would compete with re-scoring, so best deferred until at least one re-score is near completion.
+
+---
+
 ## 2026-04-20T06:05:00Z — fire #80 (P3-PATHC-LAMOST-NATIVE-RETRAIN outlier-clipping FIX + triple gate PASS)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h)
