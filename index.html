@@ -55,8 +55,9 @@
       <div style="margin-top:8px;"><a href="paper.html#paper2" class="btn btn-secondary" style="font-size:12px;">Read Paper 2</a></div>
     </div>
     <div class="card" style="border-left: 4px solid #f97316;">
-      <h4 style="margin-top:0; font-family:var(--font-sans); color:#f97316;">Paper 3: Multi-Survey Anomaly Catalog <span style="font-size:11px; color:var(--text-muted);">~27 pages &middot; 99.5% Ready &middot; Target: ApJS</span></h4>
-      <p style="font-size:14px;">AI-driven observational discovery across 8 surveys: <strong>37.3M sources scored, 319,443 anomalies catalogued, 58.8% SIMBAD-novel.</strong> Unsupervised BigAE (trained on 47K DESI spectra) applied via transfer to DESI DR1 (22.5M / 195,829), SDSS DR18 (2.3M / 77,905), LAMOST DR10 (11.4M / 44,075 &mdash; 98% blue-excess artifact rate documented as negative control), eROSITA DR1 (930K / 298, 68% novel), Planck CMB × ACT DR6 (null cross-correlation), Gaia DR3 (500 / 27% novel), NEOWISE (436 / 45% novel + 46 ZTF matches). NANOGrav &gamma; = 3.20 &plusmn; 0.42 consistent with matter-bounce &gamma; = 3 at 0.48&sigma;, &Delta;BIC = 7.0 favoring bounce over SMBHB. SPHEREx 4.38&sigma; forecast for f<sub>NL</sub> = &minus;35/8. Pipeline 1: 5,384 QSO candidates (116 GOLD, 1,006 SILVER) show 1.58&times; enhanced clustering.</p>
+      <h4 style="margin-top:0; font-family:var(--font-sans); color:#f97316;">Paper 3: Multi-Survey Anomaly Catalog <span style="font-size:11px; color:#92400e; background:#fef3c7; padding:2px 6px; border-radius:3px; font-weight:600;">Path C Rebuild &middot; 60%</span> <span style="font-size:11px; color:var(--text-muted);">~27 pages &middot; Target: ApJS</span></h4>
+      <div style="margin:8px 0; padding:8px 10px; background:#fef3c7; border-left:3px solid #f59e0b; border-radius:3px; font-size:12px; line-height:1.5; color:#78350f;"><strong>&#9888; Path C rebuild in flight (2026-04-20).</strong> Houston pushback 2026-04-19: the cross-transfer methodology (DESI-trained BigAE applied to SDSS/LAMOST; catastrophically undertrained CMB AE) inflated anomaly rates and the "58.8% SIMBAD-novel" figure conflates bookkeeping with true astrophysical novelty. Replacing with native per-survey retrains (SDSS val_loss 0.0311 PASS, LAMOST 0.0329 PASS &mdash; re-scores in flight), NEOWISE ecliptic mask (419/436 retained, 2.6&times; polar excess), 8-way positional dedup (197,246 detections &rarr; 191,432 unique physical objects, 0 multi-survey matches at 5&Prime;). Paper 3 &sect;2.4 methodology + &sect;7.4 caveats + &sect;3.2 SDSS + &sect;3.3 LAMOST + &sect;3.3 NEOWISE paragraphs + Table I footnote landed (fires #86-91). See <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" target="_blank">drive-to-100</a>.</div>
+      <p style="font-size:14px;">AI-driven observational discovery across 8 surveys: <strong>37.3M sources scored, 319,443 anomalies catalogued, 58.8% SIMBAD-novel <span style="color:#92400e;">(pre-Path-C cross-transfer numbers &mdash; native-retrain re-scores in flight).</span></strong> Unsupervised BigAE (trained on 47K DESI spectra) applied via transfer to DESI DR1 (22.5M / 195,829), SDSS DR18 (2.3M / 77,905), LAMOST DR10 (11.4M / 44,075 &mdash; 98% blue-excess artifact rate documented as negative control), eROSITA DR1 (930K / 298, 68% novel), Planck CMB × ACT DR6 (null cross-correlation), Gaia DR3 (500 / 27% novel), NEOWISE (436 / 45% novel + 46 ZTF matches). NANOGrav &gamma; = 3.20 &plusmn; 0.42 consistent with matter-bounce &gamma; = 3 at 0.48&sigma;, &Delta;BIC = 7.0 favoring bounce over SMBHB. SPHEREx 4.38&sigma; forecast for f<sub>NL</sub> = &minus;35/8. Pipeline 1: 5,384 QSO candidates (116 GOLD, 1,006 SILVER) show 1.58&times; enhanced clustering.</p>
       <div style="margin-top:8px;"><a href="paper.html#paper3" class="btn btn-secondary" style="font-size:12px;">Read Paper 3</a> <a href="anomaly-explorer.html" class="btn btn-secondary" style="font-size:12px;">Anomaly Explorer</a></div>
     </div>
     <div class="card" style="border-left: 4px solid #a855f7;">
@@ -189,10 +190,10 @@
       <div class="stat-label">Sources scored</div>
       <div class="stat-sub">8 surveys: DESI + SDSS + LAMOST + eROSITA + Planck + Gaia + ACT + NEOWISE, H200</div>
     </div>
-    <div class="stat">
+    <div class="stat" style="position:relative;">
       <div class="stat-value">319,443</div>
-      <div class="stat-label">Anomalies catalogued</div>
-      <div class="stat-sub">58.8% SIMBAD-novel across 8 surveys, Paper 3</div>
+      <div class="stat-label">Anomalies catalogued <span style="font-size:9px; color:#92400e; background:#fef3c7; padding:1px 4px; border-radius:2px; font-weight:600; vertical-align:middle;">PATH C</span></div>
+      <div class="stat-sub">58.8% SIMBAD-novel across 8 surveys, Paper 3. <span style="color:#92400e;">Cross-transfer number &mdash; native-retrain re-scores in flight; unique-physical-object count 191,432 (5 surveys dedup&apos;d at 5&Prime;).</span></div>
     </div>
     <div class="stat">
       <div class="stat-value">5,384</div>
