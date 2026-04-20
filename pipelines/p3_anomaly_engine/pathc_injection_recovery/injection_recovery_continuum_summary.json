@@ -1,0 +1,36 @@
+{
+  "task": "P3-PATHC-INJECTION-RECOVERY-ALL-SURVEYS (continuum-dip variant, fire #98)",
+  "plant_type": "continuum_dip",
+  "dip_fwhm_bin": 80.0,
+  "gate_amp_sigma": 5.0,
+  "gate_recovery_required": 0.5,
+  "per_survey": {
+    "sdss_native": {
+      "gate_pass": true,
+      "gate_recovery_observed": 0.64,
+      "clean_mse_p99": 0.20042791962623596,
+      "full_curve": {
+        "0.5x": 0.01,
+        "1.0x": 0.03,
+        "2.0x": 0.134,
+        "5.0x": 0.64,
+        "10.0x": 0.97,
+        "20.0x": 1.0
+      }
+    },
+    "lamost_native": {
+      "gate_pass": false,
+      "gate_recovery_observed": 0.058,
+      "clean_mse_p99": 1.238723635673523,
+      "full_curve": {
+        "0.5x": 0.006,
+        "1.0x": 0.006,
+        "2.0x": 0.012,
+        "5.0x": 0.058,
+        "10.0x": 0.262,
+        "20.0x": 0.9
+      }
+    }
+  },
+  "methodology_finding": "Continuum-deformation plants probe a different failure mode than emission-line plants (fire #85, injection_recovery_spectra.py): the BigAE latent (128-dim bottleneck, ~0.26x input dim) is trained on typical spectral continuum shapes, so a broad FWHM=80-bin gaussian that alters the continuum across ~16% of the 496-bin grid is not reconstructible from the training manifold. Recovery curves should therefore rise substantially faster with amplitude than in the emission-line variant. This closes the Paper 3 \u00a7pathc_caveats (iv) methodological recommendation."
+}
