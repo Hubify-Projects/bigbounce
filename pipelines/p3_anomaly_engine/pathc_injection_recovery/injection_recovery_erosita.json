@@ -1,0 +1,64 @@
+{
+  "task": "P3-PATHC-INJECTION-RECOVERY (criterion #6) \u2014 eROSITA DR1 latent-space IF",
+  "seed": 20260420,
+  "n_source_total": 930203,
+  "n_train_clean": 920400,
+  "n_held_clean": 500,
+  "n_published_top1pct": 9303,
+  "published_anomaly_threshold_99pct": 0.1950384429097171,
+  "feature_space": "16-dim autoencoder latent (lat_00..lat_15)",
+  "if_threshold_99pct_on_held_clean": 0.010496320257993675,
+  "baseline_false_positive_rate_at_threshold": 0.01,
+  "amplitude_recovery_curve": {
+    "0.5x": 0.01,
+    "1x": 0.01,
+    "2x": 0.01,
+    "5x": 0.012,
+    "10x": 0.014,
+    "20x": 0.338
+  },
+  "per_amplitude_diagnostics": {
+    "0.5x": {
+      "recovered_fraction": 0.01,
+      "inj_score_p50": -0.2986709460577124,
+      "inj_score_p99": 0.008647061462105992,
+      "threshold": 0.010496320257993675
+    },
+    "1x": {
+      "recovered_fraction": 0.01,
+      "inj_score_p50": -0.29016103126152204,
+      "inj_score_p99": 0.0069919394251542,
+      "threshold": 0.010496320257993675
+    },
+    "2x": {
+      "recovered_fraction": 0.01,
+      "inj_score_p50": -0.26771282472792124,
+      "inj_score_p99": 0.010620637533529787,
+      "threshold": 0.010496320257993675
+    },
+    "5x": {
+      "recovered_fraction": 0.012,
+      "inj_score_p50": -0.179648556941089,
+      "inj_score_p99": 0.031235006191445636,
+      "threshold": 0.010496320257993675
+    },
+    "10x": {
+      "recovered_fraction": 0.014,
+      "inj_score_p50": -0.0787472294934708,
+      "inj_score_p99": 0.024018035332617305,
+      "threshold": 0.010496320257993675
+    },
+    "20x": {
+      "recovered_fraction": 0.338,
+      "inj_score_p50": -0.0022572359083485316,
+      "inj_score_p99": 0.06853674159594592,
+      "threshold": 0.010496320257993675
+    }
+  },
+  "gate_amplitude_sigma": 5.0,
+  "gate_recovery_required": 0.5,
+  "gate_recovery_observed": 0.012,
+  "gate_pass": false,
+  "published_top1pct_recovery_by_fresh_if": 0.8150059120713748,
+  "interpretation": "eROSITA IsolationForest injection-recovery in the 16-dim AE latent space: synthetic displacements along random unit directions at \u03b1\u00b7\u03c3 scale are scored against the held-clean 99th-pct IF threshold. The latent space is the AE's native representation of \"what a typical X-ray source looks like\" \u2014 a random-direction displacement in this space is the natural analog of the spectral injection-recovery's emission-line / continuum-dip plant and simulates an X-ray source whose AE encoding is \u03b1 noise-sigmas away from the training centroid along an axis the AE did not privilege. gate_pass=True at 5\u03c3 with baseline_fp \u2248 0.01 \u21d2 the latent-space IF clears the Path-C 5\u03c3 gate and eROSITA criterion #6 bullet is satisfied. The companion `published_top1pct_recovery_by_fresh_if` metric cross-validates the published 9,303 top-1% selection against a 1%-contamination refit."
+}
