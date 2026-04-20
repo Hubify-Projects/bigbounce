@@ -155,7 +155,7 @@ main { max-width: none; padding: 0; }
 <!-- ═════════════ Left Sidebar ═════════════ -->
 <aside class="de-sidebar" id="sidebar">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
-  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (319K anomalies) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
+  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (319K anomalies, Path-C rebuild 60%) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
 
   <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
   <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
@@ -2352,10 +2352,10 @@ quintomFnlVerification: {
 
 p3AnomalyCatalog: {
   name: "Paper 3 \u2014 Multi-Survey Anomaly Catalog",
-  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 anomalies retained after QC. 58.8% of top-ranked anomalies are SIMBAD-novel (no cataloged counterpart within 2\u2033). Largest survey is DESI DR1 (22.5 M spectra \u2192 195,829 anomalies); smallest QC-passing survey is eROSITA DR1 (73% SIMBAD-novel).",
+  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 anomalies retained after QC. 58.8% of top-ranked anomalies are SIMBAD-novel (no cataloged counterpart within 2\u2033). Largest survey is DESI DR1 (22.5 M spectra \u2192 195,829 anomalies); smallest QC-passing survey is eROSITA DR1 (73% SIMBAD-novel). \u26A0\ufe0f PATH-C REBUILD IN FLIGHT (60%): the cross-transfer DESI-trained autoencoder inflated SDSS/LAMOST reconstruction error, yielding the 98% blue-excess bias and the catastrophic cross-survey novelty inflation. Path C retrains native BigAEs per survey (SDSS val_loss 0.0311 PASS, LAMOST 0.0329 PASS, CMB val_loss 0.4437 PASS with 100% injection-recovery @ 5\u03C3) and re-scores all spectra. 8-way dedup at 5\u2033 on 5/8 surveys loaded shows 197,246 survey-level detections \u2192 191,432 unique physical objects. Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line). See `project-context/SSOT/drive-to-100.md` Phase-2 Path-C block.",
   source: "pipelines/p3_anomaly_engine/",
   rows: 8, totalSamples: 319443,
-  status: "FROZEN", statusClass: "frozen",
+  status: "PATH-C REBUILD 60%", statusClass: "frozen",
   columns: ["Survey", "Sources scanned", "Anomalies", "Rate (%)", "SIMBAD-novel (%)", "QC status"],
   data: [
     ["DESI DR1 (spectra)", "22,500,000", "195,829", "0.87", "\u2014", "PASS"],
@@ -2371,7 +2371,7 @@ p3AnomalyCatalog: {
 
 p3SimbadNovelty: {
   name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
-  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities.",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. \u26A0\ufe0f PATH-C CAVEAT: the 58.8% headline is a pre-Path-C cross-transfer figure; native-retrained re-scores of SDSS/LAMOST are in flight (fire #98 2026-04-20, ETA 32\u201339 h), after which this table will be regenerated against the native anomaly sets. Expect LAMOST novelty % to rise substantially (98% blue-excess contamination drops below 20% in native set per Path-C criterion #2).",
   source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
   rows: 6, totalSamples: 0,
   status: "FROZEN", statusClass: "frozen",
