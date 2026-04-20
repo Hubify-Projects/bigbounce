@@ -190,11 +190,14 @@ eROSITA DR1   & X-ray phot.    &    930{,}203   &      298  & 0.03 & 68        &
 Planck CMB    & Microwave map  &     20{,}000   &      200  & 1.00 & ---       & South ecliptic pole concentration \\
 ACT DR6       & Microwave map  &     20{,}000   &      200  & 1.00 & ---       & Galactic plane dominance \\
 Gaia DR3      & Optical var.   &     50{,}000   &      500  & 1.00 & 27        & Extreme variable stars, high proper motion \\
-NEOWISE       & IR phot.       &     43{,}518   &      436  & 1.00 & 45        & Compact IR-excess sources \\
+NEOWISE       & IR phot.       &     43{,}518   &      436$^\dagger$  & 1.00 & 45        & Compact IR-excess sources \\
 \hline
 \textbf{Total} & & \textbf{37{,}292{,}042} & \textbf{319{,}443} & \textbf{0.86} & \textbf{58.8} & \\
 \end{tabular}
 \end{ruledtabular}
+\begin{flushleft}
+{\footnotesize $^\dagger$ Path-C rebuild step (\S\ref{sec:pathc}): $|b_{\rm ecl}| < 80^\circ$ ecliptic mask reduces NEOWISE anomaly count from 436 to 419 ($96.1\%$ retained). The rejected 17 objects concentrate in the $10^\circ$-radius polar caps at $2.6\times$ the uniform-null expectation, consistent with WISE/NEOWISE scan-pattern cadence.}
+\end{flushleft}
 \end{table*}
 
 
@@ -373,6 +376,9 @@ The most extreme anomaly (Gaia source 5854407871819325184, score $= 9.07$) is a 
 We apply \BigAE{} to 43{,}518 infrared sources from the NEOWISE time-domain catalog~\cite{NEOWISE}, characterized by 15 features including W1 and W2 magnitudes, variability indices, and positional uncertainties. The scan identifies 436 anomalies (top 1\%).
 
 The top anomaly (score $= 11.5$) is located at $(\alpha, \delta) = (180.59^\circ, 0.56^\circ)$, with extreme W1$-$W2 color excess (Fig.~\ref{fig:neowise_top}). Its infrared excess is inconsistent with normal stellar photospheres and may indicate circumstellar dust around an evolved giant, an active galactic nucleus, or a luminous red quasi-stellar object. The SIMBAD novelty rate of 45\% is intermediate between the well-characterized Gaia sample (27\%) and the largely uncataloged spectroscopic samples ($>$68\%).
+
+\paragraph{Path-C ecliptic-pole systematics correction.}
+A residual scan-pattern systematic in the raw 436-anomaly set---traced to the $\sim$12$\times$ higher cadence at the ecliptic poles relative to the ecliptic equator under WISE/NEOWISE's polar orbit---motivates a post-hoc ecliptic latitude mask as the Path-C rebuild step for this survey (see \S\ref{sec:pathc}). We compute the barycentric-true ecliptic latitude $b_{\rm ecl}$ for each of the 436 raw anomalies via the IAU 2006/2000A frame in \texttt{astropy.coordinates} and retain only those with $|b_{\rm ecl}| < 80^\circ$. This cut excises the two 10$^\circ$-radius polar caps, whose uniform-sphere expectation is $1 - \sin 80^\circ \approx 1.52\%$ of sky area. The observed 3.9\% ($17/436$) pre-mask polar fraction therefore represents a $2.6\times$ excess over the uniform-null expectation---quantitative confirmation of the scan-pattern contamination at a localized level, distinct from the survey-wide systematic failures that required full native retraining for LAMOST and CMB. The Path-C NEOWISE anomaly set is the $419/436 = 96.1\%$ of the raw catalog surviving the mask; the rejected 17 objects are preserved at \texttt{pipelines/p3\_anomaly\_engine/pathc\_neowise\_ecliptic/} for auditability. Table~\ref{tab:survey_summary} reports the raw 436-anomaly count; the Path-C masked 419-anomaly set is the one fed into the 8-way positional deduplication of \S\ref{sec:pathc}.
 
 \begin{figure}[t]
 \centering
