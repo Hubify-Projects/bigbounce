@@ -4,6 +4,84 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-20T08:00:00Z — fire #83 (P3-PATHC-CMB-NATIVE-RETRAIN kickoff, third parallel job)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h); GPU still idle between re-score batches, now also running CMB training forward passes; 20 GB `/workspace` used (+1 GB for SMICA map download in flight).
+
+**Task picked this fire:** Per Path C task-selection step 3 ("native CMB autoencoder retrain with galactic mask") and Houston-Method Principle 11 (default to hardest remaining path), this fire opens the third retrain. The SDSS + LAMOST re-scores are both **download-bound** (10.1 specs/s SDSS, 10-min/night LAMOST tars) — GPU sits idle during the HTTP waits. CMB training is full-GPU during forward+backward passes but patch-extraction is CPU-bound + I/O-bound through `healpy.gnomview`. So the three tmux jobs can share the A100 without meaningful contention.
+
+**Pod watchdog snapshot before launch:**
+- `sdss_native_rescore`: batch 5/471 (20,480 scored, 5 parquets written, rate 10.1/s, ETA 52.4h)
+- `lamost_native_rescore`: 10 nights done (90,569 scored, 23 anomalies>5, ETA 32.1h, rate healthy)
+- No tmux deaths, no `Error:` lines, no disk pressure (481 GB free), no GPU OOM
+
+**Deliverable:** new self-contained script `pipelines/p3_anomaly_engine/cmb_native_retrain.py` (286 lines). The pod had no existing CMB artifacts (confirmed by scout: `/workspace/bigbounce_scan/outputs/cmb_native/` and `pipelines/pipeline_a_cmb/` both absent), so fresh build.
+
+**Architecture reused from `pipelines/pipeline_a_cmb/cmb_autoencoder.py`** (unchanged; the prior run's issue was training budget, not architecture):
+- Encoder: `Conv2d(1,16,3,s2,p1) → BN → ReLU → Conv2d(16,32,3,s2,p1) → BN → ReLU → Conv2d(32,64,3,s2,p1) → BN → ReLU → Flatten → Linear(64·8·8, 128)`
+- Decoder: `Linear(128, 64·8·8) → ReLU → reshape(64,8,8) → ConvT(64,32,3,s2,p1,op1) → BN → ReLU → ConvT(32,16,3,s2,p1,op1) → BN → ReLU → ConvT(16,1,3,s2,p1,op1) → Tanh`
+- Latent 128, MSE loss
+
+**Key Path-C deltas vs `pipeline_a_cmb/extract_patches.py + cmb_autoencoder.py`:**
+1. **Patch budget 20K → 200K** (10× — this is the core fix for the undertraining that produced val_loss=22,420 and 0.33% recovery)
+2. **Epochs up to 150** (was 100), **patience 25** (was 15), `ReduceLROnPlateau(patience=10)` (was 7)
+3. **Fire-#80 defensive filter** added to `normalize()`: `if |x|.max() > 100: return None; np.clip(-10, 10)` — matches the spectral pipelines, ensures one outlier pixel in a patch doesn't anchor the whole patch's variance
+4. **Integrated injection-recovery gate** in the same script (vs separate gate in the prior program): plants 500 gaussian-bump anomalies (σ=8 pix ≈ 1.25°, amplitude = 5× noise std, random sign) into random val patches, computes per-patch MSE on clean + planted, threshold at 99th-pct clean MSE, `gate_pass = recovered/planted ≥ 0.50` → `injection_recovery.json`
+5. **Resume semantics**: patch bank `.npy` is reused if present so a tmux crash mid-training doesn't trigger a 1h re-extract
+
+**Pod environment prep:**
+- `python3 -c 'import healpy'` → `ModuleNotFoundError`; installed via `pip install -q healpy` → `healpy 1.19.0` confirmed
+- pyarrow, torch 2.1.0+cu118, astropy, numpy already present
+- `/workspace/bigbounce_scan/outputs/cmb_native/` created for tee log
+
+**Launch:**
+- Uploaded via scp at 07:58:42Z
+- tmux `cmb_native_retrain` created 2026-04-20T07:58:43Z
+- Command: `python3 cmb_native_retrain.py 2>&1 | tee -a outputs/cmb_native/retrain.log`
+- Arguments: default (`--out_dir=/workspace/bigbounce_scan/outputs/cmb_native`, `--smica_path=/workspace/bigbounce_scan/data/COM_CMB_IQU-smica_2048_R3.00_full.fits`)
+
+**First-phase verification** (download stage):
+- Watchdog at 07:59:15Z shows: `Downloading SMICA map -> .../COM_CMB_IQU-smica_2048_R3.00_full.fits / 1113/1920 MB (58.0%) 18.1 MB/s`
+- No HTTP errors, no `too-small` sanity-check fail, on track for ~45s download completion
+- SHA sanity not computed (Planck map content addressed by URL, single version)
+
+**Expected timeline** (based on healpy.gnomview benchmarks + A100 batch-128 throughput):
+- SMICA download: ~2 min (58% at snapshot)
+- Patch extraction (200K × gnomview at NSIDE=2048): ~1 h (parallelization TODO if slow — current script is single-threaded through the healpy pipeline)
+- Training (~170K/128 = 1328 batches/epoch × 150 epochs = ~200K steps on A100): ~6-8 h
+- Injection-recovery gate: ~5 min
+- **Total: ~8-10 h pod spend = ~$10-12**
+
+**Path C criterion state after fire #83:**
+| # | Criterion | % | Status |
+|---|-----------|---|--------|
+| 1 | SDSS native retrain | 75 % | re-score running (52h ETA) |
+| 2 | LAMOST native retrain | 75 % | re-score running (32h ETA) |
+| 3 | CMB native retrain | **10 %** | **retrain KICKOFF, download in flight** |
+| 4 | DESI 5-fold | 0 % | deferred |
+| 5 | NEOWISE ecliptic mask | 0 % | deferred |
+| 6 | injection-recovery all surveys | 0 % | deferred |
+| 7 | 8-way dedup 5" | 0 % | deferred |
+| 8 | Paper 3 §2.X integration | 0 % | deferred |
+| 9 | Paper 3 recompile | 0 % | deferred |
+| 10 | HF rebuild | 0 % | deferred |
+| 11 | P1-PDF-RECOMPILE-V3 carryover | 0 % | deferred |
+| 12 | Site sync + pod terminate | 0 % | deferred |
+
+**Files staged this fire** (1 atomic commit, `feat(phase2-pathc):` prefix):
+- `pipelines/p3_anomaly_engine/cmb_native_retrain.py` (NEW, 286 lines)
+- `project-context/SSOT/queue.md` (P3-PATHC-CMB-NATIVE-RETRAIN row bumped 0 % → 10 %)
+- `project-context/SSOT/drive-to-100.md` (Loop log fire #83 entry appended at top of log)
+- `pipelines/p3_anomaly_engine/pod_runs/phase2_pathc_status.md` (this snapshot)
+
+**Chronic Houston files untouched.** (`HUBIFY_LABS_PRD.md`, `prompt-history.md` not touched this fire.)
+
+**Budget:** ~$34 before + $12 est. for this fire = ~$46 / $400 cap. Under.
+
+**Next fire (#84):** Pod watchdog ALL THREE tmux first (SDSS + LAMOST + CMB). Then per Path C task-selection, the next highest-leverage task is criterion #5 (NEOWISE ecliptic mask, ~$5 pod cost, local work) — small fast win while waiting for the big retrains to complete. If NEOWISE already covered, move to criterion #6 (injection-recovery all surveys) which is also local / cheap. Criterion #4 (DESI 5-fold) is the next heavyweight and should run only after one of the existing re-scores frees its tmux slot.
+
+---
+
 ## 2026-04-20T07:45:00Z — fire #82 (P3-PATHC-LAMOST-NATIVE-RETRAIN re-score kickoff, parallel with SDSS)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h); GPU idle between batches (both jobs download-bound), 20 GB `/workspace` used.
