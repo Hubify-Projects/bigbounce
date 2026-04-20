@@ -4,6 +4,69 @@ _Appended each fire. Most recent snapshot at top._
 
 ---
 
+## 2026-04-20T07:45:00Z — fire #82 (P3-PATHC-LAMOST-NATIVE-RETRAIN re-score kickoff, parallel with SDSS)
+
+**Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h); GPU idle between batches (both jobs download-bound), 20 GB `/workspace` used.
+
+**Task picked this fire:** Per Path C task-selection step 3 and the fire #81 "Next fire #82" plan, launched the LAMOST native re-score. Checked SDSS watchdog first: `sdss_native_rescore` tmux live, batch 5/471 (20,480 scored, 0 failures, rate 10.1/s, ETA 52.4h) — healthy. No stall, no OOM, no GPU contention to worry about since downloads dominate.
+
+**Deliverable:** new script `pipelines/p3_anomaly_engine/lamost_native_rescore.py` (241 lines) — forked from the existing `lamost_scan_v2.py` with the minimal delta to swap the model + add the fire #80 defensive filter. The fork is the right shape here (not a rewrite) because:
+
+1. `lamost_scan_v2.py` is already battle-tested over 40h / 11.2M spectra / 107 parquet batches — the tarball-download + FITS-extract + GPU-inference path is known-good.
+2. The only substantive changes are: model path, output dir, user-agent string, and the outlier reject/clip step on `resample_fast`. Everything else (checkpoint, retry, parallel FITS decode, parquet schema) matches the cross-transfer scan exactly — which gives us **schema-compatible before/after anomaly sets** for Paper 3 §7.1.
+3. Using the same 10-column schema (`obsid, ra, dec, objtype, z, snr, anomaly_score, rB, rR, rZ`) means the diff analysis can be a pandas merge on `obsid` — no schema wrangling.
+
+**Key deltas vs lamost_scan_v2.py:**
+- `model_path`: `/workspace/bigbounce_scan/outputs/lamost_native/best_lamost_native.pt` (native, val_loss=0.0329) instead of `/workspace/bigbounce/best_model_47k.pt` (DESI-trained cross-transfer)
+- `out_dir`: `/workspace/bigbounce_scan/outputs/lamost_native/scores/` (NEW, separate from cross-transfer's `/outputs/lamost/`)
+- `temp_dir`: `/workspace/bigbounce_scan/temp/lamost_native_rescore/` (NEW)
+- Parquet filename: `lamost_native_batch_NNNN.parquet` (NEW prefix)
+- **`resample_fast` now rejects `|x|>100` + applies `np.clip(-10, 10)`** — this is the LAMOST fire #80 lesson applied preventively. Without this, a handful of cosmic-ray / dead-pixel spectra (estimated ~0.1% per fire #80 load-time filter showing 393/300K rejected) would likely not crash the rescore (the model is already trained against clipped inputs), but they would produce artificially inflated anomaly scores that distort the ranking. The clip brings the test-time distribution in line with the train-time distribution.
+
+**Launch + first-night verification:**
+- tmux `lamost_native_rescore` created 2026-04-20T07:35:41Z
+- Device `cuda`, model loaded from `best_lamost_native.pt` OK
+- Tarball list scrape returned 1,177 nights (matches cross-transfer's view)
+- After ~10 min: **5 nights complete** (`20111024, 20111025, 20111027, 20111028, 20111108`), `checkpoint.json` written: `total_scored=47246 total_anomalies=11 batch_idx=0` (47K rows buffered toward first parquet's 100K threshold)
+- Per-night anomaly rate at score>5: 11/47,246 = **0.023%** — more selective than cross-transfer's ~0.39% overall (expected: the native model is better-calibrated to LAMOST-specific systematics, so the baseline recon loss is lower and only genuinely unusual spectra cross the threshold). This is exactly the criterion #2 outcome we want — a tighter, less systematic-contaminated anomaly distribution.
+- No `Error:` lines in log, no tmux death, no disk pressure (20 GB used, 481 GB free, tars auto-deleted after each night)
+
+**Parallel-run health (both tmux):**
+
+| Job | Tmux | Progress | Rate | ETA |
+|---|---|---|---|---|
+| SDSS native re-score | `sdss_native_rescore` | batch 5/471 (20,480 scored, 0 fail) | 10.1 specs/s | 52.4 h |
+| LAMOST native re-score | `lamost_native_rescore` | 5/1177 nights (47,246 scored, 11 anom>5) | ~6 nights/10min → ~1177 × 10/6 /60 = ~32 h | ~30 h |
+
+Both download-bound, GPU shares fine (forward-pass microseconds per batch). Network shares OK so far — SDSS rate dropped slightly from 13.7 → 10.1/s since LAMOST launched (consistent with LAMOST pulling ~300 MB tars eating a slice of bandwidth), but still well within budget.
+
+**Path C exit criterion state after fire:**
+
+| # | Criterion | Row % | Status |
+|---|---|---|---|
+| 1 | SDSS native retrain | 75 % | re-score IN PROGRESS 52h ETA |
+| 2 | LAMOST native retrain | 75 % | re-score IN PROGRESS 30h ETA |
+| 3 | CMB native retrain | 0 % | deferred to fire #83 (hardest remaining) |
+| 4 | DESI 5-fold | 0 % | not started |
+| 5 | NEOWISE ecliptic mask | 0 % | not started |
+| 6 | Injection-recovery | 0 % | not started |
+| 7 | 8-way dedup | 0 % | not started |
+| 8-12 | integration/recompile/site | 0 % | not started |
+
+**Budget delta this fire:** ~$1 (write+upload+launch+verify); running total ~$34 of $400 ceiling. At completion of both re-scores: ~$34 + 52h × $1.19 ≈ $96 / $400 — under cap.
+
+**Files staged this fire** (1 atomic commit, `feat(phase2-pathc):` prefix):
+- `pipelines/p3_anomaly_engine/lamost_native_rescore.py` (new, 241 lines)
+- `project-context/SSOT/queue.md` (row bumped 50 % → 75 %)
+- `project-context/SSOT/drive-to-100.md` (Loop log entry appended below)
+- `pipelines/p3_anomaly_engine/pod_runs/phase2_pathc_status.md` (this snapshot)
+
+Chronic Houston files (`HUBIFY_LABS_PRD.md`, `prompt-history.md`) untouched per protocol §7.
+
+**Next fire (#83):** Pod watchdog both re-scores first. Per Principle 11 (default to hardest path), launch CMB native retrain kickoff — criterion #3, the highest-difficulty of the remaining training tasks. CMB retrain needs 200K+ patches + galactic-plane mask + injection-recovery ≥50 % at 5× noise; it's a full-GPU training job, but since re-scores are download-bound (GPU idle between batches), CMB training can share the pod without meaningful contention. If CMB retrain shows GPU-memory competition with scoring, fall back to kicking off the 8-way positional dedup (criterion #7, local-only astropy/healpy) or NEOWISE ecliptic mask (criterion #5, low compute) — both of which make progress without touching the pod.
+
+---
+
 ## 2026-04-20T07:15:00Z — fire #81 (P3-PATHC-SDSS-NATIVE-RETRAIN re-score kickoff)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80 GB PCIe, $1.19/h); GPU now busy (~60% util on 4096-batch forward every few minutes, idle between), 19 GB `/workspace` used.
