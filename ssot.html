@@ -324,13 +324,13 @@
   <div class="eyebrow">Single Source of Truth — cross-paper dashboard</div>
   <h1>SSOT &amp; Task Queue</h1>
   <p>Canonical arXiv-readiness and close-the-gap work for all four BigBounce papers. Every number on this page is sourced from the per-paper <code>status.md</code> files in <code>project-context/SSOT/</code>. When surfaces elsewhere on the site disagree with this page, <strong>this page wins</strong>.</p>
-  <div class="updated">Last authoritative update: 2026-04-21 (fire #141) &middot; <span style="color:#92400e; font-weight:600;">Phase 2 Path-C rebuild of Paper 3 in flight (&approx;71 %)</span> &middot; drive-to-100 loop active &middot; <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT" target="_blank">view raw SSOT on GitHub</a></div>
+  <div class="updated">Last authoritative update: 2026-04-21 (fire #144) &middot; <span style="color:#92400e; font-weight:600;">Phase 2 Path-C rebuild of Paper 3 in flight (&approx;79 %)</span> &middot; drive-to-100 loop active &middot; <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT" target="_blank">view raw SSOT on GitHub</a></div>
 </div>
 
 <!-- ═══════════ PATH-C REBUILD BANNER (Paper 3) ═══════════ -->
 <div style="background:#fef3c7; border:1px solid #f59e0b; border-left:4px solid #f59e0b; border-radius:8px; padding:16px 20px; margin-bottom:28px; font-family:var(--font-sans); font-size:14px; line-height:1.6; color:#78350f;">
   <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; color:#92400e; margin-bottom:6px;">&#9888; Paper 3 &mdash; Path-C Rebuild in flight</div>
-  <strong>Papers 1, 2, 4 remain at 100 % on content + compile axes.</strong> Paper 3 is being rebuilt to Path-C scope after Houston novelty-integrity pushback 2026-04-19: native BigAE retrain for SDSS + LAMOST (cross-transfer scans preserved as &sect;7 before-after baseline), CMB autoencoder retrain with galactic mask, DESI 5-fold out-of-sample validation, NEOWISE ecliptic mask, injection-recovery on every retained survey, 8-way positional dedup at 5&Prime;. 12 exit criteria tracked in <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" target="_blank"><code>SSOT/drive-to-100.md</code></a>. <strong>Current state (fire #141):</strong> <span style="color:#065f46; font-weight:700;">5 CLOSED</span> (#2 LAMOST native re-score complete, 21.4&times; anomaly-rate reduction; #3 CMB native retrain 500/500 = 100% injection-recovery; #5 NEOWISE ecliptic mask + equivalence-rationale paragraph; #6 injection-recovery 3 plant morphologies &times; 4 surveys; #12 site-sync 14 primary surfaces) + <span style="color:#92400e; font-weight:700;">5 in-progress</span> (#1 SDSS re-score batch 369/471 ETA ~11h; #4 DESI k-fold; #7 dedup 7/8 &rarr; <strong>301,222 unique + 2 multi-survey matches</strong>; #8 Paper 3 integration 96%; #10 HF rebuild <strong>70% &mdash; 5 of 6 Path-C parquets staged locally in hf_staging/ (fire #141)</strong>) + <span style="color:#7c2d12; font-weight:700;">2 not-started</span> (#9 PDF recompile SDSS-gated; #11 Paper 1 v3). Headline figures below for Paper 3 (319,443 anomalies &middot; 58.8 % novel &middot; 28 MB PDF) are the pre-Path-C &sect;7 before-after baseline; native-retrain figures will supersede once SDSS lands (~12h).
+  <strong>Papers 1, 2, 4 remain at 100 % on content + compile axes.</strong> Paper 3 is being rebuilt to Path-C scope after Houston novelty-integrity pushback 2026-04-19: native BigAE retrain for SDSS + LAMOST (cross-transfer scans preserved as &sect;7 before-after baseline), CMB autoencoder retrain with galactic mask, DESI 5-fold out-of-sample validation, NEOWISE ecliptic mask, injection-recovery on every retained survey, 8-way positional dedup at 5&Prime;. 12 exit criteria tracked in <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" target="_blank"><code>SSOT/drive-to-100.md</code></a>. <strong>Current state (fire #144):</strong> <span style="color:#065f46; font-weight:700;">6 CLOSED</span> (#2 LAMOST native re-score complete, 21.4&times; anomaly-rate reduction; #3 CMB native retrain 500/500 = 100% injection-recovery; #5 NEOWISE ecliptic mask + equivalence-rationale paragraph; #6 injection-recovery 3 plant morphologies &times; 4 surveys; <strong>#11 P1-PDF-V3 (14 bundled Paper 1 edits consolidated via local-Mac Docker TeX Live &rarr; 975 KB / 27 pp / 0 undef refs, tarball 452 KB, zero pod spend, fire #144)</strong>; #12 site-sync 14+ primary surfaces) + <span style="color:#92400e; font-weight:700;">5 in-progress</span> (#1 SDSS re-score batch 375/471 = 79.6% ETA ~10.3h; #4 DESI k-fold; #7 dedup 7/8 &rarr; <strong>301,222 unique + 2 multi-survey matches</strong>; #8 Paper 3 integration 96%; #10 HF rebuild 55%) + <span style="color:#7c2d12; font-weight:700;">1 not-started</span> (#9 PDF recompile SDSS-gated). Headline figures below for Paper 3 (319,443 anomalies &middot; 58.8 % novel &middot; 28 MB PDF) are the pre-Path-C &sect;7 before-after baseline; native-retrain figures will supersede once SDSS lands (~10h).
 </div>
 
 <!-- ═══════════ LIVE DRIVE-TO-100 WORK TRACKER ═══════════ -->
@@ -382,7 +382,7 @@
   <div class="stat-card">
     <div class="stat-label">Paper 1 — Spin-Torsion</div>
     <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">v2.3.0 · 27 pp · 63+ refs · 945 KB PDF · tarball 440 KB smoke-tested</div>
+    <div class="stat-sub">v2.3.0 · 27 pp · 63+ refs · 975 KB PDF (fire #144 recompile, 0 undef) · tarball 452 KB smoke-tested</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
   <div class="stat-card">
@@ -393,9 +393,9 @@
   </div>
   <div class="stat-card" style="border-left:3px solid #f59e0b;">
     <div class="stat-label">Paper 3 — Anomaly Catalog</div>
-    <div class="stat-value" style="color:#92400e;">≈71%</div>
-    <div class="stat-sub" style="color:#78350f;">Path C rebuild · 5 CLOSED / 5 in-progress / 2 not-started · HF staging 5/6 parquets locally · pre-Path-C §7 baseline: 319,443 anoms · 28 MB PDF</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:71%; background:#f59e0b;"></div></div>
+    <div class="stat-value" style="color:#92400e;">≈79%</div>
+    <div class="stat-sub" style="color:#78350f;">Path C rebuild · 6 CLOSED / 5 in-progress / 1 not-started · SDSS batch 375/471 = 79.6% ETA ~10.3h · pre-Path-C §7 baseline: 319,443 anoms · 28 MB PDF</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:79%; background:#f59e0b;"></div></div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Paper 4 — Chirality Catalog</div>

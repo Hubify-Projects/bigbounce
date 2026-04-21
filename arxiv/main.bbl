@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{55}%
+\begin{thebibliography}{56}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,32 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2009)\citenamefont {Cai},
+  \citenamefont {Xue}, \citenamefont {Brandenberger},\ and\ \citenamefont
+  {Zhang}}]{Cai:2009fn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
+  {Cai}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Xue}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Brandenberger}},\ and\ \bibinfo
+  {author} {\bibfnamefont {X.}~\bibnamefont {Zhang}},\ }\bibfield  {title}
+  {\bibinfo {title} {Non-gaussianity in a matter bounce},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
+  {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
+  {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
+  \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
+  {Cai}}]{Li:2016xjb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-K.}\ \bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Quintin}},
+  \bibinfo {author} {\bibfnamefont {D.-G.}\ \bibnamefont {Wang}},\ and\
+  \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\ }\bibfield
+  {title} {\bibinfo {title} {{Matter bounce cosmology with a generalized single
+  field: non-Gaussianity and an extended no-go theorem}},\ }\href
+  {https://doi.org/10.1088/1475-7516/2017/03/031} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
+  {pages} {031}},\ \Eprint {https://arxiv.org/abs/1612.02036} {arXiv:1612.02036
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
   {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Aghanim}
   \emph {et~al.}}]{Planck2018params}%
@@ -527,6 +553,17 @@
   with primordial non-gaussianity: Forecasts for spherex and megamapper}}
   (\bibinfo {year} {2026}{\natexlab{c}}),\ \bibinfo {note} {in
   preparation}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2023)\citenamefont
+  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
+  {Krause}}]{Heinrich:2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
+  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
+  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
+  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\
+  (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2311.13082}
+  {arXiv:2311.13082} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dehghani}\ \emph {et~al.}(2025)\citenamefont
   {Dehghani}, \citenamefont {Geshnizjani},\ and\ \citenamefont
   {Quintin}}]{Dehghani:2025cusc}%
@@ -584,32 +621,6 @@
   {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {06}},\ \bibinfo
   {pages} {066}},\ \Eprint {https://arxiv.org/abs/2404.03779} {arXiv:2404.03779
   [gr-qc]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2009)\citenamefont {Cai},
-  \citenamefont {Xue}, \citenamefont {Brandenberger},\ and\ \citenamefont
-  {Zhang}}]{Cai:2009fn}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
-  {Cai}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Xue}}, \bibinfo
-  {author} {\bibfnamefont {R.}~\bibnamefont {Brandenberger}},\ and\ \bibinfo
-  {author} {\bibfnamefont {X.}~\bibnamefont {Zhang}},\ }\bibfield  {title}
-  {\bibinfo {title} {Non-gaussianity in a matter bounce},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
-  {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
-  {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
-  \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
-  {Cai}}]{Li:2016xjb}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-K.}\ \bibnamefont
-  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Quintin}},
-  \bibinfo {author} {\bibfnamefont {D.-G.}\ \bibnamefont {Wang}},\ and\
-  \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\ }\bibfield
-  {title} {\bibinfo {title} {{Matter bounce cosmology with a generalized single
-  field: non-Gaussianity and an extended no-go theorem}},\ }\href
-  {https://doi.org/10.1088/1475-7516/2017/03/031} {\bibfield  {journal}
-  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
-  {pages} {031}},\ \Eprint {https://arxiv.org/abs/1612.02036} {arXiv:1612.02036
-  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Quintin}\ \emph {et~al.}(2015)\citenamefont
   {Quintin}, \citenamefont {Sherkatghanad}, \citenamefont {Cai},\ and\
   \citenamefont {Brandenberger}}]{Quintin:2015rta}%
@@ -634,23 +645,22 @@
   {https://doi.org/10.1007/978-1-4684-7571-5_9} {\bibfield  {journal} {\bibinfo
    {journal} {NATO Sci. Ser. B}\ }\textbf {\bibinfo {volume} {59}},\ \bibinfo
   {pages} {135} (\bibinfo {year} {1980})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2023)\citenamefont
-  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
-  {Krause}}]{Heinrich:2023}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{d}})}]{Golden:2026anomaly}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
-  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
-  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
-  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
-  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\
-  (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2311.13082}
-  {arXiv:2311.13082} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{d}})}]{BigBounceWebsite}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Multi-survey spectral
+  anomaly detection: 319,443 uncataloged objects from 37 million sources across
+  eight astronomical archives}} (\bibinfo {year} {2026}{\natexlab{d}}),\
+  \bibinfo {note} {companion paper, in preparation. Preprint number
+  HUBIFY-2026-003; includes an independent GPU MCMC analysis of the NANOGrav
+  15-year data yielding $\gamma = 3.20 \pm 0.42$, consistent with the
+  matter-bounce prediction $\gamma = 3$ at $0.48\sigma$.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{e}})}]{BigBounceWebsite}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\href {https://bigbounce.hubify.app} {\bibinfo {title}
   {Spin-torsion cosmology and the search for geometric dark energy: Interactive
-  data and supplementary materials}} (\bibinfo {year} {2026}{\natexlab{d}}),\
+  data and supplementary materials}} (\bibinfo {year} {2026}{\natexlab{e}}),\
   \bibinfo {note} {interactive data visualizations, observational comparison
   charts, and complete paper available online}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Walmsley}\ \emph {et~al.}(2022)\citenamefont
