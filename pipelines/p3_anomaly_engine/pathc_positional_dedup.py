@@ -83,7 +83,7 @@ SURVEYS = [
      'pipelines/p3_anomaly_engine/hf_staging/sdss_native_anomalies.parquet',     # <- will appear post-rescore
      None),
     ('lamost_dr10',
-     'pipelines/p3_anomaly_engine/hf_staging/lamost_native_anomalies.parquet',   # <- will appear post-rescore
+     'pipelines/p3_anomaly_engine/hf_staging/lamost_dr10_pathc_native.parquet',  # landed fire #133 — 113,342 top-1% rows
      'obsid'),
     # ACT DR6: NOT retrained under Path-C (CMB coverage via Planck native, fire #95).
     # Loaded as cross-transfer top-200 (from the DESI-trained model) so ACT participates
@@ -232,8 +232,9 @@ def main():
             'unique_physical_objects': int(n_unique),
             'note': (
                 f'Reported across {len(loaded_parts)} of {len(SURVEYS)} planned surveys. '
-                'SDSS DR18 + LAMOST DR10 native re-scores are in flight on pod '
-                '`ktds4mkmzb7ven` (ETA ~26 / 36 h). ACT DR6 is loaded as cross-transfer '
+                'LAMOST DR10 native re-score COMPLETE fire #133 (113,342 top-1% rows '
+                'loaded). SDSS DR18 native re-score remains in flight on pod '
+                '`ktds4mkmzb7ven` at batch 345/471 (ETA ~13.7 h). ACT DR6 is loaded as cross-transfer '
                 'top-200 (not Path-C native-retrained — CMB coverage is provided by the '
                 'native Planck CMB retrain, fire #95) and is included in positional '
                 'dedup only so ACT anomalies participate in multi-survey coincidence '
