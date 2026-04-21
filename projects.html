@@ -54,11 +54,12 @@
 <div class="project-card" style="border-left-color:#3b82f6;">
   <div class="meta-row">
     <span class="status-badge status-complete">Analysis Complete</span>
-    <span class="badge badge-accent">Paper 3</span>
+    <span class="badge badge-accent">Paper 3 &middot; Path-C &asymp;66 %</span>
     <span class="cost-tag">~$200</span>
   </div>
   <h3>DESI DR1 Spectral Anomaly Catalog</h3>
   <p>22,504,897 DESI DR1 spectra scored with 173-column enhanced catalog. 2,145 SNR-filtered anomalies, 1,127 completely uncataloged. 9.5% &sigma;(f<sub>NL</sub>) improvement via latent-space multi-tracer.</p>
+  <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> DESI is a <em>native-training</em> survey in the Paper 3 Path-C rebuild (scored by the DESI-trained BigAE, not cross-transfer). The catalog contents on this card stand unchanged post-rebuild and are preserved as the Paper 3 &sect;7 before-after baseline. DESI k-fold (P3-PATHC-C4, 20 %) is pod-gated on the running SDSS+LAMOST native rescore (ETA 30-37 h). See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
   <div class="project-stats">
     <div class="project-stat"><div class="num">22.5M</div><div class="label">Spectra</div></div>
     <div class="project-stat"><div class="num">2,145</div><div class="label">Anomalies</div></div>
@@ -119,14 +120,18 @@
 <!-- SDSS DR18 -->
 <div class="project-card" style="border-left-color:#f59e0b;">
   <div class="meta-row">
-    <span class="status-badge status-running">Running on H200</span>
-    <span class="cost-tag">~$50 est.</span>
+    <span class="status-badge status-running">Native retrain + rescore on A100</span>
+    <span class="badge badge-accent">Path-C &middot; Paper 3</span>
+    <span class="cost-tag">~$60 est.</span>
   </div>
-  <h3>SDSS DR18 Cross-Survey Validation</h3>
-  <p>Applying BigAE to 5M SDSS spectra to prove methodology is survey-independent. First cross-survey anomaly comparison. Running on H200 GPU pod.</p>
+  <h3>SDSS DR18 Native BigAE Rescore</h3>
+  <p>Path-C rebuild of the SDSS anomaly column: native BigAE retrained on SDSS DR18 (val_loss 0.0311 PASS) and rescoring the full 2.3M-spectra catalog on A100 pod <code>ktds4mkmzb7ven</code>. Replaces the earlier DESI-trained cross-transfer scan, which is preserved in Paper 3 &sect;7 as the before-after baseline.</p>
+  <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> Cross-transfer was the novelty-integrity issue flagged by Houston 2026-04-19 (BigAE trained on 47K DESI spectra and then applied to SDSS inflates anomaly rates via catalog-cross-calibration artifacts). Native retrain + rescore replaces it. Injection-recovery continuum-dip PASS 64 % @5&sigma; (fire #98). Paper 3 Table 1 SDSS row reports final after rescore completes. ETA 30-37 h. See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
   <div class="project-stats">
-    <div class="project-stat"><div class="num">5M</div><div class="label">Target Spectra</div></div>
-    <div class="project-stat"><div class="num">H200</div><div class="label">GPU</div></div>
+    <div class="project-stat"><div class="num">2.3M</div><div class="label">Spectra</div></div>
+    <div class="project-stat"><div class="num">A100</div><div class="label">GPU</div></div>
+    <div class="project-stat"><div class="num">0.0311</div><div class="label">val_loss</div></div>
+    <div class="project-stat"><div class="num">64%</div><div class="label">Inj.-Rec. @5&sigma;</div></div>
   </div>
 </div>
 
