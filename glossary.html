@@ -659,7 +659,7 @@
   </td>
   <td><span class="gl-type gl-type-code">Estimator</span></td>
   <td class="gl-def">
-    <strong>Two-point angular correlation estimator</strong> \(w(\theta) = (DD - 2DR + RR)/RR\). Used on the Paper 3 anomaly catalog (DESI DR1) to validate that extreme anomalies exhibit <span class="gl-value">2.28&times; enhanced clustering bias</span> versus the baseline galaxy sample &mdash; a key physical-correlation check rather than a random-feature artefact of the autoencoder.
+    <strong>Two-point angular correlation estimator</strong> \(w(\theta) = (DD - 2DR + RR)/RR\). Used on the Paper 3 anomaly catalog (DESI DR1) to validate that extreme anomalies exhibit enhanced clustering bias versus the baseline galaxy sample &mdash; a key physical-correlation check rather than a random-feature artefact of the autoencoder. <span class="gl-value">Pipeline-1 Gold+Silver tracers: 1.58&times;</span> on 5,384 QSO candidates (from <code>bias_validation.json</code>). <span style="color:#92400e;">Path-C note:</span> DESI was the native-training survey for BigAE, so this measurement stands unchanged under the Path-C rebuild &mdash; DESI is preserved, not cross-transfer.
   </td>
 </tr>
 
@@ -669,7 +669,7 @@
   </td>
   <td><span class="gl-type gl-type-code">Pipeline</span></td>
   <td class="gl-def">
-    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, CHIME FRB, LIGO O3, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned \(\to\) 319,443 QC-passing anomalies. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-novel.
+    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB + ACT DR6, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned \(\to\) 319,443 QC-passing anomalies (pre-Path-C sum-over-surveys; 8-way dedup at 5&Prime; yields 191,632 unique physical objects). Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-novel. <span style="display:block; margin-top:8px; padding:8px 10px; background:#fef3c7; border-left:3px solid #f59e0b; color:#78350f; font-size:13px;"><strong>&#9888; Path-C rebuild in flight (&approx;66 %).</strong> Pipeline being rebuilt after Houston novelty-integrity pushback 2026-04-19: native BigAE retrains for SDSS + LAMOST (cross-transfer scans preserved as &sect;7 before-after baseline), CMB autoencoder retrain with galactic mask (CLOSED: val_loss 0.4437, 500/500 = 100 % injection-recovery @5&sigma;), NEOWISE ecliptic mask (419/436 retained), injection-recovery all-surveys synthesis (CLOSED: 3 PASS + 3 FAIL-with-diagnostic), 8-way positional dedup. The 319,443 / 58.8 % headline is pre-Path-C; native-retrain counts supersede once SDSS + LAMOST re-scores complete. See <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</span>
   </td>
 </tr>
 
