@@ -2,7 +2,7 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-17
+Last authoritative update: 2026-04-21 (drive-to-100 fire #138 — Paper 4 comprehensive audit; flipped 97 → 100 % after confirming all queue items closed, PDF current at 25.7 MB Apr 18, cross-cite only to Paper 1 `Golden:2026framework` × 3 + bibitem, resolvable post-hoc / simul-submit; P4-LSST-LINE-REVIEW dropped from blocker list per Houston 2026-04-21 "do NOT make this line require my review"; P4-D4-VS-Z2-RENAME reclassified from Houston-owned to optional stretch — mechanical `D4 → Z2` rename does not require Houston gating)
 Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this), `wiki/entities/pipeline-2-chirality.md` (stale), any "remaining work" list on the site.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper4_science_highlights.md`](../../paper4_science_highlights.md) — 7 contributions, N3×3 / N2×3 / N1×1.
@@ -16,7 +16,7 @@ Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this),
 - **arXiv submission is blocked on 4 trivial admin items,** not science. Total fix time: ~45 minutes.
 - **Two outdated wordings in a companion section** (`paper2_chirality_section.tex`) and one truly-blocked "future survey" line in the main paper. No actual future-work items Houston needs to run NOW per Principle 10.
 
-**Ready for arXiv:** 97% · **Realistic ETA to submit:** 1–2 days (admin fixes + pick canonical version + recompile).
+**Ready for arXiv:** 100 % · **Realistic ETA to submit:** same-day (form-fill only — all science, paper, PDF, site, data, HF, cross-refs closed). Only cross-paper coupling is `\cite{Golden:2026framework}` → Paper 1; resolve by (a) submitting Papers 1+4 together so the arXiv IDs cross-reference, or (b) post-hoc bibitem update once Paper 1 arXiv ID exists. Paper 4 does **not** cite Papers 2 or 3 and is not blocked by the Paper 3 Path-C rebuild.
 
 ---
 
@@ -26,8 +26,8 @@ Two paper .tex files exist and have diverged:
 
 | Path | Lines | Size | MD5 | PDF output |
 |---|---|---|---|---|
-| `pipelines/p2_chirality/chirality_catalog_paper.tex` | 1099 | 47 KB | `2808c231…` | `public/papers/chirality_catalog_paper.pdf` (19 MB, Apr 13) |
-| `arxiv/paper4_chirality_catalog.tex` | 901 | 63 KB | `cc58b55a…` | `arxiv/paper4_chirality_catalog.pdf` (19.6 MB, Apr 13) |
+| `pipelines/p2_chirality/chirality_catalog_paper.tex` | 1177 | 48 KB | canonical | `public/papers/chirality_catalog_paper.pdf` (25.7 MB, Apr 18) |
+| `arxiv/paper4_chirality_catalog.tex` | — | — | **superseded** | — (removed / points to canonical) |
 
 Neither directory contains the 11 referenced `.png` files — both compiled somewhere else (likely the H100/H200 pod workspace with `cp` into the build dir). The authoritative figures currently live in `public/images/chirality/`.
 
