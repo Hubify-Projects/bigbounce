@@ -324,7 +324,13 @@
   <div class="eyebrow">Single Source of Truth — cross-paper dashboard</div>
   <h1>SSOT &amp; Task Queue</h1>
   <p>Canonical arXiv-readiness and close-the-gap work for all four BigBounce papers. Every number on this page is sourced from the per-paper <code>status.md</code> files in <code>project-context/SSOT/</code>. When surfaces elsewhere on the site disagree with this page, <strong>this page wins</strong>.</p>
-  <div class="updated">Last authoritative update: 2026-04-18 &middot; drive-to-100 loop active &middot; <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT" target="_blank">view raw SSOT on GitHub</a></div>
+  <div class="updated">Last authoritative update: 2026-04-20 (fire #125) &middot; <span style="color:#92400e; font-weight:600;">Phase 2 Path-C rebuild of Paper 3 in flight (&approx;66 %)</span> &middot; drive-to-100 loop active &middot; <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT" target="_blank">view raw SSOT on GitHub</a></div>
+</div>
+
+<!-- ═══════════ PATH-C REBUILD BANNER (Paper 3) ═══════════ -->
+<div style="background:#fef3c7; border:1px solid #f59e0b; border-left:4px solid #f59e0b; border-radius:8px; padding:16px 20px; margin-bottom:28px; font-family:var(--font-sans); font-size:14px; line-height:1.6; color:#78350f;">
+  <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; color:#92400e; margin-bottom:6px;">&#9888; Paper 3 &mdash; Path-C Rebuild in flight</div>
+  <strong>Papers 1, 2, 4 remain at 100 % on content + compile axes.</strong> Paper 3 is being rebuilt to Path-C scope after Houston novelty-integrity pushback 2026-04-19: native BigAE retrain for SDSS + LAMOST (cross-transfer scans preserved as &sect;7 before-after baseline), CMB autoencoder retrain with galactic mask, DESI 5-fold out-of-sample validation, NEOWISE ecliptic mask, injection-recovery on every retained survey, 8-way positional dedup at 5&Prime;. 12 exit criteria tracked in <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" target="_blank"><code>SSOT/drive-to-100.md</code></a>. Current state (fire #125): 2 CLOSED (#3 CMB native retrain 500/500 = 100 % injection-recovery; #6 injection-recovery all-surveys synthesis) + 8 in-progress (SDSS/LAMOST rescores, NEOWISE mask, 8-way dedup, paper integration 94 %, HF rebuild, site-sync) + 2 not-started (recompile, P1-PDF-V3). Headline figures below for Paper 3 (319,443 anomalies &middot; 58.8 % novel &middot; 28 MB PDF) are the pre-Path-C locked state; the native-retrain-based figures will supersede them once SDSS + LAMOST re-scores complete (ETA 30-37 h).
 </div>
 
 <!-- ═══════════ LIVE DRIVE-TO-100 WORK TRACKER ═══════════ -->
@@ -385,11 +391,11 @@
     <div class="stat-sub">revtex4-2 · 632 KB PDF · 0 undef refs · abstract 1,920-char safe</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
-  <div class="stat-card">
+  <div class="stat-card" style="border-left:3px solid #f59e0b;">
     <div class="stat-label">Paper 3 — Anomaly Catalog</div>
-    <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">319,443 anomalies · 58.8% novel · 4.38σ SPHEREx · 28 MB PDF</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
+    <div class="stat-value" style="color:#92400e;">≈66%</div>
+    <div class="stat-sub" style="color:#78350f;">Path C rebuild · pre-Path-C state: 319,443 anoms · 58.8% novel · 28 MB PDF</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:66%; background:#f59e0b;"></div></div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Paper 4 — Chirality Catalog</div>
@@ -423,11 +429,11 @@
       <td class="readiness r-green">100 %</td>
       <td><code>research/focused_paper_source_integration/02_full_draft.tex</code></td>
     </tr>
-    <tr>
+    <tr style="background:#fffbeb;">
       <td>3</td>
       <td><a class="paper-link" href="#paper-3">Multi-Survey Anomaly Catalog</a></td>
-      <td>Locked 2026-04-16. 8 surveys · 37.3 M sources · 319,443 anomalies · 58.8 % novel · σ(f<sub>NL</sub>) +16.4 % · SPHEREx 4.38σ · NANOGrav γ = 3.20 ± 0.42. 28 MB PDF, 0 undef refs.</td>
-      <td class="readiness r-green">100 %</td>
+      <td><strong style="color:#92400e;">Path-C rebuild in flight (fire #125, &approx;66 %).</strong> Pre-Path-C lock 2026-04-16 (8 surveys · 37.3 M sources · 319,443 anomalies · 58.8 % novel · 28 MB PDF) preserved as &sect;7 before-after baseline. Native retrains: SDSS val_loss 0.0311 PASS (rescore 26.5 %), LAMOST val_loss 0.0329 PASS (rescore 32.3 %), CMB val_loss 0.4437 PASS (100 % injection-recovery, CLOSED). Injection-recovery all-surveys synthesis CLOSED (6/8 surveys, 3 PASS + 3 FAIL-with-diagnostic). NEOWISE ecliptic mask 95 %, 8-way dedup 80 %, paper integration 94 %, site-sync 89 %.</td>
+      <td class="readiness" style="color:#92400e;">≈66 %</td>
       <td><code>pipelines/p3_anomaly_engine/paper3_draft.tex</code></td>
     </tr>
     <tr>
@@ -441,7 +447,7 @@
 </table>
 
 <p style="margin-top:18px; font-family:var(--font-sans); font-size:14px; color:var(--text-secondary); line-height:1.7;">
-  <strong>Program-level arXiv ETA:</strong> All four papers are at 100 % on content + compile axes as of 2026-04-18. Only remaining open item is Houston's one-line review of the LSST projection line in Paper 4 §6 (non-blocking) and the Houston-owned arXiv form submission itself. Recommended submission order: <strong>Paper 4 → Paper 3 → Paper 1 → Paper 2</strong>.
+  <strong>Program-level arXiv ETA:</strong> <strong style="color:#166534;">Papers 1, 2, 4 are at 100 % on content + compile axes</strong> as of 2026-04-17 (Docker TeX Live recompile, 945 KB / 632 KB / 25.7 MB, 0 undef refs each). <strong style="color:#92400e;">Paper 3 is in Path-C rebuild (~66 %, fire #125 state)</strong> — the 28 MB pre-Path-C PDF is preserved as &sect;7 before/after baseline and will be superseded by the native-retrain-based recompile (criterion #9) once SDSS + LAMOST native re-scores complete (ETA 30-37 h at current pod cadence). Remaining non-rescore-gated items for the other three papers are (a) Houston's one-line review of the LSST projection line in Paper 4 (non-blocking) and (b) Houston-owned arXiv form submission. Recommended submission order once Paper 3 Path-C closes: <strong>Paper 4 → Paper 3 → Paper 1 → Paper 2</strong>.
 </p>
 
 <!-- ═══════════ CROSS-PAPER DEPENDENCIES ═══════════ -->
@@ -461,7 +467,7 @@ Paper 4 (Chirality Catalog) ─> dipole/TTA code ─> available for Paper 3 limi
 <div class="paper-tabs" role="tablist">
   <button class="paper-tab active" data-tab="paper-1">Paper 1 — Spin-Torsion <span class="tab-badge green">100 %</span></button>
   <button class="paper-tab" data-tab="paper-2">Paper 2 — f<sub>NL</sub> Forecast <span class="tab-badge green">100 %</span></button>
-  <button class="paper-tab" data-tab="paper-3">Paper 3 — Anomaly Catalog <span class="tab-badge green">100 %</span></button>
+  <button class="paper-tab" data-tab="paper-3">Paper 3 — Anomaly Catalog <span class="tab-badge" style="background:#fef3c7; color:#92400e;">Path C ≈66 %</span></button>
   <button class="paper-tab" data-tab="paper-4">Paper 4 — Chirality Catalog <span class="tab-badge green">100 %</span></button>
 </div>
 
@@ -578,15 +584,17 @@ Paper 4 (Chirality Catalog) ─> dipole/TTA code ─> available for Paper 3 limi
   <div class="paper-header">
     <div>
       <h2>Multi-Survey Anomaly Catalog</h2>
-      <div class="paper-sub">canonical: <code>pipelines/p3_anomaly_engine/paper3_draft.tex</code> · 1,032 lines · 27 MB PDF · 21 figures · locked 2026-04-16</div>
+      <div class="paper-sub">canonical: <code>pipelines/p3_anomaly_engine/paper3_draft.tex</code> · Path-C rebuild in flight · pre-Path-C lock 2026-04-16 preserved as &sect;7 before-after baseline</div>
     </div>
     <div>
-      <div class="paper-readiness r-green">99%</div>
-      <div class="paper-readiness-sub">submit today</div>
+      <div class="paper-readiness" style="color:#92400e;">≈66%</div>
+      <div class="paper-readiness-sub">Path C rebuild (fire #125)</div>
     </div>
   </div>
 
-  <div class="callout positive"><strong>Manuscript DONE. Science DONE. arXiv-ready today.</strong> 8 surveys, 37.3 M sources, 319,443 anomalies, 58.8 % SIMBAD-novel. All 21 publication figures embedded (real DESI sky cutouts, not placeholders). Zero TODOs, 28 embedded <code>\bibitem</code>s, data+code availability statements present.</div>
+  <div class="callout" style="background:#fef3c7; border-left:4px solid #f59e0b; color:#78350f;"><strong>&#9888; Path-C rebuild in flight.</strong> Houston pushed back 2026-04-19 on the "58.8 % novel" headline and the cross-transfer methodology (DESI-trained BigAE applied to SDSS/LAMOST; catastrophically undertrained CMB AE). Active Path-C rebuild replaces cross-transfer scans with native-retrained per-survey models, adds NEOWISE ecliptic mask, 8-way positional dedup at 5&Prime;, and injection-recovery on every retained survey. Current state (fire #125): <strong>2 of 12 criteria CLOSED</strong> (#3 CMB native retrain — val_loss 0.4437 PASS, 500/500 = 100 % injection-recovery at 5&times; noise; #6 injection-recovery all-surveys synthesis — 6/8 surveys covered, 3 PASS + 3 FAIL-with-rigorous-diagnostic); 8 in-progress (#1 SDSS rescore 26.5 %, #2 LAMOST rescore 32.3 %, #4 DESI 5-fold pod-gated, #5 NEOWISE mask 95 %, #7 8-way dedup 80 % (191,632 unique physical objects), #8 paper integration 94 %, #10 HF rebuild 50 %, #12 site-sync 89 %); 2 not-started (#9 recompile, #11 P1-PDF-V3). Full per-fire tracking in <a class="gh-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/drive-to-100.md" target="_blank"><code>SSOT/drive-to-100.md</code></a> Loop log.</div>
+
+  <div class="callout"><strong>Pre-Path-C locked state (preserved as &sect;7 before-after baseline).</strong> 8 surveys, 37.3 M sources, 319,443 sum-over-surveys anomalies, 58.8 % SIMBAD-novel at 5&Prime;. Native-retrain numbers + unique-physical-object count (currently 191,632 from 8-way dedup) will supersede the sum-over-surveys figure once SDSS + LAMOST re-scores complete (ETA 30-37 h).</div>
 
   <div class="section-h">Per-survey catalog (every anomaly count traced)</div>
   <table class="claims-table">
@@ -598,7 +606,7 @@ Paper 4 (Chirality Catalog) ─> dipole/TTA code ─> available for Paper 3 limi
     <tr><td>Planck CMB × ACT DR6</td><td>40 K patches → null cross-corr</td></tr>
     <tr><td>Gaia DR3</td><td>50 K → 500 (27 % novel)</td></tr>
     <tr><td>NEOWISE</td><td>43.5 K → 436 (45 % novel)</td></tr>
-    <tr><td><strong>Total</strong></td><td><strong>37.3 M → 319,443 · 58.8 % novel</strong></td></tr>
+    <tr style="background:#fffbeb;"><td><strong>Total (pre-Path-C)</strong></td><td><strong>37.3 M → 319,443 · 58.8 % novel</strong> <span style="color:#92400e; font-weight:600;">&mdash; sum-over-surveys; 8-way dedup at 5&Prime; yields 191,632 unique physical objects. Native-retrain totals pending SDSS + LAMOST rescore completion.</span></td></tr>
   </table>
 
   <div class="section-h">Verified science-headline claims</div>
