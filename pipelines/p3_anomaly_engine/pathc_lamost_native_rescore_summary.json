@@ -1,0 +1,21 @@
+{
+  "survey": "lamost_dr10",
+  "mode": "pathc_native_rescore",
+  "model": "best_lamost_native.pt",
+  "val_loss": 0.0329,
+  "total_scored": 11334161,
+  "total_score_gt_5": 2054,
+  "top1pct_threshold": 0.4612667679786682,
+  "top1pct_n": 113342,
+  "top1pct_score_range": [
+    0.46126678586006165,
+    38.053443908691406
+  ],
+  "median": 0.003273752983659506,
+  "p99": 0.4612667679786682,
+  "p999": 1.84983687400838,
+  "max": 38.053443908691406,
+  "wall_clock_hours": 35.8,
+  "n_shards": 107,
+  "output_parquet": "/workspace/bigbounce_scan/outputs/lamost_native/lamost_dr10_pathc_native.parquet"
+}
