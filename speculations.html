@@ -134,8 +134,9 @@
 
 <div class="spec-card">
   <h4>195,829 Uncharacterized Objects: What ARE They?</h4>
-  <p>Our AI pipeline found 195,829 spectral anomalies absent from every major catalog. Galaxies are 18x more anomalous than QSOs. The top 200 are verified genuine. Three wavelength clusters suggest distinct physical populations. The enhanced 18M catalog will provide full classification. We may discover entirely new classes of astronomical objects.</p>
-  <span class="tag">ACTIONABLE &middot; Enhanced 18M running now &middot; Paper 3</span>
+  <p>Our AI pipeline found 195,829 spectral anomalies absent from every major catalog. Galaxies are 18x more anomalous than QSOs. The top 200 are verified genuine. Three wavelength clusters suggest distinct physical populations. We may discover entirely new classes of astronomical objects.</p>
+  <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> The 195,829 figure is the DESI DR1 anomaly count. DESI is a <em>native-training</em> survey in the Paper 3 Path-C rebuild (DESI-trained BigAE), so this number stands unchanged post-rebuild and is preserved as the Paper 3 &sect;7 before-after baseline. Separately, SDSS DR18 + LAMOST DR10 are being rescored with native BigAE retrains (val_loss 0.0311 / 0.0329 gate PASS, ETA 30-37 h on A100); when those land, the site-wide "per-survey anomaly catalog" counts update to their native-retrain values, and the 8-way positional dedup at 5&Prime; yields 191,632 unique physical objects across all 8 surveys. See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
+  <span class="tag">ACTIONABLE &middot; DESI DR1 native scan (Path-C preserved) &middot; Paper 3</span>
 </div>
 
 <div class="spec-card">
