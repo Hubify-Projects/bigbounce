@@ -1,0 +1,20 @@
+{
+  "cross_transfer_baseline_contamination_pct": 98.0,
+  "native_top1pct_113342_blue_dominant_pct": 79.85,
+  "native_top1pct_113342_blue_heavy_pct": 73.95,
+  "native_top44075_paper3_cut_blue_dominant_pct": 79.42,
+  "native_top44075_paper3_cut_blue_heavy_pct": 73.46,
+  "median_blue_frac_top1pct": 0.7235,
+  "median_blue_frac_top44075": 0.7182,
+  "val_loss_native": 0.0329,
+  "val_loss_gate": 0.3,
+  "gate_a_val_loss_PASS": true,
+  "gate_b_all_rescored_PASS": true,
+  "gate_c_contamination_threshold_pct": 20.0,
+  "n_top1pct": 113342,
+  "n_top44075_paper3_cut": 44075,
+  "methodology": "Blue-excess contamination defined as rB (blue-band reconstruction residual) dominating total residual; cross-transfer baseline was ~98% blue-dominated.",
+  "gate_c_contamination_PASS": false,
+  "contamination_drop_vs_baseline_pct_points": 24.54,
+  "criterion_2_ALL_GATES_PASS": false
+}
