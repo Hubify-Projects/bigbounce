@@ -3,6 +3,22 @@
 This document honestly discloses what CANNOT currently be reproduced from
 the provided materials and how the paper text handles each gap.
 
+> **⚠ Path-C rebuild note (2026-04-22, fire #170):** §6 DESI DR1 Anomaly
+> Catalog (195,829 anomalies / BigAE trained on 47K / AutoEncoder proxy)
+> and §7 Enhanced 18M Catalog (44% progress) below are pre-Path-C content
+> preserved for reproducibility history. Current Path-C state: **11/12
+> criteria CLOSED** — SDSS native re-score 1,925,279 scored (~6500×
+> anomaly-rate reduction vs cross-transfer, fire #164); LAMOST 21.4×
+> reduction; CMB 100% injection-recovery @5σ; NEOWISE ecliptic mask;
+> injection-recovery all-surveys; 8-way dedup **378,480 unique + 637
+> multi-survey clusters** (fire #164); Paper 3 PDF recompile 28 MB / 33 pp
+> / 0 undef (fire #168); HF rebuild 5-file 15.2 MB bundle (fire #166); P1
+> PDF V3; site-sync. **Only criterion #4 DESI 5-fold OOS k-fold remains**:
+> retrieval scaffold authored + dry-run clean (fire #170, deterministic
+> checksum 1812395110), Houston ack gates ~1-2h live SPARCL run at ~$3 pod
+> spend. Canonical per-fire state: [`project-context/SSOT/drive-to-100.md`](../../project-context/SSOT/drive-to-100.md)
+> Loop log and [`project-context/SSOT/index.md`](../../project-context/SSOT/index.md).
+
 ## 1. No Bespoke CAMB Modifications
 
 **What the paper describes:** A "modified CAMB v1.5" with a spin-torsion
