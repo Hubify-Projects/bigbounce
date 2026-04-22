@@ -231,6 +231,9 @@ def main() -> int:
     )
     ap.add_argument('--n-spectra', type=int, default=DEFAULT_N_SPECTRA)
     ap.add_argument('--batch-size', type=int, default=DEFAULT_BATCH_SIZE)
+    ap.add_argument('--n-workers', type=int, default=12,
+                    help='concurrent SPARCL retrieve() threads '
+                         '(network-bound; 8-16 is the sweet spot)')
     ap.add_argument('--seed', type=int, default=DEFAULT_SEED)
     ap.add_argument(
         '--dr-catalog', type=Path, default=Path(DEFAULT_DR_CATALOG),
@@ -258,32 +261,241 @@ def main() -> int:
         print('=' * 64)
         return 0
 
-    # Live path: import SPARCL + execute retrieval. Guarded behind --live so
-    # dry-run is always safe (no network, no pod GPU time).
+    # ================================================================
+    # LIVE RETRIEVAL -- Houston-ack'd 2026-04-22 to drive Path-C to 100%.
+    # Direct SPARCL query on DESI-DR1 (no pre-downloaded FITS catalog
+    # needed -- SPARCL's own `find()` is the catalog).
+    # ================================================================
     try:
-        from sparclclient import SparclClient  # type: ignore
+        from sparcl.client import SparclClient  # type: ignore
     except ImportError:
         print('ERROR: sparclclient not installed. '
               '`pip install sparclclient` on the pod.', file=sys.stderr)
         return 3
 
-    if not args.dr_catalog.exists():
-        print(f'ERROR: DR catalog not found at {args.dr_catalog}. '
-              'Download zall-pix-dr1.fits from '
-              'https://data.desi.lbl.gov/public/dr1/spectro/redux/',
+    try:
+        import pandas as pd  # type: ignore
+    except ImportError:
+        print('ERROR: pandas required for metadata parquet write.',
               file=sys.stderr)
-        return 4
+        return 3
 
-    # Live retrieval scaffolded below -- requires Houston pod-budget ack + SPARCL auth setup.
-    # The real DR1 catalog load + SPARCL retrieve(...) + per-spectrum resample
-    # is intentionally NOT executed in this scaffold. This `--live` branch
-    # exists so the dry-run path can be validated end-to-end without risk of
-    # accidental pod spend. Next fire: once Houston approves, replace the
-    # `raise NotImplementedError` line below with the real SPARCL pull loop.
-    raise NotImplementedError(
-        'Live retrieval is scaffold-only; Houston ack required before '
-        'enabling the SPARCL pull loop.'
-    )
+    t_start = __import__('time').time()
+    out_dir = args.output_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    sc = SparclClient()
+    print(f'[live] SparclClient instantiated; api={getattr(sc, "url", "?")}')
+
+    # ---- Step 1: SPARCL find() over DESI-DR1 -----------------------
+    # Use a generous limit; we will apply the deterministic seed-based
+    # sampling locally so the draw is reproducible.
+    find_limit = max(args.n_spectra * 3, 200000)  # pull ~3x N to allow rejection
+    constraints = {
+        'data_release': ['DESI-DR1'],
+        'spectype': ['GALAXY', 'QSO', 'STAR'],
+        'redshift': [0.0, 5.0],
+    }
+    outfields = ['sparcl_id', 'specid', 'ra', 'dec', 'redshift',
+                 'spectype', 'data_release']
+    print(f'[live] find(limit={find_limit}, constraints={constraints})')
+    try:
+        find_res = sc.find(outfields=outfields,
+                           constraints=constraints,
+                           limit=find_limit)
+    except Exception as e:
+        print(f'ERROR: SPARCL find() failed: {e}', file=sys.stderr)
+        return 5
+
+    find_records = list(find_res.records) if hasattr(find_res, 'records') else list(find_res)
+    n_found = len(find_records)
+    print(f'[live] find() returned {n_found:,} candidate records')
+    if n_found < args.n_spectra:
+        print(f'ERROR: need {args.n_spectra} but found only {n_found}. '
+              'Raise find_limit or relax constraints.', file=sys.stderr)
+        return 6
+
+    # ---- Step 2: deterministic permutation pick --------------------
+    rng = np.random.default_rng(args.seed)
+    perm = rng.permutation(n_found)
+    picked_idx = perm[:args.n_spectra]
+    picked_records = [find_records[i] for i in picked_idx]
+    sparcl_ids = []
+    meta_rows = []
+    def rec_get(r, k):
+        """Safe accessor for SPARCL record (dict or attr-style)."""
+        if isinstance(r, dict):
+            return r.get(k)
+        if hasattr(r, k):
+            return getattr(r, k)
+        return None
+
+    for r in picked_records:
+        def g(k, _r=r):
+            return rec_get(_r, k)
+        sparcl_ids.append(str(g('sparcl_id')))
+        meta_rows.append({
+            'sparcl_id': str(g('sparcl_id')),
+            'specid': g('specid'),
+            'ra': float(g('ra')) if g('ra') is not None else float('nan'),
+            'dec': float(g('dec')) if g('dec') is not None else float('nan'),
+            'redshift': float(g('redshift')) if g('redshift') is not None else float('nan'),
+            'spectype': g('spectype'),
+        })
+
+    # target_ids.json manifest
+    manifest = {
+        'seed': args.seed,
+        'n_spectra': args.n_spectra,
+        'n_find_candidates': n_found,
+        'sparcl_id_list': sparcl_ids,
+        'constraints': constraints,
+        'data_release': 'DESI-DR1',
+        'timestamp_utc': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
+    }
+    with open(out_dir / 'target_ids.json', 'w') as f:
+        json.dump(manifest, f)
+    print(f'[live] wrote {out_dir / "target_ids.json"}')
+
+    # ---- Step 3: parallel batched retrieve() + resample + shard ----
+    # Parallelism: SPARCL retrieval is network-bound at noirlab.edu, so a
+    # ThreadPoolExecutor with 8-16 workers gives a 3-5x speedup vs serial.
+    # The GPU is untouched during retrieval; parallel threads saturate the
+    # server-side rate limit without GPU contention.
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    import threading
+    log_path = out_dir / 'fetch_log.jsonl'
+    logf = log_path.open('w')
+    log_lock = threading.Lock()
+    total_written = 0
+    non_finite = 0
+    successful_meta = []
+    write_lock = threading.Lock()
+
+    # Build the batch plan (batch_idx -> (b_start, b_end, batch_uuids, meta_slice))
+    batches = []
+    for b_start in range(0, len(sparcl_ids), args.batch_size):
+        b_end = min(b_start + args.batch_size, len(sparcl_ids))
+        batches.append((len(batches), b_start, b_end,
+                        sparcl_ids[b_start:b_end],
+                        meta_rows[b_start:b_end]))
+
+    n_batches = len(batches)
+    print(f'[live] {n_batches} batches x {args.batch_size} spectra, '
+          f'{args.n_workers} concurrent workers')
+
+    def process_batch(task):
+        nonlocal total_written, non_finite
+        batch_idx, b_start, b_end, batch_uuids, batch_meta = task
+        t_b = __import__('time').time()
+        try:
+            ret = sc.retrieve(uuid_list=batch_uuids,
+                              include=['sparcl_id', 'wavelength', 'flux', 'ivar'],
+                              dataset_list=['DESI-DR1'])
+        except Exception as e:
+            msg = f'retrieve() failed on batch {batch_idx}: {e}'
+            with log_lock:
+                print(f'[live] WARN {msg}', file=sys.stderr)
+                logf.write(json.dumps({'shard': batch_idx, 'error': str(e),
+                                        'batch_start': b_start, 'batch_end': b_end}) + '\n')
+                logf.flush()
+            return 0
+        ret_records = list(ret.records) if hasattr(ret, 'records') else list(ret)
+        by_id = {}
+        for r in ret_records:
+            rid = rec_get(r, 'sparcl_id')
+            if rid is not None:
+                by_id[str(rid)] = r
+
+        batch_vecs = []
+        batch_meta_aligned = []
+        local_bad = 0
+        for local_i, uuid in enumerate(batch_uuids):
+            r = by_id.get(str(uuid))
+            if r is None:
+                local_bad += 1
+                continue
+            wave = rec_get(r, 'wavelength')
+            flux = rec_get(r, 'flux')
+            ivar = rec_get(r, 'ivar')
+            if wave is None or flux is None:
+                local_bad += 1
+                continue
+            wave_a = np.asarray(wave, dtype=np.float64)
+            flux_a = np.asarray(flux, dtype=np.float64)
+            ivar_a = np.asarray(ivar, dtype=np.float64) if ivar is not None else None
+            vec = resample_to_desi_grid(wave_a, flux_a, ivar_a)
+            if not np.isfinite(vec).all():
+                local_bad += 1
+                continue
+            batch_vecs.append(vec)
+            batch_meta_aligned.append(batch_meta[local_i])
+
+        wall = __import__('time').time() - t_b
+        if batch_vecs:
+            arr = np.stack(batch_vecs, axis=0).astype(np.float32)
+            shard_path = out_dir / f'shard_{batch_idx:05d}.npy'
+            with write_lock:
+                np.save(shard_path, arr)
+                for row_i, m in enumerate(batch_meta_aligned):
+                    m2 = dict(m)
+                    m2['shard_idx'] = batch_idx
+                    m2['row_in_shard'] = row_i
+                    successful_meta.append(m2)
+                total_written += len(batch_vecs)
+                non_finite += local_bad
+                cum = total_written
+            with log_lock:
+                print(f'[live] shard {batch_idx:05d}: '
+                      f'{len(batch_vecs)}/{len(batch_uuids)} ({wall:.1f}s); '
+                      f'cum {cum}/{args.n_spectra}')
+                logf.write(json.dumps({
+                    'shard': batch_idx, 'submitted': len(batch_uuids),
+                    'written': len(batch_vecs), 'wall_s': round(wall, 2),
+                    'cum_written': cum,
+                }) + '\n')
+                logf.flush()
+        return len(batch_vecs)
+
+    with ThreadPoolExecutor(max_workers=args.n_workers) as ex:
+        futures = [ex.submit(process_batch, t) for t in batches]
+        for _ in as_completed(futures):
+            pass
+
+    logf.close()
+    shard_idx = n_batches
+
+    # metadata.parquet aligned to concatenated-shard row order.
+    # Shards load via sorted(glob('*.npy')) i.e. shard_00000, shard_00001,...;
+    # so metadata must be sorted by (shard_idx, row_in_shard) to match.
+    meta_df = pd.DataFrame(successful_meta)
+    meta_df = meta_df.sort_values(['shard_idx', 'row_in_shard']).reset_index(drop=True)
+    meta_df['source_id'] = meta_df['sparcl_id']  # alias used by score_desi_kfold.py
+    meta_df.to_parquet(out_dir / 'metadata.parquet', index=False)
+    print(f'[live] wrote {out_dir / "metadata.parquet"} ({len(meta_df)} rows)')
+
+    # Final summary
+    final = {
+        'mode': 'live',
+        'n_shards': shard_idx,
+        'n_written': total_written,
+        'n_target': args.n_spectra,
+        'n_nonfinite_dropped': non_finite,
+        'target_id_checksum': id_manifest['permutation_checksum'],
+        'wall_s': round(__import__('time').time() - t_start, 1),
+    }
+    with open(out_dir / 'live_run_summary.json', 'w') as f:
+        json.dump(final, f, indent=2)
+    print('=' * 64)
+    print(f'LIVE RUN COMPLETE -- {total_written:,} spectra across '
+          f'{shard_idx} shards in {final["wall_s"]}s')
+    print('=' * 64)
+    if total_written < int(0.95 * args.n_spectra):
+        print(f'WARNING: only {total_written} / {args.n_spectra} retrieved '
+              f'({100*total_written/args.n_spectra:.1f}%). Consider re-running '
+              'or relaxing rejection filters.', file=sys.stderr)
+        return 2
+    return 0
 
 
 if __name__ == '__main__':

@@ -1,0 +1,96 @@
+{
+  "task": "P3-PATHC-DESI-KFOLD (criterion #4) \u2014 stability analysis",
+  "n_folds": 5,
+  "top_frac": 0.01,
+  "fold_sizes": [
+    {
+      "path": "outputs/desi_kfold/scores/fold_0_scores.parquet",
+      "n_rows": 47000,
+      "top_k": 470
+    },
+    {
+      "path": "outputs/desi_kfold/scores/fold_1_scores.parquet",
+      "n_rows": 47000,
+      "top_k": 470
+    },
+    {
+      "path": "outputs/desi_kfold/scores/fold_2_scores.parquet",
+      "n_rows": 47000,
+      "top_k": 470
+    },
+    {
+      "path": "outputs/desi_kfold/scores/fold_3_scores.parquet",
+      "n_rows": 47000,
+      "top_k": 470
+    },
+    {
+      "path": "outputs/desi_kfold/scores/fold_4_scores.parquet",
+      "n_rows": 47000,
+      "top_k": 470
+    }
+  ],
+  "pairwise_jaccard": [
+    {
+      "i": 0,
+      "j": 1,
+      "jaccard": 0.8762475049900199
+    },
+    {
+      "i": 0,
+      "j": 2,
+      "jaccard": 0.854043392504931
+    },
+    {
+      "i": 0,
+      "j": 3,
+      "jaccard": 0.857707509881423
+    },
+    {
+      "i": 0,
+      "j": 4,
+      "jaccard": 0.9381443298969072
+    },
+    {
+      "i": 1,
+      "j": 2,
+      "jaccard": 0.934156378600823
+    },
+    {
+      "i": 1,
+      "j": 3,
+      "jaccard": 0.7870722433460076
+    },
+    {
+      "i": 1,
+      "j": 4,
+      "jaccard": 0.902834008097166
+    },
+    {
+      "i": 2,
+      "j": 3,
+      "jaccard": 0.776937618147448
+    },
+    {
+      "i": 2,
+      "j": 4,
+      "jaccard": 0.8725099601593626
+    },
+    {
+      "i": 3,
+      "j": 4,
+      "jaccard": 0.8252427184466019
+    }
+  ],
+  "mean_pairwise_jaccard": 0.8624895664070691,
+  "min_pairwise_jaccard": 0.776937618147448,
+  "gate_jaccard_required": 0.7,
+  "gate_pass": true,
+  "counts": {
+    "union_top": 546,
+    "consensus_ge3": 464,
+    "all_5_folds": 399,
+    "singleton_only": 47
+  },
+  "consensus_fraction_of_union": 0.8498168498168498,
+  "interpretation": "gate_pass=True: DESI anomaly population is robust across folds; Paper 3 Table 1 DESI number (195,829 top-1% anomalies) stands unchanged. gate_pass=False with mean J in [0.50, 0.70): Paper 3 adds a stability row quoting Jaccard + consensus count. gate_pass=False with mean J < 0.50: switch Paper 3 headline to the consensus-set count and flag the DESI single-sample result as training-sample-conditioned."
+}
