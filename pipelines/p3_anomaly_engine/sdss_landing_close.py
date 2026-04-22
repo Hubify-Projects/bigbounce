@@ -119,11 +119,22 @@ def rerun_dedup() -> dict:
         return json.load(f)
 
 
+def _fmt(v) -> str:
+    """Format int with thousands-separator, pass through string sentinels verbatim.
+
+    Dry-run mode sets dedup counts to the sentinel string '<DRY>' because the
+    8/8 dedup subprocess is skipped; the f-string below would crash on
+    `{'<DRY>':,}`. This helper keeps real-run formatting identical while
+    making dry-run survive end-to-end (fire #157 regression guard).
+    """
+    return f'{v:,}' if isinstance(v, int) else str(v)
+
+
 def build_integration_diff(sdss_top: pd.DataFrame, sdss_stats: dict, dedup: dict) -> str:
     """Human-readable markdown diff of paper body + SSOT edits needed."""
-    n_unique = dedup['n_unique_objects']
-    n_total = dedup['total_survey_detections_loaded']
-    n_multi = dedup['n_multi_survey_matches_ge2']
+    n_unique = _fmt(dedup['n_unique_objects'])
+    n_total = _fmt(dedup['total_survey_detections_loaded'])
+    n_multi = _fmt(dedup['n_multi_survey_matches_ge2'])
     surveys_loaded = dedup['surveys_loaded']
     return f"""# SDSS Landing Integration Diff  (criterion #8 paste-ready)
 
@@ -140,28 +151,28 @@ sourced from `pathc_dedup_summary.json` + `pathc_sdss_native_rescore_summary.jso
 
 ## Paper body edits — `pipelines/p3_anomaly_engine/paper3_draft.tex`
 
-**§3 lead-in (L164)** — replace prior `7-of-8` → `8-of-8` (all natives in), replace `310,788` → `{n_total:,}`, `301,222` → `{n_unique:,}`:
+**§3 lead-in (L164)** — replace prior `7-of-8` → `8-of-8` (all natives in), replace `310,788` → `{n_total}`, `301,222` → `{n_unique}`:
 
     Old:  "6-of-8 surveys loaded"  (last substituted fire #132)
-    New:  "8-of-8 surveys loaded: DESI + SDSS native + LAMOST native + Gaia + NEOWISE-masked + eROSITA + Planck + ACT DR6 → {n_total:,} detections → {n_unique:,} unique physical objects, {n_multi:,} multi-survey matches"
+    New:  "8-of-8 surveys loaded: DESI + SDSS native + LAMOST native + Gaia + NEOWISE-masked + eROSITA + Planck + ACT DR6 → {n_total} detections → {n_unique} unique physical objects, {n_multi} multi-survey matches"
 
 **§3.2 SDSS paragraph** — replace the in-flight clause (pattern matches fire #134 LAMOST edit):
 
     Find:  "SDSS native retrain gate-PASS ... re-score in flight"
     Replace with: "SDSS native retrain gate PASS (val_loss 0.0311); re-score of {sdss_stats['n_scored']:,} DR18 spectra complete on `best_sdss_native.pt`; {sdss_stats['s_gt_5_count']:,} sources at S > 5 on the native distribution vs 77,905 cross-transfer — confirms cross-transfer domain-shift was inflating SDSS anomaly rate. Top-{sdss_stats['top_n']:,} slice at S ≥ {sdss_stats['top_threshold']:.4f} supersedes the cross-transfer `sdss_dr18_anomalies.parquet` in Table~\\ref{{tab:survey_summary}}."
 
-**§Conclusions bullet #8** — same 310,788/301,222/7-of-8 → {n_total:,}/{n_unique:,}/8-of-8 substitution.
+**§Conclusions bullet #8** — same 310,788/301,222/7-of-8 → {n_total}/{n_unique}/8-of-8 substitution.
 
 **§Data-availability manifest** — same substitution.
 
 **Table 1 SDSS row** — update `N_anom` and add footnote ‡ referencing SDSS native.
 
-**Abstract** — update headline unique-object number 301,222 → {n_unique:,} and multi-survey-match count.
+**Abstract** — update headline unique-object number 301,222 → {n_unique} and multi-survey-match count.
 
 ## HF staging README edits — `pipelines/p3_anomaly_engine/hf_staging/README.md`
 
 - L59 `sdss_dr18_native_anomalies.parquet` row: "IN FLIGHT" → "COMPLETE CRITERION #1 CLOSED" with filename `sdss_dr18_pathc_native.parquet` and full SDSS stats.
-- L63 Path-C unique-objects row: 7/8 → 8/8, 310,788 → {n_total:,}, 301,222 → {n_unique:,}, multi-survey matches 2 → {n_multi}.
+- L63 Path-C unique-objects row: 7/8 → 8/8, 310,788 → {n_total}, 301,222 → {n_unique}, multi-survey matches 2 → {n_multi}.
 - L84 Coverage paragraph: add SDSS native top-{sdss_stats['top_n']:,} staged note; declare "All Path-C criteria green on HF staging surface".
 
 ## SSOT edits
@@ -231,7 +242,10 @@ def main() -> int:
 
     print('[4/4] Writing integration diff ...')
     diff = build_integration_diff(sdss_top, sdss_stats, dedup)
-    diff_path = ROOT / 'sdss_landing_integration_diff.md'
+    # Dry-run writes to a tagged sibling path so the real landing diff is not
+    # clobbered by a synthetic sanity-check (fire #157 regression guard).
+    diff_name = 'sdss_landing_integration_diff.dryrun.md' if args.dry_run else 'sdss_landing_integration_diff.md'
+    diff_path = ROOT / diff_name
     diff_path.write_text(diff)
     print(f'       wrote {diff_path}')
 
@@ -240,10 +254,10 @@ def main() -> int:
     print('SDSS LANDING ATOMIC-CLOSE COMPLETE.')
     print(f'  criterion #1  SDSS native rescore : 80  → 100 %  ({sdss_stats["n_scored"]:,} scored, top-{args.top_n:,} published)')
     if not args.dry_run:
-        n_unique = dedup['n_unique_objects']
-        n_total = dedup['total_survey_detections_loaded']
-        n_multi = dedup['n_multi_survey_matches_ge2']
-        print(f'  criterion #7  8-way dedup         : 90  → 100 %  ({n_total:,} → {n_unique:,}, {n_multi} multi-survey)')
+        n_unique = _fmt(dedup['n_unique_objects'])
+        n_total = _fmt(dedup['total_survey_detections_loaded'])
+        n_multi = _fmt(dedup['n_multi_survey_matches_ge2'])
+        print(f'  criterion #7  8-way dedup         : 90  → 100 %  ({n_total} → {n_unique}, {n_multi} multi-survey)')
     print(f'  criterion #8  paper integration   : 96  → 100 %  (diff at sdss_landing_integration_diff.md)')
     print('  criterion #9  paper recompile      :  0  → TODO  (pod pdflatex x2)')
     print('  criterion #10 HF push              : 55  → TODO  (huggingface-cli upload)')
