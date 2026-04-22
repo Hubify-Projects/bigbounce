@@ -1,0 +1,100 @@
+{
+  "task": "P3-PATHC-DESI-KFOLD fire #152 score_desi_kfold.py local CPU dry-run",
+  "date": "2026-04-21",
+  "workdir_ephemeral": "/var/folders/4n/hqpz_03d477c1f_m2ks7x18c0000gn/T/desi_kfold_score_dryrun_uft088ma",
+  "synthetic_inputs": {
+    "n_shards": 3,
+    "rows_per_shard": 150,
+    "total_rows": 450,
+    "n_folds": 5,
+    "checkpoint_init": "fresh BigAE(n_in=496, n_lat=128) state_dicts, no training",
+    "batch_size": 64,
+    "num_workers": 0
+  },
+  "run1_per_fold_score_stats": {
+    "fold_0": {
+      "min": 0.8407673835754395,
+      "median": 0.9983751773834229,
+      "max": 1.1875499486923218
+    },
+    "fold_1": {
+      "min": 0.8434096574783325,
+      "median": 0.9987959861755371,
+      "max": 1.1857914924621582
+    },
+    "fold_2": {
+      "min": 0.8422284126281738,
+      "median": 0.996759295463562,
+      "max": 1.1833488941192627
+    },
+    "fold_3": {
+      "min": 0.8450149297714233,
+      "median": 0.9985713362693787,
+      "max": 1.1925240755081177
+    },
+    "fold_4": {
+      "min": 0.8407529592514038,
+      "median": 0.9987008571624756,
+      "max": 1.191847324371338
+    }
+  },
+  "run1_statuses": [
+    "scored",
+    "scored",
+    "scored",
+    "scored",
+    "scored"
+  ],
+  "run2_resume_statuses": [
+    "skipped_existing",
+    "skipped_existing",
+    "skipped_existing",
+    "skipped_existing",
+    "skipped_existing"
+  ],
+  "summary_schema": {
+    "top_level_keys": [
+      "batch_size",
+      "n_folds",
+      "n_rows_scored",
+      "num_workers",
+      "per_fold",
+      "task"
+    ],
+    "per_fold_keys_present": [
+      "checkpoint",
+      "fold_id",
+      "n_rows",
+      "output",
+      "score_max",
+      "score_p50",
+      "score_p99",
+      "score_p99_9",
+      "status",
+      "wall_time_s"
+    ]
+  },
+  "invariants": {
+    "I1_all_5_folds_written": true,
+    "I2_row_count_matches_total": true,
+    "I3_col_schema_exact": true,
+    "I4_dtypes_correct": true,
+    "I5_scores_nonnegative": true,
+    "I6_scores_finite": true,
+    "I7_run1_all_scored": true,
+    "I8_resume_all_skipped": true,
+    "I9_summary_schema": true,
+    "I10_per_fold_keys_on_scored": true,
+    "I11_n_rows_matches_total": true
+  },
+  "all_pass": true,
+  "derisks": [
+    "BigAE forward-pass numerical stability on random inputs (no NaN/Inf in reconstruction MSE)",
+    "DataLoader end-to-end (TensorDataset + batch_size=64 + num_workers=0 CPU path)",
+    "torch.load + load_state_dict on saved fresh-init checkpoints",
+    "fold_{k}_scores.parquet schema (source_id:str + ra:f64 + dec:f64 + anomaly_score:f32) matches aggregate_kfold.py consumer",
+    "scoring_summary.json aggregation across 5 folds with per-fold stats",
+    "resume-skip logic when fold_{k}_scores.parquet already exists",
+    "row-count alignment between concatenated shards and metadata parquet"
+  ]
+}
