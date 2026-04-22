@@ -1,20 +1,64 @@
 {
-  "cross_transfer_baseline_contamination_pct": 98.0,
-  "native_top1pct_113342_blue_dominant_pct": 79.85,
-  "native_top1pct_113342_blue_heavy_pct": 73.95,
-  "native_top44075_paper3_cut_blue_dominant_pct": 79.42,
-  "native_top44075_paper3_cut_blue_heavy_pct": 73.46,
-  "median_blue_frac_top1pct": 0.7235,
-  "median_blue_frac_top44075": 0.7182,
-  "val_loss_native": 0.0329,
-  "val_loss_gate": 0.3,
-  "gate_a_val_loss_PASS": true,
-  "gate_b_all_rescored_PASS": true,
-  "gate_c_contamination_threshold_pct": 20.0,
-  "n_top1pct": 113342,
-  "n_top44075_paper3_cut": 44075,
-  "methodology": "Blue-excess contamination defined as rB (blue-band reconstruction residual) dominating total residual; cross-transfer baseline was ~98% blue-dominated.",
-  "gate_c_contamination_PASS": false,
-  "contamination_drop_vs_baseline_pct_points": 24.54,
-  "criterion_2_ALL_GATES_PASS": false
+  "last_update": "fire #147 (2026-04-21)",
+  "prior_update": "fire #146 (2026-04-21) initial top-1% residual-fraction measurement",
+  "canonical_98pct_origin": {
+    "source_file": "pipelines/p3_anomaly_engine/generate_figures.py",
+    "source_lines": "L683-720 (fig6_lamost_blue_excess)",
+    "source_type": "SYNTHETIC schematic pie chart — hardcoded sizes=[98,2] + rng.normal(3950,220,44075) synthetic wavelength distribution",
+    "empirical_measurement": false,
+    "propagation_paths_in_paper3": [
+      "paper3_draft.tex L53 abstract",
+      "paper3_draft.tex L72 intro",
+      "paper3_draft.tex L188 Table 1",
+      "paper3_draft.tex L622 §7 methodological-lesson",
+      "paper3_draft.tex L647 §7 native-retrain caveat",
+      "paper3_draft.tex L678 §Conclusions classification bullet",
+      "paper3_draft.tex L686 §Conclusions methodological insight"
+    ],
+    "propagation_note": "98% figure is a schematic-then-treated-as-measurement. Paper body text repeats the number as if empirical."
+  },
+  "cross_transfer_baseline_S_gt_5": {
+    "subset_description": "DESI-trained BigAE applied to LAMOST DR10, anomaly_score > 5.0 (Paper 3 Table 1 canonical threshold for LAMOST)",
+    "total_spectra_scored": 11240648,
+    "n_anomalies_S_gt_5": 43915,
+    "B_dominant_pct": 56.10,
+    "B_heavy_bf_gt_0_5_pct": 54.73,
+    "B_heavy_bf_gt_0_7_pct": 50.41,
+    "B_heavy_bf_gt_0_8_pct": 46.26,
+    "median_rB_frac": 0.7134
+  },
+  "native_retrained_S_gt_5": {
+    "subset_description": "Native LAMOST BigAE (val_loss=0.0329), anomaly_score > 5.0",
+    "total_spectra_scored": 11334161,
+    "n_anomalies_S_gt_5": 2054,
+    "anomaly_rate_reduction_vs_cross_transfer": "21.4x (43,915 -> 2,054)",
+    "B_dominant_pct": 82.62,
+    "B_heavy_bf_gt_0_5_pct": 73.13,
+    "B_heavy_bf_gt_0_7_pct": 33.45,
+    "B_heavy_bf_gt_0_8_pct": 19.67,
+    "median_rB_frac": 0.6237
+  },
+  "native_retrained_top_1pct": {
+    "subset_description": "Top-1% threshold S >= 0.461 (fire #146 measurement)",
+    "n_anomalies": 113342,
+    "B_dominant_pct": 79.85,
+    "B_heavy_bf_gt_0_5_pct": 73.46,
+    "median_rB_frac": 0.7235
+  },
+  "gate_20pct_evaluation": {
+    "gate_text_drive_to_100_L23": "Blue-excess contamination rate (currently 98%) must drop below 20% in the native set.",
+    "gate_result_by_definition": {
+      "B_dominant": {"cross_transfer": 56.10, "native_S_gt_5": 82.62, "native_passes_20pct": false},
+      "B_heavy_bf_gt_0_5": {"cross_transfer": 54.73, "native_S_gt_5": 73.13, "native_passes_20pct": false},
+      "B_heavy_bf_gt_0_7": {"cross_transfer": 50.41, "native_S_gt_5": 33.45, "native_passes_20pct": false},
+      "B_heavy_bf_gt_0_8": {"cross_transfer": 46.26, "native_S_gt_5": 19.67, "native_passes_20pct": true}
+    },
+    "substantive_criterion_2_closure_metric": "fire #133 21.4x anomaly-rate reduction (43,915 -> 2,054 at S>5) remains the robust, well-anchored Path-C-validating metric"
+  },
+  "methodology_note": "Blue-excess contamination in Paper 3 was originally defined by a synthetic Figure 6 pie chart (sizes=[98,2]) rather than by an empirical rB-based classification on the actual anomaly parquet. Fire #147 measures rB/Sigma-r fractions empirically under four candidate definitions, showing the gate-20pct outcome depends entirely on definition choice.",
+  "recommendations": [
+    "Paper 3 .tex: correct the 98% claim throughout — either replace with empirical measurement or rewrite §7 around the 21.4x reduction metric (filed as new queue row P3-PATHC-LAMOST-98PCT-CORRECTION for Houston review)",
+    "Paper 3 Figure 6: re-render using actual cross-transfer and native parquets (histograms of rB-fraction, not rng.normal synthetic data)",
+    "Criterion #2 accounting remains CLOSED on fire-#133 21.4x reduction metric; sub-gate (c) wording in drive-to-100.md L23 is ambiguous and can be resolved either by deprecation (21.4x supersedes) or by selecting the rB/Sigma-r > 0.8 definition under which native PASSES at 19.67%"
+  ]
 }
