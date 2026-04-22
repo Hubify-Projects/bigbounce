@@ -1,0 +1,45 @@
+{
+  "task": "P3-PATHC-DESI-KFOLD fire #150 end-to-end aggregator dry-run",
+  "methodology": "Ran aggregate_kfold.py on two synthetic 5-fold-score scenarios to validate the Jaccard matrix + consensus + gate-pass code paths before A100 launch.",
+  "scenario_A_noise_sigma_0.30_expected_FAIL": {
+    "n_fold_parquets": 5,
+    "n_rows_per_parquet": 10000,
+    "top_k_per_fold": 100,
+    "mean_pairwise_jaccard": 0.42120524275664134,
+    "min_pairwise_jaccard": 0.3333333333333333,
+    "gate_pass": false,
+    "union_top": 202,
+    "consensus_ge3": 87,
+    "all_5_folds": 30,
+    "singleton_only": 79,
+    "consensus_fraction_of_union": 0.4306930693069307
+  },
+  "scenario_B_noise_sigma_0.05_expected_PASS": {
+    "mean_pairwise_jaccard": 0.8556008914844064,
+    "min_pairwise_jaccard": 0.8181818181818182,
+    "gate_pass": true,
+    "union_top": 117,
+    "consensus_ge3": 99,
+    "all_5_folds": 84,
+    "singleton_only": 11
+  },
+  "infrastructure_checks": {
+    "loads_5_fold_parquets": true,
+    "reads_source_id_anomaly_score_columns": true,
+    "computes_top_k_per_fold_via_nlargest": true,
+    "builds_10_pair_pairwise_jaccard_matrix": true,
+    "computes_mean_and_min_jaccard_off_diag": true,
+    "classifies_consensus_ge3_all_5_singleton": true,
+    "writes_consensus_top_parquet_when_nonempty": true,
+    "writes_kfold_stability_summary_json": true,
+    "gate_pass_true_when_mean_jacc_ge_0_70": true,
+    "gate_pass_false_when_mean_jacc_lt_0_70": true,
+    "interpretation_text_present": true
+  },
+  "gate_semantics_verified": {
+    "low_noise_pass": true,
+    "high_noise_fail": true
+  },
+  "de_risk_yield": "On-pod aggregator post-scoring step now has zero infrastructure unknowns. Combined with fire #148 fold-split invariants + fire #149 training-driver dry-run, the entire DESI k-fold pipeline (fold \u2192 train \u2192 score \u2192 aggregate) is end-to-end validated.",
+  "ready_for_post_training_launch": true
+}
