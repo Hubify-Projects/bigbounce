@@ -1,0 +1,52 @@
+{
+  "task_id": "P3-PATHC-DESI-KFOLD-DATA-RETRIEVAL",
+  "criterion": 4,
+  "config": {
+    "mode": "dry-run",
+    "output_dir": "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_dryrun_out",
+    "seed": 20260420,
+    "n_spectra": 47000,
+    "batch_size": 500,
+    "dr_catalog": "/workspace/bigbounce_scan/data/desi/dr1/zall-pix-dr1.fits",
+    "grid": {
+      "wmin_angstrom": 3600.0,
+      "wmax_angstrom": 9800.0,
+      "n_bins": 496
+    }
+  },
+  "target_id_manifest": {
+    "seed": 20260420,
+    "n_spectra": 47000,
+    "source_pool_size": 22500000,
+    "chosen_indices_preview": [
+      14750227,
+      22177748,
+      16840836,
+      4691112,
+      11353244,
+      18418215,
+      15689347,
+      236608,
+      11239552,
+      12795481
+    ],
+    "chosen_indices_count": 47000,
+    "permutation_checksum": 1812395110
+  },
+  "fetch_plan": {
+    "n_spectra": 47000,
+    "batch_size": 500,
+    "n_batches": 94,
+    "n_full_batches": 94,
+    "last_batch_size": 500,
+    "bytes_per_full_shard": 992000,
+    "expected_shard_total_bytes": 94240000,
+    "expected_shard_total_mb": 94.24
+  },
+  "expected_artifacts": [
+    "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_dryrun_out/target_ids.json",
+    "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_dryrun_out/shard_NNNNN.npy  (x 94)",
+    "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_dryrun_out/fetch_log.jsonl"
+  ],
+  "next_step": "Houston sign-off on pod-budget spend (~$3) and DR catalog path; then re-run with --live + --dr-catalog <path-to-zall-pix-dr1.fits>"
+}
