@@ -1,0 +1,71 @@
+{
+  "task": "P3-PATHC-DESI-KFOLD fire #148 local fold-construction dry-run",
+  "N_spectra_simulated": 47000,
+  "n_folds": 5,
+  "seed": 20260420,
+  "fold_sizes": [
+    9400,
+    9400,
+    9400,
+    9400,
+    9400
+  ],
+  "size_spread_max_minus_min": 0,
+  "invariants": {
+    "disjoint_partition": true,
+    "union_covers_all_indices": true,
+    "near_equal_sizes": true,
+    "seed_reproducible": true,
+    "seed_sensitive_to_change": true,
+    "no_train_holdout_leakage_any_fold": true
+  },
+  "per_fold_index_math": [
+    {
+      "fold_id": 0,
+      "n_holdout": 9400,
+      "n_inside_train": 33840,
+      "n_inside_val": 3760,
+      "holdout_disjoint_from_train": true,
+      "holdout_disjoint_from_val": true,
+      "train_val_disjoint": true
+    },
+    {
+      "fold_id": 1,
+      "n_holdout": 9400,
+      "n_inside_train": 33840,
+      "n_inside_val": 3760,
+      "holdout_disjoint_from_train": true,
+      "holdout_disjoint_from_val": true,
+      "train_val_disjoint": true
+    },
+    {
+      "fold_id": 2,
+      "n_holdout": 9400,
+      "n_inside_train": 33840,
+      "n_inside_val": 3760,
+      "holdout_disjoint_from_train": true,
+      "holdout_disjoint_from_val": true,
+      "train_val_disjoint": true
+    },
+    {
+      "fold_id": 3,
+      "n_holdout": 9400,
+      "n_inside_train": 33840,
+      "n_inside_val": 3760,
+      "holdout_disjoint_from_train": true,
+      "holdout_disjoint_from_val": true,
+      "train_val_disjoint": true
+    },
+    {
+      "fold_id": 4,
+      "n_holdout": 9400,
+      "n_inside_train": 33840,
+      "n_inside_val": 3760,
+      "holdout_disjoint_from_train": true,
+      "holdout_disjoint_from_val": true,
+      "train_val_disjoint": true
+    }
+  ],
+  "gate": "ALL_PASS",
+  "note": "N=47000 is the nominal published DESI training-sample size from desi_kfold_plan.md; actual fold sizes on-pod will be load_training_spectra()-determined once shards are available. This dry-run proves split_folds() + per-fold train/val/holdout index math is leak-free and reproducible under the documented seed convention (20260420 + fold_id)."
+}
