@@ -66,6 +66,12 @@ REPO_TYPE = "dataset"
 
 UPLOAD_FILES = [
     "sdss_dr18_pathc_native.parquet",
+    # Post-landing dedup refresh (fire #165 extension — criterion #7 landed fire #164
+    # produced true 8/8 numbers 388,693 → 378,480 unique / 637 multi-survey; these
+    # must replace the stale fire-#141 7/8 artefacts at 310,788 → 301,222 / 2 on HF).
+    "pathc_unique_objects.parquet",
+    "pathc_multi_survey_matches.parquet",
+    "pathc_dedup_summary.json",
     "README.md",
 ]
 
