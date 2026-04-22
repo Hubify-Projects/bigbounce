@@ -80,7 +80,7 @@ SURVEYS = [
      'pipelines/p3_anomaly_engine/pathc_neowise_ecliptic/neowise_pathc_masked_anomalies.parquet',
      'source_id'),
     ('sdss_dr18',
-     'pipelines/p3_anomaly_engine/hf_staging/sdss_native_anomalies.parquet',     # <- will appear post-rescore
+     'pipelines/p3_anomaly_engine/hf_staging/sdss_dr18_pathc_native.parquet',    # landed fire #164 — 77,905 top rows from sdss_landing_close.py
      None),
     ('lamost_dr10',
      'pipelines/p3_anomaly_engine/hf_staging/lamost_dr10_pathc_native.parquet',  # landed fire #133 — 113,342 top-1% rows

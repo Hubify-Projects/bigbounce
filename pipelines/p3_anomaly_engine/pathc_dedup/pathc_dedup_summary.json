@@ -14,46 +14,46 @@
   "surveys_loaded": [
     "desi_dr1",
     "lamost_dr10",
+    "sdss_dr18",
     "gaia_dr3",
     "neowise_pathc",
     "erosita_dr1",
     "planck_cmb",
     "act_dr6"
   ],
-  "surveys_pending": [
-    "sdss_dr18"
-  ],
+  "surveys_pending": [],
   "survey_load_status": {
     "desi_dr1": "loaded 195829 rows (dropped 0 non-finite)",
     "erosita_dr1": "loaded 298 rows (dropped 0 non-finite)",
     "planck_cmb": "loaded 200 rows (dropped 0 non-finite)",
     "gaia_dr3": "loaded 500 rows (dropped 0 non-finite)",
     "neowise_pathc": "loaded 419 rows (dropped 0 non-finite)",
-    "sdss_dr18": "pending (file not on disk: pipelines/p3_anomaly_engine/hf_staging/sdss_native_anomalies.parquet)",
+    "sdss_dr18": "loaded 77905 rows (dropped 0 non-finite)",
     "lamost_dr10": "loaded 113342 rows (dropped 0 non-finite)",
     "act_dr6": "loaded 200 rows (dropped 0 non-finite)"
   },
   "per_survey_detections": {
     "desi_dr1": 195829,
     "lamost_dr10": 113342,
+    "sdss_dr18": 77905,
     "gaia_dr3": 500,
     "neowise_pathc": 419,
     "erosita_dr1": 298,
     "planck_cmb": 200,
     "act_dr6": 200
   },
-  "total_survey_detections_loaded": 310788,
-  "n_unique_objects": 301222,
-  "compression_fraction": 0.03077982418883612,
-  "n_multi_survey_matches_ge2": 2,
+  "total_survey_detections_loaded": 388693,
+  "n_unique_objects": 378480,
+  "compression_fraction": 0.026275235211336453,
+  "n_multi_survey_matches_ge2": 637,
   "clusters_in_k_surveys": {
-    "1": 301220,
-    "2": 2
+    "1": 377843,
+    "2": 637
   },
   "paper3_table1_numbers_now": {
-    "survey_level_detections": 310788,
-    "unique_physical_objects": 301222,
-    "note": "Reported across 7 of 8 planned surveys. LAMOST DR10 native re-score COMPLETE fire #133 (113,342 top-1% rows loaded). SDSS DR18 native re-score remains in flight on pod `ktds4mkmzb7ven` at batch 345/471 (ETA ~13.7 h). ACT DR6 is loaded as cross-transfer top-200 (not Path-C native-retrained \u2014 CMB coverage is provided by the native Planck CMB retrain, fire #95) and is included in positional dedup only so ACT anomalies participate in multi-survey coincidence search. Re-run this script after each SDSS/LAMOST rescore completes \u2014 it degrades gracefully and picks up new survey parquets automatically."
+    "survey_level_detections": 388693,
+    "unique_physical_objects": 378480,
+    "note": "Reported across 8 of 8 planned surveys. LAMOST DR10 native re-score COMPLETE fire #133 (113,342 top-1% rows loaded). SDSS DR18 native re-score remains in flight on pod `ktds4mkmzb7ven` at batch 345/471 (ETA ~13.7 h). ACT DR6 is loaded as cross-transfer top-200 (not Path-C native-retrained \u2014 CMB coverage is provided by the native Planck CMB retrain, fire #95) and is included in positional dedup only so ACT anomalies participate in multi-survey coincidence search. Re-run this script after each SDSS/LAMOST rescore completes \u2014 it degrades gracefully and picks up new survey parquets automatically."
   },
   "note_multi_survey_meaning": "A multi-survey match at 5\" is rare and scientifically valuable: the same physical position flagged as anomalous by two independent pipelines is strong evidence of a genuine astrophysical feature rather than a survey-specific systematic."
 }
