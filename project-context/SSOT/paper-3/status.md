@@ -2,7 +2,13 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-17
+Last authoritative update: 2026-04-22 (Path-C rebuild, fire #174)
+
+> **⚠ PATH-C REBUILD IN FLIGHT — this file's original 2026-04-17 "99% arXiv-ready submit today" framing has been superseded.** Houston pushed back 2026-04-19 on the cross-transfer methodology and the "58.8% novel" headline; the Path-C "full Cadillac" rebuild replaces cross-transfer scans with native-retrained per-survey models, adds NEOWISE ecliptic mask, injection-recovery per survey, 8-way positional dedup at 5″, and DESI 5-fold OOS validation. **Current Path-C state (fire #170, 2026-04-22): 11 of 12 criteria CLOSED, 1 in-progress (#4 DESI k-fold at 70% — retrieval scaffold dry-run clean, Houston ack gates ~1-2h live SPARCL run), weighted sum 11.104/12 = 92.53%.** The per-fire authoritative state lives in [`project-context/SSOT/drive-to-100.md`](../drive-to-100.md) Loop log and [`project-context/SSOT/index.md`](../index.md) (cross-paper headline). The `27 MB PDF` referenced throughout this file is now **28 MB / 33 pp / 0 undef** (fire #168 recompile), the `319,443 sum-over-surveys anomalies` is preserved as the §7 before-after baseline, and post-Path-C 8-way dedup yields **378,480 unique physical objects + 637 multi-survey clusters** (fire #164). Read this status file for the 2026-04-16-era manuscript-content inventory; read the drive-to-100 Loop log for the current rebuild-criterion ledger.
+
+---
+
+Last pre-Path-C authoritative update: 2026-04-17
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper3_science_highlights.md`](../../paper3_science_highlights.md) — 10 contributions, N3×4 / N2×6.
 Supersedes: `wiki/entities/paper-3-anomaly-catalog.md` (stale since 2026-04-04 — claimed "~95% ready, LaTeX not yet compiled" when paper was in fact fully compiled 2026-04-15), `project-context/CURRENT_STATUS.md` (stale — claimed "~35%"), any site page referencing Paper 3.
@@ -310,7 +316,8 @@ Optional strengthening pass (Principle 10 DO-NOW sweep) would add ~2–3 weeks a
 | Principle-10 future-work cleanliness | 100 % | grep returns 0 "future work" hits; limitations are acknowledged gaps, not deferrals |
 | Version fragmentation | 90 % | two .tex files; trivial to resolve |
 | Status-file freshness elsewhere | 40 % | CURRENT_STATUS.md + wiki entry both stale — fixed by this SSOT |
-| Overall arXiv readiness | **99 %** | submit today |
+| Overall arXiv readiness (pre-Path-C, 2026-04-17) | **99 %** | manuscript-content axis at submit-today |
+| **Path-C rebuild (2026-04-22, fire #170)** | **92.53 %** | **11/12 criteria CLOSED · only #4 DESI k-fold remains · Houston ack gates live SPARCL** |
 
 ---
 
