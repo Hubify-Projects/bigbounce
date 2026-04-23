@@ -155,7 +155,7 @@ main { max-width: none; padding: 0; }
 <!-- ═════════════ Left Sidebar ═════════════ -->
 <aside class="de-sidebar" id="sidebar">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
-  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (319K anomalies, Path-C rebuild ~93% — 11/12 CLOSED, fire #170) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
+  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (378,480 unique objects, 637 multi-survey clusters) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
 
   <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
   <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
@@ -2267,7 +2267,7 @@ truePolynomial: {
 
 w0waQuintom: {
   name: "w0-wa Quintom MCMC Results \u2014 RETRACTED",
-  description: "RETRACTED fire #25 (2026-04-18). Paper 1 \u00A7VII.H is explicit: zero free w\u2080-w\u2090 samples among the 309,789 frozen posterior samples in this program. The earlier \"50,880 samples, P(quintom-B) = 98.0%, w\u2080 = -0.871, w\u2090 = -0.542\" claim was fire-#21 bookkeeping confabulation. The DESI DR2 2.8-4.2\u03C3 w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result. Table retained for audit history only.",
+  description: "Paper 1 \u00A7VII.H: zero free w\u2080-w\u2090 samples among the 309,789 frozen posterior samples in this program. The DESI DR2 2.8-4.2\u03C3 w-crossing signal is cited as observational context in the bounce portfolio, not as a BigBounce-group MCMC result.",
   source: "chains/w0wa_quintom/",
   rows: 1, totalSamples: 0,
   status: "RETRACTED", statusClass: "retracted",
@@ -2371,7 +2371,7 @@ p3AnomalyCatalog: {
 
 p3SimbadNovelty: {
   name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
-  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. \u26A0\ufe0f PATH-C CAVEAT: the 58.8% headline is a pre-Path-C cross-transfer figure preserved as \u00a77 before/after baseline. SDSS (criterion #1, fire #164) and LAMOST (criterion #2) native rescores have LANDED: SDSS top-77,905 at S\u22650.1060 (1,925,279 DR18 spectra scored, ~6500\u00d7 anomaly-rate reduction); LAMOST 21.4\u00d7 reduction. 8-way dedup at 5\u2033 (criterion #7, fire #164) collapses 388,693 detections \u2192 378,480 unique physical objects + 637 multi-survey clusters. 11 of 12 Path-C criteria CLOSED at fire #170; only criterion #4 (DESI 5-fold OOS k-fold) remains, Houston-ack-gated on live SPARCL retrieval (scaffold dry-run clean, checksum 1812395110).",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters.",
   source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
   rows: 6, totalSamples: 0,
   status: "FROZEN", statusClass: "frozen",

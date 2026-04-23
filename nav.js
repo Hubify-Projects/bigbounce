@@ -106,11 +106,9 @@
     + '<button class="sidebar-close">&laquo;</button>'
     + '<nav class="sidebar-nav">'
 
-    // ── Core story (always expanded) ──
+    // ── Core story (always expanded, public) ──
     + '<a href="' + p('index.html') + '" class="' + sidebarActiveClass('index', 'sidebar-section') + '" data-page="index">research/</a>'
     + '<a href="' + p('paper.html') + '" class="' + sidebarActiveClass('paper', 'sidebar-link') + '" data-page="paper">papers</a>'
-    + '<a href="' + p('ssot.html') + '" class="' + sidebarActiveClass('ssot', 'sidebar-link') + '" data-page="ssot">ssot &amp; tasks</a>'
-    + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">key findings</a>'
     + '<a href="' + p('explained.html') + '" class="' + sidebarActiveClass('explained', 'sidebar-link') + '" data-page="explained">explainer</a>'
 
     + '<div class="sidebar-group-label" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">data &amp; explore</div>'
@@ -126,9 +124,7 @@
     + '<a href="' + p('figures.html') + '" class="' + sidebarActiveClass('figures', 'sidebar-link') + '" data-page="figures">figures</a>'
     + '<a href="' + p('glossary.html') + '" class="' + sidebarActiveClass('glossary', 'sidebar-link') + '" data-page="glossary">glossary &amp; equations</a>'
     + '<a href="' + p('articles.html') + '" class="' + sidebarActiveClass('articles', 'sidebar-link') + '" data-page="articles">articles</a>'
-    + '<a href="' + p('methodology.html') + '" class="' + sidebarActiveClass('methodology', 'sidebar-link') + '" data-page="methodology">methodology</a>'
     + '<a href="' + p('mathematics.html') + '" class="' + sidebarActiveClass('mathematics', 'sidebar-link') + '" data-page="mathematics">mathematics</a>'
-    + '<a href="' + p('sources.html') + '" class="' + sidebarActiveClass('sources', 'sidebar-link') + '" data-page="sources">sources</a>'
     + '</div>'
 
     + '<div class="sidebar-group-label collapsed" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">visualize</div>'
@@ -141,9 +137,13 @@
     + '<div class="sidebar-sep"></div>'
     + '<div class="sidebar-group-label sidebar-internal-label' + internalOpenClass + '" style="opacity:0.55" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">' + lockIcon + ' &nbsp;internal</div>'
     + '<div class="sidebar-group sidebar-internal-group' + internalOpenClass + '">'
+    + '<a href="' + p('ssot.html') + '" class="' + sidebarActiveClass('ssot', 'sidebar-link') + '" data-page="ssot">ssot &amp; tasks</a>'
+    + '<a href="' + p('contributions.html') + '" class="' + sidebarActiveClass('contributions', 'sidebar-link') + '" data-page="contributions">key findings</a>'
     + '<a href="' + p('activity.html') + '" class="' + sidebarActiveClass('activity', 'sidebar-link') + '" data-page="activity">activity</a>'
     + '<a href="' + p('status.html') + '" class="' + sidebarActiveClass('status', 'sidebar-link') + '" data-page="status">status</a>'
     + '<a href="' + p('projects.html') + '" class="' + sidebarActiveClass('projects', 'sidebar-link') + '" data-page="projects">projects</a>'
+    + '<a href="' + p('methodology.html') + '" class="' + sidebarActiveClass('methodology', 'sidebar-link') + '" data-page="methodology">methodology</a>'
+    + '<a href="' + p('sources.html') + '" class="' + sidebarActiveClass('sources', 'sidebar-link') + '" data-page="sources">sources</a>'
     + '<a href="' + p('speculations.html') + '" class="' + sidebarActiveClass('speculations', 'sidebar-link') + '" data-page="speculations">speculations</a>'
     + '<a href="' + p('infrastructure.html') + '" class="' + sidebarActiveClass('infrastructure', 'sidebar-link') + '" data-page="infrastructure">infrastructure</a>'
     + '<a href="' + p('versions.html') + '" class="' + sidebarActiveClass('versions', 'sidebar-link') + '" data-page="versions">versions</a>'
@@ -164,18 +164,16 @@
     + '<span class="topbar-right">Houston Golden &middot; Independent Researcher</span>'
     + '</div>';
 
-  // ── Build inline nav (public only) ──
+  // ── Build inline nav (public only — minimal 6-link public surface) ──
   var inlineNav = '<nav><div class="nav-inner">'
     + '<a href="' + p('index.html') + '" class="brand">bigbounce</a>'
     + '<button class="nav-toggle" aria-label="Menu">' + menuIcon + '</button>'
     + '<div class="nav-links">'
     + '<a href="' + p('index.html') + '" data-page="index"' + activeAttr('index') + '>research</a>'
     + '<a href="' + p('paper.html') + '" data-page="paper"' + activeAttr('paper') + '>papers</a>'
-    + '<a href="' + p('ssot.html') + '" data-page="ssot"' + activeAttr('ssot') + '>ssot</a>'
-    + '<a href="' + p('contributions.html') + '" data-page="contributions"' + activeAttr('contributions') + '>findings</a>'
+    + '<a href="' + p('explained.html') + '" data-page="explained"' + activeAttr('explained') + '>explainer</a>'
     + '<a href="' + p('data-explorer.html') + '" data-page="data-explorer"' + activeAttr('data-explorer') + '>data</a>'
     + '<a href="' + p('figures.html') + '" data-page="figures"' + activeAttr('figures') + '>figures</a>'
-    + '<a href="' + p('explained.html') + '" data-page="explained"' + activeAttr('explained') + '>explainer</a>'
     + '<a href="' + p('glossary.html') + '" data-page="glossary"' + activeAttr('glossary') + '>glossary</a>'
     + '</div>'
     + '<span class="nav-meta">Houston Golden &middot; gr-qc</span>'
