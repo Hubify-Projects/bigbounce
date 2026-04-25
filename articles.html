@@ -18,9 +18,13 @@
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <link rel="stylesheet" href="style.css">
 <style>
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   .card[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
+  }
+  /* Hide the fixed-width thumbnail divs when grid collapses */
+  .card [style*="width:120px"] {
+    display: none !important;
   }
 }
 </style>

@@ -249,6 +249,12 @@
   <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline 2 &middot; Galaxy Chirality Catalog &middot; DESI Legacy Survey DR8</p>
   <h1>Galaxy Chirality Explorer</h1>
   <p class="subtitle">Browse the largest galaxy chirality catalog ever produced: 8,474,531 galaxies classified by spiral chirality using a ViT-Small vision transformer with test-time equivariant averaging. Dipole significance: 0.43&sigma; (null &mdash; no parity violation detected). CW/(CW+CCW) = 0.4974, all sky regions within 0.5% of 50/50. Search by sky position, filter by classification and confidence, and explore the all-sky distribution.</p>
+  <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+    <a href="public/papers/chirality_catalog_paper.pdf" target="_blank" class="btn btn-primary" style="font-size:13px;">Read Paper 4 (PDF)</a>
+    <a href="paper.html" class="btn btn-secondary" style="font-size:13px;">All Papers</a>
+    <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" class="btn btn-secondary" style="font-size:13px;">Model on HuggingFace</a>
+    <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" class="btn btn-secondary" style="font-size:13px;">Dataset on HuggingFace</a>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════ STAT CARDS ═══════════════════════════════ -->
@@ -286,7 +292,7 @@
 </div>
 
 <!-- ═══════════════════════════════ KEY FINDINGS ═══════════════════════════════ -->
-<div style="margin: 32px 0; padding: 22px 24px; border: 1px solid var(--border); border-left: 4px solid #1e40af;">
+<div class="callout callout-info" style="margin: 32px 0; padding: 22px 24px;">
   <h2 style="border: none; margin: 0 0 12px; padding: 0;">Key Science Findings</h2>
   <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Comprehensive analysis of 8,474,531 galaxies &mdash; the largest galaxy chirality catalog ever produced. 100% coordinate match with GZ DESI Zenodo catalog. 949,584 high-confidence spirals (confidence &gt; 0.6).</p>
 
@@ -297,8 +303,8 @@
       <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: 0.43&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected.</p>
     </div>
 
-    <div style="padding: 14px 16px; border: 1px solid #bfdbfe; background: #eff6ff;">
-      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; color: #1d4ed8; margin-bottom: 6px;">Hemisphere Asymmetry: 3.05&sigma;</div>
+    <div class="callout callout-info" style="padding: 14px 16px;">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Hemisphere Asymmetry: 3.05&sigma;</div>
       <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">p = 0.002. North CW = 49.81%, South CW = 49.64%, difference 0.17%. Does <strong>not</strong> survive look-elsewhere correction.</p>
     </div>
 
@@ -307,8 +313,8 @@
       <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Marginal signal at the fifth multipole. Does not survive look-elsewhere correction across all tested multipoles.</p>
     </div>
 
-    <div style="padding: 14px 16px; border: 1px solid #fecaca; background: #fef2f2;">
-      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; color: #dc2626; margin-bottom: 6px;">Shamir 3% Claim: REFUTED</div>
+    <div class="callout callout-retracted" style="padding: 14px 16px;">
+      <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Shamir 3% Claim: REFUTED</div>
       <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Our maximum regional asymmetry is 0.47% &mdash; 7&times; smaller than Shamir's claimed 3%. The claimed signal is not reproducible with proper bias control.</p>
     </div>
 
@@ -622,12 +628,12 @@
   <div class="gx-pipeline-grid">
     <div class="gx-pipeline-item"><strong>Model:</strong> ViT-Small + 3-class head</div>
     <div class="gx-pipeline-item"><strong>Training data:</strong> GZ1 + CE-ResNet + synthetic (26.6K images)</div>
-    <div class="gx-pipeline-item"><strong>Bias tests:</strong> <span style="color: #166534;">8/8 PASS</span></div>
+    <div class="gx-pipeline-item"><strong>Bias tests:</strong> <span class="chip chip-sm chip-novel">8/8 PASS</span></div>
     <div class="gx-pipeline-item"><strong>Equivariant CW/(CW+CCW):</strong> 0.4974</div>
     <div class="gx-pipeline-item"><strong>Test accuracy:</strong> 93.7%</div>
     <div class="gx-pipeline-item"><strong>Source images:</strong> DESI Legacy Survey DR8/DR9</div>
     <div class="gx-pipeline-item"><strong>HuggingFace:</strong> <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a></div>
-    <div class="gx-pipeline-item"><strong>Status:</strong> <span style="color: #166534; font-weight: 600;">COMPLETE</span> &mdash; Catalog C production run</div>
+    <div class="gx-pipeline-item"><strong>Status:</strong> <span class="chip chip-sm chip-novel">COMPLETE</span> &mdash; Catalog C production run</div>
     <div class="gx-pipeline-item"><strong>Dipole:</strong> 0.43&sigma; (null &mdash; no significant parity violation)</div>
     <div class="gx-pipeline-item"><strong>Runtime:</strong> 4.1 hours on H200 (32&times; DataLoader speedup)</div>
     <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 (confidence &gt; 0.6)</div>
@@ -686,9 +692,9 @@
   </div>
 
   <!-- Hemisphere detail -->
-  <div style="margin-top: 20px; padding: 16px 20px; border: 1px solid #bfdbfe; background: #eff6ff;">
-    <h3 style="font-family: var(--font-sans); font-size: 14px; margin: 0 0 8px; font-weight: 600; color: #1d4ed8;">Hemisphere Asymmetry Detail</h3>
-    <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.7;">The strongest individual signal is a north-south hemisphere asymmetry at 3.05&sigma; (p = 0.002): northern hemisphere CW fraction = 49.81%, southern hemisphere CW fraction = 49.64%, a difference of 0.17 percentage points. This is a <strong>marginal</strong> result &mdash; it does not survive look-elsewhere correction across the multiple tests performed (dipole, hemisphere, multipoles l=1&ndash;10, CMB alignment, scale dependence). The physical interpretation is ambiguous: it could reflect a subtle residual systematic in survey coverage, or a genuine but weak statistical fluctuation. It does <strong>not</strong> constitute evidence for large-scale parity violation.</p>
+  <div class="callout callout-info" style="margin-top: 20px;">
+    <h3 style="font-family: var(--font-sans); font-size: 14px; margin: 0 0 8px; font-weight: 600;">Hemisphere Asymmetry Detail</h3>
+    <p style="font-size: 13px; margin: 0; line-height: 1.7;">The strongest individual signal is a north-south hemisphere asymmetry at 3.05&sigma; (p = 0.002): northern hemisphere CW fraction = 49.81%, southern hemisphere CW fraction = 49.64%, a difference of 0.17 percentage points. This is a <strong>marginal</strong> result &mdash; it does not survive look-elsewhere correction across the multiple tests performed (dipole, hemisphere, multipoles l=1&ndash;10, CMB alignment, scale dependence). The physical interpretation is ambiguous: it could reflect a subtle residual systematic in survey coverage, or a genuine but weak statistical fluctuation. It does <strong>not</strong> constitute evidence for large-scale parity violation.</p>
   </div>
 </div>
 

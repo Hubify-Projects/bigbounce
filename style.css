@@ -365,13 +365,44 @@ footer p { margin: 2px 0; color: var(--text-muted); }
   .sidebar-close { display: block; }
   .topbar { left: 0; padding-left: 40px; }
   .topbar-right { display: none; }
-  .site-content { margin-left: 0; }
-  main, main.container, main.wide-container { padding: 24px 20px 40px; max-width: none; }
+  .site-content { margin-left: 0; overflow-x: hidden; }
+  main, main.container, main.wide-container { padding: 24px 20px 40px; max-width: none; overflow-x: hidden; }
   .grid, .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  body { font-size: 14px; }
+  body { font-size: 14px; overflow-x: hidden; }
   h1 { font-size: 1.35rem; }
   .hero h1 { font-size: 1.35rem; }
+  .hero .meta { flex-wrap: wrap; gap: 6px; }
   .stat-value { font-size: 1.25rem; }
+
+  /* ── Table horizontal scroll on mobile ── */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  thead th, tbody td { padding: 6px 8px; font-size: 11px; }
+  thead th { white-space: nowrap; }
+
+  /* ── Code + long text overflow ── */
+  code { word-break: break-all; font-size: 12px; }
+  pre { font-size: 12px; padding: 10px 12px; }
+
+  /* ── Override inline grid-template-columns on mobile ── */
+  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+  /* ── Cards / stat cards tighter on mobile ── */
+  .card { padding: 14px 16px; }
+  .stat { padding: 12px 10px; }
+  .abstract { padding: 14px 16px; }
+  .equation-display { padding: 14px 16px; }
+
+  /* ── Callouts tighter ── */
+  .callout { padding: 10px 12px; font-size: 13px; }
+
+  /* ── Badges wrap ── */
+  .badge { font-size: 10px; }
+
   /* Overlay behind sidebar on mobile */
   .sidebar.open::after {
     content: ''; position: fixed; top: 0; left: 240px; right: 0; bottom: 0;
@@ -382,6 +413,17 @@ footer p { margin: 2px 0; color: var(--text-muted); }
   .hero h1 { font-size: 1.15rem; }
   .topbar { font-size: 10px; padding: 0 12px 0 40px; }
   .topbar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  main, main.container, main.wide-container { padding: 16px 14px 32px; }
+  .card { padding: 12px 14px; }
+  .stat-value { font-size: 1.1rem; }
+  .stat-label { font-size: 9px; }
+  h2 { font-size: 11px; }
+  p { font-size: 13px; }
+  thead th, tbody td { padding: 5px 6px; font-size: 10px; }
+  code { font-size: 11px; padding: 1px 3px; }
+  .abstract { font-size: 12.5px; padding: 12px 14px; }
+  .callout { font-size: 12px; padding: 8px 10px; }
+  .btn { font-size: 11px; padding: 5px 10px; }
 }
 
 /* ── Legacy compat ── */
@@ -619,6 +661,44 @@ tbody tr.row-retracted    { background: rgba(185,28,28,0.06); }
 
   /* Purple family */
   :root:not([data-theme="light"]) .gl-type-theory { background: rgba(124,58,237,0.14) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
+
+  /* Blue family — .feed-tag.active, .priority-now, .de-sidebar-item.active,
+     .de-sidebar-badge.active-badge, .status-badge.active-badge, .gl-type-param,
+     .data-table th:hover, .data-table tr:hover td */
+  :root:not([data-theme="light"]) .feed-tag.active,
+  :root:not([data-theme="light"]) .priority-now,
+  :root:not([data-theme="light"]) .de-sidebar-badge.active-badge,
+  :root:not([data-theme="light"]) .status-badge.active-badge,
+  :root:not([data-theme="light"]) .gl-type-param { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+  :root:not([data-theme="light"]) .de-sidebar-item.active { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; }
+  :root:not([data-theme="light"]) .data-table th:hover { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; }
+  :root:not([data-theme="light"]) .data-table tr:hover td { background: rgba(37,99,235,0.08) !important; }
+
+  /* Gray family — .gl-type-code */
+  :root:not([data-theme="light"]) .gl-type-code { background: rgba(161,161,170,0.14) !important; color: #d4d4d8 !important; }
+
+  /* Amber addition — .gl-type-dataset */
+  :root:not([data-theme="light"]) .gl-type-dataset { background: rgba(217,119,6,0.16) !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4) !important; }
+
+  /* datasets.html — .honest-note (amber), .status-paused (amber) */
+  :root:not([data-theme="light"]) .honest-note,
+  :root:not([data-theme="light"]) .status-paused { background: rgba(217,119,6,0.12) !important; border-color: rgba(251,191,36,0.3) !important; }
+  :root:not([data-theme="light"]) .honest-note p,
+  :root:not([data-theme="light"]) .honest-note strong { color: #fbbf24 !important; }
+
+  /* datasets.html — .contested-badge, .contested-box (red) */
+  :root:not([data-theme="light"]) .contested-badge { background: rgba(185,28,28,0.16) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+  :root:not([data-theme="light"]) .contested-box { border-color: rgba(252,165,165,0.5) !important; }
+
+  /* datasets.html — .status-frozen (green) */
+  :root:not([data-theme="light"]) .status-frozen { background: rgba(22,163,74,0.14) !important; color: #86efac !important; border-color: rgba(74,222,128,0.4) !important; }
+
+  /* datasets.html — .status-running (blue) */
+  :root:not([data-theme="light"]) .status-running { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+
+  /* activity.html — .status-label, .status-banner border */
+  :root:not([data-theme="light"]) .status-label { color: #93c5fd !important; }
+  :root:not([data-theme="light"]) .status-banner { border-left-color: rgba(147,197,253,0.5) !important; }
 }
 
 /* Same but for manual [data-theme="dark"] */
@@ -657,6 +737,26 @@ tbody tr.row-retracted    { background: rgba(185,28,28,0.06); }
 [data-theme="dark"] .de-sidebar-badge.ref,
 [data-theme="dark"] .status-badge.ref { background: rgba(234,179,8,0.14) !important; color: #fde68a !important; border-color: rgba(253,230,138,0.4) !important; }
 [data-theme="dark"] .gl-type-theory { background: rgba(124,58,237,0.14) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
+[data-theme="dark"] .feed-tag.active,
+[data-theme="dark"] .priority-now,
+[data-theme="dark"] .de-sidebar-badge.active-badge,
+[data-theme="dark"] .status-badge.active-badge,
+[data-theme="dark"] .gl-type-param { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+[data-theme="dark"] .de-sidebar-item.active { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; }
+[data-theme="dark"] .data-table th:hover { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; }
+[data-theme="dark"] .data-table tr:hover td { background: rgba(37,99,235,0.08) !important; }
+[data-theme="dark"] .gl-type-code { background: rgba(161,161,170,0.14) !important; color: #d4d4d8 !important; }
+[data-theme="dark"] .gl-type-dataset { background: rgba(217,119,6,0.16) !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4) !important; }
+[data-theme="dark"] .honest-note,
+[data-theme="dark"] .status-paused { background: rgba(217,119,6,0.12) !important; border-color: rgba(251,191,36,0.3) !important; }
+[data-theme="dark"] .honest-note p,
+[data-theme="dark"] .honest-note strong { color: #fbbf24 !important; }
+[data-theme="dark"] .contested-badge { background: rgba(185,28,28,0.16) !important; color: #fca5a5 !important; border-color: rgba(252,165,165,0.4) !important; }
+[data-theme="dark"] .contested-box { border-color: rgba(252,165,165,0.5) !important; }
+[data-theme="dark"] .status-frozen { background: rgba(22,163,74,0.14) !important; color: #86efac !important; border-color: rgba(74,222,128,0.4) !important; }
+[data-theme="dark"] .status-running { background: rgba(37,99,235,0.14) !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+[data-theme="dark"] .status-label { color: #93c5fd !important; }
+[data-theme="dark"] .status-banner { border-left-color: rgba(147,197,253,0.5) !important; }
 
 /* ══════════════════════════════════
    Print Styles
