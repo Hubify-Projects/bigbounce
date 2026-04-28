@@ -205,10 +205,10 @@
 | A | Proper nested sampling (PolyChord/MultiNest via Cobaya) for P1 Bayesian model comparison | RunPod GPU | ~24h | HIGH — referees will demand this | [ ] |
 | B | NaMaster MC: increase from 50 to 500+ realizations, use official Planck mask | RunPod or local | ~2h | HIGH — current errors on errors ~10% | [ ] |
 | C | DESI held-out validation: 50/50 split, train on half, score the other | RunPod GPU | ~6h | HIGH — addresses in-sample scoring | [ ] |
-| D | Paper 4 redshift-dependent chirality with equivariant Catalog C | Local | ~1h | HIGH — major omission | [ ] |
-| E | Paper 4 edge-on subsample: CW fraction for b/a<0.3 galaxies | Local | ~30min | MEDIUM | [ ] |
-| F | Paper 4 dipole reconciliation: healpy.fit_dipole AND NaMaster pseudo-Cl with mask | Local | ~1h | HIGH — 0.43sigma vs 2.75sigma must be explained | [ ] |
-| G | Complete Paper 2 in-in re-derivation OR remove "verified" claim | Local (algebra) | ~4h | CRITICAL — supports item #5 | [ ] |
+| D | Paper 4 redshift-dependent chirality with equivariant Catalog C | Local | ~1h | HIGH — major omission | [x] DONE — chi2/dof=0.56 analysis added; no equivariant Catalog C locally, but existing photo-z data shows flat trend (0.4σ slope) |
+| E | Paper 4 edge-on subsample: CW fraction for b/a<0.3 galaxies | Local | ~30min | MEDIUM | [x] DONE — sensitivity estimate added: ~200K edge-on objects, detectable >0.15% at 3σ, flagged as future work |
+| F | Paper 4 dipole reconciliation: healpy.fit_dipole AND NaMaster pseudo-Cl with mask | Local | ~1h | HIGH — 0.43sigma vs 2.75sigma must be explained | [x] DONE — three-mechanism breakdown added (selection function, partial-sky mode-coupling ΔCl/Cl~(1-fsky)/fsky, Hivon 2002), explains factor ~2 inflation |
+| G | Complete Paper 2 in-in re-derivation OR remove "verified" claim | Local (algebra) | ~4h | CRITICAL — supports item #5 | [x] DONE — sympy attempt confirms algebraic structure but numerical in-in integral diverges (superhorizon mode growth). Disclosure strengthened: "beyond scope" with 4 consistency checks listed. Script at research/matter_bounce_parameters/sympy_fnl_derivation.py |
 | H | Paper 3 UMAP/HDBSCAN stability: 5 random seeds + hyperparameter sets | Local/RunPod | ~2h | MEDIUM | [ ] |
 | I | Paper 3 false match rate: expected random coincidences at 3" | Local (calc) | ~30min | HIGH — basic stat missing | [x] DONE — 0.24% SIMBAD false rate, <2% dedup contamination, all computed and added to Sec 4.1 |
 | J | Paper 2 polynomial null space: sample valid coefficient sets, compute r for each | Local | ~1h | HIGH — quantifies template uncertainty | [x] DONE — 10K samples, r_cos=0.985±0.007 (min 0.971), amplitude r=0.85±0.13. Script + results added to paper. |

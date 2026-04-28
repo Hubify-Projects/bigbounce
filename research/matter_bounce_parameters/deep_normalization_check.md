@@ -105,14 +105,54 @@ In priority order:
 
 ---
 
-## Recommended Paper Wording
+## Phase 2: Sympy Re-derivation Attempt (2026-04-27)
 
-Current: "90% confidence in -35/8"
-Recommended: **No change.** The deep check neither strengthened nor weakened this.
+**Attempted:** Full symbolic/numerical re-derivation using sympy + mpmath
+(`sympy_fnl_derivation.py`).
 
-Current: "r = 0.84 ± 0.02"
-Recommended: **Add caveat** about polynomial underdetermination:
-"r = 0.84 ± 0.02 (statistical) ± 0.01 (polynomial coefficient systematic)"
+### What worked
+- **Algebraic verification (PART 1):** Both coefficient sets reproduce exact
+  benchmark values via polynomial evaluation. Squeezed limit -35/8 confirmed
+  algebraically (the r^2 coefficient of P(r*k,k,k) gives exactly -35/8 through
+  the B_NL formula for coefficients (2,7,3,-12,-69,19)).
+- **Mode function derivative verified** symbolically in sympy.
+- **Cai doubled coefficients (6,2,-18,10,-132,18) confirmed to NOT satisfy the
+  benchmarks** (equilateral gives -585/64 not -255/64). This confirms the paper's
+  footnote that these are single-ordering values, not a second valid solution.
 
-Current: "first explicit quantification of template mismatch"
-Recommended: **This claim stands.** Even with coefficient uncertainty, the mismatch is real and quantified.
+### What failed
+- **Numerical in-in integral (PART 5):** The vertex-level integration produces
+  nonsensical values (~10^23). Root cause: the mode functions g(x) ~ 1/x^3
+  diverge at late times (x -> 0-) for matter contraction. The physical bispectrum
+  is finite only after delicate cancellations between the four vertex terms AND the
+  external-leg normalization. Standard numerical quadrature (mpmath tanh-sinh)
+  cannot handle these cancellations without either:
+  - (a) Analytic regularization of the x -> 0 limit before integrating
+  - (b) Combining all vertex integrands into a single expression and extracting
+    the finite part algebraically
+  - (c) Working in cosmic time (as Cai does) where the mode functions are better behaved
+
+### Assessment
+A complete independent re-derivation is a multi-day specialized calculation requiring:
+1. Careful treatment of the IR (late-time) and UV (early-time) regulators
+2. Analytic extraction of divergent terms that cancel between vertices
+3. Either Cai's cosmic-time approach or a regulated conformal-time approach
+
+This is beyond what can be done in a single automated session. The paper now
+explicitly scopes this as "beyond the scope of this work" with strengthened
+disclosure of exactly what was and was not verified.
+
+---
+
+## Recommended Paper Wording (UPDATED 2026-04-27)
+
+**Paper 2 Sec. II.C (Assumptions)** now contains strengthened disclosure:
+- Explicitly states re-derivation is "beyond the scope of this work"
+- Explains WHY (oscillatory integrals, late-time divergences, inter-vertex cancellations)
+- Notes only Cai et al. and Li & Brandenberger have completed the full derivation
+- Lists the specific consistency checks that provide indirect validation
+- States forecasts "rely on the Cai et al. value as input, validated through cross-checks
+  rather than through a fully independent derivation"
+
+This is scientifically honest and appropriate for a forecasting paper that uses an
+externally derived prediction as input.

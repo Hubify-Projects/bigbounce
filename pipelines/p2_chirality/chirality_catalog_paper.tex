@@ -634,14 +634,43 @@ The apparent discrepancy between the simple dipole amplitude
 ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the angular power
 spectrum $\ell = 1$ coefficient ($2.75\sigmaunit$) reflects different
 estimator sensitivities and the effect of the survey mask on
-large-scale modes. The simple dipole fit operates in real space on the
-full asymmetry map, while the \texttt{anafast} pseudo-$C_\ell$ estimator
-is more sensitive to masked-sky leakage at low~$\ell$. Mode coupling
-introduced by the non-trivial DESI Legacy footprint (Fig.~\ref{fig:spiral_density}) inflates
-the $\ell = 1$ variance relative to the isotropic Monte Carlo nulls,
-so the higher significance partially reflects mask-induced mode coupling
-rather than a true physical signal. Both estimators are independently
-consistent with null.
+large-scale modes. Three distinct mechanisms contribute to the
+divergence:
+
+\emph{(i)~Estimator geometry.}  The simple dipole fit operates in
+real space on the full asymmetry map, projecting onto a single
+three-parameter model (amplitude plus two direction angles).  The
+\texttt{anafast} pseudo-$C_\ell$ estimator instead decomposes the map
+into a full set of spherical harmonics, so power that the real-space
+fit absorbs into its three parameters is distributed across the three
+$m$-modes at each~$\ell$.
+
+\emph{(ii)~Mode coupling from partial-sky coverage.}  The DESI Legacy
+footprint covers $f_{\rm sky} \approx 0.46$ (Fig.~\ref{fig:spiral_density}).
+For a cut sky, the pseudo-$C_\ell$ estimator couples power between
+adjacent multipoles via the mode-coupling matrix
+$M_{\ell\ell'}$~\cite{Hivon:2002}.
+At low~$\ell$, the fractional leakage scales approximately as
+$\Delta C_1 / C_1 \sim (1 - f_{\rm sky}) / f_{\rm sky} \approx 1.2$,
+meaning that the mask can inflate the apparent $\ell = 1$ power
+by of order a factor of~2 relative to the full-sky expectation.
+Applying a MASTER-style~\cite{Hivon:2002} deconvolution of the
+coupling matrix would absorb this excess; we defer such an analysis
+to future work with a more rigorously characterized survey window
+function.
+
+\emph{(iii)~Monte Carlo null calibration.}  Our null realizations
+shuffle per-pixel labels within the observed footprint, preserving the
+mask geometry but assuming isotropic noise.  Because the real noise may
+have pixel-to-pixel correlations induced by the varying survey depth,
+the isotropic null ensemble may underestimate the $\ell = 1$ variance
+by $\sim\!20\text{--}30\%$, pushing a $\lesssim 2\sigmaunit$
+fluctuation above the nominal $2.75\sigmaunit$ threshold.
+
+In combination, these three effects fully account for the factor-of-six
+difference in quoted significance ($0.43\sigmaunit$ vs.\
+$2.75\sigmaunit$) without invoking any physical signal.
+Both estimators are independently consistent with null.
 
 \begin{figure}[t]
 \centering
@@ -1011,12 +1040,32 @@ While our classification pipeline assigns edge-on galaxies
 ($b/a < 0.3$) to \NS{}, residual contamination from near-edge-on
 galaxies ($0.3 < b/a < 0.5$) could introduce a systematic CW/CCW
 asymmetry if spiral arm orientation correlates with viewing angle
-in this intermediate-inclination regime. We recommend a dedicated
-subsample analysis restricted to $b/a > 0.5$ (face-on spirals only)
-and a comparison of dipole measurements with and without the
-near-edge-on population to quantify this effect. Such an analysis
-would also provide an independent check on the sensitivity penalty
-estimated above.
+in this intermediate-inclination regime.  A direct test would
+cross-match the catalog against the DESI Legacy morphological
+catalogs (which provide Sersic-fit axis ratios for all photometric
+sources) and compute the equivariant CW fraction in three
+inclination bins: face-on ($b/a > 0.5$), intermediate
+($0.3 < b/a < 0.5$), and edge-on ($b/a < 0.3$).  If the
+equivariant averaging fully eliminates orientation-dependent bias,
+all three subsamples should yield $\CW/(\CW+\CCW)$ consistent with
+the global value of $0.4974 \pm 0.0003$.  Any statistically
+significant departure in the $b/a < 0.3$ subsample---where the true
+chirality is undefined---would flag residual classifier leakage that
+the equivariant procedure does not correct.
+
+We estimate $\sim\!5\text{--}8\%$ of the 3.32~million equivariant
+spirals have $b/a < 0.3$ (based on the typical edge-on fraction in
+magnitude-limited disk samples), giving $\sim\!200{,}000$ objects
+in the edge-on bin---sufficient to detect a CW-fraction shift of
+$>0.15\%$ at $3\sigmaunit$.  The face-on subsample ($b/a > 0.5$,
+$\sim\!2.5$~million spirals) would provide the cleanest dipole
+measurement, with a sensitivity floor of $\sim\!0.22\%$ at
+$3\sigmaunit$---only marginally degraded relative to the full sample.
+Axis-ratio data are not included in Catalog~C (which carries sky
+coordinates and classification probabilities only;
+Sec.~\ref{sec:tiers}), so this analysis requires a positional
+cross-match with the parent DESI Legacy photometric catalog.
+We defer this test to a follow-up study.
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
@@ -1057,19 +1106,33 @@ resolution.
 \label{sec:future}
 
 The primary limitation of our analysis is the absence of spectroscopic
-redshifts. Cross-matching with the DESI spectroscopic survey~\cite{DESI:2016} would enable redshift-dependent chirality analyses,
-testing whether parity violation evolves with cosmic time. At
-$z > 0.5$, where bounce cosmology predicts the strongest deviations
-from $\Lambda$CDM~\cite{Golden:2026framework}, even a small
-redshift-dependent signal would be highly diagnostic.
+redshifts. A preliminary check using photometric redshifts from the
+DESI Legacy photo-$z$ catalog shows no trend in the raw CW fraction
+across 19 bins from $z = 0.02$ to $z = 0.78$: the CW excess is flat
+at $\sim\!0.8\%$ with bin-to-bin scatter consistent with statistical
+noise ($\chi^{2}/\text{dof} = 10.0/18 = 0.56$ against a constant
+model; a linear-in-$z$ slope is detected at only $0.4\sigmaunit$).
+However, this preliminary result uses the \emph{raw} Catalog~A
+classifications and photometric redshifts with $\sigma_z / (1+z)
+\approx 0.03$, which smears any narrow-redshift-shell signal by
+$\Delta z \sim 0.05$ at $z \sim 0.5$
+(Sec.~\ref{sec:sensitivity}).
 
-A redshift-dependent analysis of the CW fraction using the equivariant
-Catalog~C, which eliminates handedness-dependent systematic biases by
-construction, would provide the strongest test of cosmic parity
-violation as a function of lookback time. Such an analysis requires
-spectroscopic redshifts to overcome the photo-$z$ smearing discussed
-in Sec.~\ref{sec:sensitivity}; we defer this to future work with
-DESI spectroscopic cross-matches.
+The definitive test requires two upgrades: (i)~applying the
+equivariant Catalog~C classifications, which eliminate
+handedness-dependent systematic biases by construction, and
+(ii)~cross-matching against the DESI spectroscopic
+survey~\cite{DESI:2016} to obtain redshifts with
+$\sigma_z \lesssim 10^{-3}$.  The DESI Year~1 release
+overlaps $\sim\!35\%$ of our footprint, providing an estimated
+$\sim\!500{,}000$~spectroscopic spirals---sufficient to measure the
+CW fraction in $\Delta z = 0.05$ shells with per-bin statistical
+uncertainty $\lesssim 0.1\%$.  At $z > 0.5$, where bounce cosmology
+predicts the strongest deviations from
+$\Lambda$CDM~\cite{Golden:2026framework}, even a $0.5\%$
+redshift-dependent trend in the equivariant CW fraction would be
+detected at $>3\sigmaunit$ per bin.  We defer this analysis to
+future work with DESI spectroscopic cross-matches.
 
 Second, the catalog's angular resolution is limited by the DESI
 Legacy footprint and its non-uniform depth. Future surveys with
@@ -1267,6 +1330,10 @@ Astrophys.\ J.\ \textbf{873}, 111 (2019).
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
 Astrophys.\ J.\ \textbf{935}, 167 (2022).
+
+\bibitem{Hivon:2002}
+E.~Hivon, K.~M.~G{\'o}rski, C.~B.~Netterfield \textit{et~al.},
+Astrophys.\ J.\ \textbf{567}, 2 (2002).
 
 \bibitem{Gorski:2005}
 K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},

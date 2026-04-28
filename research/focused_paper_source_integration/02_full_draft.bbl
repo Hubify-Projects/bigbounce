@@ -169,14 +169,14 @@
   {year} {2026}{\natexlab{b}}),\ \bibinfo {note} {companion paper, submitted
   simultaneously}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Jolicoeur}\ \emph {et~al.}(2025)\citenamefont
-  {Jolicoeur} \emph {et~al.}}]{Maartens:2025}%
+  {Jolicoeur}, \citenamefont {Maartens} \emph {et~al.}}]{Jolicoeur:2025}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Jolicoeur}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Unbiased
-  analysis of primordial non-gaussianity: the multipoles of the full
-  relativistic power spectrum},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\
-  \Eprint {https://arxiv.org/abs/2511.09466} {arXiv:2511.09466} \BibitemShut
-  {NoStop}%
+  {Jolicoeur}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Maartens}},
+  \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Unbiased analysis of
+  primordial non-gaussianity: the multipoles of the full relativistic power
+  spectrum},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2511.09466} {arXiv:2511.09466} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Barreira}(2022)}]{Barreira:2022}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
