@@ -16,6 +16,7 @@
 | 4 | 2026-04-28 | 80+ | 11/11 TEXT DONE | 24/24 TEXT DONE | 30+/30+ TEXT DONE | ALL TEXT-FIXABLE RESOLVED — 17 remain (8 GPU-blocked, 4 notes, 2 assets, 3 cosmetic) |
 | 5 | 2026-04-28 | 10 (P4 re-review) | 0 | 4 | 6 | 10/10 FIXED |
 | 6 | 2026-04-28 | 10 (P2 re-review) | 0 | 4 | 6 | 10/10 FIXED |
+| 7 | 2026-04-28 | 10 (P3 re-review) | 0 | 5 | 5 | 10/10 FIXED |
 
 ---
 
@@ -812,3 +813,22 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P2-R6-8 | MINOR | r definition in Eq.(3) — both num/denom negative, r positive not obvious | TEXT | [x] FIXED |
 | P2-R6-9 | MINOR | Missing citations for DESI/Euclid/CMB-S4 forecast claims | TEXT | [x] FIXED — 4 new bib entries |
 | P2-R6-10 | MINOR | Convention appendix logical error (claimed 4 identical quantities that differ by 4×) | TEXT | [x] FIXED — rewritten |
+
+---
+
+## ROUND 7: FRESH RE-REVIEW OF PAPER 3 (2026-04-28)
+
+**Method:** Single Opus agent — hostile survey-science/ML reviewer on Paper 3
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P3-R7-1 | MAJOR | ~130× scale comparison wrong — 319,443/2,264 = 141×, not ~130× | TEXT | [x] FIXED |
+| P3-R7-2 | MAJOR | LAMOST cross-transfer count inconsistent — 43,915 in one location vs 44,075 everywhere else | TEXT | [x] FIXED — all 5 occurrences corrected to 44,075 with 21.5× ratio |
+| P3-R7-3 | MAJOR | Duplicate training description — Section 2.1 and Section 3.2 repeat architecture details | TEXT | [x] FIXED — merged into forward reference |
+| P3-R7-4 | MAJOR | Validation split inconsistency — Section 2.1 says 10%, Section 3.x says 20% | TEXT | [x] FIXED — unified to 20% throughout |
+| P3-R7-5 | MAJOR | CMB architecture contradiction — Section 2.1 says latent=32, Section 3.6 says latent=128 | TEXT | [x] FIXED — distinguished cross-transfer (32-dim BigAE) vs native ConvAE (128-dim) |
+| P3-R7-6 | MINOR | Dangling \ref{sec:false_match} — section label doesn't exist | TEXT | [x] FIXED — replaced with Section 4 |
+| P3-R7-7 | MINOR | High-z QSO "score" ambiguous — BigAE reconstruction error vs anomaly rank? | TEXT | [x] FIXED — clarified as BigAE reconstruction-error score |
+| P3-R7-8 | MINOR | SDSS DR18 cites wrong reference (DESI Collaboration 2024 instead of Abdurro'uf 2022) | TEXT | [x] FIXED |
+| P3-R7-9 | MINOR | H200 and A100 GPUs used interchangeably — unclear which survey used which | TEXT | [x] FIXED — Section 2.1 now specifies A100 for native retrains, H200 for production scoring |
+| P3-R7-10 | MINOR | "Symmetric decoder" claim — only true for MLP autoencoders, not conv models | TEXT | [x] FIXED — qualified as "approximately symmetric" for convolutional variants |
