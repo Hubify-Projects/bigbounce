@@ -370,7 +370,7 @@
 
 <p>The unique surviving feature of this framework is <strong>cosmic birefringence from a Planck-scale ALP</strong>. The 14-barrier closure argument is itself a scientific contribution &mdash; it maps out what <em>doesn't</em> work and why, saving future researchers from repeating the same dead ends.</p>
 
-<div class="card" style="margin-top: 20px; border-left: 3px solid #1e40af;">
+<div class="card callout-info" style="margin-top: 20px;">
   <h3 style="margin-top: 0; font-family: var(--font-sans);">Within Bouncing Cosmologies</h3>
   <p>The matter bounce is not the only nonsingular bounce model. But it is the <strong>only</strong> one with a strongly constrained, detectable prediction for primordial non-Gaussianity:</p>
   <ul style="margin-top: 8px; line-height: 1.8;">
@@ -388,7 +388,7 @@
 
 <h3>What We Found</h3>
 
-<p>From DESI DR1 alone, the AI identified <strong>250,120 raw anomalies</strong>, which after rigorous quality filtering (injection/recovery testing with 0% false positive rate) yielded <strong>83 gold anomalies</strong> and <strong>2,145 silver-tier anomalies</strong>. Cross-matching against SIMBAD and NED revealed that <strong>1,127 objects (52.5%) are genuinely uncataloged</strong> &mdash; unknown to the major astronomical databases.</p>
+<p>From DESI DR1 alone, the AI identified <strong>195,829 anomalies</strong> above threshold (0.87% of all spectra), which after rigorous quality filtering (injection/recovery testing with 0% false positive rate) yielded <strong>83 gold anomalies</strong> and <strong>2,145 SNR-filtered anomalies</strong>. Cross-matching against SIMBAD and NED revealed that <strong>1,127 objects (52.5%) are genuinely uncataloged</strong> &mdash; unknown to the major astronomical databases.</p>
 
 <p>These 1,127 objects cluster into <strong>10 astrophysical families</strong>: 76 obscured AGN candidates (missed by pipeline classifications), 27 post-starburst galaxies in a critical evolutionary phase, 363 blue galaxies with anomalous UV features, and 7 more families. A single latent dimension ("lat_067") spontaneously learned to encode redshift from unsupervised training &mdash; a "redshift neuron" capturing 18% of redshift information with no labels.</p>
 
@@ -514,9 +514,9 @@
 
 <div id="feedback-widget" style="margin-top:48px;padding:20px 0;border-top:1px solid var(--border);text-align:center;font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);">
   Was this helpful?
-  <button onclick="sendFeedback('up')" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
-  <button onclick="sendFeedback('down')" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
-  <span id="fb-thanks" style="display:none;margin-left:12px;color:#16a34a;">Thanks!</span>
+  <button onclick="sendFeedback('up')" aria-label="Helpful" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
+  <button onclick="sendFeedback('down')" aria-label="Not helpful" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
+  <span id="fb-thanks" style="display:none;margin-left:12px;color:var(--text);">Thanks!</span>
 </div>
 <script>
 function sendFeedback(vote) {
