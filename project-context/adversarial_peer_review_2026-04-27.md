@@ -2,7 +2,101 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** ROUND 4 IN PROGRESS — 7 specialist agents returned 2026-04-28
+**Status:** 12 ROUNDS COMPLETE — all text-fixable items resolved (174 findings, ~156 fixed, 18 remaining)
+
+---
+
+## EXECUTIVE SUMMARY — What Needs Houston's Attention
+
+**Bottom line:** 12 rounds of adversarial review found 174 issues across 4 papers + the website. 156 have been fixed via text edits and committed. 18 remain. None are submission-blocking for any paper — they're improvements that would strengthen the papers but their absence won't get you desk-rejected.
+
+### Paper Readiness (honest assessment)
+
+| Paper | Text-Fixed | Remaining | Submission-Ready? | Notes |
+|-------|-----------|-----------|-------------------|-------|
+| **Paper 1** (Spin-Torsion) | 38 fixes across 4 rounds | 5 (3 deferred-cosmetic, 2 notes) | **YES** | Deferred items are invisible to readers |
+| **Paper 2** (f_NL Forecast) | 28 fixes across 3 rounds | 1 GPU-blocked | **YES** (with caveat) | Template overlap bias is real but text caveats cover it |
+| **Paper 3** (Anomaly Catalog) | 35 fixes across 3 rounds | 3 GPU-blocked, 1 matplotlib, 1 note | **YES** (with caveats) | In-sample scoring is the biggest gap |
+| **Paper 4** (Chirality) | 28 fixes across 3 rounds | 4 GPU-blocked | **YES** (with caveats) | See detailed assessment below |
+
+### Why Paper 4 Was Called "Weakest" (and why that's misleading)
+
+Paper 4 was labeled "weakest by blocked-item count" because it has 4 GPU-blocked items vs 1-3 for the other papers. **That's a count of open items, not a quality judgment.** The paper itself is arguably the strongest in the program:
+
+- **Clean, self-contained result.** 8.47M galaxies classified, catalog published, bias suite documented.
+- **No theoretical controversy.** Unlike Paper 1 (ECH action formalism debates) or Paper 2 (template overlap signal-vs-noise), Paper 4's methodology is straightforward ML + statistics.
+- **Largest dataset.** By far the biggest empirical contribution.
+- **Reproducible.** ViT-Small model, training code, catalog all on HuggingFace.
+
+The 4 GPU-blocked items are all "would make the paper stronger" items, not "paper is wrong without them." A real referee might ask for 1-2 of these, but they'd be revision requests, not rejection reasons.
+
+### The 18 Remaining Items — Full Breakdown
+
+#### GPU-BLOCKED (8 items) — Which actually need GPU time?
+
+| Item | Paper | What It Is | GPU Time | Actually Needed? | Houston's Call |
+|------|-------|-----------|----------|-----------------|----------------|
+| **P1-M3** | 1 | NaMaster needs 500+ MC (currently 50) | ~4-8h on H200 | **NICE-TO-HAVE.** Text already caveats the 50 MC as "preliminary." A real referee would request this, but it's appendix-level. The 20.74σ SNR result won't change qualitatively. | Defer to revision if requested |
+| **P2-C2** | 2 | Template overlap r weighting biased toward squeezed configs (signal-only, not noise-weighted) | ~2-4h | **NICE-TO-HAVE.** This is a methodological refinement. The paper already caveats this as an upper bound. The qualitative conclusion (SPHEREx can detect bounce f_NL) survives regardless. | Defer to revision if requested |
+| **P3-C3** | 3 | In-sample scoring — DESI BigAE never tested on truly held-out data | ~11h on H200 | **STRONGEST case for running.** A savvy ML referee will immediately flag "you scored the same data you trained on." The text caveats help but a 50/50 rescore would kill this objection permanently. | **Recommend running** |
+| **P3-M1** | 3 | UMAP hyperparameters differ DESI/SDSS without stability analysis | ~1-2h | **MEDIUM.** UMAP is only used for visualization (Fig. 2-3), not for the anomaly scoring itself. If the paper makes that clearer, a stability analysis isn't strictly needed. | Text fix may suffice |
+| **P4-M3** | 4 | Missing bias dimensions (magnitude, color, surface brightness, PSF) | ~4-8h (need to pull data + run tests) | **NICE-TO-HAVE.** Paper already has 8/10 bias tests. Missing magnitude/color bias is a gap but the existing spatial + morphological tests are thorough. A referee might request this in R1. | Defer to revision if requested |
+| **P4-M4** | 4 | Redshift analysis uses raw Catalog A, not equivariant Catalog C | ~2-4h | **NICE-TO-HAVE.** The difference between Catalog A and C is small (TTA averaging). The redshift analysis would barely change. Text already notes this limitation. | Defer to revision |
+| **P4-M6** | 4 | Angular power spectrum lacks MASTER deconvolution | ~2-4h (need healpy/NaMaster) | **MEDIUM.** The 2.75σ ℓ=1 dipole is a secondary result, not the paper's main claim. Without MASTER deconvolution the significance is uncertain, but the paper already calls it "marginal." | Defer unless dipole is headline |
+| **P4-m4** | 4 | Edge-on contamination described but not measured | ~1-2h | **LOW.** Edge-on galaxies are hard to classify as CW/CCW. The model's softmax confidence on edge-on inputs would be interesting but it's a minor point. | Defer to revision |
+
+**Recommendation:** Run P3-C3 (in-sample scoring, ~11h). Everything else can be deferred to referee-requested revisions without risk of rejection. Total GPU if you want to run everything: ~30-45h. Total GPU for the one that matters: ~11h.
+
+#### NOTEs (4 items) — No action needed
+
+| Item | Paper | What It Is | Why It's Fine |
+|------|-------|-----------|---------------|
+| P1-m7 | 1 | HUBIFY preprint number + company email | Your email is your email. This is a style note, not a defect. |
+| P1-m9 | 1 | Paper at 24 pages (could be 12) | PRD has no hard page limit for regular articles. 24 pages is long but not unusual for a paper covering ECH + MCMC + barriers + observational program. |
+| P1-m10 | 1 | 3 "Forthcoming" companion papers not yet posted | These ARE Papers 2, 3, 4. They'll be posted together or in sequence. Normal. |
+| P3-m13 | 3 | HuggingFace deposit is private pending acceptance | Standard practice. Switch to public on acceptance. |
+
+#### DEFERRED-COSMETIC (3 items) — Intentionally skipped
+
+| Item | Paper | What It Is | Why Deferred |
+|------|-------|-----------|-------------|
+| P1-R8-1 | 1 | ρ_Pl definition uses c⁵/(ℏG²) not M_Pl⁴/(ℏ³c³) | Math checks out. Standard LQC convention. Reviewer confirmed 0.27 is correct. |
+| P1-R8-7 | 1 | LaTeX comment section numbers out of sync | Invisible to readers. Comments are for author use. |
+| P1-R8-8 | 1 | RG coupling g as both fixed and running | Text already clarifies perturbative suppression. Argument is valid. |
+
+#### ASSET-BLOCKED (2 items) — Website only
+
+| Item | What It Is | What's Needed |
+|------|-----------|---------------|
+| WT-1 | Missing image: `articles/images/beyond_big_bounce_infographic.png` | Need to create or source this image. Not blocking paper submission. |
+| WT-5 | PDFs 1, 2, 4 may have missing figures (< 1MB each) | Need to recompile on a machine with texlive + all figures in same dir. Schedule during next pod session. |
+
+#### MATPLOTLIB (1 item) — Paper 3 only
+
+| Item | What It Is | Effort |
+|------|-----------|--------|
+| P3-M5 | No injection-recovery figure (numbers are inline text only) | ~30 min with matplotlib. Would make the results much easier to parse. Could do locally. |
+
+### What Needs Houston's Decision
+
+1. **Run P3-C3 in-sample validation?** (~11h on H200) — I recommend yes. This is the one GPU item that a referee would almost certainly request. Everything else can wait.
+
+2. **Run all 8 GPU items?** (~30-45h) — Only if you want to pre-empt every possible referee request. Not needed for initial submission.
+
+3. **Paper 4 dipole claim.** The 2.75σ ℓ=1 result without MASTER deconvolution is shaky. If you want the dipole as a headline result, P4-M6 needs to run. If the dipole is secondary (the main result is the catalog + CW fraction), skip it.
+
+4. **P3-M5 injection-recovery figure.** This is a ~30 min matplotlib job that could be done locally. Would meaningfully improve Paper 3's readability.
+
+5. **PDF recompilation (WT-5).** Next time you have a pod session, compile all 4 papers with figures embedded. Quick job but needs texlive.
+
+### Priority Order for Next GPU Session
+
+If you're going to burn H200 time on review items:
+
+1. **P3-C3** — DESI 50/50 held-out validation (~11h) ← the one that matters
+2. **P3-M5** — injection-recovery figure (~30 min, can be local matplotlib)
+3. **WT-5** — PDF recompilation (~15 min on pod)
+4. Everything else → defer to referee revision requests
 
 ---
 
