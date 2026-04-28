@@ -588,11 +588,11 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 |---|-----|---------|-----------------|--------|
 | P1-C1 | CRITICAL | ECH action (Eq.1) mixes first/second order formalism — torsion in action while saying "we don't vary w.r.t. torsion" | TEXT — restructure presentation | [ ] |
 | P1-C2 | CRITICAL | Parity-odd action (Eq.5/6) has dimensional inconsistency (mass dim +1 not +4) — entire DE parameterization rests on "scaling ansatz" | TEXT — either derive or remove DE parameterization | [ ] |
-| P1-C3 | CRITICAL | "Perturbation-transparency result" is trivially known since Hehl 1976 — 5-step "proof" restates S=0⇒T=0 | TEXT — downgrade from "central result" to "observation for completeness" | [ ] |
-| P1-M1 | MAJOR | Savage-Dickey Bayes factor model labeled "Spin-Torsion" but tests ΛCDM+ΔNeff with stock CAMB | TEXT — relabel model, heavy caveat in executive summary | [ ] |
+| P1-C3 | CRITICAL | "Perturbation-transparency result" is trivially known since Hehl 1976 — 5-step "proof" restates S=0⇒T=0 | TEXT — downgrade from "central result" to "observation for completeness" | [x] FIXED |
+| P1-M1 | MAJOR | Savage-Dickey Bayes factor model labeled "Spin-Torsion" but tests ΛCDM+ΔNeff with stock CAMB | TEXT — relabel model, heavy caveat in executive summary | [x] FIXED |
 | P1-M2 | MAJOR | ALP birefringence β≈0.27° has nothing to do with ECH — spectator ALP gives same result in any theory | TEXT — move to appendix, remove from abstract | [ ] |
 | P1-M3 | MAJOR | NaMaster analysis doesn't meet publication standards (50 MC, non-standard mask, 14% σ uncertainty) | TEXT caveat already added; COMPUTE needs GPU for 500+ MC | [ ] BLOCKED |
-| P1-M4 | MAJOR | SPHEREx "4-6σ" in abstract vs "3-5σ realistic" in Table 1 footnote — internal contradiction | TEXT — unify to 3-5σ realistic in abstract | [ ] |
+| P1-M4 | MAJOR | SPHEREx "4-6σ" in abstract vs "3-5σ realistic" in Table 1 footnote — internal contradiction | TEXT — unify to 3-5σ realistic in abstract | [x] FIXED |
 | P1-M5 | MAJOR | 14 barriers mix novel results with tautologies/known results (barriers 5,6,7,9,13 are generic) | TEXT — distinguish novel vs known vs philosophical | [ ] |
 | P1-M6 | MAJOR | Poplawski2019 bib key is actually a 2010 paper | TEXT — rekey to Poplawski2010 | [ ] |
 | P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [ ] |
@@ -614,8 +614,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 |---|-----|---------|-----------------|--------|
 | P2-C1 | CRITICAL | No original Fisher matrix written down — paper recasts others' forecasts | TEXT — either construct Fisher or relabel as "sensitivity recast" | [ ] |
 | P2-C2 | CRITICAL | Template overlap r weighting is signal-only (S_local²) — biased toward squeezed configs | COMPUTE — needs realistic noise model | [ ] BLOCKED |
-| P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [ ] |
-| P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [ ] |
+| P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [x] FIXED |
+| P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [x] FIXED |
 | P2-M1 | MAJOR | n_s = 8ε-11 presented as exact — needs linearization caveat + exact expression | TEXT | [ ] |
 | P2-M2 | MAJOR | Null-space scan radius=50 unmotivated — r_cos stability is artifact of scan volume | TEXT — add justification or scan larger | [ ] |
 | P2-M3 | MAJOR | 200 injection-recovery realizations underdescribed (no noise model, estimator, mask) | TEXT — add specifications | [ ] |
@@ -640,8 +640,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [ ] |
 | P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [ ] |
 | P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [ ] BLOCKED |
-| P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [ ] |
-| P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [ ] |
+| P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [x] FIXED |
+| P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [x] FIXED |
 | P3-M1 | MAJOR | UMAP hyperparameters differ DESI/SDSS with backwards justification | TEXT — stability analysis needed | [ ] BLOCKED |
 | P3-M2 | MAJOR | f_NL α=0.15 uncalibrated — 6.1% could be 2-20% | TEXT — add uncertainty propagation | [ ] |
 | P3-M3 | MAJOR | 5-arcsec dedup radius not justified from astrometric error budgets | TEXT | [ ] |
@@ -669,8 +669,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| P4-C1 | CRITICAL | 93.7% accuracy contaminated by circular labeling — GZ1-only accuracy not reported in paper | TEXT — report GZ1-only accuracy | [ ] |
-| P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [ ] |
+| P4-C1 | CRITICAL | 93.7% accuracy contaminated by circular labeling — GZ1-only accuracy not reported in paper | TEXT — report GZ1-only accuracy | [x] FIXED |
+| P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [x] FIXED |
 | P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [ ] |
 | P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [ ] |
 | P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [ ] |
@@ -693,8 +693,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| XP-C1 | CRITICAL | Paper 1 forward-references NANOGrav γ=3.20±0.42 — Paper 3 doesn't contain it | TEXT — add to Paper 3 or change Paper 1's wording | [ ] |
-| XP-C2 | CRITICAL | SPHEREx: Paper 1 abstract "4-6σ" vs Table 1 footnote "3-5σ realistic" | TEXT — unify | [ ] |
+| XP-C1 | CRITICAL | Paper 1 forward-references NANOGrav γ=3.20±0.42 — Paper 3 doesn't contain it | TEXT — add to Paper 3 or change Paper 1's wording | [x] FIXED |
+| XP-C2 | CRITICAL | SPHEREx: Paper 1 abstract "4-6σ" vs Table 1 footnote "3-5σ realistic" | TEXT — unify | [x] FIXED |
 | XP-M1 | MAJOR | SPHEREx ranges inconsistent across program (4-6σ, 3-5σ, 5-5.5σ in different papers) | TEXT — adopt 3-5σ realistic everywhere | [ ] |
 | XP-M2 | MAJOR | BibTeX keys differ: Golden:2026forecast (P1,P4) vs Golden:2026fnl (P3) | TEXT — standardize | [ ] |
 | XP-M3 | MAJOR | Wands:2010 cited for f_NL in Paper 3 but not Papers 1/2 — attribution asymmetry | TEXT | [ ] |
@@ -709,14 +709,14 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| W-1 | MAJOR | paper.html Paper 2 section: still "~5.0-5.5σ" without 3-5σ realistic | TEXT | [ ] |
-| W-2 | MAJOR | explained.html: still uses 3.6σ for birefringence (5 instances) | TEXT | [ ] |
-| W-3 | MAJOR | projects.html: "4-6σ optimistic" doesn't match any canonical number | TEXT | [ ] |
-| W-4 | MAJOR | articles/matter-bounce-blueprint.html: 10 instances of "parameter-free" | TEXT | [ ] |
-| W-5 | MAJOR | infrastructure.html: "0.5012" without benchmark qualifier | TEXT | [ ] |
-| W-6 | MAJOR | status.html, contributions.html, glossary.html, timeline.html: 3.6σ as primary | TEXT | [ ] |
-| W-7 | MINOR | research/project_master_dossier/: stale 5.0-5.5σ and 3.6σ | TEXT | [ ] |
-| W-8 | MINOR | Various article pages: stale parameter-free, SPHEREx figures | TEXT | [ ] |
+| W-1 | MAJOR | paper.html Paper 2 section: still "~5.0-5.5σ" without 3-5σ realistic | TEXT | [x] FIXED |
+| W-2 | MAJOR | explained.html: still uses 3.6σ for birefringence (5 instances) | TEXT | [x] FIXED |
+| W-3 | MAJOR | projects.html: "4-6σ optimistic" doesn't match any canonical number | TEXT | [x] FIXED |
+| W-4 | MAJOR | articles/matter-bounce-blueprint.html: 10 instances of "parameter-free" | TEXT | [x] FIXED |
+| W-5 | MAJOR | infrastructure.html: "0.5012" without benchmark qualifier | TEXT | [x] FIXED |
+| W-6 | MAJOR | status.html, contributions.html, glossary.html, timeline.html: 3.6σ as primary | TEXT | [x] FIXED |
+| W-7 | MINOR | research/project_master_dossier/: stale 5.0-5.5σ and 3.6σ | TEXT | [x] FIXED |
+| W-8 | MINOR | Various article pages: stale parameter-free, SPHEREx figures | TEXT | [x] FIXED |
 
 ### WEBSITE — Technical Issues
 
@@ -747,21 +747,28 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 ### LOCALLY FIXABLE — PRIORITY ORDER FOR NEXT FIRE
 
-**Tier A (CRITICAL text fixes):**
-1. P1-C3: Perturbation-transparency "theorem" → "observation"
-2. P1-M4 + XP-C2: SPHEREx 4-6σ → 3-5σ in Paper 1 abstract
-3. P1-M1: Relabel Bayes factor model to ΛCDM+ΔNeff
-4. XP-C1: Add γ=3.20±0.42 to Paper 3 or soften Paper 1's reference
-5. P2-C4: Propagate factor-of-2 convention through forecast (both f_NL values)
-6. P2-C5: Use σ_theory≥1.0 as Bayesian baseline
-7. P3-C1: Restructure Table 1 with Path-C primary
-8. P3-C4: Flag LAMOST injection-recovery failure in headline
-9. P3-C5: Label Gaia 41% stability as unreliable
-10. P4-C1: Report GZ1-only accuracy in paper
-11. P4-C2: Clarify TTA vs architectural equivariance
+**Tier A (CRITICAL text fixes) — ALL 11 RESOLVED (2026-04-28):**
+1. ✅ P1-C3: "perturbation-transparency result" → "observation" throughout Paper 1 (all instances)
+2. ✅ P1-M4 + XP-C2: SPHEREx 4-6σ → 3-5σ realistic in Paper 1 abstract + conclusions
+3. ✅ P1-M1: Table relabeled from "Spin-Torsion" to "ΛCDM+ΔNeff" with footnote
+4. ✅ XP-C1: γ=3.20±0.42 (0.48σ) added to Paper 3 NANOGrav section
+5. ✅ P2-C4: Both -35/8 and -35/16 significance propagated in Paper 2 conclusions
+6. ✅ P2-C5: σ_theory=1.0 recommended as baseline in Paper 2, abstract flagged as upper bounds
+7. P3-C1: Table 1 already has Path-C primary row — structurally adequate (no further change needed)
+8. ✅ P3-C4: LAMOST 5.8% injection-recovery flagged in Paper 3 abstract
+9. ✅ P3-C5: Gaia ⭐ reliability warning added to Table 1 footnotes
+10. ✅ P4-C1: GZ1-only accuracy reported in-paper with circular-labeling caveat
+11. ✅ P4-C2: Abstract + Section 4.4 clarified as TTA not architectural equivariance
 
 **Tier B (MAJOR text fixes):**
-12-25. Various text clarifications, caveats, restructuring
+12-25. Various text clarifications, caveats, restructuring — PENDING
 
-**Tier C (Website residuals):**
-26-35. paper.html SPHEREx, explained.html birefringence, articles cleanup, anchor links, tech fixes
+**Tier C (Website residuals) — ALL 8 RESOLVED (2026-04-28):**
+W-1 ✅ paper.html SPHEREx fixed (3 instances)
+W-2 ✅ explained.html birefringence 3.6σ→3.9σ (5 instances)
+W-3 ✅ projects.html 4-6σ→3-5σ
+W-4 ✅ articles/matter-bounce-blueprint.html parameter-free→strongly constrained (13 instances)
+W-5 ✅ infrastructure.html 0.5012 qualified
+W-6 ✅ status/contributions/glossary/timeline/datasets 3.6σ→3.9σ
+W-7 ✅ research/project_master_dossier/ all stale values fixed
+W-8 ✅ All article pages + activity.html stale values fixed

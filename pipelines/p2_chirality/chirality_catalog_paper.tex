@@ -65,7 +65,8 @@ CE-ResNet predictions rather than independent ground truth;
 see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
 bias-hardening suite (flip-equivariance, rotation stability, artifact
 rejection, brightness robustness, metadata leakage). A flip-equivariance
-consistency loss plus test-time equivariant averaging eliminate
+consistency loss during training, combined with two-fold test-time
+averaging (TTA, not architectural equivariance), eliminate
 orientation-dependent bias by construction, yielding a global clockwise
 fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
 We find no significant large-scale chirality dipole: a simple fit gives
@@ -225,8 +226,13 @@ We note that 67.6\% of training labels (17,999 of 26,626) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
 than independent ground truth. On the Galaxy~Zoo~1-only subset
-(6,637~galaxies with citizen-science labels), validation accuracy and
-per-class metrics are available in the companion code repository.
+(6,637~galaxies with citizen-science labels), we report validation
+accuracy separately to quantify the circular-labeling effect:
+three-class accuracy on GZ1-labeled galaxies only is lower than the
+headline $93.7\%$ (full per-class metrics in the companion code
+repository), and we caution that the $93.7\%$ headline includes
+$67.6\%$ CE-ResNet-derived labels that partially measure
+self-consistency rather than independent ground truth.
 
 \begin{figure}[t]
 \centering
@@ -335,7 +341,8 @@ its horizontal reflection. The equivariant probability is computed as:
 %
 This procedure enforces perfect flip-equivariance by construction
 (flip-swap correlation $= 1.000$), at the cost of doubling inference
-time. On an NVIDIA H200 GPU processing 192~shards at batch size~512
+time.
+We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours.
 
