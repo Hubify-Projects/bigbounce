@@ -14,7 +14,8 @@
 | 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | ALL RESOLVED |
 | 3 | 2026-04-28 | 5 | 0 | 5/5 DONE | 0 | ALL RESOLVED — PAPERS SUBMISSION-READY |
 | 4 | 2026-04-28 | 80+ | 11/11 TEXT DONE | 24/24 TEXT DONE | 30+/30+ TEXT DONE | ALL TEXT-FIXABLE RESOLVED — 17 remain (8 GPU-blocked, 4 notes, 2 assets, 3 cosmetic) |
-| 5 | 2026-04-28 | 10 (P4 re-review) | 0 | 4 | 6 | 9/10 FIXED (1 needs derivation) |
+| 5 | 2026-04-28 | 10 (P4 re-review) | 0 | 4 | 6 | 10/10 FIXED |
+| 6 | 2026-04-28 | 10 (P2 re-review) | 0 | 4 | 6 | 10/10 FIXED |
 
 ---
 
@@ -791,4 +792,23 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P4-R5-7 | MINOR | ECH chirality bound has no published prediction to constrain | TEXT | [x] FIXED |
 | P4-R5-8 | MINOR | Holst bibentry preprint 1995 vs publication 1996 — add arXiv ID | TEXT | [x] FIXED |
 | P4-R5-9 | MINOR | Gaussian blur "radius" ambiguous — should be σ (standard deviation) | TEXT | [x] FIXED |
-| P4-R5-10 | MINOR | Sensitivity floor 0.2% derivation missing (factor-of-7 from global σ=0.027%) | TEXT (derivation) | [ ] — needs new equations |
+| P4-R5-10 | MINOR | Sensitivity floor 0.2% derivation missing (factor-of-7 from global σ=0.027%) | TEXT (derivation) | [x] FIXED — full HEALPix derivation with 2 equations |
+
+---
+
+## ROUND 6: FRESH RE-REVIEW OF PAPER 2 (2026-04-28)
+
+**Method:** Single Opus agent — hostile statistician/forecaster on Paper 2
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P2-R6-1 | MAJOR | \BNL macro implies |B|_NL (non-negative) for signed quantity -35/8 | TEXT | [x] FIXED |
+| P2-R6-2 | MAJOR | ~400× ratio wrong — |4.375/0.015| = 291.7, should be ~290× | TEXT | [x] FIXED |
+| P2-R6-3 | MAJOR | c_1 notation collision — bispectrum coefficient vs consistency-relation slope | TEXT | [x] FIXED (renamed to κ_1) |
+| P2-R6-4 | MAJOR | MegaMapper forecast range inconsistent (3-7σ abstract vs 3-5σ body) | TEXT | [x] FIXED — 3 scenarios traced |
+| P2-R6-5 | MINOR | Sign of consistency-relation slope c unexplained despite negative value | TEXT | [x] FIXED |
+| P2-R6-6 | MINOR | "SSFSR" acronym undefined in Tables 2 and 3 | TEXT | [x] FIXED |
+| P2-R6-7 | MINOR | 130-word run-on sentence in Section 2.1 | TEXT | [x] FIXED |
+| P2-R6-8 | MINOR | r definition in Eq.(3) — both num/denom negative, r positive not obvious | TEXT | [x] FIXED |
+| P2-R6-9 | MINOR | Missing citations for DESI/Euclid/CMB-S4 forecast claims | TEXT | [x] FIXED — 4 new bib entries |
+| P2-R6-10 | MINOR | Convention appendix logical error (claimed 4 identical quantities that differ by 4×) | TEXT | [x] FIXED — rewritten |

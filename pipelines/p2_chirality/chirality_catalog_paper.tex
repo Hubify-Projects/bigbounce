@@ -1130,18 +1130,65 @@ the DESI Legacy footprint.
 \subsection{Sensitivity Floor and Minimum Detectable Signal}
 \label{sec:sensitivity}
 
-Given 3,321,795 equivariant spiral classifications, the statistical
-uncertainty on the global CW fraction is
-$\sigma_{\rm CW} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.027\%$.
-A $3\sigmaunit$ detection therefore requires a dipole amplitude of at
-least $\sim\!0.08\%$ in the global average.  For a spatially varying
-dipole measured in $\sim\!30{,}000$ occupied HEALPix pixels (at
-$\nside = 64$), the per-pixel noise is larger, and the minimum
-detectable dipole amplitude rises to approximately $0.2\%$ at
-$3\sigmaunit$.  This represents the most sensitive chirality
-measurement ever performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a factor of $\sim\!1.3$ in statistical sensitivity
-owing to the $1.7\times$ larger spiral sample ($3.32$~million equivariant
-spirals vs.\ CE-ResNet's $1.95$~million) and reduced per-pixel variance.
+Given 3,321,795 equivariant spiral classifications, the global
+clockwise-fraction uncertainty is
+$\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.027\%$.
+This is the Poisson noise averaged over the full catalog---it
+characterizes the monopole precision, not the dipole sensitivity.
+For a dipole of amplitude $A_{\rm dip}$, the signal in any sky
+pixel at $\nside = 8$ (768 pixels, ${\sim}4{,}300$ spirals per pixel
+from $N_{\rm spiral} / N_{\rm pix} = 3{,}321{,}795 / 768 \approx 4{,}326$)
+is $A_{\rm dip}\cos\theta$, and the per-pixel CW-fraction uncertainty is
+%
+\begin{equation}
+\sigma_{\rm pix} = \frac{1}{2\sqrt{N_{\rm spiral}/N_{\rm pix}}}
+= \frac{1}{2\sqrt{4{,}326}} \approx 0.76\%\,.
+\label{eq:sigma_pix}
+\end{equation}
+%
+A $3\sigmaunit$ detection of a dipole pattern requires fitting the
+amplitude $A_{\rm dip}$ against the $\cos\theta$ template across
+$N_{\rm pix} = 768$ pixels.  For a pure cosine template the dipole
+estimator is equivalent to a single-parameter linear regression, for
+which the uncertainty on the fitted amplitude is
+%
+\begin{equation}
+\sigma(A_{\rm dip}) \approx \sigma_{\rm pix}\,\sqrt{\frac{3}{N_{\rm pix}}}
+= 0.76\%\times\sqrt{\frac{3}{768}} \approx 0.047\%\,,
+\label{eq:sigma_dip}
+\end{equation}
+%
+where the factor of $\sqrt{3}$ accounts for the three dipole
+components ($\ell = 1$ has $2\ell+1 = 3$ modes); geometrically it
+arises because only one-third of the $\cos^2\theta$ variance projects
+onto each component.  At $3\sigmaunit$ significance the minimum
+detectable amplitude is $3 \times 0.047\% \approx 0.14\%$, which we
+round conservatively to ${\sim}0.2\%$ to account for incomplete sky
+coverage ($f_{\rm sky} \approx 0.46$) and non-uniform pixel occupancy
+(the effective sample size is reduced by the survey mask; both effects
+widen $\sigma(A_{\rm dip})$ by a factor ${\sim}1/\sqrt{f_{\rm sky}}
+\approx 1.5$ in the worst case, but the rounding to $0.2\%$ already
+captures a $\sim\!40\%$ margin over the idealized $0.14\%$).
+
+The factor of $\sim\!7$ between $\sigma_{\rm global} = 0.027\%$ and
+the minimum detectable dipole of $0.2\%$ arises from two compounding
+steps.  Analytically (Eqs.~\ref{eq:sigma_pix}--\ref{eq:sigma_dip}),
+the ideal full-sky ratio is
+$3\sigma(A_{\rm dip})/\sigma_{\rm global} = 3\sqrt{3} \approx 5.2$,
+giving a threshold of $5.2 \times 0.027\% = 0.14\%$.  The additional
+factor of $\sim\!1.4$ that brings this to $0.2\%$ reflects
+incomplete sky coverage and non-uniform pixel occupancy: the DESI
+Legacy footprint covers $f_{\rm sky} \approx 0.46$, reducing the
+effective number of independent pixels and widening
+$\sigma(A_{\rm dip})$ by $\sim\!1/\sqrt{f_{\rm sky}} \approx 1.5$.
+We round $0.14\%$ up to $0.2\%$ as a conservative statement of the
+sensitivity floor.
+
+This represents the most sensitive chirality measurement ever
+performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a
+factor of $\sim\!1.3$ in statistical sensitivity owing to the
+$1.7\times$ larger spiral sample ($3.32$~million equivariant spirals
+vs.\ CE-ResNet's $1.95$~million) and reduced per-pixel variance.
 (The total galaxy count is $4.3\times$ larger than CE-ResNet, but the
 chirality-relevant comparison is the spiral count, which drives
 the $\sqrt{1.7} \approx 1.3$ improvement.)
