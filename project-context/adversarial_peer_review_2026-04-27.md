@@ -20,6 +20,7 @@
 | 8 | 2026-04-28 | 10 (P1 re-review) | 0 | 4 | 6 | 7/10 FIXED (3 deferred: cosmetic) |
 | 9 | 2026-04-28 | 10 (P4 re-review 2) | 0 | 5 | 5 | 10/10 FIXED |
 | 10 | 2026-04-28 | 10 (P2 re-review 2) | 0 | 4 | 6 | 10/10 FIXED |
+| 11 | 2026-04-28 | 10 (P3 re-review 2) | 0 | 6 | 4 | 10/10 FIXED |
 
 ---
 
@@ -892,3 +893,22 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P2-R10-8 | MINOR | Table 3 "Corrected 10% residual" and "Ideal" rows have identical Bayes factors | TEXT | [x] FIXED — footnote explaining residual correction has ΔBF < 0.1, not independent scenario |
 | P2-R10-9 | MINOR | Broken cross-reference \ref{sec:bispectrum} — no such label exists | TEXT | [x] FIXED — changed to \ref{sec:benchmark} |
 | P2-R10-10 | MINOR | n_s=0.964 presented as prediction but is a fit (w tuned to match Planck) | TEXT | [x] FIXED — explicitly acknowledged as fit to Planck data, not prediction |
+
+---
+
+## ROUND 11: SECOND RE-REVIEW OF PAPER 3 (2026-04-28)
+
+**Method:** Single Opus agent — hostile anomaly-detection/statistics reviewer, second pass on Paper 3
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P3-R11-1 | MAJOR | Spearman ρ=-0.03 with p=0.12 is statistically impossible at N=195,829 (p≪10⁻¹⁰ at full N) — test was likely on a subsample | TEXT | [x] FIXED — clarified as stratified subsample of N=2,670 (100/SNR-bin) |
+| P3-R11-2 | MAJOR | ACT "quarantined from Path-C" contradicted by dedup arithmetic that includes ACT's 200 in 388,693 input | TEXT | [x] FIXED — clarified ACT enters dedup input but contributes zero cross-matches; explicit arithmetic reconciliation |
+| P3-R11-3 | MAJOR | SDSS native rescore only 83.5% complete (1,925,279/2,304,830); 376,157 spectra unaccounted | TEXT | [x] FIXED — explained missing spectra from ~130 unmirrored SDSS-III ancillary plates |
+| P3-R11-4 | MAJOR | SDSS anomaly surface density 5.5×10⁻⁷ wrong by ~45%; correct is ~8.0×10⁻⁷ | TEXT | [x] FIXED — corrected to 8.0×10⁻⁷, P_false to 2.3×10⁻⁵, expected randoms to ~2.3 |
+| P3-R11-5 | MAJOR | 1.02% anomaly rate is arithmetically wrong (378,480/37,292,042 = 1.01%) | TEXT | [x] FIXED — corrected to 1.01% |
+| P3-R11-6 | MAJOR | "6.5 million spectra from the enhanced catalog" undefined — DESI DR1 is 22.5M | TEXT | [x] FIXED — defined as 6.5M spectra with validated TARGETTYPE classifications |
+| P3-R11-7 | MINOR | CMB val_loss improvement factor ~5×10⁴ should be ~4.5×10⁴ | TEXT | [x] FIXED — corrected to ~4.5×10⁴ in both occurrences |
+| P3-R11-8 | MINOR | SDSS top-77,905 threshold borrowed from failed cross-transfer count — circular | TEXT | [x] FIXED — acknowledged as bookkeeping convenience; users directed to S>5 or percentile cuts |
+| P3-R11-9 | MINOR | No isolation-forest comparison on DESI/SDSS/LAMOST as sanity check | TEXT | [x] FIXED — acknowledged gap in limitations section |
+| P3-R11-10 | MINOR | 17.8% "novelty floor" is measured on top-1,000 only — likely upper bound for full catalog | TEXT | [x] FIXED — "floor" → "fraction" with upper-bound caveat in abstract and limitations |
