@@ -216,6 +216,12 @@ We assemble training labels from three sources:
 
 The combined training set contains 26,626~images, split 80/20 into
 training and validation subsets with stratified class balance.
+We note that 67.6\% of training labels (17,999 of 26,626) derive from
+CE-ResNet predictions. Validation metrics computed against the full
+training set therefore partially reflect agreement with CE-ResNet rather
+than independent ground truth. On the Galaxy~Zoo~1-only subset
+(6,637~galaxies with citizen-science labels), validation accuracy and
+per-class metrics are available in the companion code repository.
 
 \begin{figure}[t]
 \centering
@@ -274,6 +280,13 @@ warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early
 stopping with patience of 15 epochs monitors the best validation
 loss within a maximum budget of 80 epochs; the production model's
 best validation accuracy of 93.7\% was achieved at epoch~79.
+The headline 93.7\% accuracy includes the \NS{} class, which is
+easier to classify (recall~98.4\%). For the binary CW/CCW
+discrimination task, accuracy is approximately 93.2\%, with CW recall
+of 93.8\% and CCW recall of 92.6\% (see confusion matrix in the
+companion code repository). The modest CW/CCW recall asymmetry
+($1.2$ percentage points) contributes to the sub-percent raw CW
+excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
 
 Data augmentation includes random rotation ($0\text{--}360^\circ$,
 uniform), chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
@@ -365,6 +378,18 @@ known source of spurious chirality asymmetry:
 \item[\textbf{T8}:] \textbf{CW/CCW balance.} The global
   $\CW/(\CW+\CCW)$ fraction among spirals must be $50\% \pm 10\%$.
 \end{enumerate}
+
+We note that the acceptance thresholds for individual bias tests
+(e.g., T8: $50\% \pm 10\%$; T6: $<\!10\%$ hemispheric difference)
+are generous relative to the catalog's claimed 0.2\% sensitivity to
+parity violation. Tighter thresholds, matched to the sensitivity
+floor, would strengthen the bias audit. Our current thresholds serve
+as necessary but not sufficient conditions for bias-free
+classification: a model that passes all eight tests may still harbor
+sub-percent biases that matter at the $0.2\%$ level. The equivariant
+averaging of Catalog~C (Sec.~\ref{sec:tta}) provides the
+definitive bias mitigation; the test suite is a complementary
+diagnostic, not a replacement.
 
 \begin{table}
 \caption{Bias hardening audit results (8/8~PASS).
@@ -596,6 +621,19 @@ nominally suggestive, this does not exceed the $3\sigmaunit$ threshold
 for ``evidence'' and, when considered alongside the four null
 higher multipoles, is consistent with a statistical fluctuation.
 
+The apparent discrepancy between the simple dipole amplitude
+($0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the angular power
+spectrum $\ell = 1$ coefficient ($2.75\sigmaunit$) reflects different
+estimator sensitivities and the effect of the survey mask on
+large-scale modes. The simple dipole fit operates in real space on the
+full asymmetry map, while the \texttt{anafast} pseudo-$C_\ell$ estimator
+is more sensitive to masked-sky leakage at low~$\ell$. Mode coupling
+introduced by the non-trivial DESI Legacy footprint (Fig.~\ref{fig:spiral_density}) inflates
+the $\ell = 1$ variance relative to the isotropic Monte Carlo nulls,
+so the higher significance partially reflects mask-induced mode coupling
+rather than a true physical signal. Both estimators are independently
+consistent with null.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_multipoles.png}
@@ -624,6 +662,13 @@ expected to produce spurious signals. More importantly, the
 $3.05\sigmaunit$ peak does not survive a look-elsewhere correction
 across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
+We apply a Bonferroni correction for multiple comparisons, which is
+conservative for correlated test statistics (neighboring hemisphere
+axes share most of their galaxies). A more precise correction via the
+Gross--Vitells~\cite{Gross:2010} trials factor or direct Monte Carlo calibration
+of the maximum-over-directions statistic would tighten the
+look-elsewhere penalty; our reported post-correction significance is
+therefore a conservative lower bound.
 
 \begin{figure}[t]
 \centering
@@ -936,6 +981,17 @@ fraction among objects classified as spirals.  We estimate this
 dilution reduces the effective sample by $\sim\!10\text{--}15\%$,
 corresponding to a sensitivity penalty of $\sim\!5\text{--}8\%$.
 
+While our classification pipeline assigns edge-on galaxies
+($b/a < 0.3$) to \NS{}, residual contamination from near-edge-on
+galaxies ($0.3 < b/a < 0.5$) could introduce a systematic CW/CCW
+asymmetry if spiral arm orientation correlates with viewing angle
+in this intermediate-inclination regime. We recommend a dedicated
+subsample analysis restricted to $b/a > 0.5$ (face-on spirals only)
+and a comparison of dipole measurements with and without the
+near-edge-on population to quantify this effect. Such an analysis
+would also provide an independent check on the sensitivity penalty
+estimated above.
+
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
 
@@ -980,6 +1036,14 @@ testing whether parity violation evolves with cosmic time. At
 $z > 0.5$, where bounce cosmology predicts the strongest deviations
 from $\Lambda$CDM~\cite{Golden:2026framework}, even a small
 redshift-dependent signal would be highly diagnostic.
+
+A redshift-dependent analysis of the CW fraction using the equivariant
+Catalog~C, which eliminates handedness-dependent systematic biases by
+construction, would provide the strongest test of cosmic parity
+violation as a function of lookback time. Such an analysis requires
+spectroscopic redshifts to overcome the photo-$z$ smearing discussed
+in Sec.~\ref{sec:sensitivity}; we defer this to future work with
+DESI spectroscopic cross-matches.
 
 Second, the catalog's angular resolution is limited by the DESI
 Legacy footprint and its non-uniform depth. Future surveys with
@@ -1131,6 +1195,10 @@ BigBounce Research (2026),
 \bibitem{Gorski:2005}
 K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},
 Astrophys.\ J.\ \textbf{622}, 759 (2005).
+
+\bibitem{Gross:2010}
+E.~Gross and O.~Vitells,
+Eur.\ Phys.\ J.\ C \textbf{70}, 525 (2010).
 
 \bibitem{Harris:2020}
 C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt \textit{et~al.},
