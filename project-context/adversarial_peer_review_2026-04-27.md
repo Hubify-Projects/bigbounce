@@ -595,14 +595,14 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P1-M4 | MAJOR | SPHEREx "4-6σ" in abstract vs "3-5σ realistic" in Table 1 footnote — internal contradiction | TEXT — unify to 3-5σ realistic in abstract | [x] FIXED |
 | P1-M5 | MAJOR | 14 barriers mix novel results with tautologies/known results (barriers 5,6,7,9,13 are generic) | TEXT — distinguish novel vs known vs philosophical | [x] FIXED |
 | P1-M6 | MAJOR | Poplawski2019 bib key is actually a 2010 paper | TEXT — rekey to Poplawski2010 | [x] FIXED |
-| P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [ ] |
+| P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [x] FIXED |
 | P1-M8 | MAJOR | Structural tension (DE vs bounce f_NL mutually exclusive) should be in abstract | TEXT — add to abstract | [x] FIXED |
 | P1-m1 | MINOR | 4 different "combined" β values used without clear guidance on headline | TEXT | [ ] |
 | P1-m2 | MINOR | NANOGrav synthetic-data Bayes factors meaningless — remove or caveat more | TEXT | [ ] |
 | P1-m3 | MINOR | Hehl 1976 citation slightly misleading for Holst sector | TEXT | [ ] |
 | P1-m4 | MINOR | One-loop RG equation (Eq.8) scheme-dependent — no predictive content | TEXT | [ ] |
 | P1-m5 | MINOR | Claims table misclassifies some items (standard formulas listed as "Derived") | TEXT | [ ] |
-| P1-m6 | MINOR | Acknowledgment thanks Shamir while refuting his results | TEXT | [ ] |
+| P1-m6 | MINOR | Acknowledgment thanks Shamir while refuting his results | TEXT | [x] FIXED |
 | P1-m7 | MINOR | HUBIFY preprint number + company email raises credibility questions | NOTE | [ ] |
 | P1-m8 | MINOR | Supplementary material "available upon request" — referee can't review it | TEXT — post as arXiv companion | [ ] |
 | P1-m9 | MINOR | Paper at 24 pages — could be 12 pages if cut aggressively | NOTE | [ ] |
@@ -617,10 +617,10 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [x] FIXED |
 | P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [x] FIXED |
 | P2-M1 | MAJOR | n_s = 8ε-11 presented as exact — needs linearization caveat + exact expression | TEXT | [x] FIXED |
-| P2-M2 | MAJOR | Null-space scan radius=50 unmotivated — r_cos stability is artifact of scan volume | TEXT — add justification or scan larger | [ ] |
+| P2-M2 | MAJOR | Null-space scan radius=50 unmotivated — r_cos stability is artifact of scan volume | TEXT — add justification or scan larger | [x] FIXED |
 | P2-M3 | MAJOR | 200 injection-recovery realizations underdescribed (no noise model, estimator, mask) | TEXT — add specifications | [x] FIXED |
-| P2-M4 | MAJOR | GR degradation σ_GR parameterized not computed — should use published factors | TEXT — cite Jolicoeur et al. factors | [ ] |
-| P2-M5 | MAJOR | Shot noise completely absent from forecast | TEXT — discuss or compute | [ ] |
+| P2-M4 | MAJOR | GR degradation σ_GR parameterized not computed — should use published factors | TEXT — cite Jolicoeur et al. factors | [x] FIXED |
+| P2-M5 | MAJOR | Shot noise completely absent from forecast | TEXT — discuss or compute | [x] FIXED |
 | P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [x] FIXED |
 | P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [ ] |
 | P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [x] FIXED |
@@ -648,7 +648,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P3-M4 | MAJOR | ACT DR6 should be dropped or formally quarantined | TEXT | [x] FIXED |
 | P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [ ] |
 | P3-M6 | MAJOR | eROSITA top-298 cap arbitrary — no score distribution shown | TEXT + needs figure | [x] FIXED |
-| P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [ ] |
+| P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [x] FIXED |
 | P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [ ] |
 | P3-m2 | MINOR | "0% artifact rate in top 200" — no criteria defined, not blinded | TEXT | [ ] |
 | P3-m3 | MINOR | SNR non-correlation claim has no quantitative measure | TEXT | [ ] |
@@ -673,7 +673,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [x] FIXED |
 | P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [ ] |
 | P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [x] FIXED |
-| P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [ ] |
+| P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [x] FIXED |
 | P4-M3 | MAJOR | Missing bias dimensions: magnitude, color, surface brightness, PSF | COMPUTE — needs data | [ ] BLOCKED |
 | P4-M4 | MAJOR | Redshift analysis uses raw Catalog A, not equivariant Catalog C | COMPUTE — needs data | [ ] BLOCKED |
 | P4-M5 | MAJOR | Size comparison overstated — should compare spiral subsample (3.32M), not total (8.47M) | TEXT | [x] FIXED |
@@ -697,13 +697,13 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | XP-C2 | CRITICAL | SPHEREx: Paper 1 abstract "4-6σ" vs Table 1 footnote "3-5σ realistic" | TEXT — unify | [x] FIXED |
 | XP-M1 | MAJOR | SPHEREx ranges inconsistent across program (4-6σ, 3-5σ, 5-5.5σ in different papers) | TEXT — adopt 3-5σ realistic everywhere | [x] FIXED |
 | XP-M2 | MAJOR | BibTeX keys differ: Golden:2026forecast (P1,P4) vs Golden:2026fnl (P3) | TEXT — standardize | [x] FIXED |
-| XP-M3 | MAJOR | Wands:2010 cited for f_NL in Paper 3 but not Papers 1/2 — attribution asymmetry | TEXT | [ ] |
+| XP-M3 | MAJOR | Wands:2010 cited for f_NL in Paper 3 but not Papers 1/2 — attribution asymmetry | TEXT | [x] FIXED |
 | XP-M4 | MAJOR | 319,443 vs 378,480 coexist in Paper 3 without bridging sentence | TEXT | [x] FIXED |
-| XP-m1 | MINOR | Dates: P1/P2 say Apr 27 but P3/P4 say Apr 24 | TEXT | [ ] |
+| XP-m1 | MINOR | Dates: P1/P2 say Apr 27 but P3/P4 say Apr 24 | TEXT | [x] FIXED |
 | XP-m2 | MINOR | "In preparation" (P3) vs "companion paper" (P1/P2/P4) | TEXT | [ ] |
 | XP-m3 | MINOR | \sigfnl macro (P3) vs inline \sigma(\fnl) (P2) | NOTE | [ ] |
 | XP-m4 | MINOR | Paper 1 quotes only benchmark CW 0.5012, not full-catalog 0.4974 | TEXT | [ ] |
-| XP-m5 | MINOR | Paper 3 has no version tag in \date{} | TEXT | [ ] |
+| XP-m5 | MINOR | Paper 3 has no version tag in \date{} | TEXT | [x] FIXED |
 
 ### WEBSITE — Remaining Content Issues
 

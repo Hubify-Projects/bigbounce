@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\paperVersion}{v1.0.0}
-\newcommand{\paperTimestamp}{2026-04-23}
+\newcommand{\paperTimestamp}{2026-04-28}
 
 \begin{document}
 
@@ -51,7 +51,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 24, 2026 --- \paperVersion}
+\date{April 28, 2026 --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -423,6 +423,26 @@ sub-percent biases that matter at the $0.2\%$ level. The equivariant
 averaging of Catalog~C (Sec.~\ref{sec:tta}) provides the
 definitive bias mitigation; the test suite is a complementary
 diagnostic, not a replacement.
+
+We therefore add a stringent interpretive caveat. The 8-test suite
+validates the absence of \emph{gross} systematic contamination at the
+${\sim}10\%$ level. However, the residual $9.5\sigma$ CW-fraction
+deficit ($0.4974$ vs.\ $0.5000$) operates at the $0.26\%$ level,
+well below the sensitivity of the current bias thresholds. As an
+upper bound on undetected bias, we note that the Catalog~$A \to C$
+correction ($0.5012 \to 0.4974$) shifts the CW fraction by $0.38\%$
+---at the same level as the observed deficit itself. This correction
+is orientation-dependent by construction and therefore provides an
+empirical ceiling on what residual orientation-dependent bias could
+do to the final result; the $9.5\sigma$ detection survives after
+applying it, but the proximity of the bias ceiling to the signal
+amplitude motivates a dedicated $0.1\%$-level bias test targeting
+magnitude-dependent and PSF-dependent CW-fraction variations.
+Such a test---for example, splitting the catalog into bins of
+half-light radius, PSF FWHM, and $r$-band magnitude and verifying
+that the CW fraction is flat across bins to $<\!0.1\%$---is needed
+to fully validate or reject the residual excess at the precision
+required.
 
 \begin{table}
 \caption{Bias hardening audit results (8/8~PASS).
