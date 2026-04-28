@@ -19,6 +19,7 @@
 | 7 | 2026-04-28 | 10 (P3 re-review) | 0 | 5 | 5 | 10/10 FIXED |
 | 8 | 2026-04-28 | 10 (P1 re-review) | 0 | 4 | 6 | 7/10 FIXED (3 deferred: cosmetic) |
 | 9 | 2026-04-28 | 10 (P4 re-review 2) | 0 | 5 | 5 | 10/10 FIXED |
+| 10 | 2026-04-28 | 10 (P2 re-review 2) | 0 | 4 | 6 | 10/10 FIXED |
 
 ---
 
@@ -872,3 +873,22 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P4-R9-8 | MINOR | CE-ResNet 1.95M assumed 100% spiral — unverified | TEXT | [x] FIXED — "all classified as CW or ACW since CE-ResNet lacks not-spiral class" |
 | P4-R9-9 | MINOR | Two binomial sigma formulas without noting equivalence at p~0.5 | TEXT | [x] FIXED — parenthetical linking the two formulas |
 | P4-R9-10 | MINOR | 2.75σ ℓ=1 used to dismiss 3.05σ hemisphere — logical contradiction | TEXT | [x] FIXED — rephrased as "marginal, consistent with but insufficient to establish" |
+
+---
+
+## ROUND 10: SECOND RE-REVIEW OF PAPER 2 (2026-04-28)
+
+**Method:** Single Opus agent — hostile LSS/non-Gaussianity reviewer, second pass on Paper 2
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P2-R10-1 | MAJOR | Eq. 4 projection formula neglects orthogonal-shape noise contribution — Fisher limit assumption unstated | TEXT | [x] FIXED — caveat added: projection noise suppressed by 1-r_cos^2 ≲ 0.03, subdominant |
+| P2-R10-2 | MAJOR | r_measured=0.90 (injection-recovery) vs r=0.85 (null-space median) inconsistency; headline r=0.876 has no stated provenance | TEXT | [x] FIXED — explained injection-recovery uses fixed reference coefficient set, not null-space sampling |
+| P2-R10-3 | MAJOR | 16.4% anomaly-tracer improvement suspiciously precise with no derivation | TEXT | [x] FIXED — softened to "~10-20% improvement" with explicit caveats on uncharacterized subsample properties |
+| P2-R10-4 | MAJOR | "Combined" Planck+DESI f_NL = -1.3 ± 4.5 has no inputs cited; DESI has not published f_NL | TEXT | [x] FIXED — rewritten as Planck-only recast (-1.0 ± 5.7 after template correction); DESI noted as not yet published |
+| P2-R10-5 | MINOR | (1-f_sky)^{1/2} ~ 5% is numerically wrong for f_sky=0.7 (actual: ~19% degradation) | TEXT | [x] FIXED — corrected to (1-f_sky)^{1/2} ≈ 55% → 1/√0.7 ≈ 1.19, ~19% degradation |
+| P2-R10-6 | MINOR | b_phi 20% prior self-labeled "optimistic" but used as baseline for headline 3-5σ | TEXT | [x] FIXED — explicitly stated 20% prior is baseline for headline range |
+| P2-R10-7 | MINOR | "O(10-30%)" combined degradation asserted without derivation | TEXT | [x] FIXED — labeled as order-of-magnitude estimate, not joint marginalization |
+| P2-R10-8 | MINOR | Table 3 "Corrected 10% residual" and "Ideal" rows have identical Bayes factors | TEXT | [x] FIXED — footnote explaining residual correction has ΔBF < 0.1, not independent scenario |
+| P2-R10-9 | MINOR | Broken cross-reference \ref{sec:bispectrum} — no such label exists | TEXT | [x] FIXED — changed to \ref{sec:benchmark} |
+| P2-R10-10 | MINOR | n_s=0.964 presented as prediction but is a fit (w tuned to match Planck) | TEXT | [x] FIXED — explicitly acknowledged as fit to Planck data, not prediction |
