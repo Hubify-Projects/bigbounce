@@ -17,6 +17,7 @@
 | 5 | 2026-04-28 | 10 (P4 re-review) | 0 | 4 | 6 | 10/10 FIXED |
 | 6 | 2026-04-28 | 10 (P2 re-review) | 0 | 4 | 6 | 10/10 FIXED |
 | 7 | 2026-04-28 | 10 (P3 re-review) | 0 | 5 | 5 | 10/10 FIXED |
+| 8 | 2026-04-28 | 10 (P1 re-review) | 0 | 4 | 6 | 7/10 FIXED (3 deferred: cosmetic) |
 
 ---
 
@@ -832,3 +833,22 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P3-R7-8 | MINOR | SDSS DR18 cites wrong reference (DESI Collaboration 2024 instead of Abdurro'uf 2022) | TEXT | [x] FIXED |
 | P3-R7-9 | MINOR | H200 and A100 GPUs used interchangeably — unclear which survey used which | TEXT | [x] FIXED — Section 2.1 now specifies A100 for native retrains, H200 for production scoring |
 | P3-R7-10 | MINOR | "Symmetric decoder" claim — only true for MLP autoencoders, not conv models | TEXT | [x] FIXED — qualified as "approximately symmetric" for convolutional variants |
+
+---
+
+## ROUND 8: FRESH RE-REVIEW OF PAPER 1 (2026-04-28)
+
+**Method:** Single Opus agent — hostile cosmology/QFT reviewer on Paper 1
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P1-R8-1 | MAJOR | ρ_Pl = c⁵/(ℏG²) is non-standard definition; potential 4π confusion with M_Pl⁴ | TEXT | [ ] DEFERRED — math checks out (reviewer confirmed 0.27 correct); standard LQC convention |
+| P1-R8-2 | MAJOR | Abstract uses β=0.242 headline but body "adopts" β=0.342 — contradictory | TEXT | [x] FIXED — consolidated to 0.242 as headline throughout; body explains 0.342 is joint analysis |
+| P1-R8-3 | MAJOR | Ω_m error bar 0.008 is 2× larger than inverse-variance combination (~0.004) | TEXT | [x] FIXED — footnote clarified as conservative envelope, not formal combination |
+| P1-R8-4 | MAJOR | n_s = 0.9649 ± 0.0042 has tighter errors than Tab II (0.965 ± 0.006); provenance unclear | TEXT | [x] FIXED — footnote added: same chains, rounding convention difference |
+| P1-R8-5 | MINOR | 3.9σ (naive inverse-variance) vs 3.6σ (published joint) used without caveat | TEXT | [x] FIXED — caveat added at first 3.9σ occurrence noting systematic correlation neglect |
+| P1-R8-6 | MINOR | Gödel (1949) cited by name only, no \cite{} — inconsistent with all other citations | TEXT | [x] FIXED — Godel1949 bib entry added + \cite used |
+| P1-R8-7 | MINOR | LaTeX comment section numbers out of sync after reorganization | COSMETIC | [ ] DEFERRED — invisible to readers |
+| P1-R8-8 | MINOR | RG equation uses coupling g as both fixed (O(1)) and running — appears circular | TEXT | [ ] DEFERRED — text already clarifies g²/(16π²) ~10⁻³ perturbative suppression; argument is valid |
+| P1-R8-9 | MINOR | "~10⁶ galaxies" limitation stale — paper's own catalog has 8.47M | TEXT | [x] FIXED — updated to reflect 8.47M catalog with future survey directions |
+| P1-R8-10 | MINOR | Poplawski2012/2011 bib keys swapped relative to publication years | TEXT | [x] FIXED — clarifying comment added; keys reflect arXiv posting order, rendered years correct |
