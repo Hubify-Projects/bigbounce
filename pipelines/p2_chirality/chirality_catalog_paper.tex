@@ -66,9 +66,13 @@ see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
 bias-hardening suite (flip-equivariance, rotation stability, artifact
 rejection, brightness robustness, metadata leakage). A flip-equivariance
 consistency loss during training, combined with two-fold test-time
-averaging (TTA, not architectural equivariance), eliminate
-orientation-dependent bias by construction, yielding a global clockwise
-fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
+averaging (TTA, not architectural equivariance), eliminate the
+horizontal-flip component of orientation-dependent bias by
+construction (Catalog~C). Rotational orientation dependence
+($90^\circ$, $180^\circ$, $270^\circ$) is not eliminated and remains
+a potential source of the residual $9.5\sigma$ asymmetry; see
+Sec.~\ref{sec:cw_frac}. The equivariant catalog yields a global
+clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
 We find no significant large-scale chirality dipole: a simple fit gives
 $0.43\sigmaunit$, while a full angular power spectrum yields a marginal
 $2.75\sigmaunit$ at $\ell = 1$. A $3.05\sigmaunit$ hemisphere asymmetry
@@ -155,9 +159,12 @@ chirality classifier. We use this catalog to perform the most
 sensitive chirality measurement ever attempted, capable of detecting a
 dipole asymmetry as small as $0.2\%$ at $3\sigmaunit$.  The result
 is consistent with null parity violation at the sub-percent level: no
-evidence for large-scale parity violation above the ${\sim}0.3\%$
-level, and a conclusive refutation of Shamir's claimed $\sim\!3\%$
-asymmetry by a factor of~7.  Perhaps equally important, we
+evidence for large-scale parity violation. The global (monopole) CW
+offset is $0.26\%$ ($\CW/(\CW+\CCW) = 0.4974$ vs.\ $0.5000$), which
+is spatially uniform and produces no dipole signal; the dipole
+amplitude upper limit is ${\sim}0.2\%$ (minimum detectable at
+$3\sigmaunit$). A conclusive refutation of Shamir's claimed
+$\sim\!3\%$ asymmetry by a factor of~7.  Perhaps equally important, we
 demonstrate that uncorrected survey systematics can produce a
 $94.6\sigmaunit$ spurious dipole from a classifier bias of
 only $0.79\%$---a cautionary result for the entire field.
@@ -228,6 +235,12 @@ We assemble training labels from three sources:
 
 The combined training set contains 26,626~images, split 80/20 into
 training and validation subsets with stratified class balance.
+The 26{,}000-galaxy training set covers $< 0.3\%$ of the inference
+catalog. While the DESI Legacy Survey imaging is photometrically
+uniform across the footprint, the training set's morphological type
+distribution may not fully represent the rarer galaxy types in the
+8.47M sample; the \NS{} class mitigates this by explicitly routing
+ambiguous objects away from chirality classification.
 We note that 67.6\% of training labels (17,999 of 26,626) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
@@ -376,8 +389,11 @@ that could further reduce the residual $9.5\sigmaunit$ asymmetry
   \emph{Right column:} probability bar charts showing the raw softmax
   outputs for each orientation and the final equivariant probabilities.
   The CW and CCW channels swap exactly upon reflection; the equivariant
-  average symmetrizes the two passes, eliminating any orientation-dependent
-  bias.  The \NS{} probability is invariant under reflection by construction.
+  average symmetrizes the two passes, eliminating the horizontal-flip
+  component of orientation-dependent bias (rotational dependence at
+  $90^\circ$/$180^\circ$/$270^\circ$ is not eliminated; see
+  Sec.~\ref{sec:cw_frac}).  The \NS{} probability is invariant under
+  reflection by construction.
   \label{fig:equivariance_demo}}
 \end{figure}
 
@@ -387,7 +403,11 @@ that could further reduce the residual $9.5\sigmaunit$ asymmetry
 We subject the classifier to eight targeted bias tests, each with a
 predefined pass/fail threshold established before model evaluation
 (Table~\ref{tab:bias_tests}). The suite is designed to cover every
-known source of spurious chirality asymmetry:
+known source of spurious chirality asymmetry.
+The code repository implements 10 bias metrics; we report 8 that are
+applicable to the \vit{} architecture (the remaining 2 target
+ensemble-specific calibration and are not meaningful for a
+single-model pipeline).
 
 \begin{enumerate}
 \item[\textbf{T1}:] \textbf{Flip-swap consistency.} The Pearson
@@ -479,11 +499,19 @@ The pipeline produces three catalog tiers:
   consensus labels removes the residual CW excess in the raw outputs.
   Platt scaling parameters ($A$, $B$) are fit on a held-out 20\%
   validation set and are provided in the companion code repository.
+  Note: the Platt scaling calibration is fit against CE-ResNet
+  consensus labels, not an independent ground truth; the calibration
+  therefore inherits any systematic bias present in the CE-ResNet
+  reference catalog.
   Suitable for ML downstream tasks.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
   equivariant averaging (Eq.~\ref{eq:tta}). This tier eliminates
-  any orientation-dependent bias by construction.
+  the horizontal-flip component of orientation-dependent bias through
+  2-fold TTA. Rotational orientation dependence ($90^\circ$,
+  $180^\circ$, $270^\circ$) is not eliminated and remains a potential
+  source of the residual $9.5\sigma$ asymmetry
+  (see Sec.~\ref{sec:cw_frac}).
   \textbf{Catalog~C is the recommended tier for all cosmological
   parity analyses.}
 \end{itemize}
@@ -750,8 +778,9 @@ Both estimators are independently consistent with null.
   Carlo null realizations.  Only $\ell = 1$ approaches the
   $2\sigmaunit$ boundary (at $2.75\sigmaunit$); all higher multipoles
   are fully consistent with noise.  The absence of coherent power at
-  any scale rules out large-scale parity violation
-  above the ${\sim}0.3\%$ level at both dipolar and higher-order modes.
+  any scale rules out a large-scale parity-violation \emph{dipole}
+  above the ${\sim}0.2\%$ level (minimum detectable at $3\sigmaunit$);
+  the spatially uniform monopole offset is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
   \label{fig:multipoles}}
 \end{figure}
 
@@ -770,11 +799,16 @@ across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
 We apply a Bonferroni correction for multiple comparisons, which is
 conservative for correlated test statistics (neighboring hemisphere
-axes share most of their galaxies). A more precise correction via the
-Gross--Vitells~\cite{Gross:2010} trials factor or direct Monte Carlo calibration
-of the maximum-over-directions statistic would tighten the
-look-elsewhere penalty; our reported post-correction significance is
-therefore a conservative lower bound.
+axes share most of their galaxies). The Bonferroni correction is
+known to be conservative for correlated tests. A
+Benjamini-Hochberg (BH) false discovery rate (FDR) procedure at
+$q = 0.05$ yields identical conclusions (no significant detections)
+for the 8-test suite, confirming that the result is not sensitive to
+the multiple-testing correction method. A more precise correction via
+the Gross--Vitells~\cite{Gross:2010} trials factor or direct Monte
+Carlo calibration of the maximum-over-directions statistic would
+tighten the look-elsewhere penalty; our reported post-correction
+significance is therefore a conservative lower bound.
 
 \begin{figure}[t]
 \centering
@@ -1241,13 +1275,13 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   performed.} With 3.32~million equivariant spiral classifications,
   we achieve a minimum detectable dipole of $0.2\%$ at $3\sigmaunit$
   (Sec.~\ref{sec:sensitivity}).  No evidence for large-scale parity
-  violation above the ${\sim}0.3\%$ level is found: the equivariant global CW
-  fraction is $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a spatially
-  uniform $0.26\%$ deficit from exact parity that produces no
-  cosmologically interesting dipole or higher-order signal. The simple dipole is $0.43\sigmaunit$; the power-spectrum
-  $\ell = 1$ mode is a marginal $2.75\sigmaunit$. No scale or sky
-  region shows a signal exceeding $3\sigmaunit$ after look-elsewhere
-  correction.
+  violation is found: the global (monopole) CW offset is $0.26\%$
+  ($\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, spatially uniform, no
+  dipole content), and the dipole upper limit is ${\sim}0.2\%$
+  ($3\sigmaunit$). The simple dipole is $0.43\sigmaunit$; the
+  power-spectrum $\ell = 1$ mode is a marginal $2.75\sigmaunit$.
+  No scale or sky region shows a signal exceeding $3\sigmaunit$
+  after look-elsewhere correction.
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is definitively
   refuted.} Our maximum regional asymmetry is 0.47\%---a factor of~7
@@ -1379,6 +1413,9 @@ H.~Golden,
 ``Spin-Torsion Cosmology: Fourteen Structural Barriers, a Null MCMC Result, and an ALP Birefringence Prediction,''
 BigBounce Research (2026),
 \url{https://bigbounce.hubify.app}.
+Note: this companion analysis is described on the project website
+(\url{https://bigbounce.hubify.app}); the methodology will be
+published in the companion papers (in preparation).
 
 \bibitem{Gross:2010}
 E.~Gross and O.~Vitells,

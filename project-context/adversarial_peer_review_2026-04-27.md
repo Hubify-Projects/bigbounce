@@ -624,14 +624,14 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [x] FIXED |
 | P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [x] FIXED |
 | P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [x] FIXED |
-| P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [ ] |
-| P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [ ] |
+| P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [x] FIXED |
+| P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [x] FIXED |
 | P2-m3 | MINOR | Jolicoeur:2025 eprint 2511.09466 — verify exists | CHECK | [ ] |
-| P2-m4 | MINOR | Convention appendix has logical gap (factor-of-4 doesn't match) | TEXT | [ ] |
-| P2-m5 | MINOR | No trispectrum/g_NL discussion | TEXT | [ ] |
-| P2-m6 | MINOR | "no observational tensions" too strong — absence of data ≠ model success | TEXT | [ ] |
-| P2-m7 | MINOR | Data availability pins v2.1.0 but paper is v1.7.0 | TEXT | [ ] |
-| P2-m8 | MINOR | Photo-z 5% degradation at 10% outlier fraction — needs reference | TEXT | [ ] |
+| P2-m4 | MINOR | Convention appendix has logical gap (factor-of-4 doesn't match) | TEXT | [x] FIXED |
+| P2-m5 | MINOR | No trispectrum/g_NL discussion | TEXT | [x] FIXED |
+| P2-m6 | MINOR | "no observational tensions" too strong — absence of data ≠ model success | TEXT | [x] FIXED |
+| P2-m7 | MINOR | Data availability pins v2.1.0 but paper is v1.7.0 | TEXT | [x] FIXED |
+| P2-m8 | MINOR | Photo-z 5% degradation at 10% outlier fraction — needs reference | TEXT | [x] FIXED |
 
 ### PAPER 3 — ML/Observational Review
 
@@ -649,18 +649,18 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [ ] |
 | P3-M6 | MAJOR | eROSITA top-298 cap arbitrary — no score distribution shown | TEXT + needs figure | [x] FIXED |
 | P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [x] FIXED |
-| P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [ ] |
-| P3-m2 | MINOR | "0% artifact rate in top 200" — no criteria defined, not blinded | TEXT | [ ] |
+| P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [x] FIXED |
+| P3-m2 | MINOR | "0% artifact rate in top 200" — no criteria defined, not blinded | TEXT | [x] FIXED |
 | P3-m3 | MINOR | SNR non-correlation claim has no quantitative measure | TEXT | [ ] |
-| P3-m4 | MINOR | SDSS 52.7% "Uncategorized" not explained | TEXT | [ ] |
+| P3-m4 | MINOR | SDSS 52.7% "Uncategorized" not explained | TEXT | [x] FIXED |
 | P3-m5 | MINOR | NANOGrav Section 5.1 out of scope for catalog paper | TEXT — trim or remove | [ ] |
-| P3-m6 | MINOR | Dropout rates p=0.15/0.10 not justified | TEXT | [ ] |
-| P3-m7 | MINOR | No learning rate schedule for spectroscopic models | TEXT | [ ] |
-| P3-m8 | MINOR | DESI anchor model validation loss not reported | TEXT | [ ] |
-| P3-m9 | MINOR | False match rate uses global SIMBAD density, not position-dependent | TEXT | [ ] |
+| P3-m6 | MINOR | Dropout rates p=0.15/0.10 not justified | TEXT | [x] FIXED |
+| P3-m7 | MINOR | No learning rate schedule for spectroscopic models | TEXT | [x] FIXED |
+| P3-m8 | MINOR | DESI anchor model validation loss not reported | TEXT | [x] FIXED |
+| P3-m9 | MINOR | False match rate uses global SIMBAD density, not position-dependent | TEXT | [x] FIXED |
 | P3-m10 | MINOR | \BigAE{} macro usage inconsistent | TEXT | [ ] |
 | P3-m11 | MINOR | NEOWISE ecliptic polar cap geometry needs verification | TEXT | [ ] |
-| P3-m12 | MINOR | No mention of DESI fiber assignment systematics | TEXT | [ ] |
+| P3-m12 | MINOR | No mention of DESI fiber assignment systematics | TEXT | [x] FIXED |
 | P3-m13 | MINOR | HuggingFace deposit private pending acceptance — check journal policy | NOTE | [ ] |
 | P3-m14 | MINOR | Reference formatting inconsistent | TEXT | [ ] |
 | P3-m15 | MINOR | High-z QSO candidates need RA/Dec, not just TARGETID | TEXT | [ ] |
@@ -678,16 +678,16 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P4-M4 | MAJOR | Redshift analysis uses raw Catalog A, not equivariant Catalog C | COMPUTE — needs data | [ ] BLOCKED |
 | P4-M5 | MAJOR | Size comparison overstated — should compare spiral subsample (3.32M), not total (8.47M) | TEXT | [x] FIXED |
 | P4-M6 | MAJOR | Angular power spectrum lacks MASTER deconvolution — 2.75σ ℓ=1 unresolved | COMPUTE — needs healpy/NaMaster | [ ] BLOCKED |
-| P4-m1 | MINOR | Bias suite code (10 tests) vs paper (8 tests) discrepancy | TEXT | [ ] |
-| P4-m2 | MINOR | Platt calibration fit against CE-ResNet labels, not ground truth | TEXT | [ ] |
+| P4-m1 | MINOR | Bias suite code (10 tests) vs paper (8 tests) discrepancy | TEXT | [x] FIXED |
+| P4-m2 | MINOR | Platt calibration fit against CE-ResNet labels, not ground truth | TEXT | [x] FIXED |
 | P4-m3 | MINOR | MC null count 1000 — low for 2.75σ claim | TEXT + COMPUTE | [ ] |
 | P4-m4 | MINOR | Edge-on contamination described but not measured | COMPUTE — needs data | [ ] BLOCKED |
-| P4-m5 | MINOR | Training set 26K for 8.47M inference — coverage not discussed | TEXT | [ ] |
-| P4-m6 | MINOR | "0.3% level" conflates monopole and dipole | TEXT | [ ] |
+| P4-m5 | MINOR | Training set 26K for 8.47M inference — coverage not discussed | TEXT | [x] FIXED |
+| P4-m6 | MINOR | "0.3% level" conflates monopole and dipole | TEXT | [x] FIXED |
 | P4-m7 | MINOR | Missing confusion matrix in paper | TEXT — add table | [ ] |
-| P4-m8 | MINOR | Bonferroni conservative but no proper correction provided | TEXT | [ ] |
-| P4-m9 | MINOR | Self-citation to website, not peer-reviewed paper | TEXT | [ ] |
-| P4-m10 | MINOR | "orientation-dependent bias" — only horizontal flip eliminated, not rotations | TEXT | [ ] |
+| P4-m8 | MINOR | Bonferroni conservative but no proper correction provided | TEXT | [x] FIXED |
+| P4-m9 | MINOR | Self-citation to website, not peer-reviewed paper | TEXT | [x] FIXED |
+| P4-m10 | MINOR | "orientation-dependent bias" — only horizontal flip eliminated, not rotations | TEXT | [x] FIXED |
 
 ### CROSS-PAPER CONSISTENCY
 
