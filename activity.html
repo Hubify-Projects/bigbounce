@@ -23,7 +23,7 @@
   .status-banner {
     background: var(--bg-subtle);
     border: 1px solid var(--border);
-    border-left: 4px solid #1e40af;
+    border-left: 4px solid var(--accent-link);
     border-radius: var(--radius-lg);
     padding: 20px 24px;
     margin-bottom: 32px;
@@ -31,7 +31,7 @@
   }
   .status-banner .status-label {
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
-    font-weight: 700; color: #1e40af; margin-bottom: 4px;
+    font-weight: 700; color: var(--text-tertiary); margin-bottom: 4px;
   }
   .status-banner .status-focus {
     font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 6px;
@@ -113,9 +113,10 @@
     font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
     font-family: var(--font-mono); flex-shrink: 0;
   }
-  .priority-now { background: #dbeafe; color: #1d4ed8; }
-  .priority-next { background: #fef3c7; color: #92400e; }
+  .priority-now { background: #dbeafe; color: #1d4ed8; }   /* blue — intentional semantic color */
+  .priority-next { background: #fef3c7; color: #92400e; }  /* amber — intentional semantic color */
   .priority-later { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+  .priority-done { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; } /* green — intentional semantic color */
 </style>
 <script src="nav.js" defer></script>
 </head>
@@ -129,7 +130,7 @@
 </div>
 
 <!-- ═══════════ CURRENT FOCUS ═══════════ -->
-<div class="status-banner">
+<div class="status-banner" role="status" aria-label="Current research focus">
   <div class="status-label">Current Research Focus</div>
   <div class="status-focus">&#128994; Paper 3 Path-C Rebuild CLOSED (100 % overall, fire #189 &mdash; 12 / 12 criteria green, weighted sum 12.000 / 12 = 100.000 %, cron <code>9f44c29e</code> self-terminated)</div>
   <p class="status-desc"><strong>Path-C rebuild CLOSED at fire #189 / 12 of 12 exit criteria green (weighted sum 12.000 / 12 = 100.000 %). Cron 9f44c29e self-terminated.</strong> <strong>Fire #189 closed criterion #4 (DESI 5-fold OOS k-fold) with Jaccard gate PASS.</strong> Houston's verbatim greenlight removed the live-SPARCL ack gate; the full 8-step close-out executed in a single autonomous pass: (1) live SPARCL retrieval via <code>SparclClient.retrieve_by_specid</code> + 12-worker <code>ThreadPoolExecutor</code> pulled <strong>47,000 DESI DR1 spectra in 19.8 min</strong> (94 batches &times; 500, 94.24 MB total; deterministic permutation checksum <strong>1812395110 matches fire-#170 dry-run lock</strong>); (2) <code>pip install "numpy&lt;2" --force-reinstall</code> resolved the SPARCL-induced numpy 2.x / torch 2.1.0 ABI incompatibility; (3) 5-fold BigAE training on A100 &lt;30 s wall; (4) 5-fold OOS scoring &lt;1 min wall (per-fold p50 [0.107-0.184], p99 [5.51-7.01]); (5) top-1 % Jaccard aggregation across all 10 fold pairs &rarr; <strong>mean pairwise &Jbar; = 0.862 (min 0.777)</strong> vs required &Jbar; &ge; 0.70 = <strong>GATE PASS</strong>, union |U| = 546 / consensus &ge;3/5 = <strong>464 / 546 = 85.0 %</strong> / consensus 5/5 = 73.1 % / singleton-only = 8.6 %; (6) <code>paper3_draft.tex</code> §pathc_caveats (i) rewritten with full stability narrative and §pathc_caveats (v) DESI clause flipped from "pending" to "executed and PASS"; (7) pod Docker TeX Live recompile (texlive-latex-base + fmtutil-sys --all after tzdata interactive install blocker) produced <strong>28 MB / 33 pp / 0 undef refs</strong>, mirrored to <code>public/papers/paper3_anomaly_catalog.pdf</code>; (8) SSOT triplet + site bundle atomic update per <code>feedback_site_sync_same_commit.md</code>. Paper 3 Table 1 DESI headline (195,829 / 0.87 %) stands unchanged &mdash; anomaly population robust against training-sample conditioning. Companion artifact <code>pipelines/p3_anomaly_engine/pathc_desi_kfold/results/kfold_stability_summary.json</code>. Final budget ~$71 / $400 cap. <strong>Fire #170 advanced criterion #4 (DESI 5-fold OOS k-fold)</strong>: authored <code>pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_desi_47k_training.py</code> (290 lines) to unblock the fire-#169 training-shards gap. Script: deterministic <code>np.random.default_rng(seed=20260420).permutation(22.5e6)[:47000]</code> target-ID draw matching the k-fold plan + <code>train_desi_kfold.py</code> seed, batched SPARCL retrieval stub @ 500 spectra/batch (94 batches), per-spectrum <code>resample_to_desi_grid()</code> to 496 bins / 3600&ndash;9800&Aring; / median-normalized (mirrors <code>sdss_native_retrain.py</code> L97&ndash;118), <code>.npy</code> shard output shape-identical to <code>train_desi_kfold.py</code> input expectation. Mutually-exclusive <code>--dry-run</code> / <code>--live</code> flags; <code>--live</code> gated behind <code>NotImplementedError</code> requiring Houston pod-budget ack before SPARCL pull loop executes. Dry-run executed locally: 94 batches &times; 500 spectra = 47,000 target, expected shard total 94.24 MB, target-ID permutation checksum <code>1812395110</code>, <code>fetch_dryrun_out/dry_run_summary.json</code> written. Budget envelope: ~1&ndash;2 h wall + ~100 GB intermediate + ~$3 pod spend @ $1.19/hr. Criterion #4 ledger 65% &rarr; 70%; weighted sum 11.054/12 = 92.12% &rarr; 11.104/12 = 92.53% (rounded-% crossing 92 &rarr; 93). Zero pod spend this fire (local dry-run only). <strong>Prior state (fire #168): PAPER 3 PDF RECOMPILED; criterion #9 CLOSED</strong>. <strong>Fire #168 closed criterion #9 (Paper 3 PDF recompile)</strong>: local Docker TeX Live <code>pdflatex &times; 2</code> on the fire-#167-updated <code>paper3_draft.tex</code> (6 integration-diff substitutions landed fire #167) produced a fresh <strong>28 MB / 33-page / 0-undef-ref Paper 3 PDF</strong> mirrored to <code>public/papers/paper3_anomaly_catalog.pdf</code>. Two pre-existing undefined <code>sec:cmb</code> refs (unrelated to fire #167) fixed inline to <code>sec:planck</code> during the recompile. Zero pod spend (local Docker). Weighted sum 10.004/12 = 83.37% &rarr; 11.004/12 = 91.70% (&approx;92%) &mdash; rounded-% crossing 83 &rarr; 92 triggers mandatory site-sync bundle per <code>feedback_site_sync_same_commit.md</code>. <strong>Prior state (fire #166): Path-C at 10 CLOSED, 1 in progress, 1 not-started.</strong> <strong>HF CATALOG REBUILT AND PUSHED</strong> at fire #166 via <code>hf_upload_pathc_sdss_landing.py</code> (additive uploader, fire-#162 dry-run-validated) &mdash; 5-file 15.2 MB bundle pushed atomically to <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">bamfai/bigbounce-anomaly-catalog</a>: <code>sdss_dr18_pathc_native.parquet</code> (77,905 top-cut at S&ge;0.1060, 3.1 MB) + <code>pathc_unique_objects.parquet</code> (378,480 rows, 12 MB) + <code>pathc_multi_survey_matches.parquet</code> (637 clusters, 38 KB) + <code>pathc_dedup_summary.json</code> (8/8 provenance) + refreshed <code>README.md</code> (all "IN FLIGHT"&rarr;"CRITERION CLOSED" rows, 7/8&rarr;8/8 coverage paragraph). <strong>Criterion #10 HF catalog rebuild CLOSED</strong> (74%&rarr;100%). The public HF dataset is now Path-C 8/8 native-retrain state; cross-transfer sets preserved as &sect;7 baselines. <strong>Criterion #1 SDSS native rescore CLOSED</strong> fire #164 (1,925,279 DR18 spectra scored, top-77,905 at S&ge;0.1060, ~6500&times; anomaly-rate collapse vs cross-transfer &mdash; 12 S&gt;5 sources vs 77,905). <strong>Criterion #7 8-way dedup CLOSED</strong> fire #164: <strong>388,693 detections &rarr; 378,480 unique at 5&Prime;, 637 multi-survey clusters</strong>. <strong>Criterion #8 paper integration CLOSED</strong> fire #164. <strong>Criterion #2 LAMOST CLOSED</strong> (21.4&times; reduction). <strong>Criterion #3 CMB CLOSED</strong>. <strong>Criterion #5 NEOWISE CLOSED</strong>. <strong>Criterion #6 injection-recovery CLOSED</strong>. <strong>Criterion #11 P1-PDF-V3 CLOSED</strong>. <strong>Criterion #12 site-sync CLOSED</strong>. <strong>IN PROGRESS</strong>: #4 DESI k-fold (launch-gated on pod GPU now free post-SDSS). <strong>NOT STARTED</strong>: #9 Paper 3 PDF recompile (pod-GPU-available; integration diff at <code>sdss_landing_integration_diff.md</code> paste-ready for substitution). Weighted sum 10.004/12 = 83.37%. Budget ~$68 / $400 cap, zero pod spend this fire (HF push is local-to-HF, no pod compute).</p>
@@ -146,7 +147,7 @@
 </div>
 
 <!-- ═══════════ UP NEXT ═══════════ -->
-<div class="up-next">
+<div class="up-next" aria-label="Upcoming research tasks">
   <h3>Up Next</h3>
   <ul class="up-next-list">
     <li><span class="priority priority-done">DONE</span> &#128994; DESI 5-fold out-of-sample validation (criterion #4) CLOSED fire #189 &mdash; live SPARCL 47K spectra / 19.8 min / checksum 1812395110 match / 5-fold BigAE train+score on A100 / Jaccard &Jbar; = 0.862 gate PASS / consensus &ge;3/5 = 464/546 = 85.0 %; Paper 3 Table 1 DESI headline unchanged; Phase 2 Path-C 12/12 CLOSED, cron 9f44c29e self-terminated</li>
@@ -165,7 +166,7 @@
 <!-- ═══════════ TIMELINE FEED ═══════════ -->
 <h2>Research Timeline</h2>
 
-<div class="feed">
+<div class="feed" role="feed" aria-label="Research activity timeline">
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-22</div>
@@ -219,15 +220,15 @@
   <div class="feed-item milestone">
     <div class="feed-date">2026-04-11</div>
     <div class="feed-title">v2.3.0 Site Update &mdash; April Findings Synced, New Research Queue Designed</div>
-    <p class="feed-body"><strong>All site pages updated to April 2026.</strong> New findings propagated: NANOGrav Bayesian model comparison (&gamma;=3.33&plusmn;0.40, bounce at 0.81&sigma;, SMBHB circular at 2.26&sigma;), NaMaster EB birefringence validation (&beta;=0.27&deg; recovered as 0.249&deg; at SNR=20.7), Pipeline 1 Step 5 &sigma;(f<sub>NL</sub>)=11.71 (30.5% 5-tracer improvement). <strong>Honest corrections:</strong> Pipeline 1 Step 4 bias validation FAILED (b_rec/b_std=0.95&plusmn;0.37, methodology issue with random comparison sample). SMBHB eccentric (&gamma;=3.8) also consistent at 0.74&sigma; &mdash; bounce is not uniquely favored by PTA data when eccentric inspiral is considered. Synthetic GPU loop killed after ~38 hours / ~600 iterations / ~$135 of waste producing no new science. <strong>Next phase:</strong> New research queue designed with real massive datasets and novel AI models for genuine astronomical discovery.</p>
+    <p class="feed-body"><strong>All site pages updated to April 2026.</strong> New findings propagated: NANOGrav combined PTA &gamma;=3.20&plusmn;0.42 (Paper 3 §6 canonical; earlier 3.33&plusmn;0.40 predated the v2b Fisher recompute), bounce at 0.48&sigma;, SMBHB circular at 2.26&sigma;. NaMaster EB birefringence validation (&beta;=0.27&deg; recovered as 0.249&deg; at SNR=20.7). Pipeline 1 Step 5 &sigma;(f<sub>NL</sub>)=11.71 (+7.93% 5-tracer improvement). <strong>Honest corrections:</strong> Pipeline 1 Step 4 bias validation FAILED (b_rec/b_std=0.95&plusmn;0.37, methodology issue with random comparison sample). SMBHB eccentric (&gamma;=3.8) also consistent at 0.74&sigma; &mdash; bounce is not uniquely favored by PTA data when eccentric inspiral is considered. Synthetic GPU loop killed after ~38 hours / ~600 iterations / ~$135 of waste producing no new science. <strong>Next phase:</strong> New research queue designed with real massive datasets and novel AI models for genuine astronomical discovery.</p>
     <div class="feed-tags"><span class="feed-tag">v2.3.0</span><span class="feed-tag">Site Sync</span><span class="feed-tag fail">Bias Validation Failed</span><span class="feed-tag pass">NaMaster Validated</span><span class="feed-tag">New Queue</span></div>
   </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-10</div>
     <div class="feed-title">Session 5: PBH Abundance from f_NL = -35/8 &mdash; Matter Bounce Naturally Suppresses PBH Formation (Edgeworth Expansion)</div>
-    <p class="feed-body">Computed PBH mass fraction β(f_NL) using Edgeworth expansion correction to Press-Schechter. Matter bounce f_NL=-4.375 (strongly constrained) acts as negative non-Gaussianity, suppressing the high-density tail of δ(x): Δβ/β &lt; 0 for f_NL &lt; 0. At typical σ≈0.03-0.10, the bounce prediction reduces PBH abundance by orders of magnitude vs. Gaussian, consistent with observational constraint β &lt; 10⁻⁵. This is the same f_NL that appears in galaxy clustering AND in the induced GW spectral shape — the <strong>f_NL triple role</strong>: (1) galaxy bispectrum → σ(f_NL) forecast, (2) PBH abundance suppression → no PBH overproduction, (3) Ω_GW spectral index γ=3.0 → 0.83σ from NANOGrav γ=3.33±0.40. Gaussian threshold: β=10⁻⁵ at σ=0.106; bounce suppresses further. Induced GW ratio to NANOGrav observed: ~20.9× (PBH contribution smaller than SGWB component — consistent with partial PBH contribution).</p>
-    <div class="feed-tags"><span class="feed-tag pass">f_NL=-4.375 suppresses PBHs</span><span class="feed-tag pass">β consistent with observations</span><span class="feed-tag pass">GW γ=3.0 at 0.83σ</span><span class="feed-tag pass">Triple role confirmed</span><span class="feed-tag">Edgeworth expansion</span></div>
+    <p class="feed-body">Computed PBH mass fraction β(f_NL) using Edgeworth expansion correction to Press-Schechter. Matter bounce f_NL=-4.375 (strongly constrained) acts as negative non-Gaussianity, suppressing the high-density tail of δ(x): Δβ/β &lt; 0 for f_NL &lt; 0. At typical σ≈0.03-0.10, the bounce prediction reduces PBH abundance by orders of magnitude vs. Gaussian, consistent with observational constraint β &lt; 10⁻⁵. This is the same f_NL that appears in galaxy clustering AND in the induced GW spectral shape — the <strong>f_NL triple role</strong>: (1) galaxy bispectrum → σ(f_NL) forecast, (2) PBH abundance suppression → no PBH overproduction, (3) Ω_GW spectral index γ=3.0 → 0.48σ from combined PTA γ=3.20±0.42 (Paper 3 §6 canonical; earlier 0.83σ from γ=3.33±0.40 predated the v2b Fisher recompute — corrected fire #25 per theorist peer review). Gaussian threshold: β=10⁻⁵ at σ=0.106; bounce suppresses further. Induced GW ratio to NANOGrav observed: ~20.9× (PBH contribution smaller than SGWB component — consistent with partial PBH contribution).</p>
+    <div class="feed-tags"><span class="feed-tag pass">f_NL=-4.375 suppresses PBHs</span><span class="feed-tag pass">β consistent with observations</span><span class="feed-tag pass">GW γ=3.0 at 0.48σ (canonical Paper 3 §6)</span><span class="feed-tag pass">Triple role confirmed</span><span class="feed-tag">Edgeworth expansion</span></div>
   </div>
 
   <div class="feed-item negative">
@@ -254,8 +255,8 @@
   <div class="feed-item positive">
     <div class="feed-date">2026-04-10</div>
     <div class="feed-title">Session 3 COMPLETE: NaMaster Birefringence + NANOGrav Bayesian &mdash; β=0.27° at 20.7σ, Bounce Bayes Factor 8.54</div>
-    <p class="feed-body"><strong>Session 3 (2 experiments, 3 datasets analyzed) complete.</strong> (1) <strong>NaMaster EB Birefringence</strong> (NSIDE=512, f_sky=0.32, 50 MC realizations, ACT-like noise 10 μK·arcmin): Paper 1 prediction β=0.27° produces <strong>SNR=20.74σ</strong> in the EB power spectrum using the NaMaster pseudo-C<sub>ℓ</sub> framework. Observed value β=0.342° gives SNR=26.26σ. Tension between prediction and observation: <strong>0.77σ (excellent)</strong>. β recovery bias=0.021° (small). Null β=0°: SNR=0 (correct). Independent validation of Paper 1's ALP birefringence result using professional CMB analysis tools. (2) <strong>NANOGrav Bayesian Model Comparison</strong> (GPU MCMC: 256 walkers × 2000 steps, 4-PTA combined, γ posterior): combined PTA γ=3.33±0.40. <strong>Matter bounce γ=3.0: 0.81σ tension</strong> (consistent). <strong>SMBHB γ=4.33: 2.26σ tension</strong> (disfavored). <strong>Bayes factor bounce/SMBHB = 8.54</strong> (moderate-to-strong evidence for bounce). SIMBAD cross-match context: April 2 cross-match already complete (400 real sources, 59% novel); Session 1 &ldquo;271 joint anomalies&rdquo; were from synthetic data &mdash; real data cross-match is confirmed as done.</p>
-    <div class="feed-tags"><span class="feed-tag pass">β=0.27° NaMaster SNR=20.7σ</span><span class="feed-tag pass">0.77σ tension (excellent)</span><span class="feed-tag pass">Bounce BF=8.54 vs SMBHB</span><span class="feed-tag pass">SMBHB excluded 2.26σ</span><span class="feed-tag">γ_obs=3.33±0.40</span></div>
+    <p class="feed-body"><strong>Session 3 (2 experiments, 3 datasets analyzed) complete.</strong> (1) <strong>NaMaster EB Birefringence</strong> (NSIDE=512, f_sky=0.32, 50 MC realizations, ACT-like noise 10 μK·arcmin): Paper 1 prediction β=0.27° produces <strong>SNR=20.74σ</strong> in the EB power spectrum using the NaMaster pseudo-C<sub>ℓ</sub> framework. Observed value β=0.342° gives SNR=26.26σ. Tension between prediction and observation: <strong>0.77σ (excellent)</strong>. β recovery bias=0.021° (small). Null β=0°: SNR=0 (correct). Independent validation of Paper 1's ALP birefringence result using professional CMB analysis tools. (2) <strong>NANOGrav Bayesian Model Comparison</strong> (GPU MCMC: 256 walkers × 2000 steps, 4-PTA combined, γ posterior): initial run gave γ=3.33±0.40 (later superseded by the Paper 3 §6 v2b Fisher recompute canonical value γ=3.20±0.42, bounce at 0.48σ). <strong>Matter bounce γ=3.0 consistent</strong>. <strong>SMBHB γ=4.33: 2.26σ tension</strong> (disfavored). <strong>Bayes factor bounce/SMBHB = 8.54</strong> (moderate-to-strong evidence for bounce). SIMBAD cross-match context: April 2 cross-match already complete (400 real sources, 59% novel); Session 1 &ldquo;271 joint anomalies&rdquo; were from synthetic data &mdash; real data cross-match is confirmed as done.</p>
+    <div class="feed-tags"><span class="feed-tag pass">β=0.27° NaMaster SNR=20.7σ</span><span class="feed-tag pass">0.77σ tension (excellent)</span><span class="feed-tag pass">Bounce BF=8.54 vs SMBHB</span><span class="feed-tag pass">SMBHB excluded 2.26σ</span><span class="feed-tag">γ_obs=3.20±0.42 (v2b Fisher canonical)</span></div>
   </div>
 
   <div class="feed-item positive">
@@ -288,16 +289,16 @@
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-06</div>
-    <div class="feed-title">Combined PTA: SMBHB Excluded at 2.7&sigma;, Bounce Consistent at 0.9&sigma; &mdash; Bayes Factor 27.6</div>
-    <p class="feed-body">Combined NANOGrav 15yr + EPTA DR2 + PPTA DR3 + IPTA DR2 gravitational wave background analysis. MCMC with emcee (32 walkers &times; 10,000 steps). <strong>Combined: &gamma; = 3.32 &plusmn; 0.37.</strong> Bounce prediction (&gamma;=3.0) at only 0.9&sigma; tension. Standard SMBHB (&gamma;=13/3) excluded at 2.7&sigma;. <strong>Bayes factor 27.6 favoring bounce over SMBHB.</strong> All four PTA experiments independently prefer bounce. This is the strongest gravitational wave evidence for bounce cosmology to date.</p>
-    <div class="feed-tags"><span class="feed-tag pass">POSITIVE RESULT</span><span class="feed-tag">NANOGrav</span><span class="feed-tag">Combined PTA</span><span class="feed-tag">2.7&sigma; SMBHB exclusion</span><span class="feed-tag">Bayes 27.6</span></div>
+    <div class="feed-title">Combined PTA: SMBHB Excluded at 2.7&sigma;, Bounce Consistent &mdash; Bayes Factor 27.6</div>
+    <p class="feed-body">Combined NANOGrav 15yr + EPTA DR2 + PPTA DR3 + IPTA DR2 gravitational wave background analysis. MCMC with emcee (32 walkers &times; 10,000 steps). Initial run: <strong>&gamma; = 3.32 &plusmn; 0.37</strong> (bounce at 0.9&sigma;). <em>Superseded by v2b Fisher recompute (Paper 3 §6 canonical): &gamma; = 3.20 &plusmn; 0.42, bounce (&gamma;=3.0) at <strong>0.48&sigma;</strong>.</em> Standard SMBHB (&gamma;=13/3) excluded at 2.7&sigma;. <strong>Bayes factor 27.6 favoring bounce over SMBHB.</strong> All four PTA experiments independently prefer bounce.</p>
+    <div class="feed-tags"><span class="feed-tag pass">POSITIVE RESULT</span><span class="feed-tag">NANOGrav</span><span class="feed-tag">Combined PTA</span><span class="feed-tag">2.7&sigma; SMBHB exclusion</span><span class="feed-tag">Bayes 27.6</span><span class="feed-tag">γ=3.20±0.42 canonical (v2b)</span></div>
   </div>
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-06</div>
-    <div class="feed-title">f<sub>NL</sub> Bias Validation: Extreme Anomalies Show 2.28&times; Clustering Bias</div>
-    <p class="feed-body">Landy-Szalay angular auto-correlation w(&theta;) computed on real DESI DR1 anomaly catalog (195,829 objects). Four score tiers tested. <strong>Extreme anomalies (score &ge;15) have 2.28&times; the clustering amplitude</strong> of the baseline (score 5&ndash;7). High-score tier: 1.57&times;, medium: 1.67&times;. This confirms anomaly-selected objects sit in more massive halos with higher bias &mdash; exactly what f<sub>NL</sub> scale-dependent bias needs. &sigma;(f<sub>NL</sub>) improves from 8.98 &rarr; 8.71 with bias enhancement.</p>
-    <div class="feed-tags"><span class="feed-tag pass">POSITIVE RESULT</span><span class="feed-tag">f<sub>NL</sub></span><span class="feed-tag">Bias Validation</span><span class="feed-tag">2.28&times; Enhancement</span><span class="feed-tag">Landy-Szalay</span></div>
+    <div class="feed-title">f<sub>NL</sub> Bias Validation: Gold+Silver Tracers Show 1.58&times; Enhanced Clustering Bias</div>
+    <p class="feed-body">Landy-Szalay angular auto-correlation w(&theta;) computed on 5,384 QSO candidates (Gold+Silver Pipeline-1 tracers) from the DESI DR1 anomaly catalog. <strong>Gold+Silver tracers show 1.58&times; enhanced clustering bias vs baseline</strong> (Landy-Szalay w(&theta;) on 5,384 QSO candidates). The earlier &ldquo;2.28&times;&rdquo; figure had no paper anchor (corrected per theorist peer review 2026-04-18 to the on-disk 1.58&times; number from <code>projects/cross_survey/results/bias_validation.json</code>). This confirms anomaly-selected objects sit in more massive halos with higher bias &mdash; exactly what f<sub>NL</sub> scale-dependent bias needs. Sample size too small for significant &sigma;(f<sub>NL</sub>) improvement; Step 6 (Paper 3 integration) remains.</p>
+    <div class="feed-tags"><span class="feed-tag pass">POSITIVE RESULT</span><span class="feed-tag">f<sub>NL</sub></span><span class="feed-tag">Bias Validation</span><span class="feed-tag">1.58&times; Enhancement (corrected)</span><span class="feed-tag">Landy-Szalay</span></div>
   </div>
 
   <div class="feed-item milestone">
@@ -386,9 +387,9 @@
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-02</div>
-    <div class="feed-title">LAMOST DR10 Complete &mdash; 11.4M Spectra, 44,075 Anomalies</div>
-    <p class="feed-body">Third survey complete in the multi-survey anomaly sweep. 11,418,594 LAMOST spectra scored by autoencoder in 18.3 hours. <strong>44,075 anomalies detected (0.39% rate).</strong> Combined with DESI (195K) and SDSS (77K), the total anomaly catalog now spans 32.3M spectra with 327,112 anomalies across 4 surveys.</p>
-    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">44K Anomalies</span><span class="feed-tag">0.39% Rate</span></div>
+    <div class="feed-title">LAMOST DR10 Complete &mdash; 11.4M Spectra, 44,075 Cross-Transfer Anomalies (Path-C Native: 113,342)</div>
+    <p class="feed-body">Third survey complete in the multi-survey anomaly sweep. 11,418,594 LAMOST spectra scored by autoencoder in 18.3 hours. Initial cross-transfer scan: <strong>44,075 anomalies detected (0.39% rate)</strong> &mdash; later superseded by Path-C native retrain which yielded <strong>113,342 LAMOST native anomalies</strong> (Criterion #2 CLOSED, 21.4&times; anomaly-rate reduction vs cross-transfer; QC-flagged blue-excess bias eliminated). Paper 3 Table 1 canonical figure is the native 113,342.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">113,342 native anomalies (Paper 3 canonical)</span><span class="feed-tag">44,075 cross-transfer (initial)</span></div>
   </div>
 
   <div class="feed-item positive">
@@ -780,7 +781,7 @@
 
 </main>
 <footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
-</div><script src="/astro/chat-widget.js" defer></script>
+<script src="/astro/chat-widget.js" defer></script>
 <script>
 (function() {
   try {
