@@ -597,11 +597,11 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P1-M6 | MAJOR | Poplawski2019 bib key is actually a 2010 paper | TEXT — rekey to Poplawski2010 | [x] FIXED |
 | P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [x] FIXED |
 | P1-M8 | MAJOR | Structural tension (DE vs bounce f_NL mutually exclusive) should be in abstract | TEXT — add to abstract | [x] FIXED |
-| P1-m1 | MINOR | 4 different "combined" β values used without clear guidance on headline | TEXT | [ ] |
-| P1-m2 | MINOR | NANOGrav synthetic-data Bayes factors meaningless — remove or caveat more | TEXT | [ ] |
-| P1-m3 | MINOR | Hehl 1976 citation slightly misleading for Holst sector | TEXT | [ ] |
-| P1-m4 | MINOR | One-loop RG equation (Eq.8) scheme-dependent — no predictive content | TEXT | [ ] |
-| P1-m5 | MINOR | Claims table misclassifies some items (standard formulas listed as "Derived") | TEXT | [ ] |
+| P1-m1 | MINOR | 4 different "combined" β values used without clear guidance on headline | TEXT | [x] FIXED |
+| P1-m2 | MINOR | NANOGrav synthetic-data Bayes factors meaningless — remove or caveat more | TEXT | [x] FIXED |
+| P1-m3 | MINOR | Hehl 1976 citation slightly misleading for Holst sector | TEXT | [x] FIXED |
+| P1-m4 | MINOR | One-loop RG equation (Eq.8) scheme-dependent — no predictive content | TEXT | [x] FIXED |
+| P1-m5 | MINOR | Claims table misclassifies some items (standard formulas listed as "Derived") | TEXT | [x] FIXED |
 | P1-m6 | MINOR | Acknowledgment thanks Shamir while refuting his results | TEXT | [x] FIXED |
 | P1-m7 | MINOR | HUBIFY preprint number + company email raises credibility questions | NOTE | [ ] |
 | P1-m8 | MINOR | Supplementary material "available upon request" — referee can't review it | TEXT — post as arXiv companion | [ ] |
@@ -622,7 +622,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P2-M4 | MAJOR | GR degradation σ_GR parameterized not computed — should use published factors | TEXT — cite Jolicoeur et al. factors | [x] FIXED |
 | P2-M5 | MAJOR | Shot noise completely absent from forecast | TEXT — discuss or compute | [x] FIXED |
 | P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [x] FIXED |
-| P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [ ] |
+| P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [x] FIXED |
 | P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [x] FIXED |
 | P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [ ] |
 | P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [ ] |
@@ -637,7 +637,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [ ] |
+| P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [x] FIXED |
 | P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [x] FIXED |
 | P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [ ] BLOCKED |
 | P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [x] FIXED |
@@ -671,7 +671,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 |---|-----|---------|-----------------|--------|
 | P4-C1 | CRITICAL | 93.7% accuracy contaminated by circular labeling — GZ1-only accuracy not reported in paper | TEXT — report GZ1-only accuracy | [x] FIXED |
 | P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [x] FIXED |
-| P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [ ] |
+| P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [x] FIXED (text; compute deferred) |
 | P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [x] FIXED |
 | P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [x] FIXED |
 | P4-M3 | MAJOR | Missing bias dimensions: magnitude, color, surface brightness, PSF | COMPUTE — needs data | [ ] BLOCKED |

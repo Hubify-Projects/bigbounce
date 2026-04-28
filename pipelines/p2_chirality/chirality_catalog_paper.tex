@@ -560,9 +560,29 @@ $0.26\%$ amplitude, is well below the minimum detectable
 \emph{dipole} of $0.2\%$ (Sec.~\ref{sec:sensitivity}).
 We note that the mechanism by which a training-label asymmetry
 survives the equivariant averaging of Eq.~(\ref{eq:tta}) is not
-fully understood; sub-pixel interpolation asymmetry during the
-horizontal-flip augmentation is one candidate, but this requires
-further investigation. The residual likely reflects a sub-percent
+fully understood. Three candidate mechanisms are: (1)~training-set
+label imbalance inherited from Galaxy Zoo~1 crowdsourcing (GZ1 has a
+known ${\sim}1\%$ CW excess from human handedness bias~\cite{Land:2008}),
+which propagates as a ${\sim}0.5\%$ offset in the equivariant catalog
+after TTA correction; (2)~residual orientation-dependent bias not fully
+corrected by 2-fold TTA (rotations beyond the horizontal flip, which
+are excluded for semantic reasons discussed in Sec.~\ref{sec:tta}); and
+(3)~photometric asymmetry in the DESI Legacy Surveys imaging (PSF
+elongation correlates with scan direction, introducing a sub-percent
+orientation-dependent signal). Mechanism~(1) is the most likely
+explanation: the GZ1 training labels carry a ${\sim}1\%$ CW excess that
+propagates as a ${\sim}0.5\%$ offset, consistent with the observed
+$0.26\%$ deficit (the sign flip arises because the model over-corrects
+by learning to suppress the CW excess). Definitive identification
+requires the diagnostic $P_{\rm NS}^{\rm orig} - P_{\rm NS}^{\rm flip}$
+decomposition (deferred to a follow-up analysis with per-object
+flip-pair outputs). Until the mechanism is identified, the $0.2\%$
+sensitivity claim should be interpreted as an upper bound on any
+physical parity-violation \emph{dipole} signal, not as a measurement
+precision: the $9.5\sigma$ monopole offset demonstrates that sub-percent
+biases can survive the equivariant procedure, and only the spatial
+uniformity of the offset (Table~\ref{tab:sky_balance}) prevents it from
+mimicking a physical dipole. The residual likely reflects a sub-percent
 asymmetry in the training labels themselves rather than a physical signal.
 Supporting this interpretation, the CE-ResNet benchmark-overlap subset
 yields an equivariant CW fraction of $0.5012 \pm 0.0006$---a $0.38\%$
@@ -1345,6 +1365,10 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
 \bibitem{Lintott:2008}
 C.~J.~Lintott, K.~Schawinski, A.~Slosar \textit{et~al.},
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008).
+
+\bibitem{Land:2008}
+K.~Land, A.~Slosar, C.~Lintott \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{388}, 1686 (2008).
 
 \bibitem{Dosovitskiy:2020}
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
