@@ -723,13 +723,13 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
 | WT-1 | BROKEN | Missing image: articles/images/beyond_big_bounce_infographic.png | Need image file | [ ] BLOCKED |
-| WT-2 | BROKEN | Double navigation on methodology.html + mathematics.html | TEXT — remove hardcoded nav | [ ] |
-| WT-3 | BROKEN | Broken anchor links: index.html → paper.html#paper1-4 (no id attributes) | TEXT — add id attrs | [ ] |
-| WT-4 | BROKEN | Empty src="" in figures.html lightbox modal (line 930) | TEXT | [ ] |
+| WT-2 | BROKEN | Double navigation on methodology.html + mathematics.html | TEXT — remove hardcoded nav | [x] VERIFIED OK — no double nav exists |
+| WT-3 | BROKEN | Broken anchor links: index.html → paper.html#paper1-4 (no id attributes) | TEXT — add id attrs | [x] VERIFIED OK — ids already present |
+| WT-4 | BROKEN | Empty src="" in figures.html lightbox modal (line 930) | TEXT | [x] VERIFIED OK — no empty src |
 | WT-5 | WARNING | PDFs 1, 2, 4 likely missing figures (< 1MB each) | COMPILE — need Docker + figures in same dir | [ ] BLOCKED |
-| WT-6 | WARNING | Stale duplicate: public/papers/anomaly_catalog_paper.pdf (6.2MB old version) | DELETE | [ ] |
-| WT-7 | WARNING | 10 pages missing nav.js (animations, bigbounce-md, galaxy-zoo, interactive-data, versions, etc.) | TEXT | [ ] |
-| WT-8 | WARNING | 15 pages missing meta description/OG tags | TEXT | [ ] |
+| WT-6 | WARNING | Stale duplicate: public/papers/anomaly_catalog_paper.pdf (6.2MB old version) | DELETE | [x] FIXED — git rm |
+| WT-7 | WARNING | 10 pages missing nav.js (animations, bigbounce-md, galaxy-zoo, interactive-data, versions, etc.) | TEXT | [x] VERIFIED OK — all have nav.js |
+| WT-8 | WARNING | 15 pages missing meta description/OG tags | TEXT | [x] VERIFIED OK — all have meta desc |
 
 ### BLOCKED ITEMS SUMMARY
 
