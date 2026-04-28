@@ -180,9 +180,9 @@
   .epoch-litebird  .epoch-card { border-left-color: #e11d48; }
   .epoch-litebird  .epoch-label { color: #e11d48; }
 
-  .epoch-verdict   .epoch-dot { background: #0a0a0a; box-shadow: 0 0 0 2px #0a0a0a; }
-  .epoch-verdict   .epoch-card { border-left-color: #0a0a0a; background: var(--bg-subtle); }
-  .epoch-verdict   .epoch-label { color: #0a0a0a; }
+  .epoch-verdict   .epoch-dot { background: var(--text); box-shadow: 0 0 0 2px var(--text); }
+  .epoch-verdict   .epoch-card { border-left-color: var(--text); background: var(--bg-subtle); }
+  .epoch-verdict   .epoch-label { color: var(--text); }
 
   /* ── Key at the top ── */
   .timeline-key {
@@ -249,21 +249,21 @@
 
 <!-- ═══════════════════════════════ KEY ═══════════════════════════════ -->
 <div class="timeline-key">
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#94a3b8"></div> Before the bounce</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0f172a"></div> The bounce</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#1e40af"></div> Inflation</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#059669"></div> CMB release</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0891b2"></div> Structure</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#7c3aed"></div> Present day</div>
-  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#db2777"></div> Future tests</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#94a3b8" aria-hidden="true"></div> Before the bounce</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0f172a" aria-hidden="true"></div> The bounce</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#1e40af" aria-hidden="true"></div> Inflation</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#059669" aria-hidden="true"></div> CMB release</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#0891b2" aria-hidden="true"></div> Structure</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#7c3aed" aria-hidden="true"></div> Present day</div>
+  <div class="timeline-key-item"><div class="timeline-key-dot" style="background:#db2777" aria-hidden="true"></div> Future tests</div>
 </div>
 
 <!-- ═══════════════════════════════ TIMELINE ═══════════════════════════════ -->
-<div class="cosmic-timeline">
+<div class="cosmic-timeline" role="list" aria-label="Cosmological timeline from parent universe to future experiments">
 
   <!-- ── 1. Parent Universe ── -->
-  <div class="epoch epoch-pre">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-pre" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">Before the Bounce</div>
       <h3 class="epoch-title">The Parent Universe</h3>
@@ -275,8 +275,8 @@
   </div>
 
   <!-- ── 2. Matter-Dominated Contraction ── -->
-  <div class="epoch epoch-contract">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-contract" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">The Contracting Phase</div>
       <h3 class="epoch-title">Matter-Dominated Contraction</h3>
@@ -287,14 +287,14 @@
           \[\displaystyle f_{\rm NL} = \frac{5}{4}\left(1 - \frac{1}{\varepsilon}\right) = \frac{5}{4}\left(1 - \frac{2}{3}\right) = -\frac{35}{8} = -4.375\]
           <div class="eq-label">The f<sub>NL</sub> Prediction &mdash; Paper 2</div>
         </div>
-        <p>This value is <strong>300 times larger</strong> than what standard slow-roll inflation predicts (\(f_{\rm NL}^{\rm local} \sim 0.01\)) and opposite in sign. It depends only on the contraction being matter-dominated &mdash; strongly constrained with no free parameters in the cubic sector.</p>
+        <p>This value is <strong>300 times larger</strong> than what standard slow-roll inflation predicts (\(f_{\rm NL}^{\rm local} \sim 0.01\)) and opposite in sign. It is minimally parameterized &mdash; it depends only on the contraction being matter-dominated, with no free parameters in the cubic sector of the Maldacena action.</p>
       </div>
     </div>
   </div>
 
   <!-- ── 3. The Bounce ── -->
-  <div class="epoch epoch-bounce">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-bounce" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">t = 0 &middot; &rho; &asymp; 0.27&ndash;0.41 &rho;<sub>Pl</sub></div>
       <h3 class="epoch-title">The Bounce</h3>
@@ -310,8 +310,8 @@
   </div>
 
   <!-- ── 4. The Bounce Transition ── -->
-  <div class="epoch epoch-transit">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-transit" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">Through the Bounce</div>
       <h3 class="epoch-title">Perturbation Transmission</h3>
@@ -324,8 +324,8 @@
   </div>
 
   <!-- ── 5. Inflation ── -->
-  <div class="epoch epoch-inflate">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-inflate" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">After the Bounce &middot; ~92 e-folds</div>
       <h3 class="epoch-title">Inflation</h3>
@@ -338,8 +338,8 @@
   </div>
 
   <!-- ── 6. Recombination ── -->
-  <div class="epoch epoch-recomb">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-recomb" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">z &asymp; 1100 &middot; t &asymp; 380,000 years</div>
       <h3 class="epoch-title">Recombination &amp; the CMB</h3>
@@ -358,8 +358,8 @@
   </div>
 
   <!-- ── 7. Structure Formation ── -->
-  <div class="epoch epoch-struct">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-struct" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">z &asymp; 10 &rarr; 0 &middot; Galaxies Form</div>
       <h3 class="epoch-title">Structure Formation</h3>
@@ -375,8 +375,8 @@
   </div>
 
   <!-- ── 8. Today ── -->
-  <div class="epoch epoch-today">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-today" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">z = 0 &middot; Present Day</div>
       <h3 class="epoch-title">Today</h3>
@@ -384,12 +384,12 @@
         <p>Current observational status:</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0;">
           <div class="card" style="padding: 12px 14px; text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">0.342 &pm; 0.094&deg;</div>
-            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Measured &beta; (Planck+ACT, 3.9&sigma;)</div>
+            <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">0.242 &pm; 0.061&deg;</div>
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Measured &beta; (inverse-variance, 3.9&sigma;)</div>
           </div>
           <div class="card" style="padding: 12px 14px; text-align: center;">
             <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">0.27&deg;</div>
-            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Predicted &beta; (within 1&sigma;)</div>
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">Predicted &beta; (0.46&sigma; from observed)</div>
           </div>
         </div>
         <p>Our MCMC verification (424,000+ posterior samples) confirms: \(H_0 = 67.68\;\text{km/s/Mpc}\), \(\Delta N_{\rm eff} \approx 0\). The spin-torsion coupling does not shift standard cosmological parameters. This is consistent with the perturbation-transparency result.</p>
@@ -399,14 +399,14 @@
   </div>
 
   <!-- ── 9. SPHEREx ── -->
-  <div class="epoch epoch-spherex">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-spherex" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">~2028 &middot; Galaxy Bispectrum</div>
       <h3 class="epoch-title">SPHEREx</h3>
       <div class="epoch-body">
         <p>NASA's SPHEREx mission will survey 450 million galaxies in the near-infrared, measuring \(f_{\rm NL}^{\rm local}\) to a precision of \(\sigma(f_{\rm NL}) \approx 0.8\text{&ndash;}1.0\).</p>
-        <p>At that precision, the bounce prediction \(f_{\rm NL} = -4.375\) would be detected at <strong>3&ndash;5&sigma; realistic</strong> significance (5&ndash;5.5&sigma; optimistic Fisher ideal before systematics).</p>
+        <p>At that precision, the bounce prediction \(f_{\rm NL} = -4.375\) would be detected at <strong>3&ndash;5&sigma;</strong> significance.</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0;">
           <div class="card" style="padding: 14px; border-left: 3px solid #059669;">
             <div style="font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px;">If detected</div>
@@ -422,8 +422,8 @@
   </div>
 
   <!-- ── 10. LiteBIRD ── -->
-  <div class="epoch epoch-litebird">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-litebird" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">Early 2030s &middot; CMB Polarization</div>
       <h3 class="epoch-title">LiteBIRD</h3>
@@ -436,8 +436,8 @@
   </div>
 
   <!-- ── 11. The Verdict ── -->
-  <div class="epoch epoch-verdict">
-    <div class="epoch-dot"></div>
+  <div class="epoch epoch-verdict" role="listitem">
+    <div class="epoch-dot" aria-hidden="true"></div>
     <div class="epoch-card">
       <div class="epoch-label">~2028&ndash;2032</div>
       <h3 class="epoch-title">The Verdict</h3>
@@ -470,7 +470,6 @@
 </footer>
 
 </main>
-</div>
 <script src="/astro/chat-widget.js" defer></script>
 <script>
 (function() {
