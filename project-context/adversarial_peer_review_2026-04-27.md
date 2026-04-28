@@ -23,19 +23,19 @@
 - **Website** (`index.html` lines 64, 88, 356): uses 0.5012 everywhere
 - **Website** (`index.html` lines 561, 695): uses 0.4974
 - **Fix:** Pick 0.4974 (full catalog) as headline everywhere. Add footnote in P1 explaining 0.5012 is subset-specific. Website: use 0.4974 consistently, note 0.5012 as benchmark cross-check.
-- **Status:** [~] PARTIAL — Website disambiguated (0.5012 labeled "benchmark-overlap subset", 0.4974 labeled "full catalog"). Paper 1 footnote still needed.
+- **Status:** [x] DONE — Paper 1 footnote added at first 0.5012 explaining benchmark-overlap subset vs full-catalog 0.4974. Website fully disambiguated.
 
 ### 2. Paper 4 model identity crisis [P4, CRITICAL]
 - Paper says ViT-Small (`vit_small_patch16_224`) on DR8 with 2-fold TTA
 - `CATALOG_SCHEMA.md` says Zoobot/EfficientNet-B0 on DR10 with 8-fold TTA
 - **Fix:** Determine which is truth. Update whichever is wrong. Ensure paper, schema, and HuggingFace metadata are mutually consistent.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — ViT-Small confirmed as ground truth (paper is correct). CATALOG_SCHEMA.md updated from stale Zoobot/EfficientNet-B0/DR10/8-fold to ViT-Small/DR8/2-fold.
 
 ### 3. Paper 4 CW fraction has NO error bars [P4, CRITICAL]
 - 0.4974 with binomial sigma=0.0003 means 8.7-sigma CCW excess never discussed
 - `dipole/summary.json` gives 0.5012 +/- 0.0006 instead (contradicts paper)
 - **Fix:** Add error bars. Reconcile 0.4974 vs 0.5012. Discuss whether deviation from 0.5 is significant.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Error bars ±0.0003 added to abstract, Section IV.B, Table II (with deviation column), footnote, Section V.B, conclusions. 9.5σ residual discussed as spatially uniform monopole consistent with training bias.
 
 ### 4. Paper 2 polynomial coefficients inconsistent [P2, CRITICAL]
 - Paper text: (6, 2, -18, 10, -66, 18)
@@ -44,21 +44,21 @@
 - Both sets reproduce the 3 benchmark values but differ at intermediate configurations
 - Template overlap r depends on intermediate-configuration shapes
 - **Fix:** Reconcile. Acknowledge underdetermination. State which coefficients are used in all calculations. Explore the null space to quantify r uncertainty.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Paper 2 footnote added acknowledging underdetermination (3 constraints, 6 monomial coefficients). Computational coefficients (2,7,3,-12,-69,19) stated. Pre-existing error caught (-66 doubled is -132 not -66). Robustness range r=0.867-0.888 reported.
 
 ### 5. Paper 2 "verified" derivation never completed [P2, CRITICAL]
 - `deep_normalization_check.md` shows vertex-level computation gives wrong answer
 - `corrected_v3_exact.py` has undefined variables (k3_dot_k2 etc. used before defined)
 - No evidence the full in-in integral was ever run to completion
 - **Fix:** Either complete the derivation or remove "verified" language. Honestly state reliance on Cai et al.'s published calculation.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — "verified" → "checked" throughout. "92% confidence" removed. Honest disclosure that vertex-level computation not completed. "derive" → "audit" in abstract.
 
 ### 6. Paper 1 ECH action (Eq. 1) non-standard [P1, CRITICAL]
 - Includes explicit T^abc T_abc term alongside EC and Holst terms
 - Mixes first-order (varying w.r.t. connection) and second-order (torsion already integrated out) formulations
 - Coefficient 1/4 needs explicit justification
 - **Fix:** Rewrite to use either first-order Palatini OR second-order post-elimination, not both. Add clear justification for chosen formulation.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — New paragraph after Eq.(1) clarifying second-order formulation. Coefficient 1/4 explicitly justified as fixed by EC constraint. T^abc T_abc term identified as residual contact interaction.
 
 ### 7. Paper 1 f_NL = -35/8 is NOT this paper's prediction [P1, CRITICAL]
 - Perturbation-transparency result proves ECH is irrelevant to perturbation dynamics
@@ -72,7 +72,7 @@
 - "Scaling ansatz" is not legitimate EFT
 - Entire dark energy phenomenology rho_Lambda = Xi M_Pl^4 rests on this
 - **Fix:** Either write correctly dimensioned operator or clearly state upfront that DE parameterization lacks EFT foundation.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Dimensional analysis disclaimer added after Eq.(6). Mass dimension +1 vs needed +4 explicitly stated. "Scaling ansatz" label added. DE parameterization clearly marked as phenomenological, not EFT-derived.
 
 ### 9. Paper 3 three competing headline totals [P3, CRITICAL]
 - 319,443 (cross-transfer Table 1)
@@ -92,21 +92,21 @@
 - k-fold cross-validation on 47K training pool, not on 22.5M catalog
 - Standard practice: hold out 50% for independent validation
 - **Fix:** Add held-out validation experiment OR acknowledge limitation very prominently in text (not just a caveat).
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — In-sample scoring disclosure paragraph added in Section 2.2. Caveat (i) strengthened to prominently acknowledge limitation. 5-fold k-fold cross-validation result (Jaccard 0.862) cited as mitigation.
 
 ### 12. Paper 3 "58.8% SIMBAD-novel" debunked by own footnote [P3, CRITICAL]
 - Paper's own extended cross-match: 100% archival-ID rate for top-20 SIMBAD-novel across SDSS, eROSITA, NEOWISE, Gaia
 - DESI top-1000: 82.2% archival-ID, leaving only 17.8% genuinely novel
 - Title says "Uncataloged Objects" — misleading
 - **Fix:** Revise title to "SIMBAD-unmatched" or similar. Quote 17.8% genuine novelty rate prominently in abstract.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Title changed "Uncataloged Objects" → "Anomalous Sources". "novelty fraction" → "SIMBAD-unmatched fraction" throughout. 17.8% genuine novelty floor promoted to main text.
 
 ### 13. Paper 4 training description factual errors [P4, CRITICAL]
 - Paper says max 80 epochs + patience 15; training_curves.csv shows 100 epochs
 - Paper says 93.7% accuracy; summary.json says 94.9% (confusion_accuracy)
 - Batch size never reported
 - **Fix:** Correct all training description facts. Report batch size.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Batch size 64 added. Early stopping description clarified (best at epoch 79 of 80). 93.7% confirmed as validation accuracy (distinct from 94.9% test confusion matrix accuracy).
 
 ---
 
@@ -135,7 +135,7 @@
 
 | # | Issue | Fix | Status |
 |---|-------|-----|--------|
-| 28 | "92% confidence" in normalization is subjective, not statistical. | Remove. Replace with honest discussion of factor-of-2 ambiguity. | [ ] |
+| 28 | "92% confidence" in normalization is subjective, not statistical. | Remove. Replace with honest discussion of factor-of-2 ambiguity. | [x] DONE (addressed with item #5) |
 | 29 | "Parameter-free" misleading given 1-8% epsilon-correction uncertainty and nearly order-of-magnitude c_1 range. | Change to "strongly constrained" or "single-parameter." | [ ] |
 | 30 | sigma(f_NL) = 0.7 adopted from Heinrich et al. without examining b_phi marginalization or template applicability. | Add critical examination of adopted forecast assumptions. | [ ] |
 | 31 | MegaMapper forecasts highly speculative (unfunded, no finalized design). 3-7sigma range uninformative. | Add prominent caveats about instrument maturity. | [ ] |

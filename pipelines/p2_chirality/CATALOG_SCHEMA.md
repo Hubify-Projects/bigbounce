@@ -72,19 +72,26 @@ For cosmology parity analyses, the recommended cut is `qc_flag == 0` and
 
 ### Model
 
-- **Architecture:** Zoobot v2 (EfficientNet-B0 backbone, 3-head softmax output)
-- **Training data:** Galaxy Zoo DESI volunteer vote fractions (~7.5M labels from
-  ~150K unique galaxies with >= 5 votes per question)
+- **Architecture:** ViT-Small (`vit_small_patch16_224`, ImageNet-pretrained, last 6
+  of 12 transformer blocks fine-tuned) with a custom 3-class classification head
+  (LayerNorm -> 384->512 GELU d=0.3 -> 512->256 GELU d=0.2 -> 256->3 softmax)
+- **Training data:** 26,626 images from Galaxy Zoo 1 (6,637 CW/CCW at >70% vote
+  confidence), CE-ResNet high-confidence spirals (17,153), CE-ResNet non-spirals
+  (846), and synthetic hard negatives (2,000 blank/noise/gradient images)
+- **Training:** AdamW (head lr=3e-4, encoder lr=2e-5, weight decay=0.02), cosine
+  annealing warm-restart (T_0=10, T_mult=2), batch size 64, early stopping
+  patience 15, max 80 epochs. Flip-equivariance consistency loss (lambda=0.5)
+  added to class-weighted cross-entropy.
 - **Calibration (Catalog B):** Platt scaling with `bias = 1.58`, `temperature = 4.65`,
-  fit on a held-out 10% validation split
-- **Equivariant post-processing (Catalog C):** Each galaxy is classified under 8
-  augmentations (4 rotations x 2 reflections). Reflections swap the CW/CCW labels.
-  The 8 probability vectors are averaged to produce `p_*_eq`. This removes any
-  orientation-dependent bias by construction.
+  fit against CE-ResNet consensus labels on a held-out overlap subset
+- **Equivariant post-processing (Catalog C):** Each galaxy is classified under 2
+  augmentations (original + horizontal reflection). The reflection swaps the CW/CCW
+  labels. The 2 probability vectors are averaged to produce `p_*_eq`. This removes
+  any orientation-dependent bias by construction.
 
 ### Input Imaging
 
-- Galaxy Zoo DESI cutouts (DESI Legacy Surveys DR10, grz bands)
+- Smith42/galaxies dataset (DESI Legacy Imaging Surveys DR8, grz bands)
 - 224x224 pixel stamps, 0.262 arcsec/pixel native scale
 
 ### Pipeline Scripts

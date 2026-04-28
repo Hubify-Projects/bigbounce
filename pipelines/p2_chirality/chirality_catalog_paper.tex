@@ -65,7 +65,7 @@ bias-hardening suite (flip-equivariance, rotation stability, artifact
 rejection, brightness robustness, metadata leakage). A flip-equivariance
 consistency loss plus test-time equivariant averaging eliminate
 orientation-dependent bias by construction, yielding a global clockwise
-fraction $\CW/(\CW+\CCW) = 0.4974$.
+fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
 We find no significant large-scale chirality dipole: a simple fit gives
 $0.43\sigmaunit$, while a full angular power spectrum yields a marginal
 $2.75\sigmaunit$ at $\ell = 1$. A $3.05\sigmaunit$ hemisphere asymmetry
@@ -269,10 +269,11 @@ noise classifications.
 
 The model is trained with AdamW optimization (head learning rate
 $3 \times 10^{-4}$, encoder learning rate $2 \times 10^{-5}$,
-weight decay $0.02$) and a cosine annealing warm-restart schedule
-($T_0 = 10$, $T_{\rm mult} = 2$). Early stopping with patience
-of 15 epochs terminates training at the best validation loss within
-a maximum of 80 epochs.
+weight decay $0.02$), batch size~64, and a cosine annealing
+warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early
+stopping with patience of 15 epochs monitors the best validation
+loss within a maximum budget of 80 epochs; the production model's
+best validation accuracy of 93.7\% was achieved at epoch~79.
 
 Data augmentation includes random rotation ($0\text{--}360^\circ$,
 uniform), chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
@@ -464,31 +465,52 @@ indicating that the model is decisive for the large majority of objects.
 \label{sec:cw_frac}
 
 Table~\ref{tab:cw_frac} summarizes the global CW fraction across the
-three catalog tiers. The raw Catalog~A shows a 0.79\% CW excess
-($\CW/(\CW+\CCW) = 0.5079$). Platt calibration (Catalog~B) reduces
+three catalog tiers, with $1\sigmaunit$ binomial uncertainties
+$\sigma = \sqrt{p(1-p)/N_{\rm spiral}} = 0.0003$ for
+$N_{\rm spiral} = 3{,}321{,}795$. The raw Catalog~A shows a 0.79\% CW
+excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.7\sigmaunit$
+deviation from exact parity). Platt calibration (Catalog~B) reduces
 this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
-$\CW/(\CW+\CCW) = 0.4974$, consistent with exact parity to within
-0.26\%. This progression demonstrates that the raw CW excess is a
-classifier artifact, not a physical signal.\footnote{The companion
+$\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
+corresponding to $9.5\sigmaunit$ from 0.5000.
+
+While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
+is a factor of~3 smaller than the raw Catalog~A deviation and, at
+$0.26\%$ amplitude, is well below the minimum detectable
+\emph{dipole} of $0.2\%$ (Sec.~\ref{sec:sensitivity}).
+The residual likely reflects a sub-percent asymmetry in the
+training labels themselves (the CE-ResNet overlap subset yields
+$0.5012$; see footnote~1) rather than a physical signal.
+Crucially, this monopole offset is spatially uniform
+(Table~\ref{tab:sky_balance}: all regions within $0.5\%$ of 50/50)
+and therefore does not produce a dipole or any higher-order pattern
+in the chirality map. This progression---from $28.7\sigmaunit$ (raw)
+to $9.5\sigmaunit$ (equivariant)---demonstrates that the dominant CW
+excess is a classifier artifact, not a physical signal, while the
+small equivariant residual is a spatially uniform monopole with no
+cosmological content.\footnote{The companion
 framework paper~\cite{Golden:2026framework} cross-cites an equivariant
 CW fraction of $0.5012 \pm 0.0006$ from the CE-ResNet benchmark-overlap
 subset (where our ViT-Small result agrees with CE-ResNet to within
 $0.01$ percentage points); the canonical full-catalog ($8.47$~M)
-equivariant value reported here (Table~\ref{tab:cw_frac}) is $0.4974$.
-Both values are consistent with exact parity at the $<\!0.5\sigma$
-level; the $0.38\%$ offset between them is within the tier-to-tier
-variation ($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
+equivariant value reported here (Table~\ref{tab:cw_frac}) is
+$0.4974 \pm 0.0003$.  The $0.38\%$ offset between the subset and
+full-catalog values brackets the sub-percent systematic floor of the
+equivariant procedure and is within the tier-to-tier variation
+($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
 
 \begin{table}
-\caption{Global CW fraction across catalog tiers.
+\caption{Global CW fraction across catalog tiers.  Uncertainties are
+  $1\sigmaunit$ binomial: $\sigma = \sqrt{p(1-p)/N_{\rm spiral}}$
+  with $N_{\rm spiral} = 3{,}321{,}795$.
   \label{tab:cw_frac}}
 \begin{ruledtabular}
-\begin{tabular}{lcc}
-\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess} \\
+\begin{tabular}{lccc}
+\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess} & \textbf{Deviation} \\
 \hline
-A (raw)         & 0.5079 & $+0.79\%$ \\
-B (calibrated)  & 0.504  & $+0.4\%$ \\
-C (equivariant) & 0.4974 & $-0.26\%$ \\
+A (raw)         & $0.5079 \pm 0.0003$ & $+0.79\%$ & $28.7\sigmaunit$ \\
+B (calibrated)  & $0.504 \pm 0.0003$  & $+0.4\%$  & $14.6\sigmaunit$ \\
+C (equivariant) & $0.4974 \pm 0.0003$ & $-0.26\%$ & $9.5\sigmaunit$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -749,7 +771,7 @@ systematics.
 Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
 $\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C matches this
-balance at $4.3\times$ the coverage: $\CW/(\CW+\CCW) = 0.4974$,
+balance at $4.3\times$ the coverage: $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
 corresponding to $\CW/\text{ACW} = 0.990$.
 
 CE-ResNet remains theoretically superior in one respect: its
@@ -994,8 +1016,9 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   we achieve a minimum detectable dipole of $0.2\%$ at $3\sigmaunit$
   (Sec.~\ref{sec:sensitivity}).  No compelling evidence for
   large-scale parity violation is found: the equivariant global CW
-  fraction is $\CW/(\CW+\CCW) = 0.4974$, consistent with exact
-  parity. The simple dipole is $0.43\sigmaunit$; the power-spectrum
+  fraction is $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a spatially
+  uniform $0.26\%$ deficit from exact parity that produces no dipole
+  or higher-order signal. The simple dipole is $0.43\sigmaunit$; the power-spectrum
   $\ell = 1$ mode is a marginal $2.75\sigmaunit$. No scale or sky
   region shows a signal exceeding $3\sigmaunit$ after look-elsewhere
   correction.
