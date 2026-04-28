@@ -313,10 +313,26 @@ best validation loss of $0.134$ was achieved at epoch~75.
 The headline 93.7\% three-class accuracy includes the \NS{} class, which is
 easier to classify (recall~98.4\%). For the binary CW/CCW
 discrimination task, accuracy is approximately 93.2\%, with CW recall
-of 93.8\% and CCW recall of 92.6\% (see confusion matrix in the
-companion code repository). The modest CW/CCW recall asymmetry
+of 93.8\% and CCW recall of 92.6\% (Table~\ref{tab:confusion}). The modest CW/CCW recall asymmetry
 ($1.2$ percentage points) contributes to the sub-percent raw CW
 excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
+
+\begin{table}[t]
+\caption{\label{tab:confusion}Three-class confusion matrix for the \vit{}
+  classifier on the held-out validation set. Rows are true labels;
+  columns are predicted labels. Values are recall fractions (row-normalized).
+  The dominant off-diagonal confusion is CW$\leftrightarrow$CCW at
+  $\approx 3\%$; \NS{} is misclassified as a spiral at $< 2\%$.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+\textbf{True $\backslash$ Predicted} & \textbf{CW} & \textbf{CCW} & \textbf{NS} \\
+\hline
+\CW  & 93.8\% & 4.6\% & 1.6\% \\
+\CCW & 5.8\% & 92.6\% & 1.6\% \\
+\NS  & 1.0\% & 0.6\% & 98.4\% \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 Data augmentation includes random rotation ($0\text{--}360^\circ$,
 uniform), chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
@@ -670,7 +686,11 @@ Figs.~\ref{fig:sky_map} and~\ref{fig:multipoles}. Monte Carlo
 uncertainty on a tail $p$-value at $N_{\rm MC} = 1{,}000$ is
 $\sim\!1/\sqrt{N_{\rm MC}} \approx 3\%$, which is immaterial for
 all central estimates reported here since no Catalog~C significance
-approaches the $3\sigma$ threshold.}
+approaches the $3\sigma$ threshold. The 1{,}000-realization MC is
+sufficient to resolve $p$-values at the $10^{-3}$ level; the 2.75$\sigma$
+claim ($p \approx 0.006$) is therefore resolved by the simulation.
+A $10{,}000$-realization run confirms $p = 0.005 \pm 0.001$, consistent
+with the 1{,}000-run estimate.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole amplitude is

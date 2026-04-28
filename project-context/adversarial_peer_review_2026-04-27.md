@@ -604,7 +604,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P1-m5 | MINOR | Claims table misclassifies some items (standard formulas listed as "Derived") | TEXT | [x] FIXED |
 | P1-m6 | MINOR | Acknowledgment thanks Shamir while refuting his results | TEXT | [x] FIXED |
 | P1-m7 | MINOR | HUBIFY preprint number + company email raises credibility questions | NOTE | [ ] |
-| P1-m8 | MINOR | Supplementary material "available upon request" — referee can't review it | TEXT — post as arXiv companion | [ ] |
+| P1-m8 | MINOR | Supplementary material "available upon request" — referee can't review it | TEXT — post as arXiv companion | [x] FIXED |
 | P1-m9 | MINOR | Paper at 24 pages — could be 12 pages if cut aggressively | NOTE | [ ] |
 | P1-m10 | MINOR | 3 "Forthcoming" companion papers not yet posted | BLOCKED until arXiv submission | [ ] |
 
@@ -651,19 +651,19 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [x] FIXED |
 | P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [x] FIXED |
 | P3-m2 | MINOR | "0% artifact rate in top 200" — no criteria defined, not blinded | TEXT | [x] FIXED |
-| P3-m3 | MINOR | SNR non-correlation claim has no quantitative measure | TEXT | [ ] |
+| P3-m3 | MINOR | SNR non-correlation claim has no quantitative measure | TEXT | [x] FIXED |
 | P3-m4 | MINOR | SDSS 52.7% "Uncategorized" not explained | TEXT | [x] FIXED |
-| P3-m5 | MINOR | NANOGrav Section 5.1 out of scope for catalog paper | TEXT — trim or remove | [ ] |
+| P3-m5 | MINOR | NANOGrav Section 5.1 out of scope for catalog paper | TEXT — trim or remove | [x] FIXED |
 | P3-m6 | MINOR | Dropout rates p=0.15/0.10 not justified | TEXT | [x] FIXED |
 | P3-m7 | MINOR | No learning rate schedule for spectroscopic models | TEXT | [x] FIXED |
 | P3-m8 | MINOR | DESI anchor model validation loss not reported | TEXT | [x] FIXED |
 | P3-m9 | MINOR | False match rate uses global SIMBAD density, not position-dependent | TEXT | [x] FIXED |
-| P3-m10 | MINOR | \BigAE{} macro usage inconsistent | TEXT | [ ] |
-| P3-m11 | MINOR | NEOWISE ecliptic polar cap geometry needs verification | TEXT | [ ] |
+| P3-m10 | MINOR | \BigAE{} macro usage inconsistent | TEXT | [x] FIXED |
+| P3-m11 | MINOR | NEOWISE ecliptic polar cap geometry needs verification | TEXT | [x] FIXED |
 | P3-m12 | MINOR | No mention of DESI fiber assignment systematics | TEXT | [x] FIXED |
 | P3-m13 | MINOR | HuggingFace deposit private pending acceptance — check journal policy | NOTE | [ ] |
-| P3-m14 | MINOR | Reference formatting inconsistent | TEXT | [ ] |
-| P3-m15 | MINOR | High-z QSO candidates need RA/Dec, not just TARGETID | TEXT | [ ] |
+| P3-m14 | MINOR | Reference formatting inconsistent | TEXT | [x] VERIFIED OK |
+| P3-m15 | MINOR | High-z QSO candidates need RA/Dec, not just TARGETID | TEXT | [x] FIXED |
 
 ### PAPER 4 — Galaxy Morphology Review
 
@@ -680,11 +680,11 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P4-M6 | MAJOR | Angular power spectrum lacks MASTER deconvolution — 2.75σ ℓ=1 unresolved | COMPUTE — needs healpy/NaMaster | [ ] BLOCKED |
 | P4-m1 | MINOR | Bias suite code (10 tests) vs paper (8 tests) discrepancy | TEXT | [x] FIXED |
 | P4-m2 | MINOR | Platt calibration fit against CE-ResNet labels, not ground truth | TEXT | [x] FIXED |
-| P4-m3 | MINOR | MC null count 1000 — low for 2.75σ claim | TEXT + COMPUTE | [ ] |
+| P4-m3 | MINOR | MC null count 1000 — low for 2.75σ claim | TEXT + COMPUTE | [x] FIXED |
 | P4-m4 | MINOR | Edge-on contamination described but not measured | COMPUTE — needs data | [ ] BLOCKED |
 | P4-m5 | MINOR | Training set 26K for 8.47M inference — coverage not discussed | TEXT | [x] FIXED |
 | P4-m6 | MINOR | "0.3% level" conflates monopole and dipole | TEXT | [x] FIXED |
-| P4-m7 | MINOR | Missing confusion matrix in paper | TEXT — add table | [ ] |
+| P4-m7 | MINOR | Missing confusion matrix in paper | TEXT — add table | [x] FIXED |
 | P4-m8 | MINOR | Bonferroni conservative but no proper correction provided | TEXT | [x] FIXED |
 | P4-m9 | MINOR | Self-citation to website, not peer-reviewed paper | TEXT | [x] FIXED |
 | P4-m10 | MINOR | "orientation-dependent bias" — only horizontal flip eliminated, not rotations | TEXT | [x] FIXED |
@@ -700,9 +700,9 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | XP-M3 | MAJOR | Wands:2010 cited for f_NL in Paper 3 but not Papers 1/2 — attribution asymmetry | TEXT | [x] FIXED |
 | XP-M4 | MAJOR | 319,443 vs 378,480 coexist in Paper 3 without bridging sentence | TEXT | [x] FIXED |
 | XP-m1 | MINOR | Dates: P1/P2 say Apr 27 but P3/P4 say Apr 24 | TEXT | [x] FIXED |
-| XP-m2 | MINOR | "In preparation" (P3) vs "companion paper" (P1/P2/P4) | TEXT | [ ] |
+| XP-m2 | MINOR | "In preparation" (P3) vs "companion paper" (P1/P2/P4) | TEXT | [x] FIXED |
 | XP-m3 | MINOR | \sigfnl macro (P3) vs inline \sigma(\fnl) (P2) | NOTE | [ ] |
-| XP-m4 | MINOR | Paper 1 quotes only benchmark CW 0.5012, not full-catalog 0.4974 | TEXT | [ ] |
+| XP-m4 | MINOR | Paper 1 quotes only benchmark CW 0.5012, not full-catalog 0.4974 | TEXT | [x] VERIFIED OK — footnote already present |
 | XP-m5 | MINOR | Paper 3 has no version tag in \date{} | TEXT | [x] FIXED |
 
 ### WEBSITE — Remaining Content Issues

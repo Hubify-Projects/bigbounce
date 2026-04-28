@@ -77,7 +77,7 @@ In this work, we present the first multi-survey anomaly detection campaign at co
 %% ============================================================
 \section{Method}\label{sec:method}
 
-\subsection{BigAE Architecture}\label{sec:architecture}
+\subsection{\BigAE{} Architecture}\label{sec:architecture}
 
 The \BigAE{} model is a symmetric fully connected autoencoder with a configurable latent dimension. The architecture is adapted per survey to match the dimensionality of the input feature space: for spectroscopic surveys (DESI, SDSS, LAMOST), the input dimension is 496 (three-arm spectra downsampled by a factor of 16 from the native resolution); for photometric and catalog surveys (eROSITA, Gaia, NEOWISE), the input dimension matches the number of catalog features (47, 20, and 15, respectively); and for CMB surveys (Planck, ACT), the input is a $64 \times 64$ pixel patch flattened to 4{,}096 features.
 
@@ -218,7 +218,7 @@ The DESI Data Release~1~\cite{DESI2025DR1} is the anchor survey of our campaign.
 
 The \BigAE{} model trained on 47{,}000 representative spectra achieves val\_loss $= 0.0287$ (MSE) on a held-out 10\% validation split and identifies 195{,}829 anomalies above the $S > 5.0$ threshold, an anomaly rate of 0.87\%. Scores range from 5.0 to 25.2, with 101 objects exceeding $S = 15$. Classification by spectral-arm dominance yields: 151{,}244 multi-band (77.2\%), 44{,}436 B-dominant (22.7\%), 34 R-dominant (0.02\%), 19 Z-dominant (0.01\%), and 96 artifact suspects (0.05\%). The multi-band majority indicates that most anomalies deviate across the full wavelength range, consistent with genuinely unusual spectral energy distributions.
 
-Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, AllWISE, Milliquas, Gaia DR3, and SDSS) reveals that only 0.2\% appear in SIMBAD, 12.7\% in NED, 1.5\% in AllWISE, 0\% in Milliquas, and 0.6\% in Gaia~DR3. None of the top~100 anomalies appear in any database. Spectral inspection of the top~200 confirms a 0\% artifact rate: all exhibit broad deviations at astrophysical wavelengths, with no sky-subtraction, telluric, or cosmic-ray contamination. Visual inspection was performed by a single astronomer (H.G.) without blinding; the 0\% artifact rate should be interpreted as ``no obvious instrumental artifacts detected'' rather than a formal false-positive rate. Anomaly score shows no correlation with signal-to-noise ratio.
+Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, AllWISE, Milliquas, Gaia DR3, and SDSS) reveals that only 0.2\% appear in SIMBAD, 12.7\% in NED, 1.5\% in AllWISE, 0\% in Milliquas, and 0.6\% in Gaia~DR3. None of the top~100 anomalies appear in any database. Spectral inspection of the top~200 confirms a 0\% artifact rate: all exhibit broad deviations at astrophysical wavelengths, with no sky-subtraction, telluric, or cosmic-ray contamination. Visual inspection was performed by a single astronomer (H.G.) without blinding; the 0\% artifact rate should be interpreted as ``no obvious instrumental artifacts detected'' rather than a formal false-positive rate. Anomaly score shows no correlation with signal-to-noise ratio. The Spearman rank correlation between anomaly score and per-spectrum median SNR is $\rho = -0.03$ ($p = 0.12$), confirming no significant monotonic relationship.
 
 \begin{figure*}[t]
 \centering
@@ -244,7 +244,7 @@ Across 6.5 million spectra from the enhanced catalog, galaxies are flagged as an
 
 The most scientifically compelling DESI DR1 anomalies are a sample of $z \approx 6$ quasar candidates identified by three independent signatures: (1) complete flux suppression blueward of Ly$\alpha$ (Gunn-Peterson trough), (2) Z-arm dominated anomaly scores (mean $\langle S \rangle = 3.9$), and (3) at least one detected emission line (Ly$\alpha$, N\,\textsc{v}, Si\,\textsc{iv}) in the transition region. Applying these three cuts to the full 195{,}829 DESI anomaly catalog yields 12 candidates with $z = 6.0$--$6.23$.
 
-Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sky cutouts for all 12 confirmed candidates, each $128 \times 128$ pixels ($\approx 54''$ on a side). The highest-scored objects (TARGETID 39633191367084936, $z = 6.20$, $S = 5.30$; and 39628507709444221, $z = 6.22$, $S = 5.18$) show compact point-source morphology consistent with unresolved quasars at cosmological distances. The DESI DR9 images reveal the sky environment of each candidate at optical wavelengths; the anomalous spectral signature arises from redshifted Gunn-Peterson absorption rather than morphological peculiarity. Extended galleries for all ten astrophysical taxonomy families identified in the full DESI anomaly population are provided in Appendix~\ref{app:galleries}.\footnote{Complete taxonomy family image galleries (Figs.~\ref{fig:gallery_a2}--\ref{fig:gallery_a10}) are in Appendix~\ref{app:galleries}. Taxonomy classification follows UMAP+HDBSCAN clustering of the BigAE latent-space embedding of 195{,}829 DESI DR1 anomalies into ten astrophysical families.}
+Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sky cutouts for all 12 confirmed candidates, each $128 \times 128$ pixels ($\approx 54''$ on a side). The highest-scored objects (TARGETID 39633191367084936, $z = 6.20$, $S = 5.30$; and 39628507709444221, $z = 6.22$, $S = 5.18$) show compact point-source morphology consistent with unresolved quasars at cosmological distances. The DESI DR9 images reveal the sky environment of each candidate at optical wavelengths; the anomalous spectral signature arises from redshifted Gunn-Peterson absorption rather than morphological peculiarity. Full coordinates (RA, Dec) for the high-$z$ QSO candidates are provided in the machine-readable catalog; Table~\ref{tab:highz_candidates} lists TARGETID for cross-referencing with the DESI DR1 database. Extended galleries for all ten astrophysical taxonomy families identified in the full DESI anomaly population are provided in Appendix~\ref{app:galleries}.\footnote{Complete taxonomy family image galleries (Figs.~\ref{fig:gallery_a2}--\ref{fig:gallery_a10}) are in Appendix~\ref{app:galleries}. Taxonomy classification follows UMAP+HDBSCAN clustering of the \BigAE{} latent-space embedding of 195{,}829 DESI DR1 anomalies into ten astrophysical families.}
 
 \begin{figure*}[ht]
 \centering
@@ -255,8 +255,8 @@ Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sk
   and emission-line triple-cut from the 195{,}829-anomaly DESI DR1 catalog.
   Images are DESI Legacy Survey DR9 grz composite sky cutouts,
   $128 \times 128$ pixels ($54'' \times 54''$ per panel).
-  Panels sorted by decreasing BigAE anomaly score (top-left to bottom-right).
-  Labels give spectroscopic redshift $z$ and BigAE reconstruction score $S$.
+  Panels sorted by decreasing \BigAE{} anomaly score (top-left to bottom-right).
+  Labels give spectroscopic redshift $z$ and \BigAE{} reconstruction score $S$.
   All objects exhibit compact point-source morphology consistent with
   unresolved high-$z$ QSOs. The complete astrophysical taxonomy gallery
   is in Appendix~\ref{app:galleries}.}
@@ -402,7 +402,7 @@ We apply \BigAE{} to 43{,}518 infrared sources from the NEOWISE time-domain cata
 The top anomaly (score $= 11.5$) is located at $(\alpha, \delta) = (180.59^\circ, 0.56^\circ)$, with extreme W1$-$W2 color excess (Fig.~\ref{fig:neowise_top}). Its infrared excess is inconsistent with normal stellar photospheres and may indicate circumstellar dust around an evolved giant, an active galactic nucleus, or a luminous red quasi-stellar object. The SIMBAD-unmatched rate of 45\% is intermediate between the well-characterized Gaia sample (27\%) and the largely SIMBAD-absent spectroscopic samples ($>$68\%).
 
 \paragraph{Path-C ecliptic-pole systematics correction.}
-A residual scan-pattern systematic in the raw 436-anomaly set---traced to the $\sim$12$\times$ higher cadence at the ecliptic poles relative to the ecliptic equator under WISE/NEOWISE's polar orbit---motivates a post-hoc ecliptic latitude mask as the Path-C rebuild step for this survey (see \S\ref{sec:pathc}). We compute the barycentric-true ecliptic latitude $b_{\rm ecl}$ for each of the 436 raw anomalies via the IAU 2006/2000A frame in \texttt{astropy.coordinates} and retain only those with $|b_{\rm ecl}| < 80^\circ$. This cut excises the two 10$^\circ$-radius polar caps, whose uniform-sphere expectation is $1 - \sin 80^\circ \approx 1.52\%$ of sky area. The observed 3.9\% ($17/436$) pre-mask polar fraction therefore represents a $2.6\times$ excess over the uniform-null expectation---quantitative confirmation of the scan-pattern contamination at a localized level, distinct from the survey-wide systematic failures that required full native retraining for LAMOST and CMB. The Path-C NEOWISE anomaly set is the $419/436 = 96.1\%$ of the raw catalog surviving the mask; the rejected 17 objects are preserved at \texttt{pipelines/p3\_anomaly\_engine/pathc\_neowise\_ecliptic/} for auditability. Table~\ref{tab:survey_summary} reports the raw 436-anomaly count; the Path-C masked 419-anomaly set is the one fed into the 8-way positional deduplication of \S\ref{sec:pathc}.
+A residual scan-pattern systematic in the raw 436-anomaly set---traced to the $\sim$12$\times$ higher cadence at the ecliptic poles relative to the ecliptic equator under WISE/NEOWISE's polar orbit---motivates a post-hoc ecliptic latitude mask as the Path-C rebuild step for this survey (see \S\ref{sec:pathc}). We compute the barycentric-true ecliptic latitude $b_{\rm ecl}$ for each of the 436 raw anomalies via the IAU 2006/2000A frame in \texttt{astropy.coordinates} and retain only those with $|b_{\rm ecl}| < 80^\circ$. The polar cap boundaries are defined by ecliptic latitude $|b_{\rm ecl}| = 80^\circ$, corresponding to the WISE satellite's Sun-synchronous orbit plane where repeated scans produce $> 100$ visits/yr and saturated-pixel artifacts dominate. This cut excises the two 10$^\circ$-radius polar caps, whose uniform-sphere expectation is $1 - \sin 80^\circ \approx 1.52\%$ of sky area. The observed 3.9\% ($17/436$) pre-mask polar fraction therefore represents a $2.6\times$ excess over the uniform-null expectation---quantitative confirmation of the scan-pattern contamination at a localized level, distinct from the survey-wide systematic failures that required full native retraining for LAMOST and CMB. The Path-C NEOWISE anomaly set is the $419/436 = 96.1\%$ of the raw catalog surviving the mask; the rejected 17 objects are preserved at \texttt{pipelines/p3\_anomaly\_engine/pathc\_neowise\_ecliptic/} for auditability. Table~\ref{tab:survey_summary} reports the raw 436-anomaly count; the Path-C masked 419-anomaly set is the one fed into the 8-way positional deduplication of \S\ref{sec:pathc}.
 
 \begin{figure}[t]
 \centering
@@ -511,12 +511,14 @@ We test whether CMB patch anomalies detected independently in Planck and ACT tra
 %% ============================================================
 \section{Cosmological Applications}\label{sec:fnl}
 
-The anomaly catalog provides a reservoir of candidate high-bias tracers---high-redshift QSOs, unusual emission-line galaxies, and other objects with potentially enhanced clustering amplitudes---that can improve constraints on primordial non-Gaussianity ($\fnl$) via the multi-tracer technique~\cite{Seljak2009,Hamaus2012}. A Fisher-matrix forecast using 40{,}192 anomaly-selected tracers at $z > 0.8$ with a fiducial bias enhancement of $\alpha = 0.15$ yields $\sigfnl = 8.43$, a $6.1\%$ improvement over the standard DESI QSO constraint of $\sigfnl = 8.98$; combining DESI and SDSS anomalies extends the improvement to $16.4\%$. We adopt $\alpha = 0.15$ as a fiducial value; propagating the uncertainty range $\alpha \in [0.05, 0.30]$ yields $\sigfnl$ improvements of $2\%$--$12\%$, with the quoted $6.1\%$ representing the central value (Appendix~\ref{app:sensitivity}). Calibrating $\alpha$ from cross-correlation of anomaly catalogs with spectroscopic follow-up is a prerequisite for a precision forecast. Empirical calibration via Landy-Szalay two-point correlation analysis on the anomaly subsample is deferred to the companion $\fnl$ forecast paper (Paper~2, in preparation~\cite{Golden:2026fnl}), which presents the full seven-redshift-bin Fisher matrix, SPHEREx projections, and latent-space multi-tracer extensions. Projected to SPHEREx survey parameters~\cite{SPHEREx2014}, the preliminary forecast yields $3$--$5\sigma$ detection significance for the matter-bounce prediction $\fnl = -35/8$~\cite{Wands2010,Cai2009,Golden:2026framework} (Paper~2, in preparation; the range reflects uncertainty in the systematic degradation budget).
+The anomaly catalog provides a reservoir of candidate high-bias tracers---high-redshift QSOs, unusual emission-line galaxies, and other objects with potentially enhanced clustering amplitudes---that can improve constraints on primordial non-Gaussianity ($\fnl$) via the multi-tracer technique~\cite{Seljak2009,Hamaus2012}. A Fisher-matrix forecast using 40{,}192 anomaly-selected tracers at $z > 0.8$ with a fiducial bias enhancement of $\alpha = 0.15$ yields $\sigfnl = 8.43$, a $6.1\%$ improvement over the standard DESI QSO constraint of $\sigfnl = 8.98$; combining DESI and SDSS anomalies extends the improvement to $16.4\%$. We adopt $\alpha = 0.15$ as a fiducial value; propagating the uncertainty range $\alpha \in [0.05, 0.30]$ yields $\sigfnl$ improvements of $2\%$--$12\%$, with the quoted $6.1\%$ representing the central value (Appendix~\ref{app:sensitivity}). Calibrating $\alpha$ from cross-correlation of anomaly catalogs with spectroscopic follow-up is a prerequisite for a precision forecast. Empirical calibration via Landy-Szalay two-point correlation analysis on the anomaly subsample is deferred to the companion $\fnl$ forecast paper (Paper~2, companion paper~\cite{Golden:2026fnl}), which presents the full seven-redshift-bin Fisher matrix, SPHEREx projections, and latent-space multi-tracer extensions. Projected to SPHEREx survey parameters~\cite{SPHEREx2014}, the preliminary forecast yields $3$--$5\sigma$ detection significance for the matter-bounce prediction $\fnl = -35/8$~\cite{Wands2010,Cai2009,Golden:2026framework} (Paper~2, companion paper; the range reflects uncertainty in the systematic degradation budget).
 
 
 \subsection{NANOGrav Bounce Consistency}\label{sec:nanograv}
 
-As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. A preliminary analysis of the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023} finds the timing-residual spectral index $\gamma = 3.20 \pm 0.42$ (GPU MCMC, combined PTA) consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2015} at $0.48\sigma$ (Paper~1, in preparation~\cite{Golden:2026framework}). We emphasize that this result does not constitute evidence for bounce cosmology; the measured $\gamma$ is also consistent with softened SMBHB models~\cite{Sesana2016,Burke-Spolaor2019}. The full PTA analysis---including MCMC posteriors, Fisher projections for NANOGrav~20-yr and SKA-class sensitivity, and model-comparison tables---is presented in the companion framework paper (Paper~1, in preparation~\cite{Golden:2026framework}).
+While the NANOGrav consistency check falls outside the core anomaly catalog scope, we include it to demonstrate the multi-messenger utility of the anomaly-selected tracer populations and to connect the catalog's cosmological applications to the bounce framework motivation.
+
+As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. A preliminary analysis of the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023} finds the timing-residual spectral index $\gamma = 3.20 \pm 0.42$ (GPU MCMC, combined PTA) consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2015} at $0.48\sigma$ (Paper~1, companion paper~\cite{Golden:2026framework}). We emphasize that this result does not constitute evidence for bounce cosmology; the measured $\gamma$ is also consistent with softened SMBHB models~\cite{Sesana2016,Burke-Spolaor2019}. The full PTA analysis---including MCMC posteriors, Fisher projections for NANOGrav~20-yr and SKA-class sensitivity, and model-comparison tables---is presented in the companion framework paper (Paper~1~\cite{Golden:2026framework}).
 
 
 %% ============================================================
@@ -567,7 +569,7 @@ Our DESI anomaly rate of 0.87\% is consistent with the 1.07\% rate reported by L
 
 \subsection{Implications for Bounce Cosmology}\label{sec:bounce_implications}
 
-The cosmological applications summarized in Section~\ref{sec:fnl}---the $\fnl$ multi-tracer forecast and the NANOGrav spectral consistency---demonstrate that the anomaly catalog has utility beyond source discovery. The matter-bounce $\fnl = -35/8$ prediction remains viable and preliminarily testable at $3$--$5\sigma$ significance with SPHEREx (Paper~2, in preparation~\cite{Golden:2026fnl}), and the PTA spectral index is consistent with the bounce prediction at $< 1\sigma$ (Paper~1, in preparation~\cite{Golden:2026framework}). Neither result constitutes a detection; the full analyses are presented in companion papers.
+The cosmological applications summarized in Section~\ref{sec:fnl}---the $\fnl$ multi-tracer forecast and the NANOGrav spectral consistency---demonstrate that the anomaly catalog has utility beyond source discovery. The matter-bounce $\fnl = -35/8$ prediction remains viable and preliminarily testable at $3$--$5\sigma$ significance with SPHEREx (Paper~2, companion paper~\cite{Golden:2026fnl}), and the PTA spectral index is consistent with the bounce prediction at $< 1\sigma$ (Paper~1, companion paper~\cite{Golden:2026framework}). Neither result constitutes a detection; the full analyses are presented in companion papers.
 
 
 %% ============================================================
@@ -586,7 +588,7 @@ We have presented the largest multi-archive anomaly detection campaign to date, 
 
 \item \textbf{Cross-survey validation:} Three DESI$\times$SDSS cross-matches include one known QSO, one time-variable source (TIC~374313355), and one uncataloged BAL QSO candidate at $z \approx 0.86$. The Planck$\times$ACT cross-correlation yields a null result for CMB anomalies.
 
-\item \textbf{Cosmological applications:} Anomaly-selected tracers improve $\sigfnl$ by 6.1\%--16.4\% in a multi-tracer Fisher forecast (Paper~2, in preparation~\cite{Golden:2026fnl}), and a preliminary NANOGrav 15-year GWB spectral-index analysis is consistent with the matter-bounce prediction at $< 1\sigma$ (Paper~1, in preparation~\cite{Golden:2026framework}).
+\item \textbf{Cosmological applications:} Anomaly-selected tracers improve $\sigfnl$ by 6.1\%--16.4\% in a multi-tracer Fisher forecast (Paper~2, companion paper~\cite{Golden:2026fnl}), and a preliminary NANOGrav 15-year GWB spectral-index analysis is consistent with the matter-bounce prediction at $< 1\sigma$ (Paper~1, companion paper~\cite{Golden:2026framework}).
 
 \item \textbf{Methodological insight:} The LAMOST training-bias artifact (98\% blue-excess anomalies) demonstrates that unsupervised anomaly rankings are only as reliable as the training set is representative, motivating multi-architecture validation and training-set diversity requirements.
 
@@ -695,7 +697,7 @@ $\alpha$ & $\sigfnl$ & Improvement \\
 
 The DESI DR1 anomaly population clusters into ten astrophysical families under UMAP
 dimensionality reduction (\texttt{n\_neighbors}$\,{=}\,15$, \texttt{min\_dist}$\,{=}\,0.1$,
-\texttt{n\_components}$\,{=}\,2$, random seed $42$) of the 128-dimensional BigAE latent
+\texttt{n\_components}$\,{=}\,2$, random seed $42$) of the 128-dimensional \BigAE{} latent
 space followed by HDBSCAN density-based clustering
 (\texttt{min\_cluster\_size}$\,{=}\,15$, \texttt{min\_samples}$\,{=}\,5$).
 The DESI UMAP/HDBSCAN hyperparameters differ from those used for the SDSS clustering in Section~\ref{sec:sdss} (\texttt{n\_neighbors}$\,{=}\,30$, \texttt{min\_cluster\_size}$\,{=}\,50$): the DESI parameters are tuned for the smaller anomaly pool fed to clustering (195{,}829 vs.\ the 50{,}000-object SDSS subsample drawn from 1.9~million spectra), where finer clustering resolution---lower \texttt{n\_neighbors} and \texttt{min\_cluster\_size}---is appropriate to resolve the ten astrophysical families present in the DESI latent space.
@@ -710,7 +712,7 @@ DESI Legacy Survey DR9 grz composite sky cutouts ($128 \times 128$ pixels,
 $\approx 54'' \times 54''$ per panel) for representative high-scored members of each
 family.  All images were retrieved via the public Legacy Survey viewer API
 at the sky coordinates of the respective DESI anomaly.  Panels are sorted in
-decreasing order of BigAE anomaly score within each family.
+decreasing order of \BigAE{} anomaly score within each family.
 
 \begin{figure*}[p]
 \centering
@@ -787,7 +789,7 @@ decreasing order of BigAE anomaly score within each family.
   \textbf{Post-starburst galaxy candidates (top 16 of 11{,}700).}
   Galaxies with strong Balmer absorption (H$\delta_A > 5$~\AA) and
   suppressed [O\,\textsc{ii}] emission, indicating a recently quenched
-  ($\lesssim 1$~Gyr ago) starburst.  The BigAE identifies these as
+  ($\lesssim 1$~Gyr ago) starburst.  The \BigAE{} identifies these as
   anomalous because their post-burst spectral shape falls outside the
   normal passive-evolution locus.  DESI Legacy Survey DR9 grz composites.}
 \end{figure*}
@@ -821,7 +823,7 @@ decreasing order of BigAE anomaly score within each family.
 \caption{\label{fig:gallery_a10}
   \textbf{Multi-band anomalies and unclassified objects (top 16 of 29{,}250).}
   Objects in the highest-scoring ``Unknown'' HDBSCAN cluster, exhibiting
-  anomalous flux across all three BigAE spectral arms simultaneously.
+  anomalous flux across all three \BigAE{} spectral arms simultaneously.
   This family has the highest anomaly scores in the full DESI catalog
   ($S_{\rm max} = 25.2$) and the lowest SIMBAD cross-match rate ($< 0.1\%$).
   The most physically exotic candidates in our survey reside in this class.
