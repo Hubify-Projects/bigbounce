@@ -21,6 +21,7 @@
 | 9 | 2026-04-28 | 10 (P4 re-review 2) | 0 | 5 | 5 | 10/10 FIXED |
 | 10 | 2026-04-28 | 10 (P2 re-review 2) | 0 | 4 | 6 | 10/10 FIXED |
 | 11 | 2026-04-28 | 10 (P3 re-review 2) | 0 | 6 | 4 | 10/10 FIXED |
+| 12 | 2026-04-28 | 14 (P1 re-review 2) | 0 | 4 | 10 | 14/14 FIXED |
 
 ---
 
@@ -912,3 +913,26 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P3-R11-8 | MINOR | SDSS top-77,905 threshold borrowed from failed cross-transfer count — circular | TEXT | [x] FIXED — acknowledged as bookkeeping convenience; users directed to S>5 or percentile cuts |
 | P3-R11-9 | MINOR | No isolation-forest comparison on DESI/SDSS/LAMOST as sanity check | TEXT | [x] FIXED — acknowledged gap in limitations section |
 | P3-R11-10 | MINOR | 17.8% "novelty floor" is measured on top-1,000 only — likely upper bound for full catalog | TEXT | [x] FIXED — "floor" → "fraction" with upper-bound caveat in abstract and limitations |
+
+---
+
+## ROUND 12: SECOND RE-REVIEW OF PAPER 1 (2026-04-28)
+
+**Method:** Single Opus agent — hostile cosmology/perturbation-theory reviewer, second pass on Paper 1
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P1-R12-1 | MAJOR | MCMC total 424,181 arithmetic error: 176,840+132,949+114,992=424,781 (off by 600) | TEXT | [x] FIXED — corrected to 424,781 in all occurrences |
+| P1-R12-2 | MAJOR | BIC values in Table III imply different n_eff (570-770) across models fit to same data | TEXT | [x] FIXED — footnote added explaining Cobaya internal n_eff variation; AIC and ln B recommended as primary |
+| P1-R12-3 | MAJOR | SPHEREx 5-5.5σ inconsistent with raw |f_NL|/σ=6.25σ at σ=0.7 | TEXT | [x] FIXED — clarified template-mismatch correction reduces effective signal to 3.7-3.9 |
+| P1-R12-4 | MAJOR | Barrier 1 g_eff ~ H₀/M_Pl² has wrong dimensions; should be H₀/M_Pl ~ 10⁻⁶¹ | TEXT | [x] FIXED — corrected formula to H₀/M_Pl with natural units note |
+| P1-R12-5 | MINOR | S_8 error bar 0.008 (Table II) vs 0.009 (text line 915) for same full-tension dataset | TEXT | [x] FIXED — text harmonized to 0.008 matching Table II |
+| P1-R12-6 | MINOR | Ω_m error bar 0.005 (Table II) vs 0.006 (text line 915) for same dataset | TEXT | [x] FIXED — text harmonized to 0.005 matching Table II |
+| P1-R12-7 | MINOR | S_8 tension computed ignoring Planck error (2.25σ → 1.2σ with both errors) | TEXT | [x] FIXED — proper quadrature (0.832-0.814)/√(0.013²+0.008²) = 1.2σ |
+| P1-R12-8 | MINOR | Claims Table classifies Λ_eff as "Derived" but body says "phenomenological parameterization" | TEXT | [x] FIXED — changed to "Parameterized" with cross-ref to Discussion |
+| P1-R12-9 | MINOR | eq:H0 and eq:s8 labels on text paragraph, not equations — Claims Table refs will show "??" | TEXT | [x] FIXED — orphaned labels removed; Claims Table refs changed to Sec.~\ref{sec:tensions} |
+| P1-R12-10 | MINOR | ALP Δφ/f_a jumps 0.65→1.07 without flagging mass change m=H₀→m≈2H₀ | TEXT | [x] FIXED — added explicit note about mass doubling and increased oscillation |
+| P1-R12-11 | MINOR | Carroll 1998 (quintessence) cited for birefringence formula; canonical ref is Carroll+Field+Jackiw 1990 | TEXT | [x] FIXED — added CarrollFieldJackiw1990 (PRD 41, 1231) as primary citation |
+| P1-R12-12 | MINOR | Orphaned fig:sensitivity, fig:distance, fig:expansion, tab:limits labels from trimmed sections | TEXT | [x] FIXED — removed 4 orphaned labels; Fig.~\ref{fig:sensitivity} reference removed from Conclusions |
+| P1-R12-13 | MINOR | "topological invariant" is imprecise; Holst dual vanishes identically by Bianchi identity | TEXT | [x] FIXED — 3 occurrences corrected to "vanishes identically by the first Bianchi identity" |
+| P1-R12-14 | MINOR | Fine-tuning exponent 10⁵⁷ inconsistent with 10⁻¹²² mass-squared hierarchy | TEXT | [x] FIXED — corrected to δm²/m² ~ 10¹²⁰, consistent with line above |
