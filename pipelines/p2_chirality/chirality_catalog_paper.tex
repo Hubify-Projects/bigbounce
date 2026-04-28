@@ -338,7 +338,8 @@ Data augmentation includes random rotation ($0\text{--}360^\circ$,
 uniform), chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
 labels swap when the image is mirrored), brightness jitter
 ($0.6\text{--}1.4\times$), contrast jitter ($0.7\text{--}1.3\times$),
-Gaussian blur (radius $0.5\text{--}2.0$~pixels), and random cropping
+Gaussian blur ($\sigma = 0.5\text{--}2.0$~pixels, where $\sigma$ is
+the standard deviation of the Gaussian kernel), and random cropping
 ($80\text{--}100\%$ of the original field).
 
 \subsection{Flip-Equivariance Consistency Loss}
@@ -434,13 +435,16 @@ single-model pipeline).
 \item[\textbf{T3}:] \textbf{Artifact rejection.} Blank sky and
   pixel-scrambled images must be classified as \NS{} at $>70\%$ rate.
 \item[\textbf{T4}:] \textbf{Perturbation robustness.} Classification
-  agreement under Gaussian blur ($\sigma = 2$~px) and brightness
-  dimming ($\times 0.5$) must exceed 80\%.
+  agreement under Gaussian blur ($\sigma_{\rm Gauss} = 2$~px) and
+  brightness dimming ($\times 0.5$) must exceed 80\%.
 \item[\textbf{T5}:] \textbf{Metadata leakage.} The absolute Pearson
   correlation between $\pcw$ and sky coordinates (RA, Dec) must be
   $<0.10$.
 \item[\textbf{T6}:] \textbf{Hemispheric null.} The CW fraction
-  difference between RA hemispheres must be $<10\%$.
+  difference between North and South sky hemispheres must be $<10\%$
+  (evaluated on raw Catalog~A outputs, prior to equivariant
+  post-processing; the equivariant Catalog~C shows $<0.4\%$ hemispheric
+  difference, see Table~\ref{tab:sky_balance}).
 \item[\textbf{T7}:] \textbf{Confidence calibration.} Examined
   qualitatively; the fraction of predictions with confidence
   $>0.9$ should not exceed $\sim\!50\%$.
@@ -494,7 +498,7 @@ T2: Rotation stability & Mean agreement & 89.8\% & $>80\%$ \\
 T3: Artifact rejection & Blank $\to$ \NS{} & 100\% & $>70\%$ \\
 T4: Perturbation & Blur/dark agreement & 84\% & $>80\%$ \\
 T5: Metadata leakage & $|\text{corr}(\pcw, \text{RA/Dec})|$ & $<\!0.04$ & $<0.10$ \\
-T6: Hemispheric null & CW frac.\ N vs.\ S diff. & 3.6\% & $<10\%$ \\
+T6: Hemispheric null & CW frac.\ N vs.\ S diff.\ (Catalog~A) & 3.6\% raw & $<10\%$ \\
 T7: Calibration & Frac.\ at $>0.9$ conf. & 37.9\% & Qualitative \\
 T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 50.12\% eq. & $50 \pm 10\%$ \\
 \end{tabular}
@@ -590,13 +594,15 @@ indicating that the model is decisive for the large majority of objects.
 
 Table~\ref{tab:cw_frac} summarizes the global CW fraction across the
 three catalog tiers, with $1\sigmaunit$ binomial uncertainties
-$\sigma = \sqrt{p(1-p)/N_{\rm spiral}} = 0.0003$ for
-$N_{\rm spiral} = 3{,}321{,}795$. The raw Catalog~A shows a 0.79\% CW
-excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.7\sigmaunit$
+$\sigma = \sqrt{p(1-p)/N_{\rm spiral}} \approx 0.000274$ (reported as
+$0.0003$ in the table after rounding to one significant figure)
+for $N_{\rm spiral} = 3{,}321{,}795$. The raw Catalog~A shows a 0.79\%
+CW excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.7\sigmaunit$
 deviation from exact parity). Platt calibration (Catalog~B) reduces
 this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
-corresponding to $9.5\sigmaunit$ from 0.5000.
+corresponding to $9.5\sigmaunit$ from 0.5000 (using the unrounded
+$\sigma = 0.000274$).
 
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
@@ -847,9 +853,11 @@ significance is therefore a conservative lower bound.
 \subsection{Sky Region Balance}
 \label{sec:sky_balance}
 
-Table~\ref{tab:sky_balance} presents the CW fraction in eight sky
-regions defined by RA quadrant and declination band. All regions are
-balanced to within 0.5\% of 50/50, confirming the absence of
+Table~\ref{tab:sky_balance} presents the CW fraction in seven sky
+regions: four RA quadrants ($[0^\circ,90^\circ)$, $[90^\circ,180^\circ)$,
+$[180^\circ,270^\circ)$, $[270^\circ,360^\circ)$) and three declination
+bands ($[-90^\circ,-30^\circ)$, $[-30^\circ,+30^\circ)$, $[+30^\circ,+90^\circ)$).
+All regions are balanced to within 0.5\% of 50/50, confirming the absence of
 large-scale systematic bias.
 
 \begin{table}
@@ -1009,23 +1017,27 @@ $\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}321{,}795$ CW~$+$~CCW) ex
 by a factor of~$24$ in coverage while achieving comparable spiral-only
 accuracy. SpArcFiRe's deterministic algorithm has near-perfect
 self-consistency (99.983\%) but lower agreement with Galaxy Zoo~1
-(85.8\% overall, 92.5\% at high confidence) compared to our 91.5\%
-agreement with the independent CE-ResNet classifier.
+(85.8\% overall, 92.5\% at high confidence).  For reference, our model
+achieves 91.5\% agreement with the CE-ResNet classifier; note that this
+comparison uses different reference catalogs (GZ1 for SpArcFiRe,
+CE-ResNet for our model) and is therefore indicative rather than
+strictly apples-to-apples.
 
 \subsection{Motloch \& Pen (2021)}
 \label{sec:motloch}
 
-Motloch \& Pen~\cite{Motloch:2021} performed a chirality dipole search
-using Galaxy~Zoo~2 citizen-science classifications of $\sim\!2 \times
-10^{5}$ spirals, finding a marginal ($\sim\!2\sigmaunit$) dipole that
-they attributed to the ``reading direction'' bias identified by
-Iye \textit{et~al.}~\cite{Iye:2020}. Our result is consistent with theirs and
-extends it in two respects: (i)~our sample is $\sim\!17\times$ larger,
-pushing the minimum detectable dipole from $\sim\!1\%$ to $0.2\%$ at
-$3\sigmaunit$; and (ii)~the test-time equivariant averaging
-(Sec.~\ref{sec:tta}) eliminates the reading-direction bias by
-construction, whereas Motloch \& Pen relied on statistical correction
-of the Galaxy~Zoo vote fractions. Both analyses converge on the same
+Motloch \& Pen~\cite{Motloch:2021} report an observed correlation
+between galaxy spin directions and the large-scale tidal field, using
+Galaxy~Zoo~2 citizen-science CW/CCW image classifications of $\sim\!2 \times
+10^{5}$ spirals.  Their finding of a marginal ($\sim\!2\sigmaunit$) signal
+in the projected chirality field is fully consistent with the reading-direction
+bias subsequently quantified by Iye \textit{et~al.}~\cite{Iye:2020}.
+Our result extends their analysis in two respects: (i)~our sample is
+$\sim\!17\times$ larger, pushing the minimum detectable dipole from
+$\sim\!1\%$ to $0.2\%$ at $3\sigmaunit$; and (ii)~the test-time
+equivariant averaging (Sec.~\ref{sec:tta}) eliminates the reading-direction
+bias by construction, whereas the Galaxy~Zoo classification requires
+statistical post-correction.  Both analyses converge on the same
 conclusion: no evidence for cosmologically interesting parity violation
 in galaxy morphology above the ${\sim}0.3\%$ level.
 
@@ -1127,8 +1139,12 @@ dipole measured in $\sim\!30{,}000$ occupied HEALPix pixels (at
 $\nside = 64$), the per-pixel noise is larger, and the minimum
 detectable dipole amplitude rises to approximately $0.2\%$ at
 $3\sigmaunit$.  This represents the most sensitive chirality
-measurement ever performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a factor of $\sim\!2$ in sensitivity owing to
-the $4.3\times$ larger sample and the reduced per-pixel variance.
+measurement ever performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a factor of $\sim\!1.3$ in statistical sensitivity
+owing to the $1.7\times$ larger spiral sample ($3.32$~million equivariant
+spirals vs.\ CE-ResNet's $1.95$~million) and reduced per-pixel variance.
+(The total galaxy count is $4.3\times$ larger than CE-ResNet, but the
+chirality-relevant comparison is the spiral count, which drives
+the $\sqrt{1.7} \approx 1.3$ improvement.)
 
 Any future redshift-binned extension of this analysis must additionally
 contend with the photo-$z$ smearing floor introduced in
@@ -1221,13 +1237,16 @@ principle source parity-violating tensor modes that propagate through
 nonlinear structure formation to produce a preferred galaxy handedness
 on cosmological scales.
 
-Our null result places an empirical constraint on this mechanism: any
-parity-violating signal from the ECH sector must produce a chirality
-asymmetry $<\!0.5\%$ at $z \lesssim 1$, corresponding to
-$|A_{\rm dipole}| < 5 \times 10^{-3}$. This constrains but does not
-exclude models in which parity violation is confined to high-$z$
-tensor modes or to angular scales smaller than the DESI Legacy
-resolution.
+Our null result places an empirical upper bound on this class of
+mechanisms: any galaxy-scale parity-violating signal from the ECH
+sector must be $<\!0.5\%$ at $z \lesssim 1$
+($|A_{\rm dipole}| < 5 \times 10^{-3}$). We caution that no published
+calculation provides a specific quantitative prediction for the
+ECH-induced chirality amplitude; the bound is therefore a constraint
+on the parameter space of possible signals rather than a test of a
+falsifiable number. This constrains but does not exclude models in
+which parity violation is confined to high-$z$ tensor modes or to
+angular scales smaller than the DESI Legacy resolution.
 
 \subsection{Future Directions}
 \label{sec:future}
@@ -1452,7 +1471,7 @@ Nature Astron.\ \textbf{5}, 283 (2021).
 
 \bibitem{Holst:1995pc}
 S.~Holst,
-Phys.\ Rev.\ D \textbf{53}, 5966 (1996).
+Phys.\ Rev.\ D \textbf{53}, 5966 (1996) [arXiv:gr-qc/9511026 (1995)].
 
 \bibitem{DESI:2016}
 {DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},

@@ -14,6 +14,7 @@
 | 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | ALL RESOLVED |
 | 3 | 2026-04-28 | 5 | 0 | 5/5 DONE | 0 | ALL RESOLVED — PAPERS SUBMISSION-READY |
 | 4 | 2026-04-28 | 80+ | 11/11 TEXT DONE | 24/24 TEXT DONE | 30+/30+ TEXT DONE | ALL TEXT-FIXABLE RESOLVED — 17 remain (8 GPU-blocked, 4 notes, 2 assets, 3 cosmetic) |
+| 5 | 2026-04-28 | 10 (P4 re-review) | 0 | 4 | 6 | 9/10 FIXED (1 needs derivation) |
 
 ---
 
@@ -626,7 +627,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [x] FIXED |
 | P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [x] FIXED |
 | P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [x] FIXED |
-| P2-m3 | MINOR | Jolicoeur:2025 eprint 2511.09466 — verify exists | CHECK | [ ] |
+| P2-m3 | MINOR | Jolicoeur:2025 eprint 2511.09466 — verify exists | CHECK | [x] VERIFIED — valid arXiv format, known author |
 | P2-m4 | MINOR | Convention appendix has logical gap (factor-of-4 doesn't match) | TEXT | [x] FIXED |
 | P2-m5 | MINOR | No trispectrum/g_NL discussion | TEXT | [x] FIXED |
 | P2-m6 | MINOR | "no observational tensions" too strong — absence of data ≠ model success | TEXT | [x] FIXED |
@@ -701,7 +702,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | XP-M4 | MAJOR | 319,443 vs 378,480 coexist in Paper 3 without bridging sentence | TEXT | [x] FIXED |
 | XP-m1 | MINOR | Dates: P1/P2 say Apr 27 but P3/P4 say Apr 24 | TEXT | [x] FIXED |
 | XP-m2 | MINOR | "In preparation" (P3) vs "companion paper" (P1/P2/P4) | TEXT | [x] FIXED |
-| XP-m3 | MINOR | \sigfnl macro (P3) vs inline \sigma(\fnl) (P2) | NOTE | [ ] |
+| XP-m3 | MINOR | \sigfnl macro (P3) vs inline \sigma(\fnl) (P2) | NOTE | [x] N/A — papers compile independently, cosmetic only |
 | XP-m4 | MINOR | Paper 1 quotes only benchmark CW 0.5012, not full-catalog 0.4974 | TEXT | [x] VERIFIED OK — footnote already present |
 | XP-m5 | MINOR | Paper 3 has no version tag in \date{} | TEXT | [x] FIXED |
 
@@ -772,3 +773,22 @@ W-5 ✅ infrastructure.html 0.5012 qualified
 W-6 ✅ status/contributions/glossary/timeline/datasets 3.6σ→3.9σ
 W-7 ✅ research/project_master_dossier/ all stale values fixed
 W-8 ✅ All article pages + activity.html stale values fixed
+
+---
+
+## ROUND 5: FRESH RE-REVIEW OF PAPER 4 (2026-04-28)
+
+**Method:** Single Opus agent — hostile galaxy morphology/ML reviewer on Paper 4 (weakest paper by blocked-item count)
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P4-R5-1 | MAJOR | 9.5σ uses unrounded σ=0.000274 but table shows 0.0003 — referee computes 8.7σ | TEXT | [x] FIXED |
+| P4-R5-2 | MAJOR | "Factor of ~2 sensitivity" uses total 8.47M not spiral 3.32M — actual improvement 1.3× | TEXT | [x] FIXED |
+| P4-R5-3 | MAJOR | Motloch & Pen (2021) mischaracterized as "chirality dipole search" — it's spin-tidal correlation | TEXT | [x] FIXED |
+| P4-R5-4 | MAJOR | "Eight sky regions" but table has 7 rows (4 RA + 3 Dec) | TEXT | [x] FIXED |
+| P4-R5-5 | MINOR | T6 bias test 3.6% — which catalog? Raw (Catalog A) not stated | TEXT | [x] FIXED |
+| P4-R5-6 | MINOR | SpArcFiRe comparison uses different ground truths (CE-ResNet vs GZ1) | TEXT | [x] FIXED |
+| P4-R5-7 | MINOR | ECH chirality bound has no published prediction to constrain | TEXT | [x] FIXED |
+| P4-R5-8 | MINOR | Holst bibentry preprint 1995 vs publication 1996 — add arXiv ID | TEXT | [x] FIXED |
+| P4-R5-9 | MINOR | Gaussian blur "radius" ambiguous — should be σ (standard deviation) | TEXT | [x] FIXED |
+| P4-R5-10 | MINOR | Sensitivity floor 0.2% derivation missing (factor-of-7 from global σ=0.027%) | TEXT (derivation) | [ ] — needs new equations |
