@@ -142,7 +142,13 @@ factor of~4 fewer galaxies than the full DESI Legacy footprint.
 
 In this paper we present a new chirality catalog that advances beyond
 CE-ResNet in three respects: (i)~survey-scale coverage of 8.47~million
-galaxies (4.3$\times$ larger), (ii)~a dedicated \NS{} class that
+galaxies, of which $3{,}321{,}795$ are classified as spiral
+(CW~$+$~CCW), constituting the chirality-relevant subsample---this
+spiral count alone is ${\sim}17\times$ larger than the largest prior
+chirality catalog (Shamir~\cite{Shamir:2022}, ${\sim}200{,}000$
+spirals) and $1.7\times$ larger than CE-ResNet~\cite{Jia:2023}
+($1.95$~million galaxies, all spiral-classified);
+(ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
 first published multi-test bias hardening audit suite for any galaxy
 chirality classifier. We use this catalog to perform the most
@@ -345,6 +351,21 @@ time.
 We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours.
+
+We restrict to $2$-fold TTA (original $+$ horizontal flip) rather than
+the full $D_4$ group ($4$ rotations $\times$ $2$ reflections $= 8$
+elements) for two reasons. First, the chirality label is defined with
+respect to the projected sky orientation, not an intrinsic galaxy axis;
+a $90^\circ$ rotation changes which arm appears to trail clockwise,
+making rotation-augmented TTA semantically ambiguous for chirality
+classification (unlike, e.g., object detection where the label is
+rotation-invariant). Second, the horizontal flip is the unique
+transformation that exactly swaps CW~$\leftrightarrow$~CCW by
+construction; rotations mix the CW/CCW channels in a label-dependent
+way that would require a rotation-aware label remapping. Extending to
+the full $D_4$ group with proper label handling is a natural follow-up
+that could further reduce the residual $9.5\sigmaunit$ asymmetry
+(Sec.~\ref{sec:cw_frac}).
 
 \begin{figure}[t]
 \centering
@@ -835,8 +856,10 @@ Shamir~\cite{Shamir:2020} and Shamir~\cite{Shamir:2022} reported galaxy chiralit
 asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
-a definitive test of these claims at $4.3\text{--}85\times$ larger
-sample size with rigorous bias controls.
+a definitive test of these claims: our chirality-relevant spiral
+subsample ($3{,}321{,}795$ CW~$+$~CCW galaxies) is
+${\sim}17\times$ larger than Shamir's largest catalog
+(${\sim}200{,}000$ spirals), with rigorous bias controls.
 
 Our maximum regional asymmetry is 0.47\%---a factor of~7 smaller
 than Shamir's reported $\sim\!3\%$. The global equivariant CW
@@ -861,7 +884,9 @@ systematics.
 Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
 $\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C matches this
-balance at $4.3\times$ the coverage: $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
+balance with $1.7\times$ the spiral coverage ($3{,}321{,}795$
+CW~$+$~CCW spirals vs.\ CE-ResNet's $1.95$~million):
+$\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
 corresponding to $\CW/\text{ACW} = 0.990$.
 
 CE-ResNet remains theoretically superior in one respect: its
@@ -877,7 +902,8 @@ Our pipeline adds value in three areas: (i)~the \NS{} class prevents
 contamination from non-spirals (CE-ResNet lacks this), (ii)~the
 8-test bias hardening suite provides the first quantitative,
 multi-axis bias audit for a chirality classifier, and (iii)~the
-$4.3\times$ larger catalog enables finer angular and redshift
+$1.7\times$ larger spiral sample ($3.32$ vs.\ $1.95$~million)
+enables finer angular and redshift
 resolution in dipole analyses.
 
 \subsection{SpArcFiRe}
@@ -885,8 +911,8 @@ resolution in dipole analyses.
 
 The SpArcFiRe algorithm~\cite{Davis:2014} classifies spiral arm
 winding direction via automated arm fitting, producing catalogs of
-$\sim\!140{,}000$ galaxies. Our catalog exceeds SpArcFiRe by a
-factor of~60 in coverage while achieving comparable spiral-only
+$\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}321{,}795$ CW~$+$~CCW) exceeds SpArcFiRe
+by a factor of~$24$ in coverage while achieving comparable spiral-only
 accuracy. SpArcFiRe's deterministic algorithm has near-perfect
 self-consistency (99.983\%) but lower agreement with Galaxy Zoo~1
 (85.8\% overall, 92.5\% at high confidence) compared to our 91.5\%
@@ -1185,8 +1211,9 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is definitively
   refuted.} Our maximum regional asymmetry is 0.47\%---a factor of~7
-  smaller---at $4.3\text{--}85\times$ larger sample size with rigorous
-  bias controls.
+  smaller---with a spiral subsample ($3{,}321{,}795$ CW~$+$~CCW)
+  that is ${\sim}17\times$ larger than Shamir's largest catalog, and
+  with rigorous bias controls.
 
 \item \textbf{Bias hardening is essential: raw systematics produce
   a $94.6\sigmaunit$ spurious signal.} Our raw (Catalog~A) analysis

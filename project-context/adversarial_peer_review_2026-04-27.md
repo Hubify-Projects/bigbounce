@@ -590,13 +590,13 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P1-C2 | CRITICAL | Parity-odd action (Eq.5/6) has dimensional inconsistency (mass dim +1 not +4) — entire DE parameterization rests on "scaling ansatz" | TEXT — either derive or remove DE parameterization | [x] FIXED |
 | P1-C3 | CRITICAL | "Perturbation-transparency result" is trivially known since Hehl 1976 — 5-step "proof" restates S=0⇒T=0 | TEXT — downgrade from "central result" to "observation for completeness" | [x] FIXED |
 | P1-M1 | MAJOR | Savage-Dickey Bayes factor model labeled "Spin-Torsion" but tests ΛCDM+ΔNeff with stock CAMB | TEXT — relabel model, heavy caveat in executive summary | [x] FIXED |
-| P1-M2 | MAJOR | ALP birefringence β≈0.27° has nothing to do with ECH — spectator ALP gives same result in any theory | TEXT — move to appendix, remove from abstract | [ ] |
+| P1-M2 | MAJOR | ALP birefringence β≈0.27° has nothing to do with ECH — spectator ALP gives same result in any theory | TEXT — move to appendix, remove from abstract | [x] FIXED |
 | P1-M3 | MAJOR | NaMaster analysis doesn't meet publication standards (50 MC, non-standard mask, 14% σ uncertainty) | TEXT caveat already added; COMPUTE needs GPU for 500+ MC | [ ] BLOCKED |
 | P1-M4 | MAJOR | SPHEREx "4-6σ" in abstract vs "3-5σ realistic" in Table 1 footnote — internal contradiction | TEXT — unify to 3-5σ realistic in abstract | [x] FIXED |
 | P1-M5 | MAJOR | 14 barriers mix novel results with tautologies/known results (barriers 5,6,7,9,13 are generic) | TEXT — distinguish novel vs known vs philosophical | [ ] |
 | P1-M6 | MAJOR | Poplawski2019 bib key is actually a 2010 paper | TEXT — rekey to Poplawski2010 | [ ] |
 | P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [ ] |
-| P1-M8 | MAJOR | Structural tension (DE vs bounce f_NL mutually exclusive) should be in abstract | TEXT — add to abstract | [ ] |
+| P1-M8 | MAJOR | Structural tension (DE vs bounce f_NL mutually exclusive) should be in abstract | TEXT — add to abstract | [x] FIXED |
 | P1-m1 | MINOR | 4 different "combined" β values used without clear guidance on headline | TEXT | [ ] |
 | P1-m2 | MINOR | NANOGrav synthetic-data Bayes factors meaningless — remove or caveat more | TEXT | [ ] |
 | P1-m3 | MINOR | Hehl 1976 citation slightly misleading for Holst sector | TEXT | [ ] |
@@ -621,9 +621,9 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P2-M3 | MAJOR | 200 injection-recovery realizations underdescribed (no noise model, estimator, mask) | TEXT — add specifications | [ ] |
 | P2-M4 | MAJOR | GR degradation σ_GR parameterized not computed — should use published factors | TEXT — cite Jolicoeur et al. factors | [ ] |
 | P2-M5 | MAJOR | Shot noise completely absent from forecast | TEXT — discuss or compute | [ ] |
-| P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [ ] |
+| P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [x] FIXED |
 | P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [ ] |
-| P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [ ] |
+| P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [x] FIXED |
 | P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [ ] |
 | P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [ ] |
 | P2-m3 | MINOR | Jolicoeur:2025 eprint 2511.09466 — verify exists | CHECK | [ ] |
@@ -644,8 +644,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [x] FIXED |
 | P3-M1 | MAJOR | UMAP hyperparameters differ DESI/SDSS with backwards justification | TEXT — stability analysis needed | [ ] BLOCKED |
 | P3-M2 | MAJOR | f_NL α=0.15 uncalibrated — 6.1% could be 2-20% | TEXT — add uncertainty propagation | [ ] |
-| P3-M3 | MAJOR | 5-arcsec dedup radius not justified from astrometric error budgets | TEXT | [ ] |
-| P3-M4 | MAJOR | ACT DR6 should be dropped or formally quarantined | TEXT | [ ] |
+| P3-M3 | MAJOR | 5-arcsec dedup radius not justified from astrometric error budgets | TEXT | [x] FIXED |
+| P3-M4 | MAJOR | ACT DR6 should be dropped or formally quarantined | TEXT | [x] FIXED |
 | P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [ ] |
 | P3-M6 | MAJOR | eROSITA top-298 cap arbitrary — no score distribution shown | TEXT + needs figure | [ ] |
 | P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [ ] |
@@ -672,11 +672,11 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | P4-C1 | CRITICAL | 93.7% accuracy contaminated by circular labeling — GZ1-only accuracy not reported in paper | TEXT — report GZ1-only accuracy | [x] FIXED |
 | P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [x] FIXED |
 | P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [ ] |
-| P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [ ] |
+| P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [x] FIXED |
 | P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [ ] |
 | P4-M3 | MAJOR | Missing bias dimensions: magnitude, color, surface brightness, PSF | COMPUTE — needs data | [ ] BLOCKED |
 | P4-M4 | MAJOR | Redshift analysis uses raw Catalog A, not equivariant Catalog C | COMPUTE — needs data | [ ] BLOCKED |
-| P4-M5 | MAJOR | Size comparison overstated — should compare spiral subsample (3.32M), not total (8.47M) | TEXT | [ ] |
+| P4-M5 | MAJOR | Size comparison overstated — should compare spiral subsample (3.32M), not total (8.47M) | TEXT | [x] FIXED |
 | P4-M6 | MAJOR | Angular power spectrum lacks MASTER deconvolution — 2.75σ ℓ=1 unresolved | COMPUTE — needs healpy/NaMaster | [ ] BLOCKED |
 | P4-m1 | MINOR | Bias suite code (10 tests) vs paper (8 tests) discrepancy | TEXT | [ ] |
 | P4-m2 | MINOR | Platt calibration fit against CE-ResNet labels, not ground truth | TEXT | [ ] |
