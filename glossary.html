@@ -4,21 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glossary &amp; Equations — Spin-Torsion Cosmology</title>
-<meta name="description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
+<meta name="description" content="15 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
 <meta property="og:title" content="Glossary & Equations">
-<meta property="og:description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
+<meta property="og:description" content="15 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <meta property="og:url" content="https://bigbounce.hubify.app/glossary.html">
 <meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Glossary & Equations">
-<meta name="twitter:description" content="13 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
+<meta name="twitter:description" content="15 key equations and 33 searchable terms from spin-torsion bounce cosmology.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <style>
+  /* ── Page-scoped CSS variable aliases ── */
+  :root { --bg-inset: var(--bg-code, #f6f6f6); }
+
+  /* ── Skip navigation link ── */
+  .skip-link {
+    position: absolute; top: -40px; left: 8px; z-index: 9999;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); padding: 6px 14px;
+    font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: top var(--transition);
+  }
+  .skip-link:focus { top: 8px; }
+
   /* ── Section anchors ── */
   .section-anchor { scroll-margin-top: 80px; }
 
@@ -79,27 +92,34 @@
   }
   .eq-explanation strong { color: var(--text); }
 
-  /* Status badges for equations */
-  .badge-derived {
-    background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe;
+  /* Status badges for equations — light theme base */
+  .badge-derived, .badge-assumed, .badge-standard, .badge-contingent {
     font-size: 11px; font-weight: 600; font-family: var(--font-sans);
     padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+  }
+  .badge-derived {
+    background: rgba(37,99,235,0.10); color: #1e40af; border: 1px solid rgba(37,99,235,0.30);
   }
   .badge-assumed {
-    background: #fffbeb; color: #92400e; border: 1px solid #fde68a;
-    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
-    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+    background: rgba(217,119,6,0.10); color: #92400e; border: 1px solid rgba(217,119,6,0.30);
   }
   .badge-standard {
-    background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;
-    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
-    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+    background: rgba(22,163,74,0.10); color: #166534; border: 1px solid rgba(22,163,74,0.30);
   }
   .badge-contingent {
-    background: #faf5ff; color: #6b21a8; border: 1px solid #e9d5ff;
-    font-size: 11px; font-weight: 600; font-family: var(--font-sans);
-    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.02em;
+    background: rgba(124,58,237,0.10); color: #6b21a8; border: 1px solid rgba(124,58,237,0.30);
   }
+  /* Dark mode overrides for equation status badges */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .badge-derived   { background: rgba(37,99,235,0.18)  !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+    :root:not([data-theme="light"]) .badge-assumed   { background: rgba(217,119,6,0.18)  !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4)  !important; }
+    :root:not([data-theme="light"]) .badge-standard  { background: rgba(22,163,74,0.18)  !important; color: #86efac !important; border-color: rgba(74,222,128,0.4)  !important; }
+    :root:not([data-theme="light"]) .badge-contingent{ background: rgba(124,58,237,0.18) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
+  }
+  [data-theme="dark"] .badge-derived   { background: rgba(37,99,235,0.18)  !important; color: #93c5fd !important; border-color: rgba(147,197,253,0.4) !important; }
+  [data-theme="dark"] .badge-assumed   { background: rgba(217,119,6,0.18)  !important; color: #fbbf24 !important; border-color: rgba(251,191,36,0.4)  !important; }
+  [data-theme="dark"] .badge-standard  { background: rgba(22,163,74,0.18)  !important; color: #86efac !important; border-color: rgba(74,222,128,0.4)  !important; }
+  [data-theme="dark"] .badge-contingent{ background: rgba(124,58,237,0.18) !important; color: #c4b5fd !important; border-color: rgba(196,181,253,0.4) !important; }
 
   /* ── Glossary filter ── */
   .filter-container {
@@ -114,6 +134,7 @@
     outline: none;
   }
   .filter-input:focus { border-color: var(--text); }
+  .filter-input:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
   .filter-input::placeholder { color: var(--text-muted); }
   .filter-icon {
     position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
@@ -150,19 +171,19 @@
   }
   .glossary-table tr.hidden { display: none; }
 
-  /* Type badges in glossary */
+  /* Type badges in glossary — light theme base (dark-mode overrides in style.css) */
   .gl-type {
     display: inline-block; font-size: 10px; font-weight: 600;
     font-family: var(--font-sans); text-transform: uppercase;
     letter-spacing: 0.04em; padding: 2px 6px; border-radius: 3px;
     white-space: nowrap;
   }
-  .gl-type-param { background: #eff6ff; color: #1e40af; }
-  .gl-type-obs { background: #f0fdf4; color: #166534; }
-  .gl-type-theory { background: #faf5ff; color: #6b21a8; }
-  .gl-type-dataset { background: #fffbeb; color: #92400e; }
-  .gl-type-instrument { background: #fef2f2; color: #991b1b; }
-  .gl-type-code { background: #f5f5f5; color: #3f3f46; }
+  .gl-type-param      { background: rgba(37,99,235,0.10);  color: #1e40af; }
+  .gl-type-obs        { background: rgba(22,163,74,0.10);  color: #166534; }
+  .gl-type-theory     { background: rgba(124,58,237,0.10); color: #6b21a8; }
+  .gl-type-dataset    { background: rgba(217,119,6,0.10);  color: #92400e; }
+  .gl-type-instrument { background: rgba(185,28,28,0.10);  color: #991b1b; }
+  .gl-type-code       { background: rgba(161,161,170,0.12);color: #3f3f46; }
 
   /* ── Section divider ── */
   .section-divider {
@@ -194,7 +215,8 @@
 </head>
 <body>
 
-<main>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<main id="main-content">
 <div class="container">
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
@@ -203,10 +225,10 @@
   <p class="subtitle">The mathematical backbone of the spin-torsion cosmology framework, with a complete reference for every symbol, parameter, and observable.</p>
 </div>
 
-<div class="jump-links">
+<nav class="jump-links" aria-label="Page sections">
   <a href="#equations">Key Equations</a>
   <a href="#glossary">Glossary</a>
-</div>
+</nav>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -441,7 +463,7 @@
     \[f_{\rm NL}^{\rm local} = -\frac{35}{8} = -4.375\]
   </div>
   <p class="eq-explanation">
-    A <strong>prediction with no free parameters in the cubic sector</strong> from matter-dominated contraction (Cai et al. 2009). Algebraically verified at three momentum configurations. The full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> was derived from Cai's own intermediate vertex contributions via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2 using exact rational arithmetic&mdash;not a fit, but the physics-derived result. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. Approximately 300&times; larger than standard inflation (\(f_{\rm NL} \sim 10^{-2}\)) and opposite in sign. Mechanism-independent (holds for ECH, LQC, or any nonsingular bounce). Testable by SPHEREx at 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic) and MegaMapper at ~7.5&sigma;. Bayesian comparison (600K+ MC): bounce favored at ~8-17:1 over tuned multifield (prior-dependent).
+    A <strong>minimally parameterized prediction</strong> from matter-dominated contraction (Cai et al. 2009). Algebraically verified at three momentum configurations. The full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> was derived from Cai's own intermediate vertex contributions via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2 using exact rational arithmetic&mdash;not a fit, but the physics-derived result. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. Approximately 300&times; larger than standard inflation (\(f_{\rm NL} \sim 10^{-2}\)) and opposite in sign. Mechanism-independent (holds for ECH, LQC, or any nonsingular bounce). Testable by SPHEREx at 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic) and MegaMapper at ~7.5&sigma;. Bayesian comparison (600K+ MC): bounce favored at ~8-17:1 over tuned multifield (prior-dependent).
   </p>
 </div>
 
@@ -496,19 +518,19 @@
   <span class="gl-type gl-type-code">Code</span>
 </div>
 
-<div class="filter-container">
-  <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  <input type="text" class="filter-input" id="glossaryFilter" placeholder="Filter glossary &mdash; type a symbol, term, or keyword..." autocomplete="off">
-  <div class="filter-count" id="filterCount"></div>
+<div class="filter-container" role="search">
+  <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input type="text" class="filter-input" id="glossaryFilter" placeholder="Filter glossary &mdash; type a symbol, term, or keyword..." autocomplete="off" aria-label="Filter glossary entries">
+  <div class="filter-count" id="filterCount" role="status" aria-live="polite" aria-atomic="true"></div>
 </div>
 
-<div class="glossary-table">
-<table>
+<div class="glossary-table" role="region" aria-label="Glossary table">
+<table aria-label="Glossary of terms, parameters and variables">
 <thead>
   <tr>
-    <th>Symbol / Term</th>
-    <th>Type</th>
-    <th>Definition</th>
+    <th scope="col">Symbol / Term</th>
+    <th scope="col">Type</th>
+    <th scope="col">Definition</th>
   </tr>
 </thead>
 <tbody id="glossaryBody">
@@ -637,7 +659,7 @@
   </td>
   <td><span class="gl-type gl-type-obs">Observable</span></td>
   <td class="gl-def">
-    <strong>Primordial non-Gaussianity amplitude (local template).</strong> Matter bounce prediction: <span class="gl-value">\(f_{\rm NL} = -35/8 = -4.375\)</span> &mdash; strongly constrained (no free parameters in the cubic sector), mechanism-independent across all bounce models with matter-dominated contraction. Plays a <strong>triple role</strong>: (i) galaxy bispectrum target for SPHEREx/MegaMapper; (ii) PBH abundance regulator via Edgeworth expansion on Press-Schechter (negative \(f_{\rm NL}\) naturally suppresses overproduction); (iii) spectral shape of scalar-induced GW background at NANOGrav. SPHEREx forecast: <strong>3&ndash;5&sigma; realistic</strong> (Fisher ideal up to ~12&sigma; before systematics; \(\sigma = 0.36\) Fisher to 0.93 Munchmeyer conservative).
+    <strong>Primordial non-Gaussianity amplitude (local template).</strong> Matter bounce prediction: <span class="gl-value">\(f_{\rm NL} = -35/8 = -4.375\)</span> &mdash; minimally parameterized (Cai 2009), mechanism-independent across all bounce models with matter-dominated contraction. Plays a <strong>triple role</strong>: (i) galaxy bispectrum target for SPHEREx/MegaMapper; (ii) PBH abundance regulator via Edgeworth expansion on Press-Schechter (negative \(f_{\rm NL}\) naturally suppresses overproduction); (iii) spectral shape of scalar-induced GW background at NANOGrav. SPHEREx forecast: <strong>3&ndash;5&sigma; realistic</strong> (Fisher ideal up to ~12&sigma; before systematics; \(\sigma = 0.36\) Fisher to 0.93 Munchmeyer conservative).
   </td>
 </tr>
 
@@ -659,7 +681,7 @@
   </td>
   <td><span class="gl-type gl-type-code">Estimator</span></td>
   <td class="gl-def">
-    <strong>Two-point angular correlation estimator</strong> \(w(\theta) = (DD - 2DR + RR)/RR\). Used on the Paper 3 anomaly catalog (DESI DR1) to validate that extreme anomalies exhibit enhanced clustering bias versus the baseline galaxy sample &mdash; a key physical-correlation check rather than a random-feature artefact of the autoencoder. <span class="gl-value">Pipeline-1 Gold+Silver tracers: 1.58&times;</span> on 5,384 QSO candidates (from <code>bias_validation.json</code>). <span style="color:#92400e;">Path-C note:</span> DESI was the native-training survey for BigAE, so this measurement stands unchanged under the Path-C rebuild &mdash; DESI is preserved, not cross-transfer.
+    <strong>Two-point angular correlation estimator</strong> \(w(\theta) = (DD - 2DR + RR)/RR\). Used on the Paper 3 anomaly catalog (DESI DR1) to validate that extreme anomalies exhibit enhanced clustering bias versus the baseline galaxy sample &mdash; a key physical-correlation check rather than a random-feature artefact of the autoencoder. <span class="gl-value">Pipeline-1 Gold+Silver tracers: 1.58&times;</span> on 5,384 QSO candidates (from <code>bias_validation.json</code>). <span class="gl-type gl-type-dataset">Path-C note:</span> DESI was the native-training survey for BigAE, so this measurement stands unchanged under the Path-C rebuild &mdash; DESI is preserved, not cross-transfer.
   </td>
 </tr>
 
@@ -669,7 +691,7 @@
   </td>
   <td><span class="gl-type gl-type-code">Pipeline</span></td>
   <td class="gl-def">
-    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB + ACT DR6, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned &rarr; after per-survey native retrains, ecliptic/galactic masking, and 8-way positional dedup at 5&Prime;, the final catalog contains <strong>378,480 unique physical objects (Path-C deduped canonical) + 637 multi-survey clusters</strong>. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-unmatched. Published at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>.
+    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB + ACT DR6, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned &rarr; after per-survey native retrains, ecliptic/galactic masking, and 8-way positional dedup at 5&Prime;, the final catalog contains <strong>378,480 unique physical objects (Path-C deduped canonical) + 637 multi-survey clusters</strong>. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-unmatched. Published at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer">HuggingFace</a>.
   </td>
 </tr>
 
@@ -691,7 +713,7 @@
   </td>
   <td><span class="gl-type gl-type-obs">Observable</span></td>
   <td class="gl-def">
-    <strong>Local non-Gaussianity amplitude.</strong> Measures departure from Gaussian primordial fluctuations. The generic matter bounce predicts <span class="gl-value">&minus;35/8 = &minus;4.375</span> (strongly constrained, algebraically verified). ~300&times; larger than standard inflation (\(\sim 10^{-2}\)) and opposite in sign. SPHEREx: 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic); MegaMapper: ~7.5&sigma;.
+    <strong>Local non-Gaussianity amplitude.</strong> Measures departure from Gaussian primordial fluctuations. The generic matter bounce predicts <span class="gl-value">&minus;35/8 = &minus;4.375</span> (minimally parameterized, Cai 2009, algebraically verified). ~300&times; larger than standard inflation (\(\sim 10^{-2}\)) and opposite in sign. SPHEREx: 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic); MegaMapper: ~7.5&sigma;.
   </td>
 </tr>
 
