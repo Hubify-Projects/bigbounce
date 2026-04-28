@@ -2,7 +2,7 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-04-18
+last_updated: 2026-04-27
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/paper2_fnl_forecast.pdf
 version: v1.6.1
@@ -14,7 +14,7 @@ submission_status: arXiv-ready — revtex4-2 conversion landed fire #9, PDF comp
 
 **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, revtex4-2 converted 2026-04-17 fire #9)
 **Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (632 KB, 0 undefined refs, fresh Docker TeX Live compile 2026-04-17)
-**Last authoritative update:** 2026-04-18 (post fire #28 — stale 85% headline corrected)
+**Last authoritative update:** 2026-04-27 (staleness bump — content unchanged since 2026-04-18; Paper 2 at 100%, PDF compiled clean Apr 23)
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)

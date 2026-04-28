@@ -2,7 +2,7 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-04-17
+last_updated: 2026-04-27
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf
 version: v2.3.0
@@ -15,7 +15,7 @@ submission_status: arXiv-ready after P1 queue items close
 **Canonical `.tex`:** `arxiv/main.tex` (1208 lines, last edit 2026-04-17, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-13`)
 **Canonical PDF:** `arxiv/main.pdf` (707 KB, compiled 2026-04-17 on pod, 27 pp, 0 undef)
 **Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
-**Last authoritative update:** 2026-04-17 (post P1-PDF-RECOMPILE + P1-CORNER-PLOTS)
+**Last authoritative update:** 2026-04-27 (staleness bump — content unchanged since 2026-04-17; \date{} macro updated to Apr 24, PDF recompile pending)
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
 
