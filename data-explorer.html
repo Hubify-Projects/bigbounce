@@ -33,6 +33,7 @@ main { max-width: none; padding: 0; }
 .de-sidebar-group .dot.orange { background: #f97316; }
 .de-sidebar-item { padding: 7px 10px 7px 20px; border-radius: 6px; cursor: pointer; font-size: 13px; font-family: var(--font-sans); display: flex; justify-content: space-between; align-items: center; margin: 1px 8px; color: var(--text-secondary); transition: all 100ms ease; user-select: none; font-weight: 500; }
 .de-sidebar-item:hover { background: var(--bg-inset); color: var(--text); }
+.de-sidebar-item:focus-visible { outline: 2px solid var(--accent-link, #1d4ed8); outline-offset: 1px; }
 .de-sidebar-item.active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
 .de-sidebar-badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); background: var(--bg-code); color: var(--text-tertiary); border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
 .de-sidebar-badge.frozen { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
@@ -70,6 +71,7 @@ main { max-width: none; padding: 0; }
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
 .data-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
 .data-table th { padding: 10px 12px; text-align: left; font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); background: var(--bg-subtle); border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; white-space: nowrap; position: relative; }
+.data-table th:focus-visible { outline: 2px solid var(--accent-link, #1d4ed8); outline-offset: -2px; }
 .data-table th:hover { background: #eff6ff; color: #1d4ed8; }
 .data-table th .sort-arrow { margin-left: 4px; font-size: 9px; opacity: 0.4; }
 .data-table th.sorted .sort-arrow { opacity: 1; color: #1d4ed8; }
@@ -86,8 +88,8 @@ main { max-width: none; padding: 0; }
 .stat-card .stat-label { font-family: var(--font-sans); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 4px; }
 .stat-card .stat-value { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--text); }
 .histogram { display: flex; align-items: flex-end; gap: 2px; height: 60px; }
-.histogram .bar { flex: 1; background: #3b82f6; border-radius: 2px 2px 0 0; min-width: 4px; transition: height 200ms; }
-.histogram .bar:hover { background: #1d4ed8; }
+.histogram .bar { flex: 1; background: var(--accent-link, #3b82f6); border-radius: 2px 2px 0 0; min-width: 4px; transition: height 200ms; opacity: 0.7; }
+.histogram .bar:hover { opacity: 1; }
 
 /* ── Formula Calculators ── */
 .formula-panel { border: 1px solid var(--border); border-radius: 8px; margin-top: 24px; overflow: hidden; }
@@ -112,7 +114,7 @@ main { max-width: none; padding: 0; }
 
 /* ── Node Tree ── */
 .tree-container { padding: 24px; }
-.tree-svg { width: 100%; max-width: 900px; margin: 0 auto; display: block; }
+.tree-svg { width: 100%; max-width: 900px; margin: 0 auto; display: block; height: auto; }
 .tree-node { cursor: default; }
 .tree-node rect { rx: 8; ry: 8; stroke-width: 1.5; }
 .tree-node text { font-family: var(--font-sans); font-size: 11px; font-weight: 600; fill: #fff; text-anchor: middle; dominant-baseline: central; }
@@ -153,7 +155,7 @@ main { max-width: none; padding: 0; }
 <div class="explorer">
 
 <!-- ═════════════ Left Sidebar ═════════════ -->
-<aside class="de-sidebar" id="sidebar">
+<aside class="de-sidebar" id="sidebar" role="navigation" aria-label="Dataset navigation">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
   <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (378,480 unique objects, 637 multi-survey clusters) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
 
@@ -201,7 +203,7 @@ main { max-width: none; padding: 0; }
 
   <div class="de-sidebar-group"><span class="dot orange"></span> Research Program</div>
   <div class="de-sidebar-item" onclick="selectDataset('barriers')" data-key="barriers">14 Struct. Barriers <span class="de-sidebar-badge closed">14 rows</span></div>
-  <div class="de-sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="de-sidebar-badge active-badge">29 rows</span></div>
+  <div class="de-sidebar-item" onclick="selectDataset('branches')" data-key="branches">Branch Results <span class="de-sidebar-badge active-badge">30 rows</span></div>
   <div class="de-sidebar-item" onclick="selectDataset('bounceAudit')" data-key="bounceAudit">Bounce Evidence Audit <span class="de-sidebar-badge">16</span></div>
 
   <div class="de-sidebar-sep"></div>
@@ -213,15 +215,15 @@ main { max-width: none; padding: 0; }
 </aside>
 
 <!-- ═════════════ Main Panel ═════════════ -->
-<div class="main-panel" id="mainPanel">
+<div class="main-panel" id="mainPanel" role="main" aria-label="Dataset viewer">
   <div id="datasetHeader" class="dataset-header"></div>
   <div id="controlsBar" class="controls-bar">
-    <input type="text" class="search-bar" id="searchInput" placeholder="Search across all columns..." oninput="filterRows()">
-    <button class="btn" onclick="exportCSV()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export CSV</button>
-    <div class="pagination">
-      <button class="btn" onclick="paginate(-1)">&larr; Prev</button>
-      <span class="pagination-info" id="pageInfo"></span>
-      <button class="btn" onclick="paginate(1)">Next &rarr;</button>
+    <input type="text" class="search-bar" id="searchInput" placeholder="Search across all columns..." oninput="filterRows()" aria-label="Search across all dataset columns">
+    <button class="btn" onclick="exportCSV()" aria-label="Export current dataset as CSV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export CSV</button>
+    <div class="pagination" role="navigation" aria-label="Table pagination">
+      <button class="btn" onclick="paginate(-1)" aria-label="Previous page">&larr; Prev</button>
+      <span class="pagination-info" id="pageInfo" aria-live="polite"></span>
+      <button class="btn" onclick="paginate(1)" aria-label="Next page">Next &rarr;</button>
     </div>
   </div>
   <div class="table-wrap" id="tableWrap"><table class="data-table" id="dataTable"></table></div>
@@ -2054,10 +2056,10 @@ sigTimeline: {
 },
 
 barriers: {
-  name: "13 Structural Barriers",
-  description: "Complete catalog of structural barriers preventing bounce\u2192DE connection, identified across 15 research branches (Foundations A\u2013G, Branches H\u2013O).",
+  name: "14 Structural Barriers",
+  description: "Complete catalog of structural barriers preventing bounce\u2192DE connection, identified across 15 research branches (Foundations A\u2013G, Branches H\u2013O, plus Branch V audit).",
   source: "research/program_reset_bounce_first.md",
-  rows: 13,
+  rows: 14,
   status: "FINAL", statusClass: "frozen",
   columns: ["#","Barrier Name","Source","Mechanism Blocked","Formal Statement","Novelty"],
   data: [
@@ -2073,7 +2075,8 @@ barriers: {
     ["10","UV\u2192IR Specificity Dilemma","Branch L","Generic vs bounce-specific","Bounce-specific \u2192 unobservable; observable \u2192 generic to any bounce","N2"],
     ["11","Decoupling Universality","Branch L/M","Light gauge field coupling","Light fields decouple from bounce-scale physics","N1"],
     ["12","Vacuum Amplification Ceiling","Branch M","GW background amplitude","\u03A9_GW \u221D (f_b/f_Pl)\u2074 model-independent; min detector gap 10\u00B9\u2077","N1"],
-    ["13","Gravitational Democracy","Branch N/O","Relics & irreversible transitions","Torsion ~1% of Planck-scale channels; trigger \u2260 outcome","N2"]
+    ["13","Gravitational Democracy","Branch N/O","Relics & irreversible transitions","Torsion ~1% of Planck-scale channels; trigger \u2260 outcome","N2"],
+    ["14","Perturbation Transparency","Branch V audit","ECH-specific perturbation signatures","ECH bounce leaves no distinctive imprint on scalar/tensor perturbations; predictions reduce to generic bounce","N2"]
   ]
 },
 
@@ -2225,7 +2228,7 @@ forecastCorrected: {
     ["Planck+DESI (now)","4.1","1.1\u03C3","0.9\u03C3","0.5\u03C3"],
     ["AI-improved tracers","2.5","1.8\u03C3","1.5\u03C3","0.8\u03C3"],
     ["Simons Observatory","2.0","2.2\u03C3","1.9\u03C3","1.0\u03C3"],
-    ["SPHEREx bispectrum","0.7","6.2\u03C3","~5.0\u20135.5\u03C3","2.7\u03C3"],
+    ["SPHEREx bispectrum","0.7","6.2\u03C3","~3\u20135\u03C3","2.7\u03C3"],
     ["CMB-S4","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper SDB","0.5","8.8\u03C3","7.7\u03C3","3.8\u03C3"],
     ["MegaMapper+CMB-S4","0.35","12.5\u03C3","11.0\u03C3","5.5\u03C3"]
@@ -2291,7 +2294,7 @@ w0waQuintomChains: {
 
 modelDiscrimination: {
   name: "Bounce vs Inflation \u2014 Bayesian Discrimination",
-  description: "Bayes factors comparing the matter bounce (f_NL = -35/8, zero free parameters) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
+  description: "Bayes factors comparing the matter bounce (f_NL = -35/8, minimally parameterized \u2014 Cai 2009) against five inflation competitor classes. SPHEREx scenario (\u03C3=0.7) and MegaMapper scenario (\u03C3=0.5). The bounce wins DECISIVELY against standard models and STRONGLY against exotic loopholes via Occam penalty.",
   source: "Bayesian discrimination program",
   status: "FROZEN", statusClass: "frozen",
   columns: ["Bounce vs...", "SPHEREx BF", "MegaMapper BF", "SPHEREx Verdict", "MegaMapper Verdict"],
@@ -2337,14 +2340,14 @@ nanoGravComparison: {
 
 quintomFnlVerification: {
   name: "f_NL Mechanism Independence \u2014 Quintom Verification",
-  description: "Verification that f_NL = -35/8 is mechanism-independent across bounce models. The prediction depends only on the matter-dominated contraction phase, not on the specific bounce mechanism (dust, quintom-B, or asymmetric). This makes the prediction robust \u2014 it works for ANY bounce model with matter contraction.",
+  description: "Verification that f_NL = -35/8 is mechanism-independent across bounce models. The prediction depends only on the matter-dominated contraction phase (Cai 2009), not on the specific bounce mechanism (dust, quintom-B, or asymmetric). This makes the prediction robust \u2014 it works for ANY bounce model with matter contraction. (Minimally parameterized, not parameter-free: requires matter contraction assumption.)",
   source: "quintom_fnl_verification.py",
   status: "VERIFIED", statusClass: "frozen",
   columns: ["Bounce mechanism", "f_NL value", "Contraction phase", "Parameters", "Status"],
   data: [
-    ["Dust (standard)", "-35/8 = -4.375", "Matter-dominated", "0 free", "Exact"],
-    ["Quintom-B", "-35/8 = -4.375", "Matter-dominated", "0 free", "Verified"],
-    ["Asymmetric bounce", "-35/8 = -4.375", "Matter-dominated", "0 free", "Verified"],
+    ["Dust (standard)", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Exact"],
+    ["Quintom-B", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Verified"],
+    ["Asymmetric bounce", "-35/8 = -4.375", "Matter-dominated", "Minimally parameterized", "Verified"],
     ["Ekpyrotic", "\u2248 +0.02 (different)", "Ekpyrotic (w\u226B1)", "0 free", "Distinct prediction"],
     ["Slow-roll inflation", "\u2248 -0.01 (tiny)", "de Sitter expansion", "0 free", "Undetectable"]
   ]
@@ -2388,15 +2391,16 @@ p3SimbadNovelty: {
 
 p4ChiralityCatalog: {
   name: "Paper 4 \u2014 8.47 M Galaxy Chirality Catalog",
-  description: "ViT-Small 3-class (CW / CCW / NOT_SPIRAL) equivariant classifier applied to 8.67 M Galaxy-Zoo-DESI images. 8,474,531 galaxies retained post-QC. Raw CW fraction fcw=0.5012 is consistent with isotropy. Post-TTA (D4 test-time equivariant averaging) dipole amplitude collapses from 3.05\u03C3 to 0.43\u03C3 (p=0.33) \u2014 no hemisphere asymmetry.",
+  description: "ViT-Small 3-class (CW / CCW / NOT_SPIRAL) equivariant classifier applied to 8.67 M Galaxy-Zoo-DESI images. 8,474,531 galaxies retained post-QC. Full-catalog CW fraction f_CW=0.4974 (benchmark subset: 0.5012); both consistent with isotropy. Post-TTA (D4 test-time equivariant averaging) dipole amplitude collapses from 3.05\u03C3 to 0.43\u03C3 (p=0.33) \u2014 no hemisphere asymmetry.",
   source: "pipelines/p2_chirality/",
-  rows: 9, totalSamples: 8474531,
+  rows: 10, totalSamples: 8474531,
   status: "FROZEN", statusClass: "frozen",
   columns: ["Metric", "Value", "Uncertainty", "Interpretation"],
   data: [
     ["Total galaxies classified", "8,474,531", "\u2014", "Largest chirality catalog to date"],
     ["CW / CCW / NOT_SPIRAL", "1,592,107 (18.8%) / 1,609,053 (19.0%) / 5,273,371 (62.2%)", "\u2014", "Equivariant post-QC"],
-    ["f_CW (equalized)", "0.5012", "\u00B10.0002", "Consistent with isotropy"],
+    ["f_CW (full catalog)", "0.4974", "\u00B10.0002", "Consistent with isotropy"],
+    ["f_CW (benchmark subset)", "0.5012", "\u00B10.0002", "Consistent with isotropy (benchmark subset only)"],
     ["Raw hemisphere dipole", "3.05\u03C3", "\u2014", "Dominated by orientation bias"],
     ["Post-TTA hemisphere dipole", "0.0019", "0.43\u03C3 (p=0.33)", "NULL \u2014 no asymmetry"],
     ["Shamir (2021) replication", "0/7 pass", "\u2014", "Refutes prior claims"],
@@ -2539,8 +2543,8 @@ function renderTable() {
   ds.columns.forEach((col, i) => {
     const sorted = currentSort.col === i;
     const arrow = sorted ? (currentSort.asc ? '\u25B2' : '\u25BC') : '\u25B2';
-    html += `<th onclick="sortBy(${i})" class="${sorted ? 'sorted' : ''}">
-      ${col} <span class="sort-arrow">${arrow}</span></th>`;
+    html += `<th onclick="sortBy(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();sortBy(${i});}" tabindex="0" role="columnheader" aria-sort="${sorted ? (currentSort.asc ? 'ascending' : 'descending') : 'none'}" class="${sorted ? 'sorted' : ''}">
+      ${col} <span class="sort-arrow" aria-hidden="true">${arrow}</span></th>`;
   });
   html += '</tr></thead><tbody>';
   page.forEach(row => {
@@ -2841,7 +2845,7 @@ function showTree() {
       </g>
       <g class="tree-node" transform="translate(450,355)">
         <rect x="-55" y="-18" width="110" height="36" fill="#ef4444" stroke="#dc2626"/>
-        <text y="2">13 Barriers</text>
+        <text y="2">14 Barriers</text>
       </g>
 
       <!-- Observations children -->
@@ -2888,6 +2892,18 @@ function showTree() {
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
   selectDataset('modelDiscrimination');
+
+  // Keyboard accessibility for sidebar items
+  document.querySelectorAll('.de-sidebar-item').forEach(function(el) {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
 });
 </script>
 
