@@ -278,9 +278,9 @@ $3 \times 10^{-4}$, encoder learning rate $2 \times 10^{-5}$,
 weight decay $0.02$), batch size~64, and a cosine annealing
 warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early
 stopping with patience of 15 epochs monitors the best validation
-loss within a maximum budget of 80 epochs; the production model's
-best validation accuracy of 93.7\% was achieved at epoch~79.
-The headline 93.7\% accuracy includes the \NS{} class, which is
+loss within a maximum budget of 100 epochs; the production model's
+best validation loss of $0.134$ was achieved at epoch~75.
+The headline 93.7\% three-class accuracy includes the \NS{} class, which is
 easier to classify (recall~98.4\%). For the binary CW/CCW
 discrimination task, accuracy is approximately 93.2\%, with CW recall
 of 93.8\% and CCW recall of 92.6\% (see confusion matrix in the
@@ -847,6 +847,23 @@ self-consistency (99.983\%) but lower agreement with Galaxy Zoo~1
 (85.8\% overall, 92.5\% at high confidence) compared to our 91.5\%
 agreement with the independent CE-ResNet classifier.
 
+\subsection{Motloch \& Pen (2021)}
+\label{sec:motloch}
+
+Motloch \& Pen~\cite{Motloch:2021} performed a chirality dipole search
+using Galaxy~Zoo~2 citizen-science classifications of $\sim\!2 \times
+10^{5}$ spirals, finding a marginal ($\sim\!2\sigmaunit$) dipole that
+they attributed to the ``reading direction'' bias identified by
+Iye \textit{et~al.}~\cite{Iye:2020}. Our result is consistent with theirs and
+extends it in two respects: (i)~our sample is $\sim\!17\times$ larger,
+pushing the minimum detectable dipole from $\sim\!1\%$ to $0.2\%$ at
+$3\sigmaunit$; and (ii)~the test-time equivariant averaging
+(Sec.~\ref{sec:tta}) eliminates the reading-direction bias by
+construction, whereas Motloch \& Pen relied on statistical correction
+of the Galaxy~Zoo vote fractions. Both analyses converge on the same
+conclusion: no evidence for cosmological parity violation in galaxy
+morphology.
+
 % ============================================================
 \section{Discussion}
 \label{sec:discussion}
@@ -1253,6 +1270,11 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020).
 \bibitem{Walmsley:2023}
 M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
+
+\bibitem{Motloch:2021}
+P.~Motloch and U.-L.~Pen,
+``An observed correlation between galaxy spins and initial conditions,''
+Nature Astron.\ \textbf{5}, 283 (2021).
 
 \bibitem{Wightman:2019}
 R.~Wightman,

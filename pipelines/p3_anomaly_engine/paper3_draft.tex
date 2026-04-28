@@ -371,7 +371,7 @@ We apply \BigAE{} to 20{,}000 randomly sampled $64 \times 64$-pixel patches from
 The top anomalies cluster at the south ecliptic pole ($\text{dec} \approx -85^\circ$), where Planck scanning strategy produces the deepest integration and the most complex noise properties. Secondary concentrations appear near known Galactic foreground structures and at $(l, b) \approx (130^\circ, 30^\circ)$ near the Ophiuchus supercluster region. The narrow score range (0.929--0.989) indicates that the CMB temperature field is well described by the autoencoder's learned representation; the ``anomalies'' represent marginal deviations at the percent level rather than dramatic outliers. This is consistent with the expected Gaussian statistics of the CMB~\cite{Planck2018IX}.
 
 \paragraph{Path-C native retrain: gate PASS.}
-The cross-transfer Planck CMB results above were produced by a severely undertrained autoencoder (validation MSE $2{\times}10^{4}$, injection-recovery $0.33\%$ at $5\times$ noise) without a galactic-plane mask, failing both diagnostic gates set by the Path-C rebuild (\S\ref{sec:pathc}, criterion~\#3). A native CMB convolutional autoencoder was retrained on a refreshed $2{\times}10^{5}$-patch Planck SMICA sample with a $|b| \geq 20^\circ$ galactic-plane mask applied at patch-extraction time (encoder: $3$ convolutional layers $\rightarrow$ $\mathrm{Linear}(4096, 128)$; symmetric $\mathrm{ConvT}$ decoder; $1.1{\times}10^{6}$ parameters; batch $128$; Adam $\mathrm{lr} = 10^{-3}$; $\mathrm{ReduceLROnPlateau}$ patience $10$; early-stop patience $25$; $15\%$ validation split). Training converged at $\mathrm{val\_loss} = 0.4437$ at epoch $99$ of $150$ (a factor $\sim\!5{\times}10^{4}$ improvement over the cross-transfer checkpoint). The Path-C injection-recovery gate on $500$ synthetic Gaussian-bump plants at $5\times$ noise amplitude returned a recovery fraction of $500/500 = 100.0\%$, far above the $\geq 50\%$ gate: the clean-val $99$th-percentile MSE threshold was $0.519$, and every planted patch scored above this threshold (planted MSE median $1.21$; range $[0.80, 1.78]$). The native Planck CMB autoencoder therefore supersedes the cross-transfer checkpoint for Paper~3. A forward-pass re-score of the full $2{\times}10^{5}$-patch set completed in $25.3$\,s on the training A100 (rate $\sim 8{\times}10^{3}$ patches/s): anomaly-score distribution median $0.437$ (matching $\mathrm{val\_loss}$), $99$th~percentile $0.520$, $99.9$th~percentile $0.558$, maximum $0.621$. The top~$200$ patches (score range $[0.558, 0.621]$) form the native Planck CMB anomaly set and replace the cross-transfer $200$-patch set in Table~\ref{tab:survey_summary}. The cross-transfer set is preserved as a \S\ref{sec:pathc} before/after comparison artifact. Full training log, recovery curve, and the native anomaly parquet are archived as \texttt{best\_cmb\_native.pt} $+$ \texttt{training\_losses.json} $+$ \texttt{injection\_recovery.json} $+$ \texttt{cmb\_native\_anomalies.parquet}. The fallback-plan in \S\ref{sec:pathc_caveats}~(iii) is no longer triggered.
+The cross-transfer Planck CMB results above were produced by a severely undertrained autoencoder (validation MSE $2{\times}10^{4}$, injection-recovery $0.33\%$ at $5\times$ noise) without a galactic-plane mask, failing both diagnostic gates set by the Path-C rebuild (\S\ref{sec:pathc}, criterion~\#3). A native CMB convolutional autoencoder was retrained on a refreshed $2{\times}10^{5}$-patch Planck SMICA sample with a $|b| \geq 20^\circ$ galactic-plane mask applied at patch-extraction time (encoder: $3$ convolutional layers $\rightarrow$ $\mathrm{Linear}(4096, 128)$; symmetric $\mathrm{ConvT}$ decoder; $1.1{\times}10^{6}$ parameters; batch $128$; Adam $\mathrm{lr} = 10^{-3}$; $\mathrm{ReduceLROnPlateau}$ patience $10$; early-stop patience $25$; $15\%$ validation split). Training converged at $\mathrm{val\_loss} = 0.4437$ at epoch $99$ of $150$ (a factor $\sim\!5{\times}10^{4}$ improvement over the cross-transfer checkpoint). The Path-C injection-recovery gate on $500$ synthetic Gaussian-bump plants at $5\times$ noise amplitude returned a recovery fraction of $500/500 = 100.0\%$, far above the $\geq 50\%$ gate: the clean-val $99$th-percentile MSE threshold was $0.519$, and every planted patch scored above this threshold (planted MSE median $1.21$; range $[0.80, 1.78]$). The native Planck CMB autoencoder therefore supersedes the cross-transfer checkpoint for Paper~3. A forward-pass re-score of the full $2{\times}10^{5}$-patch set completed in $25.3$\,s on the training A100 (rate $\sim 8{\times}10^{3}$ patches/s): anomaly-score distribution median $0.437$ (matching $\mathrm{val\_loss}$), $99$th~percentile $0.520$, $99.9$th~percentile $0.558$, maximum $0.621$. The top~$200$ patches (score range $[0.558, 0.621]$, a dynamic range of only $0.063$) form the native Planck CMB anomaly set and replace the cross-transfer $200$-patch set in Table~\ref{tab:survey_summary}. The narrow dynamic range---barely $12\%$ above the $99$th-percentile background---reflects the near-Gaussianity of the SMICA temperature field and means that the ``anomalies'' represent marginal statistical fluctuations rather than dramatic outliers; this CMB component should be interpreted with correspondingly greater caution than the spectroscopic surveys where top anomaly scores exceed the threshold by factors of $5$--$50$. The cross-transfer set is preserved as a \S\ref{sec:pathc} before/after comparison artifact. Full training log, recovery curve, and the native anomaly parquet are archived as \texttt{best\_cmb\_native.pt} $+$ \texttt{training\_losses.json} $+$ \texttt{injection\_recovery.json} $+$ \texttt{cmb\_native\_anomalies.parquet}. The fallback-plan in \S\ref{sec:pathc_caveats}~(iii) is no longer triggered.
 
 
 \subsection{ACT DR6}\label{sec:act}
@@ -751,8 +751,8 @@ decreasing order of BigAE anomaly score within each family.
 \includegraphics[width=0.90\textwidth]{figures/fig_gallery_a5_elg.pdf}
 \caption{\label{fig:gallery_a5}
   \textbf{Extreme emission-line galaxies (top 16 of 35{,}100).}
-  Galaxies with anomalous emission-line ratios that fall in the AGN region
-  of the BPT diagram at 96.9\% (Section~\ref{sec:desi}).  Unusual
+  Galaxies with anomalous emission-line ratios that fall predominantly in
+  the AGN region of the BPT diagram.  Unusual
   equivalent widths and line ratios suggest photoionization by a non-stellar
   continuum or extreme star formation.  DESI Legacy Survey DR9 grz composites.}
 \end{figure*}
@@ -908,40 +908,12 @@ N.\ Hamaus, U.\ Seljak, and V.\ Desjacques,
 ``Optimal constraints on local primordial non-Gaussianity from the two-point statistics of large-scale structure,''
 Phys.\ Rev.\ D \textbf{86}, 103513 (2012).
 
-\bibitem{Dalal2008}
-N.\ Dalal, O.\ Dor\'e, D.\ Huterer, and A.\ Shirokov,
-``Imprints of primordial non-Gaussianities on large-scale structure,''
-Phys.\ Rev.\ D \textbf{77}, 123514 (2008).
-
-\bibitem{Matarrese2008}
-S.\ Matarrese and L.\ Verde,
-``Large-scale bias in the universe: II. Redshift-space bispectrum,''
-Astrophys.\ J.\ Lett.\ \textbf{677}, L77 (2008).
-
-\bibitem{Laurent2017}
-P.\ Laurent \etal,
-``Clustering of quasars in SDSS-IV eBOSS,''
-J.\ Cosmol.\ Astropart.\ Phys.\ \textbf{1707}, 017 (2017).
 
 \bibitem{NANOGrav2023}
 G.\ Agazie \etal\ (NANOGrav Collaboration),
 ``The NANOGrav 15 yr Data Set: Evidence for a Gravitational-wave Background,''
 Astrophys.\ J.\ Lett.\ \textbf{951}, L8 (2023).
 
-\bibitem{EPTA2023}
-J.\ Antoniadis \etal\ (EPTA Collaboration),
-``The second data release from the European Pulsar Timing Array,''
-Astron.\ Astrophys.\ \textbf{678}, A50 (2023).
-
-\bibitem{PPTA2023}
-D.\ J.\ Reardon \etal\ (PPTA Collaboration),
-``Search for an isotropic gravitational-wave background with the Parkes Pulsar Timing Array,''
-Astrophys.\ J.\ Lett.\ \textbf{951}, L6 (2023).
-
-\bibitem{CPTA2023}
-H.\ Xu \etal\ (CPTA Collaboration),
-``Searching for the nano-Hertz stochastic gravitational wave background with the Chinese Pulsar Timing Array Data Release 1,''
-Research in Astronomy and Astrophysics \textbf{23}, 075024 (2023).
 
 \bibitem{Phinney2001}
 E.\ S.\ Phinney,
@@ -951,7 +923,7 @@ arXiv:astro-ph/0108028 (2001).
 \bibitem{Quintin2015}
 J.\ Quintin, Y.\ F.\ Cai, and R.\ H.\ Brandenberger,
 ``Matter creation in a nonsingular bouncing cosmology,''
-Phys.\ Rev.\ D \textbf{90}, 063507 (2015).
+Phys.\ Rev.\ D \textbf{90}, 063507 (2014).
 
 \bibitem{Cai2015}
 Y.-F.\ Cai,
@@ -968,10 +940,6 @@ S.\ Burke-Spolaor \etal,
 ``The astrophysics of nanohertz gravitational waves,''
 Astron.\ Astrophys.\ Rev.\ \textbf{27}, 5 (2019).
 
-\bibitem{Kass1995}
-R.\ E.\ Kass and A.\ E.\ Raftery,
-``Bayes Factors,''
-J.\ Am.\ Stat.\ Assoc.\ \textbf{90}, 773 (1995).
 
 \bibitem{Wenger2000}
 M.\ Wenger \etal,
@@ -988,38 +956,21 @@ L.\ McInnes, J.\ Healy, and S.\ Astels,
 ``hdbscan: Hierarchical density based clustering,''
 J.\ Open Source Softw.\ \textbf{2}, 205 (2017).
 
-\bibitem{Siemens2013}
-X.\ Siemens, J.\ Ellis, F.\ Jenet, and J.\ D.\ Romano,
-``The stochastic background: scaling laws and time to detection for pulsar timing arrays,''
-Class.\ Quant.\ Grav.\ \textbf{30}, 224015 (2013), arXiv:1305.3196.
-
-\bibitem{Rosado2015}
-P.\ A.\ Rosado, A.\ Sesana, and J.\ Gair,
-``Expected properties of the first gravitational wave signal detected with pulsar timing arrays,''
-Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{451}, 2417 (2015), arXiv:1503.04803.
 
 \bibitem{Golden:2026framework}
 H.\ Golden,
-``Spin-Torsion Cosmology: A Framework for the Quasi-Matter Bounce,''
-companion paper (2026).
-Derives $\fnl = -35/8 = -4.375$ from the parameter-free quasi-matter bounce and
-enumerates the 14 structural barriers that close ECH-specific routes to dark energy.
+``Spin-Torsion Cosmology: Fourteen Structural Barriers, a Null MCMC Result, and an ALP Birefringence Prediction,''
+in preparation (2026).
 
 \bibitem{Golden:2026fnl}
 H.\ Golden,
 ``SPHEREx / MegaMapper Multi-Tracer $\fnl$ Forecast with AI-Selected High-Bias Tracers,''
-companion paper (2026).
-Formal Fisher forecast ($\sigma(\fnl) = 11.71$ for five-tracer, anomaly-optimized
-configuration; Bayes factors 8--17 favoring bounce). Uses the anomaly catalog of
-the present work as one of its tracer populations.
+in preparation (2026).
 
 \bibitem{Golden:2026chirality}
 H.\ Golden,
-``A Galaxy Chirality Catalog of 8.47 Million Resolved Spirals with D4 Test-Time Equivariance,''
-companion paper (2026).
-Null dipole ($0.43\sigma$), Shamir claims refuted at $7\sigma$. Provides the
-Landy-Szalay dipole infrastructure reused here for limitation-G bias calibration
-of the anomaly subsample (see \S\ref{sec:limitations}).
+``No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies,''
+in preparation (2026).
 
 \end{thebibliography}
 
