@@ -23,7 +23,7 @@
 - **Website** (`index.html` lines 64, 88, 356): uses 0.5012 everywhere
 - **Website** (`index.html` lines 561, 695): uses 0.4974
 - **Fix:** Pick 0.4974 (full catalog) as headline everywhere. Add footnote in P1 explaining 0.5012 is subset-specific. Website: use 0.4974 consistently, note 0.5012 as benchmark cross-check.
-- **Status:** [ ] NOT STARTED
+- **Status:** [~] PARTIAL — Website disambiguated (0.5012 labeled "benchmark-overlap subset", 0.4974 labeled "full catalog"). Paper 1 footnote still needed.
 
 ### 2. Paper 4 model identity crisis [P4, CRITICAL]
 - Paper says ViT-Small (`vit_small_patch16_224`) on DR8 with 2-fold TTA
@@ -65,7 +65,7 @@
 - f_NL = -35/8 comes from matter bounce (Cai 2009), needs nothing from ECH
 - If SPHEREx detects this, it confirms matter bounce, not ECH spin-torsion
 - **Fix:** Reframe: ECH is the framework, matter bounce is the mechanism. Don't list f_NL as a "surviving prediction" of ECH in abstract or executive summary.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — 8 locations in main.tex reframed. f_NL now attributed to matter bounce (Cai 2009), ECH described as compatible framework.
 
 ### 8. Paper 1 dimensional analysis gap (Eq. 6) [P1, CRITICAL]
 - Parity-odd operator has mass dimension +1, needs +4 in the Lagrangian density
@@ -80,13 +80,13 @@
 - 388,693 (Path-C survey-level before dedup)
 - Title uses one, abstract another, Table 1 a third
 - **Fix:** Pick ONE canonical number. Use it everywhere. Clearly label others as intermediate counts.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — 378,480 is now the canonical headline everywhere (title, abstract, conclusions, skymap caption). Table 1 labeled "cross-transfer baseline" with footnote. 319,443 and 388,693 clearly labeled as intermediate.
 
 ### 10. Paper 3 Fisher table counts disagree with text [P3, CRITICAL]
 - N_std text: 1,325,771 vs Table 3 sum: 1,324,968 (803 objects off)
 - N_AI abstract: 40,547 vs Table 3 sum: 40,192 (355 objects off)
 - **Fix:** Reconcile all numbers.
-- **Status:** [ ] NOT STARTED
+- **Status:** [x] DONE — Text fixed to match table sums: 1,324,968 (N_std) and 40,192 (N_AI). Table verified row-by-row.
 
 ### 11. Paper 3 DESI scored on own training data [P3, CRITICAL]
 - k-fold cross-validation on 47K training pool, not on 22.5M catalog
@@ -116,7 +116,7 @@
 
 | # | Issue | Fix | Status |
 |---|-------|-----|--------|
-| 14 | "Perturbation-transparency theorem" is a known textbook result (Hehl 1976). Numerical verification of Bianchi identity is circular. | Downgrade "theorem" to "result." Cite Hehl. Remove numerical verification. | [ ] |
+| 14 | "Perturbation-transparency theorem" is a known textbook result (Hehl 1976). Numerical verification of Bianchi identity is circular. | Downgrade "theorem" to "result." Cite Hehl. Remove numerical verification. | [x] DONE — 16 instances changed, Hehl1976 cited in 2 places, numerical verification removed |
 | 15 | Bayes factor ln B=4.8 via Savage-Dickey unreliable. Model is just LCDM+DNeff, not spin-torsion. | Do proper nested sampling (PolyChord/MultiNest) OR remove Bayes factor claims. | [ ] |
 | 16 | NaMaster: only 50 MC realizations (need >=500). Beta ranges 0.167-0.322 across analysis choices. Uses latitude cut instead of Planck mask. | Increase to 500+ MC. Use official Planck mask. Report systematic variation. | [ ] |
 | 17 | NANOGrav: synthetic data fit with chi^2/dof=0.012. Bayes factors from reconstructed data statistically invalid. | Remove NANOGrav Bayes factors or add heavy caveats. | [ ] |
@@ -179,20 +179,20 @@
 
 | # | Issue | Fix | Status |
 |---|-------|-----|--------|
-| 57 | Paper 2 uses `reprint` (single-column) instead of `twocolumn`. | Change to `twocolumn` to match Papers 1, 3, 4. | [ ] |
-| 58 | Paper 2 uses `\date{\today}` instead of fixed date. | Set to `April 27, 2026 --- v1.0.0`. | [ ] |
-| 59 | Paper 2 missing `\preprint{HUBIFY-2026-002}`. | Add it. | [ ] |
-| 60 | Paper 3 missing `showpacs` in documentclass. | Add it. | [ ] |
+| 57 | Paper 2 uses `reprint` (single-column) instead of `twocolumn`. | Change to `twocolumn` to match Papers 1, 3, 4. | [x] DONE |
+| 58 | Paper 2 uses `\date{\today}` instead of fixed date. | Set to `April 27, 2026 --- v1.6.1`. | [x] DONE |
+| 59 | Paper 2 missing `\preprint{HUBIFY-2026-002}`. | Add it. | [x] DONE |
+| 60 | Paper 3 missing `showpacs` in documentclass. | Add it. | [x] DONE |
 
 ### Website Fixes
 
 | # | Issue | Fix | Status |
 |---|-------|-----|--------|
-| 61 | DNeff: -0.019 on stat card/figures, -0.020 in Paper 1 and MCMC table. | Change to -0.020 everywhere. | [ ] |
-| 62 | "475,000+ MCMC samples" in hero section — no paper uses this. | Change to 424,181 or 309,789 with qualifier. | [ ] |
-| 63 | NaMaster beta=0.19 on one part of page, 0.264 on another. | Use 0.264 consistently (Paper 1 value). Remove or relabel 0.19. | [ ] |
-| 64 | Stat card says "3 frozen dataset combinations" but only 2 are frozen. | Fix to "2 frozen" or "3 combinations (2 frozen)". | [ ] |
-| 65 | CW fraction uses both 0.5012 and 0.4974 on same page. | Use 0.4974 as headline. Note 0.5012 as benchmark subset. | [ ] |
+| 61 | DNeff: -0.019 on stat card/figures, -0.020 in Paper 1 and MCMC table. | Change to -0.020 everywhere. | [x] DONE — index.html + paper.html fixed |
+| 62 | "475,000+ MCMC samples" in hero section — no paper uses this. | Change to 424,181 or 309,789 with qualifier. | [x] DONE — changed to "424,181 MCMC posterior samples across 3 dataset combinations" |
+| 63 | NaMaster beta=0.19 on one part of page, 0.264 on another. | Use 0.264 consistently (Paper 1 value). Remove or relabel 0.19. | [x] DONE — 0.19 labeled as "EB-only without miscalibration marginalization; canonical is 0.264" |
+| 64 | Stat card says "3 frozen dataset combinations" but only 2 are frozen. | Fix to "2 frozen" or "3 combinations (2 frozen)". | [x] DONE — 5 locations in index.html + 1 in paper.html: "(2 frozen)" added |
+| 65 | CW fraction uses both 0.5012 and 0.4974 on same page. | Use 0.4974 as headline. Note 0.5012 as benchmark subset. | [x] DONE — 0.5012 labeled "(benchmark-overlap subset)", 0.4974 labeled "(full catalog)" |
 
 ---
 
