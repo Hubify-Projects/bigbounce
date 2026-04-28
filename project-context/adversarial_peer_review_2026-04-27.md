@@ -586,8 +586,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| P1-C1 | CRITICAL | ECH action (Eq.1) mixes first/second order formalism — torsion in action while saying "we don't vary w.r.t. torsion" | TEXT — restructure presentation | [ ] |
-| P1-C2 | CRITICAL | Parity-odd action (Eq.5/6) has dimensional inconsistency (mass dim +1 not +4) — entire DE parameterization rests on "scaling ansatz" | TEXT — either derive or remove DE parameterization | [ ] |
+| P1-C1 | CRITICAL | ECH action (Eq.1) mixes first/second order formalism — torsion in action while saying "we don't vary w.r.t. torsion" | TEXT — restructure presentation | [x] FIXED |
+| P1-C2 | CRITICAL | Parity-odd action (Eq.5/6) has dimensional inconsistency (mass dim +1 not +4) — entire DE parameterization rests on "scaling ansatz" | TEXT — either derive or remove DE parameterization | [x] FIXED |
 | P1-C3 | CRITICAL | "Perturbation-transparency result" is trivially known since Hehl 1976 — 5-step "proof" restates S=0⇒T=0 | TEXT — downgrade from "central result" to "observation for completeness" | [x] FIXED |
 | P1-M1 | MAJOR | Savage-Dickey Bayes factor model labeled "Spin-Torsion" but tests ΛCDM+ΔNeff with stock CAMB | TEXT — relabel model, heavy caveat in executive summary | [x] FIXED |
 | P1-M2 | MAJOR | ALP birefringence β≈0.27° has nothing to do with ECH — spectator ALP gives same result in any theory | TEXT — move to appendix, remove from abstract | [ ] |
@@ -612,7 +612,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
-| P2-C1 | CRITICAL | No original Fisher matrix written down — paper recasts others' forecasts | TEXT — either construct Fisher or relabel as "sensitivity recast" | [ ] |
+| P2-C1 | CRITICAL | No original Fisher matrix written down — paper recasts others' forecasts | TEXT — either construct Fisher or relabel as "sensitivity recast" | [x] FIXED |
 | P2-C2 | CRITICAL | Template overlap r weighting is signal-only (S_local²) — biased toward squeezed configs | COMPUTE — needs realistic noise model | [ ] BLOCKED |
 | P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [x] FIXED |
 | P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [x] FIXED |
@@ -638,7 +638,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
 | P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [ ] |
-| P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [ ] |
+| P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [x] FIXED |
 | P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [ ] BLOCKED |
 | P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [x] FIXED |
 | P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [x] FIXED |
