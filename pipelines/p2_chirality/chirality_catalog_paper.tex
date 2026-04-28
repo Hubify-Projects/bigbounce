@@ -60,7 +60,9 @@ each classified as clockwise~(\CW), counter-clockwise~(\CCW), or not
 spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
 from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
 synthetic hard negatives. The classifier achieves 93.7\% three-class
-validation accuracy and passes all eight tests in a purpose-built
+validation accuracy (with 67.6\% of training labels derived from
+CE-ResNet predictions rather than independent ground truth;
+see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
 bias-hardening suite (flip-equivariance, rotation stability, artifact
 rejection, brightness robustness, metadata leakage). A flip-equivariance
 consistency loss plus test-time equivariant averaging eliminate
@@ -503,9 +505,20 @@ While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
 $0.26\%$ amplitude, is well below the minimum detectable
 \emph{dipole} of $0.2\%$ (Sec.~\ref{sec:sensitivity}).
-The residual likely reflects a sub-percent asymmetry in the
-training labels themselves (the CE-ResNet overlap subset yields
-$0.5012$; see footnote~1) rather than a physical signal.
+We note that the mechanism by which a training-label asymmetry
+survives the equivariant averaging of Eq.~(\ref{eq:tta}) is not
+fully understood; sub-pixel interpolation asymmetry during the
+horizontal-flip augmentation is one candidate, but this requires
+further investigation. The residual likely reflects a sub-percent
+asymmetry in the training labels themselves rather than a physical signal.
+Supporting this interpretation, the CE-ResNet benchmark-overlap subset
+yields an equivariant CW fraction of $0.5012 \pm 0.0006$---a $0.38\%$
+offset from the full-catalog value of $0.4974 \pm 0.0003$---which
+brackets the sub-percent systematic floor of the equivariant
+procedure.\footnote{The companion framework
+paper~\cite{Golden:2026framework} cross-cites the overlap-subset
+value $0.5012$; the $0.38\%$ subset-to-full-catalog offset is within
+the tier-to-tier variation ($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
 Crucially, this monopole offset is spatially uniform
 (Table~\ref{tab:sky_balance}: all regions within $0.5\%$ of 50/50)
 and therefore does not produce a dipole or any higher-order pattern
@@ -513,16 +526,7 @@ in the chirality map. This progression---from $28.7\sigmaunit$ (raw)
 to $9.5\sigmaunit$ (equivariant)---demonstrates that the dominant CW
 excess is a classifier artifact, not a physical signal, while the
 small equivariant residual is a spatially uniform monopole with no
-cosmological content.\footnote{The companion
-framework paper~\cite{Golden:2026framework} cross-cites an equivariant
-CW fraction of $0.5012 \pm 0.0006$ from the CE-ResNet benchmark-overlap
-subset (where our ViT-Small result agrees with CE-ResNet to within
-$0.01$ percentage points); the canonical full-catalog ($8.47$~M)
-equivariant value reported here (Table~\ref{tab:cw_frac}) is
-$0.4974 \pm 0.0003$.  The $0.38\%$ offset between the subset and
-full-catalog values brackets the sub-percent systematic floor of the
-equivariant procedure and is within the tier-to-tier variation
-($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
+cosmological content.
 
 \begin{table}
 \caption{Global CW fraction across catalog tiers.  Uncertainties are
@@ -1178,26 +1182,47 @@ performed on NVIDIA H100 and H200 GPUs via RunPod cloud infrastructure.
 \end{acknowledgments}
 
 \begin{thebibliography}{99}
+% Bibliography sorted by order of first citation.
+
+\bibitem{Shamir:2020}
+L.~Shamir,
+Astrophys.\ Space Sci.\ \textbf{365}, 136 (2020).
+
+\bibitem{Shamir:2022}
+L.~Shamir,
+Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022).
 
 \bibitem{Alexander:2009tp}
 S.~Alexander and N.~Yunes,
 Phys.\ Rep.\ \textbf{480}, 1 (2009).
 
-\bibitem{Astropy:2022}
-{Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
-Astrophys.\ J.\ \textbf{935}, 167 (2022).
+\bibitem{Shamir:2012}
+L.~Shamir,
+Phys.\ Lett.\ A \textbf{376}, 1590 (2012).
 
-\bibitem{Davis:2014}
-D.~R.~Davis and W.~B.~Hayes,
-Astrophys.\ J.\ \textbf{790}, 87 (2014).
+\bibitem{Iye:2020}
+M.~Iye, M.~Yagi, and H.~Fukumoto,
+Astrophys.\ J.\ \textbf{907}, 123 (2020).
 
-\bibitem{DESI:2016}
-{DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
-arXiv:1611.00036 (2016).
+\bibitem{Tadaki:2020}
+K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020).
+
+\bibitem{Jia:2023}
+P.~Jia, L.~Zhu, and U.-L.~Pen,
+Astrophys.\ J.\ \textbf{943}, 154 (2023).
 
 \bibitem{Dey:2019}
 A.~Dey, D.~J.~Schlegel, D.~Lang \textit{et~al.},
 Astron.\ J.\ \textbf{157}, 168 (2019).
+
+\bibitem{Walmsley:2023}
+M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
+
+\bibitem{Lintott:2008}
+C.~J.~Lintott, K.~Schawinski, A.~Slosar \textit{et~al.},
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008).
 
 \bibitem{Dosovitskiy:2020}
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
@@ -1209,37 +1234,46 @@ H.~Golden,
 BigBounce Research (2026),
 \url{https://bigbounce.hubify.app}.
 
-\bibitem{Gorski:2005}
-K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},
-Astrophys.\ J.\ \textbf{622}, 759 (2005).
-
 \bibitem{Gross:2010}
 E.~Gross and O.~Vitells,
 Eur.\ Phys.\ J.\ C \textbf{70}, 525 (2010).
 
-\bibitem{Harris:2020}
-C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt \textit{et~al.},
-Nature \textbf{585}, 357 (2020).
+\bibitem{Davis:2014}
+D.~R.~Davis and W.~B.~Hayes,
+Astrophys.\ J.\ \textbf{790}, 87 (2014).
+
+\bibitem{Motloch:2021}
+P.~Motloch and U.-L.~Pen,
+``An observed correlation between galaxy spins and initial conditions,''
+Nature Astron.\ \textbf{5}, 283 (2021).
 
 \bibitem{Holst:1995pc}
 S.~Holst,
 Phys.\ Rev.\ D \textbf{53}, 5966 (1996).
 
+\bibitem{DESI:2016}
+{DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
+arXiv:1611.00036 (2016).
+
 \bibitem{Ivezic:2019}
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 Astrophys.\ J.\ \textbf{873}, 111 (2019).
 
-\bibitem{Iye:2020}
-M.~Iye, M.~Yagi, and H.~Fukumoto,
-Astrophys.\ J.\ \textbf{907}, 123 (2020).
+\bibitem{Astropy:2022}
+{Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
+Astrophys.\ J.\ \textbf{935}, 167 (2022).
 
-\bibitem{Jia:2023}
-P.~Jia, L.~Zhu, and U.-L.~Pen,
-Astrophys.\ J.\ \textbf{943}, 154 (2023).
+\bibitem{Gorski:2005}
+K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},
+Astrophys.\ J.\ \textbf{622}, 759 (2005).
 
-\bibitem{Lintott:2008}
-C.~J.~Lintott, K.~Schawinski, A.~Slosar \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008).
+\bibitem{Zonca:2019}
+A.~Zonca, L.~Singer, D.~Lenz \textit{et~al.},
+J.\ Open Source Softw.\ \textbf{4}, 1298 (2019).
+
+\bibitem{Harris:2020}
+C.~R.~Harris, K.~J.~Millman, S.~J.~van der Walt \textit{et~al.},
+Nature \textbf{585}, 357 (2020).
 
 \bibitem{McKinney:2010}
 W.~McKinney,
@@ -1251,39 +1285,10 @@ A.~Paszke, S.~Gross, F.~Massa \textit{et~al.},
 in \textit{Advances in Neural Information Processing Systems 32}, edited by H.~Wallach \textit{et~al.}
 (Curran Associates, 2019), pp.~8024--8035.
 
-\bibitem{Shamir:2012}
-L.~Shamir,
-Phys.\ Lett.\ A \textbf{376}, 1590 (2012).
-
-\bibitem{Shamir:2020}
-L.~Shamir,
-Astrophys.\ Space Sci.\ \textbf{365}, 136 (2020).
-
-\bibitem{Shamir:2022}
-L.~Shamir,
-Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022).
-
-\bibitem{Tadaki:2020}
-K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020).
-
-\bibitem{Walmsley:2023}
-M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
-
-\bibitem{Motloch:2021}
-P.~Motloch and U.-L.~Pen,
-``An observed correlation between galaxy spins and initial conditions,''
-Nature Astron.\ \textbf{5}, 283 (2021).
-
 \bibitem{Wightman:2019}
 R.~Wightman,
 PyTorch Image Models (2019),
 \url{https://github.com/rwightman/pytorch-image-models}.
-
-\bibitem{Zonca:2019}
-A.~Zonca, L.~Singer, D.~Lenz \textit{et~al.},
-J.\ Open Source Softw.\ \textbf{4}, 1298 (2019).
 
 \end{thebibliography}
 
