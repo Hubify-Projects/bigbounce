@@ -12,7 +12,7 @@
 |-------|------|----------|----------|-------|-------|--------|
 | 1 | 2026-04-27 | 80+ | 13/13 DONE | 33/33 DONE | 20+ DONE | ALL TEXT FIXES DONE |
 | 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | ALL RESOLVED |
-| 3 | 2026-04-28 | — | 0 | 0 | 0 | SCIENCE ITEMS I+J DONE, #15/#16 CAVEATED, TIER 4 POLISHED |
+| 3 | 2026-04-28 | 5 | 0 | 5/5 DONE | 0 | ALL RESOLVED — PAPERS SUBMISSION-READY |
 
 ---
 
@@ -326,6 +326,47 @@
 | C | DESI held-out 50/50 validation | RunPod GPU | BLOCKED |
 
 All text-editable items across both rounds are COMPLETE. Papers are submission-ready pending GPU science items above (which are enhancements, not blockers for initial arXiv submission).
+
+---
+
+## ROUND 3 FINAL REVIEW (2026-04-28)
+
+### Findings (all resolved)
+
+**Paper 1:**
+- [x] MAJOR: SPHEREx "5.5σ" in Table 1 without systematic budget → changed to "3-5σ realistic" with footnote
+- [x] MAJOR: Discrimination table σ(f_NL)~0.8-2 unexplained → footnote added (Heinrich baseline to conservative)
+
+**Paper 2:**
+- No critical or major issues. **SUBMISSION-READY.**
+
+**Paper 3:**
+- [x] MAJOR: Table 1 bottom row shows 319,443 not 378,480 → added Path-C summary row (378,480)
+- [x] MAJOR: ACT DR6 unjustified inclusion → retention justification paragraph added (0.05% of total)
+- [x] MAJOR: Companion paper specific numbers → softened to ranges with "(in preparation)" labels
+
+**Paper 4:**
+- [x] MAJOR: "Definitive null" too strong given 9.5σ → softened to "no parity violation above ~0.3% level"
+
+---
+
+## REVIEW COMPLETE — PAPERS READY FOR SUBMISSION
+
+**Date:** 2026-04-28
+**Rounds completed:** 3
+**Total findings across all rounds:** 107+ (80+ Round 1, 22 Round 2, 5 Round 3)
+**Total resolved:** ALL text-editable items (107+)
+**Remaining:** 4 GPU-blocked science items (enhancements for journal peer review, not arXiv blockers)
+
+All 4 papers compile with 0 undefined references.
+All 4 PDFs are in public/papers/ and live on the website.
+
+| Paper | Pages | Status | Caveats |
+|-------|-------|--------|---------|
+| Paper 1 (Spin-Torsion) | 28pp | READY | Bayes factor + NaMaster honestly caveated |
+| Paper 2 (f_NL Forecast) | ~15pp | READY | Clean — no remaining issues |
+| Paper 3 (Anomaly Catalog) | 31pp | READY | ACT cross-transfer only, companion results preliminary |
+| Paper 4 (Chirality) | 13pp | READY | 9.5σ residual honestly disclosed as unexplained |
 
 ---
 
