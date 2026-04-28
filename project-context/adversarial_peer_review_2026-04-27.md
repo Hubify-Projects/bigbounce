@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** ALL 96 ITEMS RESOLVED (0 unchecked) — PAPERS SUBMISSION-READY
+**Status:** ROUND 4 IN PROGRESS — 7 specialist agents returned 2026-04-28
 
 ---
 
@@ -13,6 +13,7 @@
 | 1 | 2026-04-27 | 80+ | 13/13 DONE | 33/33 DONE | 20+ DONE | ALL TEXT FIXES DONE |
 | 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | ALL RESOLVED |
 | 3 | 2026-04-28 | 5 | 0 | 5/5 DONE | 0 | ALL RESOLVED — PAPERS SUBMISSION-READY |
+| 4 | 2026-04-28 | 80+ | 11 | 24 | 30+ | 7 SPECIALIST AGENTS — PAPERS + WEBSITE |
 
 ---
 
@@ -567,3 +568,200 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | 15 | MINOR | ALP terminology variation |
 | 16 | MINOR | BigAE naming |
 | 17 | OK | Author/affiliation consistent |
+
+---
+
+## ROUND 4: SPECIALIST ADVERSARIAL REVIEW (2026-04-28)
+
+**Method:** 7 parallel Opus agents — 5 specialist paper referees + 2 website auditors
+- Referee 1: Theoretical physicist (Paper 1)
+- Referee 2: Statistician/forecaster (Paper 2)
+- Referee 3: ML/observational astronomer (Paper 3)
+- Referee 4: Galaxy morphology expert (Paper 4)
+- Referee 5: Cross-paper consistency checker
+- Referee 6: Website content accuracy (post-fix verification)
+- Referee 7: Website technical audit (broken links, HTML, assets)
+
+### PAPER 1 — Theoretical Physics Review
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P1-C1 | CRITICAL | ECH action (Eq.1) mixes first/second order formalism — torsion in action while saying "we don't vary w.r.t. torsion" | TEXT — restructure presentation | [ ] |
+| P1-C2 | CRITICAL | Parity-odd action (Eq.5/6) has dimensional inconsistency (mass dim +1 not +4) — entire DE parameterization rests on "scaling ansatz" | TEXT — either derive or remove DE parameterization | [ ] |
+| P1-C3 | CRITICAL | "Perturbation-transparency result" is trivially known since Hehl 1976 — 5-step "proof" restates S=0⇒T=0 | TEXT — downgrade from "central result" to "observation for completeness" | [ ] |
+| P1-M1 | MAJOR | Savage-Dickey Bayes factor model labeled "Spin-Torsion" but tests ΛCDM+ΔNeff with stock CAMB | TEXT — relabel model, heavy caveat in executive summary | [ ] |
+| P1-M2 | MAJOR | ALP birefringence β≈0.27° has nothing to do with ECH — spectator ALP gives same result in any theory | TEXT — move to appendix, remove from abstract | [ ] |
+| P1-M3 | MAJOR | NaMaster analysis doesn't meet publication standards (50 MC, non-standard mask, 14% σ uncertainty) | TEXT caveat already added; COMPUTE needs GPU for 500+ MC | [ ] BLOCKED |
+| P1-M4 | MAJOR | SPHEREx "4-6σ" in abstract vs "3-5σ realistic" in Table 1 footnote — internal contradiction | TEXT — unify to 3-5σ realistic in abstract | [ ] |
+| P1-M5 | MAJOR | 14 barriers mix novel results with tautologies/known results (barriers 5,6,7,9,13 are generic) | TEXT — distinguish novel vs known vs philosophical | [ ] |
+| P1-M6 | MAJOR | Poplawski2019 bib key is actually a 2010 paper | TEXT — rekey to Poplawski2010 | [ ] |
+| P1-M7 | MAJOR | Paper scope unclear — 3 different papers merged (DE framework + no-go + matter bounce) | TEXT — restructure emphasis | [ ] |
+| P1-M8 | MAJOR | Structural tension (DE vs bounce f_NL mutually exclusive) should be in abstract | TEXT — add to abstract | [ ] |
+| P1-m1 | MINOR | 4 different "combined" β values used without clear guidance on headline | TEXT | [ ] |
+| P1-m2 | MINOR | NANOGrav synthetic-data Bayes factors meaningless — remove or caveat more | TEXT | [ ] |
+| P1-m3 | MINOR | Hehl 1976 citation slightly misleading for Holst sector | TEXT | [ ] |
+| P1-m4 | MINOR | One-loop RG equation (Eq.8) scheme-dependent — no predictive content | TEXT | [ ] |
+| P1-m5 | MINOR | Claims table misclassifies some items (standard formulas listed as "Derived") | TEXT | [ ] |
+| P1-m6 | MINOR | Acknowledgment thanks Shamir while refuting his results | TEXT | [ ] |
+| P1-m7 | MINOR | HUBIFY preprint number + company email raises credibility questions | NOTE | [ ] |
+| P1-m8 | MINOR | Supplementary material "available upon request" — referee can't review it | TEXT — post as arXiv companion | [ ] |
+| P1-m9 | MINOR | Paper at 24 pages — could be 12 pages if cut aggressively | NOTE | [ ] |
+| P1-m10 | MINOR | 3 "Forthcoming" companion papers not yet posted | BLOCKED until arXiv submission | [ ] |
+
+### PAPER 2 — Statistics/Forecasting Review
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P2-C1 | CRITICAL | No original Fisher matrix written down — paper recasts others' forecasts | TEXT — either construct Fisher or relabel as "sensitivity recast" | [ ] |
+| P2-C2 | CRITICAL | Template overlap r weighting is signal-only (S_local²) — biased toward squeezed configs | COMPUTE — needs realistic noise model | [ ] BLOCKED |
+| P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [ ] |
+| P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [ ] |
+| P2-M1 | MAJOR | n_s = 8ε-11 presented as exact — needs linearization caveat + exact expression | TEXT | [ ] |
+| P2-M2 | MAJOR | Null-space scan radius=50 unmotivated — r_cos stability is artifact of scan volume | TEXT — add justification or scan larger | [ ] |
+| P2-M3 | MAJOR | 200 injection-recovery realizations underdescribed (no noise model, estimator, mask) | TEXT — add specifications | [ ] |
+| P2-M4 | MAJOR | GR degradation σ_GR parameterized not computed — should use published factors | TEXT — cite Jolicoeur et al. factors | [ ] |
+| P2-M5 | MAJOR | Shot noise completely absent from forecast | TEXT — discuss or compute | [ ] |
+| P2-M6 | MAJOR | "600,000 MC realizations" inflates perceived rigor — entire exercise has closed-form answer | TEXT — tone down | [ ] |
+| P2-M7 | MAJOR | 23,098 triangle configurations — no convergence test, uniform grid undersamples squeezed | TEXT/COMPUTE | [ ] |
+| P2-M8 | MAJOR | MegaMapper 3-7σ too wide — instrument doesn't exist | TEXT — present as speculative motivation | [ ] |
+| P2-m1 | MINOR | "300×" conflates value and absolute value | TEXT | [ ] |
+| P2-m2 | MINOR | "strongly constrained" overloaded (prediction vs experimental) | TEXT | [ ] |
+| P2-m3 | MINOR | Jolicoeur:2025 eprint 2511.09466 — verify exists | CHECK | [ ] |
+| P2-m4 | MINOR | Convention appendix has logical gap (factor-of-4 doesn't match) | TEXT | [ ] |
+| P2-m5 | MINOR | No trispectrum/g_NL discussion | TEXT | [ ] |
+| P2-m6 | MINOR | "no observational tensions" too strong — absence of data ≠ model success | TEXT | [ ] |
+| P2-m7 | MINOR | Data availability pins v2.1.0 but paper is v1.7.0 | TEXT | [ ] |
+| P2-m8 | MINOR | Photo-z 5% degradation at 10% outlier fraction — needs reference | TEXT | [ ] |
+
+### PAPER 3 — ML/Observational Review
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [ ] |
+| P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [ ] |
+| P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [ ] BLOCKED |
+| P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [ ] |
+| P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [ ] |
+| P3-M1 | MAJOR | UMAP hyperparameters differ DESI/SDSS with backwards justification | TEXT — stability analysis needed | [ ] BLOCKED |
+| P3-M2 | MAJOR | f_NL α=0.15 uncalibrated — 6.1% could be 2-20% | TEXT — add uncertainty propagation | [ ] |
+| P3-M3 | MAJOR | 5-arcsec dedup radius not justified from astrometric error budgets | TEXT | [ ] |
+| P3-M4 | MAJOR | ACT DR6 should be dropped or formally quarantined | TEXT | [ ] |
+| P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [ ] |
+| P3-M6 | MAJOR | eROSITA top-298 cap arbitrary — no score distribution shown | TEXT + needs figure | [ ] |
+| P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [ ] |
+| P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [ ] |
+| P3-m2 | MINOR | "0% artifact rate in top 200" — no criteria defined, not blinded | TEXT | [ ] |
+| P3-m3 | MINOR | SNR non-correlation claim has no quantitative measure | TEXT | [ ] |
+| P3-m4 | MINOR | SDSS 52.7% "Uncategorized" not explained | TEXT | [ ] |
+| P3-m5 | MINOR | NANOGrav Section 5.1 out of scope for catalog paper | TEXT — trim or remove | [ ] |
+| P3-m6 | MINOR | Dropout rates p=0.15/0.10 not justified | TEXT | [ ] |
+| P3-m7 | MINOR | No learning rate schedule for spectroscopic models | TEXT | [ ] |
+| P3-m8 | MINOR | DESI anchor model validation loss not reported | TEXT | [ ] |
+| P3-m9 | MINOR | False match rate uses global SIMBAD density, not position-dependent | TEXT | [ ] |
+| P3-m10 | MINOR | \BigAE{} macro usage inconsistent | TEXT | [ ] |
+| P3-m11 | MINOR | NEOWISE ecliptic polar cap geometry needs verification | TEXT | [ ] |
+| P3-m12 | MINOR | No mention of DESI fiber assignment systematics | TEXT | [ ] |
+| P3-m13 | MINOR | HuggingFace deposit private pending acceptance — check journal policy | NOTE | [ ] |
+| P3-m14 | MINOR | Reference formatting inconsistent | TEXT | [ ] |
+| P3-m15 | MINOR | High-z QSO candidates need RA/Dec, not just TARGETID | TEXT | [ ] |
+
+### PAPER 4 — Galaxy Morphology Review
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P4-C1 | CRITICAL | 93.7% accuracy contaminated by circular labeling — GZ1-only accuracy not reported in paper | TEXT — report GZ1-only accuracy | [ ] |
+| P4-C2 | CRITICAL | Model is NOT equivariant — TTA post-averaging, not architectural. Paper misleads. | TEXT — clarify TTA vs architectural equivariance | [ ] |
+| P4-C3 | CRITICAL | 9.5σ residual mechanism unidentified — undermines 0.2% sensitivity claim | TEXT + COMPUTE (diagnostic: P_NS^orig - P_NS^flip) | [ ] |
+| P4-M1 | MAJOR | Why only 2-fold TTA? D4 group (8-fold) is natural for chirality | TEXT — justify or note as limitation | [ ] |
+| P4-M2 | MAJOR | Bias test thresholds extremely lax (10% threshold for 0.2% sensitivity) | TEXT — add stringent tier or stop claiming 8/8 validates | [ ] |
+| P4-M3 | MAJOR | Missing bias dimensions: magnitude, color, surface brightness, PSF | COMPUTE — needs data | [ ] BLOCKED |
+| P4-M4 | MAJOR | Redshift analysis uses raw Catalog A, not equivariant Catalog C | COMPUTE — needs data | [ ] BLOCKED |
+| P4-M5 | MAJOR | Size comparison overstated — should compare spiral subsample (3.32M), not total (8.47M) | TEXT | [ ] |
+| P4-M6 | MAJOR | Angular power spectrum lacks MASTER deconvolution — 2.75σ ℓ=1 unresolved | COMPUTE — needs healpy/NaMaster | [ ] BLOCKED |
+| P4-m1 | MINOR | Bias suite code (10 tests) vs paper (8 tests) discrepancy | TEXT | [ ] |
+| P4-m2 | MINOR | Platt calibration fit against CE-ResNet labels, not ground truth | TEXT | [ ] |
+| P4-m3 | MINOR | MC null count 1000 — low for 2.75σ claim | TEXT + COMPUTE | [ ] |
+| P4-m4 | MINOR | Edge-on contamination described but not measured | COMPUTE — needs data | [ ] BLOCKED |
+| P4-m5 | MINOR | Training set 26K for 8.47M inference — coverage not discussed | TEXT | [ ] |
+| P4-m6 | MINOR | "0.3% level" conflates monopole and dipole | TEXT | [ ] |
+| P4-m7 | MINOR | Missing confusion matrix in paper | TEXT — add table | [ ] |
+| P4-m8 | MINOR | Bonferroni conservative but no proper correction provided | TEXT | [ ] |
+| P4-m9 | MINOR | Self-citation to website, not peer-reviewed paper | TEXT | [ ] |
+| P4-m10 | MINOR | "orientation-dependent bias" — only horizontal flip eliminated, not rotations | TEXT | [ ] |
+
+### CROSS-PAPER CONSISTENCY
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| XP-C1 | CRITICAL | Paper 1 forward-references NANOGrav γ=3.20±0.42 — Paper 3 doesn't contain it | TEXT — add to Paper 3 or change Paper 1's wording | [ ] |
+| XP-C2 | CRITICAL | SPHEREx: Paper 1 abstract "4-6σ" vs Table 1 footnote "3-5σ realistic" | TEXT — unify | [ ] |
+| XP-M1 | MAJOR | SPHEREx ranges inconsistent across program (4-6σ, 3-5σ, 5-5.5σ in different papers) | TEXT — adopt 3-5σ realistic everywhere | [ ] |
+| XP-M2 | MAJOR | BibTeX keys differ: Golden:2026forecast (P1,P4) vs Golden:2026fnl (P3) | TEXT — standardize | [ ] |
+| XP-M3 | MAJOR | Wands:2010 cited for f_NL in Paper 3 but not Papers 1/2 — attribution asymmetry | TEXT | [ ] |
+| XP-M4 | MAJOR | 319,443 vs 378,480 coexist in Paper 3 without bridging sentence | TEXT | [ ] |
+| XP-m1 | MINOR | Dates: P1/P2 say Apr 27 but P3/P4 say Apr 24 | TEXT | [ ] |
+| XP-m2 | MINOR | "In preparation" (P3) vs "companion paper" (P1/P2/P4) | TEXT | [ ] |
+| XP-m3 | MINOR | \sigfnl macro (P3) vs inline \sigma(\fnl) (P2) | NOTE | [ ] |
+| XP-m4 | MINOR | Paper 1 quotes only benchmark CW 0.5012, not full-catalog 0.4974 | TEXT | [ ] |
+| XP-m5 | MINOR | Paper 3 has no version tag in \date{} | TEXT | [ ] |
+
+### WEBSITE — Remaining Content Issues
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| W-1 | MAJOR | paper.html Paper 2 section: still "~5.0-5.5σ" without 3-5σ realistic | TEXT | [ ] |
+| W-2 | MAJOR | explained.html: still uses 3.6σ for birefringence (5 instances) | TEXT | [ ] |
+| W-3 | MAJOR | projects.html: "4-6σ optimistic" doesn't match any canonical number | TEXT | [ ] |
+| W-4 | MAJOR | articles/matter-bounce-blueprint.html: 10 instances of "parameter-free" | TEXT | [ ] |
+| W-5 | MAJOR | infrastructure.html: "0.5012" without benchmark qualifier | TEXT | [ ] |
+| W-6 | MAJOR | status.html, contributions.html, glossary.html, timeline.html: 3.6σ as primary | TEXT | [ ] |
+| W-7 | MINOR | research/project_master_dossier/: stale 5.0-5.5σ and 3.6σ | TEXT | [ ] |
+| W-8 | MINOR | Various article pages: stale parameter-free, SPHEREx figures | TEXT | [ ] |
+
+### WEBSITE — Technical Issues
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| WT-1 | BROKEN | Missing image: articles/images/beyond_big_bounce_infographic.png | Need image file | [ ] BLOCKED |
+| WT-2 | BROKEN | Double navigation on methodology.html + mathematics.html | TEXT — remove hardcoded nav | [ ] |
+| WT-3 | BROKEN | Broken anchor links: index.html → paper.html#paper1-4 (no id attributes) | TEXT — add id attrs | [ ] |
+| WT-4 | BROKEN | Empty src="" in figures.html lightbox modal (line 930) | TEXT | [ ] |
+| WT-5 | WARNING | PDFs 1, 2, 4 likely missing figures (< 1MB each) | COMPILE — need Docker + figures in same dir | [ ] BLOCKED |
+| WT-6 | WARNING | Stale duplicate: public/papers/anomaly_catalog_paper.pdf (6.2MB old version) | DELETE | [ ] |
+| WT-7 | WARNING | 10 pages missing nav.js (animations, bigbounce-md, galaxy-zoo, interactive-data, versions, etc.) | TEXT | [ ] |
+| WT-8 | WARNING | 15 pages missing meta description/OG tags | TEXT | [ ] |
+
+### BLOCKED ITEMS SUMMARY
+
+| Item | Blocker | What's Needed |
+|------|---------|---------------|
+| P1-M3 | GPU | NaMaster 500+ MC realizations |
+| P2-C2 | GPU/COMPUTE | Realistic noise-weighted template overlap |
+| P3-C3 | GPU | DESI 50/50 held-out validation |
+| P3-M1 | GPU/LOCAL | UMAP multi-seed stability |
+| P4-M3 | DATA | Magnitude/color/PSF-dependent bias tests |
+| P4-M4 | DATA | Equivariant Catalog C redshift analysis |
+| P4-M6 | LOCAL (healpy) | NaMaster/MASTER angular power spectrum deconvolution |
+| WT-1 | ASSET | Missing infographic image |
+| WT-5 | COMPILE | PDFs need figures in same directory as .tex |
+
+### LOCALLY FIXABLE — PRIORITY ORDER FOR NEXT FIRE
+
+**Tier A (CRITICAL text fixes):**
+1. P1-C3: Perturbation-transparency "theorem" → "observation"
+2. P1-M4 + XP-C2: SPHEREx 4-6σ → 3-5σ in Paper 1 abstract
+3. P1-M1: Relabel Bayes factor model to ΛCDM+ΔNeff
+4. XP-C1: Add γ=3.20±0.42 to Paper 3 or soften Paper 1's reference
+5. P2-C4: Propagate factor-of-2 convention through forecast (both f_NL values)
+6. P2-C5: Use σ_theory≥1.0 as Bayesian baseline
+7. P3-C1: Restructure Table 1 with Path-C primary
+8. P3-C4: Flag LAMOST injection-recovery failure in headline
+9. P3-C5: Label Gaia 41% stability as unreliable
+10. P4-C1: Report GZ1-only accuracy in paper
+11. P4-C2: Clarify TTA vs architectural equivariance
+
+**Tier B (MAJOR text fixes):**
+12-25. Various text clarifications, caveats, restructuring
+
+**Tier C (Website residuals):**
+26-35. paper.html SPHEREx, explained.html birefringence, articles cleanup, anchor links, tech fixes
