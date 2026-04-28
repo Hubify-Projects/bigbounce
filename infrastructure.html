@@ -95,9 +95,9 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
 <div class="stack-grid">
   <div class="infra-card">
     <h4>Input: Public Archives</h4>
-    <p><strong>DESI DR1</strong> &mdash; 17.65M spectra, healpix-organized FITS, <code>data.desi.lbl.gov</code></p>
-    <p><strong>SDSS DR18</strong> &mdash; 5M spectra (API currently down)</p>
-    <p><strong>LAMOST DR10</strong> &mdash; 20M spectra</p>
+    <p><strong>DESI DR1</strong> &mdash; 22.5M spectra, healpix-organized FITS, <code>data.desi.lbl.gov</code></p>
+    <p><strong>SDSS DR18</strong> &mdash; 2.3M spectra (API currently down)</p>
+    <p><strong>LAMOST DR10</strong> &mdash; 11.4M spectra</p>
     <p><strong>Planck PR4</strong> &mdash; Full-sky CMB maps, 9 frequencies</p>
     <p><strong>Legacy Survey</strong> &mdash; Galaxy images for 195K anomaly cutouts</p>
     <p><strong>Smith42/galaxies</strong> &mdash; 8.47M galaxy images for chirality</p>
@@ -141,7 +141,7 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
     <p><strong>Architecture:</strong> 496 &rarr; 512 &rarr; 256 &rarr; 128 &rarr; 128 (latent) &rarr; 128 &rarr; 256 &rarr; 512 &rarr; 496</p>
     <p><strong>Parameters:</strong> ~660K</p>
     <p><strong>Training:</strong> 47K DESI spectra, MSE loss, dropout 0.1-0.15</p>
-    <p><strong>Inference:</strong> 896 spectra/sec (GPU), ~24h for 17.65M</p>
+    <p><strong>Inference:</strong> 896 spectra/sec (GPU), ~7h for 22.5M</p>
     <p><strong>Anomaly metric:</strong> Reconstruction error (MSE), per-band (B/R/Z)</p>
     <p><strong>HuggingFace:</strong> <code>bamfai/desi-spectral-anomaly-detector</code></p>
   </div>
@@ -237,7 +237,7 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
 <h2>Current Pipeline Status</h2>
 <table style="width:100%; font-size:14px; border-collapse:collapse;">
   <tr style="background:var(--bg-subtle);"><th style="text-align:left;padding:8px;">Pipeline</th><th style="text-align:left;padding:8px;">Status</th><th style="text-align:left;padding:8px;">Output</th></tr>
-  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P1: DESI DR1 Anomaly Scan</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">195,829 anomalies from 17.65M spectra</td></tr>
+  <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P1: DESI DR1 Anomaly Scan</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">195,829 anomalies from 22.5M spectra</td></tr>
   <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P1+: Enhanced 18M Catalog</td><td style="padding:8px;">RUNNING (~88%)</td><td style="padding:8px;">173-column catalog, 29 batches written</td></tr>
   <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">P2: Galaxy Chirality</td><td style="padding:8px;">COMPLETE</td><td style="padding:8px;">8,474,531 galaxies classified</td></tr>
   <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px;">PA: CMB Patch Anomalies</td><td style="padding:8px;">PROTOTYPE</td><td style="padding:8px;">42 anomalous Planck patches</td></tr>

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline B: DESI DR1 Spectral Anomaly Detection</p>
   <h1>Methodology</h1>
-  <p class="subtitle">How we built a spectral autoencoder, trained it on 47K DESI spectra, deployed it on an H200 GPU, and processed 18 million spectra to discover 195,829 previously uncharacterized objects.</p>
+  <p class="subtitle">How we built a spectral autoencoder, trained it on 47K DESI spectra, deployed it on an H200 GPU, and processed 22.5 million spectra to discover 195,829 previously uncharacterized objects.</p>
 </div>
 
 <!-- ═══════════ PROCESS FLOW ═══════════ -->
@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <h2>End-to-End Pipeline</h2>
   <div class="mermaid">
 graph TD
-    A[DESI DR1 Archive<br/>18.7M spectra] --> B[Download coadd FITS<br/>27,488 healpix files]
+    A[DESI DR1 Archive<br/>22.5M spectra] --> B[Download coadd FITS<br/>27,488 healpix files]
     B --> C[Spectral Preprocessing<br/>Downsample 16x → 496 bins]
     C --> D[Per-spectrum normalization<br/>Median absolute scaling]
     D --> E[BigAE Forward Pass<br/>Batch size 8,192 on H200 GPU]
     E --> F{Reconstruction Error<br/>Score > 5.0?}
     F -- Yes --> G[Anomaly Catalog<br/>195,829 objects]
-    F -- No --> H[Normal spectrum<br/>~17.5M discarded]
+    F -- No --> H[Normal spectrum<br/>~22.3M discarded]
     G --> I[Band Decomposition<br/>rB + rR + rZ scores]
     I --> J[SIMBAD Cross-Match<br/>0/100 matches]
     J --> K[AI Classification<br/>6 categories]
@@ -174,7 +174,7 @@ graph LR
         <tr><td>Framework</td><td>PyTorch 2.8.0 + CUDA 12.8</td></tr>
         <tr><td>Batch size</td><td>8,192 spectra per GPU batch</td></tr>
         <tr><td>Processing rate</td><td>896 spectra/second sustained</td></tr>
-        <tr><td>Total runtime</td><td>~5.5 hours for 18.7M spectra</td></tr>
+        <tr><td>Total runtime</td><td>~7 hours for 22.5M spectra</td></tr>
         <tr><td>Bottleneck</td><td>Downloading FITS files from DESI archive (not GPU compute)</td></tr>
       </tbody>
     </table>
