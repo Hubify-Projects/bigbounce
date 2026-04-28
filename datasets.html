@@ -83,7 +83,7 @@
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <div class="hero">
   <h1>Data &amp; Datasets</h1>
-  <p class="subtitle">All observational data, MCMC results, and generated datasets from the two-paper spin-torsion cosmology research program, organized by which paper each dataset supports.</p>
+  <p class="subtitle">All observational data, MCMC results, and generated datasets from the four-paper spin-torsion cosmology research program, organized by which paper each dataset supports.</p>
   <div class="meta" style="margin-top: 16px;">
     <a href="data-explorer.html" class="btn btn-primary">Open Data Explorer</a>
     <a href="https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility" class="btn btn-secondary">GitHub Repo</a>
@@ -99,9 +99,9 @@
 
 <!-- How data supports the papers -->
 <div class="card" style="margin-bottom: 32px; padding: 24px 28px; border-left: 4px solid var(--text); background: var(--bg-subtle);">
-  <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px;"><strong>How this data supports the two papers.</strong> Every claim in the research program is backed by reproducible data. The datasets below map onto the paper arc as follows:</p>
+  <p style="font-size: 14px; line-height: 1.7; margin: 0 0 12px;"><strong>How this data supports the four papers.</strong> Every claim in the research program is backed by reproducible data. The datasets below map onto the paper arc as follows:</p>
   <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">
-    <strong>Paper 1</strong> (Framework + Reckoning): 236,622 MCMC posterior samples across 4 dataset combinations (Planck+BAO, Planck+BAO+SN, Full Tension, Planck Only). Cobaya v3.6.1 + CAMB v1.6.5. Key finding: &Delta;N<sub>eff</sub> &asymp; 0. Also: 14 structural barriers documented in the branch results matrix, each closing a distinct mechanism class. The bounce evidence audit (16 claims) tracks the evidence hierarchy. ALP birefringence measurements from Planck HFI + ACT DR6 and MCMC posteriors (9,720 samples, 3 model configurations) are now included in &sect;11.5.<br>
+    <strong>Paper 1</strong> (Framework + Reckoning): 236,622 MCMC posterior samples across 2 frozen dataset combinations shown here (Planck+BAO, Planck+BAO+SN); the full research program total is 424,181 across 3 dataset combinations including Full Tension. Cobaya v3.6.1 + CAMB v1.6.5. Key finding: &Delta;N<sub>eff</sub> &asymp; 0. Also: 14 structural barriers documented in the branch results matrix, each closing a distinct mechanism class. The bounce evidence audit (16 claims) tracks the evidence hierarchy. ALP birefringence measurements from Planck HFI + ACT DR6 and MCMC posteriors (9,720 samples, 3 model configurations) are now included in &sect;11.5.<br>
     <strong>Paper 2</strong> (The Decisive Test): f<sub>NL</sub> derivation verification (8 steps), Bayesian discrimination results (600K+ Monte Carlo), SPHEREx/MegaMapper forecast parameters.<br>
     <strong>Paper 4</strong> (Galaxy Chirality at Scale): 8,474,531 galaxies classified (CW/CCW/NOT_SPIRAL) from DESI Legacy Survey DR8. Bias-hardened ViT-Small, 93.7% accuracy, equivariant CW/(CW+CCW) = 0.4974. Null result; Shamir's 3% claims refuted. Published on <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">HuggingFace</a>.
   </div>
@@ -117,8 +117,8 @@
   <div class="grid-4" style="margin: 20px 0;">
     <div class="card stat">
       <div class="stat-value">236k+</div>
-      <div class="stat-label">Total samples</div>
-      <div class="stat-sub">across 4 datasets</div>
+      <div class="stat-label">Samples (2 frozen sets)</div>
+      <div class="stat-sub">424,181 total across 3 combinations</div>
     </div>
     <div class="card stat">
       <div class="stat-value">64</div>
@@ -282,10 +282,16 @@
           <td>2.9&sigma;</td>
         </tr>
         <tr>
-          <td>Combined</td>
+          <td>Combined (inv-var)</td>
           <td>0.242</td>
           <td>0.061</td>
           <td>3.9&sigma;</td>
+        </tr>
+        <tr>
+          <td>Combined (Eskilt+ joint)</td>
+          <td>0.342</td>
+          <td>0.094</td>
+          <td>3.6&sigma;</td>
         </tr>
         <tr style="background: var(--bg-subtle); font-weight: 600;">
           <td><strong>ALP Prediction (this work)</strong></td>
@@ -295,7 +301,7 @@
         </tr>
       </tbody>
     </table>
-    <p class="data-source">Sources: Minami &amp; Komatsu (2020), Eskilt (2022), ACT Collaboration (2025).</p>
+    <p class="data-source">Sources: Minami &amp; Komatsu (2020), Eskilt (2022), ACT Collaboration (2025). Two combination methods shown: inverse-variance weighting (0.242&pm;0.061, 3.9&sigma;) and the Eskilt et al. joint likelihood analysis (0.342&pm;0.094, 3.6&sigma;). Both are consistent with the ALP prediction &beta;=0.27&deg;.</p>
   </div>
 
   <div class="chart-wrapper" style="margin-top: 20px;">
@@ -758,7 +764,8 @@ if (brCtx) {
     { label: 'Planck (M&K 2020)', value: 0.35, error: 0.14, color: '#6366f1' },
     { label: 'NPIPE (Eskilt 2022)', value: 0.30, error: 0.11, color: '#8b5cf6' },
     { label: 'ACT DR6 (2025)', value: 0.215, error: 0.074, color: '#a855f7' },
-    { label: 'Combined', value: 0.242, error: 0.061, color: '#2563eb' },
+    { label: 'Combined (inv-var)', value: 0.242, error: 0.061, color: '#2563eb' },
+    { label: 'Combined (Eskilt+)', value: 0.342, error: 0.094, color: '#1d4ed8' },
   ];
 
   new Chart(brCtx, {

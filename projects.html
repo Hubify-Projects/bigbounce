@@ -45,9 +45,9 @@
   <div class="project-stat"><div class="num">6</div><div class="label">Projects</div></div>
   <div class="project-stat"><div class="num">4</div><div class="label">Papers</div></div>
   <div class="project-stat"><div class="num">64</div><div class="label">Figures</div></div>
-  <div class="project-stat"><div class="num">31M+</div><div class="label">Objects Scored</div></div>
+  <div class="project-stat"><div class="num">37.3M</div><div class="label">Objects Scored</div></div>
   <div class="project-stat"><div class="num">$510</div><div class="label">Total Cost</div></div>
-  <div class="project-stat"><div class="num">1,127</div><div class="label">Discoveries</div></div>
+  <div class="project-stat"><div class="num">378K</div><div class="label">Unique Objects</div></div>
 </div>
 
 <!-- DESI DR1 -->
@@ -58,7 +58,7 @@
     <span class="cost-tag">~$200</span>
   </div>
   <h3>DESI DR1 Spectral Anomaly Catalog</h3>
-  <p>22,504,897 DESI DR1 spectra scored with 173-column enhanced catalog. 2,145 SNR-filtered anomalies, 1,127 completely uncataloged. 9.5% &sigma;(f<sub>NL</sub>) improvement via latent-space multi-tracer.</p>
+  <p>22,504,897 DESI DR1 spectra scored with 173-column enhanced catalog. 2,145 SNR-filtered anomalies, 1,127 completely uncataloged. 6.1% &sigma;(f<sub>NL</sub>) improvement via anomaly-optimized multi-tracer (16.4% with DESI+SDSS combined).</p>
   <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> DESI is a <em>native-training</em> survey in the Paper 3 Path-C rebuild (scored by the DESI-trained BigAE, not cross-transfer). The catalog contents on this card stand unchanged post-rebuild and are preserved as the Paper 3 &sect;7 before-after baseline. <strong>SDSS+LAMOST native rescores LANDED fire #164</strong> (criteria #1+#2 CLOSED: SDSS 1,925,279 scored ~6500&times; reduction, LAMOST 21.4&times; reduction). DESI k-fold (P3-PATHC-C4) CLOSED fire #189 (2026-04-22): live SPARCL retrieval executed (47,000 DESI DR1 spectra in 19.8 min, deterministic target-ID checksum 1812395110), 5-fold BigAE trained + scored on A100, Jaccard stability gate PASS (mean pairwise &Jbar; = 0.862 vs required &ge; 0.70; consensus &ge;3/5 = 464/546 = 85.0 % of union). DESI anomaly population robust against training-sample conditioning; Paper 3 Table 1 DESI headline (195,829 / 0.87 %) stands unchanged. Paper 3 recompiled (28 MB / 33 pp / 0 undef refs). Path-C overall: 12/12 CLOSED (100 %). See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
   <div class="project-stats">
     <div class="project-stat"><div class="num">22.5M</div><div class="label">Spectra</div></div>
@@ -87,7 +87,7 @@
     <div class="project-stat"><div class="num">8.47M</div><div class="label">Galaxies</div></div>
     <div class="project-stat"><div class="num">93.7%</div><div class="label">Accuracy</div></div>
     <div class="project-stat"><div class="num">8/8</div><div class="label">Bias Tests</div></div>
-    <div class="project-stat"><div class="num">0.5012</div><div class="label">CW Fraction</div></div>
+    <div class="project-stat"><div class="num">0.4974</div><div class="label">CW Fraction</div></div>
   </div>
   <div class="meta-row" style="margin-top:12px;">
     <a href="galaxy-explorer.html" class="btn btn-primary" style="font-size:12px;">Explorer</a>
@@ -104,12 +104,12 @@
     <span class="cost-tag">~$120</span>
   </div>
   <h3>Bounce Cosmology Framework &amp; f<sub>NL</sub> Forecast</h3>
-  <p>14 structural barriers, perturbation-transparency theorem, f<sub>NL</sub> = &minus;35/8 prediction testable by SPHEREx at 4&ndash;6&sigma;. 424K MCMC samples. Quintom-B w-crossing at 98%.</p>
+  <p>14 structural barriers, perturbation-transparency theorem, f<sub>NL</sub> = &minus;35/8 prediction testable by SPHEREx at 3&ndash;5&sigma; realistic (4&ndash;6&sigma; optimistic). 424K MCMC samples. ALP birefringence &beta; = 0.27&deg; consistent with 3.9&sigma; observed signal.</p>
   <div class="project-stats">
     <div class="project-stat"><div class="num">14</div><div class="label">Barriers</div></div>
     <div class="project-stat"><div class="num">-35/8</div><div class="label">f<sub>NL</sub></div></div>
     <div class="project-stat"><div class="num">424K</div><div class="label">MCMC Samples</div></div>
-    <div class="project-stat"><div class="num">4-6&sigma;</div><div class="label">SPHEREx</div></div>
+    <div class="project-stat"><div class="num">3-5&sigma;</div><div class="label">SPHEREx</div></div>
   </div>
   <div class="meta-row" style="margin-top:12px;">
     <a href="arxiv/main.pdf" class="btn btn-primary" style="font-size:12px;" target="_blank">Paper 1 PDF</a>
@@ -120,8 +120,8 @@
 <!-- SDSS DR18 -->
 <div class="project-card" style="border-left-color:#f59e0b;">
   <div class="meta-row">
-    <span class="status-badge status-running">Native retrain + rescore on A100</span>
-    <span class="badge badge-accent">Path-C &middot; Paper 3</span>
+    <span class="status-badge status-complete">Analysis Complete</span>
+    <span class="badge badge-accent">Path-C 12/12 CLOSED &middot; Paper 3</span>
     <span class="cost-tag">~$60 est.</span>
   </div>
   <h3>SDSS DR18 Native BigAE Rescore</h3>
@@ -136,23 +136,37 @@
 </div>
 
 <!-- eROSITA -->
-<div class="project-card" style="border-left-color:#6b7280;">
+<div class="project-card" style="border-left-color:#22c55e;">
   <div class="meta-row">
-    <span class="status-badge status-planned">Planned</span>
-    <span class="cost-tag">~$50 est.</span>
+    <span class="status-badge status-complete">Analysis Complete</span>
+    <span class="badge badge-accent">Paper 3</span>
+    <span class="cost-tag">~$50</span>
   </div>
   <h3>eROSITA All-Sky X-ray Anomaly Scan</h3>
-  <p>First autoencoder anomaly detection on X-ray data. 710K sources from the first all-sky X-ray survey since the 1990s. Completely different wavelength regime &mdash; highest novelty potential.</p>
+  <p>First autoencoder anomaly detection on X-ray data. 930K sources scored, 298 BigAE top-cut anomalies (0.03%), 203 novel X-ray sources not in SIMBAD (68% novelty rate). 81.5% cross-validation stability (highest of any Path-C survey). Top anomaly near LMC.</p>
+  <div class="project-stats">
+    <div class="project-stat"><div class="num">930K</div><div class="label">Sources</div></div>
+    <div class="project-stat"><div class="num">298</div><div class="label">Anomalies</div></div>
+    <div class="project-stat"><div class="num">68%</div><div class="label">Novelty Rate</div></div>
+    <div class="project-stat"><div class="num">81.5%</div><div class="label">XV Stability</div></div>
+  </div>
 </div>
 
 <!-- Planck CMB -->
-<div class="project-card" style="border-left-color:#d946ef;">
+<div class="project-card" style="border-left-color:#22c55e;">
   <div class="meta-row">
-    <span class="status-badge status-prototype">Prototype</span>
+    <span class="status-badge status-complete">Analysis Complete</span>
+    <span class="badge badge-accent">Paper 3</span>
     <span class="cost-tag">~$10</span>
   </div>
   <h3>Planck CMB Patch Anomaly Detection</h3>
-  <p>Autoencoder on CMB temperature patches. Prototype found 42 anomalous patches spatially clustered near the dipole axis. Needs full-resolution scaling and systematic analysis.</p>
+  <p>Native convolutional autoencoder on 200K galactic-plane-masked CMB patches. val_loss = 0.4437 (50,000&times; improvement over cross-transfer). 500/500 = 100% injection-recovery at 5&sigma;. Top-200 native anomaly set published.</p>
+  <div class="project-stats">
+    <div class="project-stat"><div class="num">200K</div><div class="label">Patches</div></div>
+    <div class="project-stat"><div class="num">200</div><div class="label">Anomalies</div></div>
+    <div class="project-stat"><div class="num">100%</div><div class="label">Inj.-Rec. @5&sigma;</div></div>
+    <div class="project-stat"><div class="num">0.4437</div><div class="label">val_loss</div></div>
+  </div>
 </div>
 
 <footer style="text-align:center; padding:32px 0; font-family:var(--font-sans); font-size:12px; color:var(--text-tertiary);">

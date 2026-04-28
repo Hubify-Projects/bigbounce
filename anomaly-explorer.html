@@ -149,8 +149,8 @@
   </div>
 
   <div style="padding:16px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid #b45309;">
-    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">9.5% f<sub>NL</sub> Improvement via Multi-Tracer</h4>
-    <p style="font-size:13px; margin:0; line-height:1.6;">Latent-space selection of anomalous objects as high-bias tracers yields a <strong>9.5% improvement</strong> in &sigma;(f<sub>NL</sub>) sensitivity. This directly strengthens the flagship bounce prediction: spectral anomalies are not just curiosities but observationally useful for testing bounce cosmology via the galaxy bispectrum.</p>
+    <h4 style="margin:0 0 8px; font-family:var(--font-sans); font-size:14px;">+7.93% f<sub>NL</sub> Improvement via 5-Tracer Multi-Tracer</h4>
+    <p style="font-size:13px; margin:0; line-height:1.6;">5-tracer anomaly-optimized Fisher forecast yields &sigma;(f<sub>NL</sub>)&nbsp;=&nbsp;11.71 vs 12.72 standard multi-tracer (<strong>+7.93% improvement</strong>). DESI alone contributes 6.1% improvement. Latent-space selection of anomalous objects as high-bias tracers directly strengthens the flagship bounce prediction: spectral anomalies are not just curiosities but observationally useful for testing bounce cosmology via the galaxy bispectrum.</p>
   </div>
 
 </div>
@@ -273,9 +273,9 @@
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">SDSS DR18</td><td style="padding:8px;">Sloan Digital Sky Survey &mdash; spectra + photometry</td>
-          <td style="text-align:center; padding:8px;">~5M spectra</td>
-          <td style="text-align:center; padding:8px; color:#b45309; font-weight:600;">API down</td>
-          <td style="text-align:center; padding:8px; color:var(--text-muted);">SDSS API returning 500 errors &mdash; retry pending</td>
+          <td style="text-align:center; padding:8px;">~2.3M spectra</td>
+          <td style="text-align:center; padding:8px; color:#166534; font-weight:600;">77,905 anomalies</td>
+          <td style="text-align:center; padding:8px; font-weight:600;">Native BigAE rescore complete (3.4% anomaly rate, domain-shift scores)</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px; font-weight:600;">AllWISE</td><td style="padding:8px;">750M infrared sources &mdash; photometric detection catalog</td>
@@ -304,7 +304,7 @@
       </tbody>
     </table>
     </div>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS: API down, retry pending. <strong>1,127 of 2,145 (52.5%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Classified into 10 taxonomy families including 76 AGN, 27 post-starburst, 363 blue compact galaxies.</p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;"><strong>Current status:</strong> 6 major databases cross-matched, representing over 3 billion cataloged objects. SIMBAD: 0.2% matched. NED: 12.7%. AllWISE: 1.5%. Milliquas: 0%. Gaia: 0.6% (1 star). SDSS DR18: 77,905 anomalies (native BigAE rescore complete). <strong>1,127 of 2,145 (52.5%) are in neither SIMBAD nor NED</strong> &mdash; genuinely uncataloged. Classified into 10 taxonomy families including 76 AGN, 27 post-starburst, 363 blue compact galaxies.</p>
   </div>
 </section>
 

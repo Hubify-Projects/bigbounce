@@ -248,7 +248,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline 2 &middot; Galaxy Chirality Catalog &middot; DESI Legacy Survey DR8</p>
   <h1>Galaxy Chirality Explorer</h1>
-  <p class="subtitle">Browse the largest galaxy chirality catalog ever produced: 8,474,531 galaxies classified by spiral chirality using a ViT-Small vision transformer with test-time equivariant averaging. Dipole significance: 0.43&sigma; (null &mdash; no parity violation detected). CW/(CW+CCW) = 0.4974, all sky regions within 0.5% of 50/50. Search by sky position, filter by classification and confidence, and explore the all-sky distribution.</p>
+  <p class="subtitle">Browse the largest galaxy chirality catalog ever produced: 8,474,531 galaxies classified by spiral chirality using a ViT-Small vision transformer with test-time equivariant averaging. Dipole significance: 0.43&sigma; (null &mdash; no parity violation detected above the ~0.3% level). CW/(CW+CCW) = 0.4974, all sky regions within ~0.6% of 50/50. Search by sky position, filter by classification and confidence, and explore the all-sky distribution.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="public/papers/chirality_catalog_paper.pdf" target="_blank" class="btn btn-primary" style="font-size:13px;">Read Paper 4 (PDF)</a>
     <a href="paper.html" class="btn btn-secondary" style="font-size:13px;">All Papers</a>
@@ -282,7 +282,7 @@
   <div class="gx-stat">
     <div class="gx-stat-value">0.43&sigma;</div>
     <div class="gx-stat-label">Dipole Significance</div>
-    <div class="gx-stat-sub">null &mdash; no parity violation</div>
+    <div class="gx-stat-sub">null &mdash; no parity violation above ~0.3%</div>
   </div>
   <div class="gx-stat">
     <div class="gx-stat-value">0.4974</div>
@@ -300,7 +300,7 @@
 
     <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
       <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Global Dipole: Null</div>
-      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: 0.43&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected.</p>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: 0.43&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected above the ~0.3% level.</p>
     </div>
 
     <div class="callout callout-info" style="padding: 14px 16px;">
@@ -634,7 +634,7 @@
     <div class="gx-pipeline-item"><strong>Source images:</strong> DESI Legacy Survey DR8/DR9</div>
     <div class="gx-pipeline-item"><strong>HuggingFace:</strong> <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a></div>
     <div class="gx-pipeline-item"><strong>Status:</strong> <span class="chip chip-sm chip-novel">COMPLETE</span> &mdash; Catalog C production run</div>
-    <div class="gx-pipeline-item"><strong>Dipole:</strong> 0.43&sigma; (null &mdash; no significant parity violation)</div>
+    <div class="gx-pipeline-item"><strong>Dipole:</strong> 0.43&sigma; (null &mdash; no parity violation detected above ~0.3%)</div>
     <div class="gx-pipeline-item"><strong>Runtime:</strong> 4.1 hours on H200 (32&times; DataLoader speedup)</div>
     <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 (confidence &gt; 0.6)</div>
     <div class="gx-pipeline-item"><strong>Cutout size:</strong> 150 &times; 150 px</div>
@@ -714,7 +714,6 @@
 <footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 
 </main>
-</div>
 
 <!-- ═══════════════════════ GALAXY DETAIL PANEL ═══════════════════════ -->
 <div class="gx-panel-backdrop" id="gxPanelBackdrop"></div>

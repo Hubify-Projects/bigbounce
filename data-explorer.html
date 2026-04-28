@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Explorer — Spin-Torsion Cosmology</title>
-<meta name="description" content="Interactive tool for exploring 400K+ MCMC posterior samples across 4 dataset combinations.">
+<meta name="description" content="Interactive tool for exploring 424,181 MCMC posterior samples across 4 dataset combinations.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
 <meta property="og:title" content="Data Explorer — BigBounce">
-<meta property="og:description" content="Interactive tool for exploring 400K+ MCMC posterior samples across 4 dataset combinations.">
+<meta property="og:description" content="Interactive tool for exploring 424,181 MCMC posterior samples across 4 dataset combinations.">
 <meta property="og:url" content="https://bigbounce.hubify.app/data-explorer.html">
 <meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Data Explorer — BigBounce">
-<meta name="twitter:description" content="Interactive tool for exploring 400K+ MCMC posterior samples across 4 dataset combinations.">
+<meta name="twitter:description" content="Interactive tool for exploring 424,181 MCMC posterior samples across 4 dataset combinations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <style>
@@ -2108,7 +2108,7 @@ branches: {
     ["Branch S","Does ECH generate photon rotation via loops?","\u03B2~10\u207B\u00B3\u2070\u00B0 (28\u201340 OOM too weak)","CLOSED","N1","LOW"],
     ["Branch T","Can axion kicked by bounce amplify fields?","Requires free parameter (n5)","CLOSED","N1","LOW"],
     ["Branch U","Can two-field ALP resolve rolling tension?","Reintroduces fine-tuning","DEFERRED","N1","LOW"],
-    ["Branch V","Can matter contraction produce testable signals?","f_NL = \u221235/8 = \u22124.375 (parameter-free, SPHEREx)","PAPER DRAFT COMPLETE","N3","FLAGSHIP"],
+    ["Branch V","Can matter contraction produce testable signals?","f_NL = \u221235/8 = \u22124.375 (strongly constrained, SPHEREx)","PAPER DRAFT COMPLETE","N3","FLAGSHIP"],
     ["Branch W","Can ALP curvaton generate red tilt?","n_s=1.000 (8.3\u03C3 excluded)","SUPERSEDED","N1","LOW"],
     ["Chiral GW","Can chiral GW reach detectors?","GHz signals; gap to LIGO 10\u2076","CLOSED","N1","LOW"],
     ["Bounce Evidence Audit","Do any bounce claims reach STRONG?","No claim reaches STRONG; ECH perturbation-transparent","COMPLETE","N2","HIGH"],
@@ -2306,32 +2306,32 @@ modelDiscrimination: {
 
 pbhNanograv: {
   name: "PBH Regulation & NANOGrav Consistency",
-  description: "Two independent consistency checks for f_NL = -35/8. (1) Negative f_NL naturally suppresses PBH overproduction by reducing the tail of the curvature PDF \u2014 positive f_NL of equal magnitude would overproduce. (2) Scalar-induced GW from matter bounce give spectral index \u03B3=3.0 vs NANOGrav 15yr observed \u03B3=3.2\u00B10.6 \u2014 a 0.33\u03C3 match.",
+  description: "Two independent consistency checks for f_NL = -35/8. (1) Negative f_NL naturally suppresses PBH overproduction by reducing the tail of the curvature PDF \u2014 positive f_NL of equal magnitude would overproduce. (2) Scalar-induced GW from matter bounce give spectral index \u03B3=3.0 vs combined PTA GPU MCMC \u03B3=3.20\u00B10.42 \u2014 a 0.48\u03C3 match.",
   source: "pbh_nanograv_consistency.py",
   status: "VERIFIED", statusClass: "frozen",
   columns: ["Test", "Prediction", "Observation", "Tension", "Status"],
   data: [
     ["PBH suppression (f_NL<0)", "Reduced tail", "No PBH overproduction", "Consistent", "PASS"],
     ["PBH enhancement (f_NL>0)", "Enhanced tail", "Would overproduce", "\u2014", "Contrast case"],
-    ["NANOGrav \u03B3 (spectral index)", "3.0", "3.2 \u00B1 0.6", "0.33\u03C3", "PASS"],
-    ["SMBH \u03B3 (competitor)", "4.333", "3.2 \u00B1 0.6", "1.89\u03C3", "Disfavored"],
-    ["Cosmic strings \u03B3", "1.667", "3.2 \u00B1 0.6", "2.56\u03C3", "Disfavored"],
+    ["NANOGrav \u03B3 (spectral index)", "3.0", "3.20 \u00B1 0.42", "0.48\u03C3", "PASS"],
+    ["SMBH \u03B3 (competitor)", "4.333", "3.20 \u00B1 0.42", "2.70\u03C3", "Disfavored"],
+    ["Cosmic strings \u03B3", "1.667", "3.20 \u00B1 0.42", "3.65\u03C3", "Disfavored"],
     ["f_NL PBH threshold \u03B4_c", "0.45", "\u2014", "\u2014", "Musco+ (2009)"]
   ]
 },
 
 nanoGravComparison: {
   name: "NANOGrav 15yr \u2014 GW Source Model Comparison",
-  description: "Gravitational wave spectral index comparison. The matter bounce predicts \u03B3=3.0 from scalar-induced GW with universal f\u00B2 infrared scaling. NANOGrav 15yr measures \u03B3=3.2\u00B10.6. The bounce is the closest match among all standard GW source models.",
+  description: "Gravitational wave spectral index comparison. The matter bounce predicts \u03B3=3.0 from scalar-induced GW with universal f\u00B2 infrared scaling. Combined PTA GPU MCMC measures \u03B3=3.20\u00B10.42 (Paper 3 \u00A76 canonical, 2026-04-17 v2b Fisher recompute). The bounce is the closest match among all standard GW source models.",
   source: "nanograv_model_comparison.py",
   status: "VERIFIED", statusClass: "frozen",
   columns: ["GW Source", "\u03B3 predicted", "\u03B3 observed", "Tension (\u03C3)", "Physical mechanism"],
   data: [
-    ["Matter bounce (scalar-induced)", "3.0", "3.2 \u00B1 0.6", "0.33", "\u03A9_GW ~ f\u00B2 infrared scaling"],
-    ["SMBH binary inspiral", "4.333 (13/3)", "3.2 \u00B1 0.6", "1.89", "Circular GW-driven inspiral"],
-    ["Cosmic strings", "1.667 (5/3)", "3.2 \u00B1 0.6", "2.56", "String network + radiation"],
-    ["Phase transition", "2.0\u20133.0", "3.2 \u00B1 0.6", "0.3\u20132.0", "Model-dependent"],
-    ["Domain walls", "3.0", "3.2 \u00B1 0.6", "0.33", "Similar to bounce (different origin)"]
+    ["Matter bounce (scalar-induced)", "3.0", "3.20 \u00B1 0.42", "0.48", "\u03A9_GW ~ f\u00B2 infrared scaling"],
+    ["SMBH binary inspiral", "4.333 (13/3)", "3.20 \u00B1 0.42", "2.70", "Circular GW-driven inspiral"],
+    ["Cosmic strings", "1.667 (5/3)", "3.20 \u00B1 0.42", "3.65", "String network + radiation"],
+    ["Phase transition", "2.0\u20133.0", "3.20 \u00B1 0.42", "0.5\u20132.9", "Model-dependent"],
+    ["Domain walls", "3.0", "3.20 \u00B1 0.42", "0.48", "Similar to bounce (different origin)"]
   ]
 },
 
@@ -2352,11 +2352,11 @@ quintomFnlVerification: {
 
 p3AnomalyCatalog: {
   name: "Paper 3 \u2014 Multi-Survey Anomaly Catalog",
-  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 anomalies retained after QC. 58.8% of top-ranked anomalies are SIMBAD-novel (no cataloged counterpart within 2\u2033). Largest survey is DESI DR1 (22.5 M spectra \u2192 195,829 anomalies); smallest QC-passing survey is eROSITA DR1 (73% SIMBAD-novel). \u26A0\ufe0f PATH-C REBUILD IN FLIGHT (60%): the cross-transfer DESI-trained autoencoder inflated SDSS/LAMOST reconstruction error, yielding the 98% blue-excess bias and the catastrophic cross-survey novelty inflation. Path C retrains native BigAEs per survey (SDSS val_loss 0.0311 PASS, LAMOST 0.0329 PASS, CMB val_loss 0.4437 PASS with 100% injection-recovery @ 5\u03C3) and re-scores all spectra. 8-way dedup at 5\u2033 on 5/8 surveys loaded shows 197,246 survey-level detections \u2192 191,432 unique physical objects. Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line). See `project-context/SSOT/drive-to-100.md` Phase-2 Path-C block.",
+  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 survey-level anomalies retained after QC. After per-survey native BigAE retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters. 58.8% of top-ranked anomalies are SIMBAD-unmatched (no cataloged counterpart within 2\u2033). PATH-C COMPLETE: native BigAEs per survey (SDSS val_loss 0.0311, LAMOST 0.0329, CMB val_loss 0.4437 with 100% injection-recovery @ 5\u03C3). Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line).",
   source: "pipelines/p3_anomaly_engine/",
-  rows: 8, totalSamples: 319443,
-  status: "PATH-C REBUILD 60%", statusClass: "frozen",
-  columns: ["Survey", "Sources scanned", "Anomalies", "Rate (%)", "SIMBAD-novel (%)", "QC status"],
+  rows: 8, totalSamples: 378480,
+  status: "PATH-C COMPLETE", statusClass: "frozen",
+  columns: ["Survey", "Sources scanned", "Anomalies", "Rate (%)", "SIMBAD-unmatched (%)", "QC status"],
   data: [
     ["DESI DR1 (spectra)", "22,500,000", "195,829", "0.87", "\u2014", "PASS"],
     ["SDSS DR18 (spectra)", "2,300,000", "77,905", "3.4", "\u2014", "PASS (domain shift noted)"],
@@ -2371,11 +2371,11 @@ p3AnomalyCatalog: {
 
 p3SimbadNovelty: {
   name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
-  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-novel means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters.",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-unmatched means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters.",
   source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
   rows: 6, totalSamples: 0,
   status: "FROZEN", statusClass: "frozen",
-  columns: ["Survey", "Top-rank anomalies", "Cross-matched", "SIMBAD-novel", "Novelty (%)", "Note"],
+  columns: ["Survey", "Top-rank anomalies", "Cross-matched", "SIMBAD-unmatched", "Novelty (%)", "Note"],
   data: [
     ["DESI DR1 (SNR-filtered)", "2,145", "2,145", "1,127", "52.5", "1,127 uncataloged"],
     ["SDSS DR18", "5,000", "5,000", "2,940", "58.8", "Domain-shift tagged"],
@@ -2395,7 +2395,7 @@ p4ChiralityCatalog: {
   columns: ["Metric", "Value", "Uncertainty", "Interpretation"],
   data: [
     ["Total galaxies classified", "8,474,531", "\u2014", "Largest chirality catalog to date"],
-    ["CW / CCW / NOT_SPIRAL", "3.18 M / 3.15 M / 2.14 M", "\u2014", "Balanced post-QC"],
+    ["CW / CCW / NOT_SPIRAL", "1,592,107 (18.8%) / 1,609,053 (19.0%) / 5,273,371 (62.2%)", "\u2014", "Equivariant post-QC"],
     ["f_CW (equalized)", "0.5012", "\u00B10.0002", "Consistent with isotropy"],
     ["Raw hemisphere dipole", "3.05\u03C3", "\u2014", "Dominated by orientation bias"],
     ["Post-TTA hemisphere dipole", "0.0019", "0.43\u03C3 (p=0.33)", "NULL \u2014 no asymmetry"],

@@ -441,7 +441,7 @@
     \[f_{\rm NL}^{\rm local} = -\frac{35}{8} = -4.375\]
   </div>
   <p class="eq-explanation">
-    A <strong>prediction with no free parameters in the cubic sector</strong> from matter-dominated contraction (Cai et al. 2009). Algebraically verified at three momentum configurations. The full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> was derived from Cai's own intermediate vertex contributions via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2 using exact rational arithmetic&mdash;not a fit, but the physics-derived result. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. Approximately 300&times; larger than standard inflation (\(f_{\rm NL} \sim 10^{-2}\)) and opposite in sign. Mechanism-independent (holds for ECH, LQC, or any nonsingular bounce). Testable by SPHEREx at ~5.5&sigma; (template-corrected) and MegaMapper at ~7.5&sigma;. Bayesian comparison (600K+ MC): bounce favored at ~8-17:1 over tuned multifield (prior-dependent).
+    A <strong>prediction with no free parameters in the cubic sector</strong> from matter-dominated contraction (Cai et al. 2009). Algebraically verified at three momentum configurations. The full-commutator polynomial <strong>(6,2,&minus;18,10,&minus;66,18)</strong> was derived from Cai's own intermediate vertex contributions via 2&times;(Eqs.&nbsp;34+35+36) at &epsilon; = 3/2 using exact rational arithmetic&mdash;not a fit, but the physics-derived result. The published (3,1,&minus;9,5,&minus;66,9) are the single-ordering coefficients. No independent verification of &minus;35/8 found in the 2020&ndash;2024 literature. Approximately 300&times; larger than standard inflation (\(f_{\rm NL} \sim 10^{-2}\)) and opposite in sign. Mechanism-independent (holds for ECH, LQC, or any nonsingular bounce). Testable by SPHEREx at 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic) and MegaMapper at ~7.5&sigma;. Bayesian comparison (600K+ MC): bounce favored at ~8-17:1 over tuned multifield (prior-dependent).
   </p>
 </div>
 
@@ -457,7 +457,7 @@
     \[f_{\rm NL}^{\rm measured} = r \times f_{\rm NL}^{\rm bounce}, \qquad \sigma(f_{\rm NL}^{\rm bounce}) = \frac{\sigma(f_{\rm NL}^{\rm local})}{r}\]
   </div>
   <p class="eq-explanation">
-    Relates the measured non-Gaussianity amplitude (using a local-template estimator) to the true matter-bounce value. The <strong>template projection factor</strong> \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85; validated by \(\ell\)-space Fisher at 0.878 and injection recovery at \(r_{\rm meas} = 0.90 \pm 0.01\)). With the physics-derived full-commutator polynomial (6,2,&minus;18,10,&minus;66,18), the mismatch is intrinsic. The 10&ndash;15% loss comes from folded and intermediate bispectrum configurations where the bounce and local shapes differ. This correction degrades the naive SPHEREx significance from 6.2&sigma; to <strong>~5.0&ndash;5.5&sigma;</strong>.
+    Relates the measured non-Gaussianity amplitude (using a local-template estimator) to the true matter-bounce value. The <strong>template projection factor</strong> \(r \approx 0.85\text{--}0.90\) (CMB Fisher near 0.90, LSS/SDB nearer 0.85; validated by \(\ell\)-space Fisher at 0.878 and injection recovery at \(r_{\rm meas} = 0.90 \pm 0.01\)). With the physics-derived full-commutator polynomial (6,2,&minus;18,10,&minus;66,18), the mismatch is intrinsic. The 10&ndash;15% loss comes from folded and intermediate bispectrum configurations where the bounce and local shapes differ. This correction degrades the naive SPHEREx significance from 6.2&sigma; to <strong>3&ndash;5&sigma; realistic</strong> (5&ndash;5.5&sigma; optimistic Fisher ideal).
   </p>
 </div>
 
@@ -637,7 +637,7 @@
   </td>
   <td><span class="gl-type gl-type-obs">Observable</span></td>
   <td class="gl-def">
-    <strong>Primordial non-Gaussianity amplitude (local template).</strong> Matter bounce prediction: <span class="gl-value">\(f_{\rm NL} = -35/8 = -4.375\)</span> &mdash; parameter-free, mechanism-independent across all bounce models with matter-dominated contraction. Plays a <strong>triple role</strong>: (i) galaxy bispectrum target for SPHEREx/MegaMapper; (ii) PBH abundance regulator via Edgeworth expansion on Press-Schechter (negative \(f_{\rm NL}\) naturally suppresses overproduction); (iii) spectral shape of scalar-induced GW background at NANOGrav. SPHEREx forecast (2026-04-10): \(\sigma = 0.36\) (Fisher ideal) to 0.93 (Munchmeyer conservative) &mdash; 4.7&ndash;12&sigma; detection of \(-4.375\) by 2027.
+    <strong>Primordial non-Gaussianity amplitude (local template).</strong> Matter bounce prediction: <span class="gl-value">\(f_{\rm NL} = -35/8 = -4.375\)</span> &mdash; strongly constrained (no free parameters in the cubic sector), mechanism-independent across all bounce models with matter-dominated contraction. Plays a <strong>triple role</strong>: (i) galaxy bispectrum target for SPHEREx/MegaMapper; (ii) PBH abundance regulator via Edgeworth expansion on Press-Schechter (negative \(f_{\rm NL}\) naturally suppresses overproduction); (iii) spectral shape of scalar-induced GW background at NANOGrav. SPHEREx forecast: <strong>3&ndash;5&sigma; realistic</strong> (Fisher ideal up to ~12&sigma; before systematics; \(\sigma = 0.36\) Fisher to 0.93 Munchmeyer conservative).
   </td>
 </tr>
 
@@ -669,7 +669,7 @@
   </td>
   <td><span class="gl-type gl-type-code">Pipeline</span></td>
   <td class="gl-def">
-    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB + ACT DR6, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned &rarr; after per-survey native retrains, ecliptic/galactic masking, and 8-way positional dedup at 5&Prime;, the final catalog contains <strong>378,480 unique physical objects + 637 multi-survey clusters</strong>. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-novel. Published at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>.
+    <strong>Paper 3 multi-survey autoencoder pipeline.</strong> Unified AE-based ranking across 8 surveys (DESI DR1, SDSS DR18, LAMOST DR10, eROSITA DR1, Planck CMB + ACT DR6, Gaia DR3, NEOWISE). <span class="gl-value">37.3 M sources</span> scanned &rarr; after per-survey native retrains, ecliptic/galactic masking, and 8-way positional dedup at 5&Prime;, the final catalog contains <strong>378,480 unique physical objects (Path-C deduped canonical) + 637 multi-survey clusters</strong>. Latent dimension 67 (first-level); 16 (second-level, trained on 195,829 DESI DR1 anomalies to surface ~20 ultra-rare objects at 99.9995<sup>th</sup> percentile). 58.8% of top-rank anomalies are SIMBAD-unmatched. Published at <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank">HuggingFace</a>.
   </td>
 </tr>
 
@@ -691,7 +691,7 @@
   </td>
   <td><span class="gl-type gl-type-obs">Observable</span></td>
   <td class="gl-def">
-    <strong>Local non-Gaussianity amplitude.</strong> Measures departure from Gaussian primordial fluctuations. The generic matter bounce predicts <span class="gl-value">&minus;35/8 = &minus;4.375</span> (parameter-free, algebraically verified). ~300&times; larger than standard inflation (\(\sim 10^{-2}\)) and opposite in sign. SPHEREx: ~5.5&sigma; (template-corrected); MegaMapper: ~7.5&sigma;.
+    <strong>Local non-Gaussianity amplitude.</strong> Measures departure from Gaussian primordial fluctuations. The generic matter bounce predicts <span class="gl-value">&minus;35/8 = &minus;4.375</span> (strongly constrained, algebraically verified). ~300&times; larger than standard inflation (\(\sim 10^{-2}\)) and opposite in sign. SPHEREx: 3&ndash;5&sigma; realistic (5&ndash;5.5&sigma; optimistic); MegaMapper: ~7.5&sigma;.
   </td>
 </tr>
 
@@ -851,7 +851,7 @@
   </td>
   <td><span class="gl-type gl-type-instrument">Instrument</span></td>
   <td class="gl-def">
-    <strong>Spectro-Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer.</strong> NASA all-sky spectral survey. Will test the matter-bounce prediction of \(f_{\rm NL} = -35/8\) at <span class="gl-value">~5.5\(\sigma\)</span> significance (template-corrected) via the galaxy bispectrum.
+    <strong>Spectro-Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer.</strong> NASA all-sky spectral survey. Will test the matter-bounce prediction of \(f_{\rm NL} = -35/8\) at <span class="gl-value">3&ndash;5\(\sigma\) realistic</span> significance (5&ndash;5.5&sigma; optimistic Fisher ideal before systematics) via the galaxy bispectrum.
   </td>
 </tr>
 
