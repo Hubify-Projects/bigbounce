@@ -151,7 +151,8 @@ galaxies, of which $3{,}321{,}795$ are classified as spiral
 spiral count alone is ${\sim}17\times$ larger than the largest prior
 chirality catalog (Shamir~\cite{Shamir:2022}, ${\sim}200{,}000$
 spirals) and $1.7\times$ larger than CE-ResNet~\cite{Jia:2023}
-($1.95$~million galaxies, all spiral-classified);
+($1.95$~million galaxies, all classified as CW or ACW since
+CE-ResNet lacks a not-spiral class);
 (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
 first published multi-test bias hardening audit suite for any galaxy
@@ -309,7 +310,10 @@ weight decay $0.02$), batch size~64, and a cosine annealing
 warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early
 stopping with patience of 15 epochs monitors the best validation
 loss within a maximum budget of 100 epochs; the production model's
-best validation loss of $0.134$ was achieved at epoch~75.
+best validation loss of $0.134$ was achieved at epoch~75, with
+early stopping triggered at epoch~90 (validation loss monotonically
+increasing over the final 15 epochs, confirming no overfitting
+beyond the checkpoint).
 The headline 93.7\% three-class accuracy includes the \NS{} class, which is
 easier to classify (recall~98.4\%). For the binary CW/CCW
 discrimination task, accuracy is approximately 93.2\%, with CW recall
@@ -335,7 +339,12 @@ excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
 \end{table}
 
 Data augmentation includes random rotation ($0\text{--}360^\circ$,
-uniform), chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
+uniform, without chirality-label remapping---the rotation teaches the
+model general orientation robustness but does not preserve the
+CW/CCW label under large rotations, which is a methodological
+limitation that may contribute to the residual $9.5\sigmaunit$
+asymmetry; see Sec.~\ref{sec:cw_frac}),
+chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
 labels swap when the image is mirrored), brightness jitter
 ($0.6\text{--}1.4\times$), contrast jitter ($0.7\text{--}1.3\times$),
 Gaussian blur ($\sigma = 0.5\text{--}2.0$~pixels, where $\sigma$ is
@@ -377,7 +386,14 @@ its horizontal reflection. The equivariant probability is computed as:
 %
 This procedure enforces perfect flip-equivariance by construction
 (flip-swap correlation $= 1.000$), at the cost of doubling inference
-time.
+time. We average in probability space (post-softmax) rather than
+logit space because the softmax average exactly symmetrizes the
+CW$\leftrightarrow$CCW channels by construction, which is the primary
+goal; logit averaging would also symmetrize but with different
+confidence scaling and no equivariance guarantee for the \NS{} channel.
+The choice affects confidence calibration but not the equivariance
+property that ensures $\fcw^{\rm eq}$ is unbiased under horizontal
+reflection.
 We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours.
@@ -500,9 +516,11 @@ T4: Perturbation & Blur/dark agreement & 84\% & $>80\%$ \\
 T5: Metadata leakage & $|\text{corr}(\pcw, \text{RA/Dec})|$ & $<\!0.04$ & $<0.10$ \\
 T6: Hemispheric null & CW frac.\ N vs.\ S diff.\ (Catalog~A) & 3.6\% raw & $<10\%$ \\
 T7: Calibration & Frac.\ at $>0.9$ conf. & 37.9\% & Qualitative \\
-T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 50.12\% eq. & $50 \pm 10\%$ \\
+T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 49.74\% eq.$^a$ & $50 \pm 10\%$ \\
 \end{tabular}
 \end{ruledtabular}
+$^a$Full-catalog equivariant value; the benchmark-overlap subset
+gives 50.12\% (see Sec.~\ref{sec:cw_frac}).
 \end{table}
 
 \subsection{Catalog Tiers}
@@ -596,7 +614,15 @@ Table~\ref{tab:cw_frac} summarizes the global CW fraction across the
 three catalog tiers, with $1\sigmaunit$ binomial uncertainties
 $\sigma = \sqrt{p(1-p)/N_{\rm spiral}} \approx 0.000274$ (reported as
 $0.0003$ in the table after rounding to one significant figure)
-for $N_{\rm spiral} = 3{,}321{,}795$. The raw Catalog~A shows a 0.79\%
+for $N_{\rm spiral} = 3{,}321{,}795$. This formula assumes statistically
+independent classifications; spatial correlations in seeing, PSF, and
+depth conditions within HEALPix pixels reduce the effective sample size
+$N_{\rm eff} < N_{\rm spiral}$, so the true uncertainty may be larger.
+The spatially uniform distribution of the $9.5\sigmaunit$ residual
+(Table~\ref{tab:sky_balance}) suggests the dominant effect is a global
+training-label bias rather than spatially correlated systematics, but
+a rigorous $N_{\rm eff}$ estimate (e.g., via pixel-to-pixel variance
+of the CW fraction) is needed to confirm the formal significance. The raw Catalog~A shows a 0.79\%
 CW excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.7\sigmaunit$
 deviation from exact parity). Platt calibration (Catalog~B) reduces
 this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
@@ -960,8 +986,10 @@ galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
 a definitive test of these claims: our chirality-relevant spiral
 subsample ($3{,}321{,}795$ CW~$+$~CCW galaxies) is
-${\sim}17\times$ larger than Shamir's largest catalog
-(${\sim}200{,}000$ spirals), with rigorous bias controls.
+${\sim}17\times$ larger than Shamir's largest spiral subsample
+(${\sim}200{,}000$ galaxies classified as spiral by Ganalyzer
+out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
+with rigorous bias controls.
 
 Our maximum regional asymmetry is 0.47\%---a factor of~7 smaller
 than Shamir's reported $\sim\!3\%$. The global equivariant CW
@@ -985,7 +1013,7 @@ systematics.
 
 Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
-$\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C matches this
+$\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C approaches this
 balance with $1.7\times$ the spiral coverage ($3{,}321{,}795$
 CW~$+$~CCW spirals vs.\ CE-ResNet's $1.95$~million):
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
@@ -1117,8 +1145,9 @@ a cosmological interpretation:
   predicted by Shamir's analyses.
 \item It does not survive a look-elsewhere correction across
   $\sim\!650$ tested directions.
-\item The angular power spectrum shows no corresponding excess at
-  $\ell = 1$ beyond $2.75\sigmaunit$.
+\item The angular power spectrum shows only a marginal $2.75\sigmaunit$
+  at $\ell = 1$, consistent with the hemisphere result but insufficient
+  to establish a detection independently.
 \item The signal is stronger in mid-confidence classifications,
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
@@ -1132,7 +1161,11 @@ the DESI Legacy footprint.
 
 Given 3,321,795 equivariant spiral classifications, the global
 clockwise-fraction uncertainty is
-$\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.027\%$.
+$\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.027\%$
+(using the approximation $p(1-p) \approx 1/4$ valid for $p$ near $0.5$;
+the exact formula $\sigma = \sqrt{p(1-p)/N}$ used in
+Sec.~\ref{sec:cw_frac} gives an identical result to four significant
+figures at $p = 0.4974$).
 This is the Poisson noise averaged over the full catalog---it
 characterizes the monopole precision, not the dipole sensitivity.
 For a dipole of amplitude $A_{\rm dip}$, the signal in any sky

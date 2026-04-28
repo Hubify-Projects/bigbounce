@@ -18,6 +18,7 @@
 | 6 | 2026-04-28 | 10 (P2 re-review) | 0 | 4 | 6 | 10/10 FIXED |
 | 7 | 2026-04-28 | 10 (P3 re-review) | 0 | 5 | 5 | 10/10 FIXED |
 | 8 | 2026-04-28 | 10 (P1 re-review) | 0 | 4 | 6 | 7/10 FIXED (3 deferred: cosmetic) |
+| 9 | 2026-04-28 | 10 (P4 re-review 2) | 0 | 5 | 5 | 10/10 FIXED |
 
 ---
 
@@ -852,3 +853,22 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P1-R8-8 | MINOR | RG equation uses coupling g as both fixed (O(1)) and running — appears circular | TEXT | [ ] DEFERRED — text already clarifies g²/(16π²) ~10⁻³ perturbative suppression; argument is valid |
 | P1-R8-9 | MINOR | "~10⁶ galaxies" limitation stale — paper's own catalog has 8.47M | TEXT | [x] FIXED — updated to reflect 8.47M catalog with future survey directions |
 | P1-R8-10 | MINOR | Poplawski2012/2011 bib keys swapped relative to publication years | TEXT | [x] FIXED — clarifying comment added; keys reflect arXiv posting order, rendered years correct |
+
+---
+
+## ROUND 9: SECOND RE-REVIEW OF PAPER 4 (2026-04-28)
+
+**Method:** Single Opus agent — hostile ML/galaxy-morphology reviewer, second pass on Paper 4
+
+| # | Sev | Finding | Locally Fixable? | Status |
+|---|-----|---------|-----------------|--------|
+| P4-R9-1 | MAJOR | Missing actual stopping epoch — can't verify no overfitting past best epoch 75 | TEXT | [x] FIXED — "early stopping at epoch 90, val_loss monotonically increasing" |
+| P4-R9-2 | MAJOR | Binomial sigma assumes independent classifications — spatial correlations inflate 9.5σ | TEXT | [x] FIXED — caveat + N_eff discussion added |
+| P4-R9-3 | MAJOR | Table 1 T8 equivariant value 50.12% uses benchmark subset, not full catalog 49.74% | TEXT | [x] FIXED — corrected to 49.74% with footnote |
+| P4-R9-4 | MAJOR | "~17× larger than Shamir" uses ~200K spirals not clearly sourced | TEXT | [x] FIXED — clarified as spiral subset of ~1.3M total |
+| P4-R9-5 | MAJOR | TTA averages softmax probabilities not logits — unjustified choice | TEXT | [x] FIXED — justification added: softmax exactly symmetrizes CW↔CCW |
+| P4-R9-6 | MINOR | Random rotation in training contradicts claim rotation is "semantically ambiguous" | TEXT | [x] FIXED — acknowledged label mismatch under rotation as limitation |
+| P4-R9-7 | MINOR | CW/ACW=0.990 vs CE-ResNet 0.998 claimed to "match" — 5× larger deviation | TEXT | [x] FIXED — "matches" → "approaches" |
+| P4-R9-8 | MINOR | CE-ResNet 1.95M assumed 100% spiral — unverified | TEXT | [x] FIXED — "all classified as CW or ACW since CE-ResNet lacks not-spiral class" |
+| P4-R9-9 | MINOR | Two binomial sigma formulas without noting equivalence at p~0.5 | TEXT | [x] FIXED — parenthetical linking the two formulas |
+| P4-R9-10 | MINOR | 2.75σ ℓ=1 used to dismiss 3.05σ hemisphere — logical contradiction | TEXT | [x] FIXED — rephrased as "marginal, consistent with but insufficient to establish" |
