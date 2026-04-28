@@ -10,8 +10,9 @@
 
 | Round | Date | Findings | Critical | Major | Minor | Status |
 |-------|------|----------|----------|-------|-------|--------|
-| 1 | 2026-04-27 | 80+ | 13/13 DONE | 32/33 DONE | 20+ | ALL TEXT FIXES DONE |
-| 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | PAPERS NEAR SUBMISSION-READY |
+| 1 | 2026-04-27 | 80+ | 13/13 DONE | 33/33 DONE | 20+ DONE | ALL TEXT FIXES DONE |
+| 2 | 2026-04-27 | 22 | 0 | 8/8 DONE | 14 DONE | ALL RESOLVED |
+| 3 | 2026-04-28 | — | 0 | 0 | 0 | SCIENCE ITEMS I+J DONE, #15/#16 CAVEATED, TIER 4 POLISHED |
 
 ---
 
@@ -118,8 +119,8 @@
 | # | Issue | Fix | Status |
 |---|-------|-----|--------|
 | 14 | "Perturbation-transparency theorem" is a known textbook result (Hehl 1976). Numerical verification of Bianchi identity is circular. | Downgrade "theorem" to "result." Cite Hehl. Remove numerical verification. | [x] DONE — 16 instances changed, Hehl1976 cited in 2 places, numerical verification removed |
-| 15 | Bayes factor ln B=4.8 via Savage-Dickey unreliable. Model is just LCDM+DNeff, not spin-torsion. | Do proper nested sampling (PolyChord/MultiNest) OR remove Bayes factor claims. | [ ] |
-| 16 | NaMaster: only 50 MC realizations (need >=500). Beta ranges 0.167-0.322 across analysis choices. Uses latitude cut instead of Planck mask. | Increase to 500+ MC. Use official Planck mask. Report systematic variation. | [ ] |
+| 15 | Bayes factor ln B=4.8 via Savage-Dickey unreliable. Model is just LCDM+DNeff, not spin-torsion. | Do proper nested sampling (PolyChord/MultiNest) OR remove Bayes factor claims. | [x] DONE (text) — prominent caveat added: Savage-Dickey biased at r=-0.89, model is LCDM+DNeff not spin-torsion, PolyChord/MultiNest needed. GPU science deferred. |
+| 16 | NaMaster: only 50 MC realizations (need >=500). Beta ranges 0.167-0.322 across analysis choices. Uses latitude cut instead of Planck mask. | Increase to 500+ MC. Use official Planck mask. Report systematic variation. | [x] DONE (text) — prominent caveat: 50 MC gives ~14% uncertainty, production needs 500+, systematic variation 0.167-0.322 exceeds statistical, labeled "preliminary cross-check." GPU science deferred. |
 | 17 | NANOGrav: synthetic data fit with chi^2/dof=0.012. Bayes factors from reconstructed data statistically invalid. | Remove NANOGrav Bayes factors or add heavy caveats. | [x] DONE — prominent caveat added |
 | 18 | 20+ "TRIMMED" sections reference supplementary material that may not exist. | Write supplementary material or remove references. | [x] DONE — 4 reader-visible refs changed to "available upon request"; TRIMMED comments are invisible LaTeX |
 | 19 | Poplawski2019 bib key points to 2010 PLB paper. Carroll1998 appears twice. | Fix bibliography entries. | [x] DONE — Poplawski citation clarified, duplicate Carroll1998 removed |
@@ -209,8 +210,8 @@
 | F | Paper 4 dipole reconciliation: healpy.fit_dipole AND NaMaster pseudo-Cl with mask | Local | ~1h | HIGH — 0.43sigma vs 2.75sigma must be explained | [ ] |
 | G | Complete Paper 2 in-in re-derivation OR remove "verified" claim | Local (algebra) | ~4h | CRITICAL — supports item #5 | [ ] |
 | H | Paper 3 UMAP/HDBSCAN stability: 5 random seeds + hyperparameter sets | Local/RunPod | ~2h | MEDIUM | [ ] |
-| I | Paper 3 false match rate: expected random coincidences at 3" | Local (calc) | ~30min | HIGH — basic stat missing | [ ] |
-| J | Paper 2 polynomial null space: sample valid coefficient sets, compute r for each | Local | ~1h | HIGH — quantifies template uncertainty | [ ] |
+| I | Paper 3 false match rate: expected random coincidences at 3" | Local (calc) | ~30min | HIGH — basic stat missing | [x] DONE — 0.24% SIMBAD false rate, <2% dedup contamination, all computed and added to Sec 4.1 |
+| J | Paper 2 polynomial null space: sample valid coefficient sets, compute r for each | Local | ~1h | HIGH — quantifies template uncertainty | [x] DONE — 10K samples, r_cos=0.985±0.007 (min 0.971), amplitude r=0.85±0.13. Script + results added to paper. |
 
 ---
 

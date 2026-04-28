@@ -402,6 +402,8 @@ This is $0.09\sigma$ from the ALP prediction ($\beta = 0.27^\circ$) and $0.68\si
 
 \textit{Resolution and mask systematics.}---We verified resolution independence by repeating the analysis at $N_{\rm side} = 256$, $512$, and $1024$ with the same galactic mask: $\beta = 0.321^\circ$, $0.275^\circ$, and $0.322^\circ$, respectively---all consistent with the $N_{\rm side} = 2048$ result and the ALP prediction. We also tested the dedicated Planck galactic mask ($f_{\rm sky} = 0.598$, stricter than our $|b| > 20^\circ$ cut), obtaining $\beta = 0.227^\circ$ ($N_{\rm side} = 512$) and $\beta = 0.167^\circ$ ($N_{\rm side} = 1024$). The lower values with the stricter mask suggest mild galactic contamination in the simple latitude cut. The signal persists across all configurations, with $\beta$ ranging from $0.17^\circ$ to $0.32^\circ$---bracketing the ALP prediction of $0.27^\circ$.
 
+\textit{Important caveat on the NaMaster analysis.}---The Monte Carlo error estimate above is based on only 50 noise realizations, giving ${\sim}14\%$ uncertainty on the standard deviation estimate ($1/\sqrt{2N_{\rm MC}}$). A production-quality analysis requires $\geq 500$ realizations to reduce this calibration uncertainty below ${\sim}5\%$, and should employ the official Planck GAL080 mask in place of the simple latitude cut ($|b| > 20^\circ$) used here. The systematic variation in $\beta$ from $0.167^\circ$ to $0.322^\circ$ across analysis choices (frequency combination, mask threshold, $N_{\rm side}$, $\ell_{\rm max}$) exceeds the quoted statistical uncertainty of $0.065^\circ$ and should be treated as the dominant error budget. This analysis is therefore a preliminary cross-check of the published birefringence detections, not a competitive independent measurement.
+
 \textit{Consolidated birefringence summary.}---For clarity, we collect all $\beta$ measurements and predictions appearing in this paper, as different analyses and methods yield different central values:
 \begin{itemize}[leftmargin=*]
 \item Planck NPIPE (Eskilt \& Komatsu): $\beta = 0.30^\circ \pm 0.11^\circ$
@@ -450,6 +452,8 @@ The Bayesian evidence is dataset-dependent:\label{eq:Zcomb2}
 \end{cases}
 \end{align}
 With Planck+BAO alone, the Occam penalty slightly disfavors the model; the preference emerges when tension data are included.\label{fig:sensitivity} The fine-tuning comparison ($10^5$ vs.\ $10^{120}$ for $\Lambda$CDM) is a reparameterization as sensitivity to $N_{\rm tot}$, not a resolution (Sec.~\ref{sec:gdp}). The decisive test is detection of CMB $E$-$B$ parity-odd signatures (confirmed at $4.1\sigma$ by our NaMaster analysis, Sec.~\ref{sec:data_cmb}), not tension resolution alone. (The galaxy spin channel is a confirmed null; see Sec.~\ref{sec:spinobs}.)
+
+\textit{Important caveat on the Bayes factor.}---We emphasize that the $\ln B = +4.8$ reported in Table~\ref{tab:modelcomp} is computed via the Savage-Dickey density ratio, which assumes the nested model lies on a boundary of the extended model's prior. For the highly correlated posterior ($r = -0.89$ between $\Delta\Neff$ and $H_0$), this estimator can be significantly biased~\cite{Trotta2008}. Furthermore, the ``spin-torsion'' model tested here is $\Lambda$CDM $+\,\Delta\Neff$ using stock CAMB, without custom torsion modifications to the Boltzmann perturbation equations; it therefore tests whether the data prefer an extra radiation-like degree of freedom, not the spin-torsion framework itself. A proper Bayesian model comparison requires dedicated nested sampling (e.g., PolyChord~\cite{Handley2015} or MultiNest~\cite{Feroz2009}) applied to a model with explicit torsion-modified perturbation equations. Until such an analysis is performed, the $\ln B = +4.8$ should be regarded as indicative, not definitive.
 
 
 %% ============================================================
@@ -1068,7 +1072,7 @@ All materials necessary to reproduce the cosmological and galaxy spin results ar
 \item \texttt{docs/KNOWN\_GAPS.md} --- Honest disclosure of what cannot currently be reproduced.
 \end{itemize}
 
-\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors were estimated via the Savage-Dickey density ratio from MCMC posteriors; dedicated nested sampling (not provided) would yield more robust estimates. No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
+\noindent \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per configuration on 4~CPU cores). Bayes factors were estimated via the Savage-Dickey density ratio from MCMC posteriors, which is biased for the correlated $\Delta\Neff$--$H_0$ posterior (see the caveat in Sec.~\ref{sec:cosmo_fits}); dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence but is not provided. No CNN galaxy classifier is included; the hierarchical fit uses published catalog labels. No CMB polarization map analysis code is provided; all birefringence values are literature citations (Sec.~\ref{sec:data_cmb}).
 
 
 %% ============================================================
@@ -1188,7 +1192,7 @@ All MCMC results in this paper were obtained using the Cobaya framework (v3.5 fo
 \item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).
 \end{itemize}
 
-\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio; dedicated nested sampling would provide more robust estimates but is not included. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
+\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio, which is biased for the correlated posterior (see Sec.~\ref{sec:cosmo_fits} caveat); dedicated nested sampling would provide more robust estimates but is not included. The NaMaster birefringence analysis uses only 50 Monte Carlo realizations (see Sec.~\ref{sec:data_cmb} caveat). No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
 
 
 %% --- K: Claims Classification Table ---
@@ -1229,7 +1233,7 @@ $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$ & Fit & Table~\ref{tab:params} & One-l
 $A_0 < 0.001$ (95\% CL) & Upper bound & Sec.~\ref{sec:spinobs} & Null result from 8.47M-galaxy chirality catalog~\cite{Golden:2026chirality} \\
 $\beta = 0.242^\circ \pm 0.061^\circ$ & Literature combination & Sec.~\ref{sec:birefringence_check} & Summary likelihood of Planck + ACT \\
 $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ & Consistency check & Sec.~\ref{sec:birefringence_check} & Derived from combined $\beta$; $\mathcal{O}(1)$ \\
-$\ln B = +4.8$ (tension dataset) & Inferred & Eq.~(\ref{eq:Zcomb2}) & Dataset-dependent \\
+$\ln B = +4.8$ (tension dataset) & Inferred & Eq.~(\ref{eq:Zcomb2}) & Dataset-dependent; Savage-Dickey estimator, biased at $r=-0.89$; model is $\Lambda$CDM+$\Delta\Neff$, not spin-torsion \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

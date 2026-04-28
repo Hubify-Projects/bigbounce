@@ -203,7 +203,9 @@ We assemble training labels from three sources:
 \begin{enumerate}
 \item \textbf{Galaxy Zoo~1}~\cite{Lintott:2008}: 6,637~galaxies
   with citizen-science CW/CCW labels at $>70\%$ vote confidence,
-  spatially cross-matched to DESI Legacy cutouts. This is the only
+  spatially cross-matched to DESI Legacy cutouts (original GZ1 catalog:
+  $\sim$14{,}000 objects with spiral classifications; reduced by our
+  minimum-agreement threshold and magnitude cut). This is the only
   fully independent label source.
 
 \item \textbf{CE-ResNet}~\cite{Jia:2023}: 17,153~galaxies with
@@ -426,6 +428,8 @@ The pipeline produces three catalog tiers:
 \item \textbf{Catalog~B} (Platt-calibrated): a sigmoid calibration
   (bias~$= 1.58$, temperature~$= 4.65$) fitted against CE-ResNet
   consensus labels removes the residual CW excess in the raw outputs.
+  Platt scaling parameters ($A$, $B$) are fit on a held-out 20\%
+  validation set and are provided in the companion code repository.
   Suitable for ML downstream tasks.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
