@@ -27,9 +27,9 @@ R38 filed task #129 because sub-agent flagged paper3_draft.tex L43/L53/L200-208 
 
 R39 fixes were limited to HTML and SSOT markdown. No `.tex` source was edited, so PDFs from R37 (P1: 31pp/1.0MB, P4: 16pp/25.8MB) remain authoritative. Mirror in `public/papers/` is current.
 
-### Cron status — terminating
+### Cron status — TERMINATED
 
-R39 closed every open peer-review task. Task #129 → completed. No new findings spawned. Cron `70a9aba0` will be deleted on this fire per Step 6 of the autonomous-loop protocol. If Houston wants resumption, re-run `/CronCreate` with the same 15-min schedule.
+R39 closed every open peer-review task. Task #129 → completed. No new findings spawned. **AUTONOMOUS LOOP TERMINATED** — cron `70a9aba0` deleted via `CronDelete` per Step 6 of the autonomous-loop protocol (commit `7d0f8c5` on `main`, pushed to GitHub Hubify-Projects/bigbounce). If Houston wants resumption, re-run `CronCreate` with schedule `8,23,38,53 * * * *`.
 
 ---
 
