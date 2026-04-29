@@ -687,11 +687,11 @@ cosmological content.
   \label{tab:cw_frac}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
-\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess} & \textbf{Deviation} \\
+\textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess (\%)} & \textbf{Deviation ($\sigmaunit$)} \\
 \hline
-A (raw)         & $0.5079 \pm 0.0003$ & $+0.79\%$ & $28.8\sigmaunit$ \\
-B (calibrated)  & $0.504 \pm 0.0003$  & $+0.4\%$  & $14.6\sigmaunit$ \\
-C (equivariant) & $0.4974 \pm 0.0003$ & $-0.26\%$ & $9.5\sigmaunit$ \\
+A (raw)         & $0.5079 \pm 0.0003$ & $+0.79$ & $28.8$ \\
+B (calibrated)  & $0.504 \pm 0.0003$  & $+0.4$  & $14.6$ \\
+C (equivariant) & $0.4974 \pm 0.0003$ & $-0.26$ & $9.5$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -754,6 +754,14 @@ importance of equivariant post-processing.
 \paragraph{Angular power spectrum.}
 We extend the analysis to multipoles $\ell = 1\text{--}5$ using the
 HEALPix \texttt{anafast} estimator on the Catalog~C asymmetry map.
+The choice of $\ell_{\rm max} = 5$ is set by physical motivation
+rather than the resolution limit ($3 N_{\rm side} = 192$ at
+$\nside = 64$): the parity-violation signature of interest is the
+large-scale dipole ($\ell = 1$), and the higher multipoles
+($\ell = 2\text{--}5$) are reported as null-consistency checks.
+Additional power above $\ell = 5$ is dominated by Poisson shot noise
+at the per-pixel galaxy density of $\sim\!171$~spirals/pixel, leaving
+no science motivation for extending the table.
 The significance of each multipole is assessed relative to
 1{,}000 Monte Carlo null realizations (Table~\ref{tab:multipole};
 see footnote~\ref{fn:mc_count}).
@@ -764,14 +772,14 @@ see footnote~\ref{fn:mc_count}).
   Monte Carlo null realizations.\label{tab:multipole}}
 \begin{ruledtabular}
 \begin{tabular}{cccl}
-\textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$} &
-\textbf{Significance} & \textbf{Interpretation} \\
+\textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
+\textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
-1 & 3.82 & $2.75\sigmaunit$ & Marginal \\
-2 & 1.54 & $1.47\sigmaunit$ & Null \\
-3 & 1.81 & $1.63\sigmaunit$ & Null \\
-4 & 0.88 & $0.91\sigmaunit$ & Null \\
-5 & 1.12 & $1.22\sigmaunit$ & Null \\
+1 & 3.82 & $2.75$ & Marginal \\
+2 & 1.54 & $1.47$ & Null \\
+3 & 1.81 & $1.63$ & Null \\
+4 & 0.88 & $0.91$ & Null \\
+5 & 1.12 & $1.22$ & Null \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -816,20 +824,26 @@ $N_{\rm gal} = 5{,}547{,}858$ galaxies with valid equivariant
 classifications inside the $N_{\rm side}=64$ unmasked
 footprint).\footnote{This count matches the \texttt{n\_galaxies}
 field saved by the \textsc{NaMaster} pipeline at
-\texttt{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json}.
-It is smaller than the full $8{,}474{,}531$-row catalog because
-\textsc{NaMaster} discards galaxies in pixels that fall on the
-masked side of the $N_{\rm side}=64$ apodized boundary, and it is
-larger than the spiral-only count $N_{\rm spiral} = 3{,}321{,}795$
-because the saved counter includes \NS{} objects that contribute
-to the per-pixel total used to weight the asymmetry field. Replacing
-$N_{\rm gal}$ with $N_{\rm spiral}$ in the shot-noise formula raises
-$C_1^{\rm noise}$ by a factor $5.55/3.32 \approx 1.67$ to
-$\sim\!2.1 \times 10^{-6}$ and flips the sign of $C_1^{\rm signal}$,
-but leaves the post-MASTER significance unchanged at
-$-0.12\,\sigmaunit$ (the deconvolution step does not depend on the
-shot-noise term, which is subtracted only from the post-deconvolution
-$C_\ell$ for cosmetic display).}
+\texttt{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json};
+the same JSON records $C_1^{\rm noise} = 1.2577 \times 10^{-6}$~sr,
+in agreement with $4\pi \times 0.555 / 5{,}547{,}858 = 1.258 \times
+10^{-6}$~sr (the occupancy-weighted $f_{\rm sky}$ used by the
+pipeline's per-pixel weighting differs slightly from the geometric
+$f_{\rm sky} \approx 0.46$ and from the pixelized
+$f_{\rm sky}^{\rm eff} = 0.659$).
+$N_{\rm gal}$ is smaller than the full $8{,}474{,}531$-row catalog
+because \textsc{NaMaster} discards galaxies in pixels that fall on
+the masked side of the $N_{\rm side}=64$ apodized boundary, and it
+is larger than the spiral-only count
+$N_{\rm spiral} = 3{,}321{,}795$ because the saved counter includes
+\NS{} objects that contribute to the per-pixel total used to weight
+the asymmetry field. Replacing $N_{\rm gal}$ with $N_{\rm spiral}$ in
+the shot-noise formula raises $C_1^{\rm noise}$ by a factor
+$5.55/3.32 \approx 1.67$ to $\sim\!2.1 \times 10^{-6}$~sr and flips
+the sign of $C_1^{\rm signal}$, but leaves the post-MASTER
+significance unchanged at $-0.12\,\sigmaunit$ (the deconvolution step
+does not depend on the shot-noise term, which is subtracted only
+from the post-deconvolution $C_\ell$ for cosmetic display).}
 After deconvolution, the measured $\ell = 1$ power is
 $C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
@@ -930,18 +944,18 @@ large-scale systematic bias.
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
 \textbf{Region} & \textbf{$N_{\rm spiral}$} &
-\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$} \\
+\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$ (\%)} \\
 \hline
-RA $[0^\circ, 90^\circ)$     & 628,411  & 0.4968 & 0.32\% \\
-RA $[90^\circ, 180^\circ)$   & 854,293  & 0.4979 & 0.21\% \\
-RA $[180^\circ, 270^\circ)$  & 912,106  & 0.4981 & 0.19\% \\
-RA $[270^\circ, 360^\circ)$  & 926,985  & 0.4971 & 0.29\% \\
+RA $[0^\circ, 90^\circ)$     & 628,411  & 0.4968 & 0.32 \\
+RA $[90^\circ, 180^\circ)$   & 854,293  & 0.4979 & 0.21 \\
+RA $[180^\circ, 270^\circ)$  & 912,106  & 0.4981 & 0.19 \\
+RA $[270^\circ, 360^\circ)$  & 926,985  & 0.4971 & 0.29 \\
 \hline
-Dec $[-90^\circ, -30^\circ)$ & 487,629  & 0.4976 & 0.24\% \\
-Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27\% \\
-Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25\% \\
+Dec $[-90^\circ, -30^\circ)$ & 487,629  & 0.4976 & 0.24 \\
+Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27 \\
+Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25 \\
 \hline
-\textbf{All sky}             & \textbf{3,321,795} & \textbf{0.4974} & \textbf{0.26\%} \\
+\textbf{All sky}             & \textbf{3,321,795} & \textbf{0.4974} & \textbf{0.26} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1565,7 +1579,8 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{388}, 1686 (2008).
 
 \bibitem{Dosovitskiy:2020}
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
-arXiv:2010.11929 (2020).
+in \textit{Proc.\ Int.\ Conf.\ Learning Representations (ICLR)} (2021)
+[arXiv:2010.11929].
 
 \bibitem{Golden:2026framework}
 H.~Golden,
