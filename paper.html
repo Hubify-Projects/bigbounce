@@ -19,243 +19,12 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <style>
-  /* arXiv-style paper rendering */
-  .arxiv-paper {
-    max-width: 720px;
-    margin: 0 auto;
-    background: #ffffff;
-    color: #1a1a1a;
-    font-family: 'Computer Modern', 'Latin Modern', 'Times New Roman', Georgia, serif;
-    font-size: 15px;
-    line-height: 1.65;
-    padding: 60px 56px;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  }
-  .arxiv-paper h1 {
-    font-family: 'Computer Modern', 'Latin Modern', 'Times New Roman', Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-align: center;
-    color: #1a1a1a;
-    line-height: 1.35;
-    margin: 0 0 20px;
-    letter-spacing: 0;
-  }
-  .arxiv-paper .paper-author {
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 4px;
-    color: #333;
-    font-style: italic;
-  }
-  .arxiv-paper .paper-affiliation {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 4px;
-  }
-  .arxiv-paper .paper-email {
-    text-align: center;
-    font-size: 13px;
-    color: #0066cc;
-    margin-bottom: 24px;
-  }
-  .arxiv-paper .paper-date {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 28px;
-  }
-  .arxiv-paper .paper-id {
-    text-align: right;
-    font-size: 12px;
-    color: #999;
-    font-family: 'Courier New', monospace;
-    margin-bottom: 24px;
-  }
-  .arxiv-paper hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 28px 0;
-  }
-  .arxiv-paper .abstract-box {
-    margin: 0 20px 28px;
-  }
-  .arxiv-paper .abstract-label {
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 8px;
-    color: #1a1a1a;
-  }
-  .arxiv-paper .abstract-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-    text-align: justify;
-  }
-  .arxiv-paper .keywords {
-    font-size: 12px;
-    color: #666;
-    margin-top: 12px;
-  }
-  .arxiv-paper .keywords strong {
-    color: #333;
-  }
-  .arxiv-paper .pacs {
-    font-size: 12px;
-    color: #666;
-    margin-top: 4px;
-  }
-  .arxiv-paper h2 {
-    font-family: 'Computer Modern', 'Latin Modern', 'Times New Roman', Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 32px 0 12px;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .arxiv-paper h3 {
-    font-family: 'Computer Modern', 'Latin Modern', 'Times New Roman', Georgia, serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #333;
-    margin: 20px 0 8px;
-    font-style: italic;
-  }
-  .arxiv-paper p {
-    color: #333;
-    margin: 8px 0;
-    text-align: justify;
-  }
-  .arxiv-paper .eq {
-    margin: 16px 0;
-    text-align: center;
-    font-size: 15px;
-    overflow-x: auto;
-  }
-  .arxiv-paper table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin: 16px 0;
-  }
-  .arxiv-paper table th {
-    padding: 6px 10px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 700;
-    color: #333;
-    border-bottom: 2px solid #333;
-    border-top: 2px solid #333;
-    background: transparent;
-    text-transform: none;
-    letter-spacing: 0;
-  }
-  .arxiv-paper table td {
-    padding: 5px 10px;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-  }
-  .arxiv-paper table tr:last-child td {
-    border-bottom: 2px solid #333;
-  }
-  .arxiv-paper table caption {
-    font-size: 13px;
-    font-weight: 700;
-    text-align: left;
-    margin-bottom: 6px;
-    color: #333;
-  }
-  .arxiv-paper .figure-box {
-    margin: 20px 0;
-    text-align: center;
-  }
-  .arxiv-paper .figure-box img {
-    max-width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-  }
-  .arxiv-paper .figure-caption {
-    font-size: 13px;
-    color: #555;
-    margin-top: 8px;
-    text-align: left;
-    line-height: 1.5;
-  }
-  .arxiv-paper .figure-caption strong {
-    color: #333;
-  }
-  .arxiv-paper .ref-list {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #333;
-  }
-  .arxiv-paper .ref-list p {
-    margin: 4px 0;
-    padding-left: 24px;
-    text-indent: -24px;
-    text-align: left;
-  }
-  .arxiv-paper strong {
-    color: #1a1a1a;
-  }
-  .arxiv-paper a {
-    color: #0066cc;
-  }
-  .arxiv-paper .section-number {
-    margin-right: 6px;
-  }
-  .arxiv-paper .ack-text {
-    font-size: 14px;
-  }
-
-  /* Export bar */
-  .export-bar {
-    max-width: 720px;
-    margin: 0 auto 32px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .export-bar .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 150ms ease;
-    text-decoration: none;
-  }
-  .export-bar .btn-primary {
-    background: var(--text);
-    color: var(--bg);
-  }
-  .export-bar .btn-primary:hover {
-    background: #333;
-    transform: translateY(-1px);
-  }
-  .export-bar .btn-secondary {
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .export-bar .btn-secondary:hover {
-    background: var(--bg-subtle);
-    border-color: var(--border-strong);
-  }
-  .export-bar .export-info {
-    font-size: 13px;
-    color: var(--text-tertiary);
-    margin-left: auto;
+  /* paper-id badge — mono preprint ID */
+  .paper-preprint-id {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
   }
 </style>
 <script src="nav.js" defer></script>
@@ -312,7 +81,7 @@
   <h2>The Papers</h2>
 
   <div id="paper1" class="card" style="margin-bottom: 20px; border-left: 4px solid var(--text);">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 1 &mdash; The Framework &amp; Reckoning <span class="badge badge-ready">99% Ready</span> <span class="badge badge-pdf">PDF 976 KB · 27 pp · Apr 27, 2026</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 1 &mdash; The Framework &amp; Reckoning <span class="badge badge-ready">99% Ready</span> <span class="badge badge-pdf">PDF 976 KB · 27 pp · Apr 27, 2026</span> <span class="paper-preprint-id">HUBIFY-2026-001</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> "Spin-Torsion Cosmology and the Search for Geometric Dark Energy: Structural Barriers, Perturbation Transparency, and Surviving Predictions"</p>
     <p style="font-size:14px;"><strong>Scope:</strong> Full ECH framework: LQC bounce + parity-odd effective action + inflationary suppression mechanism + MCMC constraints (Planck+BAO+SN, 309,789 frozen posterior samples across 3 dataset combinations (2 frozen) per Paper 1 &sect;VII.H canonical) + 14 structural barriers closing all bounce&rarr;DE routes + perturbation-transparency theorem (5-step proof, scalar + tensor) + hybrid-DE loophole rejection (7 forms) + ALP birefringence analysis (\(\beta = 0.27°\), MCMC inference with 9,720 samples, Bayes factor \(\ln B = 5.17\), LiteBIRD 9\(\sigma\) forecast) + falsification criteria. ~27 pages (focused version; supplementary material available).</p>
     <p style="font-size:14px;"><strong>Key results:</strong> \(\Lambda_{\rm eff} = \Xi M_{\rm Pl}^2 + c_\omega \omega^2\); fine-tuning reduced from \(10^{120}\) to \(\sim 10^5\); \(\Delta N_{\rm eff}\) consistent with zero in all datasets (\(-0.020 \pm 0.169\) on 119,617 post-burnin full-tension samples, corner plot published 2026-04-17); 14 barriers close all standard bounce&rarr;DE mechanism classes; ECH perturbation-transparency theorem (N3 novelty): Holst term topological for scalar field matter, \(\gamma\) invisible in all perturbation observables; ALP birefringence prediction \(\beta = 0.27°\) consistent with observed \(\beta = 0.242° \pm 0.061°\) (3.9\(\sigma\) from zero, inverse-variance combined Planck+ACT). Honest documentation of known limitations including assumed \(w = -1\) and missing photon-torsion coupling.</p>
@@ -325,7 +94,7 @@
   </div>
 
   <div id="paper2" class="card" style="margin-bottom: 20px; border-left: 4px solid #22c55e;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 2 &mdash; The Decisive Test <span class="badge badge-ready">100% Ready</span> <span class="badge badge-pdf">PDF 652 KB · Apr 27, 2026</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 2 &mdash; The Decisive Test <span class="badge badge-ready">100% Ready</span> <span class="badge badge-pdf">PDF 652 KB · Apr 27, 2026</span> <span class="paper-preprint-id">HUBIFY-2026-002</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> "Testing the Matter Bounce with Primordial Non-Gaussianity: Forecasts for SPHEREx and MegaMapper"</p>
     <p style="font-size:14px;"><strong>Scope:</strong> \(f_{\rm NL} = -35/8\) benchmark verification (Cai action audit + vertex-by-vertex normalization match at 92% confidence). Full-commutator polynomial (6,2,&minus;18,10,&minus;66,18) derived algebraically. Template mismatch quantified: \(r \approx 0.85\text{--}0.90\). Template-corrected SPHEREx galaxy bispectrum forecast (3&ndash;5\(\sigma\) realistic, 5&ndash;5.5\(\sigma\) optimistic before GR degradation). MegaMapper scale-dependent bias (3&ndash;7\(\sigma\)). Bayesian model comparison (600,000+ MC realizations). 6 publication figures. ~12 pages.</p>
     <p style="font-size:14px;"><strong>Key results:</strong> Cai vs Li normalization resolved (92% confidence, vertex-by-vertex match). &epsilon; correction bounded [1&ndash;8%], corrected f<sub>NL</sub> range: [&minus;4.35, &minus;4.02]. Bounce favored over standard single-field inflation at BF &gt;10<sup>5</sup>; favored over tuned multifield at BF ~8&ndash;17 (prior-dependent). Template-corrected SPHEREx significance: 3&ndash;5\(\sigma\) realistic (5&ndash;5.5\(\sigma\) optimistic before GR degradation). NaMaster injection: ALL levels pass. Null result would disfavor quasi-dust bounce at &gt;4\(\sigma\).</p>
@@ -337,8 +106,8 @@
   </div>
 
   <div id="paper3" class="card" style="margin-bottom: 20px; border-left: 4px solid #f97316;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge badge-ready">100% Ready</span> <span class="badge badge-pdf">PDF 27 MB · 33 pp · Apr 28, 2026</span></h4>
-    <p style="font-size:14px;"><strong>Title:</strong> "Spectral Anomalies Across Eight Major Surveys: 378,480 Unique Physical Objects from 37.3M Sources with Native-Retrained Autoencoders, 8-Way Positional Dedup, and f<sub>NL</sub> Tracer Improvement"</p>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 3 &mdash; The Discovery Catalog <span class="badge badge-ready">100% Ready</span> <span class="badge badge-pdf">PDF 27 MB · 33 pp · Apr 28, 2026</span> <span class="paper-preprint-id">HUBIFY-2026-003</span></h4>
+    <p style="font-size:14px;"><strong>Title:</strong> "Multi-Survey Spectral Anomaly Detection: 378,000 Anomalous Sources from 37 Million Objects Across Eight Astronomical Archives"</p>
     <p style="font-size:14px;"><strong>Target:</strong> ApJS (Astrophysical Journal Supplement Series)</p>
     <p style="font-size:14px;"><strong>Scope:</strong> Spectral and photometric autoencoder anomaly detection across 8 major public surveys: DESI DR1 (22.5M spectra, 173-column enhanced catalog), SDSS DR18 (2.3M spectra, 77,905 anomalies), LAMOST DR10 (11.4M spectra, 44,075 anomalies), eROSITA DR1 (930K X-ray sources, 298 BigAE top-cut anomalies), Planck CMB (20K patches, 200 anomalies), Gaia DR3 (50K variable stars, 500 anomalies), ACT DR6 (20K CMB patches, 200 anomalies), NEOWISE (43.5K sources, 436 anomalies). <strong>378,480 unique physical objects from 37.3M sources (58.8% SIMBAD-unmatched)</strong> &mdash; the largest multi-survey AI anomaly catalog ever produced, with 637 multi-survey coincidence clusters via 8-way positional dedup at 5&Prime;. SDSS component classified by UMAP+HDBSCAN into 14 clusters including 4,117 high-z QSO candidates and 585 blue-excess QSOs. Cross-survey validation: 3 SDSS&times;DESI matches at 3&Prime; including a z&asymp;5.27 QSO flagged independently by both pipelines. eROSITA component: 203 novel X-ray sources not in SIMBAD (68% novelty rate). DESI component: tiered anomaly system with 2,145 silver (score&gt;3, SNR&gt;0.5) and 120 gold (&gt;5&sigma;), 10 taxonomy families, photo-z &sigma;<sub>NMAD</sub>=0.028, injection/recovery at 0% false positive rate, 6.1% f<sub>NL</sub> improvement. Corrected Fisher forecast: &sigma;(f<sub>NL</sub>) = 8.98 standard, 8.43 multi-tracer.</p>
     <p style="font-size:14px;"><strong>Key results:</strong></p>
@@ -375,7 +144,7 @@
   </div>
 
   <div id="paper4" class="card" style="margin-bottom: 20px; border-left: 4px solid #a855f7;">
-    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge badge-ready-purple">100% Ready</span> <span class="badge badge-pdf">PDF 428 KB · Apr 27, 2026</span></h4>
+    <h4 style="margin-top:0; font-family:var(--font-sans);">Paper 4 &mdash; Galaxy Chirality at Scale <span class="badge badge-ready-purple">100% Ready</span> <span class="badge badge-pdf">PDF 428 KB · Apr 27, 2026</span> <span class="paper-preprint-id">HUBIFY-2026-004</span></h4>
     <p style="font-size:14px;"><strong>Title:</strong> &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies&rdquo;</p>
     <p style="font-size:14px;"><strong>Author:</strong> Houston Golden</p>
     <p style="font-size:14px;"><strong>Target:</strong> MNRAS (Monthly Notices of the Royal Astronomical Society)</p>
