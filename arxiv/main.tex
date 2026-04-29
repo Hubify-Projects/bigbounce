@@ -1199,7 +1199,7 @@ All MCMC results in this paper were obtained using the Cobaya framework (v3.5 fo
 \item \texttt{results/mcmc\_posterior\_summary.txt} --- Auto-generated posterior summary table (produced by \texttt{reproduce\_cosmology.sh}).
 \end{itemize}
 
-\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio, which is biased for the correlated posterior (see Sec.~\ref{sec:cosmo_fits} caveat); dedicated nested sampling would provide more robust estimates but is not included. The NaMaster birefringence analysis uses only 50 Monte Carlo realizations (see Sec.~\ref{sec:data_cmb} caveat). No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
+\noindent Pre-computed MCMC chains are not included due to file size ($\sim$1\,GB per run). Bayes factors (Table~\ref{tab:modelcomp}) were estimated via the Savage-Dickey density ratio, which is biased for the correlated posterior (see Sec.~\ref{sec:cosmo_fits} caveat); dedicated nested sampling would provide more robust estimates but is not included. The NaMaster birefringence analysis (Sec.~\ref{sec:data_cmb}) is now based on a 500-realization Monte Carlo production run (${\sim}5\%$ calibration uncertainty); the original 50-realization pilot is retained only as a historical cross-check. No CNN galaxy classifier or CMB polarization map analysis code is included; see the Data and Code Availability statement (Sec.~\ref{sec:conclusions}) for details.
 
 
 %% --- K: Claims Classification Table ---
