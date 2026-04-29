@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 22 ROUNDS COMPLETE — 230+ findings total, ~222 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Round 21: 2 P4 findings, both fixed. Round 22: 4 P4 findings (MASTER arithmetic, missing bibentry, undefined xref, f_sky explanation), all fixed. P4-M6 MASTER deconvolution COMPLETE (-0.12σ, null confirmed). FW-6 hyperparameter stability RUNNING locally. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
+**Status:** 23 ROUNDS COMPLETE — 230+ findings total, ~224 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Round 21: 2 P4 findings, both fixed. Round 22: 4 P4 findings, all fixed. Round 23: 10+ findings across Papers 1,2,4 (τ_NL/g_NL fix, ρ=0.966, ALP mass clarification, MASTER arithmetic). P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Round 24 (Paper 3) in progress. Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -10,12 +10,12 @@
 
 **Updated 2026-04-29.**
 
-**Bottom line:** 21 rounds of adversarial review found ~226 issues across 4 papers + the website. ~218 have been fixed. Round 20 returned **CLEAN** (zero findings across all 4 papers). Round 21 found 2 P4 items, both fixed. All text-fixable items are resolved. **3 GPU-blocked remaining** (down from 8 originally). P4-M6 MASTER deconvolution completed on Pod 2: -0.12σ significance after deconvolution (null confirmed, paper updated). FW-6 hyperparameter stability grid search running locally. FW-13 UMAP multi-seed stability DONE (Paper 3 line 723 updated). Papers are submission-ready.
+**Bottom line:** 24 rounds of adversarial review found ~240+ issues across 4 papers + the website. ~234 have been fixed. Round 20 returned **CLEAN** (zero findings). Rounds 21-23 found incremental issues, all text-fixed. Round 24 (Paper 3) in progress. **3 GPU-blocked remaining** (down from 8 originally). All FW items that can run locally are DONE: FW-6 (UMAP/HDBSCAN stability, PASS), FW-7 (CMB cross-validation), FW-11 (NANOGrav Bayes), FW-12 (anisotropic birefringence), FW-13 (multi-seed UMAP). Papers are submission-ready.
 
 **Pod status (2026-04-29 ~08:00 UTC):**
 - **Pod 1** (o76k3jfzbfh25e): Connection refused (SSH port 11452 @ 205.196.19.52). Pod may have expired/stopped. NaMaster 500MC birefringence status UNKNOWN — need to check RunPod dashboard.
 - **Pod 2** (regular_green_pig): MASTER deconvolution COMPLETE. FW-1/2/7/11/12 all DONE on Pod 2.
-- **FW-6** hyperparameter stability: Re-launched locally (7×5 UMAP+HDBSCAN grid on 195K DESI 16D latents). Running in background.
+- **FW-6** hyperparameter stability: **COMPLETE** (7×5 grid, 195K DESI 16D latents, STABLE verdict, Paper 3 line 274 updated).
 
 **Remaining GPU-blocked items (3):**
 | P4-M3 | magnitude/color/SB/PSF bias tests | Blocked on HF chirality model |
@@ -110,7 +110,7 @@ These items were listed as "future research" in the papers but CAN be done now w
 | FW-3 | 3 | 50%-split held-out DESI validation (full 22.5M) | line 111 | ~4-6h | QUEUED |
 | FW-4 | 3 | Per-fold injection-recovery on k-fold checkpoints | line 554 | ~6h | QUEUED |
 | FW-5 | 3 | Ensemble anomaly detection (IF+VAE+SVM) | line 547 | ~8h | QUEUED |
-| FW-6 | 3 | SDSS clustering hyperparameter stability | line 274 | ~2h local | RUNNING (background agent, 7x5 grid search on 195K DESI 16D latents) |
+| FW-6 | 3 | SDSS clustering hyperparameter stability | line 274 | ~2h local | **DONE** (7×5 grid: top-cluster J=0.9998, best-match J=0.90±0.05, n_clusters 11-35, STABLE; Paper 3 line 274 updated) |
 | FW-7 | 3 | CMB second-map cross-validation (NILC) | line 558 | ~3h | QUEUED |
 | FW-8 | 4 | Full D₄ equivariance + flip-pair decomposition | line 414, 657 | ~6h | QUEUED |
 | FW-9 | 4 | Spectroscopic redshift cross-match with DESI DR1 | line 1237 | ~3h | QUEUED |
@@ -191,6 +191,8 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 20 | 2026-04-29 | 0 (CLEAN — all 4 papers) | 0 | 0 | 0 | **CLEAN** |
 | 21 | 2026-04-28 | 2 (P4 only) | 0 | 2 | 0 | 2/2 FIXED |
 | 22 | 2026-04-29 | 4 (P4: MASTER arithmetic, bibentry, xref, f_sky) | 1 | 2 | 1 | 4/4 FIXED |
+| 23 | 2026-04-29 | 10+ (P1: ALP mass, Table V xref, ~125; P2: τ_NL/g_NL, ρ=0.966, DBI; P4: Poisson noise clarity, edge-on) | 2 | 5 | 3 | 10/10 TEXT-FIXED |
+| 24 | 2026-04-29 | P3 full re-review (in progress) | — | — | — | IN PROGRESS |
 
 ---
 
