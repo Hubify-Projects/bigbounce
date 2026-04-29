@@ -54,7 +54,7 @@ For each paper: trimmed plain-text abstract lives **alongside the tarball** as `
 - **Abstract webform:** `pipelines/p3_anomaly_engine/abstract_for_webform.txt` (1,480 chars, 440 headroom)
 - **Title (paste, `\\` stripped and `{,}` replaced with plain comma):**
   ```
-  Multi-Survey Spectral Anomaly Detection: 319,000 Uncataloged Objects from 37 Million Sources Across Eight Astronomical Archives
+  Multi-Survey Spectral Anomaly Detection: 378,000 Anomalous Sources from 37 Million Objects Across Eight Astronomical Archives
   ```
 - **Authors:** `Houston Golden`
 - **Primary:** `astro-ph.IM`

@@ -1,9 +1,35 @@
 # Master Adversarial Peer Review: 5 Agents, 4 Papers, 80+ Findings
 
-**Last updated:** 2026-04-29 14:23 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
+**Last updated:** 2026-04-29 14:38 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
 **Original date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 38 ROUNDS COMPLETE — 295+ findings total, ~289 fixed, 1 NEW open (P3 LAMOST inversion → task #129). Autonomous 15-min cron loop active (`70a9aba0`). Cross-surface number drift continuing to reconcile (R37 missed P2/P4 webform abstracts and index.html — closed in R38).
+**Status:** 39 ROUNDS COMPLETE — 300+ findings total, ~294 fixed, 0 open. Autonomous 15-min cron loop active (`70a9aba0`). R39 closed task #129 (P3 LAMOST inversion reverted — paper text wins) plus 4 SSOT/site drift fixes.
+
+---
+
+## ⚡ R39 EXACT SUMMARY — 2026-04-29 14:38 PDT
+
+### Autonomous-cron fire #2 outcome — task #129 closed + 4 cross-surface drift fixes
+
+R38 filed task #129 because sub-agent flagged paper3_draft.tex L43/L53/L200-208 actually publishes BOTH 44,075 (cross-transfer Table 1 baseline) AND 113,342 (Path-C native top-1%, S≥0.4613) — R37 #121 had wrongly called the 113,342 figure a "fire-#21 bookkeeping confabulation." Paper text wins all ties; R37 was wrong; R39 reverts.
+
+**APPLIED (5 findings closed):**
+
+| # | Finding | Resolution |
+|---|---------|------------|
+| 129 | **P3 LAMOST inversion** (R37 #121 was backwards) — paper3_draft.tex L207-208 footnote: "DESI 195,829 + SDSS 77,905 + LAMOST 113,342 + eROSITA 298 + Planck 200 + ACT 200 + Gaia 500 + NEOWISE 419 = 388,693 → 378,480 unique" — confirms 113,342 is the canonical Path-C native top-1% slice that feeds the headline 378,480 unique figure | `activity.html` L427-429 reverted: now acknowledges BOTH 44,075 cross-transfer (Paper 3 Table 1) AND 113,342 Path-C native top-1%; tags + body rewritten. |
+| 130 | **index.html L59 mislabel** — said "44,075 native — 21.4× artifact-rate reduction vs transfer" which conflated cross-transfer with native | Replaced with "44,075 cross-transfer + 113,342 Path-C native top-1%" (matches paper3_draft.tex Table 1 + footnote breakdown). |
+| 131 | **arxiv_submission_kit.md L57 stale P3 title** — listed "319,000 Uncataloged Objects" but paper3_draft.tex L43 was updated to "378,000 Anomalous Sources from 37 Million Objects" | Title corrected to paper-canonical wording. |
+| 132 | **SSOT/paper-4/status.md L5 stale** — claimed "11 pp" + commit `a63ef0b` + "12:02 PDT" but actual current state is 16 pp / commit `f62e352` / 14:02 PDT (verified via `mdls kMDItemNumberOfPages = 16` and `git log --oneline pipelines/p2_chirality/chirality_catalog_paper.pdf`) | "11 pp" → "16 pp"; "12:02 PDT" → "14:02 PDT"; "(commit `a63ef0b`)" → "(commit `f62e352`, supersedes `a63ef0b`)" |
+| 133 | **data-explorer.html meta drift** (3 meta tags L7/L11/L16) — all said "424,181 MCMC posterior samples across 4 dataset combinations" | All 3 updated to paper-canonical "424,781 MCMC posterior samples across 3 dataset combinations" via replace_all. |
+
+### Why no recompile this round
+
+R39 fixes were limited to HTML and SSOT markdown. No `.tex` source was edited, so PDFs from R37 (P1: 31pp/1.0MB, P4: 16pp/25.8MB) remain authoritative. Mirror in `public/papers/` is current.
+
+### Cron status — terminating
+
+R39 closed every open peer-review task. Task #129 → completed. No new findings spawned. Cron `70a9aba0` will be deleted on this fire per Step 6 of the autonomous-loop protocol. If Houston wants resumption, re-run `/CronCreate` with the same 15-min schedule.
 
 ---
 

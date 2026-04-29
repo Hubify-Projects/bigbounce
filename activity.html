@@ -424,9 +424,9 @@
 
   <div class="feed-item positive">
     <div class="feed-date">2026-04-02</div>
-    <div class="feed-title">LAMOST DR10 Complete &mdash; 11.4M Spectra, 44,075 Anomalies (Paper 3 Table 1 canonical)</div>
-    <p class="feed-body">Third survey complete in the multi-survey anomaly sweep. 11,418,594 LAMOST spectra scored by autoencoder in 18.3 hours. Cross-transfer scan: <strong>44,075 anomalies detected (0.39% rate)</strong> &mdash; this is the Paper 3 Table 1 canonical figure. (An earlier "Path-C native retrain 113,342" claim circulated briefly but was a fire-#21 bookkeeping confabulation that did not survive cross-paper coherence audit; Paper 3 publishes only the 44,075 cross-transfer figure with the QC-flagged blue-excess bias documented.)</p>
-    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">44,075 anomalies (Paper 3 canonical)</span><span class="feed-tag">QC: blue-excess bias</span></div>
+    <div class="feed-title">LAMOST DR10 Complete &mdash; 11.4M Spectra, 44,075 Cross-Transfer + 113,342 Path-C Native</div>
+    <p class="feed-body">Third survey complete in the multi-survey anomaly sweep. 11,418,594 LAMOST spectra scored by autoencoder in 18.3 hours. Paper 3 publishes <strong>both</strong> figures: <strong>44,075 cross-transfer anomalies (0.39% rate, Paper 3 Table 1 canonical baseline)</strong> and <strong>113,342 Path-C native top-1% (S &ge; 0.4613)</strong> which feeds the canonical 388,693 &rarr; 378,480 unique-physical-object Path-C dedup chain. (Native re-score Path-C at S&gt;5 yields the tighter 2,054 high-significance subset.) QC-flagged blue-excess bias documented in §validation.</p>
+    <div class="feed-tags"><span class="feed-tag pass">COMPLETE</span><span class="feed-tag">LAMOST DR10</span><span class="feed-tag">11.4M Spectra</span><span class="feed-tag">44,075 cross-transfer</span><span class="feed-tag">113,342 Path-C native</span><span class="feed-tag">QC: blue-excess bias</span></div>
   </div>
 
   <div class="feed-item positive">

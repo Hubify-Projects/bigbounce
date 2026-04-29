@@ -2,7 +2,7 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-29 (PDT, 12:02) — **R35 closed; SUBMISSION-LOCKED.** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; PDF recompiled to 25 MB / 11 pp / 0 undef refs with Apr 29 12:02 PDT title-page stamp (commit `a63ef0b`).
+Last authoritative update: 2026-04-29 (PDT, 14:02) — **R37 closed; SUBMISSION-LOCKED.** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; PDF recompiled to 25 MB / 16 pp / 0 undef refs with Apr 29 14:02 PDT title-page stamp (commit `f62e352`, supersedes `a63ef0b`).
 
 ## Current state (2026-04-29 PDT)
 
