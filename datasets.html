@@ -15,6 +15,7 @@
 <meta name="twitter:title" content="Datasets — BigBounce MCMC">
 <meta name="twitter:description" content="Cobaya MCMC configurations and dataset descriptions for Planck, BAO, and supernovae analyses.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="/gate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3/dist/chartjs-plugin-annotation.min.js"></script>
@@ -40,6 +41,7 @@
     font-size: 11px; color: var(--text-muted); font-style: italic;
     margin-top: 4px;
   }
+  /* Light-mode base for .honest-note (dark-mode overrides in style.css) */
   .honest-note {
     background: #fffbeb; border: 1px solid #fde68a;
     border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
@@ -880,7 +882,7 @@ if (brCtx) {
   });
 }
 </script>
-</div><script src="/astro/chat-widget.js" defer></script>
+<script src="/astro/chat-widget.js" defer></script>
 <script>
 (function() {
   try {
