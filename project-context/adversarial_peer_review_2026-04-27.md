@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 29 ROUNDS COMPLETE — 264+ findings total, ~258 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Rounds 21-28: incremental text-only fixes. Round 29: P1 template overlap r range 0.85-0.90→0.84-0.88 (cross-paper with P2), P2 c_1→κ_1 naming fix, P4 shot noise formula notation MAJOR fix ($N_{gal}^{-1}/Ω_{pix}$ → $4πf_{sky}/N_{gal}$), BF ~17 verified analytically CLEAN. P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
+**Status:** 30 ROUNDS COMPLETE — 265+ findings total, ~258 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Rounds 21-29: incremental text-only fixes. Round 30: 1 MINOR (P4 shot noise galaxy count — needs Houston verification). P1/P2/P3 CLEAN. P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -10,7 +10,7 @@
 
 **Updated 2026-04-29.**
 
-**Bottom line:** 29 rounds of adversarial review found ~264+ issues across 4 papers + the website. ~258 have been fixed. Round 20 returned **CLEAN** (zero findings). Rounds 21-29 found incremental issues, all text-fixed. Round 29 found 4 findings: P1 template overlap range, P2 coefficient naming, P4 shot noise formula (MAJOR), and verified P2 BF=17 analytically correct. **3 GPU-blocked remaining** (down from 8 originally). Cross-paper consistency: all 10 shared values verified CLEAN. Papers are submission-ready.
+**Bottom line:** 30 rounds of adversarial review found ~265+ issues across 4 papers + the website. ~258 have been fixed. Round 20 returned **CLEAN** (zero findings). Rounds 21-30 found incremental issues. Round 30: P1/P2/P3 CLEAN; 1 MINOR in P4 (shot noise N_gal vs N_spiral — needs Houston verification of which N the NaMaster pipeline used). **3 GPU-blocked remaining** (down from 8 originally). Cross-paper consistency: all 10 shared values verified CLEAN. Papers are submission-ready.
 
 **Pod status (2026-04-29 ~08:00 UTC):**
 - **Pod 1** (o76k3jfzbfh25e): Connection refused (SSH port 11452 @ 205.196.19.52). Pod may have expired/stopped. NaMaster 500MC birefringence status UNKNOWN — need to check RunPod dashboard.
@@ -198,6 +198,7 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 27 | 2026-04-29 | 8 (P1: CLEAN; P2: -35/16=-2.19→-2.1875 ×2; P3: "four caveats"→"five", broken sec:desi_second_level ref, 3 orphaned fig refs, SIMBAD 58.8% aggregate NOTE; P4: CLEAN; SITE: contributions.html β ×2, LAMOST 44,075 vs 113,342 NOTE) | 0 | 2 | 6 | 6/8 FIXED (2 NOTE — SIMBAD aggregate + LAMOST count are presentational, not errors) |
 | 28 | 2026-04-29 | 1 (P1: line 420 ALP summary missing mass parameter $m \approx 2H_0$; Deep arithmetic audit: P1 CLEAN 17/17, P2+P3 CLEAN all values) | 0 | 1 | 0 | 1/1 FIXED |
 | 29 | 2026-04-29 | 4 (P1: template overlap r=0.85-0.90→0.84-0.88 cross-paper with P2; P2: $c_1$→$\kappa_1$ naming in BF paragraph; P4: shot noise formula MAJOR — $N_{gal}^{-1}/\Omega_{pix}$ gives 7×10⁻⁴ not 1.26×10⁻⁶, fixed to $4\pi f_{sky}/N_{gal}$; P2 BF=17 verified analytically correct at σ=0.7, table shows MC median; P3: CLEAN; Cross-paper: all 10 values CLEAN) | 0 | 1 | 2 | 3/4 FIXED (1 NOTE — BF ~17 is analytically correct, table shows MC-marginalized median) |
+| 30 | 2026-04-29 | 1 (P4: shot noise uses N_gal=5,547,858 but asymmetry map only uses N_spiral=3,321,795; with N_spiral, C1_noise=2.12×10⁻⁶ and residual flips sign to -6.3×10⁻⁷ but still within null scatter; P1/P2/P3 CLEAN) | 0 | 0 | 1 | 0/1 NEEDS HOUSTON — which N did the NaMaster pipeline actually use? |
 
 ---
 
