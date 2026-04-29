@@ -8,16 +8,28 @@
 
 ## EXECUTIVE SUMMARY — What Needs Houston's Attention
 
-**Bottom line:** 12 rounds of adversarial review found 174 issues across 4 papers + the website. 156 have been fixed via text edits and committed. 18 remain. None are submission-blocking for any paper — they're improvements that would strengthen the papers but their absence won't get you desk-rejected.
+**Updated 2026-04-29.**
+
+**Bottom line:** 20 rounds of adversarial review found ~224 issues across 4 papers + the website. ~213 have been fixed. Round 20 returned **CLEAN** (zero findings across all 4 papers). All text-fixable items are resolved. Papers are submission-ready.
+
+### What remains (honest breakdown)
+
+- **5 GPU-blocked items** — nice-to-haves, not blockers. A referee might request 1-2 in R1.
+- **4 NOTEs** — no action needed (email, page count, companion paper timing, HF deposit timing)
+- **3 deferred-cosmetic** — invisible to readers (LaTeX comment numbering, convention choices)
+- **2 asset-blocked** — website-only (missing infographic image, PDF recompilation)
+- **1 matplotlib figure** — P3-M5 injection-recovery, ~30 min local job
+
+**PDFs can now be compiled locally** — `pdflatex` (TeX Live 2026 via Homebrew) installed on Mac with `revtex4-2` included. No more pod dependency for compilation.
 
 ### Paper Readiness (honest assessment)
 
 | Paper | Text-Fixed | Remaining | Submission-Ready? | Notes |
 |-------|-----------|-----------|-------------------|-------|
-| **Paper 1** (Spin-Torsion) | 38 fixes across 4 rounds | 5 (3 deferred-cosmetic, 2 notes) | **YES** | Deferred items are invisible to readers |
-| **Paper 2** (f_NL Forecast) | 29 fixes across 3 rounds | 0 remaining | **YES** | Template overlap resolved: r=0.84±0.02 noise-weighted (2026-04-28) |
-| **Paper 3** (Anomaly Catalog) | 37 fixes across 3 rounds | 0 remaining, 1 note | **YES** | K-fold + injection-recovery + UMAP stability all resolved locally (2026-04-28) |
-| **Paper 4** (Chirality) | 28 fixes across 3 rounds | 4 GPU-blocked | **YES** (with caveats) | See detailed assessment below |
+| **Paper 1** (Spin-Torsion) | 50+ fixes across 20 rounds | 5 (3 deferred-cosmetic, 2 notes) | **YES** | Round 20 CLEAN. Deferred items invisible to readers |
+| **Paper 2** (f_NL Forecast) | 40+ fixes across 20 rounds | 0 remaining | **YES** | Round 20 CLEAN. Template overlap resolved |
+| **Paper 3** (Anomaly Catalog) | 50+ fixes across 20 rounds | 1 note | **YES** | Round 20 CLEAN. K-fold + UMAP stability all resolved |
+| **Paper 4** (Chirality) | 40+ fixes across 20 rounds | 4 GPU-blocked | **YES** (with caveats) | Round 20 CLEAN on text. See GPU items below |
 
 ### Why Paper 4 Was Called "Weakest" (and why that's misleading)
 
@@ -30,14 +42,14 @@ Paper 4 was labeled "weakest by blocked-item count" because it has 4 GPU-blocked
 
 The 4 GPU-blocked items are all "would make the paper stronger" items, not "paper is wrong without them." A real referee might ask for 1-2 of these, but they'd be revision requests, not rejection reasons.
 
-### The 18 Remaining Items — Full Breakdown
+### The 15 Remaining Items — Full Breakdown
 
-#### GPU-BLOCKED (8 items) — Which actually need GPU time?
+#### GPU-BLOCKED (5 items remaining, 3 resolved) — Which actually need GPU time?
 
 | Item | Paper | What It Is | GPU Time | Actually Needed? | Houston's Call |
 |------|-------|-----------|----------|-----------------|----------------|
 | **P1-M3** | 1 | NaMaster needs 500+ MC (currently 50) | ~4-8h on H200 | **NICE-TO-HAVE.** Text already caveats the 50 MC as "preliminary." A real referee would request this, but it's appendix-level. The 20.74σ SNR result won't change qualitatively. | Defer to revision if requested |
-| **P2-C2** | 2 | Template overlap r weighting biased toward squeezed configs (signal-only, not noise-weighted) | ~2-4h | **NICE-TO-HAVE.** This is a methodological refinement. The paper already caveats this as an upper bound. The qualitative conclusion (SPHEREx can detect bounce f_NL) survives regardless. | Defer to revision if requested |
+| **P2-C2** | 2 | Template overlap r weighting biased toward squeezed configs (signal-only, not noise-weighted) | ~2-4h | **RESOLVED 2026-04-28.** r=0.84±0.02 noise-weighted. Paper updated. | **FIXED** |
 | **P3-C3** | 3 | In-sample scoring — DESI BigAE never tested on truly held-out data | ~11h on H200 | **STRONGEST case for running.** A savvy ML referee will immediately flag "you scored the same data you trained on." The text caveats help but a 50/50 rescore would kill this objection permanently. | **Recommend running** |
 | **P3-M1** | 3 | UMAP hyperparameters differ DESI/SDSS without stability analysis | ~1-2h | **RESOLVED LOCALLY 2026-04-28.** 20-seed UMAP stability analysis run on real 16D BigAE latents (195,829 DESI DR1 anomalies, 5K subsample). Results: trustworthiness=0.9919±0.0003 (PASS >0.90), kNN-preservation=0.536±0.002 (PASS >0.50), cross-seed distance correlation=0.908±0.060 (PASS >0.90). ALL_PASS=True. JSON: `pipelines/p3_anomaly_engine/umap_stability.json`. | **FIXED** |
 | **P4-M3** | 4 | Missing bias dimensions (magnitude, color, surface brightness, PSF) | ~4-8h (need to pull data + run tests) | **NICE-TO-HAVE.** Paper already has 8/10 bias tests. Missing magnitude/color bias is a gap but the existing spatial + morphological tests are thorough. A referee might request this in R1. | Defer to revision if requested |
@@ -69,7 +81,7 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 | Item | What It Is | What's Needed |
 |------|-----------|---------------|
 | WT-1 | Missing image: `articles/images/beyond_big_bounce_infographic.png` | Need to create or source this image. Not blocking paper submission. |
-| WT-5 | PDFs 1, 2, 4 may have missing figures (< 1MB each) | Need to recompile on a machine with texlive + all figures in same dir. Schedule during next pod session. |
+| WT-5 | PDFs 1, 2, 4 may have missing figures (< 1MB each) | **UNBLOCKED 2026-04-29**: `pdflatex` (TeX Live 2026) installed locally via `brew install texlive`. revtex4-2 included. Figures need symlinking to .tex dirs. Can compile locally now — no pod needed. |
 
 #### MATPLOTLIB (1 item) — Paper 3 only
 
@@ -79,24 +91,29 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 
 ### What Needs Houston's Decision
 
-1. **Run P3-C3 in-sample validation?** (~11h on H200) — I recommend yes. This is the one GPU item that a referee would almost certainly request. Everything else can wait.
+1. **Run the 5 GPU-blocked items in parallel?** Recommended: yes. 3 pods running simultaneously can crush all 5 in ~12h. See pod recommendations below.
 
-2. **Run all 8 GPU items?** (~30-45h) — Only if you want to pre-empt every possible referee request. Not needed for initial submission.
+2. **Paper 4 dipole claim.** The 2.75σ ℓ=1 result without MASTER deconvolution is shaky. If the dipole is secondary (main result = catalog + CW fraction), defer P4-M6.
 
-3. **Paper 4 dipole claim.** The 2.75σ ℓ=1 result without MASTER deconvolution is shaky. If you want the dipole as a headline result, P4-M6 needs to run. If the dipole is secondary (the main result is the catalog + CW fraction), skip it.
+3. **P3-M5 injection-recovery figure.** ~30 min matplotlib, can be done locally. Would improve Paper 3 readability.
 
-4. **P3-M5 injection-recovery figure.** This is a ~30 min matplotlib job that could be done locally. Would meaningfully improve Paper 3's readability.
+### Blockers That Need Houston
 
-5. **PDF recompilation (WT-5).** Next time you have a pod session, compile all 4 papers with figures embedded. Quick job but needs texlive.
+- **Pod creation** — API pod creation has been failing (runtime=null, containers never initialize). Houston needs to create pods manually via RunPod web dashboard and share SSH details.
+- **PDF recompilation (WT-5)** — RESOLVED: `pdflatex` now installed locally via Homebrew. Can compile all 4 papers locally. Some figures need to be symlinked to .tex directories.
 
-### Priority Order for Next GPU Session
+### Recommended Pod Configuration (3 pods, all tasks in parallel)
 
-If you're going to burn H200 time on review items:
+| Pod | GPU | Task(s) | Est. Time | Est. Cost |
+|-----|-----|---------|-----------|-----------|
+| **Pod A** | A100 80GB SXM or H100 | P3-C3: DESI 50/50 held-out validation (47K spectra, 5-fold BigAE) | ~11h | ~$13-20 |
+| **Pod B** | A100 80GB or L40S | P4-M3: magnitude/color/SB/PSF bias tests + P4-m4: edge-on contamination measurement | ~6-10h | ~$7-12 |
+| **Pod C** | L40S or RTX 4090 | P4-M4: Catalog C redshift re-analysis + P4-M6: NaMaster MASTER deconvolution (500 MC) + P1-M3: NaMaster 500 MC birefringence | ~8-12h | ~$5-10 |
 
-1. **P3-C3** — DESI 50/50 held-out validation (~11h) ← the one that matters
-2. **P3-M5** — injection-recovery figure (~30 min, can be local matplotlib)
-3. **WT-5** — PDF recompilation (~15 min on pod)
-4. Everything else → defer to referee revision requests
+**Total: ~$25-42 across 3 pods, ~12h wall time (parallel). All 5 GPU items resolved.**
+
+Docker image for all pods: `runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04`
+Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astropy`
 
 ---
 
