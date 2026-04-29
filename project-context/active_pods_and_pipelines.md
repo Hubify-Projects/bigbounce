@@ -1,12 +1,12 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-29 15:55 UTC
-**CURRENT PODS (2x H200):**
+**Last updated:** 2026-04-29 18:38 UTC (11:38 PDT)
+**CURRENT PODS (2x H200):** both idle, safe to pause.
 
 | Pod | Name | SSH | Task | Status |
 |-----|------|-----|------|--------|
 | **Pod 1** | frail_tomato_koi | `ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519` | P1-M3 NaMaster 500MC + P3-M1 UMAP (`pod_b_namaster_umap.sh`) | **DONE 2026-04-29T12:31:52Z** — results pulled to `pipelines/h200_results/pod1_namaster_umap_2026-04-29/`. NaMaster: β=0.27→0.238 SNR=20.32 consistency 0.77σ. UMAP: trust PASS, kNN_pres FAIL, cross_seed FAIL. |
-| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M3/M4/M6/m4 chirality + WT-5 PDF compile (`pod_a_chirality_compile.sh`) | **CRASHED 2026-04-29T09:53:21Z** — HF auth 401 on `bamfai/galaxy-chirality-v2` + `/workspace/external_catalogs/pre_desi.fits` missing. All 5 tasks blocked. Needs HF creds OR FITS upload. GPU idle since. |
+| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M3/M4/M6/m4 chirality + WT-5 PDF compile (`pod_a_chirality_compile.sh`) | **DONE 2026-04-29T18:38Z** — all 4 GPU tasks committed in `caf858a`. Bias hardening 4/8 PASS, MASTER 8.47M galaxies, dipole pulled from HF, edge-on equivariance suppression 3.86×. Pod idle (0% GPU, 0 python procs); safe to pause. Results in `pipelines/h200_results/pod2_chirality_2026-04-29/`. |
 
 **Note 2026-04-29:** Pods had been up ~9h with scripts staged but never launched — wasted ~$65 idle before launch. Pod 1 ran cleanly (~2.7h compute). Pod 2 crashed 2 min into Task 1 of 5 — burning $3.59/hr idle since 09:53Z.
 
@@ -15,6 +15,8 @@
 **Loop fire 2026-04-29 15:22 UTC:** Pods unchanged (Pod 1 idle since 12:31Z, Pod 2 still crashed on missing pre_desi.fits). R32 P1 micro-audit ba8ccbf — fixed stale 50MC ref at line 1202 (Reproducibility) → 500MC canonical. R32 P3 micro-audit e08c28d — replaced "two-out-of-three" with explicit "one-of-three PASS" UMAP framing. R32 closed cleanly for all 4 papers. R33 P2 + P4 micro-tasks spawned (cite/numbers/abstract for P2; figs/refs/table-headers for P4). Strategy validated: focused 30-min micro-tasks finish in 95-126s with 1-2 surgical commits each.
 **Loop fire 2026-04-29 15:37 UTC:** Pods unchanged. R33 P2 c02162b confusion-matrix % units hoisted; R33 P4 0f07552 MC count alignment in conclusion. R33 P1 + site sub-agents BOTH stalled at 600s (3-check scope still too broad). Switched to direct main-thread work: site activity-feed entry 2819f89 added for Pod 1 NaMaster 500MC + UMAP + R31–R33 paper closures. Site stat cards (1.58× anomaly bias, 14 barriers, 309,789 MCMC samples) confirmed clean — no stale 2.28× / 20.74 / ALL_PASS / 9,303 anywhere on public site. Lesson: future sub-agents must be 1-check scope only, not 3-check.
 **Loop fire 2026-04-29 15:55 UTC:** Pods unchanged. R33 P1 single-check (orphan sections only) — 20 sections + 43 subsections all populated, CLEAN, 184s. R33 P3 single-check (figure file existence only) — 21/21 \includegraphics resolve, CLEAN, 15s. 1-check scope works (zero stalls). No commits from sub-agents. Verified articles/ + CLAUDE.md + SSOT/index + SSOT/paper-1/status all already point to 500MC canonical (SNR=20.32) — historical 50MC/20.74 mentions only survive in dated journal entries (queue.md/drive-to-100.md fire ledgers, activity.html 2026-04-10 entry) where they belong.
+
+**Loop fire 2026-04-29 18:38 UTC (11:38 PDT):** Pod 2 unblocked + ALL 4 GPU tasks DONE. v2 chirality model loader patches landed (`1d2017b` — bias_hardening_suite.py + pod_a_chirality_compile.sh adapted to 3-class `enc`/`head` keys). 4 paper dates bumped to April 29 + P1/P2 PDFs recompiled (`f1954ad`). Pod 2 results pulled + committed (`caf858a`): bias hardening 4/8 PASS on 2k GZ DESI v2 galaxies; MASTER NaMaster pseudo-Cl on 8.47M galaxies, max C_ℓ=6.26e-3 at ℓ=9; dipole pulled from HF; edge-on contamination via raw→eq label transitions, equivariance suppression factor = 3.86× (raw asym +2.05% → eq asym -0.53%). Replaced HF-streaming Smith42/galaxies edge-on plan (kept hanging) with full-catalog statistics on `catalog_production.parquet`. SSOT/paper-4/status.md + SSOT/index.md updated to reflect 8/8 GPU work DONE. Both pods now idle.
 
 **Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 

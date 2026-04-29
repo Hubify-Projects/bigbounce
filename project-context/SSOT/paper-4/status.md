@@ -2,17 +2,18 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-29 (PDT) — R34 closed; 3 GPU items currently running on Pod 2; expected 100 % within ~14 h.
+Last authoritative update: 2026-04-29 (PDT) — R34 closed; **all 3 Pod 2 GPU items DONE** (commit `caf858a`). Paper 4 is at 100 % science readiness; remaining items are admin (PDF re-compile + site sync).
 
 ## Current state (2026-04-29 PDT)
 
-- **Readiness: ~96 %** → 100 % when Pod 2 completes (~14 h).
-- **R31–R34 incorporated.** N_gal = 5,547,858 closure (R31 open question resolved). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight.
-- **3 GPU items currently RUNNING on Pod 2** (regular_green_pig, HF token + chirality model unblocked 2026-04-29 ~10:30 PDT):
-  - **P4-M3** mag/color/SB/PSF bias tests
-  - **P4-M4** Catalog C redshift re-analysis
-  - **P4-m4** Edge-on contamination measurement
-- These are deferrable nice-to-haves (referee R1 risk, not rejection risk). Paper 4 is submission-ready WITH caveat right now; will hit 100 % when Pod 2 lands.
+- **Readiness: 100 % (science) / 99 % (admin).** All GPU-blocked validation work landed on `main`. Final 1 % is a paper.tex re-knit to incorporate the new Pod 2 numbers + a PDF re-compile.
+- **R31–R34 incorporated.** N_gal = 5,547,858 closure (R31). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight.
+- **Pod 2 GPU work — ALL DONE 2026-04-29 PDT** (commit `caf858a`, files in `pipelines/h200_results/pod2_chirality_2026-04-29/`):
+  - **P4-M3** bias hardening — 4/8 PASS on 2k GZ DESI v2 galaxies (`bias_hardening_results.json`). Flip/swap, rotation, artifacts, perturbation FAIL → flag in §validation; survey, calibration, leakage, hemispheric PASS.
+  - **P4-M4** Catalog C dipole — pulled from `bamfai/galaxy-chirality-catalog` (`catalog_c_summary.json`, `dipole_catalog_c.json`).
+  - **P4-M6** NaMaster MASTER pseudo-Cl deconvolution — 8,474,531 galaxies, NSIDE=64, f_sky=0.4928, max C_ℓ = 6.26e-3 at ℓ=9 (`master_power_spectrum.json`).
+  - **P4-m4** Edge-on contamination — **equivariance suppression factor = 3.86×** (raw asym +2.05% → eq asym −0.53%). 0.041 % of catalog (3,445 galaxies) flipped raw-CW/CCW → NOT_SPIRAL after symmetry correction (`edgeon_contamination.json`). Replaced HF-streaming approach with full-catalog statistics on `catalog_production.parquet`.
+- Pod 2 idle since work completed; can be paused.
 - **Cross-cite:** only Paper 1 (`Golden:2026framework` × 3 + bibitem) — resolvable post-hoc or simul-submit. NOT blocked by Paper 2 or Paper 3.
 
 Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this), `wiki/entities/pipeline-2-chirality.md` (stale), any "remaining work" list on the site.

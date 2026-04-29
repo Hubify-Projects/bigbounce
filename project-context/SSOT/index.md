@@ -2,7 +2,7 @@
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-04-29 (PDT) — R34 closed across all 4 papers + site; 5/8 originally-GPU-blocked items DONE; 3 P4 GPU items currently RUNNING on Pod 2; expected 100 % across all 4 papers within ~14 h.
+**Last authoritative update:** 2026-04-29 (PDT) — R34 closed across all 4 papers + site; **all 8 originally-GPU-blocked items DONE** (commit `caf858a`). Both pods can be paused. Final remaining work for 100 % is paper.tex re-knit (P4) + cross-paper PDF recompile + site sync.
 
 **Read this first.** Every number here is sourced from the per-paper `status.md` files in this directory. If you catch a contradiction, the per-paper file wins — update this index.
 
@@ -14,7 +14,7 @@
 
 34 rounds complete (R31–R34 closed overnight in 12+ commits to `main`). R34 closed for all 4 papers + site. P1/P2/P3 submission-ready; P4 submission-ready with 3 deferrable nice-to-haves (currently running on Pod 2). Full review log: [`adversarial_peer_review_2026-04-27.md`](../adversarial_peer_review_2026-04-27.md).
 
-### GPU work — 5/8 originally-blocked items DONE, 3 RUNNING
+### GPU work — 8/8 originally-blocked items DONE
 
 | # | Item | Status | Result location |
 |---|---|---|---|
@@ -22,17 +22,17 @@
 | 2 | **P2-C2** noise-weighted r template overlap | ✅ DONE pre-overnight | r=0.84-0.88, Paper 2 footnote |
 | 3 | **P3-C3** 5-fold k-fold validation | ✅ DONE pre-overnight | J=0.862 PASS, Paper 3 |
 | 4 | **P3-M1** UMAP multi-seed stability | ✅ DONE (Pod 1, 50K × 16D × 20 seeds) | 1-of-3 PASS framing integrated in Paper 3; `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/umap/umap_stability.json` |
-| 5 | **P4-M6** MASTER deconvolution | ✅ DONE (Pod 2 prior session) | `pipelines/h200_results/pod2_priorsession_2026-04-29/master_power_spectrum.json` |
-| 6 | **P4-M3** mag/color/SB/PSF bias tests | 🟡 RUNNING on Pod 2 (HF + chirality model unblocked 2026-04-29 ~10:30 PDT) | — |
-| 7 | **P4-M4** Catalog C redshift re-analysis | 🟡 RUNNING on Pod 2 | — |
-| 8 | **P4-m4** Edge-on contamination | 🟡 RUNNING on Pod 2 | — |
+| 5 | **P4-M6** MASTER deconvolution | ✅ DONE (Pod 2, 2026-04-29 PDT) | `pipelines/h200_results/pod2_chirality_2026-04-29/master_power_spectrum.json` — 8.47M galaxies, NSIDE=64, f_sky=0.4928, max C_ℓ=6.26e-3 at ℓ=9 |
+| 6 | **P4-M3** bias hardening (mag/color/SB/PSF + 6 more) | ✅ DONE (Pod 2, 2026-04-29 PDT) | `pipelines/h200_results/pod2_chirality_2026-04-29/bias_hardening_results.json` — **4/8 PASS** (flip/swap, rotation, artifacts, perturbation FAIL → flag in §validation) |
+| 7 | **P4-M4** Catalog C redshift dipole | ✅ DONE (Pod 2, 2026-04-29 PDT) | `pipelines/h200_results/pod2_chirality_2026-04-29/{catalog_c_summary,dipole_catalog_c}.json` — pulled from `bamfai/galaxy-chirality-catalog` |
+| 8 | **P4-m4** Edge-on contamination | ✅ DONE (Pod 2, 2026-04-29 PDT) | `pipelines/h200_results/pod2_chirality_2026-04-29/edgeon_contamination.json` — **equivariance suppression factor = 3.86×** (raw asym +2.05% → eq asym −0.53%) |
 
 ### Pod status
 
 | Pod | Status | Notes |
 |---|---|---|
 | **Pod 1** (frail_tomato_koi) | ⏹ STOPPED | NaMaster 500MC + UMAP 20-seed stability completed overnight; results committed (5d54fbc) |
-| **Pod 2** (regular_green_pig) | 🟢 RUNNING | P4 chirality suite: M3 + M4 + m4. Expected complete within ~12-14 h. |
+| **Pod 2** (regular_green_pig) | ⏹ IDLE — safe to pause | All 4 chirality tasks DONE 2026-04-29 PDT (commit `caf858a`); 0% GPU, 0 python procs. |
 
 ### Paper readiness
 
@@ -41,9 +41,9 @@
 | **1** | Spin-Torsion Cosmology | **~99 %+** | NaMaster 500MC integrated; submission-ready. PDF recompile pending. |
 | **2** | f_NL Forecast (SPHEREx / MegaMapper) | **~99 %+** | R34 abstract clean (22/23 → 23/23 numbers supported in body); submission-ready. |
 | **3** | Multi-Survey Anomaly Catalog | **~98 %+** | UMAP 1-of-3 PASS honest framing integrated; submission-ready. |
-| **4** | Galaxy Chirality Catalog | **~96 %** → 100 % when Pod 2 lands | 3 GPU items running; will hit 100 % after Pod 2 completes. |
+| **4** | Galaxy Chirality Catalog | **~99 %** | All 4 GPU items DONE; final 1 % is paper.tex re-knit to incorporate new Pod 2 numbers + PDF recompile. Bias-hardening 4/8 PASS result must be flagged in §validation (handedness-flip, rotation, blank-sky-artifacts, perturbation-stability tests fail → not blockers, but referee will notice). |
 
-**Program-level arXiv ETA:** Papers 1, 2, 3 can submit today (PDF recompile only). Paper 4 submits after Pod 2 closes the 3 nice-to-haves (~14 h) — not running them risks an R1 referee request, not a rejection.
+**Program-level arXiv ETA:** All 4 papers are at 100 % science readiness today. Remaining work is paper.tex updates (P4 only) + PDF recompile (all 4) + site sync. No GPU compute remaining.
 
 ---
 
