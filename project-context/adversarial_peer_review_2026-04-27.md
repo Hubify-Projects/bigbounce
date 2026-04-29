@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 13 ROUNDS COMPLETE — all text-fixable items resolved (179 findings, ~160 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
+**Status:** 14 ROUNDS COMPLETE — all text-fixable items resolved (189 findings, ~170 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
 
 ---
 
@@ -117,6 +117,7 @@ If you're going to burn H200 time on review items:
 | 11 | 2026-04-28 | 10 (P3 re-review 2) | 0 | 6 | 4 | 10/10 FIXED |
 | 12 | 2026-04-28 | 14 (P1 re-review 2) | 0 | 4 | 10 | 14/14 FIXED |
 | 13 | 2026-04-28 | 5 (P1 full re-read) | 0 | 1 | 4 | 1/1 TEXT-FIXED, 4 NOTE |
+| 14 | 2026-04-28 | 10 (P2 re-review 3) | 0 | 5 | 5 | 10/10 FIXED |
 
 ---
 
@@ -1044,3 +1045,20 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P1-R13-3 | NOTE | Footnote `fn:spherex_range` (line 484) runs ~8 lines. PRD reviewers sometimes object to footnotes this long. Could be a remark or collapsed into body text. | COSMETIC | [ ] NOTE — acceptable for now |
 | P1-R13-4 | NOTE | NANOGrav discussion (line 947-948) is ~25-line single paragraph in "Future Observational Prospects." Dense enough to be its own subsection. | COSMETIC | [ ] NOTE — acceptable for now |
 | P1-R13-5 | NOTE | All section cross-references verified: 29 `\ref{sec:...}` targets all have corresponding `\label` definitions. No broken refs. | VALIDATION | ✅ PASS |
+
+## ROUND 14: ADVERSARIAL RE-REVIEW OF PAPER 2 (2026-04-28)
+
+**Method:** Single Opus 4.6 agent — hostile PRD referee, full numerical audit of Paper 2 (f_NL Forecast)
+
+| # | Sev | Finding | Fixable? | Status |
+|---|-----|---------|----------|--------|
+| P2-R14-1 | MAJOR | **Consistency relation kappa_1/c mismatch.** Paper states kappa_1 in [2, 18] and c = -kappa_1/8, which gives c in [-2.25, -0.25]. But paper claims c in [-0.7, -10]. For c in [-0.7, -10] to hold, kappa_1 must be in [5.6, 80]. The f_NL range [-4.35, -4.02] at n_s=0.9649 is consistent with c in [-0.7, -10], confirming the c range is correct and kappa_1 bounds were wrong. | TEXT | [x] FIXED — kappa_1 bounds corrected to [5.6, 80] |
+| P2-R14-2 | MAJOR | **Abstract ratio ~300 vs body ~290.** Abstract says \|f_NL_bounce\|/\|f_NL_inf\| ~ 300; Sec V.A and Conclusion say ~290. Actual: 4.375/0.015 = 291.7. Body value is closer. | TEXT | [x] FIXED — abstract changed to ~290 |
+| P2-R14-3 | MAJOR | **MegaMapper 8.75sigma mislabeled.** Text says "8.75sigma at the published ideal sigma=0.5 (template-mismatch correction only)" but 4.375/0.5 = 8.75 is WITHOUT template correction. With r=0.84: 7.35sigma. | TEXT | [x] FIXED — corrected to 7.4-7.7sigma with template correction; 8.75sigma labeled as naive (no correction) |
+| P2-R14-4 | MAJOR | **Partial-sky passage internally contradictory.** Claims amplitude recovery reduces by (1-f_sky)^{1/2} ~ 55%, then says "i.e." noise increases by 1/sqrt(0.7) ~ 1.19, a ~19% degradation — as if these are the same statement. They are not: 55% reduction in amplitude vs 19% increase in noise are different effects. The shape overlap r is a property of the bispectrum templates, not sky coverage. | TEXT | [x] FIXED — rewrote to describe only the noise degradation (1/sqrt(f_sky)), removed the erroneous amplitude-recovery claim |
+| P2-R14-5 | MAJOR | **Missing bibliography entry.** `Planck:2019fnl` cited in Sec VII (Planck f_NL = -0.9 +/- 5.1) but absent from `focused_paper_refs.bib`. Will produce "?" in compiled PDF. | TEXT | [x] FIXED — added Planck 2020 A&A 641 A9 entry |
+| P2-R14-6 | MINOR | **Bayes factor table upper bound 23 inconsistent with Tab III.** Tab:bayes says BF 10-23 for bounce vs tuned multifield "reflecting different GR treatment scenarios (Tab III)." But Tab III shows BF vs Tuned: 10.9, 9.4, 7.9, 10.9 — range 7.9-10.9, not 10-23. The 23 has no source. | TEXT | [x] FIXED — changed to 8-11, matching Tab III range |
+| P2-R14-7 | MINOR | **Noise-weighted significance 5.3sigma arithmetic error.** Paper states 5.3sigma for r=0.83. Correct: 0.83 * 4.375 / 0.7 = 5.19sigma, rounds to 5.2sigma. Appears in 4 locations (abstract, Sec IV, Sec V, Conclusion). | TEXT | [x] FIXED — all 4 occurrences changed to 5.2sigma |
+| P2-R14-8 | MINOR | **"63% spread" has no standard metric.** BNL varies from -4.375 (squeezed) to -2.250 (folded). Paper calls this "63% spread" but \|Delta\|/\|squeeze\| = 48.6%, \|Delta\|/\|fold\| = 94.4%, mean-based = 64.2%. No standard definition gives 63%. | TEXT | [x] FIXED — changed to "49% fractional variation" with explicit formula |
+| P2-R14-9 | MINOR | **Linearization note misidentifies slow-roll formula.** Calls n_s - 1 = 2(2epsilon - eta) the "exact expression from the growing-mode solution," but this is the standard slow-roll formula, not specific to the bounce. The correct bounce relation is n_s = 1 + 12w (Wilson-Ewing 2012). The two agree at leading order but the slow-roll formula gives n_s = 7 for exact matter domination (epsilon=3/2, eta=0). | TEXT | [x] FIXED — rewrote to cite n_s = 1 + 12w as the exact growing-mode relation, with slow-roll formula as a cross-check |
+| P2-R14-10 | MINOR | **Naive significance 6.3sigma rounded up.** 4.375/0.7 = 6.25, not 6.3. Appears in 2 locations. | TEXT | [x] FIXED — changed to 6.25sigma in both locations |
