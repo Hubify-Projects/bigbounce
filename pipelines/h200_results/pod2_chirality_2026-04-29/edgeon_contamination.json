@@ -1,0 +1,34 @@
+{
+  "method": "Edge-on contamination via raw->equivariant label reassignment",
+  "n_galaxies": 8474531,
+  "median_entropy_eq": 0.07918787001905575,
+  "raw_to_eq_transition_matrix": {
+    "CCW->CCW": 9927,
+    "CCW->CW": 4977,
+    "CCW->NOT_SPIRAL": 1952,
+    "CW->CCW": 5586,
+    "CW->CW": 10481,
+    "CW->NOT_SPIRAL": 1493,
+    "NOT_SPIRAL->CCW": 1102,
+    "NOT_SPIRAL->CW": 1066,
+    "NOT_SPIRAL->NOT_SPIRAL": 51694
+  },
+  "edge_on_candidates_reclassified_NS": 3445,
+  "edge_on_fraction_pct": 0.040651217158802065,
+  "raw_handedness_asym_in_pool": -459,
+  "raw_handedness_asym_in_pool_pct": -13.32365747460087,
+  "full_catalog_asym_raw_pct": 2.0455602045560206,
+  "full_catalog_asym_eq_pct": -0.5293706031563559,
+  "equivariance_suppression_factor": 3.864136376971881,
+  "confidence_stratified_NS_pct": {
+    "(0.0, 0.5]": 31.27005269958334,
+    "(0.5, 0.6]": 16.249960312615848,
+    "(0.6, 0.7]": 39.72684640248117,
+    "(0.7, 0.8]": 48.14674466522985,
+    "(0.8, 0.9]": 55.74937921554949,
+    "(0.9, 0.95]": 62.1884659542524,
+    "(0.95, 1.0]": 91.06104355517694
+  },
+  "interpretation": "Equivariant post-processing absorbs handedness ambiguity in edge-on galaxies. Raw-model CW/CCW labels that flip to NOT_SPIRAL after equivariance correction are the edge-on contamination pool. Suppression factor quantifies how much handedness bias drops after the symmetry correction.",
+  "runtime_seconds": 6.520975589752197
+}
