@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 15 ROUNDS COMPLETE — all text-fixable items resolved (198 findings, ~179 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
+**Status:** 16 ROUNDS COMPLETE — all text-fixable items resolved (208 findings, ~189 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
 
 ---
 
@@ -119,6 +119,7 @@ If you're going to burn H200 time on review items:
 | 13 | 2026-04-28 | 5 (P1 full re-read) | 0 | 1 | 4 | 1/1 TEXT-FIXED, 4 NOTE |
 | 14 | 2026-04-28 | 10 (P2 re-review 3) | 0 | 5 | 5 | 10/10 FIXED |
 | 15 | 2026-04-28 | 9 (P3 re-review 3) | 0 | 4 | 5 | 9/9 TEXT-FIXED |
+| 16 | 2026-04-28 | 10 (P4 re-review 3) | 0 | 6 | 4 | 10/10 FIXED |
 
 ---
 
@@ -1101,3 +1102,46 @@ W-8 ✅ All article pages + activity.html stale values fixed
 - All `\cite` keys have matching `\bibitem` entries (after Phinney2001 removal)
 - All `\ref` targets have matching `\label` definitions (after tab:highz_candidates fix)
 - 5-fold Jaccard percentages: 73.1%, 85.0%, 8.6% (all correct from 399/546, 464/546, 47/546)
+
+## ROUND 16: ADVERSARIAL RE-REVIEW OF PAPER 4 (2026-04-28)
+
+**Method:** Single Opus 4.6 agent — hostile PRD referee, full 1601-line re-read of `pipelines/p2_chirality/chirality_catalog_paper.tex` with systematic numerical audit (all table sums, sigma deviations, training-set arithmetic, sensitivity derivation recomputed in Python), cross-reference verification (`\label`/`\ref` parity check), citation-bibliography consistency (`\cite`/`\bibitem` parity check), and macro definition audit.
+
+**Audit scope:** (1) All 27 `\cite` keys checked against 27 `\bibitem` entries -- no orphans; (2) All 44 `\ref` targets checked against 44 `\label` definitions -- no broken refs; (3) Galaxy count sum (CW+CCW+NS vs total), confusion matrix row sums, sky-balance table RA/Dec sums, training-set item counts, CW fractions, sigma deviations, sensitivity-floor derivation all recomputed arithmetically; (4) All macro definitions checked for completeness vs usage; (5) Percentage claims, ratio claims ("factor of N"), and coverage fractions verified.
+
+| # | Sev | Finding | Fixable? | Status |
+|---|-----|---------|----------|--------|
+| P4-R16-1 | MAJOR | **Undefined macro `\fcw` on line 395.** `\fcw^{\rm eq}` is used in the TTA section but no `\newcommand{\fcw}` exists. The defined macro is `\pcw` (= P_CW). This will produce a LaTeX error or compile as italic "fcw" -- visible in the PDF as a broken symbol. | TEXT | [x] FIXED -- changed `\fcw^{\rm eq}` to `$f_{\rm CW}^{\rm eq}$` |
+| P4-R16-2 | MAJOR | **Training set total arithmetic error.** GZ1 (6,637) + CE-ResNet spiral (17,153) + CE-ResNet NS (846) + synthetic (2,000) = 26,636. Paper states 26,626 in three locations (abstract, Sec II.B total, Sec II.B percentage). Off by 10. | TEXT | [x] FIXED -- all three occurrences corrected to 26,636 |
+| P4-R16-3 | MAJOR | **Coverage claim "< 0.3%" is false.** 26,636 / 8,474,531 = 0.314%, which exceeds 0.3%. | TEXT | [x] FIXED -- changed to "< 0.32%" |
+| P4-R16-4 | MAJOR | **Catalog A-to-C text uses benchmark-subset value, not Catalog A.** Line 488-489 says "the Catalog A -> C correction (0.5012 -> 0.4974) shifts the CW fraction by 0.38%." But Catalog A = 0.5079, not 0.5012. The 0.5012 is the benchmark-overlap equivariant subset (as stated in the footnote near line 664). The actual A->C shift is |0.5079 - 0.4974| = 1.05%, not 0.38%. The 0.38% is the subset-to-full-catalog offset. | TEXT | [x] FIXED -- rewritten to correctly describe the benchmark-overlap subset offset |
+| P4-R16-5 | MAJOR | **T8 bias test 51.3% raw inconsistent with Catalog A = 50.79%.** Table 1 (bias tests) reports T8 CW balance as "51.3% raw" but Table II (CW fractions) reports Catalog A raw at 0.5079 = 50.8%. These measure the same quantity (CW/(CW+CCW) on the raw catalog). Discrepancy of 0.5 percentage points. | TEXT | [x] FIXED -- corrected to 50.8% |
+| P4-R16-6 | MAJOR | **Confusion matrix caption says "CW<->CCW at approximately 3%" but actual values are 4.6% and 5.8%.** The confusion matrix shows CW->CCW at 4.6% and CCW->CW at 5.8%. The average off-diagonal confusion is 5.2%, not approximately 3%. | TEXT | [x] FIXED -- changed to "4--6%" |
+| P4-R16-7 | MINOR | **Catalog A sigma deviation 28.7sigma should be 28.8sigma.** (0.5079 - 0.5) / sqrt(0.5079 * 0.4921 / 3,321,795) = 28.80, which rounds to 28.8, not 28.7. Appears in Table II and two body-text locations. | TEXT | [x] FIXED -- all three occurrences corrected to 28.8sigma |
+| P4-R16-8 | MINOR | **Bonferroni passage has redundant sentence.** Lines 852-855: "which is conservative for correlated test statistics (neighboring hemisphere axes share most of their galaxies). The Bonferroni correction is known to be conservative for correlated tests." The second sentence repeats the first's parenthetical. | TEXT | [x] FIXED -- removed redundant sentence |
+| P4-R16-9 | MINOR | **BH FDR applied to "8-test suite" but context is ~650 hemisphere directions.** Line 856-858: "yields identical conclusions (no significant detections) for the 8-test suite" -- the BH test here is applied to the hemisphere scan (~650 directions), not the 8-test bias audit. "8-test suite" is the wrong referent. | TEXT | [x] FIXED -- changed to "across the ~650 hemisphere directions" |
+| P4-R16-10 | MINOR | **"Factor of ~7" for Shamir refutation is actually ~6.4x.** 3% / 0.47% = 6.38, which rounds to 6, not 7. Appears in 4 locations (abstract, intro, Sec V.A, conclusions). The abstract and intro both say "a factor of ~7 smaller" which overstates the comparison. | TEXT | [x] FIXED -- all 4 occurrences changed to "factor of ~6" |
+
+**Verified clean (no issues found):**
+- Galaxy count sum: 1,687,069 + 1,634,726 + 5,152,736 = 8,474,531 (correct)
+- QC failures: 8,474,688 - 8,474,531 = 157 (correct)
+- Spiral count: 1,687,069 + 1,634,726 = 3,321,795 (correct)
+- CW fraction raw: 1,687,069 / 3,321,795 = 0.50787 rounds to 0.5079 (correct)
+- CW fraction percentages: 19.9%, 19.3%, 60.8% all match
+- Spiral fraction: 3,321,795 / 8,474,531 = 39.2% (stated ~39%, correct)
+- Equivariant sigma: sqrt(0.4974*0.5026/3,321,795) = 0.000274 (correct)
+- Equivariant deviation: (0.5 - 0.4974) / 0.000274 = 9.5sigma (correct)
+- Catalog B deviation: 14.6sigma (correct)
+- Sky balance table: RA sum = 3,321,795, Dec sum = 3,321,795 (both correct)
+- All 7 |Delta| values in sky balance table match |CW_frac - 0.5| (correct)
+- CE-ResNet percentage: 17,999 / 26,636 = 67.6% (correct with new total)
+- CW/ACW ratio: 0.4974 / 0.5026 = 0.990 (correct)
+- CE-ResNet coverage comparison: 3,321,795 / 1,953,246 = 1.7x (correct)
+- SpArcFiRe comparison: 3,321,795 / 140,000 = 23.7x rounds to ~24 (correct)
+- Shamir comparison: 3,321,795 / 200,000 = 16.6x rounds to ~17 (correct)
+- Confusion matrix rows all sum to 100% (correct)
+- Sensitivity floor: sigma_global = 0.027%, sigma_pix = 0.76%, sigma_dip = 0.048%, min detectable = 0.14% -> rounded to 0.2% (correct)
+- Factor of ~7 between sigma_global and min detectable dipole: 0.2/0.027 = 7.4 (correct -- this is a DIFFERENT "factor of 7" from the Shamir one)
+- All 27 \cite keys have matching \bibitem entries (no orphans)
+- All 44 \ref targets have matching \label definitions (no broken refs)
+- 192 shards * 44,139/shard = 8,474,688 (matches stated parent count)

@@ -57,7 +57,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 We present the largest galaxy chirality catalog to date: 8,474,531
 galaxies from the DESI Legacy Imaging Surveys DR8 (Smith42/galaxies),
 each classified as clockwise~(\CW), counter-clockwise~(\CCW), or not
-spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
+spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,636 images
 from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
 synthetic hard negatives. The classifier achieves 93.7\% three-class
 validation accuracy (with 67.6\% of training labels derived from
@@ -81,7 +81,7 @@ look-elsewhere correction. This is the most sensitive chirality
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
 $3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
 Shamir~\cite{Shamir:2020,Shamir:2022} is definitively refuted: our
-maximum regional asymmetry is 0.47\%, a factor of~7 smaller. We further
+maximum regional asymmetry is 0.47\%, a factor of~6 smaller. We further
 show that raw survey systematics can masquerade as a $94.6\sigmaunit$
 dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
 necessity of equivariant post-processing. All sky regions are balanced
@@ -165,7 +165,7 @@ offset is $0.26\%$ ($\CW/(\CW+\CCW) = 0.4974$ vs.\ $0.5000$), which
 is spatially uniform and produces no dipole signal; the dipole
 amplitude upper limit is ${\sim}0.2\%$ (minimum detectable at
 $3\sigmaunit$). A conclusive refutation of Shamir's claimed
-$\sim\!3\%$ asymmetry by a factor of~7.  Perhaps equally important, we
+$\sim\!3\%$ asymmetry by a factor of~6.  Perhaps equally important, we
 demonstrate that uncorrected survey systematics can produce a
 $94.6\sigmaunit$ spurious dipole from a classifier bias of
 only $0.79\%$---a cautionary result for the entire field.
@@ -234,15 +234,15 @@ We assemble training labels from three sources:
   serving as unambiguous \NS{} training examples.
 \end{enumerate}
 
-The combined training set contains 26,626~images, split 80/20 into
+The combined training set contains 26,636~images, split 80/20 into
 training and validation subsets with stratified class balance.
-The 26{,}000-galaxy training set covers $< 0.3\%$ of the inference
+The ${\sim}27{,}000$-galaxy training set covers $< 0.32\%$ of the inference
 catalog. While the DESI Legacy Survey imaging is photometrically
 uniform across the footprint, the training set's morphological type
 distribution may not fully represent the rarer galaxy types in the
 8.47M sample; the \NS{} class mitigates this by explicitly routing
 ambiguous objects away from chirality classification.
-We note that 67.6\% of training labels (17,999 of 26,626) derive from
+We note that 67.6\% of training labels (17,999 of 26,636) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
 than independent ground truth. On the Galaxy~Zoo~1-only subset
@@ -326,7 +326,7 @@ excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
   classifier on the held-out validation set. Rows are true labels;
   columns are predicted labels. Values are recall fractions (row-normalized).
   The dominant off-diagonal confusion is CW$\leftrightarrow$CCW at
-  $\approx 3\%$; \NS{} is misclassified as a spiral at $< 2\%$.}
+  $4\text{--}6\%$; \NS{} is misclassified as a spiral at $< 2\%$.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 \textbf{True $\backslash$ Predicted} & \textbf{CW} & \textbf{CCW} & \textbf{NS} \\
@@ -392,7 +392,7 @@ CW$\leftrightarrow$CCW channels by construction, which is the primary
 goal; logit averaging would also symmetrize but with different
 confidence scaling and no equivariance guarantee for the \NS{} channel.
 The choice affects confidence calibration but not the equivariance
-property that ensures $\fcw^{\rm eq}$ is unbiased under horizontal
+property that ensures $f_{\rm CW}^{\rm eq}$ is unbiased under horizontal
 reflection.
 We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
@@ -485,9 +485,10 @@ validates the absence of \emph{gross} systematic contamination at the
 ${\sim}10\%$ level. However, the residual $9.5\sigma$ CW-fraction
 deficit ($0.4974$ vs.\ $0.5000$) operates at the $0.26\%$ level,
 well below the sensitivity of the current bias thresholds. As an
-upper bound on undetected bias, we note that the Catalog~$A \to C$
-correction ($0.5012 \to 0.4974$) shifts the CW fraction by $0.38\%$
----at the same level as the observed deficit itself. This correction
+upper bound on undetected bias, we note that the benchmark-overlap
+subset offset ($0.5012$ for the CE-ResNet-overlapping galaxies vs.\
+$0.4974$ for the full catalog) is $0.38\%$---at the same level as
+the observed deficit itself. This correction
 is orientation-dependent by construction and therefore provides an
 empirical ceiling on what residual orientation-dependent bias could
 do to the final result; the $9.5\sigma$ detection survives after
@@ -516,7 +517,7 @@ T4: Perturbation & Blur/dark agreement & 84\% & $>80\%$ \\
 T5: Metadata leakage & $|\text{corr}(\pcw, \text{RA/Dec})|$ & $<\!0.04$ & $<0.10$ \\
 T6: Hemispheric null & CW frac.\ N vs.\ S diff.\ (Catalog~A) & 3.6\% raw & $<10\%$ \\
 T7: Calibration & Frac.\ at $>0.9$ conf. & 37.9\% & Qualitative \\
-T8: CW balance & $\CW/(\CW+\CCW)$ & 51.3\% raw; 49.74\% eq.$^a$ & $50 \pm 10\%$ \\
+T8: CW balance & $\CW/(\CW+\CCW)$ & 50.8\% raw; 49.74\% eq.$^a$ & $50 \pm 10\%$ \\
 \end{tabular}
 \end{ruledtabular}
 $^a$Full-catalog equivariant value; the benchmark-overlap subset
@@ -623,7 +624,7 @@ The spatially uniform distribution of the $9.5\sigmaunit$ residual
 training-label bias rather than spatially correlated systematics, but
 a rigorous $N_{\rm eff}$ estimate (e.g., via pixel-to-pixel variance
 of the CW fraction) is needed to confirm the formal significance. The raw Catalog~A shows a 0.79\%
-CW excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.7\sigmaunit$
+CW excess ($\CW/(\CW+\CCW) = 0.5079 \pm 0.0003$, a $28.8\sigmaunit$
 deviation from exact parity). Platt calibration (Catalog~B) reduces
 this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
@@ -671,7 +672,7 @@ the tier-to-tier variation ($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
 Crucially, this monopole offset is spatially uniform
 (Table~\ref{tab:sky_balance}: all regions within $0.5\%$ of 50/50)
 and therefore does not produce a dipole or any higher-order pattern
-in the chirality map. This progression---from $28.7\sigmaunit$ (raw)
+in the chirality map. This progression---from $28.8\sigmaunit$ (raw)
 to $9.5\sigmaunit$ (equivariant)---demonstrates that the dominant CW
 excess is a classifier artifact, not a physical signal, while the
 small equivariant residual is a spatially uniform monopole with no
@@ -686,7 +687,7 @@ cosmological content.
 \begin{tabular}{lccc}
 \textbf{Tier} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{Excess} & \textbf{Deviation} \\
 \hline
-A (raw)         & $0.5079 \pm 0.0003$ & $+0.79\%$ & $28.7\sigmaunit$ \\
+A (raw)         & $0.5079 \pm 0.0003$ & $+0.79\%$ & $28.8\sigmaunit$ \\
 B (calibrated)  & $0.504 \pm 0.0003$  & $+0.4\%$  & $14.6\sigmaunit$ \\
 C (equivariant) & $0.4974 \pm 0.0003$ & $-0.26\%$ & $9.5\sigmaunit$ \\
 \end{tabular}
@@ -851,12 +852,11 @@ across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
 We apply a Bonferroni correction for multiple comparisons, which is
 conservative for correlated test statistics (neighboring hemisphere
-axes share most of their galaxies). The Bonferroni correction is
-known to be conservative for correlated tests. A
+axes share most of their galaxies). A
 Benjamini-Hochberg (BH) false discovery rate (FDR) procedure at
 $q = 0.05$ yields identical conclusions (no significant detections)
-for the 8-test suite, confirming that the result is not sensitive to
-the multiple-testing correction method. A more precise correction via
+across the ${\sim}650$ hemisphere directions, confirming that the
+result is not sensitive to the multiple-testing correction method. A more precise correction via
 the Gross--Vitells~\cite{Gross:2010} trials factor or direct Monte
 Carlo calibration of the maximum-over-directions statistic would
 tighten the look-elsewhere penalty; our reported post-correction
@@ -991,7 +991,7 @@ ${\sim}17\times$ larger than Shamir's largest spiral subsample
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
 with rigorous bias controls.
 
-Our maximum regional asymmetry is 0.47\%---a factor of~7 smaller
+Our maximum regional asymmetry is 0.47\%---a factor of~6 smaller
 than Shamir's reported $\sim\!3\%$. The global equivariant CW
 fraction is $0.4974$, deviating from parity by only $0.26\%$. The
 $0.43\sigmaunit$ simple dipole is an order of magnitude less
@@ -1403,7 +1403,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   after look-elsewhere correction.
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is definitively
-  refuted.} Our maximum regional asymmetry is 0.47\%---a factor of~7
+  refuted.} Our maximum regional asymmetry is 0.47\%---a factor of~6
   smaller---with a spiral subsample ($3{,}321{,}795$ CW~$+$~CCW)
   that is ${\sim}17\times$ larger than Shamir's largest catalog, and
   with rigorous bias controls.
