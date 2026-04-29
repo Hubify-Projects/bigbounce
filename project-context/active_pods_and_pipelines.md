@@ -1,6 +1,6 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-29 12:45 UTC
+**Last updated:** 2026-04-29 15:22 UTC
 **CURRENT PODS (2x H200):**
 
 | Pod | Name | SSH | Task | Status |
@@ -12,6 +12,7 @@
 
 **Loop fire 2026-04-29 12:45 UTC:** Pod 1 results pulled + committed. Pod 2 results pull pending (scp timed out). R31 done for all 4 papers + site (15 commits pushed). UMAP FAIL flag = R32 P3 finding. NaMaster 500MC bias 0.032° = potential R32 P1 update.
 **Loop fire 2026-04-29 13:22 UTC:** R32 P2 done (bib hygiene, 3 commits). R32 P4 partial salvaged (units, ℓ_max, N_gal arithmetic — 1 commit). R32 P1 + P3 broad-review agents stream-timed out at zero edits → switching to focused micro-task strategy. Pod 1 NaMaster + UMAP integrated into P1 main.tex + P3 paper3_draft.tex (3 commits). Pod 2 prior /root/results snapshot (16 JSON files: master_power_spectrum, edgeon_contam, fw1/2/7/11/12) pulled + committed. 22 commits this session.
+**Loop fire 2026-04-29 15:22 UTC:** Pods unchanged (Pod 1 idle since 12:31Z, Pod 2 still crashed on missing pre_desi.fits). R32 P1 micro-audit ba8ccbf — fixed stale 50MC ref at line 1202 (Reproducibility) → 500MC canonical. R32 P3 micro-audit e08c28d — replaced "two-out-of-three" with explicit "one-of-three PASS" UMAP framing. R32 closed cleanly for all 4 papers. R33 P2 + P4 micro-tasks spawned (cite/numbers/abstract for P2; figs/refs/table-headers for P4). Strategy validated: focused 30-min micro-tasks finish in 95-126s with 1-2 surgical commits each.
 
 **Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 
