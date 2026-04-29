@@ -301,10 +301,10 @@ body {
 </div>
 
 <!-- Scale factor mini-graph -->
-<canvas class="scale-graph" id="scaleGraph" width="260" height="120"></canvas>
+<canvas class="scale-graph" id="scaleGraph" width="260" height="120" role="img" aria-label="Scale factor a(t) graph showing the bounce curve minimum"></canvas>
 
 <!-- Main canvas -->
-<canvas id="cosmos"></canvas>
+<canvas id="cosmos" role="img" aria-label="Interactive cosmic visualization of the Big Bounce — animated journey from parent universe stellar collapse through the bounce to the birth of our cosmos"></canvas>
 
 <!-- Controls -->
 <div class="controls">
@@ -1729,6 +1729,7 @@ window.addEventListener('keydown', (e) => {
 // ── Start ──
 requestAnimationFrame(render);
 </script>
+<script src="/astro/chat-widget.js" defer></script>
 <script>
 (function() {
   try {
