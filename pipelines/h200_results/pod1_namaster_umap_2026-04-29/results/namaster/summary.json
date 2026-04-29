@@ -1,0 +1,33 @@
+{
+  "experiment": "NaMaster EB Birefringence Analysis",
+  "nside": 512,
+  "lmax": 1024,
+  "f_sky": 0.3226013233645,
+  "noise_level_ukarmin": 10.0,
+  "n_mc_realizations": 500,
+  "paper1_prediction_deg": 0.27,
+  "observed_value_deg": 0.342,
+  "observed_error_deg": 0.094,
+  "results": {
+    "beta_paper1": {
+      "input_beta_deg": 0.27,
+      "recovered_beta_deg": 0.238,
+      "bias_deg": 0.03200000000000003,
+      "snr_namaster": 20.315591250528033,
+      "snr_ratio_to_observed": 0.79
+    },
+    "beta_observed": {
+      "input_beta_deg": 0.342,
+      "recovered_beta_deg": 0.30200000000000005,
+      "snr_namaster": 25.707268198071045
+    },
+    "beta_null": {
+      "input_beta_deg": 0.0,
+      "recovered_beta_deg": 0.0,
+      "snr_namaster": 0.0
+    },
+    "consistency_sigma": 0.7659574468085107
+  },
+  "scientific_conclusion": "Paper 1 prediction beta=0.27 deg is 0.77sigma consistent with observed value 0.342+-0.094 deg. NaMaster analysis confirms SNR=20.32 for beta=0.27 at ACT sensitivity (f_sky=0.32). Beta recovery bias = 0.0320 deg.",
+  "runtime_seconds": 7420.73242688179
+}
