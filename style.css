@@ -413,17 +413,25 @@ footer p { margin: 2px 0; color: var(--text-muted); }
   .hero h1 { font-size: 1.15rem; }
   .topbar { font-size: 10px; padding: 0 12px 0 40px; }
   .topbar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  main, main.container, main.wide-container { padding: 16px 14px 32px; }
+  main, main.container, main.wide-container { padding: 14px 12px 32px; }
   .card { padding: 12px 14px; }
+  .stat { padding: 14px 12px; margin-bottom: 8px; }
   .stat-value { font-size: 1.1rem; }
   .stat-label { font-size: 9px; }
   h2 { font-size: 11px; }
   p { font-size: 13px; }
   thead th, tbody td { padding: 5px 6px; font-size: 10px; }
-  code { font-size: 11px; padding: 1px 3px; }
+  code { font-size: 11px; padding: 1px 3px; word-break: break-word; word-wrap: break-word; overflow-wrap: anywhere; }
   .abstract { font-size: 12.5px; padding: 12px 14px; }
   .callout { font-size: 12px; padding: 8px 10px; }
-  .btn { font-size: 11px; padding: 5px 10px; }
+  .btn { font-size: 12px; padding: 10px 14px; min-height: 44px; display: inline-flex; align-items: center; }
+  .feed-body code, .timeline-body code { word-break: break-word; overflow-wrap: anywhere; }
+}
+@media (max-width: 375px) {
+  .stat { padding: 10px 10px; }
+  .stat-value { font-size: 1.05rem; }
+  .stat-sub { font-size: 11px; }
+  main, main.container, main.wide-container { padding: 12px 10px 28px; }
 }
 
 /* ── Legacy compat ── */
@@ -462,8 +470,8 @@ details[open] summary { margin-bottom: 6px; }
     --border-strong: #3a3a3a;
     --text: #e5e5e5;
     --text-secondary: #a3a3a3;
-    --text-tertiary: #737373;
-    --text-muted: #666666;
+    --text-tertiary: #8a8a8a;
+    --text-muted: #888888;
     --accent-link: #60a5fa;
     --accent-link-hover: #93c5fd;
   }
@@ -497,8 +505,8 @@ details[open] summary { margin-bottom: 6px; }
   --border-strong: #3a3a3a;
   --text: #e5e5e5;
   --text-secondary: #a3a3a3;
-  --text-tertiary: #737373;
-  --text-muted: #666666;
+  --text-tertiary: #8a8a8a;
+  --text-muted: #888888;
   --accent-link: #60a5fa;
   --accent-link-hover: #93c5fd;
 }
