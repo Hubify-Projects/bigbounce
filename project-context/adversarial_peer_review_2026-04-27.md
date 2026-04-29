@@ -1,9 +1,43 @@
 # Master Adversarial Peer Review: 5 Agents, 4 Papers, 80+ Findings
 
-**Last updated:** 2026-04-29 14:02 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
+**Last updated:** 2026-04-29 14:23 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
 **Original date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 37 ROUNDS COMPLETE — 290+ findings total, ~285 fixed, **3 GPU-blocked remaining** (all Paper 4, all Pod 2). R35-R37 closed Houston-pre-mobile (1 push to `main` pending after this commit). P1/P2/P3 submission-ready. P4 submission-ready with 3 deferrable nice-to-haves. NaMaster 500MC + UMAP 20-seed stability integrated. Cross-paper / cross-surface number drift reconciled (424,181→424,781; 0.47% / 7×→0.32% / factor of 9; Pipeline-1 1.58× across 3 site surfaces).
+**Status:** 38 ROUNDS COMPLETE — 295+ findings total, ~289 fixed, 1 NEW open (P3 LAMOST inversion → task #129). Autonomous 15-min cron loop active (`70a9aba0`). Cross-surface number drift continuing to reconcile (R37 missed P2/P4 webform abstracts and index.html — closed in R38).
+
+---
+
+## ⚡ R38 EXACT SUMMARY — 2026-04-29 14:23 PDT
+
+### Autonomous-cron fire #1 outcome
+
+5-agent parallel adversarial sweep returned 8 candidate findings (P1×1, P2×1, P3×2, P4×1, XS×2, plus the implicit P4 webform). After triage:
+
+**APPLIED (5 findings closed):**
+
+| # | Finding | Resolution |
+|---|---------|------------|
+| 129a | **P2 abstract↔body drift** — webform claimed "85-90%" recovery; body says "84% ± 2%" / r∈[0.821, 0.879] | `research/focused_paper_source_integration/abstract_for_webform.txt` rewritten to "84% ± 2% across all physically motivated weighting schemes (r ∈ [0.821, 0.879]; CMB Fisher signal-only r = 0.876, realistic LSS/SPHEREx noise-weighted r ≈ 0.83)" |
+| 129b | **P4 abstract still stale** — `abstract_for_webform.txt` had "0.47% / factor of 7" despite R37 paper-canonical fix to 0.32% / factor of 9 | `pipelines/p2_chirality/abstract_for_webform.txt` updated to "0.32%, a factor of 9 smaller" |
+| 129c | **index.html L79 stale 424,181** — R37 missed this surface | Updated to 424,781 |
+| 129d | **index.html R36 stamps** (L27, L159, L750) predate R37/R38 | All updated to R38 |
+| 129e | **index.html timestamp** 13:06 PDT predates R38 | Bumped to 14:23 PDT |
+
+**SKIPPED (1 finding — sub-agent error):**
+
+- **P1 DESI2025DR2 DOI** `10.1103/tr6y-kpc6` — sub-agent flagged as malformed, but APS started using short DOIs in this exact format in 2024 for new Physical Review papers. Legitimate; no edit needed.
+
+**FILED AS NEW TASK #129 (1 finding — too complex for cron-fire):**
+
+- **P3 LAMOST inversion** — sub-agent flagged paper3_draft.tex L208/L615 treats Path-C native **113,342 as primary** that **supersedes** cross-transfer 44,075 ("LAMOST native re-score complete... top-113,342" / "the LAMOST native retrain (44,075 → 113,342)"). R37 #121 made the OPPOSITE call (44,075 canonical, 113,342 fire-#21 confabulation). Paper text wins all ties — R37 was likely wrong. Filed as task #129 for next cron-fire to revert activity.html L427-429 and update SSOT/paper-3/status.md after careful re-read of paper3_draft.tex L43/L53/L200-208/L601-615.
+
+### Why no recompile this round
+
+R38 fixes were limited to webform abstracts and `index.html`. No `.tex` source was edited, so PDFs from R37 (P1: 31pp/1.0MB, P4: 16pp/25.8MB) remain authoritative. Mirror in `public/papers/` is current.
+
+### Cron status
+
+15-min loop `70a9aba0` continues. Next fire :38 PDT. Will pick up task #129 (P3 LAMOST reconciliation) and any new findings.
 
 ---
 
