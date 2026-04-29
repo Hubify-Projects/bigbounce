@@ -1,7 +1,14 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-18 UTC (fire #32)
-**CURRENT POD:** A100 80GB PCIe community pod `ktds4mkmzb7ven` @ $1.19/hr, SSH `104.255.9.187:11759`. Deployed fire #26 (2026-04-18). eROSITA DR1 scan COMPLETE (930,203 sources → 298 BigAE top-cut anomalies, Paper 3 Table 1 canonical; HF upload done). SDSS DR18 + LAMOST DR10 scans running in tmux — multi-day wall clock. Budget consumed ~$0.25 of $140 cap. See `pipelines/p3_anomaly_engine/pod_runs/HANDOFF.md` for finish procedure.
+**Last updated:** 2026-04-28 UTC
+**CURRENT PODS (2x H200):**
+
+| Pod | Name | SSH | Task | Status |
+|-----|------|-----|------|--------|
+| **Pod 1** | frail_tomato_koi | `ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519` | P1-M3: NaMaster 500MC birefringence | RUNNING |
+| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M6: MASTER deconvolution + edge-on + PDF compile | RUNNING |
+
+**Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 
 **H200 history (STOPPED):** `o76k3jfzbfh25e` (sleepy_blush_crane) stopped 2026-04-08 after RunPod infrastructure error. Full backup preserved.
 

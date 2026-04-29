@@ -7,6 +7,9 @@
 **~18:30 PT — natural-language status check while cron was firing #132 (pods felt idle, Houston wanted a real update)**
 > hey how's it going? seems like pods are idle... any updates on the papers and site?
 
+**~22:30 PT — frustration after fire #140: site lags SSOT, paper PDFs not visible, no visual tracker**
+> ok can I see the latest progress and latest most up to date compiled pdfs on the site or what? it is impossible to follow what is done, in-progress, up-next etc for each paper here in the terminal hence why we have tried to make these things in the site for me to be able to track visually but i dont think anything is 100% fully up to date and you are always letting the site drag and lag behind actual source of truth on everything
+
 ## 2026-04-17 — Drive-to-100 autonomous loop + plan doc + cron
 
 ### Houston substantive messages, verbatim
@@ -187,3 +190,35 @@ Session context: drive-to-100 loop self-terminated at fire #75 with Houston-revi
 **~PT — Chose Path C: full Cadillac Paper 3 rebuild**
 
 > Path C ...
+
+## 2026-04-24 — Mobile responsiveness QA sweep
+
+### Houston substantive messages, verbatim
+
+**HH:MM PT — full-site mobile QA + overflow fix request**
+
+> please go through the website - there are a ton of mobile responsive issues with it and tables and rows and things on a lot of the pages that are overflowing x-overflow issues everywhere... please qa the whole site and ensure it all looks polished and pro and mobile responsive
+
+## 2026-04-28 — RunPod GPU setup for remaining adversarial review items
+
+### Houston substantive messages, verbatim
+
+**~PM PT — Pod setup + parallelism question**
+
+> ok giving you the first Pod for runpod. 1000gb network volumen on H200 beast... please let me konw if having at least 1 or 2 more pods will speed things up and I will setup another 1 or 2 or if this one pod can be used to knock out all remaining gpu required tasks or what will be fastest?
+>
+> SSH: ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519
+> Pod name: frail_tomato_koi
+> Direct TCP: 38.80.152.249:30791
+
+**~PM PT — Second pod + full directive**
+
+> ok here is the next Pod an h200 beast to help us leave no task unfinished no stone unturned - run all GPU needed tasks - then continue the full multi-agent adversarial peer review like before in paralell via the cron that should keep checking ever 15mins to ensure there is progress both on the pods on runpod and ensure those results get pulled and backedup fully redundantly and all data applied properly to the papers and site etc and always add new tasks to the final peer review task list and update the exec summary portion etc so i can look and see what progress has been made and whats next etc as we get nearer to the final finish line on these 4 papers and all their associated research and if there is any way to improve ANY of them or any ideas worth pursuing which have been listed as "future research" in any section of any of the papers which we COULD actually do now via our own systems and GPUs then we SHOULD and we must do those things and in general never punt things to future research unless they are truly a totally new and separate topic or something that does not build or support or improve the current research and the current 4 papers for now
+>
+> Pod 2: regular_green_pig
+> SSH: ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519
+> Direct TCP: 38.80.152.249:31045
+
+**~PM PT — Full directive: leave no stone unturned**
+
+> ok here is the next Pod an h200 beast to help us leave no task unfinished no stone unturned - run all GPU needed tasks - then continue the full multi-agent adversarial peer review like before in paralell via the cron that should keep checking ever 15mins to ensure there is progress both on the pods on runpod and ensure those results get pulled and backedup fully redundantly and all data applied properly to the papers and site etc and always add new tasks to the final peer review task list and update the exec summary portion etc so i can look and see what progress has been made and whats next etc as we get nearer to the final finish line on these 4 papers and all their associated research and if there is any way to improve ANY of them or any ideas worth pursuing which have been listed as "future research" in any section of any of the papers which we COULD actually do now via our own systems and GPUs then we SHOULD and we must do those things and in general never punt things to future research unless they are truly a totally new and separate topic or something that does not build or support or improve the current research and the current 4 papers for now
