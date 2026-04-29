@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 21 ROUNDS COMPLETE — 226 findings total, ~218 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Round 21: 2 P4 findings, both fixed. P4-M6 MASTER deconvolution COMPLETE (-0.12σ, null confirmed). FW-6 hyperparameter stability RUNNING. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
+**Status:** 22 ROUNDS COMPLETE — 230+ findings total, ~222 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Round 21: 2 P4 findings, both fixed. Round 22: 4 P4 findings (MASTER arithmetic, missing bibentry, undefined xref, f_sky explanation), all fixed. P4-M6 MASTER deconvolution COMPLETE (-0.12σ, null confirmed). FW-6 hyperparameter stability RUNNING locally. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -12,10 +12,10 @@
 
 **Bottom line:** 21 rounds of adversarial review found ~226 issues across 4 papers + the website. ~218 have been fixed. Round 20 returned **CLEAN** (zero findings across all 4 papers). Round 21 found 2 P4 items, both fixed. All text-fixable items are resolved. **3 GPU-blocked remaining** (down from 8 originally). P4-M6 MASTER deconvolution completed on Pod 2: -0.12σ significance after deconvolution (null confirmed, paper updated). FW-6 hyperparameter stability grid search running locally. FW-13 UMAP multi-seed stability DONE (Paper 3 line 723 updated). Papers are submission-ready.
 
-**Pod status (2026-04-29 07:00 UTC):**
-- **Pod 1** (frail_tomato_koi): NaMaster 500MC birefringence RUNNING (~4.7h elapsed, expect 4-8h total)
-- **Pod 2** (regular_green_pig): MASTER deconvolution COMPLETE. Deploying FW-1 scale-dependent f_NL next.
-- **FW-6** hyperparameter stability: Running locally via background agent (35-cell grid search on 195K DESI anomalies)
+**Pod status (2026-04-29 ~08:00 UTC):**
+- **Pod 1** (o76k3jfzbfh25e): Connection refused (SSH port 11452 @ 205.196.19.52). Pod may have expired/stopped. NaMaster 500MC birefringence status UNKNOWN — need to check RunPod dashboard.
+- **Pod 2** (regular_green_pig): MASTER deconvolution COMPLETE. FW-1/2/7/11/12 all DONE on Pod 2.
+- **FW-6** hyperparameter stability: Re-launched locally (7×5 UMAP+HDBSCAN grid on 195K DESI 16D latents). Running in background.
 
 **Remaining GPU-blocked items (3):**
 | P4-M3 | magnitude/color/SB/PSF bias tests | Blocked on HF chirality model |
@@ -190,6 +190,7 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 19 | 2026-04-29 | 5 (P1×3 f_NL, 4× bib titles) | 1 | 1 | 3 | 5/5 FIXED |
 | 20 | 2026-04-29 | 0 (CLEAN — all 4 papers) | 0 | 0 | 0 | **CLEAN** |
 | 21 | 2026-04-28 | 2 (P4 only) | 0 | 2 | 0 | 2/2 FIXED |
+| 22 | 2026-04-29 | 4 (P4: MASTER arithmetic, bibentry, xref, f_sky) | 1 | 2 | 1 | 4/4 FIXED |
 
 ---
 

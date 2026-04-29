@@ -809,15 +809,22 @@ We performed a MASTER-style~\cite{Hivon:2002} deconvolution of the
 mode-coupling matrix using the \textsc{NaMaster}~\cite{Alonso:2019}
 pseudo-$C_\ell$ estimator at $N_{\rm side} = 64$
 ($f_{\rm sky}^{\rm eff} = 0.659$ after pixelization of the
-DESI Legacy footprint, $N_{\rm gal} = 5{,}547{,}858$).
-After deconvolution, the $\ell = 1$ signal power is
-$C_1^{\rm signal} = 2.36 \times 10^{-7}$, compared with a null
+DESI Legacy footprint at $N_{\rm side} = 64$; the increase from the
+geometric $f_{\rm sky} \approx 0.46$ reflects the lower-resolution
+pixel boundary extending beyond the strict survey mask;
+$N_{\rm gal} = 5{,}547{,}858$ galaxies with valid chirality
+classifications).
+After deconvolution, the measured $\ell = 1$ power is
+$C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
 ($\sigma_{\rm null} = 4.29 \times 10^{-7}$) from 500 Monte Carlo
 realizations, yielding a post-deconvolution significance of
-$-0.12\sigmaunit$---fully consistent with zero and confirming
+$(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
+= -0.12\sigmaunit$---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
-raw pseudo-$C_\ell$ estimator.
+raw pseudo-$C_\ell$ estimator.  After noise subtraction the
+residual signal power is $C_1^{\rm signal} = 2.36 \times 10^{-7}$,
+consistent with zero within the null scatter.
 
 \emph{(iii)~Monte Carlo null calibration.}  Our null realizations
 shuffle per-pixel labels within the observed footprint, preserving the
@@ -1159,7 +1166,7 @@ a cosmological interpretation:
 \item The angular power spectrum shows only a marginal $2.75\sigmaunit$
   at $\ell = 1$ in the raw pseudo-$C_\ell$; after MASTER
   deconvolution of the mode-coupling matrix the significance drops
-  to $-0.12\sigmaunit$ (Sec.~\ref{sec:angular_power}).
+  to $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}).
 \item The signal is stronger in mid-confidence classifications,
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
@@ -1576,6 +1583,10 @@ Astrophys.\ J.\ \textbf{873}, 111 (2019).
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
 Astrophys.\ J.\ \textbf{935}, 167 (2022).
+
+\bibitem{Alonso:2019}
+D.~Alonso, J.~Sanchez, and A.~Slosar,
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{484}, 4127 (2019).
 
 \bibitem{Hivon:2002}
 E.~Hivon, K.~M.~G{\'o}rski, C.~B.~Netterfield \textit{et~al.},
