@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 12 ROUNDS COMPLETE — all text-fixable items resolved (174 findings, ~156 fixed, 18 remaining)
+**Status:** 12 ROUNDS COMPLETE — all text-fixable items resolved (174 findings, ~159 fixed, 15 remaining — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
 
 ---
 
@@ -15,8 +15,8 @@
 | Paper | Text-Fixed | Remaining | Submission-Ready? | Notes |
 |-------|-----------|-----------|-------------------|-------|
 | **Paper 1** (Spin-Torsion) | 38 fixes across 4 rounds | 5 (3 deferred-cosmetic, 2 notes) | **YES** | Deferred items are invisible to readers |
-| **Paper 2** (f_NL Forecast) | 28 fixes across 3 rounds | 1 GPU-blocked | **YES** (with caveat) | Template overlap bias is real but text caveats cover it |
-| **Paper 3** (Anomaly Catalog) | 35 fixes across 3 rounds | 3 GPU-blocked, 1 matplotlib, 1 note | **YES** (with caveats) | In-sample scoring is the biggest gap |
+| **Paper 2** (f_NL Forecast) | 29 fixes across 3 rounds | 0 remaining | **YES** | Template overlap resolved: r=0.84±0.02 noise-weighted (2026-04-28) |
+| **Paper 3** (Anomaly Catalog) | 37 fixes across 3 rounds | 1 GPU-blocked (UMAP), 1 note | **YES** | K-fold + injection-recovery figure resolved locally (2026-04-28) |
 | **Paper 4** (Chirality) | 28 fixes across 3 rounds | 4 GPU-blocked | **YES** (with caveats) | See detailed assessment below |
 
 ### Why Paper 4 Was Called "Weakest" (and why that's misleading)
@@ -715,7 +715,7 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | # | Sev | Finding | Locally Fixable? | Status |
 |---|-----|---------|-----------------|--------|
 | P2-C1 | CRITICAL | No original Fisher matrix written down — paper recasts others' forecasts | TEXT — either construct Fisher or relabel as "sensitivity recast" | [x] FIXED |
-| P2-C2 | CRITICAL | Template overlap r weighting is signal-only (S_local²) — biased toward squeezed configs | COMPUTE — needs realistic noise model | [ ] BLOCKED |
+| P2-C2 | CRITICAL | Template overlap r weighting is signal-only (S_local²) — biased toward squeezed configs | COMPUTE — needs realistic noise model | [x] FIXED (local Python, r=0.84±0.02 noise-weighted, integrated into Paper 2) |
 | P2-C4 | CRITICAL | Factor-of-2 convention ambiguity existential — if f_NL=-35/16, significance halves | TEXT — propagate BOTH values through forecast | [x] FIXED |
 | P2-C5 | CRITICAL | Bayesian comparison prior-dominated — delta-function prior gives max BF | TEXT — use σ_theory≥1.0 as baseline, test multiple competitor priors | [x] FIXED |
 | P2-M1 | MAJOR | n_s = 8ε-11 presented as exact — needs linearization caveat + exact expression | TEXT | [x] FIXED |
@@ -741,14 +741,14 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 |---|-----|---------|-----------------|--------|
 | P3-C1 | CRITICAL | Table 1 shows cross-transfer as primary — Path-C should be primary display | TEXT — restructure table | [x] FIXED |
 | P3-C2 | CRITICAL | 378,480 arithmetically unverifiable — need explicit 8-row Path-C breakdown | TEXT | [x] FIXED |
-| P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [ ] BLOCKED |
+| P3-C3 | CRITICAL | In-sample scoring deferral not credible — 50/50 split costs ~11h not "prohibitive" | TEXT caveat already extensive; COMPUTE needs GPU | [x] FIXED (5-fold k-fold already complete in backup: J̄=0.862, 73% all-fold consensus, integrated into Paper 3) |
 | P3-C4 | CRITICAL | LAMOST native retrain FAILS injection-recovery gate at 5σ (5.8% vs 50% gate) — still in headline | TEXT — flag or downgrade | [x] FIXED |
 | P3-C5 | CRITICAL | Gaia 41% cross-validation stability — more than half are artifacts | TEXT — label as unreliable or remove from headline | [x] FIXED |
 | P3-M1 | MAJOR | UMAP hyperparameters differ DESI/SDSS with backwards justification | TEXT — stability analysis needed | [ ] BLOCKED |
 | P3-M2 | MAJOR | f_NL α=0.15 uncalibrated — 6.1% could be 2-20% | TEXT — add uncertainty propagation | [x] FIXED |
 | P3-M3 | MAJOR | 5-arcsec dedup radius not justified from astrometric error budgets | TEXT | [x] FIXED |
 | P3-M4 | MAJOR | ACT DR6 should be dropped or formally quarantined | TEXT | [x] FIXED |
-| P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [ ] |
+| P3-M5 | MAJOR | No injection-recovery figure — numbers inline are hard to parse | TEXT — add figure (needs local matplotlib) | [x] FIXED (fig_injection_recovery.pdf/png generated + integrated into Paper 3) |
 | P3-M6 | MAJOR | eROSITA top-298 cap arbitrary — no score distribution shown | TEXT + needs figure | [x] FIXED |
 | P3-M7 | MAJOR | DESI B-dominant population (44K) uninvestigated for calibration contamination | COMPUTE/TEXT | [x] FIXED |
 | P3-m1 | MINOR | Inconsistent threshold terminology across surveys | TEXT | [x] FIXED |
@@ -838,8 +838,8 @@ System is underdetermined (3 constraints, 6 unknowns, 3D null space). Both repro
 | Item | Blocker | What's Needed |
 |------|---------|---------------|
 | P1-M3 | GPU | NaMaster 500+ MC realizations |
-| P2-C2 | GPU/COMPUTE | Realistic noise-weighted template overlap |
-| P3-C3 | GPU | DESI 50/50 held-out validation |
+| ~~P2-C2~~ | ~~GPU/COMPUTE~~ | ~~Realistic noise-weighted template overlap~~ → **FIXED** (local Python, r=0.84±0.02) |
+| ~~P3-C3~~ | ~~GPU~~ | ~~DESI 50/50 held-out validation~~ → **FIXED** (5-fold k-fold in backup, J̄=0.862) |
 | P3-M1 | GPU/LOCAL | UMAP multi-seed stability |
 | P4-M3 | DATA | Magnitude/color/PSF-dependent bias tests |
 | P4-M4 | DATA | Equivariant Catalog C redshift analysis |
