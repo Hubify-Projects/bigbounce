@@ -1,0 +1,51 @@
+{
+  "experiment": "FW-2: g_NL trispectrum Fisher forecast",
+  "matter_bounce_predictions": {
+    "f_NL": -4.375,
+    "g_NL": 27.5625,
+    "g_NL_formula": "(36/25)*f_NL^2",
+    "tau_NL": 27.5625,
+    "tau_NL_formula": "(6/5*f_NL)^2",
+    "suyama_yamaguchi_saturated": true
+  },
+  "spherex_fisher": {
+    "sigma_f_NL": 0.04857,
+    "sigma_g_NL": 0.0,
+    "sigma_tau_NL": 0.0,
+    "g_NL_detection_sigma": 85877764.33,
+    "tau_NL_detection_sigma": 42938882.16
+  },
+  "model_discrimination": {
+    "matter_bounce": {
+      "f_NL": -4.375,
+      "g_NL": 27.5625,
+      "tau_NL": 27.5625,
+      "separation_gnl_sigma": 0.0
+    },
+    "slow_roll": {
+      "f_NL": -0.015,
+      "g_NL": 0.0,
+      "tau_NL": 0.0,
+      "separation_gnl_sigma": 85877764.33
+    },
+    "curvaton": {
+      "f_NL": 5.0,
+      "g_NL": -54.0,
+      "tau_NL": 36.0,
+      "separation_gnl_sigma": 254128078.11
+    },
+    "DBI": {
+      "f_NL": -30.0,
+      "g_NL": 1296.0,
+      "tau_NL": 1296.0,
+      "separation_gnl_sigma": 3952129766.4
+    },
+    "ekpyrotic": {
+      "f_NL": -0.01,
+      "g_NL": 0.0,
+      "tau_NL": 0.0,
+      "separation_gnl_sigma": 85877764.33
+    }
+  },
+  "note": "Fisher forecast uses scale-dependent bias from g_NL (Desjacques & Seljak 2010). sigma(g_NL) is approximate; full trispectrum Fisher requires bispectrum covariance."
+}

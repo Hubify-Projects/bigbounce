@@ -1,0 +1,36 @@
+{
+  "experiment": "FW-11: NANOGrav posterior-level Bayes factor",
+  "combined_pta_posterior": {
+    "gamma_mean": 3.2,
+    "gamma_std": 0.42,
+    "source": "Paper 3 \u00a76 canonical (2026-04-17 v2b Fisher recompute)"
+  },
+  "model_predictions": {
+    "matter_bounce": {
+      "gamma": 3.0
+    },
+    "SMBHB": {
+      "gamma": 4.3333
+    }
+  },
+  "savage_dickey": {
+    "B_bounce_vs_smbhb": 34.0332,
+    "B_bounce_vs_free": 5.9363,
+    "B_smbhb_vs_free": 0.1744,
+    "jeffreys_bounce_vs_smbhb": "Very strong"
+  },
+  "tensions": {
+    "bounce_sigma": 0.4762,
+    "smbhb_sigma": 2.6984
+  },
+  "model_posteriors_equal_priors": {
+    "bounce": 0.834838,
+    "SMBHB": 0.02453,
+    "free_spectrum": 0.140632
+  },
+  "mc_validation": {
+    "n_draws": 10000,
+    "fraction_closer_to_bounce": 0.8658,
+    "analytic_prob_bounce_side": 0.86674
+  }
+}

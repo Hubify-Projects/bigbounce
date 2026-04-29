@@ -1,0 +1,93 @@
+{
+  "experiment": "FW-1: Scale-dependent f_NL Fisher forecast",
+  "fiducial": {
+    "f_NL": -4.375,
+    "n_fNL": 0.0
+  },
+  "survey": "SPHEREx",
+  "f_sky": 0.75,
+  "z_bins": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9,
+    1.1,
+    1.5
+  ],
+  "z_centers": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0,
+    1.3
+  ],
+  "k_range_hMpc": [
+    0.0001,
+    0.2
+  ],
+  "k_pivot_hMpc": 0.05,
+  "fnl_only": {
+    "sigma_fnl": 0.114538
+  },
+  "joint_fnl_nfnl": {
+    "sigma_fnl_marginalized": 0.443094,
+    "sigma_nfnl": 0.085523,
+    "correlation": 0.966013,
+    "fnl_detection_sigma": 9.87,
+    "degradation_factor": 3.8685,
+    "fisher_matrix": [
+      [
+        76.22605338627889,
+        -381.5023228871092
+      ],
+      [
+        -381.5023228871092,
+        2046.0931846590872
+      ]
+    ]
+  },
+  "model_discrimination": {
+    "matter_bounce": {
+      "f_NL": -4.375,
+      "n_fNL": 0.0,
+      "sigma_fnl": 0.443094,
+      "sigma_nfnl": 0.085523,
+      "separation_from_bounce_fnl_sigma": 0.0,
+      "separation_from_bounce_nfnl_sigma": 0.0
+    },
+    "ekpyrotic": {
+      "f_NL": -0.01,
+      "n_fNL": 0.0,
+      "sigma_fnl": 0.060068,
+      "sigma_nfnl": 1.731585,
+      "separation_from_bounce_fnl_sigma": 9.85,
+      "separation_from_bounce_nfnl_sigma": 0.0
+    },
+    "slow_roll_inflation": {
+      "f_NL": -0.015,
+      "n_fNL": -0.02,
+      "sigma_fnl": 0.07644,
+      "sigma_nfnl": 2.670879,
+      "separation_from_bounce_fnl_sigma": 9.84,
+      "separation_from_bounce_nfnl_sigma": 0.23
+    },
+    "curvaton": {
+      "f_NL": 5.0,
+      "n_fNL": 0.0,
+      "sigma_fnl": 1.644392,
+      "sigma_nfnl": 0.304718,
+      "separation_from_bounce_fnl_sigma": 21.16,
+      "separation_from_bounce_nfnl_sigma": 0.0
+    },
+    "DBI_inflation": {
+      "f_NL": -30.0,
+      "n_fNL": 0.08,
+      "sigma_fnl": 7.777882,
+      "sigma_nfnl": 0.23358,
+      "separation_from_bounce_fnl_sigma": 57.83,
+      "separation_from_bounce_nfnl_sigma": 0.94
+    }
+  }
+}
