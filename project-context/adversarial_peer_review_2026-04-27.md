@@ -1,8 +1,85 @@
 # Master Adversarial Peer Review: 5 Agents, 4 Papers, 80+ Findings
 
-**Date:** 2026-04-27
+**Last updated:** 2026-04-29 10:19 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
+**Original date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 30 ROUNDS COMPLETE — 265+ findings total, ~258 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Rounds 21-29: incremental text-only fixes. Round 30: 1 MINOR (P4 shot noise galaxy count — needs Houston verification). P1/P2/P3 CLEAN. P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
+**Status:** 34 ROUNDS COMPLETE — 280+ findings total, ~273 fixed, **3 GPU-blocked remaining** (all Paper 4, all Pod 2). R31–R34 closed overnight (12+ commits to `main`). P1/P2/P3 submission-ready. P4 submission-ready with 3 deferrable nice-to-haves. NaMaster 500MC + UMAP 20-seed stability integrated.
+
+---
+
+## ⚡ MOST RECENT EXACT SUMMARY — 2026-04-29 10:19 PDT
+
+### Overnight loop outcome (2026-04-28 ~22:00 PDT → 2026-04-29 10:19 PDT)
+
+Cron `f3543946` fired the adversarial review loop every 15 min. **Cron is now CANCELLED** (10:18 PDT) so this status block is stable while Houston reads. Re-enable on direction.
+
+**Round closures (4 rounds, 12+ commits to `main`, all pushed):**
+
+| Round | Scope | Result | Key commits |
+|-------|-------|--------|-------------|
+| **R31** | Deep paper-by-paper re-reads | P1: 1 MAJOR + 3 MINOR; P2: 3 MINOR; P3: 1 MAJOR + 3 MINOR; P4: 2 MINOR + N_gal=5,547,858 closure of R30 open question | d049972, 97cfbce, f8a7691, 18d7d78, 6ca3af4, 51e1c71, b0abfcd, 6a8c829, d0c929d, e245e36 |
+| **R32** | Round-32 sweep | P1: Reproducibility note → 500MC; P2: bib hygiene + xref; P3: UMAP "1-of-3 PASS" honest framing; P4: units + ℓ_max + N_gal arithmetic + Dosovitskiy bib | f5cf63c, 70b750e, e884cff, 64699e6, ba8ccbf, e08c28d, 6d45055, 8ca1467, 035f226, 99f65a8 |
+| **R33** | Single-check micro-tasks (1-check scope, 15-230s each) | P2: MC count >6e5 abstract↔conclusion alignment; P4: % units in confusion-matrix headers; P1: 20 sections + 43 subsections CLEAN; P3: 21/21 figure files resolve CLEAN; SITE: activity-feed entry added | 0f07552, c02162b, 2819f89, 15f54bd, 879a008 |
+| **R34** | Single-narrow-check round | P4: cites all 28/28 resolve CLEAN; P2: 22/23 abstract numbers supported in body, orphan ">4σ SPHEREx null disfavor" added to body §VIII.A | 7c85d85 |
+
+**Strategy lesson:** Broad 3-check sub-agents stalled at 600s with zero edits. Single-check 1-scope micro-tasks finished in 15-230s with 1-2 surgical commits. R33+R34 used the focused pattern exclusively — zero stalls.
+
+### Pod status — current
+
+| Pod | SSH | Last task | Status | Idle burn |
+|-----|-----|-----------|--------|-----------|
+| **Pod 1** (frail_tomato_koi) | `root@38.80.152.249 -p 30791` | P1-M3 NaMaster 500MC + P3-M1 UMAP | ✅ **DONE 2026-04-29 05:31 PDT** — clean 2.7h compute. Results: `pipelines/h200_results/pod1_namaster_umap_2026-04-29/` (commit 5d54fbc). | **IDLE ~5h** at $3.59/hr ≈ $18 |
+| **Pod 2** (regular_green_pig) | `root@38.80.152.249 -p 31045` | P4 chirality suite + WT-5 PDF compile | ❌ **CRASHED 2026-04-29 02:53 PDT** — HF 401 on `bamfai/galaxy-chirality-v2` + missing `/workspace/external_catalogs/pre_desi.fits`. Salvaged prior `/root/results` snapshot (16 JSON files, commit 6a2bd2f). | **IDLE ~7.5h** at $3.59/hr ≈ $27 |
+
+**Combined idle burn since job-end / crash: ~$45.** Combined burn rate if both pods left running: $7.18/hr.
+
+### 8 originally-GPU-blocked items — verified accounting (5 ✅ done, 3 ❌ blocked)
+
+| # | Item | Status | Result location |
+|---|------|--------|-----------------|
+| 1 | **P1-M3** NaMaster 500MC birefringence | ✅ **DONE Pod 1 overnight** | `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json` — β=0.27° → 0.238° (bias 0.032°), SNR=20.32σ at f_sky=0.32, consistency 0.77σ vs observed 0.342±0.094°. Paper 1 integrated (e884cff + ba8ccbf). |
+| 2 | **P2-C2** noise-weighted r template overlap | ✅ DONE pre-overnight | r=0.84-0.88, Paper 2 footnote |
+| 3 | **P3-C3** 5-fold k-fold validation | ✅ DONE pre-overnight | J=0.862 PASS, Paper 3 |
+| 4 | **P3-M1** UMAP multi-seed stability | ✅ **DONE Pod 1 overnight** (revised) | `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/umap/umap_stability.json` — 50K samples × 16D × 20 seeds. **1-of-3 PASS** (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL). Honest framing in Paper 3 (64699e6, e08c28d). The earlier 5K-sample "ALL_PASS" claim was incorrect — corrected. |
+| 5 | **P4-M6** MASTER deconvolution | ✅ DONE pre-overnight (Pod 2 prior session) | `pipelines/h200_results/pod2_priorsession_2026-04-29/master_power_spectrum.json` (commit 6a2bd2f). Paper 4 already updated. |
+| 6 | **P4-M3** mag/color/SB/PSF bias tests | ❌ **BLOCKED on Pod 2** | Needs HF token unblock + FITS upload |
+| 7 | **P4-M4** Catalog C redshift re-analysis | ❌ **BLOCKED on Pod 2** | Same blocker |
+| 8 | **P4-m4** Edge-on contamination measurement | ❌ **BLOCKED on Pod 2** | Same blocker |
+
+### RunPod budget — recommendation: **STOP BOTH PODS NOW**
+
+- Pod 1 has been done since 05:31 PDT and has nothing queued — burning $3.59/hr for nothing.
+- Pod 2 has been crashed since 02:53 PDT and can't make forward progress without Houston supplying HF credentials + uploading `pre_desi.fits` — burning $3.59/hr for nothing.
+- **Net waste so far: ~$45 overnight idle + ~$65 pre-launch idle from yesterday = ~$110.** Continued burn at ~$172/24h if left running.
+- **Action:** stop both pods via RunPod dashboard. Re-launch only when (a) Pod 2 recovery decision is made and (b) Pod 1 has a queued next task. The 3 remaining P4 items are nice-to-haves; not running them risks a referee R1 request, not a rejection.
+
+### Backup verification — 3-system redundancy
+
+| System | Status | Coverage |
+|--------|--------|----------|
+| **Local disk** | ✅ COMPLETE | `pipelines/h200_results/pod1_namaster_umap_2026-04-29/` (20K) + `pod2_priorsession_2026-04-29/` (68K) on this Mac |
+| **GitHub `main`** | ✅ COMPLETE | `origin/main` matches `HEAD` (verified 10:19 PDT). 68 commits today, all pushed. Pod 1 results: 5d54fbc. Pod 2 prior snapshot: 6a2bd2f. |
+| **Backblaze B2** | ⚠️ **STALE** | Last B2 sync was 2026-04-03 (MCMC chains per `reference_external_backups.md`). The new ~88K of pod result data is **NOT yet on B2**. Action: push the two new directories to B2 before stopping pods (small payload, fast push). |
+
+**Net:** GitHub + Local cover everything. B2 has a 26-day gap for new pod outputs. Houston decision: push to B2 now, or accept 2-of-3 redundancy until next sync window?
+
+### Clear roadmap to finish line — 4 papers
+
+| Paper | Ready? | Remaining | Path to arXiv |
+|-------|--------|-----------|---------------|
+| **Paper 1** (Spin-Torsion) | ✅ YES | 3 deferred-cosmetic + 2 NOTEs (style) | Recompile PDF locally (TeX Live 2026 + revtex4-2 ready on Mac). Submit. |
+| **Paper 2** (f_NL Forecast) | ✅ YES | 0 substantive (R20 + R31–R34 all incorporated) | Recompile PDF locally. Submit. |
+| **Paper 3** (Anomaly Catalog) | ✅ YES | 1 NOTE (HF private until acceptance — standard) | Recompile PDF locally with UMAP 1-of-3 PASS framing. Submit. |
+| **Paper 4** (Chirality) | ✅ YES (with caveat) | 3 GPU-blocked nice-to-haves (P4-M3, P4-M4, P4-m4) | **Decision point:** submit-now-with-caveat (faster) vs. unblock-Pod-2-and-run-3-items (~12h, ~$25 GPU). |
+
+**Houston decisions on the critical path:**
+1. **STOP both pods now** to halt $7.18/hr ongoing burn.
+2. **Submit Papers 1-3** locally compiled — no pod dependency, all text fixes incorporated.
+3. **Paper 4:** submit-now or run-3-items first?
+4. **Backblaze B2 sync:** push new pod data now, or wait?
+5. **Cron loop:** re-enable adversarial review loop, or pause until after submission?
+
+PDF compile pipeline: `pdflatex` (TeX Live 2026 via Homebrew) is installed locally with revtex4-2 — all 4 papers can compile entirely from this Mac, no pod needed. Figures need symlinking into the `.tex` directories.
 
 ---
 
@@ -199,6 +276,10 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 28 | 2026-04-29 | 1 (P1: line 420 ALP summary missing mass parameter $m \approx 2H_0$; Deep arithmetic audit: P1 CLEAN 17/17, P2+P3 CLEAN all values) | 0 | 1 | 0 | 1/1 FIXED |
 | 29 | 2026-04-29 | 4 (P1: template overlap r=0.85-0.90→0.84-0.88 cross-paper with P2; P2: $c_1$→$\kappa_1$ naming in BF paragraph; P4: shot noise formula MAJOR — $N_{gal}^{-1}/\Omega_{pix}$ gives 7×10⁻⁴ not 1.26×10⁻⁶, fixed to $4\pi f_{sky}/N_{gal}$; P2 BF=17 verified analytically correct at σ=0.7, table shows MC median; P3: CLEAN; Cross-paper: all 10 values CLEAN) | 0 | 1 | 2 | 3/4 FIXED (1 NOTE — BF ~17 is analytically correct, table shows MC-marginalized median) |
 | 30 | 2026-04-29 | 1 (P4: shot noise uses N_gal=5,547,858 but asymmetry map only uses N_spiral=3,321,795; with N_spiral, C1_noise=2.12×10⁻⁶ and residual flips sign to -6.3×10⁻⁷ but still within null scatter; P1/P2/P3 CLEAN) | 0 | 0 | 1 | 0/1 NEEDS HOUSTON — which N did the NaMaster pipeline actually use? |
+| 31 | 2026-04-29 | 13 (P1: 1 MAJOR app:reproducibility xref + 3 MINOR; P2: 3 MINOR — bib + "more than an order of magnitude" wording + Ferraro orphan; P3: 1 MAJOR + 3 MINOR — bias sample-size, footnote disambig, LAMOST gap; P4: 2 MINOR — dipole significance label + N_gal=5,547,858 closing R30 question) | 0 | 2 | 11 | 13/13 FIXED |
+| 32 | 2026-04-29 | 8 (P1: 1 MINOR Reproducibility note → 500MC; P2: 2 MINOR — orphan bib entry + xref; P3: 1 MAJOR — UMAP "ALL_PASS" → 1-of-3 PASS honest framing on real 50K-sample 20-seed result; P4: 4 MINOR — units, ℓ_max motivation, N_gal arithmetic, Dosovitskiy bib) | 0 | 1 | 7 | 8/8 FIXED |
+| 33 | 2026-04-29 | 4 actionable + 3 CLEAN sweeps (P2: MC count >6e5 conclusion ↔ abstract; P4: % units in confusion-matrix headers; SITE: activity-feed entry for Pod 1 NaMaster 500MC + UMAP; P1 single-check 20 sections + 43 subsections CLEAN; P3 single-check 21/21 figure files CLEAN) | 0 | 0 | 4 | 4/4 FIXED + 3 CLEAN |
+| 34 | 2026-04-29 | 2 (P4 cite-resolve sweep — 28/28 CLEAN; P2 abstract-numbers-in-body — 22/23 supported; orphan ">4σ" SPHEREx null disfavor added to body §VIII.A) | 0 | 0 | 1 | 1/1 FIXED + 1 CLEAN |
 
 ---
 
