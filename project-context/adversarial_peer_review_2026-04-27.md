@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 25 ROUNDS COMPLETE — 244+ findings total, ~238 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Rounds 21-24: incremental text-only fixes across all 4 papers. Round 25: contributions.html birefringence attribution corrected (M&K 3.9σ→2.4σ, Eskilt→3.6σ standalone, bib count 57+→63+). P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
+**Status:** 26 ROUNDS COMPLETE — 251+ findings total, ~245 fixed, 3 GPU-blocked remaining. Round 20 CLEAN (zero findings). Rounds 21-25: incremental text-only fixes. Round 26: P1 β=0.27° arithmetic error FIXED (m=H_0 gives 0.17° not 0.27°; fiducial 0.27° attributed to m≈1.8H_0), P1 σ range 2.5→2.4σ, P3 broken crossmatch figure ref, site audit (f_NL 9.5%→6.1%, Path-C 93%→100%, refs 51→63+, NEOWISE 444→419, P4 readiness 99.5%→100%). P4-M6 MASTER deconvolution COMPLETE. **FW-6 hyperparameter stability DONE** (STABLE, J=0.9998 top-cluster, Paper 3 updated). FW-7 CMB cross-validation DONE. FW-13 UMAP multi-seed DONE. Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -10,7 +10,7 @@
 
 **Updated 2026-04-29.**
 
-**Bottom line:** 25 rounds of adversarial review found ~244+ issues across 4 papers + the website. ~238 have been fixed. Round 20 returned **CLEAN** (zero findings). Rounds 21-25 found incremental issues, all text-fixed. **3 GPU-blocked remaining** (down from 8 originally). All FW items that can run locally are DONE: FW-6 (UMAP/HDBSCAN stability, PASS), FW-7 (CMB cross-validation), FW-11 (NANOGrav Bayes), FW-12 (anisotropic birefringence), FW-13 (multi-seed UMAP). Papers are submission-ready.
+**Bottom line:** 26 rounds of adversarial review found ~251+ issues across 4 papers + the website. ~245 have been fixed. Round 20 returned **CLEAN** (zero findings). Rounds 21-26 found incremental issues, all text-fixed. **3 GPU-blocked remaining** (down from 8 originally). All FW items that can run locally are DONE: FW-6 (UMAP/HDBSCAN stability, PASS), FW-7 (CMB cross-validation), FW-11 (NANOGrav Bayes), FW-12 (anisotropic birefringence), FW-13 (multi-seed UMAP). Papers are submission-ready.
 
 **Pod status (2026-04-29 ~08:00 UTC):**
 - **Pod 1** (o76k3jfzbfh25e): Connection refused (SSH port 11452 @ 205.196.19.52). Pod may have expired/stopped. NaMaster 500MC birefringence status UNKNOWN — need to check RunPod dashboard.
@@ -194,6 +194,7 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 23 | 2026-04-29 | 10+ (P1: ALP mass, Table V xref, ~125; P2: τ_NL/g_NL, ρ=0.966, DBI; P4: Poisson noise clarity, edge-on) | 2 | 5 | 3 | 10/10 TEXT-FIXED |
 | 24 | 2026-04-29 | 8 (P3: TIC score attribution, Gaia 500K/50K, FW-6 placement, SNR bins, eROSITA caption, fig path, CMB val_loss, title rounding) | 2 | 5 | 1 | 7/8 FIXED (1 minor: title rounding, intentional) |
 | 25 | 2026-04-29 | 4 (SITE: contributions.html birefringence attribution M&K 3.9σ→2.4σ, Eskilt 3.9σ→3.6σ standalone, bib count 57+→63+ ×2) | 0 | 2 | 2 | 4/4 FIXED |
+| 26 | 2026-04-29 | 7 (P1: β=0.27° arithmetic MAJOR — m=H_0 gives 0.17° not 0.27°, σ range 2.5→2.4σ; P3: broken crossmatch fig ref; SITE: f_NL 9.5%→6.1% ×5, Path-C 93%→100% ×4, refs 51→63+, NEOWISE 444→419, P4 readiness 99.5%→100%) | 0 | 1 | 6 | 7/7 FIXED |
 
 ---
 
