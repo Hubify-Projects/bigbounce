@@ -116,7 +116,7 @@ These items were listed as "future research" in the papers but CAN be done now w
 | FW-9 | 4 | Spectroscopic redshift cross-match with DESI DR1 | line 1237 | ~3h | QUEUED |
 | FW-10 | 4 | Redshift-dependent CW fraction + dipole tests | line 1293, 1363 | ~4h | QUEUED |
 | FW-11 | 1 | NANOGrav posterior-level Bayes factor | line 949 | ~4h local | **DONE** (B(bounce/SMBHB)=34.0 "Very strong" Jeffreys, P(bounce)=83.5%, SMBHB 2.70σ excluded; Paper 1 line 949 updated) |
-| FW-12 | 1 | Anisotropic birefringence C_ℓ derivation | line 307 | ~3h local | QUEUED |
+| FW-12 | 1 | Anisotropic birefringence C_ℓ derivation | line 307 | ~3h local | **DONE** (A_CB~7.3e-12 deg², 10¹⁰× below Planck; isotropic-only is a falsifiable prediction; Paper 1 lines 307+311 updated) |
 | FW-13 | 3 | DESI clustering multi-seed stability | line 723 | ~1h local | **DONE** (trustworthiness=0.992, kNN=0.536, Spearman=0.908 — all PASS; Paper 3 line 723 updated) |
 
 ### Pod Assignments (2 H200 pods, 2026-04-28)

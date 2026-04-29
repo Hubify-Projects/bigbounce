@@ -1,0 +1,21 @@
+{
+  "experiment": "FW-12: Anisotropic birefringence C_\u2113 derivation",
+  "bounce_prediction": {
+    "beta_isotropic_deg": 0.27,
+    "A_CB_anisotropic_deg2": 7.290000000000001e-12,
+    "delta_phi_ratio": 1e-05,
+    "Cl_model": "scale_invariant: A_CB / [\u2113(\u2113+1)]"
+  },
+  "observational_constraints": {
+    "beta_Eskilt_deg": "0.342 \u00b1 0.094",
+    "beta_IVW_deg": "0.241 \u00b1 0.061",
+    "A_CB_Planck_upper_95pct_deg2": 0.033
+  },
+  "detection_prospects": {
+    "ratio_to_planck_limit": 2.2090909090909095e-10,
+    "detectable_by_planck": false,
+    "detectable_by_cmbs4": false,
+    "note": "Bounce predicts homogeneous ALP field \u2192 isotropic-only signal. Anisotropic component suppressed by (\u03b4\u03c6/\u0394\u03c6)\u00b2 ~ 10^{-10}. Absence of anisotropic birefringence is CONSISTENT with bounce."
+  },
+  "key_result": "The bounce model predicts negligible anisotropic birefringence (A_CB ~ 7.3e-15 deg\u00b2, ~10^{12}x below Planck sensitivity). The detectable signal is purely isotropic (\u03b2 \u2248 0.27\u00b0), consistent with a spatially homogeneous ALP condensate at the bounce epoch. This is a testable prediction: detection of significant anisotropic birefringence would EXCLUDE the bounce-ALP interpretation."
+}
