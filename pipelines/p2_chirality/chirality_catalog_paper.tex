@@ -309,13 +309,15 @@ $3 \times 10^{-4}$, encoder learning rate $2 \times 10^{-5}$,
 weight decay $0.02$), batch size~64, and a cosine annealing
 warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early
 stopping with patience of 15 epochs monitors the best validation
-loss within a maximum budget of 100 epochs; the production model's
-best validation loss of $0.134$ was achieved at epoch~75, with
-early stopping triggered at epoch~90 (validation loss monotonically
-increasing over the final 15 epochs, confirming no overfitting
-beyond the checkpoint).
-The headline 93.7\% three-class accuracy includes the \NS{} class, which is
-easier to classify (recall~98.4\%). For the binary CW/CCW
+loss within a maximum budget of 80 epochs; the production model's
+best validation loss was achieved at epoch~79 of~80, with the model
+continuing to improve through nearly the full training budget.
+The headline 93.7\% three-class accuracy (online validation during
+training, with data augmentation active) includes the \NS{} class, which is
+easier to classify (recall~98.4\%). Post-hoc evaluation of the best
+checkpoint on the same validation split without augmentation yields
+94.9\% (Table~\ref{tab:confusion}); the 1.2~pp difference reflects
+augmentation-induced difficulty during training. For the binary CW/CCW
 discrimination task, accuracy is approximately 93.2\%, with CW recall
 of 93.8\% and CCW recall of 92.6\% (Table~\ref{tab:confusion}). The modest CW/CCW recall asymmetry
 ($1.2$ percentage points) contributes to the sub-percent raw CW
