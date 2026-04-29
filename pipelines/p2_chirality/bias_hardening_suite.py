@@ -48,19 +48,30 @@ OUTPUT_DIR = "/workspace/analysis3_outputs"
 print("\nLoading model...", flush=True)
 
 class ChiralityHead(nn.Module):
+    # v2: 3-class CW/CCW/NOT_SPIRAL with 256-dim middle layer
     def __init__(self, dim):
         super().__init__()
-        self.head = nn.Sequential(
+        self.h = nn.Sequential(
             nn.LayerNorm(dim), nn.Linear(dim, 512), nn.GELU(), nn.Dropout(0.3),
-            nn.Linear(512, 128), nn.GELU(), nn.Dropout(0.2), nn.Linear(128, 2))
+            nn.Linear(512, 256), nn.GELU(), nn.Dropout(0.2), nn.Linear(256, 3))
     def forward(self, x):
-        return self.head(x)
+        return self.h(x)
 
 encoder = timm.create_model('vit_small_patch16_224', pretrained=False, num_classes=0)
 chirality_head = ChiralityHead(384)
-ckpt = torch.load(f"{OUTPUT_DIR}/chirality_model_best.pt", weights_only=True)
-encoder.load_state_dict(ckpt['encoder_state'])
-chirality_head.load_state_dict(ckpt['head_state'])
+import os as _os
+_v2_path = f"{OUTPUT_DIR}/chirality_model_v2_best.pt"
+_v1_path = f"{OUTPUT_DIR}/chirality_model_best.pt"
+_ckpt_path = _v2_path if _os.path.exists(_v2_path) else _v1_path
+ckpt = torch.load(_ckpt_path, weights_only=True)
+print(f"  Loaded ckpt: {_ckpt_path}", flush=True)
+# v2 uses keys enc/head; v1 used encoder_state/head_state
+if "enc" in ckpt:
+    encoder.load_state_dict(ckpt["enc"])
+    chirality_head.load_state_dict(ckpt["head"])
+else:
+    encoder.load_state_dict(ckpt["encoder_state"])
+    chirality_head.load_state_dict(ckpt["head_state"])
 
 class ChiralityModel(nn.Module):
     def __init__(self, e, h):

@@ -385,9 +385,15 @@ for ckpt_name in ['chirality_model_v2_best.pt', 'chirality_model_best.pt']:
         if os.path.exists(ckpt_path):
             try:
                 ckpt = torch.load(ckpt_path, weights_only=True)
-                encoder.load_state_dict(ckpt['encoder_state'])
-                # Determine head type
-                head_key = 'head_state' if 'head_state' in ckpt else 'chirality_head_state'
+                # v2 uses 'enc'/'head' keys; v1 used 'encoder_state'/'head_state'/'chirality_head_state'
+                enc_key = 'enc' if 'enc' in ckpt else 'encoder_state'
+                encoder.load_state_dict(ckpt[enc_key])
+                if 'head' in ckpt:
+                    head_key = 'head'
+                elif 'head_state' in ckpt:
+                    head_key = 'head_state'
+                else:
+                    head_key = 'chirality_head_state'
                 head_dict = ckpt[head_key]
                 # Check output dim
                 last_weight_key = [k for k in head_dict if 'weight' in k][-1]
