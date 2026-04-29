@@ -192,7 +192,7 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 21 | 2026-04-28 | 2 (P4 only) | 0 | 2 | 0 | 2/2 FIXED |
 | 22 | 2026-04-29 | 4 (P4: MASTER arithmetic, bibentry, xref, f_sky) | 1 | 2 | 1 | 4/4 FIXED |
 | 23 | 2026-04-29 | 10+ (P1: ALP mass, Table V xref, ~125; P2: τ_NL/g_NL, ρ=0.966, DBI; P4: Poisson noise clarity, edge-on) | 2 | 5 | 3 | 10/10 TEXT-FIXED |
-| 24 | 2026-04-29 | P3 full re-review (in progress) | — | — | — | IN PROGRESS |
+| 24 | 2026-04-29 | 8 (P3: TIC score attribution, Gaia 500K/50K, FW-6 placement, SNR bins, eROSITA caption, fig path, CMB val_loss, title rounding) | 2 | 5 | 1 | 7/8 FIXED (1 minor: title rounding, intentional) |
 
 ---
 
