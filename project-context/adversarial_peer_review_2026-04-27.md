@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 16 ROUNDS COMPLETE — all text-fixable items resolved (208 findings, ~189 fixed, 14 remaining + 4 notes — P2-C2, P3-C3, P3-M5, P3-M1 resolved locally 2026-04-28)
+**Status:** 17 ROUNDS COMPLETE — all text-fixable items resolved (210 findings, ~191 fixed, 14 remaining + 4 notes — P2-C2, P3-C3, P3-M5, P3-M1 resolved locally 2026-04-28)
 
 ---
 
@@ -120,6 +120,7 @@ If you're going to burn H200 time on review items:
 | 14 | 2026-04-28 | 10 (P2 re-review 3) | 0 | 5 | 5 | 10/10 FIXED |
 | 15 | 2026-04-28 | 9 (P3 re-review 3) | 0 | 4 | 5 | 9/9 TEXT-FIXED |
 | 16 | 2026-04-28 | 10 (P4 re-review 3) | 0 | 6 | 4 | 10/10 FIXED |
+| 17 | 2026-04-28 | 2 (P1 adversarial round 17) | 0 | 1 | 1 | 2/2 FIXED |
 
 ---
 
@@ -1145,3 +1146,86 @@ W-8 ✅ All article pages + activity.html stale values fixed
 - All 27 \cite keys have matching \bibitem entries (no orphans)
 - All 44 \ref targets have matching \label definitions (no broken refs)
 - 192 shards * 44,139/shard = 8,474,688 (matches stated parent count)
+
+## ROUND 17: ADVERSARIAL RE-REVIEW OF PAPER 3 (2026-04-28)
+
+**Method:** Single Opus 4.6 agent -- hostile PRD referee, full 1000-line re-read of `pipelines/p3_anomaly_engine/paper3_draft.tex` with systematic numerical audit (all table sums, anomaly rates, cross-fold split arithmetic, sensitivity table derivation, false-match rate calculations, NEOWISE polar cap statistics, Path-C dedup arithmetic, 141x scale factor, throughput calculations, taxonomy family totals all recomputed in Python), cross-reference verification (all `\label`/`\ref` pairs -- 0 undefined), citation-bibliography consistency (all 28 `\cite`/`\bibitem` pairs -- 0 orphans, 0 missing), and macro definition audit (3 unused macros: `\Neff`, `\Mpc`, `\cf` -- cosmetic only).
+
+| # | Sev | Finding | Fixable? | Status |
+|---|-----|---------|----------|--------|
+| P3-R17-1 | MAJOR | **5-fold cross-validation training-set size arithmetic error.** Paper states "each fold trains on 80% of the pool (33,840 spectra)" in two locations (Sec 2.2, line 111; Sec 7.2 caveat (i), line 554). But 80% of 47,000 = 37,600, not 33,840. The value 33,840 = 37,600 * 0.90, suggesting an internal 90/10 early-stopping split within each fold's training portion. The paper conflates the gradient-update subset (33,840) with the full 80% fold (37,600). A referee who checks the arithmetic sees: 33,840 + 9,400 = 43,240, not 47,000 -- a 3,760-spectrum discrepancy that implies an undisclosed validation split. | TEXT | [x] FIXED -- both occurrences now read "80% of the pool (37,600 spectra, of which 33,840 receive gradient updates after a 10% internal early-stopping split)" |
+
+**Verified clean (no issues found) -- comprehensive arithmetic audit:**
+- Table 1 cross-transfer sum: 195,829 + 77,905 + 44,075 + 298 + 200 + 200 + 500 + 436 = 319,443 (correct)
+- Table 1 total sources: 22,504,897 + 2,304,830 + 11,418,594 + 930,203 + 20,000 + 20,000 + 50,000 + 43,518 = 37,292,042 (correct)
+- Path-C native sum: 195,829 + 77,905 + 113,342 + 298 + 200 + 200 + 500 + 419 = 388,693 (correct)
+- Path-C dedup: 388,693 - 10,213 = 378,480 (correct, 2.628% compression matches)
+- ACT exclusion: 388,693 - 200 = 388,493; 388,493 - 10,213 = 378,280 (matches paper)
+- DESI anomaly rate: 195,829 / 22,504,897 = 0.87% (correct)
+- SDSS anomaly rate: 77,905 / 2,304,830 = 3.38% (correct)
+- LAMOST anomaly rate: 44,075 / 11,418,594 = 0.39% (correct)
+- eROSITA anomaly rate: 298 / 930,203 = 0.032% -> 0.03% (correct)
+- Total cross-transfer rate: 319,443 / 37,292,042 = 0.86% (correct)
+- Path-C rate: 378,480 / 37,292,042 = 1.01% (correct)
+- 141x scale: 378,480 / 2,685 = 141.0 (correct)
+- SDSS 6500x inflation: 77,905 / 12 = 6,492x -> ~6500x (correct)
+- LAMOST 21.5x inflation: 44,075 / 2,054 = 21.5x (exact)
+- SDSS classification table sum: 41,065 + 25,733 + 6,099 + 1,232 + 1,164 + 780 + 547 + 520 + 384 + 381 = 77,905 (correct)
+- SDSS percentages: 52.7%, 33.0%, 7.8%, 1.6%, 1.5%, 1.0%, 0.7%, 0.7%, 0.5%, 0.5% (all correct)
+- DESI band-dominance sum: 151,244 + 44,436 + 34 + 19 + 96 = 195,829 (correct)
+- DESI band-dominance %: 77.2%, 22.7%, 0.02%, 0.01%, 0.05% (all correct, sum 100%)
+- SDSS/DESI rate ratio: 3.38 / 0.87 = 3.9x (correct)
+- NEOWISE polar cap: 17/436 = 3.9%, uniform-null = 1-sin(80deg) = 1.52%, excess = 2.6x (all correct)
+- NEOWISE retained: 419/436 = 96.1% (correct)
+- Planck val_loss improvement: 2e4 / 0.4437 = 45,076x -> ~4.5e4x (correct)
+- Planck throughput: 2e5 / 25.3s = 7,905 patches/s -> ~8e3 (correct)
+- DESI throughput: 22.5M / 19,705s = 1,142 spectra/s (exact)
+- SIMBAD false-match: n = 3.0e-5 arcsec^-2, P_false = 2.4e-3, expected DESI = ~460, total ~750 (all correct)
+- Cross-fold Jaccard: 399/546 = 73.1%, 464/546 = 85.0%, 47/546 = 8.6% (all correct)
+- Taxonomy families: sum of 10 family sizes = 182,364, noise = 195,829 - 182,364 = 13,465 = 6.9% (correct)
+- eROSITA XV: 7,582/9,303 = 81.5% (correct)
+- Gaia XV: 2,048/5,000 = 41.0% (correct)
+- Sensitivity table: all 8 alpha values verify within +/-0.1% rounding (correct)
+- All `\ref` targets defined (0 undefined)
+- All `\cite` keys have `\bibitem` entries (0 orphans, 0 missing)
+- `\end{document}` present
+
+---
+
+## ROUND 17 (2026-04-28) — Paper 1 adversarial Opus review
+
+### Methodology
+
+Full 1257-line re-read of `arxiv/main.tex` by hostile adversarial referee (Opus 4.6). All arithmetic verified independently via Python. Cross-references checked exhaustively (all `\ref` targets confirmed defined). All AIC/BIC/chi2 values recomputed. Every stated sigma-tension recomputed from stated inputs.
+
+### Findings (2 items, both FIXED)
+
+| # | Severity | Issue | Fix | Status |
+|---|----------|-------|-----|--------|
+| R17-1 | **MAJOR** | Table I (exec summary) status column says "S8/sigma8: Below Planck at ~2sigma" but the paper's own footnote b explicitly computes S8 tension as 1.2sigma and sigma8 as 0.8sigma. Neither is ~2sigma. The table body contradicts its own footnote. Verified: (0.832-0.814)/sqrt(0.013^2+0.008^2)=1.18sigma; (0.811-0.803)/sqrt(0.006^2+0.008^2)=0.80sigma. | Changed "Below Planck at ~2sigma" to "Below Planck at ~1sigma" in Table I status column (line 99). | [x] FIXED |
+| R17-2 | **MINOR** | Inverse-variance combined birefringence beta stated as 0.242 deg in 7 locations, but the arithmetic from the stated inputs (Planck: 0.30+/-0.11, ACT: 0.215+/-0.074) gives beta=0.2415 deg, which rounds to 0.241 not 0.242. The 4th decimal is 4 (rounds down). The error bar +/-0.061 and SNR 3.9sigma are correct. | Changed all 7 instances of 0.242 deg to 0.241 deg: lines 132, 416, 424, 865, 878, 1049, 1243. | [x] FIXED |
+
+### What was checked and found clean
+
+- All cross-references: 0 undefined \ref targets (all 55 unique \ref keys matched to defined \label)
+- Sample count arithmetic: 176,840 + 132,949 = 309,789 (correct); 309,789 + 114,992 = 424,781 (correct)
+- H0 tension: (73.04-67.36)/sqrt(1.04^2+0.54^2)=4.85sigma (paper says ~4.9sigma, footnote says 4.86sigma: both correct)
+- Table I H0 tension: (67.68-73.04)/sqrt(1.06^2+1.04^2)=-3.61sigma (matches paper)
+- AIC table: all 3 rows verify (chi2+2k: 1168.2, 1168.8, 1162.3)
+- BIC implied n_eff: 699, 569, 768 (matches footnote "~570 to ~770")
+- chi2/dof = 1148.3/1142 = 1.006 (correct)
+- NaMaster SNR: 0.264/0.065 = 4.06 (paper says 4.1: correct rounding)
+- NaMaster vs ALP: |0.264-0.27|/0.065 = 0.09sigma (correct)
+- NaMaster vs Planck+ACT: |0.264-0.342|/sqrt(0.065^2+0.094^2) = 0.68sigma (correct)
+- LiteBIRD: 0.27/0.03 = 9.0sigma (correct)
+- rho_crit/rho_Pl for gamma=0.274: sqrt(3)/(32*pi^2*0.274^3) = 0.267 (paper says ~0.27: correct)
+- rho_crit/rho_Pl for gamma=0.2375: 0.409 (paper says ~0.41: correct)
+- gamma^2/(gamma^2+1) at gamma=0.274: 0.0698; 1/0.0698 = 14.3 (paper says "factor of ~14": correct)
+- Scale separation: (5.4e-44/1e17)^4 ~ 10^-244 (correct order of magnitude)
+- Barrier 4: k^2/M_Pl^2 ~ (H_0/M_Pl)^2 ~ 10^-122 (correct)
+- Barrier 1: g_eff ~ H_0/M_Pl ~ 10^-61 (correct)
+- ALP beta: alpha_EM * 8/(4*pi) * 1.07 = 0.285 deg (paper says "~0.29 deg": acceptable with approx)
+- Abstract claims vs body: all verified consistent
+- Claims table (Appendix K) vs body: all verified consistent
+- No undefined macros found
+- No LaTeX compilation issues identified
