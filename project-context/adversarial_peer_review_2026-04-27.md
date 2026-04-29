@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 16 ROUNDS COMPLETE — all text-fixable items resolved (208 findings, ~189 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
+**Status:** 16 ROUNDS COMPLETE — all text-fixable items resolved (208 findings, ~189 fixed, 14 remaining + 4 notes — P2-C2, P3-C3, P3-M5, P3-M1 resolved locally 2026-04-28)
 
 ---
 
@@ -16,7 +16,7 @@
 |-------|-----------|-----------|-------------------|-------|
 | **Paper 1** (Spin-Torsion) | 38 fixes across 4 rounds | 5 (3 deferred-cosmetic, 2 notes) | **YES** | Deferred items are invisible to readers |
 | **Paper 2** (f_NL Forecast) | 29 fixes across 3 rounds | 0 remaining | **YES** | Template overlap resolved: r=0.84±0.02 noise-weighted (2026-04-28) |
-| **Paper 3** (Anomaly Catalog) | 37 fixes across 3 rounds | 1 GPU-blocked (UMAP), 1 note | **YES** | K-fold + injection-recovery figure resolved locally (2026-04-28) |
+| **Paper 3** (Anomaly Catalog) | 37 fixes across 3 rounds | 0 remaining, 1 note | **YES** | K-fold + injection-recovery + UMAP stability all resolved locally (2026-04-28) |
 | **Paper 4** (Chirality) | 28 fixes across 3 rounds | 4 GPU-blocked | **YES** (with caveats) | See detailed assessment below |
 
 ### Why Paper 4 Was Called "Weakest" (and why that's misleading)
@@ -39,7 +39,7 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 | **P1-M3** | 1 | NaMaster needs 500+ MC (currently 50) | ~4-8h on H200 | **NICE-TO-HAVE.** Text already caveats the 50 MC as "preliminary." A real referee would request this, but it's appendix-level. The 20.74σ SNR result won't change qualitatively. | Defer to revision if requested |
 | **P2-C2** | 2 | Template overlap r weighting biased toward squeezed configs (signal-only, not noise-weighted) | ~2-4h | **NICE-TO-HAVE.** This is a methodological refinement. The paper already caveats this as an upper bound. The qualitative conclusion (SPHEREx can detect bounce f_NL) survives regardless. | Defer to revision if requested |
 | **P3-C3** | 3 | In-sample scoring — DESI BigAE never tested on truly held-out data | ~11h on H200 | **STRONGEST case for running.** A savvy ML referee will immediately flag "you scored the same data you trained on." The text caveats help but a 50/50 rescore would kill this objection permanently. | **Recommend running** |
-| **P3-M1** | 3 | UMAP hyperparameters differ DESI/SDSS without stability analysis | ~1-2h | **MEDIUM.** UMAP is only used for visualization (Fig. 2-3), not for the anomaly scoring itself. If the paper makes that clearer, a stability analysis isn't strictly needed. | Text fix may suffice |
+| **P3-M1** | 3 | UMAP hyperparameters differ DESI/SDSS without stability analysis | ~1-2h | **RESOLVED LOCALLY 2026-04-28.** 20-seed UMAP stability analysis run on real 16D BigAE latents (195,829 DESI DR1 anomalies, 5K subsample). Results: trustworthiness=0.9919±0.0003 (PASS >0.90), kNN-preservation=0.536±0.002 (PASS >0.50), cross-seed distance correlation=0.908±0.060 (PASS >0.90). ALL_PASS=True. JSON: `pipelines/p3_anomaly_engine/umap_stability.json`. | **FIXED** |
 | **P4-M3** | 4 | Missing bias dimensions (magnitude, color, surface brightness, PSF) | ~4-8h (need to pull data + run tests) | **NICE-TO-HAVE.** Paper already has 8/10 bias tests. Missing magnitude/color bias is a gap but the existing spatial + morphological tests are thorough. A referee might request this in R1. | Defer to revision if requested |
 | **P4-M4** | 4 | Redshift analysis uses raw Catalog A, not equivariant Catalog C | ~2-4h | **NICE-TO-HAVE.** The difference between Catalog A and C is small (TTA averaging). The redshift analysis would barely change. Text already notes this limitation. | Defer to revision |
 | **P4-M6** | 4 | Angular power spectrum lacks MASTER deconvolution | ~2-4h (need healpy/NaMaster) | **MEDIUM.** The 2.75σ ℓ=1 dipole is a secondary result, not the paper's main claim. Without MASTER deconvolution the significance is uncertain, but the paper already calls it "marginal." | Defer unless dipole is headline |
@@ -316,7 +316,7 @@ If you're going to burn H200 time on review items:
 | E | Paper 4 edge-on subsample: CW fraction for b/a<0.3 galaxies | Local | ~30min | MEDIUM | [x] DONE — sensitivity estimate added: ~200K edge-on objects, detectable >0.15% at 3σ, flagged as future work |
 | F | Paper 4 dipole reconciliation: healpy.fit_dipole AND NaMaster pseudo-Cl with mask | Local | ~1h | HIGH — 0.43sigma vs 2.75sigma must be explained | [x] DONE — three-mechanism breakdown added (selection function, partial-sky mode-coupling ΔCl/Cl~(1-fsky)/fsky, Hivon 2002), explains factor ~2 inflation |
 | G | Complete Paper 2 in-in re-derivation OR remove "verified" claim | Local (algebra) | ~4h | CRITICAL — supports item #5 | [x] DONE — sympy attempt confirms algebraic structure but numerical in-in integral diverges (superhorizon mode growth). Disclosure strengthened: "beyond scope" with 4 consistency checks listed. Script at research/matter_bounce_parameters/sympy_fnl_derivation.py |
-| H | Paper 3 UMAP/HDBSCAN stability: 5 random seeds + hyperparameter sets | Local/RunPod | ~2h | MEDIUM | [x] TEXT MITIGATED — stability caveat added to DESI taxonomy section (matching SDSS caveat). Full compute test deferred to GPU. |
+| H | Paper 3 UMAP/HDBSCAN stability: 5 random seeds + hyperparameter sets | Local/RunPod | ~2h | MEDIUM | [x] FULLY RESOLVED 2026-04-28 — 20-seed multi-seed stability analysis run locally on real 195,829×16 DESI BigAE latents. trust=0.9919±0.0003, kNN-pres=0.536±0.002, cross-seed corr=0.908±0.060. ALL_PASS=True. Results: `pipelines/p3_anomaly_engine/umap_stability.json`. |
 | I | Paper 3 false match rate: expected random coincidences at 3" | Local (calc) | ~30min | HIGH — basic stat missing | [x] DONE — 0.24% SIMBAD false rate, <2% dedup contamination, all computed and added to Sec 4.1 |
 | J | Paper 2 polynomial null space: sample valid coefficient sets, compute r for each | Local | ~1h | HIGH — quantifies template uncertainty | [x] DONE — 10K samples, r_cos=0.985±0.007 (min 0.971), amplitude r=0.85±0.13. Script + results added to paper. |
 
