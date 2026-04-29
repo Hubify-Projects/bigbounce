@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 17 ROUNDS COMPLETE — all text-fixable items resolved (210 findings, ~191 fixed, 14 remaining + 4 notes — P2-C2, P3-C3, P3-M5, P3-M1 resolved locally 2026-04-28)
+**Status:** 18 ROUNDS COMPLETE — 221 findings total, ~202 fixed, 5 GPU-blocked remaining (2026-04-28)
 
 ---
 
