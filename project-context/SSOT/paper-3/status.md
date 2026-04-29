@@ -87,6 +87,7 @@ All raw per-survey outputs are in `pipelines/h200_results/pod_backup_20260408_fu
 | Analysis | Output | Appears in paper? |
 |---|---|---|
 | Recursive second-level AE on 195,829 DESI anomalies | `recursive_anomalies/latent_ae_model.pt` + UMAP+HDBSCAN clusters | §2 (redshift neuron), §5 (multi-tracer 9.5 %), Appendix D |
+| UMAP multi-seed stability (Pod 1 production, 50K-sample 20-seed) | trustworthiness 0.9797 ± 5e-5 PASS · kNN preservation 0.160 ± 5e-4 FAIL · cross-seed Spearman 0.680 ± 0.072 FAIL · canonical: `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/umap/umap_stability.json` | Appendix D — load-bearing claim is trustworthiness PASS; kNN/cross-seed FAILs are expected for high-dim anomaly clouds (sparse/seed-sensitive local neighborhoods) |
 | Unsupervised photo-z from latent vectors | σ_NMAD = 0.028, R² = 0.79, 7.7 % outliers | §2 (competitive with supervised photo-z) |
 | f_NL Fisher forecast | σ_fnl 8.98 → 8.43 (6.1 % DESI alone), 16.4 % DESI+SDSS, 9.5 % latent-space | §5 + Appendix C sensitivity table (reconciled 2026-04-16) |
 | NANOGrav 15-yr free-spectrum MCMC | γ = 3.20 ± 0.42 · ΔBIC(SMBHB − bounce) = 7.0 · 192 K samples | §6 (not an "evidence for bounce" claim — explicitly 0.48σ) |

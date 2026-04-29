@@ -24,7 +24,7 @@ submission_status: arXiv-ready after P1 queue items close
 ## 0 · TL;DR (for humans in a hurry)
 
 - Paper 1 is **the most mature** of the four papers — v2.3.0, 10+ revision rounds, PRD-style revtex4-2, two-column, ~24 pages.
-- The science is done: 14 structural barriers, β = 0.27° ALP birefringence prediction (with independent NaMaster measurement β = 0.264° ± 0.065° at 0.09σ from prediction), ΔN_eff MCMC verification, bounce-model discrimination table, Monte Carlo sensitivity scan, chirality-catalog null-result robustness section.
+- The science is done: 14 structural barriers, β = 0.27° ALP birefringence prediction (with independent NaMaster measurement β = 0.264° ± 0.065° at 0.09σ from prediction; Pod 1 production 500MC pipeline test confirms β=0.27° recovered with bias 0.032°, SNR=20.32 at ACT sensitivity; consistency vs joint Planck+ACT observation = 0.77σ; canonical: `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`), ΔN_eff MCMC verification, bounce-model discrimination table, Monte Carlo sensitivity scan, chirality-catalog null-result robustness section.
 - The PDF compiles cleanly (0 undefined references on last compile).
 - **Gap to 100 %:** 1 wordsmith on L299 "TBD", 1 corner-plot data-release note at L882, one verified site-sync pass, and a fresh dated recompile. Three truly-blocked exceptions (L291 photon-torsion coupling, L744 Cuscuton-ECH analysis, L976 γ-origin derivation) are all covered by explicit alternative mechanisms or acknowledged as outside scope — honest, not deferrals.
 - Estimated headline: **99 % arXiv-ready.** Same tier as Paper 3. Can submit alongside Papers 3+4.
