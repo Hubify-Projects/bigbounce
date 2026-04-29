@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{61}%
+\begin{thebibliography}{65}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -75,6 +75,15 @@
   {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
   {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
   {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wands}(2010)}]{Wands:2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Wands}},\ }\bibfield  {title} {\bibinfo {title} {Local non-{G}aussianity
+  from inflation},\ }\href {https://doi.org/10.1088/0264-9381/27/12/124002}
+  {\bibfield  {journal} {\bibinfo  {journal} {Class. Quant. Grav.}\ }\textbf
+  {\bibinfo {volume} {27}},\ \bibinfo {pages} {124002} (\bibinfo {year}
+  {2010})},\ \Eprint {https://arxiv.org/abs/1004.0818} {arXiv:1004.0818
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
   \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
   {Cai}}]{Li:2016xjb}%
@@ -204,7 +213,7 @@
   \bibinfo {pages} {96} (\bibinfo {year} {2016})},\ \Eprint
   {https://arxiv.org/abs/1410.3881} {arXiv:1410.3881 [gr-qc]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Pop{\l}awski}(2010)}]{Poplawski2019}%
+\bibitem [{\citenamefont {Pop{\l}awski}(2010)}]{Poplawski2010}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
   {Pop{\l}awski}},\ }\bibfield  {title} {\bibinfo {title} {Cosmology with
@@ -214,6 +223,13 @@
   {694}},\ \bibinfo {pages} {181} (\bibinfo {year} {2010})},\ \Eprint
   {https://arxiv.org/abs/1007.0587} {arXiv:1007.0587 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{a}})}]{Golden:2026forecast}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Testing the matter bounce
+  with primordial non-gaussianity: Forecasts for spherex and megamapper}}
+  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note}
+  {forthcoming}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Pop{\l}awski}(2012)}]{Poplawski2011}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
@@ -280,6 +296,16 @@
    {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {103}},\ \bibinfo
   {pages} {043509} (\bibinfo {year} {2021})},\ \Eprint
   {https://arxiv.org/abs/2011.11894} {arXiv:2011.11894 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Holst}(1996)}]{Holst1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Holst}},\ }\bibfield  {title} {\bibinfo {title} {Barbero's {Hamiltonian}
+  derived from a generalized {Hilbert-Palatini} action},\ }\href
+  {https://doi.org/10.1103/PhysRevD.53.5966} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {53}},\ \bibinfo
+  {pages} {5966} (\bibinfo {year} {1996})},\ \Eprint
+  {https://arxiv.org/abs/gr-qc/9511026} {arXiv:gr-qc/9511026 [gr-qc]}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Ashtekar}\ \emph {et~al.}(1998)\citenamefont
   {Ashtekar}, \citenamefont {Baez}, \citenamefont {Corichi},\ and\
@@ -352,19 +378,19 @@
   {117}},\ \bibinfo {pages} {131302} (\bibinfo {year} {2016})},\ \Eprint
   {https://arxiv.org/abs/1605.07178} {arXiv:1605.07178 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{a}})}]{Golden2026supplement}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden2026supplement}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\href@noop {} {\bibinfo {title} {Systematic closure of minimal
   first-principles routes to dark energy in {Einstein-Cartan-Holst} gravity}}
-  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note} {companion technical
+  (\bibinfo {year} {2026}{\natexlab{b}}),\ \bibinfo {note} {companion technical
   note, available upon request from the author}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden:2026chirality}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{c}})}]{Golden:2026chirality}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {8.47 million galaxies
-  classified for spiral handedness: A bias-audited chirality catalog from the
-  {DESI} legacy imaging surveys}} (\bibinfo {year} {2026}{\natexlab{b}}),\
+  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {No evidence for
+  large-scale parity violation in galaxy morphology: A survey-scale chirality
+  catalog of 8.47 million galaxies}} (\bibinfo {year} {2026}{\natexlab{c}}),\
   \bibinfo {note} {forthcoming. Catalog and model available at
   \url{https://huggingface.co/bamfai/galaxy-chirality-v2}}\BibitemShut
   {NoStop}%
@@ -391,6 +417,18 @@
   {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
   {\bibinfo {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year}
   {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Carroll}\ \emph {et~al.}(1990)\citenamefont
+  {Carroll}, \citenamefont {Field},\ and\ \citenamefont
+  {Jackiw}}]{CarrollFieldJackiw1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
+  {Carroll}}, \bibinfo {author} {\bibfnamefont {G.~B.}\ \bibnamefont {Field}},\
+  and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Jackiw}},\
+  }\bibfield  {title} {\bibinfo {title} {Limits on a {Lorentz-} and
+  parity-violating modification of electrodynamics},\ }\href
+  {https://doi.org/10.1103/PhysRevD.41.1231} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {41}},\ \bibinfo
+  {pages} {1231} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Carroll}(1998)}]{Carroll1998}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
@@ -582,13 +620,6 @@
   {volume} {398}},\ \bibinfo {pages} {1601} (\bibinfo {year} {2009})},\ \Eprint
   {https://arxiv.org/abs/0809.3437} {arXiv:0809.3437 [astro-ph]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{c}})}]{Golden:2026forecast}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Testing the matter bounce
-  with primordial non-gaussianity: Forecasts for spherex and megamapper}}
-  (\bibinfo {year} {2026}{\natexlab{c}}),\ \bibinfo {note}
-  {forthcoming}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2023)\citenamefont
   {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
   {Krause}}]{Heinrich:2023}%
@@ -611,6 +642,15 @@
   the Linear Regime: Bispectrum and Strong Coupling}},\ }\href@noop {} {\
   (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2503.01992}
   {arXiv:2503.01992 [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {G{\"o}del}(1949)}]{Godel1949}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {G{\"o}del}},\ }\bibfield  {title} {\bibinfo {title} {{An Example of a New
+  Type of Cosmological Solutions of Einstein's Field Equations of
+  Gravitation}},\ }\href {https://doi.org/10.1103/RevModPhys.21.447} {\bibfield
+   {journal} {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo
+  {volume} {21}},\ \bibinfo {pages} {447} (\bibinfo {year} {1949})}\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Legner}\ \emph {et~al.}(2025)\citenamefont {Legner},
   \citenamefont {Handley},\ and\ \citenamefont {Barker}}]{Legner2025}%
   \BibitemOpen
@@ -673,16 +713,6 @@
   {volume} {92}},\ \bibinfo {pages} {063532} (\bibinfo {year} {2015})},\
   \Eprint {https://arxiv.org/abs/1508.04141} {arXiv:1508.04141 [hep-th]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Yo}\ and\ \citenamefont {Nester}(2002)}]{Yo:2002}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.-J.}\ \bibnamefont
-  {Yo}}\ and\ \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
-  {Nester}},\ }\bibfield  {title} {\bibinfo {title} {Hamiltonian analysis of
-  {Poincar\'e} gauge theory scalar modes},\ }\href@noop {} {\bibfield
-  {journal} {\bibinfo  {journal} {International Journal of Modern Physics D}\
-  }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages} {747} (\bibinfo {year}
-  {2002})},\ \Eprint {https://arxiv.org/abs/gr-qc/0112030}
-  {arXiv:gr-qc/0112030} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Penrose}(1979)}]{Penrose1979}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
@@ -693,6 +723,16 @@
   \bibinfo {editor} {\bibfnamefont {W.}~\bibnamefont {Israel}}}\ (\bibinfo
   {publisher} {Cambridge University Press},\ \bibinfo {year} {1979})\ pp.\
   \bibinfo {pages} {581--638}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yo}\ and\ \citenamefont {Nester}(2002)}]{Yo:2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.-J.}\ \bibnamefont
+  {Yo}}\ and\ \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Nester}},\ }\bibfield  {title} {\bibinfo {title} {Hamiltonian analysis of
+  {Poincar\'e} gauge theory scalar modes},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {International Journal of Modern Physics D}\
+  }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages} {747} (\bibinfo {year}
+  {2002})},\ \Eprint {https://arxiv.org/abs/gr-qc/0112030}
+  {arXiv:gr-qc/0112030} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {'t~Hooft}(1980)}]{tHooft:1979nat}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
@@ -705,7 +745,7 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Multi-survey spectral
-  anomaly detection: 319,443 uncataloged objects from 37 million sources across
+  anomaly detection: 378,480 anomalous sources from 37 million objects across
   eight astronomical archives}} (\bibinfo {year} {2026}{\natexlab{d}}),\
   \bibinfo {note} {companion paper, forthcoming. Preprint number
   HUBIFY-2026-003; includes an independent GPU MCMC analysis of the NANOGrav
