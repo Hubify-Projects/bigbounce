@@ -1,6 +1,6 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-29 15:37 UTC
+**Last updated:** 2026-04-29 15:55 UTC
 **CURRENT PODS (2x H200):**
 
 | Pod | Name | SSH | Task | Status |
@@ -14,6 +14,7 @@
 **Loop fire 2026-04-29 13:22 UTC:** R32 P2 done (bib hygiene, 3 commits). R32 P4 partial salvaged (units, ℓ_max, N_gal arithmetic — 1 commit). R32 P1 + P3 broad-review agents stream-timed out at zero edits → switching to focused micro-task strategy. Pod 1 NaMaster + UMAP integrated into P1 main.tex + P3 paper3_draft.tex (3 commits). Pod 2 prior /root/results snapshot (16 JSON files: master_power_spectrum, edgeon_contam, fw1/2/7/11/12) pulled + committed. 22 commits this session.
 **Loop fire 2026-04-29 15:22 UTC:** Pods unchanged (Pod 1 idle since 12:31Z, Pod 2 still crashed on missing pre_desi.fits). R32 P1 micro-audit ba8ccbf — fixed stale 50MC ref at line 1202 (Reproducibility) → 500MC canonical. R32 P3 micro-audit e08c28d — replaced "two-out-of-three" with explicit "one-of-three PASS" UMAP framing. R32 closed cleanly for all 4 papers. R33 P2 + P4 micro-tasks spawned (cite/numbers/abstract for P2; figs/refs/table-headers for P4). Strategy validated: focused 30-min micro-tasks finish in 95-126s with 1-2 surgical commits each.
 **Loop fire 2026-04-29 15:37 UTC:** Pods unchanged. R33 P2 c02162b confusion-matrix % units hoisted; R33 P4 0f07552 MC count alignment in conclusion. R33 P1 + site sub-agents BOTH stalled at 600s (3-check scope still too broad). Switched to direct main-thread work: site activity-feed entry 2819f89 added for Pod 1 NaMaster 500MC + UMAP + R31–R33 paper closures. Site stat cards (1.58× anomaly bias, 14 barriers, 309,789 MCMC samples) confirmed clean — no stale 2.28× / 20.74 / ALL_PASS / 9,303 anywhere on public site. Lesson: future sub-agents must be 1-check scope only, not 3-check.
+**Loop fire 2026-04-29 15:55 UTC:** Pods unchanged. R33 P1 single-check (orphan sections only) — 20 sections + 43 subsections all populated, CLEAN, 184s. R33 P3 single-check (figure file existence only) — 21/21 \includegraphics resolve, CLEAN, 15s. 1-check scope works (zero stalls). No commits from sub-agents. Verified articles/ + CLAUDE.md + SSOT/index + SSOT/paper-1/status all already point to 500MC canonical (SNR=20.32) — historical 50MC/20.74 mentions only survive in dated journal entries (queue.md/drive-to-100.md fire ledgers, activity.html 2026-04-10 entry) where they belong.
 
 **Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 
