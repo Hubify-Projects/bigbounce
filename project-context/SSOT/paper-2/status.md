@@ -2,19 +2,27 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-04-27
+last_updated: 2026-04-29
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/paper2_fnl_forecast.pdf
 version: v1.6.1
 headline_pct: 100
-submission_status: arXiv-ready — revtex4-2 conversion landed fire #9, PDF compiled clean (632 KB, 0 undef)
+submission_status: submission-ready (R34 closed; abstract numbers all supported in body)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
 **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (375 lines, revtex4-2 converted 2026-04-17 fire #9)
 **Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (632 KB, 0 undefined refs, fresh Docker TeX Live compile 2026-04-17)
-**Last authoritative update:** 2026-04-27 (staleness bump — content unchanged since 2026-04-18; Paper 2 at 100%, PDF compiled clean Apr 23)
+**Last authoritative update:** 2026-04-29 (PDT) — R34 closed; abstract numbers verified (22/23 supported in body, orphan ">4σ SPHEREx null disfavor" added to §VIII.A in commit 7c85d85); MC count >6e5 abstract↔conclusion alignment confirmed (R33). Submission-ready.
+
+## Current state (2026-04-29 PDT)
+
+- **Readiness: ~99 %+** — submission-ready.
+- **R20 + R31–R34 all incorporated.** No substantive open items.
+- **Abstract numbers:** 23/23 now supported in body (R34 closed orphan claim).
+- **Bibliography hygiene + cross-references:** clean (R32).
+- **Remaining:** local PDF recompile if abstract edit changed page count.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)

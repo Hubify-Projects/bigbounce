@@ -2,9 +2,17 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-22 (Path-C rebuild, fire #174)
+Last authoritative update: 2026-04-29 (PDT) — R34 closed; UMAP 1-of-3 PASS honest framing integrated; submission-ready.
 
-> **⚠ PATH-C REBUILD IN FLIGHT — this file's original 2026-04-17 "99% arXiv-ready submit today" framing has been superseded.** Houston pushed back 2026-04-19 on the cross-transfer methodology and the "58.8% novel" headline; the Path-C "full Cadillac" rebuild replaces cross-transfer scans with native-retrained per-survey models, adds NEOWISE ecliptic mask, injection-recovery per survey, 8-way positional dedup at 5″, and DESI 5-fold OOS validation. **Current Path-C state (fire #170, 2026-04-22): 11 of 12 criteria CLOSED, 1 in-progress (#4 DESI k-fold at 70% — retrieval scaffold dry-run clean, Houston ack gates ~1-2h live SPARCL run), weighted sum 11.104/12 = 92.53%.** The per-fire authoritative state lives in [`project-context/SSOT/drive-to-100.md`](../drive-to-100.md) Loop log and [`project-context/SSOT/index.md`](../index.md) (cross-paper headline). The `27 MB PDF` referenced throughout this file is now **28 MB / 33 pp / 0 undef** (fire #168 recompile), the `319,443 sum-over-surveys anomalies` is preserved as the §7 before-after baseline, and post-Path-C 8-way dedup yields **378,480 unique physical objects + 637 multi-survey clusters** (fire #164). Read this status file for the 2026-04-16-era manuscript-content inventory; read the drive-to-100 Loop log for the current rebuild-criterion ledger.
+## Current state (2026-04-29 PDT)
+
+- **Readiness: ~98 %+** — submission-ready.
+- **Path-C rebuild CLOSED 2026-04-22 (fire #189, 12/12 criteria green, weighted sum 100.000 %).** Native BigAE retrains for SDSS+LAMOST+CMB landed; 8-way dedup at 5″ → 378,480 unique physical objects + 637 multi-survey clusters; DESI 5-fold k-fold $\bar J = 0.862$ PASS; Paper 3 PDF recompiled to 28 MB / 33 pp / 0 undef.
+- **R31–R34 incorporated.** UMAP multi-seed stability (Pod 1, 50K × 16D × 20 seeds) returned 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL). Honest framing integrated in commits 64699e6 + e08c28d (the earlier 5K-sample "ALL_PASS" claim was incorrect — corrected). 21/21 figure files resolve CLEAN (R33).
+- **Pre-Path-C 319,443 sum-over-surveys** preserved as §7 before-after baseline against post-Path-C native-retrain results.
+- **Remaining:** 1 NOTE only (HF private until acceptance — standard).
+
+> **Path-C historical detail.** The full rebuild log lives in [`project-context/SSOT/drive-to-100.md`](../drive-to-100.md) "Loop log". The `27 MB PDF` references in §1–§3 below are now **28 MB / 33 pp / 0 undef**. The `319,443` is the §7 before-after baseline; post-Path-C unique-object count is **378,480 + 637 multi-survey clusters**.
 
 ---
 

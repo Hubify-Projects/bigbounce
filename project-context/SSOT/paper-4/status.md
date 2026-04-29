@@ -2,7 +2,19 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-21 (drive-to-100 fire #138 — Paper 4 comprehensive audit; flipped 97 → 100 % after confirming all queue items closed, PDF current at 25.7 MB Apr 18, cross-cite only to Paper 1 `Golden:2026framework` × 3 + bibitem, resolvable post-hoc / simul-submit; P4-LSST-LINE-REVIEW dropped from blocker list per Houston 2026-04-21 "do NOT make this line require my review"; P4-D4-VS-Z2-RENAME reclassified from Houston-owned to optional stretch — mechanical `D4 → Z2` rename does not require Houston gating)
+Last authoritative update: 2026-04-29 (PDT) — R34 closed; 3 GPU items currently running on Pod 2; expected 100 % within ~14 h.
+
+## Current state (2026-04-29 PDT)
+
+- **Readiness: ~96 %** → 100 % when Pod 2 completes (~14 h).
+- **R31–R34 incorporated.** N_gal = 5,547,858 closure (R31 open question resolved). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight.
+- **3 GPU items currently RUNNING on Pod 2** (regular_green_pig, HF token + chirality model unblocked 2026-04-29 ~10:30 PDT):
+  - **P4-M3** mag/color/SB/PSF bias tests
+  - **P4-M4** Catalog C redshift re-analysis
+  - **P4-m4** Edge-on contamination measurement
+- These are deferrable nice-to-haves (referee R1 risk, not rejection risk). Paper 4 is submission-ready WITH caveat right now; will hit 100 % when Pod 2 lands.
+- **Cross-cite:** only Paper 1 (`Golden:2026framework` × 3 + bibitem) — resolvable post-hoc or simul-submit. NOT blocked by Paper 2 or Paper 3.
+
 Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this), `wiki/entities/pipeline-2-chirality.md` (stale), any "remaining work" list on the site.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper4_science_highlights.md`](../../paper4_science_highlights.md) — 7 contributions, N3×3 / N2×3 / N1×1.

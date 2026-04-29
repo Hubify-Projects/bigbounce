@@ -2,12 +2,12 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-04-27
+last_updated: 2026-04-29
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf
 version: v2.3.0
 headline_pct: 99
-submission_status: arXiv-ready after P1 queue items close
+submission_status: submission-ready (R34 closed; NaMaster 500MC integrated; PDF recompile pending)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
@@ -15,7 +15,14 @@ submission_status: arXiv-ready after P1 queue items close
 **Canonical `.tex`:** `arxiv/main.tex` (1208 lines, last edit 2026-04-17, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-13`)
 **Canonical PDF:** `arxiv/main.pdf` (707 KB, compiled 2026-04-17 on pod, 27 pp, 0 undef)
 **Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
-**Last authoritative update:** 2026-04-27 (staleness bump — content unchanged since 2026-04-17; \date{} macro updated to Apr 24, PDF recompile pending)
+**Last authoritative update:** 2026-04-29 (PDT) — R34 closed; NaMaster 500MC pipeline test integrated (β=0.27° → 0.238°, SNR=20.32σ at ACT sensitivity, 0.77σ vs observed 0.342±0.094°); 20 sections + 43 subsections CLEAN; submission-ready; PDF recompile pending.
+
+## Current state (2026-04-29 PDT)
+
+- **Readiness: ~99 %+** — submission-ready.
+- **R31–R34 incorporated.** Reproducibility note updated to 500MC; β = 0.27° prediction confirmed at 0.77σ vs joint Planck+ACT observation.
+- **NaMaster 500MC** (Pod 1, 2026-04-29 05:31 PDT): canonical at `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`. Integrated into Paper 1 §IV (commits e884cff + ba8ccbf).
+- **Remaining:** local PDF recompile (TeX Live 2026 + revtex4-2 ready on Mac, 0 pod dependency).
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
 
