@@ -87,7 +87,7 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 
 | Item | What It Is | Effort |
 |------|-----------|--------|
-| P3-M5 | No injection-recovery figure (numbers are inline text only) | ~30 min with matplotlib. Would make the results much easier to parse. Could do locally. |
+| P3-M5 | No injection-recovery figure (numbers are inline text only) | **DONE 2026-04-29.** Figure generated: `fig_injection_recovery.{pdf,png}` in `arxiv/figures_p3/` and `pipelines/p3_anomaly_engine/figures/`. 6 curves (SDSS cont+em, LAMOST cont+em, eROSITA, Gaia) with 50% gate + 5σ eval point. Only SDSS continuum-dip passes gate. |
 
 ### What Needs Houston's Decision
 
