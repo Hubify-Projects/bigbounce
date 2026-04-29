@@ -21,7 +21,7 @@
 <main class="container">
 
 <div class="hero">
-  <div class="article-hero-banner" style="width:100%;height:200px;border-radius:8px;margin-bottom:24px;background:linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+  <div class="article-hero-banner" style="width:100%;height:200px;border-radius:0;margin-bottom:24px;background:linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
     <span style="font-size:80px;opacity:0.15;letter-spacing:20px;font-family:monospace;color:#fff;">2025-2027</span>
   </div>
   <p class="text-xs sans" style="margin-bottom: 8px;">Essay &middot; Research Strategy</p>
@@ -197,6 +197,33 @@ Dataset (public archive)<br>
 </div>
 </section>
 
+<div id="feedback-widget" style="margin-top:48px;padding:20px 0;border-top:1px solid var(--border);text-align:center;font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);">
+  Was this helpful?
+  <button onclick="sendFeedback('up')" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
+  <button onclick="sendFeedback('down')" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
+  <span id="fb-thanks" style="display:none;margin-left:12px;color:#16a34a;">Thanks!</span>
+</div>
+<script>
+function sendFeedback(vote) {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    c.mutation("chatMessages:log", {
+      sessionId: "feedback_" + location.pathname,
+      role: "feedback",
+      content: vote,
+      pageContext: { title: document.title, path: location.pathname },
+      timestamp: Date.now()
+    });
+    document.getElementById('fb-up').disabled = true;
+    document.getElementById('fb-down').disabled = true;
+    document.getElementById('fb-thanks').style.display = 'inline';
+  } catch(e) {}
+}
+</script>
+
 </main>
+
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
+</div><script src="/astro/chat-widget.js" defer></script>
 </body>
 </html>

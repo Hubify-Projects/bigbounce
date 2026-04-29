@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../style.css">
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <script src="../nav.js" defer></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
 <main class="container">
 
 <div class="hero">
-  <div class="article-hero-banner" style="width:100%;height:200px;border-radius:8px;margin-bottom:24px;background:linear-gradient(135deg, #1c1917 0%, #44403c 50%, #78716c 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+  <div class="article-hero-banner" style="width:100%;height:200px;border-radius:0;margin-bottom:24px;background:linear-gradient(135deg, #1c1917 0%, #44403c 50%, #78716c 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
     <img src="../public/images/fig_dneff_viability_two_frozen.png" alt="" style="height:160px;opacity:0.3;mix-blend-mode:screen;filter:brightness(1.5) contrast(0.8);" loading="lazy">
   </div>
   <p class="text-xs sans" style="margin-bottom: 8px;">Evaluation &middot; Institutional Assessment</p>
@@ -348,6 +349,30 @@
   <p class="text-muted sans" style="font-size: 14px;">Part of the <a href="../articles.html">BigBounce Articles</a> series</p>
   <p class="text-muted sans" style="font-size: 13px;">See also: <a href="publication-roadmap.html">Publication Roadmap</a> &middot; <a href="evolution-of-rigor.html">Evolution of Rigor</a> &middot; <a href="program-visual-guide.html">Visual Guide</a></p>
 </div>
+
+<div id="feedback-widget" style="margin-top:48px;padding:20px 0;border-top:1px solid var(--border);text-align:center;font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);">
+  Was this helpful?
+  <button onclick="sendFeedback('up')" style="margin-left:12px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-up">&#x1F44D;</button>
+  <button onclick="sendFeedback('down')" style="margin-left:6px;padding:4px 14px;border:1px solid var(--border);border-radius:4px;background:var(--bg);cursor:pointer;font-size:16px;" id="fb-down">&#x1F44E;</button>
+  <span id="fb-thanks" style="display:none;margin-left:12px;color:#16a34a;">Thanks!</span>
+</div>
+<script>
+function sendFeedback(vote) {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    c.mutation("chatMessages:log", {
+      sessionId: "feedback_" + location.pathname,
+      role: "feedback",
+      content: vote,
+      pageContext: { title: document.title, path: location.pathname },
+      timestamp: Date.now()
+    });
+    document.getElementById('fb-up').disabled = true;
+    document.getElementById('fb-down').disabled = true;
+    document.getElementById('fb-thanks').style.display = 'inline';
+  } catch(e) {}
+}
+</script>
 
 </main>
 
