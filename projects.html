@@ -9,24 +9,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="/astro/chat-widget.js" defer></script>
 <script src="nav.js" defer></script>
 <style>
-  .project-card { padding:24px; margin-bottom:20px; border-radius:8px; background:var(--bg-subtle); border-left:4px solid var(--border); }
+  .project-card { padding:24px; margin-bottom:20px; background:var(--bg-subtle); border-left:4px solid var(--border); }
   .project-card h3 { margin:0 0 8px; font-family:var(--font-sans); }
   .project-card .meta-row { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
   .project-card p { font-size:14px; line-height:1.65; margin:8px 0; }
   .project-card ul { font-size:13px; margin:8px 0; padding-left:20px; line-height:1.7; }
-  .status-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-family:var(--font-sans); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
-  .status-running { background:#dbeafe; color:#1d4ed8; }
-  .status-complete { background:#dcfce7; color:#166534; }
-  .status-planned { background:#f3f4f6; color:#6b7280; }
-  .status-ready { background:#fef3c7; color:#92400e; }
-  .status-prototype { background:#fae8ff; color:#86198f; }
+  .status-badge { display:inline-block; padding:2px 8px; font-family:var(--font-sans); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+  .status-running { background:rgba(37,99,235,0.12); color:#1d4ed8; }
+  .status-complete { background:rgba(22,163,74,0.12); color:#166534; }
+  .status-planned { background:var(--bg-code); color:var(--text-muted); }
+  .status-ready { background:rgba(217,119,6,0.12); color:#92400e; }
+  .status-prototype { background:rgba(134,25,143,0.12); color:#86198f; }
   .cost-tag { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); }
   .project-stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:8px; margin:12px 0; }
-  .project-stat { text-align:center; padding:8px; background:var(--bg); border-radius:6px; border:1px solid var(--border); }
+  .project-stat { text-align:center; padding:8px; background:var(--bg); border:1px solid var(--border); }
   .project-stat .num { font-family:var(--font-mono); font-size:18px; font-weight:700; }
   .project-stat .label { font-size:10px; color:var(--text-secondary); text-transform:uppercase; }
+  .pathc-note { font-size:12px; background:rgba(217,119,6,0.10); border-left:3px solid #f59e0b; padding:8px 10px; color:var(--text-secondary); margin-top:6px; }
+  .pathc-note strong { color:var(--text); }
+  .pathc-note a { color:var(--text-secondary); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .status-running { background:rgba(37,99,235,0.14); color:#93c5fd; }
+    :root:not([data-theme="light"]) .status-complete { background:rgba(22,163,74,0.14); color:#86efac; }
+    :root:not([data-theme="light"]) .status-ready { background:rgba(217,119,6,0.16); color:#fbbf24; }
+    :root:not([data-theme="light"]) .status-prototype { background:rgba(134,25,143,0.14); color:#e879f9; }
+  }
+  [data-theme="dark"] .status-running { background:rgba(37,99,235,0.14); color:#93c5fd; }
+  [data-theme="dark"] .status-complete { background:rgba(22,163,74,0.14); color:#86efac; }
+  [data-theme="dark"] .status-ready { background:rgba(217,119,6,0.16); color:#fbbf24; }
+  [data-theme="dark"] .status-prototype { background:rgba(134,25,143,0.14); color:#e879f9; }
 </style>
 </head>
 <body>
@@ -59,7 +73,7 @@
   </div>
   <h3>DESI DR1 Spectral Anomaly Catalog</h3>
   <p>22,504,897 DESI DR1 spectra scored with 173-column enhanced catalog. 2,145 SNR-filtered anomalies, 1,127 completely uncataloged. 6.1% &sigma;(f<sub>NL</sub>) improvement via anomaly-optimized multi-tracer (16.4% with DESI+SDSS combined).</p>
-  <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> DESI is a <em>native-training</em> survey in the Paper 3 Path-C rebuild (scored by the DESI-trained BigAE, not cross-transfer). The catalog contents on this card stand unchanged post-rebuild and are preserved as the Paper 3 &sect;7 before-after baseline. <strong>SDSS+LAMOST native rescores LANDED fire #164</strong> (criteria #1+#2 CLOSED: SDSS 1,925,279 scored ~6500&times; reduction, LAMOST 21.4&times; reduction). DESI k-fold (P3-PATHC-C4) CLOSED fire #189 (2026-04-22): live SPARCL retrieval executed (47,000 DESI DR1 spectra in 19.8 min, deterministic target-ID checksum 1812395110), 5-fold BigAE trained + scored on A100, Jaccard stability gate PASS (mean pairwise &Jbar; = 0.862 vs required &ge; 0.70; consensus &ge;3/5 = 464/546 = 85.0 % of union). DESI anomaly population robust against training-sample conditioning; Paper 3 Table 1 DESI headline (195,829 / 0.87 %) stands unchanged. Paper 3 recompiled (28 MB / 33 pp / 0 undef refs). Path-C overall: 12/12 CLOSED (100 %). See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
+  <p class="pathc-note"><strong>Path-C note:</strong> DESI is a <em>native-training</em> survey in the Paper 3 Path-C rebuild (scored by the DESI-trained BigAE, not cross-transfer). The catalog contents on this card stand unchanged post-rebuild and are preserved as the Paper 3 &sect;7 before-after baseline. <strong>SDSS+LAMOST native rescores LANDED fire #164</strong> (criteria #1+#2 CLOSED: SDSS 1,925,279 scored ~6500&times; reduction, LAMOST 21.4&times; reduction). DESI k-fold (P3-PATHC-C4) CLOSED fire #189 (2026-04-22): live SPARCL retrieval executed (47,000 DESI DR1 spectra in 19.8 min, deterministic target-ID checksum 1812395110), 5-fold BigAE trained + scored on A100, Jaccard stability gate PASS (mean pairwise &Jbar; = 0.862 vs required &ge; 0.70; consensus &ge;3/5 = 464/546 = 85.0 % of union). DESI anomaly population robust against training-sample conditioning; Paper 3 Table 1 DESI headline (195,829 / 0.87 %) stands unchanged. Paper 3 recompiled (28 MB / 33 pp / 0 undef refs). Path-C overall: 12/12 CLOSED (100 %). See <a href="activity.html">activity feed</a>.</p>
   <div class="project-stats">
     <div class="project-stat"><div class="num">22.5M</div><div class="label">Spectra</div></div>
     <div class="project-stat"><div class="num">2,145</div><div class="label">Anomalies</div></div>
@@ -126,7 +140,7 @@
   </div>
   <h3>SDSS DR18 Native BigAE Rescore</h3>
   <p>Path-C rebuild of the SDSS anomaly column: native BigAE retrained on SDSS DR18 (val_loss 0.0311 PASS) and rescoring the full 2.3M-spectra catalog on A100 pod <code>ktds4mkmzb7ven</code>. Replaces the earlier DESI-trained cross-transfer scan, which is preserved in Paper 3 &sect;7 as the before-after baseline.</p>
-  <p style="font-size: 12px; background:#fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; color:#78350f; margin-top: 6px;"><strong>Path-C note:</strong> Cross-transfer was the novelty-integrity issue flagged by Houston 2026-04-19 (BigAE trained on 47K DESI spectra and then applied to SDSS inflates anomaly rates via catalog-cross-calibration artifacts). Native retrain + rescore replaces it. Injection-recovery continuum-dip PASS 64 % @5&sigma; (fire #98). <strong>SDSS native re-score LANDED fire #164:</strong> 1,925,279 DR18 spectra scored, top-77,905 at S&ge;0.1060, ~6500&times; anomaly-rate reduction vs cross-transfer; Paper 3 Table 1 SDSS row updated. 8-way positional dedup at 5&Prime; yields 378,480 unique physical objects + 637 multi-survey clusters (fire #164). Path-C overall: 11 of 12 criteria CLOSED at fire #170 (~93 %); only criterion #4 DESI 5-fold OOS k-fold remains (scaffold dry-run clean fire #170, deterministic checksum 1812395110, Houston ack gates ~1-2 h live SPARCL run at ~$3 pod spend). See <a href="project-context/SSOT/drive-to-100.md" style="color:#92400e;">drive-to-100.md</a>.</p>
+  <p class="pathc-note"><strong>Path-C note:</strong> Cross-transfer was the novelty-integrity issue flagged by Houston 2026-04-19 (BigAE trained on 47K DESI spectra and then applied to SDSS inflates anomaly rates via catalog-cross-calibration artifacts). Native retrain + rescore replaces it. Injection-recovery continuum-dip PASS 64 % @5&sigma; (fire #98). <strong>SDSS native re-score LANDED fire #164:</strong> 1,925,279 DR18 spectra scored, top-77,905 at S&ge;0.1060, ~6500&times; anomaly-rate reduction vs cross-transfer; Paper 3 Table 1 SDSS row updated. 8-way positional dedup at 5&Prime; yields 378,480 unique physical objects + 637 multi-survey clusters (fire #164). Path-C overall: 12/12 CLOSED (100 %). See <a href="activity.html">activity feed</a>.</p>
   <div class="project-stats">
     <div class="project-stat"><div class="num">2.3M</div><div class="label">Spectra</div></div>
     <div class="project-stat"><div class="num">A100</div><div class="label">GPU</div></div>
@@ -169,10 +183,17 @@
   </div>
 </div>
 
-<footer style="text-align:center; padding:32px 0; font-family:var(--font-sans); font-size:12px; color:var(--text-tertiary);">
-  <p>Hubify Lab &middot; Houston Golden &middot; <a href="https://github.com/Hubify-Projects/bigbounce" style="color:var(--text-tertiary);">GitHub</a></p>
-</footer>
+<footer><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></footer>
 
 </main>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
