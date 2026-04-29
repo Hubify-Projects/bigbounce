@@ -6,18 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Infrastructure — BigBounce Research Program</title>
 <meta name="description" content="Complete technical infrastructure behind the BigBounce research program: GPU compute, AI pipelines, data storage, cross-matching, and the Hubify Lab platform vision.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Infrastructure — BigBounce">
+<meta property="og:description" content="Complete technical infrastructure behind the BigBounce research program: GPU compute, AI pipelines, data storage, cross-matching, and the Hubify Lab platform vision.">
+<meta property="og:url" content="https://bigbounce.hubify.app/infrastructure.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Infrastructure — BigBounce">
+<meta name="twitter:description" content="Complete technical infrastructure behind the BigBounce research program: GPU compute, AI pipelines, data storage, cross-matching, and the Hubify Lab platform vision.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <script src="nav.js" defer></script>
 <style>
-  .infra-card { padding:20px; margin-bottom:16px; border-radius:8px; background:var(--bg-subtle,#f8f9fa); }
+  .infra-card { padding:20px; margin-bottom:16px; border-radius:var(--radius); background:var(--bg-subtle); }
   .infra-card h4 { margin:0 0 8px 0; font-family:var(--font-sans); }
   .infra-card p { margin:0 0 6px 0; font-size:14px; line-height:1.65; }
-  .infra-card code { font-size:13px; background:var(--bg,#fff); padding:2px 6px; border-radius:3px; border:1px solid var(--border,#e5e7eb); }
+  .infra-card code { font-size:13px; background:var(--bg); padding:2px 6px; border-radius:var(--radius); border:1px solid var(--border); }
   .stack-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin:20px 0; }
-  .flow-box { background:var(--bg-subtle,#f5f5f5); border-radius:8px; padding:20px; font-family:var(--font-mono); font-size:13px; line-height:2; margin:20px 0; }
-  .layer-header { padding:10px 20px; border-radius:8px; font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; margin-top:32px; margin-bottom:16px; }
+  .flow-box { background:var(--bg-subtle); border-radius:var(--radius); padding:20px; font-family:var(--font-mono); font-size:13px; line-height:2; margin:20px 0; }
+  .layer-header { padding:10px 20px; border-radius:var(--radius); font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; margin-top:32px; margin-bottom:16px; }
   .l-compute { background:#1e3a5f; color:#93c5fd; }
   .l-data { background:#1a2e1a; color:#86efac; }
   .l-ai { background:#3b1a45; color:#d8b4fe; }
@@ -261,11 +270,19 @@ Public Archive (DESI, SDSS, Planck, etc.)<br>
 <p style="margin-top:12px;font-size:14px;color:var(--text-secondary);">Less than one night of traditional telescope time. Less than one month of a postdoc's salary.</p>
 </section>
 
-<footer style="text-align: center; padding: 32px 0; font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);">
-  <p>BigBounce Research Program &middot; Houston Golden &middot; Hubify Lab</p>
-  <p style="margin-top:4px;">Last updated April 2026</p>
-</footer>
-
 </main>
+
+<footer><div class="container"><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></div></footer>
+
+<script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

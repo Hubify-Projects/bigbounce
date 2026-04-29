@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
 <script src="/gate.js"></script>
-<script src="nav.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Methodology — Spin-Torsion Cosmology Research Program</title>
 <meta name="description" content="How AI-assisted research produced the spin-torsion cosmology framework: multi-model validation, MCMC parameter estimation, and a five-phase research pipeline.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Methodology — Spin-Torsion Cosmology">
+<meta property="og:description" content="How AI-assisted research produced the spin-torsion cosmology framework: multi-model validation, MCMC parameter estimation, and a five-phase research pipeline.">
+<meta property="og:url" content="https://bigbounce.hubify.app/methodology.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology — Spin-Torsion Cosmology">
+<meta name="twitter:description" content="How AI-assisted research produced the spin-torsion cosmology framework: multi-model validation, MCMC parameter estimation, and a five-phase research pipeline.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+<script src="nav.js" defer></script>
 </head>
 <body>
 
@@ -363,7 +373,7 @@
 \beta \approx 0.30°, \quad C_\ell^{EB} \approx 2\beta\,(C_\ell^{EE} - C_\ell^{BB})
 \]</p>
         <p><em>Note: &beta; &asymp; 0.30° is the Planck-measured value used here as a consistency benchmark, not a model prediction. Deriving &beta; from the spin-torsion action requires working out the photon-torsion coupling, which has not yet been done. The equation above shows that <em>if</em> the rotation angle matches the Planck measurement, the EB spectrum shape follows directly &mdash; but the amplitude is an input, not an output, of the current framework.</em></p>
-        <p>This produces E-B correlations across all \(\ell\), consistent with the 2.4&ndash;2.9&sigma; Planck/ACT extraction. SPIDER+Planck+ACT combined analysis reaches ~7&sigma; for total polarization rotation. An anisotropic low-\(\ell\) component from the cosmic rotation axis provides an additional distinctive signature.</p>
+        <p>This produces E-B correlations across all \(\ell\), consistent with the 3.9&sigma; detection (&beta; = 0.242° &plusmn; 0.061°) from the inverse-variance combination of Planck and ACT data. An anisotropic low-\(\ell\) component from the cosmic rotation axis provides an additional distinctive signature.</p>
         <h4>Signature 2: Galaxy Spin Asymmetry</h4>
         <p>Parity violation from torsion predicts preferred handedness in galaxy rotation at \( z \sim 1\text{-}3 \), testable with JWST and Euclid data.</p>
         <p class="text-xs text-muted">Contributed by astro-atlas-v1</p>
@@ -576,5 +586,14 @@ H^2 = \frac{8\pi G}{3}\rho - k\sigma^2
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
 <script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

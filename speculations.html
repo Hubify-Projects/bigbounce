@@ -10,16 +10,21 @@
 <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
 <meta property="og:title" content="Speculations — BigBounce">
 <meta property="og:description" content="Future research directions spanning dark energy, black holes, exoplanets, particle physics, and the search for extraterrestrial intelligence.">
+<meta property="og:url" content="https://bigbounce.hubify.app/speculations.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Speculations — BigBounce">
+<meta name="twitter:description" content="Future research directions spanning dark energy, black holes, exoplanets, particle physics, and the search for extraterrestrial intelligence.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <script src="nav.js" defer></script>
 <style>
-  .spec-card { padding:20px; margin-bottom:16px; border-radius:8px; background:var(--bg-subtle,#f8f9fa); border-left:4px solid #7c3aed; }
+  .spec-card { padding:20px; margin-bottom:16px; border-radius:var(--radius); background:var(--bg-subtle); border-left:4px solid #7c3aed; }
   .spec-card h4 { margin: 0 0 8px 0; }
   .spec-card p { margin: 0 0 8px 0; font-size:15px; line-height:1.7; }
-  .spec-card .tag { font-size:12px; font-family:var(--font-sans); color:var(--text-secondary,#666); }
-  .domain-header { margin-top:40px; padding:12px 20px; border-radius:8px; font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; }
+  .spec-card .tag { font-size:12px; font-family:var(--font-sans); color:var(--text-secondary); }
+  .domain-header { margin-top:40px; padding:12px 20px; border-radius:var(--radius); font-family:var(--font-sans); font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:600; }
   .d-cosmo { background:#1e3a5f; color:#93c5fd; }
   .d-astro { background:#1a2e1a; color:#86efac; }
   .d-particle { background:#3b1a45; color:#d8b4fe; }
@@ -60,7 +65,7 @@
 
 <div class="spec-card">
   <h4>What Is Dark Energy?</h4>
-  <p>73% of the universe is dark energy and we don't know what it is. Our 14 barriers show ECH can't derive it from first principles, but the quintom bounce CAN unify bounce + dark energy through phantom fields. DESI DR2 shows w-crossing at 2.8&ndash;4.2&sigma;. Our MCMC confirms at 98%. If w truly crosses -1, dark energy is dynamical, not a cosmological constant &mdash; and the quintom bounce provides a theoretical home for it.</p>
+  <p>73% of the universe is dark energy and we don't know what it is. Our 14 barriers show ECH can't derive it from first principles, but the quintom bounce CAN unify bounce + dark energy through phantom fields. DESI DR2 shows w-crossing at 2.8&ndash;4.2&sigma;. If w truly crosses -1, dark energy is dynamical, not a cosmological constant &mdash; and the quintom bounce provides a theoretical home for it. (Note: our frozen MCMC chains contain zero free w<sub>0</sub>-w<sub>a</sub> samples; the earlier "98%" figure was retracted, fire #25.)</p>
   <span class="tag">ACTIONABLE &middot; w0-wa MCMC &middot; DESI DR2 &middot; Quintom</span>
 </div>
 
@@ -276,15 +281,23 @@
 
 </section>
 
-<div style="margin-top:40px; padding:24px; border-radius:8px; background:var(--bg-subtle); font-size:14px; line-height:1.7; font-family:var(--font-sans); color:var(--text-secondary);">
+<div style="margin-top:40px; padding:24px; border-radius:var(--radius); background:var(--bg-subtle); font-size:14px; line-height:1.7; font-family:var(--font-sans); color:var(--text-secondary);">
   <strong style="color:var(--text);">On the spectrum from rigorous to speculative:</strong> Items marked ACTIONABLE can be started this month with current tools and data. Items marked "Future" require instruments or datasets arriving in 2-10 years. Items marked "Speculative" or "Theoretical" may never be directly testable but shape how we think about the testable predictions. We include all of them because the history of science is full of "speculative" ideas that turned out to be measurable once someone figured out the right experiment.
 </div>
 
-<footer style="text-align: center; padding: 32px 0; font-family: var(--font-sans); font-size: 12px; color: var(--text-tertiary);">
-  <p>BigBounce Research Program &middot; Houston Golden &middot; houston@hubify.com</p>
-  <p style="margin-top:4px;">This page is a living document. Last updated April 2026.</p>
-</footer>
-
 </main>
+
+<footer><div class="container"><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></div></footer>
+
+<script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

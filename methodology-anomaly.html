@@ -6,8 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anomaly Detection Methodology — BigBounce</title>
 <meta name="description" content="How we built and deployed a spectral autoencoder on 18M DESI DR1 spectra to discover 195,829 previously unidentified anomalies.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+<meta property="og:title" content="Anomaly Detection Methodology — BigBounce">
+<meta property="og:description" content="How we built and deployed a spectral autoencoder on 18M DESI DR1 spectra to discover 195,829 previously unidentified anomalies.">
+<meta property="og:url" content="https://bigbounce.hubify.app/methodology-anomaly.html">
+<meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anomaly Detection Methodology — BigBounce">
+<meta name="twitter:description" content="How we built and deployed a spectral autoencoder on 18M DESI DR1 spectra to discover 195,829 previously unidentified anomalies.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <script src="nav.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
@@ -143,15 +153,15 @@ graph LR
     <table class="arch-table">
       <thead><tr><th>Control</th><th>What it checks</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Training class balance</td><td>Model sees equal proportions of stars, galaxies, QSOs</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Wavelength invariance</td><td>Score doesn't depend on which spectral bin is at which position</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Flux scale invariance</td><td>Bright and faint versions of same spectrum get same score</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Noise level test</td><td>Adding realistic noise doesn't create false anomalies</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Sky position independence</td><td>Score doesn't correlate with RA, Dec, galactic latitude</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Fiber number independence</td><td>Score doesn't correlate with DESI fiber assignment</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>Observation date independence</td><td>Score doesn't correlate with when the spectrum was taken</td><td style="color:#166534; font-weight:600;">Passed</td></tr>
-        <tr><td>B-band dominance investigation</td><td>Why are 99% of top anomalies B-dominant?</td><td style="color:#b45309; font-weight:600;">In progress</td></tr>
-        <tr><td>Injection/recovery</td><td>Can the model detect known unusual spectra (BALs, etc.)?</td><td style="color:#b45309; font-weight:600;">Planned</td></tr>
+        <tr><td>Training class balance</td><td>Model sees equal proportions of stars, galaxies, QSOs</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Wavelength invariance</td><td>Score doesn't depend on which spectral bin is at which position</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Flux scale invariance</td><td>Bright and faint versions of same spectrum get same score</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Noise level test</td><td>Adding realistic noise doesn't create false anomalies</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Sky position independence</td><td>Score doesn't correlate with RA, Dec, galactic latitude</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Fiber number independence</td><td>Score doesn't correlate with DESI fiber assignment</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>Observation date independence</td><td>Score doesn't correlate with when the spectrum was taken</td><td><span class="badge badge-accent">Passed</span></td></tr>
+        <tr><td>B-band dominance investigation</td><td>Why are 99% of top anomalies B-dominant?</td><td><span class="badge badge-neutral">In progress</span></td></tr>
+        <tr><td>Injection/recovery</td><td>Can the model detect known unusual spectra (BALs, etc.)?</td><td><span class="badge badge-neutral">Planned</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -205,7 +215,7 @@ graph TD
   <div class="card">
     <p style="font-size:14px; line-height:1.7;">The anomaly score measures how poorly the autoencoder reconstructs a spectrum. It is computed as:</p>
 
-    <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; padding:16px; margin:12px 0; font-family:var(--font-mono); font-size:14px; text-align:center;">
+    <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin:12px 0; font-family:var(--font-mono); font-size:14px; text-align:center;">
       score = rB + rR + rZ
       <br><br>
       where rX = mean( |flux_X − reconstruction_X|² ) / median( |flux|² )
@@ -289,5 +299,18 @@ graph TD
 </section>
 
 </main>
+
+<footer><div class="container"><p>&copy; 2026 Houston Golden &middot; <a href="https://bigbounce.hubify.app">bigbounce.hubify.app</a></p></div></footer>
+
+<script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

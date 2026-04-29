@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="nav.js" defer></script>
+<script src="/gate.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mathematics — BigBounce Cosmology</title>
   <meta name="description" content="Complete mathematical derivations for spin-torsion cosmology: from Planck-scale microphysics to observational predictions, with every step shown.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigBounce — Spin-Torsion Cosmology">
+  <meta property="og:title" content="Mathematics — BigBounce Cosmology">
+  <meta property="og:description" content="Complete mathematical derivations for spin-torsion cosmology: from Planck-scale microphysics to observational predictions, with every step shown.">
+  <meta property="og:url" content="https://bigbounce.hubify.app/mathematics.html">
+  <meta property="og:image" content="https://bigbounce.hubify.app/public/images/figure1_lqg_holst_derivation_enhanced.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mathematics — BigBounce Cosmology">
+  <meta name="twitter:description" content="Complete mathematical derivations for spin-torsion cosmology: from Planck-scale microphysics to observational predictions, with every step shown.">
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
+  <script src="nav.js" defer></script>
   <script>
     MathJax = {
       tex: {
@@ -48,8 +59,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 4px;
-      background: #f0f0f4;
+      border-radius: var(--radius);
+      background: var(--bg-subtle);
       color: var(--text);
       flex-shrink: 0;
       transition: transform var(--transition);
@@ -89,7 +100,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f0f0f4;
+      background: var(--bg-subtle);
       color: var(--text);
     }
     .verified-badge {
@@ -99,9 +110,9 @@
       font-size: 11px;
       font-weight: 600;
       color: var(--text-secondary);
-      background: #f0f0f4;
+      background: var(--bg-subtle);
       padding: 2px 8px;
-      border-radius: 3px;
+      border-radius: var(--radius);
       letter-spacing: 0.03em;
     }
 
@@ -1114,5 +1125,14 @@
   </footer>
 
 <script src="/astro/chat-widget.js" defer></script>
+<script>
+(function() {
+  try {
+    var c = new convex.ConvexHttpClient("https://impressive-quail-879.convex.cloud");
+    var sh = (function(s) { for (var h = 0, i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h).toString(36); })(navigator.userAgent + screen.width);
+    c.mutation("analytics:logView", { path: location.pathname, referrer: document.referrer || undefined, sessionHash: sh });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
