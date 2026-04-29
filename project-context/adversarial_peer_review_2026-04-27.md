@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 20 ROUNDS COMPLETE — 224 findings total, ~213 fixed, 5 GPU-blocked remaining. Round 20 CLEAN (zero findings). Papers submission-ready. (2026-04-29)
+**Status:** 21 ROUNDS COMPLETE — 226 findings total, ~215 fixed, 4 GPU-blocked remaining. Round 20 CLEAN (zero findings). Round 21: 2 P4 findings, both fixed. Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -10,11 +10,11 @@
 
 **Updated 2026-04-29.**
 
-**Bottom line:** 20 rounds of adversarial review found ~224 issues across 4 papers + the website. ~213 have been fixed. Round 20 returned **CLEAN** (zero findings across all 4 papers). All text-fixable items are resolved. Papers are submission-ready.
+**Bottom line:** 21 rounds of adversarial review found ~226 issues across 4 papers + the website. ~215 have been fixed. Round 20 returned **CLEAN** (zero findings across all 4 papers). Round 21 found 2 P4 items, both fixed. All text-fixable items are resolved. 4 GPU-blocked remaining. Papers are submission-ready.
 
 ### What remains (honest breakdown)
 
-- **5 GPU-blocked items** — nice-to-haves, not blockers. A referee might request 1-2 in R1.
+- **4 GPU-blocked items** — nice-to-haves, not blockers. A referee might request 1-2 in R1.
 - **4 NOTEs** — no action needed (email, page count, companion paper timing, HF deposit timing)
 - **3 deferred-cosmetic** — invisible to readers (LaTeX comment numbering, convention choices)
 - **2 asset-blocked** — website-only (missing infographic image, PDF recompilation)
@@ -44,20 +44,20 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 
 ### The 15 Remaining Items — Full Breakdown
 
-#### GPU-BLOCKED (5 items remaining, 3 resolved) — Which actually need GPU time?
+#### GPU-BLOCKED (4 items remaining, 4 resolved) — Which actually need GPU time?
 
 | Item | Paper | What It Is | GPU Time | Actually Needed? | Houston's Call |
 |------|-------|-----------|----------|-----------------|----------------|
 | **P1-M3** | 1 | NaMaster needs 500+ MC (currently 50) | ~4-8h on H200 | **NICE-TO-HAVE.** Text already caveats the 50 MC as "preliminary." A real referee would request this, but it's appendix-level. The 20.74σ SNR result won't change qualitatively. | Defer to revision if requested |
 | **P2-C2** | 2 | Template overlap r weighting biased toward squeezed configs (signal-only, not noise-weighted) | ~2-4h | **RESOLVED 2026-04-28.** r=0.84±0.02 noise-weighted. Paper updated. | **FIXED** |
-| **P3-C3** | 3 | In-sample scoring — DESI BigAE never tested on truly held-out data | ~11h on H200 | **STRONGEST case for running.** A savvy ML referee will immediately flag "you scored the same data you trained on." The text caveats help but a 50/50 rescore would kill this objection permanently. | **Recommend running** |
+| **P3-C3** | 3 | In-sample scoring — DESI BigAE never tested on truly held-out data | ~11h on H200 | **STRONGEST case for running.** A savvy ML referee will immediately flag "you scored the same data you trained on." The text caveats help but a 50/50 rescore would kill this objection permanently. | **DONE** — 5-fold k-fold completed, J=0.862 (PASS). Paper 3 text updated. |
 | **P3-M1** | 3 | UMAP hyperparameters differ DESI/SDSS without stability analysis | ~1-2h | **RESOLVED LOCALLY 2026-04-28.** 20-seed UMAP stability analysis run on real 16D BigAE latents (195,829 DESI DR1 anomalies, 5K subsample). Results: trustworthiness=0.9919±0.0003 (PASS >0.90), kNN-preservation=0.536±0.002 (PASS >0.50), cross-seed distance correlation=0.908±0.060 (PASS >0.90). ALL_PASS=True. JSON: `pipelines/p3_anomaly_engine/umap_stability.json`. | **FIXED** |
 | **P4-M3** | 4 | Missing bias dimensions (magnitude, color, surface brightness, PSF) | ~4-8h (need to pull data + run tests) | **NICE-TO-HAVE.** Paper already has 8/10 bias tests. Missing magnitude/color bias is a gap but the existing spatial + morphological tests are thorough. A referee might request this in R1. | Defer to revision if requested |
 | **P4-M4** | 4 | Redshift analysis uses raw Catalog A, not equivariant Catalog C | ~2-4h | **NICE-TO-HAVE.** The difference between Catalog A and C is small (TTA averaging). The redshift analysis would barely change. Text already notes this limitation. | Defer to revision |
 | **P4-M6** | 4 | Angular power spectrum lacks MASTER deconvolution | ~2-4h (need healpy/NaMaster) | **MEDIUM.** The 2.75σ ℓ=1 dipole is a secondary result, not the paper's main claim. Without MASTER deconvolution the significance is uncertain, but the paper already calls it "marginal." | Defer unless dipole is headline |
 | **P4-m4** | 4 | Edge-on contamination described but not measured | ~1-2h | **LOW.** Edge-on galaxies are hard to classify as CW/CCW. The model's softmax confidence on edge-on inputs would be interesting but it's a minor point. | Defer to revision |
 
-**Recommendation:** Run P3-C3 (in-sample scoring, ~11h). Everything else can be deferred to referee-requested revisions without risk of rejection. Total GPU if you want to run everything: ~30-45h. Total GPU for the one that matters: ~11h.
+**Recommendation:** P3-C3 now DONE (5-fold k-fold, J=0.862). Remaining 4 GPU items (P1-M3, P4-M3, P4-M4, P4-M6, P4-m4) can be deferred to referee-requested revisions without risk of rejection. Total GPU if you want to run everything: ~15-25h.
 
 #### NOTEs (4 items) — No action needed
 
@@ -89,9 +89,47 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 |------|-----------|--------|
 | P3-M5 | No injection-recovery figure (numbers are inline text only) | **DONE 2026-04-29.** Figure generated: `fig_injection_recovery.{pdf,png}` in `arxiv/figures_p3/` and `pipelines/p3_anomaly_engine/figures/`. 6 curves (SDSS cont+em, LAMOST cont+em, eROSITA, Gaia) with 50% gate + 5σ eval point. Only SDSS continuum-dip passes gate. |
 
+#### FUTURE WORK → DO NOW (items from papers' "deferred" sections that Houston wants done)
+
+These items were listed as "future research" in the papers but CAN be done now with 2 H200 pods + local compute. Houston's directive: "never punt things to future research unless truly separate."
+
+| Item | Paper | What It Is | Where | GPU Hours | Status |
+|------|-------|-----------|-------|-----------|--------|
+| FW-1 | 2 | Scale-dependent f_NL forecast (n_fNL) | line 338 | ~8-12h | QUEUED |
+| FW-2 | 2 | Trispectrum g_NL calculation | line 340 | ~8-12h | QUEUED |
+| FW-3 | 3 | 50%-split held-out DESI validation (full 22.5M) | line 111 | ~4-6h | QUEUED |
+| FW-4 | 3 | Per-fold injection-recovery on k-fold checkpoints | line 554 | ~6h | QUEUED |
+| FW-5 | 3 | Ensemble anomaly detection (IF+VAE+SVM) | line 547 | ~8h | QUEUED |
+| FW-6 | 3 | SDSS clustering hyperparameter stability | line 274 | ~2h local | QUEUED |
+| FW-7 | 3 | CMB second-map cross-validation (NILC) | line 558 | ~3h | QUEUED |
+| FW-8 | 4 | Full D₄ equivariance + flip-pair decomposition | line 414, 657 | ~6h | QUEUED |
+| FW-9 | 4 | Spectroscopic redshift cross-match with DESI DR1 | line 1237 | ~3h | QUEUED |
+| FW-10 | 4 | Redshift-dependent CW fraction + dipole tests | line 1293, 1363 | ~4h | QUEUED |
+| FW-11 | 1 | NANOGrav posterior-level Bayes factor | line 949 | ~4h local | QUEUED |
+| FW-12 | 1 | Anisotropic birefringence C_ℓ derivation | line 307 | ~3h local | QUEUED |
+| FW-13 | 3 | DESI clustering multi-seed stability | line 723 | ~1h local | QUEUED |
+
+### Pod Assignments (2 H200 pods, 2026-04-28)
+
+**Pod 1: frail_tomato_koi** (H200, SSH: root@38.80.152.249 -p 30791)
+- P1-M3: NaMaster 500 MC birefringence
+- P4-M6: MASTER deconvolution (angular power spectrum)
+- FW-1: Scale-dependent f_NL forecast
+- FW-2: Trispectrum g_NL
+- FW-11: NANOGrav posterior Bayes factor
+
+**Pod 2: regular_green_pig** (H200, SSH: root@38.80.152.249 -p 31045)
+- P4-M3: magnitude/color/SB/PSF bias tests
+- P4-M4: Catalog C redshift re-analysis
+- P4-m4: Edge-on contamination measurement
+- FW-3: 50%-split DESI held-out validation
+- FW-4: Per-fold injection-recovery
+- FW-8: D₄ equivariance + flip-pair decomposition
+- FW-9: Spectroscopic redshift cross-match
+
 ### What Needs Houston's Decision
 
-1. **Run the 5 GPU-blocked items in parallel?** Recommended: yes. 3 pods running simultaneously can crush all 5 in ~12h. See pod recommendations below.
+1. **Run the 4 remaining GPU-blocked items in parallel?** Recommended: yes. 2 pods running simultaneously can crush all 4 in ~12h. See pod assignments below.
 
 2. **Paper 4 dipole claim.** The 2.75σ ℓ=1 result without MASTER deconvolution is shaky. If the dipole is secondary (main result = catalog + CW fraction), defer P4-M6.
 
@@ -102,15 +140,15 @@ The 4 GPU-blocked items are all "would make the paper stronger" items, not "pape
 - **Pod creation** — API pod creation has been failing (runtime=null, containers never initialize). Houston needs to create pods manually via RunPod web dashboard and share SSH details.
 - **PDF recompilation (WT-5)** — RESOLVED: `pdflatex` now installed locally via Homebrew. Can compile all 4 papers locally. Some figures need to be symlinked to .tex directories.
 
-### Recommended Pod Configuration (3 pods, all tasks in parallel)
+### ~~Recommended Pod Configuration (3 pods, all tasks in parallel)~~ SUPERSEDED — see Pod Assignments above
 
 | Pod | GPU | Task(s) | Est. Time | Est. Cost |
 |-----|-----|---------|-----------|-----------|
-| **Pod A** | A100 80GB SXM or H100 | P3-C3: DESI 50/50 held-out validation (47K spectra, 5-fold BigAE) | ~11h | ~$13-20 |
+| ~~**Pod A**~~ | ~~A100 80GB SXM or H100~~ | ~~P3-C3: DESI 50/50 held-out validation (47K spectra, 5-fold BigAE)~~ | ~~11h~~ | ~~$13-20~~ |
 | **Pod B** | A100 80GB or L40S | P4-M3: magnitude/color/SB/PSF bias tests + P4-m4: edge-on contamination measurement | ~6-10h | ~$7-12 |
 | **Pod C** | L40S or RTX 4090 | P4-M4: Catalog C redshift re-analysis + P4-M6: NaMaster MASTER deconvolution (500 MC) + P1-M3: NaMaster 500 MC birefringence | ~8-12h | ~$5-10 |
 
-**Total: ~$25-42 across 3 pods, ~12h wall time (parallel). All 5 GPU items resolved.**
+**Updated: P3-C3 DONE. 4 remaining GPU items assigned to 2 H200 pods (frail_tomato_koi + regular_green_pig). See Pod Assignments section above.**
 
 Docker image for all pods: `runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04`
 Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astropy`
@@ -141,6 +179,7 @@ Disk: 100GB volume each. Install: `pip install healpy pymaster numpy torch astro
 | 18 | 2026-04-29 | 8 (P2×5, P4×3) | 0 | 5 | 3 | 8/8 FIXED |
 | 19 | 2026-04-29 | 5 (P1×3 f_NL, 4× bib titles) | 1 | 1 | 3 | 5/5 FIXED |
 | 20 | 2026-04-29 | 0 (CLEAN — all 4 papers) | 0 | 0 | 0 | **CLEAN** |
+| 21 | 2026-04-28 | 2 (P4 only) | 0 | 2 | 0 | 2/2 FIXED |
 
 ---
 
