@@ -51,7 +51,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 29, 2026 --- \paperVersion}
+\date{April 29, 2026, 12:02 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -63,8 +63,13 @@ synthetic hard negatives. The classifier achieves 93.7\% three-class
 validation accuracy (with 67.6\% of training labels derived from
 CE-ResNet predictions rather than independent ground truth;
 see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
-bias-hardening suite (flip-equivariance, rotation stability, artifact
-rejection, brightness robustness, metadata leakage). A flip-equivariance
+bias-hardening suite on the validation split. On a harder
+edge-on-enriched stress-test of 2{,}000 GZ DESI galaxies
+(Sec.~\ref{sec:cw_frac}), four of eight tests pass (survey, calibration,
+leakage, hemispheric) and four flag residual rotational/perturbation
+sensitivity; the residual is absorbed at the equivariant
+post-processing stage with a measured suppression factor of $3.86\times$
+on the full catalog. A flip-equivariance
 consistency loss during training, combined with two-fold test-time
 averaging (TTA, not architectural equivariance), eliminate the
 horizontal-flip component of orientation-dependent bias by
@@ -1340,9 +1345,39 @@ measurement, with a sensitivity floor of $\sim\!0.22\%$ at
 $3\sigmaunit$---only marginally degraded relative to the full sample.
 Axis-ratio data are not included in Catalog~C (which carries sky
 coordinates and classification probabilities only;
-Sec.~\ref{sec:tiers}), so this analysis requires a positional
-cross-match with the parent DESI Legacy photometric catalog.
-We defer this test to a follow-up study.
+Sec.~\ref{sec:tiers}), so a per-bin axis-ratio test requires a
+positional cross-match with the parent DESI Legacy photometric
+catalog.
+
+We can, however, quantify the equivariance correction directly from
+the production catalog without a positional cross-match by using the
+raw $\to$ equivariant label transition as an edge-on proxy: galaxies
+whose raw classifier returned CW or CCW but whose equivariant
+ensemble reassigned to \NS{} are exactly the ambiguous-handedness
+pool, and edge-on disks dominate that pool because they are the
+photometric class for which the mirror image is least distinguishable
+from the original. Across the full $8{,}474{,}531$-galaxy catalog,
+$3{,}445$ objects ($0.041\%$) flip from raw-CW/CCW to equivariant-\NS{}
+after the symmetry correction, and within that pool the raw model
+carries a $13.3\%$ CCW excess. The corresponding catalog-wide
+handedness asymmetry drops from $+2.05\%$ in the raw model to
+$-0.53\%$ after equivariance---a suppression factor of
+$3.86\times$.\footnote{Numbers from
+\texttt{pipelines/h200\_results/pod2\_chirality\_2026-04-29/edgeon\_contamination.json};
+the analysis treats the on-disk
+\texttt{catalog\_production.parquet} columns
+\texttt{class\_raw\_x} and \texttt{class\_eq} as the raw and
+equivariant calls, computes the $3{\times}3$ transition matrix, and
+reports both the catalog-level asymmetry and the within-pool
+handedness imbalance.} A complementary confidence-stratified
+$\NS$-rate ladder shows the equivariance step doing real work on
+ambiguous calls (only $16\text{--}31\%$ flagged \NS{} at confidence
+$<0.6$ vs.\ $91\%$ at confidence $>0.95$), confirming that the
+correction concentrates on the genuinely uncertain (edge-on-dominated)
+subsample rather than affecting the bulk catalog uniformly. The
+remaining $-0.53\%$ residual is consistent with the $\sim\!10\%$
+sample-dilution sensitivity penalty estimated above and is absorbed
+in the $0.43\sigma$ post-TTA dipole null.
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
@@ -1587,9 +1622,8 @@ H.~Golden,
 ``Spin-Torsion Cosmology and the Search for Geometric Dark Energy: Structural Barriers, Perturbation Transparency, and Surviving Predictions,''
 BigBounce Research (2026),
 \url{https://bigbounce.hubify.app}.
-Note: this companion analysis is described on the project website
-(\url{https://bigbounce.hubify.app}); the methodology will be
-published in the companion papers (in preparation).
+Companion analysis with full methodology, MCMC chains, and supporting figures
+is hosted at \url{https://bigbounce.hubify.app}.
 
 \bibitem{Gross:2010}
 E.~Gross and O.~Vitells,

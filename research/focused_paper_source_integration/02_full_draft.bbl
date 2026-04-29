@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{15}%
+\begin{thebibliography}{23}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -93,6 +93,15 @@
   {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
   {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wands}(2010)}]{Wands:2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Wands}},\ }\bibfield  {title} {\bibinfo {title} {Local non-{G}aussianity
+  from inflation},\ }\href {https://doi.org/10.1088/0264-9381/27/12/124002}
+  {\bibfield  {journal} {\bibinfo  {journal} {Class. Quant. Grav.}\ }\textbf
+  {\bibinfo {volume} {27}},\ \bibinfo {pages} {124002} (\bibinfo {year}
+  {2010})},\ \Eprint {https://arxiv.org/abs/1004.0818} {arXiv:1004.0818}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Wilson-Ewing}(2013)}]{WilsonEwing:2012}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
@@ -138,7 +147,7 @@
   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {77}},\ \bibinfo
   {pages} {123514} (\bibinfo {year} {2008})},\ \Eprint
   {https://arxiv.org/abs/0710.4560} {arXiv:0710.4560} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2023)\citenamefont
+\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
   {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
   {Krause}}]{Heinrich:2023}%
   \BibitemOpen
@@ -146,9 +155,23 @@
   {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
   and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
   }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
-  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\
-  (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2311.13082}
+  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {04}},\
+  \bibinfo {pages} {074}},\ \Eprint {https://arxiv.org/abs/2311.13082}
   {arXiv:2311.13082 [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Komatsu}\ \emph {et~al.}(2005)\citenamefont
+  {Komatsu}, \citenamefont {Spergel},\ and\ \citenamefont
+  {Wandelt}}]{Komatsu:2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}}, \bibinfo {author} {\bibfnamefont {D.~N.}\ \bibnamefont
+  {Spergel}},\ and\ \bibinfo {author} {\bibfnamefont {B.~D.}\ \bibnamefont
+  {Wandelt}},\ }\bibfield  {title} {\bibinfo {title} {Measuring primordial
+  non-gaussianity in the cosmic microwave background},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {ApJ}\ }\textbf {\bibinfo {volume}
+  {634}},\ \bibinfo {pages} {14} (\bibinfo {year} {2005})},\ \Eprint
+  {https://arxiv.org/abs/astro-ph/0305189} {arXiv:astro-ph/0305189}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Li}\ and\ \citenamefont
   {Brandenberger}(2014)}]{LiBrandenberger:2014}%
   \BibitemOpen
@@ -163,11 +186,11 @@
 \bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden:2026anomaly}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {A multi-survey anomaly
-  catalog for cosmology: 319{,}443 sources from 8 surveys, and
-  anomaly-catalog-based tracer selection for $f_{\rm nl}$ forecasts}} (\bibinfo
-  {year} {2026}{\natexlab{b}}),\ \bibinfo {note} {companion paper, submitted
-  simultaneously}\BibitemShut {NoStop}%
+  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Multi-survey spectral
+  anomaly detection: 378{,}480 anomalous sources from 37 million objects across
+  eight astronomical archives}} (\bibinfo {year} {2026}{\natexlab{b}}),\
+  \bibinfo {note} {companion paper, submitted simultaneously}\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Jolicoeur}\ \emph {et~al.}(2025)\citenamefont
   {Jolicoeur}, \citenamefont {Maartens} \emph {et~al.}}]{Jolicoeur:2025}%
   \BibitemOpen
@@ -197,4 +220,76 @@
   non-gaussianity from non-attractor inflation models},\ }\href@noop {}
   {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }}\Eprint
   {https://arxiv.org/abs/1712.09998} {arXiv:1712.09998} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pullen}\ and\ \citenamefont
+  {Hirata}(2010)}]{Pullen:2010zy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont
+  {Pullen}}\ and\ \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont
+  {Hirata}},\ }\bibfield  {title} {\bibinfo {title} {Systematic effects in
+  large-scale angular power spectra of photometric quasars and implications for
+  constraining primordial non-gaussianity},\ }\href
+  {https://doi.org/10.1086/656098} {\bibfield  {journal} {\bibinfo  {journal}
+  {PASP}\ }\textbf {\bibinfo {volume} {122}},\ \bibinfo {pages} {1035}
+  (\bibinfo {year} {2010})},\ \Eprint {https://arxiv.org/abs/1003.0500}
+  {arXiv:1003.0500 [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Giannantonio}\ \emph {et~al.}(2012)\citenamefont
+  {Giannantonio}, \citenamefont {Porciani}, \citenamefont {Carron},
+  \citenamefont {Amara},\ and\ \citenamefont {Pillepich}}]{Giannantonio:2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Giannantonio}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Porciani}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Carron}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Amara}},\ and\ \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Pillepich}},\ }\bibfield  {title}
+  {\bibinfo {title} {Constraining primordial non-gaussianity with future galaxy
+  surveys},\ }\href {https://doi.org/10.1111/j.1365-2966.2012.20604.x}
+  {\bibfield  {journal} {\bibinfo  {journal} {MNRAS}\ }\textbf {\bibinfo
+  {volume} {422}},\ \bibinfo {pages} {2854} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1109.0958} {arXiv:1109.0958 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
+  {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Akrami}
+  \emph {et~al.}}]{Planck:2019fnl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Planck
+  Collaboration}}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Akrami}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Planck
+  2018 results. {IX}. constraints on primordial non-{G}aussianity},\ }\href
+  {https://doi.org/10.1051/0004-6361/201935891} {\bibfield  {journal} {\bibinfo
+   {journal} {A\&A}\ }\textbf {\bibinfo {volume} {641}},\ \bibinfo {pages} {A9}
+  (\bibinfo {year} {2020})},\ \Eprint {https://arxiv.org/abs/1905.05697}
+  {arXiv:1905.05697 [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{DESI Collaboration}}\ \emph
+  {et~al.}(2016)\citenamefont {{DESI Collaboration}}, \citenamefont {Aghamousa}
+  \emph {et~al.}}]{DESI:2016fnl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DESI Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Aghamousa}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The desi experiment part i:
+  Science, targeting, and survey design},\ }\href@noop {} {\  (\bibinfo {year}
+  {2016})},\ \bibinfo {note} {table 2.7: $\sigma(f_{\rm NL}) \approx 3$--$5$
+  from multi-tracer scale-dependent bias},\ \Eprint
+  {https://arxiv.org/abs/1611.00036} {arXiv:1611.00036} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Euclid Collaboration}}\ \emph
+  {et~al.}(2025)\citenamefont {{Euclid Collaboration}}, \citenamefont {Mellier}
+  \emph {et~al.}}]{EuclidCollaboration:2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Euclid
+  Collaboration}}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Mellier}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Euclid.
+  i. overview of the euclid mission},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {A\&A}\ }\textbf {\bibinfo {volume} {697}},\ \bibinfo
+  {pages} {A1} (\bibinfo {year} {2025})},\ \bibinfo {note} {$f_{\rm NL}$
+  forecast from photometric survey: $\sigma(f_{\rm NL}) \approx 2$--$4$},\
+  \Eprint {https://arxiv.org/abs/2405.13491} {arXiv:2405.13491} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Abazajian}\ \emph {et~al.}(2019)\citenamefont
+  {Abazajian} \emph {et~al.}}]{CMBS4:2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~N.}\ \bibnamefont
+  {Abazajian}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{CMB-S4}
+  science book},\ }\href@noop {} {\  (\bibinfo {year} {2019})},\ \bibinfo
+  {note} {expected $\sigma(f_{\rm NL}) \approx 2.5$ from CMB bispectrum},\
+  \Eprint {https://arxiv.org/abs/1907.04473} {arXiv:1907.04473} \BibitemShut
+  {NoStop}%
 \end{thebibliography}%
