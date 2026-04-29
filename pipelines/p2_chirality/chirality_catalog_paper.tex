@@ -812,8 +812,24 @@ pseudo-$C_\ell$ estimator at $N_{\rm side} = 64$
 DESI Legacy footprint at $N_{\rm side} = 64$; the increase from the
 geometric $f_{\rm sky} \approx 0.46$ reflects the lower-resolution
 pixel boundary extending beyond the strict survey mask;
-$N_{\rm gal} = 5{,}547{,}858$ galaxies with valid chirality
-classifications).
+$N_{\rm gal} = 5{,}547{,}858$ galaxies with valid equivariant
+classifications inside the $N_{\rm side}=64$ unmasked
+footprint).\footnote{This count matches the \texttt{n\_galaxies}
+field saved by the \textsc{NaMaster} pipeline at
+\texttt{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json}.
+It is smaller than the full $8{,}474{,}531$-row catalog because
+\textsc{NaMaster} discards galaxies in pixels that fall on the
+masked side of the $N_{\rm side}=64$ apodized boundary, and it is
+larger than the spiral-only count $N_{\rm spiral} = 3{,}321{,}795$
+because the saved counter includes \NS{} objects that contribute
+to the per-pixel total used to weight the asymmetry field. Replacing
+$N_{\rm gal}$ with $N_{\rm spiral}$ in the shot-noise formula raises
+$C_1^{\rm noise}$ by a factor $5.55/3.32 \approx 1.67$ to
+$\sim\!2.1 \times 10^{-6}$ and flips the sign of $C_1^{\rm signal}$,
+but leaves the post-MASTER significance unchanged at
+$-0.12\,\sigmaunit$ (the deconvolution step does not depend on the
+shot-noise term, which is subtracted only from the post-deconvolution
+$C_\ell$ for cosmetic display).}
 After deconvolution, the measured $\ell = 1$ power is
 $C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
