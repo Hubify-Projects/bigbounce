@@ -822,8 +822,11 @@ realizations, yielding a post-deconvolution significance of
 $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
 = -0.12\sigmaunit$---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
-raw pseudo-$C_\ell$ estimator.  After noise subtraction the
-residual signal power is $C_1^{\rm signal} = 2.36 \times 10^{-7}$,
+raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
+($C_1^{\rm noise} = N_{\rm gal}^{-1}/\Omega_{\rm pix} = 1.26 \times
+10^{-6}$), the residual signal power is
+$C_1^{\rm signal} \equiv C_1^{\rm meas} - C_1^{\rm noise}
+= 2.36 \times 10^{-7}$,
 consistent with zero within the null scatter.
 
 \emph{(iii)~Monte Carlo null calibration.}  Our null realizations
@@ -1278,11 +1281,13 @@ fraction among objects classified as spirals.  We estimate this
 dilution reduces the effective sample by $\sim\!10\text{--}15\%$,
 corresponding to a sensitivity penalty of $\sim\!5\text{--}8\%$.
 
-While our classification pipeline assigns edge-on galaxies
-($b/a < 0.3$) to \NS{}, residual contamination from near-edge-on
-galaxies ($0.3 < b/a < 0.5$) could introduce a systematic CW/CCW
-asymmetry if spiral arm orientation correlates with viewing angle
-in this intermediate-inclination regime.  A direct test would
+While our classification pipeline is intended to assign edge-on galaxies
+to \NS{}, only 34.3\% of $b/a < 0.3$ objects actually receive \NS{}
+classifications (Sec.~\ref{sec:discussion} above), leaving 65.7\%
+with random CW/CCW labels.  For near-edge-on galaxies
+($0.3 < b/a < 0.5$), residual contamination could introduce a
+systematic CW/CCW asymmetry if spiral arm orientation correlates
+with viewing angle in this intermediate-inclination regime.  A direct test would
 cross-match the catalog against the DESI Legacy morphological
 catalogs (which provide Sersic-fit axis ratios for all photometric
 sources) and compute the equivariant CW fraction in three
