@@ -20,6 +20,11 @@
 /* ══════════════════════════════════════════════
    Data Explorer — Sidebar + Main Panel Layout
    ══════════════════════════════════════════════ */
+:root { --bg-inset: var(--bg-subtle); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg-inset: #1a1a1a; }
+}
+[data-theme="dark"] { --bg-inset: #1a1a1a; }
 .explorer { display: flex; min-height: calc(100vh - 120px); }
 main { max-width: none; padding: 0; }
 .de-sidebar { width: 260px; min-width: 260px; border-right: 1px solid var(--border); background: var(--bg-subtle); overflow-y: auto; padding: 16px 0; position: sticky; top: 68px; height: calc(100vh - 68px); }
@@ -137,6 +142,22 @@ main { max-width: none; padding: 0; }
   .formula-inputs input { width: 100%; }
 }
 @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+
+/* ── Dark-mode overrides for hardcoded light-blue active/hover states ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .de-sidebar-item.active { background: #1e2a3a; color: var(--accent-link); }
+  :root:not([data-theme="light"]) .de-sidebar-badge.active-badge { background: #1e2a3a; color: var(--accent-link); border-color: #2d4a6e; }
+  :root:not([data-theme="light"]) .status-badge.active-badge { background: #1e2a3a; color: var(--accent-link); }
+  :root:not([data-theme="light"]) .data-table th:hover { background: #1e2a3a; color: var(--accent-link); }
+  :root:not([data-theme="light"]) .data-table th.sorted .sort-arrow { color: var(--accent-link); }
+  :root:not([data-theme="light"]) .data-table tr:hover td { background: #161e28; }
+}
+[data-theme="dark"] .de-sidebar-item.active { background: #1e2a3a; color: var(--accent-link); }
+[data-theme="dark"] .de-sidebar-badge.active-badge { background: #1e2a3a; color: var(--accent-link); border-color: #2d4a6e; }
+[data-theme="dark"] .status-badge.active-badge { background: #1e2a3a; color: var(--accent-link); }
+[data-theme="dark"] .data-table th:hover { background: #1e2a3a; color: var(--accent-link); }
+[data-theme="dark"] .data-table th.sorted .sort-arrow { color: var(--accent-link); }
+[data-theme="dark"] .data-table tr:hover td { background: #161e28; }
 </style>
 <script src="https://unpkg.com/convex@1.34.0/dist/browser.bundle.js"></script>
 <!-- nav.js disabled — this page has its own sidebar layout -->
