@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 18 ROUNDS COMPLETE — 221 findings total, ~202 fixed, 5 GPU-blocked remaining (2026-04-28)
+**Status:** 20 ROUNDS COMPLETE — 224 findings total, ~213 fixed, 5 GPU-blocked remaining. Round 20 CLEAN (zero findings). Papers submission-ready. (2026-04-29)
 
 ---
 
@@ -121,6 +121,9 @@ If you're going to burn H200 time on review items:
 | 15 | 2026-04-28 | 9 (P3 re-review 3) | 0 | 4 | 5 | 9/9 TEXT-FIXED |
 | 16 | 2026-04-28 | 10 (P4 re-review 3) | 0 | 6 | 4 | 10/10 FIXED |
 | 17 | 2026-04-28 | 2 (P1 adversarial round 17) | 0 | 1 | 1 | 2/2 FIXED |
+| 18 | 2026-04-29 | 8 (P2×5, P4×3) | 0 | 5 | 3 | 8/8 FIXED |
+| 19 | 2026-04-29 | 5 (P1×3 f_NL, 4× bib titles) | 1 | 1 | 3 | 5/5 FIXED |
+| 20 | 2026-04-29 | 0 (CLEAN — all 4 papers) | 0 | 0 | 0 | **CLEAN** |
 
 ---
 
