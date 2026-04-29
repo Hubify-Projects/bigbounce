@@ -1,12 +1,16 @@
 # Active Pods & Pipelines — Live Status
 
-**Last updated:** 2026-04-28 UTC
+**Last updated:** 2026-04-29 12:45 UTC
 **CURRENT PODS (2x H200):**
 
 | Pod | Name | SSH | Task | Status |
 |-----|------|-----|------|--------|
-| **Pod 1** | frail_tomato_koi | `ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519` | P1-M3: NaMaster 500MC birefringence | RUNNING |
-| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M6: MASTER deconvolution + edge-on + PDF compile | RUNNING |
+| **Pod 1** | frail_tomato_koi | `ssh root@38.80.152.249 -p 30791 -i ~/.ssh/id_ed25519` | P1-M3 NaMaster 500MC + P3-M1 UMAP (`pod_b_namaster_umap.sh`) | **DONE 2026-04-29T12:31:52Z** — results pulled to `pipelines/h200_results/pod1_namaster_umap_2026-04-29/`. NaMaster: β=0.27→0.238 SNR=20.32 consistency 0.77σ. UMAP: trust PASS, kNN_pres FAIL, cross_seed FAIL. |
+| **Pod 2** | regular_green_pig | `ssh root@38.80.152.249 -p 31045 -i ~/.ssh/id_ed25519` | P4-M3/M4/M6/m4 chirality + WT-5 PDF compile (`pod_a_chirality_compile.sh`) | **CRASHED 2026-04-29T09:53:21Z** — HF auth 401 on `bamfai/galaxy-chirality-v2` + `/workspace/external_catalogs/pre_desi.fits` missing. All 5 tasks blocked. Needs HF creds OR FITS upload. GPU idle since. |
+
+**Note 2026-04-29:** Pods had been up ~9h with scripts staged but never launched — wasted ~$65 idle before launch. Pod 1 ran cleanly (~2.7h compute). Pod 2 crashed 2 min into Task 1 of 5 — burning $3.59/hr idle since 09:53Z.
+
+**Loop fire 2026-04-29 12:45 UTC:** Pod 1 results pulled + committed. Pod 2 results pull pending (scp timed out). R31 done for all 4 papers + site (15 commits pushed). UMAP FAIL flag = R32 P3 finding. NaMaster 500MC bias 0.032° = potential R32 P1 update.
 
 **Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 
