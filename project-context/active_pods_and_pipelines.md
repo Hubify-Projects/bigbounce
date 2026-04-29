@@ -11,6 +11,7 @@
 **Note 2026-04-29:** Pods had been up ~9h with scripts staged but never launched — wasted ~$65 idle before launch. Pod 1 ran cleanly (~2.7h compute). Pod 2 crashed 2 min into Task 1 of 5 — burning $3.59/hr idle since 09:53Z.
 
 **Loop fire 2026-04-29 12:45 UTC:** Pod 1 results pulled + committed. Pod 2 results pull pending (scp timed out). R31 done for all 4 papers + site (15 commits pushed). UMAP FAIL flag = R32 P3 finding. NaMaster 500MC bias 0.032° = potential R32 P1 update.
+**Loop fire 2026-04-29 13:22 UTC:** R32 P2 done (bib hygiene, 3 commits). R32 P4 partial salvaged (units, ℓ_max, N_gal arithmetic — 1 commit). R32 P1 + P3 broad-review agents stream-timed out at zero edits → switching to focused micro-task strategy. Pod 1 NaMaster + UMAP integrated into P1 main.tex + P3 paper3_draft.tex (3 commits). Pod 2 prior /root/results snapshot (16 JSON files: master_power_spectrum, edgeon_contam, fw1/2/7/11/12) pulled + committed. 22 commits this session.
 
 **Previous pod:** A100 80GB PCIe `ktds4mkmzb7ven` — COMPLETE, full backup pulled 2026-04-27.
 
