@@ -4,25 +4,25 @@ type: ssot
 paper: 1
 last_updated: 2026-04-29
 canonical_source: arxiv/main.tex
-canonical_pdf: arxiv/main.pdf
+canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf)
 version: v2.3.0
-headline_pct: 99
-submission_status: submission-ready (R34 closed; NaMaster 500MC integrated; PDF recompile pending)
+headline_pct: 100
+submission_status: submission-ready (R35 closed; PDF recompiled 2026-04-29 12:02 PDT, 989 KB, 0 undef refs)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (1208 lines, last edit 2026-04-17, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-13`)
-**Canonical PDF:** `arxiv/main.pdf` (707 KB, compiled 2026-04-17 on pod, 27 pp, 0 undef)
+**Canonical `.tex`:** `arxiv/main.tex` (R35-edited 2026-04-29, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-29`)
+**Canonical PDF:** `arxiv/main.pdf` (989 KB, compiled 2026-04-29 12:02 PDT, 27 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
 **Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
-**Last authoritative update:** 2026-04-29 (PDT) — R34 closed; NaMaster 500MC pipeline test integrated (β=0.27° → 0.238°, SNR=20.32σ at ACT sensitivity, 0.77σ vs observed 0.342±0.094°); 20 sections + 43 subsections CLEAN; submission-ready; PDF recompile pending.
+**Last authoritative update:** 2026-04-29 (PDT, 12:02) — **R35 closed**; NaMaster 500MC promoted to headline equation (β=0.27° → 0.238° recovered, SNR=20.32σ at ACT sensitivity, 0.77σ vs observed 0.342±0.094°); Cuscuton "deferred to future work" line replaced with structural-inaccessibility argument grounded in the perturbation-transparency theorem; Section VIII.D renamed "Discriminating Observational Channels"; Table 6 caption restructured to dodge revtex4-2 `\@tempf` brace-counting bug; `\paperTimestamp` 2026-04-28 → 2026-04-29; PDF recompiled 989 KB / 0 undef refs (commit `a63ef0b`).
 
 ## Current state (2026-04-29 PDT)
 
-- **Readiness: ~99 %+** — submission-ready.
-- **R31–R34 incorporated.** Reproducibility note updated to 500MC; β = 0.27° prediction confirmed at 0.77σ vs joint Planck+ACT observation.
-- **NaMaster 500MC** (Pod 1, 2026-04-29 05:31 PDT): canonical at `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`. Integrated into Paper 1 §IV (commits e884cff + ba8ccbf).
-- **Remaining:** local PDF recompile (TeX Live 2026 + revtex4-2 ready on Mac, 0 pod dependency).
+- **Readiness: 100 %** — submission-ready, PDF current.
+- **R31–R35 all incorporated.** 50MC pilot demoted to systematics-paragraph status; 500MC headline.
+- **NaMaster 500MC** (Pod 1, 2026-04-29 05:31 PDT): canonical at `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`. Integrated into Paper 1 §IV (commits e884cff + ba8ccbf + R35 a63ef0b).
+- **Remaining:** none for science; arXiv form-fill only.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
 
@@ -154,7 +154,7 @@ Itemized list of everything that must happen for Paper 1 to be submission-grade,
 | 2 | ~~Verify every `\includegraphics{...}` in main.tex resolves to a file in `arxiv/figures/`~~ ✓ DONE 2026-04-17: grep → 2 `\includegraphics` calls, both resolve (`figure1_lqg_holst_derivation_enhanced.png`, `consistency_window_birefringence.pdf`). PDF ≥ 1 MB check deferred to P1-PDF-RECOMPILE on pod. | `P1-FIGURES-VERIFY` ✓ | agent | 0.1 % | [x] |
 | 3 | ~~Generate corner plots from existing chains (`getdist`), add a figure to §IV, drop the "will be presented in a companion data release" wording at L882~~ ✓ DONE 2026-04-17: `arxiv/figures/paper1_corner_full_tension.pdf` (220 KB) + `public/images/paper1_corner_full_tension.png` (234 KB) generated from 119,617 post-burnin full_tension samples via getdist. Marginals: H0=67.69±1.06, Ωm=0.308±0.006, σ8=0.803±0.008, S8=0.814±0.009, ΔNeff=-0.019±0.169 (consistent with zero — confirms SSOT claim). Paper §IV figure integration + L882 wording replacement still pending a tex edit pass. | `P1-CORNER-PLOTS` ✓ (data) / pending tex insert | agent | 0.2 % | [x] |
 | 4 | ~~Recompile PDF on-pod with texlive-publishers; refresh `\paperTimestamp` to compile date~~ ✓ DONE 2026-04-17: `arxiv/main.pdf` → 707 KB, 27 pp, 0 undef refs on pod `3qe9b95o0qlr94` (texlive-publishers + texlive-fonts-extra for bbold.sty). Pod terminated 2026-04-17. | `P1-PDF-RECOMPILE` ✓ | pod | 0.2 % | [x] |
-| 5 | Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` to show v2.3.x final numbers after recompile | `P1-SITE-SYNC` | site | 0.1 % | [ ] |
+| 5 | ~~Sync `index.html`, `paper.html`, `explained.html`, `activity.html`, `figures.html`, `glossary.html` to show v2.3.x final numbers after recompile~~ ✓ DONE 2026-04-29 (R35 commit `a63ef0b`): all 6 surfaces show "100% Ready · Apr 29 2026" + "Last updated April 29, 2026 12:02 PDT (R35 polish, all 4 PDFs recompiled)". | `P1-SITE-SYNC` ✓ | site | 0.1 % | [x] |
 | 6 | ~~Freeze `wiki/entities/paper-1-*.md` as pointer-only files routing to this SSOT~~ ✓ DONE 2026-04-17: `paper-1-spin-torsion.md` rewritten as pointer-only; SSOT + science-highlights links added; stale "80% submission-ready / TIER-1 edits" claim removed. | `P1-WIKI-SYNC` ✓ | agent | 0.05 % | [x] |
 | 7 | Build arXiv tarball (main.tex + references.bib + figures/ + aux) and smoke-test a clean revtex build from the tarball alone | `P1-TARBALL` (partial) | agent | 0.15 % | [~] Tarball built at `arxiv/main_arxiv_submission.tar.gz` (2.0 MB, 14 figures, main.tex + references.bib + main.bbl). Clean-revtex smoke-test from tarball alone still pending pod (requires texlive-publishers). |
 

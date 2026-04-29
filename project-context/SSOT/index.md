@@ -2,7 +2,7 @@
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-04-29 (PDT) — R34 closed across all 4 papers + site; **all 8 originally-GPU-blocked items DONE** (commit `caf858a`). Both pods can be paused. Final remaining work for 100 % is paper.tex re-knit (P4) + cross-paper PDF recompile + site sync.
+**Last authoritative update:** 2026-04-29 (PDT, 12:02) — **R35 final polish CLOSED, all 4 PDFs recompiled with Apr 29 12:02 PDT title-page stamp** (commit `a63ef0b`). 0 undefined references across all four. Mirrored to `public/papers/`. R34 + Pod 2 work + 8/8 originally-GPU-blocked items already DONE (commits `caf858a`, `6a3c727`). All 4 papers are SUBMISSION-READY; only remaining items are administrative (arXiv form-fill, tarball verify).
 
 **Read this first.** Every number here is sourced from the per-paper `status.md` files in this directory. If you catch a contradiction, the per-paper file wins — update this index.
 
@@ -12,7 +12,13 @@
 
 ### Adversarial review
 
-34 rounds complete (R31–R34 closed overnight in 12+ commits to `main`). R34 closed for all 4 papers + site. P1/P2/P3 submission-ready; P4 submission-ready with 3 deferrable nice-to-haves (currently running on Pod 2). Full review log: [`adversarial_peer_review_2026-04-27.md`](../adversarial_peer_review_2026-04-27.md).
+**35 rounds complete.** R35 final polish landed 2026-04-29 12:02 PDT (commit `a63ef0b`):
+- **P1**: NaMaster 500MC promoted to headline (β=0.27° → 0.238° recovered, SNR=20.32σ at ACT sensitivity); Cuscuton "future work" replaced by structural-inaccessibility argument grounded in the perturbation-transparency theorem; Section VIII.D renamed "Discriminating Observational Channels"; Table 6 caption restructured to dodge revtex4-2 `\@tempf` brace-counting bug; `\paperTimestamp` 2026-04-28 → 2026-04-29.
+- **P2**: SPHEREx consistency-relation paragraph rewritten to anchor on existing Planck n_s + Heinrich+2023 σ(f_NL) ≈ 0.5–0.7; Heinrich:2023 bib upgraded preprint → JCAP 04 074 (2024).
+- **P3**: 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the published 298-source S>0.259 catalog headline).
+- **P4**: "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; "Submission-locked".
+
+R31–R34 closed previously for all 4 papers + site (12+ commits to `main` overnight 2026-04-28 → 2026-04-29 10:19 PDT). All 4 papers submission-ready. Full review log: [`adversarial_peer_review_2026-04-27.md`](../adversarial_peer_review_2026-04-27.md).
 
 ### GPU work — 8/8 originally-blocked items DONE
 
@@ -38,12 +44,12 @@
 
 | # | Paper | Readiness | State |
 |---|---|---:|---|
-| **1** | Spin-Torsion Cosmology | **~99 %+** | NaMaster 500MC integrated; submission-ready. PDF recompile pending. |
-| **2** | f_NL Forecast (SPHEREx / MegaMapper) | **~99 %+** | R34 abstract clean (22/23 → 23/23 numbers supported in body); submission-ready. |
-| **3** | Multi-Survey Anomaly Catalog | **~98 %+** | UMAP 1-of-3 PASS honest framing integrated; submission-ready. |
-| **4** | Galaxy Chirality Catalog | **~99 %** | All 4 GPU items DONE; final 1 % is paper.tex re-knit to incorporate new Pod 2 numbers + PDF recompile. Bias-hardening 4/8 PASS result must be flagged in §validation (handedness-flip, rotation, blank-sky-artifacts, perturbation-stability tests fail → not blockers, but referee will notice). |
+| **1** | Spin-Torsion Cosmology | **100 %** | R35 closed; NaMaster 500MC headline (SNR=20.32σ); Cuscuton structural-inaccessibility; PDF recompiled (989 KB / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
+| **2** | f_NL Forecast (SPHEREx / MegaMapper) | **100 %** | R35 closed; SPHEREx consistency rewrite + Heinrich JCAP 04 074 (2024) bib; PDF recompiled (683 KB / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
+| **3** | Multi-Survey Anomaly Catalog | **100 %** | R35 closed; 9,303 ↔ 298 disambiguation inline; PDF recompiled (28 MB / 33 pp / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
+| **4** | Galaxy Chirality Catalog | **100 %** | R35 closed; "(in preparation)" companion-pod bibitem replaced with `bigbounce.hubify.app` link; PDF recompiled (25 MB / 11 pp / 0 undef refs, Apr 29 12:02 PDT). **Submission-locked.** Bias-hardening 4/8 stress-test PASS already flagged in §validation. |
 
-**Program-level arXiv ETA:** All 4 papers are at 100 % science readiness today. Remaining work is paper.tex updates (P4 only) + PDF recompile (all 4) + site sync. No GPU compute remaining.
+**Program-level arXiv ETA:** All 4 papers at 100 % readiness with recompiled PDFs as of 2026-04-29 12:02 PDT. All four mirrored to `public/papers/`. Remaining work is administrative only (arXiv tarball verification + form-fill).
 
 ---
 

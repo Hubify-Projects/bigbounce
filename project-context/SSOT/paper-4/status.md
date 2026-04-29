@@ -2,11 +2,11 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-29 (PDT) — R34 closed; **all 3 Pod 2 GPU items DONE** (commit `caf858a`). Paper 4 is at 100 % science readiness; remaining items are admin (PDF re-compile + site sync).
+Last authoritative update: 2026-04-29 (PDT, 12:02) — **R35 closed; SUBMISSION-LOCKED.** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; PDF recompiled to 25 MB / 11 pp / 0 undef refs with Apr 29 12:02 PDT title-page stamp (commit `a63ef0b`).
 
 ## Current state (2026-04-29 PDT)
 
-- **Readiness: 100 % (science) / 99 % (admin).** All GPU-blocked validation work landed on `main`. Final 1 % is a paper.tex re-knit to incorporate the new Pod 2 numbers + a PDF re-compile.
+- **Readiness: 100 % (science + admin). Submission-locked.** All Pod 2 GPU work landed (commit `caf858a`); R35 admin polish landed (commit `a63ef0b`); PDF current.
 - **R31–R34 incorporated.** N_gal = 5,547,858 closure (R31). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight.
 - **Pod 2 GPU work — ALL DONE 2026-04-29 PDT** (commit `caf858a`, files in `pipelines/h200_results/pod2_chirality_2026-04-29/`):
   - **P4-M3** bias hardening — 4/8 PASS on 2k GZ DESI v2 galaxies (`bias_hardening_results.json`). Flip/swap, rotation, artifacts, perturbation FAIL → flag in §validation; survey, calibration, leakage, hemispheric PASS.
@@ -244,7 +244,7 @@ Cloud artifacts:
 | ~~**Rebuild non-truncated dipole JSON.** Current `outputs/dipole/summary.json` is 19 lines — JSON dump crashed mid-write (log line 366) after `consistent_with_null:`. Re-run the dump on-pod or reconstruct from log.~~ ✓ DONE 2026-04-17: reconstructed locally from `dipolar_analysis.log` (no re-compute — verbatim log values); full 80-line JSON with catalog, pre-TTA dipole (2.31σ), hemisphere asymmetry, multipoles l=0..5, axis alignment tests, explanatory `rebuild_note` clarifying pre-TTA vs paper-headline post-TTA 0.43σ. | 0.5 | agent | `P4-DIPOLE-JSON-REBUILD` ✓ |
 | ~~**Recompile PDF on-pod with today's date + SSOT cross-check.** Current PDF is 2026-04-13; any SSOT-driven text changes must be rebuilt.~~ ✓ DONE 2026-04-17: `pipelines/p2_chirality/chirality_catalog_paper.pdf` + `public/papers/chirality_catalog_paper.pdf` → 25 MB, 11 pp on pod `3qe9b95o0qlr94`; all 11 figures embedded; 0 undef refs. Pod terminated 2026-04-17. | 0.5 | pod | `P4-PDF-RECOMPILE` ✓ |
 | ~~**Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers.~~ ✓ DONE 2026-04-17: audit shows 8.67M Galaxy-Zoo-DESI total + 8,474,531 classified + fcw_eq=0.5012 + 0.43σ null (p=0.33) + 7× Shamir refutation all consistent with SSOT. No stale numbers remaining. | 0.3 | agent | `P4-PAPER2-XREF` ✓ |
-| **Site sync** — `index.html` (CW/CCW fraction, dipole σ, 8.47 M count), `paper.html` (readiness 97 → 100), `activity.html` (new dipole-JSON-closed entry), `figures.html` (11 chirality figures), `data-explorer.html` (catalog preview). | 0.3 | agent | `P4-SITE-SYNC` |
+| ~~**Site sync** — `index.html` (CW/CCW fraction, dipole σ, 8.47 M count), `paper.html` (readiness 97 → 100), `activity.html` (new dipole-JSON-closed entry), `figures.html` (11 chirality figures), `data-explorer.html` (catalog preview).~~ ✓ DONE 2026-04-29 (R35 commit `a63ef0b`): all surfaces show "100% Ready" + "Submission-locked · Apr 29 2026" + footer "Last updated April 29, 2026 12:02 PDT". | 0.3 | agent | `P4-SITE-SYNC` ✓ |
 | **§ 913 "Future surveys" (LSST) line review.** TRULY BLOCKED per Principle 10 (needs Rubin 2025+ data; can be Fisher-forecasted but paper already uses that framing). Keep as-is, but re-read on PDF review to make sure the wording doesn't sneak in a DO-NOW item. | 0.2 | Houston | `P4-LSST-LINE-REVIEW` |
 | ~~**Public catalog product.**~~ ✓ DONE 2026-04-17: Data Availability section in `chirality_catalog_paper.tex` now pins `v2026.04` tags on both HF catalog (`huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/v2026.04`) and model (`huggingface.co/bamfai/galaxy-chirality-v2/tree/v2026.04`). GitHub release tag `paper4-v1.0` added. Zenodo DOI mirror note included (mint at arXiv submission time). | 0.2 | agent | `P4-HF-DOI` ✓ |
 

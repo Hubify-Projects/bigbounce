@@ -2,13 +2,14 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-29 (PDT) — R34 closed; UMAP 1-of-3 PASS honest framing integrated; submission-ready.
+Last authoritative update: 2026-04-29 (PDT, 12:02) — **R35 closed**; 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the published 298-source S>0.259 catalog headline); PDF recompiled to 28 MB / 33 pp / 0 undef refs with Apr 29 12:02 PDT title-page stamp. Date stamp v3.1.0. Submission-ready.
 
 ## Current state (2026-04-29 PDT)
 
-- **Readiness: ~98 %+** — submission-ready.
-- **Path-C rebuild CLOSED 2026-04-22 (fire #189, 12/12 criteria green, weighted sum 100.000 %).** Native BigAE retrains for SDSS+LAMOST+CMB landed; 8-way dedup at 5″ → 378,480 unique physical objects + 637 multi-survey clusters; DESI 5-fold k-fold $\bar J = 0.862$ PASS; Paper 3 PDF recompiled to 28 MB / 33 pp / 0 undef.
-- **R31–R34 incorporated.** UMAP multi-seed stability (Pod 1, 50K × 16D × 20 seeds) returned 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL). Honest framing integrated in commits 64699e6 + e08c28d (the earlier 5K-sample "ALL_PASS" claim was incorrect — corrected). 21/21 figure files resolve CLEAN (R33).
+- **Readiness: 100 %** — submission-ready, PDF current (Apr 29 12:02 PDT recompile, commit `a63ef0b`).
+- **R35 closure**: the 9,303 figure (top-1% IF cross-validation reference) and the canonical 298-source eROSITA catalog (S>0.259 BigAE top-cut) are now disambiguated inline so the referee cannot conflate them. 9,303 is a strict superset; 298 is the published Table 1 headline.
+- **Path-C rebuild CLOSED 2026-04-22 (fire #189, 12/12 criteria green, weighted sum 100.000 %).** Native BigAE retrains for SDSS+LAMOST+CMB landed; 8-way dedup at 5″ → 378,480 unique physical objects + 637 multi-survey clusters; DESI 5-fold k-fold $\bar J = 0.862$ PASS.
+- **R31–R35 incorporated.** UMAP multi-seed stability (Pod 1, 50K × 16D × 20 seeds) returned 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL). Honest framing in commits 64699e6 + e08c28d. 21/21 figure files resolve CLEAN (R33).
 - **Pre-Path-C 319,443 sum-over-surveys** preserved as §7 before-after baseline against post-Path-C native-retrain results.
 - **Remaining:** 1 NOTE only (HF private until acceptance — standard).
 

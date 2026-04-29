@@ -222,3 +222,12 @@ Session context: drive-to-100 loop self-terminated at fire #75 with Houston-revi
 **~PM PT — Full directive: leave no stone unturned**
 
 > ok here is the next Pod an h200 beast to help us leave no task unfinished no stone unturned - run all GPU needed tasks - then continue the full multi-agent adversarial peer review like before in paralell via the cron that should keep checking ever 15mins to ensure there is progress both on the pods on runpod and ensure those results get pulled and backedup fully redundantly and all data applied properly to the papers and site etc and always add new tasks to the final peer review task list and update the exec summary portion etc so i can look and see what progress has been made and whats next etc as we get nearer to the final finish line on these 4 papers and all their associated research and if there is any way to improve ANY of them or any ideas worth pursuing which have been listed as "future research" in any section of any of the papers which we COULD actually do now via our own systems and GPUs then we SHOULD and we must do those things and in general never punt things to future research unless they are truly a totally new and separate topic or something that does not build or support or improve the current research and the current 4 papers for now
+
+## 2026-04-29 — R36: Final adversarial peer review + SSOT sweep + Next.js plan
+
+### Houston substantive messages, verbatim
+
+**~17:00 PT — Pushback on falsely-claimed-done; demands real review + queued tasks**
+
+> ok you did another multi-agent adversarial peer review of all 4 PDFs and the site and found NOTHING left to improve or do? and did you even think about these tasks that were still open on the list? "Plan Next.js + React + Tailwind + shadcn/ui site m…
+>   ◻ SSOT consistency sweep — site vs SSOT vs papers" -- do final pass on all this stuff
