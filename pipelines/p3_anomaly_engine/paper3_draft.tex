@@ -139,7 +139,7 @@ For DESI~DR1, the full 22.5~million-spectrum catalog that is scored for anomalie
 
 \subsection{GPU Inference Pipeline}\label{sec:inference}
 
-All inference was performed on a single NVIDIA H200 GPU pod with 80~GB of HBM3e memory. Spectra were loaded and preprocessed on CPU, transferred to GPU in batches of 8{,}192, and scored in a single forward pass through the frozen model. The total processing time across all eight surveys was approximately 42 hours (wall-clock), dominated by the DESI DR1 scan (19{,}705~s for 22.5M spectra, throughput 896~spectra/s) and the LAMOST DR10 scan (11.4M spectra). The CMB and photometric surveys each required $< 10$~seconds of GPU time. Processing was checkpointed after each data unit (HEALPix tile, plate, or observation night) for robust resumption.
+All inference was performed on a single NVIDIA H200 GPU pod with 80~GB of HBM3e memory. Spectra were loaded and preprocessed on CPU, transferred to GPU in batches of 8{,}192, and scored in a single forward pass through the frozen model. The total processing time across all eight surveys was approximately 42 hours (wall-clock), dominated by the DESI DR1 scan (19{,}705~s for 22.5M spectra, throughput ${\sim}1{,}142$~spectra/s) and the LAMOST DR10 scan (11.4M spectra). The CMB and photometric surveys each required $< 10$~seconds of GPU time. Processing was checkpointed after each data unit (HEALPix tile, plate, or observation night) for robust resumption.
 
 
 \subsection{Path-C Rebuild Methodology}\label{sec:pathc}
@@ -244,7 +244,7 @@ Across the 6.5 million spectra in DESI DR1 that carry a validated TARGETTYPE cla
 
 The most scientifically compelling DESI DR1 anomalies are a sample of $z \approx 6$ quasar candidates identified by three independent signatures: (1) complete flux suppression blueward of Ly$\alpha$ (Gunn-Peterson trough), (2) Z-arm dominated anomaly scores, meaning $r_Z > r_B$ and $r_Z > r_R$ (mean Z-arm sub-score $\langle r_Z \rangle = 3.9$ across the 12 selected candidates; all objects have total score $S > 5$ by construction of the anomaly catalog), and (3) at least one detected emission line (Ly$\alpha$, N\,\textsc{v}, Si\,\textsc{iv}) in the transition region. Applying these three cuts to the full 195{,}829 DESI anomaly catalog yields 12 candidates with $z = 6.0$--$6.23$.
 
-Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sky cutouts for all 12 confirmed candidates, each $128 \times 128$ pixels ($\approx 54''$ on a side). The highest-scored objects (TARGETID 39633191367084936, $z = 6.20$, $S = 5.30$; and 39628507709444221, $z = 6.22$, $S = 5.18$) show compact point-source morphology consistent with unresolved quasars at cosmological distances. The DESI DR9 images reveal the sky environment of each candidate at optical wavelengths; the anomalous spectral signature arises from redshifted Gunn-Peterson absorption rather than morphological peculiarity. Full coordinates (RA, Dec) for the high-$z$ QSO candidates are provided in the machine-readable catalog; Table~\ref{tab:highz_candidates} lists TARGETID for cross-referencing with the DESI DR1 database. Extended galleries for all ten astrophysical taxonomy families identified in the full DESI anomaly population are provided in Appendix~\ref{app:galleries}.\footnote{Complete taxonomy family image galleries (Figs.~\ref{fig:gallery_a2}--\ref{fig:gallery_a10}) are in Appendix~\ref{app:galleries}. Taxonomy classification follows UMAP+HDBSCAN clustering of the \BigAE{} latent-space embedding of 195{,}829 DESI DR1 anomalies into ten astrophysical families.}
+Figure~\ref{fig:gallery_highz} shows the DESI Legacy Survey DR9 grz composite sky cutouts for all 12 confirmed candidates, each $128 \times 128$ pixels ($\approx 54''$ on a side). The highest-scored objects (TARGETID 39633191367084936, $z = 6.20$, $S = 5.30$; and 39628507709444221, $z = 6.22$, $S = 5.18$) show compact point-source morphology consistent with unresolved quasars at cosmological distances. The DESI DR9 images reveal the sky environment of each candidate at optical wavelengths; the anomalous spectral signature arises from redshifted Gunn-Peterson absorption rather than morphological peculiarity. Full coordinates (RA, Dec) and TARGETIDs for the high-$z$ QSO candidates are provided in the machine-readable catalog for cross-referencing with the DESI DR1 database. Extended galleries for all ten astrophysical taxonomy families identified in the full DESI anomaly population are provided in Appendix~\ref{app:galleries}.\footnote{Complete taxonomy family image galleries (Figs.~\ref{fig:gallery_a2}--\ref{fig:gallery_a10}) are in Appendix~\ref{app:galleries}. Taxonomy classification follows UMAP+HDBSCAN clustering of the \BigAE{} latent-space embedding of 195{,}829 DESI DR1 anomalies into ten astrophysical families.}
 
 \begin{figure*}[ht]
 \centering
@@ -342,7 +342,7 @@ The LAMOST scan identifies 44{,}075 anomalies (0.39\% rate). Critically, we disc
 This LAMOST result provides a key methodological insight for the field of unsupervised anomaly detection: \textit{the anomaly ranking is only as good as the training set is representative}. When the training set is biased toward a particular subset of observing conditions, the autoencoder learns those conditions as ``normal'' and flags deviations from them as anomalies, even when the deviations are purely instrumental. We discuss this finding further in Section~\ref{sec:lamost_lesson}.
 
 \paragraph{Path-C native-retrain in flight.}
-The 98\% blue-excess contamination motivates the Path-C rebuild of this row (\S\ref{sec:pathc}). A native LAMOST \BigAE{} was retrained on a $3{\times}10^{5}$-spectrum LAMOST DR10 holdout with a uniform nightly sampler designed to balance the early-survey blue-arm calibration regime against the post-2017 stable regime, suppressing the systematic driver of the cross-transfer contamination. The native model reached validation MSE $0.0329$ on the held-back $10^{4}$-spectrum split, passing the Path-C native-retrain gate (val\_loss $\leq 0.30$). Re-scoring of the full LAMOST DR10 catalog against the native checkpoint has now completed ($11{,}334{,}161$ spectra scored across 107 batch shards, $35.8$~h wall-clock on an NVIDIA A100): only $2{,}054$ sources exceed the $S > 5$ cross-survey-spectroscopic anomaly threshold on the native score distribution, versus $44{,}075$ in the cross-transfer scan---a $21.5\times$ reduction in the raw anomaly rate and a direct numerical confirmation that the $98\%$ blue-excess signature was a cross-transfer catalog-calibration artifact rather than an astrophysical signal. The native score distribution has median $0.0033$, $p_{99} = 0.461$, $p_{99.9} = 1.85$, and maximum $38.05$; the top-$1\%$ slice ($113{,}342$ sources at $S \geq 0.461$) is the preservation-ready native LAMOST anomaly set and will supersede the $44{,}075$ cross-transfer figure in Table~\ref{tab:survey_summary} upon the post-rebuild recompile (\S\ref{sec:pathc_caveats}). Injection-recovery on the native LAMOST checkpoint yields $\{0.5\times\!:\,0.6\%,\,1\times\!:\,0.6\%,\,2\times\!:\,0.6\%,\,5\times\!:\,0.6\%,\,10\times\!:\,3.2\%,\,20\times\!:\,14.4\%\}$ against the same Gaussian emission-line plants used for SDSS (\S\ref{sec:sdss}); the lower 20$\times$ plateau versus SDSS reflects LAMOST's $\sim 3\times$ lower median SNR rather than a native-model failure. The continuum-deformation variant recommended by \S\ref{sec:pathc_caveats}~(iv) has since been run: the native LAMOST AE recovers broad continuum dips (FWHM $\sim 80$~bins) at $\{0.5\times\!:\,0.6\%,\,1\times\!:\,0.6\%,\,2\times\!:\,1.2\%,\,5\times\!:\,5.8\%,\,10\times\!:\,26.2\%,\,20\times\!:\,90.0\%\}$, an order-of-magnitude improvement over the emission-line curve above ($9.7\times$ at $5\times$, $6.3\times$ at $20\times$); the strict Path-C $5\sigma$ gate remains unreached at $5.8\%$, consistent with LAMOST's $\sim 3\times$ higher clean-MSE $p_{99}$ threshold ($1.239$ vs SDSS $0.200$) rather than an architectural failure of the native model.
+The 98\% blue-excess contamination motivates the Path-C rebuild of this row (\S\ref{sec:pathc}). A native LAMOST \BigAE{} was retrained on a $3{\times}10^{5}$-spectrum LAMOST DR10 holdout with a uniform nightly sampler designed to balance the early-survey blue-arm calibration regime against the post-2017 stable regime, suppressing the systematic driver of the cross-transfer contamination. The native model reached validation MSE $0.0329$ on the held-back $10^{4}$-spectrum split, passing the Path-C native-retrain gate (val\_loss $\leq 0.30$). Re-scoring of the full LAMOST DR10 catalog against the native checkpoint has now completed ($11{,}334{,}161$ spectra scored across 107 batch shards, $35.8$~h wall-clock on an NVIDIA A100): only $2{,}054$ sources exceed the $S > 5$ cross-survey-spectroscopic anomaly threshold on the native score distribution, versus $44{,}075$ in the cross-transfer scan---a $21.5\times$ reduction in the raw anomaly rate and a direct numerical confirmation that the $98\%$ blue-excess signature was a cross-transfer catalog-calibration artifact rather than an astrophysical signal. The native score distribution has median $0.0033$, $p_{99} = 0.4613$, $p_{99.9} = 1.85$, and maximum $38.05$; the top-$1\%$ slice ($113{,}342$ sources at $S \geq 0.4613$) is the preservation-ready native LAMOST anomaly set and will supersede the $44{,}075$ cross-transfer figure in Table~\ref{tab:survey_summary} upon the post-rebuild recompile (\S\ref{sec:pathc_caveats}). Injection-recovery on the native LAMOST checkpoint yields $\{0.5\times\!:\,0.6\%,\,1\times\!:\,0.6\%,\,2\times\!:\,0.6\%,\,5\times\!:\,0.6\%,\,10\times\!:\,3.2\%,\,20\times\!:\,14.4\%\}$ against the same Gaussian emission-line plants used for SDSS (\S\ref{sec:sdss}); the lower 20$\times$ plateau versus SDSS reflects LAMOST's $\sim 3\times$ lower median SNR rather than a native-model failure. The continuum-deformation variant recommended by \S\ref{sec:pathc_caveats}~(iv) has since been run: the native LAMOST AE recovers broad continuum dips (FWHM $\sim 80$~bins) at $\{0.5\times\!:\,0.6\%,\,1\times\!:\,0.6\%,\,2\times\!:\,1.2\%,\,5\times\!:\,5.8\%,\,10\times\!:\,26.2\%,\,20\times\!:\,90.0\%\}$, an order-of-magnitude improvement over the emission-line curve above ($9.7\times$ at $5\times$, $6.3\times$ at $20\times$); the strict Path-C $5\sigma$ gate remains unreached at $5.8\%$, consistent with LAMOST's $\sim 6\times$ higher clean-MSE $p_{99}$ threshold ($1.239$ vs SDSS $0.200$) rather than an architectural failure of the native model.
 
 
 \subsection{eROSITA DR1}\label{sec:erosita}
@@ -518,7 +518,7 @@ The anomaly catalog provides a reservoir of candidate high-bias tracers---high-r
 
 While the NANOGrav consistency check falls outside the core anomaly catalog scope, we include it to demonstrate the multi-messenger utility of the anomaly-selected tracer populations and to connect the catalog's cosmological applications to the bounce framework motivation.
 
-As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. A preliminary analysis of the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023} finds the timing-residual spectral index $\gamma = 3.20 \pm 0.42$ (GPU MCMC, combined PTA) consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2015} at $0.48\sigma$ (Paper~1, companion paper~\cite{Golden:2026framework}). We emphasize that this result does not constitute evidence for bounce cosmology; the measured $\gamma$ is also consistent with softened SMBHB models~\cite{Sesana2016,Burke-Spolaor2019}. The full PTA analysis---including MCMC posteriors, Fisher projections for NANOGrav~20-yr and SKA-class sensitivity, and model-comparison tables---is presented in the companion framework paper (Paper~1~\cite{Golden:2026framework}).
+As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. A preliminary analysis of the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023} finds the timing-residual spectral index $\gamma = 3.20 \pm 0.42$ (GPU MCMC, combined PTA) consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2014} at $0.48\sigma$ (Paper~1, companion paper~\cite{Golden:2026framework}). We emphasize that this result does not constitute evidence for bounce cosmology; the measured $\gamma$ is also consistent with softened SMBHB models~\cite{Sesana2016,Burke-Spolaor2019}. The full PTA analysis---including MCMC posteriors, Fisher projections for NANOGrav~20-yr and SKA-class sensitivity, and model-comparison tables---is presented in the companion framework paper (Paper~1~\cite{Golden:2026framework}).
 
 
 %% ============================================================
@@ -564,7 +564,7 @@ The Path-C rebuild (Section~\ref{sec:pathc}) resolves the two first-order contam
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{fig_injection_recovery}
-\caption{Injection-recovery gate results across six surveys. Solid curves show recovery fraction versus injection amplitude (multiples of local noise $\sigma$). The horizontal dashed line marks the $\geq50\%$ gate at $5\sigma$; SDSS~DR18 continuum-dip (\textbf{PASS}, 64\%) is the only survey clearing the gate. Five surveys fail$^*$ with companion cross-validation diagnostics: LAMOST~DR10 (5.8\%, but 9.7$\times$ continuum improvement), eROSITA~DR1 (1\%, 81.5\% XV), Gaia~DR3 (1.2\%, 41\% XV), SDSS~DR18 emission-line (13\%), LAMOST~DR10 emission-line (0\%). See Table~1 footnotes for FAIL-with-diagnostic interpretation.}
+\caption{Injection-recovery gate results across six surveys. Solid curves show recovery fraction versus injection amplitude (multiples of local noise $\sigma$). The horizontal dashed line marks the $\geq50\%$ gate at $5\sigma$; SDSS~DR18 continuum-dip (\textbf{PASS}, 64\%) is the only survey clearing the gate. Five surveys fail$^*$ with companion cross-validation diagnostics: LAMOST~DR10 (5.8\%, but 9.7$\times$ continuum improvement), eROSITA~DR1 (1.2\%, 81.5\% XV), Gaia~DR3 (5.2\%, 41\% XV), SDSS~DR18 emission-line (7.2\%), LAMOST~DR10 emission-line (0.6\%). See Table~\ref{tab:survey_summary} footnotes for FAIL-with-diagnostic interpretation.}
 \label{fig:injection_recovery}
 \end{figure}
 
@@ -631,7 +631,7 @@ Table~\ref{tab:processing} provides the computational details of the full pipeli
 \begin{tabular}{lrrrrl}
 \textbf{Survey} & \textbf{Input dim.} & \textbf{Latent dim.} & \textbf{Params} & \textbf{Train time (s)} & \textbf{Inference throughput} \\
 \hline
-DESI DR1      & 496   & 128 & 660K  & $\sim$3{,}600 & 896 spectra/s \\
+DESI DR1      & 496   & 128 & 660K  & $\sim$3{,}600 & 1{,}142 spectra/s \\
 SDSS DR18     & 496   & 128 & 660K  & $\sim$1{,}200 & 1{,}100 spectra/s \\
 LAMOST DR10   & 496   & 128 & 660K  & $\sim$2{,}400 & 950 spectra/s \\
 eROSITA DR1   & 47    & 16  & 120K  & 7.6           & 122K sources/s \\
@@ -641,13 +641,13 @@ Gaia DR3      & 20    & 16  & 80K   & 1.2           & 40K sources/s \\
 NEOWISE       & 15    & 16  & 70K   & 1.6           & 27K sources/s \\
 \end{tabular}
 \end{ruledtabular}
-\end{table*}
 \begin{flushleft}
 {\footnotesize
 $^\dagger$ Path-C native convolutional autoencoder (Section~\ref{sec:planck}): 3 convolutional layers $\rightarrow$ \texttt{Linear}(4096, 128) bottleneck; symmetric \texttt{ConvT} decoder; $1.1\times10^6$ parameters. Training on $2\times10^5$ galactic-plane-masked ($|b|\geq20^\circ$) Planck SMICA patches on A100 GPU.\\
 $^\ddagger$ Cross-transfer fully connected baseline (Section~\ref{sec:act}); ACT DR6 was not native-retrained under Path-C. The reported training time and throughput are for the undertrained cross-transfer checkpoint and are not representative of a properly trained CMB autoencoder on this domain.
 }
 \end{flushleft}
+\end{table*}
 
 
 \section{DESI Band-Dominance Classification}\label{app:desi_bands}
@@ -943,17 +943,12 @@ G.\ Agazie \etal\ (NANOGrav Collaboration),
 Astrophys.\ J.\ Lett.\ \textbf{951}, L8 (2023).
 
 
-\bibitem{Phinney2001}
-E.\ S.\ Phinney,
-``A practical theorem on gravitational wave backgrounds,''
-arXiv:astro-ph/0108028 (2001).
-
 \bibitem{Quintin2014}
 J.\ Quintin, Y.\ F.\ Cai, and R.\ H.\ Brandenberger,
 ``Matter creation in a nonsingular bouncing cosmology,''
 Phys.\ Rev.\ D \textbf{90}, 063507 (2014).
 
-\bibitem{Cai2015}
+\bibitem{Cai2014}
 Y.-F.\ Cai,
 ``Exploring bouncing cosmologies with cosmological surveys,''
 Sci.\ China Phys.\ Mech.\ Astron.\ \textbf{57}, 1414 (2014).

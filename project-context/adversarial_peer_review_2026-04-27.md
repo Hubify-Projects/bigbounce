@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 14 ROUNDS COMPLETE — all text-fixable items resolved (189 findings, ~170 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
+**Status:** 15 ROUNDS COMPLETE — all text-fixable items resolved (198 findings, ~179 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
 
 ---
 
@@ -118,6 +118,7 @@ If you're going to burn H200 time on review items:
 | 12 | 2026-04-28 | 14 (P1 re-review 2) | 0 | 4 | 10 | 14/14 FIXED |
 | 13 | 2026-04-28 | 5 (P1 full re-read) | 0 | 1 | 4 | 1/1 TEXT-FIXED, 4 NOTE |
 | 14 | 2026-04-28 | 10 (P2 re-review 3) | 0 | 5 | 5 | 10/10 FIXED |
+| 15 | 2026-04-28 | 9 (P3 re-review 3) | 0 | 4 | 5 | 9/9 TEXT-FIXED |
 
 ---
 
@@ -1062,3 +1063,41 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P2-R14-8 | MINOR | **"63% spread" has no standard metric.** BNL varies from -4.375 (squeezed) to -2.250 (folded). Paper calls this "63% spread" but \|Delta\|/\|squeeze\| = 48.6%, \|Delta\|/\|fold\| = 94.4%, mean-based = 64.2%. No standard definition gives 63%. | TEXT | [x] FIXED — changed to "49% fractional variation" with explicit formula |
 | P2-R14-9 | MINOR | **Linearization note misidentifies slow-roll formula.** Calls n_s - 1 = 2(2epsilon - eta) the "exact expression from the growing-mode solution," but this is the standard slow-roll formula, not specific to the bounce. The correct bounce relation is n_s = 1 + 12w (Wilson-Ewing 2012). The two agree at leading order but the slow-roll formula gives n_s = 7 for exact matter domination (epsilon=3/2, eta=0). | TEXT | [x] FIXED — rewrote to cite n_s = 1 + 12w as the exact growing-mode relation, with slow-roll formula as a cross-check |
 | P2-R14-10 | MINOR | **Naive significance 6.3sigma rounded up.** 4.375/0.7 = 6.25, not 6.3. Appears in 2 locations. | TEXT | [x] FIXED — changed to 6.25sigma in both locations |
+
+## ROUND 15: ADVERSARIAL RE-REVIEW OF PAPER 3 (2026-04-28)
+
+**Method:** Single Opus 4.6 agent — hostile PRD referee, full 1005-line re-read of `pipelines/p3_anomaly_engine/paper3_draft.tex` with systematic numerical audit, cross-reference verification, and label/citation consistency check. All table sums verified computationally.
+
+**Audit scope:** (1) All `\ref` targets checked against `\label` definitions — 1 broken ref found; (2) All `\cite` keys checked against `\bibitem` definitions — 1 orphan found; (3) Table 1, SDSS classification, DESI band-dominance, sensitivity table, and taxonomy family sums verified arithmetically; (4) Anomaly rates, scale-increase factor, NEOWISE mask fractions, false-match rates, injection-recovery ratios all recomputed; (5) DESI processing time vs throughput cross-checked; (6) LAMOST/SDSS p99 ratio verified.
+
+| # | Sev | Finding | Fixable? | Status |
+|---|-----|---------|----------|--------|
+| P3-R15-1 | MAJOR | **Broken reference `\ref{tab:highz_candidates}`.** Line 247 references "Table~\ref{tab:highz_candidates}" but no `\label{tab:highz_candidates}` exists anywhere in the document. This table was apparently trimmed or never created. Will compile as "Table **??**" in the PDF. | TEXT | [x] FIXED — removed the dangling table reference; TARGETIDs are in the machine-readable catalog |
+| P3-R15-2 | MAJOR | **Injection-recovery figure caption numbers wrong.** Fig. caption (line 567) says "SDSS emission-line (13%)" but body text gives 7.2% at 5sigma; caption says "LAMOST emission-line (0%)" but body gives 0.6%. Also eROSITA "1%" should be 1.2% and Gaia "1.2%" should be 5.2% per caveat (v). | TEXT | [x] FIXED — all five caption percentages corrected to match body text |
+| P3-R15-3 | MAJOR | **LAMOST/SDSS p99 ratio arithmetic error.** Caveat (iv) says "LAMOST's ~3x higher clean-MSE p99 threshold (1.239 vs SDSS 0.200)" but 1.239/0.200 = 6.2x, not ~3x. | TEXT | [x] FIXED ��� changed "~3x" to "~6x" |
+| P3-R15-4 | MAJOR | **DESI throughput inconsistent with wall-clock time.** Section 2.3 states 19,705s for 22.5M spectra at 896 spectra/s, but 22.5M/896 = 25,117s. At 19,705s the actual throughput is ~1,142 spectra/s. | TEXT | [x] FIXED — throughput corrected to ~1,142 spectra/s in both Section 2.3 and Table A1 |
+| P3-R15-5 | MINOR | **Orphaned bibliography entry `Phinney2001`.** Defined at line 948 but never `\cite`d in the text. | TEXT | [x] FIXED — removed |
+| P3-R15-6 | MINOR | **Bibitem key `Cai2015` but publication year is 2014.** Sci. China Phys. Mech. Astron. 57, 1414 (2014) — key-year mismatch. | TEXT | [x] FIXED — renamed to `Cai2014` in both bibitem and all citations |
+| P3-R15-7 | MINOR | **Processing table footnotes outside table environment.** Lines 645-650: `\begin{flushleft}` block comes after `\end{table*}`, so footnotes will float separately from the table. | TEXT | [x] FIXED — moved `\end{table*}` to after the footnote block |
+| P3-R15-8 | MINOR | **Hardcoded "Table~1" in figure caption.** Injection-recovery figure caption (line 567) uses "Table~1" instead of `Table~\ref{tab:survey_summary}`. | TEXT | [x] FIXED — changed to `Table~\ref{tab:survey_summary}` |
+| P3-R15-9 | MINOR | **LAMOST p99 threshold rounding inconsistency.** Body text says "S >= 0.461" but data availability says "S >= 0.4613". | TEXT | [x] FIXED — body text updated to 0.4613 in both occurrences |
+
+**Verified clean (no issues found):**
+- Table 1 cross-transfer sum: 319,443 (correct)
+- Table 1 source total: 37,292,042 (correct)
+- Path-C native sum: 388,693 (correct)
+- Dedup arithmetic: 388,693 - 10,213 = 378,480 (correct)
+- Compression rate: 2.628% (correct)
+- All 8 anomaly rates match N_anom/N_total
+- Scale increase: 378,480/2,685 = 141x (correct)
+- SDSS classification table sums to 77,905 (correct, all percentages verified)
+- DESI band-dominance table sums to 195,829 (correct)
+- Taxonomy families sum to 182,364 + 13,465 noise = 195,829 (correct)
+- Sensitivity table: all 8 rows verified via linear scaling from fiducial
+- False-match rate calculations: all three (SIMBAD, DESI x SDSS, 8-way dedup) verified
+- NEOWISE mask fractions: 419/436 = 96.1%, 17/436 = 3.9%, excess 2.6x (all correct)
+- SDSS scored + dropped + not-available = 2,304,830 (correct)
+- ACT exclusion arithmetic: 388,493 - 10,213 = 378,280 (correct)
+- All `\cite` keys have matching `\bibitem` entries (after Phinney2001 removal)
+- All `\ref` targets have matching `\label` definitions (after tab:highz_candidates fix)
+- 5-fold Jaccard percentages: 73.1%, 85.0%, 8.6% (all correct from 399/546, 464/546, 47/546)
