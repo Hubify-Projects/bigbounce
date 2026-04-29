@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 12 ROUNDS COMPLETE — all text-fixable items resolved (174 findings, ~159 fixed, 15 remaining — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
+**Status:** 13 ROUNDS COMPLETE — all text-fixable items resolved (179 findings, ~160 fixed, 15 remaining + 4 notes — P2-C2, P3-C3, P3-M5 resolved locally 2026-04-28)
 
 ---
 
@@ -116,6 +116,7 @@ If you're going to burn H200 time on review items:
 | 10 | 2026-04-28 | 10 (P2 re-review 2) | 0 | 4 | 6 | 10/10 FIXED |
 | 11 | 2026-04-28 | 10 (P3 re-review 2) | 0 | 6 | 4 | 10/10 FIXED |
 | 12 | 2026-04-28 | 14 (P1 re-review 2) | 0 | 4 | 10 | 14/14 FIXED |
+| 13 | 2026-04-28 | 5 (P1 full re-read) | 0 | 1 | 4 | 1/1 TEXT-FIXED, 4 NOTE |
 
 ---
 
@@ -1030,3 +1031,16 @@ W-8 ✅ All article pages + activity.html stale values fixed
 | P1-R12-12 | MINOR | Orphaned fig:sensitivity, fig:distance, fig:expansion, tab:limits labels from trimmed sections | TEXT | [x] FIXED — removed 4 orphaned labels; Fig.~\ref{fig:sensitivity} reference removed from Conclusions |
 | P1-R12-13 | MINOR | "topological invariant" is imprecise; Holst dual vanishes identically by Bianchi identity | TEXT | [x] FIXED — 3 occurrences corrected to "vanishes identically by the first Bianchi identity" |
 | P1-R12-14 | MINOR | Fine-tuning exponent 10⁵⁷ inconsistent with 10⁻¹²² mass-squared hierarchy | TEXT | [x] FIXED — corrected to δm²/m² ~ 10¹²⁰, consistent with line above |
+
+## ROUND 13: FULL RE-READ OF PAPER 1 (2026-04-28)
+
+**Method:** Complete 1255-line read of `arxiv/main.tex` looking for issues 12 prior rounds missed.
+**Result:** 1 text-fixable issue found and fixed. 4 notes (cosmetic/stylistic, not submission-blocking).
+
+| # | Sev | Finding | Fixable? | Status |
+|---|-----|---------|----------|--------|
+| P1-R13-1 | MAJOR | Orphan footnote `$^b$` in Table I (tab:modelcomp, line 451): `$^b$` note about BIC n_eff variation has no superscript marker in the table body or header. `$^a$` is correctly anchored to the third model row. | TEXT | [x] FIXED — added `$^b$` superscript to BIC column header |
+| P1-R13-2 | NOTE | Double `\label` on line 887: `\label{sec:limitations}\label{sec:futuredirections}` on same section. Both referenced. Functional but triggers hyperref warnings. | COSMETIC | [x] FIXED — separated with `%` line continuation |
+| P1-R13-3 | NOTE | Footnote `fn:spherex_range` (line 484) runs ~8 lines. PRD reviewers sometimes object to footnotes this long. Could be a remark or collapsed into body text. | COSMETIC | [ ] NOTE — acceptable for now |
+| P1-R13-4 | NOTE | NANOGrav discussion (line 947-948) is ~25-line single paragraph in "Future Observational Prospects." Dense enough to be its own subsection. | COSMETIC | [ ] NOTE — acceptable for now |
+| P1-R13-5 | NOTE | All section cross-references verified: 29 `\ref{sec:...}` targets all have corresponding `\label` definitions. No broken refs. | VALIDATION | ✅ PASS |
