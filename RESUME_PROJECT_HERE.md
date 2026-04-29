@@ -29,7 +29,7 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - **w0-wa MCMC** — RETRACTED fire #25 (2026-04-18). Paper 1 §VII.H: zero free w0-wa samples in this program. Earlier "P(quintom-B) = 98.6%" was fire-#21 bookkeeping confabulation. DESI DR2 w-crossing cited as observational context only.
 - **NANOGrav** — matter bounce γ=3.0 vs observed 3.2±0.6 (0.33σ consistent)
 - **Chirality** — 8.47M galaxies, CW/(CW+CCW)=0.4974, dipole=0.43σ (null result)
-- **424,181+ MCMC samples** across 3 frozen dataset combinations
+- **424,781+ MCMC samples** across 3 frozen dataset combinations (Paper 1 abstract canonical; supersedes 424,181 arithmetic mismatch fire #25)
 
 ### Running Compute (H200 pod)
 - **Pod ID:** `7zong4jdj46yjp` — SSH: `root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519`

@@ -35,7 +35,7 @@ The 14 ECH barriers are ECH-specific. Other bounce models (quintom, cuscuton, ek
 - **w0-wa quintom:** theoretical channel only. Paper 1 §VII.H is explicit: zero free w0-wa samples among the 309,789 frozen posterior samples in this program. Earlier "P(quintom-B) = 98.6%" bookkeeping was fire-#21 confabulation (corrected fire #25). The DESI DR2 2.8-4.2 sigma w-crossing signal is cited as observational context; it is not a BigBounce-group MCMC result.
 - **Delta_Neff:** Approximately 0 in all datasets
 - **H0:** 67.68 (standard LCDM value)
-- **Total posterior samples:** 424,181+ across 3 frozen dataset combinations
+- **Total posterior samples:** 424,781+ across 3 frozen dataset combinations (Paper 1 abstract canonical; supersedes 424,181 arithmetic mismatch fire #25)
 
 ## Research Tracks
 

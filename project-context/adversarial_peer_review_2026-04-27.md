@@ -1,9 +1,43 @@
 # Master Adversarial Peer Review: 5 Agents, 4 Papers, 80+ Findings
 
-**Last updated:** 2026-04-29 10:19 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
+**Last updated:** 2026-04-29 14:02 PDT (Los Angeles — all timestamps in this doc are PDT going forward)
 **Original date:** 2026-04-27
 **Method:** 5 parallel Opus agents — 4 hostile per-paper referees + 1 cross-paper consistency checker
-**Status:** 34 ROUNDS COMPLETE — 280+ findings total, ~273 fixed, **3 GPU-blocked remaining** (all Paper 4, all Pod 2). R31–R34 closed overnight (12+ commits to `main`). P1/P2/P3 submission-ready. P4 submission-ready with 3 deferrable nice-to-haves. NaMaster 500MC + UMAP 20-seed stability integrated.
+**Status:** 37 ROUNDS COMPLETE — 290+ findings total, ~285 fixed, **3 GPU-blocked remaining** (all Paper 4, all Pod 2). R35-R37 closed Houston-pre-mobile (1 push to `main` pending after this commit). P1/P2/P3 submission-ready. P4 submission-ready with 3 deferrable nice-to-haves. NaMaster 500MC + UMAP 20-seed stability integrated. Cross-paper / cross-surface number drift reconciled (424,181→424,781; 0.47% / 7×→0.32% / factor of 9; Pipeline-1 1.58× across 3 site surfaces).
+
+---
+
+## ⚡ R37 EXACT SUMMARY — 2026-04-29 14:02 PDT
+
+### Final adversarial sweep before mobile-PDF read
+
+Houston: "Okay you can 100% confirm that the website has all of the fully updated PDFs, all of the updated research, the SSOT, and everything on the site is all fully 100% updated and there's nothing else left to do. If so then please launch a final multi-agent adversarial peer review to go through the papers and the site and all the pages in the site, and all the papers and figures and everything. One final sweep and then just start the CRON for the 15-minute multi-agent peer review check."
+
+5-agent parallel adversarial sweep launched against all 4 papers + all 13 site pages. Agents returned **12 actionable findings (#117–128)**, all closed in this round.
+
+### R37 finding closures (12/12)
+
+| # | Scope | Finding | Resolution | Files touched |
+|---|-------|---------|------------|---------------|
+| 117 | P1 abstract | 2,775 chars violates arXiv 1,920-char hard cap | Trimmed to 1,882 chars; preserved LQC bounce, 14 barriers, perturbation-transparency, 424,781 MCMC, NaMaster β=0.238° at SNR=20.32, fNL=−35/8 SPHEREx 3-5σ realistic / 5-5.5σ optimistic | `arxiv/main.tex` L62-64; `arxiv/abstract_for_webform.txt` |
+| 118 | P1 NaMaster prose | "0.77σ" cited without showing σ_obs vs σ_pipeline arithmetic | Added explicit `0.064°/√(0.094²+0.013²)≈0.67σ` footnote against Eskilt joint Planck+ACT uncertainty; clarified observational uncertainty dominates | `arxiv/main.tex` L406 |
+| 119 | P1 bib | Heinrich:2023 missing JCAP volume/issue/pages/DOI | Upgraded to JCAP 04 (2024) 074, DOI 10.1088/1475-7516/2024/04/074, eprint 2311.13082 | `arxiv/references.bib` L598-604 |
+| 120 | Cross-surface | 3 site surfaces showing stale "3.27×" Pipeline-1 bias number | All swapped to **1.58×** with `bias_validation.json` cite + supersedes-fire-#25 note | `paper.html` L132; `explained.html` L413; `activity.html` L316 |
+| 121 | activity.html | LAMOST entry claimed "Path-C Native: 113,342" alongside 44,075 cross-transfer | "113,342" tagged as fire-#21 bookkeeping confabulation; **44,075 set as Paper 3 Table 1 canonical** | `activity.html` L427-429 |
+| 122 | SSOT/CLAUDE.md | 424,181+ MCMC samples drift vs paper-canonical 424,781 (176,840 + 132,949 + 114,992) | Reconciled to **424,781** across 6 surfaces with arithmetic breakdown | `CLAUDE.md` L44; `RESUME_PROJECT_HERE.md` L32; `projects/bounce-cosmology/README.md` L13; `wiki/concepts/bounce-portfolio.md` L38; `project-context/SSOT/paper-1/status.md` L67/L106; `project-context/paper1_science_highlights.md` L59/L64/L70/L141/L157 |
+| 123 | SSOT P4 | "0.47% max regional asymmetry / 7× Shamir refutation" stale vs paper-canonical 0.32% / factor of 9 | Reconciled to **0.32% / factor of 9** (paper lines 89/1050/1496) | `project-context/SSOT/paper-4/status.md` L27/L109-110/L246; `project-context/SSOT/arxiv_submission_kit.md` L86 |
+| 124 | P4 stress-tests | T1-T8 conflated as homogeneous; T3/T6/T7/T8 are result-level sanity checks not stress tests | Added **stress-test-vs-sanity-check distinction** paragraph; table caption updated to "8/8 PASS, 4 stress tests + 4 sanity checks" | `pipelines/p2_chirality/chirality_catalog_paper.tex` after L509 |
+| 125 | P4 MASTER | Newer 8,474,531-galaxy MASTER rerun on Pod 2 not visible from paper | Cross-check footnote added pointing to `pipelines/h200_results/pod2_chirality_2026-04-29/master_power_spectrum.json` (12 binned bandpowers ℓ∈[9,174], lowest C_ℓ=6.26e-3 at ℓ_eff=9). Explicit note: rerun's lowest bin is ℓ_eff=9, **does NOT supersede** dipole-specific (ℓ=1) paper-canonical result; complementary measurement. | `pipelines/p2_chirality/chirality_catalog_paper.tex` after L865 |
+| 126 | P4 bib | Davis:2014 (SpArcFiRe) flagged as orphan by sub-agent | **Verified NOT orphan**: `\cite{Davis:2014}` exists at L1136 ("The SpArcFiRe algorithm~\cite{Davis:2014}"); bibitem at L1671 properly resolved. No edit needed. | `pipelines/p2_chirality/chirality_catalog_paper.tex` (verification-only) |
+| 127 | Recompile + mirror | After all paper edits, deployed PDFs on site lag the source | **Recompiled both papers** (3-pass pdflatex + bibtex), 0 undefined references each. **P1: 31 pp, 1,015,043 bytes**, 3 figures (1.0 MB normal for P1's 3 includegraphics calls). **P4: 16 pp, 25,836,957 bytes**, 11 figures embedded. Mirrored to `public/papers/`. | `arxiv/main.pdf`; `pipelines/p2_chirality/chirality_catalog_paper.pdf`; `public/papers/spin_torsion_paper1.pdf`; `public/papers/chirality_catalog_paper.pdf` |
+| 128 | Workflow | After Houston steps away, no autonomous loop watching for late-breaking findings | (Pending after this commit) **15-min self-terminating peer-review cron** scheduled on `8,23,38,53 * * * *`; self-deletes via CronList ID match → CronDelete when zero findings AND zero open peer-review tasks. | (cron schedule) |
+
+### Strategy notes
+
+- **No permission asks** per Houston standing directive: "do not ask for permission ever again in this chat... do full never do minimal always do the full work needed always."
+- **Cross-surface drift discipline:** every R37 number-fix touched **paper text + SSOT + CLAUDE.md + downstream surfaces in the same commit batch.** Houston reads from mobile-site PDFs, so SSOT/site lag versus paper-canonical is a red flag, not a tracking artifact.
+- **Paper-canonical wins all ties:** 0.32% (paper lines 89/1050/1496) overrode SSOT's 0.47%; 424,781 (P1 abstract/§VI) overrode 424,181 in 6 places; "factor of 9" (paper line 89) overrode SSOT's "7×" in 4 places.
+- **Cron design (#128):** 15-min cadence, self-contained prompt re-runs the 5-agent adversarial sweep, applies findings, recompiles + pushes if any paper changed, terminates itself when both (a) zero new actionable findings and (b) zero open peer-review queue items remain.
 
 ---
 

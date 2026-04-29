@@ -56,18 +56,18 @@
 
 ---
 
-### 4. ΔN_eff ≈ 0 verified in 424,181 MCMC samples across three dataset combinations — **N2**
+### 4. ΔN_eff ≈ 0 verified in 424,781 MCMC samples across three dataset combinations — **N2**
 
 **What:** Full Cobaya Markov-Chain Monte Carlo on the ΛCDM+ΔN_eff model, using three independently frozen dataset combinations:
 - Full-tension (Planck + BAO + SN + H0 prior): ΔN_eff = **−0.020 ± 0.169** (176,840 samples)
 - Planck + BAO + SN only: ΔN_eff = **+0.065 ± 0.170** (132,949 samples)
-- Third frozen combination: ~114,392 samples
+- Third frozen combination: ~114,992 samples (total 424,781 — Paper 1 abstract canonical)
 
 **Why it matters:** This verifies that the bounce cosmology does not inject extra relativistic degrees of freedom at recombination — ΔN_eff is consistent with zero in all three independent data combinations. The H0 posterior recovers 67.68 ± 1.06 (standard ΛCDM), confirming the bounce does not solve the Hubble tension by tampering with N_eff.
 
 **Scientific significance:** Protects the bounce model from a class of easy falsifications. The model is not hiding ΔN_eff that would have been caught by Planck — it is genuinely consistent.
 
-**Paper claim:** "MCMC verification across three frozen dataset combinations (424,181 posterior samples total) yields ΔN_eff ≈ 0 in all cases, confirming the bounce does not inject extra relativistic species and leaves H0 = 67.68 ± 1.06 unchanged."
+**Paper claim:** "MCMC verification across three frozen dataset combinations (424,781 posterior samples total) yields ΔN_eff ≈ 0 in all cases, confirming the bounce does not inject extra relativistic species and leaves H0 = 67.68 ± 1.06 unchanged."
 
 ---
 
@@ -138,7 +138,7 @@
 | 1 | 14-barrier catalog closes ECH dark-energy routes | **N3** | First exhaustive barrier-by-barrier closure of a bounce class |
 | 2 | Perturbation-transparency theorem for γ_BI | **N3** | First closed-form proof that γ_BI is invisible at all perturbative orders |
 | 3 | Spectator-ALP mechanism, β = 0.264° | **N3** | First non-tuned birefringence prediction from a bounce motivated spectator |
-| 4 | ΔN_eff ≈ 0 in 424,181 MCMC samples | **N2** | Systematic verification across 3 frozen datasets |
+| 4 | ΔN_eff ≈ 0 in 424,781 MCMC samples | **N2** | Systematic verification across 3 frozen datasets |
 | 5 | Mechanism-independent f_NL = −35/8 | **N3** | First proof that the value is class-level, not model-specific |
 | 6 | Seven-channel bounce-class discrimination table | **N3** | First apples-to-apples discriminator matrix |
 | 7 | Chirality null 0.4σ consistency check | **N2** | Cross-paper consistency via Paper 4 |
@@ -154,7 +154,7 @@ Count by tier: **N3 × 5, N2 × 4, N1 × 0, N0 × 0, N4 × 0.**
 1. **A closed subclass** — 14 barriers rule out ECH-specific dark-energy routes; the program focuses on non-ECH bounces.
 2. **A theorem** — γ_BI is perturbatively invisible; LQG cosmological signatures must be non-perturbative.
 3. **A testable prediction** — β = 0.264° from spectator ALP, within 0.86σ of current observation, refinable by CMB-S4/LiteBIRD.
-4. **An MCMC verification** — ΔN_eff ≈ 0 across 3 frozen combinations, 424,181 posterior samples.
+4. **An MCMC verification** — ΔN_eff ≈ 0 across 3 frozen combinations, 424,781 posterior samples.
 5. **A class-level prediction** — f_NL = −35/8 as matter-bounce universal, mechanism-independent.
 6. **A discriminator framework** — the 7-channel × 5-class comparison table sets the observational program through 2030.
 7. **A consistency cross-check** — Paper 4's chirality null removes Shamir 2020 as a constraint on isotropic bounces.

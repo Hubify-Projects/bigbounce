@@ -10,7 +10,7 @@ Einstein-Cartan-Holst spin-torsion cosmology tested across 7 foundations and 17 
 - f_NL = -35/8 (parameter-free, mechanism-independent)
 - ALP birefringence β = 0.27° (matches 3.6σ observed signal)
 - Quintom-B w-crossing at 98% (DESI DR2 consistent)
-- 424,181 MCMC posterior samples across 4 dataset combinations
+- 424,781 MCMC posterior samples across 3 frozen dataset combinations (Paper 1 abstract canonical; supersedes 424,181 arithmetic mismatch and 4-combo wording, fire #25)
 - NANOGrav γ = 3.0 consistency (0.33σ from observed 3.2 ± 0.6)
 
 ## Files

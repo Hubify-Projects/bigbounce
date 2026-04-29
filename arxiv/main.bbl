@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{66}%
+\begin{thebibliography}{65}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -75,29 +75,6 @@
   {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
   {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
   {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Wands}(2010)}]{Wands:2010}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {Wands}},\ }\bibfield  {title} {\bibinfo {title} {Local non-{G}aussianity
-  from inflation},\ }\href {https://doi.org/10.1088/0264-9381/27/12/124002}
-  {\bibfield  {journal} {\bibinfo  {journal} {Class. Quant. Grav.}\ }\textbf
-  {\bibinfo {volume} {27}},\ \bibinfo {pages} {124002} (\bibinfo {year}
-  {2010})},\ \Eprint {https://arxiv.org/abs/1004.0818} {arXiv:1004.0818
-  [astro-ph.CO]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
-  \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
-  {Cai}}]{Li:2016xjb}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-K.}\ \bibnamefont
-  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Quintin}},
-  \bibinfo {author} {\bibfnamefont {D.-G.}\ \bibnamefont {Wang}},\ and\
-  \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\ }\bibfield
-  {title} {\bibinfo {title} {{Matter bounce cosmology with a generalized single
-  field: non-Gaussianity and an extended no-go theorem}},\ }\href
-  {https://doi.org/10.1088/1475-7516/2017/03/031} {\bibfield  {journal}
-  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
-  {pages} {031}},\ \Eprint {https://arxiv.org/abs/1612.02036} {arXiv:1612.02036
-  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
   {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Aghanim}
   \emph {et~al.}}]{Planck2018params}%
@@ -630,7 +607,7 @@
   {volume} {398}},\ \bibinfo {pages} {1601} (\bibinfo {year} {2009})},\ \Eprint
   {https://arxiv.org/abs/0809.3437} {arXiv:0809.3437 [astro-ph]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2023)\citenamefont
+\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
   {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
   {Krause}}]{Heinrich:2023}%
   \BibitemOpen
@@ -638,9 +615,12 @@
   {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
   and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
   }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
-  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\
-  (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2311.13082}
-  {arXiv:2311.13082} \BibitemShut {NoStop}%
+  spherex multi-tracer redshift space bispectrum},\ }\href
+  {https://doi.org/10.1088/1475-7516/2024/04/074} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {2024}}\bibfield
+  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages} {074}},\ }\Eprint
+  {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dehghani}\ \emph {et~al.}(2025)\citenamefont
   {Dehghani}, \citenamefont {Geshnizjani},\ and\ \citenamefont
   {Quintin}}]{Dehghani:2025cusc}%
@@ -707,6 +687,20 @@
   {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {06}},\ \bibinfo
   {pages} {066}},\ \Eprint {https://arxiv.org/abs/2404.03779} {arXiv:2404.03779
   [gr-qc]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
+  \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
+  {Cai}}]{Li:2016xjb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-K.}\ \bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Quintin}},
+  \bibinfo {author} {\bibfnamefont {D.-G.}\ \bibnamefont {Wang}},\ and\
+  \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\ }\bibfield
+  {title} {\bibinfo {title} {{Matter bounce cosmology with a generalized single
+  field: non-Gaussianity and an extended no-go theorem}},\ }\href
+  {https://doi.org/10.1088/1475-7516/2017/03/031} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
+  {pages} {031}},\ \Eprint {https://arxiv.org/abs/1612.02036} {arXiv:1612.02036
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Quintin}\ \emph {et~al.}(2015)\citenamefont
   {Quintin}, \citenamefont {Sherkatghanad}, \citenamefont {Cai},\ and\
   \citenamefont {Brandenberger}}]{Quintin:2015rta}%

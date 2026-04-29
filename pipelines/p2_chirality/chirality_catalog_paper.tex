@@ -508,8 +508,31 @@ that the CW fraction is flat across bins to $<\!0.1\%$---is needed
 to fully validate or reject the residual excess at the precision
 required.
 
+\textit{Stress-test versus sanity-check distinction.}---The 8/8
+pass result reported in Table~\ref{tab:bias_tests} aggregates two
+qualitatively different test classes, and we disclose the split
+explicitly to avoid overcounting. Four tests (T1 flip-swap, T2
+rotation stability, T4 perturbation robustness, and T5 metadata
+leakage) constitute model-perturbation \emph{stress tests} that
+probe response to deliberate input transformations at the
+signal-amplitude level; passing these constrains residual
+orientation- or coordinate-dependent bias to the percent or
+sub-percent level. The remaining four (T3 artifact rejection,
+T6 hemispheric null, T7 calibration, T8 CW balance) are
+\emph{result-level sanity checks} that verify basic catalog
+properties (blank-patch rejection, north/south consistency,
+confidence calibration, global parity) at coarser categorical or
+qualitative thresholds. The four stress tests are the load-bearing
+constraints on residual orientation-dependent bias; the four
+sanity checks rule out gross failure modes but do not by themselves
+constrain the residual excess at the $<\!0.1\%$ level called out
+above. The dedicated magnitude/PSF/half-light-radius binning
+test described in the preceding paragraph is what would close
+that gap.
+
 \begin{table}
-\caption{Bias hardening audit results (8/8~PASS).
+\caption{Bias hardening audit results (8/8~PASS, 4 stress tests +
+4 sanity checks).
   ``Raw'' denotes the single-pass model output; ``Eq.''\ denotes
   the equivariant-averaged value after test-time flip processing
   (Sec.~\ref{sec:tta}).\label{tab:bias_tests}}
@@ -862,7 +885,22 @@ raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
 10^{-6}$, using the occupancy-weighted sky fraction $f_{\rm sky} = 0.56$), the residual signal power is
 $C_1^{\rm signal} \equiv C_1^{\rm meas} - C_1^{\rm noise}
 = 2.36 \times 10^{-7}$,
-consistent with zero within the null scatter.
+consistent with zero within the null scatter.\footnote{An independent
+production rerun on the full
+$N_{\rm gal}^{\rm full} = 8{,}474{,}531$-row catalog (no pixel-edge
+discard, $f_{\rm sky}=0.4928$, $N_{\rm side}=64$, 12 binned
+bandpowers spanning $\ell \in [9, 174]$) is recorded at
+\texttt{pipelines/h200\_results/pod2\_chirality\_2026-04-29/master\_power\_spectrum.json}.
+That rerun reports a binned bandpower at $\ell_{\rm eff}=9$ of
+$C_\ell = 6.26 \times 10^{-3}$ before shot-noise subtraction, with
+the higher bins ($\ell_{\rm eff} \in [24, 174]$) all consistent with
+zero at $|{\rm SNR}| < 0.4$. The rerun does not isolate $\ell = 1$
+specifically (its lowest bin is centered at $\ell_{\rm eff}=9$) and
+therefore does not supersede the dipole-specific result quoted
+above; we record the cross-check here for transparency. The
+catalog count, sky fraction, and binning scheme differ from the
+paper-canonical analysis in this section, and the two should be
+read as complementary rather than directly comparable.}
 
 \emph{(iii)~Monte Carlo null calibration.}  Our null realizations
 shuffle per-pixel labels within the observed footprint, preserving the

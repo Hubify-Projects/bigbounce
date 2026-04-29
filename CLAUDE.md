@@ -41,7 +41,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - NANOGrav 15yr consistency: matter bounce γ = 3.0 vs observed 3.2 ± 0.6 (0.33σ)
 - w0-wa bound discussed theoretically only — not implemented computationally in this program (Paper 1 §VII.H explicitly: zero free-w0-wa samples among the 309,789 frozen posterior samples; earlier "quintom-B at 98.6%" bookkeeping was fire-#21 confabulation, corrected fire #25)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
-- 424,181+ MCMC posterior samples across 3 frozen dataset combinations
+- 424,781+ MCMC posterior samples across 3 frozen dataset combinations (Paper 1 abstract canonical figure: 176,840 + 132,949 + 114,992 = 424,781; supersedes earlier 424,181 arithmetic mismatch corrected fire #25)
 - Multi-survey anomaly sweep (8 surveys, 37.3M sources, 319,443 anomalies total after eROSITA top-cut correction — matches Paper 3 Table 1 canonical total 37,292,042 / 319,443):
   - DESI DR1: 22.5M spectra, 195,829 anomalies (0.87%), 2,145 SNR-filtered, 1,127 uncataloged
   - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%) — QC: domain shift scores

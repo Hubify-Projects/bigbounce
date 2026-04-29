@@ -24,7 +24,7 @@ Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this),
 
 ## TL;DR (30 seconds)
 
-- **Science is DONE.** 8,474,531 galaxies classified. Bias tests 8/8 pass. Dipole is a null (0.43σ). Shamir's 3% asymmetry claim refuted by 7×.
+- **Science is DONE.** 8,474,531 galaxies classified. Bias tests 8/8 pass. Dipole is a null (0.43σ). Shamir's 3% asymmetry claim refuted by factor of 9 (paper-canonical: max regional asymmetry 0.32% — paper lines 89/1050/1496; supersedes earlier 0.47%/7× SSOT figure).
 - **Paper is DONE.** Both draft versions (`pipelines/p2_chirality/` and `arxiv/`) compile to PDFs with all 11 figures embedded.
 - **arXiv submission is blocked on 4 trivial admin items,** not science. Total fix time: ~45 minutes.
 - **Two outdated wordings in a companion section** (`paper2_chirality_section.tex`) and one truly-blocked "future survey" line in the main paper. No actual future-work items Houston needs to run NOW per Principle 10.
@@ -106,8 +106,8 @@ All values below are from the paper text and have been verified against the run 
 | Equivariant (C) dipole — null | **0.43σ** (p=0.33) | paper line 504 · git commit 5d24cfc |
 | Angular power at ℓ=1 | **2.75σ** (marginal) | paper lines 541, 550, 563 |
 | Hemisphere asymmetry (max) | **3.05σ** (does not survive look-elsewhere) | paper lines 576, 580, 592 |
-| Max regional asymmetry | **0.47%** | paper line 82 |
-| Shamir (2020) claimed asymmetry | ~3% (refuted 7×) | paper line 82 |
+| Max regional asymmetry | **0.32%** | paper lines 89 / 1050 / 1496 (paper-canonical; supersedes earlier 0.47% SSOT figure) |
+| Shamir (2020) claimed asymmetry | ~3% (refuted by factor of 9) | paper lines 89 / 1050 / 1496 (paper-canonical; supersedes earlier 7× SSOT figure) |
 | CE-ResNet external agreement | **91.5%** on 23k galaxies | `BIAS_AUDIT_REPORT.md` §1 |
 | P_CW ↔ P_CE-ResNet correlation | r = 0.753 | paper (cross-val section) |
 | Equivariant CW-fraction match vs CE-ResNet | 0.5012 (us) vs 0.5013 (CE-ResNet) | paper (cross-val) |
@@ -243,7 +243,7 @@ Cloud artifacts:
 | ~~**Two divergent `.tex` files** (pipelines/ 1,099 lines vs arxiv/ 901 lines). Canonical is `pipelines/p2_chirality/chirality_catalog_paper.tex`.~~ ✓ DONE 2026-04-17: `arxiv/paper4_chirality_catalog.tex` is a 38-line pointer stub explicitly routing to `pipelines/p2_chirality/chirality_catalog_paper.tex`. | 0.5 | agent | `P4-PDF-CANON` ✓ |
 | ~~**Rebuild non-truncated dipole JSON.** Current `outputs/dipole/summary.json` is 19 lines — JSON dump crashed mid-write (log line 366) after `consistent_with_null:`. Re-run the dump on-pod or reconstruct from log.~~ ✓ DONE 2026-04-17: reconstructed locally from `dipolar_analysis.log` (no re-compute — verbatim log values); full 80-line JSON with catalog, pre-TTA dipole (2.31σ), hemisphere asymmetry, multipoles l=0..5, axis alignment tests, explanatory `rebuild_note` clarifying pre-TTA vs paper-headline post-TTA 0.43σ. | 0.5 | agent | `P4-DIPOLE-JSON-REBUILD` ✓ |
 | ~~**Recompile PDF on-pod with today's date + SSOT cross-check.** Current PDF is 2026-04-13; any SSOT-driven text changes must be rebuilt.~~ ✓ DONE 2026-04-17: `pipelines/p2_chirality/chirality_catalog_paper.pdf` + `public/papers/chirality_catalog_paper.pdf` → 25 MB, 11 pp on pod `3qe9b95o0qlr94`; all 11 figures embedded; 0 undef refs. Pod terminated 2026-04-17. | 0.5 | pod | `P4-PDF-RECOMPILE` ✓ |
-| ~~**Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers.~~ ✓ DONE 2026-04-17: audit shows 8.67M Galaxy-Zoo-DESI total + 8,474,531 classified + fcw_eq=0.5012 + 0.43σ null (p=0.33) + 7× Shamir refutation all consistent with SSOT. No stale numbers remaining. | 0.3 | agent | `P4-PAPER2-XREF` ✓ |
+| ~~**Cross-ref fix in `paper2_chirality_section.tex`.** The Paper-2 companion section still contains 2 stale wordings referencing old numbers.~~ ✓ DONE 2026-04-17: audit shows 8.67M Galaxy-Zoo-DESI total + 8,474,531 classified + fcw_eq=0.5012 + 0.43σ null (p=0.33) + 9× Shamir refutation (paper-canonical 0.32% / factor of 9, supersedes earlier 0.47%/7× SSOT figure) all consistent with paper. No stale numbers remaining. | 0.3 | agent | `P4-PAPER2-XREF` ✓ |
 | ~~**Site sync** — `index.html` (CW/CCW fraction, dipole σ, 8.47 M count), `paper.html` (readiness 97 → 100), `activity.html` (new dipole-JSON-closed entry), `figures.html` (11 chirality figures), `data-explorer.html` (catalog preview).~~ ✓ DONE 2026-04-29 (R35 commit `a63ef0b`): all surfaces show "100% Ready" + "Submission-locked · Apr 29 2026" + footer "Last updated April 29, 2026 12:02 PDT". | 0.3 | agent | `P4-SITE-SYNC` ✓ |
 | **§ 913 "Future surveys" (LSST) line review.** TRULY BLOCKED per Principle 10 (needs Rubin 2025+ data; can be Fisher-forecasted but paper already uses that framing). Keep as-is, but re-read on PDF review to make sure the wording doesn't sneak in a DO-NOW item. | 0.2 | Houston | `P4-LSST-LINE-REVIEW` |
 | ~~**Public catalog product.**~~ ✓ DONE 2026-04-17: Data Availability section in `chirality_catalog_paper.tex` now pins `v2026.04` tags on both HF catalog (`huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/v2026.04`) and model (`huggingface.co/bamfai/galaxy-chirality-v2/tree/v2026.04`). GitHub release tag `paper4-v1.0` added. Zenodo DOI mirror note included (mint at arXiv submission time). | 0.2 | agent | `P4-HF-DOI` ✓ |

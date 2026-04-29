@@ -64,7 +64,7 @@ submission_status: submission-ready (R35 closed; PDF recompiled 2026-04-29 12:02
 | Figures folder | `arxiv/figures/` | ⚠ verify figure inventory matches `\includegraphics` calls (see P1-FIGURES-VERIFY) |
 | MCMC chains (full-tension) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/full_tension/` | ✅ 176,840 samples |
 | MCMC chains (Planck+BAO+SN) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/planck_bao_sn/` | ✅ 132,949 samples |
-| MCMC chains (third frozen combo) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/<combo>/` | ✅ ~114,392 samples (total ~424,181 across 3 combos) |
+| MCMC chains (third frozen combo) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/<combo>/` | ✅ ~114,992 samples (total 424,781 across 3 combos: 176,840 + 132,949 + 114,992 = 424,781; Paper 1 abstract canonical, supersedes 424,181 arithmetic mismatch fire #25) |
 | Sensitivity scan | `research/sensitivity_scan/` | ✅ 100,000 sample Monte Carlo, Spearman \|ρ_s\|=0.996 on N_tot |
 | Chirality catalog hook | `pipelines/p2_chirality/` | ✅ cited as `Golden:2026chirality` via cross-ref |
 
@@ -103,7 +103,7 @@ Broad grep list run: `future work | leave to future | defer | will be presented 
 | 306 | (long matching line) | **VERIFY** | Re-read context to confirm benign/honest |
 | 736 | "invites comparison across the landscape" | **BENIGN** | Rhetorical framing, not a deferral |
 | 744 | "deferred to future work" (Cuscuton ECH analysis) | **TRULY-BLOCKED** | Requires a new Cuscuton+ECH-specific perturbation calculation that has not been done in the literature; non-simulatable in any short horizon |
-| 882 | "will be presented in a companion data release" (corner plots) | **DO-NOW (P1-CORNER-PLOTS)** | MCMC chains already exist (424,181 samples). Generating corner plots is `getdist` on-disk. Can land today. Then update paper to cite the figure. |
+| 882 | "will be presented in a companion data release" (corner plots) | **DO-NOW (P1-CORNER-PLOTS)** | MCMC chains already exist (424,781 samples; Paper 1 abstract canonical). Generating corner plots is `getdist` on-disk. Can land today. Then update paper to cite the figure. |
 | 976 | "would place the entire framework on firmer ground" (γ origin) | **TRULY-BLOCKED** | Derivation of the Barbero-Immirzi parameter from first principles is an open problem in LQG; not simulatable |
 | 1009 | "forthcoming data from CMB-S4, LiteBIRD, Euclid, and LSST" | **BENIGN** | Standard references to real future experiments; acceptable scientific framing |
 

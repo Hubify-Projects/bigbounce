@@ -83,7 +83,7 @@ For each paper: trimmed plain-text abstract lives **alongside the tarball** as `
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Comment (paste):**
   ```
-  11 pages, 11 figures, 4 tables, 23 references; 8.47M-galaxy chirality catalog with D4 test-time equivariance; dipole null 0.43σ; Shamir 2020/2022 3% asymmetry claim refuted at 7×. Catalog at https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog (CC-BY-4.0, v2026.04); model at https://huggingface.co/bamfai/galaxy-chirality-v2; companion to arXiv:PAPER1-ID (bounce framework).
+  11 pages, 11 figures, 4 tables, 23 references; 8.47M-galaxy chirality catalog with D4 test-time equivariance; dipole null 0.43σ; Shamir 2020/2022 3% asymmetry claim refuted by factor of 9 (paper-canonical max regional asymmetry 0.32%; supersedes earlier 7× SSOT figure). Catalog at https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog (CC-BY-4.0, v2026.04); model at https://huggingface.co/bamfai/galaxy-chirality-v2; companion to arXiv:PAPER1-ID (bounce framework).
   ```
 - **Readiness:** B per editor; fire #39 tarball build + fire #38 abstract trim closed the two P1 blockers — effectively A. Remaining open: Houston-owned `P4-D4-VS-Z2-RENAME` (mechanical rename decision).
 
