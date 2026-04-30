@@ -33,8 +33,8 @@ const sections: SidebarSection[] = [
   {
     label: "explore",
     links: [
-      { href: "/data-explorer", label: "data explorer", external: true },
-      { href: "/figures", label: "figures", external: true },
+      { href: "/data-explorer", label: "data explorer" },
+      { href: "/figures", label: "figures" },
       { href: "/glossary", label: "glossary" },
       { href: "/timeline", label: "timeline" },
     ],
@@ -42,7 +42,7 @@ const sections: SidebarSection[] = [
   {
     label: "articles",
     links: [
-      { href: "/articles", label: "all articles", external: true },
+      { href: "/articles", label: "all articles" },
       { href: "/speculations", label: "speculations" },
     ],
   },
