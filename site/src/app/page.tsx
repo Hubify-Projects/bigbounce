@@ -1,21 +1,142 @@
 import { surveys } from "@/data/surveys";
 import { predictions } from "@/data/predictions";
 import { papers } from "@/data/papers";
-import { StatCard } from "@/components/Cards/StatCard";
-import { Badge } from "@/components/Cards/Badge";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import Link from "next/link";
 
 const totalAnomalies = surveys.reduce((s, sv) => s + sv.anomalies, 0);
 const qcPassCount = surveys.filter((s) => s.qcStatus === "pass").length;
+
+const predStatusVariant: Record<
+  "green" | "blue" | "amber" | "red" | "purple",
+  "default" | "secondary" | "destructive" | "outline"
+> = {
+  green: "default",
+  blue: "secondary",
+  amber: "outline",
+  red: "destructive",
+  purple: "secondary",
+};
+
+const paperStatusVariant: Record<
+  "green" | "blue" | "amber" | "red",
+  "default" | "secondary" | "destructive" | "outline"
+> = {
+  green: "default",
+  blue: "secondary",
+  amber: "outline",
+  red: "destructive",
+};
+
+const surveyQcVariant: Record<
+  "pass" | "caution" | "fail" | "needs-expansion",
+  { variant: "default" | "secondary" | "destructive" | "outline"; label: string }
+> = {
+  pass: { variant: "default", label: "PASS" },
+  caution: { variant: "outline", label: "CAUTION" },
+  fail: { variant: "destructive", label: "FAIL" },
+  "needs-expansion": { variant: "outline", label: "EXPAND" },
+};
+
+const stats: Array<{ value: string; label: string; tone: string }> = [
+  { value: "4", label: "Papers", tone: "text-emerald-600 dark:text-emerald-400" },
+  {
+    value: `${surveys.length}`,
+    label: "Surveys",
+    tone: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    value: "37.3M+",
+    label: "Sources Scored",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    value: `${(totalAnomalies / 1000).toFixed(0)}K+`,
+    label: "Anomalies",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    value: "424K+",
+    label: "MCMC Samples",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    value: `${qcPassCount}/${surveys.length}`,
+    label: "QC Pass",
+    tone:
+      qcPassCount === surveys.length
+        ? "text-emerald-600 dark:text-emerald-400"
+        : "text-amber-600 dark:text-amber-400",
+  },
+  {
+    value: "4",
+    label: "Predictions",
+    tone: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    value: "50",
+    label: "Queued Experiments",
+    tone: "text-amber-600 dark:text-amber-400",
+  },
+];
+
+const exploreLinks: Array<{
+  href: string;
+  external?: boolean;
+  title: string;
+  description: string;
+}> = [
+  {
+    href: "/explained",
+    title: "Explainer",
+    description: "Non-technical guide",
+  },
+  {
+    href: "/glossary",
+    title: "Glossary",
+    description: "Key terms & equations",
+  },
+  {
+    href: "/timeline",
+    title: "Timeline",
+    description: "Cosmic history → 2028",
+  },
+  {
+    href: "/speculations",
+    title: "Speculations",
+    description: "Future research paths",
+  },
+  {
+    href: "https://github.com/Hubify-Projects/bigbounce",
+    external: true,
+    title: "GitHub",
+    description: "Source code & data",
+  },
+  {
+    href: "mailto:houston@hubify.com",
+    external: true,
+    title: "Contact",
+    description: "houston@hubify.com",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -24,132 +145,195 @@ export default function HomePage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Research Program &middot; Updated April 2026
         </p>
-        <h1>Spin-Torsion Cosmology</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          Spin-Torsion Cosmology
+        </h1>
         <p className="subtitle">
           Proving bounce cosmology beats inflation through systematic AI-powered
           archival mining and precision cosmological tests. 4 papers, 8 surveys,
-          33.5M sources scored.
+          37.3M sources scored.
         </p>
       </div>
 
-      {/* Stats grid */}
-      <div className="grid grid-4" style={{ margin: "20px 0 32px" }}>
-        <StatCard value="4" label="Papers" />
-        <StatCard value={`${surveys.length}`} label="Surveys" color="blue" />
-        <StatCard value="33.5M+" label="Sources Scored" />
-        <StatCard value={`${(totalAnomalies / 1000).toFixed(0)}K+`} label="Anomalies" />
-        <StatCard value="475K+" label="MCMC Samples" />
-        <StatCard value={`${qcPassCount}/${surveys.length}`} label="QC Pass" color={qcPassCount === surveys.length ? "green" : "amber"} />
-        <StatCard value="4" label="Predictions" color="blue" />
-        <StatCard value="50" label="Queued Experiments" color="amber" />
+      <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {stats.map((stat) => (
+          <Card key={stat.label}>
+            <CardContent className="p-4">
+              <div
+                className={`text-2xl font-bold ${stat.tone}`}
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                {stat.value}
+              </div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+                {stat.label}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-      <hr />
+      <Separator className="my-8" />
 
-      {/* Predictions — the science */}
       <section className="section">
         <h2>
-          <Link href="/predictions" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            href="/predictions"
+            className="no-underline text-foreground hover:text-muted-foreground"
+          >
             Testable Predictions &rarr;
           </Link>
         </h2>
-        <div className="grid grid-2">
+        <div className="grid gap-3 md:grid-cols-2">
           {predictions.map((pred) => (
-            <Link key={pred.slug} href={`/predictions/${pred.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
-              <div className="card" style={{ cursor: "pointer", height: "100%" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                  <h3 style={{ margin: 0, fontSize: 14 }}>{pred.name}</h3>
-                  <Badge variant={pred.statusVariant}>{pred.status}</Badge>
+            <Card
+              key={pred.slug}
+              className="flex flex-col transition-colors hover:bg-accent/40"
+            >
+              <Link
+                href={`/predictions/${pred.slug}`}
+                className="flex h-full flex-col no-underline text-foreground"
+              >
+                <CardHeader className="pb-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <CardTitle
+                      className="text-sm"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                    >
+                      {pred.name}
+                    </CardTitle>
+                    <Badge variant={predStatusVariant[pred.statusVariant]}>
+                      {pred.status}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <div className="font-mono text-xl font-bold">
+                    {pred.value}
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {pred.bestModel} &middot; {pred.experiment}
+                  </p>
+                </CardContent>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>
+          <Link
+            href="/surveys"
+            className="no-underline text-foreground hover:text-muted-foreground"
+          >
+            Survey Results &rarr;
+          </Link>
+        </h2>
+        <Card>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Survey</TableHead>
+                  <TableHead>Sources</TableHead>
+                  <TableHead>Anomalies</TableHead>
+                  <TableHead>QC</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {surveys.map((survey) => {
+                  const qc = surveyQcVariant[survey.qcStatus];
+                  return (
+                    <TableRow key={survey.slug}>
+                      <TableCell>
+                        <Link
+                          href={`/surveys/${survey.slug}`}
+                          className="font-semibold underline-offset-4 hover:underline"
+                        >
+                          {survey.name}
+                        </Link>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {survey.sources}
+                      </TableCell>
+                      <TableCell className="font-mono text-muted-foreground">
+                        {survey.anomalies.toLocaleString()} ({survey.anomalyRate}
+                        )
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={qc.variant}>{qc.label}</Badge>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="section">
+        <h2>
+          <Link
+            href="/paper"
+            className="no-underline text-foreground hover:text-muted-foreground"
+          >
+            Research Papers &rarr;
+          </Link>
+        </h2>
+        <div className="space-y-1 rounded-lg border bg-card">
+          {papers.map((paper) => (
+            <Link
+              key={paper.slug}
+              href={`/papers/${paper.slug}`}
+              className="flex items-center gap-4 border-b px-4 py-3 last:border-b-0 hover:bg-accent/40"
+            >
+              <div className="flex-1">
+                <div className="text-sm font-semibold">
+                  Paper {paper.number}
                 </div>
-                <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "var(--font-mono-stack)", marginBottom: 6, color: "var(--text)" }}>
-                  {pred.value}
+                <div className="text-xs text-muted-foreground">
+                  {paper.title.slice(0, 80)}…
                 </div>
-                <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>
-                  {pred.bestModel} &middot; {pred.experiment}
-                </p>
               </div>
+              <div className="hidden h-1.5 w-20 overflow-hidden rounded-full bg-border md:block">
+                <div
+                  className={`h-full rounded-full ${
+                    paper.readiness === 100
+                      ? "bg-emerald-500"
+                      : paper.readiness >= 90
+                        ? "bg-blue-500"
+                        : "bg-amber-500"
+                  }`}
+                  style={{ width: `${paper.readiness}%` }}
+                />
+              </div>
+              <Badge variant={paperStatusVariant[paper.statusVariant]}>
+                {paper.readiness}%
+              </Badge>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Surveys — the data */}
-      <section className="section">
-        <h2>
-          <Link href="/surveys" style={{ textDecoration: "none", color: "inherit" }}>
-            Survey Results &rarr;
-          </Link>
-        </h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Survey</th>
-              <th>Sources</th>
-              <th>Anomalies</th>
-              <th>QC</th>
-            </tr>
-          </thead>
-          <tbody>
-            {surveys.map((survey) => (
-              <tr key={survey.slug}>
-                <td>
-                  <Link href={`/surveys/${survey.slug}`} style={{ fontWeight: 600 }}>
-                    {survey.name}
-                  </Link>
-                </td>
-                <td>{survey.sources}</td>
-                <td>{survey.anomalies.toLocaleString()} ({survey.anomalyRate})</td>
-                <td>
-                  <Badge variant={survey.qcStatus === "pass" ? "green" : survey.qcStatus === "caution" ? "amber" : "red"}>
-                    {survey.qcStatus === "pass" ? "PASS" : survey.qcStatus === "caution" ? "CAUTION" : survey.qcStatus === "fail" ? "FAIL" : "EXPAND"}
-                  </Badge>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      {/* Papers — the output */}
-      <section className="section">
-        <h2>
-          <Link href="/paper" style={{ textDecoration: "none", color: "inherit" }}>
-            Research Papers &rarr;
-          </Link>
-        </h2>
-        {papers.map((paper) => (
-          <Link key={paper.slug} href={`/papers/${paper.slug}`} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: "1px solid var(--border)", cursor: "pointer" }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 600 }}>Paper {paper.number}</div>
-                <div style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
-                  {paper.title.slice(0, 80)}...
-                </div>
-              </div>
-              <div style={{ width: 80, background: "var(--border)", borderRadius: 4, height: 6, overflow: "hidden" }}>
-                <div style={{ height: "100%", width: `${paper.readiness}%`, background: paper.readiness === 100 ? "#22c55e" : "#3b82f6", borderRadius: 4 }} />
-              </div>
-              <Badge variant={paper.statusVariant}>{paper.readiness}%</Badge>
-            </div>
-          </Link>
-        ))}
-      </section>
-
-      {/* Current Focus — shadcn smoke test */}
       <section className="section">
         <h2>Current Focus</h2>
-        <Card className="border-l-4 border-l-[#1e40af]">
+        <Card className="border-l-4 border-l-blue-500">
           <CardHeader>
-            <CardTitle className="text-[11px] uppercase tracking-wider font-bold text-[#1e40af]">
+            <CardTitle
+              className="text-base"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
               H200 Queue v2 — Phase 2 Running
             </CardTitle>
-            <CardDescription className="text-sm">
-              5/6 Phase 1 re-runs QC PASS (Planck, ACT, NEOWISE, Gaia, Taxonomy).
-              Phase 2 validation in progress. 50 total experiments across 10 phases.
-              Auto-backup every 20min. Est. ~$1,768 total.
+            <CardDescription>
+              5/6 Phase 1 re-runs QC PASS (Planck, ACT, NEOWISE, Gaia,
+              Taxonomy). Phase 2 validation in progress. 50 total experiments
+              across 10 phases. Auto-backup every 20min. Est. ~$1,768 total.
             </CardDescription>
           </CardHeader>
-          <CardFooter className="flex gap-2 flex-wrap pt-0">
+          <CardFooter className="flex flex-wrap gap-2 pt-0">
             <Button asChild size="sm" variant="outline">
               <Link href="/activity">Activity Feed &rarr;</Link>
             </Button>
@@ -160,46 +344,54 @@ export default function HomePage() {
         </Card>
       </section>
 
-      {/* Quick links */}
       <section className="section">
         <h2>Explore</h2>
-        <div className="grid grid-3">
-          <Link href="/explained" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>Explainer</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>Non-technical guide</p>
-            </div>
-          </Link>
-          <Link href="/glossary" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>Glossary</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>Key terms &amp; equations</p>
-            </div>
-          </Link>
-          <Link href="/timeline" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>Timeline</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>Cosmic history &rarr; 2028</p>
-            </div>
-          </Link>
-          <Link href="/speculations" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>Speculations</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>Future research paths</p>
-            </div>
-          </Link>
-          <a href="https://github.com/Hubify-Projects/bigbounce" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>GitHub</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>Source code &amp; data</p>
-            </div>
-          </a>
-          <a href="mailto:houston@hubify.com" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="card" style={{ cursor: "pointer", textAlign: "center" }}>
-              <h3 style={{ margin: "0 0 4px" }}>Contact</h3>
-              <p style={{ margin: 0, fontSize: 12, color: "var(--text-tertiary)" }}>houston@hubify.com</p>
-            </div>
-          </a>
+        <div className="grid gap-3 md:grid-cols-3">
+          {exploreLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener" : undefined}
+                className="no-underline text-foreground"
+              >
+                <Card className="text-center transition-colors hover:bg-accent/40">
+                  <CardContent className="p-4">
+                    <div
+                      className="text-base font-semibold"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                    >
+                      {link.title}
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {link.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="no-underline text-foreground"
+              >
+                <Card className="text-center transition-colors hover:bg-accent/40">
+                  <CardContent className="p-4">
+                    <div
+                      className="text-base font-semibold"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                    >
+                      {link.title}
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {link.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ),
+          )}
         </div>
       </section>
     </>

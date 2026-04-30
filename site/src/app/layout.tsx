@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { Sidebar } from "@/components/Shell/Sidebar";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,43 +48,7 @@ export default function RootLayout({
     >
       <body>
         <div className="shell">
-          <aside className="sidebar">
-            <a href="/" className="sidebar-brand">BigBounce</a>
-            <nav className="sidebar-nav">
-              <div className="sidebar-section">
-                <a href="/" className="sidebar-link">overview</a>
-                <a href="/explained" className="sidebar-link">explainer</a>
-              </div>
-              <div className="sidebar-section">
-                <div className="sidebar-section-label">research</div>
-                <a href="/surveys" className="sidebar-link">surveys (8)</a>
-                <a href="/predictions" className="sidebar-link">predictions (4)</a>
-                <a href="/paper" className="sidebar-link">papers (4)</a>
-              </div>
-              <div className="sidebar-section">
-                <div className="sidebar-section-label">explore</div>
-                <a href="/data-explorer" className="sidebar-link">data explorer</a>
-                <a href="/figures" className="sidebar-link">figures</a>
-                <a href="/glossary" className="sidebar-link">glossary</a>
-                <a href="/timeline" className="sidebar-link">timeline</a>
-              </div>
-              <div className="sidebar-section">
-                <div className="sidebar-section-label">articles</div>
-                <a href="/articles" className="sidebar-link">all articles</a>
-                <a href="/speculations" className="sidebar-link">speculations</a>
-              </div>
-              <div className="sidebar-separator" />
-              <div className="sidebar-section">
-                <a href="/activity" className="sidebar-link">activity</a>
-                <a href="/status" className="sidebar-link">status</a>
-              </div>
-            </nav>
-            <div className="sidebar-footer">
-              <div className="sidebar-footer-name">Houston Golden</div>
-              <div className="sidebar-footer-role">Independent Researcher</div>
-              <a href="https://github.com/Hubify-Projects/bigbounce" className="sidebar-footer-link" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </aside>
+          <Sidebar />
 
           <header className="topbar">
             <span>Spin-Torsion Cosmology Research Program</span>
