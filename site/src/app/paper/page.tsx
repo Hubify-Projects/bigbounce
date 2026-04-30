@@ -1,12 +1,39 @@
 import { papers } from "@/data/papers";
-import { Badge } from "@/components/Cards/Badge";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Papers",
-  description: "Research papers from the BigBounce spin-torsion cosmology program.",
+  description:
+    "Research papers from the BigBounce spin-torsion cosmology program.",
 };
+
+const statusVariantMap: Record<
+  string,
+  "default" | "secondary" | "destructive" | "outline"
+> = {
+  green: "default",
+  blue: "secondary",
+  amber: "outline",
+  red: "destructive",
+};
+
+function readinessColor(pct: number) {
+  if (pct === 100) return "bg-emerald-500";
+  if (pct >= 90) return "bg-blue-500";
+  return "bg-amber-500";
+}
 
 export default function PaperPage() {
   return (
@@ -15,61 +42,74 @@ export default function PaperPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Research Papers &middot; {papers.length} Papers
         </p>
-        <h1>Papers</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          Papers
+        </h1>
         <p className="subtitle">
-          Published and in-progress research papers. Click any paper for full details,
-          connected surveys, predictions tested, and remaining work.
+          Published and in-progress research papers. Click any paper for full
+          details, connected surveys, predictions tested, and remaining work.
         </p>
       </div>
 
-      <hr />
+      <Separator className="my-8" />
 
       <section className="section">
         <h2>Paper Listing</h2>
-        {papers.map((paper) => (
-          <Link
-            key={paper.slug}
-            href={`/papers/${paper.slug}`}
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
-          >
-            <div className="card" style={{ marginBottom: 16, cursor: "pointer" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
-                <h3 style={{ margin: 0, fontSize: 15 }}>
-                  Paper {paper.number}
-                </h3>
-                <Badge variant={paper.statusVariant}>{paper.status}</Badge>
-              </div>
-              <p style={{ margin: "0 0 8px", fontSize: 14, fontWeight: 600, color: "var(--text)" }}>
-                {paper.title}
-              </p>
-
-              {/* Readiness bar */}
-              <div style={{ margin: "8px 0", background: "var(--border)", borderRadius: 4, height: 6, overflow: "hidden" }}>
-                <div
-                  style={{
-                    height: "100%",
-                    width: `${paper.readiness}%`,
-                    background: paper.readiness === 100 ? "#22c55e" : paper.readiness >= 90 ? "#3b82f6" : "#f59e0b",
-                    borderRadius: 4,
-                  }}
-                />
-              </div>
-
-              <p style={{ margin: "0 0 8px", fontSize: 13, color: "var(--text-secondary)" }}>
-                {paper.description.slice(0, 200)}...
-              </p>
-              <div style={{ display: "flex", gap: 12, fontSize: 12, fontFamily: "var(--font-mono-stack)", color: "var(--text-muted)" }}>
-                <span>{paper.version}</span>
-                <span>{paper.pages} pages</span>
-                <span>{paper.refs} refs</span>
-                <span>Target: {paper.target}</span>
-                {paper.remainingWork.length > 0 && (
-                  <span style={{ color: "#f59e0b" }}>{paper.remainingWork.length} tasks remaining</span>
-                )}
-              </div>
-            </div>
-          </Link>
-        ))}
+        <div className="flex flex-col gap-4">
+          {papers.map((paper) => (
+            <Card key={paper.slug}>
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <CardDescription className="text-xs uppercase tracking-wider">
+                      Paper {paper.number} &middot; {paper.version}
+                    </CardDescription>
+                    <CardTitle
+                      className="mt-1 text-base"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                    >
+                      {paper.title}
+                    </CardTitle>
+                  </div>
+                  <Badge variant={statusVariantMap[paper.statusVariant]}>
+                    {paper.status}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-border">
+                    <div
+                      className={`h-full rounded-full ${readinessColor(paper.readiness)}`}
+                      style={{ width: `${paper.readiness}%` }}
+                    />
+                  </div>
+                  <span className="text-xs font-mono text-muted-foreground">
+                    {paper.readiness}%
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {paper.description}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-3 text-xs font-mono text-muted-foreground">
+                  <span>{paper.pages} pages</span>
+                  <span>{paper.refs} refs</span>
+                  <span>Target: {paper.target}</span>
+                  {paper.remainingWork.length > 0 && (
+                    <span className="text-amber-600">
+                      {paper.remainingWork.length} tasks remaining
+                    </span>
+                  )}
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button asChild size="sm" variant="outline">
+                  <Link href={`/papers/${paper.slug}`}>Open paper &rarr;</Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </section>
     </>
   );
