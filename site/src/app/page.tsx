@@ -3,6 +3,15 @@ import { predictions } from "@/data/predictions";
 import { papers } from "@/data/papers";
 import { StatCard } from "@/components/Cards/StatCard";
 import { Badge } from "@/components/Cards/Badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import Link from "next/link";
 
 const totalAnomalies = surveys.reduce((s, sv) => s + sv.anomalies, 0);
@@ -126,23 +135,29 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* Current Focus */}
+      {/* Current Focus — shadcn smoke test */}
       <section className="section">
         <h2>Current Focus</h2>
-        <div className="card" style={{ borderLeft: "4px solid #1e40af" }}>
-          <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 700, color: "#1e40af", marginBottom: 4 }}>
-            H200 Queue v2 — Phase 2 Running
-          </div>
-          <p style={{ margin: "0 0 8px", fontSize: 14, color: "var(--text-secondary)" }}>
-            5/6 Phase 1 re-runs QC PASS (Planck, ACT, NEOWISE, Gaia, Taxonomy).
-            Phase 2 validation in progress. 50 total experiments across 10 phases.
-            Auto-backup every 20min. Est. ~$1,768 total.
-          </p>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <Link href="/activity"><Badge variant="blue">Activity Feed &rarr;</Badge></Link>
-            <Link href="/status"><Badge variant="blue">Full Status &rarr;</Badge></Link>
-          </div>
-        </div>
+        <Card className="border-l-4 border-l-[#1e40af]">
+          <CardHeader>
+            <CardTitle className="text-[11px] uppercase tracking-wider font-bold text-[#1e40af]">
+              H200 Queue v2 — Phase 2 Running
+            </CardTitle>
+            <CardDescription className="text-sm">
+              5/6 Phase 1 re-runs QC PASS (Planck, ACT, NEOWISE, Gaia, Taxonomy).
+              Phase 2 validation in progress. 50 total experiments across 10 phases.
+              Auto-backup every 20min. Est. ~$1,768 total.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="flex gap-2 flex-wrap pt-0">
+            <Button asChild size="sm" variant="outline">
+              <Link href="/activity">Activity Feed &rarr;</Link>
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link href="/status">Full Status &rarr;</Link>
+            </Button>
+          </CardFooter>
+        </Card>
       </section>
 
       {/* Quick links */}

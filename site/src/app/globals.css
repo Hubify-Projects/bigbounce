@@ -1,9 +1,33 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /* ═══════════════════════════════════════════════════
    BigBounce — Design System (ported from style.css)
    Terminal-first · Sidebar nav · Editorial precision
    ═══════════════════════════════════════════════════ */
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--bg);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--bg);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--text);
+  --color-primary-foreground: var(--bg);
+  --color-secondary: var(--bg-subtle);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--bg-subtle);
+  --color-muted-foreground: var(--text-tertiary);
+  --color-accent: var(--bg-subtle);
+  --color-accent-foreground: var(--text);
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--text);
+  --radius: 0px;
+}
 
 :root {
   --bg: #ffffff;
