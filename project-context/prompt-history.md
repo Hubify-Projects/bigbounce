@@ -1,5 +1,20 @@
 
 
+## 2026-04-29 — R41 directive: decouple papers, reduce P1 false-theory rhetoric, 15-min cron
+
+### Houston substantive messages, verbatim
+
+**~14:50 PT — Mid-R40 brain-dump expansion: papers must stand alone + P1 needs less negative-result framing + run a 15-min cron to drive all valid peer-review feedback to done**
+> you may need to create a cron to finish going through all required improvements to check the subagents every 15 minutes until all valid peer review feedback has been implemented and the list is done - I do tend to agree that while having the 4 papers related etc seems nice it is kinda problematic and not ideal for scinetific publications and they shoudl each stand on their own without relying on the others - and paper 1 suffers from the false theory rhetoric which should be removed/reduced significantly however you think is best along with all the other feedback that is valid thanks
+
+**Operational notes (assistant):** Two scope shifts versus R40 plan:
+1. R40-A (add a P2→P1 cross-reference sentence) is now REVERSED — Houston wants to REDUCE inter-paper coupling, not add more. SKIP R40-A.
+2. R41 dominant work is now: (a) cross-paper decoupling (replace `\cite{Golden:2026framework}` etc. with self-contained inline statements wherever possible), (b) P1 rhetoric reduction (the "14 barriers close all routes / perturbation transparency / cannot produce dark energy" framing leads the abstract, intro, and summary table — rebalance to lead with positive results: matter-bounce $f_{\rm NL}=-35/8$, ALP birefringence cross-check, MCMC verification).
+
+The 3 intra-paper R40 abstract fixes remain valid (P1 stock-CAMB caveat, P3 ACT clarification, P4 GZ1-only accuracy) and ship as part of R41.
+
+---
+
 ## 2026-04-21 — Mid-loop check-in during Path C rebuild
 
 ### Houston substantive messages, verbatim
@@ -231,3 +246,25 @@ Session context: drive-to-100 loop self-terminated at fire #75 with Houston-revi
 
 > ok you did another multi-agent adversarial peer review of all 4 PDFs and the site and found NOTHING left to improve or do? and did you even think about these tasks that were still open on the list? "Plan Next.js + React + Tailwind + shadcn/ui site m…
 >   ◻ SSOT consistency sweep — site vs SSOT vs papers" -- do final pass on all this stuff
+
+## 2026-04-29 — R40: External LLM peer reviews dump (ChatGPT Deep Think + Grok Heavy + Gemini)
+
+### Houston substantive message, verbatim
+
+**~14:38 PDT — External multi-LLM peer reviews (4 reviews dumped for triage + real fixes)**
+
+> ok i ran some additional peer reviews via chatgpt deep think, grok heavy, and gemini -- going to dump all these things here for you to asess and take seriously but also with a grain of salt since they do not have full access to all the datasets and everything before validating any issues or problems identified and making the necessary actual improvements:
+
+[Houston then pasted four substantial peer-review reports — preserved in the conversation transcript at session-jsonl. Cross-LLM consensus findings extracted and triaged in R40. Key recurring findings across 3-4 of the 4 LLM reviewers:
+1. P1/P2 inflation tension — Ntot≈92 e-folds (P1 DE) vs no-prolonged-inflation (P2 fNL observability). P1 Sec XV E acknowledges; needs more prominence + cross-ref into P2.
+2. P3 ACT/CMB included in headline 378,480 despite quarantine — multiple reviewers flagged.
+3. P4 raw vs equivariant count mismatch (Nspiral=3,321,795 vs Fig 5 sum 3,201,160; CW=1,687,069/1,634,726 text vs CW=1,592,107/1,609,053 figure).
+4. P1 MCMC labeled "spin-torsion verification" but uses stock CAMB with Neff free; needs proxy caveat.
+5. P4 67.6% CE-ResNet-derived training labels (circular validation risk).
+6. P3 17.8% novelty rate measured on top-1k DESI extrapolated to whole 378k catalog.
+7. P2 Bayes factors with delta-priors (Lindley-paradox concern).
+8. P2 fNL convention −35/8 vs −35/16 ambiguity (significance halves under −35/16).
+9. P1 dimensional scaling ansatz for ρ_Λ = Ξ M_Pl^4 (mass dim +1 → +4 issue).
+10. P3 5-fold CV restricted to 47k training pool, not 22.5M target catalog.
+
+Houston's framing: "take seriously but with grain of salt since they do not have full access to all the datasets and everything before validating any issues or problems identified and making the necessary actual improvements."]

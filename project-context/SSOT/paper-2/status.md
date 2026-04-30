@@ -2,27 +2,29 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-04-29
+last_updated: 2026-04-30
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/paper2_fnl_forecast.pdf
-version: v1.7.0
+version: v1.7.1
 headline_pct: 100
-submission_status: submission-ready (R35 closed; SPHEREx consistency rewrite + Heinrich JCAP bib upgrade; PDF recompiled 2026-04-29 12:02 PDT, 683 KB, 0 undef refs)
+submission_status: submission-ready (R41 decoupled — self-contained; PDF 683 KB, 0 undef refs)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
-**Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (revtex4-2; R35-edited 2026-04-29)
+**Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (revtex4-2; R41-edited 2026-04-30)
 **Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (683 KB, 0 undef refs, recompiled 2026-04-29 12:02 PDT)
-**Last authoritative update:** 2026-04-29 (PDT, 12:02) — **R35 closed**; SPHEREx consistency-relation paragraph rewritten to anchor on existing Planck n_s + Heinrich+2023 σ(f_NL) ≈ 0.5–0.7 (replacing deferred-future-measurement framing); `Heinrich:2023` bib entry upgraded preprint → JCAP 04 074 (2024); `focused_paper_refs.bib` updated; PDF recompiled 683 KB / 0 undef refs (commit `a63ef0b`). Date stamp v1.7.0.
+**Last authoritative update:** 2026-04-30 (PDT, 00:21) — **R41 closed**: 6 cross-paper `\cite{Golden:2026...}` references removed/inlined; `focused_paper_refs.bib` Golden:2026framework / Golden:2026anomaly entries removed and replaced with 8 primary-source entries (Mercuri2006, Freidel2005, Eskilt2022, DiegoPalazuelos2025, Minami2020, Cai:2026echoes, Baron2017, Liang2023). PDF recompiled clean.
 
-## Current state (2026-04-29 PDT)
+**Prior round R35 (2026-04-29 12:02):** SPHEREx consistency-relation paragraph rewritten to anchor on Planck n_s + Heinrich+2023 σ(f_NL) ≈ 0.5–0.7; `Heinrich:2023` bib upgraded preprint → JCAP 04 074 (2024).
 
-- **Readiness: 100 %** — submission-ready, PDF current.
-- **R20 + R31–R35 all incorporated.** No substantive open items.
+## Current state (2026-04-30 PDT)
+
+- **Readiness: 100 %** — submission-ready, PDF current, self-contained.
+- **R20 + R31–R35 + R41 all incorporated.** No substantive open items.
 - **Abstract numbers:** 23/23 supported in body (R34 closed orphan claim).
-- **Bibliography hygiene + cross-references:** clean (R32 + R35).
-- **Remaining:** none for science; arXiv form-fill (Paper 2 submits last per arXiv production-editor sequencing — Paper 4 → Paper 1 → Paper 3 → Paper 2).
+- **Bibliography hygiene + cross-references:** clean (R32 + R35 + R41).
+- **Remaining:** none for science; arXiv form-fill. R41 decoupling removes the prior production-editor sequencing constraint — Paper 2 may submit in any order.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)

@@ -2,19 +2,21 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-29 (PDT, 14:02) — **R37 closed; SUBMISSION-LOCKED.** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; PDF recompiled to 25 MB / 16 pp / 0 undef refs with Apr 29 14:02 PDT title-page stamp (commit `f62e352`, supersedes `a63ef0b`).
+Last authoritative update: 2026-04-30 (PDT, 00:21) — **R41 closed: cross-paper decoupled, submission-locked, self-contained.** All 3 `\cite{Golden:2026framework}` references in §4 footnote / §discussion / §conclusion replaced with primary-source citations (Mercuri2006, Freidel2005, Poplawski:2012, Poplawski:2016 for parity-odd torsion sector) + embedded `thebibliography` updated. `fig_class_pie.png` regenerated to canonical text counts (CW: 1,687,069 / CCW: 1,634,726 / NS: 5,152,736; total 8,474,531). PDF recompiled clean (25.7 MB / 11 pp / 0 undef refs).
 
-## Current state (2026-04-29 PDT)
+**Prior round R37 (2026-04-29 14:02, commit `f62e352`):** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link.
 
-- **Readiness: 100 % (science + admin). Submission-locked.** All Pod 2 GPU work landed (commit `caf858a`); R35 admin polish landed (commit `a63ef0b`); PDF current.
-- **R31–R34 incorporated.** N_gal = 5,547,858 closure (R31). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight.
+## Current state (2026-04-30 PDT)
+
+- **Readiness: 100 % (science + admin). Submission-locked, self-contained.** All Pod 2 GPU work landed (commit `caf858a`); R35 admin polish landed (commit `a63ef0b`); R41 decoupled; PDF current.
+- **R31–R34 + R37 + R41 incorporated.** N_gal = 5,547,858 closure (R31). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight. R41 decoupling: 3 cross-paper cites → 4 primary-source bibitems; pie-chart figure regenerated.
 - **Pod 2 GPU work — ALL DONE 2026-04-29 PDT** (commit `caf858a`, files in `pipelines/h200_results/pod2_chirality_2026-04-29/`):
   - **P4-M3** bias hardening — 4/8 PASS on 2k GZ DESI v2 galaxies (`bias_hardening_results.json`). Flip/swap, rotation, artifacts, perturbation FAIL → flag in §validation; survey, calibration, leakage, hemispheric PASS.
   - **P4-M4** Catalog C dipole — pulled from `bamfai/galaxy-chirality-catalog` (`catalog_c_summary.json`, `dipole_catalog_c.json`).
   - **P4-M6** NaMaster MASTER pseudo-Cl deconvolution — 8,474,531 galaxies, NSIDE=64, f_sky=0.4928, max C_ℓ = 6.26e-3 at ℓ=9 (`master_power_spectrum.json`).
   - **P4-m4** Edge-on contamination — **equivariance suppression factor = 3.86×** (raw asym +2.05% → eq asym −0.53%). 0.041 % of catalog (3,445 galaxies) flipped raw-CW/CCW → NOT_SPIRAL after symmetry correction (`edgeon_contamination.json`). Replaced HF-streaming approach with full-catalog statistics on `catalog_production.parquet`.
 - Pod 2 idle since work completed; can be paused.
-- **Cross-cite:** only Paper 1 (`Golden:2026framework` × 3 + bibitem) — resolvable post-hoc or simul-submit. NOT blocked by Paper 2 or Paper 3.
+- **Cross-cite:** none — R41 decoupled. Paper stands on its own; submission order constraint relaxed.
 
 Supersedes: `wiki/entities/paper-4-chirality.md` (now stale — points to this), `wiki/entities/pipeline-2-chirality.md` (stale), any "remaining work" list on the site.
 

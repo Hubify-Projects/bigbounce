@@ -2,20 +2,22 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-04-29
+last_updated: 2026-04-30
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf)
-version: v2.3.0
+version: v2.3.1
 headline_pct: 100
-submission_status: submission-ready (R35 closed; PDF recompiled 2026-04-29 12:02 PDT, 989 KB, 0 undef refs)
+submission_status: submission-ready (R41 decoupled + reframed; PDF recompiled 2026-04-30 00:21 PDT, 1.0 MB, 0 undef refs)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (R35-edited 2026-04-29, `\paperVersion = v2.3.0`, `\paperTimestamp = 2026-04-29`)
-**Canonical PDF:** `arxiv/main.pdf` (989 KB, compiled 2026-04-29 12:02 PDT, 27 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
-**Bibliography:** `arxiv/references.bib` (1282 lines, 63+ entries)
-**Last authoritative update:** 2026-04-29 (PDT, 12:02) — **R35 closed**; NaMaster 500MC promoted to headline equation (β=0.27° → 0.238° recovered, SNR=20.32σ at ACT sensitivity, 0.77σ vs observed 0.342±0.094°); Cuscuton "deferred to future work" line replaced with structural-inaccessibility argument grounded in the perturbation-transparency theorem; Section VIII.D renamed "Discriminating Observational Channels"; Table 6 caption restructured to dodge revtex4-2 `\@tempf` brace-counting bug; `\paperTimestamp` 2026-04-28 → 2026-04-29; PDF recompiled 989 KB / 0 undef refs (commit `a63ef0b`).
+**Canonical `.tex`:** `arxiv/main.tex` (R41-edited 2026-04-30, `\paperVersion = v2.3.1`)
+**Canonical PDF:** `arxiv/main.pdf` (1.0 MB, compiled 2026-04-30 00:21 PDT, 27 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
+**Bibliography:** `arxiv/references.bib` (1283+ lines, 64+ entries — R41 added Lentati:2023 primary-source bibitem)
+**Last authoritative update:** 2026-04-30 (PDT, 00:21) — **R41 closed**: 13 `\cite{Golden:2026forecast/anomaly/chirality}` cross-references removed/inlined to primary sources (Heinrich2023, Lentati2023, etc.); abstract opens with inflation-tension structural finding (Sec.~\ref{sec:structural_tension} pointer: $N_{\rm tot} \approx 92$ $e$-folds incompatibility with matter-bounce $f_{\rm NL}$ signature); 10 highest-payoff negative-rhetoric edits applied (constraint-as-search-space-narrowing reframe per Houston R41 directive); existing Sec.~\ref{sec:rotation} L264 + App.~\ref{app:dimensions} already self-disclose dimensional scaling-ansatz issue ($\rho_\Lambda = \Xi M_{\rm Pl}^4$); PDF recompiled 1.0 MB / 0 undef refs.
+
+**Prior round R35 (2026-04-29 12:02, commit `a63ef0b`):** NaMaster 500MC promoted to headline (β=0.27° → 0.238° recovered, SNR=20.32σ); Cuscuton "deferred to future work" replaced with structural-inaccessibility argument; Section VIII.D renamed "Discriminating Observational Channels".
 
 ## Current state (2026-04-29 PDT)
 

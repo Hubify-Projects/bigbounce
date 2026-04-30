@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{65}%
+\begin{thebibliography}{63}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -200,13 +200,20 @@
   {694}},\ \bibinfo {pages} {181} (\bibinfo {year} {2010})},\ \Eprint
   {https://arxiv.org/abs/1007.0587} {arXiv:1007.0587 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{a}})}]{Golden:2026forecast}%
+\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
+  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
+  {Krause}}]{Heinrich:2023}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Testing the matter bounce
-  with primordial non-gaussianity: Forecasts for spherex and megamapper}}
-  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note}
-  {forthcoming}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
+  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
+  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
+  spherex multi-tracer redshift space bispectrum},\ }\href
+  {https://doi.org/10.1088/1475-7516/2024/04/074} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {2024}}\bibfield
+  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages} {074}},\ }\Eprint
+  {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Pop{\l}awski}(2012)}]{Poplawski2011}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
@@ -355,22 +362,13 @@
   {117}},\ \bibinfo {pages} {131302} (\bibinfo {year} {2016})},\ \Eprint
   {https://arxiv.org/abs/1605.07178} {arXiv:1605.07178 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden2026supplement}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{a}})}]{Golden2026supplement}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\href@noop {} {\bibinfo {title} {Systematic closure of minimal
   first-principles routes to dark energy in {Einstein-Cartan-Holst} gravity}}
-  (\bibinfo {year} {2026}{\natexlab{b}}),\ \bibinfo {note} {companion technical
+  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note} {companion technical
   note, available upon request from the author}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{c}})}]{Golden:2026chirality}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {No evidence for
-  large-scale parity violation in galaxy morphology: A survey-scale chirality
-  catalog of 8.47 million galaxies}} (\bibinfo {year} {2026}{\natexlab{c}}),\
-  \bibinfo {note} {forthcoming. Catalog and model available at
-  \url{https://huggingface.co/bamfai/galaxy-chirality-v2}}\BibitemShut
-  {NoStop}%
 \bibitem [{\citenamefont {Minami}\ and\ \citenamefont
   {Komatsu}(2020)}]{Minami2020}%
   \BibitemOpen
@@ -607,20 +605,6 @@
   {volume} {398}},\ \bibinfo {pages} {1601} (\bibinfo {year} {2009})},\ \Eprint
   {https://arxiv.org/abs/0809.3437} {arXiv:0809.3437 [astro-ph]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
-  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
-  {Krause}}]{Heinrich:2023}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
-  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
-  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
-  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
-  spherex multi-tracer redshift space bispectrum},\ }\href
-  {https://doi.org/10.1088/1475-7516/2024/04/074} {\bibfield  {journal}
-  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {2024}}\bibfield
-  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages} {074}},\ }\Eprint
-  {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dehghani}\ \emph {et~al.}(2025)\citenamefont
   {Dehghani}, \citenamefont {Geshnizjani},\ and\ \citenamefont
   {Quintin}}]{Dehghani:2025cusc}%
@@ -745,22 +729,24 @@
   {https://doi.org/10.1007/978-1-4684-7571-5_9} {\bibfield  {journal} {\bibinfo
    {journal} {NATO Sci. Ser. B}\ }\textbf {\bibinfo {volume} {59}},\ \bibinfo
   {pages} {135} (\bibinfo {year} {1980})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{d}})}]{Golden:2026anomaly}%
+\bibitem [{\citenamefont {Lentati}\ \emph {et~al.}(2013)\citenamefont
+  {Lentati}, \citenamefont {Alam} \emph {et~al.}}]{Lentati:2023}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\bibfield  {title} {\bibinfo {title} {Multi-survey spectral
-  anomaly detection: 378,480 anomalous sources from 37 million objects across
-  eight astronomical archives}} (\bibinfo {year} {2026}{\natexlab{d}}),\
-  \bibinfo {note} {companion paper, forthcoming. Preprint number
-  HUBIFY-2026-003; includes an independent GPU MCMC analysis of the NANOGrav
-  15-year data yielding $\gamma = 3.20 \pm 0.42$, consistent with the
-  matter-bounce prediction $\gamma = 3$ at $0.48\sigma$.}\BibitemShut {Stop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{e}})}]{BigBounceWebsite}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Lentati}}, \bibinfo {author} {\bibfnamefont {M.~F.}\ \bibnamefont {Alam}},
+  \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Hyper-efficient
+  model-independent Bayesian method for the analysis of pulsar timing data}},\
+  }\href {https://doi.org/10.1103/PhysRevD.87.104021} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {87}},\
+  \bibinfo {pages} {104021} (\bibinfo {year} {2013})},\ \Eprint
+  {https://arxiv.org/abs/1210.3578} {arXiv:1210.3578 [astro-ph.IM]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{BigBounceWebsite}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\href {https://bigbounce.hubify.app} {\bibinfo {title}
   {Spin-torsion cosmology and the search for geometric dark energy: Interactive
-  data and supplementary materials}} (\bibinfo {year} {2026}{\natexlab{e}}),\
+  data and supplementary materials}} (\bibinfo {year} {2026}{\natexlab{b}}),\
   \bibinfo {note} {interactive data visualizations, observational comparison
   charts, and complete paper available online}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Walmsley}\ \emph {et~al.}(2022)\citenamefont

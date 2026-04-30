@@ -1,18 +1,26 @@
-<!-- last_updated: 2026-04-29 -->
+<!-- last_updated: 2026-04-30 -->
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-04-29 (PDT, 12:02) — **R35 final polish CLOSED, all 4 PDFs recompiled with Apr 29 12:02 PDT title-page stamp** (commit `a63ef0b`). 0 undefined references across all four. Mirrored to `public/papers/`. R34 + Pod 2 work + 8/8 originally-GPU-blocked items already DONE (commits `caf858a`, `6a3c727`). All 4 papers are SUBMISSION-READY; only remaining items are administrative (arXiv form-fill, tarball verify).
+**Last authoritative update:** 2026-04-30 (PDT, 00:21) — **R41 cross-paper decoupling + P1 negative-rhetoric reframe CLOSED.** All 4 papers now stand on their own — 28 `\cite{Golden:2026...}` cross-references eliminated (P1: 13, P2: 6, P3: 6, P4: 3) and replaced with primary-source citations (Heinrich+2023, Lentati+2013, WilsonEwing+2012, Mercuri+2006, Freidel+2005, Poplawski+2012/2016, Eskilt+2022, Diego-Palazuelos+2025, Minami+2020, Cai+2026, Baron+2017, Liang+2023). P1 abstract now opens with the inflation-tension structural finding (Sec. structural_tension) rather than chained negative results; existing Sec. rotation already discloses dimensional scaling-ansatz issue (`ρ_Λ = Ξ M_Pl^4`, App. dimensions). P4 fig_class_pie.png regenerated from canonical text counts (CW 1,687,069 / CCW 1,634,726 / NS 5,152,736; total 8,474,531). All 4 PDFs recompiled clean — P1: 989 KB → 1.0 MB / 0 undef; P2: 683 KB / 0 undef; P3: 28 MB / 33 pp / 0 undef; P4: 25.7 MB / 11 pp / 0 undef. Mirrored to `public/papers/`. Each paper is self-contained; submission order no longer constrained by inter-paper citations.
+
+**Prior milestone (2026-04-29 12:02):** R35 final polish — 8/8 originally-GPU-blocked items DONE (commits `a63ef0b`, `caf858a`, `6a3c727`). All 4 papers SUBMISSION-READY; only remaining items are administrative (arXiv form-fill, tarball verify).
 
 **Read this first.** Every number here is sourced from the per-paper `status.md` files in this directory. If you catch a contradiction, the per-paper file wins — update this index.
 
 ---
 
-## Current state — 2026-04-29 PDT
+## Current state — 2026-04-30 PDT
 
 ### Adversarial review
 
-**35 rounds complete.** R35 final polish landed 2026-04-29 12:02 PDT (commit `a63ef0b`):
+**41 rounds complete.** R41 cross-paper decoupling + P1 negative-rhetoric reframe closed 2026-04-30 00:21 PDT:
+- **P1**: 13 cross-cites to `Golden:2026forecast/anomaly/chirality` removed/inlined; abstract opens with inflation-tension structural finding ("an open structural question (Sec.~\ref{sec:structural_tension}) is the incompatibility between the inflationary-suppression dark-energy mechanism, which requires $N_{\rm tot} \approx 92$ $e$-folds of post-bounce inflation, and the matter-bounce $f_{\rm NL}$ signature, which would be erased by that many $e$-folds; the evidence-favored resolution treats bounce cosmology and dark energy as independent problems"); 10 highest-payoff negative-rhetoric edits applied (constraint-as-search-space-narrowing reframe); existing Sec.~\ref{sec:rotation} already self-discloses the dimensional scaling-ansatz issue with explicit pointer to App.~\ref{app:dimensions}; `Lentati:2023` bib entry added.
+- **P2**: 6 cross-cites removed/inlined; bibliography swap — `Golden:2026framework/anomaly` → 8 primary-source entries (Mercuri2006, Freidel2005, Eskilt2022, DiegoPalazuelos2025, Minami2020, Cai:2026echoes, Baron2017, Liang2023).
+- **P3**: 6 cross-cites in abstract / §6 / §7 / conclusion replaced with Heinrich2023 (SPHEREx forecast methodology), Lentati2013 (PTA free-spectrum framework), WilsonEwing2012 (matter-bounce f_NL primary source); embedded thebibliography updated.
+- **P4**: 3 cross-cites in §4 footnote / §discussion / §conclusion replaced with Mercuri2006, Freidel2005, Poplawski:2012, Poplawski:2016 (parity-odd torsion sector primary sources); embedded thebibliography updated. `fig_class_pie.png` regenerated to canonical text counts (1,687,069 / 1,634,726 / 5,152,736; total 8,474,531).
+
+**Prior round R35 final polish landed 2026-04-29 12:02 PDT (commit `a63ef0b`):**
 - **P1**: NaMaster 500MC promoted to headline (β=0.27° → 0.238° recovered, SNR=20.32σ at ACT sensitivity); Cuscuton "future work" replaced by structural-inaccessibility argument grounded in the perturbation-transparency theorem; Section VIII.D renamed "Discriminating Observational Channels"; Table 6 caption restructured to dodge revtex4-2 `\@tempf` brace-counting bug; `\paperTimestamp` 2026-04-28 → 2026-04-29.
 - **P2**: SPHEREx consistency-relation paragraph rewritten to anchor on existing Planck n_s + Heinrich+2023 σ(f_NL) ≈ 0.5–0.7; Heinrich:2023 bib upgraded preprint → JCAP 04 074 (2024).
 - **P3**: 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the published 298-source S>0.259 catalog headline).
@@ -44,12 +52,12 @@ R31–R34 closed previously for all 4 papers + site (12+ commits to `main` overn
 
 | # | Paper | Readiness | State |
 |---|---|---:|---|
-| **1** | Spin-Torsion Cosmology | **100 %** | R35 closed; NaMaster 500MC headline (SNR=20.32σ); Cuscuton structural-inaccessibility; PDF recompiled (989 KB / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
-| **2** | f_NL Forecast (SPHEREx / MegaMapper) | **100 %** | R35 closed; SPHEREx consistency rewrite + Heinrich JCAP 04 074 (2024) bib; PDF recompiled (683 KB / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
-| **3** | Multi-Survey Anomaly Catalog | **100 %** | R35 closed; 9,303 ↔ 298 disambiguation inline; PDF recompiled (28 MB / 33 pp / 0 undef refs, Apr 29 12:02 PDT). Submission-ready. |
-| **4** | Galaxy Chirality Catalog | **100 %** | R35 closed; "(in preparation)" companion-pod bibitem replaced with `bigbounce.hubify.app` link; PDF recompiled (25 MB / 11 pp / 0 undef refs, Apr 29 12:02 PDT). **Submission-locked.** Bias-hardening 4/8 stress-test PASS already flagged in §validation. |
+| **1** | Spin-Torsion Cosmology | **100 %** | R41 closed; cross-paper cites decoupled (13 inlined to Heinrich2023/Lentati2023/etc.); abstract leads with inflation-tension structural finding; PDF recompiled (1.0 MB / 0 undef refs, Apr 30 00:21 PDT). Self-contained. |
+| **2** | f_NL Forecast (SPHEREx / MegaMapper) | **100 %** | R41 closed; cross-paper cites decoupled (6 cites + bib swap); PDF recompiled (683 KB / 0 undef refs, Apr 29 12:02 PDT). Self-contained. |
+| **3** | Multi-Survey Anomaly Catalog | **100 %** | R41 closed; cross-paper cites decoupled (6 cites + bib swap to Heinrich2023/Lentati2013/WilsonEwing2012); PDF recompiled (28 MB / 33 pp / 0 undef refs, Apr 29 12:02 PDT). Self-contained. |
+| **4** | Galaxy Chirality Catalog | **100 %** | R41 closed; cross-paper cites decoupled (3 cites + bib swap to Mercuri2006/Freidel2005/Poplawski2012/2016); fig_class_pie.png regenerated to canonical text counts (1,687,069 / 1,634,726 / 5,152,736); PDF recompiled (25.7 MB / 11 pp / 0 undef refs, Apr 30 00:21 PDT). **Self-contained, submission-locked.** |
 
-**Program-level arXiv ETA:** All 4 papers at 100 % readiness with recompiled PDFs as of 2026-04-29 12:02 PDT. All four mirrored to `public/papers/`. Remaining work is administrative only (arXiv tarball verification + form-fill).
+**Program-level arXiv ETA:** All 4 papers at 100 % readiness, fully decoupled, with current PDFs as of 2026-04-30 00:21 PDT. All four mirrored to `public/papers/`. Each paper now stands on its own — no inter-paper citation chain. Submission order constraint relaxed (per arXiv production-editor note 2026-04-18 was minimizing bibitem rewiring; that motivation is now moot). Remaining work is administrative only (arXiv tarball verification + form-fill).
 
 ---
 

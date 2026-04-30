@@ -2,15 +2,18 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-29 (PDT, 12:02) — **R35 closed**; 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the published 298-source S>0.259 catalog headline); PDF recompiled to 28 MB / 33 pp / 0 undef refs with Apr 29 12:02 PDT title-page stamp. Date stamp v3.1.0. Submission-ready.
+Last authoritative update: 2026-04-30 (PDT, 00:21) — **R41 closed**: 6 cross-paper `\cite{Golden:2026framework/forecast/chirality}` references in abstract / §6 / §7 / conclusion removed and replaced with primary-source citations (Heinrich2023 for SPHEREx forecast methodology, Lentati2013 for PTA free-spectrum framework, WilsonEwing2012 for matter-bounce f_NL primary source); embedded `thebibliography` updated. PDF recompiled clean (28 MB / 33 pp / 0 undef refs).
 
-## Current state (2026-04-29 PDT)
+**Prior round R35 (2026-04-29 12:02, commit `a63ef0b`):** 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the 298-source S>0.259 catalog headline). Date stamp v3.1.0.
 
-- **Readiness: 100 %** — submission-ready, PDF current (Apr 29 12:02 PDT recompile, commit `a63ef0b`).
-- **R35 closure**: the 9,303 figure (top-1% IF cross-validation reference) and the canonical 298-source eROSITA catalog (S>0.259 BigAE top-cut) are now disambiguated inline so the referee cannot conflate them. 9,303 is a strict superset; 298 is the published Table 1 headline.
+## Current state (2026-04-30 PDT)
+
+- **Readiness: 100 %** — submission-ready, PDF current, self-contained (R41 decoupled).
+- **R41 closure**: paper now stands on its own — no `\cite{Golden:2026...}` anywhere. Abstract reads as a self-contained anomaly-catalog deliverable with primary-source attribution to Heinrich+2023 and Cai+2009/Wilson-Ewing+2012 for the matter-bounce f_NL=−35/8 anchor.
+- **R35 closure**: the 9,303 figure (top-1% IF cross-validation reference) and the canonical 298-source eROSITA catalog (S>0.259 BigAE top-cut) are disambiguated inline.
 - **Path-C rebuild CLOSED 2026-04-22 (fire #189, 12/12 criteria green, weighted sum 100.000 %).** Native BigAE retrains for SDSS+LAMOST+CMB landed; 8-way dedup at 5″ → 378,480 unique physical objects + 637 multi-survey clusters; DESI 5-fold k-fold $\bar J = 0.862$ PASS.
-- **R31–R35 incorporated.** UMAP multi-seed stability (Pod 1, 50K × 16D × 20 seeds) returned 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL). Honest framing in commits 64699e6 + e08c28d. 21/21 figure files resolve CLEAN (R33).
-- **Pre-Path-C 319,443 sum-over-surveys** preserved as §7 before-after baseline against post-Path-C native-retrain results.
+- **R31–R35 + R41 incorporated.** UMAP multi-seed stability 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL) — honest framing maintained.
+- **Pre-Path-C 319,443 sum-over-surveys** preserved as §7 before-after baseline.
 - **Remaining:** 1 NOTE only (HF private until acceptance — standard).
 
 > **Path-C historical detail.** The full rebuild log lives in [`project-context/SSOT/drive-to-100.md`](../drive-to-100.md) "Loop log". The `27 MB PDF` references in §1–§3 below are now **28 MB / 33 pp / 0 undef**. The `319,443` is the §7 before-after baseline; post-Path-C unique-object count is **378,480 + 637 multi-survey clusters**.
