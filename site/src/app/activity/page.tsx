@@ -1,44 +1,57 @@
 import { FeedItem } from "@/components/Feed/FeedItem";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Activity",
-  description: "Live research status and chronological timeline of the BigBounce program.",
+  description:
+    "Live research status and chronological timeline of the BigBounce program.",
 };
 
 export default function ActivityPage() {
   return (
     <>
       <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>Live Research Activity</p>
-        <h1>Activity Feed</h1>
+        <p className="text-xs sans" style={{ marginBottom: 8 }}>
+          Live Research Activity
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          Activity Feed
+        </h1>
         <p className="subtitle">
-          What we&apos;re working on now, what happened recently, and what&apos;s coming next.
+          What we&apos;re working on now, what happened recently, and what&apos;s
+          coming next.
         </p>
       </div>
 
-      {/* Current Focus Banner */}
-      <div className="card" style={{ borderLeft: "4px solid #1e40af", marginBottom: 32 }}>
-        <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 700, color: "#1e40af", marginBottom: 4 }}>
-          Current Research Focus
-        </div>
-        <div style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: 6 }}>
-          Full Project Reset &mdash; Houston Method v2, Wiki, Next.js, H200 Queue v2
-        </div>
-        <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: 0, lineHeight: 1.6 }}>
-          Quality audit revealed 6 of 10 H200 experiments have QC failures.
-          Implementing Houston Method v2: mandatory 9-step completion loop.
-          New H200 pod active with 50-experiment queue across 10 phases.
-          First re-run (Planck CMB with galactic mask) already PASSES QC.
-          Est. total: ~492 GPU-hours, ~$1,768.
-        </p>
-      </div>
+      <Card className="mt-6 border-l-4 border-l-blue-500">
+        <CardContent className="space-y-2 p-5">
+          <div className="flex items-center gap-2">
+            <Badge variant="default">Current Focus</Badge>
+          </div>
+          <div
+            className="text-lg font-semibold"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            Full Project Reset — Houston Method v2, Wiki, Next.js, H200 Queue v2
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Quality audit revealed 6 of 10 H200 experiments have QC failures.
+            Implementing Houston Method v2: mandatory 9-step completion loop.
+            New H200 pod active with 50-experiment queue across 10 phases. First
+            re-run (Planck CMB with galactic mask) already PASSES QC. Est.
+            total: ~492 GPU-hours, ~$1,768.
+          </p>
+        </CardContent>
+      </Card>
 
-      <hr />
+      <Separator className="my-8" />
 
       <section className="section">
         <h2>Research Timeline</h2>
-        <div className="feed">
+        <div className="flex flex-col gap-3">
           <FeedItem
             date="2026-04-04"
             title="Planck CMB Re-Run PASSES QC — Galactic Mask Fix Works"
