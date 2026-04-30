@@ -386,6 +386,145 @@ Full memory: `~/.claude/projects/-Users-houstongolden-Desktop-CODE-2025-bigbounc
 
 ---
 
+## Principle 12: Take Every Critique Seriously — No Data-Engineering Laziness, No Refusal of Hard Work
+
+Added 2026-04-30 after Houston flagged that prior peer-review rounds were treated too lightly when findings would have required retraining models or rerunning catalogs.
+
+> *"please take these critiques more seriously than before - I will not accept any data engineering laziness or refusal do to hard work that needs to be done and need you to be 100% transparent about the hard things that are pointed out even if it means setbacks that will require days or retraining models and rerunning new improved models on the datasets etc etc... that is ok that is what we want really... the goal is not just to get to publishability as fast as possible but to do EVERY SINGLE THING the hard things to make every aspect the highest level of science and accuracy and defensibility as possible"*
+
+### The Rule
+
+When a peer-review finding (or any external critique) is read into the program, **the default disposition is "fix it the hard way, fully."** Not "address as caveat in text," not "defer to follow-up paper," not "note as a limitation," not "we believe this is sufficient." Real fix. End-to-end. Even if the cost is days of GPU time, a full model retrain, a fresh catalog regeneration, or restructuring the pipeline.
+
+The cost-of-effort weighting is inverted relative to a typical research program. Houston is not paying for a fast publication — Houston is paying for a maximally defensible publication. Days of setback are a feature, not a bug, when they buy real defensibility.
+
+### Transparency Requirement
+
+Every response that processes peer-review feedback must surface the hard findings **at the top**, not buried in a section after the easy ones. Format:
+
+1. **🔴 BLOCKER findings — full work required** (retrain model, rerun catalog, regenerate figure, redo MCMC). List these first. Estimate honest cost in days/GPU-hours.
+2. **🟠 MAJOR findings — substantive edits required** (rewrite section, add appendix, recompute statistic).
+3. **🟡 MINOR findings — wording / clarification edits.**
+4. **⚪ Findings rejected as factually wrong** (with citation to the file/data/code that proves the reviewer was mistaken).
+
+Do not soft-pedal. Do not collapse a BLOCKER into a MAJOR because the fix is uncomfortable. If the right answer is "we need to rerun the LAMOST AE on a deblue-corrected sample over 4 H200-hours," say exactly that.
+
+### Source-of-Truth Caveat — When to Push Back on a Reviewer
+
+A reviewer is only as good as the context they have. Their PDF is a snapshot; the repo, chains, code, configs, and HF artifacts are the truth. **Push back on a finding only when one of these is true:**
+
+- The finding cites a number that contradicts the canonical file (e.g., reviewer says "9,303 eROSITA anomalies" — Paper 3 Table 1 canonical is 298 after BigAE top-cut; this is reviewer staleness, not paper error).
+- The finding asks for an analysis already in the paper (cite the section/equation/appendix where it lives).
+- The finding asks for verification against an artifact the reviewer didn't have access to but exists in the repo / on HuggingFace (point to the path or URL).
+- The finding misattributes a methodological choice (e.g., reviewer says "they used unmasked Planck" when §X.Y explicitly states the galactic mask was applied).
+
+In every other case — including findings that imply expensive rework — the disposition is **fix it.** No "we believe this is sufficient as-is" without a pointer to the file/code that proves it.
+
+### Process — How to Apply
+
+When new peer reviews land:
+
+1. **Read every review in full**, including the ones from external LLMs (ChatGPT, Grok, Gemini, Perplexity). No skimming.
+2. **Classify each finding** into the 4 buckets above. The default bucket for ambiguous cases is BLOCKER, not MINOR.
+3. **Surface the hard findings at the top** of the response with honest cost estimates.
+4. **Push back ONLY with file/code/data citations** — never on stylistic grounds, never on "we believe," never to dodge work.
+5. **Open a fix queue** in `project-context/SSOT/queue.md` with one row per finding, ordered BLOCKER → MAJOR → MINOR. Each row pinned to the reviewer + paper + section.
+6. **Execute the fix queue end-to-end** before declaring the round closed. No "deferred to next round" for items that can be done now.
+7. **Recompile + restamp + version-bump + mirror + site-sync in the same commit at the end of the round** (Principle 13).
+
+### What "Default to Fix the Hard Way" Looks Like in Practice
+
+| Finding type | Wrong disposition | Right disposition |
+|---|---|---|
+| "CMB autoencoder appears undertrained" | Add caveat in §IV that AE was trained on limited epochs | Retrain on full epoch budget, regenerate figures, update Table 1 |
+| "DESI BigAE in-sample bias" | Note as limitation in discussion | Hold out validation set, retrain, requote scores from held-out set |
+| "Insufficient cross-validation against external label set" | Cite agreement with internal labels | Run external-label-only validation pass, report metric, fold into appendix |
+| "Posterior shape may be non-Gaussian" | Quote Fisher diagonal, claim Gaussian-equivalent | Run full MCMC, plot full posterior, report 68/95% credible intervals |
+| "Tracer purity claim relies on photometric redshift cuts not validated against spectra" | Cite the photo-z paper | Cross-match against actual spectroscopic catalog, requote purity |
+| "Anomaly count appears stale vs Table 1" | Update narrative paragraph | Trace the canonical file, fix every page, every figure caption, every site surface |
+
+### Why This Matters
+
+Houston's program is independent and single-author. There is no PI to escalate to, no institutional review board to enforce rigor. The peer-review feedback **is the rigor enforcement**. Treating findings as suggestions instead of as obligations is the single biggest failure mode for an independent program. This principle is the firewall against that failure mode.
+
+Full memory: `~/.claude/projects/-Users-houstongolden-Desktop-CODE-2025-bigbounce/memory/feedback_take_critiques_seriously.md`
+
+---
+
+## Principle 13: Standing PDF Recompile / Restamp / Version-Bump Protocol — Never Wait to Be Reminded
+
+Added 2026-04-30 after Houston had to remind twice in two consecutive revision rounds (R41 → R42) to recompile PDFs, restamp date/time, and bump version numbers on the title page of every paper.
+
+> *"last time i had to remind you to update the pdfs and recompile them with updated date-time stamps and version numbers on the tops of each - please ensure you have clear instructions so that i never have to repeat that again to you got it?"*
+
+### The Rule (Standing — applies to every revision round, R42+ forever)
+
+**Every revision round closes with a single bundled commit that contains ALL of the following, in this order:**
+
+1. **`.tex` source bumps** — for every paper touched by the round:
+   - `\paperVersion` macro bumped (semver: patch for minor edits, minor for substantive section additions, major for restructuring)
+   - `\paperTimestamp` macro bumped to the round close timestamp (PDT)
+   - `\date{...}` macro bumped to match `\paperTimestamp` and include the new `\paperVersion`
+2. **PDF recompile** for every touched paper:
+   - `pdflatex → bibtex → pdflatex → pdflatex` on TeX Live 2026 Homebrew (local Mac path)
+   - 0 undef refs required to pass
+   - pypdf verification: page 1 must contain the new date string, the new time string, and the new `vX.Y.Z` string
+3. **PDF mirroring** to `public/papers/`:
+   - P1: `arxiv/main.pdf` → `public/papers/spin_torsion_paper1.pdf` AND `public/papers/spin-torsion-paper.pdf`
+   - P2: `research/focused_paper_source_integration/02_full_draft.pdf` → `public/papers/paper2_fnl_forecast.pdf` AND `public/papers/fnl-forecast-paper.pdf`
+   - P3: `pipelines/p3_anomaly_engine/paper3_draft.pdf` → `public/papers/paper3_anomaly_catalog.pdf` AND `public/papers/anomaly-catalog-paper.pdf`
+   - P4: `pipelines/p2_chirality/chirality_catalog_paper.pdf` → `public/papers/chirality_catalog_paper.pdf`
+4. **Site metadata refresh** — every page that surfaces version/date/size/page-count must update:
+   - `paper.html` — both badge text and "Read PDF" button text for each paper (8 fields per round if all 4 papers touched)
+   - `ssot.html` — stat cards, table rows, paper headers
+   - `activity.html` — banner + new prepended feed item
+   - `index.html` — if stat cards reference paper version
+5. **SSOT refresh** in same commit:
+   - `project-context/SSOT/index.md` — headline note updated to current round + timestamp
+   - `project-context/SSOT/paper-N/status.md` — for every touched paper
+   - `project-context/SSOT/queue.md` — closure entry prepended at top
+6. **Single bundled commit** with message format `chore(R{N}-stamp): bump paperVersion+date across all {K} papers — re-stamp YYYY-MM-DD HH:MM PDT, recompile, mirror, refresh site metadata`
+7. **Push to origin/main** — Vercel auto-deploys.
+
+### Trigger — When Does This Round-Close Bundle Fire?
+
+**Always, after any revision round that touched ANY paper's `.tex` source, `.bib`, embedded data, or referenced figure.** Including:
+
+- New peer-review feedback closed (R42+, every R going forward)
+- A `\label` / `\ref` / `\cite` change anywhere in any paper
+- A figure regeneration that's referenced by any paper
+- A canonical number change (anomaly count, MCMC sample count, β value, γ value, etc.) anywhere in the program — because the corresponding paper text needs to update, and once the text updates the bundle fires
+
+If only the site changed (no paper edits), the bundle does not fire. If any paper text or asset changed, it does.
+
+### Why Twice-In-A-Row Reminders Mean It's a Standing Protocol
+
+Houston reminded R41 and R42. Twice in a row of "you forgot the recompile" means the rule needs to be embedded as a non-skippable end-of-round step, not a thing I remember to do. This principle is that embedding. The reminder cost is gone permanently from this round forward.
+
+### Verification Before Declaring Round Closed
+
+Before responding "round closed" to Houston, run this checklist verbatim:
+
+```
+[ ] All touched .tex have bumped \paperVersion + \paperTimestamp + \date
+[ ] All touched papers recompiled (0 undef refs)
+[ ] pypdf-verified page 1 of every touched PDF shows new date/time/version
+[ ] PDFs mirrored to all public/papers/ paths (each paper has 1-2 mirrors)
+[ ] paper.html metadata updated (both badge + Read-PDF button text)
+[ ] ssot.html metadata updated (stat cards + table rows + paper headers)
+[ ] activity.html banner + new feed item added
+[ ] SSOT/index.md headline + paper-N/status.md updated
+[ ] SSOT/queue.md closure entry prepended
+[ ] Single bundled commit with chore(R{N}-stamp): ... message
+[ ] Pushed to origin/main
+```
+
+Every box must be checked. If any is unchecked, the round is not closed.
+
+Full memory: `~/.claude/projects/-Users-houstongolden-Desktop-CODE-2025-bigbounce/memory/feedback_pdf_recompile_protocol.md`
+
+---
+
 ## Anti-Patterns (Things That Are NOT Completion)
 
 | What Happened | Why It's Not Complete |
@@ -415,6 +554,8 @@ This protocol builds on the existing Houston Method principles:
 9. **THE COMPLETION LOOP** → This document. The enforcement mechanism for all of the above.
 10. **Future Work Is Code Smell** → Do it NOW; the only exceptions are hardware/datasets that literally don't exist yet.
 11. **Default to the hardest path** → When a defect has multiple fix paths, recommend the full-rebuild up front; never make Houston push back to pick quality.
+12. **Take every critique seriously** → Default disposition for any peer-review finding is "fix it the hard way, fully" — retrains, rerolls, full MCMC; transparency on hard things at the top, push back only with file/code citations.
+13. **Standing PDF restamp protocol** → Every revision round closes with bundled `.tex` version+date bump, PDF recompile, mirror to `public/papers/`, site metadata refresh, and SSOT update — single commit, no reminders needed.
 
 ---
 

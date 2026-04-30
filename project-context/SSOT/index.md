@@ -28,7 +28,7 @@
 - **P3**: 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the published 298-source S>0.259 catalog headline).
 - **P4**: "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link; "Submission-locked".
 
-R31–R34 closed previously for all 4 papers + site (12+ commits to `main` overnight 2026-04-28 → 2026-04-29 10:19 PDT). All 4 papers submission-ready. Full review log: [`adversarial_peer_review_2026-04-27.md`](../adversarial_peer_review_2026-04-27.md).
+R31–R34 closed previously for all 4 papers + site (12+ commits to `main` overnight 2026-04-28 → 2026-04-29 10:19 PDT). All 4 papers submission-ready. Full review log: [`peer-reviews/master/2026-04-27_R34-R41_master.md`](../peer-reviews/master/2026-04-27_R34-R41_master.md).
 
 ### GPU work — 8/8 originally-blocked items DONE
 
