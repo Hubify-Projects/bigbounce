@@ -1,6 +1,20 @@
-import { StatCard } from "@/components/Cards/StatCard";
-import { Badge } from "@/components/Cards/Badge";
-import { DiscoveryCard } from "@/components/Cards/DiscoveryCard";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,237 +23,364 @@ export const metadata: Metadata = {
     "Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
 };
 
+const stats: Array<{ value: string; label: string; tone: string }> = [
+  { value: "4", label: "Papers", tone: "text-emerald-600 dark:text-emerald-400" },
+  {
+    value: "424K+",
+    label: "MCMC Samples (3 frozen datasets)",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    value: "37.3M+",
+    label: "Sources Scored (8 Surveys)",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    value: "319K+",
+    label: "Anomalies Found",
+    tone: "text-emerald-600 dark:text-emerald-400",
+  },
+  { value: "6", label: "AI Pipelines", tone: "text-blue-600 dark:text-blue-400" },
+  {
+    value: "14",
+    label: "Computation Scripts",
+    tone: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    value: "6",
+    label: "Bounce Channels",
+    tone: "text-amber-600 dark:text-amber-400",
+  },
+];
+
 export default function StatusPage() {
   return (
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Last Updated: April 4, 2026
+          Last Updated: April 30, 2026
         </p>
-        <h1>Research Program Status</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          Research Program Status
+        </h1>
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
           cosmology research program.
         </p>
       </div>
 
-      <hr />
-
-      {/* Top-level stats */}
-      <div className="grid grid-4" style={{ margin: "20px 0" }}>
-        <StatCard value="4" label="Papers" color="green" />
-        <StatCard value="475K+" label="MCMC Samples" color="green" />
-        <StatCard value="33.5M+" label="Sources Scored (8 Surveys)" color="green" />
-        <StatCard value="328K+" label="Anomalies Found" color="green" />
-        <StatCard value="6" label="AI Pipelines" color="blue" />
-        <StatCard value="14" label="Computation Scripts" color="blue" />
-        <StatCard value="6" label="Bounce Channels" color="amber" />
+      <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {stats.map((stat) => (
+          <Card key={stat.label}>
+            <CardContent className="p-4">
+              <div
+                className={`font-mono text-2xl font-bold ${stat.tone}`}
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                {stat.value}
+              </div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+                {stat.label}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-      <hr />
+      <Separator className="my-8" />
 
       <section className="section">
         <h2>1. Research Papers</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Paper</th>
-              <th>Title</th>
-              <th>Status</th>
-              <th>Pages</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Paper 1</strong></td>
-              <td>Spin-Torsion Framework: 14 Barriers, Falsifiable Predictions</td>
-              <td><Badge variant="green">99% Ready</Badge></td>
-              <td>~24</td>
-            </tr>
-            <tr>
-              <td><strong>Paper 2</strong></td>
-              <td>
-                f<sub>NL</sub> = -35/8 Forecast: SPHEREx Discrimination
-              </td>
-              <td><Badge variant="green">Submission-Ready</Badge></td>
-              <td>~12</td>
-            </tr>
-            <tr>
-              <td><strong>Paper 3</strong></td>
-              <td>Multi-Survey Anomaly Catalog: 328K from 33.5M Sources</td>
-              <td><Badge variant="blue">Draft (~95%)</Badge></td>
-              <td>~18</td>
-            </tr>
-            <tr>
-              <td><strong>Paper 4</strong></td>
-              <td>Galaxy Chirality at Scale: 8.47M Galaxies</td>
-              <td><Badge variant="blue">Draft (~85%)</Badge></td>
-              <td>~11</td>
-            </tr>
-          </tbody>
-        </table>
+        <Card>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Paper</TableHead>
+                  <TableHead>Title</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Pages</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-semibold">Paper 1</TableCell>
+                  <TableCell>
+                    Spin-Torsion Framework: 14 Barriers, Falsifiable Predictions
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="default">99% Ready</Badge>
+                  </TableCell>
+                  <TableCell className="font-mono">~24</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">Paper 2</TableCell>
+                  <TableCell>
+                    f<sub>NL</sub> = -35/8 Forecast: SPHEREx Discrimination
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="default">Submission-Ready</Badge>
+                  </TableCell>
+                  <TableCell className="font-mono">~12</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">Paper 3</TableCell>
+                  <TableCell>
+                    Multi-Survey Anomaly Catalog: 319K from 37.3M Sources
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">Draft (~95%)</Badge>
+                  </TableCell>
+                  <TableCell className="font-mono">~18</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">Paper 4</TableCell>
+                  <TableCell>
+                    Galaxy Chirality at Scale: 8.47M Galaxies
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">Draft (~85%)</Badge>
+                  </TableCell>
+                  <TableCell className="font-mono">~11</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       </section>
 
       <section className="section">
         <h2>2. Bounce Cosmology Portfolio</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Channel</th>
-              <th>Best Model</th>
-              <th>Prediction</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>
-                  Galaxy bispectrum f<sub>NL</sub>
-                </strong>
-              </td>
-              <td>Matter bounce</td>
-              <td>
-                f<sub>NL</sub> = -35/8 (parameter-free)
-              </td>
-              <td><Badge variant="purple">FLAGSHIP</Badge></td>
-            </tr>
-            <tr>
-              <td><strong>Quintom bounce-DE</strong></td>
-              <td>Quintom bounce</td>
-              <td>w(z) crosses -1</td>
-              <td><Badge variant="green">2.3&sigma; confirmed</Badge></td>
-            </tr>
-            <tr>
-              <td><strong>NANOGrav GW</strong></td>
-              <td>Matter bounce</td>
-              <td>&gamma; = 3.0 vs 3.2 &plusmn; 0.6</td>
-              <td><Badge variant="green">1&sigma; consistent</Badge></td>
-            </tr>
-            <tr>
-              <td><strong>PBH dark matter</strong></td>
-              <td>Asymmetric matter bounce</td>
-              <td>Asteroid-mass PBHs</td>
-              <td><Badge variant="amber">Viable</Badge></td>
-            </tr>
-          </tbody>
-        </table>
+        <Card>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Channel</TableHead>
+                  <TableHead>Best Model</TableHead>
+                  <TableHead>Prediction</TableHead>
+                  <TableHead>Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-semibold">
+                    Galaxy bispectrum f<sub>NL</sub>
+                  </TableCell>
+                  <TableCell>Matter bounce</TableCell>
+                  <TableCell className="font-mono">
+                    f<sub>NL</sub> = -35/8 (parameter-free)
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">FLAGSHIP</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">
+                    Quintom bounce-DE
+                  </TableCell>
+                  <TableCell>Quintom bounce</TableCell>
+                  <TableCell className="font-mono">w(z) crosses -1</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">Theoretical (no in-house MCMC yet)</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">NANOGrav GW</TableCell>
+                  <TableCell>Matter bounce</TableCell>
+                  <TableCell className="font-mono">
+                    γ = 3.0 vs 3.20 ± 0.42
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="default">0.48σ consistent</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">PBH dark matter</TableCell>
+                  <TableCell>Asymmetric matter bounce</TableCell>
+                  <TableCell className="font-mono">Asteroid-mass PBHs</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">Viable</Badge>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       </section>
 
       <section className="section">
         <h2>3. Completed Surveys (8 total)</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Survey</th>
-              <th>Sources</th>
-              <th>Anomalies</th>
-              <th>QC Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>DESI DR1</strong></td>
-              <td>22.5M spectra</td>
-              <td>195,829 (0.87%)</td>
-              <td><Badge variant="green">PASS</Badge></td>
-            </tr>
-            <tr>
-              <td><strong>SDSS DR18</strong></td>
-              <td>2.3M spectra</td>
-              <td>77,905 (3.4%)</td>
-              <td>
-                <Badge variant="amber">Caution: domain shift</Badge>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>LAMOST DR10</strong></td>
-              <td>11.4M spectra</td>
-              <td>44,075 (0.39%)</td>
-              <td>
-                <Badge variant="amber">Caution: blue-excess bias</Badge>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>eROSITA DR1</strong></td>
-              <td>930K X-ray</td>
-              <td>9,303 (1%)</td>
-              <td><Badge variant="green">PASS</Badge></td>
-            </tr>
-            <tr>
-              <td><strong>Planck CMB</strong></td>
-              <td>20K patches</td>
-              <td>200</td>
-              <td>
-                <Badge variant="red">QC FAIL: galactic contamination</Badge>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>ACT DR6</strong></td>
-              <td>20K patches</td>
-              <td>200</td>
-              <td>
-                <Badge variant="red">QC FAIL: undertrained</Badge>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>NEOWISE</strong></td>
-              <td>43.5K sources</td>
-              <td>436</td>
-              <td>
-                <Badge variant="red">QC FAIL: ecliptic systematic</Badge>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Gaia DR3</strong></td>
-              <td>50K variables</td>
-              <td>500</td>
-              <td>
-                <Badge variant="amber">Needs 10x expansion</Badge>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <Card>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Survey</TableHead>
+                  <TableHead>Sources</TableHead>
+                  <TableHead>Anomalies</TableHead>
+                  <TableHead>QC Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-semibold">DESI DR1</TableCell>
+                  <TableCell>22.5M spectra</TableCell>
+                  <TableCell className="font-mono">195,829 (0.87%)</TableCell>
+                  <TableCell>
+                    <Badge variant="default">PASS</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">SDSS DR18</TableCell>
+                  <TableCell>2.3M spectra</TableCell>
+                  <TableCell className="font-mono">77,905 (3.4%)</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">Caution: domain shift</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">LAMOST DR10</TableCell>
+                  <TableCell>11.4M spectra</TableCell>
+                  <TableCell className="font-mono">44,075 (0.39%)</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">Caution: blue-excess bias</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">eROSITA DR1</TableCell>
+                  <TableCell>930K X-ray</TableCell>
+                  <TableCell className="font-mono">298 (0.03%, BigAE top-cut)</TableCell>
+                  <TableCell>
+                    <Badge variant="default">PASS</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">Planck CMB</TableCell>
+                  <TableCell>20K patches</TableCell>
+                  <TableCell className="font-mono">200</TableCell>
+                  <TableCell>
+                    <Badge variant="destructive">FAIL: galactic contamination</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">ACT DR6</TableCell>
+                  <TableCell>20K patches</TableCell>
+                  <TableCell className="font-mono">200</TableCell>
+                  <TableCell>
+                    <Badge variant="destructive">FAIL: undertrained</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">NEOWISE</TableCell>
+                  <TableCell>43.5K sources</TableCell>
+                  <TableCell className="font-mono">436</TableCell>
+                  <TableCell>
+                    <Badge variant="destructive">FAIL: ecliptic systematic</Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-semibold">Gaia DR3</TableCell>
+                  <TableCell>50K variables</TableCell>
+                  <TableCell className="font-mono">500</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">Needs 10x expansion</Badge>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       </section>
 
       <section className="section">
         <h2>4. Key Discoveries</h2>
+        <div className="grid gap-3 md:grid-cols-2">
+          <Card className="border-l-4 border-l-emerald-500">
+            <CardHeader className="pb-2">
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                f_NL = -35/8 Mechanism Independence
+              </CardTitle>
+              <CardDescription className="font-mono text-[11px]">
+                Paper 2 · quintom_fnl_verification.py
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Verified across 3 bounce models: f_NL = -4.375 is parameter-free
+                and mechanism-independent. SPHEREx (~2028) will measure to σ ~
+                0.7-2.
+              </p>
+            </CardContent>
+          </Card>
 
-        <DiscoveryCard
-          title="f_NL = -35/8 Mechanism Independence"
-          borderColor="#22c55e"
-          tag="Paper 2 · quintom_fnl_verification.py"
-        >
-          Verified across 3 bounce models: f_NL = -4.375 is parameter-free and
-          mechanism-independent. SPHEREx (~2028) will measure to &sigma; ~ 0.7-2.
-        </DiscoveryCard>
+          <Card className="border-l-4 border-l-amber-500">
+            <CardHeader className="pb-2">
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                Quintom w-Crossing — Theoretical Only
+              </CardTitle>
+              <CardDescription className="font-mono text-[11px]">
+                Paper 1 §VII.H · zero free-w0–wa samples in our chains
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Whether w(z) crosses -1 is a quintom-bounce signature, but our
+                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{" "}
+                MCMC. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for
+                w-crossing depending on dataset combination. (Earlier in-house
+                claim P(quintom-B) = 98.6% from 50.9K samples was a fire #21
+                bookkeeping confabulation, corrected fire #25.)
+              </p>
+            </CardContent>
+          </Card>
 
-        <DiscoveryCard
-          title="Quintom-B w-Crossing at 98.6%"
-          borderColor="#3b82f6"
-          tag="cobaya_w0wa_quintom_test.yaml · 50.9K samples"
-        >
-          w₀ = -0.871 &plusmn; 0.060, wₐ = -0.542 &plusmn; 0.245. Independently
-          confirms DESI DR2 signal at 2.3&sigma;.
-        </DiscoveryCard>
+          <Card className="border-l-4 border-l-blue-500">
+            <CardHeader className="pb-2">
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                NANOGrav Consistency
+              </CardTitle>
+              <CardDescription className="font-mono text-[11px]">
+                nanograv_model_comparison.py · v2b Fisher recompute
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Matter bounce γ = 3.0 vs NANOGrav 3.20 ± 0.42 (0.48σ). Bayesian:
+                bounce preferred 5.6:1 over SMBH.
+              </p>
+            </CardContent>
+          </Card>
 
-        <DiscoveryCard
-          title="NANOGrav Consistency"
-          borderColor="#3b82f6"
-          tag="nanograv_model_comparison.py"
-        >
-          Matter bounce &gamma; = 3.0 vs NANOGrav 3.2 &plusmn; 0.6 (0.33&sigma;).
-          Bayesian: bounce preferred 5.6:1 over SMBH.
-        </DiscoveryCard>
-
-        <DiscoveryCard
-          title="328K Anomalies Across 8 Surveys"
-          borderColor="#22c55e"
-          tag="Pipeline B · 33.5M sources"
-        >
-          First multi-survey AI anomaly sweep. 6.1% f_NL improvement via
-          latent-space multi-tracer. SPHEREx 4.38&sigma; forecast.
-        </DiscoveryCard>
+          <Card className="border-l-4 border-l-emerald-500">
+            <CardHeader className="pb-2">
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                319,443 Anomalies Across 8 Surveys
+              </CardTitle>
+              <CardDescription className="font-mono text-[11px]">
+                Pipeline B · 37.3M sources · Paper 3 Table 1 canonical totals
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                First multi-survey AI anomaly sweep. 6.1% f_NL improvement via
+                latent-space multi-tracer. SPHEREx 4.38σ forecast.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
       </section>
     </>
   );

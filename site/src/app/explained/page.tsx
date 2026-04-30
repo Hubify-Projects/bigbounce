@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,16 +18,18 @@ export default function ExplainedPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Non-Technical Explainer &middot; March 2026
+          Non-Technical Explainer &middot; April 2026
         </p>
-        <h1>The Big Bounce, Explained</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          The Big Bounce, Explained
+        </h1>
         <p className="subtitle">
           What if the Big Bang wasn&apos;t the beginning? A plain-English guide
           to why we think the universe bounced.
         </p>
       </div>
 
-      <hr />
+      <Separator className="my-8" />
 
       <section className="section">
         <h2>The Standard Story</h2>
@@ -65,9 +74,9 @@ export default function ExplainedPage() {
           observe as the Big Bang.
         </p>
         <p>
-          No singularity. No infinite density. No breakdown of physics. Just
-          a transition from contraction to expansion, governed by physics we
-          can test.
+          No singularity. No infinite density. No breakdown of physics. Just a
+          transition from contraction to expansion, governed by physics we can
+          test.
         </p>
       </section>
 
@@ -78,43 +87,83 @@ export default function ExplainedPage() {
           should see in the sky today. Our research program has identified the
           key discriminators:
         </p>
-        <div className="grid grid-2">
-          <div className="card">
-            <h3>
-              f<sub>NL</sub> = &minus;35/8
-            </h3>
-            <p>
-              The bounce predicts a specific pattern in how galaxies cluster —
-              a &ldquo;non-Gaussianity&rdquo; signal of exactly &minus;4.375.
-              Inflation predicts this number should be nearly zero. NASA&apos;s
-              SPHEREx mission (~2028) will measure this directly.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Dark Energy Dynamics</h3>
-            <p>
-              Our analysis shows 98.6% probability that dark energy changes
-              over time (quintom-B behavior). This is exactly what the quintom
-              bounce predicts — and something basic inflation cannot explain.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Gravitational Wave Hum</h3>
-            <p>
-              NANOGrav detected a cosmic gravitational wave background. The
-              bounce predicts a specific spectral shape (&gamma; = 3.0). The
-              measured value is 3.2 &plusmn; 0.6 — perfectly consistent.
-            </p>
-          </div>
-          <div className="card">
-            <h3>328,000 Anomalies</h3>
-            <p>
-              Our AI pipelines have scanned 33.5 million astronomical sources
-              across 8 surveys, finding 328,000 objects that don&apos;t match
-              known patterns. These anomalies help improve our f<sub>NL</sub>{" "}
-              measurement by 6.1%.
-            </p>
-          </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                f<sub>NL</sub> = &minus;35/8
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                The bounce predicts a specific pattern in how galaxies cluster
+                — a &ldquo;non-Gaussianity&rdquo; signal of exactly
+                &minus;4.375. Inflation predicts this number should be nearly
+                zero. NASA&apos;s SPHEREx mission (~2028) will measure this
+                directly.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                Dark Energy Dynamics
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Whether dark energy&apos;s strength changes over time is one of
+                the open questions the bounce can speak to. The quintom branch
+                of bounce cosmology predicts &ldquo;quintom-B&rdquo; behavior
+                (the equation of state crosses w = &minus;1). External DESI DR2
+                analyses now report 2.8&ndash;4.2σ for w-crossing depending on
+                the dataset combination. Our own program treats this
+                theoretically — we have not yet run a free-w<sub>0</sub>&ndash;w
+                <sub>a</sub> MCMC ourselves; that&apos;s a planned next step.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                Gravitational Wave Hum
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                NANOGrav detected a cosmic gravitational wave background. The
+                bounce predicts a specific spectral shape (&gamma; = 3.0). The
+                measured value is 3.20 &plusmn; 0.42 — consistent at 0.48σ.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle
+                className="text-base"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                319,443 Anomalies
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Our AI pipelines have scanned 37.3 million astronomical sources
+                across 8 surveys, finding 319,443 objects that don&apos;t match
+                known patterns. These anomalies help improve our f<sub>NL</sub>{" "}
+                measurement by 6.1%.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
