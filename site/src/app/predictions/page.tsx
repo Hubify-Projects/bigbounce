@@ -1,11 +1,32 @@
 import { predictions } from "@/data/predictions";
-import { Badge } from "@/components/Cards/Badge";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Predictions",
   description: "Testable predictions from the bounce cosmology portfolio.",
+};
+
+const statusVariantMap: Record<
+  string,
+  "default" | "secondary" | "destructive" | "outline"
+> = {
+  green: "default",
+  blue: "secondary",
+  amber: "outline",
+  red: "destructive",
+  purple: "secondary",
 };
 
 export default function PredictionsIndexPage() {
@@ -15,42 +36,62 @@ export default function PredictionsIndexPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Bounce Cosmology Portfolio &middot; {predictions.length} Channels
         </p>
-        <h1>Predictions</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          Predictions
+        </h1>
         <p className="subtitle">
           Each prediction is a distinct observational channel for testing bounce
-          cosmology against inflation. Click any to see connected surveys, papers, and next steps.
+          cosmology against inflation. Click any to see connected surveys, papers,
+          and next steps.
         </p>
       </div>
 
-      <hr />
+      <Separator className="my-8" />
 
       <section className="section">
         <h2>Observational Channels</h2>
-        {predictions.map((pred) => (
-          <Link
-            key={pred.slug}
-            href={`/predictions/${pred.slug}`}
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
-          >
-            <div className="card" style={{ marginBottom: 12, cursor: "pointer" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                <h3 style={{ margin: 0, fontSize: 16 }}>{pred.name}</h3>
-                <Badge variant={pred.statusVariant}>{pred.status}</Badge>
-              </div>
-              <div style={{ fontSize: 18, fontWeight: 700, fontFamily: "var(--font-mono-stack)", marginBottom: 6 }}>
-                {pred.value}
-              </div>
-              <p style={{ margin: "0 0 8px", fontSize: 13, color: "var(--text-secondary)" }}>
-                {pred.description.slice(0, 180)}...
-              </p>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <span className="badge badge-neutral">{pred.bestModel}</span>
-                <span className="badge badge-accent">{pred.experiment}</span>
-                <span className="badge badge-neutral">{pred.nextSteps.length} next steps</span>
-              </div>
-            </div>
-          </Link>
-        ))}
+        <div className="grid gap-4 md:grid-cols-2">
+          {predictions.map((pred) => (
+            <Card key={pred.slug} className="flex flex-col">
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between gap-3">
+                  <CardTitle
+                    className="text-base"
+                    style={{ fontFamily: "var(--font-serif)" }}
+                  >
+                    {pred.name}
+                  </CardTitle>
+                  <Badge variant={statusVariantMap[pred.statusVariant]}>
+                    {pred.status}
+                  </Badge>
+                </div>
+                <CardDescription className="font-mono text-lg font-bold text-foreground">
+                  {pred.value}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <p className="text-sm text-muted-foreground">
+                  {pred.description.slice(0, 220)}
+                  {pred.description.length > 220 ? "…" : ""}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                  <Badge variant="outline">{pred.bestModel}</Badge>
+                  <Badge variant="outline">{pred.experiment}</Badge>
+                  <Badge variant="outline">
+                    {pred.nextSteps.length} next steps
+                  </Badge>
+                </div>
+              </CardContent>
+              <CardFooter className="pt-0">
+                <Button asChild size="sm" variant="outline">
+                  <Link href={`/predictions/${pred.slug}`}>
+                    Open prediction &rarr;
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </section>
     </>
   );

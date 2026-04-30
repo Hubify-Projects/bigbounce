@@ -1,5 +1,20 @@
 import { predictions, getPredictionBySlug } from "@/data/predictions";
-import { Badge } from "@/components/Cards/Badge";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -8,8 +23,15 @@ export function generateStaticParams() {
   return predictions.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const pred = getPredictionBySlug(params.slug);
+type PageParams = Promise<{ slug: string }>;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: PageParams;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const pred = getPredictionBySlug(slug);
   if (!pred) return { title: "Not Found" };
   return {
     title: pred.name,
@@ -17,98 +39,151 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function PredictionPage({ params }: { params: { slug: string } }) {
-  const pred = getPredictionBySlug(params.slug);
+const statusVariantMap: Record<
+  string,
+  "default" | "secondary" | "destructive" | "outline"
+> = {
+  green: "default",
+  blue: "secondary",
+  amber: "outline",
+  red: "destructive",
+  purple: "secondary",
+};
+
+export default async function PredictionPage({
+  params,
+}: {
+  params: PageParams;
+}) {
+  const { slug } = await params;
+  const pred = getPredictionBySlug(slug);
   if (!pred) notFound();
 
   return (
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          <Link href="/predictions" style={{ color: "var(--text-muted)", textDecoration: "none" }}>
+          <Link
+            href="/predictions"
+            style={{ color: "var(--text-muted)", textDecoration: "none" }}
+          >
             Predictions
           </Link>{" "}
           &rarr; {pred.name}
         </p>
-        <h1>{pred.name}</h1>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+          {pred.name}
+        </h1>
         <p className="subtitle">{pred.description}</p>
-        <div className="meta">
-          <Badge variant={pred.statusVariant}>{pred.status}</Badge>
-          <span className="badge badge-accent">{pred.value}</span>
-          <span className="badge badge-neutral">{pred.bestModel}</span>
-          <span className="badge badge-neutral">{pred.experiment}</span>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <Badge variant={statusVariantMap[pred.statusVariant]}>
+            {pred.status}
+          </Badge>
+          <Badge variant="secondary" className="font-mono">
+            {pred.value}
+          </Badge>
+          <Badge variant="outline">{pred.bestModel}</Badge>
+          <Badge variant="outline">{pred.experiment}</Badge>
         </div>
       </div>
 
-      {/* Current Constraint */}
-      <div className="card" style={{ borderLeft: "3px solid #3b82f6", marginBottom: 24 }}>
-        <h4 style={{ margin: "0 0 6px", fontSize: 14 }}>Current Constraint</h4>
-        <p style={{ margin: 0, fontSize: 13, color: "var(--text-secondary)" }}>
-          {pred.currentConstraint}
-        </p>
-      </div>
+      <Card className="mt-6 border-l-4 border-l-blue-500">
+        <CardHeader>
+          <CardTitle className="text-sm">Current Constraint</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            {pred.currentConstraint}
+          </p>
+        </CardContent>
+      </Card>
 
-      <hr />
+      <Separator className="my-8" />
 
-      {/* Key Results */}
-      <section className="section">
-        <h2>Key Results</h2>
-        <ul style={{ paddingLeft: 20, fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.8 }}>
-          {pred.keyResults.map((result, i) => (
-            <li key={i}>{result}</li>
-          ))}
-        </ul>
-      </section>
+      <Tabs defaultValue="results" className="w-full">
+        <TabsList>
+          <TabsTrigger value="results">Key Results</TabsTrigger>
+          <TabsTrigger value="surveys">Surveys</TabsTrigger>
+          <TabsTrigger value="papers">Papers</TabsTrigger>
+          <TabsTrigger value="timeline">Timeline</TabsTrigger>
+          <TabsTrigger value="next">
+            Next Steps ({pred.nextSteps.length})
+          </TabsTrigger>
+        </TabsList>
 
-      {/* Connected Surveys */}
-      {pred.surveys.length > 0 && (
-        <section className="section">
-          <h2>Connected Surveys</h2>
-          {pred.surveys.map((survey) => (
-            <div key={survey} className="card" style={{ padding: "10px 16px", marginBottom: 8 }}>
-              <span style={{ fontSize: 14 }}>{survey}</span>
+        <TabsContent value="results" className="pt-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Key Results</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+                {pred.keyResults.map((r, i) => (
+                  <li key={i}>{r}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="surveys" className="pt-4">
+          {pred.surveys.length > 0 ? (
+            <div className="grid gap-2 md:grid-cols-2">
+              {pred.surveys.map((s) => (
+                <Card key={s}>
+                  <CardContent className="p-4 text-sm">{s}</CardContent>
+                </Card>
+              ))}
             </div>
-          ))}
-        </section>
-      )}
+          ) : (
+            <Alert>
+              <AlertTitle>No survey datasets attached</AlertTitle>
+              <AlertDescription>
+                This prediction is currently in theoretical or external-data
+                territory.
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
 
-      {/* Paper Connections */}
-      <section className="section">
-        <h2>Paper Connections</h2>
-        {pred.papers.map((paper) => (
-          <div key={paper} className="card" style={{ padding: "10px 16px", marginBottom: 8 }}>
-            <span style={{ fontSize: 14 }}>{paper}</span>
+        <TabsContent value="papers" className="pt-4">
+          <div className="grid gap-2 md:grid-cols-2">
+            {pred.papers.map((p) => (
+              <Card key={p}>
+                <CardContent className="p-4 text-sm">{p}</CardContent>
+              </Card>
+            ))}
           </div>
-        ))}
-      </section>
+        </TabsContent>
 
-      {/* Timeline */}
-      <section className="section">
-        <h2>Timeline</h2>
-        <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>{pred.timeline}</p>
-      </section>
+        <TabsContent value="timeline" className="pt-4">
+          <Card>
+            <CardContent className="p-6 text-sm text-muted-foreground">
+              {pred.timeline}
+            </CardContent>
+          </Card>
+        </TabsContent>
 
-      {/* Next Steps */}
-      <section className="section">
-        <h2>Next Steps ({pred.nextSteps.length})</h2>
-        {pred.nextSteps.map((step, i) => (
-          <div
-            key={i}
-            style={{
-              padding: "10px 14px",
-              borderBottom: "1px solid var(--border)",
-              fontSize: 14,
-              color: "var(--text-secondary)",
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#f59e0b", flexShrink: 0 }} />
-            {step}
+        <TabsContent value="next" className="pt-4">
+          <div className="space-y-1 rounded-lg border bg-card">
+            {pred.nextSteps.map((step, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 border-b px-4 py-3 text-sm last:border-b-0"
+              >
+                <span className="h-2 w-2 shrink-0 rounded-full bg-amber-500" />
+                <span className="text-muted-foreground">{step}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </section>
+        </TabsContent>
+      </Tabs>
+
+      <div className="mt-8 flex gap-2">
+        <Button asChild variant="outline" size="sm">
+          <Link href="/predictions">&larr; All predictions</Link>
+        </Button>
+      </div>
     </>
   );
 }
