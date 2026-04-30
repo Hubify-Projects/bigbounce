@@ -1,0 +1,29 @@
+{
+  "computed_at": "2026-04-30T20:58:17Z",
+  "purpose": "Demonstrate that ACT DR6 quarantine (failing native-retrain val_loss=22420) does not destabilize the multi-survey anomaly catalog total or cluster count.",
+  "canonical_7way": {
+    "n_unique": 378280,
+    "n_multi_survey_clusters": 637,
+    "surveys_included": [
+      "DESI",
+      "SDSS",
+      "eROSITA",
+      "LAMOST",
+      "Planck",
+      "NEOWISE",
+      "Gaia"
+    ],
+    "ACT_DR6_status": "QUARANTINED \u2014 failed native-retrain gate at val_loss 22,420; ZERO positional cross-survey overlaps",
+    "rationale_for_canonical": "ACT DR6 entries fail the BigAE native-retrain quality gate; including them would inject low-quality anomalies that have zero positional overlap with any other survey, providing no cross-validation benefit while inflating the total count."
+  },
+  "sensitivity_8way": {
+    "n_unique": 378480,
+    "n_multi_survey_clusters": 637,
+    "delta_unique_vs_7way": 200,
+    "delta_pct": 0.053,
+    "delta_clusters_vs_7way": 0,
+    "interpretation": "Adding the 200 quarantined ACT DR6 anomalies inflates the unique-anomaly count by 0.053% but adds zero multi-survey clusters because ACT entries have zero positional cross-survey overlaps. The cluster count is invariant under ACT inclusion/exclusion \u2014 confirming ACT DR6 contributes no cross-validation information."
+  },
+  "verdict": "7-way dedup is canonical for P3 Table 1. The 8-way 378,480 variant is preserved on disk as a transparent sensitivity check (cf. fire #164 + R42-fix 2026-04-30). Including or excluding ACT does not change the multi-survey cluster physics \u2014 only the bare count.",
+  "paper_handling": "P3 Table 1 footnote should explicitly state: (1) canonical total is 378,280 (7-way); (2) ACT DR6 quarantined for failing native-retrain quality gate at val_loss 22,420; (3) 8-way 378,480 sensitivity-check variant on disk; (4) cluster count 637 invariant. This addresses Reviewer's B18 question about catalog robustness to survey inclusion."
+}

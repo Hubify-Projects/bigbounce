@@ -1,0 +1,42 @@
+Legacy CSV had 28 rows, datasets: ['planck_only', 'planck_bao', 'planck_bao_sn', 'full_tension']
+
+=== full_tension ===  freeze_dir=full_tension_20260311_1728  found 6 chains
+  columns: ['weight', 'minuslogpost', 'logA', 'nnu', 'ns', 'ombh2', 'omch2', 'tau', 'theta_MC_100', 'A_planck']...
+    chain_01: total=15054, post-burn=10538
+    chain_02: total=14817, post-burn=10372
+    chain_03: total=14700, post-burn=10290
+    chain_04: total=14670, post-burn=10269
+    chain_05: total=14532, post-burn=10173
+    chain_06: total=102467, post-burn=71727
+  total post-burn samples: 123369
+  col_map: {'ns': 4, 'ombh2': 5, 'tau': 7, 'H0': 20, 'sigma8': 21, 'omegam': 22, 'delta_neff': 24}
+    H0: Rhat=1.000617 (R-1=0.000617), ESS=312901, drift=-0.0398
+    delta_neff: Rhat=1.000613 (R-1=0.000613), ESS=312903, drift=-0.0541
+    omegam: Rhat=1.000613 (R-1=0.000613), ESS=312903, drift=-0.0009
+    ombh2: Rhat=1.000086 (R-1=0.000086), ESS=313233, drift=-0.0091
+    ns: Rhat=1.000974 (R-1=0.000974), ESS=312678, drift=-0.0378
+    tau: Rhat=1.000950 (R-1=0.000950), ESS=312693, drift=0.0404
+    sigma8: Rhat=1.000783 (R-1=0.000783), ESS=312797, drift=-0.0316
+
+=== planck_bao_sn ===  freeze_dir=planck_bao_sn_20260312_1954  found 6 chains
+  columns: ['weight', 'minuslogpost', 'logA', 'nnu', 'ns', 'ombh2', 'omch2', 'tau', 'theta_MC_100', 'A_planck']...
+    chain_01: total=21767, post-burn=15237
+    chain_02: total=22234, post-burn=15564
+    chain_03: total=22625, post-burn=15838
+    chain_04: total=21590, post-burn=15113
+    chain_05: total=21808, post-burn=15266
+    chain_06: total=22925, post-burn=16048
+  total post-burn samples: 93066
+  col_map: {'ns': 4, 'ombh2': 5, 'tau': 7, 'H0': 19, 'sigma8': 20, 'omegam': 21, 'delta_neff': 23}
+    H0: Rhat=1.000804 (R-1=0.000804), ESS=356840, drift=-0.0302
+    delta_neff: Rhat=1.000971 (R-1=0.000971), ESS=356721, drift=-0.0188
+    omegam: Rhat=1.000320 (R-1=0.000320), ESS=357185, drift=0.0431
+    ombh2: Rhat=1.000258 (R-1=0.000258), ESS=357230, drift=-0.0273
+    ns: Rhat=1.000413 (R-1=0.000413), ESS=357119, drift=-0.0474
+    tau: Rhat=1.000667 (R-1=0.000667), ESS=356938, drift=-0.0316
+    sigma8: Rhat=1.000441 (R-1=0.000441), ESS=357099, drift=-0.0276
+
+Backed up old CSV → reproducibility/cosmology/convergence_latest_pre_R42_backup.csv
+Wrote 14 rows to reproducibility/cosmology/convergence_latest.csv
+
+B6 audit JSON saved.

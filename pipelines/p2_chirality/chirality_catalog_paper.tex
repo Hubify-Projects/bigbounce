@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.1}
+\newcommand{\paperVersion}{v1.0.2}
 \newcommand{\paperTimestamp}{2026-04-30}
 
 \begin{document}
@@ -52,13 +52,13 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 30, 2026, 10:11 PDT --- \paperVersion}
+\date{April 30, 2026, 21:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
 galaxies from the DESI Legacy Imaging Surveys DR8 (Smith42/galaxies),
 each classified as clockwise~(\CW), counter-clockwise~(\CCW), or not
-spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,636 images
+spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
 from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
 synthetic hard negatives. The classifier achieves 93.7\% three-class
 validation accuracy (with 67.6\% of training labels derived from
@@ -68,7 +68,7 @@ bias-hardening suite on the validation split. On a harder
 edge-on-enriched stress-test of 2{,}000 GZ DESI galaxies
 (Sec.~\ref{sec:cw_frac}), four of eight tests pass (survey, calibration,
 leakage, hemispheric) and four flag residual rotational/perturbation
-sensitivity; the residual is absorbed at the equivariant
+sensitivity; the residual is absorbed at the equivariant\footnote{\label{fn:equivariant_scope}\emph{Scope of ``equivariant'' in this paper.}---Throughout this work, ``equivariant'' refers specifically to the test-time horizontal-flip ($Z_2$) symmetrization defined by Eq.~\eqref{eq:tta} (``flip-TTA symmetrized''), \emph{not} to architectural rotation equivariance (e.g., the $C_4$/$D_4$ steerable convolutions of CE-ResNet~\cite{Jia:2023} or fully SO(2)/SE(2)-equivariant networks). The procedure ensures $\pcw \leftrightarrow \pccw$ exchange under horizontal reflection of the input image, which is the symmetry relevant to chirality assignment; rotational orientation invariance is \emph{not} enforced and remains a residual source of bias (Sec.~\ref{sec:cw_frac}).}
 post-processing stage with a measured suppression factor of $3.86\times$
 on the full catalog. A flip-equivariance
 consistency loss during training, combined with two-fold test-time
@@ -86,7 +86,7 @@ is detected at only 0.17\% amplitude and does not survive a
 look-elsewhere correction. This is the most sensitive chirality
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
 $3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
-Shamir~\cite{Shamir:2020,Shamir:2022} is definitively refuted: our
+Shamir~(2020, 2022)~\cite{Shamir:2020,Shamir:2022} is strongly disfavored within the DESI Legacy Imaging Surveys footprint under the present pipeline: our
 maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance}), a factor of~9 smaller. We further
 show that raw survey systematics can masquerade as a $94.6\sigmaunit$
 dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
@@ -118,12 +118,12 @@ providing a window into physics beyond the Standard Model of
 cosmology~\cite{Alexander:2009tp}.
 
 Claims of such a signal have appeared intermittently in the literature.
-Shamir~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
+Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
 dipole using $\sim\!10^4$ Sloan Digital Sky Survey (SDSS) galaxies
 classified by the deterministic Ganalyzer algorithm.
-Shamir~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
+Shamir~(2020)~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
 multiple surveys, reporting asymmetries of $\sim\!3\%$ with a
-consistent dipole axis. Shamir~\cite{Shamir:2022} further claimed
+consistent dipole axis. Shamir~(2022)~\cite{Shamir:2022} further claimed
 confirmation with DESI Legacy Survey data. Meanwhile,
 Iye \textit{et~al.}~\cite{Iye:2020} analyzed Galaxy Zoo data and found no significant
 signal after correcting for the known ``reading direction'' bias in
@@ -240,7 +240,7 @@ We assemble training labels from three sources:
   serving as unambiguous \NS{} training examples.
 \end{enumerate}
 
-The combined training set contains 26,636~images, split 80/20 into
+The combined training set contains 26,626~images, split 80/20 into
 training and validation subsets with stratified class balance.
 The ${\sim}27{,}000$-galaxy training set covers $< 0.32\%$ of the inference
 catalog. While the DESI Legacy Survey imaging is photometrically
@@ -248,7 +248,7 @@ uniform across the footprint, the training set's morphological type
 distribution may not fully represent the rarer galaxy types in the
 8.47M sample; the \NS{} class mitigates this by explicitly routing
 ambiguous objects away from chirality classification.
-We note that 67.6\% of training labels (17,999 of 26,636) derive from
+We note that 67.6\% of training labels (17,999 of 26,626) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
 than independent ground truth. On the Galaxy~Zoo~1-only subset
@@ -1074,11 +1074,11 @@ extraction.
 \subsection{Shamir (2020, 2022)}
 \label{sec:shamir}
 
-Shamir~\cite{Shamir:2020} and Shamir~\cite{Shamir:2022} reported galaxy chirality
+Shamir~(2020)~\cite{Shamir:2020} and Shamir~(2022)~\cite{Shamir:2022} reported galaxy chirality
 asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
-a definitive test of these claims: our chirality-relevant spiral
+a stringent test of these claims within the DESI Legacy footprint: our chirality-relevant spiral
 subsample ($3{,}321{,}795$ CW~$+$~CCW galaxies) is
 ${\sim}17\times$ larger than Shamir's largest spiral subsample
 (${\sim}200{,}000$ galaxies classified as spiral by Ganalyzer
@@ -1530,8 +1530,8 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   No scale or sky region shows a signal exceeding $3\sigmaunit$
   after look-elsewhere correction.
 
-\item \textbf{Shamir's $\sim\!3\%$ asymmetry is definitively
-  refuted.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9
+\item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
+  disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9
   smaller---with a spiral subsample ($3{,}321{,}795$ CW~$+$~CCW)
   that is ${\sim}17\times$ larger than Shamir's largest catalog, and
   with rigorous bias controls.

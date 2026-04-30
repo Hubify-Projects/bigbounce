@@ -1,0 +1,23 @@
+{
+  "companion_agent": "stalled",
+  "started_at_utc": "2026-04-18T10:22:57Z",
+  "stalled_at_utc": "2026-04-18T10:52:58Z",
+  "phase": "timed_out_waiting_for_primary_pod_provision",
+  "primary_agent_id": "a6bdf64f677b286f5",
+  "pod_provision_file_watched": "pipelines/p3_anomaly_engine/pod_provision_20260418.json",
+  "poll_interval_seconds": 60,
+  "poll_duration_seconds": 1801,
+  "poll_attempts": 31,
+  "sessions_planned": ["p3_d", "p3_g", "p3a_phase"],
+  "sessions_launched": [],
+  "pod_cost_contribution_usd": 0.00,
+  "errors": [
+    {
+      "type": "timeout_waiting_primary_agent",
+      "message": "pod_provision_20260418.json never appeared within the 30-minute cap. Companion did NOT provision a separate pod (per directive: $140 cap is shared).",
+      "timestamp_utc": "2026-04-18T10:52:58Z"
+    }
+  ],
+  "action_taken": "stopped_per_directive",
+  "resume_instructions": "When the primary agent (or a new session) provisions a pod, re-invoke the companion orchestrator with the same prompt; Step A will detect the JSON file and proceed through Steps B-F."
+}
