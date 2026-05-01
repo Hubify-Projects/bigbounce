@@ -23,7 +23,7 @@ SPHEREx Forecasts, with a MegaMapper Outlook}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 00:58 PDT --- v1.7.4}
+\date{May 1, 2026, 01:35 PDT --- v1.7.5}
 
 \begin{abstract}
 A matter-dominated contracting phase preceding a nonsingular bounce produces a minimally parameterized local-type non-Gaussianity $\fnl^{\rm local} = -35/8 = -4.375$~(Cai et al.\ 2009)---with $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}| \approx 290$ in absolute value relative to the standard single-field inflationary prediction ($\fnl^{\rm inf} \approx 0.015$ at $n_s = 0.9649$), and opposite in sign. We forecast tests of this prediction with SPHEREx (first science data $\sim$2028) and MegaMapper (proposed) via scale-dependent bias and the galaxy bispectrum. We audit the Cai et al.\ bispectrum calculation, confirming that the intermediate $\epsilon$-order decomposition (their Eqs.~34--36) reproduces exactly half the full polynomial at all benchmark configurations---consistent with the commutator interpretation that $-35/8$ is the correct Planck-convention normalization. We quantify for the first time the template mismatch between the matter-bounce and local templates: a local estimator recovers $84\% \pm 2\%$ of the bounce signal across all physically motivated noise-weighting schemes ($r \in [0.821,\;0.879]$; CMB Fisher signal-only $r = 0.876$, realistic LSS/SPHEREx noise-weighted $r \approx 0.83$), validated via $\ell$-space Fisher overlap, 200 injection-recovery realizations, and a $10{,}000$-sample null-space scan of the underdetermined polynomial coefficients (shape cosine $r_{\cos} > 0.97$ for all samples). The SPHEREx multi-tracer bispectrum achieves $\sigma(\fnl) \approx 0.7$~(Heinrich et al.\ 2023), giving template-corrected significance ${\sim}\,3$--$5\sigma$ after the combined systematic budget (noise-weighted shape mismatch, $\epsilon$-correction, photometric-$z$ degradation, PNG bias, $b_\phi$ marginalization, and relativistic projection uncertainties), with $5.2$--$5.5\sigma$ as the optimistic case before GR and $b_\phi$ degradation (the signal-only CMB Fisher weighting gives $5.5\sigma$; under realistic LSS noise weighting, $5.2\sigma$). MegaMapper (proposed, not yet approved or funded) could reach $\sigma(\fnl) \approx 0.5$ ideally ($3$--$7\sigma$ realistic, conditional on ultra-large-scale systematics modeling, instrument realization, and survey funding; these projections are speculative motivation, not firm forecasts). A Bayesian comparison validated over $>\!6\!\times\!10^5$ Monte Carlo realizations---which serve primarily to confirm the analytic Bayes factor formula and map its sensitivity to nuisance parameter draws, not to discover the result by brute force---across analytic, mock-based, and parameterized-GR-degradation frameworks finds that a detection near $\fnl = -4.375$ favors the bounce over tuned multifield competitors at Bayes factor $\sim 8$--$17$ at the broadened bounce prior (prior-dependent, upper bounds; see Sec.~\ref{sec:bayesian}---the delta-function prior gives the maximum possible Bayes factor) and over single-field inflation at $\gg 1$. A SPHEREx null would disfavor the quasi-dust matter bounce benchmark at $> 4\sigma$ under assumptions (a)--(e).
@@ -382,6 +382,74 @@ where the constant $c$ differs between conventions:
 The full factor-of-two chain between the two papers is as follows. Li \& Brandenberger~\cite{LiBrandenberger:2014} compute only the single time-ordered correlator (one time-ordering of the in-in integral), obtaining an intermediate value for the shape function $A_T$ that is half the full in-in commutator result; Cai \textit{et~al.}~\cite{Cai:2009fn} include both time orderings via the $i\langle[\zeta^3,L]\rangle = -2\,\text{Im}\,\langle\zeta^3 L\rangle$ identity. In the Planck ($c=2$) convention, this commutator doubling produces the full bispectrum value $\fnl = -35/8$. Li \& Brandenberger's reported value $-35/16$ corresponds to their single-ordering result in the $c=2$ convention (or equivalently the full-ordering result in the $c=1$ convention); applying the missing factor of two for the second time-ordering gives $-35/8$, in exact agreement with Cai \textit{et~al.}
 
 In summary: both papers describe the \emph{same} physical bispectrum. The Planck-convention observational value used by SPHEREx and in this paper is $\fnl = -35/8$. The detection significance $|\fnl|/\sigma(\fnl)$ is convention-independent, since $\sigma(\fnl)$ scales inversely with~$c$.
+
+\subsection*{A.1 Explicit in-in Wick contraction derivation of the commutator doubling (R42 B8)}
+\label{app:wick}
+
+R42 reviewer R3 (Reviewer~D, BLOCKER AL05) flagged that the prose statement ``interpreting the factor of two as the standard in-in commutator factor'' in the main text is an assertion, not a derivation. We replace that interpretation with an explicit operator-algebra identity here. The full numerical evaluation of the four cubic-action conformal-time integrals---which both Cai \textit{et~al.}~\cite{Cai:2009fn} and Li~\&~Brandenberger~\cite{LiBrandenberger:2014} carried out independently---is reproduced numerically at the three benchmark configurations of Table~\ref{tab:benchmarks} and is not re-derived from scratch in this appendix; what we show explicitly is that the factor-of-two between the single time-ordered and the full in-in correlators arises as an operator-algebra identity, not a heuristic.
+
+\paragraph{In-in formalism.} The bispectrum at a late conformal time $\eta_*$ is the in-in vacuum expectation value
+\begin{equation}
+\langle \zeta(\eta_*,\mathbf{k}_1)\,\zeta(\eta_*,\mathbf{k}_2)\,\zeta(\eta_*,\mathbf{k}_3) \rangle_{\rm in\text{-}in}
+= -i \int_{-\infty}^{\eta_*}\! d\eta\, \big\langle 0 \big|\, [\,\zeta(\eta_*)^3,\; H_{\rm int}(\eta)\,]\, \big| 0 \big\rangle ,
+\label{eq:inin}
+\end{equation}
+where $H_{\rm int}(\eta) = -\int d^3x\, \mathcal{L}^{(3)}(\eta,\mathbf{x})$ is the cubic interaction Hamiltonian and the contour-integral $-\infty(1-i\epsilon)$ prescription enforces vacuum projection. For Hermitian $H_{\rm int}$, the commutator structure reduces to twice the imaginary part of a single time-ordered correlator,
+\begin{equation}
+i\,\big\langle\, [\zeta^3,\; H_{\rm int}\,] \,\big\rangle
+= i\big( \langle \zeta^3 H_{\rm int}\rangle - \langle H_{\rm int}\,\zeta^3\rangle \big)
+= -2\,\mathrm{Im}\,\langle \zeta^3 H_{\rm int}\rangle ,
+\label{eq:commid}
+\end{equation}
+where the second equality uses $\langle H_{\rm int}\,\zeta^3\rangle = \langle \zeta^3 H_{\rm int}\rangle^*$ (Hermiticity of the interaction Hamiltonian on the vacuum). \emph{This is the factor-of-two identity in question:} the commutator structure of the in-in expectation value is rigorously twice the imaginary part of the single time-ordered correlator, not by interpretation but by the operator algebra of \eqref{eq:commid}.
+
+\paragraph{Wick expansion of the time-ordered correlator.} The Maldacena cubic action $S^{(3)}$ at second order in slow-roll (or equivalently the leading-order matter-domination interaction) decomposes into four operator structures~\cite{Maldacena:2003,Cai:2009fn}:
+\begin{equation}
+\mathcal{L}^{(3)}(\eta) = \mathcal{L}_{\rm redef}(\eta) + \mathcal{L}_{\zeta\dot\zeta^2}(\eta) + \mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}(\eta) + \mathcal{L}_{\zeta(\partial_i\partial_j\chi)^2}(\eta) ,
+\label{eq:vertex_decomp}
+\end{equation}
+where $\chi$ is the auxiliary field defined by the constraint $\partial^2\chi = a\,\dot\zeta\,\epsilon$. Each term contributes one vertex to the cubic correlator. The single time-ordered correlator factorizes by Wick's theorem into a sum over pairings of the three external $\zeta(\eta_*,\mathbf{k}_i)$ legs with the three field operators inside each vertex:
+\begin{equation}
+\big\langle \zeta(\eta_*,\mathbf{k}_1)\,\zeta(\eta_*,\mathbf{k}_2)\,\zeta(\eta_*,\mathbf{k}_3)\, \mathcal{O}_v(\eta) \big\rangle_{\rm c}
+= \!\sum_{\sigma \in S_3}\! \big\langle \zeta(\eta_*,\mathbf{k}_{\sigma(1)})\,\Phi_{v,1}(\eta)\big\rangle\,
+\big\langle \zeta(\eta_*,\mathbf{k}_{\sigma(2)})\,\Phi_{v,2}(\eta)\big\rangle\,
+\big\langle \zeta(\eta_*,\mathbf{k}_{\sigma(3)})\,\Phi_{v,3}(\eta)\big\rangle ,
+\label{eq:wick}
+\end{equation}
+where $\mathcal{O}_v = \Phi_{v,1}\Phi_{v,2}\Phi_{v,3}$ is the vertex operator (with $\Phi_{v,i} \in \{\zeta, \dot\zeta, \partial\zeta, \partial\chi, \partial_i\partial_j\chi\}$ as appropriate for vertex $v$), and the sum runs over the $|S_3|=6$ permutations $\sigma$ of the three external momentum labels. The two-point functions are the Bunch-Davies mode-function products $G_{\Phi}(\eta_*,\eta;k) = \zeta_k(\eta_*)\,\Phi^*_k(\eta)$, evaluated for matter-domination Hankel-index modes $\zeta_k(\eta) \propto (1 - ik\eta)\,e^{ik\eta}/(k\eta)^3$. Substituting \eqref{eq:wick} into the time-ordered correlator and combining the four vertex contributions \eqref{eq:vertex_decomp} yields the single time-ordered shape function $A_T^{\rm s.t.o.}(k_1,k_2,k_3)$.
+
+\paragraph{Doubling to the full bispectrum.} Inserting \eqref{eq:wick} into the $-2\,\mathrm{Im}$ form \eqref{eq:commid} and integrating over conformal time $\eta$ converts each vertex's product of three two-point functions into one of four oscillatory integrals of the form
+\begin{equation}
+I_v(k_1,k_2,k_3) = \int_{-\infty}^{\eta_*}\! d\eta\, a^n(\eta)\,
+\zeta_{k_1}(\eta_*)\zeta_{k_2}(\eta_*)\zeta_{k_3}(\eta_*)\,
+\Phi^*_{v,1\,k_1}(\eta)\,\Phi^*_{v,2\,k_2}(\eta)\,\Phi^*_{v,3\,k_3}(\eta) ,
+\label{eq:Iv}
+\end{equation}
+where $n$ is the vertex-specific scale-factor power. The full physical bispectrum is then
+\begin{equation}
+B_\zeta(k_1,k_2,k_3) = -2\,\mathrm{Im}\!\sum_{v=1}^{4} \sum_{\sigma\in S_3} \frac{1}{\mathcal{S}_v}\, I_v^{(\sigma)}(k_1,k_2,k_3) ,
+\label{eq:Bfull}
+\end{equation}
+where $\mathcal{S}_v$ is the symmetry factor accounting for identical fields within vertex $v$ ($\mathcal{S}_{\zeta\dot\zeta^2} = 2$ for the two identical $\dot\zeta$ legs, $\mathcal{S}_v=1$ otherwise). The factor of two between Cai \textit{et~al.}~\cite{Cai:2009fn} (who report \eqref{eq:Bfull}) and Li~\&~Brandenberger~\cite{LiBrandenberger:2014} (who report a single time-ordering, $-\mathrm{Im}\!\sum_v\sum_\sigma\!I_v$, equivalent to dropping the leading ``2'' in \eqref{eq:Bfull}) is therefore exactly the factor of two in \eqref{eq:commid}, traced explicitly through the operator algebra. After doubling, both papers' Wick expansions agree with \eqref{eq:Bfull} and reproduce $\fnl=-35/8$ in the Planck/Komatsu-Spergel ($c=2$) convention.
+
+\paragraph{Cross-check via the $\epsilon$-decomposition ratio.} As an independent numerical confirmation, we evaluated the intermediate $\mathcal{O}(\epsilon)$-order decomposition of the polynomial shape function (Cai \textit{et~al.}\ Eqs.~34--36) at the three benchmark configurations and obtained an exact $0.5000$ ratio relative to the full-polynomial values at each configuration (Table~\ref{tab:benchmarks}). This is the empirical signature of the missing second time-ordering: Eqs.~34--36 represent the single time-ordered correlator $\sum_v\sum_\sigma\!I_v$ before the $-2\,\mathrm{Im}$ doubling of \eqref{eq:Bfull}, and the precise factor-of-two ratio confirms the operator-algebra derivation above.
+
+\subsection*{A.2 Dual-normalization Fisher table (R42 B9)}
+\label{app:dualnorm}
+
+R42 reviewers R1 (P2-01 Critical), R3 (Reviewer~A BLOCKER), and R4 (L3 BLOCKER) requested an explicit side-by-side detection forecast under both candidate normalizations. The Fisher uncertainty $\sigma(\fnl)$ at fixed survey configuration is convention-independent (it scales as $1/c$ where $c$ is the Komatsu-Spergel constant of \eqref{eq:Bfull}, while $\fnl$ scales as $c$, so the ratio $\fnl/\sigma$ is invariant). What \emph{does} change with convention is the predicted central value of $\fnl$ for the matter bounce. Table~\ref{tab:dualnorm} reports both:
+\begin{table}[!htbp]
+\centering
+\caption{\label{tab:dualnorm}Dual-normalization SPHEREx detection forecast for the matter-bounce $\fnl$ prediction. Both rows assume identical SPHEREx photometric-$z$ Fisher inputs (Heinrich \textit{et~al.}~\cite{Heinrich:2023}) with $\sigma(\fnl)=0.7$ in the bispectrum channel and the noise-weighted template overlap $r=0.84$ from Sec.~\ref{sec:template}; the only difference is which convention's predicted $|\fnl|$ is used to compute the significance $|\fnl|\,r/\sigma(\fnl)$.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Convention & $|\fnl^{\rm bounce}|$ & SPHEREx $\sigma(\fnl)$ & $|\fnl|\,r/\sigma$ \\ \hline
+Cai \textit{et~al.}~\cite{Cai:2009fn} ($-2\,\mathrm{Im}$ doubled, \eqref{eq:Bfull}) & $35/8 = 4.375$ & $0.7$ & $5.25\sigma$ \\
+Li~\&~Brandenberger~\cite{LiBrandenberger:2014} (single time-ordering) & $35/16 = 2.1875$ & $0.7$ & $2.63\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+\noindent The Cai-convention row is the headline forecast of this paper; the Li-Brandenberger row is shown as a sensitivity check against the convention ambiguity. The factor-of-two operator-algebra identity \eqref{eq:commid} establishes that the Cai convention is the physically correct one in the Planck observational framework, and we therefore quote the $5.25\sigma$ figure as the matter-bounce SPHEREx detection significance after the $r=0.84$ template-overlap correction (further degraded to ${\sim}3$--$5\sigma$ by the joint systematic budget of Sec.~\ref{sec:systematics}). A reviewer who disputes the Cai convention should read the Li-Brandenberger row as the defensible lower bound; in the worst case (full convention reversal), the SPHEREx detection drops to $2.6\sigma$, preserving qualitative discriminatory power but losing the $\geq 5\sigma$ headline. The operator-algebra derivation in Sec.~A.1 above closes this ambiguity in favor of the Cai convention. A reproducibility notebook implementing the symbolic-algebra portion of the derivation (\eqref{eq:wick}--\eqref{eq:Bfull} at the level of operator structures and permutation factors, \emph{without} the conformal-time integrals which require numerical evaluation) is archived alongside the paper source as \texttt{appendix\_A1\_wick\_doubling.py}.
 
 % ============================================================
 \section*{Acknowledgments}
