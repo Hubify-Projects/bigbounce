@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.7}
+\newcommand{\paperVersion}{v1.0.8}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 08:15 PDT --- \paperVersion}
+\date{May 1, 2026, 13:45 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -67,11 +67,16 @@ synthetic hard negatives. The classifier achieves 93.7\% three-class
 validation accuracy (with 67.6\% of training labels derived from
 CE-ResNet predictions rather than independent ground truth;
 see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
-bias-hardening suite on the validation split. On a harder
-edge-on-enriched stress-test of 2{,}000 GZ DESI galaxies
-(Sec.~\ref{sec:cw_frac}), four of eight tests pass (survey, calibration,
-leakage, hemispheric) and four flag residual rotational/perturbation
-sensitivity; the residual is absorbed at the equivariant\footnote{\label{fn:equivariant_scope}\emph{Scope of ``equivariant'' in this paper.}---Throughout this work, ``equivariant'' refers specifically to the test-time horizontal-flip ($Z_2$) symmetrization defined by Eq.~\eqref{eq:tta} (``flip-TTA symmetrized''), \emph{not} to architectural rotation equivariance (e.g., the $C_4$/$D_4$ steerable convolutions of CE-ResNet~\cite{Jia:2023} or fully SO(2)/SE(2)-equivariant networks). The procedure ensures $\pcw \leftrightarrow \pccw$ exchange under horizontal reflection of the input image, which is the symmetry relevant to chirality assignment; rotational orientation invariance is \emph{not} enforced and remains a residual source of bias (Sec.~\ref{sec:cw_frac}).}
+bias-hardening suite on the validation split. We disclose the
+8-test split (Sec.~\ref{sec:bias}): four model-perturbation
+\emph{stress tests} (flip-swap, rotation, perturbation,
+metadata-leakage) probe response at the signal-amplitude level
+and constitute the load-bearing constraints on residual
+orientation-dependent bias, while four result-level
+\emph{sanity checks} (artifact rejection, hemispheric null,
+calibration, CW-balance) rule out gross failure modes at coarser
+qualitative thresholds. The residual rotational/perturbation
+sensitivity is absorbed at the equivariant\footnote{\label{fn:equivariant_scope}\emph{Scope of ``equivariant'' in this paper.}---Throughout this work, ``equivariant'' refers specifically to the test-time horizontal-flip ($Z_2$) symmetrization defined by Eq.~\eqref{eq:tta} (``flip-TTA symmetrized''), \emph{not} to architectural rotation equivariance (e.g., the $C_4$/$D_4$ steerable convolutions of CE-ResNet~\cite{Jia:2023} or fully SO(2)/SE(2)-equivariant networks). The procedure ensures $\pcw \leftrightarrow \pccw$ exchange under horizontal reflection of the input image, which is the symmetry relevant to chirality assignment; rotational orientation invariance is \emph{not} enforced and remains a residual source of bias (Sec.~\ref{sec:cw_frac}).}
 post-processing stage with a measured suppression factor of $3.86\times$
 on the full catalog. A flip-equivariance
 consistency loss during training, combined with two-fold test-time
@@ -494,9 +499,14 @@ of releasing the catalog at the current scale.
 A separate concern raised in adversarial peer review (R42 round, reviewer~R3)
 was whether the test-time flip averaging itself induces spurious
 \NS{}$\to$\{CW, CCW\} migrations, which would inflate the chirality counts
-at the expense of the rejection class. We tested this directly on the
-production catalog. Of the 53{,}862~galaxies classified \NS{} by the
-single-pass raw head, $\mathbf{51{,}694\,(95.97\%)}$ remain \NS{} after the
+at the expense of the rejection class. We tested this directly on a
+B21 transition-matrix subsample (a Wave~9 single-pass raw-head draw of
+$53{,}862$ galaxies, distinct from the full $5{,}152{,}736$ production
+\NS{} catalog after TTA averaging; this subsample is the load-bearing
+artifact for the B21 leakage test only and is \emph{not} the catalog-wide
+\NS{} count---see \S\ref{sec:cw_frac} Catalog~A statistics for the full
+\NS{} denominator). Of the $53{,}862$~galaxies classified \NS{} by the
+single-pass raw head in this subsample, $\mathbf{51{,}694\,(95.97\%)}$ remain \NS{} after the
 two-fold flip-TTA averaging; the remaining $4.03\%$ split into 1{,}066~CW
 and 1{,}102~CCW, an essentially balanced leakage
 ($|N_{\mathrm{CW}}-N_{\mathrm{CCW}}|/N_\mathrm{total} = 0.07\%$). The
