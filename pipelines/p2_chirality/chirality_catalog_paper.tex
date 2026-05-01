@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.11}
+\newcommand{\paperVersion}{v1.0.12}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 16:10 PDT --- \paperVersion}
+\date{May 1, 2026, 16:35 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -371,11 +371,18 @@ excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
 \end{table}
 
 Data augmentation includes random rotation ($0\text{--}360^\circ$,
-uniform, without chirality-label remapping---the rotation teaches the
-model general orientation robustness but does not preserve the
-CW/CCW label under large rotations, which is a methodological
-limitation that may contribute to the residual $9.5\sigmaunit$
-asymmetry; see Sec.~\ref{sec:cw_frac}),
+uniform, without chirality-label remapping---in-plane rotation is
+\emph{chirality-preserving} by construction (a clockwise-trailing
+spiral remains clockwise-trailing under any rotation about the line
+of sight; only mirror reflection flips CW$\leftrightarrow$CCW),
+so the augmentation correctly teaches general orientation robustness
+without label corruption. Any residual orientation-correlated
+asymmetry that survives this augmentation arises from the
+\emph{classifier's} rotation-non-equivariance under spatially-varying
+PSF and pixel-grid structure---not from rotated CW/CCW labels being
+mismatched---and is what the optional $D_4$-TTA extension
+discussed in Sec.~\ref{sec:tta} would average over;
+see also Sec.~\ref{sec:cw_frac} for the residual-asymmetry budget),
 chirality-aware horizontal flipping (CW$\leftrightarrow$CCW
 labels swap when the image is mirrored), brightness jitter
 ($0.6\text{--}1.4\times$), contrast jitter ($0.7\text{--}1.3\times$),
@@ -891,8 +898,15 @@ A $10{,}000$-realization run confirms $p = 0.005 \pm 0.001$, consistent
 with the 1{,}000-run estimate.}
 
 \paragraph{Simple dipole.}
-Using Catalog~C (equivariant), the fitted dipole has significance
-$0.43\sigmaunit$ ($p = 0.33$), fully consistent with the null
+Using Catalog~C (equivariant), the fitted dipole has amplitude
+significance $0.43\sigmaunit$ (one-tailed $p = 0.33$ from the
+isotropic-null bootstrap; equivalently a two-tailed
+$p = 0.67$, since the dipole-amplitude statistic is
+positive-definite and we test the alternative
+``amplitude $>$ random''---the one-tailed convention is the
+natural one for amplitude-only tests and is used
+consistently for the multipole-null and hemisphere $p$-values
+reported below), fully consistent with the null
 hypothesis. In contrast, Catalog~A (raw) yields a spurious
 $94.6\sigmaunit$ dipole---entirely an artifact of the model's
 residual CW bias, which is spatially modulated by the non-uniform
