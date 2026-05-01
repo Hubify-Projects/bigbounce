@@ -33,12 +33,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-01T22:25:00Z",
-  lastUpdatedDisplay: "2026-05-01 15:25 PT",
+  lastUpdatedISO: "2026-05-01T22:45:00Z",
+  lastUpdatedDisplay: "2026-05-01 15:45 PT",
   headline:
-    "Live site is now Next.js (verified) — LiveStatus banner baked at top of every page",
+    "Wave 14-E LANDED — P4 v1.0.10 (Table V N_spiral footnote anchor); 4 cheap-fast GPT-5 BLOCKERs closed inside the Wave 14-B 1M SPARCL fetch window",
   summary:
-    "First flip-deploy errored on a missing prebuild script; second on Vercel installing root deps instead of site/ deps (geist/font/sans unresolved). Both fixed in 06d189d3 + 8cef036d. Live site now serving Next.js (deploy bigbounce-j1z736wk2 ● Ready, build 54s, title \"BigBounce — Spin-Torsion Cosmology\"). LiveStatus banner verified rendered at top of every page (homepage + /paper + /papers/paper-N + /figures + /glossary + /articles + /activity + ...). Wave 14-D LANDED earlier — P4 v1.0.9 + three GPT-5 BLOCKERs closed inside the single Wave 14-B fetch window. Pod 3 H200 SPARCL 1M fetch alive on PID 25860, ~60 min elapsed, 18 shards / 9K of 1M spectra written (~150 spectra/min observed — slower than the original 2,374/min projection; sub-sample short-circuit decision likely needed if throughput stays at this level).",
+    "Wave 14-E closes P4-OA-B4: Table V (tab:sky_balance) bold \"All sky\" row N_spiral=3,321,795 cell anchored with $^{\\mathrm{a}}$ superscript pointing within the same float to the caption disambiguation between Table V's snapshot total (3,321,795) and the paper-canonical equivariant N_spiral=3,201,160 (Wave 11-C verdict, used everywhere else in the paper for dipole + NaMaster shot-noise normalization). Standard revtex4-2 ruledtabular-safe table-caption anchor pattern. P4 .tex bumped v1.0.9 → v1.0.10, date 14:30 PDT → 15:45 PDT, recompiled clean on Pod 3 (pdflatex × 2 in /workspace/recompile_p4/, 25.79 MB / 18 pp / 0 undef refs, page count unchanged because cell+caption mod is in-place within existing table float), mirrored to pipelines/p2_chirality/ + public/papers/. Four GPT-5 cheap-fast P4 BLOCKERs (P3-CM-B4 14-A, P4-OA-B1+B2 14-C, P4-OA-B6 14-D, P4-OA-B4 14-E) now closed inside the single multi-hour Wave 14-B 1M SPARCL fetch window — exactly the cheap-fast text-edit while compute runs discipline feedback_more_not_less.md + feedback_default_hardest_path.md codify. Pod 3 H200 SPARCL 1M fetch alive on PID 25860, ~1h15m elapsed at this commit, 29 shards / ~9K of 1M spectra written, ~150 spectra/min steady — slower than the original 2,374/min projection; sub-sample short-circuit (e.g., 100K) likely needed if throughput stays at this level (1M ETA at observed rate is ~111 hours).",
   papers: [
     {
       slug: "spin-torsion",
@@ -65,8 +65,8 @@ export const liveStatus: LiveStatus = {
       slug: "chirality-catalog",
       number: 4,
       shortTitle: "Galaxy Chirality Catalog",
-      version: "v1.0.9",
-      readiness: 93,
+      version: "v1.0.10",
+      readiness: 94,
     },
   ],
   blockerTally: {
@@ -82,7 +82,7 @@ export const liveStatus: LiveStatus = {
     {
       name: "Pod 3 H200 (38.80.152.148:33089)",
       state: "active",
-      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~60 min elapsed, 18 shards / 9K of 1M spectra written, ~150 spectra/min — sub-sample short-circuit on the table)",
+      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~1h15m elapsed, 29 shards / ~9K of 1M spectra written, ~150 spectra/min steady — sub-sample short-circuit (e.g., 100K) likely needed; 1M ETA at observed rate is ~111h)",
     },
   ],
 };
