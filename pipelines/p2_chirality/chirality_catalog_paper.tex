@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.14}
+\newcommand{\paperVersion}{v1.0.15}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 17:25 PDT --- \paperVersion}
+\date{May 1, 2026, 17:55 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -275,7 +275,7 @@ than independent ground truth. To quantify the circular-labeling effect,
 we ran the production catalog against the \emph{full} Galaxy~Zoo~1
 Table~2~\cite{Lintott:2008} (667{,}944 objects), restricted to the
 252{,}415 galaxies with a deterministic GZ1 class label
-(\textsc{spiral} with $P_{\mathrm{CW}}\!\neq\!P_{\mathrm{ACW}}$, or
+(\textsc{spiral} with $P_{\mathrm{CW}}\!\neq\!P_{\mathrm{CCW}}$ in our convention---GZ1's published schema labels this variable $P_{\mathrm{ACW}}$ (anti-clockwise), which is identical to $P_{\mathrm{CCW}}$ as established in the footnote at the start of Sec.~\ref{sec:intro}---or
 \textsc{elliptical}). At a $1.0''$ sky-match radius, 240{,}919 GZ1 objects
 ($95.45\%$) cross-match into the catalog. The equivariant-head
 three-class accuracy on this independent GZ1 sample is
@@ -287,7 +287,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \texttt{r42\_results/B20\_B21\_results.json}
+Reproducibility artifact: \texttt{r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the \texttt{paper4-v1.0} release tag of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0}, in the path \texttt{pipelines/p2\_chirality/r42\_results/}. The release tag is permanent; subsequent paper versions will be tagged \texttt{paper4-v1.1}, \texttt{paper4-v1.2}, etc., with cumulative artifacts.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 We treat $69.91\%$ as the conservative spiral-chirality accuracy floor
 and propagate this to all downstream isotropy bounds via the
@@ -817,7 +817,7 @@ this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
 corresponding to $9.5\sigmaunit$ from 0.5000 (using the unrounded
 $\sigma = 0.000274$).
-A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact \texttt{r42\_results/B19\_sustained\_results.json}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and is the R42-required uncertainty quantification for the raw-catalog asymmetry baseline.
+A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact deposited with the public release; see Sec.~\ref{sec:data_availability}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and provides the external peer-review-required uncertainty quantification for the raw-catalog asymmetry baseline.
 
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
