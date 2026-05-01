@@ -1,0 +1,96 @@
+{
+  "wave": "14-FF",
+  "task": "P4 morphology grid: fracdev \u00d7 b/a intersection check",
+  "parent_finding": "P4-CM-M2 PUSHBACK confirmation via 2D morphology stratification",
+  "n_total": 8474531,
+  "bins": [
+    {
+      "label": "full_joined",
+      "n": 8474531,
+      "cw": 1592107,
+      "ccw": 1609053,
+      "total": 3201160,
+      "cw_frac": 0.49735314698421823,
+      "se": 0.0002794578500416354,
+      "z": -9.47138545361107
+    },
+    {
+      "label": "fracdev+ba_nonnull",
+      "n": 7728567,
+      "cw": 1448153,
+      "ccw": 1463482,
+      "total": 2911635,
+      "cw_frac": 0.49736763021463887,
+      "se": 0.0002930228841553098,
+      "z": -8.983495582433445
+    },
+    {
+      "label": "DEV_edge_fracdev_gt_0.5_AND_ba_lt_0.4",
+      "n": 673078,
+      "cw": 145316,
+      "ccw": 146749,
+      "total": 292065,
+      "cw_frac": 0.49754677897043464,
+      "se": 0.0009251885437246862,
+      "z": -2.6515903663149714
+    },
+    {
+      "label": "disk_edge_fracdev_lt_0.5_AND_ba_lt_0.4",
+      "n": 860115,
+      "cw": 274953,
+      "ccw": 278842,
+      "total": 553795,
+      "cw_frac": 0.4964887729213879,
+      "se": 0.0006718858411361056,
+      "z": -5.2259280723566315
+    },
+    {
+      "label": "DEV_face_fracdev_gt_0.5_AND_ba_gt_0.6",
+      "n": 3001448,
+      "cw": 333891,
+      "ccw": 336693,
+      "total": 670584,
+      "cw_frac": 0.49791077627858704,
+      "se": 0.000610581175708331,
+      "z": -3.421696908669456
+    },
+    {
+      "label": "disk_face_fracdev_lt_0.5_AND_ba_gt_0.6",
+      "n": 1168792,
+      "cw": 279852,
+      "ccw": 283307,
+      "total": 563159,
+      "cw_frac": 0.49693248265587514,
+      "se": 0.0006662764909490941,
+      "z": -4.6039705524582715
+    },
+    {
+      "label": "tight_DEV_edge_fracdev_gt_0.7_AND_ba_lt_0.3",
+      "n": 311995,
+      "cw": 72833,
+      "ccw": 73456,
+      "total": 146289,
+      "cw_frac": 0.4978706532958732,
+      "se": 0.0013072666103251154,
+      "z": -1.6288541964651138
+    },
+    {
+      "label": "tight_disk_edge_fracdev_lt_0.3_AND_ba_lt_0.3",
+      "n": 463149,
+      "cw": 155124,
+      "ccw": 156860,
+      "total": 311984,
+      "cw_frac": 0.4972178060413355,
+      "se": 0.0008951665458319224,
+      "z": -3.10801824712841
+    }
+  ],
+  "homogeneity_test": {
+    "cw_frac_min": 0.4964887729213879,
+    "cw_frac_max": 0.49791077627858704,
+    "cw_frac_range": 0.0014220033571991642,
+    "max_bin_se": 0.0009251885437246862,
+    "range_in_se_units": 1.5369876408914096,
+    "verdict": "morphology-flat"
+  }
+}
