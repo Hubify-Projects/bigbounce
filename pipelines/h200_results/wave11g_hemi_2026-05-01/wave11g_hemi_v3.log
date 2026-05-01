@@ -1,0 +1,34 @@
+[init] NSIDE_DIR=8 ndirs=768 N_MC=500 CHUNK=64
+[1] loaded 8,474,531 rows
+[1] spirals: 3,201,160 (CW=1,592,107 CCW=1,609,053)
+[2] 768 hemisphere centers
+[3] Computing hemisphere boolean ...
+[3] hemisphere matrix built in 6.0s — 2.46 GB
+[3] n_total per dir: min=1192072 median=1600580 max=2009088
+[4] Computing data asymmetry per direction ...
+[4] max|A|(data) = 8.530930e-03 at dir #731 (RA,Dec)=(78.75,-66.44)
+[5] Running 500 label-shuffle nulls (chunked CHUNK=64) ...
+    [25/500] 0.141 MC/s  ETA 56.3 min
+    [50/500] 0.223 MC/s  ETA 33.6 min
+    [75/500] 0.270 MC/s  ETA 26.3 min
+    [100/500] 0.273 MC/s  ETA 24.4 min
+    [125/500] 0.280 MC/s  ETA 22.3 min
+    [150/500] 0.279 MC/s  ETA 20.9 min
+    [175/500] 0.268 MC/s  ETA 20.2 min
+    [200/500] 0.262 MC/s  ETA 19.1 min
+    [225/500] 0.265 MC/s  ETA 17.3 min
+    [250/500] 0.268 MC/s  ETA 15.5 min
+    [275/500] 0.272 MC/s  ETA 13.8 min
+    [300/500] 0.266 MC/s  ETA 12.5 min
+    [325/500] 0.262 MC/s  ETA 11.1 min
+    [350/500] 0.260 MC/s  ETA 9.6 min
+    [375/500] 0.258 MC/s  ETA 8.1 min
+    [400/500] 0.262 MC/s  ETA 6.4 min
+    [425/500] 0.264 MC/s  ETA 4.7 min
+    [450/500] 0.267 MC/s  ETA 3.1 min
+    [475/500] 0.267 MC/s  ETA 1.6 min
+    [500/500] 0.269 MC/s  ETA 0.0 min
+[6] global p-value (look-elsewhere corrected) = 0.001996
+[6] N_MC nulls >= data = 0
+[6] max_null mean / p99 = 6.6921e-03 / 7.6346e-03
+[done] wall 1874.3s; results in /workspace/r42_wave11g_hemi/

@@ -1,0 +1,21 @@
+{
+  "nside_dir": 8,
+  "ndirs": 768,
+  "n_mc": 500,
+  "n_total": 8474531,
+  "n_spirals": 3201160,
+  "cw_count": 1592107,
+  "ccw_count": 1609053,
+  "max_A_data": 0.008530930263306865,
+  "argmax_dir": 731,
+  "argmax_radec_deg": [
+    78.75,
+    -66.44353569089876
+  ],
+  "max_null_mean": 0.006692090065542782,
+  "max_null_median": 0.006634988120613167,
+  "max_null_p99": 0.00763458498180429,
+  "p_value_global_LEE": 0.001996007984031936,
+  "wall_time_sec": 1874.3236000537872,
+  "notes": "NSIDE=8 (768 dirs) hemisphere look-elsewhere null with N_MC=500 label shuffles; chunked float32 matmul to fit 2 GB RAM. Reduced from N_MC=1000 due to pod RAM constraint."
+}
