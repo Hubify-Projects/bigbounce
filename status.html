@@ -95,7 +95,7 @@
     <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary);">Updated 2026-05-01 02:55 PDT</div>
   </div>
   <div style="margin-top: 10px; font-family: var(--font-sans); font-size: 14px; color: var(--text);">
-    <strong>22 of 23 BLOCKERs CLOSED</strong> &middot; 96% &middot; <span style="display:inline-block; width: 220px; height: 8px; background: var(--border); border-radius: 4px; vertical-align: middle; overflow: hidden;"><span style="display:block; width: 96%; height: 100%; background: #22c55e;"></span></span>
+    <strong>23 of 23 BLOCKERs CLOSED</strong> &middot; 100% &middot; <span style="display:inline-block; width: 220px; height: 8px; background: var(--border); border-radius: 4px; vertical-align: middle; overflow: hidden;"><span style="display:block; width: 100%; height: 100%; background: #22c55e;"></span></span>
   </div>
   <table style="width: 100%; margin-top: 12px; font-family: var(--font-sans); font-size: 13px; border-collapse: collapse;">
     <thead>
@@ -110,14 +110,20 @@
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P1</strong> Spin-Torsion</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v2.2.0</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P2</strong> f<sub>NL</sub> Forecast</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v1.7.5</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P3</strong> Anomaly Catalog</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v3.1.5</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
-      <tr><td style="padding: 6px 8px;"><strong>P4</strong> Chirality Catalog</td><td style="padding: 6px 8px; font-family: var(--font-mono);">v1.0.5</td><td style="padding: 6px 8px;"><span class="badge badge-amber">1 OPEN</span></td><td style="padding: 6px 8px;">B23 HF dataset visibility (Houston-decision toggle, not compute)</td></tr>
+      <tr><td style="padding: 6px 8px;"><strong>P4</strong> Chirality Catalog</td><td style="padding: 6px 8px; font-family: var(--font-mono);">v1.0.5</td><td style="padding: 6px 8px;"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px;">&mdash;</td></tr>
     </tbody>
   </table>
   <div style="margin-top: 12px; font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
     <strong style="color: var(--text);">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45% match rate). Three-class accuracy on independent GZ1 sample = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals. Gap to 93.7% headline quantifies the circular-labeling effect (67.6% CE-ResNet-derived training labels) — both numbers now in P4 §II.A.<br>
     <strong style="color: var(--text);">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, $\Delta$=0.07%). Confirms TTA conserves the rejection class.<br>
     <strong style="color: var(--text);">Pod:</strong> <code style="font-family: var(--font-mono); font-size: 12px;">regular_green_pig-migration</code> @ 38.80.152.148:33089 &middot; GPU idle &middot; cross-match completed in 73s.<br>
-    <strong style="color: var(--text);">ETA to ready-for-external-reviewers:</strong> Only B23 (HuggingFace dataset public-visibility toggle) remains. <strong style="color: #166534;">Bundle is ready-to-send pending one Houston decision on whether to flip the HF catalog public.</strong>
+    <strong style="color: var(--text);">B23:</strong> All five HuggingFace artifacts are now <strong style="color: #166534;">PUBLIC</strong>:
+    <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank"><code>galaxy-chirality-catalog</code></a> (8.47M predictions),
+    <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank"><code>galaxy-chirality-v2</code></a> (ViT-Small model),
+    <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank"><code>desi-spectral-anomaly-detector</code></a> (BigAE),
+    <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),
+    <a href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank"><code>bigbounce-mcmc</code></a> (424K MCMC samples).<br>
+    <strong style="color: #166534;">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED.</strong> Next phase running on pod: 5-seed BigAE ensemble + second-level AE (16D) on the 100K DESI OOD set — produces ensemble error bars on B10 and a ranked ultra-rare anomaly catalog for Paper 3 §X. ~2&ndash;3 h wall clock.
   </div>
 </div>
 

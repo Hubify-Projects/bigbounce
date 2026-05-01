@@ -82,10 +82,10 @@ export default function StatusPage() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div className="flex items-center gap-3">
-            <strong>22 of 23 BLOCKERs CLOSED</strong>
-            <span className="text-muted-foreground">96%</span>
+            <strong>23 of 23 BLOCKERs CLOSED</strong>
+            <span className="text-muted-foreground">100%</span>
             <div className="h-2 w-56 overflow-hidden rounded bg-muted">
-              <div className="h-full bg-emerald-500" style={{ width: "96%" }} />
+              <div className="h-full bg-emerald-500" style={{ width: "100%" }} />
             </div>
           </div>
           <Table>
@@ -119,8 +119,8 @@ export default function StatusPage() {
               <TableRow>
                 <TableCell><strong>P4</strong> Chirality Catalog</TableCell>
                 <TableCell className="font-mono">v1.0.5</TableCell>
-                <TableCell><Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">1 OPEN</Badge></TableCell>
-                <TableCell>B23 HF dataset visibility (Houston-decision toggle)</TableCell>
+                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell>—</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -128,7 +128,13 @@ export default function StatusPage() {
             <p><strong className="text-foreground">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45%). Three-class accuracy on independent GZ1 = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals.</p>
             <p><strong className="text-foreground">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, Δ=0.07%).</p>
             <p><strong className="text-foreground">Pod:</strong> <code className="font-mono text-xs">regular_green_pig-migration</code> @ 38.80.152.148:33089 · cross-match completed in 73 s.</p>
-            <p><strong className="text-foreground">ETA to ready-for-external-reviewers:</strong> Only B23 (HuggingFace dataset public-visibility toggle) remains. <strong className="text-emerald-700 dark:text-emerald-400">Bundle is ready-to-send pending one decision on whether to flip the HF catalog public.</strong></p>
+            <p><strong className="text-foreground">B23:</strong> All five HuggingFace artifacts are <strong className="text-emerald-700 dark:text-emerald-400">PUBLIC</strong>:{" "}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-catalog</code></a> (8.47M predictions),{" "}
+              <a className="underline" href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-v2</code></a> (ViT-Small model),{" "}
+              <a className="underline" href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" rel="noopener noreferrer"><code>desi-spectral-anomaly-detector</code></a> (BigAE),{" "}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),{" "}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples).</p>
+            <p><strong className="text-emerald-700 dark:text-emerald-400">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED.</strong> Next phase on pod: 5-seed BigAE ensemble + second-level AE (16D) on the 100K DESI OOD set — produces ensemble error bars on B10 and a ranked ultra-rare anomaly catalog for Paper 3 §X. ~2–3 h wall.</p>
           </div>
         </CardContent>
       </Card>
