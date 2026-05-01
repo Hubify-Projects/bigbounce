@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.12}
+\newcommand{\paperVersion}{v1.0.13}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 16:35 PDT --- \paperVersion}
+\date{May 1, 2026, 17:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -153,7 +153,7 @@ convolutional neural network that guarantees, by architectural
 construction, that horizontally flipping an input image exactly swaps
 the CW and CCW output channels. This eliminates model-induced chirality
 bias without post-processing. Their catalog of 1.95~million galaxies
-from DESI Legacy pre-imaging yields $\CW/\text{ACW} = 0.998$,
+from DESI Legacy pre-imaging yields $\CW/\CCW = 0.998$,\footnote{CE-ResNet's notation labels the second class \emph{ACW} (anti-clockwise); we use the equivalent \CCW{} (counter-clockwise) throughout this paper. The two are identical orientation conventions.}
 consistent with parity. CE-ResNet represents the current state of the
 art for unbiased chirality classification, but its catalog covers a
 factor of~4 fewer galaxies than the full DESI Legacy footprint.
@@ -167,7 +167,7 @@ constituting the chirality-relevant subsample---this
 spiral count alone is ${\sim}16\times$ larger than the largest prior
 chirality catalog (Shamir~\cite{Shamir:2022}, ${\sim}200{,}000$
 spirals) and $1.6\times$ larger than CE-ResNet~\cite{Jia:2023}
-($1.95$~million galaxies, all classified as CW or ACW since
+($1.95$~million galaxies, all classified as CW or CCW since
 CE-ResNet lacks a not-spiral class);
 (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
@@ -467,7 +467,7 @@ Including rotations under a label-preserving rule (no CW/CCW
 remapping) would average classifier orientation noise into the
 chirality output and could therefore reduce orientation-correlated
 bias---this is the corrected $D_4$-TTA protocol noted in
-Reviewer~R1's M14 query (R42)---and we record this as a structural
+external peer review---and we record this as a structural
 extension for future-pipeline work, since it requires re-running the
 full inference with augmented forward passes that this catalog does
 not include. Second, the horizontal flip is the unique
@@ -502,15 +502,15 @@ of releasing the catalog at the current scale.
   \label{fig:equivariance_demo}}
 \end{figure}
 
-\paragraph{\NS{} stability under TTA averaging (R42 R3 BLOCKER B21).}
-A separate concern raised in adversarial peer review (R42 round, reviewer~R3)
+\paragraph{\NS{} stability under TTA averaging.}
+A separate concern raised in adversarial peer review
 was whether the test-time flip averaging itself induces spurious
 \NS{}$\to$\{CW, CCW\} migrations, which would inflate the chirality counts
 at the expense of the rejection class. We tested this directly on a
-B21 transition-matrix subsample (a Wave~9 single-pass raw-head draw of
+transition-matrix subsample (a single-pass raw-head draw of
 $53{,}862$ galaxies, distinct from the full $5{,}152{,}736$ production
 \NS{} catalog after TTA averaging; this subsample is the load-bearing
-artifact for the B21 leakage test only and is \emph{not} the catalog-wide
+artifact for the leakage test only and is \emph{not} the catalog-wide
 \NS{} count---see \S\ref{sec:cw_frac} Catalog~A statistics for the full
 \NS{} denominator). Of the $53{,}862$~galaxies classified \NS{} by the
 single-pass raw head in this subsample, $\mathbf{51{,}694\,(95.97\%)}$ remain \NS{} after the
@@ -542,8 +542,18 @@ single-model pipeline).
   exceed 0.80.
 \item[\textbf{T2}:] \textbf{Rotation stability.} Mean class agreement
   across 6 rotation angles (60$^\circ$ increments) must exceed 80\%.
+  We chose six $60^\circ$ steps over four $90^\circ$ cardinals to avoid
+  aliasing with the pixel-grid four-fold symmetry, which could otherwise
+  mask orientation-dependent classifier bias along the cardinal axes;
+  $60^\circ$ resolution also bounds the worst-case bias-axis miss
+  to $\pm 30^\circ$.
 \item[\textbf{T3}:] \textbf{Artifact rejection.} Blank sky and
   pixel-scrambled images must be classified as \NS{} at $>70\%$ rate.
+  Evaluated on the held-out 20\% validation split of the synthetic
+  hard-negative training set ($N_{\rm holdout} = 400$ artifacts;
+  Sec.~\ref{sec:labels} item~3); the observed 100\% pass rate
+  ($400/400$) corresponds to a Clopper-Pearson one-sided 95\% lower
+  bound of $99.25\%$, well above the threshold.
 \item[\textbf{T4}:] \textbf{Perturbation robustness.} Classification
   agreement under Gaussian blur ($\sigma_{\rm Gauss} = 2$~px) and
   brightness dimming ($\times 0.5$) must exceed 80\%.
@@ -724,7 +734,7 @@ failed transforms) and are excluded.}, classified as follows:
   is computed directly from the on-disk
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
   (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$), as specified in
-  Wave~11-C of the R42 cross-model peer review (P4-CM-B1, P4-OA-M7).
+  Wave~11-C of the cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5).
   An earlier $N_{\rm spiral} = 3{,}321{,}795$ figure used in
   drafts $\le$\,v1.0.5 reflected a pre-edge-on-redirect snapshot that
   conflated several intermediate counts; the canonical equivariant
@@ -1006,8 +1016,8 @@ spin-2/scalar map construction, not the parent population
 (see~\cite{Hivon:2002}, \cite{Alonso:2019}, App.~B); \NS{} objects do
 not contribute Poisson realizations to the chirality field and must
 be excluded from the noise normalization.\footnote{Wave 11-C of the
-R42 cross-model peer review (findings P4-CM-B1 and P4-OA-M7,
-cross-confirmed by Gemini~3.1-Pro and GPT-5) flagged that earlier
+cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5)
+flagged that earlier
 drafts ($\le$\,v1.0.5) had used $N_{\rm tot} = 8{,}474{,}531$ in the
 shot-noise denominator. The numerical recompute on the H200 pod
 (\texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json},
@@ -1084,7 +1094,7 @@ not be quoted as a measurement of the underlying signal because
 the leakage is a deterministic function of the survey footprint
 and \emph{must} be removed before any cosmological interpretation.
 This MASTER-primary policy is consistent with the methodological
-recommendation of Reviewer~R1 (P4-07, R42).
+recommendation of external peer review.
 
 \begin{figure}[t]
 \centering
@@ -1261,8 +1271,8 @@ retained as cross-checks rather than as headline numbers, because
 their elevated significance is anti-correlated with classification
 reliability and therefore traces classifier noise rather than any
 cosmological signal. This high-confidence-primary policy is
-consistent with the methodological recommendation of Reviewer~R1
-(P4-12, R42) and is implemented uniformly throughout this paper:
+consistent with the methodological recommendation of external
+peer review and is implemented uniformly throughout this paper:
 the abstract, introduction, and conclusions all quote the
 high-confidence dipole upper bound.
 
@@ -1324,11 +1334,11 @@ systematics.
 
 Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
-$\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C approaches this
+$\CW/\CCW = 0.998$. Our equivariant Catalog~C approaches this
 balance with $1.6\times$ the spiral coverage ($3{,}201{,}160$
 CW~$+$~CCW spirals vs.\ CE-ResNet's $1.95$~million):
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
-corresponding to $\CW/\text{ACW} = 0.990$.
+corresponding to $\CW/\CCW = 0.990$.
 
 CE-ResNet remains theoretically superior in one respect: its
 equivariance holds for any input in a single forward pass, without
