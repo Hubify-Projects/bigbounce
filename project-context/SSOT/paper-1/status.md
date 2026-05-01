@@ -2,12 +2,12 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-05-01 07:30 PDT
+last_updated: 2026-05-01 19:30 PDT
 canonical_source: arxiv/main.tex
-canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf — v2.3.5 recompile LANDED 2026-05-01 07:30 PDT on Pod 3)
-version: v2.3.5
+canonical_pdf: arxiv/main.pdf (mirrored to public/papers/{paper1_spin_torsion.pdf, spin_torsion_paper1.pdf, spin-torsion-paper.pdf} — v2.3.6 recompile LANDED 2026-05-01 19:30 PDT on Pod 3)
+version: v2.3.6
 headline_pct: 100
-submission_status: Wave 11-A LANDED — abstract + body reframed (ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote); closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2; PDF recompiled clean on Pod 3 (1.23 MB / 31 pp / 0 undef refs)
+submission_status: Wave 14-M LANDED — OpenAI P1-OA-B4 scale-aware dimensional fix at §II.B "Torsion remains algebraic" L231 (replaced dimensionally ill-posed `O(α/M·M_Pl²) ~ 10⁻³` with scale-aware `O((α/M)·k)` evaluated at k~M_Pl giving ~10⁻², k~M_GUT giving ~10⁻⁵). Wave 11-A carried forward — abstract + body reframed (ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote); closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2, P1-OA-B4; PDF recompiled clean on Pod 3 (1,230,398 bytes / 33 pp / 0 errors / 1 'Wave 14-M' occurrence)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
