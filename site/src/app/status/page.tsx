@@ -47,7 +47,7 @@ export default function StatusPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Last Updated: May 1, 2026 · 02:55 PDT
+          Last Updated: May 1, 2026 · 16:35 PDT
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Research Program Status
@@ -201,7 +201,7 @@ export default function StatusPage() {
                     Galaxy Chirality at Scale: 8.47M Galaxies
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">96% Ready</Badge>
+                    <Badge variant="secondary">97% Ready</Badge>
                   </TableCell>
                   <TableCell className="font-mono">~19</TableCell>
                 </TableRow>

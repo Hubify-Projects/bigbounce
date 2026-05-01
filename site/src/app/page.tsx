@@ -306,6 +306,14 @@ export default function HomePage() {
               href={`/papers/${paper.slug}`}
               className="paper-ledger-item"
             >
+              <div className="paper-ledger-badge-row">
+                <Badge
+                  variant={paperStatusVariant[paper.statusVariant]}
+                  className="paper-ledger-badge"
+                >
+                  {paper.status}
+                </Badge>
+              </div>
               <div className="paper-ledger-main">
                 <div className="paper-ledger-kicker">
                   <FileText aria-hidden="true" />
@@ -322,9 +330,6 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="paper-ledger-status">
-                <Badge variant={paperStatusVariant[paper.statusVariant]}>
-                  {paper.status}
-                </Badge>
                 <div className="paper-ledger-progress">
                   <div
                     className={`paper-ledger-fill ${

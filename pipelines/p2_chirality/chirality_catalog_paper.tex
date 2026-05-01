@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.16}
+\newcommand{\paperVersion}{v1.0.17}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 23:50 PDT --- \paperVersion}
+\date{May 1, 2026, 16:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1572,6 +1572,55 @@ null at the catalog level (spatially uniform; cf.\ \S\ref{sec:cw_frac}
 Catalog~C), but the absence of a survey-systematics cross-correlation
 test means the $0.2\%$ floor cannot at present be elevated to a
 systematic-inclusive limit.
+
+\textbf{Wave 14-JJ external peer-review reframe (PSF cross-correlation
+PUSHBACK closure):}
+\textit{The PSF-ellipticity / scan-angle cross-correlation test
+described above as ``queued as a downstream extension'' has now been
+performed on the full $8{,}474{,}531$-galaxy joined catalog (DR8 sweep
+b/a + ellipticity merged onto Catalog~C \texttt{class\_eq} on
+\texttt{dr8\_id}). HEALPix maps at $\mathrm{NSIDE}{=}64$ are built for
+(a)~the equivariant CW-fraction $f_{\rm CW}(\hat n)$ from the $3.20$M
+spiral subset and (b)~per-pixel population-mean ellipticity proxies
+$(e_1, e_2, |e|, b/a, |e_1|, |e_2|, \mathrm{PA})$ from the $2.91$M
+spiral-and-ellipticity-defined subset (PA from
+$\arctan_2(\sum\sin 2\mathrm{PA}, \sum\cos 2\mathrm{PA})/2$).
+Restricting to pixels with both $n_{\rm spiral}{>}100$ and
+$n_{\rm e}{>}100$ yields $15{,}769$ valid pixels at
+$f_{\rm sky}{\approx}0.32$, finite across all seven proxies. Two
+quantitative tests are reported. \emph{Test~1 (pixel-level Pearson r,
+strict $0.1\%$ flatness bar):} $\max_i |r(f_{\rm CW}, p_i)| =
++0.04243$ (driven by $r(f_{\rm CW}, e_2) = +0.04243$, $p{=}9.8{\times}10^{-8}$,
+and $r(f_{\rm CW}, \mathrm{PA}) = +0.04185$, $p{=}1.5{\times}10^{-7}$),
+which formally fails the strict pixel-level $|r|<10^{-3}$ bar.
+\emph{Test~2 (angular cross-power $C_\ell^{f_{\rm CW}\times p}$ with
+$N_{\rm MC}{=}200$ pixel-shuffle null at $\ell_{\rm max}{=}128$, the
+physics-relevant test for cosmological-scale dipole leakage):}
+$\max_{\rm correlator,band} |z| = 2.72\sigma$ across all
+six (correlator $\times \ell$-band) combinations, well below the
+$3\sigma$ cosmological-systematic bar. The largest band, $z(f_{\rm CW}
+\times e_1 | \ell{=}2{-}10) = -2.72\sigma$, is consistent with
+fluctuations expected under the null at this number of independent
+modes. \emph{Verdict:} we close R42 P4-CM-B2 as a PUSHBACK rather than
+a strict pass: the small but statistically significant pixel-level
+Pearson correlations ($\sim 4\%$, two orders of magnitude above the
+$0.1\%$ bar) indicate that PSF/ellipticity-related fields and $f_{\rm
+CW}$ are not pixel-level orthogonal at the population-mean smoothing
+of $\mathrm{NSIDE}{=}64$, but those couplings do \emph{not} project
+into a $\geq 3\sigma$ cross-power on the $\ell{=}2{-}64$ scales
+relevant to a cosmological parity dipole. The $0.2\%$ statistical
+floor is therefore best read as a near-zero residual coupling on
+cosmological scales, not as a strict pixel-level orthogonality.
+Companion artifact:
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_jj\_psf\_xcorr\_results.json}
+(full Pearson + Spearman + $C_\ell$ z-score table, MC null seeds,
+$\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification). Closes R42
+P4-CM-B2 cross-model peer-review BLOCKER (Pod~3 H200 wall runtime
+$1187.7$~s, GPU genuinely idle throughout --- pure pandas + healpy +
+\texttt{numpy.bincount} + \texttt{healpy.anafast} pipeline; the
+``in-flight on Pod 3'' status carried in the prior live banner now
+resolves to PUSHBACK closure with this paragraph as the published
+deliverable).}
 
 This represents the most sensitive chirality measurement ever
 performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a

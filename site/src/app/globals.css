@@ -1194,7 +1194,9 @@ a:hover {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 150px;
-  gap: 18px;
+  grid-template-rows: auto 1fr;
+  column-gap: 18px;
+  row-gap: 14px;
   min-height: 150px;
   padding: 18px;
   overflow: hidden;
@@ -1209,6 +1211,19 @@ a:hover {
   color: var(--text);
   text-decoration: none !important;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.paper-ledger-badge-row {
+  grid-column: 1 / -1;
+  display: flex;
+  min-width: 0;
+}
+
+.paper-ledger-badge {
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.35;
 }
 
 .paper-ledger-item::before {
@@ -1287,7 +1302,7 @@ a:hover {
   min-width: 0;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
 }
 
