@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd site && npm install --prefer-offline --no-audit && npm run build",
-  "outputDirectory": "site/out",
+  "buildCommand": "echo static",
+  "outputDirectory": ".",
   "framework": null,
-  "ignoreCommand": "exit 1"
+  "cleanUrls": false,
+  "trailingSlash": false
 }
