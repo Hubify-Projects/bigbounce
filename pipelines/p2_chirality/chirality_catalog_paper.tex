@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.10}
+\newcommand{\paperVersion}{v1.0.11}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 15:45 PDT --- \paperVersion}
+\date{May 1, 2026, 16:10 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -664,7 +664,15 @@ The pipeline produces three catalog tiers:
   therefore inherits any systematic bias present in the CE-ResNet
   reference catalog, which is one of the reasons the residual
   $+0.4\%$ excess persists rather than collapsing to zero.
-  Suitable for ML downstream tasks.
+  Suitable for ML downstream tasks; \textbf{not recommended for
+  cosmological parity tests} until Catalog~B is recalibrated against an
+  independent ground-truth label set (e.g.\ the Galaxy Zoo~1
+  cross-match of Sec.~\ref{sec:labels} restricted to the $117{,}205$
+  GZ1 spirals where the model also predicts spiral), since any residual
+  CE-ResNet chirality bias would propagate into a Catalog~B-derived
+  parity statistic via the calibration fit. Catalog~C (equivariant
+  production) remains the canonical tier for cosmological parity
+  analyses for this reason.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
   equivariant averaging (Eq.~\ref{eq:tta}). This tier eliminates
@@ -1507,6 +1515,30 @@ effective number of independent pixels and widening
 $\sigma(A_{\rm dip})$ by $\sim\!1/\sqrt{f_{\rm sky}} \approx 1.5$.
 We round $0.14\%$ up to $0.2\%$ as a conservative statement of the
 sensitivity floor.
+
+\paragraph{Statistical-only sensitivity, not systematic-inclusive.}
+The $0.2\%$ floor derived above is the \emph{statistical} Poisson
+sensitivity to a true sky dipole assuming the systematic monopole has
+strictly zero dipole projection. The catalog has a known, uncorrected
+raw-classifier systematic monopole of $0.26\%$
+(Catalog~A; Sec.~\ref{sec:cw_frac}, Table~\ref{tab:cw_frac}), reduced
+to $-0.26\%$ ($9.5\sigma$ from parity) by equivariant TTA but not to
+zero. Because the $0.2\%$ statistical floor sits \emph{below} this
+$0.26\%$ systematic monopole floor in absolute amplitude, any putative
+sub-systematic-floor dipole \emph{detection} requires an independent
+demonstration that the residual systematic has strictly zero dipole
+projection on the DESI Legacy footprint. We have not provided that
+demonstration in the present catalog (a PSF-ellipticity / scan-angle
+cross-correlation against the equivariant CW-fraction map is the
+canonical test and is queued as a downstream extension), and so the
+$0.2\%$ value should be interpreted as a statistical \emph{upper bound}
+on any true parity-violation \emph{dipole} signal under the
+zero-systematic-dipole-projection assumption, not as a
+systematic-inclusive sensitivity. The $9.5\sigma$ monopole result is a
+null at the catalog level (spatially uniform; cf.\ \S\ref{sec:cw_frac}
+Catalog~C), but the absence of a survey-systematics cross-correlation
+test means the $0.2\%$ floor cannot at present be elevated to a
+systematic-inclusive limit.
 
 This represents the most sensitive chirality measurement ever
 performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a

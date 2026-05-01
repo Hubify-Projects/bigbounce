@@ -7,37 +7,38 @@
 \contentsline {section}{\numberline {II}Data}{2}{section*.5}%
 \contentsline {subsection}{\numberline {A}Galaxy Images}{2}{section*.6}%
 \contentsline {subsection}{\numberline {B}Training Labels}{3}{section*.7}%
-\contentsline {section}{\numberline {III}Methods}{3}{section*.8}%
-\contentsline {subsection}{\numberline {A}Model Architecture}{3}{section*.9}%
+\contentsline {section}{\numberline {III}Methods}{4}{section*.8}%
+\contentsline {subsection}{\numberline {A}Model Architecture}{4}{section*.9}%
 \contentsline {subsection}{\numberline {B}Training}{4}{section*.10}%
 \contentsline {subsection}{\numberline {C}Flip-Equivariance Consistency Loss}{4}{section*.11}%
-\contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{4}{section*.12}%
-\contentsline {subsection}{\numberline {E}Bias Hardening Suite}{6}{section*.13}%
-\contentsline {subsection}{\numberline {F}Catalog Tiers}{6}{section*.14}%
-\contentsline {section}{\numberline {IV}Results}{7}{section*.15}%
-\contentsline {subsection}{\numberline {A}Catalog Statistics}{7}{section*.16}%
-\contentsline {subsection}{\numberline {B}Global CW Fraction}{7}{section*.17}%
-\contentsline {subsection}{\numberline {C}Dipole Analysis}{8}{section*.18}%
-\contentsline {paragraph}{\numberline {a}Simple dipole.}{9}{section*.19}%
-\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{9}{section*.20}%
-\contentsline {subsection}{\numberline {D}Hemisphere Asymmetry}{10}{section*.21}%
-\contentsline {subsection}{\numberline {E}Sky Region Balance}{10}{section*.22}%
-\contentsline {subsection}{\numberline {F}Scale Dependence}{11}{section*.23}%
-\contentsline {subsection}{\numberline {G}Confidence Stratification}{11}{section*.24}%
-\contentsline {section}{\numberline {V}Comparison with Previous Work}{12}{section*.25}%
-\contentsline {subsection}{\numberline {A}Shamir (2020, 2022)}{12}{section*.26}%
-\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{12}{section*.27}%
-\contentsline {subsection}{\numberline {C}SpArcFiRe}{12}{section*.28}%
-\contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{12}{section*.29}%
-\contentsline {section}{\numberline {VI}Discussion}{12}{section*.30}%
-\contentsline {subsection}{\numberline {A}The 94.6$\sigma $ Dipole Was Entirely Systematic}{12}{section*.31}%
-\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{13}{section*.32}%
-\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{13}{section*.33}%
-\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{14}{section*.34}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{15}{section*.35}%
-\contentsline {subsection}{\numberline {F}Implications for Bounce Cosmology}{15}{section*.36}%
-\contentsline {subsection}{\numberline {G}Future Directions}{15}{section*.37}%
-\contentsline {section}{\numberline {VII}Conclusions}{15}{section*.38}%
-\contentsline {section}{\numberline {VIII}Data Availability}{16}{section*.39}%
-\contentsline {section}{\numberline {}Acknowledgments}{16}{section*.40}%
-\contentsline {section}{\numberline {}References}{16}{section*.41}%
+\contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{5}{section*.12}%
+\contentsline {paragraph}{\numberline {a}\textsc {not\_spiral}{} stability under TTA averaging (R42 R3 BLOCKER B21).}{5}{section*.13}%
+\contentsline {subsection}{\numberline {E}Bias Hardening Suite}{6}{section*.14}%
+\contentsline {subsection}{\numberline {F}Catalog Tiers}{7}{section*.15}%
+\contentsline {section}{\numberline {IV}Results}{7}{section*.16}%
+\contentsline {subsection}{\numberline {A}Catalog Statistics}{7}{section*.17}%
+\contentsline {subsection}{\numberline {B}Global CW Fraction}{8}{section*.18}%
+\contentsline {subsection}{\numberline {C}Dipole Analysis}{9}{section*.19}%
+\contentsline {paragraph}{\numberline {a}Simple dipole.}{9}{section*.20}%
+\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{9}{section*.21}%
+\contentsline {subsection}{\numberline {D}Hemisphere Asymmetry}{10}{section*.22}%
+\contentsline {subsection}{\numberline {E}Sky Region Balance}{11}{section*.23}%
+\contentsline {subsection}{\numberline {F}Scale Dependence}{11}{section*.24}%
+\contentsline {subsection}{\numberline {G}Confidence Stratification}{11}{section*.25}%
+\contentsline {section}{\numberline {V}Comparison with Previous Work}{12}{section*.26}%
+\contentsline {subsection}{\numberline {A}Shamir (2020, 2022)}{12}{section*.27}%
+\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{12}{section*.28}%
+\contentsline {subsection}{\numberline {C}SpArcFiRe}{12}{section*.29}%
+\contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{12}{section*.30}%
+\contentsline {section}{\numberline {VI}Discussion}{13}{section*.31}%
+\contentsline {subsection}{\numberline {A}The 94.6$\sigma $ Dipole Was Entirely Systematic}{13}{section*.32}%
+\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{13}{section*.33}%
+\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{13}{section*.34}%
+\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{14}{section*.35}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{15}{section*.36}%
+\contentsline {subsection}{\numberline {F}Implications for Bounce Cosmology}{15}{section*.37}%
+\contentsline {subsection}{\numberline {G}Future Directions}{15}{section*.38}%
+\contentsline {section}{\numberline {VII}Conclusions}{16}{section*.39}%
+\contentsline {section}{\numberline {VIII}Data Availability}{16}{section*.40}%
+\contentsline {section}{\numberline {}Acknowledgments}{16}{section*.41}%
+\contentsline {section}{\numberline {}References}{17}{section*.42}%
