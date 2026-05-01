@@ -33,12 +33,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-01T21:30:00Z",
-  lastUpdatedDisplay: "2026-05-01 14:30 PT",
+  lastUpdatedISO: "2026-05-01T21:50:00Z",
+  lastUpdatedDisplay: "2026-05-01 14:50 PT",
   headline:
-    "R42 Wave 14-D LANDED — Paper 4 v1.0.9 (P4-OA-B6 Platt calibration close)",
+    "Live site flipped to Next.js + LiveStatus banner now baked at top of every page",
   summary:
-    "Closed GPT-5 OpenAI BLOCKER #6 in §III.F: \"removes\" → \"reduces\" + explicit residual offset (raw +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant −0.26% / 9.5σ from Table III) + explicit Platt mapping with A=1/4.65, B=−1.58, L-BFGS on held-out 20% validation. Three GPT-5 BLOCKERs closed inside the single multi-hour Wave 14-B fetch window on Pod 3 H200. PDF recompiled clean (25.79 MB / 18 pp / 0 undef refs).",
+    "vercel.json buildCommand flipped from \"echo static\" to Next.js (cd site && npm run build / outputDirectory site/out). LiveStatus banner now baked at the top of every page with build-time timestamp, paper readiness bars, BLOCKER tally, Pod 3 fetch state, and ETA-to-completion. Wave 14-D landed earlier (P4 v1.0.9 — P4-OA-B6 Platt calibration close); three GPT-5 BLOCKERs closed inside the single Wave 14-B fetch window. Pod 3 H200 SPARCL fetch now writing shards (~200 spectra/min observed — slower than the projected 2,374 spectra/min; ETA on the 1M Jaccard close revised upward).",
   papers: [
     {
       slug: "spin-torsion",
@@ -75,14 +75,14 @@ export const liveStatus: LiveStatus = {
     openMajors: 25,
     openMinors: 25,
   },
-  cronStatus: "*/20 autonomous-loop cron armed (cron a3fdb42b)",
+  cronStatus: "*/20 autonomous-loop cron armed (cron a3fdb42b) + dynamic /loop wakeup arm",
   etaToCompletion:
-    "ETA all-4 → 100%: ~36-48 h at current Wave-cadence (4 BLOCKERs / day on cheap-fast queue + 1 compute-heavy / day on Pod 3 H200)",
+    "ETA all-4 → 100%: ~48-72 h at current Wave-cadence (3-4 BLOCKERs / day on cheap-fast queue + 1 compute-heavy / day on Pod 3 H200; Wave 14-B 1M Jaccard fetch now ~80 h on the observed ~200 spectra/min throughput, may need a sub-sample short-circuit)",
   pods: [
     {
       name: "Pod 3 H200 (38.80.152.148:33089)",
       state: "active",
-      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~25 min elapsed, ~7 h wall)",
+      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~50 min elapsed, 16 shards / 8K of 1M spectra written, ~200 spectra/min)",
     },
   ],
 };
