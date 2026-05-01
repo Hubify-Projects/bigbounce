@@ -1,0 +1,34 @@
+[init] torch=2.4.1+cu124 cuda=True dev=NVIDIA H200
+[init] N_MC=10000 BATCH=100 NSIDE_DIR=8 SEED=42
+[load] reading catalog: /workspace/r42_b20/chirality_catalog/catalog_production.parquet
+[load] total rows: 8,474,531
+[load] spirals: 3,201,160
+[load] CW frac = 0.497353
+[hemi] ndirs=768 (NSIDE_DIR=8)
+[hemi] building HEMI matrix in chunks (768 x 3,201,160, uint8)...
+[hemi]   dir 64/768  t=0.6s
+[hemi]   dir 320/768  t=3.0s
+[hemi]   dir 576/768  t=5.4s
+[hemi] HEMI built in 7.2s, size=2.46 GB
+[gpu] moving HEMI to GPU as float32...
+[gpu] HEMI_GPU shape=(768, 3201160) dtype=torch.float32 VRAM~9.83 GB
+[gpu] cw_GPU n_sp=3,201,160  ntot_GPU shape=(768,)
+[gpu] free VRAM: 137.16 GB / 150.11 GB
+[obs] max |asymmetry| = 0.008531 at dir idx=731
+[mc] starting N_MC=10000 (batch=100)
+[mc] 100/10000  elapsed=0.1s  rate=668.3 MC/s  ETA=0.2min  n_ge_obs=0
+[mc] 1000/10000  elapsed=0.6s  rate=1757.4 MC/s  ETA=0.1min  n_ge_obs=0
+[mc] 2000/10000  elapsed=1.0s  rate=1931.5 MC/s  ETA=0.1min  n_ge_obs=0
+[mc] 3000/10000  elapsed=1.5s  rate=1997.6 MC/s  ETA=0.1min  n_ge_obs=0
+[mc] 4000/10000  elapsed=2.0s  rate=2032.4 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 5000/10000  elapsed=2.4s  rate=2053.9 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 6000/10000  elapsed=2.9s  rate=2068.7 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 7000/10000  elapsed=3.4s  rate=2079.3 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 8000/10000  elapsed=3.8s  rate=2087.2 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 9000/10000  elapsed=4.3s  rate=2093.4 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] 10000/10000  elapsed=4.8s  rate=2098.2 MC/s  ETA=0.0min  n_ge_obs=0
+[mc] done in 4.8s (2097.9 MC/s)
+[result] N_MC=10000  n_ge_obs=0  p_LEE = (0+1)/(10000+1) = 9.999e-05
+[result] precision floor = 1/10001 = 9.999e-05
+[done] wrote /workspace/r42_wave12_hemi/results.json + max_null.npy
+[done] total wall = 17.2s

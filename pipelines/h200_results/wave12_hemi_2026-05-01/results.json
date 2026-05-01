@@ -1,0 +1,19 @@
+{
+  "wave": "12",
+  "version": "v4_gpu",
+  "seed": 42,
+  "n_mc": 10000,
+  "batch": 100,
+  "nside_dir": 8,
+  "ndirs": 768,
+  "n_spirals": 3201160,
+  "cw_fraction": 0.49735313653945923,
+  "A_obs": 0.008530930263306865,
+  "i_obs_dir": 731,
+  "n_ge_obs": 0,
+  "p_LEE": 9.999000099990002e-05,
+  "precision_floor": 9.999000099990002e-05,
+  "mc_seconds": 4.7666308879852295,
+  "total_seconds": 17.217817783355713,
+  "device": "NVIDIA H200"
+}
