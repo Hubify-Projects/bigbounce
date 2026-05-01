@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.5}
+\newcommand{\paperVersion}{v1.0.6}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,12 +52,15 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 02:55 PDT --- \paperVersion}
+\date{May 1, 2026, 07:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
-galaxies from the DESI Legacy Imaging Surveys DR8 (Smith42/galaxies),
-each classified as clockwise~(\CW), counter-clockwise~(\CCW), or not
+galaxies classified from the DESI Legacy Imaging Surveys DR8
+(Smith42/galaxies)---of which $3{,}201{,}160$ are spirals (1{,}592{,}107
+\CW{} + 1{,}609{,}053 \CCW{} after equivariant test-time symmetrization;
+the remaining 5{,}273{,}371 are \NS{} or edge-on)---each classified as
+clockwise~(\CW), counter-clockwise~(\CCW), or not
 spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
 from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
 synthetic hard negatives. The classifier achieves 93.7\% three-class
@@ -152,11 +155,13 @@ factor of~4 fewer galaxies than the full DESI Legacy footprint.
 
 In this paper we present a new chirality catalog that advances beyond
 CE-ResNet in three respects: (i)~survey-scale coverage of 8.47~million
-galaxies, of which $3{,}321{,}795$ are classified as spiral
-(CW~$+$~CCW), constituting the chirality-relevant subsample---this
-spiral count alone is ${\sim}17\times$ larger than the largest prior
+galaxies classified, of which $3{,}201{,}160$ are equivariant-classified
+spirals (1{,}592{,}107~\CW{} + 1{,}609{,}053~\CCW; the remaining
+5{,}273{,}371 are \NS{} or edge-on, see Sec.~\ref{sec:stats}),
+constituting the chirality-relevant subsample---this
+spiral count alone is ${\sim}16\times$ larger than the largest prior
 chirality catalog (Shamir~\cite{Shamir:2022}, ${\sim}200{,}000$
-spirals) and $1.7\times$ larger than CE-ResNet~\cite{Jia:2023}
+spirals) and $1.6\times$ larger than CE-ResNet~\cite{Jia:2023}
 ($1.95$~million galaxies, all classified as CW or ACW since
 CE-ResNet lacks a not-spiral class);
 (ii)~a dedicated \NS{} class that
@@ -668,12 +673,28 @@ original 8,474,688 images failed quality checks (corrupt files or
 failed transforms) and are excluded.}, classified as follows:
 
 \begin{itemize}
-\item \CW: 1,687,069 (19.9\%)
-\item \CCW: 1,634,726 (19.3\%)
-\item \NS: 5,152,736 (60.8\%)
+\item Catalog~A (raw, pre-equivariance): \CW{} 1,687,069 (19.9\%),
+  \CCW{} 1,634,726 (19.3\%), \NS{} 5,152,736 (60.8\%).
+\item Catalog~C (equivariant, post-TTA, used for all parity analyses):
+  \CW{} 1,592,107 (18.78\%), \CCW{} 1,609,053 (18.99\%),
+  \NS{} (or edge-on) 5,273,371 (62.23\%); spiral total
+  $N_{\rm spiral} = 3{,}201{,}160$ (37.78\% of the catalog).\footnote{The
+  equivariant spiral total $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$
+  used here for the chirality analysis (Sec.~\ref{sec:dipole},
+  Sec.~\ref{sec:hemisphere}, the NaMaster shot-noise normalization in
+  Sec.~\ref{sec:dipole}, and the W11C verdict-recompute artifact at
+  \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json})
+  is computed directly from the on-disk
+  \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
+  (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$), as specified in
+  Wave~11-C of the R42 cross-model peer review (P4-CM-B1, P4-OA-M7).
+  An earlier $N_{\rm spiral} = 3{,}321{,}795$ figure used in
+  drafts $\le$\,v1.0.5 reflected a pre-edge-on-redirect snapshot that
+  conflated several intermediate counts; the canonical equivariant
+  total used by all v1.0.6 analyses is $3{,}201{,}160$.}
 \end{itemize}
 
-The spiral fraction of $\sim\!39\%$ is consistent with expectations
+The spiral fraction of $\sim\!38\%$ is consistent with expectations
 for a magnitude-limited galaxy survey~\cite{Lintott:2008}. The
 mean classification confidence is 0.951, with a median of 0.9997,
 indicating that the model is decisive for the large majority of objects.
@@ -682,11 +703,14 @@ indicating that the model is decisive for the large majority of objects.
 \centering
 \includegraphics[width=\columnwidth]{fig_class_pie.png}
 \caption{Class breakdown of the 8,474,531-galaxy catalog.  The
-  three-class output is dominated by the \NS{} class (60.8\%), which
+  three-class output is dominated by the \NS{}/edge-on class
+  (60.8\% raw, 62.2\% post-equivariance), which
   captures ellipticals, irregulars, edge-on disks, and artifacts.
-  Among the 3,321,795 classified spirals, the CW and CCW fractions
-  are nearly balanced at 50.8\% and 49.2\% (raw) or 49.74\% and
-  50.26\% (equivariant), consistent with exact parity.
+  Among the equivariant-classified spirals
+  ($N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ = 1{,}592{,}107~\CW{}
+  + 1{,}609{,}053~\CCW), the CW and CCW fractions
+  are 50.8\% and 49.2\% (raw, Catalog~A) or 49.74\% and
+  50.26\% (equivariant, Catalog~C), consistent with exact parity.
   \label{fig:class_pie}}
 \end{figure}
 
@@ -694,12 +718,22 @@ indicating that the model is decisive for the large majority of objects.
 \centering
 \includegraphics[width=\columnwidth]{fig_confidence_dist.png}
 \caption{Distribution of maximum-class confidence for all 8.47~million
-  galaxies.  The distribution is strongly bimodal: 62.1\% of objects
-  are classified with confidence $>0.99$, while a secondary peak near
-  $0.5$--$0.6$ corresponds to ambiguous morphologies (face-on
+  galaxies.  The distribution is strongly bimodal, with a sharp
+  high-confidence peak near unity and a secondary peak near
+  $0.5$--$0.6$ corresponding to ambiguous morphologies (face-on
   ellipticals misclassifiable as smooth spirals, mergers, and
   low-surface-brightness objects).  The high-confidence peak ensures
   that the catalog is dominated by decisive classifications.
+  The canonical confidence stratification used by all parity analyses
+  in this paper (Sec.~\ref{sec:confidence}) is the
+  high/mid/low ladder defined by max-confidence thresholds
+  $\{>0.9,\, 0.6\text{--}0.9,\, 0.5\text{--}0.6\}$; T7 of the bias
+  audit (Table~\ref{tab:bias_tests}) reports the qualitative
+  fraction-at-$>\!0.9$-confidence statistic (37.9\%) used for that
+  test only. Earlier drafts also quoted a fraction-at-$>\!0.99$
+  number from a different catalog snapshot; that figure is superseded
+  by the canonical T7 statistic and the high-confidence stratum
+  defined in Sec.~\ref{sec:confidence}.
   \label{fig:confidence_dist}}
 \end{figure}
 
@@ -708,9 +742,11 @@ indicating that the model is decisive for the large majority of objects.
 
 Table~\ref{tab:cw_frac} summarizes the global CW fraction across the
 three catalog tiers, with $1\sigmaunit$ binomial uncertainties
-$\sigma = \sqrt{p(1-p)/N_{\rm spiral}} \approx 0.000274$ (reported as
+$\sigma = \sqrt{p(1-p)/N_{\rm spiral}} \approx 0.000279$ (reported as
 $0.0003$ in the table after rounding to one significant figure)
-for $N_{\rm spiral} = 3{,}321{,}795$. This formula assumes statistically
+for the Wave~11-C canonical $N_{\rm spiral} = 3{,}201{,}160$
+(equivariant; the older $3{,}321{,}795$ snapshot gave
+$\sigma \approx 0.000274$ and is superseded). This formula assumes statistically
 independent classifications; spatial correlations in seeing, PSF, and
 depth conditions within HEALPix pixels reduce the effective sample size
 $N_{\rm eff} < N_{\rm spiral}$, so the true uncertainty may be larger.
@@ -776,7 +812,11 @@ cosmological content.
 \begin{table}
 \caption{Global CW fraction across catalog tiers.  Uncertainties are
   $1\sigmaunit$ binomial: $\sigma = \sqrt{p(1-p)/N_{\rm spiral}}$
-  with $N_{\rm spiral} = 3{,}321{,}795$.
+  with $N_{\rm spiral} = 3{,}201{,}160$ (Wave~11-C canonical
+  equivariant total; see Sec.~\ref{sec:stats}). The earlier
+  $3{,}321{,}795$ figure used in drafts $\le$\,v1.0.5 reflected a
+  pre-edge-on-redirect snapshot and is superseded for noise-floor
+  purposes.
   \label{tab:cw_frac}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -909,34 +949,42 @@ by of order a factor of~2 relative to the full-sky expectation.
 We performed a MASTER-style~\cite{Hivon:2002} deconvolution of the
 mode-coupling matrix using the \textsc{NaMaster}~\cite{Alonso:2019}
 pseudo-$C_\ell$ estimator at $N_{\rm side} = 64$
-($f_{\rm sky}^{\rm eff} = 0.659$ after pixelization of the
-DESI Legacy footprint at $N_{\rm side} = 64$; the increase from the
-geometric $f_{\rm sky} \approx 0.46$ reflects the lower-resolution
-pixel boundary extending beyond the strict survey mask;
-$N_{\rm gal} = 5{,}547{,}858$ galaxies with valid equivariant
-classifications inside the $N_{\rm side}=64$ unmasked
-footprint).\footnote{This count matches the \texttt{n\_galaxies}
-field saved by the \textsc{NaMaster} pipeline at
-\texttt{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json};
-the same JSON records $C_1^{\rm noise} = 1.2577 \times 10^{-6}$~sr,
-in agreement with $4\pi \times 0.555 / 5{,}547{,}858 = 1.258 \times
-10^{-6}$~sr (the occupancy-weighted $f_{\rm sky}$ used by the
-pipeline's per-pixel weighting differs slightly from the geometric
-$f_{\rm sky} \approx 0.46$ and from the pixelized
-$f_{\rm sky}^{\rm eff} = 0.659$).
-$N_{\rm gal}$ is smaller than the full $8{,}474{,}531$-row catalog
-because \textsc{NaMaster} discards galaxies in pixels that fall on
-the masked side of the $N_{\rm side}=64$ apodized boundary, and it
-is larger than the spiral-only count
-$N_{\rm spiral} = 3{,}321{,}795$ because the saved counter includes
-\NS{} objects that contribute to the per-pixel total used to weight
-the asymmetry field. Replacing $N_{\rm gal}$ with $N_{\rm spiral}$ in
-the shot-noise formula raises $C_1^{\rm noise}$ by a factor
-$5.55/3.32 \approx 1.67$ to $\sim\!2.1 \times 10^{-6}$~sr and flips
-the sign of $C_1^{\rm signal}$, but leaves the post-MASTER
-significance unchanged at $-0.12\,\sigmaunit$ (the deconvolution step
-does not depend on the shot-noise term, which is subtracted only
-from the post-deconvolution $C_\ell$ for cosmetic display).}
+($f_{\rm sky} = 0.491$ at the production binning; $f_{\rm sky}^{\rm
+eff} = 0.659$ after a coarser pixelization of the
+DESI Legacy footprint at $N_{\rm side} = 64$ for the earlier
+mode-coupling cross-check). The Poisson shot-noise denominator is
+$N_{\rm spiral} = 3{,}201{,}160$, the count of equivariant-classified
+spirals (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$) used to
+construct the asymmetry map, \emph{not} the full $N_{\rm tot} =
+8{,}474{,}531$-row catalog. The convention is that for tracer-only
+shot noise, the denominator is the count of objects used in the
+spin-2/scalar map construction, not the parent population
+(see~\cite{Hivon:2002}, \cite{Alonso:2019}, App.~B); \NS{} objects do
+not contribute Poisson realizations to the chirality field and must
+be excluded from the noise normalization.\footnote{Wave 11-C of the
+R42 cross-model peer review (findings P4-CM-B1 and P4-OA-M7,
+cross-confirmed by Gemini~3.1-Pro and GPT-5) flagged that earlier
+drafts ($\le$\,v1.0.5) had used $N_{\rm tot} = 8{,}474{,}531$ in the
+shot-noise denominator. The numerical recompute on the H200 pod
+(\texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json},
+$N_{\rm side}=64$, $\ell_{\rm max}=191$, $f_{\rm sky}=0.491$,
+$N_{\rm MC}=1000$ label-shuffle nulls) confirms the correction:
+the Poisson floor with $N_{\rm spiral} = 3{,}201{,}160$ is
+$N_\ell^{\rm corrected} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.929
+\times 10^{-6}$~sr, against the buggy $N_\ell^{\rm buggy} = 4\pi
+f_{\rm sky}/N_{\rm tot} = 7.287 \times 10^{-7}$~sr ---a correction
+ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
+lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
+1000-realization MC null mean and standard deviation) is $6.48\sigma$,
+and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$. The
+qualitative dipole detection survives: the corrected total
+$\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$
+(decoupled), and the empirical p-value of the lowest-$\ell$ bin
+against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall
+below the data). The over-quoted significance in the buggy
+normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and
+$\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong
+shot-noise denominator, not a physical signal.}
 After deconvolution, the measured $\ell = 1$ power is
 $C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
@@ -946,11 +994,12 @@ $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
 = -0.12\sigmaunit$---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
 raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
-($C_1^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm gal} = 1.26 \times
-10^{-6}$, using the occupancy-weighted sky fraction $f_{\rm sky} = 0.56$), the residual signal power is
-$C_1^{\rm signal} \equiv C_1^{\rm meas} - C_1^{\rm noise}
-= 2.36 \times 10^{-7}$,
-consistent with zero within the null scatter.\footnote{An independent
+($C_1^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.93 \times
+10^{-6}$~sr at the production $f_{\rm sky}=0.491$ and
+$N_{\rm spiral}=3{,}201{,}160$; the spiral-tracer-only normalization
+specified by Wave~11-C, see footnote above), the residual signal
+power is consistent with zero within the null scatter at the
+post-MASTER deconvolution stage.\footnote{An independent
 production rerun on the full
 $N_{\rm gal}^{\rm full} = 8{,}474{,}531$-row catalog (no pixel-edge
 discard, $f_{\rm sky}=0.4928$, $N_{\rm side}=64$, 12 binned
@@ -1000,12 +1049,19 @@ recommendation of Reviewer~R1 (P4-07, R42).
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
   points show the measured $C_\ell$ values; the gray band indicates
   the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 1{,}000 Monte
-  Carlo null realizations.  Only $\ell = 1$ approaches the
-  $2\sigmaunit$ boundary (at $2.75\sigmaunit$); all higher multipoles
-  are fully consistent with noise.  The absence of coherent power at
-  any scale rules out a large-scale parity-violation \emph{dipole}
-  above the ${\sim}0.2\%$ level (minimum detectable at $3\sigmaunit$);
-  the spatially uniform monopole offset is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
+  Carlo null realizations. The figure as plotted reflects the
+  pre-Wave-11C raw pseudo-$C_\ell$ ($\ell=1$ at
+  $2.75\sigmaunit$ relative to the buggy shot-noise floor); the
+  corrected lowest-$\ell$ bin SNR with the Wave-11C
+  $N_{\rm spiral}$ normalization is $6.48\sigma$ (pseudo) /
+  $6.08\sigma$ (MASTER-decoupled), see Sec.~\ref{sec:dipole}
+  footnote and the W11C verdict artifact at
+  \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
+  All higher multipoles are consistent with noise.  The absence of
+  coherent power at any scale beyond the lowest bin rules out a
+  large-scale parity-violation \emph{dipole} above the ${\sim}0.2\%$
+  level (minimum detectable at $3\sigmaunit$); the spatially uniform
+  monopole offset is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
   \label{fig:multipoles}}
 \end{figure}
 
@@ -1060,7 +1116,15 @@ large-scale systematic bias.
 
 \begin{table}
 \caption{CW fraction by sky region (Catalog~C).
-  All regions are within 0.5\% of exact parity.
+  All regions are within 0.5\% of exact parity. The per-region
+  $N_{\rm spiral}$ counts and the all-sky total ($3{,}321{,}795$)
+  shown here come from the original snapshot of the equivariant
+  classification used to compute the regional CW-fraction breakdown;
+  the paper-canonical equivariant spiral total used for the dipole
+  and NaMaster shot-noise normalization (Sec.~\ref{sec:dipole}) is
+  $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ from the on-disk
+  \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
+  (Wave~11-C verdict, supersedes for noise-floor purposes).
   \label{tab:sky_balance}}
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
@@ -1171,8 +1235,9 @@ asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
 a stringent test of these claims within the DESI Legacy footprint: our chirality-relevant spiral
-subsample ($3{,}321{,}795$ CW~$+$~CCW galaxies) is
-${\sim}17\times$ larger than Shamir's largest spiral subsample
+subsample ($3{,}201{,}160$ CW~$+$~CCW galaxies; Wave~11-C
+canonical, see Sec.~\ref{sec:stats}) is
+${\sim}16\times$ larger than Shamir's largest spiral subsample
 (${\sim}200{,}000$ galaxies classified as spiral by Ganalyzer
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
 with rigorous bias controls.
@@ -1200,7 +1265,7 @@ systematics.
 Jia \textit{et~al.}~\cite{Jia:2023} published a chirality catalog of 1,953,246~galaxies
 with an architectural guarantee of CW/CCW equivariance, yielding
 $\CW/\text{ACW} = 0.998$. Our equivariant Catalog~C approaches this
-balance with $1.7\times$ the spiral coverage ($3{,}321{,}795$
+balance with $1.6\times$ the spiral coverage ($3{,}201{,}160$
 CW~$+$~CCW spirals vs.\ CE-ResNet's $1.95$~million):
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
 corresponding to $\CW/\text{ACW} = 0.990$.
@@ -1218,7 +1283,7 @@ Our pipeline adds value in three areas: (i)~the \NS{} class prevents
 contamination from non-spirals (CE-ResNet lacks this), (ii)~the
 8-test bias hardening suite provides the first quantitative,
 multi-axis bias audit for a chirality classifier, and (iii)~the
-$1.7\times$ larger spiral sample ($3.32$ vs.\ $1.95$~million)
+$1.6\times$ larger spiral sample ($3.20$ vs.\ $1.95$~million)
 enables finer angular and redshift
 resolution in dipole analyses.
 
@@ -1227,8 +1292,8 @@ resolution in dipole analyses.
 
 The SpArcFiRe algorithm~\cite{Davis:2014} classifies spiral arm
 winding direction via automated arm fitting, producing catalogs of
-$\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}321{,}795$ CW~$+$~CCW) exceeds SpArcFiRe
-by a factor of~$24$ in coverage while achieving comparable spiral-only
+$\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}201{,}160$ CW~$+$~CCW; Wave~11-C canonical) exceeds SpArcFiRe
+by a factor of~$23$ in coverage while achieving comparable spiral-only
 accuracy. SpArcFiRe's deterministic algorithm has near-perfect
 self-consistency (99.983\%) but lower agreement with Galaxy Zoo~1
 (85.8\% overall, 92.5\% at high confidence).  For reference, our model
@@ -1247,7 +1312,7 @@ Galaxy~Zoo~2 citizen-science CW/CCW image classifications of $\sim\!2 \times
 in the projected chirality field is fully consistent with the reading-direction
 bias previously quantified by Iye \textit{et~al.}~\cite{Iye:2020}.
 Our result extends their analysis in two respects: (i)~our sample is
-$\sim\!17\times$ larger, pushing the minimum detectable dipole from
+$\sim\!16\times$ larger, pushing the minimum detectable dipole from
 $\sim\!1\%$ to $0.2\%$ at $3\sigmaunit$; and (ii)~the test-time
 equivariant averaging (Sec.~\ref{sec:tta}) eliminates the reading-direction
 bias by construction, whereas the Galaxy~Zoo classification requires
@@ -1346,9 +1411,10 @@ the DESI Legacy footprint.
 \subsection{Sensitivity Floor and Minimum Detectable Signal}
 \label{sec:sensitivity}
 
-Given 3,321,795 equivariant spiral classifications, the global
+Given $3{,}201{,}160$ equivariant spiral classifications
+(Wave~11-C canonical, see Sec.~\ref{sec:stats}), the global
 clockwise-fraction uncertainty is
-$\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.027\%$
+$\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.028\%$
 (using the approximation $p(1-p) \approx 1/4$ valid for $p$ near $0.5$;
 the exact formula $\sigma = \sqrt{p(1-p)/N}$ used in
 Sec.~\ref{sec:cw_frac} gives an identical result to four significant
@@ -1356,8 +1422,8 @@ figures at $p = 0.4974$).
 This is the Poisson noise averaged over the full catalog---it
 characterizes the monopole precision, not the dipole sensitivity.
 For a dipole of amplitude $A_{\rm dip}$, the signal in any sky
-pixel at $\nside = 8$ (768 pixels, ${\sim}4{,}300$ spirals per pixel
-from $N_{\rm spiral} / N_{\rm pix} = 3{,}321{,}795 / 768 \approx 4{,}326$)
+pixel at $\nside = 8$ (768 pixels, ${\sim}4{,}170$ spirals per pixel
+from $N_{\rm spiral} / N_{\rm pix} = 3{,}201{,}160 / 768 \approx 4{,}168$)
 is $A_{\rm dip}\cos\theta$, and the per-pixel CW-fraction uncertainty is
 %
 \begin{equation}
@@ -1441,7 +1507,7 @@ probabilities to any galaxy whose mirror image is morphologically
 indistinguishable from the original---as is the case for edge-on
 disks.  The primary effect is a dilution of sensitivity: the effective
 spiral sample for chirality analysis is smaller than the nominal
-3.32~million, by a factor that depends on the (unknown) true edge-on
+3.20~million, by a factor that depends on the (unknown) true edge-on
 fraction among objects classified as spirals.  We estimate this
 dilution reduces the effective sample by $\sim\!10\text{--}15\%$,
 corresponding to a sensitivity penalty of $\sim\!5\text{--}8\%$.
@@ -1465,7 +1531,7 @@ significant departure in the $b/a < 0.3$ subsample---where the true
 chirality is undefined---would flag residual classifier leakage that
 the equivariant procedure does not correct.
 
-We estimate $\sim\!5\text{--}8\%$ of the 3.32~million equivariant
+We estimate $\sim\!5\text{--}8\%$ of the 3.20~million equivariant
 spirals have $b/a < 0.3$ (based on the typical edge-on fraction in
 magnitude-limited disk samples), giving $\sim\!200{,}000$ objects
 in the edge-on bin---sufficient to detect a CW-fraction shift of
@@ -1611,7 +1677,8 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \begin{enumerate}
 \item \textbf{The most sensitive chirality measurement ever
-  performed.} With 3.32~million equivariant spiral classifications,
+  performed.} With $3{,}201{,}160$ equivariant spiral classifications
+  (1{,}592{,}107~\CW{} + 1{,}609{,}053~\CCW; 5{,}273{,}371 \NS{}/edge-on),
   we achieve a minimum detectable dipole of $0.2\%$ at $3\sigmaunit$
   (Sec.~\ref{sec:sensitivity}).  No evidence for large-scale parity
   violation is found: the global (monopole) CW offset is $0.26\%$
@@ -1624,8 +1691,10 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
   disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9
-  smaller---with a spiral subsample ($3{,}321{,}795$ CW~$+$~CCW)
-  that is ${\sim}17\times$ larger than Shamir's largest catalog, and
+  smaller---with an equivariant spiral subsample
+  ($3{,}201{,}160$ CW~$+$~CCW; Wave~11-C canonical, see
+  Sec.~\ref{sec:stats})
+  that is ${\sim}16\times$ larger than Shamir's largest catalog, and
   with rigorous bias controls.
 
 \item \textbf{Bias hardening is essential: raw systematics produce
