@@ -122,8 +122,11 @@
     <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank"><code>galaxy-chirality-v2</code></a> (ViT-Small model),
     <a href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank"><code>desi-spectral-anomaly-detector</code></a> (BigAE),
     <a href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),
-    <a href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank"><code>bigbounce-mcmc</code></a> (424K MCMC samples).<br>
-    <strong style="color: #166534;">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED.</strong> Next phase running on pod: 5-seed BigAE ensemble + second-level AE (16D) on the 100K DESI OOD set — produces ensemble error bars on B10 and a ranked ultra-rare anomaly catalog for Paper 3 §X. ~2&ndash;3 h wall clock.
+    <a href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank"><code>bigbounce-mcmc</code></a> (424K MCMC samples),
+    <a href="https://huggingface.co/bamfai/desi-bigae-ensemble-v1" target="_blank"><code>desi-bigae-ensemble-v1</code></a> (5-seed BigAE pack, R42 Phase 1),
+    <a href="https://huggingface.co/bamfai/desi-slae-16d" target="_blank"><code>desi-slae-16d</code></a> (second-level 640D&rarr;16D AE, R42 Phase 2).<br>
+    <strong style="color: var(--text);">R42 Phase 1&ndash;4 result:</strong> Ensemble relative std on OOD scores = <strong>2.04%</strong> (tight cross-seed convergence). SLAE top-100 ultra-rare anomalies show <strong>100% agreement</strong> (mean fraction = 1.000, std = 0.000) with all 5 BigAE seeds&rsquo; p99 thresholds &mdash; ensemble cross-validates the ultra-rare set rather than finding orthogonal structure.<br>
+    <strong style="color: #166534;">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED. 7 public HF artifacts live.</strong>
   </div>
 </div>
 

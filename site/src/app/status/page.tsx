@@ -133,8 +133,11 @@ export default function StatusPage() {
               <a className="underline" href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-v2</code></a> (ViT-Small model),{" "}
               <a className="underline" href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" rel="noopener noreferrer"><code>desi-spectral-anomaly-detector</code></a> (BigAE),{" "}
               <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),{" "}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples).</p>
-            <p><strong className="text-emerald-700 dark:text-emerald-400">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED.</strong> Next phase on pod: 5-seed BigAE ensemble + second-level AE (16D) on the 100K DESI OOD set — produces ensemble error bars on B10 and a ranked ultra-rare anomaly catalog for Paper 3 §X. ~2–3 h wall.</p>
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples),{" "}
+              <a className="underline" href="https://huggingface.co/bamfai/desi-bigae-ensemble-v1" target="_blank" rel="noopener noreferrer"><code>desi-bigae-ensemble-v1</code></a> (5-seed BigAE pack, R42 Phase 1),{" "}
+              <a className="underline" href="https://huggingface.co/bamfai/desi-slae-16d" target="_blank" rel="noopener noreferrer"><code>desi-slae-16d</code></a> (second-level 640D→16D AE, R42 Phase 2).</p>
+            <p><strong className="text-foreground">R42 Phase 1–4 result:</strong> Ensemble relative std on OOD scores = <strong>2.04%</strong> (tight cross-seed convergence). SLAE top-100 ultra-rare anomalies show <strong>100% agreement</strong> (mean fraction = 1.000, std = 0.000) with all 5 BigAE seeds&apos; p99 thresholds — ensemble cross-validates the ultra-rare set rather than finding orthogonal structure.</p>
+            <p><strong className="text-emerald-700 dark:text-emerald-400">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED. 7 public HF artifacts live.</strong></p>
           </div>
         </CardContent>
       </Card>
