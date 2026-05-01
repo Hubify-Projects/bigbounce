@@ -1,0 +1,114 @@
+{
+  "wave": "R42 Wave 14-X",
+  "scope": "P3-OA-M1 100K Jaccard short-circuit",
+  "n_spectra_total": 103000,
+  "n_finite_dropped": 0,
+  "top1pct_n": 1030,
+  "models_scored": [
+    {
+      "name": "production",
+      "ckpt": "/workspace/r42_b10/best_model_47k.pt",
+      "training_val_ref": 0.0287,
+      "median": 0.07118071615695953,
+      "p99": 4.037610483169537,
+      "max": 10125.478515625
+    },
+    {
+      "name": "seed101",
+      "ckpt": "/workspace/r42_phase2/bigae_seed101.pt",
+      "training_val_ref": 6.49,
+      "median": 0.2827719449996948,
+      "p99": 6.874828963279712,
+      "max": 14142.6513671875
+    },
+    {
+      "name": "seed202",
+      "ckpt": "/workspace/r42_phase2/bigae_seed202.pt",
+      "training_val_ref": 27.54,
+      "median": 0.20345020294189453,
+      "p99": 6.31759749412533,
+      "max": 12210.900390625
+    },
+    {
+      "name": "seed303",
+      "ckpt": "/workspace/r42_phase2/bigae_seed303.pt",
+      "training_val_ref": 46.1,
+      "median": 0.1773272305727005,
+      "p99": 6.281652412414532,
+      "max": 12375.767578125
+    },
+    {
+      "name": "seed404",
+      "ckpt": "/workspace/r42_phase2/bigae_seed404.pt",
+      "training_val_ref": 23.24,
+      "median": 0.27230900526046753,
+      "p99": 7.2849280929565206,
+      "max": 12566.779296875
+    },
+    {
+      "name": "seed505",
+      "ckpt": "/workspace/r42_phase2/bigae_seed505.pt",
+      "training_val_ref": 7.0,
+      "median": 0.2587892413139343,
+      "p99": 6.736125745773271,
+      "max": 12852.123046875
+    }
+  ],
+  "jaccard_matrix": {
+    "production": {
+      "production": 1.0,
+      "seed101": 0.7310924369747899,
+      "seed202": 0.7281879194630873,
+      "seed303": 0.7457627118644068,
+      "seed404": 0.7224080267558528,
+      "seed505": 0.7325483599663583
+    },
+    "seed101": {
+      "production": 0.7310924369747899,
+      "seed101": 1.0,
+      "seed202": 0.8376449598572703,
+      "seed303": 0.8829981718464351,
+      "seed404": 0.9021237303785781,
+      "seed505": 0.8881759853345554
+    },
+    "seed202": {
+      "production": 0.7281879194630873,
+      "seed101": 0.8376449598572703,
+      "seed202": 1.0,
+      "seed303": 0.8744313011828936,
+      "seed404": 0.8360071301247772,
+      "seed505": 0.8744313011828936
+    },
+    "seed303": {
+      "production": 0.7457627118644068,
+      "seed101": 0.8829981718464351,
+      "seed202": 0.8744313011828936,
+      "seed303": 1.0,
+      "seed404": 0.8693284936479129,
+      "seed505": 0.8899082568807339
+    },
+    "seed404": {
+      "production": 0.7224080267558528,
+      "seed101": 0.9021237303785781,
+      "seed202": 0.8360071301247772,
+      "seed303": 0.8693284936479129,
+      "seed404": 1.0,
+      "seed505": 0.8829981718464351
+    },
+    "seed505": {
+      "production": 0.7325483599663583,
+      "seed101": 0.8881759853345554,
+      "seed202": 0.8744313011828936,
+      "seed303": 0.8899082568807339,
+      "seed404": 0.8829981718464351,
+      "seed505": 1.0
+    }
+  },
+  "production_vs_controls_mean_jaccard": 0.7319998910048989,
+  "production_vs_controls_min_jaccard": 0.7224080267558528,
+  "production_vs_controls_max_jaccard": 0.7457627118644068,
+  "controls_pairwise_mean_jaccard": 0.8738047502282484,
+  "interpretation": "P3-OA-M1 R42 ask: 'Score >=1M held-out DESI spectra; report top-1% Jaccard overlap between production model and untrained-on-1M model.' 100K short-circuit at fetch throughput ~13 spectra/min (1M ETA >1900h infeasible). Production model (best_model_47k.pt, val_loss=0.0287) vs 5 different-seed retrains (phase2 seeds 101-505) on 103000 held-out DESI DR1 spectra. Mean prod-vs-control top-1pct Jaccard = 0.7320 (0.7224-0.7458 range). Mean control-vs-control Jaccard = 0.8738. Jaccard >=0.30 supports 'rankings reflect real spectral structure', >=0.50 strong agreement, <0.10 indicates rankings are seed-noise.",
+  "computed_at": "2026-05-01T17:31:58Z",
+  "wallclock_s": 5.077562570571899
+}
