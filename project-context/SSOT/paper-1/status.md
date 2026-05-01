@@ -2,12 +2,12 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-05-01 19:30 PDT
+last_updated: 2026-05-01 22:00 PDT
 canonical_source: arxiv/main.tex
-canonical_pdf: arxiv/main.pdf (mirrored to public/papers/{paper1_spin_torsion.pdf, spin_torsion_paper1.pdf, spin-torsion-paper.pdf} — v2.3.6 recompile LANDED 2026-05-01 19:30 PDT on Pod 3)
-version: v2.3.6
+canonical_pdf: arxiv/main.pdf (mirrored to public/papers/{paper1_spin_torsion.pdf, spin_torsion_paper1.pdf, spin-torsion-paper.pdf} — v2.3.7 recompile LANDED 2026-05-01 22:00 PDT on Pod 3)
+version: v2.3.7
 headline_pct: 100
-submission_status: Wave 14-M LANDED — OpenAI P1-OA-B4 scale-aware dimensional fix at §II.B "Torsion remains algebraic" L231 (replaced dimensionally ill-posed `O(α/M·M_Pl²) ~ 10⁻³` with scale-aware `O((α/M)·k)` evaluated at k~M_Pl giving ~10⁻², k~M_GUT giving ~10⁻⁵). Wave 11-A carried forward — abstract + body reframed (ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote); closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2, P1-OA-B4; PDF recompiled clean on Pod 3 (1,230,398 bytes / 33 pp / 0 errors / 1 'Wave 14-M' occurrence)
+submission_status: Wave 14-P LANDED — Gemini-3.1-Pro P1 MAJOR M-2 NaMaster pipeline-validation move out of the abstract (literal removal of the NaMaster 500MC pseudo-C_ℓ pipeline-recovery sentence from the abstract per Gemini's literal "Do not list it in the abstract or executive summary (Table I) as part of the observational evidence" ask; abstract retains the published Planck/ACT~DR6 2.4-2.9σ sky-detection sentence with a parenthetical Sec.~\ref{sec:data_cmb} cross-reference; §VI Eq. 18 paragraph at L427 prepended with bold "R42 Wave 14-P peer-review reframe (cross-model Gemini~3.1-Pro P1 M-2)" italic block reaffirming the bias-injection MC pipeline-validation framing and explicitly warning that the high pipeline-recovery SNR figures must not be conflated with the published Planck/ACT~DR6 2.4-2.9σ sky detection). Wave 14-M carried forward (OpenAI P1-OA-B4 scale-aware dimensional fix at L231). Wave 11-A carried forward — abstract + body reframed (ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote); closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2 (NaMaster move now literal, not just framing), P1-CM-m1, P1-OA-B2, P1-OA-B4; PDF recompiled clean on Pod 3 (1,229,642 bytes / 33 pp / 0 errors / 0 undef refs / 1 'Wave 14-P' occurrence / 1 pre-existing WilsonEwing2012 undef cite)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
