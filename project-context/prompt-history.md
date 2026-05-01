@@ -1,5 +1,14 @@
 
 
+## 2026-05-01 — Switch Next.js site live + LiveStatus timestamp at top of every page + keep looping research
+
+### Houston substantive messages, verbatim
+
+**14:30 PT — flip Next.js to main site + add live timestamp banner + keep cron + improve site between fires**
+
+> ok please push the nextjs site which we have made many improvements do as the live site and then keep improving it as much as possible while you continue the report loop etc do not get distractedd by the core research but just switch the nextjs site as main site now and keep looping and finishing all pending tasks and runpod status etc etc thanks and keep updating the site with latest status etc after every cron etc with a timestatmp of date-time at the top of the site by the improvements etc and eta to completion
+
+
 ## 2026-04-30 — R42 Wave 2/3 kickoff: $400 RunPod budget + 3x H200 paused pods + nothing deferred
 
 ### Houston substantive messages, verbatim
@@ -23032,3 +23041,19 @@ Houston's framing: "take seriously but with grain of salt since they do not have
 > 
 > QUOTA: Use max 2 Figma MCP calls per iteration — prioritize get_design_context over get_metadata.
 
+
+## 2026-04-30 — R42 Wave 1 close + B23 HF go-public + Next.js migration green-lit
+
+### Houston substantive messages, verbatim
+
+**21:35 PT — pod inventory + parallelize directive**
+
+> ok here are the two active pods btw i added another one to help: ... regular_green_pig (xzgst22n006n0g, 38.80.152.249:31069) ... r42-pod-b (b5o3od0k592067, 103.196.86.10:28424) ... regular_green_pig-migration (kfmtdje25y88tf, 38.80.152.148:33089)
+
+**21:42 PT — focus directive**
+
+> just utilize the one that is working and the others if you need or can paralellize anything to speed things up using those pods - lmk how much is still pending/remaining to be done ?
+
+**21:55 PT — B23 decision + Next.js migration go**
+
+> ok why you asking for my decision on B23? oh that is just making the HF models and datasets public not private? I mean.. i am fine with it if you wanna go ahead and do it... i just saw a bunch of activity on them and got spooked a few weeks back bc i didn't want someone to leak my research or something but i have zero HF followers and all thea ctivity was myself and mya gents so whatever just do that ... anything else need to be updated or can be done in parallel while the current pod run runs? any PDFs ready to be recompiled and pushed to the website? and how about actually legitimately improving the actual research site design to use a proper tailwindcss, shadcn, react, nextjs proper web app with proper more scalable consistent designs and utilizing everything better displaying from our github, convex, project and research etc just improving the whole website/web app to make it better and more organized and professional and scalable and not creating these dozens of different staic html pages.. etc that is something that needs real work too if we are just sitting waiting for the current pod run to finish
