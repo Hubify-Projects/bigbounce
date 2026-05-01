@@ -181,19 +181,19 @@ export default function StatusPage() {
                     f<sub>NL</sub> = -35/8 Forecast: SPHEREx Discrimination
                   </TableCell>
                   <TableCell>
-                    <Badge variant="default">Submission-Ready</Badge>
+                    <Badge variant="default">99% Ready</Badge>
                   </TableCell>
                   <TableCell className="font-mono">~12</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-semibold">Paper 3</TableCell>
                   <TableCell>
-                    Multi-Survey Anomaly Catalog: 319K from 37.3M Sources
+                    Multi-Survey Anomaly Catalog: 378K from 37.3M Sources
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">Draft (~95%)</Badge>
+                    <Badge variant="default">98% Ready</Badge>
                   </TableCell>
-                  <TableCell className="font-mono">~18</TableCell>
+                  <TableCell className="font-mono">~40</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-semibold">Paper 4</TableCell>
@@ -201,9 +201,9 @@ export default function StatusPage() {
                     Galaxy Chirality at Scale: 8.47M Galaxies
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">Draft (~85%)</Badge>
+                    <Badge variant="secondary">96% Ready</Badge>
                   </TableCell>
-                  <TableCell className="font-mono">~11</TableCell>
+                  <TableCell className="font-mono">~19</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

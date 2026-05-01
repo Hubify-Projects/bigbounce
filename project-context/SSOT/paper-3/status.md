@@ -32,13 +32,13 @@ Last prior authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 clos
 
 ## Current state (2026-04-30 PDT)
 
-- **Readiness: 100 %** — submission-ready, PDF current, self-contained (R41 decoupled).
+- **Readiness: 98 %** — capped per 2026-05-02 14:15Z directive. **Wave 14-II FULL HARD FIX of P3-CM-M1 just landed** (Pod 3 H200 quantitative systematics-marginalization Fisher recompute — `σ(f_NL)_marg ∈ [0.067, 0.116]` floor across 6 configs, δs dominant, δb broken by multi-tracer cross-correlations). Residual: **P3-OA-M9 NANOGrav Bayesian rerun still pending Pod 3 H200 compute (~2-4 h GPU)** + program-wide MINORs. Cron-driven path to 99 % is ~6-12 h end-to-end. **Final 1 % gated on two gates: Houston sign-off + clean external R43 round (zero MAJOR/MINOR findings).** The cron does not award the final 1 %.
 - **R41 closure**: paper now stands on its own — no `\cite{Golden:2026...}` anywhere. Abstract reads as a self-contained anomaly-catalog deliverable with primary-source attribution to Heinrich+2023 and Cai+2009/Wilson-Ewing+2012 for the matter-bounce f_NL=−35/8 anchor.
 - **R35 closure**: the 9,303 figure (top-1% IF cross-validation reference) and the canonical 298-source eROSITA catalog (S>0.259 BigAE top-cut) are disambiguated inline.
 - **Path-C rebuild CLOSED 2026-04-22 (fire #189, 12/12 criteria green, weighted sum 100.000 %).** Native BigAE retrains for SDSS+LAMOST+CMB landed; **R42-fix 2026-04-30: ACT DR6 formally quarantined and excluded from headline; 7-way positional dedup at 5″ across the seven non-quarantined surveys → 378,280 unique physical objects + 637 multi-survey clusters** (ACT had zero positional overlaps; the 8-way 378,480 variant is preserved on disk as a sensitivity check); DESI 5-fold k-fold $\bar J = 0.862$ PASS.
-- **R31–R35 + R41 incorporated.** UMAP multi-seed stability 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL) — honest framing maintained.
+- **R31–R35 + R41 + R42 Wave 14-II incorporated.** UMAP multi-seed stability 1-of-3 PASS (trustworthiness 0.9797 PASS; kNN-pres 0.160 FAIL; cross-seed 0.680 FAIL) — honest framing maintained.
 - **Pre-Path-C 319,443 sum-over-surveys** preserved as §7 before-after baseline.
-- **Remaining:** 1 NOTE only (HF private until acceptance — standard).
+- **Cron-driven ETA to 99 %**: ~6-12 h (P3-OA-M9 NANOGrav Bayesian rerun on Pod 3 H200 ~2-4 h GPU + cheap-fast residual MINORs ~1-2 h). After all four papers reach 99 %, the next external round (R43) gets the current PDF; R43 clean + Houston sign-off → 100 %.
 
 > **Path-C historical detail.** The full rebuild log lives in [`project-context/SSOT/drive-to-100.md`](../drive-to-100.md) "Loop log". The `27 MB PDF` references in §1–§3 below are now **28 MB / 33 pp / 0 undef**. The `319,443` is the §7 before-after baseline; post-Path-C unique-object count is **378,280 + 637 multi-survey clusters** (R42-fix: ACT DR6 quarantined; 8-way 378,480 preserved as sensitivity check).
 

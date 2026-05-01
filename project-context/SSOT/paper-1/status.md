@@ -43,10 +43,10 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 
 ## Current state (2026-04-29 PDT)
 
-- **Readiness: 100 %** — submission-ready, PDF current.
+- **Readiness: 99 %** — capped per 2026-05-02 14:15Z directive. All R42 BLOCKERs closed (Wave 14-U closed P1-CM-B2 last) and all known cross-model MAJORs closed (Wave 14-Z closed P1-OA-M4 last). Residual: program-wide MINOR text-polish + arXiv tarball/form-fill admin. **Final 1 % gated on two gates: Houston sign-off + clean external R43 round (zero MAJOR/MINOR findings).** The cron does not award the final 1 %.
 - **R31–R35 all incorporated.** 50MC pilot demoted to systematics-paragraph status; 500MC headline.
 - **NaMaster 500MC** (Pod 1, 2026-04-29 05:31 PDT): canonical at `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`. Integrated into Paper 1 §IV (commits e884cff + ba8ccbf + R35 a63ef0b).
-- **Remaining:** none for science; arXiv form-fill only.
+- **Cron-driven ETA to 99 % maintained at 99 %**: residual MINOR text polish (~2-4 h cron-driven). After all four papers reach 99 %, the next external round (R43) gets the current PDF; R43 clean + Houston sign-off → 100 %.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper1_science_highlights.md`](../../paper1_science_highlights.md) — 9 contributions, N3×5 / N2×4.
 

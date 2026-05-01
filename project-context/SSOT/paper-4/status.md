@@ -36,7 +36,7 @@ Prior authoritative update: 2026-05-01 (PDT, 07:30) — **R42 Wave 11-CLOSE LAND
 
 ## Current state (2026-04-30 PDT)
 
-- **Readiness: 100 % (science + admin). Submission-locked, self-contained.** All Pod 2 GPU work landed (commit `caf858a`); R35 admin polish landed (commit `a63ef0b`); R41 decoupled; PDF current.
+- **Readiness: 96 %** — capped per 2026-05-02 14:15Z directive. **Wave 14-JJ P4-CM-B2 PSF cross-correlation BLOCKER is in flight on Pod 3 H200** (patch-3 NaN-row filter applied, not yet confirmed closed — counts as 1 conditional open BLOCKER). **Gemini P4 B-1 NaMaster recompute pending** (~2-4 h H200). **OpenAI P4 compute-heavy MAJORs queued**: B5, B7, M-1, M-5, M-7, M-9 (~6-12 h aggregate H200). Cron-driven path to 99 % is ~12-24 h. **Final 1 % gated on two gates: Houston sign-off + clean external R43 round (zero MAJOR/MINOR findings).** The cron does not award the final 1 %.
 - **R31–R34 + R37 + R41 incorporated.** N_gal = 5,547,858 closure (R31). Units + ℓ_max + N_gal arithmetic + Dosovitskiy bib (R32). % units in confusion-matrix headers (R33). Cites all 28/28 resolve CLEAN (R34, commit 7c85d85). MASTER deconvolution P4-M6 DONE pre-overnight. R41 decoupling: 3 cross-paper cites → 4 primary-source bibitems; pie-chart figure regenerated.
 - **Pod 2 GPU work — ALL DONE 2026-04-29 PDT** (commit `caf858a`, files in `pipelines/h200_results/pod2_chirality_2026-04-29/`):
   - **P4-M3** bias hardening — 4/8 PASS on 2k GZ DESI v2 galaxies (`bias_hardening_results.json`). Flip/swap, rotation, artifacts, perturbation FAIL → flag in §validation; survey, calibration, leakage, hemispheric PASS.

@@ -26,11 +26,11 @@ submission_status: submission-ready (R42 Wave 14-AA LANDED — two Gemini-3.1-Pr
 
 ## Current state (2026-04-30 PDT)
 
-- **Readiness: 100 %** — submission-ready, PDF current, self-contained.
-- **R20 + R31–R35 + R41 all incorporated.** No substantive open items.
+- **Readiness: 99 %** — capped per 2026-05-02 14:15Z directive. R42 BLOCKER B-3 closed Wave 14-K; cross-model MAJORs P2-CM-M1 + P2-CM-M2 both closed Wave 14-AA. Residual: text-polish MINORs + arXiv form-fill admin. **Final 1 % gated on two gates: Houston sign-off + clean external R43 round (zero MAJOR/MINOR findings).** The cron does not award the final 1 %.
+- **R20 + R31–R35 + R41 + R42 (Wave 14-AA + 14-K) all incorporated.** No substantive open items.
 - **Abstract numbers:** 23/23 supported in body (R34 closed orphan claim).
 - **Bibliography hygiene + cross-references:** clean (R32 + R35 + R41).
-- **Remaining:** none for science; arXiv form-fill. R41 decoupling removes the prior production-editor sequencing constraint — Paper 2 may submit in any order.
+- **Cron-driven ETA to 99 % maintained at 99 %**: residual MINOR text polish (~1-2 h cron-driven). After all four papers reach 99 %, the next external round (R43) gets the current PDF; R43 clean + Houston sign-off → 100 %.
 
 **Science highlights with N0–N4 novelty tags:** [`project-context/paper2_science_highlights.md`](../../paper2_science_highlights.md) — 7 contributions, N3×3 / N2×4.
 **Supersedes:** `wiki/entities/paper-2-fnl-forecast.md` (stale 2026-04-04 — claimed "SUBMISSION-READY" which is WRONG), `project-context/CURRENT_STATUS.md` row (claimed "v1.3.0 · Ready for submission" — BOTH version and readiness are wrong)
