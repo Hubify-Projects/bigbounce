@@ -1,0 +1,82 @@
+{
+  "B20_GZ1_only": {
+    "matched_galaxies": 240919,
+    "gz1_total_with_class": 252415,
+    "match_radius_arcsec": 1.0,
+    "accuracy_eq_head_3class": 0.5870769843806425,
+    "accuracy_raw_head_3class": 0.5587301587301587,
+    "spiral_only_CW_vs_CCW_eq": 0.6991083998122947,
+    "spiral_only_CW_vs_CCW_raw": 0.6534090909090909,
+    "n_spiral_eq": 117205,
+    "n_spiral_raw": 1232,
+    "confusion_eq": {
+      "CW": {
+        "CW": 39011,
+        "CCW": 18889,
+        "NOT_SPIRAL": 13715
+      },
+      "CCW": {
+        "CW": 16377,
+        "CCW": 42928,
+        "NOT_SPIRAL": 13720
+      },
+      "NOT_SPIRAL": {
+        "CW": 17056,
+        "CCW": 19724,
+        "NOT_SPIRAL": 59499
+      }
+    },
+    "confusion_raw": {
+      "CW": {
+        "CW": 451,
+        "CCW": 296,
+        "NOT_SPIRAL": 227
+      },
+      "CCW": {
+        "CW": 131,
+        "CCW": 354,
+        "NOT_SPIRAL": 88
+      },
+      "NOT_SPIRAL": {
+        "CW": 161,
+        "CCW": 209,
+        "NOT_SPIRAL": 603
+      }
+    }
+  },
+  "B21_NOT_SPIRAL_transition": {
+    "raw_x_NOT_SPIRAL_total": 53862,
+    "stayed_NOT_SPIRAL_after_eq": 51694,
+    "stayed_pct": 95.97489881549144,
+    "raw_x_to_eq_transition_NS_only": {
+      "CCW": {
+        "NOT_SPIRAL": 1102
+      },
+      "CW": {
+        "NOT_SPIRAL": 1066
+      },
+      "NOT_SPIRAL": {
+        "NOT_SPIRAL": 51694
+      }
+    },
+    "full_raw_x_to_eq_transition": {
+      "CCW": {
+        "CCW": 9927,
+        "CW": 5586,
+        "NOT_SPIRAL": 1102
+      },
+      "CW": {
+        "CCW": 4977,
+        "CW": 10481,
+        "NOT_SPIRAL": 1066
+      },
+      "NOT_SPIRAL": {
+        "CCW": 1952,
+        "CW": 1493,
+        "NOT_SPIRAL": 51694
+      }
+    }
+  },
+  "elapsed_sec": 73.3,
+  "computed_at": "2026-05-01T02:49:18Z"
+}

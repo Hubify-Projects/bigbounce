@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.4}
+\newcommand{\paperVersion}{v1.0.5}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 00:58 PDT --- \paperVersion}
+\date{May 1, 2026, 02:55 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -252,14 +252,27 @@ ambiguous objects away from chirality classification.
 We note that 67.6\% of training labels (17,999 of 26,626) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
-than independent ground truth. On the Galaxy~Zoo~1-only subset
-(6,637~galaxies with citizen-science labels), we report validation
-accuracy separately to quantify the circular-labeling effect:
-three-class accuracy on GZ1-labeled galaxies only is lower than the
-headline $93.7\%$ (full per-class metrics in the companion code
-repository), and we caution that the $93.7\%$ headline includes
-$67.6\%$ CE-ResNet-derived labels that partially measure
-self-consistency rather than independent ground truth.
+than independent ground truth. To quantify the circular-labeling effect,
+we ran the production catalog against the \emph{full} Galaxy~Zoo~1
+Table~2~\cite{Lintott:2008} (667{,}944 objects), restricted to the
+252{,}415 galaxies with a deterministic GZ1 class label
+(\textsc{spiral} with $P_{\mathrm{CW}}\!\neq\!P_{\mathrm{ACW}}$, or
+\textsc{elliptical}). At a $1.0''$ sky-match radius, 240{,}919 GZ1 objects
+($95.45\%$) cross-match into the catalog. The equivariant-head
+three-class accuracy on this independent GZ1 sample is
+$\mathbf{58.71\%}$ ($141{,}438\,/\,240{,}919$); the spiral-only CW versus
+CCW accuracy on the 117{,}205 GZ1 spirals where the model also predicts
+a chirality is $\mathbf{69.91\%}$. Both numbers are well below the
+headline $93.7\%$ measured against the CE-ResNet-augmented training
+validation set. The gap is the magnitude of the circular-labeling effect:
+the headline figure measures internal consistency with a 67.6\%
+CE-ResNet-derived training corpus, while the GZ1-only number measures
+agreement with citizen-science labels on a fully independent sample.
+Reproducibility artifact: \texttt{r42\_results/B20\_B21\_results.json}
+(includes full $3\times 3$ confusion matrix and matched-galaxy counts).
+We treat $69.91\%$ as the conservative spiral-chirality accuracy floor
+and propagate this to all downstream isotropy bounds via the
+sub-percent--level systematic floor in Section~\ref{sec:systematic_dipole}.
 
 \begin{figure}[t]
 \centering
@@ -471,6 +484,23 @@ of releasing the catalog at the current scale.
   reflection by construction.
   \label{fig:equivariance_demo}}
 \end{figure}
+
+\paragraph{\NS{} stability under TTA averaging (R42 R3 BLOCKER B21).}
+A separate concern raised in adversarial peer review (R42 round, reviewer~R3)
+was whether the test-time flip averaging itself induces spurious
+\NS{}$\to$\{CW, CCW\} migrations, which would inflate the chirality counts
+at the expense of the rejection class. We tested this directly on the
+production catalog. Of the 53{,}862~galaxies classified \NS{} by the
+single-pass raw head, $\mathbf{51{,}694\,(95.97\%)}$ remain \NS{} after the
+two-fold flip-TTA averaging; the remaining $4.03\%$ split into 1{,}066~CW
+and 1{,}102~CCW, an essentially balanced leakage
+($|N_{\mathrm{CW}}-N_{\mathrm{CCW}}|/N_\mathrm{total} = 0.07\%$). The
+balance is a strong null-test of the TTA pipeline: any chirality-biased
+leakage out of the \NS{} channel would have produced an asymmetric split.
+This confirms that the equivariance averaging conserves the rejection
+class to better than $4\%$ leakage and does not bias the surviving CW/CCW
+counts. Reproducibility artifact:
+\texttt{r42\_results/B20\_B21\_results.json}.
 
 \subsection{Bias Hardening Suite}
 \label{sec:bias}

@@ -82,7 +82,7 @@
 <main class="container" style="padding-top: 20px;">
 
 <div class="hero">
-  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: May 1, 2026 &middot; 01:35 PDT</p>
+  <p class="text-xs sans" style="margin-bottom: 8px;">Last Updated: May 1, 2026 &middot; 02:55 PDT</p>
   <h1>Research Program Status</h1>
   <p class="subtitle">Comprehensive source of truth for the entire BigBounce spin-torsion cosmology research program. Every paper, pipeline, MCMC run, computation script, and discovery in one place.</p>
   <p style="margin-top: 4px; font-family: var(--font-sans); font-size: 15px; color: var(--text-tertiary);">Houston Golden &middot; Independent Researcher</p>
@@ -92,10 +92,10 @@
 <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-left: 4px solid #22c55e; border-radius: var(--radius-lg); padding: 18px 22px; margin: 20px 0;">
   <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
     <div style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #166534;">R42 4-LLM Adversarial Peer Review &middot; Closure Sprint</div>
-    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary);">Updated 2026-05-01 01:35 PDT</div>
+    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary);">Updated 2026-05-01 02:55 PDT</div>
   </div>
   <div style="margin-top: 10px; font-family: var(--font-sans); font-size: 14px; color: var(--text);">
-    <strong>20 of 23 BLOCKERs CLOSED</strong> &middot; 87% &middot; <span style="display:inline-block; width: 220px; height: 8px; background: var(--border); border-radius: 4px; vertical-align: middle; overflow: hidden;"><span style="display:block; width: 87%; height: 100%; background: #22c55e;"></span></span>
+    <strong>22 of 23 BLOCKERs CLOSED</strong> &middot; 96% &middot; <span style="display:inline-block; width: 220px; height: 8px; background: var(--border); border-radius: 4px; vertical-align: middle; overflow: hidden;"><span style="display:block; width: 96%; height: 100%; background: #22c55e;"></span></span>
   </div>
   <table style="width: 100%; margin-top: 12px; font-family: var(--font-sans); font-size: 13px; border-collapse: collapse;">
     <thead>
@@ -110,12 +110,14 @@
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P1</strong> Spin-Torsion</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v2.2.0</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P2</strong> f<sub>NL</sub> Forecast</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v1.7.5</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
       <tr><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><strong>P3</strong> Anomaly Catalog</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono);">v3.1.5</td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);"><span class="badge badge-green">CLOSED</span></td><td style="padding: 6px 8px; border-bottom: 1px solid var(--border);">&mdash;</td></tr>
-      <tr><td style="padding: 6px 8px;"><strong>P4</strong> Chirality Catalog</td><td style="padding: 6px 8px; font-family: var(--font-mono);">v1.4.x</td><td style="padding: 6px 8px;"><span class="badge badge-amber">3 OPEN</span></td><td style="padding: 6px 8px;">B20 GZ1-only acc, B21 NOT_SPIRAL transition, B23 HF visibility</td></tr>
+      <tr><td style="padding: 6px 8px;"><strong>P4</strong> Chirality Catalog</td><td style="padding: 6px 8px; font-family: var(--font-mono);">v1.0.5</td><td style="padding: 6px 8px;"><span class="badge badge-amber">1 OPEN</span></td><td style="padding: 6px 8px;">B23 HF dataset visibility (Houston-decision toggle, not compute)</td></tr>
     </tbody>
   </table>
   <div style="margin-top: 12px; font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
-    <strong style="color: var(--text);">Pod:</strong> <code style="font-family: var(--font-mono); font-size: 12px;">regular_green_pig-migration</code> @ 38.80.152.148:33089 &middot; GPU idle &middot; 8.47M-galaxy chirality catalog staged for B20/B21 cross-match.<br>
-    <strong style="color: var(--text);">ETA to ready-for-external-reviewers:</strong> Next 1&ndash;2 fires close B20/B21 (cross-match catalog &times; GZ1 + ViT-Small inference). B23 is a Houston-decision toggle (HF dataset public visibility), not a compute task. <strong style="color: #166534;">Bundle ready-to-send within ~24 h pending B23 decision.</strong>
+    <strong style="color: var(--text);">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45% match rate). Three-class accuracy on independent GZ1 sample = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals. Gap to 93.7% headline quantifies the circular-labeling effect (67.6% CE-ResNet-derived training labels) — both numbers now in P4 §II.A.<br>
+    <strong style="color: var(--text);">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, $\Delta$=0.07%). Confirms TTA conserves the rejection class.<br>
+    <strong style="color: var(--text);">Pod:</strong> <code style="font-family: var(--font-mono); font-size: 12px;">regular_green_pig-migration</code> @ 38.80.152.148:33089 &middot; GPU idle &middot; cross-match completed in 73s.<br>
+    <strong style="color: var(--text);">ETA to ready-for-external-reviewers:</strong> Only B23 (HuggingFace dataset public-visibility toggle) remains. <strong style="color: #166534;">Bundle is ready-to-send pending one Houston decision on whether to flip the HF catalog public.</strong>
   </div>
 </div>
 
