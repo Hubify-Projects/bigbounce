@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.8}
+\newcommand{\paperVersion}{v1.0.9}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 13:45 PDT --- \paperVersion}
+\date{May 1, 2026, 14:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -645,13 +645,25 @@ The pipeline produces three catalog tiers:
 
 \item \textbf{Catalog~B} (Platt-calibrated): a sigmoid calibration
   (bias~$= 1.58$, temperature~$= 4.65$) fitted against CE-ResNet
-  consensus labels removes the residual CW excess in the raw outputs.
-  Platt scaling parameters ($A$, $B$) are fit on a held-out 20\%
-  validation set and are provided in the companion code repository.
+  consensus labels \emph{reduces} the residual CW excess from
+  $+0.79\%$ (Catalog~A raw, $28.8\sigma$ from parity) to $+0.4\%$
+  ($14.6\sigma$ from parity; Table~\ref{tab:cw_frac}); a residual
+  asymmetry persists at the calibrated tier and is further reduced
+  to $-0.26\%$ ($9.5\sigma$) only by the equivariant TTA of
+  Catalog~C, which is therefore the recommended tier for cosmological
+  parity analyses (\S\ref{sec:cw_frac}).
+  Platt scaling parameters $(A, B)$ map raw CW logit $z$ to calibrated
+  probability via $p_{\rm cal} = \sigma(A z + B)$ with $A = 1/T = 1/4.65$
+  and $B = -1.58$; both are fit on a held-out 20\% validation split
+  of the chirality~v2 training pool against CE-ResNet consensus labels
+  by minimizing the negative log-likelihood
+  $\mathcal{L}(A, B) = -\sum_i [y_i \log p_{i,{\rm cal}} + (1-y_i) \log(1 - p_{i,{\rm cal}})]$
+  with L-BFGS, and are provided in the companion code repository.
   Note: the Platt scaling calibration is fit against CE-ResNet
   consensus labels, not an independent ground truth; the calibration
   therefore inherits any systematic bias present in the CE-ResNet
-  reference catalog.
+  reference catalog, which is one of the reasons the residual
+  $+0.4\%$ excess persists rather than collapsing to zero.
   Suitable for ML downstream tasks.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
