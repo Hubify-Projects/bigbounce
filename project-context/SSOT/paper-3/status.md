@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B13 retitle to "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 319,443 Anomalies and Native-Trained Novelty Rates from 37.3 Million Spectra" (lands the headline numbers in the title rather than burying them inside the abstract — R3 Grok Heavy + R4 Gemini reviewer-driver finding); B11 Path A effective closure (6.1% σ(f_NL) headline contextualized inline at line 528 + 720–738 with Heinrich+2023 §IV 15–30% shot-noise sensitivity range so the precision sensitivity is no longer hidden; no claim retraction). Version bump v3.1.2 → v3.1.3, date stamp 21:30 → 23:55 PDT. PDF recompiled clean (27 MB / 35 pp / 0 undef refs).
+Last authoritative update: 2026-05-01 (PDT, 00:15) — **R42 Wave 11-G #1 closed**: PTA MCMC reproducibility deposit landed at `reproducibility/p3_pta_mcmc/{README.md, run_pta_combined_mcmc.sh}`. Closes Gemini 3.1-Pro finding P3-OA-B5 ("zero equations for the likelihood, no mention of pulsar noise models, no priors") on the equations + priors + noise-model axis (corner-plot sub-finding remains queued). The deposit traces the canonical §VI γ = 3.20 ± 0.42 to `pipelines/h200_results/phase4_science/nanograv_ptarcade/nanograv_ptarcade_summary.json` (emcee, 32 walkers × 10,000 steps, 320,000 samples, n_eff = 9,854) and documents the v2b Fisher-recompute history (commits `7bdc26d8` / `c61eb559` / `a06e665a`, 2026-04-18) showing the "γ=3.33±0.40 → γ=3.20±0.42" correction was a homepage display fix in `96d33100`, not a re-run. Six trace gaps logged in the README (192K-vs-320K sample wording, "GPU MCMC" prose vs CPU emcee reality, synthetic-vs-published free-spectrum, stuck enterprise-real chain, missing R̂, missing combined-PTA τ).
+
+Last prior authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B13 retitle to "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 319,443 Anomalies and Native-Trained Novelty Rates from 37.3 Million Spectra" (lands the headline numbers in the title rather than burying them inside the abstract — R3 Grok Heavy + R4 Gemini reviewer-driver finding); B11 Path A effective closure (6.1% σ(f_NL) headline contextualized inline at line 528 + 720–738 with Heinrich+2023 §IV 15–30% shot-noise sensitivity range so the precision sensitivity is no longer hidden; no claim retraction). Version bump v3.1.2 → v3.1.3, date stamp 21:30 → 23:55 PDT. PDF recompiled clean (27 MB / 35 pp / 0 undef refs).
 
 **Prior round R41 (2026-04-30 00:21):** 6 cross-paper `\cite{Golden:2026framework/forecast/chirality}` references in abstract / §6 / §7 / conclusion removed and replaced with primary-source citations (Heinrich2023 for SPHEREx forecast methodology, Lentati2013 for PTA free-spectrum framework, WilsonEwing2012 for matter-bounce f_NL primary source); embedded `thebibliography` updated.
 
@@ -410,3 +412,90 @@ Closes 7 BLOCKERs from the Gemini 3.1-Pro + GPT-5 cross-model adversarial review
 ### Why text-only is acceptable here
 
 The paper's **prose, equations, tables, and cross-references** are all internally self-consistent at v3.1.6 and will compile cleanly when next run. The PDF is currently stale relative to the .tex but the .tex itself is the canonical source per CLAUDE.md "Canonical Sources" table. R42 Wave 11-B + 11-E discharges the BLOCKER list from cross-model review; recompile-and-mirror is a mechanical follow-up, not a science follow-up.
+
+---
+
+## 13. R42 Wave 11-G #1 — PTA MCMC reproducibility deposit (2026-05-01)
+
+Closes Gemini 3.1-Pro finding **P3-OA-B5** (cross-model peer review,
+2026-05-01: *"You provide zero equations for the likelihood, no mention
+of the pulsar noise models, no priors, and no posterior plots."*) on
+the **equations + priors + noise-model axis**. The "no posterior plots"
+sub-finding is unaddressed in this wave (text-only deposit per Wave
+11-G scope) and remains queued for a corner-plot deposit at the next
+pod session.
+
+### What landed
+
+- `reproducibility/p3_pta_mcmc/README.md` — full methods document
+  scribed from the chains already on disk (no new MCMC runs):
+  - Datasets combined: NANOGrav 15-yr (Agazie+ 2023, arXiv:2306.16213),
+    EPTA DR2 (Antoniadis+ 2023, arXiv:2306.16224), PPTA DR3
+    (Reardon+ 2023, arXiv:2306.16215), IPTA DR2 (Antoniadis+ 2022,
+    arXiv:2201.03980).
+  - Sampler: emcee.EnsembleSampler (CPU, ~30 s runtime), 32 walkers,
+    10,000 production steps, 3,000 burn-in (BURN_FRAC = 0.3),
+    deterministic seeds.
+  - Priors: log10 A ∈ U(−17, −12), γ ∈ U(0.5, 8.0); no per-pulsar noise
+    parameters (input is published noise-marginalized posteriors, not
+    raw .tim/.par files).
+  - Likelihood: closed-form Gaussian on (γ, log10A) summary statistics
+    — single-PTA on 6 signal-dominated free-spectrum bins, combined
+    on the four published power-law posteriors. Equations explicit in
+    README §3.
+  - Convergence: τ(γ) = 32.5 steps, n_eff = 9,854 (single-PTA);
+    n_eff = 9,514 (combined). `converged = true` for both.
+  - Headline traceability: γ_mean = 3.1925, γ_std = 0.4233 →
+    rounded "3.20 ± 0.42" → 0.45σ tension with bounce
+    (paper rounds to 0.48σ). All numbers traced to specific JSON
+    fields in `nanograv_ptarcade_summary.json`.
+  - v2b Fisher recompute history: commits `7bdc26d8` (Paper 3 §VI
+    rewrite, 2026-04-18) → `c61eb559` (PDF recompile-V3 with
+    Fisher v2b table, 2026-04-18) → `a06e665a` (closes P3-H as
+    superseded). The "γ = 3.33 ± 0.40 (0.81σ)" → "γ = 3.20 ± 0.42
+    (0.48σ)" correction in commit `96d33100` (2026-04-24) is a
+    homepage display fix, **not** a re-run of the headline chain.
+    The headline chain has been static since the 2026-04-12 H200
+    production run.
+
+- `reproducibility/p3_pta_mcmc/run_pta_combined_mcmc.sh` — driver
+  script that re-invokes the two production scripts and diffs the
+  regenerated summaries against the canonical on-disk JSONs.
+
+### Trace gaps logged (do not retract any paper number)
+
+1. "192 K samples" (paper §VI / `paper3_science_highlights.md`) vs
+   "320 K samples" (`mcmc.n_samples` on disk). Both consistent with
+   converged emcee chain; recommend reconciling §VI prose at the
+   next revision.
+2. "GPU MCMC, combined PTA" wording in §VI L544 conflates
+   single-PTA (3.20 ± 0.42, the actual headline) with combined-PTA
+   (3.32 ± 0.37, sensitivity check). Writing-only fix; both runs
+   are CPU-only emcee, neither uses a GPU.
+3. The single-PTA MCMC operates on a synthetic free-spectrum
+   constructed from the published power-law (γ_NG = 3.2,
+   log10A = −14.62) plus hard-coded noise-floor bias and per-bin
+   scatter — **not** the official NANOGrav 15-yr free-spectrum
+   HDF5 release. Already disclosed as Paper 3 §7.3 limitation #5.
+4. `pipelines/h200_results/pod_full_backup_20260413/results/nanograv-enterprise-real/summary.json`
+   shows γ ≈ 9.99 (prior boundary, sampler stuck). This was an
+   abandoned attempt at a true enterprise + PTMCMCSampler run on
+   raw NANOGrav .tim/.par files; preserved on disk for future
+   revival but **not** the source of any paper number.
+5. No R̂ Gelman-Rubin diagnostic (emcee runs a single ensemble);
+   only n_eff and the `converged` boolean are stored.
+6. Combined-PTA summary stores `n_effective` but not the
+   autocorrelation-time array (single-PTA stores both).
+
+### What this does NOT close
+
+- **P3-OA-B5 corner-plot sub-finding** — still queued for next
+  pod session.
+- **Pulsar noise models** — the README documents that none are
+  fitted (input is already noise-marginalized published power-law
+  posteriors). A reviewer who wants per-pulsar RN/DM modelling
+  must re-run `h200_scripts/experiments/nanograv_enterprise_real.py`
+  with the .tim/.par files; the chain on disk is broken and that
+  is a separate fire to debug.
+- **PDF recompile** — text-only deposit; no .tex changes in this
+  wave. PDF is unaffected.
