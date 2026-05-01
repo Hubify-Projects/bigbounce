@@ -48,7 +48,7 @@ Native-Trained Novelty Rates from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 11:15 PDT --- v3.1.8}
+\date{May 1, 2026, 19:00 PDT --- v3.1.9}
 
 \begin{abstract}
 We present the largest multi-survey anomaly detection campaign to date, applying the \BigAE{} autoencoder framework to 37.3~million sources and CMB map patches across seven retained astronomical archives---DESI~DR1 (optical spectroscopy), SDSS~DR18, LAMOST~DR10, eROSITA~DR1 (X-ray), Planck (microwave), Gaia~DR3 (optical variability), and NEOWISE (infrared)---with ACT~DR6 carried only as a quarantined cross-transfer artifact (\S\ref{sec:act_appendix}, excluded from all headline numbers). After per-survey native retraining and $7$-way positional deduplication at $5''$, the catalog contains $\mathbf{378{,}280}$ unique anomalies, stratified into two physically distinct tiers: $\mathbf{378{,}080}$ point-source object detections from the six photometric/spectroscopic surveys plus $\mathbf{200}$ Planck CMB map patches that are sky regions, not point sources. Downstream analyses that treat anomalies as objects (cross-matching against SIMBAD/NED, multi-tracer $f_{\rm NL}$ tracer selection, host-galaxy follow-up) should use the $378{,}080$ point-source primary tier; the $378{,}280$ headline aggregates the two tiers for survey-coverage completeness only and should never be quoted as a single object-density statistic. This represents a ${\sim}141\times$ increase over the largest prior single-survey anomaly search (Liang \etal~\cite{Liang2023}, 2{,}685 anomalies). Extended archival cross-matching of the top-$1{,}000$ DESI anomalies against NED, VizieR, and 20 all-sky catalogs yields a genuine novelty fraction of ${\sim}17.8\%$ (objects absent from all major catalogs; this fraction is measured on the highest-scored anomalies and likely represents an upper bound on the full-catalog novelty rate, since lower-scored anomalies closer to the detection threshold are more likely to be known objects at the margins of normal populations). The initial cross-transfer baseline identified $319{,}443$ anomaly detections; the Path-C rebuild with per-survey native retrains and $7$-way positional deduplication supersedes this with $388{,}493$ survey-level detections (across the seven retained surveys; ACT~DR6 excluded) collapsing to the $\mathbf{378{,}280}$ headline ($\mathbf{378{,}080}$ point-source $+$ $200$ Planck CMB-patch tiers) after deduplication. A Path-C rebuild protocol addresses cross-transfer artifacts, including a $98\%$ blue-excess contamination in LAMOST ($21.5\times$ anomaly-rate reduction after native retraining) and a ${\sim}6500\times$ SDSS inflation from catalog-calibration domain shift. LAMOST native-retrain injection-recovery at $5\sigma$ remains low ($5.8\%$ continuum-dip recovery; see \S\ref{sec:pathc_caveats}). A 5-fold held-out cross-validation on the DESI training pool yields mean pairwise Jaccard stability $\bar{J} = 0.862$ on top-$1\%$ anomalies, with $73\%$ of flagged objects appearing in all five folds, confirming that the anomaly catalog is training-sample-robust. Six injection-recovery gates yield 3 PASS (SDSS continuum-dip, Planck CMB native, NEOWISE) and 3 FAIL-with-diagnostic (LAMOST 5$\sigma$ injection-recovery $5.8\%$ retained under diagnostic protocol, Gaia $41.0\%$ cross-validation, eROSITA $81.5\%$ cross-validation); ACT~DR6 (200 patches) is formally quarantined from the primary scientific analysis pending a native retrain, is excluded from the $378{,}280$ headline, and is documented only as a cross-transfer artifact in Appendix~\ref{sec:act_appendix}. Three DESI$\times$SDSS cross-matches include a time-variable source and an uncataloged BAL~QSO at $z \approx 0.86$. Cosmological applications of the anomaly-selected tracers (multi-tracer $\fnl$ forecast; PTA spectral-index consistency) are summarized inline using primary-source methodology. The catalog, model weights, and reproducibility scripts are publicly released.
@@ -449,7 +449,9 @@ A residual scan-pattern systematic in the raw 436-anomaly set---traced to the $\
 
 \subsection{SIMBAD Cross-Match and Novelty Assessment}\label{sec:simbad}
 
-We cross-match anomalies from each survey against the SIMBAD astronomical database~\cite{Wenger2000} using a 5-arcsecond cone search. The aggregate SIMBAD-unmatched fraction---the fraction of anomalies absent from SIMBAD---is 58.8\%, weighted across all surveys with SIMBAD-matchable coordinates (Fig.~\ref{fig:novelty}). The survey-level breakdown reveals a strong dependence on the maturity of each archive's prior characterization:
+\textbf{R42 Wave 14-L peer-review reframe (Gemini 3.1-Pro P3-CM-m1).} Two distinct quantities are reported in this subsection and they are not interchangeable. The \emph{primary} novelty metric for this catalog is the \emph{genuine novelty fraction} measured against a deep multi-catalog baseline---17.8\% (178/1{,}000) for the DESI~DR1 top-1{,}000 anomalies cross-matched against 20 curated all-sky catalogs via CDS X-Match (paragraph ``Archival cross-match and genuine novelty floor'' below). The \emph{SIMBAD-unmatched fraction} reported here measures \emph{absence from a single curated synthesis database} and substantially overstates true catalog novelty because SIMBAD does not individually index the majority of photometric detections from wide-field surveys (a 100\% archival-identification rate is recovered in NED+VizieR for the SDSS~DR18 top-20 SIMBAD-unmatched anomalies). Readers, headlines, and downstream forecasts should quote 17.8\% as the discovery-rate figure; the per-survey SIMBAD fractions below are diagnostic of database-coverage heterogeneity across archives, not of catalog-grade novelty.
+
+We cross-match anomalies from each survey against the SIMBAD astronomical database~\cite{Wenger2000} using a 5-arcsecond cone search. The aggregate SIMBAD-unmatched fraction---the fraction of anomalies absent from SIMBAD---is 58.8\%, weighted across all surveys with SIMBAD-matchable coordinates (Fig.~\ref{fig:novelty}). \emph{This is a database-coverage measurement, not a discovery rate.} The survey-level breakdown reveals a strong dependence on the maturity of each archive's prior characterization:
 
 \begin{itemize}[leftmargin=*]
 \item \textbf{SDSS DR18: 90\% SIMBAD-unmatched.} This high rate reflects the transfer-learning approach: objects flagged as anomalous are those most dissimilar to the DESI training set, which are disproportionately cool dwarfs and unusual objects that have spectral classifications in SDSS but no individual SIMBAD entries.
@@ -481,9 +483,17 @@ We quantify the expected rate of spurious positional coincidences for all three 
   cross-matching, ranked from lowest (Gaia DR3, well-characterized
   variable stars) to highest (DESI DR1, 99\% of top-10K objects absent
   from SIMBAD).  The dashed line marks the aggregate 58.8\% SIMBAD-unmatched
-  fraction.  Extended archival cross-matching (NED, VizieR, 20 all-sky catalogs)
-  reduces the genuinely novel fraction to ${\sim}17.8\%$ for the DESI top-1{,}000
-  (Section~\ref{sec:simbad}).  The asterisk on LAMOST denotes that its 50\%
+  fraction. \textbf{R42 Wave 14-L:} the SIMBAD-unmatched fractions plotted
+  here are a \emph{database-coverage measurement}, not a discovery rate;
+  the \emph{primary} catalog novelty figure is the
+  ${\sim}17.8\%$ genuine novelty fraction recovered when the DESI~DR1
+  top-1{,}000 anomalies are cross-matched against 20 curated all-sky
+  catalogs via CDS X-Match (Section~\ref{sec:simbad}, ``Archival
+  cross-match and genuine novelty floor''). Extended archival cross-matching
+  reduces the headline novelty pool by a factor of $\sim 5.6\times$
+  relative to the SIMBAD-unmatched aggregate, and readers should quote
+  17.8\% (not 58.8\%) when summarizing the catalog's discovery rate.
+  The asterisk on LAMOST denotes that its 50\%
   rate should be interpreted cautiously given the training-bias artifact
   (Fig.~\ref{fig:lamost}).}
 \end{figure}
