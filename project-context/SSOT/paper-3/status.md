@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-04-30 (PDT, 00:21) — **R41 closed**: 6 cross-paper `\cite{Golden:2026framework/forecast/chirality}` references in abstract / §6 / §7 / conclusion removed and replaced with primary-source citations (Heinrich2023 for SPHEREx forecast methodology, Lentati2013 for PTA free-spectrum framework, WilsonEwing2012 for matter-bounce f_NL primary source); embedded `thebibliography` updated. PDF recompiled clean (28 MB / 33 pp / 0 undef refs).
+Last authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B13 retitle to "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 319,443 Anomalies and Native-Trained Novelty Rates from 37.3 Million Spectra" (lands the headline numbers in the title rather than burying them inside the abstract — R3 Grok Heavy + R4 Gemini reviewer-driver finding); B11 Path A effective closure (6.1% σ(f_NL) headline contextualized inline at line 528 + 720–738 with Heinrich+2023 §IV 15–30% shot-noise sensitivity range so the precision sensitivity is no longer hidden; no claim retraction). Version bump v3.1.2 → v3.1.3, date stamp 21:30 → 23:55 PDT. PDF recompiled clean (27 MB / 35 pp / 0 undef refs).
+
+**Prior round R41 (2026-04-30 00:21):** 6 cross-paper `\cite{Golden:2026framework/forecast/chirality}` references in abstract / §6 / §7 / conclusion removed and replaced with primary-source citations (Heinrich2023 for SPHEREx forecast methodology, Lentati2013 for PTA free-spectrum framework, WilsonEwing2012 for matter-bounce f_NL primary source); embedded `thebibliography` updated.
 
 **Prior round R35 (2026-04-29 12:02, commit `a63ef0b`):** 9,303-source disambiguation added inline (top-1% IF cross-validation reference, strict superset of the 298-source S>0.259 catalog headline). Date stamp v3.1.0.
 

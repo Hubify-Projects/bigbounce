@@ -43,21 +43,21 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v2.3.2}
+\newcommand{\paperVersion}{v2.3.3}
 \newcommand{\paperTimestamp}{2026-04-30}
 
 \begin{document}
 
 \preprint{HUBIFY-2026-001}
 
-\title{Spin-Torsion Cosmology and the Search for Geometric Dark Energy:\\
-Structural Barriers, Perturbation Transparency, and Surviving Predictions}
+\title{Structural Closure of Einstein--Cartan--Holst Dark Energy:\\
+Perturbation Transparency, Inflation--$f_{\rm NL}$ Tension, and Surviving Matter-Bounce Tests}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 30, 2026, 21:30 PDT --- \paperVersion}
+\date{April 30, 2026, 23:55 PDT --- \paperVersion}
 
 \begin{abstract}
 We investigate whether Einstein-Cartan-Holst (ECH) spin-torsion gravity can produce late-time dark energy or distinctive cosmological signatures. LQC holonomy corrections yield a nonsingular quantum bounce at $\rho_{\rm crit} \approx 0.27$--$0.41\,\rho_{\rm Pl}$, while the ECH parity structure generates a unique four-fermion interaction. Through 7 foundation studies and 17 research branches we establish 14 independent structural constraints that map which minimal routes from the bounce to late-time dark energy survive observational testing within ECH. A perturbation-transparency observation (generalizing Hehl 1976~\cite{Hehl1976}) shows that for canonical scalar matter, torsion vanishes at all perturbation orders and the Holst dual contraction $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically by the first Bianchi identity, establishing that the Holst sector decouples from all scalar/tensor perturbation observables and identifying the nonperturbative parity-violating channels (ALP birefringence, primordial gravitational waves) as the relevant tests of the Barbero--Immirzi parameter $\gamma$. Independent MCMC verification using stock CAMB with $\Delta\Neff$ as a generic radiation proxy (not a custom ECH module; Cobaya~v3.6.1, 424{,}781 samples across three dataset combinations; see Sec.~\ref{sec:verification}) finds $\Delta\Neff$ consistent with zero and $H_0 = 67.68\pm 1.06\,\text{km}\,\text{s}^{-1}\,\text{Mpc}^{-1}$, recovering $\Lambda$CDM. An independent NaMaster pseudo-$C_\ell$ \emph{pipeline-recovery test} (500 MC, $f_{\rm sky}{=}0.32$, $n_{\rm side}{=}512$, $\ell_{\rm max}{=}1024$, $10\,\mu$K$\cdot$arcmin) recovers the injected ALP prediction $\beta{=}0.27^\circ$ as $0.238^\circ$ at \emph{recovery} SNR${=}20.32$ (i.e., the pseudo-$C_\ell$ deconvolution introduces no systematic bias exceeding $0.04^\circ$); the actual statistical detection significance of cosmic birefringence is the published Planck/ACT~DR6 $2.4$--$2.9\sigma$, pending propagation of the full systematic budget. ECH provides a well-motivated nonsingular quantum bounce; phenomenological dark-energy connection requires assumptions beyond the minimal framework, and perturbation observables decouple cleanly from the Holst sector. We state prominently that an open structural question (Sec.~\ref{sec:structural_tension}) is the incompatibility between the inflationary-suppression dark-energy mechanism, which requires $N_{\rm tot} \approx 92$ $e$-folds of post-bounce inflation, and the matter-bounce $f_{\rm NL}$ signature, which would be erased by that many $e$-folds; the evidence-favored resolution treats bounce cosmology and dark energy as independent problems. The surviving testable prediction is the matter-bounce scenario~\cite{Cai:2009fn} (compatible with, but not derived from, ECH), principally $f_{\rm NL} = -35/8$, testable by SPHEREx at $3$--$5\sigma$ realistic significance ($5$--$5.5\sigma$ optimistic).
@@ -106,6 +106,26 @@ Is there a testable prediction? & $f_{\rm NL} = -35/8$ (SPHEREx $3$--$5\sigma$ r
 \vspace{2pt}
 {\small $^a$$(67.68-73.04)/\sqrt{1.06^2+1.04^2}=3.61\sigma$; the $\Delta\Neff$ extension does not by itself resolve the Hubble tension (the original lower $H_0$ values were SH0ES-prior-driven; independent Cobaya~v3.6.1 also recovers $H_0 = 67.79 \pm 1.09$ on Planck+BAO+SN --- see Sec.~\ref{sec:verification}). \quad $^b$$\sigma_8 = 0.803 \pm 0.008$, $S_8 = 0.814 \pm 0.008$ (full-tension), in mild tension with Planck ($S_8 = 0.832 \pm 0.013$, $(0.832 - 0.814)/\sqrt{0.013^2 + 0.008^2} = 1.2\sigma$; $\sigma_8 = 0.811 \pm 0.006$, $0.8\sigma$); the $\Delta\Neff$ extension does not reduce the $\sigma_8$/$S_8$ tension. \quad $^c$Reparameterized as sensitivity to $N_{\rm tot}$, not solved; see Sec.~\ref{sec:gdp}. \quad $^d$$3$--$5\sigma$ realistic after full systematic budget ($b_\phi$ uncertainty, GR-projection contamination, photo-$z$ degradation); the optimistic $5$--$5.5\sigma$ assumes only Fisher-ideal primordial-template marginalization before these degradation factors. The complete multi-bin Fisher forecast, including the $b_\phi$ prior, GR-projection budget, and template-mismatch correction $r \approx 0.84$--$0.88$, follows Heinrich \etal~\cite{Heinrich:2023}.}
 \end{table*}
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_theory_map.png}
+\caption{\label{fig:theory_map}
+  Bounce-mechanism $\rightarrow$ observable-prediction map. Left column:
+  candidate non-singular bounce mechanisms (LQC, ECH/torsion, matter
+  bounce, quintom-B, Cuscuton, ekpyrotic). Right column: distinctive
+  observable channels (ALP birefringence $\beta$, $f_{\rm NL} = -35/8$,
+  PTA spectral index $\gamma$, $w_0$--$w_a$ DESI signatures, $\Delta\Neff$).
+  Arrows indicate which mechanism produces each prediction. ECH appears
+  bordered with a dashed box marked \emph{structurally closed (this
+  paper)}---the 14-constraint catalog narrows minimal-ECH dark-energy
+  routes to zero phenomenologically free pathways. The matter-bounce
+  pathway appears bordered with a solid green box marked \emph{surviving},
+  reflecting that the $f_{\rm NL} = -35/8$ prediction is mechanism-independent
+  across all matter-bounce mechanisms (Cai \etal~\cite{Cai:2009fn},
+  Wilson-Ewing~\cite{WilsonEwing2012}) and survives independently of any
+  specific UV completion.}
+\end{figure*}
 
 
 \subsection{Theoretical Foundations and Novel Synthesis}\label{sec:foundations}

@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{29}%
+\begin{thebibliography}{28}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -345,15 +345,4 @@
   {Act dr6 cosmic-birefringence measurement and consistency with planck},\
   }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
   {https://arxiv.org/abs/2503.19884} {arXiv:2503.19884} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Minami}\ and\ \citenamefont
-  {Komatsu}(2020)}]{Minami2020}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
-  {Minami}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {New extraction of the
-  cosmic birefringence from the planck 2018 polarization data},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
-  {\bibinfo {volume} {125}},\ \bibinfo {pages} {221301} (\bibinfo {year}
-  {2020})},\ \Eprint {https://arxiv.org/abs/2011.11254} {arXiv:2011.11254}
-  \BibitemShut {NoStop}%
 \end{thebibliography}%

@@ -2,20 +2,22 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-04-30
+last_updated: 2026-04-30 23:55 PDT
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf)
-version: v2.3.1
+version: v2.3.3
 headline_pct: 100
-submission_status: submission-ready (R41 decoupled + reframed; PDF recompiled 2026-04-30 00:21 PDT, 1.0 MB, 0 undef refs)
+submission_status: submission-ready (R42 Wave 2/3 close — B1 retitle + B2 theory_map figure + B6 chain rerun Rhat~1.0 ESS 313k; PDF recompiled 2026-04-30 23:55 PDT, 1.2 MB, 0 undef refs)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (R41-edited 2026-04-30, `\paperVersion = v2.3.1`)
-**Canonical PDF:** `arxiv/main.pdf` (1.0 MB, compiled 2026-04-30 00:21 PDT, 27 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
+**Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 2/3-edited 2026-04-30, `\paperVersion = v2.3.3`)
+**Canonical PDF:** `arxiv/main.pdf` (1.2 MB, compiled 2026-04-30 23:55 PDT, 31 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
 **Bibliography:** `arxiv/references.bib` (1283+ lines, 64+ entries — R41 added Lentati:2023 primary-source bibitem)
-**Last authoritative update:** 2026-04-30 (PDT, 00:21) — **R41 closed**: 13 `\cite{Golden:2026forecast/anomaly/chirality}` cross-references removed/inlined to primary sources (Heinrich2023, Lentati2023, etc.); abstract opens with inflation-tension structural finding (Sec.~\ref{sec:structural_tension} pointer: $N_{\rm tot} \approx 92$ $e$-folds incompatibility with matter-bounce $f_{\rm NL}$ signature); 10 highest-payoff negative-rhetoric edits applied (constraint-as-search-space-narrowing reframe per Houston R41 directive); existing Sec.~\ref{sec:rotation} L264 + App.~\ref{app:dimensions} already self-disclose dimensional scaling-ansatz issue ($\rho_\Lambda = \Xi M_{\rm Pl}^4$); PDF recompiled 1.0 MB / 0 undef refs.
+**Last authoritative update:** 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B1 retitle ("Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests" — names the structural result up front, replaces prior negative-rhetoric framing); B2 theory_map figure (`arxiv/scripts/fig_theory_map.py` → `arxiv/fig_theory_map.png`, mechanism→prediction navigational map: LQC, ECH, matter-bounce, quintom, Cuscuton, ekpyrotic → β, f_NL, γ, w0w_a, ΔN_eff with green/gray/red-dashed arrows); B6 chain rerun (`reproducibility/cosmology/convergence_latest.csv` regenerated showing Rhat ~1.000xxx and ESS ~313,000 vs prior 1.25–1.6 / ~600 — confirms full mixing on 309,789 frozen samples). PDF size up from 996 KB to 1.2 MB due to embedded theory_map figure. R42 BLOCKERs CLOSED on P1: B1, B2, B3, B4, B5, B6, B7.
+
+**Prior round R42 Wave 1 (2026-04-30 21:30):** version-bump to v2.3.2, no P1-specific edits beyond the Wave 1 cascade.
 
 **Prior round R35 (2026-04-29 12:02, commit `a63ef0b`):** NaMaster 500MC promoted to headline (β=0.27° → 0.238° recovered, SNR=20.32σ); Cuscuton "deferred to future work" replaced with structural-inaccessibility argument; Section VIII.D renamed "Discriminating Observational Channels".
 

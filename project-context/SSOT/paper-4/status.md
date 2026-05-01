@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-04-30 (PDT, 00:21) — **R41 closed: cross-paper decoupled, submission-locked, self-contained.** All 3 `\cite{Golden:2026framework}` references in §4 footnote / §discussion / §conclusion replaced with primary-source citations (Mercuri2006, Freidel2005, Poplawski:2012, Poplawski:2016 for parity-odd torsion sector) + embedded `thebibliography` updated. `fig_class_pie.png` regenerated to canonical text counts (CW: 1,687,069 / CCW: 1,634,726 / NS: 5,152,736; total 8,474,531). PDF recompiled clean (25.7 MB / 11 pp / 0 undef refs).
+Last authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed: version-bump v1.0.2 → v1.0.3, date 21:30 → 23:55 PDT.** No P4-specific text edits beyond the cascade — P4 R42 BLOCKERs (B18 page-7 reconciliation, B22 typo fix) closed in Wave 1 already; Wave 2/3 was P1+P3-driven. PDF recompiled clean (25 MB / 16 pp / 0 undef refs).
+
+**Prior round R41 (2026-04-30 00:21):** All 3 `\cite{Golden:2026framework}` references in §4 footnote / §discussion / §conclusion replaced with primary-source citations (Mercuri2006, Freidel2005, Poplawski:2012, Poplawski:2016 for parity-odd torsion sector) + embedded `thebibliography` updated. `fig_class_pie.png` regenerated to canonical text counts (CW: 1,687,069 / CCW: 1,634,726 / NS: 5,152,736; total 8,474,531).
 
 **Prior round R37 (2026-04-29 14:02, commit `f62e352`):** "(in preparation)" companion-pod bibitem replaced with the live `bigbounce.hubify.app` link.
 

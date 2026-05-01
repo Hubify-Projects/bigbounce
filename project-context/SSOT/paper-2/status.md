@@ -2,12 +2,12 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-04-30
+last_updated: 2026-04-30 23:55 PDT
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/paper2_fnl_forecast.pdf
-version: v1.7.1
+version: v1.7.3
 headline_pct: 100
-submission_status: submission-ready (R41 decoupled — self-contained; PDF 683 KB, 0 undef refs)
+submission_status: submission-ready (R42 Wave 2/3 close — version-bump; PDF 686 KB, 0 undef refs)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
