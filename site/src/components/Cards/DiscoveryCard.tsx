@@ -9,7 +9,7 @@ export function DiscoveryCard({
   title,
   children,
   tag,
-  borderColor = "#22c55e",
+  borderColor = "var(--accent)",
 }: DiscoveryCardProps) {
   return (
     <div

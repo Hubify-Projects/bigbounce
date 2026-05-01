@@ -1,23 +1,24 @@
-import { predictions, getPredictionBySlug } from "@/data/predictions";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { predictions, getPredictionBySlug } from"@/data/predictions";
+import { Badge } from"@/components/ui/badge";
+import { Button } from"@/components/ui/button";
+import { MathText } from"@/components/MathText";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
 import {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/components/ui/tabs";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+} from"@/components/ui/tabs";
+import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
+import Link from"next/link";
+import { notFound } from"next/navigation";
+import type { Metadata } from"next";
 
 export function generateStaticParams() {
   return predictions.map((p) => ({ slug: p.slug }));
@@ -32,7 +33,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const pred = getPredictionBySlug(slug);
-  if (!pred) return { title: "Not Found" };
+  if (!pred) return { title:"Not Found" };
   return {
     title: pred.name,
     description: `${pred.name}: ${pred.value}. ${pred.status}.`,
@@ -41,13 +42,13 @@ export async function generateMetadata({
 
 const statusVariantMap: Record<
   string,
-  "default" | "secondary" | "destructive" | "outline"
+"default" |"secondary" |"destructive" |"outline"
 > = {
-  green: "default",
-  blue: "secondary",
-  amber: "outline",
-  red: "destructive",
-  purple: "secondary",
+  green:"default",
+  blue:"secondary",
+  amber:"outline",
+  red:"destructive",
+  purple:"secondary",
 };
 
 export default async function PredictionPage({
@@ -65,35 +66,35 @@ export default async function PredictionPage({
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           <Link
             href="/predictions"
-            style={{ color: "var(--text-muted)", textDecoration: "none" }}
+            style={{ color:"var(--text-muted)", textDecoration:"none" }}
           >
             Predictions
-          </Link>{" "}
-          &rarr; {pred.name}
+          </Link>{""}
+          &rarr; <MathText>{pred.name}</MathText>
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
-          {pred.name}
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
+          <MathText>{pred.name}</MathText>
         </h1>
-        <p className="subtitle">{pred.description}</p>
+        <p className="subtitle"><MathText>{pred.description}</MathText></p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <Badge variant={statusVariantMap[pred.statusVariant]}>
             {pred.status}
           </Badge>
           <Badge variant="secondary" className="font-mono">
-            {pred.value}
+            <MathText>{pred.value}</MathText>
           </Badge>
           <Badge variant="outline">{pred.bestModel}</Badge>
           <Badge variant="outline">{pred.experiment}</Badge>
         </div>
       </div>
 
-      <Card className="mt-6 border-l-4 border-l-blue-500">
+      <Card className="mt-6 border-l-4 border-tone-muted">
         <CardHeader>
           <CardTitle className="text-sm">Current Constraint</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">
-            {pred.currentConstraint}
+            <MathText>{pred.currentConstraint}</MathText>
           </p>
         </CardContent>
       </Card>
@@ -119,7 +120,7 @@ export default async function PredictionPage({
             <CardContent>
               <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
                 {pred.keyResults.map((r, i) => (
-                  <li key={i}>{r}</li>
+                  <li key={i}><MathText>{r}</MathText></li>
                 ))}
               </ul>
             </CardContent>
@@ -159,20 +160,20 @@ export default async function PredictionPage({
         <TabsContent value="timeline" className="pt-4">
           <Card>
             <CardContent className="p-6 text-sm text-muted-foreground">
-              {pred.timeline}
+            <MathText>{pred.timeline}</MathText>
             </CardContent>
           </Card>
         </TabsContent>
 
         <TabsContent value="next" className="pt-4">
-          <div className="space-y-1 rounded-lg border bg-card">
+          <div className="card-list">
             {pred.nextSteps.map((step, i) => (
               <div
                 key={i}
                 className="flex items-center gap-3 border-b px-4 py-3 text-sm last:border-b-0"
               >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                <span className="text-muted-foreground">{step}</span>
+                <span className="h-2 w-2 shrink-0 rounded-full dot-tone-caution" />
+                <span className="text-muted-foreground"><MathText>{step}</MathText></span>
               </div>
             ))}
           </div>

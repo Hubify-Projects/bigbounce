@@ -3,14 +3,14 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import type { Metadata } from "next";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
+import type { Metadata } from"next";
 
 export const metadata: Metadata = {
-  title: "Explainer",
+  title:"Explainer",
   description:
-    "A non-technical explanation of the BigBounce research program.",
+"A non-technical explanation of the BigBounce research program.",
 };
 
 export default function ExplainedPage() {
@@ -20,7 +20,7 @@ export default function ExplainedPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Non-Technical Explainer &middot; April 2026
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           The Big Bounce, Explained
         </h1>
         <p className="subtitle">
@@ -92,7 +92,7 @@ export default function ExplainedPage() {
             <CardHeader>
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 f<sub>NL</sub> = &minus;35/8
               </CardTitle>
@@ -111,7 +111,7 @@ export default function ExplainedPage() {
             <CardHeader>
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 Dark Energy Dynamics
               </CardTitle>
@@ -133,7 +133,7 @@ export default function ExplainedPage() {
             <CardHeader>
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 Gravitational Wave Hum
               </CardTitle>
@@ -150,7 +150,7 @@ export default function ExplainedPage() {
             <CardHeader>
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 319,443 Anomalies
               </CardTitle>
@@ -159,7 +159,7 @@ export default function ExplainedPage() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Our AI pipelines have scanned 37.3 million astronomical sources
                 across 8 surveys, finding 319,443 objects that don&apos;t match
-                known patterns. These anomalies help improve our f<sub>NL</sub>{" "}
+                known patterns. These anomalies help improve our f<sub>NL</sub>{""}
                 measurement by 6.1%.
               </p>
             </CardContent>

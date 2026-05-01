@@ -2,11 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  Activity,
+  BarChart3,
+  BookOpen,
+  Database,
+  FileText,
+  Gauge,
+  Home,
+  Image,
+  Library,
+  Lightbulb,
+  Map,
+  Orbit,
+  Search,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SidebarLink {
   href: string;
   label: string;
+  icon: React.ComponentType<{ className?: string }>;
   external?: boolean;
 }
 
@@ -18,39 +35,39 @@ interface SidebarSection {
 const sections: SidebarSection[] = [
   {
     links: [
-      { href: "/", label: "overview" },
-      { href: "/explained", label: "explainer" },
+      { href: "/", label: "overview", icon: Home },
+      { href: "/explained", label: "explainer", icon: BookOpen },
     ],
   },
   {
     label: "research",
     links: [
-      { href: "/surveys", label: "surveys (8)" },
-      { href: "/predictions", label: "predictions (4)" },
-      { href: "/paper", label: "papers (4)" },
+      { href: "/surveys", label: "surveys", icon: Database },
+      { href: "/predictions", label: "predictions", icon: Orbit },
+      { href: "/paper", label: "papers", icon: FileText },
     ],
   },
   {
     label: "explore",
     links: [
-      { href: "/data-explorer", label: "data explorer" },
-      { href: "/figures", label: "figures" },
-      { href: "/glossary", label: "glossary" },
-      { href: "/timeline", label: "timeline" },
+      { href: "/data-explorer", label: "data explorer", icon: BarChart3 },
+      { href: "/figures", label: "figures", icon: Image },
+      { href: "/glossary", label: "glossary", icon: Library },
+      { href: "/timeline", label: "timeline", icon: Map },
     ],
   },
   {
     label: "articles",
     links: [
-      { href: "/articles", label: "all articles" },
-      { href: "/speculations", label: "speculations" },
+      { href: "/articles", label: "articles", icon: Search },
+      { href: "/speculations", label: "speculations", icon: Lightbulb },
     ],
   },
 ];
 
 const tail: SidebarLink[] = [
-  { href: "/activity", label: "activity" },
-  { href: "/status", label: "status" },
+  { href: "/activity", label: "activity", icon: Activity },
+  { href: "/status", label: "status", icon: Gauge },
 ];
 
 function isActive(pathname: string, href: string): boolean {
@@ -66,6 +83,7 @@ function NavLink({
   pathname: string;
 }) {
   const active = isActive(pathname, link.href);
+  const Icon = link.icon;
   const className = cn(
     "sidebar-link",
     active && "is-active",
@@ -73,6 +91,7 @@ function NavLink({
   if (link.external) {
     return (
       <a href={link.href} className={className}>
+        <Icon />
         {link.label}
       </a>
     );
@@ -83,6 +102,7 @@ function NavLink({
       className={className}
       aria-current={active ? "page" : undefined}
     >
+      <Icon />
       {link.label}
     </Link>
   );
@@ -94,6 +114,9 @@ export function Sidebar() {
     <aside className="sidebar">
       <Link href="/" className="sidebar-brand">
         BigBounce
+        <span className="sidebar-brand-kicker">
+          Hubify research lab
+        </span>
       </Link>
       <nav className="sidebar-nav">
         {sections.map((section, i) => (
@@ -114,6 +137,12 @@ export function Sidebar() {
         </div>
       </nav>
       <div className="sidebar-footer">
+        <div className="mb-2 flex items-center gap-2">
+          <Sparkles size={14} className="sidebar-footer-icon" />
+          <span className="sidebar-footer-kicker">
+            live dossier
+          </span>
+        </div>
         <div className="sidebar-footer-name">Houston Golden</div>
         <div className="sidebar-footer-role">Independent Researcher</div>
         <a

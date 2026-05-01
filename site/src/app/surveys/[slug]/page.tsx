@@ -1,19 +1,20 @@
-import { surveys, getSurveyBySlug } from "@/data/surveys";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { surveys, getSurveyBySlug } from"@/data/surveys";
+import { Badge } from"@/components/ui/badge";
+import { Button } from"@/components/ui/button";
+import { MathText } from"@/components/MathText";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
 import {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/components/ui/tabs";
+} from"@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -21,11 +22,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+} from"@/components/ui/table";
+import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
+import Link from"next/link";
+import { notFound } from"next/navigation";
+import type { Metadata } from"next";
 
 export function generateStaticParams() {
   return surveys.map((s) => ({ slug: s.slug }));
@@ -40,7 +41,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const survey = getSurveyBySlug(slug);
-  if (!survey) return { title: "Not Found" };
+  if (!survey) return { title:"Not Found" };
   return {
     title: survey.name,
     description: `${survey.name}: ${survey.sources} scored, ${survey.anomalies.toLocaleString()} anomalies found.`,
@@ -48,32 +49,32 @@ export async function generateMetadata({
 }
 
 const qcVariantMap: Record<
-  "pass" | "caution" | "fail" | "needs-expansion",
+"pass" |"caution" |"fail" |"needs-expansion",
   {
-    variant: "default" | "secondary" | "destructive" | "outline";
+    variant:"default" |"secondary" |"destructive" |"outline";
     label: string;
     border: string;
   }
 > = {
   pass: {
-    variant: "default",
-    label: "QC PASS",
-    border: "border-l-emerald-500",
+    variant:"default",
+    label:"QC PASS",
+    border:"border-tone-success",
   },
   caution: {
-    variant: "outline",
-    label: "QC CAUTION",
-    border: "border-l-amber-500",
+    variant:"outline",
+    label:"QC CAUTION",
+    border:"border-tone-caution",
   },
   fail: {
-    variant: "destructive",
-    label: "QC FAIL",
-    border: "border-l-red-500",
+    variant:"destructive",
+    label:"QC FAIL",
+    border:"border-tone-danger",
   },
-  "needs-expansion": {
-    variant: "outline",
-    label: "NEEDS EXPANSION",
-    border: "border-l-amber-500",
+"needs-expansion": {
+    variant:"outline",
+    label:"NEEDS EXPANSION",
+    border:"border-tone-caution",
   },
 };
 
@@ -94,16 +95,16 @@ export default async function SurveyPage({
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           <Link
             href="/surveys"
-            style={{ color: "var(--text-muted)", textDecoration: "none" }}
+            style={{ color:"var(--text-muted)", textDecoration:"none" }}
           >
             Surveys
-          </Link>{" "}
+          </Link>{""}
           &rarr; {survey.shortName}
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           {survey.name}
         </h1>
-        <p className="subtitle">{survey.description}</p>
+        <p className="subtitle"><MathText>{survey.description}</MathText></p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <Badge variant={qc.variant}>{qc.label}</Badge>
           <Badge variant="secondary" className="font-mono">
@@ -121,7 +122,7 @@ export default async function SurveyPage({
           <CardTitle className="text-sm">QC Status</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">{survey.qcNote}</p>
+          <p className="text-sm text-muted-foreground"><MathText>{survey.qcNote}</MathText></p>
         </CardContent>
       </Card>
 
@@ -152,7 +153,7 @@ export default async function SurveyPage({
             <CardContent>
               <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
                 {survey.keyFindings.map((finding, i) => (
-                  <li key={i}>{finding}</li>
+                  <li key={i}><MathText>{finding}</MathText></li>
                 ))}
               </ul>
             </CardContent>
@@ -187,7 +188,7 @@ export default async function SurveyPage({
                           {a.score.toFixed(2)}
                         </TableCell>
                         <TableCell className="text-muted-foreground">
-                          {a.type || "—"}
+                          {a.type ||"—"}
                         </TableCell>
                       </TableRow>
                     ))}
@@ -277,14 +278,14 @@ export default async function SurveyPage({
         </TabsContent>
 
         <TabsContent value="tasks" className="pt-4">
-          <div className="space-y-1 rounded-lg border bg-card">
+          <div className="card-list">
             {survey.followUpTasks.map((task, i) => (
               <div
                 key={i}
                 className="flex items-center gap-3 border-b px-4 py-3 text-sm last:border-b-0"
               >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                <span className="text-muted-foreground">{task}</span>
+                <span className="h-2 w-2 shrink-0 rounded-full dot-tone-caution" />
+                <span className="text-muted-foreground"><MathText>{task}</MathText></span>
               </div>
             ))}
           </div>

@@ -1,13 +1,13 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Badge } from"@/components/ui/badge";
+import { Card, CardContent } from"@/components/ui/card";
+import { cn } from"@/lib/utils";
 
 type FeedType =
-  | "default"
-  | "milestone"
-  | "positive"
-  | "negative"
-  | "active";
+  |"default"
+  |"milestone"
+  |"positive"
+  |"negative"
+  |"active";
 
 interface FeedItemProps {
   date: string;
@@ -18,19 +18,19 @@ interface FeedItemProps {
 }
 
 const borderClass: Record<FeedType, string> = {
-  default: "border-l-border",
-  milestone: "border-l-blue-500",
-  positive: "border-l-emerald-500",
-  negative: "border-l-red-500",
-  active: "border-l-amber-500",
+  default:"border-l-border",
+  milestone:"border-tone-muted",
+  positive:"border-tone-success",
+  negative:"border-tone-danger",
+  active:"border-tone-caution",
 };
 
 const dateClass: Record<FeedType, string> = {
-  default: "text-muted-foreground",
-  milestone: "text-blue-600 dark:text-blue-400",
-  positive: "text-emerald-600 dark:text-emerald-400",
-  negative: "text-red-600 dark:text-red-400",
-  active: "text-amber-600 dark:text-amber-400",
+  default:"text-muted-foreground",
+  milestone:"tone-muted",
+  positive:"tone-success",
+  negative:"tone-danger",
+  active:"tone-caution",
 };
 
 export function FeedItem({
@@ -38,14 +38,14 @@ export function FeedItem({
   title,
   children,
   tags,
-  type = "default",
+  type ="default",
 }: FeedItemProps) {
   return (
-    <Card className={cn("border-l-4", borderClass[type])}>
+    <Card className={cn("feed-card border-l-4", borderClass[type])}>
       <CardContent className="space-y-2 p-5">
         <div
           className={cn(
-            "font-mono text-xs uppercase tracking-wider",
+"font-mono text-xs uppercase tracking-wider",
             dateClass[type],
           )}
         >
@@ -53,7 +53,7 @@ export function FeedItem({
         </div>
         <div
           className="text-base font-semibold leading-snug"
-          style={{ fontFamily: "var(--font-serif)" }}
+          style={{ fontFamily:"var(--font-mono-stack)" }}
         >
           {title}
         </div>

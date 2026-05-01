@@ -22,7 +22,7 @@ export const figureSections: FigureSection[] = [
     "count": "12 figures",
     "items": [
       {
-        "src": "/public/images/z6_qso_spectra_grid.png",
+        "src": "/images/z6_qso_spectra_grid.png",
         "alt": "Grid of 12 reionization-era QSO spectra at redshift z greater than 6, showing Gunn-Peterson troughs, Ly-alpha emission, and anomalous spectral features from the DESI DR1 archive",
         "number": "Figure 53",
         "title": "12 Reionization-Era QSO Spectra (z > 6)",
@@ -30,7 +30,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-28)"
       },
       {
-        "src": "/public/images/umap_clusters.png",
+        "src": "/images/umap_clusters.png",
         "alt": "UMAP Clustering of 195,829 DESI DR1 Spectral Anomalies colored by HDBSCAN cluster",
         "number": "Figure 54",
         "title": "UMAP Clustering of 195,829 Spectral Anomalies",
@@ -38,7 +38,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-28)"
       },
       {
-        "src": "/public/images/anomaly_rate_map.png",
+        "src": "/images/anomaly_rate_map.png",
         "alt": "HEALPix Mollweide sky map of DESI DR1 anomaly rate showing mostly uniform ~1% rate across the survey footprint with Spearman r=0.03 correlation with depth, confirming anomalies are not depth-correlated artifacts",
         "number": "Figure 55",
         "title": "Anomaly Rate Sky Map (Mollweide)",
@@ -46,7 +46,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-28)"
       },
       {
-        "src": "/public/images/survey_depth_map.png",
+        "src": "/images/survey_depth_map.png",
         "alt": "HEALPix map of DESI DR1 survey depth showing objects per pixel across the survey footprint with variable coverage across sky regions",
         "number": "Figure 56",
         "title": "DESI DR1 Survey Depth Map",
@@ -54,7 +54,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-28)"
       },
       {
-        "src": "/public/images/depth_vs_rate_scatter.png",
+        "src": "/images/depth_vs_rate_scatter.png",
         "alt": "Scatter plot of DESI DR1 anomaly rate versus survey depth showing weak anti-correlation r=-0.17 with outliers concentrated at survey edges",
         "number": "Figure 57",
         "title": "Anomaly Rate vs Survey Depth",
@@ -62,7 +62,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-28)"
       },
       {
-        "src": "/public/images/photo_z_scatter.png",
+        "src": "/images/photo_z_scatter.png",
         "alt": "Scatter plot of photometric redshift predicted from 128-dim autoencoder latent vectors versus spectroscopic redshift, showing sigma_NMAD=0.028 and R-squared=0.79 with zero redshift supervision during training",
         "number": "Figure 58",
         "title": "Photo-z from Latent Vectors (σNMAD = 0.028)",
@@ -70,7 +70,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-28)"
       },
       {
-        "src": "/public/images/photo_z_feature_importance.png",
+        "src": "/images/photo_z_feature_importance.png",
         "alt": "Bar chart of feature importance for 128 autoencoder latent dimensions predicting redshift, showing lat_067 as the dominant redshift neuron that spontaneously encodes spectroscopic redshift without supervision",
         "number": "Figure 59",
         "title": "Latent Dimension Feature Importance (Redshift Neuron)",
@@ -78,7 +78,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-28)"
       },
       {
-        "src": "/public/images/umap_full_catalog_3panel.png",
+        "src": "/images/umap_full_catalog_3panel.png",
         "alt": "Three-panel UMAP embedding of 22.5M DESI DR1 catalog latent space colored by spectral type, redshift, and anomaly score, showing clean separation of galaxy, QSO, and star populations",
         "number": "Figure 60",
         "title": "Full-Catalog Latent Space (Type/Redshift/Score)",
@@ -86,7 +86,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-28)"
       },
       {
-        "src": "/public/images/photo_z_residuals.png",
+        "src": "/images/photo_z_residuals.png",
         "alt": "Distribution of photo-z residuals (predicted minus spectroscopic redshift) showing tight core with sigma_NMAD=0.028 and outlier characterization for unsupervised autoencoder-based redshift estimation",
         "number": "Figure 61",
         "title": "Photo-z Residual Distribution",
@@ -94,7 +94,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-28)"
       },
       {
-        "src": "/public/images/taxonomy_umap.png",
+        "src": "/images/taxonomy_umap.png",
         "alt": "UMAP embedding of 2,145 SNR-filtered DESI DR1 anomalies colored by HDBSCAN cluster revealing 10 distinct spectral families including 76 uncataloged AGN, 27 post-starburst galaxies, and 363 blue compact galaxies",
         "number": "Figure 62",
         "title": "Anomaly Taxonomy UMAP (10 Families)",
@@ -102,7 +102,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-29)"
       },
       {
-        "src": "/public/images/fnl_comparison.png",
+        "src": "/images/fnl_comparison.png",
         "alt": "Comparison of sigma(f_NL) between standard DESI tracers and latent-space-selected anomalous tracers, showing 6.1% improvement from DESI alone and 7.93% improvement with 5-tracer combination",
         "number": "Figure 63",
         "title": "fNL Tracer Comparison (6.1–7.93% Improvement)",
@@ -110,7 +110,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 3 (2026-03-29)"
       },
       {
-        "src": "/public/images/uncataloged_top50_grid.png",
+        "src": "/images/uncataloged_top50_grid.png",
         "alt": "Grid of the 50 highest-scored DESI DR1 anomalies absent from both SIMBAD and NED catalogs, representing genuinely uncharacterized objects identified from 22.5 million spectra as follow-up targets",
         "number": "Figure 64",
         "title": "Top 50 Uncataloged Anomaly Spectra",
@@ -124,7 +124,7 @@ export const figureSections: FigureSection[] = [
     "count": "13 figures",
     "items": [
       {
-        "src": "/public/images/chirality/fig_raw_vs_eq.png",
+        "src": "/images/chirality/fig_raw_vs_eq.png",
         "alt": "Raw vs Equivariant: Eliminating Survey Systematics",
         "number": "Figure 34",
         "title": "Raw vs Equivariant: Eliminating Survey Systematics",
@@ -132,7 +132,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 11"
       },
       {
-        "src": "/public/images/chirality/fig_sky_map.png",
+        "src": "/images/chirality/fig_sky_map.png",
         "alt": "Galaxy Chirality Asymmetry Map (Mollweide)",
         "number": "Figure 35",
         "title": "Galaxy Chirality Asymmetry Map (Mollweide)",
@@ -140,7 +140,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 7"
       },
       {
-        "src": "/public/images/chirality/fig_multipoles.png",
+        "src": "/images/chirality/fig_multipoles.png",
         "alt": "Angular Power Spectrum (l=1-5)",
         "number": "Figure 36",
         "title": "Angular Power Spectrum (ℓ=1–5)",
@@ -148,7 +148,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 8"
       },
       {
-        "src": "/public/images/chirality/fig_hemisphere.png",
+        "src": "/images/chirality/fig_hemisphere.png",
         "alt": "Hemisphere Asymmetry (3.05 sigma)",
         "number": "Figure 37",
         "title": "Hemisphere Asymmetry (3.05σ)",
@@ -156,7 +156,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 9"
       },
       {
-        "src": "/public/images/chirality/fig_sky_regions.png",
+        "src": "/images/chirality/fig_sky_regions.png",
         "alt": "CW Fraction: Raw vs Equivariant by Sky Region",
         "number": "Figure 38",
         "title": "CW Fraction: Raw vs Equivariant by Sky Region",
@@ -164,7 +164,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 10"
       },
       {
-        "src": "/public/images/chirality/fig_confidence_dist.png",
+        "src": "/images/chirality/fig_confidence_dist.png",
         "alt": "Classification Confidence Distribution",
         "number": "Figure 39",
         "title": "Classification Confidence Distribution",
@@ -172,7 +172,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 6"
       },
       {
-        "src": "/public/images/chirality/fig_spiral_density.png",
+        "src": "/images/chirality/fig_spiral_density.png",
         "alt": "Galaxy Density Map",
         "number": "Figure 40",
         "title": "Galaxy Density Map",
@@ -180,7 +180,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 1"
       },
       {
-        "src": "/public/images/chirality/fig_cw_fraction_heatmap.png",
+        "src": "/images/chirality/fig_cw_fraction_heatmap.png",
         "alt": "CW Fraction Heatmap (RA vs DEC)",
         "number": "Figure 41",
         "title": "CW Fraction Heatmap (RA vs DEC)",
@@ -188,7 +188,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4"
       },
       {
-        "src": "/public/images/chirality/fig_class_pie.png",
+        "src": "/images/chirality/fig_class_pie.png",
         "alt": "Classification Breakdown",
         "number": "Figure 42",
         "title": "Classification Breakdown",
@@ -196,7 +196,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 5"
       },
       {
-        "src": "/public/images/chirality/fig_gallery_cw.png",
+        "src": "/images/chirality/fig_gallery_cw.png",
         "alt": "High-Confidence Clockwise Spirals",
         "number": "Figure 43",
         "title": "High-Confidence Clockwise Spirals",
@@ -204,7 +204,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 2"
       },
       {
-        "src": "/public/images/chirality/fig_gallery_ccw.png",
+        "src": "/images/chirality/fig_gallery_ccw.png",
         "alt": "High-Confidence Counter-Clockwise Spirals",
         "number": "Figure 44",
         "title": "High-Confidence Counter-Clockwise Spirals",
@@ -212,7 +212,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4, Figure 3"
       },
       {
-        "src": "/public/images/chirality/fig_gallery_notspi.png",
+        "src": "/images/chirality/fig_gallery_notspi.png",
         "alt": "NOT_SPIRAL Classifications",
         "number": "Figure 45",
         "title": "NOT_SPIRAL Classifications",
@@ -220,7 +220,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 4"
       },
       {
-        "src": "/public/images/chirality/fig_equivariance_demo.png",
+        "src": "/images/chirality/fig_equivariance_demo.png",
         "alt": "Equivariant Averaging Demonstration",
         "number": "Figure 46",
         "title": "Equivariant Averaging Demonstration",
@@ -234,7 +234,7 @@ export const figureSections: FigureSection[] = [
     "count": "17 figures",
     "items": [
       {
-        "src": "/public/images/quintom_fnl_verification.png",
+        "src": "/images/quintom_fnl_verification.png",
         "alt": "Numerical verification that f_NL equals -35/8 is identical across three bounce mechanisms: pure dust contraction, quintom bounce, and asymmetric Papanikolaou bounce, confirming mechanism independence",
         "number": "Figure 47",
         "title": "fNL = −35/8 Mechanism Independence",
@@ -242,7 +242,7 @@ export const figureSections: FigureSection[] = [
         "source": "Literature Audit (2026-03-25)"
       },
       {
-        "src": "/public/images/fnl_pbh_regulation.png",
+        "src": "/images/fnl_pbh_regulation.png",
         "alt": "PBH abundance f_PBH versus perturbation amplitude sigma for f_NL values of 0, -35/8, +4.375, and +10, showing how negative matter-bounce f_NL naturally suppresses primordial black hole overproduction without fine-tuning",
         "number": "Figure 48",
         "title": "fNL = −35/8 as PBH Regulator",
@@ -250,7 +250,7 @@ export const figureSections: FigureSection[] = [
         "source": "Literature Audit (2026-03-25)"
       },
       {
-        "src": "/public/images/nanograv_bounce_consistency.png",
+        "src": "/images/nanograv_bounce_consistency.png",
         "alt": "Matter-bounce induced gravitational wave spectrum with universal f-squared infrared scaling gamma=3.0, shown consistent with NANOGrav 15-year data gamma=3.20 plus or minus 0.42 at 0.48 sigma while SMBH binary prediction gamma=13/3 is excluded at 2 sigma",
         "number": "Figure 49",
         "title": "NANOGrav Consistency with Matter Bounce",
@@ -258,7 +258,7 @@ export const figureSections: FigureSection[] = [
         "source": "Literature Audit (2026-03-25)"
       },
       {
-        "src": "/public/images/nanograv_proper_fit.png",
+        "src": "/images/nanograv_proper_fit.png",
         "alt": "Four-panel template fit of NANOGrav 15-year free-spectrum data showing matter bounce gamma=3.0 preferred 302-to-1 over SMBH mergers and 81000-to-1 over cosmic strings, with characteristic strain, residuals, Omega_GW, and comparison table",
         "number": "Figure 50",
         "title": "NANOGrav Proper Spectral Fit",
@@ -266,7 +266,7 @@ export const figureSections: FigureSection[] = [
         "source": "NANOGrav Fit (2026-03-26)"
       },
       {
-        "src": "/public/images/enhanced_18m_first_batch.png",
+        "src": "/images/enhanced_18m_first_batch.png",
         "alt": "Analysis of first 500K spectra from the 173-column enhanced DESI DR1 catalog showing galaxies 19x more anomalous than QSOs (0.76% vs 0.04%), no score-vs-SNR correlation, and anomaly peak at redshift z~0.3-0.5",
         "number": "Figure 51",
         "title": "Enhanced 22.5M Catalog — First Batch Analysis",
@@ -274,7 +274,7 @@ export const figureSections: FigureSection[] = [
         "source": "Enhanced 22.5M Catalog (2026-03-26)"
       },
       {
-        "src": "/public/images/fig1_shape_function.png",
+        "src": "/images/fig1_shape_function.png",
         "alt": "Complete bispectrum shape function S(k1,k2,k3) for matter contraction showing squeezed limit f_NL=-35/8 and equilateral and folded special cases for the matter-bounce primordial non-Gaussianity prediction",
         "number": "Figure 23",
         "title": "Matter-Bounce Bispectrum Shape Function",
@@ -282,7 +282,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2"
       },
       {
-        "src": "/public/images/fig2_survey_comparison.png",
+        "src": "/images/fig2_survey_comparison.png",
         "alt": "Detection significance for f_NL=-35/8 across survey configurations with GR marginalization bands, comparing SPHEREx 3-5 sigma realistic to MegaMapper ~7.5 sigma reach",
         "number": "Figure 24",
         "title": "SPHEREx vs MegaMapper Forecast Comparison",
@@ -290,7 +290,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2"
       },
       {
-        "src": "/public/images/fig3_kmin_cliff.png",
+        "src": "/images/fig3_kmin_cliff.png",
         "alt": "Plot of f_NL detection significance versus minimum measurable wavenumber k_min showing the sensitivity cliff as ultra-large-scale modes are removed from the analysis",
         "number": "Figure 25",
         "title": "k_min Sensitivity Cliff",
@@ -298,7 +298,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2"
       },
       {
-        "src": "/public/images/fig4_decision_thresholds.png",
+        "src": "/images/fig4_decision_thresholds.png",
         "alt": "Monte Carlo Bayes factor distributions for bounce versus inflation at various f_NL values showing Bayes factor 8-17 versus multifield competitors",
         "number": "Figure 26",
         "title": "Bayesian Decision Thresholds",
@@ -306,7 +306,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2"
       },
       {
-        "src": "/public/images/fig5_inflation_comparison.png",
+        "src": "/images/fig5_inflation_comparison.png",
         "alt": "Parameter space comparison showing negative order-1 f_NL is natural for matter bounce but requires fine-tuning for inflation, demonstrating the anti-mimicry property of the matter-bounce bispectrum prediction",
         "number": "Figure 27",
         "title": "Matter Bounce vs Inflation Anti-Mimicry",
@@ -314,7 +314,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2"
       },
       {
-        "src": "/public/images/fig_bnl_shape_slices.png",
+        "src": "/images/fig_bnl_shape_slices.png",
         "alt": "Matter-bounce B_NL versus local template across triangle configurations: squeezed series converging to -35/8 and isosceles series showing 63% variation from folded (-2.25) to equilateral (-3.98), with shaded region showing signal lost by a local estimator",
         "number": "Figure 28",
         "title": "B_NL Shape Slices",
@@ -322,7 +322,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2 — Template Mismatch"
       },
       {
-        "src": "/public/images/fig_template_overlap_robustness.png",
+        "src": "/images/fig_template_overlap_robustness.png",
         "alt": "Amplitude recovery factor r across 10 physically motivated weighting schemes using the physics-derived full-commutator polynomial, showing CMB Fisher r=0.90 and LSS r=0.85, with gray bars for adversarial extreme cuts",
         "number": "Figure 29",
         "title": "Template Overlap Robustness",
@@ -330,7 +330,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2 — Template Mismatch"
       },
       {
-        "src": "/public/images/fig_forecast_template_corrected.png",
+        "src": "/images/fig_forecast_template_corrected.png",
         "alt": "Two-panel forecast: left shows detection significance with and without template mismatch correction for f_NL=-35/8, SPHEREx dropping from 6.2 sigma naive to 3-5 sigma realistic; right shows normalization sensitivity if -35/16 is correct",
         "number": "Figure 30",
         "title": "Forecast Significance Comparison",
@@ -338,7 +338,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2 — Forecasts"
       },
       {
-        "src": "/public/images/fig_true_vs_fitted_polynomial.png",
+        "src": "/images/fig_true_vs_fitted_polynomial.png",
         "alt": "Comparison of matter-bounce B_NL shape using physics-derived polynomial (6,2,-18,10,-66,18) versus 3-benchmark fit showing isosceles and squeezed series with both converging to f_NL=-35/8 in the squeezed limit",
         "number": "Figure 31",
         "title": "True vs Fitted Polynomial Shape",
@@ -346,7 +346,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2 — True Polynomial"
       },
       {
-        "src": "/public/images/fig_namaster_beta_vs_nside.png",
+        "src": "/images/fig_namaster_beta_vs_nside.png",
         "alt": "Cosmic birefringence angle beta measured from Planck SMICA using NaMaster with B-mode purification at increasing NSIDE resolution, showing NSIDE=1024 beta=0.19 plus or minus 0.03 degrees as lead result with bounce ALP prediction at beta=0.27 degrees",
         "number": "Figure 32",
         "title": "NaMaster β vs NSIDE",
@@ -354,7 +354,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 2 — Birefringence"
       },
       {
-        "src": "/public/images/fig_forecast_true_polynomial.png",
+        "src": "/images/fig_forecast_true_polynomial.png",
         "alt": "Detection significance for f_NL=-35/8 using physics-derived polynomial with r=0.88 template overlap, showing SPHEREx dropping from 6.2 sigma naive to 3-5 sigma realistic and MegaMapper dropping from 8.8 sigma to ~7.7 sigma after template correction",
         "number": "Figure 33",
         "title": "Updated Forecast with True Polynomial",
@@ -368,7 +368,7 @@ export const figureSections: FigureSection[] = [
     "count": "3 figures",
     "items": [
       {
-        "src": "/public/images/paper1_corner_full_tension.png",
+        "src": "/images/paper1_corner_full_tension.png",
         "alt": "Full-tension MCMC corner plot from 119,617 post-burnin samples over H0, Omega_m, sigma8, S8, and Delta N_eff using getdist, showing H0=67.69 plus or minus 1.06 and Delta N_eff consistent with zero",
         "number": "Figure 22 (new, 2026-04-17)",
         "title": "Full-Tension MCMC Corner Plot (H0, Ωm, σ8, S8, ΔNeff)",
@@ -398,7 +398,7 @@ export const figureSections: FigureSection[] = [
     "count": "9 figures",
     "items": [
       {
-        "src": "/public/images/figure1_lqg_holst_derivation_enhanced.png",
+        "src": "/images/figure1_lqg_holst_derivation_enhanced.png",
         "alt": "Derivation chain from Planck scale through one-loop parity-odd operator and inflationary suppression to observed dark energy scale rho_Lambda approximately (2.3 meV)^4, showing the energy density hierarchy for spin-torsion cosmology",
         "number": "Figure 1",
         "title": "Energy Density Hierarchy",
@@ -406,7 +406,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure2_galaxy_spin_comprehensive.png",
+        "src": "/images/figure2_galaxy_spin_comprehensive.png",
         "alt": "Galaxy spin dipole amplitude across SDSS DR7, Pan-STARRS, HST Deep, and Longo 2011 surveys with hierarchical Bayesian fit, showing a contested anomaly in the literature",
         "number": "Figure 2",
         "title": "Galaxy Spin Dipole Data",
@@ -414,7 +414,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure_3a_tension_resolution.png",
+        "src": "/images/figure_3a_tension_resolution.png",
         "alt": "Spin-torsion model H0 and sigma_8 position between Planck and SH0ES/KiDS measurements. Historical figure: tension reduction was later shown to be SH0ES-prior-driven and not an intrinsic model prediction.",
         "number": "Figure 3a",
         "title": "Hubble & σ_8 Tension Resolution",
@@ -422,7 +422,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure3b_tensions_resolution_comprehensive.png",
+        "src": "/images/figure3b_tensions_resolution_comprehensive.png",
         "alt": "H0 and sigma_8/S8 measurements from 9 or more probes with spin-torsion model position overlaid. Historical figure: tension reduction was later shown to be SH0ES-prior-driven.",
         "number": "Figure 3b",
         "title": "Comprehensive Tension Comparison",
@@ -430,7 +430,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure4_distance_impact.png",
+        "src": "/images/figure4_distance_impact.png",
         "alt": "Luminosity and angular diameter distance deviations from Lambda-CDM at the ~2% level showing observational signatures of geometric dark energy from rotation-induced effective cosmological constant",
         "number": "Figure 4",
         "title": "Distance Impact of Rotation-Induced Λ_eff",
@@ -438,7 +438,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure5_rotation_expansion.png",
+        "src": "/images/figure5_rotation_expansion.png",
         "alt": "H(z) expansion rate comparison showing the spin-torsion rotation contribution is negligibly small (less than 10^-20), confirming the model is expansion-equivalent to Lambda-CDM",
         "number": "Figure 5",
         "title": "Rotation Component Effect on Expansion",
@@ -446,7 +446,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure6_parameter_naturalness.png",
+        "src": "/images/figure6_parameter_naturalness.png",
         "alt": "Log-scale fine-tuning comparison: Lambda-CDM (10^120), Quintessence (10^60), f(R) gravity (10^40), Spin-Torsion (10^5 illustrative, reparameterized not solved)",
         "number": "Figure 6",
         "title": "Fine-Tuning Comparison",
@@ -454,7 +454,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure7_observational_timeline.png",
+        "src": "/images/figure7_observational_timeline.png",
         "alt": "Timeline of key experimental milestones for testing spin-torsion cosmology: SPHEREx, CMB-S4 (2029), LSST (2030), and LiteBIRD (early 2030s JAXA JFY2032)",
         "number": "Figure 7",
         "title": "Observational Timeline",
@@ -462,7 +462,7 @@ export const figureSections: FigureSection[] = [
         "source": "Paper 1"
       },
       {
-        "src": "/public/images/figure8_detection_forecast.png",
+        "src": "/images/figure8_detection_forecast.png",
         "alt": "Combined detection significance projections across multiple observational probes showing cumulative constraining power for the spin-torsion cosmology model over the next decade",
         "number": "Figure 8",
         "title": "Detection Forecast Sensitivity",

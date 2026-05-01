@@ -1,23 +1,24 @@
-import { papers, getPaperBySlug } from "@/data/papers";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { papers, getPaperBySlug } from"@/data/papers";
+import { Badge } from"@/components/ui/badge";
+import { Button } from"@/components/ui/button";
+import { MathText } from"@/components/MathText";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
 import {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/components/ui/tabs";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+} from"@/components/ui/tabs";
+import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
+import Link from"next/link";
+import { notFound } from"next/navigation";
+import type { Metadata } from"next";
 
 export function generateStaticParams() {
   return papers.map((p) => ({ slug: p.slug }));
@@ -32,7 +33,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const paper = getPaperBySlug(slug);
-  if (!paper) return { title: "Not Found" };
+  if (!paper) return { title:"Not Found" };
   return {
     title: `Paper ${paper.number}`,
     description: paper.title,
@@ -41,18 +42,49 @@ export async function generateMetadata({
 
 const statusVariantMap: Record<
   string,
-  "default" | "secondary" | "destructive" | "outline"
+"default" |"secondary" |"destructive" |"outline"
 > = {
-  green: "default",
-  blue: "secondary",
-  amber: "outline",
-  red: "destructive",
+  green:"default",
+  blue:"secondary",
+  amber:"outline",
+  red:"destructive",
 };
 
 function readinessColor(pct: number) {
-  if (pct === 100) return "bg-emerald-500";
-  if (pct >= 90) return "bg-blue-500";
-  return "bg-amber-500";
+  if (pct === 100) return"progress-fill-success";
+  if (pct >= 90) return"progress-fill-near";
+  return"progress-fill-caution";
+}
+
+function ArtifactLink({
+  artifact,
+}: {
+  artifact: {
+    label: string;
+    href: string;
+    kind: "primary" | "secondary";
+    external?: boolean;
+    download?: boolean;
+  };
+}) {
+  const button = (
+    <Button
+      variant={artifact.kind === "primary" ? "default" : "outline"}
+      size="sm"
+      asChild
+    >
+      <a
+        href={artifact.href}
+        target={artifact.external ? "_blank" : undefined}
+        rel={artifact.external ? "noopener noreferrer" : undefined}
+        download={artifact.download ? true : undefined}
+      >
+        {artifact.label} {artifact.external ? "↗" : ""}
+      </a>
+    </Button>
+  );
+
+  return button;
 }
 
 export default async function PaperDetailPage({
@@ -66,53 +98,78 @@ export default async function PaperDetailPage({
 
   return (
     <>
-      <div className="hero">
+      <div className="paper-detail-hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           <Link
             href="/paper"
-            style={{ color: "var(--text-muted)", textDecoration: "none" }}
+            style={{ color:"var(--text-muted)", textDecoration:"none" }}
           >
             Papers
-          </Link>{" "}
+          </Link>{""}
           &rarr; Paper {paper.number}
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
-          Paper {paper.number}
-        </h1>
-        <p className="subtitle" style={{ fontFamily: "var(--font-serif)" }}>
-          {paper.title}
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <Badge variant={statusVariantMap[paper.statusVariant]}>
-            {paper.status}
-          </Badge>
-          <Badge variant="outline">{paper.version}</Badge>
-          <Badge variant="outline">{paper.pages} pages</Badge>
-          <Badge variant="outline">{paper.refs} refs</Badge>
-          <Badge variant="outline">Target: {paper.target}</Badge>
+        <div className="paper-detail-grid grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="paper-detail-copy">
+            <div className="paper-detail-kicker flex flex-wrap gap-2">
+              <span>Paper {paper.number}</span>
+              <span>{paper.preprintId}</span>
+            </div>
+            <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
+              Paper {paper.number}
+            </h1>
+            <p className="subtitle"><MathText>{paper.title}</MathText></p>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <Badge variant={statusVariantMap[paper.statusVariant]}>
+                {paper.status}
+              </Badge>
+              <Badge variant="outline">{paper.version}</Badge>
+              <Badge variant="outline">{paper.pages} pages</Badge>
+              <Badge variant="outline">{paper.refs} refs</Badge>
+              <Badge variant="outline">Target: {paper.target}</Badge>
+            </div>
+          </div>
+          <Card className="paper-artifact-card">
+            <CardHeader>
+              <CardTitle className="text-sm">Paper Artifacts</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="paper-artifact-meta">
+                <span>{paper.pdfMeta}</span>
+                <span>{paper.target}</span>
+              </div>
+              <div className="paper-artifact-actions flex flex-wrap gap-2">
+                {paper.artifacts.map((artifact) => (
+                  <ArtifactLink key={`${artifact.href}-${artifact.label}`} artifact={artifact} />
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
-      <div className="my-6 flex items-center gap-3">
-        <div className="h-2 flex-1 overflow-hidden rounded-full bg-border">
+      <div className="paper-readiness grid gap-2">
+        <div className="paper-readiness-head flex items-baseline justify-between gap-3">
+          <span>Readiness</span>
+          <strong>{paper.readiness}%</strong>
+        </div>
+        <div className="paper-readiness-track h-2.5 overflow-hidden rounded-full bg-border">
           <div
-            className={`h-full transition-[width] duration-300 ${readinessColor(paper.readiness)}`}
+            className={`paper-readiness-fill ${readinessColor(paper.readiness)}`}
             style={{ width: `${paper.readiness}%` }}
           />
         </div>
-        <span className="text-xs font-mono text-muted-foreground">
-          {paper.readiness}% ready
-        </span>
       </div>
 
-      <p className="text-[15px] leading-relaxed text-muted-foreground">
-        {paper.description}
-      </p>
+      <Card className="paper-summary-card">
+        <CardContent>
+          <p className="paper-summary"><MathText>{paper.description}</MathText></p>
+        </CardContent>
+      </Card>
 
       <Separator className="my-8" />
 
-      <Tabs defaultValue="results" className="w-full">
-        <TabsList>
+      <Tabs defaultValue="results" className="paper-tabs w-full">
+        <TabsList className="flex-wrap">
           <TabsTrigger value="results">Key Results</TabsTrigger>
           <TabsTrigger value="surveys">Surveys</TabsTrigger>
           <TabsTrigger value="predictions">Predictions</TabsTrigger>
@@ -125,14 +182,21 @@ export default async function PaperDetailPage({
         </TabsList>
 
         <TabsContent value="results" className="pt-4">
-          <Card>
+          <Card className="paper-tab-panel">
             <CardHeader>
               <CardTitle>Key Results</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+              <ul className="paper-result-list grid gap-0">
                 {paper.keyResults.map((r, i) => (
-                  <li key={i}>{r}</li>
+                  <li key={i} className="grid grid-cols-[34px_minmax(0,1fr)] gap-3">
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <MathText>{r}</MathText>
+                    </span>
+                  </li>
                 ))}
               </ul>
             </CardContent>
@@ -141,11 +205,11 @@ export default async function PaperDetailPage({
 
         <TabsContent value="surveys" className="pt-4">
           {paper.surveys.length > 0 ? (
-            <div className="grid gap-2 md:grid-cols-2">
+            <div className="paper-chip-grid">
               {paper.surveys.map((s) => (
-                <Card key={s}>
-                  <CardContent className="p-4 text-sm">{s}</CardContent>
-                </Card>
+                <div key={s} className="paper-chip-card">
+                  <MathText>{s}</MathText>
+                </div>
               ))}
             </div>
           ) : (
@@ -159,22 +223,22 @@ export default async function PaperDetailPage({
         </TabsContent>
 
         <TabsContent value="predictions" className="pt-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="paper-chip-grid">
             {paper.predictions.map((p) => (
-              <Badge key={p} variant="secondary" className="text-xs">
-                {p}
-              </Badge>
+              <div key={p} className="paper-chip-card">
+                <MathText>{p}</MathText>
+              </div>
             ))}
           </div>
         </TabsContent>
 
         <TabsContent value="figures" className="pt-4">
           {paper.figures.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
+            <div className="paper-chip-grid">
               {paper.figures.map((f) => (
-                <Badge key={f} variant="outline" className="text-xs">
-                  {f}
-                </Badge>
+                <div key={f} className="paper-chip-card">
+                  <MathText>{f}</MathText>
+                </div>
               ))}
             </div>
           ) : (
@@ -189,16 +253,16 @@ export default async function PaperDetailPage({
 
         {paper.remainingWork.length > 0 && (
           <TabsContent value="todo" className="pt-4">
-            <div className="space-y-1 rounded-lg border bg-card">
+            <div className="paper-task-list">
               {paper.remainingWork.map((task, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 border-b px-4 py-3 text-sm last:border-b-0"
+                  className="paper-task-item"
                 >
                   <span
-                    className={`h-2 w-2 shrink-0 rounded-full ${task.startsWith("TIER 1") ? "bg-red-500" : "bg-amber-500"}`}
+                    className={`h-2 w-2 shrink-0 rounded-full ${task.startsWith("TIER 1") ?"dot-tone-danger" :"dot-tone-caution"}`}
                   />
-                  <span className="text-muted-foreground">{task}</span>
+                  <span><MathText>{task}</MathText></span>
                 </div>
               ))}
             </div>

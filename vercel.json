@@ -1,7 +1,13 @@
 {
-  "buildCommand": "echo static",
-  "outputDirectory": ".",
+  "buildCommand": "cd site && npm run build",
+  "outputDirectory": "site/out",
   "framework": null,
   "cleanUrls": false,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/old",
+      "destination": "/old/index.html"
+    }
+  ]
 }

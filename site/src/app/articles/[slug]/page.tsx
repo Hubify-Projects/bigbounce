@@ -1,20 +1,20 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import Script from "next/script";
-import Link from "next/link";
-import { articles } from "@/data/articles";
-import { Badge } from "@/components/ui/badge";
+import { readFile } from"node:fs/promises";
+import path from"node:path";
+import { notFound } from"next/navigation";
+import type { Metadata } from"next";
+import Script from"next/script";
+import Link from"next/link";
+import { articles } from"@/data/articles";
+import { Badge } from"@/components/ui/badge";
 
 type PageParams = Promise<{ slug: string }>;
 
-const REPO_ROOT = path.resolve(/* turbopackIgnore: true */ process.cwd(), "..");
+const REPO_ROOT = path.resolve(/* turbopackIgnore: true */ process.cwd(),"..");
 
 async function loadArticleBody(slug: string): Promise<string | null> {
   try {
-    const file = path.join(REPO_ROOT, "articles", `${slug}.html`);
-    const html = await readFile(file, "utf-8");
+    const file = path.join(REPO_ROOT,"articles", `${slug}.html`);
+    const html = await readFile(file,"utf-8");
     const match = html.match(/<main class="container">([\s\S]*?)<\/main>/);
     if (!match) return null;
     let body = match[1];
@@ -23,7 +23,7 @@ async function loadArticleBody(slug: string): Promise<string | null> {
       /(src|href)="(?!https?:|\/|#|mailto:)([^"]+)"/g,
       (_full, attr, p) => {
         if (p.startsWith("articles/")) return `${attr}="/${p}"`;
-        if (p.startsWith("../")) return `${attr}="/${p.replace(/^\.\.\//, "")}"`;
+        if (p.startsWith("../")) return `${attr}="/${p.replace(/^\.\.\//,"")}"`;
         if (p.startsWith("public/")) return `${attr}="/${p}"`;
         return `${attr}="/articles/${p}"`;
       },
@@ -45,7 +45,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
-  if (!article) return { title: "Article" };
+  if (!article) return { title:"Article" };
   return {
     title: article.title,
     description: article.summary,
@@ -93,7 +93,7 @@ export default async function ArticlePage({ params }: { params: PageParams }) {
         />
       ) : (
         <div>
-          <h1 style={{ fontFamily: "var(--font-serif)" }}>{article.title}</h1>
+          <h1 style={{ fontFamily:"var(--font-mono-stack)" }}>{article.title}</h1>
           <p className="subtitle">{article.summary}</p>
           <p className="text-sm text-muted-foreground">
             Article source could not be loaded.

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { figureSections } from "@/data/figures";
-import { FigureGallery } from "./figure-gallery";
+import type { Metadata } from"next";
+import { figureSections } from"@/data/figures";
+import { FigureGallery } from"./figure-gallery";
 
 export const metadata: Metadata = {
-  title: "Figures",
+  title:"Figures",
   description:
-    "Gallery of 64 research figures from the BigBounce spin-torsion cosmology program.",
+"Gallery of 64 research figures from the BigBounce spin-torsion cosmology program.",
 };
 
 export default function FiguresPage() {
@@ -13,15 +13,15 @@ export default function FiguresPage() {
   return (
     <>
       <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
+        <p className="eyebrow" style={{ marginBottom: 8 }}>
           Research Figures · Spin-Torsion Cosmology Program
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Figures
         </h1>
         <p className="subtitle">
-          Gallery of {totalFigures} research figures spanning all 4 papers and the
-          MCMC verification work. Click any figure to view full-size.
+          Gallery of {totalFigures} research figures spanning all 4 papers,
+          MCMC verification, survey mining, and chirality catalog work.
         </p>
       </div>
 

@@ -1,38 +1,28 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import Script from "next/script";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Sidebar } from "@/components/Shell/Sidebar";
+import { ScrollToTop } from "@/components/Shell/ScrollToTop";
 import { Topbar } from "@/components/Shell/Topbar";
+import { LiveStatus } from "@/components/Shell/LiveStatus";
 import "./globals.css";
 
 const themeBootScript = `
 (function(){
   try {
-    var saved = localStorage.getItem('bigbounce-theme');
-    var theme = (saved === 'light' || saved === 'dark')
-      ? saved
+    var savedTheme = localStorage.getItem('bigbounce-theme');
+    var theme = (savedTheme === 'light' || savedTheme === 'dark')
+      ? savedTheme
       : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
+    var savedSidebar = localStorage.getItem('bigbounce-sidebar');
+    if (savedSidebar === 'collapsed') {
+      document.documentElement.setAttribute('data-sidebar-collapsed', '');
+    }
   } catch (e) {}
 })();
 `;
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const newsreader = Newsreader({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -56,18 +46,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${ibmPlexMono.variable} ${newsreader.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-      </head>
+      <head />
       <body>
+        <Script
+          id="bigbounce-theme-boot"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeBootScript }}
+        />
         <div className="shell">
+          <ScrollToTop />
           <Sidebar />
           <Topbar />
           <main className="content">
             <div className="container">
+              <LiveStatus />
               {children}
             </div>
           </main>

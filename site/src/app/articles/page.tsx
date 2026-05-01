@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { articles } from "@/data/articles";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import type { Metadata } from"next";
+import Link from"next/link";
+import { articles } from"@/data/articles";
+import { Card, CardContent, CardHeader, CardTitle } from"@/components/ui/card";
+import { Badge } from"@/components/ui/badge";
 
 export const metadata: Metadata = {
-  title: "Articles",
+  title:"Articles",
   description:
-    "Deep dives, explainers, and strategic assessments from the BigBounce research program.",
+"Deep dives, explainers, and strategic assessments from the BigBounce research program.",
 };
 
 export default function ArticlesPage() {
@@ -17,7 +17,7 @@ export default function ArticlesPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Research Articles · Spin-Torsion Cosmology Program
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Articles
         </h1>
         <p className="subtitle">
@@ -54,7 +54,7 @@ export default function ArticlesPage() {
                   </div>
                   <CardTitle
                     className="mt-2 text-base leading-snug"
-                    style={{ fontFamily: "var(--font-serif)" }}
+                    style={{ fontFamily:"var(--font-mono-stack)" }}
                   >
                     {article.title}
                   </CardTitle>

@@ -1,12 +1,12 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from"@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
 import {
   Table,
   TableBody,
@@ -14,43 +14,32 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import type { Metadata } from "next";
+} from"@/components/ui/table";
+import type { Metadata } from"next";
 
 export const metadata: Metadata = {
-  title: "Research Status",
+  title:"Research Status",
   description:
-    "Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
+"Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
 };
 
-const stats: Array<{ value: string; label: string; tone: string }> = [
-  { value: "4", label: "Papers", tone: "text-emerald-600 dark:text-emerald-400" },
+const stats: Array<{ value: string; label: string }> = [
+  { value:"4", label:"Papers" },
   {
-    value: "424K+",
-    label: "MCMC Samples (3 frozen datasets)",
-    tone: "text-emerald-600 dark:text-emerald-400",
+    value:"424K+",
+    label:"MCMC Samples (3 frozen datasets)",
   },
   {
-    value: "37.3M+",
-    label: "Sources Scored (8 Surveys)",
-    tone: "text-emerald-600 dark:text-emerald-400",
+    value:"37.3M+",
+    label:"Sources Scored (8 Surveys)",
   },
   {
-    value: "319K+",
-    label: "Anomalies Found",
-    tone: "text-emerald-600 dark:text-emerald-400",
+    value:"319K+",
+    label:"Anomalies Found",
   },
-  { value: "6", label: "AI Pipelines", tone: "text-blue-600 dark:text-blue-400" },
-  {
-    value: "14",
-    label: "Computation Scripts",
-    tone: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    value: "6",
-    label: "Bounce Channels",
-    tone: "text-amber-600 dark:text-amber-400",
-  },
+  { value:"6", label:"AI Pipelines" },
+  { value:"14", label:"Computation Scripts" },
+  { value:"6", label:"Bounce Channels" },
 ];
 
 export default function StatusPage() {
@@ -60,7 +49,7 @@ export default function StatusPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Last Updated: May 1, 2026 · 02:55 PDT
         </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
+        <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Research Program Status
         </h1>
         <p className="subtitle">
@@ -69,10 +58,10 @@ export default function StatusPage() {
         </p>
       </div>
 
-      <Card className="mt-6 border-l-4 border-l-emerald-500">
+      <Card className="mt-6 border-l-4 border-tone-success">
         <CardHeader>
           <div className="flex items-baseline justify-between gap-2 flex-wrap">
-            <CardTitle className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+            <CardTitle className="text-sm font-bold uppercase tracking-wider tone-success">
               R42 4-LLM Adversarial Peer Review · Closure Sprint
             </CardTitle>
             <CardDescription className="font-mono text-xs">
@@ -85,7 +74,7 @@ export default function StatusPage() {
             <strong>23 of 23 BLOCKERs CLOSED</strong>
             <span className="text-muted-foreground">100%</span>
             <div className="h-2 w-56 overflow-hidden rounded bg-muted">
-              <div className="h-full bg-emerald-500" style={{ width: "100%" }} />
+              <div className="h-full progress-fill-success" style={{ width:"100%" }} />
             </div>
           </div>
           <Table>
@@ -101,25 +90,25 @@ export default function StatusPage() {
               <TableRow>
                 <TableCell><strong>P1</strong> Spin-Torsion</TableCell>
                 <TableCell className="font-mono">v2.2.0</TableCell>
-                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P2</strong> f<sub>NL</sub> Forecast</TableCell>
                 <TableCell className="font-mono">v1.7.5</TableCell>
-                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P3</strong> Anomaly Catalog</TableCell>
                 <TableCell className="font-mono">v3.1.5</TableCell>
-                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P4</strong> Chirality Catalog</TableCell>
                 <TableCell className="font-mono">v1.0.5</TableCell>
-                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
             </TableBody>
@@ -128,16 +117,16 @@ export default function StatusPage() {
             <p><strong className="text-foreground">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45%). Three-class accuracy on independent GZ1 = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals.</p>
             <p><strong className="text-foreground">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, Δ=0.07%).</p>
             <p><strong className="text-foreground">Pod:</strong> <code className="font-mono text-xs">regular_green_pig-migration</code> @ 38.80.152.148:33089 · cross-match completed in 73 s.</p>
-            <p><strong className="text-foreground">B23:</strong> All five HuggingFace artifacts are <strong className="text-emerald-700 dark:text-emerald-400">PUBLIC</strong>:{" "}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-catalog</code></a> (8.47M predictions),{" "}
-              <a className="underline" href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-v2</code></a> (ViT-Small model),{" "}
-              <a className="underline" href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" rel="noopener noreferrer"><code>desi-spectral-anomaly-detector</code></a> (BigAE),{" "}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),{" "}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples),{" "}
-              <a className="underline" href="https://huggingface.co/bamfai/desi-bigae-ensemble-v1" target="_blank" rel="noopener noreferrer"><code>desi-bigae-ensemble-v1</code></a> (5-seed BigAE pack, R42 Phase 1),{" "}
+            <p><strong className="text-foreground">B23:</strong> All five HuggingFace artifacts are <strong className="tone-success">PUBLIC</strong>:{""}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-catalog</code></a> (8.47M predictions),{""}
+              <a className="underline" href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-v2</code></a> (ViT-Small model),{""}
+              <a className="underline" href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" rel="noopener noreferrer"><code>desi-spectral-anomaly-detector</code></a> (BigAE),{""}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),{""}
+              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples),{""}
+              <a className="underline" href="https://huggingface.co/bamfai/desi-bigae-ensemble-v1" target="_blank" rel="noopener noreferrer"><code>desi-bigae-ensemble-v1</code></a> (5-seed BigAE pack, R42 Phase 1),{""}
               <a className="underline" href="https://huggingface.co/bamfai/desi-slae-16d" target="_blank" rel="noopener noreferrer"><code>desi-slae-16d</code></a> (second-level 640D→16D AE, R42 Phase 2).</p>
             <p><strong className="text-foreground">R42 Phase 1–4 result:</strong> Ensemble relative std on OOD scores = <strong>2.04%</strong> (tight cross-seed convergence). SLAE top-100 ultra-rare anomalies show <strong>100% agreement</strong> (mean fraction = 1.000, std = 0.000) with all 5 BigAE seeds&apos; p99 thresholds — ensemble cross-validates the ultra-rare set rather than finding orthogonal structure.</p>
-            <p><strong className="text-emerald-700 dark:text-emerald-400">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED. 7 public HF artifacts live.</strong></p>
+            <p><strong className="tone-success">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED. 7 public HF artifacts live.</strong></p>
           </div>
         </CardContent>
       </Card>
@@ -147,8 +136,8 @@ export default function StatusPage() {
           <Card key={stat.label}>
             <CardContent className="p-4">
               <div
-                className={`font-mono text-2xl font-bold ${stat.tone}`}
-                style={{ fontFamily: "var(--font-serif)" }}
+                className="font-mono text-2xl font-bold"
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 {stat.value}
               </div>
@@ -369,11 +358,11 @@ export default function StatusPage() {
       <section className="section">
         <h2>4. Key Discoveries</h2>
         <div className="grid gap-3 md:grid-cols-2">
-          <Card className="border-l-4 border-l-emerald-500">
+          <Card className="border-l-4 border-tone-success">
             <CardHeader className="pb-2">
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 f_NL = -35/8 Mechanism Independence
               </CardTitle>
@@ -390,11 +379,11 @@ export default function StatusPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-l-4 border-l-amber-500">
+          <Card className="border-l-4 border-tone-caution">
             <CardHeader className="pb-2">
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 Quintom w-Crossing — Theoretical Only
               </CardTitle>
@@ -405,7 +394,7 @@ export default function StatusPage() {
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Whether w(z) crosses -1 is a quintom-bounce signature, but our
-                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{" "}
+                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{""}
                 MCMC. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for
                 w-crossing depending on dataset combination. (Earlier in-house
                 claim P(quintom-B) = 98.6% from 50.9K samples was a fire #21
@@ -414,11 +403,11 @@ export default function StatusPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-l-4 border-l-blue-500">
+          <Card className="border-l-4 border-tone-muted">
             <CardHeader className="pb-2">
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 NANOGrav Consistency
               </CardTitle>
@@ -434,11 +423,11 @@ export default function StatusPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-l-4 border-l-emerald-500">
+          <Card className="border-l-4 border-tone-success">
             <CardHeader className="pb-2">
               <CardTitle
                 className="text-base"
-                style={{ fontFamily: "var(--font-serif)" }}
+                style={{ fontFamily:"var(--font-mono-stack)" }}
               >
                 319,443 Anomalies Across 8 Surveys
               </CardTitle>
