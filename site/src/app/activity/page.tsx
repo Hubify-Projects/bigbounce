@@ -35,19 +35,23 @@ export default function ActivityPage() {
             className="text-lg font-semibold"
             style={{ fontFamily:"var(--font-mono-stack)" }}
           >
-            R42 Wave 13 LANDED — real NANOGrav KDE free-spectrum γ = 2.567 ± 0.382
+            R42 Wave 14-D LANDED — P4 v1.0.9 (P4-OA-B6 Platt close) + Next.js site is live
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            All 4 papers at 100% readiness, fully decoupled, recompiled
-            May 1 PDT. Wave 11 reframed P1, fixed P2 Eq. 3 1/k², retitled P3 to
-            378,280 anomalies, and corrected the P4 NaMaster N_spiral
-            shot-noise floor (cross-confirmed by Gemini 3.1-Pro and GPT-5).
-            Wave 12 H200 hemi v4 GPU N_MC = 10,000 closed the chirality
-            hemisphere look-elsewhere null at p_LEE &lt; 10⁻⁴ in 17.2 s.
-            Wave 13 emcee on the real NANOGrav 15-yr HD-correlated KDE
-            free-spectrum (Zenodo 8060824) recovers γ = 2.567 ± 0.382 —
-            matter bounce 3.0 consistent at -1.13σ, SMBHB excluded at -4.6σ.
-            Pod 3 H200 idle, ready for Wave 14.
+            Wave 14-D bundled the P4-OA-B6 Platt-calibration text edit (raw
+            +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant -0.26% /
+            9.5σ; calibration is p_cal = σ(Az + B) with A = 1/T, B = -1.58
+            via L-BFGS on the held-out 20% validation split). Three GPT-5
+            BLOCKERs (P4-OA-B1 / B2 / B6) closed inside the single Wave 14-B
+            fetch window. Live site flipped from static HTML to Next.js
+            (vercel.json buildCommand → cd site && npm run build / outputDirectory
+            site/out / installCommand → cd site && npm install). LiveStatus
+            banner now baked at top of every page with build-time timestamp,
+            paper readiness bars, BLOCKER tally, Pod 3 fetch state, and
+            ETA-to-completion. Pod 3 H200 SPARCL 1M fetch alive on PID 25860
+            (~60 min elapsed, 18 shards / 9K of 1M spectra written, ~150
+            spectra/min observed — sub-sample short-circuit decision pending
+            if throughput stays at this level).
           </p>
         </CardContent>
       </Card>
@@ -57,6 +61,26 @@ export default function ActivityPage() {
       <section className="section">
         <h2>Research Timeline</h2>
         <div className="flex flex-col gap-3">
+          <FeedItem
+            date="2026-05-01"
+            title="R42 Wave 14-D LANDED — P4 v1.0.9 Platt-Calibration Close + Next.js Site Flipped Live"
+            type="positive"
+            tags={["Wave 14-D","P4","P4-OA-B6","Platt","Next.js","Site Flip"]}
+          >
+            Bundled Principle-13 close on the P4-OA-B6 GPT-5 reviewer BLOCKER:
+            paper4 §VII.D revised so the Platt-scaling claim no longer reads as
+            &quot;removes&quot; the +0.79% raw chirality residual when Table III
+            still shows a calibrated +0.4% (14.6σ at the 8.47M sample). New
+            text: raw +0.79%/28.8σ → calibrated p_cal = σ(z/4.65 - 1.58) (L-BFGS
+            on 20% held-out split) +0.4%/14.6σ → equivariant pretrain -0.26%/9.5σ.
+            Same commit shipped: vercel.json buildCommand flip + LiveStatus
+            banner + activity feed sync + SSOT queue update. Two follow-on
+            commits fixed Vercel deploy errors (missing prebuild script + missing
+            installCommand). Live site verified Next.js: title &quot;BigBounce —
+            Spin-Torsion Cosmology&quot;, GeistSans/Mono fonts, Turbopack chunks,
+            LiveStatus banner rendered at top of every page.
+          </FeedItem>
+
           <FeedItem
             date="2026-05-01"
             title="R42 Wave 13 LANDED — Real NANOGrav KDE Free-Spectrum γ = 2.567 ± 0.382"
