@@ -33,12 +33,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-01T21:50:00Z",
-  lastUpdatedDisplay: "2026-05-01 14:50 PT",
+  lastUpdatedISO: "2026-05-01T22:25:00Z",
+  lastUpdatedDisplay: "2026-05-01 15:25 PT",
   headline:
-    "Live site flipped to Next.js + LiveStatus banner now baked at top of every page",
+    "Live site is now Next.js (verified) — LiveStatus banner baked at top of every page",
   summary:
-    "vercel.json buildCommand flipped from \"echo static\" to Next.js (cd site && npm run build / outputDirectory site/out). LiveStatus banner now baked at the top of every page with build-time timestamp, paper readiness bars, BLOCKER tally, Pod 3 fetch state, and ETA-to-completion. Wave 14-D landed earlier (P4 v1.0.9 — P4-OA-B6 Platt calibration close); three GPT-5 BLOCKERs closed inside the single Wave 14-B fetch window. Pod 3 H200 SPARCL fetch now writing shards (~200 spectra/min observed — slower than the projected 2,374 spectra/min; ETA on the 1M Jaccard close revised upward).",
+    "First flip-deploy errored on a missing prebuild script; second on Vercel installing root deps instead of site/ deps (geist/font/sans unresolved). Both fixed in 06d189d3 + 8cef036d. Live site now serving Next.js (deploy bigbounce-j1z736wk2 ● Ready, build 54s, title \"BigBounce — Spin-Torsion Cosmology\"). LiveStatus banner verified rendered at top of every page (homepage + /paper + /papers/paper-N + /figures + /glossary + /articles + /activity + ...). Wave 14-D LANDED earlier — P4 v1.0.9 + three GPT-5 BLOCKERs closed inside the single Wave 14-B fetch window. Pod 3 H200 SPARCL 1M fetch alive on PID 25860, ~60 min elapsed, 18 shards / 9K of 1M spectra written (~150 spectra/min observed — slower than the original 2,374/min projection; sub-sample short-circuit decision likely needed if throughput stays at this level).",
   papers: [
     {
       slug: "spin-torsion",
@@ -82,7 +82,7 @@ export const liveStatus: LiveStatus = {
     {
       name: "Pod 3 H200 (38.80.152.148:33089)",
       state: "active",
-      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~50 min elapsed, 16 shards / 8K of 1M spectra written, ~200 spectra/min)",
+      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~60 min elapsed, 18 shards / 9K of 1M spectra written, ~150 spectra/min — sub-sample short-circuit on the table)",
     },
   ],
 };

@@ -1,6 +1,7 @@
 import { surveys } from"@/data/surveys";
 import { predictions } from"@/data/predictions";
 import { papers } from"@/data/papers";
+import { liveStatus } from"@/data/live-status";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
@@ -129,7 +130,7 @@ export default function HomePage() {
       <section className="page-hero">
         <div className="hero-copy">
           <p className="eyebrow" style={{ marginBottom: 10 }}>
-            Research Program / Updated May 2026
+            Research Program / Updated {liveStatus.lastUpdatedDisplay}
           </p>
           <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 650 }}>
             Spin-Torsion Cosmology
@@ -153,7 +154,7 @@ export default function HomePage() {
         <div className="hero-panel">
           <div className="hero-panel-header">
             <span>observational ledger</span>
-            <Badge variant="accent">R42 Wave 13 LANDED</Badge>
+            <Badge variant="accent">R42 Wave 14-D LANDED</Badge>
           </div>
           <div className="hero-panel-body">
             <div className="signal-row">
