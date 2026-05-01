@@ -384,25 +384,25 @@
   <div class="stat-card">
     <div class="stat-label">Paper 1 — Spin-Torsion</div>
     <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">v2.3.4 · 31 pp · 63+ refs · 1.2 MB PDF (R42 Wave 2/3 close 2026-04-30 23:55 PDT, 0 undef, B1 retitle + B2 theory map fig + B6 chain rerun Rhat~1.0 ESS 313k) · tarball 452 KB smoke-tested</div>
+    <div class="stat-sub">v2.3.5 · 31 pp · 63+ refs · 1.23 MB PDF (R42 Wave 11 LANDED 2026-05-01 07:30 PDT, 0 undef; abstract reframe drops "evidence for ECH"; Bayes-factor scoped to ΛCDM+ΔN<sub>eff</sub> proxy only)</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Paper 2 — f<sub>NL</sub> Forecast</div>
     <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">revtex4-2 · 632 KB PDF · 0 undef refs · abstract 1,920-char safe</div>
+    <div class="stat-sub">v1.7.6 · 13 pp · 758 KB PDF (R42 Wave 11 LANDED 2026-05-01 07:30 PDT, 0 undef; Eq. 3 carries the 1/k<sup>2</sup> factor that surrounding prose always claimed)</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Paper 3 — Anomaly Catalog</div>
     <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">Path C CLOSED (fire #189) · 12 / 12 criteria green · criterion #4 DESI k-fold Jaccard 0.862 PASS · 28 MB / 33 pp / 0 undef PDF · 12.000 / 12 = 100.000 %</div>
+    <div class="stat-sub">v3.1.6 · 35 pp · 28.27 MB PDF (R42 Wave 11 LANDED 2026-05-01 07:30 PDT, 0 undef; retitled to 378,280 anomalies / 37.3M sources, ACT-DR6 quarantine explicit, §VI prose fix separates IF cross-check from BigAE primary catalog)</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Paper 4 — Chirality Catalog</div>
     <div class="stat-value r-green">100%</div>
-    <div class="stat-sub">8.47M galaxies · 8/8 bias tests · 0.43σ dipole · 25.7 MB PDF · tarball 19 MB</div>
+    <div class="stat-sub">v1.0.6 · 16 pp · 25.78 MB PDF (R42 Wave 11 LANDED 2026-05-01 07:30 PDT, 0 undef; N<sub>spiral</sub>=3,321,795 shot-noise correction in footnote 5 — cross-confirmed P4-CM-B1 + P4-OA-M7; shot-noise floor up 2.55× → C<sub>ℓ</sub> error budget up 2.65×; 3.86× equivariance suppression preserved)</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
   </div>
 </div>
@@ -420,28 +420,28 @@
     <tr>
       <td>1</td>
       <td><a class="paper-link" href="#paper-1">Spin-Torsion Cosmology</a></td>
-      <td>v2.3.4, 31 pp, 10+ revision rounds. Local TeX Live recompile (R42 Wave 2/3 close, 2026-04-30 23:55 PDT): 1.2 MB PDF, 0 undef refs, fresh .bbl. Wave 2/3 brought B1 retitle ("Structural Closure of Einstein–Cartan–Holst Dark Energy"), B2 theory_map figure (mechanism→prediction navigational map), B6 chain rerun (Rhat ~1.000, ESS ~313k vs prior 1.25–1.6 / ~600). Tarball 440 KB, 3 figures + theory_map, clean-revtex smoke-tested.</td>
+      <td>v2.3.5, 31 pp, 10+ revision rounds. R42 Wave 11 LANDED 2026-05-01 07:30 PDT — abstract reframe drops "evidence for ECH" framing; Bayes-factor scoped to "ΛCDM+ΔN_eff proxy only" (closes Wave 10 cross-model BLOCKERs P1-CM-B1 + P1-CM-B3 + P1-CM-M2 + P1-OA-B2). Recompiled on Pod 3 via texlive Ubuntu (pdflatex + bibtex + pdflatex×2): 1.23 MB PDF / 0 undef refs / theory_map figure embedded. Carries forward Wave 2/3 B1 retitle + B2 theory_map + B6 chain rerun (Rhat ~1.000, ESS ~313k).</td>
       <td class="readiness r-green">100 %</td>
       <td><code>arxiv/main.tex</code></td>
     </tr>
     <tr>
       <td>2</td>
       <td><a class="paper-link" href="#paper-2">f<sub>NL</sub> Forecast (SPHEREx/MegaMapper)</a></td>
-      <td>v1.6.1 revtex4-2, 375 lines, 6 figures. 632 KB PDF, 0 undef refs. Bayes 8–17, σ(f<sub>NL</sub>) = 0.36 / 0.93, 1.58× Gold+Silver bias validation. Tarball rebuild with embedded .bbl queued (non-blocking).</td>
+      <td>v1.7.6 revtex4-2, 13 pp, 6 figures. R42 Wave 11 LANDED 2026-05-01 07:30 PDT — Eq. 3 of §III.A now carries the explicit 1/k<sup>2</sup> factor that the surrounding text always claimed (Δb(k,z) = 2·f<sub>NL</sub>·(b<sub>1</sub>−1)·δ<sub>c</sub>/M(k,z) with M(k,z)=2·k<sup>2</sup>·T(k)·D(z)/(3Ω<sub>m</sub>H<sub>0</sub><sup>2</sup>)) — closes claim-vs-derivation gap GPT-5 P2-OA-B1 surfaced. Recompiled on Pod 3 via texlive Ubuntu (pdflatex + bibtex + pdflatex×2): 758 KB PDF, 0 undef refs. Bayes 8–17, σ(f<sub>NL</sub>) = 0.36 / 0.93, 1.58× Gold+Silver bias validation preserved.</td>
       <td class="readiness r-green">100 %</td>
       <td><code>research/focused_paper_source_integration/02_full_draft.tex</code></td>
     </tr>
     <tr>
       <td>3</td>
       <td><a class="paper-link" href="#paper-3">Multi-Survey Anomaly Catalog</a></td>
-      <td><strong style="color:#166534;">Path-C rebuild 12/12 CLOSED (fire #189, 100 %, 12.000/12 = 100.000 %).</strong> Pre-Path-C lock 2026-04-16 (8 surveys &middot; 37.3 M sources &middot; 319,443 anomalies &middot; 58.8 % novel &middot; 28 MB PDF) preserved as &sect;7 before-after baseline. CLOSED: #1 SDSS native re-score 1,925,279 scored (~6500&times; anomaly-rate reduction, fire #164); #2 LAMOST native re-score (21.4&times; reduction); #3 CMB native retrain 100 % injection-recovery; #4 DESI 5-fold OOS k-fold fire #189 &mdash; live SPARCL 47K spectra / checksum 1812395110 / mean pairwise &Jbar; = 0.862 vs required 0.70 / consensus &ge;3/5 = 464/546 = 85.0 % of union / Paper 3 Table 1 headline unchanged; #5 NEOWISE ecliptic mask; #6 injection-recovery all-surveys; #7 7-way dedup 388,493 &rarr; 378,280 unique / 637 multi-survey (fire #164; ACT excluded R42-fix); #8 Paper 3 integration 6 substitutions (fire #167); #9 PDF recompile 28 MB / 33 pp / 0 undef; #10 HF rebuild 5-file 15.2 MB bundle (fire #166); #11 P1-PDF-V3 14 bundled edits; #12 site-sync. Cron <code>9f44c29e</code> self-terminated.</td>
+      <td><strong style="color:#166534;">v3.1.6, 35 pp. R42 Wave 11 LANDED 2026-05-01 07:30 PDT</strong> &mdash; retitled to "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources" (was 319,443 anomalies / 37.3M Spectra); ACT-DR6 quarantine made explicit; &sect;VI.D prose fix separates fresh-IsolationForest injection-recovery cross-check from BigAE-latent ranking that drives the eROSITA + Gaia primary catalogs (closes Wave 10 cross-model BLOCKERs P3-CM-B1 + P3-OA-B2 + P3-CM-M3 + P3-OA-B6). Recompiled on Pod 3 via texlive Ubuntu (pdflatex×2 inline thebibliography): 28.27 MB PDF, 0 undef refs. Carries forward Path-C 12/12 + Wave 5 LAMOST FAIL relabel + Wave 5 B10 100k OOD validation (median MSE 0.178).</td>
       <td class="readiness r-green">100 %</td>
       <td><code>pipelines/p3_anomaly_engine/paper3_draft.tex</code></td>
     </tr>
     <tr>
       <td>4</td>
       <td><a class="paper-link" href="#paper-4">Galaxy Chirality Catalog</a></td>
-      <td>Science-complete. 8.47 M galaxies · 8/8 bias tests · 0.43σ null dipole · Shamir refuted 7×. 25.7 MB PDF, 0 undef refs, LSST 10-yr projection line rendered. arXiv tarball 19 MB built + smoke-tested.</td>
+      <td>v1.0.6, 16 pp. R42 Wave 11 LANDED 2026-05-01 07:30 PDT &mdash; <strong>N<sub>spiral</sub>=3,321,795 shot-noise correction landed in NaMaster footnote 5</strong> (cross-confirmed: Gemini 3.1-Pro P4-CM-B1 linear-algebra MASTER deconvolution critique and GPT-5 P4-OA-M7 footnote-5 N<sub>gal</sub>-vs-N<sub>spiral</sub> arithmetic critique independently flagged the same arithmetic bug — `C_noise^(1)` was being computed from N<sub>gal</sub>=8,474,531 although the asymmetry field uses only 3,321,795 spirals). Shot-noise floor up 2.55×, propagates to 2.65× C<sub>ℓ</sub> error budget uplift; the headline equivariance result (raw +2.05% → eq −0.53%, 3.86× suppression factor) survives because it is a within-spiral-pool measurement that never used N<sub>gal</sub>. Hemisphere look-elsewhere null v3 running on Pod 3 in parallel (max\|A\|=8.53e-3 at RA=78.75° Dec=−66.44°, 500 MC) to retire P4-CM-B2 PSF cross-correlation skeptic-channel. Recompiled on Pod 3 via texlive Ubuntu (pdflatex×2 inline thebibliography): 25.78 MB PDF, 0 undef refs. 8.47 M galaxies · 8/8 bias tests · 0.43σ null dipole · Shamir refuted 7×.</td>
       <td class="readiness r-green">100 %</td>
       <td><code>pipelines/p2_chirality/chirality_catalog_paper.tex</code></td>
     </tr>
@@ -478,7 +478,7 @@ Paper 4 (Chirality Catalog) ─> dipole/TTA code ─> available for Paper 3 limi
   <div class="paper-header">
     <div>
       <h2>Spin-Torsion Cosmology from ECH Gravity</h2>
-      <div class="paper-sub">canonical: <code>arxiv/main.tex</code> · v2.3.4 · 1208 lines · 1.2 MB PDF (R42 Wave 2/3 close 2026-04-30 23:55 PDT) · gr-qc primary · tarball 440 KB smoke-tested</div>
+      <div class="paper-sub">canonical: <code>arxiv/main.tex</code> · v2.3.5 · 1208 lines · 1.23 MB PDF (R42 Wave 11 LANDED 2026-05-01 07:30 PDT) · gr-qc primary</div>
     </div>
     <div>
       <div class="paper-readiness r-green">100%</div>

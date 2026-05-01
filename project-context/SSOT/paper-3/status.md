@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-05-01 (PDT, 00:15) — **R42 Wave 11-G #1 closed**: PTA MCMC reproducibility deposit landed at `reproducibility/p3_pta_mcmc/{README.md, run_pta_combined_mcmc.sh}`. Closes Gemini 3.1-Pro finding P3-OA-B5 ("zero equations for the likelihood, no mention of pulsar noise models, no priors") on the equations + priors + noise-model axis (corner-plot sub-finding remains queued). The deposit traces the canonical §VI γ = 3.20 ± 0.42 to `pipelines/h200_results/phase4_science/nanograv_ptarcade/nanograv_ptarcade_summary.json` (emcee, 32 walkers × 10,000 steps, 320,000 samples, n_eff = 9,854) and documents the v2b Fisher-recompute history (commits `7bdc26d8` / `c61eb559` / `a06e665a`, 2026-04-18) showing the "γ=3.33±0.40 → γ=3.20±0.42" correction was a homepage display fix in `96d33100`, not a re-run. Six trace gaps logged in the README (192K-vs-320K sample wording, "GPU MCMC" prose vs CPU emcee reality, synthetic-vs-published free-spectrum, stuck enterprise-real chain, missing R̂, missing combined-PTA τ).
+Last authoritative update: 2026-05-01 (PDT, 07:30) — **R42 Wave 11-CLOSE LANDED**: P3 v3.1.6 PDF recompiled on Pod 3 (regular_green_pig) — 28.27 MB / 35 pp / 0 undef refs / mirrored to `public/papers/paper3_anomaly_catalog.pdf` + redundant alias `paper3_draft.pdf`. Site sync (activity.html + ssot.html + paper.html + SSOT/index.md) all updated this same commit. Closes the R42 Wave 11-B + 11-E "recompile pending" deferral.
+
+Prior authoritative update: 2026-05-01 (PDT, 00:15) — **R42 Wave 11-G #1 closed**: PTA MCMC reproducibility deposit landed at `reproducibility/p3_pta_mcmc/{README.md, run_pta_combined_mcmc.sh}`. Closes Gemini 3.1-Pro finding P3-OA-B5 ("zero equations for the likelihood, no mention of pulsar noise models, no priors") on the equations + priors + noise-model axis (corner-plot sub-finding remains queued). The deposit traces the canonical §VI γ = 3.20 ± 0.42 to `pipelines/h200_results/phase4_science/nanograv_ptarcade/nanograv_ptarcade_summary.json` (emcee, 32 walkers × 10,000 steps, 320,000 samples, n_eff = 9,854) and documents the v2b Fisher-recompute history (commits `7bdc26d8` / `c61eb559` / `a06e665a`, 2026-04-18) showing the "γ=3.33±0.40 → γ=3.20±0.42" correction was a homepage display fix in `96d33100`, not a re-run. Six trace gaps logged in the README (192K-vs-320K sample wording, "GPU MCMC" prose vs CPU emcee reality, synthetic-vs-published free-spectrum, stuck enterprise-real chain, missing R̂, missing combined-PTA τ).
 
 Last prior authoritative update: 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B13 retitle to "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 319,443 Anomalies and Native-Trained Novelty Rates from 37.3 Million Spectra" (lands the headline numbers in the title rather than burying them inside the abstract — R3 Grok Heavy + R4 Gemini reviewer-driver finding); B11 Path A effective closure (6.1% σ(f_NL) headline contextualized inline at line 528 + 720–738 with Heinrich+2023 §IV 15–30% shot-noise sensitivity range so the precision sensitivity is no longer hidden; no claim retraction). Version bump v3.1.2 → v3.1.3, date stamp 21:30 → 23:55 PDT. PDF recompiled clean (27 MB / 35 pp / 0 undef refs).
 
@@ -384,7 +386,7 @@ GPT-5 cross-model peer review (`peer-reviews/r42-cross-model-2026-05-01/openai_p
 
 ## 12. R42 Wave 11-B + 11-E — text fixes from cross-model adversarial review (2026-05-01)
 
-Closes 7 BLOCKERs from the Gemini 3.1-Pro + GPT-5 cross-model adversarial review (`peer-reviews/r42-cross-model-2026-05-01/`): P3-CM-B1 (= P3-OA-B2), P3-CM-M3, P3-OA-B1, P3-OA-B3, P3-OA-B4, P3-OA-B6, P3-OA-M7. Text-only edits to `pipelines/p3_anomaly_engine/paper3_draft.tex`. **Recompile pending** — local Mac has no LaTeX; PDF will be regenerated on next H200/H100 pod session.
+Closes 7 BLOCKERs from the Gemini 3.1-Pro + GPT-5 cross-model adversarial review (`peer-reviews/r42-cross-model-2026-05-01/`): P3-CM-B1 (= P3-OA-B2), P3-CM-M3, P3-OA-B1, P3-OA-B3, P3-OA-B4, P3-OA-B6, P3-OA-M7. Text-only edits to `pipelines/p3_anomaly_engine/paper3_draft.tex`. **Recompile LANDED 2026-05-01 07:30 PDT** on Pod 3 (regular_green_pig) under v3.1.6 — 28.27 MB / 35 pp / 0 undef refs / mirrored to `public/papers/paper3_anomaly_catalog.pdf` + redundant alias `paper3_draft.pdf`.
 
 **Version bump:** v3.1.5 → **v3.1.6**, date stamp **May 1, 2026, 07:30 PDT**.
 
@@ -404,14 +406,14 @@ Closes 7 BLOCKERs from the Gemini 3.1-Pro + GPT-5 cross-model adversarial review
 
 `\label{sec:act}` retained on the §III.G summary paragraph so existing `Section~\ref{sec:act}` references still resolve. New Appendix E carries `\label{sec:act_appendix}`. Selected forward references (App A footnote, abstract) updated to point at the appendix.
 
-### Deferred (not in this wave)
+### LANDED in same commit (2026-05-01 07:30 PDT — `chore(R42-Wave-11-CLOSE)`)
 
-- **PDF recompile** — local Mac lacks LaTeX; queue for next H200/H100 pod session. Mirror to `public/papers/paper3_anomaly_catalog.pdf` after compile.
-- **Site sync** — bigbounce.hubify.app still reflects the v3.1.4 figure-set / pre-Wave-11 framing. Site update lands in same commit as PDF recompile.
+- **PDF recompile** ✅ — recompiled on Pod 3 (regular_green_pig) under v3.1.6 — 28.27 MB / 35 pp / 0 undef refs. Mirrored to `public/papers/paper3_anomaly_catalog.pdf` + redundant alias `paper3_draft.pdf`.
+- **Site sync** ✅ — `activity.html` (Wave 11 LANDED feed-item), `ssot.html` (P3 stat card + program table row), `paper.html` (P3 badge: 28.27 MB / 35 pp / v3.1.6), and `SSOT/index.md` headline + paper readiness table all updated this same commit. bigbounce.hubify.app now reflects the v3.1.6 figure-set + Wave 11 framing.
 
-### Why text-only is acceptable here
+### Why text-only WAS acceptable through Wave 11-B + 11-E (now superseded by recompile)
 
-The paper's **prose, equations, tables, and cross-references** are all internally self-consistent at v3.1.6 and will compile cleanly when next run. The PDF is currently stale relative to the .tex but the .tex itself is the canonical source per CLAUDE.md "Canonical Sources" table. R42 Wave 11-B + 11-E discharges the BLOCKER list from cross-model review; recompile-and-mirror is a mechanical follow-up, not a science follow-up.
+The paper's **prose, equations, tables, and cross-references** were all internally self-consistent at v3.1.6 and compiled cleanly on Pod 3 (0 undef refs). The .tex is the canonical source per CLAUDE.md "Canonical Sources" table. R42 Wave 11-B + 11-E discharged the BLOCKER list from cross-model review; recompile-and-mirror is now LANDED as part of `chore(R42-Wave-11-CLOSE)`.
 
 ---
 

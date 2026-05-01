@@ -7,13 +7,13 @@ canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/paper2_fnl_forecast.pdf
 version: v1.7.6
 headline_pct: 100
-submission_status: submission-ready (R42 Wave 11-D close — text-only edits; recompile pending)
+submission_status: submission-ready (R42 Wave 11-D LANDED — Eq. 3 1/k² fix + Bayes-factor self-consistency + r-constraint reconcile; PDF recompiled clean on Pod 3 2026-05-01 07:30 PDT)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
 **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (revtex4-2; R42 Wave 11-D edited 2026-05-01)
-**Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (683 KB, last recompile 2026-04-29 12:02 PDT — **STALE for v1.7.6**: text-only edits to Eq. 3, §VI.C Bayes factors, §III.B r-constraint footnote not yet in PDF; recompile queued for next pod cycle)
+**Canonical PDF:** `public/papers/paper2_fnl_forecast.pdf` (758 KB, recompiled 2026-05-01 07:30 PDT on Pod 3 under v1.7.6; 13 pp / 0 undef refs)
 **Last authoritative update:** 2026-05-01 (PDT, 07:30) — **R42 Wave 11-D closed**: GPT-5 cross-model adversarial review BLOCKERs P2-OA-B1 / P2-OA-B2 / P2-OA-B3 all addressed in `.tex`. (1) §III.A Eq. 3 replaced with the Dalal--Slosar form $\Delta b(k,z) = 2\,\fnl(b_1-1)\delta_c/\mathcal{M}(k,z)$, $\mathcal{M}(k,z) = 2k^2T(k)D(z)/(3\Omega_mH_0^2)$ — explicit $1/k^2$ now matches the prose; new `Slosar:2008` bibitem added. (2) §VI.C Bayes-factor table reconciled into a single self-consistent prior-width ladder (delta=$\sim 17$, $\sigma_{\rm theory}=0.5\Rightarrow\sim 12$, $\sigma_{\rm theory}=1.0\Rightarrow\sim 8$, $\sigma_{\rm theory}=2.0\Rightarrow\sim 4$); abstract / Table II caption / closing paragraph all aligned on monotonic relation "wider bounce prior $\Rightarrow$ smaller Bayes factor"; "drops from 17 to 8" phrasing kept (correct sign), added explicit "broader bounce priors give smaller Bayes factors, never larger" disambiguation. Abstract headline $\sim 8$--$17$ now explicitly brackets $\sigma_{\rm theory}=1.0$ baseline (lower) and delta-prior at multifield $[-15,+15]$ (upper). (3) §III.B Eq. 4 region: kept reported $r = 0.85 \pm 0.13$ (range $0.55$--$1.14$) without truncation; reconciled with constraint by clarifying that $r \leq 1$ holds only for canonical single-field bispectra normalized to their own squeezed limit; matter-bounce null-space directions can give $r$ up to $\sim 1.2$ when intermediate-triangle weighting upweights non-squeezed configurations (path **b** chosen — loosened the constraint with footnote rather than truncated the scan).
 
 **Prior round R41 closed 2026-04-30:** 6 cross-paper `\cite{Golden:2026...}` references removed/inlined; `focused_paper_refs.bib` Golden:2026framework / Golden:2026anomaly entries removed and replaced with 8 primary-source entries (Mercuri2006, Freidel2005, Eskilt2022, DiegoPalazuelos2025, Minami2020, Cai:2026echoes, Baron2017, Liang2023). PDF recompiled clean.

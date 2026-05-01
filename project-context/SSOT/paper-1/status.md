@@ -4,16 +4,16 @@ type: ssot
 paper: 1
 last_updated: 2026-05-01 07:30 PDT
 canonical_source: arxiv/main.tex
-canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf — STALE; pending H200 recompile of Wave 11-A reframe)
+canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf — v2.3.5 recompile LANDED 2026-05-01 07:30 PDT on Pod 3)
 version: v2.3.5
 headline_pct: 100
-submission_status: text-only reframe pending recompile (R42 Wave 11-A close — abstract + body reframed: ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote; closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2; PDF recompile pending on H200 pod)
+submission_status: Wave 11-A LANDED — abstract + body reframed (ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote); closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2; PDF recompiled clean on Pod 3 (1.23 MB / 31 pp / 0 undef refs)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
 **Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 11-A-edited 2026-05-01 07:30 PDT, `\paperVersion = v2.3.5`)
-**Canonical PDF:** `arxiv/main.pdf` (1.2 MB, compiled 2026-04-30 23:55 PDT under v2.3.4 — STALE; v2.3.5 recompile pending H200 pod)
+**Canonical PDF:** `arxiv/main.pdf` (1.23 MB, recompiled 2026-05-01 07:30 PDT on Pod 3 under v2.3.5; mirrored to `public/papers/spin_torsion_paper1.pdf` + redundant aliases)
 **Bibliography:** `arxiv/references.bib` (1283+ lines, 64+ entries — no bib changes in Wave 11-A)
 **Last authoritative update:** 2026-05-01 (PDT, 07:30) — **R42 Wave 11-A closed (text-only reframe)**: closes the cross-model adversarial peer-review BLOCKERs raised independently by Gemini 3.1-Pro and GPT-5 — **P1-CM-B1 / P1-OA-M1** (MCMC bait-and-switch): abstract + §III.D + Table III caption + §VII.B body now explicitly label the run as a "ΛCDM+ΔNeff proxy" (stock CAMB, no torsion modifications), "evidence for ECH / spin-torsion" language removed; **P1-CM-B3** (disconnected predictions): "unified cosmological model" framing struck from §I + §I.A; "ECH predicts β = 0.27°" softened to "consistent with" / "spectator-ALP value, identical in GR+ALP, not a distinctive ECH prediction" in abstract + Table I + sec:birefringence_check + Original Contributions; matter-bounce f_NL reframed as "from the matter-bounce class (mechanism-independent; not a distinctive ECH prediction)"; **P1-OA-B2** ("rejects null at high significance"): replaced in §VI with "The pipeline shows negligible bias (<0.04°) for constant-β injections; no independent sky-detection claim is made here", explicit instruction added that high-SNR figures must NOT be interpreted as observational significance; **P1-CM-M2** (NaMaster in evidence table): explicitly excluded from Table I evidence row, repositioned as methodology cross-check; **P1-CM-M1** (dimensional ansatz): one-sentence disclosure added to abstract that ρ_Λ = Ξ M_Pl⁴ is a phenomenological ansatz, not an EFT derivation; **P1-CM-m1** (Savage-Dickey): demoted to footnote (`fn:bayes_caveat`) attached at the eq:Zcomb2 inline; AIC/BIC reported as cross-references only, no fabricated nested-sampling figures. Also dropped the defensive "Scope note" (m-2). v2.3.5 stamp + 2026-05-01 07:30 PDT timestamp set. **No equations changed; no figures changed; no numerical results changed.** Recompile pending on H200 pod (local Mac has no LaTeX).
 
