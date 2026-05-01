@@ -17,7 +17,6 @@ import {
   Map,
   Orbit,
   Search,
-  Sparkles,
   Sparkle,
   Telescope,
 } from "lucide-react";
@@ -118,10 +117,40 @@ export function Sidebar() {
   const pathname = usePathname() ?? "/";
   return (
     <aside className="sidebar">
-      <Link href="/" className="sidebar-brand">
-        BigBounce
-        <span className="sidebar-brand-kicker">
-          Hubify research lab
+      <Link href="/" className="sidebar-brand" aria-label="BigBounce — home">
+        <svg
+          className="sidebar-brand-mark"
+          viewBox="0 0 64 64"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect width="64" height="64" rx="10" fill="currentColor" opacity="0.92" />
+          <circle cx="20" cy="32" r="10" fill="#ffffff" />
+          <circle cx="20" cy="32" r="4" fill="currentColor" />
+          <g fill="#ffffff">
+            <circle cx="34" cy="32" r="1.6" />
+            <circle cx="38" cy="28" r="1.4" />
+            <circle cx="38" cy="36" r="1.4" />
+            <circle cx="42" cy="24" r="1.2" />
+            <circle cx="42" cy="32" r="1.2" />
+            <circle cx="42" cy="40" r="1.2" />
+            <circle cx="46" cy="20" r="1" />
+            <circle cx="46" cy="28" r="1" />
+            <circle cx="46" cy="36" r="1" />
+            <circle cx="46" cy="44" r="1" />
+            <circle cx="50" cy="24" r="0.9" />
+            <circle cx="50" cy="32" r="0.9" />
+            <circle cx="50" cy="40" r="0.9" />
+            <circle cx="54" cy="28" r="0.7" />
+            <circle cx="54" cy="36" r="0.7" />
+            <circle cx="58" cy="32" r="0.6" />
+          </g>
+        </svg>
+        <span className="sidebar-brand-text">
+          BigBounce
+          <span className="sidebar-brand-kicker">
+            Hubify research lab
+          </span>
         </span>
       </Link>
       <nav className="sidebar-nav">
@@ -143,8 +172,7 @@ export function Sidebar() {
         </div>
       </nav>
       <div className="sidebar-footer">
-        <div className="mb-2 flex items-center gap-2">
-          <Sparkles size={14} className="sidebar-footer-icon" />
+        <div className="mb-2">
           <span className="sidebar-footer-kicker">
             live dossier
           </span>
