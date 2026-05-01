@@ -18,6 +18,7 @@ import {
   Orbit,
   Search,
   Sparkles,
+  Sparkle,
   Telescope,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -55,6 +56,7 @@ const sections: SidebarSection[] = [
       { href: "/data-explorer", label: "data explorer", icon: BarChart3 },
       { href: "/galaxy-explorer", label: "galaxy explorer", icon: Globe },
       { href: "/anomaly-explorer", label: "anomaly explorer", icon: Telescope },
+      { href: "/visualize", label: "visualize", icon: Sparkle },
       { href: "/figures", label: "figures", icon: Image },
       { href: "/glossary", label: "glossary", icon: Library },
       { href: "/timeline", label: "timeline", icon: Map },
