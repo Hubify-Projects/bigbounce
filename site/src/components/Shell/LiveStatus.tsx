@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect } from "react";
 import { liveStatus } from "@/data/live-status";
+
+const REFRESH_MS = 15 * 60 * 1000;
 
 export function LiveStatus() {
   const { lastUpdatedDisplay, headline, summary, papers, blockerTally, cronStatus, etaToCompletion, pods } =
@@ -6,6 +11,13 @@ export function LiveStatus() {
   const avgReadiness = Math.round(
     papers.reduce((acc, p) => acc + p.readiness, 0) / papers.length,
   );
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      window.location.reload();
+    }, REFRESH_MS);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <aside className="live-status" aria-label="Live build status">
