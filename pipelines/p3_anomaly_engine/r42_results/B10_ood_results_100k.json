@@ -1,0 +1,20 @@
+{
+  "n_spectra": 100000,
+  "n_finite_dropped": 0,
+  "training_val_loss_ref": 0.0287,
+  "mse_median": 0.17764443159103394,
+  "mse_p25": 0.01605183770880103,
+  "mse_p75": 1.3941157162189484,
+  "mse_p90": 7.956387710571292,
+  "mse_p99": 44.849014816284125,
+  "mse_p99_9": 344.92769097905824,
+  "mse_max": 39646318592.0,
+  "mse_trimmed_mean_99pct": 2.2750606536865234,
+  "mse_mean_full": 407221.53125,
+  "shift_median_vs_val_pct": 518.9701449164945,
+  "shift_trimmed_vs_val_pct": 7827.0406051795235,
+  "fraction_above_5x_val": 0.52815,
+  "fraction_above_10x_val": 0.43447,
+  "computed_at": "2026-05-01T00:56:04Z",
+  "interpretation": "B10: BigAE 496-bin scored on 100k unseen DESI DR1 spectra; seed 20260501 distinct from training seed 20260420. Median MSE compared to training val_loss=0.0287 quantifies OOD distribution shift; trimmed mean (top 1pct removed) is the robust analogue."
+}

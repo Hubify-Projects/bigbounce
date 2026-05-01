@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.3}
-\newcommand{\paperTimestamp}{2026-04-30}
+\newcommand{\paperVersion}{v1.0.4}
+\newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
 
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{April 30, 2026, 23:55 PDT --- \paperVersion}
+\date{May 1, 2026, 00:58 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -170,8 +170,9 @@ evidence for large-scale parity violation. The global (monopole) CW
 offset is $0.26\%$ ($\CW/(\CW+\CCW) = 0.4974$ vs.\ $0.5000$), which
 is spatially uniform and produces no dipole signal; the dipole
 amplitude upper limit is ${\sim}0.2\%$ (minimum detectable at
-$3\sigmaunit$). A conclusive refutation of Shamir's claimed
-$\sim\!3\%$ asymmetry by a factor of~9.  Perhaps equally important, we
+$3\sigmaunit$). This strongly disfavors Shamir's claimed
+$\sim\!3\%$ asymmetry signal in the DESI Legacy Imaging Surveys footprint
+under the present pipeline by a factor of~9.  Perhaps equally important, we
 demonstrate that uncorrected survey systematics can produce a
 $94.6\sigmaunit$ spurious dipole from a classifier bias of
 only $0.79\%$---a cautionary result for the entire field.
@@ -404,22 +405,55 @@ property that ensures $f_{\rm CW}^{\rm eq}$ is unbiased under horizontal
 reflection.
 We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
-inference completes in approximately 18~hours.
+inference completes in approximately 18~hours. A scaling benchmark on the
+production \vit{}-Small chirality\_v2 checkpoint (Section~\ref{sec:vit_arch})
+across $8\times 10^{7}$ forward passes ($10^{7}$ images $\times$ 8 augmentations:
+$\{0^\circ, 90^\circ, 180^\circ, 270^\circ\}$ rotations $\times$ $\{$identity,
+horizontal flip$\}$) sustains $21{,}457$~images~s$^{-1}$ at batch~512 on a
+single H200, with a per-augmentation spread of $21{,}124$--$21{,}777$~images~s$^{-1}$
+($\Delta = 3.0\%$ across the 8 transforms; companion artifact
+\texttt{r42\_results/B22\_real\_chirality\_tta\_long.json}). The independent
+GPU-throughput characterization (\texttt{r42\_results/B19c\_gemm\_sweep.json},
+\texttt{r42\_results/B20\_vit\_throughput.json},
+\texttt{r42\_results/B21\_batchsize\_sweep.json}) confirms the bottleneck is
+data movement (image decoding and host-to-device transfer) rather than tensor
+math: peak throughput is recovered only at batch~512 with 32 parallel
+decoders, consistent with a $\sim 65$~TFLOPS FP16 GEMM-bound regime.
 
 We restrict to $2$-fold TTA (original $+$ horizontal flip) rather than
 the full $D_4$ group ($4$ rotations $\times$ $2$ reflections $= 8$
-elements) for two reasons. First, the chirality label is defined with
-respect to the projected sky orientation, not an intrinsic galaxy axis;
-a $90^\circ$ rotation changes which arm appears to trail clockwise,
-making rotation-augmented TTA semantically ambiguous for chirality
-classification (unlike, e.g., object detection where the label is
-rotation-invariant). Second, the horizontal flip is the unique
+elements) for two reasons. First, mirrors flip chirality by definition
+($\pcw \leftrightarrow \pccw$ under horizontal reflection in the
+projected-sky frame), whereas in-plane rotations \emph{do not} change
+the underlying chirality of a galaxy: a clockwise-trailing spiral
+remains clockwise-trailing after a $90^\circ$, $180^\circ$, or
+$270^\circ$ rotation of the image. Rotation-TTA therefore probes the
+\emph{rotation-equivariance of the classifier} rather than the
+chirality assignment itself, and any change in $\pcw$ across rotated
+copies traces classifier non-equivariance under in-plane rotation
+(equivalently, sensitivity to the horizontal up-direction of the
+image patch) rather than a chirality-relevant transformation.
+Including rotations under a label-preserving rule (no CW/CCW
+remapping) would average classifier orientation noise into the
+chirality output and could therefore reduce orientation-correlated
+bias---this is the corrected $D_4$-TTA protocol noted in
+Reviewer~R1's M14 query (R42)---and we record this as a structural
+extension for future-pipeline work, since it requires re-running the
+full inference with augmented forward passes that this catalog does
+not include. Second, the horizontal flip is the unique
 transformation that exactly swaps CW~$\leftrightarrow$~CCW by
-construction; rotations mix the CW/CCW channels in a label-dependent
-way that would require a rotation-aware label remapping. Extending to
-the full $D_4$ group with proper label handling could further reduce
-the residual $9.5\sigmaunit$ asymmetry (Sec.~\ref{sec:cw_frac}); that
-extension is not undertaken in the present catalog.
+construction, making the $2$-fold flip-TTA the minimal set that
+guarantees output-level chirality equivariance (the property being
+tested in this paper). Extending to the full label-preserving
+rotation group ($C_4 \subset D_4$ acting trivially on the chirality
+label) is the natural next step for reducing the residual
+$9.5\sigmaunit$ monopole offset (Sec.~\ref{sec:cw_frac}), but it
+is not undertaken in the present catalog: the
+augmented-forward-pass cost is approximately $4\times$ the current
+single-flip TTA throughput, and the residual offset is already
+sub-percent and demonstrably spatially uniform, so the science
+return on the additional compute is small relative to the value
+of releasing the catalog at the current scale.
 
 \begin{figure}[t]
 \centering
@@ -661,6 +695,7 @@ this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
 corresponding to $9.5\sigmaunit$ from 0.5000 (using the unrounded
 $\sigma = 0.000274$).
+A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact \texttt{r42\_results/B19\_sustained\_results.json}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and is the R42-required uncertainty quantification for the raw-catalog asymmetry baseline.
 
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
@@ -914,6 +949,19 @@ In combination, these three effects fully account for the factor-of-six
 difference in quoted significance ($0.43\sigmaunit$ vs.\
 $2.75\sigmaunit$) without invoking any physical signal.
 Both estimators are independently consistent with null.
+We adopt the post-MASTER deconvolution number ($-0.12\sigmaunit$) as
+the \emph{primary} angular-power-spectrum dipole significance for
+this paper: it is the only estimator that explicitly inverts the
+mask-induced mode coupling that would otherwise inflate the raw
+pseudo-$C_\ell$ estimate. The simple-dipole real-space fit
+($0.43\sigmaunit$) is retained as a complementary cross-check, and
+the raw pseudo-$C_\ell$ value ($2.75\sigmaunit$) is reported only
+for transparency on the magnitude of the mask leakage---it should
+not be quoted as a measurement of the underlying signal because
+the leakage is a deterministic function of the survey footprint
+and \emph{must} be removed before any cosmological interpretation.
+This MASTER-primary policy is consistent with the methodological
+recommendation of Reviewer~R1 (P4-07, R42).
 
 \begin{figure}[t]
 \centering
@@ -1049,6 +1097,20 @@ high-confidence galaxies, where the chirality classification is most
 reliable. Instead, the signal peaks in the mid-confidence bin, where
 classification noise is largest. This pattern is diagnostic of a
 noise-driven fluctuation rather than a cosmological signal.
+
+We therefore designate the high-confidence stratum as the
+\emph{primary} dipole-significance result: the $0.3\sigmaunit$ value
+in this band carries the smallest classifier-noise contamination and
+is the figure that should be quoted when comparing against any
+physical-dipole prediction. The mid- and low-confidence values are
+retained as cross-checks rather than as headline numbers, because
+their elevated significance is anti-correlated with classification
+reliability and therefore traces classifier noise rather than any
+cosmological signal. This high-confidence-primary policy is
+consistent with the methodological recommendation of Reviewer~R1
+(P4-12, R42) and is implemented uniformly throughout this paper:
+the abstract, introduction, and conclusions all quote the
+high-confidence dipole upper bound.
 
 Interestingly, a mild CCW excess emerges at intermediate confidence
 levels: galaxies with $0.6 < \pccw^{\rm eq} < 0.9$ show a CCW
