@@ -33,12 +33,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-02T06:30:00Z",
-  lastUpdatedDisplay: "2026-05-01 23:30 PT",
+  lastUpdatedISO: "2026-05-02T06:50:00Z",
+  lastUpdatedDisplay: "2026-05-01 23:50 PT",
   headline:
-    "Wave 14-S LANDED · P1 v2.3.9 · 25 cross-model findings closed · ETA all-4 → 100%: ~28-52 h",
+    "Wave 14-T LANDED · P4 v1.0.16 · 26 cross-model findings closed · ETA all-4 → 100%: ~28-50 h",
   summary:
-    "P1 v2.3.9: Gemini m-2 defensive Scope-note deleted in §I.C. 33 pp / 1.23 MB recompile clean on Pod 3. SPARCL 1M fetch ~6h in (PID 25860, ~195 spectra/min); 100K sub-sample short-circuit (~5 h) recommended. Cron */20 armed; banner refreshes every 15 min.",
+    "P4 v1.0.16: R42 R1 m5 Shamir refs given years (2022) + (2020, 2022). 19 pp / 25.79 MB recompile clean on Pod 3 (0 undef refs). SPARCL 1M fetch ~7h in at ~195 spectra/min (~82,500 spectra so far); 100K sub-sample short-circuit imminent. Cron */20 armed; banner refreshes every 15 min.",
   papers: [
     {
       slug: "spin-torsion",
@@ -65,15 +65,15 @@ export const liveStatus: LiveStatus = {
       slug: "chirality-catalog",
       number: 4,
       shortTitle: "Galaxy Chirality Catalog",
-      version: "v1.0.15",
+      version: "v1.0.16",
       readiness: 97,
     },
   ],
   blockerTally: {
-    closed: 25, // +1 from Wave 14-S: Gemini P1 m-2 defensive Scope-note delete in §I.C (cheap-fast precise-language path)
-    openBlockers: 1, // unchanged from Wave 14-R
-    openMajors: 16, // unchanged from Wave 14-S (Gemini P1 m-2 was a MINOR, not a MAJOR)
-    openMinors: 14, // -1 from Wave 14-S: Gemini P1 m-2 closed (was a MINOR)
+    closed: 26, // +1 from Wave 14-T: R42 m5 P4 Shamir-refs-need-years (cheap-fast precise-citation path)
+    openBlockers: 1, // unchanged from Wave 14-S
+    openMajors: 16, // unchanged from Wave 14-T (m5 was a MINOR, not a MAJOR)
+    openMinors: 13, // -1 from Wave 14-T: m5 P4 Shamir years closed (was a MINOR)
   },
   cronStatus: "*/20 autonomous-loop cron armed (cron a3fdb42b) + dynamic /loop wakeup arm",
   etaToCompletion:
@@ -82,7 +82,7 @@ export const liveStatus: LiveStatus = {
     {
       name: "Pod 3 H200 (38.80.152.148:33089)",
       state: "active",
-      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~6h elapsed at Wave 14-S commit; throughput full-window ~195 spectra/min sustained, consistent with Wave 14-R reading. Recompile_p1 (33 pp / 1,231,939 bytes / 0 errors / 0 undef refs / 0 'Wave 14-S' occurrences (expected — delete-only) / 1 pre-existing WilsonEwing2012 undef cite) ran cleanly in same session, $0 marginal H200 spend. 100K sub-sample short-circuit (~5 h ETA from this commit) remains strongly recommended on cost/cadence grounds. Quantitative systematics-marginalization Fisher recompute for P3 (~2h H200) queued to dispatch once fetch completes.)",
+      note: "Wave 14-B 1M SPARCL fetch in flight (PID 25860, ~6h47m elapsed at Wave 14-T commit; ~82,500 spectra fetched, throughput full-window ~195 spectra/min sustained. Recompile_p4 (19 pp / 25,794,489 bytes / 0 errors / 0 undef refs / Shamir-refs-now-with-years per R42 m5) ran cleanly in /workspace/recompile_p4 in same session, $0 marginal H200 spend. 100K sub-sample short-circuit imminent. Quantitative systematics-marginalization Fisher recompute for P3 (~2h H200) queued to dispatch once fetch completes.)",
     },
   ],
 };
