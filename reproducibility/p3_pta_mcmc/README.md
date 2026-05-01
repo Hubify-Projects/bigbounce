@@ -394,19 +394,30 @@ transparency, not for re-running:
    paper's Table 4, but the prose conflation could be sharpened.
    This is a writing-only correction; the science is unaffected.
 
-3. **TRACE GAP — synthetic vs. published free-spectrum.** The
-   `nanograv_ptarcade.py` MCMC operates on a synthetic free-spectrum
-   constructed from the NANOGrav 15-yr power-law best fit (γ = 3.2,
-   log10A = −14.62) plus a hard-coded `noise_floor_bias` and
-   per-bin `scatter_sigma`. It does **not** consume the official
-   NANOGrav 15-yr free-spectrum HDF5 release. Paper 3 §7.3
-   limitation #5 already discloses this ("the NANOGrav analysis
-   uses derived free-spectrum values consistent with published
-   results rather than raw timing residual data"). The canonical
-   3.20 ± 0.42 should therefore be read as a **published-power-law
-   propagation**, not a re-analysis of NANOGrav timing residuals.
-   This is the substantive content of the Gemini 3.1-Pro finding
-   P3-CM-MAJOR-related-to-PTA-traceability.
+3. **TRACE GAP CLOSED — Wave 13 (2026-05-01 09:30 PDT) supersedes
+   the synthetic-power-law propagation with a real-KDE
+   free-spectrum re-run.** The Wave 13 emcee analysis on the
+   official NANOGrav 15-yr HD-correlated KDE free-spectrum
+   (Zenodo 8060824, 30 Fourier bins) recovers
+   **γ = 2.567 ± 0.382, log10_A = −14.025 ± 0.380** with
+   bounce γ = 3.0 consistent at −1.13σ and SMBHB γ = 4.33
+   excluded at −4.6σ; ESS = 5,507; τ ≈ 58; acceptance = 0.63;
+   25 s wall on a single H200. Real-vs-synthetic shift
+   Δσ = −1.479 is substantive (the real KDE prefers a softer
+   spectrum than the published power-law mean). Paper 3 §V.A
+   now cites the Wave 13 real-KDE numbers as canonical and
+   carries an `app:pta_mcmc` documentation appendix covering
+   dataset, model template, KDE-grid likelihood, sampler,
+   priors, posterior, and diagnostics. The prior synthetic-
+   power-law summary statistic (γ = 3.20 ± 0.42 on the
+   `nanograv_ptarcade.py` constructed spectrum) is preserved in
+   `pipelines/h200_results/phase4_science/nanograv_ptarcade/`
+   as a sensitivity check; both posteriors are bounce-consistent,
+   but the real-KDE result is sharper on SMBHB exclusion and
+   should be cited going forward. This closes the Gemini 3.1-Pro
+   finding P3-CM-B3/P3-CM-MAJOR-related-to-PTA-traceability at
+   the published-data axis, not just at the equations + priors
+   axis covered by Wave 11-G #1.
 
 4. **TRACE GAP — `nanograv-enterprise-real` chain shows γ ≈ 9.99
    (prior boundary), not the canonical value.** The artifact at

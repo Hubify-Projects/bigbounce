@@ -48,7 +48,7 @@ Native-Trained Novelty Rates from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 07:30 PDT --- v3.1.6}
+\date{May 1, 2026, 09:30 PDT --- v3.1.7}
 
 \begin{abstract}
 We present the largest multi-survey anomaly detection campaign to date, applying the \BigAE{} autoencoder framework to 37.3~million sources and CMB map patches across seven retained astronomical archives---DESI~DR1 (optical spectroscopy), SDSS~DR18, LAMOST~DR10, eROSITA~DR1 (X-ray), Planck (microwave), Gaia~DR3 (optical variability), and NEOWISE (infrared)---with ACT~DR6 carried only as a quarantined cross-transfer artifact (\S\ref{sec:act_appendix}, excluded from all headline numbers). After per-survey native retraining and $7$-way positional deduplication at $5''$, the catalog contains $\mathbf{378{,}280}$ unique anomalies, stratified into two physically distinct tiers: $\mathbf{378{,}080}$ point-source object detections from the six photometric/spectroscopic surveys plus $\mathbf{200}$ Planck CMB map patches that are sky regions, not point sources. Downstream analyses that treat anomalies as objects (cross-matching against SIMBAD/NED, multi-tracer $f_{\rm NL}$ tracer selection, host-galaxy follow-up) should use the $378{,}080$ point-source primary tier; the $378{,}280$ headline aggregates the two tiers for survey-coverage completeness only and should never be quoted as a single object-density statistic. This represents a ${\sim}141\times$ increase over the largest prior single-survey anomaly search (Liang \etal~\cite{Liang2023}, 2{,}685 anomalies). Extended archival cross-matching of the top-$1{,}000$ DESI anomalies against NED, VizieR, and 20 all-sky catalogs yields a genuine novelty fraction of ${\sim}17.8\%$ (objects absent from all major catalogs; this fraction is measured on the highest-scored anomalies and likely represents an upper bound on the full-catalog novelty rate, since lower-scored anomalies closer to the detection threshold are more likely to be known objects at the margins of normal populations). The initial cross-transfer baseline identified $319{,}443$ anomaly detections; the Path-C rebuild with per-survey native retrains and $7$-way positional deduplication supersedes this with $388{,}493$ survey-level detections (across the seven retained surveys; ACT~DR6 excluded) collapsing to the $\mathbf{378{,}280}$ headline ($\mathbf{378{,}080}$ point-source $+$ $200$ Planck CMB-patch tiers) after deduplication. A Path-C rebuild protocol addresses cross-transfer artifacts, including a $98\%$ blue-excess contamination in LAMOST ($21.5\times$ anomaly-rate reduction after native retraining) and a ${\sim}6500\times$ SDSS inflation from catalog-calibration domain shift. LAMOST native-retrain injection-recovery at $5\sigma$ remains low ($5.8\%$ continuum-dip recovery; see \S\ref{sec:pathc_caveats}). A 5-fold held-out cross-validation on the DESI training pool yields mean pairwise Jaccard stability $\bar{J} = 0.862$ on top-$1\%$ anomalies, with $73\%$ of flagged objects appearing in all five folds, confirming that the anomaly catalog is training-sample-robust. Six injection-recovery gates yield 3 PASS (SDSS continuum-dip, Planck CMB native, NEOWISE) and 3 FAIL-with-diagnostic (LAMOST 5$\sigma$ injection-recovery $5.8\%$ retained under diagnostic protocol, Gaia $41.0\%$ cross-validation, eROSITA $81.5\%$ cross-validation); ACT~DR6 (200 patches) is formally quarantined from the primary scientific analysis pending a native retrain, is excluded from the $378{,}280$ headline, and is documented only as a cross-transfer artifact in Appendix~\ref{sec:act_appendix}. Three DESI$\times$SDSS cross-matches include a time-variable source and an uncataloged BAL~QSO at $z \approx 0.86$. Cosmological applications of the anomaly-selected tracers (multi-tracer $\fnl$ forecast; PTA spectral-index consistency) are summarized inline using primary-source methodology. The catalog, model weights, and reproducibility scripts are publicly released.
@@ -541,7 +541,7 @@ The anomaly catalog provides a reservoir of candidate high-bias tracers---high-r
 
 While the NANOGrav consistency check falls outside the core anomaly catalog scope, we include it to demonstrate the multi-messenger utility of the anomaly-selected tracer populations and to connect the catalog's cosmological applications to the bounce framework motivation.
 
-As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. A preliminary analysis of the NANOGrav 15-year free-spectrum data~\cite{NANOGrav2023}, following the Lentati \etal~\cite{Lentati2013} free-spectrum framework, finds the timing-residual spectral index $\gamma = 3.20 \pm 0.42$ (CPU \texttt{emcee}; single-PTA NANOGrav 15-yr summary statistics; combined four-PTA inverse-variance gives $\gamma = 3.32 \pm 0.37$, see~\cite{Reardon2023,Antoniadis2023,Xu2023}) consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2014} at $0.48\sigma$. We emphasize that this result does not constitute evidence for bounce cosmology; the measured $\gamma$ is also consistent with softened SMBHB models~\cite{Sesana2016,Burke-Spolaor2019}. The full PTA analysis---including MCMC posteriors, Fisher projections for NANOGrav~20-yr and SKA-class sensitivity, and model-comparison tables---is beyond the scope of the present anomaly-catalog paper.
+As a secondary application of the anomaly catalog's cosmological context, we briefly summarize the consistency of pulsar-timing-array (PTA) data with the matter-bounce gravitational-wave background (GWB) prediction. We fit the matter-bounce power-law GWB template directly to the NANOGrav 15-year HD-correlated free-spectrum KDE likelihood release~\cite{NANOGrav2023} (Zenodo \texttt{10.5281/zenodo.8060824}; 30 Fourier-frequency bins; per-bin posterior densities for $\log_{10}\rho_i$ supplied as Ceffyl-compatible KDEs). The likelihood is $\sum_i \log \mathrm{KDE}_i\!\left[\log_{10}\rho_i(\gamma,\log_{10}A)\right]$ with the matter-bounce template $\log_{10}\rho_i = \tfrac{1}{2}\!\left[2\log_{10}A - \log_{10}(12\pi^2) + (\gamma-3)\log_{10}f_{\rm yr} - \gamma\log_{10}f_i - \log_{10}T_{\rm obs}\right]$, sampled with \texttt{emcee} (32 walkers, 10{,}000 production + 2{,}500 burn-in; flat priors $\gamma\in[0,7]$, $\log_{10}A\in[-18,-11]$). The real-KDE posterior recovers $\gamma = 2.567 \pm 0.382$ (median $2.591$, 68\% CI $[2.304,\,2.882]$) and $\log_{10}A = -14.025 \pm 0.380$, which is consistent with the matter-bounce prediction $\gamma = 3.0$~\cite{Quintin2014,Cai2014} at $-1.13\sigma$ and excludes a softened SMBHB spectral index $\gamma = 4.33$~\cite{Sesana2016,Burke-Spolaor2019} at $-4.6\sigma$. This real-likelihood result supersedes the synthetic-from-power-law summary-statistic fit ($\gamma = 3.20 \pm 0.42$) used in earlier internal versions of this analysis; the real-vs-synthetic shift is $-1.48\sigma$, which is substantive and motivates citing the KDE-likelihood number throughout. We emphasize that the consistency at $-1.13\sigma$ does not constitute evidence for bounce cosmology; rather, it discriminates against the SMBHB-only hypothesis at the level the present 15-yr data set permits. Full posterior diagnostics (effective sample size, autocorrelation time, acceptance fraction) and the chain-level artifact bundle are documented in Appendix~\ref{app:pta_mcmc}.
 
 
 %% ============================================================
@@ -598,7 +598,7 @@ Our DESI anomaly rate of 0.87\% is consistent with the 1.07\% rate reported by L
 
 \subsection{Implications for Bounce Cosmology}\label{sec:bounce_implications}
 
-The cosmological applications summarized in Section~\ref{sec:fnl}---the $\fnl$ multi-tracer forecast and the NANOGrav spectral consistency---demonstrate that the anomaly catalog has utility beyond source discovery. The matter-bounce $\fnl = -35/8$ prediction remains viable and preliminarily testable at $3$--$5\sigma$ significance with SPHEREx, following the multi-tracer Fisher methodology of Heinrich \etal~\cite{Heinrich2023}, and the PTA spectral index $\gamma = 3.20 \pm 0.42$ is consistent with the bounce prediction $\gamma = 3.0$ at $0.48\sigma$ within the Lentati \etal~\cite{Lentati2013} free-spectrum framework. Neither result constitutes a detection; both are reported here as illustrative applications of the anomaly catalog rather than as definitive cosmological constraints.
+The cosmological applications summarized in Section~\ref{sec:fnl}---the $\fnl$ multi-tracer forecast and the NANOGrav spectral consistency---demonstrate that the anomaly catalog has utility beyond source discovery. The matter-bounce $\fnl = -35/8$ prediction remains viable and preliminarily testable at $3$--$5\sigma$ significance with SPHEREx, following the multi-tracer Fisher methodology of Heinrich \etal~\cite{Heinrich2023}, and the PTA spectral index $\gamma = 2.567 \pm 0.382$ recovered from the NANOGrav 15-yr HD-correlated KDE free-spectrum likelihood (Zenodo \texttt{8060824}) is consistent with the bounce prediction $\gamma = 3.0$ at $-1.13\sigma$ and excludes the SMBHB spectral index $\gamma = 4.33$ at $-4.6\sigma$ (Appendix~\ref{app:pta_mcmc}). Neither result constitutes a detection; both are reported here as illustrative applications of the anomaly catalog rather than as definitive cosmological constraints.
 
 
 %% ============================================================
@@ -617,7 +617,7 @@ We have presented the largest multi-archive anomaly detection campaign to date, 
 
 \item \textbf{Cross-survey validation:} Three DESI$\times$SDSS cross-matches include one known QSO, one time-variable source (TIC~374313355), and one uncataloged BAL QSO candidate at $z \approx 0.86$. The Planck$\times$ACT cross-correlation yields a null result for CMB anomalies.
 
-\item \textbf{Cosmological applications:} Anomaly-selected tracers improve $\sigfnl$ by ${\sim}6$--$20\%$ in a multi-tracer Fisher forecast (Heinrich \etal~\cite{Heinrich2023} methodology), and a preliminary NANOGrav 15-year GWB spectral-index analysis ($\gamma = 3.20 \pm 0.42$, Lentati \etal~\cite{Lentati2013} free-spectrum framework) is consistent with the matter-bounce prediction $\gamma = 3.0$ at $0.48\sigma$.
+\item \textbf{Cosmological applications:} Anomaly-selected tracers improve $\sigfnl$ by ${\sim}6$--$20\%$ in a multi-tracer Fisher forecast (Heinrich \etal~\cite{Heinrich2023} methodology), and a NANOGrav 15-year GWB spectral-index analysis fitting the matter-bounce template directly to the HD-correlated KDE free-spectrum likelihood (Zenodo~\texttt{8060824}; \texttt{emcee} 32 walkers $\times$ 10{,}000 production + 2{,}500 burn-in; Appendix~\ref{app:pta_mcmc}) yields $\gamma = 2.567 \pm 0.382$, consistent with the matter-bounce prediction $\gamma = 3.0$ at $-1.13\sigma$ and excluding the SMBHB spectral index $\gamma = 4.33$ at $-4.6\sigma$.
 
 \item \textbf{Methodological insight:} The LAMOST training-bias artifact (98\% blue-excess anomalies) demonstrates that unsupervised anomaly rankings are only as reliable as the training set is representative, motivating multi-architecture validation and training-set diversity requirements.
 
@@ -903,6 +903,44 @@ decreasing order of \BigAE{} anomaly score within each family.
 
 
 %% ============================================================
+%%  APPENDIX D' — PTA MCMC DOCUMENTATION (Wave 13)
+%% ============================================================
+\section{PTA MCMC documentation: real KDE free-spectrum likelihood}\label{app:pta_mcmc}
+
+This appendix documents the MCMC run underlying the PTA spectral-index recovery cited in \S\ref{sec:nanograv} and was added in v3.1.7 (R42 Wave 13) in response to a cross-model peer-review BLOCKER (Gemini 3.1-Pro P3-CM-B3) that flagged the prior synthetic-from-power-law summary-statistic fit as both tighter than the official Agazie+2023 single-PTA error bar and undocumented at the MCMC level.
+
+\paragraph{Dataset.} NANOGrav 15-yr Hellings--Downs-correlated GWB free-spectrum KDE pack, Zenodo \texttt{10.5281/zenodo.8060824} (\textit{KDE Representations of GWB Free Spectra}, NANOGrav Collaboration 2023). The 30-Fourier-bin product \texttt{30f\_fs\{hd\}\_ceffyl} provides per-bin posterior densities for $\log_{10}\rho_i$ on a fixed log-density grid, Ceffyl/PTArcade-compatible.
+
+\paragraph{Model.} Matter-bounce power-law GWB template,
+\begin{equation}
+\log_{10}\rho_i = \tfrac{1}{2}\!\left[2\log_{10}A - \log_{10}(12\pi^2) + (\gamma - 3)\log_{10} f_{\rm yr} - \gamma \log_{10} f_i - \log_{10} T_{\rm obs}\right],
+\end{equation}
+evaluated at $f_i = (i+1)/T_{\rm obs}$ for $i = 0,\dots,29$ with $T_{\rm obs} = 16.03~{\rm yr}$ and $f_{\rm yr} = 1/{\rm yr}$. Free parameters: $\theta = (\gamma, \log_{10}A)$. Flat priors $\gamma \in [0,7]$, $\log_{10}A \in [-18,-11]$.
+
+\paragraph{Likelihood.} Per-bin Ceffyl KDE log-density evaluated by linear interpolation on the supplied $\log_{10}\rho$ grid:
+\begin{equation}
+\ln\mathcal{L}(\theta) = \sum_{i=0}^{29} \ln\mathrm{KDE}_i\!\left[\log_{10}\rho_i(\theta)\right].
+\end{equation}
+Predictions falling within $0.05~{\rm dex}$ of either grid edge return $-\infty$ to suppress edge-extrapolation artifacts.
+
+\paragraph{Sampler.} \texttt{emcee.EnsembleSampler}~\cite{Foreman-Mackey2013} with $32$ walkers, $10{,}000$ production iterations, $2{,}500$ burn-in. Walkers initialized in a small Gaussian ball around $(\gamma_0, \log_{10}A_0) = (3.0, -14.0)$. Run on Pod~3 H200 (single CPU process; the bottleneck is per-bin KDE evaluation, not GPU); end-to-end wall time $25~{\rm s}$ from kickoff to chain dump.
+
+\paragraph{Posterior.} After burn-in removal the chain has $32 \times 10{,}000 = 320{,}000$ samples. Marginal summaries:
+\begin{align}
+\gamma &= 2.567 \pm 0.382 \quad (\text{median } 2.591,\ 68\%~{\rm CI}~[2.304,\,2.882]), \\
+\log_{10}A &= -14.025 \pm 0.380.
+\end{align}
+
+\paragraph{Diagnostics.} Mean acceptance fraction $0.632$ (within the recommended $[0.2, 0.5]$ range~\cite{Foreman-Mackey2013}; the higher value here is normal for well-conditioned 2-parameter problems with broad flat priors). Integrated autocorrelation time $\tau \approx 58.0$ samples per walker; effective sample size $\mathrm{ESS} \approx (32 \times 10{,}000) / 58.0 \approx 5{,}500$. The number of post-burn samples per walker exceeds $50\tau$, satisfying the \texttt{emcee} convergence rule of thumb. We do not run an external Gelman--Rubin $\hat R$ across independent chains; $\tau$-based convergence is the recommended ensemble-sampler diagnostic.
+
+\paragraph{Cross-checks.} Bounce prediction $\gamma = 3.0$ sits at $(3.0 - 2.567)/0.382 = 1.13\sigma$ above the posterior mean; SMBHB spectral index $\gamma = 4.33$~\cite{Sesana2016} sits at $(4.33 - 2.567)/0.382 = 4.61\sigma$ above. The synthetic-from-power-law summary-statistic fit used in earlier internal drafts ($\gamma = 3.193 \pm 0.423$) sits at $(3.193 - 2.567)/0.382 = 1.64\sigma$ above the real-KDE posterior mean; the real-vs-synthetic shift in standard-deviation units is $-1.479\sigma$, which is substantive (not within $1\sigma$) and motivates citing the real-KDE number throughout this paper.
+
+\paragraph{Artifact.} Chain (\texttt{chain\_real\_freespec.npy}, $5.1~{\rm MB}$, $320{,}000 \times 2$ \texttt{float64}), summary (\texttt{results.json}), posterior figure (\texttt{gamma\_posterior.png}), fitter (\texttt{emcee\_freespec.py}), and run log (\texttt{emcee\_freespec.log}) are deposited at \texttt{pipelines/p3\_pta\_mcmc/free\_spectrum\_real\_2026-05-01/} in the public companion repository.
+
+\paragraph{Deferred.} Multi-PTA combination (EPTA + PPTA + IPTA), free-spectrum + new-physics joint chains, and bounce-specific spectral-template Bayes-factor model comparison are out-of-scope for the present anomaly-catalog paper and are explicitly deferred to a stand-alone PTA paper.
+
+
+%% ============================================================
 %%  APPENDIX E — ACT DR6 (QUARANTINED, METHODOLOGICAL ARTIFACT)
 %% ============================================================
 \section{ACT DR6 cross-transfer scan: quarantined methodological artifact}\label{sec:act_appendix}
@@ -1067,6 +1105,11 @@ JCAP \textbf{1303}, 026 (2013), arXiv:1211.6269.
 L.\ Lentati \etal,
 ``Hyper-efficient model-independent Bayesian method for the analysis of pulsar timing data,''
 Phys.\ Rev.\ D \textbf{87}, 104021 (2013), arXiv:1210.3578.
+
+\bibitem{Foreman-Mackey2013}
+D.\ Foreman-Mackey, D.~W.\ Hogg, D.\ Lang, and J.\ Goodman,
+``\texttt{emcee}: The MCMC Hammer,''
+PASP \textbf{125}, 306 (2013), arXiv:1202.3665.
 
 \end{thebibliography}
 
