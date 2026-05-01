@@ -343,3 +343,37 @@ Optional strengthening pass (Principle 10 DO-NOW sweep) would add ~2–3 weeks a
 - **Do not include a "future work" section** when finalising — the paper intentionally omits one (§7.3 Limitations suffices).
 - **Do not split the Fisher sensitivity (Appendix C) from the main Fisher forecast (§5).** They were reconciled on 2026-04-16 in `346bb33`; keep them synced.
 - **Do not drop the LAMOST blue-excess lesson from §7.1.** It is the single strongest methodological contribution of the paper — without it, the result reduces to a catalog.
+
+---
+
+## 11. R42 Wave 11-F — HuggingFace dataset visibility flip (2026-05-01)
+
+GPT-5 cross-model peer review (`peer-reviews/r42-cross-model-2026-05-01/openai_p3_review.md`) flagged finding **P3-OA-M9**:
+
+> "HuggingFace catalog dataset 'private pending arXiv acceptance'. Companion artifacts JSON also not accessible. Reviewers can't reproduce."
+
+**Status:** the anomaly-catalog datasets were uploaded private under the standard "release on acceptance" embargo. PRD-style reviewers expect public artifacts at submission time.
+
+**Datasets to flip:**
+
+| HF dataset | Visibility | Owner action |
+|---|---|---|
+| `bamfai/galaxy-anomaly-catalog-desi` | private → **public** | Houston |
+| `bamfai/galaxy-anomaly-catalog-sdss` | private → **public** | Houston |
+| `bamfai/galaxy-anomaly-catalog-erosita` | private → **public** | Houston |
+| `bamfai/bigbounce-anomaly-catalog` (aggregated) | private → **public** | Houston |
+| Companion artifacts JSON (`paper3_companion_artifacts.json`) | private → **public** | Houston |
+
+**Houston-pending instructions** (this is a dashboard-flip, not a script — it requires Houston's HF login):
+
+1. Open https://huggingface.co/datasets/bamfai/galaxy-anomaly-catalog-desi
+2. Click **Settings** in the dataset header.
+3. Scroll to **Visibility** and toggle from **Private** → **Public**.
+4. Confirm the visibility-change dialog.
+5. Repeat for `bamfai/galaxy-anomaly-catalog-sdss`, `bamfai/galaxy-anomaly-catalog-erosita`, `bamfai/bigbounce-anomaly-catalog`, and any companion-artifacts dataset.
+6. After all toggles are public, edit Paper 3's Data-and-Code-Availability section to drop any "available upon acceptance" / "embargoed" wording and replace with the live HF URLs. The URLs themselves do not change — only the visibility.
+7. Recompile and mirror to `public/papers/paper3_anomaly_catalog.pdf`.
+
+**Why this can't be agent-executed:** HF visibility flips require account-owner credentials. The agent does not have, and should not have, Houston's HF login. The five-step toggle is mechanical and takes < 10 minutes when Houston has the dashboard open.
+
+**Cross-paper alignment:** the same pattern applies to Paper 4's `bamfai/galaxy-chirality-catalog` (R42 B23 — see `paper-4/status.md`). Houston should flip all five (P3 family + P4 chirality) in one HF-dashboard session.

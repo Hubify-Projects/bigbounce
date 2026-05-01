@@ -312,3 +312,37 @@ Cloud artifacts:
 - Don't refer to `wiki/entities/paper-4-chirality.md` "Remaining Work" list (confusion matrix, training curves, redshift distribution, peer review) — those were added in commit `5e55f48` (2026-02-27) and finalized in `5d24cfc`. The wiki entry is stale.
 - Don't refer to `chirality_mvp.json` "TRIAGE_RECAST from published constraints, not end-to-end reanalysis" — that's from an abandoned early MVP path; the production pipeline (`train_chirality_v2.py` → `run_v2_all_shards.py` → `equivariant_postprocess.py`) is end-to-end real.
 - Don't refer to the site's "85% ready" / "pending peer review" language on `paper.html` — update it to reflect this SSOT.
+
+---
+
+## 11. R42 Wave 11-F — HuggingFace dataset visibility flip (2026-05-01)
+
+**R42 finding B23 — long-standing Houston-decision blocker.**
+
+The Paper 4 manuscript (`pipelines/p2_chirality/chirality_catalog_paper.tex`) cites the catalog as available at:
+- `https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog` (CC-BY-4.0, parquet)
+- `https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/v2026.04` (pinned release)
+
+The model is at `https://huggingface.co/bamfai/galaxy-chirality-v2`.
+
+**Houston-decision (R42 B23):** verify and flip the catalog dataset to public. The companion R42 Wave 11-F item P3-OA-M9 (see `paper-3/status.md` §11) covers the same flip for the four Paper-3 anomaly-catalog datasets. Houston should batch all five flips in a single HF-dashboard session.
+
+**Steps for `bamfai/galaxy-chirality-catalog` specifically:**
+
+1. Open https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog (logged in as the dataset owner).
+2. Click **Settings** in the dataset header.
+3. Under **Visibility**, confirm public; if private, toggle to **Public**.
+4. Verify the `v2026.04` tag and v2 model card (`bamfai/galaxy-chirality-v2`) are also public.
+5. After the flip, click through the URLs from a logged-out browser to confirm the parquet files render.
+
+**Why this can't be agent-executed:** HF visibility flips require account-owner credentials. The agent does not have, and should not have, Houston's HF login. The toggle is mechanical and takes < 2 minutes once Houston has the dashboard open.
+
+**Post-flip verification (agent-runnable):** after Houston confirms the flip, an agent can run:
+
+```bash
+curl -sf https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/resolve/main/README.md | head -20
+```
+
+A 200-OK response without auth means the dataset is publicly readable; a 401/403 means the flip didn't stick.
+
+**Cross-paper alignment:** see `paper-3/status.md` §11 for the four Paper-3 anomaly-catalog datasets that share the same Houston-pending flip.

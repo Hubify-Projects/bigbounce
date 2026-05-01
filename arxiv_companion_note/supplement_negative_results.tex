@@ -1,0 +1,1243 @@
+% supplement_negative_results.tex
+% Standalone paper: systematic closure of four minimal first-principles
+% routes to dark energy in Einstein-Cartan-Holst gravity.
+%
+% Houston Golden, 2026
+%
+% Submitted to: [TBD — see publication-readiness checklist]
+% arXiv: gr-qc / hep-th
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{slashed}
+
+% Shortcuts
+\newcommand{\MPl}{M_{\rm Pl}}
+\newcommand{\Neff}{\Delta N_{\rm eff}}
+\newcommand{\BI}{\gamma}               % Barbero-Immirzi
+\newcommand{\Gsp}{G_{\rm SP}}
+\newcommand{\Gcrit}{G_{\rm crit}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\Veff}{V_{\rm eff}}
+\newcommand{\Gam}{\Gamma_{\rm eff}}
+\newcommand{\Sfour}{S_{\rm 4f}}
+
+\title{%
+  Systematic Closure of Minimal First-Principles Routes\\
+  to Dark Energy in Einstein-Cartan-Holst Gravity%
+}
+\author{Houston Golden\\
+  Independent Researcher, Los Angeles, California, USA\\
+  \texttt{houston@hubify.com}
+}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+% ------------------------------------------------------------------
+\begin{abstract}
+Einstein-Cartan-Holst (ECH) gravity---the Palatini formulation of general
+relativity supplemented by the Holst term with Barbero-Immirzi parameter
+$\BI$---is a natural candidate framework for geometric dark energy. The
+minimal ECH$+$Dirac model generates a parity-odd vacuum operator through
+spin-torsion coupling, and a phenomenological scaling argument relates
+its inflationary dilution to the observed dark-energy density. However,
+the late-time equation of state $w=-1$ must be assumed, not derived: it
+requires showing that integrating out spin degrees of freedom generates
+an IR-constant term in the effective action. We report four systematic
+attempts to close this gap---two computational and two structural---together
+with their negative outcomes:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Track~B (condensate route):} Fierz rearrangement of the
+    torsion-induced four-fermion interaction shows that the
+    scalar/pseudoscalar channel coupling
+    $\Gsp\propto(\BI^2-1)/(\BI^2+1)$ is repulsive at $\BI<1$.
+    Even when attractive ($\BI>1$), the coupling is ${\sim}175\times$ below
+    the NJL critical coupling, and gravitational catalysis is exponentially
+    suppressed. Gate~1 (condensate existence) fails; Track~B closes.
+  \item \textbf{Branch~G v1 (strict one-loop effective action):} After exact
+    torsion elimination, all finite-$\BI$ dependence resides in the
+    four-fermion term $\Sfour$, which is quartic in fermion fields and does
+    not contribute to the strict one-loop fermion determinant. The Dirac
+    operator is the standard Levi-Civita operator with $\BI$-independent
+    Seeley-DeWitt coefficients. Branch~G~v1 closes at Phase~1 (no novel
+    Holst content at this order).
+  \item \textbf{Route~T1 (dynamical Immirzi field):} Promoting the
+    Barbero-Immirzi parameter $\BI\to\theta(x)$ to a dynamical pseudoscalar
+    field. Torsion remains algebraic, but after torsion elimination the
+    reduced action is identical to GR~$+$~standard axion-like particle (ALP).
+    The four-fermion interaction is $\theta$-independent; no mechanism
+    generates a potential $V(\theta)\sim\Lambda$; cosmological dynamics gives
+    $w=+1$ (stiff matter), not $w=-1$. Route~T1 closes: the dynamical
+    Immirzi field has no novel gravitational content beyond a standard ALP.
+  \item \textbf{Route~S1 (parity-sensitive CMB phenomenology):} Assessment of
+    whether the framework's parity-odd operator maps to distinctive
+    birefringence observables. The minimal ECH$+$Dirac model has no
+    photon-polarization coupling; any assumed coupling produces constant-$\beta$
+    birefringence identical to generic ALP phenomenology with two free
+    parameters for one observable. Route~S1 closes: no distinctive
+    parity signal exists in the minimal model.
+\end{enumerate}
+
+These closures share a common structural origin: in the minimal ECH$+$Dirac
+model, torsion is algebraic (non-propagating) and its elimination removes all
+Holst-sector content from the reduced action. The Nieh-Yan topological
+density carries no local dynamical information that survives this elimination.
+The resulting physics is standard general relativity plus fermions plus a
+constrained four-fermion contact interaction---insufficient for late-time
+vacuum energy or distinctive observational signatures. The phenomenological
+framework~\cite{Golden2026} survives as a motivated ansatz; progress toward
+a first-principles derivation requires physics beyond the minimal model class.
+All computations are symbolic or semi-analytic (Python/SymPy) and are fully
+reproducible.
+\end{abstract}
+
+% ------------------------------------------------------------------
+\section{Introduction}\label{sec:intro}
+
+The cosmological constant problem---why $\rho_\Lambda \sim (2.3\;\text{meV})^4
+\sim 10^{-122}\,\MPl^4$---motivates the search for geometric mechanisms that
+generate or explain the observed vacuum energy from the structure of
+spacetime itself. Einstein-Cartan-Holst (ECH) gravity is a natural candidate:
+its Holst term introduces a parity-odd coupling controlled by the
+Barbero-Immirzi parameter $\BI$, well-motivated by loop quantum
+gravity~\cite{Freidel2005,Mercuri2009}. The spin-torsion interaction
+generates four-fermion contact terms and a parity-violating vacuum
+operator, suggesting a possible geometric origin for dark energy.
+
+A phenomenological framework based on this idea~\cite{Golden2026} constructs
+a dark-energy density $\rho_\Lambda = \Xi\,\MPl^4$ through inflationary
+dilution of the parity-odd operator, reducing fine-tuning from $10^{120}$ to
+${\sim}10^5$. However, the framework contains a logical gap: the operator
+$\langle\varepsilon^{abcd}K_{ab}R_{cd}\rangle$ is sourced by the fermion
+spin density, which vanishes at late times. For the residual to persist as a
+genuine vacuum energy with $w=-1$, one must show that integrating out the spin
+degrees of freedom generates an IR-constant term in the effective action.
+
+This paper reports a structured program to close that gap. Four routes were
+tested---two computational, one structural extension, and one
+phenomenological assessment. All four fail. These are clean negative results:
+they narrow the landscape of viable derivation strategies, close the most
+natural minimal-model candidates, and establish concrete structural
+requirements for any next-generation geometric dark-energy mechanism.
+
+\subsection*{Scope and limitations}
+This paper reports results for the \emph{minimal} ECH$+$Dirac model
+(Einstein-Cartan gravity with Holst term, minimally coupled to $N_f$ Dirac
+fermions, at the LQG Barbero-Immirzi value $\BI=0.274$), together with the
+simplest structural extension (promoting $\BI$ to a dynamical field). Routes
+involving non-minimal couplings, higher-loop effects, non-perturbative
+dynamics, graviton-loop contributions, genuinely new symmetry structures,
+or different values of~$\BI$ are not tested and remain open. The negative
+results reported here apply only at the stated approximation orders and
+model classes.
+
+
+% ------------------------------------------------------------------
+\section{Context and Motivation}\label{sec:context}
+
+The phenomenological framework of Ref.~\cite{Golden2026} treats $w=-1$ as an
+explicit assumption, stating: ``We therefore treat $w=-1$ as a
+phenomenological assumption [\ldots] and flag the derivation of the late-time
+IR effective action as an important open problem.'' The present paper
+constitutes a systematic test of whether the minimal microscopic theory
+delivers such a term.
+
+The question is not merely whether a specific calculation succeeds, but
+whether the \emph{model class}---minimal ECH gravity with algebraic torsion
+and standard Dirac coupling---has the structural capacity to generate
+late-time vacuum physics. The four routes tested here cover the most natural
+candidates within this model class:
+\begin{itemize}
+  \item condensation of the torsion-induced four-fermion interaction,
+  \item the one-loop fermion effective action,
+  \item promotion of $\BI$ to a dynamical field, and
+  \item mapping the parity-odd operator to distinctive observables.
+\end{itemize}
+The simultaneous failure of all four points to a structural limitation of the
+model class itself, not merely to the failure of individual calculations.
+
+% ------------------------------------------------------------------
+\section{Minimal Model and Tested Question}\label{sec:model}
+
+\subsection{Microscopic action}
+
+The starting point is the Einstein-Cartan-Holst action minimally coupled to
+$N_f$ Dirac fermions:
+\begin{align}
+  S &= S_{\rm grav}[e,\omega] + S_{\rm ferm}[e,\omega,\psi], \label{eq:action}\\
+  S_{\rm grav} &= \frac{\MPl^2}{2}\int
+    \bigl[\varepsilon_{IJKL} + \tfrac{2}{\BI}\,\eta_{I[K}\eta_{L]J}\bigr]\,
+    e^I\wedge e^J\wedge F^{KL}[\omega], \label{eq:Sgrav}\\
+  S_{\rm ferm} &= \int d^4x\,|e|\,
+    \bigl[\bar\psi_i\,i\gamma^\mu D_\mu\psi_i - m_i\bar\psi_i\psi_i\bigr],
+    \label{eq:Sferm}
+\end{align}
+with $D_\mu = \partial_\mu + \tfrac{1}{4}\omega_\mu^{IJ}\gamma_I\gamma_J$,
+metric signature $(+,-,-,-)$, $\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3$
+with $(\gamma^5)^2=1$, and $\kappa^2 = 8\pi G = \MPl^{-2}$. The
+Barbero-Immirzi parameter~$\BI$ is a fixed constant. No bare cosmological
+constant is included in the starting action.
+
+\subsection{The central question}
+
+Does integrating out fermion fields in the action~\eqref{eq:action} generate a
+late-time vacuum term with $w\approx -1$ that is not merely a restatement of
+bare-$\Lambda$ renormalization and that depends nontrivially on finite~$\BI$?
+
+Four routes were tested, corresponding to different approximation strategies
+and extensions:
+\begin{itemize}
+  \item \textbf{Track~B:} Test whether a pseudoscalar fermion condensate
+    $\Phi = \langle\bar\psi i\gamma^5\psi\rangle$ forms via the NJL mechanism
+    from the torsion-induced four-fermion interaction and persists as
+    late-time vacuum energy.
+  \item \textbf{Branch~G v1:} Compute the strict one-loop gravitational
+    effective action $\Gam[e]$ after torsion elimination and fermion
+    integration, and test whether it contains a $\BI$-dependent vacuum-like
+    term beyond standard cosmological-constant renormalization.
+  \item \textbf{Route~T1:} Promote the Barbero-Immirzi parameter to a
+    dynamical pseudoscalar field $\BI\to\theta(x)$ and assess whether the
+    resulting theory contains novel gravitational content (non-ALP terms,
+    $\theta$-dependent four-fermion structure, or a dynamically generated
+    vacuum potential).
+  \item \textbf{Route~S1:} Assess whether the framework's parity-odd operator
+    $\varepsilon^{abcd}K_{ab}R_{cd}$ maps to distinctive, testable
+    birefringence observables that are not reproducible by generic
+    axion-like-particle models.
+\end{itemize}
+
+
+% ------------------------------------------------------------------
+\section{Track~B: Condensate Route}\label{sec:trackB}
+
+\subsection{Setup}\label{sec:trackB_setup}
+
+The spin connection $\omega^{IJ}_\mu$ is non-propagating in EC gravity; its
+equation of motion is algebraic. Solving it exactly yields the reduced
+action~\cite{Freidel2005,ShapiroTeixeira2014}
+\begin{equation}\label{eq:Sreduced}
+  S_{\rm reduced}[e,\psi] = S_{\rm EH}[e]
+  + \int d^4x\sqrt{-g}\,\bigl[\bar\psi\,i\gamma^\mu\mathring\nabla_\mu\psi
+    - m\bar\psi\psi\bigr]
+  + \Sfour[e,\psi;\BI],
+\end{equation}
+where $\mathring\nabla$ uses the torsion-free Levi-Civita connection and
+$\Sfour$ is the torsion-induced four-fermion interaction.
+
+\paragraph{Perfect-square structure.}
+The four-fermion term has a constrained form discovered during
+Computation~1~\cite{comp1}:
+\begin{equation}\label{eq:Sfour}
+  \mathcal{L}_{\rm 4f}
+  = -\Geff\bigl(\bar\psi\gamma^\mu\gamma^5\psi
+    + \tfrac{1}{\BI}\,\bar\psi\gamma^\mu\psi\bigr)^2,
+  \qquad
+  \Geff = \frac{3\kappa^2}{16}\,\frac{\BI^2}{\BI^2+1}.
+\end{equation}
+This is a perfect square of a single combined current
+$J^\mu = J^\mu_{(A)} + (1/\BI)\,J^\mu_{(V)}$. The individual couplings
+$G_V$, $G_A$, $G_{VA}$ are \emph{not} independent parameters; they are
+constrained by this squared-current structure.
+
+At $\BI=0.274$, the vector admixture $1/\BI\approx 3.65$ is
+$\mathcal{O}(1)$---the vector sector dominates over the axial sector.
+
+\subsection{Gate structure}\label{sec:trackB_gates}
+
+Track~B was organized around three quantitative gates, defined and frozen
+before computation began~\cite{canonical_v3}:
+\begin{description}[style=nextline]
+  \item[Gate~1 (Condensate existence)]
+    The renormalized effective potential $\Veff(\sigma,\pi)$ admits a local
+    minimum at $(\sigma^*,\pi^*)$ with $\pi^*\neq 0$ and positive-definite
+    Hessian.
+  \item[Gate~2 (Vacuum persistence)]
+    The minimum persists when curvature $R\to 0$ and spin source $s\to 0$.
+  \item[Gate~3 (Vacuum-like stress-energy)]
+    The condensate contribution yields $\rho_\Phi > 0$ and $|1+w|<10^{-2}$,
+    with scheme-independent existence/sign.
+\end{description}
+Gate~1 failed; Gates~2 and~3 were not reached.
+
+\subsection{Algebraic and numerical results}\label{sec:trackB_results}
+
+\paragraph{Result~1: The scalar/pseudoscalar channel is repulsive at
+$\BI=0.274$.}
+Fierz rearrangement of the four-fermion interaction~\eqref{eq:Sfour}
+decomposes it into standard NJL channels~\cite{comp2,comp2b}. The effective
+coupling in the scalar/pseudoscalar sector is
+\begin{equation}\label{eq:GSP}
+  \Gsp = \frac{3\kappa^2}{16}\,\frac{\BI^2-1}{\BI^2+1}.
+\end{equation}
+This is an exact algebraic result. The sign changes at $\BI=1$:
+\begin{itemize}
+  \item $\BI>1$: attractive (condensation possible in principle),
+  \item $\BI=1$: decoupled,
+  \item $\BI<1$: \textbf{repulsive} (condensation impossible via NJL).
+\end{itemize}
+At $\BI=0.274<1$, the scalar/pseudoscalar channel is repulsive. The NJL gap
+equation has no nontrivial solution for any repulsive coupling, regardless of
+curvature or fermion content.
+
+\paragraph{Result~2: Even with the correct sign, the coupling is
+${\sim}175\times$ below NJL criticality.}
+The NJL critical coupling for condensation in proper-time regularization is
+$\Gcrit = 2\pi^2/(N_c\Lambda^2)$~\cite{comp3b}. With gravitational coupling
+$G\sim\kappa^2\sim 1/\MPl^2$ and cutoff $\Lambda\sim\MPl$:
+\begin{equation}\label{eq:ratio}
+  \frac{\Gsp}{\Gcrit}\bigg|_{\BI=2.0}\approx 0.006.
+\end{equation}
+The gravitational four-fermion coupling is subcritical by two orders of
+magnitude, even when the sign is attractive.
+
+\paragraph{Result~3: Gravitational catalysis is exponentially suppressed.}
+Gravitational catalysis~\cite{GorbarGusynin2008} lowers the threshold for
+\emph{already-attractive} channels but cannot flip the sign of a repulsive
+channel. For the attractive case ($\BI>1$) at Planck curvature
+$R\sim\MPl^2$~\cite{comp3b}:
+\begin{equation}\label{eq:catalysis}
+  M_*\sim\Lambda\exp\!\bigl(-\text{const}/(G_{\rm SP}\times R)\bigr)
+  \sim\exp(-2100)\approx 10^{-914}\,\MPl.
+\end{equation}
+The corresponding vacuum energy $V_{\rm vac}\sim M_*^4\sim 10^{-3658}\,\MPl^4$
+is smaller than the observed $\rho_\Lambda\sim 10^{-122}\,\MPl^4$ by
+${\sim}3500$ orders of magnitude.
+
+\paragraph{Result~4: Multi-flavor and alternative channels do not rescue the
+mechanism.}
+\begin{itemize}
+  \item \emph{Multi-flavor:} Inter-flavor contributions to the S/P channel
+    vanish because $\tr(\gamma^\mu)=0$ and $\tr(\gamma^\mu\gamma^5)=0$; the
+    Fierz traces factorize for different species~\cite{comp3}.
+  \item \emph{Vector/axial condensation:} The VV and AA channels \emph{are}
+    attractive, but a vector condensate breaks Lorentz invariance and does not
+    produce isotropic vacuum energy compatible with dark energy.
+  \item \emph{VA cross-term:} The VA Fierz coefficient vanishes identically
+    for identical single-flavor fermions (Fierz exchange symmetry). The
+    effective potential has $O(2)$ symmetry in $(\sigma,\pi)$; Possibility~B
+    from the canonical problem statement is realized, not
+    Possibility~A~\cite{comp2b}.
+\end{itemize}
+
+\subsection{Closure of Track~B}\label{sec:trackB_closure}
+
+Gate~1 fails on four independent lines of evidence: wrong sign, subcritical
+coupling, exponentially suppressed catalysis, and no multi-flavor rescue.
+Track~B closes for the minimal single-flavor NJL pseudoscalar condensate at
+$\BI=0.274$.
+
+\Cref{fig:GSP} shows $\Gsp$ as a function of~$\BI$, with the sign flip at
+$\BI=1$ and the LQG value $\BI=0.274$ marked. \Cref{fig:veff} compares
+$\Veff$ in the repulsive ($\BI=0.274$) and attractive ($\BI=2.0$) regimes.
+
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/G_SP_vs_gamma.png}
+  \caption{Effective scalar/pseudoscalar coupling $\Gsp$ (Eq.~\ref{eq:GSP})
+    as a function of the Barbero-Immirzi parameter~$\BI$. The coupling
+    changes sign at $\BI=1$ (vertical dashed line). At the LQG value
+    $\BI=0.274$ (red marker), $\Gsp<0$: the channel is repulsive and NJL
+    condensation is impossible.}
+  \label{fig:GSP}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/veff_repulsive_vs_attractive.png}
+  \caption{One-loop effective potential $\Veff(\pi)$ at fixed $\sigma=0$,
+    comparing the repulsive regime ($\BI=0.274$, no nontrivial minimum) with
+    the attractive regime ($\BI=2.0$). Even in the attractive case, the
+    coupling is ${\sim}175\times$ below the NJL critical coupling, so no
+    condensation occurs.}
+  \label{fig:veff}
+\end{figure}
+
+
+% ------------------------------------------------------------------
+\section{Branch~G v1: Strict One-Loop Effective-Action Route}
+\label{sec:branchG}
+
+\subsection{Setup}\label{sec:branchG_setup}
+
+Branch~G v1 asks a different question from Track~B: does the one-loop
+gravitational effective action $\Gam[e]$---obtained by integrating out all
+fermions on a curved background---contain a $\BI$-dependent vacuum-like term
+that goes beyond standard cosmological-constant renormalization?
+
+The target object is
+\begin{equation}\label{eq:Gam}
+  \Gam[e] = S_{\rm grav}[e,\mathring\omega[e]]
+  + \Gamma^{(1\text{-loop})}_{\rm ferm}[e],
+\end{equation}
+where $\Gamma^{(1\text{-loop})}_{\rm ferm}
+= -\tfrac{1}{2}\,\mathrm{Tr}\ln(-\slashed{D}^2 + \ldots)$ is the one-loop
+fermion determinant.
+
+\paragraph{Scope restriction.}
+Branch~G v1 is restricted to \emph{Approach~B} (strict one-loop): the
+four-fermion term $\Sfour$ is treated as a vertex in the loop expansion and
+does not contribute at one loop. The Hubbard-Stratonovich route
+(Approach~A), which would reintroduce condensate-like auxiliary-field
+structure, is out of scope and would require a separate branch
+definition~\cite{branchG_canonical}.
+
+\subsection{Gate structure}\label{sec:branchG_gates}
+
+Three gates were defined and frozen before computation~\cite{branchG_canonical}:
+\begin{description}[style=nextline]
+  \item[Gate~G1 (Nontrivial finite-$\BI$ vacuum structure)]
+    The renormalized $\Gam[e]$ contains a cosmological-constant-like term
+    whose existence depends nontrivially on finite~$\BI$ and is not merely
+    standard bare-$\Lambda$ renormalization.
+  \item[Gate~G2 (IR physicality)]
+    The term survives as $R\to 0$ and is scheme-robust in existence/sign.
+  \item[Gate~G3 (Dark energy viability)]
+    Positive vacuum energy, $|1+w|<10^{-2}$, mappable to the main paper's
+    dark-energy sector.
+\end{description}
+An additional early-kill condition (FM-G6) was predeclared: if the strict
+one-loop object has no novel finite-$\BI$ content whatsoever, Branch~G v1
+closes at Phase~1 without reaching Gates~G1--G3.
+
+\subsection{Structural argument}\label{sec:branchG_argument}
+
+After exact torsion elimination, the reduced action is
+Eq.~\eqref{eq:Sreduced}. The free Dirac term uses the Levi-Civita connection
+$\mathring\nabla$. All $\BI$-dependence resides in $\Sfour$, which is quartic
+in~$\psi$.
+
+\paragraph{The one-loop operator is $\BI$-independent.}
+At strict one-loop (Approach~B), the Dirac operator whose determinant is
+computed is
+\begin{equation}\label{eq:Dirac}
+  \slashed{D} = i\gamma^\mu\mathring\nabla_\mu,
+\end{equation}
+the standard curved-space Dirac operator with Levi-Civita connection. This
+operator does not depend on~$\BI$. The four-fermion term $\Sfour$ is quartic
+in~$\psi$ and contributes only at two loops or beyond.
+
+Therefore, $\Gamma^{(1\text{-loop})}_{\rm ferm}[e]$ is $\BI$-independent as a
+functional. Its Seeley-DeWitt coefficients $a_0$, $a_1$, $a_2,\ldots$ are the
+standard textbook coefficients for a spin-$\tfrac{1}{2}$ field on a Riemannian
+background~\cite{Vassilevich2003}, with no $\BI$-dependence.
+
+\paragraph{Three candidate channels for $\BI$ entry.}
+Before declaring closure, three channels through which $\BI$ might enter at
+one loop were checked~\cite{branchG_analysis}:
+
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{Modified background equations:} The classical field equations
+    include $\BI$-dependent terms, so the background geometry (e.g., the
+    bounce solution) depends on~$\BI$. However, this is $\BI$-dependence of
+    the \emph{field configuration} (a point in field space), not of the
+    effective action \emph{as a functional}. This does not constitute novel
+    Holst content.
+  \item \textbf{Parity-odd sector / $\eta$-invariant:} The fermion determinant
+    phase (Atiyah-Patodi-Singer $\eta$-invariant) is computed from the
+    spectrum of~$\slashed{D}=i\gamma^\mu\mathring\nabla_\mu$, which is
+    $\BI$-independent. Furthermore, the Pontryagin density $P_4=0$ on
+    homogeneous FRW backgrounds (conformally flat), and even on backgrounds
+    where $P_4\neq 0$, the contribution is curvature-local and topological,
+    not vacuum-like.
+  \item \textbf{Functional measure corrections:} Torsion elimination is a
+    classical algebraic substitution, not a change of fermionic integration
+    variable. The standard treatment~\cite{Freidel2005,Shapiro2002} performs
+    this without measure corrections. The path integral over~$\omega$ is
+    Gaussian in~$\omega$; the resulting determinant factor depends on the
+    tetrad~$e$ but not on~$\psi$, modifying the gravitational measure rather
+    than the fermion determinant.
+\end{enumerate}
+
+\paragraph{Literature confirmation.}
+Two existing one-loop computations were examined:
+\begin{itemize}
+  \item Chattopadhyay~(2023)~\cite{Chattopadhyay2023} computes the
+    \emph{graviton} (not fermion) one-loop effective action in chiral EC
+    gravity. No fermions are included; $\BI$ does not appear; the computation
+    is for a different object.
+  \item Shapiro \& Teixeira~(2014)~\cite{ShapiroTeixeira2014} find
+    $\BI$-dependent one-loop divergences, but these arise from the
+    \emph{graviton} loop with \emph{external} fermion currents treated as
+    classical backgrounds. Fermions are not quantum fields in their
+    computation. This confirms that $\BI$ enters through graviton vertices,
+    not the fermion operator.
+\end{itemize}
+
+\subsection{Closure of Branch~G v1}\label{sec:branchG_closure}
+
+\paragraph{Novel Holst content criterion (from the frozen canonical
+statement):}
+\begin{quote}
+``Branch~G counts as nontrivially alive only if, at the stated approximation
+order, the renormalized effective action $\Gam[e]$ contains at least one
+finite or regulator-robust term whose existence, sign, or classification
+depends nontrivially on finite~$\BI$ and either disappears or changes
+qualitatively in the $\BI\to\infty$ Einstein-Cartan limit.''
+\end{quote}
+
+No such term exists at strict one-loop. FM-G6 fires. Branch~G~v1 closes at
+Phase~1 without proceeding to Gates~G1--G3.
+
+
+% ------------------------------------------------------------------
+\section{Route~T1: Dynamical Immirzi Field}\label{sec:T1}
+
+\subsection{Motivation and setup}\label{sec:T1_setup}
+
+The Barbero-Immirzi parameter $\BI$ appears in the Holst
+action~\eqref{eq:Sgrav} as a dimensionless coupling. Promoting it to a
+dynamical pseudoscalar field $\BI\to\theta(x)$ is a natural structural
+extension: $\theta$ then plays the role of an axion-like field whose
+``decay constant'' is tied to the gravitational sector through the Nieh-Yan
+topological density~\cite{Mercuri2009}.
+
+The question tested in Route~T1 is whether this promotion generates
+genuinely new gravitational content---specifically, whether the reduced
+action after torsion elimination contains terms that are \emph{not}
+reproducible by simply adding a standard ALP to general relativity.
+
+\subsection{Literature review results}\label{sec:T1_literature}
+
+Six key references were examined~\cite{Mercuri2009,CalcagniMercuri2009,%
+TaverasYunes2008,TorresGomez2009,LattanziMercuri2010,Magueijo2013}.
+The assessment addressed six questions (Q1--Q6), each with predefined
+kill criteria.
+
+\paragraph{Q1: Torsion remains algebraic.}
+Even with $\theta(x)$ dynamical, the torsion equation of motion remains
+algebraic in the contorsion tensor $K^I{}_{JK}$. No derivatives of~$K$
+appear. Torsion elimination proceeds exactly as in the constant-$\BI$
+case~\cite{CalcagniMercuri2009}. This is a necessary (but not sufficient)
+condition for tractability.
+
+\paragraph{Q2: The reduced action is a standard ALP.}
+After torsion elimination with dynamical $\theta(x)$, the reduced action
+takes the form~\cite{CalcagniMercuri2009,Mercuri2009}
+\begin{equation}\label{eq:T1reduced}
+  S_{\rm reduced}[g,\psi,\theta] = S_{\rm EH}[g]
+  + \int d^4x\sqrt{-g}\left[
+    -\tfrac{1}{2}f(\theta)(\partial\theta)^2
+    + \bar\psi\,i\gamma^\mu\mathring\nabla_\mu\psi
+    - m\bar\psi\psi
+    + \mathcal{L}_{\rm 4f}
+  \right],
+\end{equation}
+where $f(\theta)$ is a kinetic function and $\mathcal{L}_{\rm 4f}$ is the
+four-fermion interaction. The critical structural result:
+
+\emph{Every term in $S_{\rm reduced}$ is of a standard form.}
+The kinetic term $f(\theta)(\partial\theta)^2$ is standard ALP kinetic
+energy. The Nieh-Yan coupling $\theta\,dT^I\wedge e_I$ reduces, after
+torsion elimination, to a boundary term plus standard axion-type
+couplings. No term arises that is not reproducible by adding a
+conventional pseudoscalar field to GR.
+
+\paragraph{Q2 (continued): Four-fermion interaction is $\theta$-independent.}
+The torsion-induced four-fermion interaction after elimination is
+\begin{equation}\label{eq:T1fourfermi}
+  \mathcal{L}_{\rm 4f} = -\frac{3}{2}\pi G\,
+  (\bar\psi\gamma^\mu\gamma^5\psi)(\bar\psi\gamma_\mu\gamma^5\psi).
+\end{equation}
+This is the standard axial-axial contact interaction and is
+\emph{independent of $\theta$}. The Fierz channel structure is unchanged
+from the constant-$\BI$ case analyzed in Track~B. In particular, promoting
+$\BI\to\theta(x)$ does not modify the scalar/pseudoscalar channel coupling
+or introduce new condensation channels. The Track~B negative results carry
+over unchanged.
+
+\paragraph{Q3: Literature is complete.}
+The computation of the reduced action with dynamical Immirzi field has
+been performed by Calcagni \& Mercuri~\cite{CalcagniMercuri2009} and
+independently by Taveras \& Yunes~\cite{TaverasYunes2008}. The
+cosmological dynamics have been analyzed by
+Lattanzi \& Mercuri~\cite{LattanziMercuri2010}. No gap in the literature
+was identified.
+
+\paragraph{Q4: No mechanism generates $V(\theta)\sim\Lambda$.}
+The Mercuri~\cite{Mercuri2009} analogy posits that $\theta$ plays the role
+of the QCD axion, with the Nieh-Yan density replacing $F\wedge\tilde{F}$.
+However:
+\begin{itemize}
+  \item In QCD, the axion potential is generated by instantons with a
+    definite non-perturbative scale $\Lambda_{\rm QCD}$. The resulting
+    axion mass is $m_a\sim\Lambda_{\rm QCD}^2/f_a\sim 10^{-12}$~eV.
+  \item In gravity, the analogous scale would be set by gravitational
+    instantons, which are Planck-suppressed: $V(\theta)\sim\MPl^4\,
+    e^{-S_{\rm inst}}$ with $S_{\rm inst}\sim\MPl^2/H^2\gg 1$ at
+    late times.
+  \item The resulting vacuum energy is ${\sim}10^{-36}$ orders of
+    magnitude below $\rho_\Lambda\sim 10^{-122}\,\MPl^4$.
+  \item Any $V(\theta)$ yielding the observed $\Lambda$ must be put in
+    by hand. This displaces the fine-tuning problem from ``why $w=-1$?''
+    to ``why $V(\theta_0)=\Lambda_{\rm obs}$?''
+\end{itemize}
+
+\paragraph{Q5: Cosmological dynamics give $w=+1$, not $w=-1$.}
+Taveras \& Yunes~\cite{TaverasYunes2008} show that the dynamical Immirzi
+field on cosmological backgrounds behaves as stiff matter with equation of
+state $w=+1$. This is the \emph{opposite} of dark energy. The field
+redshifts as $\rho_\theta\propto a^{-6}$, becoming negligible at late
+times. There is no mechanism for the field to drive late-time acceleration.
+
+\paragraph{Q6: The Nieh-Yan topological nature is fatal.}
+The Nieh-Yan 4-form $N_4 = d(e^I\wedge T_I)$ is exact (a total derivative)
+in four dimensions. Its topological nature ensures that any coupling of
+$\theta$ to $N_4$ reduces to boundary terms plus standard kinetic and
+coupling structures after torsion elimination. This is the structural
+reason why the gravitational origin washes out: the Nieh-Yan density
+carries no local dynamical information that survives torsion
+elimination~\cite{Mercuri2009,CalcagniMercuri2009}.
+
+\subsection{Closure of Route~T1}\label{sec:T1_closure}
+
+Route~T1 closes on three independent grounds:
+\begin{enumerate}
+  \item \textbf{No novel content:} The reduced action after torsion
+    elimination is identical to GR~$+$~standard ALP. Every term is
+    reproducible without the spin-torsion origin.
+  \item \textbf{No vacuum mechanism:} No dynamical mechanism generates
+    $V(\theta)\sim\Lambda$. Gravitational instantons are
+    Planck-suppressed; any viable potential must be assumed, not derived.
+  \item \textbf{Wrong cosmological dynamics:} The field behaves as stiff
+    matter ($w=+1$), the opposite of dark energy.
+\end{enumerate}
+
+Route~T1 was assessed through literature review only; no original symbolic
+computation was performed, as the existing literature fully covers the
+relevant calculations.
+
+
+% ------------------------------------------------------------------
+\section{Route~S1: Parity-Sensitive CMB Phenomenology}\label{sec:S1}
+
+\subsection{Motivation and setup}\label{sec:S1_setup}
+
+The ECH action contains a parity-odd operator through the Holst term
+$\varepsilon^{abcd}K_{ab}R_{cd}$, which sources the framework's
+parity-violating vacuum structure. Cosmic birefringence---rotation of CMB
+polarization by an angle $\beta$---has been detected at combined
+significance $\beta = 0.342^\circ \pm 0.094^\circ$ (isotropic,
+$3.6\sigma$)~\cite{EskiltKomatsu2022} with recent ACT DR6 results
+strengthening the evidence~\cite{DiegoPalazuelos2025}. Route~S1 asks
+whether the framework predicts a distinctive birefringence signal.
+
+\subsection{Assessment results}\label{sec:S1_results}
+
+Four questions (Q1--Q4) were assessed, each with predefined kill criteria.
+
+\paragraph{Q1: The minimal framework has no photon coupling.}
+The parity-odd operator $\varepsilon^{abcd}K_{ab}R_{cd}$ is purely
+gravitational. It couples to the fermion spin density through torsion but
+has \emph{no coupling to the photon sector} in the minimal ECH$+$Dirac
+model. The electromagnetic field strength $F_{\mu\nu}$ does not appear in
+the Holst term, the torsion equation of motion, or the reduced action
+after torsion elimination.
+
+For the framework to produce birefringence, one must \emph{assume} a
+coupling of the form $\theta F\wedge\tilde{F}$ or equivalently
+$g_{\gamma}\,\theta\,\varepsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}$,
+with $g_\gamma$ as a free parameter. This coupling is not derived from the
+microscopic ECH action; it must be added by hand.
+
+The main paper itself acknowledges this gap (Sec.~III.B.2 of
+Ref.~\cite{Golden2026}): the birefringence discussion is framed as a
+consistency check, not a prediction.
+
+\paragraph{Q2: Parameterization is unfalsifiable.}
+Even with an assumed photon coupling, the predicted birefringence angle is
+\begin{equation}\label{eq:beta}
+  \beta = f_{\rm photon}\,C_0\,\frac{\alpha}{M}\,\MPl,
+\end{equation}
+where $f_{\rm photon}$ is the assumed coupling strength (free),
+$C_0$ encodes the dilution history (free within the framework's scaling
+ansatz), $\alpha/M$ is the framework's dark-energy scale parameter. This
+formula has two free parameters ($f_{\rm photon}$, $C_0$) for one
+observable ($\beta$). Any measured $\beta$ can be accommodated by tuning
+these parameters. The mapping is unfalsifiable.
+
+\paragraph{Q3: No distinguishing power from generic ALP birefringence.}
+The predicted signal is constant-$\beta$ (uniform rotation independent of
+multipole $\ell$). This is identical to the prediction of a generic
+axion-like particle with constant coupling. The spin-torsion origin
+provides:
+\begin{itemize}
+  \item no distinctive $\beta(\ell)$ shape (scale-dependent rotation),
+  \item no cross-correlation with other observables ($\Neff$, galaxy
+    spins) that would distinguish it from a generic ALP,
+  \item no predicted sign or magnitude constraint on $\beta$ from the
+    framework's other fitted parameters.
+\end{itemize}
+All three survival criteria from the Phase~1 checklist fail.
+
+\paragraph{Q4: Data exists but cannot be used distinctively.}
+Current data (Planck NPIPE, ACT DR6) provides excellent sensitivity to
+isotropic birefringence~\cite{DiegoPalazuelos2025,EskiltKomatsu2022}.
+However, since the framework's prediction is indistinguishable from
+generic constant-$\beta$ ALP birefringence, fitting the data would
+produce a consistency check (``the framework is compatible with observed
+$\beta$ for $f_{\rm photon}\sim\mathcal{O}(1)$''), not a test of the
+spin-torsion mechanism.
+
+\subsection{Closure of Route~S1}\label{sec:S1_closure}
+
+Route~S1 closes on three independent grounds:
+\begin{enumerate}
+  \item \textbf{No photon coupling:} The minimal framework has no
+    mechanism to rotate photon polarization. Any coupling must be
+    assumed, not derived.
+  \item \textbf{Unfalsifiable parameterization:} Two free parameters for
+    one observable; any $\beta$ can be accommodated.
+  \item \textbf{No distinguishing power:} The prediction is identical to
+    generic ALP birefringence; no distinctive spin-torsion signature
+    exists.
+\end{enumerate}
+
+Route~S1 was assessed through literature review and structural analysis;
+no pipeline computation was performed, as the assessment determined that
+no distinctive prediction exists to test.
+
+
+% ------------------------------------------------------------------
+\section{Combined Interpretation}\label{sec:combined}
+
+\Cref{tab:summary} summarizes the four tested routes and their outcomes.
+
+\begin{table}[t]
+\centering
+\caption{Summary of four tested routes to first-principles dark energy or
+distinctive observables in the ECH framework, and their outcomes.}
+\label{tab:summary}
+\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Route & Target & Method & Outcome & Failure point \\
+\midrule
+Track~B & Condensate
+  & Fierz + one-loop $\Veff$
+  & Gate~1 failed
+  & S/P channel repulsive \\
+  & $\langle\bar\psi i\gamma^5\psi\rangle$
+  & & & at $\BI=0.274$ \\[3pt]
+Branch~G v1 & Effective action $\Gam[e]$
+  & Strict one-loop
+  & FM-G6 fired
+  & Fermion determinant \\
+  & & after torsion elim.
+  &
+  & is $\BI$-independent \\[3pt]
+Route~T1 & Dynamical Immirzi
+  & Literature review
+  & All gates fail
+  & Reduced action $=$  \\
+  & field $\theta(x)$
+  & + structural analysis
+  &
+  & standard ALP \\[3pt]
+Route~S1 & Parity/birefringence
+  & Structural assessment
+  & Gate S1-1 failed
+  & No photon coupling; \\
+  & observables
+  &
+  &
+  & $\beta=\,$generic ALP \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The minimal ECH$+$Dirac model, at the tested approximation orders and
+extensions, does not generate the late-time vacuum term from first principles
+via any of the four routes tested:
+\begin{enumerate}[label=(\roman*)]
+  \item the NJL condensate route (Track~B),
+  \item the strict one-loop reduced effective-action route (Branch~G v1),
+  \item the dynamical Immirzi field extension (Route~T1), or
+  \item the parity-sensitive CMB phenomenology channel (Route~S1).
+\end{enumerate}
+
+\paragraph{Structural lesson.}
+The four closures converge on a common structural explanation. In the
+minimal ECH$+$Dirac model, torsion is algebraic (non-propagating). Solving
+the torsion equation of motion exactly eliminates all Holst-sector
+structure, leaving only:
+\begin{itemize}
+  \item the standard Einstein-Hilbert gravitational sector,
+  \item standard minimally-coupled fermion kinetic terms, and
+  \item a four-fermion contact interaction with constrained channel
+    structure.
+\end{itemize}
+The Barbero-Immirzi parameter enters only the four-fermion coupling
+constants, which are subcritical for condensation (Track~B) and invisible
+at strict one-loop (Branch~G v1). Promoting $\BI\to\theta(x)$ does not
+escape this structural trap: the Nieh-Yan density is topological (exact
+in 4D), so the dynamical field reduces to a standard ALP after torsion
+elimination (Route~T1). And the parity-odd operator, being purely
+gravitational, has no photon coupling to produce distinctive birefringence
+(Route~S1).
+
+\paragraph{What this does not mean.}
+These closures do \emph{not} invalidate the main phenomenological framework.
+The main paper already treats $w=-1$ as an assumption, and these results
+confirm that this treatment is appropriate. The negative results establish
+the boundary of what the minimal model achieves at the lowest nontrivial
+approximation orders.
+
+\paragraph{What remains open.}
+The following routes were not tested and remain logically open, each
+requiring its own canonical problem statement:
+\begin{itemize}
+  \item \emph{Graviton one-loop with fermion currents}
+    (Shapiro-Teixeira approach): $\BI$ enters through graviton vertices.
+    This is a graviton-loop computation, structurally different from the
+    fermion-loop computations tested here.
+  \item \emph{Beyond-one-loop / resummation:} The four-fermion interaction
+    $\Sfour$ contributes at two loops. Hubbard-Stratonovich resummation
+    (Approach~A) may introduce $\BI$-dependent condensate channels, but
+    Track~B showed the S/P channel fails even at this level.
+  \item \emph{Non-perturbative effects:} Instantons, tunneling, topological
+    contributions.
+  \item \emph{Non-minimal couplings:} Additional torsion-matter interactions
+    beyond the minimal EC$+$Holst$+$Dirac sector.
+  \item \emph{New symmetry structures:} Genuinely new light degrees of
+    freedom with symmetry-protected masses, beyond the minimal model
+    class tested here.
+\end{itemize}
+
+
+% ------------------------------------------------------------------
+\section{Implications and Requirements for Future Work}\label{sec:implications}
+
+\subsection{Status of the phenomenological framework}
+
+The phenomenological framework of Ref.~\cite{Golden2026}---the scaling ansatz
+$\rho_\Lambda = \Xi\,\MPl^4$ with $w=-1$ as an assumption---is unaffected by
+these closures. Its cosmological consistency checks (MCMC fits to
+Planck/BAO/SN data), fine-tuning reduction ($10^{120} \to {\sim}10^5$), and
+qualitative parity/birefringence consistency survive as phenomenological
+observations. The framework was designed to be robust under exactly this
+outcome.
+
+However, the closures do establish the framework's ceiling: it is a
+\emph{motivated phenomenological model}, not a first-principles derivation
+of dark energy, and its minimal model class lacks both a derivation of
+$w=-1$ and a distinctive observational signature separating it from
+$\Lambda$CDM$+$ALP.
+
+\subsection{Requirements for next-generation models}
+
+The structural lessons from Sec.~\ref{sec:combined} translate into four
+concrete requirements for any candidate next-generation geometric
+dark-energy model:
+
+\begin{description}[style=nextline]
+  \item[R1: Must survive reduction without washing out.]
+    The mechanism must not depend on degrees of freedom that are eliminated
+    by algebraic constraint equations. If torsion is algebraic, nothing that
+    relies on it persists in the reduced action.
+
+  \item[R2: Must address tiny-scale naturalness.]
+    The model must explain why the relevant scale is $\sim 10^{-122}\,\MPl^4$
+    through a structural mechanism (symmetry, sequestering, relaxation), not
+    merely by setting a free parameter to the observed value.
+
+  \item[R3: Must offer a distinctive prediction.]
+    The model must produce at least one observable or mechanism that is not
+    reproducible by $\Lambda$CDM plus a generic axion-like particle.
+
+  \item[R4: Must fail cleanly if wrong.]
+    The model must be testable with predefined gates and kill criteria,
+    producing documentable negative results if it fails.
+\end{description}
+
+\subsection{Candidate directions beyond the minimal model}
+
+Three directions satisfy at least one of these requirements while addressing
+at least one structural lesson:
+\begin{itemize}
+  \item \emph{Propagating torsion} (Poincar\'e gauge theory): torsion becomes
+    dynamical, avoiding the algebraic wash-out (R1). Risk: ghost
+    instabilities in the massive torsion sector.
+  \item \emph{Symmetry-protected geometric pseudoscalars:} a pseudoscalar
+    with a protected mass and non-topological geometric coupling, avoiding
+    ALP collapse (R3) and addressing naturalness (R2). Risk: may reduce
+    to a standard ALP in disguise.
+  \item \emph{Vacuum sequestering:} global constraints enforce radiative
+    stability of $\Lambda$, addressing naturalness directly (R2). Risk:
+    Weinberg no-go theorem; potentially no distinctive observable (R3).
+\end{itemize}
+Each requires its own canonical problem statement and gate structure before
+computation.
+
+
+% ------------------------------------------------------------------
+\section{Reproducibility and Repository Layout}\label{sec:reproducibility}
+
+Track~B and Branch~G v1 computations are symbolic or semi-analytic,
+implemented in Python~3.14 with SymPy~1.14, NumPy, SciPy, and Matplotlib.
+No GPU or specialized hardware is required. Routes~T1 and S1 are
+literature-review and structural-assessment closures with no original
+computation; their documentation is archived in the repository. The full
+repository is organized as follows.
+
+\subsection{Frozen documents (not to be edited)}
+
+\begin{longtable}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\toprule
+File & Content \\
+\midrule
+\texttt{06\_canonical\_problem\_statement.md} &
+  Track~B canonical problem statement (v3, frozen).
+  Defines 7 questions, 3 gates, order parameter, symmetry logic,
+  regulator strategy. \\
+\texttt{06a\_frozen\_assumptions\_and\_change\_log.md} &
+  Track~B freeze log with reopening criteria and v1$\to$v2$\to$v3
+  change history. \\
+\texttt{07\_track\_b\_closure.md} &
+  Track~B closure document. Four load-bearing negative results,
+  artifact inventory, impact assessment. \\
+\texttt{08\_branchG\_canonical\_problem\_statement.md} &
+  Branch~G v1 canonical problem statement (v2, frozen).
+  6 questions, 3 gates, FM-G6 early kill, scope control. \\
+\texttt{08a\_branchG\_freeze\_log.md} &
+  Branch~G v1 freeze log with Approach~A/B label clarification
+  and Track~B comparison table. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Computation scripts}
+
+\begin{longtable}{@{}p{0.40\textwidth}p{0.08\textwidth}p{0.42\textwidth}@{}}
+\toprule
+Script & Type & Content \\
+\midrule
+\texttt{derivations/comp1\_torsion\_elimination.py} & Symbolic &
+  Torsion elimination in ECH gravity. Derives perfect-square
+  structure~\eqref{eq:Sfour}, coupling constants, $\BI\to\infty$
+  limit check. \\
+\texttt{derivations/comp2\_fierz\_rearrangement.py} & Symbolic &
+  Full $16\times 16$ Fierz rearrangement using explicit gamma
+  matrices in the Dirac representation. Channel decomposition. \\
+\texttt{derivations/comp2b\_fierz\_verification.py} & Symbolic &
+  Independent verification of Fierz results. VA vanishing proof,
+  sign analysis, Fierz completeness check. \\
+\texttt{derivations/comp3\_one\_loop\_veff.py} & Semi-analytic &
+  One-loop $\Veff$ with curvature corrections. $\BI$-scan for
+  nontrivial minima (none found). Multi-flavor analysis.
+  Generates Figs.~\ref{fig:GSP}--\ref{fig:veff}. \\
+\texttt{derivations/comp3b\_gap\_equation\_check.py} & Numerical &
+  NJL gap equation in proper-time regularization. Critical
+  coupling comparison ($\Gsp/\Gcrit\approx 0.006$). Curvature
+  catalysis scan. \\
+\texttt{derivations/branchG\_phase1\_operator\_analysis.py} & Analytic &
+  Branch~G Phase~1: three-channel analysis of whether $\BI$
+  enters the strict one-loop Dirac operator. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Analysis notes and status reports}
+
+\begin{longtable}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\toprule
+File & Content \\
+\midrule
+\texttt{notes/gate1\_status\_20260313.md} &
+  Gate~1 failure report: three results that kill the S/P condensate
+  route. Remaining active branches. \\
+\texttt{notes/comp3\_results\_analysis.md} &
+  Fierz result analysis: VA cross-term structure, multi-flavor
+  implications, Possibility A vs B resolution. \\
+\texttt{notes/branchG\_phase1\_closure.md} &
+  Branch~G Phase~1 closure: FM-G6 declaration, three-channel
+  verdict, literature comparison. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Route~T1 and S1 documentation}
+
+Routes~T1 and S1 were closed through literature review and structural
+assessment. No original symbolic computation was required. The following
+documents record the assessments:
+
+\begin{longtable}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\toprule
+File & Content \\
+\midrule
+\texttt{next\_branches/T1\_dynamical\_immirzi/\newline
+01\_canonical\_problem\_statement.md} &
+  T1 canonical problem statement. 6 questions, 3 gates, 6 failure modes,
+  4-phase computation sequence. \\
+\texttt{next\_branches/T1\_dynamical\_immirzi/\newline
+06\_phase1\_literature\_review\_questions.md} &
+  T1 Phase~1 checklist: 6 sharp questions with kill criteria, 7-day reading
+  plan, assessment memo template. \\
+\texttt{next\_branches/S1\_parity\_cmb/\newline
+01\_canonical\_problem\_statement.md} &
+  S1 canonical problem statement. 4 target observables, 3 gates, 5 failure
+  modes. \\
+\texttt{next\_branches/S1\_parity\_cmb/\newline
+05\_phase1\_assessment\_checklist.md} &
+  S1 Phase~1 checklist: 4 questions with kill criteria, 5-day timeline,
+  mapping memo template. \\
+\texttt{next\_branches/\newline
+01\_sequencing\_and\_decision\_gates.md} &
+  Master sequencing table, gate dependencies, critical path analysis for
+  all four branches (T1, T2, S1, S2). \\
+\bottomrule
+\end{longtable}
+
+\subsection{Figures}
+
+\begin{longtable}{@{}p{0.42\textwidth}p{0.52\textwidth}@{}}
+\toprule
+File & Content \\
+\midrule
+\texttt{figures/G\_SP\_vs\_gamma.png} &
+  $\Gsp$ vs.\ $\BI$ plot (Fig.~\ref{fig:GSP}).
+  Generated by \texttt{comp3\_one\_loop\_veff.py}. \\
+\texttt{figures/veff\_repulsive\_vs\_attractive.png} &
+  $\Veff$ comparison plot (Fig.~\ref{fig:veff}).
+  Generated by \texttt{comp3\_one\_loop\_veff.py}. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Reproduction instructions}
+
+To reproduce all results:
+\begin{enumerate}
+  \item Install Python~3.14 with \texttt{pip install sympy numpy scipy
+    matplotlib}.
+  \item Navigate to \texttt{ir\_vacuum\_program/derivations/}.
+  \item Run scripts in order:
+    \texttt{comp1\_torsion\_elimination.py} $\to$
+    \texttt{comp2\_fierz\_rearrangement.py} $\to$
+    \texttt{comp2b\_fierz\_verification.py} $\to$
+    \texttt{comp3\_one\_loop\_veff.py} $\to$
+    \texttt{comp3b\_gap\_equation\_check.py} $\to$
+    \texttt{branchG\_phase1\_operator\_analysis.py}.
+  \item All output is printed to stdout. Figures are written to
+    \texttt{../figures/}.
+  \item No script depends on external data, GPU, or network access.
+\end{enumerate}
+
+\subsection{What is symbolic vs.\ numerical}
+
+\begin{longtable}{@{}p{0.30\textwidth}p{0.65\textwidth}@{}}
+\toprule
+Category & Scripts \\
+\midrule
+Purely symbolic (SymPy) &
+  \texttt{comp1}, \texttt{comp2}, \texttt{comp2b}: gamma matrix algebra,
+  Fierz traces, coupling constants. Exact algebraic results. \\
+Semi-analytic &
+  \texttt{comp3}: symbolic setup + numerical $\BI$-scan of $\Veff$.
+  \texttt{comp3b}: analytic gap equation + numerical root-finding
+  and catalysis estimates. \\
+Structural/analytic &
+  \texttt{branchG\_phase1}: logical argument verified against literature;
+  no numerics beyond illustrative coefficient values. \\
+\bottomrule
+\end{longtable}
+
+
+% ------------------------------------------------------------------
+\section{Conclusion}\label{sec:conclusion}
+
+Four routes to deriving the late-time vacuum term or identifying distinctive
+observables in the spin-torsion dark-energy framework were tested and found
+to fail:
+\begin{enumerate}
+  \item The NJL condensate route (Track~B) fails because the
+    scalar/pseudoscalar channel is repulsive at the LQG Barbero-Immirzi value
+    $\BI=0.274$, the gravitational four-fermion coupling is ${\sim}175\times$
+    subcritical, and gravitational catalysis is exponentially suppressed.
+  \item The strict one-loop effective-action route (Branch~G v1) fails because
+    the fermion determinant after torsion elimination is the standard
+    $\BI$-independent curved-space Dirac determinant, with no novel Holst
+    content at this order.
+  \item The dynamical Immirzi field extension (Route~T1) fails because torsion
+    elimination reduces the dynamical $\theta(x)$ field to a standard
+    axion-like particle with no novel gravitational content, no mechanism for
+    generating $V(\theta)\sim\Lambda$, and cosmological dynamics yielding
+    $w=+1$ (stiff matter).
+  \item The parity-sensitive CMB phenomenology assessment (Route~S1) fails
+    because the minimal framework has no photon coupling, the assumed coupling
+    produces constant-$\beta$ birefringence identical to generic ALP
+    phenomenology, and the parameterization is unfalsifiable.
+\end{enumerate}
+
+These closures share a common structural origin: in the minimal ECH$+$Dirac
+model, torsion elimination removes all Holst-sector structure, and the
+Nieh-Yan topological density carries no local dynamical content that survives
+this elimination. The resulting physics is standard GR~$+$~fermions~$+$~a
+constrained four-fermion interaction, with no mechanism for late-time vacuum
+energy and no distinctive observational signature.
+
+These are clean negative results with a unifying structural explanation:
+algebraic torsion in the minimal ECH model washes out completely after
+elimination, and the Nieh-Yan density's topological nature in four dimensions
+ensures that even the simplest structural extension (dynamical Immirzi field)
+collapses to standard physics.
+
+The value of these results is threefold. First, they map the landscape of
+what does not work within the most natural minimal model, preventing
+duplication of effort. Second, they identify the precise structural
+bottleneck---algebraic torsion and topological Nieh-Yan---that any successor
+model must overcome. Third, they establish a reproducible methodology
+(canonical problem statements, predeclared gates, frozen scope) for
+disciplined model testing that can be applied to future candidates.
+
+The phenomenological framework of Ref.~\cite{Golden2026} survives as a
+motivated ansatz; the first-principles derivation of $w=-1$ and the
+identification of a distinctive observable remain open problems requiring
+physics beyond the minimal model class.
+
+
+% ------------------------------------------------------------------
+% REFERENCES
+% ------------------------------------------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{Golden2026}
+H.~Golden,
+``Geometric Dark Energy from Spin-Torsion Cosmology: Phenomenological
+Constraints and Correlated Signatures,''
+Preprint HUBIFY-2026-001 (2026).
+
+\bibitem{Freidel2005}
+L.~Freidel, D.~Minic, and T.~Takeuchi,
+``Quantum gravity, torsion, parity violation and all that,''
+Phys.\ Rev.\ D~\textbf{72}, 104002 (2005)
+[arXiv:hep-th/0507253].
+
+\bibitem{ShapiroTeixeira2014}
+I.~L.~Shapiro and P.~M.~Teixeira,
+``Quantum Einstein-Cartan theory with the Holst term,''
+Class.\ Quant.\ Grav.\ \textbf{31}, 185002 (2014)
+[arXiv:1402.4854].
+
+\bibitem{Chattopadhyay2023}
+P.~Chattopadhyay,
+``One-loop effective action in chiral Einstein-Cartan gravity,''
+Int.\ J.\ Mod.\ Phys.\ A~\textbf{38}, 2350186 (2023)
+[arXiv:2310.10405].
+
+\bibitem{GorbarGusynin2008}
+E.~V.~Gorbar and V.~P.~Gusynin,
+``Dynamical chiral symmetry breaking on a brane in reduced QED,''
+Phys.\ Rev.\ D~\textbf{73}, 105028 (2006).
+% Note: representative reference for gravitational catalysis framework.
+
+\bibitem{Vassilevich2003}
+D.~V.~Vassilevich,
+``Heat kernel expansion: User's manual,''
+Phys.\ Rept.\ \textbf{388}, 279 (2003)
+[arXiv:hep-th/0306138].
+
+\bibitem{Shapiro2002}
+I.~L.~Shapiro,
+``Physical aspects of the space-time torsion,''
+Phys.\ Rept.\ \textbf{357}, 113 (2002)
+[arXiv:hep-th/0103093].
+
+\bibitem{Mercuri2009}
+R.~Mercuri,
+``Peccei-Quinn mechanism and the Barbero-Immirzi parameter,''
+Phys.\ Rev.\ Lett.\ \textbf{103}, 081302 (2009)
+[arXiv:0902.2764].
+
+\bibitem{CalcagniMercuri2009}
+G.~Calcagni and R.~Mercuri,
+``The Barbero-Immirzi field and its cosmological implications,''
+Phys.\ Rev.\ D~\textbf{79}, 104003 (2009)
+[arXiv:0902.0957].
+
+\bibitem{TaverasYunes2008}
+V.~Taveras and N.~Yunes,
+``The Barbero-Immirzi parameter as a scalar field:
+$K$-inflation from loop quantum gravity?,''
+Phys.\ Rev.\ D~\textbf{78}, 064070 (2008)
+[arXiv:0812.3572].
+
+\bibitem{TorresGomez2009}
+A.~Torres-Gomez, K.~Krasnov, and C.~Scarinci,
+``Barbero-Immirzi parameter as a scalar field: effects of fermions,''
+Phys.\ Rev.\ D~\textbf{80}, 104029 (2009)
+[arXiv:0904.4877].
+
+\bibitem{LattanziMercuri2010}
+M.~Lattanzi and R.~Mercuri,
+``A solution of the strong CP problem via the Peccei-Quinn mechanism
+through the Nieh-Yan modified gravity and cosmological implications,''
+Phys.\ Rev.\ D~\textbf{81}, 125015 (2010)
+[arXiv:0911.2698].
+
+\bibitem{Magueijo2013}
+J.~Magueijo, T.~G.~Zlosnik, and T.~W.~B.~Kibble,
+``Cosmology with a spin,''
+Phys.\ Rev.\ D~\textbf{87}, 063504 (2013)
+[arXiv:1212.0585].
+
+\bibitem{EskiltKomatsu2022}
+J.~R.~Eskilt and E.~Komatsu,
+``Improved constraints on cosmic birefringence from the WMAP and
+Planck cosmic microwave background polarization data,''
+Phys.\ Rev.\ D~\textbf{106}, 063503 (2022)
+[arXiv:2205.13962].
+
+\bibitem{DiegoPalazuelos2025}
+P.~Diego-Palazuelos and E.~Komatsu,
+``Cosmic birefringence from the Atacama Cosmology Telescope DR6,''
+arXiv:2501.10850 (2025).
+
+\bibitem{canonical_v3}
+Canonical problem statement for Track~B, version~3 (frozen 2026-03-13).
+Repository file: \texttt{06\_canonical\_problem\_statement.md}.
+
+\bibitem{branchG_canonical}
+Canonical problem statement for Branch~G v1, version~2 (frozen 2026-03-13).
+Repository file: \texttt{08\_branchG\_canonical\_problem\_statement.md}.
+
+\bibitem{comp1}
+Computation~1: Torsion elimination.
+Repository file: \texttt{derivations/comp1\_torsion\_elimination.py}.
+
+\bibitem{comp2}
+Computation~2: Fierz rearrangement.
+Repository file: \texttt{derivations/comp2\_fierz\_rearrangement.py}.
+
+\bibitem{comp2b}
+Computation~2b: Fierz verification.
+Repository file: \texttt{derivations/comp2b\_fierz\_verification.py}.
+
+\bibitem{comp3}
+Computation~3: One-loop effective potential.
+Repository file: \texttt{derivations/comp3\_one\_loop\_veff.py}.
+
+\bibitem{comp3b}
+Computation~3b: Gap equation check.
+Repository file: \texttt{derivations/comp3b\_gap\_equation\_check.py}.
+
+\bibitem{branchG_analysis}
+Branch~G Phase~1 analysis.
+Repository file: \texttt{derivations/branchG\_phase1\_operator\_analysis.py}.
+
+\end{thebibliography}
+
+\end{document}

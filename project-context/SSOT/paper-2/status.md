@@ -305,4 +305,36 @@ activity.html latest entries            ← recompile + site-sync events
 
 ---
 
+## 12 · R42 Wave 11-F — code-tag pin (2026-05-01)
+
+GPT-5 cross-model peer review (`peer-reviews/r42-cross-model-2026-05-01/openai_p2_review.md`) flagged finding **P2-OA-B4**:
+
+> "Code release pinned at v1.7.0 while manuscript v1.7.6 — all null-space scans + injection-recovery + Bayes-factor MC depend on code not embedded in text."
+
+**Status:** local manuscript carries `\date{May 1, 2026, 07:30 PDT --- v1.7.6}` and the Data-and-Code-Availability paragraph reads:
+
+> "All analysis code, Monte Carlo scripts, and shape-function evaluation routines are available at https://github.com/Hubify-Projects/bigbounce/tree/v1.7.0/research/ (pinned to release tag v1.7.0)."
+
+The v1.7.0 link is stale — readers landing on it would not find the current null-space-scan / injection-recovery / Bayes-factor scripts because those live at HEAD on `main`, post v1.7.0.
+
+**Resolution staged (Wave 11-F):** local annotated tag `v1.7.6-paper2` created at the Wave 11-F commit (the same commit that lands this status update + the `reproducibility/p1_namaster_500mc/`, `reproducibility/p4_chirality_classifier/`, and `arxiv_companion_note/` directories). The tag is **local-only at this point** per Wave 11-F ground-rules (this sub-agent does not push); main coordinating thread will batch the push.
+
+**Houston / main thread next steps:**
+
+```bash
+# 1. push the tag once Wave 11-F commit is on main
+git push origin v1.7.6-paper2
+
+# 2. edit research/focused_paper_source_integration/02_full_draft.tex
+#    Data-and-Code-Availability paragraph: replace `tree/v1.7.0` with
+#    `tree/v1.7.6-paper2`
+
+# 3. recompile (revtex4-2 + texlive-publishers, on a pod with LaTeX)
+# 4. mirror to public/papers/paper2_fnl_forecast.pdf
+```
+
+The tag points at the commit that includes the Wave 11-F reproducibility deposit (NaMaster 500 MC scripts/seeds/masks under `reproducibility/p1_namaster_500mc/`, ViT-Small chirality classifier scripts + HF-fetch one-liner under `reproducibility/p4_chirality_classifier/`, and the companion technical note under `arxiv_companion_note/`). All of these are direct or transitive dependencies of Paper 2's null-space-scan / injection-recovery / Bayes-factor pipelines via the cross-paper f_NL = -35/8 anchor.
+
+---
+
 _This file is the SSOT for Paper 2. Last audited 2026-04-17 by Claude Code forensic sweep (agent a4cb732018c8ccc35). Contradictions between this file and any other paper-2 reference should be resolved by updating the other reference, not this file._

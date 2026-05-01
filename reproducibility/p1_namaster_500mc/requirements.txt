@@ -1,0 +1,11 @@
+# NaMaster 500MC reproducibility — required Python packages
+#
+# Tested on H200 pod (Ubuntu 22.04, Python 3.11.x, single GPU not strictly
+# required — workload is CPU-bound on healpy + pymaster).
+#
+# Pinned versions match the run that produced
+# pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json
+
+numpy>=1.24,<2.0
+healpy>=1.16,<2.0
+pymaster>=2.6,<3.0

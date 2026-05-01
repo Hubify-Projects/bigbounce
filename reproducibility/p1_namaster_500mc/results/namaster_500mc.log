@@ -1,0 +1,81 @@
+/root/namaster_500mc.py:133: HealpyDeprecationWarning: "verbose" was deprecated in version 1.15.0 and will be removed in a future version. 
+  mask = hp.smoothing(mask, fwhm=np.deg2rad(2.0), verbose=False)
+/root/namaster_500mc.py:184: HealpyDeprecationWarning: "verbose" was deprecated in version 1.15.0 and will be removed in a future version. 
+  maps = hp.synfast([np.zeros(LMAX+1), cl_ee, cl_bb, np.zeros(LMAX+1)],
+======================================================================
+NAMASTER EB BIREFRINGENCE ANALYSIS
+  NaMaster version: 2.6
+======================================================================
+
+[1/6] Generating ΛCDM CMB power spectrum...
+  EE power: ell_peak ~ 140, max = 39.90 μK²
+
+[2/6] Generating sky mask...
+  Mask f_sky = 0.323 (target 0.40)
+
+[3/6] Simulating birefringence EB signal...
+  Running 500 MC realizations per β value...
+  β=0.00° (null hypothesis)...
+    SNR = 0.00
+  β=0.27° (Paper 1 prediction)...
+    SNR = 20.32
+  β=0.342° (Minami+Komatsu observed)...
+    SNR = 25.71
+
+[4/6] β recovery test (bias check)...
+  Input β=0.270°, recovered β=0.238°
+  Input β=0.342°, recovered β=0.302°
+  Input β=0.000°, recovered β=0.000°
+  Bias on Paper 1 value: 0.0320°
+
+[5/6] Detection significance...
+  Paper 1 β=0.27° vs observed β=0.342°±0.094°:
+    Tension: 0.77σ (< 1σ: excellent agreement)
+  SNR for β=0.27° (ACT-like, f_sky=0.32): 20.32σ
+  SNR for β=0.342° (ACT-like, f_sky=0.32): 25.71σ
+
+[6/6] Writing results... (elapsed 7420.7s)
+
+======================================================================
+KEY RESULTS
+======================================================================
+  Paper 1 β=0.27° ← NaMaster SNR = 20.32σ
+  Observed β=0.342° ← NaMaster SNR = 25.71σ
+  Tension (0.27 vs 0.342±0.094): 0.77σ
+  β recovery bias: 0.0320°
+  Scientific conclusion: Paper 1 prediction beta=0.27 deg is 0.77sigma consistent with observed value 0.342+-0.094 deg. NaMas...
+{
+  "experiment": "NaMaster EB Birefringence Analysis",
+  "nside": 512,
+  "lmax": 1024,
+  "f_sky": 0.3226013233645,
+  "noise_level_ukarmin": 10.0,
+  "n_mc_realizations": 500,
+  "paper1_prediction_deg": 0.27,
+  "observed_value_deg": 0.342,
+  "observed_error_deg": 0.094,
+  "results": {
+    "beta_paper1": {
+      "input_beta_deg": 0.27,
+      "recovered_beta_deg": 0.238,
+      "bias_deg": 0.03200000000000003,
+      "snr_namaster": 20.315591250528033,
+      "snr_ratio_to_observed": 0.79
+    },
+    "beta_observed": {
+      "input_beta_deg": 0.342,
+      "recovered_beta_deg": 0.30200000000000005,
+      "snr_namaster": 25.707268198071045
+    },
+    "beta_null": {
+      "input_beta_deg": 0.0,
+      "recovered_beta_deg": 0.0,
+      "snr_namaster": 0.0
+    },
+    "consistency_sigma": 0.7659574468085107
+  },
+  "scientific_conclusion": "Paper 1 prediction beta=0.27 deg is 0.77sigma consistent with observed value 0.342+-0.094 deg. NaMaster analysis confirms SNR=20.32 for beta=0.27 at ACT sensitivity (f_sky=0.32). Beta recovery bias = 0.0320 deg.",
+  "runtime_seconds": 7420.73242688179
+}
+
+COMPLETE

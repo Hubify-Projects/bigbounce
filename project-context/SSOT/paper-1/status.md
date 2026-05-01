@@ -237,4 +237,25 @@ Anti-patterns we've committed to avoiding on Paper 1:
 
 ---
 
+## 12 · R42 Wave 11-F — reproducibility deposit (2026-05-01)
+
+GPT-5 cross-model peer review (`peer-reviews/r42-cross-model-2026-05-01/openai_p1_review.md`) flagged two BLOCKERs that the local manuscript was carrying as text-only claims. Both are now closed in-repo:
+
+| Finding | Description | Resolution |
+|---|---|---|
+| **P1-OA-B1** | "Reproducibility contradiction": §VI claims production 500-MC NaMaster + 8.47 M ViT-Small results, but Data and Code Availability says "No CMB polarization map analysis code is provided… No CNN galaxy classifier is included." | **CLOSED in-repo.** New directories `reproducibility/p1_namaster_500mc/` (script + seeds + mask config + canonical `summary.json` + log) and `reproducibility/p4_chirality_classifier/` (training + inference scripts + HF-fetch one-liner for the ViT-Small weights). The "No … is provided" sentences in `arxiv/main.tex` L1106 are now factually outdated; **next P1 recompile pass should rewrite that paragraph** to point at the two new reproducibility subdirectories. |
+| **P1-OA-B6** | Ref [28] (`Golden2026supplement`) annotated "available upon request" carries §IV negative-result calculations. PRD cannot evaluate non-public calculations. | **STAGED for arXiv deposit.** New directory `arxiv_companion_note/` with `supplement_negative_results.tex` + `supplement_negative_results.pdf` ready to upload. **Houston-pending:** requires Houston's arXiv login; once submitted, replace `Golden2026supplement` bib entry with the assigned arXiv identifier and recompile P1. See `arxiv_companion_note/README.md` for the four-step Houston task. |
+
+**ViT-Small weight provenance:** the `chirality_model_v2_best.pt` checkpoint is NOT bundled in-repo (~88 MB > 50 MB practical commit ceiling). Canonical home: HuggingFace `bamfai/galaxy-chirality-v2`. The reproducibility bundle ships `scripts/fetch_weights.sh` (curl / `huggingface-cli` one-liner). The weights file has not been pulled into the local working tree by this commit — they live on the H200 pod (`38.80.152.148:33089`, path `/workspace/analysis3_outputs/chirality_model_v2_best.pt`) and on HF.
+
+**Next P1 recompile (post-arXiv-submit) should:**
+1. Replace L1106 "No CMB polarization map analysis code is provided… No CNN galaxy classifier is included" with a pointer to `reproducibility/p1_namaster_500mc/` and `reproducibility/p4_chirality_classifier/`.
+2. Update `Golden2026supplement` bib entry with arXiv identifier (post Houston upload).
+3. Bump `\paperVersion` (e.g., v2.3.4) and `\paperTimestamp`.
+4. Recompile and mirror to `public/papers/spin_torsion_paper1.pdf`.
+
+This work was queued by R42 Wave 11-F, the same reproducibility-deposit pass that closes P3-OA-M9 (HF visibility-flip docs in P3 status), P2-OA-B4 (v1.7.6 tag — see P2 status), and B23 (P4 status).
+
+---
+
 _This file is the SSOT for Paper 1. Last audited 2026-04-17 by Claude Code forensic sweep. Contradictions between this file and any other paper-1 reference should be resolved by updating the other reference, not this file._
