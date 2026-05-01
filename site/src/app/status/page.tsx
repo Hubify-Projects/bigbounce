@@ -58,7 +58,7 @@ export default function StatusPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Last Updated: April 30, 2026
+          Last Updated: May 1, 2026 · 02:55 PDT
         </p>
         <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
           Research Program Status
@@ -68,6 +68,70 @@ export default function StatusPage() {
           cosmology research program.
         </p>
       </div>
+
+      <Card className="mt-6 border-l-4 border-l-emerald-500">
+        <CardHeader>
+          <div className="flex items-baseline justify-between gap-2 flex-wrap">
+            <CardTitle className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              R42 4-LLM Adversarial Peer Review · Closure Sprint
+            </CardTitle>
+            <CardDescription className="font-mono text-xs">
+              Updated 2026-05-01 02:55 PDT
+            </CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm">
+          <div className="flex items-center gap-3">
+            <strong>22 of 23 BLOCKERs CLOSED</strong>
+            <span className="text-muted-foreground">96%</span>
+            <div className="h-2 w-56 overflow-hidden rounded bg-muted">
+              <div className="h-full bg-emerald-500" style={{ width: "96%" }} />
+            </div>
+          </div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Paper</TableHead>
+                <TableHead>Version</TableHead>
+                <TableHead>R42 Status</TableHead>
+                <TableHead>Open Items</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><strong>P1</strong> Spin-Torsion</TableCell>
+                <TableCell className="font-mono">v2.2.0</TableCell>
+                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell>—</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><strong>P2</strong> f<sub>NL</sub> Forecast</TableCell>
+                <TableCell className="font-mono">v1.7.5</TableCell>
+                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell>—</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><strong>P3</strong> Anomaly Catalog</TableCell>
+                <TableCell className="font-mono">v3.1.5</TableCell>
+                <TableCell><Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">CLOSED</Badge></TableCell>
+                <TableCell>—</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><strong>P4</strong> Chirality Catalog</TableCell>
+                <TableCell className="font-mono">v1.0.5</TableCell>
+                <TableCell><Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">1 OPEN</Badge></TableCell>
+                <TableCell>B23 HF dataset visibility (Houston-decision toggle)</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <div className="space-y-1 text-muted-foreground">
+            <p><strong className="text-foreground">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45%). Three-class accuracy on independent GZ1 = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals.</p>
+            <p><strong className="text-foreground">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, Δ=0.07%).</p>
+            <p><strong className="text-foreground">Pod:</strong> <code className="font-mono text-xs">regular_green_pig-migration</code> @ 38.80.152.148:33089 · cross-match completed in 73 s.</p>
+            <p><strong className="text-foreground">ETA to ready-for-external-reviewers:</strong> Only B23 (HuggingFace dataset public-visibility toggle) remains. <strong className="text-emerald-700 dark:text-emerald-400">Bundle is ready-to-send pending one decision on whether to flip the HF catalog public.</strong></p>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         {stats.map((stat) => (
