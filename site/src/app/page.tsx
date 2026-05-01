@@ -1,8 +1,9 @@
-import { surveys } from "@/data/surveys";
-import { predictions } from "@/data/predictions";
-import { papers } from "@/data/papers";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { surveys } from"@/data/surveys";
+import { predictions } from"@/data/predictions";
+import { papers } from"@/data/papers";
+import { Badge } from"@/components/ui/badge";
+import { Button } from"@/components/ui/button";
+import { MathText } from"@/components/MathText";
 import {
   Card,
   CardContent,
@@ -10,8 +11,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from"@/components/ui/card";
+import { Separator } from"@/components/ui/separator";
 import {
   Table,
   TableBody,
@@ -19,82 +20,66 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import Link from "next/link";
+} from"@/components/ui/table";
+import { ArrowRight, Database, FileText, Orbit } from"lucide-react";
+import Link from"next/link";
 
 const totalAnomalies = surveys.reduce((s, sv) => s + sv.anomalies, 0);
-const qcPassCount = surveys.filter((s) => s.qcStatus === "pass").length;
+const qcPassCount = surveys.filter((s) => s.qcStatus ==="pass").length;
 
 const predStatusVariant: Record<
-  "green" | "blue" | "amber" | "red" | "purple",
-  "default" | "secondary" | "destructive" | "outline"
+"green" |"blue" |"amber" |"red" |"purple",
+"default" |"secondary" |"destructive" |"outline"
 > = {
-  green: "default",
-  blue: "secondary",
-  amber: "outline",
-  red: "destructive",
-  purple: "secondary",
+  green:"default",
+  blue:"secondary",
+  amber:"outline",
+  red:"destructive",
+  purple:"secondary",
 };
 
 const paperStatusVariant: Record<
-  "green" | "blue" | "amber" | "red",
-  "default" | "secondary" | "destructive" | "outline"
+"green" |"blue" |"amber" |"red",
+"default" |"secondary" |"destructive" |"outline"
 > = {
-  green: "default",
-  blue: "secondary",
-  amber: "outline",
-  red: "destructive",
+  green:"default",
+  blue:"secondary",
+  amber:"outline",
+  red:"destructive",
 };
 
 const surveyQcVariant: Record<
-  "pass" | "caution" | "fail" | "needs-expansion",
-  { variant: "default" | "secondary" | "destructive" | "outline"; label: string }
+"pass" |"caution" |"fail" |"needs-expansion",
+  { variant:"default" |"secondary" |"destructive" |"outline"; label: string }
 > = {
-  pass: { variant: "default", label: "PASS" },
-  caution: { variant: "outline", label: "CAUTION" },
-  fail: { variant: "destructive", label: "FAIL" },
-  "needs-expansion": { variant: "outline", label: "EXPAND" },
+  pass: { variant:"default", label:"PASS" },
+  caution: { variant:"outline", label:"CAUTION" },
+  fail: { variant:"destructive", label:"FAIL" },
+"needs-expansion": { variant:"outline", label:"EXPAND" },
 };
 
-const stats: Array<{ value: string; label: string; tone: string }> = [
-  { value: "4", label: "Papers", tone: "text-emerald-600 dark:text-emerald-400" },
-  {
-    value: `${surveys.length}`,
-    label: "Surveys",
-    tone: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    value: "37.3M+",
-    label: "Sources Scored",
-    tone: "text-emerald-600 dark:text-emerald-400",
-  },
+const stats: Array<{ value: string; label: string; tone?: string }> = [
+  { value:"4", label:"Papers" },
+  { value: `${surveys.length}`, label:"Surveys" },
+  { value:"37.3M+", label:"Sources Scored" },
   {
     value: `${(totalAnomalies / 1000).toFixed(0)}K+`,
-    label: "Anomalies",
-    tone: "text-emerald-600 dark:text-emerald-400",
+    label:"Anomalies",
   },
-  {
-    value: "424K+",
-    label: "MCMC Samples",
-    tone: "text-emerald-600 dark:text-emerald-400",
-  },
+  { value:"424K+", label:"MCMC Samples" },
   {
     value: `${qcPassCount}/${surveys.length}`,
-    label: "QC Pass",
+    label:"QC Pass",
     tone:
       qcPassCount === surveys.length
-        ? "text-emerald-600 dark:text-emerald-400"
-        : "text-amber-600 dark:text-amber-400",
+        ? undefined
+        :"tone-caution",
   },
+  { value:"4", label:"Predictions" },
   {
-    value: "4",
-    label: "Predictions",
-    tone: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    value: "50",
-    label: "Queued Experiments",
-    tone: "text-amber-600 dark:text-amber-400",
+    value:"50",
+    label:"Queued",
+    tone:"tone-caution",
   },
 ];
 
@@ -105,71 +90,102 @@ const exploreLinks: Array<{
   description: string;
 }> = [
   {
-    href: "/explained",
-    title: "Explainer",
-    description: "Non-technical guide",
+    href:"/explained",
+    title:"Explainer",
+    description:"Non-technical guide",
   },
   {
-    href: "/glossary",
-    title: "Glossary",
-    description: "Key terms & equations",
+    href:"/glossary",
+    title:"Glossary",
+    description:"Key terms & equations",
   },
   {
-    href: "/timeline",
-    title: "Timeline",
-    description: "Cosmic history → 2028",
+    href:"/timeline",
+    title:"Timeline",
+    description:"Cosmic history → 2028",
   },
   {
-    href: "/speculations",
-    title: "Speculations",
-    description: "Future research paths",
+    href:"/speculations",
+    title:"Speculations",
+    description:"Future research paths",
   },
   {
-    href: "https://github.com/Hubify-Projects/bigbounce",
+    href:"https://github.com/Hubify-Projects/bigbounce",
     external: true,
-    title: "GitHub",
-    description: "Source code & data",
+    title:"GitHub",
+    description:"Source code & data",
   },
   {
-    href: "mailto:houston@hubify.com",
+    href:"mailto:houston@hubify.com",
     external: true,
-    title: "Contact",
-    description: "houston@hubify.com",
+    title:"Contact",
+    description:"houston@hubify.com",
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      <div className="hero">
-        <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Research Program &middot; Updated April 2026
-        </p>
-        <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 600 }}>
-          Spin-Torsion Cosmology
-        </h1>
-        <p className="subtitle">
-          Proving bounce cosmology beats inflation through systematic AI-powered
-          archival mining and precision cosmological tests. 4 papers, 8 surveys,
-          37.3M sources scored.
-        </p>
-      </div>
+      <section className="page-hero">
+        <div className="hero-copy">
+          <p className="eyebrow" style={{ marginBottom: 10 }}>
+            Research Program / Updated May 2026
+          </p>
+          <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 650 }}>
+            Spin-Torsion Cosmology
+          </h1>
+          <p className="subtitle">
+            A live research dossier testing bounce cosmology against inflation
+            through archival survey mining, falsifiable signatures, and
+            paper-ready evidence trails.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Button asChild>
+              <Link href="/paper">
+                Open papers <ArrowRight size={15} />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/status">Research status</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="hero-panel">
+          <div className="hero-panel-header">
+            <span>observational ledger</span>
+            <Badge variant="accent">R42 Wave 13 LANDED</Badge>
+          </div>
+          <div className="hero-panel-body">
+            <div className="signal-row">
+              <span>Survey sources scored</span>
+              <span className="signal-value">37.3M</span>
+            </div>
+            <div className="signal-row">
+              <span>Catalog anomalies retained</span>
+              <span className="signal-value">378K</span>
+            </div>
+            <div className="signal-row">
+              <span>MCMC posterior samples</span>
+              <span className="signal-value">424K+</span>
+            </div>
+            <div className="signal-row">
+              <span>Public research artifacts</span>
+              <span className="signal-value">7 HF</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="metric-grid">
         {stats.map((stat) => (
-          <Card key={stat.label}>
-            <CardContent className="p-4">
+          <div className="metric-card" key={stat.label}>
               <div
-                className={`text-2xl font-bold ${stat.tone}`}
-                style={{ fontFamily: "var(--font-serif)" }}
+                className={`metric-value ${stat.tone ??""}`.trim()}
               >
                 {stat.value}
               </div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
-                {stat.label}
-              </div>
-            </CardContent>
-          </Card>
+              <div className="metric-label">{stat.label}</div>
+          </div>
         ))}
       </div>
 
@@ -196,11 +212,9 @@ export default function HomePage() {
               >
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between gap-3">
-                    <CardTitle
-                      className="text-sm"
-                      style={{ fontFamily: "var(--font-serif)" }}
-                    >
-                      {pred.name}
+                    <CardTitle className="flex items-center gap-2 text-sm font-mono">
+                      <Orbit size={15} />
+                      <MathText>{pred.name}</MathText>
                     </CardTitle>
                     <Badge variant={predStatusVariant[pred.statusVariant]}>
                       {pred.status}
@@ -208,8 +222,8 @@ export default function HomePage() {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <div className="font-mono text-xl font-bold">
-                    {pred.value}
+                  <div className="big-value">
+                    <MathText>{pred.value}</MathText>
                   </div>
                   <p className="mt-2 text-xs text-muted-foreground">
                     {pred.bestModel} &middot; {pred.experiment}
@@ -282,36 +296,48 @@ export default function HomePage() {
             Research Papers &rarr;
           </Link>
         </h2>
-        <div className="space-y-1 rounded-lg border bg-card">
+        <div className="paper-ledger">
           {papers.map((paper) => (
             <Link
               key={paper.slug}
               href={`/papers/${paper.slug}`}
-              className="flex items-center gap-4 border-b px-4 py-3 last:border-b-0 hover:bg-accent/40"
+              className="paper-ledger-item"
             >
-              <div className="flex-1">
-                <div className="text-sm font-semibold">
-                  Paper {paper.number}
+              <div className="paper-ledger-main">
+                <div className="paper-ledger-kicker">
+                  <FileText aria-hidden="true" />
+                  <span>Paper {paper.number}</span>
+                  <span>{paper.version}</span>
                 </div>
-                <div className="text-xs text-muted-foreground">
-                  {paper.title.slice(0, 80)}…
+                <div className="paper-ledger-title">
+                  <MathText>{paper.title}</MathText>
+                </div>
+                <div className="paper-ledger-meta">
+                  <span>{paper.target}</span>
+                  <span>{paper.pages} pages</span>
+                  <span>{paper.refs} refs</span>
                 </div>
               </div>
-              <div className="hidden h-1.5 w-20 overflow-hidden rounded-full bg-border md:block">
-                <div
-                  className={`h-full rounded-full ${
-                    paper.readiness === 100
-                      ? "bg-emerald-500"
-                      : paper.readiness >= 90
-                        ? "bg-blue-500"
-                        : "bg-amber-500"
-                  }`}
-                  style={{ width: `${paper.readiness}%` }}
-                />
+              <div className="paper-ledger-status">
+                <Badge variant={paperStatusVariant[paper.statusVariant]}>
+                  {paper.status}
+                </Badge>
+                <div className="paper-ledger-progress">
+                  <div
+                    className={`paper-ledger-fill ${
+                      paper.readiness === 100
+                        ?"is-complete"
+                        : paper.readiness >= 90
+                          ?"is-near"
+                          :"is-draft"
+                    }`}
+                    style={{ width: `${paper.readiness}%` }}
+                  />
+                </div>
+                <span className="paper-ledger-percent">
+                  {paper.readiness}%
+                </span>
               </div>
-              <Badge variant={paperStatusVariant[paper.statusVariant]}>
-                {paper.readiness}%
-              </Badge>
             </Link>
           ))}
         </div>
@@ -319,18 +345,20 @@ export default function HomePage() {
 
       <section className="section">
         <h2>Current Focus</h2>
-        <Card className="border-l-4 border-l-blue-500">
+        <Card className="border-l-4 border-l-[var(--accent)]">
           <CardHeader>
-            <CardTitle
-              className="text-base"
-              style={{ fontFamily: "var(--font-serif)" }}
-            >
-              H200 Queue v2 — Phase 2 Running
+            <CardTitle className="flex items-center gap-2 text-base font-mono">
+              <Database size={16} />
+              R42 Wave 13 LANDED — Real NANOGrav KDE Free-Spectrum γ = 2.567 ± 0.382
             </CardTitle>
             <CardDescription>
-              5/6 Phase 1 re-runs QC PASS (Planck, ACT, NEOWISE, Gaia,
-              Taxonomy). Phase 2 validation in progress. 50 total experiments
-              across 10 phases. Auto-backup every 20min. Est. ~$1,768 total.
+              All 4 papers at 100% readiness, fully decoupled, recompiled May 1
+              PDT. Wave 11 closed cross-model BLOCKERs across all four papers
+              (Gemini 3.1-Pro + GPT-5). Wave 12 H200 hemi v4 GPU at N_MC =
+              10,000 closed the chirality look-elsewhere null at p_LEE &lt; 10⁻⁴.
+              Wave 13 emcee on the real NANOGrav 15-yr KDE free-spectrum
+              recovers γ = 2.567 ± 0.382 — bounce 3.0 consistent at -1.13σ,
+              SMBHB excluded at -4.6σ. Pod 3 H200 idle, ready for Wave 14.
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex flex-wrap gap-2 pt-0">
@@ -352,15 +380,14 @@ export default function HomePage() {
               <a
                 key={link.href}
                 href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener" : undefined}
+                target={link.href.startsWith("http") ?"_blank" : undefined}
+                rel={link.href.startsWith("http") ?"noopener" : undefined}
                 className="no-underline text-foreground"
               >
                 <Card className="text-center transition-colors hover:bg-accent/40">
                   <CardContent className="p-4">
                     <div
-                      className="text-base font-semibold"
-                      style={{ fontFamily: "var(--font-serif)" }}
+                      className="font-mono text-base font-semibold"
                     >
                       {link.title}
                     </div>
@@ -379,8 +406,7 @@ export default function HomePage() {
                 <Card className="text-center transition-colors hover:bg-accent/40">
                   <CardContent className="p-4">
                     <div
-                      className="text-base font-semibold"
-                      style={{ fontFamily: "var(--font-serif)" }}
+                      className="font-mono text-base font-semibold"
                     >
                       {link.title}
                     </div>

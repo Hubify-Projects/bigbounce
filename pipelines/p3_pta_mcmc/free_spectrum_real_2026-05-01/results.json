@@ -1,0 +1,38 @@
+{
+  "task": "P3-CM-B3 NANOGrav 15-yr HD-correlated free-spectrum REAL emcee fit",
+  "dataset": "Zenodo 10.5281/zenodo.8060824 (KDE Free Spectra v1.0.0) -> 30f_fs{hd}_ceffyl",
+  "n_bins": 30,
+  "T_obs_yr": 16.029777268872294,
+  "n_walkers": 32,
+  "n_burn": 2500,
+  "n_prod": 10000,
+  "n_samples": 320000,
+  "production_seconds": 24.972864866256714,
+  "gamma": {
+    "mean": 2.5664653285376198,
+    "std": 0.38182515155555247,
+    "median": 2.5912911949892523,
+    "q16": 2.304064217104656,
+    "q84": 2.8822047461925235
+  },
+  "log10_A": {
+    "mean": -14.025158939341168,
+    "std": 0.37960892027874127,
+    "median": -13.935781809798815
+  },
+  "autocorr_tau": [
+    58.104159095234905,
+    57.98645836400925
+  ],
+  "ess": 5507.351022420064,
+  "acceptance_fraction_mean": 0.63245,
+  "compare_synthetic_powerlaw": {
+    "synth_gamma_mean": 3.1925,
+    "synth_gamma_std": 0.4233,
+    "delta_sigma": -1.478938510423766,
+    "agazie_2023_official": {
+      "gamma": 3.2,
+      "gamma_err": 0.6
+    }
+  }
+}
