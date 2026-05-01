@@ -2,20 +2,22 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-04-30 23:55 PDT
+last_updated: 2026-05-01 07:30 PDT
 canonical_source: arxiv/main.tex
-canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf)
-version: v2.3.3
+canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf — STALE; pending H200 recompile of Wave 11-A reframe)
+version: v2.3.5
 headline_pct: 100
-submission_status: submission-ready (R42 Wave 2/3 close — B1 retitle + B2 theory_map figure + B6 chain rerun Rhat~1.0 ESS 313k; PDF recompiled 2026-04-30 23:55 PDT, 1.2 MB, 0 undef refs)
+submission_status: text-only reframe pending recompile (R42 Wave 11-A close — abstract + body reframed: ΛCDM+ΔNeff proxy framing; NaMaster recovery is methods-only; dim-ansatz disclosed in abstract; "unified model" / "evidence for ECH" stripped; Savage-Dickey demoted to footnote; closes P1-CM-B1, P1-CM-B3, P1-CM-M1, P1-CM-M2, P1-CM-m1, P1-OA-B2; PDF recompile pending on H200 pod)
 ---
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 2/3-edited 2026-04-30, `\paperVersion = v2.3.3`)
-**Canonical PDF:** `arxiv/main.pdf` (1.2 MB, compiled 2026-04-30 23:55 PDT, 31 pp, 0 undef refs) · mirrored to `public/papers/spin_torsion_paper1.pdf`
-**Bibliography:** `arxiv/references.bib` (1283+ lines, 64+ entries — R41 added Lentati:2023 primary-source bibitem)
-**Last authoritative update:** 2026-04-30 (PDT, 23:55) — **R42 Wave 2/3 closed**: B1 retitle ("Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests" — names the structural result up front, replaces prior negative-rhetoric framing); B2 theory_map figure (`arxiv/scripts/fig_theory_map.py` → `arxiv/fig_theory_map.png`, mechanism→prediction navigational map: LQC, ECH, matter-bounce, quintom, Cuscuton, ekpyrotic → β, f_NL, γ, w0w_a, ΔN_eff with green/gray/red-dashed arrows); B6 chain rerun (`reproducibility/cosmology/convergence_latest.csv` regenerated showing Rhat ~1.000xxx and ESS ~313,000 vs prior 1.25–1.6 / ~600 — confirms full mixing on 309,789 frozen samples). PDF size up from 996 KB to 1.2 MB due to embedded theory_map figure. R42 BLOCKERs CLOSED on P1: B1, B2, B3, B4, B5, B6, B7.
+**Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 11-A-edited 2026-05-01 07:30 PDT, `\paperVersion = v2.3.5`)
+**Canonical PDF:** `arxiv/main.pdf` (1.2 MB, compiled 2026-04-30 23:55 PDT under v2.3.4 — STALE; v2.3.5 recompile pending H200 pod)
+**Bibliography:** `arxiv/references.bib` (1283+ lines, 64+ entries — no bib changes in Wave 11-A)
+**Last authoritative update:** 2026-05-01 (PDT, 07:30) — **R42 Wave 11-A closed (text-only reframe)**: closes the cross-model adversarial peer-review BLOCKERs raised independently by Gemini 3.1-Pro and GPT-5 — **P1-CM-B1 / P1-OA-M1** (MCMC bait-and-switch): abstract + §III.D + Table III caption + §VII.B body now explicitly label the run as a "ΛCDM+ΔNeff proxy" (stock CAMB, no torsion modifications), "evidence for ECH / spin-torsion" language removed; **P1-CM-B3** (disconnected predictions): "unified cosmological model" framing struck from §I + §I.A; "ECH predicts β = 0.27°" softened to "consistent with" / "spectator-ALP value, identical in GR+ALP, not a distinctive ECH prediction" in abstract + Table I + sec:birefringence_check + Original Contributions; matter-bounce f_NL reframed as "from the matter-bounce class (mechanism-independent; not a distinctive ECH prediction)"; **P1-OA-B2** ("rejects null at high significance"): replaced in §VI with "The pipeline shows negligible bias (<0.04°) for constant-β injections; no independent sky-detection claim is made here", explicit instruction added that high-SNR figures must NOT be interpreted as observational significance; **P1-CM-M2** (NaMaster in evidence table): explicitly excluded from Table I evidence row, repositioned as methodology cross-check; **P1-CM-M1** (dimensional ansatz): one-sentence disclosure added to abstract that ρ_Λ = Ξ M_Pl⁴ is a phenomenological ansatz, not an EFT derivation; **P1-CM-m1** (Savage-Dickey): demoted to footnote (`fn:bayes_caveat`) attached at the eq:Zcomb2 inline; AIC/BIC reported as cross-references only, no fabricated nested-sampling figures. Also dropped the defensive "Scope note" (m-2). v2.3.5 stamp + 2026-05-01 07:30 PDT timestamp set. **No equations changed; no figures changed; no numerical results changed.** Recompile pending on H200 pod (local Mac has no LaTeX).
+
+**Prior round R42 Wave 2/3 (2026-04-30 23:55):** B1 retitle, B2 theory_map figure, B6 chain rerun Rhat~1.0 ESS 313k. PDF recompiled at v2.3.4.
 
 **Prior round R42 Wave 1 (2026-04-30 21:30):** version-bump to v2.3.2, no P1-specific edits beyond the Wave 1 cascade.
 
