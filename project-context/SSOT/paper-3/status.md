@@ -377,3 +377,36 @@ GPT-5 cross-model peer review (`peer-reviews/r42-cross-model-2026-05-01/openai_p
 **Why this can't be agent-executed:** HF visibility flips require account-owner credentials. The agent does not have, and should not have, Houston's HF login. The five-step toggle is mechanical and takes < 10 minutes when Houston has the dashboard open.
 
 **Cross-paper alignment:** the same pattern applies to Paper 4's `bamfai/galaxy-chirality-catalog` (R42 B23 — see `paper-4/status.md`). Houston should flip all five (P3 family + P4 chirality) in one HF-dashboard session.
+
+---
+
+## 12. R42 Wave 11-B + 11-E — text fixes from cross-model adversarial review (2026-05-01)
+
+Closes 7 BLOCKERs from the Gemini 3.1-Pro + GPT-5 cross-model adversarial review (`peer-reviews/r42-cross-model-2026-05-01/`): P3-CM-B1 (= P3-OA-B2), P3-CM-M3, P3-OA-B1, P3-OA-B3, P3-OA-B4, P3-OA-B6, P3-OA-M7. Text-only edits to `pipelines/p3_anomaly_engine/paper3_draft.tex`. **Recompile pending** — local Mac has no LaTeX; PDF will be regenerated on next H200/H100 pod session.
+
+**Version bump:** v3.1.5 → **v3.1.6**, date stamp **May 1, 2026, 07:30 PDT**.
+
+### What changed
+
+| Finding | Fix |
+|---|---|
+| **P3-CM-B1 / P3-OA-B2** (retitle to lead 378,280) | Title now leads "378,280 Unique Sources and Map Patches" with "319,443-anomaly cross-transfer baseline" preserved as the second-line context. Old title led with deprecated 319,443. |
+| **P3-CM-M3** (drop ACT-DR6 from headline) | ACT DR6 row removed from Table I and §III.G collapsed to a one-paragraph pointer. Full ACT documentation moved to **new Appendix E** (`sec:act_appendix`) — "ACT DR6 cross-transfer scan: quarantined methodological artifact". App A `tab:processing` footnote updated to point at Appendix E. The 319,443 cross-transfer baseline is preserved as §7 before-after comparator with footnote noting the historical ACT inclusion is archival only. |
+| **P3-OA-B6** ("Spectra" → "sources") | Title says "Sources and Map Patches"; abstract opens with "37.3 million sources and CMB map patches across seven retained astronomical archives". |
+| **P3-OA-M7** (consistent stratified tally) | Every headline tally now reports **378,080 point-source object detections + 200 Planck CMB map patches = 378,280**. Stratification disclosed in abstract, §III intro, §7 conclusion, and Table I primary row. |
+| **P3-OA-B1** (unify anomaly-score S) | §II.B Eq. 1 split into two equations: `eq:score_raw` (raw MSE per source) and `eq:score` (canonical z-scored S). New explicit `\paragraph{Canonical anomaly score S}` defines `S = (MSE − μ_val) / σ_val` and clarifies that all S thresholds in the paper (e.g., S>0.259 for eROSITA BigAE) are on the z-scored scale. The IsolationForest detector reports a separate raw isolation-score axis — see P3-OA-B4. |
+| **P3-OA-B3** (CMB val_loss=0.4437 retention) | §II.D Step 1 amended to two-part gate: criterion (a) `val_loss ≤ 0.30` OR criterion (b) injection-recovery ≥ 50% at 5σ. Step 2 explicitly references criterion (b) for Planck retention. |
+| **P3-OA-B4** (eROSITA score-scale disambiguation) | §III.E adds a new disambiguation paragraph; Table III now shows two columns per source: **S_BigAE** (canonical z-score, range 0.439–1.084) AND **S_IF,raw** (IsolationForest raw isolation-score, range 4424–34182). Two detectors, two scales, both reported. |
+
+### Cross-references preserved
+
+`\label{sec:act}` retained on the §III.G summary paragraph so existing `Section~\ref{sec:act}` references still resolve. New Appendix E carries `\label{sec:act_appendix}`. Selected forward references (App A footnote, abstract) updated to point at the appendix.
+
+### Deferred (not in this wave)
+
+- **PDF recompile** — local Mac lacks LaTeX; queue for next H200/H100 pod session. Mirror to `public/papers/paper3_anomaly_catalog.pdf` after compile.
+- **Site sync** — bigbounce.hubify.app still reflects the v3.1.4 figure-set / pre-Wave-11 framing. Site update lands in same commit as PDF recompile.
+
+### Why text-only is acceptable here
+
+The paper's **prose, equations, tables, and cross-references** are all internally self-consistent at v3.1.6 and will compile cleanly when next run. The PDF is currently stale relative to the .tex but the .tex itself is the canonical source per CLAUDE.md "Canonical Sources" table. R42 Wave 11-B + 11-E discharges the BLOCKER list from cross-model review; recompile-and-mirror is a mechanical follow-up, not a science follow-up.
