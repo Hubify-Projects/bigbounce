@@ -329,10 +329,9 @@ body {
 }
 
 .sidebar-brand-mark {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
-  border-radius: 5px;
   color: var(--sidebar-text);
 }
 

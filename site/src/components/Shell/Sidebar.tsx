@@ -124,20 +124,19 @@ export function Sidebar() {
           fill="none"
           aria-hidden="true"
         >
-          <rect width="64" height="64" rx="10" fill="currentColor" opacity="0.92" />
-          <circle cx="20" cy="32" r="10" fill="#ffffff" />
-          <circle cx="20" cy="32" r="4" fill="currentColor" />
-          <g fill="#ffffff">
-            <circle cx="34" cy="32" r="1.6" />
-            <circle cx="38" cy="28" r="1.4" />
-            <circle cx="38" cy="36" r="1.4" />
-            <circle cx="42" cy="24" r="1.2" />
-            <circle cx="42" cy="32" r="1.2" />
-            <circle cx="42" cy="40" r="1.2" />
-            <circle cx="46" cy="20" r="1" />
-            <circle cx="46" cy="28" r="1" />
-            <circle cx="46" cy="36" r="1" />
-            <circle cx="46" cy="44" r="1" />
+          <circle cx="20" cy="32" r="10" fill="none" stroke="currentColor" strokeWidth="3" />
+          <circle cx="20" cy="32" r="3" fill="currentColor" />
+          <g fill="currentColor">
+            <circle cx="34" cy="32" r="1.8" />
+            <circle cx="38" cy="28" r="1.5" />
+            <circle cx="38" cy="36" r="1.5" />
+            <circle cx="42" cy="24" r="1.3" />
+            <circle cx="42" cy="32" r="1.3" />
+            <circle cx="42" cy="40" r="1.3" />
+            <circle cx="46" cy="20" r="1.1" />
+            <circle cx="46" cy="28" r="1.1" />
+            <circle cx="46" cy="36" r="1.1" />
+            <circle cx="46" cy="44" r="1.1" />
             <circle cx="50" cy="24" r="0.9" />
             <circle cx="50" cy="32" r="0.9" />
             <circle cx="50" cy="40" r="0.9" />
