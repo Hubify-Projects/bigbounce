@@ -1,0 +1,92 @@
+{
+  "wave": "14-EE",
+  "review_id": "P4-CM-M2",
+  "description": "D4 TTA equivariant CW fraction on b/a edge-on subsample",
+  "input_catalog": "/workspace/dr8_sweep_fetch/catalog_production_with_ba.parquet",
+  "chirality_catalog": "/workspace/r42_b20/chirality_catalog/catalog_production.parquet",
+  "n_total": 8474531,
+  "n_ba_nonnull": 7728567,
+  "subsamples": {
+    "full_joined": {
+      "label": "full joined",
+      "n": 8474531,
+      "CW": 1592107,
+      "CCW": 1609053,
+      "NOT_SPIRAL": 5273371,
+      "cw_fraction": 0.49735314698421823,
+      "standard_error": 0.0002794578500416354,
+      "z_score_vs_05": -9.47138545361107
+    },
+    "ba_nonnull": {
+      "label": "b/a non-null",
+      "n": 7728567,
+      "CW": 1448153,
+      "CCW": 1463482,
+      "NOT_SPIRAL": 4816932,
+      "cw_fraction": 0.49736763021463887,
+      "standard_error": 0.0002930228841553098,
+      "z_score_vs_05": -8.983495582433445
+    },
+    "edge_on_ba_lt_0.3": {
+      "label": "b/a < 0.3",
+      "n": 785859,
+      "CW": 232012,
+      "CCW": 234318,
+      "NOT_SPIRAL": 319529,
+      "cw_fraction": 0.49752750198357387,
+      "standard_error": 0.0007321892134720603,
+      "z_score_vs_05": -3.3768566525331316
+    },
+    "edge_on_ba_lt_0.4": {
+      "label": "b/a < 0.4",
+      "n": 1533205,
+      "CW": 420273,
+      "CCW": 425595,
+      "NOT_SPIRAL": 687337,
+      "cw_fraction": 0.49685411908241,
+      "standard_error": 0.0005436491415434222,
+      "z_score_vs_05": -5.786601462588214
+    },
+    "edge_on_ba_lt_0.5": {
+      "label": "b/a < 0.5",
+      "n": 2447858,
+      "CW": 622196,
+      "CCW": 629189,
+      "NOT_SPIRAL": 1196473,
+      "cw_fraction": 0.49720589586737896,
+      "standard_error": 0.0004469660448636459,
+      "z_score_vs_05": -6.2512671034629275
+    },
+    "face_on_ba_gt_0.7": {
+      "label": "b/a > 0.7",
+      "n": 2855862,
+      "CW": 395364,
+      "CCW": 399587,
+      "NOT_SPIRAL": 2060911,
+      "cw_fraction": 0.4973438614455482,
+      "standard_error": 0.0005607894365485333,
+      "z_score_vs_05": -4.736427581088927
+    },
+    "fracdev_pure_disk": {
+      "label": "fracdev < 0.1 (disk)",
+      "n": 3380064,
+      "CW": 857608,
+      "CCW": 867886,
+      "NOT_SPIRAL": 1654570,
+      "cw_fraction": 0.4970217224748391,
+      "standard_error": 0.00038063899462416275,
+      "z_score_vs_05": -7.824415173494232
+    },
+    "fracdev_pure_devauc": {
+      "label": "fracdev > 0.9 (DEV)",
+      "n": 4673780,
+      "CW": 629487,
+      "CCW": 635256,
+      "NOT_SPIRAL": 3409037,
+      "cw_fraction": 0.4977192994940474,
+      "standard_error": 0.00044459938963136445,
+      "z_score_vs_05": -5.129787757566659
+    }
+  },
+  "completed_at": "2026-05-01 21:27:57"
+}

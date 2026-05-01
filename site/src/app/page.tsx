@@ -4,6 +4,7 @@ import { papers } from"@/data/papers";
 import { liveStatus } from"@/data/live-status";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
+import { LiveStatus } from"@/components/Shell/LiveStatus";
 import { MathText } from"@/components/MathText";
 import {
   Card,
@@ -127,6 +128,7 @@ const exploreLinks: Array<{
 export default function HomePage() {
   return (
     <>
+      <LiveStatus />
       <section className="page-hero">
         <div className="hero-copy">
           <p className="eyebrow" style={{ marginBottom: 10 }}>

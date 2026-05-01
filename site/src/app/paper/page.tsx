@@ -11,6 +11,7 @@ import {
   CardFooter,
 } from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
+import { Download, FileText } from"lucide-react";
 import Link from"next/link";
 import type { Metadata } from"next";
 
@@ -129,10 +130,46 @@ export default function PaperPage() {
                   )}
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button asChild size="sm" variant="outline">
-                  <Link href={`/papers/${paper.slug}`}>Open paper &rarr;</Link>
-                </Button>
+              <CardFooter className="flex flex-wrap gap-2">
+                {(() => {
+                  const pdf = paper.artifacts.find(
+                    (a) =>
+                      a.kind === "primary" &&
+                      a.href.toLowerCase().endsWith(".pdf"),
+                  );
+                  const dl = paper.artifacts.find(
+                    (a) => a.download && a.href.toLowerCase().endsWith(".pdf"),
+                  );
+                  return (
+                    <>
+                      {pdf && (
+                        <Button asChild size="sm">
+                          <a
+                            href={pdf.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FileText size={14} />
+                            Read PDF
+                          </a>
+                        </Button>
+                      )}
+                      {dl && (
+                        <Button asChild size="sm" variant="outline">
+                          <a href={dl.href} download>
+                            <Download size={14} />
+                            Download
+                          </a>
+                        </Button>
+                      )}
+                      <Button asChild size="sm" variant="outline">
+                        <Link href={`/papers/${paper.slug}`}>
+                          Details &rarr;
+                        </Link>
+                      </Button>
+                    </>
+                  );
+                })()}
               </CardFooter>
             </Card>
           ))}

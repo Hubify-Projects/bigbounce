@@ -453,16 +453,123 @@ body {
     transparent;
 }
 
-/* Live build status banner — top of every page, baked at build time */
+/* Live build status banner — homepage only, baked at build time */
 .live-status {
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 14px 18px 12px;
   margin: 0 0 22px;
   font-size: 12px;
   line-height: 1.5;
   color: var(--text-secondary);
+  overflow: hidden;
+}
+
+.live-status.is-compact {
+  padding: 0;
+}
+
+.live-status.is-expanded {
+  padding: 0 18px 12px;
+}
+
+.live-status-compact-row {
+  display: grid;
+  grid-template-columns: auto auto minmax(80px, 1fr) auto auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 16px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.live-status-compact-row:hover {
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.live-status-compact-stamp {
+  font-family: var(--font-mono-stack);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.live-status-compact-bar {
+  position: relative;
+  height: 5px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.live-status-compact-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.live-status-compact-pct {
+  font-family: var(--font-mono-stack);
+  font-size: 11px;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.live-status-compact-eta {
+  font-family: var(--font-mono-stack);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .live-status-compact-row {
+    grid-template-columns: auto 1fr auto auto;
+    gap: 8px;
+  }
+  .live-status-compact-stamp,
+  .live-status-compact-eta {
+    display: none;
+  }
+}
+
+.live-status-compact-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  color: var(--text-tertiary);
+}
+
+.live-status-compact-row:hover .live-status-compact-toggle {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.live-status-detail {
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 0;
+}
+
+.live-status-headline-row {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .live-status-row-primary {

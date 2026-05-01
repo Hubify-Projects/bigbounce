@@ -5,7 +5,6 @@ import { GeistMono } from "geist/font/mono";
 import { Sidebar } from "@/components/Shell/Sidebar";
 import { ScrollToTop } from "@/components/Shell/ScrollToTop";
 import { Topbar } from "@/components/Shell/Topbar";
-import { LiveStatus } from "@/components/Shell/LiveStatus";
 import "./globals.css";
 
 const themeBootScript = `
@@ -62,7 +61,6 @@ export default function RootLayout({
           <Topbar />
           <main className="content">
             <div className="container">
-              <LiveStatus />
               {children}
             </div>
           </main>

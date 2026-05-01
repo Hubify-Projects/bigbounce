@@ -16,6 +16,7 @@ import {
   TabsContent,
 } from"@/components/ui/tabs";
 import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
+import { Download, ExternalLink, FileText } from"lucide-react";
 import Link from"next/link";
 import { notFound } from"next/navigation";
 import type { Metadata } from"next";
@@ -56,37 +57,6 @@ function readinessColor(pct: number) {
   return"progress-fill-caution";
 }
 
-function ArtifactLink({
-  artifact,
-}: {
-  artifact: {
-    label: string;
-    href: string;
-    kind: "primary" | "secondary";
-    external?: boolean;
-    download?: boolean;
-  };
-}) {
-  const button = (
-    <Button
-      variant={artifact.kind === "primary" ? "default" : "outline"}
-      size="sm"
-      asChild
-    >
-      <a
-        href={artifact.href}
-        target={artifact.external ? "_blank" : undefined}
-        rel={artifact.external ? "noopener noreferrer" : undefined}
-        download={artifact.download ? true : undefined}
-      >
-        {artifact.label} {artifact.external ? "↗" : ""}
-      </a>
-    </Button>
-  );
-
-  return button;
-}
-
 export default async function PaperDetailPage({
   params,
 }: {
@@ -95,6 +65,16 @@ export default async function PaperDetailPage({
   const { slug } = await params;
   const paper = getPaperBySlug(slug);
   if (!paper) notFound();
+
+  const pdfArtifact = paper.artifacts.find(
+    (a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"),
+  );
+  const downloadArtifact = paper.artifacts.find(
+    (a) => a.download && a.href.toLowerCase().endsWith(".pdf"),
+  );
+  const supplementaryArtifacts = paper.artifacts.filter(
+    (a) => a !== pdfArtifact && a !== downloadArtifact,
+  );
 
   return (
     <>
@@ -127,6 +107,30 @@ export default async function PaperDetailPage({
               <Badge variant="outline">{paper.refs} refs</Badge>
               <Badge variant="outline">Target: {paper.target}</Badge>
             </div>
+            {(pdfArtifact || downloadArtifact) && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {pdfArtifact && (
+                  <Button asChild size="default">
+                    <a
+                      href={pdfArtifact.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FileText size={16} />
+                      Read PDF
+                    </a>
+                  </Button>
+                )}
+                {downloadArtifact && (
+                  <Button asChild size="default" variant="outline">
+                    <a href={downloadArtifact.href} download>
+                      <Download size={16} />
+                      Download PDF
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
           <Card className="paper-artifact-card">
             <CardHeader>
@@ -138,8 +142,43 @@ export default async function PaperDetailPage({
                 <span>{paper.target}</span>
               </div>
               <div className="paper-artifact-actions flex flex-wrap gap-2">
-                {paper.artifacts.map((artifact) => (
-                  <ArtifactLink key={`${artifact.href}-${artifact.label}`} artifact={artifact} />
+                {pdfArtifact && (
+                  <Button asChild size="sm">
+                    <a
+                      href={pdfArtifact.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FileText size={14} />
+                      {pdfArtifact.label}
+                    </a>
+                  </Button>
+                )}
+                {downloadArtifact && (
+                  <Button asChild size="sm" variant="outline">
+                    <a href={downloadArtifact.href} download>
+                      <Download size={14} />
+                      {downloadArtifact.label}
+                    </a>
+                  </Button>
+                )}
+                {supplementaryArtifacts.map((artifact) => (
+                  <Button
+                    key={`${artifact.href}-${artifact.label}`}
+                    asChild
+                    size="sm"
+                    variant="outline"
+                  >
+                    <a
+                      href={artifact.href}
+                      target={artifact.external ? "_blank" : undefined}
+                      rel={artifact.external ? "noopener noreferrer" : undefined}
+                      download={artifact.download ? true : undefined}
+                    >
+                      {artifact.label}
+                      {artifact.external && <ExternalLink size={12} />}
+                    </a>
+                  </Button>
                 ))}
               </div>
             </CardContent>
