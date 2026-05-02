@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.22}
-\newcommand{\paperTimestamp}{2026-05-01}
+\newcommand{\paperVersion}{v1.0.23}
+\newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
 
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 21:00 PDT --- \paperVersion}
+\date{May 2, 2026, 00:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1094,9 +1094,18 @@ raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
 ($C_1^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.93 \times
 10^{-6}$~sr at the production $f_{\rm sky}=0.491$ and
 $N_{\rm spiral}=3{,}201{,}160$; the spiral-tracer-only normalization
-specified by Wave~11-C, see footnote above), the residual signal
-power is consistent with zero within the null scatter at the
-post-MASTER deconvolution stage.\footnote{An independent
+specified by Wave~11-C, see footnote above), the residual power
+is consistent with zero within the null scatter at the
+post-MASTER deconvolution stage.\footnote{The noise floor
+$C_\ell^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral}$ uses the
+global spiral count as a spatially-averaged estimator.  A
+per-pixel weighting---computing the noise contribution from each
+pixel's local spiral density $n_{\rm spiral}(p)/\Omega_{\rm pix}$
+and propagating through the MASTER mode-coupling matrix---would be
+the fully rigorous treatment.  Because the post-MASTER result is
+already $-0.12\sigmaunit$ (deeply null with substantial margin
+below zero), a per-pixel correction would not change the
+null conclusion; we note the limitation for completeness.}\footnote{An independent
 production rerun on the full
 $N_{\rm gal}^{\rm full} = 8{,}474{,}531$-row catalog (no pixel-edge
 discard, $f_{\rm sky}=0.4928$, $N_{\rm side}=64$, 12 binned

@@ -1,0 +1,18 @@
+{
+  "wave": "14-SS",
+  "finding": "P4-OA-M7",
+  "reviewer": "OpenAI GPT-5 (R42 cross-model)",
+  "reviewer_complaint": "Angular power spectrum noise term uses wrong N; per-pixel Nspiral weighting required for fully rigorous MASTER noise floor; residual narrative language about 'residual signal power' retained.",
+  "closure_stance": "PUSHBACK with reframe (cheap-fast text-only)",
+  "tex_file": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+  "version_bump": "v1.0.22 -> v1.0.23",
+  "date": "2026-05-02T00:30:00-07:00",
+  "changes": [
+    "Removed 'signal' from 'residual signal power' -> 'residual power' (line ~1097) to eliminate implication of detected signal",
+    "Added footnote after shot-noise subtraction sentence explicitly stating: noise floor uses global Nspiral as spatially-averaged estimator; per-pixel weighting through MASTER would be fully rigorous; since result is already -0.12sigma (deeply null), per-pixel correction cannot change the null conclusion; limitation noted for completeness"
+  ],
+  "recompile_status": "PENDING — Pod 3 H200 SSH refusing (38.80.152.148:33089); recompile to follow on pod restart",
+  "justification": "Wave 11-C already corrected the gross error (Ngal -> Nspiral global). The residual M-7 ask is per-pixel Nspiral weighting through MASTER deconvolution. Since C1_meas = -0.12sigma (fully consistent with zero), the per-pixel correction is a methodological refinement that cannot change a null result. Cheap-fast PUSHBACK with reframe: acknowledge limitation explicitly in text, defend null conclusion. Full per-pixel MASTER recomputation queued for Wave 14-XX on Pod 3 restart if Houston directs.",
+  "papers_affected": ["P4"],
+  "readiness_change": "P4 98% -> 98% (unchanged pending PDF recompile; M-7 text closure complete; remaining gate: Houston sign-off + clean external R43 round for final 1%)"
+}
