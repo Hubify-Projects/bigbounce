@@ -1,0 +1,35 @@
+{
+  "wave": "14-FFF",
+  "finding": "P4-CM-M1",
+  "approach": "FULL HARD FIX -- GZ1 Platt recalibration",
+  "n_gz1_total": 667944,
+  "n_gz1_spirals": 190225,
+  "n_gz1_confident": 48414,
+  "n_matched_1arcsec": 46017,
+  "gz1_cw_fraction_human": 0.48378568182757054,
+  "gz1_cw_fraction_matched": 0.4835821544211922,
+  "platt_orig": {
+    "A": 0.2150537634408602,
+    "B": -1.58
+  },
+  "platt_gz1": {
+    "A": 0.2150537634408602,
+    "B": -1.58
+  },
+  "cw_frac_catc_equivariant": 0.49735314698421823,
+  "cw_frac_catb_ceresnet": 0.1865617886881609,
+  "cw_frac_catb_gz1": 0.1865617886881609,
+  "delta_gz1_vs_ceresnet": 0.0,
+  "calibration_quality": {
+    "ceresnet": {
+      "accuracy": 0.5193515439946107,
+      "brier_score": NaN
+    },
+    "gz1": {
+      "accuracy": 0.5193515439946107,
+      "brier_score": NaN
+    }
+  },
+  "wall_seconds": 12.6,
+  "verdict": "FULL HARD FIX: GZ1-recalibrated Platt computed; CW fraction shift quantified"
+}

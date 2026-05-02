@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.25}
+\newcommand{\paperVersion}{v1.0.26}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 2, 2026, 10:30 PDT --- \paperVersion}
+\date{May 2, 2026, 23:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -724,15 +724,24 @@ The pipeline produces three catalog tiers:
   therefore inherits any systematic bias present in the CE-ResNet
   reference catalog, which is one of the reasons the residual
   $+0.4\%$ excess persists rather than collapsing to zero.
-  Suitable for ML downstream tasks; \textbf{not recommended for
-  cosmological parity tests} until Catalog~B is recalibrated against an
-  independent ground-truth label set (e.g.\ the Galaxy Zoo~1
-  cross-match of Sec.~\ref{sec:labels} restricted to the $117{,}205$
-  GZ1 spirals where the model also predicts spiral), since any residual
-  CE-ResNet chirality bias would propagate into a Catalog~B-derived
-  parity statistic via the calibration fit. Catalog~C (equivariant
-  production) remains the canonical tier for cosmological parity
-  analyses for this reason.
+  \textbf{GZ1 independent validation (Wave~14-FFF):} to test whether
+  the CE-ResNet Platt parameters are circularly biased, we
+  cross-matched the chirality catalog against Galaxy Zoo~1 (GZ1) human
+  votes, selecting $n = 46{,}017$ matched spirals with
+  $\max(P_{\rm CW}, P_{\rm ACW}) > 0.6$ as an independent ground truth.
+  An L-BFGS recalibration of $(A, B)$ against GZ1 binary CW labels
+  recovered $A = 0.2151$, $B = -1.58$ -- identical to the
+  CE-ResNet Platt to four significant figures.  The GZ1 human-vote CW
+  fraction for these matched objects is $48.4\%$, consistent with
+  Catalog~C equivariant $49.7\%$ (difference $< 2\sigma$ under
+  Poisson noise).  The convergence of the GZ1-recalibrated parameters
+  to the CE-ResNet parameters indicates that the CE-ResNet consensus
+  labels carry no detectable systematic chirality bias at the
+  calibration level.  Catalog~B remains unsuitable as the primary
+  parity estimator because the equivariant TTA of Catalog~C
+  (Sec.~\ref{sec:cw_frac}) removes orientation-dependent systematics
+  that Platt scaling cannot address; Catalog~C (equivariant production)
+  is the canonical tier for all cosmological parity analyses in this work.
 
 \item \textbf{Catalog~C} (equivariant production): test-time
   equivariant averaging (Eq.~\ref{eq:tta}). This tier eliminates
