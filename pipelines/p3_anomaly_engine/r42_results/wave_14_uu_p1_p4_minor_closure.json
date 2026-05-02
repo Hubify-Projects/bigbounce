@@ -1,0 +1,50 @@
+{
+  "wave": "14-UU",
+  "papers": ["P1", "P4"],
+  "findings_closed": ["m1-P1-tension-resolution", "m5-P4-Shamir-years"],
+  "findings_pass": ["m4-P2-Liang-date", "m7-All-bamf-audit"],
+  "findings_deferred": ["m3-P2-Planck-PR4-citation", "m8-P1-SPT3G-citation"],
+  "reviewer": "cross-model adversarial (OpenAI GPT-5 + Gemini)",
+  "closure_stance": "FULL FIX + PASS closures (text-only)",
+  "paper_versions": {
+    "P1": "v2.3.14 to v2.3.15",
+    "P4": "v1.0.23 to v1.0.24"
+  },
+  "date": "2026-05-02T10:00:00Z",
+  "changes": {
+    "m1-P1-tension-resolution": {
+      "description": "Fix ambiguous 'tension resolution' phrase at P1 line 1001 — rewrite to explicitly state no-tension-resolution conclusion",
+      "file": "arxiv/main.tex",
+      "edit": "Line 1001: 'while leaving the tension resolution (which depends on bounce parameters, not alpha/M) intact' -> 'while leaving the no-tension-resolution conclusion intact (the Lambda-CDM parameter recovery, established in Sec. sec:tensions, is independent of alpha/M)'"
+    },
+    "m5-P4-Shamir-years": {
+      "description": "Add (2020, 2022) year attribution to 'Shamir's claimed' in P4 abstract/conclusions",
+      "file": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+      "edit": "Line 183: 'This strongly disfavors Shamir's claimed' -> 'This strongly disfavors Shamir's (2020, 2022)~\\cite{Shamir:2020,Shamir:2022} claimed'"
+    },
+    "m4-P2-Liang-date-PASS": {
+      "description": "Audit PASS: P2 line 156 already uses \\cite{Liang2023} — Liang date is consistent",
+      "file": "research/focused_paper_source_integration/02_full_draft.tex",
+      "edit": "no edit required"
+    },
+    "m7-All-bamf-audit-PASS": {
+      "description": "Audit PASS: all 4 papers use houston@hubify.com in author block, not bamf.ai — no email discrepancy",
+      "files": ["arxiv/main.tex", "pipelines/p2_chirality/chirality_catalog_paper.tex", "research/focused_paper_source_integration/02_full_draft.tex", "pipelines/p3_anomaly_engine/paper3_draft.tex"],
+      "edit": "no edit required"
+    }
+  },
+  "deferred_rationale": {
+    "m3-P2-Planck-PR4": "Requires web lookup for NPIPE/PR4 f_NL citation key and updated value; focused_paper_refs.bib has no NPIPE entry; defer to Wave 14-VV with web research",
+    "m8-P1-SPT3G": "Requires web lookup for SPT-3G 2024 birefringence paper BibTeX; arxiv/references.bib has no SPT-3G entry; defer to Wave 14-VV"
+  },
+  "cumulative_r42_closures": {
+    "before": 51,
+    "new": 4,
+    "after": 55
+  },
+  "open_minors_after": 5,
+  "recompile_status": "pending_pod3_restart",
+  "justification": "Wave 14-UU: (m1) P1 line 1001 'tension resolution' phrase rewritten to unambiguously state no-tension-resolution conclusion; (m5) P4 line 183 Shamir citation given year attribution (2020, 2022); (m4) P2 Liang2023 already consistent — PASS; (m7) all papers use hubify.com email — bamf.ai audit PASS. Remaining open MINORs: m3 P2 Planck PR4 + m8 P1 SPT-3G (both need web-research bib entries) + m2 P1 Bayes factor + m6 P4 Fig11 DPI. PDF recompiles queued for Pod 3 restart.",
+  "papers_affected": ["P1", "P4"],
+  "readiness_change": "P1=99% P2=99% P3=98% P4=98% (cap-constrained; 4 MINORs closed, readiness held at 99% cap pending Pod 3 recompile and Houston sign-off)"
+}
