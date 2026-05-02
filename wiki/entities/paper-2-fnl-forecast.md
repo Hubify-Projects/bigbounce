@@ -2,7 +2,7 @@
 title: "Paper 2: f_NL Forecast — POINTER"
 type: entity
 tags: [paper, fnl, spherex, fisher, pointer]
-last_updated: 2026-04-18
+last_updated: 2026-05-02
 superseded_by: project-context/SSOT/paper-2/status.md
 ---
 
@@ -20,7 +20,7 @@ superseded_by: project-context/SSOT/paper-2/status.md
 
 ## One-line status (mirror of SSOT)
 
-**v1.6.1 · 100 % ready · arXiv-ready.** Revtex4-2 conversion + bibliography resolution landed fire #9 (2026-04-17). Peer-review follow-ups tracked in queue but non-blocking for submission.
+**v1.7.9 · 99% ready.** All R42 BLOCKERs and MAJORs closed (Wave 14-K last BLOCKER; Waves 14-AA/14-VV/14-AAA last MAJORs/MINORs). Manuscript Principle-10 clean (zero DO-NOW/WORDSMITH). Remaining 1% gap: PDF recompile (pod-blocked, Pod 3 H200 refusing since 2026-05-01) + arXiv tarball + site sync. Submission order: Paper 4 first, then 1, then 3, then 2 (P2 submits last to allow companion-paper arXiv IDs to be wired in). See SSOT for full detail.
 
 ## Why this file exists as a pointer
 
