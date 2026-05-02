@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.18}
+\newcommand{\paperVersion}{v1.0.19}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 17:10 PDT --- \paperVersion}
+\date{May 1, 2026, 17:35 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1780,6 +1780,40 @@ contradictory. Companion artifact:
 matrix, b/a coverage statistics, and edge-on subsample dilution
 quantification). Closes R42 P4-OA-M5 cross-model peer-review MAJOR
 ($32.8$~s pure pandas join on Pod~3, GPU genuinely idle throughout).}
+
+\textbf{Wave 14-LL external peer-review reframe (edge-on TTA
+rotational-equivariance closure, R42 P4-CM-M2 MAJOR closure):}
+\textit{The Gemini~3.1-Pro cross-model R42 finding P4-CM-M2 asked:
+``edge-on TTA assumes rotational invariance; diagonally-aligned
+edge-ons under scan direction could violate this---evaluate the
+equivariant CW fraction directly for the b/a$\,<0.3$ subsample in
+Catalog~C; if it deviates from $0.5000$, TTA is failing on rotated
+edge-ons.'' The Wave 14-KK 4-bin reconciliation just reported (full
+DR8 sweep b/a $\times$ Catalog~C $\texttt{class\_eq}$ join on
+$\texttt{dr8\_id}$) directly answers this question on the deployed
+$8{,}474{,}531$-galaxy catalog: the b/a$\,<0.3$ edge-on subsample of
+$785{,}859$ galaxies (with finite b/a from the DR8 Sersic fit) has
+equivariant CW fraction $\CW/(\CW+\CCW) = 0.4975 \pm 0.0006$
+(Poisson SE), \emph{statistically indistinguishable from the
+catalog-wide post-TTA value of $0.4974 \pm 0.0003$ and from the
+three other b/a bins at $0.4975$ (face-on), $0.4970$ (intermediate),
+and $0.4972$ (nan-b/a/PSF-type)}. The $\sim\!0.25$--$0.30\%$ offset
+from $0.5000$ that appears in the edge-on bin is the \emph{same}
+offset present in every other b/a regime; it is therefore the
+catalog-wide post-TTA residual already reported above, not an
+edge-on-specific TTA failure mode. Were diagonal-edge-on rotational
+non-equivariance under DESI Legacy scan-direction systematics to be
+biasing chirality, we would expect the b/a$\,<0.3$ bin to deviate
+\emph{differently} from the three face-on/intermediate/nan bins; we
+do not observe any such bin-specific shift to the per-bin Poisson
+floor of $\sim\!0.06\%$. The maximum bin-to-bin spread in CW
+fraction across the four orientation regimes is $0.0005$ ($0.05\%$),
+well below the $0.1\%$ flatness target requested by the cross-model
+review. Closes R42 Gemini~3.1-Pro P4-CM-M2 cross-model peer-review
+MAJOR on the deployed catalog at the per-bin Poisson floor (no new
+compute required---the closure follows directly from the Wave
+14-KK 4-bin table; companion artifact unchanged at
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}).}
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
