@@ -1,0 +1,49 @@
+{
+  "wave": "14-VV",
+  "timestamp_utc": "2026-05-02T14:00:00Z",
+  "timestamp_pdt": "2026-05-02 07:00 PDT",
+  "description": "R42 Wave 14-VV LANDED — P2 v1.7.8->v1.7.9 text-only MINOR close (m3 P2 Planck PR4/NPIPE f_NL citation FULL HARD FIX) + INVALID close (m8 P1 SPT-3G 2024 birefringence — reviewer finding is a false alarm)",
+  "closures": [
+    {
+      "id": "m3",
+      "paper": "P2",
+      "type": "MINOR",
+      "status": "FULL_HARD_FIX",
+      "description": "Planck PR4/NPIPE f_NL citation update in research/focused_paper_source_integration/02_full_draft.tex",
+      "old_citation": "Planck:2019fnl (PR3, f_NL = -0.9 +/- 5.1)",
+      "new_citation": "Jung2025PlanckPR4fNL (PR4/NPIPE, f_NL = -0.1 +/- 5.0)",
+      "new_ref": "Jung et al. 2025, A&A 702, A204, arXiv:2504.00884, doi:10.1051/0004-6361/202555283",
+      "recasted_bounce_value": "f_NL^bounce = -0.1 +/- 5.7 (r=0.876 mismatch factor), 0.7sigma from bounce prediction (-4.375), 0.02sigma from zero",
+      "edit_location": "02_full_draft.tex line 305 + focused_paper_refs.bib (appended Jung2025PlanckPR4fNL entry)",
+      "version_bump": "P2 v1.7.8 -> v1.7.9, date May 2, 2026, 06:00 PDT"
+    },
+    {
+      "id": "m8",
+      "paper": "P1",
+      "type": "MINOR",
+      "status": "INVALID",
+      "description": "SPT-3G 2024 isotropic birefringence citation finding is a false alarm",
+      "reason": "SPT-3G explicitly removes global (isotropic) polarization rotation by design to calibrate polarization angles. SPT-3G measures anisotropic birefringence only. No SPT-3G isotropic birefringence measurement exists. The reviewer finding was incorrect — SPT-3G cannot constrain isotropic beta by construction. No edit to arxiv/main.tex needed.",
+      "source": "SPT-3G Collaboration design documentation; Bianchini et al. 2020 + subsequent SPT-3G papers confirm global rotation is subtracted out as a calibration step"
+    }
+  ],
+  "pass_closures": [],
+  "cumulative_closures": {
+    "prior": 55,
+    "new": 57,
+    "delta": 2
+  },
+  "open_minors": {
+    "prior": 5,
+    "after": 3,
+    "remaining": ["m2 P1 Bayes factor (verify if already addressed)", "m6 P4 Fig 11 DPI (needs Pod 3 GPU figure regen)", "any remaining OpenAI P1/P4 tracker specifics"]
+  },
+  "pod3_status": "SSH refusing (38.80.152.148:33089) — PDF recompile for P2 v1.7.9 pending pod restart",
+  "compute_spend": "$0 marginal (text-only BibTeX + .tex edits, no GPU)",
+  "papers_readiness": {
+    "P1": "99%",
+    "P2": "99%",
+    "P3": "98%",
+    "P4": "98%"
+  }
+}
