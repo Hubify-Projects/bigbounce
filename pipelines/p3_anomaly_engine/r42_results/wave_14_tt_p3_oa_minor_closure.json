@@ -1,0 +1,44 @@
+{
+  "wave": "14-TT",
+  "paper": "P3",
+  "findings_closed": ["P3-OA-m1", "P3-OA-m2", "P3-OA-m3", "P3-OA-m4"],
+  "reviewer": "OpenAI GPT-5 (cross-model adversarial)",
+  "closure_stance": "FULL FIX (text-only)",
+  "paper_version": "v3.1.15 to v3.1.16",
+  "date": "2026-05-02T08:30:00Z",
+  "changes": {
+    "P3-OA-m1_nomenclature": {
+      "description": "Define gate-pass / fail-with-diagnostic once in sec:pathc; remove 'R42 directive' jargon; standardize caption/footnote language",
+      "edits": [
+        "Abstract: '3 FAIL-with-diagnostic' -> '3 below formal threshold with informative cross-validation diagnostics'",
+        "Line 119: 'in response to the R42 directive' -> 'A fully independent out-of-distribution (OOD) validation was subsequently executed'",
+        "sec:pathc Step 1: added definitional sentence for gate-pass / fail-with-diagnostic terminology",
+        "Table footnote: removed '(R42 transparency, sec:sdss)'",
+        "Fig:injection_recovery caption: 'FAIL-with-diagnostic interpretation' -> 'gate criteria and cross-validation caveat interpretations'"
+      ]
+    },
+    "P3-OA-m2_z_notation": {
+      "description": "Disambiguate statistical z-score from spectroscopic redshift z in score definition paragraph",
+      "edits": [
+        "Score definition paragraph: added parenthetical clarifying 'z-scored' is statistical sense, not redshift z",
+        "Line 119: 'rescaled z-units' -> 'rescaled standardized units'"
+      ]
+    },
+    "P3-OA-m3_panel_labels": {
+      "description": "Add bold note in fig:gallery_highz caption calling out AE = r_Z (Z-arm sub-score), not total S",
+      "edits": [
+        "fig:gallery_highz caption: added bold 'Panel-label notation' sentence clarifying AE = r_Z (legacy label), not total S"
+      ]
+    },
+    "P3-OA-m4_spatial_uniformity": {
+      "description": "Add caveat on chi-squared spatial uniformity test being footprint-dominated",
+      "edits": [
+        "sec:spatial: added 'Caveat on the chi^2 figure' bold sentence clarifying chi^2_nu=3.76 is dominated by inhomogeneous survey footprints, not astrophysical clustering; Galactic latitude correlations are the more robustly interpreted result"
+      ]
+    }
+  },
+  "recompile_status": "pending_pod3_restart",
+  "justification": "All four OpenAI GPT-5 P3 MINORs are text-only cleanup: (m1) internal nomenclature standardization, (m2) z-notation disambiguation, (m3) panel label clarification in figure caption, (m4) spatial uniformity caveat. Pod 3 H200 currently offline (SSH refusing). PDF recompile queued for when Pod 3 restarts.",
+  "papers_affected": ["P3"],
+  "readiness_change": "98% -> 98% (cap-constrained; MINORs removed but readiness held at 99% cap pending Pod 3 recompile)"
+}
