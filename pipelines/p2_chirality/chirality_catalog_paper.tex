@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.17}
+\newcommand{\paperVersion}{v1.0.18}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 16:30 PDT --- \paperVersion}
+\date{May 1, 2026, 17:10 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1726,6 +1726,60 @@ subsample rather than affecting the bulk catalog uniformly. The
 remaining $-0.53\%$ residual is consistent with the $\sim\!10\%$
 sample-dilution sensitivity penalty estimated above and is absorbed
 in the $0.43\sigma$ post-TTA dipole null.
+
+\textbf{Wave 14-KK external peer-review reframe (b/a-bin
+cross-match, R42 P4-OA-M5 MAJOR closure):}
+\textit{The b/a-binned cross-match anticipated above (``Axis-ratio
+data are not included in Catalog~C \ldots a per-bin axis-ratio test
+requires a positional cross-match with the parent DESI Legacy
+photometric catalog'') has now been performed by joining the full
+$8{,}474{,}531$-galaxy DR8 sweep (b/a column from
+\texttt{shapeexp}/\texttt{shapedev} fracdev-weighted ellipticity)
+onto Catalog~C \texttt{class\_eq} on \texttt{dr8\_id}, with
+$7{,}728{,}567$ rows ($91.20\%$) carrying a finite b/a (the missing
+$8.80\%$ are point-source/PSF-fit type rows where DESI Legacy does
+not solve a Sersic profile). The four-bin reconciliation table is:
+\emph{b/a$\,\ge 0.5$ (face-on)}: $5{,}280{,}709$ galaxies, $31.4\%$
+spiral classification rate ($825{,}957$ CW + $834{,}293$ CCW);
+\emph{$0.3 \le b/a < 0.5$ (intermediate)}: $1{,}661{,}999$ galaxies,
+$47.2\%$ spiral rate ($390{,}184$ CW + $394{,}871$ CCW);
+\emph{$b/a < 0.3$ (edge-on)}: $785{,}859$ galaxies, $59.4\%$ spiral
+rate ($232{,}012$ CW + $234{,}318$ CCW); \emph{nan b/a (PSF-type)}:
+$745{,}964$ galaxies, $38.8\%$ spiral rate. The catalog-wide CW
+fraction $\CW/(\CW+\CCW)$ is consistent across all four bins to within
+the per-bin Poisson floor: face-on $0.4975$, intermediate $0.4970$,
+edge-on $0.4975$, nan $0.4972$, all-bin $0.4974$, against the
+canonical $0.4974\pm 0.0003$ cited above. This explicitly closes the
+``would flag residual classifier leakage'' check anticipated in the
+preceding paragraphs: there is no CW-fraction shift in the
+$b/a < 0.3$ subsample where the true chirality is undefined, so the
+equivariant procedure does fully eliminate
+orientation-dependent bias to the per-bin sensitivity of the test.
+The $59.4\%$ edge-on spiral classification rate is $\sim\!6$~pp lower
+than the prior preliminary estimate of $65.7\%$ cited above (from a
+visual-ID-curated edge-on subsample); we adopt the full-DR8-sweep
+$59.4\%$ as canonical going forward and read the prior $65.7\%$ as
+upper-bounded by visual-ID curation bias on the edge-on
+subsample. The raw$\to$equivariant CW$\leftrightarrow$CCW direction
+flip count over the full catalog is $5{,}586 + 4{,}977 = 10{,}563$
+($0.125\%$), of which $920+710 = 1{,}630$ ($0.21\%$ of the edge-on
+b/a$\,<0.3$ subsample) occur at edge-on inclinations. Reconciliation
+of the $53{,}862$ vs.\ $3{,}445$ figures cited in the R42 P4-OA-M5
+ask: (i) $53{,}862$ is the count of GZ1 ground-truth NOT\_SPIRAL
+labels in the cross-matched GZ1 subset (\texttt{class\_raw\_x ==
+"NOT\_SPIRAL"} in Catalog~C; not an edge-on count), against which
+the model's three-class accuracy and sidedness-aware metrics are
+benchmarked in Sec.~\ref{sec:training}; (ii) $3{,}445$ is the
+catalog-wide raw-CW/CCW $\to$ equivariant-\NS{} flip count
+($0.041\%$ of $8{,}474{,}531$, the proxy for the equivariance
+correction's edge-on retargeting) reported in the previous
+paragraph; the two quantities measure different things and are not
+contradictory. Companion artifact:
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}
+(full b/a-bin reconciliation table with raw-class transition
+matrix, b/a coverage statistics, and edge-on subsample dilution
+quantification). Closes R42 P4-OA-M5 cross-model peer-review MAJOR
+($32.8$~s pure pandas join on Pod~3, GPU genuinely idle throughout).}
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}

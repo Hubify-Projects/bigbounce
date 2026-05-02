@@ -201,9 +201,9 @@ export default function StatusPage() {
                     Galaxy Chirality at Scale: 8.47M Galaxies
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">97% Ready</Badge>
+                    <Badge variant="secondary">98% Ready</Badge>
                   </TableCell>
-                  <TableCell className="font-mono">~19</TableCell>
+                  <TableCell className="font-mono">~20</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

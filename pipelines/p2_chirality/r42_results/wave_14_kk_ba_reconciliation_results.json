@@ -1,0 +1,72 @@
+{
+  "wave": "14-KK",
+  "finding": "P4-OA-M5",
+  "table": [
+    {
+      "bin": "ge_0p5",
+      "n_total": 5280709,
+      "n_cw_eq": 825957,
+      "n_ccw_eq": 834293,
+      "n_ns_eq": 0,
+      "n_ns_raw": 0,
+      "n_flip_total": 5234417,
+      "n_flip_to_ns": 0,
+      "n_flip_from_ns": 0,
+      "n_flip_cw_to_ccw": 2577,
+      "n_flip_ccw_to_cw": 2711
+    },
+    {
+      "bin": "0p3_0p5",
+      "n_total": 1661999,
+      "n_cw_eq": 390184,
+      "n_ccw_eq": 394871,
+      "n_ns_eq": 0,
+      "n_ns_raw": 0,
+      "n_flip_total": 1648393,
+      "n_flip_to_ns": 0,
+      "n_flip_from_ns": 0,
+      "n_flip_cw_to_ccw": 1696,
+      "n_flip_ccw_to_cw": 947
+    },
+    {
+      "bin": "lt_0p3",
+      "n_total": 785859,
+      "n_cw_eq": 232012,
+      "n_ccw_eq": 234318,
+      "n_ns_eq": 0,
+      "n_ns_raw": 0,
+      "n_flip_total": 779847,
+      "n_flip_to_ns": 0,
+      "n_flip_from_ns": 0,
+      "n_flip_cw_to_ccw": 920,
+      "n_flip_ccw_to_cw": 710
+    },
+    {
+      "bin": "nan",
+      "n_total": 745964,
+      "n_cw_eq": 143954,
+      "n_ccw_eq": 145571,
+      "n_ns_eq": 0,
+      "n_ns_raw": 0,
+      "n_flip_total": 739772,
+      "n_flip_to_ns": 0,
+      "n_flip_from_ns": 0,
+      "n_flip_cw_to_ccw": 393,
+      "n_flip_ccw_to_cw": 609
+    },
+    {
+      "bin": "all",
+      "n_total": 8474531,
+      "n_cw_eq": 1592107,
+      "n_ccw_eq": 1609053,
+      "n_ns_eq": 0,
+      "n_ns_raw": 0,
+      "n_flip_total": 8402429,
+      "n_flip_to_ns": 0,
+      "n_flip_from_ns": 0,
+      "n_flip_cw_to_ccw": 5586,
+      "n_flip_ccw_to_cw": 4977
+    }
+  ],
+  "wall_seconds": 32.82742142677307
+}
