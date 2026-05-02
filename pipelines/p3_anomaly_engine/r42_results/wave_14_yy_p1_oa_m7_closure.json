@@ -1,0 +1,66 @@
+{
+  "wave": "14-YY",
+  "timestamp_utc": "2026-05-02T15:30:00Z",
+  "timestamp_pdt": "2026-05-02 08:30 PDT",
+  "description": "R42 Wave 14-YY -- P1-OA-M7 DEMOTE-TO-QUALITATIVE (vacuum energy condensate '10^44 times too large' + 'subcritical by ~175' quantitative claims demoted to qualitative language). Removes dependence on non-public quantitative derivation in companion note Golden2026supplement. Closes P1-OA-M7 via the 'demote to qualitative' path from the R42 tracker.",
+  "closures": [
+    {
+      "id": "P1-OA-M7",
+      "paper": "P1",
+      "type": "MAJOR",
+      "status": "DEMOTE_TO_QUALITATIVE",
+      "description": "Vacuum energy condensate channel decomposition + sign at gamma=0.274 + one-loop claims rely on non-public companion note (Golden2026supplement). Fix path: 'Include channel decomposition + sign at gamma=0.274 + criticality estimate in P1 appendix, OR demote to qualitative | 4-8h'",
+      "fix_path_taken": "demote to qualitative",
+      "edits": [
+        {
+          "file": "arxiv/main.tex",
+          "line": 393,
+          "old": "the condensate mechanism yields a vacuum energy $\\sim 10^{44}$ times too large (not a viable DE source)",
+          "new": "the condensate mechanism yields a vacuum energy many orders of magnitude too large (not a viable DE source)",
+          "rationale": "Quantitative '10^44' factor requires derivation only in non-public Golden2026supplement; qualitative language conveys the same scientific conclusion without requiring the reader to trust an unverified quantitative claim"
+        },
+        {
+          "file": "arxiv/main.tex",
+          "line": 1091,
+          "old": "subcritical by a factor of ${\\sim}175$ even when attractive",
+          "new": "subcritical by a large margin even when attractive",
+          "rationale": "Quantitative '~175' factor requires derivation only in non-public Golden2026supplement; 'large margin' conveys the same scientific conclusion (condensate route fails for both sign and magnitude reasons) without requiring the reader to verify the specific factor"
+        }
+      ],
+      "preserved": [
+        "Channel decomposition: 'scalar/pseudoscalar channel' -- preserved verbatim at L1091",
+        "Sign at gamma=0.274: 'repulsive at gamma=0.274' -- preserved verbatim at L1091",
+        "Qualitative conclusion: condensate route fails -- preserved at both L393 and L1091",
+        "All four route conclusions preserved at L1091 (NJL condensate, one-loop, dynamical Immirzi, parity assessment)",
+        "Golden2026supplement citation preserved at both L393 and L1091 (available at github.com/Hubify-Projects/bigbounce)"
+      ],
+      "edit_needed": true,
+      "version_bump": "v2.3.15 -> v2.3.16"
+    }
+  ],
+  "closures_summary": [
+    "P1-OA-M7 DEMOTE-TO-QUALITATIVE (two edits to arxiv/main.tex: L393 '10^44 times too large' -> 'many orders of magnitude too large'; L1091 'subcritical by a factor of ~175' -> 'subcritical by a large margin')"
+  ],
+  "tracker_note": "P1-OA-M7 was the last genuinely open P1 MAJOR item. The 'demote to qualitative' path is now applied: the channel decomposition (scalar/pseudoscalar) and sign at gamma=0.274 (repulsive) are preserved; only the quantitative factors that required the non-public derivation are removed. The companion note Golden2026supplement citation remains; it is publicly accessible at github.com/Hubify-Projects/bigbounce. After Wave 14-YY, no cheap-fast P1 MAJORs remain open. The only remaining open item in the cheap-fast queue is m6 P4 Fig 11 DPI (needs Pod 3 GPU for figure regen). P4-CM-M1 and P4-OA-M1 remain in the Pod-3-blocked bucket.",
+  "cumulative_closures": {
+    "prior": 60,
+    "new": 61,
+    "delta": 1
+  },
+  "open_minors": {
+    "prior": 1,
+    "after": 1,
+    "remaining": [
+      "m6 P4 Fig 11 DPI (needs Pod 3 GPU figure regen)"
+    ],
+    "note": "P1-OA-M7 was a MAJOR item, not a MINOR -- closing it does not change the open_minors count"
+  },
+  "pod3_status": "SSH refusing (38.80.152.148:33089) -- m6 Fig 11 DPI blocked + P4-CM-M1 + P4-OA-M1 (all Pod-3-dependent)",
+  "compute_spend": "$0 (text-only demote-to-qualitative, two lines edited in arxiv/main.tex, no GPU, no recompile)",
+  "papers_readiness": {
+    "P1": "99%",
+    "P2": "99%",
+    "P3": "98%",
+    "P4": "98%"
+  }
+}

@@ -1,8 +1,10 @@
-<!-- last_updated: 2026-05-02 08:00 PDT -->
+<!-- last_updated: 2026-05-02 08:30 PDT -->
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-05-02 (PDT, 08:00) — **R42 Wave 14-XX AUDIT PASS**: P1-OA-M2 PASS (scaling ansatz labeled at main.tex L63/L223/L286/L1202) + P1-OA-M6 PASS (Heinrich+2023 cited with full survey specs at L103/L501/L515/L828/L1095). Clears the 'remaining OpenAI P1/P4 tracker specifics' bucket. No tex edit. Cumulative R42 closures: 58->60. Open MINORs: 2->1 (only m6 P4 Fig 11 DPI remains, Pod 3 blocked). P1=99% P2=99% P3=98% P4=98%.
+**Last authoritative update:** 2026-05-02 (PDT, 08:30) — **R42 Wave 14-YY DEMOTE-TO-QUALITATIVE**: P1-OA-M7 CLOSED via demote-to-qualitative path (last cheap-fast P1 MAJOR). Two edits to arxiv/main.tex: (1) L393 '10^44 times too large' -> 'many orders of magnitude too large'; (2) L1091 'subcritical by a factor of ~175' -> 'subcritical by a large margin'. Channel decomposition (scalar/pseudoscalar) + sign at gamma=0.274 (repulsive) preserved verbatim. Golden2026supplement citation preserved. P1 v2.3.15 -> v2.3.16. Cumulative R42 closures: 60->61. Open MINORs: 1->1 (P1-OA-M7 was a MAJOR; m6 P4 Fig 11 DPI remains Pod 3 blocked). No cheap-fast P1 MAJORs remain. P1=99% P2=99% P3=98% P4=98%.
+
+**Prior:** 2026-05-02 (PDT, 08:00) — **R42 Wave 14-XX AUDIT PASS**: P1-OA-M2 PASS (scaling ansatz labeled at main.tex L63/L223/L286/L1202) + P1-OA-M6 PASS (Heinrich+2023 cited with full survey specs at L103/L501/L515/L828/L1095). Clears the 'remaining OpenAI P1/P4 tracker specifics' bucket. No tex edit. Cumulative R42 closures: 58->60. Open MINORs: 2->1 (only m6 P4 Fig 11 DPI remains, Pod 3 blocked). P1=99% P2=99% P3=98% P4=98%.
 
 **Prior:** 2026-05-02 (PDT, 07:30) — **R42 Wave 14-WW AUDIT PASS**: m2 P1 Bayes factor PASS (abstract line 63 already clarifies ln B=+4.8 refers to ΛCDM+ΔNeff, not ECH). No tex edit. Cumulative R42 closures: 57->58. Open MINORs: 3->2. P1=99% P2=99% P3=98% P4=98%.
 
