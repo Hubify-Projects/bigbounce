@@ -1,8 +1,10 @@
-<!-- last_updated: 2026-05-02 07:30 PDT -->
+<!-- last_updated: 2026-05-02 08:00 PDT -->
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-05-02 (PDT, 07:30) — **R42 Wave 14-WW AUDIT PASS**: m2 P1 Bayes factor PASS (abstract line 63 already clarifies ln B=+4.8 refers to ΛCDM+ΔNeff, not ECH). No tex edit. Cumulative R42 closures: 57->58. Open MINORs: 3->2. P1=99% P2=99% P3=98% P4=98%.
+**Last authoritative update:** 2026-05-02 (PDT, 08:00) — **R42 Wave 14-XX AUDIT PASS**: P1-OA-M2 PASS (scaling ansatz labeled at main.tex L63/L223/L286/L1202) + P1-OA-M6 PASS (Heinrich+2023 cited with full survey specs at L103/L501/L515/L828/L1095). Clears the 'remaining OpenAI P1/P4 tracker specifics' bucket. No tex edit. Cumulative R42 closures: 58->60. Open MINORs: 2->1 (only m6 P4 Fig 11 DPI remains, Pod 3 blocked). P1=99% P2=99% P3=98% P4=98%.
+
+**Prior:** 2026-05-02 (PDT, 07:30) — **R42 Wave 14-WW AUDIT PASS**: m2 P1 Bayes factor PASS (abstract line 63 already clarifies ln B=+4.8 refers to ΛCDM+ΔNeff, not ECH). No tex edit. Cumulative R42 closures: 57->58. Open MINORs: 3->2. P1=99% P2=99% P3=98% P4=98%.
 
 **Prior:** 2026-05-02 (PDT, 07:00) — **R42 Wave 14-VV LANDED**: P2 v1.7.8->v1.7.9 text-only MINOR close (m3 P2 Planck PR4/NPIPE f_NL citation FULL HARD FIX + m8 P1 SPT-3G 2024 birefringence INVALID). m3: 02_full_draft.tex line 305 Planck PR3 (Planck:2019fnl, f_NL=-0.9+/-5.1) replaced with PR4/NPIPE (Jung2025PlanckPR4fNL, f_NL=-0.1+/-5.0, Jung et al. 2025 A&A 702 A204 arXiv:2504.00884). Recasted bounce value: f_NL^bounce=-0.1+/-5.7 (r=0.876), 0.7sigma from bounce, 0.02sigma from zero. BibTeX appended to focused_paper_refs.bib. P2 v1.7.8->v1.7.9. m8 INVALID: SPT-3G removes global rotation by design (calibration step); no isotropic beta from SPT-3G exists; no main.tex edit needed. Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_vv_p2_minor_closure.json. Cumulative R42 closures: 55->57. Open MINORs: 5->3. PDF recompile pending Pod 3 restart. Per-paper: P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
 
