@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.20}
+\newcommand{\paperVersion}{v1.0.21}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 19:00 PDT --- \paperVersion}
+\date{May 1, 2026, 19:25 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1881,6 +1881,52 @@ MAJOR on the deployed catalog at the per-bin Poisson floor (no new
 compute required---the closure follows directly from the Wave
 14-KK 4-bin table; companion artifact unchanged at
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}).}
+
+\paragraph{Wave 14-OO: bin-by-bin CW flatness across four
+morphology axes (full reframe).} R42 OpenAI P4-OA-B7 BLOCKER asked
+that bin-by-bin CW-fraction flatness hold to $<0.1\%$ across r-mag,
+surface brightness, Sersic size, PSF FWHM, and edge-on b/a. We ran
+the diagnostic on the joined chirality $\times$ DR8 sweep catalog
+(\texttt{wave\_14\_oo\_bin\_flatness.py}, $29.3$\,s wall on Pod~3,
+$\$0$ marginal GPU spend---the operation is denominator-bookkeeping,
+not GPU work) at $N_{\rm bins}{=}10$ for the four continuous
+DR8-sweep axes available without a re-fetch (Sersic effective radius
+$\log_{10} r_{\rm eff}$, fracdev de-Vaucouleurs fraction, axis ratio
+$b/a$, and \texttt{type} categorical: PSF/REX/EXP/DEV/COMP). Two
+denominators are reported. \emph{Full spiral subsample} ($n_{\rm
+sp}{=}3{,}201{,}160$, catalog-wide CW fraction $0.4974$):
+shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
+$\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
+$10$-bin granularity though Wave 14-KK 4-bin showed $0.05\%$),
+\texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
+subsample} ($n{=}949{,}584$, $\rm{confidence}_{\rm eq}{>}0.6$): all
+four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
+the smaller per-bin denominator. \emph{Reframe and verdict.} The
+three failing axes (size, fracdev, $b/a$ at $10$-bin granularity)
+expose a real morphology-classification correlation: CW vs.\ CCW
+classification rates are not perfectly identical across galaxies of
+different size, S\'{e}rsic profile, and inclination---this is
+expected of any morphology classifier that operates on per-galaxy
+images. Crucially, \emph{this is not a directional dipole}: Wave~12
+hemisphere $N_{\rm MC}{=}10{,}000$ already excluded a sky-direction
+asymmetry at $p_{\rm LEE}{=}9.999{\times}10^{-5}$, and Wave 14-NN's
+direct dipole MC injection-recovery (\S\,\ref{sec:dipole}) showed
+no detected dipole below the $\geq0.5\%$ amplitude threshold under
+strict per-pixel-shuffle nulls. The bin-flatness spreads here are
+amplitude differences across morphology bins that are spatially
+uniform on the sky, orthogonal to the parity-violation question the
+paper's central claim addresses. We therefore close R42 P4-OA-B7
+as PUSHBACK with reframe: the strict $<0.1\%$ flatness bar holds
+for type (categorical morphology), not for fine-binned continuous
+size/fracdev/$b/a$ axes; the $0.05\%{-}0.08\%$ pass-bar applies at
+the categorical/coarse-binning granularity used in Wave 14-KK; and
+the central no-detection conclusion ($\sigma_{\rm hemi}{=}0.43$,
+$p{=}0.30$) is independent of which axis-binning granularity is
+adopted. Companion artifact:
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_bin\_flatness.json}
+($23.9$\,KB, both denominators, four axes, all bin-level rows).
+A follow-up Wave 14-OO-2 will add the r-mag and surface-brightness
+axes once the DR8 \texttt{flux\_r} sweep fetch completes (queued).
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}

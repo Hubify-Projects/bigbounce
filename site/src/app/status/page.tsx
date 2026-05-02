@@ -47,7 +47,7 @@ export default function StatusPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Last Updated: May 1, 2026 · 19:00 PDT
+          Last Updated: May 1, 2026 · 19:25 PDT
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Research Program Status
