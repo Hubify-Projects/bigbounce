@@ -2,7 +2,7 @@
 title: "Paper 1: Spin-Torsion Cosmology — POINTER"
 type: entity
 tags: [paper, ech, barriers, birefringence, bounce, pointer]
-last_updated: 2026-04-17
+last_updated: 2026-05-02
 superseded_by: project-context/SSOT/paper-1/status.md
 ---
 
@@ -23,7 +23,7 @@ superseded_by: project-context/SSOT/paper-1/status.md
 
 ## One-line status (mirror of SSOT)
 
-**v2.3.x · 99% ready.** Science is done (14-barrier catalog, perturbation-transparency theorem, ALP β=0.264°±0.065° real-Planck NaMaster, mechanism-independent f_NL = −35/8, bounce-class discrimination table, 424,181 MCMC samples). The 1% gap covers: L299 TBD wordsmith (✓ done 2026-04-17), figures-verify (✓ done 2026-04-17), corner plots from existing chains (pod), final PDF recompile (pod), arXiv tarball (✓ built 2026-04-17, pod smoke-test pending), site sync, wiki sync (this file).
+**v2.3.16 · 99% ready.** Science is done (14-barrier catalog, perturbation-transparency theorem, NaMaster 500MC β=0.238° bias-corrected prediction at ACT sensitivity / 0.77σ from Planck+ACT observation, mechanism-independent f_NL = −35/8, bounce-class discrimination table, 424,781 MCMC samples across 3 frozen dataset combinations). Remaining 1% gap: PDF recompile pod-blocked (v2.3.16 .tex done; Pod 3 H200 38.80.152.148:33089 refusing since 2026-05-01) + arXiv tarball smoke-test + site sync. All R42 BLOCKERs and MAJORs closed (Wave 14-Z last MAJOR). P1-LINE-299-WORDSMITH CLOSED (Wave 14-CCC). P1-CORNER-PLOTS CLOSED (integrated L951-953, Wave 14-CCC). P1-FIGURES-VERIFY CLOSED (all 4 figures present, Wave 14-DDD). See SSOT for full detail.
 
 ## Why this file exists as a pointer
 

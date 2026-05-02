@@ -15,7 +15,9 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 **Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 14-UU-edited 2026-05-02 05:00 PDT, `\paperVersion = v2.3.15`)
 **Canonical PDF:** `arxiv/main.pdf` (1.19 MB / 1,248,554 bytes / 34 pp, last recompiled 2026-05-02 04:00 PDT on Pod 3 under v2.3.14; v2.3.15 PDF recompile PENDING Pod 3 restart)
 **Bibliography:** `arxiv/references.bib` (1310+ lines, 66+ entries — Wave 14-Z added `Alonso2019`; Wave 14-V added `WilsonEwing2012`; Wave 14-U added `Agazie:2023ng15`)
-**Last authoritative update:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1-LINE-299-WORDSMITH and P1-CORNER-PLOTS both confirmed CLOSED in arxiv/main.tex. L299 TBD text was replaced with explicit "not yet derived" language (pre-wave-14-CCC commit, scorecard note at §5 row "post L299 fix" already acknowledged it). L882 "companion data release" language was replaced by integrated corner-plot figure at L951-953 (Fig. fig:corner_full_tension, getdist-thinned 119,617 post-burnin samples). Principle-10 audit table updated: Do-now: 0, Wordsmith: 0, gap-to-100% blurb updated, arXiv-readiness scorecard Principle-10 row promoted to PASS. No new R42 closure (maintenance only). No .tex edit. No closure count increment. Readiness unchanged at 99%.
+**Last authoritative update:** 2026-05-02 (PDT, 14:30) — **R42 Wave 14-DDD SSOT MAINTENANCE**: P1-FIGURES-VERIFY PASS (all 4 `\includegraphics` calls resolve: fig_theory_map.png at arxiv/, figures/figure1_lqg_holst_derivation_enhanced.png, figures/consistency_window_birefringence.pdf, figures/paper1_corner_full_tension.pdf). P1-WIKI-SYNC: wiki entity one-line status updated (corner plots marked done, sample count corrected 424,181->424,781). P1 §9 execution plan updated (steps 1/2/3/6 struck through as CLOSED). Scorecard Figures row promoted to PASS. Score gap reduced to P1-PDF-RECOMPILE + P1-TARBALL + P1-SITE-SYNC. No R42 closure increment (maintenance only). Cumulative R42 closures: 63 (unchanged). P1=99% P2=99% P3=98% P4=98% (unchanged).
+
+**Prior authoritative update:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1-LINE-299-WORDSMITH and P1-CORNER-PLOTS both confirmed CLOSED in arxiv/main.tex. L299 TBD text was replaced with explicit "not yet derived" language (pre-wave-14-CCC commit, scorecard note at §5 row "post L299 fix" already acknowledged it). L882 "companion data release" language was replaced by integrated corner-plot figure at L951-953 (Fig. fig:corner_full_tension, getdist-thinned 119,617 post-burnin samples). Principle-10 audit table updated: Do-now: 0, Wordsmith: 0, gap-to-100% blurb updated, arXiv-readiness scorecard Principle-10 row promoted to PASS. No new R42 closure (maintenance only). No .tex edit. No closure count increment. Readiness unchanged at 99%.
 
 **Prior authoritative update:** 2026-05-02 (PDT, 08:30) — **R42 Wave 14-YY DEMOTE-TO-QUALITATIVE**: P1-OA-M7 CLOSED (last cheap-fast P1 MAJOR). Demote-to-qualitative path applied to two lines in arxiv/main.tex: (1) L393 'condensate mechanism yields a vacuum energy ~10^44 times too large' -> 'many orders of magnitude too large'; (2) L1091 'subcritical by a factor of ~175 even when attractive' -> 'subcritical by a large margin even when attractive'. Channel decomposition (scalar/pseudoscalar channel) and sign at gamma=0.274 (repulsive) preserved verbatim at L1091. Golden2026supplement citation preserved at L393 and L1091 (publicly accessible at github.com/Hubify-Projects/bigbounce). P1 version bump v2.3.15 -> v2.3.16 (timestamp updated to 08:30 PDT). Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_yy_p1_oa_m7_closure.json. Cumulative R42 closures: 60 -> 61. Open MINORs: 1 -> 1 (P1-OA-M7 was a MAJOR; m6 P4 Fig 11 DPI remains only open MINOR, Pod 3 blocked). No cheap-fast P1 MAJORs remain open after Wave 14-YY. Per-paper readiness: P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap rule holds; PDF recompile pending Pod 3 restart).
 
@@ -95,7 +97,7 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 | Canonical `.tex` | `arxiv/main.tex` | ✅ present, 1208 lines |
 | Compiled PDF | `arxiv/main.pdf` | ✅ present, 510 KB, 2026-04-14 |
 | Bibliography | `arxiv/references.bib` | ✅ present, 1282 lines |
-| Figures folder | `arxiv/figures/` | ⚠ verify figure inventory matches `\includegraphics` calls (see P1-FIGURES-VERIFY) |
+| Figures folder | `arxiv/figures/` | ✅ P1-FIGURES-VERIFY PASS (Wave 14-DDD): all 4 `\includegraphics` calls resolve: `fig_theory_map.png` (arxiv/), `figures/figure1_lqg_holst_derivation_enhanced.png`, `figures/consistency_window_birefringence.pdf`, `figures/paper1_corner_full_tension.pdf` — all present on disk |
 | MCMC chains (full-tension) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/full_tension/` | ✅ 176,840 samples |
 | MCMC chains (Planck+BAO+SN) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/planck_bao_sn/` | ✅ 132,949 samples |
 | MCMC chains (third frozen combo) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/<combo>/` | ✅ ~114,992 samples (total 424,781 across 3 combos: 176,840 + 132,949 + 114,992 = 424,781; Paper 1 abstract canonical, supersedes 424,181 arithmetic mismatch fire #25) |
@@ -165,7 +167,7 @@ Broad grep list run: `future work | leave to future | defer | will be presented 
 | `\paperTimestamp` current | ⚠ STALE | set 2026-04-13 — refresh to compile date on next build |
 | Tarball ready | ⚠ NEEDED | `P1-TARBALL` |
 
-**Score: 99 %** — 1 % gap = P1-FIGURES-VERIFY + P1-PDF-RECOMPILE + P1-TARBALL + P1-SITE-SYNC + P1-WIKI-SYNC. (P1-LINE-299-WORDSMITH + P1-CORNER-PLOTS both CLOSED Wave 14-CCC.)
+**Score: 99 %** — 1 % gap = P1-PDF-RECOMPILE (pod-blocked) + P1-TARBALL + P1-SITE-SYNC. (P1-LINE-299-WORDSMITH CLOSED Wave 14-CCC. P1-CORNER-PLOTS CLOSED Wave 14-CCC. P1-FIGURES-VERIFY CLOSED Wave 14-DDD. P1-WIKI-SYNC CLOSED Wave 14-DDD.)
 
 ---
 
@@ -226,15 +228,15 @@ activity.html latest entries        ← recompile + site-sync events
 
 ## 9 · Execution plan — what to do next
 
-Order of operations to drive this SSOT from 99 % → 100 %:
+Order of operations to drive this SSOT from 99 % → 100 % (Wave 14-DDD updated):
 
-1. `P1-LINE-299-WORDSMITH` (15 min, agent, no pod needed)
-2. `P1-FIGURES-VERIFY` (10 min, agent, disk check)
-3. `P1-CORNER-PLOTS` (≈2 h, pod, `getdist` on existing chains)
-4. `P1-PDF-RECOMPILE` (15 min, pod, includes `\paperTimestamp` refresh)
+1. ~~`P1-LINE-299-WORDSMITH`~~ **CLOSED Wave 14-CCC** (L299 TBD replaced pre-wave-14-CCC)
+2. ~~`P1-FIGURES-VERIFY`~~ **CLOSED Wave 14-DDD** (all 4 figures verified present and resolving)
+3. ~~`P1-CORNER-PLOTS`~~ **CLOSED Wave 14-CCC** (integrated at L951-953, Fig. corner_full_tension)
+4. `P1-PDF-RECOMPILE` (15 min, **pod-blocked** — pending Pod 3 restart, includes `\paperTimestamp` refresh)
 5. `P1-SITE-SYNC` (30 min, site, batch with P3/P4 in aggregate `P-SITE-FULL-SYNC`)
-6. `P1-WIKI-SYNC` (10 min, agent, mechanical)
-7. `P1-TARBALL` (10 min, agent, final arXiv smoke-test)
+6. `P1-WIKI-SYNC` **CLOSED Wave 14-DDD** (wiki entity one-line status updated)
+7. `P1-TARBALL` (10 min, agent, final arXiv smoke-test — wait for PDF recompile first)
 8. Submit — bundle with `P-ARXIV-P3` window so Papers 1 + 3 + 4 land together; Paper 2 follows after its own sweep + close-gap pass.
 
 ---

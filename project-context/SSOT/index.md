@@ -1,8 +1,10 @@
-<!-- last_updated: 2026-05-02 14:00 PDT -->
+<!-- last_updated: 2026-05-02 14:30 PDT -->
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1 Principle-10 audit cleanup. P1-LINE-299-WORDSMITH CLOSED (L299 TBD already replaced, scorecard note confirms 'post L299 fix'). P1-CORNER-PLOTS CLOSED (corner plot integrated at L951-953, 119,617 samples). Principle-10 scorecard row updated to PASS. No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
+**Last authoritative update:** 2026-05-02 (PDT, 14:30) — **R42 Wave 14-DDD SSOT MAINTENANCE**: P1-FIGURES-VERIFY PASS (all 4 figures present). P1-WIKI-SYNC CLOSED (wiki entity one-line status updated: v2.3.16, NaMaster 500MC canonical, sample count 424,781, corner plots done). P1 §9 execution plan updated; scorecard Figures row to PASS. Score gap now = P1-PDF-RECOMPILE + P1-TARBALL + P1-SITE-SYNC. No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1. P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
+
+**Prior:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1 Principle-10 audit cleanup. P1-LINE-299-WORDSMITH CLOSED (L299 TBD already replaced, scorecard note confirms 'post L299 fix'). P1-CORNER-PLOTS CLOSED (corner plot integrated at L951-953, 119,617 samples). Principle-10 scorecard row updated to PASS. No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
 
 **Prior:** 2026-05-02 (PDT, 12:00) — **R42 Wave 14-BBB SSOT MAINTENANCE**: P3 stale-text cleanup (Wave 14-RR directive). Dropped stale "P3-OA-M9 NANOGrav Bayesian rerun still pending Pod 3 H200 compute (~2-4 h GPU)" residual from P3 status.md Current-state -- closed by Wave 14-RR (verified locally in 10.3s CPU). All four P3 OpenAI MINORs closed Wave 14-TT. Cron-driven ETA updated to "text-only work complete." No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
 
