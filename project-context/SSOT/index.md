@@ -1,8 +1,10 @@
-<!-- last_updated: 2026-05-02 12:00 PDT -->
+<!-- last_updated: 2026-05-02 14:00 PDT -->
 
 # BigBounce SSOT — cross-paper dashboard
 
-**Last authoritative update:** 2026-05-02 (PDT, 12:00) — **R42 Wave 14-BBB SSOT MAINTENANCE**: P3 stale-text cleanup (Wave 14-RR directive). Dropped stale "P3-OA-M9 NANOGrav Bayesian rerun still pending Pod 3 H200 compute (~2-4 h GPU)" residual from P3 status.md Current-state -- closed by Wave 14-RR (verified locally in 10.3s CPU). All four P3 OpenAI MINORs closed Wave 14-TT. Cron-driven ETA updated to "text-only work complete." No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
+**Last authoritative update:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1 Principle-10 audit cleanup. P1-LINE-299-WORDSMITH CLOSED (L299 TBD already replaced, scorecard note confirms 'post L299 fix'). P1-CORNER-PLOTS CLOSED (corner plot integrated at L951-953, 119,617 samples). Principle-10 scorecard row updated to PASS. No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
+
+**Prior:** 2026-05-02 (PDT, 12:00) — **R42 Wave 14-BBB SSOT MAINTENANCE**: P3 stale-text cleanup (Wave 14-RR directive). Dropped stale "P3-OA-M9 NANOGrav Bayesian rerun still pending Pod 3 H200 compute (~2-4 h GPU)" residual from P3 status.md Current-state -- closed by Wave 14-RR (verified locally in 10.3s CPU). All four P3 OpenAI MINORs closed Wave 14-TT. Cron-driven ETA updated to "text-only work complete." No R42 closure increment. Cumulative R42 closures: 63 (unchanged). Open MAJORs: 0. Open MINORs: 1 (m6 P4 Fig 11 DPI Pod 3 blocked). P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap holds).
 
 **Prior:** 2026-05-02 (PDT, 11:30) — **R42 Wave 14-AAA FULL HARD FIX**: P2-OA-B4 CLOSED (stale code-release tag in Data-and-Code-Availability section). P2-OA-B4: URL and release tag reference in `research/focused_paper_source_integration/02_full_draft.tex` line 381 updated from v1.7.0 to v1.7.9-paper2; git tag v1.7.9-paper2 created and pushed to remote (replacing stale local-only v1.7.6-paper2). Cumulative R42 closures: 62->63. Open MAJORs: 0->0 (unchanged). Open MINORs: 1->1 (m6 P4 Fig 11 DPI remains Pod 3 blocked). Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_aaa_p2_oa_b4_closure.json. Pod 3 SSH still refusing. P1=99% P2=99% P3=98% P4=98%.
 

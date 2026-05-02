@@ -2,7 +2,7 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-05-02 08:30 PDT
+last_updated: 2026-05-02 14:00 PDT
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf (mirrored to public/papers/{paper1_spin_torsion.pdf, spin_torsion_paper1.pdf, spin-torsion-paper.pdf} + site/public/arxiv_v2/main.pdf + site/public/papers/{paper1_spin_torsion.pdf, spin_torsion_paper1.pdf, spin-torsion-paper.pdf} — v2.3.14 recompile LANDED 2026-05-02 04:00 PDT on Pod 3, 1,248,554 bytes / 34 pp; v2.3.15 PDF recompile PENDING Pod 3 restart)
 version: v2.3.15
@@ -15,7 +15,9 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 **Canonical `.tex`:** `arxiv/main.tex` (R42 Wave 14-UU-edited 2026-05-02 05:00 PDT, `\paperVersion = v2.3.15`)
 **Canonical PDF:** `arxiv/main.pdf` (1.19 MB / 1,248,554 bytes / 34 pp, last recompiled 2026-05-02 04:00 PDT on Pod 3 under v2.3.14; v2.3.15 PDF recompile PENDING Pod 3 restart)
 **Bibliography:** `arxiv/references.bib` (1310+ lines, 66+ entries — Wave 14-Z added `Alonso2019`; Wave 14-V added `WilsonEwing2012`; Wave 14-U added `Agazie:2023ng15`)
-**Last authoritative update:** 2026-05-02 (PDT, 08:30) — **R42 Wave 14-YY DEMOTE-TO-QUALITATIVE**: P1-OA-M7 CLOSED (last cheap-fast P1 MAJOR). Demote-to-qualitative path applied to two lines in arxiv/main.tex: (1) L393 'condensate mechanism yields a vacuum energy ~10^44 times too large' -> 'many orders of magnitude too large'; (2) L1091 'subcritical by a factor of ~175 even when attractive' -> 'subcritical by a large margin even when attractive'. Channel decomposition (scalar/pseudoscalar channel) and sign at gamma=0.274 (repulsive) preserved verbatim at L1091. Golden2026supplement citation preserved at L393 and L1091 (publicly accessible at github.com/Hubify-Projects/bigbounce). P1 version bump v2.3.15 -> v2.3.16 (timestamp updated to 08:30 PDT). Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_yy_p1_oa_m7_closure.json. Cumulative R42 closures: 60 -> 61. Open MINORs: 1 -> 1 (P1-OA-M7 was a MAJOR; m6 P4 Fig 11 DPI remains only open MINOR, Pod 3 blocked). No cheap-fast P1 MAJORs remain open after Wave 14-YY. Per-paper readiness: P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap rule holds; PDF recompile pending Pod 3 restart).
+**Last authoritative update:** 2026-05-02 (PDT, 14:00) — **R42 Wave 14-CCC SSOT MAINTENANCE**: P1-LINE-299-WORDSMITH and P1-CORNER-PLOTS both confirmed CLOSED in arxiv/main.tex. L299 TBD text was replaced with explicit "not yet derived" language (pre-wave-14-CCC commit, scorecard note at §5 row "post L299 fix" already acknowledged it). L882 "companion data release" language was replaced by integrated corner-plot figure at L951-953 (Fig. fig:corner_full_tension, getdist-thinned 119,617 post-burnin samples). Principle-10 audit table updated: Do-now: 0, Wordsmith: 0, gap-to-100% blurb updated, arXiv-readiness scorecard Principle-10 row promoted to PASS. No new R42 closure (maintenance only). No .tex edit. No closure count increment. Readiness unchanged at 99%.
+
+**Prior authoritative update:** 2026-05-02 (PDT, 08:30) — **R42 Wave 14-YY DEMOTE-TO-QUALITATIVE**: P1-OA-M7 CLOSED (last cheap-fast P1 MAJOR). Demote-to-qualitative path applied to two lines in arxiv/main.tex: (1) L393 'condensate mechanism yields a vacuum energy ~10^44 times too large' -> 'many orders of magnitude too large'; (2) L1091 'subcritical by a factor of ~175 even when attractive' -> 'subcritical by a large margin even when attractive'. Channel decomposition (scalar/pseudoscalar channel) and sign at gamma=0.274 (repulsive) preserved verbatim at L1091. Golden2026supplement citation preserved at L393 and L1091 (publicly accessible at github.com/Hubify-Projects/bigbounce). P1 version bump v2.3.15 -> v2.3.16 (timestamp updated to 08:30 PDT). Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_yy_p1_oa_m7_closure.json. Cumulative R42 closures: 60 -> 61. Open MINORs: 1 -> 1 (P1-OA-M7 was a MAJOR; m6 P4 Fig 11 DPI remains only open MINOR, Pod 3 blocked). No cheap-fast P1 MAJORs remain open after Wave 14-YY. Per-paper readiness: P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap rule holds; PDF recompile pending Pod 3 restart).
 
 **Prior authoritative update:** 2026-05-02 (PDT, 08:00) — **R42 Wave 14-XX AUDIT PASS**: P1-OA-M2 (D_inf scaling ansatz label) + P1-OA-M6 (SPHEREx forecast Heinrich+2023 citation) both already addressed in main.tex. P1-OA-M2: 'scaling ansatz' label present at L63 (abstract), L223 (body), L286 (body), L1202 (appendix) — the 'label Eq. 14 as ansatz' fix path fully implemented. P1-OA-M6: Heinrich+2023 cited with explicit survey volume (f_sky=0.75, ~3e8 galaxies), b_phi prior (sigma(b_phi)/b_phi=0.2), GR-projection budget, photo-z marginalization at L103/L501/L515/L828/L1095 — the 'or cite Heinrich+2023' path fully implemented. No tex edit needed for either. Clears the 'remaining OpenAI P1/P4 tracker specifics' bucket (P1-OA-M9 closed Wave 14-W, P1-OA-M10 closed Wave 14-V, P1-CM-M1+M2 closed Wave 11-A). Companion artifact: pipelines/p3_anomaly_engine/r42_results/wave_14_xx_p1_oa_minor_closure.json. Cumulative R42 closures: 58 -> 60. Open MINORs: 2 -> 1. Per-paper readiness: P1=99% P2=99% P3=98% P4=98% (unchanged; 99%-cap rule holds).
 
@@ -65,7 +67,7 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 - Paper 1 is **the most mature** of the four papers — v2.3.0, 10+ revision rounds, PRD-style revtex4-2, two-column, ~24 pages.
 - The science is done: 14 structural barriers, β = 0.27° ALP birefringence prediction (with independent NaMaster measurement β = 0.264° ± 0.065° at 0.09σ from prediction; Pod 1 production 500MC pipeline test confirms β=0.27° recovered with bias 0.032°, SNR=20.32 at ACT sensitivity; consistency vs joint Planck+ACT observation = 0.77σ; canonical: `pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json`), ΔN_eff MCMC verification, bounce-model discrimination table, Monte Carlo sensitivity scan, chirality-catalog null-result robustness section.
 - The PDF compiles cleanly (0 undefined references on last compile).
-- **Gap to 100 %:** 1 wordsmith on L299 "TBD", 1 corner-plot data-release note at L882, one verified site-sync pass, and a fresh dated recompile. Three truly-blocked exceptions (L291 photon-torsion coupling, L744 Cuscuton-ECH analysis, L976 γ-origin derivation) are all covered by explicit alternative mechanisms or acknowledged as outside scope — honest, not deferrals.
+- **Gap to 100 %:** PDF recompile (Pod 3 pending restart) + site-sync pass + arXiv tarball. P1-LINE-299-WORDSMITH CLOSED (L299 TBD replaced with explicit "not yet derived" language, pre-wave-14-CCC commit). P1-CORNER-PLOTS CLOSED (corner plot integrated at L951-953, Fig. corner_full_tension, 119,617 post-burnin samples). Three truly-blocked exceptions (L291 photon-torsion coupling, L744 Cuscuton-ECH analysis, L976 γ-origin derivation) are all covered by explicit alternative mechanisms or acknowledged as outside scope — honest, not deferrals.
 - Estimated headline: **99 % arXiv-ready.** Same tier as Paper 3. Can submit alongside Papers 3+4.
 
 ---
@@ -131,18 +133,18 @@ Broad grep list run: `future work | leave to future | defer | will be presented 
 | Line | Key phrase | Classification | Reason |
 |---:|---|---|---|
 | 291 | "coupling has not yet been derived in this work" | **TRULY-BLOCKED, with alt mechanism covered** | The spectator ALP path is derived in §III and accommodates the observed signal; the one-loop torsion coupling is acknowledged as 10⁵× too small. The alternate mechanism is already in the paper. Honest limitation, not a deferral. |
-| 299 | "(amplitude and shape TBD)" for anisotropic low-ℓ | **WORDSMITH (P1-LINE-299-WORDSMITH)** | TBD is a smell. Replace with either a parametric estimate OR an explicit "not derived here" statement. 15-min edit. |
+| 299 | "(amplitude and shape TBD)" for anisotropic low-ℓ | **CLOSED (P1-LINE-299-WORDSMITH, Wave 14-CCC)** | TBD replaced with explicit "its amplitude is not yet derived" language (L1083 current text; scorecard row confirms "post L299 fix"). |
 | 306 | (long matching line) | **VERIFY** | Re-read context to confirm benign/honest |
 | 736 | "invites comparison across the landscape" | **BENIGN** | Rhetorical framing, not a deferral |
 | 744 | "deferred to future work" (Cuscuton ECH analysis) | **TRULY-BLOCKED** | Requires a new Cuscuton+ECH-specific perturbation calculation that has not been done in the literature; non-simulatable in any short horizon |
-| 882 | "will be presented in a companion data release" (corner plots) | **DO-NOW (P1-CORNER-PLOTS)** | MCMC chains already exist (424,781 samples; Paper 1 abstract canonical). Generating corner plots is `getdist` on-disk. Can land today. Then update paper to cite the figure. |
+| 882 | "will be presented in a companion data release" (corner plots) | **CLOSED (P1-CORNER-PLOTS, Wave 14-CCC)** | Corner plot integrated at L951-953 (Fig. corner_full_tension). getdist-thinned 119,617 post-burnin samples from full-tension MCMC chains. Language "companion data release" removed; figure cited inline. |
 | 976 | "would place the entire framework on firmer ground" (γ origin) | **TRULY-BLOCKED** | Derivation of the Barbero-Immirzi parameter from first principles is an open problem in LQG; not simulatable |
 | 1009 | "forthcoming data from CMB-S4, LiteBIRD, Euclid, and LSST" | **BENIGN** | Standard references to real future experiments; acceptable scientific framing |
 
-**Post-correction summary:**
+**Post-correction summary (Wave 14-CCC updated):**
 - Truly-blocked: **3** (L291, L744, L976) — honest scope boundaries with alt mechanisms or open-problem status
-- Do-now: **1** (L882) — corner plots from existing chains
-- Wordsmith: **1** (L299) — replace TBD
+- Do-now: **0** — P1-CORNER-PLOTS CLOSED (corner plot integrated L951-953)
+- Wordsmith: **0** — P1-LINE-299-WORDSMITH CLOSED (TBD replaced with explicit "not yet derived" language)
 - Benign: **3+1** (L306 pending verify, L736, L1009)
 
 ---
@@ -158,12 +160,12 @@ Broad grep list run: `future work | leave to future | defer | will be presented 
 | Authors / affiliations | ✅ PASS | Houston Golden, Independent Researcher, Los Angeles |
 | Claims table matches text | ✅ PASS (spot-verified above) | |
 | Cross-refs to Paper 2/3/4 | ✅ PASS | `Golden:2026fnlforecast`, `Golden:2026chirality`, `Golden:2026anomalies` referenced |
-| Principle-10 zero-unclassified | ⚠ PARTIAL | 1 DO-NOW (L882) + 1 WORDSMITH (L299) before green |
+| Principle-10 zero-unclassified | ✅ PASS | P1-LINE-299-WORDSMITH CLOSED (Wave 14-CCC); P1-CORNER-PLOTS CLOSED (Wave 14-CCC). 0 DO-NOW, 0 WORDSMITH remaining. |
 | arXiv categories | ✅ PASS | gr-qc / astro-ph.CO / hep-th listed in comment header |
 | `\paperTimestamp` current | ⚠ STALE | set 2026-04-13 — refresh to compile date on next build |
 | Tarball ready | ⚠ NEEDED | `P1-TARBALL` |
 
-**Score: 99 %** — 1 % gap = P1-LINE-299-WORDSMITH + P1-CORNER-PLOTS + P1-FIGURES-VERIFY + P1-PDF-RECOMPILE + P1-TARBALL + P1-SITE-SYNC + P1-WIKI-SYNC.
+**Score: 99 %** — 1 % gap = P1-FIGURES-VERIFY + P1-PDF-RECOMPILE + P1-TARBALL + P1-SITE-SYNC + P1-WIKI-SYNC. (P1-LINE-299-WORDSMITH + P1-CORNER-PLOTS both CLOSED Wave 14-CCC.)
 
 ---
 
