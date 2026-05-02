@@ -1,0 +1,37 @@
+{
+  "wave": "14-WW",
+  "timestamp_utc": "2026-05-02T14:30:00Z",
+  "timestamp_pdt": "2026-05-02 07:30 PDT",
+  "description": "R42 Wave 14-WW — m2 P1 Bayes factor generic-ΔNeff clarification AUDIT PASS (abstract already addressed)",
+  "closures": [
+    {
+      "id": "m2",
+      "paper": "P1",
+      "type": "MINOR",
+      "status": "AUDIT_PASS",
+      "description": "Bayes factor +4.8 is for generic ΔNeff, not specific to ECH — clarify in abstract",
+      "audit_finding": "Abstract line 63 already explicitly states: 'The Bayes factor ln B = +4.8 obtained for this proxy...should be regarded as indicative only...and refers to Lambda-CDM+DeltaNeff, not to the spin-torsion theory.' This is the exact clarification requested. The phrase 'not to the spin-torsion theory' directly addresses the reviewer finding 'Bayes factor +4.8 is for generic DeltaNeff, not specific to ECH'. No edit needed.",
+      "verified_at": "arxiv/main.tex line 63 (abstract)",
+      "edit_needed": false
+    }
+  ],
+  "pass_closures": ["m2 P1 AUDIT PASS"],
+  "cumulative_closures": {
+    "prior": 57,
+    "new": 58,
+    "delta": 1
+  },
+  "open_minors": {
+    "prior": 3,
+    "after": 2,
+    "remaining": ["m6 P4 Fig 11 DPI (needs Pod 3 GPU figure regen)", "any remaining OpenAI P1/P4 tracker specifics"]
+  },
+  "pod3_status": "SSH refusing (38.80.152.148:33089) — m6 Fig 11 DPI blocked",
+  "compute_spend": "$0 (audit pass, no GPU, no tex edit)",
+  "papers_readiness": {
+    "P1": "99%",
+    "P2": "99%",
+    "P3": "98%",
+    "P4": "98%"
+  }
+}
