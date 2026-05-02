@@ -1,0 +1,19 @@
+{
+  "wave": "14-AAA",
+  "timestamp_utc": "2026-05-02T18:30:00Z",
+  "timestamp_pdt": "2026-05-02 11:30 PDT",
+  "paper": "P2",
+  "finding_id": "P2-OA-B4",
+  "finding_source": "R42 cross-model peer review",
+  "closure_stance": "FULL_HARD_FIX",
+  "fix_path_taken": "Created and pushed git tag v1.7.9-paper2 at current HEAD (de07c1c8); updated Data-and-Code-Availability URL and release tag reference in 02_full_draft.tex line 381 from v1.7.0 to v1.7.9-paper2. Stale local tag v1.7.6-paper2 deleted. Tag v1.7.9-paper2 now live on remote.",
+  "version_bump": {"paper": "P2", "manuscript_version": "v1.7.9", "no_version_bump_needed": "version already at v1.7.9; only tag reference updated"},
+  "cumulative_closures": {"prior": 62, "new": 63, "delta": 1},
+  "open_majors": {"prior": 0, "after": 0, "note": "P2-OA-B4 was a BLOCKER-class code-release finding; all R42 MAJORs remain 0"},
+  "open_minors": {"prior": 1, "after": 1, "note": "m6 P4 Fig 11 DPI still blocked on Pod 3"},
+  "papers_readiness": {"P1": "99%", "P2": "99%", "P3": "98%", "P4": "98%"},
+  "artifacts_modified": [
+    "research/focused_paper_source_integration/02_full_draft.tex (line 381: v1.7.0 -> v1.7.9-paper2)",
+    "git tag v1.7.9-paper2 pushed to remote"
+  ]
+}
