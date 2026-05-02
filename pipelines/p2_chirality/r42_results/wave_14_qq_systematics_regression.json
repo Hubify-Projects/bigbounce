@@ -1,0 +1,89 @@
+{
+  "wave": "14-QQ",
+  "issue": "P4-OA-M1 deep systematics regression on cached chirality_v2 logits",
+  "n_total_joined": 8474531,
+  "n_spirals_used": 3201160,
+  "n_features": 17,
+  "feature_numeric_cols": [
+    "b_over_a",
+    "fracdev",
+    "shape_r_eff",
+    "shapedev_e1",
+    "shapedev_e2",
+    "shapeexp_r",
+    "shapeexp_e1",
+    "shapeexp_e2",
+    "e1_eff",
+    "e2_eff",
+    "e_mag",
+    "ra",
+    "dec"
+  ],
+  "feature_type_categories": [
+    "COMP",
+    "DEV",
+    "EXP",
+    "REX"
+  ],
+  "n_folds": 5,
+  "n_epochs_per_fold": 50,
+  "batch_size": 4096,
+  "learning_rate": 0.001,
+  "hidden_layers": [
+    256,
+    128,
+    64
+  ],
+  "seed": 20260501,
+  "label_mapping": {
+    "CW": 0,
+    "CCW": 1
+  },
+  "fold_results": [
+    {
+      "fold": 1,
+      "n_train": 2560928,
+      "n_val": 640232,
+      "auc": 0.5661184664614503,
+      "wall_s": 671.0802962779999
+    },
+    {
+      "fold": 2,
+      "n_train": 2560928,
+      "n_val": 640232,
+      "auc": 0.5659593569535235,
+      "wall_s": 677.164402961731
+    },
+    {
+      "fold": 3,
+      "n_train": 2560928,
+      "n_val": 640232,
+      "auc": 0.5653445235737343,
+      "wall_s": 699.6943564414978
+    },
+    {
+      "fold": 4,
+      "n_train": 2560928,
+      "n_val": 640232,
+      "auc": 0.565198289948357,
+      "wall_s": 708.8245429992676
+    },
+    {
+      "fold": 5,
+      "n_train": 2560928,
+      "n_val": 640232,
+      "auc": 0.565550407151935,
+      "wall_s": 720.9395790100098
+    }
+  ],
+  "auc_mean": 0.5656342088178,
+  "auc_std": 0.0003940787662910133,
+  "auc_5fold_min": 0.565198289948357,
+  "auc_5fold_max": 0.5661184664614503,
+  "verdict": "SYSTEMATICS_LEAK",
+  "interpretation": "AUC=0.5656 \u00b1 0.0004 > 0.55: systematics CAN recover chirality. Signal contamination \u2014 re-examine P4 systematics narrative.",
+  "wallclock_s": 3503.033569574356,
+  "device": "cuda",
+  "gpu_name": "NVIDIA H200",
+  "timestamp": "2026-05-02 03:56:17 UTC"
+}

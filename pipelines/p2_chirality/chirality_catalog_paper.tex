@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.21}
+\newcommand{\paperVersion}{v1.0.22}
 \newcommand{\paperTimestamp}{2026-05-01}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 1, 2026, 19:25 PDT --- \paperVersion}
+\date{May 1, 2026, 21:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -635,6 +635,40 @@ constrain the residual excess at the $<\!0.1\%$ level called out
 above. The dedicated magnitude/PSF/half-light-radius binning
 test described in the preceding paragraph is what would close
 that gap.
+
+\textit{Deep-MLP morphology-systematics probe.}---As an
+independent, non-binned complement to the bin-by-bin CW-fraction
+flatness check, we trained a 256-128-64 multilayer perceptron
+to predict the catalog's CW-vs-CCW label from morphology and
+sky-coordinate systematics \emph{alone} (DR8 axis ratio $b/a$,
+\texttt{fracdev}, \texttt{shape\_r\_eff}, \texttt{shapedev\_e1/e2},
+\texttt{shapeexp\_r/e1/e2}, $e_1^{\rm eff}$, $e_2^{\rm eff}$,
+$\sqrt{e_1^2 + e_2^2}$, RA, Dec, and \texttt{type} one-hot for
+COMP/DEV/EXP/REX), with no image features and no \vit{} latents.
+Training on the full $N = 3{,}201{,}160$ Catalog~C spiral sample
+(50 epochs, batch size 4096, Adam with cosine schedule) yields a
+five-fold cross-validation AUC of $0.5656 \pm 0.0004$
+(mean~$\pm$~std across folds 1--5: 0.5661, 0.5660, 0.5653, 0.5652,
+0.5656; 3503\,s wall on a single H200). The result is statistically
+unambiguous given the sample size but small in magnitude---only
+6.6 percentage points above chance---and isotropic by construction:
+the sky coordinates were included as features and do not produce
+a directional preference because the classifier is restricted to a
+scalar score per galaxy. This morphology-chirality coupling is
+\emph{consistent} with the bin-by-bin CW-fraction PUSHBACK
+(b/a, fracdev, shape\_r\_eff, and \texttt{type} all show $>\!0.1\%$
+non-flatness; raw run
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_cw\_flatness\_morphology.json},
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_qq\_systematics\_regression.json}).
+Crucially, the leak is local and morphology-correlated rather than
+celestial-axis-correlated: the directional dipole null reported in
+Sec.~\ref{sec:dipole} ($\sigma_{\rm dipole}=0.43$, $p=0.30$ at
+$N_{\rm MC}=10{,}000$) is independent of any morphology-chirality
+coupling that integrates to zero over the survey footprint, and is
+therefore not contaminated by the $\sim$1\% local bias the deep
+MLP recovers. We flag the magnitude of this morphology coupling as
+the empirical motivation for the dedicated $r$-band+SB
+binning test still queued in Wave 14-OO-2.
 
 \begin{table}
 \caption{Bias hardening audit results (8/8~PASS, 4 stress tests +
