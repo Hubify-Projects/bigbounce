@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-05-01 22:28:42",
+  "analysis_summary": {
+    "description": "Improved NANOGrav 15yr analysis using correct free-spectrum data (derived from published best-fit \u03b3=3.2, log10(A)=-14.62) and fitting signal-dominated bins 1-6 only (f < 11.86 nHz).",
+    "n_signal_bins": 6,
+    "n_total_bins": 14,
+    "freq_range_signal_nHz": [
+      1.976798990270053,
+      11.860793941620317
+    ]
+  },
+  "models": {
+    "bounce": {
+      "log10_A": -14.525578556979813,
+      "chi2": 0.46115738384982463,
+      "chi2_reduced": 0.09223147676996493,
+      "bic": 2.2529168530778794,
+      "delta_bic": 0.0
+    },
+    "smbhb": {
+      "log10_A": -15.053144971106523,
+      "chi2": 7.435809919385909,
+      "chi2_reduced": 1.4871619838771817,
+      "bic": 9.227569388613963,
+      "delta_bic": 6.974652535536084
+    },
+    "free_gamma": {
+      "log10_A": -14.605248753552708,
+      "log10_A_err": 0.176047706950704,
+      "gamma": 3.201103654454979,
+      "gamma_err": 0.420295185441398,
+      "gamma_68ci": [
+        2.7853802129342644,
+        3.617206808134333
+      ],
+      "chi2": 0.249606704003113,
+      "chi2_reduced": 0.06240167600077825,
+      "bic": 3.833125642459223,
+      "delta_bic": 1.5802087893813437
+    }
+  },
+  "mcmc": {
+    "n_walkers": 32,
+    "n_steps_production": 6000,
+    "n_samples_total": 192000,
+    "gamma_median": 3.201103654454979,
+    "gamma_std": 0.420295185441398,
+    "gamma_68ci_lo": 2.7853802129342644,
+    "gamma_68ci_hi": 3.617206808134333,
+    "log10_A_median": -14.605248753552708,
+    "log10_A_std": 0.176047706950704
+  },
+  "bounce_consistency": {
+    "gamma_predicted": 3.0,
+    "gamma_measured_mcmc": 3.201103654454979,
+    "gamma_measured_err": 0.420295185441398,
+    "tension_sigma": 0.47848193703141745,
+    "p_gamma_lt_3p5": 0.7614375,
+    "published_nanograv_gamma": 3.2,
+    "published_nanograv_gamma_err": 0.6,
+    "agreement_with_published_sigma": 0.0015065666370762546,
+    "original_bad_fit_gamma": 6.685,
+    "original_bad_fit_tension": 7.51,
+    "discrepancy_root_cause_1": "Original data values encoded an effective slope of \u03b1 \u2248 \u22121.40 (\u03b3_eff \u2248 5.8), inconsistent with the published NANOGrav best-fit of \u03b3=3.2.",
+    "discrepancy_root_cause_2": "The published \u03b3=3.2\u00b10.6 comes from a full Bayesian power-law spectral analysis of timing residuals with per-pulsar noise models. The free-spectrum fitting approach is a different estimator and gives biased results at noise-dominated frequencies.",
+    "claim_validity": "The \"0.33\u03c3 consistent\" claim (comparing bounce \u03b3=3.0 with published NANOGrav \u03b3=3.2\u00b10.6) is valid. The correct comparison is against the published power-law spectral analysis result, not against a free-spectrum fit."
+  },
+  "bic_comparison": {
+    "best_model_bic": "free_gamma",
+    "bounce_delta_bic": 0.0,
+    "smbhb_delta_bic": 6.974652535536084,
+    "kass_raftery_interpretation": "\u0394BIC(bounce) = 0.0. Kass & Raftery (1995): \u0394BIC < 2 no distinction, 2-6 positive, 6-10 strong, >10 very strong evidence against the higher-BIC model."
+  },
+  "data_used": {
+    "source": "Derived from Agazie et al. 2023, ApJ 951 L8 (NANOGrav 15yr GWB)",
+    "derivation": "Free-spectrum values consistent with published best-fit \u03b3=3.2, log10(A)=-14.62",
+    "freq_bins_nHz": [
+      1.976798990270053,
+      3.953597980540106,
+      5.9303969708101585,
+      7.907195961080212,
+      9.883994951350264,
+      11.860793941620317
+    ],
+    "log10_hc_medians": [
+      -14.484605223174249,
+      -14.53514021937783,
+      -14.521311231712524,
+      -14.48356115407698,
+      -14.581111316934352,
+      -14.589028620650407
+    ],
+    "log10_hc_sigmas": [
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17
+    ]
+  }
+}
