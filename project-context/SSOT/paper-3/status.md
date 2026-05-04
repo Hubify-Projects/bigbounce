@@ -2,7 +2,7 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-05-04 (PDT, 17:30) — **R43 Wave 14-MMM WAVE-TAG SCRUB**: P3 v3.1.18->v3.1.19: all R42/R43 lab-notebook wave labels removed from prose (23 locations: Wave 14-BB/N/L/O/R/II/X tags, R42 stratification disclosures reformatted as Note:/Stratification note:). 41->40 pages. PDF recompiled clean (28,347,451 bytes / 40 pp / 0 undef refs). All mirrors updated. P3=99%.
+Last authoritative update: 2026-05-04 (PDT, 18:30) — **R43 Wave 14-NNN P3-CROSS-SURVEY-DEDUP CLOSE**: P3 v3.1.19->v3.1.20: §4.3 Cross-Survey Matches updated to cite full dedup result (637 multi-survey coincidences at 5'' across 388,493 detections; 378,280 unique objects; 2.6% compression; all pairwise, no triples); dedup provenance anchored to pathc_dedup_summary_no_act.json. PDF recompiled clean (28,349,715 bytes / 40 pp / 0 undef refs). All mirrors updated. P3-CROSS-SURVEY-DEDUP CLOSED. P3=99%.
 
 Prior authoritative update: 2026-05-04 (PDT, 16:00) — **R43 Wave 14-KKK**: P3 v3.1.17->v3.1.18: fig:skymap caption relabeled as cross-transfer baseline (superseded by Path-C 378,280); fig:sdss_umap caption relabeled as cross-transfer baseline (superseded by native retrain 12 sources at S>5). PDF recompiled clean (28,363,057 bytes / 41 pp / 0 undef refs). All mirrors updated. P3=99% (99%-cap holds).
 
