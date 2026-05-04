@@ -84,51 +84,56 @@ export default function PaperPage() {
           {papers.map((paper) => (
             <Card
               key={paper.slug}
-              className={`index-card ${paper.readiness === 100 ? "index-card-primary" : ""}`}
+              className={`index-card overflow-hidden ${paper.readiness === 100 ? "index-card-primary" : ""}`}
             >
               <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
                     <CardDescription className="text-xs uppercase tracking-wider">
-                      Paper {paper.number} &middot; {paper.version}
+                      Paper {paper.number} &middot; {paper.version} &middot; {paper.target}
                     </CardDescription>
                     <CardTitle
-                      className="mt-1 text-base"
+                      className="mt-1 text-base break-words"
                       style={{ fontFamily:"var(--font-mono-stack)" }}
                     >
                       <MathText>{paper.title}</MathText>
                     </CardTitle>
                   </div>
-                  <Badge variant={statusVariantMap[paper.statusVariant]}>
-                    {paper.status}
+                  <Badge
+                    variant={statusVariantMap[paper.statusVariant]}
+                    className="shrink-0 whitespace-nowrap font-mono"
+                  >
+                    {paper.readiness}%
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="mb-3 flex items-center gap-3">
+                <div className="mb-4 flex items-center gap-3">
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-border">
                     <div
                       className={`h-full rounded-full ${readinessColor(paper.readiness)}`}
                       style={{ width: `${paper.readiness}%` }}
                     />
                   </div>
-                  <span className="text-xs font-mono text-muted-foreground">
-                    {paper.readiness}%
+                  <span className="text-xs font-mono text-muted-foreground shrink-0">
+                    {paper.pages} pp &middot; {paper.refs} refs
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  <MathText>{paper.description}</MathText>
-                </p>
-                <div className="mt-3 flex flex-wrap gap-3 text-xs font-mono text-muted-foreground">
-                  <span>{paper.pages} pages</span>
-                  <span>{paper.refs} refs</span>
-                  <span>Target: {paper.target}</span>
-                  {paper.remainingWork.length > 0 && (
-                    <span className="tone-caution">
-                      {paper.remainingWork.length} tasks remaining
-                    </span>
-                  )}
-                </div>
+                {paper.remainingWork.length > 0 && (
+                  <div>
+                    <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
+                      {paper.remainingWork.length} pending {paper.remainingWork.length === 1 ? "task" : "tasks"}
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                      {paper.remainingWork.map((task, i) => (
+                        <li key={i} className="flex gap-2 break-words">
+                          <span className="text-muted-foreground/60 shrink-0">&bull;</span>
+                          <span><MathText>{task}</MathText></span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </CardContent>
               <CardFooter className="flex flex-wrap gap-2">
                 {(() => {
