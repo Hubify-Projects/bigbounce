@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-Last authoritative update: 2026-05-04 (PDT, 16:00) — **R43 Wave 14-KKK**: P4 v1.0.27->v1.0.28: hemisphere abstract now cites pLEE~10^-4 (Monte Carlo floor) after look-elsewhere correction sentence. PDF recompiled clean (25,668,924 bytes / 22 pp / 0 undef refs). All mirrors updated. P4=99% (99%-cap holds).
+Last authoritative update: 2026-05-04 (PDT, 17:30) — **R43 Wave 14-MMM WAVE-TAG SCRUB**: P4 v1.0.28->v1.0.29: all R42/R43 lab-notebook wave labels removed from prose (18 locations: Wave 14-ZZ/JJ/NN/KK/LL/OO headers + inline Wave~11-C/12/14 refs). Reviewer-framing language stripped; scientific content preserved as normal prose. 22->21 pages. PDF recompiled clean (25,645,693 bytes / 21 pp / 0 undef refs). All mirrors updated. P4=99%.
+
+Prior authoritative update: 2026-05-04 (PDT, 16:00) — **R43 Wave 14-KKK**: P4 v1.0.27->v1.0.28: hemisphere abstract now cites pLEE~10^-4 (Monte Carlo floor) after look-elsewhere correction sentence. PDF recompiled clean (25,668,924 bytes / 22 pp / 0 undef refs). All mirrors updated. P4=99% (99%-cap holds).
 
 Prior authoritative update: 2026-05-04 (PDT, 12:00) — **R42 Wave 14-III SSOT MAINTENANCE**: P4 readiness bumped 98% -> 99%. All 65 R42 findings closed (0 MAJORs, 0 MINORs, final two: P4-CM-M1 + m6 at Wave 14-GGG 2026-05-02). PDF recompile DONE (Wave 14-HHH, v1.0.26, 25,668,020 bytes, 22 pp, 0 undef refs, local pdflatex TeX Live 2026/Homebrew). Stale open-MAJOR language removed from Current state (all MAJORs closed Wave 14-GGG). All automated cron tasks complete. No pending compute-heavy work. P4=99% (99%-cap holds; final 1% requires Houston sign-off + clean external R43 round). No R42 closure increment (maintenance only).
 

@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-Last authoritative update: 2026-05-04 (PDT, 16:00) — **R43 Wave 14-KKK**: P3 v3.1.17->v3.1.18: fig:skymap caption relabeled as cross-transfer baseline (superseded by Path-C 378,280); fig:sdss_umap caption relabeled as cross-transfer baseline (superseded by native retrain 12 sources at S>5). PDF recompiled clean (28,363,057 bytes / 41 pp / 0 undef refs). All mirrors updated. P3=99% (99%-cap holds).
+Last authoritative update: 2026-05-04 (PDT, 17:30) — **R43 Wave 14-MMM WAVE-TAG SCRUB**: P3 v3.1.18->v3.1.19: all R42/R43 lab-notebook wave labels removed from prose (23 locations: Wave 14-BB/N/L/O/R/II/X tags, R42 stratification disclosures reformatted as Note:/Stratification note:). 41->40 pages. PDF recompiled clean (28,347,451 bytes / 40 pp / 0 undef refs). All mirrors updated. P3=99%.
+
+Prior authoritative update: 2026-05-04 (PDT, 16:00) — **R43 Wave 14-KKK**: P3 v3.1.17->v3.1.18: fig:skymap caption relabeled as cross-transfer baseline (superseded by Path-C 378,280); fig:sdss_umap caption relabeled as cross-transfer baseline (superseded by native retrain 12 sources at S>5). PDF recompiled clean (28,363,057 bytes / 41 pp / 0 undef refs). All mirrors updated. P3=99% (99%-cap holds).
 
 Prior authoritative update: 2026-05-04 (PDT, 12:00) — **R42 Wave 14-III SSOT MAINTENANCE**: P3 readiness bumped 98% -> 99%. All 65 R42 findings closed (0 MAJORs, 0 MINORs). PDF recompile DONE (Wave 14-HHH, v3.1.16, 28,349,635 bytes, 41 pp, 0 undef refs). Stale "(a) PDF recompile pending Pod 3 restart" residual removed from Current state (recompile was completed Wave 14-HHH on local TeX Live 2026/Homebrew). All automated cron tasks complete. Sole remaining manual item: P3-OA-M9 HuggingFace visibility flip (Houston: set bamfai/galaxy-anomaly-catalog-* to public on HF dashboard). P3=99% (99%-cap holds; final 1% requires Houston sign-off + clean external R43 round). No R42 closure increment (maintenance only).
 
