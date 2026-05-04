@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.26}
+\newcommand{\paperVersion}{v1.0.27}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 2, 2026, 23:00 PDT --- \paperVersion}
+\date{May 4, 2026, 11:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -668,7 +668,7 @@ coupling that integrates to zero over the survey footprint, and is
 therefore not contaminated by the $\sim$1\% local bias the deep
 MLP recovers. We flag the magnitude of this morphology coupling as
 the empirical motivation for the dedicated $r$-band+SB
-binning test still queued in Wave 14-OO-2.
+finer-granularity binning remains as future work.
 
 \begin{table}
 \caption{Bias hardening audit results (8/8~PASS, 4 stress tests +
@@ -1082,15 +1082,7 @@ f_{\rm sky}/N_{\rm tot} = 7.287 \times 10^{-7}$~sr ---a correction
 ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 1000-realization MC null mean and standard deviation) is $6.48\sigma$,
-and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$. The
-qualitative dipole detection survives: the corrected total
-$\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$
-(decoupled), and the empirical p-value of the lowest-$\ell$ bin
-against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall
-below the data). The over-quoted significance in the buggy
-normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and
-$\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong
-shot-noise denominator, not a physical signal.}
+and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$ (pseudo-$C_\ell$ stage, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
 After deconvolution, the measured $\ell = 1$ power is
 $C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
@@ -1164,14 +1156,7 @@ recommendation of external peer review.
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
   points show the measured $C_\ell$ values; the gray band indicates
   the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 1{,}000 Monte
-  Carlo null realizations. The figure as plotted reflects the
-  pre-Wave-11C raw pseudo-$C_\ell$ ($\ell=1$ at
-  $2.75\sigmaunit$ relative to the buggy shot-noise floor); the
-  corrected lowest-$\ell$ bin SNR with the Wave-11C
-  $N_{\rm spiral}$ normalization is $6.48\sigma$ (pseudo) /
-  $6.08\sigma$ (MASTER-decoupled), see Sec.~\ref{sec:dipole}
-  footnote and the W11C verdict artifact at
-  \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
+  Carlo null realizations. Note: the figure as plotted shows the original raw pseudo-$C_\ell$ ($\ell=1$ at $2.75\sigmaunit$ relative to the original shot-noise floor). After the corrected $N_{\rm spiral}$ normalization the pseudo-$C_\ell$ SNR is $6.48\sigma$ and the MASTER-decoupled value is $6.08\sigma$; however, these are intermediate estimators before full mode-coupling inversion. The canonical primary result (Sec.~\ref{sec:dipole}) is the post-MASTER deconvolution significance of $-0.12\sigmaunit$, fully consistent with null. The $6.48\sigma$/$6.08\sigma$ values reflect mask-induced mode coupling explicitly removed by MASTER deconvolution and should not be quoted as a detection. Verification artifact: \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
   All higher multipoles are consistent with noise.  The absence of
   coherent power at any scale beyond the lowest bin rules out a
   large-scale parity-violation \emph{dipole} above the ${\sim}0.2\%$

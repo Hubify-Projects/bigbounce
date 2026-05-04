@@ -178,6 +178,19 @@
 
 <div class="feed" role="feed" aria-label="Research activity timeline">
   <div class="feed-item active-item">
+    <div class="feed-date">May 4, 2026</div>
+    <div class="feed-content">
+      <span class="feed-tag tag-green">R43 Wave 14-JJJ</span>
+      <strong>R43 Tier-1 Peer-Review Fixes: All 4 Papers</strong>
+      <p>Applied targeted fixes from ChatGPT + Grok + Gemini R43 review round.
+         P1 v2.3.17 (abstract ln-B to delta-AIC, duplicate ECH sentence removed, Fig 2 scaling ansatz clarification);
+         P2 v1.7.10 (SPHEREx date corrected to launched March 2025, 2.6-sigma convention caveat added);
+         P3 v3.1.17 (OOD arithmetic fix: 0.143 is below OOD median 0.178, not above);
+         P4 v1.0.27 (6.08-sigma clarified as pre-deconvolution, canonical -0.12-sigma primary).
+         All 4 PDFs recompiled clean. DESI DR2 cobaya chains running on Pod 3 H200.</p>
+    </div>
+  </div>
+  <div class="feed-item active-item">
     <div class="feed-date">2026-05-04</div>
     <div class="feed-title">R42 Wave 14-III SSOT MAINTENANCE &mdash; <strong>All 4 papers now at 99% (max cron-achievable readiness)</strong>. P3 and P4 readiness bumped 98% &rarr; 99%. All 65 R42 findings closed (0 MAJORs, 0 MINORs). All 4 PDFs recompiled clean (Wave 14-HHH). Stale residuals cleared from P3 and P4 Current-state sections. Sole remaining manual item: P3-OA-M9 HuggingFace visibility flip + arXiv submissions (Houston only). <strong>P1=99% P2=99% P3=99% P4=99%</strong> (99%-cap; final 1% requires Houston sign-off + clean external R43 round).</div>
     <p class="feed-body">All automated cron work is complete. The four papers are at the maximum readiness the autonomous loop can award unilaterally. The only two remaining gates are both Houston-manual: (1) HuggingFace visibility flip for bamfai/galaxy-anomaly-catalog-* (P3-OA-M9), and (2) arXiv submissions in order P4 &rarr; P1 &rarr; P3 &rarr; P2. Once Houston executes those and an external R43 peer-review round returns zero MAJOR/MINOR findings, all four papers advance to 100%. Pod 3 H200 backup is confirmed complete (1.2 GB local + HuggingFace). Pod may be paused safely &mdash; RunPod MFS network storage persists independently of compute.</p>
