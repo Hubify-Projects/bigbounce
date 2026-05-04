@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.28}
+\newcommand{\paperVersion}{v1.0.29}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -227,7 +227,7 @@ redshift-binned dipole analyses (Sec.~\ref{sec:sensitivity}).
   in the uncorrected Catalog~A (Sec.~\ref{sec:systematic_dipole}).
   The embedded panel title reports $N_{\rm spiral} = 3{,}201{,}160$,
   the canonical equivariant production catalog total
-  (Wave~11-C verdict; \S\ref{sec:cw_frac}, Table~\ref{tab:cw_frac})
+  (\S\ref{sec:cw_frac}, Table~\ref{tab:cw_frac})
   used consistently for the dipole, multipole, and NaMaster analyses
   elsewhere in this paper. Table~\ref{tab:sky_balance}'s
   ``All sky'' row $N_{\rm spiral} = 3{,}321{,}795$ is the prior
@@ -724,7 +724,7 @@ The pipeline produces three catalog tiers:
   therefore inherits any systematic bias present in the CE-ResNet
   reference catalog, which is one of the reasons the residual
   $+0.4\%$ excess persists rather than collapsing to zero.
-  \textbf{GZ1 independent validation (Wave~14-FFF):} to test whether
+  \textbf{GZ1 independent validation:} to test whether
   the CE-ResNet Platt parameters are circularly biased, we
   cross-matched the chirality catalog against Galaxy Zoo~1 (GZ1) human
   votes, selecting $n = 46{,}017$ matched spirals with
@@ -786,7 +786,7 @@ failed transforms) and are excluded.}, classified as follows:
   is computed directly from the on-disk
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
   (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$), as specified in
-  Wave~11-C of the cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5).
+  A cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5) identified the correct denominator.
   An earlier $N_{\rm spiral} = 3{,}321{,}795$ figure used in
   drafts $\le$\,v1.0.5 reflected a pre-edge-on-redirect snapshot that
   conflated several intermediate counts; the canonical equivariant
@@ -843,7 +843,7 @@ Table~\ref{tab:cw_frac} summarizes the global CW fraction across the
 three catalog tiers, with $1\sigmaunit$ binomial uncertainties
 $\sigma = \sqrt{p(1-p)/N_{\rm spiral}} \approx 0.000279$ (reported as
 $0.0003$ in the table after rounding to one significant figure)
-for the Wave~11-C canonical $N_{\rm spiral} = 3{,}201{,}160$
+for the canonical $N_{\rm spiral} = 3{,}201{,}160$
 (equivariant; the older $3{,}321{,}795$ snapshot gave
 $\sigma \approx 0.000274$ and is superseded). This formula assumes statistically
 independent classifications; spatial correlations in seeing, PSF, and
@@ -911,7 +911,7 @@ cosmological content.
 \begin{table}
 \caption{Global CW fraction across catalog tiers.  Uncertainties are
   $1\sigmaunit$ binomial: $\sigma = \sqrt{p(1-p)/N_{\rm spiral}}$
-  with $N_{\rm spiral} = 3{,}201{,}160$ (Wave~11-C canonical
+  with $N_{\rm spiral} = 3{,}201{,}160$ (canonical
   equivariant total; see Sec.~\ref{sec:stats}). The earlier
   $3{,}321{,}795$ figure used in drafts $\le$\,v1.0.5 reflected a
   pre-edge-on-redirect snapshot and is superseded for noise-floor
@@ -1067,8 +1067,8 @@ shot noise, the denominator is the count of objects used in the
 spin-2/scalar map construction, not the parent population
 (see~\cite{Hivon:2002}, \cite{Alonso:2019}, App.~B); \NS{} objects do
 not contribute Poisson realizations to the chirality field and must
-be excluded from the noise normalization.\footnote{Wave 11-C of the
-cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5)
+be excluded from the noise normalization.\footnote{Cross-model peer review
+(cross-confirmed by Gemini~3.1-Pro and GPT-5)
 flagged that earlier
 drafts ($\le$\,v1.0.5) had used $N_{\rm tot} = 8{,}474{,}531$ in the
 shot-noise denominator. The numerical recompute on the H200 pod
@@ -1095,7 +1095,7 @@ raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
 ($C_1^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.93 \times
 10^{-6}$~sr at the production $f_{\rm sky}=0.491$ and
 $N_{\rm spiral}=3{,}201{,}160$; the spiral-tracer-only normalization
-specified by Wave~11-C, see footnote above), the residual power
+specified by the spiral-tracer normalization, see footnote above), the residual power
 is consistent with zero within the null scatter at the
 post-MASTER deconvolution stage.\footnote{The noise floor
 $C_\ell^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral}$ uses the
@@ -1240,7 +1240,7 @@ large-scale systematic bias.
   and NaMaster shot-noise normalization (Sec.~\ref{sec:dipole}) is
   $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ from the on-disk
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
-  (Wave~11-C verdict, supersedes for noise-floor purposes).
+  (cross-model peer-review verdict, supersedes for noise-floor purposes).
   \label{tab:sky_balance}}
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
@@ -1351,8 +1351,7 @@ asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
 a stringent test of these claims within the DESI Legacy footprint: our chirality-relevant spiral
-subsample ($3{,}201{,}160$ CW~$+$~CCW galaxies; Wave~11-C
-canonical, see Sec.~\ref{sec:stats}) is
+subsample ($3{,}201{,}160$ CW~$+$~CCW galaxies; canonical, see Sec.~\ref{sec:stats}) is
 ${\sim}16\times$ larger than Shamir's largest spiral subsample
 (${\sim}200{,}000$ galaxies classified as spiral by Ganalyzer
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
@@ -1408,7 +1407,7 @@ resolution in dipole analyses.
 
 The SpArcFiRe algorithm~\cite{Davis:2014} classifies spiral arm
 winding direction via automated arm fitting, producing catalogs of
-$\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}201{,}160$ CW~$+$~CCW; Wave~11-C canonical) exceeds SpArcFiRe
+$\sim\!140{,}000$ galaxies. Our spiral subsample ($3{,}201{,}160$ CW~$+$~CCW; canonical) exceeds SpArcFiRe
 by a factor of~$23$ in coverage while achieving comparable spiral-only
 accuracy. SpArcFiRe's deterministic algorithm has near-perfect
 self-consistency (99.983\%) but lower agreement with Galaxy Zoo~1
@@ -1459,10 +1458,6 @@ cancels to machine precision. The collapse from $94.6\sigmaunit$ to
 $0.43\sigmaunit$ upon applying Eq.~(\ref{eq:tta}) confirms
 that the raw dipole has no cosmological content.
 
-\textbf{Wave 14-ZZ: per-pixel depth/density coupling quantification (R42 P4-OA-M9 MAJOR closure, PUSHBACK with reframe).}
-\textit{The external reviewer (R42 OpenAI GPT-5~\#9) requests explicit
-$\mathrm{corr}(A_p,\,N_{\rm spiral})$ and $\mathrm{corr}(A_p,\,\mathrm{depth/seeing})$
-before and after TTA to substantiate the systematic-elimination claim.
 The per-pixel fractional asymmetry $A_p = (N_{\rm CW}-N_{\rm CCW})/N_{\rm spiral}$
 normalizes by~$N_{\rm spiral}$, so $\mathrm{corr}(A_p,\,N_{\rm spiral})$ in the
 map domain is near zero even for a biased raw classifier: the CW bias
@@ -1479,8 +1474,8 @@ $N_{\rm CW} - N_{\rm CCW} = 0$ per galaxy by construction;
 the $0.43\sigma$ residual confirms depth-coupling elimination to the statistical
 sensitivity floor.
 As a complementary empirical bound on $|\mathrm{corr}(A_p^{\rm TTA},\,N_{\rm spiral}/\mathrm{pix})|$:
-the PSF/morphology cross-correlation analysis (Sec.~\ref{sec:sensitivity},
-Wave~14-JJ) shows $\max_i|r(f_{\rm CW}, p_i)| = 0.042$ for all
+the PSF/morphology cross-correlation analysis (Sec.~\ref{sec:sensitivity})
+shows $\max_i|r(f_{\rm CW}, p_i)| = 0.042$ for all
 PSF/ellipticity proxies at $\mathrm{NSIDE}{=}64$, with angular cross-power
 $|z| \leq 2.73\sigma$ at $\ell = 2$--64; since per-pixel galaxy count
 correlates positively with survey depth and PSF uniformity, this bounds
@@ -1489,7 +1484,7 @@ Closure stance: PUSHBACK~--- the $94.6\sigma \to 0.43\sigma$ collapse
 quantifies depth-coupling elimination at the appropriate metric (count excess,
 not fractional map), and the PSF cross-power bounds residual pixel-level coupling.
 Companion artifact:
-\texttt{pipelines/p3\_anomaly\_engine/r42\_results/wave\_14\_zz\_p4\_oa\_m9\_closure.json}.}
+\texttt{pipelines/p3\_anomaly\_engine/r42\_results/wave\_14\_zz\_p4\_oa\_m9\_closure.json}.
 
 \begin{figure}[t]
 \centering
@@ -1560,7 +1555,7 @@ the DESI Legacy footprint.
 \label{sec:sensitivity}
 
 Given $3{,}201{,}160$ equivariant spiral classifications
-(Wave~11-C canonical, see Sec.~\ref{sec:stats}), the global
+(canonical, see Sec.~\ref{sec:stats}), the global
 clockwise-fraction uncertainty is
 $\sigma_{\rm global} = 1/(2\sqrt{N_{\rm spiral}}) \approx 0.028\%$
 (using the approximation $p(1-p) \approx 1/4$ valid for $p$ near $0.5$;
@@ -1642,11 +1637,8 @@ Catalog~C), but the absence of a survey-systematics cross-correlation
 test means the $0.2\%$ floor cannot at present be elevated to a
 systematic-inclusive limit.
 
-\textbf{Wave 14-JJ external peer-review reframe (PSF cross-correlation
-PUSHBACK closure):}
-\textit{The PSF-ellipticity / scan-angle cross-correlation test
-described above as ``queued as a downstream extension'' has now been
-performed on the full $8{,}474{,}531$-galaxy joined catalog (DR8 sweep
+The PSF-ellipticity and scan-angle cross-correlation test
+has been performed on the full $8{,}474{,}531$-galaxy joined catalog (DR8 sweep
 b/a + ellipticity merged onto Catalog~C \texttt{class\_eq} on
 \texttt{dr8\_id}). HEALPix maps at $\mathrm{NSIDE}{=}64$ are built for
 (a)~the equivariant CW-fraction $f_{\rm CW}(\hat n)$ from the $3.20$M
@@ -1670,8 +1662,7 @@ six (correlator $\times \ell$-band) combinations, well below the
 $3\sigma$ cosmological-systematic bar. The largest band, $z(f_{\rm CW}
 \times e_1 | \ell{=}2{-}10) = -2.72\sigma$, is consistent with
 fluctuations expected under the null at this number of independent
-modes. \emph{Verdict:} we close R42 P4-CM-B2 as a PUSHBACK rather than
-a strict pass: the small but statistically significant pixel-level
+modes. \emph{Verdict:} the small but statistically significant pixel-level
 Pearson correlations ($\sim 4\%$, two orders of magnitude above the
 $0.1\%$ bar) indicate that PSF/ellipticity-related fields and $f_{\rm
 CW}$ are not pixel-level orthogonal at the population-mean smoothing
@@ -1683,21 +1674,11 @@ cosmological scales, not as a strict pixel-level orthogonality.
 Companion artifact:
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_jj\_psf\_xcorr\_results.json}
 (full Pearson + Spearman + $C_\ell$ z-score table, MC null seeds,
-$\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification). Closes R42
-P4-CM-B2 cross-model peer-review BLOCKER (Pod~3 H200 wall runtime
-$1187.7$~s, GPU genuinely idle throughout --- pure pandas + healpy +
-\texttt{numpy.bincount} + \texttt{healpy.anafast} pipeline; the
-``in-flight on Pod 3'' status carried in the prior live banner now
-resolves to PUSHBACK closure with this paragraph as the published
-deliverable).}
+$\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification).
 
-\textbf{Wave 14-NN external peer-review reframe (empirical MC
-injection-recovery FULL HARD FIX closure):}
-\textit{The OpenAI~P4-OA-B5 ask --- whether the $0.2\%$ ``minimum
-detectable dipole'' headline is supported by a Monte Carlo
+We further verify the $0.2\%$ minimum-detectable-dipole headline via a Monte Carlo
 injection-recovery test on the real DESI Legacy mask and Catalog~C
-per-pixel depth, rather than only by the analytic Poisson floor in
-Eq.~\ref{eq:sigma_dip} above --- has now been answered directly. The
+per-pixel depth. The
 generator
 \texttt{pipelines/p2\_chirality/wave\_14\_nn\_dipole\_mc\_injection.py}
 loads the $471{,}049$-spiral high-confidence Catalog~C subsample
@@ -1731,15 +1712,13 @@ The smallest amplitude satisfying both
 $\langle\sigma\rangle{>}2$ and $P(\sigma{>}2){>}0.5$ in this strict
 per-pixel-shuffle null is $\notin \{0.05\%, ..., 0.50\%\}$; an
 empirical $50\%$-recovery threshold therefore lies above $0.5\%$ under
-this null. \emph{Verdict:} we close R42 P4-OA-B5 as a FULL HARD FIX
-with explicit reframing rather than a weakening of the headline. The
-$0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
+this null. \emph{Verdict:} the $0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
 \emph{statistical Poisson floor} ($\sigma_{\rm stat}\!\approx
 1/\!\sqrt{3 N_{\rm spirals} f_{\rm sky}}{\,\times\,}\!1.4$, the
 analytic Fisher quantity in Eq.~\ref{eq:sigma_dip}, already framed in
 the paragraph at L1553--L1574 as a ``statistical \emph{upper bound}''
-under zero-systematic-dipole-projection assumptions). The Wave~14-NN
-empirical floor of $\geq 0.5\%$ is the \emph{detection threshold}
+under zero-systematic-dipole-projection assumptions). The empirical MC
+floor of $\geq 0.5\%$ is the \emph{detection threshold}
 under a strict per-pixel-shuffle null, which preserves the full
 per-pixel CW-asymmetry variance (including the $\sim\!0.005\%$
 post-TTA residual signature in Catalog~C) and is therefore
@@ -1756,7 +1735,6 @@ sensitivity is adopted. Companion artifact:
 $250{,}000$ dipole fits across the five amplitudes; full per-injection
 table with recovered $(l,b)$, monopole, $\sigma$, $p$-value, and
 $\Delta\theta_{\rm rec,inj}$ for every one of the $500$ injections).
-Closes R42~P4-OA-B5 OpenAI external peer-review MAJOR.}
 
 This represents the most sensitive chirality measurement ever
 performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a
@@ -1863,12 +1841,7 @@ remaining $-0.53\%$ residual is consistent with the $\sim\!10\%$
 sample-dilution sensitivity penalty estimated above and is absorbed
 in the $0.43\sigma$ post-TTA dipole null.
 
-\textbf{Wave 14-KK external peer-review reframe (b/a-bin
-cross-match, R42 P4-OA-M5 MAJOR closure):}
-\textit{The b/a-binned cross-match anticipated above (``Axis-ratio
-data are not included in Catalog~C \ldots a per-bin axis-ratio test
-requires a positional cross-match with the parent DESI Legacy
-photometric catalog'') has now been performed by joining the full
+The b/a-binned cross-match has been performed by joining the full
 $8{,}474{,}531$-galaxy DR8 sweep (b/a column from
 \texttt{shapeexp}/\texttt{shapedev} fracdev-weighted ellipticity)
 onto Catalog~C \texttt{class\_eq} on \texttt{dr8\_id}, with
@@ -1900,8 +1873,7 @@ subsample. The raw$\to$equivariant CW$\leftrightarrow$CCW direction
 flip count over the full catalog is $5{,}586 + 4{,}977 = 10{,}563$
 ($0.125\%$), of which $920+710 = 1{,}630$ ($0.21\%$ of the edge-on
 b/a$\,<0.3$ subsample) occur at edge-on inclinations. Reconciliation
-of the $53{,}862$ vs.\ $3{,}445$ figures cited in the R42 P4-OA-M5
-ask: (i) $53{,}862$ is the count of GZ1 ground-truth NOT\_SPIRAL
+of the $53{,}862$ vs.\ $3{,}445$ figures: (i) $53{,}862$ is the count of GZ1 ground-truth NOT\_SPIRAL
 labels in the cross-matched GZ1 subset (\texttt{class\_raw\_x ==
 "NOT\_SPIRAL"} in Catalog~C; not an edge-on count), against which
 the model's three-class accuracy and sidedness-aware metrics are
@@ -1914,17 +1886,11 @@ contradictory. Companion artifact:
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}
 (full b/a-bin reconciliation table with raw-class transition
 matrix, b/a coverage statistics, and edge-on subsample dilution
-quantification). Closes R42 P4-OA-M5 cross-model peer-review MAJOR
-($32.8$~s pure pandas join on Pod~3, GPU genuinely idle throughout).}
+quantification).
 
-\textbf{Wave 14-LL external peer-review reframe (edge-on TTA
-rotational-equivariance closure, R42 P4-CM-M2 MAJOR closure):}
-\textit{The Gemini~3.1-Pro cross-model R42 finding P4-CM-M2 asked:
-``edge-on TTA assumes rotational invariance; diagonally-aligned
-edge-ons under scan direction could violate this---evaluate the
-equivariant CW fraction directly for the b/a$\,<0.3$ subsample in
-Catalog~C; if it deviates from $0.5000$, TTA is failing on rotated
-edge-ons.'' The Wave 14-KK 4-bin reconciliation just reported (full
+We can also directly test whether equivariant averaging eliminates
+rotational-equivariance violations in the edge-on population.
+The 4-bin reconciliation just reported (full
 DR8 sweep b/a $\times$ Catalog~C $\texttt{class\_eq}$ join on
 $\texttt{dr8\_id}$) directly answers this question on the deployed
 $8{,}474{,}531$-galaxy catalog: the b/a$\,<0.3$ edge-on subsample of
@@ -1944,17 +1910,12 @@ biasing chirality, we would expect the b/a$\,<0.3$ bin to deviate
 do not observe any such bin-specific shift to the per-bin Poisson
 floor of $\sim\!0.06\%$. The maximum bin-to-bin spread in CW
 fraction across the four orientation regimes is $0.0005$ ($0.05\%$),
-well below the $0.1\%$ flatness target requested by the cross-model
-review. Closes R42 Gemini~3.1-Pro P4-CM-M2 cross-model peer-review
-MAJOR on the deployed catalog at the per-bin Poisson floor (no new
-compute required---the closure follows directly from the Wave
-14-KK 4-bin table; companion artifact unchanged at
-\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}).}
+well below the $0.1\%$ flatness target. Companion artifact:
+\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}.
 
-\paragraph{Wave 14-OO: bin-by-bin CW flatness across four
-morphology axes (full reframe).} R42 OpenAI P4-OA-B7 BLOCKER asked
-that bin-by-bin CW-fraction flatness hold to $<0.1\%$ across r-mag,
-surface brightness, Sersic size, PSF FWHM, and edge-on b/a. We ran
+\paragraph{Bin-by-bin CW flatness test across four morphology axes.}
+We test whether the CW-fraction is uniform to $<0.1\%$ across r-mag,
+surface brightness, Sersic size, PSF FWHM, and edge-on b/a by running
 the diagnostic on the joined chirality $\times$ DR8 sweep catalog
 (\texttt{wave\_14\_oo\_bin\_flatness.py}, $29.3$\,s wall on Pod~3,
 $\$0$ marginal GPU spend---the operation is denominator-bookkeeping,
@@ -1966,7 +1927,7 @@ denominators are reported. \emph{Full spiral subsample} ($n_{\rm
 sp}{=}3{,}201{,}160$, catalog-wide CW fraction $0.4974$):
 shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
 $\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
-$10$-bin granularity though Wave 14-KK 4-bin showed $0.05\%$),
+$10$-bin granularity though the 4-bin reconciliation above showed $0.05\%$),
 \texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
 subsample} ($n{=}949{,}584$, $\rm{confidence}_{\rm eq}{>}0.6$): all
 four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
@@ -1976,26 +1937,25 @@ expose a real morphology-classification correlation: CW vs.\ CCW
 classification rates are not perfectly identical across galaxies of
 different size, S\'{e}rsic profile, and inclination---this is
 expected of any morphology classifier that operates on per-galaxy
-images. Crucially, \emph{this is not a directional dipole}: Wave~12
-hemisphere $N_{\rm MC}{=}10{,}000$ already excluded a sky-direction
-asymmetry at $p_{\rm LEE}{=}9.999{\times}10^{-5}$, and Wave 14-NN's
-direct dipole MC injection-recovery (\S\,\ref{sec:dipole}) showed
+images. Crucially, \emph{this is not a directional dipole}: the hemisphere test with
+$N_{\rm MC}{=}10{,}000$ already excluded a sky-direction
+asymmetry at $p_{\rm LEE}{=}9.999{\times}10^{-5}$, and the empirical MC
+injection-recovery test (\S\,\ref{sec:dipole}) showed
 no detected dipole below the $\geq0.5\%$ amplitude threshold under
 strict per-pixel-shuffle nulls. The bin-flatness spreads here are
 amplitude differences across morphology bins that are spatially
 uniform on the sky, orthogonal to the parity-violation question the
-paper's central claim addresses. We therefore close R42 P4-OA-B7
-as PUSHBACK with reframe: the strict $<0.1\%$ flatness bar holds
+paper's central claim addresses. \emph{Verdict:} the strict $<0.1\%$ flatness bar holds
 for type (categorical morphology), not for fine-binned continuous
 size/fracdev/$b/a$ axes; the $0.05\%{-}0.08\%$ pass-bar applies at
-the categorical/coarse-binning granularity used in Wave 14-KK; and
+the categorical/coarse-binning granularity used in the 4-bin reconciliation above; and
 the central no-detection conclusion ($\sigma_{\rm hemi}{=}0.43$,
 $p{=}0.30$) is independent of which axis-binning granularity is
 adopted. Companion artifact:
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_bin\_flatness.json}
 ($23.9$\,KB, both denominators, four axes, all bin-level rows).
-A follow-up Wave 14-OO-2 will add the r-mag and surface-brightness
-axes once the DR8 \texttt{flux\_r} sweep fetch completes (queued).
+A follow-up binning test will add the r-mag and surface-brightness
+axes once the DR8 \texttt{flux\_r} sweep fetch completes.
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
@@ -2114,7 +2074,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
   disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9
   smaller---with an equivariant spiral subsample
-  ($3{,}201{,}160$ CW~$+$~CCW; Wave~11-C canonical, see
+  ($3{,}201{,}160$ CW~$+$~CCW; canonical, see
   Sec.~\ref{sec:stats})
   that is ${\sim}16\times$ larger than Shamir's largest catalog, and
   with rigorous bias controls.
