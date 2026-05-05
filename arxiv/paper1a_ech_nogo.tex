@@ -1,0 +1,1063 @@
+% Structural Closure of Minimal Einstein-Cartan-Holst Dark Energy
+% Paper 1A (theory / no-go paper)
+% Houston Golden -- 2026
+% arXiv submission: gr-qc / astro-ph.CO / hep-th
+%
+% Companion paper (MCMC, NaMaster, ALP details): paper1b_mcmc_companion.tex
+% Compile: pdflatex paper1a_ech_nogo && bibtex paper1a_ech_nogo && pdflatex paper1a_ech_nogo && pdflatex paper1a_ech_nogo
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{slashed}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+% Custom commands
+\newcommand{\Leff}{\Lambda_{\rm eff}}
+\newcommand{\Lconst}{\Lambda_{\rm const}}
+\newcommand{\Lobs}{\Lambda_{\rm obs}}
+\newcommand{\Dinf}{\mathcal{D}_{\rm inf}}
+\newcommand{\rhocrit}{\rho_{\rm crit}}
+\newcommand{\rhoPl}{\rho_{\rm Pl}}
+\newcommand{\MPl}{M_{\rm Pl}}
+\newcommand{\Neff}{N_{\rm eff}}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\etal}{\textit{et~al.}}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\fcw}{f_{\rm CW}}
+\newcommand{\paperVersion}{v1A.0.1}
+\newcommand{\paperTimestamp}{2026-05-05 00:00 PDT}
+
+\begin{document}
+
+\preprint{HUBIFY-2026-001A}
+
+\title{Structural Closure of Einstein--Cartan--Holst Dark Energy:\\
+Perturbation Transparency, Inflation--$f_{\rm NL}$ Tension, and\\
+Surviving Matter-Bounce Tests}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{May 5, 2026 --- \paperVersion}
+
+\begin{abstract}
+We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
+generate late-time dark energy through any of its characteristic structural
+mechanisms. Through 7 foundation studies and 17 research branches we catalog
+14 independent structural constraints that collectively close every minimal ECH
+route from the quantum bounce to observable dark energy.
+The central result is a perturbation-transparency theorem: for canonical scalar
+matter, torsion vanishes at all perturbation orders, the Holst dual contraction
+$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically by the
+first Bianchi identity, and the Holst sector decouples from all
+scalar/tensor perturbation observables (Sec.~\ref{sec:transparency}).
+The proposed link from ECH to a late-time vacuum energy requires a phenomenological
+dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
+and is closed by the 14 barriers of Sec.~\ref{sec:barriers}.
+A structural incompatibility (Sec.~\ref{sec:structural_tension}) exists between
+the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
+$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be erased
+by that many $e$-folds; these are treated as independent observational problems.
+Two mechanism-independent predictions survive ECH structural closure:
+(i)~$\fnl = -35/8$ from the matter-bounce class~\cite{Cai:2009fn}, testable by
+SPHEREx at $3$--$5\sigma$ realistic significance (detailed multi-tracer Fisher
+forecast in Paper~II, Ref.~\cite{Golden2026P2}); and (ii)~spectator-ALP
+birefringence $\beta\approx 0.27^\circ$ consistent with the published
+Planck/ACT~DR6 $3.6\sigma$ signal, arising in any GR+ALP setup with
+the same parameters and not derived from the ECH action.
+$\Lambda$CDM$+\Delta\Neff$ MCMC verification, NaMaster pipeline validation,
+and ALP parameter fitting are documented separately in the companion
+Paper~I(b)~\cite{Golden2026P1b}.
+\end{abstract}
+
+\pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
+\keywords{Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, perturbation transparency, primordial non-Gaussianity, dark-energy no-go theorem}
+
+\maketitle
+\tableofcontents
+
+
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+
+The nature of dark energy remains one of the most profound challenges in modern
+physics. While the $\Lambda$CDM model successfully accounts for observed cosmic
+acceleration~\cite{Planck2018params}, it faces severe theoretical
+difficulties---most notably the cosmological constant problem~\cite{Weinberg1989}.
+DESI 2024--2025 BAO results suggest dynamical dark energy at $3.1$--$4.2\sigma$
+(dataset-dependent)~\cite{DESI2024,DESI2025DR2}, adding urgency to the search for
+extensions of the standard model.
+
+This work presents and closes a phenomenological framework that connects ECH
+spin-torsion cosmology to dark energy. The structural conclusion is a
+\emph{no-go result} rather than a unified model: the 14 constraints
+(Sec.~\ref{sec:barriers}) close all minimal-ECH dark-energy routes. The surviving
+phenomenological predictors---matter-bounce $\fnl$ and spectator-ALP
+birefringence---are mechanism-independent and shared by other UV completions.
+
+Our approach builds on three theoretical pillars:
+
+\begin{enumerate}[leftmargin=*]
+\item \textit{Loop Quantum Cosmology} (LQC), providing a non-singular quantum
+bounce replacing the classical Big Bang singularity~\cite{Ashtekar2011}. The
+bounce occurs at $\rhocrit \simeq 0.27$--$0.41\,\rhoPl$
+(Barbero-Immirzi entropy-counting scheme dependent; Sec.~\ref{sec:bounce}).
+
+\item \textit{Einstein-Cartan theory} incorporating fermionic spin-torsion
+coupling, generating four-fermion contact interactions and preventing
+gravitational singularities through torsion-induced repulsion at extreme
+densities~\cite{Hehl1976,Poplawski2012}.
+
+\item \textit{Black hole universe origin}, where a rotating parent black hole
+spawns a non-singular baby universe through torsion-regulated gravitational
+collapse~\cite{Poplawski2016}. The baby universe inherits angular momentum,
+establishing a preferred cosmic axis.
+\end{enumerate}
+
+\begin{table*}[tb]
+\caption{\label{tab:summary} Executive summary: systematic investigation of
+bounce-cosmology dark-energy routes within ECH. Structural constraints narrow
+phenomenological pathways; the surviving testable prediction is the
+matter-bounce $\fnl = -35/8$~\cite{Cai:2009fn}.}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+\textbf{Question} & \textbf{Result} & \textbf{Status} \\
+\hline
+Can the bounce derive dark energy? & 14 constraints map the ECH minimal-route space & Requires phenomenological assumption$^a$. \\
+Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (LQC holonomy correction). \\
+Is ECH visible in scalar/tensor perturbations? & Perturbation-transparency result & Decouples cleanly; tests shift to ALP/GW channels. \\
+Is there a testable prediction? & $\fnl = -35/8$ (SPHEREx $3$--$5\sigma$ realistic$^b$) & \textbf{Yes} (mechanism-independent; not a distinctive ECH prediction). \\
+Does framework resolve $H_0$/$\sigma_8$ tensions? & MCMC: $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 0$ (companion) & Recovers standard $\Lambda$CDM. \\
+\end{tabular}
+\end{ruledtabular}
+{\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved. $^b$$3$--$5\sigma$
+realistic after full systematic budget (GR-projection, $b_\phi$ uncertainty,
+photo-$z$ degradation). MCMC details in companion Paper~I(b)~\cite{Golden2026P1b}.}
+\end{table*}
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_theory_map.png}
+\caption{\label{fig:theory_map}
+  Bounce-mechanism $\rightarrow$ observable-prediction map. Left column:
+  candidate non-singular bounce mechanisms (LQC, ECH/torsion, matter bounce,
+  quintom-B, Cuscuton, ekpyrotic). Right column: distinctive observable channels.
+  ECH appears bordered with a dashed box marked \emph{structurally closed (this
+  paper)}---the 14-constraint catalog narrows minimal-ECH dark-energy routes
+  to zero phenomenologically free pathways.}
+\end{figure*}
+
+
+\subsection{Theoretical Foundations and Novel Synthesis}\label{sec:foundations}
+
+Our framework collects well-established theoretical components and tests them
+as a structural-closure no-go theorem on minimal ECH dark energy. The original
+contributions are:
+
+\begin{enumerate}[leftmargin=*]
+\item \textit{14-constraint catalog and perturbation-transparency observation}:
+Through 7 foundation studies and 17 research branches, we establish 14 independent
+structural constraints mapping the minimal ECH parameter space. The central result
+is that minimal ECH gravity is perturbation-transparent for canonical scalar
+matter: torsion vanishes at all orders, the Holst sector decouples cleanly
+from scalar/tensor observables, and tests of $\gamma$ shift to nonperturbative
+parity-violating channels (ALP birefringence, primordial GWs).
+
+\item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
+We identify an incompatibility between the inflationary-suppression dark-energy
+mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
+$\fnl=-35/8$ prediction (erased by $N_{\rm tot} \gg 60$), establishing that
+these are independent observational programs.
+
+\item \textit{Survival of mechanism-independent tests}: Despite ECH structural
+closure, two predictions of the broader bounce/ALP landscape survive and are
+testable by SPHEREx (2028) and LiteBIRD (early 2030s) independently of any
+specific UV completion.
+\end{enumerate}
+
+\subsection{Paper Organization}\label{sec:paporg}
+
+Section~\ref{sec:theory} develops the ECH theoretical framework.
+Section~\ref{sec:obs} presents observational signatures (galaxy spin null,
+CMB EB). Section~\ref{sec:derivations} summarizes theoretical derivations.
+Section~\ref{sec:data_galaxy} covers the galaxy-spin data methods.
+Sections~\ref{sec:systematics}--\ref{sec:related} provide systematic analysis,
+falsification criteria, and related work. The core results occupy
+Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 14 structural barriers,
+perturbation-transparency observation, and hybrid loophole rejection.
+Section~\ref{sec:discussion} discusses the inflationary suppression factor and
+theoretical implications. Section~\ref{sec:surviving} summarizes surviving
+mechanism-independent tests. Section~\ref{sec:limitations} addresses limitations.
+Section~\ref{sec:conclusions} concludes.
+
+\textit{Companion paper.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
+(Cobaya~v3.6.1, 424{,}781 samples), NaMaster pseudo-$C_\ell$ pipeline
+validation, spectator-ALP MCMC parameter fitting, and a cross-paper
+reproducibility manifest are reported in Paper~I(b)~\cite{Golden2026P1b}.
+Cosmological parameter values referenced in this paper
+($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are from that companion.
+
+Appendices provide the parameter summary (Appendix~\ref{app:params}) and
+dimensional analysis (Appendix~\ref{app:dimensions}).
+Supplementary materials are at \url{https://github.com/Hubify-Projects/bigbounce}.
+
+
+%% ============================================================
+%%  2. THEORETICAL FRAMEWORK
+%% ============================================================
+\section{Theoretical Framework}\label{sec:theory}
+
+\subsection{Loop Quantum Cosmology and the Holst Action}\label{sec:holst}
+
+\subsubsection{Einstein-Cartan-Holst Action}
+
+The fundamental action combining Einstein-Cartan theory with the Holst term is
+\begin{align}\label{eq:ECH}
+S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\;\;\;\mu\nu} + \frac{1}{\gamma} \varepsilon^{abcd}\,e_{a}^{\;\mu}\,e_{b}^{\;\nu}\,R_{cd\mu\nu} \right.\nonumber\\
+&\qquad\left.+ \frac{1}{4} T^{abc} T_{abc}\right] + S_{\rm matter},
+\end{align}
+where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is
+the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi
+parameter, and $T^{abc}$ is the torsion tensor. The Holst term contributes
+non-trivially when fermions are present. This construction builds on
+Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who established that the
+Barbero-Immirzi parameter becomes physically observable through its coupling
+to fermionic matter. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
+shorthand for the four-fermion contact interaction obtained after integrating out
+the non-propagating torsion; it is not an independently specified kinetic term.
+
+The Barbero-Immirzi parameter is fixed by LQG black hole entropy:
+\begin{equation}\label{eq:gamma}
+\gamma = 0.274 \pm 0.020,
+\end{equation}
+with the ABCK counting~\cite{ABCK1998} giving $\gamma_{\rm ABCK}\approx 0.274$
+and DLM full SU(2) counting~\cite{Domagala2004,Meissner2004} giving
+$\gamma_{\rm DLM}\approx 0.2375$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figures/figure1_lqg_holst_derivation_enhanced.png}
+\caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to
+the observed dark energy scale, illustrating the phenomenological scaling ansatz
+$\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ (Sec.~\ref{sec:parityodd},
+Appendix~\ref{app:dimensions}). This ansatz is dimensionally correct on-shell at
+the bounce but is \emph{not} derived from the ECH action.}
+\end{figure}
+
+\subsubsection{Derivation of the Parity-Odd Term}\label{sec:parityodd}
+
+Starting with the complete action $S = S_{\rm gravity} + S_{\rm Holst} + S_{\rm fermion}$, we derive the parity-odd effective action through four steps:
+
+\textit{Step~1: Torsion Activation.}---Torsion is determined algebraically by the
+fermionic spin density:
+\begin{equation}\label{eq:torsion}
+T^{abc} = 8\pi G\, S^{abc},
+\end{equation}
+where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$.
+
+\textit{Step~2: Four-Fermion Contact Interaction.}---Substituting Eq.~\eqref{eq:torsion}
+and integrating out torsion:
+\begin{equation}\label{eq:4fermi}
+\mathcal{L}_{\rm int} = -\frac{3\pi G_N}{2}\times \frac{\gamma^2}{\gamma^2+1}\times J^5_{\mu}\,J^{5\mu},
+\end{equation}
+where $J^{5\mu}=\bar{\psi}\gamma^{\mu}\gamma^5\psi$ is the axial current.
+
+\textit{Step~3: Parity-Odd Effective Action.}---Following Mercuri~\cite{Mercuri2009},
+the effective action acquires a parity-odd term:
+\begin{equation}\label{eq:Seff}
+S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathring{R}],
+\end{equation}
+where $M = M_{\rm area\text{-}gap}\sim\sqrt{\gamma}\,\MPl$ is the LQG area-gap
+mass scale and $\alpha$ is a dimensionless coupling.
+
+In components, the leading contribution reduces to
+\begin{equation}\label{eq:Seff_comp}
+S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
+\end{equation}
+which has naive mass dimension $[\mathcal{L}_{\rm odd}] = +1$---three units
+short of the required $+4$ (see Appendix~\ref{app:dimensions} for the full
+dimensional counting). The identification $\rho_\Lambda = \Xi\,\MPl^4$ is
+therefore a \textit{scaling ansatz}, not a controlled EFT calculation.
+
+\textit{Step~4: Parity-Odd Coefficient.}---Following Freidel \etal~\cite{Freidel2005}
+and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
+\begin{equation}\label{eq:oneloop}
+\frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda_{\rm UV}^2}{\mu^2}\right)+\delta_{\rm NY},
+\end{equation}
+motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$. We treat
+$\alpha/M$ as a phenomenological parameter constrained by data.
+
+\subsubsection{Parameter Naturalness}\label{sec:naturalness}
+The parent black hole mass must exceed $M_{\rm crit}\approx 10^{-3}M_\odot$,
+easily satisfied by any astrophysical black hole. Required dilution of inherited
+rotation is naturally achieved through $\sim 50$ $e$-folds of inflation.
+
+
+\subsection{Black Hole Interior and Quantum Bounce}\label{sec:bounce}
+
+In Loop Quantum Cosmology, holonomy corrections produce a non-singular bounce at
+Planck-scale densities~\cite{Ashtekar2011}:
+\begin{equation}\label{eq:modfriedmann}
+H^2 = \frac{8\pi G}{3}\,\rho\left[1-\frac{\rho}{\rhocrit}\right],
+\end{equation}
+\begin{equation}\label{eq:rhocrit}
+\rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl \simeq 0.27\,\rhoPl,
+\end{equation}
+with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ the LQG area gap. The DLM value
+$\gamma = 0.2375$ gives $\rhocrit \simeq 0.41\,\rhoPl$. The factor
+$(1-\rho/\rhocrit)$ ensures $H^2\to 0$ as $\rho\to\rhocrit$, producing a smooth
+bounce with no free parameters.
+
+
+\subsection{Cosmic Rotation and Dark Energy}\label{sec:rotation}
+
+The effective cosmological constant is parameterized as:
+\begin{align}\label{eq:Leff_full}
+\boxed{\Leff = \Xi\,\MPl^2 + c_\omega\omega^2,}\quad
+\Xi\equiv \left[\frac{\alpha}{M}\,\MPl\right]\Dinf,
+\end{align}
+where CMB isotropy bounds give $(\omega/H)_0 < 5\times 10^{-11}$~\cite{Saadeh2016},
+making rotation completely negligible. The dark energy scale is set by
+$\Xi \sim 10^{-123}$ (Sec.~\ref{sec:gdp}).
+
+We emphasize that Eq.~\eqref{eq:Leff_full} is a \textit{phenomenological
+parameterization}, not a first-principles derivation. The parity-odd operator
+(Eq.~\ref{eq:Seff_comp}) has naive mass dimension $+1$; the identification
+$\rho_\Lambda = \Xi\,\MPl^4$ relies on on-shell evaluation at Planck-scale bounce
+densities as a scaling ansatz. The 14 barriers (Sec.~\ref{sec:barriers}) close
+all routes to deriving this from fundamental ECH dynamics.
+
+\subsubsection{Inflationary Suppression}\label{sec:dilution}
+
+The contorsion dilutes as $a^{-3}$ during inflation:
+\begin{equation}\label{eq:Dinf}
+\Dinf = \exp[-3N_{\rm tot}] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2}.
+\end{equation}
+Matching $\rho_\Lambda \approx (2.3\;\text{meV})^4$ requires $N_{\rm tot} \approx 92$
+(a fitted parameter, not predicted). This reparameterizes fine-tuning from
+$10^{120}$ to $\sim 10^5$ as sensitivity to $\Delta N_{\rm tot}\approx 4$
+$e$-folds, without solving the cosmological constant problem.
+
+\subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
+
+The parity-odd operator coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$
+underpredicts any plausible spin asymmetry by $>100$ orders of magnitude.
+An independent ViT-Small classifier applied to $8{,}474{,}531$ DESI Legacy DR8
+galaxies confirms the null: $\fcw^{\rm eq} = 0.5012 \pm 0.0006$ (all-sky dipole
+at $0.43\sigma$). Galaxy spin asymmetry is not a prediction of the theory.
+
+
+%% ============================================================
+%%  3. OBSERVATIONAL SIGNATURES
+%% ============================================================
+\section{Observational Signatures}\label{sec:obs}
+
+\subsection{CMB $E$-$B$ Cross-Correlations}\label{sec:EB}
+
+The parity-odd effective action generates CMB polarization signatures through
+cosmic birefringence. For a spatially uniform rotation:
+\begin{equation}\label{eq:ClEB}
+C_\ell^{EB}\approx 2\beta\left(C_\ell^{EE}-C_\ell^{BB}\right).
+\end{equation}
+Connecting to a quantitative rotation angle $\beta$ from the gravitational/torsion
+operator requires an explicit photon-torsion coupling that has not been derived
+here. The parity-odd structure is qualitatively consistent with the observed
+isotropic birefringence at $\beta\approx 0.27^\circ$--$0.30^\circ$. Spectator-ALP
+parameter fitting and the NaMaster pipeline validation are in companion
+Paper~I(b)~\cite{Golden2026P1b}.
+
+\subsection{Galaxy Spin Asymmetry: A Confirmed Null}\label{sec:spinobs}
+
+An independent ViT-Small chirality classifier on $8{,}474{,}531$ galaxies---the
+largest bias-audited catalog to date---finds $\fcw^{\rm eq} = 0.5012 \pm 0.0006$
+(benchmark-overlap subset), consistent with null all-sky dipole ($0.43\sigma$).
+Shamir's claimed $3\%$ asymmetry is refuted (maximum regional asymmetry $0.32\%$,
+${\sim}9\times$ smaller). The minimal ECH framework underpredicts $A_0$ by
+$>100$ orders of magnitude, consistent with the observed null.
+
+\textit{MCMC verification and cosmological fits.}---The $\Lambda$CDM$+\Delta\Neff$
+proxy MCMC (424{,}781 samples, Cobaya~v3.6.1, two frozen dataset combinations)
+finds $\Delta\Neff\approx 0$ and $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
+\text{Mpc}^{-1}$, recovering standard $\Lambda$CDM. Full details, MCMC
+diagnostics, and the AIC/BIC model comparison are in companion
+Paper~I(b)~\cite{Golden2026P1b}.
+
+
+%% ============================================================
+%%  4. ENHANCED THEORETICAL DERIVATIONS
+%% ============================================================
+\section{Enhanced Theoretical Derivations}\label{sec:derivations}
+The one-loop motivation for the parity-odd coefficient, the vacuum energy from
+fermion condensates, and the derivation of cosmological parameters from $\Leff$
+are documented in a companion technical note~\cite{Golden2026supplement}. In
+summary: $\alpha/M$ is treated as a phenomenological parameter
+(Sec.~\ref{sec:parityodd}), the condensate mechanism yields a vacuum energy
+many orders of magnitude too large (not a viable DE source), and MCMC-fit
+parameters are in companion Paper~I(b)~\cite{Golden2026P1b}.
+
+\label{sec:oneloopfull}\label{sec:condensate}\label{sec:cosmo_derivation}
+
+
+%% ============================================================
+%%  5. DATA METHODS: GALAXY SPIN ANALYSIS
+%% ============================================================
+\section{Data Methods: Galaxy Spin Analysis}\label{sec:data_galaxy}
+
+\textit{Prior work.}---Galaxy spin dipole analysis historically relied on published
+CW/CCW labels from Shamir~\cite{Shamir2022,Shamir2024}, who reported ${\sim}1$--$3\%$
+CW excesses. These claims have been contested~\cite{PatelDesmond2024,Philcox2025}.
+
+\textit{Our chirality classifier.}---We applied a bias-audited Vision Transformer
+(ViT-Small, $93.7\%$ three-class validation accuracy, $8/8$ bias tests passed)
+with test-time equivariant averaging to $8{,}474{,}531$ DESI Legacy Imaging
+Survey galaxies. The equivariant CW fraction is $\fcw^{\rm eq} = 0.5012 \pm 0.0006$
+(all-sky dipole at $0.43\sigma$). The catalog is $4.3\times$ larger than
+CE-ResNet and $6.5\times$ larger than Shamir's largest catalog, and agrees
+with CE-ResNet's equivariant result to within $0.01$ percentage points.
+This confirms the null result of Sec.~\ref{sec:spinobs}.
+
+
+%% ============================================================
+%%  6. SYSTEMATIC ANALYSIS
+%% ============================================================
+\section{Systematic Analysis}\label{sec:systematics}
+The galaxy spin channel is a confirmed null (Sec.~\ref{sec:spinobs}). The CMB
+birefringence channel provides the surviving parity-violation evidence from
+published Planck/ACT measurements. For the $\fnl$ channel, dominant systematic
+uncertainties are GR-projection effects (${\sim}20\%$ amplitude degradation at
+$z>2$), $b_\phi$ bias-prior uncertainty ($\sigma(b_\phi)/b_\phi\approx 0.2$),
+and photo-$z$ marginalization, propagated through the multi-bin Fisher matrix
+(Sec.~\ref{sec:falsification}). MCMC systematics (dataset-dependent $\Delta\Neff$)
+are in companion Paper~I(b)~\cite{Golden2026P1b}.
+
+
+%% ============================================================
+%%  7. FALSIFICATION CRITERIA
+%% ============================================================
+\section{Falsification Criteria}\label{sec:falsification}
+The surviving testable predictions are: (1)~LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$,
+early 2030s) will confirm or exclude the ALP birefringence at $\sim 9\sigma$;
+(2)~SPHEREx (${\sim}$2028) will test the matter-bounce prediction $\fnl = -35/8$
+at $3$--$5\sigma$ realistic significance\footnote{\label{fn:spherex_range}The
+$3$--$5\sigma$ realistic range reflects two forecast regimes: $\sigma(\fnl)\approx 0.7$
+Fisher-ideal (optimistic $5$--$5.5\sigma$ before GR and $b_\phi$ degradation) and
+$\sigma(\fnl)\approx 1.0$ after GR-projection and photo-$z$ marginalization
+($3$--$5\sigma$ realistic). Both assume nominal SPHEREx survey volume
+($f_{\rm sky}=0.75$, ${\sim}\!3\times 10^8$ galaxies).}~\cite{Heinrich:2023}
+via the galaxy bispectrum, simultaneously discriminating matter-bounce from
+slow-roll inflation ($\fnl\approx 0.015$) and the Cuscuton
+bounce~\cite{Dehghani:2025cusc}; (3)~MCMC parameter values ($H_0$, $\sigma_8$,
+$\Delta\Neff$) are already consistent with standard $\Lambda$CDM, constraining the
+framework rather than falsifying it (details in companion Paper~I(b)~\cite{Golden2026P1b}).
+
+\label{sec:conjunctive}
+
+
+%% ============================================================
+%%  8. RELATED WORK
+%% ============================================================
+\section{Related Work}\label{sec:related}
+This work builds on rotating cosmologies (G\"odel~\cite{Godel1949}), ECH theory
+(Hehl~\etal~\cite{Hehl1976}), Pop\l{}awski's torsion bounce and black hole
+universe scenario~\cite{Poplawski2012,Poplawski2016,Poplawski2010}, the
+Holst/Nieh-Yan parity structure (Freidel~\etal~\cite{Freidel2005},
+Mercuri~\cite{Mercuri2006,Mercuri2009}), and cosmic birefringence detections
+(Minami \& Komatsu~\cite{Minami2020}). Recent independent support includes
+Liu~\etal~\cite{Liu2025} (EC torsion preferred by AIC), Legner~\etal~\cite{Legner2025}
+(torsion condensation), and Alam~\etal~\cite{Alam2025bounce} (non-singular bounces
+in modified gravity). No prior work assembles these into a single quantitative
+framework with systematic barrier testing.
+
+Recent developments in bounce cosmology include: Cai \& Zhu~\cite{Cai:2026echoes}
+(GW echo signatures), Papanikolaou~\etal~\cite{Papanikolaou:2024pbh} (PBH
+formation in matter bounce), and Dehghani~\etal~\cite{Dehghani:2025cusc}
+(Cuscuton bounce bispectrum).
+
+
+%% ============================================================
+%%  9. STRUCTURAL CONSTRAINTS ON DARK-ENERGY ROUTES IN MINIMAL ECH
+%% ============================================================
+\section{Structural Constraints on Dark-Energy Routes in Minimal ECH}\label{sec:barriers}
+
+We tested 7 foundation mechanism classes (Foundations A--G) and 7 additional
+observational channels (Branches H--O, plus ECH perturbation gates) for the
+possibility of connecting the ECH bounce to late-time dark energy. Each test
+yielded a named structural constraint. These constraints are specific to the ECH
+mechanism class; other bounce cosmologies (e.g., quintom scenarios) are not
+subject to them.
+
+\textit{Constraint classification.}---\textbf{Novel results} (Barriers 1, 2, 3,
+4, 8, 10, 11, 12, 14): ECH-specific calculations not immediate consequences
+of prior literature. \textbf{Known results} (Barriers 5, 6, 7, 9): scale
+separation, attractor-sensitivity dilemma, parameter immunity, Liouville
+conservation---included to close mechanism classes that arise naturally in the
+ECH analysis. \textbf{Structural/philosophical observations} (Barrier 13):
+gravitational democracy, included for completeness.
+
+\begin{table*}[tb]
+\caption{\label{tab:barriers} The 14 structural constraints on minimal ECH dark-energy routes.}
+\centering
+\begin{tabular}{clll}
+\toprule
+\# & Barrier & Source & Mechanism Blocked \\
+\midrule
+1 & Mass-Coupling Lock & Found.\ A & Propagating torsion as DE \\
+2 & Topological-Shift Duality & Found.\ B & Geometric pseudoscalar mass protection \\
+3 & Scalar-Tensor Universality & Found.\ C & Distinctive geometric content on FRW \\
+4 & Planck Suppression & Found.\ D & Disformal / connection coupling effects \\
+5 & Scale Separation & Found.\ E & Global vacuum integral coupling \\
+6 & Attractor-Sensitivity Dilemma & Found.\ F & Initial-condition transfer to DE \\
+7 & Parameter Immunity & Found.\ G & Cyclic vacuum selection \\
+8 & Parity-Even Interaction & Branch H & Tensor chirality from the bounce \\
+9 & Liouville Conservation & Branch J & Reversible state selection \\
+10 & UV$\to$IR Specificity Dilemma & Branch L & Generic vs.\ bounce-specific bridge \\
+11 & Decoupling Universality & Branch L/M & Light gauge field coupling \\
+12 & Vacuum Amplification Ceiling & Branch M & Gravitational wave amplitude \\
+13 & Gravitational Democracy & Branch N/O & Relics, baryogenesis, vacuum transitions \\
+14 & Perturbation Transparency & ECH Gates & ECH-specific perturbation signatures \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
+
+In Poincar\'{e} gauge theory (PGT), ultralight torsion modes ($m_T\sim H_0$)
+require coupling:
+\begin{equation}
+g_{\rm eff} \sim \frac{1}{\MPl\sqrt{|t_3|}} \sim \frac{H_0}{\MPl} \sim 10^{-61}.
+\end{equation}
+To achieve $g_{\rm eff}\sim 1$, one needs $m_T\sim\MPl$. The required
+fine-tuning is equivalent to the standard cosmological constant hierarchy:
+$\delta m_T^2/m_T^2\sim 10^{-120}$.
+
+\subsection{Barrier 2: Topological-Shift Duality (Foundation B)}
+
+In metric-affine gravity, a duality emerges:
+\begin{equation}
+\text{Mass protection} \iff \text{No geometric fingerprint}.
+\end{equation}
+Configurations protecting the pseudoscalar mass through topological structure
+eliminate the geometric content (the field reduces to a standard ALP after
+torsion elimination). Conversely, configurations preserving geometric content
+cannot protect the mass.
+
+\subsection{Barrier 3: Scalar-Tensor Universality (Foundation C)}
+
+On an FRW background, the most general action for torsion-scalar mixing is
+constrained by diffeomorphism invariance. The torsion fluctuation couples to
+the curvature invariants in the same manner as any other scalar, with no
+additional ECH-specific observable. Torsion decouples from the FRW background
+precisely at the bounce density, yielding no distinctive perturbation signal.
+
+\subsection{Barrier 4: Planck Suppression (Foundation D)}
+
+Disformal couplings from torsion are Planck-suppressed by factors of
+$m_\phi^2/\MPl^2$ or $(\partial\phi)^2/\MPl^4$. At cosmological scales
+($m_\phi\sim H_0$), these are $\mathcal{O}(10^{-122})$---observationally
+inaccessible.
+
+\subsection{Barrier 5: Scale Separation (Foundation E)}
+
+The global vacuum integral $\int d^4x\,\sqrt{-g}\,\rho_\Lambda$ cannot be
+connected to the local bounce density without assuming a mechanism to store
+and transfer the integrated vacuum energy across $\sim 92$ $e$-folds of inflation.
+No such mechanism exists within minimal ECH.
+
+\subsection{Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}
+
+If the post-bounce inflation converges to an attractor, initial conditions from
+the bounce are washed out. If it is sensitive to initial conditions, inflation
+itself is destabilized. The bounce therefore cannot simultaneously seed dark
+energy \textit{and} preserve the standard inflation dynamics.
+
+\subsection{Barrier 7: Parameter Immunity (Foundation G)}
+
+Cyclic vacuum selection mechanisms require $\gamma$ to vary across cycles.
+However, $\gamma$ is fixed by the LQG area spectrum at a universal value;
+there is no mechanism within LQG to produce a landscape of $\gamma$ values
+from which selection could operate.
+
+\subsection{Barrier 8: Parity-Even Interaction (Branch H)}
+
+The spin-torsion effective interaction $(J^5)^2$ is parity-\textit{even}:
+the product of two axial currents is a Lorentz scalar, not a pseudoscalar.
+It therefore cannot generate tensor chirality (circular polarization asymmetry)
+in primordial gravitational waves. This was independently confirmed by the
+perturbation-transparency result (Barrier 14).
+
+\subsection{Barrier 9: Liouville Conservation (Branch J)}
+
+Phase-space volume conservation prevents irreversible selection among post-bounce
+states from pre-bounce dynamics, closing the ``vacuum selection at the bounce''
+mechanism class. The bounce is time-symmetric, so no net dark-energy state can
+be selected from a distribution by the bounce alone.
+
+\subsection{Barrier 10: UV$\to$IR Specificity Dilemma (Branch L)}
+
+Any mechanism that bridges from Planck-scale bounce physics to the late-time
+$H_0$ scale must be either generic (explaining \textit{any} vacuum energy, not
+specifically the ECH value) or bounce-specific (requiring free parameters
+equivalent to the cosmological constant itself). No mechanism achieves both
+simultaneously within ECH.
+
+\subsection{Barrier 11: Decoupling Universality (Branches L/M)}
+
+At low energies, all gauge fields decouple from the torsion sector equally
+(since torsion is Planck-suppressed). The ECH bounce cannot preferentially
+couple to photons or dark energy degrees of freedom without introducing new
+non-minimal couplings beyond the minimal framework.
+
+\subsection{Barrier 12: Vacuum Amplification Ceiling (Branch M)}
+
+Gravitational wave production from the ECH bounce is bounded above by:
+\begin{equation}
+\Omega_{\rm GW}^{\rm ECH} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \sim 10^{-2},
+\end{equation}
+far below the NANOGrav signal range and too small to amplify any vacuum state.
+
+\subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
+
+Torsion couples democratically to all spin-$1/2$ matter species. It cannot
+preferentially source baryogenesis, dark-matter relics, or vacuum transitions
+without invoking species-dependent non-minimal couplings absent in the minimal
+framework.
+
+\subsection{Barrier 14: Perturbation Transparency}
+
+For canonical scalar field matter, torsion vanishes at all perturbation orders;
+the Holst sector decouples from all scalar/tensor perturbation observables.
+This is elaborated in Sec.~\ref{sec:transparency}.
+
+
+%% ============================================================
+%%  10. THE PERTURBATION-TRANSPARENCY RESULT
+%% ============================================================
+\section{The Perturbation-Transparency Result}\label{sec:transparency}
+
+\subsection{Statement}
+
+In minimal ECH gravity with canonical scalar field matter, the Holst term is
+dynamically inert for both scalar and tensor perturbations at all orders. The
+Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables.
+This generalizes Hehl~\etal~(1976)~\cite{Hehl1976} to the Holst sector and to
+all perturbation orders.
+
+\subsection{Proof (Scalar Sector)}
+
+\begin{enumerate}
+\item \textbf{Zero spin density.} A canonical scalar field has zero spin density.
+
+\item \textbf{Zero torsion.} In Einstein-Cartan theory, $T^\lambda{}_{\mu\nu}
+= 8\pi G\,S^\lambda{}_{\mu\nu} + \ldots$. With $S=0$, $T^\lambda{}_{\mu\nu}=0$
+at all perturbation orders.
+
+\item \textbf{Connection reduces to Levi-Civita.} $\Gamma^\lambda{}_{\mu\nu}
+= \mathring{\Gamma}^\lambda{}_{\mu\nu}$.
+
+\item \textbf{Holst term becomes topological.} The Holst term evaluated with
+the Levi-Civita connection gives $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
+R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which vanishes identically by the
+algebraic Bianchi identity $R_{[\mu\nu\rho]\sigma}=0$.
+
+\item \textbf{No equations of motion.} A total derivative contributes nothing
+to variational equations at all orders.
+\end{enumerate}
+
+\subsection{Extension to Tensor Sector}
+
+The same five steps apply to tensor perturbations. With $T=0$, the tensor
+perturbation equation:
+\begin{equation}
+h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0
+\end{equation}
+has no parity-dependent modifications. Left and right circular polarization
+modes propagate identically:
+\begin{equation}
+v_R(k,\eta) = v_L(k,\eta) \quad\Rightarrow\quad \Delta v = 0 \quad\text{(identically)}.
+\end{equation}
+No GW birefringence, no tensor chirality, no $TB/EB$ CMB parity violation from
+the ECH mechanism.
+
+\subsection{Explicit Verification: The Holst Term in Perturbation Theory}
+
+Expanding to second order, the Holst dual evaluates to:
+\begin{equation}
+\widetilde{R}(\mathring{\Gamma}) = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
+R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) = 0 \quad\text{(by the first Bianchi identity)}.
+\end{equation}
+This holds at every perturbation order. In particular, the cubic action for $\zeta$
+(which determines the bispectrum) receives zero contribution from the Holst term.
+The bispectrum is therefore identical to the standard GR result.
+
+\subsection{What Would Break the Transparency}
+
+The transparency result fails if: (1)~matter includes fermions with nonzero
+spin density; (2)~the gravitational action includes kinetic terms for torsion
+(Poincar\'{e} gauge theory); (3)~non-minimal derivative couplings between the
+Holst sector and matter are introduced.
+
+\subsection{Implications}
+
+The perturbation-transparency result establishes a clean dichotomy:
+\begin{itemize}[leftmargin=*]
+\item \textit{Perturbation observables} ($C_\ell^{TT}$, $C_\ell^{EE}$, $P_k$,
+bispectrum): Identical to standard GR. No ECH modifications at any order.
+\item \textit{Nonperturbative parity channels} (ALP birefringence, primordial GW
+chirality): The relevant tests of $\gamma$.
+\end{itemize}
+
+\subsection{Discrimination Among Bouncing Cosmologies}\label{sec:discrimination}
+
+\begin{table*}[tb]
+\caption{\label{tab:bounce_disc} Discrimination among bouncing cosmologies and
+inflation by observable channels. ``$\checkmark$'' denotes the mechanism produces
+the prediction; ``$\times$'' denotes it does not; ``---'' denotes not applicable
+or not computed.}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Model & $\fnl=-35/8$ & ALP birefringence & PTA $\gamma\approx 3$ & $w_0w_a$ DESI \\
+\hline
+Matter bounce (ECH-compatible) & $\checkmark$ & (spectator) & $\checkmark$ & $\times$ \\
+Slow-roll inflation & $\times$ ($\fnl\approx 0.015$) & (spectator) & $\times$ & $\times$ \\
+Quintom-B & $\times$ & (spectator) & --- & $\checkmark$ \\
+Cuscuton bounce & $\times$ ($\fnl\approx 0$) & (spectator) & --- & $\times$ \\
+Ekpyrotic & $\times$ ($\fnl\sim -5$) & (spectator) & --- & $\times$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
+it provides $\sigma(\fnl)\approx 0.7$ (Fisher-ideal) to $\sigma(\fnl)\approx 1.0$
+(with systematics) from SPHEREx, yielding $3$--$5\sigma$ model separation.
+NANOGrav model comparison: $\gamma = 3.20\pm 0.42$ from independent reanalysis
+of the 15-yr free-spectrum data (GPU MCMC, companion Paper~II~\cite{Golden2026P2}
+and Paper~III~\cite{Golden2026P3}). Bounce prediction $\gamma=3.0$ at $0.48\sigma$.
+
+
+%% ============================================================
+%%  11. THE HYBRID DARK-ENERGY LOOPHOLE
+%% ============================================================
+\section{The Hybrid Dark-Energy Loophole}\label{sec:loophole}
+
+We considered appending late-time dynamical dark-energy freedom (CPL $w_0w_a$)
+to the bounce model, explored across 7 disguised forms:
+(1)~direct $w_0w_a$ addition, (2)~quintessence scalar with bounce initial conditions,
+(3)~curvaton-derived late-time potential, (4)~vacuum energy from cyclic boundary conditions,
+(5)~torsion-induced effective $w(z)$, (6)~Holst-term residual as effective DE,
+(7)~ALP rolling as late-time acceleration.
+
+All 7 forms were rejected: adding $w_0w_a$ to a bounce model produces the same
+fit improvement as adding $w_0w_a$ to $\Lambda$CDM, with no additional theoretical
+content from the bounce. The loophole was explored theoretically but the
+$w_0w_a$ extension was never implemented computationally in this program
+(the MCMC program uses stock CAMB with $\Delta\Neff$ only; see
+companion Paper~I(b)~\cite{Golden2026P1b} for the frozen sample inventory).
+
+
+%% ============================================================
+%%  12. DISCUSSION
+%% ============================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{The Inflationary Suppression Factor}\label{sec:gdp}
+
+The constant contribution to $\Leff$ emerges from the interplay between the
+parity-odd spin-torsion interaction and inflationary dilution:
+\begin{equation}\label{eq:gdp}
+\Xi \equiv \left[\frac{\alpha}{M}\,\MPl\right]\times\Dinf,
+\end{equation}
+a dimensionless quantity with $\Xi\approx 10^{-123}$, decomposed as
+$10^{-2}\times\Dinf$ with $\Dinf\sim 10^{-121}$.
+
+The ``fine-tuning reduction from $10^{120}$ to $10^5$'' is a reparameterization
+as sensitivity to $N_{\rm tot}$ (the total number of inflationary $e$-folds),
+not a resolution of the cosmological constant problem. A 100{,}000-sample Monte
+Carlo sensitivity scan (Sec.~\ref{sec:conclusions}) confirms: 2.2\% of the
+physically motivated parameter space produces a viable vacuum energy, with
+$N_{\rm tot}$ identified as the single controlling parameter
+(Spearman $|\rho_s|=0.996$; all other parameters $|\rho_s|<0.08$).
+
+\subsection{Theoretical Implications}
+
+Four routes to deriving $\rho_\Lambda$ with $w=-1$ from first principles were
+tested: (i)~NJL condensate, (ii)~one-loop fermion effective action, (iii)~dynamical
+Immirzi field, (iv)~parity-sensitive CMB phenomenology. All four yield clean
+negative results. The condensate route fails because the scalar/pseudoscalar
+channel is repulsive at $\gamma=0.274$ and subcritical. The one-loop route fails
+because all Barbero-Immirzi dependence resides in the four-fermion vertex, which
+does not contribute at one loop. The dynamical Immirzi field reduces to a standard
+axion-like particle with $w=+1$ (stiff matter). The parity assessment finds no
+photon coupling in the minimal framework~\cite{Golden2026supplement}.
+
+\textit{Spectator-ALP birefringence.}---A spectator ALP with $f_a\sim\MPl$,
+$m\sim H_0$ is consistent with the published Planck/ACT DR6 $3.6\sigma$ joint
+signal ($\beta=0.342^\circ\pm 0.094^\circ$, Eskilt~\etal~\cite{Eskilt2022b})
+without fine-tuning. The same $\beta\approx 0.27^\circ$ prediction arises in
+standard GR with an identical ALP; it is not a distinctive ECH prediction.
+Full ALP MCMC parameter fitting (9,720 accepted samples, $\hat{R}-1<0.01$) and
+LiteBIRD forecast are in companion Paper~I(b)~\cite{Golden2026P1b}.
+
+
+%% ============================================================
+%%  13. SURVIVING MECHANISM-INDEPENDENT TESTS
+%% ============================================================
+\section{Surviving Mechanism-Independent Tests}\label{sec:surviving}
+
+Despite ECH structural closure (14 barriers blocking all minimal-ECH dark-energy
+routes), the broader bounce-cosmology program retains two fully testable
+mechanism-independent predictions:
+
+\textbf{(1) Matter-bounce $\fnl=-35/8$.}---The matter-dominated contracting
+phase of any ECH-compatible bounce produces a universal non-Gaussianity
+$\fnl = -35/8$~\cite{Cai:2009fn}. This value is shared by every
+dust-dominated contracting bounce (mechanism-independent) and is
+\emph{not} a distinctive ECH prediction. It is a class-level test. The full
+multi-bin Fisher forecast, SPHEREx parameter sensitivity ($\sigma(\fnl)\approx
+0.7$--$1.0$), and anomaly-optimized multi-tracer strategy are in
+Paper~II~\cite{Golden2026P2}. SPHEREx first science data $\sim$2028.
+
+\textbf{(2) Spectator-ALP birefringence $\beta\approx 0.27^\circ$.}---An ALP
+with $f_a\sim\MPl$, $m\sim H_0$ is motivated by the ECH parity structure but
+arises identically in standard GR with the same parameters. It is consistent
+with the published $3.6\sigma$ signal without fine-tuning. LiteBIRD
+($\sigma(\beta)\approx 0.03^\circ$, early 2030s) will either confirm this at
+$\sim 9\sigma$ or cleanly exclude the ALP explanation.
+
+\textbf{Structural incompatibility.}---An open constraint is the incompatibility
+between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
+required) and the $\fnl=-35/8$ prediction (erased by $N_{\rm tot}\gg 60$). This
+is detailed in Sec.~\ref{sec:structural_tension}. The correct interpretation is
+that bounce cosmology (as a broad class) and the ECH-specific dark-energy
+ansatz are \textit{independent observational programs}; SPHEREx tests the former,
+LiteBIRD tests a related spectator field, and the ECH dark-energy ansatz remains
+a phenomenological parameterization.
+
+
+%% ============================================================
+%%  14. LIMITATIONS AND FUTURE DIRECTIONS
+%% ============================================================
+\section{Limitations and Future Directions}\label{sec:limitations}
+\label{sec:futuredirections}
+
+\subsection{Current Limitations}
+
+\subsubsection{Theoretical}
+\begin{itemize}[leftmargin=*]
+\item \textit{Phenomenological $\alpha/M$}: Not derived from first principles;
+the one-loop estimate motivates existence and order of magnitude, but the finite
+part depends on the $\gamma_5$ regularization scheme
+(Sec.~\ref{sec:parityodd},~\cite{ShapiroTeixeira2014}).
+\item \textit{Simplified inflationary epoch}: Non-minimal couplings during
+inflation could alter the dilution factor.
+\item \textit{Bounce-to-inflation transition}: Mechanism for transitioning from
+quantum bounce to slow-roll inflation is not fully modeled.
+\end{itemize}
+
+\subsubsection{Observational}
+\begin{itemize}[leftmargin=*]
+\item \textit{Galaxy spin}: Null confirmed ($0.43\sigma$ all-sky dipole), consistent
+with the $>100$-orders-of-magnitude underprediction by the ECH coupling.
+\item \textit{MCMC proxy}: Stock CAMB with $\Delta\Neff$ is a phenomenological
+proxy, not a bespoke spin-torsion Boltzmann module. Full MCMC details and
+convergence diagnostics are in companion Paper~I(b)~\cite{Golden2026P1b}.
+\end{itemize}
+
+\subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
+
+The galaxy spin channel is a confirmed null ($\fcw^{\rm eq}=0.5012\pm 0.0006$,
+all-sky dipole at $0.43\sigma$), \textit{consistent} with the framework (which
+underpredicts $A_0$ by $>100$ orders of magnitude). The parity-violation case
+rests entirely on CMB birefringence from published Planck/ACT measurements.
+
+\subsection{Discriminating Observational Channels}
+
+\textit{LSST Era (2025--2035)}: $10^9$ spiral galaxies to $z\sim 1$, tomographic
+analysis in $20+$ redshift bins.
+\textit{CMB Experiments}: LiteBIRD, CMB-S4, and future concepts (PICO, CMB-HD).
+\textit{Bounce cosmology beyond ECH}: Papanikolaou~\etal~\cite{Papanikolaou:2024pbh}
+showed that asymmetric matter bounces can produce asteroid-mass PBHs as dark matter
+candidates with induced GWs detectable by LISA and Einstein Telescope.
+
+\subsection{Structural Tension: Dark Energy vs.\ Bounce $\fnl$}\label{sec:structural_tension}
+
+The dark-energy suppression mechanism requires $N_{\rm tot}\approx 92$ post-bounce
+$e$-folds; the matter-bounce $\fnl=-35/8$ would be erased by $N_{\rm tot}\gg 60$.
+These are structurally incompatible within minimal ECH. DESI DR2 evidence for
+equation-of-state crossing at $3.1$--$4.2\sigma$~\cite{DESI2025DR2} lends
+empirical support to quintom scenarios that can unify bounce and dark energy
+through mechanisms outside the ECH minimal-route catalog.
+
+\subsection{Structural Closure}\label{sec:ech_closure}
+
+The 14 structural constraints catalog the complete set of minimal-ECH dark-energy
+mechanisms and close all of them. The surviving science case rests on the
+matter-bounce $\fnl$ prediction, which is compatible with the ECH framework but
+not derived from it (Sec.~\ref{sec:surviving}).
+
+
+%% ============================================================
+%%  15. CONCLUSIONS
+%% ============================================================
+\section{Conclusions}\label{sec:conclusions}
+
+We have investigated whether Einstein-Cartan-Holst spin-torsion gravity can
+produce late-time dark energy or distinctive cosmological signatures. The answer
+is a structural no-go: the 14 independent constraints (Table~\ref{tab:barriers})
+close every minimal-ECH dark-energy route.
+
+\textit{Central result: perturbation transparency.}---For canonical scalar field
+matter, the Holst sector decouples completely from all scalar and tensor
+perturbation observables (Sec.~\ref{sec:transparency}). Torsion vanishes at all
+perturbation orders; the Holst dual contraction vanishes identically by the first
+Bianchi identity. This is a positive structural result: it identifies the
+nonperturbative parity-violating channels (ALP birefringence, primordial GWs)
+as the relevant tests of $\gamma$.
+
+\textit{The 14 barriers.}---Systematic analysis across 7 foundations (A--G) and
+17+ branches established 14 independent structural constraints on the minimal ECH
+dark-energy parameter space (Sec.~\ref{sec:barriers}). These constraints are
+ECH-specific: other bouncing cosmologies (notably quintom scenarios) can in
+principle unify bounce with late-time dark energy through mechanisms outside the
+ECH minimal-route catalog.
+
+\textit{Surviving tests.}---Two mechanism-independent predictions of the broader
+bounce/ALP landscape survive ECH structural closure and are testable:
+\begin{enumerate}[leftmargin=*]
+\item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
+realistic significance by $\sim$2028, discriminating from inflation
+($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD tests at
+$\sim 9\sigma$ in the early 2030s (confirm or cleanly exclude).
+\end{enumerate}
+Neither is a distinctive ECH prediction; both are shared with other UV completions.
+
+\textit{Known limitations.}---This work does not derive the IR effective vacuum
+term from first principles: $w=-1$ is assumed, not derived; the birefringence
+prediction lacks a derived photon-torsion coupling; $\alpha/M$ is a
+phenomenological parameter; and the MCMC uses stock CAMB (not a bespoke
+torsion-modified Boltzmann code). Full MCMC diagnostics, ALP parameter fitting,
+and NaMaster pipeline validation are in companion Paper~I(b)~\cite{Golden2026P1b}.
+
+\textit{Forward.}---The program continues with direct tests of the bounce framework:
+SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly catalog
+(Paper~III~\cite{Golden2026P3}), and galaxy chirality catalog
+(Paper~IV~\cite{Golden2026P4}).
+
+\subsection*{Data and Code Availability}
+
+All materials necessary to reproduce the cosmological and galaxy spin results are
+publicly available at:
+\begin{center}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.3.0/reproducibility}
+\end{center}
+(pinned to tag \texttt{v2.3.0}). The repository includes Cobaya YAML configurations,
+galaxy spin pipeline code, and the implementation map (\texttt{IMPLEMENTATION\_MAP.md}).
+MCMC chains and convergence diagnostics are in companion Paper~I(b)~\cite{Golden2026P1b}.
+
+
+%% ============================================================
+%%  ACKNOWLEDGMENTS
+%% ============================================================
+\begin{acknowledgments}
+We thank the Planck, CMB-S4, LiteBIRD, LSST, and DESI collaborations for
+providing the observational foundation for this work. We particularly acknowledge
+the foundational contributions of Nikodem Pop\l{}awski, Simone Mercuri, Laurent
+Freidel, Djordje Minic, and Tatsu Takeuchi for their fundamental derivations
+connecting the Barbero-Immirzi parameter to parity-violating interactions in LQG.
+We acknowledge Lior Shamir for providing aggregate CW/CCW galaxy spin counts for
+the $A(z)$ comparison.
+
+The author acknowledges the use of Claude (Anthropic) as an AI research assistant
+during systematic barrier-cataloging, perturbation-gate verification, and manuscript
+preparation. All scientific claims, derivations, numerical results, and bibliographic
+attributions were independently verified by the author. No external funding was
+received for this research. Computational resources were self-funded (RunPod H200
+and H100 instances).
+\end{acknowledgments}
+
+
+%% ============================================================
+%%  APPENDICES
+%% ============================================================
+\appendix
+
+%% --- A: Parameter Summary ---
+\section{Complete Parameter Summary}\label{app:params}
+
+\begin{table*}[t]
+\caption{\label{tab:params} Complete parameter summary with priors, verified values,
+and physical interpretations. MCMC posterior values are from companion
+Paper~I(b)~\cite{Golden2026P1b}.}
+\begin{ruledtabular}
+\begin{tabular}{llccc}
+Parameter & Description & Prior & Verified Value & Notes \\
+\hline
+\multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
+$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274\pm 0.020$ & LQG area spectrum \\
+$\alpha/M$ & Parity-odd coefficient & Log-flat & $\sim 10^{-21}\,\text{GeV}^{-1}$ & One-loop motivated \\
+$N_{\rm tot}$ & Total e-folds & $[60, 120]$ flat & $\approx 92$ (fitted) & Controls $\Xi$ \\
+\hline
+\multicolumn{5}{l}{\textit{Cosmological parameters (MCMC proxy from companion)}} \\
+$H_0$ & Hubble constant & From Planck prior & $67.68\pm 1.06\,\text{km/s/Mpc}$ & Recovers $\Lambda$CDM \\
+$\Delta\Neff$ & Radiation proxy & $[-3, 3]$ flat & $-0.020\pm 0.169$ (full-tension) & Consistent with 0 \\
+$\sigma_8$ & Clustering amplitude & Derived & $0.803\pm 0.008$ & \\
+$\Omega_m$ & Matter density & Derived & $0.308\pm 0.005$ & \\
+\hline
+\multicolumn{5}{l}{\textit{Observational channel parameters}} \\
+$\beta$ & ALP birefringence & --- & $0.27^\circ$ (midpoint) & Spectator ALP, not ECH \\
+$\fnl$ & Non-Gaussianity & --- & $-35/8 = -4.375$ & Matter bounce class \\
+$\gamma_{\rm PTA}$ & PTA spectral index & --- & $3.20\pm 0.42$ (GPU MCMC) & Bounce at $0.48\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+%% --- B: Dimensional Analysis ---
+\section{Dimensional Analysis}\label{app:dimensions}
+
+The parity-odd operator (Eq.~\ref{eq:Seff_comp}) has off-shell mass dimension
+$+1$, not the $+4$ required for a Lagrangian density:
+\begin{equation}
+[\alpha/M] = -1, \quad [\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu
+\mathcal{F}_{IJ\rho\sigma}] = +2 \;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
+\end{equation}
+The missing three powers of mass arise through on-shell evaluation at Planck-scale
+bounce densities: $K\sim\MPl$ and $R\sim\MPl^2$, giving
+$\rho_\Lambda^{\rm bounce}\sim(\alpha/M)\,\MPl^3 = [(\alpha/M)\,\MPl]\,\MPl^4
+\sim 10^{-2}\,\MPl^4$. Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then
+yields $\rho_\Lambda = \Xi\,\MPl^4$ with $[\rho_\Lambda]=+4$. This is a
+\textit{scaling ansatz}, not a derivation from a renormalizable off-shell EFT.
+No quantitative conclusion in this paper depends on resolving this gap: the 14
+structural barriers close the bounce-to-dark-energy route on independent grounds.
+
+
+%% ============================================================
+%%  BIBLIOGRAPHY
+%% ============================================================
+\bibliography{references}
+
+\end{document}

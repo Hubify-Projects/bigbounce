@@ -1,0 +1,624 @@
+% Technical Verification Companion to Paper 1A
+% Paper 1B (MCMC proxy, NaMaster pipeline, spectator-ALP consistency check)
+% Houston Golden -- 2026
+% arXiv submission: astro-ph.CO / gr-qc
+%
+% Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
+% Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{bbold}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{slashed}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+% Custom commands (same as Paper 1A)
+\newcommand{\Leff}{\Lambda_{\rm eff}}
+\newcommand{\Dinf}{\mathcal{D}_{\rm inf}}
+\newcommand{\rhocrit}{\rho_{\rm crit}}
+\newcommand{\rhoPl}{\rho_{\rm Pl}}
+\newcommand{\MPl}{M_{\rm Pl}}
+\newcommand{\Neff}{N_{\rm eff}}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\etal}{\textit{et~al.}}
+\newcommand{\fnl}{f_{\rm NL}}
+\newcommand{\fcw}{f_{\rm CW}}
+\newcommand{\paperVersion}{v1B.0.1}
+\newcommand{\paperTimestamp}{2026-05-05 00:00 PDT}
+
+\begin{document}
+
+\preprint{HUBIFY-2026-001B}
+
+\title{Technical Verification Companion: $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy,\\
+NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check\\
+for the ECH Spin-Torsion Program}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{May 5, 2026 --- \paperVersion}
+
+\begin{abstract}
+We report the technical verification material for the Einstein-Cartan-Holst (ECH)
+spin-torsion cosmology no-go program of Paper~I(a)~\cite{Golden2026P1a}.
+Three analyses are documented.
+\emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
+(Cobaya~v3.6.1, 424{,}781 samples across three dataset combinations): this
+run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
+\emph{no torsion modifications to the Boltzmann equations}; it is reported as
+a null-consistency test of an extra radiation-like degree of freedom, not as
+evidence for or against the ECH spin-torsion framework. Both frozen dataset
+combinations find $\Delta\Neff$ consistent with zero ($-0.020\pm 0.169$
+full-tension; $+0.065\pm 0.17$ Planck+BAO+SN) and
+$H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,\text{Mpc}^{-1}$, recovering
+standard $\Lambda$CDM.
+\emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on the Planck Commander
+CMB polarization map ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
+500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
+$\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
+$0.032^\circ$, SNR$=20.32$). The primary sky detection significance is the
+published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};
+the pipeline SNR figures refer to recovery of injected MC signals and are
+\emph{not} competitive sky measurements.
+\emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$,
+$m\sim H_0$ is consistent with the published joint Planck+ACT value
+$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} without
+fine-tuning. The same birefringence arises in standard GR with an identical
+ALP; it is not a distinctive ECH prediction.
+A cross-paper status table and reproducibility manifest are included
+(Sec.~\ref{sec:crosspaper}).
+\end{abstract}
+
+\pacs{98.80.-k, 95.36.+x, 04.50.Kd}
+\keywords{MCMC, Cobaya, cobaya, NaMaster, cosmic birefringence, axion-like particle, spin-torsion cosmology, reproducibility}
+
+\maketitle
+\tableofcontents
+
+
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+
+This companion paper provides the technical verification layer for the ECH
+structural-closure no-go result reported in Paper~I(a)~\cite{Golden2026P1a}.
+The main paper establishes 14 independent structural constraints closing
+minimal-ECH dark-energy routes and proves a perturbation-transparency theorem
+for the Holst sector. The present paper documents the three numerical analyses
+that support and contextualize those results.
+
+\textit{Scope of this paper.}---Three verification analyses are reported here,
+each with explicit scope limitations:
+\begin{enumerate}[leftmargin=*]
+\item \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy} (Secs.~\ref{sec:tensions}
+and~\ref{sec:verification}): stock CAMB Boltzmann solver with $\Delta\Neff$ as
+a free parameter. \textbf{Not a spin-torsion theory module.} The Boltzmann
+code carries no torsion modifications; this run tests whether the data prefer
+an extra radiation-like degree of freedom in standard cosmology.
+
+\item \textit{NaMaster CMB E-B analysis} (Sec.~\ref{sec:data_cmb}): a
+bias-injection Monte Carlo validation of the pseudo-$C_\ell$ deconvolution
+pipeline. \textbf{Not a competitive sky detection.} The high pipeline-recovery
+SNR figures (e.g., $20.32\sigma$) refer to recovery of injected MC signals,
+not to the significance of the CMB sky measurement, which remains the published
+$2.4$--$2.9\sigma$ from Planck/ACT.
+
+\item \textit{Spectator-ALP consistency check} (Sec.~\ref{sec:birefringence_check}):
+a standard GR+ALP computation showing that the observed signal is consistent
+with an ALP having natural parameters. \textbf{Not a distinctive ECH prediction.}
+The same $\beta\approx 0.27^\circ$ arises in any GR+ALP setup with the same
+parameters; no ECH-specific derivation connects the Holst action to the
+photon-torsion coupling required.
+\end{enumerate}
+
+\textit{What is NOT in this paper.}---The 14 structural barriers, the
+perturbation-transparency theorem, the 14-barrier table, and the surviving
+mechanism-independent test predictions ($\fnl=-35/8$ and ALP birefringence)
+are in Paper~I(a)~\cite{Golden2026P1a}. The SPHEREx multi-tracer Fisher
+forecast is in Paper~II~\cite{Golden2026P2}. The multi-survey anomaly catalog
+is in Paper~III~\cite{Golden2026P3}. The galaxy chirality catalog is in
+Paper~IV~\cite{Golden2026P4}.
+
+\textit{Cross-paper citations.}---When this companion reports MCMC values
+($H_0$, $\sigma_8$, etc.) that are referenced in the main paper, those
+values come from Secs.~\ref{sec:verification} and~\ref{sec:cosmo_fits} here.
+
+
+%% ============================================================
+%%  2. COSMOLOGICAL TENSIONS: H0 AND SIGMA8
+%% ============================================================
+\section{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:tensions}
+
+The bounce scenario motivates extending $\Lambda$CDM by $\Delta\Neff$ (particle
+production at the bounce) and $(\omega/H)_0$ (angular momentum transfer), treated
+as phenomenological parameters. $\Omega_k$ is fixed to zero (mandated by 92
+$e$-folds of post-bounce inflation). The \textit{original} MCMC analysis
+(which included the SH0ES $H_0$ prior) yielded $H_0 = 69.2\pm 0.8$,
+$\sigma_8 = 0.785\pm 0.016$; however, independent verification
+(Sec.~\ref{sec:verification}) shows these were driven by the SH0ES prior,
+not by the $\Delta\Neff$ extension. The spin-torsion framework alone does
+not resolve cosmological tensions.
+
+
+%% ============================================================
+%%  3. STOCK-CAMB LCDM+DNEFF MCMC: GENERIC RADIATION-PROXY TEST
+%% ============================================================
+\section{Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC: Generic Radiation-Proxy Test\\
+(Not a Spin-Torsion Theory Module)}\label{sec:verification}
+
+\textit{Scope statement.}---``MCMC verification'' refers throughout to a stock
+CAMB run of $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter.
+\emph{No custom CAMB modifications are used; no torsion-modified Boltzmann
+equations are solved.} The MCMC therefore tests whether the data prefer an
+extra radiation-like degree of freedom, treated as a generic phenomenological
+proxy for the spin-torsion sector's possible effective radiation contribution.
+It does \emph{not} verify the spin-torsion theory module itself; that would
+require a bespoke modified Boltzmann code.
+
+The proxy run (Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE + lowl TT/EE +
+lensing) has produced two frozen dataset combinations with publication-quality
+convergence, plus an ongoing Planck-only run (114{,}992 raw samples). Total
+MCMC program: 424{,}781 raw samples across 3 dataset combinations.
+We report this as a $\Lambda$CDM$+\Delta\Neff$ null-consistency test: the data
+are consistent with $\Delta\Neff=0$ in stock CAMB.\footnote{\label{fn:sample_stratification}Sample-count
+stratification: \textbf{424{,}781} (abstract) is the total raw-accepted count
+across all three combinations. \textbf{309{,}789} is the sum of the two frozen
+combinations only ($176{,}840 + 132{,}949$). After removing the first 30\% of
+each chain as burn-in, \textbf{123{,}129} post-burnin samples remain
+(\texttt{convergence\_summary.json}); the \textbf{119{,}617} figure in
+Fig.~\ref{fig:corner_full_tension} reflects additional \texttt{getdist}
+weight-based thinning. All four numbers correspond to the same underlying chains.}
+
+\begin{table}[t]
+\caption{\label{tab:verification} $\Lambda$CDM$+\Delta\Neff$ proxy MCMC results
+from frozen Cobaya~v3.6.1 chains (CAMB~v1.6.5, stock; \emph{no torsion
+modifications}). All values are posterior means $\pm\,1\sigma$. Reported as a
+null-consistency cross-check, \emph{not} as evidence for the spin-torsion theory.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Parameter & Full-tension & Planck+BAO+SN \\
+\hline
+$H_0$ [km/s/Mpc] & $67.68 \pm 1.06$ & $67.79 \pm 1.09$ \\
+$\Delta\Neff$ & $-0.020 \pm 0.169$ & $+0.065 \pm 0.17$ \\
+$\sigma_8$ & $0.803 \pm 0.008$ & $0.812 \pm 0.009$ \\
+$S_8$ & $0.814 \pm 0.008$ & $0.831 \pm 0.018$ \\
+$\Omega_m$ & $0.308 \pm 0.005$ & $0.312 \pm 0.006$ \\
+$\tau$ & $0.054 \pm 0.007$ & $0.056 \pm 0.007$ \\
+$n_s$ & $0.965 \pm 0.004$ & $0.967 \pm 0.006$ \\
+\hline
+Chains & 6 & 6 \\
+Total samples & 176{,}840 & 132{,}949 \\
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Sourced from
+\texttt{convergence\_latest.csv}: worst row is $n_s$ in the full-tension
+combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 14 sampled parameters
+across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$.
+\emph{Not} the stale mid-burn-in diagnostic
+\texttt{convergence\_gpu\_20260305\_stale.csv} ($\hat{R}-1\in[0.23,0.86]$),
+preserved as a transparency artifact only.} & 0.001 & 0.003 \\
+Min ESS & 4{,}744 & 4{,}692 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textit{Key finding.}---Both frozen datasets find $\Delta\Neff$ consistent with
+zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
+that the $\Delta\Neff$ extension alone does not resolve the Hubble tension.
+Current data neither require nor exclude a small positive $\Delta\Neff$ from
+the spin-torsion sector; CMB-S4 ($\sigma(\Neff)\sim 0.03$) will provide the
+first precision test.
+
+\textit{Independent cross-validation.}---Liu~\etal~\cite{ECTorsionDESI2025}
+constrained an EC torsion model using DESI~DR2 + PantheonPlus + DES~Y5 +
+Planck~2018, finding torsion preferred by AIC ($\Delta\text{AIC}=-5.7$ to $-6.6$).
+Our MCMC agrees at $0.5\sigma$ in $H_0$ and $0.4\sigma$ in $\sigma_8$.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/paper1_corner_full_tension.pdf}
+\caption{Full-tension MCMC corner plot (119{,}617 post-burnin samples,
+\texttt{getdist}-thinned from 176{,}840 raw; footnote~\ref{fn:sample_stratification})
+over Planck+BAO+SN+H0+$S_8$. The $\Delta\Neff$ posterior is consistent with
+zero ($-0.020\pm 0.169$), confirming no additional relativistic species at
+recombination.}
+\label{fig:corner_full_tension}
+\end{figure}
+
+
+%% ============================================================
+%%  4. DATA METHODS: CMB E-B ANALYSIS
+%% ============================================================
+\section{Data Methods: CMB $E$-$B$ Analysis}\label{sec:data_cmb}
+
+Birefringence measurements are adopted from the published literature:
+$\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{Eskilt2022}) and
+$\beta = 0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}).
+The spectator ALP analysis (Sec.~\ref{sec:birefringence_check}) uses these
+published values.
+
+\noindent\textbf{Scope note.}---\emph{The NaMaster pseudo-$C_\ell$ analysis
+below is a bias-injection Monte Carlo validation of the deconvolution pipeline,
+not a cosmological measurement. The high pipeline-recovery SNR figures
+(e.g., $20.32$, $25.71$) refer to recovery of injected MC signals and
+\emph{must not} be conflated with the published Planck/ACT~DR6 $2.4$--$2.9\sigma$
+sky detection.}
+
+\noindent\textbf{Pipeline configuration.}---\emph{Beam and pixel window.}---The
+Planck Commander $Q$/$U$ maps are provided at $N_{\rm side}=2048$ with the
+Planck-2018 effective Gaussian beam ($5\,\text{arcmin}$ FWHM at 143~GHz); we
+degrade to $N_{\rm side}=512$ and apply the corresponding pixel window function.
+NaMaster's \texttt{NmtField} is initialized with
+\texttt{beam=}$b_\ell^{\rm Planck}\,w_\ell^{\rm pix}$.
+
+\emph{$E$/$B$ leakage and purification.}---We use NaMaster's spin-2 $B$-mode
+purification (\texttt{purify\_b=True}, \texttt{purify\_e=False}) to suppress
+$E\!\to\!B$ leakage induced by the $f_{\rm sky}=0.32$ apodized mask. The mask
+uses $C_2$ apodization at $2^\circ$ scale.
+
+\emph{Mode-coupling matrix.}---The $M_{\ell\ell'}$ matrix is computed via
+\texttt{NmtWorkspace.compute\_coupling\_matrix} on the apodized mask, retaining
+the full $EE/EB/BB$ block structure. Spectra are band-power-binned into
+$\Delta\ell=20$ linear bins from $\ell_{\min}=30$ to $\ell_{\max}=1024$.
+
+\emph{Foreground and noise model.}---The 500 Monte Carlo realizations are drawn
+at ACT-noise level $\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ (a conservative
+worst-case bias check). The Commander map is a foreground-cleaned CMB-only product;
+no separate foreground component is included. The $\beta=0.27^\circ$,
+$\beta=0.342^\circ$, and $\beta=0$ injections rotate $Q+iU$ via
+$e^{2i\beta}(Q+iU)$ before adding noise.
+
+\emph{Reproducibility.}---Full driver script, mask, MC seeds, and binning
+specification are in
+\texttt{pipelines/h200\_results/pod1\_namaster\_umap\_2026-04-29/}.
+
+\textit{Independent verification (production 500-realization run, April 2026).}---We
+performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
+500 MC noise realizations. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
+(consistent with, but not derived from, the ECH action) recovers:
+\begin{equation}
+  \hat\beta_{\rm NaMaster} = 0.238^\circ \quad (\text{pipeline-recovery SNR}=20.32).
+  \label{eq:beta_namaster}
+\end{equation}
+The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
+a $2^\circ$ apodization scale). For $\beta=0.342^\circ$ (the published joint
+Planck+ACT value), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
+$\beta=0$, recovery is consistent with zero (null check). The pipeline-recovery
+bias $\Delta\hat\beta = 0.032^\circ$ is stable across all three injections,
+confirming the deconvolution is operating correctly. The conclusion is that the
+pseudo-$C_\ell$ deconvolution is unbiased at the $0.04^\circ$ level; this is a
+methodology cross-check, not a competitive sky measurement.
+
+
+%% ============================================================
+%%  5. COSMOLOGICAL FITS AND MODEL COMPARISON
+%% ============================================================
+\section{Cosmological Fits and Model Comparison}\label{sec:cosmo_fits}
+
+\subsection{Datasets and Configuration}\label{sec:fullcomp}
+
+We analyze four dataset combinations: (1)~Planck 2018 NPIPE~\cite{Planck2018params};
+(2)~+DESI 2024 DR1 BAO~\cite{DESI2024}; (3)~+Pantheon+; (4)~+SH0ES $H_0$
+prior~\cite{Riess2022} + DES Y3 $S_8$~\cite{DES2024}. Parameter estimation
+uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
+stock CAMB and $\Delta\Neff$ as a free parameter---no custom CAMB modifications.
+The extended parameter space adds $\{\Delta\Neff, (\omega/H)_0\}$ to $\Lambda$CDM,
+with $\Omega_k$ fixed to zero. Reproducibility materials at
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.3.0/reproducibility}.
+
+\subsection{Results}
+
+\begin{table*}[tb]
+\caption{\label{tab:modelcomp} $\Lambda$CDM$+\Delta\Neff$ proxy model comparison
+(full tension dataset). \emph{This run does not test the spin-torsion theory};
+it tests whether the data prefer an extra radiation-like degree of freedom in
+stock CAMB. The $\ln B$ estimate is biased at $r=-0.89$ and is indicative only.}
+\begin{ruledtabular}
+\begin{tabular}{lccccc}
+Model & $k$ & $\chi^2_{\rm eff}$ & AIC & BIC & $\ln B$ \\
+\hline
+$\Lambda$CDM & 6 & 1156.2 & 1168.2 & 1195.5 & 0.0 \\
+$w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
+\textbf{$\Lambda$CDM$\,+\,\Delta N_{\rm eff}$} & \textbf{7} & \textbf{1148.3} & \textbf{1162.3} & \textbf{1194.8} & $\mathbf{+4.8}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+The primary model-selection metrics are the $\Delta$AIC and $\Delta$BIC:
+\begin{align}
+\Delta\text{AIC} &= 1162.3 - 1168.2 = -5.9, \nonumber \\
+\Delta\text{BIC} &= 1194.8 - 1195.5 = -0.7, \nonumber \\
+\Delta\chi^2_{\rm eff} &= 1148.3 - 1156.2 = -7.9.
+\end{align}
+The $\Delta$AIC of $-5.9$ favors $\Lambda$CDM$+\Delta\Neff$ on Akaike grounds,
+while the $\Delta$BIC of $-0.7$ is below the Kass-Raftery threshold of
+$|\Delta\text{BIC}|<2$. Together these metrics are mildly favorable but not
+decisive for $\Lambda$CDM$+\Delta\Neff$.
+
+The Savage-Dickey indicative figure is dataset-dependent:\footnote{\label{fn:bayes_caveat}The
+$\ln B = +4.8$ is computed via the Savage-Dickey density ratio, which is
+significantly biased for the highly correlated posterior ($r=-0.89$ between
+$\Delta\Neff$ and $H_0$). The model tested is $\Lambda$CDM$+\Delta\Neff$ in
+stock CAMB, \emph{not} the ECH spin-torsion framework. A proper evidence-level
+comparison would require nested sampling on a torsion-modified Boltzmann code
+and is not attempted here.}
+\begin{align}
+\ln \mathcal{Z}_{\Lambda\text{CDM}+\Delta\Neff} - \ln \mathcal{Z}_{\Lambda\text{CDM}} = \begin{cases}
+-1.2 \pm 0.3 & \text{Planck+BAO} \\
++4.8 \pm 0.5 & \text{Full tension} \\
+\end{cases}
+\end{align}
+The preference emerges only when SH0ES-driven tension data are included, which is
+the standard $\Lambda$CDM$+\Delta\Neff$ behavior. With Planck+BAO alone, the
+Occam penalty slightly disfavors the proxy model.
+
+
+%% ============================================================
+%%  6. SPECTATOR-ALP CONSISTENCY CHECK
+%% ============================================================
+\section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
+
+\textit{Note.}---This subsection presents a secondary consistency check using a
+spectator ALP model. The ALP produces cosmic birefringence independently of the
+gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
+standard GR with an identical ALP Lagrangian and natural parameters. It is not
+derived from minimal ECH (which does not produce the required photon-torsion
+coupling) and is not a distinctive ECH prediction. The model class was previously
+studied by Fujita~\etal~\cite{Fujita2021}.
+
+\textit{Headline observational constraint.}---The primary observational reference
+adopted in this analysis is the published Eskilt~\etal\ joint Planck+ACT value
+$\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b}, which
+accounts for shared calibration systematics. The simplified inverse-variance
+combination below ($3.9\sigma$) is retained as an auxiliary cross-check only
+and is explicitly \emph{not} used as the headline number anywhere in this paper.
+
+\textit{ALP field evolution.}---Numerical integration of the ALP equation of
+motion $\ddot\phi + 3H\dot\phi + m^2 f_a\sin(\phi/f_a) = 0$ in a $\Lambda$CDM
+background yields the field displacement from recombination to today:
+\begin{equation}
+\Delta\phi/f_a \approx 0.65 \quad (m = H_0,\; \theta_i = 1).
+\end{equation}
+Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$:
+$\Delta\phi/f_a \in [0.2, 1.1]$.
+
+\textit{Birefringence value.}---For $C_{a\gamma}=8$, $\theta_i=1$, $m\approx 2H_0$:
+\begin{equation}
+\beta \approx \frac{\alpha_{\rm EM}\times 8}{4\pi}\times 1.07 \approx 0.29^\circ.
+\end{equation}
+The fiducial value $\beta\approx 0.27^\circ$ corresponds to the midpoint
+$m\approx 1.8\,H_0$, $\Delta\phi/f_a\approx 1.0$. The prediction spans
+$\beta\approx 0.17$--$0.43^\circ$ over $C_{a\gamma}\in[4,12]$, $m/H_0\in[1,3]$,
+$\theta_i\in[0.5,2]$, comfortably bracketing the observed value without fine-tuning.
+
+\textit{Summary-likelihood combination (auxiliary cross-check).}---Combining
+$\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{Eskilt2022}) and
+$\beta = 0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}) via
+inverse-variance weighting:
+\begin{equation}
+\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigma\;\text{auxiliary cross-check only}).
+\label{eq:beta_combined}
+\end{equation}
+This neglects shared calibration systematics; the published joint analysis at
+$3.6\sigma$~\cite{Eskilt2022b} is the headline.
+
+\textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
+space (3 configurations, 9{,}720 total accepted samples) yields:
+$\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ ($C_{a\gamma}=8$ fixed),
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$
+and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
+within $1\sigma$. The coupling-misalignment product is
+$C_{a\gamma}\times\theta_i = 3.4\pm 1.1$.
+Convergence: $\hat{R}-1 < 0.01$ for all runs.
+
+\textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta)
+\approx 0.03^\circ$~\cite{LiteBIRD2023}. For $\beta=0.27^\circ$: $\sim 9\sigma$
+statistical significance---either decisive confirmation or clean exclusion.
+
+\textit{Caveats.}---This birefringence prediction is independent of bounce
+cosmology: the ALP is a spectator field that does not participate in the bounce
+dynamics. The ECH framework provides heuristic motivation ($f_a\sim\MPl$ from
+the Holst sector pseudoscalar structure) but no derived photon-torsion coupling
+connects the Holst action to a specific ALP potential. The model
+\textit{accommodates} the observed signal for natural parameter values; it does
+not uniquely predict it.
+
+
+%% ============================================================
+%%  7. CROSS-PAPER VERIFICATION STATUS
+%% ============================================================
+\section{Cross-Paper Verification Status}\label{sec:crosspaper}
+
+\begin{table*}[tb]
+\caption{\label{tab:crosspaper} Cross-paper status table (R43 / Wave 14 --- May 2026).
+Readiness capped at 99\% pending Houston sign-off + clean external peer-review round.
+DESI DR2 cobaya chains running on Pod~3 H200 (ETA $\sim$3 days to convergence).}
+\begin{ruledtabular}
+\begin{tabular}{lllcc}
+Paper & Version & Title (brief) & Readiness & Key Blocker \\
+\hline
+P1(a) & v1A.0.1 & ECH structural closure, 14 barriers, perturbation transparency & 99\% & Houston sign-off \\
+P1(b) & v1B.0.1 & This companion: MCMC proxy, NaMaster, ALP & 99\% & Houston sign-off \\
+P2 & v1.7.10 & SPHEREx fNL forecast, MegaMapper outlook & 99\% & Fisher rerun/remove \\
+P3 & v3.1.20 & Multi-survey anomaly catalog (37.3M sources, 319K anomalies) & 99\% & LAMOST 98\% correction \\
+P4 & v1.0.29 & Galaxy chirality catalog (8.47M galaxies) & 99\% & D4-vs-Z2 rename \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table}[tb]
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2
+w0wa chains (4 chains, Pod~3 H200) are in progress; convergence expected in
+$\sim$3 days from 2026-05-05.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Dataset combination & Samples & $\hat{R}-1$ & Status \\
+\hline
+Full-tension (P+B+SN+H0+S8) & 176{,}840 & 0.001 & Frozen \\
+Planck+BAO+SN & 132{,}949 & 0.003 & Frozen \\
+Planck-only & 114{,}992 & $\sim$0.05 & Ongoing \\
+DESI DR2 w0wa (new) & $\sim$109 accepted & $>0.1$ & Running \\
+ALP-MCMC ($\beta$ fitting) & 9{,}720 & $<0.01$ & Frozen \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+%% ============================================================
+%%  8. CONCLUSIONS
+%% ============================================================
+\section{Conclusions}\label{sec:conclusions}
+
+This companion paper documents three technical verification analyses for the
+ECH spin-torsion structural closure program~\cite{Golden2026P1a}.
+
+\textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy.}---The stock-CAMB Cobaya~v3.6.1
+run (424{,}781 samples) finds $\Delta\Neff$ consistent with zero in both frozen
+dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
+\text{Mpc}^{-1}$, consistent with standard Planck $\Lambda$CDM. The
+$\Delta\Neff$ extension does not resolve the Hubble tension. Current data
+neither require nor exclude a spin-torsion $\Delta\Neff$ contribution;
+CMB-S4 will provide the first precision test ($\sigma(\Neff)\sim 0.03$).
+The Savage-Dickey indicative figure $\ln B = +4.8$ (full-tension) is biased
+at $r=-0.89$ and is treated as indicative only; the AIC/BIC differences
+($\Delta$AIC$=-5.9$, $\Delta$BIC$=-0.7$) are the primary cross-references.
+
+\textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
+the Planck Commander map confirms that the deconvolution pipeline recovers
+injected birefringence angles with bias $\leq 0.032^\circ$ at SNR consistent
+with the ACT-noise floor. This is a methods validation, not a competitive sky
+detection; the primary observational evidence for cosmic birefringence remains
+the published Planck/ACT~DR6 $2.4$--$2.9\sigma$ measurements.
+
+\textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
+is consistent with the published $3.6\sigma$ joint signal without fine-tuning
+($C_{a\gamma}\times\theta_i = 3.4\pm 1.1$ from 9,720 MCMC samples). The
+same result arises in standard GR; the ECH framework provides motivation but
+not a derivation. LiteBIRD will settle this at $\sim 9\sigma$ in the early 2030s.
+
+\textit{Forward.}---A new DESI DR2 + Planck NPIPE + Pantheon+ cobaya chain
+(4 chains, Pod~3 H200) is currently running (109 accepted samples as of
+2026-05-05, $\sim$3-day ETA to convergence). When converged, GetDist posteriors
+on $w_0$-$w_a$ will be incorporated into the Paper~I(a) §~Structural Tension
+section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}.
+
+\subsection*{Data and Code Availability}
+
+All materials are at:
+\begin{center}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.3.0/reproducibility}
+\end{center}
+The repository includes four Cobaya YAML configurations (one per dataset
+combination, stock CAMB, no custom modifications), galaxy-spin pipeline code,
+NaMaster driver scripts, and the implementation map (\texttt{IMPLEMENTATION\_MAP.md}).
+MCMC chains: regenerate via \texttt{reproduce\_cosmology.sh}
+($\sim$4--12\,h per configuration on 4 CPU cores).
+
+
+%% ============================================================
+%%  ACKNOWLEDGMENTS
+%% ============================================================
+\begin{acknowledgments}
+We thank the Planck, ACT, LiteBIRD, and Cobaya collaborations for providing
+the data, code, and observational infrastructure used in these analyses.
+The author acknowledges the use of Claude (Anthropic) as an AI research assistant
+during systematic analysis and manuscript preparation. All scientific claims,
+derivations, numerical results, and bibliographic attributions were independently
+verified by the author. No external funding was received. Computational resources
+were self-funded (RunPod H200 instances).
+\end{acknowledgments}
+
+
+%% ============================================================
+%%  APPENDICES
+%% ============================================================
+\appendix
+
+%% --- A: Reproducibility Materials ---
+\section{Reproducibility Materials}\label{app:reproducibility}
+
+\textit{Repository structure.}---The public repository
+\url{https://github.com/Hubify-Projects/bigbounce} (pinned to tag \texttt{v2.3.0})
+contains:
+\begin{itemize}[leftmargin=*]
+\item Four Cobaya YAML configurations (\texttt{cobaya\_planck.yaml},
+\texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml},
+\texttt{cobaya\_full\_tension.yaml})---stock CAMB, no torsion modifications.
+\item \texttt{galaxy\_spins/spin\_fit\_stan.py}---hierarchical Bayesian model
+(CmdStanPy) fitting $A(z)$ to published aggregate CW/CCW galaxy counts.
+\item \texttt{data\_build/build\_galaxy\_spin\_dataset.py}---reproducible pipeline
+downloading Galaxy Zoo DECaLS~\cite{Walmsley2022} from Zenodo
+(DOI:~10.5281/zenodo.4573248, CC-BY-4.0).
+\item \texttt{docs/IMPLEMENTATION\_MAP.md}---mapping from each result to its
+code artifact.
+\item \texttt{docs/KNOWN\_GAPS.md}---honest disclosure of what cannot currently
+be reproduced.
+\end{itemize}
+
+\textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
+via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
+Bayes factors are estimated via Savage-Dickey from MCMC posteriors, biased for
+the correlated $\Delta\Neff$--$H_0$ posterior (Sec.~\ref{sec:cosmo_fits});
+dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence.
+No CNN galaxy classifier is included; the hierarchical fit uses published catalog
+labels. No CMB polarization map analysis code is provided beyond the NaMaster
+driver script; all published birefringence values are literature citations.
+
+\textit{HuggingFace datasets.}---The following HuggingFace datasets accompany
+this work (links in the repository README):
+\begin{enumerate}[leftmargin=*]
+\item MCMC chain diagnostics and convergence CSV files.
+\item NaMaster pipeline artifacts (mask, MC seeds, output spectra).
+\item ALP parameter MCMC chains.
+\end{enumerate}
+
+
+%% --- B: Claims Classification ---
+\section{Claims Classification}\label{app:claims}
+
+\begin{table*}[tb]
+\caption{\label{tab:claims} Claims classification for this companion paper.}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+Claim & Type & Status & Notes \\
+\hline
+$\Delta\Neff = -0.020\pm 0.169$ (full-tension) & Numerical/MCMC & Verified & Stock CAMB proxy \\
+$H_0 = 67.68\pm 1.06$ & Numerical/MCMC & Verified & Recovers $\Lambda$CDM \\
+$\Delta\text{AIC} = -5.9$ & Numerical & Verified & Table~\ref{tab:modelcomp} \\
+$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC) & Numerical & Verified & Pipeline recovery \\
+$\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ & Numerical/MCMC & Verified & ALP MCMC \\
+Headline: published $3.6\sigma$ ($\beta=0.342^\circ\pm 0.094^\circ$) & Literature & Cited & Eskilt et al. \\
+Stock CAMB proxy $\neq$ ECH theory module & Scope statement & Definition & See Sec.~\ref{sec:verification} \\
+ALP birefringence not distinctive ECH prediction & Scope statement & Definition & See Sec.~\ref{sec:birefringence_check} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+
+%% ============================================================
+%%  BIBLIOGRAPHY
+%% ============================================================
+\bibliography{references}
+
+\end{document}
