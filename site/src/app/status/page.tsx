@@ -191,7 +191,7 @@ export default function StatusPage() {
                     Multi-Survey Anomaly Catalog: 378K from 37.3M Sources
                   </TableCell>
                   <TableCell>
-                    <Badge variant="default">98% Ready</Badge>
+                    <Badge variant="default">99% Ready</Badge>
                   </TableCell>
                   <TableCell className="font-mono">~40</TableCell>
                 </TableRow>
@@ -201,7 +201,7 @@ export default function StatusPage() {
                     Galaxy Chirality at Scale: 8.47M Galaxies
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary">98% Ready</Badge>
+                    <Badge variant="default">99% Ready</Badge>
                   </TableCell>
                   <TableCell className="font-mono">~20</TableCell>
                 </TableRow>
