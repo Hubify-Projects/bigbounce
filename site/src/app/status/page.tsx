@@ -89,25 +89,25 @@ export default function StatusPage() {
             <TableBody>
               <TableRow>
                 <TableCell><strong>P1</strong> Spin-Torsion</TableCell>
-                <TableCell className="font-mono">v2.2.0</TableCell>
+                <TableCell className="font-mono">v2.3.17</TableCell>
                 <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P2</strong> f<sub>NL</sub> Forecast</TableCell>
-                <TableCell className="font-mono">v1.7.5</TableCell>
+                <TableCell className="font-mono">v1.7.10</TableCell>
                 <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P3</strong> Anomaly Catalog</TableCell>
-                <TableCell className="font-mono">v3.1.5</TableCell>
+                <TableCell className="font-mono">v3.1.20</TableCell>
                 <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><strong>P4</strong> Chirality Catalog</TableCell>
-                <TableCell className="font-mono">v1.0.5</TableCell>
+                <TableCell className="font-mono">v1.0.29</TableCell>
                 <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
                 <TableCell>—</TableCell>
               </TableRow>
