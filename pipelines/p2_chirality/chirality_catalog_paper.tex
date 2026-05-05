@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.29}
+\newcommand{\paperVersion}{v1.0.30}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 4, 2026, 11:00 PDT --- \paperVersion}
+\date{May 5, 2026, 02:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -88,8 +88,10 @@ a potential source of the residual $9.5\sigma$ asymmetry; see
 Sec.~\ref{sec:cw_frac}. The equivariant catalog yields a global
 clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
 We find no significant large-scale chirality dipole: a simple fit gives
-$0.43\sigmaunit$, while a full angular power spectrum yields a marginal
-$2.75\sigmaunit$ at $\ell = 1$. A $3.05\sigmaunit$ hemisphere asymmetry
+$0.43\sigmaunit$, and a full MASTER-deconvolved angular power spectrum
+yields $-0.12\sigmaunit$ at $\ell = 1$, fully consistent with null
+(the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
+due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
 is detected at only 0.17\% amplitude and does not survive a
 look-elsewhere correction ($p_{\rm LEE} \approx 10^{-4}$, at the Monte Carlo resolution floor). This is the most sensitive chirality
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
@@ -1007,14 +1009,19 @@ see footnote~\ref{fn:mc_count}).
 
 \begin{table}
 \caption{Angular power spectrum of the chirality asymmetry map
-  (Catalog~C, equivariant). Significance is relative to 1{,}000
-  Monte Carlo null realizations.\label{tab:multipole}}
+  (Catalog~C, equivariant). The $\ell=1$ row shows the canonical
+  post-MASTER mode-coupling deconvolution result using the corrected
+  $N_{\rm spiral}$ shot-noise normalization; higher-multipole rows show
+  raw pseudo-$C_\ell$ significance relative to 1{,}000 Monte Carlo null
+  realizations (corrected $N_{\rm spiral}$ normalization; see
+  Sec.~\ref{sec:dipole} for the full deconvolution
+  methodology).\label{tab:multipole}}
 \begin{ruledtabular}
 \begin{tabular}{cccl}
 \textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
 \textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
-1 & 3.82 & $2.75$ & Marginal \\
+1 & 1.49 & $-0.12$ & Null (MASTER-deconvolved) \\
 2 & 1.54 & $1.47$ & Null \\
 3 & 1.81 & $1.63$ & Null \\
 4 & 0.88 & $0.91$ & Null \\
@@ -1023,10 +1030,14 @@ see footnote~\ref{fn:mc_count}).
 \end{ruledtabular}
 \end{table}
 
-The $\ell = 1$ mode is the largest, at $2.75\sigmaunit$. While
-nominally suggestive, this does not exceed the $3\sigmaunit$ threshold
-for ``evidence'' and, when considered alongside the four null
-higher multipoles, is consistent with a statistical fluctuation.
+The raw pseudo-$C_\ell$ at $\ell = 1$ shows $6.48\sigmaunit$ with
+the corrected $N_{\rm spiral}$ shot-noise normalization; after full
+MASTER mode-coupling deconvolution the canonical result is
+$-0.12\sigmaunit$ (Table~\ref{tab:multipole}), fully consistent with
+null. The excess in the pre-deconvolution estimator arises from
+mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
+a physical chirality anisotropy. All higher multipoles are likewise
+consistent with null.
 
 The apparent discrepancy between the simple dipole amplitude
 ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the angular power
@@ -1141,8 +1152,10 @@ this paper: it is the only estimator that explicitly inverts the
 mask-induced mode coupling that would otherwise inflate the raw
 pseudo-$C_\ell$ estimate. The simple-dipole real-space fit
 ($0.43\sigmaunit$) is retained as a complementary cross-check, and
-the raw pseudo-$C_\ell$ value ($2.75\sigmaunit$) is reported only
-for transparency on the magnitude of the mask leakage---it should
+the raw pseudo-$C_\ell$ value at $\ell=1$ ($6.48\sigmaunit$ with the
+corrected $N_{\rm spiral}$ normalization; $2.75\sigmaunit$ in older
+drafts that used the buggy $N_{\rm total}$ denominator) is reported
+only for transparency on the magnitude of the mask leakage---it should
 not be quoted as a measurement of the underlying signal because
 the leakage is a deterministic function of the survey footprint
 and \emph{must} be removed before any cosmological interpretation.
@@ -1539,10 +1552,11 @@ a cosmological interpretation:
   predicted by Shamir's analyses.
 \item It does not survive a look-elsewhere correction across
   $\sim\!650$ tested directions.
-\item The angular power spectrum shows only a marginal $2.75\sigmaunit$
-  at $\ell = 1$ in the raw pseudo-$C_\ell$; after MASTER
-  deconvolution of the mode-coupling matrix the significance drops
-  to $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}).
+\item The angular power spectrum at $\ell = 1$ is
+  $-0.12\sigmaunit$ (post-MASTER deconvolution, canonical result;
+  Sec.~\ref{sec:dipole}); the raw pseudo-$C_\ell$ excess of
+  $6.48\sigmaunit$ before deconvolution is an artifact of
+  mask-induced mode coupling, not a physical signal.
 \item The signal is stronger in mid-confidence classifications,
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
