@@ -61,7 +61,7 @@ const surveyQcVariant: Record<
 };
 
 const stats: Array<{ value: string; label: string; tone?: string }> = [
-  { value:"4", label:"Papers" },
+  { value: `${papers.length}`, label:"Papers" },
   { value: `${surveys.length}`, label:"Surveys" },
   { value:"37.3M+", label:"Sources Scored" },
   {
@@ -156,7 +156,7 @@ export default function HomePage() {
         <div className="hero-panel">
           <div className="hero-panel-header">
             <span>observational ledger</span>
-            <Badge variant="accent">R43 Wave 14-NNN — all 4 papers 99%</Badge>
+            <Badge variant="accent">R43 Wave 14-RRR — P1A/P1B/P2/P3/P4 all 99%</Badge>
           </div>
           <div className="hero-panel-body">
             <div className="signal-row">
@@ -357,18 +357,22 @@ export default function HomePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base font-mono">
               <Database size={16} />
-              R42 Wave 13 LANDED — Real NANOGrav KDE Free-Spectrum γ = 2.567 ± 0.382
+              R43 Wave 14-RRR — Paper 1 split into P1A + P1B; cobaya DESI DR2 w0wa chain in burn-in
             </CardTitle>
             <CardDescription>
-              All 4 papers at 100% readiness, fully decoupled, recompiled May 1
-              PDT. Wave 11 closed cross-model BLOCKERs across all four papers
-              (Gemini 3.1-Pro + GPT-5). Wave 12 H200 hemi v4 GPU at N_MC =
-              10,000 closed the chirality look-elsewhere null at p_LEE &lt; 10⁻⁴.
-              Wave 13 emcee on the real NANOGrav 15-yr KDE free-spectrum
-              recovers γ = 2.567 ± 0.382 — bounce 3.0 consistent at -1.13σ,
-              SMBHB excluded at -4.6σ. Pod 3 H200 idle, ready for Wave 14.
+              {liveStatus.summary}
             </CardDescription>
           </CardHeader>
+          <CardContent className="pt-0">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground mb-2">
+              Currently running
+            </p>
+            <ul className="text-sm space-y-1 list-disc pl-5">
+              {liveStatus.currentlyRunning.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </CardContent>
           <CardFooter className="flex flex-wrap gap-2 pt-0">
             <Button asChild size="sm" variant="outline">
               <Link href="/activity">Activity Feed &rarr;</Link>
