@@ -118,7 +118,7 @@ export const surveys: Survey[] = [
     anomalies: 44075,
     anomalyRate: "0.39%",
     qcStatus: "caution",
-    qcNote: "98% blue-excess artifacts from training set bias. Needs LAMOST-native autoencoder.",
+    qcNote: "~56% B-dominant cross-transfer (empirical; the 98% figure was a synthetic schematic not a measurement). Native retrain reduces anomaly count 21.4x (43,915 -> 2,054 at S>5). Path-C native model in progress.",
     description: "Large Sky Area Multi-Object Fiber Spectroscopic Telescope Data Release 10. Largest spectroscopic survey before DESI. Transfer-learning run exposed training set bias.",
     wavelength: "Optical spectroscopy (3700-9100 Å)",
     cost: "~$40",
@@ -128,7 +128,7 @@ export const surveys: Survey[] = [
     figures: ["LAMOST UMAP clusters"],
     keyFindings: [
       "44,075 anomalies from 11.4M spectra (0.39%)",
-      "98% are blue-excess objects (training bias artifact)",
+      "~56% B-dominant (empirical cross-transfer; 98% was synthetic schematic, not measured)",
       "8 UMAP clusters, mostly single population",
       "Rankings are model-dependent — LAMOST-native model needed",
     ],
