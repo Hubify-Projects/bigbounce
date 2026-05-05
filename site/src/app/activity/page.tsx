@@ -35,23 +35,21 @@ export default function ActivityPage() {
             className="text-lg font-semibold"
             style={{ fontFamily:"var(--font-mono-stack)" }}
           >
-            R42 Wave 14-D LANDED — P4 v1.0.9 (P4-OA-B6 Platt close) + Next.js site is live
+            R43 Wave 14-NNN — All 4 papers at 99%, cobaya chains running (DESI DR2 + Planck NPIPE)
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Wave 14-D bundled the P4-OA-B6 Platt-calibration text edit (raw
-            +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant -0.26% /
-            9.5σ; calibration is p_cal = σ(Az + B) with A = 1/T, B = -1.58
-            via L-BFGS on the held-out 20% validation split). Three GPT-5
-            BLOCKERs (P4-OA-B1 / B2 / B6) closed inside the single Wave 14-B
-            fetch window. Live site flipped from static HTML to Next.js
-            (vercel.json buildCommand → cd site && npm run build / outputDirectory
-            site/out / installCommand → cd site && npm install). LiveStatus
-            banner now baked at top of every page with build-time timestamp,
-            paper readiness bars, BLOCKER tally, Pod 3 fetch state, and
-            ETA-to-completion. Pod 3 H200 SPARCL 1M fetch alive on PID 25860
-            (~60 min elapsed, 18 shards / 9K of 1M spectra written, ~150
-            spectra/min observed — sub-sample short-circuit decision pending
-            if throughput stays at this level).
+            All 65 R42 cross-model peer-review findings are closed across all
+            4 papers. All 4 papers reached 99% readiness (max cron-achievable
+            cap; final 1% requires Houston sign-off + clean external R43 round).
+            R43 tier-1 peer-review fixes applied across all papers (Wave
+            14-JJJ: P1 abstract Bayes factor → ΔAIC, P2 SPHEREx launch date,
+            P3 OOD arithmetic; Wave 14-MMM: wave-tag scrub P3+P4). Wave
+            14-NNN: P3-CROSS-SURVEY-DEDUP closed — 637 multi-survey
+            coincidences at 5&Prime;, 378,280 unique objects, 2.6%
+            compression confirmed empirically. Pod 3 H200 running 4 cobaya
+            MCMC chains (DESI DR2 + Planck NPIPE CamSpec TTTEEE + Pantheon+
+            drag sampler, PIDs 13005–13008). ETA to R-1 &lt; 0.01 convergence:
+            ~3 days.
           </p>
         </CardContent>
       </Card>
