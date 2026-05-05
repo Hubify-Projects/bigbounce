@@ -156,7 +156,7 @@ export default function HomePage() {
         <div className="hero-panel">
           <div className="hero-panel-header">
             <span>observational ledger</span>
-            <Badge variant="accent">R42 Wave 14-D LANDED</Badge>
+            <Badge variant="accent">R43 Wave 14-NNN — all 4 papers 99%</Badge>
           </div>
           <div className="hero-panel-body">
             <div className="signal-row">
