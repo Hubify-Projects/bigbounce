@@ -35,12 +35,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-06T07:00:00Z",
-  lastUpdatedDisplay: "May 5, 2026 · 11:00 PM PT",
+  lastUpdatedISO: "2026-05-06T18:10:00Z",
+  lastUpdatedDisplay: "May 6, 2026 · 11:10 AM PT",
   headline:
-    "R43 Wave 14-SSS — P1 v2.3.18 PDF recompiled + cobaya warm-restarted with posterior covmat (10× faster sampling)",
+    "R43 Wave 14-TTT — Cobaya DESI DR2 R̂−1 dropped 0.86 → 0.82 in 30 min (chains entering shared posterior region)",
   summary:
-    "Wave 14-SSS: (1) P1 v2.3.18 PDF recompiled locally (34 pp / 1,239,876 bytes / 0 undef refs) — closes the Wave 14-QQQ 'PENDING pod SSH' item. (2) Cobaya DESI DR2 chain warm-restarted: cold-start diagonal proposal (18.8% acceptance, 95 samples/chain in 8h) replaced by posterior covmat from the April-6 converged quintom chain (same Planck NPIPE CamSpec likelihood). Expected 10× improvement in acceptance rate and mixing. Chain running on pod ijzftpy3klystt (RTX A5000 SECURE, 96 vCPU). **Only P1B has active compute pending; P1A/P2/P3/P4 blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
+    "Wave 14-TTT live tracking: P1 v2.3.18 PDF recompiled (34 pp / 1,239,876 bytes / 0 undef refs, Wave 14-SSS). Cobaya DESI DR2 chain running on pod ijzftpy3klystt (RTX A5000 SECURE, 96 vCPU) with warm covmat from April-6 quintom posterior. Direct getdist compute: R̂−1 (max) = 0.8168 at 11:10 AM PT (was 0.8632 at 10:40 AM, dropped 0.046 in 30 min as chains begin to overlap). 175-186 accepted/chain after 11.5 h. Outlier fraction 14.3% (chains still entering shared posterior region but trending toward overlap). Acceptance rate 25% (vs 18.8% cold-start). Sample rate ~14.5 accepted/chain/hr — bottlenecked by Planck NPIPE CamSpec CAMB calls (~1-3 min each). Linear ETA to R̂−1 < 0.01: ~9 h (optimistic, mixing-phase rate); 1/√N asymptotic ETA: 24-72 h wallclock. **Only P1B has active compute pending; P1A/P2/P3/P4 blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
   currentlyRunning: [
     "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt — warm-started with posterior covmat from April-6 quintom chain; DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL PPF; target R̂−1 < 0.01",
     "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + update P1B §Structural Tension + recompile when R̂−1 < 0.01",
