@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{63}%
+\begin{thebibliography}{66}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -214,6 +214,15 @@
   {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages} {074}},\ }\Eprint
   {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wilson-Ewing}(2013)}]{WilsonEwing2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Wilson-Ewing}},\ }\bibfield  {title} {\bibinfo {title} {{The Matter Bounce
+  Scenario in Loop Quantum Cosmology}},\ }\href
+  {https://doi.org/10.1088/1475-7516/2013/03/026} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
+  {pages} {026}},\ \Eprint {https://arxiv.org/abs/1211.6269} {arXiv:1211.6269
+  [gr-qc]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Pop{\l}awski}(2012)}]{Poplawski2011}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
@@ -555,6 +564,19 @@
   {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year} {2024})},\ \Eprint
   {https://arxiv.org/abs/2401.09450} {arXiv:2401.09450 [astro-ph.GA]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Alonso}\ \emph {et~al.}(2019)\citenamefont {Alonso},
+  \citenamefont {Sanchez},\ and\ \citenamefont {Slosar}}]{Alonso2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Alonso}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Sanchez}},\
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Slosar}} (\bibinfo
+  {collaboration} {{LSST Dark Energy Science}}),\ }\bibfield  {title} {\bibinfo
+  {title} {{A unified pseudo-$C_\ell$ framework}},\ }\href
+  {https://doi.org/10.1093/mnras/stz093} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. Roy. Astron. Soc.}\ }\textbf {\bibinfo {volume} {484}},\
+  \bibinfo {pages} {4127} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1809.09603} {arXiv:1809.09603 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Torrado}\ and\ \citenamefont
   {Lewis}(2021)}]{Cobaya2021}%
   \BibitemOpen
@@ -729,6 +751,19 @@
   {https://doi.org/10.1007/978-1-4684-7571-5_9} {\bibfield  {journal} {\bibinfo
    {journal} {NATO Sci. Ser. B}\ }\textbf {\bibinfo {volume} {59}},\ \bibinfo
   {pages} {135} (\bibinfo {year} {1980})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{NANOGrav Collaboration}}\ \emph
+  {et~al.}(2023)\citenamefont {{NANOGrav Collaboration}}, \citenamefont
+  {Agazie} \emph {et~al.}}]{Agazie:2023ng15}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{NANOGrav
+  Collaboration}}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Agazie}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{The
+  NANOGrav 15 yr Data Set: Evidence for a Gravitational-Wave Background}},\
+  }\href {https://doi.org/10.3847/2041-8213/acdac6} {\bibfield  {journal}
+  {\bibinfo  {journal} {Astrophys. J. Lett.}\ }\textbf {\bibinfo {volume}
+  {951}},\ \bibinfo {pages} {L8} (\bibinfo {year} {2023})},\ \Eprint
+  {https://arxiv.org/abs/2306.16213} {arXiv:2306.16213 [astro-ph.HE]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Lentati}\ \emph {et~al.}(2013)\citenamefont
   {Lentati}, \citenamefont {Alam} \emph {et~al.}}]{Lentati:2023}%
   \BibitemOpen

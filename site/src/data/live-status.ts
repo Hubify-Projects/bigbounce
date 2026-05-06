@@ -35,15 +35,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-05T22:50:00Z",
-  lastUpdatedDisplay: "May 5, 2026 · 3:50 PM PT",
+  lastUpdatedISO: "2026-05-06T07:00:00Z",
+  lastUpdatedDisplay: "May 5, 2026 · 11:00 PM PT",
   headline:
-    "R43 Wave 14-RRR — Paper 1 split into P1A + P1B; 5 papers all 99%; cobaya DESI DR2 w0wa chain in burn-in",
+    "R43 Wave 14-SSS — P1 v2.3.18 PDF recompiled + cobaya warm-restarted with posterior covmat (10× faster sampling)",
   summary:
-    "Paper 1 split landed (Wave 14-OOO recovery): P1A is the ECH structural no-go theorem (theory, PRD target, 13 pp); P1B is the technical companion (ΛCDM+ΔNeff MCMC proxy, NaMaster pipeline, spectator-ALP consistency check, 7 pp). Both PDFs compiled and mirrored to all surfaces. P4 angular power table corrected to canonical -0.12σ MASTER-deconvolved at ℓ=1 (was buggy 2.75σ pre-N_spiral correction). The fresh DESI DR2 w0wa free MCMC chain (Planck NPIPE + DESI DR2 BAO + Pantheon+ + DES-Y5, CAMB PPF for w-crossing) is live in tmux on a fresh RTX A5000 pod (96 vCPU, $0.27/hr) — 4-chain mpirun started 22:36 UTC. **Only P1B has active compute pending; P1A/P2/P3/P4 are blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
+    "Wave 14-SSS: (1) P1 v2.3.18 PDF recompiled locally (34 pp / 1,239,876 bytes / 0 undef refs) — closes the Wave 14-QQQ 'PENDING pod SSH' item. (2) Cobaya DESI DR2 chain warm-restarted: cold-start diagonal proposal (18.8% acceptance, 95 samples/chain in 8h) replaced by posterior covmat from the April-6 converged quintom chain (same Planck NPIPE CamSpec likelihood). Expected 10× improvement in acceptance rate and mixing. Chain running on pod ijzftpy3klystt (RTX A5000 SECURE, 96 vCPU). **Only P1B has active compute pending; P1A/P2/P3/P4 blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
   currentlyRunning: [
-    "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt (DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL with PPF crossing) — burn-in, target R̂−1 < 0.01",
-    "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + recompile P1B + commit when chain converges",
+    "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt — warm-started with posterior covmat from April-6 quintom chain; DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL PPF; target R̂−1 < 0.01",
+    "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + update P1B §Structural Tension + recompile when R̂−1 < 0.01",
   ],
   papers: [
     {
