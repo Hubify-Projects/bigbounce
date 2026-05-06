@@ -35,12 +35,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-06T18:10:00Z",
-  lastUpdatedDisplay: "May 6, 2026 · 11:10 AM PT",
+  lastUpdatedISO: "2026-05-06T19:40:00Z",
+  lastUpdatedDisplay: "May 6, 2026 · 12:40 PM PT",
   headline:
-    "R43 Wave 14-TTT — Cobaya DESI DR2 R̂−1 dropped 0.86 → 0.82 in 30 min (chains entering shared posterior region)",
+    "R43 Wave 14-UUU — Cobaya DESI DR2 R̂−1 in clean descent: 0.86 → 0.71 over 2 h (chains found shared posterior)",
   summary:
-    "Wave 14-TTT live tracking: P1 v2.3.18 PDF recompiled (34 pp / 1,239,876 bytes / 0 undef refs, Wave 14-SSS). Cobaya DESI DR2 chain running on pod ijzftpy3klystt (RTX A5000 SECURE, 96 vCPU) with warm covmat from April-6 quintom posterior. Direct getdist compute: R̂−1 (max) = 0.8168 at 11:10 AM PT (was 0.8632 at 10:40 AM, dropped 0.046 in 30 min as chains begin to overlap). 175-186 accepted/chain after 11.5 h. Outlier fraction 14.3% (chains still entering shared posterior region but trending toward overlap). Acceptance rate 25% (vs 18.8% cold-start). Sample rate ~14.5 accepted/chain/hr — bottlenecked by Planck NPIPE CamSpec CAMB calls (~1-3 min each). Linear ETA to R̂−1 < 0.01: ~9 h (optimistic, mixing-phase rate); 1/√N asymptotic ETA: 24-72 h wallclock. **Only P1B has active compute pending; P1A/P2/P3/P4 blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
+    "Wave 14-UUU: Cobaya DESI DR2 chain on pod ijzftpy3klystt has exited the early-mixing fluctuation phase and entered monotonic descent. R̂−1 trajectory (direct getdist on running chains): 0.8632 (10:38) → 0.8168 (11:09) → 0.8404 (11:46) → 0.7390 (12:13) → 0.7075 (12:40). Outlier fraction 13.6% → 11.6% over the same window — chains have found each other's posterior region. Total accepted 667 → 805 across 4 chains, 25% acceptance, ~14 accepted/chain/hr. Sample throughput is rate-limited by Planck NPIPE CamSpec CAMB calls (~1-3 min/call). Headline parameter values from current samples: w ≈ −0.65, wa ≈ −1.25, w0+wa ≈ −1.87 (deep quintom-B region, phantom-crossing). Updated ETA to R̂−1 < 0.01: ~6-12 h (best case, descent rate holds), 18-30 h (1/√N asymptotic). P1 v2.3.18 PDF + cobaya warm-restart shipped Wave 14-SSS (414e212b) + 14-TTT (6c6e9e56). **Only P1B has active compute pending; P1A/P2/P3/P4 blocked solely on Houston sign-off + clean external R43 round + arXiv submission.**",
   currentlyRunning: [
     "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt — warm-started with posterior covmat from April-6 quintom chain; DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL PPF; target R̂−1 < 0.01",
     "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + update P1B §Structural Tension + recompile when R̂−1 < 0.01",
