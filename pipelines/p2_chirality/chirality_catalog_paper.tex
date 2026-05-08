@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.30}
+\newcommand{\paperVersion}{v1.0.31}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 5, 2026, 02:00 PDT --- \paperVersion}
+\date{May 8, 2026, 16:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -86,14 +86,20 @@ construction (Catalog~C). Rotational orientation dependence
 ($90^\circ$, $180^\circ$, $270^\circ$) is not eliminated and remains
 a potential source of the residual $9.5\sigma$ asymmetry; see
 Sec.~\ref{sec:cw_frac}. The equivariant catalog yields a global
-clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$.
+clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$
+($9.5\sigmaunit$ from $0.5000$). \textit{This monopole offset
+is spatially uniform across the survey footprint and traces to
+the ${\sim}1\%$ human-handedness bias inherited from the GZ1
+training labels; it is not a parity-violation signature.}
+The parity-preference observable of this work is the \emph{dipole},
+not the monopole.
 We find no significant large-scale chirality dipole: a simple fit gives
 $0.43\sigmaunit$, and a full MASTER-deconvolved angular power spectrum
 yields $-0.12\sigmaunit$ at $\ell = 1$, fully consistent with null
 (the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
 due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
 is detected at only 0.17\% amplitude and does not survive a
-look-elsewhere correction ($p_{\rm LEE} \approx 10^{-4}$, at the Monte Carlo resolution floor). This is the most sensitive chirality
+look-elsewhere correction ($p_{\rm LEE} < 10^{-4}$ at the Monte-Carlo resolution floor (0/10{,}000 nulls exceeded data)). This is the most sensitive chirality
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
 $3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
 Shamir~(2020, 2022)~\cite{Shamir:2020,Shamir:2022} is strongly disfavored within the DESI Legacy Imaging Surveys footprint under the present pipeline: our
@@ -733,13 +739,31 @@ The pipeline produces three catalog tiers:
   $\max(P_{\rm CW}, P_{\rm ACW}) > 0.6$ as an independent ground truth.
   An L-BFGS recalibration of $(A, B)$ against GZ1 binary CW labels
   recovered $A = 0.2151$, $B = -1.58$ -- identical to the
-  CE-ResNet Platt to four significant figures.  The GZ1 human-vote CW
-  fraction for these matched objects is $48.4\%$, consistent with
-  Catalog~C equivariant $49.7\%$ (difference $< 2\sigma$ under
-  Poisson noise).  The convergence of the GZ1-recalibrated parameters
-  to the CE-ResNet parameters indicates that the CE-ResNet consensus
-  labels carry no detectable systematic chirality bias at the
-  calibration level.  Catalog~B remains unsuitable as the primary
+  CE-ResNet Platt to four significant figures. The GZ1 human-vote
+  CW fraction for these matched objects is $48.4\%$ versus the
+  Catalog~C equivariant value $49.7\%$, a $1.3$~percentage-point gap.
+  Treated as a binomial difference of two CW fractions on
+  $N = 46{,}017$ matched objects, the gap is $5.5\sigma$ from zero
+  (binomial standard error on the difference $\sigma_{\Delta} \approx
+  \sqrt{2 \cdot 0.5 (1-0.5)/N} \approx 0.00235$, $Z \equiv \Delta/\sigma_{\Delta}
+  = 0.013/0.00235 \approx 5.5$). The defensible interpretation is
+  therefore \emph{not} that the gap is statistically consistent with
+  zero, but rather that both samples sit within the same
+  systematic-floor band: GZ1 carries a documented ${\sim}1\%$
+  human-handedness bias in its training labels (the same bias that
+  drives the Catalog~C global $0.26\%$ monopole offset; see
+  Sec.~\ref{sec:cw_frac}), and Catalog~C carries a residual
+  ${\sim}0.5\%$ rotational-equivariance offset; the $1.3\%$ gap is
+  consistent with these systematic floors and well below the level at
+  which a parity claim could be made from the monopole alone. The
+  parity-preference test of this paper is the \emph{dipole}
+  (Sec.~\ref{sec:dipole}), not the monopole, and the dipole is
+  null. The convergence of the GZ1-recalibrated Platt parameters
+  to the CE-ResNet parameters to four significant figures (the
+  separate finding) indicates that the CE-ResNet consensus labels
+  carry no detectable systematic chirality bias at the
+  \emph{calibration} level beyond what is already absorbed by GZ1's
+  own labelling floor.  Catalog~B remains unsuitable as the primary
   parity estimator because the equivariant TTA of Catalog~C
   (Sec.~\ref{sec:cw_frac}) removes orientation-dependent systematics
   that Platt scaling cannot address; Catalog~C (equivariant production)

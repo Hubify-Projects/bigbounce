@@ -86,10 +86,10 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
-      version: "v1.0.30",
+      version: "v1.0.31",
       readiness: 99,
       pendingWork:
-        "Houston sign-off + clean external R43 round + arXiv submission (no compute pending)",
+        "Houston sign-off + clean external R43 round (R43 BLOCKERs B1+B2 + M4 shipped Wave 14-XXX; remaining MAJORs queued) + arXiv submission",
     },
   ],
   blockerTally: {
