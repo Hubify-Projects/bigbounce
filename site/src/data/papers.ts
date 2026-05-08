@@ -31,7 +31,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests",
-    version: "v1A.0.1",
+    version: "v1A.0.2",
     pages: "13",
     refs: "60+",
     readiness: 99,
@@ -56,7 +56,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, in P4 → P1A → P1B → P3 → P2 order)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF 751 KB · 13 pp · May 5, 2026, v1A.0.1",
+    pdfMeta: "PDF 744 KB · 13 pp · May 8, 2026, v1A.0.2",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper1a_ech_nogo.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper1a_ech_nogo.pdf", kind: "secondary", download: true },
