@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.36}
+\newcommand{\paperVersion}{v1.0.37}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 03:00 PDT --- \paperVersion}
+\date{May 9, 2026, 05:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -208,7 +208,7 @@ is spatially uniform and produces no dipole signal; the dipole
 amplitude upper limit is ${\sim}0.2\%$ (minimum detectable at
 $3\sigmaunit$). This strongly disfavors Shamir's (2020, 2022)~\cite{Shamir:2020,Shamir:2022} claimed
 $\sim\!3\%$ asymmetry signal in the DESI Legacy Imaging Surveys footprint
-under the present pipeline by a factor of~9.  Perhaps equally important, we
+under the present pipeline by a factor of $\sim$6--12 (depending on which Shamir reported value 2--4\% is used as the comparator; central case $\sim 9$).  Perhaps equally important, we
 demonstrate that uncorrected survey systematics can produce a
 $94.6\sigmaunit$ spurious dipole from a classifier bias of
 only $0.79\%$---a cautionary result for the entire field.
@@ -404,7 +404,7 @@ the decomposition as a sufficiency check rather than a precision
 validation: under quadrature combination
 $\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, under direct addition
 $1.0 + 0.5 = 1.5$~pp; the observed $1.2$~pp gap falls within this
-$[1.12, 1.5]$~pp range under any plausible correlation
+$[1.12, 1.5]$~pp range under non-negative correlation (the negative-correlation case $\rho < 0$ is empirically possible but produces $\lvert 1.0 - 0.5 \rvert = 0.5$~pp at $\rho = -1$, $\sim 0.7$~pp under partial cancellation; the observed $1.2$~pp gap places only a weak constraint on the sign of the correlation)
 assumption, consistent with the partition into the two systematic
 components of comparable magnitude. We cannot disentangle the two
 without an independent (non-GZ1, non-CE-ResNet) chirality
@@ -825,9 +825,17 @@ The pipeline produces three catalog tiers:
   $\chi^2_{1} = (b-c)^2/(b+c)$ depends on the
   total \emph{discordance} $b+c$, which is bounded above by
   $N \cdot 2p(1-p) \approx 0.5\,N = 23{,}009$ for $p\approx 0.5$ and below
-  by $|b-c| = 598$; the realised discordance from the
-  per-galaxy joint label tabulation is $b+c = 7{,}812$ ($b = 4{,}205$,
-  $c = 3{,}607$). For the discordance level $b + c = 7{,}812$ adopted as the
+  by $|b-c| = 598$; under the working modeling assumption that the
+  joint contingency is consistent with the marginal CW fractions
+  and a moderate Cat-C/GZ1 correlation (typical confusion-matrix
+  regime for two classifiers trained on overlapping label
+  distributions), we adopt $b + c \approx 7{,}812$ ($b \approx 4{,}205$,
+  $c \approx 3{,}607$) as the modeling point estimate. The exact
+  per-galaxy joint label tabulation would pin these numbers at the
+  data-availability level but is pod-side-only at the present
+  compute allocation; we therefore report the $Z = 6.77$ figure
+  below as the assumed-discordance result rather than a
+  measurement-grade headline. For the discordance level $b + c = 7{,}812$ adopted as the
   point-estimate, McNemar gives $\chi^2_1 = 598^2/7{,}812 = 45.78$,
   $Z = 6.77$. The discordance $b + c$ is bounded above by the
   unpaired binomial limit $\approx N \cdot 2 p (1-p) \approx
@@ -855,12 +863,16 @@ The pipeline produces three catalog tiers:
   which a parity claim could be made from the monopole alone. The
   parity-preference test of this paper is the \emph{dipole}
   (Sec.~\ref{sec:dipole}), not the monopole, and the dipole is
-  null. The convergence of the GZ1-recalibrated Platt parameters
-  to the CE-ResNet parameters to four significant figures (the
-  separate finding) indicates that the CE-ResNet consensus labels
-  carry no detectable systematic chirality bias at the
-  \emph{calibration} level beyond what is already absorbed by GZ1's
-  own labelling floor.  Catalog~B remains unsuitable as the primary
+  null. The convergence of the L-BFGS recalibration at the v2
+  starting point is neutral with respect to whether CE-ResNet
+  carries residual systematic chirality bias at the calibration
+  level: the optimizer's failure to move from $(A_0, B_0)$ proves
+  that the loss surface is flat at chance accuracy on the GZ1
+  binary labels, not that CE-ResNet itself is unbiased. An
+  independent (non-GZ1, non-CE-ResNet) chirality reference at
+  scale would be required to characterize residual CE-ResNet
+  calibration bias; the present analysis is silent on that
+  question.  Catalog~B remains unsuitable as the primary
   parity estimator because the equivariant TTA of Catalog~C
   (Sec.~\ref{sec:cw_frac}) removes orientation-dependent systematics
   that Platt scaling cannot address; Catalog~C (equivariant production)
@@ -1495,7 +1507,7 @@ ${\sim}16\times$ larger than Shamir's largest spiral subsample
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
 with rigorous bias controls.
 
-Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9 smaller
+Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim$6--12 smaller (depending on which Shamir 2--4\% comparator is used; central $\sim 9$)
 than Shamir's reported $\sim\!3\%$. The global equivariant CW
 fraction is $0.4974$, deviating from parity by only $0.26\%$. The
 $0.43\sigmaunit$ simple dipole is an order of magnitude less
