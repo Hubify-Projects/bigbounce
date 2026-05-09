@@ -77,7 +77,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.22",
+      version: "v3.1.23",
       readiness: 99,
       pendingWork:
         "HuggingFace dataset visibility flip (Houston manual) + sign-off + R43 round (R43 BLOCKER fixes shipped Wave 14-WWW; remaining MAJORs/MINORs queued) + arXiv submission",
