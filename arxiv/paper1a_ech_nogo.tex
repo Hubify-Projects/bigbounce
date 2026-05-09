@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.8}
+\newcommand{\paperVersion}{v1A.0.9}
 \newcommand{\paperTimestamp}{2026-05-08 18:30 PDT}
 
 \begin{document}
@@ -59,13 +59,13 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 00:30 PDT --- \paperVersion}
+\date{May 9, 2026, 01:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
 generate late-time dark energy through any of its characteristic structural
 mechanisms. Through 7 foundation studies (Foundations~A--G) and 7 observational research branches (Branches~H--O) we catalog
-14 independent structural constraints that collectively close every minimal ECH
+14 distinct mechanism-class constraints that collectively close every minimal ECH
 route from the quantum bounce to observable dark energy.
 The central result is a perturbation-transparency theorem: for canonical scalar
 matter, torsion vanishes at all perturbation orders, the Holst dual contraction
@@ -189,7 +189,7 @@ contributions are:
 
 \begin{enumerate}[leftmargin=*]
 \item \textit{14-constraint catalog and perturbation-transparency observation}:
-Through 7 foundation studies (Foundations~A--G) and 7 observational research branches (Branches~H--O), we establish 14 independent
+Through 7 foundation studies (Foundations~A--G) and 7 observational research branches (Branches~H--O), we establish 14 distinct mechanism-class
 structural constraints mapping the minimal ECH parameter space. The central result
 is that minimal ECH gravity is perturbation-transparent for canonical scalar
 matter: torsion vanishes at all orders, the Holst sector decouples cleanly
@@ -199,7 +199,7 @@ parity-violating channels (ALP birefringence, primordial GWs).
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
 mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
-$\fnl=-35/8$ prediction (erased by $N_{\rm tot} \gg 60$), establishing that
+$\fnl=-35/8$ prediction (plausibly erased by $N_{\rm tot} \gg 60$ inflationary $e$-folds at SPHEREx-relevant comoving wavenumbers; the precise threshold depends on the contracting-phase duration and the comoving scales carrying the bispectrum signal, see Sec.~\ref{sec:structural_tension} and references therein), establishing that
 these are independent observational programs.
 
 \item \textit{Survival of mechanism-independent tests}: Despite ECH structural
@@ -366,9 +366,13 @@ The contorsion dilutes as $a^{-3}$ during inflation:
 \begin{equation}\label{eq:Dinf}
 \Dinf = \exp[-3N_{\rm tot}] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2}.
 \end{equation}
-\textit{Derivation of Eq.~\eqref{eq:Dinf}.}---The two factors arise
-from independent steps in the bounce-to-reheating matching and are
-each derived rather than postulated. (i) The $\exp[-3N_{\rm tot}]$
+\textit{Order-of-magnitude matching for Eq.~\eqref{eq:Dinf}.}---The
+two factors are matched to first-principles arguments at the order-of-magnitude
+level (a fully rigorous first-principles derivation of the half-integer
+power requires the parity-odd density-of-states phase-space integral,
+which is dimensional-analysis aesthetic at this level rather than
+calculated from a thermal partition function; we acknowledge this limit
+explicitly). (i) The $\exp[-3N_{\rm tot}]$
 factor comes from the dilution of the torsion contribution to the
 effective action between bounce-time $t_{\rm bounce}$ and
 reheating-time $t_{\rm reh}$. Torsion in Einstein-Cartan-Holst is a
@@ -564,14 +568,28 @@ fermion axial current, and $\beta(\gamma)$ is a slowly varying function
 of $\gamma$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power; once
 $\partial_\mu\theta \sim H \sim 10^{-33}\,$eV at the present epoch is
-substituted, the induced birefringence rotation rate is bounded above
-by $\dot\beta \lesssim 10^{-21}\,$eV, well below the Planck/ACT~DR6
-sensitivity of $\sigma(\beta) \sim 10^{-13}\,$eV
-(see Eq.~\ref{eq:beta_bound} below for the explicit reduction).
-The required dark-energy amplitude exceeds this bound by
-$\gtrsim 8$ orders of magnitude, so the one-loop Holst-sector
-parity-odd term, even at its theoretical maximum, cannot account for
-either the dark-energy density or the observed birefringence amplitude.
+substituted, the induced birefringence \emph{rotation rate} is bounded
+above by $\dot\beta \lesssim 10^{-21}\,$eV (units of inverse time in
+natural units). Converting to the integrated rotation angle accumulated
+between recombination and today,
+$\Delta\theta_{\rm one\text{-}loop} \sim \dot\beta \cdot t_{\rm rec\to today}
+\sim 10^{-21}\,\text{eV} \cdot 4.4\times 10^{17}\,\text{s} \sim
+10^{-3}\,\text{rad} \sim 0.06^\circ$, which is comparable in magnitude
+to the observed $\beta_{\rm obs} = 0.342^\circ$ and well within the
+Planck/ACT~DR6 statistical sensitivity $\sigma(\beta_{\rm obs})\sim 0.094^\circ
+\sim 1.6\times 10^{-3}\,\text{rad}$ (see Eq.~\ref{eq:beta_bound} below
+for the explicit dimensionless reduction). \emph{The one-loop induced
+$\beta$ is therefore at the same order of magnitude as the observed signal
+when the parity-odd coupling is set at its one-loop value.} The
+distinguishing constraint comes from R4 below, not from the one-loop
+amplitude itself: identifying the one-loop sector with the dark-energy
+source forces a vacuum energy
+$\rho_\theta \sim m_\theta^2\,(\alpha/M)^{-2}\,\beta_{\rm obs}^2 / 2$,
+which at $m_\theta\sim H_0$ gives $\rho_\theta \lesssim 10^{-46}\,$eV$^4$,
+many orders of magnitude smaller than $\rho_\Lambda \sim 10^{-11}\,$eV$^4$.
+The one-loop Holst-sector parity-odd term cannot, therefore, simultaneously
+explain the observed birefringence \emph{and} the dark-energy density
+at this single operator coupling.
 \emph{Closure: amplitude-suppressed by $M_{\rm Pl}^{-1}$ and one-loop
 factor $\alpha_{\rm em}/(4\pi)$.}
 
@@ -631,11 +649,18 @@ $\sim 10^{-21}\,\text{GeV}^{-1}$, identical to the value already
 quoted in Sec.~\ref{sec:parityodd}; identifying the spectator
 field with the ECH parity-odd sector and demanding that it
 \emph{also} carry the observed dark-energy density forces an
-amplitude exceeding this bound by $\gtrsim 8$ orders of magnitude,
+amplitude exceeding this bound by approximately
+$\log_{10}(\rho_\Lambda/\rho_\theta) = \log_{10}(10^{-11}/10^{-46})
+\approx 35$ orders of magnitude in vacuum-energy density,
 since the same coupling that produces $\beta = \mathcal{O}(0.3^\circ)$
 at the present epoch produces a vacuum energy
 $\rho_\theta \lesssim 10^{-46}\,$eV$^4$ rather than the required
-$\rho_\Lambda \sim 10^{-11}\,$eV$^4$. The inequality is rigid because
+$\rho_\Lambda \sim 10^{-11}\,$eV$^4$ (the ratio of energy densities
+is the relevant dimensional comparison; the same constraint is
+$\sim 8$ orders of magnitude in operator coupling $\alpha/M$ if the
+two are bound separately at their respective fits, but the energy-density
+ratio is the load-bearing mismatch between the dark-energy and
+birefringence channels). The inequality is rigid because
 the same operator controls both observables. The same logic, run with
 $\alpha/M$ floated, recovers the spectator-ALP class as a
 \emph{viable parity-odd source} but \emph{not} as a dark-energy source.
@@ -778,7 +803,7 @@ ECH analysis. \textbf{Structural/philosophical observations} (Barrier 13):
 gravitational democracy, included for completeness.
 
 \begin{table*}[tb]
-\caption{\label{tab:barriers} The 14 structural constraints on minimal ECH dark-energy routes.}
+\caption{\label{tab:barriers} The 14 mechanism-class constraints on minimal ECH dark-energy routes. Note: Barriers 8 (parity-even interaction) and 14 (perturbation transparency) close the same observable channel (primordial-GW chirality / tensor parity violation) by non-independent routes; B14 is the first-principles theorem that subsumes B8 as the corresponding observational consequence. They are listed separately to preserve the historical mechanism-class catalog, but should not be counted as logically independent constraints.}
 \centering
 \begin{tabular}{clll}
 \toprule
@@ -1115,7 +1140,7 @@ explanation; either outcome is informative independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
-required) and the $\fnl=-35/8$ prediction (erased by $N_{\rm tot}\gg 60$). This
+required) and the $\fnl=-35/8$ prediction (plausibly erased by $N_{\rm tot}\gg 60$ inflationary $e$-folds at SPHEREx-relevant scales; the precise erasure threshold depends on the contracting-phase duration and is mode-dependent, with the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc lying outside the surviving window for $N_{\rm tot}\gtrsim 60$). This
 is detailed in Sec.~\ref{sec:structural_tension}. The correct interpretation is
 that bounce cosmology (as a broad class) and the ECH-specific dark-energy
 ansatz are \textit{independent observational programs}; SPHEREx tests the former,
@@ -1193,7 +1218,7 @@ not derived from it (Sec.~\ref{sec:surviving}).
 
 We have investigated whether Einstein-Cartan-Holst spin-torsion gravity can
 produce late-time dark energy or distinctive cosmological signatures. The answer
-is a structural no-go: the 14 independent constraints (Table~\ref{tab:barriers})
+is a structural no-go: the 14 distinct mechanism-class constraints (Table~\ref{tab:barriers})
 close every minimal-ECH dark-energy route.
 
 \textit{Central result: perturbation transparency.}---For canonical scalar field
@@ -1205,7 +1230,7 @@ nonperturbative parity-violating channels (ALP birefringence, primordial GWs)
 as the relevant tests of $\gamma$.
 
 \textit{The 14 barriers.}---Systematic analysis across 7 foundations (A--G) and
-7 observational branches established 14 independent structural constraints on the minimal ECH
+7 observational branches established 14 distinct mechanism-class constraints on the minimal ECH
 dark-energy parameter space (Sec.~\ref{sec:barriers}). These constraints are
 ECH-specific: other bouncing cosmologies (notably quintom scenarios) can in
 principle unify bounce with late-time dark energy through mechanisms outside the
@@ -1217,8 +1242,7 @@ bounce/ALP landscape survive ECH structural closure and are testable:
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
-\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD tests at
-$\sim 9\sigma$ in the early 2030s (confirm or cleanly exclude).
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/0.03 \approx 2.4\sigma$, not $9\sigma$. The two numbers correspond to distinct null hypotheses (zero vs.\ Planck/ACT~DR6-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
 \end{enumerate}
 Neither is a distinctive ECH prediction; both are shared with other UV completions.
 
