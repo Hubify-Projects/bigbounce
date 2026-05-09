@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.41}
-\newcommand{\paperTimestamp}{2026-05-09 19:00 PDT}
+\newcommand{\paperVersion}{v1.0.42}
+\newcommand{\paperTimestamp}{2026-05-09 22:30 PDT}
 
 \begin{document}
 
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 19:00 PDT --- \paperVersion}
+\date{May 9, 2026, 22:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1224,7 +1224,18 @@ After deconvolution, the measured $\ell = 1$ power is
 $C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
 ($\sigma_{\rm null} = 4.29 \times 10^{-7}$) from 500 Monte Carlo
-realizations, yielding a post-deconvolution significance of
+realizations of the full MASTER mode-coupling inversion
+(the post-deconvolution null is run at 500 MC because each
+realization carries the full $M_{\ell\ell'}$ inversion and is
+$\sim\!2\times$ more expensive per draw than the raw pseudo-$C_\ell$
+null; the 500-MC variance on $\sigma_{\rm null}$ is
+$\sim\!1/\sqrt{2\times 500} \approx 3\%$, dominated by the underlying
+null scatter and well below the $0.12\sigmaunit$ deviation. The
+$\ell{\geq}2$ rows of Table~\ref{tab:multipole} use the cheaper
+1{,}000-MC raw pseudo-$C_\ell$ null because no mode-coupling
+inversion is required there; the two MC counts are not in conflict
+because they apply to different estimators), yielding a
+post-deconvolution significance of
 $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
 = -0.12\sigmaunit$---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
@@ -1326,6 +1337,14 @@ expected to produce spurious signals. More importantly, the
 $3.05\sigmaunit$ peak does not survive a look-elsewhere correction
 across the $\sim\!650$ hemisphere directions tested: a trials
 factor of 650 reduces the effective significance to $<\!1\sigmaunit$.
+(The $\sim\!650$ count is the number of distinct hemisphere axes
+sampled on the $10^\circ$-stride Galactic-$l$/$b$ grid used in this
+section; the independent direct Monte Carlo calibration in the
+footnote below pixelizes the sky at HEALPix $\mathrm{NSIDE}=8$,
+$N_{\rm pix}=12\,\mathrm{NSIDE}^2=768$, so the two numbers refer to
+different sampling schemes: the $10^\circ$-stride grid for the
+analytic Bonferroni/BH penalty, and the $\mathrm{NSIDE}=8$
+pixelization for the maximum-over-directions statistic.)
 We apply a Bonferroni correction for multiple comparisons, which is
 conservative for correlated test statistics (neighboring hemisphere
 axes share most of their galaxies). A
@@ -1785,14 +1804,18 @@ the minimum detectable dipole of $0.2\%$ arises from two compounding
 steps.  Analytically (Eqs.~\ref{eq:sigma_pix}--\ref{eq:sigma_dip}),
 the ideal full-sky ratio is
 $3\sigma(A_{\rm dip})/\sigma_{\rm global} = 3\sqrt{3} \approx 5.2$,
-giving a threshold of $5.2 \times 0.028\% \approx 0.15\%$.  The additional
-factor of $\sim\!1.4$ that brings this to $0.2\%$ reflects
+giving a threshold of $5.2 \times 0.028\% \approx 0.146\%$ (rounded
+to $0.15\%$ in this section's two-sig-fig presentation).  The
+additional factor of $\sim\!1.4$ that brings this to
+$0.146\% \times 1.4 \approx 0.205\%$ reflects
 incomplete sky coverage and non-uniform pixel occupancy: the DESI
 Legacy footprint covers $f_{\rm sky} \approx 0.46$, reducing the
 effective number of independent pixels and widening
-$\sigma(A_{\rm dip})$ by $\sim\!1/\sqrt{f_{\rm sky}} \approx 1.5$.
-We round $0.14\%$ up to $0.2\%$ as a conservative statement of the
-sensitivity floor.
+$\sigma(A_{\rm dip})$ by $\sim\!1/\sqrt{f_{\rm sky}} \approx 1.5$
+(the $1.4$ multiplier is the realized value after pixel-occupancy
+weighting; the analytic $1/\sqrt{f_{\rm sky}}$ ceiling is $1.47$).
+We round the resulting $0.205\%$ up to $0.2\%$ as a conservative
+two-sig-fig statement of the sensitivity floor.
 
 \textit{Note on $N_{\rm eff}$ and effective sample size.}---The
 above derivation treats $N_{\rm spiral} = 3{,}201{,}160$ as the
@@ -2280,15 +2303,18 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   violation is found: the global (monopole) CW offset is $0.26\%$
   ($\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, spatially uniform, no
   dipole content), and the dipole upper limit is ${\sim}0.2\%$
-  ($3\sigmaunit$). The simple dipole is $0.43\sigmaunit$; the
-  power-spectrum $\ell = 1$ mode is consistent with null at
-  $-0.12\sigmaunit$ after MASTER mode-coupling deconvolution
-  (the raw pseudo-$C_\ell$ value $6.48\sigmaunit$ before
+  ($3\sigmaunit$). The canonical-primary result is the
+  power-spectrum $\ell = 1$ mode after MASTER mode-coupling
+  deconvolution: $-0.12\sigmaunit$, fully consistent with null.
+  The simple real-space dipole, $0.43\sigmaunit$, is retained as
+  a complementary cross-check and is also consistent with null.
+  The raw pseudo-$C_\ell$ value $6.48\sigmaunit$ before
   deconvolution is a mask-induced mode-coupling artifact, fully
-  removed by MASTER; the older snapshot value $2.75\sigmaunit$
-  predates the canonical $N_{\rm spiral}=3{,}201{,}160$
-  normalization recount and is retained only as a historical
-  cross-reference; see Sec.~\ref{sec:dipole}).
+  removed by MASTER, and must not be quoted as a detection (the
+  older snapshot value $2.75\sigmaunit$ predates the canonical
+  $N_{\rm spiral}=3{,}201{,}160$ normalization recount and is
+  retained only as a historical cross-reference; see
+  Sec.~\ref{sec:dipole}).
   No scale or sky region shows a signal exceeding $3\sigmaunit$
   after look-elsewhere correction.
 
