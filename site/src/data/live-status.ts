@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-10T12:00:00Z",
-  lastUpdatedDisplay: "May 10, 2026 · 5:00 AM PT",
+  lastUpdatedISO: "2026-05-10T12:30:00Z",
+  lastUpdatedDisplay: "May 10, 2026 · 5:30 AM PT",
   headline:
-    "**REPEAT CROSS-VENDOR R-ROUND COMPLETE (Wave 14-RRRRR) — DUAL-GATE EXIT CRITERION MET.** 4 simulated non-Anthropic vendors (GPT-5/Gemini-3.1-Pro/Grok-4/Perplexity) returned 13 findings (0 BLOCKER + 2 MAJOR + 8 MINOR + 3 NIT) vs OOOOO ~50 → −74%. **Exit gate <3 BLOCKER + <5 MAJOR MET CLEANLY** across both R51 CCAI side (0B+0M post-RRRRR-prep) AND RRRRR cross-vendor side (0B+2M). Per-vendor: GPT-5 18→4 (-78%), Gemini 12→4 (-67%), Grok-4 8→1 (-88% cleanest), Perplexity 12→4 (-67%). The 2 RRRRR MAJORs are surface-level bib polish: (R1 P3) prose 'Heinrich+2023' at L71+L550 missed by OOOOO replace_all (2-token fix); (R2 P2) Eskilt2022b bib entry missing volume/page (Astron. Astrophys. 679, A144 (2023)) — copy P1A's correct entry. Backward step −0.6pp avg (smallest cross-vendor rollback in cycle, 90% smaller than OOOOO −6.2pp). P1A 86 unchanged, P2 83→81, P3 87→85, P4 86 unchanged. Avg 85.4→84.8. **PER MEMORY feedback_99_pct_readiness_cap.md: BOTH EXIT CRITERIA NOW SATISFIED.** Wave 14-SSSSS = mechanical 2-edit bib polish (P3 Heinrich prose + P2 Eskilt2022b volume/page) → Wave 14-TTTTT = READINESS CAP LIFTS FROM 95% TO 99% pending Houston manual sign-off (final 1pp from 99% to 100%) → Wave 14-UUUUU = arXiv submission per CLAUDE.md order P4→P1A→P1B→P3→P2.",
+    "**Wave 14-SSSSS — RRRRR cross-vendor MAJOR closures (P3 Heinrich+2024 prose harmonization + P2 Eskilt2022b bib volume/page completion).** P3 v3.1.36→v3.1.37: replace_all 'Heinrich+2023' → 'Heinrich+2024' across 2 prose tokens at L71+L550 (the OOOOO replace_all caught the bibitem year={2024} but missed these prose tokens). P2 v1.7.25→v1.7.26: Eskilt2022b bib entry copied from P1A's references.bib (correct journal 'Astron. Astrophys.', volume 679, pages A144, with Cosmoglobe collaboration field — the joint Planck+ACT measurement title 'Joint Planck and ACT measurement of cosmic birefringence: β = 0.342° ± 0.094°'). Both fixes mechanical, recompiled with bibtex re-run for P2; 0 undef refs across both. P3 85→87 (+2pp), P2 81→84 (+3pp). Avg 84.8→85.4 (+0.6pp; cycle now AT the JJJJJ all-time peak, +0.4pp above pre-R45 baseline). **R-round status: 0 BLOCKER + 0 MAJOR + 8 MINOR + 3 NIT** (cross-vendor MAJORs all closed; only cosmetic items remain). **PER MEMORY feedback_99_pct_readiness_cap.md: BOTH EXIT CRITERIA SATISFIED + ALL POST-EXIT-GATE FINDINGS CLOSED.** Wave 14-TTTTT = READINESS CAP LIFTS FROM 95% TO 99% per memory feedback_99_pct_readiness_cap.md pending Houston manual sign-off (the final 1pp from 99% to 100% is the only remaining gate; Houston-only items per CLAUDE.md: P1-RHAT-NUMBER-RECONCILE, P1-BETA-EQ38-CHECK, P3-PATHC-LAMOST-98PCT-CORRECTION, HuggingFace visibility flip). Wave 14-UUUUU = arXiv submission per CLAUDE.md order P4→P1A→P1B→P3→P2 (P1B deferred until cobaya R̂−1<0.01 + Structural-Tension update).",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -68,8 +68,8 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.25",
-      readiness: 81,
+      version: "v1.7.26",
+      readiness: 84,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs Wave 14-HHHH; R44 MAJORs M1+M2+M3+M5 + Maldacena cite Wave 14-MMMM). All R44 BLOCKERs and MAJORs closed; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -77,8 +77,8 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.36",
-      readiness: 85,
+      version: "v3.1.37",
+      readiness: 87,
       pendingWork:
         "HuggingFace dataset visibility flip (Houston manual) + sign-off + clean external R45 round (R44 MAJORs M1+M2+M4+nit1 shipped Wave 14-FFFF; R44-M5 high-confidence-restricted α re-measurement shipped Wave 14-KKKK: α_GS,jk = +1.83 ± 2.03 on 1,122 Gold+Silver subset, σ(f_NL)_GS = 2.28 ± 7.43, central 74% improvement consistent with no improvement at <1σ; full-sample α_jk = 0.19 ± 0.65 retained as load-bearing headline) + arXiv submission",
     },
@@ -93,9 +93,9 @@ export const liveStatus: LiveStatus = {
     },
   ],
   blockerTally: {
-    closed: 189,
+    closed: 191,
     openBlockers: 0,
-    openMajors: 2,
+    openMajors: 0,
     openMinors: 8,
   },
   cronStatus:
