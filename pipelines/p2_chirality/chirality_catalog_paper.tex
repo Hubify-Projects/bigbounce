@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.38}
+\newcommand{\paperVersion}{v1.0.39}
 \newcommand{\paperTimestamp}{2026-05-09}
 
 \begin{document}
@@ -414,8 +414,8 @@ be removed only by replacing GZ1 with a parity-symmetric label
 source); the Catalog-C-residual component is the controlled
 target of the equivariant-TTA post-processing and is what the
 $3.86\times$ asymmetry-suppression factor of
-Sec.~\ref{sec:cw_frac} reduces from raw $+0.79\%$ to equivariant
-$-0.26\%$.
+Sec.~\ref{sec:cw_frac} reduces from raw $+2.05\%$ to equivariant
+$-0.53\%$ on the raw-to-equivariant NS-pool pair ($2.05/0.53 \approx 3.87 \approx 3.86$); the corresponding within-spiral monopole sequence on the same pipeline is the smaller $3.04\times$ raw-to-equivariant reduction $+0.79\% \to +0.4\% \to -0.26\%$ (Sec.~\ref{sec:cw_frac}, Table~\ref{tab:sky_balance}), and the two factors should not be conflated --- the headline $3.86\times$ throughout this paper is the NS-pool factor, not the within-spiral monopole factor.
 
 \begin{table}[t]
 \caption{\label{tab:confusion}Three-class confusion matrix for the \vit{}
@@ -2253,13 +2253,19 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   ($\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, spatially uniform, no
   dipole content), and the dipole upper limit is ${\sim}0.2\%$
   ($3\sigmaunit$). The simple dipole is $0.43\sigmaunit$; the
-  power-spectrum $\ell = 1$ mode is a marginal $2.75\sigmaunit$.
+  power-spectrum $\ell = 1$ mode is consistent with null at
+  $-0.12\sigmaunit$ after MASTER mode-coupling deconvolution
+  (the raw pseudo-$C_\ell$ value $6.48\sigmaunit$ before
+  deconvolution is a mask-induced mode-coupling artifact, fully
+  removed by MASTER; the older snapshot value $2.75\sigmaunit$
+  predates the canonical $N_{\rm spiral}=3{,}201{,}160$
+  normalization recount and is retained only as a historical
+  cross-reference; see Sec.~\ref{sec:dipole}).
   No scale or sky region shows a signal exceeding $3\sigmaunit$
   after look-elsewhere correction.
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
-  disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of~9
-  smaller---with an equivariant spiral subsample
+  disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample
   ($3{,}201{,}160$ CW~$+$~CCW; canonical, see
   Sec.~\ref{sec:stats})
   that is ${\sim}16\times$ larger than Shamir's largest catalog, and
