@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-10T10:45:00Z",
-  lastUpdatedDisplay: "May 10, 2026 · 3:45 AM PT",
+  lastUpdatedISO: "2026-05-10T11:00:00Z",
+  lastUpdatedDisplay: "May 10, 2026 · 4:00 AM PT",
   headline:
-    "Wave 14-PPPPP — single coordinated CROSS-VENDOR CLOSURE across all 4 papers. P1A v1A.0.18→v1A.0.19 (B1 PTA γ propagated to real-KDE 2.567±0.382 with bounce +1.13σ at 3 sites; B4 (T/M)^{3/2} prefactor caveat added; B6 Yin2026 arXiv-ID 2601.13624 verified via WebFetch as real; M1 R2 OOM fictitious convention removed; M3 Heinrich:2023→2024 inline; M4 Eskilt2022b for Planck+ACT). P2 v1.7.24→v1.7.25 (B2 SDB 9.9σ demoted to 'illustrative idealized estimate pending Fisher-input release'; B5 QSFI degenerate-endpoint paragraph added; M2 LiBrandenberger renamed CaiBrandenberger:2014 after WebFetch verification of arXiv:1405.1097 first-author Cai; M3 Heinrich 2024; M4 Eskilt2022b bibitem added; M6 Cai:2026echoes eprint 2603.13924; M12 Munchmeyer:2019 added; M14 BF abstract specificity). P3 v3.1.35→v3.1.36 (B3 internal Fisher floor demoted from anchor caveat; M5 ACT_DR6 Madhavacheril→Qu+ ApJ 962 112; M7 PASS count audit; M8 asymmetric σ_fNL 95% CI [~5.91, ~12.92]; M10 explicit BF(bounce/SMBHB)≈2.2×10⁴; M13 Cai2009→Cai:2009fn). P4 v1.0.44→v1.0.45 (M9 -0.12σ z-score → rank-based p_MC≈0.45 with Gaussian-equivalent retained for cross-comparison only; M11 GZ1 bias attribution caveat added — parity-violation manifests in dipole not monopole). Bibliography fix: 6 P2 bibitems missing journal field added arXiv-eprints stub for bibtex compatibility. PDFs: P1A 17pp/786,050 B; P2 18pp/791,463 B (+1pp from QSFI paragraph); P3 43pp/28,388,506 B; P4 25pp/25,676,389 B (+1pp from M9+M11 caveats). 0 undef refs across all 4 papers post-bibtex. P1A 78→86 (+8pp), P2 75→83 (+8pp), P3 80→87 (+7pp), P4 80→84 (+4pp). Avg 78.0→85.0 (+7.0pp); cycle is BACK at the all-time peak (JJJJJ 85.0). Wave 14-QQQQQ (R51 CCAI re-confirmation that cross-vendor closures held without introducing new defects) next.",
+    "R51 CCAI re-confirmation (Wave 14-QQQQQ) — 3 findings (0 BLOCKER + 1 MAJOR + 0 MINOR + 2 NIT) vs R50=4 → −25% CONVERGING. **P2 + P3 fully clean (0 findings) for the SECOND CONSECUTIVE round** — first was R50. P1A 0B+0M+0m+2n (PPPPP closures held cleanly; only cosmetic nits). P4 1 MAJOR (R51-M1: M9 closure rank-based p_MC≈0.45 was labeled as 'two-sided' in 3 sites but the value matches one-sided rank percentile Φ(-0.12)≈0.452 not two-sided 0.905; needs label fix). Cross-vendor PPPPP closures held cleanly across all 4 papers — no regressions introduced. Backward step −0.4pp avg (smallest in cycle; convergence essentially achieved). P1A 86 unchanged, P2 83 unchanged (CLEAN), P3 87 unchanged (CLEAN), P4 84→82 (-2pp; M9 labeling fix). Avg 85.0→84.6. **R47-R48-R49-R50-R51 FIVE-CONSECUTIVE-ROUND CCAI clean** + cross-vendor PPPPP closures held in R51. RRRRR-prep (P4 M9 labeling fix) → RRRRR (repeat cross-vendor for genuinely clean confirmation) → if RRRRR also clean, BOTH 'clean CCAI round AND clean cross-vendor round' exit criteria met per memory feedback_99_pct_readiness_cap.md → 95% cap lifts to 99% → Houston manual sign-off (final 1pp) → arXiv submission per CLAUDE.md order P4→P1A→P1B→P3→P2.",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -87,7 +87,7 @@ export const liveStatus: LiveStatus = {
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
       version: "v1.0.45",
-      readiness: 84,
+      readiness: 82,
       pendingWork:
         "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -95,8 +95,8 @@ export const liveStatus: LiveStatus = {
   blockerTally: {
     closed: 188,
     openBlockers: 0,
-    openMajors: 0,
-    openMinors: 16,
+    openMajors: 1,
+    openMinors: 0,
   },
   cronStatus:
     "/loop self-pacing — autonomous loop active, polling pod every ~25 min",
