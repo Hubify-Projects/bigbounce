@@ -163,7 +163,7 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources",
-    version: "v3.1.24",
+    version: "v3.1.25",
     pages: "41",
     refs: "60+",
     readiness: 99,
@@ -191,7 +191,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF 28.38 MB · 41 pp · May 8, 2026, v3.1.24",
+    pdfMeta: "PDF 28.38 MB · 42 pp · May 8, 2026, v3.1.25",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper3_anomaly_catalog.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper3_anomaly_catalog.pdf", kind: "secondary", download: true },

@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "wave": "14-KKKK",
+    "purpose": "High-confidence (Gold+Silver) restricted alpha re-measurement; closes R44-M5 Path B",
+    "input_file": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p1_highz_tracers/outputs/step3_classification/anomaly_classified.parquet",
+    "n_target_gs": 1122,
+    "n_target_gold": 116,
+    "n_target_silver": 1006,
+    "n_full_anomaly": 195829,
+    "n_random": 5610,
+    "n_jackknife_regions": 30,
+    "sigma_fnl_baseline": 8.98,
+    "alpha_fiducial_paper": 0.15,
+    "improvement_at_fiducial": 0.061,
+    "completed_at": "2026-05-09T02:27:23+00:00"
+  },
+  "point_estimate_gs_vs_full_signal": {
+    "ratio_w_a_over_w_b_arith": 40.64627364948215,
+    "ratio_w_a_over_w_b_geomean": 13.015821583150833,
+    "ratio_w_a_over_w_b_median": 7.991779538925763,
+    "bias_ratio_b_a_over_b_b_arith": 6.375443015938747,
+    "bias_ratio_b_a_over_b_b_geomean": 3.6077446671224993,
+    "bias_ratio_b_a_over_b_b_median": 2.8269735653036734,
+    "per_bin_w_ratio": [
+      2.475175482882702,
+      7.991779538925763,
+      111.47186592663799
+    ],
+    "theta_used_deg": [
+      0.06318308553811966,
+      0.10009886770282886,
+      0.15858331751372431
+    ],
+    "n_bins_used": 3,
+    "theta_window_deg": [
+      0.04,
+      0.25
+    ]
+  },
+  "jackknife_bias_ratio_gs_vs_full": {
+    "bias_ratio_geo_mean": 2.834924245839517,
+    "bias_ratio_geo_std": 2.033661155852362,
+    "n_jk_used": 30,
+    "alpha_internal": 1.8349242458395172,
+    "alpha_internal_std": 2.033661155852362
+  },
+  "alpha_gs_jk": 1.8349242458395172,
+  "alpha_gs_jk_std": 2.033661155852362,
+  "sigma_fnl_gs_jk": 2.2791013107601956,
+  "sigma_fnl_gs_jk_std": 7.426659386352046
+}
