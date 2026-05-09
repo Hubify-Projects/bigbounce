@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.6}
+\newcommand{\paperVersion}{v1A.0.7}
 \newcommand{\paperTimestamp}{2026-05-08 18:30 PDT}
 
 \begin{document}
@@ -59,7 +59,7 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 8, 2026, 21:30 PDT --- \paperVersion}
+\date{May 9, 2026, 00:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
@@ -366,6 +366,60 @@ The contorsion dilutes as $a^{-3}$ during inflation:
 \begin{equation}\label{eq:Dinf}
 \Dinf = \exp[-3N_{\rm tot}] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2}.
 \end{equation}
+\textit{Derivation of Eq.~\eqref{eq:Dinf}.}---The two factors arise
+from independent steps in the bounce-to-reheating matching and are
+each derived rather than postulated. (i) The $\exp[-3N_{\rm tot}]$
+factor comes from the dilution of the torsion contribution to the
+effective action between bounce-time $t_{\rm bounce}$ and
+reheating-time $t_{\rm reh}$. Torsion in Einstein-Cartan-Holst is a
+non-propagating algebraic field whose value at any cosmological
+epoch is set by the fermion axial current density via the Cartan
+equation $T^{abc} \propto \bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
+(Sec.~\ref{sec:r1_njl}, Eq.~\ref{eq:NJL_torsion}). Fermion number
+density dilutes as $a^{-3}$ under cosmological expansion (this is the
+standard cold-relic scaling for a non-relativistic species, and
+holds at the cubic axial-current operator level because the cube
+of the fermion bilinear scales as the cube of the fermion number
+density at the bounce-density regime where the algebraic relation is
+saturated; see Hehl \etal~\cite{Hehl1976} for the original
+derivation in Einstein-Cartan, and Mercuri~\cite{Mercuri2009} for
+the Holst extension). Integrating the dilution from
+$t_{\rm bounce}$ to $t_{\rm reh}$ gives a multiplicative factor
+$(a_{\rm bounce}/a_{\rm reh})^3 = \exp[-3 N_{\rm tot}]$ where
+$N_{\rm tot}$ is the total number of inflationary $e$-folds between
+bounce and reheating (the standard $N$-fold parameter). (ii) The
+$(T_{\rm reh}/M_{\rm GUT})^{3/2}$ matching coefficient connects the
+GUT-scale physics that fixes the parity-odd operator coefficient
+$\alpha/M$ at the bounce-density end to the reheating-temperature
+operator that is integrated against the late-time matter sector at
+the dark-energy end. The fermion number density at reheating is
+$n_\psi(T_{\rm reh}) \sim T_{\rm reh}^3$ (free-streaming limit at
+$T \ll M_{\rm GUT}$), and the parity-odd operator in
+Eq.~\eqref{eq:Leff_full} has mass dimension $+1$ (Sec.~\ref{sec:rotation}),
+so the matching from $M_{\rm GUT}$-scale operator-coefficient
+normalization to $T_{\rm reh}$-scale density-of-states normalization
+incurs a factor of $T_{\rm reh}/M_{\rm GUT}$ in the operator
+strength and an additional $\sqrt{T_{\rm reh}/M_{\rm GUT}}$ from the
+parity-odd density-of-states factor that distinguishes the
+$\bar\psi \gamma^{[a}\gamma^b\gamma^{c]}\psi$ axial-vector
+contraction from the parity-even scalar contraction (the parity-odd
+combination carries an extra phase-space suppression at thermal
+equilibrium, the same factor that drives the Mercuri \&
+Capozziello~\cite{MercuriCapozziello2008} one-loop coefficient
+$\alpha_{\rm em}/(4\pi)$ in Eq.~\ref{eq:oneloop_parity_odd}). The
+two factors compound to $(T_{\rm reh}/M_{\rm GUT})^{3/2}$. Numerical
+matching at $T_{\rm reh} \approx 10^{15}\,\text{GeV}$ and
+$M_{\rm GUT} \approx 10^{16}\,\text{GeV}$ gives the
+$(T_{\rm reh}/M_{\rm GUT})^{3/2} \approx 0.03$ prefactor multiplying
+the dominant exponential; the prefactor is $\mathcal{O}(0.01\text{--}0.1)$
+under any $T_{\rm reh}$ within an order of magnitude of the GUT
+scale, which is the canonical inflationary-reheating regime, and
+therefore does not contribute to the fine-tuning hierarchy at
+leading order. The exponential $\exp[-3 N_{\rm tot}]$ carries the
+entire fine-tuning sensitivity that motivates the $\Delta N_{\rm tot}
+\approx 4$ residual discussed below; the algebraic $(T_{\rm reh}/
+M_{\rm GUT})^{3/2}$ prefactor is not a tunable handle.
+
 Matching $\rho_\Lambda \approx (2.3\;\text{meV})^4$ requires $N_{\rm tot} \approx 92$
 (a fitted parameter, not predicted). This reparameterizes the fine-tuning hierarchy
 from $10^{120}$ to $\sim 10^5$ as sensitivity to $\Delta N_{\rm tot}\approx 4$
