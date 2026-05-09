@@ -43,8 +43,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.2}
-\newcommand{\paperTimestamp}{2026-05-08 21:30 PDT}
+\newcommand{\paperVersion}{v1B.0.3}
+\newcommand{\paperTimestamp}{2026-05-09 17:00 PDT}
 
 \begin{document}
 
@@ -483,6 +483,40 @@ ALP-MCMC ($\beta$ fitting) & 9{,}720 & $<0.01$ & Frozen \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
+
+\subsection{Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger$ footnote)}\label{sec:crosspaper-shadow}
+
+This subsection is the explicit cross-paper anchor for the Paper~I(a) Table~II
+$\ddagger$ footnote (the row marking matter bounce / slow-roll inflation /
+Cuscuton bounce / ekpyrotic models as ``not tested'' against the DESI~$w_0 w_a$
+evidence). Three points are load-bearing for that cross-reference:
+
+\textbf{(i)} The three frozen MCMC dataset combinations of this companion paper
+(``Full-tension'', ``Planck+BAO+SN'', ``Planck-only''; Table~\ref{tab:mcmc_inventory}
+rows~1--3, $176{,}840 + 132{,}949 + 114{,}992 = 424{,}781$ accepted samples)
+\emph{do not include free $w_0 w_a$ as a sampled parameter}. Those chains hold
+$w_0 = -1$, $w_a = 0$ at the $\Lambda$CDM fiducial throughout. Quoting any of
+these frozen posteriors as a posterior-preference verdict on the
+$w_0 w_a$ extension would therefore be a category error.
+
+\textbf{(ii)} The DESI~DR2 $w_0 w_a$-extended chain (Table~\ref{tab:mcmc_inventory}
+row~4) is currently running on Pod~3 H200 with $\sim 109$ samples accepted as of
+2026-05-08 18:27 PT and $\hat R - 1 \approx 0.076$. Publication-quality convergence
+($\hat R - 1 < 0.01$) is still 1--3 days out. Until that chain converges, this
+program has \emph{no $w_0 w_a$ posterior at all}, neither for the matter-bounce
+candidate row nor for any other model.
+
+\textbf{(iii)} Consequently the $\ddagger$-marked rows in Paper~I(a) Table~II
+report ``not tested'' rather than $\checkmark$ or $\times$, and the asymmetry
+between the Quintom-B accommodation row (which carries an unmarked
+``consistent$^\dagger$'' on theoretical grounds because Quintom-B is the only
+class admitted to span the dynamical-equation-of-state window the DESI signal
+populates~\cite{DESI2025DR2}) and the rest of the rows is intentionally one of
+\emph{theoretical accommodation, not of fit quality measured in this program}.
+A definitive empirical test against the DESI evidence is gated on row~4 of
+Table~\ref{tab:mcmc_inventory} reaching publication-grade convergence; at that
+point a coordinated update will land in both Paper~I(a) Table~II and this
+companion's $\Delta\chi^2$ table.
 
 
 %% ============================================================
