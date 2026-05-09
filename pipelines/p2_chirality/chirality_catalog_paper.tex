@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.45}
+\newcommand{\paperVersion}{v1.0.46}
 \newcommand{\paperTimestamp}{2026-05-10 03:30 PDT}
 
 \begin{document}
@@ -103,7 +103,7 @@ The parity-preference observable of this work is the \emph{dipole},
 not the monopole.
 We find no significant large-scale chirality dipole: a simple fit gives
 $0.43\sigmaunit$, and a full MASTER-deconvolved angular power spectrum
-yields $|0.12\sigmaunit|$ at $\ell = 1$ (signed value $-0.12\sigmaunit$, indicating the fitted dipole amplitude is in the negative direction relative to the template; the signed sign is reported only for completeness of the fit and carries no physical interpretation when the magnitude is well below unity). Because the post-MASTER deconvolution null at $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the canonical primary statistic is the rank-based empirical p-value against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$ (rank-based, two-sided; the measured $C_1$ falls within the bulk of the 500-realization null distribution). The Gaussian-equivalent $|z|=0.12$ is reported only for cross-comparison with the simple-dipole $0.43\sigmaunit$ (real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$ (mask-coupling artifact) figures, not as a primary statistic. Fully consistent with null
+yields $|0.12\sigmaunit|$ at $\ell = 1$ (signed value $-0.12\sigmaunit$, indicating the fitted dipole amplitude is in the negative direction relative to the template; the signed sign is reported only for completeness of the fit and carries no physical interpretation when the magnitude is well below unity). Because the post-MASTER deconvolution null at $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the canonical primary statistic is the rank-based empirical p-value against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$ (one-sided rank percentile, $\Phi(-0.12)\approx 0.452$ in Gaussian-equivalent terms; the measured $C_1$ falls below the median of the 500-realization null distribution and within its bulk. The complementary one-tailed $\chi^2$ tail probability for $|z|=0.12$ is $\approx 0.91$; both metrics confirm consistency with null). The Gaussian-equivalent $|z|=0.12$ is reported only for cross-comparison with the simple-dipole $0.43\sigmaunit$ (real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$ (mask-coupling artifact) figures, not as a primary statistic. Fully consistent with null
 (the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
 due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
 is detected at only 0.17\% amplitude and does not survive a
@@ -1237,8 +1237,11 @@ raw pseudo-$C_\ell$ estimator.  Because the post-MASTER null at
 $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the
 canonical primary statistic is the rank-based empirical p-value
 against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$
-(rank-based, two-sided; the measured $C_1$ sits within the bulk of
-the null distribution and below the median by a small amount).
+(one-sided rank percentile, $\Phi(-0.12)\approx 0.452$ in
+Gaussian-equivalent terms; the measured $C_1$ sits within the bulk
+of the null distribution, below the median by a small amount. The
+complementary one-tailed $\chi^2$ tail probability for $|z|=0.12$
+is $\approx 0.91$; both metrics confirm consistency with null).
 The Gaussian-equivalent $|z|=0.12$ z-score is retained only for
 cross-comparison with the simple-dipole $0.43\sigmaunit$
 (real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$
@@ -2330,7 +2333,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   $9.5\sigmaunit$ monopole offset to GZ1 human-handedness bias
   propagating through training is the working hypothesis under
   the assumption that the monopole offset is spatially uniform
-  (which is observed; see Sec.~\ref{sec:cw_frac}, Fig.~\ref{fig:sky_balance}
+  (which is observed; see Sec.~\ref{sec:cw_frac}, Table~\ref{tab:sky_balance}
   and Table~\ref{tab:sky_balance}). An independent verification
   at scale would require a non-GZ1, non-CE-ResNet chirality
   reference dataset of comparable size ($\gtrsim 10^{6}$ galaxies),

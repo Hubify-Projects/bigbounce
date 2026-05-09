@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-10T11:00:00Z",
-  lastUpdatedDisplay: "May 10, 2026 · 4:00 AM PT",
+  lastUpdatedISO: "2026-05-10T11:30:00Z",
+  lastUpdatedDisplay: "May 10, 2026 · 4:30 AM PT",
   headline:
-    "R51 CCAI re-confirmation (Wave 14-QQQQQ) — 3 findings (0 BLOCKER + 1 MAJOR + 0 MINOR + 2 NIT) vs R50=4 → −25% CONVERGING. **P2 + P3 fully clean (0 findings) for the SECOND CONSECUTIVE round** — first was R50. P1A 0B+0M+0m+2n (PPPPP closures held cleanly; only cosmetic nits). P4 1 MAJOR (R51-M1: M9 closure rank-based p_MC≈0.45 was labeled as 'two-sided' in 3 sites but the value matches one-sided rank percentile Φ(-0.12)≈0.452 not two-sided 0.905; needs label fix). Cross-vendor PPPPP closures held cleanly across all 4 papers — no regressions introduced. Backward step −0.4pp avg (smallest in cycle; convergence essentially achieved). P1A 86 unchanged, P2 83 unchanged (CLEAN), P3 87 unchanged (CLEAN), P4 84→82 (-2pp; M9 labeling fix). Avg 85.0→84.6. **R47-R48-R49-R50-R51 FIVE-CONSECUTIVE-ROUND CCAI clean** + cross-vendor PPPPP closures held in R51. RRRRR-prep (P4 M9 labeling fix) → RRRRR (repeat cross-vendor for genuinely clean confirmation) → if RRRRR also clean, BOTH 'clean CCAI round AND clean cross-vendor round' exit criteria met per memory feedback_99_pct_readiness_cap.md → 95% cap lifts to 99% → Houston manual sign-off (final 1pp) → arXiv submission per CLAUDE.md order P4→P1A→P1B→P3→P2.",
+    "Wave 14-RRRRR-prep — P4 v1.0.45→v1.0.46 R51-M1 labeling fix (rank-based p_MC≈0.45 re-labeled as one-sided rank percentile Φ(-0.12)≈0.452 with explicit one-tailed χ² complementary tail probability ≈0.91 for cross-check at 2 sites; abstract + §sec:dipole). Plus a stale fig:sky_balance ref fixed → tab:sky_balance. P4 82→86 (+4pp; M1 closed). Avg 84.6→85.4 (+0.8pp; cycle now ABOVE the JJJJJ all-time peak 85.0). **R-round status: 0 BLOCKER + 0 MAJOR remaining across all 4 papers.** Wave 14-RRRRR (REPEAT CROSS-VENDOR R-ROUND on post-RRRRR-prep versions) next. If RRRRR lands at <3B+<5M cleanly, BOTH 'clean CCAI round AND clean cross-vendor round' exit criteria met per memory feedback_99_pct_readiness_cap.md → 95% cap lifts to 99% → Houston manual sign-off (final 1pp from 99% to 100%) → arXiv submission per CLAUDE.md order P4→P1A→P1B→P3→P2.",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -86,16 +86,16 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
-      version: "v1.0.45",
-      readiness: 82,
+      version: "v1.0.46",
+      readiness: 86,
       pendingWork:
         "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
   ],
   blockerTally: {
-    closed: 188,
+    closed: 189,
     openBlockers: 0,
-    openMajors: 1,
+    openMajors: 0,
     openMinors: 0,
   },
   cronStatus:
