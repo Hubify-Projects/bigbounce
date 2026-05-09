@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.44}
-\newcommand{\paperTimestamp}{2026-05-09 22:30 PDT}
+\newcommand{\paperVersion}{v1.0.45}
+\newcommand{\paperTimestamp}{2026-05-10 03:30 PDT}
 
 \begin{document}
 
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 22:30 PDT --- \paperVersion}
+\date{May 10, 2026, 03:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -88,14 +88,22 @@ a potential source of the residual $9.5\sigma$ asymmetry; see
 Sec.~\ref{sec:cw_frac}. The equivariant catalog yields a global
 clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$
 ($9.5\sigmaunit$ from $0.5000$). \textit{This monopole offset
-is spatially uniform across the survey footprint and traces to
-the ${\sim}1\%$ human-handedness bias inherited from the GZ1
-training labels; it is not a parity-violation signature.}
+is spatially uniform across the survey footprint and is attributed
+to the ${\sim}1\%$ human-handedness bias inherited from the GZ1
+training labels under the working hypothesis; an independent
+verification would require a non-GZ1, non-CE-ResNet chirality
+reference at scale ($\gtrsim\!10^{6}$ galaxies), which does not
+currently exist. Crucially, the parity-violation observable is the
+\emph{dipole}, not the monopole, so our null dipole result
+($p\!=\!0.30$, $\sigma\!=\!0.43$ in real space; rank-based
+$p_{\rm MC}\!\approx\!0.45$ post-MASTER) rules out a cosmological
+parity signature at the empirical level regardless of the
+monopole's origin.}
 The parity-preference observable of this work is the \emph{dipole},
 not the monopole.
 We find no significant large-scale chirality dipole: a simple fit gives
 $0.43\sigmaunit$, and a full MASTER-deconvolved angular power spectrum
-yields $|0.12\sigmaunit|$ at $\ell = 1$ (signed value $-0.12\sigmaunit$, indicating the fitted dipole amplitude is in the negative direction relative to the template; the signed sign is reported only for completeness of the fit and carries no physical interpretation when the magnitude is well below unity), fully consistent with null
+yields $|0.12\sigmaunit|$ at $\ell = 1$ (signed value $-0.12\sigmaunit$, indicating the fitted dipole amplitude is in the negative direction relative to the template; the signed sign is reported only for completeness of the fit and carries no physical interpretation when the magnitude is well below unity). Because the post-MASTER deconvolution null at $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the canonical primary statistic is the rank-based empirical p-value against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$ (rank-based, two-sided; the measured $C_1$ falls within the bulk of the 500-realization null distribution). The Gaussian-equivalent $|z|=0.12$ is reported only for cross-comparison with the simple-dipole $0.43\sigmaunit$ (real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$ (mask-coupling artifact) figures, not as a primary statistic. Fully consistent with null
 (the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
 due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
 is detected at only 0.17\% amplitude and does not survive a
@@ -1225,7 +1233,19 @@ post-deconvolution significance of
 $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
 = -0.12\sigmaunit$---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
-raw pseudo-$C_\ell$ estimator.  After Poisson shot-noise subtraction
+raw pseudo-$C_\ell$ estimator.  Because the post-MASTER null at
+$\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the
+canonical primary statistic is the rank-based empirical p-value
+against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$
+(rank-based, two-sided; the measured $C_1$ sits within the bulk of
+the null distribution and below the median by a small amount).
+The Gaussian-equivalent $|z|=0.12$ z-score is retained only for
+cross-comparison with the simple-dipole $0.43\sigmaunit$
+(real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$
+(mask-coupling artifact) figures, and not as a primary statistic.
+The 500-MC rank resolution ($1/500 = 0.2\%$) is finer than the
+deviation, but the value falls in the near-median bulk so the
+quoted $p_{\rm MC}\!\approx\!0.45$ is rank-stable.  After Poisson shot-noise subtraction
 ($C_1^{\rm noise} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.93 \times
 10^{-6}$~sr at the production $f_{\rm sky}=0.491$ and
 $N_{\rm spiral}=3{,}201{,}160$; the spiral-tracer-only normalization
@@ -2291,7 +2311,11 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   dipole content), and the dipole upper limit is ${\sim}0.2\%$
   ($3\sigmaunit$). The canonical-primary result is the
   power-spectrum $\ell = 1$ mode after MASTER mode-coupling
-  deconvolution: $-0.12\sigmaunit$, fully consistent with null.
+  deconvolution, framed as a rank-based empirical p-value against
+  the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$
+  (Gaussian-equivalent $|z|=0.12$, signed $-0.12\sigmaunit$,
+  reported only for cross-comparison since the 1-dof chi-squared
+  null is non-Gaussian); fully consistent with null.
   The simple real-space dipole, $0.43\sigmaunit$, is retained as
   a complementary cross-check and is also consistent with null.
   The raw pseudo-$C_\ell$ value $6.48\sigmaunit$ before
@@ -2302,7 +2326,24 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   retained only as a historical cross-reference; see
   Sec.~\ref{sec:dipole}).
   No scale or sky region shows a signal exceeding $3\sigmaunit$
-  after look-elsewhere correction.
+  after look-elsewhere correction. The attribution of the
+  $9.5\sigmaunit$ monopole offset to GZ1 human-handedness bias
+  propagating through training is the working hypothesis under
+  the assumption that the monopole offset is spatially uniform
+  (which is observed; see Sec.~\ref{sec:cw_frac}, Fig.~\ref{fig:sky_balance}
+  and Table~\ref{tab:sky_balance}). An independent verification
+  at scale would require a non-GZ1, non-CE-ResNet chirality
+  reference dataset of comparable size ($\gtrsim 10^{6}$ galaxies),
+  which does not currently exist; the present analysis cannot
+  independently confirm the GZ1 origin of the monopole offset.
+  Under the alternative hypothesis that the monopole reflects a
+  genuine cosmological parity-violation signature, the parity-preference
+  observable would be the dipole component (which we measure
+  consistent with null at $p\!=\!0.30$ and $\sigma\!=\!0.43$),
+  not the monopole; the parity-violation hypothesis is therefore
+  tested by the dipole bound, not the monopole offset, and our
+  null dipole result rules it out at the empirical level
+  regardless of the monopole's origin.
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
   disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample

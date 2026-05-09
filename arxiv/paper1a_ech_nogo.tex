@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.18}
-\newcommand{\paperTimestamp}{2026-05-10 02:45 PDT}
+\newcommand{\paperVersion}{v1A.0.19}
+\newcommand{\paperTimestamp}{2026-05-10 03:30 PDT}
 
 \begin{document}
 
@@ -588,11 +588,20 @@ gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 \sim 6\times 10^{-3}\,\text{rad}$, the dimensionless ratio is
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
 10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$
-to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects $\varepsilon$-correction
-scaling and the eV-vs-GeV convention used to convert $\alpha/M$ between
-natural-unit systems; both orderings give the same physical conclusion),
-i.e.\ the one-loop induced $\beta$ is suppressed by $\sim 58$--$60$ orders
-of magnitude relative to the observed signal. The R2 amplitude is
+to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects
+$\varepsilon$-correction perturbative-order scaling alone; the
+$\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
+$1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
+ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
+$\sim 58$--$60$ orders of magnitude relative to the observed
+signal. (A complementary cross-check using
+$\alpha_{\rm em}/(4\pi\cdot M_{\rm Pl}\cdot(\alpha/M)\cdot\beta_{\rm
+obs})\cdot H_0$ as the dimensionless ordering yields a numerically
+distinct ratio of order $10^{-33}$; the two orderings differ in how
+the $H_0$ factor and the $M_{\rm Pl}\cdot(\alpha/M)$ product are
+contracted with the dimensionful coupling, but both land on the
+qualitative R2 closure---one-loop induced $\beta$ is amplitude-suppressed
+many orders of magnitude below the observed Planck/ACT~DR6 signal.) The R2 amplitude is
 therefore far below not only the Planck/ACT~DR6 sensitivity but the
 observed central value itself; the one-loop Holst-sector parity-odd
 term cannot account for the observed birefringence amplitude. (The
@@ -655,7 +664,7 @@ where $\rho_\theta$ is the energy density of the spectator field and
 $m_\theta$ its mass. Setting the present-day rotation-rate amplitude
 equal to the Planck/ACT~DR6 measurement
 $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$~\cite{Minami2020,
-Eskilt2022,DiegoPalazuelos2025} bounds $\alpha/M$ at
+Eskilt2022b,DiegoPalazuelos2025} bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$, identical to the value already
 quoted in Sec.~\ref{sec:parityodd}; identifying the spectator
 field with the ECH parity-odd sector and demanding that it
@@ -760,7 +769,7 @@ The galaxy spin channel is a confirmed null (Sec.~\ref{sec:spinobs}). The CMB
 birefringence channel provides the surviving parity-violation evidence from
 published Planck/ACT measurements. For the $\fnl$ channel, dominant systematic
 uncertainties are GR-projection effects (${\sim}20\%$ amplitude degradation at
-$z>2$, Heinrich \etal~2023~\cite{Heinrich:2023} Sec.~3.4), $b_\phi$ bias-prior uncertainty ($\sigma(b_\phi)/b_\phi\approx 0.2$),
+$z>2$, Heinrich \etal~2024~\cite{Heinrich:2023} Sec.~3.4), $b_\phi$ bias-prior uncertainty ($\sigma(b_\phi)/b_\phi\approx 0.2$),
 and photo-$z$ marginalization, propagated through the multi-bin Fisher matrix
 (Sec.~\ref{sec:falsification}). MCMC systematics (dataset-dependent $\Delta\Neff$)
 are in companion Paper~I(b)~\cite{Golden2026P1b}.
@@ -1053,7 +1062,7 @@ the prediction; ``$\times$'' denotes it does not; ``---'' denotes not applicable
 or not computed.}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
-Model & $\fnl=-35/8$ & ALP birefringence & PTA $\gamma\approx 3$ & $w_0w_a$ DESI \\
+Model & $\fnl=-35/8$ & ALP birefringence & PTA $\gamma$ (real-KDE) & $w_0w_a$ DESI \\
 \hline
 Matter bounce (any host; not ECH-specific) & $\checkmark$ & (spectator) & $\checkmark$ & not tested$^{\ddagger}$ \\
 Slow-roll inflation & $\times$ ($\fnl\approx 0.015$) & (spectator) & $\times$ & not tested$^{\ddagger}$ \\
@@ -1069,9 +1078,13 @@ $^{\ddagger}$The frozen MCMC posteriors hosted in Paper~I(b) (the three complete
 The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
 it provides $\sigma(\fnl)\approx 0.7$ (Fisher-ideal) to $\sigma(\fnl)\approx 1.0$
 (with systematics) from SPHEREx, yielding $3$--$5\sigma$ model separation.
-NANOGrav model comparison: $\gamma = 3.20\pm 0.42$ from independent reanalysis
-of the 15-yr free-spectrum data (GPU MCMC, companion Paper~II~\cite{Golden2026P2}
-and Paper~III~\cite{Golden2026P3}). Bounce prediction $\gamma=3.0$ at $0.48\sigma$.
+NANOGrav model comparison: $\gamma = 2.567\pm 0.382$ from real-KDE reanalysis
+of the 15-yr free-spectrum data (GPU MCMC, companion Paper~III~\cite{Golden2026P3}).
+The matter-bounce prediction $\gamma=3.0$ sits at $+1.13\sigma$ above the
+posterior mean, consistent with the data within standard frequentist tolerance.
+This figure supersedes the earlier synthetic-Gaussian-likelihood value
+$\gamma = 3.20\pm 0.42$ used in pre-real-KDE drafts; the migration is
+documented in Paper~III \S~6.
 
 
 %% ============================================================
@@ -1123,6 +1136,22 @@ residual therefore inherits the same order-of-magnitude status, and
 the ``reduction from $10^{120}$ to $10^5$'' should be read as a
 qualitative dimensional rearrangement rather than a quantitative
 bookkeeping result.
+
+\emph{Caveat on the $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ prefactor.}---The
+$(T_{\rm reh}/M_{\rm GUT})^{3/2}$ prefactor used here is the
+dimensional-analysis-aesthetic estimate from naive scaling of the
+matter-bounce effective theory; a first-principles derivation requires
+the full bounce-junction matching that lies outside the scope of this
+paper. The $N_{\rm tot}\approx 92$ $e$-fold structural-tension result
+therefore carries an order-of-magnitude uncertainty inherited from this
+prefactor. The sign and qualitative conclusion---that the matter-bounce
+mechanism cannot generate dark energy without re-importing
+cosmological-constant fine-tuning---survives the OOM uncertainty,
+because the surplus required to close the gap is $\sim 14$ $e$-folds,
+whereas the $\varepsilon$-correction-driven prefactor adjustment is
+$\lesssim 1$ $e$-fold. A rigorous derivation of the prefactor from the
+bounce-junction matching is deferred to future work and would not change
+the structural-tension verdict.
 
 \subsection{Theoretical Implications}
 
@@ -1363,7 +1392,7 @@ $\Omega_m$ & Matter density & Derived & $0.308\pm 0.005$ & \\
 \multicolumn{5}{l}{\textit{Observational channel parameters}} \\
 $\beta$ & ALP birefringence & --- & $0.27^\circ$ (midpoint) & Spectator ALP, not ECH \\
 $\fnl$ & Non-Gaussianity & --- & $-35/8 = -4.375$ & Matter bounce class \\
-$\gamma_{\rm PTA}$ & PTA spectral index & --- & $3.20\pm 0.42$ (GPU MCMC) & Bounce at $0.48\sigma$ \\
+$\gamma_{\rm PTA}$ & PTA spectral index & --- & $2.567\pm 0.382$ (real-KDE GPU MCMC) & Bounce $\gamma=3.0$ at $+1.13\sigma$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
