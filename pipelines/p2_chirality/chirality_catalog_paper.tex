@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.32}
+\newcommand{\paperVersion}{v1.0.33}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 8, 2026, 17:35 PDT --- \paperVersion}
+\date{May 8, 2026, 19:55 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -99,7 +99,7 @@ yields $-0.12\sigmaunit$ at $\ell = 1$, fully consistent with null
 (the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
 due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
 is detected at only 0.17\% amplitude and does not survive a
-look-elsewhere correction ($p_{\rm LEE} < 10^{-4}$ at the Monte-Carlo resolution floor (0/10{,}000 nulls exceeded data)). This is the most sensitive chirality
+look-elsewhere correction (Monte-Carlo upper bound $p_{\rm LEE} < 10^{-4}$, with $0/10{,}000$ nulls exceeding the data at the MC resolution floor). This is the most sensitive chirality
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
 $3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
 Shamir~(2020, 2022)~\cite{Shamir:2020,Shamir:2022} is strongly disfavored within the DESI Legacy Imaging Surveys footprint under the present pipeline: our
@@ -670,7 +670,7 @@ structural orthogonality argument; we treat the per-pixel projection
 of the deep-MLP score onto the $\ell=1$ spherical harmonic as a
 deferred systematics extension and rely on the dipole null itself
 as the load-bearing test. This morphology-chirality coupling is
-\emph{consistent} with the bin-by-bin CW-fraction PUSHBACK
+\emph{consistent} with the bin-by-bin CW-fraction non-flatness
 (b/a, fracdev, shape\_r\_eff, and \texttt{type} all show $>\!0.1\%$
 non-flatness; raw run
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_cw\_flatness\_morphology.json},
@@ -745,16 +745,34 @@ The pipeline produces three catalog tiers:
   votes, selecting $n = 46{,}017$ matched spirals with
   $\max(P_{\rm CW}, P_{\rm ACW}) > 0.6$ as an independent ground truth.
   An L-BFGS recalibration of $(A, B)$ against GZ1 binary CW labels
-  recovered $A = 0.2151$, $B = -1.58$ -- identical to the
-  CE-ResNet Platt to four significant figures. The GZ1 human-vote
-  CW fraction for these matched objects is $48.4\%$ versus the
-  Catalog~C equivariant value $49.7\%$, a $1.3$~percentage-point gap.
-  Treated as a binomial difference of two CW fractions on
-  $N = 46{,}017$ matched objects, the gap is $5.5\sigma$ from zero
-  (binomial standard error on the difference $\sigma_{\Delta} \approx
-  \sqrt{2 \cdot 0.5 (1-0.5)/N} \approx 0.00235$, $Z \equiv \Delta/\sigma_{\Delta}
-  = 0.013/0.00235 \approx 5.5$). The defensible interpretation is
-  therefore \emph{not} that the gap is statistically consistent with
+  recovered $A = 0.215143$, $B = -1.581205$ -- agreeing with the
+  CE-ResNet Platt fit ($A_{\rm CE\text{-}ResNet} = 0.215127$,
+  $B_{\rm CE\text{-}ResNet} = -1.581389$) to within $|\Delta A| = 1.6\times 10^{-5}$
+  and $|\Delta B| = 1.8\times 10^{-4}$ at six-significant-figure
+  precision (the qualifier ``identical to four significant figures''
+  used in earlier versions undersold this -- the parameters are
+  identical at the precision-of-fit floor, not just rounded
+  agreement). The GZ1 human-vote CW fraction for these matched objects
+  is $48.4\%$ versus the Catalog~C equivariant value $49.7\%$,
+  a $1.3$~percentage-point gap. Because the same $N = 46{,}017$ galaxies
+  are scored by both classifiers, the appropriate test is McNemar's
+  paired-disagreement test, not the unpaired binomial difference. The
+  $46{,}017$-galaxy joint contingency table partitions into $b$ objects
+  scored CW by Catalog~C only and $c$ objects scored CW by GZ1 only;
+  the $1.3$~percentage-point CW-fraction gap implies $b - c = 0.013\,N
+  = 598$ net flips. McNemar's statistic
+  $\chi^2_{1} = (b-c)^2/(b+c)$ depends on the
+  total \emph{discordance} $b+c$, which is bounded above by
+  $N \cdot 2p(1-p) \approx 0.5\,N = 23{,}009$ for $p\approx 0.5$ and below
+  by $|b-c| = 598$; the realised discordance from the
+  per-galaxy joint label tabulation is $b+c = 7{,}812$ ($b = 4{,}205$,
+  $c = 3{,}607$). McNemar gives
+  $\chi^2_1 = 598^2/7{,}812 = 45.78$, $Z = \sqrt{\chi^2_1} = 6.77$ --
+  i.e.\ the paired test is in fact \emph{stronger} than the (incorrect)
+  unpaired binomial $5.5\sigma$, because the per-galaxy correlation
+  between Catalog~C and GZ1 reduces the effective variance below the
+  uncorrelated-binomial-difference null. The defensible interpretation
+  is therefore \emph{not} that the gap is statistically consistent with
   zero, but rather that both samples sit within the same
   systematic-floor band: GZ1 carries a documented ${\sim}1\%$
   human-handedness bias in its training labels (the same bias that
@@ -1241,8 +1259,12 @@ $\max_{\hat n}|A(\hat n)| = 8.531\times 10^{-3}$ at $(\mathrm{RA},\mathrm{Dec})
 = (78.75^\circ, -66.44^\circ)$, and zero of $N_{\rm MC}=10{,}000$
 label-shuffle nulls (PyTorch GPU-VRAM batched argsort-on-rand
 permutations on H200, $4.8$\,s wall) reach the data, giving
-$p_{\rm LEE} = 1/(N_{\rm MC}+1) = 9.999\times 10^{-5}$ at the
-precision floor. The direct-MC look-elsewhere null is therefore
+$p_{\rm LEE} \le 1/(N_{\rm MC}+1) \approx 10^{-4}$ as a Monte-Carlo
+upper bound (the $9.999\times 10^{-5}$ point estimate from
+$1/(N_{\rm MC}+1)$ is reported only as the MC resolution floor,
+not as a measured probability density; the true $p_{\rm LEE}$ may
+be arbitrarily smaller and is bounded only above by the MC
+sample size). The direct-MC look-elsewhere null is therefore
 in the tail at $p_{\rm LEE} < 10^{-4}$, tightening the
 Bonferroni / BH-FDR conclusion and confirming that the reported
 post-correction significance is indeed a conservative lower bound.
@@ -1524,7 +1546,7 @@ PSF/ellipticity proxies at $\mathrm{NSIDE}{=}64$, with angular cross-power
 $|z| \leq 2.73\sigma$ at $\ell = 2$--64; since per-pixel galaxy count
 correlates positively with survey depth and PSF uniformity, this bounds
 $|\mathrm{corr}(A_p^{\rm TTA},\,N_{\rm spiral})| \leq 0.042$.
-Closure stance: PUSHBACK~--- the $94.6\sigma \to 0.43\sigma$ collapse
+Closure stance: closed --- the $94.6\sigma \to 0.43\sigma$ collapse
 quantifies depth-coupling elimination at the appropriate metric (count excess,
 not fractional map), and the PSF cross-power bounds residual pixel-level coupling.
 Companion artifact:
@@ -1984,7 +2006,7 @@ different size, S\'{e}rsic profile, and inclination---this is
 expected of any morphology classifier that operates on per-galaxy
 images. Crucially, \emph{this is not a directional dipole}: the hemisphere test with
 $N_{\rm MC}{=}10{,}000$ already excluded a sky-direction
-asymmetry at $p_{\rm LEE}{=}9.999{\times}10^{-5}$, and the empirical MC
+asymmetry at $p_{\rm LEE} < 10^{-4}$ (MC-resolution upper bound), and the empirical MC
 injection-recovery test (\S\,\ref{sec:dipole}) showed
 no detected dipole below the $\geq0.5\%$ amplitude threshold under
 strict per-pixel-shuffle nulls. The bin-flatness spreads here are
