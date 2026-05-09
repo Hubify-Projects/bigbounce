@@ -35,12 +35,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-09T05:00:00Z",
-  lastUpdatedDisplay: "May 8, 2026 · 10:00 PM PT",
+  lastUpdatedISO: "2026-05-09T05:30:00Z",
+  lastUpdatedDisplay: "May 8, 2026 · 10:30 PM PT",
   headline:
-    "R44 Wave 14-KKKK — P3 v3.1.25 high-confidence-restricted α re-measurement shipped: α_GS,jk = +1.83 ± 2.03 on 1,122 Gold+Silver subset (Path B closure), σ(f_NL)_GS = 2.28 ± 7.43 reported alongside full-sample α_jk = 0.19 headline",
+    "Honest readiness rollback — papers were stuck-pegged at 99% across the site; rolled back to reflect actual state pre-R45, pre-cross-vendor, pre-Houston-sign-off. P1A 85, P1B 75, P2 78, P3 88, P4 86 (avg 82). Numbers will continue to oscillate forward/backward across each revision-loop cycle until the forward/backward delta shrinks to zero.",
   summary:
-    "Wave 14-GGGG ships P4 v1.0.32 → v1.0.33 with R44 MAJORs M1+M2+M3 + nit2: (M1) p_LEE harmonization at three abstract/body/discussion sites — the point estimate $9.999\\times 10^{-5}$ replaced everywhere with the MC-resolution upper bound $p_{\\rm LEE}<10^{-4}$ (and explicit prose noting that $1/(N_{\\rm MC}+1)$ is a sample-size floor, not a measured probability density). Abstract paren-mismatch typo cleaned. (M2) GZ1 Platt parameters now reported to six significant figures: GZ1-recalibrated $A = 0.215143$, $B = -1.581205$ vs CE-ResNet $A = 0.215127$, $B = -1.581389$ — agreement at $|\\Delta A|=1.6\\times 10^{-5}$, $|\\Delta B|=1.8\\times 10^{-4}$ (precision-of-fit floor, not a 4-sig-fig rounding artifact). (M3) GZ1 48.4% vs Catalog-C 49.7% CW-fraction gap reframed as a paired McNemar test (b=4,205, c=3,607, $\\chi^2_1 = 598^2/7{,}812 = 45.78$, $Z=6.77$); the unpaired binomial 5.5σ formula in earlier versions undercounted because per-galaxy Catalog-C ↔ GZ1 correlations reduce the effective variance below the uncorrelated null. The reframing actually strengthens the gap from 5.5σ to 6.77σ rather than weakening it; both papers' interpretation (gap consistent with combined ~1% GZ1 + ~0.5% Cat-C systematic floors, monopole not parity test) unchanged. (nit2) Stray `PUSHBACK` prose tokens swept (Sec VI.D bin-flatness 'PUSHBACK with reframe' → 'non-flatness'; closure stance label normalized to 'closed'). PDF: 22 pp / 25.65 MB / 0 undef refs. Wave 14-FFFF predecessor (P3 v3.1.23 → v3.1.24): Conclusions §6.5 cosmological-applications bullet rewritten to lead with Wave 14-VVV empirical α (σ(f_NL)=8.27±2.37 forecast, consistent with zero at <1σ); §VII legacy fixed-α=0.15 forecast (6.1% / 16.4%) subordinated under italic 'For reference' header; tier vocabulary disambiguated paper-wide (point-source 378,080 + catalog-grade 264,938 + exploratory 113,342 + Planck CMB-patch 200); Münchmeyer typo fix. R43 status (post Waves 14-WWW–DDDD): all 10 P3 BLOCKERs closed and zero P3 BLOCKERs returned in the R44 self-review. Cobaya DESI DR2 chain continues warm-restarted sampling: R̂−1 = 0.076 at May 8 18:27 PT (4,598 total accepted across 4 chains); publication-quality R̂−1 < 0.01 ETA 1–3 days. **Continuing R44→Rn loop: next is Wave 14-HHHH (P2 R44 BLOCKERs B1+B2 + MAJORs), Wave 14-IIII (P1A four-route appendix); cross-vendor non-Anthropic R-round will launch on R45 once R44 BLOCKERs+MAJORs are flushed.**",
+    "STATUS HONESTY ROLLBACK (Houston directive 2026-05-08 22:00 PT). The site had every paper pegged at 99% across live-status, papers, and SSOT — that was a false positive carried through 6 forward waves this session without any backward step. Rolled to honest numbers. P1A 85% (R44 BLOCKERs + 4-route appendix + cross-paper bibitems shipped; M4 D_inf prefactor + M5 orphan labels open; R45 + cross-vendor + Houston sign-off pending). P1B 75% (compute-gated on cobaya R̂−1 < 0.01, currently 0.076; §Structural Tension MCMC numbers placeholder; not yet through R44 self-review let alone R45 / cross-vendor). P2 78% (R44 BLOCKERs B1+B2 closed Wave 14-HHHH; 4 R44 MAJORs open: Bayes factor 8–17 vs 11 reconciliation, curvaton prior reframing, Heinrich Eq. X normalization, DBI → axion-curvaton/QSFI; Maldacena:2003 cite still undefined). P3 88% (fNL deferral closed Waves 14-VVV/KKKK; R44 BLOCKERs all closed; R44 MAJORs M1+M2+M4+M5+nit1 shipped; R43-M5 anomaly-window-randoms methodology paragraph still open as minor; HuggingFace dataset visibility flip pending Houston manual). P4 86% (R44 MAJORs M1+M2+M3+nit2 shipped Wave 14-GGGG; M4 recall asymmetry decomp + M5 deep-MLP RA/Dec ablation [pod RTX A5000 too slow for 8.47M deep-MLP retrain] + M6 MDD N_eff + M7 morphology-bin flatness disclosure all open). **Workflow rule going forward (saved as feedback memory feedback_readiness_oscillation.md):** readiness numbers oscillate forward (revision wave) → backward (R-round opens findings) → forward (close findings) → backward (next R-round) → ..., until the forward/backward delta per cycle shrinks to zero. Cap is 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed; only then can rise to 99%. Final 1% (99 → 100) is Houston sign-off + arXiv push only. This wave makes no paper-content edits; it's a status-honesty correction. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
     "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt — warm-started with posterior covmat from April-6 quintom chain; DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL PPF; target R̂−1 < 0.01",
     "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + update P1B §Structural Tension + recompile when R̂−1 < 0.01",
@@ -51,7 +51,7 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH Structural Closure (no-go theorem)",
       version: "v1A.0.6",
-      readiness: 99,
+      readiness: 85,
       pendingWork:
         "Houston sign-off + clean external R44 peer-review round (R44 MAJOR M3 four-route no-go appendix shipped Wave 14-IIII; cross-paper companion bibitems Golden2026P{1b,2,3,4} + Eskilt2022b joint Planck+ACT defined Wave 14-JJJJ — all natbib cite warnings cleared) + arXiv submission",
     },
@@ -60,7 +60,7 @@ export const liveStatus: LiveStatus = {
       number: "1B",
       shortTitle: "ΛCDM+ΔNeff MCMC + NaMaster + ALP companion",
       version: "v1B.0.2",
-      readiness: 99,
+      readiness: 75,
       pendingWork:
         "DESI DR2 w0wa cobaya chain to converge (R̂−1 = 0.076 at 18:27 PT, ~1-3 days) → GetDist → §Structural Tension update → recompile, then Houston sign-off + arXiv. Wave 14-JJJJ refreshed bibitems + version stamp; cross-paper Golden2026P{1a,2,3,4} + Eskilt2022b joint Planck+ACT now defined as proper @article entries.",
     },
@@ -69,7 +69,7 @@ export const liveStatus: LiveStatus = {
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.13",
-      readiness: 99,
+      readiness: 78,
       pendingWork:
         "Houston sign-off + clean external R44 round (R44 BLOCKERs B1+B2 shipped Wave 14-HHHH: 9.9σ n_fNL site reframed as joint-Fisher pre-systematic-budget upper bound; convention-reversal halving stated for both 5.25σ→2.6σ optimistic AND 3-5σ→1.5-2.5σ post-systematic in abstract; conclusion-section 1.5-2.5σ unchanged) + arXiv submission",
     },
@@ -78,7 +78,7 @@ export const liveStatus: LiveStatus = {
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.25",
-      readiness: 99,
+      readiness: 88,
       pendingWork:
         "HuggingFace dataset visibility flip (Houston manual) + sign-off + clean external R45 round (R44 MAJORs M1+M2+M4+nit1 shipped Wave 14-FFFF; R44-M5 high-confidence-restricted α re-measurement shipped Wave 14-KKKK: α_GS,jk = +1.83 ± 2.03 on 1,122 Gold+Silver subset, σ(f_NL)_GS = 2.28 ± 7.43, central 74% improvement consistent with no improvement at <1σ; full-sample α_jk = 0.19 ± 0.65 retained as load-bearing headline) + arXiv submission",
     },
@@ -87,21 +87,21 @@ export const liveStatus: LiveStatus = {
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
       version: "v1.0.33",
-      readiness: 99,
+      readiness: 86,
       pendingWork:
         "Houston sign-off + clean external R44 round (R44 MAJORs M1+M2+M3 + nit2 shipped Wave 14-GGGG: p_LEE harmonized to MC upper bound at three sites, GZ1 Platt parameters reported to 6 sig figs, GZ1 vs Cat-C gap reframed as paired McNemar Z=6.77 (was unpaired binomial 5.5σ), PUSHBACK token cleanup; M4-M7 incl. RA/Dec ablation queued) + arXiv submission",
     },
   ],
   blockerTally: {
-    closed: 65,
+    closed: 71,
     openBlockers: 0,
-    openMajors: 0,
-    openMinors: 0,
+    openMajors: 10,
+    openMinors: 17,
   },
   cronStatus:
     "/loop self-pacing — autonomous loop active, polling pod every ~25 min",
   etaToCompletion:
-    "Compute work: cobaya R̂−1 < 0.01 expected 6-12 h. Final 1% on each paper requires Houston sign-off + clean external R43 round.",
+    "Compute: cobaya R̂−1 < 0.01 ETA 1–3 days; P4 deep-MLP RA/Dec ablation needs an H200 spin-up. Each paper carries a backward step on R45 launch (CCAI multi-agent self-review will open new findings) and a larger backward step on cross-vendor non-Anthropic round (GPT-5/Gemini/Grok/Perplexity). True 99% is gated on BOTH a clean CCAI round AND a clean cross-vendor round AND Houston sign-off; the final 1% is Houston manually triggering arXiv submission.",
   pods: [
     {
       name: "ijzftpy3klystt (cobaya-r43-v2, RTX A5000 SECURE)",

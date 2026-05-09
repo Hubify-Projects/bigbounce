@@ -32,7 +32,7 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 
 ## Current state (2026-04-30 PDT)
 
-- **Readiness: 99 %** — capped per 2026-05-02 14:15Z directive. R42 BLOCKER B-3 closed Wave 14-K; cross-model MAJORs P2-CM-M1 + P2-CM-M2 both closed Wave 14-AA. Residual: text-polish MINORs + arXiv form-fill admin. **Final 1 % gated on two gates: Houston sign-off + clean external R43 round (zero MAJOR/MINOR findings).** The cron does not award the final 1 %.
+- **Readiness: 78 %** (rolled back 2026-05-08 22:30 PT from a stuck-at-99% reading per Houston status-honesty directive; see SSOT/index.md banner of same date). Wave 14-HHHH R44 BLOCKERs B1 (9.9σ vs 3-5σ headline reframe as pre-systematic-budget joint-Fisher upper bound) + B2 (convention-reversal halving stated for both 5.25σ→2.6σ AND 3-5σ→1.5-2.5σ) shipped. Residual R44 MAJORs: M1 (Bayes factor 8-17 vs 11 reconciliation), M2 (curvaton prior reframing), M3 (Heinrich Eq. X normalization citation), M5 (DBI → axion-curvaton or QSFI). Plus Maldacena:2003 cite still undefined. **R45 self-review + cross-vendor non-Anthropic round + Houston sign-off all still pending.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor round have passed; only then can rise to 99%. The final 1 % to 100 % is Houston pulling the arXiv trigger only.
 - **R20 + R31–R35 + R41 + R42 (Wave 14-AA + 14-K) all incorporated.** No substantive open items.
 - **Abstract numbers:** 23/23 supported in body (R34 closed orphan claim).
 - **Bibliography hygiene + cross-references:** clean (R32 + R35 + R41).
