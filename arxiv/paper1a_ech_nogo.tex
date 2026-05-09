@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.13}
-\newcommand{\paperTimestamp}{2026-05-09 17:00 PDT}
+\newcommand{\paperVersion}{v1A.0.14}
+\newcommand{\paperTimestamp}{2026-05-09 19:00 PDT}
 
 \begin{document}
 
@@ -192,8 +192,10 @@ contributions are:
 
 \begin{enumerate}[leftmargin=*]
 \item \textit{14-constraint catalog and perturbation-transparency observation}:
-Through 7 foundation studies (Foundations~A--G) and 6 observational research branches (Branches~H, J, L, M, N, O), we establish 14 distinct mechanism-class
-structural constraints mapping the minimal ECH parameter space. The central result
+Through 7 foundation studies (Foundations~A--G) and 6 observational research branches (Branches~H, J, L, M, N, O), we establish 14 mechanism-class
+structural constraints (one of which, B8, is the observational consequence of
+the perturbation-transparency theorem B14 and is retained in the catalog for
+historical mechanism-class completeness) mapping the minimal ECH parameter space. The central result
 is that minimal ECH gravity is perturbation-transparent for canonical scalar
 matter: torsion vanishes at all orders, the Holst sector decouples cleanly
 from scalar/tensor observables, and tests of $\gamma$ shift to nonperturbative
@@ -585,8 +587,11 @@ gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 10^{-21}\,\text{GeV}^{-1} = 10^{-2}$. Plugging in $\beta_{\rm obs}
 \sim 6\times 10^{-3}\,\text{rad}$, the dimensionless ratio is
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
-10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$,
-i.e.\ the one-loop induced $\beta$ is suppressed by $\sim 58$ orders
+10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$
+to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects $\varepsilon$-correction
+scaling and the eV-vs-GeV convention used to convert $\alpha/M$ between
+natural-unit systems; both orderings give the same physical conclusion),
+i.e.\ the one-loop induced $\beta$ is suppressed by $\sim 58$--$60$ orders
 of magnitude relative to the observed signal. The R2 amplitude is
 therefore far below not only the Planck/ACT~DR6 sensitivity but the
 observed central value itself; the one-loop Holst-sector parity-odd
@@ -1246,7 +1251,9 @@ not derived from it (Sec.~\ref{sec:surviving}).
 
 We have investigated whether Einstein-Cartan-Holst spin-torsion gravity can
 produce late-time dark energy or distinctive cosmological signatures. The answer
-is a structural no-go: the 14 distinct mechanism-class constraints (Table~\ref{tab:barriers})
+is a structural no-go: the 14 mechanism-class constraints (Table~\ref{tab:barriers};
+B8 is the observational consequence of the perturbation-transparency theorem B14
+and is retained for historical mechanism-class completeness)
 close every minimal-ECH dark-energy route.
 
 \textit{Central result: perturbation transparency.}---For canonical scalar field
@@ -1291,9 +1298,11 @@ SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly cat
 All materials necessary to reproduce the cosmological and galaxy spin results are
 publicly available at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/v2.3.0/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-(pinned to tag \texttt{v2.3.0}). The repository includes Cobaya YAML configurations,
+(tracking the \texttt{main} branch; the exact commit hash matching this
+manuscript version is recorded in the repository's \texttt{CHANGELOG.md}
+alongside the \paperVersion{} entry). The repository includes Cobaya YAML configurations,
 galaxy spin pipeline code, and the implementation map (\texttt{IMPLEMENTATION\_MAP.md}).
 MCMC chains and convergence diagnostics are in companion Paper~I(b)~\cite{Golden2026P1b}.
 

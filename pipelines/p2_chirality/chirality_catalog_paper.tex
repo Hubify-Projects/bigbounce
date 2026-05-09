@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.39}
-\newcommand{\paperTimestamp}{2026-05-09}
+\newcommand{\paperVersion}{v1.0.40}
+\newcommand{\paperTimestamp}{2026-05-09 19:00 PDT}
 
 \begin{document}
 
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 05:30 PDT --- \paperVersion}
+\date{May 9, 2026, 19:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -1088,15 +1088,21 @@ with the 1{,}000-run estimate.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude
-significance $0.43\sigmaunit$ (one-tailed $p = 0.33$ from the
-isotropic-null bootstrap; equivalently a two-tailed
-$p = 0.67$, since the dipole-amplitude statistic is
+significance $0.43\sigmaunit$ (one-tailed $p = 0.30$ from the
+isotropic-null bootstrap at $N_{\rm MC} = 10{,}000$; equivalently a two-tailed
+$p = 0.60$, since the dipole-amplitude statistic is
 positive-definite and we test the alternative
 ``amplitude $>$ random''---the one-tailed convention is the
 natural one for amplitude-only tests and is used
 consistently for the multipole-null and hemisphere $p$-values
 reported below), fully consistent with the null
-hypothesis. In contrast, Catalog~A (raw) yields a spurious
+hypothesis.\footnote{The $p = 0.30$ value is the canonical
+$N_{\rm MC} = 10{,}000$ result on the Catalog~C equivariant spiral
+subsample and is used uniformly throughout the abstract,
+Sec.~\ref{sec:dipole}, the look-elsewhere null-test verdict, and
+the Conclusions; an earlier-snapshot one-tailed $p = 0.33$
+from a $N_{\rm MC} = 1{,}000$ ensemble is superseded.}
+In contrast, Catalog~A (raw) yields a spurious
 $94.6\sigmaunit$ dipole---entirely an artifact of the model's
 residual CW bias, which is spatially modulated by the non-uniform
 survey depth. This stark comparison demonstrates the critical
@@ -1264,12 +1270,21 @@ shuffle per-pixel labels within the observed footprint, preserving the
 mask geometry but assuming isotropic noise.  Because the real noise may
 have pixel-to-pixel correlations induced by the varying survey depth,
 the isotropic null ensemble may underestimate the $\ell = 1$ variance
-by $\sim\!20\text{--}30\%$, pushing a $\lesssim 2\sigmaunit$
-fluctuation above the nominal $2.75\sigmaunit$ threshold.
+by $\sim\!20\text{--}30\%$, inflating the apparent significance of a
+$\lesssim 2\sigmaunit$ fluctuation in the raw pseudo-$C_\ell$
+estimator (the $2.75\sigmaunit$ value in the older buggy-denominator
+snapshot is reported only as a historical cross-reference; the
+canonical-primary post-MASTER value is $-0.12\sigmaunit$).
 
-In combination, these three effects fully account for the factor-of-six
-difference in quoted significance ($0.43\sigmaunit$ vs.\
-$2.75\sigmaunit$) without invoking any physical signal.
+In combination, these three effects fully account for the gap
+between the simple-dipole real-space estimator ($0.43\sigmaunit$)
+and the raw pseudo-$C_\ell$ estimator
+($6.48\sigmaunit$ under the canonical $N_{\rm spiral}$ normalization;
+$2.75\sigmaunit$ in the older buggy-denominator snapshot reported
+only as a historical cross-reference) without invoking any physical
+signal: mask-induced mode coupling is explicitly removed by the
+MASTER deconvolution, which yields the canonical-primary
+$\ell{=}1$ significance of $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}).
 Both estimators are independently consistent with null.
 We adopt the post-MASTER deconvolution number ($-0.12\sigmaunit$) as
 the \emph{primary} angular-power-spectrum dipole significance for
@@ -1383,6 +1398,12 @@ large-scale systematic bias.
   $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ from the on-disk
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
   (cross-model peer-review verdict, supersedes for noise-floor purposes).
+  Both totals appear as separate rows in the table for verification
+  continuity; the per-region $|\Delta|$ values shift by $\lesssim 4\%$
+  relative under the canonical denominator
+  (Sec.~\ref{sec:cw_frac}), and the headline
+  factor of $\sim\!6$--$12$ (central $\sim\!9$) Shamir-comparator
+  range remains unchanged.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
@@ -1398,7 +1419,8 @@ Dec $[-90^\circ, -30^\circ)$ & 487,629  & 0.4976 & 0.24 \\
 Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27 \\
 Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25 \\
 \hline
-\textbf{All sky}             & \textbf{3{,}321{,}795}$^{\mathrm{a}}$ & \textbf{0.4974} & \textbf{0.26} \\
+All sky (snapshot)           & 3{,}321{,}795$^{\mathrm{a}}$ & 0.4974 & 0.26 \\
+\textbf{All sky (canonical)} & \textbf{3{,}201{,}160}$^{\mathrm{a}}$ & \textbf{0.4974} & \textbf{0.26} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1724,9 +1746,16 @@ is $A_{\rm dip}\cos\theta$, and the per-pixel CW-fraction uncertainty is
 %
 \begin{equation}
 \sigma_{\rm pix} = \frac{1}{2\sqrt{N_{\rm spiral}/N_{\rm pix}}}
-= \frac{1}{2\sqrt{4{,}326}} \approx 0.76\%\,.
+= \frac{1}{2\sqrt{4{,}168}} \approx 0.77\%\,.
 \label{eq:sigma_pix}
 \end{equation}
+\noindent (An earlier-snapshot evaluation
+$1/(2\sqrt{4{,}326}) \approx 0.76\%$ used the pre-canonical
+$N_{\rm spiral}^{\rm snap} = 3{,}321{,}795 / 768 \approx 4{,}326$
+denominator and is superseded by the canonical
+$N_{\rm spiral} = 3{,}201{,}160 / 768 \approx 4{,}168$ value above;
+the $\sim\!0.01$~percentage-point shift does not affect any downstream
+threshold to two significant figures.)
 %
 A $3\sigmaunit$ detection of a dipole pattern requires fitting the
 amplitude $A_{\rm dip}$ against the $\cos\theta$ template across
@@ -1752,12 +1781,15 @@ widen $\sigma(A_{\rm dip})$ by a factor ${\sim}1/\sqrt{f_{\rm sky}}
 \approx 1.5$ in the worst case, but the rounding to $0.2\%$ already
 captures a $\sim\!40\%$ margin over the idealized $0.14\%$).
 
-The factor of $\sim\!7$ between $\sigma_{\rm global} = 0.027\%$ and
+The factor of $\sim\!7$ between $\sigma_{\rm global} \approx 0.028\%$
+(canonical three-significant-figure value used uniformly in this
+section; an earlier-snapshot $0.027\%$ rounding from a coarser
+two-sig-fig truncation is superseded) and
 the minimum detectable dipole of $0.2\%$ arises from two compounding
 steps.  Analytically (Eqs.~\ref{eq:sigma_pix}--\ref{eq:sigma_dip}),
 the ideal full-sky ratio is
 $3\sigma(A_{\rm dip})/\sigma_{\rm global} = 3\sqrt{3} \approx 5.2$,
-giving a threshold of $5.2 \times 0.027\% = 0.14\%$.  The additional
+giving a threshold of $5.2 \times 0.028\% \approx 0.15\%$.  The additional
 factor of $\sim\!1.4$ that brings this to $0.2\%$ reflects
 incomplete sky coverage and non-uniform pixel occupancy: the DESI
 Legacy footprint covers $f_{\rm sky} \approx 0.46$, reducing the
