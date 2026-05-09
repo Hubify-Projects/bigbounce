@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.10}
+\newcommand{\paperVersion}{v1A.0.11}
 \newcommand{\paperTimestamp}{2026-05-09 03:30 PDT}
 
 \begin{document}
@@ -59,7 +59,7 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 03:30 PDT --- \paperVersion}
+\date{May 9, 2026, 04:30 PDT --- \paperVersion}
 
 \begin{abstract}
 We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
@@ -77,7 +77,7 @@ dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
 and is closed by the 14 barriers of Sec.~\ref{sec:barriers}.
 A structural incompatibility (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be erased
+$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would plausibly be erased (precise threshold mode-dependent on contracting-phase duration)
 by that many $e$-folds; ECH is therefore not internally consistent as both a
 dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
@@ -568,28 +568,31 @@ fermion axial current, and $\beta(\gamma)$ is a slowly varying function
 of $\gamma$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power; once
 $\partial_\mu\theta \sim H \sim 10^{-33}\,$eV at the present epoch is
-substituted, the induced birefringence \emph{rotation rate} is bounded
-above by $\dot\beta \lesssim 10^{-21}\,$eV (units of inverse time in
-natural units). Converting to the integrated rotation angle accumulated
-between recombination and today,
-$\Delta\theta_{\rm one\text{-}loop} \sim \dot\beta \cdot t_{\rm rec\to today}
-\sim 10^{-21}\,\text{eV} \cdot 4.4\times 10^{17}\,\text{s} \sim
-10^{-3}\,\text{rad} \sim 0.06^\circ$, which is comparable in magnitude
-to the observed $\beta_{\rm obs} = 0.342^\circ$ and well within the
-Planck/ACT~DR6 statistical sensitivity $\sigma(\beta_{\rm obs})\sim 0.094^\circ
-\sim 1.6\times 10^{-3}\,\text{rad}$ (see Eq.~\ref{eq:beta_bound} below
-for the explicit dimensionless reduction). \emph{The one-loop induced
-$\beta$ is therefore at the same order of magnitude as the observed signal
-when the parity-odd coupling is set at its one-loop value.} The
-distinguishing constraint comes from R4 below, not from the one-loop
-amplitude itself: identifying the one-loop sector with the dark-energy
-source forces a vacuum energy
-$\rho_\theta \sim m_\theta^2\,(\alpha/M)^{-2}\,\beta_{\rm obs}^2 / 2$,
-which at $m_\theta\sim H_0$ gives $\rho_\theta \lesssim 10^{-46}\,$eV$^4$,
-many orders of magnitude smaller than $\rho_\Lambda \sim 10^{-11}\,$eV$^4$.
-The one-loop Holst-sector parity-odd term cannot, therefore, simultaneously
-explain the observed birefringence \emph{and} the dark-energy density
-at this single operator coupling.
+substituted, the induced birefringence accumulated between
+recombination and today is, in the dimensionless ratio
+$\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs}$,
+\begin{equation}
+\frac{\Delta\theta_{\rm one\text{-}loop}}{\Delta\theta_{\rm obs}}
+\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}
+\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0\cdot M}{M_{\rm Pl}\cdot \alpha\cdot\beta_{\rm obs}}\,,
+\end{equation}
+where $\alpha_{\rm em}/(4\pi) \sim 10^{-3}$, $H_0/M_{\rm Pl} \sim
+10^{-61}$, and the R4-fitted coupling $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$
+gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
+10^{-21}\,\text{GeV}^{-1} = 10^{-2}$. Plugging in $\beta_{\rm obs}
+\sim 6\times 10^{-3}\,\text{rad}$, the dimensionless ratio is
+$\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
+10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$,
+i.e.\ the one-loop induced $\beta$ is suppressed by $\sim 58$ orders
+of magnitude relative to the observed signal. The R2 amplitude is
+therefore far below not only the Planck/ACT~DR6 sensitivity but the
+observed central value itself; the one-loop Holst-sector parity-odd
+term cannot account for the observed birefringence amplitude. (The
+earlier-draft analysis that compared a rotation rate $\dot\beta$ in
+eV against an angle uncertainty in eV silently treated $\mathrm{eV}
+\cdot \mathrm{s}$ as dimensionless; the dimensionless reduction
+above corrects that and recovers the standard R2 amplitude-suppression
+closure.)
 \emph{Closure: amplitude-suppressed by $M_{\rm Pl}^{-1}$ and one-loop
 factor $\alpha_{\rm em}/(4\pi)$.}
 
@@ -648,19 +651,33 @@ Eskilt2022,DiegoPalazuelos2025} bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$, identical to the value already
 quoted in Sec.~\ref{sec:parityodd}; identifying the spectator
 field with the ECH parity-odd sector and demanding that it
-\emph{also} carry the observed dark-energy density forces an
-amplitude exceeding this bound by approximately
-$\log_{10}(\rho_\Lambda/\rho_\theta) = \log_{10}(10^{-11}/10^{-46})
-\approx 35$ orders of magnitude in vacuum-energy density,
-since the same coupling that produces $\beta = \mathcal{O}(0.3^\circ)$
-at the present epoch produces a vacuum energy
-$\rho_\theta \lesssim 10^{-46}\,$eV$^4$ rather than the required
-$\rho_\Lambda \sim 10^{-11}\,$eV$^4$ (the ratio of energy densities
-is the relevant dimensional comparison; the same constraint is
-$\sim 8$ orders of magnitude in operator coupling $\alpha/M$ if the
-two are bound separately at their respective fits, but the energy-density
-ratio is the load-bearing mismatch between the dark-energy and
-birefringence channels). The inequality is rigid because
+\emph{also} carry the observed dark-energy density imposes a tuning
+constraint on the spectator-field mass $m_\theta$ that re-imports
+the cosmological-constant problem through the back door. From
+Eq.~\eqref{eq:beta_bound}, $\beta = (\alpha/M)\sqrt{2\rho_\theta/m_\theta^2}$
+inverts to $\rho_\theta = m_\theta^2 \beta^2 / [2(\alpha/M)^2]$;
+plugging in $\alpha/M = 10^{-21}\,\text{GeV}^{-1}$, $\beta = \beta_{\rm
+obs} \approx 6\times 10^{-3}\,$rad, and $m_\theta = H_0 \approx
+1.5\times 10^{-33}\,$eV gives $\rho_\theta \approx 2.8\times 10^{-11}\,
+\text{eV}^4 \approx \rho_\Lambda$ to within a factor of unity --- so
+the spectator-ALP route does \emph{technically} reproduce the
+dark-energy density at the R4-fitted coupling, but only by tuning
+$m_\theta$ to $\sim H_0$, which is precisely the cosmological constant
+problem in disguise rather than its solution. R4 is therefore
+\emph{not} closed by amplitude mismatch (as earlier-draft analyses
+claimed); it is closed by the observation that the same coupling
+that produces $\beta_{\rm obs}$ requires an ultralight-mass tuning
+$m_\theta \sim H_0$ to also produce $\rho_\Lambda$, and this tuning
+is the original CC fine-tuning relabelled. For any $m_\theta$ in the
+natural ALP range ($m_a \in [10^{-22}, 10^{-15}]\,$eV), the produced
+$\rho_\theta$ either undershoots $\rho_\Lambda$ by 22 orders of
+magnitude (at $m_\theta \sim 10^{-22}$ eV) or overshoots it by 14
+orders of magnitude (at $m_\theta \sim 10^{-15}$ eV); the
+$m_\theta\sim H_0$ window where both observables are simultaneously
+matched has fractional width $\Delta m_\theta/m_\theta \sim 10^{-1}$,
+representing a dimensionful tuning of order $10^{-33}\,\text{eV}/
+M_{\rm Pl} \sim 10^{-61}$. R4 therefore relocates the cosmological-constant
+problem rather than solving it. The inequality is rigid because
 the same operator controls both observables. The same logic, run with
 $\alpha/M$ floated, recovers the spectator-ALP class as a
 \emph{viable parity-odd source} but \emph{not} as a dark-energy source.
@@ -1085,6 +1102,13 @@ $\Dinf \propto e^{-3 N_{\rm tot}}$ structure of Eq.~\eqref{eq:Dinf} makes
 $N_{\rm tot}$ the single controlling parameter analytically: the residual
 $10^5$ tracks $e^{-3 \Delta N_{\rm tot}}$ for $\Delta N_{\rm tot} \approx 4$
 $e$-folds, while the order-unity prefactors enter at most logarithmically.
+We emphasize that the $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ prefactor itself
+is matched at the order-of-magnitude level rather than calculated from a
+thermal partition function (Sec.~\ref{sec:dilution}); the $10^5$
+residual therefore inherits the same order-of-magnitude status, and
+the ``reduction from $10^{120}$ to $10^5$'' should be read as a
+qualitative dimensional rearrangement rather than a quantitative
+bookkeeping result.
 
 \subsection{Theoretical Implications}
 
@@ -1197,7 +1221,7 @@ candidates with induced GWs detectable by LISA and Einstein Telescope.
 \subsection{Structural Tension: Dark Energy vs.\ Bounce $\fnl$}\label{sec:structural_tension}
 
 The dark-energy suppression mechanism requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds; the matter-bounce $\fnl=-35/8$ would be erased by $N_{\rm tot}\gg 60$.
+$e$-folds; the matter-bounce $\fnl=-35/8$ would plausibly be erased (precise threshold mode-dependent on contracting-phase duration) by $N_{\rm tot}\gg 60$.
 These are structurally incompatible within minimal ECH. DESI DR2 evidence for
 equation-of-state crossing at $3.1$--$4.2\sigma$~\cite{DESI2025DR2} lends
 empirical support to quintom scenarios that can unify bounce and dark energy
