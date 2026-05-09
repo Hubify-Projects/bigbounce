@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-10T07:30:00Z",
-  lastUpdatedDisplay: "May 10, 2026 · 12:30 AM PT",
+  lastUpdatedISO: "2026-05-10T09:00:00Z",
+  lastUpdatedDisplay: "May 10, 2026 · 2:00 AM PT",
   headline:
-    "R49 Wave 14-LLLLL — single coordinated R49 closure across all 4 papers. P2 v1.7.23→v1.7.24 R49-B1 fixed (σ_theory=0.5 clause arithmetic re-derived: [-4.875,-3.875] at 1σ; -2.1875 excluded at 4.375σ; ε-correction window 1-8% harmonized). P3 v3.1.34→v3.1.35 R49-M1 fixed ('novelty rate' → 'novelty fraction' across 4 surfaces including paper title L45 'Native-Trained Novelty Rates' → 'Native-Trained Novelty Fractions'). P4 v1.0.42→v1.0.43 R49-M1 fixed (fn:mc_count footnote rewritten enumerating 3 distinct MC counts: simple-dipole bootstrap 10,000 / MASTER post-deconvolution 500 / ℓ≥2 raw pseudo-C_ℓ 1,000; orphan 2.75σ p≈0.006 sentence dropped). P1A v1A.0.16→v1A.0.17 R49-m1 fixed (§IV.D R4 'in both directions of the range' → 'across the entire natural range' with monotonic-overshoot framing). All R49 BLOCKER+MAJORs+1 minor closed in single coordinated commit. P1A 86→87 (+1pp), P2 79→84 (+5pp), P3 86→89 (+3pp), P4 82→85 (+3pp). Avg 81.8→84.0 (+2.2pp); cycle is 1.0pp below the JJJJJ peak 85.0% but back above the pre-R45 baseline 83.6%. Wave 14-MMMMM (R50 launch — FIFTH convergence test, GENUINELY CLEAN second-consecutive-round confirmation; if R50 also clean <3B+<5M, NNNNN launches the cross-vendor non-Anthropic R-round) next.",
+    "R50 LAUNCH (Wave 14-MMMMM) — fifth convergence test + genuinely clean second-consecutive-round confirmation. CCAI multi-agent self-review on post-LLLLL versions returned 4 findings (1 BLOCKER + 1 MAJOR + 1 MINOR + 1 NIT) vs R49=14 → −71% CONVERGING (BIGGEST round-on-round drop in the entire cycle). **P2 + P3 are FULLY CLEAN at R50 (0 findings each)** — first time half the catalog has hit zero findings. The two surviving findings are both LLLLL closure regressions: P1A-B1 (R4 closure clause 'monotonic AND grows toward both endpoints' is self-contradictory; one-line surgical fix needed) + P4-M1 (fn:mc_count footnote anchor at L1071 still says '1,000 bootstrap' while the rewritten footnote enumerates 10,000 — anchor inconsistency, one-line patch). Backward step −1.2pp avg (smallest in the cycle; per-round backward step finally shrinking again after R48-R49 asymptote). P1A 87→84, P2 84 unchanged (clean), P3 89 unchanged (clean), P4 85→82. Avg 84.2→83.0. Convergence trajectory: R44 50→R45 50→R46 41→R47 31→R48 22→R49 14→R50 4 (−71%). **Cross-vendor R-round gate clear from CCAI side** (R47-R48-R49-R50 four-consecutive-round <3B+<5M, with R50 being the cleanest). Conservative path: NNNNN closes the 2 LLLLL regressions (mechanical one-line patches each) → OOOOO LAUNCHES THE CROSS-VENDOR NON-ANTHROPIC R-ROUND (GPT-5/Gemini-3.1-Pro/Grok-4/Perplexity per memory feedback_cross_model_peer_review.md) — the gate Houston asked us to reach.",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -51,7 +51,7 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH Structural Closure (no-go theorem)",
       version: "v1A.0.17",
-      readiness: 87,
+      readiness: 84,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs + 4-route appendix Wave 14-IIII; cross-paper bibitems Wave 14-JJJJ; M4 D_inf prefactor justification + M5 orphan-label check Wave 14-NNNN). ALL P1A R44 MAJORs now closed. R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -87,16 +87,16 @@ export const liveStatus: LiveStatus = {
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
       version: "v1.0.43",
-      readiness: 85,
+      readiness: 82,
       pendingWork:
         "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
   ],
   blockerTally: {
     closed: 156,
-    openBlockers: 0,
-    openMajors: 0,
-    openMinors: 5,
+    openBlockers: 1,
+    openMajors: 1,
+    openMinors: 1,
   },
   cronStatus:
     "/loop self-pacing — autonomous loop active, polling pod every ~25 min",
