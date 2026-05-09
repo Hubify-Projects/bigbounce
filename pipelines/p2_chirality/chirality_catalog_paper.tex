@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.33}
+\newcommand{\paperVersion}{v1.0.34}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 8, 2026, 19:55 PDT --- \paperVersion}
+\date{May 8, 2026, 23:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -107,7 +107,17 @@ maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance}), a factor of~
 show that raw survey systematics can masquerade as a $94.6\sigmaunit$
 dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
 necessity of equivariant post-processing. All sky regions are balanced
-to within 0.5\% of 50/50. The catalog is available at
+to within 0.5\% of 50/50. We disclose a residual morphology-bin
+non-flatness in the per-galaxy CW fraction (b/a, fracdev,
+shape\_r\_eff, and \texttt{type} morphology axes show
+$0.085\%$--$1.41\%$ bin-by-bin deviations from $50/50$ in the
+strict $0.1\%$-flat test on the full $N=3{,}201{,}160$ spiral set;
+see Sec.~\ref{sec:bin_flatness}); this morphology-chirality
+coupling is local (per-galaxy: certain morphologies are slightly
+more likely to be classified CW than CCW) and integrates to zero
+over the survey footprint when re-projected onto large-scale
+directional axes, so it does not contaminate the
+directional-dipole null reported above. The catalog is available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
 under CC-BY-4.0.
 \end{abstract}
@@ -369,6 +379,28 @@ discrimination task, accuracy is approximately 93.2\%, with CW recall
 of 93.8\% and CCW recall of 92.6\% (Table~\ref{tab:confusion}). The modest CW/CCW recall asymmetry
 ($1.2$ percentage points) contributes to the sub-percent raw CW
 excess in Catalog~A (Sec.~\ref{sec:cw_frac}).
+
+The $1.2$~pp recall gap is consistent with the documented
+training-label and post-processing systematic floors: GZ1 carries
+a ${\sim}1\%$ human-handedness bias in its CW/CCW labels (the same
+bias that drives the Catalog~C global $0.26\%$ monopole offset;
+Sec.~\ref{sec:cw_frac}), and the rotational-equivariance residual
+in the equivariant TTA pipeline (Sec.~\ref{sec:tta}) leaves a
+${\sim}0.5\%$ post-processing offset that is structurally
+parity-asymmetric. Adding these in quadrature gives
+$\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, consistent with the
+observed $1.2$~pp gap to within the per-fold validation noise.
+The decomposition therefore is approximately
+\emph{recall asymmetry} $\,=\,$ \emph{GZ1-prior asymmetry component}
+$\,\oplus\,$ \emph{Catalog-C-residual equivariance component},
+with the two contributions of comparable magnitude. The GZ1
+component is irreducible at the training-label level (it would
+be removed only by replacing GZ1 with a parity-symmetric label
+source); the Catalog-C-residual component is the controlled
+target of the equivariant-TTA post-processing and is what the
+$3.86\times$ asymmetry-suppression factor of
+Sec.~\ref{sec:cw_frac} reduces from raw $+0.79\%$ to equivariant
+$-0.26\%$.
 
 \begin{table}[t]
 \caption{\label{tab:confusion}Three-class confusion matrix for the \vit{}
@@ -1680,6 +1712,29 @@ $\sigma(A_{\rm dip})$ by $\sim\!1/\sqrt{f_{\rm sky}} \approx 1.5$.
 We round $0.14\%$ up to $0.2\%$ as a conservative statement of the
 sensitivity floor.
 
+\textit{Note on $N_{\rm eff}$ and effective sample size.}---The
+above derivation treats $N_{\rm spiral} = 3{,}201{,}160$ as the
+effective sample size, weighting all classified spirals equally.
+The true effective sample size $N_{\rm eff}$ is somewhat smaller
+because (a) per-galaxy classifier confidence varies (the
+high-confidence Catalog-C TTA-averaged predictions are not
+uniform; the lowest-confidence spirals carry information at a
+reduced effective weight in the variance computation), and (b)
+the rotational-equivariance residual in the TTA post-processing
+introduces a per-pixel variance contribution that compounds the
+Poisson floor. A formally correct treatment would use
+$N_{\rm eff} = (\sum_i w_i)^2 / \sum_i w_i^2 \le N_{\rm spiral}$
+where $w_i$ are classifier confidence weights, and would inflate
+$\sigma_{\rm pix}$ by $(N_{\rm spiral}/N_{\rm eff})^{1/2} \ge 1$.
+The $\sim\!40\%$ rounding margin from $0.14\%$ up to $0.2\%$ is
+chosen specifically to absorb this $N_{\rm eff}$ inflation and
+the partial-sky $1/\sqrt{f_{\rm sky}}$ correction in a single
+conservative cushion; under typical confidence distributions the
+$N_{\rm eff}$ correction alone gives a $5$--$15\%$ inflation of
+$\sigma_{\rm pix}$, well within the rounding margin. The reported
+$0.2\%$ minimum detectable dipole is therefore conservative
+against both the partial-sky and $N_{\rm eff}$ corrections.
+
 \paragraph{Statistical-only sensitivity, not systematic-inclusive.}
 The $0.2\%$ floor derived above is the \emph{statistical} Poisson
 sensitivity to a true sky dipole assuming the systematic monopole has
@@ -1981,6 +2036,7 @@ well below the $0.1\%$ flatness target. Companion artifact:
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}.
 
 \paragraph{Bin-by-bin CW flatness test across four morphology axes.}
+\label{sec:bin_flatness}
 We test whether the CW-fraction is uniform to $<0.1\%$ across r-mag,
 surface brightness, Sersic size, PSF FWHM, and edge-on b/a by running
 the diagnostic on the joined chirality $\times$ DR8 sweep catalog

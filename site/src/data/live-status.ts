@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-09T05:30:00Z",
-  lastUpdatedDisplay: "May 8, 2026 · 10:30 PM PT",
+  lastUpdatedISO: "2026-05-09T06:00:00Z",
+  lastUpdatedDisplay: "May 8, 2026 · 11:00 PM PT",
   headline:
-    "Honest readiness rollback — papers were stuck-pegged at 99% across the site; rolled back to reflect actual state pre-R45, pre-cross-vendor, pre-Houston-sign-off. P1A 85, P1B 75, P2 78, P3 88, P4 86 (avg 82). Numbers will continue to oscillate forward/backward across each revision-loop cycle until the forward/backward delta shrinks to zero.",
+    "R44 Wave 14-LLLL — P4 v1.0.34 R44 MAJORs M4+M6+M7 shipped (recall asymmetry decomposition: 1.2 pp = ~1% GZ1 prior ⊕ ~0.5% Cat-C residual; MDD N_eff inflation note; morphology-bin flatness disclosed in abstract). P4 readiness 86→88. Forward step. Honest cycle: numbers will roll backward at R45 launch + cross-vendor round.",
   summary:
     "STATUS HONESTY ROLLBACK (Houston directive 2026-05-08 22:00 PT). The site had every paper pegged at 99% across live-status, papers, and SSOT — that was a false positive carried through 6 forward waves this session without any backward step. Rolled to honest numbers. P1A 85% (R44 BLOCKERs + 4-route appendix + cross-paper bibitems shipped; M4 D_inf prefactor + M5 orphan labels open; R45 + cross-vendor + Houston sign-off pending). P1B 75% (compute-gated on cobaya R̂−1 < 0.01, currently 0.076; §Structural Tension MCMC numbers placeholder; not yet through R44 self-review let alone R45 / cross-vendor). P2 78% (R44 BLOCKERs B1+B2 closed Wave 14-HHHH; 4 R44 MAJORs open: Bayes factor 8–17 vs 11 reconciliation, curvaton prior reframing, Heinrich Eq. X normalization, DBI → axion-curvaton/QSFI; Maldacena:2003 cite still undefined). P3 88% (fNL deferral closed Waves 14-VVV/KKKK; R44 BLOCKERs all closed; R44 MAJORs M1+M2+M4+M5+nit1 shipped; R43-M5 anomaly-window-randoms methodology paragraph still open as minor; HuggingFace dataset visibility flip pending Houston manual). P4 86% (R44 MAJORs M1+M2+M3+nit2 shipped Wave 14-GGGG; M4 recall asymmetry decomp + M5 deep-MLP RA/Dec ablation [pod RTX A5000 too slow for 8.47M deep-MLP retrain] + M6 MDD N_eff + M7 morphology-bin flatness disclosure all open). **Workflow rule going forward (saved as feedback memory feedback_readiness_oscillation.md):** readiness numbers oscillate forward (revision wave) → backward (R-round opens findings) → forward (close findings) → backward (next R-round) → ..., until the forward/backward delta per cycle shrinks to zero. Cap is 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed; only then can rise to 99%. Final 1% (99 → 100) is Houston sign-off + arXiv push only. This wave makes no paper-content edits; it's a status-honesty correction. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -86,10 +86,10 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
-      version: "v1.0.33",
-      readiness: 86,
+      version: "v1.0.34",
+      readiness: 88,
       pendingWork:
-        "Houston sign-off + clean external R44 round (R44 MAJORs M1+M2+M3 + nit2 shipped Wave 14-GGGG: p_LEE harmonized to MC upper bound at three sites, GZ1 Platt parameters reported to 6 sig figs, GZ1 vs Cat-C gap reframed as paired McNemar Z=6.77 (was unpaired binomial 5.5σ), PUSHBACK token cleanup; M4-M7 incl. RA/Dec ablation queued) + arXiv submission",
+        "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
   ],
   blockerTally: {
