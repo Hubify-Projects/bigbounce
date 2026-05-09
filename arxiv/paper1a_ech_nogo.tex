@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.2}
-\newcommand{\paperTimestamp}{2026-05-08 17:10 PDT}
+\newcommand{\paperVersion}{v1A.0.3}
+\newcommand{\paperTimestamp}{2026-05-08 17:25 PDT}
 
 \begin{document}
 
@@ -59,7 +59,7 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 8, 2026, 17:10 PDT --- \paperVersion}
+\date{May 8, 2026, 17:25 PDT --- \paperVersion}
 
 \begin{abstract}
 We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
@@ -367,17 +367,25 @@ The contorsion dilutes as $a^{-3}$ during inflation:
 \Dinf = \exp[-3N_{\rm tot}] \times \left(\frac{T_{\rm reh}}{M_{\rm GUT}}\right)^{3/2}.
 \end{equation}
 Matching $\rho_\Lambda \approx (2.3\;\text{meV})^4$ requires $N_{\rm tot} \approx 92$
-(a fitted parameter, not predicted). This reparameterizes fine-tuning from
-$10^{120}$ to $\sim 10^5$ as sensitivity to $\Delta N_{\rm tot}\approx 4$
-$e$-folds, without solving the cosmological constant problem.
+(a fitted parameter, not predicted). This reparameterizes the fine-tuning hierarchy
+from $10^{120}$ to $\sim 10^5$ as sensitivity to $\Delta N_{\rm tot}\approx 4$
+$e$-folds. We emphasize that this is bookkeeping, not progress: the residual
+$10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
+from the initial-condition choice for $N_{\rm tot}$, while the fixed
+$[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
+constant problem itself. The framework has not solved the
+cosmological constant problem; it has only relocated the fine-tuning into
+inflationary initial conditions.
 
 \subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
 
 The parity-odd operator coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$
 underpredicts any plausible spin asymmetry by $>100$ orders of magnitude.
 An independent ViT-Small classifier applied to $8{,}474{,}531$ DESI Legacy DR8
-galaxies confirms the null: $\fcw^{\rm eq} = 0.5012 \pm 0.0006$ (all-sky dipole
-at $0.43\sigma$). Galaxy spin asymmetry is not a prediction of the theory.
+galaxies confirms the null at the dipole level (full numbers, including the
+equivariant CW fraction, dipole significance, hemisphere look-elsewhere null,
+and bias-audit suite, are reported in Paper~IV~\cite{Golden2026P4}; we do not
+duplicate them here). Galaxy spin asymmetry is not a prediction of the theory.
 
 
 %% ============================================================
@@ -401,12 +409,14 @@ Paper~I(b)~\cite{Golden2026P1b}.
 
 \subsection{Galaxy Spin Asymmetry: A Confirmed Null}\label{sec:spinobs}
 
-An independent ViT-Small chirality classifier on $8{,}474{,}531$ galaxies---the
-largest bias-audited catalog to date---finds $\fcw^{\rm eq} = 0.5012 \pm 0.0006$
-(benchmark-overlap subset), consistent with null all-sky dipole ($0.43\sigma$).
-Shamir's claimed $3\%$ asymmetry is refuted (maximum regional asymmetry $0.32\%$,
-${\sim}9\times$ smaller). The minimal ECH framework underpredicts $A_0$ by
-$>100$ orders of magnitude, consistent with the observed null.
+An independent ViT-Small chirality classifier on $8{,}474{,}531$ DESI Legacy DR8
+galaxies---the largest bias-audited catalog to date---returns a null all-sky
+dipole; Shamir's claimed $3\%$ asymmetry is refuted at high significance.
+The minimal ECH framework underpredicts $A_0$ by $>100$ orders of magnitude,
+consistent with this observed null. Headline numbers (equivariant CW fraction
+with monopole vs.\ dipole separation, hemisphere $p_{\rm LEE}$, dipole MC
+injection-recovery threshold, full bias-audit suite) are reported in
+Paper~IV~\cite{Golden2026P4} and are not duplicated here.
 
 \textit{MCMC verification and cosmological fits.}---The $\Lambda$CDM$+\Delta\Neff$
 companion analysis finds $\Delta\Neff\approx 0$ and recovers a Hubble
@@ -445,11 +455,13 @@ CW excesses. These claims have been contested~\cite{PatelDesmond2024,Philcox2025
 \textit{Our chirality classifier.}---We applied a bias-audited Vision Transformer
 (ViT-Small, $93.7\%$ three-class validation accuracy, $8/8$ bias tests passed)
 with test-time equivariant averaging to $8{,}474{,}531$ DESI Legacy Imaging
-Survey galaxies. The equivariant CW fraction is $\fcw^{\rm eq} = 0.5012 \pm 0.0006$
-(all-sky dipole at $0.43\sigma$). The catalog is $4.3\times$ larger than
-CE-ResNet and $6.5\times$ larger than Shamir's largest catalog, and agrees
-with CE-ResNet's equivariant result to within $0.01$ percentage points.
-This confirms the null result of Sec.~\ref{sec:spinobs}.
+Survey galaxies. The catalog is $4.3\times$ larger than CE-ResNet and
+$6.5\times$ larger than Shamir's largest catalog, and the equivariant
+CW-fraction monopole and dipole are each consistent with the canonical
+results of Paper~IV~\cite{Golden2026P4} to which we forward all explicit
+numbers. The observational conclusion is the null result of
+Sec.~\ref{sec:spinobs}: the all-sky dipole is null and Shamir's $3\%$
+claim is refuted.
 
 
 %% ============================================================
@@ -851,12 +863,18 @@ multi-bin Fisher forecast, SPHEREx parameter sensitivity ($\sigma(\fnl)\approx
 0.7$--$1.0$), and anomaly-optimized multi-tracer strategy are in
 Paper~II~\cite{Golden2026P2}. SPHEREx first science data $\sim$2028.
 
-\textbf{(2) Spectator-ALP birefringence $\beta\approx 0.27^\circ$.}---An ALP
-with $f_a\sim\MPl$, $m\sim H_0$ is motivated by the ECH parity structure but
-arises identically in standard GR with the same parameters. It is consistent
-with the published $3.6\sigma$ signal without fine-tuning. LiteBIRD
-($\sigma(\beta)\approx 0.03^\circ$, early 2030s) will either confirm this at
-$\sim 9\sigma$ or cleanly exclude the ALP explanation.
+\textbf{(2) Spectator-ALP birefringence $\beta\approx 0.27^\circ$.}---We
+present this as a \textbf{consistency check}, not as a prediction: the
+parity-odd coefficient $\alpha/M$ is fitted, not derived from first
+principles, and an ALP with $f_a\sim\MPl$, $m\sim H_0$ chosen to land near
+the observed signal is by construction inside its $1\sigma$ band. The
+\emph{quantitative} prediction is the spectral signature (frequency
+dependence, $EB$ vs $TB$ structure, scale dependence) rather than the
+central value of $\beta$. The same ALP setup arises identically in standard
+GR with the same parameters, so this is not a distinctive ECH prediction.
+LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) will either
+confirm a non-zero $\beta$ at high significance or exclude the ALP
+explanation; either outcome is informative independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
@@ -899,9 +917,10 @@ convergence diagnostics are in companion Paper~I(b)~\cite{Golden2026P1b}.
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
 
-The galaxy spin channel is a confirmed null ($\fcw^{\rm eq}=0.5012\pm 0.0006$,
-all-sky dipole at $0.43\sigma$), \textit{consistent} with the framework (which
-underpredicts $A_0$ by $>100$ orders of magnitude). The parity-violation case
+The galaxy spin channel is a confirmed null at the dipole level (full
+quantitative chirality results in Paper~IV~\cite{Golden2026P4}),
+\textit{consistent} with the framework (which underpredicts $A_0$ by
+$>100$ orders of magnitude). The parity-violation case
 rests entirely on CMB birefringence from published Planck/ACT measurements.
 
 \subsection{Discriminating Observational Channels}

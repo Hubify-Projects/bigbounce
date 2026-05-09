@@ -50,7 +50,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH Structural Closure (no-go theorem)",
-      version: "v1A.0.2",
+      version: "v1A.0.3",
       readiness: 99,
       pendingWork:
         "Houston sign-off + clean external R43 peer-review round (R43 BLOCKERs B1+B2+B3 shipped Wave 14-ZZZ — title reframed, abstract bounce-class-vs-ECH distinction explicit, MCMC headline forwarded to P1B; remaining MAJORs queued) + arXiv submission",
