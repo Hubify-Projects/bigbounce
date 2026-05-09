@@ -121,7 +121,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.11",
+    version: "v1.7.12",
     pages: "15",
     refs: "30+",
     readiness: 99,
@@ -147,7 +147,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF 766 KB · 15 pp · May 8, 2026, v1.7.11",
+    pdfMeta: "PDF 768 KB · 16 pp · May 8, 2026, v1.7.12",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper2_fnl_forecast.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper2_fnl_forecast.pdf", kind: "secondary", download: true },

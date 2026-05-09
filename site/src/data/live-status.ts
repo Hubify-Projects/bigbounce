@@ -68,7 +68,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.11",
+      version: "v1.7.12",
       readiness: 99,
       pendingWork:
         "Houston sign-off + clean external R43 round (R43 B2 gauge-frame footnote shipped Wave 14-YYY; B1 invalidated as table is correctly labelled $\\mathcal{B}_{\\rm NL}$ shape function) + arXiv submission",
