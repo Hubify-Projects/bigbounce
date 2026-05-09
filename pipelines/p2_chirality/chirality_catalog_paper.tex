@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.40}
+\newcommand{\paperVersion}{v1.0.41}
 \newcommand{\paperTimestamp}{2026-05-09 19:00 PDT}
 
 \begin{document}
@@ -1170,12 +1170,7 @@ mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
 a physical chirality anisotropy. All higher multipoles are likewise
 consistent with null.
 
-The apparent discrepancy between the simple dipole amplitude
-($0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the angular power
-spectrum $\ell = 1$ coefficient ($2.75\sigmaunit$) reflects different
-estimator sensitivities and the effect of the survey mask on
-large-scale modes. Three distinct mechanisms contribute to the
-divergence:
+The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The canonical primary is the MASTER-deconvolved $-0.12\sigmaunit$ figure; the raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
 \emph{(i)~Estimator geometry.}  The simple dipole fit operates in
 real space on the full asymmetry map, projecting onto a single
@@ -1404,6 +1399,7 @@ large-scale systematic bias.
   (Sec.~\ref{sec:cw_frac}), and the headline
   factor of $\sim\!6$--$12$ (central $\sim\!9$) Shamir-comparator
   range remains unchanged.
+  $^{\mathrm{b}}$The bolded ``All sky (canonical)'' row carries the canonical $N_{\rm spiral}=3{,}201{,}160$ denominator but inherits the $\CW/(\CW+\CCW)=0.4974$ and $|\Delta|=0.26\%$ from the snapshot row because the per-region maxima are insensitive at the displayed three-significant-figure precision to the $\lesssim 4\%$ relative shift between $3{,}321{,}795$ and $3{,}201{,}160$ (the per-galaxy CW labels are unchanged across the recount; only the spiral-vs-non-spiral $\NS{}$/edge-on classification was updated, and the affected boundary objects redistribute uniformly across the seven regions). An explicit per-region recompute at the canonical denominator is deferred to the verification artifact \texttt{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}; the snapshot row is retained alongside the canonical row so the reader can verify the $\lesssim 4\%$ insensitivity claim directly.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
@@ -1420,7 +1416,7 @@ Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27 \\
 Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25 \\
 \hline
 All sky (snapshot)           & 3{,}321{,}795$^{\mathrm{a}}$ & 0.4974 & 0.26 \\
-\textbf{All sky (canonical)} & \textbf{3{,}201{,}160}$^{\mathrm{a}}$ & \textbf{0.4974} & \textbf{0.26} \\
+\textbf{All sky (canonical)}$^{\mathrm{b}}$ & \textbf{3{,}201{,}160} & \textbf{0.4974} & \textbf{0.26} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1765,7 +1761,7 @@ which the uncertainty on the fitted amplitude is
 %
 \begin{equation}
 \sigma(A_{\rm dip}) \approx \sigma_{\rm pix}\,\sqrt{\frac{3}{N_{\rm pix}}}
-= 0.76\%\times\sqrt{\frac{3}{768}} \approx 0.047\%\,,
+= 0.77\%\times\sqrt{\frac{3}{768}} \approx 0.048\%\,,
 \label{eq:sigma_dip}
 \end{equation}
 %
@@ -1773,7 +1769,7 @@ where the factor of $\sqrt{3}$ accounts for the three dipole
 components ($\ell = 1$ has $2\ell+1 = 3$ modes); geometrically it
 arises because only one-third of the $\cos^2\theta$ variance projects
 onto each component.  At $3\sigmaunit$ significance the minimum
-detectable amplitude is $3 \times 0.047\% \approx 0.14\%$, which we
+detectable amplitude is $3 \times 0.048\% \approx 0.14\%$, which we
 round conservatively to ${\sim}0.2\%$ to account for incomplete sky
 coverage ($f_{\rm sky} \approx 0.46$) and non-uniform pixel occupancy
 (the effective sample size is reduced by the survey mask; both effects

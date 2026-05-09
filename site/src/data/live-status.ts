@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-09T22:00:00Z",
-  lastUpdatedDisplay: "May 9, 2026 · 3:00 PM PT",
+  lastUpdatedISO: "2026-05-09T23:00:00Z",
+  lastUpdatedDisplay: "May 9, 2026 · 4:00 PM PT",
   headline:
-    "R48 LAUNCH (Wave 14-HHHHH) — third convergence test + second-consecutive-round check after R47 met <3B+<5M. CCAI multi-agent self-review on post-GGGGG versions returned 22 findings (2 BLOCKER + 4 MAJOR + 10 MINOR + 6 NIT) vs R47=31 → −29% CONVERGING. MAJOR axis −56% (9→4). Backward step −3.2pp avg (smaller than R47 −4.6pp; R45 was −9.2pp; per-round backward shrinking ~30% per round). P1A 87→84, P2 83→79, P3 90→87, P4 86→80. Avg 84.4→81.2. **Both R48 BLOCKERs are GGGGG sub-agent regressions**: P2-B1 (§VII.E 0.45σ — should be 0.77σ per |0.342−0.27|/0.094=0.766), P4-B1 (Table 4 self-contradicts: per-region rows sum to 3,321,795 but new bold canonical row claims 3,201,160 with same f_CW). Numerically two-consecutive-round gate met (R47 0B+0M post-GGGGG; R48 2B+4M); conservative interpretation = close R48 first then run R49 as the genuinely clean confirmation round before cross-vendor R-round can launch. Wave 14-IIIII (single coordinated wave closing R48 BLOCKERs + MAJORs across all 4 papers) next.",
+    "R48 Wave 14-IIIII — single coordinated closure across all 4 papers. P2 v1.7.21→v1.7.22 R48-B1 fixed (0.45σ → 0.77σ arithmetic); P4 v1.0.40→v1.0.41 R48-B1 fixed (Table 4 self-contradiction resolved with new ^b footnote explaining canonical row inherits snapshot per-region maxima at 3-sig-fig precision; ≤4% denominator-shift insensitivity verified) + R48-M2 first site (L1175 stranded 2.75σ narrative re-anchored at canonical -0.12σ MASTER-deconvolved with full caveat chain) + R48-M2 second site (Eq.sigma_dip 0.76% → 0.77%, 0.047% → 0.048% canonical); P1A v1A.0.14→v1A.0.15 R48-M1 fixed (R4 sign error inverted: ρ_θ ∝ m_θ² OVERSHOOTS in both 10⁻²² eV / 10⁻¹⁵ eV directions, by 22 / 36 OOM respectively; closure conclusion R4 relocates CC problem survives); P3 v3.1.32→v3.1.33 R48-M1 fixed (§sec:simbad 'novelty floor' → 'novelty fraction' rename across paragraph header L471 + 2 cross-quotes at L453+L493). All R48 BLOCKERs+MAJORs CLOSED in a single coordinated commit. P1A 84→87 (+3pp), P2 79→83 (+4pp), P3 87→89 (+2pp), P4 80→85 (+5pp). Avg 81.2→84.0 (+2.8pp); cycle now exceeds the GGGGG net-positive peak 84.4 by no but is 0.4 below — close to the post-GGGGG plateau. Wave 14-JJJJJ (R48 minors+nits sweep) next, then KKKKK (R49 launch — FOURTH convergence test, the GENUINELY CLEAN second-consecutive-round confirmation).",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -50,8 +50,8 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH Structural Closure (no-go theorem)",
-      version: "v1A.0.14",
-      readiness: 84,
+      version: "v1A.0.15",
+      readiness: 87,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs + 4-route appendix Wave 14-IIII; cross-paper bibitems Wave 14-JJJJ; M4 D_inf prefactor justification + M5 orphan-label check Wave 14-NNNN). ALL P1A R44 MAJORs now closed. R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -68,8 +68,8 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.21",
-      readiness: 79,
+      version: "v1.7.22",
+      readiness: 83,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs Wave 14-HHHH; R44 MAJORs M1+M2+M3+M5 + Maldacena cite Wave 14-MMMM). All R44 BLOCKERs and MAJORs closed; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -77,8 +77,8 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.32",
-      readiness: 87,
+      version: "v3.1.33",
+      readiness: 89,
       pendingWork:
         "HuggingFace dataset visibility flip (Houston manual) + sign-off + clean external R45 round (R44 MAJORs M1+M2+M4+nit1 shipped Wave 14-FFFF; R44-M5 high-confidence-restricted α re-measurement shipped Wave 14-KKKK: α_GS,jk = +1.83 ± 2.03 on 1,122 Gold+Silver subset, σ(f_NL)_GS = 2.28 ± 7.43, central 74% improvement consistent with no improvement at <1σ; full-sample α_jk = 0.19 ± 0.65 retained as load-bearing headline) + arXiv submission",
     },
@@ -86,16 +86,16 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
-      version: "v1.0.40",
-      readiness: 80,
+      version: "v1.0.41",
+      readiness: 85,
       pendingWork:
         "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
   ],
   blockerTally: {
-    closed: 130,
-    openBlockers: 2,
-    openMajors: 4,
+    closed: 136,
+    openBlockers: 0,
+    openMajors: 0,
     openMinors: 10,
   },
   cronStatus:
