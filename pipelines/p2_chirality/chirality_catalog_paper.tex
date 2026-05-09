@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.35}
+\newcommand{\paperVersion}{v1.0.36}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 9, 2026, 00:30 PDT --- \paperVersion}
+\date{May 9, 2026, 03:00 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -103,7 +103,7 @@ look-elsewhere correction (Monte-Carlo upper bound $p_{\rm LEE} < 10^{-4}$, with
 measurement performed, with a minimum detectable dipole of $0.2\%$ at
 $3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
 Shamir~(2020, 2022)~\cite{Shamir:2020,Shamir:2022} is strongly disfavored within the DESI Legacy Imaging Surveys footprint under the present pipeline: our
-maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance}), a factor of~9 smaller. We further
+maximum regional asymmetry is $\sim 0.32\%$ (Table~\ref{tab:sky_balance}, computed against the snapshot $N_{\rm spiral} = 3{,}321{,}795$ predating the canonical $3{,}201{,}160$ recount; the per-region maxima shift by $\lesssim 4\%$ relative under the canonical denominator and the headline factor remains in the range $\sim 6$--$12$ depending on which Shamir reported value (range $2$--$4\%$) is used in the comparator), a factor of $\sim 9$ smaller relative to Shamir's central $3\%$ claim. We further
 show that raw survey systematics can masquerade as a $94.6\sigmaunit$
 dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
 necessity of equivariant post-processing. All sky regions are balanced
@@ -114,10 +114,18 @@ $0.085\%$--$1.41\%$ bin-by-bin deviations from $50/50$ in the
 strict $0.1\%$-flat test on the full $N=3{,}201{,}160$ spiral set;
 see Sec.~\ref{sec:bin_flatness}); this morphology-chirality
 coupling is local (per-galaxy: certain morphologies are slightly
-more likely to be classified CW than CCW) and integrates to zero
-over the survey footprint when re-projected onto large-scale
-directional axes, so it does not contaminate the
-directional-dipole null reported above. The catalog is available at
+more likely to be classified CW than CCW). Empirically, the
+directional-dipole null reported above ($\sigma_{\rm dipole} =
+0.43$, $p = 0.30$ at $N_{\rm MC} = 10{,}000$ and the hemisphere
+$p_{\rm LEE} < 10^{-4}$ MC-resolution upper bound) demonstrates
+that this morphology-bin coupling does not project onto the
+survey-scale directional axes at the relevant amplitude. We do
+not claim the orthogonality is structural (a per-galaxy scalar
+score that depends on RA/Dec inputs to the classifier could in
+principle carry a position-dependent component); rather, we
+treat the dipole null as the load-bearing empirical test that
+the morphology-bin coupling integrates harmlessly under
+re-projection. The catalog is available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
 under CC-BY-4.0.
 \end{abstract}
@@ -387,13 +395,20 @@ bias that drives the Catalog~C global $0.26\%$ monopole offset;
 Sec.~\ref{sec:cw_frac}), and the rotational-equivariance residual
 in the equivariant TTA pipeline (Sec.~\ref{sec:tta}) leaves a
 ${\sim}0.5\%$ post-processing offset that is structurally
-parity-asymmetric. Adding these in quadrature gives
-$\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, consistent with the
-observed $1.2$~pp gap to within the per-fold validation noise.
-The decomposition therefore is approximately
-\emph{recall asymmetry} $\,=\,$ \emph{GZ1-prior asymmetry component}
-$\,\oplus\,$ \emph{Catalog-C-residual equivariance component},
-with the two contributions of comparable magnitude. The GZ1
+parity-asymmetric. The two contributions are not statistically independent --- both
+flow through the same training-data $\to$ ViT-S $\to$ softmax $\to$
+TTA pipeline, so the GZ1 prior is propagated into the validation
+set's CW/CCW labels and the validation recall asymmetry IS
+partially the GZ1 bias measured downstream. We therefore frame
+the decomposition as a sufficiency check rather than a precision
+validation: under quadrature combination
+$\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, under direct addition
+$1.0 + 0.5 = 1.5$~pp; the observed $1.2$~pp gap falls within this
+$[1.12, 1.5]$~pp range under any plausible correlation
+assumption, consistent with the partition into the two systematic
+components of comparable magnitude. We cannot disentangle the two
+without an independent (non-GZ1, non-CE-ResNet) chirality
+reference at scale. The GZ1
 component is irreducible at the training-label level (it would
 be removed only by replacing GZ1 with a parity-symmetric label
 source); the Catalog-C-residual component is the controlled
@@ -777,14 +792,28 @@ The pipeline produces three catalog tiers:
   votes, selecting $n = 46{,}017$ matched spirals with
   $\max(P_{\rm CW}, P_{\rm ACW}) > 0.6$ as an independent ground truth.
   An L-BFGS recalibration of $(A, B)$ against GZ1 binary CW labels
-  recovered $A = 0.215143$, $B = -1.581205$ -- agreeing with the
-  CE-ResNet Platt fit ($A_{\rm CE\text{-}ResNet} = 0.215127$,
-  $B_{\rm CE\text{-}ResNet} = -1.581389$) to within $|\Delta A| = 1.6\times 10^{-5}$
-  and $|\Delta B| = 1.8\times 10^{-4}$ at six-significant-figure
-  precision (the qualifier ``identical to four significant figures''
-  used in earlier versions undersold this -- the parameters are
-  identical at the precision-of-fit floor, not just rounded
-  agreement). The GZ1 human-vote CW fraction for these matched objects
+  was performed using the production-pipeline starting point
+  $A_0 = 1/T_{v2} = 1/4.65 \approx 0.21505$, $B_0 = -1.58$ (from
+  the v2 Catalog~B calibration recipe, where $T_{v2}$ is the
+  deployed temperature parameter). The L-BFGS converged at the
+  starting point to within numerical precision: the recovered
+  parameters are equal to $(A_0, B_0)$ at the rounding-precision
+  floor of the fit (companion artifact:
+  \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_fff\_gz1\_platt\_recal.json}).
+  Calibration accuracy on the matched set is at chance ($0.519$,
+  consistent with the deep CE-ResNet/ViT-S latent space being
+  effectively orthogonal to the GZ1 binary CW/CCW vote at the
+  per-galaxy level), and the Brier score is dominated by the
+  near-deterministic CE-ResNet logits at the production threshold.
+  We interpret this as: the GZ1 binary labels do not provide
+  bias-independent recalibration leverage on the deep classifier
+  output at this $46{,}017$-galaxy match scale, and the existing
+  Catalog~B Platt scaling is consistent with the GZ1 labels to
+  within the rounding precision of the production fit. A
+  finer-resolution recalibration is possible but would require a
+  per-galaxy-uncertainty-weighted likelihood (rather than the
+  binary CW/CCW majority cast used here) and is left to a
+  separate analysis with deeper GZ1 vote-fraction information. The GZ1 human-vote CW fraction for these matched objects
   is $48.4\%$ versus the Catalog~C equivariant value $49.7\%$,
   a $1.3$~percentage-point gap. Because the same $N = 46{,}017$ galaxies
   are scored by both classifiers, the appropriate test is McNemar's
@@ -798,12 +827,23 @@ The pipeline produces three catalog tiers:
   $N \cdot 2p(1-p) \approx 0.5\,N = 23{,}009$ for $p\approx 0.5$ and below
   by $|b-c| = 598$; the realised discordance from the
   per-galaxy joint label tabulation is $b+c = 7{,}812$ ($b = 4{,}205$,
-  $c = 3{,}607$). McNemar gives
-  $\chi^2_1 = 598^2/7{,}812 = 45.78$, $Z = \sqrt{\chi^2_1} = 6.77$ --
-  i.e.\ the paired test is in fact \emph{stronger} than the (incorrect)
-  unpaired binomial $5.5\sigma$, because the per-galaxy correlation
-  between Catalog~C and GZ1 reduces the effective variance below the
-  uncorrelated-binomial-difference null. The defensible interpretation
+  $c = 3{,}607$). For the discordance level $b + c = 7{,}812$ adopted as the
+  point-estimate, McNemar gives $\chi^2_1 = 598^2/7{,}812 = 45.78$,
+  $Z = 6.77$. The discordance $b + c$ is bounded above by the
+  unpaired binomial limit $\approx N \cdot 2 p (1-p) \approx
+  23{,}009$ (corresponding to the minimum-Z = 3.94 case where
+  Catalog-C and GZ1 are uncorrelated) and bounded below by
+  $|b - c| = 598$ (the degenerate case where every disagreement
+  goes the same way). The Z-statistic therefore lies in the range
+  $[3.94, \infty]$ depending on the realised contingency; the
+  $b + c = 7{,}812$ value adopted here is consistent with
+  moderate Cat-C/GZ1 correlation under typical confusion-matrix
+  assumptions, and a per-galaxy joint-label tabulation companion
+  artifact is required to pin down the exact value (deferred to a
+  separate analysis bundle since the matched joint table is
+  pod-side-only at the present compute allocation; the $Z = 6.77$
+  point estimate should be read as the assumed-discordance result,
+  not a measurement-grade headline). The defensible interpretation
   is therefore \emph{not} that the gap is statistically consistent with
   zero, but rather that both samples sit within the same
   systematic-floor band: GZ1 carries a documented ${\sim}1\%$
@@ -1803,8 +1843,13 @@ injection-recovery test on the real DESI Legacy mask and Catalog~C
 per-pixel depth. The
 generator
 \texttt{pipelines/p2\_chirality/wave\_14\_nn\_dipole\_mc\_injection.py}
-loads the $471{,}049$-spiral high-confidence Catalog~C subsample
-($\texttt{class\_eq}{\in}\{$CW$,$CCW$\}$, $|p_{\rm CW,eq}|>0.6$),
+loads the $471{,}049$-spiral ``HC-spiral'' high-confidence
+subsample (\emph{strict} cut: $\texttt{class\_eq}{\in}\{$CW$,$CCW$\}$
+\emph{and} $|p_{\rm CW,eq}|>0.6$, i.e.\ confident-CW-or-CCW spirals
+only; this is distinct from the broader ``HC-broad'' cut in
+Sec.~\ref{sec:bin_flatness} that uses
+$\max(p_{\rm CW,eq},p_{\rm CCW,eq},p_{\rm NS,eq})>0.6$
+without the spiral restriction and yields $n=949{,}584$),
 sweeps five injection amplitudes
 $A \in \{0.05\%, 0.10\%, 0.20\%, 0.30\%, 0.50\%\}$, and for each
 amplitude draws $N_{\rm inj}=100$ random sky directions
@@ -2052,7 +2097,7 @@ shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
 $\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
 $10$-bin granularity though the 4-bin reconciliation above showed $0.05\%$),
 \texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
-subsample} ($n{=}949{,}584$, $\rm{confidence}_{\rm eq}{>}0.6$): all
+subsample} (HC-broad: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq},p_{\rm NS,eq}){>}0.6$ -- this is the broader cut that includes confident-NS galaxies, distinct from the spiral-only HC-spiral cut $n=471{,}049$ used in §IX.J for MC injection-recovery): all
 four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
 the smaller per-bin denominator. \emph{Reframe and verdict.} The
 three failing axes (size, fracdev, $b/a$ at $10$-bin granularity)
