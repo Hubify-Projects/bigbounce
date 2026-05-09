@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.37}
-\newcommand{\paperTimestamp}{2026-05-02}
+\newcommand{\paperVersion}{v1.0.38}
+\newcommand{\paperTimestamp}{2026-05-09}
 
 \begin{document}
 
@@ -394,8 +394,8 @@ a ${\sim}1\%$ human-handedness bias in its CW/CCW labels (the same
 bias that drives the Catalog~C global $0.26\%$ monopole offset;
 Sec.~\ref{sec:cw_frac}), and the rotational-equivariance residual
 in the equivariant TTA pipeline (Sec.~\ref{sec:tta}) leaves a
-${\sim}0.5\%$ post-processing offset that is structurally
-parity-asymmetric. The two contributions are not statistically independent --- both
+${\sim}0.5\%$ post-processing offset that exhibits a
+residual CW/CCW asymmetry at the sub-percent level. The two contributions are not statistically independent --- both
 flow through the same training-data $\to$ ViT-S $\to$ softmax $\to$
 TTA pipeline, so the GZ1 prior is propagated into the validation
 set's CW/CCW labels and the validation recall asymmetry IS
@@ -913,19 +913,11 @@ failed transforms) and are excluded.}, classified as follows:
   \CW{} 1,592,107 (18.78\%), \CCW{} 1,609,053 (18.99\%),
   \NS{} (or edge-on) 5,273,371 (62.23\%); spiral total
   $N_{\rm spiral} = 3{,}201{,}160$ (37.78\% of the catalog).\footnote{The
-  equivariant spiral total $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$
-  used here for the chirality analysis (Sec.~\ref{sec:dipole},
-  Sec.~\ref{sec:hemisphere}, the NaMaster shot-noise normalization in
-  Sec.~\ref{sec:dipole}, and the W11C verdict-recompute artifact at
-  \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json})
-  is computed directly from the on-disk
+  canonical $N_{\rm spiral} = 3{,}201{,}160$ is computed from the
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
-  (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$), as specified in
-  A cross-model peer review (cross-confirmed by Gemini~3.1-Pro and GPT-5) identified the correct denominator.
-  An earlier $N_{\rm spiral} = 3{,}321{,}795$ figure used in
-  drafts $\le$\,v1.0.5 reflected a pre-edge-on-redirect snapshot that
-  conflated several intermediate counts; the canonical equivariant
-  total used by all v1.0.6 analyses is $3{,}201{,}160$.}
+  (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$); the
+  pre-v1.0.6 figure $3{,}321{,}795$ conflated intermediate counts
+  and is superseded.}
 \end{itemize}
 
 The spiral fraction of $\sim\!38\%$ is consistent with expectations
@@ -995,7 +987,7 @@ this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
 corresponding to $9.5\sigmaunit$ from 0.5000 (using the unrounded
 $\sigma = 0.000274$).
-A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact deposited with the public release; see Sec.~\ref{sec:data_availability}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and provides the external peer-review-required uncertainty quantification for the raw-catalog asymmetry baseline.
+A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact deposited with the public release; see Sec.~\ref{sec:data_availability}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and provides a self-consistency check on the raw-catalog asymmetry baseline (the $28.80\sigma$ figure is the bootstrap-stability metric of the chirality-fraction estimator, not an external-validation $\sigma$; an independent non-Anthropic cross-vendor R-round is required for that).
 
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
@@ -1446,11 +1438,21 @@ We stratify the spiral sample by classification confidence and measure
 the dipole significance in each bin:
 
 \begin{itemize}
-\item High confidence ($\pcw^{\rm eq}$ or $\pccw^{\rm eq} > 0.9$):
+\item High confidence ($\pcw^{\rm eq}$ or $\pccw^{\rm eq} > 0.9$,
+  spiral-only ``HC-spiral'' cut, $N = 471{,}049$):
   dipole at $0.3\sigmaunit$.
 \item Mid confidence ($0.6\text{--}0.9$): dipole at $2.1\sigmaunit$.
 \item Low confidence ($0.5\text{--}0.6$): dipole at $1.7\sigmaunit$.
 \end{itemize}
+
+The $P>0.9$ stratum reported here is the spiral-only HC-spiral cut
+(CW or CCW probability above $0.9$, $N = 471{,}049$); this is
+distinct from the broader HC-broad cut ($\max(p_{\rm CW,eq},
+p_{\rm CCW,eq}, p_{\rm NS,eq}) > 0.6$, $N = 949{,}584$) used
+elsewhere in this paper, which counts confident-NS galaxies
+together with confident spirals. The unstratified $P>0.9$ cut
+without the spiral restriction would count both classes; the
+HC-spiral stratification here is the chirality-relevant subset.
 
 If the signal were physical, it should be strongest in
 high-confidence galaxies, where the chirality classification is most
@@ -1918,11 +1920,15 @@ $\Delta\theta_{\rm rec,inj}$ for every one of the $500$ injections).
 This represents the most sensitive chirality measurement ever
 performed, exceeding the CE-ResNet constraint~\cite{Jia:2023} by a
 factor of $\sim\!1.3$ in statistical sensitivity owing to the
-$1.7\times$ larger spiral sample ($3.32$~million equivariant spirals
-vs.\ CE-ResNet's $1.95$~million) and reduced per-pixel variance.
+$1.64\times$ larger spiral sample ($3.20$~million equivariant spirals
+[canonical $N_{\rm spiral} = 3{,}201{,}160$; the $3.32$~million figure
+of earlier drafts is the snapshot superseded by the
+$N_{\rm spiral}$-correction recount, retained only in the headline
+of Table~\ref{tab:sky_balance} as the before/after diagnostic
+baseline] vs.\ CE-ResNet's $1.95$~million) and reduced per-pixel variance.
 (The total galaxy count is $4.3\times$ larger than CE-ResNet, but the
 chirality-relevant comparison is the spiral count, which drives
-the $\sqrt{1.7} \approx 1.3$ improvement.)
+the $\sqrt{1.64} \approx 1.28$ improvement.)
 
 Any future redshift-binned extension of this analysis must additionally
 contend with the photo-$z$ smearing floor introduced in
