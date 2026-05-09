@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.31}
+\newcommand{\paperVersion}{v1.0.32}
 \newcommand{\paperTimestamp}{2026-05-02}
 
 \begin{document}
@@ -52,7 +52,7 @@ A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 8, 2026, 16:30 PDT --- \paperVersion}
+\date{May 8, 2026, 17:35 PDT --- \paperVersion}
 
 \begin{abstract}
 We present the largest galaxy chirality catalog to date: 8,474,531
@@ -659,10 +659,17 @@ five-fold cross-validation AUC of $0.5656 \pm 0.0004$
 (mean~$\pm$~std across folds 1--5: 0.5661, 0.5660, 0.5653, 0.5652,
 0.5656; 3503\,s wall on a single H200). The result is statistically
 unambiguous given the sample size but small in magnitude---only
-6.6 percentage points above chance---and isotropic by construction:
-the sky coordinates were included as features and do not produce
-a directional preference because the classifier is restricted to a
-scalar score per galaxy. This morphology-chirality coupling is
+6.6~percentage points above chance. We do \emph{not} claim it is
+isotropic by construction: because RA and Dec are inputs to the
+classifier, the per-galaxy scalar score can in principle carry a
+position-dependent component, and a scalar score that correlates
+with sky coordinates can produce an apparent directional preference.
+The empirical evidence that the integrated effect is null comes from
+the dipole measurement of Sec.~\ref{sec:dipole}, not from a
+structural orthogonality argument; we treat the per-pixel projection
+of the deep-MLP score onto the $\ell=1$ spherical harmonic as a
+deferred systematics extension and rely on the dipole null itself
+as the load-bearing test. This morphology-chirality coupling is
 \emph{consistent} with the bin-by-bin CW-fraction PUSHBACK
 (b/a, fracdev, shape\_r\_eff, and \texttt{type} all show $>\!0.1\%$
 non-flatness; raw run

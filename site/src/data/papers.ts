@@ -213,7 +213,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "Galaxy Chirality at Scale: 8.47M Galaxies Classified, Hemisphere Null at p_LEE < 10⁻⁴",
-    version: "v1.0.31",
+    version: "v1.0.32",
     pages: "22",
     refs: "30+",
     readiness: 99,
@@ -245,7 +245,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 25.65 MB · 22 pp · May 8, 2026, v1.0.31",
+    pdfMeta: "PDF 25.65 MB · 22 pp · May 8, 2026, v1.0.32",
     artifacts: [
       { label: "Read PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "secondary", download: true },
