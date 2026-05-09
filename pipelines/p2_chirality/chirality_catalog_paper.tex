@@ -38,7 +38,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.42}
+\newcommand{\paperVersion}{v1.0.43}
 \newcommand{\paperTimestamp}{2026-05-09 22:30 PDT}
 
 \begin{document}
@@ -1070,21 +1070,7 @@ N_{\rm CCW}^{(p)}}.
 A dipole is fitted to the asymmetry map, and its significance
 is assessed via 1{,}000 bootstrap randomizations in which the
 pixel asymmetry values are shuffled while preserving the mask.%
-\footnote{\label{fn:mc_count}The production run logged in
-\texttt{pipelines/p2\_chirality/outputs/dipole/dipolar\_analysis.log}
-used $N_{\rm MC} = 1{,}000$ null realizations; we adopt this count
-consistently for all Monte Carlo nulls in this section, including
-the bootstrap dipole significance, the $\ell=1$--$5$ multipole-null
-significances in Table~\ref{tab:multipole}, and the MC envelopes in
-Figs.~\ref{fig:sky_map} and~\ref{fig:multipoles}. Monte Carlo
-uncertainty on a tail $p$-value at $N_{\rm MC} = 1{,}000$ is
-$\sim\!1/\sqrt{N_{\rm MC}} \approx 3\%$, which is immaterial for
-all central estimates reported here since no Catalog~C significance
-approaches the $3\sigma$ threshold. The 1{,}000-realization MC is
-sufficient to resolve $p$-values at the $10^{-3}$ level; the 2.75$\sigma$
-claim ($p \approx 0.006$) is therefore resolved by the simulation.
-A $10{,}000$-realization run confirms $p = 0.005 \pm 0.001$, consistent
-with the 1{,}000-run estimate.}
+\footnote{\label{fn:mc_count}\emph{Three distinct Monte Carlo counts coexist in this paper, each chosen for its analysis context.} (i)~Simple-dipole bootstrap significance ($\sigma_{\rm hemi}=0.43$, $p=0.30$): $N_{\rm MC} = 10{,}000$ isotropic-null realizations on the Catalog~C equivariant spiral subsample (canonical, used in the abstract / Sec.~\ref{sec:dipole}). (ii)~Post-MASTER deconvolution null at $\ell=1$ ($-0.12\sigma$ canonical primary): $N_{\rm MC} = 500$ realizations; the lower count reflects the $\sim\!2\times$ per-realization cost of running the full $M_{\ell\ell'}$ mode-coupling inversion. The $1/\sqrt{500} \approx 4.5\%$ MC uncertainty on $\sigma_{\rm null}$ is well below the $|0.12\sigma|$ deviation. (iii)~Pre-MASTER raw pseudo-$C_\ell$ at $\ell\geq 2$ (Table~\ref{tab:multipole}): $N_{\rm MC} = 1{,}000$ realizations using the cheaper bootstrap-of-CW-labels null without mode-coupling inversion. The $\sim\!3\%$ MC uncertainty at $N_{\rm MC} = 1{,}000$ is immaterial for these central estimates since no Catalog~C $\ell\geq 2$ significance approaches $3\sigma$. The production run is logged in \texttt{pipelines/p2\_chirality/outputs/dipole/dipolar\_analysis.log}.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude
