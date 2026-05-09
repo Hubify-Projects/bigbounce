@@ -35,10 +35,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-09T15:00:00Z",
-  lastUpdatedDisplay: "May 9, 2026 · 8:00 AM PT",
+  lastUpdatedISO: "2026-05-09T16:00:00Z",
+  lastUpdatedDisplay: "May 9, 2026 · 9:00 AM PT",
   headline:
-    "R46 Wave 14-AAAAA — R46 minors+nits sweep across all 4 papers closed. P1A 84→85 (+1pp v1A.0.12), P2 82→83 (+1pp v1.7.19), P3 88→89 (+1pp v3.1.30), P4 85→86 (+1pp v1.0.38). Avg 82.8→83.6 (+0.8pp). R46 surface: 0 BLOCKER + 0 MAJOR + ~3 remaining MINOR (n/a-confirmed) + 0 NIT across all 4 CCAI-reviewed papers. R46 fully cleared. Wave 14-BBBBB (R47 launch — second convergence test) next.",
+    "R47 LAUNCH (Wave 14-BBBBB) — second convergence test of the cycle. CCAI multi-agent self-review on post-AAAAA versions returned 31 findings (2 BLOCKER + 9 MAJOR + 13 MINOR + 7 NIT) vs R46=41 → −24% CONVERGING (R44→R45 0%, R45→R46 −18%, R46→R47 −24% — accelerating). Backward step −4.6pp avg (smaller than R46 launch −5.6pp; R45 launch was −9.2pp). P1A 85→80, P2 83→76, P3 89→84 (BLOCKER-free, cleanest paper), P4 86→80 (FLAT vs R46, propagation failures from ZZZZ+AAAAA). Avg 83.6→79.0. Two R47 BLOCKERs: P1A-R47-B1 cross-paper ‡-footnote anchors at non-existent Paper 1B §VII.H + claims 'zero free-w0wa samples' contradicting Paper 1B Table III L481 ('~109 accepted, Running'); P2-R47-B1 Table 4 BF~17 vs Table 5 BF=9.4 disagreement at σ_GR=0.5. <3 BLOCKER + <5 MAJOR exit condition NOT yet met (9 MAJORs remaining); 1-2 more rounds away. Wave 14-CCCCC (P1A R47 B1 cross-paper coordinated fix) next.",
   summary:
     "Wave 14-PPPP launched the R45 multi-agent adversarial peer review on post-OOOO versions of P1A v1A.0.8 / P2 v1.7.15 / P3 v3.1.26 / P4 v1.0.35 (P1B excluded — compute-gated on cobaya R̂−1 < 0.01). 4 parallel Claude general-purpose subagents fetched the latest .tex from GitHub raw and returned 50 findings (6 BLOCKER + 21 MAJOR + 17 MINOR + 6 NIT) — saved at project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_*.md. The R45 net delta vs R44 (50 findings) is +1 BLOCKER, −2 MAJOR — the loop has NOT yet converged. Several R45 BLOCKERs are issues that the R44-closure waves themselves introduced: (P1A-R45-B1) the new four-route no-go appendix §IV.D Route 4 amplitude bound says ≥8 orders of magnitude but the underlying ρ_θ ≲ 10^{-46} eV^4 vs ρ_Λ ~ 10^{-11} eV^4 ratio is 10^35 (35 orders); (P1A-R45-B2) the new §IV.B Route 2 closure compares a rotation rate β̇ in eV with an angle uncertainty σ(β) in eV — dimensionally inconsistent; (P4-R45-B1) the GZ1 Platt L-BFGS recalibration parameters cited in §IV (A=0.215143, B=−1.581205) are NOT in the on-disk artifact wave_14_fff_gz1_platt_recal.json (which shows placeholder values A=0.21505, B=−1.58, accuracy 0.5194 chance, Brier=NaN). Two R45 BLOCKERs are pre-existing: (P2-R45-B1) abstract \\ref{sec:gr} undefined produces ?? in PDF; (P2-R45-B2) §VII 9.9σ vs 3-5σ headline still semantically conflated; (P3-R45-B1) tier arithmetic 264,938+113,342=378,280 ≠ 378,080 across 23 surfaces. Honest readiness rolled back: P1A 90→78 (−12pp), P1B 75 unchanged (compute-gated), P2 85→73 (−12pp), P3 89→80 (−9pp), P4 89→76 (−13pp). Average 85.6 → 76.4 (−9.2pp). The cycle Houston asked to see is now visible: 11 forward waves over the session added +3.2pp; one R45 round subtracts −9.2pp; the loop continues until per-round delta shrinks to zero. **Wave queue: 14-QQQQ closes P1A R45 BLOCKERs B1+B2 + MAJORs; 14-RRRR closes P2; 14-SSSS closes P3 (B1 tier-arithmetic restate + 5 MAJORs); 14-TTTT closes P4 (B1 re-run GZ1 L-BFGS + 6 MAJORs); 14-UUUU minors+nits sweep; 14-VVVV launches R46.** Cap stays at 95% until BOTH a clean CCAI R-round AND a clean cross-vendor non-Anthropic R-round have passed. Cobaya DESI DR2 chain continues: R̂−1 = 0.076 at May 8 18:27 PT.",
   currentlyRunning: [
@@ -51,7 +51,7 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH Structural Closure (no-go theorem)",
       version: "v1A.0.12",
-      readiness: 85,
+      readiness: 80,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs + 4-route appendix Wave 14-IIII; cross-paper bibitems Wave 14-JJJJ; M4 D_inf prefactor justification + M5 orphan-label check Wave 14-NNNN). ALL P1A R44 MAJORs now closed. R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -69,7 +69,7 @@ export const liveStatus: LiveStatus = {
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.19",
-      readiness: 83,
+      readiness: 76,
       pendingWork:
         "Houston sign-off + clean external R45 round (R44 BLOCKERs Wave 14-HHHH; R44 MAJORs M1+M2+M3+M5 + Maldacena cite Wave 14-MMMM). All R44 BLOCKERs and MAJORs closed; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
@@ -78,7 +78,7 @@ export const liveStatus: LiveStatus = {
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.30",
-      readiness: 89,
+      readiness: 84,
       pendingWork:
         "HuggingFace dataset visibility flip (Houston manual) + sign-off + clean external R45 round (R44 MAJORs M1+M2+M4+nit1 shipped Wave 14-FFFF; R44-M5 high-confidence-restricted α re-measurement shipped Wave 14-KKKK: α_GS,jk = +1.83 ± 2.03 on 1,122 Gold+Silver subset, σ(f_NL)_GS = 2.28 ± 7.43, central 74% improvement consistent with no improvement at <1σ; full-sample α_jk = 0.19 ± 0.65 retained as load-bearing headline) + arXiv submission",
     },
@@ -87,16 +87,16 @@ export const liveStatus: LiveStatus = {
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale",
       version: "v1.0.38",
-      readiness: 86,
+      readiness: 80,
       pendingWork:
         "Houston sign-off + clean external R45 round (Wave 14-GGGG: M1+M2+M3+nit2; Wave 14-LLLL: M4 recall-asymmetry decomposition + M6 MDD N_eff inflation note + M7 morphology-bin flatness in abstract). Open: M5 deep-MLP RA/Dec ablation needs H200 spin-up; R45 self-review + cross-vendor non-Anthropic round + arXiv submission still ahead.",
     },
   ],
   blockerTally: {
     closed: 99,
-    openBlockers: 0,
-    openMajors: 0,
-    openMinors: 4,
+    openBlockers: 2,
+    openMajors: 9,
+    openMinors: 13,
   },
   cronStatus:
     "/loop self-pacing — autonomous loop active, polling pod every ~25 min",
