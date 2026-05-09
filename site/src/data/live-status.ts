@@ -35,12 +35,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-05-08T23:10:00Z",
-  lastUpdatedDisplay: "May 8, 2026 · 4:10 PM PT",
+  lastUpdatedISO: "2026-05-09T02:30:00Z",
+  lastUpdatedDisplay: "May 8, 2026 · 7:30 PM PT",
   headline:
-    "R43 Wave 14-WWW — Cobaya R̂−1 < 0.1 milestone (R̂−1 = 0.083) + P3 v3.1.22 R43 BLOCKER fixes shipped",
+    "R44 Wave 14-FFFF — P3 v3.1.24 R44 MAJORs M1+M2+M4 + Münchmeyer typo shipped (Conclusions §6.5 demoted, legacy 6.1%/16.4% subordinated to 'for reference', tier vocabulary explicit)",
   summary:
-    "Wave 14-WWW bundles two outcomes: (1) Cobaya DESI DR2 chain crossed R̂−1 < 0.1 after ~52h warm-restarted sampling: 0.86 → 0.31 → 0.21 → 0.15 → 0.083 (May 8 14:45 PT, 4,318 total accepted, outlier fraction crashed 13.6% → 0.03%, chains in essentially perfect overlap). Marginalized 1D posteriors are reliable; 2D-contour grade (R̂−1 < 0.05) ETA 12-24h, publication-quality (R̂−1 < 0.01) ETA 1-3 days. P1B §Structural Tension update queued for R̂−1 < 0.01. (2) R43 multi-agent adversarial peer-review round complete (4 parallel Claude subagents, P1A/P2/P3/P4, P1B excluded; 71 findings: 10 BLOCKER / 31 MAJOR / 30 MINOR; full review at project-context/peer-reviews/2026-05-08_1500pt_R43_CCAI_*). P3 v3.1.21 → v3.1.22 ships ALL three P3 BLOCKERs: (B1) explicit α ≡ b−1 definition reconciling 0.19 (jackknife mean) vs 0.27 (geomean over 3 bins) — adopt α_jk as headline; (B2) ±26%→±28.7% fractional uncertainty correction, +1σ tail = 10.64 explicitly stated to exceed 8.98 baseline (improvement < 1σ from null); (B3) Wave 14-VVV recast: α consistent with zero at 0.29σ, σ(f_NL)=8.27 demoted to central-value forecast pending higher-S/N follow-up. Plus M3 (genuine novelty 17.8% logic flip, now properly upper bound), m1 (141× multi-survey vs 73× single-survey reframe), and stale-text cleanup. PDF recompile: 41 pp / 28,372,914 bytes / 0 undef refs (one pre-existing Munchmeyer cite warning unchanged). **Continuing R43→R44→Rn loop: implementing remaining P3/P4/P2/P1A R43 fixes; on completion launching R44 cross-vendor adversarial round; repeat until reviews find next-to-nothing.**",
+    "Wave 14-FFFF ships P3 v3.1.23 → v3.1.24 with R44 MAJORs M1 + M2 + M4 + nit1: (M1) Conclusions §6.5 cosmological-applications bullet rewritten to lead with the Wave 14-VVV empirical-α result (σ(f_NL)=8.27 ± 2.37, 7.9% central improvement consistent with zero at <1σ) and demote the legacy '~6–20% improvement' framing; (M2) §VII (sec:fnl) legacy fixed-α=0.15 forecast (6.1% DESI-only / 16.4% DESI+SDSS, range 10–20%) explicitly subordinated under italic 'For reference' header — retained for historical continuity but no longer the primary cosmological deliverable; (M4) tier vocabulary disambiguated paper-wide: 'point-source tier' = 378,080 (six photometric/spectroscopic surveys after 7-way 5″ dedup), 'catalog-grade tier' = 264,938 (DESI + SDSS native + eROSITA + Planck native + Gaia + NEOWISE), 'exploratory tier' = 113,342 (LAMOST native; methodological-lesson retain), 'Planck CMB-patch tier' = 200 (sky regions, not point sources); 'primary tier' as a load-bearing term retired. (nit1) Münchmeyer (was Munchmüller) — corrected at the multi-tracer Fisher-marginalization paragraph. PDF recompile: 41 pp / 28.4 MB / 0 undef refs. R43 status (post Waves 14-WWW–DDDD): all 10 P3 BLOCKERs closed and zero P3 BLOCKERs returned in the R44 self-review (full review at project-context/peer-reviews/2026-05-08_1830pt_R44_CCAI_*). Cobaya DESI DR2 chain continues warm-restarted sampling: R̂−1 = 0.076 at May 8 18:27 PT (4,598 total accepted across 4 chains); publication-quality R̂−1 < 0.01 ETA 1–3 days. **Continuing R44→Rn loop: next is Wave 14-GGGG (P4 R44 MAJORs), Wave 14-HHHH (P2 R44 BLOCKERs), Wave 14-IIII (P1A four-route appendix); cross-vendor non-Anthropic R-round will launch on R45 once R44 BLOCKERs+MAJORs are flushed.**",
   currentlyRunning: [
     "Cobaya 4-chain MPI run on RTX A5000 pod ijzftpy3klystt — warm-started with posterior covmat from April-6 quintom chain; DESI DR2 + Planck NPIPE + Pantheon+ + DES-Y5; w0-wa CPL PPF; target R̂−1 < 0.01",
     "Autonomous /loop self-pacing every ~25 min — polling pod, will GetDist + update P1B §Structural Tension + recompile when R̂−1 < 0.01",
@@ -77,10 +77,10 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.23",
+      version: "v3.1.24",
       readiness: 99,
       pendingWork:
-        "HuggingFace dataset visibility flip (Houston manual) + sign-off + R43 round (R43 BLOCKER fixes shipped Wave 14-WWW; remaining MAJORs/MINORs queued) + arXiv submission",
+        "HuggingFace dataset visibility flip (Houston manual) + sign-off + clean external R45 round (R44 MAJORs M1+M2+M4 + nit1 shipped Wave 14-FFFF: Conclusions §6.5 demoted to Wave 14-VVV empirical α, legacy fixed-α=0.15 6.1%/16.4% subordinated 'for reference', tier vocabulary disambiguated, M{ü}nchmeyer typo) + arXiv submission",
     },
     {
       slug: "paper-4",
