@@ -222,7 +222,7 @@ Key rule: Always use `torch.utils.data.DataLoader` with `num_workers=16, pin_mem
 ```
 
 ### Compilation
-Papers must be compiled on a machine with `texlive-publishers` installed (for `revtex4-2`). Local Mac does NOT have LaTeX — compile on RunPod pods.
+Papers must be compiled on a machine with `texlive-publishers` installed (for `revtex4-2`). **As of 2026-05-12 the local Mac DOES have LaTeX via Homebrew TeX Live 2026** (`/opt/homebrew/bin/pdflatex`) and is the preferred local-compile path for fast iteration. RunPod pods can also compile if `texlive-publishers` is installed; cobaya-only pods do not have LaTeX pre-installed.
 
 ```bash
 # On RunPod pod (H200 or H100):

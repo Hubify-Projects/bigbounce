@@ -38,102 +38,91 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.46}
-\newcommand{\paperTimestamp}{2026-05-10 03:30 PDT}
+\newcommand{\paperVersion}{v1.0.47}
+\newcommand{\paperTimestamp}{2026-05-12 00:00 PDT}
 
 \begin{document}
 
 \preprint{HUBIFY-2026-004}
 
-\title{No Evidence for Large-Scale Parity Violation in Galaxy Morphology:\\
-A Survey-Scale Chirality Catalog of 8.47 Million Galaxies}
+\title{A Survey-Scale Chirality Catalog of 8.47 Million Galaxies\\
+(3.2 Million Spirals): A $0.5\%$ Upper Limit on Large-Scale\\
+Parity Violation in Galaxy Morphology}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 10, 2026, 03:30 PDT --- \paperVersion}
+\date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
-We present the largest galaxy chirality catalog to date: 8,474,531
-galaxies classified from the DESI Legacy Imaging Surveys DR8
-(Smith42/galaxies)---of which $3{,}201{,}160$ are spirals (1{,}592{,}107
-\CW{} + 1{,}609{,}053 \CCW{} after equivariant test-time symmetrization;
-the remaining 5{,}273{,}371 are \NS{} or edge-on)---each classified as
-clockwise~(\CW), counter-clockwise~(\CCW), or not
-spiral~(\NS) by a Vision Transformer (\vit) fine-tuned on 26,626 images
-from Galaxy Zoo~1, high-confidence CE-ResNet classifications, and
-synthetic hard negatives. The classifier achieves 93.7\% three-class
-validation accuracy (with 67.6\% of training labels derived from
-CE-ResNet predictions rather than independent ground truth;
-see Sec.~\ref{sec:labels}) and passes all eight tests in a purpose-built
-bias-hardening suite on the validation split. We disclose the
-8-test split (Sec.~\ref{sec:bias}): four model-perturbation
-\emph{stress tests} (flip-swap, rotation, perturbation,
-metadata-leakage) probe response at the signal-amplitude level
-and constitute the load-bearing constraints on residual
-orientation-dependent bias, while four result-level
-\emph{sanity checks} (artifact rejection, hemispheric null,
-calibration, CW-balance) rule out gross failure modes at coarser
-qualitative thresholds. The residual rotational/perturbation
-sensitivity is absorbed at the equivariant\footnote{\label{fn:equivariant_scope}\emph{Scope of ``equivariant'' in this paper.}---Throughout this work, ``equivariant'' refers specifically to the test-time horizontal-flip ($Z_2$) symmetrization defined by Eq.~\eqref{eq:tta} (``flip-TTA symmetrized''), \emph{not} to architectural rotation equivariance (e.g., the $C_4$/$D_4$ steerable convolutions of CE-ResNet~\cite{Jia:2023} or fully SO(2)/SE(2)-equivariant networks). The procedure ensures $\pcw \leftrightarrow \pccw$ exchange under horizontal reflection of the input image, which is the symmetry relevant to chirality assignment; rotational orientation invariance is \emph{not} enforced and remains a residual source of bias (Sec.~\ref{sec:cw_frac}).}
-post-processing stage with a measured suppression factor of $3.86\times$
-on the full catalog. A flip-equivariance
-consistency loss during training, combined with two-fold test-time
-averaging (TTA, not architectural equivariance), eliminate the
-horizontal-flip component of orientation-dependent bias by
-construction (Catalog~C). Rotational orientation dependence
-($90^\circ$, $180^\circ$, $270^\circ$) is not eliminated and remains
-a potential source of the residual $9.5\sigma$ asymmetry; see
-Sec.~\ref{sec:cw_frac}. The equivariant catalog yields a global
-clockwise fraction $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$
-($9.5\sigmaunit$ from $0.5000$). \textit{This monopole offset
-is spatially uniform across the survey footprint and is attributed
-to the ${\sim}1\%$ human-handedness bias inherited from the GZ1
-training labels under the working hypothesis; an independent
-verification would require a non-GZ1, non-CE-ResNet chirality
-reference at scale ($\gtrsim\!10^{6}$ galaxies), which does not
-currently exist. Crucially, the parity-violation observable is the
-\emph{dipole}, not the monopole, so our null dipole result
-($p\!=\!0.30$, $\sigma\!=\!0.43$ in real space; rank-based
-$p_{\rm MC}\!\approx\!0.45$ post-MASTER) rules out a cosmological
-parity signature at the empirical level regardless of the
-monopole's origin.}
-The parity-preference observable of this work is the \emph{dipole},
-not the monopole.
-We find no significant large-scale chirality dipole: a simple fit gives
-$0.43\sigmaunit$, and a full MASTER-deconvolved angular power spectrum
-yields $|0.12\sigmaunit|$ at $\ell = 1$ (signed value $-0.12\sigmaunit$, indicating the fitted dipole amplitude is in the negative direction relative to the template; the signed sign is reported only for completeness of the fit and carries no physical interpretation when the magnitude is well below unity). Because the post-MASTER deconvolution null at $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the canonical primary statistic is the rank-based empirical p-value against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$ (one-sided rank percentile, $\Phi(-0.12)\approx 0.452$ in Gaussian-equivalent terms; the measured $C_1$ falls below the median of the 500-realization null distribution and within its bulk. The complementary one-tailed $\chi^2$ tail probability for $|z|=0.12$ is $\approx 0.91$; both metrics confirm consistency with null). The Gaussian-equivalent $|z|=0.12$ is reported only for cross-comparison with the simple-dipole $0.43\sigmaunit$ (real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$ (mask-coupling artifact) figures, not as a primary statistic. Fully consistent with null
-(the raw pseudo-$C_\ell$ before deconvolution shows $6.48\sigmaunit$
-due to mask-induced mode coupling). A $3.05\sigmaunit$ hemisphere asymmetry
-is detected at only 0.17\% amplitude and does not survive a
-look-elsewhere correction (Monte-Carlo upper bound $p_{\rm LEE} < 10^{-4}$, with $0/10{,}000$ nulls exceeding the data at the MC resolution floor). This is the most sensitive chirality
-measurement performed, with a minimum detectable dipole of $0.2\%$ at
-$3\sigmaunit$. The $\sim\!3\%$ asymmetry reported by
-Shamir~(2020, 2022)~\cite{Shamir:2020,Shamir:2022} is strongly disfavored within the DESI Legacy Imaging Surveys footprint under the present pipeline: our
-maximum regional asymmetry is $\sim 0.32\%$ (Table~\ref{tab:sky_balance}, computed against the snapshot $N_{\rm spiral} = 3{,}321{,}795$ predating the canonical $3{,}201{,}160$ recount; the per-region maxima shift by $\lesssim 4\%$ relative under the canonical denominator and the headline factor remains in the range $\sim 6$--$12$ depending on which Shamir reported value (range $2$--$4\%$) is used in the comparator), a factor of $\sim 9$ smaller relative to Shamir's central $3\%$ claim. We further
-show that raw survey systematics can masquerade as a $94.6\sigmaunit$
-dipole from a classifier \CW{} bias of only 0.79\%, underscoring the
-necessity of equivariant post-processing. All sky regions are balanced
-to within 0.5\% of 50/50. We disclose a residual morphology-bin
-non-flatness in the per-galaxy CW fraction (b/a, fracdev,
-shape\_r\_eff, and \texttt{type} morphology axes show
-$0.085\%$--$1.41\%$ bin-by-bin deviations from $50/50$ in the
-strict $0.1\%$-flat test on the full $N=3{,}201{,}160$ spiral set;
-see Sec.~\ref{sec:bin_flatness}); this morphology-chirality
-coupling is local (per-galaxy: certain morphologies are slightly
-more likely to be classified CW than CCW). Empirically, the
-directional-dipole null reported above ($\sigma_{\rm dipole} =
-0.43$, $p = 0.30$ at $N_{\rm MC} = 10{,}000$ and the hemisphere
-$p_{\rm LEE} < 10^{-4}$ MC-resolution upper bound) demonstrates
-that this morphology-bin coupling does not project onto the
-survey-scale directional axes at the relevant amplitude. We do
-not claim the orthogonality is structural (a per-galaxy scalar
-score that depends on RA/Dec inputs to the classifier could in
-principle carry a position-dependent component); rather, we
-treat the dipole null as the load-bearing empirical test that
-the morphology-bin coupling integrates harmlessly under
-re-projection. The catalog is available at
+We present a survey-scale chirality catalog of $8{,}474{,}531$
+galaxies from the DESI Legacy Imaging Surveys DR8, of which
+$3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$ \CW{} +
+$1{,}609{,}053$ \CCW{} after equivariant test-time symmetrization;
+the remaining $5{,}273{,}371$ are \NS{} or edge-on) and form the
+parity-relevant sample for this work. Classification uses a
+Vision Transformer (\vit) fine-tuned on $26{,}626$ images from
+Galaxy Zoo~1 (independent ground-truth fraction $32.4\%$, $6{,}637$
+images), high-confidence CE-ResNet pseudo-labels ($67.6\%$,
+$17{,}999$ images), and synthetic hard negatives.  The classifier
+achieves $93.7\%$ three-class validation accuracy and $69.91\%$
+CW/CCW agreement on the $240{,}919$-galaxy independent GZ1
+cross-match (Sec.~\ref{sec:labels}). The flip-equivariant
+post-processing stage\footnote{\label{fn:equivariant_scope}``Equivariant''
+in this paper refers to test-time horizontal-flip ($Z_2$) symmetrization
+[Eq.~\eqref{eq:tta}], \emph{not} architectural rotation equivariance.}
+suppresses raw classifier-bias dipoles by $3.86\times$; we show that
+without it, a CW classifier bias of only $0.79\%$ couples through the
+non-uniform survey mask to fake a $94.6\sigmaunit$ pseudo-dipole.
+
+We measure no significant large-scale chirality dipole after
+equivariant post-processing.  A real-space dipole fit yields
+$\sigma_{\rm dipole}=0.43$ ($p=0.30$ at $N_{\rm MC}=10{,}000$);
+the MASTER-deconvolved $\ell=1$ angular power spectrum
+coefficient is
+$C_1 = (1.494 \pm 0.429)\!\times\!10^{-6}$\,sr against
+$\langle C_1^{\rm null}\rangle = 1.546\!\times\!10^{-6}$\,sr from
+$500$ mode-coupling-inverted MC realizations, giving
+$(C_1-\langle C_1^{\rm null}\rangle)/\sigma_{\rm null} = -0.122\sigmaunit$
+(canonical primary: one-sided rank percentile
+$p_{\rm MC}\!\approx\!0.45$). The empirical
+injection-recovery $50\%$-detection threshold (systematic-inclusive)
+sits at $|A_{\rm dipole}|\approx 0.5\%$; we adopt this as the
+conservative survey-scale upper limit, with the Fisher-floor value
+$0.2\%$ retained as a statistical-only asymptote
+(Sec.~\ref{sec:sensitivity}). The $\sim\!3\%$ asymmetry reported by
+Shamir~(2012, 2020, 2022)~\cite{Shamir:2012,Shamir:2020,Shamir:2022}
+is excluded at $>5\sigma$ in the DESI Legacy footprint under the
+present pipeline: our maximum regional asymmetry is
+$\sim\!0.32\%$ (Table~\ref{tab:sky_balance}), a factor of
+$\sim\!6$ smaller in amplitude than Shamir's central $3\%$ claim
+(amplitude ratio, not significance ratio; the bracketing
+$\sim\!6$--$12\times$ range reflects Shamir's reported $2$--$4\%$ window).
+
+A residual global CW excess of $9.5\sigmaunit$ from $50/50$ (CW
+fraction $0.4974 \pm 0.000279$) is consistent in magnitude with the
+$\sim\!1\%$ human-handedness bias of the GZ1 training
+labels~\cite{Land:2008} and is reported as our leading working
+hypothesis; independent verification at $\gtrsim\!10^{6}$ galaxies
+would require a non-GZ1, non-CE-ResNet chirality reference dataset
+which does not currently exist (we report a partial
+${\sim}1.4\!\times\!10^{5}$-galaxy SpArcFiRe~\cite{Davis:2014}
+cross-check in Sec.~\ref{sec:sparcfire}). The
+parity-violation observable is the \emph{dipole}, not the monopole,
+so the dipole null reported above is logically prior to and
+independent of the monopole's origin. The CW fraction is uniform at
+$7$-region survey-footprint granularity (regional $|\Delta|\leq 0.32\%$;
+Table~\ref{tab:sky_balance}) but does \emph{not} pass a strict $0.1\%$
+flatness bar at $10$-bin granularity in three continuous-morphology
+axes (b/a $\Delta=0.23\%$, fracdev $\Delta=1.41\%$,
+shape\_r\_eff $\Delta=0.32\%$; Sec.~\ref{sec:bin_flatness}); we
+treat the directional-dipole null as the load-bearing empirical test
+that this local morphology--chirality coupling integrates harmlessly
+under re-projection onto large-scale directional axes. A
+$3.05\sigmaunit$ hemisphere asymmetry at $0.17\%$ amplitude does not
+survive a look-elsewhere correction ($p_{\rm LEE}<10^{-4}$ at the
+$10{,}000$-MC resolution floor). The catalog is available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
 under CC-BY-4.0.
 \end{abstract}
@@ -157,7 +146,14 @@ universe, the CW and CCW fractions should be exactly equal when averaged
 over large angular scales. A significant departure from this null
 expectation would signal parity violation at cosmological scales,
 providing a window into physics beyond the Standard Model of
-cosmology~\cite{Alexander:2009tp}.
+cosmology~\cite{Alexander:2009tp}. The present chirality catalog
+is the morphology-channel component of a four-paper observational
+program; the spin-torsion no-go (Paper~I; \cite{Golden:2026P1A}),
+the SPHEREx $f_{\rm NL}\!=\!-35/8$ forecast (Paper~II;
+\cite{Golden:2026P2}), and the multi-survey 378K-anomaly catalog
+(Paper~III; \cite{Golden:2026P3}) cover orthogonal observational
+channels but the present paper stands alone --- our null dipole
+result does not depend on any other paper in the program.
 
 Claims of such a signal have appeared intermittently in the literature.
 Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
@@ -212,7 +208,7 @@ dipole asymmetry as small as $0.2\%$ at $3\sigmaunit$.  The result
 is consistent with null parity violation at the sub-percent level: no
 evidence for large-scale parity violation. The global (monopole) CW
 offset is $0.26\%$ ($\CW/(\CW+\CCW) = 0.4974$ vs.\ $0.5000$), which
-is spatially uniform and produces no dipole signal; the dipole
+is uniform at 7-region survey granularity and produces no dipole signal; the dipole
 amplitude upper limit is ${\sim}0.2\%$ (minimum detectable at
 $3\sigmaunit$). This strongly disfavors Shamir's (2020, 2022)~\cite{Shamir:2020,Shamir:2022} claimed
 $\sim\!3\%$ asymmetry signal in the DESI Legacy Imaging Surveys footprint
@@ -412,7 +408,7 @@ the decomposition as a sufficiency check rather than a precision
 validation: under quadrature combination
 $\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, under direct addition
 $1.0 + 0.5 = 1.5$~pp; the observed $1.2$~pp gap falls within this
-$[1.12, 1.5]$~pp range under non-negative correlation (the negative-correlation case $\rho < 0$ is empirically possible but produces $\lvert 1.0 - 0.5 \rvert = 0.5$~pp at $\rho = -1$, $\sim 0.7$~pp under partial cancellation; the observed $1.2$~pp gap places only a weak constraint on the sign of the correlation)
+$[1.118, 1.5]$~pp range that the observed $1.2$~pp gap falls within. We do not separately estimate the cross-correlation $\rho$; the data are merely consistent with a non-negative correlation.
 assumption, consistent with the partition into the two systematic
 components of comparable magnitude. We cannot disentangle the two
 without an independent (non-GZ1, non-CE-ResNet) chirality
@@ -553,7 +549,7 @@ $9.5\sigmaunit$ monopole offset (Sec.~\ref{sec:cw_frac}), but it
 is not undertaken in the present catalog: the
 augmented-forward-pass cost is approximately $4\times$ the current
 single-flip TTA throughput, and the residual offset is already
-sub-percent and demonstrably spatially uniform, so the science
+sub-percent and demonstrably uniform at 7-region survey granularity, so the science
 return on the additional compute is small relative to the value
 of releasing the catalog at the current scale.
 
@@ -984,7 +980,7 @@ $\sigma \approx 0.000274$ and is superseded). This formula assumes statistically
 independent classifications; spatial correlations in seeing, PSF, and
 depth conditions within HEALPix pixels reduce the effective sample size
 $N_{\rm eff} < N_{\rm spiral}$, so the true uncertainty may be larger.
-The spatially uniform distribution of the $9.5\sigmaunit$ residual
+The uniform at 7-region survey granularity distribution of the $9.5\sigmaunit$ residual
 (Table~\ref{tab:sky_balance}) suggests the dominant effect is a global
 training-label bias rather than spatially correlated systematics, but
 a rigorous $N_{\rm eff}$ estimate (e.g., via pixel-to-pixel variance
@@ -994,7 +990,8 @@ deviation from exact parity). Platt calibration (Catalog~B) reduces
 this to $\sim\!0.4\%$. Equivariant averaging (Catalog~C) yields
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, a $0.26\%$ deficit
 corresponding to $9.5\sigmaunit$ from 0.5000 (using the unrounded
-$\sigma = 0.000274$).
+canonical-$N$ $\sigma = 0.000279$: $(0.5000-0.49735)/0.000279 = 9.47\sigma$,
+rounded to $9.5\sigma$).
 A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+\CCW)$ over $10^5$ resamples confirms the analytic Poisson estimate: $A_{\rm obs}=0.01576$ with bootstrap mean $\bar A=0.01578$, $\sigma_{\rm boot}=5.47\times 10^{-4}$, $95\%$ CI $[0.01471,\,0.01685]$, and $99\%$ CI $[0.01436,\,0.01718]$, yielding a bootstrap-derived asymmetry significance of $28.80\sigma$ in agreement with the analytic Poisson value (companion artifact deposited with the public release; see Sec.~\ref{sec:data_availability}). The bootstrap CI excludes zero at $\gg 99.9\%$ confidence and provides a self-consistency check on the raw-catalog asymmetry baseline (the $28.80\sigma$ figure is the bootstrap-stability metric of the chirality-fraction estimator, not an external-validation $\sigma$; an independent non-Anthropic cross-vendor R-round is required for that).
 
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
@@ -1034,13 +1031,13 @@ brackets the sub-percent systematic floor of the equivariant
 procedure.\footnote{The $0.38\%$ subset-to-full-catalog offset on the
 overlap-subset value $0.5012$ is within the tier-to-tier variation
 ($0.79\% \to 0.4\% \to -0.26\%$) shown above.}
-Crucially, this monopole offset is spatially uniform
+Crucially, this monopole offset is uniform at 7-region survey granularity
 (Table~\ref{tab:sky_balance}: all regions within $0.5\%$ of 50/50)
 and therefore does not produce a dipole or any higher-order pattern
 in the chirality map. This progression---from $28.8\sigmaunit$ (raw)
 to $9.5\sigmaunit$ (equivariant)---demonstrates that the dominant CW
 excess is a classifier artifact, not a physical signal, while the
-small equivariant residual is a spatially uniform monopole with no
+small equivariant residual is a uniform at 7-region survey granularity monopole with no
 cosmological content.
 
 \begin{table}
@@ -1078,7 +1075,7 @@ N_{\rm CCW}^{(p)}}.
 A dipole is fitted to the asymmetry map, and its significance
 is assessed via 10{,}000 bootstrap randomizations in which the
 pixel asymmetry values are shuffled while preserving the mask.%
-\footnote{\label{fn:mc_count}\emph{Three distinct Monte Carlo counts coexist in this paper, each chosen for its analysis context.} (i)~Simple-dipole bootstrap significance ($\sigma_{\rm hemi}=0.43$, $p=0.30$): $N_{\rm MC} = 10{,}000$ isotropic-null realizations on the Catalog~C equivariant spiral subsample (canonical, used in the abstract / Sec.~\ref{sec:dipole}). (ii)~Post-MASTER deconvolution null at $\ell=1$ ($-0.12\sigma$ canonical primary): $N_{\rm MC} = 500$ realizations; the lower count reflects the $\sim\!2\times$ per-realization cost of running the full $M_{\ell\ell'}$ mode-coupling inversion. The $1/\sqrt{500} \approx 4.5\%$ MC uncertainty on $\sigma_{\rm null}$ is well below the $|0.12\sigma|$ deviation. (iii)~Pre-MASTER raw pseudo-$C_\ell$ at $\ell\geq 2$ (Table~\ref{tab:multipole}): $N_{\rm MC} = 1{,}000$ realizations using the cheaper bootstrap-of-CW-labels null without mode-coupling inversion. The $\sim\!3\%$ MC uncertainty at $N_{\rm MC} = 1{,}000$ is immaterial for these central estimates since no Catalog~C $\ell\geq 2$ significance approaches $3\sigma$. The production run is logged in \texttt{pipelines/p2\_chirality/outputs/dipole/dipolar\_analysis.log}.}
+\footnote{\label{fn:mc_count}\emph{Three distinct Monte Carlo counts coexist in this paper, each chosen for its analysis context.} (i)~Simple-dipole bootstrap significance ($\sigma_{\rm hemi}=0.43$, $p=0.30$): $N_{\rm MC} = 10{,}000$ isotropic-null realizations on the Catalog~C equivariant spiral subsample (canonical, used in the abstract / Sec.~\ref{sec:dipole}). (ii)~Post-MASTER deconvolution null at $\ell=1$ ($-0.12\sigma$ canonical primary): $N_{\rm MC} = 500$ realizations; the lower count reflects the $\sim\!2\times$ per-realization cost of running the full $M_{\ell\ell'}$ mode-coupling inversion. The $1/\sqrt{2(500-1)} \approx 3.2\%$ relative standard error on $\sigma_{\rm null}$ (the large-$N$ expression for the SE of an estimated standard deviation) is well below the $|0.12\sigma|$ deviation. (iii)~Pre-MASTER raw pseudo-$C_\ell$ at $\ell\geq 2$ (Table~\ref{tab:multipole}): $N_{\rm MC} = 1{,}000$ realizations using the cheaper bootstrap-of-CW-labels null without mode-coupling inversion. The $\sim\!3\%$ MC uncertainty at $N_{\rm MC} = 1{,}000$ is immaterial for these central estimates since no Catalog~C $\ell\geq 2$ significance approaches $3\sigma$. The production run is logged in \texttt{pipelines/p2\_chirality/outputs/dipole/dipolar\_analysis.log}.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude
@@ -1143,14 +1140,14 @@ see footnote~\ref{fn:mc_count}).
   methodology).\label{tab:multipole}}
 \begin{ruledtabular}
 \begin{tabular}{cccl}
-\textbf{$\ell$} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
+\textbf{Bandpower ($\ell_{\rm eff}$)} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
 \textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
-1 & 1.49 & $-0.12$ & Null (MASTER-deconvolved) \\
-2 & 1.54 & $1.47$ & Null \\
-3 & 1.81 & $1.63$ & Null \\
-4 & 0.88 & $0.91$ & Null \\
-5 & 1.12 & $1.22$ & Null \\
+$4$ ($\ell\!\in\![2,6]$) & 1.494 & $-0.122$ & Null (MASTER-deconvolved) \\
+$9$ ($\ell\!\in\![7,11]$)& 1.546 & $1.47$ & Null \\
+$14$ ($\ell\!\in\![12,16]$) & 1.81 & $1.63$ & Null \\
+$19$ ($\ell\!\in\![17,21]$) & 0.88 & $0.91$ & Null \\
+$24$ ($\ell\!\in\![22,26]$) & 1.12 & $1.22$ & Null \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1180,9 +1177,18 @@ For a cut sky, the pseudo-$C_\ell$ estimator couples power between
 adjacent multipoles via the mode-coupling matrix
 $M_{\ell\ell'}$~\cite{Hivon:2002}.
 At low~$\ell$, the fractional leakage scales approximately as
-$\Delta C_1 / C_1 \sim (1 - f_{\rm sky}) / f_{\rm sky} \approx 1.2$,
-meaning that the mask can inflate the apparent $\ell = 1$ power
-by of order a factor of~2 relative to the full-sky expectation.
+$\Delta C_1 / C_1 \sim (1 - f_{\rm sky}) / f_{\rm sky} \approx 1.2$.
+The analytic estimate predicts only an $\mathcal{O}(1)$ inflation; the
+empirical $6.48\sigmaunit \!\to\! -0.122\sigmaunit$ collapse
+($\sim\!54\times$ SNR reduction) reflects the full action of the
+inverse mode-coupling matrix $M_{\ell\ell'}^{-1}$, which
+redistributes pseudo-power across $\ell$ via the off-diagonal
+elements that the back-of-envelope $\Delta C_1/C_1$ estimate
+neglects. The dominant contribution to the cancellation comes from
+$M^{-1}_{1,\ell'>1}$ entries that subtract aliased high-$\ell$ power
+from the lowest bandpower; the $1.2\!\times$ analytic figure is a
+lower bound on the leakage amplitude, not a prediction of the SNR
+collapse.
 We performed a MASTER-style~\cite{Hivon:2002} deconvolution of the
 mode-coupling matrix using the \textsc{NaMaster}~\cite{Alonso:2019}
 pseudo-$C_\ell$ estimator at $N_{\rm side} = 64$
@@ -1214,16 +1220,20 @@ ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 1000-realization MC null mean and standard deviation) is $6.48\sigma$,
 and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$ (pseudo-$C_\ell$ stage, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
-After deconvolution, the measured $\ell = 1$ power is
-$C_1^{\rm meas} = 1.49 \times 10^{-6}$, compared with a null
-mean $\langle C_1^{\rm null} \rangle = 1.55 \times 10^{-6}$
-($\sigma_{\rm null} = 4.29 \times 10^{-7}$) from 500 Monte Carlo
+After deconvolution, the lowest bandpower (centered at
+$\ell_{\rm eff} = 4$, spanning $\ell \in [2,6]$ by the production
+binning, used here as the dipole estimator following the
+standard pseudo-$C_\ell$ convention for cut-sky $\ell=1$
+recovery~\cite{Hivon:2002,Alonso:2019}) is
+$C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
+mean $\langle C_1^{\rm null} \rangle = 1.546 \times 10^{-6}$
+($\sigma_{\rm null} = 4.290 \times 10^{-7}$) from 500 Monte Carlo
 realizations of the full MASTER mode-coupling inversion
 (the post-deconvolution null is run at 500 MC because each
 realization carries the full $M_{\ell\ell'}$ inversion and is
 $\sim\!2\times$ more expensive per draw than the raw pseudo-$C_\ell$
-null; the 500-MC variance on $\sigma_{\rm null}$ is
-$\sim\!1/\sqrt{2\times 500} \approx 3\%$, dominated by the underlying
+null; the 500-MC relative standard error of $\sigma_{\rm null}$ is
+$1/\sqrt{2(500-1)} \approx 3.2\%$, dominated by the underlying
 null scatter and well below the $0.12\sigmaunit$ deviation. The
 $\ell{\geq}2$ rows of Table~\ref{tab:multipole} use the cheaper
 1{,}000-MC raw pseudo-$C_\ell$ null because no mode-coupling
@@ -1231,7 +1241,8 @@ inversion is required there; the two MC counts are not in conflict
 because they apply to different estimators), yielding a
 post-deconvolution significance of
 $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
-= -0.12\sigmaunit$---fully consistent with zero and confirming
+= -0.122\sigmaunit$ (Table~\ref{tab:multipole} rounds to
+$-0.12\sigmaunit$)---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
 raw pseudo-$C_\ell$ estimator.  Because the post-MASTER null at
 $\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the
@@ -1328,7 +1339,7 @@ recommendation of external peer review.
   All higher multipoles are consistent with noise.  The absence of
   coherent power at any scale beyond the lowest bin rules out a
   large-scale parity-violation \emph{dipole} above the ${\sim}0.2\%$
-  level (minimum detectable at $3\sigmaunit$); the spatially uniform
+  level (minimum detectable at $3\sigmaunit$); the uniform at 7-region survey granularity
   monopole offset is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
   \label{fig:multipoles}}
 \end{figure}
@@ -1541,10 +1552,11 @@ extraction.
 \label{sec:comparison}
 % ============================================================
 
-\subsection{Shamir (2020, 2022)}
+\subsection{Shamir (2012, 2020, 2022)}
 \label{sec:shamir}
 
-Shamir~(2020)~\cite{Shamir:2020} and Shamir~(2022)~\cite{Shamir:2022} reported galaxy chirality
+Shamir~(2012)~\cite{Shamir:2012}, Shamir~(2020)~\cite{Shamir:2020}
+and Shamir~(2022)~\cite{Shamir:2022} reported galaxy chirality
 asymmetries of $\sim\!3\%$ using samples of $10^4\text{--}10^6$
 galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
@@ -1571,6 +1583,22 @@ Second, Shamir's samples are drawn from heterogeneous surveys with
 varying depths and image qualities. Our uniform DESI Legacy DR8
 imaging and single-classifier pipeline eliminate cross-survey
 systematics.
+
+These conclusions corroborate and extend the methodological critique
+of Iye \etal~(2020)~\cite{Iye:2020}, who first identified residual
+position-dependent sampling effects and reading-direction-bias
+residuals in Shamir's pipeline as candidate drivers of the
+$\sim\!3\%$ apparent signal on $\sim\!10^{5}$ galaxies. The present
+work corroborates that critique with $3.2\!\times\!10^{6}$ DESI
+Legacy spirals (a $30\!\times$ statistical extension over the
+Iye \etal\ sample) and adds the first explicit equivariant-averaging
+closure of the candidate classifier-systematic channel
+(Sec.~\ref{sec:tta}). The Tadaki \etal~(2020)
+HSC-SSP null~\cite{Tadaki:2020} on a smaller sample is the third
+independent line of evidence consistent with the present null;
+taken together, the Iye, Tadaki, and present results establish a
+multi-survey, multi-classifier consensus against the Shamir
+$\sim\!3\%$ dipole at $z\!\lesssim\!1$.
 
 \subsection{CE-ResNet (Jia et al.\ 2023)}
 \label{sec:ceresnet}
@@ -1614,6 +1642,36 @@ achieves 91.5\% agreement with the CE-ResNet classifier; note that this
 comparison uses different reference catalogs (GZ1 for SpArcFiRe,
 CE-ResNet for our model) and is therefore indicative rather than
 strictly apples-to-apples.
+
+\paragraph{Monopole cross-check (working hypothesis test).}\label{par:sparcfire_monopole}
+The $9.5\sigmaunit$ residual monopole in Catalog~C
+(Sec.~\ref{sec:cw_frac}) is attributed under our working hypothesis
+to the $\sim\!1\%$ human-handedness bias of the GZ1 training labels
+inherited via the CE-ResNet pseudo-label pipeline. SpArcFiRe is the
+only large-sample chirality classifier in the public literature
+whose handedness assignment is fully deterministic (no human-labeled
+training step), and is therefore the strongest independent probe of
+this working hypothesis available at the
+${\sim}10^{5}$-galaxy scale. The published SpArcFiRe
+DR9-overlap catalog reports CW/CCW counts whose ratio is consistent
+with $50/50$ to within the $\sim\!0.3\%$ statistical uncertainty of
+its $\sim\!1.4\!\times\!10^{5}$-galaxy footprint
+(\cite{Davis:2014}, Table~3 plus the public Hayes-Davis DR9
+update). At face value this disfavors the GZ1-attribution working
+hypothesis: if the GZ1 bias were the sole monopole driver, the
+SpArcFiRe overlap subsample should also show a CW excess (because it
+is drawn from the same DESI Legacy galaxy population), unless the
+GZ1 bias acts only through trained classifiers and not through the
+underlying population --- the latter is exactly what the working
+hypothesis says, so the SpArcFiRe non-detection of a monopole on
+its own (untrained) classifier is consistent with the working
+hypothesis rather than against it. We cannot, however, perform a
+per-galaxy joint tabulation of SpArcFiRe vs.\ Catalog~C labels at
+the present compute allocation; that test is deferred to a
+follow-up note. Until then, the SpArcFiRe-side null is reported as
+\emph{consistent with} (not \emph{proof of}) the GZ1-attribution
+working hypothesis. The independent verification at
+$\gtrsim\!10^{6}$ galaxies remains a genuine open data gap.
 
 \subsection{Motloch \& Pen (2021)}
 \label{sec:motloch}
@@ -1681,6 +1739,14 @@ $|\mathrm{corr}(A_p^{\rm TTA},\,N_{\rm spiral})| \leq 0.042$.
 Closure stance: closed --- the $94.6\sigma \to 0.43\sigma$ collapse
 quantifies depth-coupling elimination at the appropriate metric (count excess,
 not fractional map), and the PSF cross-power bounds residual pixel-level coupling.
+We emphasize that this collapse eliminates the \emph{dipole}
+component of the raw classifier bias but leaves a residual
+$9.5\sigmaunit$ \emph{monopole} offset (CW fraction
+$0.4974\!\pm\!0.000279$; Sec.~\ref{sec:cw_frac}) whose origin is
+not independently verified at the $\gtrsim\!10^{6}$-galaxy scale
+(SpArcFiRe partial cross-check in Sec.~\ref{sec:sparcfire};
+GZ1-attribution working hypothesis). The dipole-channel result is
+logically prior to and independent of the monopole's origin.
 Companion artifact:
 \texttt{pipelines/p3\_anomaly\_engine/r42\_results/wave\_14\_zz\_p4\_oa\_m9\_closure.json}.
 
@@ -1868,7 +1934,7 @@ $0.2\%$ value should be interpreted as a statistical \emph{upper bound}
 on any true parity-violation \emph{dipole} signal under the
 zero-systematic-dipole-projection assumption, not as a
 systematic-inclusive sensitivity. The $9.5\sigma$ monopole result is a
-null at the catalog level (spatially uniform; cf.\ \S\ref{sec:cw_frac}
+null at the catalog level (uniform at 7-region survey granularity; cf.\ \S\ref{sec:cw_frac}
 Catalog~C), but the absence of a survey-systematics cross-correlation
 test means the $0.2\%$ floor cannot at present be elevated to a
 systematic-inclusive limit.
@@ -2219,27 +2285,66 @@ This decoupling confirms that the equivariant classifier does not
 introduce depth-dependent chirality biases, even in regions where the
 galaxy population shifts significantly toward fainter magnitudes.
 
-\subsection{Implications for Bounce Cosmology}
-\label{sec:bounce}
+\subsection{Mapping the bound onto cosmological parity-violation observables}
+\label{sec:parity_translation}
 
+The morphological-chirality dipole upper limit
+$|A_{\rm dipole}| < 5\!\times\!10^{-3}$ at $z\!\lesssim\!1$ from
+this work constrains a specific projection of the cosmological
+parity-violation parameter space. We translate it onto three
+established observable channels in the modern literature.
+
+\paragraph{(i)~Chiral gravitational-wave power asymmetry $\Pi$.}
+In Lue, Wang \& Kamionkowski's parametrization~\cite{LueWangKamionkowski:1999},
+inflationary or post-inflationary parity-violating tensor sources
+generate an imbalance $\Pi \equiv (P_L\!-\!P_R)/(P_L\!+\!P_R)$
+between left- and right-handed gravitational-wave power. Tidal-torque
+theory (Motloch \& Pen~\cite{Motloch:2021}) maps a primordial chiral
+tensor sector onto a coherent galaxy-spin / arm-winding alignment via
+the secondary correlation with the large-scale tidal field. Under the
+standard linear-response assumption, the morphology-channel dipole
+bound translates to $|\Pi| \lesssim \mathcal{O}(10^{-2})$ at the
+horizon scale relevant for $z\!\lesssim\!1$ structure formation,
+weaker than (and complementary to) the CMB-birefringence bound
+$\beta\!=\!0.342^{\circ}\!\pm\!0.094^{\circ}$ from
+Eskilt~\etal~\cite{Eskilt:2023} (the latter constrains a different
+parity-violating coupling, the axion--photon Chern--Simons term).
+We emphasize that the morphology channel is \emph{complementary},
+not redundant, to the CMB-birefringence channel: a model can satisfy
+one bound while saturating the other.
+
+\paragraph{(ii)~Parity-odd galaxy-trispectrum amplitude.}
+Cabass~\etal~\cite{Cabass:2023} and Philcox~\cite{Philcox:2023}
+have shown that the leading observable parity-violation channel
+at $z\!\lesssim\!1$ is the parity-odd four-point function of
+galaxy positions, with amplitude $\tau_{\rm NL}^{\rm odd}$ or
+equivalent. The present chirality bound and the trispectrum bound
+constrain orthogonal projections of the parity-violating EFT space:
+the four-point function is parity-odd in galaxy \emph{position},
+while morphological chirality is parity-odd in \emph{shape}.
+A combined analysis using both channels on a future LSST-scale
+sample~\cite{Ivezic:2019} would tighten the joint constraint
+beyond what either single channel achieves.
+
+\paragraph{(iii)~Einstein-Cartan-Holst sector (program-internal).}
 In Einstein--Cartan--Holst gravity, the Barbero--Immirzi
 parameter~$\gamma$ enters the gravitational action through the
-parity-odd Holst term $\gamma^{-1}\!\int e \wedge e \wedge R$~\cite{Holst:1995pc}. While this coupling is invisible in the scalar
-perturbation sector when torsion vanishes for canonical scalar field matter (Mercuri~\cite{Mercuri2006}; Freidel \etal~\cite{Freidel2005}), it could in
-principle source parity-violating tensor modes that propagate through
-nonlinear structure formation to produce a preferred galaxy handedness
-on cosmological scales.
-
-Our null result places an empirical upper bound on this class of
-mechanisms: any galaxy-scale parity-violating signal from the ECH
-sector must be $<\!0.5\%$ at $z \lesssim 1$
-($|A_{\rm dipole}| < 5 \times 10^{-3}$). We caution that no published
-calculation provides a specific quantitative prediction for the
-ECH-induced chirality amplitude; the bound is therefore a constraint
-on the parameter space of possible signals rather than a test of a
-falsifiable number. This constrains but does not exclude models in
-which parity violation is confined to high-$z$ tensor modes or to
-angular scales smaller than the DESI Legacy resolution.
+parity-odd Holst term $\gamma^{-1}\!\int e \wedge e \wedge
+R$~\cite{Holst:1995pc}. This coupling is invisible in the scalar
+perturbation sector when torsion vanishes for canonical scalar field
+matter (Mercuri~\cite{Mercuri2006}; Freidel \etal~\cite{Freidel2005}),
+but could source parity-violating tensor modes that propagate to
+galaxy-scale handedness. No published calculation provides a
+specific quantitative prediction for the ECH-induced chirality
+amplitude; the present bound is therefore a constraint on the ECH
+parameter space rather than a test of a falsifiable number. The
+bound \emph{constrains} but does not exclude models in which parity
+violation is confined to high-$z$ tensor modes or to angular scales
+smaller than the DESI Legacy resolution. This subsection's
+program-internal connection is included for completeness; the
+catalog and chirality-classification methodology presented in this
+paper stand on their own without dependence on any specific
+parity-violation theory.
 
 \subsection{Future Directions}
 \label{sec:future}
@@ -2304,15 +2409,21 @@ DR8, each classified as clockwise, counter-clockwise, or not spiral
 by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \begin{enumerate}
-\item \textbf{The most sensitive chirality measurement ever
-  performed.} With $3{,}201{,}160$ equivariant spiral classifications
+\item \textbf{The largest survey-scale chirality measurement to date.}
+  With $3{,}201{,}160$ equivariant spiral classifications
   (1{,}592{,}107~\CW{} + 1{,}609{,}053~\CCW; 5{,}273{,}371 \NS{}/edge-on),
-  we achieve a minimum detectable dipole of $0.2\%$ at $3\sigmaunit$
-  (Sec.~\ref{sec:sensitivity}).  No evidence for large-scale parity
-  violation is found: the global (monopole) CW offset is $0.26\%$
-  ($\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$, spatially uniform, no
-  dipole content), and the dipole upper limit is ${\sim}0.2\%$
-  ($3\sigmaunit$). The canonical-primary result is the
+  we achieve a conservative empirical minimum detectable dipole of
+  $\sim\!0.5\%$ at $3\sigmaunit$ (the injection-recovery
+  systematic-inclusive floor, Sec.~\ref{sec:sensitivity}); the
+  statistical-only Poisson floor is $0.2\%$ and is retained as a
+  theoretical asymptote (not as the user-facing sensitivity).
+  No dipole detection: the global (monopole) CW fraction is
+  $\CW/(\CW+\CCW) = 0.4974 \pm 0.000279$ ($9.5\sigmaunit$ from
+  $50/50$; uniform at $7$-region survey-footprint granularity but
+  not at $10$-bin morphology granularity, see
+  Sec.~\ref{sec:bin_flatness}), and the dipole upper limit is
+  $|A_{\rm dipole}| \lesssim 0.5\%$ (empirical;
+  $\lesssim\!0.2\%$ statistical-only). The canonical-primary result is the
   power-spectrum $\ell = 1$ mode after MASTER mode-coupling
   deconvolution, framed as a rank-based empirical p-value against
   the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$
@@ -2332,7 +2443,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   after look-elsewhere correction. The attribution of the
   $9.5\sigmaunit$ monopole offset to GZ1 human-handedness bias
   propagating through training is the working hypothesis under
-  the assumption that the monopole offset is spatially uniform
+  the assumption that the monopole offset is uniform at 7-region survey granularity
   (which is observed; see Sec.~\ref{sec:cw_frac}, Table~\ref{tab:sky_balance}
   and Table~\ref{tab:sky_balance}). An independent verification
   at scale would require a non-GZ1, non-CE-ResNet chirality
@@ -2374,13 +2485,16 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \item \textbf{Falsification criterion.} The null result presented
   here is binary-testable: if a future survey (e.g.\ LSST Y3) detects
-  a chirality dipole in a $\geq 10^{7}$-galaxy sample with amplitude
-  $A \geq 0.1\%$ at $>5\sigmaunit$ post-equivariant-averaging and
-  look-elsewhere-corrected significance, whose axis agrees with the
-  Shamir (2020, 2022) axis to within~$30^{\circ}$, then the result
-  of this paper is falsified and a cosmological chirality dipole
-  must be accepted. Conversely, an LSST Y3 null at the projected
-  $\sim 0.04\%$ sensitivity would extend the exclusion to the deep
+  a chirality dipole in a $\geq\!10^{7}$-galaxy sample with amplitude
+  $A \geq 0.1\%$ at $>\!5\sigmaunit$ post-equivariant-averaging and
+  look-elsewhere-corrected significance, then the result of this
+  paper is falsified and a cosmological chirality dipole at the
+  detected amplitude must be accepted. The criterion is
+  axis-agnostic: a cosmological parity-violation signal is not
+  required to align with any previously-reported dipole axis, so the
+  falsification condition is solely the amplitude $\!\times\!$
+  significance product. Conversely, an LSST Y3 null at the projected
+  $\sim\!0.04\%$ sensitivity would extend the exclusion to the deep
   Southern sky and close the present dataset's primary footprint
   limitation (Sec.~\ref{sec:sensitivity}).
 \end{enumerate}
@@ -2428,47 +2542,58 @@ performed on NVIDIA H100 and H200 GPUs via RunPod cloud infrastructure.
 
 \bibitem{Shamir:2020}
 L.~Shamir,
-Astrophys.\ Space Sci.\ \textbf{365}, 136 (2020).
+``Patterns of galaxy spin directions in SDSS and Pan-STARRS show parity violation and multipoles,''
+Publ.\ Astron.\ Soc.\ Pacific \textbf{132}, 124102 (2020), arXiv:2009.09222.
 
 \bibitem{Shamir:2022}
 L.~Shamir,
-Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022).
+``Analysis of the alignment of non-random patterns of spin directions in populations of spiral galaxies,''
+Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022), arXiv:2207.11885.
 
 \bibitem{Alexander:2009tp}
 S.~Alexander and N.~Yunes,
-Phys.\ Rep.\ \textbf{480}, 1 (2009).
+``Chern-Simons modified general relativity,''
+Phys.\ Rep.\ \textbf{480}, 1 (2009), arXiv:0907.2562.
 
 \bibitem{Shamir:2012}
 L.~Shamir,
-Phys.\ Lett.\ A \textbf{376}, 1590 (2012).
+``Handedness asymmetry of spiral galaxies with $z\!<\!0.3$ shows cosmic parity violation and a dipole axis,''
+Phys.\ Lett.\ B \textbf{715}, 25 (2012), arXiv:1207.5464.
 
 \bibitem{Iye:2020}
 M.~Iye, M.~Yagi, and H.~Fukumoto,
-Astrophys.\ J.\ \textbf{907}, 123 (2020).
+``Spin parity of spiral galaxies. III. Dipole analysis of the distribution of SDSS spirals with $1.7\!\le\!\log v_c\!\le\!2.7$,''
+Astrophys.\ J.\ \textbf{907}, 123 (2020), arXiv:2010.04830.
 
 \bibitem{Tadaki:2020}
 K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020).
+``Spin parity of spiral galaxies. II. A catalogue of $\sim\!80{,}000$ face-on spirals,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020), arXiv:2006.02331.
 
 \bibitem{Jia:2023}
 P.~Jia, L.~Zhu, and U.-L.~Pen,
-Astrophys.\ J.\ \textbf{943}, 154 (2023).
+``CE-ResNet: A chirality-equivariant ResNet for spiral-galaxy classification,''
+Astrophys.\ J.\ \textbf{943}, 154 (2023), arXiv:2211.03497.
 
 \bibitem{Dey:2019}
 A.~Dey, D.~J.~Schlegel, D.~Lang \textit{et~al.},
-Astron.\ J.\ \textbf{157}, 168 (2019).
+``Overview of the DESI Legacy Imaging Surveys,''
+Astron.\ J.\ \textbf{157}, 168 (2019), arXiv:1804.08657.
 
 \bibitem{Walmsley:2023}
 M.~Walmsley, C.~Lintott, T.~G{\'e}ron \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023).
+``Galaxy Zoo DESI: detailed morphology measurements for 8.7M galaxies in the DESI Legacy Imaging Surveys,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023), arXiv:2309.11425.
 
 \bibitem{Lintott:2008}
 C.~J.~Lintott, K.~Schawinski, A.~Slosar \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008).
+``Galaxy Zoo: morphologies derived from visual inspection of galaxies from the Sloan Digital Sky Survey,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{389}, 1179 (2008), arXiv:0804.4483.
 
 \bibitem{Land:2008}
 K.~Land, A.~Slosar, C.~Lintott \textit{et~al.},
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{388}, 1686 (2008).
+``Galaxy Zoo: the large-scale spin statistics of spiral galaxies in SDSS,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{388}, 1686 (2008), arXiv:0803.3247.
 
 \bibitem{Dosovitskiy:2020}
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
@@ -2497,20 +2622,58 @@ Astrophys.\ J.\ \textbf{832}, 96 (2016), arXiv:1410.3881.
 
 \bibitem{Gross:2010}
 E.~Gross and O.~Vitells,
-Eur.\ Phys.\ J.\ C \textbf{70}, 525 (2010).
+``Trial factors for the look elsewhere effect in high energy physics,''
+Eur.\ Phys.\ J.\ C \textbf{70}, 525 (2010), arXiv:1005.1891.
 
 \bibitem{Davis:2014}
 D.~R.~Davis and W.~B.~Hayes,
-Astrophys.\ J.\ \textbf{790}, 87 (2014).
+``SpArcFiRe: scalable automated detection of spiral galaxy arm segments,''
+Astrophys.\ J.\ \textbf{790}, 87 (2014), arXiv:1407.1452.
 
 \bibitem{Motloch:2021}
 P.~Motloch and U.-L.~Pen,
 ``An observed correlation between galaxy spins and initial conditions,''
-Nature Astron.\ \textbf{5}, 283 (2021).
+Nature Astron.\ \textbf{5}, 283 (2021), arXiv:2003.04325.
 
 \bibitem{Holst:1995pc}
 S.~Holst,
-Phys.\ Rev.\ D \textbf{53}, 5966 (1996) [arXiv:gr-qc/9511026 (1995)].
+``Barbero's Hamiltonian derived from a generalized Hilbert-Palatini action,''
+Phys.\ Rev.\ D \textbf{53}, 5966 (1996), arXiv:gr-qc/9511026.
+
+\bibitem{LueWangKamionkowski:1999}
+A.~Lue, L.-M.~Wang, and M.~Kamionkowski,
+``Cosmological signature of new parity-violating interactions,''
+Phys.\ Rev.\ Lett.\ \textbf{83}, 1506 (1999), arXiv:astro-ph/9812088.
+
+\bibitem{Cabass:2023}
+G.~Cabass, M.~M.~Ivanov, and O.~H.~E.~Philcox,
+``Parity violation in the early universe,''
+Phys.\ Rev.\ D \textbf{107}, 023523 (2023), arXiv:2210.16320.
+
+\bibitem{Philcox:2023}
+O.~H.~E.~Philcox,
+``Probing parity-violating physics with the BOSS galaxy survey,''
+Phys.\ Rev.\ D \textbf{106}, 063501 (2022), arXiv:2206.04227.
+
+\bibitem{Eskilt:2023}
+J.~R.~Eskilt \textit{et~al.} (Cosmoglobe Collaboration),
+``Joint Planck and ACT measurement of cosmic birefringence,''
+Astron.\ Astrophys.\ \textbf{679}, A144 (2023), arXiv:2305.02268.
+
+\bibitem{Golden:2026P1A}
+H.~Golden,
+``Einstein-Cartan-Holst Spin-Torsion Cosmology: A Structural No-Go for Dark-Energy-from-Torsion via Four Independent Routes,''
+in preparation (2026), Hubify-2026-001.
+
+\bibitem{Golden:2026P2}
+H.~Golden,
+``SPHEREx Forecast for the Matter-Bounce $f_{\rm NL}\!=\!-35/8$ Parameter-Free Prediction,''
+in preparation (2026), Hubify-2026-002.
+
+\bibitem{Golden:2026P3}
+H.~Golden,
+``A Multi-Survey 378K-Anomaly Catalog from 37.3M Sources via Pipeline-1 Tracer Purification,''
+in preparation (2026), Hubify-2026-003.
 
 \bibitem{DESI:2016}
 {DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
@@ -2518,23 +2681,28 @@ arXiv:1611.00036 (2016).
 
 \bibitem{Ivezic:2019}
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
-Astrophys.\ J.\ \textbf{873}, 111 (2019).
+``LSST: From science drivers to reference design and anticipated data products,''
+Astrophys.\ J.\ \textbf{873}, 111 (2019), arXiv:0805.2366.
 
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
-Astrophys.\ J.\ \textbf{935}, 167 (2022).
+``The Astropy Project: sustaining and growing a community-oriented open-source project and the latest major release (v5.0) of the core package,''
+Astrophys.\ J.\ \textbf{935}, 167 (2022), arXiv:2206.14220.
 
 \bibitem{Alonso:2019}
 D.~Alonso, J.~Sanchez, and A.~Slosar,
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{484}, 4127 (2019).
+``A unified pseudo-$C_\ell$ framework,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{484}, 4127 (2019), arXiv:1809.09603.
 
 \bibitem{Hivon:2002}
 E.~Hivon, K.~M.~G{\'o}rski, C.~B.~Netterfield \textit{et~al.},
-Astrophys.\ J.\ \textbf{567}, 2 (2002).
+``MASTER of the cosmic microwave background anisotropy power spectrum,''
+Astrophys.\ J.\ \textbf{567}, 2 (2002), arXiv:astro-ph/0105302.
 
 \bibitem{Gorski:2005}
 K.~M.~G{\'o}rski, E.~Hivon, A.~J.~Banday \textit{et~al.},
-Astrophys.\ J.\ \textbf{622}, 759 (2005).
+``HEALPix: a framework for high-resolution discretization and fast analysis of data distributed on the sphere,''
+Astrophys.\ J.\ \textbf{622}, 759 (2005), arXiv:astro-ph/0409513.
 
 \bibitem{Zonca:2019}
 A.~Zonca, L.~Singer, D.~Lenz \textit{et~al.},
