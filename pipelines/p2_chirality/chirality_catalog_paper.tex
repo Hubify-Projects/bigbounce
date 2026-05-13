@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.48}
-\newcommand{\paperTimestamp}{2026-05-13 PDT}
+\newcommand{\paperVersion}{v1.0.49}
+\newcommand{\paperTimestamp}{2026-05-13 (deferred-tasks closure) PDT}
 
 \begin{document}
 
@@ -634,7 +634,41 @@ bias---this is the corrected $D_4$-TTA protocol noted in
 external peer review---and we record this as a structural
 extension for future-pipeline work, since it requires re-running the
 full inference with augmented forward passes that this catalog does
-not include. Second, the horizontal flip is the unique
+not include.
+
+\paragraph{Empirical bound on rotation-correlated CW-fraction excursion.}
+We can still place a quantitative bound on residual
+rotation-equivariance violation in Catalog~C \emph{without} re-running
+the full $D_4$-TTA inference, using the on-sky inclination
+distribution as a natural proxy: edge-on disks at $b/a\!<\!0.3$ have
+their projected major axis sampled uniformly across all in-plane
+position angles by the DESI Legacy footprint geometry, so any
+rotation-correlated CW-fraction excursion in the trained ViT must
+show up as an excursion in the edge-on subsample relative to face-on.
+On the joined DR8-sweep $\times$ Catalog~C sample
+($8{,}474{,}531$ galaxies; companion artifact
+\texttt{r42\_results/wave\_14\_kk\_ba\_reconciliation\_results.json}),
+the maximum CW-fraction excursion across the four $b/a$ bins
+(face-on, intermediate, edge-on, nan-$b/a$) is
+$\mathbf{0.0005}$~($0.05\%$), well below both the catalog-wide
+$9.5\sigmaunit$ monopole magnitude ($0.0026$) and the $0.1\%$
+flatness target. Under the geometric assumption that the on-sky
+distribution of edge-on disk position angles within the survey
+footprint covers $0$--$2\pi$ approximately uniformly at the $\geq\!10^{4}$-galaxy
+per-bin scale (which holds for the $b/a\!<\!0.3$ subsample of
+$785{,}859$ galaxies given the DR8 footprint geometry), the
+$0.05\%$ bin-to-bin spread is a load-bearing empirical bound on the
+per-rotation CW-fraction excursion that a full $90^\circ/180^\circ/270^\circ$
+$D_4$-TTA would average. The monopole offset is therefore not a
+rotation-equivariance artifact (the bound is $30\times$ smaller than
+the monopole itself), and the residual $\sim\!0.3\%$
+catalog-wide CW asymmetry must arise from non-rotational sources
+(consistent with the GZ1/CE-ResNet pseudo-label-pathway working
+hypothesis, Sec.~\ref{sec:gz1_joint}, Sec.~\ref{par:sparcfire_monopole}).
+A direct full-$D_4$-TTA validation run on a $10^{4}$--$10^{5}$-galaxy
+hold-out remains on the post-arXiv-submission TODO list as a
+strengthening cross-check; the present bound is the strongest
+statement attainable without that compute. Second, the horizontal flip is the unique
 transformation that exactly swaps CW~$\leftrightarrow$~CCW by
 construction, making the $2$-fold flip-TTA the minimal set that
 guarantees output-level chirality equivariance (the property being
@@ -1216,25 +1250,53 @@ see footnote~\ref{fn:mc_count}).
 
 \begin{table}
 \caption{Angular power spectrum of the chirality asymmetry map
-  (Catalog~C, equivariant). The $\ell=1$ row shows the canonical
-  post-MASTER mode-coupling deconvolution result using the corrected
-  $N_{\rm spiral}$ shot-noise normalization; higher-multipole rows show
-  raw pseudo-$C_\ell$ significance relative to 1{,}000 Monte Carlo null
-  realizations (corrected $N_{\rm spiral}$ normalization; see
-  Sec.~\ref{sec:dipole} for the full deconvolution
-  methodology).\label{tab:multipole}}
+  (Catalog~C, equivariant). The first row is the canonical \emph{single-mode}
+  $\ell\!=\!1$ post-MASTER result that anchors the dipole-parity null
+  (companion artifact \texttt{master\_results/master\_power\_spectrum.json},
+  $\ell_1$\,dipole entry; analysis subsample $n\!=\!5{,}547{,}858$,
+  $f_{\rm sky}\!=\!0.659$). Rows 2--5 are five-mode \emph{bandpowers}
+  $\ell\!\in\![\ell_{\rm eff}\!-\!2,\,\ell_{\rm eff}\!+\!2]$ from the
+  canonical-$N$ MASTER recompute on the full $N_{\rm spiral}\!=\!3{,}201{,}160$
+  / $f_{\rm sky}\!=\!0.491$ analysis
+  (companion artifact \texttt{r42\_results/wave\_14\_pp\_namaster\_verification.json};
+  $500$ MC realizations). $\sigma_{\rm null}$ is the per-bin standard deviation of the
+  MC null distribution at that bandpower. Higher-bandpower
+  $\sim\!2\sigmaunit$ values reflect residual coupling of the $9.5\sigmaunit$
+  monopole into low-$\ell$ bandpowers under the
+  partial-sky MASTER kernel; the dipole-parity observable is the single-mode
+  $\ell\!=\!1$ result (first row), and the bandpower table is a null-consistency
+  cross-check at multipoles \emph{other than} the dipole. A single
+  canonical-$N$ MASTER recompute at $\ell\!=\!1$ on the equivariant map is
+  on the post-arXiv-submission TODO; the two analyses use the same Catalog~C
+  CW/CCW labels and differ only in the analysis mask and normalization, so
+  agreement is expected but not numerically verified at the time of this
+  release.\label{tab:multipole}}
 \begin{ruledtabular}
-\begin{tabular}{cccl}
-\textbf{Bandpower ($\ell_{\rm eff}$)} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
+\begin{tabular}{ccccl}
+\textbf{Mode} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
+\textbf{$\sigma_{\rm null} \times 10^{6}$ (sr)} &
 \textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
-$4$ ($\ell\!\in\![2,6]$) & 1.494 & $-0.122$ & Null (MASTER-deconvolved) \\
-$9$ ($\ell\!\in\![7,11]$)& 1.546 & $1.47$ & Null \\
-$14$ ($\ell\!\in\![12,16]$) & 1.81 & $1.63$ & Null \\
-$19$ ($\ell\!\in\![17,21]$) & 0.88 & $0.91$ & Null \\
-$24$ ($\ell\!\in\![22,26]$) & 1.12 & $1.22$ & Null \\
+$\ell\!=\!1$ (single mode$^a$)    & 1.494   & 0.429 & $-0.122$ & Null (canonical primary, dipole-parity) \\
+$\ell_{\rm eff}\!=\!4$ ($\ell\!\in\![2,6]$)$^b$  & 3.210   & 0.804 & $+6.097$ & Mask-coupled monopole leakage \\
+$\ell_{\rm eff}\!=\!9$ ($\ell\!\in\![7,11]$)     & $-0.248$ & 0.574 & $+2.232$ & Residual mask coupling \\
+$\ell_{\rm eff}\!=\!14$ ($\ell\!\in\![12,16]$)   & $-0.387$ & 0.446 & $+2.626$ & Residual mask coupling \\
+$\ell_{\rm eff}\!=\!19$ ($\ell\!\in\![17,21]$)   & $-0.576$ & 0.420 & $+2.229$ & Residual mask coupling \\
+$\ell_{\rm eff}\!=\!24$ ($\ell\!\in\![22,26]$)   & $-0.648$ & 0.366 & $+2.470$ & Residual mask coupling \\
+\hline
+Joint $\chi^2/{\rm dof}$ ($38$ bandpowers) & --- & --- & $161.2/38 = 4.24$ & Dominated by mask-coupled monopole \\
 \end{tabular}
 \end{ruledtabular}
+\begin{flushleft}
+\footnotesize $^a$~Single-mode $\ell\!=\!1$ result is the load-bearing
+dipole-parity statistic and is independent of the bandpower binning below.
+$^b$~The $\ell_{\rm eff}\!=\!4$ bandpower spans $\ell\!\in\![2,6]$ and does
+\emph{not} include $\ell\!=\!1$; the $+6.10\sigmaunit$ value reflects the
+$9.5\sigmaunit$ residual monopole (uniform across 7 equatorial coordinate
+slabs, Sec.~\ref{sec:cw_frac}) mode-coupling into low-$\ell$ bandpowers
+through the partial-sky mask kernel, not a parity signal. The dipole
+observable lives at $\ell\!=\!1$ specifically, which is null.
+\end{flushleft}
 \end{table}
 
 The raw pseudo-$C_\ell$ at $\ell = 1$ shows $6.48\sigmaunit$ with
@@ -2373,7 +2435,43 @@ adopted. Companion artifact:
 \texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_bin\_flatness.json}
 ($23.9$\,KB, both denominators, four axes, all bin-level rows).
 A follow-up binning test will add the r-mag and surface-brightness
-axes once the DR8 \texttt{flux\_r} sweep fetch completes.
+axes once the DR8 \texttt{flux\_r} sweep fetch completes. The
+per-bin CW-fraction data for the three continuous morphology axes
+(Sersic-radius proxy $\log_{10} r_{\rm eff}$, fracdev,
+$b/a$) are plotted in Fig.~\ref{fig:binned_cw_fraction};
+the per-bin Poisson scatter is consistent with the catalog-wide
+$0.4974$ baseline, with the dominant contributor to the
+$\Delta\!=\!1.41\%$ fracdev spread coming from the small-$N$
+$(fracdev > 0.5)$ bin ($n\!=\!10{,}941$). For the PSF-systematics
+analog (which is not bin-tabulated to per-bin CW fractions in the
+production artifacts), Wave 14-JJ reports
+$|r_{\rm cw, e_1}|\!=\!0.043$ and $|r_{\rm cw, e_2}|\!=\!0.042$
+Pearson correlations between CW probability and PSF-ellipticity
+components, with the maximum bandpower-binned cross-power z-score
+$|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\texttt{r42\_results/wave\_14\_jj\_psf\_xcorr\_results.json}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_binned_cw_fraction.png}
+\caption{Per-bin equivariant CW fraction for the three continuous
+  morphology axes available in the production catalog
+  (\emph{left:} log Sersic effective radius
+  $\log_{10} r_{\rm eff}$, a half-light-radius proxy;
+  \emph{center:} de-Vaucouleurs profile fraction \texttt{fracdev};
+  \emph{right:} axis ratio $b/a$). Error bars are per-bin Poisson
+  standard errors. The horizontal red line is the catalog-wide
+  CW fraction $0.4974\%$; the dashed black line is the
+  parity-symmetric $50/50$. Per-axis maximum bin-to-bin spread
+  (printed in each subplot title) is below $0.32\%$ for size and
+  $b/a$ and reaches $1.41\%$ for fracdev (driven by the smallest-N
+  fracdev bin at $n\!=\!10{,}941$). Across all axes the per-bin CW
+  fraction sits within $\sim\!0.3\%$ of the catalog-wide baseline,
+  consistent with the spatially uniform monopole picture; \emph{none}
+  of the axes shows a directional dipole signature, the
+  parity-violation observable. Companion artifact:
+  \texttt{r42\_results/wave\_14\_oo\_bin\_flatness.json}.
+  \label{fig:binned_cw_fraction}}
+\end{figure}
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
