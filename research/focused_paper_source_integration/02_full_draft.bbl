@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{28}%
+\begin{thebibliography}{38}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,43 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Pajer}\ \emph {et~al.}(2013)\citenamefont {Pajer},
+  \citenamefont {Schmidt},\ and\ \citenamefont {Zaldarriaga}}]{Pajer:2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Pajer}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Schmidt}},\
+  and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Zaldarriaga}},\
+  }\bibfield  {title} {\bibinfo {title} {{The Observed Squeezed Limit of
+  Cosmological Three-Point Functions}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.88.083502} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {88}},\ \bibinfo
+  {pages} {083502} (\bibinfo {year} {2013})},\ \Eprint
+  {https://arxiv.org/abs/1305.0824} {arXiv:1305.0824 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tanaka}\ and\ \citenamefont
+  {Urakawa}(2011)}]{TanakaUrakawa:2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Tanaka}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Urakawa}},\ }\bibfield  {title} {\bibinfo {title} {{Dominance of Gauge
+  Artifact in the Consistency Relation for the Primordial Bispectrum}},\ }\href
+  {https://doi.org/10.1088/1475-7516/2011/05/014} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {1105}},\ \bibinfo
+  {pages} {014}},\ \Eprint {https://arxiv.org/abs/1103.1251} {arXiv:1103.1251
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
+  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
+  {Krause}}]{Heinrich:2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
+  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
+  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
+  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume}
+  {2024}}\bibfield  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages}
+  {074}},\ }\Eprint {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
@@ -137,16 +174,18 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
   {Dore}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Cosmology
-  with the spherex all-sky spectral survey},\ }\href@noop {} {\  (\bibinfo
-  {year} {2014})},\ \Eprint {https://arxiv.org/abs/1412.4872} {arXiv:1412.4872}
+  with the spherex all-sky spectral survey},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year}
+  {2014})},\ \Eprint {https://arxiv.org/abs/1412.4872} {arXiv:1412.4872}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Schlegel}\ \emph {et~al.}(2022)\citenamefont
   {Schlegel} \emph {et~al.}}]{Schlegel:2022}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
   {Schlegel}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
-  megamapper: A stage-5 spectroscopic instrument concept},\ }\href@noop {} {\
-  (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2209.04322}
+  megamapper: A stage-5 spectroscopic instrument concept},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
+  {year} {2022})},\ \Eprint {https://arxiv.org/abs/2209.04322}
   {arXiv:2209.04322} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dalal}\ \emph {et~al.}(2008)\citenamefont {Dalal},
   \citenamefont {Dore}, \citenamefont {Huterer},\ and\ \citenamefont
@@ -161,19 +200,6 @@
   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {77}},\ \bibinfo
   {pages} {123514} (\bibinfo {year} {2008})},\ \Eprint
   {https://arxiv.org/abs/0710.4560} {arXiv:0710.4560} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
-  {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
-  {Krause}}]{Heinrich:2023}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
-  {Heinrich}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Dore}},\
-  and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
-  }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
-  spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\bibfield
-  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume}
-  {2024}}\bibfield  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages}
-  {074}},\ }\Eprint {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082
-  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Komatsu}\ \emph {et~al.}(2005)\citenamefont
   {Komatsu}, \citenamefont {Spergel},\ and\ \citenamefont
   {Wandelt}}]{Komatsu:2005}%
@@ -187,25 +213,95 @@
   {634}},\ \bibinfo {pages} {14} (\bibinfo {year} {2005})},\ \Eprint
   {https://arxiv.org/abs/astro-ph/0305189} {arXiv:astro-ph/0305189}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2026)\citenamefont {Cai} \emph
-  {et~al.}}]{Cai:2026echoes}%
+\bibitem [{\citenamefont {Zhu}\ \emph {et~al.}(2026)\citenamefont {Zhu},
+  \citenamefont {Cai} \emph {et~al.}}]{Zhu:2026echoes}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Zhu}}, \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Smoking-gun signatures of
+  bounce cosmology from echoes of relic gravitational waves},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
+  {year} {2026})},\ \Eprint {https://arxiv.org/abs/2603.13924}
+  {arXiv:2603.13924} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cai}\ and\ \citenamefont
+  {Brandenberger}(2014)}]{CaiBrandenberger:2014}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
-  {Cai}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Echoes of
-  bouncing cosmologies},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
-  {journal} {JSTAT}\ }}\Eprint {https://arxiv.org/abs/2601.00000}
-  {arXiv:2601.00000} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Li}\ and\ \citenamefont
-  {Brandenberger}(2014)}]{LiBrandenberger:2014}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
-  {Li}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Cai}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
   {Brandenberger}},\ }\bibfield  {title} {\bibinfo {title} {Non-{Gaussianity}
   in a matter bounce},\ }\href {https://doi.org/10.1103/PhysRevD.90.023534}
   {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
   {\bibinfo {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year}
   {2014})},\ \Eprint {https://arxiv.org/abs/1405.1097} {arXiv:1405.1097
   [hep-th]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Slosar}\ \emph {et~al.}(2008)\citenamefont {Slosar},
+  \citenamefont {Hirata}, \citenamefont {Seljak}, \citenamefont {Ho},\ and\
+  \citenamefont {Padmanabhan}}]{Slosar:2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Slosar}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Hirata}},
+  \bibinfo {author} {\bibfnamefont {U.}~\bibnamefont {Seljak}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Ho}},\ and\ \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Padmanabhan}},\ }\bibfield  {title}
+  {\bibinfo {title} {Constraints on local primordial non-gaussianity from large
+  scale structure},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {JCAP}\ }\textbf {\bibinfo {volume} {2008}}\bibfield  {number} {\bibinfo
+  {number} { (08)},\ \bibinfo {pages} {031}},\ }\Eprint
+  {https://arxiv.org/abs/0805.3580} {arXiv:0805.3580} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {M\"unchmeyer}\ \emph {et~al.}(2019)\citenamefont
+  {M\"unchmeyer}, \citenamefont {Madhavacheril}, \citenamefont {Ferraro},
+  \citenamefont {Johnson},\ and\ \citenamefont {Smith}}]{Munchmeyer:2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {M\"unchmeyer}}, \bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont
+  {Madhavacheril}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Ferraro}}, \bibinfo {author} {\bibfnamefont {M.~C.}\ \bibnamefont
+  {Johnson}},\ and\ \bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont
+  {Smith}},\ }\bibfield  {title} {\bibinfo {title} {Constraining local
+  non-{Gaussianities} with kinetic sunyaev-zel'dovich tomography},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf
+  {\bibinfo {volume} {100}},\ \bibinfo {pages} {083508} (\bibinfo {year}
+  {2019})},\ \Eprint {https://arxiv.org/abs/1810.13424} {arXiv:1810.13424
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Seljak}(2009)}]{Seljak2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.}~\bibnamefont
+  {Seljak}},\ }\bibfield  {title} {\bibinfo {title} {{Extracting Primordial
+  Non-Gaussianity without Cosmic Variance}},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.102.021302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {102}},\
+  \bibinfo {pages} {021302} (\bibinfo {year} {2009})},\ \Eprint
+  {https://arxiv.org/abs/0807.1770} {arXiv:0807.1770 [astro-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {McDonald}\ and\ \citenamefont
+  {Seljak}(2009)}]{McDonaldSeljak2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {McDonald}}\ and\ \bibinfo {author} {\bibfnamefont {U.}~\bibnamefont
+  {Seljak}},\ }\bibfield  {title} {\bibinfo {title} {{How to evade the sample
+  variance limit on measurements of redshift-space distortions}},\ }\href
+  {https://doi.org/10.1088/1475-7516/2009/10/007} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {2009}},\ \bibinfo
+  {pages} {007}},\ \Eprint {https://arxiv.org/abs/0810.0323} {arXiv:0810.0323
+  [astro-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Karagiannis}\ \emph {et~al.}(2018)\citenamefont
+  {Karagiannis}, \citenamefont {Lazanu}, \citenamefont {Liguori}, \citenamefont
+  {Raccanelli}, \citenamefont {Bartolo},\ and\ \citenamefont
+  {Verde}}]{Karagiannis2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Karagiannis}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Lazanu}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Liguori}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Raccanelli}}, \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Bartolo}},\ and\ \bibinfo {author}
+  {\bibfnamefont {L.}~\bibnamefont {Verde}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Constraining primordial non-Gaussianity with bispectrum and power
+  spectrum from upcoming optical and radio surveys}},\ }\href
+  {https://doi.org/10.1093/mnras/sty1029} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. Roy. Astron. Soc.}\ }\textbf {\bibinfo {volume} {478}},\
+  \bibinfo {pages} {1341} (\bibinfo {year} {2018})},\ \Eprint
+  {https://arxiv.org/abs/1801.09280} {arXiv:1801.09280 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Baron}\ and\ \citenamefont
   {Poznanski}(2017)}]{Baron2017}%
   \BibitemOpen
@@ -232,14 +328,16 @@
   {Jolicoeur}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Maartens}},
   \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Unbiased analysis of
   primordial non-gaussianity: the multipoles of the full relativistic power
-  spectrum},\ }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  spectrum},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv
+  e-prints}\ } (\bibinfo {year} {2025})},\ \Eprint
   {https://arxiv.org/abs/2511.09466} {arXiv:2511.09466} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Barreira}(2022)}]{Barreira:2022}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
   {Barreira}},\ }\bibfield  {title} {\bibinfo {title} {Can we actually
   constrain $f_{\rm nl}$ using the scale-dependent bias effect?},\ }\href@noop
-  {} {\  (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2205.05673}
+  {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
+  {year} {2022})},\ \Eprint {https://arxiv.org/abs/2205.05673}
   {arXiv:2205.05673 [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2018)\citenamefont {Cai},
   \citenamefont {Chen}, \citenamefont {Namjoo}, \citenamefont {Sasaki},
@@ -254,6 +352,17 @@
   non-gaussianity from non-attractor inflation models},\ }\href@noop {}
   {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }}\Eprint
   {https://arxiv.org/abs/1712.09998} {arXiv:1712.09998} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chen}\ and\ \citenamefont
+  {Wang}(2010)}]{Chen:2009zp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {Chen}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Wang}},\
+  }\bibfield  {title} {\bibinfo {title} {{Quasi-Single Field Inflation and
+  Non-Gaussianities}},\ }\href {https://doi.org/10.1088/1475-7516/2010/04/027}
+  {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
+  {volume} {1004}},\ \bibinfo {pages} {027}},\ \Eprint
+  {https://arxiv.org/abs/0911.3380} {arXiv:0911.3380 [hep-th]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Pullen}\ and\ \citenamefont
   {Hirata}(2010)}]{Pullen:2010zy}%
   \BibitemOpen
@@ -281,6 +390,21 @@
   {volume} {422}},\ \bibinfo {pages} {2854} (\bibinfo {year} {2012})},\ \Eprint
   {https://arxiv.org/abs/1109.0958} {arXiv:1109.0958 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Jung}}\ \emph {et~al.}(2025)\citenamefont {{Jung}},
+  \citenamefont {{Citran}}, \citenamefont {{van Tent}}, \citenamefont
+  {{Dumilly}},\ and\ \citenamefont {{Aghanim}}}]{Jung2025PlanckPR4fNL}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {{Jung}}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {{Citran}}},
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {{van Tent}}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {{Dumilly}}},\ and\ \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {{Aghanim}}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Constraints on primordial non-{G}aussianity from {P}lanck
+  {PR4} data}},\ }\href {https://doi.org/10.1051/0004-6361/202555283}
+  {\bibfield  {journal} {\bibinfo  {journal} {Astronomy \& Astrophysics}\
+  }\textbf {\bibinfo {volume} {702}},\ \bibinfo {eid} {A204} (\bibinfo {year}
+  {2025})},\ \Eprint {https://arxiv.org/abs/2504.00884} {arXiv:2504.00884
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
   {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Akrami}
   \emph {et~al.}}]{Planck:2019fnl}%
@@ -300,10 +424,11 @@
   \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DESI Collaboration}}},
   \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Aghamousa}}, \emph
   {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The desi experiment part i:
-  Science, targeting, and survey design},\ }\href@noop {} {\  (\bibinfo {year}
-  {2016})},\ \bibinfo {note} {table 2.7: $\sigma(f_{\rm NL}) \approx 3$--$5$
-  from multi-tracer scale-dependent bias},\ \Eprint
-  {https://arxiv.org/abs/1611.00036} {arXiv:1611.00036} \BibitemShut {NoStop}%
+  Science, targeting, and survey design},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2016})},\ \bibinfo
+  {note} {table 2.7: $\sigma(f_{\rm NL}) \approx 3$--$5$ from multi-tracer
+  scale-dependent bias},\ \Eprint {https://arxiv.org/abs/1611.00036}
+  {arXiv:1611.00036} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Euclid Collaboration}}\ \emph
   {et~al.}(2025)\citenamefont {{Euclid Collaboration}}, \citenamefont {Mellier}
   \emph {et~al.}}]{EuclidCollaboration:2024}%
@@ -322,10 +447,10 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~N.}\ \bibnamefont
   {Abazajian}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{CMB-S4}
-  science book},\ }\href@noop {} {\  (\bibinfo {year} {2019})},\ \bibinfo
-  {note} {expected $\sigma(f_{\rm NL}) \approx 2.5$ from CMB bispectrum},\
-  \Eprint {https://arxiv.org/abs/1907.04473} {arXiv:1907.04473} \BibitemShut
-  {NoStop}%
+  science book},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {arXiv e-prints}\ } (\bibinfo {year} {2019})},\ \bibinfo {note} {expected
+  $\sigma(f_{\rm NL}) \approx 2.5$ from CMB bispectrum},\ \Eprint
+  {https://arxiv.org/abs/1907.04473} {arXiv:1907.04473} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
   {Komatsu}(2022)}]{Eskilt2022}%
   \BibitemOpen
@@ -343,6 +468,19 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
   {Diego-Palazuelos}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title}
   {Act dr6 cosmic-birefringence measurement and consistency with planck},\
-  }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
-  {https://arxiv.org/abs/2503.19884} {arXiv:2503.19884} \BibitemShut {NoStop}%
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ }
+  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2503.19884}
+  {arXiv:2503.19884} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eskilt}\ \emph {et~al.}(2023)\citenamefont {Eskilt}
+  \emph {et~al.}}]{Eskilt2023Cosmoglobe}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Eskilt}} \emph {et~al.} (\bibinfo {collaboration} {Cosmoglobe}),\ }\bibfield
+   {title} {\bibinfo {title} {Cosmoglobe dr1 results. ii. constraints on
+  isotropic cosmic birefringence from reprocessed wmap and planck lfi data},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Astron.
+  Astrophys.}\ }\textbf {\bibinfo {volume} {679}},\ \bibinfo {pages} {A144}
+  (\bibinfo {year} {2023})},\ \bibinfo {note} {reports $\beta = 0.35^\circ \pm
+  0.70^\circ$ from WMAP+Planck LFI alone (no ACT)},\ \Eprint
+  {https://arxiv.org/abs/2305.02268} {arXiv:2305.02268} \BibitemShut {NoStop}%
 \end{thebibliography}%

@@ -2,15 +2,19 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-05-02 11:30 PDT
+last_updated: 2026-05-13 13:30 PDT
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
 canonical_pdf: public/papers/02_full_draft.pdf
-version: v1.7.9
-headline_pct: 100
+version: v1.7.27
+headline_pct: 79
 submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HARD FIX: Data-and-Code-Availability URL and release tag updated from v1.7.0 to v1.7.9-paper2 in 02_full_draft.tex line 381; git tag v1.7.9-paper2 pushed to remote. Prior: R42 Wave 14-VV LANDED -- P2 v1.7.8->v1.7.9 m3 Planck PR4/NPIPE f_NL citation FULL HARD FIX (Jung2025PlanckPR4fNL, f_NL=-0.1+/-5.0) + m8 P1 SPT-3G INVALID. Prior: Wave 14-AA LANDED — two Gemini-3.1-Pro P2 cheap-fast MAJORS closed in one bundle: P2-CM-M1 sigma_theory={0.5,1.0,2.0} prior-sweep promoted as PRIMARY Bayes-factor headline with delta-prior demoted to "theoretical maximum only" footnote, and P2-CM-M2 b_phi cross-term language fix dropping the misleading "bispectrum nearly independent of b_phi" claim with explicit Delta b(k) proportional to f_NL * b_phi / k^2 Dalal-Slosar form + Heinrich+2023 universality cite + 30%/50% degradation caveats; PDF recompiled clean on Pod 3 2026-05-02 04:30 PDT under v1.7.8)
 ---
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
+
+**Last authoritative update:** 2026-05-13 (PDT, 13:30) — **P2 v1.7.26 → v1.7.27 — 30-min-loop tick 1.** Cross-vendor R-round-3 (5 sub-agents) returned 51 findings (7B + 21M + 18m + 5n) — NOT clean. Readiness 84 → 71 honest mid-round → 79 post-closures. **All 7 BLOCKERs closed**: (1) `Eskilt2022b` bibitem REVERTED — was confabulating 0.342° measurement from Eskilt+Komatsu (arXiv:2205.13962) onto Cosmoglobe DR1 II metadata (arXiv:2305.02268, which is actually 0.35°±0.70° WMAP+LFI-only no ACT); new `Eskilt2023Cosmoglobe` key added; L379 prose now cites `Eskilt2022` for the actual 0.342° measurement with parenthetical Cosmoglobe disclosure. (2) `Munchmeyer:2019` SPHEREx-vs-kSZ attribution corrected — replaced with `Dore:2014` as the canonical SPHEREx galaxy-survey forecast. (3) 9.9σ joint-Fisher provenance sharpened (σ_unmarg=0.114 would be 6.1× sharper than any published SPHEREx forecast; 6-bin Fisher not on disk). (4) Heinrich-fiducial-shift disclosure (Fisher is at f_NL=0, applying at -4.375 relies on LO linearization). (5) Gauge-frame muddle resolved (physical-observer-frame f_NL_inf=0 per Pajer+2013, Tanaka-Urakawa+2011). (6) "Mechanism-independent" tightened to "Wilson-Ewing-class robust, UV-completion-independent within that class". (7) Higuchi misattribution corrected (QSFI principal-vs-complementary-series ≠ spin-2 Higuchi). 19 MAJORs closed: Zhu:2026echoes citation fix (was Cai:2026echoes — wrong author + title); Cabass:2022 BOSS f_NL added; multiple disclosure-language tightenings. 4 items DEFERRED (compute-bound): 6-bin SDB Fisher script, Heinrich fiducial-shift verification, joint-Fisher post-systematic recompute, Cabass+2024 follow-up. **PDF**: 18 pp / 795,968 bytes (was 792,134; +3,834 bytes). 0 undef refs / 0 undef cites. Mirrors byte-identical across 5 surfaces (sha256 `831e69645abbd33c...`). Reviewer files at `project-context/peer-reviews/2026-05-13_1330pt_P2_R-round_*.md`.
+
+---
 
 **Canonical `.tex`:** `research/focused_paper_source_integration/02_full_draft.tex` (revtex4-2; R42 Wave 14-AAA edited 2026-05-02)
 **Canonical PDF:** `public/papers/02_full_draft.pdf` (764,114 bytes / 15 pp / 0 undef refs, recompiled Wave 14-FFF 2026-05-02 23:00 PDT local pdflatex TeX Live 2026/Homebrew under v1.7.9; all 5 mirror surfaces updated byte-identical)
