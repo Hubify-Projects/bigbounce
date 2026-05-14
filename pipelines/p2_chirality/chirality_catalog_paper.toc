@@ -50,6 +50,7 @@
 \contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{25}{section*.48}%
 \contentsline {subsection}{\numberline {G}Future Directions}{25}{section*.49}%
 \contentsline {section}{\numberline {VII}Conclusions}{26}{section*.50}%
-\contentsline {section}{\numberline {VIII}Data Availability}{27}{section*.51}%
-\contentsline {section}{\numberline {}Acknowledgments}{27}{section*.52}%
-\contentsline {section}{\numberline {}References}{27}{section*.53}%
+\contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review deferrals (v1.0.52).}{26}{section*.51}%
+\contentsline {section}{\numberline {VIII}Data Availability}{27}{section*.52}%
+\contentsline {section}{\numberline {}Acknowledgments}{27}{section*.53}%
+\contentsline {section}{\numberline {}References}{28}{section*.54}%
