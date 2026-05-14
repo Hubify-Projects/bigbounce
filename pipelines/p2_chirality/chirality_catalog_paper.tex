@@ -58,8 +58,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.64}
-\newcommand{\paperTimestamp}{2026-05-14 PDT}
+\newcommand{\paperVersion}{v1.0.65}
+\newcommand{\paperTimestamp}{2026-05-15 PDT (cycle-2 2nd-round closures: 3-vendor convergent per-pixel-null language precision fix; dangling 0.2\% reference removed; ``all higher multipoles null'' contradiction with $+6\sigma$ bandpowers fixed; Gemini-2.5-Pro 8th-consecutive endorsement on v1.0.64)}
 \newcommand{\paperRoundNote}{13th vendor R-round closures: per-pixel-null reconciliation, HC-stratification headline reframe, hemisphere $A$ derivation, TTT-spin contradiction fix, injection-recovery + Fisher-floor provenance JSONs.}
 
 \begin{document}
@@ -171,10 +171,7 @@ corrections; the corresponding $3\sigmaunit$ floor on the
 $2\!\times\!0.144\%\!\approx\!0.29\%$ ideal-statistical and
 $2\!\times\!0.2\%\!\approx\!0.4\%$ conservative-rounded; this
 abstract reports the $0.29\%$ ideal-statistical full-amplitude
-floor; the earlier $\lesssim\!0.2\%$ figure in prior drafts conflated
-the half-modulation and full-amplitude conventions and is superseded
-by the on-record deferral paragraph at \S\ref{sec:conclusions}) and
-is reported only as the achievable-with-zero-systematics asymptote.
+floor as the achievable-with-zero-systematics asymptote.
 The empirical $0.5\%$ floor is the operational publication-grade
 limit; the $0.29\%$ Fisher figure is held aside as the statistical
 ceiling. Both numbers refer to a sensitivity floor, not a
@@ -249,10 +246,16 @@ they were the same observable) under a $10{,}000$-MC permutation null
 (random CW-label shuffles at NSIDE=8 / 768 directions) rejects the
 random-label null at $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$
 nulls reach the data), corresponding to post-LEE significance
-$\gtrsim\!3.7\sigmaunit$ under that specific null. Per-pixel-shuffle
-nulls do \emph{not} preserve depth, mask-edge, or other systematic
-spatial structures, so this rejection of the random-label
-hypothesis is not equivalent to a primordial-dipole detection.
+$\gtrsim\!3.7\sigmaunit$ under that specific null. The global-permutation
+random-label null at fixed galaxy positions destroys per-galaxy
+depth-vs-label and mask-edge-vs-label correlations (a true per-galaxy
+depth-coupled systematic would be erased by the shuffle), so this
+rejection of the global-permutation null is not equivalent to a
+primordial-dipole detection: the residual leakage of the global
+monopole $\CW/(\CW+\CCW)\!=\!0.4974$ into the patchy-mask hemispheric
+max-statistic is preserved by the shuffle (the shuffle does not change
+the global mean), and the $p_{\rm LEE}\!\le\!10^{-4}$ rejection most
+plausibly reflects that leakage rather than a primordial dipole.
 The independent full-sky dipole estimators on the same data —
 real-space dipole amplitude $0.43\sigmaunit$ ($p\!=\!0.30$,
 Sec.~\ref{sec:dipole}); post-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$
@@ -1459,8 +1462,7 @@ MASTER mode-coupling deconvolution the canonical result is
 $-0.12\sigmaunit$ (Table~\ref{tab:multipole}), fully consistent with
 null. The excess in the pre-deconvolution estimator arises from
 mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
-a physical chirality anisotropy. All higher multipoles are likewise
-consistent with null.
+a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the load-bearing parity-dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
 
 The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The v1.0.62 canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; it supersedes the earlier v1.0.55 analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
