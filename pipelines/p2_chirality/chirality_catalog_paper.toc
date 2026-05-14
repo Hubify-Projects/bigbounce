@@ -13,7 +13,7 @@
 \contentsline {section}{\numberline {III}Methods}{5}{section*.11}%
 \contentsline {subsection}{\numberline {A}Model Architecture}{5}{section*.12}%
 \contentsline {subsection}{\numberline {B}Training}{5}{section*.13}%
-\contentsline {subsection}{\numberline {C}Flip-Equivariance Consistency Loss}{6}{section*.14}%
+\contentsline {subsection}{\numberline {C}Flip-Equivariance Consistency Loss}{7}{section*.14}%
 \contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{7}{section*.15}%
 \contentsline {paragraph}{\numberline {a}Empirical bound on rotation-correlated CW-fraction excursion.}{7}{section*.16}%
 \contentsline {paragraph}{\numberline {b}\textsc {not\_spiral}{} stability under TTA averaging.}{8}{section*.17}%
@@ -21,39 +21,39 @@
 \contentsline {subsection}{\numberline {F}Catalog Tiers}{10}{section*.19}%
 \contentsline {section}{\numberline {IV}Results}{11}{section*.20}%
 \contentsline {subsection}{\numberline {A}Catalog Statistics}{11}{section*.21}%
-\contentsline {subsection}{\numberline {B}Global CW Fraction}{12}{section*.22}%
+\contentsline {subsection}{\numberline {B}Global CW Fraction}{11}{section*.22}%
 \contentsline {subsection}{\numberline {C}Dipole Analysis}{13}{section*.23}%
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{13}{section*.24}%
 \contentsline {paragraph}{\numberline {b}Angular power spectrum.}{13}{section*.25}%
 \contentsline {subsection}{\numberline {D}Hemisphere Asymmetry}{16}{section*.26}%
-\contentsline {subsection}{\numberline {E}Sky Region Balance}{16}{section*.27}%
+\contentsline {subsection}{\numberline {E}Sky Region Balance}{17}{section*.27}%
 \contentsline {subsection}{\numberline {F}Scale Dependence}{17}{section*.28}%
 \contentsline {subsection}{\numberline {G}Confidence Stratification}{17}{section*.29}%
 \contentsline {section}{\numberline {V}Comparison with Previous Work}{18}{section*.30}%
 \contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{18}{section*.31}%
 \contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{18}{section*.32}%
-\contentsline {subsection}{\numberline {C}SpArcFiRe}{18}{section*.33}%
-\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{18}{section*.34}%
+\contentsline {subsection}{\numberline {C}SpArcFiRe}{19}{section*.33}%
+\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{19}{section*.34}%
 \contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{19}{section*.35}%
 \contentsline {section}{\numberline {VI}Discussion}{19}{section*.36}%
 \contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Entirely Systematic}{19}{section*.37}%
 \contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{20}{section*.38}%
-\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{20}{section*.39}%
+\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{21}{section*.39}%
 \contentsline {paragraph}{\numberline {a}Statistical-only sensitivity, not systematic-inclusive.}{21}{section*.40}%
-\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{22}{section*.41}%
+\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{23}{section*.41}%
 \contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{24}{section*.42}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{24}{section*.43}%
-\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{24}{section*.44}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{25}{section*.43}%
+\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{25}{section*.44}%
 \contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{25}{section*.45}%
 \contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{25}{section*.46}%
 \contentsline {paragraph}{\numberline {c}What does the present null falsify?}{25}{section*.47}%
-\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{25}{section*.48}%
+\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{26}{section*.48}%
 \contentsline {subsection}{\numberline {G}Future Directions}{26}{section*.49}%
 \contentsline {section}{\numberline {VII}Conclusions}{26}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{26}{section*.51}%
-\contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{26}{section*.52}%
+\contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{27}{section*.52}%
 \contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER projection at $\ell \!=\!1$ (v1.0.55).}{27}{section*.53}%
 \contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{27}{section*.54}%
 \contentsline {section}{\numberline {VIII}Data Availability}{28}{section*.55}%
-\contentsline {section}{\numberline {}Acknowledgments}{28}{section*.56}%
+\contentsline {section}{\numberline {}Acknowledgments}{29}{section*.56}%
 \contentsline {section}{\numberline {}References}{29}{section*.57}%
