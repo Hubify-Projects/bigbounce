@@ -1928,13 +1928,33 @@ a:hover {
 
 .paper-detail-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
   align-items: start;
 }
 
+@media (min-width: 960px) {
+  .paper-detail-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  }
+}
+
 .paper-detail-copy {
   min-width: 0;
+}
+
+.paper-detail-copy h1 {
+  word-break: normal;
+  overflow-wrap: anywhere;
+  hyphens: none;
+  line-height: 1.1;
+  font-size: clamp(28px, 5vw, 44px);
+}
+
+.paper-detail-copy .subtitle {
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
 }
 
 .paper-detail-kicker {
