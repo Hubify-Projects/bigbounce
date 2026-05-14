@@ -44,7 +44,7 @@
 \contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{24}{section*.42}%
 \contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{25}{section*.43}%
 \contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{25}{section*.44}%
-\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{25}{section*.45}%
+\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{26}{section*.45}%
 \contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{26}{section*.46}%
 \contentsline {paragraph}{\numberline {c}What does the present null falsify?}{26}{section*.47}%
 \contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{26}{section*.48}%
@@ -53,7 +53,7 @@
 \contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{27}{section*.51}%
 \contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{27}{section*.52}%
 \contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER projection at $\ell \!=\!1$ (v1.0.55).}{27}{section*.53}%
-\contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{27}{section*.54}%
+\contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{28}{section*.54}%
 \contentsline {section}{\numberline {VIII}Data Availability}{29}{section*.55}%
 \contentsline {section}{\numberline {}Acknowledgments}{29}{section*.56}%
 \contentsline {section}{\numberline {}References}{29}{section*.57}%

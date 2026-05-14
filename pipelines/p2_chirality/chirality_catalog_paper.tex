@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.57}
-\newcommand{\paperTimestamp}{2026-05-14 (LEE-rejection honest reframe) PDT}
+\newcommand{\paperVersion}{v1.0.58}
+\newcommand{\paperTimestamp}{2026-05-14 (LEE reframe propagation + provenance) PDT}
 
 \begin{document}
 
@@ -85,7 +85,10 @@ normalization.
 
 We measure no significant large-scale chirality dipole after
 equivariant post-processing.  A real-space dipole fit yields
-$\sigma_{\rm dipole}=0.43$ ($p=0.30$ at $N_{\rm MC}=10{,}000$);
+$\sigma_{\rm dipole}=0.43$ ($p=0.30$ at $N_{\rm MC}=10{,}000$;
+canonical results file
+\texttt{outputs/dipole/summary.json},
+\texttt{outputs/canonical\_provenance/mc\_seed\_manifest.json});
 the MASTER-deconvolved $\ell=1$ angular power spectrum
 coefficient is
 $C_1 = (1.494 \pm 0.429)\!\times\!10^{-6}$\,sr against
@@ -2094,9 +2097,21 @@ a cosmological interpretation:
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
 
-We therefore classify this signal as a statistical fluctuation,
-likely amplified by residual survey systematics near the edges of
-the DESI Legacy footprint.
+We therefore classify the hemisphere max-statistic signal as a
+documented systematic-floor artifact (under the random-label
+permutation null: REJECTED at $p_{\rm LEE}\!\le\!10^{-4}$; under
+the systematic-inclusive injection-recovery analysis: below the
+empirical detection threshold $|A_{\rm dipole}|\!>\!0.5\%$), rather
+than as a primordial-dipole detection. The most plausible
+attribution is the same sub-percent GZ1-training-label /
+depth-coupled systematic that sources the global
+$9.5\sigmaunit$ CW-fraction monopole, projecting onto a particular
+sky-axis maximum that random CW-label shuffling cannot reproduce.
+The Bonferroni / BH analytic LEE penalty across ${\sim}650$
+directions is a conservative upper bound on the p-value that gives
+a different verdict from the direct MC; we report both and
+explicitly identify the direct MC's random-label-null rejection as
+the operative finding to be explained by systematics.
 
 \subsection{Sensitivity Floor and Minimum Detectable Signal}
 \label{sec:sensitivity}
@@ -2918,8 +2933,17 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   $N_{\rm spiral}=3{,}201{,}160$ normalization recount and is
   retained only as a historical cross-reference; see
   Sec.~\ref{sec:dipole}).
-  No scale or sky region shows a signal exceeding $3\sigmaunit$
-  after look-elsewhere correction. The attribution of the
+  Under the systematic-inclusive injection-recovery analysis
+  (Sec.~\ref{sec:sensitivity}), no scale or sky region yields a
+  primordial-dipole detection above the empirical sensitivity
+  floor $|A_{\rm dipole}|\!>\!0.5\%$. The hemisphere
+  max-statistic rejects the random-label permutation null at
+  $p_{\rm LEE}\!\le\!10^{-4}$, but this rejection is attributed to
+  the same sub-percent GZ1-label / depth-coupled systematic that
+  sources the global $9.5\sigmaunit$ CW-fraction monopole, not to a
+  primordial $\ell\!=\!1$ dipole (Sec.~\ref{sec:hemisphere_disc};
+  the independent full-sky dipole estimators on the same data are
+  null at $\ell\!=\!1$). The attribution of the
   $9.5\sigmaunit$ monopole offset to GZ1 human-handedness bias
   propagating through training is the working hypothesis under
   the assumption that the monopole offset is uniform across 7 equatorial coordinate slabs
