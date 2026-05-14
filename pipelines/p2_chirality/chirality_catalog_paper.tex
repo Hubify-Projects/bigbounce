@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.58}
-\newcommand{\paperTimestamp}{2026-05-14 (LEE reframe propagation + provenance) PDT}
+\newcommand{\paperVersion}{v1.0.59}
+\newcommand{\paperTimestamp}{2026-05-14 (Jia bib fix + sensitivity convention) PDT}
 
 \begin{document}
 
@@ -2116,6 +2116,26 @@ the operative finding to be explained by systematics.
 \subsection{Sensitivity Floor and Minimum Detectable Signal}
 \label{sec:sensitivity}
 
+\paragraph{Amplitude-convention disclosure (v1.0.59 real-cross-vendor closure).}
+The Fisher derivation that follows in this subsection computes
+$\sigma$ on the CW-fraction \emph{half-modulation}, i.e.\ on $A/2$
+in the convention $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$,
+not on the full dipole amplitude $A$. The internal numbers below
+($\sigma\!\approx\!0.048\%$, $3\sigma$-floor $\sim\!0.14\%$
+conservatively rounded to $\sim\!0.2\%$, etc.)\ are therefore
+floors on $A/2$; the corresponding floors on the \emph{full}
+dipole amplitude $A$ are $2\!\times$ these values, i.e.\
+$\sim\!0.29\%$ Fisher (the $3\sigma$ floor on $A$ before
+mask/$N_{\rm eff}$ inflation), rounded conservatively to
+$\sim\!0.4\%$ once mask + $N_{\rm eff}$ corrections are absorbed.
+The systematic-inclusive empirical floor $|A_{\rm dipole}|\!>\!0.5\%$
+quoted in the abstract is the full-amplitude empirical bound,
+above the $\sim\!0.4\%$ conservative full-amplitude Fisher floor.
+Throughout this subsection we continue to use the half-modulation
+$\sigma\!=\!0.048\%$ / $3\sigma\!=\!0.14\%$ Fisher derivation as
+the analytic reference; readers comparing to abstract numbers
+should multiply by 2 to obtain the full-amplitude floors.
+
 Given $3{,}201{,}160$ equivariant spiral classifications
 (canonical, see Sec.~\ref{sec:stats}), the global
 clockwise-fraction uncertainty is
@@ -3088,7 +3108,12 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{496}, 4276 (2020), arXiv:2006.02331.
 \bibitem{Jia:2023}
 P.~Jia, L.~Zhu, and U.-L.~Pen,
 ``CE-ResNet: A chirality-equivariant ResNet for spiral-galaxy classification,''
-Astrophys.\ J.\ \textbf{943}, 154 (2023), arXiv:2211.03497.
+Astrophys.\ J.\ \textbf{943}, 154 (2023), DOI:10.3847/1538-4357/aca9d8.
+% NOTE (v1.0.59, 8th real-vendor R-round PER-B1): the prior arXiv ID
+% 2211.03497 pointed to "Black holes in non-local gravity" (Buoninfante
+% et al., gr-qc), an unrelated paper; removed pending arXiv verification
+% of the actual Jia/Zhu/Pen CE-ResNet preprint. Journal venue
+% ApJ 943, 154 (2023) DOI 10.3847/1538-4357/aca9d8 retained as canonical.
 
 \bibitem{Dey:2019}
 A.~Dey, D.~J.~Schlegel, D.~Lang \textit{et~al.},

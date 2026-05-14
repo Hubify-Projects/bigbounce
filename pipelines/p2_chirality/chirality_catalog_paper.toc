@@ -39,21 +39,22 @@
 \contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Entirely Systematic}{19}{section*.37}%
 \contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{21}{section*.38}%
 \contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{21}{section*.39}%
-\contentsline {paragraph}{\numberline {a}Statistical-only sensitivity, not systematic-inclusive.}{22}{section*.40}%
-\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{23}{section*.41}%
-\contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{24}{section*.42}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{25}{section*.43}%
-\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{25}{section*.44}%
-\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{26}{section*.45}%
-\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{26}{section*.46}%
-\contentsline {paragraph}{\numberline {c}What does the present null falsify?}{26}{section*.47}%
-\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{26}{section*.48}%
-\contentsline {subsection}{\numberline {G}Future Directions}{26}{section*.49}%
-\contentsline {section}{\numberline {VII}Conclusions}{27}{section*.50}%
-\contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{27}{section*.51}%
-\contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{27}{section*.52}%
-\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER projection at $\ell \!=\!1$ (v1.0.55).}{27}{section*.53}%
-\contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{28}{section*.54}%
-\contentsline {section}{\numberline {VIII}Data Availability}{29}{section*.55}%
-\contentsline {section}{\numberline {}Acknowledgments}{29}{section*.56}%
-\contentsline {section}{\numberline {}References}{29}{section*.57}%
+\contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure (v1.0.59 real-cross-vendor closure).}{21}{section*.40}%
+\contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{22}{section*.41}%
+\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{23}{section*.42}%
+\contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{25}{section*.43}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{25}{section*.44}%
+\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{26}{section*.45}%
+\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{26}{section*.46}%
+\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{26}{section*.47}%
+\contentsline {paragraph}{\numberline {c}What does the present null falsify?}{26}{section*.48}%
+\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{26}{section*.49}%
+\contentsline {subsection}{\numberline {G}Future Directions}{27}{section*.50}%
+\contentsline {section}{\numberline {VII}Conclusions}{27}{section*.51}%
+\contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{27}{section*.52}%
+\contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{27}{section*.53}%
+\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER projection at $\ell \!=\!1$ (v1.0.55).}{27}{section*.54}%
+\contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{28}{section*.55}%
+\contentsline {section}{\numberline {VIII}Data Availability}{29}{section*.56}%
+\contentsline {section}{\numberline {}Acknowledgments}{29}{section*.57}%
+\contentsline {section}{\numberline {}References}{30}{section*.58}%
