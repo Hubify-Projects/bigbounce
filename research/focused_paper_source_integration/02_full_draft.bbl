@@ -74,6 +74,15 @@
   {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {1105}},\ \bibinfo
   {pages} {014}},\ \Eprint {https://arxiv.org/abs/1103.1251} {arXiv:1103.1251
   [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Maldacena}},\ }\bibfield  {title} {\bibinfo {title} {Non-gaussian features
+  of primordial fluctuations in single field inflationary models},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo
+  {volume} {0305}},\ \bibinfo {pages} {013}},\ \Eprint
+  {https://arxiv.org/abs/astro-ph/0210603} {arXiv:astro-ph/0210603}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
   {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
   {Krause}}]{Heinrich:2023}%
@@ -83,18 +92,9 @@
   and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Krause}},\
   }\bibfield  {title} {\bibinfo {title} {Measuring $f_{\rm nl}$ with the
   spherex multi-tracer redshift space bispectrum},\ }\href@noop {} {\bibfield
-  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume}
-  {2024}}\bibfield  {number} {\bibinfo  {number} { (04)},\ \bibinfo {pages}
-  {074}},\ }\Eprint {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082
-  [astro-ph.CO]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Maldacena}},\ }\bibfield  {title} {\bibinfo {title} {Non-gaussian features
-  of primordial fluctuations in single field inflationary models},\ }\href@noop
-  {} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo
-  {volume} {0305}},\ \bibinfo {pages} {013}},\ \Eprint
-  {https://arxiv.org/abs/astro-ph/0210603} {arXiv:astro-ph/0210603}
+  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
+  {109}},\ \bibinfo {pages} {123511} (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Wands}(1999)}]{Wands:1998yp}%
   \BibitemOpen
@@ -183,10 +183,10 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
   {Schlegel}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
-  megamapper: A stage-5 spectroscopic instrument concept},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
-  {year} {2022})},\ \Eprint {https://arxiv.org/abs/2209.04322}
-  {arXiv:2209.04322} \BibitemShut {NoStop}%
+  {MegaMapper}: A stage-5 spectroscopic instrument concept for the study of
+  inflation and dark energy},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2209.04322} {arXiv:2209.04322} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dalal}\ \emph {et~al.}(2008)\citenamefont {Dalal},
   \citenamefont {Dore}, \citenamefont {Huterer},\ and\ \citenamefont
   {Shirokov}}]{Dalal:2007cu}%
@@ -196,10 +196,11 @@
   \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Huterer}},\ and\ \bibinfo
   {author} {\bibfnamefont {A.}~\bibnamefont {Shirokov}},\ }\bibfield  {title}
   {\bibinfo {title} {The imprints of primordial non-gaussianities on
-  large-scale structure},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {77}},\ \bibinfo
-  {pages} {123514} (\bibinfo {year} {2008})},\ \Eprint
-  {https://arxiv.org/abs/0710.4560} {arXiv:0710.4560} \BibitemShut {NoStop}%
+  large-scale structure: scale-dependent bias and abundance of virialized
+  objects},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. D}\ }\textbf {\bibinfo {volume} {77}},\ \bibinfo {pages} {123514}
+  (\bibinfo {year} {2008})},\ \Eprint {https://arxiv.org/abs/0710.4560}
+  {arXiv:0710.4560} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Komatsu}\ \emph {et~al.}(2005)\citenamefont
   {Komatsu}, \citenamefont {Spergel},\ and\ \citenamefont
   {Wandelt}}]{Komatsu:2005}%
@@ -213,13 +214,13 @@
   {634}},\ \bibinfo {pages} {14} (\bibinfo {year} {2005})},\ \Eprint
   {https://arxiv.org/abs/astro-ph/0305189} {arXiv:astro-ph/0305189}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Zhu}\ \emph {et~al.}(2026)\citenamefont {Zhu},
-  \citenamefont {Cai} \emph {et~al.}}]{Zhu:2026echoes}%
+\bibitem [{\citenamefont {Zhu}\ and\ \citenamefont
+  {Cai}(2026)}]{Zhu:2026echoes}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Zhu}}, \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}}, \emph
-  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Smoking-gun signatures of
-  bounce cosmology from echoes of relic gravitational waves},\ }\href@noop {}
+  {Zhu}}\ and\ \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\
+  }\bibfield  {title} {\bibinfo {title} {Smoking-gun signatures of bounce
+  cosmology from echoes of relic gravitational waves},\ }\href@noop {}
   {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
   {year} {2026})},\ \Eprint {https://arxiv.org/abs/2603.13924}
   {arXiv:2603.13924} \BibitemShut {NoStop}%
@@ -230,10 +231,10 @@
   {Cai}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
   {Brandenberger}},\ }\bibfield  {title} {\bibinfo {title} {Non-{Gaussianity}
   in a matter bounce},\ }\href {https://doi.org/10.1103/PhysRevD.90.023534}
-  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
-  {\bibinfo {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year}
-  {2014})},\ \Eprint {https://arxiv.org/abs/1405.1097} {arXiv:1405.1097
-  [hep-th]} \BibitemShut {NoStop}%
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year} {2014})},\
+  \Eprint {https://arxiv.org/abs/1404.6968} {arXiv:1404.6968 [hep-th]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Slosar}\ \emph {et~al.}(2008)\citenamefont {Slosar},
   \citenamefont {Hirata}, \citenamefont {Seljak}, \citenamefont {Ho},\ and\
   \citenamefont {Padmanabhan}}]{Slosar:2008}%
