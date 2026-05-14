@@ -1,0 +1,17 @@
+{
+  "source_of_truth": "pipelines/p2_chirality/r42_results/wave_14_oo_bin_flatness.json",
+  "tier": "full_spiral (Catalog C canonical)",
+  "N_CW": 1592107,
+  "N_CCW": 1609053,
+  "N_spiral": 3201160,
+  "N_input_self_consistency_check": true,
+  "p_CW": 0.49735314698421823,
+  "sigma_binomial": 0.0002794539343453275,
+  "deviation_from_parity_sigma": 9.471518166249876,
+  "interpretation": "p_CW = N_CW / (N_CW + N_CCW); sigma_binomial = sqrt(p * (1 - p) / (N_CW + N_CCW)); the deviation is (0.5 - p) / sigma_binomial. The sign is positive when the catalog is CW-deficit (CCW-leaning); the canonical Catalog C deviation is positive, i.e. ~9.5 sigma in the CCW-leaning direction (equivalently a 0.26 percent CW deficit).",
+  "rounded_for_paper": {
+    "p_CW_4sig": 0.4974,
+    "sigma_binomial_6sig": 0.00027945,
+    "deviation_1sig": 9.47
+  }
+}

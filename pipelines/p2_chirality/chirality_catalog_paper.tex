@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.52}
-\newcommand{\paperTimestamp}{2026-05-14 (R-round-real-cross-vendor) PDT}
+\newcommand{\paperVersion}{v1.0.53}
+\newcommand{\paperTimestamp}{2026-05-14 (real-cross-vendor closures) PDT}
 
 \begin{document}
 
@@ -93,25 +93,43 @@ $\langle C_1^{\rm null}\rangle = 1.546\!\times\!10^{-6}$\,sr from
 $500$ mode-coupling-inverted MC realizations, giving
 $(C_1-\langle C_1^{\rm null}\rangle)/\sigma_{\rm null} = -0.122\sigmaunit$
 (canonical primary: one-sided rank percentile
-$p_{\rm MC}\!\approx\!0.45$). The Fisher-floor minimum detectable
-dipole at $3\sigmaunit$ is $|A_{\rm dipole}| \lesssim 0.2\%$ (statistical
-asymptote); the empirical injection-recovery sensitivity floor
-(50\%-recovery threshold under per-pixel-shuffle nulls,
-systematic-inclusive) is $|A_{\rm dipole}| \gtrsim 0.5\%$ — a
-sensitivity floor, not a frequentist upper limit on the measured
-$A_{\rm dipole}$; the latter is consistent with zero
+$p_{\rm MC}\!\approx\!0.45$). The conservative, systematic-inclusive empirical injection-recovery
+sensitivity floor is $|A_{\rm dipole}|\!\gtrsim\!0.5\%$
+(50\%-recovery threshold under per-pixel-shuffle nulls) and is the
+\emph{primary} sensitivity figure for this paper; the
+Fisher-floor statistical Poisson asymptote is
+$|A_{\rm dipole}|\!\lesssim\!0.29\%$ at $3\sigmaunit$ under the
+convention $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$
+(corresponding to a CW-fraction half-modulation uncertainty
+$\sigma\approx\!0.048\%$, with the factor of 2 absorbed into the
+amplitude definition; see the on-record deferral paragraph at
+\S\ref{sec:conclusions} for the updated factor-of-2 accounting that
+supersedes the earlier $\lesssim\!0.2\%$ Fisher-floor figure) and
+is reported only as the achievable-with-zero-systematics asymptote.
+The empirical $0.5\%$ floor is the operational publication-grade
+limit; the $0.29\%$ Fisher figure is held aside as the statistical
+ceiling. Both numbers refer to a sensitivity floor, not a
+frequentist upper limit on the measured $A_{\rm dipole}$; the
+latter is consistent with zero
 (Sec.~\ref{sec:sensitivity}). The $\sim\!3\%$ asymmetry reported by
 Shamir~(2012, 2020, 2022)~\cite{Shamir:2012,Shamir:2020,Shamir:2022}
-is excluded at $>5\sigma$ in the DESI Legacy footprint under the
-present pipeline: our maximum regional asymmetry is
-$\sim\!0.32\%$ (Table~\ref{tab:sky_balance}) against an analytic
-Poisson per-region uncertainty of $\sigma_{\rm regional}\!\approx\!0.13\%$
-at the regional $N\!\sim\!6\!\times\!10^5$ scale, so the $3\%$ point
-estimate is excluded at $\sim\!20\sigma$ regionally; the conservative
-all-sky $\geq\!5\sigma$ exclusion uses the empirical $0.5\%$
-MC-injection sensitivity floor as the comparator. This is a factor
-of $\sim\!6$--$12$ smaller in amplitude than Shamir's reported
-$2$--$4\%$ window (amplitude ratio, not significance ratio).
+is disfavored at the amplitude level under the present pipeline by
+a factor of $\sim\!6$--$12$ relative to Shamir's reported
+$2$--$4\%$ window: our maximum regional asymmetry is $\sim\!0.32\%$
+(Table~\ref{tab:sky_balance}) and our empirical all-sky
+MC-injection sensitivity floor is $\gtrsim\!0.5\%$
+(Sec.~\ref{sec:sensitivity}), both well below Shamir's window.
+We do not quote a frequentist $\sigma$-level exclusion because
+the two analyses differ in classifier (ViT-Small ensemble vs.\
+Ganalyzer), selection (DESI Legacy DR8 vs.\ SDSS+Pan-STARRS),
+bias-audit protocol (equivariant TTA + 8 hardening tests vs.\
+none documented), and footprint geometry; a common-likelihood
+exclusion would require matched-footprint matched-selection
+matched-classifier-systematics joint inference, which is not
+constructed here. The disagreement is therefore reported as an
+amplitude factor (ratio of measured-amplitude floors), not as a
+$\sigma$-level rejection of Shamir's signal as a measurement
+under his own pipeline.
 
 A residual global $9.5\sigmaunit$ deviation from $50/50$ in the
 CCW-leaning direction (CW fraction $0.4974 \pm 0.000279$, i.e., a small
@@ -232,11 +250,15 @@ galaxies classified, of which $3{,}201{,}160$ are equivariant-classified
 spirals (1{,}592{,}107~\CW{} + 1{,}609{,}053~\CCW; the remaining
 5{,}273{,}371 are \NS{} or edge-on, see Sec.~\ref{sec:stats}),
 constituting the chirality-relevant subsample---this
-spiral count alone is ${\sim}16\times$ larger than the largest prior
-chirality catalog (Shamir~(2022)~\cite{Shamir:2022}, ${\sim}200{,}000$
-spirals) and $1.6\times$ larger than CE-ResNet~\cite{Jia:2023}
-($1.95$~million galaxies, all classified as CW or CCW since
-CE-ResNet lacks a not-spiral class);
+spiral count alone is $1.6\times$ larger than the state-of-the-art
+prior chirality catalog of CE-ResNet (Jia~\etal~\cite{Jia:2023},
+$1.95$~million galaxies, all classified as CW or CCW since
+CE-ResNet lacks a not-spiral class) and ${\sim}16\times$ larger than
+Shamir~(2022)'s spiral subset~\cite{Shamir:2022} (${\sim}200{,}000$
+spirals from a ${\sim}1.3$-million total). The like-for-like
+state-of-the-art comparison is therefore the $1.6\times$ over Jia
+\etal\ rather than the larger ratio vs.\ Shamir's smaller spiral
+subset;
 (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
 first published multi-test bias hardening audit suite for any galaxy
@@ -1913,11 +1935,18 @@ $N_{\rm CW} - N_{\rm CCW} = \varepsilon\,N_{\rm spiral}$, which accumulates
 coherently across the footprint into the pre-MASTER pseudo-$C_\ell$
 inflation~--- a quantitative before-TTA measure of depth-modulated
 count-excess coupling.
-After equivariant post-processing, the TTA procedure forces each galaxy to
-contribute equally to $N_{\rm CW}$ and $N_{\rm CCW}$ (Eq.~\ref{eq:tta}), so
-$N_{\rm CW} - N_{\rm CCW} = 0$ per galaxy by construction;
-the $0.43\sigma$ real-space residual confirms depth-coupling elimination
-to the statistical sensitivity floor.
+After equivariant post-processing, the TTA procedure symmetrizes the
+\emph{soft probabilities} between the original-orientation and
+horizontal-flip evaluations (Eq.~\ref{eq:tta}), so the soft-weighted
+chirality score $p_{\rm CW}^{\rm eq} - p_{\rm CCW}^{\rm eq}$ averages
+to zero per galaxy. The hard \texttt{argmax} catalog labels used
+downstream do \emph{not} inherit this exact per-galaxy cancellation
+(asymmetric soft probabilities can still yield asymmetric hard
+classes, as the surviving global $9.5\sigmaunit$ monopole demonstrates);
+the empirically demonstrated effect of TTA on depth-coupling is the
+real-space dipole collapse $2.31\sigmaunit\!\to\!0.43\sigmaunit$
+(a $\sim\!5.4\times$ suppression of the depth-coupled large-scale
+mode), not a strict per-galaxy count-balance.
 As a complementary empirical bound on $|\mathrm{corr}(A_p^{\rm TTA},\,N_{\rm spiral}/\mathrm{pix})|$:
 the PSF/morphology cross-correlation analysis (Sec.~\ref{sec:sensitivity})
 shows $\max_i|r(f_{\rm CW}, p_i)| = 0.042$ for all
@@ -2583,8 +2612,11 @@ null \emph{does} disfavor at the channel-amplitude level is any model
 class that predicts a late-universe morphology-channel dipole
 amplitude $|A_{\rm dipole}| \gtrsim 0.5\%$ on the DESI Legacy
 footprint without an evasion mechanism — including the Shamir 2020 /
-2022 $\sim\!3\%$-asymmetry claim line (disfavored at $\sim\!20\sigma$
-regionally as quantified in Sec.~\ref{sec:dipole}). Models that predict
+2022 $\sim\!3\%$-asymmetry claim line, which is disfavored at the
+amplitude level by a factor of $\sim\!6$--$12$ under the present
+pipeline (Sec.~\ref{sec:dipole}; the disagreement is amplitude-only,
+not a frequentist $\sigma$-level exclusion of Shamir's signal under
+his own classifier-selection-footprint trio). Models that predict
 sub-percent morphology dipoles (including matter-bounce scenarios whose
 primordial-to-late-universe transfer function is small) remain
 compatible with the present null, and a tighter falsification of those
@@ -2676,7 +2708,26 @@ their own pipelines and report the results.
 \label{sec:conclusions}
 % ============================================================
 
-\paragraph{Real cross-vendor adversarial-review deferrals (v1.0.52).}
+\paragraph{Real cross-vendor adversarial-review status (v1.0.53).}
+The DeepSeek-B1 / DeepSeek-M3 deferral on global-CW-fraction
+reproducibility is now \emph{closed}: a verification script
+\texttt{pipelines/p2\_chirality/scripts/verify\_canonical\_numbers.py}
+reads the canonical $N_{\rm CW}\!=\!1{,}592{,}107$,
+$N_{\rm CCW}\!=\!1{,}609{,}053$, $N_{\rm spiral}\!=\!3{,}201{,}160$
+from \texttt{r42\_results/wave\_14\_oo\_bin\_flatness.json},
+verifies the same $N_{\rm spiral}$ value is consistent across four
+independent wave-14 result files (\texttt{wave\_14\_oo}, \texttt{wave\_14\_qq},
+\texttt{wave\_14\_pp}, \texttt{wave\_14\_jj}), and emits the exact
+$p_{\rm CW}\!=\!0.49735314698421823$,
+$\sigma_{\rm binomial}\!=\!2.794539\!\times\!10^{-4}$,
+deviation-from-parity $=\!9.471\sigmaunit$ (the 9.5$\sigmaunit$
+figure quoted in the abstract is the two-significant-figure rounding;
+the exact value is 9.47$\sigmaunit$) to
+\texttt{outputs/canonical\_provenance/global\_cw\_fraction.json}
+and the cross-file consistency check to
+\texttt{outputs/canonical\_provenance/spiral\_count\_verification.json}.
+
+\paragraph{Surviving real-cross-vendor deferrals (v1.0.53).}
 A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
 Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
 2026-05-14) surfaced three substantive items not caught by the prior

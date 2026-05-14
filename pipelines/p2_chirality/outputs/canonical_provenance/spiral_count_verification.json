@@ -1,0 +1,26 @@
+{
+  "canonical_N_spiral": 3201160,
+  "all_match": true,
+  "per_file": {
+    "wave_14_oo_bin_flatness.json": {
+      "value": 3201160,
+      "matches_canonical": true,
+      "path": "denominators.full_spiral.n_input"
+    },
+    "wave_14_qq_systematics_regression.json": {
+      "value": 3201160,
+      "matches_canonical": true,
+      "path": "n_spirals_used"
+    },
+    "wave_14_pp_namaster_verification.json": {
+      "value": 3201160,
+      "matches_canonical": true,
+      "path": "n_spiral"
+    },
+    "wave_14_jj_psf_xcorr_results.json": {
+      "value": 3201160,
+      "matches_canonical": true,
+      "path": "n_spirals"
+    }
+  }
+}
