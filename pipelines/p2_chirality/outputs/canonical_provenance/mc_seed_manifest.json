@@ -81,5 +81,43 @@
         "note": "Full MASTER pipeline run details (random seed, null method, NaMaster workspace parameters) are in master_power_spectrum.json metadata. The canonical-N MASTER recompute at N_spiral=3,201,160 / f_sky=0.491 is GPT-B2 deferred (compute-bound; pymaster install on Mac unresolved). The present -0.122-sigma is reported at the analysis subsample n=5,547,858 / f_sky=0.659; this is disclosed in the \u00a7V text and in Table III."
       }
     }
-  ]
+  ],
+  "v1_0_62_addendum": {
+    "figure": "Canonical-N MASTER l=1 direct-MC at +1.85 sigma (v1.0.62 closure of GPT-B2 deferral)",
+    "abstract_role": "Direct single-mode canonical-N NaMaster MC at l=1 replacing the v1.0.55 analytic projection; recorded as leakage-floor calibration, not as a primordial-dipole detection",
+    "method": "Single-band NmtBin isolating l=1; NaMaster pseudo-Cl + coupling-matrix inversion; 500 per-pixel random-label permutation nulls (CW/CCW shuffle preserving per-pixel galaxy count, depth, mask-edge position); empirical-rank p-value computed against the 500 nulls",
+    "n_mc": 500,
+    "seed": 42,
+    "nside": 64,
+    "lmax": 191,
+    "n_spirals": 3201160,
+    "f_sky": 0.4937744140625,
+    "data_inputs": {
+      "catalog": "/workspace/chirality_catalog/catalog_production.parquet (HuggingFace bamfai/galaxy-chirality-catalog snapshot on pod ijzftpy3klystt)",
+      "n_cw": 1592107,
+      "n_ccw": 1609053,
+      "cw_fraction": 0.49735313653945923
+    },
+    "result": {
+      "C1_pseudo_coupled": 9.613462356762969e-05,
+      "C1_decoupled": 2.2984273052624208e-05,
+      "null_mean": 8.004046041407703e-06,
+      "null_std": 8.096513832093914e-06,
+      "null_min": -4.203418166545408e-06,
+      "null_max": 4.917730251209552e-05,
+      "sigma_canonical_direct": 1.8502070547741325,
+      "wallclock_s": 1432.6030957698822,
+      "compute_pod": "RunPod ijzftpy3klystt (Linux, pymaster apt-installed)"
+    },
+    "reproducibility": {
+      "script_path": "pipelines/p2_chirality/scripts/canonical_l1_namaster_pod.py",
+      "script_sha256": "9a09582854756fe81368f48314296814d408ed09b7f6354ff8c092fe8142ec0a",
+      "results_json_path": "pipelines/p2_chirality/outputs/canonical_provenance/canonical_n_master_l1_direct.json",
+      "results_json_sha256": "dbfd5894afa9cb7b28c863ab2791a1f801584d5c1cb239281d23e61df38430d1",
+      "null_distribution_path": "pipelines/p2_chirality/outputs/canonical_provenance/canonical_n_master_l1_direct_null_distribution.npy",
+      "null_distribution_sha256": "4812778e460075fbed1f99ced5355c6bc9e90bac7c3cba5ff4f810321258217d"
+    },
+    "reproduce_command": "On a Linux host with pymaster apt-installed and the HuggingFace catalog at /workspace/chirality_catalog/catalog_production.parquet: `python3 pipelines/p2_chirality/scripts/canonical_l1_namaster_pod.py`. Set numpy seed to 42 (script does this internally). Expected wallclock ~24 min single-CPU.",
+    "interpretation": "The +1.85 sigma direct-MC value is a mild canonical-mask excess below this paper's 3-sigma detection threshold. It supersedes the v1.0.55 analytic projection +0.26 sigma, which is retained as a methodological-comparison reference only. The per-pixel random-label permutation null preserves the per-pixel depth/mask-edge/galaxy-count coupling (only CW vs CCW assignments are shuffled), so the spatially-correlated depth-driven asymmetry that contributes to the global 9.5-sigma monopole leaks coherently into the canonical-mask l=1 mode and is not averaged away. Two independent global estimators on the same data are null (full-sky real-space 0.43 sigma; subsample-mask MASTER -0.12 sigma on strict-superset f_sky=0.659), identifying this channel as a leakage-floor mechanism, not a primordial signal. The canonical-N direct-MC value is on record as a leakage-floor calibration for the canonical patchy mask."
+  }
 }

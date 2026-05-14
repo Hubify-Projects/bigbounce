@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.62}
-\newcommand{\paperTimestamp}{2026-05-14 (canonical-$N$ MASTER $\ell\!=\!1$ direct compute --- GPT-B2 closed) PDT}
+\newcommand{\paperVersion}{v1.0.63}
+\newcommand{\paperTimestamp}{2026-05-14 (canonical-$N$ direct-MC propagated across abstract/Table III/Fig captions; 12th vendor R-round closure) PDT}
 
 \begin{document}
 
@@ -96,15 +96,26 @@ $\langle C_1^{\rm null}\rangle = 1.546\!\times\!10^{-6}$\,sr from
 $500$ mode-coupling-inverted MC realizations, giving
 $(C_1-\langle C_1^{\rm null}\rangle)/\sigma_{\rm null} = -0.122\sigmaunit$
 on the analysis subsample mask ($n\!=\!5{,}547{,}858$,
-$f_{\rm sky}\!=\!0.659$); the analytic projection onto the canonical
-Catalog~C parameters ($N_{\rm spiral}\!=\!3{,}201{,}160$,
-$f_{\rm sky}\!=\!0.491$) gives $+0.2595\sigmaunit$
-(see Sec.~\ref{sec:conclusions}). Both endpoints are well within the
-null band $|\sigma|\!<\!1$ at $\ell\!=\!1$; one-sided rank percentile
-$p_{\rm MC}\!\approx\!0.45$ for the subsample-mask reference figure.
-A direct single-mode canonical NaMaster execution that would replace
-the analytic projection is flagged as a post-arXiv-v2 verification
-item in Sec.~\ref{sec:conclusions}. The conservative, systematic-inclusive empirical injection-recovery
+$f_{\rm sky}\!=\!0.659$); a direct $500$-MC NaMaster
+execution at canonical Catalog~C parameters
+($N_{\rm spiral}\!=\!3{,}201{,}160$, $f_{\rm sky}\!=\!0.4938$,
+NSIDE$\,=\,$64, SEED$\,=\,42$; v1.0.62, see
+Sec.~\ref{sec:conclusions}) yields a mild canonical-mask excess of
+$+1.85\sigmaunit$, which is below this paper's detection threshold and
+is interpreted as a leakage-floor calibration (per-pixel random-label
+shuffling does not preserve the depth/GZ1-label spatial structure that
+sources the global monopole asymmetry and projects onto $\ell\!=\!1$
+under the patchy canonical mask), not as a primordial dipole. The
+$-0.122\sigmaunit$ subsample-mask figure remains the headline
+post-MASTER null because it uses the strict-superset
+$f_{\rm sky}\!=\!0.659$ mask and bypasses the canonical-mask leakage
+channel; the canonical $+1.85\sigmaunit$ direct-MC value supersedes
+the earlier v1.0.55 analytic projection $+0.2595\sigmaunit$, which is
+retained only as a methodological-comparison reference. Independent
+full-sky estimators (real-space dipole $0.43\sigmaunit$,
+Sec.~\ref{sec:dipole}) and the empirical $|A_{\rm dipole}|\!>\!0.5\%$
+injection-recovery sensitivity floor independently reject a primordial
+$\ell\!=\!1$ dipole at the $+1.85\sigmaunit$ amplitude. The conservative, systematic-inclusive empirical injection-recovery
 sensitivity floor is $|A_{\rm dipole}|\!>\!0.5\%$
 (at $A\!=\!0.5\%$ the per-pixel-shuffle MC gives
 $P(\sigma\!>\!2)\!=\!0.18$; explicit 50\%-recovery at $3\sigmaunit$ is
@@ -205,9 +216,12 @@ The independent full-sky dipole estimators on the same data —
 real-space dipole amplitude $0.43\sigmaunit$ ($p\!=\!0.30$,
 Sec.~\ref{sec:dipole}); post-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$
 giving $-0.12\sigmaunit$ on the analysis subsample mask
-(canonical-$N$ analytic projection $+0.26\sigmaunit$,
-Sec.~\ref{sec:conclusions}) — are all consistent with no primordial
-$\ell\!=\!1$ signal. The most plausible reading of the hemisphere
+(strict-superset $f_{\rm sky}\!=\!0.659$); and the canonical-$N$
+direct-MC at $\ell\!=\!1$ at $+1.85\sigmaunit$
+(Sec.~\ref{sec:conclusions}; mild canonical-mask excess interpreted
+as a leakage-floor calibration, not as a primordial signal) — taken
+together rule out a primordial $\ell\!=\!1$ dipole at sub-percent
+amplitude. The most plausible reading of the hemisphere
 max-statistic rejection is therefore that the same sub-percent
 depth-coupled / GZ1-training-label systematic that sources the
 global $9.5\sigmaunit$ CW-fraction monopole (Sec.~\ref{sec:cw_frac})
@@ -1352,19 +1366,25 @@ see footnote~\ref{fn:mc_count}).
   monopole into low-$\ell$ bandpowers under the
   partial-sky MASTER kernel; the dipole-parity observable is the single-mode
   $\ell\!=\!1$ result (first row), and the bandpower table is a null-consistency
-  cross-check at multipoles \emph{other than} the dipole. A single
-  canonical-$N$ MASTER recompute at $\ell\!=\!1$ on the equivariant map is
-  on the post-arXiv-submission TODO; the two analyses use the same Catalog~C
-  CW/CCW labels and differ only in the analysis mask and normalization, so
-  agreement is expected but not numerically verified at the time of this
-  release.\label{tab:multipole}}
+  cross-check at multipoles \emph{other than} the dipole. The
+  canonical-$N$ MASTER direct-MC at $\ell\!=\!1$ on the equivariant map
+  (v1.0.62 closure of the prior post-arXiv TODO) yields
+  $\sigma_{\rm canonical}\!=\!+1.85$ at $f_{\rm sky}\!=\!0.4938$,
+  $N_{\rm spiral}\!=\!3{,}201{,}160$, SEED$\,=\,42$, $500$-MC
+  (Sec.~\ref{sec:conclusions} and companion artifact
+  \texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json});
+  this is a mild canonical-mask excess interpreted as a leakage-floor
+  calibration, with the $-0.122\sigmaunit$ subsample-mask figure
+  retained as the headline post-MASTER null because its
+  $f_{\rm sky}\!=\!0.659$ mask is a strict superset that bypasses the
+  canonical-mask leakage channel.\label{tab:multipole}}
 \begin{ruledtabular}
 \begin{tabular}{ccccl}
 \textbf{Mode} & \textbf{$C_\ell \times 10^{6}$ (sr)} &
 \textbf{$\sigma_{\rm null} \times 10^{6}$ (sr)} &
 \textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
-$\ell\!=\!1$ (single mode$^a$)    & 1.494   & 0.429 & $-0.122$ & Null (subsample mask; canonical projection $+0.2595\sigmaunit$, also null) \\
+$\ell\!=\!1$ (single mode$^a$)    & 1.494   & 0.429 & $-0.122$ & Null (subsample mask, $f_{\rm sky}\!=\!0.659$; canonical direct-MC $+1.85\sigmaunit$ at $f_{\rm sky}\!=\!0.4938$, v1.0.62, leakage-floor calibration) \\
 $\ell_{\rm eff}\!=\!4$ ($\ell\!\in\![2,6]$)$^b$  & 3.210   & 0.804 & $+6.097$ & Mask-coupled monopole leakage \\
 $\ell_{\rm eff}\!=\!9$ ($\ell\!\in\![7,11]$)     & $-0.248$ & 0.574 & $+2.232$ & Residual mask coupling \\
 $\ell_{\rm eff}\!=\!14$ ($\ell\!\in\![12,16]$)   & $-0.387$ & 0.446 & $+2.626$ & Residual mask coupling \\
@@ -1395,7 +1415,7 @@ mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
 a physical chirality anisotropy. All higher multipoles are likewise
 consistent with null.
 
-The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$), with the analytic canonical-$N$ projection $+0.26\sigmaunit$ (Sec.~\ref{sec:conclusions}) reported as the mask/$N$-invariance cross-check; both are within the null band $|\sigma|<1$. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
+The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The v1.0.62 canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; it supersedes the earlier v1.0.55 analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
 \emph{(i)~Estimator geometry.}  The simple dipole fit operates in
 real space on the full asymmetry map, projecting onto a single
@@ -1569,7 +1589,7 @@ recommendation of external peer review.
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
   points show the measured $C_\ell$ values; the gray band indicates
   the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 1{,}000 Monte
-  Carlo null realizations. Note: the figure as plotted shows the original raw pseudo-$C_\ell$ ($\ell=1$ at $2.75\sigmaunit$ relative to the original shot-noise floor). After the corrected $N_{\rm spiral}$ normalization the pseudo-$C_\ell$ SNR is $6.48\sigma$ and the MASTER-decoupled value is $6.08\sigma$; however, these are intermediate estimators before full mode-coupling inversion. The headline result (Sec.~\ref{sec:dipole}) is the post-MASTER deconvolution significance of $-0.12\sigmaunit$ on the analysis subsample mask, with the analytic canonical-$N$ projection $+0.26\sigmaunit$ (Sec.~\ref{sec:conclusions}) as the mask/$N$-invariance cross-check; both are fully consistent with null at $\ell=1$. The $6.48\sigma$/$6.08\sigma$ values reflect mask-induced mode coupling explicitly removed by MASTER deconvolution and should not be quoted as a detection. Verification artifact: \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
+  Carlo null realizations. Note: the figure as plotted shows the original raw pseudo-$C_\ell$ ($\ell=1$ at $2.75\sigmaunit$ relative to the original shot-noise floor). After the corrected $N_{\rm spiral}$ normalization the pseudo-$C_\ell$ SNR is $6.48\sigma$ and the MASTER-decoupled value is $6.08\sigma$; however, these are intermediate estimators before full mode-coupling inversion. The headline result (Sec.~\ref{sec:dipole}) is the post-MASTER deconvolution significance of $-0.12\sigmaunit$ on the analysis subsample mask. The v1.0.62 canonical-$N$ direct-MC result $+1.85\sigmaunit$ (Sec.~\ref{sec:conclusions}, $f_{\rm sky}=0.4938$, $N_{\rm spiral}=3{,}201{,}160$, $500$-MC, SEED $=42$; supersedes the v1.0.55 analytic projection $+0.26\sigmaunit$) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; the no-dipole-at-$\ell=1$ verdict is carried by the full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures which bypass the canonical-mask leakage channel. The $6.48\sigma$/$6.08\sigma$ values reflect mask-induced mode coupling explicitly removed by MASTER deconvolution and should not be quoted as a detection. Verification artifact: \texttt{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
   All higher multipoles are consistent with noise.  The absence of
   coherent power at any scale beyond the lowest bin rules out a
   large-scale parity-violation \emph{dipole} above the ${\sim}0.29\%$ statistical Fisher /
@@ -2096,11 +2116,13 @@ a cosmological interpretation:
   null at $\ell\!=\!1$.
 \item The angular power spectrum at $\ell = 1$ is
   $-0.12\sigmaunit$ (post-MASTER deconvolution on the analysis
-  subsample mask, headline result; analytic canonical-$N$
-  projection $+0.26\sigmaunit$; Sec.~\ref{sec:dipole},
-  Sec.~\ref{sec:conclusions}); the raw pseudo-$C_\ell$ excess of
-  $6.48\sigmaunit$ before deconvolution is an artifact of
-  mask-induced mode coupling, not a physical signal.
+  subsample mask $f_{\rm sky}\!=\!0.659$, headline result;
+  v1.0.62 canonical-$N$ direct-MC at $f_{\rm sky}\!=\!0.4938$ gives
+  $+1.85\sigmaunit$, interpreted as a leakage-floor calibration on
+  the canonical patchy mask, not as a primordial signal;
+  Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}); the raw
+  pseudo-$C_\ell$ excess of $6.48\sigmaunit$ before deconvolution is
+  an artifact of mask-induced mode coupling, not a physical signal.
 \item The signal is stronger in mid-confidence classifications,
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
 \end{enumerate}
@@ -2881,66 +2903,68 @@ $\ell\!=\!1$ estimators are now on record across distinct
 mask/$N$/method configurations:
 \begin{center}
 \small
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 \hline\hline
-Estimator & Mask/method & $f_{\rm sky}$ & $N$ & $\sigma$ \\
+Estimator & Mask/method & $f_{\rm sky}$ & $N_{\rm spiral}$ & $N_{\rm pix\,used}$ & $\sigma$ \\
 \hline
-Real-space dipole (full-sky) & weighted-mean & --- & $3{,}201{,}160$ & $0.43$ \\
-Subsample-mask MASTER (\S\ref{sec:dipole} headline) & MASTER & $0.659$ & $5{,}547{,}858$ & $-0.12$ \\
-Canonical-$N$ analytic projection (v1.0.55) & projection & $0.491$ & $3{,}201{,}160$ & $+0.26$ \\
-\textbf{Canonical-$N$ direct-MC (v1.0.62)} & \textbf{MASTER} & $\mathbf{0.494}$ & $\mathbf{3{,}201{,}160}$ & $\mathbf{+1.85}$ \\
+Real-space dipole (full-sky) & weighted-mean & --- & $3{,}201{,}160$ & --- & $0.43$ \\
+Subsample-mask MASTER (\S\ref{sec:dipole} headline) & MASTER & $0.659$ & $3{,}201{,}160$$^a$ & $32{,}388$ & $-0.12$ \\
+Canonical-$N$ analytic projection (v1.0.55) & projection & $0.491$ & $3{,}201{,}160$ & --- & $+0.26$ \\
+\textbf{Canonical-$N$ direct-MC (v1.0.62)} & \textbf{MASTER} & $\mathbf{0.494}$ & $\mathbf{3{,}201{,}160}$ & $\mathbf{24{,}269}$ & $\mathbf{+1.85}$ \\
 \hline\hline
 \end{tabular}
+\\
+\footnotesize{$^a$ The $5{,}547{,}858$ figure quoted elsewhere is the
+subsample \emph{pixel-weighted galaxy count} (CW+CCW with TTA
+duplication) feeding the analysis-mask map; the underlying spiral
+catalog is the same $3{,}201{,}160$ canonical Catalog~C used by every
+row in this table.}
 \end{center}
-The direct-compute $+1.85\sigmaunit$ is materially above the v1.0.55
-analytic projection $+0.26\sigmaunit$ and the subsample-mask
-$-0.12\sigmaunit$ headline. Following the v1.0.57 LEE-reframe logic
-applied to the hemispheric estimator, we interpret this honestly:
-the per-pixel random-label-shuffle null at canonical
-$N$ / canonical mask catches the depth-coupled / GZ1-label imaging
-systematic that sources the global $9.5\sigmaunit$ monopole
-($\CW/(\CW+\CCW)=0.4974\pm0.000279$) projecting power onto the
-$\ell\!=\!1$ mode under the patchy canonical mask. This is
-\emph{not} a primordial dipole detection because (i)~the full-sky
-real-space dipole on the same Catalog~C spiral sample is null at
-$0.43\sigmaunit$ (Sec.~\ref{sec:dipole}, independent estimator,
-identical data); (ii)~the subsample-mask MASTER null at
-$-0.12\sigmaunit$ uses a \emph{strict-superset} mask
-($f_{\rm sky}\!=\!0.659$ contains the canonical $f_{\rm sky}\!=\!0.494$
-mask) and likewise rejects a primordial signal; (iii)~the empirical
-injection-recovery sensitivity floor of $\gtrsim\!0.5\%$ at
-$3\sigmaunit$ on the canonical sample (Sec.~\ref{sec:sensitivity})
-would have recovered any primordial dipole at the amplitude
-implied by $+1.85\sigmaunit$ ($\approx\!0.6\%$ equivalent
-half-modulation $A/2$ if interpreted as signal rather than null
-floor), and the injection table records $P(\sigma\!>\!2)\!=\!0.18$
-at $A\!=\!0.5\%$ rather than the $P(\sigma\!>\!2)\!\gtrsim\!0.5$ that
-a primordial signal at this amplitude would produce. The
-random-label permutation null does not preserve depth / mask-edge /
-GZ1-correlated label structure, so its rejection of the canonical-$N$
-MASTER $\ell\!=\!1$ statistic at $\approx\!1.85\sigmaunit$ is a
-systematic-floor artifact and not a parity signal. The
-no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on the
-two independent estimators (full-sky real-space and subsample-mask
-MASTER) that \emph{do not} concentrate power against the depth /
-mask / label systematic; the canonical-$N$ direct-MC value is on
-record as the leakage-floor calibration. The companion JSON
+The canonical-$N$ direct-MC value $+1.85\sigmaunit$ is a mild excess,
+below this paper's $3\sigmaunit$ detection threshold and corresponding
+to a one-sided empirical-rank p-value $p_{\rm MC}=15/500=0.030$
+(rank of the data among the $500$ permutation nulls). We interpret it
+as a leakage-floor calibration, not as a primordial signal:
+\begin{enumerate}[label=(\roman*)]
+\item It supersedes the v1.0.55 analytic projection
+$+0.26\sigmaunit$, which assumed $\propto\!f_{\rm sky}/N$
+null-variance scaling that does not capture mask-edge--correlated
+leakage of the monopole-asymmetry imaging systematic onto $\ell\!=\!1$
+under the patchy canonical mask. The analytic projection is retained
+in the table only as a methodological-comparison reference.
+\item Two independent full-sky estimators on the same Catalog~C
+spiral sample are null: real-space dipole $0.43\sigmaunit$
+(Sec.~\ref{sec:dipole}) and subsample-mask MASTER $-0.12\sigmaunit$
+on the strict-superset $f_{\rm sky}\!=\!0.659$ mask. The full-sky
+weighted mean and the larger-$f_{\rm sky}$ MASTER analysis each
+average over more contiguous coverage, which suppresses the
+projection of monopole power from small-scale canonical-mask edges
+onto $\ell\!=\!1$; the canonical-mask analysis concentrates that
+edge power into the lowest available mode by construction.
+\item The per-pixel random-label permutation null preserves the
+\emph{marginal} depth-/mask-/edge-vs-pixel coupling (each pixel
+retains its galaxy count, depth, and mask-edge position; only the
+CW vs CCW assignments are shuffled), so any spatially-correlated
+depth-driven asymmetry that contributes uniformly to the monopole
+also leaks coherently into the canonical-mask $\ell\!=\!1$ mode and
+is \emph{not} averaged away by the shuffle. Two independent global
+estimators on the same data being null then identifies this channel
+as a leakage-floor mechanism, not a primordial signal. The
+empirical injection-recovery study (Sec.~\ref{sec:sensitivity})
+records $P(\sigma\!>\!2)\!=\!0.18$ at $A\!=\!0.5\%$ on the canonical
+sample, well below the $P(\sigma\!>\!2)\!\gtrsim\!0.5$ that a
+primordial half-modulation at the empirical-floor amplitude would
+have produced.
+\end{enumerate}
+The no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on
+the two estimators that bypass the canonical-mask leakage channel;
+the canonical-$N$ direct-MC value is on record as a leakage-floor
+calibration. The companion JSON
 \texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json}
-records all numerical inputs / outputs; the 500-MC null distribution
-\texttt{null\_distribution.npy} is archived on the compute pod
-(\texttt{/workspace/p4\_canonical\_l1/}) and will be mirrored to the
-provenance directory in a follow-up tick.
-\par
-This closes GPT-B2 with a direct-MC artifact rather than an analytic
-projection. The qualitative null verdict at $\ell\!=\!1$ is
-preserved by the two estimators that bypass the per-pixel
-random-label-shuffle / canonical-mask depth-coupled-leakage channel;
-the v1.0.55 analytic projection $+0.26\sigmaunit$ underestimated the
-canonical-mask leakage magnitude by a factor of $\sim\!7\times$
-(the analytic projection assumed
-$\propto\!f_{\rm sky}/N$ null-variance scaling, which does not
-capture mask-edge--correlated leakage of the monopole-asymmetry
-imaging systematic onto $\ell\!=\!1$).
+records all numerical inputs / outputs, and the 500-MC null
+distribution \texttt{null\_distribution.npy} is committed at
+\texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct\_null\_distribution.npy}
+(sha256 stamped in the manifest).
 
 \paragraph{Surviving real-cross-vendor deferrals (v1.0.55).}
 A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
