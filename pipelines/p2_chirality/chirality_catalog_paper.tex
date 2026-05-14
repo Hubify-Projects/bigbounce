@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.50}
-\newcommand{\paperTimestamp}{2026-05-13 (R-round-3 closures) PDT}
+\newcommand{\paperVersion}{v1.0.51}
+\newcommand{\paperTimestamp}{2026-05-13 (R-round-3 minor sweep) PDT}
 
 \begin{document}
 
@@ -971,19 +971,25 @@ The pipeline produces three catalog tiers:
   total discordance $b\!+\!c\!=\!35{,}266$, signed difference
   $b\!-\!c\!=\!2{,}512$. McNemar's statistic
   $\chi^2_1 = (b-c)^2/(b+c) = 2{,}512^2 / 35{,}266 = 178.9$, giving
-  the signed (uncorrected) two-sided Z of
+  the signed McNemar $Z$ (one-sided convention with sign carrying the direction of marginal-handedness disagreement; the two-sided p-value derives from $|Z|$) of
   $(b-c)/\sqrt{b+c} = +13.4\sigmaunit$. The sign is informative:
   on the matched subset Catalog~C is $\sim\!2.1$~pp \emph{less}
   CW-leaning than GZ1 (Cat-C marginal CW fraction $0.4726$ vs.\ GZ1
   marginal CW fraction $0.4940$), the opposite sign from the
   global $+0.5\%$ CW excess of Catalog~C on the full $3.2$M-spiral
   catalog. This rules out a simple ``GZ1 bias $\to$ direct
-  propagation $\to$ Catalog~C residual'' attribution and instead
-  points to the CE-ResNet pseudo-label pathway ($67.6\%$ of training
-  labels) as the dominant bias-attribution channel, since
-  CE-ResNet was trained on a wider GZ1-influenced corpus whose
+  propagation $\to$ Catalog~C residual'' attribution and is
+  consistent with the CE-ResNet pseudo-label pathway ($67.6\%$ of
+  training labels) being the dominant bias-attribution channel,
+  since CE-ResNet was trained on a wider GZ1-influenced corpus whose
   handedness statistics need not match the bright/nearby GZ1
-  cross-match subset. The chance-corrected agreement statistic is
+  cross-match subset. A residual ViT-S inductive bias not present
+  in either training source remains an alternative explanation that
+  the joint tabulation does not distinguish from the CE-ResNet
+  pathway; a non-GZ1, non-CE-ResNet chirality reference at scale
+  would be required to discriminate the two channels (see
+  Sec.~\ref{par:sparcfire_monopole} for the partial SpArcFiRe
+  cross-check). The chance-corrected agreement statistic is
   Cohen's $\kappa\!=\!0.40$ (computed on the same $117{,}205$ pairs),
   ``moderate'' agreement in the Landis-Koch convention. We treat
   the $Z\!=\!13.4$ headline as measurement-grade replacement for the
@@ -1104,7 +1110,7 @@ $\sigma \approx 0.000274$ and is superseded). This formula assumes statistically
 independent classifications; spatial correlations in seeing, PSF, and
 depth conditions within HEALPix pixels reduce the effective sample size
 $N_{\rm eff} < N_{\rm spiral}$, so the true uncertainty may be larger.
-The uniform across 7 equatorial coordinate slabs distribution of the $9.5\sigmaunit$ residual
+The spatially uniform distribution (across all 7 equatorial coordinate slabs) of the $9.5\sigmaunit$ residual
 (Table~\ref{tab:sky_balance}) suggests the dominant effect is a global
 training-label bias rather than spatially correlated systematics, but
 a rigorous $N_{\rm eff}$ estimate (e.g., via pixel-to-pixel variance
@@ -1161,8 +1167,8 @@ and therefore does not produce a dipole or any higher-order pattern
 in the chirality map. This progression---from $28.8\sigmaunit$ (raw)
 to $9.5\sigmaunit$ (equivariant)---demonstrates that the dominant CW
 excess is a classifier artifact, not a physical signal, while the
-small equivariant residual is a uniform across 7 equatorial coordinate slabs monopole with no
-cosmological content.
+small equivariant residual is a spatially uniform monopole (consistent
+across all 7 equatorial coordinate slabs) with no cosmological content.
 
 \begin{table}
 \caption{Global CW fraction across catalog tiers.  Uncertainties are
@@ -1497,8 +1503,8 @@ recommendation of external peer review.
   All higher multipoles are consistent with noise.  The absence of
   coherent power at any scale beyond the lowest bin rules out a
   large-scale parity-violation \emph{dipole} above the ${\sim}0.2\%$
-  level (minimum detectable at $3\sigmaunit$); the uniform across 7 equatorial coordinate slabs
-  monopole offset is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
+  level (minimum detectable at $3\sigmaunit$); the spatially uniform
+  monopole offset (across all 7 equatorial coordinate slabs) is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
   \label{fig:multipoles}}
 \end{figure}
 
@@ -2474,8 +2480,14 @@ $|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\texttt{r42\_results/wave\_14\_jj\_psf
   CW fraction $0.4974\%$; the dashed black line is the
   parity-symmetric $50/50$. Per-axis maximum bin-to-bin spread
   (printed in each subplot title) is below $0.32\%$ for size and
-  $b/a$ and reaches $1.41\%$ for fracdev (driven by the smallest-N
-  fracdev bin at $n\!=\!10{,}941$). Across all axes the per-bin CW
+  $b/a$ and reaches $1.41\%$ for fracdev, driven by the
+  high-fracdev tail (smallest-$N$ bin at $fracdev{>}0.5$,
+  $n\!=\!10{,}941$, where the per-bin Poisson SE is
+  $\sqrt{0.5{\cdot}0.5/n}\!\approx\!0.48\%$); the $1.41\%$ spread is
+  statistically significant at ${\sim}\,2.9\sigma$ on the bin's own
+  scatter, consistent with the morphology-classification correlation
+  discussed in Sec.~\ref{sec:bin_flatness} and \emph{not} attributable
+  to small-$N$ Poisson scatter alone. Across all axes the per-bin CW
   fraction sits within $\sim\!0.3\%$ of the catalog-wide baseline,
   consistent with the spatially uniform monopole picture; \emph{none}
   of the axes shows a directional dipole signature, the
@@ -2746,11 +2758,14 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   $A \geq 0.1\%$ at $>\!5\sigmaunit$ post-equivariant-averaging and
   look-elsewhere-corrected significance, then the result of this
   paper is falsified and a cosmological chirality dipole at the
-  detected amplitude must be accepted. The criterion is
-  axis-agnostic: a cosmological parity-violation signal is not
-  required to align with any previously-reported dipole axis, so the
-  falsification condition is solely the amplitude $\!\times\!$
-  significance product. Conversely, an LSST Y3 null at the projected
+  detected amplitude must be accepted. We do not require axis-alignment
+  with any previous claim because a true cosmological signal at LSST
+  scale would be measured to high precision in its own direction;
+  cross-survey axis comparison becomes meaningful at $\gtrsim\!10\sigma$
+  detection, not at the $5\sigma$ falsification threshold. The
+  falsification condition is therefore the amplitude $\!\times\!$
+  significance product alone, evaluated in the LSST data's preferred
+  direction. Conversely, an LSST Y3 null at the projected
   $\sim\!0.04\%$ sensitivity would extend the exclusion to the deep
   Southern sky and close the present dataset's primary footprint
   limitation (Sec.~\ref{sec:sensitivity}).
