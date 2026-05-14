@@ -50,6 +50,15 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Maldacena}},\ }\bibfield  {title} {\bibinfo {title} {Non-gaussian features
+  of primordial fluctuations in single field inflationary models},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo
+  {volume} {0305}},\ \bibinfo {pages} {013}},\ \Eprint
+  {https://arxiv.org/abs/astro-ph/0210603} {arXiv:astro-ph/0210603}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Pajer}\ \emph {et~al.}(2013)\citenamefont {Pajer},
   \citenamefont {Schmidt},\ and\ \citenamefont {Zaldarriaga}}]{Pajer:2013}%
   \BibitemOpen
@@ -74,15 +83,6 @@
   {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {1105}},\ \bibinfo
   {pages} {014}},\ \Eprint {https://arxiv.org/abs/1103.1251} {arXiv:1103.1251
   [astro-ph.CO]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Maldacena}},\ }\bibfield  {title} {\bibinfo {title} {Non-gaussian features
-  of primordial fluctuations in single field inflationary models},\ }\href@noop
-  {} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\ }\textbf {\bibinfo
-  {volume} {0305}},\ \bibinfo {pages} {013}},\ \Eprint
-  {https://arxiv.org/abs/astro-ph/0210603} {arXiv:astro-ph/0210603}
-  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Heinrich}\ \emph {et~al.}(2024)\citenamefont
   {Heinrich}, \citenamefont {Dore},\ and\ \citenamefont
   {Krause}}]{Heinrich:2023}%
@@ -232,9 +232,8 @@
   {Brandenberger}},\ }\bibfield  {title} {\bibinfo {title} {Non-{Gaussianity}
   in a matter bounce},\ }\href {https://doi.org/10.1103/PhysRevD.90.023534}
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
-  {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year} {2014})},\
-  \Eprint {https://arxiv.org/abs/1404.6968} {arXiv:1404.6968 [hep-th]}
-  \BibitemShut {NoStop}%
+  {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Slosar}\ \emph {et~al.}(2008)\citenamefont {Slosar},
   \citenamefont {Hirata}, \citenamefont {Seljak}, \citenamefont {Ho},\ and\
   \citenamefont {Padmanabhan}}]{Slosar:2008}%
