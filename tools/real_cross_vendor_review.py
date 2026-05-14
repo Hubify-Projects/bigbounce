@@ -38,9 +38,18 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # 5 real frontier models from different vendors, mapped to the project's
 # 5 reviewer personas. Models chosen for tier + variety.
+#
+# "model" is the preferred (latest, highest-tier) model ID; "fallback" is
+# used if OpenRouter returns 404 / model_not_found for the preferred one.
+# "reasoning_effort" enables higher-budget thinking on supported models
+# (OpenAI o-series-style, Gemini thinking, Grok reasoning, DeepSeek R1).
+# Perplexity Sonar's web-search-augmented role doesn't benefit from
+# explicit reasoning effort.
 REVIEWERS = {
     "GPT5_methodology": {
         "model": "openai/gpt-5.5",
+        "fallback": "openai/gpt-5.5",
+        "reasoning_effort": "high",
         "persona": "GPT-5 methodology reviewer",
         "focus": (
             "Methodology rigor: derivations, dimensional analysis, statistical-method "
@@ -50,9 +59,11 @@ REVIEWERS = {
             "for proper marginalization vs parameter-shift."
         ),
     },
-    "Gemini25Pro_cosmology": {
-        "model": "google/gemini-2.5-pro",
-        "persona": "Gemini-2.5-Pro cosmology-physics reviewer",
+    "Gemini31Pro_cosmology": {
+        "model": "google/gemini-3.1-pro-preview",
+        "fallback": "google/gemini-2.5-pro",
+        "reasoning_effort": "high",
+        "persona": "Gemini-3.1-Pro cosmology-physics reviewer",
         "focus": (
             "Theoretical physics: gauge-frame vs physical-frame distinctions, GR "
             "projection effects, model-class scope boundaries, EFT counting, "
@@ -61,9 +72,11 @@ REVIEWERS = {
             "/ ALP / Chern-Simons references against standard reviews."
         ),
     },
-    "Grok4_brutal": {
-        "model": "x-ai/grok-4",
-        "persona": "Grok-4 brutal-honesty reviewer",
+    "Grok43_brutal": {
+        "model": "x-ai/grok-4.3",
+        "fallback": "x-ai/grok-4",
+        "reasoning_effort": "high",
+        "persona": "Grok-4.3 brutal-honesty reviewer",
         "focus": (
             "Cut through narrative inflation. Flag overclaim, false confidence, "
             "headline numbers that aren't load-bearing, anything written to dodge a "
@@ -74,6 +87,8 @@ REVIEWERS = {
     },
     "PerplexitySonarPro_citations": {
         "model": "perplexity/sonar-pro-search",
+        "fallback": "perplexity/sonar-pro-search",
+        # No reasoning_effort: Sonar's web-search augmentation does the work.
         "persona": "Perplexity Sonar Pro citation-chain forensic auditor",
         "focus": (
             "Citation forensics — does each cited paper actually say what's claimed? "
@@ -83,9 +98,11 @@ REVIEWERS = {
             "(title from one paper + arXiv ID from another)."
         ),
     },
-    "DeepSeekV32_confab": {
-        "model": "deepseek/deepseek-v3.2",
-        "persona": "DeepSeek-V3.2 confabulation-hunter",
+    "DeepSeekV4Pro_confab": {
+        "model": "deepseek/deepseek-v4-pro",
+        "fallback": "deepseek/deepseek-r1",
+        "reasoning_effort": "high",
+        "persona": "DeepSeek-V4-Pro confabulation-hunter (reasoning mode)",
         "focus": (
             "Paranoid about numbers without traceable sources. For every load-bearing "
             "scalar in the abstract and conclusions, ask: is there a JSON/script/dataset "
@@ -128,13 +145,19 @@ PAPER TEXT (LaTeX source follows):
 Return your full review as markdown."""
 
 
-def call_openrouter(api_key: str, model: str, prompt: str, max_tokens: int = 8000, timeout: int = 240) -> dict:
-    body = json.dumps({
+def call_openrouter(api_key: str, model: str, prompt: str, max_tokens: int = 16000, timeout: int = 360, reasoning_effort: str | None = None) -> dict:
+    payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": max_tokens,
         "temperature": 0.3,
-    }).encode("utf-8")
+    }
+    if reasoning_effort:
+        # OpenRouter normalizes the reasoning-effort field across vendors:
+        # OpenAI o-series, Gemini thinking-mode, Grok reasoning, DeepSeek R1.
+        # See https://openrouter.ai/docs/use-cases/reasoning-tokens
+        payload["reasoning"] = {"effort": reasoning_effort}
+    body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         OPENROUTER_URL,
         data=body,
@@ -156,17 +179,42 @@ def call_openrouter(api_key: str, model: str, prompt: str, max_tokens: int = 800
         return {"error": {"exception": repr(e)}}
 
 
+def call_with_fallback(api_key: str, primary: str, fallback: str, prompt: str, reasoning_effort: str | None = None) -> tuple[dict, str]:
+    """Try primary model; on 404/model_not_found, fall back. Returns (result, model_used)."""
+    res = call_openrouter(api_key, primary, prompt, reasoning_effort=reasoning_effort)
+    if "error" in res:
+        err_body = (res["error"].get("body") or "").lower()
+        status = res["error"].get("status")
+        is_model_missing = status == 404 or "model" in err_body and ("not found" in err_body or "no allowed providers" in err_body or "no endpoints" in err_body)
+        if is_model_missing and fallback and fallback != primary:
+            res2 = call_openrouter(api_key, fallback, prompt, reasoning_effort=reasoning_effort)
+            return res2, fallback
+    return res, primary
+
+
 def run_reviewer(name: str, cfg: dict, paper_text: str, round_label: str, paper_tag: str, round_context: str, api_key: str, out_dir: Path) -> dict:
     persona = cfg["persona"]
     prompt = build_prompt(paper_text, persona, cfg["focus"], round_context)
     t0 = time.time()
-    result = call_openrouter(api_key, cfg["model"], prompt)
+    result, model_used = call_with_fallback(
+        api_key,
+        primary=cfg["model"],
+        fallback=cfg.get("fallback", cfg["model"]),
+        prompt=prompt,
+        reasoning_effort=cfg.get("reasoning_effort"),
+    )
     dt = time.time() - t0
 
     out_path = out_dir / f"{round_label}_{paper_tag}_R-round_real_{name}.md"
+    fallback_note = ""
+    if model_used != cfg["model"]:
+        fallback_note = f" (FALLBACK from `{cfg['model']}` — primary unavailable)"
+    reasoning_note = ""
+    if cfg.get("reasoning_effort"):
+        reasoning_note = f"\n**Reasoning effort**: `{cfg['reasoning_effort']}`"
     header = (
         f"# {paper_tag} R-round — REAL cross-vendor — {persona}\n\n"
-        f"**Model**: `{cfg['model']}` (via OpenRouter)\n"
+        f"**Model**: `{model_used}`{fallback_note} (via OpenRouter){reasoning_note}\n"
         f"**Round**: {round_label}\n"
         f"**Wall time**: {dt:.1f}s\n"
         f"**Persona focus**: {cfg['focus']}\n\n"
@@ -179,16 +227,18 @@ def run_reviewer(name: str, cfg: dict, paper_text: str, round_label: str, paper_
         try:
             content = result["choices"][0]["message"]["content"]
             usage = result.get("usage", {})
+            reasoning_tokens = usage.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if isinstance(usage.get("completion_tokens_details"), dict) else 0
+            reasoning_line = f", reasoning={reasoning_tokens}" if reasoning_tokens else ""
             body = (
                 f"**Tokens**: prompt={usage.get('prompt_tokens', '?')}, "
-                f"completion={usage.get('completion_tokens', '?')}, "
+                f"completion={usage.get('completion_tokens', '?')}{reasoning_line}, "
                 f"total={usage.get('total_tokens', '?')}\n\n---\n\n{content}\n"
             )
         except Exception as e:
             body = f"## Parse failure\n\n```json\n{json.dumps(result, indent=2)[:4000]}\n```\n\n`{repr(e)}`\n"
 
     out_path.write_text(header + body)
-    return {"name": name, "model": cfg["model"], "duration_s": dt, "out": str(out_path), "ok": "error" not in result}
+    return {"name": name, "model": model_used, "duration_s": dt, "out": str(out_path), "ok": "error" not in result}
 
 
 def main() -> int:
