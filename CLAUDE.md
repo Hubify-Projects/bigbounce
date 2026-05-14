@@ -263,6 +263,7 @@ git push origin main  # auto-deploys to Vercel
 - **`\citep`/`\citet` undefined**: revtex4-2 uses `\cite{}` — not natbib commands.
 - **`deluxetable` undefined**: Use `\begin{table}\begin{ruledtabular}\begin{tabular}` instead.
 - **364KB PDF**: Figures not embedded. Recompile with figures in the same directory.
+- **Text overflowing the column / overlapping the other column** → see [`AGENT_RULES.md` §4.7](AGENT_RULES.md). Mandatory post-compile visual audit, use `\artifact{}` for every repo path, `table*`/`figure*` for anything wider than a column, never stuff long notes into `\date{}`.
 
 ## Commands
 
