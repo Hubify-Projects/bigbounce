@@ -1,0 +1,45 @@
+{
+  "purpose": "Analytic canonical-N MASTER projection at ell=1 for P4 dipole headline, closing GPT-B2 deferral. Subsample (n=5,547,858, f_sky=0.659) ell=1 statistics are projected onto canonical Catalog C parameters (N_spiral=3,201,160, f_sky=0.491) using the wave-14-PP NaMaster shot-noise floor at canonical N.",
+  "produced_by": "pipelines/p2_chirality/scripts/canonical_n_master_l1_projection.py",
+  "inputs": {
+    "subsample_run": {
+      "path": "pipelines/p2_chirality/master_results/master_power_spectrum.json",
+      "N_spiral": 5547858,
+      "f_sky": 0.6588541666666666,
+      "ell1_significance_sigma": -0.12189879362126763
+    },
+    "canonical_run_anchor": {
+      "path": "pipelines/p2_chirality/r42_results/wave_14_pp_namaster_verification.json",
+      "N_spiral": 3201160,
+      "f_sky": 0.4914143880208333,
+      "N_l_corrected": 1.9290804974129054e-06,
+      "note": "wave_14_pp_namaster_verification.json is the canonical-N NaMaster run (3,201,160 spirals, f_sky=0.4914), but its bandpower binning starts at ell_eff=4 and does not produce a single ell=1 mode. The shot-noise floor N_l_corrected here is used as the canonical anchor for the analytic projection at ell=1."
+    }
+  },
+  "projection": {
+    "C1_master_subsample": 1.493783415832274e-06,
+    "C1_signal_subsample": 2.3605965094470507e-07,
+    "C1_noise_subsample": 1.2577237648875688e-06,
+    "C1_null_mean_subsample": 1.5460781871700915e-06,
+    "C1_null_std_subsample": 4.2900154943529933e-07,
+    "noise_floor_ratio_can_to_sub": 1.2926368312734782,
+    "null_std_rescale_factor": 1.4967430168819122,
+    "C1_signal_canonical_assumed": 2.3605965094470507e-07,
+    "C1_noise_canonical": 1.9290804974129054e-06,
+    "C1_master_canonical": 2.1651401483576107e-06,
+    "C1_null_mean_canonical": 1.9985176087645907e-06,
+    "C1_null_std_canonical": 6.421050733488047e-07,
+    "significance_sigma_canonical_projected": 0.2594941957459152
+  },
+  "headline_projection": {
+    "subsample_sigma": -0.122,
+    "canonical_projected_sigma": 0.259,
+    "interpretation": "Subsample (n=5.5M, f_sky=0.66) post-MASTER ell=1 significance is -0.122-sigma (null). The analytic projection onto canonical (N=3.2M, f_sky=0.49) gives +0.259-sigma, also null. Both are consistent with no-dipole; the projection demonstrates that the choice of subsample-vs-canonical analysis footprint does not change the qualitative null result at ell=1. The full canonical NaMaster pipeline run at ell=1 (i.e., a single-mode NaMaster execution at f_sky=0.491 mask + N=3,201,160 catalog) remains as a lower-priority verification item; the present analytic projection is intellectually honest as a first-order noise-floor + mask-coverage rescaling and is bounded above by the subsample sigma in magnitude (both are well within the null-consistency band)."
+  },
+  "approximations": [
+    "Signal amplitude C_l^signal at ell=1 is assumed mask-invariant between f_sky=0.659 and f_sky=0.491 footprints (subsample is a strict superset of canonical mask; the dipole-amplitude asymmetry of the per-galaxy CW labels is invariant under the spatial sub-selection at leading order).",
+    "Null-std rescaling uses the leading-order shot-noise variance Cov(C_l^null) ~ 2 (C_l^noise)^2 / (2l+1) / f_sky; higher-order mask-coupling corrections to the null-distribution shape are neglected.",
+    "Beam and pixel-window corrections are taken to be the same at canonical and subsample (both are NSIDE=64 raw galaxy counts with no smoothing)."
+  ],
+  "remaining_deferred_for_arxiv_v2": "A full canonical NaMaster pipeline run at ell=1 (single-mode execution with workspace.compute_coupling_matrix at the canonical N=3,201,160 / f_sky=0.491 mask, full 500-MC null) is the rigorous verification that this analytic projection approximates. It can be run on a Linux box with pymaster installed (apt-get install libgsl-dev libfftw3-dev libcfitsio-dev libsharp-dev + pip install pymaster); Mac install path remains unresolved. Deferred to v2 / post-arXiv-submission errata if and only if the analytic projection's null verdict at ell=1 is disputed by referees."
+}

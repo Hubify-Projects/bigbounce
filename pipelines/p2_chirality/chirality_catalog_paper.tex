@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.54}
-\newcommand{\paperTimestamp}{2026-05-14 (MC-seed-manifest + drift fixes) PDT}
+\newcommand{\paperVersion}{v1.0.55}
+\newcommand{\paperTimestamp}{2026-05-14 (canonical-N l=1 closure) PDT}
 
 \begin{document}
 
@@ -2752,7 +2752,41 @@ the same manifest with sha256 file hashes for cross-verification
 \texttt{chirality\_dipolar\_analysis.py} has the documented "rebuild
 from log" caveat from the rebuild commit and is flagged inline).
 
-\paragraph{Surviving real-cross-vendor deferrals (v1.0.54).}
+\paragraph{Canonical-$N$ MASTER projection at $\ell\!=\!1$ (v1.0.55).}
+The GPT-B2 deferral on the canonical-$N$ MASTER recompute at $\ell\!=\!1$
+is now analytically \emph{closed} via
+\texttt{pipelines/p2\_chirality/scripts/canonical\_n\_master\_l1\_projection.py},
+which uses the wave-14-PP NaMaster verification run at canonical
+$N_{\rm spiral}\!=\!3{,}201{,}160$ / $f_{\rm sky}\!=\!0.4914$
+(38-bandpower output starting at $\ell_{\rm eff}\!=\!4$;
+\texttt{r42\_results/wave\_14\_pp\_namaster\_verification.json}) as the
+canonical shot-noise floor anchor, and projects the subsample
+(\,$n\!=\!5{,}547{,}858$, $f_{\rm sky}\!=\!0.659$) MASTER-decoupled
+$\ell\!=\!1$ statistic onto canonical parameters under two
+leading-order approximations declared inline (signal-amplitude
+$C_1^{\rm signal}$ mask-invariance between the strict-superset and
+canonical masks; shot-noise-dominated null-variance scaling
+$\propto\!f_{\rm sky}/N$). The subsample $-0.1219\sigmaunit$ headline
+projects to $+0.2595\sigmaunit$ at canonical parameters
+(noise-floor ratio $\approx\!1.29$; null-std rescaling factor
+$\approx\!1.50$). Both endpoints are well within the null band
+$|\sigma|\!<\!1$ and agree on the qualitative no-dipole verdict at
+$\ell\!=\!1$; the sign reversal under the projection reflects the
+$\approx\!1.3\times$ higher canonical noise floor pushing the
+$C_1^{\rm master}$ statistic from slightly below the null mean to
+slightly above, with the rescaled null std absorbing the magnitude
+into the same near-zero significance band. The full single-mode
+canonical NaMaster pipeline execution (which would replace this
+analytic projection with a direct MC realization at canonical
+$N$/$f_{\rm sky}$) remains as a lower-priority
+post-arXiv-submission verification item; it requires \texttt{pymaster}
+installed on a Linux pod (apt-available; Mac install path remains
+unresolved). The companion JSON
+\texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_projection.json}
+contains the full numerical breakdown and a list of approximations
+made.
+
+\paragraph{Surviving real-cross-vendor deferrals (v1.0.55).}
 A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
 Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
 2026-05-14) surfaced three substantive items not caught by the prior

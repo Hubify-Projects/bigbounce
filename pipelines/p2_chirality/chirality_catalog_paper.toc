@@ -52,7 +52,8 @@
 \contentsline {section}{\numberline {VII}Conclusions}{26}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{26}{section*.51}%
 \contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{26}{section*.52}%
-\contentsline {paragraph}{\numberline {c}Surviving real-cross-vendor deferrals (v1.0.54).}{27}{section*.53}%
-\contentsline {section}{\numberline {VIII}Data Availability}{28}{section*.54}%
-\contentsline {section}{\numberline {}Acknowledgments}{28}{section*.55}%
-\contentsline {section}{\numberline {}References}{28}{section*.56}%
+\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER projection at $\ell \!=\!1$ (v1.0.55).}{27}{section*.53}%
+\contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{27}{section*.54}%
+\contentsline {section}{\numberline {VIII}Data Availability}{28}{section*.55}%
+\contentsline {section}{\numberline {}Acknowledgments}{28}{section*.56}%
+\contentsline {section}{\numberline {}References}{29}{section*.57}%
