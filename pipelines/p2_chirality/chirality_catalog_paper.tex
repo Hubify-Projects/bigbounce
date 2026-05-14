@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.59}
-\newcommand{\paperTimestamp}{2026-05-14 (Jia bib fix + sensitivity convention) PDT}
+\newcommand{\paperVersion}{v1.0.60}
+\newcommand{\paperTimestamp}{2026-05-14 (convention propagation to downstream sites) PDT}
 
 \begin{document}
 
@@ -2790,7 +2790,10 @@ $\sim\!10^{8}$ resolved spirals---about $30\times$ the present
 equivariant-spiral count. Applied with the same $Z_2$ test-time
 averaging and null-hypothesis bias panel developed here, this
 would push the minimum detectable dipole to
-$\sim\!0.04\%$ at $3\sigma$, a regime in which even
+$\sim\!0.04\%$ on the CW-fraction half-modulation $A/2$ at
+$3\sigma$ statistical (corresponding to $\sim\!0.08\%$ on the
+full amplitude $A$ under the convention disclosure of
+Sec.~\ref{sec:sensitivity}), a regime in which even
 sub-percent bounce-cosmology parity predictions become testable.
 
 Third, we release the bias hardening test suite as open-source
@@ -2928,8 +2931,13 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   we achieve a conservative empirical minimum detectable dipole of
   $\sim\!0.5\%$ at $3\sigmaunit$ (the injection-recovery
   systematic-inclusive floor, Sec.~\ref{sec:sensitivity}); the
-  statistical-only Poisson floor is $0.2\%$ and is retained as a
-  theoretical asymptote (not as the user-facing sensitivity).
+  statistical-only Poisson floor on the CW-fraction half-modulation
+  $A/2$ is $0.2\%$ (corresponding to a full-amplitude
+  $A$-floor of $0.4\%$ conservative, $\sim\!0.29\%$ Fisher exact
+  under $p_{\rm CW}\!=\!\tfrac12(1+A\cos\theta)$;
+  Sec.~\ref{sec:sensitivity} amplitude-convention disclosure paragraph)
+  and is retained as a theoretical asymptote (not as the user-facing
+  full-amplitude sensitivity).
   No dipole detection: the global (monopole) CW fraction is
   $\CW/(\CW+\CCW) = 0.4974 \pm 0.000279$ ($9.5\sigmaunit$ from
   $50/50$; uniform across 7 equatorial coordinate slabs but
