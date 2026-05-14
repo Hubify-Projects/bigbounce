@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.20}
+\newcommand{\paperVersion}{v1A.0.21}
 \newcommand{\paperTimestamp}{2026-05-10 03:30 PDT}
 
 \begin{document}
@@ -59,17 +59,26 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 13, 2026 PDT --- \paperVersion}
+\date{May 14, 2026 PDT --- \paperVersion}
 
 \begin{abstract}
-We establish that minimal Einstein-Cartan-Holst (ECH) spin-torsion gravity cannot
-generate late-time dark energy through any of its characteristic structural
-mechanisms. Through 7 foundation studies (Foundations~A--G) and 6 observational research branches (Branches~H, J, L, M, N, O) we catalog
-14 mechanism-class constraints (Barrier~8 is the observational consequence
-of the perturbation-transparency theorem Barrier~14, retained in the catalog
-for historical mechanism-class completeness; counted separately for catalog
-continuity, the two are not logically independent) that collectively close
-every minimal ECH route from the quantum bounce to observable dark energy.
+We establish that the four enumerated minimal-Einstein-Cartan-Holst (ECH)
+spin-torsion channels for sourcing late-time dark energy fail at the
+amplitude level. This is a channel-level closure, not an operator-level
+theorem: the four enumerated routes (NJL, one-loop EA, Immirzi running,
+parity-CMB) are not proven to be a complete diffeomorphism-invariant
+operator basis for the minimal-ECH effective action; we acknowledge missing
+operators (Jackiw-Pi gravitational Chern-Simons $R\!\wedge\!\tilde R$,
+parity-odd four-fermion partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$
+coefficient) explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}.
+Through 7 foundation studies (Foundations~A--G) and 6 observational research
+branches (Branches~H, J, L, M, N, O) we report 13 logically-independent
+mechanism-class constraints (the prior count of 14 retained Barrier~8 as the
+observational consequence of the perturbation-transparency theorem
+Barrier~14; merged here under the perturbation-transparency umbrella since
+they are not logically independent) that collectively constrain the
+enumerated channels of the minimal-ECH route from the quantum bounce to
+observable dark energy.
 The central result is a perturbation-transparency theorem: for canonical scalar
 matter, torsion vanishes at all perturbation orders, the Holst dual contraction
 $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically by the
@@ -535,8 +544,37 @@ budget of Sec.~\ref{sec:obs} discriminates; a full operator-level no-go would
 require enumerating all dimension-6 parity-odd four-fermion + gravitational
 Chern-Simons operators consistent with diffeomorphism invariance, which is
 deferred to a follow-up theory paper. The robustness check provided by the
-14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
+13-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
+
+\paragraph{Real cross-vendor adversarial-review deferrals (v1A.0.21).}
+A multi-vendor adversarial-review round (GPT-5.5 / Gemini-2.5-Pro /
+Grok-4-fast / Perplexity Sonar Pro / DeepSeek-V3.2, all queried via the
+OpenRouter unified API on 2026-05-14) surfaced three substantive
+theory-derivation BLOCKERs that the prior Claude-only persona-simulation
+rounds did not catch: (a) the dimensional reconstruction of
+$\rho_\Lambda^{\rm bounce}$ in Appendix~\ref{app:dimensions} carries an
+internal mass-dimension inconsistency between $(\alpha/M) M_{\rm Pl}^3$
+(dimension $+2$) and the equivalent rewriting as $[(\alpha/M) M_{\rm Pl}] M_{\rm Pl}^4$
+(dimension $+4$); the $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ choice and the
+subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping require a redo of the
+mass-dimension counting from the component operator and a recomputation of
+the hierarchy. (b) The Hehl-Datta torsion-induced four-fermion contact term
+in Route~1 is here characterized as ``parity-even''; the canonical
+Hehl-Datta result for Dirac matter gives an axial-axial structure
+$(\bar\psi\gamma^a\gamma^5\psi)^2$ which is a pseudoscalar (parity-odd)
+invariant under spatial inversion, requiring a re-statement of the parity
+characterization of Route~1 and a check that the amplitude-suppression
+argument stands without the parity-even claim. (c) The Route~2 one-loop
+graviton-correction derivation has a dimensional inconsistency in the
+$\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm obs}$ ratio (yields units of
+mass rather than a dimensionless number); the one-loop suppression factor
+needs a re-derivation that correctly relates the parity-odd one-loop term to
+the effective photon Chern-Simons coupling that sources birefringence. The
+present manuscript carries these three items as \textbf{on-record deferrals}
+flagged by the real-cross-vendor round and addressable in a dedicated
+theory-derivation pass; the channel-level amplitude budgets that close the
+remaining three routes are unaffected.
 
 \subsection{Route 1 (NJL four-fermion contact): closed by Planck suppression}
 \label{sec:r1_njl}
@@ -1286,11 +1324,11 @@ candidates with induced GWs detectable by LISA and Einstein Telescope.
 
 The dark-energy suppression mechanism, if minimal ECH \emph{were} to source
 dark energy through one of the four channels enumerated in
-Sec.~\ref{sec:four_routes}, would require $N_{\rm tot}\approx 92$ post-bounce
+Sec.~\ref{sec:fourroute}, would require $N_{\rm tot}\approx 92$ post-bounce
 $e$-folds; the matter-bounce $\fnl=-35/8$ would plausibly be erased
 (precise threshold mode-dependent on contracting-phase duration) by
 $N_{\rm tot}\gg 60$. This tension is presented here as a \emph{robustness
-check} on the four-route amplitude-level no-go of Sec.~\ref{sec:four_routes}
+check} on the four-route amplitude-level no-go of Sec.~\ref{sec:fourroute}
 and the 14-barrier closure of Sec.~\ref{sec:barriers}, not as a co-equal
 closure mechanism: the no-go has already closed the four amplitude routes
 by which minimal ECH could source dark energy, so the structural-tension
