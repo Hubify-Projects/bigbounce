@@ -1,0 +1,125 @@
+{
+  "per_batch": {
+    "b128": {
+      "batch_size": 128,
+      "n_images": 4000000,
+      "wall_s": 198.99627017974854,
+      "img_per_sec": 20100.879259630827,
+      "iters": 31250,
+      "peak_mem_gb": 0.139044352,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412537491210937,
+        -5.051110742675781,
+        13.311743157226562
+      ],
+      "logit_std": [
+        0.15507427769370255,
+        0.15382469413781188,
+        0.4037559008331537
+      ],
+      "mean_max_conf": 0.9999999998455048
+    },
+    "b256": {
+      "batch_size": 256,
+      "n_images": 4000000,
+      "wall_s": 186.86032509803772,
+      "img_per_sec": 21406.36327107624,
+      "iters": 15625,
+      "peak_mem_gb": 0.196652032,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412760515136719,
+        -5.051317960449219,
+        13.312296595703126
+      ],
+      "logit_std": [
+        0.1549444171400212,
+        0.15370551794536294,
+        0.40345998846077225
+      ],
+      "mean_max_conf": 0.9999999999351501
+    },
+    "b512": {
+      "batch_size": 512,
+      "n_images": 4000000,
+      "wall_s": 182.6053557395935,
+      "img_per_sec": 21905.162550129397,
+      "iters": 7813,
+      "peak_mem_gb": 0.312982016,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412572673828125,
+        -5.0511706645507815,
+        13.311917103515626
+      ],
+      "logit_std": [
+        0.15503866151453766,
+        0.15375906303818154,
+        0.4036499474850825
+      ],
+      "mean_max_conf": 0.999999999923706
+    },
+    "b1024": {
+      "batch_size": 1024,
+      "n_images": 4000000,
+      "wall_s": 180.49173045158386,
+      "img_per_sec": 22161.680150066393,
+      "iters": 3907,
+      "peak_mem_gb": 0.543806976,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412655697753906,
+        -5.051231415527344,
+        13.312105200439452
+      ],
+      "logit_std": [
+        0.15511145647434932,
+        0.15389377098070217,
+        0.4038908793149878
+      ],
+      "mean_max_conf": 0.9999999183197021
+    },
+    "b2048": {
+      "batch_size": 2048,
+      "n_images": 4000000,
+      "wall_s": 179.78129959106445,
+      "img_per_sec": 22249.255117737557,
+      "iters": 1954,
+      "peak_mem_gb": 1.007291904,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412862821289062,
+        -5.0514155810546875,
+        13.312590887695313
+      ],
+      "logit_std": [
+        0.1551061912618254,
+        0.15386026569510988,
+        0.40399528203485785
+      ],
+      "mean_max_conf": 1.0
+    }
+  },
+  "model": {
+    "encoder": "vit_small_patch16_224",
+    "head": "LN+MLP[384->512->256->3]",
+    "ckpt": "/workspace/analysis3_outputs/chirality_model_v2_best.pt",
+    "val_acc": 0.9368777275085449
+  },
+  "total_wall_s": 928.749913930893,
+  "total_forward_passes": 20000000,
+  "overall_img_per_sec": 21534.322318643222,
+  "computed_at": "2026-04-30T22:17:37Z",
+  "interpretation": "B21 batch-size sweep at 4M synthetic images per batch on H200 SXM. Pins down the throughput-vs-batch-size curve for the cached-logit B20 infrastructure. Optimal batch is the one that saturates SM occupancy without spilling memory bandwidth -- expected to peak around 1024-2048 for ViT-Small at 224x224. The per-batch logit_mean entries should be identical (within FP32 rounding) across batch sizes since the same deterministic seed is used; deviations indicate batch-norm-like state mismatch (there should be none -- pure LN + GELU)."
+}

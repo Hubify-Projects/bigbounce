@@ -26,12 +26,12 @@
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{14}{section*.24}%
 \contentsline {paragraph}{\numberline {b}Angular power spectrum.}{14}{section*.25}%
 \contentsline {subsection}{\numberline {D}Hemisphere Asymmetry}{17}{section*.26}%
-\contentsline {subsection}{\numberline {E}Sky Region Balance}{17}{section*.27}%
+\contentsline {subsection}{\numberline {E}Sky Region Balance}{18}{section*.27}%
 \contentsline {subsection}{\numberline {F}Scale Dependence}{18}{section*.28}%
-\contentsline {subsection}{\numberline {G}Confidence Stratification}{18}{section*.29}%
+\contentsline {subsection}{\numberline {G}Confidence Stratification}{19}{section*.29}%
 \contentsline {section}{\numberline {V}Comparison with Previous Work}{19}{section*.30}%
 \contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{19}{section*.31}%
-\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{19}{section*.32}%
+\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{20}{section*.32}%
 \contentsline {subsection}{\numberline {C}SpArcFiRe}{20}{section*.33}%
 \contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{20}{section*.34}%
 \contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{20}{section*.35}%
@@ -43,7 +43,7 @@
 \contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{23}{section*.41}%
 \contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{24}{section*.42}%
 \contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{26}{section*.43}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{26}{section*.44}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{27}{section*.44}%
 \contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{27}{section*.45}%
 \contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{27}{section*.46}%
 \contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{27}{section*.47}%
@@ -53,7 +53,7 @@
 \contentsline {section}{\numberline {VII}Conclusions}{28}{section*.51}%
 \contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review status (v1.0.53).}{28}{section*.52}%
 \contentsline {paragraph}{\numberline {b}Real cross-vendor MC-seed provenance (v1.0.54).}{28}{section*.53}%
-\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute (v1.0.62 --- GPT-B2 closed).}{28}{section*.54}%
+\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute (v1.0.62 --- GPT-B2 closed).}{29}{section*.54}%
 \contentsline {paragraph}{\numberline {d}Surviving real-cross-vendor deferrals (v1.0.55).}{29}{section*.55}%
 \contentsline {section}{\numberline {VIII}Data Availability}{31}{section*.56}%
 \contentsline {section}{\numberline {}Acknowledgments}{31}{section*.57}%

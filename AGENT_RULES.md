@@ -653,6 +653,86 @@ bigbounce papers, not just chirality_catalog_paper, not just paper 4.**
 Houston should never have to file the same "the file path overflows the
 column" or "the table needs to be full-width" ticket twice.
 
+### 4.7.1 Hyperlink target verification (mandatory)
+
+The `\artifact{}` macro hyperlinks every path to
+`https://github.com/<org>/<repo>/blob/main/<path>`. A clean compile does
+NOT prove the URL works — the URL is whatever the `.tex` says, even if
+the file doesn't exist at that path in the repo. **Verify every embedded
+URL points to a file that actually exists in the working tree before
+declaring the round closed:**
+
+```bash
+python3 - <<'PY'
+import os, re, zlib
+with open('<paper>.pdf','rb') as f: data = f.read()
+urls = set()
+for m in re.finditer(rb'/URI\s*\(([^)]+)\)', data):
+    urls.add(m.group(1).decode('latin-1', errors='ignore'))
+for m in re.finditer(rb'stream\r?\n(.+?)\r?\nendstream', data, re.DOTALL):
+    try:
+        dec = zlib.decompress(m.group(1))
+        for m2 in re.finditer(rb'/URI\s*\(([^)]+)\)', dec):
+            urls.add(m2.group(1).decode('latin-1', errors='ignore'))
+    except: pass
+PREFIX = 'https://github.com/<org>/<repo>/blob/main/'
+TREE = 'https://github.com/<org>/<repo>/tree/main/'
+missing = []
+for u in sorted(urls):
+    if u.startswith(PREFIX):
+        p = u[len(PREFIX):]
+        if not os.path.exists(p): missing.append(p)
+    elif u.startswith(TREE):
+        p = u[len(TREE):].rstrip('/')
+        if not os.path.isdir(p): missing.append('[dir] '+p)
+print(f"Missing: {len(missing)}")
+for m in missing: print(f"  - {m}")
+PY
+```
+
+Three common reasons URLs 404:
+1. **Paper-local path vs repo-relative path.** A paper compiled from
+   `pipelines/p2_chirality/` often uses paper-local paths like
+   `outputs/dipole/summary.json`, but the GitHub URL needs the full
+   `pipelines/p2_chirality/outputs/dipole/summary.json`. Always pass the
+   full repo-relative path to `\artifact{}`.
+2. **Directory link uses /blob/ instead of /tree/.** GitHub serves
+   files under `/blob/<branch>/...` and directories under
+   `/tree/<branch>/...`. The default `\artifact{}` uses `/blob/`. For a
+   trailing-`/` directory reference, write a one-off `\href{.../tree/main/dir}{...}`.
+3. **The file simply doesn't exist in main.** If a path lives only in a
+   peer-review staging area or only on a pod, either copy it into the
+   canonical pipeline directory before the round closes, OR revert that
+   one reference to plain `\texttt{}` so it doesn't render as a broken
+   hyperlink.
+
+### 4.7.2 Opening external links in a new tab — the PDF limitation
+
+Houston wants every external link in a paper to open in a new browser
+tab. **This cannot be fully controlled from the PDF file** — there is no
+PDF-spec equivalent of HTML's `target="_blank"` for URI actions. Browser
+PDF viewers (Chrome's built-in viewer in particular) decide on their own
+whether to open external URIs in the same tab or a new tab; users can
+work around it with cmd-click / middle-click.
+
+The best the LaTeX side can do:
+
+```latex
+\hypersetup{
+  pdfnewwindow=true,  % hint to readers that honor it (Adobe, Preview)
+  breaklinks=true,
+  colorlinks=true,
+  ...
+}
+```
+
+`pdfnewwindow=true` writes `/NewWindow true` onto Launch actions and is
+honored by Adobe Acrobat and macOS Preview. Chromium-based browser PDF
+viewers ignore it for URI actions. There is no fix for that on the PDF
+side — note the limitation in the PR description and move on. Intra-PDF
+links (section refs, footnotes, citation jumps) stay on the same tab,
+which is what you want anyway.
+
 ---
 
 ## 5. Research Workflow Specifics

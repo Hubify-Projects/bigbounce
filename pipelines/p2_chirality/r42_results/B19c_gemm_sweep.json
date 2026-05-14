@@ -1,0 +1,63 @@
+{
+  "computed_at": "2026-04-30T21:46:34Z",
+  "gpu": "NVIDIA H200",
+  "results": [
+    {
+      "size": 1024,
+      "dtype": "fp16",
+      "iters": 50,
+      "wall_s": 0.004447221755981445,
+      "tflops": 24.144103508124676
+    },
+    {
+      "size": 1024,
+      "dtype": "fp32",
+      "iters": 50,
+      "wall_s": 0.14164972305297852,
+      "tflops": 0.7580260665941501
+    },
+    {
+      "size": 2048,
+      "dtype": "fp16",
+      "iters": 50,
+      "wall_s": 0.002300739288330078,
+      "tflops": 373.3554095229427
+    },
+    {
+      "size": 2048,
+      "dtype": "fp32",
+      "iters": 50,
+      "wall_s": 0.018085241317749023,
+      "tflops": 47.49693101175133
+    },
+    {
+      "size": 4096,
+      "dtype": "fp16",
+      "iters": 50,
+      "wall_s": 0.01165628433227539,
+      "tflops": 589.548734202724
+    },
+    {
+      "size": 4096,
+      "dtype": "fp32",
+      "iters": 50,
+      "wall_s": 0.13854455947875977,
+      "tflops": 49.60099262976498
+    },
+    {
+      "size": 8192,
+      "dtype": "fp16",
+      "iters": 50,
+      "wall_s": 0.07930660247802734,
+      "tflops": 693.2030836150309
+    },
+    {
+      "size": 8192,
+      "dtype": "fp32",
+      "iters": 50,
+      "wall_s": 1.0864295959472656,
+      "tflops": 50.602065328371694
+    }
+  ],
+  "interpretation": "H200 SXM peak: ~989 TFLOPS FP16 (TF32), ~67 TFLOPS FP64. Real-world FP16 GEMM at 4096-8192 should approach 600-800 TFLOPS once kernels saturate. FP32 expected ~67-100 TFLOPS via tensor cores."
+}
