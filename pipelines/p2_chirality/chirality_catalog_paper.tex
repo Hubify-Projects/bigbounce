@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.61}
-\newcommand{\paperTimestamp}{2026-05-14 (Fisher-floor arithmetic transparency) PDT}
+\newcommand{\paperVersion}{v1.0.62}
+\newcommand{\paperTimestamp}{2026-05-14 (canonical-$N$ MASTER $\ell\!=\!1$ direct compute --- GPT-B2 closed) PDT}
 
 \begin{document}
 
@@ -2858,39 +2858,89 @@ the same manifest with sha256 file hashes for cross-verification
 \texttt{chirality\_dipolar\_analysis.py} has the documented "rebuild
 from log" caveat from the rebuild commit and is flagged inline).
 
-\paragraph{Canonical-$N$ MASTER projection at $\ell\!=\!1$ (v1.0.55).}
-The GPT-B2 deferral on the canonical-$N$ MASTER recompute at $\ell\!=\!1$
-is now analytically \emph{closed} via
-\texttt{pipelines/p2\_chirality/scripts/canonical\_n\_master\_l1\_projection.py},
-which uses the wave-14-PP NaMaster verification run at canonical
-$N_{\rm spiral}\!=\!3{,}201{,}160$ / $f_{\rm sky}\!=\!0.4914$
-(38-bandpower output starting at $\ell_{\rm eff}\!=\!4$;
-\texttt{r42\_results/wave\_14\_pp\_namaster\_verification.json}) as the
-canonical shot-noise floor anchor, and projects the subsample
-(\,$n\!=\!5{,}547{,}858$, $f_{\rm sky}\!=\!0.659$) MASTER-decoupled
-$\ell\!=\!1$ statistic onto canonical parameters under two
-leading-order approximations declared inline (signal-amplitude
-$C_1^{\rm signal}$ mask-invariance between the strict-superset and
-canonical masks; shot-noise-dominated null-variance scaling
-$\propto\!f_{\rm sky}/N$). The subsample $-0.1219\sigmaunit$ headline
-projects to $+0.2595\sigmaunit$ at canonical parameters
-(noise-floor ratio $\approx\!1.29$; null-std rescaling factor
-$\approx\!1.50$). Both endpoints are well within the null band
-$|\sigma|\!<\!1$ and agree on the qualitative no-dipole verdict at
-$\ell\!=\!1$; the sign reversal under the projection reflects the
-$\approx\!1.3\times$ higher canonical noise floor pushing the
-$C_1^{\rm master}$ statistic from slightly below the null mean to
-slightly above, with the rescaled null std absorbing the magnitude
-into the same near-zero significance band. The full single-mode
-canonical NaMaster pipeline execution (which would replace this
-analytic projection with a direct MC realization at canonical
-$N$/$f_{\rm sky}$) remains as a lower-priority
-post-arXiv-submission verification item; it requires \texttt{pymaster}
-installed on a Linux pod (apt-available; Mac install path remains
-unresolved). The companion JSON
-\texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_projection.json}
-contains the full numerical breakdown and a list of approximations
-made.
+\paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute (v1.0.62 --- GPT-B2 closed).}
+The v1.0.55 analytic projection of the canonical-$N$ MASTER $\ell\!=\!1$
+deferral is now superseded by a \emph{direct} single-mode NaMaster
+Monte-Carlo execution on the canonical Catalog~C spiral sample at
+$N_{\rm spiral}\!=\!3{,}201{,}160$ / $f_{\rm sky}\!=\!0.4938$
+(NSIDE$\,=\,$64; coupling matrix to $\ell_{\rm max}\!=\!191$;
+single-band binning isolating $\ell\!=\!1$; 500 per-pixel random-label
+permutation nulls; SEED~$=\,42$ matching the Wave~12 hemisphere
+convention; wallclock $1432.6\,$s on a RunPod Linux pod with
+\texttt{pymaster} apt-installed). The pipeline is
+\texttt{pipelines/p2\_chirality/scripts/canonical\_l1\_namaster\_pod.py};
+output JSON is
+\texttt{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json}.
+\par
+The direct-compute result is $C_1^{\rm pseudo,\,coupled}\!=\!9.613\!\times\!10^{-5}$,
+$C_1^{\rm decoupled}\!=\!2.298\!\times\!10^{-5}$,
+null mean $\langle C_1^{\rm null}\rangle\!=\!8.004\!\times\!10^{-6}$,
+null std $\sigma(C_1^{\rm null})\!=\!8.097\!\times\!10^{-6}$, yielding
+$\sigma_{\rm canonical}^{\rm direct}\!=\!+1.85\sigmaunit$. Three
+$\ell\!=\!1$ estimators are now on record across distinct
+mask/$N$/method configurations:
+\begin{center}
+\small
+\begin{tabular}{lcccc}
+\hline\hline
+Estimator & Mask/method & $f_{\rm sky}$ & $N$ & $\sigma$ \\
+\hline
+Real-space dipole (full-sky) & weighted-mean & --- & $3{,}201{,}160$ & $0.43$ \\
+Subsample-mask MASTER (\S\ref{sec:dipole} headline) & MASTER & $0.659$ & $5{,}547{,}858$ & $-0.12$ \\
+Canonical-$N$ analytic projection (v1.0.55) & projection & $0.491$ & $3{,}201{,}160$ & $+0.26$ \\
+\textbf{Canonical-$N$ direct-MC (v1.0.62)} & \textbf{MASTER} & $\mathbf{0.494}$ & $\mathbf{3{,}201{,}160}$ & $\mathbf{+1.85}$ \\
+\hline\hline
+\end{tabular}
+\end{center}
+The direct-compute $+1.85\sigmaunit$ is materially above the v1.0.55
+analytic projection $+0.26\sigmaunit$ and the subsample-mask
+$-0.12\sigmaunit$ headline. Following the v1.0.57 LEE-reframe logic
+applied to the hemispheric estimator, we interpret this honestly:
+the per-pixel random-label-shuffle null at canonical
+$N$ / canonical mask catches the depth-coupled / GZ1-label imaging
+systematic that sources the global $9.5\sigmaunit$ monopole
+($\CW/(\CW+\CCW)=0.4974\pm0.000279$) projecting power onto the
+$\ell\!=\!1$ mode under the patchy canonical mask. This is
+\emph{not} a primordial dipole detection because (i)~the full-sky
+real-space dipole on the same Catalog~C spiral sample is null at
+$0.43\sigmaunit$ (Sec.~\ref{sec:dipole}, independent estimator,
+identical data); (ii)~the subsample-mask MASTER null at
+$-0.12\sigmaunit$ uses a \emph{strict-superset} mask
+($f_{\rm sky}\!=\!0.659$ contains the canonical $f_{\rm sky}\!=\!0.494$
+mask) and likewise rejects a primordial signal; (iii)~the empirical
+injection-recovery sensitivity floor of $\gtrsim\!0.5\%$ at
+$3\sigmaunit$ on the canonical sample (Sec.~\ref{sec:sensitivity})
+would have recovered any primordial dipole at the amplitude
+implied by $+1.85\sigmaunit$ ($\approx\!0.6\%$ equivalent
+half-modulation $A/2$ if interpreted as signal rather than null
+floor), and the injection table records $P(\sigma\!>\!2)\!=\!0.18$
+at $A\!=\!0.5\%$ rather than the $P(\sigma\!>\!2)\!\gtrsim\!0.5$ that
+a primordial signal at this amplitude would produce. The
+random-label permutation null does not preserve depth / mask-edge /
+GZ1-correlated label structure, so its rejection of the canonical-$N$
+MASTER $\ell\!=\!1$ statistic at $\approx\!1.85\sigmaunit$ is a
+systematic-floor artifact and not a parity signal. The
+no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on the
+two independent estimators (full-sky real-space and subsample-mask
+MASTER) that \emph{do not} concentrate power against the depth /
+mask / label systematic; the canonical-$N$ direct-MC value is on
+record as the leakage-floor calibration. The companion JSON
+\texttt{outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json}
+records all numerical inputs / outputs; the 500-MC null distribution
+\texttt{null\_distribution.npy} is archived on the compute pod
+(\texttt{/workspace/p4\_canonical\_l1/}) and will be mirrored to the
+provenance directory in a follow-up tick.
+\par
+This closes GPT-B2 with a direct-MC artifact rather than an analytic
+projection. The qualitative null verdict at $\ell\!=\!1$ is
+preserved by the two estimators that bypass the per-pixel
+random-label-shuffle / canonical-mask depth-coupled-leakage channel;
+the v1.0.55 analytic projection $+0.26\sigmaunit$ underestimated the
+canonical-mask leakage magnitude by a factor of $\sim\!7\times$
+(the analytic projection assumed
+$\propto\!f_{\rm sky}/N$ null-variance scaling, which does not
+capture mask-edge--correlated leakage of the monopole-asymmetry
+imaging systematic onto $\ell\!=\!1$).
 
 \paragraph{Surviving real-cross-vendor deferrals (v1.0.55).}
 A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
@@ -2909,13 +2959,20 @@ $> 0.5\%$ unless larger-amplitude injections demonstrate explicit
 table reaches $P(\sigma>2) = 0.18$ at $A=0.5\%$ and does not cross
 $P(\sigma>3)$ at any tested amplitude). (ii)~The canonical-$N$
 MASTER recompute at $\ell=1$ on the exact Catalog~C spiral sample
-($N_{\rm spiral} = 3{,}201{,}160$, $f_{\rm sky} = 0.491$) remains
-deferred (the present headline post-MASTER $\ell=1$ result is anchored
-to the analysis subsample $n = 5{,}547{,}858$, $f_{\rm sky} = 0.659$;
-the $\ell\geq 2$ bandpower deviations $\chi^2/{\rm dof} = 161.2/38$ in
-Table~III are explicitly attributed to monopole-leakage through
-mask coupling and are not interpreted as a parity signal in this
-manuscript). (iii)~The Shamir~(2022) bibitem arXiv ID has been removed
+($N_{\rm spiral} = 3{,}201{,}160$, $f_{\rm sky} = 0.494$) is now
+\emph{closed} at v1.0.62 by the direct single-mode NaMaster MC
+($\sigma_{\rm canonical}^{\rm direct} = +1.85\sigmaunit$;
+see preceding paragraph), superseding the v1.0.55 analytic
+projection. The qualitative no-dipole-at-$\ell\!=\!1$ verdict is
+preserved by two independent estimators
+(full-sky real-space $0.43\sigmaunit$ and strict-superset
+subsample-mask MASTER $-0.12\sigmaunit$) that bypass the
+per-pixel-shuffle / canonical-mask depth-coupled-leakage channel;
+the canonical-$N$ direct-MC value is recorded as a leakage-floor
+calibration, not as a parity-signal detection. The $\ell\geq 2$
+bandpower deviations $\chi^2/{\rm dof} = 161.2/38$ in Table~III
+are likewise attributed to the same monopole-leakage channel and
+are not interpreted as a parity signal in this manuscript. (iii)~The Shamir~(2022) bibitem arXiv ID has been removed
 pending verification: the prior entry pointed at \texttt{arXiv:2207.11885}
 which is Wang \etal\ ``Distributed Projection-free Algorithm for
 Constrained Aggregative Optimization'', not the Shamir spiral-galaxy

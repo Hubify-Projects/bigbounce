@@ -1,0 +1,30 @@
+{
+  "wave": "P4-canonical-l1-NaMaster",
+  "version": "v1.0.62-canonical-l1-direct-MC",
+  "purpose": "Direct canonical-N (N_spiral=3,201,160, f_sky~0.491) single-mode NaMaster MC at l=1, closing the v1.0.55 GPT-B2 analytic-projection deferral.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "seed": 42,
+    "n_spiral": 3201160,
+    "f_sky": 0.4937744140625
+  },
+  "data": {
+    "C1_pseudo_coupled": 9.613462356762969e-05,
+    "C1_decoupled": 2.2984273052624208e-05
+  },
+  "nulls": {
+    "null_mean": 8.004046041407703e-06,
+    "null_std": 8.096513832093914e-06,
+    "null_min": -4.203418166545408e-06,
+    "null_max": 4.917730251209552e-05
+  },
+  "significance": {
+    "sigma_canonical_direct": 1.8502070547741325,
+    "sigma_subsample_published": -0.1219,
+    "sigma_canonical_analytic_projection_v1055": 0.2595,
+    "comparison": "Canonical-N direct-MC sigma vs subsample-mask published (v1.0.61) vs analytic projection (v1.0.55). All three should be within the null band |sigma|<1 for the no-dipole-at-l=1 verdict to hold."
+  },
+  "wallclock_s": 1432.6030957698822
+}
