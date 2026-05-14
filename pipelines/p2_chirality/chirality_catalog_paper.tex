@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.49}
-\newcommand{\paperTimestamp}{2026-05-13 (deferred-tasks closure) PDT}
+\newcommand{\paperVersion}{v1.0.50}
+\newcommand{\paperTimestamp}{2026-05-13 (R-round-3 closures) PDT}
 
 \begin{document}
 
@@ -113,8 +113,10 @@ MC-injection sensitivity floor as the comparator. This is a factor
 of $\sim\!6$--$12$ smaller in amplitude than Shamir's reported
 $2$--$4\%$ window (amplitude ratio, not significance ratio).
 
-A residual global CW excess of $9.5\sigmaunit$ from $50/50$ (CW
-fraction $0.4974 \pm 0.000279$) is consistent in magnitude with the
+A residual global $9.5\sigmaunit$ deviation from $50/50$ in the
+CCW-leaning direction (CW fraction $0.4974 \pm 0.000279$, i.e., a small
+$0.26\%$ CCW excess equivalently described as a CW deficit) is consistent
+in magnitude with the
 sub-percent human-handedness bias documented in citizen-science
 spiral-handedness labels~\cite{Land:2008,Iye:2020}; we adopt this
 as the leading working hypothesis. The exact per-galaxy joint
@@ -660,15 +662,24 @@ $785{,}859$ galaxies given the DR8 footprint geometry), the
 $0.05\%$ bin-to-bin spread is a load-bearing empirical bound on the
 per-rotation CW-fraction excursion that a full $90^\circ/180^\circ/270^\circ$
 $D_4$-TTA would average. The monopole offset is therefore not a
-rotation-equivariance artifact (the bound is $30\times$ smaller than
-the monopole itself), and the residual $\sim\!0.3\%$
-catalog-wide CW asymmetry must arise from non-rotational sources
-(consistent with the GZ1/CE-ResNet pseudo-label-pathway working
-hypothesis, Sec.~\ref{sec:gz1_joint}, Sec.~\ref{par:sparcfire_monopole}).
-A direct full-$D_4$-TTA validation run on a $10^{4}$--$10^{5}$-galaxy
-hold-out remains on the post-arXiv-submission TODO list as a
-strengthening cross-check; the present bound is the strongest
-statement attainable without that compute. Second, the horizontal flip is the unique
+rotation-equivariance artifact at the level the geometric proxy can rule
+out: the bound is $\approx\!5.2\times$ smaller than the monopole itself
+($0.0026 / 0.0005$), so any rotation-correlated component of the
+$9.5\sigma$ monopole must contribute less than $\sim\!20\%$ of the total
+amplitude; the residual $\sim\!0.3\%$ catalog-wide CW asymmetry
+therefore arises predominantly (but not exclusively) from non-rotational
+sources, consistent with the GZ1/CE-ResNet pseudo-label-pathway working
+hypothesis (Sec.~\ref{sec:gz1_joint}, Sec.~\ref{par:sparcfire_monopole}).
+The implicit assumption of uniform on-sky distribution of edge-on disk
+position angles within the survey footprint is reasonable given the
+$\geq\!10^{5}$-galaxy per-bin scale and the broad longitudinal coverage
+of the DESI Legacy footprint, but is not validated here by a Rayleigh
+or KS test on the actual edge-on PA distribution; such a validation
+(a single 1D histogram on the $785{,}859$-galaxy subsample) is on the
+post-arXiv TODO list. A direct full-$D_4$-TTA validation run on a
+$10^{4}$--$10^{5}$-galaxy hold-out also remains on the post-arXiv TODO
+list as a strengthening cross-check; the present geometric bound is
+the strongest statement attainable without either run. Second, the horizontal flip is the unique
 transformation that exactly swaps CW~$\leftrightarrow$~CCW by
 construction, making the $2$-fold flip-TTA the minimal set that
 guarantees output-level chirality equivariance (the property being
@@ -2541,6 +2552,26 @@ channel and the CMB-birefringence channel are not directly
 numerically comparable in any common parameter, and we emphasize
 only that the two channels are \emph{complementary}: a model can
 saturate one constraint while satisfying the other.
+\paragraph{What does the present null falsify?}
+The morphology-dipole null at sub-percent sensitivity does not
+falsify the matter-bounce family of bounce-cosmology scenarios
+(which predicts a primordial chiral-tensor signal whose projection
+onto the late-universe morphology channel depends on a transfer
+function we do not compute), nor does it falsify the Lue-Wang-Kamionkowski
+Chern-Simons gravity sector at general couplings. What the present
+null \emph{does} disfavor at the channel-amplitude level is any model
+class that predicts a late-universe morphology-channel dipole
+amplitude $|A_{\rm dipole}| \gtrsim 0.5\%$ on the DESI Legacy
+footprint without an evasion mechanism — including the Shamir 2020 /
+2022 $\sim\!3\%$-asymmetry claim line (disfavored at $\sim\!20\sigma$
+regionally as quantified in Sec.~\ref{sec:dipole}). Models that predict
+sub-percent morphology dipoles (including matter-bounce scenarios whose
+primordial-to-late-universe transfer function is small) remain
+compatible with the present null, and a tighter falsification of those
+scenarios requires either (i) a derivation of the transfer function
+that produces a model-specific morphology-channel prediction, or
+(ii) a deeper survey (LSST Y3-class) that pushes the sensitivity floor
+below the predicted amplitude.
 
 \paragraph{(ii)~Parity-odd galaxy-trispectrum amplitude.}
 Cahn, Slepian \& Hou~\cite{Cahn:2021} proposed a test for cosmological
@@ -2553,13 +2584,18 @@ Cabass, Ivanov \& Philcox~\cite{Cabass:2023} provide the EFT-of-LSS
 framework that connects the observed amplitude to inflationary
 parity-odd couplings (dim-7 operators in the EFT, parameterized by
 $g_*$ in their notation). The present chirality bound and the
-parity-odd trispectrum measurement constrain orthogonal projections
-of the parity-violating EFT space: the four-point function is parity-
-odd in galaxy \emph{position}, while morphological chirality is
-parity-odd in \emph{shape}. The cross-covariance between the two
-channels and their relative sensitivity to a given dim-7 amplitude
-$g_*$ requires the late-universe-to-primordial transfer function
-discussed above and is not computed here. A combined analysis using
+parity-odd trispectrum measurement target \emph{different observational
+projections} of the same underlying parity-violating EFT space (Cabass,
+Ivanov \& Philcox~\cite{Cabass:2023}, §IV): the four-point function is
+parity-odd in galaxy \emph{position}, while morphological chirality is
+parity-odd in \emph{shape}; both can couple to the same dim-7 EFT
+amplitude $g_*$, so the two channels are \emph{not} orthogonal at the
+operator level (they share parametric origins) but are observationally
+complementary in the sense that they have different scale and tracer
+dependences. The cross-covariance between the two channels and their
+relative sensitivity to a given $g_*$ requires the
+late-universe-to-primordial transfer function discussed above and is
+not computed here. A combined analysis using
 both channels on a future LSST-scale sample~\cite{Ivezic:2019} would
 tighten the joint constraint.
 
@@ -2898,7 +2934,7 @@ Nature Rev.\ Phys.\ \textbf{4}, 452 (2022), arXiv:2202.13919.
 
 \bibitem{Hayes:2017}
 W.~B.~Hayes, D.~Davis, and P.~Silva,
-``On the nature and correction of the spurious S-wise spiral galaxy chirality bias in SDSS DR7,''
+``On the nature and correction of the spurious winding bias in Galaxy Zoo~1,''
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{466}, 3928 (2017), arXiv:1701.06587.
 
 \bibitem{Bamford:2009}
@@ -2908,7 +2944,7 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{393}, 1324 (2009), arXiv:0805.2612.
 
 \bibitem{Hart:2016}
 R.~E.~Hart, S.~P.~Bamford, K.~W.~Willett \textit{et~al.},
-``Galaxy Zoo: comparing the demographics of spiral arm number and pitch angle,''
+``Galaxy Zoo: comparing the demographics of spiral arm number and a new method for correcting redshift bias,''
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{461}, 3663 (2016), arXiv:1607.01019.
 
 \bibitem{Walmsley:2022}
@@ -2918,7 +2954,7 @@ Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{509}, 3966 (2022), arXiv:2102.08414.
 
 \bibitem{Yu:2020}
 H.-R.~Yu, P.~Motloch, U.-L.~Pen \textit{et~al.},
-``Probing primordial chiral gravitational waves with galaxy intrinsic alignments,''
+``Probing primordial chirality with galaxy spins,''
 Phys.\ Rev.\ Lett.\ \textbf{124}, 101302 (2020), arXiv:1904.01029.
 
 \bibitem{Golden:2026P1A}
