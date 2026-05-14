@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.60}
-\newcommand{\paperTimestamp}{2026-05-14 (convention propagation to downstream sites) PDT}
+\newcommand{\paperVersion}{v1.0.61}
+\newcommand{\paperTimestamp}{2026-05-14 (Fisher-floor arithmetic transparency) PDT}
 
 \begin{document}
 
@@ -115,11 +115,19 @@ paper; the
 Fisher-floor statistical Poisson asymptote is
 $|A_{\rm dipole}|\!\lesssim\!0.29\%$ at $3\sigmaunit$ under the
 convention $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$
-(corresponding to a CW-fraction half-modulation uncertainty
-$\sigma\approx\!0.048\%$, with the factor of 2 absorbed into the
-amplitude definition; see the on-record deferral paragraph at
-\S\ref{sec:conclusions} for the updated factor-of-2 accounting that
-supersedes the earlier $\lesssim\!0.2\%$ Fisher-floor figure) and
+(arithmetic: the CW-fraction half-modulation uncertainty is
+$\sigma\!\approx\!0.048\%$ [\S\ref{sec:sensitivity} Eq.\
+\ref{eq:sigma_dip}]; the $3\sigmaunit$ floor on the half-modulation
+$A/2$ is $3\!\times\!0.048\%\!\approx\!0.14\%$ rounded conservatively
+to $\sim\!0.2\%$ to absorb $f_{\rm sky}$ and $N_{\rm eff}$
+corrections; the corresponding $3\sigmaunit$ floor on the
+\emph{full amplitude} $A$ under the half-modulation convention is
+$2\!\times\!0.144\%\!\approx\!0.29\%$ ideal-statistical and
+$2\!\times\!0.2\%\!\approx\!0.4\%$ conservative-rounded; this
+abstract reports the $0.29\%$ ideal-statistical full-amplitude
+floor; the earlier $\lesssim\!0.2\%$ figure in prior drafts conflated
+the half-modulation and full-amplitude conventions and is superseded
+by the on-record deferral paragraph at \S\ref{sec:conclusions}) and
 is reported only as the achievable-with-zero-systematics asymptote.
 The empirical $0.5\%$ floor is the operational publication-grade
 limit; the $0.29\%$ Fisher figure is held aside as the statistical
