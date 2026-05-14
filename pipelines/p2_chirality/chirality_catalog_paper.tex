@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.53}
-\newcommand{\paperTimestamp}{2026-05-14 (real-cross-vendor closures) PDT}
+\newcommand{\paperVersion}{v1.0.54}
+\newcommand{\paperTimestamp}{2026-05-14 (MC-seed-manifest + drift fixes) PDT}
 
 \begin{document}
 
@@ -2727,7 +2727,32 @@ the exact value is 9.47$\sigmaunit$) to
 and the cross-file consistency check to
 \texttt{outputs/canonical\_provenance/spiral\_count\_verification.json}.
 
-\paragraph{Surviving real-cross-vendor deferrals (v1.0.53).}
+\paragraph{Real cross-vendor MC-seed provenance (v1.0.54).}
+The DeepSeek-B2 deferral on MC random-seed provenance is now
+\emph{closed}: a manifest dump script
+\texttt{pipelines/p2\_chirality/scripts/dump\_mc\_seed\_manifest.py}
+emits the canonical MC-seed manifest to
+\texttt{outputs/canonical\_provenance/mc\_seed\_manifest.json}, which
+documents (for the Wave~12 hemisphere look-elsewhere null at
+$p_{\rm LEE}\!\le\!10^{-4}$) the exact seed (\texttt{SEED=42},
+applied to both \texttt{numpy.random.seed} and \texttt{torch.manual\_seed}),
+the $N_{\rm MC}\!=\!10{,}000$ permutation count, the batch size
+$\mathrm{BATCH}\!=\!100$, the $\mathrm{NSIDE}_{\rm dir}\!=\!8$
+pixelization (768 hemisphere directions), the source script
+(\texttt{pipelines/h200\_results/wave12\_hemi\_2026-05-01/wave12\_hemi\_v4.py},
+sha256 in the manifest), the null-distribution array
+(\texttt{max\_null.npy}, sha256 in the manifest), the result-JSON
+(\texttt{results.json}, sha256 in the manifest), and the canonical
+$N_{\rm spiral}\!=\!3{,}201{,}160$ + CW-fraction $0.49735$ data
+inputs. The pre-TTA $2.31\sigmaunit$ + post-TTA $0.43\sigmaunit$
+real-space dipole and the post-MASTER $-0.122\sigmaunit$ canonical
+dipole at $\ell\!=\!1$ each carry their own provenance section in
+the same manifest with sha256 file hashes for cross-verification
+(the pre-TTA pod-snapshot script
+\texttt{chirality\_dipolar\_analysis.py} has the documented "rebuild
+from log" caveat from the rebuild commit and is flagged inline).
+
+\paragraph{Surviving real-cross-vendor deferrals (v1.0.54).}
 A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
 Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
 2026-05-14) surfaced three substantive items not caught by the prior

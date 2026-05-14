@@ -1,0 +1,85 @@
+{
+  "purpose": "Canonical MC-seed manifest for P4 headline figures, closing DeepSeek-B2 deferral from the 2026-05-14 real cross-vendor R-round on P4 v1.0.51.",
+  "produced_by": "pipelines/p2_chirality/scripts/dump_mc_seed_manifest.py",
+  "headline_figures": [
+    {
+      "figure": "Wave 12 hemisphere look-elsewhere null at p_LEE <= 1e-4",
+      "abstract_role": "Direct-MC LEE upper bound at MC resolution floor",
+      "method": "GPU-accelerated permutation null: per-galaxy CW-label random shuffle, recomputing max-over-direction |A(hat n)| statistic over 768 NSIDE=8 pixel-center directions",
+      "seed": 42,
+      "n_mc": 10000,
+      "batch": 100,
+      "nside_dir": 8,
+      "ndirs": 768,
+      "device": "NVIDIA H200",
+      "data_inputs": {
+        "catalog": "/workspace/r42_b20/chirality_catalog/catalog_production.parquet (pod snapshot)",
+        "n_spirals_used": 3201160,
+        "cw_fraction": 0.49735313653945923
+      },
+      "result": {
+        "A_obs": 0.008530930263306865,
+        "i_obs_dir": 731,
+        "n_ge_obs": 0,
+        "p_LEE": 9.999000099990002e-05,
+        "precision_floor": 9.999000099990002e-05,
+        "mc_seconds": 4.7666308879852295
+      },
+      "reproducibility": {
+        "script_path": "pipelines/h200_results/wave12_hemi_2026-05-01/wave12_hemi_v4.py",
+        "script_sha256": "a7c557c68a5d79d9a7e09dcf9ccc5f22e44fca35a805fcdff2229b169b3fbdf1",
+        "null_distribution_path": "pipelines/h200_results/wave12_hemi_2026-05-01/max_null.npy",
+        "null_distribution_sha256": "ed567474d778a7211f7c53824a75517890b7f92168e98e9e07e71c1d142aec86",
+        "results_json_sha256": "1f24e6d4a6d20be4d48ec402813e585b747ea670097878759f7000eb723dc838"
+      },
+      "reproduce_command": "Set torch + numpy seeds to 42, load catalog_production.parquet (CW/CCW only, n=3,201,160), compute hemisphere matrix at NSIDE=8 (768 directions), run 10000 GPU-batched label-shuffle nulls in batches of 100, take max over 768 directions per null, count nulls with max>=A_obs; result is p_LEE upper bound at the 1/(N_MC+1) ~ 1e-4 precision floor."
+    },
+    {
+      "figure": "Real-space dipole pre-TTA 2.31 sigma + post-TTA 0.43 sigma equivariant residual",
+      "abstract_role": "Real-space dipole-amplitude collapse via test-time equivariant averaging",
+      "method": "1000 per-pixel CW-label permutation nulls at NSIDE=64; dipole amplitude fitted to per-pixel A_p = (N_CW - N_CCW) / (N_CW + N_CCW); pre-TTA and post-TTA computed against the same null distribution",
+      "n_mc": 1000,
+      "nside": 64,
+      "npix": 49152,
+      "n_valid_pixels": 22637,
+      "f_sky": 0.4605509440104167,
+      "data_inputs": {
+        "n_total": 8474531,
+        "n_cw": 1687069,
+        "n_ccw": 1634726,
+        "n_galaxies_in_footprint": 2220382
+      },
+      "result": {
+        "amplitude": 0.0019021838914284534,
+        "ra_deg": 46.57806199786201,
+        "dec_deg": 39.338574889983725,
+        "significance_sigma_pre_tta": 2.3119654291443537,
+        "mc_mean": 0.0009239902804916001,
+        "mc_std": 0.00042310044891063857,
+        "post_tta_significance_sigma": 0.43,
+        "post_tta_note": "Pre-TTA dipole \u2014 see post-TTA 0.43 sigma result in paper Table I"
+      },
+      "reproducibility": {
+        "script_path_pod_snapshot": "/root/experiments/chirality_dipolar_analysis.py (pod snapshot, see paper Appendix D)",
+        "summary_json_sha256": "658dea333f568cdfe3c085b174ce876dd466546462fec9c843a3a9849ad3f167",
+        "rebuild_note": "Original run crashed during json.dump (bool serialization bug). Rebuilt 2026-04-17 from dipolar_analysis.log \u2014 all numerical values are verbatim from the log; no re-computation was performed. This is the PRE-TTA pipeline run (2.31 sigma). The paper headline 0.43 sigma is the POST-TTA equivariant correction, tracked separately in Tables I\u2013III of chirality_catalog_paper.tex \u00a7V.",
+        "caveat": "The pre-TTA dipolar_analysis.py script is a pod snapshot; the canonical 0.43-sigma post-TTA value comes from the TTA equivariant pass tracked in \u00a7V Tables I-III of the paper rather than from this JSON, which is the pre-TTA 2.31-sigma value. An end-to-end re-execution requires the pod snapshot at /root/experiments/."
+      }
+    },
+    {
+      "figure": "Post-MASTER pseudo-C_l dipole -0.122 sigma at l=1",
+      "abstract_role": "MASTER mode-coupling-deconvolved canonical dipole",
+      "method": "NaMaster pseudo-C_l estimator at NSIDE=64, f_sky=0.4928, mode-coupling matrix M_ll' inverted to project pre-deconvolution +6.48-sigma pseudo-C_l peak at l=1 onto deconvolved -0.122-sigma canonical statistic",
+      "data_inputs": {
+        "n_spirals": "see master_results/master_power_spectrum.json",
+        "nside": 64,
+        "f_sky": 0.6588541666666666
+      },
+      "reproducibility": {
+        "results_json_path": "pipelines/p2_chirality/master_results/master_power_spectrum.json",
+        "results_json_sha256": "8a5d420b786ed009fed154efd228c02b2b862f01381436bb48f9e87d379eacd4",
+        "note": "Full MASTER pipeline run details (random seed, null method, NaMaster workspace parameters) are in master_power_spectrum.json metadata. The canonical-N MASTER recompute at N_spiral=3,201,160 / f_sky=0.491 is GPT-B2 deferred (compute-bound; pymaster install on Mac unresolved). The present -0.122-sigma is reported at the analysis subsample n=5,547,858 / f_sky=0.659; this is disclosed in the \u00a7V text and in Table III."
+      }
+    }
+  ]
+}
