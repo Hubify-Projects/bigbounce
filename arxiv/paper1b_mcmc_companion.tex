@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.4}
+\newcommand{\paperVersion}{v1B.0.5}
 \newcommand{\paperTimestamp}{2026-05-09 17:00 PDT}
 
 \begin{document}
@@ -58,7 +58,7 @@ for the ECH Spin-Torsion Program}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 13, 2026 PDT --- \paperVersion}
+\date{May 14, 2026 PDT --- \paperVersion}
 
 \begin{abstract}
 We report the technical verification material for the Einstein-Cartan-Holst (ECH)
@@ -186,16 +186,25 @@ in this paper. Frozen MCMC program: $\mathbf{309{,}789}$ raw samples
 across 2 frozen dataset combinations ($176{,}840 + 132{,}949$).
 We report this as a $\Lambda$CDM$+\Delta\Neff$ null-consistency test: the data
 are consistent with $\Delta\Neff=0$ in stock CAMB.\footnote{\label{fn:sample_stratification}Sample-count
-stratification: \textbf{309{,}789} is the sum of the two frozen
-combinations ($176{,}840 + 132{,}949$). After removing the first 30\% of
-each chain as burn-in, \textbf{123{,}129} post-burnin samples remain
-(\texttt{convergence\_summary.json}); the \textbf{119{,}617} figure in
-Fig.~\ref{fig:corner_full_tension} reflects additional \texttt{getdist}
-weight-based thinning. All three numbers correspond to the same underlying
-two frozen chains; the third (Planck-only) dataset combination is still
-accumulating samples and is reported separately in Table~\ref{tab:convergence}
-with $\hat R - 1\sim 0.05$ as ongoing, not yet aggregated into the
-$309{,}789$-sample headline.}
+stratification (real cross-vendor R-round v1B.0.5 reconciliation): \textbf{309{,}789} is
+the sum of the two frozen combinations ($176{,}840 + 132{,}949$ raw accepted
+samples). After removing the first $30\%$ of each chain as burn-in,
+$176{,}840 \times 0.7 + 132{,}949 \times 0.7 \approx \mathbf{216{,}852}$
+post-burnin samples remain across both frozen chains
+(\texttt{convergence\_summary.json}). For the full-tension subset specifically,
+$176{,}840 \times 0.7 \approx \mathbf{123{,}788}$ post-burnin (the
+\textbf{119{,}617} figure in Fig.~\ref{fig:corner_full_tension} reflects
+additional \texttt{getdist} effective-sample weight-based thinning of this
+subset only). The earlier draft footnote that quoted ``$\mathbf{123{,}129}$
+post-burnin'' as a both-chains total was an arithmetic error -- $123{,}129$ is
+the post-burnin count of the full-tension subset alone (within $\pm\!1\%$ of
+the $123{,}788$ exact computation, with the small offset reflecting the
+chain-end-truncation of partial samples at the burn-in cut); the correct
+both-chains post-burnin total is $216{,}852$. The third (Planck-only)
+dataset combination ($114{,}992$ raw samples; $\hat R - 1 \sim 0.05$) is
+still accumulating samples, is reported separately in
+Table~\ref{tab:mcmc_inventory}, and is \emph{not} aggregated into the
+$309{,}789$-sample headline anywhere in this paper.}
 
 \paragraph{Scope of the $\Delta\Neff$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}
 We emphasize that the stock-CAMB $\Lambda$CDM$+\Delta\Neff$ proxy run does
@@ -380,6 +389,31 @@ while the $\Delta$BIC of $-0.7$ is below the Kass-Raftery threshold of
 $|\Delta\text{BIC}|<2$. Together these metrics are mildly favorable but not
 decisive for $\Lambda$CDM$+\Delta\Neff$.
 
+\paragraph{Real cross-vendor adversarial-review deferrals (v1B.0.5).}
+A multi-vendor adversarial round on v1B.0.4 (GPT-5.5, Gemini-2.5-Pro,
+Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
+2026-05-14) flagged three internal-consistency issues with the present
+$\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block that the prior simulated-reviewer
+rounds did not surface: (i) $\Delta\chi^2_{\rm eff} = -7.9$ for one extra
+parameter is in apparent tension with the full-tension posterior
+$\Delta N_{\rm eff} = -0.020 \pm 0.169$ (the nested value $\Delta\Neff=0$
+sits at $0.12\sigma$ from the posterior mean, where a Gaussian nested
+likelihood predicts $\Delta\chi^2_{\rm eff}$ closer to zero than to $-8$);
+(ii) the displayed $\chi^2_{\rm eff}$, AIC, and BIC values are not
+arithmetically reproducible from a single self-consistent chain readout
+because they were taken from earlier sweep-phase outputs while the posterior
+was reported from the final frozen-thinned subset; (iii) the
+$\ln B = +4.8$ Savage-Dickey indicative figure lacks an explicit
+provenance reference to the script that computes it from the chain
+(\texttt{convergence\_summary.json} carries $\Delta\Neff = -0.020 \pm 0.169$
+but not the SD numerator/denominator estimates). These items are flagged
+as \textbf{on-record deferrals} pending a one-pass recomputation of
+$\chi^2_{\rm eff}$, AIC, BIC, and $\ln B$ from the final frozen-thinned
+chain via a single auditable script; the $\Delta N_{\rm eff} = -0.020 \pm 0.169$
+posterior itself is unaffected. Until that recomputation lands, the
+model-comparison numbers in Table~\ref{tab:modelcomp} should be read
+as preliminary cross-checks, not as final decision-grade Bayes evidence.
+
 The Savage-Dickey indicative figure is dataset-dependent:\footnote{\label{fn:bayes_caveat}The
 $\ln B = +4.8$ is computed via the Savage-Dickey density ratio, which is
 significantly biased for the highly correlated posterior ($r=-0.89$ between
@@ -561,7 +595,11 @@ This companion paper documents three technical verification analyses for the
 ECH spin-torsion structural closure program~\cite{Golden2026P1a}.
 
 \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy.}---The stock-CAMB Cobaya~v3.6.1
-run (424{,}781 samples) finds $\Delta\Neff$ consistent with zero in both frozen
+run (\textbf{309{,}789} frozen samples across two converged dataset
+combinations; an additional $114{,}992$-sample Planck-only run is still
+accumulating at $\hat R - 1 \sim 0.05$ and is reported separately in
+Table~\ref{tab:mcmc_inventory}, \emph{not} aggregated into the frozen headline)
+finds $\Delta\Neff$ consistent with zero in both frozen
 dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 \text{Mpc}^{-1}$, consistent with standard Planck $\Lambda$CDM. The
 $\Delta\Neff$ extension does not resolve the Hubble tension. Current data
