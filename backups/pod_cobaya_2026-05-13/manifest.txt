@@ -1,0 +1,39 @@
+Cobaya iter2-OMP6 chain state snapshot
+========================================
+Snapshot taken: 2026-05-14 01:35 UTC (2026-05-13 18:35 PT)
+Pod: ijzftpy3klystt-6441139c@ssh.runpod.io (RunPod)
+Chain path: /workspace/quintom_dr2/chains_w0wa_dr2_iter2/
+
+Progress trajectory (R̂−1 vs sample count):
+  10,869 samples @ 2026-05-12T12:34 UTC: R̂−1 = 0.117748
+  16,201 samples @ 2026-05-12T18:53 UTC: R̂−1 = 0.087151
+  21,909 samples @ 2026-05-13T01:50 UTC: R̂−1 = 0.082391
+  26,954 samples @ 2026-05-13T07:42 UTC: R̂−1 = 0.059907
+  32,525 samples @ 2026-05-13T14:22 UTC: R̂−1 = 0.039619
+  37,761 samples @ 2026-05-13T20:35 UTC: R̂−1 = 0.031522  (LATEST PROGRESS WRITE)
+
+Sample count snapshots (wc -l per chain):
+  At tick 4 (2026-05-14 00:33 UTC): 41,046 total across 16 chains (next progress entry due)
+
+Likelihood:
+  - DESI DR2 BAO
+  - Planck NPIPE TTTEEE + lowl TT/EE + lensing
+  - Pantheon+
+  - DES-SN5YR
+Parameter space: ΛCDM + w0-wa CPL PPF extension (17 sampled parameters)
+Configuration: 16 chains × OMP_NUM_THREADS=6, GetDist-built proposal covmat from iter1 9,503 samples
+Backup method failure log:
+  - rsync via ssh.runpod.io: "unexpected tag 25" (proxy mangles rsync protocol)
+  - scp via ssh.runpod.io: "subsystem request failed on channel 0"
+  - tar+ssh stdin: stream corruption (0-byte output)
+TODO: investigate runpodctl receive OR pod-side push to S3/cloud bucket
+
+Pod-resident artifacts (NOT yet backed up locally):
+  - chains_w0wa_dr2_iter2/spin_torsion_dr2.{1..16}.txt (per-chain MCMC samples)
+  - chains_w0wa_dr2_iter2/spin_torsion_dr2.progress
+  - chains_w0wa_dr2_iter2/spin_torsion_dr2.input.yaml
+  - chains_w0wa_dr2_iter2/spin_torsion_dr2.checkpoint
+  - chains_w0wa_dr2_backup_2026-05-11_pre-iter2/ (iter1 9,503 samples, pod-side)
+  - chains_w0wa_dr2_iter2_PRE_OMP_FIX_BACKUP/ (pre-OMP-fix iter2 partial samples)
+  - w0wa_dr2_iter2.covmat (GetDist-built proposal)
+  - mcmc_iter2_omp6.log (per-chain throughput log)
