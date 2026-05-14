@@ -58,15 +58,10 @@
   doi     = {10.1103/RevModPhys.48.393}
 }
 
-@article{Liu2025,
-  author  = {Liu, Rui-Yun and others},
-  title   = {{Einstein-Cartan} torsion and the {$S_8$} tension},
-  journal = {European Physical Journal C},
-  volume  = {85},
-  pages   = {112},
-  year    = {2025},
-  doi     = {10.1140/epjc/s10052-025-13754-3}
-}
+% Removed phantom-duplicate Liu2025 entry (Perplexity tick-3 finding):
+% the prose cite at paper1a_ech_nogo.tex L813 has been redirected to the
+% canonical ECTorsionDESI2025 entry below. This stub remains as a
+% historical placeholder; bibtex will ignore the comment.
 
 
 % ============================================================
@@ -127,7 +122,7 @@
 
 @article{Mercuri2006,
   author  = {Mercuri, Simone},
-  title   = {Fermion coupling to the {Holst} action},
+  title   = {Fermions in the {Ashtekar-Barbero} connection formalism for arbitrary values of the {Immirzi} parameter},
   journal = {Physical Review D},
   volume  = {73},
   pages   = {084016},
@@ -418,6 +413,32 @@
   eprint  = {2601.13624},
   archivePrefix = {arXiv},
   primaryClass  = {astro-ph.CO}
+}
+
+@article{Brout2022PantheonPlus,
+  author  = {Brout, Dillon and others},
+  title   = {The {Pantheon+} Analysis: Cosmological Constraints},
+  journal = {Astrophys. J.},
+  volume  = {938},
+  pages   = {110},
+  year    = {2022},
+  eprint  = {2202.04077},
+  archivePrefix = {arXiv},
+  primaryClass  = {astro-ph.CO},
+  doi     = {10.3847/1538-4357/ac8e04}
+}
+
+@article{DES2024SN5YR,
+  author  = "{DES Collaboration} and Abbott, T. M. C. and others",
+  title   = {The Dark Energy Survey: Cosmology results with $\sim 1500$ new high-redshift Type Ia supernovae using the full 5-yr data set},
+  journal = {Astrophys. J. Lett.},
+  volume  = {973},
+  pages   = {L14},
+  year    = {2024},
+  eprint  = {2401.02929},
+  archivePrefix = {arXiv},
+  primaryClass  = {astro-ph.CO},
+  doi     = {10.3847/2041-8213/ad6759}
 }
 
 @article{DiegoPalazuelos2025,
@@ -939,7 +960,7 @@
 
 % ============================================================
 % Wave 14-JJJJ: cross-paper companion-preprint bibitems.
-% These define proper @article entries for the Golden2026P{1a,1b,2,3,4}
+% These define proper article entries for the Golden2026P (1a, 1b, 2, 3, 4)
 % cite keys used in P1A and P1B (placeholders carried since the
 % P1-split refactor of Wave 14-OOO). The five companion papers
 % are the bigbounce paper portfolio; each is hosted on the
@@ -987,10 +1008,10 @@
     note = "HUBIFY-2026-004; companion paper, this volume"
 }
 
-@article{Eskilt2022b,
+@article{Eskilt2023Cosmoglobe,
     author = "Eskilt, J. R. and others",
     collaboration = "{Cosmoglobe}",
-    title = "{Joint Planck and ACT measurement of cosmic birefringence: $\beta = 0.342^\circ \pm 0.094^\circ$}",
+    title = "{Cosmoglobe DR1 results. II. Constraints on isotropic cosmic birefringence from reprocessed WMAP and Planck LFI data}",
     journal = "Astron. Astrophys.",
     volume = "679",
     pages = "A144",
@@ -998,5 +1019,20 @@
     eprint = "2305.02268",
     archivePrefix = "arXiv",
     primaryClass = "astro-ph.CO",
-    doi = "10.1051/0004-6361/202346829"
+    doi = "10.1051/0004-6361/202346829",
+    note = "Reports $\beta = 0.53^\circ \pm 0.28^\circ$ from WMAP+Planck LFI alone (no ACT). The widely-quoted $\beta = 0.342^\circ \pm 0.094^\circ$ value is from the Eskilt~\\&~Komatsu 2022 PRD analysis cited as @Eskilt2022."
+}
+
+@article{Eskilt2022b,
+    author  = {Eskilt, J. R. and Komatsu, E.},
+    title   = {Improved constraints on cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background polarization data},
+    journal = {Phys. Rev. D},
+    volume  = {106},
+    pages   = {063503},
+    year    = {2022},
+    eprint  = {2205.13962},
+    archivePrefix = {arXiv},
+    primaryClass  = {astro-ph.CO},
+    doi     = {10.1103/PhysRevD.106.063503},
+    note    = "Alias of @Eskilt2022; the canonical 0.342 +/- 0.094 deg measurement. Bibkey retained for backward compatibility with prose `\\cite{Eskilt2022b}` calls."
 }

@@ -2,7 +2,7 @@
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot
 paper: 1
-last_updated: 2026-05-06 00:00 PDT
+last_updated: 2026-05-13 15:30 PDT
 canonical_source: arxiv/main.tex
 canonical_pdf: arxiv/main.pdf (mirrored to public/papers/spin_torsion_paper1.pdf + site/public/papers/spin_torsion_paper1.pdf — v2.3.18 recompile DONE Wave 14-SSS 2026-05-06 00:00 PDT local pdflatex TeX Live 2026/Homebrew, 1,239,876 bytes / 34 pp / 0 undef refs)
 version: v2.3.18
@@ -12,7 +12,9 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 
 # Paper 1 — Spin-Torsion Cosmology — Single Source of Truth
 
-**Canonical `.tex`:** `arxiv/main.tex` (R43 Wave 14-QQQ-edited 2026-05-05 02:30 PDT, `\paperVersion = v2.3.18`)
+**Last authoritative update (P1A):** 2026-05-13 (PDT, 15:30) — **P1A v1A.0.19 → v1A.0.20 — 30-min-loop tick 3.** Cross-vendor R-round-3 (5 sub-agents: GPT-5/Gemini-3.1-Pro/Grok-4/Perplexity/DeepSeek) returned 50 findings (4B + 16M + 21m + 9n). NOT clean. Readiness 86 → 72 honest mid-round → 81 post-closures. **All 4 BLOCKERs closed**: (1) STALE L1075 ‡ footnote (3 reviewers converged) — "~109 samples accepted 5/8 18:27 PT, R̂−1<0.01 in 1-3 days" was off by ~100× on sample count and ~5× on ETA. Rewrote to outcome-agnostic. (2) Structural-tension reframe as robustness check, not co-equal closure. (3) Four-route operator-level disclosure — R1 + R4 are projections of same dim-6 Holst-extended Einstein-Cartan torsion-elimination operator; Jackiw-Pi (R∧R̃) + parity-odd 4f partner explicitly acknowledged as missing from the channel-level enumeration. (4) Eskilt2022b bib confabulation fix (same pattern as P2 tick 1 but in shared arxiv/references.bib). Plus 12 MAJORs: Mercuri2006 title fix, Liu2025 phantom-duplicate removal, Brout2022PantheonPlus + DES2024SN5YR bibitems added, bib-comment @article parse-trip fixed. 4 items deferred. PDF: 17 pp / 789,183 bytes / 0 undef refs/cites. 3 mirrors byte-identical (sha256 `9243420515884f97...`). Reviewer files at `project-context/peer-reviews/2026-05-13_1530pt_P1A_R-round_*.md`.
+
+**Canonical `.tex`:** `arxiv/paper1a_ech_nogo.tex` (v1A.0.20 since 2026-05-13 PDT). The long-form Paper 1 `arxiv/main.tex` is at v2.3.18 (deprecated split-parent; the P1A no-go version is the current canonical).
 **Canonical PDF:** `arxiv/main.pdf` (1,239,876 bytes / 34 pp / 0 undef refs, recompiled Wave 14-SSS 2026-05-06 00:00 PDT, v2.3.18, local pdflatex TeX Live 2026/Homebrew; mirrored to public/papers/spin_torsion_paper1.pdf + site/public/papers/spin_torsion_paper1.pdf)
 **Bibliography:** `arxiv/references.bib` (1310+ lines, 66+ entries — Wave 14-Z added `Alonso2019`; Wave 14-V added `WilsonEwing2012`; Wave 14-U added `Agazie:2023ng15`)
 **Last authoritative update:** 2026-05-06 (PDT, 00:00) — **R43 Wave 14-SSS P1 PDF RECOMPILE v2.3.18**: PDF recompiled locally (pdflatex × 3 + bibtex, TeX Live 2026/Homebrew). 34 pp / 1,239,876 bytes / 0 undef refs / 0 citation undefined warnings (26 bibtex missing-journal/number warnings are pre-existing cosmetic). Mirrors updated: arxiv/main.pdf + public/papers/spin_torsion_paper1.pdf + site/public/papers/spin_torsion_paper1.pdf. Closes the "v2.3.17/v2.3.18 PDF recompile PENDING pod SSH" item from Wave 14-QQQ. Also: cobaya DR2 chain warm-restarted with proposal covmat extracted from April-6 converged chain (w0=-0.871, wa=-0.542, p_B=0.98 run; same Planck NPIPE CamSpec likelihood, same 17 sampled params). Cold-start diagonal proposal (18.8% acceptance, 95 samples in 8h) replaced by full posterior-covariance warm start — expected 10x acceptance/mixing improvement. P1=99% (99%-cap; pending Houston sign-off + clean external R43 round).
