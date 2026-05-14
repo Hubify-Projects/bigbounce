@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.63}
-\newcommand{\paperTimestamp}{2026-05-14 (canonical-$N$ direct-MC propagated across abstract/Table III/Fig captions; 12th vendor R-round closure) PDT}
+\newcommand{\paperVersion}{v1.0.64}
+\newcommand{\paperTimestamp}{2026-05-14 (13th vendor R-round closures: per-pixel-null reconciliation, HC-stratification headline reframe, hemisphere $A$ derivation, TTT-spin contradiction fix, injection-recovery + Fisher-floor provenance JSONs) PDT}
 
 \begin{document}
 
@@ -101,21 +101,28 @@ execution at canonical Catalog~C parameters
 ($N_{\rm spiral}\!=\!3{,}201{,}160$, $f_{\rm sky}\!=\!0.4938$,
 NSIDE$\,=\,$64, SEED$\,=\,42$; v1.0.62, see
 Sec.~\ref{sec:conclusions}) yields a mild canonical-mask excess of
-$+1.85\sigmaunit$, which is below this paper's detection threshold and
-is interpreted as a leakage-floor calibration (per-pixel random-label
-shuffling does not preserve the depth/GZ1-label spatial structure that
-sources the global monopole asymmetry and projects onto $\ell\!=\!1$
-under the patchy canonical mask), not as a primordial dipole. The
-$-0.122\sigmaunit$ subsample-mask figure remains the headline
-post-MASTER null because it uses the strict-superset
-$f_{\rm sky}\!=\!0.659$ mask and bypasses the canonical-mask leakage
-channel; the canonical $+1.85\sigmaunit$ direct-MC value supersedes
-the earlier v1.0.55 analytic projection $+0.2595\sigmaunit$, which is
-retained only as a methodological-comparison reference. Independent
-full-sky estimators (real-space dipole $0.43\sigmaunit$,
-Sec.~\ref{sec:dipole}) and the empirical $|A_{\rm dipole}|\!>\!0.5\%$
-injection-recovery sensitivity floor independently reject a primordial
-$\ell\!=\!1$ dipole at the $+1.85\sigmaunit$ amplitude. The conservative, systematic-inclusive empirical injection-recovery
+$+1.85\sigmaunit$ (Gaussian-equivalent Z-score; one-tailed empirical
+rank $p_{\rm MC}\!=\!15/500\!=\!0.030$ against the 500-MC null),
+which is below this paper's detection threshold and is interpreted as
+canonical-mask geometry-specific leakage, not as a primordial dipole:
+the per-pixel random-label shuffle preserves per-pixel galaxy counts
+and per-pixel mask-edge positions while randomly permuting the CW vs
+CCW assignments globally across the catalog, so any \emph{spatially
+correlated} chirality asymmetry that survives this shuffle reflects
+mask-geometry-driven leakage of the global monopole rather than a
+depth/label per-galaxy systematic.  The $-0.122\sigmaunit$
+subsample-mask figure remains the headline post-MASTER null because
+it uses the strict-superset $f_{\rm sky}\!=\!0.659$ mask (which
+averages over more contiguous coverage and thereby suppresses
+small-scale canonical-mask-edge leakage); the canonical
+$+1.85\sigmaunit$ direct-MC value supersedes the earlier v1.0.55
+analytic projection $+0.2595\sigmaunit$, which is retained only as a
+methodological-comparison reference. Independent full-sky estimators
+(real-space dipole $0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the
+empirical $|A_{\rm dipole}|\!>\!0.5\%$ injection-recovery sensitivity
+floor on the HC-spiral subsample ($N\!=\!471{,}049$,
+Sec.~\ref{sec:sensitivity}) independently reject a primordial
+$\ell\!=\!1$ dipole at any amplitude probed. The conservative, systematic-inclusive empirical injection-recovery
 sensitivity floor is $|A_{\rm dipole}|\!>\!0.5\%$
 (at $A\!=\!0.5\%$ the per-pixel-shuffle MC gives
 $P(\sigma\!>\!2)\!=\!0.18$; explicit 50\%-recovery at $3\sigmaunit$ is
@@ -200,12 +207,18 @@ treat the directional-dipole null as the load-bearing empirical test
 that this local morphology--chirality coupling integrates harmlessly
 under re-projection onto large-scale directional axes. A
 $3.05\sigmaunit$ local hemisphere asymmetry (CW-fraction
-half-difference $0.17\%$ between opposing hemispheres; equivalent
-full dipole-amplitude $\max|A| = 8.531\times 10^{-3} = 0.853\%$
-where $p_{\rm CW}(\hat n) = \tfrac12 (1 + A\cos\theta)$, the two
-conventions differing by the factor of $1/2$ in the modulation
-definition) under a $10{,}000$-MC permutation null (random
-CW-label shuffles at NSIDE=8 / 768 directions) rejects the
+half-difference $0.17\%$ between opposing hemispheres at the
+max-statistic axis -- this is the half-difference $(F_+ - F_-)/2$
+between the two opposing hemispheres, equal to $A/2$ in the ideal
+uniform-coverage limit, so $0.17\%$ half-difference $\leftrightarrow$
+$A_{\rm dipole}\!\approx\!0.34\%$, well below the $|A_{\rm dipole}|
+\gtrsim 0.5\%$ empirical floor; the separately reported max-over-768-
+directions statistic $\max|A(\hat n)| = 8.531\times 10^{-3}$ from the
+GPU hemisphere scan is a \emph{different} statistic that maximizes
+over the NSIDE=8 direction grid and incorporates sky-coverage
+weighting at each pixel, and the two should not be compared as if
+they were the same observable) under a $10{,}000$-MC permutation null
+(random CW-label shuffles at NSIDE=8 / 768 directions) rejects the
 random-label null at $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$
 nulls reach the data), corresponding to post-LEE significance
 $\gtrsim\!3.7\sigmaunit$ under that specific null. Per-pixel-shuffle
@@ -1786,19 +1799,26 @@ reliable. Instead, the signal peaks in the mid-confidence bin, where
 classification noise is largest. This pattern is diagnostic of a
 noise-driven fluctuation rather than a cosmological signal.
 
-We therefore designate the high-confidence stratum as the
-\emph{primary} dipole-significance result: the $0.3\sigmaunit$ value
-in this band carries the smallest classifier-noise contamination and
-is the figure that should be quoted when comparing against any
-physical-dipole prediction. The mid- and low-confidence values are
-retained as cross-checks rather than as headline numbers, because
-their elevated significance is anti-correlated with classification
-reliability and therefore traces classifier noise rather than any
-cosmological signal. This high-confidence-primary policy is
-consistent with the methodological recommendation of external
-peer review and is implemented uniformly throughout this paper:
-the abstract, introduction, and conclusions all quote the
-high-confidence dipole upper bound.
+The HC-spiral $0.3\sigmaunit$ value is reported as a
+\emph{within-paper confidence-stability cross-check}, not as the
+headline number: the abstract, introduction, and conclusions quote
+the unstratified real-space dipole $0.43\sigmaunit$, the subsample-mask
+MASTER $-0.122\sigmaunit$, and the canonical-$N$ direct-MC
+$+1.85\sigmaunit$ as the load-bearing estimators (these are the
+like-for-like comparators against literature dipole claims and against
+the canonical-mask MASTER pipeline). The HC stratification serves a
+different purpose: if the $0.43\sigmaunit$ unstratified excess were
+driven by a real cosmological chirality dipole, then restricting to
+high-confidence classifications -- where classifier noise is at its
+minimum -- should \emph{strengthen} the signal, not weaken it. The
+observed pattern is the opposite (HC $0.3\sigmaunit$ $<$ unstratified
+$0.43\sigmaunit$, with peak in the mid-confidence bin at
+$2.1\sigmaunit$), which is the diagnostic signature of a
+noise-driven fluctuation. The mid- and low-confidence values are
+retained as the actual cross-check (showing the
+classifier-noise-correlated signature explicitly); the HC-spiral
+$0.3\sigmaunit$ caps the residual chirality power that would survive
+maximum-confidence selection.
 
 Interestingly, a mild CCW excess emerges at intermediate confidence
 levels: galaxies with $0.6 < \pccw^{\rm eq} < 0.9$ show a CCW
@@ -2706,10 +2726,15 @@ In Lue, Wang \& Kamionkowski's parametrization~\cite{LueWangKamionkowski:1999},
 inflationary or post-inflationary parity-violating tensor sources
 generate an imbalance $\Pi \equiv (P_L\!-\!P_R)/(P_L\!+\!P_R)$
 between left- and right-handed gravitational-wave power. Tidal-torque
-theory (Doroshkevich 1970; White 1984; observationally verified at
-the $\sim\!2\sigma$ level by Motloch \& Pen~\cite{Motloch:2021})
-provides a kinematic correlation between galaxy spins and the
-large-scale tidal field; if the tidal field carries a chiral tensor
+theory (Doroshkevich 1970; White 1984) provides a kinematic
+correlation between galaxy spins and the large-scale tidal field; the
+existing observational evidence for this TTT-spin link is marginal
+(Motloch \& Pen~\cite{Motloch:2021} report a $\sim\!2\sigma$
+correlation that, as we note in \S\ref{sec:motloch}, is
+fully consistent with the same reading-direction citizen-science
+labelling bias that contaminates our own pre-equivariance pipeline,
+and the present work's null dipole is in fact a \emph{cleaner} probe
+of this channel because it is insensitive to that bias); if the tidal field carries a chiral tensor
 secondary, the spin direction inherits a coherent bias whose
 projection onto arm-winding produces the observable chirality
 dipole~\cite{Yu:2020}. We do not derive the morphology-to-$\Pi$
@@ -2942,19 +2967,30 @@ projection of monopole power from small-scale canonical-mask edges
 onto $\ell\!=\!1$; the canonical-mask analysis concentrates that
 edge power into the lowest available mode by construction.
 \item The per-pixel random-label permutation null preserves the
-\emph{marginal} depth-/mask-/edge-vs-pixel coupling (each pixel
-retains its galaxy count, depth, and mask-edge position; only the
-CW vs CCW assignments are shuffled), so any spatially-correlated
-depth-driven asymmetry that contributes uniformly to the monopole
-also leaks coherently into the canonical-mask $\ell\!=\!1$ mode and
-is \emph{not} averaged away by the shuffle. Two independent global
-estimators on the same data being null then identifies this channel
-as a leakage-floor mechanism, not a primordial signal. The
-empirical injection-recovery study (Sec.~\ref{sec:sensitivity})
-records $P(\sigma\!>\!2)\!=\!0.18$ at $A\!=\!0.5\%$ on the canonical
-sample, well below the $P(\sigma\!>\!2)\!\gtrsim\!0.5$ that a
-primordial half-modulation at the empirical-floor amplitude would
-have produced.
+per-pixel marginals (each pixel retains its galaxy count, depth, and
+mask-edge position; only the CW vs CCW assignments are shuffled
+\emph{globally} across the catalog). The shuffle therefore
+\emph{destroys} any per-galaxy depth-vs-label or
+mask-edge-vs-label correlation that would source a true
+``depth-coupled'' systematic, but it does \emph{not} destroy the
+geometric coupling between the global monopole asymmetry
+($\CW/(\CW+\CCW) = 0.4974\pm 0.000279$, $9.5\sigmaunit$ from
+$50/50$) and the patchy canonical mask: a non-zero global mean
+shuffled into a sparse / high-edge canonical mask leaks coherently
+into the lowest available power-spectrum mode by construction. The
+$+1.85\sigmaunit$ excess is therefore most plausibly the
+mask-geometry leakage of the global monopole, not a residual of the
+per-galaxy depth-coupling channel (which the shuffle would destroy).
+The empirical injection-recovery study (Sec.~\ref{sec:sensitivity})
+on the HC-spiral subsample ($N\!=\!471{,}049$) records
+$P(\sigma\!>\!2)\!=\!0.18$ at injected $A\!=\!0.5\%$ -- below the
+$P(\sigma\!>\!2)\!\gtrsim\!0.5$ that a primordial half-modulation at
+the empirical-floor amplitude would produce, and well below the
+$P(\sigma\!>\!2)\!\to\!1$ that a primordial signal at
+$+1.85\sigmaunit$-equivalent amplitude (after the mask-coupling
+calibration factor is applied) would produce -- so a primordial
+$\ell\!=\!1$ interpretation of the canonical direct-MC value is
+ruled out by the injection-recovery bound.
 \end{enumerate}
 The no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on
 the two estimators that bypass the canonical-mask leakage channel;

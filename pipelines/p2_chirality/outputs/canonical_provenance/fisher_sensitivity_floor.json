@@ -1,0 +1,46 @@
+{
+  "purpose": "Canonical sensitivity-floor provenance closing DeepSeek-M1 from the 13th real cross-vendor R-round on P4 v1.0.63.",
+  "produced_by": "On-disk arithmetic from Sec.~IX.B Eq.~13 (Fisher half-modulation derivation) + factor-of-2 convention propagation; emitted by hand 2026-05-14 to satisfy real-vendor provenance demand.",
+  "conventions": {
+    "p_CW_definition": "p_CW(hat_n) = (1/2) * (1 + A * cos(theta))",
+    "A_dipole_definition": "full-amplitude dipole modulation parameter A in p_CW(hat_n) = (1/2)(1 + A cos(theta))",
+    "A_over_2_definition": "half-modulation parameter A/2 = (max(p_CW) - min(p_CW)) / 2 = (max(p_CW) - 1/2)"
+  },
+  "fisher_derivation": {
+    "sigma_p_CW_per_bin_at_50_pct_balance": "sqrt(p(1-p)/N_eff_bin) ~ sqrt(0.25 / N_eff_bin)",
+    "sigma_half_modulation_A_over_2": 0.00048,
+    "sigma_full_amplitude_A": 0.00096,
+    "three_sigma_ideal_floor_A_over_2_pct": 0.144,
+    "three_sigma_ideal_floor_A_pct": 0.288,
+    "three_sigma_ideal_floor_A_rounded_to_paper": 0.29,
+    "three_sigma_conservative_floor_A_over_2_pct": 0.2,
+    "three_sigma_conservative_floor_A_pct": 0.4,
+    "conservative_factor_above_ideal": 1.4
+  },
+  "empirical_floor": {
+    "source": "pipelines/p2_chirality/outputs/canonical_provenance/wave_14_nn_injection_recovery.json (closing P4-OA-B5 + DeepSeek-B1)",
+    "sample_n_spirals": 471049,
+    "sample_label": "HC-spiral (equivariant probability > 0.9 for either CW or CCW)",
+    "f_sky": 0.4239501953125,
+    "amplitudes_tested_pct": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "P_sigma_gt_2_at_A_eq_0_pct5": 0.18,
+    "P_sigma_gt_3_at_A_eq_0_pct5": null,
+    "fifty_pct_recovery_at_3sigma_threshold_amplitude_pct": null,
+    "fifty_pct_recovery_not_demonstrated_within_tested_grid": true,
+    "empirical_floor_inequality": "A_dipole > 0.5%",
+    "empirical_floor_strict_inequality_reason": "the 50% recovery at 3-sigma threshold is bounded only above by the highest tested amplitude A=0.5% which gives P(sigma>2)=0.18 (i.e. < 0.5); a primordial half-modulation at the empirical-floor amplitude would produce P(sigma>2) >~ 0.5, so the strict inequality > 0.5% is conservative"
+  },
+  "paper_quoted_floors": {
+    "abstract_empirical": "> 0.5%",
+    "abstract_fisher_ideal": "~0.29%",
+    "abstract_fisher_conservative": "~0.4%",
+    "abstract_half_modulation_floor": "~0.2%"
+  },
+  "summary_for_paper": "The headline empirical sensitivity floor |A_dipole| > 0.5% is derived from the Wave 14-NN injection-recovery study on the HC-spiral subsample (N=471,049, f_sky=0.4240); the strict inequality reflects the bound that 50% recovery at 3-sigma threshold lies above 0.5% within the tested A in [0.05, 0.50]% grid (companion JSON wave_14_nn_injection_recovery.json records all per-amplitude P(sigma>2) and P(sigma>3) values). The Fisher statistical floor |A_dipole| ~ 0.29% (ideal full-amplitude) / ~0.4% (conservative full-amplitude) / ~0.2% (conservative half-modulation A/2) follows from the Fisher arithmetic on the full Catalog C (N_spiral=3,201,160) at 50/50 balance under p_CW = (1/2)(1 + A cos theta)."
+}

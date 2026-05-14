@@ -119,5 +119,36 @@
     },
     "reproduce_command": "On a Linux host with pymaster apt-installed and the HuggingFace catalog at /workspace/chirality_catalog/catalog_production.parquet: `python3 pipelines/p2_chirality/scripts/canonical_l1_namaster_pod.py`. Set numpy seed to 42 (script does this internally). Expected wallclock ~24 min single-CPU.",
     "interpretation": "The +1.85 sigma direct-MC value is a mild canonical-mask excess below this paper's 3-sigma detection threshold. It supersedes the v1.0.55 analytic projection +0.26 sigma, which is retained as a methodological-comparison reference only. The per-pixel random-label permutation null preserves the per-pixel depth/mask-edge/galaxy-count coupling (only CW vs CCW assignments are shuffled), so the spatially-correlated depth-driven asymmetry that contributes to the global 9.5-sigma monopole leaks coherently into the canonical-mask l=1 mode and is not averaged away. Two independent global estimators on the same data are null (full-sky real-space 0.43 sigma; subsample-mask MASTER -0.12 sigma on strict-superset f_sky=0.659), identifying this channel as a leakage-floor mechanism, not a primordial signal. The canonical-N direct-MC value is on record as a leakage-floor calibration for the canonical patchy mask."
+  },
+  "v1_0_63_addendum": {
+    "purpose": "Provenance additions closing DeepSeek-B1 + DeepSeek-M1 + DeepSeek-M2 from the 13th real cross-vendor R-round on P4 v1.0.63.",
+    "injection_recovery_artifact": {
+      "purpose": "Closes DeepSeek-B1 (empirical >0.5% floor provenance).",
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/wave_14_nn_injection_recovery.json",
+      "sha256": "92c7d4798ef09d9e8407bbc8de543dded9b759667d27feb9baabc9e62785e05b",
+      "source_pipeline": "pipelines/p2_chirality/wave_14_nn_dipole_mc_injection.py",
+      "headline_pairs": {
+        "P_sigma_gt_2_at_A_0_pct5": 0.18,
+        "amplitudes_pct": [
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.5
+        ]
+      }
+    },
+    "fisher_sensitivity_floor_artifact": {
+      "purpose": "Closes DeepSeek-M1 (Fisher-floor arithmetic provenance).",
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/fisher_sensitivity_floor.json",
+      "sha256": "8ee7c2761d52b15b38dca313babbbf3fd2ee491e9f5f1a592bce008c289dd4d0"
+    },
+    "pixel_weighted_count_clarification": {
+      "purpose": "Closes DeepSeek-M2 (pixel-weighted 5,547,858 traceability).",
+      "n_pixel_weighted_galaxies_subsample_mask": 5547858,
+      "underlying_spiral_catalog": 3201160,
+      "relationship": "The 5,547,858 figure is the TTA-duplicated pixel-weighted galaxy count contributing to the subsample-mask post-MASTER map; the canonical spiral catalog has 3,201,160 entries. The relationship to N_spiral is set by D4-TTA averaging weight + analysis-mask selection.",
+      "underlying_artifact": "pipelines/p2_chirality/master_results/master_power_spectrum.json"
+    }
   }
 }
