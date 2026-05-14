@@ -43,8 +43,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.5}
-\newcommand{\paperTimestamp}{2026-05-09 17:00 PDT}
+\newcommand{\paperVersion}{v1B.0.6}
+\newcommand{\paperTimestamp}{2026-05-15 01:30 PDT (1st real cross-vendor R-round closures: DESI DR2 chain stall status updated across 4 sites; cross-paper Table 1 versions and readinesses refreshed to current state; 14->13 barrier framing aligned with P1A v1A.0.22; model-comparison stats Table 2 + Conclusions retained for now per existing on-record deferral)}
 
 \begin{document}
 
@@ -134,7 +134,7 @@ parameters; no ECH-specific derivation connects the Holst action to the
 photon-torsion coupling required.
 \end{enumerate}
 
-\textit{What is NOT in this paper.}---The 14 structural barriers, the
+\textit{What is NOT in this paper.}---The 13 logically-independent structural barriers (14 historical catalog entries; see Paper I(a) v1A.0.22), the
 perturbation-transparency theorem, the 14-barrier table, and the surviving
 mechanism-independent test predictions ($\fnl=-35/8$ and ALP birefringence)
 are in Paper~I(a)~\cite{Golden2026P1a}. The SPHEREx multi-tracer Fisher
@@ -509,26 +509,24 @@ not uniquely predict it.
 \section{Cross-Paper Verification Status}\label{sec:crosspaper}
 
 \begin{table*}[tb]
-\caption{\label{tab:crosspaper} Cross-paper status table (R43 / Wave 14 --- May 2026).
-Readiness capped at 99\% pending Houston sign-off + clean external peer-review round.
-DESI DR2 cobaya chains running on Pod~3 H200 (ETA $\sim$3 days to convergence).}
+\caption{\label{tab:crosspaper} Cross-paper status table (Wave 14 / Mid-May 2026).
+Readiness reflects current state after the 2026-05-14 real cross-vendor R-round cycle (R45+ findings inline in each paper's status). Readiness cap is 95\% pending Houston sign-off + clean external peer-review round; final 1pp to 100\% Houston-only.
+DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current stalled status.}
 \begin{ruledtabular}
 \begin{tabular}{lllcc}
 Paper & Version & Title (brief) & Readiness & Key Blocker \\
 \hline
-P1(a) & v1A.0.1 & ECH structural closure, 14 barriers, perturbation transparency & 99\% & Houston sign-off \\
-P1(b) & v1B.0.1 & This companion: MCMC proxy, NaMaster, ALP & 99\% & Houston sign-off \\
-P2 & v1.7.10 & SPHEREx fNL forecast, MegaMapper outlook & 99\% & Fisher rerun/remove \\
-P3 & v3.1.20 & Multi-survey anomaly catalog (37.3M sources, 319K anomalies) & 99\% & LAMOST 98\% correction \\
-P4 & v1.0.29 & Galaxy chirality catalog (8.47M galaxies) & 99\% & D4-vs-Z2 rename \\
+P1(a) & v1A.0.22 & ECH structural closure, 13 logically-independent barriers (14 historical catalog entries), perturbation transparency & 73\% & Route 2 dimensional re-derivation (on-record deferred); Houston sign-off \\
+P1(b) & v1B.0.6 & This companion: MCMC proxy, NaMaster, ALP; DESI DR2 $w_0 w_a$ chain stalled & 64\% & DESI DR2 chain stall + model-comparison stats recompute; Houston sign-off \\
+P2 & v1.7.29 & SPHEREx $\fnl$ forecast, MegaMapper outlook & 81\% & 2nd vendor R-round; Houston sign-off \\
+P3 & v3.1.40 & Multi-survey anomaly catalog (37.3M sources, 378,280 anomalies after 7-way dedup) & 84\% & 378,280 union-find dedup + Fisher propagation (on-record deferred); Houston sign-off \\
+P4 & v1.0.64 & Galaxy chirality catalog (8.47M galaxies; canonical-$N$ MASTER $\ell=1$ direct compute closed at v1.0.62) & 95\% & Houston sign-off only (gate (a) satisfied per 7-consecutive Gemini-2.5-Pro endorsements) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
 
 \begin{table}[tb]
-\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2
-w0wa chains (4 chains, Pod~3 H200) are in progress; convergence expected in
-$\sim$3 days from 2026-05-05.}
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is currently \emph{stalled} at $\hat{R}-1 = 0.01775$ / 53{,}736 accepted samples; the progress checkpoint last flushed at 2026-05-14 15:43 UTC and no advance has been observed for $\sim$12 hours. The 16-rank mpirun process remains alive on the pod, indicating the sampler is slow-mode-dominated rather than crashed; restart-vs-extend investigation is non-blocking for P4 publish-readiness (gate (a) satisfied independently). The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once converged.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
@@ -622,7 +620,7 @@ is consistent with the published $3.6\sigma$ joint signal without fine-tuning
 same result arises in standard GR; the ECH framework provides motivation but
 not a derivation. LiteBIRD will settle this at $\sim 9\sigma$ in the early 2030s.
 
-\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). At the time of this writing the chain has accumulated $\sim\!3.8\!\times\!10^{4}$ accepted samples across the 16 chains and reports $\hat R - 1 \approx 3\!\times\!10^{-2}$, descending monotonically toward the standard publication-quality convergence target $\hat R - 1 < 10^{-2}$. When converged, GetDist posteriors on $w_0$-$w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}.
+\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-15)}: the chain has accumulated $53{,}736$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.01775$ at the most recent progress flush (2026-05-14 15:43 UTC). The progress checkpoint has not advanced in approximately 12 hours; the 16-rank mpirun process remains alive on the pod, indicating the sampler is slow-mode-dominated at this stage rather than crashed. We deliberately do not commit to a calendar-date convergence ETA in this manuscript: the chain may converge in additional hours, may require parameter-tuning intervention, or may need restart. When converged, GetDist posteriors on $w_0 w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}; in the present manuscript, all DESI DR2 $w_0 w_a$ conclusions in P1(a) remain \emph{not tested} until the stall is resolved.
 
 \subsection*{Data and Code Availability}
 
