@@ -38,8 +38,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.56}
-\newcommand{\paperTimestamp}{2026-05-14 (5-vendor verification sweep) PDT}
+\newcommand{\paperVersion}{v1.0.57}
+\newcommand{\paperTimestamp}{2026-05-14 (LEE-rejection honest reframe) PDT}
 
 \begin{document}
 
@@ -177,17 +177,34 @@ shape\_r\_eff $\Delta=0.32\%$; Sec.~\ref{sec:bin_flatness}); we
 treat the directional-dipole null as the load-bearing empirical test
 that this local morphology--chirality coupling integrates harmlessly
 under re-projection onto large-scale directional axes. A
-$3.05\sigmaunit$ hemisphere asymmetry (CW-fraction half-difference
-$0.17\%$ between opposing hemispheres; equivalent full
-dipole-amplitude $\max|A| = 8.531\times 10^{-3} = 0.853\%$ where
-$p_{\rm CW}(\hat n) = \tfrac12 (1 + A\cos\theta)$, the two
+$3.05\sigmaunit$ local hemisphere asymmetry (CW-fraction
+half-difference $0.17\%$ between opposing hemispheres; equivalent
+full dipole-amplitude $\max|A| = 8.531\times 10^{-3} = 0.853\%$
+where $p_{\rm CW}(\hat n) = \tfrac12 (1 + A\cos\theta)$, the two
 conventions differing by the factor of $1/2$ in the modulation
-definition) is consistent with no large-scale dipole at the
-$10{,}000$-MC direct-calibration resolution floor
-($p_{\rm LEE}\le 10^{-4}$, MC upper bound; the standard analytic
-Bonferroni/BH look-elsewhere penalty across $\sim 650$ hemisphere
-directions reduces the local effective significance to
-$<1\sigmaunit$, consistent with the direct-MC null). The catalog is available at
+definition) under a $10{,}000$-MC permutation null (random
+CW-label shuffles at NSIDE=8 / 768 directions) rejects the
+random-label null at $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$
+nulls reach the data), corresponding to post-LEE significance
+$\gtrsim\!3.7\sigmaunit$ under that specific null. Per-pixel-shuffle
+nulls do \emph{not} preserve depth, mask-edge, or other systematic
+spatial structures, so this rejection of the random-label
+hypothesis is not equivalent to a primordial-dipole detection.
+The independent full-sky dipole estimators on the same data —
+real-space dipole amplitude $0.43\sigmaunit$ ($p\!=\!0.30$,
+Sec.~\ref{sec:dipole}); post-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$
+giving $-0.12\sigmaunit$ on the analysis subsample mask
+(canonical-$N$ analytic projection $+0.26\sigmaunit$,
+Sec.~\ref{sec:conclusions}) — are all consistent with no primordial
+$\ell\!=\!1$ signal. The most plausible reading of the hemisphere
+max-statistic rejection is therefore that the same sub-percent
+depth-coupled / GZ1-training-label systematic that sources the
+global $9.5\sigmaunit$ CW-fraction monopole (Sec.~\ref{sec:cw_frac})
+projects onto a particular sky-axis maximum that random
+CW-label shuffling cannot reproduce; we report the
+$p_{\rm LEE}\!\le\!10^{-4}$ random-label-null rejection as a
+documented systematic-floor artifact, not as a primordial-dipole
+detection. The catalog is available at
 \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
 under CC-BY-4.0.
 \end{abstract}
@@ -825,12 +842,12 @@ single-model pipeline).
 
 We note that the acceptance thresholds for individual bias tests
 (e.g., T8: $50\% \pm 10\%$; T6: $<\!10\%$ hemispheric difference)
-are generous relative to the catalog's claimed 0.2\% sensitivity to
+are generous relative to the catalog's $0.29\%$ statistical Fisher / $>0.5\%$ empirical sensitivity to
 parity violation. Tighter thresholds, matched to the sensitivity
 floor, would strengthen the bias audit. Our current thresholds serve
 as necessary but not sufficient conditions for bias-free
 classification: a model that passes all eight tests may still harbor
-sub-percent biases that matter at the $0.2\%$ level. The equivariant
+sub-percent biases that matter at the $0.29\%$ Fisher (or $>0.5\%$ empirical) level. The equivariant
 averaging of Catalog~C (Sec.~\ref{sec:tta}) provides the
 definitive bias mitigation; the test suite is a complementary
 diagnostic, not a replacement.
@@ -1613,14 +1630,21 @@ Companion artifact:
   The peak asymmetry of $3.05\sigmaunit$ (red diamond, local
   pre-LEE significance) has a CW-fraction half-difference amplitude
   of only $0.17\%$ (full dipole-amplitude $\max|A| = 0.853\%$ under
-  $p_{\rm CW} = \tfrac12(1+A\cos\theta)$) and is consistent with no
-  large-scale dipole after both LEE corrections: the conservative
-  analytic Bonferroni / BH penalty across ${\sim}650$ directions
-  reduces the local effective significance to $<1\sigmaunit$, and
-  the direct $10{,}000$-MC look-elsewhere null gives $p_{\rm LEE}
-  \le 10^{-4}$ at the MC resolution floor (zero of $10{,}000$
-  permutation nulls reach the data; the analytic and direct-MC
-  methods agree on the null verdict).
+  $p_{\rm CW} = \tfrac12(1+A\cos\theta)$). The conservative analytic
+  Bonferroni / BH penalty across ${\sim}650$ directions reduces the
+  local effective significance to $<\!1\sigmaunit$ (consistent with
+  null). The direct $10{,}000$-MC permutation null gives
+  $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$ random-label
+  shuffles reach the data), which \emph{rejects} the random-label
+  null at post-LEE $\gtrsim\!3.7\sigmaunit$ — but per-pixel-shuffle
+  nulls do not preserve depth or mask-edge systematic structures,
+  so this rejection is consistent with (and most plausibly
+  attributed to) the same sub-percent GZ1-training-label /
+  depth-coupled systematic that sources the global
+  $9.5\sigmaunit$ CW-fraction monopole, not to a primordial
+  $\ell\!=\!1$ dipole (the independent full-sky dipole estimators
+  on the same data are all null at $\ell\!=\!1$;
+  Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}).
   \label{fig:hemisphere}}
 \end{figure}
 
@@ -2043,13 +2067,22 @@ a cosmological interpretation:
 \begin{enumerate}
 \item Its amplitude is only 0.17\%, far smaller than the $\sim\!3\%$
   predicted by Shamir's analyses.
-\item It is consistent with no large-scale dipole after LEE: the
-  conservative analytic Bonferroni/BH penalty across $\sim\!650$
-  tested directions reduces the local effective significance to
-  $<\!1\sigmaunit$, and the direct $10{,}000$-MC look-elsewhere
-  null gives $p_{\rm LEE}\!\le\!10^{-4}$ at the MC resolution
-  floor (zero of $10{,}000$ permutation nulls reach the data;
-  both methods agree on the null verdict).
+\item The two LEE methods give qualitatively different verdicts on
+  the random-label hypothesis, which we report transparently:
+  the conservative analytic Bonferroni/BH penalty across
+  $\sim\!650$ tested directions reduces the local effective
+  significance to $<\!1\sigmaunit$ (consistent with null under that
+  conservative correction), while the direct $10{,}000$-MC
+  permutation null gives $p_{\rm LEE}\!\le\!10^{-4}$ (zero of
+  $10{,}000$ random-label shuffles reach the data, corresponding to
+  post-LEE significance $\gtrsim\!3.7\sigmaunit$ under that null).
+  We attribute the random-label-null rejection to the same
+  sub-percent GZ1-training-label / depth-coupled systematic that
+  sources the global $9.5\sigmaunit$ CW-fraction monopole, not to a
+  primordial $\ell\!=\!1$ dipole, because per-pixel-shuffle nulls
+  do not preserve depth or mask-edge systematic structures and the
+  independent full-sky dipole estimators on the same data are all
+  null at $\ell\!=\!1$.
 \item The angular power spectrum at $\ell = 1$ is
   $-0.12\sigmaunit$ (post-MASTER deconvolution on the analysis
   subsample mask, headline result; analytic canonical-$N$
