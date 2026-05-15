@@ -45,19 +45,20 @@
 \contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{23}{section*.43}%
 \contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{24}{section*.44}%
 \contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{25}{section*.45}%
-\contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{27}{section*.46}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{28}{section*.47}%
-\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{28}{section*.48}%
-\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{28}{section*.49}%
-\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{28}{section*.50}%
-\contentsline {paragraph}{\numberline {c}What does the present null constrain?}{29}{section*.51}%
-\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{29}{section*.52}%
-\contentsline {subsection}{\numberline {G}Future Directions}{29}{section*.53}%
-\contentsline {section}{\numberline {VII}Conclusions}{30}{section*.54}%
-\contentsline {paragraph}{\numberline {a}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{30}{section*.55}%
-\contentsline {paragraph}{\numberline {b}Sensitivity convention and remaining caveats.}{31}{section*.56}%
-\contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{32}{section*.57}%
-\contentsline {section}{\numberline {IX}Data Availability}{33}{section*.58}%
-\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{33}{section*.59}%
-\contentsline {section}{\numberline {}Acknowledgments}{33}{section*.60}%
-\contentsline {section}{\numberline {}References}{33}{section*.61}%
+\contentsline {paragraph}{\numberline {a}High-confidence-spiral subsample robustness rerun (v1.0.69).}{26}{section*.46}%
+\contentsline {paragraph}{\numberline {b}Bin-by-bin CW flatness test across four morphology axes.}{28}{section*.47}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{28}{section*.48}%
+\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{28}{section*.49}%
+\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{28}{section*.50}%
+\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{29}{section*.51}%
+\contentsline {paragraph}{\numberline {c}What does the present null constrain?}{29}{section*.52}%
+\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{30}{section*.53}%
+\contentsline {subsection}{\numberline {G}Future Directions}{30}{section*.54}%
+\contentsline {section}{\numberline {VII}Conclusions}{30}{section*.55}%
+\contentsline {paragraph}{\numberline {a}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{30}{section*.56}%
+\contentsline {paragraph}{\numberline {b}Sensitivity convention and remaining caveats.}{31}{section*.57}%
+\contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{33}{section*.58}%
+\contentsline {section}{\numberline {IX}Data Availability}{33}{section*.59}%
+\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{33}{section*.60}%
+\contentsline {section}{\numberline {}Acknowledgments}{33}{section*.61}%
+\contentsline {section}{\numberline {}References}{34}{section*.62}%

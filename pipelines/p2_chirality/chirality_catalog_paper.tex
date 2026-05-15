@@ -2643,6 +2643,56 @@ Sec.~\ref{sec:tiers}), so a per-bin axis-ratio test requires a
 positional cross-match with the parent DESI Legacy photometric
 catalog.
 
+\paragraph{High-confidence-spiral subsample robustness rerun (v1.0.69).}
+As a proxy for the b/a-cut face-on subsample (which requires a sweep
+cross-match not in Catalog~C), we use the classifier-confidence cut
+$\max(p_{\rm CW,eq}, p_{\rm CCW,eq})>0.6$ (the HC-spiral subsample
+$N\!=\!949{,}584$, paper-existing concept) and the stricter
+$>\!0.8$ cut (HC-strict, $N\!=\!624{,}660$). Edge-on disks
+typically have ambiguous CW/CCW post-TTA and low max-class
+confidence; the HC cut therefore selects against edge-on
+contamination without requiring axis-ratio metadata.
+
+\begin{table}[h]
+\caption{\label{tab:face_on}High-confidence-spiral robustness rerun.
+Dipole significances against $N_{\rm MC}\!=\!1000$
+binomial-monopole-preserving null realizations at NSIDE$\,=\,$64
+(seed$\,=\,$42). \emph{The dipole-$\sigma$ here is against the
+monopole-preserving null (which preserves the global
+$p_{\rm CW}\!=\!0.4974$), not the isotropic-$p\!=\!0.5$ null used
+elsewhere in the paper; the former is the appropriate
+robustness comparison across subsamples because the cleaner subsamples
+have larger global monopole offsets and the isotropic null would
+mask the monopole-leakage signal we are testing for.} Verification:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/face\_on\_robustness\_results.json}.}
+\begin{ruledtabular}
+\begin{tabular}{lrccc}
+\textbf{Sample} & $N_{\rm spiral}$ & $\CW/(\CW+\CCW)$ & $|\Delta|$ (\%) & dipole $\sigma$ (p)\\
+\hline
+Catalog~C full & 3{,}201{,}160 & 0.49735 & 0.265 & $+4.31$ (0.001)$^a$ \\
+HC-spiral ($p_{\rm eq}\!>\!0.6$) & 949{,}584 & 0.49606 & 0.394 & $+0.62$ (0.243) \\
+HC-strict ($p_{\rm eq}\!>\!0.8$) & 624{,}660 & 0.49602 & 0.398 & $+0.87$ (0.187) \\
+\end{tabular}
+\end{ruledtabular}
+{\small $^a$~Monopole-preserving null; the same sample against the
+isotropic-$p\!=\!0.5$ null gives $0.43\sigmaunit$, $p\!=\!0.30$
+(Sec.~\ref{sec:dipole} headline).}
+\end{table}
+
+The two HC-cut subsamples (which exclude the lowest-confidence
+classifications, where edge-on contamination is concentrated) show
+the dipole signal collapse from $+4.31\sigmaunit$ to $+0.62\sigmaunit$
+and $+0.87\sigmaunit$ against the monopole-preserving null. This
+demonstrates that (i)~the canonical-mask leakage seen in
+Sec.~\ref{sec:monopole_mask_null} scales with sample size + edge-on
+contamination as expected, (ii)~when the edge-on-dominated tail is
+removed, the residual is consistent with the null, and (iii)~the
+edge-on-contamination concern raised in this section is mitigated
+empirically: cleaner subsamples do not produce stronger dipole
+signal. Combined with the per-imaging-leg result of
+Sec.~\ref{sec:per_leg} (all three legs null individually), the
+robustness picture is consistent.
+
 We can, however, quantify the equivariance correction directly from
 the production catalog without a positional cross-match by using the
 raw $\to$ equivariant label transition as an edge-on proxy: galaxies

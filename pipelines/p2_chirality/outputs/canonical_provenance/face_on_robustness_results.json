@@ -1,0 +1,70 @@
+{
+  "version": "v1.0.69-face-on-robustness",
+  "date_utc": "2026-05-15T07:09:08Z",
+  "config": {
+    "nside": 64,
+    "min_spirals_per_pix": 10,
+    "n_mc": 1000,
+    "seed": 42,
+    "rationale": "Catalog parquet does not carry b/a; HC-spiral confidence cut is a proxy for face-on-clean subsample (edge-on disks have ambiguous CW vs CCW and low max-class confidence)."
+  },
+  "samples": [
+    {
+      "label": "Catalog_C_full",
+      "n_spiral": 3201160,
+      "n_cw": 1592107,
+      "n_ccw": 1609053,
+      "p_cw": 0.49735314698421823,
+      "delta_pct_from_parity": -0.26468530157817693,
+      "binomial_sigma": 0.0002794578500416354,
+      "z_score_from_parity": -9.47138545361107,
+      "f_sky_mask": 0.49005126953125,
+      "dipole": {
+        "valid": true,
+        "amplitude": 0.0028301405875590185,
+        "sigma": 4.306135636902304,
+        "p_value": 0.001,
+        "null_mean": 0.0009420614634173622,
+        "null_std": 0.00043846252959646204
+      }
+    },
+    {
+      "label": "HC-spiral_p>0.6",
+      "n_spiral": 949584,
+      "n_cw": 471049,
+      "n_ccw": 478535,
+      "p_cw": 0.4960582739389038,
+      "delta_pct_from_parity": -0.3941726061096218,
+      "binomial_sigma": 0.0005131015305736402,
+      "z_score_from_parity": -7.682156115748523,
+      "f_sky_mask": 0.4818115234375,
+      "dipole": {
+        "valid": true,
+        "amplitude": 0.0022985371438900525,
+        "sigma": 0.6202095713158792,
+        "p_value": 0.243,
+        "null_mean": 0.001794294152137125,
+        "null_std": 0.0008130203322775088
+      }
+    },
+    {
+      "label": "HC-strict_p>0.8",
+      "n_spiral": 624660,
+      "n_cw": 309845,
+      "n_ccw": 314815,
+      "p_cw": 0.496021835878718,
+      "delta_pct_from_parity": -0.39781641212819907,
+      "binomial_sigma": 0.0006326276301576076,
+      "z_score_from_parity": -6.28831864376664,
+      "f_sky_mask": 0.46630859375,
+      "dipole": {
+        "valid": true,
+        "amplitude": 0.0029825229410590168,
+        "sigma": 0.8670009039697519,
+        "p_value": 0.187,
+        "null_mean": 0.0021291658506005866,
+        "null_std": 0.0009842632072828868
+      }
+    }
+  ]
+}
