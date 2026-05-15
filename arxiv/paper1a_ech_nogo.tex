@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.22}
-\newcommand{\paperTimestamp}{2026-05-15 00:30 PDT (1st real cross-vendor R-round closures: 13-barrier propagation; f\_NL scoped to scalar-only $w=0$ class with P2 Assumption (f); dimensional bookkeeping fix in Appendix B; Hehl-Datta parity-even reaffirmed; Route 2 dimensional ratio remains on-record deferred)}
+\newcommand{\paperVersion}{v1A.0.23}
+\newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
 
@@ -59,7 +59,7 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 14, 2026 PDT --- \paperVersion}
+\date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
 We establish that the four enumerated minimal-Einstein-Cartan-Holst (ECH)
@@ -89,8 +89,7 @@ dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
 and is closed by the 13 logically-independent barriers of Sec.~\ref{sec:barriers} (14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency theorem).
 A structural incompatibility (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would plausibly be erased (precise threshold mode-dependent on contracting-phase duration)
-by that many $e$-folds; ECH is therefore not internally consistent as both a
+$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}}\sim e^{30}$ times the observable horizon, i.e.\ a regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); ECH is therefore not internally consistent as both a
 dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
 but bounce-class and GR$+$ALP-class observables that the ECH closure does not
@@ -104,8 +103,13 @@ in Paper~II, Ref.~\cite{Golden2026P2}); and (ii)~spectator-ALP birefringence
 $\beta\approx 0.27^\circ$ consistent with the published Planck/ACT~DR6
 $3.6\sigma$ signal arises in any GR$+$ALP setup with the same parameters
 and is \emph{not} derived from the ECH action. The role of this paper is the
-\emph{no-go theorem}: ECH cannot generate dark energy through any of its
-characteristic structural mechanisms. The complementary observational
+\emph{channel-level no-go} for the four enumerated minimal-ECH dark-energy
+routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity; we do not
+claim a full operator-basis closure of the most general ECH parity-odd /
+torsion-sourced sector (Jackiw--Pi gravitational Chern--Simons and the
+parity-odd four-fermion partner of R1 are listed but not separately
+enumerated in the four routes; their explicit closure is left to a follow-up
+operator-level analysis). The complementary observational
 programme is hosted in the bounce-class portfolio (Paper~II, Paper~I(b)),
 not in ECH per se.
 $\Lambda$CDM$+\Delta\Neff$ MCMC verification, NaMaster pipeline validation,
@@ -135,8 +139,10 @@ extensions of the standard model.
 
 This work presents and closes a phenomenological framework that connects ECH
 spin-torsion cosmology to dark energy. The structural conclusion is a
-\emph{no-go result} rather than a unified model: the 14 constraints
-(Sec.~\ref{sec:barriers}) close the enumerated minimal-ECH dark-energy routes. The surviving
+\emph{channel-level amplitude no-go} on the four enumerated minimal-ECH
+dark-energy routes (Sec.~\ref{sec:fourroute}): the 14 constraints
+(Sec.~\ref{sec:barriers}, 13 logically-independent with B8 subsumed by B14)
+close those routes at amplitude-budget granularity. The surviving
 phenomenological predictors---matter-bounce $\fnl$ and spectator-ALP
 birefringence---are mechanism-independent and shared by other UV completions.
 
@@ -168,16 +174,21 @@ matter-bounce $\fnl = -35/8$~\cite{Cai:2009fn}.}
 \begin{tabular}{lll}
 \textbf{Question} & \textbf{Result} & \textbf{Status} \\
 \hline
-Can the bounce derive dark energy? & 14 constraints map the ECH minimal-route space & Requires phenomenological assumption$^a$. \\
-Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (LQC holonomy correction). \\
-Is ECH visible in scalar/tensor perturbations? & Perturbation-transparency result & Decouples cleanly; tests shift to ALP/GW channels. \\
-Is there a testable prediction? & $\fnl = -35/8$ (Paper~II forecast $3$--$5\sigma$ post-systematic-budget under Heinrich+2024 $\sigma(\fnl)\approx 0.7$$^b$) & \textbf{Yes} (class-level: scalar-only $w=0$ matter-bounce under Assumption (f) of Paper~II; not a fully mechanism-independent claim across the bouncing-cosmology landscape; not a distinctive ECH prediction). \\
-Does framework resolve $H_0$/$\sigma_8$ tensions? & MCMC: $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 0$ (companion) & Recovers standard $\Lambda$CDM. \\
+Can bounce derive dark energy? & 14 constraints map minimal-ECH route space & Phen.\ assumption$^a$ required. \\
+Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (LQC holonomy). \\
+ECH visible in scalar/tensor pert.? & Perturbation-transparency result & Decouples; tests $\to$ ALP/GW. \\
+Testable prediction? & $\fnl = -35/8$ (Paper~II forecast$^b$) & \textbf{Yes}, class-level$^c$. \\
+$H_0$/$\sigma_8$ tension resolution? & $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 0$ & Recovers $\Lambda$CDM. \\
 \end{tabular}
 \end{ruledtabular}
-{\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved. $^b$$3$--$5\sigma$
-realistic after full systematic budget (GR-projection, $b_\phi$ uncertainty,
-photo-$z$ degradation). MCMC details in companion Paper~I(b)~\cite{Golden2026P1b}.}
+{\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved.
+$^b$$3$--$5\sigma$ realistic after full systematic budget (GR-projection,
+$b_\phi$ uncertainty, photo-$z$ degradation) under
+Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$.
+$^c$Class-level: scalar-only $w=0$ matter-bounce under Assumption~(f) of
+Paper~II; not fully mechanism-independent across the bouncing-cosmology
+landscape; not a distinctive ECH prediction.
+MCMC details in companion Paper~I(b)~\cite{Golden2026P1b}.}
 \end{table*}
 
 \begin{figure*}[tb]
@@ -196,7 +207,9 @@ photo-$z$ degradation). MCMC details in companion Paper~I(b)~\cite{Golden2026P1b
 \subsection{Theoretical Foundations and Novel Synthesis}\label{sec:foundations}
 
 Our framework collects well-established theoretical components and tests them
-as a structural-closure no-go theorem on minimal ECH dark energy. The original
+as a channel-level amplitude closure of the four enumerated minimal-ECH
+dark-energy routes (we do not claim a full operator-basis closure; see
+Sec.~\ref{sec:fourroute} ``Scope'' for the explicit operators omitted). The original
 contributions are:
 
 \begin{enumerate}[leftmargin=*]
@@ -213,7 +226,7 @@ parity-violating channels (ALP birefringence, primordial GWs).
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
 mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
-$\fnl=-35/8$ prediction (plausibly erased by $N_{\rm tot} \gg 60$ inflationary $e$-folds at SPHEREx-relevant comoving wavenumbers; the precise threshold depends on the contracting-phase duration and the comoving scales carrying the bispectrum signal, see Sec.~\ref{sec:structural_tension} and references therein), establishing that
+$\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\!\gtrsim\!60$ inflationary $e$-folds at SPHEREx-relevant comoving wavenumbers, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc is pushed to bounce-era comoving scales $k_{\rm bounce} = k_{\rm SPHEREx}\,e^{N_{\rm tot}}$ that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
 these are independent observational programs.
 
 \item \textit{Survival of mechanism-independent tests}: Despite ECH structural
@@ -309,8 +322,11 @@ and integrating out torsion:
 \end{equation}
 where $J^{5\mu}=\bar{\psi}\gamma^{\mu}\gamma^5\psi$ is the axial current.
 
-\textit{Step~3: Parity-Odd Effective Action.}---Following Mercuri~\cite{Mercuri2009},
-the effective action acquires a parity-odd term:
+\textit{Step~3: Parity-Odd Effective Action.}---Motivated by the
+Holst$+$non-minimal-fermion construction of Mercuri~\cite{Mercuri2009} (which
+shows that the Nieh--Yan invariant is reconstructed and the
+Barbero--Immirzi parameter drops out of the classical dynamics), we
+introduce as a phenomenological ansatz the parity-odd term:
 \begin{equation}\label{eq:Seff}
 S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathring{R}],
 \end{equation}
@@ -440,8 +456,25 @@ M_{\rm GUT})^{3/2}$ prefactor is not a tunable handle.
 
 Matching $\rho_\Lambda \approx (2.3\;\text{meV})^4$ requires $N_{\rm tot} \approx 92$
 (a fitted parameter, not predicted). This reparameterizes the fine-tuning hierarchy
-from $10^{120}$ to $\sim 10^5$ as sensitivity to $\Delta N_{\rm tot}\approx 4$
-$e$-folds. We emphasize that this is bookkeeping, not progress: the residual
+from $10^{122}$ (the genuine $\MPl^4/\rho_\Lambda^{\rm obs}$ cosmological-constant
+hierarchy; see Appendix~\ref{app:dimensions}) to $\sim 10^5$ as sensitivity to
+$\Delta N_{\rm tot}\approx 4$ $e$-folds.
+
+\textit{Reheating thermal-reset barrier (R2 finding, supporting B14).}---Even
+granting the dilution bookkeeping above, torsion in minimal ECH is non-propagating
+and tracks the \emph{instantaneous} local fermion spin density:
+$T^\lambda{}_{\mu\nu}\propto S^\lambda{}_{\mu\nu}$ algebraically. Reheating from
+the inflaton populates a thermal fermion bath with $n_\psi(T_{\rm reh})\sim
+T_{\rm reh}^3\sim (10^{15}\,\text{GeV})^3$, which is enormously larger than the
+bounce-era frozen-in spin density that any $e^{-3N_{\rm tot}}$ dilution leaves
+behind. The post-reheating torsion is therefore set by the instantaneous thermal
+bath, \emph{not} by the diluted bounce-era torsion. Any ``memory'' of the
+bounce-era torsion stored in $\Dinf$ is overwritten by the reheating thermal
+reset, providing an independent thermodynamic closure of the ECH dark-energy
+route that does not require the dimensional bookkeeping of
+Appendix~\ref{app:dimensions} or the specific value of $N_{\rm tot}$. This
+strengthens Barrier~14 (perturbation transparency) by adding a parallel
+thermodynamic erasure channel for the torsion-sourced dark-energy mechanism. We emphasize that this is bookkeeping, not progress: the residual
 $10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
 from the initial-condition choice for $N_{\rm tot}$, while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
@@ -1296,7 +1329,7 @@ explanation; either outcome is informative independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
-required) and the $\fnl=-35/8$ prediction (plausibly erased by $N_{\rm tot}\gg 60$ inflationary $e$-folds at SPHEREx-relevant scales; the precise erasure threshold depends on the contracting-phase duration and is mode-dependent, with the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc lying outside the surviving window for $N_{\rm tot}\gtrsim 60$). This
+required) and the $\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\gtrsim 60$ inflationary $e$-folds at SPHEREx-relevant scales; the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed by inflationary expansion to bounce-era comoving scales $k\,e^{N_{\rm tot}}\sim e^{30}\times k_{\rm SPHEREx}$, deep inside the inflationary subhorizon regime where the surviving bispectrum signal is purely vacuum-inflationary, not matter-bounce contraction-mode). This
 is detailed in Sec.~\ref{sec:structural_tension}. The correct interpretation is
 that bounce cosmology (as a broad class) and the ECH-specific dark-energy
 ansatz are \textit{independent observational programs}; SPHEREx tests the former,
@@ -1355,9 +1388,13 @@ candidates with induced GWs detectable by LISA and Einstein Telescope.
 The dark-energy suppression mechanism, if minimal ECH \emph{were} to source
 dark energy through one of the four channels enumerated in
 Sec.~\ref{sec:fourroute}, would require $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds; the matter-bounce $\fnl=-35/8$ would plausibly be erased
-(precise threshold mode-dependent on contracting-phase duration) by
-$N_{\rm tot}\gg 60$. This tension is presented here as a \emph{robustness
+$e$-folds; the matter-bounce $\fnl=-35/8$ would be \emph{definitively}
+erased by $N_{\rm tot}\gtrsim 60$, since the SPHEREx accessible
+wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed deep inside the
+inflationary subhorizon ($k_{\rm bounce}\sim k\,e^{N_{\rm tot}}\sim
+e^{30}\times k_{\rm SPHEREx}$) and the surviving bispectrum signal
+becomes purely vacuum-inflationary rather than matter-bounce
+contraction-mode. This tension is presented here as a \emph{robustness
 check} on the four-route amplitude-level no-go of Sec.~\ref{sec:fourroute}
 and the 14-barrier closure of Sec.~\ref{sec:barriers}, not as a co-equal
 closure mechanism: the no-go has already closed the four amplitude routes
@@ -1498,48 +1535,76 @@ $\gamma_{\rm PTA}$ & PTA spectral index & --- & $2.567\pm 0.382$ (real-KDE GPU M
 \end{table*}
 
 
-%% --- B: Dimensional Analysis ---
-\section{Dimensional Analysis}\label{app:dimensions}
+%% --- B: Dimensional Status of the Parity-Odd Operator ---
+\section{Dimensional Status of the Parity-Odd Operator}\label{app:dimensions}
 
 The parity-odd operator (Eq.~\ref{eq:Seff_comp}) has off-shell mass dimension
-$+1$, not the $+4$ required for a Lagrangian density:
+$+1$, not the $+4$ required for a local Lagrangian density:
 \begin{equation}
 [\alpha/M] = -1, \quad [\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu
 \mathcal{F}_{IJ\rho\sigma}] = +2 \;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
 \end{equation}
-The missing three powers of mass arise through on-shell evaluation at Planck-scale
-bounce densities. Two factors enter explicitly: $K\sim\MPl$ (the curvature scale,
-dim $+1$) and $R\sim\MPl^2$ (the Ricci scalar evaluated at the bounce, dim $+2$),
-contributing $+3$ to the on-shell action density. The remaining $+2$ powers needed
-to bridge $[\mathcal{L}_{\rm odd}] = +1$ (off-shell) to $[\rho_\Lambda] = +4$
-(on-shell vacuum energy density) come from the dimensional reduction implicit in
-expressing the volume-integrated action density at horizon-crossing scale
-$L\sim 1/H \sim 1/\MPl$ during the bounce epoch, which contributes a factor
-$\MPl^{2}$ from the spatial volume integration density. Combining all factors:
+We acknowledge openly that this operator, as written, is not a controlled
+dimension-$+4$ EFT operator. Three vendors in the second cross-vendor R-round
+(R2) independently flagged this as a load-bearing dimensional problem in earlier
+draft framings that attempted to ``repair'' the dimensional gap by inserting
+on-shell background curvature factors and a phenomenological
+``volume-integration-density'' factor of $\MPl^{2}$. That construction is not a
+derivation; the missing powers of mass do not arise from off-shell EFT counting
+but from \emph{on-shell scaling assumptions} applied to a Planck-scale bounce
+geometry. We therefore treat the relation
 \begin{equation}
-\rho_\Lambda^{\rm bounce}\sim(\alpha/M)\cdot K\cdot R\cdot \MPl^{2}
-\sim (\alpha/M)\,\MPl^5 \sim 10^{-2}\,\MPl^4,
+\rho_\Lambda^{\rm bounce}\sim(\alpha/M)\,\MPl^5 \sim 10^{-2}\,\MPl^4,
 \label{eq:onshell_rho}
 \end{equation}
-where we used $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1} \sim 10^{-2}\,\MPl^{-1}$,
-so $(\alpha/M)\,\MPl \sim 10^{-2}$ (dimensionless) and the final $(\alpha/M)\,\MPl^5
-\sim 10^{-2}\,\MPl^4$ is the on-shell scaling ansatz with $[\rho_\Lambda]=+4$
-\emph{by construction}. Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then
-yields $\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$. This is a
-\textit{scaling ansatz}, not a derivation from a renormalizable off-shell EFT; the
-volume-integration factor $\MPl^{2}$ is a placeholder for the missing
-dimensional-reduction integral and should be replaced by an explicit calculation
-in a future iteration. Importantly, no \emph{quantitative} conclusion in the
-main text relies on the precise on-shell dimensional bookkeeping: the 13
-logically-independent structural barriers close the bounce-to-dark-energy route on
+as a phenomenological on-shell scaling \emph{ansatz}, not a controlled EFT
+result. Equivalently: if Eq.~(\ref{eq:Seff_comp}) is to map to a dimension-$+4$
+local operator without on-shell curvature insertions, the coupling must carry
+three additional powers of $\MPl$ in its coefficient
+($\alpha/M \to \alpha\,\MPl^{2}/M$), promoting the operator to
+$\alpha\,\MPl^{2}\,\varepsilon\,e\,e\,\mathcal{F}/M$. Either reading is a
+\emph{phenomenological dimensional assignment}, not a derivation; we make
+that status explicit here so the reader is not misled by an apparent ``fix''
+in earlier drafts.
+\par
+Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then yields
+$\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$ under
+Eq.~(\ref{eq:onshell_rho}). The genuine cosmological-constant hierarchy is
+$\MPl^4/\rho_\Lambda^{\rm obs}\sim 10^{19{\rm\,GeV}\times 4}/(10^{-3}\,\text{eV})^4
+\sim 10^{122}$, i.e.\ $\sim 120$ orders of magnitude (not the
+$\sim 35$ misstated in earlier drafts: the bounce-scale density is
+$\rho_{\rm bounce}\sim\MPl^4$, not the local pseudo-density
+$\rho_\Lambda^{\rm bounce}\sim 10^{-2}\,\MPl^4$ that
+Eq.~(\ref{eq:onshell_rho}) labels). The dilution factor required to bridge
+$\sim 10^{122}$ from $\MPl^4$ down to the observed $\rho_\Lambda$ is
+$\Dinf\sim e^{-3N_{\rm tot}}\sim 10^{-122}$, giving
+$N_{\rm tot}\approx 122\ln 10/3 \approx 94$ $e$-folds (consistent at the
+$\sim 2\%$ level with the structural-tension $N_{\rm tot}\approx 92$
+quoted in Sec.~\ref{sec:structural_tension}; the small offset reflects
+that the structural tension uses Eq.~(\ref{eq:onshell_rho}) as the
+input ansatz, while the genuine $\MPl^4$-to-$\rho_\Lambda^{\rm obs}$
+hierarchy uses the unrescaled Planck density).
+\par
+\textbf{Crucially, no quantitative claim in the main text relies on this
+dimensional ansatz.} The 13 logically-independent structural barriers
+(Sec.~\ref{sec:barriers}) close the bounce-to-dark-energy route on
 amplitude-budget and operator-counting grounds that are independent of the
-specific power of $\MPl$ in Eq.~\ref{eq:onshell_rho} (the closure depends on the
-overall scale separation between $\rho_\Lambda^{\rm bounce}$ and the observed
-$\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$, which is $\sim 35$ orders of magnitude
-regardless of whether the bounce-scale density is $\MPl^4$ or $10^{-2}\,\MPl^4$).
-The corrected dimensional bookkeeping above replaces the v1A.0.21 deferral note
-(a) on the $(\alpha/M)\,\MPl^3$ vs.\ $[(\alpha/M)\,\MPl]\,\MPl^4$ inconsistency
-flagged by the real-cross-vendor R-round.
+precise power of $\MPl$ in Eq.~(\ref{eq:onshell_rho}); the closure depends
+on the overall scale separation between $\rho_\Lambda^{\rm bounce}$ and the
+observed $\rho_\Lambda$, which is $\sim 120$ orders of magnitude under
+\emph{any} non-cancellation assumption. Whether the bounce-scale density
+is $\MPl^4$, $10^{-2}\,\MPl^4$, or $10^{-4}\,\MPl^4$ does not change the
+sign or significance of the channel-amplitude closures in Routes 1--4.
+\par
+\emph{Status update for v1A.0.23}: the v1A.0.22 framing of this appendix as
+a ``dimensional bookkeeping fix'' was rejected by 3 of 5 R2 reviewers
+(Gemini-3.1-Pro, Grok-4.3, GPT-5.5) as by-hand insertion rather than
+derivation. The present text drops the ``fix'' framing and labels the
+on-shell scaling explicitly as a phenomenological ansatz, in agreement
+with the convergent reviewer assessment. A controlled EFT-level
+construction (an operator basis closure for a local dimension-$+4$
+parity-odd interaction with all required $\MPl$ factors in the coupling
+coefficient) remains on-record-deferred to a separate companion treatment.
 
 
 %% ============================================================
