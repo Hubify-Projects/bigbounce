@@ -44,9 +44,10 @@ configs:
 
 ## Quick links
 
-- **Paper PDF (v1.0):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0/chirality_catalog_paper.pdf
+- **Paper PDF (v1.0.78, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.78/chirality_catalog_paper.pdf
 - **Source LaTeX + canonical pipeline:** https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality
-- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0)
+- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.78
+- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.78` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.78)
 - **One-shot reproduction:** `bash pipelines/p2_chirality/reproduce_paper4.sh`
 
 ## Schema
@@ -135,7 +136,7 @@ The catalog passed the following gates in v1.0.76 of the paper. Per-leg systemat
 
 ## Versioning
 
-This release corresponds to the paper at version **v1.0.76** (commit `1c60f350...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
+This release corresponds to the paper at version **v1.0.78** (commit `4b867b0f...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt + N=500 monopole+mask null + extended injection sweep + external-review-3 closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
 
 ## Citation
 
