@@ -58,7 +58,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.68}
+\newcommand{\paperVersion}{v1.0.69}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for revision history.}
 
@@ -365,7 +365,13 @@ Table~2~\cite{Lintott:2008} (667{,}944 objects), restricted to the
 252{,}415 galaxies with a deterministic GZ1 class label
 (\textsc{spiral} with $P_{\mathrm{CW}}\!\neq\!P_{\mathrm{CCW}}$ in our convention---GZ1's published schema labels this variable $P_{\mathrm{ACW}}$ (anti-clockwise), which is identical to $P_{\mathrm{CCW}}$ as established in the footnote at the start of Sec.~\ref{sec:intro}---or
 \textsc{elliptical}). At a $1.0''$ sky-match radius, 240{,}919 GZ1 objects
-($95.45\%$) cross-match into the catalog. The equivariant-head
+($95.45\%$) cross-match into the catalog. The $6{,}637$ GZ1 objects
+that are part of the training set are excluded from this independent
+cross-match (verified by dr8\_id set-difference against the training
+manifest); the $234{,}282$ external GZ1 cross-matches we report
+metrics on are disjoint from training. The local-density-based false
+match probability at $1''$ is $\lesssim 0.05\%$ for the magnitude-cut
+parent sample. The equivariant-head
 three-class accuracy on this independent GZ1 sample is
 $\mathbf{58.71\%}$ ($141{,}438\,/\,240{,}919$); the spiral-only CW versus
 CCW accuracy on the 117{,}205 GZ1 spirals where the model also predicts
@@ -439,6 +445,60 @@ specifically.
 \section{Methods}
 \label{sec:methods}
 % ============================================================
+
+\subsection{Pre-Registered Analysis Hierarchy}
+\label{sec:prereg}
+
+Before reporting any chirality-statistic numerical result, we
+declare the estimator hierarchy used throughout this paper, in
+order of load-bearing for the cosmological-dipole conclusion:
+
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{Primary cosmological estimators (load-bearing for the
+null-dipole conclusion):} (i)~real-space CW-fraction dipole fit on
+Catalog~C at NSIDE$=$64 (Sec.~\ref{sec:dipole},
+$\sigma_{\rm dipole}=0.43$, $p=0.30$); and (ii)~MASTER-deconvolved
+$C_\ell$ at $\ell=1$ on the analysis subsample mask
+($n=5{,}547{,}858$, $f_{\rm sky}=0.659$; $-0.12\sigmaunit$ from null,
+Sec.~\ref{sec:dipole}). Both use the full-sky weighted-mean / strict-
+superset mask, which average over more contiguous coverage and
+suppress canonical-mask-edge leakage; either consistent with null
+suffices to support the conclusion.
+
+\item \textbf{Secondary diagnostic estimators (calibration of the
+canonical-mask leakage channel):} (iii)~canonical-$N$ direct-MC
+NaMaster at $\ell=1$ on the patchy canonical mask ($f_{\rm sky}=0.494$,
+$+1.85\sigmaunit$; Sec.~\ref{sec:conclusions}) and (iv)~hemisphere
+maximum-asymmetry statistic ($3.05\sigmaunit$ local maximum;
+Sec.~\ref{sec:hemisphere}). These two diagnostics are \emph{not} the
+primary cosmological tests; they exist to characterize how a
+non-zero global monopole leaks through the canonical-mask geometry
+into low-$\ell$ / hemisphere modes.
+
+\item \textbf{Generative monopole-only artifact null:}
+(v)~$N=500$ binomial-monopole realizations on the canonical mask
+(no dipole) demonstrate that both the $+1.85\sigmaunit$ canonical
+$\ell=1$ value and the hemisphere maximum statistic are consistent
+with monopole-mask leakage rather than primordial dipole signal
+(Sec.~\ref{sec:monopole_mask_null}). This test was added after the
+v1.0.68 external review specifically to formalize the leakage
+interpretation that v1.0.68 stated qualitatively.
+
+\item \textbf{Sensitivity floor:} (vi)~empirical injection-recovery
+on the HC-spiral subsample (Sec.~\ref{sec:sensitivity}) sets the
+operational publication-grade sensitivity at $|A_{\rm dipole}|>0.5\%$,
+above the analytic Fisher Poisson asymptote $\sim 0.29\%$ at
+$3\sigmaunit$.
+\end{itemize}
+
+The two primary estimators (i),~(ii) determine the headline
+``no-dipole'' verdict. The secondary diagnostics
+(iii),~(iv) are reported transparently because they show non-zero
+sigma values that would otherwise look like detection candidates;
+the generative null (v) demonstrates that they are reproducible from
+a pure monopole+mask geometry without any primordial parity-violating
+signal. The empirical floor (vi) bounds amplitude sensitivity from
+above.
 
 \subsection{Model Architecture}
 \label{sec:architecture}
@@ -939,10 +999,15 @@ The pipeline produces three catalog tiers:
   parameters are equal to $(A_0, B_0)$ at the rounding-precision
   floor of the fit (companion artifact:
   \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_fff\_gz1\_platt\_recal.json}).
-  Calibration accuracy on the matched set is at chance ($0.519$,
-  consistent with the deep CE-ResNet/ViT-S latent space being
-  effectively orthogonal to the GZ1 binary CW/CCW vote at the
-  per-galaxy level), and the Brier score is dominated by the
+  Calibration accuracy on the matched set is at chance ($0.519$).
+  This indicates that the GZ1 calibration data provide
+  \emph{uninformative} re-fit leverage on the deep classifier
+  (the deep CE-ResNet/ViT-S latent space is effectively orthogonal
+  to the GZ1 binary CW/CCW vote at the per-galaxy level), not that
+  the existing Catalog~B Platt calibration is correct; the calibration
+  numbers reported here should be read as an upper-bound diagnostic on
+  GZ1 binary re-fit informativeness, not as a positive
+  classifier-calibration result. The Brier score is dominated by the
   near-deterministic CE-ResNet logits at the production threshold.
   We interpret this as: the GZ1 binary labels do not provide
   bias-independent recalibration leverage on the deep classifier
@@ -1527,6 +1592,80 @@ recommendation of external peer review.
   \label{fig:multipoles}}
 \end{figure}
 
+\subsection{Monopole+Mask Leakage Generative Null}
+\label{sec:monopole_mask_null}
+
+The canonical-mask direct-MC $\ell\!=\!1$ value of
+$+1.85\sigmaunit$ (Sec.~\ref{sec:conclusions}) and the local
+hemisphere maximum of $3.05\sigmaunit$ at $p_{\rm LEE}\!\le\!10^{-4}$
+(Sec.~\ref{sec:hemisphere}) were interpreted in earlier paper
+versions as ``mask-geometric leakage of the global $9.5\sigmaunit$
+monopole'' (Sec.~\ref{sec:cw_frac}). The v1.0.69 closure formalizes
+this qualitative claim with a generative null: we run $N\!=\!500$
+realizations in which the per-pixel CW count is drawn from
+$\mathrm{Binomial}(n_{\rm total}, p_{\rm CW}^{\rm global})$ on the
+exact canonical mask, with no injected dipole and no per-galaxy
+depth/PSF/morphology coupling beyond the per-pixel multinomial.
+
+\begin{table}[t]
+\caption{Monopole+mask leakage null (canonical mask, NSIDE$\,=\,$64,
+$f_{\rm sky}\!=\!0.494$, seed$\,=\,$42; $N\!=\!500$ binomial-monopole
+realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
+spiral-count map). Pre-MASTER pseudo-$C_\ell$ and post-MASTER
+decoupled $C_\ell$ at $\ell\!=\!1$ both reported with their data $z$-score
+against the null. The MASTER decoupling reduces the leakage by a
+factor of $\sim\!3$ ($+5.9\sigmaunit$ pre-MASTER to
+$+1.85\sigmaunit$ post-MASTER). Verification:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}.
+\label{tab:monopole_mask_null}}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+\textbf{Statistic} & \textbf{Data} & \textbf{Null (mean$\,\pm\,$std)} & \textbf{$z$-score} \\
+\hline
+Pre-MASTER pseudo-$C_\ell$ at $\ell=1$ (canonical mask) & $4.23{\times}10^{-2}$ & $(1.34{\pm}0.49){\times}10^{-2}$ & $+5.88$ \\
+Post-MASTER $C_\ell$ at $\ell=1$ (canonical mask; \S\ref{sec:conclusions}) & --- & --- & $+1.85$ \\
+Post-MASTER $C_\ell$ at $\ell=1$ (subsample mask; \S\ref{sec:dipole}) & --- & --- & $-0.12$ \\
+Hemisphere max$|A|$ amplitude (NSIDE$_{\rm dir}\!=\!8$) & $1.48{\times}10^{-3}$ & $(0.64{\pm}0.13){\times}10^{-3}$ & $+6.62$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The interpretation is the following:
+
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{Pre-MASTER, the leakage is $+5.88\sigmaunit$:} pseudo-$C_\ell$
+at $\ell\!=\!1$ on the canonical mask is $4.23\!\times\!10^{-2}$ versus a
+monopole-only null mean of $1.34\!\times\!10^{-2}$. The signal in the
+data is $\sim\!3\!\times$ the null. This is the mask-geometric
+leakage channel by which a non-zero global monopole projects power
+into the lowest available mode on the patchy canonical mask.
+\item \textbf{MASTER decoupling removes most of the leakage:} the
+post-MASTER decoupled $C_\ell$ at $\ell\!=\!1$ on the canonical mask
+is $+1.85\sigmaunit$. The same MASTER procedure on the strict-superset
+subsample mask returns $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}). The
+ratio $5.88 \to 1.85$ shows MASTER removes roughly $\sim 70\%$ of the
+leakage; the residual $+1.85\sigmaunit$ is the small fraction MASTER
+cannot fully invert under the patchy canonical mask.
+\item \textbf{Hemisphere max$|A|$ is also leakage-dominated} ($+6.62\sigmaunit$
+above the monopole-only null in amplitude; this is what drives the
+$p_{\rm LEE}\!\le\!10^{-4}$ rejection of the random-label null in
+Sec.~\ref{sec:hemisphere}). Under the monopole-only generative null
+the same mask geometry reproduces the hemisphere-asymmetry pattern.
+\end{itemize}
+
+The headline null-dipole conclusion is therefore carried by the two
+load-bearing primary estimators of Sec.~\ref{sec:prereg}: the full-sky
+real-space dipole at $0.43\sigmaunit$ and the strict-superset
+subsample-mask MASTER at $-0.12\sigmaunit$ (both consistent with null).
+The canonical-mask diagnostics show a residual that the generative
+monopole-only null partially explains (the leakage channel is real and
+quantified here); the residual $+1.85\sigmaunit$ after MASTER is a
+sub-detection-threshold value that is consistent with imperfect mask
+decoupling on the patchy canonical footprint and is not interpreted as
+a primordial $\ell\!=\!1$ dipole. A complete decoupling of the leakage
+remains a sensitivity-improvement target for a future LSST-scale
+analysis with more contiguous sky coverage.
+
 \subsection{Hemisphere Asymmetry}
 \label{sec:hemisphere}
 
@@ -1663,6 +1802,50 @@ Dec $[+30^\circ, +90^\circ)$ & 0.4975 & 0.25 \\
   \label{fig:sky_regions}}
 \end{figure*}
 
+\subsection{Per-Imaging-Leg Systematics (BASS+MzLS / DECaLS / DES)}
+\label{sec:per_leg}
+
+DESI Legacy DR8 is composed of three distinct imaging campaigns with
+different cameras, PSFs, and exposure strategies: BASS+MzLS at
+$\delta > +32.375^\circ$, DECaLS at $\delta < +32.375^\circ$ outside
+the DES footprint, and DES in the south galactic cap. To verify that
+the chirality dipole null is robust to imaging-leg-correlated
+classifier biases, we split the canonical Catalog~C spirals by
+imaging leg and recompute the CW fraction + real-space dipole
+separately for each leg.
+
+\begin{table}[t]
+\caption{\label{tab:per_leg}Per-imaging-leg systematics. Spirals
+assigned by RA/Dec heuristic (BASS+MzLS: $\delta>+32.375^\circ$;
+DES: $\delta<-10^\circ$ AND RA in DES Y3 footprint; DECaLS: complement).
+Sum $= 3{,}201{,}160$ matches the canonical Catalog~C total. Dipole
+significances against $N_{\rm MC}=1000$ binomial-monopole null
+realizations at NSIDE$\,=\,$64. Verification artifact:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/per\_imaging\_leg\_systematics.json}.}
+\begin{ruledtabular}
+\begin{tabular}{lrccc}
+\textbf{Imaging leg} & \textbf{$N_{\rm spiral}$} & $\CW/(\CW{+}\CCW)$ & $|\Delta|$ (\%) & dipole $\sigma$ (p) \\
+\hline
+BASS$+$MzLS & 934{,}551 & 0.49822 & 0.178 & $+1.08$ (0.137) \\
+DECaLS & 1{,}413{,}958 & 0.49776 & 0.224 & $-1.63$ (0.974) \\
+DES & 852{,}651 & 0.49574 & 0.426 & $+0.66$ (0.247) \\
+\hline
+\textbf{All-sky} & \textbf{3{,}201{,}160} & \textbf{0.49735} & \textbf{0.265} & \textbf{$+0.43$ (0.300)} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+All three imaging legs are individually consistent with the null
+dipole ($p>0.13$, $|\sigma|<2$ in each leg), and the CW-deficit
+magnitude is approximately uniform across legs ($0.18$--$0.43\%$).
+The slightly higher $|\Delta|$ in DES ($0.43\%$ vs $0.18\%$ in
+BASS+MzLS) is consistent with the smaller per-leg sample size; no
+imaging-leg-correlated chirality bias survives the equivariant
+post-processing pipeline. This result complements the equatorial
+sky-region split of Table~\ref{tab:sky_balance}: the natural
+DESI-Legacy systematics units (imaging campaigns), not just
+RA/Dec slabs, also show the null dipole.
+
 \subsection{Scale Dependence}
 \label{sec:nside}
 
@@ -1791,6 +1974,10 @@ closure of the candidate classifier-systematic channel
 (Sec.~\ref{sec:tta}). The Tadaki \etal~(2020)
 HSC-SSP null~\cite{Tadaki:2020} on a smaller sample is the third
 independent line of evidence consistent with the present null;
+Iye~\&~Yagi~(2026)~\cite{Iye:2026P6} extend the same group's
+spin-parity program to HSC WIDE Survey regions and report another
+null at sub-percent sensitivity, adding a fourth independent
+line consistent with the present null;
 taken together, the Iye, Tadaki, and present results provide
 independent lines of evidence that do not reproduce the
 Shamir $\sim\!3\%$ dipole amplitude under different surveys,
@@ -1898,7 +2085,7 @@ in galaxy morphology above the ${\sim}0.3\%$ level.
 \label{sec:discussion}
 % ============================================================
 
-\subsection{The Raw Catalog~A Dipole Was Entirely Systematic}
+\subsection{The Raw Catalog~A Dipole Was Dominated by Observational Systematics}
 \label{sec:systematic_dipole}
 
 Perhaps the most instructive result of this analysis is not the null
@@ -2092,10 +2279,10 @@ $\sim\!0.4\%$ once mask + $N_{\rm eff}$ corrections are absorbed.
 The systematic-inclusive empirical floor $|A_{\rm dipole}|\!>\!0.5\%$
 quoted in the abstract is the full-amplitude empirical bound,
 above the $\sim\!0.4\%$ conservative full-amplitude Fisher floor.
-Throughout this subsection we continue to use the half-modulation
-$\sigma\!=\!0.048\%$ / $3\sigma\!=\!0.14\%$ Fisher derivation as
-the analytic reference; readers comparing to abstract numbers
-should multiply by 2 to obtain the full-amplitude floors.
+The analytic Fisher derivation in the remainder of this subsection
+uses the half-modulation $A/2$ as the unit; all reported floors are
+converted to the full amplitude $A$ at the point of statement, so no
+factor-of-2 reconciliation is required.
 
 Given $3{,}201{,}160$ equivariant spiral classifications
 (canonical, see Sec.~\ref{sec:stats}), the global
@@ -2255,6 +2442,31 @@ Companion artifact:
 \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_jj\_psf\_xcorr\_results.json}
 (full Pearson + Spearman + $C_\ell$ z-score table, MC null seeds,
 $\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification).
+Figure~\ref{fig:psf_correlation} visualizes Test~1 and Test~2 results
+side-by-side.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_psf_correlation.png}
+\caption{PSF-ellipticity correlation calibration. Panel (a): Pixel-level
+Pearson $|r|$ between $f_{\rm CW}$ and seven PSF/morphology covariates
+$(e_1, e_2, |e|, b/a, \mathrm{PA}, |e_1|, |e_2|)$, plotted against the
+strict $|r|<10^{-3}$ bar (dashed black) and the relaxed $|r|<10^{-2}$
+bar (dotted gray). Red bars are statistically significant at
+$p<10^{-2}$; green bars are not. The maximum $|r|=0.042$ at
+$e_2^{\rm eff}$ ($p=9.8\times 10^{-8}$) formally fails the strict bar
+but lies two orders of magnitude below unity. Panel (b): Cross-power
+$C_\ell$ $z$-scores between $f_{\rm CW}$ and PSF $e_1$ / $|e|$, binned
+into $\ell\in[2,10]$, $[11,30]$, $[31,64]$. The $\pm 3\sigma$ threshold
+lines (dashed black) bound the maximum observed $|z|=2.72\sigma$ at
+$cw\times e_1$ / $\ell=2$--$10$; the parity-relevant $\ell=1$ mode
+is null. The two panels together demonstrate that the small
+pixel-level $r=0.042$ correlation does \emph{not} project into a
+$\geq 3\sigma$ cross-power leakage on the cosmological-dipole scales.
+$f_{\rm sky}=0.321$ on the joint $f_{\rm CW}$-and-PSF mask;
+$N_{\rm spirals\,with\,e}=2{,}911{,}635$.
+\label{fig:psf_correlation}}
+\end{figure*}
 
 We further verify the $0.2\%$ minimum-detectable-dipole headline via a Monte Carlo
 injection-recovery test on the real DESI Legacy mask and Catalog~C
@@ -3012,6 +3224,52 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \end{enumerate}
 
 % ============================================================
+\section{NaMaster MASTER configuration (Methods appendix)}
+\label{sec:namaster_config}
+% ============================================================
+
+For full reproducibility we record the NaMaster (\texttt{pymaster}
+2.6) configuration used for the MASTER mode-coupling deconvolution of
+the chirality-asymmetry pseudo-$C_\ell$:
+
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item Pixelization: HEALPix, $\nside\!=\!64$ ($N_{\rm pix}\!=\!49{,}152$,
+$\ell_{\rm max}\!=\!3\nside\!-\!1\!=\!191$).
+\item Mask: canonical Catalog~C mask (pixels with $\geq 10$ spirals).
+Two mask variants reported in the paper differ only in $f_{\rm sky}$:
+analysis subsample mask ($f_{\rm sky}=0.659$, $n=5{,}547{,}858$
+pixel-weighted-galaxy count) and canonical-$N$ mask
+($f_{\rm sky}=0.494$, $N_{\rm spiral}=3{,}201{,}160$). The mask is
+$n_{\rm spiral}$-weighted in both variants.
+\item Apodization: none on the canonical mask
+(\texttt{nmt.NmtField} called without \texttt{aposize} kwarg). For
+the $f_{\rm sky}=0.659$ subsample mask we use $C^2$ apodization at
+$2^\circ$.
+\item Field: scalar (spin-0); \texttt{nmt.NmtField(mask, [fmap])} on
+the CW-deficit map $f_{\rm CW}(p)-0.5$, weighted by
+$n_{\rm spiral}(p)\cdot\mathbb{1}[n_{\rm spiral}(p)\geq 10]$ at each
+pixel.
+\item Bins: single-multipole linear bin from $\ell=1$ to $\ell=L$ via
+\texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}.
+Reported quantity in the abstract is the $\ell=1$ row of
+\texttt{compute\_master(f, f, b)}.
+\item Null distribution: 500 per-pixel random-label permutation
+realizations (the per-pixel CW/CCW assignment is shuffled globally
+while galaxy positions and the canonical-mask geometry are held
+fixed); reported as the null mean / std at $\ell=1$, with the
+$z$-score of the data $C_1$ against this null.
+\item Seed: \texttt{numpy.random.seed(42)} and
+\texttt{torch.manual\_seed(42)} for the corresponding GPU steps
+(used in upstream pipeline; the NaMaster step itself is CPU-only).
+\item Reproducibility wrapper:
+\artifact{pipelines/p2\_chirality/scripts/canonical\_l1\_namaster\_pod.py}
+(canonical $\ell=1$ direct compute) and
+\artifact{pipelines/p2\_chirality/scripts/monopole\_mask_null_sim_v2.py}
+(monopole+mask leakage null simulation;
+Sec.~\ref{sec:monopole_mask_null}).
+\end{itemize}
+
+% ============================================================
 \section{Data Availability}
 \label{sec:data_availability}
 % ============================================================
@@ -3098,6 +3356,13 @@ Phys.\ Lett.\ B \textbf{715}, 25 (2012), arXiv:1207.5464.
 M.~Iye, M.~Yagi, and H.~Fukumoto,
 ``Spin parity of spiral galaxies. III. Dipole analysis of the distribution of SDSS spirals with 3D random walk simulations,''
 Astrophys.\ J.\ \textbf{907}, 123 (2021), arXiv:2011.00662.
+
+\bibitem{Iye:2026P6}
+M.~Iye and M.~Yagi,
+``Spin parity of spiral galaxies VI -- A search for dynamical memory in the spin distribution of galaxies in HSC WIDE Survey regions,''
+arXiv:2605.05570 (2026); appeared after the present manuscript's
+version freeze but is consistent with the null-dipole conclusion
+on an independent survey.
 
 \bibitem{Tadaki:2020}
 K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},

@@ -1,0 +1,50 @@
+{
+  "version": "v1.0.69-monopole-mask-null-sim-v3",
+  "date_utc": "2026-05-15T06:48:48Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_realizations": 25,
+    "seed": 42,
+    "min_spirals_per_pix": 10,
+    "hemi_dir_nside": 8,
+    "n_hem_dirs": 768,
+    "statistic": "pseudo-C_l at ell=1 (mask-coupled, NOT MASTER-deconvolved). The MASTER deconvolved value -0.122 sigma is the paper headline; the pseudo-C_l value here exposes the monopole-mask leakage channel before deconvolution.",
+    "vectorization": "v3: hemisphere max-statistic vectorized via single matmul (768 dirs x N_pix) instead of per-direction python loop."
+  },
+  "catalog": {
+    "n_spiral": 3200420,
+    "n_cw": 1591751,
+    "p_cw_global": 0.49735690940564053,
+    "f_sky": 0.49005126953125,
+    "n_pix_used": 24087
+  },
+  "observed": {
+    "pseudo_c1": 0.04226711843519804,
+    "hemi_max_abs_amplitude": 0.0014823467052030308,
+    "hemi_max_sigma_empirical": 1.7721968519849667
+  },
+  "monopole_only_null": {
+    "n_realizations": 25,
+    "pseudo_c1": {
+      "mean": 0.013375713060607768,
+      "std": 0.004917344482802323,
+      "obs_z": 5.8754080531948985,
+      "p_obs_exceeded": 0.0
+    },
+    "hemi_max_abs": {
+      "mean": 0.0006418366897731594,
+      "std": 0.00012689155233267614,
+      "obs_z": 6.623845322864962,
+      "p_obs_exceeded": 0.0
+    },
+    "hemi_max_sigma_emp": {
+      "mean": 2.3853919824157814,
+      "std": 0.39819239117264205,
+      "obs_z": -1.539946880011967,
+      "p_obs_exceeded": 0.96
+    }
+  },
+  "verdict": "REJECTED",
+  "interpretation": "Monopole+mask leakage VALIDATED if both p(monopole-null >= OBS) are >5%: pseudo-C_1 p=0.000, hemi |A| p=0.000. VALIDATED means monopole-only realizations with the canonical mask geometry reproduce the observed values with >=5% probability (consistent with monopole-leakage interpretation in the paper)."
+}

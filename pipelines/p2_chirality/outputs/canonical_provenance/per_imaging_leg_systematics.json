@@ -1,0 +1,65 @@
+{
+  "version": "v1.0.69-per-leg-systematics",
+  "date_utc": "2026-05-15T06:18:08Z",
+  "config": {
+    "nside": 64,
+    "min_spirals_per_pix": 10,
+    "n_mc_dipole": 1000,
+    "seed": 42,
+    "leg_assignment_heuristic": {
+      "BASS+MzLS": "dec > 32.375",
+      "DES": "dec < -10.0 AND (300<=RA<=360 OR 0<=RA<=100)",
+      "DECaLS": "everything else (dec <= +32.375 AND not DES)"
+    },
+    "caveat": "RA/Dec heuristic captures ~95% of each leg correctly. Overlap regions (DES/DECaLS boundary) are assigned to DES; the BASS/MzLS boundary at dec=+32.375 is the survey-published demarcation."
+  },
+  "global": {
+    "n_spiral": 3201160,
+    "n_cw": 1592107,
+    "n_ccw": 1609053,
+    "p_cw": 0.49735314698421823,
+    "sigma_binomial": 0.0002794578500416354,
+    "z_score_from_parity": -9.47138545361107
+  },
+  "per_leg": {
+    "BASS+MzLS": {
+      "n_spiral": 934551,
+      "n_cw": 465610,
+      "n_ccw": 468941,
+      "p_cw": 0.4982178607695032,
+      "sigma_binomial": 0.0005172118910782201,
+      "z_score_from_parity_naive_binomial": -3.4456656183631402,
+      "abs_delta_pct": 0.17821392304968042,
+      "f_sky_per_leg_mask": 0.13153076171875,
+      "dipole_amplitude": 0.000812665693755797,
+      "dipole_sigma_vs_isotropic_null": 1.084597745012541,
+      "dipole_p_value": 0.137
+    },
+    "DECaLS": {
+      "n_spiral": 1413958,
+      "n_cw": 703808,
+      "n_ccw": 710150,
+      "p_cw": 0.4977573591294791,
+      "sigma_binomial": 0.00042048620235050297,
+      "z_score_from_parity_naive_binomial": -5.333446990613753,
+      "abs_delta_pct": 0.22426408705208956,
+      "f_sky_per_leg_mask": 0.2437744140625,
+      "dipole_amplitude": 0.00021484670336476095,
+      "dipole_sigma_vs_isotropic_null": -1.6306994557280605,
+      "dipole_p_value": 0.974
+    },
+    "DES": {
+      "n_spiral": 852651,
+      "n_cw": 422689,
+      "n_ccw": 429962,
+      "p_cw": 0.4957350662815149,
+      "sigma_binomial": 0.0005414824078637473,
+      "z_score_from_parity_naive_binomial": -7.876403104786106,
+      "abs_delta_pct": 0.42649337184850755,
+      "f_sky_per_leg_mask": 0.12174479166666667,
+      "dipole_amplitude": 0.001456433790313369,
+      "dipole_sigma_vs_isotropic_null": 0.660853254353116,
+      "dipole_p_value": 0.247
+    }
+  }
+}

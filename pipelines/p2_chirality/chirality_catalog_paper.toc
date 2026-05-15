@@ -7,53 +7,57 @@
 \contentsline {section}{\numberline {II}Data}{3}{section*.5}%
 \contentsline {subsection}{\numberline {A}Galaxy Images}{3}{section*.6}%
 \contentsline {paragraph}{\numberline {a}Parent-sample selection function.}{3}{section*.7}%
-\contentsline {subsection}{\numberline {B}Training Labels}{3}{section*.8}%
+\contentsline {subsection}{\numberline {B}Training Labels}{4}{section*.8}%
 \contentsline {paragraph}{\numberline {a}Independent GZ1 cross-match and joint label tabulation.}{4}{section*.9}%
 \contentsline {paragraph}{\numberline {b}Note on the GZ1 deliberate omission in Galaxy Zoo DESI.}{4}{section*.10}%
-\contentsline {section}{\numberline {III}Methods}{4}{section*.11}%
-\contentsline {subsection}{\numberline {A}Model Architecture}{4}{section*.12}%
-\contentsline {subsection}{\numberline {B}Training}{5}{section*.13}%
-\contentsline {subsection}{\numberline {C}Flip-Equivariance Consistency Loss}{6}{section*.14}%
-\contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{6}{section*.15}%
-\contentsline {paragraph}{\numberline {a}Empirical bound on rotation-correlated CW-fraction excursion.}{7}{section*.16}%
-\contentsline {paragraph}{\numberline {b}\textsc {not\_spiral}{} stability under TTA averaging.}{7}{section*.17}%
-\contentsline {subsection}{\numberline {E}Bias Hardening Suite}{8}{section*.18}%
-\contentsline {subsection}{\numberline {F}Catalog Tiers}{9}{section*.19}%
-\contentsline {section}{\numberline {IV}Results}{11}{section*.20}%
-\contentsline {subsection}{\numberline {A}Catalog Statistics}{11}{section*.21}%
-\contentsline {subsection}{\numberline {B}Global CW Fraction}{11}{section*.22}%
-\contentsline {subsection}{\numberline {C}Dipole Analysis}{13}{section*.23}%
-\contentsline {paragraph}{\numberline {a}Simple dipole.}{13}{section*.24}%
-\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{13}{section*.25}%
-\contentsline {subsection}{\numberline {D}Hemisphere Asymmetry}{16}{section*.26}%
-\contentsline {subsection}{\numberline {E}Sky Region Balance}{16}{section*.27}%
-\contentsline {subsection}{\numberline {F}Scale Dependence}{17}{section*.28}%
-\contentsline {subsection}{\numberline {G}Confidence Stratification}{17}{section*.29}%
-\contentsline {section}{\numberline {V}Comparison with Previous Work}{18}{section*.30}%
-\contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{18}{section*.31}%
-\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{19}{section*.32}%
-\contentsline {subsection}{\numberline {C}SpArcFiRe}{19}{section*.33}%
-\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{19}{section*.34}%
-\contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{19}{section*.35}%
-\contentsline {section}{\numberline {VI}Discussion}{19}{section*.36}%
-\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Entirely Systematic}{19}{section*.37}%
-\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{20}{section*.38}%
-\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{21}{section*.39}%
-\contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{21}{section*.40}%
-\contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{22}{section*.41}%
-\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{23}{section*.42}%
-\contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{25}{section*.43}%
-\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{26}{section*.44}%
-\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{26}{section*.45}%
-\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{26}{section*.46}%
-\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{26}{section*.47}%
-\contentsline {paragraph}{\numberline {c}What does the present null constrain?}{27}{section*.48}%
-\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{27}{section*.49}%
-\contentsline {subsection}{\numberline {G}Future Directions}{27}{section*.50}%
-\contentsline {section}{\numberline {VII}Conclusions}{28}{section*.51}%
-\contentsline {paragraph}{\numberline {a}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{28}{section*.52}%
-\contentsline {paragraph}{\numberline {b}Sensitivity convention and remaining caveats.}{28}{section*.53}%
-\contentsline {section}{\numberline {VIII}Data Availability}{30}{section*.54}%
-\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{30}{section*.55}%
-\contentsline {section}{\numberline {}Acknowledgments}{30}{section*.56}%
-\contentsline {section}{\numberline {}References}{30}{section*.57}%
+\contentsline {section}{\numberline {III}Methods}{5}{section*.11}%
+\contentsline {subsection}{\numberline {A}Pre-Registered Analysis Hierarchy}{5}{section*.12}%
+\contentsline {subsection}{\numberline {B}Model Architecture}{6}{section*.13}%
+\contentsline {subsection}{\numberline {C}Training}{6}{section*.14}%
+\contentsline {subsection}{\numberline {D}Flip-Equivariance Consistency Loss}{7}{section*.15}%
+\contentsline {subsection}{\numberline {E}Test-Time Equivariant Averaging}{7}{section*.16}%
+\contentsline {paragraph}{\numberline {a}Empirical bound on rotation-correlated CW-fraction excursion.}{7}{section*.17}%
+\contentsline {paragraph}{\numberline {b}\textsc {not\_spiral}{} stability under TTA averaging.}{8}{section*.18}%
+\contentsline {subsection}{\numberline {F}Bias Hardening Suite}{8}{section*.19}%
+\contentsline {subsection}{\numberline {G}Catalog Tiers}{10}{section*.20}%
+\contentsline {section}{\numberline {IV}Results}{11}{section*.21}%
+\contentsline {subsection}{\numberline {A}Catalog Statistics}{11}{section*.22}%
+\contentsline {subsection}{\numberline {B}Global CW Fraction}{12}{section*.23}%
+\contentsline {subsection}{\numberline {C}Dipole Analysis}{13}{section*.24}%
+\contentsline {paragraph}{\numberline {a}Simple dipole.}{14}{section*.25}%
+\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{14}{section*.26}%
+\contentsline {subsection}{\numberline {D}Monopole+Mask Leakage Generative Null}{16}{section*.27}%
+\contentsline {subsection}{\numberline {E}Hemisphere Asymmetry}{17}{section*.28}%
+\contentsline {subsection}{\numberline {F}Sky Region Balance}{18}{section*.29}%
+\contentsline {subsection}{\numberline {G}Per-Imaging-Leg Systematics (BASS+MzLS / DECaLS / DES)}{19}{section*.30}%
+\contentsline {subsection}{\numberline {H}Scale Dependence}{19}{section*.31}%
+\contentsline {subsection}{\numberline {I}Confidence Stratification}{19}{section*.32}%
+\contentsline {section}{\numberline {V}Comparison with Previous Work}{20}{section*.33}%
+\contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{20}{section*.34}%
+\contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{20}{section*.35}%
+\contentsline {subsection}{\numberline {C}SpArcFiRe}{21}{section*.36}%
+\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{21}{section*.37}%
+\contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{21}{section*.38}%
+\contentsline {section}{\numberline {VI}Discussion}{21}{section*.39}%
+\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{21}{section*.40}%
+\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{22}{section*.41}%
+\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{23}{section*.42}%
+\contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{23}{section*.43}%
+\contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{24}{section*.44}%
+\contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{26}{section*.45}%
+\contentsline {paragraph}{\numberline {a}Bin-by-bin CW flatness test across four morphology axes.}{27}{section*.46}%
+\contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{28}{section*.47}%
+\contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violation observables}{28}{section*.48}%
+\contentsline {paragraph}{\numberline {a}Late-universe to primordial: the link, and its caveats.}{28}{section*.49}%
+\contentsline {paragraph}{\numberline {b}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{28}{section*.50}%
+\contentsline {paragraph}{\numberline {c}What does the present null constrain?}{28}{section*.51}%
+\contentsline {paragraph}{\numberline {d}(ii)~Parity-odd galaxy-trispectrum amplitude.}{29}{section*.52}%
+\contentsline {subsection}{\numberline {G}Future Directions}{29}{section*.53}%
+\contentsline {section}{\numberline {VII}Conclusions}{30}{section*.54}%
+\contentsline {paragraph}{\numberline {a}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{30}{section*.55}%
+\contentsline {paragraph}{\numberline {b}Sensitivity convention and remaining caveats.}{31}{section*.56}%
+\contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{32}{section*.57}%
+\contentsline {section}{\numberline {IX}Data Availability}{32}{section*.58}%
+\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{33}{section*.59}%
+\contentsline {section}{\numberline {}Acknowledgments}{33}{section*.60}%
+\contentsline {section}{\numberline {}References}{33}{section*.61}%
