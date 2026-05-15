@@ -58,7 +58,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.67}
+\newcommand{\paperVersion}{v1.0.68}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for revision history.}
 
@@ -81,207 +81,57 @@ We present a survey-scale chirality catalog of $8{,}474{,}531$
 galaxies from the DESI Legacy Imaging Surveys DR8, of which
 $3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$ \CW{} +
 $1{,}609{,}053$ \CCW{} after equivariant test-time symmetrization;
-the remaining $5{,}273{,}371$ are \NS{} or edge-on) and form the
-parity-relevant sample for this work. Classification uses a
-Vision Transformer (\vit) fine-tuned on $26{,}636$ images from
-Galaxy Zoo~1 (independent ground-truth fraction $32.4\%$, $6{,}637$
-images), high-confidence CE-ResNet pseudo-labels ($67.6\%$,
-$17{,}999$ images), and synthetic hard negatives.  Independent
-validation against the $240{,}919$-galaxy GZ1 cross-match (the
-load-bearing external chirality check) yields $69.91\%$ CW/CCW
-agreement (Cohen's $\kappa=0.40$); the internal three-class
-training-set validation accuracy is $93.7\%$ but partially reflects
-agreement with the CE-ResNet pseudo-labels that comprise $67.6\%$ of
-training and is reported only as a training-pipeline self-consistency
-check (Sec.~\ref{sec:labels}). The flip-equivariant
-post-processing stage\footnote{\label{fn:equivariant_scope}``Equivariant''
-in this paper refers to test-time horizontal-flip ($Z_2$) symmetrization
-[Eq.~\eqref{eq:tta}], \emph{not} architectural rotation equivariance.}
-suppresses raw classifier-bias dipoles by $3.86\times$; we show that
-without it, a CW classifier bias of only $0.79\%$ couples through the
-non-uniform survey mask to produce a real-space pseudo-dipole at
-$2.31\sigmaunit$ (Catalog~A) which collapses to $0.43\sigmaunit$
-under equivariant test-time symmetrization (Catalog~C). In the
-spherical-harmonic domain the corresponding mask-coupled pseudo-$C_\ell$
-at $\ell\!=\!1$ inflates to $6.48\sigmaunit$ on the raw catalog before
-MASTER mode-coupling deconvolution returns the canonical
-$-0.122\sigmaunit$ null at the canonical $N_{\rm spiral}\!=\!3{,}201{,}160$
-normalization.
+the remaining $5{,}273{,}371$ are \NS{} or edge-on). Classification
+uses a Vision Transformer (\vit) fine-tuned on $26{,}636$ images from
+Galaxy Zoo~1 ($6{,}637$), high-confidence CE-ResNet pseudo-labels
+($17{,}999$), and synthetic hard negatives ($2{,}000$). The
+load-bearing external check is the $240{,}919$-galaxy GZ1 cross-match,
+which gives $69.91\%$ CW/CCW agreement (Cohen's $\kappa=0.40$); the
+internal three-class training-set validation accuracy of $93.7\%$ is
+reported only as a training-pipeline self-consistency check because
+$67.6\%$ of training labels derive from CE-ResNet pseudo-labels.
 
-We measure no significant large-scale chirality dipole after
-equivariant post-processing.  A real-space dipole fit yields
-$\sigma_{\rm dipole}=0.43$ ($p=0.30$ at $N_{\rm MC}=10{,}000$;
-canonical post-TTA results file
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/catalog\_c\_post\_tta\_dipole\_summary.json},
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/mc\_seed\_manifest.json});
-the MASTER-deconvolved $\ell=1$ angular power spectrum
-coefficient is
-$C_1 = (1.494 \pm 0.429)\!\times\!10^{-6}$\,sr against
-$\langle C_1^{\rm null}\rangle = 1.546\!\times\!10^{-6}$\,sr from
-$500$ mode-coupling-inverted MC realizations, giving
-$(C_1-\langle C_1^{\rm null}\rangle)/\sigma_{\rm null} = -0.122\sigmaunit$
-on the analysis subsample mask ($n\!=\!5{,}547{,}858$,
-$f_{\rm sky}\!=\!0.659$); a direct $500$-MC NaMaster
-execution at canonical Catalog~C parameters
-($N_{\rm spiral}\!=\!3{,}201{,}160$, $f_{\rm sky}\!=\!0.4938$,
-NSIDE$\,=\,$64, SEED$\,=\,42$; see
-Sec.~\ref{sec:conclusions}) yields a mild canonical-mask excess of
-$+1.85\sigmaunit$ (Gaussian-equivalent Z-score; one-tailed empirical
-rank $p_{\rm MC}\!=\!15/500\!=\!0.030$ against the 500-MC null),
-which is below this paper's detection threshold and is interpreted as
-canonical-mask geometry-specific leakage, not as a primordial dipole:
-the global-permutation random-label null (galaxy positions and the
-canonical-mask geometry are held fixed; only the per-galaxy CW vs CCW
-assignments are permuted globally across the catalog) destroys
-per-galaxy depth-vs-label and per-galaxy mask-edge-vs-label correlations
-(a true per-galaxy depth-coupled labelling systematic would be erased
-by this shuffle), but does \emph{not} destroy the geometric leakage
-channel by which a non-zero global monopole asymmetry
-($\CW/(\CW+\CCW)=0.4974$, $9.5\sigmaunit$ from $50/50$) couples to the
-patchy canonical mask and projects power into the lowest available
-power-spectrum mode by construction; the $+1.85\sigmaunit$ excess
-against this null is most plausibly the mask-geometry leakage of the
-global monopole, not a per-galaxy depth/label systematic surviving the
-shuffle.  The $-0.122\sigmaunit$
-subsample-mask figure remains the headline post-MASTER null because
-it uses the strict-superset $f_{\rm sky}\!=\!0.659$ mask (which
-averages over more contiguous coverage and thereby suppresses
-small-scale canonical-mask-edge leakage); the canonical
-$+1.85\sigmaunit$ direct-MC value supersedes the earlier analytic
-projection $+0.2595\sigmaunit$, which is retained only as a
-methodological-comparison reference. Independent full-sky estimators
-(real-space dipole $0.43\sigmaunit$, Sec.~\ref{sec:dipole}) are
-consistent with null, and the injection-recovery study on the
-HC-spiral subsample ($N\!=\!471{,}049$, Sec.~\ref{sec:sensitivity})
-reaches only $P(\sigma\!>\!2)\!=\!0.18$ at an injected amplitude
-$A\!=\!0.5\%$; the empirical 50\%-recovery threshold therefore lies
-above $0.5\%$, and the measured catalog dipole remains below our
-operational detection threshold at every tested amplitude. The conservative, systematic-inclusive empirical injection-recovery
-sensitivity floor is $|A_{\rm dipole}|\!>\!0.5\%$
-(at $A\!=\!0.5\%$ the per-pixel-shuffle MC gives
-$P(\sigma\!>\!2)\!=\!0.18$; explicit 50\%-recovery at $3\sigmaunit$ is
-not demonstrated within the tested $A\!\in\![0.05,0.50]\%$ grid and is
-bounded only above by the highest tested amplitude, hence the strict
-inequality) and is the \emph{primary} sensitivity figure for this
-paper; the
-Fisher-floor statistical Poisson asymptote is
-$|A_{\rm dipole}|\!\lesssim\!0.29\%$ at $3\sigmaunit$ under the
-convention $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$
-(arithmetic: the CW-fraction half-modulation uncertainty is
-$\sigma\!\approx\!0.048\%$ [\S\ref{sec:sensitivity} Eq.\
-\ref{eq:sigma_dip}]; the $3\sigmaunit$ floor on the half-modulation
-$A/2$ is $3\!\times\!0.048\%\!\approx\!0.14\%$ rounded conservatively
-to $\sim\!0.2\%$ to absorb $f_{\rm sky}$ and $N_{\rm eff}$
-corrections; the corresponding $3\sigmaunit$ floor on the
-\emph{full amplitude} $A$ under the half-modulation convention is
-$2\!\times\!0.144\%\!\approx\!0.29\%$ ideal-statistical and
-$2\!\times\!0.2\%\!\approx\!0.4\%$ conservative-rounded; this
-abstract reports the $0.29\%$ ideal-statistical full-amplitude
-floor as the achievable-with-zero-systematics asymptote.
-The empirical $0.5\%$ floor is the operational publication-grade
-limit; the $0.29\%$ Fisher figure is held aside as the statistical
-ceiling. Both numbers refer to a sensitivity floor, not a
-frequentist upper limit on the measured $A_{\rm dipole}$; the
-latter is consistent with zero
-(Sec.~\ref{sec:sensitivity}). The $\sim\!3\%$ asymmetry reported by
-Shamir~(2012, 2020, 2022)~\cite{Shamir:2012,Shamir:2020,Shamir:2022}
-is disfavored at the amplitude level under the present pipeline by
-a factor of $\sim\!6$--$12$ relative to Shamir's reported
-$2$--$4\%$ window: our maximum regional asymmetry is $\sim\!0.32\%$
-(Table~\ref{tab:sky_balance}) and our empirical all-sky
-MC-injection sensitivity floor is $\gtrsim\!0.5\%$
-(Sec.~\ref{sec:sensitivity}), both well below Shamir's window.
-We do not quote a frequentist $\sigma$-level exclusion because
-the two analyses differ in classifier (ViT-Small ensemble vs.\
-Ganalyzer), selection (DESI Legacy DR8 vs.\ SDSS+Pan-STARRS),
-bias-audit protocol (equivariant TTA + 8 hardening tests vs.\
-none documented), and footprint geometry; a common-likelihood
-exclusion would require matched-footprint matched-selection
-matched-classifier-systematics joint inference, which is not
-constructed here. The disagreement is therefore reported as an
-amplitude factor (ratio of measured-amplitude floors), not as a
-$\sigma$-level rejection of Shamir's signal as a measurement
-under his own pipeline.
+We measure no large-scale chirality \emph{dipole} after flip-equivariant
+post-processing. The real-space dipole fit on the canonical Catalog~C
+sample is $\sigma_{\rm dipole}=0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
+and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient on the
+analysis subsample mask is $C_1\!=\!(1.494\!\pm\!0.429)\!\times\!10^{-6}\,$sr,
+$-0.12\sigmaunit$ from null. A direct $500$-MC NaMaster execution on the
+canonical $f_{\rm sky}\!=\!0.4938$ mask gives a mild $+1.85\sigmaunit$
+excess at $\ell\!=\!1$, which we interpret as canonical-mask geometric
+leakage of the global monopole rather than as a primordial signal (the
+two independent full-sky estimators above, which average over more
+contiguous coverage, are null). The systematic-inclusive empirical
+injection-recovery sensitivity floor is $|A_{\rm dipole}|\!>\!0.5\%$
+(at $A\!=\!0.5\%$ the per-pixel-shuffle MC gives $P(\sigma\!>\!2)\!=\!0.18$,
+not a detection); the corresponding Fisher Poisson-asymptote on the full
+amplitude is $\sim\!0.29\%$ at $3\sigmaunit$ under
+$p_{\rm CW}(\hat n)=\tfrac12(1+A\cos\theta)$. The empirical floor is the
+primary publication-grade sensitivity figure.
 
-A residual global $9.5\sigmaunit$ deviation from $50/50$ in the
-CCW-leaning direction (CW fraction $0.4974 \pm 0.000279$, i.e., a small
-$0.26\%$ CCW excess equivalently described as a CW deficit) is consistent
-in magnitude with the
-sub-percent human-handedness bias documented in citizen-science
-spiral-handedness labels~\cite{Land:2008,Iye:2020}; we adopt this
-as the leading working hypothesis. The exact per-galaxy joint
-tabulation against the $117{,}205$ GZ1-spiral cross-match
-(Sec.~\ref{sec:labels}) yields McNemar $Z\!=\!13.4$ (joint, signed,
-uncorrected) and Cohen's $\kappa\!=\!0.40$ — a strong rejection of
-classifier-vs-GZ1 discordance-symmetry, with the discordance sign
-indicating that Catalog~C is $\sim\!2.1$~pp \emph{less} CW-leaning
-than GZ1 on the matched subset, so the bias-attribution operates
-primarily through the CE-ResNet pseudo-label pathway ($67.6\%$ of
-training labels) rather than through direct GZ1 propagation.
-Independent verification at $\gtrsim\!10^{6}$ galaxies would require
-a non-GZ1, non-CE-ResNet chirality reference dataset which does not
-currently exist (we report a partial ${\sim}1.4\!\times\!10^{5}$-galaxy
-SpArcFiRe~\cite{Davis:2014} cross-check in Sec.~\ref{sec:sparcfire}). The
-parity-violation observable is the \emph{dipole}, not the monopole,
-so the dipole null reported above is logically prior to and
-independent of the monopole's origin. The CW fraction is uniform
-across $7$ equatorial coordinate slabs (4 RA quadrants $\times$ 3
-Dec bands; regional $|\Delta|\leq 0.32\%$;
-Table~\ref{tab:sky_balance}) — these are equatorial-coordinate cuts,
-not the natural DESI Legacy imaging-leg boundaries (BASS+MzLS / DECaLS
-/ DES); see Sec.~\ref{sec:cw_frac} for the imaging-leg disclosure —
-but does \emph{not} pass a strict $0.1\%$
-flatness bar at $10$-bin granularity in three continuous-morphology
-axes (b/a $\Delta=0.23\%$, fracdev $\Delta=1.41\%$,
-shape\_r\_eff $\Delta=0.32\%$; Sec.~\ref{sec:bin_flatness}); we
-treat the directional-dipole null as the load-bearing empirical test
-that this local morphology--chirality coupling integrates harmlessly
-under re-projection onto large-scale directional axes. A
-$3.05\sigmaunit$ local hemisphere asymmetry (CW-fraction
-half-difference $0.17\%$ between opposing hemispheres at the
-max-statistic axis -- this is the half-difference $(F_+ - F_-)/2$
-between the two opposing hemispheres, equal to $A/2$ in the ideal
-uniform-coverage limit, so $0.17\%$ half-difference $\leftrightarrow$
-$A_{\rm dipole}\!\approx\!0.34\%$, well below the $|A_{\rm dipole}|
-\gtrsim 0.5\%$ empirical floor; the separately reported max-over-768-
-directions statistic $\max|A(\hat n)| = 8.531\times 10^{-3}$ from the
-GPU hemisphere scan is a \emph{different} statistic that maximizes
-over the NSIDE=8 direction grid and incorporates sky-coverage
-weighting at each pixel, and the two should not be compared as if
-they were the same observable) under a $10{,}000$-MC permutation null
-(random CW-label shuffles at NSIDE=8 / 768 directions) rejects the
-random-label null at $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$
-nulls reach the data), corresponding to post-LEE significance
-$\gtrsim\!3.7\sigmaunit$ under that specific null. The global-permutation
-random-label null at fixed galaxy positions destroys per-galaxy
-depth-vs-label and mask-edge-vs-label correlations (a true per-galaxy
-depth-coupled systematic would be erased by the shuffle), so this
-rejection of the global-permutation null is not equivalent to a
-primordial-dipole detection: the residual leakage of the global
-monopole $\CW/(\CW+\CCW)\!=\!0.4974$ into the patchy-mask hemispheric
-max-statistic is preserved by the shuffle (the shuffle does not change
-the global mean), and the $p_{\rm LEE}\!\le\!10^{-4}$ rejection most
-plausibly reflects that leakage rather than a primordial dipole.
-The independent full-sky dipole estimators on the same data —
-real-space dipole amplitude $0.43\sigmaunit$ ($p\!=\!0.30$,
-Sec.~\ref{sec:dipole}); post-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$
-giving $-0.12\sigmaunit$ on the analysis subsample mask
-(strict-superset $f_{\rm sky}\!=\!0.659$); and the canonical-$N$
-direct-MC at $\ell\!=\!1$ at $+1.85\sigmaunit$
-(Sec.~\ref{sec:conclusions}; mild canonical-mask excess interpreted
-as a leakage-floor calibration, not as a primordial signal) — taken
-together rule out a primordial $\ell\!=\!1$ dipole at sub-percent
-amplitude. The most plausible reading of the hemisphere
-max-statistic rejection is therefore that the same sub-percent
-depth-coupled / GZ1-training-label systematic that sources the
-global $9.5\sigmaunit$ CW-fraction monopole (Sec.~\ref{sec:cw_frac})
-projects onto a particular sky-axis maximum that random
-CW-label shuffling cannot reproduce; we report the
-$p_{\rm LEE}\!\le\!10^{-4}$ random-label-null rejection as a
-documented systematic-floor artifact, not as a primordial-dipole
-detection. The catalog is available at
-\url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}
-under CC-BY-4.0.
+A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
+($9.5\sigmaunit$ from $50/50$ under naive binomial errors;
+$N_{\rm eff}$-corrected significance is smaller but still high) is
+attributed to the sub-percent human-handedness bias documented in
+citizen-science spiral-handedness labels propagating through training,
+pending independent ground-truth validation; the parity-violation
+observable is the dipole, not the monopole. A $3.05\sigmaunit$ local
+hemisphere asymmetry rejects the random-label null at
+$p_{\rm LEE}\!\le\!10^{-4}$; this rejection is interpreted as the
+mask-leakage projection of the same uniform monopole and is reported as
+a documented systematic-floor artifact, not as a primordial-dipole
+detection, since the independent full-sky $\ell\!=\!1$ estimators on
+the identical data are null.
+
+Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim is
+disfavored at the amplitude level by a factor of $\sim\!6$--$12$ relative
+to our empirical $\gtrsim\!0.5\%$ floor; the disagreement is reported as
+an amplitude factor, not a $\sigma$-level exclusion of Shamir's signal
+under his own classifier/footprint trio. The catalog, model, and
+reproducibility scripts are publicly released; downstream users should
+consult the Catalog Usage Limitations paragraph (Sec.~\ref{sec:data_availability})
+because labels carry a measured sub-percent monopole bias and are not
+ground-truth chirality.
 \end{abstract}
 
 \pacs{98.80.-k, 98.62.Ai, 95.75.Mn}
@@ -296,24 +146,26 @@ under CC-BY-4.0.
 % ============================================================
 
 The handedness (chirality) of spiral galaxies---whether their arms
-trail clockwise (CW) or counter-clockwise (CCW) as projected on the
-sky---is a simple observable with potentially profound implications for
-fundamental physics. In a statistically isotropic and parity-symmetric
-universe, the CW and CCW fractions should be exactly equal when averaged
-over large angular scales. A significant departure from this null
-expectation would signal parity violation at cosmological scales,
-providing a window into physics beyond the Standard Model of
-cosmology~\cite{Alexander:2009tp,Komatsu:2022}. The present paper
+trail clockwise (CW) or counter-clockwise (CCW) \emph{as projected on
+the sky}---is a simple observable that, under the trailing-arm
+assumption and in the absence of confounding selection effects, traces
+the angular-momentum (spin) direction of each disk galaxy. Throughout
+this paper, ``CW/CCW'' refers to the \emph{projected apparent
+arm-winding chirality}, not to a deprojected 3D spin vector;
+inferences about angular momentum require additional kinematic
+information that is not used here. In a statistically isotropic and
+parity-symmetric universe, the CW and CCW fractions of projected
+morphology should be exactly equal when averaged over large angular
+scales. A significant directional departure from this null expectation
+in the late-universe morphology channel would constrain
+parity-violating sectors in the galaxy-formation chain; a quantitative
+transfer function from the late-universe morphology dipole to
+primordial parity-violating tensor amplitudes is not derived in this
+paper and is left to future modeling work (the catalog provides the
+late-universe observable constraint). The present paper
 is a standalone observational result: our null dipole at sub-percent
 sensitivity does not depend on any companion work and is testable
-on its own terms against future survey samples.\footnote{The
-chirality catalog is also the morphology channel of a four-paper
-companion program covering parity-violation observables (spin-torsion
-no-go theorems~\cite{Golden:2026P1A}, SPHEREx $f_{\rm NL}\!=\!-35/8$
-forecast~\cite{Golden:2026P2}, and a multi-survey
-$\sim\!319{,}443$-anomaly catalog~\cite{Golden:2026P3}), but the
-present null dipole result and the catalog construction stand
-independent of those companions.}
+on its own terms against future survey samples.
 
 Claims of such a signal have appeared intermittently in the literature.
 Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
@@ -325,7 +177,10 @@ consistent dipole axis. Shamir~(2022)~\cite{Shamir:2022} further claimed
 confirmation with DESI Legacy Survey data. Meanwhile,
 Iye \textit{et~al.}~\cite{Iye:2020} analyzed Galaxy Zoo data and found no significant
 signal after correcting for the known ``reading direction'' bias in
-citizen science classifications. Tadaki \textit{et~al.}~\cite{Tadaki:2020} studied a
+citizen science classifications; they also documented duplication of
+photometric objects (e.g., star-forming knots within the same galaxy
+counted multiple times) in earlier Shamir catalogs as an additional
+source of spurious large-scale signal. Tadaki \textit{et~al.}~\cite{Tadaki:2020} studied a
 smaller sample with HSC-SSP imaging and likewise found null results.
 
 The tension between these results has not been resolved, largely
@@ -366,10 +221,10 @@ Legacy) differ in classifier, footprint, and selection, so we report
 size ratios as catalog-scale context rather than as a like-for-like
 sensitivity comparison;
 (ii)~a dedicated \NS{} class that
-prevents contamination from ellipticals and irregulars, and (iii)~the
-first published multi-test bias hardening audit suite for any galaxy
-chirality classifier. We use this catalog to perform the most
-sensitive chirality measurement ever attempted, with a Fisher-floor
+prevents contamination from ellipticals and irregulars, and (iii)~to
+our knowledge one of the most extensive published bias-hardening
+audit suites for a survey-scale chirality catalog. We use this
+catalog to perform a chirality dipole measurement with a Fisher-floor
 minimum detectable dipole of $|A_{\rm dipole}|\!\sim\!0.29\%$ at
 $3\sigmaunit$ (statistical) and an empirical injection-recovery
 sensitivity floor of $|A_{\rm dipole}|\!\gtrsim\!0.5\%$ at the same
@@ -1936,9 +1791,14 @@ closure of the candidate classifier-systematic channel
 (Sec.~\ref{sec:tta}). The Tadaki \etal~(2020)
 HSC-SSP null~\cite{Tadaki:2020} on a smaller sample is the third
 independent line of evidence consistent with the present null;
-taken together, the Iye, Tadaki, and present results establish a
-multi-survey, multi-classifier consensus against the Shamir
-$\sim\!3\%$ dipole at $z\!\lesssim\!1$.
+taken together, the Iye, Tadaki, and present results provide
+independent lines of evidence that do not reproduce the
+Shamir $\sim\!3\%$ dipole amplitude under different surveys,
+selections, and classifiers at $z\!\lesssim\!1$. A formal
+matched-footprint reanalysis (Shamir's exact magnitude/redshift
+cuts and Ganalyzer pipeline) on the present sample would be
+required for a likelihood-level exclusion under Shamir's own
+estimator; we do not perform that reanalysis here.
 
 \subsection{CE-ResNet (Jia et al.\ 2023)}
 \label{sec:ceresnet}
@@ -2811,29 +2671,25 @@ channel and the CMB-birefringence channel are not directly
 numerically comparable in any common parameter, and we emphasize
 only that the two channels are \emph{complementary}: a model can
 saturate one constraint while satisfying the other.
-\paragraph{What does the present null falsify?}
-The morphology-dipole null at sub-percent sensitivity does not
-falsify the matter-bounce family of bounce-cosmology scenarios
-(which predicts a primordial chiral-tensor signal whose projection
-onto the late-universe morphology channel depends on a transfer
-function we do not compute), nor does it falsify the Lue-Wang-Kamionkowski
-Chern-Simons gravity sector at general couplings. What the present
-null \emph{does} disfavor at the channel-amplitude level is any model
-class that predicts a late-universe morphology-channel dipole
-amplitude $|A_{\rm dipole}| \gtrsim 0.5\%$ on the DESI Legacy
-footprint without an evasion mechanism — including the Shamir 2020 /
-2022 $\sim\!3\%$-asymmetry claim line, which is disfavored at the
-amplitude level by a factor of $\sim\!6$--$12$ under the present
-pipeline (Sec.~\ref{sec:dipole}; the disagreement is amplitude-only,
-not a frequentist $\sigma$-level exclusion of Shamir's signal under
-his own classifier-selection-footprint trio). Models that predict
-sub-percent morphology dipoles (including matter-bounce scenarios whose
-primordial-to-late-universe transfer function is small) remain
-compatible with the present null, and a tighter falsification of those
-scenarios requires either (i) a derivation of the transfer function
-that produces a model-specific morphology-channel prediction, or
-(ii) a deeper survey (LSST Y3-class) that pushes the sensitivity floor
-below the predicted amplitude.
+\paragraph{What does the present null constrain?}
+The morphology-dipole null at the empirical $|A_{\rm dipole}|
+\gtrsim 0.5\%$ amplitude floor is a direct constraint on the
+late-universe projected morphology-channel dipole on the DESI
+Legacy footprint. It disfavors at the amplitude level any model
+that predicts a late-universe morphology-channel dipole amplitude
+$\gtrsim 0.5\%$ on this footprint --- including the Shamir~2020/2022
+$\sim\!3\%$-asymmetry claim line, disfavored at the amplitude level
+by a factor of $\sim\!6$--$12$ (Sec.~\ref{sec:dipole}; the
+disagreement is amplitude-only, not a frequentist $\sigma$-level
+exclusion of Shamir's signal under his own
+classifier-selection-footprint trio). A mapping of this constraint
+onto primordial parity-violating tensor amplitudes (bounce-cosmology
+predictions, Lue-Wang-Kamionkowski Chern-Simons gravity, axion-photon
+couplings, etc.)\ requires a transfer function from the primordial
+chiral-tensor signal through galaxy formation to the late-universe
+projected morphology channel; that transfer function is not derived
+in this paper and the present catalog is therefore not a direct
+test of those primordial scenarios.
 
 \paragraph{(ii)~Parity-odd galaxy-trispectrum amplitude.}
 Cahn, Slepian \& Hou~\cite{Cahn:2021} proposed a test for cosmological
@@ -2871,11 +2727,19 @@ across 19 bins from $z = 0.02$ to $z = 0.78$: the CW excess is flat
 at $\sim\!0.8\%$ with bin-to-bin scatter consistent with statistical
 noise ($\chi^{2}/\text{dof} = 10.0/18 = 0.56$ against a constant
 model; a linear-in-$z$ slope is detected at only $0.4\sigmaunit$).
-However, this preliminary result uses the \emph{raw} Catalog~A
-classifications and photometric redshifts with $\sigma_z / (1+z)
-\approx 0.03$, which smears any narrow-redshift-shell signal by
-$\Delta z \sim 0.05$ at $z \sim 0.5$
-(Sec.~\ref{sec:sensitivity}).
+This preliminary result uses the \emph{raw} Catalog~A
+classifications and is therefore not a redshift-stability test on
+the equivariant catalog actually used for the dipole headline; we
+flag this caveat explicitly because raw-catalog handedness biases
+correlate with magnitude and surface brightness and could mimic
+or mask a true redshift trend in Catalog~C. A definitive Catalog~C
+redshift-binned analysis requires either rerunning the
+equivariant-classification on the photometric-redshift-binned
+parent sample with magnitude/SNR-matched controls, or
+cross-matching against the DESI spectroscopic survey (below).
+Photometric redshifts with $\sigma_z / (1+z) \approx 0.03$ also
+smear any narrow-redshift-shell signal by $\Delta z \sim 0.05$
+at $z \sim 0.5$ (Sec.~\ref{sec:sensitivity}).
 
 The definitive test requires two upgrades: (i)~applying the
 equivariant Catalog~C classifications, which eliminate
@@ -2886,13 +2750,9 @@ $\sigma_z \lesssim 10^{-3}$.  The DESI Year~1 release
 overlaps $\sim\!35\%$ of our footprint, providing an estimated
 $\sim\!500{,}000$~spectroscopic spirals---sufficient to measure the
 CW fraction in $\Delta z = 0.05$ shells with per-bin statistical
-uncertainty $\lesssim 0.1\%$.  At $z > 0.5$, where bounce-cosmology
-models with parity-violating tensor sectors~\cite{Poplawski:2012,Poplawski:2016}
-predict the strongest deviations from $\Lambda$CDM, even a $0.5\%$
-redshift-dependent trend in the equivariant CW fraction would be
-detected at $>3\sigmaunit$ per bin.  A redshift-binned dipole analysis on the DESI spectroscopic
-cross-match is not undertaken in the present catalog, which uses
-photometric redshifts only.
+uncertainty $\lesssim 0.1\%$. A redshift-binned dipole analysis on
+the DESI spectroscopic cross-match is not undertaken in the present
+catalog, which uses photometric redshifts only.
 
 Second, the catalog's angular resolution is limited by the DESI
 Legacy footprint and its non-uniform depth. Future surveys with
@@ -2904,12 +2764,9 @@ spiral-fraction scaling, we project a catalog of
 $\sim\!10^{8}$ resolved spirals---about $30\times$ the present
 equivariant-spiral count. Applied with the same $Z_2$ test-time
 averaging and null-hypothesis bias panel developed here, this
-would push the minimum detectable dipole to
-$\sim\!0.04\%$ on the CW-fraction half-modulation $A/2$ at
-$3\sigma$ statistical (corresponding to $\sim\!0.08\%$ on the
-full amplitude $A$ under the convention disclosure of
-Sec.~\ref{sec:sensitivity}), a regime in which even
-sub-percent bounce-cosmology parity predictions become testable.
+would push the minimum detectable dipole to a full amplitude
+$|A_{\rm dipole}| \sim 0.08\%$ at $3\sigmaunit$ statistical
+(Sec.~\ref{sec:sensitivity} convention).
 
 Third, we release the bias hardening test suite as open-source
 code. We encourage groups working on chirality classification---whether
