@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.76}
+\newcommand{\paperVersion}{v1.0.77}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -138,7 +138,15 @@ high-confidence subsamples $p_{\rm eq}\!>\!0.6$ ($-0.03\sigmaunit$
 to $+0.87\sigmaunit$ across three HC bins), independently confirming
 that the residual is classifier label-systematics rather than a
 primordial signal that would survive (or indeed amplify) a
-confidence cut. Systematic-inclusive sensitivity is reported honestly rather than
+confidence cut. The two-point chirality correlation
+$w_{\rm CW}(\theta)$ (Sec.~\ref{sec:wtheta}) on a $50{,}000$-spiral
+HC-subsample at angular scales $0.1^\circ$--$8^\circ$ is null at
+$|\sigma|\!<\!1.2$ in nine of ten bins, with a single
+$-2.41\sigmaunit$ excursion at $\theta\!\approx\!0.5^\circ$
+coincident with the DESI Legacy DR8 brick scale; under a 10-bin
+look-elsewhere correction this drops below $|\sigma|\!<\!2$
+post-LEE. This is a fourth independent line of evidence that the
+chirality field carries no primordial parity-violating signal. Systematic-inclusive sensitivity is reported honestly rather than
 optimistically: the per-pixel-shuffle injection-recovery sweep (Table~\ref{tab:mc_injection})
 gives $P(\sigma\!>\!2)\!=\!0.18$ at $A\!=\!0.5\%$ and never crosses the
 50\% recovery criterion at any tested amplitude (up to $A\!=\!2\%$), so the
@@ -1900,6 +1908,89 @@ axis. The headline no-dipole verdict at $\sigma_{\rm dipole}=0.43$
 (isotropic null) and $-0.12\sigmaunit$ (subsample-mask MASTER)
 is the only sensible interpretation consistent with the data once
 the leakage and systematics are tracked.
+
+\subsection{Two-Point Chirality Correlation $w_{\rm CW}(\theta)$}
+\label{sec:wtheta}
+
+The mean-dipole and confidence-stratified diagnostics
+(\S\ref{sec:dipole}, \S\ref{sec:signal_hunt}) are all sensitive to
+classifier-monopole leakage projected onto the lowest multipoles.
+An observable that is constructed to be insensitive to that channel
+is the two-point chirality correlation,
+\begin{equation}
+w_{\rm CW}(\theta) \;=\; \frac{N_{\rm same}(\theta) \;-\; N_{\rm diff}(\theta)}{N_{\rm same}(\theta) + N_{\rm diff}(\theta)},
+\end{equation}
+where $N_{\rm same}$ counts CW--CW or CCW--CCW spiral pairs and
+$N_{\rm diff}$ counts CW--CCW pairs in angular separation bins
+$\theta \pm \Delta\theta/2$. The statistic is invariant under the
+global $\CW\leftrightarrow\CCW$ symmetry but \emph{not} under a
+position-dependent reshuffle, so a positive $w_{\rm CW}(\theta)$ at
+any scale would indicate primordial CW-CW co-clustering --- a
+genuine cosmological signal that would survive even a perfectly
+calibrated monopole subtraction.
+
+\begin{table}[h]
+\caption{Two-point chirality correlation $w_{\rm CW}(\theta)$ on a
+random $50{,}000$-galaxy HC-spiral sample ($\max\,p_{\rm eq}\!>\!0.6$,
+seed$\,=\,$42); null is a $N_{\rm MC}\!=\!200$ label-shuffle
+preserving the global $p_{\rm CW}$. Companion artifact:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/pathA\_2pt\_chirality.json}.
+\label{tab:wtheta}}
+\begin{ruledtabular}
+\begin{tabular}{rrrcr}
+$\theta$ (deg) & $w_{\rm CW}^{\rm obs}$ & null std & $\sigma$ & $N_{\rm pairs}$ \\
+\hline
+$0.13$ & $-0.0016$ & $0.0168$ & $-0.11$ & $3{,}772$ \\
+$0.20$ & $-0.0046$ & $0.0116$ & $-0.46$ & $8{,}784$ \\
+$0.32$ & $-0.0076$ & $0.0065$ & $-1.09$ & $21{,}119$ \\
+$0.50$ & $-0.0111$ & $0.0046$ & $-2.41$ & $52{,}438$ \\
+$0.79$ & $+0.0026$ & $0.0026$ & $+1.03$ & $129{,}717$ \\
+$1.26$ & $-0.0009$ & $0.0018$ & $-0.50$ & $317{,}251$ \\
+$1.99$ & $+0.0003$ & $0.0011$ & $+0.38$ & $778{,}781$ \\
+$3.16$ & $+0.0006$ & $0.0007$ & $+0.98$ & $1{,}903{,}198$ \\
+$5.01$ & $+0.0001$ & $0.0005$ & $+0.30$ & $4{,}611{,}140$ \\
+$7.94$ & $-0.0004$ & $0.0003$ & $-1.17$ & $11{,}042{,}898$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_2pt_chirality.png}
+\caption{Two-point chirality correlation $w_{\rm CW}(\theta)$
+(panel~a, data with $\pm 1\sigmaunit$ and $\pm 2\sigmaunit$ null
+bands shaded) and per-bin significance (panel~b). The maximum
+deviation is $-2.41\sigmaunit$ at $\theta\!\approx\!0.5^\circ$,
+which coincides with the DESI Legacy Survey brick angular scale
+($\sim\!0.25^\circ$ DR8 brick edge, periodic at $\sim\!0.5^\circ$).
+A genuine cosmological CW-CW clustering signal would not have a
+characteristic scale at the survey-brick boundary. Across the
+remaining nine bins the correlation is consistent with the
+label-shuffle null at $|\sigma|<1.2$; under a look-elsewhere
+correction across the $10$ tested bins the $-2.4\sigmaunit$ peak
+drops below $|\sigma|<2$ post-LEE.\label{fig:wtheta}}
+\end{figure}
+
+The maximum deviation is $-2.41\sigmaunit$ at $\theta\!\approx\!0.5^\circ$
+(a negative excursion; CW spirals are slightly less likely to be
+paired with CW than expected from random labeling at that
+separation), with all other nine bins within $|\sigma|<1.2$.
+Under a look-elsewhere correction across the ten tested bins the
+$-2.4\sigmaunit$ peak drops below $|\sigma|<2$ post-LEE. The
+coincidence with the DESI Legacy Survey DR8 brick angular scale
+($\sim\!0.25^\circ$--$0.5^\circ$) is suggestive of a
+brick-boundary classifier artifact rather than a primordial
+anti-correlation. At the largest tested scales ($5^\circ$ and
+$8^\circ$, with $4.6$M and $11.0$M pairs respectively) the
+correlation is null at $|\sigma|<1.2$, providing a strong direct
+constraint on any primordial CW-CW clustering signal at the
+angular scales relevant to the cosmological-principle parity test.
+
+The $w_{\rm CW}(\theta)$ result is the fourth independent line of
+evidence (after the real-space dipole, the MASTER subsample-mask
+$\ell\!=\!1$, and the confidence-stratified diagnostics) that
+the chirality field carries no primordial parity-violating signal
+at the present sub-percent sensitivity.
 
 \subsection{Hemisphere Asymmetry}
 \label{sec:hemisphere}
