@@ -3316,11 +3316,24 @@ chirality should use the GZ1 ground-truth subset directly.
 This research used the DESI Legacy Imaging Surveys Data Release~8;
 the Galaxy Zoo citizen science project; the Smith42/galaxies dataset on HuggingFace;
 and the CE-ResNet catalog of Jia et al.\ (2023). Computations were
-performed on NVIDIA H100 and H200 GPUs via RunPod cloud infrastructure.
+performed on NVIDIA H100, H200, and RTX A5000 GPUs via RunPod cloud
+infrastructure.
 
 \textit{Facilities:} DESI Legacy Imaging Surveys, HuggingFace, RunPod.
 
-\textit{Software:} Astropy~\cite{Astropy:2022}, HEALPix/healpy~\cite{Gorski:2005,Zonca:2019}, NumPy~\cite{Harris:2020}, pandas~\cite{McKinney:2010}, PyTorch~\cite{Paszke:2019}, timm~\cite{Wightman:2019}.
+\textit{Software:} Astropy~\cite{Astropy:2022}, HEALPix/healpy~\cite{Gorski:2005,Zonca:2019}, NumPy~\cite{Harris:2020}, pandas~\cite{McKinney:2010}, PyTorch~\cite{Paszke:2019}, timm~\cite{Wightman:2019}, NaMaster/pymaster.
+
+\textit{AI tool usage:} AI assistants (large language models, including
+Anthropic Claude) were used during this project for code review,
+mathematical-derivation cross-checking, manuscript-style review,
+adversarial peer-review simulation against external published
+literature, and reproducibility-script drafting. All scientific
+results (catalogs, statistical estimators, MC nulls, numerical values)
+are derived from the cited public datasets and the open-source
+pipelines in
+\url{https://github.com/Hubify-Projects/bigbounce}; no AI tool generated
+or rewrote any numerical result. All AI-suggested wording was reviewed
+by the author before inclusion.
 \end{acknowledgments}
 
 \begin{thebibliography}{99}
