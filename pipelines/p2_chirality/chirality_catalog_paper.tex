@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.73}
+\newcommand{\paperVersion}{v1.0.74}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.71: cross-vendor v1.0.70 R-round closures -- empirical $0.5\%$ floor reframed honestly (non-detection rather than calibrated $3\sigmaunit$ floor); monopole-mask leakage interpretation rewritten (null is rejected, MASTER reduction is $\sim\!70\%$, residual is unresolved); face-on dual-null reported (monopole-preserving + isotropic at consistent verdicts); bib dedup + Jia/Dosovitskiy title fixes; ``full-sky'' to ``wider-coverage''; table* placement \texttt{[t]}; see repository README.}
 
@@ -794,9 +794,45 @@ of the DESI Legacy footprint, but is not validated here by a Rayleigh
 or KS test on the actual edge-on PA distribution; such a validation
 (a single 1D histogram on the $785{,}859$-galaxy subsample) is on the
 post-arXiv TODO list. A direct full-$D_4$-TTA validation run on a
-$10^{4}$--$10^{5}$-galaxy hold-out also remains on the post-arXiv TODO
-list as a strengthening cross-check; the present geometric bound is
-the strongest statement attainable without either run. Second, the horizontal flip is the unique
+$2{,}000$-galaxy hold-out has been performed (v1.0.74; companion
+artifact
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4\_tta\_holdout\_results.json}),
+running the published \vit{}-Small chirality\_v2 checkpoint over $8\times 1{,}558$
+($N_{\rm valid}\!=\!1{,}558$ after Sky Viewer cutout-API rate-limiting
+losses) augmented forward passes (the four $C_4$ in-plane rotations
+$\times$ \{identity, horizontal flip\}, with the CW$\leftrightarrow$CCW
+permutation applied post-softmax on the four flipped orientations). Two
+load-bearing results emerge: (a)~the mean per-galaxy $\pcw^{D_4}\!=\!0.3901$
+is identical to the mean $\pcw^{Z_2}\!=\!0.3904$ on the same holdout,
+confirming the classifier's \emph{expected} CW probability is
+rotation-invariant in expectation as the geometric bound above
+predicted; (b)~the argmax-defined CW-fraction $\CW/(\CW+\CCW)$
+shifts from $0.5156$ under $Z_2$-only TTA to $0.5021$ under full
+$D_4$-TTA on this holdout (a $\Delta\!=\!1.35\%$ residual rotational
+systematic in argmax-defined CW-fraction NOT cancelled by 2-fold flip
+TTA alone). The argmax shift is concentrated on borderline galaxies:
+the median per-galaxy std of $\pcw$ across the four $C_4$ rotations is
+$0.078$ ($p_{95}\!=\!0.478$), and $21.4\%$ of galaxies change argmax
+class between $Z_2$ and $D_4$ TTA on this holdout, but the global
+mean probability is preserved as noted in (a). This explains the
+otherwise-puzzling structure: a borderline galaxy with
+$\pcw\!\approx\!\pccw\!\approx\!0.4$ and $\pns\!\approx\!0.2$ flips
+its argmax under small rotation-induced probability perturbations
+without changing the expected probability, so per-galaxy argmax
+labels carry non-trivial $D_4$-related uncertainty that
+$Z_2$-only TTA does not fully resolve, while ensemble-mean statistics
+(the catalog's headline) are robust. Catalog~C \texttt{class\_eq} labels
+should therefore be treated as having $\sim\!20\%$ rotational
+uncertainty at the individual-galaxy level (a label-noise
+contribution that downstream users should fold into their analyses,
+particularly for HC-spiral-cut work); the global $\pcw$ statistic on
+the full $3.2\!\times\!10^{6}$ sample is unaffected to the precision
+of the present 1,558-galaxy holdout ($\pm\!1.3\%$ Poisson). A full
+$3.2\!\times\!10^{6}$-galaxy $D_4$-TTA re-inference (estimated
+$\sim 72\!\times$ the current single-flip throughput on the same H200)
+would yield a precise calibration but is not undertaken in the present
+release; the holdout bound suffices to demonstrate that the global
+catalog statistics are not biased by the $Z_2$-only restriction. Second, the horizontal flip is the unique
 transformation that exactly swaps CW~$\leftrightarrow$~CCW by
 construction, making the $2$-fold flip-TTA the minimal set that
 guarantees output-level chirality equivariance (the property being

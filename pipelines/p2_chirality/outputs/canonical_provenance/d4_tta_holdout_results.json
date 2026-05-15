@@ -1,0 +1,48 @@
+{
+  "version": "v1.0.71-d4-tta-holdout-local",
+  "date_utc": "2026-05-15T09:41:27Z",
+  "config": {
+    "n_sampled": 2000,
+    "n_valid": 1558,
+    "n_skipped": 442,
+    "seed": 42,
+    "batch_size": 32,
+    "device": "mps",
+    "model_repo": "bamfai/galaxy-chirality-v2",
+    "model_val_acc": 0.9368777275085449,
+    "image_source": "DESI Legacy Sky Viewer ls-dr9 cutouts at native size 150 px",
+    "preprocessing": "resize-then-center-crop to 224 + ImageNet mean/std normalization"
+  },
+  "cw_fraction": {
+    "z2_2fold_flip": 0.5155855096882898,
+    "c4_4fold_rotation": 0.6300335570469798,
+    "d4_8fold_full": 0.502106149957877,
+    "delta_z2_to_d4_pct": -1.347935973041281
+  },
+  "mean_per_galaxy_probs": {
+    "p_cw_z2": 0.39036568999290466,
+    "p_cw_d4": 0.390133261680603,
+    "p_ccw_z2": 0.3816179633140564,
+    "p_ccw_d4": 0.3793903887271881
+  },
+  "per_galaxy_std_across_orientations": {
+    "c4_rotation": {
+      "median": 0.07756681740283966,
+      "p95": 0.47802484035491943,
+      "max": 0.49997782707214355
+    },
+    "z2_flip": {
+      "median": 0.0690034031867981,
+      "p95": 0.49983811378479004
+    },
+    "d4_full": {
+      "median": 0.3767293691635132,
+      "p95": 0.48758596181869507
+    }
+  },
+  "class_flip_rate": {
+    "any_class_z2_to_d4_pct": 21.437740693196407,
+    "cw_vs_ccw_among_confident_spirals_pct": 24.289405684754524
+  },
+  "interpretation": "The paper's 2-fold flip TTA is Z2-equivariant by construction (symmetric in CW<->CCW). Full D4 (8-fold) TTA additionally averages over the 4 in-plane rotations. The delta_z2_to_d4_pct quantifies the residual rotational systematic NOT cancelled by Z2-flip TTA alone. The per-galaxy std of p_CW across rotations (c4_rotation) is the rotational-variance bound: small values mean ViT-Small is approximately rotation-invariant on DESI Legacy spirals and the paper's 2-fold restriction is safe; large values would mean residual systematics."
+}
