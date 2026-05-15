@@ -14,6 +14,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \usepackage{hyperref}
 \usepackage{xurl}       % allow URL/path line breaks at any character
+\usepackage{xstring}    % string substitution for \artifact URL backslash strip
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -37,8 +38,14 @@
 % Wrap call in \sloppy regions if you want even more aggressive breaking.
 \makeatletter
 \newcommand{\artbreak@us}{\discretionary{\char`\_}{}{\char`\_}}
+% Strip backslashes from a path to produce the URL-safe form;
+% e.g. "pipelines/p2\_chirality" -> "pipelines/p2_chirality".
+% Fixes Gemini-M2 finding: prior \artifact{} macro passed the
+% LaTeX-escaped path directly into \href{...}, leaving literal
+% backslashes in the URL that browsers reject.
 \DeclareRobustCommand{\artifact}[1]{%
-  \href{https://github.com/Hubify-Projects/bigbounce/blob/main/#1}{%
+  \StrSubstitute{#1}{\_}{_}[\art@urlpath]%
+  \href{https://github.com/Hubify-Projects/bigbounce/blob/main/\art@urlpath}{%
     \begingroup
       \let\_\artbreak@us
       \texttt{#1}%
@@ -58,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.71}
+\newcommand{\paperVersion}{v1.0.72}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.71: cross-vendor v1.0.70 R-round closures -- empirical $0.5\%$ floor reframed honestly (non-detection rather than calibrated $3\sigmaunit$ floor); monopole-mask leakage interpretation rewritten (null is rejected, MASTER reduction is $\sim\!70\%$, residual is unresolved); face-on dual-null reported (monopole-preserving + isotropic at consistent verdicts); bib dedup + Jia/Dosovitskiy title fixes; ``full-sky'' to ``wider-coverage''; table* placement \texttt{[t]}; see repository README.}
 
@@ -502,6 +509,32 @@ than a calibrated $3\sigmaunit$ floor); the analytic Fisher Poisson
 asymptote is $\sim\!0.29\%$ at $3\sigmaunit$ in the ideal-statistical
 limit.
 \end{itemize}
+
+Table~\ref{tab:headline_summary} consolidates the per-estimator
+$N_{\rm spiral}$, $f_{\rm sky}$, mask, null type, and reported
+$\sigma$ in a single place so that every headline statistic can be
+read off without cross-referencing footnotes.
+
+\begin{table*}[t]
+\caption{\label{tab:headline_summary}Headline-estimator summary. Each
+row pins the exact catalog selection, sky-coverage fraction, mask
+identifier, null model, and reported $\sigma$ for one of the
+estimators (i)--(vi) above. Verification:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/}
+(per-estimator JSON files).}
+\begin{ruledtabular}
+\begin{tabular}{lrcccr}
+\textbf{Estimator (Sec.)} & $N_{\rm spiral}$ & $f_{\rm sky}$ & \textbf{Mask} & \textbf{Null} & \textbf{$\sigma$} \\
+\hline
+(i)~real-space dipole (\S\ref{sec:dipole}) & $3{,}201{,}160$ & --- & none & per-pixel shuffle & $+0.43$ \\
+(ii)~MASTER deconv (\S\ref{sec:dipole}) & $5{,}547{,}858$ & $0.659$ & subsample & per-pixel shuffle & $-0.12$ \\
+(iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & $0.494$ & canonical & per-pixel shuffle & $+1.85$ \\
+(iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
+(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & $0.494$ & canonical & monopole-only generative & $+5.88$ pre, $+1.85$ post \\
+(vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & per-pixel shuffle & non-detection below $0.5\%$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 The two primary estimators (i),~(ii) determine the headline
 ``no-dipole'' verdict. The secondary diagnostics
@@ -1632,7 +1665,7 @@ decoupled $C_\ell$ at $\ell\!=\!1$ both reported with their data $z$-score
 against the null. The MASTER decoupling reduces the leakage by a
 factor of $\sim\!3$ ($+5.9\sigmaunit$ pre-MASTER to
 $+1.85\sigmaunit$ post-MASTER). Verification:
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}.
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results\_smoke.json}.
 \label{tab:monopole_mask_null}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -1762,9 +1795,22 @@ Companion artifact:
   longitude and latitude ($\sim\!650$ directions).  The dashed
   horizontal lines mark $2\sigmaunit$ and $3\sigmaunit$ thresholds.
   The peak asymmetry of $3.05\sigmaunit$ (red diamond, local
-  pre-LEE significance) has a CW-fraction half-difference amplitude
-  of only $0.17\%$ (full dipole-amplitude $\max|A| = 0.853\%$ under
-  $p_{\rm CW} = \tfrac12(1+A\cos\theta)$). The conservative analytic
+  pre-LEE significance) has a half-difference amplitude
+  $\max|\,\Delta p_{\rm CW}\,|\,=\,0.17\%$ on the $10^\circ$-Galactic-grid
+  parametrization. A second, distinct hemisphere observable on the
+  NSIDE$\,{=}\,8$ all-direction grid maximizes over 768 directions
+  and yields a max amplitude $\max|A| = 0.853\%$ (in the full-amplitude
+  convention $p_{\rm CW}(\hat n)\!=\!\tfrac12(1+A\cos\theta)$); this
+  is the same observable that Table~\ref{tab:monopole_mask_null}
+  reports in pseudo-$C_\ell$-like units as
+  $\max|A| = 1.48{\times}10^{-3}$. The three figures
+  ($0.17\%$, $0.853\%$, $1.48{\times}10^{-3}$) are NOT three
+  conventions of one number; they are three different observables
+  on three different parametrizations of the hemisphere data
+  (single 10° great-circle half-difference vs NSIDE=8 max-over-768
+  amplitude vs pseudo-$C_\ell$ scalar product), and the matching
+  null calibrations in Table~\ref{tab:monopole_mask_null} confirm
+  this. The conservative analytic
   Bonferroni / BH penalty across ${\sim}650$ directions reduces the
   local effective significance to $<\!1\sigmaunit$ (consistent with
   null). The direct $10{,}000$-MC permutation null gives
