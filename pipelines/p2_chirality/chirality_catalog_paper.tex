@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.79}
+\newcommand{\paperVersion}{v1.0.80}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -76,8 +76,8 @@
 \title{A Quantifiable Monopole-Mask Leakage Channel Can Mimic\\
 Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant\\
 Re-Analysis of 8.47~Million DESI Legacy Galaxies\\
-(3.2 Million Spirals) Yields $|A_{\rm dipole}|\!<\!0.5\%$ at\\
-Sub-Percent Sensitivity}
+(3.2 Million Spirals) at Sub-Percent Sensitivity\\
+($50\%$-Recovery $3\sigmaunit$ Threshold $A\!\approx\!0.75\%$)}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -777,16 +777,27 @@ its horizontal reflection. The equivariant probability is computed as:
 \pns^{\rm eq} &= \tfrac{1}{2}\bigl(\pns^{\rm orig} + \pns^{\rm flip}\bigr). \nonumber
 \end{align}
 %
-This procedure enforces perfect flip-equivariance by construction
-(flip-swap correlation $= 1.000$), at the cost of doubling inference
-time. We average in probability space (post-softmax) rather than
-logit space because the softmax average exactly symmetrizes the
-CW$\leftrightarrow$CCW channels by construction, which is the primary
-goal; logit averaging would also symmetrize but with different
-confidence scaling and no equivariance guarantee for the \NS{} channel.
-The choice affects confidence calibration but not the equivariance
-property that ensures $f_{\rm CW}^{\rm eq}$ is unbiased under horizontal
-reflection.
+This procedure enforces \emph{flip-equivariance of the output
+protocol} (flip-swap correlation $= 1.000$ between the symmetrized
+$\pcw^{\rm eq}$ and $\pccw^{\rm eq}$ channels), at the cost of
+doubling inference time. We emphasize what this does NOT guarantee:
+the procedure does not force $\pcw^{\rm eq}\!=\!\pccw^{\rm eq}$
+per galaxy (the soft chirality score remains nonzero on any
+individual image), it does not eliminate classifier-input or
+training-data bias \emph{per se}, and it does not by itself force
+the global $\pcw$ monopole to $0.5$ on the catalog. The residual
+$\pcw\!=\!0.4974$ monopole and the $20\%$ per-galaxy argmax
+rotational uncertainty (Sec.~\ref{sec:tta}, $D_4$ hold-out) are
+treated downstream as nuisance systematics rather than as
+contradictions to the TTA equivariance protocol. We average in
+probability space (post-softmax) rather than logit space because
+the softmax average exactly symmetrizes the CW$\leftrightarrow$CCW
+output channels; logit averaging would also symmetrize but with
+different confidence scaling and no equivariance guarantee for
+the \NS{} channel. The choice affects confidence calibration but
+not the equivariance property that ensures $f_{\rm CW}^{\rm eq}$
+is mirror-symmetric under horizontal reflection at the catalog
+level.
 We emphasize that this is a \emph{post-hoc} test-time procedure, not architectural equivariance: the \vit{} backbone is not intrinsically equivariant to reflections (unlike, e.g., CE-ResNet~\cite{Jia:2023}, which embeds the equivariance into the network weights). The TTA procedure guarantees equivariance of the \emph{outputs} but not the \emph{internal representations}; consequently, the model's confidence and feature maps are not reflection-symmetric, and the equivariance guarantee holds only for the specific two-fold (original + horizontal flip) averaging protocol used here. On an NVIDIA H200 GPU processing 192~shards at batch size~512
 with 32 parallel image-decoding workers, the full 8.47~million-galaxy
 inference completes in approximately 18~hours. A scaling benchmark on the
@@ -1810,7 +1821,7 @@ $+1.69\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 \begin{tabular}{lccc}
 \textbf{Statistic} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
 \hline
-Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $1.696{\times}10^{-2}$ & $(1.685{\pm}0.068){\times}10^{-2}$\,\textsuperscript{a} & $+1.69$ \\
+Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $1.696{\times}10^{-2}$ & $(1.6846{\pm}0.0068){\times}10^{-2}$\,\textsuperscript{a} & $+1.69$ \\
 Post-MASTER $C_\ell^{(\ell=1)}$ (canonical mask) & --- & --- & $+1.85$ \\
 Post-MASTER $C_\ell^{(\ell=1)}$ (subsample mask) & --- & --- & $-0.12$ \\
 Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$) & $3.48{\times}10^{-3}$ & $(1.69{\pm}0.41){\times}10^{-3}$ & $+4.42$ \\
@@ -2949,25 +2960,35 @@ in Table~\ref{tab:mc_injection}.
 \begin{table}[h]
 \caption{\label{tab:mc_injection}Per-pixel-shuffle null MC injection-recovery
 sweep (HC-spiral subsample, $n=471{,}049$; $N_{\rm inj}=100$ axes per
-amplitude; $N_{\rm MC}=500$ per realization).}
+amplitude; $N_{\rm MC,null}=1000$ per realization). The extended
+sweep (v1.0.78) adds the $A\!\in\!\{0.75,\,1.00,\,1.50,\,2.00\}\%$
+rows that complete the $50\%$-recovery localization at $A=0.75\%$.
+Companion artifact:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/injection\_recovery\_extended.json}.}
 \begin{ruledtabular}
-\begin{tabular}{cccc}
-$A$ & $\langle\sigma\rangle$ & $P(\sigma{>}2)$ &
+\begin{tabular}{ccccc}
+$A$ & $\langle\sigma\rangle$ & $P(\sigma{>}2)$ & $P(\sigma{>}3)$ &
 $P(\Delta\theta_{\rm rec,inj}{<}30^{\circ})$ \\
 \hline
-$0.05\%$ & $-0.13$ & $0.04$ & $0.14$ \\
-$0.10\%$ & $-0.09$ & $0.05$ & --- \\
-$0.20\%$ & $+0.08$ & $0.05$ & $0.21$ \\
-$0.30\%$ & $+0.20$ & $0.11$ & --- \\
-$0.50\%$ & $+0.68$ & $0.18$ & $0.38$ \\
+$0.05\%$ & $-0.13$ & $0.04$ & --- & $0.14$ \\
+$0.10\%$ & $-0.09$ & $0.05$ & --- & --- \\
+$0.20\%$ & $+0.08$ & $0.05$ & $0.00$ & $0.21$ \\
+$0.30\%$ & $+0.20$ & $0.11$ & --- & --- \\
+$0.50\%$ & $+0.68$ & $0.18$ & $0.03$ & $0.38$ \\
+$0.75\%$ & $+2.36$ & $0.59$ & $0.50$ & --- \\
+$1.00\%$ & $+4.16$ & $0.91$ & $0.79$ & --- \\
+$1.50\%$ & $+8.30$ & $1.00$ & $1.00$ & --- \\
+$2.00\%$ & $+11.71$ & $1.00$ & $1.00$ & --- \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-No amplitude in the swept range $\{0.05\%,\ldots,0.50\%\}$ satisfies
-both $\langle\sigma\rangle{>}2$ and $P(\sigma{>}2){>}0.5$, so the
-empirical $50\%$-recovery threshold under this strict per-pixel-shuffle
-null lies above $0.5\%$. \emph{Verdict:} the $0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
+The empirical $50\%$-recovery-at-$3\sigmaunit$ threshold first
+crosses at $A\!=\!0.75\%$ in the extended sweep
+(P($\sigma\!>\!3$)$\!=\!0.50$ at $A\!=\!0.75\%$, rising to $0.79$
+at $A\!=\!1.00\%$ and $1.00$ at $A\!\geq\!1.50\%$); no amplitude in
+the truncated $\{0.05\%,\ldots,0.50\%\}$ range satisfies the
+50\%-recovery criterion. \emph{Verdict:} the $0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
 \emph{statistical Poisson floor} ($\sigma_{\rm stat}\!\approx
 1/\!\sqrt{3 N_{\rm spirals} f_{\rm sky}}{\,\times\,}\!1.4$, the
 analytic Fisher quantity in Eq.~\ref{eq:sigma_dip}, already framed in
@@ -3113,6 +3134,23 @@ HC-strict ($p_{\rm eq}\!>\!0.8$) & 624{,}660 & 0.49602 & 0.398 & $+0.87$ (0.187)
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
+
+\paragraph{Reconciliation with the headline $+0.43\sigmaunit$
+real-space dipole.}
+The Catalog~C-full $+4.31\sigmaunit$ in this table and the
+headline $+0.43\sigmaunit$ real-space dipole of
+Sec.~\ref{sec:dipole} are computed with different estimators on
+the same on-sky data: the present table uses a weighted
+least-squares cos-$\theta$ fit on a pixel map and reports the
+amplitude relative to a small-$N_{\rm MC}$ monopole-preserving
+null, while the headline statistic uses a Healpix dipole fit
+with $N_{\rm MC}\!=\!10{,}000$ per-pixel-shuffle null. Both
+null constructions preserve the global $p_{\rm CW}\!=\!0.4974$
+monopole by design; the numerical disagreement reflects
+estimator definition (linear-LSQ amplitude vs Healpix dipole)
+and null-sample variance, not a contradiction. The two values are
+sensitivity-comparable: in both estimators the HC-cut subsamples
+collapse to $|\sigma|\!\leq\!1\sigmaunit$.
 
 The two HC-cut subsamples (which exclude the lowest-confidence
 classifications, where edge-on contamination is concentrated) show
