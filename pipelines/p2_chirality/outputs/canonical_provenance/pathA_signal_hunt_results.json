@@ -1,0 +1,127 @@
+{
+  "confidence_stratified": {
+    "interpretation": "If the dipole grows monotonically with confidence, that's a primordial signal (lower-confidence galaxies dilute it). If it shrinks or stays flat, it's noise/systematics.",
+    "bins": [
+      {
+        "label": "max_p_eq_in_[0.4,0.5)",
+        "N_spiral": 359293,
+        "p_CW": 0.5002797159978069,
+        "A_obs_pct": 1.19521806453496,
+        "sigma_isotropic": 2.989752561039561,
+        "sigma_monopole_preserving": 3.0033480665410233,
+        "p_value_isotropic": 0.00999000999000999,
+        "p_value_monopole_preserving": 0.008991008991008992
+      },
+      {
+        "label": "max_p_eq_in_[0.5,0.6)",
+        "N_spiral": 1874152,
+        "p_CW": 0.49736574194622424,
+        "A_obs_pct": 0.5310570433128348,
+        "sigma_isotropic": 3.286993321626075,
+        "sigma_monopole_preserving": 3.1556245117685626,
+        "p_value_isotropic": 0.003996003996003996,
+        "p_value_monopole_preserving": 0.008991008991008992
+      },
+      {
+        "label": "max_p_eq_in_[0.6,0.7)",
+        "N_spiral": 193560,
+        "p_CW": 0.49705517668939864,
+        "A_obs_pct": 0.6828470104228282,
+        "sigma_isotropic": -0.031024014067565362,
+        "sigma_monopole_preserving": -0.11330317839091292,
+        "p_value_isotropic": 0.48451548451548454,
+        "p_value_monopole_preserving": 0.4855144855144855
+      },
+      {
+        "label": "max_p_eq_in_[0.7,0.8)",
+        "N_spiral": 131364,
+        "p_CW": 0.494762644255656,
+        "A_obs_pct": 1.6817817966777657,
+        "sigma_isotropic": 1.9795664742789345,
+        "sigma_monopole_preserving": 2.218726813288892,
+        "p_value_isotropic": 0.04695304695304695,
+        "p_value_monopole_preserving": 0.029970029970029972
+      },
+      {
+        "label": "max_p_eq_in_[0.8,1.0)",
+        "N_spiral": 619902,
+        "p_CW": 0.4959929150091466,
+        "A_obs_pct": 0.5564562363800291,
+        "sigma_isotropic": 0.8727399591713607,
+        "sigma_monopole_preserving": 0.8988143938859807,
+        "p_value_isotropic": 0.17182817182817184,
+        "p_value_monopole_preserving": 0.17382617382617382
+      }
+    ]
+  },
+  "ra_quadrants": {
+    "interpretation": "Per-quadrant dipoles should be consistent if signal is cosmological; large variance = systematic (footprint/imaging).",
+    "quadrants": [
+      {
+        "label": "RA_quadrant_[0,90)",
+        "N_spiral": 939351,
+        "p_CW": 0.49534519045596376,
+        "A_obs_pct": 1.3022201308510233,
+        "sigma_isotropic": 0.7825852842735453,
+        "sigma_monopole_preserving": 0.8025794787636976,
+        "p_value_isotropic": 0.1978021978021978,
+        "p_value_monopole_preserving": 0.1838161838161838
+      },
+      {
+        "label": "RA_quadrant_[90,180)",
+        "N_spiral": 837605,
+        "p_CW": 0.4974647954584798,
+        "A_obs_pct": 1.5980124251169399,
+        "sigma_isotropic": 2.4889351856023207,
+        "sigma_monopole_preserving": 2.6860958836626256,
+        "p_value_isotropic": 0.01998001998001998,
+        "p_value_monopole_preserving": 0.014985014985014986
+      },
+      {
+        "label": "RA_quadrant_[180,270)",
+        "N_spiral": 859085,
+        "p_CW": 0.4980170763079323,
+        "A_obs_pct": 0.5554229809875121,
+        "sigma_isotropic": -0.8209260217503496,
+        "sigma_monopole_preserving": -0.816261793893078,
+        "p_value_isotropic": 0.7822177822177823,
+        "p_value_monopole_preserving": 0.7852147852147852
+      },
+      {
+        "label": "RA_quadrant_[270,360)",
+        "N_spiral": 565119,
+        "p_CW": 0.4995160311368048,
+        "A_obs_pct": 1.3815191813452479,
+        "sigma_isotropic": 1.4684152043375382,
+        "sigma_monopole_preserving": 1.6174540268810629,
+        "p_value_isotropic": 0.08891108891108891,
+        "p_value_monopole_preserving": 0.06593406593406594
+      }
+    ]
+  },
+  "galactic_hemispheres": {
+    "interpretation": "Galactic-correlated CW excess would indicate dust/extinction systematic; isotropy across NGP/SGP is good.",
+    "hemispheres": [
+      {
+        "label": "galactic_NGP_b>0",
+        "N_spiral": 1782430,
+        "p_CW": 0.49811437195289576,
+        "A_obs_pct": 0.5533259843200992,
+        "sigma_isotropic": 0.4670860200147019,
+        "sigma_monopole_preserving": 0.555671601815269,
+        "p_value_isotropic": 0.26873126873126874,
+        "p_value_monopole_preserving": 0.23076923076923078
+      },
+      {
+        "label": "galactic_SGP_b<0",
+        "N_spiral": 1418730,
+        "p_CW": 0.4963967773995052,
+        "A_obs_pct": 1.0509574300440727,
+        "sigma_isotropic": 2.0244688370664017,
+        "sigma_monopole_preserving": 2.105393109520596,
+        "p_value_isotropic": 0.03596403596403597,
+        "p_value_monopole_preserving": 0.03596403596403597
+      }
+    ]
+  }
+}

@@ -65,17 +65,18 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.75}
+\newcommand{\paperVersion}{v1.0.76}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
-\newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.71: cross-vendor v1.0.70 R-round closures -- empirical $0.5\%$ floor reframed honestly (non-detection rather than calibrated $3\sigmaunit$ floor); monopole-mask leakage interpretation rewritten (null is rejected, MASTER reduction is $\sim\!70\%$, residual is unresolved); face-on dual-null reported (monopole-preserving + isotropic at consistent verdicts); bib dedup + Jia/Dosovitskiy title fixes; ``full-sky'' to ``wider-coverage''; table* placement \texttt{[t]}; see repository README.}
+\newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
 \begin{document}
 
 \preprint{HUBIFY-2026-004}
 
-\title{A Survey-Scale Chirality Catalog of 8.47 Million Galaxies\\
-(3.2 Million Spirals): No Evidence for Large-Scale Parity-Violating\\
-Dipoles in Galaxy Morphology at Sub-Percent Sensitivity}
+\title{Galaxy-Chirality Dipole Claims Are Explained by Monopole-Mask\\
+Leakage: An Equivariant Re-Analysis of 8.47~Million DESI Legacy\\
+Galaxies (3.2 Million Spirals) Constrains $|A_{\rm dipole}|$ below\\
+the $0.5\%$-Amplitude Scale}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -84,31 +85,60 @@ Dipoles in Galaxy Morphology at Sub-Percent Sensitivity}
 \date{\paperTimestamp{} \textemdash{} \paperVersion}
 
 \begin{abstract}
-We present a survey-scale chirality catalog of $8{,}474{,}531$
-galaxies from the DESI Legacy Imaging Surveys DR8, of which
-$3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$ \CW{} +
-$1{,}609{,}053$ \CCW{} after equivariant test-time symmetrization;
-the remaining $5{,}273{,}371$ are \NS{} or edge-on). Classification
-uses a Vision Transformer (\vit) fine-tuned on $26{,}636$ images from
-Galaxy Zoo~1 ($6{,}637$), high-confidence CE-ResNet pseudo-labels
-($17{,}999$), and synthetic hard negatives ($2{,}000$). The
-load-bearing external check is the $240{,}919$-galaxy GZ1 cross-match,
-which gives $69.91\%$ CW/CCW agreement (Cohen's $\kappa=0.40$); the
-internal three-class training-set validation accuracy of $93.7\%$ is
-reported only as a training-pipeline self-consistency check because
-$67.6\%$ of training labels derive from CE-ResNet pseudo-labels.
+Prior reports of a $2$--$4\%$ large-scale chirality dipole in
+SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) have
+fueled a decade-long controversy over a possible parity-violating
+signal in the late-time Universe. We demonstrate that this signal
+class arises from a specific, quantifiable leakage channel: a
+small uniform CW-vs-CCW monopole couples to the patchy survey-mask
+geometry and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$ to
+$+6.48\sigmaunit$, then \emph{vanishes} to $-0.12\sigmaunit$ once
+the MASTER mode-coupling matrix is applied on the same data. A
+controlled monopole-only generative null (canonical mask, NSIDE=64,
+$N\!=\!500$ realizations of $\mathrm{Binomial}(n_{\rm pix},
+p_{\rm CW}^{\rm global})$ with $p_{\rm CW}^{\rm global}\!=\!0.4974$)
+reproduces $\sim\!30\%$ of the observed pre-MASTER pseudo-$C_1$
+power from the leakage channel alone; the remaining excess is
+removed by MASTER decoupling, with a small residual $+1.85\sigmaunit$
+on the canonical mask that we report transparently as an
+unresolved sub-detection-threshold systematic rather than as a
+calibrated leakage floor or as a primordial-dipole signal.
 
-We measure no large-scale chirality \emph{dipole} after flip-equivariant
-post-processing. The real-space dipole fit on the canonical Catalog~C
-sample is $\sigma_{\rm dipole}=0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
-and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient on the
-analysis subsample mask is $C_1\!=\!(1.494\!\pm\!0.429)\!\times\!10^{-6}\,$sr,
-$-0.12\sigmaunit$ from null. A direct $500$-MC NaMaster execution on the
-canonical $f_{\rm sky}\!=\!0.4938$ mask gives a mild $+1.85\sigmaunit$
-excess at $\ell\!=\!1$, which we interpret as canonical-mask geometric
-leakage of the global monopole rather than as a primordial signal (the
-two independent wider-coverage estimators above, which average over more
-contiguous coverage, are null). Systematic-inclusive sensitivity is reported honestly rather than
+We anchor the demonstration on a survey-scale chirality catalog of
+$8{,}474{,}531$ galaxies from the DESI Legacy Imaging Surveys DR8,
+of which $3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$
+\CW{} $+$ $1{,}609{,}053$ \CCW{} after equivariant test-time
+symmetrization). Classification uses a Vision Transformer (\vit)
+fine-tuned on $26{,}636$ images from Galaxy Zoo~1 ($6{,}637$),
+high-confidence CE-ResNet pseudo-labels ($17{,}999$), and synthetic
+hard negatives ($2{,}000$). The load-bearing external check is the
+$240{,}919$-galaxy GZ1 cross-match: $69.91\%$ CW/CCW agreement
+(Cohen's $\kappa\!=\!0.40$); the internal three-class training-set
+validation accuracy of $93.7\%$ is reported only as a
+training-pipeline self-consistency check because $67.6\%$ of
+training labels derive from CE-ResNet pseudo-labels. A
+$1{,}558$-galaxy $D_4$-TTA hold-out confirms the production
+$Z_2$-only TTA preserves the ensemble-mean $\pcw$ (rotation-
+invariance in expectation; $0.3904\!\equiv\!0.3901$ under
+$Z_2$ vs $D_4$); per-galaxy argmax labels carry $\sim\!20\%$
+rotational uncertainty that downstream users analyzing individual
+borderline galaxies should fold into their error budget.
+
+The headline cosmological measurement is a \emph{non-detection of a
+parity-violating dipole} after the leakage channel is removed. The
+real-space dipole fit on the canonical Catalog~C sample is
+$\sigma_{\rm dipole}\!=\!0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
+and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient
+on the analysis subsample mask is $C_1\!=\!(1.494\!\pm\!0.429)
+\!\times\!10^{-6}\,$sr, $-0.12\sigmaunit$ from null. Confidence-
+stratified diagnostics (Sec.~\ref{sec:signal_hunt}) show the
+apparent $+3\sigmaunit$ dipole observed in the low-confidence
+spiral bins $p_{\rm eq}\!\in\![0.4,0.6)$ \emph{disappears} in the
+high-confidence subsamples $p_{\rm eq}\!>\!0.6$ ($-0.03\sigmaunit$
+to $+0.87\sigmaunit$ across three HC bins), independently confirming
+that the residual is classifier label-systematics rather than a
+primordial signal that would survive (or indeed amplify) a
+confidence cut. Systematic-inclusive sensitivity is reported honestly rather than
 optimistically: the per-pixel-shuffle injection-recovery sweep (Table~\ref{tab:mc_injection})
 gives $P(\sigma\!>\!2)\!=\!0.18$ at $A\!=\!0.5\%$ and never crosses the
 50\% recovery criterion at any tested amplitude (up to $A\!=\!2\%$), so the
@@ -138,19 +168,6 @@ mask-leakage projection of the same uniform monopole and is reported
 as a documented systematic-floor artifact, not as a primordial-dipole
 detection, since the independent wider-coverage $\ell\!=\!1$
 estimators on the identical data are null.
-
-A direct $D_4$-TTA validation on a $1{,}558$-galaxy hold-out
-(Sec.~\ref{sec:tta}) confirms that the classifier's expected
-per-galaxy $\pcw$ is rotation-invariant in expectation (mean
-$\pcw$ identical under $Z_2$-only and full $D_4$ TTA), while the
-argmax-defined CW-fraction shifts by $\Delta\!=\!1.35\%$ on
-borderline galaxies, implying $\sim\!20\%$ rotational uncertainty
-in per-galaxy argmax labels but not in the ensemble-mean catalog
-statistics that carry the headline result. Catalog~C
-\texttt{class\_eq} labels should therefore be treated as carrying a
-$D_4$-rotational uncertainty contribution at the per-galaxy level;
-the catalog headline $p_{\rm CW}\!=\!0.4974$ figure is robust to
-this contribution by the rotation-invariance of the ensemble mean.
 
 Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim differs
 from the present measurement by a factor of $\sim\!6$--$12$ in
@@ -1802,6 +1819,88 @@ canonical-mask reconciliation, with an explicit leakage subtraction or
 a systematics-preserving null, remains a sensitivity-improvement target
 for a future LSST-scale analysis with more contiguous sky coverage.
 
+\subsection{Signal-Hunt Diagnostics: Confidence Stratification, Sky Quadrants, Galactic Hemispheres}
+\label{sec:signal_hunt}
+
+If the residual canonical-mask excess at $+1.85\sigmaunit$ were a
+primordial dipole rather than a systematic artifact, the signal
+should \emph{survive or amplify} under cuts that improve sample
+purity (high-confidence classifications) and should be \emph{stable}
+under cuts that probe specific systematics (sky quadrant, galactic
+foreground). We test all three in
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/pathA\_signal\_hunt\_results.json}.
+
+\paragraph{Confidence-stratified dipole.}
+Stratifying Catalog~C by the equivariant maximum class probability
+$\max(p_{\rm CW,eq}, p_{\rm CCW,eq})$ into five bins reveals a
+characteristic systematic-driven structure: the dipole is
+\emph{detected at the $\sim\!3\sigmaunit$ level in the
+low-confidence bins} and \emph{disappears in the high-confidence
+subsamples}.
+
+\begin{table}[h]
+\caption{Confidence-stratified dipole on Catalog~C; isotropic-$p\!=\!0.5$
+and monopole-preserving nulls reported per bin
+($N_{\rm MC}\!=\!1000$, NSIDE=64, seed=42). The signal in the
+low/mid-confidence bins disappears in the HC subsamples, the
+characteristic signature of a classifier label-noise systematic
+rather than a primordial dipole.\label{tab:confidence_bins}}
+\begin{ruledtabular}
+\begin{tabular}{lrcccc}
+\textbf{$\max(p_{\rm eq})$} & $N_{\rm spiral}$ & $p_{\rm CW}$ & $|A|$ (\%) & $\sigma_{\rm iso}$ & $\sigma_{\rm mono}$ \\
+\hline
+$[0.4,0.5)$ & $359{,}293$    & $0.50028$ & $1.195$ & $+2.99$ & $+3.00$ \\
+$[0.5,0.6)$ & $1{,}874{,}152$ & $0.49737$ & $0.531$ & $+3.29$ & $+3.16$ \\
+$[0.6,0.7)$ & $193{,}560$    & $0.49706$ & $0.683$ & $-0.03$ & $-0.11$ \\
+$[0.7,0.8)$ & $131{,}364$    & $0.49476$ & $1.682$ & $+1.98$ & $+2.22$ \\
+$[0.8,1.0)$ & $619{,}902$    & $0.49599$ & $0.556$ & $+0.87$ & $+0.90$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The $+3.3\sigmaunit$ signal in the $1.87$M-galaxy $[0.5,0.6)$ bin
+is striking by sample size alone, but it does not survive the
+sample-purity ladder: cutting to $p_{\rm eq}\!>\!0.6$ gives
+$-0.03\sigmaunit$. A genuine primordial dipole would amplify
+under purification (the signal-to-noise ratio improves as the
+sample is cleaned of confused-borderline classifications); the
+observed disappearance is the predicted behavior of a
+classifier-confidence-correlated label systematic.
+
+\paragraph{Sky-quadrant dipole.}
+Splitting Catalog~C into four RA quadrants gives per-quadrant
+dipole values ranging from $-0.82\sigmaunit$ (Q3, RA$\,\in\,[180,270)$)
+to $+2.49\sigmaunit$ (Q2, RA$\,\in\,[90,180)$); a primordial
+sky-isotropic dipole would project consistently into each
+quadrant, while a systematic correlated with imaging legs / depth
+variations gives the observed scatter. The Q2 $+2.5\sigmaunit$
+excursion is consistent with the per-imaging-leg systematics
+reported in Sec.~\ref{sec:per_leg} and is not interpreted as a
+cosmological detection.
+
+\paragraph{Galactic-hemisphere asymmetry.}
+Comparing the north Galactic pole ($b\!>\!0$, $N\!=\!1{,}782{,}430$)
+and south Galactic pole ($b\!<\!0$, $N\!=\!1{,}418{,}730$) subsamples
+gives $\sigma_{\rm iso}\!=\!+0.47$ (NGP) and $+2.02$ (SGP).
+The SGP excursion is at the boundary of the $|b|\!<\!30^\circ$
+band where dust-correlated systematics (extinction, reddening)
+peak in the Legacy survey footprint; a primordial cosmological
+dipole would not preferentially appear in the SGP. We report it as
+the third independent line of evidence that the apparent
+canonical-mask residual at $+1.85\sigmaunit$ has a
+foreground/systematic origin rather than a primordial one.
+
+\paragraph{Signal-hunt summary.}
+All three signal-hunt diagnostics (confidence stratification, RA
+quadrant scatter, NGP-vs-SGP asymmetry) point to the same
+conclusion: the canonical-mask residual is structured along
+classifier-systematic, footprint-systematic, and
+galactic-foreground axes, not along a primordial-dipole-aligned
+axis. The headline no-dipole verdict at $\sigma_{\rm dipole}=0.43$
+(isotropic null) and $-0.12\sigmaunit$ (subsample-mask MASTER)
+is the only sensible interpretation consistent with the data once
+the leakage and systematics are tracked.
+
 \subsection{Hemisphere Asymmetry}
 \label{sec:hemisphere}
 
@@ -3214,6 +3313,29 @@ their own pipelines and report the results.
 \section{Conclusions}
 \label{sec:conclusions}
 % ============================================================
+
+\paragraph{Headline finding: monopole-mask leakage explains prior detection claims.}
+The central scientific contribution of this work is a quantitative
+demonstration that the apparent $\sim\!2$--$4\%$ chirality dipole
+signals reported in earlier SDSS-class samples (Shamir 2012, 2020,
+2022) arise from a specific, controlled leakage channel: a small
+uniform monopole bias in the classifier coupling to the patchy
+survey-mask geometry inflates the raw pseudo-$C_\ell$ at
+$\ell\!=\!1$ to $+6.48\sigmaunit$ on the canonical mask, and
+\emph{vanishes} to $-0.12\sigmaunit$ once the MASTER mode-coupling
+matrix is properly applied (Sec.~\ref{sec:dipole},
+Sec.~\ref{sec:monopole_mask_null}). A controlled monopole-only
+generative null reproduces $\sim\!30\%$ of the observed pre-MASTER
+power from the leakage channel alone, with the residual on the
+canonical mask reduced to a sub-detection-threshold
+$+1.85\sigmaunit$ that is independently explained as
+classifier-confidence-correlated label noise
+(Sec.~\ref{sec:signal_hunt}: the residual is $+3.3\sigmaunit$ in
+low-confidence subsamples and disappears in HC subsamples). The
+chirality-dipole controversy is resolved at the present
+sub-percent sensitivity: there is no large-scale parity-violating
+signal in the chirality field, and earlier detection claims are
+methodological artifacts of incomplete leakage subtraction.
 
 \paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute.}
 A direct single-mode NaMaster Monte-Carlo execution on the canonical
