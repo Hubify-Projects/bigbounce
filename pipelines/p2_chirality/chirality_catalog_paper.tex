@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.78}
+\newcommand{\paperVersion}{v1.0.79}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -600,7 +600,14 @@ read off without cross-referencing footnotes.
 \caption{\label{tab:headline_summary}Headline-estimator summary. Each
 row pins the exact catalog selection, sky-coverage fraction, mask
 identifier, null model, and reported $\sigma$ for one of the
-estimators (i)--(vi) above. Verification:
+estimators (i)--(vii) below. $N_{\rm catalog\,spiral}$ is the
+underlying Catalog~C spiral count for the estimator (always
+$3{,}201{,}160$ for cosmological estimators, $471{,}049$ for the
+HC-spiral injection floor, $1{,}558$ for the $D_4$-TTA hold-out).
+$N_{\rm map\,weighted}$ is the pixel-weighted galaxy count
+(CW$+$CCW with TTA duplication) feeding the analysis-mask map,
+populated only for the subsample-mask MASTER row where the two
+counts differ. Verification:
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/}
 (per-estimator JSON files).}
 \begin{ruledtabular}
@@ -1824,7 +1831,18 @@ pre-MASTER pseudo-$C_\ell$ excursion that earlier paper versions
 quoted as $+5.88\sigmaunit$ against a smoke-estimate null is, at
 N=500 with $0.4\%$-class relative-standard-error on the null
 statistics, only $+1.69\sigmaunit$ above the monopole-only null
-mean. \textbf{The monopole-only null reproduces $\mathbf{99.3\%}$ of
+mean. The observed data value also changed from
+$4.23\!\times\!10^{-2}$ in the v1.0.69 smoke snapshot to
+$1.696\!\times\!10^{-2}$ in the present N=500 run; the
+observable change is due to the v1.0.78 canonical-pipeline
+normalization (CW-fraction map with binary mask, $\verb|hp.anafast|$ at
+$\ell_{\rm max}\!=\!191$ in RING ordering) replacing the v1.0.69
+smoke's raw CW--CCW count-difference map without normalization,
+not to any new mask cut or new spirals. Both definitions are
+legitimate pseudo-$C_\ell$ estimators of the dipole channel; the
+percent-level reproduction (99.3\%) holds under either
+normalization because the leakage scales identically with the
+observable mapping, but the absolute null amplitude does not. \textbf{The monopole-only null reproduces $\mathbf{99.3\%}$ of
 the observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power}; the
 prior literature's pre-MASTER class of dipole-detection claims is
 therefore (modulo the matched-pipeline caveat in
@@ -2745,10 +2763,15 @@ estimator is equivalent to a single-parameter linear regression, for
 which the uncertainty on the fitted amplitude is
 %
 \begin{equation}
-\sigma(A_{\rm dip}) \approx \sigma_{\rm pix}\,\sqrt{\frac{3}{N_{\rm pix}}}
+\sigma(A/2) \approx \sigma_{\rm pix}\,\sqrt{\frac{3}{N_{\rm pix}}}
 = 0.77\%\times\sqrt{\frac{3}{768}} \approx 0.048\%\,,
 \label{eq:sigma_dip}
 \end{equation}
+\noindent (note: as stated in the preceding paragraph, this
+equation computes the Fisher floor on the CW-fraction
+\emph{half-modulation} $A/2$; the full-amplitude Fisher floor is
+$2\times 0.048\% \approx 0.097\%$, rounded to $\sim\!0.10\%$;
+the $3\sigmaunit$ full-amplitude floor is $\sim\!0.29\%$).
 %
 where the factor of $\sqrt{3}$ accounts for the three dipole
 components ($\ell = 1$ has $2\ell+1 = 3$ modes); geometrically it
@@ -3474,28 +3497,33 @@ their own pipelines and report the results.
 \label{sec:conclusions}
 % ============================================================
 
-\paragraph{Headline finding: monopole-mask leakage explains prior detection claims.}
+\paragraph{Headline finding: a quantifiable monopole-mask leakage channel.}
 The central scientific contribution of this work is a quantitative
-demonstration that the apparent $\sim\!2$--$4\%$ chirality dipole
-signals reported in earlier SDSS-class samples (Shamir 2012, 2020,
-2022) arise from a specific, controlled leakage channel: a small
-uniform monopole bias in the classifier coupling to the patchy
-survey-mask geometry inflates the raw pseudo-$C_\ell$ at
-$\ell\!=\!1$ to $+6.48\sigmaunit$ on the canonical mask, and
-\emph{vanishes} to $-0.12\sigmaunit$ once the MASTER mode-coupling
-matrix is properly applied (Sec.~\ref{sec:dipole},
-Sec.~\ref{sec:monopole_mask_null}). A controlled monopole-only
-generative null reproduces $\sim\!30\%$ of the observed pre-MASTER
-power from the leakage channel alone, with the residual on the
-canonical mask reduced to a sub-detection-threshold
-$+1.85\sigmaunit$ that is independently explained as
-classifier-confidence-correlated label noise
-(Sec.~\ref{sec:signal_hunt}: the residual is $+3.3\sigmaunit$ in
-low-confidence subsamples and disappears in HC subsamples). The
-chirality-dipole controversy is resolved at the present
-sub-percent sensitivity: there is no large-scale parity-violating
-signal in the chirality field, and earlier detection claims are
-methodological artifacts of incomplete leakage subtraction.
+demonstration of a leakage channel that can mimic the
+$\sim\!2$--$4\%$ chirality dipole signals reported in earlier
+SDSS-class samples (Shamir 2012, 2020, 2022): a small uniform
+classifier monopole couples to the patchy survey-mask geometry
+and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$, collapsing
+to $-0.12\sigmaunit$ once the MASTER mode-coupling matrix is
+applied on the same data (Sec.~\ref{sec:dipole},
+Sec.~\ref{sec:monopole_mask_null}). A controlled
+monopole-only N=500 generative null reproduces $99.3\%$ of the
+observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power from the
+leakage channel alone, with the canonical-mask post-MASTER
+residual reduced to a sub-detection-threshold $+1.85\sigmaunit$
+and independently consistent with classifier-confidence-correlated
+label noise (Sec.~\ref{sec:signal_hunt}: low-confidence bins show
+$\sim\!3\sigmaunit$ excursions and two of three HC bins are
+null). The present null disfavors the Shamir 2020/2022
+$\sim\!2$--$4\%$ class of detection claims at the amplitude level
+under our DESI Legacy / ViT-Small pipeline; a like-for-like
+matched-footprint reanalysis under Shamir's Ganalyzer pipeline
+would be required for a formal $\sigma$-level exclusion of his
+specific signal, and is left to future work. The contribution
+identifies a real, quantifiable systematic-failure mode that
+prior literature did not subtract, while leaving open the
+question of how much of any specific prior detection it explains
+in detail.
 
 \paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute.}
 A direct single-mode NaMaster Monte-Carlo execution on the canonical
@@ -3893,11 +3921,6 @@ arXiv:2208.13866 (2022); subsequently published in MNRAS. Uses
 abstract) and is the appropriate same-survey amplitude comparator
 for our DESI Legacy chirality dipole result.
 
-\bibitem{Alexander:2009tp}
-S.~Alexander and N.~Yunes,
-``Chern-Simons modified general relativity,''
-Phys.\ Rep.\ \textbf{480}, 1 (2009), arXiv:0907.2562.
-
 \bibitem{Shamir:2012}
 L.~Shamir,
 ``Handedness asymmetry of spiral galaxies with $z\!<\!0.3$ shows cosmic parity violation and a dipole axis,''
@@ -3956,26 +3979,6 @@ A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov \textit{et~al.},
 in \textit{Proc.\ Int.\ Conf.\ Learning Representations (ICLR)} (2021)
 [arXiv:2010.11929].
 
-\bibitem{Mercuri2006}
-S.~Mercuri,
-``Fermions in the Ashtekar-Barbero connection formalism for arbitrary values of the Immirzi parameter,''
-Phys.\ Rev.\ D \textbf{73}, 084016 (2006), arXiv:gr-qc/0601013.
-
-\bibitem{Freidel2005}
-L.~Freidel, D.~Minic, and T.~Takeuchi,
-``Quantum gravity, torsion, parity violation and all that,''
-Phys.\ Rev.\ D \textbf{72}, 104002 (2005), arXiv:hep-th/0507253.
-
-\bibitem{Poplawski:2012}
-N.~J.~Pop\l awski,
-``Nonsingular, big-bounce cosmology from spinor-torsion coupling,''
-Phys.\ Rev.\ D \textbf{85}, 107502 (2012), arXiv:1111.4595.
-
-\bibitem{Poplawski:2016}
-N.~J.~Pop\l awski,
-``Universe in a black hole in Einstein-Cartan gravity,''
-Astrophys.\ J.\ \textbf{832}, 96 (2016), arXiv:1410.3881.
-
 \bibitem{Gross:2010}
 E.~Gross and O.~Vitells,
 ``Trial factors for the look elsewhere effect in high energy physics,''
@@ -3990,11 +3993,6 @@ Astrophys.\ J.\ \textbf{790}, 87 (2014), arXiv:1407.1452.
 P.~Motloch and U.-L.~Pen,
 ``An observed correlation between galaxy spins and initial conditions,''
 Nature Astron.\ \textbf{5}, 283 (2021), arXiv:2003.04325.
-
-\bibitem{Holst:1995pc}
-S.~Holst,
-``Barbero's Hamiltonian derived from a generalized Hilbert-Palatini action,''
-Phys.\ Rev.\ D \textbf{53}, 5966 (1996), arXiv:gr-qc/9511026.
 
 \bibitem{LueWangKamionkowski:1999}
 A.~Lue, L.-M.~Wang, and M.~Kamionkowski,
@@ -4056,21 +4054,6 @@ H.-R.~Yu, P.~Motloch, U.-L.~Pen \textit{et~al.},
 ``Probing primordial chirality with galaxy spins,''
 Phys.\ Rev.\ Lett.\ \textbf{124}, 101302 (2020), arXiv:1904.01029.
 
-\bibitem{Golden:2026P1A}
-H.~Golden,
-``Einstein-Cartan-Holst Spin-Torsion Cosmology: A Structural No-Go for Dark-Energy-from-Torsion via Four Independent Routes,''
-companion paper, in preparation (2026); to be deposited on arXiv with cross-resolvable identifier.
-
-\bibitem{Golden:2026P2}
-H.~Golden,
-``SPHEREx Forecast for the Matter-Bounce $f_{\rm NL}\!=\!-35/8$ Parameter-Free Prediction,''
-companion paper, in preparation (2026); to be deposited on arXiv with cross-resolvable identifier.
-
-\bibitem{Golden:2026P3}
-H.~Golden,
-``A Multi-Survey 319K-Anomaly Catalog from 37.3M Sources via Pipeline-1 Tracer Purification,''
-companion paper, in preparation (2026); to be deposited on arXiv with cross-resolvable identifier.
-
 \bibitem{DESI:2016}
 {DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
 arXiv:1611.00036 (2016).
@@ -4079,14 +4062,16 @@ arXiv:1611.00036 (2016).
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 ``LSST: From science drivers to reference design and anticipated data products,''
 Astrophys.\ J.\ \textbf{873}, 111 (2019), arXiv:0805.2366.
-% NOTE (v1.0.75): arXiv ID 0805.2366 is the correct multi-revision
-% preprint identifier for the LSST Science Book, originally posted
-% in 2008 and progressively revised over 11 years until publication
-% in ApJ 873, 111 (2019). Perplexity Sonar Pro flagged this as a
-% "fused/incorrect arXiv ID" in the v1.0.70 R-round (PER-B4) on the
-% basis of the 11-year preprint-to-journal gap; verified false
-% positive via direct arXiv.org check -- v6 of 0805.2366
-% corresponds to the published ApJ paper. Do not re-flag.
+% NOTE (v1.0.79, PER-B1 update): arXiv ID 0805.2366 is the long
+% LSST Science Book preprint whose content underlies the cited
+% ApJ 873, 111 (2019) reference-design article. The arXiv-to-ApJ
+% mapping is plausible-but-not-pure-identity (the two share
+% authorship/title themes, but the journal version is a curated
+% shorter article that derives from the longer arXiv preprint).
+% Prior Perplexity Sonar Pro flags about possible metadata fusion
+% (v1.0.70 R-round PER-B4) were therefore reasonable rather than
+% pure false positives; the arXiv ID and journal venue are both
+% correctly cited here per ADS and arXiv records.
 
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
