@@ -58,9 +58,9 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.69}
+\newcommand{\paperVersion}{v1.0.70}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
-\newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for revision history.}
+\newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.70: fig\_multipoles regenerated from canonical-$N$ data ($+1.85\sigmaunit$), wide tables promoted to two-column floats, residual escape fixes; see repository README for revision history.}
 
 \begin{document}
 
@@ -1611,7 +1611,7 @@ $\mathrm{Binomial}(n_{\rm total}, p_{\rm CW}^{\rm global})$ on the
 exact canonical mask, with no injected dipole and no per-galaxy
 depth/PSF/morphology coupling beyond the per-pixel multinomial.
 
-\begin{table}[t]
+\begin{table*}[!htb]
 \caption{Monopole+mask leakage null (canonical mask, NSIDE$\,=\,$64,
 $f_{\rm sky}\!=\!0.494$, seed$\,=\,$42; $N\!=\!500$ binomial-monopole
 realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
@@ -1624,15 +1624,15 @@ $+1.85\sigmaunit$ post-MASTER). Verification:
 \label{tab:monopole_mask_null}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
-\textbf{Statistic} & \textbf{Data} & \textbf{Null (mean$\,\pm\,$std)} & \textbf{$z$-score} \\
+\textbf{Statistic} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
 \hline
-Pre-MASTER pseudo-$C_\ell$ at $\ell=1$ (canonical mask) & $4.23{\times}10^{-2}$ & $(1.34{\pm}0.49){\times}10^{-2}$ & $+5.88$ \\
-Post-MASTER $C_\ell$ at $\ell=1$ (canonical mask; \S\ref{sec:conclusions}) & --- & --- & $+1.85$ \\
-Post-MASTER $C_\ell$ at $\ell=1$ (subsample mask; \S\ref{sec:dipole}) & --- & --- & $-0.12$ \\
-Hemisphere max$|A|$ amplitude (NSIDE$_{\rm dir}\!=\!8$) & $1.48{\times}10^{-3}$ & $(0.64{\pm}0.13){\times}10^{-3}$ & $+6.62$ \\
+Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $4.23{\times}10^{-2}$ & $(1.34{\pm}0.49){\times}10^{-2}$ & $+5.88$ \\
+Post-MASTER $C_\ell^{(\ell=1)}$ (canonical mask) & --- & --- & $+1.85$ \\
+Post-MASTER $C_\ell^{(\ell=1)}$ (subsample mask) & --- & --- & $-0.12$ \\
+Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$) & $1.48{\times}10^{-3}$ & $(0.64{\pm}0.13){\times}10^{-3}$ & $+6.62$ \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 The interpretation is the following:
 
@@ -1818,7 +1818,7 @@ classifier biases, we split the canonical Catalog~C spirals by
 imaging leg and recompute the CW fraction + real-space dipole
 separately for each leg.
 
-\begin{table}[t]
+\begin{table*}[!htb]
 \caption{\label{tab:per_leg}Per-imaging-leg systematics. Spirals
 assigned by RA/Dec heuristic (BASS+MzLS: $\delta>+32.375^\circ$;
 DES: $\delta<-10^\circ$ AND RA in DES Y3 footprint; DECaLS: complement).
@@ -1837,7 +1837,7 @@ DES & 852{,}651 & 0.49574 & 0.426 & $+0.66$ (0.247) \\
 \textbf{All-sky} & \textbf{3{,}201{,}160} & \textbf{0.49735} & \textbf{0.265} & \textbf{$+0.43$ (0.300)} \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 All three imaging legs are individually consistent with the null
 dipole ($p>0.13$, $|\sigma|<2$ in each leg), and the CW-deficit
@@ -2005,7 +2005,7 @@ corresponding to $\CW/\CCW = 0.990$.
 Table~\ref{tab:ceresnet_compare} compares the two pipelines neutrally
 on the load-bearing dimensions.
 
-\begin{table}[h]
+\begin{table*}[!htb]
 \caption{\label{tab:ceresnet_compare}Neutral comparison: CE-ResNet
 (Jia~\etal~2023~\cite{Jia:2023}) vs the present Catalog~C
 (ViT-Small + 2-fold flip TTA). Each pipeline has distinct
@@ -2026,7 +2026,7 @@ Rotational equivariance & Not separately tested & $Z_2$ only; $D_4$ deferred (Se
 Public release & arXiv:2210.04168 + table & HuggingFace + this paper + GitHub release \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 The two pipelines are complementary rather than competitive:
 CE-ResNet's architectural equivariance provides a stronger
@@ -2653,7 +2653,7 @@ typically have ambiguous CW/CCW post-TTA and low max-class
 confidence; the HC cut therefore selects against edge-on
 contamination without requiring axis-ratio metadata.
 
-\begin{table}[h]
+\begin{table*}[!htb]
 \caption{\label{tab:face_on}High-confidence-spiral robustness rerun.
 Dipole significances against $N_{\rm MC}\!=\!1000$
 binomial-monopole-preserving null realizations at NSIDE$\,=\,$64
@@ -2677,7 +2677,7 @@ HC-strict ($p_{\rm eq}\!>\!0.8$) & 624{,}660 & 0.49602 & 0.398 & $+0.87$ (0.187)
 {\small $^a$~Monopole-preserving null; the same sample against the
 isotropic-$p\!=\!0.5$ null gives $0.43\sigmaunit$, $p\!=\!0.30$
 (Sec.~\ref{sec:dipole} headline).}
-\end{table}
+\end{table*}
 
 The two HC-cut subsamples (which exclude the lowest-confidence
 classifications, where edge-on contamination is concentrated) show
@@ -3106,7 +3106,7 @@ to a one-sided empirical-rank p-value $p_{\rm MC}=15/500=0.030$
 (rank of the data among the $500$ permutation nulls). We interpret it
 as a leakage-floor calibration, not as a primordial signal:
 \begin{enumerate}[label=(\roman*)]
-It supersedes the analytic projection $+0.26\sigmaunit$, which
+\item It supersedes the analytic projection $+0.26\sigmaunit$, which
 assumed $\propto\!f_{\rm sky}/N$ null-variance scaling that does not
 capture mask-edge--correlated leakage of the monopole-asymmetry
 imaging systematic onto $\ell\!=\!1$ under the patchy canonical mask.
@@ -3337,7 +3337,7 @@ $z$-score of the data $C_1$ against this null.
 \item Reproducibility wrapper:
 \artifact{pipelines/p2\_chirality/scripts/canonical\_l1\_namaster\_pod.py}
 (canonical $\ell=1$ direct compute) and
-\artifact{pipelines/p2\_chirality/scripts/monopole\_mask_null_sim_v2.py}
+\artifact{pipelines/p2\_chirality/scripts/monopole\_mask\_null\_sim\_v2.py}
 (monopole+mask leakage null simulation;
 Sec.~\ref{sec:monopole_mask_null}).
 \end{itemize}
