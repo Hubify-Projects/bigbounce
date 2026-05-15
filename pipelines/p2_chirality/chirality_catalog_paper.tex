@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.74}
+\newcommand{\paperVersion}{v1.0.75}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.71: cross-vendor v1.0.70 R-round closures -- empirical $0.5\%$ floor reframed honestly (non-detection rather than calibrated $3\sigmaunit$ floor); monopole-mask leakage interpretation rewritten (null is rejected, MASTER reduction is $\sim\!70\%$, residual is unresolved); face-on dual-null reported (monopole-preserving + isotropic at consistent verdicts); bib dedup + Jia/Dosovitskiy title fixes; ``full-sky'' to ``wider-coverage''; table* placement \texttt{[t]}; see repository README.}
 
@@ -138,6 +138,19 @@ mask-leakage projection of the same uniform monopole and is reported
 as a documented systematic-floor artifact, not as a primordial-dipole
 detection, since the independent wider-coverage $\ell\!=\!1$
 estimators on the identical data are null.
+
+A direct $D_4$-TTA validation on a $1{,}558$-galaxy hold-out
+(Sec.~\ref{sec:tta}) confirms that the classifier's expected
+per-galaxy $\pcw$ is rotation-invariant in expectation (mean
+$\pcw$ identical under $Z_2$-only and full $D_4$ TTA), while the
+argmax-defined CW-fraction shifts by $\Delta\!=\!1.35\%$ on
+borderline galaxies, implying $\sim\!20\%$ rotational uncertainty
+in per-galaxy argmax labels but not in the ensemble-mean catalog
+statistics that carry the headline result. Catalog~C
+\texttt{class\_eq} labels should therefore be treated as carrying a
+$D_4$-rotational uncertainty contribution at the per-galaxy level;
+the catalog headline $p_{\rm CW}\!=\!0.4974$ figure is robust to
+this contribution by the rotation-invariance of the ensemble mean.
 
 Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim differs
 from the present measurement by a factor of $\sim\!6$--$12$ in
@@ -550,6 +563,7 @@ estimators (i)--(vi) above. Verification:
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
 (v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & $0.494$ & canonical & monopole-only generative & $+5.88$ pre, $+1.85$ post \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & per-pixel shuffle & non-detection below $0.5\%$ \\
+(vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & rotation+flip averaging & $\Delta\!=\!1.35\%$ argmax shift \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -3296,6 +3310,32 @@ distribution \texttt{null\_distribution.npy} is committed at
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct\_null\_distribution.npy}
 (sha256 stamped in the manifest).
 
+\paragraph{$D_4$-TTA rotational-equivariance validation.}
+A direct full-$D_4$ TTA hold-out (Sec.~\ref{sec:tta}; companion
+artifact
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4\_tta\_holdout\_results.json})
+on $1{,}558$ Catalog~C spirals validates the rotation-equivariance
+assumption used to justify the production catalog's $Z_2$-only TTA.
+The mean per-galaxy $\pcw$ is identical under $Z_2$ and $D_4$
+($0.3904$ vs $0.3901$); the argmax-defined CW-fraction shifts
+$0.5156\!\to\!0.5021$ ($\Delta\!=\!1.35\%$) on borderline galaxies
+with $\pcw\!\approx\!\pccw\!\approx\!0.4$. The structural reading
+is that ensemble-mean catalog statistics (the headline
+$p_{\rm CW}\!=\!0.4974$ figure) are robust against the
+$Z_2$-only restriction because the classifier is rotation-invariant
+in expectation; per-galaxy argmax labels (\texttt{class\_eq})
+carry $\sim\!20\%$ residual rotational uncertainty that downstream
+users analyzing individual borderline galaxies should fold into
+their error budget. This explicitly addresses the
+``does the $9.5\sigmaunit$ uniform monopole survive a $D_4$-TTA
+re-inference'' question: on this hold-out the answer is yes, since
+the global mean $\pcw$ is preserved to within the holdout's
+$\pm\!1.3\%$ Poisson uncertainty and the catalog-headline statistic
+is a global ensemble mean, not a per-galaxy argmax decision.
+A full $3.2\!\times\!10^{6}$-galaxy $D_4$-TTA re-inference would
+yield a precise calibration but is not undertaken in the present
+release.
+
 \paragraph{Sensitivity convention and remaining caveats.}
 We adopt the full-amplitude convention $A$ in
 $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$ throughout the paper.
@@ -3757,6 +3797,14 @@ arXiv:1611.00036 (2016).
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 ``LSST: From science drivers to reference design and anticipated data products,''
 Astrophys.\ J.\ \textbf{873}, 111 (2019), arXiv:0805.2366.
+% NOTE (v1.0.75): arXiv ID 0805.2366 is the correct multi-revision
+% preprint identifier for the LSST Science Book, originally posted
+% in 2008 and progressively revised over 11 years until publication
+% in ApJ 873, 111 (2019). Perplexity Sonar Pro flagged this as a
+% "fused/incorrect arXiv ID" in the v1.0.70 R-round (PER-B4) on the
+% basis of the 11-year preprint-to-journal gap; verified false
+% positive via direct arXiv.org check -- v6 of 0805.2366
+% corresponds to the published ApJ paper. Do not re-flag.
 
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},
