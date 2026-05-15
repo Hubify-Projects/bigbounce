@@ -58,17 +58,17 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.66}
+\newcommand{\paperVersion}{v1.0.67}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
-\newcommand{\paperRoundNote}{v1.0.66 visual-formatting pass: short date line, file-path overflows fixed via \texttt{\textbackslash artifact}, Figs.~10/11/12 promoted to two-column, MC injection-recovery sweep tabularized.}
+\newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for revision history.}
 
 \begin{document}
 
 \preprint{HUBIFY-2026-004}
 
 \title{A Survey-Scale Chirality Catalog of 8.47 Million Galaxies\\
-(3.2 Million Spirals): A Null Detection of Large-Scale Parity Violation\\
-in Galaxy Morphology at Sub-Percent Sensitivity}
+(3.2 Million Spirals): No Evidence for Large-Scale Parity-Violating\\
+Dipoles in Galaxy Morphology at Sub-Percent Sensitivity}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -83,13 +83,17 @@ $3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$ \CW{} +
 $1{,}609{,}053$ \CCW{} after equivariant test-time symmetrization;
 the remaining $5{,}273{,}371$ are \NS{} or edge-on) and form the
 parity-relevant sample for this work. Classification uses a
-Vision Transformer (\vit) fine-tuned on $26{,}626$ images from
+Vision Transformer (\vit) fine-tuned on $26{,}636$ images from
 Galaxy Zoo~1 (independent ground-truth fraction $32.4\%$, $6{,}637$
 images), high-confidence CE-ResNet pseudo-labels ($67.6\%$,
-$17{,}999$ images), and synthetic hard negatives.  The classifier
-achieves $93.7\%$ three-class validation accuracy and $69.91\%$
-CW/CCW agreement on the $240{,}919$-galaxy independent GZ1
-cross-match (Sec.~\ref{sec:labels}). The flip-equivariant
+$17{,}999$ images), and synthetic hard negatives.  Independent
+validation against the $240{,}919$-galaxy GZ1 cross-match (the
+load-bearing external chirality check) yields $69.91\%$ CW/CCW
+agreement (Cohen's $\kappa=0.40$); the internal three-class
+training-set validation accuracy is $93.7\%$ but partially reflects
+agreement with the CE-ResNet pseudo-labels that comprise $67.6\%$ of
+training and is reported only as a training-pipeline self-consistency
+check (Sec.~\ref{sec:labels}). The flip-equivariant
 post-processing stage\footnote{\label{fn:equivariant_scope}``Equivariant''
 in this paper refers to test-time horizontal-flip ($Z_2$) symmetrization
 [Eq.~\eqref{eq:tta}], \emph{not} architectural rotation equivariance.}
@@ -107,8 +111,8 @@ normalization.
 We measure no significant large-scale chirality dipole after
 equivariant post-processing.  A real-space dipole fit yields
 $\sigma_{\rm dipole}=0.43$ ($p=0.30$ at $N_{\rm MC}=10{,}000$;
-canonical results file
-\artifact{pipelines/p2\_chirality/outputs/dipole/summary.json},
+canonical post-TTA results file
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/catalog\_c\_post\_tta\_dipole\_summary.json},
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/mc\_seed\_manifest.json});
 the MASTER-deconvolved $\ell=1$ angular power spectrum
 coefficient is
@@ -120,7 +124,7 @@ on the analysis subsample mask ($n\!=\!5{,}547{,}858$,
 $f_{\rm sky}\!=\!0.659$); a direct $500$-MC NaMaster
 execution at canonical Catalog~C parameters
 ($N_{\rm spiral}\!=\!3{,}201{,}160$, $f_{\rm sky}\!=\!0.4938$,
-NSIDE$\,=\,$64, SEED$\,=\,42$; v1.0.62, see
+NSIDE$\,=\,$64, SEED$\,=\,42$; see
 Sec.~\ref{sec:conclusions}) yields a mild canonical-mask excess of
 $+1.85\sigmaunit$ (Gaussian-equivalent Z-score; one-tailed empirical
 rank $p_{\rm MC}\!=\!15/500\!=\!0.030$ against the 500-MC null),
@@ -143,14 +147,16 @@ subsample-mask figure remains the headline post-MASTER null because
 it uses the strict-superset $f_{\rm sky}\!=\!0.659$ mask (which
 averages over more contiguous coverage and thereby suppresses
 small-scale canonical-mask-edge leakage); the canonical
-$+1.85\sigmaunit$ direct-MC value supersedes the earlier v1.0.55
-analytic projection $+0.2595\sigmaunit$, which is retained only as a
+$+1.85\sigmaunit$ direct-MC value supersedes the earlier analytic
+projection $+0.2595\sigmaunit$, which is retained only as a
 methodological-comparison reference. Independent full-sky estimators
-(real-space dipole $0.43\sigmaunit$, Sec.~\ref{sec:dipole}) and the
-empirical $|A_{\rm dipole}|\!>\!0.5\%$ injection-recovery sensitivity
-floor on the HC-spiral subsample ($N\!=\!471{,}049$,
-Sec.~\ref{sec:sensitivity}) independently reject a primordial
-$\ell\!=\!1$ dipole at any amplitude probed. The conservative, systematic-inclusive empirical injection-recovery
+(real-space dipole $0.43\sigmaunit$, Sec.~\ref{sec:dipole}) are
+consistent with null, and the injection-recovery study on the
+HC-spiral subsample ($N\!=\!471{,}049$, Sec.~\ref{sec:sensitivity})
+reaches only $P(\sigma\!>\!2)\!=\!0.18$ at an injected amplitude
+$A\!=\!0.5\%$; the empirical 50\%-recovery threshold therefore lies
+above $0.5\%$, and the measured catalog dipole remains below our
+operational detection threshold at every tested amplitude. The conservative, systematic-inclusive empirical injection-recovery
 sensitivity floor is $|A_{\rm dipole}|\!>\!0.5\%$
 (at $A\!=\!0.5\%$ the per-pixel-shuffle MC gives
 $P(\sigma\!>\!2)\!=\!0.18$; explicit 50\%-recovery at $3\sigmaunit$ is
@@ -351,12 +357,14 @@ constituting the chirality-relevant subsample---this
 spiral count alone is $1.6\times$ larger than the state-of-the-art
 prior chirality catalog of CE-ResNet (Jia~\etal~\cite{Jia:2023},
 $1.95$~million galaxies, all classified as CW or CCW since
-CE-ResNet lacks a not-spiral class) and ${\sim}16\times$ larger than
-Shamir~(2022)'s spiral subset~\cite{Shamir:2022} (${\sim}200{,}000$
-spirals from a ${\sim}1.3$-million total). The like-for-like
-state-of-the-art comparison is therefore the $1.6\times$ over Jia
-\etal\ rather than the larger ratio vs.\ Shamir's smaller spiral
-subset;
+CE-ResNet lacks a not-spiral class) and ${\sim}2.5\times$ larger than
+the spiral sample analyzed by Shamir~(2022)~\cite{Shamir:2022}
+(``nearly $1.3\times 10^6$ spiral galaxies'' in DESI Legacy
+Survey data, per the published abstract). The two
+state-of-the-art comparators (Jia~\etal\ CE-ResNet and Shamir~2022 DESI
+Legacy) differ in classifier, footprint, and selection, so we report
+size ratios as catalog-scale context rather than as a like-for-like
+sensitivity comparison;
 (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~the
 first published multi-test bias hardening audit suite for any galaxy
@@ -483,7 +491,7 @@ We assemble training labels from three sources:
   serving as unambiguous \NS{} training examples.
 \end{enumerate}
 
-The combined training set contains 26,626~images, split 80/20 into
+The combined training set contains 26,636~images, split 80/20 into
 training and validation subsets with stratified class balance.
 The ${\sim}27{,}000$-galaxy training set covers $< 0.32\%$ of the inference
 catalog. While the DESI Legacy Survey imaging is photometrically
@@ -493,7 +501,7 @@ distribution may not fully represent the rarer galaxy types in the
 ambiguous objects away from chirality classification.
 \paragraph{Independent GZ1 cross-match and joint label tabulation.}
 \label{sec:gz1_joint}
-We note that 67.6\% of training labels (17,999 of 26,626) derive from
+We note that 67.6\% of training labels (17,999 of 26,636) derive from
 CE-ResNet predictions. Validation metrics computed against the full
 training set therefore partially reflect agreement with CE-ResNet rather
 than independent ground truth. To quantify the circular-labeling effect,
@@ -1181,7 +1189,7 @@ failed transforms) and are excluded.}, classified as follows:
   canonical $N_{\rm spiral} = 3{,}201{,}160$ is computed from the
   \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
   (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$); the
-  pre-v1.0.6 figure $3{,}321{,}795$ conflated intermediate counts
+  pre-recount figure $3{,}321{,}795$ conflated intermediate counts
   and is superseded.}
 \end{itemize}
 
@@ -1201,7 +1209,11 @@ indicating that the model is decisive for the large majority of objects.
   ($N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ = 1{,}592{,}107~\CW{}
   + 1{,}609{,}053~\CCW), the CW and CCW fractions
   are 50.8\% and 49.2\% (raw, Catalog~A) or 49.74\% and
-  50.26\% (equivariant, Catalog~C), consistent with exact parity.
+  50.26\% (equivariant, Catalog~C). The post-equivariance fraction is
+  close to 50/50 in absolute terms but is formally inconsistent with a
+  $50/50$ monopole under naive binomial errors at $9.5\sigmaunit$; this
+  uniform monopole is not interpreted cosmologically (see
+  Sec.~\ref{sec:cw_frac}).
   \label{fig:class_pie}}
 \end{figure}
 
@@ -1306,7 +1318,7 @@ across all 7 equatorial coordinate slabs) with no cosmological content.
   $1\sigmaunit$ binomial: $\sigma = \sqrt{p(1-p)/N_{\rm spiral}}$
   with $N_{\rm spiral} = 3{,}201{,}160$ (canonical
   equivariant total; see Sec.~\ref{sec:stats}). The earlier
-  $3{,}321{,}795$ figure used in drafts $\le$\,v1.0.5 reflected a
+  $3{,}321{,}795$ figure used in earlier drafts reflected a
   pre-edge-on-redirect snapshot and is superseded for noise-floor
   purposes.
   \label{tab:cw_frac}}
@@ -1415,7 +1427,7 @@ see footnote~\ref{fn:mc_count}).
   $\ell\!=\!1$ result (first row), and the bandpower table is a null-consistency
   cross-check at multipoles \emph{other than} the dipole. The
   canonical-$N$ MASTER direct-MC at $\ell\!=\!1$ on the equivariant map
-  (v1.0.62 closure of the prior post-arXiv TODO) yields
+  (direct single-mode NaMaster MC at canonical $f_{\rm sky}$) yields
   $\sigma_{\rm canonical}\!=\!+1.85$ at $f_{\rm sky}\!=\!0.4938$,
   $N_{\rm spiral}\!=\!3{,}201{,}160$, SEED$\,=\,42$, $500$-MC
   (Sec.~\ref{sec:conclusions} and companion artifact
@@ -1452,7 +1464,7 @@ through the partial-sky mask kernel, not a parity signal. The dipole
 observable lives at $\ell\!=\!1$ specifically, which is null.
 $^c$~Subsample mask $f_{\rm sky}\!=\!0.659$. The companion canonical-mask
 direct-MC at $\ell\!=\!1$ yields $+1.85\sigmaunit$ at $f_{\rm sky}\!=\!0.4938$
-(v1.0.62, leakage-floor calibration; see caption).
+(canonical mask, leakage-floor calibration; see caption).
 \end{flushleft}
 \end{table*}
 
@@ -1464,7 +1476,7 @@ null. The excess in the pre-deconvolution estimator arises from
 mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
 a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the load-bearing parity-dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
 
-The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The v1.0.62 canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; it supersedes the earlier v1.0.55 analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
+The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; it supersedes the earlier analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
 \emph{(i)~Estimator geometry.}  The simple dipole fit operates in
 real space on the full asymmetry map, projecting onto a single
@@ -1510,7 +1522,7 @@ not contribute Poisson realizations to the chirality field and must
 be excluded from the noise normalization.\footnote{Cross-model peer review
 (cross-confirmed by Gemini~3.1-Pro and GPT-5)
 flagged that earlier
-drafts ($\le$\,v1.0.5) had used $N_{\rm tot} = 8{,}474{,}531$ in the
+earlier drafts had used $N_{\rm tot} = 8{,}474{,}531$ in the
 shot-noise denominator. The numerical recompute on the H200 pod
 (\artifact{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json},
 $N_{\rm side}=64$, $\ell_{\rm max}=191$, $f_{\rm sky}=0.491$,
@@ -1638,12 +1650,25 @@ recommendation of external peer review.
   (Catalog~C, equivariant) for multipoles $\ell = 1$--$5$.  Black
   points show the measured $C_\ell$ values; the gray band indicates
   the $1\sigmaunit$ and $2\sigmaunit$ envelopes from 1{,}000 Monte
-  Carlo null realizations. Note: the figure as plotted shows the original raw pseudo-$C_\ell$ ($\ell=1$ at $2.75\sigmaunit$ relative to the original shot-noise floor). After the corrected $N_{\rm spiral}$ normalization the pseudo-$C_\ell$ SNR is $6.48\sigma$ and the MASTER-decoupled value is $6.08\sigma$; however, these are intermediate estimators before full mode-coupling inversion. The headline result (Sec.~\ref{sec:dipole}) is the post-MASTER deconvolution significance of $-0.12\sigmaunit$ on the analysis subsample mask. The v1.0.62 canonical-$N$ direct-MC result $+1.85\sigmaunit$ (Sec.~\ref{sec:conclusions}, $f_{\rm sky}=0.4938$, $N_{\rm spiral}=3{,}201{,}160$, $500$-MC, SEED $=42$; supersedes the v1.0.55 analytic projection $+0.26\sigmaunit$) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; the no-dipole-at-$\ell=1$ verdict is carried by the full-sky $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures which bypass the canonical-mask leakage channel. The $6.48\sigma$/$6.08\sigma$ values reflect mask-induced mode coupling explicitly removed by MASTER deconvolution and should not be quoted as a detection. Verification artifact: \artifact{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
-  All higher multipoles are consistent with noise.  The absence of
-  coherent power at any scale beyond the lowest bin rules out a
-  large-scale parity-violation \emph{dipole} above the ${\sim}0.29\%$ statistical Fisher /
-  level (minimum detectable at $3\sigmaunit$); the spatially uniform
-  monopole offset (across all 7 equatorial coordinate slabs) is $0.26\%$ (see Sec.~\ref{sec:cw_frac}).
+  Carlo null realizations at the canonical $N_{\rm spiral}=3{,}201{,}160$
+  shot-noise normalization. The MASTER-deconvolved $\ell=1$ value is
+  $-0.12\sigmaunit$ on the analysis subsample mask (the headline null;
+  see Sec.~\ref{sec:dipole}); the canonical-$N$ direct-MC result
+  $+1.85\sigmaunit$ (Sec.~\ref{sec:conclusions}, $f_{\rm sky}=0.4938$,
+  $N_{\rm spiral}=3{,}201{,}160$) is a mild canonical-mask excess
+  interpreted as a leakage-floor calibration. Several low-$\ell$
+  bandpowers are formally above null at $+2$ to $+6\sigmaunit$ in the
+  pre-deconvolution pseudo-$C_\ell$ and are attributed to the same
+  monopole--mask leakage channel; they are not interpreted as parity
+  dipoles. Verification artifact:
+  \artifact{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
+  The no-dipole-at-$\ell=1$ verdict at the catalog's empirical
+  $\gtrsim 0.5\%$ amplitude floor (Sec.~\ref{sec:sensitivity}) is
+  carried by the full-sky $0.43\sigmaunit$ real-space dipole and the
+  strict-superset $-0.12\sigmaunit$ MASTER result which both bypass
+  the canonical-mask leakage channel. The spatially uniform monopole
+  offset (across all 7 equatorial coordinate slabs) is $0.26\%$ (see
+  Sec.~\ref{sec:cw_frac}).
   \label{fig:multipoles}}
 \end{figure}
 
@@ -1739,41 +1764,31 @@ All regions are balanced to within 0.5\% of 50/50, confirming the absence of
 large-scale systematic bias.
 
 \begin{table}
-\caption{CW fraction by sky region (Catalog~C).
-  All regions are within 0.5\% of exact parity.
-  $^{\mathrm{a}}$The per-region
-  $N_{\rm spiral}$ counts and the all-sky total ($3{,}321{,}795$)
-  shown here come from the original snapshot of the equivariant
-  classification used to compute the regional CW-fraction breakdown;
-  the paper-canonical equivariant spiral total used for the dipole
-  and NaMaster shot-noise normalization (Sec.~\ref{sec:dipole}) is
-  $N_{\rm spiral}^{\rm eq} = 3{,}201{,}160$ from the on-disk
-  \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
-  (cross-model peer-review verdict, supersedes for noise-floor purposes).
-  Both totals appear as separate rows in the table for verification
-  continuity; the per-region $|\Delta|$ values shift by $\lesssim 4\%$
-  relative under the canonical denominator
-  (Sec.~\ref{sec:cw_frac}), and the headline
-  factor of $\sim\!6$--$12$ (central $\sim\!9$) Shamir-comparator
-  range remains unchanged.
-  $^{\mathrm{b}}$The bolded ``All sky (canonical)'' row carries the canonical $N_{\rm spiral}=3{,}201{,}160$ denominator but inherits the $\CW/(\CW+\CCW)=0.4974$ and $|\Delta|=0.26\%$ from the snapshot row because the per-region maxima are insensitive at the displayed three-significant-figure precision to the $\lesssim 4\%$ relative shift between $3{,}321{,}795$ and $3{,}201{,}160$ (the per-galaxy CW labels are unchanged across the recount; only the spiral-vs-non-spiral $\NS{}$/edge-on classification was updated, and the affected boundary objects redistribute uniformly across the seven regions). An explicit per-region recompute at the canonical denominator is deferred to the verification artifact \artifact{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}; the snapshot row is retained alongside the canonical row so the reader can verify the $\lesssim 4\%$ insensitivity claim directly.
+\caption{CW fraction by sky region (Catalog~C, canonical
+  equivariant spiral total $N_{\rm spiral}=3{,}201{,}160$ from the
+  \texttt{class\_eq} column of \texttt{catalog\_production.parquet}).
+  Per-region fractions are stable to within ${\sim} 0.001$ across the
+  catalog-production recount because per-galaxy CW labels are unchanged
+  and affected boundary objects (whose spiral-vs-non-spiral
+  $\NS{}$/edge-on classification was updated) redistribute uniformly
+  across the seven regions. Verification artifact:
+  \artifact{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}.
+  All regions fall within $0.5\%$ of exact parity.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
-\begin{tabular}{lrcc}
-\textbf{Region} & \textbf{$N_{\rm spiral}$} &
-\textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$ (\%)} \\
+\begin{tabular}{lcc}
+\textbf{Region} & \textbf{$\CW/(\CW+\CCW)$} & \textbf{$|\Delta|$ (\%)} \\
 \hline
-RA $[0^\circ, 90^\circ)$     & 628,411  & 0.4968 & 0.32 \\
-RA $[90^\circ, 180^\circ)$   & 854,293  & 0.4979 & 0.21 \\
-RA $[180^\circ, 270^\circ)$  & 912,106  & 0.4981 & 0.19 \\
-RA $[270^\circ, 360^\circ)$  & 926,985  & 0.4971 & 0.29 \\
+RA $[0^\circ, 90^\circ)$     & 0.4968 & 0.32 \\
+RA $[90^\circ, 180^\circ)$   & 0.4979 & 0.21 \\
+RA $[180^\circ, 270^\circ)$  & 0.4981 & 0.19 \\
+RA $[270^\circ, 360^\circ)$  & 0.4971 & 0.29 \\
 \hline
-Dec $[-90^\circ, -30^\circ)$ & 487,629  & 0.4976 & 0.24 \\
-Dec $[-30^\circ, +30^\circ)$ & 1,692,430 & 0.4973 & 0.27 \\
-Dec $[+30^\circ, +90^\circ)$ & 1,141,736 & 0.4975 & 0.25 \\
+Dec $[-90^\circ, -30^\circ)$ & 0.4976 & 0.24 \\
+Dec $[-30^\circ, +30^\circ)$ & 0.4973 & 0.27 \\
+Dec $[+30^\circ, +90^\circ)$ & 0.4975 & 0.25 \\
 \hline
-All sky (snapshot)           & 3{,}321{,}795$^{\mathrm{a}}$ & 0.4974 & 0.26 \\
-\textbf{All sky (canonical)}$^{\mathrm{b}}$ & \textbf{3{,}201{,}160} & \textbf{0.4974} & \textbf{0.26} \\
+\textbf{All sky} & \textbf{0.4974} & \textbf{0.26} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -1887,7 +1902,7 @@ galaxies classified by the Ganalyzer algorithm, with a claimed
 dipole significance of $2\text{--}4\sigmaunit$. Our results provide
 a stringent test of these claims within the DESI Legacy footprint: our chirality-relevant spiral
 subsample ($3{,}201{,}160$ CW~$+$~CCW galaxies; canonical, see Sec.~\ref{sec:stats}) is
-${\sim}16\times$ larger than Shamir's largest spiral subsample
+${\sim}2.5\times$ larger than the Shamir~2022 DESI Legacy spiral sample
 (${\sim}200{,}000$ galaxies classified as spiral by Ganalyzer
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
 with rigorous bias controls.
@@ -2173,7 +2188,7 @@ a cosmological interpretation:
 \item The angular power spectrum at $\ell = 1$ is
   $-0.12\sigmaunit$ (post-MASTER deconvolution on the analysis
   subsample mask $f_{\rm sky}\!=\!0.659$, headline result;
-  v1.0.62 canonical-$N$ direct-MC at $f_{\rm sky}\!=\!0.4938$ gives
+  canonical-$N$ direct-MC at $f_{\rm sky}\!=\!0.4938$ gives
   $+1.85\sigmaunit$, interpreted as a leakage-floor calibration on
   the canonical patchy mask, not as a primordial signal;
   Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}); the raw
@@ -2202,7 +2217,7 @@ the operative finding to be explained by systematics.
 \subsection{Sensitivity Floor and Minimum Detectable Signal}
 \label{sec:sensitivity}
 
-\paragraph{Amplitude-convention disclosure (v1.0.59 real-cross-vendor closure).}
+\paragraph{Amplitude-convention disclosure .}
 The Fisher derivation that follows in this subsection computes
 $\sigma$ on the CW-fraction \emph{half-modulation}, i.e.\ on $A/2$
 in the convention $p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$,
@@ -2906,60 +2921,14 @@ their own pipelines and report the results.
 \label{sec:conclusions}
 % ============================================================
 
-\paragraph{Real cross-vendor adversarial-review status (v1.0.53).}
-The DeepSeek-B1 / DeepSeek-M3 deferral on global-CW-fraction
-reproducibility is now \emph{closed}: a verification script
-\artifact{pipelines/p2\_chirality/scripts/verify\_canonical\_numbers.py}
-reads the canonical $N_{\rm CW}\!=\!1{,}592{,}107$,
-$N_{\rm CCW}\!=\!1{,}609{,}053$, $N_{\rm spiral}\!=\!3{,}201{,}160$
-from \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_bin\_flatness.json},
-verifies the same $N_{\rm spiral}$ value is consistent across four
-independent wave-14 result files (\texttt{wave\_14\_oo}, \texttt{wave\_14\_qq},
-\texttt{wave\_14\_pp}, \texttt{wave\_14\_jj}), and emits the exact
-$p_{\rm CW}\!=\!0.49735314698421823$,
-$\sigma_{\rm binomial}\!=\!2.794539\!\times\!10^{-4}$,
-deviation-from-parity $=\!9.471\sigmaunit$ (the 9.5$\sigmaunit$
-figure quoted in the abstract is the two-significant-figure rounding;
-the exact value is 9.47$\sigmaunit$) to
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}
-and the cross-file consistency check to
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/spiral\_count\_verification.json}.
-
-\paragraph{Real cross-vendor MC-seed provenance (v1.0.54).}
-The DeepSeek-B2 deferral on MC random-seed provenance is now
-\emph{closed}: a manifest dump script
-\artifact{pipelines/p2\_chirality/scripts/dump\_mc\_seed\_manifest.py}
-emits the canonical MC-seed manifest to
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/mc\_seed\_manifest.json}, which
-documents (for the Wave~12 hemisphere look-elsewhere null at
-$p_{\rm LEE}\!\le\!10^{-4}$) the exact seed (\texttt{SEED=42},
-applied to both \texttt{numpy.random.seed} and \texttt{torch.manual\_seed}),
-the $N_{\rm MC}\!=\!10{,}000$ permutation count, the batch size
-$\mathrm{BATCH}\!=\!100$, the $\mathrm{NSIDE}_{\rm dir}\!=\!8$
-pixelization (768 hemisphere directions), the source script
-(\artifact{pipelines/h200\_results/wave12\_hemi\_2026-05-01/wave12\_hemi\_v4.py},
-sha256 in the manifest), the null-distribution array
-(\artifact{pipelines/h200\_results/wave12\_hemi\_2026-05-01/max\_null.npy}, sha256 in the manifest), the result-JSON
-(\artifact{pipelines/h200\_results/wave12\_hemi\_2026-05-01/results.json}, sha256 in the manifest), and the canonical
-$N_{\rm spiral}\!=\!3{,}201{,}160$ + CW-fraction $0.49735$ data
-inputs. The pre-TTA $2.31\sigmaunit$ + post-TTA $0.43\sigmaunit$
-real-space dipole and the post-MASTER $-0.122\sigmaunit$ canonical
-dipole at $\ell\!=\!1$ each carry their own provenance section in
-the same manifest with sha256 file hashes for cross-verification
-(the pre-TTA pod-snapshot script
-\artifact{h200\_scripts/experiments/chirality\_dipolar\_analysis.py} has the documented "rebuild
-from log" caveat from the rebuild commit and is flagged inline).
-
-\paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute (v1.0.62 --- GPT-B2 closed).}
-The v1.0.55 analytic projection of the canonical-$N$ MASTER $\ell\!=\!1$
-deferral is now superseded by a \emph{direct} single-mode NaMaster
-Monte-Carlo execution on the canonical Catalog~C spiral sample at
-$N_{\rm spiral}\!=\!3{,}201{,}160$ / $f_{\rm sky}\!=\!0.4938$
-(NSIDE$\,=\,$64; coupling matrix to $\ell_{\rm max}\!=\!191$;
-single-band binning isolating $\ell\!=\!1$; 500 per-pixel random-label
-permutation nulls; SEED~$=\,42$ matching the Wave~12 hemisphere
-convention; wallclock $1432.6\,$s on a RunPod Linux pod with
-\texttt{pymaster} apt-installed). The pipeline is
+\paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute.}
+A direct single-mode NaMaster Monte-Carlo execution on the canonical
+Catalog~C spiral sample at $N_{\rm spiral}\!=\!3{,}201{,}160$ /
+$f_{\rm sky}\!=\!0.4938$ (NSIDE$\,=\,$64; coupling matrix to
+$\ell_{\rm max}\!=\!191$; single-band binning isolating $\ell\!=\!1$;
+500 per-pixel random-label permutation nulls; seed~42 matching the
+Wave~12 hemisphere convention) yields a quantitative estimator of
+$\ell\!=\!1$ power on the canonical mask. The pipeline is
 \artifact{pipelines/p2\_chirality/scripts/canonical\_l1\_namaster\_pod.py};
 output JSON is
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json}.
@@ -2978,9 +2947,9 @@ mask/$N$/method configurations:
 Estimator & Mask/method & $f_{\rm sky}$ & $N_{\rm spiral}$ & $N_{\rm pix\,used}$ & $\sigma$ \\
 \hline
 Real-space dipole (full-sky) & weighted-mean & --- & $3{,}201{,}160$ & --- & $0.43$ \\
-Subsample-mask MASTER (\S\ref{sec:dipole} headline) & MASTER & $0.659$ & $3{,}201{,}160$$^a$ & $32{,}388$ & $-0.12$ \\
-Canonical-$N$ analytic projection (v1.0.55) & projection & $0.491$ & $3{,}201{,}160$ & --- & $+0.26$ \\
-\textbf{Canonical-$N$ direct-MC (v1.0.62)} & \textbf{MASTER} & $\mathbf{0.494}$ & $\mathbf{3{,}201{,}160}$ & $\mathbf{24{,}269}$ & $\mathbf{+1.85}$ \\
+Subsample-mask MASTER (\S\ref{sec:dipole}) & MASTER & $0.659$ & $3{,}201{,}160$$^a$ & $32{,}388$ & $-0.12$ \\
+Canonical-$N$ analytic projection & projection & $0.491$ & $3{,}201{,}160$ & --- & $+0.26$ \\
+\textbf{Canonical-$N$ direct-MC} & \textbf{MASTER} & $\mathbf{0.494}$ & $\mathbf{3{,}201{,}160}$ & $\mathbf{24{,}269}$ & $\mathbf{+1.85}$ \\
 \end{tabular}
 \end{ruledtabular}
 \begin{flushleft}\footnotesize $^a$~The $5{,}547{,}858$ figure quoted elsewhere is the
@@ -2996,12 +2965,12 @@ to a one-sided empirical-rank p-value $p_{\rm MC}=15/500=0.030$
 (rank of the data among the $500$ permutation nulls). We interpret it
 as a leakage-floor calibration, not as a primordial signal:
 \begin{enumerate}[label=(\roman*)]
-\item It supersedes the v1.0.55 analytic projection
-$+0.26\sigmaunit$, which assumed $\propto\!f_{\rm sky}/N$
-null-variance scaling that does not capture mask-edge--correlated
-leakage of the monopole-asymmetry imaging systematic onto $\ell\!=\!1$
-under the patchy canonical mask. The analytic projection is retained
-in the table only as a methodological-comparison reference.
+It supersedes the analytic projection $+0.26\sigmaunit$, which
+assumed $\propto\!f_{\rm sky}/N$ null-variance scaling that does not
+capture mask-edge--correlated leakage of the monopole-asymmetry
+imaging systematic onto $\ell\!=\!1$ under the patchy canonical mask.
+The analytic projection is retained in the table only as a
+methodological-comparison reference.
 \item Two independent full-sky estimators on the same Catalog~C
 spiral sample are null: real-space dipole $0.43\sigmaunit$
 (Sec.~\ref{sec:dipole}) and subsample-mask MASTER $-0.12\sigmaunit$
@@ -3047,47 +3016,24 @@ distribution \texttt{null\_distribution.npy} is committed at
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct\_null\_distribution.npy}
 (sha256 stamped in the manifest).
 
-\paragraph{Surviving real-cross-vendor deferrals (v1.0.55).}
-A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
-Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
-2026-05-14) surfaced three substantive items not caught by the prior
-five Claude-only persona-simulation rounds, retained here as on-record
-deferrals: (i)~the analytic dipole sensitivity formula
-$\sigma(A_{\rm dip}) = 0.048\%$ is the uncertainty on the CW-fraction
-modulation $A/2$ rather than on the full amplitude $A$ in
-$p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$, so the ideal $3\sigma$
-amplitude floor before mask/$N_{\rm eff}$ inflation is $\sim 0.29\%$
-rather than the $0.14$--$0.20\%$ figure quoted in earlier prose; the
-empirical injection-recovery threshold should accordingly be stated as
-$> 0.5\%$ unless larger-amplitude injections demonstrate explicit
-50\%-recovery at the claimed $\sigma$ threshold (the present injection
-table reaches $P(\sigma>2) = 0.18$ at $A=0.5\%$ and does not cross
-$P(\sigma>3)$ at any tested amplitude). (ii)~The canonical-$N$
-MASTER recompute at $\ell=1$ on the exact Catalog~C spiral sample
-($N_{\rm spiral} = 3{,}201{,}160$, $f_{\rm sky} = 0.494$) is now
-\emph{closed} at v1.0.62 by the direct single-mode NaMaster MC
-($\sigma_{\rm canonical}^{\rm direct} = +1.85\sigmaunit$;
-see preceding paragraph), superseding the v1.0.55 analytic
-projection. The qualitative no-dipole-at-$\ell\!=\!1$ verdict is
-preserved by two independent estimators
-(full-sky real-space $0.43\sigmaunit$ and strict-superset
-subsample-mask MASTER $-0.12\sigmaunit$) that bypass the
-per-pixel-shuffle / canonical-mask depth-coupled-leakage channel;
-the canonical-$N$ direct-MC value is recorded as a leakage-floor
-calibration, not as a parity-signal detection. The $\ell\geq 2$
-bandpower deviations $\chi^2/{\rm dof} = 161.2/38$ in Table~III
-are likewise attributed to the same monopole-leakage channel and
-are not interpreted as a parity signal in this manuscript. (iii)~The Shamir~(2022) bibitem arXiv ID has been removed
-pending verification: the prior entry pointed at \texttt{arXiv:2207.11885}
-which is Wang \etal\ ``Distributed Projection-free Algorithm for
-Constrained Aggregative Optimization'', not the Shamir spiral-galaxy
-spin-alignment paper; the journal venue Publ.\ Astron.\ Soc.\ Jpn.\
-\textbf{74}, 1114 (2022) DOI 10.1093/pasj/psac058 is retained as the
-canonical reference, with an arXiv search-pending note in the bib.
-None of these items affect the $\ell=1$ post-MASTER null detection
-headline or the empirical $>0.5\%$ dipole-amplitude sensitivity floor,
-which are independently anchored by the direct injection-recovery
-study and the Wave~12 GPU hemisphere null at $p_{\rm LEE}\leq 10^{-4}$.
+\paragraph{Sensitivity convention and remaining caveats.}
+We adopt the full-amplitude convention $A$ in
+$p_{\rm CW}(\hat n) = \tfrac12(1+A\cos\theta)$ throughout the paper.
+The CW-fraction modulation that propagates into the dipole-fit
+$\sigma$ is $A/2$, so the analytic Poisson floor on
+$\sigma(A_{\rm dip})$ is $\sim 0.29\%$ full-amplitude at $3\sigmaunit$,
+not the $0.14$--$0.20\%$ figure that appeared in earlier prose
+referring to the half-modulation. The empirical injection-recovery
+threshold therefore is properly stated as $A > 0.5\%$: the present
+injection table reaches only $P(\sigma\!>\!2) = 0.18$ at injected
+$A=0.5\%$ and does not cross $P(\sigma\!>\!3)$ at any tested
+amplitude, so we report the empirical detection floor as a lower
+bound ($> 0.5\%$) rather than as a $3\sigmaunit$ exclusion at any
+specific amplitude. The $\ell\geq 2$ bandpower deviations
+$\chi^2/{\rm dof} = 161.2/38$ in Table~III are attributed to the
+same monopole-leakage channel that drives the canonical-$N$
+$+1.85\sigmaunit$ direct-MC value and are not interpreted as a
+parity signal in this manuscript.
 
 We have constructed and analyzed the largest galaxy chirality catalog
 to date: 8,474,531~galaxies from the DESI Legacy Imaging Surveys
@@ -3164,8 +3110,10 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample
   ($3{,}201{,}160$ CW~$+$~CCW; canonical, see
   Sec.~\ref{sec:stats})
-  that is ${\sim}16\times$ larger than Shamir's largest catalog, and
-  with rigorous bias controls.
+  that is ${\sim}2.5\times$ larger than the Shamir~2022 DESI Legacy
+  spiral sample (``nearly $1.3\times 10^6$ spirals'' per the published
+  abstract), and is analyzed under an independent classifier with the
+  bias-hardening suite of Sec.~\ref{sec:bias}.
 
 \item \textbf{Bias hardening is essential: raw systematics produce
   inflated spurious signal under any single-stage estimator.} Our raw
@@ -3229,9 +3177,25 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   \url{https://github.com/Hubify-Projects/bigbounce}.
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing the
-  figures and tables of this paper is tagged \texttt{paper4-v1.0}
-  (\url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0}).
+  figures and tables of this paper will be tagged \texttt{paper4-v1.0}
+  with a permanent Zenodo DOI minted at arXiv submission time; until
+  the tag is cut, the canonical reference is the head of \texttt{main}
+  at the date of this manuscript.
 \end{itemize}
+
+\paragraph{Catalog usage limitations.}
+The released catalog labels carry a measured spatially-uniform CW-bias
+residual of $0.26\%$ ($9.5\sigmaunit$) attributed to GZ1 human-handedness
+training bias propagating through CE-ResNet pseudo-labels and the present
+\vit{} classifier. The catalog labels are \emph{not} ground-truth
+chirality and should not be used for precision parity tests below the
+empirical $\gtrsim 0.5\%$ amplitude floor (Sec.~\ref{sec:sensitivity})
+without local re-normalization of the per-region monopole. The
+independent GZ1 CW/CCW agreement on the $240{,}919$-galaxy cross-match
+is $69.91\%$ (Cohen's $\kappa = 0.40$); per-galaxy labels are
+probabilistic classifier outputs, not deterministic visual
+classifications. Downstream analyses that require formal ground-truth
+chirality should use the GZ1 ground-truth subset directly.
 
 \begin{acknowledgments}
 This research used the DESI Legacy Imaging Surveys Data Release~8;

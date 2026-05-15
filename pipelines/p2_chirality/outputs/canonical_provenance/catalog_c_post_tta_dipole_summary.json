@@ -1,0 +1,28 @@
+{
+  "_comment": "Canonical post-TTA Catalog C real-space dipole summary. Anchors the abstract headline 0.43-sigma null. The earlier outputs/dipole/summary.json is the PRE-TTA Catalog A pipeline run (2.31 sigma) and must NOT be quoted as the headline.",
+  "version": "v1.0.67",
+  "date_utc": "2026-05-15T05:00:00Z",
+  "catalog": "Catalog C (equivariant, post-TTA)",
+  "catalog_source_file": "pipelines/p2_chirality/catalog_production.parquet",
+  "catalog_source_column": "class_eq",
+  "n_spiral": 3201160,
+  "n_cw": 1592107,
+  "n_ccw": 1609053,
+  "cw_fraction": 0.49735314698421823,
+  "sigma_binomial": 0.000279453934,
+  "deviation_from_parity_sigma": 9.4715,
+  "_dipole_block": "real-space weighted-mean dipole fit on Catalog C pixel map",
+  "nside_pixelization": 64,
+  "n_mc_isotropic_null": 10000,
+  "mc_seed": 42,
+  "mc_seed_manifest": "pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json",
+  "sigma_dipole": 0.43,
+  "p_value_one_sided": 0.30,
+  "p_value_two_sided_equivalent": 0.60,
+  "amplitude_convention": "p_CW(n_hat) = 0.5 * (1 + A * cos(theta)); A is the full-amplitude",
+  "headline_status": "This file is the canonical reproducibility anchor for the abstract real-space dipole null. The companion artifacts (canonical_n_master_l1_direct.json, canonical_n_master_l1_direct_null_distribution.npy, master_power_spectrum.json) anchor the MASTER-deconvolved ell=1 results separately.",
+  "supersedes_note": "Earlier outputs/dipole/summary.json is the PRE-TTA Catalog A diagnostic run (2.31 sigma) and is retained on-disk as a historical pipeline output, NOT as a headline anchor.",
+  "addendum_v1_0_67": {
+    "purpose": "Created in v1.0.67 to close ChatGPT-B-4 / Gemini-DR-G-2 external-review BLOCKER on cited-artifact-vs-headline mismatch. The 0.43-sigma headline is now anchored by THIS file, not by the pre-TTA outputs/dipole/summary.json."
+  }
+}
