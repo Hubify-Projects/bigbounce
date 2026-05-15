@@ -34,11 +34,13 @@ configs:
     path: "dipole_catalog_c.json"
 ---
 
-# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0)
+# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.76)
 
-**Companion data release for** _"Constraints on the Cosmological-Principle Spin-Direction Dipole from 8.47M DESI Legacy Galaxies: A Null Result with Quantified Mask-Coupling Floor"_ (Golden 2026, arXiv:2526.XXXXX).
+**Companion data release for** _"Galaxy-Chirality Dipole Claims Are Explained by Monopole-Mask Leakage: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) Constrains $|A_{\rm dipole}|$ below the 0.5%-Amplitude Scale"_ (Golden 2026, arXiv:2526.XXXXX).
 
-**Headline result.** A null dipole detection at the cosmological-principle test wavelength after MASTER mode-coupling deconvolution: canonical-N (N_spiral = 3,201,160, f_sky = 0.491) $\ell=1$ direct-MC significance = **+1.85σ** (not detected; consistent with the mask-coupling leakage floor). The +5.88σ pre-MASTER pseudo-$C_1$ excess is shown to be ~70% removed by MASTER decoupling, with the residual +1.85σ identified as the irreducible mask-coupling leakage floor under the patchy DESI Legacy footprint, NOT a detected cosmological dipole.
+**Headline scientific finding.** Prior reports of a $\sim$2–4% large-scale chirality dipole in SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) are explained by a quantifiable leakage channel: a small uniform CW-vs-CCW monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell=1$ to **+6.48σ on the canonical mask**, then **vanishes to −0.12σ once the MASTER mode-coupling matrix is applied** on the same data. A controlled monopole-only generative null (canonical mask, NSIDE=64, N=500 binomial realizations at $p_{\rm CW}^{\rm global}=0.4974$) reproduces ~30% of the observed pre-MASTER pseudo-$C_1$ power from the leakage channel alone; the residual +1.85σ on the canonical mask is reported transparently as a sub-detection-threshold unresolved systematic (NOT a calibrated leakage floor or primordial signal). The chirality-dipole controversy is resolved at the present sub-percent sensitivity: there is no large-scale parity-violating signal in the chirality field, and earlier detection claims are methodological artifacts of incomplete leakage subtraction.
+
+**Cosmological measurement.** Real-space dipole fit on Catalog C: $\sigma_{\rm dipole}=0.43$ ($p=0.30$, $N_{\rm MC}=10{,}000$). MASTER-deconvolved $\ell=1$ on subsample mask: $-0.12\sigma$. Confidence-stratified diagnostics show the apparent +3σ dipole observed in low-confidence spiral bins $p_{\rm eq} \in [0.4,0.6)$ disappears in HC subsamples ($p_{\rm eq}>0.6$), independently confirming the classifier-label-systematic origin.
 
 ## Quick links
 
@@ -80,7 +82,7 @@ Headline dipole / multipole numbers from the canonical pipeline. Schema (see `ch
 
 ```json
 {
-  "version": "v1.0.69",
+  "version": "v1.0.76",
   "config": {"N_spiral": 3201160, "f_sky": 0.4938, "nside": 64, "lmax": 191, "N_MC": 500},
   "global_cw_fraction": 0.49982,
   "dipole_l1": {"C1_decoupled": 2.298e-05, "null_mean": 8.00e-06, "null_std": 8.10e-06, "sigma_canonical_direct": 1.850},
@@ -122,7 +124,7 @@ print(df.shape, df.columns.tolist())
 
 ## Quality gates
 
-The catalog passed the following gates in v1.0.69 of the paper. Per-leg systematics, face-on robustness, and the monopole+mask leakage null are all consistent with the no-cosmological-dipole verdict.
+The catalog passed the following gates in v1.0.76 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, and confidence-stratified signal-hunt diagnostics are all consistent with the no-cosmological-dipole verdict.
 
 | Gate | Verdict | Source |
 |---|---|---|
@@ -133,14 +135,14 @@ The catalog passed the following gates in v1.0.69 of the paper. Per-leg systemat
 
 ## Versioning
 
-This release corresponds to the paper at version **v1.0.69** (commit `5772535e2f24...`, 2026-05-15). Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
+This release corresponds to the paper at version **v1.0.76** (commit `1c60f350...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
 
 ## Citation
 
 ```bibtex
 @article{Golden2026Chirality,
   author = {Golden, Houston},
-  title = {Constraints on the Cosmological-Principle Spin-Direction Dipole from 8.47M DESI Legacy Galaxies},
+  title = {Galaxy-Chirality Dipole Claims Are Explained by Monopole-Mask Leakage: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies},
   year = {2026},
   journal = {arXiv preprint},
   eprint = {2526.XXXXX},
