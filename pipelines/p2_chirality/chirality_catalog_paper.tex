@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.72}
+\newcommand{\paperVersion}{v1.0.73}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.71: cross-vendor v1.0.70 R-round closures -- empirical $0.5\%$ floor reframed honestly (non-detection rather than calibrated $3\sigmaunit$ floor); monopole-mask leakage interpretation rewritten (null is rejected, MASTER reduction is $\sim\!70\%$, residual is unresolved); face-on dual-null reported (monopole-preserving + isotropic at consistent verdicts); bib dedup + Jia/Dosovitskiy title fixes; ``full-sky'' to ``wider-coverage''; table* placement \texttt{[t]}; see repository README.}
 
@@ -129,11 +129,15 @@ citizen-science spiral-handedness labels propagating through training,
 pending independent ground-truth validation; the parity-violation
 observable is the dipole, not the monopole. A $3.05\sigmaunit$ local
 hemisphere asymmetry rejects the random-label null at
-$p_{\rm LEE}\!\le\!10^{-4}$; this rejection is interpreted as the
-mask-leakage projection of the same uniform monopole and is reported as
-a documented systematic-floor artifact, not as a primordial-dipole
-detection, since the independent wider-coverage $\ell\!=\!1$ estimators on
-the identical data are null.
+$p_{\rm LEE}\!\le\!10^{-4}$ on the $10^\circ$ Galactic-grid;
+under a conservative Bonferroni/Benjamini-Hochberg multiplicity
+correction across the $\sim\!650$ tested directions the local
+effective significance drops to $<\!1\sigmaunit$ (consistent with
+null). The rejection of the random-label null is interpreted as the
+mask-leakage projection of the same uniform monopole and is reported
+as a documented systematic-floor artifact, not as a primordial-dipole
+detection, since the independent wider-coverage $\ell\!=\!1$
+estimators on the identical data are null.
 
 Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim differs
 from the present measurement by a factor of $\sim\!6$--$12$ in
@@ -507,7 +511,21 @@ the operational empirical detection threshold is at the
 $|A_{\rm dipole}|\!\gtrsim\!0.5\%$-class level (a non-detection rather
 than a calibrated $3\sigmaunit$ floor); the analytic Fisher Poisson
 asymptote is $\sim\!0.29\%$ at $3\sigmaunit$ in the ideal-statistical
-limit.
+limit. The dilution effect of classification noise is bounded by the
+$69.91\%$ independent GZ1 agreement (Cohen's $\kappa\!=\!0.40$): if both
+the present pipeline and GZ1 carry the same symmetric per-galaxy error
+rate $\varepsilon$, the agreement constraint
+$2\varepsilon(1\!-\!\varepsilon)\!=\!0.3009$ gives
+$\varepsilon\!\approx\!0.185$ and a dilution factor
+$(1\!-\!2\varepsilon)\!\approx\!0.63$, so a true underlying full-amplitude
+$0.5\%$ dipole would be measured as $\sim\!0.32\%$ on Catalog~C; the
+$\gtrsim\!0.5\%$ empirical threshold then corresponds to a true
+underlying $\sim\!0.79\%$ dipole bound (upper end of a $[0.5\%, 0.8\%]$
+range under the alternative assumption that our pipeline is correct
+on the disagreements). This dilution is asymmetric only insofar as
+the catalog's $9.5\sigmaunit$ uniform CW excess is itself a label
+systematic; the dipole observable is by construction the angular
+component, so the dilution affects amplitude not direction.
 \end{itemize}
 
 Table~\ref{tab:headline_summary} consolidates the per-estimator
