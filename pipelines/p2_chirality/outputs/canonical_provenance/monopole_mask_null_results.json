@@ -1,0 +1,37 @@
+{
+  "version": "v1.0.78-monopole-mask-null-N500-full",
+  "date_utc": "2026-05-15T23:34:07Z",
+  "supersedes": "monopole_mask_null_results_smoke.json (N=25)",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_realizations": 500,
+    "seed": 42,
+    "min_spirals_per_pix": 10,
+    "hemi_dir_nside": 8,
+    "n_hemisphere_directions": 768,
+    "statistic": "pseudo-C_l at ell=1 (mask-coupled, monopole-subtracted within mask, NOT MASTER-deconvolved); hemisphere max|A| via 768-dir matmul + per-dir hemi-balance normalization"
+  },
+  "catalog": {
+    "n_spiral_total": 3201160,
+    "n_spiral_in_mask": 3200420,
+    "n_cw_in_mask": 1591751,
+    "p_cw_global": 0.49735690940564053,
+    "f_sky": 0.49005126953125,
+    "n_pix_used": 24087
+  },
+  "observed": {
+    "pseudo_c1": 0.016961390205370973,
+    "hemi_max_abs_amplitude": 0.003484365400112408
+  },
+  "null_distribution": {
+    "C1_mean": 0.016846403039105538,
+    "C1_std": 6.799879070862395e-05,
+    "hemi_max_abs_mean": 0.0016928315436382634,
+    "hemi_max_abs_std": 0.0004053226893284124
+  },
+  "significance": {
+    "C1_sigma": 1.691017811745476,
+    "hemi_max_abs_sigma": 4.420018675595424
+  }
+}
