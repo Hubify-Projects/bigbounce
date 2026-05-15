@@ -119,7 +119,7 @@
 | GM-D-1 | Gemini | MINOR | 3.7σ hemisphere dismissed as artifact prematurely | §IV.D | Same as CG-B-1 / GR-D-1. | TRUE | Compute-bound. | DEFER-COMPUTE (RunPod) |
 | GM-E-1 | Gemini | MAJOR | PSF-ellipticity correlation | §VI.C | Same as CG-E-2 / GD-E-1. | TRUE | Compute-bound. | DEFER-COMPUTE |
 | GM-Audit-1 | Gemini | MAJOR | Total spirals 3,321,795 vs 3,201,160 inconsistency | Table V | Same as CG-A-7; closed tick 48 (snapshot row deleted). | ALREADY-CLOSED | Closed tick 48. | NO-FIX-ALREADY-CLOSED |
-| GM-Audit-2 | Gemini | MAJOR | Fig 8 caption shows 2.75σ deprecated value | Fig 8 | Same as CG-I-3 / CG-D-4; caption closed tick 48; PNG re-render pending. | PARTIAL-CLOSED | Caption fixed; figure-file regeneration pending. | CLOSE-IN-v1.0.69 (regen PNG) |
+| GM-Audit-2 | Gemini | MAJOR | Fig 8 caption shows 2.75σ deprecated value | Fig 8 | Caption closed tick 48; PNG re-render landed v1.0.70 (`fig_multipoles.png` regenerated locally from canonical N_spiral=3,201,160 / f_sky=0.491 data; two-panel = per-ell subsample bandpowers + 500-MC null with observed C1 at +1.85σ_canonical_direct). | ALREADY-CLOSED-v1.0.70 | Caption + figure both consistent with canonical data. | CLOSED-v1.0.70 |
 | GM-Audit-3 | Gemini | NIT | 0.79% vs 0.26% raw vs TTA confusion | §IV.B | Body has both numbers; consistent given raw/equivariant distinction. | TRUE-but-minor | Reviewer's request to prepend "raw" vs "equivariant" everywhere is fair. | CLOSE-IN-v1.0.69 (style) |
 
 ---
@@ -278,7 +278,7 @@ closed in single tick.
 | CG-I-6 (CW/CCW/ACW terminology inconsistency) | TRUE-open | Verified ALREADY-CLOSED: existing footnotes at lines 201 and 366 document ACW = CCW equivalence (CE-ResNet and GZ1 use ACW; we use CCW throughout). **Audit miscategorization.** |
 | GD-G-5 (long \artifact{} paths in main text) | TRUE-open (style) | Acknowledged as style choice; not closed (the \artifact{} macro hyperlinks the paths to GitHub which makes them clickable and serves the reproducibility-focus of the paper). Dispute log entry. |
 | CG-F-2 (CE-ResNet neutral comparison table) | TRUE-open | Still open. Will add a small comparison table in v1.0.70. |
-| GM-Audit-2 (re-render fig_multipoles.png) | TRUE-open | Still open. The PNG file render is from the older 2.75σ normalization; need to regenerate from the canonical N_spiral=3,201,160 data. Pod has the catalog so this is doable in v1.0.70. |
+| GM-Audit-2 (re-render fig_multipoles.png) | ALREADY-CLOSED-v1.0.70 | Regenerated locally from canonical N_spiral=3,201,160 / f_sky=0.491 data (`master_results/master_power_spectrum.json` per-ell + `canonical_provenance/canonical_n_master_l1_direct_null_distribution.npy` 500-MC null); two-panel figure with observed C1 at +1.85σ_canonical_direct. |
 
 ### Updated verdict counts (post v1.0.69 closures):
 
