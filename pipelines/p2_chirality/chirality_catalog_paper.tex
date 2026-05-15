@@ -1278,15 +1278,13 @@ pixel asymmetry values are shuffled while preserving the mask.%
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude
-significance $0.43\sigmaunit$ (one-tailed $p = 0.30$ from the
-isotropic-null bootstrap at $N_{\rm MC} = 10{,}000$; equivalently a two-tailed
-$p = 0.60$, since the dipole-amplitude statistic is
-positive-definite and we test the alternative
-``amplitude $>$ random''---the one-tailed convention is the
-natural one for amplitude-only tests and is used
-consistently for the multipole-null and hemisphere $p$-values
-reported below), fully consistent with the null
-hypothesis.\footnote{The $p = 0.30$ value is the canonical
+significance $0.43\sigmaunit$ ($p = 0.30$ from the isotropic-null
+bootstrap at $N_{\rm MC} = 10{,}000$, defined as the empirical-rank
+probability of the null distribution exceeding the observed
+amplitude; the one-tailed convention is the natural one for
+positive-definite amplitude statistics and is used consistently
+for the multipole-null and hemisphere $p$-values reported below),
+fully consistent with the null hypothesis.\footnote{The $p = 0.30$ value is the canonical
 $N_{\rm MC} = 10{,}000$ result on the Catalog~C equivariant spiral
 subsample and is used uniformly throughout the abstract,
 Sec.~\ref{sec:dipole}, the look-elsewhere null-test verdict, and
@@ -2004,22 +2002,40 @@ CW~$+$~CCW spirals vs.\ CE-ResNet's $1.95$~million):
 $\CW/(\CW+\CCW) = 0.4974 \pm 0.0003$,
 corresponding to $\CW/\CCW = 0.990$.
 
-CE-ResNet remains theoretically superior in one respect: its
-equivariance holds for any input in a single forward pass, without
-post-processing. Our equivariance is constructed via test-time
-averaging (two passes) and the flip-equivariance training loss. The
-raw (single-pass) flip-swap correlation of our model is 0.833 versus
-CE-ResNet's 1.000 by construction. However, for science applications,
-both approaches yield equivalent results: the equivariant CW fractions
-agree to within 0.5\%.
+Table~\ref{tab:ceresnet_compare} compares the two pipelines neutrally
+on the load-bearing dimensions.
 
-Our pipeline adds value in three areas: (i)~the \NS{} class prevents
-contamination from non-spirals (CE-ResNet lacks this), (ii)~the
-8-test bias hardening suite provides the first quantitative,
-multi-axis bias audit for a chirality classifier, and (iii)~the
-$1.6\times$ larger spiral sample ($3.20$ vs.\ $1.95$~million)
-enables finer angular and redshift
-resolution in dipole analyses.
+\begin{table}[h]
+\caption{\label{tab:ceresnet_compare}Neutral comparison: CE-ResNet
+(Jia~\etal~2023~\cite{Jia:2023}) vs the present Catalog~C
+(ViT-Small + 2-fold flip TTA). Each pipeline has distinct
+advantages.}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+Dimension & CE-ResNet & This work (Catalog~C) \\
+\hline
+Equivariance & Architectural (single forward pass) & TTA (two-fold flip; flip-equivariance loss $\lambda=0.5$) \\
+Flip-swap correlation & 1.000 (by construction) & 0.833 raw $\rightarrow$ 1.000 post-TTA \\
+\NS{} class & No (CW/CCW only) & Yes (3-class output) \\
+Survey & DESI Legacy pre-imaging & DESI Legacy DR8 \\
+Sample size & $1{,}953{,}246$ classified & $8{,}474{,}531$ classified; $3{,}201{,}160$ spirals \\
+Training labels & GZ1 + bot-validated & GZ1 (6.6k) + CE-ResNet (17.2k) + synth (2k) \\
+Independent GZ1 agreement & Not separately reported & $69.91\%$ (Cohen's $\kappa=0.40$), 234,282 disjoint matches \\
+Bias audit & Not separately documented & 8-test suite (Sec.~\ref{sec:bias}) \\
+Rotational equivariance & Not separately tested & $Z_2$ only; $D_4$ deferred (Sec.~\ref{sec:tta}) \\
+Public release & arXiv:2210.04168 + table & HuggingFace + this paper + GitHub release \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The two pipelines are complementary rather than competitive:
+CE-ResNet's architectural equivariance provides a stronger
+single-pass mathematical guarantee against horizontal-flip bias;
+our TTA-equivariant pipeline trades that guarantee for a 1.6$\times$
+larger spiral sample, a dedicated \NS{} class, and a published
+multi-axis bias-hardening suite. For science applications, the
+equivariant CW fractions on the overlapping DESI footprint agree
+to within $0.5\%$.
 
 \subsection{SpArcFiRe}
 \label{sec:sparcfire}
