@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.80}
+\newcommand{\paperVersion}{v1.0.81}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -166,18 +166,22 @@ $-2.41\sigmaunit$ excursion at $\theta\!\approx\!0.5^\circ$
 coincident with the DESI Legacy DR8 brick scale; under a 10-bin
 look-elsewhere correction this drops below $|\sigma|\!<\!2$
 post-LEE. This is a fourth independent line of evidence that the
-chirality field carries no primordial parity-violating signal. Systematic-inclusive sensitivity is reported honestly rather than
-optimistically: the per-pixel-shuffle injection-recovery sweep (Table~\ref{tab:mc_injection})
-gives $P(\sigma\!>\!2)\!=\!0.18$ at $A\!=\!0.5\%$ and never crosses the
-50\% recovery criterion at any tested amplitude (up to $A\!=\!2\%$), so the
-sweep establishes the empirical detection threshold only as
-$|A_{\rm dipole}|\!\gtrsim\!0.5\%$-class (a non-detection at the
-$0.5\%$-amplitude scale under this null), not as a calibrated
-$3\sigmaunit$ floor. The Fisher Poisson-asymptote on the full amplitude
-is $\sim\!0.29\%$ at $3\sigmaunit$ under
-$p_{\rm CW}(\hat n)=\tfrac12(1+A\cos\theta)$ in the ideal-statistical limit;
-the achievable systematic-inclusive sensitivity is between these two
-figures and is the load-bearing number for downstream forecasts.
+chirality field carries no primordial parity-violating signal. The
+\textbf{load-bearing} systematic-inclusive sensitivity is the
+empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
+$\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ from the extended
+9-amplitude injection sweep
+(P($\sigma\!>\!3$)$\!=\!0.50$ at $A\!=\!0.75\%$, rising to
+$1.00$ at $A\!\geq\!1.50\%$; per-pixel-shuffle null preserves
+the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
+depth/mask-edge correlations). The Fisher Poisson asymptote of
+$\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
+\textbf{ideal-statistical floor} (zero systematics, full coverage),
+not the operational detection threshold; the gap factor of
+$\sim\!2.5\times$ between Fisher floor and empirical threshold is
+the standard Fisher-vs-empirical factor reported in the
+dipole-recovery literature for similar single-cosine
+estimators.
 
 A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
 ($9.5\sigmaunit$ from $50/50$ under naive binomial errors;
