@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{23}%
+\begin{thebibliography}{24}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -120,6 +120,20 @@
   10^{-4}$}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {(in
   preparation)}\ } (\bibinfo {year} {2026}{\natexlab{d}})},\ \bibinfo {note}
   {hUBIFY-2026-004; companion paper, this volume}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Riess}\ \emph {et~al.}(2022)\citenamefont {Riess},
+  \citenamefont {Yuan}, \citenamefont {Macri} \emph {et~al.}}]{Riess2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Riess}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Yuan}},
+  \bibinfo {author} {\bibfnamefont {L.~M.}\ \bibnamefont {Macri}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {A comprehensive measurement
+  of the local value of the {Hubble} constant with 1 km/s/{Mpc} uncertainty
+  from the {Hubble Space Telescope} and the {SH0ES} team},\ }\href
+  {https://doi.org/10.3847/2041-8213/ac5c5b} {\bibfield  {journal} {\bibinfo
+  {journal} {The Astrophysical Journal Letters}\ }\textbf {\bibinfo {volume}
+  {934}},\ \bibinfo {pages} {L7} (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2112.04510} {arXiv:2112.04510 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Hehl}\ \emph {et~al.}(1976)\citenamefont {Hehl},
   \citenamefont {von~der Heyde}, \citenamefont {Kerlick},\ and\ \citenamefont
   {Nester}}]{Hehl1976}%
@@ -143,6 +157,18 @@
   {volume} {73}},\ \bibinfo {pages} {084016} (\bibinfo {year} {2006})},\
   \Eprint {https://arxiv.org/abs/gr-qc/0601013} {arXiv:gr-qc/0601013 [gr-qc]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2009)\citenamefont {Cai},
+  \citenamefont {Xue}, \citenamefont {Brandenberger},\ and\ \citenamefont
+  {Zhang}}]{Cai:2009fn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
+  {Cai}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Xue}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Brandenberger}},\ and\ \bibinfo
+  {author} {\bibfnamefont {X.}~\bibnamefont {Zhang}},\ }\bibfield  {title}
+  {\bibinfo {title} {Non-gaussianity in a matter bounce},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo
+  {volume} {0905}},\ \bibinfo {pages} {011}},\ \Eprint
+  {https://arxiv.org/abs/0903.0631} {arXiv:0903.0631} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Liu}\ \emph {et~al.}(2025)\citenamefont {Liu},
   \citenamefont {Li}, \citenamefont {Xu}, \citenamefont {Biesiada},\ and\
   \citenamefont {Wang}}]{ECTorsionDESI2025}%
@@ -247,20 +273,6 @@
   oscillations},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
   {arXiv preprint}\ } (\bibinfo {year} {2024})},\ \Eprint
   {https://arxiv.org/abs/2404.03002} {arXiv:2404.03002 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Riess}\ \emph {et~al.}(2022)\citenamefont {Riess},
-  \citenamefont {Yuan}, \citenamefont {Macri} \emph {et~al.}}]{Riess2022}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
-  {Riess}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Yuan}},
-  \bibinfo {author} {\bibfnamefont {L.~M.}\ \bibnamefont {Macri}}, \emph
-  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {A comprehensive measurement
-  of the local value of the {Hubble} constant with 1 km/s/{Mpc} uncertainty
-  from the {Hubble Space Telescope} and the {SH0ES} team},\ }\href
-  {https://doi.org/10.3847/2041-8213/ac5c5b} {\bibfield  {journal} {\bibinfo
-  {journal} {The Astrophysical Journal Letters}\ }\textbf {\bibinfo {volume}
-  {934}},\ \bibinfo {pages} {L7} (\bibinfo {year} {2022})},\ \Eprint
-  {https://arxiv.org/abs/2112.04510} {arXiv:2112.04510 [astro-ph.CO]}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{DES Collaboration}}\ \emph
   {et~al.}(2022)\citenamefont {{DES Collaboration}}, \citenamefont {Abbott}

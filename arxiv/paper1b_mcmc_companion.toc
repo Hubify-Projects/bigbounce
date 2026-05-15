@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{4}{section*.9}%
 \contentsline {subsection}{\numberline {A}Datasets and Configuration}{4}{section*.10}%
 \contentsline {subsection}{\numberline {B}Results}{4}{section*.11}%
-\contentsline {paragraph}{\numberline {a}Real cross-vendor adversarial-review deferrals (v1B.0.5).}{4}{section*.12}%
+\contentsline {paragraph}{\numberline {a}Model-comparison statistics: 3-vendor convergent R2 BLOCKER closed by removal of the unverified block.}{4}{section*.12}%
 \contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{4}{section*.13}%
 \contentsline {section}{\numberline {VII}Cross-Paper Verification Status}{5}{section*.14}%
 \contentsline {subsection}{\numberline {A}Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger $ footnote)}{5}{section*.15}%
@@ -19,6 +19,6 @@
 \contentsline {subsection}{\numberline {}Data and Code Availability}{6}{section*.17}%
 \contentsline {section}{\numberline {}Acknowledgments}{6}{section*.18}%
 \appendix 
-\contentsline {section}{\numberline {A}Reproducibility Materials}{6}{section*.19}%
+\contentsline {section}{\numberline {A}Reproducibility Materials}{7}{section*.19}%
 \contentsline {section}{\numberline {B}Claims Classification}{7}{section*.20}%
 \contentsline {section}{\numberline {}References}{7}{section*.21}%

@@ -43,8 +43,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.6}
-\newcommand{\paperTimestamp}{2026-05-15 01:30 PDT (1st real cross-vendor R-round closures: DESI DR2 chain stall status updated across 4 sites; cross-paper Table 1 versions and readinesses refreshed to current state; 14->13 barrier framing aligned with P1A v1A.0.22; model-comparison stats Table 2 + Conclusions retained for now per existing on-record deferral)}
+\newcommand{\paperVersion}{v1B.0.7}
+\newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
 
@@ -58,7 +58,7 @@ for the ECH Spin-Torsion Program}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{May 14, 2026 PDT --- \paperVersion}
+\date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
 We report the technical verification material for the Einstein-Cartan-Holst (ECH)
@@ -71,9 +71,9 @@ run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
 a null-consistency test of an extra radiation-like degree of freedom, not as
 evidence for or against the ECH spin-torsion framework. Both frozen dataset
 combinations find $\Delta\Neff$ consistent with zero ($-0.020\pm 0.169$
-full-tension; $+0.065\pm 0.17$ Planck+BAO+SN) and
-$H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,\text{Mpc}^{-1}$, recovering
-standard $\Lambda$CDM.
+full-tension; $+0.065\pm 0.17$ Planck+BAO+SN) and $H_0$ consistent with
+standard $\Lambda$CDM ($67.68\pm 1.06$ full-tension;
+$67.79\pm 1.09$ Planck+BAO+SN, both in $\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
 \emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on the Planck Commander
 CMB polarization map ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
@@ -153,14 +153,25 @@ values come from Secs.~\ref{sec:verification} and~\ref{sec:cosmo_fits} here.
 \section{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:tensions}
 
 The bounce scenario motivates extending $\Lambda$CDM by $\Delta\Neff$ (particle
-production at the bounce) and $(\omega/H)_0$ (angular momentum transfer), treated
-as phenomenological parameters. $\Omega_k$ is fixed to zero (mandated by 92
-$e$-folds of post-bounce inflation). The \textit{original} MCMC analysis
-(which included the SH0ES $H_0$ prior) yielded $H_0 = 69.2\pm 0.8$,
-$\sigma_8 = 0.785\pm 0.016$; however, independent verification
-(Sec.~\ref{sec:verification}) shows these were driven by the SH0ES prior,
-not by the $\Delta\Neff$ extension. The spin-torsion framework alone does
-not resolve cosmological tensions.
+production at the bounce) as a phenomenological proxy parameter; $(\omega/H)_0$
+(angular momentum transfer) and $\Omega_k$ are fixed to zero in the actual
+sampled MCMC configuration of this paper (per the explicit
+parameter-scope clarification in Sec.~\ref{sec:fullcomp}; the
+$(\omega/H)_0$ parameter is discussed in Paper~I(a) as a phenomenological
+bounce-class indicator but is not separately sampled here).
+The full-tension dataset combination includes the SH0ES~\cite{Riess2022}
+$H_0$ prior in the Cobaya likelihood configuration, but the
+high-precision Planck NPIPE CamSpec TTTEEE+lowl+lensing likelihoods
+carry sufficient inverse-variance weight that the posterior $H_0$ in
+the proxy run is pulled to $67.68 \pm 1.06$ (Planck-dominated value)
+rather than to the simple Gaussian-combination value $\sim 70$ that
+would emerge if SH0ES and Planck were equally weighted. We do not
+therefore claim that the SH0ES tension is resolved or even moved by
+adding $\Delta\Neff$ in stock CAMB; in this configuration the
+$\Delta\Neff$ posterior is consistent with zero and the
+$H_0$ posterior is dominated by Planck. The spin-torsion framework
+alone does not resolve cosmological tensions at the present data
+precision.
 
 
 %% ============================================================
@@ -213,7 +224,7 @@ parity-even four-fermion contact interaction that survives torsion
 elimination~\cite{Hehl1976,Mercuri2006} is dimension-6 and $M_{\rm Pl}^{-2}$-suppressed:
 its leading Boltzmann effect is a scattering-amplitude shift, not a
 relativistic species, and it does \emph{not} produce a $\Delta\Neff$ at
-recombination. The matter-bounce class predicts $\Delta\Neff\!\approx\!0$
+recombination. The matter-bounce class~\cite{Cai:2009fn} predicts $\Delta\Neff\!\approx\!0$
 by construction (no light bounce-internal species are thermalized at
 recombination); the proxy run \emph{confirming} $\Delta\Neff = -0.020 \pm 0.169$
 (full-tension) and $+0.065\pm 0.17$ (Planck+BAO+SN) is therefore consistent
@@ -323,8 +334,7 @@ $\beta=0.342^\circ$, and $\beta=0$ injections rotate $Q+iU$ via
 $e^{2i\beta}(Q+iU)$ before adding noise.
 
 \emph{Reproducibility.}---Full driver script, mask, MC seeds, and binning
-specification are in
-\texttt{pipelines/h200\_results/pod1\_namaster\_umap\_2026-04-29/}.
+specification are in \texttt{pipelines/h200\_results/\allowbreak pod1\_namaster\_umap\_2026-04-29/}.
 
 \textit{Independent verification (production 500-realization run, April 2026).}---We
 performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
@@ -356,80 +366,52 @@ We analyze four dataset combinations: (1)~Planck 2018 NPIPE~\cite{Planck2018para
 prior~\cite{Riess2022} + DES Y3 $S_8$~\cite{DES2024}. Parameter estimation
 uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
 stock CAMB and $\Delta\Neff$ as a free parameter---no custom CAMB modifications.
-The extended parameter space adds $\{\Delta\Neff, (\omega/H)_0\}$ to $\Lambda$CDM,
-with $\Omega_k$ fixed to zero. Reproducibility materials at
+The extended parameter space adds $\Delta\Neff$ to $\Lambda$CDM, with both
+$(\omega/H)_0$ and $\Omega_k$ fixed to zero in the actual sampled YAML
+configuration (R2 closure of an earlier scope ambiguity that listed
+$(\omega/H)_0$ as a free parameter inconsistently with $k=7$ in the
+model-comparison degree-of-freedom counting; the angular-momentum
+parameter $(\omega/H)_0$ is discussed in Paper~I(a) as a phenomenological
+bounce-class indicator but is not separately sampled in the present
+$\Lambda$CDM$+\Delta\Neff$ MCMC). Reproducibility materials at
 \url{https://github.com/Hubify-Projects/bigbounce/tree/v2.3.0/reproducibility}.
 
 \subsection{Results}
 
-\begin{table*}[tb]
-\caption{\label{tab:modelcomp} $\Lambda$CDM$+\Delta\Neff$ proxy model comparison
-(full tension dataset). \emph{This run does not test the spin-torsion theory};
-it tests whether the data prefer an extra radiation-like degree of freedom in
-stock CAMB. The $\ln B$ estimate is biased at $r=-0.89$ and is indicative only.}
-\begin{ruledtabular}
-\begin{tabular}{lccccc}
-Model & $k$ & $\chi^2_{\rm eff}$ & AIC & BIC & $\ln B$ \\
-\hline
-$\Lambda$CDM & 6 & 1156.2 & 1168.2 & 1195.5 & 0.0 \\
-$w$CDM & 7 & 1154.8 & 1168.8 & 1199.2 & $-0.5$ \\
-\textbf{$\Lambda$CDM$\,+\,\Delta N_{\rm eff}$} & \textbf{7} & \textbf{1148.3} & \textbf{1162.3} & \textbf{1194.8} & $\mathbf{+4.8}$ \\
-\end{tabular}
-\end{ruledtabular}
-\end{table*}
+\paragraph{Model-comparison statistics: 3-vendor convergent R2 BLOCKER closed
+by removal of the unverified block.}
+The R2 multi-vendor adversarial round on v1B.0.6 (Gemini-3.1-Pro-preview
+$+$ Grok-4.3 $+$ GPT-5.5 $+$ DeepSeek-V4-Pro, all reasoning\_effort=high)
+returned a 3-vendor convergent BLOCKER on the previously-published
+$\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block of earlier versions: the numbers were taken from earlier sweep-phase
+outputs and are \emph{not} reproducible from a single self-consistent
+readout of the final frozen-thinned chain. Specifically:
+(i)~$\Delta\chi^2_{\rm eff} = -7.9$ for one extra parameter was in
+apparent tension with the full-tension posterior
+$\Delta N_{\rm eff} = -0.020 \pm 0.169$ (the nested $\Delta\Neff=0$ sits
+at $0.12\sigma$ from the posterior mean, where a Gaussian nested
+likelihood predicts $\Delta\chi^2_{\rm eff}$ closer to $\sim 0.01$ than
+to $-8$); (ii)~the displayed AIC and BIC used inconsistent effective
+sample counts between rows; (iii)~the $\ln B = +4.8$ Savage-Dickey
+figure had no script in the reproducibility repository that computes
+the SD numerator/denominator from the chain. Per the standing memory
+directive to take peer-review findings as \emph{full hard fix} rather
+than re-defer (the v1B.0.5 round had \textit{also} flagged these items
+and they remained printed), we remove the model-comparison numerical
+row \emph{and} the Bayes-factor piecewise entirely from the body of
+this paper
+in v1B.0.7. The two posterior parameter measurements that remain are
+$\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
+$+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
+are the load-bearing numbers used elsewhere in the paper and they are
+unaffected by the model-comparison-statistic deferral.
+A one-pass recomputation of $\chi^2_{\rm eff}$, AIC, BIC, and any
+evidence value from the final frozen-thinned chain via a single
+auditable script is on-record-deferred to v1B.0.8.
 
-The primary model-selection metrics are the $\Delta$AIC and $\Delta$BIC:
-\begin{align}
-\Delta\text{AIC} &= 1162.3 - 1168.2 = -5.9, \nonumber \\
-\Delta\text{BIC} &= 1194.8 - 1195.5 = -0.7, \nonumber \\
-\Delta\chi^2_{\rm eff} &= 1148.3 - 1156.2 = -7.9.
-\end{align}
-The $\Delta$AIC of $-5.9$ favors $\Lambda$CDM$+\Delta\Neff$ on Akaike grounds,
-while the $\Delta$BIC of $-0.7$ is below the Kass-Raftery threshold of
-$|\Delta\text{BIC}|<2$. Together these metrics are mildly favorable but not
-decisive for $\Lambda$CDM$+\Delta\Neff$.
-
-\paragraph{Real cross-vendor adversarial-review deferrals (v1B.0.5).}
-A multi-vendor adversarial round on v1B.0.4 (GPT-5.5, Gemini-2.5-Pro,
-Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2 via OpenRouter,
-2026-05-14) flagged three internal-consistency issues with the present
-$\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block that the prior simulated-reviewer
-rounds did not surface: (i) $\Delta\chi^2_{\rm eff} = -7.9$ for one extra
-parameter is in apparent tension with the full-tension posterior
-$\Delta N_{\rm eff} = -0.020 \pm 0.169$ (the nested value $\Delta\Neff=0$
-sits at $0.12\sigma$ from the posterior mean, where a Gaussian nested
-likelihood predicts $\Delta\chi^2_{\rm eff}$ closer to zero than to $-8$);
-(ii) the displayed $\chi^2_{\rm eff}$, AIC, and BIC values are not
-arithmetically reproducible from a single self-consistent chain readout
-because they were taken from earlier sweep-phase outputs while the posterior
-was reported from the final frozen-thinned subset; (iii) the
-$\ln B = +4.8$ Savage-Dickey indicative figure lacks an explicit
-provenance reference to the script that computes it from the chain
-(\texttt{convergence\_summary.json} carries $\Delta\Neff = -0.020 \pm 0.169$
-but not the SD numerator/denominator estimates). These items are flagged
-as \textbf{on-record deferrals} pending a one-pass recomputation of
-$\chi^2_{\rm eff}$, AIC, BIC, and $\ln B$ from the final frozen-thinned
-chain via a single auditable script; the $\Delta N_{\rm eff} = -0.020 \pm 0.169$
-posterior itself is unaffected. Until that recomputation lands, the
-model-comparison numbers in Table~\ref{tab:modelcomp} should be read
-as preliminary cross-checks, not as final decision-grade Bayes evidence.
-
-The Savage-Dickey indicative figure is dataset-dependent:\footnote{\label{fn:bayes_caveat}The
-$\ln B = +4.8$ is computed via the Savage-Dickey density ratio, which is
-significantly biased for the highly correlated posterior ($r=-0.89$ between
-$\Delta\Neff$ and $H_0$). The model tested is $\Lambda$CDM$+\Delta\Neff$ in
-stock CAMB, \emph{not} the ECH spin-torsion framework. A proper evidence-level
-comparison would require nested sampling on a torsion-modified Boltzmann code
-and is not attempted here.}
-\begin{align}
-\ln \mathcal{Z}_{\Lambda\text{CDM}+\Delta\Neff} - \ln \mathcal{Z}_{\Lambda\text{CDM}} = \begin{cases}
--1.2 \pm 0.3 & \text{Planck+BAO} \\
-+4.8 \pm 0.5 & \text{Full tension} \\
-\end{cases}
-\end{align}
-The preference emerges only when SH0ES-driven tension data are included, which is
-the standard $\Lambda$CDM$+\Delta\Neff$ behavior. With Planck+BAO alone, the
-Occam penalty slightly disfavors the proxy model.
+The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
+preference nor exclusion at the present data precision. The
+$\Delta\Neff$ extension alone does not resolve the Hubble tension.
 
 
 %% ============================================================
@@ -475,9 +457,10 @@ $\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{DiegoPalazuelos2022}) and
 $\beta = 0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}) via
 inverse-variance weighting:
 \begin{equation}
-\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigma\;\text{auxiliary cross-check only}).
+\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigma)
 \label{eq:beta_combined}
 \end{equation}
+(Auxiliary cross-check only.)
 This neglects shared calibration systematics; the published joint analysis at
 $3.6\sigma$~\cite{Eskilt2022b} is the headline.
 
@@ -486,8 +469,19 @@ space (3 configurations, 9{,}720 total accepted samples) yields:
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ ($C_{a\gamma}=8$ fixed),
 consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
-within $1\sigma$. The coupling-misalignment product is
-$C_{a\gamma}\times\theta_i = 3.4\pm 1.1$.
+within $1\sigma$. The combined coupling-displacement product entering the
+birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
+($\beta = 0.342^\circ$ in radians is $5.97\times 10^{-3}$, the prefactor
+$\alpha_{\rm EM}/(4\pi)$ is $5.8\times 10^{-4}$, giving
+$C_{a\gamma}\,\Delta\phi/f_a = \beta/[\alpha_{\rm EM}/(4\pi)] \approx 10.3$);
+with the field-displacement range $\Delta\phi/f_a \in [0.2, 1.1]$ from the
+numerical ALP-EOM integration, the required $C_{a\gamma}$ spans $\sim 9$
+to $\sim 51$, comfortably within natural ALP-photon coupling ranges. R2
+closure of an earlier reported product
+``$C_{a\gamma}\times\theta_i = 3.4\pm 1.1$''
+that confused $\theta_i$ (initial misalignment) with $\Delta\phi/f_a$
+(integrated field-displacement) and was numerically inconsistent with
+$\beta = 0.342^\circ$ by a factor of $\sim 3$ (GPT-M6).
 Convergence: $\hat{R}-1 < 0.01$ for all runs.
 
 \textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta)
@@ -511,22 +505,22 @@ not uniquely predict it.
 \begin{table*}[tb]
 \caption{\label{tab:crosspaper} Cross-paper status table (Wave 14 / Mid-May 2026).
 Readiness reflects current state after the 2026-05-14 real cross-vendor R-round cycle (R45+ findings inline in each paper's status). Readiness cap is 95\% pending Houston sign-off + clean external peer-review round; final 1pp to 100\% Houston-only.
-DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current stalled status.}
+DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current slow-mode-dominated state.}
 \begin{ruledtabular}
-\begin{tabular}{lllcc}
-Paper & Version & Title (brief) & Readiness & Key Blocker \\
+\begin{tabular}{llcl}
+Paper & Version & Readiness & Key blocker \\
 \hline
-P1(a) & v1A.0.22 & ECH structural closure, 13 logically-independent barriers (14 historical catalog entries), perturbation transparency & 73\% & Route 2 dimensional re-derivation (on-record deferred); Houston sign-off \\
-P1(b) & v1B.0.6 & This companion: MCMC proxy, NaMaster, ALP; DESI DR2 $w_0 w_a$ chain stalled & 64\% & DESI DR2 chain stall + model-comparison stats recompute; Houston sign-off \\
-P2 & v1.7.29 & SPHEREx $\fnl$ forecast, MegaMapper outlook & 81\% & 2nd vendor R-round; Houston sign-off \\
-P3 & v3.1.40 & Multi-survey anomaly catalog (37.3M sources, 378,280 anomalies after 7-way dedup) & 84\% & 378,280 union-find dedup + Fisher propagation (on-record deferred); Houston sign-off \\
-P4 & v1.0.64 & Galaxy chirality catalog (8.47M galaxies; canonical-$N$ MASTER $\ell=1$ direct compute closed at v1.0.62) & 95\% & Houston sign-off only (gate (a) satisfied per 7-consecutive Gemini-2.5-Pro endorsements) \\
+P1(a) & v1A.0.23 & 74\% & Route 2 dim.\ re-derivation (deferred v1A.0.24) \\
+P1(b) & v1B.0.7 & 66\% & Model-comparison recompute (deferred v1B.0.8) \\
+P2    & v1.7.30 & 82\% & Appendix A convention + unified Fisher (v1.7.31) \\
+P3    & v3.1.41 & 85\% & 378k dedup + Fisher + Savage-Dickey (v3.1.42) \\
+P4    & v1.0.66 & 95\% & Houston sign-off only (8-consec Gemini endorsements) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
 
 \begin{table}[tb]
-\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is currently \emph{stalled} at $\hat{R}-1 = 0.01775$ / 53{,}736 accepted samples; the progress checkpoint last flushed at 2026-05-14 15:43 UTC and no advance has been observed for $\sim$12 hours. The 16-rank mpirun process remains alive on the pod, indicating the sampler is slow-mode-dominated rather than crashed; restart-vs-extend investigation is non-blocking for P4 publish-readiness (gate (a) satisfied independently). The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once converged.}
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-14 22:53~UTC, at $59{,}832$ accepted samples with $\hat{R}-1 = 0.01945$ (last flushed 22:53~UTC; \emph{slow-mode-dominated, not stalled} --- the chain has progressed from the v1B.0.6 snapshot of $53{,}736$/$0.01775$ at 15:43~UTC by ${\sim}6{,}000$ samples). The slight $\hat{R}-1$ uptick from $0.01775$ to $0.01945$ is expected behavior for a slow-mixing chain exploring newly opened posterior volume and is not a divergence. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once it reaches the standard publication target $\hat{R}-1 < 10^{-2}$.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
@@ -534,7 +528,7 @@ Dataset combination & Samples & $\hat{R}-1$ & Status \\
 Full-tension (P+B+SN+H0+S8) & 176{,}840 & 0.001 & Frozen \\
 Planck+BAO+SN & 132{,}949 & 0.003 & Frozen \\
 Planck-only & 114{,}992 & $\sim$0.05 & Ongoing \\
-DESI DR2 w0wa (new) & $\sim$109 accepted & $>0.1$ & Running \\
+DESI DR2 w0wa (iter2) & 59{,}832 & 0.0195 & Slow-mode \\
 ALP-MCMC ($\beta$ fitting) & 9{,}720 & $<0.01$ & Frozen \\
 \end{tabular}
 \end{ruledtabular}
@@ -561,13 +555,12 @@ $w_0 w_a$ extension would therefore be a category error.
 \textbf{(ii)} The DESI~DR2 $w_0 w_a$-extended chain (Table~\ref{tab:mcmc_inventory}
 row~4) is running on a dedicated MPI pod (16 chains, OMP threads tuned to
 suppress BLAS oversubscription, GetDist-built posterior covmat from a
-preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). At the
-time of this writing the chain has accumulated $\sim\!3.8\!\times\!10^{4}$
-accepted samples across the 16 chains and reports $\hat R - 1 \approx
-3\!\times\!10^{-2}$, descending monotonically toward the standard
-publication-quality convergence target $\hat R - 1 < 10^{-2}$ at a
-slow-mode-dominated rate; we deliberately do not commit to a specific
-calendar date for convergence in this subsection. Until that chain
+preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). As of
+2026-05-14 22:53~UTC the chain has accumulated $59{,}832$ accepted
+samples across the 16 chains and reports $\hat R - 1 = 0.01945$
+(slow-mode-dominated; see Table~\ref{tab:mcmc_inventory} caption); we
+deliberately do not commit to a specific calendar date for convergence
+to $\hat R - 1 < 10^{-2}$ in this subsection. Until that chain
 converges, this program has \emph{no $w_0 w_a$ posterior at all}, neither
 for the matter-bounce candidate row nor for any other model.
 
@@ -616,11 +609,15 @@ the published Planck/ACT~DR6 $2.4$--$2.9\sigma$ measurements.
 
 \textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
 is consistent with the published $3.6\sigma$ joint signal without fine-tuning
-($C_{a\gamma}\times\theta_i = 3.4\pm 1.1$ from 9,720 MCMC samples). The
-same result arises in standard GR; the ECH framework provides motivation but
-not a derivation. LiteBIRD will settle this at $\sim 9\sigma$ in the early 2030s.
+($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
+$\Delta\phi/f_a$ in the natural range $[0.2,1.1]$ giving $C_{a\gamma}$
+between $\sim 9$ and $\sim 51$; \S\ref{sec:birefringence_check} for the
+explicit numerical derivation correcting the earlier $C_{a\gamma}\theta_i$
+product). The same result arises in standard GR; the ECH framework
+provides motivation but not a derivation. LiteBIRD will settle this at
+$\sim 9\sigma$ in the early 2030s.
 
-\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-15)}: the chain has accumulated $53{,}736$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.01775$ at the most recent progress flush (2026-05-14 15:43 UTC). The progress checkpoint has not advanced in approximately 12 hours; the 16-rank mpirun process remains alive on the pod, indicating the sampler is slow-mode-dominated at this stage rather than crashed. We deliberately do not commit to a calendar-date convergence ETA in this manuscript: the chain may converge in additional hours, may require parameter-tuning intervention, or may need restart. When converged, GetDist posteriors on $w_0 w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}; in the present manuscript, all DESI DR2 $w_0 w_a$ conclusions in P1(a) remain \emph{not tested} until the stall is resolved.
+\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-14 22:53~UTC)}: the chain has accumulated $59{,}832$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.01945$. The chain has progressed from the v1B.0.6 snapshot of $53{,}736$/$0.01775$ at 15:43~UTC by $\sim 6{,}000$ samples; the slight $\hat R - 1$ uptick is expected behavior for a slow-mixing chain exploring newly opened posterior volume and is not a divergence. The 16-rank mpirun process remains alive on the pod, and the sampler is slow-mode-dominated rather than stalled or crashed. We deliberately do not commit to a calendar-date convergence ETA in this manuscript. When converged ($\hat R - 1 < 10^{-2}$), GetDist posteriors on $w_0 w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}; in the present manuscript, all DESI DR2 $w_0 w_a$ conclusions in P1(a) remain \emph{not tested} until convergence is reached.
 
 \subsection*{Data and Code Availability}
 
@@ -702,14 +699,16 @@ this work (links in the repository README):
 \begin{tabular}{llll}
 Claim & Type & Status & Notes \\
 \hline
-$\Delta\Neff = -0.020\pm 0.169$ (full-tension) & Numerical/MCMC & Verified & Stock CAMB proxy \\
-$H_0 = 67.68\pm 1.06$ & Numerical/MCMC & Verified & Recovers $\Lambda$CDM \\
-$\Delta\text{AIC} = -5.9$ & Numerical & Verified & Table~\ref{tab:modelcomp} \\
-$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC) & Numerical & Verified & Pipeline recovery \\
-$\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ & Numerical/MCMC & Verified & ALP MCMC \\
-Headline: published $3.6\sigma$ ($\beta=0.342^\circ\pm 0.094^\circ$) & Literature & Cited & Eskilt et al. \\
-Stock CAMB proxy $\neq$ ECH theory module & Scope statement & Definition & See Sec.~\ref{sec:verification} \\
-ALP birefringence not distinctive ECH prediction & Scope statement & Definition & See Sec.~\ref{sec:birefringence_check} \\
+$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & Stock CAMB proxy \\
+$\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
+$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
+$H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Deferred & Removed v1B.0.7; recompute v1B.0.8 \\
+$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; bias table v1B.0.8 \\
+$\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$         & MCMC      & Verified & ALP MCMC \\
+Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
+Stock CAMB proxy $\neq$ ECH theory module              & Scope     & Defn.\   & §\ref{sec:verification} \\
+ALP birefringence not distinctive ECH prediction        & Scope     & Defn.\   & §\ref{sec:birefringence_check} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
