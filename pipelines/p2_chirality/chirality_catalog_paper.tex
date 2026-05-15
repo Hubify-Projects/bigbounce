@@ -213,7 +213,7 @@ spiral count alone is $1.6\times$ larger than the state-of-the-art
 prior chirality catalog of CE-ResNet (Jia~\etal~\cite{Jia:2023},
 $1.95$~million galaxies, all classified as CW or CCW since
 CE-ResNet lacks a not-spiral class) and ${\sim}2.5\times$ larger than
-the spiral sample analyzed by Shamir~(2022)~\cite{Shamir:2022}
+the spiral sample analyzed by Shamir~(2022)~\cite{Shamir:2022DESI}
 (``nearly $1.3\times 10^6$ spiral galaxies'' in DESI Legacy
 Survey data, per the published abstract). The two
 state-of-the-art comparators (Jia~\etal\ CE-ResNet and Shamir~2022 DESI
@@ -1114,7 +1114,13 @@ failed transforms) and are excluded.}, classified as follows:
 \end{itemize}
 
 The spiral fraction of $\sim\!38\%$ is consistent with expectations
-for a magnitude-limited galaxy survey~\cite{Lintott:2008}. The
+for a magnitude-limited galaxy survey~\cite{Lintott:2008}. For
+comparison, the Galaxy Zoo DESI detailed-morphology
+measurements~\cite{Walmsley:2023GZDESI} of $\sim\!8.67\!\times\!10^6$
+galaxies in the same DESI Legacy footprint report a featured-galaxy
+fraction (their proxy for spiral-class objects) of $\sim\!35$--$40\%$
+at $r\!\leq\!19$, in agreement with the present $\sim\!38\%$ spiral
+fraction at the same magnitude cut. The
 mean classification confidence is 0.951, with a median of 0.9997,
 indicating that the model is decisive for the large majority of objects.
 
@@ -3180,9 +3186,10 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   ($3{,}201{,}160$ CW~$+$~CCW; canonical, see
   Sec.~\ref{sec:stats})
   that is ${\sim}2.5\times$ larger than the Shamir~2022 DESI Legacy
-  spiral sample (``nearly $1.3\times 10^6$ spirals'' per the published
-  abstract), and is analyzed under an independent classifier with the
-  bias-hardening suite of Sec.~\ref{sec:bias}.
+  spiral sample~\cite{Shamir:2022DESI} (``nearly $1.3\times 10^6$
+  spirals'' per the published abstract), and is analyzed under an
+  independent classifier with the bias-hardening suite of
+  Sec.~\ref{sec:bias}.
 
 \item \textbf{Bias hardening is essential: raw systematics produce
   inflated spurious signal under any single-stage estimator.} Our raw
@@ -3347,13 +3354,17 @@ Astrophys.\ Space Sci.\ \textbf{365}, 136 (2020), arXiv:2007.16116.
 \bibitem{Shamir:2022}
 L.~Shamir,
 ``Analysis of the alignment of non-random patterns of spin directions in populations of spiral galaxies,''
-Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022).
-% NOTE (v1.0.52, real-cross-vendor R-round): the prior arXiv ID 2207.11885
-% pointed to an unrelated optimization paper (Wang et al., "Distributed
-% Projection-free Algorithm for Constrained Aggregative Optimization");
-% removed pending arXiv verification of the actual Shamir 2022 preprint.
-% PASJ 74, 1114 (2022) DOI: 10.1093/pasj/psac058 should be the correct
-% journal venue.
+Publ.\ Astron.\ Soc.\ Jpn.\ \textbf{74}, 1114 (2022), DOI:10.1093/pasj/psac058.
+(Methodology / Ganalyzer-pipeline reference paper. The DESI Legacy
+spin-directions paper is cited separately below as Shamir:2022DESI.)
+
+\bibitem{Shamir:2022DESI}
+L.~Shamir,
+``Analysis of spin directions of galaxies in the DESI Legacy Survey,''
+arXiv:2208.13866 (2022); subsequently published in MNRAS. Uses
+``nearly $1.3\times 10^6$ spiral galaxies'' (per the published
+abstract) and is the appropriate same-survey amplitude comparator
+for our DESI Legacy chirality dipole result.
 
 \bibitem{Alexander:2009tp}
 S.~Alexander and N.~Yunes,
@@ -3364,6 +3375,11 @@ Phys.\ Rep.\ \textbf{480}, 1 (2009), arXiv:0907.2562.
 L.~Shamir,
 ``Handedness asymmetry of spiral galaxies with $z\!<\!0.3$ shows cosmic parity violation and a dipole axis,''
 Phys.\ Lett.\ B \textbf{715}, 25 (2012), arXiv:1207.5464.
+
+\bibitem{Walmsley:2023GZDESI}
+M.~Walmsley \etal,
+``Galaxy Zoo DESI: Detailed Morphology Measurements for 8.7M Galaxies in the DESI Legacy Imaging Surveys,''
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023), arXiv:2309.11425.
 
 \bibitem{Iye:2020}
 M.~Iye, M.~Yagi, and H.~Fukumoto,
