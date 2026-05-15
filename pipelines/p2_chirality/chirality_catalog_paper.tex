@@ -58,9 +58,9 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.65}
-\newcommand{\paperTimestamp}{2026-05-15 PDT (cycle-2 2nd-round closures: 3-vendor convergent per-pixel-null language precision fix; dangling 0.2\% reference removed; ``all higher multipoles null'' contradiction with $+6\sigma$ bandpowers fixed; Gemini-2.5-Pro 8th-consecutive endorsement on v1.0.64)}
-\newcommand{\paperRoundNote}{13th vendor R-round closures: per-pixel-null reconciliation, HC-stratification headline reframe, hemisphere $A$ derivation, TTT-spin contradiction fix, injection-recovery + Fisher-floor provenance JSONs.}
+\newcommand{\paperVersion}{v1.0.66}
+\newcommand{\paperTimestamp}{May 15, 2026 PDT}
+\newcommand{\paperRoundNote}{v1.0.66 visual-formatting pass: short date line, file-path overflows fixed via \texttt{\textbackslash artifact}, Figs.~10/11/12 promoted to two-column, MC injection-recovery sweep tabularized.}
 
 \begin{document}
 
@@ -996,7 +996,7 @@ as the load-bearing test. This morphology-chirality coupling is
 \emph{consistent} with the bin-by-bin CW-fraction non-flatness
 (b/a, fracdev, shape\_r\_eff, and \texttt{type} all show $>\!0.1\%$
 non-flatness; raw run
-\texttt{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_cw\_flatness\_morphology.json},
+\artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_cw\_flatness\_morphology.json},
 \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_qq\_systematics\_regression.json}).
 Crucially, the leak is local and morphology-correlated rather than
 celestial-axis-correlated: the directional dipole null reported in
@@ -1756,7 +1756,7 @@ large-scale systematic bias.
   (Sec.~\ref{sec:cw_frac}), and the headline
   factor of $\sim\!6$--$12$ (central $\sim\!9$) Shamir-comparator
   range remains unchanged.
-  $^{\mathrm{b}}$The bolded ``All sky (canonical)'' row carries the canonical $N_{\rm spiral}=3{,}201{,}160$ denominator but inherits the $\CW/(\CW+\CCW)=0.4974$ and $|\Delta|=0.26\%$ from the snapshot row because the per-region maxima are insensitive at the displayed three-significant-figure precision to the $\lesssim 4\%$ relative shift between $3{,}321{,}795$ and $3{,}201{,}160$ (the per-galaxy CW labels are unchanged across the recount; only the spiral-vs-non-spiral $\NS{}$/edge-on classification was updated, and the affected boundary objects redistribute uniformly across the seven regions). An explicit per-region recompute at the canonical denominator is deferred to the verification artifact \texttt{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}; the snapshot row is retained alongside the canonical row so the reader can verify the $\lesssim 4\%$ insensitivity claim directly.
+  $^{\mathrm{b}}$The bolded ``All sky (canonical)'' row carries the canonical $N_{\rm spiral}=3{,}201{,}160$ denominator but inherits the $\CW/(\CW+\CCW)=0.4974$ and $|\Delta|=0.26\%$ from the snapshot row because the per-region maxima are insensitive at the displayed three-significant-figure precision to the $\lesssim 4\%$ relative shift between $3{,}321{,}795$ and $3{,}201{,}160$ (the per-galaxy CW labels are unchanged across the recount; only the spiral-vs-non-spiral $\NS{}$/edge-on classification was updated, and the affected boundary objects redistribute uniformly across the seven regions). An explicit per-region recompute at the canonical denominator is deferred to the verification artifact \artifact{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}; the snapshot row is retained alongside the canonical row so the reader can verify the $\lesssim 4\%$ insensitivity claim directly.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
 \begin{tabular}{lrcc}
@@ -1778,9 +1778,9 @@ All sky (snapshot)           & 3{,}321{,}795$^{\mathrm{a}}$ & 0.4974 & 0.26 \\
 \end{ruledtabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_sky_regions.png}
+\includegraphics[width=0.92\textwidth]{fig_sky_regions.png}
 \caption{CW fraction by sky region for Catalog~C (equivariant).  Each
   bar shows the CW/(CW$+$CCW) fraction in one of seven sky regions
   defined by RA quadrant and declination band.  The dashed line marks
@@ -1791,7 +1791,7 @@ All sky (snapshot)           & 3{,}321{,}795$^{\mathrm{a}}$ & 0.4974 & 0.26 \\
   (Sec.~\ref{sec:spiral_fraction_variation}), but the chirality
   balance does not.
   \label{fig:sky_regions}}
-\end{figure}
+\end{figure*}
 
 \subsection{Scale Dependence}
 \label{sec:nside}
@@ -2101,9 +2101,9 @@ logically prior to and independent of the monopole's origin.
 Companion artifact:
 \artifact{pipelines/p3\_anomaly\_engine/r42\_results/wave\_14\_zz\_p4\_oa\_m9\_closure.json}.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_raw_vs_eq.png}
+\includegraphics[width=0.92\textwidth]{fig_raw_vs_eq.png}
 \caption{Side-by-side comparison of the chirality asymmetry sky maps
   for Catalog~A (raw, \emph{left}) and Catalog~C (equivariant,
   \emph{right}), both at $\nside = 64$ in Mollweide projection.  The
@@ -2118,7 +2118,7 @@ Companion artifact:
   systematics can masquerade as highly significant dipole signals
   without rigorous bias correction.
   \label{fig:raw_vs_eq}}
-\end{figure}
+\end{figure*}
 
 Beyond the amplitude collapse, equivariant averaging also decorrelates
 the dipole axis from the chirality-dipole axis claimed by
@@ -2407,22 +2407,31 @@ $N_{\rm MC}=500$ realizations is run for significance. Aggregating
 over $100$ random axes per amplitude yields the median significance
 $\langle\sigma\rangle$, the empirical detection probability
 $P(\sigma>2)$, and the direction-recovery probability
-$P(\Delta\theta_{\rm rec,inj}<30^{\circ})$. The full table reads:
-$A{=}0.05\%{:}\,\langle\sigma\rangle{=}{-}0.13$,
-$P({>}2){=}0.04$, $P(\Delta\theta{<}30^{\circ}){=}0.14$;
-$A{=}0.10\%{:}\,\langle\sigma\rangle{=}{-}0.09$,
-$P({>}2){=}0.05$;
-$A{=}0.20\%{:}\,\langle\sigma\rangle{=}{+}0.08$,
-$P({>}2){=}0.05$, $P(\Delta\theta{<}30^{\circ}){=}0.21$;
-$A{=}0.30\%{:}\,\langle\sigma\rangle{=}{+}0.20$,
-$P({>}2){=}0.11$;
-$A{=}0.50\%{:}\,\langle\sigma\rangle{=}{+}0.68$,
-$P({>}2){=}0.18$, $P(\Delta\theta{<}30^{\circ}){=}0.38$.
-The smallest amplitude satisfying both
-$\langle\sigma\rangle{>}2$ and $P(\sigma{>}2){>}0.5$ in this strict
-per-pixel-shuffle null is $\notin \{0.05\%, ..., 0.50\%\}$; an
-empirical $50\%$-recovery threshold therefore lies above $0.5\%$ under
-this null. \emph{Verdict:} the $0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
+$P(\Delta\theta_{\rm rec,inj}<30^{\circ})$; the full sweep is given
+in Table~\ref{tab:mc_injection}.
+
+\begin{table}[h]
+\caption{\label{tab:mc_injection}Per-pixel-shuffle null MC injection-recovery
+sweep (HC-spiral subsample, $n=471{,}049$; $N_{\rm inj}=100$ axes per
+amplitude; $N_{\rm MC}=500$ per realization).}
+\begin{ruledtabular}
+\begin{tabular}{cccc}
+$A$ & $\langle\sigma\rangle$ & $P(\sigma{>}2)$ &
+$P(\Delta\theta_{\rm rec,inj}{<}30^{\circ})$ \\
+\hline
+$0.05\%$ & $-0.13$ & $0.04$ & $0.14$ \\
+$0.10\%$ & $-0.09$ & $0.05$ & --- \\
+$0.20\%$ & $+0.08$ & $0.05$ & $0.21$ \\
+$0.30\%$ & $+0.20$ & $0.11$ & --- \\
+$0.50\%$ & $+0.68$ & $0.18$ & $0.38$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+No amplitude in the swept range $\{0.05\%,\ldots,0.50\%\}$ satisfies
+both $\langle\sigma\rangle{>}2$ and $P(\sigma{>}2){>}0.5$, so the
+empirical $50\%$-recovery threshold under this strict per-pixel-shuffle
+null lies above $0.5\%$. \emph{Verdict:} the $0.2\%$ in the abstract and \S\ref{sec:sensitivity} is the
 \emph{statistical Poisson floor} ($\sigma_{\rm stat}\!\approx
 1/\!\sqrt{3 N_{\rm spirals} f_{\rm sky}}{\,\times\,}\!1.4$, the
 analytic Fisher quantity in Eq.~\ref{eq:sigma_dip}, already framed in
@@ -2685,9 +2694,9 @@ Pearson correlations between CW probability and PSF-ellipticity
 components, with the maximum bandpower-binned cross-power z-score
 $|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_jj\_psf\_xcorr\_results.json}).
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_binned_cw_fraction.png}
+\includegraphics[width=0.92\textwidth]{fig_binned_cw_fraction.png}
 \caption{Per-bin equivariant CW fraction for the three continuous
   morphology axes available in the production catalog
   (\emph{left:} log Sersic effective radius
@@ -2712,7 +2721,7 @@ $|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\artifact{pipelines/p2\_chirality/r42\
   parity-violation observable. Companion artifact:
   \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_oo\_bin\_flatness.json}.
   \label{fig:binned_cw_fraction}}
-\end{figure}
+\end{figure*}
 
 \subsection{Spiral Fraction Variation Across the Sky}
 \label{sec:spiral_fraction_variation}
