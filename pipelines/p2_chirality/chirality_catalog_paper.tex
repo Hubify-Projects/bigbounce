@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.88}
+\newcommand{\paperVersion}{v1.0.89}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -150,15 +150,17 @@ symmetrization). Classification uses a Vision Transformer (\vit)
 fine-tuned on $26{,}636$ images from Galaxy Zoo~1 ($6{,}637$),
 high-confidence CE-ResNet pseudo-labels ($17{,}999$), and synthetic
 hard negatives ($2{,}000$). The load-bearing external check is the
-$240{,}919$-galaxy GZ1 cross-match: $69.91\%$ CW/CCW agreement
-(Cohen's $\kappa\!=\!0.40$); the internal three-class training-set
+$240{,}919$-galaxy GZ1 cross-match, of which $117{,}205$ pass the
+spiral-only purity cut and form the subset on which the agreement
+metrics are computed: $69.91\%$ CW/CCW agreement and Cohen's
+$\kappa\!=\!0.40$ on the $117{,}205$-spiral subset; the internal three-class training-set
 validation accuracy of $93.7\%$ is reported only as a
 training-pipeline self-consistency check because $67.6\%$ of
 training labels derive from CE-ResNet pseudo-labels. A
 $1{,}558$-galaxy $D_4$-TTA hold-out confirms the production
 $Z_2$-only TTA preserves the ensemble-mean $\pcw$ (rotation-
 invariance in expectation; $0.3904\!\equiv\!0.3901$ under
-$Z_2$ vs $D_4$); per-galaxy argmax labels carry $\sim\!20\%$
+$Z_2$ vs $D_4$); per-galaxy argmax labels carry $\sim\!21\%$
 rotational uncertainty that downstream users analyzing individual
 borderline galaxies should fold into their error budget.
 
@@ -272,13 +274,13 @@ sensitivity does not depend on any companion work and is testable
 on its own terms against future survey samples.
 
 Claims of such a signal have appeared intermittently in the literature.
-Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ dipole significance with per-bin asymmetry amplitudes of $\sim\!5$--$20\%$, which the present comparator framing aggregates with the Shamir 2020/2022 SDSS/DESI ``$\sim\!2$--$4\%$ large-scale dipole amplitude'' claims for textual brevity using $\sim\!10^4$ Sloan Digital Sky Survey (SDSS) galaxies
-classified by the deterministic Ganalyzer algorithm.
+Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ dipole significance with per-bin asymmetry amplitudes of $\sim\!5$--$20\%$ using $\sim\!10^{4}$ Sloan Digital Sky Survey (SDSS) galaxies
+classified by the deterministic Ganalyzer algorithm. The present comparator framing aggregates this with the Shamir 2020/2022 SDSS/DESI ``$\sim\!2$--$4\%$ large-scale dipole amplitude'' claims for textual brevity.
 Shamir~(2020)~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
 multiple surveys, reporting asymmetries of $\sim\!3\%$ with a
 consistent dipole axis. Shamir~(2022)~\cite{Shamir:2022} further claimed
 confirmation with DESI Legacy Survey data. Meanwhile,
-Iye \textit{et~al.}~\cite{Iye:2020} analyzed Galaxy Zoo data and found no significant
+Iye \textit{et~al.}~(2021)~\cite{Iye:2020} analyzed Galaxy Zoo data and found no significant
 signal after correcting for the known ``reading direction'' bias in
 citizen science classifications; they also documented duplication of
 photometric objects (e.g., star-forming knots within the same galaxy
@@ -346,8 +348,7 @@ pipeline by a factor of $\sim$6--12 in amplitude (depending on which
 Shamir reported value 2--4\% is used as the comparator; central case
 $\sim 9$). We also demonstrate that uncorrected survey systematics
 can couple a classifier bias of only $0.79\%$ through the non-uniform
-survey mask to a $+6.48\sigmaunit$ pre-MASTER raw pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map at
-$\ell\!=\!1$ — fully removed by MASTER mode-coupling deconvolution
+survey mask to a $+6.48\sigmaunit$ pre-MASTER raw pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map — fully removed by MASTER mode-coupling deconvolution
 to the null $-0.122\sigmaunit$ headline, and independently collapsed
 to $0.43\sigmaunit$ in real space by equivariant TTA averaging
 (these are two complementary reductions targeting different systematic mechanisms; see
@@ -513,7 +514,7 @@ sub-percent--level systematic floor in Section~\ref{sec:systematic_dipole}.
 \paragraph{Note on the GZ1 deliberate omission in Galaxy Zoo DESI.}
 The successor Galaxy Zoo DESI catalog~\cite{Walmsley:2023} explicitly
 \emph{did not} re-vote handedness for the $8.7$M-galaxy DR8 sample,
-citing the Iye~\etal~\cite{Iye:2020} reading-direction bias finding;
+citing the Iye~\etal~(2021)~\cite{Iye:2020} reading-direction bias finding;
 the GZ DESI release covers detailed bar / disk / merger morphology
 but is silent on CW/CCW. This is the structural reason no modern
 large-scale chirality ground-truth currently exists at the
@@ -646,7 +647,7 @@ counts differ. Verification:
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
 (v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
-(vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip averaging & $\Delta\!=\!1.35\%$ argmax shift \\
+(vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip & $\!\Delta\!=\!1.35\%$\,/\,$21\%$\,\textsuperscript{c} \\
 \end{tabular}
 \end{ruledtabular}
 \noindent\textsuperscript{b}\,Row (v) reports only the
@@ -659,6 +660,19 @@ monopole-only generative null reported here in row (v)); the
 post-MASTER monopole-only-null value would require applying
 MASTER decoupling to each of the 500 binomial realizations and
 is not computed in this work.
+
+\noindent\textsuperscript{c}\,Row~(vii) reports two distinct
+rotational-systematic metrics from the same $1{,}558$-galaxy $D_4$-TTA
+hold-out: the catalog-level CW-fraction shift
+$\Delta f_{\rm CW}\!=\!1.35\%$
+($Z_2$-only $f_{\rm CW}\!=\!0.5156$ vs $D_4$-full $0.5021$;
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4\_tta\_holdout\_results.json},
+key \texttt{cw\_fraction.delta\_z2\_to\_d4\_pct}), and the per-galaxy
+argmax flip rate $21.4\%$ (key
+\texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}).
+The two numbers describe complementary axes of rotational uncertainty
+(catalog-level CW/CCW balance vs per-galaxy label stability) and are
+not interchangeable.
 \end{table*}
 
 The two primary estimators (i),~(ii) determine the headline
@@ -822,7 +836,7 @@ per galaxy (the soft chirality score remains nonzero on any
 individual image), it does not eliminate classifier-input or
 training-data bias \emph{per se}, and it does not by itself force
 the global $\pcw$ monopole to $0.5$ on the catalog. The residual
-$\pcw\!=\!0.4974$ monopole and the $20\%$ per-galaxy argmax
+$\pcw\!=\!0.4974$ monopole and the $21\%$ per-galaxy argmax
 rotational uncertainty (Sec.~\ref{sec:tta}, $D_4$ hold-out) are
 treated downstream as nuisance systematics rather than as
 contradictions to the TTA equivariance protocol. We average in
@@ -1520,11 +1534,11 @@ Sec.~\ref{sec:dipole}, the look-elsewhere null-test verdict, and
 the Conclusions; an earlier-snapshot one-tailed $p = 0.33$
 from a $N_{\rm MC} = 1{,}000$ ensemble is superseded.}
 In contrast, Catalog~A (raw) shows a $2.31\sigmaunit$ real-space
-dipole and a $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map at
-$\ell\!=\!1$ — both entirely artifacts of the model's residual CW
+dipole and a $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map — both entirely artifacts of the model's residual CW
 bias spatially modulated by the non-uniform survey depth, and both
-collapsed to null by independent reductions (equivariant TTA averaging
-and MASTER mode-coupling deconvolution, respectively). This dual
+collapsed to null by two complementary reductions targeting different
+systematic mechanisms (equivariant TTA averaging in real space and
+MASTER mode-coupling deconvolution in spherical-harmonic space). This dual
 comparison demonstrates the critical importance of both
 bias-mitigation stages.
 
@@ -2530,7 +2544,7 @@ levels: galaxies with $0.6 < \pccw^{\rm eq} < 0.9$ show a CCW
 fraction $\sim\!0.3\%$ higher than the global average.  This
 confidence-dependent chirality asymmetry vanishes at both high and low
 confidence, and is consistent with the known ``reading direction''
-bias in Western citizen-science labels~\cite{Iye:2020} propagating
+bias in Western citizen-science labels~\cite{Iye:2020} (Iye \etal\ 2021) propagating
 through the CE-ResNet training labels at intermediate confidence.
 We do not interpret this as a physical signal.
 
@@ -2579,7 +2593,7 @@ imaging and single-classifier pipeline eliminate cross-survey
 systematics.
 
 These conclusions corroborate and extend the methodological critique
-of Iye \etal~(2020)~\cite{Iye:2020}, who first identified residual
+of Iye \etal~(2021)~\cite{Iye:2020}, who first identified residual
 position-dependent sampling effects and reading-direction-bias
 residuals in Shamir's pipeline as candidate drivers of the
 $\sim\!3\%$ apparent signal on $\sim\!10^{5}$ galaxies. The present
@@ -2588,16 +2602,15 @@ Legacy spirals (a $30\!\times$ statistical extension over the
 Iye \etal\ sample) and adds the first explicit equivariant-averaging
 closure of the candidate classifier-systematic channel
 (Sec.~\ref{sec:tta}). The Tadaki \etal~(2020)
-HSC-SSP null~\cite{Tadaki:2020} on a smaller sample is the third
-independent line of evidence consistent with the present null;
-Iye~\&~Yagi~(2026)~\cite{Iye:2026P6} extend the same group's
-spin-parity program to HSC WIDE Survey regions and report another
-null at sub-percent sensitivity, adding a fourth independent
-line consistent with the present null;
-taken together, the Iye, Tadaki, and present results provide
-independent lines of evidence that do not reproduce the
-Shamir $\sim\!3\%$ dipole amplitude under different surveys,
-selections, and classifiers at $z\!\lesssim\!1$. A formal
+HSC-SSP null~\cite{Tadaki:2020} on a smaller sample is a third
+null result from a different team and survey consistent with the present null;
+Iye~\&~Yagi~(2026)~\cite{Iye:2026P6} is anticipated to extend the same
+group's spin-parity program to HSC WIDE Survey regions, but the paper
+remains in preparation at the time of this version freeze and we do
+not rely on its quantitative result for any headline statistic here.
+Taken together, the Iye, Tadaki, and present results are nulls from
+different surveys, selections, and classifiers at $z\!\lesssim\!1$ that
+do not reproduce the Shamir $\sim\!3\%$ dipole amplitude. A formal
 matched-footprint reanalysis (Shamir's exact magnitude/redshift
 cuts and Ganalyzer pipeline) on the present sample would be
 required for a likelihood-level exclusion under Shamir's own
@@ -2706,7 +2719,7 @@ classifications of $\sim\!2 \times 10^{5}$ spirals. They
 interpret their marginal ($\sim\!2\sigmaunit$) signal as
 evidence for a physical spin--tidal-field correlation in the
 linear-theory framework of \cite{Yu:2020}. Iye
-\textit{et~al.}~\cite{Iye:2020} and the present analysis
+\textit{et~al.}~(2021)~\cite{Iye:2020} and the present analysis
 independently quantify that GZ-style citizen-science labels
 contain measurable reading-direction biases at the $\sim\!1$--$2\%$
 level on similar projected-chirality observables; we therefore
@@ -2748,8 +2761,8 @@ returns the canonical $-0.122\sigmaunit$ null. These two collapses
 are driven by different mechanisms — (a) is equivariant TTA averaging
 of the real-space asymmetry map; (b) is MASTER mode-coupling
 deconvolution in spherical-harmonic space — and are not numerically
-stackable; we report them as independent reductions of two different
-systematics. The $\varepsilon\!=\!0.79\%$ ViT classifier CW bias
+stackable; we report them as two complementary reductions targeting
+different systematic mechanisms. The $\varepsilon\!=\!0.79\%$ ViT classifier CW bias
 modulated by the non-uniform survey depth is the underlying source
 of both effects.
 
@@ -3124,9 +3137,11 @@ per-pixel depth. The
 generator
 \artifact{pipelines/p2\_chirality/wave\_14\_nn\_dipole\_mc\_injection.py}
 loads the $471{,}049$-spiral ``HC-spiral'' high-confidence
-subsample (\emph{strict} cut: $\texttt{class\_eq}{\in}\{$CW$,$CCW$\}$
-\emph{and} $|p_{\rm CW,eq}|>0.6$, i.e.\ confident-CW-or-CCW spirals
-only; this is distinct from the broader ``HC-broad'' cut in
+subsample defined by equivariant probability $>0.9$ for either
+CW or CCW (canonical sample label in
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/fisher\_sensitivity\_floor.json},
+key \texttt{sample\_label});
+this is distinct from the broader ``HC-broad'' cut in
 Sec.~\ref{sec:bin_flatness} that uses
 $\max(p_{\rm CW,eq},p_{\rm CCW,eq},p_{\rm NS,eq})>0.6$
 without the spiral restriction and yields $n=949{,}584$),
