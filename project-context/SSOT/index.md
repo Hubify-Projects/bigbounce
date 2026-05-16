@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-05-16 PDT (tick 76 — R18 propagation-tail + 2 substantive GPT fixes on v1.0.100→v1.0.101) -->
+<!-- last_updated: 2026-05-16 PDT (tick 77 — R19 SUBSTANTIVE PHYSICS PASS; Gemini explicit verdict propagation-tail genuinely exhausted, transitioning to physics-precision mode) -->
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 
