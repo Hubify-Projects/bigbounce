@@ -34,20 +34,20 @@ configs:
     path: "dipole_catalog_c.json"
 ---
 
-# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.76)
+# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.82)
 
-**Companion data release for** _"Galaxy-Chirality Dipole Claims Are Explained by Monopole-Mask Leakage: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) Constrains $|A_{\rm dipole}|$ below the 0.5%-Amplitude Scale"_ (Golden 2026, arXiv:2526.XXXXX).
+**Companion data release for** _"A Quantifiable Monopole-Mask Leakage Channel Can Mimic Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) at Sub-Percent Sensitivity (50%-Recovery $3\sigma$ Threshold $A\approx 0.75\%$)"_ (Golden 2026, paper4-v1.0.82 release).
 
-**Headline scientific finding.** Prior reports of a $\sim$2–4% large-scale chirality dipole in SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) are explained by a quantifiable leakage channel: a small uniform CW-vs-CCW monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell=1$ to **+6.48σ on the canonical mask**, then **vanishes to −0.12σ once the MASTER mode-coupling matrix is applied** on the same data. A controlled monopole-only generative null (canonical mask, NSIDE=64, N=500 binomial realizations at $p_{\rm CW}^{\rm global}=0.4974$) reproduces ~30% of the observed pre-MASTER pseudo-$C_1$ power from the leakage channel alone; the residual +1.85σ on the canonical mask is reported transparently as a sub-detection-threshold unresolved systematic (NOT a calibrated leakage floor or primordial signal). The chirality-dipole controversy is resolved at the present sub-percent sensitivity: there is no large-scale parity-violating signal in the chirality field, and earlier detection claims are methodological artifacts of incomplete leakage subtraction.
+**Headline scientific finding.** In our DESI Legacy / ViT-Small classifier pipeline, a quantifiable leakage channel can mimic large raw chirality dipoles: a small uniform CW-vs-CCW classifier monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell=1$, then **collapses to $-0.12\sigma$ once the MASTER mode-coupling matrix is applied** on the same data. A controlled monopole-only generative null at $N=500$ (canonical mask, NSIDE=64, binomial realizations at $p_{\rm CW}^{\rm global}=0.4974$) **reproduces 99.3% of the observed pre-MASTER pseudo-$C_1$ power** (observed $1.696\times10^{-2}$ vs null mean $1.6846\times10^{-2}\pm 6.8\times10^{-5}$; residual $+1.69\sigma$). The residual canonical-mask post-MASTER excursion of $+1.85\sigma$ is reported transparently as a sub-detection-threshold unresolved systematic (NOT a calibrated leakage floor or primordial signal). **This is a this-pipeline demonstration**: a like-for-like matched-footprint reanalysis under Shamir's Ganalyzer pipeline would be required for a formal $\sigma$-level exclusion of his reported signal, and is not performed in the present release.
 
-**Cosmological measurement.** Real-space dipole fit on Catalog C: $\sigma_{\rm dipole}=0.43$ ($p=0.30$, $N_{\rm MC}=10{,}000$). MASTER-deconvolved $\ell=1$ on subsample mask: $-0.12\sigma$. Confidence-stratified diagnostics show the apparent +3σ dipole observed in low-confidence spiral bins $p_{\rm eq} \in [0.4,0.6)$ disappears in HC subsamples ($p_{\rm eq}>0.6$), independently confirming the classifier-label-systematic origin.
+**Cosmological measurement.** Real-space dipole fit on Catalog C: $\sigma_{\rm dipole}=0.43$ ($p=0.30$, $N_{\rm MC}=10{,}000$). MASTER-deconvolved $\ell=1$ on subsample mask: $-0.12\sigma$. The load-bearing systematic-inclusive sensitivity is the empirical 50%-recovery-at-$3\sigma$ threshold of $|A_{\rm dipole}|\approx 0.75\%$ from the extended 9-amplitude injection sweep; the Fisher Poisson asymptote $\sim 0.29\%$ is the ideal-statistical floor, not the operational detection threshold. Confidence-stratified diagnostics show $\sim 3\sigma$ apparent dipoles in low-confidence bins $p_{\rm eq}\in[0.4,0.6)$ that drop sharply into the high-confidence subsamples (two of three HC bins null, the third marginal at $\sim 2\sigma$), suggestive of classifier-label systematics rather than a primordial dipole.
 
 ## Quick links
 
-- **Paper PDF (v1.0.78, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.78/chirality_catalog_paper.pdf
+- **Paper PDF (v1.0.82, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.82/chirality_catalog_paper.pdf
 - **Source LaTeX + canonical pipeline:** https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality
-- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.78
-- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.78` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.78)
+- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.82
+- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.82` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.82)
 - **One-shot reproduction:** `bash pipelines/p2_chirality/reproduce_paper4.sh`
 
 ## Schema
@@ -83,16 +83,18 @@ Headline dipole / multipole numbers from the canonical pipeline. Schema (see `ch
 
 ```json
 {
-  "version": "v1.0.76",
+  "version": "v1.0.82",
   "config": {"N_spiral": 3201160, "f_sky": 0.4938, "nside": 64, "lmax": 191, "N_MC": 500},
   "global_cw_fraction": 0.49982,
   "dipole_l1": {"C1_decoupled": 2.298e-05, "null_mean": 8.00e-06, "null_std": 8.10e-06, "sigma_canonical_direct": 1.850},
-  "monopole_mask_leakage_null": {
-    "pre_master_pseudo_C1_sigma_vs_monopole_null": 5.88,
+  "monopole_mask_leakage_null_N500": {
+    "pre_master_pseudo_C1_sigma_vs_monopole_null": 1.69,
+    "pre_master_reproduction_pct": 99.3,
     "post_master_canonical_sigma": 1.85,
     "post_master_subsample_sigma": -0.12,
-    "hemisphere_maxabs_dipole_amplitude_sigma": 6.62,
-    "interpretation": "Pre-MASTER excess +5.88sigma is mask+monopole leakage; MASTER decoupling removes ~70%; residual +1.85sigma is the irreducible leakage floor."
+    "hemisphere_maxabs_sigma_vs_monopole_null": 4.42,
+    "hemisphere_reproduction_pct": 48.6,
+    "interpretation": "At N=500 the monopole-only null reproduces 99.3% of the observed pre-MASTER pseudo-Cl power; the residual +1.85sigma post-MASTER canonical-mask value is reported as an unresolved sub-detection-threshold systematic, NOT a calibrated leakage floor. The hemisphere residual at +4.42sigma indicates additional depth/PSF/morphology coupling not captured by the monopole-only null."
   },
   "per_imaging_leg": {
     "BASS+MzLS": {"N": 934551, "delta_cw_pct": 0.178, "dipole_sigma": 1.08, "p_value": 0.137},
@@ -125,7 +127,7 @@ print(df.shape, df.columns.tolist())
 
 ## Quality gates
 
-The catalog passed the following gates in v1.0.76 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, and confidence-stratified signal-hunt diagnostics are all consistent with the no-cosmological-dipole verdict.
+The catalog passed the following gates in v1.0.82 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, and confidence-stratified signal-hunt diagnostics are all consistent with the no-cosmological-dipole verdict.
 
 | Gate | Verdict | Source |
 |---|---|---|
@@ -136,7 +138,7 @@ The catalog passed the following gates in v1.0.76 of the paper. Per-leg systemat
 
 ## Versioning
 
-This release corresponds to the paper at version **v1.0.78** (commit `4b867b0f...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt + N=500 monopole+mask null + extended injection sweep + external-review-3 closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
+This release corresponds to the paper at version **v1.0.82** (commit `4b867b0f...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt + N=500 monopole+mask null + extended injection sweep + external-review-3 closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
 
 ## Citation
 
