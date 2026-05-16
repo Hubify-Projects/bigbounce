@@ -550,6 +550,102 @@ Classify each claim as **FACT** (cite source) / **OPINION** (take with
 salt) / **HALLUCINATION** (verify against reality). Synthesize a balanced
 summary that gives weight to both directions.
 
+### 4.4.1 Cascaded R-rounds — loop until convergent regressions stop (STANDING DIRECTIVE 2026-05-15)
+
+When closing a paper to "ready-for-external-review" state, **a single R-round
+is not enough.** Each round's bundled closures introduce propagation gaps
+into downstream sites that the next round catches.
+
+**Observed pattern (P4 v1.0.86 → v1.0.91, 5 cascaded rounds):**
+
+| Round | Caught | Closure regressions found by next round |
+|---|---|---|
+| R-round-6 (v1.0.87) | 5 items incl. abstract +6.48σ disambiguation | 14 body sites still wrong (caught by R7) |
+| R-round-7 (Opus, v1.0.89) | 4 BLOCKERs + 5 MAJORs | 3 downstream sites of AUDIT-8 + 2 of AUDIT-10 (caught by R8) |
+| R8 cross-vendor (v1.0.90) | 4 BLOCKERs + 4 MAJORs | 9 more 0.5%-floor sites + polar-vector at L3608 (caught by R9) |
+| R9 cross-vendor (v1.0.91) | 4 BLOCKERs + 5 MAJORs | 0.5% still incomplete + AUDIT-1 5th iteration + footnote-d arithmetic confabulation (caught by R10) |
+
+The propagation tail on cross-referenced numerical claims is the consistent
+failure mode of cascade-style closure waves. Text-replace closures fix the
+headline site but miss 2–14 downstream sites that grep wouldn't catch unless
+the closure script searches with the exact pattern.
+
+**Mandatory loop for the closing-out phase:**
+
+1. Spawn an R-round (real cross-vendor via `tools/real_cross_vendor_review.py`).
+2. Truth-audit every finding against on-disk JSON.
+3. Close ALL BLOCKERs and MAJORs in a single bundled wave with version bump.
+4. **Spawn the next R-round immediately on the new version.**
+5. Repeat until the round returns:
+   - **Zero CONVERGENT regressions** (no finding flagged by 2+ vendors that
+     is a regression of the prior round's claimed closure), AND
+   - **Zero novel BLOCKERs**, AND
+   - **No more than 1–2 MAJORs**, all of which are clearly polish-tier
+     (wording, citation forensics, non-load-bearing).
+
+When the round meets the convergence criterion above, the paper is
+ready-for-external-review. Houston runs the external review pass; agent
+does NOT declare publish-ready until Houston signs off (the 99% CAP).
+
+**Do not stop at the first clean round.** A single round returning zero
+findings could be noise (DeepSeek-V4-Pro returned "None" on R10 while 4
+other vendors found BLOCKERs). Need convergent silence across ≥3 of 5
+vendors.
+
+**Budget calibration:** each round costs ~$0.30-1.00 in OpenRouter API
+spend. Closing-out phase typically takes 3-5 cascaded rounds. Total cost
+~$2-5 per paper, which is below any meaningful gate per the no-budget-
+gate-keeping rule.
+
+**Loop control:** if a /loop cron is already running cascaded R-rounds,
+agent must not spawn a second concurrent loop on the same paper. Check
+`ps -fade | grep real_cross_vendor_review` before spawning.
+
+**Cron prompt template for closing-out loop:**
+
+```
+Cascaded R-round loop on Paper N at v<current>. Last round results
+at project-context/peer-reviews/<round_label>_*.md. Per AGENT_RULES.md
+§4.4.1, the loop continues until: (a) zero convergent regressions of
+prior closures, (b) zero novel BLOCKERs, (c) <=1-2 polish-tier MAJORs.
+Eat-the-frog: read all 5 reviewer .md files first; truth-audit against
+on-disk JSON; close BLOCKERs + MAJORs in single bundled wave with
+version bump; recompile + mirror + commit + push + cut release + sync
+HF; spawn next R-round immediately. Standing memory:
+feedback_no_questions_full_hard_fix, feedback_default_hardest_path,
+feedback_99_pct_readiness_cap (95 cap held).
+```
+
+### 4.4.2 Token / API-key location (STANDING DIRECTIVE 2026-05-15)
+
+All paid-API tokens used by this repo live in `<repo-root>/.env.local`
+(gitignored). New agents starting in this repo must read `.env.local`
+before assuming a token is missing. Canonical layout:
+
+```
+OPENROUTER_API_KEY=...
+HF_TOKEN=...
+VERCEL_OIDC_TOKEN=...   # Vercel deploy bridge
+RUNPOD_API_KEY=...      # validated via direct GraphQL REST; the python "runpod" SDK errors with this key but REST works
+POD_COBAYA_R43_V2_*=... # per-pod SSH coords (proxy + direct TCP + host + port)
+```
+
+**Loader patterns:**
+
+- Bash / shell scripts: `set -a; source .env.local; set +a` (exports all)
+- Python: `from dotenv import load_dotenv; load_dotenv()` (auto-finds `.env.local` from cwd)
+- Direct file read: `python -c "for l in open('.env.local'): ..."`
+
+**Do not ask Houston for tokens** before checking `.env.local`. If a
+token is missing from the file, append it with a `# saved <date>`
+comment, never overwrite or delete existing entries.
+
+**Per-pod SSH coords** are saved as `POD_<NAME>_SSH_PROXY` (runpod proxy)
+and `POD_<NAME>_SSH_DIRECT` (direct TCP) — proxy SSH from this agent
+requires `script -q /dev/null ssh -tt ...` to allocate a PTY (runpod
+proxy refuses connections without PTY). Direct TCP is preferred when
+the port is open; fall back to proxy otherwise.
+
 ### 4.5 Peer-review filing protocol
 
 All peer-review files go in `project-context/peer-reviews/` (or
