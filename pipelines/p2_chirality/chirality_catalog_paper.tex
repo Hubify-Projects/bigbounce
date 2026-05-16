@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.101}
+\newcommand{\paperVersion}{v1.0.102}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -214,7 +214,7 @@ work)
 (P($\sigma\!>\!3$)$\!=\!0.55$ at $A\!=\!0.75\%$, rising to
 $0.91$ at $A\!=\!1.00\%$ and $1.00$ at $A\!\geq\!1.50\%$;
 per-pixel-shuffle null preserves
-the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
+the global $p_{\rm CW}\!=\!0.49735$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
 \textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage). The like-for-like HC-subsample Fisher floor is $3\sqrt{3/N}\!\approx\!0.76\%$ at $N\!=\!471{,}049$, which the $0.75\%$ HC empirical threshold tracks essentially exactly (ratio $\approx\!1.0$, no systematic-inclusive degradation on the HC subsample). Comparing the HC empirical threshold to the FULL-CATALOG Fisher floor would yield a $\sim\!2.6\times$ cross-sample ratio, but this is a cross-sample comparison and not a meaningful empirical-vs-Fisher gap factor (the full-catalog injection sweep needed to define such a gap on the $3.2$M sample is deferred to future work).
@@ -502,7 +502,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.100} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.100}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.100} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.100}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}. Additional load-bearing JSON artifacts referenced in the abstract and §IV (specifically \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/master_results}{\texttt{master\_results/master\_power\_spectrum.json}} for the MASTER-deconvolved $\ell\!=\!1$ result, \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/dipole}{\texttt{outputs/dipole/summary.json}} for the real-space dipole, and \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/h200_results/wave12_hemi_2026-05-01}{\texttt{h200\_results/wave12\_hemi\_2026-05-01/results.json}} for the hemisphere scan) live in the same release-tagged repository tree at the cited paths; the immutable release tag covers the full \texttt{pipelines/p2\_chirality/} subtree and the \texttt{pipelines/h200\_results/} subtree referenced in figure/table captions.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -1594,7 +1594,7 @@ see footnote~\ref{fn:mc_count}).
 \begin{table*}
 \caption{Angular power spectrum of the chirality asymmetry map
   (Catalog~C, equivariant). The first row is the canonical \emph{single-mode}
-  $\ell\!=\!1$ post-MASTER result that anchors the dipole-parity null
+  $\ell\!=\!1$ post-MASTER result that anchors the dipole-isotropy null
   (companion artifact \artifact{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json},
   $\ell_1$\,dipole entry; analysis subsample $n\!=\!5{,}547{,}858$,
   $f_{\rm sky}\!=\!0.659$). Rows 2--5 are five-mode \emph{bandpowers}
@@ -1871,7 +1871,7 @@ $f_{\rm sky}\!=\!0.49005$ (canonical, from \artifact{pipelines/p2\_chirality/out
 realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
 spiral-count map). Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ and hemisphere max$|A|$ reported with their data $z$-score against the null (the post-MASTER decoupled $C_\ell$ at $\ell\!=\!1$ is reported in Sec.~\ref{sec:dipole} under a different null model and is not included in this table; see Table~\ref{tab:headline_summary} footnote b). The N=500 simulation supersedes the v1.0.69 smoke
 result at N=25; the monopole-only null reproduces $99.3\%$ of the
-observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power (residual
+observed (computed as the ratio $1.6846\!\times\!10^{-2}\!/1.696\!\times\!10^{-2}\!=\!0.9932$ from Table~\ref{tab:monopole_mask_null}) pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power (residual
 $+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 (residual $+4.42\sigmaunit$). Verification:
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}.
@@ -2274,7 +2274,7 @@ test.
 The $w_{\rm CW}(\theta)$ result is a fourth complementary
 diagnostic (after the real-space dipole, the MASTER subsample-mask
 $\ell\!=\!1$, and the confidence-stratified diagnostics) consistent
-with the chirality field carrying no primordial parity-violating
+with the chirality 2-point correlation function $w_{\rm CW}(\theta)$ carrying no detectable spin-spin clustering / intrinsic alignment signal (note: $w_{\rm CW}(\theta)\!=\!\langle A(\hat n_1)A(\hat n_2)\rangle$ is parity-EVEN under the global parity transform — the two minus signs from $A^P=-A$ cancel — so this is a $\Lambda$CDM-tidal-torque-theory consistency test, NOT a direct parity-violation test). The chirality field carries no primordial isotropy-breaking
 signal at the present sub-percent sensitivity. The four
 diagnostics share the underlying DESI Legacy DR8 footprint,
 ViT-Small labels, and $Z_2$-TTA catalog, so they are
@@ -3367,7 +3367,7 @@ least-squares cos-$\theta$ fit on a pixel map and reports the
 amplitude relative to a small-$N_{\rm MC}$ monopole-preserving
 null, while the headline statistic uses a Healpix dipole fit
 with $N_{\rm MC}\!=\!10{,}000$ per-pixel-shuffle null. Both
-null constructions preserve the global $p_{\rm CW}\!=\!0.4974$
+null constructions preserve the global $p_{\rm CW}\!=\!0.49735$
 monopole by design; the numerical disagreement reflects
 estimator definition (linear-LSQ amplitude vs Healpix dipole)
 and null-sample variance, not a contradiction. The two values are
@@ -3606,10 +3606,7 @@ function calculation here.
 \paragraph{Symmetry classification of the chirality dipole
 ($\ell\!=\!1$) vs.\ monopole ($\ell\!=\!0$) observables.}
 \label{sec:dipole_symmetry_caveat}
-For a parity-odd scalar field on the sphere ($A(\hat n)\!\equiv\!-A(-\hat n)$,
-which is the symmetry behavior of the projected CW-fraction
-asymmetry $(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$ under
-$\hat n\!\rightarrow\!-\hat n$), the spherical-harmonic coefficients
+For a parity-odd scalar (pseudoscalar) field on the sphere, the parity-transformed field satisfies $A^P(\hat n)\!=\!-A(-\hat n)$ (note: this is a transformation rule mapping the field under parity to its pre-image, NOT an identity claiming the field is maximally antisymmetric across the sky; the latter would imply a maximal dipole by construction). The projected CW-fraction asymmetry $(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$ is the pseudoscalar field of interest in this paper. Under the parity transformation rule above, the spherical-harmonic coefficients
 $a_{\ell m}$ satisfy $a_{\ell m}^{P}\!=\!(-1)^{\ell+1}a_{\ell m}$
 under a global parity transformation. The monopole ($\ell\!=\!0$)
 and the even-$\ell$ multipoles are therefore the parity-\emph{odd}
@@ -3708,8 +3705,8 @@ and $\sim\!7.1\sigma$ (CMASS) / $3.1\sigma$ (LOWZ) respectively.
 Cabass, Ivanov \& Philcox~\cite{Cabass:2023} provide the EFT-of-LSS
 framework that connects the observed amplitude of the parity-odd
 galaxy 4-point function to inflationary parity-odd couplings
-(dim-7 operators in the EFT, parameterized by $g_*$ in their
-notation). The present chirality \emph{dipole} bound and the
+(dimension-7 operators in the EFT of Inflation, parameterized by $g_*$ in their
+notation; the Cabass-Ivanov-Philcox EFT-of-LSS framework transports these primordial inflationary couplings to late-time LSS observables, but $g_*$ itself parameterizes the primordial inflationary parity-odd coupling, not an LSS operator). The present chirality \emph{dipole} bound and the
 parity-odd 4PCF measurement are \emph{conceptually complementary}
 tests of parity-odd physics, but they probe different observables
 under different symmetries (and they are NOT trivially mapped to
@@ -3936,7 +3933,7 @@ The mean per-galaxy $\pcw$ is identical under $Z_2$ and $D_4$
 $0.5156\!\to\!0.5021$ ($\Delta\!=\!1.35\%$) on borderline galaxies
 with $\pcw\!\approx\!\pccw\!\approx\!0.4$. The structural reading
 is that ensemble-mean catalog statistics (the headline
-$p_{\rm CW}\!=\!0.4974$ figure) are robust against the
+$p_{\rm CW}\!=\!0.49735$ figure) are robust against the
 $Z_2$-only restriction because the classifier is rotation-invariant
 in expectation; per-galaxy argmax labels (\texttt{class\_eq})
 carry $\sim\!21\%$ residual rotational uncertainty that downstream
