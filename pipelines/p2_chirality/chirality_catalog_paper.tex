@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.100}
+\newcommand{\paperVersion}{v1.0.101}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -224,8 +224,7 @@ A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
 $N_{\rm eff}$-corrected significance is smaller but still high) is
 attributed to the sub-percent human-handedness bias documented in
 citizen-science spiral-handedness labels propagating through training,
-pending independent ground-truth validation; the parity-violation
-observable is the dipole, not the monopole. A $3.05\sigmaunit$ local
+pending independent ground-truth validation; the isotropy-breaking observable is the dipole (parity-even axial-vector projection of the pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat}), while the parity-odd monopole is a separate channel. A $3.05\sigmaunit$ local
 hemisphere asymmetry rejects the random-label null at
 $p_{\rm LEE}\!\le\!10^{-4}$ on the $10^\circ$ Galactic-grid
 (the primary direct-MC look-elsewhere statistic on the random-label
@@ -628,7 +627,7 @@ $\varepsilon\!\approx\!0.185$ and a dilution factor
 $(1\!-\!2\varepsilon)\!\approx\!0.63$, so a true underlying full-amplitude
 $0.5\%$ dipole would be measured as $\sim\!0.32\%$ on Catalog~C; the
 $\geq\!0.75\%$ empirical $50\%$-recovery-$3\sigma$ threshold then corresponds to a true
-underlying $\sim\!0.79\%$ dipole bound (upper end of a $[0.5\%, 0.8\%]$
+underlying $\sim\!1.19\%$ dipole bound under symmetric-error dilution $D\!=\!1\!-\!2\varepsilon\!\approx\!0.63$ at $\varepsilon\!\approx\!0.185$ ($0.75\%/0.63\!=\!1.19\%$; the earlier $\sim\!0.79\%$ value used an inconsistent symmetric-error model and is corrected here) (upper end of a $[0.5\%, 1.5\%]$
 range under the alternative assumption that our pipeline is correct
 on the disagreements). This dilution is asymmetric only insofar as
 the catalog's $9.5\sigmaunit$ uniform CW excess is itself a label
@@ -662,7 +661,7 @@ counts differ. Verification:
 (i)~real-space dipole (\S\ref{sec:dipole}) & $3{,}201{,}160$ & --- & --- & none & per-pixel shuffle & $+0.43$ \\
 (ii)~MASTER deconv (\S\ref{sec:dipole}) & $3{,}201{,}160$ & $5{,}547{,}858$ & $0.659$ & subsample & per-pixel shuffle & $-0.12$ \\
 (iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & per-pixel shuffle & $+1.85$ \\
-(iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
+(iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.49005 & canonical & random-label shuffle & $<\!1$ post-LEE \\
 (v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
 (vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip & $\!\Delta\!=\!1.35\%$\,/\,$21\%$\,\textsuperscript{c} \\
@@ -1314,7 +1313,7 @@ The pipeline produces three catalog tiers:
   the $Z\!=\!13.4$ headline as measurement-grade replacement for the
   earlier $Z\!=\!6.77$ assumed-discordance figure, which is now
   retracted as a modeling artifact. The
-  parity-preference test of this paper is the \emph{dipole}
+  isotropy-breaking test of this paper is the \emph{dipole} (parity-even axial-vector projection)
   (Sec.~\ref{sec:dipole}), not the monopole, and the dipole is
   null. The convergence of the L-BFGS recalibration at the v2
   starting point is neutral with respect to whether CE-ResNet
@@ -1477,7 +1476,7 @@ requires the diagnostic $P_{\rm NS}^{\rm orig} - P_{\rm NS}^{\rm flip}$
 decomposition with per-object flip-pair outputs, which the present
 catalog does not provide. Until the mechanism is identified, the $0.29\%$ statistical
 sensitivity claim should be interpreted as an upper bound on any
-physical parity-violation \emph{dipole} signal, not as a measurement
+physical isotropy-breaking axial-vector \emph{dipole} signal in the parity-even ($\ell\!=\!1$) channel, not as a measurement
 precision: the $9.5\sigma$ monopole offset demonstrates that sub-percent
 biases can survive the equivariant procedure, and only the spatial
 uniformity of the offset (Table~\ref{tab:sky_balance}) prevents it from
@@ -1607,7 +1606,7 @@ see footnote~\ref{fn:mc_count}).
   MC null distribution at that bandpower. Higher-bandpower
   $\sim\!2\sigmaunit$ values reflect residual coupling of the $9.5\sigmaunit$
   monopole into low-$\ell$ bandpowers under the
-  partial-sky MASTER kernel; the dipole-parity observable is the single-mode
+  partial-sky MASTER kernel; the isotropy-breaking dipole observable is the single-mode
   $\ell\!=\!1$ result (first row), and the bandpower table is a null-consistency
   cross-check at multipoles \emph{other than} the dipole. The
   canonical-$N$ MASTER direct-MC at $\ell\!=\!1$ on the equivariant map
@@ -1659,7 +1658,7 @@ MASTER mode-coupling deconvolution the canonical result is
 $-0.12\sigmaunit$ (Table~\ref{tab:multipole}), fully consistent with
 null. The excess in the pre-deconvolution estimator arises from
 mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
-a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the load-bearing parity-dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
+a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the load-bearing isotropy-breaking dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
 
 The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the lowest pseudo-$C_\ell$ bandpower before deconvolution ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map, $+6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.49005$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess reported transparently as an unresolved sub-detection-threshold systematic not assigned a physical interpretation in this manuscript, not as a primordial signal; it supersedes the earlier analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-catalog $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
@@ -1720,7 +1719,7 @@ ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 1000-realization MC null mean and standard deviation on the asymmetry map) is $+6.48\sigma$,
 and the NaMaster-coupled lowest-bin SNR is $+6.097\sigma$ (pseudo-$C_\ell$ stage at $\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
-After full MASTER mode-coupling deconvolution the single-mode $\ell\!=\!1$ value (the load-bearing parity-dipole observable) is $C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
+After full MASTER mode-coupling deconvolution the single-mode $\ell\!=\!1$ value (the load-bearing isotropy-breaking dipole observable) is $C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.546 \times 10^{-6}$
 ($\sigma_{\rm null} = 4.290 \times 10^{-7}$) from 500 Monte Carlo
 realizations of the full MASTER mode-coupling inversion
@@ -1739,8 +1738,7 @@ $(C_1^{\rm meas} - \langle C_1^{\rm null}\rangle)/\sigma_{\rm null}
 = -0.122\sigmaunit$ (Table~\ref{tab:multipole} rounds to
 $-0.12\sigmaunit$)---fully consistent with zero and confirming
 that partial-sky mode coupling accounts for the excess in the
-raw pseudo-$C_\ell$ estimator.  Because the post-MASTER null at
-$\ell=1$ is a 1-dof chi-squared rather than a Gaussian, the
+raw pseudo-$C_\ell$ estimator.  Because the post-MASTER null at $\ell=1$ on a cut sky is an MC-calibrated distribution (the full-sky $C_\ell$ has $2\ell+1\!=\!3$ modes; on the patchy canonical mask after MASTER deconvolution the effective distribution is empirical, not a closed-form 1-dof $\chi^2$ as earlier versions described), the
 headline subsample-mask statistic is the rank-based empirical p-value
 against the 500-MC null distribution, $p_{\rm MC}\!\approx\!0.45$
 (one-sided rank percentile, $\Phi(-0.12)\approx 0.452$ in
@@ -3075,7 +3073,7 @@ demonstration in the present catalog (a PSF-ellipticity / scan-angle
 cross-correlation against the equivariant CW-fraction map is the
 canonical test and is queued as a downstream extension), and so the
 $0.2\%$ value should be interpreted as a statistical \emph{upper bound}
-on any true parity-violation \emph{dipole} signal under the
+on any true isotropy-breaking axial-vector \emph{dipole} signal in the parity-even ($\ell\!=\!1$) channel under the
 zero-systematic-dipole-projection assumption, not as a
 systematic-inclusive sensitivity. The $9.5\sigma$ monopole result is a
 null at the catalog level (uniform across 7 equatorial coordinate slabs; cf.\ \S\ref{sec:cw_frac}
@@ -3524,7 +3522,7 @@ injection-recovery test (\S\,\ref{sec:dipole}) showed
 no detected dipole below the $\geq 0.75\%$ empirical $50\%$-rec-$3\sigma$ amplitude threshold under
 strict per-pixel-shuffle nulls. The bin-flatness spreads here are
 amplitude differences across morphology bins that are spatially
-uniform on the sky, orthogonal to the parity-violation question the
+uniform on the sky, orthogonal to the isotropy-breaking dipole question the
 paper's central claim addresses. \emph{Verdict:} the strict $<0.1\%$ flatness bar holds
 for type (categorical morphology), not for fine-binned continuous
 size/fracdev/$b/a$ axes; the $0.05\%{-}0.08\%$ pass-bar applies at
@@ -4154,10 +4152,7 @@ spin-0 scalar field on $S^2$). The $z$-score quoted in any
 abstract or summary is uniformly
 $z\!=\!(C_{\ell,i}^{\rm meas}\!-\!\langle C_{\ell,i}^{\rm null}\rangle)/\sigma_{\ell,i}^{\rm null}$
 without empirical-rank vs Gaussian-CDF substitution, except where
-explicitly noted (the post-MASTER null at $\ell\!=\!1$ is a
-1-dof $\chi^2$ rather than a Gaussian, and the corresponding
-rank-based empirical $p$-value is reported alongside the
-Gaussian-equivalent $z\!=\!-0.12$).
+explicitly noted (the post-MASTER null at $\ell\!=\!1$ on the cut-sky canonical mask is an MC-calibrated empirical distribution (not a closed-form 1-dof $\chi^2$; the full-sky $C_\ell$ would have $2\ell+1\!=\!3$ modes, but MASTER on the patchy mask deconvolves into a generalized distribution that is empirically calibrated via the 500-MC null), and the corresponding rank-based empirical $p$-value is reported alongside the Gaussian-equivalent $z\!=\!-0.12$).
 
 The NaMaster (\texttt{pymaster} 2.6) configuration in full:
 
@@ -4440,7 +4435,7 @@ arXiv:1611.00036 (2016); white-paper-only, no journal publication.
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 ``LSST: From science drivers to reference design and anticipated data products,''
 Astrophys.\ J.\ \textbf{873}, 111 (2019), DOI 10.3847/1538-4357/ab042c. The preprint arXiv:0805.2366 cited in earlier versions of this bibitem is the older LSST Science Book white paper, NOT the preprint of this specific ApJ reference-design article; the arXiv identifier has been removed from the canonical citation to prevent fused-metadata confusion (Perplexity citation-forensics flag closed v1.0.95).
-%% (cleaned v1.0.99 - removed stale NOTE commentary; canonical citation above)
+%% (cleaned v1.0.101 - canonical citation above; historical NOTE retained below for provenance)
 % NOTE (v1.0.79, PER-B1 update, RETAINED FOR PROVENANCE ONLY): arXiv ID 0805.2366 is the long
 % LSST Science Book preprint whose content underlies the cited
 % ApJ 873, 111 (2019) reference-design article. The arXiv-to-ApJ
