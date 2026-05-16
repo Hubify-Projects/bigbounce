@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.84}
+\newcommand{\paperVersion}{v1.0.85}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -94,9 +94,18 @@ DESI Legacy / ViT-Small pipeline, a specific quantifiable
 leakage channel exists which can mimic large raw chirality
 dipoles: a small uniform CW-vs-CCW classifier monopole couples to
 the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$
-at $\ell\!=\!1$ to $+6.48\sigmaunit$, then \emph{collapses} to
-$-0.12\sigmaunit$ once the MASTER mode-coupling matrix is applied
-on the same data. A controlled monopole-only generative null
+at $\ell\!=\!1$ to $+6.48\sigmaunit$ on the canonical mask
+(un-monopole-subtracted CW-fraction map, $f_{\rm sky}\!=\!0.494$),
+and the cosmological-principle headline post-deconvolution
+$\ell\!=\!1$ value collapses to $-0.12\sigmaunit$ once the MASTER
+mode-coupling matrix is applied on the monopole-subtracted
+CW-deficit map at the larger-coverage subsample mask
+($f_{\rm sky}\!=\!0.659$); the pre-MASTER value and the
+post-MASTER headline therefore differ in mask, in
+monopole-subtraction treatment, AND in MASTER mode-coupling
+inversion, so the full leakage-removal chain is
+(monopole-subtraction $+$ mask choice $+$ MASTER), not pure
+MASTER on identical inputs. A controlled monopole-only generative null
 (canonical mask, NSIDE=64, $N\!=\!500$ binomial realizations at
 $p_{\rm CW}^{\rm global}\!=\!0.4974$) reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
@@ -622,7 +631,7 @@ counts differ. Verification:
 (ii)~MASTER deconv (\S\ref{sec:dipole}) & $3{,}201{,}160$ & $5{,}547{,}858$ & $0.659$ & subsample & per-pixel shuffle & $-0.12$ \\
 (iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & per-pixel shuffle & $+1.85$ \\
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
-(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.69$ pre, $+1.85$ post \\
+(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.68$ pre, $+1.85$ post \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
 (vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip averaging & $\Delta\!=\!1.35\%$ argmax shift \\
 \end{tabular}
@@ -1825,10 +1834,10 @@ $+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 \begin{tabular}{lccc}
 \textbf{Statistic} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
 \hline
-Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $1.696{\times}10^{-2}$ & $(1.6846{\pm}0.0068){\times}10^{-2}$\,\textsuperscript{a} & $+1.69$ \\
+Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $1.696{\times}10^{-2}$ & $(1.6846{\pm}0.0068){\times}10^{-2}$\,\textsuperscript{a} & $+1.68$ \\
 Post-MASTER $C_\ell^{(\ell=1)}$ (canonical mask) & --- & --- & $+1.85$ \\
 Post-MASTER $C_\ell^{(\ell=1)}$ (subsample mask) & --- & --- & $-0.12$ \\
-Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$) & $3.48{\times}10^{-3}$ & $(1.69{\pm}0.41){\times}10^{-3}$ & $+4.42$ \\
+Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$) & $3.48{\times}10^{-3}$ & $(1.69{\pm}0.405){\times}10^{-3}$ & $+4.42$ \\
 \end{tabular}
 \end{ruledtabular}
 \textsuperscript{a}\,Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ is computed
@@ -1891,7 +1900,7 @@ together establish that the post-deconvolution chirality field is
 null at the precision of this analysis.
 \item \textbf{Hemisphere max$|A|$:} observed $3.48\!\times\!10^{-3}$;
 monopole-only N=500 null mean
-$1.69\!\times\!10^{-3}\pm 4.1\!\times\!10^{-4}$; data $z\!=\!+4.42\sigmaunit$.
+$1.69\!\times\!10^{-3}\pm 4.05\!\times\!10^{-4}$; data $z\!=\!+4.42\sigmaunit$.
 The monopole-only null reproduces only $\sim\!49\%$ of the observed
 hemisphere amplitude, indicating that this observable additionally
 couples to depth, PSF, or morphology systematics not captured by a
@@ -2059,18 +2068,32 @@ with classifier ambiguity per se.
 \end{itemize}
 
 This decomposition strengthens, not weakens, the methods-paper
-narrative: the apparent low-confidence dipole signal is now
-demonstrably footprint-correlated (DECaLS-concentrated, not
-uniform), which is the predicted signature of a survey-systematic
-rather than a primordial parity-violating signal. The
-DECaLS-specific residual is most plausibly attributed to known
-DECaLS-vs-BASS+MzLS depth/PSF differences in the DESI Legacy
-imaging pipeline; a dedicated DECaLS-only depth-stratified
-follow-up is left for future work, and the catalog-level headline
-$-0.12\sigmaunit$ subsample-mask MASTER result remains the
-load-bearing null for the cosmological-principle parity test
+narrative on two independent grounds: (1) the apparent
+low-confidence dipole signal is demonstrably footprint-correlated
+(DECaLS-concentrated, not uniform across legs), which is the
+predicted signature of a survey-systematic rather than a
+primordial parity-violating signal; (2) the DECaLS series across
+confidence bins is \emph{non-monotonic}
+($+1.15\sigmaunit$ at $[0.4,0.5)$ $\rightarrow$ $+4.53\sigmaunit$
+at $[0.5,0.6)$ $\rightarrow$ $+0.90\sigmaunit$ at $[0.6,0.7)$
+$\rightarrow$ $-0.34\sigmaunit$ at $[0.7,0.8)$ $\rightarrow$
+$+4.06\sigmaunit$ at $[0.8,1.0)$, all against the
+monopole-preserving null). A primordial dipole signal would scale
+\emph{monotonically} with sample purity (the signal-to-noise
+ratio should improve as low-confidence/borderline galaxies are
+removed); the observed drop to $\sim\!0$ in the mid-confidence
+bins followed by a re-emergence at $[0.8,1.0)$ rules out the
+primordial-dipole interpretation by behavior alone, regardless of
+whether the underlying mechanism is fully diagnosed. It is the
+signature of complex multi-bin systematic interplay (e.g.\ depth/
+PSF/morphology coupling sampled differently across confidence
+strata), not of a clean cosmological signal. The catalog-level
+headline $-0.12\sigmaunit$ subsample-mask MASTER result remains
+the load-bearing null for the cosmological-principle parity test
 (the MASTER deconvolution removes the mode-coupling channel that
-the per-pixel dipole estimator is sensitive to).
+the per-pixel dipole estimator is sensitive to); a dedicated
+DECaLS-only depth-stratified MASTER follow-up to fully diagnose
+the systematic origin is left for future work.
 
 \paragraph{Signal-hunt summary.}
 All four signal-hunt diagnostics (confidence stratification, RA
@@ -2163,26 +2186,28 @@ $w_{\rm CW}(\theta)$ calculation on the brick-interior subsample
 edge, $\sim\!36\%$ of the $50{,}000$-galaxy baseline sample;
 companion artifact
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/brick\_boundary\_control\_wtheta.json}).
-The result is decisive: the $-2.6\sigmaunit$ excursion at
-$\theta\!=\!0.50^\circ$ in the baseline sample
-\textbf{vanishes to $-0.03\sigmaunit$ in the brick-interior
-sample}, a $+2.6\sigmaunit$ shift toward null. Two adjacent bins
-also collapse: $\theta\!=\!0.32^\circ$ baseline
-$-1.22\sigmaunit\!\rightarrow$ interior $-0.19\sigmaunit$
-($+1.03\sigmaunit$ shift); $\theta\!=\!0.13^\circ$ baseline
-$-0.10\sigmaunit\!\rightarrow$ interior $+0.14\sigmaunit$
+The result strongly supports the brick-boundary attribution:
+the $-2.64\sigmaunit$ excursion at $\theta\!=\!0.50^\circ$ in the
+brick-control baseline (which used a separate $N_{\rm MC}\!=\!100$
+shuffle MC, hence the small numerical shift from the
+$-2.41\sigmaunit$ of Table~\ref{tab:wtheta} which used
+$N_{\rm MC}\!=\!200$) \textbf{vanishes to $-0.03\sigmaunit$ in
+the brick-interior subsample}, a $+2.61\sigmaunit$ shift toward
+null. Two adjacent bins also collapse: $\theta\!=\!0.32^\circ$
+baseline $-1.22\sigmaunit\!\rightarrow$ interior
+$-0.19\sigmaunit$ ($+1.03\sigmaunit$ shift); $\theta\!=\!0.13^\circ$
+baseline $-0.10\sigmaunit\!\rightarrow$ interior $+0.14\sigmaunit$
 ($+0.24\sigmaunit$ shift). The localized sub-degree
-anti-correlation is therefore attributed conclusively to
-brick-boundary classifier artifacts (local PSF / depth
-discontinuities across brick edges, or duplicate-source
-resolution near boundaries), not to a primordial cosmological
-signal. At the larger angular scales the brick-interior
-significance remains within $|\sigma|<2.5$ across all bins
-(the $+2.32\sigmaunit$ at $\theta\!=\!3.16^\circ$ in the interior
-sample is consistent with the $\sqrt{50000/18024}\!\approx\!1.67\times$
-larger null variance of the smaller-$N$ subsample at fixed
-expected null power, i.e.\ a $\sim\!2\sigmaunit$ statistical
-fluctuation in the smaller-$N$ realization).
+anti-correlation is therefore consistent with brick-boundary
+classifier artifacts (local PSF / depth discontinuities across
+brick edges, or duplicate-source resolution near boundaries),
+not with a primordial cosmological signal. At the larger angular
+scales the brick-interior significance shows a single
+$+2.32\sigmaunit$ excursion at $\theta\!=\!3.16^\circ$; with $10$
+angular bins tested, a single $\sim\!2\sigmaunit$ excursion is
+within look-elsewhere expectation under pure statistical noise
+($P(|z|\!>\!2.32) \cdot 10 \!\approx\! 0.20$ pre-LEE, dropping
+below $|z|\!<\!2$ post-LEE).
 
 At the largest tested scales ($5^\circ$ and
 $8^\circ$, with $4.6$M and $11.0$M pairs respectively in the
@@ -2271,9 +2296,12 @@ Companion artifact:
   and yields a max amplitude $\max|A| = 0.853\%$ (in the full-amplitude
   convention $p_{\rm CW}(\hat n)\!=\!\tfrac12(1+A\cos\theta)$); this
   is the same observable that Table~\ref{tab:monopole_mask_null}
-  reports in pseudo-$C_\ell$-like units as
-  $\max|A| = 1.48{\times}10^{-3}$. The three figures
-  ($0.17\%$, $0.853\%$, $1.48{\times}10^{-3}$) are NOT three
+  reports in (un-normalized monopole-subtracted CW-deficit amplitude)
+  units as $\max|A| = 3.48{\times}10^{-3}$ at N=500 (the
+  v1.0.69-snapshot $1.48{\times}10^{-3}$ was at the N=25 smoke level
+  and is superseded; see Sec.~\ref{sec:monopole_mask_null}). The
+  three figures
+  ($0.17\%$, $0.853\%$, $3.48{\times}10^{-3}$) are NOT three
   conventions of one number; they are three different observables
   on three different parametrizations of the hemisphere data
   (single 10° great-circle half-difference vs NSIDE=8 max-over-768
@@ -3848,10 +3876,16 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   $\CW/(\CW+\CCW) = 0.4974 \pm 0.000279$ ($9.5\sigmaunit$ from
   $50/50$; uniform across 7 equatorial coordinate slabs but
   not at $10$-bin morphology granularity, see
-  Sec.~\ref{sec:bin_flatness}), and the empirical sensitivity floor is
-  $|A_{\rm dipole}| \gtrsim 0.5\%$ at $3\sigmaunit$ (systematic-
-  inclusive 50\%-recovery threshold under per-pixel-shuffle nulls);
-  the statistical-only Fisher floor is $\lesssim\!0.2\%$. The
+  Sec.~\ref{sec:bin_flatness}), and the empirical sensitivity is
+  bounded by the systematic-inclusive 50\%-recovery-at-$3\sigmaunit$
+  threshold $|A_{\rm dipole}|\!\approx\!0.75\%$ under per-pixel-shuffle
+  nulls (Table~\ref{tab:mc_injection}: $P(\sigma\!>\!3)\!=\!0.50$
+  at $A\!=\!0.75\%$, rising to $1.00$ at $A\!\geq\!1.50\%$); at
+  $A\!=\!0.5\%$ the per-pixel-shuffle MC gives only
+  $P(\sigma\!>\!3)\!=\!0.03$ and is therefore a non-detection at
+  that amplitude, not a calibrated $3\sigmaunit$ floor. The
+  statistical-only Fisher full-amplitude floor is $\sim\!0.29\%$
+  at $3\sigmaunit$ in the ideal-statistical limit. The
   canonical-primary result is the power-spectrum $\ell = 1$ mode after
   MASTER mode-coupling deconvolution, framed as a rank-based empirical
   p-value against the 500-MC null distribution,
