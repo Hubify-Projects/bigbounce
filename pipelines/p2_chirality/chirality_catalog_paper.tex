@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.95}
+\newcommand{\paperVersion}{v1.0.96}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -93,7 +93,7 @@ signal in the late-time Universe. We demonstrate that, in our
 DESI Legacy / ViT-Small pipeline, a specific quantifiable
 leakage channel exists which can inflate raw pseudo-$C_\ell$
 chirality bandpowers (reproducing $99.3\%$ of the observed
-pre-MASTER pseudo-$C_1$ power on the asymmetry map with a residual
+pre-MASTER pseudo-$C_1$ power on the un-monopole-subtracted CW-fraction map (the leakage diagnostic by design preserves the global monopole, in contrast to the asymmetry map $A_p$ which is mean-subtracted prior to decomposition; see Table~\ref{tab:monopole_mask_null} caption) with a residual
 $+1.68\sigmaunit$, and $\sim\!49\%$ of the hemisphere maximum
 amplitude with a residual $+4.42\sigmaunit$ -- the hemisphere
 channel additionally couples to depth/PSF/morphology systematics
@@ -1904,7 +1904,7 @@ $\ell\!=\!1$ row, label-shuffle null,
 on the un-monopole-subtracted CW-fraction map, by design: the whole
 point of this null is to expose the monopole-mask geometric leakage
 into the lowest available multipole. The null mean
-$1.685\!\times\!10^{-2}$ recovers $99.3\%$ of the observed
+$1.6846\!\times\!10^{-2}$ recovers $99.3\%$ of the observed
 $1.696\!\times\!10^{-2}$, so the monopole-only null explains the
 pre-MASTER excursion at the percent level.
 \end{table*}
@@ -1938,7 +1938,7 @@ and the degree to which MASTER decoupling cancels it:
 \begin{itemize}\setlength{\itemsep}{0pt}
 \item \textbf{Pre-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$:} observed
 $1.696\!\times\!10^{-2}$; monopole-only N=500 null mean
-$1.685\!\times\!10^{-2}\pm 6.8\!\times\!10^{-5}$;
+$1.6846\!\times\!10^{-2}\pm 6.8\!\times\!10^{-5}$;
 data $z\!=\!+1.68\sigmaunit$. The monopole-only null reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER power, leaving a
 $\sim\!0.7\%$ residual fraction that is consistent with sample
@@ -3171,7 +3171,7 @@ n_{\rm gal}\!\cdot\!\hat n_{\rm inj})$, the catalog is pixelized to
 $\mathrm{NSIDE}{=}64$ ($20{,}838/49{,}152$ pixels above the $\geq 10$
 spirals/pixel cut, $f_{\rm sky}{=}0.4240$), the dipole is fit via
 \texttt{healpy.fit\_dipole}, and a per-pixel-shuffle null with
-$N_{\rm MC}=500$ realizations is run for significance. Aggregating
+$N_{\rm MC,null}=1000$ realizations is run for significance (canonical \texttt{n\_mc\_null}$\!=\!1000$ from \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/injection\_recovery\_extended.json}). Aggregating
 over $100$ random axes per amplitude yields the median significance
 $\langle\sigma\rangle$, the empirical detection probability
 $P(\sigma>2)$, and the direction-recovery probability
@@ -3272,10 +3272,7 @@ observable chirality, and their (random) CW/CCW assignments contribute
 noise to the asymmetry map.
 
 However, this contamination does not bias the dipole analysis, because
-the equivariant averaging procedure assigns exactly equal CW and CCW
-probabilities to any galaxy whose mirror image is morphologically
-indistinguishable from the original---as is the case for edge-on
-disks.  The primary effect is a dilution of sensitivity: the effective
+the equivariant averaging procedure enforces flip-equivariance of the soft-probability protocol, so for any galaxy whose mirror image is morphologically indistinguishable from the original (as for edge-on disks) the ensemble-mean CW and CCW probabilities are flip-symmetric; per-galaxy hard-label assignment retains the $\sim\!21\%$ argmax-flip rate documented in Sec.~\ref{sec:tta} as a residual rotational uncertainty.  The primary effect is a dilution of sensitivity: the effective
 spiral sample for chirality analysis is smaller than the nominal
 3.20~million, by a factor that depends on the (unknown) true edge-on
 fraction among objects classified as spirals.  We estimate this
@@ -3717,12 +3714,7 @@ tests of parity-odd physics, but they probe different observables
 under different symmetries (and they are NOT trivially mapped to
 the same EFT amplitude): the 4PCF is an isotropic parity-odd
 scalar correlator whose mapping to $g_*$ is derived in
-\cite{Cabass:2023}; a chirality dipole is by symmetry an
-isotropy-breaking pseudoscalar projection $\langle\vec L\!\cdot\!\hat n\rangle$ of an underlying axial-vector
-spin direction $\vec L$ onto the line-of-sight $\hat n$
-(see Sec.~\ref{sec:dipole_symmetry_caveat}; the dipole vector itself is
-an axial vector, not a polar vector — for $\vec L\!\cdot\!\hat n$ to yield a
-pseudo-scalar the spin direction must be axial) which would require a
+\cite{Cabass:2023}; the chirality field $A(\hat n)$ is a pseudoscalar projection $\propto\langle\vec L\!\cdot\!\hat n\rangle$ of an underlying axial-vector spin direction $\vec L$ onto the line-of-sight $\hat n$, and its $\ell\!=\!1$ dipole moment is itself an axial (pseudo-)vector (see Sec.~\ref{sec:dipole_symmetry_caveat}) which would require a
 background vector or tensor source rather than a scalar EFT
 operator. No explicit mapping from the morphology-dipole bound to
 the scalar EFT amplitude $g_*$ has been derived here, so we do not
