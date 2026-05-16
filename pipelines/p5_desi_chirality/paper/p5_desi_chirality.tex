@@ -1,0 +1,204 @@
+\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib,longbibliography,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdfnewwindow=true,
+}
+
+% Discrete repo-artifact macro: hyperlinks to the canonical repo and inserts
+% discretionary breaks at every \_ so paths wrap cleanly inside narrow columns.
+\newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
+\newcommand{\artifact}[1]{%
+  \href{\repoBase/#1}{\nolinkurl{#1}}%
+}
+
+\begin{document}
+
+\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment}
+
+\author{Houston Golden}
+\email{houston@hubify.com}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\today}
+
+\begin{abstract}
+[Placeholder.] We cross-match the 8,474,531-galaxy chirality catalog of
+\textit{Paper IV} (post-TTA equivariant labels; \texttt{class\_eq}) with
+the DESI Data Release 1 redshift catalog ($\sim$22.5M spectra) to test
+whether spiral galaxy handedness is statistically independent of
+large-scale structure environment. We control for sky position,
+redshift-quality selection, classifier confidence, imaging leg
+(BASS+MzLS / DECaLS / DES), and DESI target class. We report bin-by-bin
+CW fractions in redshift, projected local density, and cosmic-web class,
+with permutation nulls and label-shuffle controls. [Headline result and
+significance to be filled in at first matched catalog.]
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+[To be drafted.] Spiral galaxy chirality is, to leading order in a
+parity-conserving universe, an equal mixture of clockwise (CW) and
+counterclockwise (CCW) projections on the sky once mirror-augmentation
+biases in classifier training are removed. \textit{Paper IV} establishes
+the global mixture in the post-test-time-augmentation equivariant
+classifier as CW fraction $0.4974 \pm 0.000279$, consistent with parity
+at $\sim$1$\sigma$. That null is a \emph{global} statement: it does not
+constrain whether handedness is independent of environment.
+
+The present paper is a focused, environment-conditional null test. We
+cross-match the canonical chirality catalog with DESI Data Release 1 to
+ask whether handedness correlates with redshift, projected density, or
+cosmic-web context after controlling for the dominant selection and
+imaging-systematic effects. The test is bounce-model agnostic: a positive
+detection of environmental dependence would be a novel observational
+constraint, and a clean null tightens the limits of correlated handedness
+on cosmologically relevant scales.
+
+\section{Relation to Paper IV}
+\textit{Paper IV} \cite{golden_chirality_2026} produces a flat
+catalog of 8,474,531 galaxies classified into \{CW, CCW, NS\} by an
+equivariant ViT-Small classifier with test-time augmentation. The
+canonical labels live in the column \texttt{class\_eq} of
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json},
+mirrored to HuggingFace
+(\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}). The catalog inherits sky positions from
+DESI Legacy DR8 Tractor and is not redshift-resolved beyond Tractor
+photo-$z$; this paper supplies spectroscopic redshifts and environment
+context by joining to DESI Data Release 1.
+
+\section{Data}
+\subsection{Chirality catalog (Paper IV)}
+We use the immutable HF revision \texttt{paper4-v1.0.90}
+(\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}),
+filtered to a configurable confidence floor (default: no cut). Imaging-leg
+provenance is retained for systematics: BASS+MzLS, DECaLS, DES.
+
+\subsection{DESI Data Release 1}
+We use the canonical \texttt{zall-pix-iron.fits} HEALPix-coadded redshift
+catalog from DESI Data Release 1, restricted to
+\texttt{ZWARN == 0}, \texttt{SPECTYPE} $\in$ \{GALAXY, QSO\}, and
+$0 \le z \le 4$.
+
+\subsection{Cross-match method}
+We compute nearest-neighbour angular separations on the celestial sphere
+using \textsc{astropy} \texttt{SkyCoord.match\_to\_catalog\_sky}. The
+primary acceptance radius is 1.0$''$ (DESI fiber positioning tolerance);
+sensitivity is reported at \{0.5, 1.0, 2.0, 3.0, 5.0\}$''$. Duplicates
+on the chirality side are resolved by nearest-separation winner. The full
+crossmatch driver is
+\artifact{pipelines/p5\_desi\_chirality/scripts/03\_crossmatch.py}.
+
+\section{Environmental Metrics}
+\subsection{Projected local density}
+For each matched spiral we compute the inverse square of the angular
+separation to its $k=5$ nearest neighbour spiral on the sphere (a
+projected density proxy). Quantile bins are config-pinned.
+
+\subsection{Cosmic-web classification}
+[To be filled in when an environmental VAC is wired in. See
+\artifact{pipelines/p5\_desi\_chirality/scripts/08\_analysis\_cosmic\_web.py}
+for the join contract.]
+
+\section{Statistical methods}
+For each binned analysis we report observed CW fraction, exact binomial
+95\% credible interval, and the signed $\sigma$ deviation from 0.5. For
+hypothesis tests we run two complementary nulls: (i) a label-shuffle
+permutation that preserves sky/redshift but destroys any handedness
+signal; (ii) a position-shuffle that preserves labels but scrambles
+positions. Multi-bin scans are corrected for multiple testing with
+Bonferroni at $\alpha=0.01$.
+
+Reported significances should be read as upper bounds on environmental
+dependence; we use the phrasing ``no evidence for'' rather than ``proof
+of independence''.
+
+\section{Results}
+\subsection{Redshift dependence}
+[Pending first matched catalog.] Figure~\ref{fig:cw_vs_z} shows the CW
+fraction per redshift bin with 95\% binomial intervals; the
+label-shuffle null is in
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_redshift/permutation\_null.json}.
+
+\subsection{Density dependence}
+[Pending.] Figure~\ref{fig:cw_vs_density}.
+
+\subsection{Cosmic-web environment}
+[Blocked on environmental VAC ingest. Contract in place.]
+
+\subsection{Regional coherence}
+[Pending.] HEALPix per-pixel CW deviations across NSIDE
+$\in \{16, 32, 64\}$; label-shuffle null distribution.
+
+\section{Systematics and null tests}
+\begin{itemize}
+\item Chirality-label shuffle (1000 permutations).
+\item Sky-position permutation.
+\item Confidence-threshold sweep: \{0.4, 0.5, 0.6, 0.7, 0.8\}.
+\item Match-radius sweep: \{0.5, 1.0, 2.0, 3.0, 5.0\}$''$.
+\item North / south / DES-only footprint split.
+\item BGS / LRG-ELG-QSO target-class split.
+\item Imaging-leg split (BASS+MzLS / DECaLS / DES).
+\end{itemize}
+
+\section{Discussion}
+[To be filled in.]
+
+\section{Limitations}
+\begin{itemize}
+\item The cross-match is selection-limited: the 8.47M chirality catalog is
+flux-limited at $r \le 17.8$ in the Galaxy Zoo regime; DESI spectroscopic
+targets extend much fainter. The matched sample is therefore not a
+random subsample of either catalogue.
+\item Projected density is a coarse proxy for 3D density and cannot
+distinguish chance line-of-sight associations from true overdensities
+without spectroscopic confirmation across the neighbourhood.
+\item Environmental classification (void/filament/cluster) is pending an
+external VAC; until that ingest lands, the cosmic-web analysis is
+contractual.
+\item Imaging-leg systematics in chirality classification are tracked in
+\textit{Paper IV} (per-leg dipole $\sigma < 2$); we propagate the
+per-leg split here but do not re-derive the underlying bias.
+\end{itemize}
+
+\section{Future Rubin/LSST extension}
+Rubin/LSST DP1 is early commissioning data and not a complete LSST galaxy
+survey release; we treat Rubin as a future validation/scaling dataset
+once full LSST releases mature. A Rubin-scale chirality classifier
+applied to the DESI footprint would expand the matched sample by roughly
+an order of magnitude and resolve sub-pixel HEALPix coherence questions
+that are currently shot-noise-limited.
+
+\section{Conclusions}
+[Pending headline numbers.]
+
+\section{Data and code availability}
+All scripts, configuration, and provenance sidecars live under
+\artifact{pipelines/p5\_desi\_chirality/}.
+The canonical chirality catalog is mirrored on HuggingFace at
+\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}
+(immutable revision \texttt{paper4-v1.0.90}). DESI Data Release 1 is
+available from the DESI Data Release site,
+\url{https://data.desi.lbl.gov/public/dr1/}.
+
+\section*{Reproducibility checklist}
+\begin{itemize}
+\item Single config file (\artifact{pipelines/p5\_desi\_chirality/config/p5\_config.yaml}).
+\item Provenance sidecar (\texttt{*.provenance.json}) for every output.
+\item Git SHA + config hash logged in every sidecar.
+\item Deterministic seed: \texttt{20260515}.
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{golden_chirality_2026} H.~Golden, ``Galaxy Chirality Catalog and Null Global Parity'' (Paper IV), companion paper, 2026.
+\end{thebibliography}
+
+\end{document}

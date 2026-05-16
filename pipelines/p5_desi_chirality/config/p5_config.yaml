@@ -1,0 +1,74 @@
+# P5 configuration — version-pinned. Bump `version` when changing semantics.
+version: "0.1.0"
+created_utc: "2026-05-15"
+
+paths:
+  repo_root: "../../.."          # resolved relative to this file
+  p4_catalog: "data/p4_chirality.parquet"
+  desi_zall: "data/desi_zall.parquet"
+  out_matched: "results/p5_matched_chirality_desi.parquet"
+  out_summary: "results/p5_matched_chirality_desi_summary.json"
+  out_diagnostics: "results/p5_crossmatch_diagnostics.md"
+  results_dir: "results"
+  figures_dir: "figures"
+
+sources:
+  p4:
+    hf_repo: "bamfai/galaxy-chirality-catalog"
+    hf_file: "catalog_production.parquet"
+    hf_revision: "1ba76bc7"           # immutable commit SHA (audit subagent's "paper4-v1.0.90" tag was a hallucination; only main branch exists); never change without bumping config.version
+    expected_rows: 8474531
+  desi_dr1:
+    base_url: "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/"
+    file: "zall-pix-iron.fits"
+    expected_rows_approx: 22500000
+    file_size_bytes: 22371272640    # 22.37 GB confirmed via HEAD 2026-05-15
+
+crossmatch:
+  # Astropy nearest-neighbor on celestial sphere (haversine).
+  # 1.0 arcsec is the canonical DESI fiber positioning tolerance and matches
+  # the resolution of the DESI Legacy Tractor catalog used by P4.
+  primary_radius_arcsec: 1.0
+  sensitivity_radii_arcsec: [0.5, 1.0, 2.0, 3.0, 5.0]
+  duplicate_strategy: "nearest"       # nearest|reject_both|keep_all
+  match_only_spirals: false           # set true if you want CW/CCW only
+
+filters:
+  redshift_quality:
+    require_zwarn_zero: true          # drop ZWARN != 0
+    drop_zfail: true                  # drop SPECTYPE=='STAR' & SPECTYPE bad fit
+    z_min: 0.0
+    z_max: 4.0
+  classifier:
+    min_confidence: null              # null = no cut; e.g. 0.6 for HC subset
+    keep_non_spirals: true            # include class_eq=='NS' in matched catalog (drop later in analysis)
+  imaging:
+    keep_legs: ["BASS+MzLS", "DECaLS", "DES"]
+
+analysis:
+  redshift_bins:
+    edges: [0.0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.8, 1.2, 2.0]
+  density:
+    knn_k: 5                          # 5-nearest-neighbor projected density
+    projected_only: true              # 3D density requires reliable z; projected is the safe default
+    quantiles: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  healpix:
+    nsides: [16, 32, 64]              # multi-scale coherence
+    min_count_per_pixel: 50
+  systematics:
+    n_permutations: 1000
+    confidence_thresholds: [0.4, 0.5, 0.6, 0.7, 0.8]
+    radii_for_sensitivity: [0.5, 1.0, 2.0, 3.0, 5.0]
+    footprint_splits: ["north", "south", "des_only"]
+    target_class_splits: ["BGS_ANY", "LRG", "ELG", "QSO"]
+
+statistics:
+  random_seed: 20260515               # date-stamped
+  bonferroni: true
+  multiple_testing_method: "bonferroni"   # bonferroni|fdr_bh
+  default_alpha: 0.01
+
+reproducibility:
+  log_git_sha: true
+  log_config_hash: true
+  emit_provenance_sidecar: true

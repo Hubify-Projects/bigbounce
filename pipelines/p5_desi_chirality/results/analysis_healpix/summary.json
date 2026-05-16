@@ -1,0 +1,25 @@
+{
+  "written_utc": "2026-05-16T06:37:22Z",
+  "config_version": "0.1.0",
+  "n_spirals": 791635,
+  "nside_results": {
+    "16": {
+      "n_pixels": 1054,
+      "obs_max_abs_sigma": 3.3244688332507817,
+      "null_p99_max_abs_sigma": 4.4977442869144095,
+      "p_value": 0.607
+    },
+    "32": {
+      "n_pixels": 3303,
+      "obs_max_abs_sigma": 4.129483209670111,
+      "null_p99_max_abs_sigma": 4.778068172710402,
+      "p_value": 0.135
+    },
+    "64": {
+      "n_pixels": 7208,
+      "obs_max_abs_sigma": 3.9157800414902435,
+      "null_p99_max_abs_sigma": 4.77240570636673,
+      "p_value": 0.413
+    }
+  }
+}

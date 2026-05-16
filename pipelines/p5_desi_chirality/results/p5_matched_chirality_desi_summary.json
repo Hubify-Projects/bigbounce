@@ -1,0 +1,50 @@
+{
+  "config_version": "0.1.0",
+  "config_hash": "83970171f71bb863",
+  "primary_radius_arcsec": 1.0,
+  "duplicate_strategy": "nearest",
+  "totals": {
+    "desi_input_rows": 16361731,
+    "matched_primary": 2349908,
+    "matched_primary_deduped": 2232212
+  },
+  "class_eq_counts": {
+    "NOT_SPIRAL": 1440577,
+    "CCW": 398043,
+    "CW": 393592
+  },
+  "desi_spectype_counts": {
+    "GALAXY": 2215032,
+    "QSO": 17180
+  },
+  "imaging_leg_counts": {
+    "DECaLS": 1538880,
+    "BASS+MzLS": 688608,
+    "DES": 4724
+  },
+  "redshift_summary": {
+    "min": 1.82834203934713e-06,
+    "median": 0.16777490420975483,
+    "max": 3.826610235664402
+  },
+  "sep_summary_arcsec": {
+    "p50": 0.0066071193804643855,
+    "p90": 0.030465734879249935,
+    "p99": 0.29778742120739515
+  },
+  "sensitivity": {
+    "0.5arcsec_matches": 2337849,
+    "1.0arcsec_matches": 2349908,
+    "2.0arcsec_matches": 2365167,
+    "3.0arcsec_matches": 2390252,
+    "5.0arcsec_matches": 2439418
+  },
+  "chirality_among_spirals": {
+    "n_cw": 393592,
+    "n_ccw": 398043,
+    "n_spirals": 791635,
+    "cw_fraction": 0.4971887296544493,
+    "binomial_sigma_from_half": -5.002592189664475
+  },
+  "written_utc": "2026-05-16T06:34:58Z"
+}

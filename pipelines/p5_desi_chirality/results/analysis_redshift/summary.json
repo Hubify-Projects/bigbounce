@@ -1,0 +1,23 @@
+{
+  "written_utc": "2026-05-16T06:35:45Z",
+  "config_version": "0.1.0",
+  "n_spirals_total": 791635,
+  "redshift_table_path": "cw_fraction_by_z.csv",
+  "logistic_summary": {
+    "skipped": false,
+    "n": 791635,
+    "intercept": 0.000651542002991987,
+    "coef": {
+      "z": 0.005927505983768974,
+      "abs_sin_dec": 0.0008091824159616514,
+      "cos_ra": -0.0010912276136601099,
+      "confidence": -0.02242705198015437
+    }
+  },
+  "permutation_summary": {
+    "n_permutations": 1000,
+    "obs_max_abs_deviation_from_half": 0.03136531365313655,
+    "p_value": 0.372,
+    "null_p99": 0.07751937984496127
+  }
+}

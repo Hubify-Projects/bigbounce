@@ -1,0 +1,6 @@
+{
+  "n_permutations": 1000,
+  "obs_max_abs_deviation_from_half": 0.03136531365313655,
+  "p_value": 0.372,
+  "null_p99": 0.07751937984496127
+}

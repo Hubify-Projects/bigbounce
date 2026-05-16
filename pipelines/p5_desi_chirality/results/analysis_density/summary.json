@@ -1,0 +1,7 @@
+{
+  "written_utc": "2026-05-16T06:36:08Z",
+  "config_version": "0.1.0",
+  "knn_k": 5,
+  "n_spirals": 791635,
+  "max_abs_sigma_global": 3.943169556837808
+}

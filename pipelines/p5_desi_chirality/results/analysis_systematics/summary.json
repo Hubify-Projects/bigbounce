@@ -1,0 +1,12 @@
+{
+  "written_utc": "2026-05-16T06:37:48Z",
+  "config_version": "0.1.0",
+  "n_perm": 1000,
+  "label_shuffle": {
+    "n": 791635,
+    "n_cw_obs": 393592,
+    "null_mean_n_cw": 393592.0,
+    "null_std_n_cw": 0.0,
+    "two_sided_p": 1.0
+  }
+}

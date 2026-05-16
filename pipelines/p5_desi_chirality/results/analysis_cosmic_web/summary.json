@@ -1,0 +1,36 @@
+{
+  "status": "blocked",
+  "blocker": "DESI environmental VAC missing",
+  "expected_path": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/data/desi_env/desi_env_<vac>.parquet",
+  "expected_schema": [
+    {
+      "col": "TARGETID",
+      "dtype": "int64"
+    },
+    {
+      "col": "env_class",
+      "dtype": "category",
+      "values": [
+        "void",
+        "wall",
+        "filament",
+        "cluster"
+      ]
+    },
+    {
+      "col": "env_density",
+      "dtype": "float64",
+      "optional": true
+    },
+    {
+      "col": "vac_provenance",
+      "dtype": "str"
+    }
+  ],
+  "candidate_sources": [
+    "DESI DR1 LSS VAC (BGS/LRG/ELG/QSO) \u2014 pending VAC release",
+    "External void/filament catalogs (Bisigello et al. 2025; Tempel et al. 2018) \u2014 would need DESI ID resolution",
+    "The '187 DESI-derived attributes' catalog mentioned by Houston \u2014 currently MISSING from repo, see reports/00_audit.md"
+  ],
+  "written_utc": "2026-05-16T06:37:23Z"
+}

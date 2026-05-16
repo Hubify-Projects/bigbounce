@@ -1,0 +1,18 @@
+# Big derived data: HF + DESI catalogs + the matched parquet (1.2 GB).
+# Recreate via scripts/run_full_pipeline.sh — provenance sidecars commit.
+data/*.parquet
+data/*.fits
+data/desi_lss/
+data/desi_env/
+
+# Big matched output. Provenance sidecar commits.
+results/p5_matched_chirality_desi.parquet
+
+# Logs are local-only.
+logs/
+
+# Small analysis outputs (CSVs, JSON summaries) DO commit — they fit in git
+# and let reviewers reproduce numbers without re-running the pipeline.
+
+__pycache__/
+*.pyc

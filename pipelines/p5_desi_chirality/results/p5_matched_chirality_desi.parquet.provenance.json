@@ -1,0 +1,10 @@
+{
+  "output": "p5_matched_chirality_desi.parquet",
+  "written_utc": "2026-05-16T06:34:58Z",
+  "git_sha": "0882fcdcc75e",
+  "python": "3.10.6",
+  "p4_rows_after_filter": 8474531,
+  "desi_rows_after_filter": 16361731,
+  "config_version": "0.1.0",
+  "config_hash": "83970171f71bb863"
+}
