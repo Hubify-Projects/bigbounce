@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.94}
+\newcommand{\paperVersion}{v1.0.95}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -91,8 +91,13 @@ SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) have
 fueled a decade-long controversy over a possible parity-violating
 signal in the late-time Universe. We demonstrate that, in our
 DESI Legacy / ViT-Small pipeline, a specific quantifiable
-leakage channel exists which can mimic large raw chirality
-dipoles. The pipeline exhibits two distinct mask-coupled
+leakage channel exists which can inflate raw pseudo-$C_\ell$
+chirality bandpowers (reproducing $99.3\%$ of the observed
+pre-MASTER pseudo-$C_1$ power on the asymmetry map with a residual
+$+1.68\sigmaunit$, and $\sim\!49\%$ of the hemisphere maximum
+amplitude with a residual $+4.42\sigmaunit$ -- the hemisphere
+channel additionally couples to depth/PSF/morphology systematics
+not captured by a monopole-only generative null). The pipeline exhibits two distinct mask-coupled
 pre-MASTER excursions on the same DESI Legacy footprint: (i) on
 the raw asymmetry map $A_p\!=\!(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$
 the lowest pseudo-$C_\ell$ bandpower ($\ell_{\rm eff}\!=\!4$,
@@ -212,7 +217,7 @@ per-pixel-shuffle null preserves
 the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
-\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement) (zero systematics, full coverage),
+\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage),
 not the operational detection threshold; the gap factor of
 $\sim\!2.5\times$ between Fisher floor and empirical threshold is
 the standard Fisher-vs-empirical factor reported in the
@@ -763,8 +768,7 @@ the decomposition as a sufficiency check rather than a precision
 validation: under quadrature combination
 $\sqrt{1.0^2 + 0.5^2} \approx 1.12$~pp, under direct addition
 $1.0 + 0.5 = 1.5$~pp; the observed $1.2$~pp gap falls within this
-$[1.118, 1.5]$~pp range that the observed $1.2$~pp gap falls within. We do not separately estimate the cross-correlation $\rho$; the data are merely consistent with a non-negative correlation.
-assumption, consistent with the partition into the two systematic
+$[1.118, 1.5]$~pp range. We do not separately estimate the cross-correlation $\rho$; the data are merely consistent with a non-negative-correlation assumption and a partition into the two systematic
 components of comparable magnitude. We cannot disentangle the two
 without an independent (non-GZ1, non-CE-ResNet) chirality
 reference at scale. The GZ1
@@ -3228,7 +3232,7 @@ under \emph{either} threshold, so the central claim of the paper
 sensitivity is adopted. Companion artifact:
 \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_nn\_injection\_recovery.json}
 ($729.7$~s wall on Pod~3 H200, pure CPU \texttt{healpy} pipeline,
-$450{,}000$ dipole fits across the nine amplitudes (50 fits $\times$ 9 amplitudes $\times$ 1000 MC each); full per-injection
+$900$ injection fits ($N_{\rm inj}\!=\!100$ axes $\times$ $9$ amplitudes; canonical \texttt{n\_mc\_inj\_per\_amp}$\!=\!100$ from \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/injection\_recovery\_extended.json}) calibrated against $N_{\rm MC,null}\!=\!1000$ per-pixel-shuffle realizations per amplitude; full per-injection
 table with recovered $(l,b)$, monopole, $\sigma$, $p$-value, and
 $\Delta\theta_{\rm rec,inj}$ for every one of the $500$ injections).
 
@@ -4434,7 +4438,7 @@ arXiv:1611.00036 (2016); white-paper-only, no journal publication.
 \bibitem{Ivezic:2019}
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 ``LSST: From science drivers to reference design and anticipated data products,''
-Astrophys.\ J.\ \textbf{873}, 111 (2019), arXiv:0805.2366.
+Astrophys.\ J.\ \textbf{873}, 111 (2019), DOI 10.3847/1538-4357/ab042c. The preprint arXiv:0805.2366 cited in earlier versions of this bibitem is the older LSST Science Book white paper, NOT the preprint of this specific ApJ reference-design article; the arXiv identifier has been removed from the canonical citation to prevent fused-metadata confusion (Perplexity citation-forensics flag closed v1.0.95).
 % NOTE (v1.0.79, PER-B1 update): arXiv ID 0805.2366 is the long
 % LSST Science Book preprint whose content underlies the cited
 % ApJ 873, 111 (2019) reference-design article. The arXiv-to-ApJ
