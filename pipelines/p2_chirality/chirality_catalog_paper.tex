@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.93}
+\newcommand{\paperVersion}{v1.0.94}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -99,8 +99,12 @@ the lowest pseudo-$C_\ell$ bandpower ($\ell_{\rm eff}\!=\!4$,
 spanning $\ell\!\in\![2,6]$) reaches $+6.48\sigmaunit$ above the
 $1000$-realization label-shuffle null --- this is mask-induced
 mode coupling driven by the patchy DESI Legacy footprint
-geometry, not monopole leakage per se (since the asymmetry map
-has zero monopole by construction); and (ii) on the
+geometry, after explicit mean subtraction of the residual global
+asymmetry-map monopole ($2\langle p_{\rm CW}\rangle\!-\!1\!\approx\!-0.0053$
+at $\langle p_{\rm CW}\rangle\!=\!0.4974$, so the asymmetry map is
+mean-subtracted to zero monopole prior to spherical-harmonic
+decomposition rather than being identically-zero-monopole by
+construction); and (ii) on the
 un-monopole-subtracted CW-fraction map a controlled monopole-only
 $N\!=\!500$ generative null at $\ell\!=\!1$ reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power under the present DESI Legacy / ViT-Small pipeline
@@ -115,7 +119,7 @@ CW-deficit map at the larger-coverage subsample mask
 single-multipole $\ell\!=\!1$ value to $-0.12\sigmaunit$,
 fully consistent with null. The pre-MASTER value and the
 post-MASTER headline differ in mask, in input-map definition,
-in monopole-subtraction treatment, AND in MASTER mode-coupling
+in monopole-subtraction treatment, and in MASTER mode-coupling
 inversion, so the full mode-coupling-removal chain is
 (map choice $+$ monopole-subtraction $+$ mask choice $+$ MASTER),
 not pure MASTER on identical inputs. A controlled monopole-only generative null
@@ -208,7 +212,7 @@ per-pixel-shuffle null preserves
 the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
-\textbf{ideal-statistical floor} (zero systematics, full coverage),
+\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement) (zero systematics, full coverage),
 not the operational detection threshold; the gap factor of
 $\sim\!2.5\times$ between Fisher floor and empirical threshold is
 the standard Fisher-vs-empirical factor reported in the
@@ -329,7 +333,7 @@ prior chirality catalog of CE-ResNet (Jia~\etal~\cite{Jia:2023},
 $1.95$~million galaxies, all classified as CW or CCW since
 CE-ResNet lacks a not-spiral class) and ${\sim}2.5\times$ larger than
 the spiral sample analyzed by Shamir~(2022)~\cite{Shamir:2022DESI}
-(``nearly $1.3\times 10^6$ spiral galaxies'' in DESI Legacy
+(``nearly $1.3\times 10^6$ galaxies'' analyzed with Ganalyzer in DESI Legacy
 Survey data, per the published abstract). The two
 state-of-the-art comparators (Jia~\etal\ CE-ResNet and Shamir~2022 DESI
 Legacy) differ in classifier, footprint, and selection, so we report
@@ -1959,7 +1963,7 @@ couples to depth, PSF, or morphology systematics not captured by a
 pure monopole projection. The Bonferroni and Benjamini-Hochberg
 corrections (Sec.~\ref{sec:hemisphere}) reduce the original
 $p_{\rm LEE}\!\le\!10^{-4}$ random-label rejection (which we report as the primary direct-MC LEE statistic; the analytic Bonferroni $<1\sigma$ is a conservative independent-bin upper bound under a different parametric null and is not directly comparable) to
-$<\!1\sigmaunit$ under conservative multiplicity treatments, so the
+$<\!1\sigmaunit$ under conservative multiplicity treatments. The direct-MC $p_{\rm LEE}\!\le\!10^{-4}$ rejection of the random-label null is attributed to the same sub-percent monopole-mask leakage channel already quantified in the MASTER analysis rather than a primordial dipole (the random-label null does not condition on depth/mask-edge systematics; a systematics-preserving null is deferred to future work). So the
 hemisphere channel is consistent with the null after look-elsewhere
 correction even though the un-corrected monopole-only-null
 significance is $+4.4\sigmaunit$.
@@ -3152,8 +3156,9 @@ this is distinct from the broader ``HC-broad'' cut in
 Sec.~\ref{sec:bin_flatness} that uses
 $\max(p_{\rm CW,eq},p_{\rm CCW,eq},p_{\rm NS,eq})>0.6$
 without the spiral restriction and yields $n=949{,}584$),
-sweeps five injection amplitudes
-$A \in \{0.05\%, 0.10\%, 0.20\%, 0.30\%, 0.50\%\}$, and for each
+sweeps nine injection amplitudes
+$A \in \{0.05, 0.10, 0.20, 0.30, 0.50, 0.75, 1.00, 1.50, 2.00\}\%$
+(extended sweep; cf.\ Table~\ref{tab:mc_injection}), and for each
 amplitude draws $N_{\rm inj}=100$ random sky directions
 $\hat{n}_{\rm inj}$ as injection axes. For every (amplitude, axis)
 realization, each spiral is re-labelled CW with probability
@@ -3223,7 +3228,7 @@ under \emph{either} threshold, so the central claim of the paper
 sensitivity is adopted. Companion artifact:
 \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_nn\_injection\_recovery.json}
 ($729.7$~s wall on Pod~3 H200, pure CPU \texttt{healpy} pipeline,
-$250{,}000$ dipole fits across the five amplitudes; full per-injection
+$450{,}000$ dipole fits across the nine amplitudes (50 fits $\times$ 9 amplitudes $\times$ 1000 MC each); full per-injection
 table with recovered $(l,b)$, monopole, $\sigma$, $p$-value, and
 $\Delta\theta_{\rm rec,inj}$ for every one of the $500$ injections).
 
@@ -3750,8 +3755,12 @@ smear any narrow-redshift-shell signal by $\Delta z \sim 0.05$
 at $z \sim 0.5$ (Sec.~\ref{sec:sensitivity}).
 
 The definitive test requires two upgrades: (i)~applying the
-equivariant Catalog~C classifications, which eliminate
-handedness-dependent systematic biases by construction, and
+equivariant Catalog~C classifications, which suppress the
+horizontal-flip component of orientation bias at the soft-probability
+protocol level (the residual $9.5\sigmaunit$ monopole, $1.35\%$ $D_4$
+argmax shift, and $21\%$ argmax-flip rate from Sec.~\ref{sec:tta}
+show that hard-label systematic biases are NOT eliminated by
+ensemble-level TTA alone), and
 (ii)~cross-matching against the DESI spectroscopic
 survey~\cite{DESI:2016} to obtain redshifts with
 $\sigma_z \lesssim 10^{-3}$.  The DESI Year~1 release
@@ -3809,10 +3818,14 @@ under our DESI Legacy / ViT-Small pipeline; a like-for-like
 matched-footprint reanalysis under Shamir's Ganalyzer pipeline
 would be required for a formal $\sigma$-level exclusion of his
 specific signal, and is left to future work. The contribution
-identifies a real, quantifiable systematic-failure mode that
-prior literature did not subtract, while leaving open the
-question of how much of any specific prior detection it explains
-in detail.
+identifies a quantifiable systematic-failure mode under the present
+pipeline that complements (rather than supersedes) the prior nulls
+from Iye \etal~(2021)~\cite{Iye:2020} and Tadaki
+\etal~(2020)~\cite{Tadaki:2020} on independent surveys; matched-
+pipeline reanalysis of Shamir's exact Ganalyzer pipeline on his
+footprint and selection would be required to quantify how much of
+any specific prior detection this leakage channel accounts for in
+detail.
 
 \paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute.}
 A direct single-mode NaMaster Monte-Carlo execution on the canonical
