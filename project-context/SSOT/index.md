@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-05-16 PDT (tick 75 — R17 propagation-tail closures on v1.0.99→v1.0.100; tail diminishing) -->
+<!-- last_updated: 2026-05-16 PDT (tick 76 — R18 propagation-tail + 2 substantive GPT fixes on v1.0.100→v1.0.101) -->
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 
