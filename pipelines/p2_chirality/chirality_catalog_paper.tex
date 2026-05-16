@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.96}
+\newcommand{\paperVersion}{v1.0.97}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -2337,9 +2337,17 @@ $1/(N_{\rm MC}+1)$ is reported only as the MC resolution floor,
 not as a measured probability density; the true $p_{\rm LEE}$ may
 be arbitrarily smaller and is bounded only above by the MC
 sample size). The direct-MC look-elsewhere null is therefore
-in the tail at $p_{\rm LEE} < 10^{-4}$, tightening the
-Bonferroni / BH-FDR conclusion and confirming that the reported
-post-correction significance is indeed a conservative lower bound.
+in the tail at $p_{\rm LEE} < 10^{-4}$, which is a $>3.7\sigma$
+rejection of the random-label null under the direct-MC max-statistic
+procedure and a qualitatively different verdict from the analytic
+Bonferroni / BH-FDR $<1\sigma$ non-rejection under independent-bin
+parametric assumptions; the two procedures are not directly comparable.
+We adopt the direct-MC rejection as the primary LEE statistic and
+attribute it to residual depth/PSF/morphology systematics not captured
+by the random-label null rather than to a primordial dipole (see
+Sec.~\ref{sec:hemisphere} for systematic-attribution discussion;
+the analytic Bonferroni result is retained as a conservative
+parametric cross-check under a different null model).
 Companion artifact:
 \artifact{pipelines/h200\_results/wave12\_hemi\_2026-05-01/results.json}.}
 
@@ -3797,10 +3805,16 @@ demonstration of a leakage channel that can mimic the
 $\sim\!2$--$4\%$ chirality dipole signals reported in earlier
 SDSS-class samples (Shamir 2012, 2020, 2022): a small uniform
 classifier monopole couples to the patchy survey-mask geometry
-and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$, collapsing
-to $-0.12\sigmaunit$ once the MASTER mode-coupling matrix is
-applied on the same data (Sec.~\ref{sec:dipole},
-Sec.~\ref{sec:monopole_mask_null}). A controlled
+and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$; the
+full chain (un-monopole-subtracted CW-fraction map on the canonical
+mask $\to$ monopole-subtracted CW-deficit map on the subsample mask
+$\to$ MASTER mode-coupling inversion) yields the headline post-MASTER
+null $-0.12\sigmaunit$, while the like-for-like canonical-mask
+post-MASTER direct-MC is $+1.85\sigmaunit$ (Sec.~\ref{sec:dipole},
+Sec.~\ref{sec:monopole_mask_null}; the pre- and post-MASTER stages
+differ in map definition, mask, monopole-subtraction treatment, and
+MASTER inversion, so the collapse is the result of the full chain
+rather than MASTER alone on identical input). A controlled
 monopole-only N=500 generative null reproduces $99.3\%$ of the
 observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power from the
 leakage channel alone, with the canonical-mask post-MASTER
