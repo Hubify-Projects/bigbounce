@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.99}
+\newcommand{\paperVersion}{v1.0.100}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -198,7 +198,7 @@ $-2.41\sigmaunit$ excursion at $\theta\!\approx\!0.5^\circ$
 coincident with the DESI Legacy DR8 brick scale; under a 10-bin
 look-elsewhere correction this drops below $|\sigma|\!<\!2$
 post-LEE. This is a fourth complementary diagnostic that the
-chirality field carries no primordial parity-violating signal. The
+chirality field carries no primordial isotropy-breaking axial-vector dipole signal. The
 \textbf{load-bearing} sensitivity is the
 empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
 $\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ on the $N\!=\!471{,}049$
@@ -345,8 +345,7 @@ our knowledge one of the most extensive published bias-hardening
 audit suites for a survey-scale chirality catalog. We use this
 catalog to perform a chirality dipole measurement with a Fisher-floor
 minimum detectable dipole of $|A_{\rm dipole}|\!\sim\!0.29\%$ at
-$3\sigmaunit$ (statistical) and an empirical injection-recovery
-empirical 50\%-recovery-$3\sigma$ threshold at $|A_{\rm dipole}|\!\geq\!0.75\%$ ($P(\sigma\!>\!3)\!=\!0.55$; cf.\ $0.5\%$ which is a non-detection point with $P(\sigma\!>\!3)\!=\!0.15$) at the same
+$3\sigmaunit$ (statistical) and an empirical 50\%-recovery-$3\sigma$ injection-recovery threshold at $|A_{\rm dipole}|\!\geq\!0.75\%$ ($P(\sigma\!>\!3)\!=\!0.55$; cf.\ $0.5\%$ which is a non-detection point with $P(\sigma\!>\!3)\!=\!0.15$) at the same
 significance level (systematic-inclusive, $50\%$-recovery threshold
 under per-pixel-shuffle nulls; the latter is the experiment's
 sensitivity, not a frequentist upper limit on the measured signal).
@@ -504,7 +503,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.98} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.98}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.100} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.100}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -662,9 +661,9 @@ counts differ. Verification:
 \hline
 (i)~real-space dipole (\S\ref{sec:dipole}) & $3{,}201{,}160$ & --- & --- & none & per-pixel shuffle & $+0.43$ \\
 (ii)~MASTER deconv (\S\ref{sec:dipole}) & $3{,}201{,}160$ & $5{,}547{,}858$ & $0.659$ & subsample & per-pixel shuffle & $-0.12$ \\
-(iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & per-pixel shuffle & $+1.85$ \\
+(iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & per-pixel shuffle & $+1.85$ \\
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
-(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
+(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
 (vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip & $\!\Delta\!=\!1.35\%$\,/\,$21\%$\,\textsuperscript{c} \\
 \end{tabular}
@@ -699,7 +698,7 @@ The two primary estimators (i),~(ii) determine the headline
 (iii),~(iv) are reported transparently because they show non-zero
 sigma values that would otherwise look like detection candidates;
 the generative null (v) demonstrates that they are reproducible from
-a pure monopole+mask geometry without any primordial parity-violating
+a pure monopole+mask geometry without any primordial isotropy-breaking axial-vector
 signal. The empirical floor (vi) bounds amplitude sensitivity from
 above.
 
@@ -2130,7 +2129,7 @@ narrative on two independent grounds: (1) the apparent
 low-confidence dipole signal is demonstrably footprint-correlated
 (DECaLS-concentrated, not uniform across legs), which is the
 predicted signature of a survey-systematic rather than a
-primordial parity-violating signal; (2) the DECaLS series across
+primordial isotropy-breaking signal in the axial-vector dipole channel; (2) the DECaLS series across
 confidence bins is \emph{non-monotonic}
 ($+1.15\sigmaunit$ at $[0.4,0.5)$ $\rightarrow$ $+4.53\sigmaunit$
 at $[0.5,0.6)$ $\rightarrow$ $+0.90\sigmaunit$ at $[0.6,0.7)$
@@ -2757,7 +2756,7 @@ $\sim\!1\%$ to $0.29\%$ at $3\sigmaunit$ statistical (with $\geq 0.75\%$ empiric
 equivariant averaging (Sec.~\ref{sec:tta}) eliminates the reading-direction
 bias by construction, whereas the Galaxy~Zoo classification requires
 statistical post-correction.  Both analyses converge on the same
-conclusion: no evidence for cosmologically interesting parity violation
+conclusion: no evidence for cosmologically interesting isotropy-breaking (in the axial-vector dipole channel; the parity-odd monopole is reported separately)
 in galaxy morphology above the ${\sim}0.3\%$ level.
 
 % ============================================================
@@ -3664,7 +3663,7 @@ correlation that, as we note in \S\ref{sec:motloch}, is
 fully consistent with the same reading-direction citizen-science
 labelling bias that contaminates our own pre-equivariance pipeline,
 and the present work's null dipole is in fact a \emph{cleaner} probe
-of this channel because it is insensitive to that bias); if the tidal field carries a chiral tensor
+of this channel because it is insensitive to that bias). If the tidal field carries a chiral tensor
 secondary, the spin direction inherits a coherent bias whose
 projection onto arm-winding produces the observable chirality
 dipole~\cite{Yu:2020}. We do not derive the morphology-to-$\Pi$
@@ -4048,9 +4047,9 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   genuine cosmological parity-violating sector signature in the broader sense (where the axial-vector chirality dipole serves as one component channel; see Sec.~\ref{sec:dipole_symmetry_caveat}), the axial-dipole-channel preference
   observable would be the dipole component (which we measure
   consistent with null at $p\!=\!0.30$ and $\sigma\!=\!0.43$),
-  not the monopole; the parity-violation hypothesis is therefore
+  not the monopole; the isotropy-breaking hypothesis (the $\ell\!=\!1$ dipole moment of the pseudoscalar chirality field is parity-even axial-vector, so the dipole channel tests anisotropy not parity) is therefore
   tested by the dipole bound, not the monopole offset, and our
-  null dipole result rules it out at the empirical level
+  null dipole result is inconsistent with a primordial isotropy-breaking signal at the empirical level
   regardless of the monopole's origin.
 
 \item \textbf{Shamir's $\sim\!3\%$ asymmetry is inconsistent in amplitude with the present DESI Legacy result under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample
@@ -4169,7 +4168,7 @@ $\ell_{\rm max}\!=\!3\nside\!-\!1\!=\!191$).
 Two mask variants reported in the paper differ only in $f_{\rm sky}$:
 analysis subsample mask ($f_{\rm sky}=0.659$, $n=5{,}547{,}858$
 pixel-weighted-galaxy count) and canonical-$N$ mask
-($f_{\rm sky}=0.494$, $N_{\rm spiral}=3{,}201{,}160$). The mask is
+($f_{\rm sky}=0.49005$, $N_{\rm spiral}=3{,}201{,}160$). The mask is
 $n_{\rm spiral}$-weighted in both variants.
 \item Apodization: none on the canonical mask
 (\texttt{nmt.NmtField} called without \texttt{aposize} kwarg). For
@@ -4223,7 +4222,7 @@ Sec.~\ref{sec:monopole_mask_null}).
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing
   the figures and tables of the present manuscript is pinned at the
-  immutable release tag \texttt{paper4-v1.0.98} (and successor
+  immutable release tag \texttt{paper4-v1.0.100} (and successor
   patch tags), which carries the PDF asset, the canonical-provenance
   JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
   webhook on the release page.
