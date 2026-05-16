@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.90}
+\newcommand{\paperVersion}{v1.0.91}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -122,7 +122,7 @@ not pure MASTER on identical inputs. A controlled monopole-only generative null
 (canonical mask, NSIDE=64, $N\!=\!500$ binomial realizations at
 $p_{\rm CW}^{\rm global}\!=\!0.4974$) reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
-from the leakage channel alone (observed $C_1\!=\!1.70\!\times\!10^{-2}$;
+from the leakage channel alone (observed $C_1\!=\!1.696\!\times\!10^{-2}$;
 null mean $1.68\!\times\!10^{-2}\!\pm\!0.07\!\times\!10^{-3}$;
 residual $+1.68\sigmaunit$); MASTER decoupling then drives the
 post-deconvolution residual to $-0.12\sigmaunit$ on the subsample
@@ -614,7 +614,7 @@ $2\varepsilon(1\!-\!\varepsilon)\!=\!0.3009$ gives
 $\varepsilon\!\approx\!0.185$ and a dilution factor
 $(1\!-\!2\varepsilon)\!\approx\!0.63$, so a true underlying full-amplitude
 $0.5\%$ dipole would be measured as $\sim\!0.32\%$ on Catalog~C; the
-$\gtrsim\!0.5\%$ empirical threshold then corresponds to a true
+$\geq\!0.75\%$ empirical $50\%$-recovery-$3\sigma$ threshold then corresponds to a true
 underlying $\sim\!0.79\%$ dipole bound (upper end of a $[0.5\%, 0.8\%]$
 range under the alternative assumption that our pipeline is correct
 on the disagreements). This dilution is asymmetric only insofar as
@@ -1090,7 +1090,7 @@ parity violation. Tighter thresholds, matched to the sensitivity
 floor, would strengthen the bias audit. Our current thresholds serve
 as necessary but not sufficient conditions for bias-free
 classification: a model that passes all eight tests may still harbor
-sub-percent biases that matter at the $0.29\%$ Fisher (or $>0.5\%$ empirical) level. The equivariant
+sub-percent biases that matter at the $0.29\%$ Fisher (or $\geq 0.75\%$ empirical $50\%$-rec-$3\sigma$) level. The equivariant
 averaging of Catalog~C (Sec.~\ref{sec:tta}) provides the
 definitive bias mitigation; the test suite is a complementary
 diagnostic, not a replacement.
@@ -1616,7 +1616,7 @@ see footnote~\ref{fn:mc_count}).
 \textbf{Significance ($\sigmaunit$)} & \textbf{Interpretation} \\
 \hline
 $\ell\!=\!1$ (single mode$^{a,c}$)               & 1.494   & 0.429 & $-0.122$ & Null (subsample mask) \\
-$\ell_{\rm eff}\!=\!4$ ($\ell\!\in\![2,6]$)$^b$  & 3.210   & 0.804 & $+6.097$ & Mask-coupled monopole leakage \\
+$\ell_{\rm eff}\!=\!4$ ($\ell\!\in\![2,6]$)$^b$  & 3.210   & 0.804 & $+6.097$ & Mask-coupled monopole leakage\,\textsuperscript{d} \\
 $\ell_{\rm eff}\!=\!9$ ($\ell\!\in\![7,11]$)     & $-0.248$ & 0.574 & $+2.232$ & Residual mask coupling \\
 $\ell_{\rm eff}\!=\!14$ ($\ell\!\in\![12,16]$)   & $-0.387$ & 0.446 & $+2.626$ & Residual mask coupling \\
 $\ell_{\rm eff}\!=\!19$ ($\ell\!\in\![17,21]$)   & $-0.576$ & 0.420 & $+2.229$ & Residual mask coupling \\
@@ -1637,6 +1637,7 @@ observable lives at $\ell\!=\!1$ specifically, which is null.
 $^c$~Subsample mask $f_{\rm sky}\!=\!0.659$. The companion canonical-mask
 direct-MC at $\ell\!=\!1$ yields $+1.85\sigmaunit$ at $f_{\rm sky}\!=\!0.4938$
 (canonical mask, unresolved sub-detection-threshold systematic; see caption).
+$^d$~The displayed $z$ values were computed at MC time as $z\!=\!(C_\ell^{\rm meas}\!-\!\langle C_\ell^{\rm null}\rangle)/\sigma_\ell^{\rm null}$; the per-row null means $\langle C_\ell^{\rm null}\rangle$ are non-zero because the per-pixel bootstrap-of-CW-labels null on the patchy canonical mask is itself mode-coupled by the monopole+mask geometry. The null means are not displayed in this column-compact rendering ($(C_\ell\!-\!\sigma_\ell\!\cdot\!z)$ recovers them from displayed values: e.g.\ $\ell_{\rm eff}\!=\!4$ has $\langle C_\ell^{\rm null}\rangle\!\approx\!3.210\!-\!0.804\!\cdot\!6.097\!=\!-1.69$). A dedicated null-mean column is queued for the next post-submission revision.
 \end{flushleft}
 \end{table*}
 
@@ -1709,7 +1710,7 @@ lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 and the NaMaster-coupled lowest-bin SNR is $+6.097\sigma$ (pseudo-$C_\ell$ stage at $\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
 After deconvolution, the lowest bandpower (centered at
 $\ell_{\rm eff} = 4$, spanning $\ell \in [2,6]$ by the production
-binning, used here as the dipole estimator following the
+binning, reported as a non-dipole bandpower / mode-coupling diagnostic for the parity-even pseudo-power spectrum following the
 standard pseudo-$C_\ell$ convention for cut-sky $\ell=1$
 recovery~\cite{Hivon:2002,Alonso:2019}) is
 $C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
@@ -1952,7 +1953,7 @@ hemisphere amplitude, indicating that this observable additionally
 couples to depth, PSF, or morphology systematics not captured by a
 pure monopole projection. The Bonferroni and Benjamini-Hochberg
 corrections (Sec.~\ref{sec:hemisphere}) reduce the original
-$p_{\rm LEE}\!\le\!10^{-4}$ random-label rejection to
+$p_{\rm LEE}\!\le\!10^{-4}$ random-label rejection (which we report as the primary direct-MC LEE statistic; the analytic Bonferroni $<1\sigma$ is a conservative independent-bin upper bound under a different parametric null and is not directly comparable) to
 $<\!1\sigmaunit$ under conservative multiplicity treatments, so the
 hemisphere channel is consistent with the null after look-elsewhere
 correction even though the un-corrected monopole-only-null
@@ -2128,7 +2129,7 @@ monopole-preserving null). A primordial dipole signal would scale
 \emph{monotonically} with sample purity (the signal-to-noise
 ratio should improve as low-confidence/borderline galaxies are
 removed); the observed drop to $\sim\!0$ in the mid-confidence
-bins followed by a re-emergence at $[0.8,1.0)$ rules out the
+bins followed by a re-emergence at $[0.8,1.0)$ is inconsistent with the
 primordial-dipole interpretation by behavior alone, regardless of
 whether the underlying mechanism is fully diagnosed. It is the
 signature of complex multi-bin systematic interplay (e.g.\ depth/
@@ -2509,7 +2510,7 @@ the dipole significance in each bin:
 The $P>0.9$ stratum reported here is the spiral-only HC-spiral cut
 (CW or CCW probability above $0.9$, $N = 471{,}049$); this is
 distinct from the broader HC-broad cut ($\max(p_{\rm CW,eq},
-p_{\rm CCW,eq}, p_{\rm NS,eq}) > 0.6$, $N = 949{,}584$) used
+p_{\rm CCW,eq}) > 0.6$ (spiral-only, $N = 949{,}584$ matching the $n_{\rm spiral}$ count in \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/face\_on\_robustness\_results.json} for the \texttt{HC-spiral\_p>0.6} sample)) used
 elsewhere in this paper, which counts confident-NS galaxies
 together with confident spirals. The unstratified $P>0.9$ cut
 without the spiral restriction would count both classes; the
@@ -2909,7 +2910,7 @@ We therefore classify the hemisphere max-statistic signal as a
 documented systematic-floor artifact (under the random-label
 permutation null: REJECTED at $p_{\rm LEE}\!\le\!10^{-4}$; under
 the systematic-inclusive injection-recovery analysis: below the
-empirical detection threshold $|A_{\rm dipole}|\!>\!0.5\%$), rather
+empirical $50\%$-recovery-$3\sigma$ threshold $|A_{\rm dipole}|\!\geq\!0.75\%$ — with $0.5\%$ tested as a non-detection point at $P(\sigma\!>\!3)\!=\!0.15$), rather
 than as a primordial-dipole detection. The most plausible
 attribution is the same sub-percent GZ1-training-label /
 depth-coupled systematic that sources the global
@@ -2936,7 +2937,7 @@ dipole amplitude $A$ are $2\!\times$ these values, i.e.\
 $\sim\!0.29\%$ Fisher (the $3\sigma$ floor on $A$ before
 mask/$N_{\rm eff}$ inflation), rounded conservatively to
 $\sim\!0.4\%$ once mask + $N_{\rm eff}$ corrections are absorbed.
-The systematic-inclusive empirical floor $|A_{\rm dipole}|\!>\!0.5\%$
+The systematic-inclusive empirical $50\%$-rec-$3\sigma$ threshold $|A_{\rm dipole}|\!\geq\!0.75\%$
 quoted in the abstract is the full-amplitude empirical bound,
 above the $\sim\!0.4\%$ conservative full-amplitude Fisher floor.
 The analytic Fisher derivation in the remainder of this subsection
@@ -3204,7 +3205,7 @@ calibrated detection threshold. \emph{Verdict:} the $0.2\%$ in the abstract and 
 analytic Fisher quantity in Eq.~\ref{eq:sigma_dip}, already framed in
 the paragraph at L1553--L1574 as a ``statistical \emph{upper bound}''
 under zero-systematic-dipole-projection assumptions). The empirical MC
-floor of $\geq 0.5\%$ is the \emph{detection threshold}
+threshold of $\geq 0.75\%$ is the empirical $50\%$-recovery-$3\sigma$ amplitude (at $A\!=\!0.75\%$ the per-pixel-shuffle MC gives $P(\sigma\!>\!3)\!=\!0.55$; cf.\ $A\!=\!0.5\%$ gives $P(\sigma\!>\!3)\!=\!0.15$, a tested non-detection point)
 under a strict per-pixel-shuffle null, which preserves the full
 per-pixel CW-asymmetry variance (including the $\sim\!0.005\%$
 post-TTA residual signature in Catalog~C) and is therefore
@@ -3495,7 +3496,7 @@ shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
 $\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
 $10$-bin granularity though the 4-bin reconciliation above showed $0.05\%$),
 \texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
-subsample} (HC-broad: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq},p_{\rm NS,eq}){>}0.6$ -- this is the broader cut that includes confident-NS galaxies, distinct from the spiral-only HC-spiral cut $n=471{,}049$ used in §IX.J for MC injection-recovery): all
+subsample} (HC-spiral-0.6: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq}){>}0.6$ -- the spiral-only confidence$>0.6$ cut from \texttt{face\_on\_robustness\_results.json}; distinct from the spiral-only stricter HC-spiral-0.9 cut $n=471{,}049$ used in §IX.J for MC injection-recovery, which is the canonical sample-label \texttt{HC-spiral (equivariant probability > 0.9 for either CW or CCW)} from \texttt{fisher\_sensitivity\_floor.json}; the prior ``HC-broad max(p\_CW,p\_CCW,p\_NS)$>0.6$ includes confident-NS'' label used in some sites was wrong and is corrected here): all
 four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
 the smaller per-bin denominator. \emph{Reframe and verdict.} The
 three failing axes (size, fracdev, $b/a$ at $10$-bin granularity)
@@ -3507,7 +3508,7 @@ images. Crucially, \emph{this is not a directional dipole}: the hemisphere test 
 $N_{\rm MC}{=}10{,}000$ already excluded a sky-direction
 asymmetry at $p_{\rm LEE} < 10^{-4}$ (MC-resolution upper bound), and the empirical MC
 injection-recovery test (\S\,\ref{sec:dipole}) showed
-no detected dipole below the $\geq0.5\%$ amplitude threshold under
+no detected dipole below the $\geq 0.75\%$ empirical $50\%$-rec-$3\sigma$ amplitude threshold under
 strict per-pixel-shuffle nulls. The bin-flatness spreads here are
 amplitude differences across morphology bins that are spatially
 uniform on the sky, orthogonal to the parity-violation question the
@@ -3605,12 +3606,12 @@ observables (their sign changes under parity), while the dipole
 ($\ell\!=\!1$) and the odd-$\ell\!\geq\!3$ multipoles are
 parity-\emph{even} (sign preserved). A nonzero chirality dipole
 therefore strictly tests \emph{isotropy} (the existence of a
-preferred polar-vector direction on the sky), not parity violation
+preferred axial-vector direction on the sky — i.e.\ the dipole vector is parity-even and axial, not polar), not parity violation
 per se. The signed parity-odd diagnostics in our data are the monopole
 $\langle p_{\rm CW}\rangle\!=\!0.4974$ ($9.5\sigmaunit$ from
 $50/50$, attributed to citizen-science label systematics propagating
 through training and reported transparently in
-Sec.~\ref{sec:cw_frac}) and the signed real-space asymmetry map $A(\hat n)\!=\!2f_{\rm CW}(\hat n)\!-\!1$; the even-$\ell$ pseudo-$C_\ell\!=\!|a_{\ell m}|^2$ bandpowers reported throughout this work are anisotropy and systematics diagnostics rather than direct parity-odd tests (the modulus squared discards the sign that the parity transform flips). We retain the language
+Sec.~\ref{sec:cw_frac}) and the signed real-space asymmetry map $A(\hat n)\!=\!2f_{\rm CW}(\hat n)\!-\!1$; the pseudo-$C_\ell\!=\!|a_{\ell m}|^2$ bandpowers reported throughout this work at all $\ell$ are anisotropy and systematics diagnostics rather than direct parity-odd tests (the modulus squared discards the parity sign for every $\ell$: $|a_{\ell m}|^2$ is invariant under $a_{\ell m}\!\to\!(-1)^{\ell+1}a_{\ell m}$). We retain the language
 ``parity-violating chirality dipole'' for continuity with the
 Shamir literature whose claim class we test, but the more
 precise statement is that we test \emph{anisotropy of the
@@ -3668,7 +3669,7 @@ only that the two channels are \emph{complementary}: a model can
 saturate one constraint while satisfying the other.
 \paragraph{What does the present null constrain?}
 The morphology-dipole null at the empirical $|A_{\rm dipole}|
-\gtrsim 0.5\%$ amplitude floor is a direct constraint on the
+\geq 0.75\%$ empirical $50\%$-rec-$3\sigma$ amplitude threshold is a direct constraint on the
 late-universe projected morphology-channel dipole on the DESI
 Legacy footprint. It disfavors at the amplitude level any model
 that predicts a late-universe morphology-channel dipole amplitude
@@ -4003,7 +4004,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   Under the systematic-inclusive injection-recovery analysis
   (Sec.~\ref{sec:sensitivity}), no scale or sky region yields a
   primordial-dipole detection above the empirical sensitivity
-  floor $|A_{\rm dipole}|\!>\!0.5\%$. The hemisphere
+  $50\%$-rec-$3\sigma$ threshold $|A_{\rm dipole}|\!\geq\!0.75\%$. The hemisphere
   max-statistic rejects the random-label permutation null at
   $p_{\rm LEE}\!\le\!10^{-4}$, but this rejection is attributed to
   the same sub-percent GZ1-label / depth-coupled systematic that
@@ -4211,7 +4212,7 @@ residual of $0.26\%$ ($9.5\sigmaunit$) attributed to GZ1 human-handedness
 training bias propagating through CE-ResNet pseudo-labels and the present
 \vit{} classifier. The catalog labels are \emph{not} ground-truth
 chirality and should not be used for precision parity tests below the
-empirical $\gtrsim 0.5\%$ amplitude floor (Sec.~\ref{sec:sensitivity})
+empirical $\geq 0.75\%$ $50\%$-rec-$3\sigma$ amplitude threshold (Sec.~\ref{sec:sensitivity})
 without local re-normalization of the per-region monopole. The
 independent GZ1 CW/CCW agreement on the $240{,}919$-galaxy cross-match
 is $69.91\%$ (Cohen's $\kappa = 0.40$); per-galaxy labels are
