@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.86}
+\newcommand{\paperVersion}{v1.0.87}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -92,20 +92,33 @@ fueled a decade-long controversy over a possible parity-violating
 signal in the late-time Universe. We demonstrate that, in our
 DESI Legacy / ViT-Small pipeline, a specific quantifiable
 leakage channel exists which can mimic large raw chirality
-dipoles: a small uniform CW-vs-CCW classifier monopole couples to
-the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$
-at $\ell\!=\!1$ to $+6.48\sigmaunit$ on the canonical mask
-(un-monopole-subtracted CW-fraction map, $f_{\rm sky}\!=\!0.494$),
-and the cosmological-principle headline post-deconvolution
-$\ell\!=\!1$ value collapses to $-0.12\sigmaunit$ once the MASTER
-mode-coupling matrix is applied on the monopole-subtracted
+dipoles. The pipeline exhibits two distinct mask-coupled
+pre-MASTER excursions on the same DESI Legacy footprint: (i) on
+the raw asymmetry map $A_p\!=\!(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$
+the lowest pseudo-$C_\ell$ bandpower ($\ell_{\rm eff}\!=\!4$,
+spanning $\ell\!\in\![2,6]$) reaches $+6.48\sigmaunit$ above the
+$1000$-realization label-shuffle null --- this is mask-induced
+mode coupling driven by the patchy DESI Legacy footprint
+geometry, not monopole leakage per se (since the asymmetry map
+has zero monopole by construction); and (ii) on the
+un-monopole-subtracted CW-fraction map a controlled monopole-only
+$N\!=\!500$ generative null at $\ell\!=\!1$ reproduces
+$\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
+(observed $C_1\!=\!1.696\!\times\!10^{-2}$ vs null mean
+$1.6846\!\times\!10^{-2}\!\pm\!6.8\!\times\!10^{-5}$; residual
+$+1.68\sigmaunit$), explicitly identifying the small uniform
+CW-vs-CCW classifier monopole as the dominant pre-MASTER mode-coupling
+source for the $\ell\!=\!1$ mode on this map.
+MASTER mode-coupling deconvolution on the monopole-subtracted
 CW-deficit map at the larger-coverage subsample mask
-($f_{\rm sky}\!=\!0.659$); the pre-MASTER value and the
-post-MASTER headline therefore differ in mask, in
-monopole-subtraction treatment, AND in MASTER mode-coupling
-inversion, so the full leakage-removal chain is
-(monopole-subtraction $+$ mask choice $+$ MASTER), not pure
-MASTER on identical inputs. A controlled monopole-only generative null
+($f_{\rm sky}\!=\!0.659$) drives the
+single-multipole $\ell\!=\!1$ value to $-0.12\sigmaunit$,
+fully consistent with null. The pre-MASTER value and the
+post-MASTER headline differ in mask, in input-map definition,
+in monopole-subtraction treatment, AND in MASTER mode-coupling
+inversion, so the full mode-coupling-removal chain is
+(map choice $+$ monopole-subtraction $+$ mask choice $+$ MASTER),
+not pure MASTER on identical inputs. A controlled monopole-only generative null
 (canonical mask, NSIDE=64, $N\!=\!500$ binomial realizations at
 $p_{\rm CW}^{\rm global}\!=\!0.4974$) reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
@@ -180,8 +193,9 @@ chirality field carries no primordial parity-violating signal. The
 empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
 $\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ from the extended
 9-amplitude injection sweep
-(P($\sigma\!>\!3$)$\!=\!0.50$ at $A\!=\!0.75\%$, rising to
-$1.00$ at $A\!\geq\!1.50\%$; per-pixel-shuffle null preserves
+(P($\sigma\!>\!3$)$\!=\!0.55$ at $A\!=\!0.75\%$, rising to
+$0.91$ at $A\!=\!1.00\%$ and $1.00$ at $A\!\geq\!1.50\%$;
+per-pixel-shuffle null preserves
 the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
@@ -471,7 +485,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.84} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.84}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.87} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.87}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -2670,12 +2684,23 @@ remains a genuine open data gap.
 \subsection{Motloch \& Pen (2021)}
 \label{sec:motloch}
 
-Motloch \& Pen~\cite{Motloch:2021} report an observed correlation
-between galaxy spin directions and the large-scale tidal field, using
-Galaxy~Zoo~2 citizen-science CW/CCW image classifications of $\sim\!2 \times
-10^{5}$ spirals.  Their finding of a marginal ($\sim\!2\sigmaunit$) signal
-in the projected chirality field is fully consistent with the reading-direction
-bias previously quantified by Iye \textit{et~al.}~\cite{Iye:2020}.
+Motloch \& Pen~\cite{Motloch:2021} report an observed
+correlation between galaxy spin directions and the large-scale
+tidal field, using Galaxy~Zoo~2 citizen-science CW/CCW image
+classifications of $\sim\!2 \times 10^{5}$ spirals. They
+interpret their marginal ($\sim\!2\sigmaunit$) signal as
+evidence for a physical spin--tidal-field correlation in the
+linear-theory framework of \cite{Yu:2020}. Iye
+\textit{et~al.}~\cite{Iye:2020} and the present analysis
+independently quantify that GZ-style citizen-science labels
+contain measurable reading-direction biases at the $\sim\!1$--$2\%$
+level on similar projected-chirality observables; we therefore
+note that part of the Motloch \& Pen signal could in principle be
+contaminated by this class of label systematic, but we do not
+claim their result is fully reducible to it (a matched-pipeline
+reanalysis under their exact GZ2 selection and tidal-template
+fit would be needed for that determination, and is not performed
+here).
 Our result extends their analysis in two respects: (i)~our sample is
 $\sim\!16\times$ larger, pushing the minimum detectable dipole from
 $\sim\!1\%$ to $0.29\%$ at $3\sigmaunit$ statistical (with $\gtrsim 0.5\%$ empirical systematic-inclusive); and (ii)~the test-time
@@ -3534,6 +3559,35 @@ relationship to two established cosmological parity-violation channels
 in the modern literature; we do not perform an end-to-end transfer-
 function calculation here.
 
+\paragraph{Symmetry classification of the chirality dipole
+($\ell\!=\!1$) vs.\ monopole ($\ell\!=\!0$) observables.}
+\label{sec:dipole_symmetry_caveat}
+For a parity-odd scalar field on the sphere ($A(\hat n)\!\equiv\!-A(-\hat n)$,
+which is the symmetry behavior of the projected CW-fraction
+asymmetry $(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$ under
+$\hat n\!\rightarrow\!-\hat n$), the spherical-harmonic coefficients
+$a_{\ell m}$ satisfy $a_{\ell m}^{P}\!=\!(-1)^{\ell+1}a_{\ell m}$
+under a global parity transformation. The monopole ($\ell\!=\!0$)
+and the even-$\ell$ multipoles are therefore the parity-\emph{odd}
+observables (their sign changes under parity), while the dipole
+($\ell\!=\!1$) and the odd-$\ell\!\geq\!3$ multipoles are
+parity-\emph{even} (sign preserved). A nonzero chirality dipole
+therefore strictly tests \emph{isotropy} (the existence of a
+preferred polar-vector direction on the sky), not parity violation
+per se; the parity-violation tests in our data are the monopole
+$\langle p_{\rm CW}\rangle\!=\!0.4974$ ($9.5\sigmaunit$ from
+$50/50$, attributed to citizen-science label systematics propagating
+through training and reported transparently in
+Sec.~\ref{sec:cw_frac}) and the even-$\ell$ pseudo-$C_\ell$
+bandpowers reported throughout this work. We retain the language
+``parity-violating chirality dipole'' for continuity with the
+Shamir literature whose claim class we test, but the more
+precise statement is that we test \emph{anisotropy of the
+projected chirality field on the celestial sphere}: a nonzero
+dipole would indicate a preferred axis in the cosmological-principle
+sense, and the present null sets an upper bound on any such axis
+at the $A_{\rm dipole}\!\lesssim\!0.75\%$ amplitude.
+
 \paragraph{Late-universe to primordial: the link, and its caveats.}
 The chirality-dipole observable measured in this work is a late-universe,
 projected morphology-channel quantity at $z\!\lesssim\!1$, mediated
@@ -3609,21 +3663,26 @@ Cahn~\cite{Hou:2023} have since reported parity-odd 4PCF measurements
 on BOSS DR12, with significances of $\sim\!2.9\sigma$ (blind test)
 and $\sim\!7.1\sigma$ (CMASS) / $3.1\sigma$ (LOWZ) respectively.
 Cabass, Ivanov \& Philcox~\cite{Cabass:2023} provide the EFT-of-LSS
-framework that connects the observed amplitude to inflationary
-parity-odd couplings (dim-7 operators in the EFT, parameterized by
-$g_*$ in their notation). The present chirality bound and the
-parity-odd trispectrum measurement target \emph{different observational
-projections} of the same underlying parity-violating EFT space (Cabass,
-Ivanov \& Philcox~\cite{Cabass:2023}, §IV): the four-point function is
-parity-odd in galaxy \emph{position}, while morphological chirality is
-parity-odd in \emph{shape}; both can couple to the same dim-7 EFT
-amplitude $g_*$, so the two channels are \emph{not} orthogonal at the
-operator level (they share parametric origins) but are observationally
-complementary in the sense that they have different scale and tracer
-dependences. The cross-covariance between the two channels and their
-relative sensitivity to a given $g_*$ requires the
-late-universe-to-primordial transfer function discussed above and is
-not computed here. A combined analysis using
+framework that connects the observed amplitude of the parity-odd
+galaxy 4-point function to inflationary parity-odd couplings
+(dim-7 operators in the EFT, parameterized by $g_*$ in their
+notation). The present chirality \emph{dipole} bound and the
+parity-odd 4PCF measurement are \emph{conceptually complementary}
+tests of parity-odd physics, but they probe different observables
+under different symmetries (and they are NOT trivially mapped to
+the same EFT amplitude): the 4PCF is an isotropic parity-odd
+scalar correlator whose mapping to $g_*$ is derived in
+\cite{Cabass:2023}; a chirality dipole is by symmetry an
+isotropy-breaking polar vector $\langle\vec L\!\cdot\!\hat n\rangle$
+(see Sec.~\ref{sec:dipole_symmetry_caveat}) which would require a
+background vector or tensor source rather than a scalar EFT
+operator. No explicit mapping from the morphology-dipole bound to
+the scalar EFT amplitude $g_*$ has been derived here, so we do not
+translate our limit into that parameter; the two channels are
+related at a coarse model-class level (both invoke parity-odd
+inflationary or late-universe sectors) but a quantitative joint
+constraint requires a sector-specific transfer function not
+computed in this work. A combined analysis using
 both channels on a future LSST-scale sample~\cite{Ivezic:2019} would
 tighten the joint constraint.
 
@@ -3844,13 +3903,16 @@ The CW-fraction modulation that propagates into the dipole-fit
 $\sigma$ is $A/2$, so the analytic Poisson floor on
 $\sigma(A_{\rm dip})$ is $\sim 0.29\%$ full-amplitude at $3\sigmaunit$,
 not the $0.14$--$0.20\%$ figure that appeared in earlier prose
-referring to the half-modulation. The empirical injection-recovery
-threshold therefore is properly stated as $A > 0.5\%$: the present
-injection table reaches only $P(\sigma\!>\!2) = 0.18$ at injected
-$A=0.5\%$ and does not cross $P(\sigma\!>\!3)$ at any tested
-amplitude, so we report the empirical detection floor as a lower
-bound ($> 0.5\%$) rather than as a $3\sigmaunit$ exclusion at any
-specific amplitude. The $\ell\geq 2$ bandpower deviations
+referring to the half-modulation. The extended 9-amplitude
+injection-recovery sweep (Table~\ref{tab:mc_injection},
+$N_{\rm MC,null}\!=\!1000$, $N_{\rm MC,inj}\!=\!100$ per amplitude)
+gives the empirical $50\%$-recovery-at-$3\sigmaunit$ threshold at
+$A\!\approx\!0.75\%$ (P($\sigma\!>\!3$)$\!=\!0.55$ at
+$A\!=\!0.75\%$, rising to $0.91$ at $A\!=\!1.00\%$ and $1.00$
+at $A\!\geq\!1.50\%$); at $A\!=\!0.5\%$ the same sweep yields
+P($\sigma\!>\!2$)$\!=\!0.35$ and P($\sigma\!>\!3$)$\!=\!0.15$
+(median $\sigma\!=\!+1.73$), so $A\!=\!0.5\%$ is a non-detection
+rather than a calibrated detection threshold. The $\ell\geq 2$ bandpower deviations
 $\chi^2/{\rm dof} = 161.2/38$ in Table~III are attributed to the
 same monopole-leakage channel that drives the canonical-$N$
 $+1.85\sigmaunit$ direct-MC value and are not interpreted as a
@@ -4104,7 +4166,7 @@ Sec.~\ref{sec:monopole_mask_null}).
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing
   the figures and tables of the present manuscript is pinned at the
-  immutable release tag \texttt{paper4-v1.0.84} (and successor
+  immutable release tag \texttt{paper4-v1.0.87} (and successor
   patch tags), which carries the PDF asset, the canonical-provenance
   JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
   webhook on the release page.
