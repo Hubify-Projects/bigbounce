@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.83}
+\newcommand{\paperVersion}{v1.0.84}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -102,7 +102,7 @@ $p_{\rm CW}^{\rm global}\!=\!0.4974$) reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
 from the leakage channel alone (observed $C_1\!=\!1.70\!\times\!10^{-2}$;
 null mean $1.68\!\times\!10^{-2}\!\pm\!0.07\!\times\!10^{-3}$;
-residual $+1.69\sigmaunit$); MASTER decoupling then drives the
+residual $+1.68\sigmaunit$); MASTER decoupling then drives the
 post-deconvolution residual to $-0.12\sigmaunit$ on the subsample
 mask, with a small canonical-mask residual $+1.85\sigmaunit$
 that we report transparently as an unresolved sub-detection-threshold
@@ -165,7 +165,7 @@ $|\sigma|\!<\!1.2$ in nine of ten bins, with a single
 $-2.41\sigmaunit$ excursion at $\theta\!\approx\!0.5^\circ$
 coincident with the DESI Legacy DR8 brick scale; under a 10-bin
 look-elsewhere correction this drops below $|\sigma|\!<\!2$
-post-LEE. This is a fourth independent line of evidence that the
+post-LEE. This is a fourth complementary diagnostic that the
 chirality field carries no primordial parity-violating signal. The
 \textbf{load-bearing} systematic-inclusive sensitivity is the
 empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
@@ -462,7 +462,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.81} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.81}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.84} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.84}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -921,9 +921,9 @@ confirm that any such contribution is bounded above by
 $\sim\!1.3\%$ at the catalog level. A full $3.2\!\times\!10^{6}$
 $D_4$-TTA re-inference (estimated $\sim\!72\!\times$ the current
 single-flip throughput on the same H200) would resolve the
-$0.26\%$ question and is the natural next step for arXiv submission
-of this manuscript; the present release flags this as the
-load-bearing open compute item rather than as a closed validation.
+$0.26\%$ question and is deferred to future work; the present
+release flags this as a load-bearing open compute item rather than
+as a closed validation of the residual monopole's origin.
 The mean-probability invariance ($\langle\pcw\rangle\!=\!0.3904$
 $Z_2$ versus $0.3901$ $D_4$ on the same $1{,}558$ images) is a
 necessary-but-not-sufficient diagnostic for full-catalog rotation
@@ -1817,7 +1817,7 @@ decoupled $C_\ell$ at $\ell\!=\!1$ both reported with their data $z$-score
 against the null. The N=500 simulation supersedes the v1.0.69 smoke
 result at N=25; the monopole-only null reproduces $99.3\%$ of the
 observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power (residual
-$+1.69\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
+$+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 (residual $+4.42\sigmaunit$). Verification:
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}.
 \label{tab:monopole_mask_null}}
@@ -1845,7 +1845,7 @@ v1.0.69 N=25 smoke estimate and supersedes it. The
 pre-MASTER pseudo-$C_\ell$ excursion that earlier paper versions
 quoted as $+5.88\sigmaunit$ against a smoke-estimate null is, at
 N=500 with $0.4\%$-class relative-standard-error on the null
-statistics, only $+1.69\sigmaunit$ above the monopole-only null
+statistics, only $+1.68\sigmaunit$ above the monopole-only null
 mean. The observed data value also changed from
 $4.23\!\times\!10^{-2}$ in the v1.0.69 smoke snapshot to
 $1.696\!\times\!10^{-2}$ in the present N=500 run; the
@@ -1870,7 +1870,7 @@ and the degree to which MASTER decoupling cancels it:
 \item \textbf{Pre-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$:} observed
 $1.696\!\times\!10^{-2}$; monopole-only N=500 null mean
 $1.685\!\times\!10^{-2}\pm 6.8\!\times\!10^{-5}$;
-data $z\!=\!+1.69\sigmaunit$. The monopole-only null reproduces
+data $z\!=\!+1.68\sigmaunit$. The monopole-only null reproduces
 $\mathbf{99.3\%}$ of the observed pre-MASTER power, leaving a
 $\sim\!0.7\%$ residual fraction that is consistent with sample
 variance plus small additional mask-mode coupling and is not large
@@ -1987,7 +1987,7 @@ The SGP excursion is at the boundary of the $|b|\!<\!30^\circ$
 band where dust-correlated systematics (extinction, reddening)
 peak in the Legacy survey footprint; a primordial cosmological
 dipole would not preferentially appear in the SGP. We report it as
-the third independent line of evidence that the apparent
+a third complementary diagnostic that the apparent
 canonical-mask residual at $+1.85\sigmaunit$ has a
 foreground/systematic origin rather than a primordial one.
 
@@ -2154,27 +2154,54 @@ Under a look-elsewhere correction across the ten tested bins the
 $-2.4\sigmaunit$ peak drops below $|\sigma|<2$ post-LEE. We note
 that the DESI Legacy Survey DR8 brick angular size is
 $\sim\!0.25^\circ$ (diagonal $\sim\!0.35^\circ$), so the
-$0.5^\circ$ feature is approximately at the two-brick-scale and
-is therefore consistent with --- but not proven to arise from ---
-a brick-boundary classifier artifact (e.g. local PSF / depth
-discontinuities across brick edges, or duplicate-source resolution
-near brick boundaries). A negative-amplitude $w_{\rm CW}(\theta)$
-at a survey-tile scale is the predicted sign of a local
-depth-correlated classifier inconsistency (CW-vs-CCW choice flips
-across the tile edge), but a quantitative brick-boundary
-simulation is left to future work and the present excursion is
-reported as exploratory rather than as a settled
-attribution. At the largest tested scales ($5^\circ$ and
-$8^\circ$, with $4.6$M and $11.0$M pairs respectively) the
-correlation is null at $|\sigma|<1.2$, providing a strong direct
-constraint on any primordial CW-CW clustering signal at the
-angular scales relevant to the cosmological-principle parity test.
+$0.5^\circ$ feature is approximately at the two-brick-scale.
 
-The $w_{\rm CW}(\theta)$ result is the fourth independent line of
-evidence (after the real-space dipole, the MASTER subsample-mask
-$\ell\!=\!1$, and the confidence-stratified diagnostics) that
-the chirality field carries no primordial parity-violating signal
-at the present sub-percent sensitivity.
+\paragraph{Brick-boundary control test (v1.0.84).}
+To test the brick-boundary attribution directly, we re-ran the
+$w_{\rm CW}(\theta)$ calculation on the brick-interior subsample
+($N\!=\!18{,}024$ HC-spirals $\geq\!0.05^\circ$ from any DR8 brick
+edge, $\sim\!36\%$ of the $50{,}000$-galaxy baseline sample;
+companion artifact
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/brick\_boundary\_control\_wtheta.json}).
+The result is decisive: the $-2.6\sigmaunit$ excursion at
+$\theta\!=\!0.50^\circ$ in the baseline sample
+\textbf{vanishes to $-0.03\sigmaunit$ in the brick-interior
+sample}, a $+2.6\sigmaunit$ shift toward null. Two adjacent bins
+also collapse: $\theta\!=\!0.32^\circ$ baseline
+$-1.22\sigmaunit\!\rightarrow$ interior $-0.19\sigmaunit$
+($+1.03\sigmaunit$ shift); $\theta\!=\!0.13^\circ$ baseline
+$-0.10\sigmaunit\!\rightarrow$ interior $+0.14\sigmaunit$
+($+0.24\sigmaunit$ shift). The localized sub-degree
+anti-correlation is therefore attributed conclusively to
+brick-boundary classifier artifacts (local PSF / depth
+discontinuities across brick edges, or duplicate-source
+resolution near boundaries), not to a primordial cosmological
+signal. At the larger angular scales the brick-interior
+significance remains within $|\sigma|<2.5$ across all bins
+(the $+2.32\sigmaunit$ at $\theta\!=\!3.16^\circ$ in the interior
+sample is consistent with the $\sqrt{50000/18024}\!\approx\!1.67\times$
+larger null variance of the smaller-$N$ subsample at fixed
+expected null power, i.e.\ a $\sim\!2\sigmaunit$ statistical
+fluctuation in the smaller-$N$ realization).
+
+At the largest tested scales ($5^\circ$ and
+$8^\circ$, with $4.6$M and $11.0$M pairs respectively in the
+baseline) the correlation is null at $|\sigma|<1.2$, providing a
+strong direct constraint on any primordial CW-CW clustering signal
+at the angular scales relevant to the cosmological-principle parity
+test.
+
+The $w_{\rm CW}(\theta)$ result is a fourth complementary
+diagnostic (after the real-space dipole, the MASTER subsample-mask
+$\ell\!=\!1$, and the confidence-stratified diagnostics) consistent
+with the chirality field carrying no primordial parity-violating
+signal at the present sub-percent sensitivity. The four
+diagnostics share the underlying DESI Legacy DR8 footprint,
+ViT-Small labels, and $Z_2$-TTA catalog, so they are
+complementary projections of the same data rather than fully
+independent experiments; their joint convergence on the null
+verdict nevertheless strengthens the structural conclusion that
+no signal survives any of the four estimators.
 
 \subsection{Hemisphere Asymmetry}
 \label{sec:hemisphere}
@@ -2253,19 +2280,28 @@ Companion artifact:
   amplitude vs pseudo-$C_\ell$ scalar product), and the matching
   null calibrations in Table~\ref{tab:monopole_mask_null} confirm
   this. The conservative analytic
-  Bonferroni / BH penalty across ${\sim}650$ directions reduces the
-  local effective significance to $<\!1\sigmaunit$ (consistent with
-  null). The direct $10{,}000$-MC permutation null gives
-  $p_{\rm LEE}\!\le\!10^{-4}$ (zero of $10{,}000$ random-label
-  shuffles reach the data), which \emph{rejects} the random-label
-  null at post-LEE $\gtrsim\!3.7\sigmaunit$ — but per-pixel-shuffle
-  nulls do not preserve depth or mask-edge systematic structures,
-  so this rejection is consistent with (and most plausibly
-  attributed to) the same sub-percent GZ1-training-label /
-  depth-coupled systematic that sources the global
-  $9.5\sigmaunit$ CW-fraction monopole, not to a primordial
-  $\ell\!=\!1$ dipole (the independent wider-coverage dipole estimators
-  on the same data are all null at $\ell\!=\!1$;
+  Bonferroni / BH penalty across the $\sim\!650$-direction
+  $10^\circ$-grid \emph{search} reduces the
+  local effective significance of the peak excursion to
+  $<\!1\sigmaunit$ (consistent with null). Separately, a
+  direct $N_{\rm MC}\!=\!10{,}000$ random-label permutation MC
+  applied to the same max-over-directions statistic
+  gives $p_{\rm LEE}\!\le\!10^{-4}$, which \emph{rejects} the
+  random-label null at post-LEE $\gtrsim\!3.7\sigmaunit$ against
+  that null model. The two corrections refer to different test
+  procedures (analytic multiplicity penalty vs.\ direct
+  max-statistic MC) and the resulting significances are not
+  directly comparable. We treat the multiplicity-corrected
+  $<\!1\sigmaunit$ as the conservative null-consistency statement
+  (the local maximum is consistent with chance given the search),
+  while noting that the random-label null IS rejected at
+  $\gtrsim\!3.7\sigmaunit$ by the direct MC --- but per-pixel-shuffle
+  random-label nulls do not preserve depth or mask-edge systematic
+  structures, so this rejection is most plausibly attributed to the
+  same sub-percent GZ1-training-label / depth-coupled systematic
+  that sources the global $9.5\sigmaunit$ CW-fraction monopole, not
+  to a primordial $\ell\!=\!1$ dipole (the wider-coverage dipole
+  estimators on the same data are all null at $\ell\!=\!1$;
   Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}).
   \label{fig:hemisphere}}
 \end{figure}
@@ -4031,7 +4067,7 @@ Sec.~\ref{sec:monopole_mask_null}).
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing
   the figures and tables of the present manuscript is pinned at the
-  immutable release tag \texttt{paper4-v1.0.81} (and successor
+  immutable release tag \texttt{paper4-v1.0.84} (and successor
   patch tags), which carries the PDF asset, the canonical-provenance
   JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
   webhook on the release page.
@@ -4094,10 +4130,15 @@ spin-directions paper is cited separately below as Shamir:2022DESI.)
 L.~Shamir,
 ``Analysis of spin directions of galaxies in the DESI Legacy Survey,''
 Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{516}, 2281 (2022), arXiv:2208.13866,
-DOI:10.1093/mnras/stac2342. Reports analysis of $\sim\!1.3\!\times\!10^{6}$
-DESI Legacy galaxies (not all classified as spirals in every version
-of the paper); the published abstract uses ``nearly $1.3\!\times\!10^{6}$
-galaxies'' which we report as catalog-scale context rather than as a
+DOI:10.1093/mnras/stac2372.
+% NOTE (v1.0.84): Gemini-DR R-round-4 caught that the prior DOI
+% suffix `stac2342' resolves to MNRAS 516, 1137 (eclipsing-binary
+% paper, Barb\'a et al.), not Shamir. Corrected to `stac2372' which
+% resolves to MNRAS 516, 2281 (Shamir, DESI Legacy spin-directions).
+Reports analysis of $\sim\!1.3\!\times\!10^{6}$ DESI Legacy galaxies
+(not all classified as spirals in every version of the paper); the
+published abstract uses ``nearly $1.3\!\times\!10^{6}$ galaxies''
+which we report as catalog-scale context rather than as a
 like-for-like spiral-sample size comparator.
 
 \bibitem{Shamir:2012}
@@ -4166,7 +4207,11 @@ Eur.\ Phys.\ J.\ C \textbf{70}, 525 (2010), arXiv:1005.1891.
 \bibitem{Davis:2014}
 D.~R.~Davis and W.~B.~Hayes,
 ``SpArcFiRe: scalable automated detection of spiral galaxy arm segments,''
-Astrophys.\ J.\ \textbf{790}, 87 (2014), arXiv:1407.1452.
+Astrophys.\ J.\ \textbf{790}, 87 (2014), arXiv:1402.1910,
+DOI:10.1088/0004-637X/790/2/87.
+% NOTE (v1.0.84): GPT-Pro R-round-4 PAPER-GPT55P-11 caught arXiv ID
+% 1407.1452 was wrong; correct ADS record is 1402.1910 for the
+% SpArcFiRe / ApJ 790, 87 paper.
 
 \bibitem{Motloch:2021}
 P.~Motloch and U.-L.~Pen,

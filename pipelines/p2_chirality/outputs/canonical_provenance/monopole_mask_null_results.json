@@ -10,7 +10,7 @@
     "min_spirals_per_pix": 10,
     "hemi_dir_nside": 8,
     "n_hemisphere_directions": 768,
-    "statistic": "pseudo-C_l at ell=1 (mask-coupled, monopole-subtracted within mask, NOT MASTER-deconvolved); hemisphere max|A| via 768-dir matmul + per-dir hemi-balance normalization"
+    "statistic": "Pre-MASTER pseudo-C_l at ell=1 is computed on the un-monopole-subtracted CW-fraction map (p_CW(n_hat) * mask, NO mean subtraction, hp.anafast at lmax=191 in RING ordering); this exposes the ell=0 monopole leakage into ell=1 through the patchy canonical mask geometry. The hemisphere max|A| statistic is computed on the monopole-subtracted CW-deficit field (p_CW(n_hat) - <p_CW>) * mask, via a 768-direction NSIDE=8 matmul with per-direction hemi-balance normalization, isolating the dipole amplitude after global CW excess is removed. Both observables are mask-coupled; neither is MASTER-deconvolved."
   },
   "catalog": {
     "n_spiral_total": 3201160,
@@ -33,5 +33,10 @@
   "significance": {
     "C1_sigma": 1.691017811745476,
     "hemi_max_abs_sigma": 4.420018675595424
+  },
+  "_provenance": {
+    "script": "pipelines/p2_chirality/scripts/monopole_mask_null_sim_v2.py",
+    "commit_at_run_time": "v1.0.78 baseline; data values reproduce under v1.0.84 commit",
+    "audit_note": "v1.0.84 PAPER-GPT55P-1 closure: prior metadata string claimed monopole-subtracted within mask which was a partial misdescription (only hemisphere stat uses subtraction; the pseudo-C_l does not subtract)."
   }
 }
