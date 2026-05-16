@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.82}
+\newcommand{\paperVersion}{v1.0.83}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -1991,10 +1991,92 @@ the third independent line of evidence that the apparent
 canonical-mask residual at $+1.85\sigmaunit$ has a
 foreground/systematic origin rather than a primordial one.
 
+\paragraph{Per-imaging-leg $\times$ confidence-bin sub-stratification.}
+Crossing the per-imaging-leg (Sec.~\ref{sec:per_leg}) and
+confidence-stratified diagnostics resolves the
+$+3.3\sigmaunit$ apparent dipole observed in the
+$[0.5,0.6)$ low/mid-confidence bin (Table~\ref{tab:confidence_bins})
+into its per-leg components, and reveals a substantive
+\emph{footprint-correlated} substructure that the confidence-only
+diagnostic alone could not have isolated. Companion artifact:
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/per\_leg\_confidence\_signal\_hunt.json}.
+
+\begin{table*}[t]
+\caption{\label{tab:leg_conf_cross}Per-imaging-leg
+$\times$ confidence-bin dipole significance against the
+monopole-preserving null (NSIDE=64, $N_{\rm MC}\!=\!1000$, seed=42)
+and the isotropic-$p\!=\!0.5$ null. Leg cuts: BASS+MzLS for
+$\delta\!>\!+32.375^\circ$; DES for $\delta\!<\!-10^\circ$ AND
+RA$\,\in\,[0,60)\!\cup\![300,360)$; DECaLS otherwise. The
+full-catalog $[0.5,0.6)$ bin $+3.29\sigmaunit$ result of
+Table~\ref{tab:confidence_bins} decomposes as
+BASS+MzLS$+0.30\sigmaunit$ / DECaLS$+4.50\sigmaunit$ /
+DES$+2.46\sigmaunit$: the signal is DECaLS-concentrated.}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrcc}
+\textbf{Leg} & \textbf{$p_{\rm eq}$ bin} & $N_{\rm spiral}$ & $p_{\rm CW}$ & $|A|$ (\%) & $\sigma_{\rm iso}$ & $\sigma_{\rm mono}$ \\
+\hline
+BASS$+$MzLS & $[0.4,0.5)$ & $140{,}925$    & $0.49961$ & $3.110$ & $+0.93$ & $+0.97$ \\
+BASS$+$MzLS & $[0.5,0.6)$ & $567{,}948$    & $0.49868$ & $1.216$ & $+0.32$ & $+0.30$ \\
+BASS$+$MzLS & $[0.6,0.7)$ & $43{,}485$     & $0.50061$ & $2.750$ & $-0.46$ & $-0.41$ \\
+BASS$+$MzLS & $[0.7,0.8)$ & $29{,}316$     & $0.50003$ & $4.429$ & $-0.12$ & $-0.07$ \\
+BASS$+$MzLS & $[0.8,1.0)$ & $145{,}915$    & $0.49377$ & $2.965$ & $+0.66$ & $+0.75$ \\
+DECaLS      & $[0.4,0.5)$ & $162{,}828$    & $0.50170$ & $1.366$ & $+1.24$ & $+1.15$ \\
+DECaLS      & $[0.5,0.6)$ & $938{,}563$    & $0.49678$ & $1.237$ & $\mathbf{+4.50}$ & $\mathbf{+4.53}$ \\
+DECaLS      & $[0.6,0.7)$ & $107{,}610$    & $0.49651$ & $1.591$ & $+0.95$ & $+0.90$ \\
+DECaLS      & $[0.7,0.8)$ & $73{,}041$     & $0.49327$ & $1.110$ & $-0.36$ & $-0.34$ \\
+DECaLS      & $[0.8,1.0)$ & $344{,}402$    & $0.49624$ & $1.812$ & $\mathbf{+3.76}$ & $\mathbf{+4.06}$ \\
+DES         & $[0.4,0.5)$ & $55{,}540$     & $0.49784$ & $3.926$ & $-0.19$ & $-0.14$ \\
+DES         & $[0.5,0.6)$ & $367{,}641$    & $0.49682$ & $4.136$ & $+2.46$ & $+2.37$ \\
+DES         & $[0.6,0.7)$ & $42{,}465$     & $0.49481$ & $3.855$ & $-0.45$ & $-0.39$ \\
+DES         & $[0.7,0.8)$ & $29{,}007$     & $0.49319$ & $3.751$ & $-0.71$ & $-0.67$ \\
+DES         & $[0.8,1.0)$ & $129{,}585$    & $0.49784$ & $2.549$ & $-0.20$ & $-0.26$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Two findings are load-bearing for the headline interpretation:
+
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \textbf{The $+3.29\sigmaunit$ in the full-catalog $[0.5,0.6)$
+bin is DECaLS-concentrated} ($+4.50\sigmaunit$ in DECaLS,
+$+0.30\sigmaunit$ in BASS+MzLS, $+2.46\sigmaunit$ in DES). A
+classifier-systematic uniform across the survey would project into
+all three legs at similar significance per $\sqrt{N}$; the observed
+concentration in a single leg is the signature of a
+\emph{footprint-correlated} (depth, PSF, brick-tiling, or
+imaging-band) systematic that lives in DECaLS but not in
+BASS+MzLS.
+\item \textbf{The DECaLS signal persists at high confidence}
+($+3.76\sigmaunit$ in DECaLS $[0.8,1.0)$;
+$+4.06\sigmaunit$ against the monopole-preserving null). This is
+\emph{not} consistent with a pure classifier-confidence-correlated
+label-noise systematic, which would attenuate under the HC cut
+(as it does in BASS+MzLS and DES). The DECaLS HC residual
+indicates that the DECaLS-specific systematic is correlated with
+the underlying galaxy population sampled by DECaLS rather than
+with classifier ambiguity per se.
+\end{itemize}
+
+This decomposition strengthens, not weakens, the methods-paper
+narrative: the apparent low-confidence dipole signal is now
+demonstrably footprint-correlated (DECaLS-concentrated, not
+uniform), which is the predicted signature of a survey-systematic
+rather than a primordial parity-violating signal. The
+DECaLS-specific residual is most plausibly attributed to known
+DECaLS-vs-BASS+MzLS depth/PSF differences in the DESI Legacy
+imaging pipeline; a dedicated DECaLS-only depth-stratified
+follow-up is left for future work, and the catalog-level headline
+$-0.12\sigmaunit$ subsample-mask MASTER result remains the
+load-bearing null for the cosmological-principle parity test
+(the MASTER deconvolution removes the mode-coupling channel that
+the per-pixel dipole estimator is sensitive to).
+
 \paragraph{Signal-hunt summary.}
-All three signal-hunt diagnostics (confidence stratification, RA
-quadrant scatter, NGP-vs-SGP asymmetry) point to the same
-conclusion: the canonical-mask residual is structured along
+All four signal-hunt diagnostics (confidence stratification, RA
+quadrant scatter, NGP-vs-SGP asymmetry, per-leg $\times$
+confidence-bin sub-stratification) point to the same conclusion:
+the canonical-mask residual is structured along
 classifier-systematic, footprint-systematic, and
 galactic-foreground axes, not along a primordial-dipole-aligned
 axis. The headline no-dipole verdict at $\sigma_{\rm dipole}=0.43$

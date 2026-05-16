@@ -1,0 +1,175 @@
+{
+  "version": "v1.0.83-per-leg-confidence-signal-hunt",
+  "date_utc": "2026-05-16T00:54:34Z",
+  "config": {
+    "nside": 64,
+    "n_mc": 1000,
+    "seed": 42,
+    "confidence_bins": [
+      [
+        0.4,
+        0.5
+      ],
+      [
+        0.5,
+        0.6
+      ],
+      [
+        0.6,
+        0.7
+      ],
+      [
+        0.7,
+        0.8
+      ],
+      [
+        0.8,
+        1.0
+      ]
+    ],
+    "legs": [
+      "BASS+MzLS",
+      "DECaLS",
+      "DES"
+    ],
+    "leg_assignment_rule": "dec>32.375\u00b0=BASS+MzLS; dec<-10\u00b0 AND ra\u2208[0,60]\u222a[300,360]=DES; else=DECaLS",
+    "rationale": "Cross of per-leg (Sec.~per_leg) and confidence-stratified (Sec.~signal_hunt) signal-hunt. If +3\u03c3 low-confidence-bin signal is footprint-correlated systematic, it concentrates in one leg. If it's classifier label noise, roughly uniform across legs."
+  },
+  "results": {
+    "BASS+MzLS_p_eq_0.4_0.5": {
+      "leg": "BASS+MzLS",
+      "bin": "[0.4,0.5)",
+      "N_spiral": 140925,
+      "p_CW": 0.49960617349654074,
+      "A_obs_pct": 3.1095110999155526,
+      "sigma_monopole_preserving": 0.9710016170625748,
+      "sigma_isotropic": 0.9332654709260056
+    },
+    "BASS+MzLS_p_eq_0.5_0.6": {
+      "leg": "BASS+MzLS",
+      "bin": "[0.5,0.6)",
+      "N_spiral": 567948,
+      "p_CW": 0.49868121729454107,
+      "A_obs_pct": 1.2155390486722606,
+      "sigma_monopole_preserving": 0.29589799101871833,
+      "sigma_isotropic": 0.3196930131163192
+    },
+    "BASS+MzLS_p_eq_0.6_0.7": {
+      "leg": "BASS+MzLS",
+      "bin": "[0.6,0.7)",
+      "N_spiral": 43485,
+      "p_CW": 0.500609405542141,
+      "A_obs_pct": 2.7496248241178085,
+      "sigma_monopole_preserving": -0.4112816340015794,
+      "sigma_isotropic": -0.4640884919241951
+    },
+    "BASS+MzLS_p_eq_0.7_0.8": {
+      "leg": "BASS+MzLS",
+      "bin": "[0.7,0.8)",
+      "N_spiral": 29316,
+      "p_CW": 0.5000341110656297,
+      "A_obs_pct": 4.428511119144774,
+      "sigma_monopole_preserving": -0.06629931134052637,
+      "sigma_isotropic": -0.12007931193135439
+    },
+    "BASS+MzLS_p_eq_0.8_1.0": {
+      "leg": "BASS+MzLS",
+      "bin": "[0.8,1.0)",
+      "N_spiral": 145915,
+      "p_CW": 0.4937669190967344,
+      "A_obs_pct": 2.9651525553963842,
+      "sigma_monopole_preserving": 0.746564590780526,
+      "sigma_isotropic": 0.6594588791607561
+    },
+    "DECaLS_p_eq_0.4_0.5": {
+      "leg": "DECaLS",
+      "bin": "[0.4,0.5)",
+      "N_spiral": 162828,
+      "p_CW": 0.5016950401650822,
+      "A_obs_pct": 1.3658732716584432,
+      "sigma_monopole_preserving": 1.1524196162162292,
+      "sigma_isotropic": 1.244792305481521
+    },
+    "DECaLS_p_eq_0.5_0.6": {
+      "leg": "DECaLS",
+      "bin": "[0.5,0.6)",
+      "N_spiral": 938563,
+      "p_CW": 0.4967849787387741,
+      "A_obs_pct": 1.2368302718611028,
+      "sigma_monopole_preserving": 4.532157945135407,
+      "sigma_isotropic": 4.502912247542303
+    },
+    "DECaLS_p_eq_0.6_0.7": {
+      "leg": "DECaLS",
+      "bin": "[0.6,0.7)",
+      "N_spiral": 107610,
+      "p_CW": 0.4965059009385745,
+      "A_obs_pct": 1.5913135582969302,
+      "sigma_monopole_preserving": 0.898379144801911,
+      "sigma_isotropic": 0.9455300210629377
+    },
+    "DECaLS_p_eq_0.7_0.8": {
+      "leg": "DECaLS",
+      "bin": "[0.7,0.8)",
+      "N_spiral": 73041,
+      "p_CW": 0.49327090264372064,
+      "A_obs_pct": 1.1097420473125694,
+      "sigma_monopole_preserving": -0.3403905215497833,
+      "sigma_isotropic": -0.35773254856098013
+    },
+    "DECaLS_p_eq_0.8_1.0": {
+      "leg": "DECaLS",
+      "bin": "[0.8,1.0)",
+      "N_spiral": 344402,
+      "p_CW": 0.49624276281786983,
+      "A_obs_pct": 1.8124750022868945,
+      "sigma_monopole_preserving": 4.057903485022185,
+      "sigma_isotropic": 3.759597170898393
+    },
+    "DES_p_eq_0.4_0.5": {
+      "leg": "DES",
+      "bin": "[0.4,0.5)",
+      "N_spiral": 55540,
+      "p_CW": 0.4978393950306086,
+      "A_obs_pct": 3.926238298137922,
+      "sigma_monopole_preserving": -0.13526784627361504,
+      "sigma_isotropic": -0.18537536145483
+    },
+    "DES_p_eq_0.5_0.6": {
+      "leg": "DES",
+      "bin": "[0.5,0.6)",
+      "N_spiral": 367641,
+      "p_CW": 0.4968161875307705,
+      "A_obs_pct": 4.135881705707108,
+      "sigma_monopole_preserving": 2.3704066343242873,
+      "sigma_isotropic": 2.46321606595183
+    },
+    "DES_p_eq_0.6_0.7": {
+      "leg": "DES",
+      "bin": "[0.6,0.7)",
+      "N_spiral": 42465,
+      "p_CW": 0.4948074885199576,
+      "A_obs_pct": 3.855238722703925,
+      "sigma_monopole_preserving": -0.38577219162074133,
+      "sigma_isotropic": -0.4480512075363293
+    },
+    "DES_p_eq_0.7_0.8": {
+      "leg": "DES",
+      "bin": "[0.7,0.8)",
+      "N_spiral": 29007,
+      "p_CW": 0.4931912986520495,
+      "A_obs_pct": 3.751151882657227,
+      "sigma_monopole_preserving": -0.6667191603439881,
+      "sigma_isotropic": -0.7132640942063649
+    },
+    "DES_p_eq_0.8_1.0": {
+      "leg": "DES",
+      "bin": "[0.8,1.0)",
+      "N_spiral": 129585,
+      "p_CW": 0.49783539761546475,
+      "A_obs_pct": 2.5486330805875013,
+      "sigma_monopole_preserving": -0.2561640463344765,
+      "sigma_isotropic": -0.20158588976918795
+    }
+  }
+}
