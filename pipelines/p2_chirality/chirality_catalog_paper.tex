@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.92}
+\newcommand{\paperVersion}{v1.0.93}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -103,7 +103,7 @@ geometry, not monopole leakage per se (since the asymmetry map
 has zero monopole by construction); and (ii) on the
 un-monopole-subtracted CW-fraction map a controlled monopole-only
 $N\!=\!500$ generative null at $\ell\!=\!1$ reproduces
-$\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
+$\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power under the present DESI Legacy / ViT-Small pipeline
 (observed $C_1\!=\!1.696\!\times\!10^{-2}$ vs null mean
 $1.6846\!\times\!10^{-2}\!\pm\!6.8\!\times\!10^{-5}$; residual
 $+1.68\sigmaunit$), explicitly identifying the small uniform
@@ -138,8 +138,7 @@ a like-for-like matched-footprint reanalysis under
 Shamir's own Ganalyzer pipeline would be required for a formal
 $\sigma$-level exclusion of his reported signal, and is not
 performed here. The contribution is therefore best read as
-identifying a real, quantifiable systematic-failure mode that
-prior literature did not subtract, while leaving open the question
+identifying a quantifiable systematic-failure mode under the present pipeline that complements (rather than supersedes) the prior nulls from Iye \etal~(2021)~\cite{Iye:2020} and Tadaki \etal~(2020)~\cite{Tadaki:2020} on independent surveys; the present work's contribution is the 3.2M sample size combined with the explicit pre/post-MASTER leakage diagnostic, while leaving open the question
 of how much of any specific prior detection it explains.
 
 We anchor the demonstration on a survey-scale chirality catalog of
@@ -165,7 +164,7 @@ rotational uncertainty that downstream users analyzing individual
 borderline galaxies should fold into their error budget.
 
 The headline cosmological measurement is a \emph{non-detection of a
-parity-violating dipole under the present DESI Legacy / ViT-Small pipeline} after the leakage channel is removed (a matched-footprint reanalysis under Shamir's Ganalyzer pipeline and his exact magnitude/redshift cuts would be required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here). The
+parity-violating dipole (strictly, an isotropy-breaking axial vector projection; see Sec.~\ref{sec:dipole_symmetry_caveat}) under the present DESI Legacy / ViT-Small pipeline} after the leakage channel is removed (a matched-footprint reanalysis under Shamir's Ganalyzer pipeline and his exact magnitude/redshift cuts would be required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here). The
 real-space dipole fit on the canonical Catalog~C sample is
 $\sigma_{\rm dipole}\!=\!0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
 and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient
@@ -191,10 +190,18 @@ coincident with the DESI Legacy DR8 brick scale; under a 10-bin
 look-elsewhere correction this drops below $|\sigma|\!<\!2$
 post-LEE. This is a fourth complementary diagnostic that the
 chirality field carries no primordial parity-violating signal. The
-\textbf{load-bearing} systematic-inclusive sensitivity is the
+\textbf{load-bearing} sensitivity is the
 empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
-$\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ from the extended
-9-amplitude injection sweep
+$\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ on the $N\!=\!471{,}049$
+HC-spiral subsample from the extended 9-amplitude injection sweep
+(consistent with the $N\!=\!471{,}049$ ideal-statistical $3\sigma$ Fisher
+floor of $3\sqrt{3/N}\!\approx\!0.76\%$ -- i.e.\ the empirical $0.75\%$
+tracks the HC-subsample shot-noise budget and is NOT separately
+demonstrated to be a systematic-inclusive degradation from the
+full-catalog $N\!=\!3{,}201{,}160$ Fisher floor of $0.29\%$; a
+systematic-inclusive bound on the full $3.2$M sample would require
+running the injection sweep on the full Catalog~C, deferred to future
+work)
 (P($\sigma\!>\!3$)$\!=\!0.55$ at $A\!=\!0.75\%$, rising to
 $0.91$ at $A\!=\!1.00\%$ and $1.00$ at $A\!\geq\!1.50\%$;
 per-pixel-shuffle null preserves
@@ -221,8 +228,8 @@ $p_{\rm LEE}\!\le\!10^{-4}$ on the $10^\circ$ Galactic-grid
 null); the parametric Bonferroni/Benjamini-Hochberg multiplicity
 upper bound across the $\sim\!650$ tested directions (a conservative
 independent-bin treatment under a different parametric null, not
-directly comparable to the direct-MC statistic) puts the local
-effective significance drops to $<\!1\sigmaunit$ (consistent with
+directly comparable to the direct-MC statistic) reduces the local
+effective significance to $<\!1\sigmaunit$ (consistent with
 null). The rejection of the random-label null is interpreted as the
 mask-leakage projection of the same uniform monopole and is reported
 as a documented systematic-floor artifact, not as a primordial-dipole
@@ -1594,7 +1601,7 @@ see footnote~\ref{fn:mc_count}).
   canonical-$N$ MASTER recompute on the full $N_{\rm spiral}\!=\!3{,}201{,}160$
   / $f_{\rm sky}\!=\!0.491$ analysis
   (companion artifact \artifact{pipelines/p2\_chirality/r42\_results/wave\_14\_pp\_namaster\_verification.json};
-  $500$ MC realizations). $\sigma_{\rm null}$ is the per-bin standard deviation of the
+  $500$ MC realizations for the post-MASTER $\ell\!=\!1$ single-mode row only; the $\ell\!\geq\!2$ bandpower rows use the cheaper $N_{\rm MC}\!=\!1{,}000$ bootstrap-of-CW-labels null without mode-coupling inversion). $\sigma_{\rm null}$ is the per-bin standard deviation of the
   MC null distribution at that bandpower. Higher-bandpower
   $\sim\!2\sigmaunit$ values reflect residual coupling of the $9.5\sigmaunit$
   monopole into low-$\ell$ bandpowers under the
@@ -1711,10 +1718,7 @@ ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 1000-realization MC null mean and standard deviation on the asymmetry map) is $+6.48\sigma$,
 and the NaMaster-coupled lowest-bin SNR is $+6.097\sigma$ (pseudo-$C_\ell$ stage at $\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
-After deconvolution, the lowest bandpower (centered at
-$\ell_{\rm eff} = 4$, spanning $\ell \in [2,6]$ by the production
-binning, reported as a non-dipole bandpower / mode-coupling diagnostic for the parity-even pseudo-power spectrum; this is NOT the $\ell=1$ dipole estimator, which lives at the single $\ell\!=\!1$ MASTER-decoupled mode reported separately in this section. The bandpower follows the standard pseudo-$C_\ell$ binning convention~\cite{Hivon:2002,Alonso:2019}) is
-$C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
+After full MASTER mode-coupling deconvolution the single-mode $\ell\!=\!1$ value (the load-bearing parity-dipole observable) is $C_1^{\rm meas} = 1.494 \times 10^{-6}$, compared with a null
 mean $\langle C_1^{\rm null} \rangle = 1.546 \times 10^{-6}$
 ($\sigma_{\rm null} = 4.290 \times 10^{-7}$) from 500 Monte Carlo
 realizations of the full MASTER mode-coupling inversion
@@ -2774,9 +2778,7 @@ different systematic mechanisms. The $\varepsilon\!=\!0.79\%$ ViT classifier CW 
 modulated by the non-uniform survey depth is the underlying source
 of both effects.
 
-Equivariant averaging eliminates the real-space systematic by
-construction: the CW and CCW channels are exactly symmetrized, so any
-residual bias cancels to machine precision. The collapse from
+Equivariant averaging suppresses the horizontal-flip component of the orientation bias at the soft-probability level: the CW and CCW channels are exactly symmetrized so the flip-equivariance of $(\pcw + \pccw)/2$ holds to machine precision. This guarantees flip-equivariance of the output protocol; it does NOT guarantee $\pcw\!=\!\pccw$ per galaxy, nor hard-label balance, nor cancellation of training/rotation/depth biases. The residual $9.5\sigmaunit$ monopole, $1.35\%$ $D_4$ argmax shift, and $21\%$ argmax-flip rate (Sec.~\ref{sec:tta}) are the empirical evidence that hard-label bias is NOT cancelled by ensemble-level TTA alone. The collapse from
 $2.31\sigmaunit$ to $0.43\sigmaunit$ upon applying
 Eq.~(\ref{eq:tta}) confirms that the raw real-space dipole has no
 cosmological content. MASTER deconvolution independently confirms this
@@ -2839,9 +2841,7 @@ Companion artifact:
   pre-MASTER pseudo-$C_\ell$ lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) inflated to $+6.48\sigmaunit$) aligned with the DESI Legacy survey footprint,
   produced by a classifier CW bias of only $0.79\%$ modulated by
   non-uniform sky coverage.
-  Equivariant averaging (Eq.~\ref{eq:tta}) eliminates this
-  systematic entirely, yielding a noise-consistent map at
-  $0.43\sigmaunit$.  This comparison demonstrates that raw survey
+  Equivariant averaging (Eq.~\ref{eq:tta}) suppresses the real-space dipole from $2.31\sigmaunit$ to $0.43\sigmaunit$ (a noise-consistent map at the dipole-fit level), while leaving the residual $9.5\sigmaunit$ monopole intact -- the TTA cancellation is at the soft-probability flip-equivariance level, not a full systematic elimination.  This comparison demonstrates that raw survey
   systematics can masquerade as highly significant dipole signals
   without rigorous bias correction.
   \label{fig:raw_vs_eq}}
@@ -4416,7 +4416,7 @@ Phys.\ Rev.\ Lett.\ \textbf{124}, 101302 (2020), arXiv:1904.01029.
 \bibitem{DESI:2016}
 {DESI Collaboration}, A.~Aghamousa, J.~Aguilar \textit{et~al.},
 ``The DESI Experiment Part I: Science, Targeting, and Survey Design,''
-arXiv:1611.00036 (2016).
+arXiv:1611.00036 (2016); white-paper-only, no journal publication.
 
 \bibitem{Ivezic:2019}
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
