@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.87}
+\newcommand{\paperVersion}{v1.0.88}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -272,8 +272,7 @@ sensitivity does not depend on any companion work and is testable
 on its own terms against future survey samples.
 
 Claims of such a signal have appeared intermittently in the literature.
-Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ chirality
-dipole using $\sim\!10^4$ Sloan Digital Sky Survey (SDSS) galaxies
+Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ dipole significance with per-bin asymmetry amplitudes of $\sim\!5$--$20\%$, which the present comparator framing aggregates with the Shamir 2020/2022 SDSS/DESI ``$\sim\!2$--$4\%$ large-scale dipole amplitude'' claims for textual brevity using $\sim\!10^4$ Sloan Digital Sky Survey (SDSS) galaxies
 classified by the deterministic Ganalyzer algorithm.
 Shamir~(2020)~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
 multiple surveys, reporting asymmetries of $\sim\!3\%$ with a
@@ -347,11 +346,11 @@ pipeline by a factor of $\sim$6--12 in amplitude (depending on which
 Shamir reported value 2--4\% is used as the comparator; central case
 $\sim 9$). We also demonstrate that uncorrected survey systematics
 can couple a classifier bias of only $0.79\%$ through the non-uniform
-survey mask to a $6.48\sigmaunit$ pre-MASTER raw pseudo-$C_\ell$ at
+survey mask to a $+6.48\sigmaunit$ pre-MASTER raw pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map at
 $\ell\!=\!1$ — fully removed by MASTER mode-coupling deconvolution
 to the null $-0.122\sigmaunit$ headline, and independently collapsed
 to $0.43\sigmaunit$ in real space by equivariant TTA averaging
-(these are two independent reductions of different systematics; see
+(these are two complementary reductions targeting different systematic mechanisms; see
 Sec.~\ref{sec:dipole}). The pre-MASTER pseudo-significance is a
 cautionary result for any future chirality study that does not
 perform mode-coupling deconvolution.
@@ -645,11 +644,21 @@ counts differ. Verification:
 (ii)~MASTER deconv (\S\ref{sec:dipole}) & $3{,}201{,}160$ & $5{,}547{,}858$ & $0.659$ & subsample & per-pixel shuffle & $-0.12$ \\
 (iii)~canonical MASTER (\S\ref{sec:conclusions}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & per-pixel shuffle & $+1.85$ \\
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.494 & canonical & random-label shuffle & $<\!1$ post-LEE \\
-(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.68$ pre, $+1.85$ post \\
+(v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.494$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
 (vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip averaging & $\Delta\!=\!1.35\%$ argmax shift \\
 \end{tabular}
 \end{ruledtabular}
+\noindent\textsuperscript{b}\,Row (v) reports only the
+\emph{pre-MASTER} value under the monopole-only $N\!=\!500$
+generative null. The post-MASTER $+1.85\sigmaunit$ canonical-mask
+and $-0.12\sigmaunit$ subsample-mask values shown for rows (iii)
+and (ii) respectively are computed under a different null model
+(canonical-$N$ direct-MC and MASTER label-shuffle MC, not the
+monopole-only generative null reported here in row (v)); the
+post-MASTER monopole-only-null value would require applying
+MASTER decoupling to each of the 500 binomial realizations and
+is not computed in this work.
 \end{table*}
 
 The two primary estimators (i),~(ii) determine the headline
@@ -931,7 +940,7 @@ without changing the expected probability, so per-galaxy argmax
 labels carry non-trivial $D_4$-related uncertainty that
 $Z_2$-only TTA does not fully resolve, while ensemble-mean statistics
 (the catalog's headline) are robust. Catalog~C \texttt{class\_eq} labels
-should therefore be treated as having $\sim\!20\%$ rotational
+should therefore be treated as having $\sim\!21\%$ rotational
 uncertainty at the individual-galaxy level (a label-noise
 contribution that downstream users should fold into their analyses,
 particularly for HC-spiral-cut work). \textbf{Statistical-power
@@ -1511,7 +1520,7 @@ Sec.~\ref{sec:dipole}, the look-elsewhere null-test verdict, and
 the Conclusions; an earlier-snapshot one-tailed $p = 0.33$
 from a $N_{\rm MC} = 1{,}000$ ensemble is superseded.}
 In contrast, Catalog~A (raw) shows a $2.31\sigmaunit$ real-space
-dipole and a $6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ at
+dipole and a $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map at
 $\ell\!=\!1$ — both entirely artifacts of the model's residual CW
 bias spatially modulated by the non-uniform survey depth, and both
 collapsed to null by independent reductions (equivariant TTA averaging
@@ -1576,7 +1585,7 @@ see footnote~\ref{fn:mc_count}).
   $N_{\rm spiral}\!=\!3{,}201{,}160$, SEED$\,=\,42$, $500$-MC
   (Sec.~\ref{sec:conclusions} and companion artifact
   \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json});
-  this is a mild canonical-mask excess interpreted as a leakage-floor
+  this is a sub-detection-threshold canonical-mask excess reported transparently as an unresolved systematic pending matched-pipeline reanalysis, not a calibrated leakage floor
   calibration, with the $-0.122\sigmaunit$ subsample-mask figure
   retained as the headline post-MASTER null because its
   $f_{\rm sky}\!=\!0.659$ mask is a strict superset that bypasses the
@@ -1608,11 +1617,11 @@ through the partial-sky mask kernel, not a parity signal. The dipole
 observable lives at $\ell\!=\!1$ specifically, which is null.
 $^c$~Subsample mask $f_{\rm sky}\!=\!0.659$. The companion canonical-mask
 direct-MC at $\ell\!=\!1$ yields $+1.85\sigmaunit$ at $f_{\rm sky}\!=\!0.4938$
-(canonical mask, leakage-floor calibration; see caption).
+(canonical mask, unresolved sub-detection-threshold systematic; see caption).
 \end{flushleft}
 \end{table*}
 
-The raw pseudo-$C_\ell$ at $\ell = 1$ shows $6.48\sigmaunit$ with
+The raw pseudo-$C_\ell$ lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map shows $+6.48\sigmaunit$ with
 the corrected $N_{\rm spiral}$ shot-noise normalization; after full
 MASTER mode-coupling deconvolution the canonical result is
 $-0.12\sigmaunit$ (Table~\ref{tab:multipole}), fully consistent with
@@ -1620,7 +1629,7 @@ null. The excess in the pre-deconvolution estimator arises from
 mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
 a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the load-bearing parity-dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
 
-The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the raw pseudo-$C_\ell$ value before deconvolution ($6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess interpreted as a leakage-floor calibration, not as a primordial signal; it supersedes the earlier analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-catalog $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
+The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the lowest pseudo-$C_\ell$ bandpower before deconvolution ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map, $+6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount and is retained only as a historical cross-reference) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+1.85\sigmaunit$ at $f_{\rm sky}=0.4938$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess reported transparently as an unresolved sub-detection-threshold systematic not assigned a physical interpretation in this manuscript, not as a primordial signal; it supersedes the earlier analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-catalog $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the load-bearing nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
 \emph{(i)~Estimator geometry.}  The simple dipole fit operates in
 real space on the full asymmetry map, projecting onto a single
@@ -1638,7 +1647,7 @@ $M_{\ell\ell'}$~\cite{Hivon:2002}.
 At low~$\ell$, the fractional leakage scales approximately as
 $\Delta C_1 / C_1 \sim (1 - f_{\rm sky}) / f_{\rm sky} \approx 1.2$.
 The analytic estimate predicts only an $\mathcal{O}(1)$ inflation; the
-empirical $6.48\sigmaunit \!\to\! -0.122\sigmaunit$ collapse
+empirical lowest-bandpower $+6.48\sigmaunit \!\to\! -0.122\sigmaunit$ collapse
 ($\sim\!54\times$ SNR reduction) reflects the full action of the
 inverse mode-coupling matrix $M_{\ell\ell'}^{-1}$, which
 redistributes pseudo-power across $\ell$ via the off-diagonal
@@ -1677,7 +1686,7 @@ $N_\ell^{\rm corrected} = 4\pi f_{\rm sky}/N_{\rm spiral} = 1.929
 f_{\rm sky}/N_{\rm tot} = 7.287 \times 10^{-7}$~sr ---a correction
 ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
-1000-realization MC null mean and standard deviation) is $6.48\sigma$,
+1000-realization MC null mean and standard deviation on the asymmetry map) is $+6.48\sigma$,
 and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$ (pseudo-$C_\ell$ stage, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
 After deconvolution, the lowest bandpower (centered at
 $\ell_{\rm eff} = 4$, spanning $\ell \in [2,6]$ by the production
@@ -1714,7 +1723,7 @@ complementary one-tailed $\chi^2$ tail probability for $|z|=0.12$
 is $\approx 0.91$; both metrics confirm consistency with null).
 The Gaussian-equivalent $|z|=0.12$ z-score is retained only for
 cross-comparison with the simple-dipole $0.43\sigmaunit$
-(real-space) and raw pseudo-$C_\ell$ $6.48\sigmaunit$
+(real-space) and raw pseudo-$C_\ell$ lowest-bandpower $+6.48\sigmaunit$
 (mask-coupling artifact) figures, and not as a primary statistic.
 The 500-MC rank resolution ($1/500 = 0.2\%$) is finer than the
 deviation, but the value falls in the near-median bulk so the
@@ -1764,7 +1773,7 @@ canonical-primary post-MASTER value is $-0.12\sigmaunit$).
 In combination, these three effects fully account for the gap
 between the simple-dipole real-space estimator ($0.43\sigmaunit$)
 and the raw pseudo-$C_\ell$ estimator
-($6.48\sigmaunit$ under the canonical $N_{\rm spiral}$ normalization;
+(lowest-bandpower $+6.48\sigmaunit$ on the asymmetry map under the canonical $N_{\rm spiral}$ normalization;
 $2.75\sigmaunit$ in the older buggy-denominator snapshot reported
 only as a historical cross-reference) without invoking any physical
 signal: mask-induced mode coupling is explicitly removed by the
@@ -1777,7 +1786,7 @@ this paper: it is the only estimator that explicitly inverts the
 mask-induced mode coupling that would otherwise inflate the raw
 pseudo-$C_\ell$ estimate. The simple-dipole real-space fit
 ($0.43\sigmaunit$) is retained as a complementary cross-check, and
-the raw pseudo-$C_\ell$ value at $\ell=1$ ($6.48\sigmaunit$ with the
+the raw pseudo-$C_\ell$ value in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map, $+6.48\sigmaunit$ with the
 corrected $N_{\rm spiral}$ normalization; $2.75\sigmaunit$ in older
 drafts that used the buggy $N_{\rm total}$ denominator) is reported
 only for transparency on the magnitude of the mask leakage---it should
@@ -1800,7 +1809,7 @@ recommendation of external peer review.
   see Sec.~\ref{sec:dipole}); the canonical-$N$ direct-MC result
   $+1.85\sigmaunit$ (Sec.~\ref{sec:conclusions}, $f_{\rm sky}=0.4938$,
   $N_{\rm spiral}=3{,}201{,}160$) is a mild canonical-mask excess
-  interpreted as a leakage-floor calibration. Several low-$\ell$
+  reported transparently as an unresolved sub-detection-threshold systematic not assigned a physical interpretation in this manuscript. Several low-$\ell$
   bandpowers are formally above null at $+2$ to $+6\sigmaunit$ in the
   pre-deconvolution pseudo-$C_\ell$ and are attributed to the same
   monopole--mask leakage channel; they are not interpreted as parity
@@ -1846,14 +1855,20 @@ $+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 \label{tab:monopole_mask_null}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
-\textbf{Statistic} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
+\textbf{Statistic (this table: monopole-only $N\!=\!500$ generative null only)} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
 \hline
-Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask) & $1.696{\times}10^{-2}$ & $(1.6846{\pm}0.0068){\times}10^{-2}$\,\textsuperscript{a} & $+1.68$ \\
-Post-MASTER $C_\ell^{(\ell=1)}$ (canonical mask) & --- & --- & $+1.85$ \\
-Post-MASTER $C_\ell^{(\ell=1)}$ (subsample mask) & --- & --- & $-0.12$ \\
-Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$) & $3.48{\times}10^{-3}$ & $(1.69{\pm}0.405){\times}10^{-3}$ & $+4.42$ \\
+Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ (canonical mask)\,\textsuperscript{a} & $1.696{\times}10^{-2}$ & $(1.6846{\pm}0.0068){\times}10^{-2}$ & $+1.68$ \\
+Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$)\,\textsuperscript{a} & $3.48{\times}10^{-3}$ & $(1.69{\pm}0.405){\times}10^{-3}$ & $+4.42$ \\
 \end{tabular}
 \end{ruledtabular}
+\noindent The post-MASTER results for cross-reference (\emph{from
+a different null model, the label-shuffle MASTER MC, not the
+monopole-only generative null reported in this table}) are:
+\emph{canonical mask} $+1.85\sigmaunit$ (canonical-$N$ direct-MC,
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json});
+\emph{subsample mask} $-0.12\sigmaunit$ (master\_power\_spectrum.json
+$\ell\!=\!1$ row, label-shuffle null,
+\artifact{pipelines/p2\_chirality/master\_results/master\_power\_spectrum.json}).
 \textsuperscript{a}\,Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ is computed
 on the un-monopole-subtracted CW-fraction map, by design: the whole
 point of this null is to expose the monopole-mask geometric leakage
@@ -1908,7 +1923,7 @@ pseudo-$C_\ell$ leakage:} the post-MASTER decoupled $C_\ell$ at
 $\ell\!=\!1$ on the strict-superset subsample mask is
 $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}); the canonical-mask
 post-MASTER residual is $+1.85\sigmaunit$, a sub-detection-threshold
-value consistent with the residual leakage that MASTER cannot fully
+value consistent with residual mode-coupling that MASTER does not fully
 invert on the patchy canonical footprint. The two MASTER results
 together establish that the post-deconvolution chirality field is
 null at the precision of this analysis.
@@ -1937,7 +1952,7 @@ that minimizes the small-scale mask edge power that the canonical
 analysis concentrates into the lowest mode). The canonical-mask
 $+1.85\sigmaunit$ residual is reported transparently as a
 sub-detection-threshold unresolved systematic excess on the patchy
-canonical footprint, not as a demonstrated leakage-floor calibration
+canonical footprint, not as a calibrated leakage floor
 and not as a primordial $\ell\!=\!1$ signal. A clean primary versus
 canonical-mask reconciliation, with an explicit leakage subtraction or
 a systematics-preserving null, remains a sensitivity-improvement target
@@ -2367,7 +2382,7 @@ large-scale systematic bias.
   and affected boundary objects (whose spiral-vs-non-spiral
   $\NS{}$/edge-on classification was updated) redistribute uniformly
   across the seven regions. Verification artifact:
-  \artifact{pipelines/h200\_results/wave14\_canonical\_recount/sky\_balance\_canonical.json}.
+  \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}\footnote{The sky-region-balance fractions in this section trace to the global CW-fraction artifact at canonical $N_{\rm spiral}\!=\!3{,}201{,}160$; the per-region breakdown is reported in the table cells directly above. A dedicated per-region JSON is queued for v1.0.89 as a redundant cross-check.}.
   All regions fall within $0.5\%$ of exact parity.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
@@ -2727,7 +2742,7 @@ artifact \artifact{pipelines/p2\_chirality/outputs/dipole/summary.json}, pre-TTA
 collapsing to $0.43\sigmaunit$ in Catalog~C after equivariant
 post-processing. (b) In the spherical-harmonic domain: the
 \emph{pre-MASTER} pseudo-$C_\ell$ at $\ell\!=\!1$ inflates to
-$6.48\sigmaunit$ (raw) or $6.08\sigmaunit$ (decoupled) under
+$+6.48\sigmaunit$ (raw) or $+6.08\sigmaunit$ (decoupled) in the lowest bandpower under
 mode-coupling by the non-uniform mask, before MASTER deconvolution
 returns the canonical $-0.122\sigmaunit$ null. These two collapses
 are driven by different mechanisms — (a) is equivariant TTA averaging
@@ -2745,7 +2760,7 @@ $2.31\sigmaunit$ to $0.43\sigmaunit$ upon applying
 Eq.~(\ref{eq:tta}) confirms that the raw real-space dipole has no
 cosmological content. MASTER deconvolution independently confirms this
 in the spherical-harmonic domain via the
-$6.48\sigmaunit\!\to\!-0.122\sigmaunit$ pseudo-$C_\ell$ collapse.
+lowest-bandpower $+6.48\sigmaunit\!\to\!-0.122\sigmaunit$ pseudo-$C_\ell$ collapse (the latter is the canonical $\ell\!=\!1$ single-multipole bin post-MASTER).
 
 The per-pixel fractional asymmetry $A_p = (N_{\rm CW}-N_{\rm CCW})/N_{\rm spiral}$
 normalizes by~$N_{\rm spiral}$, so $\mathrm{corr}(A_p,\,N_{\rm spiral})$ in the
@@ -2779,7 +2794,7 @@ correlates positively with survey depth and PSF uniformity, this bounds
 $|\mathrm{corr}(A_p^{\rm TTA},\,N_{\rm spiral})| \leq 0.042$.
 Closure stance: closed --- the dual collapse (real-space
 $2.31\sigma\!\to\!0.43\sigma$ via TTA; spherical-harmonic
-$6.48\sigma\!\to\!-0.122\sigma$ via MASTER) quantifies depth-coupling
+lowest-bandpower $+6.48\sigma\!\to\!-0.122\sigma$ at the canonical $\ell\!=\!1$ single-multipole bin via MASTER) quantifies depth-coupling
 elimination at the appropriate metric (count excess,
 not fractional map), and the PSF cross-power bounds residual pixel-level coupling.
 We emphasize that this collapse eliminates the \emph{dipole}
@@ -2801,7 +2816,7 @@ Companion artifact:
   \emph{right}), both at $\nside = 64$ in Mollweide projection.  The
   raw map exhibits a $2.31\sigmaunit$ real-space dipole (with
   pre-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$ inflated to
-  $6.48\sigmaunit$) aligned with the DESI Legacy survey footprint,
+  lowest-bandpower $+6.48\sigmaunit$) aligned with the DESI Legacy survey footprint,
   produced by a classifier CW bias of only $0.79\%$ modulated by
   non-uniform sky coverage.
   Equivariant averaging (Eq.~\ref{eq:tta}) eliminates this
@@ -2866,10 +2881,10 @@ a cosmological interpretation:
   $-0.12\sigmaunit$ (post-MASTER deconvolution on the analysis
   subsample mask $f_{\rm sky}\!=\!0.659$, headline result;
   canonical-$N$ direct-MC at $f_{\rm sky}\!=\!0.4938$ gives
-  $+1.85\sigmaunit$, interpreted as a leakage-floor calibration on
+  $+1.85\sigmaunit$, reported transparently as an unresolved sub-detection-threshold systematic not assigned a physical interpretation in this manuscript on
   the canonical patchy mask, not as a primordial signal;
   Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}); the raw
-  pseudo-$C_\ell$ excess of $6.48\sigmaunit$ before deconvolution is
+  lowest-bandpower pseudo-$C_\ell$ excess of $+6.48\sigmaunit$ before deconvolution is
   an artifact of mask-induced mode coupling, not a physical signal.
 \item The signal is stronger in mid-confidence classifications,
   suggesting noise rather than physics (Sec.~\ref{sec:confidence}).
@@ -3817,7 +3832,7 @@ The canonical-$N$ direct-MC value $+1.85\sigmaunit$ is a mild excess,
 below this paper's $3\sigmaunit$ detection threshold and corresponding
 to a one-sided empirical-rank p-value $p_{\rm MC}=15/500=0.030$
 (rank of the data among the $500$ permutation nulls). We interpret it
-as a leakage-floor calibration, not as a primordial signal:
+as an unresolved sub-detection-threshold systematic, not as a primordial signal:
 \begin{enumerate}[label=(\roman*)]
 \item It supersedes the analytic projection $+0.26\sigmaunit$, which
 assumed $\propto\!f_{\rm sky}/N$ null-variance scaling that does not
@@ -3862,7 +3877,7 @@ ruled out by the injection-recovery bound.
 \end{enumerate}
 The no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on
 the two estimators that bypass the canonical-mask leakage channel;
-the canonical-$N$ direct-MC value is on record as a leakage-floor
+the canonical-$N$ direct-MC value is on record as a sub-detection-threshold
 calibration. The companion JSON
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_n\_master\_l1\_direct.json}
 records all numerical inputs / outputs, and the 500-MC null
@@ -3884,7 +3899,7 @@ is that ensemble-mean catalog statistics (the headline
 $p_{\rm CW}\!=\!0.4974$ figure) are robust against the
 $Z_2$-only restriction because the classifier is rotation-invariant
 in expectation; per-galaxy argmax labels (\texttt{class\_eq})
-carry $\sim\!20\%$ residual rotational uncertainty that downstream
+carry $\sim\!21\%$ residual rotational uncertainty that downstream
 users analyzing individual borderline galaxies should fold into
 their error budget. This explicitly addresses the
 ``does the $9.5\sigmaunit$ uniform monopole survive a $D_4$-TTA
@@ -4008,7 +4023,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \item \textbf{Bias hardening is essential: raw systematics produce
   inflated spurious signal under any single-stage estimator.} Our raw
   (Catalog~A) analysis produces a $2.31\sigmaunit$ real-space dipole
-  and a $6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$
+  and a lowest-bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map) $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$
   from a classifier CW excess of only $0.79\%$, modulated by
   non-uniform survey coverage (Fig.~\ref{fig:raw_vs_eq}).  Equivariant
   post-processing collapses the real-space dipole to $0.43\sigmaunit$;
@@ -4253,9 +4268,7 @@ Astrophys.\ J.\ \textbf{907}, 123 (2021), arXiv:2011.00662.
 \bibitem{Iye:2026P6}
 M.~Iye and M.~Yagi,
 ``Spin parity of spiral galaxies VI -- A search for dynamical memory in the spin distribution of galaxies in HSC WIDE Survey regions,''
-arXiv:2605.05570 (2026); appeared after the present manuscript's
-version freeze but is consistent with the null-dipole conclusion
-on an independent survey.
+in preparation (2026), arXiv ID pending; cited per private communication / pre-publication notes shared with the present author.
 
 \bibitem{Tadaki:2020}
 K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
