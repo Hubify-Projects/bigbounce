@@ -34,9 +34,9 @@ configs:
     path: "dipole_catalog_c.json"
 ---
 
-# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.85)
+# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.86)
 
-**Companion data release for** _"A Quantifiable Monopole-Mask Leakage Channel Can Mimic Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) at Sub-Percent Sensitivity (50%-Recovery $3\sigma$ Threshold $A\approx 0.75\%$)"_ (Golden 2026, paper4-v1.0.85 release).
+**Companion data release for** _"A Quantifiable Monopole-Mask Leakage Channel Can Mimic Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) at Sub-Percent Sensitivity (50%-Recovery $3\sigma$ Threshold $A\approx 0.75\%$)"_ (Golden 2026, paper4-v1.0.86 release).
 
 **Headline scientific finding.** In our DESI Legacy / ViT-Small classifier pipeline, a quantifiable leakage channel can mimic large raw chirality dipoles: a small uniform CW-vs-CCW classifier monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell=1$, then **collapses to $-0.12\sigma$ once the MASTER mode-coupling matrix is applied** on the same data. A controlled monopole-only generative null at $N=500$ (canonical mask, NSIDE=64, binomial realizations at $p_{\rm CW}^{\rm global}=0.4974$) **reproduces 99.3% of the observed pre-MASTER pseudo-$C_1$ power** (observed $1.696\times10^{-2}$ vs null mean $1.6846\times10^{-2}\pm 6.8\times10^{-5}$; residual $+1.69\sigma$). The residual canonical-mask post-MASTER excursion of $+1.85\sigma$ is reported transparently as a sub-detection-threshold unresolved systematic (NOT a calibrated leakage floor or primordial signal). **This is a this-pipeline demonstration**: a like-for-like matched-footprint reanalysis under Shamir's Ganalyzer pipeline would be required for a formal $\sigma$-level exclusion of his reported signal, and is not performed in the present release.
 
@@ -44,10 +44,10 @@ configs:
 
 ## Quick links
 
-- **Paper PDF (v1.0.85, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.85/chirality_catalog_paper.pdf
+- **Paper PDF (v1.0.86, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.86/chirality_catalog_paper.pdf
 - **Source LaTeX + canonical pipeline:** https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality
-- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.85
-- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.85` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.85)
+- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.86
+- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.86` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.86)
 - **One-shot reproduction:** `bash pipelines/p2_chirality/reproduce_paper4.sh`
 
 ## Schema
@@ -83,7 +83,7 @@ Headline dipole / multipole numbers from the canonical pipeline. Schema (see `ch
 
 ```json
 {
-  "version": "v1.0.85",
+  "version": "v1.0.86",
   "config": {"N_spiral": 3201160, "f_sky": 0.4938, "nside": 64, "lmax": 191, "N_MC": 500},
   "global_cw_fraction": 0.497353,
   "dipole_l1": {"C1_decoupled": 2.298e-05, "null_mean": 8.00e-06, "null_std": 8.10e-06, "sigma_canonical_direct": 1.850},
@@ -127,7 +127,7 @@ print(df.shape, df.columns.tolist())
 
 ## Quality gates
 
-The catalog passed the following gates in v1.0.85 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, and confidence-stratified signal-hunt diagnostics are all consistent with the no-cosmological-dipole verdict.
+The catalog passed the following gates in v1.0.86 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, and confidence-stratified signal-hunt diagnostics are all consistent with the no-cosmological-dipole verdict.
 
 | Gate | Verdict | Source |
 |---|---|---|
@@ -138,7 +138,7 @@ The catalog passed the following gates in v1.0.85 of the paper. Per-leg systemat
 
 ## Versioning
 
-This release corresponds to the paper at version **v1.0.85** (commit `4b867b0f...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt + N=500 monopole+mask null + extended injection sweep + external-review-3 closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
+This release corresponds to the paper at version **v1.0.86** (commit `4b867b0f...`, 2026-05-15) and tracks the methods-paper reframe + Path-A signal-hunt + N=500 monopole+mask null + extended injection sweep + external-review-3 closures. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
 
 ## Citation
 
