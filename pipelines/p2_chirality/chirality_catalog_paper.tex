@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.102}
+\newcommand{\paperVersion}{v1.0.103}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -106,7 +106,7 @@ $1000$-realization label-shuffle null --- this is mask-induced
 mode coupling driven by the patchy DESI Legacy footprint
 geometry, after explicit mean subtraction of the residual global
 asymmetry-map monopole ($2\langle p_{\rm CW}\rangle\!-\!1\!\approx\!-0.0053$
-at $\langle p_{\rm CW}\rangle\!=\!0.4974$, so the asymmetry map is
+at $\langle p_{\rm CW}\rangle\!=\!0.49735$ (which gives $2\!\times\!0.49735\!-\!1\!=\!-0.0053$ exactly; cf.\ the rounded $0.4974$ which gives the slightly different $-0.0052$), so the asymmetry map is
 mean-subtracted to zero monopole prior to spherical-harmonic
 decomposition rather than being identically-zero-monopole by
 construction); and (ii) on the
@@ -1585,7 +1585,7 @@ Additional power above $\ell = 5$ is dominated by Poisson shot noise
 at the per-pixel galaxy density of $\sim\!133$~spirals per active
 HEALPix pixel in the unmasked DESI Legacy footprint
 ($N_{\rm spiral}\!=\!3{,}201{,}160$ at $\nside\!=\!64$,
-$f_{\rm sky}\!=\!0.491$, $N_{\rm pix,\,active}\!\approx\!24{,}114$),
+$f_{\rm sky}\!=\!0.491$, $N_{\rm pix,\,active}\!\approx\!24{,}114$; cf.\ the strict $\geq\!10$-spirals-per-pixel-cut applied at the canonical-N MASTER stage which retains $24{,}087$ pixels at $f_{\rm sky}\!=\!0.49005$ per Table~\ref{tab:monopole_mask_null} — the 27-pixel difference reflects edge-pixel exclusion in the specific NaMaster mode-coupling pipeline stage),
 leaving no science motivation for extending the table.
 The significance of each multipole is assessed relative to
 1{,}000 Monte Carlo null realizations (Table~\ref{tab:multipole};
@@ -3616,7 +3616,7 @@ parity-\emph{even} (sign preserved). A nonzero chirality dipole
 therefore strictly tests \emph{isotropy} (the existence of a
 preferred axial-vector direction on the sky — i.e.\ the dipole vector is parity-even and axial, not polar), not parity violation
 per se. The signed parity-odd diagnostics in our data are the monopole
-$\langle p_{\rm CW}\rangle\!=\!0.4974$ ($9.5\sigmaunit$ from
+$\langle p_{\rm CW}\rangle\!=\!0.49735$ ($9.5\sigmaunit$ from
 $50/50$, attributed to citizen-science label systematics propagating
 through training and reported transparently in
 Sec.~\ref{sec:cw_frac}) and the signed real-space asymmetry map $A(\hat n)\!=\!2f_{\rm CW}(\hat n)\!-\!1$; the pseudo-$C_\ell\!=\!|a_{\ell m}|^2$ bandpowers reported throughout this work at all $\ell$ are anisotropy and systematics diagnostics rather than direct parity-odd tests (the modulus squared discards the parity sign for every $\ell$: $|a_{\ell m}|^2$ is invariant under $a_{\ell m}\!\to\!(-1)^{\ell+1}a_{\ell m}$). We retain the language
