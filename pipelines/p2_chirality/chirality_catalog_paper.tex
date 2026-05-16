@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.81}
+\newcommand{\paperVersion}{v1.0.82}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -462,7 +462,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the \texttt{paper4-v1.0} release tag of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. The release tag is permanent; subsequent paper versions will be tagged \texttt{paper4-v1.1}, \texttt{paper4-v1.2}, etc., with cumulative artifacts.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.81} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.81}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -3834,7 +3834,59 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 For full reproducibility we record the NaMaster (\texttt{pymaster}
 2.6) configuration used for the MASTER mode-coupling deconvolution of
-the chirality-asymmetry pseudo-$C_\ell$:
+the chirality-asymmetry pseudo-$C_\ell$.
+
+\paragraph{Declared data vector and $\ell\!=\!0$ treatment.}
+The headline dipole estimator of Sec.~\ref{sec:dipole} uses a
+single declared data vector: the monopole-subtracted CW-deficit
+map $f_{\rm CW}(\hat n)\!-\!0.5$ on the subsample mask
+($f_{\rm sky}\!=\!0.659$), weighted by per-pixel spiral count.
+The monopole subtraction is performed at the data-vector
+construction step (not at the bandpower-extraction step) so that
+the $\ell\!=\!0$ mode is removed from the input field, and the
+MASTER mode-coupling matrix does NOT include $\ell\!=\!0$ on
+either the input or output side; this is the standard NaMaster
+treatment for scalar fields whose monopole is treated as a
+nuisance systematic. The monopole-mask leakage channel
+(Sec.~\ref{sec:monopole_mask_null}), which IS centrally about
+$\ell\!=\!0$ leaking into $\ell\!=\!1$, uses a separate input
+field constructed WITHOUT monopole subtraction precisely to
+expose the leakage; the two data vectors are therefore distinct
+by design. The leakage data vector is the raw
+$f_{\rm CW}(\hat n)$ map on the canonical mask without subtraction;
+the headline dipole data vector is the monopole-subtracted
+CW-deficit map on the subsample mask with subtraction. Both
+analyses use the same NaMaster MASTER inversion downstream; the
+input-field choice is the only methodological difference.
+
+\paragraph{Bandpower vs single-$\ell$ estimator distinction.}
+The reported MASTER $\ell\!=\!1$ result is the
+\emph{single-multipole bin} from $\ell\!=\!1$ to $\ell\!=\!1$
+(\texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}, $\ell\!=\!1$
+row of the bandpower matrix), NOT a bandpower over a range. The
+bandpower table at $\ell_{\rm eff}\!=\!4$ (which contains
+$\ell\!\in\![2,6]$ via the default binning) is a separate
+diagnostic and is reported in Sec.~\ref{sec:dipole} Table III
+alongside the $\ell\!=\!1$ row with full data/null/units to
+prevent reader confusion. The headline ``$\ell\!=\!1$ MASTER
+$-0.12\sigmaunit$'' refers strictly to the $\ell\!=\!1$
+single-multipole bin and is not a bandpower-averaged value.
+
+\paragraph{Per-bin reporting convention.}
+For every bandpower $i$ we report (data $C_{\ell,i}^{\rm meas}$,
+null mean $\langle C_{\ell,i}^{\rm null}\rangle$, null std
+$\sigma_{\ell,i}^{\rm null}$, units sr) in the relevant table
+caption; the absolute units are sr in the dipole context (a
+spin-0 scalar field on $S^2$). The $z$-score quoted in any
+abstract or summary is uniformly
+$z\!=\!(C_{\ell,i}^{\rm meas}\!-\!\langle C_{\ell,i}^{\rm null}\rangle)/\sigma_{\ell,i}^{\rm null}$
+without empirical-rank vs Gaussian-CDF substitution, except where
+explicitly noted (the post-MASTER null at $\ell\!=\!1$ is a
+1-dof $\chi^2$ rather than a Gaussian, and the corresponding
+rank-based empirical $p$-value is reported alongside the
+Gaussian-equivalent $z\!=\!-0.12$).
+
+The NaMaster (\texttt{pymaster} 2.6) configuration in full:
 
 \begin{itemize}\setlength{\itemsep}{0pt}
 \item Pixelization: HEALPix, $\nside\!=\!64$ ($N_{\rm pix}\!=\!49{,}152$,
@@ -3895,11 +3947,12 @@ Sec.~\ref{sec:monopole_mask_null}).
 \item \textbf{Code:}
   \url{https://github.com/Hubify-Projects/bigbounce}.
   Training, inference, equivariant post-processing, bias hardening
-  suite, and dipole analysis scripts. The specific commit backing the
-  figures and tables of this paper will be tagged \texttt{paper4-v1.0}
-  with a permanent Zenodo DOI minted at arXiv submission time; until
-  the tag is cut, the canonical reference is the head of \texttt{main}
-  at the date of this manuscript.
+  suite, and dipole analysis scripts. The specific commit backing
+  the figures and tables of the present manuscript is pinned at the
+  immutable release tag \texttt{paper4-v1.0.81} (and successor
+  patch tags), which carries the PDF asset, the canonical-provenance
+  JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
+  webhook on the release page.
 \end{itemize}
 
 \paragraph{Catalog usage limitations.}
@@ -3958,10 +4011,12 @@ spin-directions paper is cited separately below as Shamir:2022DESI.)
 \bibitem{Shamir:2022DESI}
 L.~Shamir,
 ``Analysis of spin directions of galaxies in the DESI Legacy Survey,''
-arXiv:2208.13866 (2022); subsequently published in MNRAS. Uses
-``nearly $1.3\times 10^6$ spiral galaxies'' (per the published
-abstract) and is the appropriate same-survey amplitude comparator
-for our DESI Legacy chirality dipole result.
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{516}, 2281 (2022), arXiv:2208.13866,
+DOI:10.1093/mnras/stac2342. Reports analysis of $\sim\!1.3\!\times\!10^{6}$
+DESI Legacy galaxies (not all classified as spirals in every version
+of the paper); the published abstract uses ``nearly $1.3\!\times\!10^{6}$
+galaxies'' which we report as catalog-scale context rather than as a
+like-for-like spiral-sample size comparator.
 
 \bibitem{Shamir:2012}
 L.~Shamir,
