@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.97}
+\newcommand{\paperVersion}{v1.0.98}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -173,7 +173,7 @@ rotational uncertainty that downstream users analyzing individual
 borderline galaxies should fold into their error budget.
 
 The headline cosmological measurement is a \emph{non-detection of a
-parity-violating dipole (strictly, an isotropy-breaking axial vector projection; see Sec.~\ref{sec:dipole_symmetry_caveat}) under the present DESI Legacy / ViT-Small pipeline} after the leakage channel is removed (a matched-footprint reanalysis under Shamir's Ganalyzer pipeline and his exact magnitude/redshift cuts would be required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here). The
+chirality dipole (strictly, an isotropy-breaking axial-vector projection of the projected pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat} — the $\ell\!=\!1$ dipole moment is parity-EVEN, so this is an isotropy-violation test, NOT a direct parity-violation test) under the present DESI Legacy / ViT-Small pipeline} after the leakage channel is removed (a matched-footprint reanalysis under Shamir's Ganalyzer pipeline and his exact magnitude/redshift cuts would be required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here). The
 real-space dipole fit on the canonical Catalog~C sample is
 $\sigma_{\rm dipole}\!=\!0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
 and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient
@@ -217,12 +217,7 @@ per-pixel-shuffle null preserves
 the global $p_{\rm CW}\!=\!0.4974$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
-\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage),
-not the operational detection threshold; the gap factor of
-$\sim\!2.5\times$ between Fisher floor and empirical threshold is
-the standard Fisher-vs-empirical factor reported in the
-dipole-recovery literature for similar single-cosine
-estimators.
+\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage). The like-for-like HC-subsample Fisher floor is $3\sqrt{3/N}\!\approx\!0.76\%$ at $N\!=\!471{,}049$, which the $0.75\%$ HC empirical threshold tracks essentially exactly (ratio $\approx\!1.0$, no systematic-inclusive degradation on the HC subsample). Comparing the HC empirical threshold to the FULL-CATALOG Fisher floor would yield a $\sim\!2.6\times$ cross-sample ratio, but this is a cross-sample comparison and not a meaningful empirical-vs-Fisher gap factor (the full-catalog injection sweep needed to define such a gap on the $3.2$M sample is deferred to future work).
 
 A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
 ($9.5\sigmaunit$ from $50/50$ under naive binomial errors;
@@ -358,8 +353,8 @@ sensitivity, not a frequentist upper limit on the measured signal).
 The measured dipole is consistent with null parity violation at
 sub-percent sensitivity: the equivariant CW fraction is
 $0.4974 \pm 0.000279$ and the post-MASTER dipole significance is
-$-0.122\sigmaunit$ (canonical) / $0.43\sigmaunit$ (simple real-space,
-post-TTA cross-check), with the post-MASTER null adopted as the
+$-0.122\sigmaunit$ (subsample mask $f_{\rm sky}\!=\!0.659$, headline) / $0.43\sigmaunit$ (simple real-space,
+post-TTA cross-check; the canonical-mask $f_{\rm sky}\!=\!0.494$ post-MASTER direct-MC is $+1.85\sigmaunit$, reported transparently as an unresolved sub-detection-threshold systematic), with the post-MASTER null adopted as the
 load-bearing result. This is inconsistent in amplitude with Shamir's (2020,
 2022)~\cite{Shamir:2020,Shamir:2022} claimed $\sim\!3\%$ asymmetry
 signal in the DESI Legacy Imaging Surveys footprint, under the present
@@ -509,7 +504,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.87} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.87}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.97} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.97}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -1875,7 +1870,7 @@ depth/PSF/morphology coupling beyond the per-pixel multinomial.
 
 \begin{table*}[t]
 \caption{Monopole+mask leakage null (canonical mask, NSIDE$\,=\,$64,
-$f_{\rm sky}\!=\!0.494$, seed$\,=\,$42; $N\!=\!500$ binomial-monopole
+$f_{\rm sky}\!=\!0.49005$ (canonical, from \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}: $n_{\rm spiral,in\,mask}\!=\!3{,}200{,}420$ of $n_{\rm spiral,total}\!=\!3{,}201{,}160$; $24{,}087$ NSIDE$=64$ pixels with $\geq\!10$ spirals), seed$\,=\,$42; $N\!=\!500$ binomial-monopole
 realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
 spiral-count map). Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ and hemisphere max$|A|$ reported with their data $z$-score against the null (the post-MASTER decoupled $C_\ell$ at $\ell\!=\!1$ is reported in Sec.~\ref{sec:dipole} under a different null model and is not included in this table; see Table~\ref{tab:headline_summary} footnote b). The N=500 simulation supersedes the v1.0.69 smoke
 result at N=25; the monopole-only null reproduces $99.3\%$ of the
@@ -3358,10 +3353,13 @@ and
 \textbf{Sample} & $N_{\rm spiral}$ & $\CW/(\CW+\CCW)$ & $|\Delta|$ (\%) & monopole-preserving $\sigma$ (p) & isotropic-$p\!=\!0.5$ $\sigma$ (p)\\
 \hline
 Catalog~C full & 3{,}201{,}160 & 0.49735 & 0.265 & $+4.31$ (0.001) & $+4.43$ (0.001) \\
-HC-spiral ($p_{\rm eq}\!>\!0.6$) & 949{,}584 & 0.49606 & 0.394 & $+0.62$ (0.243) & $+1.58$ (0.078) \\
+HC-broad-$0.6$\,\textsuperscript{a} & 949{,}584 & 0.49606 & 0.394 & $+0.62$ (0.243) & $+1.58$ (0.078) \\
 HC-strict ($p_{\rm eq}\!>\!0.8$) & 624{,}660 & 0.49602 & 0.398 & $+0.87$ (0.187) & $+1.07$ (0.153) \\
 \end{tabular}
 \end{ruledtabular}
+\begin{flushleft}
+\footnotesize $^a$~HC-broad-$0.6$: $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.6$ spiral-only cut, from \texttt{face\_on\_robustness\_results.json}; distinct from the stricter HC-spiral-$0.9$ cut ($p_{\rm eq}\!>\!0.9$, $N\!=\!471{,}049$) used in §IX.J for MC injection-recovery.
+\end{flushleft}
 \end{table*}
 
 \paragraph{Reconciliation with the headline $+0.43\sigmaunit$
@@ -3565,7 +3563,7 @@ $|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\artifact{pipelines/p2\_chirality/r42\
   \emph{center:} de-Vaucouleurs profile fraction \texttt{fracdev};
   \emph{right:} axis ratio $b/a$). Error bars are per-bin Poisson
   standard errors. The horizontal red line is the catalog-wide
-  CW fraction $0.4974\%$; the dashed black line is the
+  CW fraction $0.4974$ ($49.74\%$); the dashed black line is the
   parity-symmetric $50/50$. Per-axis maximum bin-to-bin spread
   (printed in each subplot title) is below $0.32\%$ for size and
   $b/a$ and reaches $1.41\%$ for fracdev, driven by the
@@ -3801,9 +3799,9 @@ their own pipelines and report the results.
 
 \paragraph{Headline finding: a quantifiable monopole-mask leakage channel.}
 The central scientific contribution of this work is a quantitative
-demonstration of a leakage channel that can mimic the
+demonstration of a leakage channel under the present DESI Legacy / ViT-Small pipeline that can produce raw pseudo-$C_\ell$ bandpower amplitudes of the same magnitude as the
 $\sim\!2$--$4\%$ chirality dipole signals reported in earlier
-SDSS-class samples (Shamir 2012, 2020, 2022): a small uniform
+SDSS-class samples (Shamir 2012, 2020, 2022; a matched-Ganalyzer-pipeline reanalysis on Shamir's exact footprint and selection would be required to quantify what fraction of any specific prior detection this leakage channel actually accounts for under his estimator): a small uniform
 classifier monopole couples to the patchy survey-mask geometry
 and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$; the
 full chain (un-monopole-subtracted CW-fraction map on the canonical
@@ -4227,7 +4225,7 @@ Sec.~\ref{sec:monopole_mask_null}).
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing
   the figures and tables of the present manuscript is pinned at the
-  immutable release tag \texttt{paper4-v1.0.87} (and successor
+  immutable release tag \texttt{paper4-v1.0.97} (and successor
   patch tags), which carries the PDF asset, the canonical-provenance
   JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
   webhook on the release page.
@@ -4313,8 +4311,8 @@ Astrophys.\ J.\ \textbf{907}, 123 (2021), arXiv:2011.00662.
 
 \bibitem{Iye:2026P6}
 M.~Iye and M.~Yagi,
-``Spin parity of spiral galaxies VI -- A search for dynamical memory in the spin distribution of galaxies in HSC WIDE Survey regions,''
-in preparation (2026), arXiv ID pending; cited per private communication / pre-publication notes shared with the present author.
+``Spin Parity of Spiral Galaxies VI -- A Search for Dynamical Memory in the Spin Distribution of Galaxies in HSC WIDE Survey Regions,''
+arXiv:2605.05570 (2026).
 
 \bibitem{Tadaki:2020}
 K.~Tadaki, M.~Iye, H.~Fukumoto \textit{et~al.},
