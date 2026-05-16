@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.89}
+\newcommand{\paperVersion}{v1.0.90}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -332,7 +332,7 @@ audit suites for a survey-scale chirality catalog. We use this
 catalog to perform a chirality dipole measurement with a Fisher-floor
 minimum detectable dipole of $|A_{\rm dipole}|\!\sim\!0.29\%$ at
 $3\sigmaunit$ (statistical) and an empirical injection-recovery
-sensitivity floor of $|A_{\rm dipole}|\!\gtrsim\!0.5\%$ at the same
+empirical 50\%-recovery-$3\sigma$ threshold at $|A_{\rm dipole}|\!\geq\!0.75\%$ ($P(\sigma\!>\!3)\!=\!0.55$; cf.\ $0.5\%$ which is a non-detection point with $P(\sigma\!>\!3)\!=\!0.15$) at the same
 significance level (systematic-inclusive, $50\%$-recovery threshold
 under per-pixel-shuffle nulls; the latter is the experiment's
 sensitivity, not a frequentist upper limit on the measured signal).
@@ -341,12 +341,17 @@ sub-percent sensitivity: the equivariant CW fraction is
 $0.4974 \pm 0.000279$ and the post-MASTER dipole significance is
 $-0.122\sigmaunit$ (canonical) / $0.43\sigmaunit$ (simple real-space,
 post-TTA cross-check), with the post-MASTER null adopted as the
-load-bearing result. This strongly disfavors Shamir's (2020,
+load-bearing result. This is inconsistent in amplitude with Shamir's (2020,
 2022)~\cite{Shamir:2020,Shamir:2022} claimed $\sim\!3\%$ asymmetry
-signal in the DESI Legacy Imaging Surveys footprint under the present
-pipeline by a factor of $\sim$6--12 in amplitude (depending on which
+signal in the DESI Legacy Imaging Surveys footprint, under the present
+pipeline, by a factor of $\sim$6--12 in amplitude (depending on which
 Shamir reported value 2--4\% is used as the comparator; central case
-$\sim 9$). We also demonstrate that uncorrected survey systematics
+$\sim 9$). We caution that the present pipeline differs from Shamir's
+in classifier (ViT with equivariant TTA vs deterministic Ganalyzer),
+spiral selection, and bias-mitigation stack; a matched-footprint
+reanalysis under Shamir's exact Ganalyzer pipeline and magnitude/redshift
+cuts would be required for a likelihood-level exclusion under his estimator,
+and we do not perform that reanalysis here. We also demonstrate that uncorrected survey systematics
 can couple a classifier bias of only $0.79\%$ through the non-uniform
 survey mask to a $+6.48\sigmaunit$ pre-MASTER raw pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) on the asymmetry map — fully removed by MASTER mode-coupling deconvolution
 to the null $-0.122\sigmaunit$ headline, and independently collapsed
@@ -1080,7 +1085,7 @@ single-model pipeline).
 
 We note that the acceptance thresholds for individual bias tests
 (e.g., T8: $50\% \pm 10\%$; T6: $<\!10\%$ hemispheric difference)
-are generous relative to the catalog's $0.29\%$ statistical Fisher / $>0.5\%$ empirical sensitivity to
+are generous relative to the catalog's $0.29\%$ statistical Fisher / $\geq 0.75\%$ empirical $50\%$-recovery-$3\sigma$ sensitivity to
 parity violation. Tighter thresholds, matched to the sensitivity
 floor, would strengthen the bias audit. Our current thresholds serve
 as necessary but not sufficient conditions for bias-free
@@ -1439,7 +1444,7 @@ A non-parametric bootstrap of the Catalog~A asymmetry $A \equiv (\CW-\CCW)/(\CW+
 While formally significant, this $9.5\sigmaunit$ residual in Catalog~C
 is a factor of~3 smaller than the raw Catalog~A deviation and, at
 $0.26\%$ amplitude, is well below the minimum detectable
-\emph{dipole} of $0.29\%$ statistical Fisher floor / $\gtrsim 0.5\%$ empirical (Sec.~\ref{sec:sensitivity}).
+\emph{dipole} of $0.29\%$ statistical Fisher floor / $\geq 0.75\%$ empirical $50\%$-recovery-$3\sigma$ (Sec.~\ref{sec:sensitivity}).
 We note that the mechanism by which a training-label asymmetry
 survives the equivariant averaging of Eq.~(\ref{eq:tta}) is not
 fully understood. Three candidate mechanisms are: (1)~training-set
@@ -1701,7 +1706,7 @@ f_{\rm sky}/N_{\rm tot} = 7.287 \times 10^{-7}$~sr ---a correction
 ratio of $N_{\rm tot}/N_{\rm spiral} = 2.65$. The corrected
 lowest-$\ell$ pseudo-$C_\ell$ bin SNR (relative to the
 1000-realization MC null mean and standard deviation on the asymmetry map) is $+6.48\sigma$,
-and the MASTER-decoupled lowest-bin SNR is $6.08\sigma$ (pseudo-$C_\ell$ stage, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
+and the NaMaster-coupled lowest-bin SNR is $+6.097\sigma$ (pseudo-$C_\ell$ stage at $\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$, before full mode-coupling inversion; see Sec.~\ref{sec:dipole} where the canonical MASTER-primary result is $-0.12\sigmaunit$). The corrected total $\chi^2$/dof is $243.8/38$ (pseudo) and $160.5/38 = 4.22$ (decoupled); the empirical p-value of the lowest-$\ell$ bin against 1000 label-shuffle nulls is $0.0$ (all 1000 nulls fall below the data). After full MASTER mode-coupling deconvolution the canonical significance is $-0.12\sigmaunit$, fully consistent with null. The over-quoted significance in the buggy normalization (which would have given $\chi^2/{\rm dof}\sim 34$ and $\sim\!16\sigma$ in the lowest bin) was an artifact of the wrong shot-noise denominator, not a physical signal.}
 After deconvolution, the lowest bandpower (centered at
 $\ell_{\rm eff} = 4$, spanning $\ell \in [2,6]$ by the production
 binning, used here as the dipole estimator following the
@@ -1830,7 +1835,7 @@ recommendation of external peer review.
   dipoles. Verification artifact:
   \artifact{pipelines/h200\_results/wave11c\_nspiral\_recompute\_2026-05-01/results.json}.
   The no-dipole-at-$\ell=1$ verdict at the catalog's empirical
-  $\gtrsim 0.5\%$ amplitude floor (Sec.~\ref{sec:sensitivity}) is
+  $\geq 0.75\%$ empirical $50\%$-recovery-$3\sigma$ threshold (Sec.~\ref{sec:sensitivity}) is
   carried by the full-catalog $0.43\sigmaunit$ real-space dipole and the
   strict-superset $-0.12\sigmaunit$ MASTER result which both bypass
   the canonical-mask leakage channel. The spatially uniform monopole
@@ -1858,9 +1863,7 @@ depth/PSF/morphology coupling beyond the per-pixel multinomial.
 \caption{Monopole+mask leakage null (canonical mask, NSIDE$\,=\,$64,
 $f_{\rm sky}\!=\!0.494$, seed$\,=\,$42; $N\!=\!500$ binomial-monopole
 realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
-spiral-count map). Pre-MASTER pseudo-$C_\ell$ and post-MASTER
-decoupled $C_\ell$ at $\ell\!=\!1$ both reported with their data $z$-score
-against the null. The N=500 simulation supersedes the v1.0.69 smoke
+spiral-count map). Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ and hemisphere max$|A|$ reported with their data $z$-score against the null (the post-MASTER decoupled $C_\ell$ at $\ell\!=\!1$ is reported in Sec.~\ref{sec:dipole} under a different null model and is not included in this table; see Table~\ref{tab:headline_summary} footnote b). The N=500 simulation supersedes the v1.0.69 smoke
 result at N=25; the monopole-only null reproduces $99.3\%$ of the
 observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power (residual
 $+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
@@ -2396,7 +2399,7 @@ large-scale systematic bias.
   and affected boundary objects (whose spiral-vs-non-spiral
   $\NS{}$/edge-on classification was updated) redistribute uniformly
   across the seven regions. Verification artifact:
-  \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}\footnote{The sky-region-balance fractions in this section trace to the global CW-fraction artifact at canonical $N_{\rm spiral}\!=\!3{,}201{,}160$; the per-region breakdown is reported in the table cells directly above. A dedicated per-region JSON is queued for v1.0.89 as a redundant cross-check.}.
+  \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}\footnote{The cited artifact reports only the global CW-fraction at canonical $N_{\rm spiral}\!=\!3{,}201{,}160$ and does not independently verify the per-region numerators / denominators tabulated above; those per-region values are manuscript-only at this version freeze. A dedicated per-region JSON is queued for the next post-submission revision as a redundant on-disk cross-check.}.
   All regions fall within $0.5\%$ of exact parity.
   \label{tab:sky_balance}}
 \begin{ruledtabular}
@@ -2754,8 +2757,8 @@ canonical $N_{\rm spiral}\!=\!3{,}201{,}160$ subset (companion
 artifact \artifact{pipelines/p2\_chirality/outputs/dipole/summary.json}, pre-TTA pipeline run),
 collapsing to $0.43\sigmaunit$ in Catalog~C after equivariant
 post-processing. (b) In the spherical-harmonic domain: the
-\emph{pre-MASTER} pseudo-$C_\ell$ at $\ell\!=\!1$ inflates to
-$+6.48\sigmaunit$ (raw) or $+6.08\sigmaunit$ (decoupled) in the lowest bandpower under
+\emph{pre-MASTER} pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map) inflates to
+$+6.48\sigmaunit$ (raw) or $+6.097\sigmaunit$ (NaMaster-coupled) under
 mode-coupling by the non-uniform mask, before MASTER deconvolution
 returns the canonical $-0.122\sigmaunit$ null. These two collapses
 are driven by different mechanisms — (a) is equivariant TTA averaging
@@ -2828,8 +2831,7 @@ Companion artifact:
   for Catalog~A (raw, \emph{left}) and Catalog~C (equivariant,
   \emph{right}), both at $\nside = 64$ in Mollweide projection.  The
   raw map exhibits a $2.31\sigmaunit$ real-space dipole (with
-  pre-MASTER pseudo-$C_\ell$ at $\ell\!=\!1$ inflated to
-  lowest-bandpower $+6.48\sigmaunit$) aligned with the DESI Legacy survey footprint,
+  pre-MASTER pseudo-$C_\ell$ lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$) inflated to $+6.48\sigmaunit$) aligned with the DESI Legacy survey footprint,
   produced by a classifier CW bias of only $0.79\%$ modulated by
   non-uniform sky coverage.
   Equivariant averaging (Eq.~\ref{eq:tta}) eliminates this
@@ -3604,12 +3606,11 @@ observables (their sign changes under parity), while the dipole
 parity-\emph{even} (sign preserved). A nonzero chirality dipole
 therefore strictly tests \emph{isotropy} (the existence of a
 preferred polar-vector direction on the sky), not parity violation
-per se; the parity-violation tests in our data are the monopole
+per se. The signed parity-odd diagnostics in our data are the monopole
 $\langle p_{\rm CW}\rangle\!=\!0.4974$ ($9.5\sigmaunit$ from
 $50/50$, attributed to citizen-science label systematics propagating
 through training and reported transparently in
-Sec.~\ref{sec:cw_frac}) and the even-$\ell$ pseudo-$C_\ell$
-bandpowers reported throughout this work. We retain the language
+Sec.~\ref{sec:cw_frac}) and the signed real-space asymmetry map $A(\hat n)\!=\!2f_{\rm CW}(\hat n)\!-\!1$; the even-$\ell$ pseudo-$C_\ell\!=\!|a_{\ell m}|^2$ bandpowers reported throughout this work are anisotropy and systematics diagnostics rather than direct parity-odd tests (the modulus squared discards the sign that the parity transform flips). We retain the language
 ``parity-violating chirality dipole'' for continuity with the
 Shamir literature whose claim class we test, but the more
 precise statement is that we test \emph{anisotropy of the
@@ -3703,8 +3704,11 @@ under different symmetries (and they are NOT trivially mapped to
 the same EFT amplitude): the 4PCF is an isotropic parity-odd
 scalar correlator whose mapping to $g_*$ is derived in
 \cite{Cabass:2023}; a chirality dipole is by symmetry an
-isotropy-breaking polar vector $\langle\vec L\!\cdot\!\hat n\rangle$
-(see Sec.~\ref{sec:dipole_symmetry_caveat}) which would require a
+isotropy-breaking pseudoscalar projection $\langle\vec L\!\cdot\!\hat n\rangle$ of an underlying axial-vector
+spin direction $\vec L$ onto the line-of-sight $\hat n$
+(see Sec.~\ref{sec:dipole_symmetry_caveat}; the dipole vector itself is
+an axial vector, not a polar vector — for $\vec L\!\cdot\!\hat n$ to yield a
+pseudo-scalar the spin direction must be axial) which would require a
 background vector or tensor source rather than a scalar EFT
 operator. No explicit mapping from the morphology-dipole bound to
 the scalar EFT amplitude $g_*$ has been derived here, so we do not
@@ -3957,7 +3961,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 \item \textbf{The largest survey-scale chirality measurement to date.}
   With $3{,}201{,}160$ equivariant spiral classifications
   (1{,}592{,}107~\CW{} + 1{,}609{,}053~\CCW; 5{,}273{,}371 \NS{}/edge-on),
-  we achieve a conservative empirical minimum detectable dipole of
+  we achieve a conservative empirical $50\%$-recovery-$3\sigma$ threshold of
   $\sim\!0.5\%$ at $3\sigmaunit$ (the injection-recovery
   systematic-inclusive floor, Sec.~\ref{sec:sensitivity}); the
   statistical-only Poisson floor on the CW-fraction half-modulation
@@ -4025,8 +4029,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   null dipole result rules it out at the empirical level
   regardless of the monopole's origin.
 
-\item \textbf{Shamir's $\sim\!3\%$ asymmetry is strongly
-  disfavored within the DESI Legacy footprint under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample
+\item \textbf{Shamir's $\sim\!3\%$ asymmetry is inconsistent in amplitude with the present DESI Legacy result under the present pipeline.} Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim\!6$--$12$ smaller (central $\sim\!9$, depending on which Shamir reported value $2$--$4\%$ is used as the comparator)---with an equivariant spiral subsample
   ($3{,}201{,}160$ CW~$+$~CCW; canonical, see
   Sec.~\ref{sec:stats})
   that is ${\sim}2.5\times$ larger than the Shamir~2022 DESI Legacy
