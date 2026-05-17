@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-05-17 PDT (tick 79 — R3 cross-vendor reviews on P1A/P1B/P2/P3 while Houston does P4 external review; P1A v1A.0.24 + P1B v1B.0.8 + P3 v3.1.42 shipped, P2 deferred) -->
+<!-- last_updated: 2026-05-17 PDT (tick 80 — R4 cascaded verification rounds on P1A/P1B/P3 caught propagation tail per AGENT_RULES §4.4.1; v1A.0.25 + v1B.0.9 + v3.1.43 shipped) -->
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 
