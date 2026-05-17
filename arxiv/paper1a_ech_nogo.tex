@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.24}
+\newcommand{\paperVersion}{v1A.0.25}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -89,7 +89,7 @@ dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
 and is closed by the 13 logically-independent barriers of Sec.~\ref{sec:barriers} (14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency theorem).
 A structural incompatibility (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}}\sim e^{30}$ times the observable horizon, i.e.\ a regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); ECH is therefore not internally consistent as both a
+$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); ECH is therefore not internally consistent as both a
 dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
 but bounce-class and GR$+$ALP-class observables that the ECH closure does not
@@ -226,7 +226,7 @@ parity-violating channels (ALP birefringence, primordial GWs).
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
 mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
-$\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\!\gtrsim\!60$ inflationary $e$-folds at SPHEREx-relevant comoving wavenumbers, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc is pushed to bounce-era comoving scales $k_{\rm bounce} = k_{\rm SPHEREx}\,e^{N_{\rm tot}}$ that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
+$\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\!\gtrsim\!60$ inflationary $e$-folds at SPHEREx-relevant scales, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
 these are independent observational programs.
 
 \item \textit{Survival of mechanism-independent tests}: Despite ECH structural
@@ -615,8 +615,7 @@ factors (see Eq.~\ref{eq:onshell_rho}), and the Hehl-Datta parity-character
 is reaffirmed as parity-even (the prior deferral note was a transcription
 error). Item (c)---the Route~2 one-loop suppression ratio
 $\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm obs}$ dimensionless-form
-re-derivation---remains \textbf{on-record deferred} pending a dedicated
-photon-Chern-Simons coupling derivation; the channel-level amplitude
+re-derivation---was \textbf{closed in v1A.0.24 / v1A.0.25}: the dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} above (Eq.~\ref{eq:route2_ratio}, with the $H_0\to H_0/M_{\rm Pl}$ factor restored in the numerator), no longer deferred to a dedicated photon-Chern-Simons follow-up; the channel-level amplitude
 budget that closes Route~2 (Planck suppression by $H_0/\MPl \sim 10^{-60}$
 in the dimensionful form, or the equivalent dimensionless ratio after
 the missing factor of $1/\MPl$ is restored) is unaffected at the
@@ -1448,7 +1447,7 @@ bounce/ALP landscape survive ECH structural closure and are testable:
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
-\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/0.03 \approx 2.4\sigma$, not $9\sigma$. The two numbers correspond to distinct null hypotheses (zero vs.\ Planck/ACT~DR6-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$, NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current Planck/ACT~DR6 central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ Planck/ACT~DR6-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
 \end{enumerate}
 Neither is a distinctive ECH prediction; both are shared with other UV completions.
 

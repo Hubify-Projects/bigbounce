@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.8}
+\newcommand{\paperVersion}{v1B.0.9}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -406,7 +406,7 @@ are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
 A one-pass recomputation of $\chi^2_{\rm eff}$, AIC, BIC, and any
 evidence value from the final frozen-thinned chain via a single
-auditable script is on-record-deferred to v1B.0.8.
+auditable script is on-record-deferred to v1B.0.10 (the v1B.0.8 marker was carried over from the prior version-numbering scheme; v1B.0.9 closes R4 propagation-tail items but the model-comparison recompute requires a fresh MCMC pull and is queued for v1B.0.10+).
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -510,7 +510,7 @@ DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current slow-mode
 Paper & Version & Readiness & Key blocker \\
 \hline
 P1(a) & v1A.0.23 & 74\% & Route 2 dim.\ re-derivation (deferred v1A.0.24) \\
-P1(b) & v1B.0.7 & 66\% & Model-comparison recompute (deferred v1B.0.8) \\
+P1(b) & v1B.0.9 & 66\% & Model-comparison recompute (deferred v1B.0.10) \\
 P2    & v1.7.30 & 82\% & Appendix A convention + unified Fisher (v1.7.31) \\
 P3    & v3.1.41 & 85\% & 378k dedup + Fisher + Savage-Dickey (v3.1.42) \\
 P4    & v1.0.66 & 95\% & Houston sign-off only (8-consec Gemini endorsements) \\
@@ -555,9 +555,8 @@ $w_0 w_a$ extension would therefore be a category error.
 row~4) is running on a dedicated MPI pod (16 chains, OMP threads tuned to
 suppress BLAS oversubscription, GetDist-built posterior covmat from a
 preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). As of
-2026-05-14 22:53~UTC the chain has accumulated $59{,}832$ accepted
-samples across the 16 chains and reports $\hat R - 1 = 0.01945$
-(slow-mode-dominated; see Table~\ref{tab:mcmc_inventory} caption); we
+2026-05-17 01:29~UTC the chain has accumulated $101{,}979$ accepted
+samples across the 16 chains and reports $\hat R - 1 = 0.01176$ (within ${\sim}0.002$ of the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target; see Table~\ref{tab:mcmc_inventory} caption); we
 deliberately do not commit to a specific calendar date for convergence
 to $\hat R - 1 < 10^{-2}$ in this subsection. Until that chain
 converges, this program has \emph{no $w_0 w_a$ posterior at all}, neither
@@ -671,9 +670,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors are estimated via Savage-Dickey from MCMC posteriors, biased for
-the correlated $\Delta\Neff$--$H_0$ posterior (Sec.~\ref{sec:cosmo_fits});
-dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest would be needed for robust evidence and is queued for v1B.0.10+.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
@@ -700,7 +697,7 @@ $\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & 
 $\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
 $H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
 $H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Deferred & Removed v1B.0.7; recompute v1B.0.8 \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Deferred & Removed v1B.0.7; recompute v1B.0.10 \\
 $\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; bias table v1B.0.8 \\
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$         & MCMC      & Verified & ALP MCMC \\
 Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
