@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.25}
+\newcommand{\paperVersion}{v1A.0.26}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -580,7 +580,7 @@ deferred to a follow-up theory paper. The robustness check provided by the
 14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
 
-\paragraph{Real cross-vendor adversarial-review deferrals (v1A.0.21; status updated v1A.0.24 — Route 2 dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} above, no longer deferred).}
+\paragraph{Real cross-vendor adversarial-review deferrals (v1A.0.21; status updated v1A.0.24 — Route 2 dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} below, no longer deferred).}
 A multi-vendor adversarial-review round (GPT-5.5 / Gemini-2.5-Pro /
 Grok-4-fast / Perplexity Sonar Pro / DeepSeek-V3.2, all queried via the
 OpenRouter unified API on 2026-05-14) surfaced three substantive
@@ -615,7 +615,7 @@ factors (see Eq.~\ref{eq:onshell_rho}), and the Hehl-Datta parity-character
 is reaffirmed as parity-even (the prior deferral note was a transcription
 error). Item (c)---the Route~2 one-loop suppression ratio
 $\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm obs}$ dimensionless-form
-re-derivation---was \textbf{closed in v1A.0.24 / v1A.0.25}: the dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} above (Eq.~\ref{eq:route2_ratio}, with the $H_0\to H_0/M_{\rm Pl}$ factor restored in the numerator), no longer deferred to a dedicated photon-Chern-Simons follow-up; the channel-level amplitude
+re-derivation---was \textbf{closed in v1A.0.24 / v1A.0.25}: the dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} below (Eq.~\ref{eq:route2_ratio}, with the $H_0\to H_0/M_{\rm Pl}$ factor restored in the numerator), no longer deferred to a dedicated photon-Chern-Simons follow-up; the channel-level amplitude
 budget that closes Route~2 (Planck suppression by $H_0/\MPl \sim 10^{-60}$
 in the dimensionful form, or the equivalent dimensionless ratio after
 the missing factor of $1/\MPl$ is restored) is unaffected at the
@@ -794,7 +794,7 @@ $m_\theta \sim H_0$ to also produce $\rho_\Lambda$, and this tuning
 is the original CC fine-tuning relabelled. For any $m_\theta$ in the
 natural ALP range ($m_a \in [10^{-22}, 10^{-15}]\,$eV) the produced
 $\rho_\theta \propto m_\theta^2$ \emph{overshoots} $\rho_\Lambda$
-across the entire natural range (because $m_\theta=H_0\approx 1.5\times 10^{-33}$\,eV is the only point where $\rho_\theta=\rho_\Lambda$, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV): at $m_\theta \sim 10^{-22}$\,eV the
+across the entire natural range (because $m_\theta=H_0\approx 1.5\times 10^{-33}$\,eV is the only point where $\rho_\theta=\rho_\Lambda$, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV); this overshoot conclusion is conditional on the one-loop estimate $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$ being rigidly bounded by the photon-Chern-Simons matching ---  if $\alpha/M$ is instead treated as a free phenomenological parameter, both $\beta_{\rm obs}$ and $\rho_\Lambda$ can be matched for arbitrary $m_\theta$ by scaling $\alpha/M \propto m_\theta$ (e.g.,\ requiring $\alpha/M \sim 10^{-10}\,\text{GeV}^{-1}$ at $m_\theta \sim 10^{-22}\,\text{eV}$), so the rigidity of the no-go is tied to the one-loop matching assumption rather than to ALP-mass kinematics alone: at $m_\theta \sim 10^{-22}$\,eV the
 overshoot is ${\sim}22$ orders of magnitude $(m_\theta/H_0)^2 \sim
 (10^{11})^2 \sim 10^{22}$, and at $m_\theta \sim 10^{-15}$\,eV
 the overshoot is ${\sim}36$ orders of magnitude $(m_\theta/H_0)^2 \sim (10^{18})^2 \sim 10^{36}$; the
@@ -1390,7 +1390,7 @@ Sec.~\ref{sec:fourroute}, would require $N_{\rm tot}\approx 92$ post-bounce
 $e$-folds; the matter-bounce $\fnl=-35/8$ would be \emph{definitively}
 erased by $N_{\rm tot}\gtrsim 60$, since the SPHEREx accessible
 wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed deep inside the
-inflationary subhorizon ($k_{\rm bounce}\sim k\,e^{N_{\rm tot}}\sim
+inflationary subhorizon (bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$; comoving wavenumbers $k$ are constant by definition. The absolute scaling $k\,e^{N_{\rm tot}}\sim
 e^{30}\times k_{\rm SPHEREx}$) and the surviving bispectrum signal
 becomes purely vacuum-inflationary rather than matter-bounce
 contraction-mode. This tension is presented here as a \emph{robustness

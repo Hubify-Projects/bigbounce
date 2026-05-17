@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.9}
+\newcommand{\paperVersion}{v1B.0.10}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -78,7 +78,7 @@ $67.79\pm 1.09$ Planck+BAO+SN, both in $\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
 CMB polarization map ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
-$0.032^\circ$, SNR$=20.32$). The primary sky detection significance is the
+$0.032^\circ$, SNR$=20.32$). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the foreground-cleaned Commander map removes the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements). The reported SNR$=20.32$ is therefore an upper bound on the noise-only recovery, not a sky-detection figure of merit. The primary sky detection significance is the
 published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};
 the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
@@ -466,7 +466,7 @@ $3.6\sigma$~\cite{Eskilt2022b} is the headline.
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (3 configurations, 9{,}720 total accepted samples) yields:
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ ($C_{a\gamma}=8$ fixed),
-consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 configurations described in Sec.~\ref{sec:mcmc_alp}; $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
 within $1\sigma$. The combined coupling-displacement product entering the
 birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
