@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.7}
+\newcommand{\paperVersion}{v1B.0.8}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -256,8 +256,7 @@ Chains & 6 & 6 \\
 Total samples & 176{,}840 & 132{,}949 \\
 Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Sourced from
 \texttt{convergence\_latest.csv}: worst row is $n_s$ in the full-tension
-combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 14 sampled parameters
-across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$.
+combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 14 sampled parameters (7 cosmological + 7 Planck likelihood nuisance) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 14-parameter total sampled in the chains.
 \emph{Not} the stale mid-burn-in diagnostic
 \texttt{convergence\_gpu\_20260305\_stale.csv} ($\hat{R}-1\in[0.23,0.86]$),
 preserved as a transparency artifact only.} & 0.001 & 0.003 \\
@@ -520,7 +519,7 @@ P4    & v1.0.66 & 95\% & Houston sign-off only (8-consec Gemini endorsements) \\
 \end{table*}
 
 \begin{table}[tb]
-\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-14 22:53~UTC, at $59{,}832$ accepted samples with $\hat{R}-1 = 0.01945$ (last flushed 22:53~UTC; \emph{slow-mode-dominated, not stalled} --- the chain has progressed from the v1B.0.6 snapshot of $53{,}736$/$0.01775$ at 15:43~UTC by ${\sim}6{,}000$ samples). The slight $\hat{R}-1$ uptick from $0.01775$ to $0.01945$ is expected behavior for a slow-mixing chain exploring newly opened posterior volume and is not a divergence. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once it reaches the standard publication target $\hat{R}-1 < 10^{-2}$.}
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-17 01:29~UTC, at $101{,}979$ accepted samples with $\hat{R}-1 = 0.01176$ (last flushed 01:29~UTC; \emph{near the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target} --- the chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}42{,}000$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.01176$). The $\dagger$ entry above marks values updated v1B.0.8 from the live chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once it reaches the standard publication target $\hat{R}-1 < 10^{-2}$.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
@@ -528,7 +527,7 @@ Dataset combination & Samples & $\hat{R}-1$ & Status \\
 Full-tension (P+B+SN+H0+S8) & 176{,}840 & 0.001 & Frozen \\
 Planck+BAO+SN & 132{,}949 & 0.003 & Frozen \\
 Planck-only & 114{,}992 & $\sim$0.05 & Ongoing \\
-DESI DR2 w0wa (iter2) & 59{,}832 & 0.0195 & Slow-mode \\
+DESI DR2 w0wa (iter2) & 101{,}979\,\textsuperscript{$\dagger$} & 0.0118\,\textsuperscript{$\dagger$} & Near target \\
 ALP-MCMC ($\beta$ fitting) & 9{,}720 & $<0.01$ & Frozen \\
 \end{tabular}
 \end{ruledtabular}
@@ -596,9 +595,7 @@ dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 $\Delta\Neff$ extension does not resolve the Hubble tension. Current data
 neither require nor exclude a spin-torsion $\Delta\Neff$ contribution;
 CMB-S4 will provide the first precision test ($\sigma(\Neff)\sim 0.03$).
-The Savage-Dickey indicative figure $\ln B = +4.8$ (full-tension) is biased
-at $r=-0.89$ and is treated as indicative only; the AIC/BIC differences
-($\Delta$AIC$=-5.9$, $\Delta$BIC$=-0.7$) are the primary cross-references.
+The Savage-Dickey/$\Delta$AIC/$\Delta$BIC model-comparison block from earlier versions was REMOVED in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}, \emph{Model-comparison statistics} paragraph) because the numbers were not reproducible from a single self-consistent readout of the final frozen-thinned chain; we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons.
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 the Planck Commander map confirms that the deconvolution pipeline recovers
@@ -617,7 +614,7 @@ product). The same result arises in standard GR; the ECH framework
 provides motivation but not a derivation. LiteBIRD will settle this at
 $\sim 9\sigma$ in the early 2030s.
 
-\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-14 22:53~UTC)}: the chain has accumulated $59{,}832$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.01945$. The chain has progressed from the v1B.0.6 snapshot of $53{,}736$/$0.01775$ at 15:43~UTC by $\sim 6{,}000$ samples; the slight $\hat R - 1$ uptick is expected behavior for a slow-mixing chain exploring newly opened posterior volume and is not a divergence. The 16-rank mpirun process remains alive on the pod, and the sampler is slow-mode-dominated rather than stalled or crashed. We deliberately do not commit to a calendar-date convergence ETA in this manuscript. When converged ($\hat R - 1 < 10^{-2}$), GetDist posteriors on $w_0 w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}; in the present manuscript, all DESI DR2 $w_0 w_a$ conclusions in P1(a) remain \emph{not tested} until convergence is reached.
+\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-17 01:29~UTC)}: the chain has accumulated $101{,}979$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.01176$, within ${\sim}0.002$ of the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target. The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}42{,}000$ samples; $\hat R - 1$ has dropped from $0.01945$ to $0.01176$, a $\sim\!40\%$ reduction consistent with continued mixing. The 16-rank mpirun process remains alive on the pod, and the sampler is slow-mode-dominated rather than stalled or crashed. We deliberately do not commit to a calendar-date convergence ETA in this manuscript. When converged ($\hat R - 1 < 10^{-2}$), GetDist posteriors on $w_0 w_a$ will be incorporated into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}; in the present manuscript, all DESI DR2 $w_0 w_a$ conclusions in P1(a) remain \emph{not tested} until convergence is reached.
 
 \subsection*{Data and Code Availability}
 
