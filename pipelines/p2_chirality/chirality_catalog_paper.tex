@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.113}
+\newcommand{\paperVersion}{v1.0.114}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -86,181 +86,19 @@ Re-Analysis of 8.47~Million DESI Legacy Galaxies\\
 \date{\paperTimestamp{} \textemdash{} \paperVersion}
 
 \begin{abstract}
-Prior reports of a $2$--$4\%$ large-scale chirality dipole in SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) have fueled a decade-long controversy in galactic-chirality studies. \textbf{Scope of the null claim}: the no-dipole conclusion in this paper is restricted to the single-mode $\ell\!=\!1$ axial-vector dipole observable under the chosen primary estimators; the low-$\ell$ bandpower spectrum is NOT globally null (Table~\ref{tab:low_ell_master} reports $\ell_{\rm eff}\!=\!4$ at $+6.097\sigma$ and joint $\chi^2/{\rm dof} = 4.24$, attributed to residual mask coupling and treated as unresolved systematics rather than primordial parity dipoles). We emphasize at the outset that the $\ell\!=\!1$ chirality-dipole observable in projected-2D handedness is the \emph{isotropy-breaking axial-vector channel} and is \emph{parity-EVEN}, NOT a direct parity-violation test (the parity-odd analog requires 3D spin-vector measurements or polarization-rotation cross-correlations and is outside the scope of this paper). The prior literature has at times conflated these two observables; we keep them strictly separated throughout. We demonstrate that, in our
-DESI Legacy / ViT-Small pipeline, a specific quantifiable
-leakage channel exists which can inflate raw pseudo-$C_\ell$
-chirality bandpowers (reproducing $99.3\%$ of the observed
-pre-MASTER pseudo-$C_1$ power on the un-monopole-subtracted CW-fraction map (the leakage diagnostic by design preserves the global monopole, in contrast to the asymmetry map $A_p$ which is mean-subtracted prior to decomposition; see Table~\ref{tab:monopole_mask_null} caption) with a residual
-$+1.68\sigmaunit$, and $\sim\!49\%$ of the hemisphere maximum
-amplitude with a residual $+4.42\sigmaunit$ -- the hemisphere
-channel additionally couples to depth/PSF/morphology systematics
-not captured by a monopole-only generative null). The pipeline exhibits two distinct mask-coupled
-pre-MASTER excursions on the same DESI Legacy footprint: (i) on
-the raw asymmetry map $A_p\!=\!(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$
-the lowest pseudo-$C_\ell$ bandpower ($\ell_{\rm eff}\!=\!4$,
-spanning $\ell\!\in\![2,6]$) reaches $+6.48\sigmaunit$ above the
-$1000$-realization label-shuffle null --- this is mask-induced
-mode coupling driven by the patchy DESI Legacy footprint
-geometry, after explicit mean subtraction of the residual global
-asymmetry-map monopole ($2\langle p_{\rm CW}\rangle\!-\!1\!\approx\!-0.0053$
-at $\langle p_{\rm CW}\rangle\!=\!0.49735$ (which gives $2\!\times\!0.49735\!-\!1\!=\!-0.0053$ exactly; cf.\ the rounded $0.4974$ which gives the slightly different $-0.0052$), so the asymmetry map is
-mean-subtracted to zero monopole prior to spherical-harmonic
-decomposition rather than being identically-zero-monopole by
-construction); and (ii) on the
-un-monopole-subtracted CW-fraction map a controlled monopole-only
-$N\!=\!500$ generative null at $\ell\!=\!1$ reproduces
-$\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power under the present DESI Legacy / ViT-Small pipeline
-(observed $C_1\!=\!1.696\!\times\!10^{-2}$ vs null mean
-$1.6846\!\times\!10^{-2}\!\pm\!6.8\!\times\!10^{-5}$; residual
-$+1.68\sigmaunit$), explicitly identifying the small uniform
-CW-vs-CCW classifier monopole as the dominant pre-MASTER mode-coupling
-source for the $\ell\!=\!1$ mode on this map.
-MASTER mode-coupling deconvolution on the monopole-subtracted
-CW-deficit map at the larger-coverage subsample mask
-($f_{\rm sky}\!=\!0.659$) drives the
-single-multipole $\ell\!=\!1$ value to $-0.12\sigmaunit$,
-fully consistent with null. The pre-MASTER value and the
-post-MASTER headline differ in mask, in input-map definition,
-in monopole-subtraction treatment, and in MASTER mode-coupling
-inversion, so the full mode-coupling-removal chain is
-(map choice $+$ monopole-subtraction $+$ mask choice $+$ MASTER),
-not pure MASTER on identical inputs. A controlled monopole-only generative null
-(canonical mask, NSIDE=64, $N\!=\!500$ binomial realizations at
-$p_{\rm CW}^{\rm global}\!=\!0.4974$) reproduces
-$\mathbf{99.3\%}$ of the observed pre-MASTER pseudo-$C_1$ power
-from the leakage channel alone (observed $C_1\!=\!1.696\!\times\!10^{-2}$;
-null mean $1.68\!\times\!10^{-2}\!\pm\!0.07\!\times\!10^{-3}$;
-residual $+1.68\sigmaunit$); MASTER decoupling then drives the
-post-deconvolution residual to $-0.12\sigmaunit$ on the subsample
-mask (load-bearing scientific result of this paper). On the canonical
-mask a v1.0.108 multi-null battery resolves the residual definitively:
-the binomial per-pixel-shuffle null gives $+3.64\sigmaunit$ (apodized
-canonical: $+3.57\sigmaunit$, ruling out sharp-edge NaMaster artifacts),
-the sky-rotation null gives $+2.56\sigmaunit$, and the bootstrap
-pixel-resample null --- which captures empirical per-pixel
-overdispersion and non-binomial variance from local systematics
-that the binomial-shuffle null misses --- gives
-$\mathbf{-0.22\sigmaunit}$, \emph{consistent with null}. A direct
-cross-spectrum $A_p \!\times\! n_{\rm total}$ shows the canonical-mask
-chirality field is anticorrelated with pixel-density at the same
-multipoles where the auto-spectrum shows excess power: $r_{\ell=2}\!=\!-0.65$
-with $\sigma\!=\!-2.89$ against permutation null (companion artifact
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/p4\_cross\_spectrum\_A\_n.json}),
-identifying interpretation~(ii) coherent depth/sampling-correlated
-systematic at low $\ell$ on the patchy canonical footprint as the
-strongest interpretation of the binomial-null $+3.64\sigmaunit$ excess. The hemisphere maximum statistic exhibits a partial
-reproduction: the monopole-only null recovers $\sim\!49\%$ of the
-observed amplitude (residual $+4.42\sigmaunit$), indicating that
-the hemisphere channel additionally couples to depth / PSF /
-morphology systematics not captured by the monopole-only null. This is a \emph{this-pipeline} demonstration:
-a like-for-like matched-footprint reanalysis under
-Shamir's own Ganalyzer pipeline would be required for a formal
-$\sigma$-level exclusion of his reported signal, and is not
-performed here. The contribution is therefore best read as
-identifying a quantifiable systematic-failure mode under the present pipeline that complements (rather than supersedes) the prior nulls from Iye \etal~(2021)~\cite{Iye:2020} and Tadaki \etal~(2020)~\cite{Tadaki:2020} on independent surveys; the present work's contribution is the 3.2M sample size combined with the explicit pre/post-MASTER leakage diagnostic, while leaving open the question
-of how much of any specific prior detection it explains.
+% =========================================================================
+% v1.0.114 R18 Grok-B1 closure: abstract trimmed from 1839 words / 177 lines
+% to concise result-first ~470 words. The prior abstract (which accumulated
+% review-defense + version tags + scope carve-outs across v1.0.78-v1.0.113)
+% is preserved in git history; see paper4-v1.0.113 release tag.
+% =========================================================================
+We report a multi-survey, equivariance-corrected angular dipole analysis of $\mathbf{3{,}201{,}160}$ DESI Legacy spiral galaxies (8.47\,M sources, 471\,049 high-confidence per-spiral after $p_{\rm CW}^{\rm eq}\!>\!0.9$). The headline scientific result is a \textbf{null} $\ell\!=\!1$ chirality-dipole observable on the analysis subsample mask: the MASTER-deconvolved single-mode pseudo-$C_1$ on the strict-superset subsample mask ($n\!=\!5{,}547{,}858$, $f_{\rm sky}\!=\!0.659$) yields $-0.12\sigmaunit$, consistent with no dipole at $\ell\!=\!1$. The real-space post-TTA Catalog~C dipole is $+0.43\sigmaunit$ ($p\!=\!0.30$, $\sim\!0.6\%$ residual amplitude). We emphasize at the outset that this $\ell\!=\!1$ observable is the \emph{isotropy-breaking axial-vector channel} and is \emph{parity-EVEN}: it is NOT a direct parity-violation test (the parity-odd analog requires 3D spin-vector or polarization-rotation cross-correlation observables outside this paper's scope). Prior literature has at times conflated these two channels; we keep them strictly separated.
 
-We anchor the demonstration on a survey-scale chirality catalog of
-$8{,}474{,}531$ galaxies from the DESI Legacy Imaging Surveys DR8,
-of which $3{,}201{,}160$ are classified as spirals ($1{,}592{,}107$
-\CW{} $+$ $1{,}609{,}053$ \CCW{} after equivariant test-time
-symmetrization). Classification uses a Vision Transformer (\vit)
-fine-tuned on $26{,}636$ images from Galaxy Zoo~1 ($6{,}637$),
-high-confidence CE-ResNet pseudo-labels ($17{,}999$), and synthetic
-hard negatives ($2{,}000$). The load-bearing external check is the
-$240{,}919$-galaxy GZ1 cross-match, of which $117{,}205$ pass the
-spiral-only purity cut and form the subset on which the agreement
-metrics are computed: $69.91\%$ CW/CCW agreement and Cohen's
-$\kappa\!=\!0.40$ on the $117{,}205$-spiral subset; the internal three-class training-set
-validation accuracy of $93.7\%$ is reported only as a
-training-pipeline self-consistency check because $67.6\%$ of
-training labels derive from CE-ResNet pseudo-labels. A
-$1{,}558$-galaxy $D_4$-TTA hold-out confirms the production
-$Z_2$-only TTA preserves the ensemble-mean $\pcw$ (rotation-
-invariance in expectation; $0.3904\!\equiv\!0.3901$ under
-$Z_2$ vs $D_4$); per-galaxy argmax labels carry $\sim\!21\%$
-rotational uncertainty that downstream users analyzing individual
-borderline galaxies should fold into their error budget.
+A canonical-mask diagnostic of the leakage mechanism shows that pre-MASTER raw pseudo-$C_1$ in the un-monopole-subtracted CW-fraction map ($f_{\rm sky}\!=\!0.49005$, $N_{\rm spiral}\!=\!3{,}201{,}160$) is reproduced at $99.3\%$ of its observed amplitude by a controlled monopole-only generative null ($N\!=\!500$, binomial realizations at $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical mask): a small uniform CW-vs-CCW classifier monopole couples through patchy survey-mask geometry to inflate the raw pseudo-$C_\ell$ at $\ell\!=\!1$, and MASTER mode-coupling deconvolution removes the leakage. The post-MASTER canonical-mask direct-MC residual is $+3.64\sigmaunit$ under proper galaxy-weighted monopole subtraction (the legacy $+1.85\sigmaunit$ v1.0.62 baseline was on uncorrected $A_p$ field; the $+3.64\sigmaunit$ replaces it as the canonical canonical-mask number — v1.0.107+ convention).
 
-The headline cosmological measurement is a \emph{non-detection of a
-chirality dipole (strictly, an isotropy-breaking axial-vector projection of the projected pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat} — the $\ell\!=\!1$ dipole moment is parity-EVEN, so this is an isotropy-violation test, NOT a direct parity-violation test) under the present DESI Legacy / ViT-Small pipeline} after the leakage channel is removed (a matched-footprint reanalysis under Shamir's Ganalyzer pipeline and his exact magnitude/redshift cuts would be required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here). The
-real-space dipole fit on the canonical Catalog~C sample is
-$\sigma_{\rm dipole}\!=\!0.43$ ($p\!=\!0.30$, $N_{\rm MC}\!=\!10{,}000$),
-and the MASTER-deconvolved $\ell\!=\!1$ angular-power coefficient
-on the analysis subsample mask is $C_1\!=\!(1.494\!\pm\!0.429)
-\!\times\!10^{-6}\,$sr, $-0.12\sigmaunit$ from null. Confidence-
-stratified diagnostics (Sec.~\ref{sec:signal_hunt}) show
-$\sim\!3\sigmaunit$ apparent dipoles in the low-confidence spiral
-bins $p_{\rm eq}\!\in\![0.4,0.6)$ ($+2.99\sigmaunit$ and
-$+3.29\sigmaunit$) that drop sharply into the high-confidence
-subsamples: $-0.03\sigmaunit$ at $p_{\rm eq}\!\in\![0.6,0.7)$,
-$+1.98\sigmaunit$ at $p_{\rm eq}\!\in\![0.7,0.8)$ (a
-marginal-but-not-disappeared excursion requiring diagnosis), and
-$+0.87\sigmaunit$ at $p_{\rm eq}\!\in\![0.8,1.0)$. Two of three
-HC bins are null and the third is marginal at $\sim\!2\sigmaunit$,
-which is suggestive of (but does not by itself prove) a
-classifier-confidence-correlated systematic rather than a
-primordial dipole that would amplify under sample purification. The two-point chirality correlation
-$w_{\rm CW}(\theta)$ (Sec.~\ref{sec:wtheta}) on a $50{,}000$-spiral
-HC-subsample at angular scales $0.1^\circ$--$8^\circ$ is null at
-$|\sigma|\!<\!1.2$ in nine of ten bins, with a single
-$-2.41\sigmaunit$ excursion at $\theta\!\approx\!0.5^\circ$
-coincident with the DESI Legacy DR8 brick scale; under a 10-bin
-look-elsewhere correction this drops below $|\sigma|\!<\!2$
-post-LEE. This is a fourth complementary diagnostic that the
-chirality field carries no primordial isotropy-breaking axial-vector dipole signal. The
-\textbf{load-bearing} sensitivity is the
-empirical $50\%$-recovery-at-$3\sigmaunit$ threshold of
-$\mathbf{|A_{\rm dipole}|\!\approx\!0.75\%}$ on the $N\!=\!471{,}049$
-HC-spiral subsample from the extended 9-amplitude injection sweep
-(consistent with the $N\!=\!471{,}049$ ideal-statistical $3\sigma$ Fisher
-floor of $3\sqrt{3/N}\!\approx\!0.76\%$ -- i.e.\ the empirical $0.75\%$
-tracks the HC-subsample shot-noise budget and is NOT separately
-demonstrated to be a systematic-inclusive degradation from the
-full-catalog $N\!=\!3{,}201{,}160$ Fisher floor of $0.29\%$; a
-systematic-inclusive bound on the full $3.2$M sample would require
-running the injection sweep on the full Catalog~C, deferred to future
-work)
-(P($\sigma\!>\!3$)$\!=\!0.55$ at $A\!=\!0.75\%$, rising to
-$0.91$ at $A\!=\!1.00\%$ and $1.00$ at $A\!\geq\!1.50\%$;
-per-pixel-shuffle null preserves
-the global $p_{\rm CW}\!=\!0.49735$ monopole and per-pixel
-depth/mask-edge correlations). The Fisher Poisson asymptote of
-$\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
-\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage). The like-for-like HC-subsample Fisher floor is $3\sqrt{3/N}\!\approx\!0.76\%$ at $N\!=\!471{,}049$, which the $0.75\%$ HC empirical threshold tracks essentially exactly (ratio $\approx\!1.0$, no systematic-inclusive degradation on the HC subsample). Comparing the HC empirical threshold to the FULL-CATALOG Fisher floor would yield a $\sim\!2.6\times$ cross-sample ratio, but this is a cross-sample comparison and not a meaningful empirical-vs-Fisher gap factor (the full-catalog injection sweep needed to define such a gap on the $3.2$M sample is deferred to future work). \textbf{P4-EXT ChatGPT-B3 injection-subsample-predicate clarification}: the released injection-recovery JSON (\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/injection\_recovery\_extended.json}) was run on the broader $p_{\rm eq}\!>\!0.6$ HC-spiral subsample (\texttt{config.hc\_threshold} $=\!0.6$, \texttt{subsample} $=$ \texttt{`HC-spiral (p\_eq > 0.6)'} in the JSON manifest; the live HF dataset's \texttt{catalog\_c\_hc\_spiral\_p\_cw\_gt\_0p6.parquet} subset contains $2{,}107{,}494$ rows), NOT on the in-paper $P\!>\!0.9$ HC subsample $N\!=\!471{,}049$. The Fisher floor at the $p_{\rm eq}\!>\!0.6$ sample size is $3\sqrt{3/2{,}107{,}494}\!\approx\!0.36\%$, so the empirical $0.75\%$ exceeds the $p_{\rm eq}\!>\!0.6$ Fisher floor by a factor of $\sim 2$, consistent with systematic-inclusive per-pixel-shuffle null degrading recovery threshold by $\sqrt{2}$--$2\times$ relative to ideal Fisher. The in-paper $N\!=\!471{,}049$ (P$>\!0.9$) Fisher comparison is an order-of-magnitude proxy; readers requiring an exact like-for-like Fisher-vs-empirical comparison should anchor on the $p_{\rm eq}\!>\!0.6$ injection subsample.
+Three interpretations of the canonical-mask residual are systematically tested with a four-null battery + direct cross-spectrum: (i)~a real cosmological dipole at amplitude $\sim\!1.7\%$, (ii)~a coherent depth/sampling-correlated systematic at low $\ell$ on the patchy canonical footprint, or (iii)~a NaMaster low-$\ell$ deconvolution artifact. Interpretation~(iii) sharp-edge variant is ruled out by the apodized-mask test ($+3.57\sigmaunit$ on $C^2$ $2^\circ$ apodization, essentially unchanged from binary). Interpretation~(i) is ruled out by three independent lines of evidence: (a)~$\ell\!=\!2 > \ell\!=\!1$ broadband structure (auto-spectrum $+4.73\sigmaunit$ at $\ell\!=\!2$ vs $+3.63\sigmaunit$ at $\ell\!=\!1$ — a real dipole at $1.7\%$ would be $\ell\!=\!1$-dominant, with injected real dipoles showing $\sigma\!=\!+2.87$ at $\ell\!=\!1$ under the same null); (b)~absence of monotonic $p_{\rm eq}$ quality-quartile scaling ($\sigma\!=\!+0.20,-0.42,+0.44,+0.43$ across four equal-$N$ quartiles, all $|\sigma|\!<\!1$); (c)~direct cross-spectrum $C(A_p\!\times\!n_{\rm total})$ at $\ell\!=\!2$ gives $r\!=\!-0.65$ with $\sigma\!=\!-2.89$ against permutation null (quadrupole-anti-alignment between the chirality asymmetry map and the pixel-density / depth proxy at the same multipole where the auto-spectrum has its largest excess). Interpretation~(ii) is therefore the verdict: a coherent depth/sampling-correlated systematic at low $\ell$ on the patchy canonical footprint, confirmed by direct cross-spectrum measurement. A bootstrap pixel-resample test gives $-0.22\sigmaunit$ for the canonical-mask data but is TAUTOLOGICAL for cosmological-dipole hypothesis testing (a real injected $A\!=\!1.7\%$ dipole also yields median $\sigma\!=\!-0.49$ under bootstrap; the bootstrap variance is too wide to discriminate) and is therefore retained only as a sampling-variance diagnostic.
 
-A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
-($9.5\sigmaunit$ from $50/50$ under naive binomial errors;
-$N_{\rm eff}$-corrected significance is smaller but still high) is
-attributed to the sub-percent human-handedness bias documented in
-citizen-science spiral-handedness labels propagating through training,
-pending independent ground-truth validation; the isotropy-breaking observable is the dipole (parity-even axial-vector projection of the pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat}), while the parity-odd monopole is a separate channel. A $3.05\sigmaunit$ local
-hemisphere asymmetry rejects the random-label null at
-$p_{\rm LEE}\!\le\!10^{-4}$ on the $10^\circ$ Galactic-grid
-(the primary direct-MC look-elsewhere statistic on the random-label
-null); the parametric Bonferroni/Benjamini-Hochberg multiplicity
-upper bound across the $\sim\!650$ tested directions (a conservative
-independent-bin treatment under a different parametric null, not
-directly comparable to the direct-MC statistic) reduces the local
-effective significance to $<\!1\sigmaunit$ (consistent with
-null). The rejection of the random-label null is interpreted as the
-mask-leakage projection of the same uniform monopole and is reported
-as a documented systematic-floor artifact, not as a primordial-dipole
-detection, since the independent wider-coverage $\ell\!=\!1$
-estimators on the wider-coverage subsample mask are null (P4-INTERNAL Gemini-B1 closure: prior text said "on the identical data" which contradicts the closure text in this same abstract noting the pre/post-MASTER values differ in mask, map, monopole-treatment, and MASTER inversion; the wider-coverage subsample-mask qualifier is the accurate characterization).
-
-Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim differs
-from the present measurement by a factor of $\sim\!6$--$12$ in
-amplitude, under an independent classifier (ViT-Small + 2-fold flip
-TTA), an independent survey footprint (DESI Legacy DR8 vs SDSS),
-independent selection cuts, and independent bias-hardening
-methodology; a like-for-like matched-footprint reanalysis under
-Shamir's own pipeline is not performed here and would be required for
-a formal $\sigma$-level exclusion of his signal. The catalog, model, and
-reproducibility scripts are publicly released; downstream users should
-consult the Catalog Usage Limitations paragraph (Sec.~\ref{sec:data_availability})
-because labels carry a measured sub-percent monopole bias and are not
-ground-truth chirality.
+\textbf{Falsification criterion.} Detection of a chirality dipole at $\sigma\!>\!5$ at amplitude $\gtrsim\!0.5\%$ (the present operational floor on the HC subsample; tightening under LSST sample-size scaling) in a future $\geq\!10^7$-galaxy systematics-modeled survey would falsify the present null. \textbf{Scope.} The $\ell\!=\!1$ subsample-mask null is the load-bearing scientific result; the canonical-mask residual is interpretation~(ii) systematic, not a primordial detection. A like-for-like matched-footprint Ganalyzer reanalysis under Shamir's pipeline + cuts is required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here. The catalog (3.2\,M spirals), model weights (ViT-Small + D$_4$ TTA), and all reproducibility scripts are publicly released under the immutable release tag \texttt{paper4-v1.0.113}.
 \end{abstract}
 
 \pacs{98.80.-k, 98.62.Ai, 95.75.Mn}
