@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-05-17 PDT (tick 82 — R5 cascaded verification on P1A/P1B/P3 — v1A.0.26 + v1B.0.10 + v3.1.44 shipped) -->
+<!-- last_updated: 2026-05-18 PDT (tick 83 — 🎯 COBAYA ITER2 CONVERGED at N=128,385/R̂-1=0.00820 sustained; P1B v1B.0.11 shipped with full convergence-bump; R6 rounds spawned) -->
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 
