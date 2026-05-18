@@ -1,0 +1,107 @@
+{
+  "purpose": "Grok-B1 BLOCKER closure: canonical-mask injection-recovery sweep on FULL 3.2M Catalog C with proper galaxy-weighted monopole subtraction. Bounds the canonical-mask +1.85sigma residual.",
+  "version": "v1.0.107-grok-b1-canonical-injection-sweep",
+  "date_utc": "2026-05-18T21:44:56Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc_null": 200,
+    "n_mc_inj": 60,
+    "seed": 42,
+    "amplitudes_pct": [
+      0.1,
+      0.3,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      5.0
+    ],
+    "f_sky": 0.4937744140625,
+    "n_spirals": 3201160,
+    "f_CW_global": 0.49735314698421823,
+    "A_gw_data": -0.005293706031563559,
+    "subsample": "FULL Catalog C; canonical mask",
+    "monopole_subtraction": "galaxy-weighted mask-mean per GPT5-B3 audit"
+  },
+  "data": {
+    "c1_decoupled": 1.5132328807500643e-05,
+    "sigma_canonical_corrected": 3.634887221878392,
+    "sigma_v1062_baseline_uncorrected": 1.85
+  },
+  "null": {
+    "mean": 3.116170621842092e-06,
+    "std": 3.305785696275052e-06,
+    "n_mc": 200
+  },
+  "injection_results": [
+    {
+      "A_pct": 0.1,
+      "median_sigma": -0.16826615933299255,
+      "P_sigma_gt_2": 0.06666666666666667,
+      "P_sigma_gt_3": 0.05,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 0.3,
+      "median_sigma": -0.07024773491628243,
+      "P_sigma_gt_2": 0.016666666666666666,
+      "P_sigma_gt_3": 0.0,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 0.5,
+      "median_sigma": 0.26304373999882336,
+      "P_sigma_gt_2": 0.08333333333333333,
+      "P_sigma_gt_3": 0.03333333333333333,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 0.75,
+      "median_sigma": -0.0052470776169610475,
+      "P_sigma_gt_2": 0.15,
+      "P_sigma_gt_3": 0.06666666666666667,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 1.0,
+      "median_sigma": 0.7757192032486635,
+      "P_sigma_gt_2": 0.3333333333333333,
+      "P_sigma_gt_3": 0.18333333333333332,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 1.5,
+      "median_sigma": 2.2982009824451195,
+      "P_sigma_gt_2": 0.5333333333333333,
+      "P_sigma_gt_3": 0.35,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 2.0,
+      "median_sigma": 5.7336676305511745,
+      "P_sigma_gt_2": 0.8,
+      "P_sigma_gt_3": 0.75,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 3.0,
+      "median_sigma": 11.35991508083309,
+      "P_sigma_gt_2": 0.95,
+      "P_sigma_gt_3": 0.9333333333333333,
+      "n_mc_inj": 60
+    },
+    {
+      "A_pct": 5.0,
+      "median_sigma": 31.694902509510396,
+      "P_sigma_gt_2": 0.9333333333333333,
+      "P_sigma_gt_3": 0.9333333333333333,
+      "n_mc_inj": 60
+    }
+  ],
+  "fifty_pct_recovery_threshold_3sigma_pct": 2.0,
+  "fifty_pct_recovery_threshold_2sigma_pct": 1.5,
+  "interpretation": "At A>=2.0% the canonical-mask system reaches 50% recovery at sigma>3. The observed canonical residual 3.63sigma corresponds to an effective injected amplitude bounded below the threshold."
+}
