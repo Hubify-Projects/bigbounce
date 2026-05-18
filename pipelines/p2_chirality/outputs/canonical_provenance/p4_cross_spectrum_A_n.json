@@ -1,0 +1,47 @@
+{
+  "purpose": "Cross-spectrum A_p x n_total at low ell: if C(A,n)_l!=0 at l=1-2, the canonical-mask chirality signal correlates with pixel-density (depth/sampling proxy), confirming interpretation (ii) coherent-systematic.",
+  "version": "v1.0.108-cross-spectrum-A-n",
+  "date_utc": "2026-05-18T22:46:35Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 200,
+    "seed": 42
+  },
+  "auto_C_AA_l1_to_5": [
+    1.5132328807500643e-05,
+    1.786551969342901e-05,
+    4.6434951014479903e-07,
+    3.738505441589489e-06,
+    1.699363941989324e-06
+  ],
+  "auto_C_NN_l1_to_5": [
+    421.4051154267064,
+    160.64228916758248,
+    21.73187977073338,
+    -13.370305113034199,
+    32.06792167810917
+  ],
+  "cross_C_AN_l1_to_5": [
+    -0.03926234910179699,
+    -0.03459720552583672,
+    -0.006732751924054871,
+    0.013224915390997854,
+    -0.0030731228073236686
+  ],
+  "correlation_r_l1_to_5": [
+    -0.49166975547334085,
+    -0.6458077499173345,
+    -2.119441676348034,
+    NaN,
+    -0.41629510971960115
+  ],
+  "cross_sigma_data_vs_null_l1_to_5": [
+    -1.533327936795683,
+    -2.8928280692501547,
+    -0.7582245310739507,
+    2.561369272849998,
+    -0.6563019846083468
+  ],
+  "interpretation": "If |r_1| > 0.3 OR sigma_AN at l=1 or l=2 > 2, the canonical-mask chirality dipole correlates with pixel-density (depth-correlated systematic confirmed). If r_l small and sigma_AN ~ 0, the canonical-mask signal is independent of pixel-density."
+}
