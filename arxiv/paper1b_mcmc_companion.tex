@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.16}
+\newcommand{\paperVersion}{v1B.0.17}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -762,7 +762,7 @@ product). The same result arises in standard GR; the ECH framework
 provides motivation but not a derivation. LiteBIRD will settle this at
 $\sim 9\sigma$ in the early 2030s.
 
-\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-18 07:53~UTC): \textbf{CONVERGED}}: the chain has accumulated $128{,}385$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target across two consecutive flushes ($122{,}971$/$0.00912$ first crossing at 2026-05-18 01:34~UTC; $128{,}385$/$0.00820$ sustained at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples; $\hat R - 1$ has dropped from $0.01945$ to $0.00820$, a factor-of-$\sim$$2.4$ reduction. The 16-rank mpirun process remains alive on the pod; GetDist posteriors on $w_0 w_a$ are now available for incorporation into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}. The conclusions in P1(a) that were marked \emph{not tested until convergence is reached} in earlier versions are now eligible for empirical evaluation against the converged posteriors; v1B.0.12+ will fold the GetDist posterior summary back into the cross-paper P1(a) Sec.~Structural Tension headline.
+\textit{Forward.}---A new DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). \textbf{Current status (as of 2026-05-18 07:53~UTC): \textbf{CONVERGED}}: the chain has accumulated $128{,}385$ accepted samples across the 16 chains and reports $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target across two consecutive flushes ($122{,}971$/$0.00912$ first crossing at 2026-05-18 01:34~UTC; $128{,}385$/$0.00820$ sustained at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples; $\hat R - 1$ has dropped from $0.01945$ to $0.00820$, a factor-of-$\sim$$2.4$ reduction. The 16-rank mpirun process \emph{terminated automatically} upon reaching the convergence threshold (log marker \texttt{MCMC\_DONE\_ITER2\_OMP6} written at 2026-05-18 07:53~UTC; chain status final, not still mixing); GetDist posteriors on $w_0 w_a$ are now available for incorporation into the Paper~I(a) §~Structural Tension section as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}. The conclusions in P1(a) that were marked \emph{not tested until convergence is reached} in earlier versions are now eligible for empirical evaluation against the converged posteriors; v1B.0.17+ will fold the GetDist posterior summary back into the cross-paper P1(a) Sec.~Structural Tension headline (R12 GEM-M2 closure: prior text claimed the chain ``remains alive on the pod'' which contradicted the CONVERGED state; the chain terminated cleanly at convergence rather than still running).
 
 \subsection*{Data and Code Availability}
 
@@ -846,7 +846,7 @@ $\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & 
 $\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
 $H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
 $H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Tab.~\ref{tab:iter2_posterior} & v1B.0.13+ Savage-Dickey \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Tab.~\ref{tab:iter2_posterior} & v1B.0.17+ Nested Sampling \\
 $\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; bias table v1B.0.8 \\
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$         & MCMC      & Verified & ALP MCMC \\
 Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
