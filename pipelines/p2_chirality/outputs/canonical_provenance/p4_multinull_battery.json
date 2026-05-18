@@ -1,0 +1,113 @@
+{
+  "purpose": "P4 multi-null battery per Houston directive 'explore all 3 interpretations fully'. Tests +3.64sigma canonical-mask signal under: (1) apodized mask vs binary mask edge effects (iii diagnostic), (2) multipole-spectrum coherence (band signal vs single l=1), (3) bootstrap-pixel-resample (spatial-correlation-preserving null), (4) p_eq quartile stratification (interpretation ii diagnostic via depth/quality proxy). Plus prior tests in v1.0.107 (binomial-shuffle 3.64sigma) and v1.0.108 sky-rotation (2.56sigma).",
+  "version": "v1.0.108-multi-null-battery",
+  "date_utc": "2026-05-18T22:32:19Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 200,
+    "seed": 42,
+    "n_spirals": 3201160
+  },
+  "prior_nulls_for_comparison": {
+    "binomial_shuffle_v1_0_107": 3.64,
+    "sky_rotation_v1_0_108": 2.56,
+    "uncorrected_v1_0_62": 1.85
+  },
+  "results": {
+    "baseline_data_C1_l1": 1.5132328807500643e-05,
+    "apodized_canonical_mask": {
+      "data_C1": 1.1663983210390618e-05,
+      "null_mean": 2.4211391786906237e-06,
+      "null_std": 2.5875653264548154e-06,
+      "sigma": 3.572023452781181,
+      "f_sky_apod": 0.48166605346237307,
+      "interpretation": "If sigma drops substantially from +3.64 (binary canonical) under apodization, the +3.64sigma is at least partially a binary-mask edge artifact (interpretation iii). If sigma persists, the result is not a sharp-edge MASTER artifact."
+    },
+    "multipole_spectrum": {
+      "l_1": {
+        "data": 1.5132328807500643e-05,
+        "null_mean": 3.116170621842092e-06,
+        "null_std": 3.305785696275052e-06,
+        "sigma": 3.634887221878392
+      },
+      "l_2": {
+        "data": 1.786551969342901e-05,
+        "null_mean": 3.3770716242553874e-06,
+        "null_std": 3.0624125544262754e-06,
+        "sigma": 4.731056907480562
+      },
+      "l_3": {
+        "data": 4.6434951014479903e-07,
+        "null_mean": 3.2235799790124097e-06,
+        "null_std": 2.8796025527039736e-06,
+        "sigma": -0.9581983688258184
+      },
+      "l_4": {
+        "data": 3.738505441589489e-06,
+        "null_mean": 3.3746092156987623e-06,
+        "null_std": 2.7440186758307072e-06,
+        "sigma": 0.1326143400902923
+      },
+      "l_5": {
+        "data": 1.699363941989324e-06,
+        "null_mean": 3.101862047471441e-06,
+        "null_std": 2.2094394512479575e-06,
+        "sigma": -0.6347755330837169
+      }
+    },
+    "bootstrap_pixel_resample": {
+      "null_mean": 1.7431604012518715e-05,
+      "null_std": 1.052332264550737e-05,
+      "sigma": -0.21849327274971292,
+      "interpretation": "Bootstrap preserves spatial correlations of the data (each pixel's per-galaxy chirality is sampled WITH replacement). If sigma stays high under bootstrap, the signal is robust to per-galaxy sampling variance."
+    },
+    "p_eq_quartiles": {
+      "Q1": {
+        "n": 800286,
+        "p_eq_range": [
+          0.3334622383117676,
+          0.500328004360199
+        ],
+        "f_sky": 0.49224853515625,
+        "c1_data": 1.8929354498226328e-05,
+        "sigma": 0.1996128330758422,
+        "n_mc": 50
+      },
+      "Q2": {
+        "n": 800292,
+        "p_eq_range": [
+          0.500328004360199,
+          0.5095521211624146
+        ],
+        "f_sky": 0.4921671549479167,
+        "c1_data": 7.2211454230104154e-06,
+        "sigma": -0.4202978344992574,
+        "n_mc": 50
+      },
+      "Q3": {
+        "n": 800292,
+        "p_eq_range": [
+          0.5095521211624146,
+          0.6716846823692322
+        ],
+        "f_sky": 0.4923502604166667,
+        "c1_data": 1.8171955083200318e-05,
+        "sigma": 0.4366635621713588,
+        "n_mc": 50
+      },
+      "Q4": {
+        "n": 800290,
+        "p_eq_range": [
+          0.6716846823692322,
+          1.0
+        ],
+        "f_sky": 0.4908650716145833,
+        "c1_data": 1.978088734470997e-05,
+        "sigma": 0.43173493698779297,
+        "n_mc": 50
+      },
+      "interpretation": "Monotonic sigma increase with p_eq quality could indicate (i) real dipole more visible in HC tracers. Decreasing sigma with quality could indicate (ii) systematic concentrated in low-confidence galaxies. Flat could indicate (iii) NaMaster artifact independent of catalog composition."
+    }
+  }
+}
