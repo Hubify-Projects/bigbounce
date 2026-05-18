@@ -16,7 +16,7 @@
 \contentsline {section}{\numberline {VII}Cross-Paper Verification Status}{7}{section*.14}%
 \contentsline {subsection}{\numberline {A}Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger $ footnote)}{7}{section*.15}%
 \contentsline {section}{\numberline {VIII}Conclusions}{7}{section*.16}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{8}{section*.17}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{9}{section*.17}%
 \contentsline {section}{\numberline {}Acknowledgments}{9}{section*.18}%
 \appendix 
 \contentsline {section}{\numberline {A}Reproducibility Materials}{9}{section*.19}%

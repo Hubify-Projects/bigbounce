@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.17}
+\newcommand{\paperVersion}{v1B.0.18}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -536,9 +536,7 @@ $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
-A one-pass recomputation of $\chi^2_{\rm eff}$, AIC, BIC, and any
-evidence value from the final frozen-thinned chain via a single
-auditable script was extracted in v1B.0.13 via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) and is reported in Table~\ref{tab:iter2_posterior}. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise (R10 GEM-M1; R7 GPT-B3 caveat). The nested-sampling $\ln B$ recompute is queued for v1B.0.15+ pending a separate pod-side run; the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 / v1B.0.13 markers were carried over from prior version-numbering schemes when the chain was still mixing.
+A one-pass recomputation of the $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) from the final frozen-thinned chain via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there (R13 GEM-M1 closure: prior text claimed AIC/BIC/$\ln B$ were in Table 1B, which was incorrect — Table 1B contains only the $\chi^2$ decomposition, and the evidence metrics are queued for nested-sampling in v1B.0.18+ pending a separate pod-side run). The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise (R10 GEM-M1; R7 GPT-B3 caveat). The nested-sampling $\ln B$ recompute is queued for v1B.0.15+ pending a separate pod-side run; the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 / v1B.0.13 markers were carried over from prior version-numbering schemes when the chain was still mixing.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -846,7 +844,7 @@ $\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & 
 $\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
 $H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
 $H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Tab.~\ref{tab:iter2_posterior} & v1B.0.17+ Nested Sampling \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Omitted (pending) & v1B.0.18+ Nested Sampling \\
 $\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; bias table v1B.0.8 \\
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$         & MCMC      & Verified & ALP MCMC \\
 Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
