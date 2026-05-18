@@ -38,5 +38,7 @@
     "script": "pipelines/p2_chirality/scripts/monopole_mask_null_sim_v2.py",
     "commit_at_run_time": "v1.0.78 baseline; data values reproduce under v1.0.84 commit",
     "audit_note": "v1.0.84 PAPER-GPT55P-1 closure: prior metadata string claimed monopole-subtracted within mask which was a partial misdescription (only hemisphere stat uses subtraction; the pseudo-C_l does not subtract)."
-  }
+  },
+  "pre_master_reproduction_pct": 99.322,
+  "pre_master_reproduction_explanation": "Ratio of null_distribution.C1_mean / observed.pseudo_c1 expressed as a percentage. v1.0.104 P4-EXT Grok-B4 closure: added as an explicit top-level key for direct citation in paper \u00a7IV.D (the 99.3% claim is derivable from the existing keys but was not pre-computed)."
 }

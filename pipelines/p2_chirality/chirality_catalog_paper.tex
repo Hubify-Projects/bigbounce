@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.103}
+\newcommand{\paperVersion}{v1.0.104}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -86,10 +86,7 @@ Re-Analysis of 8.47~Million DESI Legacy Galaxies\\
 \date{\paperTimestamp{} \textemdash{} \paperVersion}
 
 \begin{abstract}
-Prior reports of a $2$--$4\%$ large-scale chirality dipole in
-SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) have
-fueled a decade-long controversy over a possible parity-violating
-signal in the late-time Universe. We demonstrate that, in our
+Prior reports of a $2$--$4\%$ large-scale chirality dipole in SDSS-class spiral-galaxy samples (Shamir 2012, 2020, 2022) have fueled a decade-long controversy in galactic-chirality studies. \textbf{Scope of the null claim}: the no-dipole conclusion in this paper is restricted to the single-mode $\ell\!=\!1$ axial-vector dipole observable under the chosen primary estimators; the low-$\ell$ bandpower spectrum is NOT globally null (Table~\ref{tab:low_ell_master} reports $\ell_{\rm eff}\!=\!4$ at $+6.097\sigma$ and joint $\chi^2/{\rm dof} = 4.24$, attributed to residual mask coupling and treated as unresolved systematics rather than primordial parity dipoles). We emphasize at the outset that the $\ell\!=\!1$ chirality-dipole observable in projected-2D handedness is the \emph{isotropy-breaking axial-vector channel} and is \emph{parity-EVEN}, NOT a direct parity-violation test (the parity-odd analog requires 3D spin-vector measurements or polarization-rotation cross-correlations and is outside the scope of this paper). The prior literature has at times conflated these two observables; we keep them strictly separated throughout. We demonstrate that, in our
 DESI Legacy / ViT-Small pipeline, a specific quantifiable
 leakage channel exists which can inflate raw pseudo-$C_\ell$
 chirality bandpowers (reproducing $99.3\%$ of the observed
@@ -217,7 +214,7 @@ per-pixel-shuffle null preserves
 the global $p_{\rm CW}\!=\!0.49735$ monopole and per-pixel
 depth/mask-edge correlations). The Fisher Poisson asymptote of
 $\sim\!0.29\%$ full-amplitude at $3\sigmaunit$ is the
-\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage). The like-for-like HC-subsample Fisher floor is $3\sqrt{3/N}\!\approx\!0.76\%$ at $N\!=\!471{,}049$, which the $0.75\%$ HC empirical threshold tracks essentially exactly (ratio $\approx\!1.0$, no systematic-inclusive degradation on the HC subsample). Comparing the HC empirical threshold to the FULL-CATALOG Fisher floor would yield a $\sim\!2.6\times$ cross-sample ratio, but this is a cross-sample comparison and not a meaningful empirical-vs-Fisher gap factor (the full-catalog injection sweep needed to define such a gap on the $3.2$M sample is deferred to future work).
+\textbf{ideal-statistical floor} on the full $3.2$M catalog (never separately demonstrated empirically; the $0.75\%$ HC-subsample threshold is the only operational $50\%$-recovery measurement; assumes zero systematics and full coverage). The like-for-like HC-subsample Fisher floor is $3\sqrt{3/N}\!\approx\!0.76\%$ at $N\!=\!471{,}049$, which the $0.75\%$ HC empirical threshold tracks essentially exactly (ratio $\approx\!1.0$, no systematic-inclusive degradation on the HC subsample). Comparing the HC empirical threshold to the FULL-CATALOG Fisher floor would yield a $\sim\!2.6\times$ cross-sample ratio, but this is a cross-sample comparison and not a meaningful empirical-vs-Fisher gap factor (the full-catalog injection sweep needed to define such a gap on the $3.2$M sample is deferred to future work). \textbf{P4-EXT ChatGPT-B3 injection-subsample-predicate clarification}: the released injection-recovery JSON (\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/injection\_recovery\_extended.json}) was run on the broader $p_{\rm eq}\!>\!0.6$ HC-spiral subsample (\texttt{config.hc\_threshold} $=\!0.6$, \texttt{subsample} $=$ \texttt{`HC-spiral (p\_eq > 0.6)'} in the JSON manifest; the live HF dataset's \texttt{catalog\_c\_hc\_spiral\_p\_cw\_gt\_0p6.parquet} subset contains $2{,}107{,}494$ rows), NOT on the in-paper $P\!>\!0.9$ HC subsample $N\!=\!471{,}049$. The Fisher floor at the $p_{\rm eq}\!>\!0.6$ sample size is $3\sqrt{3/2{,}107{,}494}\!\approx\!0.36\%$, so the empirical $0.75\%$ exceeds the $p_{\rm eq}\!>\!0.6$ Fisher floor by a factor of $\sim 2$, consistent with systematic-inclusive per-pixel-shuffle null degrading recovery threshold by $\sqrt{2}$--$2\times$ relative to ideal Fisher. The in-paper $N\!=\!471{,}049$ (P$>\!0.9$) Fisher comparison is an order-of-magnitude proxy; readers requiring an exact like-for-like Fisher-vs-empirical comparison should anchor on the $p_{\rm eq}\!>\!0.6$ injection subsample.
 
 A residual spatially-uniform monopole $\CW/(\CW+\CCW)\!=\!0.4974\!\pm\!0.000279$
 ($9.5\sigmaunit$ from $50/50$ under naive binomial errors;
@@ -340,8 +337,7 @@ size ratios as catalog-scale context rather than as a like-for-like
 sensitivity comparison;
 (ii)~a dedicated \NS{} class that
 prevents contamination from ellipticals and irregulars, and (iii)~to
-our knowledge one of the most extensive published bias-hardening
-audit suites for a survey-scale chirality catalog. We use this
+a multi-axis bias-hardening audit suite targeted at known chirality failure modes (we refrain from claiming the audit suite is ``the most extensive'' without a literature survey of comparable astronomy-ML audit suites; the suite is necessary but not sufficient at the sub-percent level, per P4-EXT ChatGPT-nit). We use this
 catalog to perform a chirality dipole measurement with a Fisher-floor
 minimum detectable dipole of $|A_{\rm dipole}|\!\sim\!0.29\%$ at
 $3\sigmaunit$ (statistical) and an empirical 50\%-recovery-$3\sigma$ injection-recovery threshold at $|A_{\rm dipole}|\!\geq\!0.75\%$ ($P(\sigma\!>\!3)\!=\!0.55$; cf.\ $0.5\%$ which is a non-detection point with $P(\sigma\!>\!3)\!=\!0.15$) at the same
@@ -502,7 +498,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.100} (and successor patch tags) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.100}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}. Additional load-bearing JSON artifacts referenced in the abstract and §IV (specifically \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/master_results}{\texttt{master\_results/master\_power\_spectrum.json}} for the MASTER-deconvolved $\ell\!=\!1$ result, \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/dipole}{\texttt{outputs/dipole/summary.json}} for the real-space dipole, and \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/h200_results/wave12_hemi_2026-05-01}{\texttt{h200\_results/wave12\_hemi\_2026-05-01/results.json}} for the hemisphere scan) live in the same release-tagged repository tree at the cited paths; the immutable release tag covers the full \texttt{pipelines/p2\_chirality/} subtree and the \texttt{pipelines/h200\_results/} subtree referenced in figure/table captions.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.104} (and predecessor patch tags v1.0.100--v1.0.103) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.104}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag (not at the \texttt{pipelines/p2\_chirality/} root); the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}. Additional load-bearing JSON artifacts referenced in the abstract and §IV (specifically \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/master_results}{\texttt{master\_results/master\_power\_spectrum.json}} for the MASTER-deconvolved $\ell\!=\!1$ result, \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance/catalog_c_post_tta_dipole_summary.json}{\texttt{outputs/canonical\_provenance/catalog\_c\_post\_tta\_dipole\_summary.json}} for the post-TTA Catalog~C real-space dipole headline (the $+0.43\sigma$ null; the earlier \texttt{outputs/dipole/summary.json} is the pre-TTA Catalog~A $+2.31\sigma$ diagnostic and is preserved as historical reference only), and \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/h200_results/wave12_hemi_2026-05-01}{\texttt{h200\_results/wave12\_hemi\_2026-05-01/results.json}} for the hemisphere scan) live in the same release-tagged repository tree at the cited paths; the immutable release tag covers the full \texttt{pipelines/p2\_chirality/} subtree and the \texttt{pipelines/h200\_results/} subtree referenced in figure/table captions.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -1947,9 +1943,7 @@ $\ell\!=\!1$ on the strict-superset subsample mask is
 $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}); the canonical-mask
 post-MASTER residual is $+1.85\sigmaunit$, a sub-detection-threshold
 value consistent with residual mode-coupling that MASTER does not fully
-invert on the patchy canonical footprint. The two MASTER results
-together establish that the post-deconvolution chirality field is
-null at the precision of this analysis.
+invert on the patchy canonical footprint. The two MASTER results jointly characterize the $\ell\!=\!1$ dipole channel as showing (a)~a null at the subsample-mask level ($-0.12\sigmaunit$ post-MASTER on the subsample mask) and (b)~a positive but sub-detection-threshold residual at the canonical-mask level ($+1.85\sigmaunit$ post-MASTER direct-MC on the canonical mask, which formally fails the released JSON's stated $|\sigma|<1$ criterion for a no-dipole-at-$\ell\!=\!1$ verdict; the $+1.85\sigmaunit$ is documented as an unresolved sub-detection-threshold systematic rather than a closed null per P4-EXT ChatGPT-B4). The combined picture is that the post-deconvolution chirality field is null on the subsample mask and unresolved-but-sub-detection on the canonical mask at the precision of this analysis; we do not claim a closed null on the canonical mask.
 \item \textbf{Hemisphere max$|A|$:} observed $3.48\!\times\!10^{-3}$;
 monopole-only N=500 null mean
 $1.69\!\times\!10^{-3}\pm 4.05\!\times\!10^{-4}$; data $z\!=\!+4.42\sigmaunit$.
@@ -2119,7 +2113,7 @@ label-noise systematic, which would attenuate under the HC cut
 (as it does in BASS+MzLS and DES). The DECaLS HC residual
 indicates that the DECaLS-specific systematic is correlated with
 the underlying galaxy population sampled by DECaLS rather than
-with classifier ambiguity per se.
+with classifier ambiguity per se. \textbf{P4-EXT 3-vendor convergent MAJOR closure (LEE correction)}: across the 15-cell grid ($3$ imaging legs $\times$ $5$ confidence strata), the family-wise Bonferroni penalty at $\alpha\!=\!0.05$ is $z_{\rm Bonf}^{\rm 15} \approx 2.94\sigma$ and at the tighter $\alpha\!=\!0.001$ is $z_{\rm Bonf}^{\rm 15,\alpha=0.001} \approx 4.04\sigma$. Under this correction the DECaLS [0.5,0.6) cell ($+4.50\sigmaunit$, $+4.53\sigmaunit$) survives both thresholds; the DECaLS [0.8,1.0) cell ($+3.76\sigmaunit$, $+4.06\sigmaunit$) survives the $\alpha\!=\!0.05$ Bonferroni but is marginal at $\alpha\!=\!0.001$. The DECaLS [0.5,0.6) cell is therefore the load-bearing finding (survives the tighter $\alpha\!=\!0.001$ Bonferroni); the DECaLS [0.8,1.0) cell is reported as a supporting trend rather than an independent significant detection. A full max-statistic null using the same MC pipeline (with $\max|z|$ over the 15-cell grid for every null realization) is the canonical resolution and is queued for v1.0.105+.
 \end{itemize}
 
 This decomposition strengthens, not weakens, the methods-paper
@@ -2392,7 +2386,7 @@ Companion artifact:
   same sub-percent GZ1-training-label / depth-coupled systematic
   that sources the global $9.5\sigmaunit$ CW-fraction monopole, not
   to a primordial $\ell\!=\!1$ dipole (the wider-coverage dipole
-  estimators on the same data are all null at $\ell\!=\!1$;
+  estimators on the canonical wider-coverage subset are all null at $\ell\!=\!1$ under the full chain of (map choice + monopole-subtraction + mask choice + MASTER inversion), with the explicit understanding that the pre-MASTER and post-MASTER values differ in map definition, monopole treatment, mask, and MASTER inversion --- they are NOT the same data vector;
   Sec.~\ref{sec:dipole}, Sec.~\ref{sec:conclusions}).
   \label{fig:hemisphere}}
 \end{figure}
@@ -2902,7 +2896,7 @@ a cosmological interpretation:
   sources the global $9.5\sigmaunit$ CW-fraction monopole, not to a
   primordial $\ell\!=\!1$ dipole, because per-pixel-shuffle nulls
   do not preserve depth or mask-edge systematic structures and the
-  independent wider-coverage dipole estimators on the same data are all
+  independent wider-coverage dipole estimators under the full chain of (map choice + monopole-subtraction + mask choice + MASTER inversion) are all
   null at $\ell\!=\!1$.
 \item The angular power spectrum at $\ell = 1$ is
   $-0.12\sigmaunit$ (post-MASTER deconvolution on the analysis
@@ -3221,7 +3215,7 @@ threshold of $\geq 0.75\%$ is the empirical $50\%$-recovery-$3\sigma$ amplitude 
 under a strict per-pixel-shuffle null, which preserves the full
 per-pixel CW-asymmetry variance (including the $\sim\!0.005\%$
 post-TTA residual signature in Catalog~C) and is therefore
-intentionally conservative. The like-for-like HC-subsample Fisher floor is $3\sqrt{3/471{,}049}\!\approx\!0.76\%$, so the HC empirical $0.75\%$ tracks the HC Fisher floor at a ratio of $\approx\!1.0$ (no systematic-inclusive degradation on the HC subsample). The historical $\sim\!2.5\times$ comparison between the
+intentionally conservative. The like-for-like HC-subsample Fisher floor is $3\sqrt{3/471{,}049}\!\approx\!0.76\%$, so the HC empirical $0.75\%$ tracks the HC Fisher floor at a ratio of $\approx\!1.0$ (no systematic-inclusive degradation on the HC subsample). \textbf{P4-EXT-Gemini-B2 closure}: prior text in this paragraph compared the HC-subsample empirical $0.75\%$ to the \emph{full-catalog} Fisher floor $3\sqrt{3/3{,}201{,}160}\!\approx\!0.29\%$ as a $\sim\!2.5\times$ ``Fisher-vs-empirical'' factor; this comparison is cross-sample (subsample empirical vs full-catalog ideal) and is therefore not a meaningful empirical-vs-Fisher gap. The valid comparison is the like-for-like HC pair just stated (empirical $0.75\%$ vs HC Fisher $0.76\%$, ratio $\approx\!1.0$); the historical $\sim\!2.5\times$ cross-sample ratio has been retracted as a methodological artifact. The original historical reference between the
 empirical HC-subsample threshold $0.75\%$ and the FULL-catalog Fisher floor $0.29\%$ is a cross-sample ratio, NOT a Fisher-vs-empirical degradation factor for similar single-cosine estimators (the relevant degradation is the $0.75/0.76\!\approx\!1.0$ HC like-for-like ratio above). A full-catalog injection sweep that would define a meaningful systematic-inclusive gap on the $3.2$M sample is deferred to future work.
 Both numbers stand. The catalog's reported result --- Catalog~C
 post-TTA dipole at $\sigma{=}0.43$, $p{=}0.30$ --- is a non-detection
@@ -4027,7 +4021,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
   the same sub-percent GZ1-label / depth-coupled systematic that
   sources the global $9.5\sigmaunit$ CW-fraction monopole, not to a
   primordial $\ell\!=\!1$ dipole (Sec.~\ref{sec:hemisphere_disc};
-  the independent wider-coverage dipole estimators on the same data are
+  the independent wider-coverage dipole estimators under the full chain of (map choice + monopole-subtraction + mask choice + MASTER inversion) are
   null at $\ell\!=\!1$). The attribution of the
   $9.5\sigmaunit$ monopole offset to GZ1 human-handedness bias
   propagating through training is the working hypothesis under
@@ -4078,8 +4072,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \item \textbf{Falsification criterion.} The null result presented
   here is binary-testable: if a future survey (e.g.\ LSST Y3) detects
-  a chirality dipole in a $\geq\!10^{7}$-galaxy sample with amplitude
-  $A \geq 0.1\%$ at $>\!5\sigmaunit$ post-equivariant-averaging and
+  a chirality dipole in a $\geq\!10^{7}$-galaxy sample with amplitude $A$ at or above the LSST-specific systematics-preserving operational floor (to be determined by a dedicated LSST injection-recovery study; conservatively, $\gtrsim\!0.5\%$ since the present operational $50\%$-recovery floor on this work's HC subsample is $0.75\%$ and the LSST $\geq 3\times$ sample-size scaling would only sharpen the Fisher floor by $\sqrt{3}$ to $\sim\!0.44\%$, NOT by a factor of $\sim 7\times$ down to $0.1\%$; P4-EXT ChatGPT-M11 closure: prior $A \geq 0.1\%$ threshold was below the present operational floor and is therefore not justified by this methods paper as a hard falsification criterion) at $>\!5\sigmaunit$ post-equivariant-averaging and
   look-elsewhere-corrected significance, then the result of this
   paper is falsified and a cosmological chirality dipole at the
   detected amplitude must be accepted. We do not require axis-alignment
@@ -4214,7 +4207,7 @@ Sec.~\ref{sec:monopole_mask_null}).
   Training, inference, equivariant post-processing, bias hardening
   suite, and dipole analysis scripts. The specific commit backing
   the figures and tables of the present manuscript is pinned at the
-  immutable release tag \texttt{paper4-v1.0.100} (and successor
+  immutable release tag \texttt{paper4-v1.0.104} (and predecessor patch tags v1.0.100--v1.0.103, and successor
   patch tags), which carries the PDF asset, the canonical-provenance
   JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
   webhook on the release page.
