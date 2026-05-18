@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.104}
+\newcommand{\paperVersion}{v1.0.105}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -234,7 +234,7 @@ null). The rejection of the random-label null is interpreted as the
 mask-leakage projection of the same uniform monopole and is reported
 as a documented systematic-floor artifact, not as a primordial-dipole
 detection, since the independent wider-coverage $\ell\!=\!1$
-estimators on the identical data are null.
+estimators on the wider-coverage subsample mask are null (P4-INTERNAL Gemini-B1 closure: prior text said "on the identical data" which contradicts the closure text in this same abstract noting the pre/post-MASTER values differ in mask, map, monopole-treatment, and MASTER inversion; the wider-coverage subsample-mask qualifier is the accurate characterization).
 
 Shamir~(2012, 2020, 2022)'s $\sim\!2$--$4\%$ asymmetry claim differs
 from the present measurement by a factor of $\sim\!6$--$12$ in
@@ -2113,7 +2113,7 @@ label-noise systematic, which would attenuate under the HC cut
 (as it does in BASS+MzLS and DES). The DECaLS HC residual
 indicates that the DECaLS-specific systematic is correlated with
 the underlying galaxy population sampled by DECaLS rather than
-with classifier ambiguity per se. \textbf{P4-EXT 3-vendor convergent MAJOR closure (LEE correction)}: across the 15-cell grid ($3$ imaging legs $\times$ $5$ confidence strata), the family-wise Bonferroni penalty at $\alpha\!=\!0.05$ is $z_{\rm Bonf}^{\rm 15} \approx 2.94\sigma$ and at the tighter $\alpha\!=\!0.001$ is $z_{\rm Bonf}^{\rm 15,\alpha=0.001} \approx 4.04\sigma$. Under this correction the DECaLS [0.5,0.6) cell ($+4.50\sigmaunit$, $+4.53\sigmaunit$) survives both thresholds; the DECaLS [0.8,1.0) cell ($+3.76\sigmaunit$, $+4.06\sigmaunit$) survives the $\alpha\!=\!0.05$ Bonferroni but is marginal at $\alpha\!=\!0.001$. The DECaLS [0.5,0.6) cell is therefore the load-bearing finding (survives the tighter $\alpha\!=\!0.001$ Bonferroni); the DECaLS [0.8,1.0) cell is reported as a supporting trend rather than an independent significant detection. A full max-statistic null using the same MC pipeline (with $\max|z|$ over the 15-cell grid for every null realization) is the canonical resolution and is queued for v1.0.105+.
+with classifier ambiguity per se. \textbf{P4-EXT 3-vendor convergent MAJOR closure (LEE correction)}: across the 15-cell grid ($3$ imaging legs $\times$ $5$ confidence strata), the family-wise Bonferroni penalty at $\alpha\!=\!0.05$ is $z_{\rm Bonf}^{\rm 15} \approx 2.94\sigma$ and at the tighter $\alpha\!=\!0.001$ is $z_{\rm Bonf}^{\rm 15,\alpha=0.001} \approx 3.99\sigma$ (P4-INTERNAL Gemini-B2 arithmetic correction: prior v1.0.104 quoted $4.04\sigma$ which corresponds to $m\!\approx\!19$ two-tailed, not $m\!=\!15$; the correct two-tailed Bonferroni for $p_{\rm per-test}\!=\!0.001/15\!=\!6.66\!\times\!10^{-5}$ is $3.99\sigma$. The conceptual conclusion is unchanged since the DECaLS [0.5,0.6) $+4.50\sigma$ cell still survives this corrected threshold). Under this correction the DECaLS [0.5,0.6) cell ($+4.50\sigmaunit$, $+4.53\sigmaunit$) survives both thresholds; the DECaLS [0.8,1.0) cell ($+3.76\sigmaunit$, $+4.06\sigmaunit$) survives the $\alpha\!=\!0.05$ Bonferroni but is marginal at $\alpha\!=\!0.001$. The DECaLS [0.5,0.6) cell is therefore the load-bearing finding (survives the tighter $\alpha\!=\!0.001$ Bonferroni); the DECaLS [0.8,1.0) cell is reported as a supporting trend rather than an independent significant detection. A full max-statistic null using the same MC pipeline (with $\max|z|$ over the 15-cell grid for every null realization) is the canonical resolution and is queued for v1.0.105+.
 \end{itemize}
 
 This decomposition strengthens, not weakens, the methods-paper
