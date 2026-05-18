@@ -1,0 +1,40 @@
+{
+  "purpose": "Grok-B1 R16 demand: does a real cosmological dipole at A=1.7% (the binomial-null-inferred amplitude) survive the BOOTSTRAP null? This is the rigorous test of whether bootstrap-null verdict rules out interpretation (i).",
+  "version": "v1.0.110-bootstrap-injection-test",
+  "date_utc": "2026-05-18T22:54:25Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_bootstrap_null": 200,
+    "n_injection": 80,
+    "seed": 42,
+    "injection_amplitude_pct": 1.7,
+    "n_spirals": 3201160
+  },
+  "data_unmodified": {
+    "c1": 1.5132328807500643e-05,
+    "sigma_vs_bootstrap": -0.21849327274971292
+  },
+  "bootstrap_null": {
+    "mean": 1.7431604012518715e-05,
+    "std": 1.052332264550737e-05
+  },
+  "binomial_null": {
+    "mean": 2.884264133308875e-06,
+    "std": 3.2636854441012013e-06
+  },
+  "injection_at_A_1pct7": {
+    "median_sigma_vs_bootstrap_null": -0.4921687830521737,
+    "median_sigma_vs_binomial_null": 2.870401924314434,
+    "P_sigma_gt_2_bootstrap": 0.0375,
+    "P_sigma_gt_3_bootstrap": 0.0125,
+    "P_sigma_gt_2_binomial": 0.625,
+    "P_sigma_gt_3_binomial": 0.4875,
+    "n_mc_injections": 80
+  },
+  "verdict": {
+    "if_median_bootstrap_gtr_3": "real 1.7% dipole DOES survive bootstrap \u2192 'interp (i) ruled out by bootstrap' is incorrect",
+    "if_median_bootstrap_LT_1": "bootstrap is too wide for 1.7% detection \u2192 can't use bootstrap as (i) rejector",
+    "if_median_bootstrap_1_to_3": "intermediate \u2014 bootstrap softens a real dipole's significance by ~3x; the data's \u03c3=-0.22 may indicate either no dipole or substantial sensitivity loss"
+  }
+}
