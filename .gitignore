@@ -39,6 +39,7 @@ pipelines/pipeline_a_cmb/*.fits
 project-context/prompt-history.md
 pipelines/h200_results/phase1_3_queue_v2/outputs/gaia-dr3-expanded/gaia_anomalies.csv
 .gstack/
+site/public/old/
 pipelines/h200_results/pod_backup_20260408_full/bigbounce/data/planck/
 pipelines/h200_results/pod_backup_20260408_full/bigbounce/backups/
 pipelines/h200_results/pod_backup_20260408_full/outputs/gaia-dr3-expanded/gaia_anomalies.csv
@@ -46,3 +47,10 @@ pipelines/h200_results/pod_backup_20260408_full/outputs/gaia-dr3-expanded/gaia_a
 # Paper 3 pod-regenerated raw scan outputs (too large for git; reproducible from pod_runs/HANDOFF.md)
 pipelines/p3_anomaly_engine/pod_runs/*_raw/
 pipelines/p3_anomaly_engine/hf_staging_pod/
+.vercel
+.env*.local
+
+# Cobaya iter2 backup binary artifacts (canonical copy on HF bamfai/bigbounce-mcmc; manifest + small files in repo)
+reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_chain_bundle.tar.gz
+reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_unpacked/
+reproducibility/cosmology/iter2_converged_2026-05-18/mcmc_iter2_omp6.log
