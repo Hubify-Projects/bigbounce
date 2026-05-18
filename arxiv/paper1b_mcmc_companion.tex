@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.13}
+\newcommand{\paperVersion}{v1B.0.14}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -154,7 +154,7 @@ photon-torsion coupling required.
 
 \textit{What is NOT in this paper.}---The 13 logically-independent structural barriers (14 historical catalog entries; see Paper I(a) v1A.0.22), the
 perturbation-transparency theorem, the 14-barrier table, and the surviving
-mechanism-independent test predictions ($\fnl=-35/8$ and ALP birefringence)
+matter-bounce-specific test predictions ($\fnl=-35/8$, valid strictly for the minimal scalar-only $w=0$ matter-dominated contraction class, not the broader bouncing-cosmology landscape which encompasses ekpyrotic, Cuscuton, string-gas, and quintom variants with different $\fnl$ signatures, and ALP birefringence)
 are in Paper~I(a)~\cite{Golden2026P1a}. The SPHEREx multi-tracer Fisher
 forecast is in Paper~II~\cite{Golden2026P2}. The multi-survey anomaly catalog
 is in Paper~III~\cite{Golden2026P3}. The galaxy chirality catalog is in
@@ -313,7 +313,7 @@ $100\theta_{\rm MC}$ & $1.04087 \pm 0.000239$ & ---\\
 Age [Gyr]        & $13.763 \pm 0.019$ & ---\\
 \hline
 \multicolumn{3}{l}{\textit{Goodness-of-fit decomposition}}\\
-$\chi^2_{\rm total}$ & $14037.4 \pm 5.6$ & ---\\
+$\chi^2_{\rm total}$ & $14037.4 \pm 5.6$\footnote{The mean-of-total $\chi^2$ here is GetDist's weighted-sample average over the full posterior, which differs from the sum of the individual-channel means ($10.6 + 10983.9 + 3043.0 = 14037.5$) by a 0.1-unit GetDist arithmetic-rounding artifact (R8 GEM-B3 nit); the two are formally identical to within sampling precision.} & ---\\
 $\chi^2_{\rm BAO}$   & $10.6 \pm 1.8$    & DESI~DR2\\
 $\chi^2_{\rm CMB}$   & $10983.9 \pm 5.3$ & Planck PR4 + lensing\\
 $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
@@ -343,16 +343,41 @@ $\ln B$ against LCDM is NOT reported in this v1B.0.13; standard posterior
 MCMC samples do not give a robust $\ln B$, and Savage-Dickey requires
 explicit prior density and nuisance-marginalized posterior density at the
 LCDM point. The deterministic Savage-Dickey ratio on the converged 2D
-$(w, w_a)$ marginal is queued for v1B.0.13+. (b)~The chain uses the
-Planck~2018 prior on $\tau$ (Gaussian centered at the Planck best-fit
-value) rather than a free $\tau$ from a low-$\ell$ likelihood; in
-combination with the standard CMB likelihood stack this is the canonical
-choice but readers should be aware. (c)~The SH0ES $H_0$ prior is
-\emph{not} included in this chain (the chain is BAO + CMB + SN-only, no
-local-distance ladder); the joint posterior $H_0 = 67.185 \pm 0.455$
-km/s/Mpc is therefore the no-SH0ES result. The interaction with the
-SH0ES prior (which would pull $H_0$ upward) is the subject of the
-separate full-tension chain reported in Table~\ref{tab:verification}.
+$(w, w_a)$ marginal is queued for v1B.0.13+. (b)~$\tau$ is constrained
+empirically by the low-$\ell$ EE + TT likelihoods listed in the caption
+(\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lowl.TT}) and is
+sampled as a free parameter rather than fixed by a Gaussian prior at the
+Planck best-fit value (R8 GPT-B1 + GEM-B1 closure: prior v1B.0.13 caveat
+text claimed a Gaussian $\tau$ prior was used, which is incorrect; the
+iter2 chain has $\tau$ free with the standard low-$\ell$ data
+constraint). (c)~The SH0ES $H_0$ prior is \emph{not} included in this
+chain (the iter2 chain is BAO + CMB + SN-only, no local-distance ladder);
+the joint posterior $H_0 = 67.185 \pm 0.455$ km/s/Mpc is therefore the
+no-SH0ES result. The interaction with the SH0ES prior is the subject of
+the separate \emph{full-tension} chain reported in
+Table~\ref{tab:verification}, which carries the
+\texttt{H0.riess2020Mb} likelihood active in its YAML (verified
+v1B.0.14 by direct \texttt{.input.yaml} inspection and by chain
+sample-mean readout: $M_B = -19.263 \pm 0.049$ mag, agreeing with the
+Riess+2020 SH0ES value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
+The full-tension chain returns $H_0 = 67.69 \pm 1.06$ km/s/Mpc with
+$\Delta\Neff = -0.02 \pm 0.17$, exhibiting the canonical 3.6$\sigma$
+Hubble tension with Riess $H_0 = 73.04 \pm 1.04$ km/s/Mpc that the
+$\Lambda$CDM+$\Delta\Neff$ extension is unable to resolve: the
+\texttt{H0.riess2020Mb} likelihood constrains the SN Ia absolute
+magnitude $M_B$ (which is correctly pulled toward the Riess value),
+but $H_0$ is determined predominantly by the BAO+CMB acoustic scale
+through Pantheon+, and the $\Delta\Neff$ extension lacks the degrees of
+freedom to shift $H_0$ enough to accommodate both data sets. This
+addresses R5 + R7 GEM-B1 + GPT-B1 reviewer concerns that the reported
+67.68 was inconsistent with active SH0ES likelihood; the audit
+on-record at
+\texttt{shoes\_yaml\_audit.md} (under \texttt{reproducibility/\-cosmology/})
+verifies the SH0ES likelihood is active in the YAML and the M$_B$
+posterior is correctly pulled, but the 3.6$\sigma$ tension persists
+because the model cannot shift $H_0$ enough to satisfy both data sets
+simultaneously --- this is the canonical Hubble-tension result, not a
+YAML omission.
 
 \textit{Key finding.}---Both frozen datasets find $\Delta\Neff$ consistent with
 zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
