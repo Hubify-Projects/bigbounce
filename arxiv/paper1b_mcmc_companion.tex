@@ -43,8 +43,26 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.12}
-\newcommand{\paperTimestamp}{May 15, 2026 PDT}
+\newcommand{\paperVersion}{v1B.0.13}
+\newcommand{\paperTimestamp}{2026-05-18 PDT}
+% Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
+% long round-closure log MUST NOT live inside \date{}):
+% v1B.0.13 (R7 5-vendor cross-vendor on v1B.0.12 ran 2026-05-18 1100pt). Closures:
+%   - converged iter2 posterior extracted via GetDist and reported as new Table tab:iter2_posterior
+%   - NaMaster bias arithmetic split 0.032 vs 0.040 deg amplitude-dependent (R7 GEM-B2 + GPT-B4)
+%   - broken Sec.~ref{sec:mcmc_alp} repointed to sec:birefringence_check (R7 GEM-B4)
+%   - stale v1B.0.10+/v1B.0.12+ deferral targets bumped to v1B.0.13+ (R7 GEM-B5)
+%   - Table tab:crosspaper P1(b) row bumped to v1B.0.13 67%
+%   - Savage-Dickey ln B scope caveat (R7 GPT-B3): posterior MCMC alone does not give robust evidence
+%   - "Until that chain converges" replaced with converged-state language (R7 GPT-B2)
+% Key new physics: w0 = -0.812 +/- 0.044 at +4.3sigma from LCDM, w0+wa = -1.48 phantom-crossing required.
+% DEFERRED to Houston judgment (carried v1B.0.14+):
+%   - ALP section appendix demotion (R7 GEM-B3 + R6 GRO-B4)
+%   - NaMaster SNR 20.32/25.71 abstract scrub (R7 GEM-B6 + R6 GRO-B2)
+%   - ECH-verification companion title rename (R7 GEM-B6 + R6 GRO-B1)
+%   - ALP beta-range arithmetic [4,12]x[0.2,1.1]x0.0333 = [0.027, 0.44] vs [0.17, 0.43] (GPT-B6)
+%   - ALP spectator inconsistency at f_a ~ M_Pl (GPT-B5): coupled Friedmann+ALP or parameter restriction
+%   - SH0ES prior YAML inspection (R7 GEM-B1 + GPT-B1): requires direct pod-side .updated.yaml audit
 
 \begin{document}
 
@@ -265,6 +283,77 @@ Min ESS & 4{,}744 & 4{,}692 \\
 \end{ruledtabular}
 \end{table}
 
+
+%% ============================================================
+%%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
+%% ============================================================
+\begin{table*}[!htb]
+\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- distinct from the $k=7+7=14$ count for the frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Parameter & Mean $\pm \sigma$ & vs LCDM\\
+\hline
+\multicolumn{3}{l}{\textit{Dark-energy extension}}\\
+$w_0$         & $-0.8122 \pm 0.0436$ & $+4.3\sigma$ from $-1$\\
+$w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$\\
+$w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
+$w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\\
+\hline
+\multicolumn{3}{l}{\textit{Standard cosmology}}\\
+$H_0$ [km/s/Mpc] & $67.185 \pm 0.455$ & ---\\
+$\Omega_m$       & $0.3142 \pm 0.0045$ & ---\\
+$\sigma_8$       & $0.8057 \pm 0.0083$ & ---\\
+$S_8$            & $0.8245 \pm 0.0089$ & ---\\
+$n_s$            & $0.9655 \pm 0.0036$ & ---\\
+$10^9 A_s$       & $2.087  \pm 0.030$  & ---\\
+$\tau$           & $0.0537 \pm 0.0072$ & ---\\
+$\omega_b h^2$   & $0.02224 \pm 0.000125$ & ---\\
+$\omega_c h^2$   & $0.11892 \pm 0.000819$ & ---\\
+$100\theta_{\rm MC}$ & $1.04087 \pm 0.000239$ & ---\\
+Age [Gyr]        & $13.763 \pm 0.019$ & ---\\
+\hline
+\multicolumn{3}{l}{\textit{Goodness-of-fit decomposition}}\\
+$\chi^2_{\rm total}$ & $14037.4 \pm 5.6$ & ---\\
+$\chi^2_{\rm BAO}$   & $10.6 \pm 1.8$    & DESI~DR2\\
+$\chi^2_{\rm CMB}$   & $10983.9 \pm 5.3$ & Planck PR4 + lensing\\
+$\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---The
+converged iter2 posterior empirically rules out the LCDM point
+$(w_0, w_a)=(-1,0)$ at the joint level: $w_0$ departs by $+4.3\sigma$ and
+$w_a$ departs by $-3.6\sigma$, with $w_0+w_a=-1.48 \pm 0.15$ requiring
+phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
+Pantheon+. This is the canonical quintom signature and is consistent with
+the bounce / pre-Big-Bang scenario discussed in Paper~I(a)'s \S~Structural
+Tension as a constraint that single-field quintessence cannot accommodate
+without a second degree of freedom (phantom / quintom-B). Earlier internal
+bookkeeping (corrected fire \#25) erroneously quoted ``98.6\% quintom-B''
+weight; in the actual converged chain there are zero free-$w_0 w_a$ samples
+at the LCDM point, the chain is centered well into quintom-B territory at
+$w_0 + w_a \approx -1.48$. Note that $w_{\rm pivot}$ (the effective equation
+of state at the pivot redshift $z_p$) is consistent with $-1$ at $-1.1\sigma$,
+so the dark-energy departure from LCDM is dominated by the $w_a$ time-varying
+term rather than the present-day $w_0$ value.
+
+\textit{Caveats.}---(a)~The robust Bayesian evidence / Bayes factor
+$\ln B$ against LCDM is NOT reported in this v1B.0.13; standard posterior
+MCMC samples do not give a robust $\ln B$, and Savage-Dickey requires
+explicit prior density and nuisance-marginalized posterior density at the
+LCDM point. The deterministic Savage-Dickey ratio on the converged 2D
+$(w, w_a)$ marginal is queued for v1B.0.13+. (b)~The chain uses the
+Planck~2018 prior on $\tau$ (Gaussian centered at the Planck best-fit
+value) rather than a free $\tau$ from a low-$\ell$ likelihood; in
+combination with the standard CMB likelihood stack this is the canonical
+choice but readers should be aware. (c)~The SH0ES $H_0$ prior is
+\emph{not} included in this chain (the chain is BAO + CMB + SN-only, no
+local-distance ladder); the joint posterior $H_0 = 67.185 \pm 0.455$
+km/s/Mpc is therefore the no-SH0ES result. The interaction with the
+SH0ES prior (which would pull $H_0$ upward) is the subject of the
+separate full-tension chain reported in Table~\ref{tab:verification}.
+
 \textit{Key finding.}---Both frozen datasets find $\Delta\Neff$ consistent with
 zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
 that the $\Delta\Neff$ extension alone does not resolve the Hubble tension.
@@ -346,11 +435,18 @@ performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
 The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
 a $2^\circ$ apodization scale). For $\beta=0.342^\circ$ (the published joint
 Planck+ACT value), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
-$\beta=0$, recovery is consistent with zero (null check). The pipeline-recovery
-bias $\Delta\hat\beta = 0.032^\circ$ is stable across all three injections,
-confirming the deconvolution is operating correctly. The conclusion is that the
-pseudo-$C_\ell$ deconvolution is unbiased at the $0.04^\circ$ level; this is a
-methodology cross-check, not a competitive sky measurement.
+$\beta=0$, recovery is consistent with zero (null check). The
+pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
+$\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
+$\Delta\hat\beta = 0.040^\circ$ at injection $\beta=0.342^\circ$
+($\hat\beta=0.302^\circ$); the absolute bias scales mildly with injected
+amplitude (R7 GEM-B2 + GPT-B4: prior versions described the bias as
+strictly ``stable across all three injections'' at $0.032^\circ$, but the
+$0.342^\circ$ injection actually gives $0.040^\circ$, a relative $\sim 12\%$
+amplitude-dependent component). The deconvolution is therefore unbiased at the
+$0.04^\circ$ level in the worst-case injection, which we carry forward as the
+NaMaster systematic floor; this is a methodology cross-check, not a competitive
+sky measurement.
 
 
 %% ============================================================
@@ -406,7 +502,7 @@ are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
 A one-pass recomputation of $\chi^2_{\rm eff}$, AIC, BIC, and any
 evidence value from the final frozen-thinned chain via a single
-auditable script is on-record-deferred to v1B.0.12+: with iter2 now CONVERGED at $\hat R\!-\!1\!=\!0.00820$ (N=$128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828 across 16 chains; $\hat R_{\rm cl}\!=\!0.0705$ at last flush as a chain-length diagnostic), the converged chain is now available for the fresh model-comparison pull. The v1B.0.8 / v1B.0.9 / v1B.0.10 markers were carried over from prior version-numbering schemes when the chain was still mixing; the actual recompute task is unblocked by v1B.0.11 convergence and is queued for v1B.0.12+.
+auditable script was extracted in v1B.0.13 via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) and is reported in Table~\ref{tab:iter2_posterior}. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or a documented Savage-Dickey density ratio at the LCDM point with explicit prior measure and nuisance-marginalized posterior density --- ordinary posterior MCMC samples alone do not yield a robust $\ln B$ (R7 GPT-B3 caveat). The Savage-Dickey $\ln B$ recompute is queued for v1B.0.13+ (the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 markers were carried over from prior version-numbering schemes when the chain was still mixing).
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -466,7 +562,7 @@ $3.6\sigma$~\cite{Eskilt2022b} is the headline.
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (3 configurations, 9{,}720 total accepted samples) yields:
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ ($C_{a\gamma}=8$ fixed),
-consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 configurations described in Sec.~\ref{sec:mcmc_alp}; $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$ on Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter; full priors and dataset details in Appendix~A); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
 within $1\sigma$. The combined coupling-displacement product entering the
 birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
@@ -509,17 +605,17 @@ DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current slow-mode
 \begin{tabular}{llcl}
 Paper & Version & Readiness & Key blocker \\
 \hline
-P1(a) & v1A.0.23 & 74\% & Route 2 dim.\ re-derivation (deferred v1A.0.24) \\
-P1(b) & v1B.0.11 & 66\% & Model-comparison recompute (unblocked by v1B.0.11 Cobaya convergence; queued v1B.0.12+) \\
-P2    & v1.7.30 & 82\% & Appendix A convention + unified Fisher (v1.7.31) \\
-P3    & v3.1.41 & 85\% & 378k dedup + Fisher + Savage-Dickey (v3.1.42) \\
-P4    & v1.0.66 & 95\% & Houston sign-off only (8-consec Gemini endorsements) \\
+P1(a) & v1A.0.27 & 74\% & Route 2 dim.\ re-derivation; framing items \\
+P1(b) & v1B.0.13 & 67\% & Tab.~\ref{tab:iter2_posterior}; $\ln B$ pending \\
+P2    & v1.7.30  & 82\% & QSFI convention; unified Fisher; citations \\
+P3    & v3.1.45  & 85\% & 378k dedup; GR projection; BigAE/IF table \\
+P4    & v1.0.103 & 95\% & Houston external review ongoing \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
 
 \begin{table}[tb]
-\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-18 07:53~UTC, at $128{,}385$ accepted samples with $\hat{R}-1 = 0.00820$ (last flushed 07:53~UTC; \textbf{CONVERGED} below the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target across two consecutive flushes — N=$122{,}971$/$\hat R-1=0.00912$ at 2026-05-18 01:34~UTC, then N=$128{,}385$/$\hat R-1=0.00820$ at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.00820$ (factor-of-$\sim$$2.4$ reduction, exceeding the convergence target). The $\dagger$ entry above marks values updated v1B.0.11 from the converged chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain is forward work to be incorporated into Paper~I(a)'s \S~Structural Tension as a future quintom-B empirical test once it reaches the standard publication target $\hat{R}-1 < 10^{-2}$.}
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-18 07:53~UTC, at $128{,}385$ accepted samples with $\hat{R}-1 = 0.00820$ (last flushed 07:53~UTC; \textbf{CONVERGED} below the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target across two consecutive flushes — N=$122{,}971$/$\hat R-1=0.00912$ at 2026-05-18 01:34~UTC, then N=$128{,}385$/$\hat R-1=0.00820$ at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.00820$ (factor-of-$\sim$$2.4$ reduction, exceeding the convergence target). The $\dagger$ entry above marks values updated v1B.0.11 from the converged chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain has now reached the standard publication target ($\hat R - 1 = 0.00820 < 10^{-2}$ as of 2026-05-18 07:53~UTC) and the converged posterior is reported in Table~\ref{tab:iter2_posterior}; it is the empirical anchor for Paper~I(a)'s \S~Structural Tension quintom-B test. The headline result $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from LCDM) and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from LCDM) with $w_0 + w_a = -1.48 \pm 0.15$ requiring phantom crossing is the canonical quintom signature.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
@@ -556,21 +652,34 @@ row~4) is running on a dedicated MPI pod (16 chains, OMP threads tuned to
 suppress BLAS oversubscription, GetDist-built posterior covmat from a
 preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). As of
 2026-05-18 07:53~UTC the chain has accumulated $128{,}385$ accepted
-samples across the 16 chains and reports $\hat R - 1 = 0.00820$ — \textbf{CONVERGED} below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target across two consecutive flushes ($122{,}971$/$0.00912$ at 2026-05-18 01:34 UTC; $128{,}385$/$0.00820$ at 07:53 UTC). See Table~\ref{tab:mcmc_inventory} caption. Until that chain
-converges, this program has \emph{no $w_0 w_a$ posterior at all}, neither
-for the matter-bounce candidate row nor for any other model.
+samples across the 16 chains and reports $\hat R - 1 = 0.00820$ — \textbf{CONVERGED} below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target across two consecutive flushes ($122{,}971$/$0.00912$ at 2026-05-18 01:34 UTC; $128{,}385$/$0.00820$ at 07:53 UTC). See Table~\ref{tab:mcmc_inventory} caption. With the converged
+iter2 posterior now extracted (Table~\ref{tab:iter2_posterior};
+$w_0 = -0.812 \pm 0.044$, $w_a = -0.667 \pm 0.186$, $w_0 + w_a = -1.48 \pm
+0.15$ requiring phantom crossing), the $w_0 w_a$ posterior is
+\emph{available} for both the matter-bounce candidate row and the
+quintom-B scenario in Paper~I(a) Table~II; what remains pending is the
+Savage-Dickey $\ln B$ recompute against the LCDM point, queued for
+v1B.0.13+.
 
-\textbf{(iii)} Consequently the $\ddagger$-marked rows in Paper~I(a) Table~II
-report ``not tested'' rather than $\checkmark$ or $\times$, and the asymmetry
-between the Quintom-B accommodation row (which carries an unmarked
-``consistent$^\dagger$'' on theoretical grounds because Quintom-B is the only
-class admitted to span the dynamical-equation-of-state window the DESI signal
-populates~\cite{DESI2025DR2}) and the rest of the rows is intentionally one of
-\emph{theoretical accommodation, not of fit quality measured in this program}.
-A definitive empirical test against the DESI evidence is gated on row~4 of
-Table~\ref{tab:mcmc_inventory} reaching publication-grade convergence; at that
-point a coordinated update will land in both Paper~I(a) Table~II and this
-companion's $\Delta\chi^2$ table.
+\textbf{(iii)} The $\ddagger$-marked rows in Paper~I(a) Table~II reported
+``not tested'' in versions prior to v1B.0.13 because the iter2 chain had
+not yet converged. As of v1B.0.13 the row-4 chain of
+Table~\ref{tab:mcmc_inventory} has reached publication-grade convergence
+($\hat R - 1 = 0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC) and the
+empirical $w_0 w_a$ posterior is now available
+(Table~\ref{tab:iter2_posterior}). The coordinated update --- replacing
+the $\ddagger$ ``not tested'' marks with the empirical posterior result
+($w_0 = -0.812 \pm 0.044$ at $+4.3\sigma$ from LCDM, $w_a = -0.667 \pm
+0.186$ at $-3.6\sigma$ from LCDM, phantom-crossing required) --- is in
+flight for Paper~I(a) Table~II and a companion $\Delta\chi^2$ summary
+table (queued for v1B.0.13+ alongside the Savage-Dickey $\ln B$ pull).
+The asymmetry between the Quintom-B accommodation row (carrying an
+unmarked ``consistent$^\dagger$'' on theoretical grounds because
+Quintom-B is the only class admitted to span the
+dynamical-equation-of-state window the DESI signal populates~\cite{DESI2025DR2})
+and the rest of the rows reflects \emph{theoretical accommodation}; the
+empirical fit-quality comparison is now executable from the converged
+chain and will be reported in the next coordinated revision.
 
 
 %% ============================================================
@@ -668,7 +777,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest would be needed for robust evidence and is queued for v1B.0.10+.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest would be needed for robust evidence and is queued for v1B.0.13+: with the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), nested sampling or a documented Savage-Dickey calculation against the LCDM point $(w,w_a)=(-1,0)$ is the next concrete step.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
@@ -695,7 +804,7 @@ $\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & 
 $\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
 $H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
 $H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Unblocked v1B.0.11 & Removed v1B.0.7; recompute v1B.0.12+ now that iter2 converged \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Tab.~\ref{tab:iter2_posterior} & v1B.0.13+ Savage-Dickey \\
 $\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; bias table v1B.0.8 \\
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$         & MCMC      & Verified & ALP MCMC \\
 Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\

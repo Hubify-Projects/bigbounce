@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-05-18 PDT (tick 84 — R6 partial; vendor timeouts; safe Grok closures on P1A/P1B/P3; framing/scope deferred to Houston) -->
+<!-- last_updated: 2026-05-18 PDT (tick 85 — R7 5-vendor full coverage; CONVERGED-CHAIN POSTERIOR EXTRACTION → P1B v1B.0.13 with new Table 1B w0=-0.812±0.044 +4.3σ from LCDM, wa=-0.667±0.186, phantom-crossing required; 15 closures across P1A v1A.0.28 + P1B v1B.0.13 + P3 v3.1.46 in single bundled wave; P1B 66→67; P1A/P3/P4 unchanged) -->
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 

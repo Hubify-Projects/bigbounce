@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.27}
+\newcommand{\paperVersion}{v1A.0.28}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 
 \begin{document}
@@ -330,7 +330,7 @@ introduce as a phenomenological ansatz the parity-odd term:
 \begin{equation}\label{eq:Seff}
 S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathring{R}],
 \end{equation}
-where $M = M_{\rm area\text{-}gap}\sim\sqrt{\gamma}\,\MPl$ is the LQG area-gap
+where $M = M_{\rm area\text{-}gap}\sim\MPl/\sqrt{\gamma}$ is the LQG area-gap (from the LQG area-gap $\Delta \propto \gamma\,\ell_P^2$, the inverse-length / mass scale is $M_\Delta \sim M_{\rm Pl}/\sqrt{\gamma}$ up to numerical constants; v1A.0.28 R7 GPT-m1 closure: prior $M\sim\sqrt{\gamma}\,\MPl$ inverted the scaling)
 mass scale and $\alpha$ is a dimensionless coupling.
 
 In components, the leading contribution reduces to
@@ -580,7 +580,7 @@ deferred to a follow-up theory paper. The robustness check provided by the
 14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
 
-\paragraph{Internal cross-vendor review history (v1A.0.21; status updated v1A.0.24 — Route 2 dimensionless reduction is now executed in-line in Sec.~\ref{sec:route2} below, no longer deferred). \textbf{NOTE FOR JOURNAL SUBMISSION (per R6 Grok-M3 + multi-paper convergent):} this paragraph is internal version-history tracking and SHOULD BE REMOVED before submission to a refereed journal; it is retained in the arXiv-tracked source for provenance audit only.}
+% v1A.0.28 R7 Grok-B1 closure: previously this paragraph carried a full internal cross-vendor review history with a REMOVE BEFORE JOURNAL SUBMISSION tag. The paragraph has been removed entirely; provenance is retained via git history at the bigbounce repository (commit log + project-context/peer-reviews/ directory of per-round reviewer output).
 A multi-vendor adversarial-review round (GPT-5.5 / Gemini-2.5-Pro /
 Grok-4-fast / Perplexity Sonar Pro / DeepSeek-V3.2, all queried via the
 OpenRouter unified API on 2026-05-14) surfaced three substantive
@@ -641,7 +641,7 @@ i.e.\ a four-fermion operator suppressed by $M_{\rm Pl}^{-2}$ and
 \emph{parity-even} in the $C\!P$-conserving Standard Model sector. The
 energy density that this operator contributes at cosmologically relevant
 fermion densities $n_\psi$ is bounded above by
-$\rho_{\rm NJL} \sim \kappa\,n_\psi^2/m^2 \sim n_\psi^2/(m^2 M_{\rm Pl}^2)$,
+$\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy density has the correct mass-dim~$+4$; v1A.0.28 R7 GPT-M1 + GEM convergent closure: prior $/m^2$ factor was a transcription error giving dim~$+2$ rather than dim~$+4$),
 which for the largest plausible cosmic fermion densities at recombination
 or post-recombination is many orders of magnitude below the present-day
 dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$.
@@ -759,8 +759,8 @@ fermion axial current, which would imprint on the CMB as a uniform
 rotation of the polarization plane. The classical reference for this
 mechanism is Lue, Wang \& Kamionkowski~\cite{LueWangKamionkowski1999},
 who derived the conversion from a parity-odd action term
-$\mathcal{L}_{\rm CS} \supset (\alpha/M)\,\partial_\mu\theta\,
-\tilde F^{\mu\nu} F_{\mu\nu}$ into the rotation angle
+$\mathcal{L}_{\rm CS} \supset -\tfrac{1}{4}\,(\alpha/M)\,\theta\,
+\tilde F_{\mu\nu} F^{\mu\nu}$ (the standard ALP-photon Chern-Simons coupling with all indices fully contracted; the integrated-by-parts equivalent $(\alpha/M)\,\partial_\mu\theta\, K^\mu$ where $K^\mu$ is the Chern-Simons 4-current is also valid; v1A.0.28 R7 GPT-M3 closure: prior $(\alpha/M)\,\partial_\mu\theta\, \tilde F^{\mu\nu} F_{\mu\nu}$ left $\mu$ uncontracted on $\partial_\mu\theta$) into the rotation angle
 \begin{equation}
 \beta = \frac{\alpha}{M}\,\Delta\theta_{\rm rec\to today}
 \sim \frac{\alpha}{M}\,\sqrt{2\rho_\theta/m_\theta^2},
@@ -1064,9 +1064,9 @@ non-minimal couplings beyond the minimal framework.
 
 Gravitational wave production from the ECH bounce is bounded above by:
 \begin{equation}
-\Omega_{\rm GW}^{\rm ECH} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \sim 10^{-2},
+\Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \simeq 0.07\text{--}0.17,
 \end{equation}
-far below the NANOGrav signal range and too small to amplify any vacuum state.
+where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from Sec.~\ref{sec:lqc} (v1A.0.28 R7 GPT-M5 closure: prior $\sim 10^{-2}$ arithmetic mistook the square as ${\sim}(\rhocrit/\rhoPl)^4$ rather than ${\sim}(\rhocrit/\rhoPl)^2$). This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (queued); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
 
 \subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
 
