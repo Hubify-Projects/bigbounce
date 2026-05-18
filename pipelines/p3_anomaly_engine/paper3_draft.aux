@@ -32,7 +32,7 @@
 \newlabel{fig:architecture}{{1}{4}{\BigAE {} architecture. Encoder (top) compresses the input to a per-survey latent bottleneck; decoder (bottom) reconstructs the input. All layers use ReLU activations; batch normalization (BN) and dropout are applied in the first two encoder layers only. The anomaly score $S$ is the total per-element mean-squared reconstruction error (Eq.~\ref {eq:score})}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Training and Scoring}{4}{section*.6}\protected@file@percent }
 \newlabel{sec:training}{{II\,B}{4}{}{section*.6}{}}
-\newlabel{eq:score_raw}{{1}{4}{}{equation.1}{}}
+\newlabel{eq:score_raw}{{1}{5}{}{equation.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{\numberline {a}Canonical anomaly score $S$ (one definition for the whole paper).}{5}{section*.7}\protected@file@percent }
 \newlabel{eq:score}{{2}{5}{}{equation.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{\numberline {b}In-sample scoring and held-out validation.}{5}{section*.8}\protected@file@percent }
@@ -171,10 +171,10 @@
 \newlabel{tab:desi_bands}{{V}{33}{DESI DR1 anomaly classification by spectral-arm dominance. Multi-band anomalies (77.2\%) deviate across all three DESI arms, consistent with genuine spectral anomalies}{table.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces  Sensitivity of $\sigma (f_{\rm  NL})$ to the bias enhancement factor $\alpha $. Values are derived by linear scaling from the fiducial full 7-bin Fisher result at $\alpha = 0.15$ (boldface row; matches the Section~\ref {sec:fnl} baseline exactly). The standard DESI-only baseline is $\sigma (f_{\rm  NL})^{\rm  std} = 8.98$.}}{33}{table.6}\protected@file@percent }
 \newlabel{tab:sensitivity}{{VI}{33}{Sensitivity of $\sigfnl $ to the bias enhancement factor $\alpha $. Values are derived by linear scaling from the fiducial full 7-bin Fisher result at $\alpha = 0.15$ (boldface row; matches the Section~\ref {sec:fnl} baseline exactly). The standard DESI-only baseline is $\sigfnl ^{\rm std} = 8.98$}{table.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Astrophysical Taxonomy Image Galleries}{33}{section*.50}\protected@file@percent }
-\newlabel{app:galleries}{{D}{33}{}{section*.50}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces  Multi-tracer Fisher $\sigma (f_{\rm  NL})$ vs.\ tracer number density $\bar  n$ for the canonical 5-tracer configuration of \S  \ref {sec:fnl}. The dashed gray line marks the dense-tracer limit ($\sigma (f_{\rm  NL})= 11.71$); the dotted dark-red line marks the single-tracer baseline ($\sigma (f_{\rm  NL})= 16.85$). Vertical orange and goldenrod lines mark the gold ($\bar  n = 8.5\times 10^{-6}$) and silver ($\bar  n = 4.5\times 10^{-5}$) anomaly sub-samples. The Heinrich-\textit  {et~al.}\ \S  IV $15$--$30\%$ Fisher-info penalty range corresponds to $\sigma (f_{\rm  NL})= 12.56$--$13.35$ at the canonical configuration.}}{33}{figure.12}\protected@file@percent }
 \newlabel{fig:shotnoise_sensitivity}{{12}{33}{Multi-tracer Fisher $\sigfnl $ vs.\ tracer number density $\bar n$ for the canonical 5-tracer configuration of \S \ref {sec:fnl}. The dashed gray line marks the dense-tracer limit ($\sigfnl = 11.71$); the dotted dark-red line marks the single-tracer baseline ($\sigfnl = 16.85$). Vertical orange and goldenrod lines mark the gold ($\bar n = 8.5\times 10^{-6}$) and silver ($\bar n = 4.5\times 10^{-5}$) anomaly sub-samples. The Heinrich-\etal \^^M\S IV $15$--$30\%$ Fisher-info penalty range corresponds to $\sigfnl = 12.56$--$13.35$ at the canonical configuration}{figure.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Astrophysical Taxonomy Image Galleries}{33}{section*.50}\protected@file@percent }
+\newlabel{app:galleries}{{D}{33}{}{section*.50}{}}
 \citation{Foreman-Mackey2013}
 \citation{Foreman-Mackey2013}
 \citation{Sesana2016}
@@ -187,7 +187,6 @@
 \@writefile{toc}{\contentsline {paragraph}{\numberline {e}Posterior.}{34}{section*.56}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {f}Diagnostics.}{34}{section*.57}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {g}Cross-checks.}{34}{section*.58}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{\numberline {h}Artifact.}{34}{section*.59}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces  \textbf  {Representative DESI DR1 anomalies across all ten taxonomy families.} One highest-scored member per family; 2-row $\times $ 5-column layout. Border color indicates taxonomy class. Images are DESI Legacy Survey DR9 grz composites. Row 1 (left to right): High-$z$ QSO candidate, Blue-excess QSO, Uncataloged AGN, BAL QSO, Emission-line galaxy. Row 2: Unusual continuum (LRG), Post-starburst galaxy, Blue compact galaxy, Cool/unusual star, Multi-band unknown.}}{35}{figure.13}\protected@file@percent }
 \newlabel{fig:gallery_top10}{{13}{35}{\textbf {Representative DESI DR1 anomalies across all ten taxonomy families.} One highest-scored member per family; 2-row $\times $ 5-column layout. Border color indicates taxonomy class. Images are DESI Legacy Survey DR9 grz composites. Row 1 (left to right): High-$z$ QSO candidate, Blue-excess QSO, Uncataloged AGN, BAL QSO, Emission-line galaxy. Row 2: Unusual continuum (LRG), Post-starburst galaxy, Blue compact galaxy, Cool/unusual star, Multi-band unknown}{figure.13}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces  \textbf  {Blue-excess QSO candidates (top 16 of 16{,}602).} Quasars with anomalous UV-blue excess relative to the \textsc  {BigAE}\ training distribution. Excess continuum flux at $\lambda < 4000$~\r A\ drives the B-arm anomaly score in this family. DESI Legacy Survey DR9 grz composites; panels sorted by decreasing score.}}{36}{figure.14}\protected@file@percent }
@@ -215,6 +214,7 @@
 \citation{Quintin2014,Cai2014}
 \citation{Cai:2009fn,WilsonEwing2012}
 \citation{ACT_DR6}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {h}Artifact.}{45}{section*.59}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {i}Companion multi-PTA datasets.}{45}{section*.60}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {j}Bounce-physics connection (cross-paper coupling).}{45}{section*.61}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {k}Deferred.}{45}{section*.62}\protected@file@percent }
@@ -223,7 +223,7 @@
 \@writefile{toc}{\contentsline {paragraph}{\numberline {a}Scan parameters and result.}{45}{section*.64}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {b}Why the gate fails.}{45}{section*.65}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{\numberline {c}Why no native ACT retrain.}{45}{section*.66}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{\numberline {d}What this appendix is not.}{45}{section*.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {d}What this appendix is not.}{46}{section*.67}\protected@file@percent }
 \bibcite{DESI2025DR1}{{1}{}{{}}{{}}}
 \bibcite{LAMOST_DR10}{{2}{}{{}}{{}}}
 \bibcite{SDSS_DR18}{{3}{}{{}}{{}}}

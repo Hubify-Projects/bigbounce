@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.15}
+\newcommand{\paperVersion}{v1B.0.16}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -694,8 +694,14 @@ $w_0 = -0.812 \pm 0.044$, $w_a = -0.667 \pm 0.186$, $w_0 + w_a = -1.48 \pm
 0.15$ requiring phantom crossing), the $w_0 w_a$ posterior is
 \emph{available} for both the matter-bounce candidate row and the
 quintom-B scenario in Paper~I(a) Table~II; what remains pending is the
-Savage-Dickey $\ln B$ recompute against the LCDM point, queued for
-v1B.0.13+.
+nested-sampling $\ln B$ recompute (PolyChord or MultiNest on the
+identical likelihood stack) against the LCDM point, queued for v1B.0.16+
+pending a separate pod-side run --- the LCDM point lies at $>4\sigma$ in
+the joint marginal tails and is unsampled by the present
+Metropolis-Hastings chain, so a Savage-Dickey readout is not viable
+(R10 GEM-M1 / R11 GEM-B1 closure: prior versions promised a
+Savage-Dickey ratio here, but the unsampled-tail problem requires a
+dedicated nested-sampling run instead).
 
 \textbf{(iii)} The $\ddagger$-marked rows in Paper~I(a) Table~II reported
 ``not tested'' in versions prior to v1B.0.13 because the iter2 chain had
