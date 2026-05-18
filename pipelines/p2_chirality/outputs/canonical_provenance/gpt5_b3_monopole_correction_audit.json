@@ -1,0 +1,47 @@
+{
+  "purpose": "GPT5-B3 BLOCKER truth-audit: canonical-N pseudo-C_l and decoupled C_l recompute with PROPER galaxy-weighted monopole subtraction vs paper's existing implicit subtraction (= 0). Determines whether the +1.85sigma canonical-mask post-MASTER residual is primarily explained by improper monopole removal.",
+  "version": "v1.0.106-gpt5-b3-truth-audit",
+  "date_utc": "2026-05-18T22:30:00Z",
+  "_provenance": {
+    "audit_origin": "P4 internal R-round on v1.0.104 caught GPT5-B3 BLOCKER: paper defines NaMaster input field as f_CW(p) - 0.5 (line 4163) but observed global f_CW = 0.49735, leaving -0.00265 residual monopole (= -0.0053 in asymmetry units). Paper script canonical_l1_namaster_pod.py uses A_p = (CW-CCW)/total directly without explicit mean subtraction.",
+    "recompute_script": "/tmp/quick_audit.py on pod ijzftpy3klystt (uses pymaster 2.6 + healpy 1.19 + catalog_production.parquet)",
+    "n_spirals": 3201160
+  },
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "f_sky": 0.4937744140625,
+    "f_CW_global": 0.49735314698421823,
+    "A_galaxy_weighted_mask_mean": -0.005293706031563559,
+    "_note": "A_gw = (sum n_total*A) / sum(n_total) = 2*f_CW - 1 exactly, confirming the residual monopole is the catalog's intrinsic CW excess"
+  },
+  "old_paper_method_no_explicit_subtraction": {
+    "pseudo_C_l_for_l_0_to_3": [9.61e-05, 9.20e-06, 1.74e-05, 6.48e-06],
+    "decoupled_C_l_for_l_0_to_3": [5.93e-05, 1.87e-05, -2.56e-06, 3.07e-06]
+  },
+  "corrected_galaxy_weighted_subtraction": {
+    "pseudo_C_l_for_l_0_to_3": [2.90e-07, 9.39e-06, 4.94e-06, 5.78e-06],
+    "decoupled_C_l_for_l_0_to_3": [1.51e-05, 1.79e-05, 4.64e-07, 3.74e-06]
+  },
+  "monopole_correction_impact": {
+    "pseudo_C_0_ratio_new_over_old": 0.00302,
+    "pseudo_C_1_ratio_new_over_old": 1.021,
+    "decoupled_b0_l1_ratio_new_over_old": 0.954,
+    "interpretation": "Monopole correction reduces pseudo-C_0 by 331x (=the leakage source) but reduces decoupled C_1 by only 4.6%. The +1.85sigma canonical post-MASTER residual is NOT primarily explained by improper monopole subtraction. If null_mean and null_std are unchanged after monopole correction in the MC shuffle, the new sigma would be approximately 1.85 * 0.954 = 1.77sigma, still failing the |sigma|<1 criterion. GPT5-B3 BLOCKER is METHODOLOGICALLY CORRECT (paper should subtract <A>_mask explicitly) but the magnitude is small."
+  },
+  "verdict": {
+    "GPT5_B3_methodology_claim": "CORRECT — paper's NaMaster input field lacks explicit mask-weighted-mean subtraction",
+    "GPT5_B3_magnitude_claim": "OVERSTATED — leak into l=1 is ~5%, not the dominant source of +1.85sigma residual",
+    "Grok_B1_canonical_residual": "STILL UNRESOLVED — the +1.85sigma persists at ~1.77sigma after proper monopole subtraction; a real systematic at canonical-mask level remains",
+    "recommendation_for_v1_0_106": "(1) Update paper text + script to use galaxy-weighted mask-mean subtraction explicitly. (2) Document the 5% magnitude effect honestly. (3) Note that Grok-B1 canonical-mask injection-recovery sweep is still required to bound the residual systematic."
+  },
+  "expected_corrected_sigma_estimate": {
+    "method": "Approximate via decoupled C_1 ratio assuming null_mean and null_std unchanged",
+    "old_data_C_1": 1.87e-05,
+    "new_data_C_1": 1.79e-05,
+    "ratio": 0.954,
+    "v1062_baseline_sigma": 1.85,
+    "estimated_new_sigma": 1.766,
+    "caveat": "Full MC null with proper subtraction is needed for the exact new sigma; this estimate assumes null statistics are unchanged. Full 500-realization MC is queued for v1.0.106+ on pod."
+  }
+}

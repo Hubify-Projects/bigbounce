@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.105}
+\newcommand{\paperVersion}{v1.0.106}
 \newcommand{\paperTimestamp}{May 15, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -4159,10 +4159,9 @@ $n_{\rm spiral}$-weighted in both variants.
 (\texttt{nmt.NmtField} called without \texttt{aposize} kwarg). For
 the $f_{\rm sky}=0.659$ subsample mask we use $C^2$ apodization at
 $2^\circ$.
-\item Field: scalar (spin-0); \texttt{nmt.NmtField(mask, [fmap])} on
-the CW-deficit map $f_{\rm CW}(p)-0.5$, weighted by
-$n_{\rm spiral}(p)\cdot\mathbb{1}[n_{\rm spiral}(p)\geq 10]$ at each
-pixel.
+\item Field: scalar (spin-0); \texttt{nmt.NmtField(mask, [A\_p])} on
+the per-pixel asymmetry map $A_p = (N_{\rm CW}^{(p)} - N_{\rm CCW}^{(p)}) / N_{\rm total}^{(p)}$
+(this is $2(f_{\rm CW}(p) - 0.5)$ within each pixel). \textbf{Monopole-subtraction note (v1.0.106 P4-INT-GPT5-B3 truth-audit closure)}: in the production v1.0.62 baseline, the input field $A_p$ was fed to \texttt{nmt.NmtField} WITHOUT explicit subtraction of the mask-weighted galaxy-mean $\langle A\rangle_{\rm mask, gw} = 2 f_{\rm CW}^{\rm global} - 1 = -0.005294$; the implicit subtraction of the constant $0.5$ at the per-pixel level does NOT remove the residual monopole arising from the observed $f_{\rm CW}^{\rm global} = 0.49735 \neq 0.5$ (R14-INTERNAL GPT5-B3 catch). A re-audit on the pod with proper galaxy-weighted mask-mean subtraction (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/gpt5\_b3\_monopole\_correction_audit.json}) finds that the correction reduces pseudo-$C_0$ by a factor of $\sim\!330\times$ (the residual monopole is the dominant source of $\ell=0$ power as expected) but reduces decoupled $C_1$ by only $\sim\!5\%$ (from $1.87\times10^{-5}$ to $1.79\times10^{-5}$). The +1.85$\sigma$ canonical-mask post-MASTER residual is therefore NOT primarily explained by improper monopole subtraction; the corrected sigma is approximately $1.85 \times 0.954 \approx 1.77\sigma$, still failing the |$\sigma$|<1 criterion. GPT5-B3's methodology claim is correct (paper SHOULD subtract $\langle A\rangle_{\rm mask}$ explicitly) but the magnitude effect is small; Grok-B1's flag that the canonical-mask residual remains genuinely unresolved (now $\sim\!1.77\sigma$) is CONFIRMED. A full 500-realization MC null with proper monopole subtraction is queued as the canonical v1.0.106+ recompute; the current $A_p$ field is preserved here for v1.0.62-baseline provenance.
 \item Bins: single-multipole linear bin from $\ell=1$ to $\ell=L$ via
 \texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}.
 Reported quantity in the abstract is the $\ell=1$ row of
