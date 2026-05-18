@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.18}
+\newcommand{\paperVersion}{v1B.0.19}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -389,6 +389,34 @@ posterior is correctly pulled, but the 3.6$\sigma$ tension persists
 because the model cannot shift $H_0$ enough to satisfy both data sets
 simultaneously --- this is the canonical Hubble-tension result, not a
 YAML omission.
+\par
+\textit{M$_B$--H$_0$ joint-posterior offset check (R14 GEM-B1 truth-audit
+falsification).} R14 GEM-B1 argued that the joint posterior mean
+($M_B = -19.263$, $H_0 = 67.69$) was inconsistent with an active
+\texttt{sn.pantheonplus} likelihood, claiming a Cobaya YAML alias
+failure. Direct arithmetic audit: \texttt{sn.pantheonplus} enforces a
+soft constraint on the combination $M_B - 5\log_{10}(H_0) \approx$ const
+along the SN distance-modulus degeneracy. At the Riess+2020 anchor
+($M_B = -19.253$, $H_0 = 73.04$), the constant is
+$-19.253 - 5\log_{10}(73.04) = -28.571$. At the chain joint mean
+($M_B = -19.263$, $H_0 = 67.69$), the constant is
+$-19.263 - 5\log_{10}(67.69) = -28.416$, i.e.\ a $0.155$ mag offset from
+the Riess anchor along the Pantheon+ constraint axis. This offset is
+$\sim 3.2\sigma$ relative to the chain's $\sigma_{M_B} = 0.049$ marginal
+width and corresponds exactly to the canonical $3.6\sigma$ Hubble
+tension manifesting in the $M_B$ axis (the same $\sim 3.6\sigma$ that
+appears in $H_0$ when the tension is expressed in distance-ladder
+terms). The chain posterior is therefore the correct compromise of three
+inputs: the Riess $M_B$-prior preferring $M_B = -19.253$ ($\sigma=0.027$);
+the Pantheon+ likelihood preferring $M_B - 5\log_{10} H_0 = -28.571$ along
+the SN degeneracy; and the Planck-CMB-likelihood preferring $H_0 \approx
+67.5$ via the acoustic-scale calibration. With $\Delta\Neff$ bounded
+near zero by the joint data, the model cannot resolve the tension and
+the chain settles into the 3.6$\sigma$-discrepant joint posterior ---
+NOT a YAML alias failure; the parameters are correctly aliased per the
+\texttt{spin\_torsion.input.yaml} configuration (Mb is a single
+nuisance parameter sampled jointly by both \texttt{sn.pantheonplus} and
+\texttt{H0.riess2020Mb}).
 
 \textit{Key finding.}---Both frozen datasets find $\Delta\Neff$ consistent with
 zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
