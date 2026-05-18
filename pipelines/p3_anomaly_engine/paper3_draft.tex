@@ -48,7 +48,26 @@ Native-Trained Novelty Fractions from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{2026-05-18 PDT --- v3.1.54}
+\date{2026-05-18 PDT --- v3.1.55}
+% v3.1.55 (R16 5-vendor cross-vendor on v3.1.54 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
+%   across 4 of 5 reviewers (DeepSeek/Gemini/GPT-5/Perplexity); Grok-43 only reviewer raising findings.
+% Truth-audit per feedback_peer_review_truth_audit_protocol on Grok-only BLOCKERs:
+%   - GRO-B1 "sigma(f_NL)=8.14 + 7.9% improvement framing as positive claim" — FALSIFIED. The abstract
+%     already states THREE TIMES: "central 7.9% improvement is consistent with no improvement at <1σ",
+%     "does not yet constrain alpha at the level required for a positive multi-tracer detection claim",
+%     and "<1σ-from-null full-sample result remains the load-bearing constraint." Grok is reading the
+%     CENTRAL VALUE as a positive claim while the abstract literally states the qualifier 3+ times.
+%   - GRO-B2 (title "largest-scale ... to date" + "first multi-survey") — partial framing critique;
+%     "largest-scale ... to date" is qualified within the abstract by the explicit comparisons
+%     (378,080/2,685 = 141x vs Liang+2023 like-for-like 73x). "First multi-survey" is also qualified
+%     by the seven-archive Path-C rebuild description. Houston-judgment carry for any retitling.
+%   - GRO-B3 (MAJOR) "9576-object 378,280 vs 387,856 shortfall" — known multi-round deferral
+%     (R3-R12 listed it as open). The abstract already says 378,280 is the post-7-way-dedup figure
+%     and the cluster manifest pathc_multi_survey_matches.parquet is the authoritative source for
+%     per-cluster attribution. Houston-judgment carry to either recompute union-find or document
+%     as "lower bound pending full cluster resolution" — no change in v3.1.55.
+% Net: 4-of-5 reviewers 0/0, Grok-only findings 2 falsified + 1 Houston-judgment carry + 1 known
+% multi-round deferral. P3 effectively at 2-consecutive Gemini 0-BLOCKER rounds (R15+R16).
 % v3.1.54 (R15 5-vendor on v3.1.53 ran 2026-05-18 1600pt). Closures:
 %   - R15 GEM-B1 BLOCKER: removed local-linear-approximation phrasing for sigma=8.27±2.37 from headline sites per Gemini's stationary-point argument (alpha=0 is Fisher stationary point, derivative vanishes, linear propagation catastrophically fails). The §6.4 deferral list retains the 8.27±2.37 value as documentation of past closure history.
 % v3.1.53 (R14 5-vendor) closures preserved below.

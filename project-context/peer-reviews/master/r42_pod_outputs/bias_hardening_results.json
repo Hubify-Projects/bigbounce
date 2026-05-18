@@ -1,0 +1,77 @@
+{
+  "test1_flip_swap": {
+    "mean_swap_error": 0.2786352038383484,
+    "median_swap_error": 0.0008217402501031756,
+    "correlation": 0.44629149309707267,
+    "class_flip_rate": 0.466,
+    "pass": false
+  },
+  "test2_rotation": {
+    "angles": {
+      "15": {
+        "agreement": 0.7433333333333333,
+        "mean_prob_diff": 0.1745661348104477
+      },
+      "30": {
+        "agreement": 0.7133333333333334,
+        "mean_prob_diff": 0.1931179165840149
+      },
+      "45": {
+        "agreement": 0.6566666666666666,
+        "mean_prob_diff": 0.22016581892967224
+      },
+      "90": {
+        "agreement": 0.7266666666666667,
+        "mean_prob_diff": 0.17951731383800507
+      },
+      "135": {
+        "agreement": 0.6766666666666666,
+        "mean_prob_diff": 0.21473509073257446
+      },
+      "180": {
+        "agreement": 0.76,
+        "mean_prob_diff": 0.1547621488571167
+      },
+      "270": {
+        "agreement": 0.7866666666666666,
+        "mean_prob_diff": 0.1479334682226181
+      }
+    },
+    "avg_agreement": 0.7233333333333333,
+    "pass": false
+  },
+  "test3_survey_holdout": {
+    "datasets": {
+      "gz_desi": 2000
+    },
+    "pass": true
+  },
+  "test4_calibration": {
+    "conf_gt09": 0.916,
+    "conf_mean": 0.9705617427825928,
+    "pass": true
+  },
+  "test5_artifacts": {
+    "blank_cw": 0.0,
+    "blank_conf": 1.0,
+    "scrambled_cw": 0.0,
+    "scrambled_conf": 0.9999589323997498,
+    "masked_agreement": 0.33,
+    "masked_conf": 0.9147188663482666,
+    "pass": false
+  },
+  "test6_leakage": {
+    "ra_corr": -0.00942602098822854,
+    "dec_corr": -0.05432112732441436,
+    "pass": true
+  },
+  "test7_perturbation": {
+    "blur_agreement": 0.755,
+    "pass": false
+  },
+  "test8_hemispheric": {
+    "cw_north": 0.41434262948207173,
+    "cw_south": 0.4126506024096386,
+    "pass": true
+  }
+}

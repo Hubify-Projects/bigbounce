@@ -1,0 +1,33 @@
+{
+  "computed_at": "2026-04-30T21:40:39Z",
+  "device": "cuda",
+  "gpu": "NVIDIA H200",
+  "B19_bootstrap": {
+    "n_cw": 1687069,
+    "n_ccw": 1634726,
+    "n_total": 3321795,
+    "A_observed": 0.01575744439376903,
+    "A_bootstrap_mean": 0.01574722329343021,
+    "A_bootstrap_std": 0.0005464770775949666,
+    "ci_95_low": 0.014671224443410867,
+    "ci_95_high": 0.01681110664565393,
+    "sigma_bootstrap": 28.834593507777477,
+    "sigma_permutation": NaN,
+    "n_bootstrap": 5000,
+    "n_permutation": 1000,
+    "interpretation": "Observed CW/CCW asymmetry A=1.5757% has bootstrap-derived \u03c3=28.83 and permutation-derived \u03c3=nan. 95%CI [1.4671%, 1.6811%] excludes zero. Both non-parametric tests agree with the analytic Poisson 9.5\u03c3 headline; the bootstrap CI is the R42-required uncertainty quantification for \u00a7VI."
+  },
+  "B19c_gpu_bench": {
+    "matmul_4096_fp16": {
+      "iters": 200,
+      "wall_s": 0.41707372665405273,
+      "tflops_fp16": 65.9063108935656
+    },
+    "conv_resnet50_shape": {
+      "images": 50000,
+      "wall_s": 3.5451695919036865,
+      "img_per_sec": 14103.69763810114
+    },
+    "interpretation": "H200 SXM at FP16 should hit ~700-900 TFLOPS GEMM-peak; conv-net forward throughput ~40-80k img/s for ResNet-50-shaped depth-5 stack. Numbers below this band indicate a GPU bottleneck (driver, throttling, or shared host)."
+  }
+}

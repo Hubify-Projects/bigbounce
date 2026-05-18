@@ -1,0 +1,51 @@
+{
+  "computed_at": "2026-04-30T21:46:32Z",
+  "backbone": "vit_base_patch16_224",
+  "n_imgs": 100000,
+  "n_augmentations": 8,
+  "total_forward_passes": 800000,
+  "wall_s": 86.86614727973938,
+  "img_per_sec_overall": 9209.571565591832,
+  "per_augmentation": {
+    "rot0_flip0": {
+      "images": 100000,
+      "wall_s": 11.221391677856445,
+      "img_per_sec": 8911.550623202414
+    },
+    "rot0_flip1": {
+      "images": 100000,
+      "wall_s": 10.706251621246338,
+      "img_per_sec": 9340.33717286749
+    },
+    "rot1_flip0": {
+      "images": 100000,
+      "wall_s": 10.840786218643188,
+      "img_per_sec": 9224.423209086748
+    },
+    "rot1_flip1": {
+      "images": 100000,
+      "wall_s": 10.884732246398926,
+      "img_per_sec": 9187.180514530683
+    },
+    "rot2_flip0": {
+      "images": 100000,
+      "wall_s": 10.774532079696655,
+      "img_per_sec": 9281.145506860414
+    },
+    "rot2_flip1": {
+      "images": 100000,
+      "wall_s": 10.765648365020752,
+      "img_per_sec": 9288.804223340174
+    },
+    "rot3_flip0": {
+      "images": 100000,
+      "wall_s": 10.830294609069824,
+      "img_per_sec": 9233.359166079847
+    },
+    "rot3_flip1": {
+      "images": 100000,
+      "wall_s": 10.835902214050293,
+      "img_per_sec": 9228.580880910473
+    }
+  }
+}

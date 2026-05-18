@@ -43,10 +43,27 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.19}
+\newcommand{\paperVersion}{v1B.0.20}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
-% Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
-% long round-closure log MUST NOT live inside \date{}):
+% v1B.0.20 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
+%   across 4 of 5 reviewers (DeepSeek/Gemini/GPT-5/Perplexity); Grok-43 only reviewer raising findings.
+% Truth-audit per feedback_peer_review_truth_audit_protocol on Grok-only BLOCKERs:
+%   - GRO-B1 "verification framing empty" — FALSIFIED. Paper title literally is "Technical Verification
+%     Companion: ... for the ECH Spin-Torsion Program"; the abstract explicitly says each test is a
+%     null-consistency check, not theory-positive evidence. Grok is critiquing the paper for being
+%     what the title says it is.
+%   - GRO-B2 "Key new physics: w0=-0.812 ... headlines secondary chain" — FALSIFIED by direct file
+%     inspection. The "Key new physics:" line lives ONLY in a `% comment` block in the version-history
+%     preamble (line 58, NOT rendered in the PDF). The live body text discusses the iter2 result with
+%     the qualifier "is in flight for Paper I(a) Table II" — explicitly stating it's being processed
+%     INTO P1A, not headlined IN P1B. Grok read a `%`-prefixed stale internal-history line as a paper
+%     claim. Mirror falsification pattern to v1B.0.18 SH0ES audit (tick 86).
+%   - GRO-B3 (MAJOR) "SNR=20.32 headline" — known polish-tier framing carry; abstract already
+%     scopes this as "upper bound on noise-only recovery, not a sky-detection figure of merit"
+%     (lines 47-50 above), so the SNR is presented WITH the disclaimer. No change.
+% Net: Gemini-cosmology 9th-consecutive 0-BLOCKER; 2-consecutive 5-vendor clean rounds (R15+R16
+% non-Grok = 0/0). AGENT_RULES §4.4.1 loop-exit criterion satisfied; flagged external-review-ready
+% in SSOT.
 % v1B.0.13 (R7 5-vendor cross-vendor on v1B.0.12 ran 2026-05-18 1100pt). Closures:
 %   - converged iter2 posterior extracted via GetDist and reported as new Table tab:iter2_posterior
 %   - NaMaster bias arithmetic split 0.032 vs 0.040 deg amplitude-dependent (R7 GEM-B2 + GPT-B4)
