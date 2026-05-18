@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.14}
+\newcommand{\paperVersion}{v1B.0.15}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
 % Internal version-history note (not rendered in PDF; per feedback_pdf_visual_formatting,
 % long round-closure log MUST NOT live inside \date{}):
@@ -339,11 +339,22 @@ so the dark-energy departure from LCDM is dominated by the $w_a$ time-varying
 term rather than the present-day $w_0$ value.
 
 \textit{Caveats.}---(a)~The robust Bayesian evidence / Bayes factor
-$\ln B$ against LCDM is NOT reported in this v1B.0.13; standard posterior
-MCMC samples do not give a robust $\ln B$, and Savage-Dickey requires
-explicit prior density and nuisance-marginalized posterior density at the
-LCDM point. The deterministic Savage-Dickey ratio on the converged 2D
-$(w, w_a)$ marginal is queued for v1B.0.13+. (b)~$\tau$ is constrained
+$\ln B$ against LCDM is NOT reported in this v1B.0.14; standard posterior
+MCMC samples do not give a robust $\ln B$, and a Savage-Dickey density
+ratio at the LCDM point is \emph{not} viable on this chain because the
+LCDM point $(w, w_a) = (-1, 0)$ lies at $>4\sigma$ in the joint marginal
+tails (Table~\ref{tab:iter2_posterior}: $w_0$ departs by $+4.3\sigma$ and
+$w_a$ by $-3.6\sigma$) and is therefore unsampled by the
+Metropolis-Hastings chain; any KDE-based Savage-Dickey ratio at an
+unsampled point yields arbitrary kernel-dependent noise rather than a
+controlled posterior density (R10 GEM-M1 closure: prior v1B.0.13 caveat
+promised a Savage-Dickey ratio on the converged 2D $(w, w_a)$ marginal,
+but with zero free-$w_0 w_a$ samples at the LCDM point the KDE estimator
+fails catastrophically). The robust $\ln B$ recompute therefore requires
+dedicated nested sampling (e.g., PolyChord or MultiNest) or
+thermodynamic integration on the same likelihood stack rather than a
+KDE readout from the converged Metropolis-Hastings chain; this is queued
+for v1B.0.15+ pending a separate pod-side nested-sampling run. (b)~$\tau$ is constrained
 empirically by the low-$\ell$ EE + TT likelihoods listed in the caption
 (\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lowl.TT}) and is
 sampled as a free parameter rather than fixed by a Gaussian prior at the
@@ -527,7 +538,7 @@ are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
 A one-pass recomputation of $\chi^2_{\rm eff}$, AIC, BIC, and any
 evidence value from the final frozen-thinned chain via a single
-auditable script was extracted in v1B.0.13 via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) and is reported in Table~\ref{tab:iter2_posterior}. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or a documented Savage-Dickey density ratio at the LCDM point with explicit prior measure and nuisance-marginalized posterior density --- ordinary posterior MCMC samples alone do not yield a robust $\ln B$ (R7 GPT-B3 caveat). The Savage-Dickey $\ln B$ recompute is queued for v1B.0.13+ (the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 markers were carried over from prior version-numbering schemes when the chain was still mixing).
+auditable script was extracted in v1B.0.13 via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) and is reported in Table~\ref{tab:iter2_posterior}. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise (R10 GEM-M1; R7 GPT-B3 caveat). The nested-sampling $\ln B$ recompute is queued for v1B.0.15+ pending a separate pod-side run; the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 / v1B.0.13 markers were carried over from prior version-numbering schemes when the chain was still mixing.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -802,7 +813,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest would be needed for robust evidence and is queued for v1B.0.13+: with the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), nested sampling or a documented Savage-Dickey calculation against the LCDM point $(w,w_a)=(-1,0)$ is the next concrete step.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence and is queued for v1B.0.15+. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is a separate nested-sampling run on the identical likelihood stack rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density (R10 GEM-M1).
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
