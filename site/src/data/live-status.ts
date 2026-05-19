@@ -85,6 +85,15 @@ export const liveStatus: LiveStatus = {
         "🎯 v3.1.56 — multi-round-deferred 9,576-object DEDUP-SHORTFALL MAJOR CLOSED tick 108 via existing on-disk artifact. pathc_dedup_summary_no_act.json IS the union-find recompute the R3→R16 GRO-B3 deferral was 'pending'; arithmetic decomposition 10,213 total = 637 multi-survey collapses + 9,576 intra-survey duplicate collapses (388,493 → 378,280 unique). Also R16 4-of-5 reviewers 0/0; Grok-only B1 ('σ(f_NL)=8.14 framing as positive claim') FALSIFIED — abstract literally states the <1σ qualifier 3+ times. R15+R16 = 2-consec Gemini-clean. R17 blocked on OpenRouter top-up. PDF 47pp / 28.43MB / sha 37d837cb. 4 mirrors.\n\n[Legacy] v3.1.38 (2026-05-13) closes 6/6 BLOCKERs + 19 MAJORs from cross-vendor R-round-3 (62 findings): Bayes-factor → parameter-shift-likelihood-ratio reframe (with Trotta+Verde refs), §VI bounce-physics cross-paper paragraph, eROSITA western-hemisphere/depth-artifact disclosure, full PTA-companion citation set (Hellings-Downs, EPTA-DR2, PPTA-DR3, Afzal-NewPhysics, Phinney), Liang2023 3-error confab fix, Golden:2026P2 undefined-cite fix, SSOT γ_PTA drift correction (2.567 not 3.20). 4 deferred: proper marginalized (γ,log10A) Savage-Dickey Bayes factor, eROSITA per-tile depth-normalized re-analysis, multi-PTA combination (EPTA+PPTA+IPTA joint), score-stratified novelty quintiles. Next: 22 minors + 9 nits sweep; clean cross-vendor R-round-4; Houston sign-off; arXiv.",
     },
     {
+      slug: "paper-5",
+      number: "5",
+      shortTitle: "Environmental dependence of spiral chirality across DESI LSS",
+      version: "bootstrap-2026-05-15",
+      readiness: 15,
+      pendingWork:
+        "🆕 P5 brought onto SSOT radar tick 114 after being missed across ticks 102-113. BOOTSTRAP: matched chirality × DESI DR1 catalog landed (1.3 GB / 2,232,212 deduped rows / 791,635 spirals at 1″ primary radius). Headline binomial cw_fraction=0.4972 at −5.0σ from 0.5 (P4-monopole-consistent on DESI-spectro-confirmed sub-sample). 5 of 6 first-pass analyses complete (redshift p=0.372 no z-dep; 5-NN density max_abs_sigma=3.94 pending LEE; HEALPix nside 16/32/64 p=0.61/0.14/0.41 no spatial structure; systematics label-shuffle sanity pass). Cosmic-web headline analysis BLOCKED on DESI environmental VAC missing from repo — the '187 DESI-derived attributes' catalog Houston referenced is exhaustively confirmed not in repo. Three resolution paths: (a) Houston locates the file; (b) wait for DESI DR1 LSS VAC release; (c) run our own cosmic-web finder on DESI DR1 LSS (DBSCAN/DisPerSE sub-project). Paper LaTeX is 9KB scaffold; no compiled PDF yet. R-round campaign has never operated on P5. SSOT: project-context/SSOT/paper-5/status.md. Live tex: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex.",
+    },
+    {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M galaxy chirality at scale (3.2M spirals; null detection at sub-percent sensitivity)",

@@ -26,7 +26,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current versions (May 2026):** P1A v1A.0.33 (cascaded-loop EXIT — first paper to satisfy AGENT_RULES §4.4.1; 9th-consec Gemini 0-BLOCKER; external-review-ready), P1B v1B.0.20 (R16 Grok-only BLOCKERs falsified), P2 v1.7.30, P3 v3.1.56 (R16 + multi-round 9,576-dedup deferral closed via on-disk artifact), P4 v1.0.116 (multi-null battery + cross-spectrum smoking gun + paper-wide +3.64σ convention). The legacy long-form Paper 1 `arxiv/main.tex` v2.2.0 (March 2026) is deprecated; current canonical sources are `arxiv/paper1a_ech_nogo.tex` and `arxiv/paper1b_mcmc_companion.tex`. R-round 5-vendor loop blocked at R17 on OpenRouter top-up.
+**Current versions (May 2026), 5-paper portfolio:**
+- **P1A** v1A.0.33 — cascaded-loop EXIT (first paper to satisfy AGENT_RULES §4.4.1; 9th-consec Gemini 0-BLOCKER); external-review-ready
+- **P1B** v1B.0.20 — R16 Grok-only BLOCKERs falsified via stale-comment audit
+- **P2** v1.7.30 — needs more R-rounds before external review
+- **P3** v3.1.56 — R16 + multi-round 9,576-dedup deferral closed via on-disk artifact
+- **P4** v1.0.117 — multi-null battery + cross-spectrum smoking gun + paper-wide +3.64σ convention + Houston-approved D4-TTA partial-harvest closure
+- **P5** bootstrap-2026-05-15 — **separate companion**: Environmental dependence of spiral chirality across DESI LSS. Matched catalog (2.23M rows) + first-pass analyses on disk; cosmic-web headline analysis blocked on missing DESI environmental VAC ("187 DESI-derived attributes" file confirmed not in repo). Pipeline at `pipelines/p5_desi_chirality/`. Paper is 9KB LaTeX scaffold. SSOT: `project-context/SSOT/paper-5/status.md`.
+
+The legacy long-form Paper 1 `arxiv/main.tex` v2.2.0 (March 2026) is deprecated; current canonical sources are `arxiv/paper1a_ech_nogo.tex`, `arxiv/paper1b_mcmc_companion.tex`, `research/focused_paper_source_integration/02_full_draft.tex` (P2), `pipelines/p3_anomaly_engine/paper3_draft.tex` (P3), `pipelines/p2_chirality/chirality_catalog_paper.tex` (P4), and `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` (P5). R-round 5-vendor loop blocked at R17 on OpenRouter top-up.
 
 **Live website:** https://bigbounce.hubify.app
 
