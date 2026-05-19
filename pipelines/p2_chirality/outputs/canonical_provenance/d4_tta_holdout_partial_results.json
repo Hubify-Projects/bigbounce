@@ -1,0 +1,37 @@
+{
+  "version": "v1.0.117-d4-tta-holdout-partial-harvest",
+  "date_utc": "2026-05-19T05:32:56Z",
+  "config": {
+    "n_sampled_target": 10000,
+    "n_cached": 1988,
+    "n_valid": 1988,
+    "n_skipped_pil": 0,
+    "seed": 42,
+    "batch_size": 32,
+    "device": "mps",
+    "image_source": "DESI Legacy Sky Viewer ls-dr9 cutouts at 150 px (DESI rate-limit truncated v1.0.117 N=10K to N=1988 cached-and-valid)"
+  },
+  "cw_fraction": {
+    "z2_2fold_flip": 0.40945674044265595,
+    "c4_4fold_rotation": 0.49346076458752514,
+    "d4_8fold_full": 0.38832997987927564,
+    "delta_z2_to_d4_pct": 2.1126760563380307
+  },
+  "mean_per_galaxy_probs": {
+    "p_cw_z2": 0.39290276169776917,
+    "p_ccw_z2": 0.39033132791519165,
+    "p_ns_z2": 0.2167658656835556,
+    "p_cw_d4": 0.3913135826587677,
+    "p_ccw_d4": 0.3908102512359619,
+    "p_ns_d4": 0.21787618100643158
+  },
+  "comparison_to_v1071_baseline": {
+    "v1071_n_valid": 1558,
+    "this_n_valid": 1988,
+    "v1071_cw_d4_8fold": 0.502106149957877,
+    "v1071_delta_z2_to_d4_pct": -1.347935973041281,
+    "scaling_ratio": 1.27599486521181,
+    "expected_statistical_power_tightening_factor": 1.1295994268818528
+  },
+  "notes": "Partial-harvest from the v1.0.117 N=10K seed=42 sample. The DESI Legacy Sky Viewer rate-limited the full 10K download to a 0.04 cutouts/sec asymptotic rate (200 cutouts per 5249s in the last poll window); the download was halted at ~1988 cached / 10000 target (19.9%). This partial-harvest result uses ONLY the cached subset (no new downloads); inference completed locally on Apple Silicon MPS. The v1.0.71 baseline N=1,558 result is preserved as d4_tta_holdout_results.json; this artifact supersedes it as the higher-N statistical-power reference (factor ~1.13x uncertainty tightening expected if the true population is independent of URL-hash partial-cache selection)."
+}
