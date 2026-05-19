@@ -1,0 +1,129 @@
+{
+  "version": "v1.0.119-morphology-template-l1-projection-leg-proxy",
+  "purpose": "OpenAI external review v1.0.117 MAJ-12 partial closure: leg-as-morphology-proxy l=1 template projection. The full per-galaxy DR8 sweep template projection (b_over_a / fracdev / shape_r_eff / shapedev_e1/e2) requires pod-side data not available locally; this script does the available subset.",
+  "date_utc": "2026-05-19T22:30:26Z",
+  "config": {
+    "nside": 64,
+    "n_spirals_used": 3201160,
+    "f_sky_canonical": 0.4937744140625,
+    "global_p_CW": 0.49735314698421823,
+    "mean_A_in_mask_galaxy_weighted": -0.00529370603156356
+  },
+  "chirality_l1_canonical_mask": {
+    "amplitude": 0.007040031846243215,
+    "ra_deg": 245.00692170208808,
+    "dec_deg": 21.657487897455912,
+    "cx": -0.0027644970595858153,
+    "cy": -0.0059303534239853834,
+    "cz": 0.0025981748729223117,
+    "a_10_real": 0.0025981748729223117,
+    "a_11_real": 0.0013822485297929077,
+    "a_11_imag": -0.0029651767119926917
+  },
+  "per_leg_l1_indicator_amplitudes": {
+    "BASS+MzLS": {
+      "amplitude": 0.7052723780031572,
+      "ra_deg": 191.93240967626278,
+      "dec_deg": 59.58122952108748,
+      "cx": -0.3493749493814976,
+      "cy": -0.07383127633868507,
+      "cz": 0.6081901138238807,
+      "a_10_real": 0.6081901138238807,
+      "a_11_real": 0.1746874746907488,
+      "a_11_imag": -0.036915638169342534,
+      "cross_with_A_p": {
+        "C_1_AB": 0.0007606766876807267,
+        "C_1_AA": 0.1445507236212222,
+        "C_1_BB": 9.385426844400588e-06,
+        "r_1": 0.6530748468079968
+      }
+    },
+    "DECaLS": {
+      "amplitude": 0.22556794253868176,
+      "ra_deg": 133.9100637208705,
+      "dec_deg": 42.98012121468314,
+      "cx": -0.1144483511403925,
+      "cy": 0.11888763160434117,
+      "cz": 0.15377972127003584,
+      "a_10_real": 0.15377972127003584,
+      "a_11_real": 0.05722417557019625,
+      "a_11_imag": 0.059443815802170584,
+      "cross_with_A_p": {
+        "C_1_AB": 6.840661209755836e-05,
+        "C_1_AA": 0.01242151656250399,
+        "C_1_BB": 9.385426844400588e-06,
+        "r_1": 0.2003474209935873
+      }
+    },
+    "DES": {
+      "amplitude": 0.6083173952717192,
+      "ra_deg": 13.568597781754818,
+      "dec_deg": -32.60941517846064,
+      "cx": 0.4981226753194746,
+      "cy": 0.12021961044231627,
+      "cz": -0.32782784962207845,
+      "a_10_real": -0.32782784962207845,
+      "a_11_real": -0.2490613376597373,
+      "a_11_imag": 0.060109805221158136,
+      "cross_with_A_p": {
+        "C_1_AB": -0.0006322519354524939,
+        "C_1_AA": 0.07958685872966752,
+        "C_1_BB": 9.385426844400588e-06,
+        "r_1": -0.731547400224793
+      }
+    }
+  },
+  "per_leg_cw_shifts": {
+    "BASS+MzLS": {
+      "N_spiral": 934551,
+      "f_CW": 0.4982178607695032,
+      "shift_from_global_p_CW": -0.0017821392304968042
+    },
+    "DECaLS": {
+      "N_spiral": 1637915,
+      "f_CW": 0.49707951877844697,
+      "shift_from_global_p_CW": -0.0029204812215530285
+    },
+    "DES": {
+      "N_spiral": 628694,
+      "f_CW": 0.49678062777758336,
+      "shift_from_global_p_CW": -0.003219372222416639
+    }
+  },
+  "induced_l1_per_leg": {
+    "BASS+MzLS": {
+      "delta_f_L_vs_global": 0.0008647137852849651,
+      "induced_cx": -0.0006042186699268358,
+      "induced_cy": -0.0001276858448704893,
+      "induced_cz": 0.0010518207509950834,
+      "induced_amplitude": 0.0012197174952800777
+    },
+    "DECaLS": {
+      "delta_f_L_vs_global": -0.0002736282057712591,
+      "induced_cx": 6.263259395204928e-05,
+      "induced_cy": -6.506201864858063e-05,
+      "induced_cz": -8.415693843024848e-05,
+      "induced_amplitude": 0.00012344350279274794
+    },
+    "DES": {
+      "delta_f_L_vs_global": -0.0005725192066348694,
+      "induced_cx": -0.0005703695977614885,
+      "induced_cy": -0.00013765607198477597,
+      "induced_cz": 0.0003753754807568953,
+      "induced_amplitude": 0.0006965467850463099
+    }
+  },
+  "induced_l1_summed": {
+    "cx": -0.001111955673736275,
+    "cy": -0.0003304039355038459,
+    "cz": 0.00134303929332173,
+    "amplitude": 0.0017746455207609364,
+    "fraction_of_observed_l1": 0.25207918934456863
+  },
+  "interpretation": "Each imaging leg (BASS+MzLS, DECaLS, DES) clusters in a distinct sky region and carries a small per-leg CW-fraction shift from the global mean (~0.001 each leg). The leg-uniform asymmetry-field offset 2*\u0394f_L, projected onto the canonical mask via the leg-indicator field's l=1 sky-harmonic amplitude, produces an induced l=1 chirality contribution. The total summed across the 3 legs is 1.775e-03; the observed canonical-mask l=1 chirality amplitude is 7.040e-03. The induced morphology-proxy contribution accounts for 25.2% of the observed l=1 amplitude under the leg-stratification working hypothesis.",
+  "deferred_pod_side_items": [
+    "Per-galaxy b_over_a, fracdev, shape_r_eff, shapedev_e1/e2 templates from DR8 sweeps (requires pipelines/p2_chirality with dr8_sweep_fetch/catalog_production_with_ba.parquet on H200 pod).",
+    "PSF FWHM and depth maps from DESI Legacy DR8 PSF tracker artifacts (per-tile PSF/depth in psfsize_g/r/z and galdepth_g/r/z DR8 columns).",
+    "Template-regressed chirality residual: fit A_p_demono = sum_template a_template * template_map + epsilon and report the residual l=1 after subtracting morphology contributions."
+  ]
+}

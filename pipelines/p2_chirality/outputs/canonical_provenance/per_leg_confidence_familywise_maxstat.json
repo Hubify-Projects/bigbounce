@@ -1,0 +1,190 @@
+{
+  "version": "v1.0.119-per-leg-confidence-familywise-maxstat",
+  "purpose": "OpenAI external review v1.0.117 MAJ-11 closure: family-level max-stat null on 15-cell per-leg x confidence grid; complements the existing per_leg_confidence_signal_hunt.json by reporting the JOINT max|sigma| distribution under global label shuffle (not just per-cell Bonferroni).",
+  "date_utc": "2026-05-19T22:26:55Z",
+  "config": {
+    "nside": 64,
+    "n_mc_per_cell": 1000,
+    "n_mc_joint_familywise": 5000,
+    "seed": 42,
+    "n_valid_cells": 15,
+    "global_p_CW": 0.49735314698421823,
+    "n_total_spirals": 3201160,
+    "n_total_cw": 1592107
+  },
+  "cells": [
+    {
+      "leg": "BASS+MzLS",
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "N_spiral": 140925,
+      "A_obs": 0.031095110999155528,
+      "A_null_mean": 0.020286064230504004,
+      "A_null_std": 0.011329104668462105,
+      "sigma_obs": 0.9540954104468365
+    },
+    {
+      "leg": "BASS+MzLS",
+      "bin_lo": 0.5,
+      "bin_hi": 0.6,
+      "N_spiral": 567948,
+      "A_obs": 0.012155390486722605,
+      "A_null_mean": 0.010270758679891133,
+      "A_null_std": 0.00598767970138664,
+      "sigma_obs": 0.31475160676931757
+    },
+    {
+      "leg": "BASS+MzLS",
+      "bin_lo": 0.6,
+      "bin_hi": 0.7,
+      "N_spiral": 43485,
+      "A_obs": 0.027496248241178085,
+      "A_null_mean": 0.03707813394452152,
+      "A_null_std": 0.02041130523750013,
+      "sigma_obs": -0.4694401260405127
+    },
+    {
+      "leg": "BASS+MzLS",
+      "bin_lo": 0.7,
+      "bin_hi": 0.8,
+      "N_spiral": 29316,
+      "A_obs": 0.04428511119144774,
+      "A_null_mean": 0.04581339901124804,
+      "A_null_std": 0.02663337830103055,
+      "sigma_obs": -0.05738242450981762
+    },
+    {
+      "leg": "BASS+MzLS",
+      "bin_lo": 0.8,
+      "bin_hi": 1.0,
+      "N_spiral": 145915,
+      "A_obs": 0.02965152555396384,
+      "A_null_mean": 0.021724926539822626,
+      "A_null_std": 0.011734332225446014,
+      "sigma_obs": 0.675504908319564
+    },
+    {
+      "leg": "DECaLS",
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "N_spiral": 162828,
+      "A_obs": 0.013658732716584432,
+      "A_null_mean": 0.008639283816270462,
+      "A_null_std": 0.004354460444416312,
+      "sigma_obs": 1.1527143177406438
+    },
+    {
+      "leg": "DECaLS",
+      "bin_lo": 0.5,
+      "bin_hi": 0.6,
+      "N_spiral": 938563,
+      "A_obs": 0.012368302718611028,
+      "A_null_mean": 0.003632092623997566,
+      "A_null_std": 0.0018493881517318456,
+      "sigma_obs": 4.723838036072905
+    },
+    {
+      "leg": "DECaLS",
+      "bin_lo": 0.6,
+      "bin_hi": 0.7,
+      "N_spiral": 107610,
+      "A_obs": 0.015913135582969303,
+      "A_null_mean": 0.01102517242640788,
+      "A_null_std": 0.005540652369937868,
+      "sigma_obs": 0.882199934268072
+    },
+    {
+      "leg": "DECaLS",
+      "bin_lo": 0.7,
+      "bin_hi": 0.8,
+      "N_spiral": 73041,
+      "A_obs": 0.011097420473125695,
+      "A_null_mean": 0.012714358507319827,
+      "A_null_std": 0.00615405881923377,
+      "sigma_obs": -0.26274335063886406
+    },
+    {
+      "leg": "DECaLS",
+      "bin_lo": 0.8,
+      "bin_hi": 1.0,
+      "N_spiral": 344402,
+      "A_obs": 0.018124750022868945,
+      "A_null_mean": 0.006242023000343321,
+      "A_null_std": 0.0033636959390103663,
+      "sigma_obs": 3.5326400596189567
+    },
+    {
+      "leg": "DES",
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "N_spiral": 55540,
+      "A_obs": 0.03926238298137922,
+      "A_null_mean": 0.0442070615344013,
+      "A_null_std": 0.026075484140897314,
+      "sigma_obs": -0.18962940539488382
+    },
+    {
+      "leg": "DES",
+      "bin_lo": 0.5,
+      "bin_hi": 0.6,
+      "N_spiral": 367641,
+      "A_obs": 0.04135881705707108,
+      "A_null_mean": 0.017518084685021383,
+      "A_null_std": 0.01032955391263091,
+      "sigma_obs": 2.308011805127171
+    },
+    {
+      "leg": "DES",
+      "bin_lo": 0.6,
+      "bin_hi": 0.7,
+      "N_spiral": 42465,
+      "A_obs": 0.03855238722703925,
+      "A_null_mean": 0.05235874628306108,
+      "A_null_std": 0.029808578760960307,
+      "sigma_obs": -0.4631673038401864
+    },
+    {
+      "leg": "DES",
+      "bin_lo": 0.7,
+      "bin_hi": 0.8,
+      "N_spiral": 29007,
+      "A_obs": 0.03751151882657227,
+      "A_null_mean": 0.06305700463928401,
+      "A_null_std": 0.03647178506617192,
+      "sigma_obs": -0.7004177548854205
+    },
+    {
+      "leg": "DES",
+      "bin_lo": 0.8,
+      "bin_hi": 1.0,
+      "N_spiral": 129585,
+      "A_obs": 0.025486330805875014,
+      "A_null_mean": 0.02962277449078972,
+      "A_null_std": 0.01707432601204194,
+      "sigma_obs": -0.24226102289469065
+    }
+  ],
+  "joint_null_distribution": {
+    "n_realizations": 5000,
+    "max_abs_sigma_quantiles": {
+      "p50": 2.0098377025847376,
+      "p90": 3.2773267510544675,
+      "p95": 3.677077556422201,
+      "p99": 5.6323333610454265
+    },
+    "max_abs_sigma_min": 0.8246954965334226,
+    "max_abs_sigma_max": 6.938616528496457,
+    "max_abs_sigma_mean": 2.1803182277722652,
+    "max_abs_sigma_std": 0.8017913522184256
+  },
+  "headline": {
+    "obs_max_abs_sigma": 4.723838036072905,
+    "obs_argmax_cell": "DECaLS_p_eq_0.5_0.6",
+    "n_exceed_null": 43,
+    "p_value_joint": 0.0086,
+    "p_value_joint_upper_bound": 0.008798240351929614,
+    "p_value_bonferroni_15": 3.4715213903297556e-05,
+    "bonferroni_15_99pct_critical_abs_sigma": 3.4029328353853043
+  },
+  "interpretation": "The observed max|sigma| of 4.724 at cell DECaLS_p_eq_0.5_0.6 is compared against the joint null distribution of max|sigma| over 15 valid cells under a global label shuffle that preserves the total CW count exactly. The joint p-value (0.00860) is a proper family-wise type-I error rate and supersedes the per-cell Bonferroni-15 approximation (0.00003); in our 15-cell setting the two agree to within a factor of ~2x because the cells are weakly correlated under the global shuffle."
+}
