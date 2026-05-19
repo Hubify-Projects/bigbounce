@@ -1,0 +1,45 @@
+# P5 env_finder Phase 1 MVP configuration
+# V-Web cosmic-web classifier on DESI DR1 spectroscopic galaxies
+
+config_version: "0.1.0"
+
+# Input — filter for DESI DR1 zall
+input:
+  zall_path: "pipelines/p5_desi_chirality/data/desi_zall.parquet"
+  filter:
+    zwarn_max: 0           # ZWARN==0 (reliable redshift)
+    spectype: "GALAXY"      # exclude STAR, QSO
+    z_min: 0.01
+    z_max: 2.0
+
+# Cosmology — Planck 2018
+cosmology:
+  name: "Planck18"   # astropy.cosmology.Planck18; H0=67.66, Om0=0.3111
+
+# Density grid
+grid:
+  n: 256                                # grid resolution per axis (256^3 cells)
+  bounding_box_pad_mpc_h: 50.0          # pad bounding box by this much in each direction
+
+# Smoothing
+smoothing:
+  # NOTE: R_s = 2 Mpc/h is the Hahn+ 2007 N-body default; for a 14k sq deg
+  # survey at z=0-2 the comoving box is ~6 Gpc/h max-side, so at 256^3 the
+  # cell size is ~24 Mpc/h. R_s must be >= a few cell widths for the FFT
+  # smoothing to be well-resolved. We use R_s matched to ~1 cell width at
+  # this volume; Phase 2 sensitivity sweep can probe finer.
+  R_s_mpc_h: 25.0
+
+# Classification threshold
+classify:
+  lambda_th: 0.0                        # eigenvalue threshold (Cautun+ 2014 geometric default)
+
+# Output
+output:
+  env_parquet: "pipelines/p5_desi_chirality/data/desi_env/desi_env_vweb.parquet"
+  volume_fractions_json: "pipelines/p5_desi_chirality/env_finder/reports/01_volume_fractions.json"
+  provenance: true
+  include_eigenvalues: true             # also write env_lambda1/2/3 columns
+
+# Reproducibility
+seed: 42
