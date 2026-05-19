@@ -25,42 +25,42 @@
 \contentsline {subsection}{\numberline {B}Global CW Fraction}{14}{section*.23}%
 \contentsline {subsection}{\numberline {C}Dipole Analysis}{16}{section*.24}%
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{16}{section*.25}%
-\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{16}{section*.26}%
-\contentsline {subsection}{\numberline {D}Monopole+Mask Leakage Generative Null}{20}{section*.27}%
+\contentsline {paragraph}{\numberline {b}Angular power spectrum.}{17}{section*.26}%
+\contentsline {subsection}{\numberline {D}Monopole+Mask Leakage Generative Null}{19}{section*.27}%
 \contentsline {subsection}{\numberline {E}Signal-Hunt Diagnostics: Confidence Stratification, Sky Quadrants, Galactic Hemispheres}{23}{section*.28}%
 \contentsline {paragraph}{\numberline {a}Confidence-stratified dipole.}{23}{section*.29}%
 \contentsline {paragraph}{\numberline {b}Sky-quadrant dipole.}{23}{section*.30}%
 \contentsline {paragraph}{\numberline {c}Galactic-hemisphere asymmetry.}{23}{section*.31}%
-\contentsline {paragraph}{\numberline {d}Per-imaging-leg $\times $ confidence-bin sub-stratification.}{23}{section*.32}%
+\contentsline {paragraph}{\numberline {d}Per-imaging-leg $\times $ confidence-bin sub-stratification.}{24}{section*.32}%
 \contentsline {paragraph}{\numberline {e}Signal-hunt summary.}{24}{section*.33}%
 \contentsline {subsection}{\numberline {F}Two-Point Chirality Correlation $w_{\rm CW}(\theta )$}{24}{section*.34}%
 \contentsline {paragraph}{\numberline {a}Brick-boundary control test (v1.0.84).}{25}{section*.35}%
 \contentsline {subsection}{\numberline {G}Hemisphere Asymmetry}{26}{section*.36}%
-\contentsline {subsection}{\numberline {H}Sky Region Balance}{26}{section*.37}%
-\contentsline {subsection}{\numberline {I}Per-Imaging-Leg Systematics (BASS+MzLS / DECaLS / DES)}{26}{section*.38}%
+\contentsline {subsection}{\numberline {H}Sky Region Balance}{27}{section*.37}%
+\contentsline {subsection}{\numberline {I}Per-Imaging-Leg Systematics (BASS+MzLS / DECaLS / DES)}{27}{section*.38}%
 \contentsline {subsection}{\numberline {J}Scale Dependence}{27}{section*.39}%
 \contentsline {subsection}{\numberline {K}Confidence Stratification}{27}{section*.40}%
 \contentsline {section}{\numberline {V}Comparison with Previous Work}{28}{section*.41}%
 \contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{28}{section*.42}%
 \contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{28}{section*.43}%
-\contentsline {subsection}{\numberline {C}SpArcFiRe}{28}{section*.44}%
-\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{28}{section*.45}%
+\contentsline {subsection}{\numberline {C}SpArcFiRe}{29}{section*.44}%
+\contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{29}{section*.45}%
 \contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{29}{section*.46}%
-\contentsline {section}{\numberline {VI}Discussion}{29}{section*.47}%
-\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{29}{section*.48}%
-\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{30}{section*.49}%
+\contentsline {section}{\numberline {VI}Discussion}{30}{section*.47}%
+\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{30}{section*.48}%
+\contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{31}{section*.49}%
 \contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{31}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{31}{section*.51}%
 \contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{32}{section*.52}%
 \contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{34}{section*.53}%
-\contentsline {paragraph}{\numberline {a}High-confidence-spiral subsample robustness rerun (v1.0.69).}{34}{section*.54}%
-\contentsline {paragraph}{\numberline {b}Reconciliation with the headline $+0.43\sigma $ real-space dipole.}{34}{section*.55}%
+\contentsline {paragraph}{\numberline {a}High-confidence-spiral subsample robustness rerun (v1.0.69).}{35}{section*.54}%
+\contentsline {paragraph}{\numberline {b}Reconciliation with the headline $+0.43\sigma $ real-space dipole.}{35}{section*.55}%
 \contentsline {paragraph}{\numberline {c}Bin-by-bin CW flatness test across four morphology axes.}{36}{section*.56}%
 \contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{37}{section*.57}%
 \contentsline {subsection}{\numberline {F}Mapping the bound onto cosmological parity-violating sectors via the axial-vector dipole channel}{37}{section*.58}%
 \contentsline {paragraph}{\numberline {a}Symmetry classification of the chirality dipole ($\ell \!=\!1$) vs.\ monopole ($\ell \!=\!0$) observables.}{37}{section*.59}%
 \contentsline {paragraph}{\numberline {b}Late-universe to primordial: the link, and its caveats.}{37}{section*.60}%
-\contentsline {paragraph}{\numberline {c}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{37}{section*.61}%
+\contentsline {paragraph}{\numberline {c}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{38}{section*.61}%
 \contentsline {paragraph}{\numberline {d}What does the present null constrain?}{38}{section*.62}%
 \contentsline {paragraph}{\numberline {e}(ii)~Parity-odd galaxy-trispectrum amplitude.}{38}{section*.63}%
 \contentsline {subsection}{\numberline {G}Future Directions}{38}{section*.64}%
@@ -72,8 +72,8 @@
 \contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{42}{section*.70}%
 \contentsline {paragraph}{\numberline {a}Declared data vector and $\ell \!=\!0$ treatment.}{42}{section*.71}%
 \contentsline {paragraph}{\numberline {b}Bandpower vs single-$\ell $ estimator distinction.}{42}{section*.72}%
-\contentsline {paragraph}{\numberline {c}Per-bin reporting convention.}{42}{section*.73}%
+\contentsline {paragraph}{\numberline {c}Per-bin reporting convention.}{43}{section*.73}%
 \contentsline {section}{\numberline {IX}Data Availability}{43}{section*.74}%
-\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{43}{section*.75}%
-\contentsline {section}{\numberline {}Acknowledgments}{43}{section*.76}%
+\contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{44}{section*.75}%
+\contentsline {section}{\numberline {}Acknowledgments}{44}{section*.76}%
 \contentsline {section}{\numberline {}References}{44}{section*.77}%

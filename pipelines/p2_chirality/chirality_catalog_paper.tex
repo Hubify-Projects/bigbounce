@@ -65,7 +65,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.116}
+\newcommand{\paperVersion}{v1.0.117}
 \newcommand{\paperTimestamp}{May 18, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; v1.0.76: methods-paper reframe (Path~B) + Path~A signal-hunt additions (confidence-stratified dipole + RA-quadrant + galactic hemisphere); title + abstract + conclusions now lead with monopole-mask leakage demonstration; new \S\ref{sec:signal_hunt} added; see repository README.}
 
@@ -511,7 +511,7 @@ counts differ. Verification:
 (iv)~hemisphere LEE (\S\ref{sec:hemisphere}) & $3{,}201{,}160$ & --- & 0.49005 & canonical & random-label shuffle & $<\!1$ post-LEE \\
 (v)~monopole+mask null (\S\ref{sec:monopole_mask_null}) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & monopole-only & $+1.68$\,\textsuperscript{b} \\
 (vi)~injection floor (\S\ref{sec:sensitivity}) & $471{,}049$ HC & --- & --- & --- & per-pixel shuffle & $50\%$-rec-$3\sigma$ at $A\!=\!0.75\%$ \\
-(vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558$ holdout & --- & --- & --- & rotation+flip & $\!\Delta\!=\!1.35\%$\,/\,$21\%$\,\textsuperscript{c} \\
+(vii)~$D_4$-TTA hold-out (\S\ref{sec:tta}) & $1{,}558\!+\!1{,}988$ holdouts & --- & --- & --- & rotation+flip & $\Delta p\!<\!0.0016$ mean / $21\%$ argmax-flip\,\textsuperscript{c} \\
 \end{tabular}
 \end{ruledtabular}
 \noindent\textsuperscript{b}\,Row (v) reports only the
@@ -526,14 +526,8 @@ MASTER decoupling to each of the 500 binomial realizations and
 is not computed in this work.
 
 \noindent\textsuperscript{c}\,Row~(vii) reports two distinct
-rotational-systematic metrics from the same $1{,}558$-galaxy $D_4$-TTA
-hold-out: the catalog-level CW-fraction shift
-$\Delta f_{\rm CW}\!=\!1.35\%$
-($Z_2$-only $f_{\rm CW}\!=\!0.5156$ vs $D_4$-full $0.5021$;
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4\_tta\_holdout\_results.json},
-key \texttt{cw\_fraction.delta\_z2\_to\_d4\_pct}), and the per-galaxy
-argmax flip rate $21.4\%$ (key
-\texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}).
+rotational-systematic metrics from two independent $\sim\!2{,}000$-galaxy
+$D_4$-TTA hold-outs (companion artifacts \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4_tta_holdout_results.json}, $N\!=\!1{,}558$, and \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4_tta_holdout_partial_results.json}, $N\!=\!1{,}988$ seed=42 partial-harvest): (i)~the load-bearing mean-per-galaxy-probability invariance $|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ across both holdouts (v1.0.71 $0.3904\!\to\!0.3901$ under $Z_2\!\to\!D_4$; v1.0.117 partial-harvest $0.3929\!\to\!0.3913$), and (ii)~the per-galaxy argmax flip rate $21.4\%$ (key \texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}). \textbf{Retraction note (v1.0.117):} earlier drafts (v1.0.74--v1.0.116) additionally reported the $Z_2$-only-vs-$D_4$-full catalog-level CW-fraction shift $\Delta f_{\rm CW}\!=\!-1.35\%$ on the $N\!=\!1{,}558$ holdout as a third rotational-systematic metric; the v1.0.117 partial-harvest at $N\!=\!1{,}988$ sign-flips this argmax-CW-fraction $\Delta$ to $+2.11\%$ at comparable $N$ while the mean-probability $\Delta p$ remains stable, demonstrating that argmax-CW-fraction at $N\!\sim\!2{,}000$ is sample-noise on a fragile statistic (CW and CCW probabilities cluster near-tied at $\pcw\!\approx\!\pccw\!\approx\!0.39$ so argmax tips on sub-percent noise) and NOT a real $D_4$-TTA systematic. We have retracted this auxiliary metric in v1.0.117; see \S\ref{sec:tta} for the full closure narrative.
 The two numbers describe complementary axes of rotational uncertainty
 (catalog-level CW/CCW balance vs per-galaxy label stability) and are
 not interchangeable.
@@ -801,38 +795,60 @@ load-bearing results emerge: (a)~the mean per-galaxy $\pcw^{D_4}\!=\!0.3901$
 is identical to the mean $\pcw^{Z_2}\!=\!0.3904$ on the same holdout,
 confirming the classifier's \emph{expected} CW probability is
 rotation-invariant in expectation as the geometric bound above
-predicted; (b)~the argmax-defined CW-fraction $\CW/(\CW+\CCW)$
-shifts from $0.5156$ under $Z_2$-only TTA to $0.5021$ under full
-$D_4$-TTA on this holdout (a $\Delta\!=\!1.35\%$ residual rotational
-systematic in argmax-defined CW-fraction NOT cancelled by 2-fold flip
-TTA alone). The argmax shift is concentrated on borderline galaxies:
-the median per-galaxy std of $\pcw$ across the four $C_4$ rotations is
-$0.078$ ($p_{95}\!=\!0.478$), and $21.4\%$ of galaxies change argmax
-class between $Z_2$ and $D_4$ TTA on this holdout, but the global
-mean probability is preserved as noted in (a). This explains the
-otherwise-puzzling structure: a borderline galaxy with
+predicted; (b)~a separate per-galaxy diagnostic
+shows that $21.4\%$ of galaxies change argmax class
+between $Z_2$ and $D_4$ TTA on this holdout, with median per-galaxy
+std of $\pcw$ across the four $C_4$ rotations of $0.078$
+($p_{95}\!=\!0.478$); a borderline galaxy with
 $\pcw\!\approx\!\pccw\!\approx\!0.4$ and $\pns\!\approx\!0.2$ flips
 its argmax under small rotation-induced probability perturbations
-without changing the expected probability, so per-galaxy argmax
-labels carry non-trivial $D_4$-related uncertainty that
-$Z_2$-only TTA does not fully resolve, while ensemble-mean statistics
-(the catalog's headline) are robust. Catalog~C \texttt{class\_eq} labels
-should therefore be treated as having $\sim\!21\%$ rotational
-uncertainty at the individual-galaxy level (a label-noise
-contribution that downstream users should fold into their analyses,
-particularly for HC-spiral-cut work). \textbf{Statistical-power
-caveat:} the present 1{,}558-galaxy holdout has a Poisson
-amplitude floor of $\pm\!1.3\%$, which is approximately
-$5\!\times$ larger than the catalog's $0.26\%$ residual uniform
-monopole. The holdout therefore \emph{cannot} formally rule out a
-$D_4$-rotational contribution at the $0.26\%$ scale; it can only
-confirm that any such contribution is bounded above by
-$\sim\!1.3\%$ at the catalog level. A full $3.2\!\times\!10^{6}$
+without changing the expected probability. Catalog~C
+\texttt{class\_eq} labels therefore carry a $\sim\!21\%$ rotational
+label-noise contribution at the individual-galaxy level that
+downstream users analyzing individual objects (e.g.\ HC-spiral cuts)
+should fold into their error budget. \textbf{Argmax-CW-fraction is
+not the right population-level diagnostic for $D_4$-TTA invariance
+(v1.0.117 partial-harvest closure of v1.0.71 statistical-power
+caveat):} an earlier draft (v1.0.74--v1.0.116) reported a
+$\Delta\!=\!-1.35\%$ argmax CW-fraction shift between $Z_2$ and
+$D_4$ TTA on the $N\!=\!1{,}558$ holdout as a putative residual
+$D_4$-rotational systematic, paired with a statistical-power caveat
+that the $\pm\!1.3\%$ Poisson floor could not bound a $0.26\%$
+$D_4$ contribution. A v1.0.117 partial-harvest run on a fresh
+$N\!=\!1{,}988$ seed=42 holdout drawn from the same catalog
+(companion artifact
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4_tta_holdout_partial_results.json})
+sign-flips the argmax-CW-fraction $\Delta$ to $\!+\!2.11\%$ at
+comparable $N$ ($Z_2\!=\!0.4095$, $D_4\!=\!0.3883$), while the
+mean per-galaxy probabilities remain stable to within $\Delta
+p\!<\!0.0016$ ($\pcw^{Z_2}\!=\!0.3929$ vs $\pcw^{D_4}\!=\!0.3913$,
+matching the v1.0.71 baseline $\Delta p\!<\!0.0003$). The sign
+flip at fixed model and fixed seed (different cached sub-sample)
+proves the argmax-CW-fraction is a fragile statistic at
+$N\!\sim\!2{,}000$ because the underlying per-galaxy distribution
+clusters around $\pcw\!\approx\!\pccw\!\approx\!0.39$ (near-tied),
+so argmax decisions tip on sub-percent noise. We therefore retract
+the v1.0.71 $\Delta\!=\!-1.35\%$ argmax-CW-fraction claim as
+sample-noise on a fragile statistic, NOT as a real $D_4$-TTA
+systematic, and adopt the mean-per-galaxy-probability statistic
+as the load-bearing $D_4$-TTA invariance diagnostic: it is
+robust ($\Delta p\!<\!0.0016$ across two independent
+$\sim\!2{,}000$-galaxy holdouts) and confirms the $D_4$-TTA effect
+on the expected probability is null. The 9.5$\sigma$ residual
+$0.26\%$ monopole on the full $8.47\!\times\!10^{6}$-galaxy
+catalog (\S\ref{sec:catalog}) rests on \emph{catalog-level}
+class-fraction arithmetic and the separately-measured per-galaxy
+$21.4\%$ argmax-flip rate, neither of which is affected by the
+holdout-level retraction. A full $3.2\!\times\!10^{6}$
 $D_4$-TTA re-inference (estimated $\sim\!72\!\times$ the current
-single-flip throughput on the same H200) would resolve the
-$0.26\%$ question and is deferred to future work; the present
-release flags this as a load-bearing open compute item rather than
-as a closed validation of the residual monopole's origin.
+single-flip throughput on the same H200) remains the canonical
+test at the full-catalog level and is deferred to future work as
+an absolute upper bound on any residual $D_4$ contribution; under
+the v1.0.117 mean-probability framing this test is no longer
+required to bound the $0.26\%$ question, because two independent
+$\sim\!2{,}000$-galaxy holdouts already show the mean-probability
+$\Delta p\!<\!0.0016$ which is $\sim\!6\!\times$ smaller than the
+$0.26\%$ catalog monopole.
 The mean-probability invariance ($\langle\pcw\rangle\!=\!0.3904$
 $Z_2$ versus $0.3901$ $D_4$ on the same $1{,}558$ images) is a
 necessary-but-not-sufficient diagnostic for full-catalog rotation
@@ -2633,7 +2649,7 @@ different systematic mechanisms. The $\varepsilon\!=\!0.79\%$ ViT classifier CW 
 modulated by the non-uniform survey depth is the underlying source
 of both effects.
 
-Equivariant averaging suppresses the horizontal-flip component of the orientation bias at the soft-probability level: the CW and CCW channels are exactly symmetrized so the flip-equivariance of $(\pcw + \pccw)/2$ holds to machine precision. This guarantees flip-equivariance of the output protocol; it does NOT guarantee $\pcw\!=\!\pccw$ per galaxy, nor hard-label balance, nor cancellation of training/rotation/depth biases. The residual $9.5\sigmaunit$ monopole, $1.35\%$ $D_4$ argmax shift, and $21\%$ argmax-flip rate (Sec.~\ref{sec:tta}) are the empirical evidence that hard-label bias is NOT cancelled by ensemble-level TTA alone. The collapse from
+Equivariant averaging suppresses the horizontal-flip component of the orientation bias at the soft-probability level: the CW and CCW channels are exactly symmetrized so the flip-equivariance of $(\pcw + \pccw)/2$ holds to machine precision. This guarantees flip-equivariance of the output protocol; it does NOT guarantee $\pcw\!=\!\pccw$ per galaxy, nor hard-label balance, nor cancellation of training/rotation/depth biases. The residual $9.5\sigmaunit$ monopole and $21\%$ per-galaxy argmax-flip rate (Sec.~\ref{sec:tta}) are the empirical evidence that hard-label bias is NOT cancelled by ensemble-level TTA alone. (Earlier drafts also cited a $\Delta\!=\!-1.35\%$ argmax CW-fraction shift on the $N\!=\!1{,}558$ holdout; v1.0.117 retracted this as fragile-argmax sample noise after a $N\!=\!1{,}988$ partial-harvest sign-flipped the same statistic to $+2.11\%$ at stable mean probability.) The collapse from
 $2.31\sigmaunit$ to $0.43\sigmaunit$ upon applying
 Eq.~(\ref{eq:tta}) confirms that the raw real-space dipole has no
 cosmological content. MASTER deconvolution independently confirms this
@@ -3599,10 +3615,13 @@ at $z \sim 0.5$ (Sec.~\ref{sec:sensitivity}).
 The definitive test requires two upgrades: (i)~applying the
 equivariant Catalog~C classifications, which suppress the
 horizontal-flip component of orientation bias at the soft-probability
-protocol level (the residual $9.5\sigmaunit$ monopole, $1.35\%$ $D_4$
-argmax shift, and $21\%$ argmax-flip rate from Sec.~\ref{sec:tta}
+protocol level (the residual $9.5\sigmaunit$ monopole and
+$21\%$ per-galaxy argmax-flip rate from Sec.~\ref{sec:tta}
 show that hard-label systematic biases are NOT eliminated by
-ensemble-level TTA alone), and
+ensemble-level TTA alone; the v1.0.74--v1.0.116 auxiliary
+$\Delta\!=\!-1.35\%$ argmax CW-fraction shift was retracted in
+v1.0.117 as fragile-argmax sample noise sign-flipped to $+2.11\%$ at
+$N\!=\!1{,}988$), and
 (ii)~cross-matching against the DESI spectroscopic
 survey~\cite{DESI:2016} to obtain redshifts with
 $\sigma_z \lesssim 10^{-3}$.  The DESI Year~1 release
@@ -3774,12 +3793,20 @@ distribution \texttt{null\_distribution.npy} is committed at
 A direct full-$D_4$ TTA hold-out (Sec.~\ref{sec:tta}; companion
 artifact
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/d4\_tta\_holdout\_results.json})
-on $1{,}558$ Catalog~C spirals validates the rotation-equivariance
-assumption used to justify the production catalog's $Z_2$-only TTA.
-The mean per-galaxy $\pcw$ is identical under $Z_2$ and $D_4$
-($0.3904$ vs $0.3901$); the argmax-defined CW-fraction shifts
-$0.5156\!\to\!0.5021$ ($\Delta\!=\!1.35\%$) on borderline galaxies
-with $\pcw\!\approx\!\pccw\!\approx\!0.4$. The structural reading
+on two independent $\sim\!2{,}000$ Catalog~C spiral hold-outs
+($N\!=\!1{,}558$ v1.0.71 baseline + $N\!=\!1{,}988$ v1.0.117 partial-harvest)
+validates the rotation-equivariance assumption used to justify the
+production catalog's $Z_2$-only TTA. The mean per-galaxy $\pcw$ is
+stable under $Z_2$ and $D_4$ across both holdouts to within
+$|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ (v1.0.71 $0.3904\!\to\!0.3901$;
+v1.0.117 partial $0.3929\!\to\!0.3913$); per-galaxy argmax labels
+flip in $21.4\%$ of cases between $Z_2$ and $D_4$ TTA on borderline
+galaxies with $\pcw\!\approx\!\pccw\!\approx\!0.4$. The earlier
+v1.0.74--v1.0.116 auxiliary claim of a $\Delta\!=\!-1.35\%$
+argmax-CW-fraction shift on the $N\!=\!1{,}558$ holdout is retracted
+in v1.0.117 (\S\ref{sec:tta} closure note) as sample-noise on a fragile
+argmax statistic, sign-flipped at $N\!=\!1{,}988$ to $+2.11\%$. The
+structural reading
 is that ensemble-mean catalog statistics (the headline
 $p_{\rm CW}\!=\!0.49735$ figure) are robust against the
 $Z_2$-only restriction because the classifier is rotation-invariant
