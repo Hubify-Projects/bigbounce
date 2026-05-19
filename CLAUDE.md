@@ -26,7 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current version: v2.2.0** (March 2026) — ~24 pages (focused version), 63+ bibliography entries, 10+ revision rounds complete.
+**Current versions (May 2026):** P1A v1A.0.33 (cascaded-loop EXIT — first paper to satisfy AGENT_RULES §4.4.1; 9th-consec Gemini 0-BLOCKER; external-review-ready), P1B v1B.0.20 (R16 Grok-only BLOCKERs falsified), P2 v1.7.30, P3 v3.1.56 (R16 + multi-round 9,576-dedup deferral closed via on-disk artifact), P4 v1.0.116 (multi-null battery + cross-spectrum smoking gun + paper-wide +3.64σ convention). The legacy long-form Paper 1 `arxiv/main.tex` v2.2.0 (March 2026) is deprecated; current canonical sources are `arxiv/paper1a_ech_nogo.tex` and `arxiv/paper1b_mcmc_companion.tex`. R-round 5-vendor loop blocked at R17 on OpenRouter top-up.
 
 **Live website:** https://bigbounce.hubify.app
 
@@ -42,7 +42,7 @@ This repository contains a comprehensive spin-torsion cosmology research program
 - w0-wa bound discussed theoretically only — not implemented computationally in this program (Paper 1 §VII.H explicitly: zero free-w0-wa samples among the 309,789 frozen posterior samples; earlier "quintom-B at 98.6%" bookkeeping was fire-#21 confabulation, corrected fire #25)
 - MCMC verification: ΔNeff ≈ 0 in all datasets; H₀ = 67.68 (standard ΛCDM)
 - 424,781+ MCMC posterior samples across 3 frozen dataset combinations (Paper 1 abstract canonical figure: 176,840 + 132,949 + 114,992 = 424,781; supersedes earlier 424,181 arithmetic mismatch corrected fire #25)
-- Multi-survey anomaly sweep (7 retained surveys + ACT-DR6 quarantined as cross-transfer artifact, 37.3M sources, **378,280 anomalies headline** = 378,080 point-source tier + 200 Planck CMB-patch tier after Path-C native retrains + 7-way 5″ positional deduplication; matches Paper 3 v3.1.38 abstract canonical. The earlier 319,443 figure was the pre-Path-C cross-transfer-scan baseline, superseded by the Path-C rebuild's 388,493 survey-level detections collapsing to 378,280 after dedup):
+- Multi-survey anomaly sweep (7 retained surveys + ACT-DR6 quarantined as cross-transfer artifact, 37.3M sources, **378,280 anomalies headline** = 378,080 point-source tier + 200 Planck CMB-patch tier after Path-C native retrains + 7-way 5″ positional deduplication; matches Paper 3 v3.1.56 abstract canonical. The earlier 319,443 figure was the pre-Path-C cross-transfer-scan baseline, superseded by the Path-C rebuild's 388,493 survey-level detections collapsing to 378,280 after dedup (compression 10,213 total = 637 multi-survey cluster collapses + 9,576 intra-survey duplicate collapses by global friends-of-friends union-find at 5″; closes the R3→R16 GRO-B3 multi-round dedup-arithmetic deferral per P3 v3.1.56 against `pathc_dedup_summary_no_act.json`):
   - DESI DR1: 22.5M spectra, 195,829 anomalies (0.87%), 2,145 SNR-filtered, 1,127 uncataloged
   - SDSS DR18: 2.3M spectra, 77,905 anomalies (3.4%) — QC: domain shift scores
   - eROSITA DR1: 930K sources, 298 anomalies (0.03%, BigAE top cut — Paper 3 Table 1 canonical; earlier 9,303 figure was a 1% placeholder before the top-cut policy was applied)
