@@ -1,0 +1,120 @@
+{
+  "version": "v1.0.78-extended-injection-sweep-up-to-A2pct",
+  "date_utc": "2026-05-20T17:03:14Z",
+  "supersedes": "fisher_sensitivity_floor.json (previously tested only to A=0.5%)",
+  "config": {
+    "nside": 64,
+    "n_mc_null": 1000,
+    "n_mc_inj_per_amp": 100,
+    "seed": 42,
+    "hc_threshold": 0.9,
+    "amplitudes_pct_tested": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "amplitude_convention": "p_CW = p_global + (A/2) cos(theta_axis); A is full-amplitude",
+    "null": "per-pixel-shuffle / binomial(n_total, p_cw_global)",
+    "subsample": "HC-spiral (p_eq > 0.6)"
+  },
+  "null_calibration": {
+    "mean_amplitude_pct": 0.44445467731976834,
+    "std_amplitude_pct": 0.2039475076462001
+  },
+  "results": {
+    "amplitudes_pct": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "rows": [
+      {
+        "A_pct": 0.05,
+        "median_sigma": -0.1385232807130169,
+        "P_sigma_gt_2": 0.04,
+        "P_sigma_gt_3": 0.01,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 0.1,
+        "median_sigma": -0.23886572722988753,
+        "P_sigma_gt_2": 0.05,
+        "P_sigma_gt_3": 0.01,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 0.2,
+        "median_sigma": -0.04149380881945143,
+        "P_sigma_gt_2": 0.05,
+        "P_sigma_gt_3": 0.02,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 0.3,
+        "median_sigma": 0.2683795753989231,
+        "P_sigma_gt_2": 0.06,
+        "P_sigma_gt_3": 0.0,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 0.5,
+        "median_sigma": 0.963615639373307,
+        "P_sigma_gt_2": 0.2,
+        "P_sigma_gt_3": 0.02,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 0.75,
+        "median_sigma": 2.2328468093523064,
+        "P_sigma_gt_2": 0.55,
+        "P_sigma_gt_3": 0.23,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 1.0,
+        "median_sigma": 2.937353655156043,
+        "P_sigma_gt_2": 0.83,
+        "P_sigma_gt_3": 0.48,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": false
+      },
+      {
+        "A_pct": 1.5,
+        "median_sigma": 5.492604029878281,
+        "P_sigma_gt_2": 0.99,
+        "P_sigma_gt_3": 0.99,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": true
+      },
+      {
+        "A_pct": 2.0,
+        "median_sigma": 7.980899286263027,
+        "P_sigma_gt_2": 1.0,
+        "P_sigma_gt_3": 1.0,
+        "n_mc_inj": 100,
+        "passes_50pct_recovery_at_3sigma": true
+      }
+    ],
+    "fifty_percent_recovery_threshold_3sigma_pct": 1.5,
+    "fifty_percent_recovery_threshold_2sigma_pct": 0.75
+  },
+  "interpretation": "50%-recovery-at-3sigma threshold is the smallest tested amplitude at which at least half of MC injections cross sigma=3. If no tested amplitude crosses 50% at 3sigma, the sensitivity floor under this null is bounded above only as > max(tested_amplitude). Per-pixel-shuffle is a systematic-inclusive null because it preserves per-pixel galaxy counts, depth/mask-edge correlations, and the global CW monopole."
+}

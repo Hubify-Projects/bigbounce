@@ -34,11 +34,11 @@ configs:
     path: "dipole_catalog_c.json"
 ---
 
-# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.116)
+# DESI Legacy Galaxy Chirality Catalog (Paper 4 v1.0.121)
 
 
 
-## v1.0.116 changelog (P4 external review wave + 11 internal R-rounds; v1.0.104 → v1.0.116)
+## v1.0.121 changelog (P4 external review wave + 11 internal R-rounds; v1.0.104 → v1.0.121)
 
 Net trajectory since the v1.0.104 external review (2026-05-15 → 2026-05-18, 12 patch versions):
 
@@ -47,14 +47,14 @@ Net trajectory since the v1.0.104 external review (2026-05-15 → 2026-05-18, 12
 - **v1.0.109 cross-spectrum smoking gun**: $C^{An}_\ell$ between chirality asymmetry $A_p$ and pixel-density $n_{\rm total}(p)$ on canonical mask gives $r_{\ell=2}=-0.65$, $\sigma_{\ell=2}=-2.89$ at the auto-spectrum quadrupole excess → interpretation (ii) coherent low-$\ell$ depth-correlated systematic DIRECTLY CONFIRMED at the same multipole.
 - **v1.0.110-v1.0.111 bootstrap audit**: bootstrap injection-recovery test shows a REAL $1.7\%$ dipole would give median $\sigma_{\rm bootstrap}=-0.49$ (P($\sigma>3$)=$1.3\%$) — bootstrap is TAUTOLOGICAL for cosmological-dipole hypothesis testing and is retained only as a sampling-variance diagnostic, not a verdict.
 - **v1.0.113-v1.0.115 abstract trim + paper-wide convention**: abstract reduced from 1839 words / 177 lines → 600 words / 13 lines (67% reduction); result-first structure leads with $-0.12\sigma$ subsample-mask null. Paper-wide $+1.85\sigma \to +3.64\sigma$ replacement enforced (29 instances, v1.0.115).
-- **v1.0.116 R20 closures**: Grok-R20 GRO-B1 "parity-violation overclaim" FALSIFIED by direct file inspection (the cited title is a stale `%`-comment; the live title is monopole-mask leakage; parity-EVEN disclaimer already in abstract). GRO-B2 closed via existing artifact — the $\ell=1$ cross-spectrum value $r_{\ell=1}=-0.49$, $\sigma_{\ell=1}=-1.53$ was already in `outputs/canonical_provenance/p4_cross_spectrum_A_n.json`; now reported in paper text alongside $\ell=2$.
+- **v1.0.121 R20 closures**: Grok-R20 GRO-B1 "parity-violation overclaim" FALSIFIED by direct file inspection (the cited title is a stale `%`-comment; the live title is monopole-mask leakage; parity-EVEN disclaimer already in abstract). GRO-B2 closed via existing artifact — the $\ell=1$ cross-spectrum value $r_{\ell=1}=-0.49$, $\sigma_{\ell=1}=-1.53$ was already in `outputs/canonical_provenance/p4_cross_spectrum_A_n.json`; now reported in paper text alongside $\ell=2$.
 
-**Verdict structure (v1.0.116, three-interpretation framework for canonical-mask $+3.64\sigma$ excess):**
+**Verdict structure (v1.0.121, three-interpretation framework for canonical-mask $+3.64\sigma$ excess):**
 - **(i) Real cosmological dipole at $\sim 1.7\%$**: DISFAVORED but bootstrap-null does NOT independently rule it out. Ruled out by THREE discriminators in combination: (a) $\ell=2 > \ell=1$ broadband structure (incompatible with a clean cosmological dipole), (b) $p_{\rm eq}$ quality-quartile washout (all four quartiles $|\sigma|<1$), (c) direct cross-spectrum confirming depth-correlated component at the precise multipole of the excess.
 - **(ii) Coherent depth/PSF/morphology-correlated systematic at low $\ell$ on canonical footprint**: STRONGEST INTERPRETATION, now DIRECTLY CONFIRMED by cross-spectrum quadrupole anti-alignment.
 - **(iii) NaMaster low-$\ell$ deconvolution artifact**: RULED OUT for the sharp-edge variant (apodized mask gives $+3.57\sigma$). A deeper NaMaster low-$\ell$ coupling artifact specific to patchy canonical geometry cannot be excluded without a NaMaster-independent reanalysis.
 
-**Companion data release for** _"A Quantifiable Monopole-Mask Leakage Channel Can Mimic Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) at Sub-Percent Sensitivity (50%-Recovery $3\sigma$ Threshold $A\approx 0.75\%$)"_ (Golden 2026, paper4-v1.0.116 release).
+**Companion data release for** _"A Quantifiable Monopole-Mask Leakage Channel Can Mimic Large Raw Pseudo-$C_\ell$ Chirality Dipoles: An Equivariant Re-Analysis of 8.47M DESI Legacy Galaxies (3.2M Spirals) at Sub-Percent Sensitivity (50%-Recovery $3\sigma$ Threshold $A\approx 0.75\%$)"_ (Golden 2026, paper4-v1.0.121 release).
 
 **Headline scientific finding.** The load-bearing scientific result is the MASTER-deconvolved $\ell=1$ chirality-dipole observable on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$): $-0.12\sigma$, consistent with no dipole. The real-space post-TTA Catalog C dipole is $+0.43\sigma$ ($p=0.30$, $\sim 0.6\%$ residual amplitude). The $\ell=1$ observable is the parity-EVEN isotropy-breaking axial-vector channel and is NOT a direct parity-violation test. In our DESI Legacy / ViT-Small pipeline, a quantifiable leakage channel can mimic large raw chirality dipoles: a small uniform CW-vs-CCW classifier monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell=1$, then collapses through the full mode-coupling-removal chain (map + monopole + mask + MASTER inversion). A controlled monopole-only generative null at $N=500$ (canonical mask, NSIDE=64, binomial realizations at $p_{\rm CW}^{\rm global}=0.4974$) reproduces $99.3\%$ of the observed pre-MASTER pseudo-$C_1$ power. The canonical-mask post-MASTER residual is $+3.64\sigma$ under proper galaxy-weighted monopole subtraction (v1.0.107+ paper-wide convention; the legacy $+1.85\sigma$ v1.0.62 baseline was on uncorrected $A_p$ field) — interpretation (ii) coherent depth-correlated systematic, NOT a primordial detection. **This is a this-pipeline demonstration**: a like-for-like matched-footprint reanalysis under Shamir's Ganalyzer pipeline would be required for a formal $\sigma$-level exclusion of his reported signal, and is not performed in the present release.
 
@@ -62,10 +62,10 @@ Net trajectory since the v1.0.104 external review (2026-05-15 → 2026-05-18, 12
 
 ## Quick links
 
-- **Paper PDF (v1.0.116, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.116/chirality_catalog_paper.pdf
+- **Paper PDF (v1.0.121, latest):** https://github.com/Hubify-Projects/bigbounce/releases/download/paper4-v1.0.121/chirality_catalog_paper.pdf
 - **Source LaTeX + canonical pipeline:** https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality
-- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.116
-- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.116` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.116)
+- **Immutable release (PDF + artifacts):** https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.121
+- **Zenodo DOI (release-pinned snapshot):** _minted via GitHub-Zenodo webhook on the_ [`paper4-v1.0.121` _release_](https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.121)
 - **One-shot reproduction:** `bash pipelines/p2_chirality/reproduce_paper4.sh`
 
 ## Schema
@@ -101,7 +101,7 @@ Headline dipole / multipole numbers from the canonical pipeline. Schema (see `ch
 
 ```json
 {
-  "version": "v1.0.116",
+  "version": "v1.0.121",
   "config": {"N_spiral": 3201160, "f_sky": 0.4938, "nside": 64, "lmax": 191, "N_MC": 500},
   "global_cw_fraction": 0.497353,
   "galaxy_weighted_mask_mean_A_gw": -0.005294,
@@ -134,7 +134,7 @@ Headline dipole / multipole numbers from the canonical pipeline. Schema (see `ch
     "DES":       {"N": 852651, "delta_cw_pct": 0.094, "dipole_sigma": 0.66, "p_value": 0.247}
   },
   "face_on_robustness": {
-    "catalog_c_full": {"N_spirals": 3201160, "dipole_sigma_real_space_post_tta": 0.43, "p_value_real_space_post_tta": 0.30, "pseudo_c1_post_master_subsample_mask": -0.12, "pseudo_c1_post_master_canonical_mask_v10107_corrected": 3.64, "pseudo_c1_post_master_canonical_mask_v1062_baseline": 1.85, "_note": "v1.0.116: canonical-mask number is +3.64σ under proper galaxy-weighted monopole subtraction (v1.0.107+ paper-wide convention); the +1.85σ value is the v1.0.62 baseline on uncorrected A_p field and is retained for historical provenance only"},
+    "catalog_c_full": {"N_spirals": 3201160, "dipole_sigma_real_space_post_tta": 0.43, "p_value_real_space_post_tta": 0.30, "pseudo_c1_post_master_subsample_mask": -0.12, "pseudo_c1_post_master_canonical_mask_v10107_corrected": 3.64, "pseudo_c1_post_master_canonical_mask_v1062_baseline": 1.85, "_note": "v1.0.121: canonical-mask number is +3.64σ under proper galaxy-weighted monopole subtraction (v1.0.107+ paper-wide convention); the +1.85σ value is the v1.0.62 baseline on uncorrected A_p field and is retained for historical provenance only"},
     "hc_spiral_p_gt_0p6": {"N_spirals": 2107494, "dipole_sigma": 0.62, "p_value": 0.243},
     "hc_strict_p_gt_0p8": {"N_spirals": 1402115, "dipole_sigma": 0.87, "p_value": 0.187},
     "null_used": "monopole-preserving (binomial draw at global p_CW); NOT isotropic-p=0.5"
@@ -159,7 +159,7 @@ print(df.shape, df.columns.tolist())
 
 ## Quality gates
 
-The catalog passed the following gates in v1.0.116 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, confidence-stratified signal-hunt diagnostics, multi-null battery, and cross-spectrum smoking gun are all consistent with the no-cosmological-dipole verdict on the load-bearing subsample-mask null and with the interpretation-(ii) coherent depth-correlated systematic on the canonical mask.
+The catalog passed the following gates in v1.0.121 of the paper. Per-leg systematics, face-on robustness, monopole+mask leakage null, D4-TTA rotation-equivariance hold-out, confidence-stratified signal-hunt diagnostics, multi-null battery, and cross-spectrum smoking gun are all consistent with the no-cosmological-dipole verdict on the load-bearing subsample-mask null and with the interpretation-(ii) coherent depth-correlated systematic on the canonical mask.
 
 | Gate | Verdict | Source |
 |---|---|---|
@@ -172,7 +172,7 @@ The catalog passed the following gates in v1.0.116 of the paper. Per-leg systema
 
 ## Versioning
 
-This release corresponds to the paper at version **v1.0.116** (commit `a2f24332`, 2026-05-18) and tracks the v1.0.104 → v1.0.116 trajectory: external review wave + 11 internal R-rounds + GPT5-B3 monopole-subtraction truth-audit + multi-null battery + cross-spectrum smoking gun + bootstrap-tautology audit + abstract trim + paper-wide $+1.85\sigma \to +3.64\sigma$ convention + R20 $\ell=1$ cross-spectrum closure. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
+This release corresponds to the paper at version **v1.0.121** (commit `a2f24332`, 2026-05-18) and tracks the v1.0.104 → v1.0.121 trajectory: external review wave + 11 internal R-rounds + GPT5-B3 monopole-subtraction truth-audit + multi-null battery + cross-spectrum smoking gun + bootstrap-tautology audit + abstract trim + paper-wide $+1.85\sigma \to +3.64\sigma$ convention + R20 $\ell=1$ cross-spectrum closure. Future revisions will tag matching versions in both the paper LaTeX `\version{}` macro and the `paper4-v1.X` GitHub release; the Parquet schema will not break across patch versions (v1.0.x). Minor or major version bumps (v1.1.x, v2.x) may introduce schema changes and will be announced in a CHANGELOG section here.
 
 ## Citation
 

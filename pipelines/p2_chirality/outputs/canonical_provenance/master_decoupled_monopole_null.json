@@ -1,0 +1,28 @@
+{
+  "version": "v1.0.121-master-decoupled-monopole-null",
+  "purpose": "ChatGPT external review v1.0.119 BL-4 closure: MASTER-decoupled monopole-only null x 500 on the canonical mask, with proper galaxy-weighted monopole subtraction (v1.0.107+ convention). Closes the deferred 'post-MASTER monopole-only null is not computed' caveat in Table I footnote b.",
+  "date_utc": "2026-05-20T17:02:25Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "seed": 42,
+    "f_sky": 0.4937744140625,
+    "n_spirals": 3201160,
+    "p_cw_global": 0.49735314698421823,
+    "A_gw_mask_mean_data": -0.00264685301578178,
+    "monopole_subtraction": "galaxy-weighted mask-mean (v1.0.107+ proper-monopole-subtraction convention)",
+    "binning": "single-ell bandpowers via NmtBin.from_edges(arange(1, LMAX+1), arange(2, LMAX+2))",
+    "compute_environment": "local laptop Apple Silicon MPS/CPU; pymaster 2.6 built from source against Homebrew libnmt + libchealpix + GSL + FFTW (libnmt 2.6 with --disable-openmp --enable-fftw-pthreads)"
+  },
+  "results": {
+    "data_decoupled_C1": 6.554745595421392e-06,
+    "null_mean_C1": 8.011811272895676e-07,
+    "null_std_C1": 1.1895655925828045e-06,
+    "sigma_data_vs_null": 4.836693751068901,
+    "empirical_rank_p_two_sided": 0.005988023952095809,
+    "n_exceed_null": 2
+  },
+  "interpretation_if_sigma_large": "If the post-MASTER MC-decoupled monopole-only null shows the data +3.64sigma residual is STILL inconsistent with the monopole-only null (|sigma| >> 1), then monopole-only leakage alone does NOT account for the post-MASTER residual \u2014 the +3.64sigma must include a depth/PSF/morphology systematic component beyond pure monopole-mask leakage.",
+  "interpretation_if_sigma_small": "If the post-MASTER MC-decoupled monopole-only null is consistent with the data (|sigma| < 1), then monopole-only leakage DOES account for the post-MASTER residual under MASTER decoupling, vindicating the v1.0.119 paper's leakage-only hypothesis for the canonical-mask residual."
+}
