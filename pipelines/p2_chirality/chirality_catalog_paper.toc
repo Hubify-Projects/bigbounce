@@ -36,18 +36,18 @@
 \contentsline {subsection}{\numberline {F}Two-Point Chirality Correlation $w_{\rm CW}(\theta )$}{26}{section*.34}%
 \contentsline {paragraph}{\numberline {a}Brick-boundary control test (v1.0.84).}{26}{section*.35}%
 \contentsline {subsection}{\numberline {G}Hemisphere Asymmetry}{27}{section*.36}%
-\contentsline {subsection}{\numberline {H}Sky Region Balance}{27}{section*.37}%
+\contentsline {subsection}{\numberline {H}Sky Region Balance}{28}{section*.37}%
 \contentsline {subsection}{\numberline {I}Per-Imaging-Leg Systematics (BASS+MzLS / DECaLS / DES)}{28}{section*.38}%
 \contentsline {subsection}{\numberline {J}Scale Dependence}{28}{section*.39}%
 \contentsline {subsection}{\numberline {K}Confidence Stratification}{28}{section*.40}%
 \contentsline {section}{\numberline {V}Comparison with Previous Work}{29}{section*.41}%
 \contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{29}{section*.42}%
 \contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{29}{section*.43}%
-\contentsline {subsection}{\numberline {C}SpArcFiRe}{29}{section*.44}%
+\contentsline {subsection}{\numberline {C}SpArcFiRe}{30}{section*.44}%
 \contentsline {paragraph}{\numberline {a}Monopole cross-check (working hypothesis test).}{30}{section*.45}%
 \contentsline {subsection}{\numberline {D}Motloch \& Pen (2021)}{30}{section*.46}%
-\contentsline {section}{\numberline {VI}Discussion}{30}{section*.47}%
-\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{30}{section*.48}%
+\contentsline {section}{\numberline {VI}Discussion}{31}{section*.47}%
+\contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{31}{section*.48}%
 \contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{32}{section*.49}%
 \contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{32}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{32}{section*.51}%
@@ -59,21 +59,21 @@
 \contentsline {subsection}{\numberline {E}Spiral Fraction Variation Across the Sky}{38}{section*.57}%
 \contentsline {subsection}{\numberline {F}Relation to possible parity-violating sectors: transfer-function caveats}{38}{section*.58}%
 \contentsline {paragraph}{\numberline {a}Symmetry classification of the chirality dipole ($\ell \!=\!1$) vs.\ monopole ($\ell \!=\!0$) observables.}{38}{section*.59}%
-\contentsline {paragraph}{\numberline {b}Late-universe to primordial: the link, and its caveats.}{38}{section*.60}%
+\contentsline {paragraph}{\numberline {b}Late-universe to primordial: the link, and its caveats.}{39}{section*.60}%
 \contentsline {paragraph}{\numberline {c}(i)~Chiral gravitational-wave power asymmetry $\Pi $.}{39}{section*.61}%
 \contentsline {paragraph}{\numberline {d}What does the present null constrain?}{39}{section*.62}%
 \contentsline {paragraph}{\numberline {e}(ii)~Parity-odd galaxy-trispectrum amplitude.}{39}{section*.63}%
-\contentsline {subsection}{\numberline {G}Future Directions}{39}{section*.64}%
+\contentsline {subsection}{\numberline {G}Future Directions}{40}{section*.64}%
 \contentsline {section}{\numberline {VII}Conclusions}{40}{section*.65}%
 \contentsline {paragraph}{\numberline {a}Headline finding: a quantifiable monopole-mask leakage channel.}{40}{section*.66}%
-\contentsline {paragraph}{\numberline {b}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{40}{section*.67}%
+\contentsline {paragraph}{\numberline {b}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{41}{section*.67}%
 \contentsline {paragraph}{\numberline {c}$D_4$-TTA rotational-equivariance validation.}{41}{section*.68}%
 \contentsline {paragraph}{\numberline {d}Sensitivity convention and remaining caveats.}{42}{section*.69}%
 \contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{43}{section*.70}%
 \contentsline {paragraph}{\numberline {a}Declared data vector and $\ell \!=\!0$ treatment.}{43}{section*.71}%
-\contentsline {paragraph}{\numberline {b}Bandpower vs single-$\ell $ estimator distinction.}{43}{section*.72}%
+\contentsline {paragraph}{\numberline {b}Bandpower vs single-$\ell $ estimator distinction.}{44}{section*.72}%
 \contentsline {paragraph}{\numberline {c}Per-bin reporting convention.}{44}{section*.73}%
-\contentsline {section}{\numberline {IX}Data Availability}{44}{section*.74}%
+\contentsline {section}{\numberline {IX}Data Availability}{45}{section*.74}%
 \contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{45}{section*.75}%
 \contentsline {section}{\numberline {}Acknowledgments}{45}{section*.76}%
 \contentsline {section}{\numberline {}References}{45}{section*.77}%

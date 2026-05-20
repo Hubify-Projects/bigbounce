@@ -213,7 +213,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
-    version: "v1.0.119",
+    version: "v1.0.120",
     pages: "49",
     refs: "46",
     readiness: 95,
@@ -245,7 +245,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 26.24 MB · 49 pp · May 19, 2026, v1.0.119",
+    pdfMeta: "PDF 26.24 MB · 49 pp · May 20, 2026, v1.0.120",
     artifacts: [
       { label: "Read PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "secondary", download: true },

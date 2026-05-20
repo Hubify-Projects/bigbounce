@@ -1,5 +1,5 @@
 {
-  "version": "v1.0.119-per-leg-confidence-familywise-maxstat",
+  "version": "v1.0.120-per-leg-confidence-familywise-maxstat-corrected-interp",
   "purpose": "OpenAI external review v1.0.117 MAJ-11 closure: family-level max-stat null on 15-cell per-leg x confidence grid; complements the existing per_leg_confidence_signal_hunt.json by reporting the JOINT max|sigma| distribution under global label shuffle (not just per-cell Bonferroni).",
   "date_utc": "2026-05-19T22:26:55Z",
   "config": {
@@ -184,7 +184,9 @@
     "p_value_joint": 0.0086,
     "p_value_joint_upper_bound": 0.008798240351929614,
     "p_value_bonferroni_15": 3.4715213903297556e-05,
-    "bonferroni_15_99pct_critical_abs_sigma": 3.4029328353853043
+    "bonferroni_15_99pct_critical_abs_sigma": 3.4029328353853043,
+    "p_value_bonferroni_15_note": "Gaussian Bonferroni-15 UNDERPREDICTS the empirical joint p-value by ~250x; use joint p-value, not Bonferroni, as the family-wise correction."
   },
-  "interpretation": "The observed max|sigma| of 4.724 at cell DECaLS_p_eq_0.5_0.6 is compared against the joint null distribution of max|sigma| over 15 valid cells under a global label shuffle that preserves the total CW count exactly. The joint p-value (0.00860) is a proper family-wise type-I error rate and supersedes the per-cell Bonferroni-15 approximation (0.00003); in our 15-cell setting the two agree to within a factor of ~2x because the cells are weakly correlated under the global shuffle."
+  "interpretation": "The observed max|sigma| of 4.724 at cell DECaLS_p_eq_0.5_0.6 is compared against the joint null distribution of max|sigma| over 15 valid cells under a global label shuffle that preserves the total CW count exactly. The joint p-value (43/5000 = 0.0086) is a proper family-wise type-I error rate. The Gaussian Bonferroni-15 estimate (2 * 15 * Phi(-4.724) = 3.47e-5) UNDERPREDICTS the family-wise p-value by a factor of ~250 because the per-cell statistic A_l is a dipole vector magnitude with chi3-distributed (heavy-tailed) tails under H0, NOT a Gaussian Z-score, AND the cells carry weak positive correlation under the global shuffle. The empirical joint null should be quoted in preference to any analytic Bonferroni or independent-chi3 approximation; the latter is documented here only for context.",
+  "v1_0_120_correction": "ChatGPT MAJ-2 / Grok MAJ-1 closure: prior interpretation claimed Bonferroni-15 and joint p-value 'agree within ~2x' \u2014 this was a mis-statement. The factor is ~250x; the joint null is heavy-tailed relative to Bonferroni's Gaussian assumption."
 }
