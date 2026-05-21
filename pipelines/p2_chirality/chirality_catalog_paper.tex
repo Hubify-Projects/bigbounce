@@ -65,8 +65,14 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.126}
+\newcommand{\paperVersion}{v1.0.127}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v1.0.127 (cron fire #13: shortened the giant 9KB reproducibility footnote 3 from ~3.5K
+%   chars (the cause of the 40pt L444 overfull) to a 719-char pointer to
+%   \S\ref{sec:availability} for the full artifact manifest. Added the
+%   sec:availability label to the Data Availability section. 40pt overfull at L444
+%   eliminated; remaining: 21pt (running-header VIII), 56pt (Table I), 27+21pt
+%   (per-leg DECaLS paragraph).
 % v1.0.126 (cron fire #12: HF model card pushed v1.0.122 -> v1.0.125 at
 %   https://huggingface.co/bamfai/galaxy-chirality-v2/commit/6a6b95419fbe57506db902d0e5b32f8f83b0c970
 %   — closes ChatGPT BL-1 'HF model card v1.0.104 stale' flag. Card content now reflects
@@ -441,7 +447,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts cited in this paper (full confusion matrices, matched-galaxy counts, throughput logs, GEMM/batch-size sweeps, sustained-bootstrap results) are deposited under the immutable release tag \texttt{paper4-v1.0.122} (and predecessor patch tags v1.0.100--v1.0.117) of the public GitHub repository at \url{https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0.122}, in the path \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/p2_chirality/r42_results}{\texttt{pipelines/p2\_chirality/r42\_results/}}. Each patch tag carries the corresponding PDF asset and the full canonical-provenance JSON artifact set. The reproducibility Python scripts cited throughout this paper (\texttt{monopole\_mask\_null\_sim\_v2.py}, \texttt{injection\_sweep\_extended.py}, \texttt{brick\_boundary\_control\_wtheta.py}, \texttt{per\_leg\_confidence\_signal\_hunt.py}, \texttt{pathA\_signal\_hunt.py}, \texttt{pathA\_2pt\_chirality.py}, \texttt{d4\_tta\_holdout.py}, \texttt{d4\_tta\_holdout\_partial.py}, \texttt{face\_on\_isotropic\_null.py}) live under \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/p2_chirality/scripts}{\texttt{pipelines/p2\_chirality/scripts/}} on the same release tag; the JSON artifacts they produce live under \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/p2_chirality/outputs/canonical_provenance}{\texttt{outputs/canonical\_provenance/}}. Additional load-bearing JSON artifacts referenced in the abstract and §IV (specifically \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/p2_chirality/master_results}{\texttt{master\_results/master\_power\_spectrum.json}} for the MASTER-deconvolved $\ell\!=\!1$ result, \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/p2_chirality/outputs/canonical_provenance/catalog_c_post_tta_dipole_summary.json}{\texttt{outputs/canonical\_provenance/catalog\_c\_post\_tta\_dipole\_summary.json}} for the post-TTA Catalog~C real-space dipole headline (the $+0.43\sigma$ null; the earlier \texttt{outputs/dipole/summary.json} is the pre-TTA Catalog~A $+2.31\sigma$ diagnostic and is preserved as historical reference only), and \href{https://github.com/Hubify-Projects/bigbounce/tree/paper4-v1.0.122/pipelines/h200_results/wave12_hemi_2026-05-01}{\texttt{h200\_results/wave12\_hemi\_2026-05-01/results.json}} for the hemisphere scan) live in the same release-tagged repository tree at the cited paths; the immutable release tag covers the full \texttt{pipelines/p2\_chirality/} subtree and the \texttt{pipelines/h200\_results/} subtree referenced in figure/table captions. \textbf{Canonical canonical-mask $\ell\!=\!1$ artifact (v1.0.107+ proper-monopole-subtracted $+3.64\sigma$ paper-wide convention):} the canonical numerical artifact is \href{https://github.com/Hubify-Projects/bigbounce/blob/paper4-v1.0.122/pipelines/p2_chirality/outputs/canonical_provenance/p4_multinull_battery.json}{\texttt{outputs/canonical\_provenance/p4\_multinull\_battery.json}} (key \texttt{multipole\_spectrum.l\_1.sigma}); the legacy file \texttt{canonical\_n\_master\_l1\_direct.json} carries the historical v1.0.62 baseline $+1.85\sigma$ on the uncorrected $A_p$ field and is renamed to \texttt{canonical\_n\_master\_l1\_direct\_v1062\_baseline.json} in v1.0.118 to prevent stale-artifact reads.}
+Reproducibility artifact: \artifact{pipelines/p2\_chirality/r42\_results/B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including \texttt{p4\_multinull\_battery.json} for the canonical $+3.64\sigma$, \texttt{master\_power\_spectrum.json} for the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan \texttt{wave12\_hemi\_2026-05-01/results.json}), and the legacy \texttt{canonical\_n\_master\_l1\_direct\_v1062\_baseline.json} (v1.0.62 baseline $+1.85\sigma$, retained for historical provenance only) are pinned to the immutable release tag \texttt{paper4-\paperVersion} and its predecessor patch tags. Full machine-readable artifact paths + URLs are in \S\ref{sec:availability}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -4268,7 +4274,7 @@ Sec.~\ref{sec:monopole_mask_null}).
 \end{itemize}
 
 % ============================================================
-\section{Data Availability}
+\section{Data Availability}\label{sec:availability}
 \label{sec:data_availability}
 % ============================================================
 
