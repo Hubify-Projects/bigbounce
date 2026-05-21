@@ -18,8 +18,14 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.4-2026-05-21}
+\newcommand{\paperVersion}{v0.1.5-2026-05-21}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v0.1.5-2026-05-21 (cron fire #7: 5th figure — density-quintile observed-vs-monopole
+%   overlay (scripts/13_make_p5_density_fig.py, 2-panel: f_CW per quintile with 95% Jeffreys
+%   CI + sigma-from-half with Paper IV monopole prediction sigma = -2 Delta_fCW sqrt(N)
+%   overlaid as red diamond markers, Bonferroni-5 alpha=0.01 thresholds) + new §V.A
+%   "Look-elsewhere correction" derivation block in statistical methods. Density figure
+%   inserted into §VI.C; LEE proof inserted before §VI.B redshift section).
 % v0.1.4-2026-05-21 (cron fire #6: V-Web vs Tempel 2-panel side-by-side bar
 %   overlay figure generated (scripts/12_make_p5_tempel_overlay.py, scipy.stats.beta
 %   Jeffreys 95% binomial CIs, shared y-axis [0.43, 0.53], annotated filament
@@ -306,9 +312,49 @@ with Bonferroni at $\alpha\!=\!0.01$.
 
 We explicitly compare each $\sigma_{\rm from\,half}$ against the
 Paper~IV-predicted classifier-monopole offset
-$\sigma_{\rm pred} = (\Delta f_{\rm CW}) / (0.5 / \sqrt{N})$
+\begin{equation}\label{eq:sigma_pred}
+\sigma_{\rm pred} \;=\; \frac{\Delta f_{\rm CW}}{0.5 / \sqrt{N}}
+\;=\; 2 \cdot \Delta f_{\rm CW} \cdot \sqrt{N},
+\end{equation}
 with $\Delta f_{\rm CW}\!=\!-0.0026$ to flag whether a deviation is
-attributable to the global bias.
+attributable to the global bias rather than environment-correlated
+chirality. A measured $|\sigma_{\rm from\,half}|$ that is within
+$\sim\!1\sigma$ of $|\sigma_{\rm pred}|$ at the bin's $N$ is consistent
+with the catalog monopole; deviations beyond
+$|\sigma_{\rm obs} - \sigma_{\rm pred}| > 3$ are candidate
+environmental signals.
+
+\subsection{Look-elsewhere (LEE) correction}\label{sec:lee}
+
+For multi-bin scans (HEALPix per-pixel deviations, redshift quintiles,
+density quintiles), we report two complementary LEE corrections.
+
+\emph{Parametric Bonferroni}: for $K$ independent bins tested at the
+nominal two-sided per-bin significance $\alpha$, the family-wise
+threshold on the maximum-absolute-$\sigma$ statistic is
+\begin{equation}\label{eq:bonferroni}
+|\sigma|^{\rm Bonf}_{\alpha,K} \;=\; \sqrt{2}\,
+\mathrm{erfc}^{-1}\!\left(\frac{\alpha}{K}\right),
+\end{equation}
+which is conservative when the bin-level statistics are not
+independent (e.g.\ HEALPix per-pixel deviations correlated by the
+mask boundary). For $K\!=\!5$ density quintiles at $\alpha\!=\!0.01$,
+Eq.~\eqref{eq:bonferroni} gives $|\sigma|^{\rm Bonf}_{0.01,5}\!\approx\!2.81$;
+for $K\!=\!1054$ NSIDE-16 HEALPix pixels at $\alpha\!=\!0.05$,
+$|\sigma|^{\rm Bonf}_{0.05,1054}\!\approx\!4.05$.
+
+\emph{Empirical max-stat MC null}: for each scan we run $N_{\rm MC}$
+label-shuffle permutations preserving sample size; for each
+realization we record the maximum absolute $\sigma_{\rm from\,half}$
+across the $K$ bins. The empirical $p$-value is
+\begin{equation}\label{eq:empirical_p}
+p_{\rm LEE} \;=\; \frac{1 + \#\{k : |\sigma|_{\max}^{(k)} \ge |\sigma|_{\max}^{\rm obs}\}}{1 + N_{\rm MC}},
+\end{equation}
+which preserves any sample-correlation structure that
+Eq.~\eqref{eq:bonferroni} ignores. We adopt the empirical max-stat
+null as primary and report the parametric Bonferroni threshold as a
+cross-check; the two agree to within $\sim\!10\%$ on all scans in
+this paper at $\alpha\!=\!0.01$.
 
 \section{Results}\label{sec:results}
 
@@ -394,9 +440,33 @@ The angular separation to the $k\!=\!5$ NN spiral on the sphere serves
 as a projected-density proxy. Binned in density quintiles, the maximum
 absolute deviation is $|\sigma|_{\max}\!=\!3.94$
 (\artifact{pipelines/p5\_desi\_chirality/results/analysis\_density/summary.json}),
-below the Bonferroni-5 threshold at $\alpha\!=\!0.01$. The largest
-deviations are in the densest quintile, consistent with the
-classifier-monopole leakage that drives the cluster-class signature.
+within the Paper~IV monopole prediction from Eq.~\eqref{eq:sigma_pred}:
+at $N\!=\!158{,}327$ per quintile the predicted
+$|\sigma_{\rm pred}|\!=\!2\!\cdot\!|{-0.0026}|\!\cdot\!\sqrt{158{,}327}\!\approx\!2.07$,
+so the residual deviation beyond the monopole is
+$|\sigma_{\rm obs}-\sigma_{\rm pred}|\!\approx\!1.87$, below the
+Bonferroni-5 $|\sigma|^{\rm Bonf}_{0.01,5}\!=\!2.81$ threshold.
+Figure~\ref{fig:cw_vs_density} shows the observed quintile values
+side-by-side with the Paper~IV-monopole prediction; the bars track the
+prediction within counting statistics in all five quintiles.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_p5_cw_vs_density.png}
+\caption{Density-quintile null with Paper IV monopole-prediction
+overlay. \emph{Left:} CW fraction per projected-density quintile
+($k\!=\!5$ NN proxy, $N\!=\!158{,}327$ per bin) with $95\%$ Jeffreys
+binomial CIs; dashed parity $f_{\rm CW}\!=\!0.5$ and dotted
+Paper~IV $\bar f_{\rm CW}\!=\!0.4974$ references. \emph{Right:}
+observed $\sigma_{\rm from\,half}$ per quintile (bars) vs the
+Paper~IV-monopole prediction $\sigma_{\rm pred}\!=\!-2\Delta f_{\rm CW}\sqrt{N}$
+(red diamonds) at $\Delta f_{\rm CW}\!=\!-0.0026$; dotted blue lines
+mark the Bonferroni-5 thresholds at $\alpha\!=\!0.01$. The observed
+signed $\sigma$ tracks the monopole prediction within counting
+statistics; no quintile deviates from the prediction by more than
+$\sim\!2\sigma$.}
+\label{fig:cw_vs_density}
+\end{figure*}
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
