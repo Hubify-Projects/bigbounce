@@ -1,44 +1,66 @@
 {
-  "status": "PENDING_TEMPEL_INGEST",
-  "expected_input": "pipelines/p5_desi_chirality/data/desi_env/tempel/tempel_2014_fof.parquet",
-  "expected_schema": {
-    "ra": "float64",
-    "dec": "float64",
-    "z": "float64",
-    "group_id": "int64",
-    "multiplicity": "int64"
-  },
-  "source": "Tempel+2014 A&A 566 A1 arXiv:1402.1350; cosmodb.to.ee/tempel-2014-FoF/",
-  "tempel_class_bins": [
+  "status": "OK",
+  "tempel_source": "pipelines/p5_desi_chirality/data/desi_env/tempel/tempel_2014_fof.parquet",
+  "matched_rows": 110586,
+  "per_class": [
     {
-      "name": "isolated",
-      "multiplicity_min": 1,
-      "multiplicity_max": 2
+      "tempel_class": "cluster_like",
+      "n": 5892,
+      "n_cw": 2963,
+      "n_ccw": 2929,
+      "cw_fraction": 0.5028852681602173,
+      "sigma_from_half": 0.4429426993356732
     },
     {
-      "name": "small_group",
-      "multiplicity_min": 2,
-      "multiplicity_max": 5
+      "tempel_class": "filament_like",
+      "n": 14317,
+      "n_cw": 7133,
+      "n_ccw": 7184,
+      "cw_fraction": 0.4982189006076692,
+      "sigma_from_half": -0.42623014677254023
     },
     {
-      "name": "filament_like",
-      "multiplicity_min": 5,
-      "multiplicity_max": 20
+      "tempel_class": "isolated",
+      "n": 58539,
+      "n_cw": 28962,
+      "n_ccw": 29577,
+      "cw_fraction": 0.4947470916824681,
+      "sigma_from_half": -2.541864911942458
     },
     {
-      "name": "cluster_like",
-      "multiplicity_min": 20,
-      "multiplicity_max": 1000000000
+      "tempel_class": "small_group",
+      "n": 31838,
+      "n_cw": 15829,
+      "n_ccw": 16009,
+      "cw_fraction": 0.4971731892706828,
+      "sigma_from_half": -1.008787322756477
     }
   ],
-  "join_contract": {
-    "on": "celestial-sphere nearest-neighbour within 1'' (astropy SkyCoord.match_to_catalog_sky)",
-    "primary_key_for_chirality_side": "desi_targetid (de-duplicated nearest-sep winner)"
+  "vweb_concordance": {
+    "isolated_vs_void": {
+      "concordance_pp": 1.1102,
+      "ok": false,
+      "tempel_f_cw": 0.4947470916824681,
+      "vweb_f_cw": 0.4836448598130841
+    },
+    "small_group_vs_wall": {
+      "concordance_pp": 0.6199,
+      "ok": false,
+      "tempel_f_cw": 0.4971731892706828,
+      "vweb_f_cw": 0.5033717967930466
+    },
+    "filament_like_vs_filament": {
+      "concordance_pp": 0.0258,
+      "ok": true,
+      "tempel_f_cw": 0.4982189006076692,
+      "vweb_f_cw": 0.4979604935972973
+    },
+    "cluster_like_vs_cluster": {
+      "concordance_pp": 0.658,
+      "ok": false,
+      "tempel_f_cw": 0.5028852681602173,
+      "vweb_f_cw": 0.4963057068464547
+    }
   },
-  "writes_when_ingested": [
-    "pipelines/p5_desi_chirality/env_finder/reports/03_tempel_cross_validation.json",
-    "pipelines/p5_desi_chirality/results/analysis_cosmic_web/cw_fraction_by_env__tempel_fof.csv"
-  ],
-  "concordance_spec": "cw_fraction_delta per Tempel<->V-Web class pair < 0.002 (0.2pp)",
-  "generated_at_utc": "2026-05-21T18:53:48Z"
+  "generated_at_utc": "2026-05-21T19:58:38Z"
 }

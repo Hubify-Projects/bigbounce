@@ -181,6 +181,11 @@ def main() -> int:
 
     print(f"[{_utc()}] Loading matched chirality catalog ...")
     matched = pd.read_parquet(MATCHED_PATH)
+    print(f"  matched rows: {len(matched):,}")
+    # Pre-filter to chirality-relevant subsample BEFORE the spatial NN join,
+    # so we don't burn an hour matching 16M rows when only 791K carry CW/CCW.
+    matched = matched[matched["match_class_eq"].isin(["CW", "CCW"])].reset_index(drop=True)
+    print(f"  chirality-relevant rows for env join: {len(matched):,}")
 
     # Spatial nearest-neighbour join (Tempel does not carry DESI TARGETID
     # natively). We use the same 1'' acceptance as the chirality x DESI
@@ -189,8 +194,14 @@ def main() -> int:
     from astropy.coordinates import SkyCoord
     from astropy import units as u
     print(f"[{_utc()}] Sky-coord NN join (1'' acceptance) ...")
-    sc_matched = SkyCoord(ra=matched["ra"].to_numpy() * u.deg,
-                           dec=matched["dec"].to_numpy() * u.deg)
+    # Matched catalog uses `desi_ra`/`desi_dec` for the joined positions (the
+    # chirality-side `match_ra`/`match_dec` are the DR8 Tractor positions used
+    # for the original chirality x DESI x-match). For env joins we use the DESI
+    # spectro positions as primary.
+    ra_col = "desi_ra" if "desi_ra" in matched.columns else "ra"
+    dec_col = "desi_dec" if "desi_dec" in matched.columns else "dec"
+    sc_matched = SkyCoord(ra=matched[ra_col].to_numpy() * u.deg,
+                           dec=matched[dec_col].to_numpy() * u.deg)
     sc_tempel = SkyCoord(ra=tempel["ra"].to_numpy() * u.deg,
                           dec=tempel["dec"].to_numpy() * u.deg)
     idx, sep, _ = sc_matched.match_to_catalog_sky(sc_tempel)
