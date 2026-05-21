@@ -1,0 +1,75 @@
+{
+  "purpose": "Mask pixel-count-threshold robustness sweep for the canonical-mask +3.64\u03c3 \u2113=1 result. ChatGPT v1.0.122 MAJOR M3 closure.",
+  "version": "v1.0.124-mask-threshold-sweep",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 200,
+    "seed": 42,
+    "thresholds": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ]
+  },
+  "n_spirals_input": 3201160,
+  "per_threshold": [
+    {
+      "threshold_min_n_total": 1,
+      "f_sky": 0.4930013020833333,
+      "n_pix_in_mask": 24232,
+      "n_galaxies_in_mask": 3201122,
+      "data_C1": 7.914792611633894e-06,
+      "null_mean": 8.275351322553744e-07,
+      "null_std": 1.1230935972860842e-06,
+      "sigma_from_null": 6.310478037186416,
+      "empirical_p_value": 0.0
+    },
+    {
+      "threshold_min_n_total": 5,
+      "f_sky": 0.4911702473958333,
+      "n_pix_in_mask": 24142,
+      "n_galaxies_in_mask": 3200836,
+      "data_C1": 7.317248136047068e-06,
+      "null_mean": 5.361203817884494e-07,
+      "null_std": 8.205345397827467e-07,
+      "sigma_from_null": 8.264280692015793,
+      "empirical_p_value": 0.0
+    },
+    {
+      "threshold_min_n_total": 10,
+      "f_sky": 0.4898885091145833,
+      "n_pix_in_mask": 24079,
+      "n_galaxies_in_mask": 3200340,
+      "data_C1": 6.769822677970049e-06,
+      "null_mean": 5.579101362758037e-07,
+      "null_std": 8.810288507017251e-07,
+      "sigma_from_null": 7.050748152851701,
+      "empirical_p_value": 0.0
+    },
+    {
+      "threshold_min_n_total": 20,
+      "f_sky": 0.4880777994791667,
+      "n_pix_in_mask": 23990,
+      "n_galaxies_in_mask": 3198998,
+      "data_C1": 6.643566776213317e-06,
+      "null_mean": 5.199082937087219e-07,
+      "null_std": 8.691410294217193e-07,
+      "sigma_from_null": 7.045644234030644,
+      "empirical_p_value": 0.0
+    },
+    {
+      "threshold_min_n_total": 50,
+      "f_sky": 0.4784952799479167,
+      "n_pix_in_mask": 23519,
+      "n_galaxies_in_mask": 3180526,
+      "data_C1": 6.098898656210991e-06,
+      "null_mean": 5.513336762069016e-07,
+      "null_std": 8.576982133673164e-07,
+      "sigma_from_null": 6.46796844571285,
+      "empirical_p_value": 0.0
+    }
+  ]
+}
