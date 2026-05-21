@@ -23,7 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from"@/components/ui/table";
-import { ArrowRight, Database, FileText, Orbit } from"lucide-react";
+import { AlertTriangle, ArrowRight, Database, FileText, Orbit } from"lucide-react";
 import Link from"next/link";
 
 const totalAnomalies = surveys.reduce((s, sv) => s + sv.anomalies, 0);
@@ -129,6 +129,137 @@ export default function HomePage() {
   return (
     <>
       <LiveStatus />
+      {liveStatus.needsHouston.length > 0 && (
+        <section
+          className="section"
+          style={{
+            border: "2px solid #d97706",
+            borderRadius: 10,
+            padding: "18px 22px",
+            background: "rgba(217, 119, 6, 0.06)",
+            marginBottom: 24,
+          }}
+        >
+          <h2
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              fontFamily: "var(--font-mono-stack)",
+              color: "#b45309",
+              marginTop: 0,
+              marginBottom: 4,
+              fontSize: "1.05rem",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+            }}
+          >
+            <AlertTriangle size={20} aria-hidden="true" /> Needs Houston
+            <span
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 500,
+                color: "#92400e",
+                letterSpacing: "0.02em",
+                textTransform: "none",
+                marginLeft: 6,
+              }}
+            >
+              ({liveStatus.needsHouston.length} truly-blocked
+              {liveStatus.needsHouston.length === 1 ? " item" : " items"} —
+              agents cannot proceed without you)
+            </span>
+          </h2>
+          <p
+            style={{
+              fontSize: "0.78rem",
+              color: "#92400e",
+              marginTop: 0,
+              marginBottom: 14,
+            }}
+          >
+            Everything else on the site is autonomous and being driven by agents.
+            This block lists ONLY items that require Houston-only authority:
+            personal sign-off, API/SSH credentials, arXiv endorsement, or
+            something physical only you can provide.
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {liveStatus.needsHouston.map((item) => (
+              <li
+                key={item.title}
+                style={{
+                  borderTop: "1px solid rgba(180, 83, 9, 0.25)",
+                  padding: "12px 0",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "baseline",
+                    gap: 10,
+                    marginBottom: 6,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono-stack)",
+                      fontWeight: 600,
+                      color: "#7c2d12",
+                      fontSize: "0.92rem",
+                    }}
+                  >
+                    {item.title}
+                  </span>
+                  {item.blockedPaper && (
+                    <Badge variant="outline" className="text-xs">
+                      gates {item.blockedPaper}
+                    </Badge>
+                  )}
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--text-muted, #57534e)",
+                    margin: "0 0 6px 0",
+                    lineHeight: 1.45,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: 600,
+                      color: "#92400e",
+                      marginRight: 6,
+                    }}
+                  >
+                    Why blocked:
+                  </span>
+                  {item.why}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--text, #1c1917)",
+                    margin: 0,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: 600,
+                      color: "#7c2d12",
+                      marginRight: 6,
+                    }}
+                  >
+                    Ask:
+                  </span>
+                  {item.ask}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <section className="page-hero">
         <div className="hero-copy">
           <p className="eyebrow" style={{ marginBottom: 10 }}>
