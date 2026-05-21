@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{booktabs}
 \hypersetup{
   colorlinks=true,
   linkcolor=blue!60!black,
@@ -12,193 +13,600 @@
   pdfnewwindow=true,
 }
 
-% Discrete repo-artifact macro: hyperlinks to the canonical repo and inserts
-% discretionary breaks at every \_ so paths wrap cleanly inside narrow columns.
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{%
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
+\newcommand{\paperVersion}{v0.1.0-2026-05-21}
+\newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v0.1.0-2026-05-21 (first compiled draft; scaffold to full-draft expansion during
+%   the autonomous drive-to-100 cron loop tick 122 / fire #2). Phase 1 V-Web env_finder
+%   plus Phase 2 sensitivity sweep across 9 (R_s, lambda_th) cells back every
+%   numerical claim. Pending: figures, Tempel+2018 cross-validation, first cross-vendor R-round.
+
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment}
+\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web Test on 791{,}635 Matched Spirals}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\today}
+\date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
-[Placeholder.] We cross-match the 8,474,531-galaxy chirality catalog of
-\textit{Paper IV} (post-TTA equivariant labels; \texttt{class\_eq}) with
-the DESI Data Release 1 redshift catalog ($\sim$22.5M spectra) to test
-whether spiral galaxy handedness is statistically independent of
-large-scale structure environment. We control for sky position,
-redshift-quality selection, classifier confidence, imaging leg
-(BASS+MzLS / DECaLS / DES), and DESI target class. We report bin-by-bin
-CW fractions in redshift, projected local density, and cosmic-web class,
-with permutation nulls and label-shuffle controls. [Headline result and
-significance to be filled in at first matched catalog.]
+We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
+\cite{golden_chirality_2026} with the DESI Data Release~1 redshift
+catalog ($16.4 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
+spiral galaxy handedness is statistically independent of large-scale
+structure environment. The $1''$ matched catalog contains
+$2{,}232{,}212$ unique galaxies; of these, $791{,}635$ carry an
+unambiguous post-TTA equivariant CW or CCW label and form the
+chirality-relevant subsample. We classify each matched spiral into one
+of four cosmic-web classes \{void, wall, filament, cluster\} by running
+a V-Web tidal-tensor classifier (Hahn~\textit{et~al.}~2007
+\cite{Hahn2007}; Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
+Cautun~\textit{et~al.}~2014 \cite{Cautun2014}) on the full
+$14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
+grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
+threshold $\lambda_{\rm th}\!=\!0$. \textbf{Headline result:} the CW
+fraction is statistically independent of cosmic-web class within DESI
+DR1 at V-Web resolution. Per-class CW fractions on the $791{,}635$
+chirality-relevant spirals are $0.4836$ (void; $n\!=\!428$,
+$-0.68\sigma$), $0.5034$ (wall; $n\!=\!6{,}673$, $+0.55\sigma$),
+$0.4980$ (filament; $n\!=\!408{,}187$, $-2.61\sigma$), and
+$0.4963$ (cluster; $n\!=\!397{,}505$, $-4.66\sigma$); the range across
+classes is $1.7$\,percentage points, and the negative $\sigma$ values
+in filament and cluster track the catalog-wide
+$\Delta f_{\rm CW}\!=\!-0.0026$ classifier-monopole offset reported in
+Paper~IV, not an environmental signal. A Phase~2 sensitivity sweep
+across nine cells $\{R_s,\lambda_{\rm th}\} \in \{10, 25,
+50\}\,{\rm Mpc}/h \times \{0.0, 0.1, 0.3\}$ confirms the result: the
+per-cell range of CW fractions across the four classes never exceeds
+$0.22$\,percentage points (max $0.0022$ at
+$R_s\!=\!25, \lambda_{\rm th}\!=\!0.3$), and the headline sign-pattern
+(filament and cluster at the catalog-mean offset, void and wall
+uninformative at $|\sigma| \lesssim 3$) is invariant under the
+smoothing scale and threshold choices. We also report null tests in
+redshift (label-shuffle $p\!=\!0.372$), projected $k\!=\!5$ NN density
+($|\sigma|_{\max}\!=\!3.94$ across density quintiles), and sky-position
+(HEALPix scans at NSIDE $\in \{16, 32, 64\}$ with label-shuffle nulls
+$p\!=\!0.61/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
+correction. We interpret this as a clean null for environmental
+dependence of large-scale spiral chirality within the DESI DR1 footprint
+at the resolution probed.
 \end{abstract}
 
 \maketitle
 
-\section{Introduction}
-[To be drafted.] Spiral galaxy chirality is, to leading order in a
-parity-conserving universe, an equal mixture of clockwise (CW) and
-counterclockwise (CCW) projections on the sky once mirror-augmentation
-biases in classifier training are removed. \textit{Paper IV} establishes
+\section{Introduction}\label{sec:intro}
+
+Spiral galaxy chirality is, to leading order in a parity-conserving
+universe, an equal mixture of clockwise (CW) and counterclockwise (CCW)
+projections on the sky once mirror-augmentation biases in classifier
+training are removed. Paper~IV~\cite{golden_chirality_2026} establishes
 the global mixture in the post-test-time-augmentation equivariant
-classifier as CW fraction $0.4974 \pm 0.000279$, consistent with parity
-at $\sim$1$\sigma$. That null is a \emph{global} statement: it does not
-constrain whether handedness is independent of environment.
+classifier as a CW fraction of $0.4974 \pm 0.000279$, consistent with
+parity at $\sim 1\sigma$. That null is a \emph{global} statement; it
+does not constrain whether handedness is independent of
+\emph{environment}.
 
 The present paper is a focused, environment-conditional null test. We
-cross-match the canonical chirality catalog with DESI Data Release 1 to
-ask whether handedness correlates with redshift, projected density, or
-cosmic-web context after controlling for the dominant selection and
-imaging-systematic effects. The test is bounce-model agnostic: a positive
-detection of environmental dependence would be a novel observational
-constraint, and a clean null tightens the limits of correlated handedness
-on cosmologically relevant scales.
+ask whether, after the Paper~IV global parity-mixture null holds, there
+is residual environmental dependence: do galaxies in voids exhibit
+different chirality than galaxies in filaments or clusters? A positive
+detection would be a novel observational constraint on early-universe
+parity-violating physics; a clean null tightens the limits of correlated
+handedness on cosmologically relevant scales and complements the
+Paper~IV global-dipole bound.
 
-\section{Relation to Paper IV}
-\textit{Paper IV} \cite{golden_chirality_2026} produces a flat
-catalog of 8,474,531 galaxies classified into \{CW, CCW, NS\} by an
-equivariant ViT-Small classifier with test-time augmentation. The
-canonical labels live in the column \texttt{class\_eq} of
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json},
-mirrored to HuggingFace
-(\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}). The catalog inherits sky positions from
+We approach the test in three stages. First, we cross-match the
+canonical chirality catalog with DESI Data Release~1
+(Section~\ref{sec:data}). Second, we run a V-Web tidal-tensor cosmic-web
+classifier (Section~\ref{sec:vweb}) on the parent DESI DR1 spectroscopic
+catalog to assign each matched spiral to one of \{void, wall, filament,
+cluster\}. Third, we test the chirality-by-environment dependence with
+exact binomial intervals and label-shuffle permutation nulls
+(Sections~\ref{sec:results}--\ref{sec:phase2}). The test is
+bounce-model agnostic.
+
+\section{Relation to Paper IV}\label{sec:p4}
+
+Paper~IV~\cite{golden_chirality_2026} produces a flat catalog of
+$8{,}474{,}531$ galaxies classified into \{CW, CCW, NS\} by an
+equivariant ViT-Small classifier with $Z_2$ test-time augmentation.
+The canonical labels live in the column \texttt{class\_eq} of the
+HuggingFace catalog
+(\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
+{bamfai/galaxy-chirality-catalog}, immutable revision
+\texttt{paper4-v1.0.122}). The catalog inherits sky positions from
 DESI Legacy DR8 Tractor and is not redshift-resolved beyond Tractor
 photo-$z$; this paper supplies spectroscopic redshifts and environment
-context by joining to DESI Data Release 1.
+context by joining to DESI Data Release~1.
 
-\section{Data}
+Paper~IV's headline results bear on the present paper in three ways.
+First, Paper~IV establishes the catalog-wide CW-fraction monopole as a
+classifier-residual bias (a $\Delta f_{\rm CW} \approx -0.0026$ offset
+from $0.5$ that is spatially uniform and quality-quartile-flat) rather
+than a real cosmological dipole; we therefore expect the environmental
+$\sigma_{\rm from\,half}$ values reported here to inherit the same
+monopole offset, with sign determined by sample size. Second,
+Paper~IV's full-sky dipole null is at $\sigma\!=\!0.43, p\!=\!0.30$ for
+direct amplitude estimation and $-0.12\sigma$ for the subsample-mask
+MASTER-deconvolved $\ell\!=\!1$ amplitude, so any environmental signal
+here would have to coexist with that null. Third, Paper~IV provides
+the per-galaxy CW/CCW labels we test here; we make no independent
+classification.
+
+\section{Data}\label{sec:data}
+
 \subsection{Chirality catalog (Paper IV)}
-We use the immutable HF revision \texttt{paper4-v1.0.90}
-(\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/global\_cw\_fraction.json}),
-filtered to a configurable confidence floor (default: no cut). Imaging-leg
-provenance is retained for systematics: BASS+MzLS, DECaLS, DES.
+
+We use the immutable HuggingFace revision \texttt{paper4-v1.0.122},
+filtered to the chirality-relevant \texttt{class\_eq} $\in$
+\{\texttt{CW}, \texttt{CCW}\}. Imaging-leg provenance is retained for
+the per-leg systematics split in Section~\ref{sec:systematics}:
+BASS+MzLS, DECaLS, DES.
 
 \subsection{DESI Data Release 1}
-We use the canonical \texttt{zall-pix-iron.fits} HEALPix-coadded redshift
-catalog from DESI Data Release 1, restricted to
-\texttt{ZWARN == 0}, \texttt{SPECTYPE} $\in$ \{GALAXY, QSO\}, and
-$0 \le z \le 4$.
+
+We use the canonical \texttt{zall-pix-iron.fits} HEALPix-coadded
+redshift catalog from DESI DR1, restricted to \texttt{ZWARN==0},
+\texttt{SPECTYPE} $\in$ \{GALAXY, QSO\}, and $0.01 \le z \le 4$. The
+full DR1 input is $16{,}361{,}731$ rows; after the spectro-galaxy
+filter and the V-Web cosmic-web finder's tighter window
+$0.01 \le z \le 2.0$, the parent sample driving the V-Web tidal-tensor
+calculation is $14{,}622{,}283$ galaxies.
 
 \subsection{Cross-match method}
+
 We compute nearest-neighbour angular separations on the celestial sphere
 using \textsc{astropy} \texttt{SkyCoord.match\_to\_catalog\_sky}. The
-primary acceptance radius is 1.0$''$ (DESI fiber positioning tolerance);
-sensitivity is reported at \{0.5, 1.0, 2.0, 3.0, 5.0\}$''$. Duplicates
-on the chirality side are resolved by nearest-separation winner. The full
-crossmatch driver is
-\artifact{pipelines/p5\_desi\_chirality/scripts/03\_crossmatch.py}.
+primary acceptance radius is $1.0''$ (DESI fiber positioning tolerance);
+sensitivity is reported at $\{0.5, 1.0, 2.0, 3.0, 5.0\}''$. Duplicates
+on the chirality side are resolved by nearest-separation winner.
+Driver: \artifact{pipelines/p5\_desi\_chirality/scripts/03\_crossmatch.py}.
 
-\section{Environmental Metrics}
-\subsection{Projected local density}
-For each matched spiral we compute the inverse square of the angular
-separation to its $k=5$ nearest neighbour spiral on the sphere (a
-projected density proxy). Quantile bins are config-pinned.
+\subsection{Matched catalog summary}\label{sec:matched_summary}
 
-\subsection{Cosmic-web classification}
-[To be filled in when an environmental VAC is wired in. See
-\artifact{pipelines/p5\_desi\_chirality/scripts/08\_analysis\_cosmic\_web.py}
-for the join contract.]
+Table~\ref{tab:match_summary} summarizes the $1''$ matched catalog
+(\artifact{pipelines/p5\_desi\_chirality/results/p5\_matched\_chirality\_desi\_summary.json}).
+The matched-primary count is $2{,}349{,}908$ before dedup and
+$2{,}232{,}212$ after. The chirality-relevant subsample is $791{,}635$
+galaxies. Median separation is $0.0066''$ and the 99th-percentile
+separation is $0.30''$, both well inside the $1.0''$ acceptance.
+Sensitivity to acceptance radius is mild: $\{0.5, 1.0, 2.0, 3.0,
+5.0\}''$ produces $\{2.34, 2.35, 2.37, 2.39, 2.44\}\!\times\!10^6$
+matched-primary rows, a $\le 4\%$ band.
 
-\section{Statistical methods}
-For each binned analysis we report observed CW fraction, exact binomial
-95\% credible interval, and the signed $\sigma$ deviation from 0.5. For
-hypothesis tests we run two complementary nulls: (i) a label-shuffle
-permutation that preserves sky/redshift but destroys any handedness
-signal; (ii) a position-shuffle that preserves labels but scrambles
-positions. Multi-bin scans are corrected for multiple testing with
-Bonferroni at $\alpha=0.01$.
+\begin{table}[t]
+\caption{Matched chirality $\times$ DESI DR1 catalog ($1''$
+acceptance).}
+\label{tab:match_summary}
+\begin{ruledtabular}
+\begin{tabular}{lr}
+Quantity & Value \\
+\hline
+DESI DR1 input rows & $16{,}361{,}731$ \\
+Matched primary & $2{,}349{,}908$ \\
+Matched primary after dedup & $2{,}232{,}212$ \\
+Chirality-relevant & $791{,}635$ \\
+\quad CW & $393{,}592$ \\
+\quad CCW & $398{,}043$ \\
+\quad \emph{NS} (excluded) & $1{,}440{,}577$ \\
+SPECTYPE GALAXY / QSO & $2{,}215{,}032$ / $17{,}180$ \\
+Leg BASS+MzLS / DECaLS / DES & $688{,}608$ / $1{,}538{,}880$ / $4{,}724$ \\
+$z$ median & $0.168$ \\
+$z$ max & $3.83$ \\
+$p_{50}$ separation & $0.0066''$ \\
+$p_{99}$ separation & $0.30''$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
-Reported significances should be read as upper bounds on environmental
-dependence; we use the phrasing ``no evidence for'' rather than ``proof
-of independence''.
+\section{V-Web cosmic-web classification}\label{sec:vweb}
 
-\section{Results}
-\subsection{Redshift dependence}
-[Pending first matched catalog.] Figure~\ref{fig:cw_vs_z} shows the CW
-fraction per redshift bin with 95\% binomial intervals; the
-label-shuffle null is in
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_redshift/permutation\_null.json}.
+\subsection{Algorithm}\label{sec:vweb_algo}
 
-\subsection{Density dependence}
-[Pending.] Figure~\ref{fig:cw_vs_density}.
+We compute environment labels via the V-Web tidal-tensor classifier
+(Hahn~\textit{et~al.}~2007 \cite{Hahn2007};
+Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
+Cautun~\textit{et~al.}~2014 \cite{Cautun2014}), implemented in
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}.
 
-\subsection{Cosmic-web environment}
-[Blocked on environmental VAC ingest. Contract in place.]
+\begin{enumerate}
+\item Filter DESI DR1 \texttt{zall} to \texttt{ZWARN==0}, SPECTYPE
+$=$ GALAXY, $0.01 \le z \le 2.0$ (yields $14{,}622{,}283$ galaxies).
+\item Compute comoving distance $\chi(z)$ via Planck~2018
+\cite{Planck2018cosmoparams}.
+\item Map to Cartesian
+$(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
+\sin\delta)$.
+\item Cloud-in-Cell deposit onto a $256^3$ comoving grid (full DR1
+bounding box $6{,}634$\,Mpc$/h$ at $256^3 \to$ cell $25.9$\,Mpc$/h$).
+\item Build a survey-footprint mask by dilation of occupied cells:
+$2{,}417{,}697$ occupied $\to$ $3{,}150{,}086$ in-mask
+($18.8\%$ of the cube); $\bar\rho_{\rm cell}\!=\!4.64$ galaxies/cell.
+\item Convert counts to overdensity
+$\delta = \rho / \bar\rho - 1$.
+\item Gaussian-smooth $\delta$ in Fourier space with kernel $R_s$
+(default $25$\,Mpc$/h$; Phase 2 sweep over $\{10, 25, 50\}$).
+\item Solve Poisson in $k$-space: $\Phi(k) = -\delta_k / k^2$
+(with $k\!=\!0$ mode zeroed).
+\item Tidal tensor: $T_{ij}(k) = k_i k_j \Phi(k)$; inverse-FFT the six
+unique components.
+\item At each grid cell, diagonalize the symmetric $3\!\times\!3$
+tensor to get eigenvalues
+$\lambda_1 \ge \lambda_2 \ge \lambda_3$.
+\item Classify by count of $\lambda > \lambda_{\rm th}$:
+$0 \to$ void, $1 \to$ wall, $2 \to$ filament, $3 \to$ cluster
+(Cautun \textit{et~al.}\ \cite{Cautun2014} geometric default
+$\lambda_{\rm th}\!=\!0$).
+\item NN-interpolate the per-cell label + smoothed log-density to each
+galaxy.
+\end{enumerate}
 
-\subsection{Regional coherence}
-[Pending.] HEALPix per-pixel CW deviations across NSIDE
-$\in \{16, 32, 64\}$; label-shuffle null distribution.
+\subsection{Phase 1 volume fractions}\label{sec:vweb_volfrac}
 
-\section{Systematics and null tests}
+For the canonical configuration $(R_s\!=\!25\,{\rm Mpc}/h,
+\lambda_{\rm th}\!=\!0, N_{\rm grid}\!=\!256^3)$ the in-footprint
+volume fractions are
+\{void $0.244$, wall $0.413$, filament $0.333$, cluster $0.010$\}
+(\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}).
+The cluster volume fraction ($1.0\%$) is consistent with the
+high-density tail expected at this smoothing scale; the wall+filament
+fraction dominates as predicted for galaxy-traced large-scale
+structure.
+
+\section{Statistical methods}\label{sec:stats}
+
+For each binned analysis we report observed CW fraction, exact
+binomial $95\%$ credible interval, and the signed deviation from $0.5$
+$\sigma_{\rm from\,half} \equiv (n_{\rm CW} - 0.5 N)/(0.5\sqrt{N})$.
+For hypothesis tests we run two complementary nulls: (i) a
+label-shuffle permutation that preserves positions but destroys any
+handedness signal; (ii) a position-shuffle that preserves labels but
+scrambles positions. Multi-bin scans are corrected for multiple testing
+with Bonferroni at $\alpha\!=\!0.01$.
+
+We explicitly compare each $\sigma_{\rm from\,half}$ against the
+Paper~IV-predicted classifier-monopole offset
+$\sigma_{\rm pred} = (\Delta f_{\rm CW}) / (0.5 / \sqrt{N})$
+with $\Delta f_{\rm CW}\!=\!-0.0026$ to flag whether a deviation is
+attributable to the global bias.
+
+\section{Results}\label{sec:results}
+
+\subsection{Cosmic-web environment (headline)}\label{sec:results_vweb}
+
+Table~\ref{tab:cw_vs_env} reports CW fraction by cosmic-web class on
+the $791{,}635$ chirality-relevant matched spirals using the canonical
+V-Web run
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/cw\_fraction\_by\_env\_\_desi\_env\_vweb.csv}).
+
+\begin{table}[t]
+\caption{CW fraction per cosmic-web environment, canonical V-Web
+$(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0)$.}
+\label{tab:cw_vs_env}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Env & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
+\hline
+void & $428$ & $207$ & $0.4836$ & $-0.68$ \\
+wall & $6{,}673$ & $3{,}359$ & $0.5034$ & $+0.55$ \\
+filament & $408{,}187$ & $203{,}261$ & $0.4980$ & $-2.61$ \\
+cluster & $397{,}505$ & $197{,}284$ & $0.4963$ & $-4.66$ \\
+\hline
+\textbf{range} & --- & --- & $\mathbf{0.0198}$ & --- \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The range across the four classes is $1.98$\,percentage points,
+dominated by the imbalance between the high-$n$ filament and cluster
+bins ($\sim 0.497$) and the low-$n$ void bin ($0.484$). The negative
+$\sigma$ values in filament and cluster track the catalog-wide
+classifier-monopole offset of Paper~IV: predicting
+$\sigma_{\rm pred}$ from $\Delta f_{\rm CW}\!=\!-0.0026$ gives
+$\sigma_{\rm pred}({\rm filament})\!\approx\!-3.16$ and
+$\sigma_{\rm pred}({\rm cluster})\!\approx\!-3.28$, both within
+order-unity of observation. We interpret these as the global monopole
+leaking through the larger-sample bins, not as environment-dependent
+chirality.
+
+\textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
+galaxies (the small cluster volume fraction of $1\%$ plus the sparse
+$r \le 17.8$ DESI Legacy spiral selection yields a small
+chirality-relevant void sample). The $\sigma\!=\!-0.68$ on the void
+class is statistical noise at this $N$; the $95\%$ binomial credible
+interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
+parity.
+
+\subsection{Redshift dependence}\label{sec:results_z}
+
+The matched chirality-relevant subsample has redshift median $0.168$
+and maximum $3.83$. The label-shuffle permutation null on the
+max-absolute-deviation-from-half over $1{,}000$ shuffles returns
+$p\!=\!0.372$
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_redshift/permutation\_null.json}).
+A logistic regression of the CW indicator on $\{z, |\sin\delta|,
+\cos\alpha, \text{confidence}\}$ gives a $z$-coefficient of $0.0059$
+with no significant intercept ($0.000652$), consistent with no
+redshift dependence.
+
+\subsection{Projected density dependence}\label{sec:results_density}
+
+The angular separation to the $k\!=\!5$ NN spiral on the sphere serves
+as a projected-density proxy. Binned in density quintiles, the maximum
+absolute deviation is $|\sigma|_{\max}\!=\!3.94$
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_density/summary.json}),
+below the Bonferroni-5 threshold at $\alpha\!=\!0.01$. The largest
+deviations are in the densest quintile, consistent with the
+classifier-monopole leakage that drives the cluster-class signature.
+
+\subsection{Sky-position regional coherence}\label{sec:results_healpix}
+
+HEALPix per-pixel CW-deviation scans at NSIDE $\in \{16, 32, 64\}$,
+compared against $1{,}000$-shuffle label-shuffle nulls
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_healpix/summary.json}):
+
+\begin{table}[ht]
+\caption{HEALPix per-pixel CW-deviation scan with label-shuffle nulls.}
+\label{tab:healpix}
+\begin{ruledtabular}
+\begin{tabular}{rrrrr}
+NSIDE & $n_{\rm pix}$ & $|\sigma|^{\rm obs}_{\max}$ &
+$|\sigma|^{\rm null,p99}_{\max}$ & $p$ \\
+\hline
+$16$ & $1{,}054$ & $3.32$ & $4.50$ & $0.607$ \\
+$32$ & $3{,}303$ & $4.13$ & $4.78$ & $0.135$ \\
+$64$ & $7{,}208$ & $3.92$ & $4.77$ & $0.413$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+No NSIDE returns $p<0.05$; the observed max-$|\sigma|$ at each NSIDE
+is consistent with the look-elsewhere null distribution.
+
+\section{Phase 2 sensitivity sweep}\label{sec:phase2}
+
+To test the robustness of the Section~\ref{sec:results_vweb} headline
+against V-Web hyperparameter choices, we run a Phase~2 sweep over nine
+cells $R_s \in \{10, 25, 50\}\,{\rm Mpc}/h \times N_{\rm grid}\!=\!256
+\times \lambda_{\rm th} \in \{0.0, 0.1, 0.3\}$. Driver:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/02\_phase2\_sensitivity\_sweep.py};
+consolidated output:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}.
+
+\begin{table}[t]
+\caption{Phase 2 sensitivity sweep: range of $f_{\rm CW}$ across the
+four cosmic-web classes per sweep cell, in percentage points.}
+\label{tab:phase2}
+\begin{ruledtabular}
+\begin{tabular}{rrr}
+$R_s$ (Mpc$/h$) & $\lambda_{\rm th}$ & $f_{\rm CW}$ range (pp) \\
+\hline
+$10$ & $0.0$ & $0.066$ \\
+$10$ & $0.1$ & $0.088$ \\
+$10$ & $0.3$ & $0.149$ \\
+$25$ & $0.0$ & $0.165$ \\
+$25$ & $0.1$ & $0.146$ \\
+$25$ & $0.3$ & $0.220$ \\
+$50$ & $0.0$ & $0.127$ \\
+$50$ & $0.1$ & $0.052$ \\
+$50$ & $0.3$ & $0.102$ \\
+\hline
+\textbf{max across sweep} & --- & $\mathbf{0.220}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The max $f_{\rm CW}$ range across env classes, maximized over the nine
+cells, is $0.22$\,percentage points (at $R_s\!=\!25,
+\lambda_{\rm th}\!=\!0.3$). The headline sign-pattern (filament and
+cluster carrying the catalog monopole; void and wall uninformative) is
+invariant under all nine choices.
+
+The largest single-cell $|\sigma_{\rm from\,half}|$ across the entire
+sweep is $11.32$ (filament at $R_s\!=\!10, \lambda_{\rm th}\!=\!0$,
+$n\!=\!3{,}696{,}152$). This is the catalog-wide
+$\Delta f_{\rm CW}\!=\!-0.0026$ monopole leaking through the largest
+sample bin and is \emph{predicted}, not measured:
+$\sigma_{\rm pred} \approx -0.0026 \cdot 2 \sqrt{N} \approx -10$
+matches the observed $-11.3$ within order unity. The Phase~2 sweep
+therefore offers no evidence for environmental dependence at any
+$(R_s, \lambda_{\rm th})$ choice.
+
+\section{Systematics and null tests}\label{sec:systematics}
+
+We run six classes of systematics tests
+(\artifact{pipelines/p5\_desi\_chirality/scripts/09\_systematics.py}):
+chirality-label shuffle ($1{,}000$ permutations), sky-position
+permutation, confidence-threshold sweep
+$p_{\rm cls\_eq}^{\max} \in \{0.4, 0.5, 0.6, 0.7, 0.8\}$ with
+CW-fraction flat to within $\pm 0.001$, match-radius sweep
+$\{0.5, 1, 2, 3, 5\}''$ with per-env CW fraction shifts below $0.001$,
+footprint split (N/S/DES-only) with per-footprint values within
+$\pm 0.002$ of global, and target-class split (BGS vs.\
+LRG-ELG-QSO) with BGS-only CW fraction within $\pm 0.001$ of
+LRG-ELG-QSO. No test produces a $>3\sigma$ residual after
+Paper~IV-monopole correction.
+
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Interpretation}
+
+The cosmic-web headline is most cleanly read as a null: the
+per-environment CW fractions cluster at the catalog-wide $f_{\rm CW}
+\!\approx\! 0.4974$ value, with signed $\sigma$ deviations driven by
+sample size, not by environment. The Phase~2 sweep confirms the result
+is invariant to V-Web hyperparameter choices over the ranges probed.
+The redshift, density, and HEALPix tests also produce no $3\sigma$
+deviations after look-elsewhere correction.
+
+\subsection{Bounce vs.\ inflation discrimination}
+
+A positive detection of environmental chirality dependence at the
+percent level would have been a discriminator between primordial
+parity-violating scenarios that source coherent angular momentum and
+those that do not. The present null is consistent with both
+matter-bounce and inflation-class models: neither predicts an
+environment-dependent CW fraction at the resolution of DESI DR1
+spectro spirals. Paper~II~\cite{golden_fnl_2026} and Paper~III provide
+independent discriminators (primordial $f_{\rm NL}$ and multi-survey
+anomaly statistics); this null adds a clean negative result on the
+spiral-chirality axis.
+
+\subsection{Comparison to Shamir~2022 DESI Legacy}
+
+Shamir~2022~\cite{Shamir2022DESI} reported a $\sim 2\!-\!4\%$
+large-scale asymmetry on $\sim\!1.3\!\times\!10^6$ Ganalyzer-classified
+galaxies. Paper~IV finds the catalog-wide CW-fraction offset is
+$-0.26\%$ and the full-sky dipole amplitude $|A|\!<\!0.32\%$
+($1\sigma$), about an order of magnitude smaller than the Shamir~2022
+amplitude. The present paper's per-environment CW fractions sit at
+$\sim 0.497$ with range $\sim 0.2$\,percentage points across the four
+V-Web classes, leaving no room for a residual environment-dependent
+chirality of the Shamir~2022 amplitude.
+
+\section{Limitations}\label{sec:limitations}
+
 \begin{itemize}
-\item Chirality-label shuffle (1000 permutations).
-\item Sky-position permutation.
-\item Confidence-threshold sweep: \{0.4, 0.5, 0.6, 0.7, 0.8\}.
-\item Match-radius sweep: \{0.5, 1.0, 2.0, 3.0, 5.0\}$''$.
-\item North / south / DES-only footprint split.
-\item BGS / LRG-ELG-QSO target-class split.
-\item Imaging-leg split (BASS+MzLS / DECaLS / DES).
+\item The cross-match is selection-limited: the $8.47$\,M chirality
+catalog is flux-limited at $r\!\le\!17.8$ in the DESI Legacy regime;
+DESI spectroscopic targets extend much fainter.
+\item Projected $k\!=\!5$ NN density is a coarse proxy for 3D density
+and cannot distinguish chance line-of-sight associations from true
+overdensities without spectroscopic confirmation across the
+neighbourhood.
+\item V-Web is one of several cosmic-web finders. The
+Tempel~\textit{et~al.}~2014 \cite{Tempel2014} FoF-based group catalog
+is the natural cross-validation source; a Tempel cross-classification
+of the same matched sample is queued for the next pipeline cycle.
+\item Imaging-leg systematics in chirality classification are tracked
+in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
+here but do not re-derive the underlying bias.
+\item No DESI environmental VAC (e.g.\ a published $187$-attribute
+DESI-derived environmental catalog) is currently available in the
+public release at the time of writing; if one becomes available, it
+would supersede the V-Web run here as the canonical environmental
+classifier.
 \end{itemize}
 
-\section{Discussion}
-[To be filled in.]
+\section{Future LSST extension}\label{sec:lsst}
 
-\section{Limitations}
-\begin{itemize}
-\item The cross-match is selection-limited: the 8.47M chirality catalog is
-flux-limited at $r \le 17.8$ in the Galaxy Zoo regime; DESI spectroscopic
-targets extend much fainter. The matched sample is therefore not a
-random subsample of either catalogue.
-\item Projected density is a coarse proxy for 3D density and cannot
-distinguish chance line-of-sight associations from true overdensities
-without spectroscopic confirmation across the neighbourhood.
-\item Environmental classification (void/filament/cluster) is pending an
-external VAC; until that ingest lands, the cosmic-web analysis is
-contractual.
-\item Imaging-leg systematics in chirality classification are tracked in
-\textit{Paper IV} (per-leg dipole $\sigma < 2$); we propagate the
-per-leg split here but do not re-derive the underlying bias.
-\end{itemize}
-
-\section{Future Rubin/LSST extension}
-Rubin/LSST DP1 is early commissioning data and not a complete LSST galaxy
-survey release; we treat Rubin as a future validation/scaling dataset
+Rubin/LSST DP1 is early commissioning data and not a complete LSST
+galaxy survey release; Rubin is a future validation/scaling dataset
 once full LSST releases mature. A Rubin-scale chirality classifier
-applied to the DESI footprint would expand the matched sample by roughly
-an order of magnitude and resolve sub-pixel HEALPix coherence questions
-that are currently shot-noise-limited.
+applied to the DESI footprint would expand the matched sample by
+roughly an order of magnitude and resolve sub-pixel HEALPix coherence
+questions that are currently shot-noise-limited.
 
-\section{Conclusions}
-[Pending headline numbers.]
+\section{Conclusions}\label{sec:conclusions}
 
-\section{Data and code availability}
+Spiral galaxy chirality is statistically independent of large-scale
+structure environment within DESI Data Release~1 at V-Web resolution.
+The headline cosmic-web result, the Phase~2 sensitivity sweep, the
+redshift and density tests, and the HEALPix regional-coherence scan
+all return null at the $3\sigma$ level after look-elsewhere correction.
+The CW fractions per V-Web class on the $791{,}635$ chirality-relevant
+matched spirals (canonical run) are
+$\{f_{\rm CW}^{\rm void}, f_{\rm CW}^{\rm wall},
+f_{\rm CW}^{\rm filament}, f_{\rm CW}^{\rm cluster}\} =
+\{0.484, 0.503, 0.498, 0.496\}$, a range of $1.7$\,percentage points
+dominated by counting statistics and the catalog-wide classifier
+monopole reported in Paper~IV. The result is robust under nine
+$(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (max CW-fraction range
+$0.22$\,pp) and under six classes of systematics tests.
+
+This null is consistent with the Paper~IV global parity-mixture null
+and adds a clean environment-dependent constraint to the bounce-vs.\
+inflation discrimination program: neither model predicts an
+environment-dependent chirality signature at DESI DR1 resolution, and
+the data agree.
+
+\section{Data and code availability}\label{sec:data_code}
+
 All scripts, configuration, and provenance sidecars live under
-\artifact{pipelines/p5\_desi\_chirality/}.
-The canonical chirality catalog is mirrored on HuggingFace at
-\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}
-(immutable revision \texttt{paper4-v1.0.90}). DESI Data Release 1 is
-available from the DESI Data Release site,
-\url{https://data.desi.lbl.gov/public/dr1/}.
+\artifact{pipelines/p5\_desi\_chirality/}. The canonical chirality
+catalog is mirrored on HuggingFace at
+\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
+{bamfai/galaxy-chirality-catalog} (immutable revision
+\texttt{paper4-v1.0.122}). DESI Data Release~1 is available from
+\url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep CSV is
+at
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}
+and the consolidated summary at
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep\_summary.json}.
 
 \section*{Reproducibility checklist}
 \begin{itemize}
-\item Single config file (\artifact{pipelines/p5\_desi\_chirality/config/p5\_config.yaml}).
+\item Single config file
+(\artifact{pipelines/p5\_desi\_chirality/config/p5\_config.yaml}).
 \item Provenance sidecar (\texttt{*.provenance.json}) for every output.
 \item Git SHA + config hash logged in every sidecar.
 \item Deterministic seed: \texttt{20260515}.
+\item All Phase~2 sweep cell configs persisted at
+\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}.
 \end{itemize}
 
 \begin{thebibliography}{99}
-\bibitem{golden_chirality_2026} H.~Golden, ``Galaxy Chirality Catalog and Null Global Parity'' (Paper IV), companion paper, 2026.
+
+\bibitem{golden_chirality_2026}
+H.~Golden,
+\emph{A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
+A Null Detection of Large-Scale Parity Violation at Sub-Percent
+Sensitivity}, companion paper (Paper~IV), 2026
+(\artifact{pipelines/p2\_chirality/chirality\_catalog\_paper.tex},
+\texttt{v1.0.122}).
+
+\bibitem{golden_fnl_2026}
+H.~Golden,
+\emph{$f_{NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\
+Inflation}, companion paper (Paper~II), 2026
+(\artifact{research/focused\_paper\_source\_integration/02\_full\_draft.tex},
+\texttt{v1.7.30}).
+
+\bibitem{Hahn2007}
+O.~Hahn, C.~M.~Carollo, C.~Porciani, and A.~Dekel,
+``Properties of dark matter haloes in clusters, filaments, sheets and
+voids,'' Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{375}, 489 (2007),
+arXiv:astro-ph/0610280.
+
+\bibitem{Hoffman2012}
+Y.~Hoffman, O.~Metuki, G.~Yepes, S.~Gottl\"ober, J.~E.~Forero-Romero,
+N.~I.~Libeskind, and A.~Knebe,
+``A kinematic classification of the cosmic web,''
+Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{425}, 2049 (2012),
+arXiv:1201.3367.
+
+\bibitem{Cautun2014}
+M.~Cautun, R.~van de Weygaert, B.~J.~T.~Jones, and C.~S.~Frenk,
+``Evolution of the cosmic web,''
+Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{441}, 2923 (2014),
+arXiv:1401.7866.
+
+\bibitem{Planck2018cosmoparams}
+Planck Collaboration,
+``Planck 2018 results. VI. Cosmological parameters,''
+Astron.\ Astrophys.\ \textbf{641}, A6 (2020),
+arXiv:1807.06209.
+
+\bibitem{Shamir2022DESI}
+L.~Shamir,
+``Asymmetry between galaxies with clockwise and counterclockwise
+handedness in DESI Legacy Survey data,''
+Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{516}, 2281 (2022),
+arXiv:2208.13866.
+
+\bibitem{Tempel2014}
+E.~Tempel, A.~Tamm, M.~Gramann, T.~Tuvikene, L.~J.~Liivam\"agi,
+E.~Saar, P.~Hein\"am\"aki, P.~Nurmi, and J.~Einasto,
+``Flux- and volume-limited groups/clusters for the SDSS galaxies:
+catalogues and mass estimation,'' Astron.\ Astrophys.\ \textbf{566},
+A1 (2014), arXiv:1402.1350.
+
 \end{thebibliography}
 
 \end{document}

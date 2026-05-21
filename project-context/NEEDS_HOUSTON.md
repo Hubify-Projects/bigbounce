@@ -1,10 +1,18 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-21 (R23 wave close).
+Last updated: 2026-05-21 (cron fire #2 close — OpenRouter weekly key limit hit).
 
 **Definition** (per Houston standing directive 2026-05-21): this file lists ONLY items that no agent can resolve — items that require Houston-only authority: personal sign-off, API/SSH credentials, arXiv endorsement, or something physical only Houston can provide.
 
 Everything ELSE is being driven autonomously by agents. If an item is "out of repo scope" or "needs a pod" or "compute-bound" but I can spin up the pod myself, it does NOT belong on this list.
+
+---
+
+## 0. OpenRouter weekly key-limit reached · gates further R-rounds on all papers
+
+**Why blocked:** Cron fire #2 hit `HTTP 403: Key limit exceeded (weekly limit)` from OpenRouter on all 5 P5 R1 reviewer calls (test attempt for first P5 R-round on the just-compiled v0.1.0 draft). Earlier in the session R23 (25 calls) and R24 (25 calls) and R25 (20 calls) all succeeded — the weekly bucket emptied between R25 and the P5 R1 attempt. The session has spent ~$3 of usable budget per call estimate; the weekly limit is on the API key itself, not the workspace balance. Agents cannot bump key limits.
+
+**Ask:** Either (a) raise the weekly limit on the OpenRouter key referenced at https://openrouter.ai/workspaces/default/keys/cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348 — or (b) wait for the weekly reset (~7 days). The autonomous cron will continue firing every 30 min but will execute non-API-dependent work only (PDF recompiles, mirrors, site polish, P5 paper expansion, Tempel cross-validation) until the limit clears. Once clear, the next fire automatically resumes R-round cadence and pushes R26 + first valid P5 R1.
 
 ---
 
