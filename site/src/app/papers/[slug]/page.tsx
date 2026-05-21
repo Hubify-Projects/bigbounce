@@ -16,6 +16,7 @@ import {
   TabsContent,
 } from"@/components/ui/tabs";
 import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
+import { ExternalReviewPanel } from"@/components/ExternalReviewPanel";
 import { Download, ExternalLink, FileText } from"lucide-react";
 import Link from"next/link";
 import { notFound } from"next/navigation";
@@ -100,13 +101,16 @@ export default async function PaperDetailPage({
             <p className="subtitle"><MathText>{paper.title}</MathText></p>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge variant={statusVariantMap[paper.statusVariant]}>
-                {paper.status}
+                {paper.readiness}% · {paper.statusVariant === "green" ? "ready" : paper.statusVariant === "blue" ? "active" : paper.statusVariant === "amber" ? "draft" : "blocked"}
               </Badge>
               <Badge variant="outline">{paper.version}</Badge>
               <Badge variant="outline">{paper.pages} pages</Badge>
               <Badge variant="outline">{paper.refs} refs</Badge>
               <Badge variant="outline">Target: {paper.target}</Badge>
             </div>
+            <p style={{ marginTop: 14, fontSize: "0.92rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
+              {paper.tldr}
+            </p>
             {(pdfArtifact || downloadArtifact) && (
               <div className="mt-4 flex flex-wrap gap-2">
                 {pdfArtifact && (
@@ -204,6 +208,107 @@ export default async function PaperDetailPage({
           <p className="paper-summary"><MathText>{paper.description}</MathText></p>
         </CardContent>
       </Card>
+
+      {paper.blockingItems && paper.blockingItems.length > 0 && (
+        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
+          <CardHeader>
+            <CardTitle className="text-sm font-mono" style={{ textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-muted)" }}>
+              What&apos;s gating 100%
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul style={{ margin: 0, paddingLeft: 20, fontSize: "0.88rem", lineHeight: 1.6 }}>
+              {paper.blockingItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {(() => {
+        const texArtifact = paper.artifacts.find((a) => a.label?.toLowerCase().includes("latex"));
+        const texPath = texArtifact?.href.replace(/^https:\/\/github\.com\/[^/]+\/[^/]+\/blob\/[^/]+\//, "") ?? "";
+        const pdfArt = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
+        const focus: Record<string, string[]> = {
+          "paper-1a": [
+            "14-barrier no-go structure (Sec. III + Appendix)",
+            "ALP birefringence β=0.27° prediction vs Eskilt 0.342°±0.094° observed",
+            "Perturbation-transparency theorem in §IV.D",
+            "Mercuri-Capozziello phase-space-vs-loop framing at §II.C.1 (post-R23)",
+          ],
+          "paper-1b": [
+            "424,781 MCMC posterior samples across 3 frozen dataset combinations",
+            "ΔNeff ≈ 0 result and H_0 = 67.68 ΛCDM-consistent",
+            "NaMaster pseudo-C_ℓ pipeline 500 MC recovery at SNR=20.32σ",
+            "Spectator-ALP consistency check (f_a ~ M_Pl, m ~ H_0)",
+          ],
+          "paper-2": [
+            "f_NL = -35/8 = -4.375 parameter-free bounce prediction",
+            "Heinrich+2023 σ(f_NL)=0.7 externalization vs own Fisher",
+            "Detection significance 3-5σ post-systematic-budget",
+            "DBI category-error closure at §IV (post-R22 Gemini)",
+          ],
+          "paper-3": [
+            "378,280 anomalies headline (=378,080 + 200) across 7 surveys",
+            "7-way 5″ positional FoF dedup arithmetic (10,213 = 637 + 9,576)",
+            "Fisher-positivity caveats in §6",
+            "σ(f_NL)=8.14 with α=0.19 jackknife at <1σ from null",
+          ],
+          "paper-4": [
+            "Subsample-mask −0.12σ MASTER-deconvolved load-bearing null",
+            "Canonical-mask +3.64σ three-interpretation closure",
+            "ℓ=2 cross-spectrum r=−0.65 σ=−2.89 vs pixel-density proxy",
+            "MASTER-decoupled monopole-only null × 500 (post-R22 GPT-5 BL-2 closure)",
+            "Shamir 2020 vs 2022 split with arXiv IDs (post-R22 Perplexity BL-1)",
+          ],
+          "paper-5": [
+            "V-Web env_finder Phase 1 MVP cosmic-web classification on 14.6M DESI spectro galaxies",
+            "Per-environment cw_fraction: void/wall/filament/cluster",
+            "Phase 2 sensitivity sweep (10/25/50 Mpc/h × 128³/256³/512³)",
+            "Tempel+2018 cross-validation status",
+          ],
+        };
+        if (!pdfArt) return null;
+        return (
+          <ExternalReviewPanel
+            paperNumber={paper.number}
+            paperTitle={paper.title}
+            paperVersion={paper.version}
+            paperPath={texPath || "(see GitHub LaTeX source artifact)"}
+            pdfHref={pdfArt.href}
+            pdfMeta={paper.pdfMeta}
+            focusAreas={focus[paper.slug] ?? []}
+          />
+        );
+      })()}
+
+      <details
+        style={{
+          marginTop: 8,
+          marginBottom: 16,
+          padding: "12px 14px",
+          border: "1px solid var(--border)",
+          borderRadius: 8,
+          fontSize: "0.85rem",
+        }}
+      >
+        <summary
+          style={{
+            cursor: "pointer",
+            fontFamily: "var(--font-mono-stack)",
+            color: "var(--text-muted)",
+            fontSize: "0.78rem",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+          }}
+        >
+          full closure log (versions, R-rounds, audit trail)
+        </summary>
+        <p style={{ marginTop: 12, color: "var(--text-muted)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>
+          {paper.status}
+        </p>
+      </details>
 
       <Separator className="my-8" />
 

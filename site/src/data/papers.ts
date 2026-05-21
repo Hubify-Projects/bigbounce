@@ -6,6 +6,11 @@ export interface Paper {
   pages: string;
   refs: string;
   readiness: number;
+  /** 1-sentence short headline for compact widgets / homepage. Keep <= 160 chars. */
+  tldr: string;
+  /** What's gating this paper from 100% right now, one short bullet per item. */
+  blockingItems: string[];
+  /** Full closure log / version-history dump. Long. Rendered behind a collapsed expander on the detail page. */
   status: string;
   statusVariant: "green" | "blue" | "amber" | "red";
   target: string;
@@ -32,6 +37,11 @@ export const papers: Paper[] = [
     number: "1A",
     title: "Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests",
     version: "v1A.0.34",
+    tldr: "Cascaded-loop exit holds: R23 returned 4/5 reviewers 0/0; Gemini's lone BLOCKER audit-falsified; M1+m1+n1 closed in v1A.0.34. External-review-ready.",
+    blockingItems: [
+      "Houston personal sign-off (the final 1%)",
+      "arXiv endorsement + submission (astro-ph.CO + astro-ph.IM)",
+    ],
     pages: "20",
     refs: "72",
     readiness: 90,
@@ -78,6 +88,12 @@ export const papers: Paper[] = [
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
     version: "v1B.0.20",
+    tldr: "R23 returned 5/5 reviewers 0 BLOCKER / 0 MAJOR (fully clean). External-review-ready; readiness number lags pending SSOT refresh.",
+    blockingItems: [
+      "SSOT readiness refresh (67 → 90+ to reflect R23 5/5 clean)",
+      "Houston personal sign-off",
+      "arXiv endorsement + submission (astro-ph.CO)",
+    ],
     pages: "11",
     refs: "32",
     readiness: 67,
@@ -122,6 +138,13 @@ export const papers: Paper[] = [
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
     version: "v1.7.30",
+    tldr: "R23 returned 5/5 reviewers 0/0 — first ever all-clean P2 round. Heinrich+2023 σ(f_NL)=0.7 externalization accepted. Ready for Houston sign-off.",
+    blockingItems: [
+      "SSOT readiness refresh (82 → 95+)",
+      "Fresh PDF compile on latest .tex (verify date stamp)",
+      "Houston personal sign-off",
+      "arXiv endorsement + submission (astro-ph.CO)",
+    ],
     pages: "19",
     refs: "39",
     readiness: 82,
@@ -164,6 +187,13 @@ export const papers: Paper[] = [
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources",
     version: "v3.1.56",
+    tldr: "R23 returned 5/5 reviewers 0/0 — first ever all-clean P3 round. v3.1.56 closed multi-round 9,576 dedup-shortfall via union-find on-disk artifact.",
+    blockingItems: [
+      "SSOT readiness refresh (86 → 95+)",
+      "Fresh PDF compile + figure verification",
+      "Houston personal sign-off",
+      "arXiv endorsement + submission (astro-ph.CO + astro-ph.IM)",
+    ],
     pages: "47",
     refs: "67",
     readiness: 86,
@@ -214,6 +244,12 @@ export const papers: Paper[] = [
     number: "4",
     title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
     version: "v1.0.122",
+    tldr: "R22 closed GPT-5 + Perplexity findings; R23 verification returned 5/5 reviewers 0/0 — first 5-of-5 clean in P4 history. Cap 95% pending Houston sign-off.",
+    blockingItems: [
+      "Houston personal sign-off (the final 1%)",
+      "HF model card refresh bamfai/galaxy-chirality-v2 v1.0.104 → v1.0.122",
+      "arXiv endorsement + submission (astro-ph.GA + astro-ph.CO)",
+    ],
     pages: "51",
     refs: "46",
     readiness: 95,
@@ -268,6 +304,17 @@ export const papers: Paper[] = [
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
     version: "env-vweb-v0.1-2026-05-19",
+    tldr: "Phase 1 V-Web env_finder landed (104s laptop, 14.6M DESI spectro galaxies). Headline: chirality is statistically independent of LSS environment. Paper is 9KB scaffold; Phase 2+3 + paper expansion queued in cron.",
+    blockingItems: [
+      "Phase 2 sensitivity sweep (smoothing scales 10/25/50 Mpc/h, grid 128³/256³/512³)",
+      "RSD correction on spectro-z sample",
+      "Tempel+2018 cross-validation",
+      "Paper LaTeX expansion 9KB scaffold → full first draft (~30pp)",
+      "First P5 PDF compile + first R-round",
+      "(OPTIONAL) DESI environmental VAC if Houston has access",
+      "Houston personal sign-off",
+      "arXiv endorsement + submission",
+    ],
     pages: "—",
     refs: "—",
     readiness: 30,

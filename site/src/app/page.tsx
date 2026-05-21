@@ -5,6 +5,7 @@ import { liveStatus } from"@/data/live-status";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { LiveStatus } from"@/components/Shell/LiveStatus";
+import { PaperProgressWidget } from"@/components/Cards/PaperProgressWidget";
 import { MathText } from"@/components/MathText";
 import {
   Card,
@@ -129,6 +130,7 @@ export default function HomePage() {
   return (
     <>
       <LiveStatus />
+      <PaperProgressWidget />
       {liveStatus.needsHouston.length > 0 && (
         <section
           className="section"
@@ -442,7 +444,13 @@ export default function HomePage() {
                   variant={paperStatusVariant[paper.statusVariant]}
                   className="paper-ledger-badge"
                 >
-                  {paper.status}
+                  {paper.readiness}% · {paper.statusVariant === "green"
+                    ? "ready"
+                    : paper.statusVariant === "blue"
+                      ? "active"
+                      : paper.statusVariant === "amber"
+                        ? "draft"
+                        : "blocked"}
                 </Badge>
               </div>
               <div className="paper-ledger-main">
@@ -454,6 +462,16 @@ export default function HomePage() {
                 <div className="paper-ledger-title">
                   <MathText>{paper.title}</MathText>
                 </div>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--text-muted)",
+                    margin: "8px 0 4px 0",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {paper.tldr}
+                </p>
                 <div className="paper-ledger-meta">
                   <span>{paper.target}</span>
                   <span>{paper.pages} pages</span>
