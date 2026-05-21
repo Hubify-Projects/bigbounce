@@ -18,8 +18,13 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.5-2026-05-21}
+\newcommand{\paperVersion}{v0.1.6-2026-05-21}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
+%   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
+%   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
+%   diverging RdBu_r colormap, capped at ±4.5σ, with graticule overlay). Visual confirmation
+%   of the §VI.D HEALPix scan no-coherent-structure result (p=0.135 at NSIDE=32)).
 % v0.1.5-2026-05-21 (cron fire #7: 5th figure — density-quintile observed-vs-monopole
 %   overlay (scripts/13_make_p5_density_fig.py, 2-panel: f_CW per quintile with 95% Jeffreys
 %   CI + sigma-from-half with Paper IV monopole prediction sigma = -2 Delta_fCW sqrt(N)
@@ -491,6 +496,25 @@ $64$ & $7{,}208$ & $3.92$ & $4.77$ & $0.413$ \\
 
 No NSIDE returns $p<0.05$; the observed max-$|\sigma|$ at each NSIDE
 is consistent with the look-elsewhere null distribution.
+Figure~\ref{fig:healpix_skymap} visualizes the per-pixel signed
+$\sigma_{\rm from\,half}$ at NSIDE=32 as a Mollweide projection; no
+coherent large-scale structure is visible, matching the $p\!=\!0.135$
+null verdict.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{fig_p5_healpix_skymap_nside32.png}
+\caption{Per-pixel signed $\sigma_{\rm from\,half}$ for the
+chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide
+projection, equatorial coordinates). The observed
+$|\sigma|^{\rm obs}_{\max}\!=\!4.13$ vs the label-shuffle null
+$|\sigma|^{\rm null,\,p99}_{\max}\!=\!4.78$ gives a look-elsewhere
+$p\!=\!0.135$; no NSIDE returns $p\!<\!0.05$. The map shows no coherent
+large-scale structure beyond random pixel-level scatter; the high-$|\sigma|$
+pixels are isolated rather than clustered, consistent with the
+counting-statistics distribution expected from label-shuffle.}
+\label{fig:healpix_skymap}
+\end{figure*}
 
 \section{Phase 2 sensitivity sweep}\label{sec:phase2}
 

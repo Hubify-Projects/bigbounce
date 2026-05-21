@@ -302,8 +302,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.5-2026-05-21",
-    tldr: "Cron fires #1-#7: Phase 1 + Phase 2 + 5 PNG figures (pie + cw-by-env + Phase 2 heatmap + V-Web/Tempel overlay + density quintile vs Paper IV monopole) + Tempel+2014 FoF cross-val + §V LEE-correction derivation. PDF 9pp/625KB / 0 overfull / 0 undef. First R-round still API-blocked.",
+    version: "v0.1.6-2026-05-21",
+    tldr: "Cron fires #1-#11: Phase 1 + Phase 2 + 6 PNG figures (incl. HEALPix sigma sky-map Mollweide NSIDE=32) + Tempel+2014 FoF cross-val (filament concordance 0.026pp) + §V LEE derivation. PDF 9pp/736KB / 0 overfull / 0 undef. First R-round still API-blocked.",
     blockingItems: [
       "Phase 2 sensitivity sweep (smoothing scales 10/25/50 Mpc/h, grid 128³/256³/512³)",
       "RSD correction on spectro-z sample",
