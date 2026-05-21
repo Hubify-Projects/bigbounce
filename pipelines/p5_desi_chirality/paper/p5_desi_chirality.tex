@@ -18,8 +18,12 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.1-2026-05-21}
+\newcommand{\paperVersion}{v0.1.2-2026-05-21}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v0.1.2-2026-05-21 (cron fire #4: 3 PNG figures generated + inserted — volume-fraction
+%   pie chart, CW-fraction-by-env bar chart with 95% Jeffreys binomial CIs, Phase 2
+%   sensitivity heatmap with per-cell annotations. Figure script:
+%   pipelines/p5_desi_chirality/scripts/11_make_p5_paper_figures.py).
 % v0.1.1-2026-05-21 (cron fire #3 polish: P5 Table I "Leg BASS+MzLS / DECaLS / DES"
 %   row split into separate per-leg rows to eliminate the 20.2pt overfull in v0.1.0).
 % v0.1.0-2026-05-21 (first compiled draft; scaffold to full-draft expansion during
@@ -258,11 +262,24 @@ For the canonical configuration $(R_s\!=\!25\,{\rm Mpc}/h,
 \lambda_{\rm th}\!=\!0, N_{\rm grid}\!=\!256^3)$ the in-footprint
 volume fractions are
 \{void $0.244$, wall $0.413$, filament $0.333$, cluster $0.010$\}
-(\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}).
+(\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json};
+Fig.~\ref{fig:volfrac}).
 The cluster volume fraction ($1.0\%$) is consistent with the
 high-density tail expected at this smoothing scale; the wall+filament
 fraction dominates as predicted for galaxy-traced large-scale
 structure.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_p5_volume_fractions_pie.png}
+\caption{In-footprint V-Web volume fractions for the canonical
+$(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0, N_{\rm grid}\!=\!256^3)$
+run on $14{,}622{,}283$ DESI DR1 spectroscopic galaxies. The cluster
+volume fraction ($1.0\%$) reflects the high-density tail; the
+wall+filament fraction ($74.5\%$) dominates as expected for
+galaxy-traced large-scale structure.}
+\label{fig:volfrac}
+\end{figure}
 
 \section{Statistical methods}\label{sec:stats}
 
@@ -308,9 +325,28 @@ cluster & $397{,}505$ & $197{,}284$ & $0.4963$ & $-4.66$ \\
 \end{ruledtabular}
 \end{table}
 
-The range across the four classes is $1.98$\,percentage points,
-dominated by the imbalance between the high-$n$ filament and cluster
-bins ($\sim 0.497$) and the low-$n$ void bin ($0.484$). The negative
+Figure~\ref{fig:cw_by_env} visualizes the per-class CW fractions with
+$95\%$ Jeffreys binomial credible intervals; all four classes bracket
+the Paper~IV global $\bar f_{\rm CW}\!=\!0.4974$ horizontal reference,
+and the void $95\%$ CI brackets parity $f_{\rm CW}\!=\!0.5$. The
+range across the four classes is $1.98$\,percentage points, dominated
+by the imbalance between the high-$n$ filament and cluster bins
+($\sim 0.497$) and the low-$n$ void bin ($0.484$).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_p5_cw_by_env_bar.png}
+\caption{CW fraction per cosmic-web class on the canonical V-Web run,
+on $n=791{,}635$ chirality-relevant matched spirals. Bars show the
+observed $f_{\rm CW}$ per class; black error bars are $95\%$ Jeffreys
+binomial credible intervals. The void bin ($n\!=\!428$) is dominated
+by counting noise and brackets parity. The dashed horizontal line is
+parity ($f_{\rm CW}\!=\!0.5$); the dotted red line is the Paper~IV
+global $\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. All
+four classes bracket the Paper~IV monopole, consistent with no
+environmental dependence beyond the catalog-wide classifier bias.}
+\label{fig:cw_by_env}
+\end{figure} The negative
 $\sigma$ values in filament and cluster track the catalog-wide
 classifier-monopole offset of Paper~IV: predicting
 $\sigma_{\rm pred}$ from $\Delta f_{\rm CW}\!=\!-0.0026$ gives
@@ -411,7 +447,23 @@ The max $f_{\rm CW}$ range across env classes, maximized over the nine
 cells, is $0.22$\,percentage points (at $R_s\!=\!25,
 \lambda_{\rm th}\!=\!0.3$). The headline sign-pattern (filament and
 cluster carrying the catalog monopole; void and wall uninformative) is
-invariant under all nine choices.
+invariant under all nine choices. Figure~\ref{fig:phase2} visualizes
+the per-cell ranges as a $(R_s, \lambda_{\rm th})$ heat-map.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_p5_phase2_sensitivity_heatmap.png}
+\caption{Phase 2 sensitivity heat-map: per-cell range of $f_{\rm CW}$
+across the four environment classes \{void, wall, filament, cluster\}
+in percentage points. Each cell corresponds to a complete V-Web
+re-run on the $14{,}622{,}283$-galaxy DESI DR1 spectro sample at
+$(R_s, \lambda_{\rm th})$. The maximum range across all nine cells is
+$0.22$\,percentage points (at $R_s\!=\!25\,{\rm Mpc}/h,
+\lambda_{\rm th}\!=\!0.3$). The headline environmental-independence
+result is robust to V-Web hyperparameter choices over the range
+probed.}
+\label{fig:phase2}
+\end{figure}
 
 The largest single-cell $|\sigma_{\rm from\,half}|$ across the entire
 sweep is $11.32$ (filament at $R_s\!=\!10, \lambda_{\rm th}\!=\!0$,

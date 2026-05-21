@@ -302,8 +302,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.1-2026-05-21",
-    tldr: "Phase 1 + Phase 2 + first compiled draft + 20.2pt overfull fix landed in cron fires #1-#3. Paper v0.1.1 PDF 6pp/332KB / 0 overfull / 0 undef. Tempel+2018 cross-validation stub in place. First R-round blocked on OpenRouter weekly key-limit.",
+    version: "v0.1.2-2026-05-21",
+    tldr: "Cron fires #1-#4: Phase 1 + Phase 2 + first compiled draft + overfull fix + 3 PNG figures (volume-fraction pie, CW-by-env bar with 95% Jeffreys CI, Phase 2 heatmap). PDF 6pp/447KB / 0 overfull / 0 undef. Tempel+2018 stub in place. First R-round blocked on OpenRouter weekly key-limit.",
     blockingItems: [
       "Phase 2 sensitivity sweep (smoothing scales 10/25/50 Mpc/h, grid 128³/256³/512³)",
       "RSD correction on spectro-z sample",
