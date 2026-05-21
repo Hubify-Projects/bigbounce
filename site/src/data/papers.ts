@@ -242,11 +242,11 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
-    version: "v1.0.122",
-    tldr: "R22 closed GPT-5 + Perplexity findings; R23 + R24 both returned 5/5 reviewers 0/0 — 2 consecutive all-clean rounds. Cap 95% pending Houston sign-off.",
+    version: "v1.0.123",
+    tldr: "v1.0.123 closed Houston-shared 3-reviewer external review (ChatGPT MAJOR + Grok MINOR + Gemini MAJOR; 9 BLOCKER+10 MAJOR bundled hard-fix). Stripped all internal-review scaffolding; fixed 3 undef refs; softened closure→diagnostic; HF model+dataset cards now both at v1.0.123. PDF 50pp/26.25MB / 0 undef / 3 minor overfulls.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
-      "HF model card refresh bamfai/galaxy-chirality-v2 v1.0.104 → v1.0.122",
+      "GitHub release PDF asset upload (ChatGPT BL-1 partial — tag + commit are pushed)",
       "arXiv endorsement + submission (astro-ph.GA + astro-ph.CO)",
     ],
     pages: "51",
@@ -280,7 +280,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 26.26 MB · 51 pp · May 20, 2026, v1.0.122",
+    pdfMeta: "PDF 26.25 MB · 50 pp · May 21, 2026, v1.0.123",
     artifacts: [
       { label: "Read PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "secondary", download: true },

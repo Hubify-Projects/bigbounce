@@ -69,9 +69,9 @@ export const liveStatus: LiveStatus = {
       ask: "Read arxiv/paper1a_ech_nogo.tex (or the live PDF at https://bigbounce.hubify.app/papers/spin_torsion_paper1.pdf) end-to-end and reply 'sign off P1A' if ready, or send back blocking findings. After sign-off I build the arXiv tarball + smoke-test + (with arXiv endorsement) submit.",
     },
     {
-      title: "Personal sign-off on P4 v1.0.122 for arXiv submission",
+      title: "Personal sign-off on P4 v1.0.123 for arXiv submission",
       blockedPaper: "P4",
-      why: "R22 5-vendor returned 3 of 5 reviewers 0/0 (DeepSeek + Gemini + Grok). GPT-5 + Perplexity findings closed bundled in v1.0.122. R23 fired in background this turn to verify no regressions. After R23 clean, the final 1% is Houston-only.",
+      why: "R22 5-vendor returned 3 of 5 reviewers 0/0 (DeepSeek + Gemini + Grok). GPT-5 + Perplexity findings closed bundled in v1.0.122; v1.0.123 closes the Houston-shared 3-reviewer external review (ChatGPT MAJOR + Grok MINOR + Gemini MAJOR) in a single bundled hard-fix wave (9 BLOCKER + 10 MAJOR audited and closed/falsified). R23+R24+R25 cross-vendor returns all 5/5 clean (3-consecutive cascaded-loop exit). The final 1% is Houston-only.",
       ask: "Read pipelines/p2_chirality/chirality_catalog_paper.pdf (51 pp / 26.26 MB) and reply 'sign off P4' or send blocking findings. arXiv-tarball + submission queued behind sign-off.",
     },
     {
