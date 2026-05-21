@@ -65,8 +65,14 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.125}
+\newcommand{\paperVersion}{v1.0.126}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v1.0.126 (cron fire #12: HF model card pushed v1.0.122 -> v1.0.125 at
+%   https://huggingface.co/bamfai/galaxy-chirality-v2/commit/6a6b95419fbe57506db902d0e5b32f8f83b0c970
+%   — closes ChatGPT BL-1 'HF model card v1.0.104 stale' flag. Card content now reflects
+%   v1.0.123/v1.0.124/v1.0.125 changelog. Also fixed the 78pt overfull on the long
+%   null_distribution.npy filename by replacing the standalone \artifact{...} URL
+%   with a shorter \texttt{...filename} reference plus 'in the same directory' prose).
 % v1.0.125 (cron fire #10: Gemini v1.0.122 external review MAJOR M-2 closure —
 %   DECaLS [0.5, 0.6) stratum-specific cross-spectrum C^{An}_ell run end-to-end via
 %   pipelines/p2_chirality/scripts/decals_stratum_cross_spectrum.py on Apple Silicon
@@ -3982,9 +3988,10 @@ the canonical-$N$ direct-MC value is on record as a non-headline, systematics-at
 calibration. The companion JSON
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/p4\_multinull\_battery.json}
 records all numerical inputs / outputs, and the 500-MC null
-distribution is committed at
-\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical_n_master_l1_direct_v1062_baseline_null_distribution.npy}
-(v1.0.62 baseline null distribution; pre-monopole-subtraction reference only; SHA-256 stamped in the manifest).
+distribution is committed alongside it as
+\texttt{canonical\allowbreak\_n\allowbreak\_master\allowbreak\_l1\allowbreak\_direct\allowbreak\_v1062\allowbreak\_baseline\allowbreak\_null\allowbreak\_distribution.npy}
+in the same directory (v1.0.62 baseline; pre-monopole-subtraction
+reference only; SHA-256 stamped in the manifest).
 
 \paragraph{$D_4$-TTA rotational-equivariance validation.}
 A direct full-$D_4$ TTA hold-out (Sec.~\ref{sec:tta}; companion

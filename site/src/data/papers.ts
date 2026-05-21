@@ -242,8 +242,8 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
-    version: "v1.0.125",
-    tldr: "v1.0.125 closes Gemini M2 DECaLS [0.5,0.6) stratum cross-spectrum: r_ℓ=1=-0.70, σ=-1.68 (same sign + larger magnitude than canonical -0.49, -1.53). Stratum excess ties directly to depth-correlated systematic family, not DECaLS-specific physical signal. PDF 51pp/26.26MB / 0 undef / 5 minor overfulls.",
+    version: "v1.0.126",
+    tldr: "v1.0.126 — HF model card pushed v1.0.122 → v1.0.125 (closes ChatGPT BL-1 stale-card flag); 78pt overfull on long null_distribution.npy filename eliminated via \allowbreak splits. PDF 51pp/26.26MB / 0 undef / 4 minor overfulls.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "GitHub release PDF asset upload (ChatGPT BL-1 partial — tag + commit are pushed)",
@@ -280,7 +280,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 26.26 MB · 51 pp · May 21, 2026, v1.0.125",
+    pdfMeta: "PDF 26.26 MB · 51 pp · May 21, 2026, v1.0.126",
     artifacts: [
       { label: "Read PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "secondary", download: true },
