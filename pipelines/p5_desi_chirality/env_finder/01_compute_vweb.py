@@ -241,8 +241,14 @@ def interpolate_to_galaxies(pos: np.ndarray, origin: np.ndarray, cell_size: floa
 
 
 def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default=str(CONFIG_PATH),
+                        help="Path to V-Web config YAML (Phase 2 sweep cells override the default).")
+    args = parser.parse_args()
+    cfg_path = Path(args.config)
     t0 = time.time()
-    cfg = yaml.safe_load(open(CONFIG_PATH))
+    cfg = yaml.safe_load(open(cfg_path))
     cfg_hash = config_hash(cfg)
     sha = git_sha()
     provenance_tag = f"env_finder-vweb-v0.1-{sha}-{cfg_hash}"
