@@ -18,8 +18,10 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.0-2026-05-21}
+\newcommand{\paperVersion}{v0.1.1-2026-05-21}
 \newcommand{\paperTimestamp}{May 21, 2026 PDT}
+% v0.1.1-2026-05-21 (cron fire #3 polish: P5 Table I "Leg BASS+MzLS / DECaLS / DES"
+%   row split into separate per-leg rows to eliminate the 20.2pt overfull in v0.1.0).
 % v0.1.0-2026-05-21 (first compiled draft; scaffold to full-draft expansion during
 %   the autonomous drive-to-100 cron loop tick 122 / fire #2). Phase 1 V-Web env_finder
 %   plus Phase 2 sensitivity sweep across 9 (R_s, lambda_th) cells back every
@@ -195,8 +197,11 @@ Chirality-relevant & $791{,}635$ \\
 \quad CW & $393{,}592$ \\
 \quad CCW & $398{,}043$ \\
 \quad \emph{NS} (excluded) & $1{,}440{,}577$ \\
-SPECTYPE GALAXY / QSO & $2{,}215{,}032$ / $17{,}180$ \\
-Leg BASS+MzLS / DECaLS / DES & $688{,}608$ / $1{,}538{,}880$ / $4{,}724$ \\
+SPECTYPE GALAXY & $2{,}215{,}032$ \\
+SPECTYPE QSO & $17{,}180$ \\
+Leg BASS+MzLS & $688{,}608$ \\
+Leg DECaLS & $1{,}538{,}880$ \\
+Leg DES & $4{,}724$ \\
 $z$ median & $0.168$ \\
 $z$ max & $3.83$ \\
 $p_{50}$ separation & $0.0066''$ \\

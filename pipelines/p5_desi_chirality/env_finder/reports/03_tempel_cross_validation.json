@@ -1,0 +1,44 @@
+{
+  "status": "PENDING_TEMPEL_INGEST",
+  "expected_input": "pipelines/p5_desi_chirality/data/desi_env/tempel/tempel_2014_fof.parquet",
+  "expected_schema": {
+    "ra": "float64",
+    "dec": "float64",
+    "z": "float64",
+    "group_id": "int64",
+    "multiplicity": "int64"
+  },
+  "source": "Tempel+2014 A&A 566 A1 arXiv:1402.1350; cosmodb.to.ee/tempel-2014-FoF/",
+  "tempel_class_bins": [
+    {
+      "name": "isolated",
+      "multiplicity_min": 1,
+      "multiplicity_max": 2
+    },
+    {
+      "name": "small_group",
+      "multiplicity_min": 2,
+      "multiplicity_max": 5
+    },
+    {
+      "name": "filament_like",
+      "multiplicity_min": 5,
+      "multiplicity_max": 20
+    },
+    {
+      "name": "cluster_like",
+      "multiplicity_min": 20,
+      "multiplicity_max": 1000000000
+    }
+  ],
+  "join_contract": {
+    "on": "celestial-sphere nearest-neighbour within 1'' (astropy SkyCoord.match_to_catalog_sky)",
+    "primary_key_for_chirality_side": "desi_targetid (de-duplicated nearest-sep winner)"
+  },
+  "writes_when_ingested": [
+    "pipelines/p5_desi_chirality/env_finder/reports/03_tempel_cross_validation.json",
+    "pipelines/p5_desi_chirality/results/analysis_cosmic_web/cw_fraction_by_env__tempel_fof.csv"
+  ],
+  "concordance_spec": "cw_fraction_delta per Tempel<->V-Web class pair < 0.002 (0.2pp)",
+  "generated_at_utc": "2026-05-21T18:53:48Z"
+}
