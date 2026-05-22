@@ -48,7 +48,12 @@ Native-Trained Novelty Fractions from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{2026-05-22 PDT --- v3.1.58}
+\date{2026-05-22 PDT --- v3.1.59}
+% v3.1.59 (cron fire #16: app:pta_mcmc PTA-MCMC appendix equation widetext-wrap.
+%   Long log10(rho_i) = ½[ 2 log10 A - log10(12π²) + (γ-3) log10 f_yr - γ log10 f_i
+%   - log10 T_obs ] single-line equation overflowed the 2-column width by 101.70pt
+%   at L1038. Wrapped in \\begin{widetext}...\\end{widetext} per revtex4-2 idiom,
+%   eliminating the 101pt overfull. Remaining: 7 minor overfulls all ≤ 65pt.
 % v3.1.58 (cron fire #15: body-paragraph overfull cleanup at §sec:fnl Cosmological
 %   Applications. (a) Inserted 13 paragraph-breaks at natural sentence boundaries in
 %   the L620+ monolithic paragraph (mega-paragraph carrying the alpha=0.19/0.15/+1.83
@@ -1033,9 +1038,11 @@ This appendix documents the MCMC run underlying the PTA spectral-index recovery 
 \paragraph{Dataset.} NANOGrav 15-yr Hellings--Downs-correlated GWB free-spectrum KDE pack, Zenodo \texttt{10.5281/zenodo.8060824} (\textit{KDE Representations of GWB Free Spectra}, NANOGrav Collaboration 2023). The 30-Fourier-bin product \texttt{30f\_fs\{hd\}\_ceffyl} provides per-bin posterior densities for $\log_{10}\rho_i$ on a fixed log-density grid, Ceffyl/PTArcade-compatible.
 
 \paragraph{Model.} Matter-bounce power-law GWB template,
+\begin{widetext}
 \begin{equation}
 \log_{10}\rho_i = \tfrac{1}{2}\!\left[2\log_{10}A - \log_{10}(12\pi^2) + (\gamma - 3)\log_{10} f_{\rm yr} - \gamma \log_{10} f_i - \log_{10} T_{\rm obs}\right],
 \end{equation}
+\end{widetext}
 evaluated at $f_i = (i+1)/T_{\rm obs}$ for $i = 0,\dots,29$ with $T_{\rm obs} = 16.03~{\rm yr}$ and $f_{\rm yr} = 1/{\rm yr}$. Free parameters: $\theta = (\gamma, \log_{10}A)$. Flat priors $\gamma \in [0,7]$, $\log_{10}A \in [-18,-11]$.
 
 \paragraph{Likelihood.} Per-bin Ceffyl KDE log-density evaluated by linear interpolation on the supplied $\log_{10}\rho$ grid:
