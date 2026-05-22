@@ -87,7 +87,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.20",
+    version: "v1B.0.21",
     tldr: "R23 + R24 both returned 5/5 reviewers 0/0 — 2 consecutive all-clean rounds. External-review-ready, capped at 90% / 99% pending Houston sign-off.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
@@ -136,8 +136,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.30",
-    tldr: "R23 + R24 both returned 5/5 reviewers 0/0 — 2 consecutive all-clean rounds. Heinrich+2023 σ(f_NL)=0.7 externalization accepted. Ready for Houston sign-off.",
+    version: "v1.7.31",
+    tldr: "v1.7.31 (cron fire #18): CATASTROPHIC 2495pt date-blob overfull ELIMINATED; tab:bayes → table*; eq:wick + eq:Iv wrapped in widetext. P2 overfull 3508pt → 489pt (86% reduction). R23+R24+R25 cascaded-loop exit. 20pp/816KB / 0 undef refs.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",

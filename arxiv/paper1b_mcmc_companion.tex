@@ -43,9 +43,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.20}
+\newcommand{\paperVersion}{v1B.0.21}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
-% v1B.0.20 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
+% v1B.0.21 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
 %   across 4 of 5 reviewers (DeepSeek/Gemini/GPT-5/Perplexity); Grok-43 only reviewer raising findings.
 % Truth-audit per feedback_peer_review_truth_audit_protocol on Grok-only BLOCKERs:
 %   - GRO-B1 "verification framing empty" — FALSIFIED. Paper title literally is "Technical Verification
@@ -786,7 +786,7 @@ dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 $\Delta\Neff$ extension does not resolve the Hubble tension. Current data
 neither require nor exclude a spin-torsion $\Delta\Neff$ contribution;
 CMB-S4 will provide the first precision test ($\sigma(\Neff)\sim 0.03$).
-The Savage-Dickey/$\Delta$AIC/$\Delta$BIC model-comparison block from earlier versions was REMOVED in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}, \emph{Model-comparison statistics} paragraph) because the numbers were not reproducible from a single self-consistent readout of the final frozen-thinned chain; we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons.
+The Savage-Dickey/$\Delta$AIC/$\Delta$BIC model-comparison block from earlier versions was REMOVED in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph) because the numbers were not reproducible from a single self-consistent readout of the final frozen-thinned chain; we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons.
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 the Planck Commander map confirms that the deconvolution pipeline recovers
@@ -862,7 +862,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:results}); dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence and is queued for v1B.0.15+. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is a separate nested-sampling run on the identical likelihood stack rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density (R10 GEM-M1).
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:cosmo_fits}); dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence and is queued for v1B.0.15+. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is a separate nested-sampling run on the identical likelihood stack rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density (R10 GEM-M1).
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
