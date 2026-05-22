@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.10-2026-05-22}
+\newcommand{\paperVersion}{v0.1.11-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -754,18 +754,51 @@ identifications using the sphere-growing VoidFinder algorithm and the
 watershed ZOBOV/V2 algorithm (REVOLVER and VIDE prunings) on the
 volume-limited DR1 Bright Galaxy Survey sample to $z \leq 0.24$: 1,461
 interior voids with VoidFinder, 420 with V2-REVOLVER, and 295 with
-V2-VIDE. The DESIVAST low-$z$ footprint overlaps the V-Web void class
-populated in this work (matched-spiral count $n_{\rm void} = 428$ in
-\S\ref{sec:results_vweb}), and a per-galaxy cross-match between the
-matched-spiral catalog and any of the three DESIVAST void definitions
-would convert the small-sample $-0.68\sigma$ V-Web void-class deviation
-into a directly catalog-anchored measurement on a hundreds-to-thousands
-larger void sample (low-$z$ BGS spirals lying inside published
-VoidFinder spheres). This is queued as a natural follow-up: it does not
-change the central environment-independence headline (which is already
-clean at filament + cluster richness where most of the matched sample
-sits) but would publication-grade-validate the low-$z$ void-class
-subsample at much lower counting-statistics noise.
+V2-VIDE.
+
+\paragraph{DESIVAST per-galaxy cross-match (this work).} The DESIVAST
+public release at
+\artifact{data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/}
+provides the VoidFinder NGC/SGC FITS files
+(\artifact{DESIVAST\_BGS\_VOLLIM\_VoidFinder\_\{NGC,SGC\}.fits},
+$89{,}003 + 12{,}860 = 101{,}863$ interior hole spheres comprising the
+$3{,}765$ maximal voids). We fetched both files and performed a direct
+per-galaxy cross-match of the V-Web void-class matched-spiral
+subsample. Restricting the matched-spiral catalog to $z \leq 0.24$
+(the DESIVAST BGS limit) leaves only $n = 6$ V-Web void-class spirals
+(the V-Web run uses the full $14.6$M DESI spectro sample to $z = 2$,
+of which the matched-spiral subsample inherits a flat-but-low-z-rare
+distribution). Converting each of the 6 spirals to flat-$\Lambda$CDM
+comoving Cartesian coordinates ($H_0 = 67.66$ km/s/Mpc, $\Omega_m =
+0.315$, units $h^{-1}$~Mpc consistent with the DESIVAST hole catalog)
+and testing point-in-sphere membership against all $101{,}863$ holes
+returns \textbf{$0/6$ V-Web ``void'' spirals inside any DESIVAST hole};
+minimum spiral-to-nearest-hole separations span $28.7$--$158.1\,$Mpc/$h$.
+
+This $0/6$ disagreement is consistent with the survey-shell systematic
+discussed above: the V-Web void class at low $z$ is dominated by
+survey-edge density artifacts that the DESIVAST volume-limited BGS
+sample correctly suppresses. The $n = 6$ sample size is too small for
+a binomial significance constraint on the chirality null directly, but
+the per-galaxy disagreement quantifies the V-Web void-class purity at
+$z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids, meaning
+the V-Web ``void'' label at low $z$ should be read as ``not in a
+DESIVAST-defined cosmic-web density minimum'' rather than ``confirmed
+void galaxy.'' Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_xmatch\_summary.json}.
+This is a direct empirical small-sample illustration of the
+$+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy discussed
+above, not a separate effect.
+
+A future analysis that uses DESIVAST voids \emph{themselves} as the
+environment classifier (rather than V-Web with DESIVAST as a
+cross-check) would unlock a hundreds-to-thousands larger sample of
+genuinely void-resident BGS spirals at $z \leq 0.24$ for a tightened
+chirality-in-voids constraint. This is queued as a natural follow-up;
+it does not change the central environment-independence headline
+(which is already clean at filament + cluster richness where most of
+the matched sample sits) but would publication-grade-validate the
+low-$z$ void-class subsample at much lower counting-statistics noise.
 
 \section{Systematics and null tests}\label{sec:systematics}
 

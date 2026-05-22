@@ -302,8 +302,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.10-2026-05-22",
-    tldr: "v0.1.10 (cron fire #35): §sec:tweb_compare extended with DESIVAST (arXiv:2411.00148, Douglass+2025 ApJ 982 38) DR1 BGS void-catalog cross-citation — 1,461 VoidFinder + 420 V2-REVOLVER + 295 V2-VIDE voids at z≤0.24 directly overlap the n=428 V-Web void-class matched-spiral subsample. Three-VAC external-validation triple now complete: T-Web (DR1 tidal-tensor) + ASTRA (EDR probabilistic) + DESIVAST (DR1 BGS voids). PDF 745KB / 0 overfull / 0 undef. First R-round still OR-cap-blocked.",
+    version: "v0.1.11-2026-05-22",
+    tldr: "v0.1.11 (cron fire #40): DESIVAST per-galaxy cross-match LANDED — fetched VoidFinder NGC+SGC FITS from data.desi.lbl.gov (101,863 hole spheres, 3,765 maximal voids), restricted V-Web void-class matched spirals to z≤0.24 (n=6), point-in-sphere tested all 6 against all 101,863 DESIVAST holes: **0/6 V-Web 'void' spirals fall inside any DESIVAST hole** (min separation 28.7–158.1 Mpc/h). Direct empirical small-sample illustration of the survey-shell systematic: V-Web low-z 'void' class is dominated by survey-edge artifacts, NOT DESIVAST-defined void galaxies. Sample too small (n=6) for binomial significance on chirality, but quantifies V-Web void-class purity at z≤0.24 as 0% concordance. Companion artifact: desivast_xmatch_summary.json. PDF 753KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

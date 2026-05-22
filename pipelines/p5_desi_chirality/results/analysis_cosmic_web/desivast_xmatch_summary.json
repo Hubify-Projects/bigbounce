@@ -1,0 +1,61 @@
+{
+  "n_vweb_void_lowz": 6,
+  "n_inside_desivast_void": 0,
+  "galaxies": [
+    {
+      "ra": 184.16051076735337,
+      "dec": 58.05714066609742,
+      "z": 0.237825574782512,
+      "class": "CW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 158.11
+    },
+    {
+      "ra": 40.682336623170606,
+      "dec": -0.139847100227695,
+      "z": 0.1485966256848322,
+      "class": "CCW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 64.79
+    },
+    {
+      "ra": 337.1378056936395,
+      "dec": -0.32571942634581874,
+      "z": 0.14382945676061942,
+      "class": "CW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 77.65
+    },
+    {
+      "ra": 103.58948114031143,
+      "dec": 59.9330344101108,
+      "z": 0.23877335466174193,
+      "class": "CCW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 28.69
+    },
+    {
+      "ra": 183.47621370640928,
+      "dec": 54.920511953970106,
+      "z": 0.044931121956301424,
+      "class": "CW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 62.49
+    },
+    {
+      "ra": 182.63719025215556,
+      "dec": 58.30382767153628,
+      "z": 0.010214075586265674,
+      "class": "CCW",
+      "inside_hole": false,
+      "void_id": -1,
+      "min_dist_mpch": 64.37
+    }
+  ],
+  "note": "V-Web void-class matched-spiral subsample at z<0.24 cross-matched against DESIVAST VoidFinder BGS hole spheres. Tiny sample reflects DESIVAST z<0.24 BGS cap vs V-Web full DESI footprint."
+}
