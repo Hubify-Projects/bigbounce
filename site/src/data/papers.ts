@@ -302,8 +302,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.12-2026-05-22",
-    tldr: "v0.1.12 (cron fire #41): within-class density-stratified follow-up — the catalog-level −4.7σ cluster signal does NOT survive within-class density stratification. Cluster quartile Q3 (ρ̄=2.01, n=99,526, most-typical cluster density) returns σ=−0.37 (null after Bonferroni-4). Strongest cluster sub-deviations Q1+Q2 at ρ̄≈1.55–1.80 — the LOW-density edge of the cluster class against the filament boundary, evidence the −4.7σ is boundary-misclassification leakage from filaments, NOT a clean cluster-density effect. Filament quartiles all |σ|<2. Headline environment-independence REINFORCED. PDF 757KB / 0 overfull / 0 undef.",
+    version: "v0.1.13-2026-05-22",
+    tldr: "v0.1.13 (cron fire #43): added redshift-stratified cluster cross-check to §sec:results_within_class_density. Cluster z-quartile-marginalized σ-from-half: Z1 (z̄=0.045) -2.33 / Z2 (0.083) -1.73 / Z3 (0.122) -3.14 / Z4 (0.190) -2.12 — all within -1.7 to -3.2σ, none crossing Bonferroni-4 |σ|=3.29. Approximately uniform across z → stationary classifier-bias monopole, NOT z-dependent astrophysical signature. 2D z×density 16-cell table also shipped (companion JSON). Rules out evolutionary cluster-density-chirality coupling at present sample size. Headline environment-independence further REINFORCED. PDF 759KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

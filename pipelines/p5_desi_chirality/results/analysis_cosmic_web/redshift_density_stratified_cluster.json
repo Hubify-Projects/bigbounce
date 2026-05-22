@@ -1,0 +1,180 @@
+{
+  "cluster_n_total": 397505,
+  "cluster_z_range": [
+    0.010010968376441099,
+    1.947946797854098
+  ],
+  "by_z_quartile_marginalized": {
+    "Z1": {
+      "n": 99377,
+      "cw_fraction": 0.4963019612183906,
+      "sigma_from_half": -2.331548200009124,
+      "z_mean": 0.04473973243011379
+    },
+    "Z2": {
+      "n": 99376,
+      "cw_fraction": 0.4972629206246981,
+      "sigma_from_half": -1.7256715679202788,
+      "z_mean": 0.08343129531566697
+    },
+    "Z3": {
+      "n": 99376,
+      "cw_fraction": 0.4950189180486234,
+      "sigma_from_half": -3.1404684783843377,
+      "z_mean": 0.12213140603787048
+    },
+    "Z4": {
+      "n": 99376,
+      "cw_fraction": 0.49663902753179845,
+      "sigma_from_half": -2.1190231753138606,
+      "z_mean": 0.19012408272703119
+    }
+  },
+  "by_z_and_density_quartile": [
+    {
+      "zq": "Z1",
+      "dq": "D1",
+      "n": 553,
+      "cw_fraction": 0.5316,
+      "sigma_from_half": 1.49,
+      "z_mean": 0.06,
+      "density_mean": 1.67
+    },
+    {
+      "zq": "Z1",
+      "dq": "D2",
+      "n": 9128,
+      "cw_fraction": 0.4909,
+      "sigma_from_half": -1.74,
+      "z_mean": 0.055,
+      "density_mean": 1.836
+    },
+    {
+      "zq": "Z1",
+      "dq": "D3",
+      "n": 32294,
+      "cw_fraction": 0.5007,
+      "sigma_from_half": 0.24,
+      "z_mean": 0.05,
+      "density_mean": 2.021
+    },
+    {
+      "zq": "Z1",
+      "dq": "D4",
+      "n": 57402,
+      "cw_fraction": 0.4944,
+      "sigma_from_half": -2.7,
+      "z_mean": 0.04,
+      "density_mean": 2.234
+    },
+    {
+      "zq": "Z2",
+      "dq": "D1",
+      "n": 7880,
+      "cw_fraction": 0.4939,
+      "sigma_from_half": -1.08,
+      "z_mean": 0.086,
+      "density_mean": 1.617
+    },
+    {
+      "zq": "Z2",
+      "dq": "D2",
+      "n": 25717,
+      "cw_fraction": 0.4954,
+      "sigma_from_half": -1.48,
+      "z_mean": 0.084,
+      "density_mean": 1.82
+    },
+    {
+      "zq": "Z2",
+      "dq": "D3",
+      "n": 33323,
+      "cw_fraction": 0.4987,
+      "sigma_from_half": -0.49,
+      "z_mean": 0.084,
+      "density_mean": 2.008
+    },
+    {
+      "zq": "Z2",
+      "dq": "D4",
+      "n": 32456,
+      "cw_fraction": 0.4981,
+      "sigma_from_half": -0.68,
+      "z_mean": 0.082,
+      "density_mean": 2.196
+    },
+    {
+      "zq": "Z3",
+      "dq": "D1",
+      "n": 26466,
+      "cw_fraction": 0.4957,
+      "sigma_from_half": -1.4,
+      "z_mean": 0.125,
+      "density_mean": 1.57
+    },
+    {
+      "zq": "Z3",
+      "dq": "D2",
+      "n": 35488,
+      "cw_fraction": 0.492,
+      "sigma_from_half": -3.0,
+      "z_mean": 0.124,
+      "density_mean": 1.801
+    },
+    {
+      "zq": "Z3",
+      "dq": "D3",
+      "n": 28511,
+      "cw_fraction": 0.4963,
+      "sigma_from_half": -1.25,
+      "z_mean": 0.118,
+      "density_mean": 1.996
+    },
+    {
+      "zq": "Z3",
+      "dq": "D4",
+      "n": 8911,
+      "cw_fraction": 0.5008,
+      "sigma_from_half": 0.16,
+      "z_mean": 0.117,
+      "density_mean": 2.158
+    },
+    {
+      "zq": "Z4",
+      "dq": "D1",
+      "n": 64499,
+      "cw_fraction": 0.4947,
+      "sigma_from_half": -2.67,
+      "z_mean": 0.199,
+      "density_mean": 1.529
+    },
+    {
+      "zq": "Z4",
+      "dq": "D2",
+      "n": 29036,
+      "cw_fraction": 0.4981,
+      "sigma_from_half": -0.63,
+      "z_mean": 0.177,
+      "density_mean": 1.783
+    },
+    {
+      "zq": "Z4",
+      "dq": "D3",
+      "n": 5398,
+      "cw_fraction": 0.513,
+      "sigma_from_half": 1.91,
+      "z_mean": 0.161,
+      "density_mean": 1.949
+    },
+    {
+      "zq": "Z4",
+      "dq": "D4",
+      "n": 443,
+      "cw_fraction": 0.4763,
+      "sigma_from_half": -1.0,
+      "z_mean": 0.156,
+      "density_mean": 2.14
+    }
+  ],
+  "method": "V-Web cluster-class matched spirals (n=397,505) binned by z-quartile \u00d7 density-quartile; cw_fraction + sigma per cell. Tests whether fire-#41 boundary-leakage interpretation (Q3-typical-density null) holds across z bins."
+}

@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.12-2026-05-22}
+\newcommand{\paperVersion}{v0.1.13-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -530,6 +530,28 @@ headline environment-independence finding: the only V-Web class that
 crosses naive $|\sigma| = 3$ at the class level (cluster, $-4.7\sigma$)
 does not survive within-class density stratification as a clean
 density-dependent effect.
+
+\paragraph{Redshift-stratified cross-check.} A second decomposition
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/redshift\_density\_stratified\_cluster.json})
+bins the cluster class into four redshift quartiles to test whether
+the boundary-leakage interpretation depends on redshift. Marginalizing
+over density, the cluster $\sigma_{\rm from\ half}$ per
+$z$-quartile is $-2.33$ (Z1, $\bar z = 0.045$, $n = 99{,}377$),
+$-1.73$ (Z2, $\bar z = 0.083$, $n = 99{,}376$), $-3.14$ (Z3,
+$\bar z = 0.122$, $n = 99{,}376$), and $-2.12$ (Z4, $\bar z = 0.190$,
+$n = 99{,}376$). All four $z$-quartile deviations sit in the
+$-1.7$ to $-3.2\sigma$ band, none individually crossing the
+Bonferroni-4 $|\sigma| = 3.29$ threshold at $\alpha = 0.01$. The
+deviation is approximately uniform across redshift, consistent with
+a stationary classifier-bias monopole (constant $f_{\rm CW}$ offset)
+rather than a redshift-dependent astrophysical signature.
+The 2D $z$-quartile $\times$ density-quartile decomposition
+(sixteen-cell table, JSON artifact above) shows that the strongest
+sub-cells -- $(Z_3, D_2)$ at $\sigma = -3.00$, $(Z_1, D_4)$ at
+$\sigma = -2.70$, $(Z_4, D_1)$ at $\sigma = -2.67$ -- do not
+preferentially align with any single redshift bin, ruling out an
+evolutionary cluster-density-chirality coupling at the present
+sample size.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
