@@ -65,6 +65,10 @@ export default function RootLayout({
             </div>
           </main>
         </div>
+        <Script
+          src="/old/astro/chat-widget.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

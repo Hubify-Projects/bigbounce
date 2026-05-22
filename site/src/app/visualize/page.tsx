@@ -49,12 +49,19 @@ export default async function VisualizePage() {
         dangerouslySetInnerHTML={{ __html: LEGACY_VISUALIZE_OVERRIDES }}
         suppressHydrationWarning
       />
+      <a href="/" className="visualize-escape-hatch" aria-label="Back to overview">
+        ← back to BigBounce
+      </a>
       <LegacyVisualizeClient body={body} script={script} />
     </div>
   );
 }
 
 const LEGACY_VISUALIZE_OVERRIDES = `
+/* The legacy visualize.html ships its own body { overflow: hidden } and
+   position:fixed sidebar, which fights the shell layout. Counteract that
+   so the BigBounce sidebar + topbar remain reachable. */
+html, body { overflow: auto !important; height: auto !important; }
 .legacy-visualize-root .container,
 .legacy-visualize-root .wide-container {
   max-width: none !important;
@@ -76,4 +83,27 @@ const LEGACY_VISUALIZE_OVERRIDES = `
   border-color: var(--accent) !important;
 }
 .legacy-visualize-root a { color: var(--accent) !important; }
+.visualize-escape-hatch {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+.visualize-escape-hatch:hover {
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  border-color: var(--accent);
+}
 `;

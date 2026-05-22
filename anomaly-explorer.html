@@ -543,6 +543,21 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// Legacy Survey cutout API often rate-limits on the first burst when many
+// thumbnails request at once. Retry with backoff before giving up.
+// Without this every cell shows "No img" even though the cutout is fine.
+window.handleThumbError = function(img, url) {
+  const n = parseInt(img.dataset.retry || '0', 10);
+  if (n >= 3) {
+    img.style.display = 'none';
+    img.insertAdjacentHTML('afterend', '<div class="anomaly-thumb-fail">no cutout</div>');
+    return;
+  }
+  img.dataset.retry = String(n + 1);
+  const delay = 800 + n * 1200 + Math.random() * 600;
+  setTimeout(() => { img.src = url + '&_r=' + n; }, delay);
+};
+
 // Close modal on Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePanel();
@@ -570,7 +585,7 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><img class="anomaly-thumb" loading="lazy" src="${thumbUrl}" alt="" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=anomaly-thumb-fail>No img</div>')"></td>
+      <td><img class="anomaly-thumb" loading="lazy" decoding="async" src="${thumbUrl}" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" data-retry="0" onerror="handleThumbError(this, '${thumbUrl}')"></td>
       <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');

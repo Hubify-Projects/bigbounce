@@ -15,6 +15,7 @@ import {
   Library,
   Lightbulb,
   Map,
+  MessageSquare,
   Orbit,
   Search,
   Sparkle,
@@ -37,6 +38,7 @@ interface SidebarSection {
 const sections: SidebarSection[] = [
   {
     links: [
+      { href: "/search", label: "search", icon: Search },
       { href: "/", label: "overview", icon: Home },
       { href: "/explained", label: "explainer", icon: BookOpen },
     ],
@@ -47,6 +49,7 @@ const sections: SidebarSection[] = [
       { href: "/surveys", label: "surveys", icon: Database },
       { href: "/predictions", label: "predictions", icon: Orbit },
       { href: "/paper", label: "papers", icon: FileText },
+      { href: "/contributions", label: "contributions", icon: Sparkle },
     ],
   },
   {
@@ -55,7 +58,7 @@ const sections: SidebarSection[] = [
       { href: "/data-explorer", label: "data explorer", icon: BarChart3 },
       { href: "/galaxy-explorer", label: "galaxy explorer", icon: Globe },
       { href: "/anomaly-explorer", label: "anomaly explorer", icon: Telescope },
-      { href: "/visualize", label: "visualize", icon: Sparkle },
+      { href: "/visualize", label: "visualize", icon: Orbit },
       { href: "/figures", label: "figures", icon: Image },
       { href: "/glossary", label: "glossary", icon: Library },
       { href: "/timeline", label: "timeline", icon: Map },
@@ -64,8 +67,14 @@ const sections: SidebarSection[] = [
   {
     label: "articles",
     links: [
-      { href: "/articles", label: "articles", icon: Search },
+      { href: "/articles", label: "articles", icon: BookOpen },
       { href: "/speculations", label: "speculations", icon: Lightbulb },
+    ],
+  },
+  {
+    label: "chat",
+    links: [
+      { href: "/chat", label: "astro chat", icon: MessageSquare },
     ],
   },
 ];
