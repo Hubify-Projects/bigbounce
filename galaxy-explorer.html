@@ -569,6 +569,16 @@
   </div>
 </div>
 
+<div style="margin: 8px 0 14px; padding: 10px 14px; border: 1px solid var(--border); border-left: 3px solid #d97706; background: color-mix(in srgb, #d97706 6%, var(--bg)); font-size: 12px; line-height: 1.55; font-family: var(--font-sans);">
+  <strong>Demo table:</strong> the 20 rows below are a representative sample.
+  The full 8.47M-row catalog is live in Convex (table <code>galaxies</code>: dr8_id, p_cw, p_ccw, p_ns, classification, confidence)
+  but does not yet include RA/Dec, so Legacy Survey cutouts can't be regenerated per row in the live query path.
+  Full data access: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener">HuggingFace dataset</a>,
+  <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener">model</a>,
+  <a href="public/papers/chirality_catalog_paper.pdf" target="_blank">Paper 4 PDF</a>.
+  Schema extension (add ra/dec + reimport) is queued as a follow-up.
+</div>
+
 <div class="gx-table-wrap">
   <table class="gx-table" id="gx-results-table">
     <thead>
@@ -765,6 +775,15 @@ var placeholderGalaxies = [
   { dr8_id: "8123-9012-345", ra: 170.8901, dec: -19.8765, p_cw: 0.029, p_ccw: 0.895, p_ns: 0.076, cls: "CCW" }
 ];
 
+// Retry Legacy Survey thumbnails on transient rate-limit errors before giving up.
+window.gxHandleThumbError = function(img, url) {
+  var n = parseInt(img.dataset.retry || '0', 10);
+  if (n >= 3) { img.style.display = 'none'; return; }
+  img.dataset.retry = String(n + 1);
+  var delay = 800 + n * 1200 + Math.random() * 600;
+  setTimeout(function() { img.src = url + '&_r=' + n; }, delay);
+};
+
 // ── Render table ──
 function renderTable(data) {
   var tbody = document.getElementById('gx-results-body');
@@ -778,7 +797,7 @@ function renderTable(data) {
     tr.setAttribute('data-gx-idx', idx);
     tr.addEventListener('click', function() { openGalaxyPanel(data[idx]); });
     tr.innerHTML =
-      '<td><img class="gx-thumb" src="' + imgUrl + '" alt="' + g.dr8_id + '" loading="lazy" onerror="this.style.display=\'none\'"></td>' +
+      '<td><img class="gx-thumb" src="' + imgUrl + '" alt="' + g.dr8_id + '" loading="lazy" decoding="async" data-retry="0" onerror="gxHandleThumbError(this, \'' + imgUrl + '\')"></td>' +
       '<td>' + g.dr8_id + '</td>' +
       '<td class="' + clsClass + '">' + clsLabel + '</td>' +
       '<td>' + g.p_cw.toFixed(3) + '</td>' +

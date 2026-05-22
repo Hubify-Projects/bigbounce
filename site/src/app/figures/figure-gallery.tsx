@@ -150,7 +150,7 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
     [sort, visibleFigures],
   );
 
-  return (
+  const galleryBody = (
     <>
       <div className="figures-toolbar">
         <div className="figures-search">
@@ -207,13 +207,20 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
             List
           </Button>
         </div>
-      </div>
-
-      <div className="figures-filter-bar">
-        <span className="figures-filter-label">
-          <SlidersHorizontal aria-hidden="true" />
-          Paper
+        <span className="figures-result-count" style={{ marginLeft: "auto" }}>
+          {visibleFigures.length} of {allFigures.length} shown
         </span>
+      </div>
+    </>
+  );
+
+  return (
+    <div className="figures-layout">
+      <aside className="figures-side-nav" aria-label="Browse figures by paper">
+        <div className="figures-side-label">
+          <SlidersHorizontal aria-hidden="true" size={12} />
+          <span>By paper</span>
+        </div>
         {FILTERS.map((f) => {
           const isActive = filter === f.key;
           const count =
@@ -221,25 +228,23 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
               ? allFigures.length
               : allFigures.filter((fig) => fig.paper === f.key).length;
           return (
-            <Button
+            <button
               key={f.key}
               type="button"
-              size="sm"
-              variant={isActive ? "default" : "outline"}
               onClick={() => setFilter(f.key)}
-              className="font-mono text-xs"
+              className={`figures-side-link${isActive ? " is-active" : ""}`}
+              aria-current={isActive ? "true" : undefined}
             >
-              {f.label}
-              <span className="ml-2 opacity-70">· {count}</span>
-            </Button>
+              <span>{f.label}</span>
+              <span className="figures-side-count">{count}</span>
+            </button>
           );
         })}
-        <span className="figures-result-count">
-          {visibleFigures.length} of {allFigures.length} shown
-        </span>
-      </div>
+      </aside>
 
-      {visibleFigures.length === 0 ? (
+      <div className="figures-main">
+        {galleryBody}
+        {visibleFigures.length === 0 ? (
         <Card className="figure-empty-state">
           <div className="card-kicker">No figures matched</div>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -360,6 +365,7 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
           )}
         </DialogContent>
       </Dialog>
-    </>
+      </div>
+    </div>
   );
 }
