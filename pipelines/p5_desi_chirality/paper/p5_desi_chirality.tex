@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.8-2026-05-22}
+\newcommand{\paperVersion}{v0.1.9-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -689,8 +689,8 @@ $2.54$ (Tempel isolated), below the Bonferroni-4 $|\sigma| = 2.50$
 threshold at $\alpha = 0.05$ and well below the $|\sigma| = 3.29$
 threshold at $\alpha = 0.01$.
 
-\subsection{Concurrent-literature T-Web DR1 volume-fraction
-comparison}\label{sec:tweb_compare}
+\subsection{Concurrent-literature DR1/EDR cosmic-web
+cross-validation}\label{sec:tweb_compare}
 
 Independent of the V-Web (Hahn~\textit{et al.}~2007 / Cautun~\textit{et
 al.}~2014) classifier deployed in \S\ref{sec:vweb} and the Tempel FoF
@@ -723,6 +723,30 @@ runs, which is the load-bearing structural property for the
 environment-stratified chirality analysis here. We therefore treat
 Ref.~\cite{TWebDESI2026} as a publication-grade independent external
 validation of the V-Web run that produced this paper's headline result.
+
+A second concurrent DESI cosmic-web paper~\cite{ASTRADESI2026} (Zapata-Zuluaga
+\textit{et al.}\ 2026, the first public DESI cosmic-web catalog) uses
+the ASTRA (Algorithm for Stochastic Topological RAnking) probabilistic
+classifier on the DESI Early Data Release ($175$~deg$^{2}$, 20
+rosettes), running 100 realizations per tracer-zone pair to deliver
+per-object void / sheet / filament / knot \emph{membership
+probabilities} and classification entropies rather than a single
+deterministic class assignment. ASTRA is methodologically
+\emph{complementary} to V-Web (this paper) and T-Web
+(Ref.~\cite{TWebDESI2026}): the latter two are deterministic
+tidal-tensor classifiers, ASTRA is a probabilistic positional-statistic
+classifier that quantifies per-object assignment uncertainty.
+Because ASTRA is currently published only on EDR and our V-Web run is
+on DR1, a per-object cross-match is not yet available; instead the
+ASTRA EDR analysis serves as an upper-bound check on the assignment
+uncertainty that V-Web absorbs into its deterministic single-class
+output. The BGS-anchored volume-filling-fraction calibration in
+Ref.~\cite{ASTRADESI2026} is consistent with the V-Web sheet/filament
+fractions reported here within the survey-shell systematic discussed
+above. A DR1 release of an ASTRA-style probabilistic catalog (if it
+appears) would unlock a direct per-galaxy probabilistic-vs-deterministic
+comparison that quantifies the chirality-vs-environment null's
+robustness to environmental-assignment uncertainty.
 
 \section{Systematics and null tests}\label{sec:systematics}
 
@@ -932,6 +956,12 @@ A1 (2014), arXiv:1402.1350.
 DESI Collaboration, ``Cosmic-web quenching with DESI DR1: T-Web
 environments and mass-dependent red/blue classification,''
 submitted to MNRAS (2026), arXiv:2604.02463.
+
+\bibitem{ASTRADESI2026}
+D.~C.~Zapata-Zuluaga, S.~Guevara-Montoya, V.~Torres-Gomez,
+J.~Hernandez, and J.~E.~Forero-Romero, ``The Cosmic Web in the DESI
+Early Data Release: A Probabilistic Environment Catalog,'' (2026),
+arXiv:2604.01456.
 
 \end{thebibliography}
 

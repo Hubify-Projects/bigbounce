@@ -302,8 +302,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.8-2026-05-22",
-    tldr: "v0.1.8 (cron fire #33): added §sec:tweb_compare with concurrent-literature T-Web DESI DR1 cosmic-web cross-comparison (arXiv:2604.02463, 2026-04-02). V-Web volume fractions {void, wall, filament, cluster} = {24.4, 41.3, 33.3, 1.0}% vs T-Web DR1 {6–16, 45–48, 37–40, 4–6}% — sheets+filaments agree to ~5pp across two independent classifiers; void/knot deviations in the direction predicted by survey-shell systematic. Publication-grade external validation. PDF 741KB / 0 overfull / 0 undef. First R-round still OR-cap-blocked.",
+    version: "v0.1.9-2026-05-22",
+    tldr: "v0.1.9 (cron fire #34): §sec:tweb_compare extended with ASTRA EDR (arXiv:2604.01456, Zapata-Zuluaga+2026) probabilistic-classifier complementary-comparison paragraph. Three independent DESI cosmic-web methodologies now cross-cited: V-Web (this paper, deterministic tidal-tensor DR1), T-Web (arXiv:2604.02463, deterministic tidal-tensor DR1), ASTRA (arXiv:2604.01456, probabilistic positional-statistic EDR). Sheets/filaments agree to ~5pp V-Web↔T-Web; ASTRA flagged as upper-bound assignment-uncertainty check + future per-galaxy probabilistic vs deterministic comparison if DR1 ASTRA release lands. PDF 743KB / 0 overfull / 0 undef. First R-round still OR-cap-blocked.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
