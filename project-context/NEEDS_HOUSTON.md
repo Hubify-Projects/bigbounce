@@ -1,6 +1,6 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-21 (cron fire #2 close — OpenRouter weekly key limit hit).
+Last updated: 2026-05-22 PDT (cron fire #30 / tick 151 — post visual-formatting cleanup + SSOT sweep + full-portfolio arXiv tarballs).
 
 **Definition** (per Houston standing directive 2026-05-21): this file lists ONLY items that no agent can resolve — items that require Houston-only authority: personal sign-off, API/SSH credentials, arXiv endorsement, or something physical only Houston can provide.
 
@@ -10,7 +10,9 @@ Everything ELSE is being driven autonomously by agents. If an item is "out of re
 
 ## 0. OpenRouter per-key $50/week cap exhausted — workspace credit fine · gates R-rounds
 
-**Diagnosis (live `/api/v1/key` readback, 2026-05-22):** the per-key weekly usage limit on the `sk-or-v1-c25e5...d15b3cbf` key is set to **$50/week**, weekly usage is **$52.48** (already exceeded the cap by $2.48), `limit_remaining: 0`. Workspace credit is **healthy: $83.47 remaining of $600 total** (used $516.53 lifetime). This is NOT a credit-exhausted problem — it is the per-key weekly cap that throttles. Earlier fires assumed weekly reset would clear it; the actual fix is to raise or remove the per-key cap (or rotate the key).
+**Diagnosis (live `/api/v1/key` readback, 2026-05-22 cron fire #30):** the per-key weekly usage limit on the `sk-or-v1-c25e5...d15b3cbf` key is set to **$50/week**, weekly usage is **$98.66** (now $48.66 over the cap, up from $52.48 at fire #25 — *the usage counter is incrementing despite remaining=0*, which is consistent with OpenRouter pre-checking the limit at request submission but still settling completed-stream costs after a downstream rejection). `limit_remaining: 0`. Workspace credit is **healthy: $83.47 remaining of $600 total** (used $516.53 lifetime). This is NOT a credit-exhausted problem — it is the per-key weekly cap that throttles. Earlier fires assumed weekly reset would clear it; the actual fix is to raise or remove the per-key cap (or rotate the key).
+
+**The cap raise Houston attempted between fire #21 and fire #22 did not propagate to the active key** (verified via `/api/v1/key` readback every fire since #22, including fire #30). Either the wrong key was edited in the OpenRouter dashboard, or the limit field wasn't saved. The active key's internal ID (per the OR error log) is `cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348`; the public prefix matching `bigbounce/.env.local` is `sk-or-v1-c25e5...d15b3cbf`.
 
 **Ask (pick one):**
   - **(a) Raise the per-key cap (fastest, 30 sec):** https://openrouter.ai/settings/keys → find `sk-or-v1-c25...cbf` → edit → raise the `$50/week` `limit` field to `$200/week` (or remove it entirely so only the workspace credit gates spend).
@@ -21,19 +23,19 @@ Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47
 
 ---
 
-## 1. Personal sign-off on P1A v1A.0.34 for arXiv submission · gates P1A
+## 1. Personal sign-off on P1A v1A.0.35 for arXiv submission · gates P1A
 
-**Why blocked:** P1A satisfies AGENT_RULES §4.4.1 cascaded-loop exit — 10th-consecutive Gemini-cosmology effective 0-BLOCKER on paper content (R23 BLOCKER was a prompt-meta error, audit-falsified) AND 3rd-consecutive 5-vendor clean round on content (R15+R16+R23 all 0/0 across DeepSeek + Gemini + GPT-5 + Grok + Perplexity). v1A.0.34 closed R23 Gemini M1+m1+n1 text-level findings + 3 pre-existing undef refs. The final 1% (90→100) is reserved for Houston-only judgment per feedback_99_pct_readiness_cap. No agent can flip this.
+**Why blocked:** P1A satisfies AGENT_RULES §4.4.1 cascaded-loop exit — 10th-consecutive Gemini-cosmology effective 0-BLOCKER on paper content (R23 BLOCKER was a prompt-meta error, audit-falsified) AND 3rd-consecutive 5-vendor clean round on content (R15+R16+R23 all 0/0 across DeepSeek + Gemini + GPT-5 + Grok + Perplexity). v1A.0.34 closed R23 Gemini M1+m1+n1 text-level findings + 3 pre-existing undef refs. v1A.0.35 (cron fire #24) wrapped the Holst-dual equation in `widetext`, eliminating the last 21pt overfull residual — first fully-clean P1A compile in the campaign. The final 1% (90→100) is reserved for Houston-only judgment per feedback_99_pct_readiness_cap. No agent can flip this.
 
-**Ask:** Read `arxiv/paper1a_ech_nogo.tex` end-to-end (or the live PDF at https://bigbounce.hubify.app/papers/paper1a_ech_nogo.pdf — 20 pp / 813 KB) and reply **"sign off P1A"** if ready, or send back blocking findings. After sign-off I build the arXiv tarball + smoke-test + (with arXiv endorsement) queue submission.
+**Ask:** Read `arxiv/paper1a_ech_nogo.tex` end-to-end (or the live PDF at https://bigbounce.hubify.app/papers/paper1a_ech_nogo.pdf — 20 pp / 832 KB) and reply **"sign off P1A"** if ready, or send back blocking findings. **arXiv tarball is pre-built and smoke-tested**: `arxiv/submission_tarballs/p1a_v1A.0.35_arxiv.tar.gz` (433 KB, 5 files, 0 undef refs/cites in isolated compile). With arXiv endorsement, submission is a single upload.
 
 ---
 
-## 2. Personal sign-off on P4 v1.0.122 for arXiv submission · gates P4
+## 2. Personal sign-off on P4 v1.0.128 for arXiv submission · gates P4
 
-**Why blocked:** R22 5-vendor returned 3 of 5 reviewers 0/0 (DeepSeek + Gemini + Grok). GPT-5 + Perplexity findings closed bundled in v1.0.122. R23 verification round returned **5 of 5 reviewers 0/0** (no regressions from v1.0.122 closures). After R23 clean, the final 1% is Houston-only.
+**Why blocked:** R22 5-vendor returned 3 of 5 reviewers 0/0 (DeepSeek + Gemini + Grok). GPT-5 + Perplexity findings closed bundled in v1.0.122. R23 verification round returned **5 of 5 reviewers 0/0** (no regressions from v1.0.122 closures). v1.0.122→v1.0.128 (cron fires #5–#20) eliminated all overfull residuals. After R23 clean + cron fire #20 cleanup, the final 1% is Houston-only.
 
-**Ask:** Read `pipelines/p2_chirality/chirality_catalog_paper.pdf` (51 pp / 26.26 MB / 0 undef refs / 0 overfull) and reply **"sign off P4"** or send blocking findings. arXiv-tarball + submission queued behind sign-off.
+**Ask:** Read `pipelines/p2_chirality/chirality_catalog_paper.pdf` (51 pp / 26.24 MB / 0 undef refs / 0 overfull) and reply **"sign off P4"** or send blocking findings. **arXiv tarball is pre-built and smoke-tested**: `arxiv/submission_tarballs/p4_v1.0.128_arxiv.tar.gz` (20 MB, 15 files, 0 undef refs/cites in isolated compile). With arXiv endorsement, submission is a single upload.
 
 ---
 
@@ -41,7 +43,7 @@ Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47
 
 **Why blocked:** Only Houston has the arXiv account + the astro-ph.CO endorser relationships. Agents cannot create arXiv accounts or get endorsed.
 
-**Ask:** Confirm submission order (recommended P1A → P4 → P3 → P1B → P2 → P5) and run the arXiv submission yourself when each paper is signed off. I prepare the tarballs.
+**Ask:** Confirm submission order (recommended P1A → P4 → P3 → P1B → P2 → P5) and run the arXiv submission yourself when each paper is signed off. **All 6 tarballs are pre-built and smoke-tested** at `arxiv/submission_tarballs/`: P1A 433 KB / P1B 255 KB / P2 346 KB / P3 27 MB / P4 20 MB / P5 438 KB. Tarballs are gitignored locally (rebuildable on demand from `.tex` sources).
 
 ---
 
@@ -53,15 +55,20 @@ Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47
 
 ---
 
-## What is NOT on this list (autonomous work in flight)
+## What is NOT on this list (autonomous work in flight or completed)
 
-The following are explicitly NOT Houston-blocked. Agents are driving them:
+The following are explicitly NOT Houston-blocked. Most have closed since 2026-05-21.
 
-- HF model card refresh for `bamfai/galaxy-chirality-v2` (HF_TOKEN in `.env.local`).
-- P5 Phase 2 sensitivity sweep + RSD correction + Tempel+2018 cross-validation (laptop-runnable).
-- P5 paper draft expansion from 9 KB scaffold to first compiled PDF.
-- Any further cross-vendor R-rounds (OpenRouter $99 credit available).
-- Any LaTeX recompile / PDF mirror / site sync.
-- Any pod work that can succeed via local source-build (e.g. the pymaster Apple Silicon build that closed P4 GPT-5 BL-4 last tick).
+**Completed since the 2026-05-21 snapshot:**
+- ✅ All 6 papers brought to **0 overfull >20pt** (cron fires #20–#24) — first time in campaign.
+- ✅ P5 Phase 2 sensitivity sweep (9 grid configs on disk) + RSD-robustness Limitations item (cron fire #25) + Tempel+2014 FoF cross-validation (filament concordance 0.026pp) + full paper LaTeX expansion 9 KB → 885 lines + first PDF compile (738 KB).
+- ✅ SSOT doc-consistency sweep — papers.ts / SSOT/paper-5 / SSOT/index.md table+paragraph / CLAUDE.md headline all consistent (cron fires #25–#27).
+- ✅ Full-portfolio arXiv tarballs built + smoke-tested standalone (cron fires #28–#29): all 6 tarballs at 0 undef refs/cites.
+
+**Still autonomous, in flight or queued:**
+- HF model card refresh for `bamfai/galaxy-chirality-v2` v1.0.104 → v1.0.128 (HF_TOKEN in `.env.local`) — queued for next non-API tick.
+- R26 cross-vendor wave across P1A + P1B + P2 + P3 + P4 + first P5 R1 — blocked only on the OR cap raise (item 0 above).
+- Any LaTeX recompile / PDF mirror / site sync — driven on every fire.
+- Any pod work that can succeed via local source-build.
 
 If anything above DOES end up needing Houston input mid-execution, it will be promoted to this list at that moment, not deferred to here preemptively.
