@@ -36,8 +36,8 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests",
-    version: "v1A.0.34",
-    tldr: "R24 returned 5/5 reviewers 0 BLOCKER / 0 MAJOR — first fully-clean P1A round at v1A.0.34. Cascaded-loop exit confirmed via R15+R16+R24 3-consecutive 5/5 clean. External-review-ready.",
+    version: "v1A.0.35",
+    tldr: "v1A.0.35 (cron fire #24): final 21pt residual eliminated — Holst-dual equation (§Explicit Verification: The Holst Term in Perturbation Theory) wrapped in widetext. **0 overfull, 0 undef refs, 0 undef cites — first fully-clean P1A compile in campaign**. Cascaded-loop exit confirmed via R15+R16+R24. External-review-ready (gates on Houston sign-off). 20pp/833KB.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "arXiv endorsement + submission (astro-ph.CO + astro-ph.IM)",
@@ -66,7 +66,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, in P4 → P1A → P1B → P3 → P2 order)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF 813 KB · 20 pp · May 21, 2026, v1A.0.34 (loop-exit, R23-clean)",
+    pdfMeta: "PDF 833 KB · 20 pp · May 22, 2026, v1A.0.35 (loop-exit, R24-clean, 0 overfull)",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper1a_ech_nogo.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper1a_ech_nogo.pdf", kind: "secondary", download: true },
@@ -185,8 +185,8 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources",
-    version: "v3.1.61",
-    tldr: "R23+R24+R25 cascaded-loop exit (3-consec 5/5 clean). v3.1.57 closed 394pt table overfull; v3.1.61 (cron fire #22) hand-fixed 64pt overfull at L255 (reproducibility script citation with nested {sdss,lamost} curly braces that earlier regex \\allowbreak pass missed); v3.1.60 split §pathc_caveats (i) into 9 paragraph breaks + broke continuum-dip math sets at (iv) (113pt reduction); v3.1.59 wrapped the 101pt L1038 PTA-MCMC equation in widetext (eliminated); v3.1.58 eliminated 5 largest body overfulls (198/217/153/194/116pt) via \\allowbreak path-segment breaks. PDF 47pp/28.4MB / 0 undef refs.",
+    version: "v3.1.62",
+    tldr: "v3.1.62 (cron fire #24): final 4 residual overfulls (55+41+33+34=163pt) ELIMINATED in one sweep. NANOGrav §sec:nanograv likelihood + matter-bounce template equations wrapped in widetext (55pt closed); §pathc_caveats (iv) continuum-dip recovery curves broken into separate paragraph + (v) all_surveys_summary path \\allowbreak-injected (74pt closed); Cobaya posterior align block wrapped in widetext (34pt closed). **0 overfull, 0 undef refs — first fully-clean P3 compile in entire campaign**. 47pp/28.4MB.",
     blockingItems: [
       "SSOT readiness refresh (86 → 95+)",
       "Fresh PDF compile + figure verification",
