@@ -185,8 +185,8 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources",
-    version: "v3.1.59",
-    tldr: "R23+R24+R25 cascaded-loop exit (3-consec 5/5 clean). v3.1.57 closed 394pt table overfull; v3.1.59 (cron fire #16) wrapped the 101pt L1038 PTA-MCMC equation in widetext (eliminated); v3.1.58 eliminated 5 largest body overfulls (198/217/153/194/116pt) via \\allowbreak path-segment breaks. PDF 47pp/28.4MB / 0 undef refs.",
+    version: "v3.1.60",
+    tldr: "R23+R24+R25 cascaded-loop exit (3-consec 5/5 clean). v3.1.57 closed 394pt table overfull; v3.1.60 (cron fire #17) split §pathc_caveats (i) into 9 paragraph breaks + broke continuum-dip math sets at (iv) (113pt magnitude reduction); v3.1.59 wrapped the 101pt L1038 PTA-MCMC equation in widetext (eliminated); v3.1.58 eliminated 5 largest body overfulls (198/217/153/194/116pt) via \\allowbreak path-segment breaks. PDF 47pp/28.4MB / 0 undef refs.",
     blockingItems: [
       "SSOT readiness refresh (86 → 95+)",
       "Fresh PDF compile + figure verification",
