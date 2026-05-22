@@ -94,11 +94,11 @@ R-round history: R22 3-of-5 reviewers 0/0; GPT-5 + Perplexity closed bundled in 
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.7-2026-05-22
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.10-2026-05-22
 
-**Status: 70% · paper fully drafted (885 lines) · first R-round still blocked on OR cap.**
+**Status: 75% · paper fully drafted + three-VAC external validation (23 pp) · first R-round still blocked on OR cap.**
 
-The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffold paper; cron fires #1–#11 closed Phase 2 + Tempel + LEE + paper expansion. The remaining gates are now the same shape as the other papers (first R-round + Houston sign-off).
+The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffold paper; cron fires #1–#11 closed Phase 2 + Tempel + LEE + paper expansion; cron fires #33–#36 added §sec:tweb_compare with the T-Web DR1 + ASTRA EDR + DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation (+5pp readiness, fire #33). The remaining gates are now the same shape as the other papers (first R-round + Houston sign-off).
 
 | # | Task | Owner | Status |
 |---|------|-------|---|
@@ -111,7 +111,7 @@ The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffol
 | 7 | Bundled hard-fix wave closing R-round findings | agent | gated on #6 |
 | 8 | (OPTIONAL) DESI environmental VAC | Houston | optional fallback; V-Web is canonical without it |
 | 9 | Houston sign-off on first publishable version | Houston | gate |
-| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 (`p5_v0.1.7_arxiv.tar.gz`, 438 KB) |
+| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 + REBUILT fire #36 (`p5_v0.1.10_arxiv.tar.gz`, 441 KB, smoke-tested 0 undef refs/cites in isolation) |
 | 11 | arXiv submission (astro-ph.CO + astro-ph.GA) | Houston | endorsement |
 
 ---
