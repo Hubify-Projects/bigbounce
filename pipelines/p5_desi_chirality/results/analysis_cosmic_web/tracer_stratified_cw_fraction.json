@@ -1,0 +1,40 @@
+{
+  "matched_spirals_total": 791635,
+  "overall_cw_fraction": 0.4971887296544493,
+  "overall_sigma_from_half": -5.002592189664497,
+  "by_tracer": {
+    "bright": {
+      "n": 775760,
+      "cw_fraction": 0.49701840775497574,
+      "sigma_from_half": -5.2522082452016905,
+      "z_min": 1.82834203934713e-06,
+      "z_mean": 0.14492710817154278,
+      "z_max": 3.826610235664402
+    },
+    "dark": {
+      "n": 14782,
+      "cw_fraction": 0.5051413881748072,
+      "sigma_from_half": 1.2501927871898075,
+      "z_min": 0.0010114047836337048,
+      "z_mean": 0.2546205193646367,
+      "z_max": 3.032448548280242
+    },
+    "backup": {
+      "n": 875,
+      "cw_fraction": 0.5142857142857142,
+      "sigma_from_half": 0.8451542547285136,
+      "z_min": 2.101744842487057e-05,
+      "z_mean": 0.055162543867744454,
+      "z_max": 0.23384029867968026
+    },
+    "other": {
+      "n": 218,
+      "cw_fraction": 0.4954128440366973,
+      "sigma_from_half": -0.13545709229571845,
+      "z_min": 0.0042023751539254995,
+      "z_mean": 0.12273103822715102,
+      "z_max": 1.6555268329754167
+    }
+  },
+  "method": "V-Web matched-spiral catalog stratified by DESI program (BGS_BRIGHT/BGS_FAINT/LRG/ELG/QSO/etc); CW-fraction + sigma per tracer. Tests whether headline -5\u03c3 is tracer-independent (stationary classifier-bias monopole prediction) or tracer-specific."
+}

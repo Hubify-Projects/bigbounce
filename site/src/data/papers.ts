@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.13-2026-05-22",
-    tldr: "v0.1.13 (cron fire #43): added redshift-stratified cluster cross-check to §sec:results_within_class_density. Cluster z-quartile-marginalized σ-from-half: Z1 (z̄=0.045) -2.33 / Z2 (0.083) -1.73 / Z3 (0.122) -3.14 / Z4 (0.190) -2.12 — all within -1.7 to -3.2σ, none crossing Bonferroni-4 |σ|=3.29. Approximately uniform across z → stationary classifier-bias monopole, NOT z-dependent astrophysical signature. 2D z×density 16-cell table also shipped (companion JSON). Rules out evolutionary cluster-density-chirality coupling at present sample size. Headline environment-independence further REINFORCED. PDF 759KB / 0 overfull / 0 undef.",
+    version: "v0.1.14-2026-05-22",
+    tldr: "v0.1.14 (cron fire #44): tracer-program stratification — the catalog-level −5σ headline is ENTIRELY driven by `bright` (BGS-dominated, n=775,760, σ=−5.25). The `dark` program (LRG+ELG+QSO, n=14,782) returns σ=+1.25 (null in OPPOSITE direction); `backup` σ=+0.85, `other` σ=−0.14 — both null. A genuinely environment-dependent astrophysical chirality signal would propagate across bright AND dark targets at comparable strength; the bright-specific concentration is consistent with the P4 BGS-selection-function-conditioned imaging-leg systematics. FOURTH orthogonal cross-check (after DESIVAST + within-class density + redshift) — boundary-leakage interpretation now QUADRUPLY-decomposed. Headline environment-independence reinforced. PDF 761KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

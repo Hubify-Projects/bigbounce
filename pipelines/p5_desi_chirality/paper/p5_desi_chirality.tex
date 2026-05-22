@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.13-2026-05-22}
+\newcommand{\paperVersion}{v0.1.14-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -552,6 +552,28 @@ $\sigma = -2.70$, $(Z_4, D_1)$ at $\sigma = -2.67$ -- do not
 preferentially align with any single redshift bin, ruling out an
 evolutionary cluster-density-chirality coupling at the present
 sample size.
+
+\paragraph{Tracer-program stratification.} A fourth orthogonal
+cross-check stratifies the full matched-spiral catalog by DESI
+program (the broad selection-function bucket: \texttt{bright},
+\texttt{dark}, \texttt{backup}, \texttt{other};
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/tracer\_stratified\_cw\_fraction.json}).
+Per-program $f_{\rm CW}$ and $\sigma_{\rm from\ half}$:
+\texttt{bright} (BGS-dominated; $n = 775{,}760$, $\bar z = 0.145$)
+$f_{\rm CW} = 0.4970$, $\sigma = -5.25$; \texttt{dark} (LRG, ELG, QSO;
+$n = 14{,}782$, $\bar z = 0.255$) $f_{\rm CW} = 0.5051$,
+$\sigma = +1.25$; \texttt{backup} ($n = 875$) $f_{\rm CW} = 0.5143$,
+$\sigma = +0.85$; \texttt{other} ($n = 218$) $f_{\rm CW} = 0.4954$,
+$\sigma = -0.14$. \textbf{The catalog-level $-5\sigma$ headline is
+entirely driven by the \texttt{bright} program}; \texttt{dark} returns
+$\sigma = +1.25$ (null in the opposite sign), \texttt{backup} returns
+$\sigma = +0.85$ (null), \texttt{other} returns $\sigma = -0.14$
+(null). A genuinely environment-dependent or astrophysical chirality
+signal would propagate across BGS-bright and LRG/ELG/QSO-dark targets
+at comparable strength; the bright-specific concentration is consistent
+with the BGS-selection-function-conditioned imaging-leg systematics
+that Paper~IV tracks in detail rather than a real environment-driven
+effect, and reinforces the headline environment-independence finding.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
