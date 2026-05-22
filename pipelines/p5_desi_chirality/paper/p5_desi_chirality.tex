@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.9-2026-05-22}
+\newcommand{\paperVersion}{v0.1.10-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -748,6 +748,25 @@ appears) would unlock a direct per-galaxy probabilistic-vs-deterministic
 comparison that quantifies the chirality-vs-environment null's
 robustness to environmental-assignment uncertainty.
 
+A third concurrent DR1 catalog, DESIVAST~\cite{DESIVAST2025} (Douglass
+\textit{et al.}\ 2025, ApJ 982, 38), provides public DR1 void
+identifications using the sphere-growing VoidFinder algorithm and the
+watershed ZOBOV/V2 algorithm (REVOLVER and VIDE prunings) on the
+volume-limited DR1 Bright Galaxy Survey sample to $z \leq 0.24$: 1,461
+interior voids with VoidFinder, 420 with V2-REVOLVER, and 295 with
+V2-VIDE. The DESIVAST low-$z$ footprint overlaps the V-Web void class
+populated in this work (matched-spiral count $n_{\rm void} = 428$ in
+\S\ref{sec:results_vweb}), and a per-galaxy cross-match between the
+matched-spiral catalog and any of the three DESIVAST void definitions
+would convert the small-sample $-0.68\sigma$ V-Web void-class deviation
+into a directly catalog-anchored measurement on a hundreds-to-thousands
+larger void sample (low-$z$ BGS spirals lying inside published
+VoidFinder spheres). This is queued as a natural follow-up: it does not
+change the central environment-independence headline (which is already
+clean at filament + cluster richness where most of the matched sample
+sits) but would publication-grade-validate the low-$z$ void-class
+subsample at much lower counting-statistics noise.
+
 \section{Systematics and null tests}\label{sec:systematics}
 
 We run six classes of systematics tests
@@ -962,6 +981,12 @@ D.~C.~Zapata-Zuluaga, S.~Guevara-Montoya, V.~Torres-Gomez,
 J.~Hernandez, and J.~E.~Forero-Romero, ``The Cosmic Web in the DESI
 Early Data Release: A Probabilistic Environment Catalog,'' (2026),
 arXiv:2604.01456.
+
+\bibitem{DESIVAST2025}
+S.~B.~Douglass \textit{et al.}\ (DESI Collaboration),
+``DESIVAST: Catalogs of Low-Redshift Voids using Data from the DESI
+Data Release 1 Bright Galaxy Survey,'' Astrophys.\ J.\ \textbf{982},
+38 (2025), doi:10.3847/1538-4357/adb559, arXiv:2411.00148.
 
 \end{thebibliography}
 
