@@ -136,8 +136,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.31",
-    tldr: "v1.7.31 (cron fire #18): CATASTROPHIC 2495pt date-blob overfull ELIMINATED; tab:bayes → table*; eq:wick + eq:Iv wrapped in widetext. P2 overfull 3508pt → 489pt (86% reduction). R23+R24+R25 cascaded-loop exit. 20pp/816KB / 0 undef refs.",
+    version: "v1.7.32",
+    tldr: "v1.7.32 (cron fire #19): tab:dualnorm + tab:gr → table*; monomial-basis math split; eq:inin widetext. P2 overfull 489pt → 83pt this fire (cumulative 97.6% across fires #18-19). R23+R24+R25 cascaded-loop exit. 20pp/816KB / 0 undef refs.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",
