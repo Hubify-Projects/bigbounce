@@ -47,11 +47,15 @@ Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47
 
 ---
 
-## 4. DESI environmental VAC ("187 DESI-derived attributes" catalog) · gates P5 (optional — workaround exists)
+## 4. DESI environmental VAC ("187 DESI-derived attributes" catalog) · gates P5 (optional — better external alternatives now exist)
 
-**Why blocked:** Exhaustive sub-agent search (2026-05-15, reconfirmed tick 114) cannot locate this file in the repo or via any DESI public release. We have built a workaround (V-Web env_finder Phase 1 MVP, 104s laptop run on 14.6M spectro galaxies, headline result intact: chirality is statistically independent of LSS environment within DESI DR1 at V-Web resolution) but a published VAC is the gold-standard reference for the paper. If you do not have access to one, the V-Web workaround is sufficient and we proceed; if you do, share the path/DOI.
+**Verdict (cron fire #32 exhaustive web search, 2026-05-22):** the specific "187 DESI-derived attributes" catalog Houston referenced **does not appear in any DESI public release** (data.desi.lbl.gov/doc/vac/, DR1 documentation, EDR documentation, or in any 2024–2026 arXiv listing for DESI VAC papers). It either (a) was a planning-stage concept that didn't ship, or (b) lives on Houston's pre-2026 personal compute and never made the public release. **However**, two real public DESI cosmic-web catalogs landed since the 2026-05-15 subagent search and now offer a stronger external comparison than the V-Web env_finder workaround:
 
-**Ask:** Either (a) provide the path/URL/DOI to the 187-attribute DESI VAC, or (b) confirm we proceed with the V-Web env_finder workaround as the paper's canonical environmental classifier. Option (b) is the default if no response.
+- **T-Web DESI DR1** ([arXiv:2604.02463](https://arxiv.org/abs/2604.02463), 2026-04-02): tidal-tensor T-Web environments on a 256³ grid in an 800 Mpc cube over the full DESI DR1 footprint, classified into voids/sheets/filaments/knots. **Methodology essentially identical to the V-Web env_finder run that landed P5's headline cosmic-web result on 2026-05-19.** A direct cross-comparison would be a publication-grade independent validation.
+- **ASTRA EDR Probabilistic Environment Catalog** ([arXiv:2604.01456](https://arxiv.org/abs/2604.01456), 2026-04-01): algorithm-based per-object void/sheet/filament/knot membership probabilities + classification entropies on DESI EDR (175 deg², 20 rosettes). Provides per-galaxy classification entropies that the V-Web run does not — useful for quantifying environmental-assignment uncertainty.
+- **DESIVAST** ([arXiv:2411.00148](https://arxiv.org/abs/2411.00148)): low-redshift void catalog on DESI DR1 Bright Galaxy Survey. Adjacent rather than overlapping; complementary cross-check on the void-class portion of the V-Web headline.
+
+**Ask:** Either (a) **confirm we proceed with V-Web as canonical + add T-Web cross-validation as a publication-grade external comparison in P5 v0.1.8+** (default agent path; T-Web catalog data availability is uncertain but the published comparison numbers are accessible), or (b) confirm the legacy 187-attribute catalog reference can be retired from the paper text. The cron will pursue the T-Web cross-validation work autonomously on next non-API fire if no response, since it's a real positive scientific upgrade rather than a Houston-blocked item.
 
 ---
 
