@@ -43,9 +43,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.21}
+\newcommand{\paperVersion}{v1B.0.22}
 \newcommand{\paperTimestamp}{2026-05-18 PDT}
-% v1B.0.21 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
+% v1B.0.22 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
 %   across 4 of 5 reviewers (DeepSeek/Gemini/GPT-5/Perplexity); Grok-43 only reviewer raising findings.
 % Truth-audit per feedback_peer_review_truth_audit_protocol on Grok-only BLOCKERs:
 %   - GRO-B1 "verification framing empty" — FALSIFIED. Paper title literally is "Technical Verification
@@ -693,7 +693,7 @@ P4    & v1.0.103 & 95\% & Houston external review ongoing \\
 \end{ruledtabular}
 \end{table*}
 
-\begin{table}[tb]
+\begin{table*}[tb]
 \caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-18 07:53~UTC, at $128{,}385$ accepted samples with $\hat{R}-1 = 0.00820$ (last flushed 07:53~UTC; \textbf{CONVERGED} below the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target across two consecutive flushes — N=$122{,}971$/$\hat R-1=0.00912$ at 2026-05-18 01:34~UTC, then N=$128{,}385$/$\hat R-1=0.00820$ at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.00820$ (factor-of-$\sim$$2.4$ reduction, exceeding the convergence target). The $\dagger$ entry above marks values updated v1B.0.11 from the converged chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain has now reached the standard publication target ($\hat R - 1 = 0.00820 < 10^{-2}$ as of 2026-05-18 07:53~UTC) and the converged posterior is reported in Table~\ref{tab:iter2_posterior}; it is the empirical anchor for Paper~I(a)'s \S~Structural Tension quintom-B test. The headline result $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from LCDM) and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from LCDM) with $w_0 + w_a = -1.48 \pm 0.15$ requiring phantom crossing is the canonical quintom signature.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -706,7 +706,7 @@ DESI DR2 w0wa (iter2) & 128{,}385\,\textsuperscript{$\dagger$} & 0.0082\,\textsu
 ALP-MCMC ($\beta$ fitting) & 9{,}720 & $<0.01$ & Frozen \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \subsection{Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger$ footnote)}\label{sec:crosspaper-shadow}
 

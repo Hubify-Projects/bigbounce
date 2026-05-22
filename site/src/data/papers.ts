@@ -87,7 +87,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.21",
+    version: "v1B.0.22",
     tldr: "R23 + R24 both returned 5/5 reviewers 0/0 — 2 consecutive all-clean rounds. External-review-ready, capped at 90% / 99% pending Houston sign-off.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
