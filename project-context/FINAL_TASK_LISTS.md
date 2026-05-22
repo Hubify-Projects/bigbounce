@@ -88,7 +88,7 @@ R-round history: R22 3-of-5 reviewers 0/0; GPT-5 + Perplexity closed bundled in 
 | # | Task | Owner | Status |
 |---|------|-------|---|
 | 1 | **Houston sign-off on v1.0.128** | Houston | ✅ ONLY remaining gate |
-| 2 | Push HF model card `bamfai/galaxy-chirality-v2` to v1.0.128 | agent | ⏳ next non-API tick |
+| 2 | Push HF model card `bamfai/galaxy-chirality-v2` to v1.0.128 | agent | ✅ DONE fire #31 (HF sha 5cb8df76e1b8; 13 v1.0.125 → v1.0.128 + 7 paper4-v1.0.125 → paper4-v1.0.128) |
 | 3 | Build arXiv tarball | agent | ✅ DONE fire #28 (`p4_v1.0.128_arxiv.tar.gz`, 20 MB, 15 files, smoke-tested 0/0) |
 | 4 | arXiv submission (astro-ph.GA + astro-ph.CO) | Houston | endorsement |
 
@@ -122,15 +122,14 @@ The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffol
 - ✅ SSOT doc-consistency sweep (fires #25–#27): papers.ts / SSOT/paper-5/status.md / SSOT/index.md table row + program paragraph / CLAUDE.md headline all consistent at the current 6-paper readiness state.
 - ✅ Full-portfolio arXiv tarballs (fires #28–#29): all 6 tarballs standalone-smoke-tested 0 undef refs/cites; gitignored locally; rebuildable on demand.
 - ⏳ OpenRouter per-key cap raise: blocking R26 wave + first P5 R1. Listed in `NEEDS_HOUSTON.md` item 0 with 3 unblock paths.
-- ⏳ HF model card refresh for `bamfai/galaxy-chirality-v2` v1.0.104 → v1.0.128 (HF_TOKEN in `.env.local`).
+- ✅ HF model card refresh for `bamfai/galaxy-chirality-v2` v1.0.125 → v1.0.128 (fire #31, HF sha `5cb8df76e1b8`).
 
 ## Eat-the-frog priority order (current)
 
 1. **Houston: sign off P1A v1A.0.35** (cleanest paper, loop-exit milestone, arXiv-tarball pre-built).
 2. **Houston: sign off P4 v1.0.128** (R22+R23 cleanest P4 history, arXiv-tarball pre-built).
 3. **Houston: raise OR per-key cap or rotate key** — unblocks R26 wave across P1A/P1B/P2/P3/P4 + first P5 R1.
-4. Agent: HF model card v1.0.128 push.
-5. Agent: once OR unblocked, fire R26 wave in parallel + first P5 R1; expect ≥3 of 5 to be 5-of-5 clean per the R23-era trajectory.
-6. Houston: sign off P1B / P2 / P3 after R26 confirms the 5/5 clean streak holds.
-7. Houston: sign off P5 after first R-round closes.
-8. Houston: arXiv submissions in batches as sign-offs land.
+4. Agent: once OR unblocked, fire R26 wave in parallel + first P5 R1; expect ≥3 of 5 to be 5-of-5 clean per the R23-era trajectory.
+5. Houston: sign off P1B / P2 / P3 after R26 confirms the 5/5 clean streak holds.
+6. Houston: sign off P5 after first R-round closes.
+7. Houston: arXiv submissions in batches as sign-offs land.
