@@ -26,13 +26,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a comprehensive spin-torsion cosmology research program by Houston Golden, including a scientific paper, a full companion website, MCMC reproducibility infrastructure, and a project intelligence dossier.
 
-**Current versions (May 2026), 5-paper portfolio:**
-- **P1A** v1A.0.33 — cascaded-loop EXIT (first paper to satisfy AGENT_RULES §4.4.1; 9th-consec Gemini 0-BLOCKER); external-review-ready
-- **P1B** v1B.0.20 — R16 Grok-only BLOCKERs falsified via stale-comment audit
-- **P2** v1.7.30 — needs more R-rounds before external review
-- **P3** v3.1.56 — R16 + multi-round 9,576-dedup deferral closed via on-disk artifact
-- **P4** v1.0.117 — multi-null battery + cross-spectrum smoking gun + paper-wide +3.64σ convention + Houston-approved D4-TTA partial-harvest closure
-- **P5** bootstrap-2026-05-15 — **separate companion**: Environmental dependence of spiral chirality across DESI LSS. Matched catalog (2.23M rows) + first-pass analyses on disk; cosmic-web headline analysis blocked on missing DESI environmental VAC ("187 DESI-derived attributes" file confirmed not in repo). Pipeline at `pipelines/p5_desi_chirality/`. Paper is 9KB LaTeX scaffold. SSOT: `project-context/SSOT/paper-5/status.md`.
+**Current versions (May 2026), 6-paper portfolio — ALL 6 NOW AT 0 OVERFULL > 20pt (cron fire #24, 2026-05-22):**
+- **P1A** v1A.0.35 — cascaded-loop EXIT (first paper to satisfy AGENT_RULES §4.4.1); R15+R16+R24 3-consec 5/5 clean; Holst-dual equation widetext-wrapped; 20pp/833KB/0 overfull/0 undef. External-review-ready, gates on Houston sign-off.
+- **P1B** v1B.0.22 — `tab:mcmc_inventory` → `table*` eliminated last 40pt residual; first fully-clean P1B compile. 11pp/694KB/0 overfull/0 undef.
+- **P2** v1.7.33 — 2495pt `\date{}` blob shortened, multiple equations wrapped in `widetext`, Bayes-grid → `table*`; first fully-clean P2 compile. 21pp/817KB/0 overfull.
+- **P3** v3.1.62 — §sec:nanograv inline math + matter-bounce template extracted to widetext, §pathc_caveats (iv)(v) paragraph-split + `\allowbreak`-injected paths, §app:pta_mcmc align block widetext-wrapped; first fully-clean P3 compile. 47pp/28.4MB/0 overfull/0 undef.
+- **P4** v1.0.128 — R22 5-vendor 3-of-5 0/0 + R23 verification 5/5 0/0. 51pp/26.24MB/0 overfull/0 undef.
+- **P5** v0.1.7-2026-05-22 — **separate companion**: Environmental dependence of spiral chirality across DESI LSS. Paper fully drafted (885-line LaTeX) covering Phase 1 V-Web + Phase 2 sensitivity sweep (9 grid configs) + Tempel+2014 FoF cross-validation (filament concordance 0.026pp) + LEE correction + 6 figures + RSD-robustness Limitations item. PDF 738KB / 0 overfull / 0 undef. Pipeline at `pipelines/p5_desi_chirality/`. SSOT: `project-context/SSOT/paper-5/status.md`. **First R-round still blocked on OpenRouter per-key weekly cap.**
 
 The legacy long-form Paper 1 `arxiv/main.tex` v2.2.0 (March 2026) is deprecated; current canonical sources are `arxiv/paper1a_ech_nogo.tex`, `arxiv/paper1b_mcmc_companion.tex`, `research/focused_paper_source_integration/02_full_draft.tex` (P2), `pipelines/p3_anomaly_engine/paper3_draft.tex` (P3), `pipelines/p2_chirality/chirality_catalog_paper.tex` (P4), and `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` (P5). R-round 5-vendor loop blocked at R17 on OpenRouter top-up.
 
