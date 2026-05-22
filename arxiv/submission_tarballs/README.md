@@ -5,7 +5,7 @@ smoke-tested by extracting into an empty temp directory and running
 `pdflatex -interaction=nonstopmode` 2–3 times to confirm clean compilation
 with **0 undef refs / 0 undef cites** before being archived here.
 
-Built across cron fires #28 + #29 (2026-05-22 PDT, ticks 149–150).
+Built across cron fires #28 + #29 + #36 (2026-05-22 PDT, ticks 149–157). P5 tarball rebuilt at fire #36 after v0.1.7 → v0.1.10 added §sec:tweb_compare with T-Web + ASTRA + DESIVAST cross-citations.
 
 | Paper | Tarball | Size | Files | Smoke-test PDF | Refs/cites |
 |---|---|---:|---:|---|:---:|
@@ -14,7 +14,7 @@ Built across cron fires #28 + #29 (2026-05-22 PDT, ticks 149–150).
 | **P2** v1.7.33 | `p2_v1.7.33_arxiv.tar.gz` | 346 KB | 9 | 21 pp / 817 KB | 0 / 0 |
 | **P3** v3.1.62 | `p3_v3.1.62_arxiv.tar.gz` | 27 MB | 23 | 47 pp / 28.4 MB | 0 / 0 |
 | **P4** v1.0.128 | `p4_v1.0.128_arxiv.tar.gz` | 20 MB | 15 | 51 pp / 26 MB | 0 / 0 |
-| **P5** v0.1.7 | `p5_v0.1.7_arxiv.tar.gz` | 438 KB | 8 | 22 pp / 738 KB | 0 / 0 |
+| **P5** v0.1.10 | `p5_v0.1.10_arxiv.tar.gz` | 441 KB | 8 | 23 pp / 745 KB | 0 / 0 |
 
 Bibliography mechanisms:
 - **P1A / P1B / P2 / P5** ship `.tex` + `.bib` + pre-resolved `.bbl` (arXiv
