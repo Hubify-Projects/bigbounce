@@ -5,9 +5,9 @@ paper: 5
 last_updated: 2026-05-22 PDT
 canonical_source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
 canonical_pdf: pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf
-version: v0.1.10-2026-05-22
-headline_pct: 75
-submission_status: PAPER FULLY DRAFTED + THREE-VAC EXTERNAL VALIDATION (cron fires #25 / #33 / #34 / #35 / #36, ticks 146-157) — 23 pp LaTeX with Intro + Data + V-Web algo + Phase 1 volfrac + Stats (incl. LEE) + Results (cosmic-web headline + redshift + density + healpix) + Phase 2 sensitivity sweep + Tempel+2014 FoF cross-val + §sec:tweb_compare (T-Web DESI DR1 / ASTRA EDR / DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation) + Systematics + Discussion + Limitations (incl. RSD-robustness) + LSST extension + Conclusions + Data/code availability + 6 figures. PDF 745 KB / 0 overfull / 0 undef refs / 0 undef cites. arXiv tarball pre-built + smoke-tested standalone at arxiv/submission_tarballs/p5_v0.1.10_arxiv.tar.gz (441 KB). First R-round blocked on OpenRouter per-key weekly cap. Remaining gates: first R-round + Houston sign-off + arXiv endorsement.
+version: v0.1.12-2026-05-22
+headline_pct: 80
+submission_status: PAPER FULLY DRAFTED + THREE-VAC EXTERNAL VALIDATION + DESIVAST PER-GALAXY CROSS-MATCH + WITHIN-CLASS DENSITY STRATIFICATION (cron fires #25 / #33 / #34 / #35 / #36 / #40 / #41, ticks 146-162) — 23 pp LaTeX with Intro + Data + V-Web algo + Phase 1 volfrac + Stats (incl. LEE) + Results (cosmic-web headline + redshift + density + healpix + §sec:results_within_class_density showing cluster −4.7σ headline is boundary-misclassification leakage, NOT clean density-dependent effect) + Phase 2 sensitivity sweep + Tempel+2014 FoF cross-val + §sec:tweb_compare (T-Web DESI DR1 / ASTRA EDR / DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation + DESIVAST per-galaxy cross-match returning 0/6 V-Web void spirals inside DESIVAST holes at z≤0.24) + Systematics + Discussion + Limitations (incl. RSD-robustness) + LSST extension + Conclusions + Data/code availability + 6 figures. PDF 757 KB / 0 overfull / 0 undef refs / 0 undef cites. arXiv tarball pre-built + smoke-tested standalone at arxiv/submission_tarballs/p5_v0.1.12_arxiv.tar.gz (442 KB). First R-round blocked on OpenRouter per-key weekly cap. Remaining gates: first R-round + Houston sign-off + arXiv endorsement.
 ---
 
 # Paper 5 — Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure — Single Source of Truth

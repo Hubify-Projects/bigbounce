@@ -94,11 +94,11 @@ R-round history: R22 3-of-5 reviewers 0/0; GPT-5 + Perplexity closed bundled in 
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.10-2026-05-22
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.12-2026-05-22
 
-**Status: 75% · paper fully drafted + three-VAC external validation (23 pp) · first R-round still blocked on OR cap.**
+**Status: 80% · paper fully drafted + three-VAC validation + DESIVAST per-galaxy cross-match + within-class density-stratified cluster decomposition (23 pp) · first R-round still blocked on OR cap.**
 
-The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffold paper; cron fires #1–#11 closed Phase 2 + Tempel + LEE + paper expansion; cron fires #33–#36 added §sec:tweb_compare with the T-Web DR1 + ASTRA EDR + DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation (+5pp readiness, fire #33). The remaining gates are now the same shape as the other papers (first R-round + Houston sign-off).
+The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffold paper; cron fires #1–#11 closed Phase 2 + Tempel + LEE + paper expansion; cron fires #33–#36 added §sec:tweb_compare with the T-Web DR1 + ASTRA EDR + DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation (+5pp readiness, fire #33); cron fire #40 added DESIVAST per-galaxy cross-match (0/6 V-Web void spirals inside any of 101,863 DESIVAST hole spheres at z≤0.24, direct empirical evidence of survey-shell systematic); cron fire #41 added §sec:results_within_class_density showing the −4.7σ cluster headline is boundary-misclassification leakage NOT clean density-dependent effect (Q3-typical-density null at σ=−0.37, +5pp readiness). Headline environment-independence REINFORCED.
 
 | # | Task | Owner | Status |
 |---|------|-------|---|
@@ -111,7 +111,7 @@ The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffol
 | 7 | Bundled hard-fix wave closing R-round findings | agent | gated on #6 |
 | 8 | (OPTIONAL) DESI environmental VAC | Houston | optional fallback; V-Web is canonical without it |
 | 9 | Houston sign-off on first publishable version | Houston | gate |
-| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 + REBUILT fire #36 (`p5_v0.1.10_arxiv.tar.gz`, 441 KB, smoke-tested 0 undef refs/cites in isolation) |
+| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 + REBUILT fires #36/#40/#41 (`p5_v0.1.12_arxiv.tar.gz`, 442 KB, smoke-tested 0 undef refs/cites in isolation) |
 | 11 | arXiv submission (astro-ph.CO + astro-ph.GA) | Houston | endorsement |
 
 ---
