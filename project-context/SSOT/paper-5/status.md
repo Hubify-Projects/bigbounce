@@ -2,12 +2,12 @@
 title: "Paper 5 SSOT — Environmental Dependence of Spiral Chirality Across DESI LSS"
 type: ssot
 paper: 5
-last_updated: 2026-05-18 PDT
+last_updated: 2026-05-22 PDT
 canonical_source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
-canonical_pdf: (not yet compiled; paper is scaffold)
-version: bootstrap-2026-05-15
-headline_pct: 15
-submission_status: BOOTSTRAP — matched catalog + first-pass analyses landed 2026-05-16; cosmic-web headline analysis blocked on DESI environmental VAC missing from repo; paper LaTeX is a 9KB scaffold.
+canonical_pdf: pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf
+version: v0.1.7-2026-05-22
+headline_pct: 70
+submission_status: PAPER FULLY DRAFTED (cron fire #25, tick 146) — 885-line LaTeX with Intro + Data + V-Web algo + Phase 1 volfrac + Stats (incl. LEE) + Results (cosmic-web headline + redshift + density + healpix) + Phase 2 sensitivity sweep + Tempel+2014 FoF cross-val + Systematics + Discussion + Limitations (incl. RSD-robustness) + LSST extension + Conclusions + Data/code availability + 6 figures. PDF 738 KB / 0 overfull / 0 undef. First R-round blocked on OpenRouter per-key weekly cap. Remaining gates: first R-round + Houston sign-off + arXiv endorsement.
 ---
 
 # Paper 5 — Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure — Single Source of Truth
