@@ -48,7 +48,13 @@ Native-Trained Novelty Fractions from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{2026-05-22 PDT --- v3.1.60}
+\date{2026-05-22 PDT --- v3.1.61}
+% v3.1.61 (cron fire #22: 64pt L255 overfull eliminated by hand-fixing the
+%   reproducibility-scripts long-\\texttt{} citation list at §sec:pathc step list closing
+%   line — the earlier regex \\allowbreak pass had missed it because of nested
+%   curly-braces in \\texttt{pipelines/p3\\_anomaly\\_engine/\\{sdss,lamost\\}\\_native_retrain.py}.
+%   Added \\allowbreak inside the path-prefix segments. P3 overfull magnitude
+%   227 → 163pt (28% reduction this fire).
 % v3.1.60 (cron fire #17: §sec:pathc_caveats item (i) split into 9 paragraph breaks +
 %   §item (iv) continuum-dip injection-recovery curves broken from single inline
 %   math set into per-element math+text alternation. Eliminated 60+53pt overfulls
@@ -252,7 +258,7 @@ The rebuild proceeds in six steps:
   \item \textit{$7$-way positional dedup at 5~arcsec (canonical; $8$-way-with-ACT preserved as sensitivity check).} All retained per-survey anomaly catalogs are concatenated, cross-matched via an \texttt{astropy.search\allowbreak\_around\allowbreak\_sky} KD-tree at a 5-arcsec radius, and merged with a union-find friends-of-friends pass to produce an $M$-unique-physical-object list alongside the $N$-survey-level-detection total. The canonical Path-C dedup is the $7$-way variant across the seven retained surveys (ACT~DR6 excluded as formally quarantined); the $8$-way-with-ACT variant is preserved on disk as a sensitivity-check artifact only and produces $378{,}480$ unique objects ($+200$ relative to the canonical headline) because the 200 ACT patches contribute zero positional overlaps with the other surveys at the $5''$ matching radius. Table~\ref{tab:survey_summary} quotes both. The $5''$ matching radius is set conservatively above the worst-case astrometric uncertainty in the catalog ($\sim 2''$ for NEOWISE infrared positions; DESI, SDSS, and Gaia have sub-arcsecond astrometry, and eROSITA $\sim 5''$ at $1\sigma$ but $\lesssim 2''$ for on-axis detections). At this radius the false-match rate from chance positional coincidence is $\lesssim 0.1\%$ per source pair at the mean source density of the catalogs (Section~\ref{sec:simbad} quantifies this for every survey pair). A tighter radius (e.g., $2''$) would miss genuine cross-identifications between optical and infrared positions whose centroid offsets can reach $1$--$3''$; a wider radius ($10''$) would introduce $\sim 1\%$ false matches at the densest survey-pair overlaps. The chosen $5''$ therefore balances completeness and purity for the heterogeneous survey mix.
 \end{enumerate}
 
-The native retrains, systematics masks, and dedup pipeline are all deterministic and documented in reproducibility scripts shipped with the data release (\texttt{pipelines/p3\_anomaly\_engine/\{sdss,lamost\}\_native\_retrain.py}, \texttt{cmb\_native\_retrain.py}, \texttt{neowise\allowbreak\_pathc\allowbreak\_ecliptic\allowbreak\_mask.py}, \texttt{injection\allowbreak\_recovery\allowbreak\_spectra.py}, \texttt{pathc\allowbreak\_positional\allowbreak\_dedup.py}). Residual caveats surviving the rebuild---DESI in-sample training-test overlap, LAMOST native-retrain residual contamination, CMB gate status at final checkpoint, and the known limits of emission-line injection tests for continuum autoencoders---are enumerated in Section~\ref{sec:pathc_caveats}.
+The native retrains, systematics masks, and dedup pipeline are all deterministic and documented in reproducibility scripts shipped with the data release (\texttt{pipelines/\allowbreak p3\allowbreak\_anomaly\allowbreak\_engine/\allowbreak \{sdss,lamost\}\allowbreak\_native\allowbreak\_retrain.py}, \texttt{cmb\allowbreak\_native\allowbreak\_retrain.py}, \texttt{neowise\allowbreak\_pathc\allowbreak\_ecliptic\allowbreak\_mask.py}, \texttt{injection\allowbreak\_recovery\allowbreak\_spectra.py}, \texttt{pathc\allowbreak\_positional\allowbreak\_dedup.py}). Residual caveats surviving the rebuild---DESI in-sample training-test overlap, LAMOST native-retrain residual contamination, CMB gate status at final checkpoint, and the known limits of emission-line injection tests for continuum autoencoders---are enumerated in Section~\ref{sec:pathc_caveats}.
 
 
 %% ============================================================
