@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.6-2026-05-21}
-\newcommand{\paperTimestamp}{May 21, 2026 PDT}
+\newcommand{\paperVersion}{v0.1.7-2026-05-22}
+\newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -765,6 +765,19 @@ DESI-derived environmental catalog) is currently available in the
 public release at the time of writing; if one becomes available, it
 would supersede the V-Web run here as the canonical environmental
 classifier.
+\item Galaxy positions used for the V-Web tidal-tensor estimate are
+in observed redshift space rather than corrected to real space.
+For the typical pairwise velocity dispersion $\sigma_v
+\lesssim 400$\,km\,s$^{-1}$, the Kaiser-plus-finger-of-god
+displacement is $\sigma_v/(aH) \lesssim 5$--$8$\,Mpc/$h$ over
+$0.01 \le z \le 2$. This is a factor of $\sim 3$--$5$ smaller than
+the chosen Gaussian smoothing scale $R_s = 25$\,Mpc/$h$, so the
+V-Web class assignment is not redshift-space-distortion (RSD)
+limited at this resolution; the conservative interpretation is
+that the headline null is robust to RSD at the present
+smoothing. A reconstructed-position rerun (Zel'dovich or BAO
+reconstruction) is a natural follow-up if the smoothing scale is
+ever pushed below $\sim 10$\,Mpc/$h$.
 \end{itemize}
 
 \section{Future LSST extension}\label{sec:lsst}
