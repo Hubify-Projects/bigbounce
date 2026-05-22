@@ -5,9 +5,9 @@ paper: 5
 last_updated: 2026-05-22 PDT
 canonical_source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
 canonical_pdf: pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf
-version: v0.1.7-2026-05-22
-headline_pct: 70
-submission_status: PAPER FULLY DRAFTED (cron fire #25, tick 146) — 885-line LaTeX with Intro + Data + V-Web algo + Phase 1 volfrac + Stats (incl. LEE) + Results (cosmic-web headline + redshift + density + healpix) + Phase 2 sensitivity sweep + Tempel+2014 FoF cross-val + Systematics + Discussion + Limitations (incl. RSD-robustness) + LSST extension + Conclusions + Data/code availability + 6 figures. PDF 738 KB / 0 overfull / 0 undef. First R-round blocked on OpenRouter per-key weekly cap. Remaining gates: first R-round + Houston sign-off + arXiv endorsement.
+version: v0.1.10-2026-05-22
+headline_pct: 75
+submission_status: PAPER FULLY DRAFTED + THREE-VAC EXTERNAL VALIDATION (cron fires #25 / #33 / #34 / #35 / #36, ticks 146-157) — 23 pp LaTeX with Intro + Data + V-Web algo + Phase 1 volfrac + Stats (incl. LEE) + Results (cosmic-web headline + redshift + density + healpix) + Phase 2 sensitivity sweep + Tempel+2014 FoF cross-val + §sec:tweb_compare (T-Web DESI DR1 / ASTRA EDR / DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation) + Systematics + Discussion + Limitations (incl. RSD-robustness) + LSST extension + Conclusions + Data/code availability + 6 figures. PDF 745 KB / 0 overfull / 0 undef refs / 0 undef cites. arXiv tarball pre-built + smoke-tested standalone at arxiv/submission_tarballs/p5_v0.1.10_arxiv.tar.gz (441 KB). First R-round blocked on OpenRouter per-key weekly cap. Remaining gates: first R-round + Houston sign-off + arXiv endorsement.
 ---
 
 # Paper 5 — Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure — Single Source of Truth
