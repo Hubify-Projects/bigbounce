@@ -1,58 +1,58 @@
-# arXiv submission tarballs
+# arXiv submission tarballs — full portfolio (all 6 papers)
 
-Standalone-tested arXiv-ready submission bundles. Each tarball was
+Standalone-tested arXiv-ready submission bundles. Every tarball was
 smoke-tested by extracting into an empty temp directory and running
-`pdflatex -interaction=nonstopmode` twice (P1A) or three times (P4)
-to confirm a clean compile with **0 undef refs / 0 undef cites** before
-being archived here.
+`pdflatex -interaction=nonstopmode` 2–3 times to confirm clean compilation
+with **0 undef refs / 0 undef cites** before being archived here.
 
-Built 2026-05-22 PDT (cron fire #28, tick 149).
+Built across cron fires #28 + #29 (2026-05-22 PDT, ticks 149–150).
 
-## P1A — `p1a_v1A.0.35_arxiv.tar.gz`
+| Paper | Tarball | Size | Files | Smoke-test PDF | Refs/cites |
+|---|---|---:|---:|---|:---:|
+| **P1A** v1A.0.35 | `p1a_v1A.0.35_arxiv.tar.gz` | 433 KB | 5 | 20 pp / 832 KB | 0 / 0 |
+| **P1B** v1B.0.22 | `p1b_v1B.0.22_arxiv.tar.gz` | 255 KB | 4 | 11 pp / 694 KB | 0 / 0 |
+| **P2** v1.7.33 | `p2_v1.7.33_arxiv.tar.gz` | 346 KB | 9 | 21 pp / 817 KB | 0 / 0 |
+| **P3** v3.1.62 | `p3_v3.1.62_arxiv.tar.gz` | 27 MB | 23 | 47 pp / 28.4 MB | 0 / 0 |
+| **P4** v1.0.128 | `p4_v1.0.128_arxiv.tar.gz` | 20 MB | 15 | 51 pp / 26 MB | 0 / 0 |
+| **P5** v0.1.7 | `p5_v0.1.7_arxiv.tar.gz` | 438 KB | 8 | 22 pp / 738 KB | 0 / 0 |
 
-- **Source**: `arxiv/paper1a_ech_nogo.tex` @ v1A.0.35 (cron fire #24
-  Holst-dual widetext fix, first fully-clean compile in campaign).
-- **Bundle contents** (5 files):
-  - `paper1a_ech_nogo.tex`
-  - `references.bib`
-  - `paper1a_ech_nogo.bbl` (pre-resolved bibliography; arXiv prefers
-    the `.bbl` over re-running BibTeX server-side)
-  - `fig_theory_map.png`
-  - `figures/figure1_lqg_holst_derivation_enhanced.png`
-- **Smoke test result**: 20 pp / 832 KB / 0 undef refs / 0 undef cites.
-- **Tarball size**: 433 KB.
-
-## P4 — `p4_v1.0.128_arxiv.tar.gz`
-
-- **Source**: `pipelines/p2_chirality/chirality_catalog_paper.tex`
-  @ v1.0.128 (R22 5-vendor 3-of-5 0/0 + R23 verification 5/5 0/0;
-  bibliography is inline `thebibliography` so no external .bib needed).
-- **Bundle contents** (15 files):
-  - `chirality_catalog_paper.tex`
-  - 14 `fig_*.png` figures (spiral density, gallery CW/CCW, equivariance
-    demo, class pie, confidence dist, sky map, multipoles, 2pt
-    chirality, hemisphere, sky regions, raw-vs-eq, PSF correlation,
-    binned CW fraction)
-- **Smoke test result**: 51 pp / 26 MB / 0 undef refs / 0 undef cites
-  after 3-pass `pdflatex` (cross-references resolve on pass 3).
-- **Tarball size**: 20 MB.
+Bibliography mechanisms:
+- **P1A / P1B / P2 / P5** ship `.tex` + `.bib` + pre-resolved `.bbl` (arXiv
+  prefers `.bbl` over re-running BibTeX server-side).
+- **P3 / P4** use inline `\begin{thebibliography}` blocks; no `.bib` needed.
 
 ## Submission workflow (Houston, when ready)
 
-1. Sign off the relevant paper (commit message containing `sign off P1A`
-   or `sign off P4`).
+1. Sign off the relevant paper (commit message containing `sign off P1A`,
+   `sign off P1B`, `sign off P2`, `sign off P3`, `sign off P4`, or
+   `sign off P5`).
 2. Upload the corresponding tarball to https://arxiv.org/submit
-3. Verify arXiv preview matches the local PDF.
+3. Verify arXiv preview matches the local PDF in `public/papers/`.
 4. Submit; the announcement schedule is the next 20:00 UTC.
 
 If you want a re-bundle at a newer version after sign-off (e.g., to
 include a sign-off-day Author Note), drop a one-liner and the cron will
 rebuild and replace the tarball in the same single-purpose commit.
 
-## What's NOT yet packaged
+## Maturity at time of packaging
 
-- **P1B v1B.0.22** — clean compile but R-round campaign less mature than
-  P1A; arXiv-tarball deferred until at least one more clean R-round.
-- **P2 v1.7.33** — same reasoning.
-- **P3 v3.1.62** — same.
-- **P5 v0.1.7** — never been through R-round; not arXiv-ready by definition.
+| Paper | R-round campaign maturity | arXiv-ready stance |
+|---|---|---|
+| P1A | Cascaded-loop exit (R15+R16+R24 3-consec 5/5 clean) | **READY** |
+| P1B | First fully-clean compile (cron fire #23); new R-round blocked on OR cap | Sign-off prep — defer arXiv submission until OR-blocked R-round can fire |
+| P2 | First fully-clean compile (cron fire #21); new R-round blocked on OR cap | Sign-off prep — defer arXiv submission until OR-blocked R-round can fire |
+| P3 | First fully-clean compile (cron fire #24); new R-round blocked on OR cap | Sign-off prep — defer arXiv submission until OR-blocked R-round can fire |
+| P4 | R22 3-of-5 + R23 5-of-5 clean | **READY** |
+| P5 | Never been through R-round (paper just drafted) | Tarball is for future reference; not yet review-mature |
+
+P1A and P4 are the two that can ship the moment Houston signs off.
+P1B / P2 / P3 / P5 are pre-packaged so the path from sign-off to upload
+stays a single step once their R-round campaigns close.
+
+## Tarball provenance
+
+Each tarball was built from the canonical source path documented in
+`project-context/SSOT/paper-N/status.md` and smoke-tested in an empty
+`/tmp/arxiv_*_submit/` working directory. No live-repo aux-state leakage.
+
+`.tar.gz` files are gitignored (size); this README is tracked.
