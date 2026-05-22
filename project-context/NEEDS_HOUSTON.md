@@ -8,11 +8,16 @@ Everything ELSE is being driven autonomously by agents. If an item is "out of re
 
 ---
 
-## 0. OpenRouter weekly key-limit reached · gates further R-rounds on all papers
+## 0. OpenRouter per-key $50/week cap exhausted — workspace credit fine · gates R-rounds
 
-**Why blocked:** Cron fire #2 hit `HTTP 403: Key limit exceeded (weekly limit)` from OpenRouter on all 5 P5 R1 reviewer calls (test attempt for first P5 R-round on the just-compiled v0.1.0 draft). Earlier in the session R23 (25 calls) and R24 (25 calls) and R25 (20 calls) all succeeded — the weekly bucket emptied between R25 and the P5 R1 attempt. The session has spent ~$3 of usable budget per call estimate; the weekly limit is on the API key itself, not the workspace balance. Agents cannot bump key limits.
+**Diagnosis (live `/api/v1/key` readback, 2026-05-22):** the per-key weekly usage limit on the `sk-or-v1-c25e5...d15b3cbf` key is set to **$50/week**, weekly usage is **$52.48** (already exceeded the cap by $2.48), `limit_remaining: 0`. Workspace credit is **healthy: $83.47 remaining of $600 total** (used $516.53 lifetime). This is NOT a credit-exhausted problem — it is the per-key weekly cap that throttles. Earlier fires assumed weekly reset would clear it; the actual fix is to raise or remove the per-key cap (or rotate the key).
 
-**Ask:** Either (a) raise the weekly limit on the OpenRouter key referenced at https://openrouter.ai/workspaces/default/keys/cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348 — or (b) wait for the weekly reset (~7 days). The autonomous cron will continue firing every 30 min but will execute non-API-dependent work only (PDF recompiles, mirrors, site polish, P5 paper expansion, Tempel cross-validation) until the limit clears. Once clear, the next fire automatically resumes R-round cadence and pushes R26 + first valid P5 R1.
+**Ask (pick one):**
+  - **(a) Raise the per-key cap (fastest, 30 sec):** https://openrouter.ai/settings/keys → find `sk-or-v1-c25...cbf` → edit → raise the `$50/week` `limit` field to `$200/week` (or remove it entirely so only the workspace credit gates spend).
+  - **(b) Rotate the key:** generate a new OpenRouter key with no weekly cap, paste it into `bigbounce/.env.local` as `OPENROUTER_API_KEY=sk-or-v1-...`. The cron will pick it up next fire automatically.
+  - **(c) Wait for reset:** the weekly counter resets on the next Sunday/Monday boundary depending on the workspace's billing tz; this clears the block without action but loses ~5-7 days of agentic R-round throughput.
+
+Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47 next fire and push R26 + first valid P5 R1 immediately.
 
 ---
 

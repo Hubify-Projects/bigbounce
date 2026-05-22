@@ -57,10 +57,10 @@ export const liveStatus: LiveStatus = {
   ],
   needsHouston: [
     {
-      title: "OpenRouter weekly key-limit reached (HTTP 403)",
+      title: "OpenRouter $50/week per-key cap exhausted (HTTP 403) — workspace credit healthy",
       blockedPaper: "all",
-      why: "Cron fire #2 hit HTTP 403 'Key limit exceeded (weekly limit)' from OpenRouter on all 5 P5 R1 reviewer calls after R23+R24+R25 wave (70 successful calls earlier this session). The weekly bucket emptied between R25 and the P5 R1 attempt. Agents cannot bump key limits.",
-      ask: "Either (a) raise the weekly limit on the OpenRouter key referenced at https://openrouter.ai/workspaces/default/keys, or (b) wait ~7 days for weekly reset. Autonomous cron will continue firing every 30 min with non-API work (PDF recompiles, P5 paper expansion, Tempel cross-validation) until the limit clears.",
+      why: "Live `/api/v1/key` readback (2026-05-22): per-key weekly cap = $50; weekly usage = $52.48 (over by $2.48); limit_remaining = $0. Workspace credit healthy: $83.47 remaining of $600 total. This is a per-key throttle, NOT a credit-exhausted state. Agents cannot edit key caps.",
+      ask: "At https://openrouter.ai/settings/keys → edit `sk-or-v1-c25...cbf` → raise the $50/week `limit` field to $200/week or remove it (workspace credit gates spend then). Alternatively rotate the key: generate a new key with no weekly cap and paste it into `bigbounce/.env.local` as OPENROUTER_API_KEY=... Cron will pick it up next fire automatically.",
     },
     {
       title: "Personal sign-off on P1A v1A.0.34 for arXiv submission",
