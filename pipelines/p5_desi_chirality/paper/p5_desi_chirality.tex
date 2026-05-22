@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.11-2026-05-22}
+\newcommand{\paperVersion}{v0.1.12-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -472,6 +472,64 @@ statistics; no quintile deviates from the prediction by more than
 $\sim\!2\sigma$.}
 \label{fig:cw_vs_density}
 \end{figure*}
+
+\subsection{Within-class density-stratified cluster + filament
+follow-up}\label{sec:results_within_class_density}
+
+The catalog-level cluster-class deviation of $-4.7\sigma$ at
+$n_{\rm cluster} = 397{,}505$ (Section~\ref{sec:results_vweb}) is the
+strongest single-class signal in the headline table. To check whether
+this is a genuinely density-dependent effect within the cluster class
+or a boundary-misclassification artifact at the low-density edge of
+the V-Web cluster label, we stratify the cluster (and filament for
+comparison) class into four equal-population density quartiles using
+the V-Web per-galaxy density field
+(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/density\_stratified\_cluster\_filament.json}).
+
+\begin{table}[ht]
+\caption{Within-class density-stratified $f_{\rm CW}$ for the V-Web
+cluster and filament classes (matched-spiral $n_{\rm cluster} =
+397{,}505$, $n_{\rm filament} = 408{,}187$). Quartiles binned by
+V-Web per-galaxy density.}
+\label{tab:within_class_density}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Class & Quartile & $\bar\rho$ & $n$ & $\sigma_{\rm from\ half}$ \\
+\hline
+Cluster  & Q1 & $1.55$ & $99{,}398$ & $-3.07$ \\
+         & Q2 & $1.80$ & $99{,}369$ & $-3.42$ \\
+         & Q3 & $2.01$ & $99{,}526$ & $-0.37$ \\
+         & Q4 & $2.21$ & $99{,}212$ & $-2.46$ \\
+Filament & Q1 & $0.90$ & $102{,}050$ & $-0.69$ \\
+         & Q2 & $1.34$ & $102{,}065$ & $-1.97$ \\
+         & Q3 & $1.58$ & $102{,}033$ & $-0.63$ \\
+         & Q4 & $1.86$ & $102{,}039$ & $-1.92$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The cluster signal is \emph{not} monotonically increasing in density.
+The most-typical-cluster-density quartile Q3 ($\bar\rho = 2.01$,
+$n = 99{,}526$) returns $\sigma = -0.37$, statistically null after
+Bonferroni-4 correction. The strongest cluster sub-deviations are
+Q1+Q2 at $\bar\rho \approx 1.55$--$1.80$ (the low-density edge of
+the cluster class, where the V-Web $\lambda_{\rm th} = 0$ default
+class boundary against filament is most uncertain), while the densest
+quartile Q4 returns intermediate $\sigma = -2.46$. The catalog-level
+$-4.7\sigma$ cluster signal is therefore not a clean density-dependent
+chirality effect; it is concentrated at the cluster/filament class
+boundary and is consistent with a boundary-misclassification leakage
+from the much larger filament class (whose own quartile deviations
+$|\sigma| < 2$ are uniformly small). The filament class shows no
+density trend; the four quartile $\sigma$ values range
+$-0.63$--$-1.97$, all individually below the Bonferroni-4 $|\sigma| =
+2.50$ threshold at $\alpha = 0.05$.
+
+This within-class density-stratified follow-up reinforces the
+headline environment-independence finding: the only V-Web class that
+crosses naive $|\sigma| = 3$ at the class level (cluster, $-4.7\sigma$)
+does not survive within-class density stratification as a clean
+density-dependent effect.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 

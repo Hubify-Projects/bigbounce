@@ -1,0 +1,60 @@
+{
+  "cluster_n_total": 397505,
+  "cluster_cw_fraction_total": 0.49630570684645475,
+  "cluster_quartile": {
+    "Q1": {
+      "n": 99398,
+      "cw_fraction": 0.4951306867341395,
+      "sigma_from_half": -3.0703404506187773,
+      "mean_density": 1.5476070865603453
+    },
+    "Q2": {
+      "n": 99369,
+      "cw_fraction": 0.49458080487878514,
+      "sigma_from_half": -3.4165693745476315,
+      "mean_density": 1.8039320917334132
+    },
+    "Q3": {
+      "n": 99526,
+      "cw_fraction": 0.4994172377067299,
+      "sigma_from_half": -0.36769668483501206,
+      "mean_density": 2.0055409485215847
+    },
+    "Q4": {
+      "n": 99212,
+      "cw_fraction": 0.49608918276014996,
+      "sigma_from_half": -2.4636534570120237,
+      "mean_density": 2.2140073526464574
+    }
+  },
+  "filament_n_total": 408187,
+  "filament_cw_fraction_total": 0.4979604935972973,
+  "filament_quartile": {
+    "Q1": {
+      "n": 102050,
+      "cw_fraction": 0.49891229789318964,
+      "sigma_from_half": -0.6949386558709982,
+      "mean_density": 0.9018864077344269
+    },
+    "Q2": {
+      "n": 102065,
+      "cw_fraction": 0.4969186302846225,
+      "sigma_from_half": -1.968848166300515,
+      "mean_density": 1.3382521682231048
+    },
+    "Q3": {
+      "n": 102033,
+      "cw_fraction": 0.4990150245508806,
+      "sigma_from_half": -0.6292536297440037,
+      "mean_density": 1.5765131477567362
+    },
+    "Q4": {
+      "n": 102039,
+      "cw_fraction": 0.4969962465331883,
+      "sigma_from_half": -1.9190106175608121,
+      "mean_density": 1.8551255872794743
+    }
+  },
+  "method": "V-Web env_class cluster + filament subsamples binned by env_density quartile; CW fraction + sigma-from-0.5 per bin",
+  "note": "Cluster is largest single-environment V-Web class in P5 headline (n=397,505). Tests whether the -4.7sigma cluster-class deviation persists when stratified by density within the class."
+}
