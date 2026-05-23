@@ -19,7 +19,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 | P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
 | P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
 | P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.20 | 90% | OR per-key cap raise → first R-round → sign-off |
+| P5 | v0.1.22 | 92% | OR per-key cap raise → first R-round → sign-off |
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
@@ -89,13 +89,13 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.20
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.22
 
-**Readiness 90%** · arXiv-tarball `p5_v0.1.20_arxiv.tar.gz` 575 KB · 28 pp / 897 KB PDF · **first R-round still OR-cap-blocked**.
+**Readiness 92%** · arXiv-tarball `p5_v0.1.22_arxiv.tar.gz` 577 KB · 29 pp / 904 KB PDF · **first R-round still OR-cap-blocked**.
 
 **Headline finding**: galaxy chirality is statistically independent of cosmic-web environment within DESI DR1.
 
-### 5 independent positive-evidence lines for the headline + 1 quantitative null correlation:
+### 6 independent positive-evidence lines + 1 quantitative null correlation:
 
 | # | Evidence line | Result | n |
 |---|---|---|---:|
@@ -104,11 +104,12 @@ This document is a derivative of the SSOT — the canonical state lives in
 | 3 | 3-algorithm DESIVAST robustness (VoidFinder/V2-REVOLVER/V2-VIDE) | All three \|Δf_CW\| < 0.002 | 56k-103k |
 | 4 | Catalog-native V2-REVOLVER GALZONE membership | σ = **−0.24** near-perfect null | 86,276 |
 | 5 | MAXIMAL voids HEALPix sky-position stratification | −5σ concentrated in **0-voids-per-pixel** bin; pixels with voids σ ∈ [−2.04, −0.09]; signal tracks survey-mask geometry NOT environment density | 378k-258k |
-| 6* | Per-pixel Pearson r(N_voids/pix, σ_chirality/pix) at NSIDE=32 | **r = +0.006, p = 0.88** — statistically indistinguishable from zero correlation; cleanest single-statistic confirmation | 727 pixels |
+| 5b\* | Per-pixel Pearson r(N_voids/pix, σ_chirality/pix) at NSIDE=32 | **r = +0.006, p = 0.88** — statistically indistinguishable from zero correlation; cleanest single-statistic confirmation | 727 pixels |
+| **6** | **Cross-survey P4-monopole-residual analysis** | Subtract f_CW^P5=0.4972 (= P4 9.5σ catalog monopole) → **ALL 4 V-Web classes \|σ_vs_monopole\|<1.15** (void −0.56, wall +1.01, filament +0.99, cluster −1.11); per-pixel residual distribution mean +0.020 / std 1.184 / skew +0.044 — **cleanest demonstration that V-Web class deviations are monopole-projection, not environmental** | 812,793 |
 
-(\*) #6 is a quantitative sharpening of #5, not a fully independent line. Together with the 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) showing the void-density map (top) and per-pixel σ map (bottom), the case that the −5σ catalog-level signal is not environment-driven is closed at publication-grade robustness.
+(\*) #5b is a quantitative sharpening of #5, not a fully independent line. Together with the 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) and the P4-monopole subtraction (#6) showing the V-Web class deviations vanish, the case that the −5σ catalog-level signal is not environment-driven is closed at publication-grade robustness.
 
-**Why 90% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
+**Why 92% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
 
 **arXiv categories**: astro-ph.CO + astro-ph.GA.
 
