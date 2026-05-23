@@ -1,0 +1,74 @@
+{
+  "filament_n_total": 408187,
+  "filament_by_z_quartile_marginalized": {
+    "Z1": {
+      "n": 102047,
+      "cw_fraction": 0.49785882975491685,
+      "sigma_from_half": -1.3679849393186563,
+      "z_mean": 0.06684089482074619
+    },
+    "Z2": {
+      "n": 102047,
+      "cw_fraction": 0.49730026360402557,
+      "sigma_from_half": -1.7248505756626704,
+      "z_mean": 0.1391167150314668
+    },
+    "Z3": {
+      "n": 102046,
+      "cw_fraction": 0.4975403249514925,
+      "sigma_from_half": -1.5714686597897987,
+      "z_mean": 0.2053865127159816
+    },
+    "Z4": {
+      "n": 102047,
+      "cw_fraction": 0.49914255196135116,
+      "sigma_from_half": -0.5478200557912161,
+      "z_mean": 0.3195097582967139
+    }
+  },
+  "filament_by_density_quartile_marginalized": {
+    "D1": {
+      "n": 102050,
+      "cw_fraction": 0.49891229789318964,
+      "sigma_from_half": -0.6949386558709982
+    },
+    "D2": {
+      "n": 102065,
+      "cw_fraction": 0.4969186302846225,
+      "sigma_from_half": -1.968848166300515
+    },
+    "D3": {
+      "n": 102033,
+      "cw_fraction": 0.4990150245508806,
+      "sigma_from_half": -0.6292536297440037
+    },
+    "D4": {
+      "n": 102039,
+      "cw_fraction": 0.4969962465331883,
+      "sigma_from_half": -1.9190106175608121
+    }
+  },
+  "filament_by_tracer_program": {
+    "backup": {
+      "n": 121,
+      "cw_fraction": 0.5041322314049587,
+      "sigma_from_half": 0.0909090909090906
+    },
+    "bright": {
+      "n": 416701,
+      "cw_fraction": 0.4978317786614383,
+      "sigma_from_half": -2.7992770348005944
+    },
+    "dark": {
+      "n": 21203,
+      "cw_fraction": 0.5097863509880677,
+      "sigma_from_half": 2.8500300559987326
+    },
+    "other": {
+      "n": 260,
+      "cw_fraction": 0.5269230769230769,
+      "sigma_from_half": 0.8682431421244597
+    }
+  },
+  "method": "Filament-class decomposition mirroring the fire #41+#43+#44 cluster-class analysis: density quartile + z quartile + tracer-program. Tests whether the headline environment-independence is robust to within-filament-class decompositions (largest single class n=408,187)."
+}

@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.17-2026-05-22",
-    tldr: "v0.1.17 (cron fire #49): catalog-native V2 membership cross-check using GALZONE+ZONEVOID joins (DESIVAST's own zone-to-void mapping by DESI TARGET ID, OUT=0 & VOID0≥0). V2-REVOLVER catalog-native n=86,276 cw=0.4996 **σ=−0.24** (near-perfect null); V2-VIDE catalog-native n=64,514 cw=0.4979 σ=−1.06. Catalog-native σ values are smaller in magnitude than sphere-approximation analogues — confirms the chirality null sharpens when restricted to catalog-internal high-confidence void members. V2-REVOLVER σ=−0.24 is the cleanest single chirality-in-voids measurement in the paper at n>80,000. PDF 780KB / 26pp / 0 overfull / 0 undef.",
+    version: "v0.1.18-2026-05-22",
+    tldr: "v0.1.18 (cron fire #51): filament-class within-class decomposition mirroring the cluster-class fire #41+#43+#44 analysis. Filament density-quartile σ all <2; z-quartile σ all <2 ([−0.55, −1.72]). **Filament tracer-program REPRODUCES the cluster-class bright-vs-dark sign-flip**: bright (n=416,701) σ=−2.80 vs dark (n=21,203) σ=+2.85 (opposite sign, comparable magnitudes). The sign-flip recurrence across BOTH cluster AND filament (the two largest V-Web classes) is the strongest sign that V-Web class-level f_CW deviations are sourced by BGS-selection-function/imaging-leg systematics, not environment-driven astrophysics. PDF 782KB / 26pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

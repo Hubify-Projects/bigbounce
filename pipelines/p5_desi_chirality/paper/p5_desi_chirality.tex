@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.17-2026-05-22}
+\newcommand{\paperVersion}{v0.1.18-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -574,6 +574,33 @@ at comparable strength; the bright-specific concentration is consistent
 with the BGS-selection-function-conditioned imaging-leg systematics
 that Paper~IV tracks in detail rather than a real environment-driven
 effect, and reinforces the headline environment-independence finding.
+
+\paragraph{Filament-class within-class decomposition.} Repeating the
+density-quartile / $z$-quartile / tracer-program decompositions on
+the second-largest V-Web class (filament, $n_{\rm filament} =
+408{,}187$, the volume-dominant population in the matched-spiral
+catalog) returns the same triple null pattern as cluster. Density-
+quartile $\sigma_{\rm from\ half}$ already reported in
+Table~\ref{tab:within_class_density} are all $|\sigma| < 2$ (range
+$-0.63$ to $-1.97$). $z$-quartile-marginalized $\sigma$ values:
+Z1 ($\bar z = 0.067$, $n = 102{,}047$) $\sigma = -1.37$;
+Z2 ($\bar z = 0.139$) $-1.72$; Z3 ($\bar z = 0.205$) $-1.57$;
+Z4 ($\bar z = 0.320$) $-0.55$. All four within $|\sigma| < 2$.
+
+The filament-class tracer-program decomposition reproduces the cluster-
+class \texttt{bright}-vs-\texttt{dark} sign-flip discussed above on an
+independent V-Web class: filament \texttt{bright} ($n = 416{,}701$)
+$\sigma = -2.80$ vs filament \texttt{dark} ($n = 21{,}203$)
+$\sigma = +2.85$ (\emph{opposite sign} again, with comparable
+magnitudes on each side). A genuinely environment-dependent
+filament-chirality signal would propagate consistently across both
+target classes; the sign-flip recurrence across both the cluster and
+filament classes (the two largest V-Web environments) is the strongest
+sign that the V-Web class-level $f_{\rm CW}$ deviations are sourced
+by the BGS-selection-function-conditioned imaging-leg systematics
+Paper~IV tracks, not by environment-driven astrophysics. Companion
+artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/filament\_within\_class\_decomposition.json}.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
