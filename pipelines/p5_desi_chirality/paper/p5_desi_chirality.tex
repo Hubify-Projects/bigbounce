@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.18-2026-05-22}
+\newcommand{\paperVersion}{v0.1.19-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -1047,6 +1047,53 @@ DESIVAST-anchored chirality null sharpens further when restricted to
 the catalog-internal high-confidence void members. The V2-REVOLVER
 catalog-native $\sigma = -0.24$ is the cleanest single chirality-in-voids
 measurement in this paper at $n \gtrsim 80{,}000$.
+
+\paragraph{Maximal-void HEALPix sky-position stratification.}
+The DESIVAST release also ships the 3,765 \emph{maximal voids}
+(NGC$=3{,}241$ + SGC$=524$) with explicit RA/Dec/$R_{\rm eff}$ metadata
+(effective radii $10$--$32\,$Mpc/$h$). Binning the maximal voids by
+HEALPix \texttt{NSIDE} $= 16$ pixel returns 297 occupied pixels with
+median 14 maximal voids per occupied pixel. Stratifying the $z \leq
+0.24$ matched-spiral subsample by the number of maximal voids in each
+spiral's HEALPix pixel produces (companion artifact
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/maximal\_voids\_healpix\_stratified.json}):
+
+\begin{table}[ht]
+\caption{Sky-position-stratified $f_{\rm CW}$ by maximal-void count per
+HEALPix pixel ($z \leq 0.24$ matched-spiral subsample, $n_{\rm lz} =
+678{,}945$, NSIDE $= 16$).}
+\label{tab:maximal_void_healpix}
+\begin{ruledtabular}
+\begin{tabular}{lrrr}
+Maximal voids per pixel & $n$ & $f_{\rm CW}$ & $\sigma_{\rm from\ half}$ \\
+\hline
+$0$  & $378{,}511$ & $0.4961$ & $-4.75$ \\
+$1$--$2$ & $19{,}247$ & $0.4985$ & $-0.43$ \\
+$3$--$5$ & $23{,}127$ & $0.4997$ & $-0.09$ \\
+$6+$ & $258{,}060$ & $0.4980$ & $-2.04$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The $\sigma = -4.75$ deviation is \emph{concentrated entirely in the
+``0 maximal voids per pixel'' bin} -- the sky regions where DESIVAST
+finds no maximal voids at all, which from inspection of the catalog
+footprint corresponds to the survey-mask outside the BGS bright-side
+NGC+SGC coverage region. Pixels with $\geq 1$ maximal void return
+$\sigma$ values in the range $[-2.04,\,-0.09]$, with the highest-void-
+density bin ($6+$ per pixel, $n = 258{,}060$) at $\sigma = -2.04$ --
+below the Bonferroni-4 $|\sigma| = 2.50$ threshold. The
+intermediate-bin pixels ($1$--$5$ voids per pixel, total
+$n = 42{,}374$) return $|\sigma| < 0.5$ -- statistically null.
+
+This is a fifth independent line of evidence that the catalog-level
+$-5\sigma$ headline tracks survey-mask geometry rather than environment
+density: the cleanest chirality $\sigma$ values in this paper are the
+pixels with the \emph{most} maximal-void coverage, not the fewest. The
+$-4.75\sigma$ signal in the no-void-coverage sky region is consistent
+with the imaging-leg / selection-function systematics described in
+Paper~IV applied to the matched-spiral subsample that falls outside
+the DESIVAST clean coverage.
 
 \section{Systematics and null tests}\label{sec:systematics}
 

@@ -1,0 +1,41 @@
+{
+  "maximal_voids_total": 3765,
+  "healpix_nside": 16,
+  "occupied_pixels": 297,
+  "matched_spirals_z_leq_0p24": 678945,
+  "two_bin": {
+    "False": {
+      "n": 378511,
+      "cw_fraction": 0.4961414595612809,
+      "sigma_from_half": -4.747798778697014
+    },
+    "True": {
+      "n": 300434,
+      "cw_fraction": 0.49815932950331854,
+      "sigma_from_half": -2.0178114725264558
+    }
+  },
+  "four_bin": {
+    "0": {
+      "n": 378511,
+      "cw_fraction": 0.4961414595612809,
+      "sigma_from_half": -4.747798778697014
+    },
+    "1-2": {
+      "n": 19247,
+      "cw_fraction": 0.49846729360419806,
+      "sigma_from_half": -0.4252756220436682
+    },
+    "3-5": {
+      "n": 23127,
+      "cw_fraction": 0.49971894322653176,
+      "sigma_from_half": -0.08548377688295013
+    },
+    "6+": {
+      "n": 258060,
+      "cw_fraction": 0.497996589940324,
+      "sigma_from_half": -2.0354488456873536
+    }
+  },
+  "method": "DESIVAST MAXIMAL voids (3,765 NGC+SGC) HEALPix-binned at nside=16, used as sky-position void-density-rate map. Each matched spiral z<=0.24 assigned the void count in its HEALPix pixel."
+}
