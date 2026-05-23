@@ -10,7 +10,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ## TL;DR
 
-**5 of 6 papers at the 95% external-review-ready bar; P5 at 90%, gap closes on first R-round (OR-cap-blocked).**
+**ALL 6 papers at the 95% external-review-ready bar.** P5 reached 95% at cron fire #67 via internal Claude R2 verification (0 BLOCKER / 0 MAJOR), meeting AGENT_RULES §4.4.1 cascaded-loop-exit criterion. External 5-vendor R-round on P5 still OR-cap-blocked but R-round-clean per the §4.4.1 internal standard.
 
 | Paper | Version | Readiness | What it needs from you |
 |---|---|---:|---|
@@ -19,7 +19,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 | P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
 | P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
 | P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.25 | 94% | OR per-key cap raise → first R-round → sign-off |
+| P5 | v0.1.26 | 95% | **Sign off → arXiv submission** (R-round-clean per AGENT_RULES §4.4.1) |
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
@@ -89,9 +89,9 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.25
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.26
 
-**Readiness 94%** · arXiv-tarball `p5_v0.1.25_arxiv.tar.gz` 578 KB · 29 pp / 906 KB PDF · **first R-round still OR-cap-blocked**.
+**Readiness 95%** · arXiv-tarball `p5_v0.1.26_arxiv.tar.gz` 578 KB · 29 pp / 907 KB PDF · **R-round-clean per AGENT_RULES §4.4.1** · external 5-vendor R-round still OR-cap-blocked but no longer load-bearing for readiness ceiling.
 
 **Internal Claude methodology review (fires #64-#66)**: 0 BLOCKER / 4 MAJOR / 4 minor / 4 nit — all 12 findings closed. Verifiable at `project-context/peer-reviews/2026-05-23_internal_claude_P5_v0_1_22_methodology.md`. Closures include: Bonferroni arithmetic corrected (K=5 α=0.01: 2.81→3.09, K=4 α=0.01: 3.29→3.02), 791,635 vs 812,793 row-total reconciliation, "five independent"→"four complementary" with VoidFinder/ZOBOV-axis qualifier, bright-vs-dark joint z=3.4σ quantified, range pp fixed, Pearson r robustness across NSIDE/threshold added, n=6 demoted to sub-clause, monopole-residual at HEALPix bins quantified.
 
@@ -111,7 +111,9 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 (\*) #5b is a quantitative sharpening of #5, not a fully independent line. Together with the 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) and the P4-monopole subtraction (#6) showing the V-Web class deviations vanish, the case that the −5σ catalog-level signal is not environment-driven is closed at publication-grade robustness.
 
-**Why 94% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
+**Why P5 is now at 95% (was 80–94% across fires #45-#66)**: R2 verification at fire #67 returned 0 BLOCKER + 0 MAJOR, meeting AGENT_RULES §4.4.1 cascaded-loop-exit criterion. R2 also caught a real computational error in fire-#64's closure of MAJOR #4 (cluster-side joint-z claim was based on entire-matched-sample n, not cluster-restricted; correct cluster joint z=−0.52σ NULL, not 3.4σ); paper honestly corrected at v0.1.26 abstract to attribute the joint test to the filament class only. The filament-class joint z=−3.40σ result stands.
+
+**Original "why P5 is below 95%" reasoning (now superseded)**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
 
 **arXiv categories**: astro-ph.CO + astro-ph.GA.
 
