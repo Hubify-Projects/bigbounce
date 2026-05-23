@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.14-2026-05-22}
+\newcommand{\paperVersion}{v0.1.15-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -892,15 +892,60 @@ This is a direct empirical small-sample illustration of the
 $+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy discussed
 above, not a separate effect.
 
-A future analysis that uses DESIVAST voids \emph{themselves} as the
-environment classifier (rather than V-Web with DESIVAST as a
-cross-check) would unlock a hundreds-to-thousands larger sample of
-genuinely void-resident BGS spirals at $z \leq 0.24$ for a tightened
-chirality-in-voids constraint. This is queued as a natural follow-up;
-it does not change the central environment-independence headline
-(which is already clean at filament + cluster richness where most of
-the matched sample sits) but would publication-grade-validate the
-low-$z$ void-class subsample at much lower counting-statistics noise.
+\paragraph{DESIVAST-anchored void classifier (this work).} Pushing
+the cross-match further, we redefine the low-$z$ void class on the
+catalog-anchored DESIVAST basis rather than the V-Web tidal-tensor
+basis, then recompute the chirality null on the much larger
+properly-powered subsample.
+
+Restricting the matched-spiral catalog to $z \leq 0.24$ leaves
+$n_{\rm lz} = 678{,}945$ spirals (the DESIVAST BGS coverage range).
+Converting each spiral to comoving Cartesian and performing a
+point-in-sphere test against all $101{,}863$ DESIVAST VoidFinder
+hole spheres (via a $k = 20$-nearest-neighbour
+\texttt{scipy.spatial.KDTree} query on the hole centres, sufficient
+given the $24\,$Mpc/$h$ maximum hole radius) returns
+$n_{\rm void}^{\rm DESIVAST} = 56{,}981$ DESIVAST-defined void galaxies
+($8.39\%$ of the low-$z$ matched sample) and $n_{\rm non-void} =
+621{,}964$ outside any DESIVAST hole. \textbf{The DESIVAST-anchored
+void class is $\boldsymbol{133\times}$ larger than the V-Web void
+class} ($n = 428$ from Section~\ref{sec:results_vweb}), providing a
+properly-powered chirality-in-voids test at the cleanest available
+public DR1 void catalog.
+
+\begin{table}[ht]
+\caption{Chirality fraction in DESIVAST-anchored vs non-void classes
+on the $z \leq 0.24$ matched-spiral subsample (point-in-sphere test
+against $101{,}863$ DESIVAST VoidFinder hole spheres).}
+\label{tab:desivast_canonical}
+\begin{ruledtabular}
+\begin{tabular}{lrrr}
+Class & $n$ & $f_{\rm CW}$ & $\sigma_{\rm from\ half}$ \\
+\hline
+DESIVAST void & $56{,}981$ & $0.4964$ & $-1.71$ \\
+Non-void      & $621{,}964$ & $0.4971$ & $-4.59$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The two classes return $f_{\rm CW}$ values differing by only
+$0.0007$ (0.07 percentage points): the void-galaxy and non-void
+chirality fractions are \emph{statistically indistinguishable}. The
+stronger $\sigma$ on the non-void class is purely a sample-size
+effect ($n_{\rm non-void} / n_{\rm void} \approx 10.9$); both classes
+carry the same $-5\sigma$-class P4 monopole signature scaled to their
+respective sample sizes. \textbf{When the void class is defined by
+DESIVAST rather than V-Web, the chirality-in-voids constraint is a
+clean null at full DESIVAST sample size.} Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_canonical\_void\_chirality.json}.
+
+This DESIVAST-anchored re-analysis is the strongest single piece of
+positive evidence for the P5 headline environment-independence:
+the V-Web $-0.68\sigma$ void deviation on $n = 428$ was counting-
+statistics-limited and contaminated by the survey-shell systematic,
+and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
+returns a clean null with both classes consistent with the catalog-
+level uniform classifier-bias monopole.
 
 \section{Systematics and null tests}\label{sec:systematics}
 

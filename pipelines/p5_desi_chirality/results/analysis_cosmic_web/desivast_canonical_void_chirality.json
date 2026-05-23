@@ -1,0 +1,16 @@
+{
+  "matched_spirals_z_leq_0p24": 678945,
+  "in_desivast_void_count": 56981,
+  "in_desivast_void_fraction": 0.08392579664037587,
+  "void_galaxies": {
+    "n": 56981,
+    "cw_fraction": 0.49641108439655324,
+    "sigma_from_half": -1.7133980750600406
+  },
+  "non_void_galaxies": {
+    "n": 621964,
+    "cw_fraction": 0.4970914715321144,
+    "sigma_from_half": -4.587604167059314
+  },
+  "method": "DESIVAST-anchored void classifier on matched-spiral catalog at z<=0.24 (BGS overlap). Point-in-sphere test against 101,863 DESIVAST VoidFinder NGC+SGC holes. Replaces V-Web void definition with catalog-anchored void definition for the low-z subsample."
+}
