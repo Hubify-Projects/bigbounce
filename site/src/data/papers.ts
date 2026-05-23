@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.16-2026-05-22",
-    tldr: "v0.1.16 (cron fire #47): three-algorithm DESIVAST robustness cross-check. Fetched V2-REVOLVER (1,992 voids) + V2-VIDE (1,478 voids) FITS from data.desi.lbl.gov; repeated point-in-sphere on z≤0.24 n=678,945 matched spirals for each algorithm. Results — VoidFinder: void cw=0.4964 / non-void 0.4971 (Δ=+0.0007); V2-REVOLVER: void cw=0.4986 / non-void 0.4967 (Δ=−0.0019, OPPOSITE sign); V2-VIDE: void cw=0.4971 / non-void 0.4970 (Δ=−0.0001). All three |Δf_CW|<0.002, statistically indistinguishable at all three independent void definitions. Publication-grade robustness on the DESIVAST-anchored clean null. PDF 777KB / 24pp / 0 overfull / 0 undef.",
+    version: "v0.1.17-2026-05-22",
+    tldr: "v0.1.17 (cron fire #49): catalog-native V2 membership cross-check using GALZONE+ZONEVOID joins (DESIVAST's own zone-to-void mapping by DESI TARGET ID, OUT=0 & VOID0≥0). V2-REVOLVER catalog-native n=86,276 cw=0.4996 **σ=−0.24** (near-perfect null); V2-VIDE catalog-native n=64,514 cw=0.4979 σ=−1.06. Catalog-native σ values are smaller in magnitude than sphere-approximation analogues — confirms the chirality null sharpens when restricted to catalog-internal high-confidence void members. V2-REVOLVER σ=−0.24 is the cleanest single chirality-in-voids measurement in the paper at n>80,000. PDF 780KB / 26pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

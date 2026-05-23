@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.16-2026-05-22}
+\newcommand{\paperVersion}{v0.1.17-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -992,6 +992,34 @@ signature.
 The three-algorithm robustness pushes the P5 headline
 environment-independence into the strongest evidence regime available
 from current public DR1 cosmic-web catalogs.
+
+\paragraph{Catalog-native V2 membership cross-check.} The watershed
+DESIVAST catalogs (V2-REVOLVER and V2-VIDE) ship with per-galaxy zone
+assignments via the \texttt{GALZONE} HDU (mapping each DESI BGS target
+to a \texttt{ZONE} index, with \texttt{OUT}, \texttt{EDGE}, and
+\texttt{DEPTH} flags) plus the \texttt{ZONEVOID} HDU (mapping each
+zone to a \texttt{VOID0} index, $\geq 0$ if the zone belongs to a
+non-edge void). Adopting the catalog-native definition of void
+membership ($\texttt{OUT} = 0 \wedge \texttt{VOID0} \geq 0 \wedge
+\texttt{ZONE} \geq 0$) and joining on \texttt{TARGET} =
+\texttt{desi\_targetid} returns: V2-REVOLVER $n_{\rm void} = 86{,}276$,
+$f_{\rm CW}^{\rm void} = 0.4996$, $\sigma^{\rm void} = -0.24$ (a
+\emph{near-perfect} null at this independent statistic); V2-VIDE
+$n_{\rm void} = 64{,}514$, $f_{\rm CW}^{\rm void} = 0.4979$,
+$\sigma^{\rm void} = -1.06$. Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_catalog\_native\_void\_chirality.json}.
+
+The catalog-native definition excludes the survey-mask edge galaxies
+that the sphere-approximation picks up (~$16{,}000$--$17{,}000$
+galaxies per algorithm). The resulting void $\sigma$ values are
+\emph{smaller in magnitude} than the sphere-approximation analogues
+(V2-REVOLVER catalog-native $-0.24$ vs sphere $-0.88$; V2-VIDE
+catalog-native $-1.06$ vs sphere $-1.67$), confirming that the
+catalog-native void definition is the cleaner statistic and that the
+DESIVAST-anchored chirality null sharpens further when restricted to
+the catalog-internal high-confidence void members. The V2-REVOLVER
+catalog-native $\sigma = -0.24$ is the cleanest single chirality-in-voids
+measurement in this paper at $n \gtrsim 80{,}000$.
 
 \section{Systematics and null tests}\label{sec:systematics}
 

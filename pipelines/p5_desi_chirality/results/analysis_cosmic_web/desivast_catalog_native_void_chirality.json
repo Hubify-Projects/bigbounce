@@ -1,0 +1,36 @@
+{
+  "matched_spirals_z_leq_0p24": 678945,
+  "by_algorithm": {
+    "V2_REVOLVER": {
+      "method": "catalog-native GALZONE+ZONEVOID",
+      "n_in_void": 86276,
+      "frac_in_void": 0.1270736215746489,
+      "void": {
+        "n": 86276,
+        "cw_fraction": 0.49959432518892855,
+        "sigma_from_half": -0.23831591123969256
+      },
+      "non_void": {
+        "n": 592669,
+        "cw_fraction": 0.4966617116805502,
+        "sigma_from_half": -5.139962427890498
+      }
+    },
+    "V2_VIDE": {
+      "method": "catalog-native GALZONE+ZONEVOID",
+      "n_in_void": 64514,
+      "frac_in_void": 0.09502095162347465,
+      "void": {
+        "n": 64514,
+        "cw_fraction": 0.49792293145673805,
+        "sigma_from_half": -1.055134464979899
+      },
+      "non_void": {
+        "n": 614431,
+        "cw_fraction": 0.4969410723091771,
+        "sigma_from_half": -4.7955206578229275
+      }
+    }
+  },
+  "method": "Catalog-native DESIVAST V2 void membership using GALZONE TARGET-to-ZONE mapping + ZONEVOID ZONE-to-VOID0 mapping (OUT=0 & VOID0>=0). Cleaner than sphere-approximation point-in-sphere."
+}
