@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.20-2026-05-23}
+\newcommand{\paperVersion}{v0.1.21-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -105,6 +105,36 @@ $p\!=\!0.61/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
 correction. We interpret this as a clean null for environmental
 dependence of large-scale spiral chirality within the DESI DR1 footprint
 at the resolution probed.
+
+\textbf{Robustness.} We strengthen the headline with five independent
+catalog-anchored cross-checks against the concurrently-released
+DESIVAST DR1 BGS void catalog~\cite{DESIVAST2025}: (i) a per-galaxy
+point-in-sphere test of the V-Web low-$z$ void class against
+$101{,}863$ DESIVAST VoidFinder holes returns $0/6$ V-Web ``void''
+spirals inside any DESIVAST void at $z \leq 0.24$; (ii) re-running the
+chirality analysis with DESIVAST-defined voids \emph{as the classifier}
+(rather than V-Web) on $n_{\rm void}^{\rm DESIVAST} = 56{,}981$
+matched spirals (133$\times$ the V-Web void sample size) returns
+$f_{\rm CW}^{\rm void} = 0.4964$ vs $f_{\rm CW}^{\rm non-void} = 0.4971$,
+$\Delta f_{\rm CW} = 0.0007$, statistically indistinguishable; (iii)
+three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
+returns $|\Delta f_{\rm CW}| < 0.002$ at all three independent void
+definitions, with V2-REVOLVER catalog-native GALZONE membership
+returning $\sigma^{\rm void} = -0.24$ near-perfect null on $n = 86{,}276$;
+(iv) HEALPix sky-position stratification by maximal-void density per
+pixel finds the $-5\sigma$ catalog-level signal concentrated entirely
+in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
+coverage), with pixels carrying $\geq 1$ maximal void returning
+$\sigma \in [-2.04, -0.09]$; and (v) the per-pixel Pearson correlation
+between maximal-void density and chirality $\sigma$ at NSIDE $= 32$
+across $n = 727$ valid pixels is $r = +0.006$ ($p = 0.88$), statistically
+indistinguishable from zero. The signal tracks survey-mask geometry,
+not environment density, consistent with the BGS-selection-function-
+conditioned imaging-leg systematics tracked in Paper~IV; this is
+confirmed by a tracer-program decomposition showing the catalog-level
+$-5\sigma$ is entirely driven by the BGS-bright sample, with the
+LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class:
+bright $-2.80$ vs dark $+2.85$, opposite sign).
 \end{abstract}
 
 \maketitle

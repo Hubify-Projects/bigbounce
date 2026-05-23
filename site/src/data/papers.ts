@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.20-2026-05-23",
-    tldr: "v0.1.20 (cron fire #57): per-pixel **Pearson r(N_voids/pix, σ_chirality_pix) = +0.006, p=0.88** across 727 HEALPix NSIDE=32 pixels containing both voids and ≥200 spirals — quantitatively indistinguishable from zero. A real environment-dependent chirality signal would produce monotonic correlation between void density and σ. New 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) shows the result visually. Cleanest single-statistic confirmation that the −5σ catalog-level signal is NOT environment-driven. PDF 897KB / 28pp / 0 overfull / 0 undef.",
+    version: "v0.1.21-2026-05-23",
+    tldr: "v0.1.21 (cron fire #60): abstract refresh — appended publication-grade Robustness block (~25 lines) explicitly enumerating the 5 DESIVAST-anchored cross-checks (per-galaxy 0/6 + DESIVAST-anchored Δf_CW=0.0007 + 3-algorithm |Δ|<0.002 incl V2-REVOLVER σ=−0.24 + sky-position 0-voids-pixel concentration + per-pixel Pearson r=+0.006) + tracer-program bright-vs-dark sign-flip. Abstract now stands on its own as the complete one-paragraph statement of the headline + 5-evidence-line robustness for a reader who reads no other section. PDF 900KB / 28pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
