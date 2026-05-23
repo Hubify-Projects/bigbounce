@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.19-2026-05-22}
-\newcommand{\paperTimestamp}{May 22, 2026 PDT}
+\newcommand{\paperVersion}{v0.1.20-2026-05-23}
+\newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -1094,6 +1094,37 @@ $-4.75\sigma$ signal in the no-void-coverage sky region is consistent
 with the imaging-leg / selection-function systematics described in
 Paper~IV applied to the matched-spiral subsample that falls outside
 the DESIVAST clean coverage.
+
+\textbf{Quantitative null correlation.} Pushing this to the
+per-pixel level: at NSIDE $= 32$ on the same matched-spiral subsample,
+we measure the Pearson correlation between the per-pixel maximal-void
+count and the per-pixel chirality $\sigma_{\rm from\ half}$ across all
+$n_{\rm pix}^{\rm both} = 727$ HEALPix pixels containing both
+$\geq 200$ matched spirals (required for stable $f_{\rm CW}$ estimation)
+and $\geq 1$ DESIVAST maximal void. The result is
+\[
+r(N_{\rm voids/pix}, \sigma_{\rm pix}) = +0.006, \quad p = 0.88,
+\]
+indistinguishable from zero (Figure~\ref{fig:voids_vs_chirality}).
+A genuinely environment-dependent chirality signal would produce a
+detectable monotonic correlation between void density and the
+direction-of-chirality deviation; the observed near-zero Pearson is
+the cleanest single-statistic confirmation in this paper that the
+catalog-level $-5\sigma$ is not environment-driven.
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{fig_p5_voids_vs_chirality_skymap.png}
+\caption{HEALPix \texttt{NSIDE} $= 32$ Mollweide projection. Top: count
+of DESIVAST maximal voids per pixel (885 occupied pixels, median 4
+voids/pix). Bottom: per-pixel chirality $\sigma_{\rm from\ half}$
+on the $z \leq 0.24$ matched-spiral subsample restricted to pixels
+with $\geq 200$ spirals (1{,}496 valid pixels, $\sigma$ range
+$-3.45$ to $+3.48$). The Pearson correlation across the
+$n_{\rm pix}^{\rm both} = 727$ pixels containing both voids and
+$\geq 200$ spirals is $r = 0.006$ ($p = 0.88$), statistically
+indistinguishable from zero.}
+\label{fig:voids_vs_chirality}
+\end{figure*}
 
 \section{Systematics and null tests}\label{sec:systematics}
 

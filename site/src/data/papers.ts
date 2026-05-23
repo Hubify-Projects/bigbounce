@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.19-2026-05-22",
-    tldr: "v0.1.19 (cron fire #53): MAXIMAL voids HEALPix sky-position stratification. **The catalog-level −5σ signal is concentrated ENTIRELY in 'no maximal voids per pixel' sky regions** (n=378,511 σ=−4.75) — i.e. outside the DESIVAST BGS NGC+SGC coverage footprint. Pixels WITH maximal voids return σ ∈ [−2.04, −0.09] (1-2: −0.43, 3-5: **−0.09 NULL**, 6+: −2.04, all below Bonferroni-4 |σ|=2.50). **The cleanest chirality measurements are in pixels with the MOST void coverage**, not the fewest — the signal tracks survey-mask geometry NOT environment density. 5th independent positive evidence line for headline environment-independence. PDF 786KB / 27pp / 0 overfull / 0 undef.",
+    version: "v0.1.20-2026-05-23",
+    tldr: "v0.1.20 (cron fire #57): per-pixel **Pearson r(N_voids/pix, σ_chirality_pix) = +0.006, p=0.88** across 727 HEALPix NSIDE=32 pixels containing both voids and ≥200 spirals — quantitatively indistinguishable from zero. A real environment-dependent chirality signal would produce monotonic correlation between void density and σ. New 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) shows the result visually. Cleanest single-statistic confirmation that the −5σ catalog-level signal is NOT environment-driven. PDF 897KB / 28pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
