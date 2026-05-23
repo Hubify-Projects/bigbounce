@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.15-2026-05-22",
-    tldr: "v0.1.15 (cron fire #45): 🎯 DESIVAST-anchored void classifier on full z≤0.24 matched-spiral subsample (n=678,945; KDTree point-in-sphere against 101,863 DESIVAST holes). n=56,981 DESIVAST-void galaxies (133× the V-Web void n=428) vs n=621,964 non-void. **DESIVAST-void cw_fraction=0.4964 vs non-void cw_fraction=0.4971 — differ by 0.0007 (0.07pp), STATISTICALLY INDISTINGUISHABLE**. Clean null at properly-powered sample size. Strongest single piece of positive evidence for P5 headline environment-independence. PDF 774KB / 0 overfull / 0 undef.",
+    version: "v0.1.16-2026-05-22",
+    tldr: "v0.1.16 (cron fire #47): three-algorithm DESIVAST robustness cross-check. Fetched V2-REVOLVER (1,992 voids) + V2-VIDE (1,478 voids) FITS from data.desi.lbl.gov; repeated point-in-sphere on z≤0.24 n=678,945 matched spirals for each algorithm. Results — VoidFinder: void cw=0.4964 / non-void 0.4971 (Δ=+0.0007); V2-REVOLVER: void cw=0.4986 / non-void 0.4967 (Δ=−0.0019, OPPOSITE sign); V2-VIDE: void cw=0.4971 / non-void 0.4970 (Δ=−0.0001). All three |Δf_CW|<0.002, statistically indistinguishable at all three independent void definitions. Publication-grade robustness on the DESIVAST-anchored clean null. PDF 777KB / 24pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

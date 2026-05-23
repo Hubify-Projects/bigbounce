@@ -1,0 +1,54 @@
+{
+  "matched_spirals_z_leq_0p24": 678945,
+  "by_algorithm": {
+    "VoidFinder": {
+      "n_voids_catalog": 101863,
+      "max_radius_mpch": 24.516066393515842,
+      "n_in_void": 56981,
+      "frac_in_void": 0.08392579664037587,
+      "void": {
+        "n": 56981,
+        "cw_fraction": 0.49641108439655324,
+        "sigma_from_half": -1.7133980750600406
+      },
+      "non_void": {
+        "n": 621964,
+        "cw_fraction": 0.4970914715321144,
+        "sigma_from_half": -4.587604167059314
+      }
+    },
+    "V2_REVOLVER": {
+      "n_voids_catalog": 1992,
+      "max_radius_mpch": 43.50177267549969,
+      "n_in_void": 102911,
+      "frac_in_void": 0.15157486983481724,
+      "void": {
+        "n": 102911,
+        "cw_fraction": 0.4986347426417001,
+        "sigma_from_half": -0.8759421415621853
+      },
+      "non_void": {
+        "n": 576034,
+        "cw_fraction": 0.4967484558203162,
+        "sigma_from_half": -4.935642713385058
+      }
+    },
+    "V2_VIDE": {
+      "n_voids_catalog": 1478,
+      "max_radius_mpch": 55.87914137121144,
+      "n_in_void": 81354,
+      "frac_in_void": 0.11982413892141484,
+      "void": {
+        "n": 81354,
+        "cw_fraction": 0.49707451385303736,
+        "sigma_from_half": -1.6688507458453017
+      },
+      "non_void": {
+        "n": 597591,
+        "cw_fraction": 0.49702890438443686,
+        "sigma_from_half": -4.5935521181030765
+      }
+    }
+  },
+  "method": "Three independent DESIVAST void definitions (VoidFinder sphere-growing + V2-REVOLVER watershed + V2-VIDE watershed) cross-checked on the same n=678,945 z<=0.24 matched-spiral subsample. KDTree point-in-sphere using void-effective-radius for each algorithm."
+}

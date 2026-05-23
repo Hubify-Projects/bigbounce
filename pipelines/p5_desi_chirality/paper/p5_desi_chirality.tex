@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.15-2026-05-22}
+\newcommand{\paperVersion}{v0.1.16-2026-05-22}
 \newcommand{\paperTimestamp}{May 22, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -946,6 +946,52 @@ statistics-limited and contaminated by the survey-shell systematic,
 and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
 returns a clean null with both classes consistent with the catalog-
 level uniform classifier-bias monopole.
+
+\paragraph{Three-algorithm DESIVAST robustness cross-check.} The
+DESIVAST DR1 release ships three independent void definitions: the
+sphere-growing VoidFinder algorithm above, plus the watershed
+algorithms V2-REVOLVER ($n_{\rm void}^{\rm catalog} = 1{,}992$ effective
+voids, maximum effective radius $43.5\,$Mpc/$h$) and V2-VIDE
+($n_{\rm void}^{\rm catalog} = 1{,}478$, max $55.9\,$Mpc/$h$). Repeating
+the point-in-sphere test on the same $n_{\rm lz} = 678{,}945$ matched-
+spiral subsample for each algorithm (KDTree query against each
+algorithm's published void-effective-radius spheres):
+
+\begin{table*}[ht]
+\caption{Three-algorithm DESIVAST void vs non-void chirality on the
+$z \leq 0.24$ matched-spiral subsample ($n_{\rm lz} = 678{,}945$).
+Companion artifact
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_three\_algorithm\_void\_chirality.json}.}
+\label{tab:desivast_three_algo}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrrr}
+Algorithm & $n_{\rm void}$ & $f_{\rm CW}^{\rm void}$ &
+$\sigma^{\rm void}$ & $f_{\rm CW}^{\rm non-void}$ &
+$\sigma^{\rm non-void}$ & $\Delta f_{\rm CW}$ \\
+\hline
+VoidFinder   & $56{,}981$  & $0.4964$ & $-1.71$ & $0.4971$ & $-4.59$ & $+0.0007$ \\
+V2-REVOLVER  & $102{,}911$ & $0.4986$ & $-0.88$ & $0.4967$ & $-4.94$ & $-0.0019$ \\
+V2-VIDE      & $81{,}354$  & $0.4971$ & $-1.67$ & $0.4970$ & $-4.59$ & $-0.0001$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+All three algorithms return $|\Delta f_{\rm CW}| < 0.002$ between
+void and non-void classes -- statistically indistinguishable at all
+three independent void definitions. V2-REVOLVER returns
+$f_{\rm CW}^{\rm void} = 0.4986$ slightly above $f_{\rm CW}^{\rm
+non-void} = 0.4967$ (the opposite sign of VoidFinder's small
+difference), which further confirms the absence of a real chirality
+preference in DESIVAST-defined voids regardless of void-finding
+algorithm. The void-class $\sigma$ values span $-1.71$ to $-0.88$ --
+none crosses $|\sigma| = 2$; the non-void $\sigma$ values cluster
+tightly at $-4.59$ to $-4.94$ because the non-void class is the
+volume-dominant population carrying the full catalog-level monopole
+signature.
+
+The three-algorithm robustness pushes the P5 headline
+environment-independence into the strongest evidence regime available
+from current public DR1 cosmic-web catalogs.
 
 \section{Systematics and null tests}\label{sec:systematics}
 
