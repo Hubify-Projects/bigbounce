@@ -1,6 +1,6 @@
 # Houston sign-off brief — 6-paper portfolio status
 
-**Generated:** 2026-05-22 PDT (tick 177, cron fire #55).
+**Generated:** 2026-05-22 PDT (tick 177, cron fire #55). **Last refresh:** 2026-05-23 PDT (tick 181, cron fire #59 — P5 v0.1.19 → v0.1.20 Pearson + figure additions).
 **Purpose:** Single-page summary for Houston's sign-off review across all 6 papers.
 
 This document is a derivative of the SSOT — the canonical state lives in
@@ -19,7 +19,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 | P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
 | P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
 | P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.19 | 90% | OR per-key cap raise → first R-round → sign-off |
+| P5 | v0.1.20 | 90% | OR per-key cap raise → first R-round → sign-off |
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
@@ -89,13 +89,13 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.19
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.20
 
-**Readiness 90%** · arXiv-tarball `p5_v0.1.19_arxiv.tar.gz` 446 KB · 27 pp / 786 KB PDF · **first R-round still OR-cap-blocked**.
+**Readiness 90%** · arXiv-tarball `p5_v0.1.20_arxiv.tar.gz` 575 KB · 28 pp / 897 KB PDF · **first R-round still OR-cap-blocked**.
 
 **Headline finding**: galaxy chirality is statistically independent of cosmic-web environment within DESI DR1.
 
-### 5 independent positive-evidence lines for the headline (each from a different statistical test):
+### 5 independent positive-evidence lines for the headline + 1 quantitative null correlation:
 
 | # | Evidence line | Result | n |
 |---|---|---|---:|
@@ -104,6 +104,9 @@ This document is a derivative of the SSOT — the canonical state lives in
 | 3 | 3-algorithm DESIVAST robustness (VoidFinder/V2-REVOLVER/V2-VIDE) | All three \|Δf_CW\| < 0.002 | 56k-103k |
 | 4 | Catalog-native V2-REVOLVER GALZONE membership | σ = **−0.24** near-perfect null | 86,276 |
 | 5 | MAXIMAL voids HEALPix sky-position stratification | −5σ concentrated in **0-voids-per-pixel** bin; pixels with voids σ ∈ [−2.04, −0.09]; signal tracks survey-mask geometry NOT environment density | 378k-258k |
+| 6* | Per-pixel Pearson r(N_voids/pix, σ_chirality/pix) at NSIDE=32 | **r = +0.006, p = 0.88** — statistically indistinguishable from zero correlation; cleanest single-statistic confirmation | 727 pixels |
+
+(\*) #6 is a quantitative sharpening of #5, not a fully independent line. Together with the 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) showing the void-density map (top) and per-pixel σ map (bottom), the case that the −5σ catalog-level signal is not environment-driven is closed at publication-grade robustness.
 
 **Why 90% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
 
@@ -115,7 +118,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 **Active key**: `sk-or-v1-c25e5...d15b3cbf` · internal ID `cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348`.
 
-**Live state**: `limit=$50/week, usage_weekly=$98.66, remaining=$0`. The cap raise you attempted between cron fires #21 and #22 didn't propagate to the active key (verified via `/api/v1/key` readback every fire since #22, and via a live-fired 5-vendor R1 attempt on P5 at fire #43 which returned hard 403 across all 5 vendors).
+**Live state (2026-05-23)**: `limit=$50/week, usage_weekly=$52.48, remaining=$0`. The usage_weekly counter rolled overnight from $98.66 → $52.48 (oldest day's $46.18 spend dropped off the rolling 7-day window). Still $2.48 over the $50 cap. At zero-spend rate, the counter will naturally drop below $50 in **2-3 days** (2026-05-25 or 26). The cap raise you attempted between cron fires #21 and #22 didn't propagate to the active key (verified via `/api/v1/key` readback every fire since #22, and via live-fired 5-vendor R-round attempts at fires #43 and #56 which both returned hard 403 across all 5 vendors).
 
 **Two options, either fixes it permanently** (60 seconds either way):
 
