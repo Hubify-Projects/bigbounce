@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.22-2026-05-23}
+\newcommand{\paperVersion}{v0.1.23-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -106,9 +106,12 @@ correction. We interpret this as a clean null for environmental
 dependence of large-scale spiral chirality within the DESI DR1 footprint
 at the resolution probed.
 
-\textbf{Robustness.} We strengthen the headline with five independent
+\textbf{Robustness.} We strengthen the headline with five complementary
 catalog-anchored cross-checks against the concurrently-released
-DESIVAST DR1 BGS void catalog~\cite{DESIVAST2025}: (i) a per-galaxy
+DESIVAST DR1 BGS void catalog~\cite{DESIVAST2025} (genuinely
+independent methodologically across the VoidFinder sphere-growing
+vs.\ ZOBOV watershed axes; the per-galaxy and HEALPix-stratified
+tests reuse the same matched-spiral subsample by design): (i) a per-galaxy
 point-in-sphere test of the V-Web low-$z$ void class against
 $101{,}863$ DESIVAST VoidFinder holes returns $0/6$ V-Web ``void''
 spirals inside any DESIVAST void at $z \leq 0.24$; (ii) re-running the
@@ -134,7 +137,12 @@ conditioned imaging-leg systematics tracked in Paper~IV; this is
 confirmed by a tracer-program decomposition showing the catalog-level
 $-5\sigma$ is entirely driven by the BGS-bright sample, with the
 LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class:
-bright $-2.80$ vs dark $+2.85$, opposite sign).
+bright $-2.80$ vs dark $+2.85$, opposite sign). The joint two-sample
+z-test on the bright-vs-dark $f_{\rm CW}$ difference is
+$|z| \approx 3.4\sigma$ on both the cluster and filament classes,
+confirming the sign-flip is itself a statistically significant
+selection-function-conditioned systematic rather than a counting-
+statistics fluctuation.
 \end{abstract}
 
 \maketitle
@@ -374,7 +382,7 @@ threshold on the maximum-absolute-$\sigma$ statistic is
 which is conservative when the bin-level statistics are not
 independent (e.g.\ HEALPix per-pixel deviations correlated by the
 mask boundary). For $K\!=\!5$ density quintiles at $\alpha\!=\!0.01$,
-Eq.~\eqref{eq:bonferroni} gives $|\sigma|^{\rm Bonf}_{0.01,5}\!\approx\!2.81$;
+Eq.~\eqref{eq:bonferroni} gives $|\sigma|^{\rm Bonf}_{0.01,5}\!\approx\!3.09$;
 for $K\!=\!1054$ NSIDE-16 HEALPix pixels at $\alpha\!=\!0.05$,
 $|\sigma|^{\rm Bonf}_{0.05,1054}\!\approx\!4.05$.
 
@@ -480,7 +488,7 @@ at $N\!=\!158{,}327$ per quintile the predicted
 $|\sigma_{\rm pred}|\!=\!2\!\cdot\!|{-0.0026}|\!\cdot\!\sqrt{158{,}327}\!\approx\!2.07$,
 so the residual deviation beyond the monopole is
 $|\sigma_{\rm obs}-\sigma_{\rm pred}|\!\approx\!1.87$, below the
-Bonferroni-5 $|\sigma|^{\rm Bonf}_{0.01,5}\!=\!2.81$ threshold.
+Bonferroni-5 $|\sigma|^{\rm Bonf}_{0.01,5}\!=\!3.09$ threshold.
 Figure~\ref{fig:cw_vs_density} shows the observed quintile values
 side-by-side with the Paper~IV-monopole prediction; the bars track the
 prediction within counting statistics in all five quintiles.
@@ -571,7 +579,7 @@ $-1.73$ (Z2, $\bar z = 0.083$, $n = 99{,}376$), $-3.14$ (Z3,
 $\bar z = 0.122$, $n = 99{,}376$), and $-2.12$ (Z4, $\bar z = 0.190$,
 $n = 99{,}376$). All four $z$-quartile deviations sit in the
 $-1.7$ to $-3.2\sigma$ band, none individually crossing the
-Bonferroni-4 $|\sigma| = 3.29$ threshold at $\alpha = 0.01$. The
+Bonferroni-4 $|\sigma| = 3.02$ threshold at $\alpha = 0.01$. The
 deviation is approximately uniform across redshift, consistent with
 a stationary classifier-bias monopole (constant $f_{\rm CW}$ offset)
 rather than a redshift-dependent astrophysical signature.
@@ -844,9 +852,10 @@ classifier-definition mismatch and do not undermine the
 environmental-independence headline. The Tempel data also produces a
 clean null at the level of its own bins: the maximum
 $|\sigma_{\rm from\,half}|$ across the four Tempel classes is
-$2.54$ (Tempel isolated), below the Bonferroni-4 $|\sigma| = 2.50$
-threshold at $\alpha = 0.05$ and well below the $|\sigma| = 3.29$
-threshold at $\alpha = 0.01$.
+$2.54$ (Tempel isolated), formally just crossing the Bonferroni-4
+$|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ by
+$0.04\sigma$ but well below the empirical max-stat null and the
+$|\sigma|^{\rm Bonf}_{0.01,4}=3.02$ threshold at $\alpha = 0.01$.
 
 \subsection{Concurrent-literature DR1/EDR cosmic-web
 cross-validation}\label{sec:tweb_compare}
@@ -1129,7 +1138,12 @@ the DESIVAST clean coverage.
 formulation of the environment-independence headline is to recompute
 the per-class chirality signal \emph{after subtracting} the P5
 matched-spiral catalog monopole $f_{\rm CW}^{\rm P5} = 0.4972$
-($-5.07\sigma$ on $n = 812{,}793$), which is the propagation of the
+($-5.07\sigma$ on $n = 812{,}793$ env-labeled spirals --- the $21{,}158$-row
+excess over the $791{,}635$-spiral headline subsample is the small
+population of CW/CCW spirals whose env classification carries through
+to the V-Web class table despite being excluded from the
+high-confidence chirality headline sample at the
+$p_{\rm cls\_eq}^{\max}$ cut), which is the propagation of the
 $\sim\!9.5\sigma$ catalog-level monopole reported in
 Paper~IV~\cite{golden_chirality_2026} into the DESI-spectro-confirmed
 subsample. Replacing the $f_{\rm CW} - 0.5$ null with
