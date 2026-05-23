@@ -94,9 +94,9 @@ R-round history: R22 3-of-5 reviewers 0/0; GPT-5 + Perplexity closed bundled in 
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.15-2026-05-22
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.16-2026-05-22
 
-**Status: 85% · paper fully drafted + three-VAC validation + DESIVAST per-galaxy cross-match + quadruply-decomposed cluster-boundary-leakage + DESIVAST-anchored void-class clean null (24 pp) · first R-round still blocked on OR cap.**
+**Status: 85% · paper fully drafted + three-VAC validation + DESIVAST per-galaxy cross-match + quintuply-decomposed cluster-boundary-leakage + DESIVAST-anchored void-class clean null + three-algorithm DESIVAST robustness (25 pp) · first R-round still blocked on OR cap.**
 
 The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffold paper; cron fires #1–#11 closed Phase 2 + Tempel + LEE + paper expansion; cron fires #33–#36 added §sec:tweb_compare with the T-Web DR1 + ASTRA EDR + DESIVAST DR1 BGS three-VAC concurrent-literature cross-validation (+5pp readiness, fire #33); cron fire #40 added DESIVAST per-galaxy cross-match (0/6 V-Web void spirals inside DESIVAST holes at z≤0.24); cron fire #41 added §sec:results_within_class_density (−4.7σ cluster signal is boundary-leakage NOT clean density effect, +5pp readiness); fires #43+#44 added z-quartile-uniform + tracer-program bright-vs-dark sign-flip decompositions; **fire #45 added DESIVAST-anchored void classifier at n=56,981 = 133× V-Web void sample, returning cw_fraction=0.4964 vs non-void 0.4971 (Δ=0.0007 statistically indistinguishable) — strongest single piece of positive evidence for headline environment-independence, +5pp readiness**.
 
@@ -111,7 +111,7 @@ The R23-era task list called P5 "the biggest lift remaining" with a 9 KB scaffol
 | 7 | Bundled hard-fix wave closing R-round findings | agent | gated on #6 |
 | 8 | (OPTIONAL) DESI environmental VAC | Houston | optional fallback; V-Web is canonical without it |
 | 9 | Houston sign-off on first publishable version | Houston | gate |
-| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 + REBUILT fires #36/#40/#41/#43/#44/#45 (`p5_v0.1.15_arxiv.tar.gz`, 444 KB, smoke-tested 0 undef refs/cites in isolation) |
+| 10 | Build arXiv tarball | agent | ✅ DONE fire #29 + REBUILT fires #36/#40/#41/#43/#44/#45/#47 (`p5_v0.1.16_arxiv.tar.gz`, 444 KB, smoke-tested 0 undef refs/cites in isolation) |
 | 11 | arXiv submission (astro-ph.CO + astro-ph.GA) | Houston | endorsement |
 
 ---
