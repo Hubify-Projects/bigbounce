@@ -1,0 +1,42 @@
+{
+  "p5_matched_spiral_monopole": 0.49718809094074384,
+  "p5_matched_spiral_n": 812793,
+  "p5_matched_spiral_sigma_from_half": -5.070155088330106,
+  "per_class_residual_vs_p5_monopole": {
+    "void": {
+      "n": 428,
+      "cw_fraction": 0.48364485981308414,
+      "residual": -0.013543231127659705,
+      "sigma_vs_monopole": -0.5606691161418793
+    },
+    "wall": {
+      "n": 6673,
+      "cw_fraction": 0.5033717967930466,
+      "residual": 0.006183705852302712,
+      "sigma_vs_monopole": 1.0102974483373963
+    },
+    "filament": {
+      "n": 408187,
+      "cw_fraction": 0.4979604935972973,
+      "residual": 0.0007724026565534836,
+      "sigma_vs_monopole": 0.9869768177570174
+    },
+    "cluster": {
+      "n": 397505,
+      "cw_fraction": 0.49630570684645475,
+      "residual": -0.0008823840942890904,
+      "sigma_vs_monopole": -1.1126813767131896
+    }
+  },
+  "healpix_per_pixel_residual_stats": {
+    "nside": 32,
+    "n_valid_pixels": 1821,
+    "sigma_vs_monopole_mean": 0.01969098763501527,
+    "sigma_vs_monopole_std": 1.1838335673781126,
+    "sigma_vs_monopole_skew": 0.04436593785947586,
+    "sigma_vs_monopole_kurtosis": 0.8249294051553124,
+    "sigma_vs_monopole_min": -4.893110589780462,
+    "sigma_vs_monopole_max": 5.262913206305473
+  },
+  "method": "P4-monopole-residual analysis: subtract the P5 matched-spiral catalog monopole f_CW=0.4972 (consistent with P4 catalog-level 9.5\u03c3 monopole on 3.2M spirals) and compute the residual chirality signal per V-Web class and per HEALPix pixel. A real environment-dependent chirality effect would survive this subtraction; classifier-monopole leakage should not."
+}
