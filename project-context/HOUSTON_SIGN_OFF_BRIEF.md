@@ -19,7 +19,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 | P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
 | P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
 | P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.22 | 92% | OR per-key cap raise → first R-round → sign-off |
+| P5 | v0.1.25 | 94% | OR per-key cap raise → first R-round → sign-off |
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
@@ -89,9 +89,11 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.22
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.25
 
-**Readiness 92%** · arXiv-tarball `p5_v0.1.22_arxiv.tar.gz` 577 KB · 29 pp / 904 KB PDF · **first R-round still OR-cap-blocked**.
+**Readiness 94%** · arXiv-tarball `p5_v0.1.25_arxiv.tar.gz` 578 KB · 29 pp / 906 KB PDF · **first R-round still OR-cap-blocked**.
+
+**Internal Claude methodology review (fires #64-#66)**: 0 BLOCKER / 4 MAJOR / 4 minor / 4 nit — all 12 findings closed. Verifiable at `project-context/peer-reviews/2026-05-23_internal_claude_P5_v0_1_22_methodology.md`. Closures include: Bonferroni arithmetic corrected (K=5 α=0.01: 2.81→3.09, K=4 α=0.01: 3.29→3.02), 791,635 vs 812,793 row-total reconciliation, "five independent"→"four complementary" with VoidFinder/ZOBOV-axis qualifier, bright-vs-dark joint z=3.4σ quantified, range pp fixed, Pearson r robustness across NSIDE/threshold added, n=6 demoted to sub-clause, monopole-residual at HEALPix bins quantified.
 
 **Headline finding**: galaxy chirality is statistically independent of cosmic-web environment within DESI DR1.
 
@@ -109,7 +111,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 (\*) #5b is a quantitative sharpening of #5, not a fully independent line. Together with the 2-panel Mollweide sky-map figure (`fig_p5_voids_vs_chirality_skymap.png`) and the P4-monopole subtraction (#6) showing the V-Web class deviations vanish, the case that the −5σ catalog-level signal is not environment-driven is closed at publication-grade robustness.
 
-**Why 92% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
+**Why 94% and not 95%**: P5 has never been through a 5-vendor R-round. The first R-round is blocked on the OpenRouter per-key weekly cap (see `NEEDS_HOUSTON.md` item 0). Once unblocked, R1 closes findings → bundled hard-fix wave → next round trajectory matches the other 5 papers' R23-clean pattern → 95%.
 
 **arXiv categories**: astro-ph.CO + astro-ph.GA.
 

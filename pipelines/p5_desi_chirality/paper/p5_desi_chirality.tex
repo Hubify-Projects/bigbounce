@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.24-2026-05-23}
+\newcommand{\paperVersion}{v0.1.25-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -115,7 +115,7 @@ tests reuse the same matched-spiral subsample by design):
 (i) re-running the chirality analysis with DESIVAST-defined voids
 \emph{as the classifier} (rather than V-Web) on
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ matched spirals
-($133\times$ the V-Web void sample size, supplemented by an $n=6$
+($\sim\!130\times$ the V-Web void sample size, supplemented by an $n=6$
 per-galaxy classifier-disagreement check showing $0/6$ V-Web ``void''
 spirals fall inside any of the $101{,}863$ DESIVAST VoidFinder holes
 at $z \leq 0.24$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
@@ -559,7 +559,12 @@ $-4.7\sigma$ cluster signal is therefore not a clean density-dependent
 chirality effect; it is concentrated at the cluster/filament class
 boundary and is consistent with a boundary-misclassification leakage
 from the much larger filament class (whose own quartile deviations
-$|\sigma| < 2$ are uniformly small). The filament class shows no
+$|\sigma| < 2$ are uniformly small). The class boundary is verifiable
+quantitatively from the table: cluster Q1 ($\bar\rho = 1.55$) is
+\emph{less dense} than filament Q4 ($\bar\rho = 1.86$), so the
+densest filament galaxies are in fact denser than the least-dense
+cluster galaxies -- the two classes overlap in $\bar\rho$ at the
+$\lambda_{\rm th} = 0$ boundary by construction. The filament class shows no
 density trend; the four quartile $\sigma$ values range
 $-0.63$--$-1.97$, all individually below the Bonferroni-4 $|\sigma| =
 2.50$ threshold at $\alpha = 0.05$.
@@ -881,8 +886,12 @@ are $\{0.244,\, 0.413,\, 0.333,\, 0.010\}$. The sheet (V-Web wall) and
 filament classes agree to within ${\sim}5$\,percentage points across
 both methodologies, which is a strong concordance for two independent
 classifiers run on the same survey. The void and knot/cluster classes
-deviate by larger margins ($+8$--$18$\,pp on voids, $-3$--$5$\,pp on
-knots) in the direction predicted by the survey-shell systematic: the
+deviate by larger margins: V-Web's void fraction is \emph{higher} than
+T-Web's by $+8$--$18$\,pp (the edge-density artifact populates the
+V-Web 0-eigenvalue void class), and V-Web's cluster fraction is
+\emph{lower} than T-Web's knot fraction by $3$--$5$\,pp (the densest
+cells lose to mask-boundary smoothing). Both directions match the
+survey-shell systematic prediction exactly: the
 DESI footprint is a thin spherical shell rather than the cubic
 periodic box used in N-body benchmarks, so edge-density artifacts
 inflate the void class and depopulate the densest knot class
@@ -975,7 +984,7 @@ given the $24\,$Mpc/$h$ maximum hole radius) returns
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ DESIVAST-defined void galaxies
 ($8.39\%$ of the low-$z$ matched sample) and $n_{\rm non-void} =
 621{,}964$ outside any DESIVAST hole. \textbf{The DESIVAST-anchored
-void class is $\boldsymbol{133\times}$ larger than the V-Web void
+void class is $\boldsymbol{\sim\!130\times}$ larger than the V-Web void
 class} ($n = 428$ from Section~\ref{sec:results_vweb}), providing a
 properly-powered chirality-in-voids test at the cleanest available
 public DR1 void catalog.

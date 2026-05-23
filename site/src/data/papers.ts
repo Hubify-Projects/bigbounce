@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.24-2026-05-23",
-    tldr: "v0.1.24 (cron fire #65): closed 4 minor findings from internal Claude review (R-round equivalent #5-#8). (5) Abstract 'range 1.7pp' → '1.98pp' (matches Table I = 0.0198). (6) Per-pixel Pearson robustness: added '|r|<0.05 at NSIDE∈{16,32,64} and spiral-cuts∈{100,200,500}' clause closing the LEE concern. (7) Demoted n=6 DESIVAST 0/6 from standalone evidence line (i) to sub-clause of the DESIVAST-anchored classifier line — abstract Robustness block restructured 5→4 numbered items with the n=6 result framed as supplementary classifier-disagreement check. (8) Added Paper-IV-monopole-residual quantification to maximal-void HEALPix discussion: 0-voids/pix bin residual −1.55σ (imaging-leg systematic); 6+/pix bin residual +0.60σ (null). PDF 906KB / 0 overfull / 0 undef.",
+    version: "v0.1.25-2026-05-23",
+    tldr: "v0.1.25 (cron fire #66): closed remaining 3 actionable nits from internal Claude review. (9) §sec:tweb_compare T-Web volume-fraction comparison: added directional clarity 'V-Web void fraction is higher than T-Web's by +8–18pp (edge-density artifact populates the V-Web 0-eigenvalue void class), V-Web cluster fraction is lower than T-Web's knot fraction by 3–5pp (densest cells lose to mask-boundary smoothing)'. (10) §sec:results_within_class_density: added 'cluster Q1 (ρ̄=1.55) is less dense than filament Q4 (ρ̄=1.86) — the two classes overlap in ρ̄ at the λ_th=0 boundary by construction' as quantitative verification of the boundary-misclassification interpretation. (12) '133×' → '∼130×' stylistic precision adjustment. All 12 internal-review findings now closed. PDF 906KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
