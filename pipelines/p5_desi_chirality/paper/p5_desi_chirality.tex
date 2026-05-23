@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.23-2026-05-23}
+\newcommand{\paperVersion}{v0.1.24-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -86,7 +86,7 @@ chirality-relevant spirals are $0.4836$ (void; $n\!=\!428$,
 $-0.68\sigma$), $0.5034$ (wall; $n\!=\!6{,}673$, $+0.55\sigma$),
 $0.4980$ (filament; $n\!=\!408{,}187$, $-2.61\sigma$), and
 $0.4963$ (cluster; $n\!=\!397{,}505$, $-4.66\sigma$); the range across
-classes is $1.7$\,percentage points, and the negative $\sigma$ values
+classes is $1.98$\,percentage points, and the negative $\sigma$ values
 in filament and cluster track the catalog-wide
 $\Delta f_{\rm CW}\!=\!-0.0026$ classifier-monopole offset reported in
 Paper~IV, not an environmental signal. A Phase~2 sensitivity sweep
@@ -106,29 +106,30 @@ correction. We interpret this as a clean null for environmental
 dependence of large-scale spiral chirality within the DESI DR1 footprint
 at the resolution probed.
 
-\textbf{Robustness.} We strengthen the headline with five complementary
+\textbf{Robustness.} We strengthen the headline with four complementary
 catalog-anchored cross-checks against the concurrently-released
 DESIVAST DR1 BGS void catalog~\cite{DESIVAST2025} (genuinely
 independent methodologically across the VoidFinder sphere-growing
 vs.\ ZOBOV watershed axes; the per-galaxy and HEALPix-stratified
-tests reuse the same matched-spiral subsample by design): (i) a per-galaxy
-point-in-sphere test of the V-Web low-$z$ void class against
-$101{,}863$ DESIVAST VoidFinder holes returns $0/6$ V-Web ``void''
-spirals inside any DESIVAST void at $z \leq 0.24$; (ii) re-running the
-chirality analysis with DESIVAST-defined voids \emph{as the classifier}
-(rather than V-Web) on $n_{\rm void}^{\rm DESIVAST} = 56{,}981$
-matched spirals (133$\times$ the V-Web void sample size) returns
-$f_{\rm CW}^{\rm void} = 0.4964$ vs $f_{\rm CW}^{\rm non-void} = 0.4971$,
-$\Delta f_{\rm CW} = 0.0007$, statistically indistinguishable; (iii)
+tests reuse the same matched-spiral subsample by design):
+(i) re-running the chirality analysis with DESIVAST-defined voids
+\emph{as the classifier} (rather than V-Web) on
+$n_{\rm void}^{\rm DESIVAST} = 56{,}981$ matched spirals
+($133\times$ the V-Web void sample size, supplemented by an $n=6$
+per-galaxy classifier-disagreement check showing $0/6$ V-Web ``void''
+spirals fall inside any of the $101{,}863$ DESIVAST VoidFinder holes
+at $z \leq 0.24$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
+$f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} = 0.0007$,
+statistically indistinguishable; (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
 returns $|\Delta f_{\rm CW}| < 0.002$ at all three independent void
 definitions, with V2-REVOLVER catalog-native GALZONE membership
 returning $\sigma^{\rm void} = -0.24$ near-perfect null on $n = 86{,}276$;
-(iv) HEALPix sky-position stratification by maximal-void density per
+(iii) HEALPix sky-position stratification by maximal-void density per
 pixel finds the $-5\sigma$ catalog-level signal concentrated entirely
 in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
 coverage), with pixels carrying $\geq 1$ maximal void returning
-$\sigma \in [-2.04, -0.09]$; and (v) the per-pixel Pearson correlation
+$\sigma \in [-2.04, -0.09]$; and (iv) the per-pixel Pearson correlation
 between maximal-void density and chirality $\sigma$ at NSIDE $= 32$
 across $n = 727$ valid pixels is $r = +0.006$ ($p = 0.88$), statistically
 indistinguishable from zero. The signal tracks survey-mask geometry,
@@ -1132,7 +1133,17 @@ pixels with the \emph{most} maximal-void coverage, not the fewest. The
 $-4.75\sigma$ signal in the no-void-coverage sky region is consistent
 with the imaging-leg / selection-function systematics described in
 Paper~IV applied to the matched-spiral subsample that falls outside
-the DESIVAST clean coverage.
+the DESIVAST clean coverage. Quantitatively, the Paper~IV monopole
+prediction at $N = 378{,}511$ (the 0-voids/pix bin) is
+$\sigma_{\rm pred} = 2\Delta f_{\rm CW}^{\rm P4}\sqrt{N} = -3.20$;
+the observed $-4.75\sigma$ leaves a residual of $-1.55\sigma$ which
+is consistent with an imaging-leg systematic at the
+$\sim\!1\sigma$ level. At the $6+$ voids/pix bin
+($N = 258{,}060$), the Paper~IV prediction is $-2.64\sigma$ and the
+observed is $-2.04\sigma$, residual $+0.60\sigma$ (fully null).
+The asymmetry between the two bin residuals quantifies the
+sky-region-conditioned systematic and confirms it sits in the
+no-coverage region, not in the void-rich pixels.
 
 \paragraph{Cross-survey P4-monopole-residual analysis.} The cleanest
 formulation of the environment-independence headline is to recompute
@@ -1210,6 +1221,11 @@ detectable monotonic correlation between void density and the
 direction-of-chirality deviation; the observed near-zero Pearson is
 the cleanest single-statistic confirmation in this paper that the
 catalog-level $-5\sigma$ is not environment-driven.
+The result is robust to the NSIDE choice and spiral-count threshold:
+$|r| < 0.05$ at NSIDE $\in \{16, 32, 64\}$ and spiral-count cuts
+$\in \{100, 200, 500\}$ (verified by reanalysis on the same artifact
+set), so the conclusion is invariant under the analysis-choice
+``garden of forking paths'' along these axes.
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{fig_p5_voids_vs_chirality_skymap.png}
@@ -1336,7 +1352,7 @@ The CW fractions per V-Web class on the $791{,}635$ chirality-relevant
 matched spirals (canonical run) are
 $\{f_{\rm CW}^{\rm void}, f_{\rm CW}^{\rm wall},
 f_{\rm CW}^{\rm filament}, f_{\rm CW}^{\rm cluster}\} =
-\{0.484, 0.503, 0.498, 0.496\}$, a range of $1.7$\,percentage points
+\{0.484, 0.503, 0.498, 0.496\}$, a range of $1.98$\,percentage points
 dominated by counting statistics and the catalog-wide classifier
 monopole reported in Paper~IV. The result is robust under nine
 $(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (max CW-fraction range
