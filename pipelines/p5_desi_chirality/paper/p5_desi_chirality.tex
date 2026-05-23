@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.25-2026-05-23}
+\newcommand{\paperVersion}{v0.1.26-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -140,10 +140,13 @@ $-5\sigma$ is entirely driven by the BGS-bright sample, with the
 LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class:
 bright $-2.80$ vs dark $+2.85$, opposite sign). The joint two-sample
 z-test on the bright-vs-dark $f_{\rm CW}$ difference is
-$|z| \approx 3.4\sigma$ on both the cluster and filament classes,
-confirming the sign-flip is itself a statistically significant
-selection-function-conditioned systematic rather than a counting-
-statistics fluctuation.
+$|z| \approx 3.4\sigma$ on the filament class (where the dark sample
+$n=21{,}203$ is large enough to test); the cluster class joint
+$|z| \approx 0.5\sigma$ is null at counting-statistics noise because
+the cluster-restricted dark sample $n=4{,}234$ is too small to power
+the test, but the filament-class sign-flip alone is sufficient to
+establish that the catalog-level deviation is selection-function-
+conditioned rather than environment-driven.
 \end{abstract}
 
 \maketitle
@@ -1135,7 +1138,7 @@ below the Bonferroni-4 $|\sigma| = 2.50$ threshold. The
 intermediate-bin pixels ($1$--$5$ voids per pixel, total
 $n = 42{,}374$) return $|\sigma| < 0.5$ -- statistically null.
 
-This is a fifth independent line of evidence that the catalog-level
+This is a fourth catalog-anchored cross-check (sky-position stratification axis, complementary to the per-galaxy / DESIVAST-classifier / catalog-native-GALZONE axes) showing that the catalog-level
 $-5\sigma$ headline tracks survey-mask geometry rather than environment
 density: the cleanest chirality $\sigma$ values in this paper are the
 pixels with the \emph{most} maximal-void coverage, not the fewest. The
@@ -1158,12 +1161,19 @@ no-coverage region, not in the void-rich pixels.
 formulation of the environment-independence headline is to recompute
 the per-class chirality signal \emph{after subtracting} the P5
 matched-spiral catalog monopole $f_{\rm CW}^{\rm P5} = 0.4972$
-($-5.07\sigma$ on $n = 812{,}793$ env-labeled spirals --- the $21{,}158$-row
-excess over the $791{,}635$-spiral headline subsample is the small
-population of CW/CCW spirals whose env classification carries through
-to the V-Web class table despite being excluded from the
-high-confidence chirality headline sample at the
-$p_{\rm cls\_eq}^{\max}$ cut), which is the propagation of the
+($-5.07\sigma$ on $n = 812{,}793$ env-labeled spirals --- the
+$21{,}158$-row excess (2.7\%) over the 791{,}635-spiral headline
+subsample is the population of CW/CCW-labelled spirals whose V-Web
+env-class assignment passes the relaxed env-label confidence used by
+the cosmic-web pipeline but is excluded from the headline by a
+stricter env-class-uncertainty filter; the per-class
+$n_{\rm CW}$ values on the 812{,}793 superset sum to
+$404{,}111$ giving $f_{\rm CW} = 0.49719$, matching the 791{,}635-spiral
+monopole $0.4972$ to 4 decimals, so the headline conclusion is
+invariant. The same monopole shows up as $-5.00\sigma$ on the
+791{,}635-spiral chirality-relevant sample; the two $\sigma$ values
+are sample-size-scaled projections of the same underlying offset),
+which is the propagation of the
 $\sim\!9.5\sigma$ catalog-level monopole reported in
 Paper~IV~\cite{golden_chirality_2026} into the DESI-spectro-confirmed
 subsample. Replacing the $f_{\rm CW} - 0.5$ null with
