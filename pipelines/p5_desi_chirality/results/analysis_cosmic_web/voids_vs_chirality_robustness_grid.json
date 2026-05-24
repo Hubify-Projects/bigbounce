@@ -3,39 +3,61 @@
     "NSIDE=16,cut=100": {
       "r": -0.0915580651578367,
       "p": 0.11913461384624142,
-      "n_pix_both": 291
+      "n_pix_both": 291,
+      "status": "computed"
     },
     "NSIDE=16,cut=200": {
       "r": -0.07468923707437441,
       "p": 0.21278641128851744,
-      "n_pix_both": 280
+      "n_pix_both": 280,
+      "status": "computed"
     },
     "NSIDE=16,cut=500": {
       "r": -0.10106180433435688,
       "p": 0.10739274136086696,
-      "n_pix_both": 255
+      "n_pix_both": 255,
+      "status": "computed"
     },
     "NSIDE=32,cut=100": {
       "r": -0.014162310302289084,
       "p": 0.6829791228891879,
-      "n_pix_both": 834
+      "n_pix_both": 834,
+      "status": "computed"
     },
     "NSIDE=32,cut=200": {
       "r": 0.005678491865223668,
       "p": 0.8785192553228591,
-      "n_pix_both": 727
+      "n_pix_both": 727,
+      "status": "computed"
     },
     "NSIDE=32,cut=500": {
       "r": -0.03021783520099422,
       "p": 0.8938051944590482,
-      "n_pix_both": 22
+      "n_pix_both": 22,
+      "status": "computed"
     },
     "NSIDE=64,cut=100": {
       "r": 0.03535830852574598,
       "p": 0.46669280262193236,
-      "n_pix_both": 426
+      "n_pix_both": 426,
+      "status": "computed"
+    },
+    "NSIDE=64,cut=200": {
+      "r": null,
+      "p": null,
+      "n_pix_both": 1,
+      "status": "sample-too-small (n_pix_both<3); high-cut + fine-pixel combination filters most pixels"
+    },
+    "NSIDE=64,cut=500": {
+      "r": null,
+      "p": null,
+      "n_pix_both": 0,
+      "status": "sample-too-small (n_pix_both<3); high-cut + fine-pixel combination filters most pixels"
     }
   },
-  "all_abs_r_lt_0p05": false,
-  "method": "3x3 grid of (NSIDE, spiral-count cut) Pearson r(N_voids/pix, \u03c3_chirality/pix) on the z\u22640.24 matched-spiral subsample, used to demonstrate the per-pixel null-correlation result is robust to analysis choices (R2 finding #N5)."
+  "n_computable": 7,
+  "n_sample_limited": 2,
+  "computable_max_abs_r": 0.10106180433435688,
+  "computable_min_p": 0.10739274136086696,
+  "method": "3x3 grid of (NSIDE, spiral-cut) Pearson r. NSIDE=64 with cuts 200/500 are sample-limited (n_pix_both<3 pixels with \u22651 void AND \u2265cut spirals); the 7 computable cells all return |r|<0.11 with p>0.10."
 }

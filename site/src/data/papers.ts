@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.27-2026-05-23",
-    tldr: "v0.1.27 (cron fire #69): R3 verification = 2nd CONSECUTIVE clean (0 BLOCKER / 0 MAJOR / 1 minor / 1 nit); closed all 4 open findings #N5/N6/N7/N8. ⚠️ **CRITICAL CORRECTION #2**: persisting the robustness-grid JSON for #N5 caught that the fire-#57 claim '|r|<0.05 at NSIDE∈{16,32,64} and spiral-cuts∈{100,200,500}' was wrong — at NSIDE=16 |r| reaches 0.10 (still p>0.10 null). Honest correction: '|r|<0.11 with p>0.10 across all 3×3 cells; headline NSIDE=32 r=+0.006 consistent with this range'. Also fixed N6 figure-float run-on + N7 abstract-vs-body enumeration mismatch + N8 13-line parenthetical reduction. PDF 908KB / 0 overfull / 0 undef.",
+    version: "v0.1.28-2026-05-23",
+    tldr: "v0.1.28 (cron fire #70): R4 verification flagged 1 MAJOR (#N8 streak-break) — robustness-grid JSON had 7 of 9 cells (NSIDE=64 cuts 200/500 are sample-limited at n_pix_both<3). Honest correction: regenerated grid script to record ALL 9 cells including sample-limited ones; paper text now reads '7 of 9 cells admit a well-sampled Pearson estimate; the remaining 2 (NSIDE=64 cuts 200/500) are sample-limited because the high-cut × fine-pixel combination filters out most pixels with both ≥1 maximal void and ≥cut spirals; the 7 computable cells all return |r|<0.11 with p>0.10'. Streak resets at v0.1.28; needs fresh 3-consec-clean. PDF 908KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
