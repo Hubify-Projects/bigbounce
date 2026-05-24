@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.29-2026-05-24",
-    tldr: "v0.1.29 (cron fire #74): R8 Grok-perspective brutal stress-test caught 3 MAJOR + 2 minor that 7 prior Anthropic-default reviews missed (independent re-verification). Closed all 5: (1) Abstract 'statistically independent' → 'no environment dependence above sensitivity floor ~0.2pp filament/cluster, ~5pp void'. (2) Demoted DESIVAST quartet to 're-projections methodologically correlated by construction'; promoted Tempel as load-bearing independent classifier. (3) Filament sign-flip framing: 'filament-class sign-flip is consistent with BGS-selection origin; cluster-class test sample-size-limited and does not independently confirm or refute' — removed 'alone is sufficient'. (4) P4→P5 monopole arithmetic: 9.5σ/√(N_P4/N_P5) ≈ 4.62σ predicted vs 5.00σ observed; residual 8% from BGS-bright weighting. (5) Bounce-vs-inflation reframed: 'establishes observational upper bound any future parity-violating model must respect' (not 'consistent with both'). PDF 909KB / 0 overfull / 0 undef.",
+    version: "v0.1.30-2026-05-24",
+    tldr: "v0.1.30 (cron fire #75): R9 cross-model verification verified all 5 R8 closures arithmetically; flagged 3 minors. Closed: (1) '4.62σ' → '4.6σ' precision matching Δ=0.0026 input (2-sig-fig). (2) Sensitivity-floor metric switch clarified: 0.2pp = systematic-dominated monopole offset (filament/cluster); 5pp = statistical-dominated counting-statistics (void at ~2σ binomial null). (3) Bib check verified — TWebDESI2026/ASTRADESI2026 cited multiple times in §VII.E, not orphan. PDF 909KB / 0 overfull / 0 undef. Paper at v0.1.30 ready for fresh §4.4.1 streak attempt.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
