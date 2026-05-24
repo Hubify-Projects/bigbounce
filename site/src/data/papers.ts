@@ -89,7 +89,7 @@ export const papers: Paper[] = [
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
     version: "v1B.0.26",
-    tldr: "v1B.0.26 (cron fire #83 tick 205): R25e DeepSeek-confab round 1-of-3 of fresh streak on v1B.0.26 = 0/0/0/1-nit-deferrable (paper survives confab cross-check). Verified all 6 +4.3σ sites now carry fn:wcaveat caveat reference (L385 definition + L412/L435/L656/L775/L835 inline). All 7 Table I cosmological params reconcile to 4-sig-fig against full_tension_physical_parameters.json. R25d-MAJ-1 closure caption rewrite (\"coincidentally same-total\") verifies clean against §V.A parameter enumeration. PDF 11pp/702KB/0 overfull/0 undef unchanged. Streak: 1-of-3 on v1B.0.26; rounds 2+3 on unchanged artifact next 2 fires.",
+    tldr: "v1B.0.26 (cron fire #84 tick 206): R25f theoretical-physics-Gemini round 2-of-3 = 0/0/0/0 COMPLETELY CLEAN on SAME v1B.0.26 artifact (R25e = 0/0/0/1-nit + R25f = 0/0/0/0 = 2 consecutive clean rounds). Streak: 2-of-3 on v1B.0.26. Spectator-ALP β arithmetic re-derived independently (α_EM/(4π)=5.807e-4, β@C=8 = 0.285°, naive envelope [0.027, 0.439]° — all match). All 6 +4.3σ caveat-propagation sites carry fn:wcaveat. NaMaster pipeline-vs-sky scope distinguished at 6+ sites. 17-parameter R̂ coverage + iter2 chain state (128,385/0.00820/2026-05-18 07:53 UTC) consistent across 6 sites. ONE MORE CLEAN ROUND closes §4.4.1 for P1B.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -138,8 +138,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.36",
-    tldr: "v1.7.36 (cron fire #83 tick 205): R-next-e Perplexity-citation round 1-of-3 of fresh streak on v1.7.36 = 0 BLOCKER + 0 MAJOR + 2 minor hygiene (paper survives citation cross-check). 38 unique \\cite{} keys all resolve; 6/6 load-bearing externals (Heinrich:2023, Cai:2009fn, WilsonEwing:2012, Maldacena:2002vr, Pajer:2013+TanakaUrakawa:2011, Schlegel:2022) prose-vs-source-accurate. L303→L324 dangling tab:bayes_minimal fix verified — 0 undefined-reference warnings. 2 deferrable hygiene minors: Cabass:2022 + Minami2020 orphan bibitems; L324 \"immediately before\" mildly imprecise. PDF 21pp/818KB/4 sub-13pt overfull/0 undef unchanged. Streak: 1-of-3 on v1.7.36; rounds 2+3 on unchanged artifact next 2 fires.",
+    version: "v1.7.37",
+    tldr: "v1.7.37 (cron fire #84 tick 206): R-next-f brutal-honesty-Grok round-2-of-3 on v1.7.36 = 1 MAJ + 1 MIN — streak broken, both confirmed. (a) MAJ-1 Abstract \"BF~4-17 envelope\" vs downstream \"abstract envelope ~10-17\" at L288/L299/L324/L328 — CONFIRMED. Applied Resolution A: reverted abstract to \"~10-17 at broad-multifield competitor\" headline + demoted BF~4 to parenthetical \"lower-envelope sensitivity check at curvaton-natural narrow-competitor\". Preserves all downstream refs. (b) MIN-1 L469 \"since 3.1, insufficient\" prose non-sequitur (3.1 is pre-r-pre-systematic; 1.5-2.5σ is post-budget) — CONFIRMED, expanded sentence to explicitly walk the chain. PDF 21pp/818KB/2 sub-3pt overfull/0 undef. Streak: 1-of-3 reset on v1.7.37.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",
