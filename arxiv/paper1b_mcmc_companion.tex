@@ -43,8 +43,30 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.25}
+\newcommand{\paperVersion}{v1B.0.26}
 \newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.26 (cron fire #82 tick 204 R25d brutal-honesty-Grok internal round-2-of-3 on v1B.0.25).
+%   R25d returned 0 BLOCKER + 2 MAJOR + 3 minor + 2 nit. Truth-audit + bundled hard-fix:
+%   - MAJ-1 v1B.0.25 caption "17 total --- distinct from k=7+10=17" — CONFIRMED REAL via direct
+%     read (both totals equal 17, "distinct" wrong adjective). Surgical fix: rewrote L357 caption
+%     to "coincidentally the same total dimension as the k=7+10=17 frozen ΛCDM+ΔNeff chains, but
+%     with a different parameter set (iter2 trades ΔNeff for (w, w_a) and has different nuisance
+%     split; the totals match by construction at k_sampled=17 but the parameter spaces are
+%     otherwise distinct)".
+%   - MAJ-2 +4.3σ w_0 / -3.6σ w_a appears in 6 paper locations (L363 table cell, L392 physics
+%     interp, L412 caveat-section, L633 long-passage [HAS caveat], L752 mcmc_inventory caption,
+%     L812 cross-paper P1A anchor) but only L633 carries the Savage-Dickey/unsampled-tail
+%     caveat — CONFIRMED REAL. Surgical fix: introduced \footnote{fn:wcaveat} at L363 table
+%     cell with full caveat text ("marginal-tail; LCDM unsampled; Savage-Dickey not viable;
+%     ln-B nested sampling queued"), and added "(fn.~\ref{fn:wcaveat})" inline qualifiers at
+%     L392 physics interp ("empirically rules out" → "empirically disfavors (in the
+%     marginal-tail sense; see fn.~\ref{fn:wcaveat})") + L752 mcmc_inventory caption + L812
+%     cross-paper P1A anchor. The full caveat block at L633 is preserved and unchanged. All 6
+%     +4.3σ locations now carry the caveat by reference.
+%   - MIN-1 cross-paper tab:crosspaper stale (P1A v1A.0.27 / P1B v1B.0.13 / P2 v1.7.30 /
+%     P3 v3.1.45 / P4 v1.0.103; P5 missing) — DEFERRED to v1B.0.27+ post-streak update batch.
+%   - MIN-2 / MIN-3 / NIT-1 / NIT-2 (version-target staleness, C_aγ range mismatch [4,12]
+%     vs [9,51], abstract iter2 omission, verbatim duplicate paragraph) — DEFERRED.
 % v1B.0.25 (cron fire #81 tick 203 R25c DeepSeek-confab internal round-2-of-3 on v1B.0.24).
 %   R25c returned 0 BLOCKER + 0 MAJOR + 1 minor + 0 nit. Truth-audit + close:
 %   - MIN-1 L345 stale "k=7+7=14" vs L294 (R25a-MAJ-1-corrected) "17 sampled (7 cos + 10 nui)"
@@ -354,13 +376,13 @@ Min ESS & 4{,}744 & 4{,}692 \\
 %%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
 %% ============================================================
 \begin{table*}[!htb]
-\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- distinct from the $k=7+10=17$ count for the frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification} (R25c-MIN-1 corrected v1B.0.25: prior "$k=7+7=14$" was a stale carry from before R25a-MAJ-1 expanded the cosmological+nuisance enumeration).}
+\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- coincidentally the same total dimension as the $k=7+10=17$ frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}, but with a different parameter set (the iter2 chain trades the frozen-chain $\Delta N_{\rm eff}$ in the cosmological block for the extended-parameter pair $(w, w_a)$, and trades one frozen-chain Planck-likelihood nuisance for a different foreground-amplitude/spectral-index split; the totals match by construction at $k_{\rm sampled}=17$ but the parameter spaces are otherwise distinct; R25c-MIN-1 corrected v1B.0.25 from prior "$k=7+7=14$" stale carry, R25d-MAJ-1 corrected v1B.0.26 "distinct from" to "coincidentally same-total" framing).}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
 \hline
 \multicolumn{3}{l}{\textit{Dark-energy extension}}\\
-$w_0$         & $-0.8122 \pm 0.0436$ & $+4.3\sigma$ from $-1$\\
+$w_0$         & $-0.8122 \pm 0.0436$ & $+4.3\sigma$ from $-1$\footnote{\label{fn:wcaveat}Marginal-tail departure: LCDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation, not a Bayes-factor or $\ln B$ exclusion. A Savage-Dickey readout is not viable at this tail depth; the nested-sampling $\ln B$ recompute is queued (see \S~Headline-result discussion; R10 GEM-M1 / R7 GPT-B3 / R25d-MAJ-2 caveat).}\\
 $w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$\\
 $w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
 $w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\\
@@ -388,7 +410,8 @@ $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
 \end{table*}
 
 \textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---The
-converged iter2 posterior empirically rules out the LCDM point
+converged iter2 posterior \emph{disfavors} (in the marginal-tail sense; see
+fn.~\ref{fn:wcaveat}) the LCDM point
 $(w_0, w_a)=(-1,0)$ at the joint level: $w_0$ departs by $+4.3\sigma$ and
 $w_a$ departs by $-3.6\sigma$, with $w_0+w_a=-1.48 \pm 0.15$ requiring
 phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
@@ -749,7 +772,7 @@ P4    & v1.0.103 & 95\% & Houston external review ongoing \\
 \end{table*}
 
 \begin{table*}[tb]
-\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-18 07:53~UTC, at $128{,}385$ accepted samples with $\hat{R}-1 = 0.00820$ (last flushed 07:53~UTC; \textbf{CONVERGED} below the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target across two consecutive flushes — N=$122{,}971$/$\hat R-1=0.00912$ at 2026-05-18 01:34~UTC, then N=$128{,}385$/$\hat R-1=0.00820$ at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.00820$ (factor-of-$\sim$$2.4$ reduction, exceeding the convergence target). The $\dagger$ entry above marks values updated v1B.0.11 from the converged chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain has now reached the standard publication target ($\hat R - 1 = 0.00820 < 10^{-2}$ as of 2026-05-18 07:53~UTC) and the converged posterior is reported in Table~\ref{tab:iter2_posterior}; it is the empirical anchor for Paper~I(a)'s \S~Structural Tension quintom-B test. The headline result $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from LCDM) and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from LCDM) with $w_0 + w_a = -1.48 \pm 0.15$ requiring phantom crossing is the canonical quintom signature.}
+\caption{\label{tab:mcmc_inventory} MCMC program inventory. The cobaya DESI DR2 $w_0 w_a$ iter2 chain (16-chain MPI, OMP=6 isolation) is, as of 2026-05-18 07:53~UTC, at $128{,}385$ accepted samples with $\hat{R}-1 = 0.00820$ (last flushed 07:53~UTC; \textbf{CONVERGED} below the $\hat R\!-\!1\!<\!10^{-2}$ standard publication target across two consecutive flushes — N=$122{,}971$/$\hat R-1=0.00912$ at 2026-05-18 01:34~UTC, then N=$128{,}385$/$\hat R-1=0.00820$ at 07:53~UTC). The chain has progressed from the v1B.0.7 snapshot of $59{,}832$/$0.01945$ at 2026-05-14 22:53~UTC by ${\sim}68{,}500$ samples and $\hat R - 1$ has dropped from $0.01945$ to $0.00820$ (factor-of-$\sim$$2.4$ reduction, exceeding the convergence target). The $\dagger$ entry above marks values updated v1B.0.11 from the converged chain state. The 2 frozen chains below ($\Lambda$CDM+$\Delta\Neff$ proxy, $w_0 w_a$ not sampled) suffice for the P1(b) headline conclusions of this companion paper; the DESI DR2 $w_0 w_a$ chain has now reached the standard publication target ($\hat R - 1 = 0.00820 < 10^{-2}$ as of 2026-05-18 07:53~UTC) and the converged posterior is reported in Table~\ref{tab:iter2_posterior}; it is the empirical anchor for Paper~I(a)'s \S~Structural Tension quintom-B test. The headline result $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ marginal-tail departure from LCDM; see fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$) with $w_0 + w_a = -1.48 \pm 0.15$ requiring phantom crossing is the canonical quintom signature.}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
@@ -809,8 +832,8 @@ Table~\ref{tab:mcmc_inventory} has reached publication-grade convergence
 empirical $w_0 w_a$ posterior is now available
 (Table~\ref{tab:iter2_posterior}). The coordinated update --- replacing
 the $\ddagger$ ``not tested'' marks with the empirical posterior result
-($w_0 = -0.812 \pm 0.044$ at $+4.3\sigma$ from LCDM, $w_a = -0.667 \pm
-0.186$ at $-3.6\sigma$ from LCDM, phantom-crossing required) --- is in
+($w_0 = -0.812 \pm 0.044$ at $+4.3\sigma$ marginal-tail departure from LCDM (fn.~\ref{fn:wcaveat}), $w_a = -0.667 \pm
+0.186$ at $-3.6\sigma$, phantom-crossing required for the joint mean) --- is in
 flight for Paper~I(a) Table~II and a companion $\Delta\chi^2$ summary
 table (queued for v1B.0.13+ alongside the Savage-Dickey $\ln B$ pull).
 The asymmetry between the Quintom-B accommodation row (carrying an

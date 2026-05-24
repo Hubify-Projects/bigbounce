@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.25",
-    tldr: "v1B.0.25 (cron fire #81 tick 203): R25c DeepSeek-confab round-2-of-3 on v1B.0.24 returned 0 BLOCKER + 0 MAJOR + 1 minor (clean at blocking bar). MIN-1 L345 stale \"k=7+7=14\" vs L294 (R25a-MAJ-1-corrected) \"17 sampled\" — CONFIRMED, surgical caption update to k=7+10=17 with audit-trail. 17 of 18 numeric claims reconciled exactly: 7 Table I cosmological params, 176,240 sample count, 309,189 cascade arithmetic, iter2 chain (128,385/0.00820/2026-05-18 07:53 UTC) across 6 in-paper locations, w0/wa posterior, NaMaster (β=0.27→0.238 bias 0.032 + β=0.342→0.302 bias 0.040 + consistency 0.77σ), R25b-MAJ-2 amplitude-dependent softening verified in body+conclusion. PDF 11pp/697KB/0 overfull/0 undef.",
+    version: "v1B.0.26",
+    tldr: "v1B.0.26 (cron fire #82 tick 204): R25d brutal-honesty-Grok round-2-of-3 on v1B.0.25 returned 0/2 MAJ. (a) MAJ-1 v1B.0.25 \"17 total — distinct from k=7+10=17\" both =17, \"distinct\" wrong adjective — CONFIRMED, caption rewritten to \"coincidentally same-total\" with explicit parameter-set distinction. (b) MAJ-2 +4.3σ w_0 caveat propagation — CONFIRMED REAL: +4.3σ appears in 6 sites but only L633 has the Savage-Dickey/unsampled-tail caveat; introduced \\footnote{fn:wcaveat} at L363 table cell + inline \"see fn.~\\ref{fn:wcaveat}\" qualifiers at L392 (\"empirically rules out\"→\"empirically disfavors (marginal-tail sense)\") + L752 caption + L812 cross-paper P1A anchor. MIN-1 cross-paper tab:crosspaper staleness + MIN-2/3 + NIT-1/2 deferred. PDF 11pp/702KB/0 overfull/0 undef.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -138,8 +138,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.35",
-    tldr: "v1.7.35 (cron fire #81 tick 203): R-next-c brutal-honesty-Grok round-2-of-3 on v1.7.34 returned 1 MAJ + 1 MIN — **streak broken, both confirmed via scipy.stats.norm**. MAJ-1 abstract BF≈6 at (σ_th=1.0, [-5,+5]) → scipy=4.01 (off ~50%). MIN-1 abstract BF≈8 at (σ_th=1.0, [-15,+15]) → scipy=9.80 (paper under-reported ~22%). Surgical sweep: abstract+L216+L241+L245+L253+L260+L266+L270+L272+L289+L293+L436 all 6→4 narrow / 8→10 broad with explicit \"corrected v1.7.35 R-next-c-MAJ-1 via scipy.stats.norm\" audit-trail. Delta-prior rows EXACT against scipy (7.00 narrow, 17.10 broad) unchanged. Abstract envelope BF~8-17 → BF~10-17. PDF 21pp/818KB/2 sub-3pt overfull/0 undef. Streak: round 1-of-3 reset on v1.7.35.",
+    version: "v1.7.36",
+    tldr: "v1.7.36 (cron fire #82 tick 204): R-next-d theoretical-physics-Gemini round-2-of-3 on v1.7.35 returned 0/2 MAJ/3 min — v1.7.35 sweep MISSED 5 sites (MAJ-1 L295 bolded row $\\sim\\mathbf{8}$, MAJ-2 L309 QSFI BF~6-17, MIN-1 σ_th=0.5/2.0 rows 12/4 vs scipy 13.91/5.65, MIN-2 L450 conclusion >6×10^5 stale, MIN-3 dangling tab:bayes_minimal ref). ALL CONFIRMED + surgically closed: L295 8→10, L309 6-17→10-17, L254/L256/L296/L297 12→14 + 4→6 with scipy attribution, L450 \"6×10^5\"→\"3×10^5 across 3 framework ensembles\", L303 caption tab:bayes_minimal→\"inline 2-row tabular preceding\". PDF 21pp/818KB/4 sub-13pt overfull/0 undef.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",
