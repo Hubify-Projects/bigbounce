@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.28-2026-05-23",
-    tldr: "v0.1.28 (cron fire #70): R4 verification flagged 1 MAJOR (#N8 streak-break) — robustness-grid JSON had 7 of 9 cells (NSIDE=64 cuts 200/500 are sample-limited at n_pix_both<3). Honest correction: regenerated grid script to record ALL 9 cells including sample-limited ones; paper text now reads '7 of 9 cells admit a well-sampled Pearson estimate; the remaining 2 (NSIDE=64 cuts 200/500) are sample-limited because the high-cut × fine-pixel combination filters out most pixels with both ≥1 maximal void and ≥cut spirals; the 7 computable cells all return |r|<0.11 with p>0.10'. Streak resets at v0.1.28; needs fresh 3-consec-clean. PDF 908KB / 0 overfull / 0 undef.",
+    version: "v0.1.29-2026-05-24",
+    tldr: "v0.1.29 (cron fire #74): R8 Grok-perspective brutal stress-test caught 3 MAJOR + 2 minor that 7 prior Anthropic-default reviews missed (independent re-verification). Closed all 5: (1) Abstract 'statistically independent' → 'no environment dependence above sensitivity floor ~0.2pp filament/cluster, ~5pp void'. (2) Demoted DESIVAST quartet to 're-projections methodologically correlated by construction'; promoted Tempel as load-bearing independent classifier. (3) Filament sign-flip framing: 'filament-class sign-flip is consistent with BGS-selection origin; cluster-class test sample-size-limited and does not independently confirm or refute' — removed 'alone is sufficient'. (4) P4→P5 monopole arithmetic: 9.5σ/√(N_P4/N_P5) ≈ 4.62σ predicted vs 5.00σ observed; residual 8% from BGS-bright weighting. (5) Bounce-vs-inflation reframed: 'establishes observational upper bound any future parity-violating model must respect' (not 'consistent with both'). PDF 909KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

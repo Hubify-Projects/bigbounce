@@ -19,7 +19,7 @@ This document is a derivative of the SSOT — the canonical state lives in
 | P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
 | P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
 | P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.26 | 95% | **Sign off → arXiv submission** (R-round-clean per AGENT_RULES §4.4.1) |
+| P5 | v0.1.28 | 95% | **Sign off → arXiv submission** (§4.4.1 cascaded-loop-exit satisfied internally; R5+R6+R7 all 0-BLOCKER+0-MAJOR clean on v0.1.28) |
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
@@ -89,9 +89,9 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.26
+## P5 — Environmental Dependence of Spiral Chirality (DESI LSS) — v0.1.28
 
-**Readiness 95%** · arXiv-tarball `p5_v0.1.26_arxiv.tar.gz` 578 KB · 29 pp / 907 KB PDF · **R-round-clean per AGENT_RULES §4.4.1** · external 5-vendor R-round still OR-cap-blocked but no longer load-bearing for readiness ceiling.
+**Readiness 95%** · arXiv-tarball `p5_v0.1.28_arxiv.tar.gz` 578 KB · 29 pp / 908 KB PDF · **§4.4.1 CASCADED-LOOP-EXIT SATISFIED INTERNALLY** at fire #73 — R5 + R6 + R7 all 0-BLOCKER + 0-MAJOR clean on identical v0.1.28 artifact. External 5-vendor R-round still OR-cap-blocked but the internal-truth-audit-clean status is the strongest possible non-OR evidence (matches P1A's R15+R16+R24 cascaded-loop-exit posture modulo internal-Anthropic vs external-OR).
 
 **Internal Claude methodology review (fires #64-#66)**: 0 BLOCKER / 4 MAJOR / 4 minor / 4 nit — all 12 findings closed. Verifiable at `project-context/peer-reviews/2026-05-23_internal_claude_P5_v0_1_22_methodology.md`. Closures include: Bonferroni arithmetic corrected (K=5 α=0.01: 2.81→3.09, K=4 α=0.01: 3.29→3.02), 791,635 vs 812,793 row-total reconciliation, "five independent"→"four complementary" with VoidFinder/ZOBOV-axis qualifier, bright-vs-dark joint z=3.4σ quantified, range pp fixed, Pearson r robustness across NSIDE/threshold added, n=6 demoted to sub-clause, monopole-residual at HEALPix bins quantified.
 

@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.28-2026-05-23}
-\newcommand{\paperTimestamp}{May 23, 2026 PDT}
+\newcommand{\paperVersion}{v0.1.29-2026-05-24}
+\newcommand{\paperTimestamp}{May 24, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -80,8 +80,11 @@ Cautun~\textit{et~al.}~2014 \cite{Cautun2014}) on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. \textbf{Headline result:} the CW
-fraction is statistically independent of cosmic-web class within DESI
-DR1 at V-Web resolution. Per-class CW fractions on the $791{,}635$
+fraction shows no environment dependence above the sensitivity floor
+set by counting statistics and the Paper~IV catalog-monopole, namely
+$\sim\!0.2$\,pp for V-Web filament/cluster ($n \gtrsim 4 \times 10^5$)
+and $\sim\!5$\,pp for V-Web void ($n = 428$), within DESI DR1 at V-Web
+resolution. Per-class CW fractions on the $791{,}635$
 chirality-relevant spirals are $0.4836$ (void; $n\!=\!428$,
 $-0.68\sigma$), $0.5034$ (wall; $n\!=\!6{,}673$, $+0.55\sigma$),
 $0.4980$ (filament; $n\!=\!408{,}187$, $-2.61\sigma$), and
@@ -106,12 +109,16 @@ correction. We interpret this as a clean null for environmental
 dependence of large-scale spiral chirality within the DESI DR1 footprint
 at the resolution probed.
 
-\textbf{Robustness.} We strengthen the headline with four complementary
-catalog-anchored cross-checks against the concurrently-released
-DESIVAST DR1 BGS void catalog~\cite{DESIVAST2025} (genuinely
-independent methodologically across the VoidFinder sphere-growing
-vs.\ ZOBOV watershed axes; the per-galaxy and HEALPix-stratified
-tests reuse the same matched-spiral subsample by design):
+\textbf{Robustness.} We strengthen the headline with the Tempel
+\textit{et~al.}~2014~\cite{Tempel2014} friends-of-friends group
+classifier as the independent-classifier check (different parent
+catalog, SDSS DR10, with richness selection rather than tidal-tensor;
+filament-class concordance $0.026$\,pp; this is the load-bearing
+external-classifier validation) and four DESIVAST-anchored
+re-projections of the V-Web null on a $\sim\!130\times$ larger void
+sample (methodologically correlated by construction because they
+reuse the same matched-spiral subsample, but spanning the
+VoidFinder sphere-growing vs.\ ZOBOV watershed algorithmic axes):
 (i) re-running the chirality analysis with DESIVAST-defined voids
 \emph{as the classifier} (rather than V-Web) on
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ matched spirals
@@ -142,11 +149,13 @@ bright $-2.80$ vs dark $+2.85$, opposite sign). The joint two-sample
 z-test on the bright-vs-dark $f_{\rm CW}$ difference is
 $|z| \approx 3.4\sigma$ on the filament class (where the dark sample
 $n=21{,}203$ is large enough to test); the cluster class joint
-$|z| \approx 0.5\sigma$ is null at counting-statistics noise because
-the cluster-restricted dark sample $n=4{,}234$ is too small to power
-the test, but the filament-class sign-flip alone is sufficient to
-establish that the catalog-level deviation is selection-function-
-conditioned rather than environment-driven.
+$|z| \approx 0.5\sigma$ is sample-size-limited ($n_{\rm dark}^{\rm
+cluster} = 4{,}234$) and does not independently confirm or refute the
+selection-function-conditioned interpretation. The filament-class
+sign-flip is consistent with a BGS-selection-function origin; a fully
+independent cluster-class test is left to future Rubin/LSST + DESI
+DR2 follow-up where the cluster-restricted dark sample will be
+$\gtrsim 5\times$ larger.
 \end{abstract}
 
 \maketitle
@@ -1178,7 +1187,16 @@ are sample-size-scaled projections of the same underlying offset),
 which is the propagation of the
 $\sim\!9.5\sigma$ catalog-level monopole reported in
 Paper~IV~\cite{golden_chirality_2026} into the DESI-spectro-confirmed
-subsample. Replacing the $f_{\rm CW} - 0.5$ null with
+subsample. \emph{Arithmetic reconciliation:} the P4 monopole
+$\Delta f_{\rm CW}^{\rm P4} = -0.0026$ projects to
+$\sigma_{\rm pred}^{\rm P5} = 2 \cdot 0.0026 \cdot \sqrt{791{,}635}
+\approx 4.62\sigma$ on the chirality-relevant subsample; the observed
+$-5.00\sigma$ corresponds to $\Delta f_{\rm CW}^{\rm P5} \approx
+-0.0028$, ${\sim}8\%$ larger than the P4 catalog-mean. This residual
+$8\%$ enhancement is consistent with the spectroscopically-confirmed
+subsample being more strongly weighted to the BGS-bright leg that
+Paper~IV identifies as carrying the largest per-leg
+selection-function residual, not an additional environmental signal. Replacing the $f_{\rm CW} - 0.5$ null with
 $f_{\rm CW} - f_{\rm CW}^{\rm P5}$ gives the residual environment
 signal after the catalog-wide classifier-bias monopole is removed:
 
@@ -1303,10 +1321,12 @@ deviations after look-elsewhere correction.
 A positive detection of environmental chirality dependence at the
 percent level would have been a discriminator between primordial
 parity-violating scenarios that source coherent angular momentum and
-those that do not. The present null is consistent with both
-matter-bounce and inflation-class models: neither predicts an
-environment-dependent CW fraction at the resolution of DESI DR1
-spectro spirals. Paper~II~\cite{golden_fnl_2026} and Paper~III provide
+those that do not. The present null does not currently
+discriminate between matter-bounce and inflation-class models because
+no published model in either class predicts an environment-dependent
+CW signature at DESI DR1 sensitivity; the null instead establishes an
+observational upper bound that any future parity-violating model
+proposing an environment-dependent chirality signature must respect. Paper~II~\cite{golden_fnl_2026} and Paper~III provide
 independent discriminators (primordial $f_{\rm NL}$ and multi-survey
 anomaly statistics); this null adds a clean negative result on the
 spiral-chirality axis.
