@@ -305,7 +305,7 @@ export const papers: Paper[] = [
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
     version: "v0.1.30-2026-05-24",
-    tldr: "v0.1.30 (cron fire #75): R9 cross-model verification verified all 5 R8 closures arithmetically; flagged 3 minors. Closed: (1) '4.62σ' → '4.6σ' precision matching Δ=0.0026 input (2-sig-fig). (2) Sensitivity-floor metric switch clarified: 0.2pp = systematic-dominated monopole offset (filament/cluster); 5pp = statistical-dominated counting-statistics (void at ~2σ binomial null). (3) Bib check verified — TWebDESI2026/ASTRADESI2026 cited multiple times in §VII.E, not orphan. PDF 909KB / 0 overfull / 0 undef. Paper at v0.1.30 ready for fresh §4.4.1 streak attempt.",
+    tldr: "v0.1.30 (cron fire #78 tick 200): 🎯🎯🎯 §4.4.1 CASCADED-LOOP-EXIT GATE SATISFIED UNDER FULL CROSS-MODEL COVERAGE. Three-round clean streak on the same v0.1.30 PDF artifact under 5-model-class rotation: R10 (Gemini-cosmology + GPT-5 + Grok-brutal) = 0/0/0/0 + R11 (Perplexity-citation + DeepSeek-confab) = 0/0/0/2-nits-below-threshold + R12 (brutal-honesty-Gemini + theoretical-physics) = 0/0/0/0×2. P5 joins P1A as 2nd paper in portfolio to clear §4.4.1; 1st to do it under explicit cross-model rotation. Remaining 4% to 99% = Houston sign-off + first external OR-based 5-vendor R-round (both Houston-dependent). PDF 909KB / 29pp / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
