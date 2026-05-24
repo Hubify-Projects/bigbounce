@@ -89,7 +89,7 @@ export const papers: Paper[] = [
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
     version: "v1B.0.26",
-    tldr: "v1B.0.26 (cron fire #82 tick 204): R25d brutal-honesty-Grok round-2-of-3 on v1B.0.25 returned 0/2 MAJ. (a) MAJ-1 v1B.0.25 \"17 total — distinct from k=7+10=17\" both =17, \"distinct\" wrong adjective — CONFIRMED, caption rewritten to \"coincidentally same-total\" with explicit parameter-set distinction. (b) MAJ-2 +4.3σ w_0 caveat propagation — CONFIRMED REAL: +4.3σ appears in 6 sites but only L633 has the Savage-Dickey/unsampled-tail caveat; introduced \\footnote{fn:wcaveat} at L363 table cell + inline \"see fn.~\\ref{fn:wcaveat}\" qualifiers at L392 (\"empirically rules out\"→\"empirically disfavors (marginal-tail sense)\") + L752 caption + L812 cross-paper P1A anchor. MIN-1 cross-paper tab:crosspaper staleness + MIN-2/3 + NIT-1/2 deferred. PDF 11pp/702KB/0 overfull/0 undef.",
+    tldr: "v1B.0.26 (cron fire #83 tick 205): R25e DeepSeek-confab round 1-of-3 of fresh streak on v1B.0.26 = 0/0/0/1-nit-deferrable (paper survives confab cross-check). Verified all 6 +4.3σ sites now carry fn:wcaveat caveat reference (L385 definition + L412/L435/L656/L775/L835 inline). All 7 Table I cosmological params reconcile to 4-sig-fig against full_tension_physical_parameters.json. R25d-MAJ-1 closure caption rewrite (\"coincidentally same-total\") verifies clean against §V.A parameter enumeration. PDF 11pp/702KB/0 overfull/0 undef unchanged. Streak: 1-of-3 on v1B.0.26; rounds 2+3 on unchanged artifact next 2 fires.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -139,7 +139,7 @@ export const papers: Paper[] = [
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
     version: "v1.7.36",
-    tldr: "v1.7.36 (cron fire #82 tick 204): R-next-d theoretical-physics-Gemini round-2-of-3 on v1.7.35 returned 0/2 MAJ/3 min — v1.7.35 sweep MISSED 5 sites (MAJ-1 L295 bolded row $\\sim\\mathbf{8}$, MAJ-2 L309 QSFI BF~6-17, MIN-1 σ_th=0.5/2.0 rows 12/4 vs scipy 13.91/5.65, MIN-2 L450 conclusion >6×10^5 stale, MIN-3 dangling tab:bayes_minimal ref). ALL CONFIRMED + surgically closed: L295 8→10, L309 6-17→10-17, L254/L256/L296/L297 12→14 + 4→6 with scipy attribution, L450 \"6×10^5\"→\"3×10^5 across 3 framework ensembles\", L303 caption tab:bayes_minimal→\"inline 2-row tabular preceding\". PDF 21pp/818KB/4 sub-13pt overfull/0 undef.",
+    tldr: "v1.7.36 (cron fire #83 tick 205): R-next-e Perplexity-citation round 1-of-3 of fresh streak on v1.7.36 = 0 BLOCKER + 0 MAJOR + 2 minor hygiene (paper survives citation cross-check). 38 unique \\cite{} keys all resolve; 6/6 load-bearing externals (Heinrich:2023, Cai:2009fn, WilsonEwing:2012, Maldacena:2002vr, Pajer:2013+TanakaUrakawa:2011, Schlegel:2022) prose-vs-source-accurate. L303→L324 dangling tab:bayes_minimal fix verified — 0 undefined-reference warnings. 2 deferrable hygiene minors: Cabass:2022 + Minami2020 orphan bibitems; L324 \"immediately before\" mildly imprecise. PDF 21pp/818KB/4 sub-13pt overfull/0 undef unchanged. Streak: 1-of-3 on v1.7.36; rounds 2+3 on unchanged artifact next 2 fires.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",
