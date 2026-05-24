@@ -43,8 +43,27 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.23}
+\newcommand{\paperVersion}{v1B.0.24}
 \newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.24 (cron fire #80 tick 202 R25b theoretical-physics-Gemini internal round-1-of-3 on v1B.0.23).
+%   R25b returned 1 BLOCKER + 2 MAJOR + 2 minor + 0 nit. Truth-audit + bundled hard-fix:
+%   - BLK-1 beta range [0.17,0.43] vs naive [0.027,0.44] arithmetic — PARTIALLY FALSIFIED. The
+%     [0.17,0.43] range is a joint-trajectory scan over coupled (C_aγ, m/H_0, θ_i) parameters
+%     where Δφ/f_a is a function of (m/H_0, θ_i) not an independent variable; reviewer treated
+%     [4,12]×[0.2,1.1]×0.0333 as an independent-extremes product which over-extends the lower
+%     bound. Range is correct but warrants explicit clarification — added 1-paragraph note
+%     at the [0.17,0.43] statement explaining the coupled-trajectory scan vs independent-extremes
+%     envelope distinction, naming the naive [0.027,0.44] envelope for the reader. Closes the
+%     v1B.0.13-deferred GPT-B6 carried forward from R-round campaign history.
+%   - MAJ-1 Table I n_s σ "0.965 ± 0.004" — CONFIRMED REAL via direct JSON readout
+%     (full_tension_physical_parameters.json ns.std = 0.0061835 → rounds to 0.006). Fixed
+%     Table I L306 column 1: 0.004 → 0.006.
+%   - MAJ-2 NaMaster bias "≤ 0.032°" at L811 — CONFIRMED REAL. L536-544 body text already
+%     reports the amplitude-dependent split (0.032° at the 0.27° injection, 0.040° at the
+%     0.342° injection). Conclusion-section L811 now reads "amplitude-dependent bias
+%     0.032--0.040° (worst-case 0.040° at injection β=0.342°; see §VI body text)" to match.
+%   - MIN-1 chain 6 vs chains 1-5 weight-imbalance + MIN-2 C_aγ ∈ [9,51] "natural" vs §VI [4,12]
+%     deferred to v1B.0.25+ next-fire round-2-of-3.
 % v1B.0.23 (cron fire #79 tick 201 R25a brutal-honesty-Grok internal round-1-of-3 cross-model streak).
 %   R25a returned 1 BLOCKER + 2 MAJOR + 2 minor + 1 nit. Truth-audit + bundled hard-fix:
 %   - BLK-1 sample-count "176,840" vs JSON-cited "176,240" — CONFIRMED REAL via direct chain count
@@ -303,7 +322,7 @@ $\sigma_8$ & $0.803 \pm 0.008$ & $0.812 \pm 0.009$ \\
 $S_8$ & $0.814 \pm 0.008$ & $0.831 \pm 0.018$ \\
 $\Omega_m$ & $0.308 \pm 0.005$ & $0.312 \pm 0.006$ \\
 $\tau$ & $0.054 \pm 0.007$ & $0.056 \pm 0.007$ \\
-$n_s$ & $0.965 \pm 0.004$ & $0.967 \pm 0.006$ \\
+$n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
@@ -643,6 +662,12 @@ The fiducial value $\beta\approx 0.27^\circ$ corresponds to the midpoint
 $m\approx 1.8\,H_0$, $\Delta\phi/f_a\approx 1.0$. The prediction spans
 $\beta\approx 0.17$--$0.43^\circ$ over $C_{a\gamma}\in[4,12]$, $m/H_0\in[1,3]$,
 $\theta_i\in[0.5,2]$, comfortably bracketing the observed value without fine-tuning.
+The range $[0.17,0.43]^\circ$ is obtained from a joint-trajectory scan over the
+\emph{coupled} $(C_{a\gamma}, m/H_0, \theta_i)$ space and not from an
+independent-extremes product (which would give the wider naive envelope
+$[0.027,0.44]^\circ$); $\Delta\phi/f_a$ is a function of $m/H_0$ and $\theta_i$
+along ALP trajectories rather than an independent variable (R25b-BLK-1
+clarification, v1B.0.24).
 
 \textit{Summary-likelihood combination (auxiliary cross-check).}---Combining
 $\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{DiegoPalazuelos2022}) and
@@ -808,7 +833,7 @@ The Savage-Dickey/$\Delta$AIC/$\Delta$BIC model-comparison block from earlier ve
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 the Planck Commander map confirms that the deconvolution pipeline recovers
-injected birefringence angles with bias $\leq 0.032^\circ$ at SNR consistent
+injected birefringence angles with amplitude-dependent bias $0.032$--$0.040^\circ$ (worst-case $0.040^\circ$ at injection $\beta=0.342^\circ$; see §VI body text) at SNR consistent
 with the ACT-noise floor. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
 the published Planck/ACT~DR6 $2.4$--$2.9\sigma$ measurements.

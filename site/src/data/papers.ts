@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.23",
-    tldr: "v1B.0.23 (cron fire #79 tick 201): R25a brutal-honesty-Grok internal round-1-of-3 cross-model streak landed 1 BLOCKER + 2 MAJOR + 1-falsified + 3-below-threshold. (a) BLK-1 sample-count: paper said 176,840 but ground-truth chain row count = 176,240 (matches full_tension_physical_parameters.json total_samples). Surgical fix: 8 occurrences of 176,840 → 176,240; cascade derived arithmetic 309,789 → 309,189, 216,852 → 216,432, 123,788 → 123,368. (b) MAJ-1 R-hat coverage: paper said \"all 14 sampled params (7 cos + 7 nui)\" but chain header enumerates 17 sampled (7 cos + 10 nui); footnote rewritten with explicit 10-nuisance enumeration. (c) MAJ-2 +4.3σ Bayesian/frequentist: FALSIFIED — L584 already includes R10 GEM-M1 / R7 GPT-B3 caveat (Savage-Dickey not viable, LCDM unsampled, kernel-dependent noise, ln-B recompute queued). PDF 11pp/696KB/0 overfull/0 undef. Round 2-of-3 (different model class) fires next cycle.",
+    version: "v1B.0.24",
+    tldr: "v1B.0.24 (cron fire #80 tick 202): R25b theoretical-physics-Gemini round-1-of-3 on v1B.0.23 returned 1 BLOCKER + 2 MAJOR. (a) BLK-1 β range [0.17,0.43] vs naive [0.027,0.44] product — PARTIALLY FALSIFIED (joint-trajectory scan over coupled (C_aγ, m/H_0, θ_i), not independent-extremes product); added 1-paragraph clarification at the range statement. (b) MAJ-1 Table I n_s σ \"0.965±0.004\" — CONFIRMED via JSON readout (ns.std=0.00618 → 0.006); column 1 σ fixed 0.004→0.006. (c) MAJ-2 NaMaster bias \"≤0.032°\" at L811 — CONFIRMED (L536-544 body says 0.040° at the 0.342° injection); softened to \"amplitude-dependent 0.032–0.040°\". PDF 11pp/696KB/0 overfull/0 undef. Streak: 1-of-3 on v1B.0.24.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -138,8 +138,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.33",
-    tldr: "v1.7.33 (cron fire #20): inline center+tabular → table* eliminated the last 83pt residual. **0 OVERFULLS** — first fully-clean P2 compile in campaign. Cumulative reduction across #18-20: 3508pt → 0pt (100%). R23+R24+R25 cascaded-loop exit. 20pp/816KB / 0 undef refs.",
+    version: "v1.7.34",
+    tldr: "v1.7.34 (cron fire #80 tick 202): R-next-a theoretical-physics round-1-of-3 returned 2 MAJ + 3 min + 1 nit. (a) MAJ-1 \"κ₁=80 implies 30% f_NL shift\" — FALSIFIED via direct arithmetic: 80 × Δε_quasi-dust(0.0045) / 4.375 = 8.2%, consistent with paper's 0.6-8% range; reviewer conflated n_s-deviation regime with w-deviation regime. (b) MAJ-2 L419 \"inflation predicts strictly 0\" — CONFIRMED REAL via internal-consistency check (L29/L38 of same paper say \"→ 0 at leading order\" / \"parametrically smaller\"); L419 softened to \"vanishes at leading order in slow-roll with O(slow-roll) residuals\". R-next-b Perplexity-citation = 0/0/2 minor clean. PDF 21pp/817KB/2 sub-3pt overfull/0 undef. Streak: 1-of-3 on v1.7.34.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",
