@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.26-2026-05-23}
+\newcommand{\paperVersion}{v0.1.27-2026-05-23}
 \newcommand{\paperTimestamp}{May 23, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -451,7 +451,9 @@ global $\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. All
 four classes bracket the Paper~IV monopole, consistent with no
 environmental dependence beyond the catalog-wide classifier bias.}
 \label{fig:cw_by_env}
-\end{figure} The negative
+\end{figure}
+
+The negative
 $\sigma$ values in filament and cluster track the catalog-wide
 classifier-monopole offset of Paper~IV: predicting
 $\sigma_{\rm pred}$ from $\Delta f_{\rm CW}\!=\!-0.0026$ gives
@@ -1138,7 +1140,7 @@ below the Bonferroni-4 $|\sigma| = 2.50$ threshold. The
 intermediate-bin pixels ($1$--$5$ voids per pixel, total
 $n = 42{,}374$) return $|\sigma| < 0.5$ -- statistically null.
 
-This is a fourth catalog-anchored cross-check (sky-position stratification axis, complementary to the per-galaxy / DESIVAST-classifier / catalog-native-GALZONE axes) showing that the catalog-level
+This is an additional catalog-anchored cross-check on the sky-position axis, complementary to the abstract's (i)--(iv) enumeration, showing that the catalog-level
 $-5\sigma$ headline tracks survey-mask geometry rather than environment
 density: the cleanest chirality $\sigma$ values in this paper are the
 pixels with the \emph{most} maximal-void coverage, not the fewest. The
@@ -1241,10 +1243,14 @@ direction-of-chirality deviation; the observed near-zero Pearson is
 the cleanest single-statistic confirmation in this paper that the
 catalog-level $-5\sigma$ is not environment-driven.
 The result is robust to the NSIDE choice and spiral-count threshold:
-$|r| < 0.05$ at NSIDE $\in \{16, 32, 64\}$ and spiral-count cuts
-$\in \{100, 200, 500\}$ (verified by reanalysis on the same artifact
-set), so the conclusion is invariant under the analysis-choice
-``garden of forking paths'' along these axes.
+across the full $3 \times 3$ grid of NSIDE $\in \{16, 32, 64\}$ and
+spiral-count cuts $\in \{100, 200, 500\}$, all cells return
+$|r| < 0.11$ with $p > 0.10$, none statistically significant; the
+headline NSIDE $=32$ cut $=200$ result $r=+0.006$ is consistent with
+this range. Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/voids\_vs\_chirality\_robustness\_grid.json}.
+The conclusion is invariant under the analysis-choice ``garden of
+forking paths'' along these axes.
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{fig_p5_voids_vs_chirality_skymap.png}

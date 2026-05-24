@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.26-2026-05-23",
-    tldr: "v0.1.26 (cron fire #67): second internal Claude review (R2) returned 0 BLOCKER / 0 MAJOR / 3 minor / 3 nit, meeting AGENT_RULES §4.4.1 cascaded-loop-exit criterion. ⚠️ **CRITICAL CORRECTION**: R2 caught that the fire-#64 cluster-side joint-z claim was based on the WRONG n (used entire matched-sample bright/dark instead of cluster-restricted). Persisted cluster_within_class_decomposition.json: cluster-bright n=392,342 σ=−4.74 vs cluster-dark n=4,234 σ=+0.03 → joint z=**−0.52σ** (null at counting-statistics noise; dark sample too small). Filament-side joint z=−3.40σ stands. Abstract honestly updated: only filament class powers the joint test; cluster sign-flip is dark-sample-limited. Also closed N1 row-total reconciliation + N2 'fifth independent' → 'fourth catalog-anchored cross-check'. R-round-clean per AGENT_RULES §4.4.1. PDF 907KB / 0 overfull / 0 undef.",
+    version: "v0.1.27-2026-05-23",
+    tldr: "v0.1.27 (cron fire #69): R3 verification = 2nd CONSECUTIVE clean (0 BLOCKER / 0 MAJOR / 1 minor / 1 nit); closed all 4 open findings #N5/N6/N7/N8. ⚠️ **CRITICAL CORRECTION #2**: persisting the robustness-grid JSON for #N5 caught that the fire-#57 claim '|r|<0.05 at NSIDE∈{16,32,64} and spiral-cuts∈{100,200,500}' was wrong — at NSIDE=16 |r| reaches 0.10 (still p>0.10 null). Honest correction: '|r|<0.11 with p>0.10 across all 3×3 cells; headline NSIDE=32 r=+0.006 consistent with this range'. Also fixed N6 figure-float run-on + N7 abstract-vs-body enumeration mismatch + N8 13-line parenthetical reduction. PDF 908KB / 0 overfull / 0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",
