@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.24",
-    tldr: "v1B.0.24 (cron fire #80 tick 202): R25b theoretical-physics-Gemini round-1-of-3 on v1B.0.23 returned 1 BLOCKER + 2 MAJOR. (a) BLK-1 β range [0.17,0.43] vs naive [0.027,0.44] product — PARTIALLY FALSIFIED (joint-trajectory scan over coupled (C_aγ, m/H_0, θ_i), not independent-extremes product); added 1-paragraph clarification at the range statement. (b) MAJ-1 Table I n_s σ \"0.965±0.004\" — CONFIRMED via JSON readout (ns.std=0.00618 → 0.006); column 1 σ fixed 0.004→0.006. (c) MAJ-2 NaMaster bias \"≤0.032°\" at L811 — CONFIRMED (L536-544 body says 0.040° at the 0.342° injection); softened to \"amplitude-dependent 0.032–0.040°\". PDF 11pp/696KB/0 overfull/0 undef. Streak: 1-of-3 on v1B.0.24.",
+    version: "v1B.0.25",
+    tldr: "v1B.0.25 (cron fire #81 tick 203): R25c DeepSeek-confab round-2-of-3 on v1B.0.24 returned 0 BLOCKER + 0 MAJOR + 1 minor (clean at blocking bar). MIN-1 L345 stale \"k=7+7=14\" vs L294 (R25a-MAJ-1-corrected) \"17 sampled\" — CONFIRMED, surgical caption update to k=7+10=17 with audit-trail. 17 of 18 numeric claims reconciled exactly: 7 Table I cosmological params, 176,240 sample count, 309,189 cascade arithmetic, iter2 chain (128,385/0.00820/2026-05-18 07:53 UTC) across 6 in-paper locations, w0/wa posterior, NaMaster (β=0.27→0.238 bias 0.032 + β=0.342→0.302 bias 0.040 + consistency 0.77σ), R25b-MAJ-2 amplitude-dependent softening verified in body+conclusion. PDF 11pp/697KB/0 overfull/0 undef.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -138,8 +138,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.34",
-    tldr: "v1.7.34 (cron fire #80 tick 202): R-next-a theoretical-physics round-1-of-3 returned 2 MAJ + 3 min + 1 nit. (a) MAJ-1 \"κ₁=80 implies 30% f_NL shift\" — FALSIFIED via direct arithmetic: 80 × Δε_quasi-dust(0.0045) / 4.375 = 8.2%, consistent with paper's 0.6-8% range; reviewer conflated n_s-deviation regime with w-deviation regime. (b) MAJ-2 L419 \"inflation predicts strictly 0\" — CONFIRMED REAL via internal-consistency check (L29/L38 of same paper say \"→ 0 at leading order\" / \"parametrically smaller\"); L419 softened to \"vanishes at leading order in slow-roll with O(slow-roll) residuals\". R-next-b Perplexity-citation = 0/0/2 minor clean. PDF 21pp/817KB/2 sub-3pt overfull/0 undef. Streak: 1-of-3 on v1.7.34.",
+    version: "v1.7.35",
+    tldr: "v1.7.35 (cron fire #81 tick 203): R-next-c brutal-honesty-Grok round-2-of-3 on v1.7.34 returned 1 MAJ + 1 MIN — **streak broken, both confirmed via scipy.stats.norm**. MAJ-1 abstract BF≈6 at (σ_th=1.0, [-5,+5]) → scipy=4.01 (off ~50%). MIN-1 abstract BF≈8 at (σ_th=1.0, [-15,+15]) → scipy=9.80 (paper under-reported ~22%). Surgical sweep: abstract+L216+L241+L245+L253+L260+L266+L270+L272+L289+L293+L436 all 6→4 narrow / 8→10 broad with explicit \"corrected v1.7.35 R-next-c-MAJ-1 via scipy.stats.norm\" audit-trail. Delta-prior rows EXACT against scipy (7.00 narrow, 17.10 broad) unchanged. Abstract envelope BF~8-17 → BF~10-17. PDF 21pp/818KB/2 sub-3pt overfull/0 undef. Streak: round 1-of-3 reset on v1.7.35.",
     blockingItems: [
       "SSOT readiness refresh (82 → 95+)",
       "Fresh PDF compile on latest .tex (verify date stamp)",

@@ -43,8 +43,20 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.24}
+\newcommand{\paperVersion}{v1B.0.25}
 \newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.25 (cron fire #81 tick 203 R25c DeepSeek-confab internal round-2-of-3 on v1B.0.24).
+%   R25c returned 0 BLOCKER + 0 MAJOR + 1 minor + 0 nit. Truth-audit + close:
+%   - MIN-1 L345 stale "k=7+7=14" vs L294 (R25a-MAJ-1-corrected) "17 sampled (7 cos + 10 nui)"
+%     — CONFIRMED REAL. Surgical fix: L345 caption changed to "k=7+10=17" with corrected-from
+%     audit note pointing at R25a-MAJ-1.
+%   - Verified 17 of 18 numeric claims reconcile exactly against on-disk JSON/CSV/chains:
+%     all 7 Table I cosmological params, 176,240 sample count, 309,189 cascade arithmetic,
+%     iter2 chain status (128,385 / 0.00820 / 2026-05-18 07:53 UTC) across 6 in-paper locations,
+%     w0/wa posterior summary, NaMaster (β=0.27→0.238 bias 0.032 SNR=20.32 + β=0.342→0.302
+%     bias 0.040 SNR=25.71 + consistency 0.77σ), R25b-MAJ-2 amplitude-dependent softening
+%     verified in body + conclusion. Round 2-of-3 streak now at 1-of-3 again on v1B.0.25
+%     (surgical edit reset the artifact; next-fire round-2-of-3 starts here).
 % v1B.0.24 (cron fire #80 tick 202 R25b theoretical-physics-Gemini internal round-1-of-3 on v1B.0.23).
 %   R25b returned 1 BLOCKER + 2 MAJOR + 2 minor + 0 nit. Truth-audit + bundled hard-fix:
 %   - BLK-1 beta range [0.17,0.43] vs naive [0.027,0.44] arithmetic — PARTIALLY FALSIFIED. The
@@ -342,7 +354,7 @@ Min ESS & 4{,}744 & 4{,}692 \\
 %%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
 %% ============================================================
 \begin{table*}[!htb]
-\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- distinct from the $k=7+7=14$ count for the frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}.}
+\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- distinct from the $k=7+10=17$ count for the frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification} (R25c-MIN-1 corrected v1B.0.25: prior "$k=7+7=14$" was a stale carry from before R25a-MAJ-1 expanded the cosmological+nuisance enumeration).}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
