@@ -43,8 +43,26 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.22}
-\newcommand{\paperTimestamp}{2026-05-18 PDT}
+\newcommand{\paperVersion}{v1B.0.23}
+\newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.23 (cron fire #79 tick 201 R25a brutal-honesty-Grok internal round-1-of-3 cross-model streak).
+%   R25a returned 1 BLOCKER + 2 MAJOR + 2 minor + 1 nit. Truth-audit + bundled hard-fix:
+%   - BLK-1 sample-count "176,840" vs JSON-cited "176,240" — CONFIRMED REAL via direct chain count
+%     (reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_*/spin_torsion.1.txt
+%     line-count = 176,240 matching full_tension_physical_parameters.json total_samples=176240).
+%     Surgical fix: 8 occurrences of 176,840 → 176,240; cascade arithmetic 309,789 → 309,189,
+%     216,852 → 216,432, 123,788 → 123,368.
+%   - MAJ-1 R-hat coverage overclaim "all 14 sampled parameters (7 cos + 7 nui)" — CONFIRMED REAL via
+%     chain header enumeration (17 sampled = 7 cos + 10 nui: A_planck/amp_{143}/amp_{217}/
+%     amp_{143x217}/n_{143}/n_{217}/n_{143x217}/calTE/calEE/M_b). L294 footnote rewritten with
+%     explicit 10-nuisance enumeration + 14→17 correction note.
+%   - MAJ-2 Bayesian/frequentist "+4.3σ" conflation — FALSIFIED by direct text inspection. L584
+%     already includes the R10 GEM-M1 / R7 GPT-B3 caveat: "Savage-Dickey not viable...LCDM unsampled
+%     by chain...marginal-tail extrapolation, not Bayes-factor exclusion". The +4.3σ is reported as
+%     departure from LCDM in posterior tails, with explicit "$\ln B$ recompute queued for nested
+%     sampling" caveat. Grok perspective misses this paragraph.
+%   - MIN-1, MIN-2, NIT-1 (worst-R-hat row, "consistent-with"-as-discriminator framing, cross-paper
+%     stale table rows): deferred to v1B.0.24+ next-fire round-2-of-3 cycle as text-polish.
 % v1B.0.22 (R16 5-vendor cross-vendor on v1B.0.19 ran 2026-05-18 1640pt). Verdict: 0 BLOCKER + 0 MAJOR
 %   across 4 of 5 reviewers (DeepSeek/Gemini/GPT-5/Perplexity); Grok-43 only reviewer raising findings.
 % Truth-audit per feedback_peer_review_truth_audit_protocol on Grok-only BLOCKERs:
@@ -100,7 +118,7 @@ We report the technical verification material for the Einstein-Cartan-Holst (ECH
 spin-torsion cosmology no-go program of Paper~I(a)~\cite{Golden2026P1a}.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
-(Cobaya~v3.6.1, $\mathbf{309{,}789}$ frozen samples across two converged dataset combinations, plus a third Planck-only combination ongoing): this
+(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations, plus a third Planck-only combination ongoing): this
 run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
 \emph{no torsion modifications to the Boltzmann equations}; it is reported as
 a null-consistency test of an extra radiation-like degree of freedom, not as
@@ -228,29 +246,29 @@ The proxy run (Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE + lowl TT/EE +
 lensing) has produced two frozen dataset combinations with publication-quality
 convergence, plus a third Planck-only run currently at sub-convergence
 sample count and not aggregated into any frozen-posterior summary statistic
-in this paper. Frozen MCMC program: $\mathbf{309{,}789}$ raw samples
-across 2 frozen dataset combinations ($176{,}840 + 132{,}949$).
+in this paper. Frozen MCMC program: $\mathbf{309{,}189}$ raw samples
+across 2 frozen dataset combinations ($176{,}240 + 132{,}949$).
 We report this as a $\Lambda$CDM$+\Delta\Neff$ null-consistency test: the data
 are consistent with $\Delta\Neff=0$ in stock CAMB.\footnote{\label{fn:sample_stratification}Sample-count
-stratification (real cross-vendor R-round v1B.0.5 reconciliation): \textbf{309{,}789} is
-the sum of the two frozen combinations ($176{,}840 + 132{,}949$ raw accepted
+stratification (real cross-vendor R-round v1B.0.5 reconciliation): \textbf{309{,}189} is
+the sum of the two frozen combinations ($176{,}240 + 132{,}949$ raw accepted
 samples). After removing the first $30\%$ of each chain as burn-in,
-$176{,}840 \times 0.7 + 132{,}949 \times 0.7 \approx \mathbf{216{,}852}$
+$176{,}240 \times 0.7 + 132{,}949 \times 0.7 \approx \mathbf{216{,}432}$
 post-burnin samples remain across both frozen chains
 (\texttt{convergence\_summary.json}). For the full-tension subset specifically,
-$176{,}840 \times 0.7 \approx \mathbf{123{,}788}$ post-burnin (the
+$176{,}240 \times 0.7 \approx \mathbf{123{,}368}$ post-burnin (the
 \textbf{119{,}617} figure in Fig.~\ref{fig:corner_full_tension} reflects
 additional \texttt{getdist} effective-sample weight-based thinning of this
 subset only). The earlier draft footnote that quoted ``$\mathbf{123{,}129}$
 post-burnin'' as a both-chains total was an arithmetic error -- $123{,}129$ is
 the post-burnin count of the full-tension subset alone (within $\pm\!1\%$ of
-the $123{,}788$ exact computation, with the small offset reflecting the
+the $123{,}368$ exact computation, with the small offset reflecting the
 chain-end-truncation of partial samples at the burn-in cut); the correct
-both-chains post-burnin total is $216{,}852$. The third (Planck-only)
+both-chains post-burnin total is $216{,}432$. The third (Planck-only)
 dataset combination ($114{,}992$ raw samples; $\hat R - 1 \sim 0.05$) is
 still accumulating samples, is reported separately in
 Table~\ref{tab:mcmc_inventory}, and is \emph{not} aggregated into the
-$309{,}789$-sample headline anywhere in this paper.}
+$309{,}189$-sample headline anywhere in this paper.}
 
 \paragraph{Scope of the $\Delta\Neff$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}
 We emphasize that the stock-CAMB $\Lambda$CDM$+\Delta\Neff$ proxy run does
@@ -288,10 +306,10 @@ $\tau$ & $0.054 \pm 0.007$ & $0.056 \pm 0.007$ \\
 $n_s$ & $0.965 \pm 0.004$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
-Total samples & 176{,}840 & 132{,}949 \\
+Total samples & 176{,}240 & 132{,}949 \\
 Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Sourced from
 \texttt{convergence\_latest.csv}: worst row is $n_s$ in the full-tension
-combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 14 sampled parameters (7 cosmological + 7 Planck likelihood nuisance) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 14-parameter total sampled in the chains.
+combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 17 sampled parameters (7 cosmological + 10 Planck likelihood nuisance: $A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE, $M_b$ for the SNIa absolute magnitude) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 17-parameter total sampled in the chains (corrected v1B.0.23 R25a-MAJ-1 close from earlier ``14'' undercount that omitted the 3 additional foreground-spectrum nuisance parameters amp$_{143\times 217}$, $n_{143\times 217}$, calTE).
 \emph{Not} the stale mid-burn-in diagnostic
 \texttt{convergence\_gpu\_20260305\_stale.csv} ($\hat{R}-1\in[0.23,0.86]$),
 preserved as a transparency artifact only.} & 0.001 & 0.003 \\
@@ -451,7 +469,7 @@ Our MCMC agrees at $0.5\sigma$ in $H_0$ and $0.4\sigma$ in $\sigma_8$.
 \centering
 \includegraphics[width=\columnwidth]{figures/paper1_corner_full_tension.pdf}
 \caption{Full-tension MCMC corner plot (119{,}617 post-burnin samples,
-\texttt{getdist}-thinned from 176{,}840 raw; footnote~\ref{fn:sample_stratification})
+\texttt{getdist}-thinned from 176{,}240 raw; footnote~\ref{fn:sample_stratification})
 over Planck+BAO+SN+H0+$S_8$. The $\Delta\Neff$ posterior is consistent with
 zero ($-0.020\pm 0.169$), confirming no additional relativistic species at
 recombination.}
@@ -699,7 +717,7 @@ P4    & v1.0.103 & 95\% & Houston external review ongoing \\
 \begin{tabular}{lccc}
 Dataset combination & Samples & $\hat{R}-1$ & Status \\
 \hline
-Full-tension (P+B+SN+H0+S8) & 176{,}840 & 0.001 & Frozen \\
+Full-tension (P+B+SN+H0+S8) & 176{,}240 & 0.001 & Frozen \\
 Planck+BAO+SN & 132{,}949 & 0.003 & Frozen \\
 Planck-only & 114{,}992 & $\sim$0.05 & Ongoing \\
 DESI DR2 w0wa (iter2) & 128{,}385\,\textsuperscript{$\dagger$} & 0.0082\,\textsuperscript{$\dagger$} & \textbf{CONVERGED} \\
@@ -717,7 +735,7 @@ evidence). Three points are load-bearing for that cross-reference:
 
 \textbf{(i)} The two frozen MCMC dataset combinations of this companion paper
 (``Full-tension'', ``Planck+BAO+SN''; Table~\ref{tab:mcmc_inventory} rows~1--2,
-$176{,}840 + 132{,}949 = 309{,}789$ accepted samples) \emph{do not include
+$176{,}240 + 132{,}949 = 309{,}189$ accepted samples) \emph{do not include
 free $w_0 w_a$ as a sampled parameter}. Those chains hold $w_0 = -1$,
 $w_a = 0$ at the $\Lambda$CDM fiducial throughout. The third (Planck-only)
 combination is still accumulating samples and is similarly held at the
@@ -776,7 +794,7 @@ This companion paper documents three technical verification analyses for the
 ECH spin-torsion structural closure program~\cite{Golden2026P1a}.
 
 \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy.}---The stock-CAMB Cobaya~v3.6.1
-run (\textbf{309{,}789} frozen samples across two converged dataset
+run (\textbf{309{,}189} frozen samples across two converged dataset
 combinations; an additional $114{,}992$-sample Planck-only run is still
 accumulating at $\hat R - 1 \sim 0.05$ and is reported separately in
 Table~\ref{tab:mcmc_inventory}, \emph{not} aggregated into the frozen headline)

@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.22",
-    tldr: "v1B.0.22: external-review-ready (R16 4/5 + R23 5/5 clean; first fully-clean P1B compile in campaign after tab:mcmc_inventory→table* fix; 11pp/694KB/0 overfull/0 undef; arXiv tarball pre-built p1b_v1B.0.22_arxiv.tar.gz). Final 1% gates on Houston sign-off + clean R26 (R26 blocked on OpenRouter per-key weekly cap; see NEEDS_HOUSTON.md item 0).",
+    version: "v1B.0.23",
+    tldr: "v1B.0.23 (cron fire #79 tick 201): R25a brutal-honesty-Grok internal round-1-of-3 cross-model streak landed 1 BLOCKER + 2 MAJOR + 1-falsified + 3-below-threshold. (a) BLK-1 sample-count: paper said 176,840 but ground-truth chain row count = 176,240 (matches full_tension_physical_parameters.json total_samples). Surgical fix: 8 occurrences of 176,840 → 176,240; cascade derived arithmetic 309,789 → 309,189, 216,852 → 216,432, 123,788 → 123,368. (b) MAJ-1 R-hat coverage: paper said \"all 14 sampled params (7 cos + 7 nui)\" but chain header enumerates 17 sampled (7 cos + 10 nui); footnote rewritten with explicit 10-nuisance enumeration. (c) MAJ-2 +4.3σ Bayesian/frequentist: FALSIFIED — L584 already includes R10 GEM-M1 / R7 GPT-B3 caveat (Savage-Dickey not viable, LCDM unsampled, kernel-dependent noise, ln-B recompute queued). PDF 11pp/696KB/0 overfull/0 undef. Round 2-of-3 (different model class) fires next cycle.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
