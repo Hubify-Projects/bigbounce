@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.26",
-    tldr: "v1B.0.26 (cron fire #84 tick 206): R25f theoretical-physics-Gemini round 2-of-3 = 0/0/0/0 COMPLETELY CLEAN on SAME v1B.0.26 artifact (R25e = 0/0/0/1-nit + R25f = 0/0/0/0 = 2 consecutive clean rounds). Streak: 2-of-3 on v1B.0.26. Spectator-ALP β arithmetic re-derived independently (α_EM/(4π)=5.807e-4, β@C=8 = 0.285°, naive envelope [0.027, 0.439]° — all match). All 6 +4.3σ caveat-propagation sites carry fn:wcaveat. NaMaster pipeline-vs-sky scope distinguished at 6+ sites. 17-parameter R̂ coverage + iter2 chain state (128,385/0.00820/2026-05-18 07:53 UTC) consistent across 6 sites. ONE MORE CLEAN ROUND closes §4.4.1 for P1B.",
+    version: "v1B.0.27",
+    tldr: "v1B.0.27 (cron fire #85 tick 207): R25g brutal-honesty-Grok round 3-of-3 BROKE THE STREAK with NEW REGRESSION MAJ-1. Agent caught v1B.0.26 caption confabulation: \"trades one frozen-chain Planck-likelihood nuisance for a different foreground-amplitude/spectral-index split\" — FALSE. Iter2 vs frozen chain header comparison: 9 CamSpec foreground/calibration nui params (A_planck, amp_{143/217/143×217}, n_{143/217/143×217}, calTE, calEE) are IDENTICAL between chains. Actual diff: (i) cos block trades nnu (ΔNeff) for (w, w_a), (ii) nui block drops M_b (SH0ES SN-Ia abs-mag) because DES-Y5+Pantheon+ uses internal calibration. CASCADE LESSON: R25a→R25c→R25d→R25g cycle of caption corrections — each surgical fix introduced new claims requiring next rotation to audit against on-disk chain header. v1B.0.27 is FIRST version where caption accurately matches the chain header. PDF 11pp/703KB/0 overfull/0 undef. Streak reset to 1-of-3 on v1B.0.27.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",

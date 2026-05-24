@@ -43,8 +43,31 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.26}
+\newcommand{\paperVersion}{v1B.0.27}
 \newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.27 (cron fire #85 tick 207 R25g brutal-honesty-Grok round-3-of-3 on v1B.0.26).
+%   R25g returned 0 BLOCKER + 1 MAJOR + 1 MINOR + 1 NIT. Truth-audit + bundled close:
+%   - MAJ-1 v1B.0.26 caption claimed iter2 "trades one frozen-chain Planck-likelihood
+%     nuisance for a different foreground-amplitude/spectral-index split" — CONFIRMED FALSE
+%     via direct iter2-vs-frozen chain header comparison. The 9 CamSpec foreground/calibration
+%     nuisance parameters (A_planck, amp_{143}, amp_{217}, amp_{143×217}, n_{143}, n_{217},
+%     n_{143×217}, calTE, calEE) are IDENTICAL between iter2 and frozen chains. The actual diff:
+%     (i) iter2 cos block drops nnu (ΔNeff parametrization) and adds (w, w_a) → 8 cos in iter2
+%     vs 7 cos in frozen; (ii) iter2 nui block drops M_b (SH0ES SN-Ia absolute magnitude)
+%     because the DES-Y5+Pantheon+ stack uses internal abs-mag marginalization rather than the
+%     frozen-chain SH0ES external calibrator → 9 nui in iter2 vs 10 in frozen. Caption rewritten
+%     with explicit enumeration of the 9 identical CamSpec params + nnu to (w, w_a) trade cos trade +
+%     M_b-drop nui diff + pointer to on-disk iter2 chain header. The R25a→R25c→R25d→R25g
+%     cascade of caption corrections is itself a textbook illustration of feedback_peer_review_
+%     truth_audit_protocol: each surgical fix introduced new claims that the next rotation
+%     audited against the chain header; v1B.0.27 is the first version where the caption
+%     accurately matches the on-disk iter2 chain header parameter set.
+%   - MIN-1 ALP β-range L700-705 "joint-trajectory" clarification doesn't justify the corner
+%     (C_aγ=4, Δφ/f_a=0.2) exclusion — DEFERRED. The corner is excluded by the joint trajectory
+%     constraint but the explicit MCMC-posterior-weighting framing requires §VI rewrite.
+%   - NIT-1 deadline-slippage version markers (v1B.0.14/0.15+/0.16+/0.17+/0.18+) scattered
+%     across nested-sampling deferral notes when current artifact is v1B.0.26 — DEFERRED
+%     to v1B.0.28+ doc-hygiene sweep.
 % v1B.0.26 (cron fire #82 tick 204 R25d brutal-honesty-Grok internal round-2-of-3 on v1B.0.25).
 %   R25d returned 0 BLOCKER + 2 MAJOR + 3 minor + 2 nit. Truth-audit + bundled hard-fix:
 %   - MAJ-1 v1B.0.25 caption "17 total --- distinct from k=7+10=17" — CONFIRMED REAL via direct
@@ -376,7 +399,7 @@ Min ESS & 4{,}744 & 4{,}692 \\
 %%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
 %% ============================================================
 \begin{table*}[!htb]
-\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- coincidentally the same total dimension as the $k=7+10=17$ frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}, but with a different parameter set (the iter2 chain trades the frozen-chain $\Delta N_{\rm eff}$ in the cosmological block for the extended-parameter pair $(w, w_a)$, and trades one frozen-chain Planck-likelihood nuisance for a different foreground-amplitude/spectral-index split; the totals match by construction at $k_{\rm sampled}=17$ but the parameter spaces are otherwise distinct; R25c-MIN-1 corrected v1B.0.25 from prior "$k=7+7=14$" stale carry, R25d-MAJ-1 corrected v1B.0.26 "distinct from" to "coincidentally same-total" framing).}
+\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- coincidentally the same total dimension as the $k=7+10=17$ frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}, but with a different parameter set (the iter2 cosmological block trades the frozen-chain $\Delta N_{\rm eff}$ parametrization $n_{\nu}$ for the extended-parameter pair $(w, w_a)$, yielding 8 cosmological parameters in iter2 vs 7 in the frozen chain; the iter2 nuisance block drops the frozen-chain $M_b$ SH0ES SN-Ia absolute-magnitude nuisance (because the iter2 SN-Ia stack DES-Y5+Pantheon+ uses internal absolute-magnitude marginalization rather than the frozen-chain SH0ES external calibrator), yielding 9 nuisance parameters in iter2 vs 10 in the frozen chain; the 9 Planck-likelihood CamSpec foreground/calibration nuisance parameters $\{A_{\rm planck},\, \text{amp}_{143},\, \text{amp}_{217},\, \text{amp}_{143\times 217},\, n_{143},\, n_{217},\, n_{143\times 217},\, \text{calTE},\, \text{calEE}\}$ are identical between the two chains; the totals match by construction at $k_{\rm sampled}=17$ but the parameter spaces are otherwise distinct; R25c-MIN-1 corrected v1B.0.25 from prior "$k=7+7=14$" stale carry, R25d-MAJ-1 corrected v1B.0.26 "distinct from" to "coincidentally same-total" framing, R25g-MAJ-1 corrected v1B.0.27 the previously-confabulated ``different foreground-amplitude/spectral-index split'' to the actual $n_{\nu}$-to-$(w, w_a)$ cosmological-block trade plus the $M_b$-drop nuisance-block diff verified against the on-disk iter2 chain header).}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
