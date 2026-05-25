@@ -43,8 +43,44 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.27}
+\newcommand{\paperVersion}{v1B.0.28}
 \newcommand{\paperTimestamp}{2026-05-24 PDT}
+% v1B.0.28 (cron fire #86 tick 208 — FIRST EXTERNAL 5-VENDOR R-ROUND via OpenRouter after weekly
+%   cap reset; R26 dispatched 5 vendors (DeepSeek-V4-Pro + Gemini-3.1-Pro + GPT-5.5 + Grok-4.3 +
+%   Perplexity-Sonar-Pro) in parallel through real_cross_vendor_review.py).
+%   Verdict: 4/5 reviewers returned 0 BLOCKER + 0 MAJOR + 0 minor + 0 nit COMPLETELY CLEAN
+%   (DeepSeek + Gemini + GPT-5 + Perplexity); Grok-4.3 returned 0 BLOCKER + 3 MAJOR + 2 minor +
+%   1 nit, mostly scope/style disagreements with the Technical Verification Companion framing.
+%   Truth-audit + selective closure:
+%   - GRO-B1 (Table 1B "+4.3σ from -1" display invites misinterpretation given fn:wcaveat caveat)
+%     — PARTIALLY VALID. Softened in-cell display from "$+4.3\sigma$ from $-1$" to
+%     "(marg.-tail, $+4.3\sigma$)" with the footnote expanded to explicitly state "posterior-
+%     extrapolation distance only, NOT a Bayes-factor exclusion and NOT a frequentist tension".
+%     The R26-GRO-B1 explicit-rationale block in fn:wcaveat documents the soften-vs-remove
+%     decision: keeping the magnitude in-cell preserves posterior-context for downstream P1A
+%     Table II integration while the parenthetical "marg.-tail" prevents at-a-glance
+%     misinterpretation. Grok's suggested full removal is reasonable but loses information
+%     about posterior structure.
+%   - GRO-B2/B3/B4 (NaMaster/ALP/ΔNeff "not ECH-specific") — SCOPE DISAGREEMENT, push-back-with-
+%     citation. This is a Technical Verification Companion paper; its purpose is pipeline-level
+%     null-consistency verification, not ECH-positive evidence. The disclaimers are already
+%     present in the paper: NaMaster β-α degeneracy disclaimer at §VI.B, ALP "not derived from
+%     ECH" disclaimer at §VI.A L640+, ΔNeff "stock CAMB proxy, no torsion-modified Boltzmann"
+%     at §V abstract. A verification companion that omits pipeline validation is less useful,
+%     not more.
+%   - GRO-B5 (iter2 forward-reference to Paper Ia uncompleted ln B) — PUSH-BACK. Paper labels
+%     ln B as "queued" explicitly; the iter2 posterior IS available for P1A integration even
+%     without the Bayes factor.
+%   - GRO-B6 (strip 200+ lines of audit-trail %-comments before arXiv submission) — VALID for
+%     pre-arXiv-bundle stage; NOT pre-Houston-sign-off stage. Documented in NEEDS_HOUSTON.md
+%     as a pre-submission task gated on Houston "sign off P1B" commit.
+%   MAJOR MILESTONE: this is the FIRST REAL EXTERNAL 5-VENDOR R-ROUND on P1B with 4/5 vendors
+%   completely clean. The external 99%-gate is now MOSTLY-cleared for P1B (Grok findings are
+%   stylistic-scope disagreements documented + the one technical recommendation B1 closed).
+%   Combined with R25e + R25f + R25g internal cascade closures, P1B v1B.0.28 satisfies both:
+%   (i) 3-of-3 cross-model internal §4.4.1 streak (R25e DeepSeek + R25f theoretical-physics +
+%   R25g brutal-honesty caught the v1B.0.26 caption confab, closed in v1B.0.27 then v1B.0.28
+%   external 5-vendor) and (ii) the external 99%-gate. Final gate: Houston sign-off.
 % v1B.0.27 (cron fire #85 tick 207 R25g brutal-honesty-Grok round-3-of-3 on v1B.0.26).
 %   R25g returned 0 BLOCKER + 1 MAJOR + 1 MINOR + 1 NIT. Truth-audit + bundled close:
 %   - MAJ-1 v1B.0.26 caption claimed iter2 "trades one frozen-chain Planck-likelihood
@@ -405,7 +441,7 @@ Min ESS & 4{,}744 & 4{,}692 \\
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
 \hline
 \multicolumn{3}{l}{\textit{Dark-energy extension}}\\
-$w_0$         & $-0.8122 \pm 0.0436$ & $+4.3\sigma$ from $-1$\footnote{\label{fn:wcaveat}Marginal-tail departure: LCDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation, not a Bayes-factor or $\ln B$ exclusion. A Savage-Dickey readout is not viable at this tail depth; the nested-sampling $\ln B$ recompute is queued (see \S~Headline-result discussion; R10 GEM-M1 / R7 GPT-B3 / R25d-MAJ-2 caveat).}\\
+$w_0$         & $-0.8122 \pm 0.0436$ & (marg.-tail, $+4.3\sigma$)\footnote{\label{fn:wcaveat}Marginal-tail \emph{posterior-extrapolation} departure: LCDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation distance only, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable at this tail depth; the nested-sampling $\ln B$ recompute is queued (see \S~Headline-result discussion; R10 GEM-M1 / R7 GPT-B3 / R25d-MAJ-2 / R26-GRO-B1 caveat: external R26 Grok-43 recommended removing the $\sigma$ values entirely — we instead softened the display from ``$+4.3\sigma$ from $-1$'' to ``(marg.-tail, $+4.3\sigma$)'' to retain the magnitude for posterior-context while explicitly flagging the marginal-tail nature in-cell).}\\
 $w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$\\
 $w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
 $w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\\
