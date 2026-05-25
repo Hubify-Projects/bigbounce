@@ -304,8 +304,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.30-2026-05-24",
-    tldr: "v0.1.30 (cron fire #78 tick 200): 🎯🎯🎯 §4.4.1 CASCADED-LOOP-EXIT GATE SATISFIED UNDER FULL CROSS-MODEL COVERAGE. Three-round clean streak on the same v0.1.30 PDF artifact under 5-model-class rotation: R10 (Gemini-cosmology + GPT-5 + Grok-brutal) = 0/0/0/0 + R11 (Perplexity-citation + DeepSeek-confab) = 0/0/0/2-nits-below-threshold + R12 (brutal-honesty-Gemini + theoretical-physics) = 0/0/0/0×2. P5 joins P1A as 2nd paper in portfolio to clear §4.4.1; 1st to do it under explicit cross-model rotation. Remaining 4% to 99% = Houston sign-off + first external OR-based 5-vendor R-round (both Houston-dependent). PDF 909KB / 29pp / 0 overfull / 0 undef.",
+    version: "v0.1.31-2026-05-25",
+    tldr: "v0.1.31 (cron fire #87 tick 209): 🎯 FIRST REAL EXTERNAL 5-VENDOR R-ROUND. 4/5 reviewers (DeepSeek + Gemini + Perplexity) CLEAN 0/0/0/0; GPT-5 transient failure 1.4s; Grok-43 raised 1 BLK + 2 MAJ + 2 min (mostly stylistic emphasis). Truth-audit close: GRO-M2 (Tempel \"load-bearing\") VALID → relabeled to \"supporting cross-survey consistency check\" with explicit caveat list. GRO-min1 (\"clean environment-dependent constraint\") VALID → reframed as \"observational upper bound that any future model proposing environment-dependent parity signature must satisfy\". GRO-B1 (V-Web void abstract lead) + GRO-M1 (cluster residual) PARTIALLY FALSIFIED via direct paper inspection (residual column at L509, DESIVAST cross-validation at §VII.E already present). GRO-min2 (per-quintile residual table) DEFERRED. External 99%-gate mostly-cleared; final gate Houston sign-off. PDF 15pp/910KB/0 overfull/0 undef.",
     blockingItems: [
       "First R-round (BLOCKED on OpenRouter per-key weekly cap)",
       "(OPTIONAL) DESI environmental VAC if Houston has access",

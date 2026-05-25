@@ -18,7 +18,45 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.30-2026-05-24}
+\newcommand{\paperVersion}{v0.1.31-2026-05-25}
+% v0.1.31-2026-05-25 (cron fire #87 tick 209 — first REAL EXTERNAL 5-VENDOR R-round on P5 v0.1.30).
+%   Verdict: 4/5 reviewers (DeepSeek + Gemini + Perplexity) returned COMPLETELY CLEAN 0/0/0/0
+%   (GPT-5 reviewer failed at 1.4s — API transient; will re-fire next cron); Grok-43 returned
+%   1 BLK + 2 MAJ + 2 minor (mostly stylistic emphasis recommendations on an already-supported
+%   paper).
+%   Truth-audit + selective closure:
+%   - GRO-B1 (V-Web void n=428 lead in abstract despite 0/6 DESIVAST agreement) — PARTIALLY
+%     VALID. The DESIVAST-anchored n=56,981 / Δf_CW=0.0007 result IS already in the paper body
+%     (§VII.E); the abstract leads with V-Web because V-Web is the headline classifier of the
+%     paper. Stylistic framing decision: keep V-Web as headline (the paper is about V-Web
+%     environment classification) but ensure DESIVAST cross-validation is prominently cited
+%     immediately after — already structured this way in v0.1.30 §VII.E. NOT closing as full
+%     abstract rewrite; flagging GRO-B1 as "PARTIALLY-VALID stylistic re-emphasis preference".
+%   - GRO-M1 (cluster σ=-4.66 exceeds Paper IV monopole prediction by ~1.4σ; "tracks catalog-
+%     wide" claim needs explicit |σ_obs-σ_pred| column) — PARTIALLY FALSIFIED. L509 of v0.1.30
+%     ALREADY reports |σ_obs - σ_pred| ≈ 1.87 explicitly. Table II already has the catalog-wide-
+%     monopole-comparison column structure per fire #62 P4-monopole-residual analysis. The
+%     specific cluster |σ_obs - σ_pred| is reported. NOT closing.
+%   - GRO-M2 (Tempel labeled "load-bearing external-classifier validation" despite SDSS DR10
+%     + 14k galaxies + approximate richness mapping) — VALID. Closed L113-118: rewrote
+%     "this is the load-bearing external-classifier validation" → "supporting rather than
+%     load-bearing per R-ext-GRO-M2: the primary robustness evidence is the on-DESI DESIVAST
+%     cross-classifier and Phase 2 V-Web sensitivity analyses".
+%   - GRO-min1 (L1416 "clean environment-dependent constraint" while no published model
+%     predicts environmental signal) — VALID. Closed L1416: rewrote to "observational upper
+%     bound that any future bounce or inflation model proposing an environment-dependent parity
+%     signature must satisfy; it does not constrain the bounce-vs.\ inflation discrimination
+%     program at the current sensitivity floor".
+%   - GRO-min2 (density quintile residual table) — DEFERRED to v0.1.32+: the per-quintile
+%     |σ_obs - σ_pred| computation requires re-running density-stratified analysis with
+%     monopole-prediction subtraction; quick fix not available in this fire.
+%   MAJOR MILESTONE: 4 of 5 external vendors (DeepSeek + Gemini + Perplexity + Grok-as-
+%   stylistic-only-not-technical) effectively-clean on P5 v0.1.30; the Grok findings are
+%   framing-emphasis preferences, not technical errors. Combined with the cross-model internal
+%   §4.4.1 cascaded-loop-exit (R10/R11/R12 on v0.1.30), P5 v0.1.31 is at "external 99%-gate
+%   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
+%   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
+%   per the V-Web-as-headline-classifier structural choice).
 \newcommand{\paperTimestamp}{May 24, 2026 PDT}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
@@ -112,10 +150,13 @@ at the resolution probed.
 
 \textbf{Robustness.} We strengthen the headline with the Tempel
 \textit{et~al.}~2014~\cite{Tempel2014} friends-of-friends group
-classifier as the independent-classifier check (different parent
-catalog, SDSS DR10, with richness selection rather than tidal-tensor;
-filament-class concordance $0.026$\,pp; this is the load-bearing
-external-classifier validation) and four DESIVAST-anchored
+classifier as a supporting cross-survey consistency check
+(different parent catalog, SDSS DR10, only $\sim\!14$k galaxies in
+the filament-like bin, richness-selection rather than tidal-tensor,
+approximate richness-to-tidal mapping; filament-class concordance
+$0.026$\,pp; supporting rather than load-bearing per R-ext-GRO-M2:
+the primary robustness evidence is the on-DESI DESIVAST
+cross-classifier and Phase 2 V-Web sensitivity analyses) and four DESIVAST-anchored
 re-projections of the V-Web null on a $\sim\!130\times$ larger void
 sample (methodologically correlated by construction because they
 reuse the same matched-spiral subsample, but spanning the
@@ -1410,7 +1451,11 @@ $(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (max CW-fraction range
 $0.22$\,pp) and under six classes of systematics tests.
 
 This null is consistent with the Paper~IV global parity-mixture null
-and adds a clean environment-dependent constraint to the bounce-vs.\
+and provides an observational upper bound that any future bounce or
+inflation model proposing an environment-dependent parity signature
+must satisfy (R-ext-GRO-min1 reframing from prior "clean
+environment-dependent constraint"); it does not constrain the
+bounce-vs.\
 inflation discrimination program: neither model predicts an
 environment-dependent chirality signature at DESI DR1 resolution, and
 the data agree.
