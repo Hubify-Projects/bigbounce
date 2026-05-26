@@ -1,0 +1,80 @@
+{
+  "version": "v1.0.134+",
+  "purpose": "ChatGPT-B5 closure: full-catalog injection-recovery sweep on the FULL 3.2M-spiral canonical NSIDE=64 mask via MASTER decoupling. Closes the abstract 'sub-percent sensitivity' framing by computing the empirical 50%-recovery-at-3sigma amplitude on the full catalog rather than the HC subsample (N=471,049). Resolves ChatGPT-B5 internal-inconsistency flag between 0.29% Fisher / 0.75% HC-subsample / 1.19% symmetric-error-corrected thresholds.",
+  "date_utc": "2026-05-26T20:20:00Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "amplitudes": [
+      0.005,
+      0.0075,
+      0.01,
+      0.015,
+      0.02,
+      0.03
+    ],
+    "n_mc_per_amplitude": 50,
+    "n_null": 200,
+    "n_spirals": 3201160,
+    "f_sky_canonical": 0.7409261067708334,
+    "seed": 42
+  },
+  "baseline": {
+    "data_decoupled_C1": 1.5123983892921158e-05,
+    "null_mean_C1": 5.190904441888101e-06,
+    "null_std_C1": 3.5553923425611765e-06,
+    "data_sigma_from_null": 2.793806841547514
+  },
+  "per_amplitude": [
+    {
+      "amplitude": 0.005,
+      "n_realizations": 50,
+      "median_sigma": 12.620529787881011,
+      "p16_sigma": 4.8741975139045195,
+      "p84_sigma": 22.17957725851814,
+      "frac_recovered_at_3sigma": 0.86
+    },
+    {
+      "amplitude": 0.0075,
+      "n_realizations": 50,
+      "median_sigma": 26.430673032011274,
+      "p16_sigma": 12.648526875505295,
+      "p84_sigma": 39.7479734975204,
+      "frac_recovered_at_3sigma": 1.0
+    },
+    {
+      "amplitude": 0.01,
+      "n_realizations": 50,
+      "median_sigma": 39.554081918366045,
+      "p16_sigma": 21.65751275541946,
+      "p84_sigma": 68.02978644395989,
+      "frac_recovered_at_3sigma": 1.0
+    },
+    {
+      "amplitude": 0.015,
+      "n_realizations": 50,
+      "median_sigma": 85.36480826415345,
+      "p16_sigma": 48.772463502066095,
+      "p84_sigma": 113.6289332066609,
+      "frac_recovered_at_3sigma": 1.0
+    },
+    {
+      "amplitude": 0.02,
+      "n_realizations": 50,
+      "median_sigma": 175.3886197247312,
+      "p16_sigma": 113.61388842623901,
+      "p84_sigma": 223.92576847905784,
+      "frac_recovered_at_3sigma": 1.0
+    },
+    {
+      "amplitude": 0.03,
+      "n_realizations": 50,
+      "median_sigma": 306.1381778081035,
+      "p16_sigma": 240.44933313742737,
+      "p84_sigma": 478.2726147543203,
+      "frac_recovered_at_3sigma": 1.0
+    }
+  ],
+  "threshold_50pct_recovery_at_3sigma_full_catalog": 0.005,
+  "interpretation": "If threshold_50pct_recovery_at_3sigma_full_catalog <= 0.75%, the abstract 'sub-percent sensitivity' framing holds on the full catalog and is not an HC-subsample-only claim. If > 0.75% or > 1.0%, the abstract must downgrade the sensitivity claim accordingly."
+}
