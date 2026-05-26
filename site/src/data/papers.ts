@@ -244,8 +244,8 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
-    version: "v1.0.128",
-    tldr: "v1.0.126 — HF model card pushed v1.0.122 → v1.0.125 (closes ChatGPT BL-1 stale-card flag); 78pt overfull on long null_distribution.npy filename eliminated via \allowbreak splits. PDF 51pp/26.26MB / 0 undef / 4 minor overfulls.",
+    version: "v1.0.129",
+    tldr: "v1.0.129 (2026-05-26): Houston-dispatched 3-reviewer external wave (Gemini + Grok + ChatGPT) returned MAJOR REVISIONS × 2 + REJECT × 1. Phase 1 universal-agreement BLOCKERs closed: (S1) AI-audit/version-history prose contamination purged from body — all \"v1.0.NNN closure\", \"OpenAI external review\", \"ChatGPT MAJ-N\", \"Grok-B1\", \"Perplexity R22\", \"P4-INT-GPT5-B3\" references scrubbed; (S2) title reframed \"Three-Interpretation Closure\" → \"Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual\"; (S3) stale paper4-v1.0.122 release tags swept to v1.0.129. Phase 2 deferred (hard-label flip propagation, pre-registered→declared, Shamir body rewrite, MC≥10^4); Phase 3 compute-bound (joint nuisance-marginalized model fit, systematics-preserving null, full template regression). PDF 51pp/26.24MB/0 undef refs/2 sub-7pt overfulls.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "GitHub release PDF asset upload (ChatGPT BL-1 partial — tag + commit are pushed)",
