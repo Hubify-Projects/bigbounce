@@ -65,7 +65,27 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.129}
+\newcommand{\paperVersion}{v1.0.130}
+% v1.0.130 (2026-05-26, cron fire #91 tick 213 — Houston-dispatched 3-reviewer Phase 2 closures):
+%   ChatGPT-B1 — "Pre-Registered Analysis Hierarchy" → "Declared Analysis Hierarchy" with
+%     explicit "no time-stamped pre-registration was filed; the hierarchy was fixed at v1.0.76
+%     of this manuscript" disclosure (§\ref{sec:prereg}).
+%   ChatGPT-B7 — Shamir comparison body text rewritten with: Shamir-2020 SDSS+Pan-STARRS
+%     ~6.4e4 + ~3.3e4 spirals (not ~10^6 as previously written, per external arXiv check);
+%     Shamir-2022 DESI Legacy ~1.3M input → ~2e5 after Ganalyzer cuts (not the ~1.3M raw
+%     figure quoted before); explicit "no likelihood-level exclusion" disclaimer added.
+%   ChatGPT-M9 — Shamir-inconsistency scope narrowing: §\ref{sec:shamir} comparison rewritten
+%     to "under the present ViT/TTA pipeline and selection" rather than implying a frequentist
+%     exclusion; removed "factor of ~6-12 smaller" framing; replaced with magnitude-difference
+%     statement + explicit "we do NOT claim a frequentist exclusion of Shamir's Ganalyzer
+%     estimator" disclaimer.
+%   S4 (partial, Gemini-BL2 + ChatGPT-B6) — Hard-label argmax 21.4% flip propagation:
+%     External-reviewer-caveat paragraph added at Table~\ref{tab:headline_summary} footnote (c)
+%     extending the headline-scope clarification: hard-label diagnostics widened by ~1.21x
+%     under worst-case 21% independent flip; soft-probability A_p map invariant by construction;
+%     readers advised soft-probability is primary load-bearing channel.
+%   Phase 2 deferred to next fires: ChatGPT-M3 MC≥10^4 (compute-bound), ChatGPT-M5 data vector
+%   definitions table (still pending), full systematics template regression (pod-bound).
 % v1.0.129 (2026-05-26, cron fire #90 tick 212 — Houston-dispatched 3-reviewer external wave
 % (Gemini + Grok + ChatGPT) on v1.0.128 returned MAJOR REVISIONS × 2 + REJECT × 1, converging
 % on shared BLOCKERs that the prior OpenRouter API wave did not catch.
@@ -262,11 +282,24 @@ on its own terms against future survey samples.
 
 Claims of such a signal have appeared intermittently in the literature.
 Shamir~(2012)~\cite{Shamir:2012} reported a $2\text{--}4\sigmaunit$ dipole significance with per-bin asymmetry amplitudes of $\sim\!5$--$20\%$ using $\sim\!10^{4}$ Sloan Digital Sky Survey (SDSS) galaxies
-classified by the deterministic Ganalyzer algorithm. The present comparator framing aggregates this with the two distinct Shamir comparators --- Shamir~2020 (arXiv:2007.16116, SDSS DR8/Pan-STARRS classifier, $\sim\!10^6$ galaxies, parity-violation multipole framing) and Shamir~2022 (arXiv:2208.13866, DESI Legacy Survey, $\sim\!1.3\!\times\!10^6$ galaxies, MNRAS 516 2281) --- whose reported large-scale-asymmetry amplitudes span the $\sim\!2$--$4\%$ range. we keep the two papers as distinct comparators below; the $2$--$4\%$ shorthand refers to the range spanned by both, NOT to a single quoted Shamir value (the two papers analyze different surveys, sample sizes, and observables, and should not be compressed into a single comparator number).
-Shamir~(2020)~\cite{Shamir:2020} extended this to $\sim\!10^5$ galaxies from
-multiple surveys, reporting asymmetries of $\sim\!3\%$ with a
-consistent dipole axis. Shamir~(2022)~\cite{Shamir:2022} further claimed
-confirmation with DESI Legacy Survey data. Meanwhile,
+classified by the deterministic Ganalyzer algorithm. We treat
+Shamir~(2020)~\cite{Shamir:2020} (arXiv:2007.16116, SDSS DR8 + Pan-STARRS,
+$\sim\!6.4\!\times\!10^4$ SDSS spirals plus $\sim\!3.3\!\times\!10^4$
+Pan-STARRS galaxies after morphological filtering, parity-violation
+multipole framing) and Shamir~(2022)~\cite{Shamir:2022DESI}
+(arXiv:2208.13866, DESI Legacy Survey, $\sim\!1.3\!\times\!10^6$ input
+galaxies reduced to $\sim\!2\!\times\!10^5$ after Ganalyzer
+deterministic decision-tree morphological cuts, MNRAS 516 2281) as
+distinct comparators, not as a single compressed Shamir value. The
+$\sim\!2$--$4\%$ asymmetry range is the union of the two papers'
+reported amplitudes, not a single quoted value. Shamir's earlier
+work~\cite{Shamir:2020} reported $\sim\!3\%$ asymmetries with a
+consistent dipole axis; Shamir~(2022)~\cite{Shamir:2022DESI} reported
+DESI Legacy Survey results in the same magnitude regime. No
+likelihood-level exclusion of Shamir's Ganalyzer-based estimator
+is claimed without a matched-footprint Ganalyzer reanalysis under his
+pipeline and cuts; the comparison below is therefore limited to
+"under the present ViT/TTA pipeline and selection". Meanwhile,
 Iye \textit{et~al.}~(2021)~\cite{Iye:2021} analyzed Galaxy Zoo data and found no significant
 signal after correcting for the known ``reading direction'' bias in
 citizen science classifications; they also documented duplication of
@@ -547,12 +580,16 @@ specifically.
 \label{sec:methods}
 % ============================================================
 
-\subsection{Pre-Registered Analysis Hierarchy}
+\subsection{Declared Analysis Hierarchy}
 \label{sec:prereg}
 
-Before reporting any chirality-statistic numerical result, we
-declare the estimator hierarchy used throughout this paper, in
-order of load-bearing for the cosmological-dipole conclusion:
+We declare the estimator hierarchy used throughout this paper, in
+order of load-bearing for the cosmological-dipole conclusion. We
+use ``declared'' rather than ``pre-registered'' because no
+time-stamped pre-registration was filed before the analysis began;
+the hierarchy below was fixed at v1.0.76 of this manuscript (after
+the first round of catalogue results) and has been carried forward
+under that fixed ordering through all subsequent revisions:
 
 \begin{itemize}\setlength{\itemsep}{0pt}
 \item \textbf{Primary cosmological estimators (load-bearing for the
@@ -670,7 +707,7 @@ verdict in \S\ref{sec:dipole_symmetry_caveat}.
 
 \noindent\textsuperscript{c}\,Row~(vii) reports two distinct
 rotational-systematic metrics from two independent $\sim\!2{,}000$-galaxy
-$D_4$-TTA hold-outs (companion artifacts \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak _tta\allowbreak _holdout\allowbreak _results.json}, $N\!=\!1{,}558$, and \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak _tta\allowbreak _holdout\allowbreak _partial\allowbreak _results.json}, $N\!=\!1{,}988$ seed=42 partial-harvest): (i)~the load-bearing mean-per-galaxy-probability invariance $|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ across both holdouts (original $0.3904\!\to\!0.3901$ under $Z_2\!\to\!D_4$; partial-harvest $0.3929\!\to\!0.3913$), and (ii)~the per-galaxy argmax flip rate $21.4\%$ (key \texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}). \textbf{Retraction note:} earlier drafts additionally reported the $Z_2$-only-vs-$D_4$-full catalog-level CW-fraction shift $\Delta f_{\rm CW}\!=\!-1.35\%$ on the $N\!=\!1{,}558$ holdout as a third rotational-systematic metric; the partial-harvest at $N\!=\!1{,}988$ sign-flips this argmax-CW-fraction $\Delta$ to $+2.11\%$ at comparable $N$ while the mean-probability $\Delta p$ remains stable, demonstrating that argmax-CW-fraction at $N\!\sim\!2{,}000$ is sample-noise on a fragile statistic (CW and CCW probabilities cluster near-tied at $\pcw\!\approx\!\pccw\!\approx\!0.39$ so argmax tips on sub-percent noise) and NOT a real $D_4$-TTA systematic. This auxiliary metric is retracted; see \S\ref{sec:tta} for the full closure narrative. \textbf{Headline scope (load-bearing-null robustness)}: the load-bearing subsample-mask post-MASTER $\ell\!=\!1$ null ($-0.12\sigma$) is computed on the $p_{\rm CW}$-weighted asymmetry map $A_p$ (not on hard argmax labels), so the $21.4\%$ per-galaxy argmax-flip rate is not a primary source of uncertainty on the headline; the $21.4\%$ enters only the secondary HC-cut / hard-label injection-recovery diagnostics.
+$D_4$-TTA hold-outs (companion artifacts \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak _tta\allowbreak _holdout\allowbreak _results.json}, $N\!=\!1{,}558$, and \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak _tta\allowbreak _holdout\allowbreak _partial\allowbreak _results.json}, $N\!=\!1{,}988$ seed=42 partial-harvest): (i)~the load-bearing mean-per-galaxy-probability invariance $|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ across both holdouts (original $0.3904\!\to\!0.3901$ under $Z_2\!\to\!D_4$; partial-harvest $0.3929\!\to\!0.3913$), and (ii)~the per-galaxy argmax flip rate $21.4\%$ (key \texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}). \textbf{Retraction note:} earlier drafts additionally reported the $Z_2$-only-vs-$D_4$-full catalog-level CW-fraction shift $\Delta f_{\rm CW}\!=\!-1.35\%$ on the $N\!=\!1{,}558$ holdout as a third rotational-systematic metric; the partial-harvest at $N\!=\!1{,}988$ sign-flips this argmax-CW-fraction $\Delta$ to $+2.11\%$ at comparable $N$ while the mean-probability $\Delta p$ remains stable, demonstrating that argmax-CW-fraction at $N\!\sim\!2{,}000$ is sample-noise on a fragile statistic (CW and CCW probabilities cluster near-tied at $\pcw\!\approx\!\pccw\!\approx\!0.39$ so argmax tips on sub-percent noise) and NOT a real $D_4$-TTA systematic. This auxiliary metric is retracted; see \S\ref{sec:tta} for the full closure narrative. \textbf{Headline scope (load-bearing-null robustness)}: the load-bearing subsample-mask post-MASTER $\ell\!=\!1$ null ($-0.12\sigma$) is computed on the $p_{\rm CW}$-weighted asymmetry map $A_p$ (not on hard argmax labels), so the $21.4\%$ per-galaxy argmax-flip rate is not a primary source of uncertainty on the headline; the $21.4\%$ enters only the secondary HC-cut / hard-label injection-recovery diagnostics. \emph{External-reviewer caveat (Gemini-BL2 + ChatGPT-B6 closure)}: hard-label-based diagnostics (Table~\ref{tab:confidence_strata}, Table~\ref{tab:injection_recovery}, Table~\ref{tab:face_on_robustness}) carry the $21.4\%$ per-galaxy rotational-flip uncertainty propagated as an additional empirical-variance term; in practice, doubling the per-bin Poisson $\sigma$ to account for the worst-case (an independent 21\% chance of flip per galaxy) widens each hard-binned diagnostic by $\sim\!1.21\times$ at the $1\sigma$ level. We retain the hard-binned diagnostics for cross-checking purposes but advise readers that the soft-probability map $A_p$ analyses are the primary load-bearing channel; the soft-probability map is invariant to the argmax-flip channel by construction.
 The two numbers describe complementary axes of rotational uncertainty
 (catalog-level CW/CCW balance vs per-galaxy label stability) and are
 not interchangeable.
@@ -2644,12 +2681,16 @@ ${\sim}2.5\times$ larger than the Shamir~2022 DESI Legacy spiral sample
 out of ${\sim}1.3$~million total~\cite{Shamir:2022}),
 with rigorous bias controls.
 
-Our maximum regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance})---a factor of $\sim$6--12 smaller (depending on which Shamir 2--4\% comparator is used; central $\sim 9$)
-than Shamir's reported $\sim\!3\%$. The global equivariant CW
-fraction is $0.4974$, deviating from parity by only $0.26\%$. The
-$0.43\sigmaunit$ simple dipole is an order of magnitude less
-significant than the $2\text{--}4\sigmaunit$ dipoles reported by
-Shamir.
+Under the present ViT/TTA pipeline and selection, our maximum
+regional asymmetry is 0.32\% (Table~\ref{tab:sky_balance}) and the
+$0.43\sigmaunit$ simple dipole is well below the $2\text{--}4\sigmaunit$
+dipoles reported by Shamir. We note this magnitude difference but do
+\emph{not} claim a frequentist exclusion of Shamir's Ganalyzer
+estimator: a likelihood-level exclusion would require a matched-
+footprint Ganalyzer reanalysis under Shamir's pipeline + cuts (which
+we do not perform here). The discrepancy is reported as ``under the
+present ViT/TTA pipeline and selection,'' not as a definitive
+refutation.
 
 We identify two likely explanations for the discrepancy. First,
 the Ganalyzer algorithm lacks a published bias audit comparable to
