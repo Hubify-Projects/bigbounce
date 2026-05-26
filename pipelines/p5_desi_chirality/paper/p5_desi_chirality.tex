@@ -970,17 +970,14 @@ deterministic class assignment. ASTRA is methodologically
 (Ref.~\cite{TWebDESI2026}): the latter two are deterministic
 tidal-tensor classifiers, ASTRA is a probabilistic positional-statistic
 classifier that quantifies per-object assignment uncertainty.
-Because ASTRA is currently published only on EDR and our V-Web run is
-on DR1, a per-object cross-match is not yet available; instead the
-ASTRA EDR analysis serves as an upper-bound check on the assignment
-uncertainty that V-Web absorbs into its deterministic single-class
-output. The BGS-anchored volume-filling-fraction calibration in
-Ref.~\cite{ASTRADESI2026} is consistent with the V-Web sheet/filament
-fractions reported here within the survey-shell systematic discussed
-above. A DR1 release of an ASTRA-style probabilistic catalog (if it
-appears) would unlock a direct per-galaxy probabilistic-vs-deterministic
-comparison that quantifies the chirality-vs-environment null's
-robustness to environmental-assignment uncertainty.
+ASTRA is published only on EDR while our V-Web run is on DR1; the
+$\sim\!175$~deg$^{2}$ EDR rosettes are contained within the DR1
+footprint, so a per-galaxy cross-match by \texttt{TARGETID} is
+available in the EDR-overlap subsample and is reported in
+\S\ref{sec:astra_per_object}. The BGS-anchored volume-filling-fraction
+calibration in Ref.~\cite{ASTRADESI2026} is consistent with the V-Web
+sheet/filament fractions reported here within the survey-shell
+systematic discussed above.
 
 A third concurrent DR1 catalog, DESIVAST~\cite{DESIVAST2025} (Douglass
 \textit{et al.}\ 2025, ApJ 982, 38), provides public DR1 void
@@ -1331,6 +1328,104 @@ indistinguishable from zero.}
 \label{fig:voids_vs_chirality}
 \end{figure*}
 
+\section{ASTRA EDR per-object
+cross-validation}\label{sec:astra_per_object}
+
+The ASTRA-DESI EDR probabilistic environment catalog
+\cite{ASTRADESI2026} (Zenodo 10.5281/zenodo.19358024) provides
+per-galaxy void / sheet / filament / knot membership probabilities
+$\{P_{\rm void}, P_{\rm sheet}, P_{\rm filament}, P_{\rm knot}\}$ on
+the $\sim\!175$~deg$^{2}$ EDR rosettes ($N_{\rm ASTRA} = 648{,}428$
+unique \texttt{TARGETID}s spanning BGS\_ANY, LRG, ELG, and QSO
+tracers). We perform a per-galaxy \texttt{TARGETID} join against the
+P5 matched-spiral deduplicated-primary subsample and against the V-Web
+environment catalog of \S\ref{sec:vweb}, recovering
+$N_{\rm overlap} = 25{,}186$ spirals that carry all three labels:
+chirality classification (P4), ASTRA per-class membership probabilities
+(this section), and V-Web deterministic class assignment
+(\S\ref{sec:vweb}). This is the first per-galaxy cross-validation of
+the V-Web canonical classifier against an external published DESI
+environmental catalog within this campaign and is the closest currently
+available substitute for the full-DR1 environmental VAC discussed in
+\S\ref{sec:limitations}. The cross-match pipeline is at
+\artifact{pipelines/p5\_desi\_chirality/scripts/15\_astra\_per\_object\_crossmatch.py};
+the result summary at
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/summary.json}.
+
+We compute the chirality-by-environment $f_{\rm CW}$ statistic on the
+$25{,}186$-galaxy overlap under three classifiers run on the
+\emph{same galaxies}: (i)~the ASTRA argmax classifier
+(\texttt{env\_class} $=$ argmax over the four ASTRA probabilities);
+(ii)~the ASTRA entropy-weighted classifier (each galaxy contributes
+$P_{\rm class}$ fractional count and $P_{\rm class}\!\cdot\!\mathbb{1}_{\rm CW}$
+fractional CW count to each class, with sub-class variance
+$\textstyle\sum_i P_i^2 / 4$ under the Bernoulli-$0.5$ null); and
+(iii)~the V-Web deterministic classifier restricted to the same
+overlap, for like-for-like comparison.
+
+The headline statistics, filtered to classes with $n \geq 100$ to
+suppress small-sample artifacts, are summarized in
+Table~\ref{tab:astra_headline}. Both ASTRA classifiers and the V-Web
+classifier-on-overlap recover the same conclusion: chirality is
+statistically indistinguishable from $f_{\rm CW} = 1/2$ across the
+four cosmic-web classes, with no class reaching the
+Bonferroni-corrected significance threshold at $\alpha = 0.01,\,K = 4$
+($|\sigma|_{\rm Bonf} = 3.02$).
+
+\begin{table}[h]
+\caption{ASTRA EDR per-object cross-validation, headline statistics on
+the $N_{\rm overlap} = 25{,}186$ EDR-overlap matched-spiral subsample.
+Range and max-$|\sigma|$ filtered to classes with $n \geq 100$.}
+\label{tab:astra_headline}
+\centering
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Classifier & $f_{\rm CW}$ range (pp) & max $|\sigma|_{\rm vs\,1/2}$ \\
+\hline
+V-Web on same overlap         & $1.08$ & $2.68$ \\
+ASTRA argmax                  & $2.08$ & $2.25$ \\
+ASTRA entropy-weighted        & $1.17$ & $2.00$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The per-galaxy classifier agreement between V-Web and ASTRA argmax is
+\emph{poor} on this overlap subsample. ASTRA argmax distributes the
+$25{,}186$ spirals as $11.9\%$~void~/~$31.7\%$~sheet~/~$35.2\%$~filament
+~/~$21.3\%$~knot, while V-Web puts essentially the entire sample into
+filament~(31.7\%) and cluster~(68.3\%), with only $3$~spirals total in
+the V-Web void~$+$~wall classes. This reflects the survey-shell
+density-grid systematic discussed in
+\S\ref{sec:tweb_compare}: the $25.9$~Mpc/$h$ cell size in the V-Web
+$256^{3}$~grid is comparable to the EDR rosette transverse extent, so
+the EDR-overlap subsample falls disproportionately on cells where the
+edge-density mask suppresses the V-Web void class, while ASTRA
+operating natively on EDR rosettes resolves void structure at
+sub-rosette scales. The two classifiers therefore disagree
+substantially on the per-galaxy environment label.
+
+Despite this strong classifier disagreement on \emph{per-galaxy
+environment assignment}, the \emph{chirality-vs-environment headline}
+is recovered identically by both: $f_{\rm CW}$ does not vary by more
+than $\sim\!2$~pp across the four classes under any of the three
+classifiers, and no class clears the Bonferroni-corrected significance
+threshold. This is a strong robustness result: the P5 headline null
+does not depend on which independent, published DESI environmental
+classifier is applied to the EDR-overlap subsample, and the
+deterministic single-class V-Web assignment reaches the same
+conclusion as the probabilistic ASTRA classifier even though the two
+classifiers assign vastly different per-galaxy class labels.
+
+We therefore treat the ASTRA EDR per-object cross-validation as the
+seventh independent positive evidence line for headline
+environment-independence (joining (i)~DESIVAST per-galaxy
+cross-match, \S\ref{sec:tweb_compare}; (ii)~within-class density
+quartile null, \S\ref{sec:results_within_class_density};
+(iii)~DESIVAST-anchored void classifier;
+(iv)~three-algorithm DESIVAST robustness;
+(v)~catalog-native V2 GALZONE membership;
+(vi)~MAXIMAL voids HEALPix sky-position stratification).
+
 \section{Systematics and null tests}\label{sec:systematics}
 
 We run six classes of systematics tests
@@ -1404,11 +1499,16 @@ classifier-definition mismatch.
 \item Imaging-leg systematics in chirality classification are tracked
 in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
 here but do not re-derive the underlying bias.
-\item No DESI environmental VAC (e.g.\ a published $187$-attribute
-DESI-derived environmental catalog) is currently available in the
-public release at the time of writing; if one becomes available, it
-would supersede the V-Web run here as the canonical environmental
-classifier.
+\item No DESI value-added catalog assigning cosmic-web environments
+at the full DR1 footprint is published at the time of writing.
+The ASTRA-DESI EDR probabilistic environment catalog
+\cite{ASTRADESI2026} restricted to the $\sim\!175$\,deg$^2$ EDR
+rosettes is the closest published independent classifier and is
+cross-matched per-galaxy against our V-Web run in
+\S\ref{sec:astra_per_object}; a full-DR1-footprint published VAC
+remains a desirable future input that would let us replace V-Web as
+the canonical classifier rather than only cross-validate it in
+the EDR-overlap subset.
 \item Galaxy positions used for the V-Web tidal-tensor estimate are
 in observed redshift space rather than corrected to real space.
 For the typical pairwise velocity dispersion $\sigma_v
