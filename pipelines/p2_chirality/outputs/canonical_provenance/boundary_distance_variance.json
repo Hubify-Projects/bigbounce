@@ -1,0 +1,120 @@
+{
+  "version": "v1.0.133+",
+  "purpose": "Gemini-Major1 closure: stratify the canonical-mask C_1 budget by boundary-distance shells. Tests whether the +3.64sigma residual concentrates near the mask boundary (NaMaster sharp-edge / boundary-region systematic) or is uniformly distributed across the interior (interpretation (ii) coherent depth-correlated).",
+  "date_utc": "2026-05-26T19:53:47Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "pix_res_deg": 0.9161297098179749,
+    "shell_edges_deg": [
+      0.0,
+      2.0,
+      5.0,
+      10.0,
+      20.0,
+      180.0
+    ],
+    "shell_labels": [
+      "boundary_le2deg",
+      "near_2to5deg",
+      "mid_5to10deg",
+      "deep_10to20deg",
+      "deep_interior_gt20deg"
+    ],
+    "n_spirals": 3201160,
+    "f_sky_full": 0.7409261067708334
+  },
+  "baseline": {
+    "data_decoupled_C1_full_mask": 1.5123983892921158e-05
+  },
+  "shells": [
+    {
+      "label": "boundary_le2deg",
+      "lo_deg": 0.0,
+      "hi_deg": 2.0,
+      "n_pix": 1940,
+      "f_sky_shell": 0.039469401041666664,
+      "var_A_p": 0.004508010467350485,
+      "weighted_A2": 0.008217906439178772,
+      "n_total_in_shell": 50579,
+      "n_spiral_in_shell": 50579,
+      "C1_shell_master": 7.033965123834162e-06,
+      "frac_C1": 0.46508679020257604
+    },
+    {
+      "label": "near_2to5deg",
+      "lo_deg": 2.0,
+      "hi_deg": 5.0,
+      "n_pix": 2868,
+      "f_sky_shell": 0.058349609375,
+      "var_A_p": 0.005247922323003185,
+      "weighted_A2": 0.007841014016209564,
+      "n_total_in_shell": 105094,
+      "n_spiral_in_shell": 105094,
+      "C1_shell_master": 1.0751740331162993e-06,
+      "frac_C1": 0.07109066240275083
+    },
+    {
+      "label": "mid_5to10deg",
+      "lo_deg": 5.0,
+      "hi_deg": 10.0,
+      "n_pix": 4646,
+      "f_sky_shell": 0.09452311197916667,
+      "var_A_p": 0.008532263526469719,
+      "weighted_A2": 0.0086154738316194,
+      "n_total_in_shell": 279399,
+      "n_spiral_in_shell": 279399,
+      "C1_shell_master": -2.9074290187444847e-05,
+      "frac_C1": -1.9223962676297999
+    },
+    {
+      "label": "deep_10to20deg",
+      "lo_deg": 10.0,
+      "hi_deg": 20.0,
+      "n_pix": 9158,
+      "f_sky_shell": 0.18631998697916666,
+      "var_A_p": 0.008563722280596864,
+      "weighted_A2": 0.008661063906101121,
+      "n_total_in_shell": 735023,
+      "n_spiral_in_shell": 735023,
+      "C1_shell_master": 5.2244341478745925e-05,
+      "frac_C1": 3.4544034064463065
+    },
+    {
+      "label": "deep_interior_gt20deg",
+      "lo_deg": 20.0,
+      "hi_deg": 180.0,
+      "n_pix": 16826,
+      "f_sky_shell": 0.3423258463541667,
+      "var_A_p": 0.009722030548002112,
+      "weighted_A2": 0.008367198869593329,
+      "n_total_in_shell": 2007720,
+      "n_spiral_in_shell": 2007720,
+      "C1_shell_master": 1.505485647799982e-05,
+      "frac_C1": 0.9954292853383894
+    }
+  ],
+  "per_fsky_normalized_C1": [
+    {
+      "label": "boundary_le2deg",
+      "C1_per_fsky": 0.0001782131204982973
+    },
+    {
+      "label": "near_2to5deg",
+      "C1_per_fsky": 1.842641355499733e-05
+    },
+    {
+      "label": "mid_5to10deg",
+      "C1_per_fsky": -0.00030758921896110395
+    },
+    {
+      "label": "deep_10to20deg",
+      "C1_per_fsky": 0.00028040116535961126
+    },
+    {
+      "label": "deep_interior_gt20deg",
+      "C1_per_fsky": 4.397814724870124e-05
+    }
+  ],
+  "interpretation": "If shell-0 boundary (d<=2 deg) per-fsky C_1 >> deep-interior per-fsky C_1, the mask-edge mechanism is the dominant contributor (consistent with interpretation (iii) sharp-edge variant). If all shells give comparable per-fsky C_1, the residual is uniformly distributed across the canonical interior \u2014 consistent with interpretation (ii) coherent depth/PSF/morphology-correlated systematic, and complementary to the M1 finding that density-stratification alone doesn't absorb it."
+}
