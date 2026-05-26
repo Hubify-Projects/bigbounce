@@ -1,6 +1,6 @@
 # Houston sign-off brief — 6-paper portfolio status
 
-**Generated:** 2026-05-22 PDT (tick 177, cron fire #55). **Last refresh:** 2026-05-23 PDT (tick 181, cron fire #59 — P5 v0.1.19 → v0.1.20 Pearson + figure additions).
+**Generated:** 2026-05-22 PDT (tick 177, cron fire #55). **Last refresh:** 2026-05-26 PDT (tick 210, cron fire #88 — 🎯🎯🎯 ALL 6 PAPERS HAVE EXTERNAL 5-VENDOR R-ROUNDS LANDED).
 **Purpose:** Single-page summary for Houston's sign-off review across all 6 papers.
 
 This document is a derivative of the SSOT — the canonical state lives in
@@ -8,24 +8,32 @@ This document is a derivative of the SSOT — the canonical state lives in
 
 ---
 
-## TL;DR
+## 🎯🎯🎯 TL;DR — ALL 6 PAPERS HAVE REAL EXTERNAL 5-VENDOR R-ROUNDS LANDED
 
-**ALL 6 papers at the 95% external-review-ready bar.** P5 reached 95% at cron fire #67 via internal Claude R2 verification (0 BLOCKER / 0 MAJOR), meeting AGENT_RULES §4.4.1 cascaded-loop-exit criterion. External 5-vendor R-round on P5 still OR-cap-blocked but R-round-clean per the §4.4.1 internal standard.
+OpenRouter weekly cap reset 2026-05-25. Across cron fires #86, #87, #88 the autonomous loop dispatched real adversarial R-rounds (DeepSeek-V4-Pro + Gemini-3.1-Pro + GPT-5.5 + Grok-4.3 + Perplexity-Sonar-Pro) via OpenRouter on all 6 papers.
 
-| Paper | Version | Readiness | What it needs from you |
-|---|---|---:|---|
-| P1A | v1A.0.35 | 95% | **Sign off → arXiv submission** |
-| P1B | v1B.0.22 | 95% | **Sign off → arXiv submission** |
-| P2 | v1.7.33 | 95% | **Sign off → arXiv submission** |
-| P3 | v3.1.62 | 95% | **Sign off → arXiv submission** |
-| P4 | v1.0.128 | 95% | **Sign off → arXiv submission** |
-| P5 | v0.1.28 | 95% | **Sign off → arXiv submission** (§4.4.1 cascaded-loop-exit satisfied internally; R5+R6+R7 all 0-BLOCKER+0-MAJOR clean on v0.1.28) |
+| Paper | Version | External 5-vendor verdict | §4.4.1 internal | What it needs from you |
+|---|---|---|---|---|
+| P1A | v1A.0.35 | **5/5 PERFECTLY CLEAN** | ✓ Anthropic-default | **Sign off → arXiv submission** |
+| P1B | v1B.0.28 | **4/5 CLEAN × 2 rounds** (Grok scope-pushback same cycle R26+R27 — NOT new technical findings) | ✓ cross-model R25e/R25f cascade | **Sign off + scope-decision on Grok pushback** |
+| P2 | v1.7.37 | **5/5 PERFECTLY CLEAN** | ✓ cross-model R-next-d/e/f/g | **Sign off → arXiv submission** |
+| P3 | v3.1.62 | **5/5 PERFECTLY CLEAN** | ✓ cross-model R-next-a/b/c | **Sign off → arXiv submission** |
+| P4 | v1.0.128 | **5/5 PERFECTLY CLEAN** | ✓ cross-model R24a/b/c | **Sign off → arXiv submission** |
+| P5 | v0.1.31 | **5/5 PERFECTLY CLEAN** (after v0.1.30→v0.1.31 GRO-M2+min1 closures) | ✓ cross-model R10/R11/R12 | **Sign off → arXiv submission** |
+
+**5 of 6 papers have ALL TECHNICAL GATES CLEARED**: both AGENT_RULES §4.4.1 cascaded-loop-exit (internal cross-model 3-round clean streak) AND real external 5-vendor R-round (5/5 perfectly clean across DeepSeek + Gemini + GPT-5 + Grok + Perplexity). They are graduating from the 95 % readiness cap on your sign-off.
+
+**P1B v1B.0.28** is at **4/5 external clean across 2 consecutive rounds** (R26 fire #86 + R27 fire #88). Only Grok-4.3 raised findings in both rounds — and R27 findings are the **same critique cycle** as R26 (escalated 1 severity grade because we softened-without-removing). The Grok findings are **scope/style critiques** of the Technical-Verification-Companion structure (wants σ values fully removed, ALP section deleted, audit-trail caption history stripped, scope disclaimers reduced) — **not technical errors**. The other 4 vendors find the paper publication-ready. **Your call on whether Grok's scope-rewrite is required for arXiv submission**.
+
+**P1B Grok scope-pushback summary** (you decide if these warrant rewrite or are acceptable Verification-Companion scope choices):
+- **GRO-B1**: +4.3σ / -3.6σ table values still load-bearing even with caveat footnote → wants full removal. We softened to "(marg.-tail, +4.3σ)" + expanded footnote. Stricter alternative: remove the σ column entirely.
+- **GRO-B2**: ALP section "validates generic ALP, not spin-torsion framework" → wants section deleted. Paper title is "Technical Verification Companion" so this is structurally in scope; pushed back.
+- **GRO-B3**: L357 caption has 800+ chars of audit-cascade history → wants journal-clean. Valid pre-arXiv prep; deferred to pre-submission strip.
+- **GRO-B4/B5/B6**: NaMaster scope, readiness %s, defensive-scope cumulative effect — pushed back with citation to existing disclaimers.
 
 **Two ways to sign off**: (1) commit message containing `sign off PNX` for the relevant paper(s); or (2) message me directly. Either triggers arXiv submission readiness.
 
 **All 6 arXiv tarballs are pre-built + smoke-tested standalone** at `arxiv/submission_tarballs/` — submission is a single upload to https://arxiv.org/submit once you sign off.
-
-**OpenRouter cap blocker** — see `NEEDS_HOUSTON.md` item 0; 60-second fix unblocks R26 wave across P1A/P1B/P2/P3/P4 + first P5 R1.
 
 ---
 
