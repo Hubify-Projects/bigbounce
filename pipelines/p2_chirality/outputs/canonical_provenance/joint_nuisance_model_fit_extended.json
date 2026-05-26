@@ -1,0 +1,196 @@
+{
+  "version": "v1.0.137+",
+  "purpose": "Gemini-M4 closure: extended joint nuisance-marginalized fit including 15 leg \u00d7 confidence-bin interaction templates as nuisance amplitudes on top of the dipole + leg + density + density^2 + constant basis. Tests whether the v1.0.137 single-leg-fraction nuisance is sufficient or whether the DECaLS-concentrated +4.50\u03c3 low-confidence cell of Table IX absorbs additional residual when given a dedicated nuisance amplitude.",
+  "date_utc": "2026-05-26T22:20:06Z",
+  "config": {
+    "nside": 64,
+    "n_spirals": 3201160,
+    "f_sky_canonical": 0.7409261067708334,
+    "n_pix_in_mask": 36418,
+    "design_columns": [
+      "dipole_x",
+      "dipole_y",
+      "dipole_z",
+      "leg_BASS",
+      "leg_DECaLS",
+      "leg_DES",
+      "BASS+MzLS_X_c0_0.0_0.2",
+      "BASS+MzLS_X_c1_0.2_0.4",
+      "BASS+MzLS_X_c2_0.4_0.6",
+      "BASS+MzLS_X_c3_0.6_0.8",
+      "BASS+MzLS_X_c4_0.8_1.0",
+      "DECaLS_X_c0_0.0_0.2",
+      "DECaLS_X_c1_0.2_0.4",
+      "DECaLS_X_c2_0.4_0.6",
+      "DECaLS_X_c3_0.6_0.8",
+      "DECaLS_X_c4_0.8_1.0",
+      "DES_X_c0_0.0_0.2",
+      "DES_X_c1_0.2_0.4",
+      "DES_X_c2_0.4_0.6",
+      "DES_X_c3_0.6_0.8",
+      "DES_X_c4_0.8_1.0",
+      "pixel_density",
+      "pixel_density_sq",
+      "constant"
+    ],
+    "n_templates": 24,
+    "conf_edges": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.01
+    ],
+    "conf_labels": [
+      "c0_0.0_0.2",
+      "c1_0.2_0.4",
+      "c2_0.4_0.6",
+      "c3_0.6_0.8",
+      "c4_0.8_1.0"
+    ],
+    "leg_labels": [
+      "BASS+MzLS",
+      "DECaLS",
+      "DES"
+    ],
+    "fit_method": "weighted_least_squares_pinv_SVD_collinearity_safe",
+    "A_ref_paper_dipole_in_A_p_units": 0.034
+  },
+  "amplitudes": {
+    "dipole_x": {
+      "a_hat": 4.818748287985113e-05,
+      "sigma": 9.05584903547147e-05,
+      "z": 0.5321144675789349
+    },
+    "dipole_y": {
+      "a_hat": -0.004436378592213677,
+      "sigma": 0.00010574993429059234,
+      "z": -41.9515966792269
+    },
+    "dipole_z": {
+      "a_hat": -0.0007857224924275603,
+      "sigma": 0.0002800457087178793,
+      "z": -2.8056937420137533
+    },
+    "leg_BASS": {
+      "a_hat": -0.011971379116283801,
+      "sigma": 0.001918048684542149,
+      "z": -6.2414365249240005
+    },
+    "leg_DECaLS": {
+      "a_hat": -0.008577238000850598,
+      "sigma": 0.0019349748833347598,
+      "z": -4.432738675175194
+    },
+    "leg_DES": {
+      "a_hat": 0.02054861710628918,
+      "sigma": 0.002435298654754063,
+      "z": 8.437822221999443
+    },
+    "BASS+MzLS_X_c0_0.0_0.2": {
+      "a_hat": 7.50875056576561e-15,
+      "sigma": 0.0,
+      "z": 0.0
+    },
+    "BASS+MzLS_X_c1_0.2_0.4": {
+      "a_hat": -0.016177660659812475,
+      "sigma": 0.007985596294350066,
+      "z": -2.0258550599732197
+    },
+    "BASS+MzLS_X_c2_0.4_0.6": {
+      "a_hat": 0.0017732873131645187,
+      "sigma": 0.0024697547716194188,
+      "z": 0.7180013714486211
+    },
+    "BASS+MzLS_X_c3_0.6_0.8": {
+      "a_hat": 0.03621819565287327,
+      "sigma": 0.003581007629665876,
+      "z": 10.11396774271955
+    },
+    "BASS+MzLS_X_c4_0.8_1.0": {
+      "a_hat": -0.03378520145414365,
+      "sigma": 0.002739952747834652,
+      "z": -12.330578138927264
+    },
+    "DECaLS_X_c0_0.0_0.2": {
+      "a_hat": -4.163336342344337e-17,
+      "sigma": 4.7813965985797835e-18,
+      "z": -8.707364587955267
+    },
+    "DECaLS_X_c1_0.2_0.4": {
+      "a_hat": 0.04907023413290783,
+      "sigma": 0.008404412675579932,
+      "z": 5.838627400518718
+    },
+    "DECaLS_X_c2_0.4_0.6": {
+      "a_hat": -0.0043751990158200586,
+      "sigma": 0.002503718570537064,
+      "z": -1.7474803547435245
+    },
+    "DECaLS_X_c3_0.6_0.8": {
+      "a_hat": -0.07882240020126008,
+      "sigma": 0.0029724927554303352,
+      "z": -26.5172724331329
+    },
+    "DECaLS_X_c4_0.8_1.0": {
+      "a_hat": 0.0255501270969457,
+      "sigma": 0.0024692868775915092,
+      "z": 10.347168378372771
+    },
+    "DES_X_c0_0.0_0.2": {
+      "a_hat": -1.1102230246251565e-16,
+      "sigma": 0.0,
+      "z": 0.0
+    },
+    "DES_X_c1_0.2_0.4": {
+      "a_hat": 0.2033018356148117,
+      "sigma": 0.01319880290827592,
+      "z": 15.403051096954956
+    },
+    "DES_X_c2_0.4_0.6": {
+      "a_hat": -0.024504867455417897,
+      "sigma": 0.003871305535448068,
+      "z": -6.329871727001699
+    },
+    "DES_X_c3_0.6_0.8": {
+      "a_hat": -0.10163456792383516,
+      "sigma": 0.00477819031712036,
+      "z": -21.270514813877604
+    },
+    "DES_X_c4_0.8_1.0": {
+      "a_hat": -0.0566137831278478,
+      "sigma": 0.0038276286582852323,
+      "z": -14.79082434114981
+    },
+    "pixel_density": {
+      "a_hat": 0.00027124436340745226,
+      "sigma": 8.755851627804828e-05,
+      "z": 3.097863862220969
+    },
+    "pixel_density_sq": {
+      "a_hat": -3.6913378034664686e-05,
+      "sigma": 7.49279993155856e-06,
+      "z": -4.926513235618507
+    },
+    "constant": {
+      "a_hat": 0.0003468643937616921,
+      "sigma": 6.537460521207382e-05,
+      "z": 5.305797146100867
+    }
+  },
+  "dipole_posterior": {
+    "A_dipole_best_A_p_units": 0.004505678293227855,
+    "A_dipole_best_pct_fCW": 0.22528391466139275,
+    "sigma_A_dipole_A_p_units": 0.0001179048675986885,
+    "sigma_A_dipole_pct_fCW": 0.005895243379934426,
+    "z_data_vs_zero": 38.21452315746439,
+    "z_data_vs_017_pct": -250.15355436521625,
+    "CI_99_A_p_units": [
+      0.004201955354293634,
+      0.0048094012321620765
+    ],
+    "interpretation_i_017pct_excluded_at": "99%",
+    "residual_variance": 0.008423071761003594
+  }
+}
