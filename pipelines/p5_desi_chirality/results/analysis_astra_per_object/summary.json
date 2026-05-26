@@ -1,0 +1,151 @@
+{
+  "written_utc": "2026-05-26T18:55:21Z",
+  "data": {
+    "astra_galaxies_total": 648428,
+    "p5_spirals_total": 791635,
+    "vweb_rows_total": 14100704,
+    "overlap_p5_x_astra": 25186
+  },
+  "classifiers": {
+    "astra_argmax": {
+      "per_class": [
+        {
+          "env_class": "void",
+          "n": 2985,
+          "n_cw": 1435,
+          "cw_fraction": 0.4807370184254606,
+          "sigma_from_half": -2.1048719111014935
+        },
+        {
+          "env_class": "wall",
+          "n": 7980,
+          "n_cw": 4002,
+          "cw_fraction": 0.5015037593984962,
+          "sigma_from_half": 0.268664197703787
+        },
+        {
+          "env_class": "filament",
+          "n": 8864,
+          "n_cw": 4326,
+          "cw_fraction": 0.48804151624548736,
+          "sigma_from_half": -2.251754229909063
+        },
+        {
+          "env_class": "cluster",
+          "n": 5357,
+          "n_cw": 2660,
+          "cw_fraction": 0.49654657457532203,
+          "sigma_from_half": -0.5055229781386513
+        }
+      ],
+      "cw_fraction_range_pp": 2.0766740973035605,
+      "max_abs_sigma_from_half": 2.251754229909063
+    },
+    "astra_entropy_weighted": {
+      "per_class": [
+        {
+          "env_class": "void",
+          "n_eff": 3338.139892578125,
+          "n_cw_eff": 1621.5400390625,
+          "cw_fraction": 0.4857615592048019,
+          "sigma_from_half": -1.9965446930783473
+        },
+        {
+          "env_class": "wall",
+          "n_eff": 7723.599609375,
+          "n_cw_eff": 3842.309814453125,
+          "cw_fraction": 0.4974765664689923,
+          "sigma_from_half": -0.5697967092240648
+        },
+        {
+          "env_class": "filament",
+          "n_eff": 8432.810546875,
+          "n_cw_eff": 4149.3798828125,
+          "cw_fraction": 0.4920518325115417,
+          "sigma_from_half": -1.9533611985055244
+        },
+        {
+          "env_class": "cluster",
+          "n_eff": 5691.4501953125,
+          "n_cw_eff": 2809.77001953125,
+          "cw_fraction": 0.4936826156970305,
+          "sigma_from_half": -1.173604409392675
+        }
+      ],
+      "cw_fraction_range_pp": 1.1715007264190391,
+      "max_abs_sigma_from_half": 1.9965446930783473
+    },
+    "vweb_on_same_overlap": {
+      "per_class": [
+        {
+          "env_class": "void",
+          "n": 1,
+          "n_cw": 0,
+          "cw_fraction": 0.0,
+          "sigma_from_half": -1.0
+        },
+        {
+          "env_class": "wall",
+          "n": 2,
+          "n_cw": 2,
+          "cw_fraction": 1.0,
+          "sigma_from_half": 1.414213562373095
+        },
+        {
+          "env_class": "filament",
+          "n": 7972,
+          "n_cw": 3991,
+          "cw_fraction": 0.500627195183141,
+          "sigma_from_half": 0.11199956992247725
+        },
+        {
+          "env_class": "cluster",
+          "n": 17211,
+          "n_cw": 8430,
+          "cw_fraction": 0.4898030329440474,
+          "sigma_from_half": -2.6754945100445853
+        }
+      ],
+      "cw_fraction_range_pp": 1.0824162239093604,
+      "max_abs_sigma_from_half": 2.6754945100445853
+    }
+  },
+  "confusion_matrix_vweb_vs_astra_argmax": {
+    "void": {
+      "void": 1,
+      "wall": 0,
+      "filament": 1121,
+      "cluster": 1863
+    },
+    "wall": {
+      "void": 0,
+      "wall": 1,
+      "filament": 2889,
+      "cluster": 5090
+    },
+    "filament": {
+      "void": 0,
+      "wall": 1,
+      "filament": 2673,
+      "cluster": 6190
+    },
+    "cluster": {
+      "void": 0,
+      "wall": 0,
+      "filament": 1289,
+      "cluster": 4068
+    }
+  },
+  "provenance": {
+    "astra_source": "arXiv:2604.01456 / Zenodo 10.5281/zenodo.19358024",
+    "astra_files": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/data/desi_env/astra_edr/probabilities",
+    "p5_matched_catalog": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+    "vweb_env": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/data/desi_env/desi_env_vweb.parquet",
+    "class_mapping": {
+      "PVOID": "void",
+      "PSHEET": "wall",
+      "PFILAMENT": "filament",
+      "PKNOT": "cluster"
+    }
+  }
+}
