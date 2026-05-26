@@ -1,0 +1,37 @@
+# P5 env_finder Phase B: reconstructed-position V-Web at fine smoothing.
+# Variant of config.yaml that operates on pyrecon Zel'dovich-displaced
+# positions rather than redshift-space positions, at finer smoothing.
+
+config_version: "0.2.0-recon"
+
+input:
+  # Reconstructed-position catalog written by 00_pyrecon_driver.py.
+  # Schema: TARGETID, TRACER, RECON_X, RECON_Y, RECON_Z (Mpc/h Cartesian).
+  recon_parquet: "pipelines/p5_desi_chirality/data/desi_recon/desi_recon_combined.parquet"
+
+# Grid — finer than Phase 1 (R_s=8 Mpc/h needs cell <= 3-4 Mpc/h to be
+# well-resolved; the 6.6 Gpc/h bounding box at N=1024 gives cell ~6.5
+# Mpc/h, marginal. N=2048 gives cell ~3.2 Mpc/h, ideal but ~200 GB peak
+# RAM. Default N=1024 to fit on 251 GB H200 SXM with margin; rerun at
+# N=2048 only if first pass produces an interesting differential.
+grid:
+  n: 1024
+  bounding_box_pad_mpc_h: 50.0
+
+# Smoothing — push below 10 Mpc/h per paper §Limitations target.
+smoothing:
+  R_s_mpc_h: 8.0
+
+# Classification threshold (Cautun+ 2014 geometric default).
+classify:
+  lambda_th: 0.0
+
+# Output.
+output:
+  env_parquet: "pipelines/p5_desi_chirality/data/desi_env/desi_env_vweb_recon_R8_N1024.parquet"
+  volume_fractions_json: "pipelines/p5_desi_chirality/env_finder/reports/01b_volume_fractions_recon_R8_N1024.json"
+  provenance: true
+  include_eigenvalues: true
+
+# Reproducibility.
+seed: 42
