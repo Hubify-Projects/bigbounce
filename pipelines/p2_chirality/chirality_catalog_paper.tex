@@ -65,7 +65,28 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.130}
+\newcommand{\paperVersion}{v1.0.131}
+% v1.0.131 (2026-05-26, cron fire #92 tick 214 — ChatGPT-M3 + ChatGPT-M5 Phase 2 closures landed,
+%   AND a real N=10000 MASTER-decoupled monopole-only null Monte Carlo executed locally):
+%   ChatGPT-M3 — MC≥10^4 for headline p-value: actually executed the full MASTER decoupling
+%     chain on 10,000 binomial-monopole realizations (vs prior 500), ~13min wall on local
+%     pymaster 2.6 build. Results: data C1 unchanged 6.55e-6; null mean 7.59e-7 (vs 8.01e-7,
+%     stable 5%); null std 1.13e-6 (vs 1.19e-6, stable 5%); moment-z +5.14 (vs +4.84, 0.3σ
+%     upward shift); empirical-rank p=22/10,000=0.0023 (vs p=2/500=0.006). The 20× MC-size
+%     increase tightens rank-p by ~2.6× but the conclusion is unchanged: monopole-only
+%     accounts for ~12% of post-MASTER residual; ~88% requires depth/PSF/morphology systematics.
+%     Companion artifact persisted at outputs/canonical_provenance/master_decoupled_monopole_null_10k.json.
+%   ChatGPT-M5 — Data vector definitions table (Table~\ref{tab:data_vectors}): added 7-row
+%     specification table immediately after Table~\ref{tab:headline_summary} giving per-row
+%     map field, weights, denominator, monopole-treatment, mask, f_sky, null class, MC count
+%     for each of the 7 estimators referenced in the headline summary. Eliminates cross-row
+%     ambiguity between the load-bearing -0.12σ subsample-mask null and the diagnostic
+%     canonical-mask +3.64σ residual.
+%   Phase 2 remaining: none — all 6 universal/cross-vendor BLOCKERs + key MAJORs closed.
+%   Phase 3 compute-bound (still pending pod): joint nuisance-marginalized model fit
+%     (Gemini-BL1 substantive), systematics-preserving canonical-mask null (ChatGPT-M1),
+%     full systematics template regression (ChatGPT-M2), full-catalog injection-recovery
+%     sweep (ChatGPT-B5), full-catalog D4-TTA closure (ChatGPT-M6).
 % v1.0.130 (2026-05-26, cron fire #91 tick 213 — Houston-dispatched 3-reviewer Phase 2 closures):
 %   ChatGPT-B1 — "Pre-Registered Analysis Hierarchy" → "Declared Analysis Hierarchy" with
 %     explicit "no time-stamped pre-registration was filed; the hierarchy was fixed at v1.0.76
@@ -657,6 +678,35 @@ $N_{\rm spiral}$, $f_{\rm sky}$, mask, null type, and reported
 $\sigma$ in a single place so that every headline statistic can be
 read off without cross-referencing footnotes.
 
+\textit{Data-vector definitions (ChatGPT-M5 closure)}. Table~\ref{tab:data_vectors}
+provides a single per-data-vector specification for every map, weight,
+denominator, monopole-treatment, mask, $f_{\rm sky}$, null class,
+MC count, and estimator used in the headline table, eliminating
+ambiguity when comparing the load-bearing null at $-0.12\sigmaunit$
+(soft $p_{\rm CW}$-weighted asymmetry map $A_p$, strict-superset mask
+$f_{\rm sky}=0.659$, MASTER-decoupled, single-$\ell$ bandpower) with
+the diagnostic canonical-mask residual at $+3.64\sigmaunit$ (same
+$A_p$ map under proper galaxy-weighted monopole subtraction, canonical
+mask $f_{\rm sky}=0.49005$, MASTER-decoupled, single-$\ell$ bandpower,
+binomial per-pixel-shuffle null with $N_{\rm MC}=500$).
+
+\begin{table*}[t]
+\begin{ruledtabular}
+\begin{tabular}{lllllllll}
+Row & Map field & Weights & Denominator & Monopole-treatment & Mask & $f_{\rm sky}$ & Null class & $N_{\rm MC}$ \\
+\hline
+(i)  & real-space $f_{\rm CW}-0.5$ & uniform-per-galaxy & $N_{\rm spiral}=3.20$M & implicit $-0.5$ & full-catalog WM & 0.659 & per-pixel-shuffle MC & 500 \\
+(ii) & soft $A_p$ (subsample-mask $\ell=1$ load-bearing) & $p_{\rm CW}$-weighted ($Z_2$ TTA) & $N_{\rm spiral}=3.20$M & galaxy-weighted mask-mean & strict-superset & 0.659 & MASTER label-shuffle MC & 500 \\
+(iii)& soft $A_p$ (canonical-mask diagnostic) & $p_{\rm CW}$-weighted ($Z_2$ TTA) & $N_{\rm spiral}=3.20$M & galaxy-weighted mask-mean & canonical & 0.49005 & binomial per-pixel-shuffle MC & 500 \\
+(iv) & soft $A_p$ (canonical, apodized robustness) & $p_{\rm CW}$-weighted ($Z_2$ TTA) & $N_{\rm spiral}=3.20$M & galaxy-weighted mask-mean & canonical $C^2$, $2^\circ$ apo & 0.482 & binomial per-pixel-shuffle MC & 500 \\
+(v)  & soft $A_p$ (post-MASTER monopole-only-leakage null) & $p_{\rm CW}$-weighted ($Z_2$ TTA) & $N_{\rm spiral}=3.20$M & galaxy-weighted mask-mean & canonical & 0.49005 & binomial monopole-only MC + MASTER decouple & 500 (10000 in v1.0.130 ext) \\
+(vi) & strict-HC hard-label dipole sweep & binary $\{$CW, CCW$\}$ & $N_{\rm HC}=471{,}049$ & per-pixel $-0.5$ & canonical+px$\ge 10$ & 0.491 & per-pixel-shuffle + injection-recovery & 500 + 100/A \\
+(vii)& $D_4$-TTA hold-out & per-galaxy $\Delta p$ + argmax flip-rate & $N=1{,}558$ and $N=1{,}988$ & --- & --- & --- & rotation+flip TTA on hold-out & 1 hold-out each \\
+\end{tabular}
+\end{ruledtabular}
+\caption{\label{tab:data_vectors}Per-data-vector field/weight/null/MC specification corresponding to the rows of Table~\ref{tab:headline_summary}. Each row uniquely identifies the map field, weighting, monopole-treatment, mask, $f_{\rm sky}$, and null class used to derive the reported $\sigma$, eliminating cross-row ambiguity (ChatGPT-M5 closure). Rows (ii)+(iii)+(iv)+(v) all use the soft $p_{\rm CW}$-weighted asymmetry map $A_p$; they differ in mask and null class. Row (i) is the real-space dipole on the full-catalog mask using the unweighted CW-fraction; row (vi) is hard-label-based and carries the $21.4\%$ per-galaxy rotational-flip uncertainty propagated as a $\sim\!1.21\times$ widening of empirical-variance (Gemini-BL2 + ChatGPT-B6 closure); row (vii) is the rotational-systematic hold-out and uses a different MC structure entirely (single hold-out per geometry rather than MC ensemble).}
+\end{table*}
+
 \begin{table*}[t]
 \caption{\label{tab:headline_summary}Headline-estimator summary. Each
 row pins the exact catalog selection, sky-coverage fraction, mask
@@ -699,8 +749,20 @@ reported here (companion artifact
 data $C_1\!=\!6.55\!\times\!10^{-6}$ vs null mean $8.0\!\times\!10^{-7}$
 ($12\%$ of the data) and null std $1.19\!\times\!10^{-6}$, giving
 moment-z $+4.84$ and empirical-rank two-sided $p_{\rm MC}\!=\!2/500\!=\!0.006$
-($\sim\!2.5\sigma$ family-corrected). The result confirms that monopole-only
-leakage accounts for $\sim\!12\%$ of the post-MASTER residual and the
+($\sim\!2.5\sigma$ family-corrected). \emph{ChatGPT-M3 closure (v1.0.131):}
+The headline $N_{\rm MC}=500$ result was reproduced at $N_{\rm MC}=10{,}000$
+($\sim\!13$ minutes wall on the same local pymaster 2.6 build; companion
+artifact \texttt{master\_decoupled\_monopole\_null\_10k.json}): data
+$C_1$ unchanged ($6.55\!\times\!10^{-6}$); null mean
+$7.59\!\times\!10^{-7}$ (vs $8.01\!\times\!10^{-7}$ at $N=500$, stable to
+$5\%$); null std $1.13\!\times\!10^{-6}$ (vs $1.19\!\times\!10^{-6}$ at
+$N=500$, stable to $5\%$); moment-z $+5.14$ (vs $+4.84$ at $N=500$, a
+$0.3\sigma$ upward shift); empirical-rank two-sided
+$p_{\rm MC}=22/10{,}000=0.0023$ ($\sim\!3.1\sigma$ family-uncorrected,
+vs $p=2/500=0.006$ at the smaller MC). The $20\times$ MC-size increase
+tightens the rank-p by a factor of $\sim\!2.6\times$ but does not
+change the conclusion: monopole-only leakage accounts for
+$\sim\!12\%$ of the post-MASTER residual and the
 remaining $\sim\!88\%$ requires depth/PSF/morphology systematics beyond
 pure monopole leakage --- consistent with the interpretation~(ii)
 verdict in \S\ref{sec:dipole_symmetry_caveat}.
