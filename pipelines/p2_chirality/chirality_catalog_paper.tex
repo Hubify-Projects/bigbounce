@@ -65,7 +65,20 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.131}
+\newcommand{\paperVersion}{v1.0.132}
+% v1.0.132 (2026-05-26, cron fire #93 tick 215 — R-ext-phase2-verify wave on v1.0.131 returned
+%   4/5 CLEAN (DeepSeek + Gemini + GPT-5 + Perplexity all 0/0/0/0); only Grok-43 raised
+%   1 BLOCKER + 3 MAJOR + 1 minor + 1 nit. Truth-audit + bundled close:
+%   - GRO-B1 (Title + abstract "No Evidence for Large-Scale Parity Violation" vs paper-stated
+%     parity-EVEN axial-vector ell=1 dipole) — PARTIALLY FALSIFIED via direct file read: the
+%     actual paper title (\title{}) is the v1.0.129 reframed version; "parity violation"
+%     framing existed ONLY in the L1 %-comment header (TeX-only, invisible in compiled PDF).
+%     Closure: rewrote the L1 %-comment header to match the actual v1.0.129 reframed title.
+%   - GRO-B4 (Table II row v lists N_MC=500 while text reports N=10,000) — CONFIRMED REAL.
+%     Surgical fix: row (v) MC count → "10,000" (canonical post-v1.0.131 value).
+%   - GRO-B2/B3 scope-rewrite recommendations — PUSH-BACK with citation to existing
+%     scope-narrowing disclaimers from v1.0.130.
+%   - GRO-B5 (Fisher floor vs empirical floor) — DEFERRED to v1.0.133+ minor polish.
 % v1.0.131 (2026-05-26, cron fire #92 tick 214 — ChatGPT-M3 + ChatGPT-M5 Phase 2 closures landed,
 %   AND a real N=10000 MASTER-decoupled monopole-only null Monte Carlo executed locally):
 %   ChatGPT-M3 — MC≥10^4 for headline p-value: actually executed the full MASTER decoupling
