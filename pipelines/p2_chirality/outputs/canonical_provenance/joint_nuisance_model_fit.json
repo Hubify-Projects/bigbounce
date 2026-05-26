@@ -1,0 +1,96 @@
+{
+  "version": "v1.0.136+",
+  "purpose": "Joint nuisance-marginalized linear-regression model fit for the primordial dipole amplitude, with depth/leg/density templates as competing nuisance components. This is the formal-exclusion path Gemini-B2 + ChatGPT-B3 requested. Marginalizing over the nuisance amplitudes yields the posterior on the primordial dipole amplitude A_dipole = sqrt(a_x^2 + a_y^2 + a_z^2).",
+  "date_utc": "2026-05-26T21:49:53Z",
+  "config": {
+    "nside": 64,
+    "n_spirals": 3201160,
+    "f_sky_canonical": 0.7409261067708334,
+    "n_pix_in_mask": 36418,
+    "design_columns": [
+      "dipole_x",
+      "dipole_y",
+      "dipole_z",
+      "leg_BASS",
+      "leg_DECaLS",
+      "leg_DES",
+      "pixel_density",
+      "pixel_density_sq",
+      "constant"
+    ],
+    "fit_method": "weighted_least_squares_galaxy_count",
+    "A_ref_paper_dipole_in_A_p_units": 0.034
+  },
+  "fit": {
+    "nuisance_amplitudes": {
+      "dipole_x": {
+        "a_hat": 4.3245626753712884e-05,
+        "sigma": 8.929610695660254e-05,
+        "z": 0.4842946487547328
+      },
+      "dipole_y": {
+        "a_hat": -0.004516219047843066,
+        "sigma": 0.00010433569884196162,
+        "z": -43.28546315373639
+      },
+      "dipole_z": {
+        "a_hat": -0.000572607416973982,
+        "sigma": 0.0002780592883739847,
+        "z": -2.0592997282070127
+      },
+      "leg_BASS": {
+        "a_hat": 0.001808403254848799,
+        "sigma": 615.36053823045,
+        "z": 2.938770269619661e-06
+      },
+      "leg_DECaLS": {
+        "a_hat": 0.00087317767924261,
+        "sigma": 615.3605382304213,
+        "z": 1.4189692464739252e-06
+      },
+      "leg_DES": {
+        "a_hat": -0.0030043604920655313,
+        "sigma": 615.3605382304714,
+        "z": -4.882276820520308e-06
+      },
+      "pixel_density": {
+        "a_hat": 0.0003192454900734132,
+        "sigma": 8.49553126206045e-05,
+        "z": 3.757804900313974
+      },
+      "pixel_density_sq": {
+        "a_hat": -1.9286226896168268e-05,
+        "sigma": 7.35856617101815e-06,
+        "z": -2.6209218546036093
+      },
+      "constant": {
+        "a_hat": 0.00032094341562801174,
+        "sigma": 6.520020124816674e-05,
+        "z": 4.922429831258164
+      }
+    },
+    "residual_variance": 0.008430840473406765
+  },
+  "dipole_posterior": {
+    "A_dipole_best_A_p_units": 0.004552579919815517,
+    "A_dipole_best_pct_fCW": 0.22762899599077588,
+    "sigma_A_dipole_A_p_units": 0.0001113262260534009,
+    "sigma_A_dipole_pct_fCW": 0.005566311302670045,
+    "z_data_vs_zero": 40.894046993309,
+    "z_data_vs_017_pct": -264.51467119759513,
+    "CI_68_A_p_units": [
+      0.004441253693762116,
+      0.004663906145868918
+    ],
+    "CI_95_A_p_units": [
+      0.004334380516750852,
+      0.004770779322880183
+    ],
+    "CI_99_A_p_units": [
+      0.004265803561501956,
+      0.004839356278129078
+    ],
+    "interpretation_i_017pct_excluded_at": "99%"
+  },
+  "interpretation": "If |z_data_vs_017_pct| > 3, the joint nuisance-marginalized fit formally excludes interpretation (i) at the 1.7% f_CW dipole reference. If z is comparable to the discriminator strengths elsewhere in the paper (~2-3\u03c3), interpretation (i) is suggestively but not formally excluded. The nuisance-amplitude z-scores show which template absorbs the most residual."
+}
