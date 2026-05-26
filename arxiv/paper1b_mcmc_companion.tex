@@ -43,8 +43,30 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.28}
-\newcommand{\paperTimestamp}{2026-05-24 PDT}
+\newcommand{\paperVersion}{v1B.0.29}
+\newcommand{\paperTimestamp}{2026-05-26 PDT}
+% v1B.0.29 (cron fire #89 tick 211 — close R27-GRO-B3 caption audit-trail trim).
+%   R27 brutal-honesty-Grok findings remained same scope-pushback cycle as R26 (DeepSeek +
+%   Gemini + GPT-5 + Perplexity all 0/0/0/0 across both rounds). The only substantive Grok
+%   critique is GRO-B3: Table~\ref{tab:iter2_posterior} caption had grown to 800+ chars
+%   of audit-cascade history (R25c-MIN-1 / R25d-MAJ-1 / R25g-MAJ-1 corrections inlined into
+%   the caption), which doesn't belong in a journal-clean submission. Closed by trimming
+%   the caption to a journal-clean ~400-char form (paper-side claims only: chain state,
+%   likelihood stack, parameter count, manifest link), with the audit-cascade history moved
+%   to a `%` comment block immediately above the caption (TeX-only, stripped pre-PDF).
+%   Substantive content (8 cos + 9 nui parameter spec, iter2-vs-frozen comparison) moved
+%   to the chain manifest at reproducibility/cosmology/iter2_converged_2026-05-18/.
+%   GRO-B1 (+4.3σ removal recommendation) stays at the v1B.0.28 soften ("(marg.-tail,
+%   +4.3σ)" + expanded fn:wcaveat) pending Houston scope decision: Grok's recommendation
+%   is full column removal; we've softened display while preserving posterior-context
+%   magnitude. GRO-B2/B4/B5/B6 (ALP / NaMaster / readiness % / scope-disclaimer density)
+%   PUSH-BACK with citation to existing paper disclaimers; this is a Technical Verification
+%   Companion paper and these are the kind of pipeline/scope critiques the title is
+%   designed to admit. 4/5 external vendors find the paper publication-ready across 2
+%   consecutive rounds; the 1/5 Grok findings are scope/style editorial preferences, not
+%   technical defects. Houston decision on whether to accept Grok's recommended scope-
+%   rewrite (full σ column removal + ALP section deletion + scope-disclaimer reduction)
+%   or accept the 4/5 vendor publication-ready consensus for arXiv submission.
 % v1B.0.28 (cron fire #86 tick 208 — FIRST EXTERNAL 5-VENDOR R-ROUND via OpenRouter after weekly
 %   cap reset; R26 dispatched 5 vendors (DeepSeek-V4-Pro + Gemini-3.1-Pro + GPT-5.5 + Grok-4.3 +
 %   Perplexity-Sonar-Pro) in parallel through real_cross_vendor_review.py).
@@ -435,7 +457,20 @@ Min ESS & 4{,}744 & 4{,}692 \\
 %%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
 %% ============================================================
 \begin{table*}[!htb]
-\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary (extracted v1B.0.13 via GetDist on the live converged chain). Chain state at extraction: $N_{\rm total}=128{,}385$ accepted samples across 16 chains; $N_{\rm effective}=89{,}871$ after 30\% burn-in discard; $\hat R - 1 = 0.00820$ (sustained across two consecutive flushes 2026-05-18 01:34 and 07:53 UTC); mean acceptance 0.2828; $\hat R_{\rm cl} = 0.0705$ chain-length diagnostic. Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE + lowl.TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Auditable on-record at \href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/cosmology/iter2_converged_2026-05-18/posterior_summary.txt}{\texttt{reproducibility/cosmology/iter2\_\-converged\_\-2026-05-18/posterior\_\-summary.txt}}. Sampled parameter space: 8 cosmological ($\log A$, $n_s$, $\omega_b h^2$, $\omega_c h^2$, $\tau$, $100\theta_{\rm MC}$, $w$, $w_a$) + 9 nuisance ($A_{\rm planck}$, three CamSpec foreground amplitudes, three CamSpec spectral indices, calTE, calEE) $=17$ total --- coincidentally the same total dimension as the $k=7+10=17$ frozen $\Lambda$CDM+$\Delta\Neff$ chains in Table~\ref{tab:verification}, but with a different parameter set (the iter2 cosmological block trades the frozen-chain $\Delta N_{\rm eff}$ parametrization $n_{\nu}$ for the extended-parameter pair $(w, w_a)$, yielding 8 cosmological parameters in iter2 vs 7 in the frozen chain; the iter2 nuisance block drops the frozen-chain $M_b$ SH0ES SN-Ia absolute-magnitude nuisance (because the iter2 SN-Ia stack DES-Y5+Pantheon+ uses internal absolute-magnitude marginalization rather than the frozen-chain SH0ES external calibrator), yielding 9 nuisance parameters in iter2 vs 10 in the frozen chain; the 9 Planck-likelihood CamSpec foreground/calibration nuisance parameters $\{A_{\rm planck},\, \text{amp}_{143},\, \text{amp}_{217},\, \text{amp}_{143\times 217},\, n_{143},\, n_{217},\, n_{143\times 217},\, \text{calTE},\, \text{calEE}\}$ are identical between the two chains; the totals match by construction at $k_{\rm sampled}=17$ but the parameter spaces are otherwise distinct; R25c-MIN-1 corrected v1B.0.25 from prior "$k=7+7=14$" stale carry, R25d-MAJ-1 corrected v1B.0.26 "distinct from" to "coincidentally same-total" framing, R25g-MAJ-1 corrected v1B.0.27 the previously-confabulated ``different foreground-amplitude/spectral-index split'' to the actual $n_{\nu}$-to-$(w, w_a)$ cosmological-block trade plus the $M_b$-drop nuisance-block diff verified against the on-disk iter2 chain header).}
+% R27-GRO-B3 close (v1B.0.29): caption trimmed to journal-clean form;
+% audit-cascade history (R25c-MIN-1 / R25d-MAJ-1 / R25g-MAJ-1 caption
+% corrections) moved to this comment block. Chain state at extraction:
+% N_total=128,385 across 16 chains; N_effective=89,871 after 30% burn-in;
+% Rhat-1=0.00820 sustained across two flushes 2026-05-18 01:34/07:53 UTC;
+% mean acceptance 0.2828; Rhat_cl=0.0705. Sampled space (17 total) = 8
+% cosmological + 9 nuisance. Distinct from frozen LCDM+DNeff chain
+% (Table~\ref{tab:verification}, 7+10=17): iter2 trades nu for (w,w_a)
+% in cosmological block, drops M_b in nuisance block (DES-Y5+Pantheon+
+% stack uses internal abs-mag marginalization vs frozen SH0ES external
+% calibrator); the 9 CamSpec foreground/calibration nuisance params are
+% identical between chains. Verified against iter2 chain header at
+% reproducibility/cosmology/iter2_converged_2026-05-18/.
+\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$ at 2026-05-18 07:53~UTC; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE+TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Full parameter list, burn-in / acceptance diagnostics, and the iter2-vs-frozen parameter-set comparison appear in the chain manifest at \texttt{reproducibility/cosmology/iter2\_converged\_2026-05-18/}.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\

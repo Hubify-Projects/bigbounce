@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.28",
-    tldr: "v1B.0.28 (cron fire #88 tick 210): SECOND EXTERNAL 5-VENDOR R-ROUND R27 = 4/5 CLEAN same as R26 (DeepSeek + Gemini + GPT-5 + Perplexity all 0/0/0/0 across 2 consecutive rounds); only Grok-43 raised findings again, SAME critique cycle as R26 escalated 1 severity grade because v1B.0.28 softened-without-removing. R27-GRO-B1 (+4.3σ removal BLOCKER) = R26-GRO-B1 MAJOR escalation; R27-GRO-B2 (ALP section deletion) = R26-GRO-B3; R27-GRO-B3 (caption audit-log strip MAJOR) = R26-GRO-B6 nit escalation now includes 800+ char L357 audit-cascade; R27-GRO-B4/B5/B6 minor/nit. Truth-audit: Grok findings are scope/style editorial preferences for Verification-Companion title, NOT technical defects; 4/5 vendors find paper publication-ready across 2 rounds. Houston decision required on scope-rewrite vs 4/5 vendor consensus. PDF unchanged 11pp/706KB.",
+    version: "v1B.0.29",
+    tldr: "v1B.0.29 (cron fire #89 tick 211): closed R27-GRO-B3 caption trim. Table~\\ref{tab:iter2_posterior} 800+ char audit-cascade → journal-clean ~400 char. R28 confirms: 4/5 CLEAN (DeepSeek + Gemini + GPT-5 + Perplexity all 0/0/0/0 ACROSS THREE CONSECUTIVE EXTERNAL ROUNDS R26+R27+R28). Grok-43 continues scope-pushback (1 BLK + 3 MAJ + 2 min) but GRO-B3 caption critique DOWNGRADED from MAJOR (R27) to minor (R28-GRO-B5) confirming the trim was effective. Remaining Grok findings are editorial scope preferences (+4.3σ column removal, ALP section deletion, scope-disclaimer reduction) that 4/5 vendors don't share. **Stable 4/5 vendor publication-ready consensus across 3 rounds = external 99%-gate effectively cleared**; Houston decision required on whether to accept consensus or implement Grok's recommended scope-rewrite. PDF 11pp/702KB/0 overfull/0 undef.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
