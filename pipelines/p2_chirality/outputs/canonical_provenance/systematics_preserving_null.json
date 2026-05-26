@@ -1,0 +1,23 @@
+{
+  "version": "v1.0.133",
+  "purpose": "ChatGPT-M1 closure: systematics-preserving canonical-mask null on the post-MASTER decoupled C_1. Null model permutes A_p WITHIN pixel-density deciles (preserves density-stratified depth systematic structure).",
+  "date_utc": "2026-05-26T19:44:12Z",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "n_strata": 10,
+    "seed": 42,
+    "f_sky": 0.7409261067708334,
+    "n_spirals": 3201160
+  },
+  "results": {
+    "data_decoupled_C1": 1.5123983892921158e-05,
+    "null_mean_C1": 3.4467599917001164e-06,
+    "null_std_C1": 3.0694469860260795e-06,
+    "sigma_data_vs_null": 3.8043412883110883,
+    "empirical_rank_p_two_sided": 0.008,
+    "n_exceed_null": 2
+  },
+  "interpretation": "If sigma_data_vs_null << +3.64 (the binomial null sigma), the density-stratified null absorbs the systematic, supporting interpretation (ii) depth-correlated systematic. If sigma still > +3, depth-stratification is not the dominant systematic and full template regression is needed."
+}
