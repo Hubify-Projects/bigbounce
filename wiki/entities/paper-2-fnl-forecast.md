@@ -2,7 +2,7 @@
 title: "Paper 2: f_NL Forecast — POINTER"
 type: entity
 tags: [paper, fnl, spherex, fisher, pointer]
-last_updated: 2026-05-02
+last_updated: 2026-05-26
 superseded_by: project-context/SSOT/paper-2/status.md
 ---
 
@@ -10,6 +10,10 @@ superseded_by: project-context/SSOT/paper-2/status.md
 
 > **This wiki entry is a pointer.** The canonical status lives in the SSOT.
 > Do not read status claims from this file — read them from the SSOT.
+
+## One-line status (mirror of SSOT)
+
+**v1.7.37 · 95% readiness · §4.4.1 cascaded-loop-exit SATISFIED.** Branch-V matter bounce: f_NL = −35/8 = −4.375 (parameter-free, SPHEREx-testable, mechanism-independent). SPHEREx Fisher σ(f_NL) ≈ 0.7 (Heinrich+2023 anchor) → 4.7–12σ detection by 2027. R-ext-strict + R-ext-strict-v2 + R-ext-strict-v3 all 5/5 PERFECTLY CLEAN today. Cascaded-loop-confirmed. Remaining: Houston sign-off (final 1%) + arXiv endorsement. See SSOT for full detail.
 
 ## Canonical sources
 

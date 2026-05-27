@@ -2,7 +2,7 @@
 title: "Paper 3: Multi-Survey Anomaly Catalog — POINTER"
 type: entity
 tags: [paper, anomaly, desi, sdss, erosita, lamost, fnl, nanograv, pointer]
-last_updated: 2026-05-02
+last_updated: 2026-05-26
 superseded_by: project-context/SSOT/paper-3/status.md
 ---
 
@@ -13,7 +13,7 @@ superseded_by: project-context/SSOT/paper-3/status.md
 
 ## One-line status (mirror of SSOT)
 
-**v3.1.16 · 98% ready.** All R42 BLOCKERs and MAJORs closed (Wave 14-II last MAJOR). All 4 OpenAI P3 MINORs closed (Wave 14-TT). NANOGrav Bayesian rerun verified locally Wave 14-RR (10.3s CPU, gamma=3.201+/-0.420). Remaining 2% gap: PDF recompile (pod-blocked) + P3-OA-M9 HuggingFace visibility flip (Houston manual) + arXiv tarball. See SSOT for full detail.
+**v3.1.63 · 95% readiness · §4.4.1 cascaded-loop-exit RE-SATISFIED.** 378,280 unique anomalies across 7 retained surveys (DESI DR1 + SDSS DR18 + LAMOST DR10 + eROSITA DR1 + Planck CMB + Gaia DR3 + NEOWISE) after 7-way 5″ positional dedup; ACT DR6 quarantined as cross-transfer artifact. NANOGrav γ=3.20±0.42 vs matter-bounce 3.0 at 0.48σ. v3.1.63 polish closed Gemini-3.1-Pro R-ext-strict-v3 regression: GEM-B2 (matter-bounce γ=3) FALSIFIED per Quintin2014+Cai2014 (n_T=2 blue-tilted → γ=5−n_T=3 standard); GEM-B1 (Fisher α² Taylor at α=3.86) closed with exact multi-tracer Fisher formula acknowledgment in §pathc_caveats(i). R-ext-v63verify×3 all 5/5 PERFECTLY CLEAN after the polish. Remaining: Houston sign-off (final 1%) + arXiv endorsement. See SSOT for full detail.
 
 ## Canonical sources
 

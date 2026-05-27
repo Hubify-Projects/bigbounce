@@ -2,7 +2,7 @@
 title: "Paper 4: Galaxy Chirality Catalog — POINTER"
 type: entity
 tags: [paper, chirality, galaxy, dipole, pointer]
-last_updated: 2026-05-02
+last_updated: 2026-05-26
 superseded_by: project-context/SSOT/paper-4/status.md
 ---
 
@@ -13,7 +13,7 @@ superseded_by: project-context/SSOT/paper-4/status.md
 
 ## One-line status (mirror of SSOT)
 
-**v1.0.25 · 98% ready.** All R42 BLOCKERs and MAJORs closed (Wave 14-ZZ last MAJOR). 8.47M galaxy chirality catalog; ViT-Small classifier, fcw_eq=0.4974+/-0.0003, dipole sigma=0.43/p=0.30 null result. Remaining 2% gap: PDF recompile (pod-blocked, pending Pod 3 restart) + m6 Fig 11 DPI regen (Pod 3) + arXiv tarball. See SSOT for full detail.
+**v1.0.138 · 95% readiness · §4.4.1 cascaded-loop-exit DOUBLY EXCEEDED.** 8 consecutive 5/5 PERFECTLY CLEAN cross-vendor R-rounds across v1.0.132–138. Phase-3 closures landed: ChatGPT-M1 density-stratified null; Gemini-Major1 boundary-distance variance; ChatGPT-B5 full-catalog injection-recovery (≤0.50% 50%-recovery-3σ); Gemini-Major2 1.21× hard-label variance derivation; **joint nuisance-marginalized model fit FORMALLY EXCLUDES interpretation~(i) at 99%** (A_dipole=0.23% f_CW vs 1.7% reference; z=−264.5); Gemini-Major4 extended 24-template joint fit. ALL Houston-shared v1.0.132 external review findings closed. Remaining: Houston sign-off (final 1%) + arXiv endorsement. See SSOT for full detail.
 
 ## Canonical sources
 

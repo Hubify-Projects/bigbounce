@@ -2,7 +2,7 @@
 title: "Paper 1: Spin-Torsion Cosmology — POINTER"
 type: entity
 tags: [paper, ech, barriers, birefringence, bounce, pointer]
-last_updated: 2026-05-02
+last_updated: 2026-05-26
 superseded_by: project-context/SSOT/paper-1/status.md
 ---
 
@@ -10,6 +10,10 @@ superseded_by: project-context/SSOT/paper-1/status.md
 
 > **This wiki entry is a pointer.** The canonical status lives in the SSOT.
 > Do not read status claims from this file — read them from the SSOT.
+
+## One-line status (mirror of SSOT)
+
+**P1A v1A.0.35 · 95% readiness · §4.4.1 cascaded-loop-exit SATISFIED.** ECH structural no-go theorem; 14 barriers close ECH-specific routes to dark energy (other bounce models like quintom can bypass). R15+R16+R24+R-ext-strict+R-ext-strict-v2 all 5/5 PERFECTLY CLEAN. **P1B v1B.0.30 · 95% readiness · §4.4.1 SATISFIED.** MCMC companion paper; 309,189 frozen posterior samples across 2 dataset combinations; ΔNeff ≈ 0 in all datasets; H₀=67.68. R27+R28+R29+R30 all 5/5 PERFECTLY CLEAN. Both papers cascaded-loop-confirmed. Remaining for both: Houston sign-off (final 1%) + arXiv endorsement. See SSOT for full detail.
 
 ## Canonical sources
 
