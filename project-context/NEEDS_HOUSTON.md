@@ -1,6 +1,6 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-22 PDT (cron fire #30 / tick 151 — post visual-formatting cleanup + SSOT sweep + full-portfolio arXiv tarballs).
+Last updated: 2026-05-26 PDT (drive-to-100 portfolio-§4.4.1 milestone — supersedes 2026-05-22 fire #30 snapshot).
 
 **Definition** (per Houston standing directive 2026-05-21): this file lists ONLY items that no agent can resolve — items that require Houston-only authority: personal sign-off, API/SSH credentials, arXiv endorsement, or something physical only Houston can provide.
 
@@ -8,77 +8,107 @@ Everything ELSE is being driven autonomously by agents. If an item is "out of re
 
 ---
 
-## 0. OpenRouter per-key $50/week cap exhausted — workspace credit fine · gates R-rounds
+## 🎯 PORTFOLIO STATE 2026-05-26
 
-**Diagnosis (live `/api/v1/key` readback, 2026-05-23 cron fire #56 post-rollover):** the per-key weekly usage limit on the `sk-or-v1-c25e5...d15b3cbf` key is set to **$50/week**, weekly usage **rolled overnight from $98.66 → $52.48** (the rolling 7-day window dropped the oldest day's $46 spend), `usage_daily` reset to $0. `limit_remaining: 0` (still $2.48 over the $50 cap). Workspace credit is **healthy: $83.47 remaining of $600 total** (used $516.53 lifetime).
+**ALL SIX PAPERS FORMALLY §4.4.1 CASCADED-LOOP-CONFIRMED.** The autonomous drive-to-100 loop's first STOP-CRITERIA half is met for every paper. The only remaining gate per paper is Houston sign-off (the final 1% per `feedback_99_pct_readiness_cap` is Houston-only).
 
-**Trajectory**: at the current zero-spend rate (all calls 403-rejected → no new charges add to weekly), the rolling 7-day counter will continue to drop ~$3–$15/day as older spend rolls off the window. The earliest the cap could clear naturally is **today (2026-05-23) by end-of-day if today's $3.28 average rolls off**; more realistically **2-3 days** (2026-05-25 or 26).
+| Paper | Version | §4.4.1 status | Tarball |
+|---|---|---|---|
+| P1A | v1A.0.35 | ✅ R15+R16+R-ext-strict+R-ext-strict-v2+R-ext-maint all 5/5 clean | `p1a_v1A.0.35_arxiv.tar.gz` (423 KB) |
+| P1B | v1B.0.30 | ✅ R27+R28+R29+R30 all 5/5 clean | `p1b_v1B.0.30_arxiv.tar.gz` (255 KB) |
+| P2 | v1.7.37 | ✅ R-ext-strict×3 all 5/5 clean | `p2_v1.7.37_arxiv.tar.gz` (341 KB) |
+| P3 | v3.1.63 | ✅ R-ext-v63verify×3 all 5/5 clean (post GEM-B1+B2 truth-audit closure) | `p3_v3.1.63_arxiv.tar.gz` (26 MB) |
+| P4 | v1.0.138 | ✅✅✅ 8 consecutive 5/5-clean R-rounds across v1.0.132–138 (double-exceeded) | `p4_v1.0.138_arxiv.tar.gz` (19 MB) |
+| P5 | v0.1.32 | ✅ tick 200 R10+R11+R12 + R-ext-v2 + R-ext-v32verify all 5/5 clean | `p5_v0.1.32_arxiv.tar.gz` (570 KB) |
 
-**Fire #56 live-fired R26 on P1B v1B.0.22 (the smallest paper) confirmed all 5 vendors still 403** with the same `Key limit exceeded (weekly limit)` error. This is NOT a credit-exhausted problem — it is the per-key weekly cap that throttles. Earlier fires assumed weekly reset would clear it; the actual fix is to raise or remove the per-key cap (or rotate the key).
-
-**The cap raise Houston attempted between fire #21 and fire #22 did not propagate to the active key** (verified via `/api/v1/key` readback every fire since #22, plus a live attempted R-round fire on P5 v0.1.13 at fire #43 that returned hard 403 across all 5 vendors with the OR error message `Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/workspaces/default/keys/cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348`). Either the wrong key was edited in the OpenRouter dashboard, or the limit field wasn't saved. The active key's internal ID (per the OR error log) is `cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348`; the public prefix matching `bigbounce/.env.local` is `sk-or-v1-c25e5...d15b3cbf`.
-
-**This is now the binding constraint on every paper's readiness ceiling.** P1A/P1B/P2/P3/P4 are all sitting at 95% pending one more clean R-round + sign-off; P5 has never had a first R-round at all. None can move past 95% until either (a) the per-key cap is raised on the existing key, or (b) a fresh key with no/higher cap is generated and pasted into `.env.local` as `OPENROUTER_API_KEY=sk-or-v1-...`. Option (b) is 60 seconds of work and removes the wall completely.
-
-**Ask (pick one):**
-  - **(a) Raise the per-key cap (fastest, 30 sec):** https://openrouter.ai/settings/keys → find `sk-or-v1-c25...cbf` → edit → raise the `$50/week` `limit` field to `$200/week` (or remove it entirely so only the workspace credit gates spend).
-  - **(b) Rotate the key:** generate a new OpenRouter key with no weekly cap, paste it into `bigbounce/.env.local` as `OPENROUTER_API_KEY=sk-or-v1-...`. The cron will pick it up next fire automatically.
-  - **(c) Wait for reset:** the weekly counter resets on the next Sunday/Monday boundary depending on the workspace's billing tz; this clears the block without action but loses ~5-7 days of agentic R-round throughput.
-
-Once unblocked, the autonomous cron will resume R-round cadence at xx:17 / xx:47 next fire and push R26 + first valid P5 R1 immediately.
+All 6 tarballs gitignored locally per `arxiv/.gitignore submission_tarballs/*.tar.gz` ("rebuildable on demand"), all standalone-smoke-tested with 0 undef refs / 0 undef cites.
 
 ---
 
 ## 1. Personal sign-off on P1A v1A.0.35 for arXiv submission · gates P1A
 
-**Why blocked:** P1A satisfies AGENT_RULES §4.4.1 cascaded-loop exit — 10th-consecutive Gemini-cosmology effective 0-BLOCKER on paper content (R23 BLOCKER was a prompt-meta error, audit-falsified) AND 3rd-consecutive 5-vendor clean round on content (R15+R16+R23 all 0/0 across DeepSeek + Gemini + GPT-5 + Grok + Perplexity). v1A.0.34 closed R23 Gemini M1+m1+n1 text-level findings + 3 pre-existing undef refs. v1A.0.35 (cron fire #24) wrapped the Holst-dual equation in `widetext`, eliminating the last 21pt overfull residual — first fully-clean P1A compile in the campaign. The final 1% (90→100) is reserved for Houston-only judgment per feedback_99_pct_readiness_cap. No agent can flip this.
+**Why blocked:** P1A satisfies §4.4.1 — multiple 5/5 PERFECTLY CLEAN cross-vendor R-rounds across DeepSeek + Gemini + GPT-5 + Grok-43 + Perplexity on v1A.0.35. ECH structural no-go theorem; 14 barriers close ECH-specific routes to dark energy. PDF 20 pp / 832 KB / 0 overfull >20pt / 0 undef refs. Final 1% is Houston-only per `feedback_99_pct_readiness_cap`.
 
-**Ask:** Read `arxiv/paper1a_ech_nogo.tex` end-to-end (or the live PDF at https://bigbounce.hubify.app/papers/paper1a_ech_nogo.pdf — 20 pp / 832 KB) and reply **"sign off P1A"** if ready, or send back blocking findings. **arXiv tarball is pre-built and smoke-tested**: `arxiv/submission_tarballs/p1a_v1A.0.35_arxiv.tar.gz` (433 KB, 5 files, 0 undef refs/cites in isolated compile). With arXiv endorsement, submission is a single upload.
-
----
-
-## 2. Personal sign-off on P4 v1.0.128 for arXiv submission · gates P4
-
-**Why blocked:** R22 5-vendor returned 3 of 5 reviewers 0/0 (DeepSeek + Gemini + Grok). GPT-5 + Perplexity findings closed bundled in v1.0.122. R23 verification round returned **5 of 5 reviewers 0/0** (no regressions from v1.0.122 closures). v1.0.122→v1.0.128 (cron fires #5–#20) eliminated all overfull residuals. After R23 clean + cron fire #20 cleanup, the final 1% is Houston-only.
-
-**Ask:** Read `pipelines/p2_chirality/chirality_catalog_paper.pdf` (51 pp / 26.24 MB / 0 undef refs / 0 overfull) and reply **"sign off P4"** or send blocking findings. **arXiv tarball is pre-built and smoke-tested**: `arxiv/submission_tarballs/p4_v1.0.128_arxiv.tar.gz` (20 MB, 15 files, 0 undef refs/cites in isolated compile). With arXiv endorsement, submission is a single upload.
+**Ask:** Read `arxiv/paper1a_ech_nogo.tex` (or live PDF at https://bigbounce.hubify.app/papers/paper1a_ech_nogo.pdf) and reply **"sign off P1A"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p1a_v1A.0.35_arxiv.tar.gz` (423 KB).
 
 ---
 
-## 3. arXiv endorsement + submission credentials (astro-ph.CO) · gates ALL papers
+## 2. Personal sign-off on P1B v1B.0.30 for arXiv submission · gates P1B
 
-**Why blocked:** Only Houston has the arXiv account + the astro-ph.CO endorser relationships. Agents cannot create arXiv accounts or get endorsed.
+**Why blocked:** P1B v1B.0.30 satisfies §4.4.1 — R27 + R28 + R29 + R30 all 5/5 PERFECTLY CLEAN. MCMC companion to P1A; 309,189 frozen posterior samples; ΔNeff ≈ 0; H₀ = 67.68. PDF 11 pp / 699 KB / 0 undef refs / 0 undef cites.
 
-**Ask:** Confirm submission order (recommended P1A → P4 → P3 → P1B → P2 → P5) and run the arXiv submission yourself when each paper is signed off. **All 6 tarballs are pre-built and smoke-tested** at `arxiv/submission_tarballs/`: P1A 433 KB / P1B 255 KB / P2 346 KB / P3 27 MB / P4 20 MB / P5 438 KB. Tarballs are gitignored locally (rebuildable on demand from `.tex` sources).
-
----
-
-## 4. DESI environmental VAC ("187 DESI-derived attributes" catalog) · gates P5 (optional — better external alternatives now exist)
-
-**Verdict (cron fire #32 exhaustive web search, 2026-05-22):** the specific "187 DESI-derived attributes" catalog Houston referenced **does not appear in any DESI public release** (data.desi.lbl.gov/doc/vac/, DR1 documentation, EDR documentation, or in any 2024–2026 arXiv listing for DESI VAC papers). It either (a) was a planning-stage concept that didn't ship, or (b) lives on Houston's pre-2026 personal compute and never made the public release. **However**, two real public DESI cosmic-web catalogs landed since the 2026-05-15 subagent search and now offer a stronger external comparison than the V-Web env_finder workaround:
-
-- **T-Web DESI DR1** ([arXiv:2604.02463](https://arxiv.org/abs/2604.02463), 2026-04-02): tidal-tensor T-Web environments on a 256³ grid in an 800 Mpc cube over the full DESI DR1 footprint, classified into voids/sheets/filaments/knots. **Methodology essentially identical to the V-Web env_finder run that landed P5's headline cosmic-web result on 2026-05-19.** A direct cross-comparison would be a publication-grade independent validation.
-- **ASTRA EDR Probabilistic Environment Catalog** ([arXiv:2604.01456](https://arxiv.org/abs/2604.01456), 2026-04-01): algorithm-based per-object void/sheet/filament/knot membership probabilities + classification entropies on DESI EDR (175 deg², 20 rosettes). Provides per-galaxy classification entropies that the V-Web run does not — useful for quantifying environmental-assignment uncertainty.
-- **DESIVAST** ([arXiv:2411.00148](https://arxiv.org/abs/2411.00148)): low-redshift void catalog on DESI DR1 Bright Galaxy Survey. Adjacent rather than overlapping; complementary cross-check on the void-class portion of the V-Web headline.
-
-**Ask:** Either (a) **confirm we proceed with V-Web as canonical + add T-Web cross-validation as a publication-grade external comparison in P5 v0.1.8+** (default agent path; T-Web catalog data availability is uncertain but the published comparison numbers are accessible), or (b) confirm the legacy 187-attribute catalog reference can be retired from the paper text. The cron will pursue the T-Web cross-validation work autonomously on next non-API fire if no response, since it's a real positive scientific upgrade rather than a Houston-blocked item.
+**Ask:** Read `arxiv/paper1b_mcmc_companion.pdf` and reply **"sign off P1B"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p1b_v1B.0.30_arxiv.tar.gz` (255 KB).
 
 ---
 
-## What is NOT on this list (autonomous work in flight or completed)
+## 3. Personal sign-off on P2 v1.7.37 for arXiv submission · gates P2
 
-The following are explicitly NOT Houston-blocked. Most have closed since 2026-05-21.
+**Why blocked:** P2 v1.7.37 satisfies §4.4.1 — R-ext-strict×3 all 5/5 PERFECTLY CLEAN. f_NL Forecast: Branch-V matter bounce predicts f_NL = −35/8 = −4.375 (parameter-free, SPHEREx-testable). σ(f_NL) ≈ 0.7 (Heinrich+2023 anchor) → 4.7–12σ detection by 2027.
 
-**Completed since the 2026-05-21 snapshot:**
-- ✅ All 6 papers brought to **0 overfull >20pt** (cron fires #20–#24) — first time in campaign.
-- ✅ P5 Phase 2 sensitivity sweep (9 grid configs on disk) + RSD-robustness Limitations item (cron fire #25) + Tempel+2014 FoF cross-validation (filament concordance 0.026pp) + full paper LaTeX expansion 9 KB → 885 lines + first PDF compile (738 KB).
-- ✅ SSOT doc-consistency sweep — papers.ts / SSOT/paper-5 / SSOT/index.md table+paragraph / CLAUDE.md headline all consistent (cron fires #25–#27).
-- ✅ Full-portfolio arXiv tarballs built + smoke-tested standalone (cron fires #28–#29): all 6 tarballs at 0 undef refs/cites.
+**Ask:** Read `research/focused_paper_source_integration/02_full_draft.pdf` (21 pp / 818 KB) and reply **"sign off P2"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p2_v1.7.37_arxiv.tar.gz` (341 KB).
 
-**Still autonomous, in flight or queued:**
-- HF model card refresh for `bamfai/galaxy-chirality-v2` v1.0.104 → v1.0.128 (HF_TOKEN in `.env.local`) — queued for next non-API tick.
-- R26 cross-vendor wave across P1A + P1B + P2 + P3 + P4 + first P5 R1 — blocked only on the OR cap raise (item 0 above).
-- Any LaTeX recompile / PDF mirror / site sync — driven on every fire.
-- Any pod work that can succeed via local source-build.
+---
+
+## 4. Personal sign-off on P3 v3.1.63 for arXiv submission · gates P3
+
+**Why blocked:** P3 v3.1.63 satisfies §4.4.1 — R-ext-v63verify×3 all 5/5 PERFECTLY CLEAN after the GEM-B1 (Fisher α² Taylor) polish closure. Multi-survey anomaly catalog: 378,280 unique anomalies across 7 retained surveys after 7-way 5″ positional dedup. NANOGrav γ = 3.20 ± 0.42 vs matter-bounce 3.0 at 0.48σ.
+
+**Ask:** Read `pipelines/p3_anomaly_engine/paper3_draft.pdf` (48 pp / 28.4 MB) and reply **"sign off P3"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p3_v3.1.63_arxiv.tar.gz` (26 MB).
+
+---
+
+## 5. Personal sign-off on P4 v1.0.138 for arXiv submission · gates P4
+
+**Why blocked:** P4 v1.0.138 has the LONGEST cascaded-loop-exit streak in the campaign — **8 consecutive 5/5 PERFECTLY CLEAN R-rounds across v1.0.132/133/134/135/136/137/138** (>2.5× the §4.4.1 minimum of 3). Galaxy chirality catalog: 8.47M galaxies (3.2M spirals); ViT-Small classifier with Z₂ 2-fold flip TTA.
+
+**Phase-3 substantive closures landed this session** (Houston-shared v1.0.132 external review wave + ChatGPT-B5 + Gemini-Major1/Major2/Major4):
+- ChatGPT-M1 systematics-preserving density-stratified null
+- Gemini-Major1 boundary-distance variance uniformity
+- ChatGPT-B5 full-catalog injection-recovery (50%-recovery-3σ threshold ≤ 0.50%)
+- Gemini-Major2 1.21× hard-label variance algebraic derivation
+- **Joint nuisance-marginalized model fit FORMALLY EXCLUDES interpretation (i) at 99% confidence** — A_dipole = 0.23% f_CW vs 1.7% reference, z = −264.5
+- Gemini-Major4 extended 24-template joint fit with leg × confidence interactions
+
+**Ask:** Read `pipelines/p2_chirality/chirality_catalog_paper.pdf` (54 pp / 26.3 MB / 0 undef refs) and reply **"sign off P4"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p4_v1.0.138_arxiv.tar.gz` (19 MB, 15 files).
+
+---
+
+## 6. Personal sign-off on P5 v0.1.32 for arXiv submission · gates P5
+
+**Why blocked:** P5 v0.1.32 satisfies §4.4.1 — tick 200 R10+R11+R12 cross-model rotation + R-ext-v2 + R-ext-v32verify all 5/5 PERFECTLY CLEAN. Environmental dependence of spiral chirality across DESI LSS at V-Web resolution. Headline: chirality is statistically independent of LSS environment within DESI DR1 at V-Web resolution. 6 independent positive evidence lines.
+
+**v0.1.32 bundled-closure wave** (Gemini-3.1-Pro R-ext-v3 MAJORs):
+- GEM-M1 RSD anisotropy caveat in §XII Limitations
+- GEM-M2 ALP-density EFT parameterization in §XI.B (g_φ ∇φ/H₀ ≲ 10⁻²/⟨|Δρ/ρ_bg|⟩)
+- GEM-M3 Alexander & Yunes 2009 + Lue–Wang–Kamionkowski 1999 foundational citations
+
+**Ask:** Read `pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf` (17 pp / 928 KB) and reply **"sign off P5"** or send blocking findings. **arXiv tarball pre-built**: `arxiv/submission_tarballs/p5_v0.1.32_arxiv.tar.gz` (570 KB).
+
+---
+
+## 7. arXiv endorsement + submission credentials · gates ALL papers
+
+**Why blocked:** Only Houston has the arXiv account + the astro-ph.CO / astro-ph.GA / astro-ph.IM endorser relationships. Agents cannot create arXiv accounts or get endorsed.
+
+**Ask:** Confirm submission order (recommended **P1A → P4 → P3 → P1B → P2 → P5**) and run the arXiv submission when each paper is signed off. Each tarball is a single upload at https://arxiv.org/submit; announcement schedule is the next 20:00 UTC after submission.
+
+---
+
+## What is NOT on this list (autonomous work completed or still in-flight)
+
+Items explicitly RESOLVED since the 2026-05-22 snapshot:
+
+- ✅ **OpenRouter per-key cap raise PROPAGATED.** Dozens of 5-vendor cross-vendor R-rounds executed cleanly across 2026-05-26, including the entire portfolio-§4.4.1 confirmation wave. The earlier "cap exhausted" item is closed.
+- ✅ **DESI environmental VAC** — RESOLVED via V-Web env_finder + ASTRA EDR + DESIVAST cross-validation; 6 independent positive evidence lines for the headline environment-independence.
+- ✅ **Visual-formatting cleanup** (cron fires #20–#24): all 6 papers at 0 overfull > 20pt.
+- ✅ **arXiv tarball rebuild** (2026-05-26 fire xx:47): all 6 tarballs current at the §4.4.1-confirmed versions with 0 undef refs / 0 undef cites in isolated compile.
+- ✅ **Phase-3 P4 substantive closures**: all Houston-shared v1.0.132 external review findings closed; interpretation (i) formally excluded at 99%.
+- ✅ **All Gemini-3.1-Pro per-vendor regressions** (P3 GEM-B1+B2 and P5 GEM-M1+M2+M3) truth-audited and either falsified or closed.
+- ✅ **Wiki pointer entities refreshed** to current SSOT state (2026-05-26).
+
+Items still autonomous, in-flight or queued:
+
+- ⏳ HF model card refresh for `bamfai/galaxy-chirality-v2` v1.0.128 → v1.0.138 (HF_TOKEN in `.env.local`) — queued for next non-API tick once Houston signs off P4.
+- ⏳ Maintenance R-rounds continue at xx:17 / xx:47 cadence to keep streaks alive while waiting for Houston sign-off.
 
 If anything above DOES end up needing Houston input mid-execution, it will be promoted to this list at that moment, not deferred to here preemptively.
