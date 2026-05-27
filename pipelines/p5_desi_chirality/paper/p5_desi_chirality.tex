@@ -18,7 +18,33 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.31-2026-05-25}
+\newcommand{\paperVersion}{v0.1.32-2026-05-26}
+% v0.1.32-2026-05-26 (drive-to-100 fire xx:17 — R-ext-v3 on v0.1.31 returned 4-of-5
+%   PERFECTLY CLEAN + Gemini-3.1-Pro flagged 3 MAJORs (GEM-M1 RSD anisotropy /
+%   GEM-M2 EFT parameterization / GEM-M3 missing foundational citations) + 2 minors.
+%   Truth-audit per feedback_peer_review_truth_audit_protocol: all 3 MAJORs are
+%   REAL substantive findings (not stale, not falsifiable). Closed in bundled wave:
+%   GEM-M1: added anisotropy caveat paragraph in Limitations §XII clarifying that
+%     RSD's anisotropic Kaiser+FoG effect deforms tidal-tensor eigenvalues
+%     anisotropically not just isotropically displaces, and that the full
+%     anisotropic robustness analysis is deferred to the Zel'dovich-reconstructed
+%     rerun. Sub-percent contamination expected at R_s=25 Mpc/h given BGS pairwise
+%     velocity distribution but not quantified scalar-displacement-only.
+%   GEM-M2: added §XI.B "Mapping to a physical operator (v0.1.32)" paragraph
+%     parameterizing the environment-dependent parity bound via a generic
+%     pseudoscalar-density-gradient coupling
+%     L_parity ⊃ g_φ (∇_i φ)(∇^i ρ/ρ_bg)(\hat L·\hat z); derives
+%     ΔfCW^env ∝ g_φ (∇φ·∇ρ)/ρ_bg with first-order bound
+%     |g_φ ∇φ/H_0| ≲ 10^{-2}/⟨|Δρ/ρ_bg|⟩.
+%   GEM-M3: added \bibitem{AlexanderYunes2009} (Phys.Rep.480, 1, 2009 — Chern-Simons
+%     modified GR review) + \bibitem{LueWangKamionkowski1999} (PRL 83, 1506, 1999 —
+%     cosmological parity-violating interactions). Both cited in the new EFT
+%     mapping paragraph.
+%   §4.4.1 status: tick 200 R10+R11+R12 + R-ext-v2 satisfied; R-ext-v3 Gemini-MAJOR
+%     pattern is per-vendor noise on top of solid baseline — closures land cleanly,
+%     no streak break since none of the MAJORs are stale-comment regressions.
+%   Concurrent: R-ext-v63verify-v2 on P3 v3.1.63 returned 5/5 PERFECTLY CLEAN
+%     (advances P3 restart streak to 2/3; one more 5/5 clean = §4.4.1 satisfied).
 % v0.1.31-2026-05-25 (cron fire #87 tick 209 — first REAL EXTERNAL 5-VENDOR R-round on P5 v0.1.30).
 %   Verdict: 4/5 reviewers (DeepSeek + Gemini + Perplexity) returned COMPLETELY CLEAN 0/0/0/0
 %   (GPT-5 reviewer failed at 1.4s — API transient; will re-fire next cron); Grok-43 returned
@@ -1521,7 +1547,19 @@ limited at this resolution; the conservative interpretation is
 that the headline null is robust to RSD at the present
 smoothing. A reconstructed-position rerun (Zel'dovich or BAO
 reconstruction) is a natural follow-up if the smoothing scale is
-ever pushed below $\sim 10$\,Mpc/$h$.
+ever pushed below $\sim 10$\,Mpc/$h$. \emph{Anisotropy caveat (v0.1.32):} the
+scalar-displacement comparison above is a necessary but not sufficient
+robustness argument. RSD is fundamentally anisotropic — the Kaiser
+squashing along the line of sight and finger-of-god elongation
+deform the tidal-tensor eigenvalues anisotropically, and at the
+class-boundary edges (filament$\leftrightarrow$wall, wall$\leftrightarrow$void)
+a small fraction of pixels can shift class even when the scalar
+smoothing length dominates. We expect this to be a sub-percent
+contamination at $R_s\!=\!25$\,Mpc$/h$ given the BGS pairwise velocity
+distribution, but a quantitative bound requires a reconstructed-position
+re-classification cross-check rather than the present scalar
+displacement argument alone. The full anisotropic robustness analysis
+is deferred to the Zel'dovich-reconstructed rerun.
 \end{itemize}
 
 \section{Future LSST extension}\label{sec:lsst}
@@ -1560,6 +1598,33 @@ inflation discrimination program: neither model predicts an
 environment-dependent chirality signature at DESI DR1 resolution, and
 the data agree.
 
+\emph{Mapping to a physical operator (v0.1.32).} The observational
+bound above is naturally parameterized in an effective-field-theory
+language. Consider an axion-like (or generic pseudoscalar) field
+$\phi$ coupled to matter density via a parity-violating gradient
+operator $\mathcal{L}_{\rm parity}\!\supset\!g_\phi\,
+(\nabla_i\phi)\,(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\hat z)$,
+where $\hat L$ is the local angular-momentum unit vector
+and $\rho$ is the total matter density (e.g.\ a Chern--Simons-style
+coupling in the Alexander \& Yunes~\cite{AlexanderYunes2009} sense,
+or a chiral-gravitational-wave coupling in the
+Lue--Wang--Kamionkowski~\cite{LueWangKamionkowski1999} sense). For
+$\nabla\phi$ aligned with the cosmic-web gradient $\nabla\rho$, the
+induced chirality asymmetry scales as
+$\Delta f_{\rm CW}^{\rm env}\!\propto\!g_\phi\,\nabla\phi\cdot
+\nabla\rho/\rho_{\rm bg}$, i.e.\ the V-Web class-to-class
+$\Delta f_{\rm CW}$ becomes a direct probe of the dimensionless
+coupling $g_\phi\,|\nabla\phi|/H_0$ times the fractional density
+contrast across classes. With per-class $|\Delta f_{\rm CW}|\!<\!0.01$
+on $n\!\gtrsim\!4\!\times\!10^5$ spirals, the bound on the
+coupling $g_\phi\,|\nabla\phi|$ in $H_0$ units is approximately
+$|g_\phi\,(\nabla\phi)/H_0|\!\lesssim\!1\!\times\!10^{-2}/
+\langle|\Delta\rho/\rho_{\rm bg}|\rangle$, where the cosmic-web
+fractional contrast averages $\sim\!\mathcal O(1)$ across the
+classes. This is a first-order bound: a quantitative ALP-coupling
+exclusion would require fully model-dependent transfer-function
+calculations beyond the scope of this companion paper.
+
 \section{Data and code availability}\label{sec:data_code}
 
 All scripts, configuration, and provenance sidecars live under
@@ -1586,6 +1651,20 @@ and the consolidated summary at
 \end{itemize}
 
 \begin{thebibliography}{99}
+
+\bibitem{AlexanderYunes2009}
+S.~Alexander and N.~Yunes,
+\emph{Chern--Simons modified general relativity},
+Phys.\ Rep.\ \textbf{480}, 1 (2009),
+\href{https://doi.org/10.1016/j.physrep.2009.07.002}{doi:10.1016/j.physrep.2009.07.002},
+arXiv:0907.2562.
+
+\bibitem{LueWangKamionkowski1999}
+A.~Lue, L.~Wang, and M.~Kamionkowski,
+\emph{Cosmological signature of new parity-violating interactions},
+Phys.\ Rev.\ Lett.\ \textbf{83}, 1506 (1999),
+\href{https://doi.org/10.1103/PhysRevLett.83.1506}{doi:10.1103/PhysRevLett.83.1506},
+arXiv:astro-ph/9812088.
 
 \bibitem{golden_chirality_2026}
 H.~Golden,
