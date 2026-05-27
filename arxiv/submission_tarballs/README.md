@@ -5,16 +5,16 @@ smoke-tested by extracting into an empty temp directory and running
 `pdflatex -interaction=nonstopmode` 2–3 times to confirm clean compilation
 with **0 undef refs / 0 undef cites** before being archived here.
 
-Built across cron fires #28 + #29 + #36 (2026-05-22 PDT, ticks 149–157). P5 tarball rebuilt at fire #36 after v0.1.7 → v0.1.10 added §sec:tweb_compare with T-Web + ASTRA + DESIVAST cross-citations.
+Built across cron fires #28 + #29 + #36 (2026-05-22 PDT, ticks 149–157) at the v1A.0.35 / v1B.0.22 / v1.7.33 / v3.1.62 / v1.0.128 / v0.1.30 baselines. **Refreshed 2026-05-26 PDT (drive-to-100 portfolio-§4.4.1 milestone fire)** to the current cascaded-loop-confirmed versions on five of six papers (P1A unchanged).
 
 | Paper | Tarball | Size | Files | Smoke-test PDF | Refs/cites |
 |---|---|---:|---:|---|:---:|
-| **P1A** v1A.0.35 | `p1a_v1A.0.35_arxiv.tar.gz` | 433 KB | 5 | 20 pp / 832 KB | 0 / 0 |
-| **P1B** v1B.0.22 | `p1b_v1B.0.22_arxiv.tar.gz` | 255 KB | 4 | 11 pp / 694 KB | 0 / 0 |
-| **P2** v1.7.33 | `p2_v1.7.33_arxiv.tar.gz` | 346 KB | 9 | 21 pp / 817 KB | 0 / 0 |
-| **P3** v3.1.62 | `p3_v3.1.62_arxiv.tar.gz` | 27 MB | 23 | 47 pp / 28.4 MB | 0 / 0 |
-| **P4** v1.0.128 | `p4_v1.0.128_arxiv.tar.gz` | 20 MB | 15 | 51 pp / 26 MB | 0 / 0 |
-| **P5** v0.1.30 | `p5_v0.1.30_arxiv.tar.gz` | 578 KB | 9 | 29 pp / 909 KB | 0 / 0 |
+| **P1A** v1A.0.35 | `p1a_v1A.0.35_arxiv.tar.gz` | 423 KB | 5 | 20 pp / 832 KB | 0 / 0 |
+| **P1B** v1B.0.30 | `p1b_v1B.0.30_arxiv.tar.gz` | 255 KB | 4 | 11 pp / 699 KB | 0 / 0 |
+| **P2** v1.7.37 | `p2_v1.7.37_arxiv.tar.gz` | 341 KB | 9 | 21 pp / 818 KB | 0 / 0 |
+| **P3** v3.1.63 | `p3_v3.1.63_arxiv.tar.gz` | 26 MB | 23 | 48 pp / 28.4 MB | 0 / 0 |
+| **P4** v1.0.138 | `p4_v1.0.138_arxiv.tar.gz` | 19 MB | 15 | 54 pp / 26.3 MB | 0 / 0 |
+| **P5** v0.1.32 | `p5_v0.1.32_arxiv.tar.gz` | 570 KB | 8 | 17 pp / 928 KB | 0 / 0 |
 
 Bibliography mechanisms:
 - **P1A / P1B / P2 / P5** ship `.tex` + `.bib` + pre-resolved `.bbl` (arXiv
