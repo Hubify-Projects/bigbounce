@@ -1,10 +1,29 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-26 PDT (drive-to-100 portfolio-§4.4.1 milestone — supersedes 2026-05-22 fire #30 snapshot).
+Last updated: 2026-05-28 PDT (re-exhausted OpenRouter weekly cap + cron 7-day renewal point reached).
 
 **Definition** (per Houston standing directive 2026-05-21): this file lists ONLY items that no agent can resolve — items that require Houston-only authority: personal sign-off, API/SSH credentials, arXiv endorsement, or something physical only Houston can provide.
 
 Everything ELSE is being driven autonomously by agents. If an item is "out of repo scope" or "needs a pod" or "compute-bound" but I can spin up the pod myself, it does NOT belong on this list.
+
+---
+
+## 0. OpenRouter per-key weekly cap re-exhausted (2026-05-28) · gates R-rounds
+
+**Diagnosis**: All 10 reviewers across two parallel R-rounds (P1B + P2 maintenance) returned `[FAIL]` in ~0.4s today with HTTP 403 `Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/workspaces/default/keys/cdb1d2ef595c2ce98df9fa0add17a242adff5cfb9df1f8fcaba3c7b5f8345348`. Same active key as the 2026-05-23 exhaustion. The portfolio's daily-scale R-round volume (30+ on 2026-05-26 alone, plus daily maintenance rotations) is over the $50/week cap.
+
+**Impact**: Autonomous loop cannot fire fresh R-rounds. Maintenance rotation halts. §4.4.1 status from 2026-05-27 holds (no new findings means no regression), but new R-round verification is blocked.
+
+**Ask (pick one)**:
+- **(a) Raise per-key cap (fastest)**: https://openrouter.ai/settings/keys → find `sk-or-v1-c25...cbf` → edit → raise `$50/week` cap to `$200/week` or remove entirely.
+- **(b) Rotate key**: generate new OpenRouter key with no weekly cap, paste into `.env.local` as `OPENROUTER_API_KEY=sk-or-v1-...`.
+- **(c) Wait for weekly rollover**: ~5-7 day delay; portfolio remains at the 2026-05-27 §4.4.1-satisfied state in the interim.
+
+## 0b. Cron 7-day renewal point reached (2026-05-28) · gates loop continuation
+
+**Diagnosis**: The drive-to-100 cron was scheduled ~2026-05-21 per the standing directive "This cron lives 7 days max (Claude session cron limit). On day 6, prompt to renew." Today is 2026-05-28 = day 7+. Cron should be renewed if Houston wants the loop to continue past 7 days.
+
+**Ask**: Renew the cron (re-issue `/loop` or equivalent) if continuation is desired. With portfolio in steady-state §4.4.1-satisfied awaiting Houston sign-off, the marginal value of continued maintenance R-rounds is low; the bigger gating item is Houston sign-off (items 1–7 below).
 
 ---
 
