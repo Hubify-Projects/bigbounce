@@ -2,10 +2,10 @@
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
 paper: 2
-last_updated: 2026-05-14 00:25 PDT
+last_updated: 2026-05-28 PDT (drive-to-100 non-API integrity audit fire)
 canonical_source: research/focused_paper_source_integration/02_full_draft.tex
-canonical_pdf: public/papers/02_full_draft.pdf
-version: v1.7.28
+canonical_pdf: research/focused_paper_source_integration/02_full_draft.pdf (818,324 bytes / 21 pp / 0 undef refs / md5 26778f86; mirrored byte-identical to public/papers/02_full_draft.pdf + public/papers/focused_paper_bounce_fnl_forecast.pdf + public/papers/paper2_fnl_forecast.pdf + site/public/papers/focused_paper_bounce_fnl_forecast.pdf)
+version: v1.7.37 (2026-05-26; §4.4.1 cascaded-loop-exit satisfied; R-ext-strict + R-ext-strict-v2 + R-ext-strict-v3 + R-ext-maint + R-ext-maint-v2 + R-ext-maint-v3 + R-ext-maint-v4 all 5/5 PERFECTLY CLEAN through 2026-05-28)
 headline_pct: 81
 submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HARD FIX: Data-and-Code-Availability URL and release tag updated from v1.7.0 to v1.7.9-paper2 in 02_full_draft.tex line 381; git tag v1.7.9-paper2 pushed to remote. Prior: R42 Wave 14-VV LANDED -- P2 v1.7.8->v1.7.9 m3 Planck PR4/NPIPE f_NL citation FULL HARD FIX (Jung2025PlanckPR4fNL, f_NL=-0.1+/-5.0) + m8 P1 SPT-3G INVALID. Prior: Wave 14-AA LANDED — two Gemini-3.1-Pro P2 cheap-fast MAJORS closed in one bundle: P2-CM-M1 sigma_theory={0.5,1.0,2.0} prior-sweep promoted as PRIMARY Bayes-factor headline with delta-prior demoted to "theoretical maximum only" footnote, and P2-CM-M2 b_phi cross-term language fix dropping the misleading "bispectrum nearly independent of b_phi" claim with explicit Delta b(k) proportional to f_NL * b_phi / k^2 Dalal-Slosar form + Heinrich+2023 universality cite + 30%/50% degradation caveats; PDF recompiled clean on Pod 3 2026-05-02 04:30 PDT under v1.7.8)
 ---
