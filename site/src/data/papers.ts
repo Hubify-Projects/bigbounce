@@ -171,7 +171,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF 816 KB · 19 pp · May 15, 2026, v1.7.30",
+    pdfMeta: "PDF 818 KB · 21 pp · May 26, 2026, v1.7.37 (§4.4.1 cascaded-loop-exit satisfied, 0 overfull, 0 undef refs)",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper2_fnl_forecast.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper2_fnl_forecast.pdf", kind: "secondary", download: true },
@@ -222,7 +222,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF 28.43 MB · 47 pp · May 18, 2026, v3.1.56",
+    pdfMeta: "PDF 28.44 MB · 48 pp · May 26, 2026, v3.1.63 (§4.4.1 cascaded-loop-exit re-satisfied post GEM-B1+B2 truth-audit closure, 0 undef refs)",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper3_anomaly_catalog.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper3_anomaly_catalog.pdf", kind: "secondary", download: true },
@@ -282,7 +282,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 26.24 MB · 51 pp · May 22, 2026, v1.0.128",
+    pdfMeta: "PDF 26.26 MB · 54 pp · May 26, 2026, v1.0.138 (§4.4.1 doubly-exceeded with 13 consecutive 5/5-clean R-rounds; interpretation (i) formally excluded at 99%, 0 undef refs)",
     artifacts: [
       { label: "Read PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/chirality_catalog_paper.pdf", kind: "secondary", download: true },
@@ -342,7 +342,7 @@ export const papers: Paper[] = [
       "First R-round adversarial review (only after draft has headline numbers)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "Scaffold only — no compiled PDF yet · bootstrap-2026-05-15",
+    pdfMeta: "PDF 928 KB · 17 pp · May 26, 2026, v0.1.32 (§4.4.1 satisfied; Gemini-M1+M2+M3 closures landed; 0 overfull, 0 undef refs)",
     artifacts: [
       {
         label: "Pipeline + scripts",
