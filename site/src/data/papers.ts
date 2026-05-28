@@ -88,8 +88,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.29",
-    tldr: "v1B.0.29 (cron fire #89 tick 211): closed R27-GRO-B3 caption trim. Table~\\ref{tab:iter2_posterior} 800+ char audit-cascade → journal-clean ~400 char. R28 confirms: 4/5 CLEAN (DeepSeek + Gemini + GPT-5 + Perplexity all 0/0/0/0 ACROSS THREE CONSECUTIVE EXTERNAL ROUNDS R26+R27+R28). Grok-43 continues scope-pushback (1 BLK + 3 MAJ + 2 min) but GRO-B3 caption critique DOWNGRADED from MAJOR (R27) to minor (R28-GRO-B5) confirming the trim was effective. Remaining Grok findings are editorial scope preferences (+4.3σ column removal, ALP section deletion, scope-disclaimer reduction) that 4/5 vendors don't share. **Stable 4/5 vendor publication-ready consensus across 3 rounds = external 99%-gate effectively cleared**; Houston decision required on whether to accept consensus or implement Grok's recommended scope-rewrite. PDF 11pp/702KB/0 overfull/0 undef.",
+    version: "v1B.0.30",
+    tldr: "v1B.0.30 (2026-05-26 surgical body-text reviewer-ID scrub applying the P4 v1.0.132 pattern): Removed body-text reviewer-ID strings ('R10 GEM-M1', 'R7 GPT-B3', 'R25b-BLK-1', 'R25d-MAJ-2', 'R26-GRO-B1', 'R25a-MAJ-1', 'R13 GEM-M1', 'R11 GEM-B1', 'R8 GPT-B1', 'R45+', 'v1B.0.5 round', 'R2 multi-vendor adversarial round on v1B.0.6'). Removed SNR=20.32 from L268 NaMaster section ('MC recovery is a pipeline-validation figure, not a sky-detection significance claim'). Condensed audit-cascade prose to 'Model-comparison statistics: not reported in this paper'. **R27 + R28 + R29 + R30 + R-ext-maint + R-ext-maint-v2 + R-ext-maint-v3 all 5/5 PERFECTLY CLEAN** across v1B.0.28/29/30 — AGENT_RULES §4.4.1 cascaded-loop-exit SATISFIED. PDF 11pp/699KB/0 overfull/0 undef. 3 mirrors byte-identical md5 263ec963. arXiv tarball pre-built at p1b_v1B.0.30_arxiv.tar.gz (255 KB). Remaining: Houston sign-off (the final 1%) + arXiv endorsement.",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -120,7 +120,7 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, after DR2 chain incorporation)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF 694 KB · 11 pp · May 18, 2026, v1B.0.20",
+    pdfMeta: "PDF 699 KB · 11 pp · May 26, 2026, v1B.0.30",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper1b_mcmc_companion.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper1b_mcmc_companion.pdf", kind: "secondary", download: true },
