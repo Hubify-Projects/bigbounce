@@ -1,6 +1,40 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-28 PDT (re-exhausted OpenRouter weekly cap + cron 7-day renewal point reached + 6 Claude-subagent rigorous-publishability reviews returned with substantive findings the 5-vendor R-rounds had been missing).
+Last updated: 2026-05-29 PDT — **SHIP-READY**. Final-pass Claude-subagent rigorous review on P4 v1.0.139 returned **SHIP NOW** verdict; loop terminated.
+
+---
+
+## 🚀 SHIP NOW — arXiv upload, your hands only
+
+Houston-only because arXiv requires your account, your endorsement chain, and your real-name identity to submit.
+
+**The two strongest papers are tarballed and ready at:**
+
+- `arxiv/submission_tarballs/p1a_v1A.0.36_arxiv.tar.gz` (2.3 MB, 20pp) — ECH structural no-go theorem
+- `arxiv/submission_tarballs/p4_v1.0.139_arxiv.tar.gz` (27 MB, 54pp) — 8.47M galaxy chirality at scale + 18σ formal exclusion of 1.7% cosmological dipole
+
+Both standalone-smoke-tested in `/tmp/p1a_ship` and `/tmp/p4_ship` against a clean pdflatex install. 0 fatal errors, 0 missing figures.
+
+**arXiv upload steps (~15 min per paper):**
+
+1. Sign in at https://arxiv.org/user (account: houston@bamf.ai or whichever Hubify Labs alias you set up).
+2. New submission → primary archive `astro-ph.CO` for P4, `astro-ph.CO` + cross-list `gr-qc` for P1A.
+3. License: `arXiv 1.0` (the default; no need for CC).
+4. Upload the .tar.gz directly. arXiv will auto-extract and run AutoTeX. The 27-MB P4 tarball is right at arXiv's 50 MB total limit — should pass.
+5. Metadata: title + abstract come from the .tex (arXiv parses), but verify them and add the comments line: "20 pp, 2 figs" for P1A; "54 pp, 17 figs, 3.2M-spiral chirality catalog public at huggingface.co/datasets/bamfai/galaxy-chirality-catalog" for P4.
+6. Authors: Houston Golden (independent). If arXiv asks for affiliation, "Hubify Labs" is fine.
+7. Endorsement: P1A first-time submission to astro-ph.CO needs an endorser. If you don't have one queued, try arXiv's endorsement-request workflow + emailing a contact you've already exchanged with (anyone with ≥3 published papers in astro-ph.CO in the last 5 years can endorse). P4 builds on the same endorsement so should auto-clear once P1A is endorsed.
+8. Hit "Submit." You'll get an arXiv ID like `arXiv:2605.XXXXX` within 1-2 business days (Tue/Thu/Sun postings).
+
+**After arXiv IDs come in:** ping me and I'll wire them into the site's `papers.ts` / `live-status.ts` / SSOT so the public site flips to "submitted, in review."
+
+**Where the other 4 papers stand:**
+- P1B v1B.0.30 (78%): waiting on the spectator-ALP self-consistency fix (§VI Ω_φ issue). Can ship within a week with either a coupled-Friedmann derivation or a demote-to-appendix.
+- P2 v1.7.37 (81%): waiting on either Heinrich σ propagation OR an explicit "deferred to revision" framing in the abstract. ~2 days.
+- P3 v3.1.63 (85%): conclusions §sec:conclusion item 5 still quotes a retracted Fisher form. ~30 min text fix.
+- P5 v0.1.32 (82%): EFT bound framing needs downgrade or derivation. ~half-day.
+
+These can be the next two weeks of work while P1A + P4 are in the arXiv queue.
 
 ---
 
