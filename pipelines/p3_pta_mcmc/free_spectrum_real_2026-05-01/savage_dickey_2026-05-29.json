@@ -1,0 +1,53 @@
+{
+  "script": "pipelines/p3_pta_mcmc/savage_dickey_2026-05-29.py",
+  "purpose": "Closes P3 \u00a7sec:pathc_caveats item (b) (Savage-Dickey Bayes factor \u2014 multi-round-deferred)",
+  "chain": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/chain_real_freespec.npy",
+  "n_samples": 320000,
+  "gamma_marginal": {
+    "mean": 2.5664653285376198,
+    "std": 0.38182515155555247,
+    "median": 2.5912911949892523
+  },
+  "log10A_marginal": {
+    "mean": -14.025158939341168,
+    "std": 0.37960892027874127,
+    "median": -13.935781809798815
+  },
+  "sampling_priors": {
+    "gamma": "U[0, 7]",
+    "log10A": "U[-18, -11]"
+  },
+  "test_points": {
+    "matter_bounce_gamma": 3.0,
+    "smbhb_gamma": 4.333333333333333,
+    "inflation_tensor_gamma": 5.0,
+    "smbhb_log10A_prior_mu": -15.0,
+    "smbhb_log10A_prior_sigma": 0.7
+  },
+  "savage_dickey_1d_gamma_only_uniform_prior": {
+    "posterior_at_matter_bounce_3p0": 0.4610813926357075,
+    "posterior_at_smbhb_13_3": 6.459868290225136e-05,
+    "posterior_at_infl_5p0": 2.653521991211851e-25,
+    "uniform_prior_density": 0.14285714285714285,
+    "B_matter_bounce_vs_free": 3.227569748449953,
+    "B_smbhb_vs_free": 0.00045219078031575954,
+    "B_infl_vs_free": 1.8574653938482958e-24,
+    "B_matter_bounce_vs_smbhb": 7137.628383745858,
+    "log10_B_matter_bounce_vs_smbhb": 3.8535539329317956
+  },
+  "savage_dickey_2d_smbhb_native_prior": {
+    "joint_posterior_at_smbhb_averaged_over_smbhb_log10A_prior": 3.0119541201279393e-05,
+    "sampling_prior_joint_density": 0.02040816326530612,
+    "n_mc_log10A_draws": 49999,
+    "B_smbhb_vs_free_uniform_sampling_priors": 0.0014758575188626903,
+    "prior_shrinkage_factor": 10.0,
+    "B_smbhb_vs_free_smbhb_log10A_prior": 0.014758575188626903,
+    "log10_B_smbhb_vs_free_smbhb_log10A_prior": -1.830955567823641
+  },
+  "z_distances_gamma_marginal_gaussian": {
+    "matter_bounce_3p0": 1.1354272228955153,
+    "smbhb_13_3": 4.627426971736953,
+    "infl_tens_5p0": 6.373426846157673
+  },
+  "interpretation": "Savage-Dickey nested-model Bayes factors: B_{\u03b3_*/free} > 1 favors the fixed-\u03b3 hypothesis against the free-\u03b3 alternative. Matter-bounce \u03b3=3.0 is well-supported by the posterior; SMBHB \u03b3=13/3 is strongly disfavored. The 1D \u03b3-only result is the conventional Savage-Dickey marginalized over log10A; the 2D version applies the SMBHB-specific log10A prior. The 2D SMBHB Bayes factor against the broad sampling prior is much less than 1, consistent with the +4.6\u03c3 \u03b3-distance of the SMBHB prediction from the posterior mean."
+}
