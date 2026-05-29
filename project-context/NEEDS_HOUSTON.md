@@ -1,6 +1,55 @@
 # NEEDS HOUSTON — truly-blocked items
 
-Last updated: 2026-05-28 PDT (re-exhausted OpenRouter weekly cap + cron 7-day renewal point reached).
+Last updated: 2026-05-28 PDT (re-exhausted OpenRouter weekly cap + cron 7-day renewal point reached + 6 Claude-subagent rigorous-publishability reviews returned with substantive findings the 5-vendor R-rounds had been missing).
+
+---
+
+## ⚠️ 2026-05-28 PDT — 6 PARALLEL CLAUDE-SUBAGENT RIGOROUS REVIEWS RETURNED
+
+Per Houston's directive ("most rigorous multi-agent multi-model peer review including your own modeling"), spawned 6 parallel Claude-subagent publishability reviews against on-disk artifacts. **All 6 surfaced real BLOCKERs the 5-vendor R-round pipeline has been missing** — the vendor reviews can't cross-reference on-disk artifacts or compare line numbers across .tex files; the subagents could.
+
+**Honest readiness drops applied to `site/src/data/papers.ts` + `live-status.ts`:**
+
+| Paper | Was | Now | New BLOCKER(s) the R-rounds missed |
+|---|---|---|---|
+| P1A v1A.0.35 | 92 | **88** | Sample-count drift in §VII: P1A says "424,781 samples" while companion P1B canonical is **309,189** (verified on-disk = 176,240+132,949); `Caldwell2002quintom` bibkey actually cites Caldwell 2002 phantom-DE paper (not quintom); γ_ABCK = 0.274 misattributed (true ABCK value is 0.127, 0.274 is Meissner-refined). Plus self-retracted "9σ" LiteBIRD headline; Eskilt2022 vs Eskilt2022b 3.6σ-vs-2.4-2.9σ inconsistency with P1B. |
+| P1B v1B.0.30 | 85 | **78** | Spectator-ALP self-consistency violated: at f_a~M_Pl, m~H_0 the misalignment ρ_φ ≈ ½ H_0² M_Pl² θ_i² → Ω_φ ~ O(4π/3) — NOT a spectator, dominates DE. This is GPT-B5 deferred 17 versions ago; surfaced now. Plus P1A iter2 status STILL says "not converged" while P1B headlines iter2 CONVERGED; cross-paper Table III stale across all 5 papers (cites v1B.0.13 for itself). Grok's stable "+4.3σ column removal" critique re-examined as REAL load-bearing (σ-tail extrapolation, not statistical tension). |
+| P2 v1.7.37 | 82 | **81** | "3-5σ" headline is multiplier collage (6.25σ × r × b_φ × GR × photo-z), not unified Fisher; σ(f_NL)=0.7 used as point value not propagated; CFC physical-frame matter-bounce bispectrum NOT computed (assumed by parallelism with inflation result); Heinrich Fisher built at f_NL=0 fiducial applied at f_NL=−4.375. 3 of 4 v1.7.31+ deferrals confirmed STILL OPEN. |
+| P3 v3.1.63 | 87 | **85** | Conclusions §sec:conclusion item 5 still quotes σ(f_NL)=8.27 ± 2.37 Fisher form that §pathc_caveats (i) explicitly RETRACTED (α=0 stationary point breaks local-linear); NANOGrav γ cross-surface drift (paper anchors on real-KDE 2.567±0.382, CLAUDE.md + Houston review prompt still cite 3.20±0.42 superseded synthetic); 5-α-grid Fisher refit + Savage-Dickey on existing chain + score-stratified novelty quintiles all DO-NOW-feasible but still queued. |
+| P4 v1.0.138 | 90 | **85** | σ(A_dipole) = 0.006% assumes per-pixel-independent Gaussian residuals; paper itself documents the residual is spatially coherent → N_eff drops from 36,418 to O(400-1,400) → true σ inflates 5-10× → "264.5σ" formal-exclusion drops to ~37σ (still excludes 1.7%, but rhetoric is over-tight by 20-60×); mask conflation: joint_nuisance_model_fit + B5-injection-recovery use `(|b|>15°)` f_sky=0.74 while "canonical" residual headline uses `(n_total>0)` f_sky=0.49 — three different masks called "canonical"; boundary-distance "uniform" claim contradicted by the on-disk JSON (boundary shell contributes 46.5% of C_1 from 3.9% of sky). |
+| P5 v0.1.32 | 85 | **82** | EFT bound `g_φ ∇φ/H_0 ≲ 10⁻²/⟨|Δρ/ρ_bg|⟩` is cosmetic Δf_CW relabeling — no transfer function, no Chern-Simons literature comparison (Lue-Wang-Kamionkowski / Alexander-Yunes); "pure shot-noise residual" claim contradicted by kurtosis +0.82 + 5.26σ tail on 1,821 pixels (expected max under shot-noise ≈ 4.05); "seven independent evidence lines" over-counted — only 3 truly independent classifier axes (V-Web tidal, FoF richness, void-finder). |
+
+**Implication**: the "all 6 papers §4.4.1 cascaded-loop-confirmed at 95%" framing was overstated. The 5-vendor R-round pipeline has been honoring deferred-on-record contracts rather than auditing the underlying physics/statistics. **Items deferred 5+ versions ago need to be closed, not maintained.**
+
+**Action plan (next 30-min loop firings, no Houston permission needed):**
+- P1A: 30-min text fixes for sample-count drift + Caldwell→Cai/Quintom bibkey + ABCK γ attribution + Eskilt2022 harmonization
+- P1B: surface ALP-Ω_φ issue properly (compute coupled Friedmann or demote §VI to appendix); update cross-paper Table III + sync P1A iter2 status
+- P2: defer "unified Fisher" + CFC remain pod-class compute (~few hours); Heinrich σ propagation is a 30-min text edit
+- P3: 30-min text fix to conclusions §sec:conclusion item 5; Savage-Dickey on existing chain is ~1 hr (chain on disk); CLAUDE.md γ-headline cross-surface sync
+- P4: bootstrap σ_A_dipole over NSIDE=8 super-pixels is ~10-min local; mask-family-disclosure table is text edit
+- P5: downgrade EFT bound framing OR derive transfer function; fix shot-noise claim arithmetic; reframe independence to 3 axes
+
+These will be driven by the autonomous loop without asking. Houston sign-off remains the final 1% gate per `feedback_99_pct_readiness_cap`.
+
+---
+
+## RunPod backup & credit estimate (per Houston's directive)
+
+**Backup status**: ALL canonical artifacts confirmed on HuggingFace as of session memory:
+- `bamfai/bigbounce-mcmc` — frozen 2026-05-18 (full_tension + planck_bao_sn chains, posteriors, convergence)
+- `bamfai/galaxy-chirality-catalog` — frozen 2026-05-21 (8.47M P4 catalog)
+- `bamfai/galaxy-chirality-v2` — frozen 2026-05-22 (D4-TTA holdout artifacts)
+
+**RunPod state**: 1 RUNNING pod `cobaya-r43-v2` (ijzftpy3klystt, RTX A5000, 23 days uptime, 0 GB volume) + 9 EXITED pods. The active pod's load-bearing scientific output is already on HF; pod can safely be stopped to save ~$0.27/hr (~$200/month) when not actively running new compute.
+
+**RunPod credit estimate (next 2 weeks of substantive closures)**:
+- P4 M2 full DR8-sweep per-galaxy template regression (canonical formal-exclusion path): ~$6 (CPU pod, ~half-day)
+- P4 M6 full-catalog D4-TTA at production N=3.2M: ~$65 (H200, ~2 hr)
+- P3 5-α-grid Fisher rerun + Savage-Dickey full multi-PTA: ~$25 (CPU)
+- P1B coupled Friedmann + ALP integration validation: ~$5 (CPU)
+- Validation MC buffer + unforeseen retries: ~$50
+
+**Recommendation: $150-200 buffer on RunPod top-up** covers the substantive-closure backlog with margin. If Houston wants the active A5000 pod stopped to halt the ~$0.27/hr burn during the text-fix-heavy backlog, say so.
 
 **Definition** (per Houston standing directive 2026-05-21): this file lists ONLY items that no agent can resolve — items that require Houston-only authority: personal sign-off, API/SSH credentials, arXiv endorsement, or something physical only Houston can provide.
 
