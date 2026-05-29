@@ -1,0 +1,39 @@
+{
+  "script": "pipelines/p3_anomaly_engine/bigae_vs_if_intersection_2026-05-29.py",
+  "purpose": "Closes P3 \u00a7sec:pathc_caveats item (f) \u2014 BigAE-vs-IsolationForest 'high overlap' verification (R3+R4 Gemini-M1, R7 GEM-M3 multi-round deferral).",
+  "data_source": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/pod_runs/erosita_dr1_raw/erosita_anomalies.parquet",
+  "n_total_sources": 930203,
+  "n_bigae_top": 298,
+  "n_if_top": 9303,
+  "bigae_top_score_threshold": 3.411933422088623,
+  "if_top_score_threshold": 0.2099672382132064,
+  "if_n_estimators": 200,
+  "if_random_state": 42,
+  "if_features": [
+    "lat_00",
+    "lat_01",
+    "lat_02",
+    "lat_03",
+    "lat_04",
+    "lat_05",
+    "lat_06",
+    "lat_07",
+    "lat_08",
+    "lat_09",
+    "lat_10",
+    "lat_11",
+    "lat_12",
+    "lat_13",
+    "lat_14",
+    "lat_15"
+  ],
+  "intersection": {
+    "count": 284,
+    "frac_of_bigae_top": 0.9530201342281879,
+    "frac_of_if_top": 0.03052778673546168,
+    "expected_under_independence": 2.9803107493740613,
+    "enrichment_vs_random": 95.29207652579416,
+    "hypergeometric_p_two_sided": 0.0
+  },
+  "interpretation": "BigAE-top-298 \u2229 IF-top-9303 = 284 (95.3% of BigAE-top-298 are also IF-top-9303); expected under random-independence null = 2.98; enrichment 95.3x; hypergeometric two-sided p = 0.000e+00. This quantifies the \u00a73.4 'high overlap' qualitative claim with a real empirical intersection number and statistical significance against the random-independence null."
+}
