@@ -238,10 +238,10 @@ export default async function PaperDetailPage({
             "Mercuri-Capozziello phase-space-vs-loop framing at §II.C.1 (post-R23)",
           ],
           "paper-1b": [
-            "424,781 MCMC posterior samples across 3 frozen dataset combinations",
+            "309,189 MCMC posterior samples across 2 converged dataset combinations (176,240 full-tension + 132,949 Planck+BAO+SN)",
             "ΔNeff ≈ 0 result and H_0 = 67.68 ΛCDM-consistent",
             "NaMaster pseudo-C_ℓ pipeline 500 MC recovery at SNR=20.32σ",
-            "Spectator-ALP consistency check (f_a ~ M_Pl, m ~ H_0)",
+            "Spectator-ALP carved-out regime (f_a ~ M_Pl, m ~ H_0) — explicit parameter-restriction where Ω_φ ≪ Ω_crit holds",
           ],
           "paper-2": [
             "f_NL = -35/8 = -4.375 parameter-free bounce prediction",
@@ -252,21 +252,26 @@ export default async function PaperDetailPage({
           "paper-3": [
             "378,280 anomalies headline (=378,080 + 200) across 7 surveys",
             "7-way 5″ positional FoF dedup arithmetic (10,213 = 637 + 9,576)",
-            "Fisher-positivity caveats in §6",
-            "σ(f_NL)=8.14 with α=0.19 jackknife at <1σ from null",
+            "Fisher-positivity caveats in §6 — canonical 1σ envelope σ(f_NL) ∈ [3.92, 8.98] under 1/σ² = F_0 + c·α² (NOT the retracted symmetric ±2.37 form)",
+            "σ(f_NL)=8.14 central at empirical α=0.19 jackknife (jk dispersion 0.65) at <1σ from null",
+            "v3.1.64 conclusions retracted-Fisher-form text fix — §sec:conclusion now matches §sec:fnl canonical envelope framing",
+            "NANOGrav 15-yr γ = 2.567 ± 0.382 (real-KDE Zenodo emcee fit); matter-bounce γ=3.0 at +1.13σ; SMBHB γ=4.33 at +4.61σ",
           ],
           "paper-4": [
             "Subsample-mask −0.12σ MASTER-deconvolved load-bearing null",
-            "Canonical-mask +3.64σ three-interpretation closure",
+            "v1.0.139 joint nuisance-marginalized fit: interpretation (i) at 1.7% f_CW formally excluded at ~18σ under block-bootstrap σ (NSIDE=8 super-pixels, N_boot=1000) — naive WLS gave 264σ, but residual is spatially coherent",
+            "Canonical-mask +3.64σ three-interpretation closure (interpretation (ii) coherent depth/morphology systematic favored by 5+ anchors)",
             "ℓ=2 cross-spectrum r=−0.65 σ=−2.89 vs pixel-density proxy",
-            "MASTER-decoupled monopole-only null × 500 (post-R22 GPT-5 BL-2 closure)",
+            "MASTER-decoupled monopole-only null × 500 (88% unexplained by monopole-only leakage)",
             "Shamir 2020 vs 2022 split with arXiv IDs (post-R22 Perplexity BL-1)",
           ],
           "paper-5": [
             "V-Web env_finder Phase 1 MVP cosmic-web classification on 14.6M DESI spectro galaxies",
-            "Per-environment cw_fraction: void/wall/filament/cluster",
+            "Per-environment cw_fraction: void/wall/filament/cluster (range 1.7pp dominated by counting statistics)",
             "Phase 2 sensitivity sweep (10/25/50 Mpc/h × 128³/256³/512³)",
             "Tempel+2018 cross-validation status",
+            "EFT bound on parity-violating coupling: Chern-Simons modified GR sense (Alexander–Yunes 2009) + photon-graviton parity sector (Lue–Wang–Kamionkowski 1999) — citations in §VII",
+            "Shot-noise residual diagnostic: skewness +0.044, excess kurtosis consistent with pure-shot-noise null (post-GEM-M3 closure)",
           ],
         };
         if (!pdfArt) return null;
