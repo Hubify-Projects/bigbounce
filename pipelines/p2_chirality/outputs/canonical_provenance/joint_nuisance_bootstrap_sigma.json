@@ -1,0 +1,42 @@
+{
+  "script": "joint_nuisance_bootstrap_sigma.py",
+  "purpose": "BL-1 (subagent review 2026-05-28): block-bootstrap \u03c3 on A_dipole respecting spatial coherence",
+  "mask": "(|b_gal| > 15 deg) & (n_total > 0)",
+  "n_in_mask_pixels": 24187,
+  "n_super_pixels": 440,
+  "NSIDE_block": 8,
+  "n_bootstrap": 1000,
+  "n_valid_bootstrap": 1000,
+  "seed": 42,
+  "full_sample": {
+    "a_x": 4.3245626753719186e-05,
+    "a_y": -0.004516219047843072,
+    "a_z": -0.0005726074169738373,
+    "A_dipole_A_p_units": 0.004552579919815505,
+    "A_dipole_pct_fCW": 0.22762899599077527
+  },
+  "bootstrap": {
+    "sigma_a_x": 0.001163206850798206,
+    "sigma_a_y": 0.0011963252945914114,
+    "sigma_a_z": 0.0033914930940175912,
+    "sigma_A_dipole_A_p_units": 0.0016292293918333974,
+    "sigma_A_dipole_pct_fCW": 0.08146146959166987,
+    "A_dipole_percentiles": {
+      "p0.5": 0.002384891831009911,
+      "p2.5": 0.003040394357568352,
+      "p16": 0.004088486548976226,
+      "p50": 0.005604694053083873,
+      "p84": 0.007263701232377181,
+      "p97.5": 0.009229492453051708,
+      "p99.5": 0.010883754044578203
+    }
+  },
+  "comparison": {
+    "naive_WLS_sigma_A_dipole_A_p_units": 0.000111,
+    "naive_WLS_sigma_A_dipole_pct_fCW": 0.006,
+    "inflation_factor_boot_over_naive": 14.677742268769345,
+    "z_vs_1pct7_reference_naive": -265.2920727944549,
+    "z_vs_1pct7_reference_bootstrap": -18.074446869048227
+  },
+  "interpretation": "If inflation_factor > ~3 and z_bootstrap < ~10, the 'formally excluded at 264.5\u03c3' rhetoric collapses to a more modest 'excluded at z_bootstrap \u03c3' and the paper text should be revised."
+}

@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.35}
-\newcommand{\paperTimestamp}{May 22, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.36}
+\newcommand{\paperTimestamp}{May 28, 2026 PDT}
 % v1A.0.34 (R23 5-vendor cross-vendor on v1A.0.33 ran 2026-05-21). VERDICT: 4 of 5 reviewers
 % returned 0 BLOCKER + 0 MAJOR (DeepSeekV4Pro, GPT-5, Grok-4.3, Perplexity-Sonar-Pro all clean).
 % Gemini-3.1-Pro returned 1 BLOCKER + 1 MAJOR + 1 minor + 1 nit. Truth-audit closure:
@@ -284,7 +284,10 @@ mechanism-independent tests. Section~\ref{sec:limitations} addresses limitations
 Section~\ref{sec:conclusions} concludes.
 
 \textit{Companion paper.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
-(Cobaya~v3.6.1, 424{,}781 samples), NaMaster pseudo-$C_\ell$ pipeline
+(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen accepted samples across two
+converged dataset combinations: 176{,}240 full-tension + 132{,}949
+Planck+BAO+SN; see Paper~I(b)~\cite{Golden2026P1b} Table~I for the
+per-dataset breakdown), NaMaster pseudo-$C_\ell$ pipeline
 validation, spectator-ALP MCMC parameter fitting, and a cross-paper
 reproducibility manifest are reported in Paper~I(b)~\cite{Golden2026P1b}.
 Cosmological parameter values referenced in this paper
@@ -323,9 +326,11 @@ The Barbero-Immirzi parameter is fixed by LQG black hole entropy:
 \begin{equation}\label{eq:gamma}
 \gamma = 0.274 \pm 0.020,
 \end{equation}
-with the ABCK counting~\cite{ABCK1998} giving $\gamma_{\rm ABCK}\approx 0.274$
-and DLM full SU(2) counting~\cite{Domagala2004,Meissner2004} giving
-$\gamma_{\rm DLM}\approx 0.2375$.
+with the U(1) horizon-state counting~\cite{ABCK1998} giving
+$\gamma_{\rm U(1)}\approx 0.127$ (using $\gamma = \ln 2/(\pi\sqrt{3})$) and
+the refined SU(2) full counting~\cite{Domagala2004,Meissner2004} giving
+$\gamma_{\rm SU(2)}\approx 0.274$ (used here) and the further DLM
+refinement giving $\gamma_{\rm DLM}\approx 0.2375$.
 
 \begin{figure}[t]
 \centering
@@ -882,7 +887,7 @@ The phenomenological parameter $\alpha/M$ in Sec.~\ref{sec:parityodd}
 is therefore best understood as the R4-bounded coupling required to
 match $\beta_{\rm obs}$, with the dark-energy density supplied by an
 unrelated sector (e.g.\ a quintessence field~\cite{Carroll1998}, a
-quintom companion~\cite{Caldwell2002quintom}, or by a positive
+quintom-class two-field scenario~\cite{Cai2010quintomReview}, or by a positive
 cosmological constant), rather than by ECH-internal physics. This
 inversion of the prior mass-coupling lock is the structural content
 of Paper~I(a) and is what differentiates the present analysis from
