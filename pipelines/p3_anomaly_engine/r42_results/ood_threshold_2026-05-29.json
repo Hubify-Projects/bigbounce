@@ -1,0 +1,31 @@
+{
+  "script": "pipelines/p3_anomaly_engine/ood_threshold_2026-05-29.py",
+  "purpose": "Closes P3 \u00a7pathc_caveats item (b) \u2014 explicit DESI OOD MSE threshold-in-OOD-units (R3/R4 GPT-B1 multi-round deferral).",
+  "input_artifact": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/r42_results/B10_ood_results_100k.json",
+  "n_ood_spectra": 100000,
+  "headline_rate_target": 0.0087,
+  "target_percentile": 0.9913,
+  "target_percentile_pct": 99.13,
+  "ood_percentiles_from_b10": {
+    "median": 0.17764443159103394,
+    "p99": 44.849014816284125,
+    "p99_9": 344.92769097905824
+  },
+  "interpolation_method": "linear in (percentile, log10(MSE)) between p99 and p99.9",
+  "ood_threshold_at_0pct87_rate": {
+    "MSE_standardized": 60.21810662782997,
+    "S_via_training_val_ref": 2098.191868565504,
+    "S_via_canonical_cut_ratio": 2105.5282037702787
+  },
+  "inflation_vs_curated_cut": {
+    "mse_at_0pct87_OOD_over_canonical_MSE_cut": 421.10564075405574,
+    "S_at_0pct87_OOD_over_canonical_S_cut": 419.6383737131008
+  },
+  "curated_cut_applied_to_ood_sample": {
+    "MSE_cut": 0.143,
+    "fraction_of_OOD_flagged": 0.52815,
+    "fraction_pct": 52.815,
+    "ratio_to_0pct87_headline": 60.70689655172414
+  },
+  "interpretation": "To preserve the 0.87% headline anomaly rate on a representative random SPARCL OOD sample, the per-sample cut should be the OOD 99.13th percentile, which is MSE \u2248 60.22 in standardized units (equivalently S \u2248 2098 relative to the training-pool reference, i.e. ~420\u00d7 the curated-catalog S>5 cut). Conversely, applying the curated S>5 (MSE>0.143) cut as-is to the OOD sample flags 52.8% of OOD spectra (61\u00d7 the headline rate), confirming the curation-not-threshold reconciliation."
+}
