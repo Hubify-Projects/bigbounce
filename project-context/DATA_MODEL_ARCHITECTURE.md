@@ -265,9 +265,9 @@ This is what Houston means by *"nice api/mcp/skills documentation page for this 
 
 ### Phase 1 — Convex setup + schema (4-6 hours)
 
-- [ ] `npx convex dev` initialize in `bigbounce/convex/`
-- [ ] Write `convex/schema.ts` per the tables above
-- [ ] Write all mutations + queries
+- [x] `npx convex dev` initialize in `bigbounce/convex/` — **already done 2026-04-06** (existing `./convex/` dir with 12 .ts files: schema/galaxies/analytics/chatMessages/spectralResults/feedback/pipelineState/models/mcmcStatus/reviews/activityFeed/checklist + `_generated/`). Site `package.json` has `convex@^1.34.1`. Live deployment may need re-auth via `npx convex dev` once when Houston is at the terminal — flagged in NEEDS_HOUSTON if hit. **DISCOVERED ALREADY-DONE during rebuild fire #1 2026-05-29.**
+- [x] Write `convex/schema.ts` per the tables above — **rebuild fire #1 2026-05-29**: extended existing schema with 7 new tables for paper-level orchestration (`papers`, `paper_versions`, `r_rounds`, `findings`, `pathc_caveats`, `pods`, `tasks`). Additive only; the 9 existing tables (galaxies/reviews/checklistItems/pipelineState/models/chatMessages/activityFeed/mcmcStatus/spectralResults/pageViews) are untouched. Typechecks clean via `tsc --noEmit`.
+- [ ] Write all mutations + queries (per-table CRUD + the computed `getPaperState(slug)` view that derives readiness from open findings)
 - [ ] Migration script: read current `papers.ts` / `live-status.ts` / SSOT files / `pathc_caveats` from .tex files → write to Convex
 - [ ] Verify: `bigbounce.list_papers()` query returns 6 papers with computed readiness matching today's honest numbers
 

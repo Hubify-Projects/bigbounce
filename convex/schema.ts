@@ -126,4 +126,210 @@ export default defineSchema({
     .index("by_classification", ["classification"])
     .index("by_confidence", ["confidence"])
     .index("by_dr8_id", ["dr8_id"]),
+
+  // ──────────────────────────────────────────────────────────────────────
+  // Paper-level orchestration (added 2026-05-29 per DATA_MODEL_ARCHITECTURE.md)
+  // ──────────────────────────────────────────────────────────────────────
+
+  // Canonical per-paper state. Readiness is COMPUTED from open findings (see
+  // convex/papers.ts query getPaperState), NEVER hand-set. This is the
+  // structural fix for the "I forgot to bump readiness after 5 closures" drift.
+  papers: defineTable({
+    slug: v.string(),                  // "paper-1a"
+    number: v.string(),                // "1A"
+    title: v.string(),
+    shortTitle: v.string(),
+    targetJournal: v.union(
+      v.literal("PRD"),
+      v.literal("MNRAS"),
+      v.literal("JCAP"),
+      v.literal("ApJ"),
+      v.literal("other")
+    ),
+    status: v.union(
+      v.literal("active-drive-to-100"),       // P1B, P2, P3, P5 right now
+      v.literal("paused-houston-external"),   // P1A, P4 right now
+      v.literal("submitted-arxiv"),
+      v.literal("in-revision"),
+      v.literal("accepted")
+    ),
+    // Path to .tex source relative to repo root, e.g.
+    // "arxiv/paper1a_ech_nogo.tex" or "pipelines/p3_anomaly_engine/paper3_draft.tex"
+    texPath: v.string(),
+    // Path to the rendered PDF in site/public/papers/ that the site links to.
+    sitePdfPath: v.string(),
+    // Focus areas for the external-review prompt generator. Replaces the
+    // hardcoded focusAreas array in site/src/app/papers/[slug]/page.tsx.
+    focusAreas: v.array(v.string()),
+    // Houston-only sign-off (final 1% per feedback_99_pct_readiness_cap).
+    houstonSignOff: v.optional(v.string()),  // ISO date
+    houstonSignOffNote: v.optional(v.string()),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_status", ["status"]),
+
+  // Append-only version history per paper. Each .tex bump writes a new row.
+  // The Paper's "current version" is the most recent row by datestamp.
+  paper_versions: defineTable({
+    paperSlug: v.string(),             // FK to papers.slug
+    version: v.string(),               // "v1A.0.36"
+    datestamp: v.string(),             // ISO date "2026-05-28"
+    texCommit: v.string(),             // git SHA of the .tex file at this version
+    pdfMd5: v.string(),
+    pdfPages: v.number(),
+    pdfSizeBytes: v.number(),
+    changelog: v.string(),             // single-paragraph human summary
+    arxivTarballPath: v.optional(v.string()),
+    arxivTarballSizeBytes: v.optional(v.number()),
+    createdAt: v.number(),
+  })
+    .index("by_paper", ["paperSlug", "datestamp"]),
+
+  // Cross-vendor adversarial peer-review rounds. Each fire of
+  // tools/cross_vendor_review_direct.py creates one row here.
+  r_rounds: defineTable({
+    paperSlug: v.string(),             // FK to papers.slug
+    paperVersionReviewed: v.string(),  // e.g. "v3.1.68"
+    roundLabel: v.string(),            // "2026-05-29_R-direct-v1b"
+    source: v.union(
+      v.literal("openrouter"),          // legacy
+      v.literal("direct"),              // direct vendor SDKs (preferred)
+      v.literal("subagent"),            // Claude subagent simulation
+      v.literal("houston-external")     // Houston copy/paste into ChatGPT/Gemini/etc
+    ),
+    vendors: v.array(v.string()),       // ["gpt-4o", "gemini-2.5-pro", "grok-4", "sonar-pro"]
+    dispatchedAt: v.number(),
+    completedAt: v.optional(v.number()),
+    promptText: v.optional(v.string()), // archive of the prompt sent (for reproducibility)
+  })
+    .index("by_paper", ["paperSlug", "dispatchedAt"])
+    .index("by_label", ["roundLabel"]),
+
+  // Individual findings from R-rounds. The truth-audit verdict and the
+  // closure method are first-class fields — no more "closed by caveat-as-closure"
+  // anti-pattern without an explicit flag.
+  findings: defineTable({
+    roundId: v.id("r_rounds"),
+    paperSlug: v.string(),             // denormalized for fast paper-level queries
+    reviewerName: v.string(),          // "GPT5_methodology" | "Gemini25Pro_cosmology" | ...
+    findingId: v.string(),             // "PAPER-GRO-M2"
+    classification: v.union(
+      v.literal("BLOCKER"),
+      v.literal("MAJOR"),
+      v.literal("MINOR"),
+      v.literal("NIT")
+    ),
+    location: v.string(),              // "§sec:fnl L310" | "abstract" | "Table I caption"
+    claim: v.string(),                 // what the reviewer said is wrong
+    proposedFix: v.string(),
+    // Truth-audit per feedback_peer_review_truth_audit_protocol — every finding
+    // MUST be audited before closure work. The audit verdict + evidence ARE the
+    // first-class closure path; "closed-by-truth-audit-falsification" is just as
+    // valid an outcome as "closed-by-real-action".
+    truthAuditVerdict: v.optional(v.union(
+      v.literal("VERIFIED"),            // claim accurate → real-action closure needed
+      v.literal("FALSIFIED"),           // claim wrong → audit-only closure
+      v.literal("STALE"),               // was true earlier, already closed in prior version
+      v.literal("OUT-OF-SCOPE"),
+      v.literal("OPINION")              // stylistic / preference, not a defect
+    )),
+    truthAuditEvidence: v.optional(v.string()),  // citation to .tex line / artifact / paper section
+    closureStatus: v.union(
+      v.literal("open"),
+      v.literal("in-progress"),
+      v.literal("closed-by-real-action"),
+      v.literal("closed-by-truth-audit-falsification"),
+      v.literal("closed-by-artifact-verification"),
+      v.literal("deferred-genuine")     // VERY rare; needs explicit Houston OK
+    ),
+    closureCommit: v.optional(v.string()),       // git SHA
+    closureArtifact: v.optional(v.string()),     // path to script/JSON that proves closure
+    closureNote: v.optional(v.string()),
+    closedAt: v.optional(v.number()),
+  })
+    .index("by_round", ["roundId"])
+    .index("by_paper", ["paperSlug", "closureStatus"])
+    .index("by_status", ["closureStatus"]),
+
+  // Paper-internal §pathc_caveats deferral list. Distinct from r_rounds
+  // findings because these are author-tracked items (e.g. P3's items a-j)
+  // rather than external-reviewer-surfaced items.
+  pathc_caveats: defineTable({
+    paperSlug: v.string(),
+    label: v.string(),                  // "a" | "b" | "c" | ... | "j"
+    description: v.string(),
+    status: v.union(
+      v.literal("open"),
+      v.literal("deferred"),
+      v.literal("closed")
+    ),
+    // Critical anti-pattern guard per Houston's 2026-05-29 pushback
+    // "simply disclosing deferred items and caveats IS NOT REAL SCIENCE":
+    closureMethod: v.optional(v.union(
+      v.literal("real-computation"),     // actually ran the analysis
+      v.literal("artifact-verification"), // verified existing on-disk artifact already proves it
+      v.literal("truth-audit-falsification"), // R-round flagged it, audit showed claim was wrong
+      v.literal("text-only-no-real-action") // ⚠️ FLAG — this is the caveat-as-closure smell
+    )),
+    closureArtifact: v.optional(v.string()),
+    closureCommit: v.optional(v.string()),
+    closureNote: v.optional(v.string()),
+    closedAt: v.optional(v.number()),
+  })
+    .index("by_paper", ["paperSlug", "status"]),
+
+  // RunPod lifecycle + cost accounting. Replaces the ad-hoc pod_runs/*.log
+  // files. Closes the "1 RUNNING pod, what's on it?" mystery.
+  pods: defineTable({
+    podId: v.string(),                  // RunPod ID, e.g. "ijzftpy3klystt"
+    name: v.string(),                   // "cobaya-r43-v2"
+    status: v.union(
+      v.literal("running"),
+      v.literal("exited"),
+      v.literal("terminated")
+    ),
+    gpu: v.string(),                    // "RTX A5000" | "H200 SXM" | ...
+    volumeGb: v.number(),               // persistent volume size
+    containerGb: v.number(),
+    hourlyCostUsd: v.number(),
+    startedAt: v.number(),
+    stoppedAt: v.optional(v.number()),
+    totalCostUsd: v.number(),
+    purpose: v.string(),                // human description: "iter2 Cobaya chain for P1A/P1B"
+    artifactsBackedUp: v.boolean(),
+    backupLocations: v.array(v.string()), // ["HF:bamfai/bigbounce-mcmc/iter2_converged_2026-05-18/", "local:reproducibility/cosmology/iter2_..."]
+    lastSyncedAt: v.number(),           // when we last polled RunPod GraphQL for this pod
+  })
+    .index("by_pod_id", ["podId"])
+    .index("by_status", ["status"]),
+
+  // Task tracker: cross-paper + per-paper open work items. The "should
+  // I do this now?" queue for any agent that wants to contribute.
+  tasks: defineTable({
+    paperSlug: v.optional(v.string()),  // null for cross-paper / infrastructure tasks
+    title: v.string(),
+    description: v.string(),
+    priority: v.union(
+      v.literal("P0"),
+      v.literal("P1"),
+      v.literal("P2")
+    ),
+    owner: v.union(
+      v.literal("agent"),
+      v.literal("houston")
+    ),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("in-progress"),
+      v.literal("blocked"),
+      v.literal("done")
+    ),
+    blockedBy: v.optional(v.array(v.id("tasks"))),
+    createdAt: v.number(),
+    closedAt: v.optional(v.number()),
+    closureCommit: v.optional(v.string()),
+  })
+    .index("by_status", ["status", "priority"])
+    .index("by_paper", ["paperSlug", "status"])
+    .index("by_owner", ["owner", "status"]),
 });
