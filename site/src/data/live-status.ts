@@ -119,7 +119,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.68",
+      version: "v3.1.69",
       readiness: 85,
       pendingWork:
         "🎯 v3.1.56 — multi-round-deferred 9,576-object DEDUP-SHORTFALL MAJOR CLOSED tick 108 via existing on-disk artifact. pathc_dedup_summary_no_act.json IS the union-find recompute the R3→R16 GRO-B3 deferral was 'pending'; arithmetic decomposition 10,213 total = 637 multi-survey collapses + 9,576 intra-survey duplicate collapses (388,493 → 378,280 unique). Also R16 4-of-5 reviewers 0/0; Grok-only B1 ('σ(f_NL)=8.14 framing as positive claim') FALSIFIED — abstract literally states the <1σ qualifier 3+ times. R15+R16 = 2-consec Gemini-clean. R17 blocked on OpenRouter top-up. PDF 47pp / 28.43MB / sha 37d837cb. 4 mirrors.\n\n[Legacy] v3.1.38 (2026-05-13) closes 6/6 BLOCKERs + 19 MAJORs from cross-vendor R-round-3 (62 findings): Bayes-factor → parameter-shift-likelihood-ratio reframe (with Trotta+Verde refs), §VI bounce-physics cross-paper paragraph, eROSITA western-hemisphere/depth-artifact disclosure, full PTA-companion citation set (Hellings-Downs, EPTA-DR2, PPTA-DR3, Afzal-NewPhysics, Phinney), Liang2023 3-error confab fix, Golden:2026P2 undefined-cite fix, SSOT γ_PTA drift correction (2.567 not 3.20). 4 deferred: proper marginalized (γ,log10A) Savage-Dickey Bayes factor, eROSITA per-tile depth-normalized re-analysis, multi-PTA combination (EPTA+PPTA+IPTA joint), score-stratified novelty quintiles. Next: 22 minors + 9 nits sweep; clean cross-vendor R-round-4; Houston sign-off; arXiv.",
