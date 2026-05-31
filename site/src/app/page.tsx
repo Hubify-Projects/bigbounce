@@ -5,6 +5,7 @@ import { liveStatus } from"@/data/live-status";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { LiveStatus } from"@/components/Shell/LiveStatus";
+import { LivePapersDashboard } from"@/components/Cards/LivePapersDashboard";
 import { PaperProgressWidget } from"@/components/Cards/PaperProgressWidget";
 import { MathText } from"@/components/MathText";
 import {
@@ -130,6 +131,9 @@ export default function HomePage() {
   return (
     <>
       <LiveStatus />
+      <div style={{ marginBottom: 16 }}>
+        <LivePapersDashboard />
+      </div>
       <PaperProgressWidget />
       {liveStatus.needsHouston.length > 0 && (
         <section
