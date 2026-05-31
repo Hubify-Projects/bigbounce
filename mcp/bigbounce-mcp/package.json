@@ -1,0 +1,25 @@
+{
+  "name": "@bigbounce/mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing Bigbounce paper-orchestration state (papers, findings, R-rounds, caveats, pods, tasks) to Claude Code and any other MCP-aware agent. Phase 2 of the data-model rebuild per project-context/DATA_MODEL_ARCHITECTURE.md.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "bigbounce-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "convex": "^1.34.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
