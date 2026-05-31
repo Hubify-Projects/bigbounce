@@ -263,47 +263,70 @@ This is what Houston means by *"nice api/mcp/skills documentation page for this 
 - [x] Kill drive-to-100 cron `05764ea4`
 - [ ] Commit + push
 
-### Phase 1 — Convex setup + schema (4-6 hours)
+### Phase 1 — Convex setup + schema (4-6 hours) ✅ FILE-LEVEL DONE
 
-- [x] `npx convex dev` initialize in `bigbounce/convex/` — **already done 2026-04-06** (existing `./convex/` dir with 12 .ts files: schema/galaxies/analytics/chatMessages/spectralResults/feedback/pipelineState/models/mcmcStatus/reviews/activityFeed/checklist + `_generated/`). Site `package.json` has `convex@^1.34.1`. Live deployment may need re-auth via `npx convex dev` once when Houston is at the terminal — flagged in NEEDS_HOUSTON if hit. **DISCOVERED ALREADY-DONE during rebuild fire #1 2026-05-29.**
-- [x] Write `convex/schema.ts` per the tables above — **rebuild fire #1 2026-05-29**: extended existing schema with 7 new tables for paper-level orchestration (`papers`, `paper_versions`, `r_rounds`, `findings`, `pathc_caveats`, `pods`, `tasks`). Additive only; the 9 existing tables (galaxies/reviews/checklistItems/pipelineState/models/chatMessages/activityFeed/mcmcStatus/spectralResults/pageViews) are untouched. Typechecks clean via `tsc --noEmit`.
-- [ ] Write all mutations + queries (per-table CRUD + the computed `getPaperState(slug)` view that derives readiness from open findings)
-- [ ] Migration script: read current `papers.ts` / `live-status.ts` / SSOT files / `pathc_caveats` from .tex files → write to Convex
-- [ ] Verify: `bigbounce.list_papers()` query returns 6 papers with computed readiness matching today's honest numbers
+- [x] `npx convex dev` initialize in `bigbounce/convex/` — **already done 2026-04-06**. Live deployment provisioning still pending Houston interactive auth (one-time `npx convex dev` browser login).
+- [x] Write `convex/schema.ts` — rebuild fire #1 2026-05-29: 7 new paper-orchestration tables added additively (no breaks to existing 9 tables).
+- [x] Write all mutations + queries — rebuild fire #N 2026-05-31: 7 modules (papers/paperVersions/rRounds/findings/pathcCaveats/pods/tasks). The load-bearing `papers.getPaperState(slug)` query computes readiness from open findings + caveats; readiness is never hand-set.
+- [x] Migration script — `tools/seed_convex_from_current_state.ts`: captures all 6 papers' canonical state + P3's 10 §pathc_caveats items with their current open/closed status + closure artifacts/commits, ready to flush into Convex once the deployment URL is set.
+- [ ] Run the migration + verify `papers.listAllPaperStates` returns 6 papers with computed readiness matching today's honest numbers. **Gated on Houston running `npx convex dev` once for browser auth + the deployment URL appearing in `.env.local` as `NEXT_PUBLIC_CONVEX_URL`.**
 
-### Phase 2 — MCP server (6-8 hours)
+### Phase 2 — MCP server (6-8 hours) ✅ DONE
 
-- [ ] Scaffold `bigbounce/mcp/bigbounce-mcp/` as a TypeScript MCP server (stdio)
-- [ ] Implement the 10 tools above
-- [ ] Test: invoke from Claude Code session, verify each tool works end-to-end
-- [ ] Add to `bigbounce/.claude/mcp_servers.json` so it auto-loads
+- [x] Scaffold `bigbounce/mcp/bigbounce-mcp/` (TypeScript, stdio, @modelcontextprotocol/sdk).
+- [x] Implement 11 tools (1 more than originally planned — added `bigbounce_list_pathc_caveats`).
+- [ ] Test: end-to-end invocation requires Convex deployment URL first.
+- [x] Auto-load wiring at `bigbounce/.claude/mcp_servers.json`.
 
-### Phase 3 — Skill package (4 hours)
+### Phase 3 — Skill package (4 hours) ✅ DONE
 
-- [ ] Create `bigbounce/.claude/skills/bigbounce-status/SKILL.md`, etc.
-- [ ] Each skill wraps the corresponding MCP tool
-- [ ] First real fire under the new system: `/bigbounce-r-round paper-1b` (first time P1B has been touched)
+- [x] 5 skills at `bigbounce/.claude/skills/bigbounce-{status,r-round,close,bump,truth-audit}/`. Each wraps one or more MCP tools.
+- [ ] First real fire under the new system: `/bigbounce-r-round paper-1b` (gated on Phase 1.5).
 
-### Phase 4 — Site refactor (6-8 hours)
+### Phase 4 — Site refactor (6-8 hours) ✅ DONE (with graceful fallback)
 
-- [ ] Add `@convex-dev/react` to site
-- [ ] Replace `papers.ts` import in all pages with `useQuery(api.papers.list)`
-- [ ] Replace hardcoded `focusAreas` in `page.tsx` with `paper.focusAreas` from Convex
-- [ ] Delete `papers.ts` + `live-status.ts` (now Convex-backed)
-- [ ] Verify: every paper page renders correctly, readiness matches Convex
+- [x] `site/src/lib/livePapers.ts` — unified Convex-first / static-fallback data layer (server-side, ConvexHttpClient).
+- [x] `site/src/components/Cards/LivePapersDashboard.tsx` — server-component dashboard with visible LIVE / STATIC badge.
+- [x] Wired into `site/src/app/page.tsx` homepage between LiveStatus and PaperProgressWidget.
+- [-] Hardcoded `focusAreas` in `papers/[slug]/page.tsx` — keeping for now (legacy compat); flips to Convex `paper.focusAreas` field once Phase 1.5 lands and the seed populates it.
+- [-] `papers.ts` + `live-status.ts` retained as fallback during migration; deleted in Phase 6.
+- **Drive-by fix during Phase 4 build**: caught + fixed 3 stray-quote syntax bugs in `papers.ts` (from earlier sed-based version bumps) that had been preventing ALL site rebuilds since v3.1.64. The "papers still show 95" may have been compounded by the site never actually rebuilding for 2 days. Site now builds clean.
 
-### Phase 5 — Docs page (2 hours)
+### Phase 5 — Docs page (2 hours) ✅ DONE
 
-- [ ] Generate MCP tool catalog as static markdown in site
-- [ ] Add `/api` route with schema + tool list + examples
-- [ ] Link from homepage and CLAUDE.md
+- [x] `/api` route at `site/src/app/api/page.tsx` — renders Convex schema table list + 11 MCP tools with input/returns + 5 skills + 4 anti-pattern guards. Pointer to this architecture doc on GitHub for the full plan.
+- [-] Link from homepage and CLAUDE.md — deferred to Phase 6 cleanup pass.
 
 ### Phase 6 — Cleanup (2 hours)
 
-- [ ] Move .tex comment-block status histories to Convex `paper_versions.changelog`
-- [ ] Strip the .tex comment blocks (Grok-nit closure)
-- [ ] Archive old SSOT/queue.md and SSOT/drive-to-100.md (their data is now in Convex)
-- [ ] Update CLAUDE.md to point at Convex + MCP as canonical, with old SSOT/* as deprecated
+- [ ] Move .tex comment-block status histories to Convex `paper_versions.changelog`. Gated on Phase 1.5 deploy.
+- [ ] Strip the .tex comment blocks (Grok-nit 2026-05-29 closure: "Delete the entire block before arXiv upload.").
+- [ ] Archive old SSOT/queue.md and SSOT/drive-to-100.md (their data is now in Convex).
+- [ ] Update CLAUDE.md to point at Convex + MCP as canonical, with old SSOT/* as deprecated.
+- [ ] Link `/api` from homepage nav.
+
+### Gate for "live": Phase 1.5
+
+Everything from Phases 1–5 is committed and builds clean. The site shows a STATIC fallback badge until Phase 1.5 lands. The one-time interactive gate to flip the system live:
+
+```bash
+cd /Users/houstongolden/Desktop/CODE_2025/bigbounce
+npx convex dev                # browser auth + provision deployment
+# After auth lands, copy the deployment URL into bigbounce/.env.local:
+echo 'NEXT_PUBLIC_CONVEX_URL=https://<deployment>.convex.cloud' >> .env.local
+# Push the schema + functions to the deployment:
+npx convex deploy             # (or leave `convex dev` running, it auto-pushes)
+# Seed the 6 papers + P3 caveat state:
+CONVEX_URL="https://<deployment>.convex.cloud" \
+  npx tsx tools/seed_convex_from_current_state.ts
+# Verify:
+CONVEX_URL="..." node -e 'const{ConvexHttpClient}=require("convex/browser");
+  new ConvexHttpClient(process.env.CONVEX_URL)
+    .query("papers:listAllPaperStates")
+    .then(r=>console.table(r))'
+```
+
+After that, the homepage dashboard flips green to **LIVE**, the `/api` page reads from Convex, and every subsequent paper-state change goes through `bigbounce_*` MCP tools (no more 5-file hand-edits).
 
 **Total: 24-30 hours of focused work. Probably 2 full days at the current pace.** During that time, no new paper closures — the cron stays off.
 
