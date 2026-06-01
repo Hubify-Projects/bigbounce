@@ -13,12 +13,19 @@ import type * as analytics from "../analytics.js";
 import type * as chatMessages from "../chatMessages.js";
 import type * as checklist from "../checklist.js";
 import type * as feedback from "../feedback.js";
+import type * as findings from "../findings.js";
 import type * as galaxies from "../galaxies.js";
 import type * as mcmcStatus from "../mcmcStatus.js";
 import type * as models from "../models.js";
+import type * as paperVersions from "../paperVersions.js";
+import type * as papers from "../papers.js";
+import type * as pathcCaveats from "../pathcCaveats.js";
 import type * as pipelineState from "../pipelineState.js";
+import type * as pods from "../pods.js";
+import type * as rRounds from "../rRounds.js";
 import type * as reviews from "../reviews.js";
 import type * as spectralResults from "../spectralResults.js";
+import type * as tasks from "../tasks.js";
 
 import type {
   ApiFromModules,
@@ -32,12 +39,19 @@ declare const fullApi: ApiFromModules<{
   chatMessages: typeof chatMessages;
   checklist: typeof checklist;
   feedback: typeof feedback;
+  findings: typeof findings;
   galaxies: typeof galaxies;
   mcmcStatus: typeof mcmcStatus;
   models: typeof models;
+  paperVersions: typeof paperVersions;
+  papers: typeof papers;
+  pathcCaveats: typeof pathcCaveats;
   pipelineState: typeof pipelineState;
+  pods: typeof pods;
+  rRounds: typeof rRounds;
   reviews: typeof reviews;
   spectralResults: typeof spectralResults;
+  tasks: typeof tasks;
 }>;
 
 /**
