@@ -222,7 +222,11 @@ export const listAllPaperStates = query({
         .query("paper_versions")
         .withIndex("by_paper", (q) => q.eq("paperSlug", paper.slug))
         .collect();
-      versions.sort((a, b) => b.datestamp.localeCompare(a.datestamp));
+      versions.sort((a, b) => {
+        const d = b.datestamp.localeCompare(a.datestamp);
+        if (d !== 0) return d;
+        return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+      });
       const currentVersion = versions[0] ?? null;
 
       const findings = await ctx.db
