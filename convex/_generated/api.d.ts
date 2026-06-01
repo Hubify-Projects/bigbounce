@@ -9,6 +9,7 @@
  */
 
 import type * as activityFeed from "../activityFeed.js";
+import type * as activityRollup from "../activityRollup.js";
 import type * as analytics from "../analytics.js";
 import type * as chatMessages from "../chatMessages.js";
 import type * as checklist from "../checklist.js";
@@ -35,6 +36,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   activityFeed: typeof activityFeed;
+  activityRollup: typeof activityRollup;
   analytics: typeof analytics;
   chatMessages: typeof chatMessages;
   checklist: typeof checklist;
