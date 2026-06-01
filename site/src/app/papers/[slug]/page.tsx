@@ -107,14 +107,22 @@ export default async function PaperDetailPage({
     }
   }
 
-  const pdfArtifact = paper.artifacts.find(
+  const livePdfHref = live?.sitePdfPath ?? null;
+  const pdfArtifactRaw = paper.artifacts.find(
     (a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"),
   );
-  const downloadArtifact = paper.artifacts.find(
+  const downloadArtifactRaw = paper.artifacts.find(
     (a) => a.download && a.href.toLowerCase().endsWith(".pdf"),
   );
+  // Override static artifact hrefs with live Convex sitePdfPath (versioned, CDN-fresh URL)
+  const pdfArtifact = pdfArtifactRaw && livePdfHref
+    ? { ...pdfArtifactRaw, href: livePdfHref }
+    : pdfArtifactRaw;
+  const downloadArtifact = downloadArtifactRaw && livePdfHref
+    ? { ...downloadArtifactRaw, href: livePdfHref }
+    : downloadArtifactRaw;
   const supplementaryArtifacts = paper.artifacts.filter(
-    (a) => a !== pdfArtifact && a !== downloadArtifact,
+    (a) => a !== pdfArtifactRaw && a !== downloadArtifactRaw,
   );
 
   return (
@@ -314,7 +322,8 @@ export default async function PaperDetailPage({
       {(() => {
         const texArtifact = paper.artifacts.find((a) => a.label?.toLowerCase().includes("latex"));
         const texPath = texArtifact?.href.replace(/^https:\/\/github\.com\/[^/]+\/[^/]+\/blob\/[^/]+\//, "") ?? "";
-        const pdfArt = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
+        const pdfArtRaw = paper.artifacts.find((a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"));
+        const pdfArt = pdfArtRaw && livePdfHref ? { ...pdfArtRaw, href: livePdfHref } : pdfArtRaw;
         const focus: Record<string, string[]> = {
           "paper-1a": [
             "14-barrier no-go structure (Sec. III + Appendix)",

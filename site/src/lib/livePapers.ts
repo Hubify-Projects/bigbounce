@@ -32,6 +32,7 @@ export type LivePaperState = {
   openMinors: number;
   openCaveats: number;
   houstonSignOff: string | null;
+  sitePdfPath: string | null;
   source: "convex" | "static-fallback";
 };
 
@@ -64,6 +65,7 @@ async function fetchFromConvex(): Promise<LivePaperState[] | null> {
       openMinors: number;
       openCaveats: number;
       houstonSignOff: string | null;
+      sitePdfPath: string | null;
     }>;
     return result.map((r) => ({ ...r, source: "convex" as const }));
   } catch (err) {
@@ -91,6 +93,7 @@ function staticFallback(): LivePaperState[] {
       openMinors: 0,
       openCaveats: p.blockingItems.length,
       houstonSignOff: null,
+      sitePdfPath: null,
       source: "static-fallback",
     };
   });

@@ -266,6 +266,7 @@ export const listAllPaperStates = query({
         openMinors,
         openCaveats,
         houstonSignOff: paper.houstonSignOff ?? null,
+        sitePdfPath: paper.sitePdfPath ?? null,
       });
     }
     // Sort by paper number for stable display
