@@ -576,6 +576,29 @@ Figure~\ref{fig:cw_vs_density} shows the observed quintile values
 side-by-side with the Paper~IV-monopole prediction; the bars track the
 prediction within counting statistics in all five quintiles.
 
+\begin{table}[h]
+\caption{\label{tab:density_quintile_residual}
+Per-quintile $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ residual table.
+$\sigma_{\rm obs}$ is the binomial $\sigma$-from-half on the observed
+CW fraction in each quintile; $\sigma_{\rm pred}=-2\Delta f_{\rm CW}\sqrt{N}$
+at $\Delta f_{\rm CW}=-0.0026$ (Paper~IV-monopole prediction).
+All five residuals lie below the Bonferroni-5 threshold
+$|\sigma|^{\rm Bonf}_{0.01,5}=3.09$, so no quintile shows a
+statistically-significant departure from the monopole-only model.
+Companion artifact: \texttt{pipelines/p5\_desi\_chirality/results/analysis\_density/cw\_fraction\_by\_density.csv}.}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Quintile & $f_{\rm CW}$ & $\sigma_{\rm obs}$ & $\sigma_{\rm pred}$ & $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ \\
+\hline
+1 (lowest)  & 0.4976 & $-1.94$ & $-2.07$ & 0.13 \\
+2           & 0.4987 & $-1.06$ & $-2.07$ & 1.01 \\
+3           & 0.4950 & $-3.94$ & $-2.07$ & 1.87 \\
+4           & 0.4961 & $-3.08$ & $-2.07$ & 1.01 \\
+5 (highest) & 0.4985 & $-1.16$ & $-2.07$ & 0.91 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_p5_cw_vs_density.png}
@@ -1670,16 +1693,20 @@ arXiv:astro-ph/9812088.
 H.~Golden,
 \emph{A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
 A Null Detection of Large-Scale Parity Violation at Sub-Percent
-Sensitivity}, companion paper (Paper~IV), 2026
-(\artifact{pipelines/p2\_chirality/chirality\_catalog\_paper.tex},
-\texttt{v1.0.122}).
+Sensitivity}, companion paper (Paper~IV), in preparation; manuscript
+and reproducibility artifacts at
+\artifact{pipelines/p2\_chirality/chirality\_catalog\_paper.tex}
+(\texttt{v1.0.139}, 2026-05-28). \emph{Internal companion artifact; an
+arXiv identifier will be assigned upon Paper~IV submission.}
 
 \bibitem{golden_fnl_2026}
 H.~Golden,
 \emph{$f_{NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\
-Inflation}, companion paper (Paper~II), 2026
-(\artifact{research/focused\_paper\_source\_integration/02\_full\_draft.tex},
-\texttt{v1.7.30}).
+Inflation}, companion paper (Paper~II), in preparation; manuscript
+and reproducibility artifacts at
+\artifact{research/focused\_paper\_source\_integration/02\_full\_draft.tex}
+(\texttt{v1.7.37}, 2026-05-24). \emph{Internal companion artifact; an
+arXiv identifier will be assigned upon Paper~II submission.}
 
 \bibitem{Hahn2007}
 O.~Hahn, C.~M.~Carollo, C.~Porciani, and A.~Dekel,

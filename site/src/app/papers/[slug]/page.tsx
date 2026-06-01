@@ -1,4 +1,5 @@
 import { papers, getPaperBySlug } from"@/data/papers";
+import { getLivePapers } from"@/lib/livePapers";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
@@ -67,6 +68,45 @@ export default async function PaperDetailPage({
   const paper = getPaperBySlug(slug);
   if (!paper) notFound();
 
+  // Single source of truth for paper-level numeric state: Convex via getLivePapers.
+  // The static papers.ts retains descriptive content (title, tldr, blockingItems,
+  // figures, artifacts) but readiness + version + lastUpdated come from Convex so
+  // they can never drift relative to the homepage dashboard.
+  const liveStates = await getLivePapers();
+  const live = liveStates.find((p) => p.slug === slug);
+  const readiness = live?.readinessComputed ?? paper.readiness;
+  const version = live?.currentVersion ?? paper.version;
+  const lastUpdated = live?.lastUpdated ?? paper.lastUpdated;
+  const liveStatus = live?.status ?? null;
+  const openSummary = live
+    ? `${live.openBlockers}B/${live.openMajors}M/${live.openMinors}m/${live.openCaveats}C open`
+    : null;
+  const liveSource = live?.source ?? "static-fallback";
+
+  const staticVariant = paper.statusVariant;
+  function statusLabel(s: string | null): string {
+    switch (s) {
+      case "active-drive-to-100":
+        return "active";
+      case "paused-houston-external":
+        return "paused (houston review)";
+      case "submitted-arxiv":
+        return "submitted to arXiv";
+      case "in-revision":
+        return "in revision";
+      case "accepted":
+        return "accepted";
+      default:
+        return staticVariant === "green"
+          ? "ready"
+          : staticVariant === "blue"
+            ? "active"
+            : staticVariant === "amber"
+              ? "draft"
+              : "blocked";
+    }
+  }
+
   const pdfArtifact = paper.artifacts.find(
     (a) => a.kind === "primary" && a.href.toLowerCase().endsWith(".pdf"),
   );
@@ -101,9 +141,26 @@ export default async function PaperDetailPage({
             <p className="subtitle"><MathText>{paper.title}</MathText></p>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge variant={statusVariantMap[paper.statusVariant]}>
-                {paper.readiness}% · {paper.statusVariant === "green" ? "ready" : paper.statusVariant === "blue" ? "active" : paper.statusVariant === "amber" ? "draft" : "blocked"}
+                {readiness}% · {statusLabel(liveStatus)}
               </Badge>
-              <Badge variant="outline">{paper.version}</Badge>
+              <Badge variant="outline">{version}</Badge>
+              {liveSource === "convex" && (
+                <Badge
+                  variant="outline"
+                  title="readiness + version live from Convex (computed from open findings + caveats)"
+                  style={{ borderColor: "#16a34a", color: "#16a34a" }}
+                >
+                  ● live
+                </Badge>
+              )}
+              {openSummary && (
+                <Badge
+                  variant="outline"
+                  title="Open: BLOCKERs / MAJORs / minors / Caveats"
+                >
+                  {openSummary}
+                </Badge>
+              )}
               <Badge variant="outline">{paper.pages} pages</Badge>
               <Badge variant="outline">{paper.refs} refs</Badge>
               <Badge variant="outline">Target: {paper.target}</Badge>
@@ -192,15 +249,43 @@ export default async function PaperDetailPage({
 
       <div className="paper-readiness grid gap-2">
         <div className="paper-readiness-head flex items-baseline justify-between gap-3">
-          <span>Readiness</span>
-          <strong>{paper.readiness}%</strong>
+          <span>
+            Readiness
+            {liveSource === "convex" && (
+              <span
+                style={{
+                  marginLeft: 8,
+                  fontSize: "0.7rem",
+                  color: "#16a34a",
+                  fontFamily: "var(--font-mono-stack)",
+                }}
+                title="computed from open findings + caveats; live from Convex"
+              >
+                ● live
+              </span>
+            )}
+          </span>
+          <strong>{readiness}%</strong>
         </div>
         <div className="paper-readiness-track h-2.5 overflow-hidden rounded-full bg-border">
           <div
-            className={`paper-readiness-fill ${readinessColor(paper.readiness)}`}
-            style={{ width: `${paper.readiness}%` }}
+            className={`paper-readiness-fill ${readinessColor(readiness)}`}
+            style={{ width: `${readiness}%` }}
           />
         </div>
+        {openSummary && (
+          <p
+            style={{
+              margin: 0,
+              fontSize: "0.72rem",
+              color: "var(--text-muted)",
+              fontFamily: "var(--font-mono-stack)",
+            }}
+            title="Open findings (B=BLOCKER, M=MAJOR, m=minor) + open §pathc_caveats items (C)"
+          >
+            {openSummary} · {lastUpdated ?? "no date"}
+          </p>
+        )}
       </div>
 
       <Card className="paper-summary-card">
@@ -279,7 +364,7 @@ export default async function PaperDetailPage({
           <ExternalReviewPanel
             paperNumber={paper.number}
             paperTitle={paper.title}
-            paperVersion={paper.version}
+            paperVersion={version}
             paperPath={texPath || "(see GitHub LaTeX source artifact)"}
             pdfHref={pdfArt.href}
             pdfMeta={paper.pdfMeta}

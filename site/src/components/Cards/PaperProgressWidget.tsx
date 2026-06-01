@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { papers } from "@/data/papers";
+import { getLivePapers } from "@/lib/livePapers";
 
 function readinessColor(pct: number): string {
   if (pct === 100) return "#10b981";
@@ -10,22 +10,25 @@ function readinessColor(pct: number): string {
   return "#ef4444";
 }
 
-function statusDot(variant: string): { color: string; label: string } {
-  switch (variant) {
-    case "green":
-      return { color: "#16a34a", label: "ready" };
-    case "blue":
+function statusDot(status: string): { color: string; label: string } {
+  switch (status) {
+    case "active-drive-to-100":
       return { color: "#2563eb", label: "active" };
-    case "amber":
-      return { color: "#d97706", label: "draft" };
-    case "red":
-      return { color: "#dc2626", label: "blocked" };
+    case "paused-houston-external":
+      return { color: "#d97706", label: "paused" };
+    case "submitted-arxiv":
+      return { color: "#16a34a", label: "submitted" };
+    case "in-revision":
+      return { color: "#7c3aed", label: "revision" };
+    case "accepted":
+      return { color: "#10b981", label: "accepted" };
     default:
       return { color: "#6b7280", label: "—" };
   }
 }
 
-export function PaperProgressWidget() {
+export async function PaperProgressWidget() {
+  const papers = await getLivePapers();
   return (
     <section
       className="section"
@@ -78,7 +81,7 @@ export function PaperProgressWidget() {
         }}
       >
         {papers.map((p) => {
-          const dot = statusDot(p.statusVariant);
+          const dot = statusDot(p.status);
           return (
             <li key={p.slug}>
               <Link
@@ -109,9 +112,9 @@ export function PaperProgressWidget() {
                     fontSize: "0.78rem",
                     color: "var(--text-muted)",
                   }}
-                  title={p.version}
+                  title={p.currentVersion ?? ""}
                 >
-                  {p.version}
+                  {p.currentVersion ?? "—"}
                 </span>
                 <div
                   style={{
@@ -121,13 +124,13 @@ export function PaperProgressWidget() {
                     background: "var(--border)",
                     overflow: "hidden",
                   }}
-                  aria-label={`${p.readiness}% ready`}
+                  aria-label={`${p.readinessComputed}% ready`}
                 >
                   <div
                     style={{
-                      width: `${p.readiness}%`,
+                      width: `${p.readinessComputed}%`,
                       height: "100%",
-                      background: readinessColor(p.readiness),
+                      background: readinessColor(p.readinessComputed),
                       transition: "width 240ms",
                     }}
                   />
@@ -152,7 +155,7 @@ export function PaperProgressWidget() {
                       verticalAlign: "middle",
                     }}
                   />
-                  {p.readiness}%
+                  {p.readinessComputed}%
                 </span>
               </Link>
             </li>
