@@ -1,8 +1,0 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/papers/:slug", "destination": "/papers/:slug.html" },
-    { "source": "/papers/:slug/", "destination": "/papers/:slug.html" }
-  ]
-}
