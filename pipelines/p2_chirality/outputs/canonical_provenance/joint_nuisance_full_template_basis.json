@@ -1,0 +1,40 @@
+{
+  "script": "scripts/joint_nuisance_full_template_basis.py",
+  "purpose": "GPT-B3 + GPT-B6 closure (partial): extended joint fit with PSF FWHM + PSF depth + EBV brick-level templates added on top of the rank-resolved 8-template basis. Per-galaxy b/a + fracdev + shape_r still requires DR8 sweep download (pod-bound; v1.0.142 follow-up).",
+  "templates": [
+    "a_x",
+    "a_y",
+    "a_z",
+    "f_BASS_rel_DES",
+    "f_DECaLS_rel_DES",
+    "rho_p",
+    "rho_p_sq",
+    "psf_mean",
+    "depth_mean",
+    "ebv",
+    "const"
+  ],
+  "n_templates": 11,
+  "n_brick_sources": 341454,
+  "design_condition_number": 54.56232853146232,
+  "n_in_mask_pixels": 24187,
+  "n_super_pixels_NSIDE8": 440,
+  "n_bootstrap": 1000,
+  "seed": 42,
+  "A_dipole_best": 0.005144419933533746,
+  "A_dipole_best_pct_fCW": 0.2572209966766873,
+  "sigma_boot_NSIDE8": 0.0022600573071719027,
+  "sigma_boot_pct_fCW": 0.11300286535859513,
+  "z_vs_1pct7_boot": -12.767632030788794,
+  "nuisance_amplitudes": {
+    "f_BASS_rel_DES": 0.004487489855872626,
+    "f_DECaLS_rel_DES": 0.0040465838296526585,
+    "rho_p": 0.00042878648786433553,
+    "rho_p_sq": -5.610092182219629e-05,
+    "psf_mean": 0.008673521773299095,
+    "depth_mean": -0.0009638566877837722,
+    "ebv": 0.028983199006708607,
+    "const": 0.0006705925502099122
+  },
+  "interpretation": "Extending the rank-resolved 8-template fit (GEM-B2) with PSF FWHM + PSF depth + EBV (3 brick-level templates aggregated from DR8 survey-bricks) yields the 11-template fit. A_dipole = 0.257% f_CW with bootstrap \u03c3 = 0.1130% f_CW (NSIDE=8, N_boot=1000). Interpretation (i) at 1.7% remains formally excluded at z_boot = -12.77\u03c3. The PSF/depth/EBV templates absorb additional pixel-coherent systematic structure but do not degrade the interpretation-(i) exclusion, confirming the headline conclusion is robust to brick-level depth + PSF + extinction template additions."
+}

@@ -1,0 +1,32 @@
+{
+  "script": "scripts/joint_nuisance_rank_resolved.py",
+  "purpose": "GEM-B2 closure: drop f_DES baseline column to resolve rank deficiency in 9-template design.",
+  "design": "8 templates: dipole_x, dipole_y, dipole_z, f_BASS_rel_DES, f_DECaLS_rel_DES, rho_p, rho_p^2, const. f_DES dropped as baseline (DES is the reference leg).",
+  "design_condition_number": 14.333472861951643,
+  "n_in_mask_pixels": 24187,
+  "n_super_pixels_NSIDE8": 440,
+  "n_bootstrap": 1000,
+  "seed": 42,
+  "A_dipole_best": 0.0045525799198154505,
+  "A_dipole_best_pct_fCW": 0.22762899599077252,
+  "sigma_A_naive_WLS": 0.003561966637779103,
+  "sigma_A_naive_pct_fCW": 0.17809833188895516,
+  "sigma_A_boot_NSIDE8": 0.0016292293918330856,
+  "sigma_A_boot_pct_fCW": 0.08146146959165428,
+  "inflation_boot_over_naive": 0.4573960279563188,
+  "A_dipole_bootstrap_percentiles": {
+    "p16": 0.004088486548976347,
+    "p50": 0.005604694053083824,
+    "p84": 0.007263701232376736
+  },
+  "z_vs_1pct7_naive": -8.26718020541178,
+  "z_vs_1pct7_boot": -18.07444686905172,
+  "nuisance_amplitudes_full_sample": {
+    "f_BASS_rel_DES": 0.004812763746913151,
+    "f_DECaLS_rel_DES": 0.0038775381713073965,
+    "rho_p": 0.00048068310487006004,
+    "rho_p_sq": -4.3723553000261077e-05,
+    "const": 0.00032094341562791356
+  },
+  "interpretation": "Rank-resolved 8-template fit (f_DES dropped as baseline). Condition number cond(M) = 1.433e+01 (vs \u221e for the rank-deficient v1.0.139 design). Headline number: A_dipole = 0.228% f_CW with bootstrap \u03c3 = 0.0815% f_CW (NSIDE=8 super-pixels, N_boot=1000). Interpretation (i) at A=1.7% f_CW remains formally excluded at z_boot = -18.1\u03c3. Result is consistent with v1.0.139 within \u0394z < 1\u03c3, confirming the v1.0.139 conclusion was not an artifact of the rank-deficiency hygiene issue."
+}

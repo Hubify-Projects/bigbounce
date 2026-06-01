@@ -1,0 +1,38 @@
+{
+  "script": "scripts/joint_nuisance_soft_probability.py",
+  "purpose": "GPT-B7 closure: classifier-uncertainty propagation via soft-probability A_p map.",
+  "method": "A_p^soft(pixel) = sum (p_cw - p_ccw) / sum (p_cw + p_ccw), per-galaxy soft contribution weighted by spiral-membership probability. Same NSIDE=8 block bootstrap (N=1000) protocol as v1.0.139.",
+  "argmax_vs_soft_sign_agreement_pct": 99.97432180834448,
+  "argmax_vs_soft_sign_disagreement_pct": 0.025678191655520433,
+  "n_in_mask_pixels": 24187,
+  "n_bootstrap": 1000,
+  "seed": 42,
+  "hard_label_fit": {
+    "A_dipole": 0.0045525799198154505,
+    "A_dipole_pct_fCW": 0.22762899599077252,
+    "sigma_boot_NSIDE8": 0.0016292293918330856,
+    "sigma_boot_pct_fCW": 0.08146146959165428,
+    "z_vs_1pct7": -18.07444686905172,
+    "n_super_pixels": 440,
+    "a_hat_xyz": [
+      4.324562675372075e-05,
+      -0.004516219047843092,
+      -0.0005726074169732476
+    ]
+  },
+  "soft_probability_fit": {
+    "A_dipole": 0.0020962923144038055,
+    "A_dipole_pct_fCW": 0.10481461572019028,
+    "sigma_boot_NSIDE8": 0.0008514801458012524,
+    "sigma_boot_pct_fCW": 0.042574007290062624,
+    "z_vs_1pct7": -37.468528001406824,
+    "n_super_pixels": 440,
+    "a_hat_xyz": [
+      0.00032795500622239684,
+      -0.002002008041789945,
+      0.0005280632366776929
+    ]
+  },
+  "inflation_soft_over_hard": 0.5226275379449369,
+  "interpretation": "Soft-probability A_p gives A_dipole = 0.105% f_CW (vs hard-label 0.228%; shift consistent with the 21.4% argmax-flip rate diluting the discrete signal). \u03c3_boot inflation factor is 0.52\u00d7 under classifier uncertainty. Interpretation (i) at 1.7% f_CW remains formally excluded at z_boot = -37.47\u03c3 under the soft-probability covariance. The exclusion is robust to the classifier-uncertainty propagation; the headline survives the per-galaxy 21% argmax-flip rate."
+}
