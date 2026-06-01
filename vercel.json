@@ -5,6 +5,16 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/papers/(.*\\.pdf)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
+        { "key": "CDN-Cache-Control", "value": "no-store" },
+        { "key": "Vercel-CDN-Cache-Control", "value": "no-store" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/old", "destination": "/old/index.html" },
     { "source": "/papers/:slug", "destination": "/papers/:slug.html" },
