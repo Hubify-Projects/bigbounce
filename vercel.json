@@ -3,12 +3,14 @@
   "buildCommand": "cd site && npm run build",
   "outputDirectory": "site/out",
   "framework": null,
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/old",
-      "destination": "/old/index.html"
-    }
+    { "source": "/old", "destination": "/old/index.html" },
+    { "source": "/papers/:slug", "destination": "/papers/:slug.html" },
+    { "source": "/papers/:slug/", "destination": "/papers/:slug.html" },
+    { "source": "/activity", "destination": "/activity.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/architecture", "destination": "/architecture.html" }
   ]
 }
