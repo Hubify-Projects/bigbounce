@@ -18,7 +18,62 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.35-2026-06-01}
+\newcommand{\paperVersion}{v0.1.36-2026-06-01}
+% v0.1.36-2026-06-01 (R-multi-round3 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
+%   re-fired on v0.1.35; Gemini failed). Truth-audit per
+%   feedback_peer_review_truth_audit_protocol:
+%   - GRO-B1 (V-Web n=428 still in headline) — FALSIFIED/STALE. Headline already says
+%     "survey-edge artifact dominated; see DESIVAST-anchored re-projection"; abstract
+%     already says "the strongest void constraint comes from the DESIVAST-anchored
+%     re-projection (n=56,981, Δf_CW=0.0007) rather than the V-Web void label."
+%   - GRO-B2 (EFT operator delete demanded) — OPINION/STALE. Already moved to App. A
+%     in v0.1.35 with explicit "toy parametrization not derived from cited literature",
+%     "order-of-magnitude estimate only", "we do not claim either calculation here".
+%   - GRO-M1 (novelty language "novel observational constraint" empty conditional) —
+%     VERIFIED minor. Reframed §I sentence: removed "novel observational constraint"
+%     and instead noted explicitly that no published bounce/inflation model predicts
+%     environment-conditional chirality, so the null bounds *any future model* that
+%     would produce one.
+%   - GRO-M2 (RSD anisotropy "robust to RSD at present smoothing" in tension with
+%     anisotropy caveat) — VERIFIED minor. Replaced §XII.A wording: "the headline
+%     null is robust to RSD at the present smoothing" → "the scalar-displacement
+%     argument suggests sub-percent RSD contamination ... with full anisotropic
+%     validation deferred (see caveat below)".
+%   - GRO-m1 (Paper IV "companion, not peer-reviewed" qualifier missing at abstract
+%     first-use) — VERIFIED minor. Inserted "(companion work, not yet peer-reviewed)"
+%     at first \cite{golden_chirality_2026} in abstract. (§I intro caveat already
+%     present at lines 337-340.)
+%   - GPT-B1 (Bonferroni vs FDR justification) — FALSIFIED/STALE. Paper already uses
+%     empirical max-stat MC null as primary (line 598-599) and reports parametric
+%     Bonferroni as a transparent secondary benchmark. GPT did not read §VI.B.
+%   - GPT-M1 (λ_th sensitivity analysis) — FALSIFIED/STALE. Phase 2 sweep already
+%     spans λ_th ∈ {0.0, 0.1, 0.3} (Table II / Fig. 4).
+%   - GPT-M2 (empirical max-stat null construction detail) — OPINION/STALE. §VI.B
+%     gives N_MC label-shuffle construction.
+%   - GPT-M3 (k=5 NN density coarse) — OPINION. Used as complementary null, not primary.
+%   - GPT-M4 (Phase 2 sweep error bars) — OPINION/STALE. Per-cell counting uncertainty
+%     1/(2√N)~0.0008 at n~400k is dwarfed by the reported per-cell range itself;
+%     ranges subsume error bars at this N.
+%   - GPT-M5 (DR1 cosmic-web limitation discussion) — STALE. §XII already discusses.
+%   - PER-B1 (DESIVAST2025 bibitem metadata) — VERIFIED. WebFetch on arXiv:2411.00148
+%     and ADS confirm first author is Hernan Rincon, not S.B. Douglass; title is
+%     "DESIVAST: Catalogs of Low-redshift Voids" (lowercase 'redshift'). Bib corrected.
+%   - PER-B2 (TWebDESI2026 arXiv:2604.02463) — FALSIFIED. WebFetch confirms title,
+%     authors (Ullah, Awais, Matos, Suárez-Pérez), arXiv ID all match bibitem.
+%   - PER-B3 (ASTRADESI2026 arXiv:2604.01456) — FALSIFIED. WebFetch confirms title
+%     and full author list (Zapata-Zuluaga, Guevara-Montoya, Torres-Gomez, Hernandez,
+%     Forero-Romero) all match bibitem.
+%   - PER-B4 (Shamir2022DESI title) — VERIFIED. WebFetch on arXiv:2208.13866 and ADS
+%     2022MNRAS.516.2281S confirm correct title is "Analysis of spin directions of
+%     galaxies in the DESI Legacy Survey", not the LLM-confabulated "Asymmetry between
+%     galaxies with clockwise and counterclockwise handedness in DESI Legacy Survey
+%     data" previously in the bib. Bib corrected; venue MNRAS 516, 2281 (2022),
+%     doi:10.1093/mnras/stac2372 verified.
+%   - PER-B5 (iron DR1 path provenance) — minor/OPINION. Path already cited verbatim
+%     in §III. No change.
+%   - PER-B6 (Hahn/Hoffman/Cautun/Planck metadata audit) — vague suggestion, no
+%     specific finding. No change.
+%
 % v0.1.35-2026-06-01 (R-multi-round2 R-round: Grok-4 + GPT-4o-fallback + Perplexity
 %   Sonar Pro re-fired on v0.1.34). Truth-audit per
 %   feedback_peer_review_truth_audit_protocol:
@@ -173,7 +228,7 @@
 %   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
 %   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
 %   per the V-Web-as-headline-classifier structural choice).
-\newcommand{\paperTimestamp}{June 1, 2026 PDT (R-multi-round2)}
+\newcommand{\paperTimestamp}{June 1, 2026 PDT (R-multi-round3)}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -220,7 +275,8 @@
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
-\cite{golden_chirality_2026} with the DESI Data Release~1 redshift
+\cite{golden_chirality_2026} (companion work, not yet peer-reviewed)
+with the DESI Data Release~1 redshift
 catalog ($16.4 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
 structure environment. The $1''$ matched catalog contains
@@ -347,11 +403,12 @@ does not constrain whether handedness is independent of
 The present paper is a focused, environment-conditional null test. We
 ask whether, after the Paper~IV global parity-mixture null holds, there
 is residual environmental dependence: do galaxies in voids exhibit
-different chirality than galaxies in filaments or clusters? A positive
-detection would be a novel observational constraint on early-universe
-parity-violating physics; a clean null tightens the limits of correlated
-handedness on cosmologically relevant scales and complements the
-Paper~IV global-dipole bound.
+different chirality than galaxies in filaments or clusters? No
+published bounce or inflation model currently predicts a specific
+environment-conditional chirality signature at this scale; the present
+null therefore supplies an empirical upper bound on any future model
+that would produce one, and complements the Paper~IV global-dipole
+bound at the catalog-monopole level.
 
 We approach the test in three stages. First, we cross-match the
 canonical chirality catalog with DESI Data Release~1
@@ -1699,9 +1756,10 @@ displacement is $\sigma_v/(aH) \lesssim 5$--$8$\,Mpc/$h$ over
 $0.01 \le z \le 2$. This is a factor of $\sim 3$--$5$ smaller than
 the chosen Gaussian smoothing scale $R_s = 25$\,Mpc/$h$, so the
 V-Web class assignment is not redshift-space-distortion (RSD)
-limited at this resolution; the conservative interpretation is
-that the headline null is robust to RSD at the present
-smoothing. A reconstructed-position rerun (Zel'dovich or BAO
+limited at this resolution; the scalar-displacement argument suggests
+sub-percent RSD contamination of the per-class $\Delta f_{\rm CW}$ at
+the present smoothing, with full anisotropic validation deferred (see
+caveat below). A reconstructed-position rerun (Zel'dovich or BAO
 reconstruction) is a natural follow-up if the smoothing scale is
 ever pushed below $\sim 10$\,Mpc/$h$. \emph{Anisotropy caveat (v0.1.32):} the
 scalar-displacement comparison above is a necessary but not sufficient
@@ -1911,10 +1969,10 @@ arXiv:1807.06209.
 
 \bibitem{Shamir2022DESI}
 L.~Shamir,
-``Asymmetry between galaxies with clockwise and counterclockwise
-handedness in DESI Legacy Survey data,''
+``Analysis of spin directions of galaxies in the DESI Legacy
+Survey,''
 Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{516}, 2281 (2022),
-arXiv:2208.13866.
+doi:10.1093/mnras/stac2372, arXiv:2208.13866.
 
 \bibitem{Tempel2014}
 E.~Tempel, A.~Tamm, M.~Gramann, T.~Tuvikene, L.~J.~Liivam\"agi,
@@ -1936,8 +1994,9 @@ Early Data Release: A Probabilistic Environment Catalog,'' (2026),
 arXiv:2604.01456.
 
 \bibitem{DESIVAST2025}
-S.~B.~Douglass \textit{et al.}\ (DESI Collaboration),
-``DESIVAST: Catalogs of Low-Redshift Voids using Data from the DESI
+H.~Rincon, S.~BenZvi, K.~A.~Douglass, D.~Veyrat \textit{et al.}\ (DESI
+Collaboration),
+``DESIVAST: Catalogs of Low-redshift Voids Using Data from the DESI
 Data Release 1 Bright Galaxy Survey,'' Astrophys.\ J.\ \textbf{982},
 38 (2025), doi:10.3847/1538-4357/adb559, arXiv:2411.00148.
 

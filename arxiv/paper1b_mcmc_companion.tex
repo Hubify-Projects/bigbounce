@@ -43,8 +43,61 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.32}
+\newcommand{\paperVersion}{v1B.0.33}
 \newcommand{\paperTimestamp}{2026-06-01 PDT}
+% v1B.0.33 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round3 closure; 3 direct-vendor
+%   reviewers re-run on v1B.0.32 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
+%   Sonar Pro citation forensics; Gemini-2.5-pro still skipped on billing failure).
+%   Truth-audit verdicts per feedback_peer_review_truth_audit_protocol:
+%   1 VERIFIED / 11 STALE / 4 OPINION / 0 BLOCKER outstanding after closure.
+%   - Grok-4: 0 BLOCKER, 0 MAJOR. Only 1 source-only minor (strip the preamble audit log
+%     before arXiv) + 1 nit (remove R25/GRO-Bx/PER-Bx markers from comment blocks). No
+%     rendered-PDF impact. Verdict OPINION × 2 — retained the audit log by design as the
+%     in-source revision tracker (gets stripped at arXiv bundle stage, not earlier).
+%   - GPT-4o: 6 findings, identical to round-2 (B1 systematic-error discussion BLOCKER,
+%     B2 AIC/BIC/ln B MAJOR, B3 ALP statistical analysis MAJOR, B4 NaMaster justification
+%     MAJOR, B5 SH0ES alternatives minor, B6 readiness-criteria clarity minor). All
+%     reflagged from round-1/round-2; verdict STALE × 6 — every issue already disclosed
+%     in body + Table app:claims + scope notes that the reviewer is not integrating.
+%   - Perplexity Sonar Pro: 6 findings.
+%     - PER3-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — STALE. Same as round-1
+%       PER-B1 / round-2 PER2-B1. references.bib L571-579 has the real Liu+Li+Xu+Biesiada+Wang
+%       EPJC 2025 arXiv 2507.04265 entry. Sonar Pro's web-search continues to miss it; real.
+%     - **PER3-B2 (Eskilt2022b "PR4 NPIPE + WMAP analysis" mis-labelled): VERIFIED.**
+%       Round-2 closure (PER2-M1) introduced the disambiguation clause "(the PR4 NPIPE +
+%       WMAP analysis; ACT~DR6 enters only via the separate \cite{DiegoPalazuelos2025}
+%       measurement)" at the §VI Headline observational constraint passage (L898). However
+%       Eskilt & Komatsu 2022 (PRD 106:063503, arXiv 2205.13962) literally analyzes
+%       **WMAP9 + Planck 2018 (PR3)** data, NOT Planck PR4/NPIPE. The "PR4 NPIPE + WMAP
+%       analysis" phrasing is factually wrong about the dataset Eskilt actually used.
+%       **Real factual regression introduced by round-2 closure.** v1B.0.33 fix: change
+%       "the PR4 NPIPE + WMAP analysis" → "the joint WMAP9 + Planck 2018 (PR3) analysis"
+%       at L898. Lesson: closure prose claims about the dataset must be checked against
+%       the cited paper's actual dataset, not against neighbouring paper datasets
+%       (DiegoPalazuelos2022 IS Planck NPIPE — the confusion conflated the two refs).
+%       Promoted to VERIFIED. Round-2 had 1 VERIFIED (mis-attribution); round-3 caught
+%       the regression that fix introduced.
+%     - PER3-B3 (DiegoPalazuelos2025 ACT DR6 not a real 2025 paper) — STALE. references.bib
+%       L444-466 cites DiegoPalazuelos+Komatsu 2025 (arXiv 2509.13654) for ACT DR6
+%       birefringence; entry is real (round-1 PER-B3 FALSIFIED on same grounds).
+%     - PER3-B4 (Fujita2021 "model class was previously studied" wording) — OPINION-tier
+%       polish. The cited paper IS about ALP/DE interpretations of birefringence (Fujita
+%       et al. PRD 103:043509, arXiv 2011.11894); the prose says "previously studied" which
+%       is accurate. The Reviewer's softer rephrasing is a style preference, not a factual fix.
+%     - PER3-B5 (0.342° ± 0.094° rounded conversion from radians) — OPINION. Eskilt &
+%       Komatsu 2022 reports 0.342° ± 0.094° as the published best-fit (their Eq./table
+%       gives this in degrees directly; the value is the canonical literature quote).
+%       Not a rounded conversion.
+%     - PER3-B6 (LiteBIRD 0.03° forecast literal expression) — OPINION. The LiteBIRD
+%       collaboration's forecast is conventionally quoted in both radians and degrees
+%       depending on the figure; 0.03° (≈ 5×10^-4 rad) matches the standard LiteBIRD
+%       sensitivity target. Reviewer's preference for radian-with-conversion is style, not
+%       factual error.
+%   v1B.0.33 closure: single VERIFIED fix (Eskilt dataset PR4→PR3 label at L898) +
+%   version stamp + recompile + PDF mirror + Convex bump. Cascaded round-3 demonstrates
+%   the value of cascaded R-rounds: round-2 closure introduced a new prose-attribution
+%   drift that round-3 caught. Lesson: closure-prose datasets must match the cited
+%   paper's actual datasets, not neighbouring cited papers' datasets.
 % v1B.0.32 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round2 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.31 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
 %   Sonar Pro citation forensics). Truth-audit verdicts per
@@ -895,7 +948,7 @@ studied by Fujita~\etal~\cite{Fujita2021}.
 \textit{Headline observational constraint.}---The primary observational reference
 adopted in this analysis is the published Eskilt~\&~Komatsu joint WMAP+Planck value
 $\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} (the
-PR4 NPIPE + WMAP analysis; ACT~DR6 enters only via the separate
+joint WMAP9 + Planck 2018 (PR3) analysis; ACT~DR6 enters only via the separate
 $\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
 below only in the auxiliary inverse-variance combination), which
 accounts for shared calibration systematics. The simplified inverse-variance

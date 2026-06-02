@@ -45,8 +45,47 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.38}
+\newcommand{\paperVersion}{v1A.0.39}
 \newcommand{\paperTimestamp}{June 1, 2026 PDT}
+% v1A.0.39 (R-multi-round3 3-vendor cross-vendor on v1A.0.38 ran 2026-06-01).
+%   Round 3 (Grok-4 brutal-honesty, GPT-4o-fallback methodology, Perplexity
+%   Sonar-Pro citations; Gemini failed billing — skipped). Truth-audit
+%   synthesis at project-context/peer-reviews/2026-06-01_R-multi-round3_P1A_synthesis.md.
+%   Round-3 VERIFIED closures landed in this version:
+%     - PER-m1 (round 3): "Planck/ACT~DR6 3.6sigma joint signal
+%       beta = 0.342 +/- 0.094 deg" attribution corrected. Eskilt & Komatsu
+%       2022 is the WMAP+Planck joint measurement (the source of the 0.342
+%       +/- 0.094 number at ~3.6sigma); Diego-Palazuelos & Komatsu 2025 is the
+%       independent ACT~DR6 follow-up at beta = 0.215 +/- 0.074 deg (~2.9sigma),
+%       NOT a co-measurement of the 0.342 number. Abstract + sec:r4_birefringence
+%       + sec:results all updated to disentangle the two measurements and
+%       drop the misleading "Planck/ACT~DR6 joint" framing.
+%   STALE/OPINION (per round-3 audit, reflagged unchanged):
+%     - GRO-* (round 3): convergent silence — Grok explicitly returned
+%       PAPER-GRO-SILENCE-1, no novel BLOCKER/MAJOR.
+%     - GPT-B1--B6 (round 3): all restatements of round-1 / round-2 findings
+%       (Eq.1 dim analysis, Route 2 one-loop dim, Route 4 rigidity vs free
+%       alpha/M, Barrier-12 GW PTA propagation, structural-tension framing,
+%       Appendix B EFT-vs-phenomenological). The +1 vs +4 mismatch is named
+%       in II.B.2 + Appendix; structural tension is section-titled "robustness
+%       check, not co-equal closure"; alpha/M-floated escape clause is on disk
+%       at sec:r4_birefringence. STALE/OPINION.
+%     - PER-B1 (round 3, Shapiro-Teixeira "fictional"): FALSIFIED. Paper exists
+%       at arXiv:1402.4854, Shapiro & Teixeira, "Quantum Einstein-Cartan theory
+%       with the Holst term," CQG 31:185002 (2014). Bbl entry correct.
+%     - PER-M1 (round 3, Mercuri Eq.36 attribution): STALE — already closed in
+%       v1A.0.38 as round-2 PER-B1 ("motivated by but not literally derived in").
+%     - PER-M2 (round 3, alpha/M one-loop language Sec 2.1.3): STALE — L501-502
+%       already say "motivating the order of magnitude... We treat alpha/M as
+%       a phenomenological parameter constrained by data."
+%     - PER-M3 (round 3, Golden202X in-prep): STALE — closed in v1A.0.37.
+%     - PER-m2 (round 3, Ashtekar-Singh 0.27 vs 0.41): STALE — closed in
+%       v1A.0.38 as round-2 PER-m1.
+% R-multi-round3 cumulative status: 1 VERIFIED MINOR closure (PER-m1 citation
+% misattribution); 0 surviving BLOCKER, 0 surviving MAJOR from Grok+GPT body.
+% 3rd consecutive round of zero surviving Grok+GPT BLOCKER/MAJOR; Perplexity
+% citation-forensics continues to surface real but polish-tier corrections.
+% AGENT_RULES §4.4.1 cascaded-loop exit criterion REMAINS SATISFIED.
 % v1A.0.38 (R-multi-round2 3-vendor cross-vendor on v1A.0.37 ran 2026-06-01).
 %   Round 2 (Grok-4, GPT-4o-fallback, Perplexity Sonar-Pro; Gemini failed
 %   billing — skipped). Truth-audit synthesis at
@@ -231,9 +270,12 @@ property of the \emph{matter-bounce class}~\cite{Cai:2009fn}, derived from
 the contraction-phase cubic action with no ECH input, testable by SPHEREx at
 $3$--$5\sigma$ realistic significance (detailed multi-tracer Fisher forecast
 in Paper~II, Ref.~\cite{Golden2026P2}); and (ii)~spectator-ALP birefringence
-$\beta\approx 0.27^\circ$ consistent with the published Planck/ACT~DR6
-$3.6\sigma$ signal arises in any GR$+$ALP setup with the same parameters
-and is \emph{not} derived from the ECH action. The role of this paper is the
+$\beta\approx 0.27^\circ$ consistent with the published Planck (WMAP$+$Planck
+joint) $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$ measurement
+($\sim\!3.6\sigma$, Eskilt~\&~Komatsu~\cite{Eskilt2022b}; with an independent
+ACT~DR6 follow-up $\beta = 0.215^\circ\pm 0.074^\circ$ at $\sim\!2.9\sigma$,
+Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}) arises in any GR$+$ALP
+setup with the same parameters and is \emph{not} derived from the ECH action. The role of this paper is the
 \emph{channel-level no-go} for the four enumerated minimal-ECH dark-energy
 routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity; we do not
 claim a full operator-basis closure of the most general ECH parity-odd /
@@ -884,8 +926,8 @@ distinct ratio of order $10^{-33}$; the two orderings differ in how
 the $H_0$ factor and the $M_{\rm Pl}\cdot(\alpha/M)$ product are
 contracted with the dimensionful coupling, but both land on the
 qualitative R2 closure---one-loop induced $\beta$ is amplitude-suppressed
-many orders of magnitude below the observed Planck/ACT~DR6 signal.) The R2 amplitude is
-therefore far below not only the Planck/ACT~DR6 sensitivity but the
+many orders of magnitude below the observed WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up).) The R2 amplitude is
+therefore far below not only the WMAP$+$Planck birefringence sensitivity but the
 observed central value itself; the one-loop Holst-sector parity-odd
 term cannot account for the observed birefringence amplitude. (The
 earlier-draft analysis that compared a rotation rate $\dot\beta$ in
@@ -960,9 +1002,12 @@ All indices are fully contracted; the integrated-by-parts equivalent $(\alpha/M)
 \end{equation}
 where $\rho_\theta$ is the energy density of the spectator field and
 $m_\theta$ its mass. Setting the present-day rotation-rate amplitude
-equal to the Planck/ACT~DR6 measurement
-$\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$~\cite{Minami2020,
-Eskilt2022b,DiegoPalazuelos2025} bounds $\alpha/M$ at
+equal to the published WMAP$+$Planck cosmological-birefringence
+measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
+($\sim\!3.6\sigma$ from~$\beta=0$;~\cite{Minami2020,Eskilt2022b}; the
+independent ACT~DR6 follow-up of Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}
+reports $\beta = 0.215^\circ \pm 0.074^\circ$ at $\sim\!2.9\sigma$, consistent
+within $\sim\!1.4\sigma$) bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$, identical to the value already
 quoted in Sec.~\ref{sec:parityodd}; identifying the spectator
 field with the ECH parity-odd sector and demanding that it
@@ -1087,7 +1132,7 @@ are in companion Paper~I(b)~\cite{Golden2026P1b}.
 %% ============================================================
 \section{Falsification Criteria}\label{sec:falsification}
 The surviving testable predictions are: (1)~LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$,
-early 2030s) will measure $\beta$ to $\sigma(\beta)\approx 0.03^\circ$ and either confirm a non-zero birefringence at high significance or rule out the spectator-ALP class as the source of the Planck/ACT~DR6 signal (the relevant comparison is differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$, not a naive $0.27^\circ / 0.03^\circ$);
+early 2030s) will measure $\beta$ to $\sigma(\beta)\approx 0.03^\circ$ and either confirm a non-zero birefringence at high significance or rule out the spectator-ALP class as the source of the WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) (the relevant comparison is differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$, not a naive $0.27^\circ / 0.03^\circ$);
 (2)~SPHEREx (${\sim}$2028) will test the matter-bounce prediction $\fnl = -35/8$
 at $3$--$5\sigma$ realistic significance\footnote{\label{fn:spherex_range}The
 $3$--$5\sigma$ realistic range reflects two forecast regimes: $\sigma(\fnl)\approx 0.7$
@@ -1488,9 +1533,11 @@ axion-like particle with $w=+1$ (stiff matter). The parity assessment finds no
 photon coupling in the minimal framework~\cite{Golden2026supplement}.
 
 \textit{Spectator-ALP birefringence.}---A spectator ALP with $f_a\sim\MPl$,
-$m\sim H_0$ is consistent with the published Planck/ACT DR6 $3.6\sigma$ joint
-signal ($\beta=0.342^\circ\pm 0.094^\circ$, Eskilt~\etal~\cite{Eskilt2022b})
-without fine-tuning. The same $\beta\approx 0.27^\circ$ prediction arises in
+$m\sim H_0$ is consistent with the published WMAP$+$Planck
+cosmological-birefringence signal ($\beta=0.342^\circ\pm 0.094^\circ$,
+$\sim\!3.6\sigma$ from $\beta=0$, Eskilt~\&~Komatsu~\cite{Eskilt2022b}; an
+independent ACT~DR6 follow-up~\cite{DiegoPalazuelos2025} reports
+$\beta=0.215^\circ\pm 0.074^\circ$ at $\sim\!2.9\sigma$) without fine-tuning. The same $\beta\approx 0.27^\circ$ prediction arises in
 standard GR with an identical ALP; it is not a distinctive ECH prediction.
 Full ALP MCMC parameter fitting (9,720 accepted samples, $\hat{R}-1<0.01$) and
 LiteBIRD forecast are in companion Paper~I(b)~\cite{Golden2026P1b}.
@@ -1662,7 +1709,7 @@ bounce/ALP landscape survive ECH structural closure and are testable:
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
-\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$, NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current Planck/ACT~DR6 central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ Planck/ACT~DR6-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$, NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
 \end{enumerate}
 Neither is a distinctive ECH prediction; both are shared with other UV completions.
 
