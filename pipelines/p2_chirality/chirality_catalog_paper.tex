@@ -51,7 +51,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.146}
+\newcommand{\paperVersion}{v1.0.147}
 \newcommand{\paperTimestamp}{June 2, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for full revision history.}
 
@@ -2740,21 +2740,27 @@ remains a genuine open data gap.
 Motloch \& Pen~\cite{Motloch:2021} report a marginal
 ($\sim\!2\sigmaunit$) correlation between inferred galaxy
 spin directions and the large-scale tidal field, using SDSS
-spirals with spin-direction estimates from an automated
-chirality classifier applied to DESI Legacy imaging cutouts.
+spirals with spin-direction estimates from SDSS imaging and
+large-scale tidal-field reconstructions from spectroscopic
+surveys (BOSS / 2MRS); the DESI Legacy classifier pipeline
+used in the present work is independent of, and methodologically
+distinct from, the Motloch \& Pen estimator.
 They interpret their signal in the linear-theory framework of
 \cite{Yu:2020}.
 Independent quantification of measurable reading-direction
 biases at the $\sim\!1$--$2\%$ level on similar projected-chirality
 observables by Iye
-\textit{et~al.}~(2021)~\cite{Iye:2021} and the present analysis
-suggests that part of any low-amplitude classifier-based
-projected-chirality signal could in principle be contaminated by
-classifier orientation biases; we do not claim Motloch \& Pen's
-result is fully reducible to such a class of label systematic
-(a matched-pipeline reanalysis under their exact selection and
-tidal-template fit would be needed for that determination, and
-is not performed here).
+\textit{et~al.}~(2021)~\cite{Iye:2021} documents that
+citizen-science / Galaxy-Zoo-derived chirality labels carry
+reading-direction bias at this level; their marginal
+($\sim\!2\sigmaunit$) correlation could in principle be
+contaminated by similar label-bias effects, and our null --- which
+removes such biases by construction via $D_4$/$Z_2$ equivariant
+TTA --- provides a cleaner test of the same physical channel.
+We do not claim Motloch \& Pen's result is fully reducible to
+such a class of label systematic (a matched-pipeline reanalysis
+under their exact selection and tidal-template fit would be
+needed for that determination, and is not performed here).
 Our result extends their analysis in two respects: (i)~our sample is
 $\sim\!16\times$ larger, pushing the minimum detectable dipole from
 $\sim\!1\%$ to $0.29\%$ at $3\sigmaunit$ statistical (with $\geq 0.75\%$ empirical $50\%$-rec-$3\sigma$ amplitude threshold, the canonical operational threshold from the injection sweep; $0.5\%$ is a tested non-detection point at $P(\sigma\!>\!3)\!=\!0.15$, not a detection floor); and (ii)~the test-time
@@ -4524,18 +4530,7 @@ arXiv:1611.00036 (2016); white-paper-only, no journal publication.
 \bibitem{Ivezic:2019}
 \v{Z}.~Ive\v{z}i\'c, S.~M.~Kahn, J.~A.~Tyson \textit{et~al.},
 ``LSST: From science drivers to reference design and anticipated data products,''
-Astrophys.\ J.\ \textbf{873}, 111 (2019), DOI 10.3847/1538-4357/ab042c. The preprint arXiv:0805.2366 cited in earlier versions of this bibitem is the older LSST Science Book white paper, NOT the preprint of this specific ApJ reference-design article; the arXiv identifier has been removed from the canonical citation to prevent fused-metadata confusion (citation flag closed in an earlier revision).
-%% (cleaned v1.0.101 - canonical citation above; historical NOTE retained below for provenance)
-% NOTE (v1.0.79, PER-B1 update, RETAINED FOR PROVENANCE ONLY): arXiv ID 0805.2366 is the long
-% LSST Science Book preprint whose content underlies the cited
-% ApJ 873, 111 (2019) reference-design article. The arXiv-to-ApJ
-% mapping is plausible-but-not-pure-identity (the two share
-% authorship/title themes, but the journal version is a curated
-% shorter article that derives from the longer arXiv preprint).
-% Prior Perplexity Sonar Pro flags about possible metadata fusion
-% (v1.0.70 R-round PER-B4) were therefore reasonable rather than
-% pure false positives; the arXiv ID and journal venue are both
-% correctly cited here per ADS and arXiv records.
+Astrophys.\ J.\ \textbf{873}, 111 (2019), DOI 10.3847/1538-4357/ab042c.
 
 \bibitem{Astropy:2022}
 {Astropy Collaboration}, A.~M.~Price-Whelan, P.~L.~Lim \textit{et~al.},

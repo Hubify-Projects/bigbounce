@@ -70,6 +70,18 @@
   {\bibfield  {journal} {\bibinfo  {journal} {(in preparation)}\ } (\bibinfo
   {year} {2026}{\natexlab{a}})},\ \bibinfo {note} {hUBIFY-2026-002; companion
   paper, this volume}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Minami}\ and\ \citenamefont
+  {Komatsu}(2020)}]{Minami2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Minami}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {New extraction of the
+  cosmic birefringence from the {Planck} 2018 polarization data},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.125.221301} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {125}},\ \bibinfo {pages} {221301} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2011.11254} {arXiv:2011.11254 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
   {Komatsu}(2022)}]{Eskilt2022}%
   \BibitemOpen
@@ -350,18 +362,6 @@
    {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {83}},\ \bibinfo
   {pages} {1506} (\bibinfo {year} {1999})},\ \Eprint
   {https://arxiv.org/abs/astro-ph/9812088} {arXiv:astro-ph/9812088 [astro-ph]}
-  \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Minami}\ and\ \citenamefont
-  {Komatsu}(2020)}]{Minami2020}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
-  {Minami}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {New extraction of the
-  cosmic birefringence from the {Planck} 2018 polarization data},\ }\href
-  {https://doi.org/10.1103/PhysRevLett.125.221301} {\bibfield  {journal}
-  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
-  {125}},\ \bibinfo {pages} {221301} (\bibinfo {year} {2020})},\ \Eprint
-  {https://arxiv.org/abs/2011.11254} {arXiv:2011.11254 [astro-ph.CO]}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{LiteBIRD Collaboration}}\ \emph
   {et~al.}(2023)\citenamefont {{LiteBIRD Collaboration}}, \citenamefont {Allys}

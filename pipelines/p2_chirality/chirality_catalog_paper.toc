@@ -50,8 +50,8 @@
 \contentsline {section}{\numberline {VI}Discussion}{34}{section*.48}%
 \contentsline {subsection}{\numberline {A}The Raw Catalog~A Dipole Was Dominated by Observational Systematics}{34}{section*.49}%
 \contentsline {subsection}{\numberline {B}The 3.05$\sigma $ Hemisphere Signal}{35}{section*.50}%
-\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{35}{section*.51}%
-\contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{35}{section*.52}%
+\contentsline {subsection}{\numberline {C}Sensitivity Floor and Minimum Detectable Signal}{36}{section*.51}%
+\contentsline {paragraph}{\numberline {a}Amplitude-convention disclosure .}{36}{section*.52}%
 \contentsline {paragraph}{\numberline {b}Statistical-only sensitivity, not systematic-inclusive.}{36}{section*.53}%
 \contentsline {subsection}{\numberline {D}Edge-On Galaxy Contamination}{38}{section*.54}%
 \contentsline {paragraph}{\numberline {a}High-confidence-spiral subsample robustness rerun.}{39}{section*.55}%
@@ -70,7 +70,7 @@
 \contentsline {paragraph}{\numberline {a}Headline finding: a quantifiable monopole-mask leakage channel.}{44}{section*.68}%
 \contentsline {paragraph}{\numberline {b}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{44}{section*.69}%
 \contentsline {paragraph}{\numberline {c}$D_4$-TTA rotational-equivariance validation.}{45}{section*.70}%
-\contentsline {paragraph}{\numberline {d}Sensitivity convention and remaining caveats.}{45}{section*.71}%
+\contentsline {paragraph}{\numberline {d}Sensitivity convention and remaining caveats.}{46}{section*.71}%
 \contentsline {section}{\numberline {VIII}NaMaster MASTER configuration (Methods appendix)}{47}{section*.72}%
 \contentsline {paragraph}{\numberline {a}Declared data vector and $\ell \!=\!0$ treatment.}{47}{section*.73}%
 \contentsline {paragraph}{\numberline {b}Bandpower vs single-$\ell $ estimator distinction.}{47}{section*.74}%

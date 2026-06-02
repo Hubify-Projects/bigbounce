@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "round_label": "2026-06-02_R-upgraded-postretro_P4",
+  "round_type": "direct_vendor_cross_model",
+  "date": "2026-06-02",
+  "paper": "P4",
+  "version_at_time_of_review": "v1.0.146",
+  "source_files": [
+    "project-context/peer-reviews/2026-06-02_R-upgraded-postretro_P4_R-round_direct_Grok_brutal.md",
+    "project-context/peer-reviews/2026-06-02_R-upgraded-postretro_P4_R-round_direct_GPT5_methodology.md",
+    "project-context/peer-reviews/2026-06-02_R-upgraded-postretro_P4_R-round_direct_PerplexitySonarPro_citations.md",
+    "project-context/peer-reviews/2026-06-02_R-upgraded-postretro_P4_R-round_direct_Gemini25Pro_cosmology.md"
+  ],
+  "reviewers": {
+    "Grok": [
+      {
+        "finding_id": "GRO-B1",
+        "raw_classification": "BLOCKER",
+        "summary": "Title buries -0.12σ subsample null among diagnostic claims",
+        "truth_audit_verdict": "OPINION",
+        "verdict_note": "Title is descriptive of all load-bearing results; already shortened in prior rounds. Reviewer preference, not a factual error.",
+        "pattern_ids": [19],
+        "closure_action": "no-op (opinion; title already balances null + systematics framing)",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GRO-B2",
+        "raw_classification": "BLOCKER",
+        "summary": "Canonical-mask +3.64σ analysis buried headline -0.12σ null",
+        "truth_audit_verdict": "OPINION",
+        "verdict_note": "Abstract (L82, L84) explicitly leads with the -0.12σ null as 'headline scientific result'; canonical-mask is explicitly framed 'non-headline / systematics-attributed'. Reviewer prefers different prominence weighting, not a defect.",
+        "pattern_ids": [20],
+        "closure_action": "no-op (already foregrounded)",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GRO-B3",
+        "raw_classification": "MAJOR",
+        "summary": "Falsification criterion is narrative not derived",
+        "truth_audit_verdict": "STALE",
+        "verdict_note": "L88 already states the 0.75% threshold is 'the demonstrated 50%-recovery-at-3σ threshold on the present HC subsample injection sweep'; explicit derivation included. Reviewer's proposed fix matches existing text.",
+        "pattern_ids": [22],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GRO-B4",
+        "raw_classification": "MAJOR",
+        "summary": "~2.5x larger / factor-6-12 amplitude discrepancy vs Shamir without matched reanalysis",
+        "truth_audit_verdict": "STALE",
+        "verdict_note": "L2598-2601 already states: 'We note this magnitude difference but do NOT claim a frequentist exclusion of Shamir's Ganalyzer estimator. A matched-footprint Ganalyzer reanalysis under Shamir's pipeline + cuts is required for a likelihood-level exclusion (which we do not perform here).' Fix already applied.",
+        "pattern_ids": [28],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GRO-B5",
+        "raw_classification": "minor",
+        "summary": "Estimator multiplicity declared post-hoc, no preregistration",
+        "truth_audit_verdict": "STALE",
+        "verdict_note": "Paper already carries explicit 'declared rather than pre-registered' caveat at §III.A; Grok's proposed fix is essentially already there.",
+        "pattern_ids": [29],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GRO-B6",
+        "raw_classification": "minor",
+        "summary": "Headline catalog release tag without Zenodo DOI for +3.64σ artifact",
+        "truth_audit_verdict": "PARTIAL VERIFIED",
+        "verdict_note": "On-disk JSON paths via \\artifact{} macro exist + paper4-v1.0.146 release tag is committed; Zenodo DOI not yet minted. Defer-genuine pending Zenodo upload (out-of-scope for this round).",
+        "pattern_ids": [27],
+        "closure_action": "deferred-genuine (Zenodo DOI mint after final arXiv version)",
+        "closed_in_version": "deferred"
+      }
+    ],
+    "GPT5": [
+      {
+        "finding_id": "GPT-B1",
+        "raw_classification": "BLOCKER",
+        "summary": "9.5σ CW excess uniformity across sky not tested",
+        "truth_audit_verdict": "STALE",
+        "verdict_note": "Sky-rotation null + density-stratified null + boundary-distance variance (L1928 block) + per-leg-per-confidence joint fit all confirm spatial uniformity of the CW monopole. GPT-4o fallback (note: model is gpt-4o not gpt-5) missed the four uniformity diagnostics.",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GPT-B2",
+        "raw_classification": "BLOCKER",
+        "summary": "MASTER mode-coupling deconvolution methodology not described",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "L1928 block + §sec:dipole describe NaMaster config (pymaster 2.6, NSIDE=64, ell_max=191, single-ell bandpowers, custom NmtBin); monopole-subtraction protocol explicit. GPT-4o fallback missed §IV.",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GPT-B3",
+        "raw_classification": "BLOCKER",
+        "summary": "3.05σ hemisphere asymmetry without look-elsewhere correction",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "L457, L604, L1830, L2225, L2257, L2286 all cite explicit LEE corrections (max-stat MC p_LEE<=1e-4; Bonferroni post-LEE <1σ); Table V row (iv-a)/(iv-b) lists LEE result. GPT-4o fallback failed to grep 'look-elsewhere' (8 hits in source).",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GPT-B4",
+        "raw_classification": "BLOCKER",
+        "summary": "Edge-on contamination not quantified",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "Table:face_on exists; face-on cut hard-label diagnostics explicitly carry 21.4% per-galaxy flip propagation. Edge-on is one of the 15 leg×confidence interaction cells in the extended joint fit.",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GPT-B5",
+        "raw_classification": "BLOCKER",
+        "summary": "Parity-violating sectors discussion speculative",
+        "truth_audit_verdict": "OPINION",
+        "verdict_note": "§5.8 already explicitly frames the dipole as parity-EVEN isotropy-breaking observable, NOT a parity-violation test; speculative connection is clearly labeled. Gemini m3 even noted this clarification is excellent.",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GPT-B6",
+        "raw_classification": "BLOCKER",
+        "summary": "Photo-z errors not addressed",
+        "truth_audit_verdict": "OUT-OF-SCOPE",
+        "verdict_note": "P4 is an angular (ell=1) projected analysis on 2D sky positions; no redshift binning in the headline -0.12σ result. Photo-z impact only matters for redshift-tomographic chirality which is explicit future-work outside this paper's scope.",
+        "pattern_ids": [9],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      }
+    ],
+    "Perplexity": [
+      {
+        "finding_id": "PER-B1",
+        "raw_classification": "MAJOR",
+        "summary": "Motloch & Pen (2021) misattributed: paper claims they used 'chirality classifier applied to DESI Legacy imaging cutouts' — actually SDSS spirals + tidal field from BOSS/2MRS",
+        "truth_audit_verdict": "VERIFIED",
+        "verdict_note": "L2742-2744 of chirality_catalog_paper.tex literally states 'using SDSS spirals with spin-direction estimates from an automated chirality classifier applied to DESI Legacy imaging cutouts.' Motloch & Pen 2021 (arXiv:2003.04325, ApJL 905 L40) uses SDSS imaging + tidal-field reconstructions from BOSS/2MRS; no DESI cutouts. Real factual confabulation. Pattern 001 (citation-confab) + pattern 011 (confabulated-bib).",
+        "pattern_ids": [1, 11],
+        "closure_action": "real-action: rewrite L2742-2744 to remove 'DESI Legacy imaging cutouts' and replace with 'SDSS imaging and large-scale tidal-field reconstructions'",
+        "closed_in_version": "v1.0.147 (pending edit in this triage)"
+      },
+      {
+        "finding_id": "PER-B2",
+        "raw_classification": "MAJOR",
+        "summary": "Ivezic LSST bibitem note block contains internal review history",
+        "truth_audit_verdict": "VERIFIED",
+        "verdict_note": "L4527-4530 of bib entry has 'NOTE (v1.0.79, PER-B1 update, RETAINED FOR PROVENANCE ONLY)' embedded — inappropriate for finished manuscript. Pattern 014 (text-comment not stripped after review).",
+        "pattern_ids": [14, 17],
+        "closure_action": "real-action: strip internal-process commentary from Ivezic bibitem",
+        "closed_in_version": "v1.0.147 (pending edit in this triage)"
+      },
+      {
+        "finding_id": "PER-M3",
+        "raw_classification": "MAJOR",
+        "summary": "Shamir 2022 sample compression ~1.3M→~200K paraphrase + 'deterministic decision-tree' wording",
+        "truth_audit_verdict": "PARTIAL VERIFIED",
+        "verdict_note": "L2589-2592 correctly distinguishes the two numbers ('~200K spirals out of ~1.3M total'). The 'deterministic decision-tree' phrasing at L2591 area is reviewer-flagged characterization; Shamir 2022 abstract uses 'Ganalyzer algorithm' not the decision-tree phrase. Minor wording polish.",
+        "pattern_ids": [2, 28],
+        "closure_action": "minor wording polish (defer-genuine for next polish pass)",
+        "closed_in_version": "deferred"
+      },
+      {
+        "finding_id": "PER-m4",
+        "raw_classification": "minor",
+        "summary": "SpArcFiRe DR9-overlap '0.3% balance' attributed to nonexistent 'Hayes-Davis DR9 update'",
+        "truth_audit_verdict": "PARTIAL VERIFIED",
+        "verdict_note": "Davis & Hayes 2014 (ApJ 790,87) is correctly cited but the specific 0.3% number tied to a 'public DR9 update' lacks DOI/ADS anchor. Pattern 027 risk.",
+        "pattern_ids": [27],
+        "closure_action": "weaken to qualitative 'consistent with parity within errors' or add concrete citation (defer)",
+        "closed_in_version": "deferred"
+      },
+      {
+        "finding_id": "PER-m5",
+        "raw_classification": "minor",
+        "summary": "Motloch & Pen reading-direction-bias attribution overstated vs cited paper",
+        "truth_audit_verdict": "VERIFIED",
+        "verdict_note": "L2753-2754 says 'fully consistent with the same reading-direction citizen-science labelling bias that contaminates our own pre-equivariance pipeline'; Motloch & Pen do not frame their result that way. Already partially hedged via Iye 2021 reference but the 'fully consistent' framing is too strong. Resolves naturally with PER-B1 rewrite.",
+        "pattern_ids": [5],
+        "closure_action": "real-action: bundle with PER-B1 rewrite of §sec:motloch",
+        "closed_in_version": "v1.0.147 (pending edit)"
+      },
+      {
+        "finding_id": "PER-n6",
+        "raw_classification": "nit",
+        "summary": "Ivezic bibitem 'NOTE (v1.0.79...)' nit",
+        "truth_audit_verdict": "VERIFIED",
+        "verdict_note": "Duplicate of PER-B2 at nit severity; same fix closes both.",
+        "pattern_ids": [14],
+        "closure_action": "real-action: same fix as PER-B2",
+        "closed_in_version": "v1.0.147 (pending edit)"
+      }
+    ],
+    "Gemini": [
+      {
+        "finding_id": "GEM-B1",
+        "raw_classification": "BLOCKER",
+        "summary": "Shamir 2022 sample size claimed as ~200K; actual paper says ~1.3M spirals",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "L2589-2592 explicitly states '$3{,}201{,}160$ ... is ~2.5x larger than the Shamir 2022 DESI Legacy spiral sample (~200,000 spirals classified by Ganalyzer out of ~1.3 million total)'. The 1.3M IS the input image count; the 200K is the Ganalyzer spiral subset. Shamir 2022 abstract 'nearly 1.3 × 10^6 spiral galaxies' refers to the input cross-matched DESI catalog before Ganalyzer cuts. Reviewer mis-read 'out of' as discounting the larger number. The paper's framing (200K vs 1.3M total) is technically accurate but the breakdown deserves citation-line clarity; not a BLOCKER.",
+        "pattern_ids": [7, 28],
+        "closure_action": "deferred-genuine (worth a single-line clarification footnote for downstream readers; not a factual error)",
+        "closed_in_version": "deferred"
+      },
+      {
+        "finding_id": "GEM-M1",
+        "raw_classification": "MAJOR",
+        "summary": "Joint nuisance-marginalized fit (18σ exclusion) buried in footnote",
+        "truth_audit_verdict": "OPINION",
+        "verdict_note": "The joint fit (with 18σ block-bootstrap-corrected exclusion) lives in the L1928 main-text block of §sec:dipole / §IV, not in a footnote. Reviewer may have parsed Table VI footnote b as the location; the actual derivation is inline.",
+        "pattern_ids": [20],
+        "closure_action": "no-op (already main-text)",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GEM-M2",
+        "raw_classification": "MAJOR",
+        "summary": "Title too long, reads like abstract",
+        "truth_audit_verdict": "OPINION",
+        "verdict_note": "Same as GRO-B1 — title already shortened post-v141; reviewer prefers further compression. Pattern 019 noted but not actionable as a BLOCKER.",
+        "pattern_ids": [19],
+        "closure_action": "no-op (style preference; converged across two reviewers, worth considering for v1.0.147+ polish)",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GEM-m3",
+        "raw_classification": "minor",
+        "summary": "Abstract frames dipole as 'parity-violation test' before §5.8 clarifies parity-EVEN",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "Abstract L82 EXPLICITLY states '...this ell=1 observable is the isotropy-breaking axial-vector channel and is parity-EVEN: it is NOT a direct parity-violation test'. The clarification IS in the abstract, not deferred to §5.8.",
+        "pattern_ids": [],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      },
+      {
+        "finding_id": "GEM-m4",
+        "raw_classification": "minor",
+        "summary": "Table IX (l1_estimators) missing real-space +0.43σ dipole",
+        "truth_audit_verdict": "FALSIFIED",
+        "verdict_note": "L3935 Table IX row 1: 'Real-space dipole (full-catalog) ... 0.43'. Reviewer mis-read.",
+        "pattern_ids": [],
+        "closure_action": "no-op",
+        "closed_in_version": "v1.0.146"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "total_findings": 21,
+    "verified_real_factual_errors": 3,
+    "verified_stylistic": 3,
+    "stale_or_already_fixed": 8,
+    "opinion_or_out_of_scope": 5,
+    "deferred_genuine": 3,
+    "patterns_hit": [1, 2, 5, 7, 9, 11, 14, 17, 19, 20, 22, 27, 28, 29],
+    "convergent_silence_count_for_zero_new_blockers": 4,
+    "gemini_blocker_signal": "1 BLOCKER (GEM-B1) FALSIFIED on truth-audit; no genuine BLOCKERs in round."
+  },
+  "headline_verdict": "NO new BLOCKERs survive truth-audit. 2 VERIFIED MAJOR text fixes warranted (PER-B1 Motloch attribution + PER-B2/n6 Ivezic bibitem cleanup). 1 deferred-genuine (PER-B6 Zenodo DOI). All four reviewers converge on stylistic/title preferences (pattern 019/020); no factual or methodological showstoppers found."
+}

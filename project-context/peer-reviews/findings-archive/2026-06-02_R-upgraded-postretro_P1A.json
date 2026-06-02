@@ -1,0 +1,61 @@
+{
+  "round_label": "2026-06-02_R-upgraded-postretro",
+  "date": "2026-06-02",
+  "round_type": "direct-vendor 4-reviewer (post-retro, post-upgrade, post-mechanical-sweep)",
+  "first_direct_gemini": true,
+  "papers": {
+    "P1A": {
+      "version_at_time_of_review": "v1A.0.41",
+      "closure_version": "v1A.0.42",
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "Retitle to 'Amplitude-Level Constraints ...' and move scope sentence to abstract first para", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [5, 19], "closure_action": "no action (counter-proposal; title already softened v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "All headline numbers sourced to '(in preparation)' companions; non-reproducible", "truth_audit_verdict": "STALE", "pattern_ids": [6, 20, 27], "closure_action": "no action (companion-hedge sweep landed v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "MAJOR", "summary": "'closure'/'13 logically-independent barriers' framing inflated vs literature", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [5], "closure_action": "no action (softened v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GRO-M2", "raw_classification": "MAJOR", "summary": "Perturbation-transparency narrower than headline (canonical scalar only)", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (sec X title+statement+proof already restricted)", "closed_in_version": null},
+          {"finding_id": "GRO-m1", "raw_classification": "minor", "summary": "Preamble version-history comment block in source", "truth_audit_verdict": "STALE", "pattern_ids": [14], "closure_action": "no action (LaTeX %-comments not in PDF body)", "closed_in_version": null},
+          {"finding_id": "GRO-n1", "raw_classification": "nit", "summary": "Route 4 naturalness vs amplitude-no-go inconsistency", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (heading L1058 + L1132 already explicit)", "closed_in_version": null}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Perturbation-transparency theorem overclaim", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (identical to GRO-M2)", "closed_in_version": null},
+          {"finding_id": "GPT-B2", "raw_classification": "MAJOR", "summary": "Parity-odd dim analysis inconsistent", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (abstract+App B already flag +1 vs +4)", "closed_in_version": null},
+          {"finding_id": "GPT-B3", "raw_classification": "MAJOR", "summary": "One-loop graviton 10^-58 to 10^-60 mixes dimensionful and dimensionless", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [9], "closure_action": "no action (Route 2 §IV.B canonical ordering adopted v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GPT-B4", "raw_classification": "MAJOR", "summary": "Reheating thermal-reset relies on qualitative reasoning", "truth_audit_verdict": "STALE", "pattern_ids": [9, 22], "closure_action": "no action (§II.C.1 ⟨J^5⟩ closure landed v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GPT-B5", "raw_classification": "MAJOR", "summary": "Route 4 closure summary mixes amplitude exclusion with naturalness", "truth_audit_verdict": "STALE", "pattern_ids": [9], "closure_action": "no action (already separated v1A.0.40)", "closed_in_version": null},
+          {"finding_id": "GPT-B6", "raw_classification": "minor", "summary": "Limitations don't connect each item to main conclusions", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action (framing preference)", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "MAJOR (self-marked B1)", "summary": "Shapiro-Teixeira arXiv:1402.4854 fused metadata", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [1, 3], "closure_action": "no action (Perplexity reading the changelog %-comment, not bibitem)", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "DKS β-function over-attribution", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action (L1019+L1033+L1037 already disclaim+attribute to Benedetti2011)", "closed_in_version": null},
+          {"finding_id": "PER-M2", "raw_classification": "MAJOR", "summary": "Lue-Wang-Kamionkowski normalization blurring", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (L1066+L1074 already separate framework from normalization)", "closed_in_version": null},
+          {"finding_id": "PER-m1", "raw_classification": "minor", "summary": "Eskilt 2022 sole-source of 0.342° in abstract; Minami 2020 originator omitted", "truth_audit_verdict": "VERIFIED", "pattern_ids": [1, 28], "closure_action": "Abstract L317-319 updated: 'first reported by Minami~\\&~Komatsu~\\cite{Minami2020} and refined by Eskilt~\\&~Komatsu~\\cite{Eskilt2022}'", "closed_in_version": "v1A.0.42"},
+          {"finding_id": "PER-m2", "raw_classification": "minor", "summary": "Ashtekar-Singh 0.27 not in their paper", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (L635-642 already canonical 0.41 + internal-extrapolation label v1A.0.38)", "closed_in_version": null},
+          {"finding_id": "PER-n1", "raw_classification": "nit", "summary": "CQG 31:185002 (2014) Shapiro-Teixeira title traceability", "truth_audit_verdict": "OPINION", "pattern_ids": [1, 13], "closure_action": "no action (duplicate of PER-B1; counter-proposal)", "closed_in_version": null}
+        ],
+        "Gemini_cosmology": [
+          {"finding_id": "GEM-B1", "raw_classification": "BLOCKER", "summary": "N_tot≈92 + structural tension rest on dim-inconsistent operator + on-shell scaling ansatz", "truth_audit_verdict": "STALE", "pattern_ids": [5, 20, 22], "closure_action": "no action (abstract+§I scope+App B all flag ansatz status; §XIV.D labeled 'robustness check, not co-equal closure')", "closed_in_version": null},
+          {"finding_id": "GEM-B2", "raw_classification": "BLOCKER", "summary": "MCMC/SPHEREx/PTA results from '(in preparation)' companions unverifiable", "truth_audit_verdict": "STALE", "pattern_ids": [6, 20, 27], "closure_action": "no action (identical to GRO-B2)", "closed_in_version": null},
+          {"finding_id": "GEM-M1", "raw_classification": "MAJOR", "summary": "Route 2 ambiguity 10^-58 vs 10^-33; 'robust' by fiat", "truth_audit_verdict": "STALE", "pattern_ids": [22], "closure_action": "no action (§IV.B canonical-ordering adopted v1A.0.40, robustness statement on disk)", "closed_in_version": null},
+          {"finding_id": "GEM-M2", "raw_classification": "MAJOR", "summary": "Perturbation-transparency violated by all known fermions", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (§X restricted+§X.E lists exclusions+abstract sentence 4 explicit)", "closed_in_version": null},
+          {"finding_id": "GEM-m1", "raw_classification": "minor", "summary": "Structural tension prominent in abstract but buried in §XIV.D", "truth_audit_verdict": "OPINION", "pattern_ids": [5], "closure_action": "no action (deliberate Houston choice v1A.0.38; framing preference)", "closed_in_version": null},
+          {"finding_id": "GEM-m2", "raw_classification": "minor", "summary": "§II.C.1 conflates robust thermal-reset with weaker D_inf scaling", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (separated v1A.0.40; D_inf framed as scaffolding for un-reset hypothetical)", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "consecutive_clean_post_bump_counter": "1/3 on v1A.0.42",
+      "trend": "Quality dropped vs prior P1A external (v1A.0.36): 22 findings, 1 VERIFIED polish, 0 surviving BLOCKER/MAJOR. Catalog absorbed every substantive failure mode. First direct Gemini-2.5-Pro response added no novel signal — converged onto same axis as Grok+GPT.",
+      "new_pattern_candidates": []
+    }
+  },
+  "summary": {
+    "total_findings": 22,
+    "verified": 1,
+    "stale": 17,
+    "falsified": 1,
+    "opinion": 3,
+    "verified_closures_landed_in_version": "v1A.0.42",
+    "bump_decision": "v1A.0.41 -> v1A.0.42 (single PER-m1 abstract polish)",
+    "new_pattern_candidates": [],
+    "headline_finding": "Pattern catalog and v1A.0.40 mechanical-sweep absorbed every substantive failure mode. 21/22 findings classified STALE/OPINION/FALSIFIED on 30-min audit; only residue is a single co-citation polish in the abstract. First Gemini-2.5-Pro direct response surfaced nothing materially new."
+  }
+}

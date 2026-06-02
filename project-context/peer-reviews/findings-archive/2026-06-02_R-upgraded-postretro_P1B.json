@@ -1,0 +1,254 @@
+{
+  "round_label": "2026-06-02_R-upgraded-postretro_P1B",
+  "date": "2026-06-02",
+  "papers": {
+    "P1B": {
+      "version_at_time_of_review": "v1B.0.37",
+      "closing_version": "v1B.0.38",
+      "reviewers": {
+        "Grok_brutal": [
+          {
+            "finding_id": "GRO-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "Title 'for the ECH Spin-Torsion Program' overclaims ALP-ECH link",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [19],
+            "closure_action": "Title rewritten L487-489: ALP component now 'a Birefringence Consistency Check with a Spectator-ALP Model'; ECH-program framing retained for paper as a whole (proxy MCMC + NaMaster pipeline) but not asserted for ALP component",
+            "closed_in_version": "v1B.0.38"
+          },
+          {
+            "finding_id": "GRO-B2",
+            "raw_classification": "BLOCKER",
+            "summary": "Move iter2 Table 2 to appendix; remove sigma columns from main text",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (Table 2 already labeled 'P1A anchor; ln B pending'; sigma values are correct marginal-tail departures, not Bayes-factor claims)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GRO-B3",
+            "raw_classification": "BLOCKER",
+            "summary": "Delete NaMaster SNR values from abstract and section 4",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (abstract and section 4 both explicitly state SNR is MC-recovery, not sky-detection significance)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GRO-B4",
+            "raw_classification": "BLOCKER",
+            "summary": "Collapse ALP MCMC paragraph to single sentence",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (MCMC details are reproducibility-relevant; new App C now houses priors)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GRO-B5",
+            "raw_classification": "BLOCKER",
+            "summary": "Cross-paper Table 3 reports closure that has not occurred",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (table already annotated; surrounding text repeatedly says 'ln B pending', 'queued for coordinated update')",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GRO-B6",
+            "raw_classification": "BLOCKER",
+            "summary": "200+ lines of review-audit narrative in tex preamble (483 lines actual)",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [17],
+            "closure_action": "deferred (PDF clean; will strip at arXiv-bundle stage per pattern 017 procedure; not blocking site or in-PDF readers)",
+            "closed_in_version": null
+          }
+        ],
+        "GPT5_methodology": [
+          {
+            "finding_id": "GPT-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "MCMC proxy not torsion-modified disclaim",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [3, 4],
+            "closure_action": "no action (already in abstract + section 3 opening)",
+            "closed_in_version": null,
+            "notes": "vendor_used=gpt-4o (FALLBACK from gpt-5)"
+          },
+          {
+            "finding_id": "GPT-B2",
+            "raw_classification": "BLOCKER",
+            "summary": "Missing AIC/BIC/lnB model-comparison statistics",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [4],
+            "closure_action": "no action (explicit in App A + Sec 5 + claims table that ln B is queued for nested sampling)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GPT-B3",
+            "raw_classification": "BLOCKER",
+            "summary": "NaMaster pipeline vs sky-detection distinction",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [4],
+            "closure_action": "no action (already explicit in abstract scope-of-validation + Sec 4)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GPT-B4",
+            "raw_classification": "BLOCKER",
+            "summary": "ALP not unique to ECH disclaim",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [4],
+            "closure_action": "no action (caveats paragraph + new App C scope statement both say this)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GPT-B5",
+            "raw_classification": "BLOCKER",
+            "summary": "H0/sigma8 tension detail for delta-Neff",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (out of paper scope; full discussion belongs to a different paper)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "GPT-B6",
+            "raw_classification": "BLOCKER",
+            "summary": "Cross-paper table readiness/blockers detail",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action",
+            "closed_in_version": null
+          }
+        ],
+        "PerplexitySonarPro_citations": [
+          {
+            "finding_id": "PER-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "Eskilt PR3/PR4/NPIPE label drift (5th attempt across rounds)",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [1, 13, 3],
+            "closure_action": "no action (Perplexity is reading historical comments in preamble, not body; body consistently says PR4/NPIPE; LilleJohs reproduction repo confirms PR4 NPIPE; PR3 reversion FALSIFIED in 4 prior rounds)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "PER-M2",
+            "raw_classification": "MAJOR",
+            "summary": "3.6 sigma vs 3.9 sigma headline distinction",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [4],
+            "closure_action": "no action (paper explicitly labels 3.9-sigma as 'auxiliary cross-check only' L1006-L1009 and 3.6-sigma as 'headline' L1043-L1044)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "PER-M3",
+            "raw_classification": "MAJOR",
+            "summary": "DESI DR2 chain converged claim load-bearing buried",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [20],
+            "closure_action": "no action (convergence claim is in dedicated subsection sec:crosspaper-shadow + Table caption + Methods sentence; reproducibility pointer is in App A repository structure)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "PER-m1",
+            "raw_classification": "minor",
+            "summary": "delta-Neff bounce-class compatibility overstatement",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (abstract uses careful 'null-consistency test, not as evidence for or against ECH' language)",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "PER-m2",
+            "raw_classification": "minor",
+            "summary": "Fujita2021 precedent vs evidence ambiguity",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "PER-n1",
+            "raw_classification": "nit",
+            "summary": "Citation label standardization (Eskilt aliases)",
+            "truth_audit_verdict": "STALE",
+            "pattern_ids": [1, 3],
+            "closure_action": "no action (commit 4b1dbfcb consolidated Eskilt2022b -> Eskilt2022; labels now consistent in body)",
+            "closed_in_version": null
+          }
+        ],
+        "Gemini25Pro_cosmology": [
+          {
+            "finding_id": "GEM-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "ALP-MCMC paragraph references non-existent 'Appendix A' for priors/dataset details",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [26],
+            "closure_action": "Added new Appendix C 'ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack' with label app:alp_priors; updated cross-references at L1027 + L1049 to point at app:alp_priors (was 'Appendix~A' which is the Reproducibility Materials section, contains no ALP priors)",
+            "closed_in_version": "v1B.0.38"
+          },
+          {
+            "finding_id": "GEM-M1",
+            "raw_classification": "MAJOR",
+            "summary": "Title 'Spectator-ALP Consistency Check for the ECH Spin-Torsion Program' misleadingly links ALP to ECH",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [19],
+            "closure_action": "Title rewritten L487-489: 'Technical Verification Companion to the ECH Spin-Torsion Program: ... and a Birefringence Consistency Check with a Spectator-ALP Model'. Companion-to-ECH framing retained for paper overall; ALP component no longer claims ECH FOR-ness. Same closure also lands GRO-B1.",
+            "closed_in_version": "v1B.0.38"
+          },
+          {
+            "finding_id": "GEM-M2",
+            "raw_classification": "MAJOR",
+            "summary": "'Natural parameters' overstates mechanism-independence (ultra-light ALP is a specific class)",
+            "truth_audit_verdict": "OPINION",
+            "pattern_ids": [],
+            "closure_action": "no action (caveats paragraph L1066-L1075 already states ALP is spectator + not unique prediction; new App C Scope Statement reinforces this: 'specific ultra-light ALP class')",
+            "closed_in_version": null,
+            "notes": "Could be promoted to VERIFIED in a future round if reviewers continue to read the existing caveats as too soft; current language is defensible."
+          },
+          {
+            "finding_id": "GEM-m1",
+            "raw_classification": "minor",
+            "summary": "'Comfortably within natural' overstates for C_a-gamma up to 51 (GUT-scale benchmarks are O(1))",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "L1058-L1066 rewritten: explicit split between lower-end (C_a-gamma ~9 in GUT/DFSZ benchmark range) and upper-end (C_a-gamma ~51 requires UV enhancement or upper-Delta-phi range). 'Comfortably' replaced with 'accommodated across the considered parameter space rather than fine-tuned only at one benchmark, but the upper-coupling end is not generic.'",
+            "closed_in_version": "v1B.0.38"
+          }
+        ]
+      },
+      "summary_stats": {
+        "total_findings": 22,
+        "verified": 4,
+        "stale": 9,
+        "falsified": 0,
+        "opinion": 9,
+        "blocker_raw": 14,
+        "major_raw": 4,
+        "minor_or_nit_raw": 4,
+        "real_code_closures": 3,
+        "deferred_closures": 1,
+        "version_bumped": true,
+        "git_committed": false
+      },
+      "new_pattern_candidates": [
+        {
+          "candidate_id": "035-broken-appendix-letter-rename",
+          "description": "Body-prose 'Appendix~A' / 'Appendix~B' references without \\ref{} can silently become wrong when appendices are reordered. Related to but distinct from 026 (anchor-404 in URLs/artifacts).",
+          "promotion_status": "not_promoted_yet",
+          "occurrence_count": 1
+        },
+        {
+          "candidate_id": "036-vendor-fallback-no-flag",
+          "description": "Direct-vendor API silently falls back to a weaker model (e.g. gpt-5 -> gpt-4o) but downstream truth-audit and archive treat findings as if the strongest tier produced them. Persona-strength miscalibration risk.",
+          "promotion_status": "not_promoted_yet",
+          "occurrence_count": 1
+        }
+      ],
+      "gemini_first_round_signal": {
+        "unique_finding": "GEM-B1 (broken Appendix A xref) — caught by no other vendor",
+        "value_add_quality": "high",
+        "persona_diversity_vs_other_3": "complementary (not duplicate of Grok prose-audit or Perplexity citation-audit or GPT methodology-audit)",
+        "rotation_recommendation": "keep_in_regular_4_vendor_rotation"
+      }
+    }
+  }
+}

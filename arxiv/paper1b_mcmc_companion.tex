@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.37}
+\newcommand{\paperVersion}{v1B.0.38}
 \newcommand{\paperTimestamp}{2026-06-02 PDT}
 % v1B.0.34 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round4 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.33 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
@@ -484,9 +484,9 @@
 
 \preprint{HUBIFY-2026-001B}
 
-\title{Technical Verification Companion: $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy,\\
-NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check\\
-for the ECH Spin-Torsion Program}
+\title{Technical Verification Companion to the ECH Spin-Torsion Program:\\
+$\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy, NaMaster Pipeline Recovery,\\
+and a Birefringence Consistency Check with a Spectator-ALP Model}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -1024,7 +1024,9 @@ $\Delta\phi/f_a \in [0.2, 1.1]$.
 The fiducial value $\beta\approx 0.27^\circ$ corresponds to the midpoint
 $m\approx 1.8\,H_0$, $\Delta\phi/f_a\approx 1.0$. The prediction spans
 $\beta\approx 0.17$--$0.43^\circ$ over $C_{a\gamma}\in[4,12]$, $m/H_0\in[1,3]$,
-$\theta_i\in[0.5,2]$, comfortably bracketing the observed value without fine-tuning.
+$\theta_i\in[0.5,2]$, comfortably bracketing the observed value without fine-tuning
+of any single parameter (see Appendix~\ref{app:alp_priors} for the full ALP-MCMC
+sampled-parameter list, priors, and dataset-likelihood configuration).
 The range $[0.17,0.43]^\circ$ is obtained from a joint-trajectory scan over the
 \emph{coupled} $(C_{a\gamma}, m/H_0, \theta_i)$ space and not from an
 independent-extremes product (which would give the wider naive envelope
@@ -1046,7 +1048,7 @@ $3.6\sigma$~\cite{Eskilt2022} is the headline.
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (3 configurations, 9{,}720 total accepted samples) yields:
 $\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ ($C_{a\gamma}=8$ fixed),
-consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$ on Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter; full priors and dataset details in Appendix~A); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$ on Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter; full priors and dataset details in Appendix~\ref{app:alp_priors}); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
 within $1\sigma$. The combined coupling-displacement product entering the
 birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
@@ -1055,7 +1057,14 @@ $\alpha_{\rm EM}/(4\pi)$ is $5.8\times 10^{-4}$, giving
 $C_{a\gamma}\,\Delta\phi/f_a = \beta/[\alpha_{\rm EM}/(4\pi)] \approx 10.3$);
 with the field-displacement range $\Delta\phi/f_a \in [0.2, 1.1]$ from the
 numerical ALP-EOM integration, the required $C_{a\gamma}$ spans $\sim 9$
-to $\sim 51$, comfortably within natural ALP-photon coupling ranges. R2
+to $\sim 51$. The lower end ($\sim 9$) sits within standard
+GUT-scale / DFSZ benchmark ranges; the upper end ($\sim 51$) is large
+relative to simple ALP benchmarks and requires either a UV-completion that
+enhances the photon coupling (e.g.\ chiral fermion-loop enhancement,
+clockwork constructions) or a field displacement at the upper end of the
+$\Delta\phi/f_a\in[0.2,1.1]$ range. The signal is therefore accommodated
+across the considered parameter space rather than fine-tuned only at one
+benchmark, but the upper-coupling end is not generic. R2
 closure of an earlier reported product
 ``$C_{a\gamma}\times\theta_i = 3.4\pm 1.1$''
 that confused $\theta_i$ (initial misalignment) with $\Delta\phi/f_a$
@@ -1301,6 +1310,50 @@ ALP birefringence not distinctive ECH prediction        & Scope     & Defn.\   &
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
+
+
+%% --- C: ALP-MCMC Priors and Likelihood Configuration ---
+\section{ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}\label{app:alp_priors}
+
+The ALP-MCMC results quoted in Sec.~\ref{sec:birefringence_check}
+($\beta_{\rm ALP} = 0.336^\circ\pm 0.107^\circ$ at $C_{a\gamma}=8$ fixed;
+$\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ model-independent;
+9{,}720 total accepted samples across 3 configurations) use the
+following setup.
+
+\textit{Sampled parameters and priors (model-dependent ALP fit).}
+\begin{itemize}[leftmargin=*]
+\item $C_{a\gamma}$: fixed at one of $\{4, 8, 12\}$ across the three
+configurations (3{,}240 samples per configuration); not a sampled
+parameter within a single chain.
+\item $m/H_0$: uniform prior on $[1, 3]$ (ultra-light ALP class;
+$m\sim H_0$ required for cosmological-time field evolution).
+\item $\theta_i$: uniform prior on $[0.5, 2]$ (natural-misalignment range,
+$\theta_i = \phi_{\rm init}/f_a$).
+\item $f_a$: fixed at $\MPl$ (spectator-class theoretical input from the
+Holst-sector pseudoscalar structure; not sampled).
+\end{itemize}
+
+\textit{Sampled parameters and priors (model-independent $\beta_{\rm free}$ fit).}
+\begin{itemize}[leftmargin=*]
+\item $\beta$: uniform prior on $[-2^\circ, 2^\circ]$; sampled as a free
+amplitude with no ALP-model parametric structure.
+\end{itemize}
+
+\textit{Likelihood stack.}---Both fits use the Planck PR4 + ACT~DR6
+$EB$-spectrum likelihoods (the same observables used by
+Refs.~\cite{Eskilt2022,DiegoPalazuelos2025}) combined with shared
+calibration covariance. The MCMC engine is Cobaya~v3.6.1 with the
+Metropolis-Hastings sampler; convergence threshold $\hat R - 1 < 0.01$
+across all 3 configurations (achieved at $N_{\rm tot}=9{,}720$ accepted samples
+post burn-in).
+
+\textit{Scope statement.}---These fits constrain a specific ultra-light
+ALP class ($m\sim H_0$, $f_a\sim\MPl$, $C_{a\gamma}\in[4,12]$ benchmark
+sweep). The consistency with $\beta_{\rm obs}$ established here is
+\emph{not} a universal mechanism-independent statement; alternative
+parity-violating mechanisms (Chern-Simons, axion dark matter at higher
+$m$, etc.) require independent fits with their own model parameters.
 
 
 %% ============================================================

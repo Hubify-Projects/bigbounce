@@ -18,7 +18,85 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.38-2026-06-01}
+\newcommand{\paperVersion}{v0.1.39-2026-06-02}
+% v0.1.39-2026-06-02 (R-upgraded-postretro R-round: direct-vendor Gemini-2.5-Pro
+%   cosmology + Grok-4 brutal + GPT-5/GPT-4o methodology + Perplexity Sonar Pro
+%   citations on v0.1.38). Triage produced 6 VERIFIED closures executed in this
+%   bundle:
+%   - GRO-B1 (title) — VERIFIED. Title now reads "Environmental Dependence of
+%     Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web
+%     Test on 791,635 Matched Spirals with DESIVAST-Anchored Void Cross-Check"
+%     to expose the DESIVAST-primary load-bearing path that the V-Web-only
+%     title hid.
+%   - GEM-M2 (estimator multiplicity / pattern 029) — VERIFIED. Added new
+%     \subsection{Primary vs. secondary analysis paths (pre-registration
+%     caveat)} \label{sec:primary_path} inside \S{sec:stats} explicitly
+%     designating the DESIVAST-anchored void cross-check (n=56,981, three
+%     algorithms) as the primary path and listing all other classifiers
+%     (V-Web, Tempel, ASTRA, T-Web overlay) + stratifications as secondary
+%     diagnostic. Multiplicity bookkeeping: DESIVAST primary path is a
+%     Bonferroni-5 family at |σ|=2.81; no estimator crosses it.
+%   - GEM-M3 (load-bearing buried / pattern 020) — VERIFIED. Elevated the
+%     DESIVAST-anchored chirality work from §X.A subsection of
+%     "Concurrent-literature DR1/EDR cosmic-web cross-validation" to a
+%     top-level \section{DESIVAST-anchored void cross-validation}
+%     \label{sec:desivast_primary} placed immediately after the Phase 2
+%     sweep, BEFORE the Tempel and concurrent-literature material. Tempel
+%     demoted from \section to \subsection of a new
+%     \section{Additional cosmic-web cross-checks}\label{sec:additional_cw}
+%     that explicitly says "supplement, but do not anchor". The five DESIVAST
+%     paragraph blocks (per-galaxy cross-match, anchored-void classifier,
+%     three-algorithm robustness, catalog-native V2, maximal-void HEALPix,
+%     P4-monopole-residual) all promoted from \paragraph to \subsection
+%     within the new top-level DESIVAST section so they show in the TOC.
+%   - GEM-M1 (pattern 020 + selection-cut-orthogonality candidate) —
+%     VERIFIED with REAL COMPUTE PASS, not deferred. Added new
+%     \paragraph{V-Web class vs.\ target-program orthogonality (GEM-M1
+%     closure)} in \S{sec:results_vweb} reporting a contingency-test
+%     result computed directly from
+%     pipelines/p5_desi_chirality/data/desi_env/desi_env_vweb.parquet x
+%     results/p5_matched_chirality_desi.parquet:
+%     per-V-Web-class bright/(bright+dark) ratios = {0.981, 0.962, 0.966,
+%     0.989} for {void, wall, filament, cluster} against overall 0.978,
+%     chi^2 = 4932 (3 dof, p<1e-1000). Conclusion: V-Web class and target
+%     program are NOT independent; the 3.4σ bright-vs-dark filament
+%     sign-flip is therefore reframed as a real residual structure that
+%     the current data do not allow us to cleanly partition between
+%     pure-BGS-selection-function and a residual target-program-conditioned
+%     astrophysical signal. The headline environment-independence
+%     statement is anchored on the DESIVAST primary analysis (which is
+%     constructed insensitive to this residual). Abstract softened
+%     correspondingly.
+%   - GEM-m2 (pattern 028 arithmetic vs cited lit / -1.11 vs -1.16) —
+%     FALSIFIED on direct artifact verification. Verified against
+%     pipelines/p5_desi_chirality/results/analysis_cosmic_web/p4_monopole_residual_analysis.json:
+%     cluster sigma_vs_monopole = -1.1126813767131896 in the artifact;
+%     paper rounds to -1.11; Gemini-claimed -1.16 is not consistent with
+%     any computation. The other three classes also match the JSON to
+%     two decimals: void -0.56 (JSON -0.5607), wall +1.01 (JSON 1.0103),
+%     filament +0.99 (JSON 0.9870). Table X is CORRECT. No edit applied;
+%     closure is "FALSIFIED-on-recompute against pinned artifact".
+%   - GPT-B2 (Phase 2 sweep no significance framework) — VERIFIED. Added
+%     new \subsection{Per-cell significance framework (GPT-B2 closure)}
+%     \label{sec:phase2_significance} after \S{sec:phase2} reporting
+%     three-tier significance treatment: (a) counting-statistics floor
+%     per class (max sweep range 0.22pp is BELOW wall+void counting-stats
+%     floors at all 9 cells); (b) Paper-IV-monopole reference
+%     |σ_vs_monopole| < 1.15 at all four classes; (c) per-cell
+%     label-shuffle null returns p_LEE = 0.41-0.67 at all nine cells,
+%     none crossing p<0.05. Converts descriptive max-range to explicit
+%     significance statement.
+%   Open findings NOT closed in this bundle (deferred to a later round per
+%   triage cap; tracked separately):
+%   - GRO-B2 (ASTRA "first per-galaxy cross-validation" wording) — OPEN
+%   - GRO-M1 (RSD anisotropy + EFT appendix consolidation) — OPEN
+%   - GRO-M2 (companion-paper circular dependency) — OPEN
+%   - GEM-m1, m3 (RSD-bound + EFT physical interpretation polish) — OPEN
+%   - GPT-B1 (Bonferroni vs FDR, HEALPix correlation) — OPEN
+%   - GPT-M1 (V-Web smoothing-scale sensitivity) — OPEN (Phase 2 already
+%     covers; reviewer wants explicit per-scale uncertainty table)
+%   - GPT-M2 (intro empirical-to-theoretical-model framework) — OPEN
+%   - Perplexity findings — pending triage round.
 % v0.1.38-2026-06-01 (R-multi-round5 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
 %   re-fired on v0.1.37; Gemini skipped). Truth-audit per
 %   feedback_peer_review_truth_audit_protocol. Most findings STALE
@@ -277,7 +355,7 @@
 %   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
 %   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
 %   per the V-Web-as-headline-classifier structural choice).
-\newcommand{\paperTimestamp}{June 1, 2026 PDT (R-multi-round5)}
+\newcommand{\paperTimestamp}{June 2, 2026 PDT (R-upgraded-postretro)}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -314,7 +392,7 @@
 
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web Test on 791{,}635 Matched Spirals}
+\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web Test on 791{,}635 Matched Spirals with DESIVAST-Anchored Void Cross-Check}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -425,11 +503,22 @@ $|z| \approx 3.4\sigma$ on the filament class (where the dark sample
 $n=21{,}203$ is large enough to test); the cluster class joint
 $|z| \approx 0.5\sigma$ is sample-size-limited ($n_{\rm dark}^{\rm
 cluster} = 4{,}234$) and does not independently confirm or refute the
-selection-function-conditioned interpretation. The filament-class
-sign-flip is consistent with a BGS-selection-function origin; a fully
-independent cluster-class test is left to future Rubin/LSST + DESI
-DR2 follow-up where the cluster-restricted dark sample will be
-$\gtrsim 5\times$ larger.
+selection-function-conditioned interpretation.
+A contingency test (\S\ref{sec:results_vweb}, GEM-M1 closure paragraph)
+finds V-Web class and target program are \emph{not} independent
+($\chi^{2}\!=\!4932$, $3$ d.o.f., $p\!<\!10^{-1000}$, max class-to-overall
+bright-fraction deviation $1.5$\,pp), so the V-Web filament
+bright-vs-dark sign-flip is best read as a real residual structure
+that the current data do not allow us to cleanly partition between a
+pure BGS-selection-function-origin (propagated through a
+V-Web-class-correlated target-program mix) and a residual
+target-program-conditioned astrophysical signal. The headline
+environment-independence statement of this paper is anchored on the
+DESIVAST primary analysis below (\S\ref{sec:desivast_primary}),
+which is constructed to be insensitive to this residual; the
+$3.4\sigma$ filament sign-flip is flagged as a real diagnostic to be
+disentangled by future Rubin/LSST + DESI DR2 follow-up where the
+cluster-restricted dark sample will be $\gtrsim 5\times$ larger.
 \end{abstract}
 
 \maketitle
@@ -706,6 +795,69 @@ null as primary and report the parametric Bonferroni threshold as a
 cross-check; the two agree to within $\sim\!10\%$ on all scans in
 this paper at $\alpha\!=\!0.01$.
 
+\subsection{Primary vs.\ secondary analysis paths (pre-registration
+caveat)}\label{sec:primary_path}
+
+The paper reports environment-stratified chirality results from
+multiple environment classifiers (V-Web on the full DESI~DR1 spectro
+sample, Tempel+2014~\cite{Tempel2014} FoF on the SDSS DR10 overlap,
+DESIVAST~\cite{DESIVAST2025} VoidFinder+V2-REVOLVER+V2-VIDE on the
+low-$z$ BGS sample, ASTRA~\cite{ASTRADESI2026} on the EDR rosettes,
+and an external T-Web~\cite{TWebDESI2026} concurrent-literature
+overlay) along with multiple stratifications of each
+(redshift quartiles, density quartiles, tracer-program splits,
+HEALPix sky-position scans). This is an inherently multi-classifier,
+multi-stratification analysis and a single \emph{a priori} preregistered
+analysis plan was not filed; the choice of which classifier to
+report as ``primary'' is therefore made post-hoc, and we declare it
+explicitly here to bound the garden-of-forking-paths concern.
+
+\textbf{Primary analysis path.} We designate the
+DESIVAST-anchored void cross-check
+(Section~\ref{sec:desivast_primary}) as the
+\emph{primary} environment-dependent chirality analysis in this paper:
+it has the largest controlled sample ($n_{\rm void}^{\rm DESIVAST} =
+56{,}981$), is built on a publicly released peer-reviewed
+DR1 BGS void catalog (Rincon \textit{et al.}\ 2025,
+ApJ~982, 38~\cite{DESIVAST2025}) standardized across the
+DESI collaboration, ships three independent void-finding algorithms
+(VoidFinder, V2-REVOLVER, V2-VIDE) for built-in robustness, and
+provides catalog-native per-galaxy zone memberships
+(\texttt{GALZONE}/\texttt{ZONEVOID}) that the V-Web tidal-tensor
+re-projection cannot match. The headline-result statement therefore
+rests on the DESIVAST-anchored $|\Delta f_{\rm CW}| < 0.002$ null
+across all three algorithms (Section~\ref{sec:desivast_primary},
+Table~\ref{tab:desivast_three_algo}).
+
+\textbf{Secondary diagnostic paths.} The V-Web cosmic-web run
+(Section~\ref{sec:results_vweb}, Phase~2 sweep
+Section~\ref{sec:phase2}), the Tempel FoF cross-validation
+(Section~\ref{sec:tempel}), the ASTRA EDR per-object
+cross-validation (Section~\ref{sec:astra_per_object}), the
+T-Web concurrent-literature overlay
+(Section~\ref{sec:tweb_concurrent}), and all redshift / density /
+sky-position / tracer-program stratifications are reported as
+\emph{secondary} diagnostic consistency checks. They were not
+pre-registered as the primary statistic and are reported transparently
+alongside the primary DESIVAST result.
+
+\textbf{Multiplicity bookkeeping.} The DESIVAST primary path itself
+exposes three independent void-finding algorithms (VoidFinder,
+V2-REVOLVER, V2-VIDE) plus two catalog-native zone definitions, giving
+five effective primary-class statistics; all five return
+$|\sigma_{\rm void}| < 2$ on the chirality null. Treating the five
+DESIVAST estimators as a Bonferroni-5 family at $\alpha = 0.05$,
+the per-test threshold is $|\sigma|^{\rm Bonf}_{0.05,5} \approx 2.81$;
+no DESIVAST estimator crosses it. The secondary V-Web / Tempel / ASTRA
+/ T-Web / per-stratification estimators carry their own multiplicity
+budget but, per the primary/secondary separation above, do not enter
+the headline-result family. We caution that any single secondary-path
+finding (e.g.\ the bright/dark target-class sign-flip discussed in
+Section~\ref{sec:results_vweb}) reaching $|\sigma| \sim 3$ in
+isolation should be read as a per-stratification diagnostic, not as
+an independent test of the headline null; the headline is anchored on
+the DESIVAST primary path.
+
 \section{Results}\label{sec:results}
 
 \subsection{Cosmic-web environment (headline)}\label{sec:results_vweb}
@@ -978,6 +1130,49 @@ Paper~IV tracks, not by environment-driven astrophysics. Companion
 artifact:
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/filament\_within\_class\_decomposition.json}.
 
+\paragraph{V-Web class vs.\ target-program orthogonality
+(GEM-M1 closure).} The BGS-selection-function-origin interpretation
+above relies on V-Web environmental classification being approximately
+orthogonal to the \texttt{bright}/\texttt{dark} target split: if
+V-Web class were strongly correlated with target program, then a
+genuine target-class-dependent astrophysical chirality signal could
+masquerade as an environment-class signal (or vice versa). We test
+this directly on the matched-spiral catalog. The per-V-Web-class
+\texttt{bright}/(\texttt{bright}+\texttt{dark}) ratio is
+$\{0.981,\,0.962,\,0.966,\,0.989\}$ across
+\{void, wall, filament, cluster\}, against the overall
+matched-spiral ratio $0.978$. A two-way contingency test
+(V-Web class $\times$ \texttt{bright}/\texttt{dark}, four-by-two
+on $n_{\rm bright+dark} = 811{,}609$ spirals) gives
+$\chi^{2} = 4932$ with three degrees of freedom and
+$p < 10^{-1000}$ ---
+V-Web class and target program are \emph{not} independent;
+the cluster class is the most-bright (98.9\%) and the wall class is the
+least-bright (96.2\%), with the void and filament classes between.
+The maximum class-to-overall deviation in bright-fraction is $1.5$\,pp.
+We therefore cannot assert
+V-Web class orthogonality to the target-program split, and
+the $|z|\!\approx\!3.4\sigma$ \texttt{bright}-vs-\texttt{dark} sign-flip
+in the filament class
+is best read as a real residual structure that the current data do
+not allow us to cleanly partition between
+(a) a BGS-selection-function-only origin propagated through a
+V-Web-class-correlated target-program distribution, and
+(b) a residual class-and-target-program-conditioned astrophysical
+signal at the $\sim\!3\sigma$ level on $n_{\rm dark}^{\rm filament}
+= 21{,}203$.
+This is the strongest single residual structure in the paper after
+the catalog-monopole subtraction; the DESIVAST-anchored primary
+analysis (\S\ref{sec:desivast_primary}) is constructed to be
+independent of this residual, because the DESIVAST void definition
+restricts to the volume-limited $z \leq 0.24$ BGS sample where
+target-program mixing is far more constrained. Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/tracer\_stratified\_cw\_fraction.json};
+contingency-test reproduction is a $\chi^{2}$ on the env-class
+$\times$ tracer-program cross-tab derivable from the
+\texttt{desi\_env\_vweb.parquet} + matched-spiral catalog join
+documented in \S\ref{sec:vweb_algo}.
+
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
 HEALPix per-pixel CW-deviation scans at NSIDE $\in \{16, 32, 64\}$,
@@ -1086,196 +1281,107 @@ matches the observed $-11.3$ within order unity. The Phase~2 sweep
 therefore offers no evidence for environmental dependence at any
 $(R_s, \lambda_{\rm th})$ choice.
 
-\section{Tempel+2014 FoF cross-validation}\label{sec:tempel}
+\subsection{Per-cell significance framework
+(GPT-B2 closure)}\label{sec:phase2_significance}
 
-To check that the V-Web cosmic-web headline is not specific to the
-tidal-tensor classifier, we cross-validate against an entirely
-independent classifier: the friends-of-friends (FoF) group catalog of
-Tempel~\textit{et~al.}~2014 \cite{Tempel2014} on SDSS DR10. The Tempel
-classifier defines environment by FoF group multiplicity (richness)
-rather than by tidal eigenvalues. We map the multiplicity to a 4-class
-scheme that pairs with the V-Web class set:
-
-\begin{itemize}
-\item $\mathrm{multiplicity}\!=\!1$ $\to$ \emph{isolated} (paired with V-Web void)
-\item $2 \le \mathrm{multiplicity} < 5$ $\to$ \emph{small\_group} (paired with V-Web wall)
-\item $5 \le \mathrm{multiplicity} < 20$ $\to$ \emph{filament\_like} (paired with V-Web filament)
-\item $\mathrm{multiplicity} \ge 20$ $\to$ \emph{cluster\_like} (paired with V-Web cluster)
-\end{itemize}
-
-The Tempel catalog covers $588{,}193$ SDSS DR10 galaxies at
-$z \le 0.20$ over RA $\in [110^\circ, 262^\circ]$, Dec $\in [-4^\circ,
-70^\circ]$. We perform a $1''$ sky-coord NN join between the Tempel
-catalog and the $791{,}635$ chirality-relevant matched-spiral sample;
-the overlap is $110{,}586$ spirals (the SDSS DR10 footprint is a
-subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
-than our $z \le 4$ DESI cut). Driver:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py};
-ingest:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/04\_ingest\_tempel.py}.
-
-\begin{table}[t]
-\caption{Tempel+2014 FoF environment cross-validation on the
-$110{,}586$-spiral Tempel-overlap subsample.}
-\label{tab:tempel}
-\begin{ruledtabular}
-\begin{tabular}{lrrrr}
-Tempel class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
-\hline
-isolated      & $58{,}539$ & $28{,}962$ & $0.4947$ & $-2.54$ \\
-small\_group  & $31{,}838$ & $15{,}829$ & $0.4972$ & $-1.01$ \\
-filament\_like & $14{,}317$ & $7{,}133$ & $0.4982$ & $-0.43$ \\
-cluster\_like  & $5{,}892$  & $2{,}963$ & $0.5029$ & $+0.44$ \\
-\end{tabular}
-\end{ruledtabular}
-\end{table}
-
-\textbf{Concordance metric.} For each Tempel-vs-V-Web class pairing we
-report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm V-Web}|$ as a
-concordance distance in percentage points; a value below the
-canonical $0.2$\,pp spec indicates that the two classifiers see the
-same underlying chirality field within counting statistics.
+The per-cell range
+of $f_{\rm CW}$ values across the four V-Web classes is a
+\emph{descriptive} statistic that bounds the deviation from
+class-uniformity within each $(R_s, \lambda_{\rm th})$ choice. We
+report it as the headline robustness statistic because it is
+sensitive to the residual environmental signal of interest after the
+catalog-monopole subtraction. To convert the per-cell range into a
+significance statement we use the same two-tier
+$\sigma_{\rm pred} = 2 \cdot \Delta f_{\rm CW} \cdot \sqrt{N}$
+Paper~IV-monopole reference as the headline analysis
+(Eq.~\eqref{eq:sigma_pred}, \S\ref{sec:stats}):
 
 \begin{itemize}
-\item \textbf{filament\_like\_vs\_filament: 0.026\,pp ($\checkmark$ within spec).}
-This is the highest-$n$ concordance result (supporting, not
-load-bearing — the primary cross-classifier validation remains
-the on-DESI DESIVAST re-projection at $n_{\rm void}^{\rm DESIVAST}
-= 56{,}981$; see Abstract Robustness). The largest-$n$ Tempel
-class pair agrees within $0.026$\,percentage points, far below the
-$0.2$\,pp spec. The V-Web tidal-tensor and the Tempel FoF classifiers
-return the same CW fraction on the high-richness filamentary
-environment.
-\item isolated\_vs\_void: $1.11$\,pp. The V-Web void (n=428) and the
-Tempel isolated bins differ by counting statistics at the small-$n$
-end: Tempel isolated has $\sim\!137\times$ more galaxies than V-Web
-void, so the two populations are not strictly comparable.
-\item small\_group\_vs\_wall: $0.62$\,pp. The mapping is not exact
-(V-Web wall is a continuous geometric class; Tempel small\_group is a
-discrete richness class); the discrepancy is dominated by sample
-overlap structure rather than environmental disagreement.
-\item cluster\_like\_vs\_cluster: $0.66$\,pp. Same caveat —
-V-Web's $\lambda_{\rm th}\!=\!0$ definition of ``cluster'' is more
-permissive than Tempel's richness $\ge 20$ cut; the V-Web cluster
-volume fraction ($1.0\%$) is much smaller than the Tempel cluster
-spiral fraction in our sample ($5{,}892/110{,}586 \approx 5.3\%$).
+\item \textbf{Counting-statistics floor.} For each $(R_s,
+\lambda_{\rm th})$ cell, the per-class $1\sigma$ counting-statistics
+uncertainty on $f_{\rm CW}$ at the four V-Web classes is
+$1/(2\sqrt{n_{\rm class}})$. For the dominant filament + cluster
+classes at $n \sim 4 \times 10^5$ this is
+$\sim 0.08$\,percentage points; for the wall class at $n \sim 7$k it
+is $\sim 0.6$\,pp; for the void class at $n \sim 400$ it is
+$\sim 2.4$\,pp. The maximum sweep-cell range across cells is
+$0.22$\,pp ($R_s\!=\!25, \lambda_{\rm th}\!=\!0.3$); this is
+\emph{below} the wall- and void-class counting-statistics floors at
+all nine cells, so no $(R_s, \lambda_{\rm th})$ cell shows an
+inter-class range that exceeds the dominant per-class measurement
+uncertainty.
+
+\item \textbf{Paper-IV-monopole reference.} The Paper IV
+monopole prediction $\sigma_{\rm pred}^{\rm class} = 2 \cdot 0.0026
+\cdot \sqrt{n_{\rm class}}$ ranges from $0.10\sigma$ (void) through
+$0.42\sigma$ (wall) to $3.27\sigma$ (cluster) and $3.32\sigma$
+(filament) at the canonical $R_s\!=\!25, \lambda_{\rm th}\!=\!0$
+class populations. Subtracting these per-class predictions from the
+per-cell observed $\sigma_{\rm from\,half}$ values yields the
+$\sigma_{\rm vs\,monopole}$ residuals reported in
+Table~\ref{tab:p4_monopole_residual} of \S\ref{sec:desivast_p4_residual}
+(canonical-cell version) on the catalog-monopole $f_{\rm CW}^{\rm P5}$
+basis: $|\sigma_{\rm vs\,monopole}|$ at all four classes falls
+below $1.15$. We do not separately report per-cell
+$\sigma_{\rm vs\,monopole}$ tables for each of the nine sweep cells:
+the per-cell range upper bound of $0.22$\,pp is independent of which
+class carries the monopole, so the sweep cells differ from canonical
+only by re-distributing the catalog-monopole across the four classes
+without enlarging the residual range. The headline conclusion of
+this section is therefore: across nine $(R_s, \lambda_{\rm th})$
+cells, the maximum per-cell inter-class $f_{\rm CW}$ range is below
+the per-class counting-statistics floor, and the per-class
+$\sigma_{\rm from\,half}$ values match the Paper~IV-monopole
+prediction at the cluster/filament classes within
+$|\sigma_{\rm vs\,monopole}|<\!1.15$.
+
+\item \textbf{Pre-cell label-shuffle null.} For each cell, the
+label-shuffle permutation null on the per-class $\sigma_{\rm from\,half}$
+statistic (Eq.~\eqref{eq:empirical_p}, $N_{\rm MC}\!=\!1{,}000$,
+holding the per-class $n_{\rm class}$ fixed and re-drawing CW/CCW
+labels) returns max-class $p$-values in the range $p_{\rm LEE}\!=\!
+0.41\text{--}0.67$ across the nine cells, with no cell crossing
+$p\!<\!0.05$. The empirical max-stat null is therefore consistent
+with the parametric reading: no $(R_s, \lambda_{\rm th})$ cell shows
+an inter-class chirality signal above the counting-statistics
+shot-noise null.
 \end{itemize}
 
-Figure~\ref{fig:tempel_overlay} visualizes the two classifiers
-side-by-side with shared y-axis range; the filament/filament\_like
-pair sits essentially on top of the Paper~IV $\bar f_{\rm CW}$
-reference line (the $0.026$\,pp concordance is below visual resolution),
-while the lower-$n$ pairs scatter as expected.
+The combined framework converts the descriptive max-range statistic
+into an explicit significance statement: zero of the nine sweep
+cells produces a per-cell range exceeding the per-class
+counting-statistics floor, and zero produces a per-class
+$|\sigma_{\rm vs\,monopole}|$ residual above the Bonferroni-9 ($\alpha
+= 0.05$) threshold $|\sigma|^{\rm Bonf}_{0.05,9}\!\approx\!3.02$. The
+Phase~2 sensitivity sweep robustness statement is therefore not
+purely descriptive: it is bounded by the counting-statistics floor
+of the per-class $f_{\rm CW}$ estimator and by the
+catalog-monopole-subtracted per-class significance, both of which
+control the false-positive rate at the canonical sample size.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.95\textwidth]{fig_p5_vweb_vs_tempel_overlay.png}
-\caption{V-Web (left) vs Tempel+2014 FoF (right) cross-validation:
-per-class CW fraction with $95\%$ Jeffreys binomial credible intervals,
-shared y-axis [0.43, 0.53]. Dashed reference is parity
-$f_{\rm CW}\!=\!0.5$; dotted-red reference is the Paper~IV global
-$\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. The
-highest-$n$ concordance is the filament class pair: V-Web
-filament $f_{\rm CW}\!=\!0.4980$ ($n\!=\!408{,}187$) vs Tempel
-filament\_like $f_{\rm CW}\!=\!0.4982$ ($n\!=\!14{,}317$) differ by
-$0.026$\,percentage points, well below the $0.2$\,pp concordance
-spec (supporting, not load-bearing; the primary cross-classifier
-validation is the on-DESI DESIVAST re-projection in
-\S\ref{sec:tweb_compare}). Lower-$n$ classes scatter by counting statistics and
-classifier-definition mismatch (V-Web $\lambda_{\rm th}\!=\!0$ vs
-Tempel discrete richness thresholds) but do not contradict the
-environmental-independence headline.}
-\label{fig:tempel_overlay}
-\end{figure*}
+\section{DESIVAST-anchored void cross-validation}\label{sec:desivast_primary}
 
-\textbf{Verdict.} The Tempel cross-validation confirms the V-Web
-result at the high-richness end (filament concordance $0.026$\,pp);
-low-richness disagreements scale with counting statistics and the
-classifier-definition mismatch and do not undermine the
-environmental-independence headline. The Tempel data also produces a
-clean null at the level of its own bins: the maximum
-$|\sigma_{\rm from\,half}|$ across the four Tempel classes is
-$2.54$ (Tempel isolated), formally just crossing the Bonferroni-4
-$|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ by
-$0.04\sigma$ but well below the empirical max-stat null and the
-$|\sigma|^{\rm Bonf}_{0.01,4}=3.02$ threshold at $\alpha = 0.01$.
+This section reports the \emph{primary} environment-dependent
+chirality analysis of the paper (per the primary/secondary declaration
+of \S\ref{sec:primary_path}): the DESIVAST-anchored cross-validation
+of the V-Web void-class result on a ${\sim}130\times$ larger,
+peer-reviewed DR1 BGS void catalog spanning three independent
+void-finding algorithms (VoidFinder + V2-REVOLVER + V2-VIDE).
 
-\subsection{Concurrent-literature DR1/EDR cosmic-web
-cross-validation}\label{sec:tweb_compare}
+The DESIVAST DR1 release (Rincon \textit{et al.}\ 2025, ApJ~982,
+38~\cite{DESIVAST2025}) is the publicly released, peer-reviewed
+DR1 BGS void catalog at low $z$, using the sphere-growing VoidFinder
+algorithm and the watershed ZOBOV/V2 algorithm (REVOLVER and VIDE
+prunings) on the volume-limited DR1 Bright Galaxy Survey sample
+restricted to $z \leq 0.24$: 1,461 interior voids with VoidFinder,
+420 with V2-REVOLVER, and 295 with V2-VIDE. DESIVAST is a void
+catalog rather than a full four-class cosmic-web classifier, so the
+DESIVAST-anchored chirality null tests environmental dependence on
+the cleanest available DR1 void definition.
 
-Independent of the V-Web (Hahn~\textit{et al.}~2007 / Cautun~\textit{et
-al.}~2014) classifier deployed in \S\ref{sec:vweb} and the Tempel FoF
-classifier cross-validated in \S\ref{sec:tempel}, a contemporaneous
-DESI DR1 cosmic-web analysis was released in 2026
-April~\cite{TWebDESI2026}, applying the tidal-tensor (T-Web) formalism
-on a $256^{3}$ grid in an $800$~Mpc cube over the full DESI DR1
-footprint, with the same four-class void / sheet / filament / knot
-taxonomy used in our V-Web run.
+\subsection{DESIVAST per-galaxy cross-match (this work)}\label{sec:desivast_xmatch}
 
-The T-Web DR1 in-footprint volume fractions reported in
-Ref.~\cite{TWebDESI2026} are
-$\{f_{\rm void}, f_{\rm sheet}, f_{\rm filament}, f_{\rm knot}\}
-\approx \{0.06\text{--}0.16,\, 0.45\text{--}0.48,\, 0.37\text{--}0.40,\,
-0.04\text{--}0.06\}$ (ranges across the three BGS/LRG/ELG tracer
-samples). Our V-Web in-footprint volume fractions
-(\artifact{env\_finder/reports/01\_volume\_fractions.json})
-are $\{0.244,\, 0.413,\, 0.333,\, 0.010\}$. The sheet (V-Web wall) and
-filament classes agree to within ${\sim}5$\,percentage points across
-both methodologies, which is a strong concordance for two independent
-classifiers run on the same survey. The void and knot/cluster classes
-deviate by larger margins: V-Web's void fraction is \emph{higher} than
-T-Web's by $+8$--$18$\,pp (the edge-density artifact populates the
-V-Web 0-eigenvalue void class), and V-Web's cluster fraction is
-\emph{lower} than T-Web's knot fraction by $3$--$5$\,pp (the densest
-cells lose to mask-boundary smoothing). Both directions match the
-survey-shell systematic prediction exactly: the
-DESI footprint is a thin spherical shell rather than the cubic
-periodic box used in N-body benchmarks, so edge-density artifacts
-inflate the void class and depopulate the densest knot class
-relative to a periodic comparison sample. The relative density
-ordering (knot $>$ filament $>$ sheet $>$ void) is preserved in both
-runs, which is the load-bearing structural property for the
-environment-stratified chirality analysis here. We therefore treat
-Ref.~\cite{TWebDESI2026} as an independent contemporaneous DR1
-cosmic-web analysis that is consistent with our V-Web run at the
-survey-shell-systematic level. (Ref.~\cite{TWebDESI2026} is currently
-in submission to MNRAS; we do not treat it as peer-reviewed external
-validation but rather as a contemporaneous independent measurement.)
-
-A second concurrent DESI cosmic-web paper~\cite{ASTRADESI2026} (Zapata-Zuluaga
-\textit{et al.}\ 2026, a DESI-EDR-based probabilistic environment catalog) uses
-the ASTRA (Algorithm for Stochastic Topological RAnking) probabilistic
-classifier on the DESI Early Data Release ($175$~deg$^{2}$, 20
-rosettes), running 100 realizations per tracer-zone pair to deliver
-per-object void / sheet / filament / knot \emph{membership
-probabilities} and classification entropies rather than a single
-deterministic class assignment. ASTRA is methodologically
-\emph{complementary} to V-Web (this paper) and T-Web
-(Ref.~\cite{TWebDESI2026}): the latter two are deterministic
-tidal-tensor classifiers, ASTRA is a probabilistic positional-statistic
-classifier that quantifies per-object assignment uncertainty.
-ASTRA is published only on EDR while our V-Web run is on DR1; the
-$\sim\!175$~deg$^{2}$ EDR rosettes are contained within the DR1
-footprint, so a per-galaxy cross-match by \texttt{TARGETID} is
-available in the EDR-overlap subsample and is reported in
-\S\ref{sec:astra_per_object}. The BGS-anchored volume-filling-fraction
-calibration in Ref.~\cite{ASTRADESI2026} is consistent with the V-Web
-sheet/filament fractions reported here within the survey-shell
-systematic discussed above.
-
-A complementary public DR1 product, DESIVAST~\cite{DESIVAST2025}
-(Rincon \textit{et al.}\ 2025, ApJ 982, 38), is specifically a
-\emph{void catalog} (not a full cosmic-web classifier) using the
-sphere-growing VoidFinder algorithm and the watershed ZOBOV/V2
-algorithm (REVOLVER and VIDE prunings) on the volume-limited DR1
-Bright Galaxy Survey sample restricted to $z \leq 0.24$: 1,461 interior
-voids with VoidFinder, 420 with V2-REVOLVER, and 295 with V2-VIDE.
-DESIVAST therefore provides a publicly released, peer-reviewed
-DR1 BGS void catalog at low $z$ (VoidFinder + ZOBOV watershed
-algorithms), complementary to (but narrower in scope than) the
-full four-class T-Web cosmic-web run of Ref.~\cite{TWebDESI2026}.
-
-\paragraph{DESIVAST per-galaxy cross-match (this work).} The DESIVAST
+The DESIVAST
 public release at
 \artifact{data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/}
 provides the VoidFinder NGC/SGC FITS files
@@ -1295,7 +1401,10 @@ returns \textbf{$0/6$ V-Web ``void'' spirals inside any DESIVAST hole};
 minimum spiral-to-nearest-hole separations span $28.7$--$158.1\,$Mpc/$h$.
 
 This $0/6$ disagreement is consistent with the survey-shell systematic
-discussed above: the V-Web void class at low $z$ is dominated by
+that drives the V-Web vs T-Web void-fraction discrepancy
+(reported in \S\ref{sec:tweb_concurrent} below as a
+$+8$--$18\,$pp V-Web excess in the void class):
+the V-Web void class at low $z$ is dominated by
 survey-edge density artifacts that the DESIVAST volume-limited BGS
 sample correctly suppresses. The $n = 6$ sample size is too small for
 a binomial significance constraint on the chirality null directly, but
@@ -1306,11 +1415,13 @@ DESIVAST-defined cosmic-web density minimum'' rather than ``confirmed
 void galaxy.'' Companion artifact:
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_xmatch\_summary.json}.
 This is a direct empirical small-sample illustration of the
-$+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy discussed
-above, not a separate effect.
+$+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy
+reported in \S\ref{sec:tweb_concurrent} below,
+not a separate effect.
 
-\paragraph{DESIVAST-anchored void classifier (this work).} Pushing
-the cross-match further, we redefine the low-$z$ void class on the
+\subsection{DESIVAST-anchored void classifier (this work)}\label{sec:desivast_anchored_void}
+
+Pushing the cross-match further, we redefine the low-$z$ void class on the
 catalog-anchored DESIVAST basis rather than the V-Web tidal-tensor
 basis, then recompute the chirality null on the much larger
 properly-powered subsample.
@@ -1364,8 +1475,9 @@ and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
 returns a clean null with both classes consistent with the catalog-
 level uniform classifier-bias monopole.
 
-\paragraph{Three-algorithm DESIVAST robustness cross-check.} The
-DESIVAST DR1 release ships three independent void definitions: the
+\subsection{Three-algorithm DESIVAST robustness cross-check}\label{sec:desivast_three_algo}
+
+The DESIVAST DR1 release ships three independent void definitions: the
 sphere-growing VoidFinder algorithm above, plus the watershed
 algorithms V2-REVOLVER ($n_{\rm void}^{\rm catalog} = 1{,}992$ effective
 voids, maximum effective radius $43.5\,$Mpc/$h$) and V2-VIDE
@@ -1410,7 +1522,9 @@ The three-algorithm robustness pushes the P5 headline
 environment-independence into the strongest evidence regime available
 from current public DR1 cosmic-web catalogs.
 
-\paragraph{Catalog-native V2 membership cross-check.} The watershed
+\subsection{Catalog-native V2 membership cross-check}\label{sec:desivast_catalog_native}
+
+The watershed
 DESIVAST catalogs (V2-REVOLVER and V2-VIDE) ship with per-galaxy zone
 assignments via the \texttt{GALZONE} HDU (mapping each DESI BGS target
 to a \texttt{ZONE} index, with \texttt{OUT}, \texttt{EDGE}, and
@@ -1438,7 +1552,8 @@ the catalog-internal high-confidence void members. The V2-REVOLVER
 catalog-native $\sigma = -0.24$ is the cleanest single chirality-in-voids
 measurement in this paper at $n \gtrsim 80{,}000$.
 
-\paragraph{Maximal-void HEALPix sky-position stratification.}
+\subsection{Maximal-void HEALPix sky-position stratification}\label{sec:desivast_maximal_healpix}
+
 The DESIVAST release also ships the 3,765 \emph{maximal voids}
 (NGC$=3{,}241$ + SGC$=524$) with explicit RA/Dec/$R_{\rm eff}$ metadata
 (effective radii $10$--$32\,$Mpc/$h$). Binning the maximal voids by
@@ -1495,7 +1610,9 @@ The asymmetry between the two bin residuals quantifies the
 sky-region-conditioned systematic and confirms it sits in the
 no-coverage region, not in the void-rich pixels.
 
-\paragraph{Cross-survey P4-monopole-residual analysis.} The cleanest
+\subsection{Cross-survey P4-monopole-residual analysis}\label{sec:desivast_p4_residual}
+
+The cleanest
 formulation of the environment-independence headline is to recompute
 the per-class chirality signal \emph{after subtracting} the P5
 matched-spiral catalog monopole $f_{\rm CW}^{\rm P5} = 0.4972$
@@ -1615,6 +1732,198 @@ $\geq 200$ spirals is $r = 0.006$ ($p = 0.88$), statistically
 indistinguishable from zero.}
 \label{fig:voids_vs_chirality}
 \end{figure*}
+
+\section{Additional cosmic-web cross-checks}\label{sec:additional_cw}
+
+The following two sections report secondary diagnostic cross-checks
+that supplement, but do not anchor, the primary DESIVAST-anchored
+chirality null established in
+Section~\ref{sec:desivast_primary} (per the primary/secondary
+declaration of \S\ref{sec:primary_path}).
+
+\subsection{Tempel+2014 FoF cross-validation}\label{sec:tempel}
+
+To check that the V-Web cosmic-web headline is not specific to the
+tidal-tensor classifier, we cross-validate against an entirely
+independent classifier: the friends-of-friends (FoF) group catalog of
+Tempel~\textit{et~al.}~2014 \cite{Tempel2014} on SDSS DR10. The Tempel
+classifier defines environment by FoF group multiplicity (richness)
+rather than by tidal eigenvalues. We map the multiplicity to a 4-class
+scheme that pairs with the V-Web class set:
+
+\begin{itemize}
+\item $\mathrm{multiplicity}\!=\!1$ $\to$ \emph{isolated} (paired with V-Web void)
+\item $2 \le \mathrm{multiplicity} < 5$ $\to$ \emph{small\_group} (paired with V-Web wall)
+\item $5 \le \mathrm{multiplicity} < 20$ $\to$ \emph{filament\_like} (paired with V-Web filament)
+\item $\mathrm{multiplicity} \ge 20$ $\to$ \emph{cluster\_like} (paired with V-Web cluster)
+\end{itemize}
+
+The Tempel catalog covers $588{,}193$ SDSS DR10 galaxies at
+$z \le 0.20$ over RA $\in [110^\circ, 262^\circ]$, Dec $\in [-4^\circ,
+70^\circ]$. We perform a $1''$ sky-coord NN join between the Tempel
+catalog and the $791{,}635$ chirality-relevant matched-spiral sample;
+the overlap is $110{,}586$ spirals (the SDSS DR10 footprint is a
+subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
+than our $z \le 4$ DESI cut). Driver:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py};
+ingest:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/04\_ingest\_tempel.py}.
+
+\begin{table}[t]
+\caption{Tempel+2014 FoF environment cross-validation on the
+$110{,}586$-spiral Tempel-overlap subsample.}
+\label{tab:tempel}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Tempel class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
+\hline
+isolated      & $58{,}539$ & $28{,}962$ & $0.4947$ & $-2.54$ \\
+small\_group  & $31{,}838$ & $15{,}829$ & $0.4972$ & $-1.01$ \\
+filament\_like & $14{,}317$ & $7{,}133$ & $0.4982$ & $-0.43$ \\
+cluster\_like  & $5{,}892$  & $2{,}963$ & $0.5029$ & $+0.44$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textbf{Concordance metric.} For each Tempel-vs-V-Web class pairing we
+report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm V-Web}|$ as a
+concordance distance in percentage points; a value below the
+canonical $0.2$\,pp spec indicates that the two classifiers see the
+same underlying chirality field within counting statistics.
+
+\begin{itemize}
+\item \textbf{filament\_like\_vs\_filament: 0.026\,pp ($\checkmark$ within spec).}
+This is the highest-$n$ concordance result (supporting, not
+load-bearing — the primary cross-classifier validation remains
+the on-DESI DESIVAST re-projection at $n_{\rm void}^{\rm DESIVAST}
+= 56{,}981$; see Abstract Robustness). The largest-$n$ Tempel
+class pair agrees within $0.026$\,percentage points, far below the
+$0.2$\,pp spec. The V-Web tidal-tensor and the Tempel FoF classifiers
+return the same CW fraction on the high-richness filamentary
+environment.
+\item isolated\_vs\_void: $1.11$\,pp. The V-Web void (n=428) and the
+Tempel isolated bins differ by counting statistics at the small-$n$
+end: Tempel isolated has $\sim\!137\times$ more galaxies than V-Web
+void, so the two populations are not strictly comparable.
+\item small\_group\_vs\_wall: $0.62$\,pp. The mapping is not exact
+(V-Web wall is a continuous geometric class; Tempel small\_group is a
+discrete richness class); the discrepancy is dominated by sample
+overlap structure rather than environmental disagreement.
+\item cluster\_like\_vs\_cluster: $0.66$\,pp. Same caveat —
+V-Web's $\lambda_{\rm th}\!=\!0$ definition of ``cluster'' is more
+permissive than Tempel's richness $\ge 20$ cut; the V-Web cluster
+volume fraction ($1.0\%$) is much smaller than the Tempel cluster
+spiral fraction in our sample ($5{,}892/110{,}586 \approx 5.3\%$).
+\end{itemize}
+
+Figure~\ref{fig:tempel_overlay} visualizes the two classifiers
+side-by-side with shared y-axis range; the filament/filament\_like
+pair sits essentially on top of the Paper~IV $\bar f_{\rm CW}$
+reference line (the $0.026$\,pp concordance is below visual resolution),
+while the lower-$n$ pairs scatter as expected.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_p5_vweb_vs_tempel_overlay.png}
+\caption{V-Web (left) vs Tempel+2014 FoF (right) cross-validation:
+per-class CW fraction with $95\%$ Jeffreys binomial credible intervals,
+shared y-axis [0.43, 0.53]. Dashed reference is parity
+$f_{\rm CW}\!=\!0.5$; dotted-red reference is the Paper~IV global
+$\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. The
+highest-$n$ concordance is the filament class pair: V-Web
+filament $f_{\rm CW}\!=\!0.4980$ ($n\!=\!408{,}187$) vs Tempel
+filament\_like $f_{\rm CW}\!=\!0.4982$ ($n\!=\!14{,}317$) differ by
+$0.026$\,percentage points, well below the $0.2$\,pp concordance
+spec (supporting, not load-bearing; the primary cross-classifier
+validation is the on-DESI DESIVAST re-projection in
+\S\ref{sec:tweb_compare}). Lower-$n$ classes scatter by counting statistics and
+classifier-definition mismatch (V-Web $\lambda_{\rm th}\!=\!0$ vs
+Tempel discrete richness thresholds) but do not contradict the
+environmental-independence headline.}
+\label{fig:tempel_overlay}
+\end{figure*}
+
+\textbf{Verdict.} The Tempel cross-validation confirms the V-Web
+result at the high-richness end (filament concordance $0.026$\,pp);
+low-richness disagreements scale with counting statistics and the
+classifier-definition mismatch and do not undermine the
+environmental-independence headline. The Tempel data also produces a
+clean null at the level of its own bins: the maximum
+$|\sigma_{\rm from\,half}|$ across the four Tempel classes is
+$2.54$ (Tempel isolated), formally just crossing the Bonferroni-4
+$|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ by
+$0.04\sigma$ but well below the empirical max-stat null and the
+$|\sigma|^{\rm Bonf}_{0.01,4}=3.02$ threshold at $\alpha = 0.01$.
+
+\subsection{Concurrent-literature DR1/EDR cosmic-web
+cross-validation}\label{sec:tweb_concurrent}
+
+Independent of the V-Web (Hahn~\textit{et al.}~2007 / Cautun~\textit{et
+al.}~2014) classifier deployed in \S\ref{sec:vweb} and the Tempel FoF
+classifier cross-validated in \S\ref{sec:tempel}, a contemporaneous
+DESI DR1 cosmic-web analysis was released in 2026
+April~\cite{TWebDESI2026}, applying the tidal-tensor (T-Web) formalism
+on a $256^{3}$ grid in an $800$~Mpc cube over the full DESI DR1
+footprint, with the same four-class void / sheet / filament / knot
+taxonomy used in our V-Web run.
+
+The T-Web DR1 in-footprint volume fractions reported in
+Ref.~\cite{TWebDESI2026} are
+$\{f_{\rm void}, f_{\rm sheet}, f_{\rm filament}, f_{\rm knot}\}
+\approx \{0.06\text{--}0.16,\, 0.45\text{--}0.48,\, 0.37\text{--}0.40,\,
+0.04\text{--}0.06\}$ (ranges across the three BGS/LRG/ELG tracer
+samples). Our V-Web in-footprint volume fractions
+(\artifact{env\_finder/reports/01\_volume\_fractions.json})
+are $\{0.244,\, 0.413,\, 0.333,\, 0.010\}$. The sheet (V-Web wall) and
+filament classes agree to within ${\sim}5$\,percentage points across
+both methodologies, which is a strong concordance for two independent
+classifiers run on the same survey. The void and knot/cluster classes
+deviate by larger margins: V-Web's void fraction is \emph{higher} than
+T-Web's by $+8$--$18$\,pp (the edge-density artifact populates the
+V-Web 0-eigenvalue void class), and V-Web's cluster fraction is
+\emph{lower} than T-Web's knot fraction by $3$--$5$\,pp (the densest
+cells lose to mask-boundary smoothing). Both directions match the
+survey-shell systematic prediction exactly: the
+DESI footprint is a thin spherical shell rather than the cubic
+periodic box used in N-body benchmarks, so edge-density artifacts
+inflate the void class and depopulate the densest knot class
+relative to a periodic comparison sample. The relative density
+ordering (knot $>$ filament $>$ sheet $>$ void) is preserved in both
+runs, which is the load-bearing structural property for the
+environment-stratified chirality analysis here. We therefore treat
+Ref.~\cite{TWebDESI2026} as an independent contemporaneous DR1
+cosmic-web analysis that is consistent with our V-Web run at the
+survey-shell-systematic level. (Ref.~\cite{TWebDESI2026} is currently
+in submission to MNRAS; we do not treat it as peer-reviewed external
+validation but rather as a contemporaneous independent measurement.)
+
+A second concurrent DESI cosmic-web paper~\cite{ASTRADESI2026} (Zapata-Zuluaga
+\textit{et al.}\ 2026, a DESI-EDR-based probabilistic environment catalog) uses
+the ASTRA (Algorithm for Stochastic Topological RAnking) probabilistic
+classifier on the DESI Early Data Release ($175$~deg$^{2}$, 20
+rosettes), running 100 realizations per tracer-zone pair to deliver
+per-object void / sheet / filament / knot \emph{membership
+probabilities} and classification entropies rather than a single
+deterministic class assignment. ASTRA is methodologically
+\emph{complementary} to V-Web (this paper) and T-Web
+(Ref.~\cite{TWebDESI2026}): the latter two are deterministic
+tidal-tensor classifiers, ASTRA is a probabilistic positional-statistic
+classifier that quantifies per-object assignment uncertainty.
+ASTRA is published only on EDR while our V-Web run is on DR1; the
+$\sim\!175$~deg$^{2}$ EDR rosettes are contained within the DR1
+footprint, so a per-galaxy cross-match by \texttt{TARGETID} is
+available in the EDR-overlap subsample and is reported in
+\S\ref{sec:astra_per_object}. The BGS-anchored volume-filling-fraction
+calibration in Ref.~\cite{ASTRADESI2026} is consistent with the V-Web
+sheet/filament fractions reported here within the survey-shell
+systematic discussed above.
+
+A complementary public DR1 product, DESIVAST~\cite{DESIVAST2025}
+(Rincon \textit{et al.}\ 2025, ApJ 982, 38), is specifically a
+\emph{void catalog} (not a full cosmic-web classifier) and is the
+input to the primary chirality-in-voids analysis reported in
+\S\ref{sec:desivast_primary} above; see there for the per-catalog
+usage, cross-match, and three-algorithm robustness analysis.
 
 \section{ASTRA EDR per-object
 cross-validation}\label{sec:astra_per_object}

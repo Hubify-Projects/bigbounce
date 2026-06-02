@@ -1,4 +1,4 @@
-\contentsline {title}{Technical Verification Companion: $\Lambda $CDM$+\Delta N_{\rm eff}$ MCMC Proxy,\\ NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check\\ for the ECH Spin-Torsion Program}{1}{section*.2}%
+\contentsline {title}{Technical Verification Companion to the ECH Spin-Torsion Program:\\ $\Lambda $CDM$+\Delta N_{\rm eff}$ MCMC Proxy, NaMaster Pipeline Recovery,\\ and a Birefringence Consistency Check with a Spectator-ALP Model}{1}{section*.2}%
 \contentsline {abstract}{Abstract}{1}{section*.1}%
 \tocdepth@munge 
 \contentsline {section}{\numberline {}Contents}{1}{section*.3}%
@@ -20,5 +20,6 @@
 \contentsline {section}{\numberline {}Acknowledgments}{9}{section*.18}%
 \appendix 
 \contentsline {section}{\numberline {A}Reproducibility Materials}{9}{section*.19}%
-\contentsline {section}{\numberline {B}Claims Classification}{9}{section*.20}%
-\contentsline {section}{\numberline {}References}{10}{section*.21}%
+\contentsline {section}{\numberline {B}Claims Classification}{10}{section*.20}%
+\contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{10}{section*.21}%
+\contentsline {section}{\numberline {}References}{10}{section*.22}%

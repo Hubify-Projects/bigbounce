@@ -1,0 +1,215 @@
+{
+  "round_id": "2026-06-02_R-upgraded-postretro",
+  "paper": "P2",
+  "paper_title": "Matter-Bounce f_NL = -35/8 Forecast",
+  "source_version_reviewed": "v1.7.41",
+  "closure_version": "v1.7.41",
+  "version_bumped": false,
+  "bump_reason_skipped": "0 VERIFIED across all 4 vendors (22 findings total: 14 STALE, 6 FALSIFIED, 6 OPINION)",
+  "pattern_catalog_version": "34-pattern post-retro INDEX.md",
+  "vendors_run": ["grok-4", "gpt-4o-fallback", "perplexity-sonar-pro", "gemini-2.5-pro"],
+  "vendor_count_non_anthropic": 4,
+  "verdict_counts": {"VERIFIED": 0, "STALE": 14, "FALSIFIED": 6, "OPINION": 6, "OUT_OF_SCOPE": 0},
+  "findings": [
+    {
+      "id": "PAPER-GRO-B1", "vendor": "grok-4", "severity": "BLOCKER",
+      "section": "Abstract + Sec 2.3", "verdict": "STALE",
+      "claim": "'For the first time' template overlap framing is overclaim",
+      "pattern_ids": ["pattern-005", "pattern-028"],
+      "evidence": "v1.7.32 sweep removed absolute 'first' language. Identical to Grok MAJOR-1 closed in 2026-06-01_R-multi-true95.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GRO-B2", "vendor": "grok-4", "severity": "BLOCKER",
+      "section": "Abstract L79 + Sec 4 + Conclusion", "verdict": "STALE",
+      "claim": "3-5sigma headline is recast of Heinrich degraded by ad-hoc factors",
+      "pattern_ids": ["pattern-010", "pattern-020"],
+      "evidence": "Conclusion L450-469 walks 5.2-5.5sigma optimistic to 3-5sigma headline to 1.5-2.5sigma post-budget. Exact transparency reviewer demands is already present.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GRO-B3", "vendor": "grok-4", "severity": "MAJOR",
+      "section": "Sec 5 + Table 2", "verdict": "STALE",
+      "claim": "BF 10-17 envelope rests on 4 post-hoc prior corners (pattern-029 violation)",
+      "pattern_ids": ["pattern-029"],
+      "evidence": "Both endpoints + curvaton-natural lower-envelope BF~4 are explicitly mapped. Prior corners documented, not selected post-hoc.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GRO-B4", "vendor": "grok-4", "severity": "MAJOR",
+      "section": "Sec 2.3 + App A", "verdict": "STALE",
+      "claim": "Cai c=2 normalization adopted without carrying Li&Brandenberger c=1 as systematic",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "Abstract states: 'if c=1 adopted, optimistic 5.2-5.5sigma halves to 2.6-2.75sigma, post-budget 3-5sigma halves to 1.5-2.5sigma'. Exactly the recommended fix.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GRO-B5", "vendor": "grok-4", "severity": "minor",
+      "section": "Abstract + Sec 7 MegaMapper", "verdict": "OPINION",
+      "claim": "MegaMapper 3-7sigma given equal visual weight despite 'speculative' label",
+      "pattern_ids": ["pattern-028"],
+      "evidence": "Already bracketed '(proposed, not yet approved or funded)' and 'speculative motivation, not firm forecasts'. Visual-weight is style not factual error.",
+      "closure_action": "none-style-only"
+    },
+    {
+      "id": "PAPER-GRO-B6", "vendor": "grok-4", "severity": "nit",
+      "section": "throughout", "verdict": "OPINION",
+      "claim": "Source-comment v1.7.xx audit notes are pipeline artifacts",
+      "pattern_ids": [],
+      "evidence": "Audit trail intentional; stripped at arXiv-submission step.",
+      "closure_action": "none-pipeline-design"
+    },
+    {
+      "id": "PAPER-GPT-B1", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "Sec 3 benchmark", "verdict": "STALE",
+      "claim": "Underdetermination of polynomial coefficients not addressed clearly",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "10000-sample null-space scan with r_cos > 0.97 documented in App A.1.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GPT-B2", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "Sec 4 observable mapping", "verdict": "OPINION",
+      "claim": "Scale-dependent bias formula derivation assumptions not detailed",
+      "pattern_ids": ["pattern-028"],
+      "evidence": "Standard formula; full assumptions in cited Dalal/Slosar/Barreira chain.",
+      "closure_action": "none-clarity-ask"
+    },
+    {
+      "id": "PAPER-GPT-B3", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "Sec 5 SPHEREx", "verdict": "STALE",
+      "claim": "Non-local nature of bounce vs local-template SPHEREx forecast",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "Sec 2.3 + Sec 4 quantify template mismatch r=0.84 +/- 0.02.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GPT-B4", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "Sec 6 MegaMapper", "verdict": "STALE",
+      "claim": "Speculative motivation lacks assumption detail",
+      "pattern_ids": ["pattern-028"],
+      "evidence": "Sec 6 + abstract flag conditional on ultra-large-scale systematics modeling.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GPT-B5", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "Sec 8 systematics", "verdict": "STALE",
+      "claim": "b_phi + GR projection treatment not detailed enough",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "Sec 7 has quantitative b_phi degradation table + Jolicoeur 10-30% GR citation.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GPT-B6", "vendor": "gpt-4o-fallback", "severity": "—",
+      "section": "App A convention", "verdict": "OPINION",
+      "claim": "Factor-of-two too technical",
+      "pattern_ids": [],
+      "evidence": "Style ask; App A intentionally specialist-verifiable.",
+      "closure_action": "none-style-only"
+    },
+    {
+      "id": "PAPER-PER-B1", "vendor": "perplexity-sonar-pro", "severity": "BLOCKER",
+      "section": "Sec assumptions", "verdict": "FALSIFIED",
+      "claim": "Zhu:2026echoes arXiv 2603.13924 is fabricated",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "WebFetch arxiv.org/abs/2603.13924: 'Smoking-gun signatures of bounce cosmology from echoes of relic gravitational waves' Zhu & Cai 2026-03-14. Exact match.",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-PER-B2", "vendor": "perplexity-sonar-pro", "severity": "BLOCKER",
+      "section": "Sec currentdata", "verdict": "FALSIFIED",
+      "claim": "Jung2025PlanckPR4fNL arXiv 2504.00884 does not exist",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "WebFetch: 'Constraints on primordial non-Gaussianity from Planck PR4 data' Jung, Citran, van Tent, Dumilly, Aghanim 2025-04-01. Reports f_NL^local = -0.1 +/- 5.0 (exact value cited).",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-PER-M1", "vendor": "perplexity-sonar-pro", "severity": "MAJOR",
+      "section": "Discussion birefringence", "verdict": "FALSIFIED",
+      "claim": "Eskilt2023Cosmoglobe DR1 II appears fabricated, arXiv 2511.09466 mis-dated",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "Perplexity confused IDs. Bib uses 2305.02268 (not 2511.09466). WebFetch 2305.02268: 'Cosmoglobe DR1 results II. Constraints on isotropic cosmic birefringence...' Eskilt et al. Real.",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-PER-M2", "vendor": "perplexity-sonar-pro", "severity": "MAJOR",
+      "section": "Sec systematics + MegaMapper", "verdict": "FALSIFIED",
+      "claim": "Barreira:2022 arXiv 2205.05673 not verifiable as cited",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "WebFetch: 'Can we actually constrain f_NL using the scale-dependent bias effect?' Alexandre Barreira sole author. Exact role cited.",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-PER-M3", "vendor": "perplexity-sonar-pro", "severity": "MAJOR",
+      "section": "Sec systematics GR degradation", "verdict": "FALSIFIED",
+      "claim": "Jolicoeur:2025 arXiv 2511.09466 GR-projection forecast appears anticipatory",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "WebFetch: 'Unbiased analysis of primordial non-Gaussianity: the multipoles of the full relativistic power spectrum' Addis, Guedezounme, Hammond, Clarkson, Montano, Camera, Jolicoeur, Maartens 2025-11-12.",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-PER-m1", "vendor": "perplexity-sonar-pro", "severity": "minor",
+      "section": "Source comments", "verdict": "FALSIFIED",
+      "claim": "Internal 'All bibkeys EXIST' closure note is wrong",
+      "pattern_ids": ["pattern-033"],
+      "evidence": "Prior v1.7.39 closure was correct. All 5 IDs verified real via WebFetch this round.",
+      "closure_action": "none-vendor-confabulation"
+    },
+    {
+      "id": "PAPER-GEM-B1", "vendor": "gemini-2.5-pro", "severity": "BLOCKER",
+      "section": "Sec 9.4 L430-441", "verdict": "STALE",
+      "claim": "9.9sigma headline without on-disk Fisher inputs (pattern-027 violation)",
+      "pattern_ids": ["pattern-027"],
+      "evidence": "Text explicitly says 'deferred to a companion artifact... self-consistency check on the arithmetic... not as an independent detection forecast'. Identical to v1.7.39 closure of Grok MAJ-3.",
+      "closure_action": "none-already-closed"
+    },
+    {
+      "id": "PAPER-GEM-M1", "vendor": "gemini-2.5-pro", "severity": "MAJOR",
+      "section": "Sec 2.1 L108-113", "verdict": "OPINION",
+      "claim": "6-monomial basis choice not motivated; null space is parameterization artifact",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "Choice driven by literature symmetrization convention; r_cos > 0.97 across samples shows systematic is small. Could add motivation sentence but not a factual error.",
+      "closure_action": "optional-clarity-sentence"
+    },
+    {
+      "id": "PAPER-GEM-M2", "vendor": "gemini-2.5-pro", "severity": "MAJOR",
+      "section": "Sec 6.3 + 9.4", "verdict": "OPINION",
+      "claim": "QSFI mu/H to 3/2 degeneracy buried, should be in abstract (pattern-020)",
+      "pattern_ids": ["pattern-020"],
+      "evidence": "QSFI degeneracy discussed at L522+ with (k_3/k_1)^Delta scaling. Bispectrum-only headline doesn't depend on bounce-vs-QSFI separation. Positioning, not error.",
+      "closure_action": "optional-abstract-mention"
+    },
+    {
+      "id": "PAPER-GEM-m1", "vendor": "gemini-2.5-pro", "severity": "minor",
+      "section": "Abstract + Conclusion", "verdict": "OPINION",
+      "claim": "Dual-pronged gauge-frame vs CFC physical-frame framing misleading",
+      "pattern_ids": ["pattern-028"],
+      "evidence": "Abstract already says 'the CFC physical-frame statement is a complementary theoretical discriminator, not the on-sky observable'. Exact disclaimer Gemini asks for.",
+      "closure_action": "none-already-closed"
+    }
+  ],
+  "pattern_candidates_new": [
+    {
+      "candidate_id": "pattern-035-arxiv-id-confabulation",
+      "rationale": "Perplexity returned 5/5 false-absence claims on real arXiv IDs in this round. Second consecutive round (v1.7.39 + v1.7.41) of same confabulation. Recommend explicit catalog rule: Perplexity citation findings require external WebFetch verification before closure work; treat asserted-absence as a confabulation prior, not a fact.",
+      "supporting_findings": ["PAPER-PER-B1", "PAPER-PER-B2", "PAPER-PER-M1", "PAPER-PER-M2", "PAPER-PER-M3", "PAPER-PER-m1"],
+      "papers_affected": ["P2"],
+      "occurrence_count_across_rounds": 2,
+      "relation_to_existing": "extension of pattern-033 citation-fabrication; inverse failure mode (vendor fabricates absence rather than catching paper fabrication)"
+    }
+  ],
+  "pattern_declining_frequency": [
+    {"pattern_id": "pattern-005", "note": "first-time overclaim — structurally absent from P2 absolute claims since v1.7.32; ongoing soft reviewer re-flagging is style not paper drift; candidate for promote-to-prevention"},
+    {"pattern_id": "pattern-027", "note": "Fisher-input-deferred — Gemini still flagging after explicit deferred-artifact language. Tighten trigger to 'no companion-artifact callout AND no caveat'."}
+  ],
+  "gemini_signal_note": "Gemini-2.5-pro added as 4th non-Anthropic vendor this round. Highest signal-to-noise of the four: 0 confabulations, 0 re-litigations on closed findings (one re-litigation but with a sharper pattern-027 framing), 3 genuine positioning suggestions. Worth keeping in rotation. Perplexity worst signal: 5/5 confabulation rate.",
+  "counter_recommendation": "P2 v1.7.41 at structural completeness. 3 internal rounds + this 4-vendor round = 22+ findings, 0 VERIFIED. Pattern-catalog upgrade did not catch anything because there is nothing left to catch at closed-form-arithmetic + cited-literature level. Next genuine threat surface is external arXiv/journal review post-submission. Recommend: submit P2 v1.7.41 to arXiv + close internal-review loop for this paper.",
+  "no_bump_outputs": {
+    "version_bumped": false,
+    "tex_edits": [],
+    "pdf_recompile": false,
+    "pdf_mirror": false,
+    "convex_bump": false,
+    "git_commit": false
+  }
+}
