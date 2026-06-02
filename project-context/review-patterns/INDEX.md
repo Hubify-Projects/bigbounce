@@ -1,56 +1,124 @@
 # BigBounce Review-Pattern Catalog
 
-Codified failure modes observed across 19 cross-vendor R-rounds on 6 papers
-(P1A/P1B/P2/P3/P4/P5) plus 1 external 3-reviewer round on P1A (2026-06-02).
+Codified failure modes observed across 19 internal cross-vendor R-rounds, 9
+CCAI self-review rounds, 1 R42 internal-multi round (2026-04-30), 1 P4
+v1.0.66 external 4-vendor round (2026-05-15), and 1 P1A external 3-reviewer
+round (2026-06-02) on 6 papers (P1A/P1B/P2/P3/P4/P5). Catalog consolidated
+2026-06-02 by 3-month retro pattern-mine pass.
+
 Every external/direct-vendor R-round must be pre-screened against these
-patterns BEFORE dispatch, per the [[feedback-review-learning-loop]]
-standing directive.
+patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
+[[feedback-three-stage-review]] standing directives.
 
 Catalog is consumed by `/paper-pre-review-check` skill.
 
 ## Patterns
 
+Sorted by severity then frequency descending.
+
+### High severity
+
 | ID | Title | Severity | Freq |
 |----|-------|----------|------|
 | 001 | [Perplexity citation confabulation (real-arXiv-flagged-fake)](pattern-001-perplexity-citation-confab.md) | high | 38 |
+| 009 | [GPT fallback (gpt-4o) low-rigor generic BLOCKERs](pattern-009-gpt-fallback-low-rigor.md) | high | 30+ |
+| 017 | [Review-log artifacts in BODY prose (not %-comments)](pattern-017-review-log-in-body-prose.md) | high | 4-vendor convergent P4 v1.0.66 + 9 sites P1A v1A.0.35-36 |
 | 002 | [Dataset attribution drift across closures](pattern-002-dataset-attribution-drift.md) | high | 6 |
 | 003 | [Stale `%`-comment misread as paper body](pattern-003-stale-comment-misread.md) | high | 6 |
+| 008 | [Closure introduces N+1 regression (within-round)](pattern-008-closure-introduced-regression.md) | high | 5 |
+| 030 | [Round-to-round regression drift (across rounds)](pattern-030-round-to-round-regression-drift.md) | high | 5 |
+| 019 | [Title/abstract markets a hypothesis the body has killed](pattern-019-title-overclaim-vs-body.md) | high | 5+ |
+| 011 | [Confabulated bib survives many rounds till Perplexity catches](pattern-011-confabulated-bib-survives-first-draft.md) | high | 4 |
+| 013 | [Perplexity catches real issue but proposes wrong fix](pattern-013-perplexity-counter-proposal-may-be-wrong.md) | high | 5 |
+| 007 | [Reviewer arithmetic confabulation (number/sign wrong)](pattern-007-reviewer-arithmetic-confab.md) | high | 4 |
+| 023 | [Trivial fix refused with false-cost / data-engineering-laziness](pattern-023-trivial-fix-refused-false-cost.md) | high | 6+ |
+| 021 | [External artifact contradicts paper (PDF-only reviewers blind)](pattern-021-external-artifact-pdf-blind.md) | high | 6+ |
+| 026 | [Reproducibility-anchor URL 404 / 401 / 410](pattern-026-reproducibility-anchor-404.md) | high | 4+ |
+| 027 | [Headline numeric claim has no on-disk artifact (or disagrees)](pattern-027-headline-claim-without-on-disk-artifact.md) | high | 5+ |
+| 020 | [Load-bearing disclosure buried in appendix / footnote / caveat](pattern-020-load-bearing-disclosure-buried.md) | high | 3+ |
+| 028 | [Paper-side arithmetic disagrees with cited literature](pattern-028-arithmetic-vs-cited-literature.md) | high | 3+ |
+| 029 | [Estimator multiplicity with no pre-registered primary](pattern-029-estimator-multiplicity-no-preregistration.md) | high | 3+ |
+| 018 | [Internal R-rounds converge on "clean" while editorial artifacts persist (meta)](pattern-018-internal-rounds-blind-to-editorial.md) | high (meta) | 2 confirmed cases (P1A 8-round; P4 v1.0.66) |
+| 031 | [Self-review severity-under-classification (CCAI optimism bias) (meta)](pattern-031-self-review-severity-underclassification.md) | high (meta) | 2 strong + 12.5× amplification ratio |
+| 032 | [CCAI cross-paper bibkey / value / cite-anchor blindness (meta)](pattern-032-ccai-cross-paper-blindness.md) | high (meta) | 4 cross-paper drifts in one OOOOO |
+| 033 | [Prose-asserted prefactor / OOM accepted by CCAI without derivation](pattern-033-prose-asserted-prefactor-acceptance.md) | high (meta) | 2 BLOCKER-tier in OOOOO |
+| 025 | [Mathematically-impossible attribution (claim contradicts own equation)](pattern-025-mathematically-impossible-attribution.md) | high | 1 (P4 R42 R3) |
+
+### Medium severity
+
+| ID | Title | Severity | Freq |
+|----|-------|----------|------|
+| 012 | [Perplexity web-search misses recent arXiv (within ~6mo)](pattern-012-perplexity-web-search-miss.md) | medium | 20+ |
 | 004 | [Buried §pathc_caveats closure not surfaced](pattern-004-buried-closure-restate.md) | medium | 14 |
 | 005 | [Overclaim language (first/novel/load-bearing/publication-grade)](pattern-005-overclaim-language.md) | medium | 9 |
 | 006 | [Companion paper self-cite missing in-prep hedge](pattern-006-companion-paper-hedge.md) | medium | 7 |
-| 007 | [Reviewer arithmetic confabulation (number/sign wrong)](pattern-007-reviewer-arithmetic-confab.md) | high | 4 |
-| 008 | [Closure introduces N+1 regression](pattern-008-closure-introduced-regression.md) | high | 5 |
-| 009 | [GPT fallback (gpt-4o) low-rigor generic BLOCKERs](pattern-009-gpt-fallback-low-rigor.md) | medium | 30+ |
-| 010 | [Grok convergent-silence signal (shrinking output)](pattern-010-grok-convergent-silence.md) | informational | 8 |
-| 011 | [Confabulated bib survives many rounds till Perplexity catches](pattern-011-confabulated-bib-survives-first-draft.md) | high | 4 |
-| 012 | [Perplexity web-search misses recent arXiv (within ~6mo)](pattern-012-perplexity-web-search-miss.md) | medium | 20+ |
-| 013 | [Perplexity catches real issue but proposes wrong fix](pattern-013-perplexity-counter-proposal-may-be-wrong.md) | high | 5 |
 | 014 | [Review-log content left in `%`-comment block](pattern-014-text-comment-not-stripped-after-review.md) | medium | 4 |
-| 015 | [Gemini billing-failure skip (vendor-side outage, not paper-side)](pattern-015-gemini-billing-skip.md) | informational | 19 |
-| 016 | [Wide-net reflagging at exit boundary (volume increases as substance vanishes)](pattern-016-exit-boundary-wide-net-reflag.md) | informational | 3 |
-| 017 | [Review-log artifacts in BODY prose (not %-comments)](pattern-017-review-log-in-body-prose-DRAFT.md) (draft) | high | 9 (P1A v1A.0.35-36) |
-| 018 | [Internal R-rounds converge on "clean" while editorial artifacts persist](pattern-018-internal-rounds-blind-to-editorial-DRAFT.md) (draft) | high (meta) | 1 case (P1A 8-round cycle) |
+| 022 | [Closure replaced derivation with narrative](pattern-022-closure-narrative-instead-of-derivation.md) | medium | 4+ |
+| 024 | [Figure violates its own cited threshold](pattern-024-figure-violates-cited-threshold.md) | medium | 1 (predicts a class) |
+
+### Informational
+
+| ID | Title | Severity | Freq |
+|----|-------|----------|------|
+| 015 | [Gemini billing-failure skip (vendor-side outage)](pattern-015-gemini-billing-skip.md) | informational | 19 |
+| 010 | [Grok convergent-silence signal (shrinking output)](pattern-010-grok-convergent-silence.md) | informational | 8 |
+| 016 | [Wide-net reflagging at exit boundary](pattern-016-exit-boundary-wide-net-reflag.md) | informational | 3 |
+| 034 | [Same-vendor parallelism does not generate reviewer diversity (meta-arch)](pattern-034-multi-agent-same-vendor-no-diversity.md) | informational (meta-architecture) | structural; 12.5× ratio measurement |
 
 ## Cross-pattern observations
 
-- **Citation-forensics yield is monotonically declining**: P1A produced 5 real
-  attribution closures in round-2, then 1, 0, 0, 0 across rounds 3-6. P5 produced
-  2 real bib fixes in round-3, then 0 thereafter. Real defects exhaust fast.
-- **GPT-4o (fallback from gpt-5)** never produced a VERIFIED closure across any
-  paper after round-1 of any paper. Pattern 009 covers this.
-- **Perplexity is the only reviewer that produced VERIFIED citation closures**
-  after round 1. It is also the largest single source of FALSIFIED claims.
-- **Grok-4 is the best convergent-silence signal** — explicit "no new findings"
-  return correlates with 3-round-clean exit on P2, P3.
-- **The Eskilt2022b dataset attribution thread** (P1B rounds 1-7) is the
-  cleanest case study of pattern 002+008 (drift through 3 closures: PR3 wrong →
-  PR4/NPIPE → PR3 regression → PR4/NPIPE final via repo cross-check).
+### Meta-finding: the 12.5× amplification ratio (pattern-034, the headline of the retro)
+
+CCAI rounds (4 parallel same-vendor Claude agents) on a paper produce ~4
+BLOCKER+MAJOR findings at "clean" exit. The same paper sent to a 4-vendor
+cross-vendor round produces ~50. Ratio is **12.5×**. Source: 2026-05-08
+OOOOO measurement on P3 + P2.
+
+Direct campaign implication: every paper at 99% readiness that has NOT had
+a cross-vendor round on its current version is implicitly accepting a
+12.5× pipeline of external findings on first publication contact. This
+formalizes the `/readiness-cap-99` rule from the meta-architecture side
+(see pattern-034 + `/feedback_three_stage_review` standing directive).
+
+### Three-stage review protocol (now mandatory)
+
+Per the 2026-06-02 retro, no paper can hit 99% without ALL THREE of:
+1. **Stage 1 — CCAI mechanical sweep**: same-vendor parallel agents for
+   cheap cleanup of formatting, citation strings, obvious typos.
+2. **Stage 2 — Cross-vendor R-round**: 4-5 distinct vendors via direct
+   APIs (`/cross-vendor-r-round`) on the current version. ≥1 clean round
+   required.
+3. **Stage 3 — External journal-style review**: at least one external
+   reviewer (human or frontier model reading as a journal reviewer).
+   Pattern-018 makes this stage mandatory — internal cycles structurally
+   miss editorial-hygiene defects.
+
+### Per-pattern observations (legacy, retained)
+
+- **Citation-forensics yield is monotonically declining**: P1A produced 5
+  real attribution closures in round-2, then 1, 0, 0, 0 across rounds 3-6.
+  Real defects exhaust fast.
+- **GPT-4o (fallback from gpt-5)** never produced a VERIFIED closure
+  across any paper after round-1 of any paper (pattern 009).
+- **Perplexity is the only reviewer that produced VERIFIED citation
+  closures** after round 1, and also the largest source of FALSIFIED
+  claims.
+- **Grok-4 is the best convergent-silence signal** (pattern 010).
+- **The Eskilt2022b dataset attribution thread** (P1B R1-R7) is the
+  cleanest case study of pattern 002+008.
+- **Pattern-017 was the 4-vendor convergent BLOCKER on P4 v1.0.66
+  (2026-05-15)** 18 days before it was named on the 2026-06-02 P1A
+  external. This is the canonical instance of pattern-018.
+- **Cross-paper closure-propagation audit** must run after every closure
+  edit; pattern-030 + pattern-032 together require this. The new
+  `/r-round-closure-propagation-audit` rule (in
+  `/paper-pre-review-check` SKILL.md) enforces.
 
 ## How to add a new pattern
 
-When a new R-round surfaces a finding that does NOT match any of the 16
+When a new R-round surfaces a finding that does NOT match any of the 34
 catalogued patterns, AND the same shape appears in ≥2 distinct findings
-across rounds, create `pattern-NNN-<kebab>.md` following the schema in the
-existing files and append a row to the table above. Skill
+across rounds, create `pattern-NNN-<kebab>.md` following the schema in
+the existing files and append a row to the table above. Skill
 `/paper-pre-review-check` picks up new patterns automatically by globbing
 `pattern-*.md`.

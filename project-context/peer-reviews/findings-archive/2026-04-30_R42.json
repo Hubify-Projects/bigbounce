@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.0",
+  "round_label": "2026-04-30_R42",
+  "round_type": "internal_multi_reviewer_pre_cross_vendor",
+  "date": "2026-04-30",
+  "source_files": [
+    "project-context/peer-reviews/master/2026-04-30_R42_master.md",
+    "project-context/peer-reviews/r42/r42_reviewer1_internal-only_2026-04-30.md",
+    "project-context/peer-reviews/r42/r42_reviewer2_external-github_2026-04-30.md",
+    "project-context/peer-reviews/r42/r42_reviewer3_grok-adversarial_2026-04-30.md",
+    "project-context/peer-reviews/r42/r42_reviewer4_gemini-cite_2026-04-30.md"
+  ],
+  "note": "R42 is pre-truth-audit-protocol (the per-finding truth-audit table was instituted 2026-05-15). Truth-audit verdicts here are post-hoc, inferred from the R42 master fix-queue closure record + Wave 11/12/14 closure tags. Findings appearing in 'Wave 11 fix queue' or marked '✓CLOSED' in master are treated as VERIFIED; findings folded into other items as MAJOR derivatives are marked VERIFIED-FOLDED. All papers carry Houston-directive label 'take critiques seriously' (FULL HARD FIX default).",
+  "houston_directive": "2026-04-30: please take these critiques more seriously than before - I will not accept any data engineering laziness or refusal to do the hard work that needs to be done. Goal is not just to get to publishability as fast as possible but to do EVERY SINGLE THING the hard things to make every aspect the highest level of science and accuracy and defensibility as possible.",
+  "reviewers_meta": {
+    "R1_internal": {
+      "style": "12-section structured PDF-only review",
+      "verification_surface": "Internal PDFs only, no external repo access",
+      "findings_count": 58,
+      "blockers_count": 17
+    },
+    "R2_external_github": {
+      "style": "Full 9-stage with [GitHub][N] external citations",
+      "verification_surface": "PDFs + GitHub raw + NaMaster JSON + HF model card + NASA JPL pages",
+      "findings_count": 80,
+      "blockers_count": 12,
+      "unique_signal": "Only reviewer that catches CSV-content mismatch (B6), HF model-card vs paper count (B22), HF 401 Unauthorized datasets (B23), and SPHEREx launch-date freshness (M7). All four are invisible to PDF-only reviewers."
+    },
+    "R3_grok_adversarial": {
+      "style": "Confrontational 'data engineering laziness' framing with explicit AL01-AL12 audit log",
+      "verification_surface": "PDFs + parquet artifacts + JSON config inspection",
+      "findings_count": 14,
+      "blockers_count": 6,
+      "unique_signal": "Targets refusal-to-execute patterns: false-compute-excuse (B10, 87s vs '2x budget'), pandas.merge refusal (B19), NOT_SPIRAL transition matrix unqueried (B21), GZ1-only accuracy refused (B20). All four are 'cheap fix the author chose not to run'."
+    },
+    "R4_gemini_cite": {
+      "style": "[cite: NNN] token markers, deep internal cross-referencing",
+      "verification_surface": "PDFs only",
+      "findings_count": 24,
+      "blockers_count": 5,
+      "unique_signal": "Best at internal-consistency token-by-token cite-trace (caught Eq.7 dimension gap, Cai-vs-Li vertex sum missing, NaMaster circularity, P1-P2 92-efold tension propagation gap)."
+    }
+  },
+  "papers": {
+    "P1": {
+      "version_at_time_of_review": "v2.3.1",
+      "version_after_closures": "v2.3.2-2.3.x (post Wave 11)",
+      "blockers": [
+        {"finding_id": "B1", "raw_classification": "BLOCKER", "summary": "P1 title 'Search for Geometric Dark Energy' still markets failed DE theory; abstract bait-and-switch given Sec XV.E 92-efold no-go", "truth_audit_verdict": "VERIFIED", "verdict_note": "Unanimous across R1/R2/R3/R4. NEW PATTERN: title-overclaim-vs-body (paper proves mechanism fails, title still pitches the program).", "pattern_ids": [5, "NEW-019"], "reviewers": ["R1-P1-01", "R2-A-P1-2", "R3-AL01", "R4-Reviewer-F"], "closure_action": "retitle + abstract+intro reframe to lead with no-go", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "B2", "raw_classification": "BLOCKER", "summary": "P1 ECH/LQC theory-identity blur: abstract calls ECH the bounce but LQC supplies the bounce equation; ALP and matter-bounce f_NL are mechanism-independent", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P1-02", "R2-D-P1-1"], "closure_action": "Sec II.0 theory-map figure + glossary separating LQC/ECH/ALP/matter-bounce", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "B3", "raw_classification": "BLOCKER", "summary": "P1 Eq.7 mass dimension +1 vs needed +4; 'scaling ansatz on-shell' violates EFT power counting; disclosure buried in Appendix B", "truth_audit_verdict": "VERIFIED", "verdict_note": "NEW PATTERN: load-bearing-disclosure-buried-in-appendix (admission exists but not at the point of headline claim).", "pattern_ids": [4, "NEW-020"], "reviewers": ["R1-P1-06", "R3-Reviewer-D", "R4-L2"], "closure_action": "move ansatz disclosure from Appendix B into Sec II.C main text", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "B5", "raw_classification": "BLOCKER", "summary": "P1 MCMC tests stock CAMB+ΔNeff, not spin-torsion perturbations; Sec III.D is mislabeled 'spin-torsion MCMC inference'", "truth_audit_verdict": "VERIFIED", "verdict_note": "Bait-and-switch language: section title is the inference target it cannot perform. NEW PATTERN: bait-and-switch (related to B1 title-overclaim but at section/header level).", "pattern_ids": [5, "NEW-019"], "reviewers": ["R1-P1-08", "R2-B-P1-1"], "closure_action": "rename Sec III.D to ΛCDM+ΔNeff null consistency test; update abstract", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "B6", "raw_classification": "BLOCKER", "summary": "P1 reproducibility/cosmology/convergence_latest.csv on GitHub shows large R-hat values that contradict the paper's 'publication-quality convergence' claim", "truth_audit_verdict": "VERIFIED-EXTERNAL-ONLY", "verdict_note": "ONLY R2 with GitHub raw access catches this. R1/R3/R4 with PDF-only literally cannot see the CSV content. NEW PATTERN: external-artifact-contradicts-paper (verifiable only when reviewer can curl the repo).", "pattern_ids": [2, "NEW-021"], "reviewers": ["R2-C-P1-1", "R2-G-P1-1"], "closure_action": "investigate CSV staleness, rename or point paper to frozen-chain diagnostics", "closed_in_version": "Wave 11-? (investigation queued)"},
+        {"finding_id": "B7", "raw_classification": "BLOCKER", "summary": "P1 NaMaster β=0.27°→0.238° SNR=20.32 is injection-recovery (circular), not sky detection; abstract presents as evidence", "truth_audit_verdict": "VERIFIED", "verdict_note": "Recurrent pattern: pipeline-recovery test labeled as detection. Paper Sec XIV.C already concedes; abstract not propagated.", "pattern_ids": [4, 5], "reviewers": ["R1-P1-10", "R4-Reviewer-B", "R4-L4"], "closure_action": "relabel as 'pipeline-recovery validation' everywhere; demote from abstract headline", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "B12-cross-paper", "raw_classification": "BLOCKER", "summary": "P1↔P2 structural tension: 92 e-folds erases f_NL; P2 intro does not cite the tension P1 abstract states", "truth_audit_verdict": "VERIFIED", "verdict_note": "Unanimous cross-paper finding (R1/R2/R3/R4).", "pattern_ids": [4], "reviewers": ["R1-X-01", "R2-Stage5-F14", "R3-Reviewer-F", "R4-L1"], "closure_action": "P2 intro paragraph cross-citing P1 Sec XV.E + Bayesian-evidence framing", "closed_in_version": "Wave 11-A"}
+      ],
+      "majors": [
+        {"finding_id": "M1", "raw_classification": "MAJOR", "summary": "Savage-Dickey Bayes factor +4.8 acknowledged-biased (r=-0.89 correlation)", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P1-09", "R4-C1", "R4-L5"], "closure_action": "rerun with PolyChord/MultiNest OR demote from abstract to indicative", "closed_in_version": "deferred to post-Wave-11"},
+        {"finding_id": "M3", "raw_classification": "MAJOR", "summary": "'parameter-free' rhetoric for f_NL=-35/8 while ε is tuned to n_s", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R3-A-MAJOR"], "closure_action": "drop 'parameter-free'; state contingency on n_s match", "closed_in_version": "Wave 11-A"},
+        {"finding_id": "M4", "raw_classification": "MAJOR", "summary": "DLM ρ_crit shift to 0.41 ρ_Pl impact on N_tot not quantified", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R4-A-MAJOR", "R4-L7"], "closure_action": "add paragraph quantifying N_tot sensitivity", "closed_in_version": "Wave 11-?"},
+        {"finding_id": "M-R1-P1-11", "raw_classification": "MAJOR", "summary": "NANOGrav section oscillates between 'very strong evidence' and 'synthetic illustrative'", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P1-11", "R2-A-P1-4"], "closure_action": "demote synthetic-PTA Bayes; cite Agazie 2023 directly (also Wave 10 P1-CM-B2)", "closed_in_version": "Wave 11/post"},
+        {"finding_id": "M-R1-P1-13", "raw_classification": "MAJOR", "summary": "'14 independent barriers' mixes novel derivations with known results", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P1-13"], "closure_action": "barrier novelty classification with prior-work mapping", "closed_in_version": "deferred"},
+        {"finding_id": "M-R1-P1-14", "raw_classification": "MAJOR", "summary": "Sec XVI 'partially reduces cosmological tensions' survives despite ΛCDM-recovery MCMC", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P1-14"], "closure_action": "delete tension-reduction language", "closed_in_version": "Wave 11-A m1"},
+        {"finding_id": "M-R1-P1-15", "raw_classification": "MAJOR", "summary": "No precomputed chains; no CMB map-analysis code; technical note Ref [28] available-on-request", "truth_audit_verdict": "VERIFIED", "pattern_ids": [], "reviewers": ["R1-P1-15", "R2-Stage1"], "closure_action": "Wave 11-F reproducibility deposit (NaMaster code + ViT weights + arXiv-post Ref [28])", "closed_in_version": "Wave 11-F"},
+        {"finding_id": "M-R2-A-P1-3", "raw_classification": "MAJOR", "summary": "ALP β not ECH-derived; should be labeled spectator consistency-check throughout", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4, 5], "reviewers": ["R2-A-P1-3", "R3-Reviewer-A-domain"], "closure_action": "relabel β as spectator-ALP consistency check, not ECH prediction", "closed_in_version": "Wave 11-A"}
+      ]
+    },
+    "P2": {
+      "version_at_time_of_review": "v1.7.1",
+      "version_after_closures": "v1.7.2-1.7.x (post Wave 11-D)",
+      "blockers": [
+        {"finding_id": "B8", "raw_classification": "BLOCKER", "summary": "P2 Wick contraction proof missing in Appendix A; narrative 'Interpreting' replaces explicit in-in derivation", "truth_audit_verdict": "VERIFIED", "verdict_note": "R41 had explicitly instructed Wick-contraction proof; closure was narrative-only. NEW PATTERN: closure-replaced-derivation-with-narrative (paper closes a math gap by adding a sentence instead of the requested algebra).", "pattern_ids": [4, "NEW-022"], "reviewers": ["R1-P2-04", "R3-Reviewer-D-AL05"], "closure_action": "explicit in-in Wick contraction integral + Mathematica notebook", "closed_in_version": "Wave 11-D (deferred to post-stamp)"},
+        {"finding_id": "B9", "raw_classification": "BLOCKER", "summary": "P2 -35/8 vs -35/16 convention audit lacks independent derivation; if -35/16, σ drops 5.2σ→2.5σ", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P2-01", "R3-Reviewer-A", "R4-L3"], "closure_action": "Fig of 4 vertex contributions summed to -35/8 + dual-normalization table", "closed_in_version": "Wave 11-D"},
+        {"finding_id": "M-R1-P2-02", "raw_classification": "BLOCKER", "summary": "Internal contradiction: Appendix says detection significance convention-independent; conclusion says -35/16 halves it", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4, 5], "reviewers": ["R1-P2-02"], "closure_action": "reconcile abstract / appendix / conclusion language", "closed_in_version": "Wave 11-D"}
+      ],
+      "majors": [
+        {"finding_id": "M5", "raw_classification": "MAJOR", "summary": "MegaMapper in title equal to SPHEREx but not approved/funded", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P2-08"], "closure_action": "demote to outlook subtitle/footnote", "closed_in_version": "Wave 11-D"},
+        {"finding_id": "M6", "raw_classification": "MAJOR", "summary": "b_φ + GR degradation not jointly marginalized in Fisher", "truth_audit_verdict": "VERIFIED", "pattern_ids": [], "reviewers": ["R1-P2-09", "R2-C-P2-3"], "closure_action": "joint nuisance Fisher OR mark current as order-of-magnitude", "closed_in_version": "deferred"},
+        {"finding_id": "M7", "raw_classification": "MAJOR", "summary": "SPHEREx launched March 2025 (NASA JPL); paper's 'first science 2028' needs verification", "truth_audit_verdict": "VERIFIED-EXTERNAL-ONLY", "verdict_note": "Only R2 with NASA JPL access catches this freshness issue. NEW PATTERN: stale-survey-timeline-against-official-status (R2-unique signal).", "pattern_ids": [12, "NEW-021"], "reviewers": ["R1-P2-11", "R2-A-P2-3", "R2-B-P2-4"], "closure_action": "cite NASA JPL launch + first-light timeline; update wording", "closed_in_version": "Wave 11-D"},
+        {"finding_id": "M-R1-P2-03", "raw_classification": "MAJOR", "summary": "Uses Heinrich σ(f_NL)=0.7; no independent Fisher forecast", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P2-03", "R2-C-P2-1"], "closure_action": "label sensitivity-recast not independent forecast", "closed_in_version": "Wave 11-D"},
+        {"finding_id": "M-R1-P2-06", "raw_classification": "MAJOR", "summary": "Bayes factors are prior-dominated upper bounds; abstract should not headline", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P2-06"], "closure_action": "soften Bayes-factor language in abstract", "closed_in_version": "Wave 11-D"},
+        {"finding_id": "M-R1-P2-10", "raw_classification": "MAJOR", "summary": "τNL single-source relation may not apply generically to matter bounce", "truth_audit_verdict": "VERIFIED", "pattern_ids": [], "reviewers": ["R1-P2-10"], "closure_action": "add caveat or remove τNL claim", "closed_in_version": "deferred"}
+      ]
+    },
+    "P3": {
+      "version_at_time_of_review": "v3.1.1",
+      "version_after_closures": "v3.1.2-3.1.x (post Wave 11-B/E/G)",
+      "blockers": [
+        {"finding_id": "B10", "raw_classification": "BLOCKER", "summary": "P3 100k OOD validation refused with false compute excuse ('requires ~2x full-survey budget' for 87.5s of GPU); R3 flags as data-engineering laziness", "truth_audit_verdict": "VERIFIED", "verdict_note": "R3 specialty: caught a numerically false excuse (87s vs '2x budget'). NEW PATTERN: false-compute-excuse-when-actual-cost-is-trivial.", "pattern_ids": [4, "NEW-023"], "reviewers": ["R3-Reviewer-B-AL02"], "closure_action": "DO IT - run BigAE on 100k unseen DESI spectra; strike excuse from paper", "closed_in_version": "Wave 11-G"},
+        {"finding_id": "B11", "raw_classification": "BLOCKER", "summary": "P3 6.1% f_NL improvement contradicts P2 15-30% degradation; P2 mathematically refutes P3 on shot-noise grounds", "truth_audit_verdict": "VERIFIED", "verdict_note": "Unanimous fatal cross-paper finding.", "pattern_ids": [4], "reviewers": ["R3-Reviewer-F-AL03", "R1-X-03", "R4-Stage5"], "closure_action": "Path A retract OR Path B multi-tracer Fisher (Houston-choice)", "closed_in_version": "Wave 11 (Houston decision-gated)"},
+        {"finding_id": "B12", "raw_classification": "BLOCKER", "summary": "P3 ACT DR6 quarantined yet counted in headline 378,480; new total = 378,280", "truth_audit_verdict": "VERIFIED", "pattern_ids": [2], "reviewers": ["R1-P3-02", "R2-AL10", "R3-Reviewer-G-AL10", "R4-Stage5"], "closure_action": "rerun 5″ dedup excluding ACT; cascade through abstract/Table I/site/SSOT", "closed_in_version": "Wave 11-B"},
+        {"finding_id": "B13", "raw_classification": "BLOCKER", "summary": "P3 title 'spectral sources' excludes CMB patches/Gaia/eROSITA; 82.2% of DESI top-1000 are known objects (clickbait)", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P3-01", "R1-P3-16", "R3-Reviewer-B-AL06", "R2-A-P3-1"], "closure_action": "retitle 'Spectrally Unusual Sources'; lead abstract with 17.8% novelty", "closed_in_version": "Wave 11-B"},
+        {"finding_id": "B14", "raw_classification": "BLOCKER", "summary": "P3 SDSS top-77,905 is continuity slice not a threshold; native S>5 gives 12; top-1% gives 19,253", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P3-03", "R2-B-P3-2"], "closure_action": "report SDSS at validated 5σ threshold and top-1%; move 77,905 to appendix", "closed_in_version": "Wave 11-E"},
+        {"finding_id": "B15", "raw_classification": "BLOCKER", "summary": "P3 LAMOST 5.8% recovery is FAIL not 'PASS-with-diagnostic'", "truth_audit_verdict": "VERIFIED", "verdict_note": "R4 originally NIT; R1 escalated to BLOCKER per substance.", "pattern_ids": [5], "reviewers": ["R1-P3-04", "R4-Reviewer-B"], "closure_action": "relabel LAMOST FAIL; move 113,342 to exploratory tier", "closed_in_version": "Wave 11-B/E"},
+        {"finding_id": "B16", "raw_classification": "BLOCKER", "summary": "P3 5″ dedup across object catalogs and CMB map patches is conceptually invalid", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P3-13", "R2-C-P3-4"], "closure_action": "split dedup: point-sources (5″) vs CMB-patches (separate appendix); recompute headline", "closed_in_version": "Wave 11-B"},
+        {"finding_id": "B17", "raw_classification": "BLOCKER", "summary": "P3 Fig 5 high-z QSO candidates show AE=4.32, 4.26, 3.31 below cited S>5 cut", "truth_audit_verdict": "VERIFIED", "verdict_note": "NEW PATTERN: figure-violates-its-own-threshold (claim S>5 but plotted points are S<5).", "pattern_ids": [3, "NEW-024"], "reviewers": ["R1-P3-07"], "closure_action": "investigate score-scale convention used in Fig 5; correct caption or drop candidates", "closed_in_version": "Wave 11-E"},
+        {"finding_id": "M-R3-AL12-escalated", "raw_classification": "BLOCKER", "summary": "P3 Path-C narrative reads as chronological lab diary instead of final methodology (R3 ethics: data leakage deception in burying CV-on-training-pool fact in Caveat (i))", "truth_audit_verdict": "VERIFIED", "verdict_note": "R3 H-MAJOR (Ethics) escalated.", "pattern_ids": [], "reviewers": ["R3-Reviewer-H-ethics", "R3-Reviewer-I-AL12", "R1-P3-06"], "closure_action": "restructure: Path-C as core methodology; cross-transfer in 'Methodological Pitfalls' appendix; surface CV-on-training-pool in Sec II.B", "closed_in_version": "deferred / Wave 11"}
+      ],
+      "majors": [
+        {"finding_id": "M8", "raw_classification": "MAJOR", "summary": "k-fold CV on 47k training pool only; disclosure buried in Caveat (i)", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R3-H-MAJOR", "R2-C-P3-2"], "closure_action": "surface in Sec II.B where CV is first introduced", "closed_in_version": "Wave 11-E"},
+        {"finding_id": "M10", "raw_classification": "MAJOR", "summary": "'0% artifact rate' from single-unblinded astronomer top-200 visual inspection", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P3-09", "R2-B-P3-5"], "closure_action": "run blinded multi-rater OR soften to 'preliminary visual screen'", "closed_in_version": "deferred"},
+        {"finding_id": "M11", "raw_classification": "MAJOR", "summary": "No independent ML detector (no IsolationForest/LOF/VAE ensemble)", "truth_audit_verdict": "VERIFIED", "pattern_ids": [], "reviewers": ["R1-P3-11", "R2-C-P3-3"], "closure_action": "add ensemble baseline OR disclose single-model dependency", "closed_in_version": "deferred"},
+        {"finding_id": "M-R1-P3-05", "raw_classification": "MAJOR", "summary": "Gaia stability 41% labeled exploratory yet counted", "truth_audit_verdict": "VERIFIED", "pattern_ids": [2], "reviewers": ["R1-P3-05"], "closure_action": "tier Gaia exploratory; remove from headline", "closed_in_version": "Wave 11-B"},
+        {"finding_id": "M-R1-P3-10", "raw_classification": "MAJOR", "summary": "SIMBAD-unmatched rate overstates novelty; genuine novelty 17.8% upper bound on DESI top-1000", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P3-10"], "closure_action": "limit 'novelty rate' language; lead with 17.8% honest number", "closed_in_version": "Wave 11-B"}
+      ]
+    },
+    "P4": {
+      "version_at_time_of_review": "v1.0.1",
+      "version_after_closures": "v1.0.2-1.0.20 (Wave 11-C through Wave 14-NN)",
+      "blockers": [
+        {"finding_id": "B18", "raw_classification": "BLOCKER", "summary": "P4 page-7 count mismatch: Nspiral 3,321,795 text/Table III vs Fig 5 sum 3,201,160", "truth_audit_verdict": "VERIFIED", "verdict_note": "Both R1 (PDF-only) and R2 (PDF+repo) caught the same arithmetic inconsistency, but R2 phrased it as the immediate-risk in inventory — classic referee catch.", "pattern_ids": [7], "reviewers": ["R1-P4-01", "R2-B01"], "closure_action": "pick ONE canonical Catalog C tier; recompute all derived tables/figures", "closed_in_version": "Wave 11-C / 14-KK"},
+        {"finding_id": "B19", "raw_classification": "BLOCKER", "summary": "P4 b/a<0.3 edge-on filter refused to save a pandas.merge; 65.7% of edge-ons get random CW/CCW labels", "truth_audit_verdict": "VERIFIED", "verdict_note": "R3 specialty: caught data-engineering refusal where author identified the fix, proposed the math, then declined to run it. NEW PATTERN matches NEW-023 family: trivial-fix-refused.", "pattern_ids": [4, "NEW-023"], "reviewers": ["R3-Reviewer-C-AL04", "R1-P4-08"], "closure_action": "DO IT - cross-match DESI Legacy axis-ratio; filter b_a>=0.3; refit dipole", "closed_in_version": "Wave 14-KK/LL"},
+        {"finding_id": "B20", "raw_classification": "BLOCKER", "summary": "P4 67.6% CE-ResNet labels → 93.7% accuracy is self-consistency/model-distillation not ground-truth", "truth_audit_verdict": "VERIFIED", "verdict_note": "R3 specialty escalation. R1 also caught as MAJOR; R3 escalated to BLOCKER per Principle 12.", "pattern_ids": [4, 5], "reviewers": ["R3-Reviewer-C-AL09", "R1-P4-04", "R2-B-P4-3"], "closure_action": "recompute accuracy on 6,637 independent GZ1 labels; report both", "closed_in_version": "Wave 11-C"},
+        {"finding_id": "B21", "raw_classification": "BLOCKER", "summary": "P4 NOT_SPIRAL leakage transition matrix unqueried; 9.5σ residual fCW=0.4974 mathematically can only come from asymmetric NS leakage under TTA, not from training bias", "truth_audit_verdict": "VERIFIED", "verdict_note": "R3 Math-D: the cleanest finding of R42. TTA equation forces specific math; paper attribution is mathematically impossible. NEW PATTERN: mathematically-impossible-attribution (claim incompatible with author's own equation).", "pattern_ids": [4, "NEW-025"], "reviewers": ["R3-Reviewer-D-AL08", "R1-P4-06", "R4-Reviewer-D-D1"], "closure_action": "compute 3x3 transition matrix on logits; report NOT_SPIRAL leakage explicitly", "closed_in_version": "Wave 11-C"},
+        {"finding_id": "B22", "raw_classification": "BLOCKER", "summary": "P4 HF model card 26,626 vs paper 26,636 training-image count mismatch (off-by-10)", "truth_audit_verdict": "VERIFIED-EXTERNAL-ONLY", "verdict_note": "ONLY R2 with HF model-card access catches this. R3 cannot see HF page; R1/R4 PDF-only.", "pattern_ids": [2, "NEW-021"], "reviewers": ["R2-A-table"], "closure_action": "audit training manifest; correct wrong artifact", "closed_in_version": "Wave 11-F"},
+        {"finding_id": "B23", "raw_classification": "BLOCKER", "summary": "P4 HF dataset 401 Unauthorized must be public before submission; same for P3 anomaly catalog datasets", "truth_audit_verdict": "VERIFIED-EXTERNAL-ONLY", "verdict_note": "ONLY R2 catches HF visibility. Paper claims 'data publicly available' which is false for current visibility setting.", "pattern_ids": [2, "NEW-021"], "reviewers": ["R2-G-major", "R1-P4-10"], "closure_action": "flip HF datasets visibility to public; verify curl works", "closed_in_version": "Wave 11-F"}
+      ],
+      "majors": [
+        {"finding_id": "M13", "raw_classification": "MAJOR", "summary": "'Equivariant' terminology overbroad; model is flip-TTA only, not architectural/D4", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P4-02", "R2-B-P4-3"], "closure_action": "replace 'equivariant' with 'flip-TTA symmetrized' throughout", "closed_in_version": "Wave 11-C"},
+        {"finding_id": "M14", "raw_classification": "MAJOR", "summary": "Rotation semantics may be wrong - rotations don't flip chirality, mirrors do", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P4-03", "R2-D-P4-1"], "closure_action": "re-evaluate; consider D4 TTA with corrected labels", "closed_in_version": "Wave 14-G"},
+        {"finding_id": "M15", "raw_classification": "MAJOR", "summary": "Bias-hardening tests at ~10% level while claimed sensitivity is 0.2%", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P4-05", "R2-B-P4-2", "R2-C-P4-3"], "closure_action": "magnitude/PSF/seeing/axis-ratio bins at <0.1%", "closed_in_version": "Wave 14-NN"},
+        {"finding_id": "M16", "raw_classification": "MAJOR", "summary": "'Definitively refuted' too strong absent exact Shamir pipeline reproduction", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-P4-09", "R2-A-P4-2", "R2-E-P4-1"], "closure_action": "soften to 'strongly disfavors ~3% signal in DESI Legacy footprint under this pipeline'", "closed_in_version": "Wave 11-C"},
+        {"finding_id": "M17", "raw_classification": "MAJOR", "summary": "2.0σ monopole offset disclosed; how can dipole null be trusted", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R4-B-MAJOR", "R4-L6"], "closure_action": "dipole test on residuals of monopole-corrected catalog", "closed_in_version": "Wave 14"},
+        {"finding_id": "M18", "raw_classification": "MAJOR", "summary": "pseudo-Cℓ 2.75σ vs MASTER -0.12σ vs simple dipole 0.43σ hard to reconcile", "truth_audit_verdict": "VERIFIED", "verdict_note": "Same root cause as P4-CM-B1 cross-confirmed in Wave 10: NaMaster shot-noise N_spiral bug. Detected via 3-way inconsistency.", "pattern_ids": [4, 7], "reviewers": ["R1-P4-07", "R2-B-P4-1"], "closure_action": "Wave 11-C N_spiral recompute closes via consistent MASTER as primary", "closed_in_version": "Wave 11-C"},
+        {"finding_id": "M19", "raw_classification": "MAJOR", "summary": "Confidence stratification: mid-conf 2.1σ vs high-conf 0.3σ supports classifier-noise interpretation", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-P4-12", "R2-C-P4-4"], "closure_action": "make high-confidence sample primary", "closed_in_version": "Wave 14"},
+        {"finding_id": "M-R1-P4-11", "raw_classification": "MAJOR", "summary": "Look-elsewhere correction uses Bonferroni/BH; max-statistic MC cleaner", "truth_audit_verdict": "VERIFIED", "pattern_ids": [], "reviewers": ["R1-P4-11", "R4-C2", "R2-C-P4-5"], "closure_action": "Wave 12 max-statistic null", "closed_in_version": "Wave 12"}
+      ]
+    },
+    "CROSS_PAPER": {
+      "blockers": [
+        {"finding_id": "B4", "raw_classification": "BLOCKER", "summary": "Cross-paper structural tension P1↔P2 92-efold erasure of f_NL — P2 intro does not yet cite the tension P1 abstract states (folded into B12-cross-paper above; explicit per master)", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R1-X-01", "R2-Stage5", "R3-Reviewer-F", "R4-L1"], "closure_action": "P2 intro paragraph cross-citing P1 Sec XV.E", "closed_in_version": "Wave 11-A"}
+      ],
+      "majors": [
+        {"finding_id": "M20", "raw_classification": "MAJOR", "summary": "Self-citing companion papers for key claims survives R41 28-cross-cite removal", "truth_audit_verdict": "VERIFIED", "pattern_ids": [6], "reviewers": ["R1-X-04", "R1-X-09"], "closure_action": "follow-up audit each cross-cite for independent sufficiency", "closed_in_version": "Wave 11"},
+        {"finding_id": "M21", "raw_classification": "MAJOR", "summary": "P3 PTA γ=3.20±0.42 used to support matter bounce; P1 Sec XIV.A ignores GWB contribution to Λ_eff", "truth_audit_verdict": "VERIFIED", "pattern_ids": [4], "reviewers": ["R4-F-MAJOR"], "closure_action": "harmonize 'DE from vorticity' with GWB energy density", "closed_in_version": "deferred"},
+        {"finding_id": "M-R1-X-05", "raw_classification": "MAJOR", "summary": "'ECH prediction' and 'matter-bounce prediction' blurred across portfolio", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "reviewers": ["R1-X-05", "R1-X-07"], "closure_action": "terminology audit: prediction/detection/validated/source/equivariant", "closed_in_version": "Wave 11-A"}
+      ]
+    }
+  },
+  "round_summary": {
+    "total_findings_extracted": 56,
+    "blockers": 26,
+    "majors": 30,
+    "minors_not_extracted_per_task_spec": 8,
+    "verified_count": 56,
+    "verified_external_only_count": 4,
+    "falsified_count": 0,
+    "pushback_count_in_master": 0,
+    "note_on_completeness": "Master file lists 23 lettered BLOCKERs (B1-B23) plus 21 lettered MAJORs (M1-M21) plus a Wave 10 cross-model addendum with 30+ more BLOCKERs surfaced 1 day later (2026-05-01). This file captures the R42-proper round (B1-B23 + M1-M21 + 12 individual reviewer findings that surfaced cleanly), not the Wave 10 add-on which has its own pointer."
+  },
+  "pattern_id_frequency": {
+    "4_buried-closure-restate": 23,
+    "5_overclaim-language": 22,
+    "2_dataset-attribution-drift": 8,
+    "7_reviewer-arithmetic-confab-or-real-arithmetic-mismatch": 3,
+    "3_stale-comment-misread": 1,
+    "6_companion-paper-hedge": 1,
+    "12_perplexity-web-search-miss-or-stale-survey-status": 1,
+    "NEW-019_title-overclaim-vs-body-content": 3,
+    "NEW-020_load-bearing-disclosure-buried-in-appendix": 1,
+    "NEW-021_external-artifact-contradicts-paper-PDF-blind": 4,
+    "NEW-022_closure-replaced-derivation-with-narrative": 1,
+    "NEW-023_trivial-fix-refused-with-false-or-bogus-cost-excuse": 3,
+    "NEW-024_figure-violates-its-own-cited-threshold": 1,
+    "NEW-025_mathematically-impossible-attribution": 1
+  },
+  "candidate_new_patterns": [
+    {
+      "id": "NEW-019",
+      "name": "Title overclaim vs body content (bait-and-switch)",
+      "description": "Paper title still markets a hypothesis that the body proves is excluded or unviable. Body adds disclosure but title/abstract/headline remain unchanged.",
+      "cross_paper_evidence": "P1 'Search for Geometric Dark Energy' while Sec XV.E proves 92-efold no-go (R1/R2/R3/R4 unanimous); P3 'spectral sources from 37M' while catalog includes CMB patches + X-ray + IR photometry; P1 Sec III.D 'spin-torsion MCMC inference' while code is stock CAMB.",
+      "detection_rule": "For every BLOCKER-level no-go / null result / failure mode in body, grep title + abstract + section headers for the marketing language of the hypothesis it killed. Any survival = NEW-019 hit.",
+      "frequency_in_R42": 3,
+      "severity": "high",
+      "draft_filename": "pattern-019-title-overclaim-vs-body-DRAFT.md"
+    },
+    {
+      "id": "NEW-021",
+      "name": "External artifact contradicts paper (PDF-only-reviewer blind)",
+      "description": "An issue invisible to any reviewer working from the PDF alone, surfaced only by a reviewer with access to GitHub raw / HuggingFace / NASA-JPL / archive APIs.",
+      "cross_paper_evidence": "R2 caught FOUR issues no other R42 reviewer could see: P1 convergence_latest.csv R-hat contradicts 'publication-quality' (B6); P4 HF model card 26,626 vs paper 26,636 (B22); P4+P3 HF dataset 401 Unauthorized vs paper 'publicly available' (B23); P2 SPHEREx launched 2025-03 vs paper 'first science 2028' (M7).",
+      "detection_rule": "Pre-R-round, run an external-artifact verification pass: curl every dataset URL / model-card / convergence CSV / launch-status page cited in the paper, and diff actual content vs paper claim. Patterns 1/2/12 already cover citation-side; NEW-021 covers code/data/survey-status-side.",
+      "frequency_in_R42": 4,
+      "severity": "high",
+      "draft_filename": "pattern-021-external-artifact-pdf-blind-DRAFT.md",
+      "reviewer_routing_implication": "If a paper has not been reviewed by at least one external-access-capable vendor (Perplexity, Gemini-with-tools, GPT-with-tools, or a human with GitHub/HF read), it cannot exit R-rounds. PDF-only review is insufficient."
+    },
+    {
+      "id": "NEW-023",
+      "name": "Trivial fix refused with false or bogus cost excuse",
+      "description": "Author identifies the bug, proposes the math/code/data-engineering fix, then declines to execute it claiming compute/time/data-access cost that is verifiably false or trivial.",
+      "cross_paper_evidence": "P3 100k OOD validation: paper says 'requires ~2x full-survey budget' but at stated throughput 1,142 spec/s the cost is 87.5s of GPU (B10). P4 b/a<0.3 edge-on filter: paper proposed exact math fix then declined claiming 'not executed in present analysis' — actual cost is one pandas.merge join (B19). P4 GZ1-only accuracy: refused to subset 6,637 of 26,636 labels for an independent accuracy (B20).",
+      "detection_rule": "For every 'not executed', 'left to future work', 'requires substantial compute', or 'deferred to forthcoming' in the paper, compute the actual cost from throughput / data volume / known compute rates. Flag if actual cost < 1 GPU-day or < 1 day of human time.",
+      "frequency_in_R42": 3,
+      "severity": "high",
+      "draft_filename": "pattern-023-trivial-fix-refused-DRAFT.md",
+      "houston_directive_link": "This is the exact pattern Houston named at top of R42 master: 'data engineering laziness or refusal to do the hard work'. Pattern is the formal codification of that directive."
+    },
+    {
+      "id": "NEW-025",
+      "name": "Mathematically-impossible attribution (claim incompatible with author's own equation)",
+      "description": "Paper attributes a residual to a cause that the paper's own stated equation/method cannot produce. Highest-rigor adversarial-math reviewers (R3 'Math/Logic') catch this; consensus reviewers miss it.",
+      "cross_paper_evidence": "P4 §IV.B attributes 9.5σ fCW=0.4974 deficit to 'sub-percent asymmetry in training labels'. But TTA equation P_CW^eq = 1/2(P_CW^orig + P_CCW^flip) is symmetric in CW/CCW probability mass; the only mathematical way for fCW<0.5 is asymmetric leakage into NOT_SPIRAL class. The paper's own equation contradicts its prose attribution.",
+      "detection_rule": "For every residual / deficit / unexpected offset, walk the math: does the cited mechanism, as written in the paper, actually have a sign/magnitude/form consistent with the observed residual? If the equation is sign-symmetric and the residual is asymmetric, that is NEW-025.",
+      "frequency_in_R42": 1,
+      "severity": "high",
+      "draft_filename": "pattern-025-mathematically-impossible-attribution-DRAFT.md"
+    },
+    {
+      "id": "NEW-020",
+      "name": "Load-bearing disclosure buried in appendix",
+      "description": "Paper carries an honest admission in appendix / footnote / caveat (i) that, if surfaced to the abstract, would materially change the headline claim. Body keeps the headline claim while appendix exempts it.",
+      "cross_paper_evidence": "P1 'scaling ansatz dimensionally correct on-shell' admission lives in Appendix B; main text + abstract treat ρ_Λ=Ξ M_Pl^4 as derivation (B3). P3 5-fold CV-on-training-pool only disclosure buried in Caveat (i) of §VI.D while Sec II.B intro treats CV as catalog-wide stability (M8 / R3 Ethics). P3 LAMOST 5.8% recovery FAIL admission only in Table I footnote vs 'PASS-with-diagnostic' label.",
+      "detection_rule": "Audit every appendix / footnote / 'Caveat' subsection for sentences containing 'not', 'only', 'limited', 'restricted to', 'not include', 'ansatz', 'not derived'. For each hit, check whether the abstract + intro + headline carries the same caveat. Asymmetry = NEW-020.",
+      "frequency_in_R42": 3,
+      "severity": "high (very high if Houston Method v2 Principle 12 is in effect)",
+      "draft_filename": "pattern-020-load-bearing-disclosure-buried-DRAFT.md"
+    },
+    {
+      "id": "NEW-022",
+      "name": "Closure replaced derivation with narrative",
+      "description": "A prior round demanded an explicit mathematical/empirical proof; closure delivered a sentence asserting the result instead of running the algebra. Reviewer of next round flags the same gap with stronger language.",
+      "cross_paper_evidence": "P2 Appendix A: R41 demanded explicit in-in Wick contraction proof of Cai vs Li-Brandenberger convention; R42 closure was a single sentence 'Interpreting the factor of two as the standard in-in commutator factor — i⟨[ζ³,L]⟩=−2Im⟨ζ³L⟩'. R3 D-BLOCKER caught it. Compare pattern 008 (closure-introduced-regression).",
+      "detection_rule": "After every closure tagged as 'narrative edit only' on a finding originally tagged as math/derivation/empirical, schedule a follow-up referee pass specifically on that section. Closure must include a notebook / artifact / explicit derivation; sentence-only closure is insufficient.",
+      "frequency_in_R42": 1,
+      "severity": "medium",
+      "draft_filename": "pattern-022-closure-narrative-instead-of-derivation-DRAFT.md"
+    },
+    {
+      "id": "NEW-024",
+      "name": "Figure violates its own cited threshold",
+      "description": "Figure caption claims selection-by-threshold but the plotted points include cases that fall below the cited threshold on the same scale.",
+      "cross_paper_evidence": "P3 Fig 5 high-z QSO candidates labeled 'pass S>5 anomaly cut' show AE=4.32, 4.26, 3.31 below cut (B17 / R1 P3-07).",
+      "detection_rule": "For every figure caption with a threshold, parse axis labels + data points and verify the threshold is enforced. If figure includes points below the cited cut, caption is wrong OR a different scale is in use (which must be disclosed).",
+      "frequency_in_R42": 1,
+      "severity": "medium",
+      "draft_filename": "pattern-024-figure-violates-cited-threshold-DRAFT.md"
+    }
+  ],
+  "reviewer_specific_signal": {
+    "verified_rate_by_reviewer": {
+      "R1_internal_PDF_only": "~93% (54 of 58 substantive findings VERIFIED in master; R1 misses zero external-artifact issues because it never tries)",
+      "R2_external_github": "~98% (78 of 80 VERIFIED; only reviewer who caught 4 external-artifact issues entirely invisible to PDF-only review)",
+      "R3_grok_adversarial": "100% (14 of 14 VERIFIED; lowest output volume, highest precision; ZERO FALSIFIED; specialty = catching data-engineering refusals with verifiable false cost-excuses)",
+      "R4_gemini_cite": "~92% (22 of 24 VERIFIED; specialty = internal-consistency token-trace; weakest on independent execution but strong on math-vs-text contradictions)"
+    },
+    "falsified_rate_by_reviewer": "Zero R42 findings landed in the master's REJECTED-AS-WRONG bucket. All findings were treated as substantive per Houston Principle 12 directive. This is unusual; in later rounds (2026-06-01_R-multi*) FALSIFIED rates ran 15-40% per reviewer.",
+    "highest_unique_signal": "R3 (Grok-adversarial) — produced the 6 BLOCKERs with the highest fix-the-actual-science effort uplift: B10 (P3 100k OOD), B19 (P4 b/a filter), B20 (P4 GZ1-only), B21 (P4 NOT_SPIRAL transition), B11 (cross-paper f_NL contradiction), B8 (P2 Wick derivation). R3's confrontational style + verifiable cost-checking is what surfaced the Houston-directive class.",
+    "highest_external_signal": "R2 (External GitHub) — sole source of all 4 external-artifact findings. Recommend: every R-round must include at least one R2-class reviewer with curl access to repo + dataset hosts + survey-status APIs. NEW pattern 021 codifies this.",
+    "convergence_observations": {
+      "unanimous_4_of_4": ["B1 (P1 title bait-and-switch)", "B4/B12-cross (92-efold tension)", "B11 (P3 vs P2 f_NL contradiction)"],
+      "3_of_4": ["B12 (ACT counted in headline)", "B3 (Eq.7 dimension gap)", "B13 (P3 title scope)"],
+      "external_only_no_other_reviewer_caught": ["B6 (convergence CSV)", "B22 (HF model card)", "B23 (HF 401)", "M7 (SPHEREx launch date)"]
+    }
+  },
+  "single_most_striking_finding_not_caught_by_current_catalog": {
+    "finding": "B21 — P4 NOT_SPIRAL leakage transition matrix unqueried",
+    "why_catalog_misses_it": "Existing patterns 001-018 catch citation issues, dataset attribution, overclaim language, buried closures, closure regressions, reviewer arithmetic errors, vendor signals, exit-boundary noise. None catch the case where an author's own stated equation is incompatible with the cause they assign to a residual. This requires the reviewer to walk the math equation symbolically and check sign/symmetry consistency against the prose attribution.",
+    "why_it_matters": "P4's central 9.5σ deficit (the headline null result depends on understanding it) was being attributed to 'training label asymmetry'. The TTA equation P_CW^eq = (P_CW + P_CCW^flip)/2 is mathematically symmetric in CW/CCW probability mass and CANNOT produce fCW<0.5 from symmetric training-label noise. The deficit can ONLY come from asymmetric NOT_SPIRAL leakage. The paper was wrong about its own physics. R3 caught it in one paragraph. This is the kind of finding pattern 001-018 don't even have a hook for.",
+    "proposed_pattern": "NEW-025 (mathematically-impossible-attribution); see candidate_new_patterns above."
+  }
+}

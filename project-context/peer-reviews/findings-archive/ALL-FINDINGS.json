@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "generated": "2026-06-02",
-  "campaign": "BigBounce 2026-06-01 cross-vendor R-round campaign",
+  "campaign": "BigBounce 2026-06-01 cross-vendor R-round campaign (3-month retro pattern-mine 2026-06-02)",
   "rounds_count": 9,
   "rounds": [
     {
@@ -6030,7 +6030,7 @@
     }
   ],
   "cumulative_summary": {
-    "total_findings": 559,
+    "total_findings": 583,
     "verified": 81,
     "partial_verified": 2,
     "stale": 255,
@@ -6054,16 +6054,84 @@
       "8": 7,
       "16": 3
     },
-    "note": "Includes 2026-06-02_P1A_external round (46 findings, 41 VERIFIED + 2 PARTIAL VERIFIED + 1 OPINION + 2 no-verdict) archived in 2026-06-02_P1A_external.json. Updated rounds_count to 9."
+    "note": "Includes 2026-06-02_P1A_external round (46 findings, 41 VERIFIED + 2 PARTIAL VERIFIED + 1 OPINION + 2 no-verdict) archived in 2026-06-02_P1A_external.json. Updated rounds_count to 9. | R42 (2026-04-30, 56 findings, 7 candidate new patterns) added via external_round_pointer; per-finding records in 2026-04-30_R42.json. | 2026-06-02 retro: P4 v1.0.66 external 4-vendor (~24 findings) added as external_round_pointer. CCAI cluster (2026-05-08 to 10) added as meta pointer (no per-finding rollup, see file for cluster summary). Pattern catalog grew from 18 to 34 patterns; 16 new patterns confirmed (019-034) from retro pattern-mine."
   },
   "external_round_pointers": [
     {
       "round_label": "2026-06-02_P1A_external",
       "file": "2026-06-02_P1A_external.json",
       "round_type": "external_houston_shared",
-      "papers": ["P1A"],
-      "reviewers": ["Grok", "Gemini", "ChatGPT"],
+      "papers": [
+        "P1A"
+      ],
+      "reviewers": [
+        "Grok",
+        "Gemini",
+        "ChatGPT"
+      ],
       "findings_count": 46
+    },
+    {
+      "round_label": "2026-04-30_R42",
+      "file": "2026-04-30_R42.json",
+      "round_type": "internal_multi_reviewer_pre_cross_vendor",
+      "date": "2026-04-30",
+      "papers": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "reviewers": [
+        "R1_internal_PDF_only",
+        "R2_external_github",
+        "R3_grok_adversarial",
+        "R4_gemini_cite"
+      ],
+      "findings_count": 56,
+      "blockers_count": 26,
+      "majors_count": 30,
+      "verified_count": 56,
+      "falsified_count": 0,
+      "candidate_new_patterns_count": 7,
+      "note": "Pre-truth-audit-protocol round (verdicts inferred post-hoc from master fix-queue closure record). Surfaced 7 candidate NEW patterns (019, 020, 021, 022, 023, 024, 025); see findings file for catalog-gap analysis. R3 (grok-adversarial) and R2 (external-github) produced highest unique-signal rates."
+    },
+    {
+      "round_label": "2026-05-08_to_10_CCAI_cluster",
+      "file": "2026-05-08_to_10_CCAI_cluster.json",
+      "round_type": "internal_multi_agent_self_review",
+      "date_range": "2026-05-08 to 2026-05-10",
+      "papers": [
+        "P1A",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "findings_count": {
+        "ccai_self_review_R43_to_R48_unique": "approx 245 raw (with cross-round overlap); approx 60-80 unique load-bearing findings after dedup",
+        "ccai_self_review_R51": 3,
+        "cross_vendor_OOOOO": 50,
+        "ratio_cross_vendor_to_ccai_at_convergence": "50/4 = 12.5x amplification"
+      },
+      "note": "CCAI cluster \u2014 meta analysis of 9 self-review rounds; not per-finding archive. See file for cluster_summary + new_patterns_beyond_current_catalog."
+    },
+    {
+      "round_label": "2026-05-15_P4_v1066_external",
+      "file": "2026-05-15_P4_v1066_external.json",
+      "round_type": "external_houston_shared",
+      "date": "2026-05-15",
+      "papers": [
+        "P4"
+      ],
+      "reviewers": [
+        "ChatGPT",
+        "GeminiDR",
+        "Gemini",
+        "Grok"
+      ],
+      "findings_count": 24,
+      "note": "4-vendor external; first observation of pattern-017; 8 candidate new patterns now confirmed as 019-030."
     }
-  ]
+  ],
+  "external_rounds_count": 4
 }

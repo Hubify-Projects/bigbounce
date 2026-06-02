@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "round_label": "2026-05-15_P4_v1066_external",
+  "round_type": "external_houston_shared",
+  "date": "2026-05-15",
+  "source_file": "project-context/peer-reviews/external/2026-05-15_P4_v1066_houston_external_4vendor_consolidated.md",
+  "paper_under_review": "P4",
+  "version_at_time_of_review": "v1.0.66",
+  "houston_quote": "got blasted as totally no-go unpublishable by everyone.",
+  "vendors": ["ChatGPT/GPT-5", "Gemini Deep Research", "Gemini", "Grok (xAI)"],
+  "unanimous_verdict": "NO-GO for arXiv release, NO-GO for journal submission",
+  "verdicts": {
+    "ChatGPT/GPT-5": "REJECT-AND-RESUBMIT INTERNALLY",
+    "Gemini Deep Research": "REJECT-AND-RESUBMIT INTERNALLY",
+    "Gemini": "MAJOR REVISION",
+    "Grok": "ACCEPT AS PREPRINT after 5 must-fix"
+  },
+  "convergent_blockers": [
+    {
+      "finding_id": "B1",
+      "title": "LLM/agent text artifacts in body prose (Section VII, footnotes)",
+      "vendor_convergence": "4/4",
+      "vendor_sites": ["Gemini-B1", "Gemini-DR-G2", "Grok-I-1", "ChatGPT-B-6", "ChatGPT-H-1", "ChatGPT-I-4"],
+      "examples": [
+        "Real cross-vendor adversarial-review (v1.0.53)",
+        "The DeepSeek-B1 / DeepSeek-M3 deferral...",
+        "A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro, Grok-4-fast...)",
+        "v1.0.62 closure",
+        "v1.0.55 analytic projection"
+      ],
+      "reviewer_severity_quote": "instant desk-reject at any serious journal (Gemini); creates the impression that the manuscript is an unedited auto-generated log file (Gemini DR)",
+      "pattern_ids": [17],
+      "pattern_note": "EXACT pattern-017 shape, observed 18 days BEFORE the 2026-06-02 P1A external round that 'discovered' pattern-017. Pattern-017 must be promoted from DRAFT to confirmed and dated 2026-05-15.",
+      "regression_since_r42": false,
+      "novel_pattern": false
+    },
+    {
+      "finding_id": "B2",
+      "title": "GitHub release tag paper4-v1.0 returns 404 (reproducibility anchor)",
+      "vendor_convergence": "2/4",
+      "vendor_sites": ["ChatGPT-G-1", "Gemini-DR-G-1"],
+      "url": "https://github.com/Hubify-Projects/bigbounce/releases/tag/paper4-v1.0",
+      "pattern_ids": [],
+      "pattern_note": "CANDIDATE NEW PATTERN-019: Reproducibility-anchor 404. Paper cites a release tag / DOI / Zenodo / HF anchor that doesn't exist or 404s. Detection = WebFetch every release-tag-anchor URL in .tex before submission.",
+      "regression_since_r42": false,
+      "novel_pattern": "pattern-019-reproducibility-anchor-404"
+    },
+    {
+      "finding_id": "B3",
+      "title": "Cited dipole summary artifact does NOT support headline (pre-TTA 2.31σ JSON vs claimed 0.43σ post-TTA)",
+      "vendor_convergence": "2/4",
+      "vendor_sites": ["ChatGPT-B-4", "ChatGPT-G-2"],
+      "pattern_ids": [2, 4],
+      "pattern_note": "Dataset attribution drift (002) + buried closure restate (004). The headline number has no on-disk anchor.",
+      "regression_since_r42": "PARTIAL — R42 P4-CM-B1 closed via Wave 11-C N_spiral recompute but a corresponding canonical post-TTA summary.json was never committed; the public path still points to the pre-fix artifact",
+      "novel_pattern": "pattern-020-headline-claim-without-on-disk-artifact"
+    },
+    {
+      "finding_id": "B4",
+      "title": "HF dataset card contradicts paper architecture (ResNet+GalaxyMNIST+D4 TTA on HF vs ViT-Small+2-fold flip in paper)",
+      "vendor_convergence": "2/4",
+      "vendor_sites": ["ChatGPT-C-4", "Gemini-DR-G2"],
+      "pattern_ids": [2],
+      "pattern_note": "Dataset attribution drift (002) extended to a non-.tex surface (HuggingFace dataset card). Pattern-002 currently scoped to in-paper attribution; this finding extends it cross-surface.",
+      "regression_since_r42": false,
+      "novel_pattern": "pattern-021-offsite-artifact-card-drift"
+    },
+    {
+      "finding_id": "B5",
+      "title": "HF dataset viewer CastError (schema mismatch p_cw_raw_x vs declared p_cw_raw)",
+      "vendor_convergence": "1/4",
+      "vendor_sites": ["ChatGPT-G-3"],
+      "pattern_ids": [],
+      "pattern_note": "Sibling of B4. Same root: artifact published before validation. Folds into pattern-021 (offsite-artifact-card-drift) — schema declared in card does not match payload.",
+      "regression_since_r42": false,
+      "novel_pattern": "pattern-021-offsite-artifact-card-drift"
+    },
+    {
+      "finding_id": "B6",
+      "title": "Shamir 2022 comparison arithmetically wrong (claimed 16x; correct 2.5x)",
+      "vendor_convergence": "3/4",
+      "vendor_sites": ["ChatGPT-A-1", "ChatGPT-F-1", "Gemini-DR-F-1", "Gemini-F-1"],
+      "claim_in_paper": "~16x larger than Shamir 2022",
+      "ground_truth": "Shamir 2022 DESI Legacy abstract: ~1.3e6 spirals; correct ratio 3.2M/1.3M ~= 2.5x",
+      "pattern_ids": [7, 12],
+      "pattern_note": "Reviewer arithmetic confab (007) inverted — here it is the PAPER that has wrong arithmetic, not the reviewer. Also reflects Perplexity-style web-search miss (012) where the citation's actual abstract was not re-read. Candidate new sub-pattern: paper-side arithmetic confab against cited literature.",
+      "regression_since_r42": false,
+      "novel_pattern": "pattern-022-paper-side-arithmetic-vs-cited-literature"
+    },
+    {
+      "finding_id": "B7",
+      "title": "Independent GZ1 accuracy 69.91% buried under 93.7% internal training/validation accuracy",
+      "vendor_convergence": "4/4",
+      "vendor_sites": ["ChatGPT-C-1", "Gemini-A-1", "Gemini-DR-C-1", "Grok-C-1"],
+      "pattern_ids": [4, 5],
+      "pattern_note": "Buried §pathc_caveats closure not surfaced (004) + overclaim language (005). R42 P4-OA-B7 closure landed 69.91% IN the paper but never elevated to abstract/intro. Headline still 93.7%.",
+      "regression_since_r42": "TRUE — R42 closed the requirement to report 69.91%; 2 weeks later 69.91% is present in paper but headline still leads with 93.7%, so the SURFACING half of the closure regressed/never happened.",
+      "novel_pattern": false
+    },
+    {
+      "finding_id": "B8",
+      "title": "Hemisphere pLEE<=1e-4 dismissed as 'artifact' without formal monopole-leakage null",
+      "vendor_convergence": "4/4",
+      "vendor_sites": ["ChatGPT-B-1", "Gemini-DR-B-2", "Gemini-D-1", "Grok-D-1"],
+      "pattern_ids": [4, 5],
+      "pattern_note": "Buried closure + overclaim. R42 P4-OA-M8 closed hemisphere look-elsewhere via Wave 12 max-stat null on real mask, but the new external round demands the next level: a generative monopole+mask leakage MC null. Closure-on-closure required.",
+      "regression_since_r42": "PARTIAL — R42 closed crude Bonferroni; external now demands generative null. Closure was correct but insufficient for external standard.",
+      "novel_pattern": false
+    },
+    {
+      "finding_id": "B9",
+      "title": "Estimator multiplicity / 'headline' selection looks post-hoc (-0.122σ, +1.85σ, 0.43σ, 3.05σ, p_LEE<=1e-4 all on same data)",
+      "vendor_convergence": "3/4",
+      "vendor_sites": ["ChatGPT-D-1", "Gemini-DR-B-3", "Grok-B-1"],
+      "pattern_ids": [5],
+      "pattern_note": "Overclaim (005) by selection. Closely related to NEW pattern: lack of pre-registration / estimator hierarchy.",
+      "regression_since_r42": false,
+      "novel_pattern": "pattern-023-estimator-multiplicity-no-preregistration"
+    },
+    {
+      "finding_id": "B10",
+      "title": "Per-imaging-leg systematics (BASS+MzLS / DECaLS / DES) deferred to 'future revision'",
+      "vendor_convergence": "3/4",
+      "vendor_sites": ["ChatGPT-A-2", "ChatGPT-E-1", "Gemini-DR-A-2", "Grok-E-1"],
+      "pattern_ids": [],
+      "pattern_note": "CANDIDATE NEW PATTERN-024: data-engineering-laziness / unjustified compute-bound defer. R42 reviewer 3 explicitly framed this category as 'data engineering laziness'. Standing memory feedback_eat_the_frog applies. For sub-percent claim, 'deferred to future revision' is an inadmissible defer.",
+      "regression_since_r42": "TRUE — R42 reviewer 3 already flagged this category; v1.0.66 still defers per-leg analysis.",
+      "novel_pattern": "pattern-024-unjustified-compute-bound-defer"
+    },
+    {
+      "finding_id": "B11",
+      "title": "'Independently reject a primordial l=1 dipole at any amplitude probed' overclaim — injection grid shows P(sigma>2)=0.18 at A=0.5% (NOT a rejection)",
+      "vendor_convergence": "1/4",
+      "vendor_sites": ["ChatGPT-B-2"],
+      "pattern_ids": [5],
+      "pattern_note": "Overclaim language (005). Direct contradiction with the Wave 14-NN MC table that R42 P4-OA-B5 closure committed.",
+      "regression_since_r42": "TRUE — Wave 14-NN landed the empirical table showing P(sigma>2)=0.18 at A=0.5%, but abstract was never rewritten to match. Closure landed in body, not abstract.",
+      "novel_pattern": false
+    },
+    {
+      "finding_id": "B12",
+      "title": "Title 'No Evidence for Large-Scale Parity Violation' overclaims given 9.5σ monopole + 3.05σ hemisphere + +1.85σ canonical l=1",
+      "vendor_convergence": "3/4",
+      "vendor_sites": ["Gemini-DR-B-1", "Grok-H-1", "ChatGPT-I-2"],
+      "pattern_ids": [5],
+      "pattern_note": "Phenomenology-vs-rigor framing drift. Title makes a cosmological claim; paper contents are a catalog + dipole null + bias audit. Houston R41 directive (paper-content / paper-title mismatch) is exactly this.",
+      "regression_since_r42": "TRUE — Houston flagged framing drift at R41; 25 days later the title still overclaims.",
+      "novel_pattern": "pattern-025-content-title-framing-drift"
+    }
+  ],
+  "convergent_majors": [
+    {"finding_id": "M1", "title": "Abstract too long; version archaeology; reads as rebuttal log", "vendor_convergence": "3/4", "pattern_ids": [17, 14], "pattern_note": "Pattern-017 in abstract specifically."},
+    {"finding_id": "M2", "title": "Training arithmetic 26,626 vs 26,636 (10-image discrepancy)", "vendor_convergence": "2/4", "pattern_ids": [7], "pattern_note": "Reviewer arithmetic confab pattern — variant where paper's internal arithmetic disagrees with sum of components."},
+    {"finding_id": "M3", "title": "Table V stale snapshot 3,321,795 vs canonical 3,201,160", "vendor_convergence": "4/4", "vendor_sites": ["ChatGPT-A-7", "ChatGPT-I-5", "Gemini-I-1", "Gemini-DR-I-1", "Grok-I-1"], "pattern_ids": [3, 8], "pattern_note": "Stale comment misread (003) + closure-introduced regression (008). R42 P4-OA-B4 was the original report; was closed; the table re-acquired the stale snapshot at later compile."},
+    {"finding_id": "M4", "title": "Fig 8 plots OLD 2.75σ data with caption admitting deprecation", "vendor_convergence": "1/4", "vendor_sites": ["Gemini-DR-D-4", "Gemini-DR-I-3"], "pattern_ids": [3, 8], "pattern_note": "Same root as M3 — stale artifact retained in submission. Figure with self-deprecating caption is a tell-tale pattern-008b round-to-round regression."},
+    {"finding_id": "M5", "title": "'All higher multipoles consistent with noise' contradicts Table IV +6.097σ l=4", "vendor_convergence": "2/4", "pattern_ids": [5, 3], "pattern_note": "Overclaim + stale text."},
+    {"finding_id": "M6", "title": "'Consistent with exact parity' Fig 5 caption contradicts 9.5σ monopole", "vendor_convergence": "2/4", "pattern_ids": [5], "pattern_note": "Overclaim."},
+    {"finding_id": "M7", "title": "PSF ellipticity correlation r=0.042 fails strict bar — no quantitative dipole-leakage analysis", "vendor_convergence": "4/4", "pattern_ids": [4], "pattern_note": "Buried closure (004); R42 P4-CM-B2 closure landed in narrative but quantitative dipole-leakage table missing."},
+    {"finding_id": "M8", "title": "Edge-on 59.4% spiral classification too high; no face-on primary sample", "vendor_convergence": "2/4", "pattern_ids": [4], "pattern_note": "R42 Wave 14-KK closed the b/a table but face-on primary sample still not the headline."},
+    {"finding_id": "M9", "title": "Cross-paper bounce framing inflated for null result", "vendor_convergence": "3/4", "pattern_ids": [5, 6], "pattern_note": "Companion-paper hedge (006) + overclaim. Same family as B12 (content-title framing drift)."},
+    {"finding_id": "M10", "title": "Training GZ1 not excluded from independent GZ1 metric", "vendor_convergence": "1/4", "pattern_ids": [], "pattern_note": "Methodology gap. Folds into pattern-024 (unjustified defer) since R42 already requested independent metric."},
+    {"finding_id": "M11", "title": "DR8 vs DR8/DR9 inconsistency between paper and explorer", "vendor_convergence": "1/4", "pattern_ids": [2], "pattern_note": "Dataset attribution drift (002)."},
+    {"finding_id": "M12", "title": "Public Hubify SSOT links 404 in Data Availability", "vendor_convergence": "1/4", "pattern_ids": [], "pattern_note": "Folds into pattern-019 (reproducibility-anchor 404)."}
+  ],
+  "candidate_new_patterns": [
+    {"pattern_id": "pattern-019", "slug": "reproducibility-anchor-404", "severity": "high", "first_seen": "2026-05-15", "examples": ["B2", "M12"], "detection": "WebFetch every github.com/.../releases/tag/, zenodo.org/record/, doi.org/, huggingface.co/datasets/ URL in .tex before submission. Any 404 = BLOCKER."},
+    {"pattern_id": "pattern-020", "slug": "headline-claim-without-on-disk-artifact", "severity": "high", "first_seen": "2026-05-15", "examples": ["B3"], "detection": "For every numerical claim in abstract/intro, grep the cited artifact path on disk and verify the number matches. Abstract claim X with on-disk artifact value Y!=X = BLOCKER."},
+    {"pattern_id": "pattern-021", "slug": "offsite-artifact-card-drift", "severity": "high", "first_seen": "2026-05-15", "examples": ["B4", "B5"], "detection": "Cross-check HF dataset card / Zenodo README / GitHub README against current paper methods + schema. Card divergence from paper or schema divergence from payload = BLOCKER."},
+    {"pattern_id": "pattern-022", "slug": "paper-side-arithmetic-vs-cited-literature", "severity": "high", "first_seen": "2026-05-15", "examples": ["B6"], "detection": "For every 'Nx larger than [Author Year]' or 'Y% improvement over [Author Year]' claim, fetch the cited paper's abstract and verify the comparison number. Mismatch = BLOCKER."},
+    {"pattern_id": "pattern-023", "slug": "estimator-multiplicity-no-preregistration", "severity": "high", "first_seen": "2026-05-15", "examples": ["B9"], "detection": "Count distinct sigmas/p-values for the same physical quantity in the paper. >=3 distinct estimators of the same observable + headline selects the most-null = BLOCKER. Require explicit Methods pre-registration of primary estimator."},
+    {"pattern_id": "pattern-024", "slug": "unjustified-compute-bound-defer", "severity": "high", "first_seen": "2026-05-15", "examples": ["B10", "M10"], "detection": "grep 'deferred to (future|next|revision)', 'leave to future work', 'beyond the scope'. For each hit, ask: is this genuinely TRULY-BLOCKED (no hardware, no data) or is it compute Houston has already authorized? Maps to standing skill /no-future-work-defer + memory feedback_eat_the_frog."},
+    {"pattern_id": "pattern-025", "slug": "content-title-framing-drift", "severity": "high", "first_seen": "2026-05-15", "examples": ["B12", "M9"], "detection": "Read title, then read paper. Does paper deliver what title promises? Catalog paper with parity-violation title = drift. Houston R41 directive maps to this."},
+    {"pattern_id": "pattern-008b", "slug": "round-to-round-regression-drift", "severity": "high", "first_seen": "2026-05-15", "examples": ["B7", "B11", "M3", "M4", "B10"], "parent_pattern": 8, "note": "Pattern-008 currently scopes to closure-introduced regression WITHIN an R-round. Pattern-008b is the LONGER-TIMESCALE variant: a finding closed in R-round N reappears in R-round N+K (K>=1). Five distinct instances in this single external round. Detection: at start of every R-round, walk the closed-findings list of the prior round and re-verify each one is still closed in the current PDF."}
+  ],
+  "regression_since_r42_summary": {
+    "count": 6,
+    "findings": ["B3 (PARTIAL)", "B7", "B8 (PARTIAL)", "B10", "B11", "M3", "M4", "B12"],
+    "interpretation": "R42 (2026-04-30) closed many of these in PRINCIPLE — the closure work landed in body text, an artifact JSON, a new MC table, a softened paragraph — but the SURFACING half (abstract/intro/title/headline number) did not migrate. Two weeks later (v1.0.66 → 2026-05-15) the headline still leads with the pre-closure framing. This is pattern-008b: closure narrowly scoped to the local edit site, not propagated to all surfaces the reader sees first. Maps to standing skill /bigbounce-claims-table-sync (atomic claim propagation) which would have caught most of these."
+  },
+  "cross_paper_applicability": {
+    "P1A": ["B1/pattern-017 (CONFIRMED — caught externally 2026-06-02)", "B12/pattern-025 content-title framing drift (Grok GRO-B3 'channel-level no-go' vs title 'structural closure')", "B2/pattern-019 reproducibility-anchor 404 (companion-paper Ref [28] 'available upon request' from R42 P1-OA-B6)", "B9/pattern-023 estimator multiplicity (P1A MCMC bait-and-switch from R42 P1-CM-B1 is the same family)"],
+    "P1B": ["B7/buried-closure for MCMC convergence diagnostics", "B11/pattern-008b (PR3 vs PR4/NPIPE drift through 3 closures per INDEX.md cross-pattern note)", "B2/pattern-019 for Zenodo MCMC chain anchors"],
+    "P2": ["B9/pattern-023 estimator multiplicity (R42 P2-OA-B2 Bayes-factor inconsistencies 8-11 vs 17 vs ~8)", "B2/pattern-019 (R42 P2-OA-B4 code release v1.7.0 vs manuscript v1.7.5)"],
+    "P3": ["B9/pattern-023 estimator multiplicity (R42 P3-OA-B1 anomaly-score S internally inconsistent across Eq.1 / Fig.4 / Table III; R42 P3-OA-B4 eROSITA three incompatible score scales)", "B12/pattern-025 content-title drift (R42 P3-CM-B1 title '319,443 Anomalies' vs Table I primary 378,280; R42 P3-OA-B6 title '37.3M Spectra' vs catalog includes X-ray+Gaia+CMB)", "B10/pattern-024 unjustified defer (R42 P3-CM-B2 Redrock-fails-on-OOD redshift-validity)"],
+    "P5": ["B2/pattern-019 reproducibility-anchor 404 for DESI chirality catalog", "B6/pattern-022 paper-side-arithmetic for any 'Nx larger than [survey]' claim"]
+  },
+  "pattern_017_promotion": {
+    "action": "promote DRAFT to confirmed",
+    "old_filename": "pattern-017-review-log-in-body-prose-DRAFT.md",
+    "new_filename": "pattern-017-review-log-in-body-prose.md",
+    "old_first_seen": "2026-06-02",
+    "new_first_seen": "2026-05-15",
+    "delta_days": 18,
+    "note": "Pattern was first externally observed on P4 v1.0.66 on 2026-05-15 (4-vendor convergent BLOCKER). It went uncatalogued through 18 days and 8+ internal R-rounds across multiple papers, only being 'discovered' on the 2026-06-02 P1A external. This is itself an instance of pattern-018."
+  }
+}

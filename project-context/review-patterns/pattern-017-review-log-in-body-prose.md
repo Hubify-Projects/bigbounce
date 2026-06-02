@@ -1,17 +1,28 @@
 ---
-status: draft
+status: confirmed
 proposed_by: r-round-pattern-mine
 proposed_date: 2026-06-02
+confirmed_date: 2026-06-02
 review_target: Houston
+first_observation_corrected: 2026-05-15
 ---
 
 # Pattern 017 — Review-log artifacts in body prose (not `%`-comments)
 
-**First seen**: P1A 2026-06-02 external 3-reviewer round (Gemini BLOCKER 2.1
-and ChatGPT MAJOR M9 both flag the same nine artifacts)
-**Severity**: high (BLOCKER-grade per Gemini; "unprofessional, unpublishable")
-**Frequency**: 9 distinct body-text occurrences in P1A v1A.0.35-36 (single
-paper, single round); cross-paper count unknown until grep sweep runs
+**First seen**: P4 v1.0.66 2026-05-15 Houston external 4-vendor round
+(consolidated convergent BLOCKER B1 across all 4 vendors: Gemini-B1,
+Gemini-DR-G2, Grok-I-1, ChatGPT-B-6 + H-1 + I-4). Independently re-observed
+on P1A v1A.0.35-36 in the 2026-06-02 external 3-reviewer round (Gemini
+BLOCKER 2.1 + ChatGPT MAJOR M9), which is where the pattern was first
+catalogued in DRAFT form. Pattern existed in the campaign 18 days before
+it was recognised — itself an instance of pattern-018.
+**Severity**: high (BLOCKER-grade per Gemini; "instant desk-reject at any
+serious journal"; "creates the impression that the manuscript is an
+unedited auto-generated log file"; "unprofessional, unpublishable")
+**Frequency**: 4-vendor convergent BLOCKER on P4 v1.0.66 (multiple sites
+in Section VII Conclusions + footnotes); 9 distinct body-text occurrences
+in P1A v1A.0.35-36; cross-paper count unknown until grep sweep runs across
+P1B/P2/P3/P5
 **Detection**: literal body-text statements (NOT `%`-comments) like
 "...per R23 Gemini-3.1-Pro PAPER-GEM-M1 closure...",
 "Three vendors in the second cross-vendor R-round (R2) independently flagged...",
@@ -71,6 +82,22 @@ identified by external reviewers; trivially confirmable in the .tex).
 
 ## Examples observed
 
+- **P4 v1.0.66 2026-05-15 Houston external 4-vendor (FIRST OBSERVATION,
+  18 days before pattern was named)**: convergent BLOCKER B1 across all
+  4 vendors (ChatGPT/GPT-5, Gemini Deep Research, Gemini, Grok). Section VII
+  Conclusions and various footnotes contain raw text including:
+  ```
+  Real cross-vendor adversarial-review (v1.0.53)
+  The DeepSeek-B1 / DeepSeek-M3 deferral...
+  A multi-vendor adversarial round on v1.0.51 (GPT-5.5, Gemini-2.5-Pro,
+    Grok-4-fast, Perplexity Sonar Pro, DeepSeek-V3.2...)
+  v1.0.62 closure
+  v1.0.55 analytic projection
+  ```
+  Vendor verdicts: ChatGPT REJECT-AND-RESUBMIT, Gemini DR REJECT-AND-RESUBMIT,
+  Gemini MAJOR REVISION, Grok 5-must-fix-then-preprint. Houston:
+  "got blasted as totally no-go unpublishable by everyone." Source:
+  `project-context/peer-reviews/external/2026-05-15_P4_v1066_houston_external_4vendor_consolidated.md`.
 - **P1A 2026-06-02 external Gemini-B2.1**: BLOCKER-grade flagging of all
   nine sites. Recommended "must be completely purged from academic text".
 - **P1A 2026-06-02 external ChatGPT-M9**: MAJOR flag, "make the paper read

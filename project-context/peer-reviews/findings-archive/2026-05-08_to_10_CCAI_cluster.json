@@ -1,0 +1,286 @@
+{
+  "cluster_id": "CCAI-2026-05-08-to-10",
+  "cluster_window": "2026-05-08 to 2026-05-10",
+  "review_type": "internal_multi_agent_self_review",
+  "review_provenance": "4 parallel Claude general-purpose subagents per round, no external vendor diversity",
+  "papers_in_scope": ["P1A", "P2", "P3", "P4"],
+  "p1b_status": "excluded (compute-gated on cobaya R-hat < 0.01)",
+  "rounds_included": ["R43", "R44", "R45", "R46", "R47", "R48", "R51_consolidation"],
+  "external_comparison_round": "OOOOO_cross_vendor (2026-05-10 03:00 PT) and RRRRR_cross_vendor (2026-05-10 05:00 PT)",
+
+  "convergence_trajectory": {
+    "R43": {"BLOCKER": 10, "MAJOR": 31, "MINOR": 30, "NIT": null, "total": 71, "backward_step_pp": null},
+    "R44": {"BLOCKER": 5,  "MAJOR": 23, "MINOR": 17, "NIT": 5, "total": 50, "delta_vs_prior_pct": -29},
+    "R45": {"BLOCKER": 6,  "MAJOR": 21, "MINOR": 17, "NIT": 6, "total": 50, "delta_vs_prior_pct": 0, "backward_step_pp": -9.2},
+    "R46": {"BLOCKER": 3,  "MAJOR": 15, "MINOR": 14, "NIT": 9, "total": 41, "delta_vs_prior_pct": -18, "backward_step_pp": -5.6},
+    "R47": {"BLOCKER": 2,  "MAJOR": 9,  "MINOR": 13, "NIT": 7, "total": 31, "delta_vs_prior_pct": -24, "backward_step_pp": -4.6},
+    "R48": {"BLOCKER": 2,  "MAJOR": 4,  "MINOR": 10, "NIT": 6, "total": 22, "delta_vs_prior_pct": -29, "backward_step_pp": -3.2},
+    "R49": {"BLOCKER": null, "total": 14},
+    "R50": {"BLOCKER": null, "total": 4, "note": "CCAI loop converged to <3B + <5M for 4 consecutive rounds"},
+    "R51_post_PPPPP": {"BLOCKER": 0, "MAJOR": 1, "MINOR": 0, "NIT": 2, "total": 3, "backward_step_pp": -0.4, "note": "smallest backward step in entire CCAI cycle"},
+    "cross_vendor_OOOOO": {"BLOCKER": 6, "MAJOR": 24, "MINOR": 16, "NIT": 4, "total": 50, "backward_step_pp": -6.2, "note": "Cross-vendor surfaced ~50 findings AFTER CCAI loop converged to 4. Diversity gap = 12x explosion."}
+  },
+
+  "total_findings_extracted": {
+    "ccai_self_review_R43_to_R48_unique": "approx 245 raw (with cross-round overlap); approx 60-80 unique load-bearing findings after dedup",
+    "ccai_self_review_R51": 3,
+    "cross_vendor_OOOOO": 50,
+    "ratio_cross_vendor_to_ccai_at_convergence": "50/4 = 12.5x amplification"
+  },
+
+  "ccai_caught_AND_external_caught": [
+    {
+      "id": "P3-fNL-fisher-floor",
+      "description": "Internal Fisher sigma(f_NL) ~ 0.07-0.12 vs Munchmeyer consensus 0.4-0.9 mismatch",
+      "ccai_round": "R47-P3-m3 (MINOR)",
+      "external_round": "OOOOO-B3 GPT-5 (BLOCKER)",
+      "severity_mismatch": "CCAI under-classified (MINOR) what external called BLOCKER",
+      "signal": "CCAI saw the issue but downgraded severity - self-review optimism bias"
+    },
+    {
+      "id": "P4-z-score-impropriety",
+      "description": "-0.12 sigma post-MASTER null at N_MC=500 improperly assumes Gaussianity of 1-dof chi-sq",
+      "ccai_round": "R47-R48 propagation issues caught around the -0.12 sigma vs 2.75 sigma reconciliation",
+      "external_round": "OOOOO-M9 GPT-5 (MAJOR)",
+      "signal": "CCAI caught the propagation but not the underlying statistical impropriety"
+    },
+    {
+      "id": "P2-BF-gameability",
+      "description": "Bayes factor BF~8-17 gameable against curvaton/QSFI continuum priors",
+      "ccai_round": "R43-CCAI-P2-M4 (MAJOR, R43 only)",
+      "external_round": "OOOOO-B5 Grok-4 (BLOCKER)",
+      "signal": "CCAI caught at R43 then it disappeared from later rounds despite no closure"
+    }
+  ],
+
+  "external_caught_AND_ccai_MISSED": [
+    {
+      "id": "B1-PTA-gamma-cross-paper-drift",
+      "description": "P1A still cites gamma=3.20 synthetic while P3 migrated to gamma=2.567 real-KDE; bounce-deviation flips from 0.48 to +1.13 sigma; CLAUDE.md L58/L61 stale too",
+      "external_round": "OOOOO-B1 Gemini + GPT-5",
+      "ccai_missed_across_rounds": ["R43", "R44", "R45", "R46", "R47", "R48", "R49", "R50"],
+      "root_cause": "CCAI per-paper reviewers do not cross-reference companion papers OR repo-level CLAUDE.md"
+    },
+    {
+      "id": "B4-prefactor-not-derived",
+      "description": "(T_reh/M_GUT)^{3/2} prefactor in Eq. 19 asserted via prose, not derived; load-bearing on N_tot ~ 92",
+      "external_round": "OOOOO-B4 Grok-4 (BLOCKER)",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI does not perform physical-intuition / dimensional-analysis attack; reads prose as evidence"
+    },
+    {
+      "id": "B6-Yin2026-arXiv-fake",
+      "description": "Yin2026 arXiv:2601.13624 needs verification - January 2026 arXiv naming convention",
+      "external_round": "OOOOO-B6 Perplexity",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI lacks external citation/web retrieval; cannot verify arXiv IDs exist"
+    },
+    {
+      "id": "B2-SDB-Fisher-not-reproducible",
+      "description": "P2 SDB joint Fisher 9.9 sigma not reproducible from manuscript inputs (k_min, n-bar, b_1, b_phi, sigma_z, volume unspecified); rho=0.966 implies sigma_marg/unmarg=3.78x by Fisher orthodoxy but paper reports 1.57x",
+      "external_round": "OOOOO-B2 GPT-5",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI does not run statistical-orthodoxy reproducibility check (recomputing claimed Fisher numbers from stated inputs)"
+    },
+    {
+      "id": "M1-R2-OOM-fictitious-convention",
+      "description": "P1A R2 OOM-range '10^-58 to 10^-60 factor-of-100 eV-vs-GeV convention' is fictitious - units are EXACT, not convention",
+      "external_round": "OOOOO-M1 Grok-4 (MAJOR)",
+      "ccai_missed": true,
+      "root_cause": "CCAI sub-agent INTRODUCED this artifact at GGGGG closure (sub-agent regression) and subsequent CCAI rounds R48-R50 did not catch the regression. Pattern-008 case."
+    },
+    {
+      "id": "M3-Heinrich-2023-vs-2024-year-key-drift",
+      "description": "Inline text says 'Heinrich et al. 2023' but bibitem year=2024; cross-paper drift across P1A+P2+P3",
+      "external_round": "OOOOO-M3 Perplexity",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI per-paper reviewers do not grep cite-keys vs inline year text"
+    },
+    {
+      "id": "M2-LiBrandenberger-author-typo",
+      "description": "Bibitem LiBrandenberger:2014 for arXiv:1405.1097 likely Cai->Li author typo",
+      "external_round": "OOOOO-M2 Perplexity",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI does not verify author-name <-> arXiv-ID correspondence via web"
+    },
+    {
+      "id": "M4-Eskilt2022-PlanckWMAP-vs-PlanckACT-mismatch",
+      "description": "P2 cites arXiv:2205.13962 (Planck+WMAP) but quotes 0.342deg figure that belongs to Planck+ACT Cosmoglobe arXiv:2305.02268",
+      "external_round": "OOOOO-M4 Perplexity",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI does not verify cited paper content matches quoted numbers"
+    },
+    {
+      "id": "M11-GZ1-bias-attribution-unproven",
+      "description": "P4 9.5 sigma monopole 'GZ1 human-handedness bias' attribution via 2-param quadrature fit has no independent non-GZ1 reference",
+      "external_round": "OOOOO-M11 Grok-4",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI does not flag unfalsifiable working-hypothesis framing as a defect"
+    },
+    {
+      "id": "M12-Munchmeyer-absent-from-P2",
+      "description": "P3 cites Munchmeyer+2019 as canonical SPHEREx forecast but P2 (the SPHEREx forecast paper) does not cite it at all",
+      "external_round": "OOOOO-M12 Gemini",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "CCAI per-paper reviewers do not check bibkey coverage across companion papers"
+    },
+    {
+      "id": "M13-Cai-bibkey-divergence",
+      "description": "Cai:2009fn (P1A/P2) vs Cai2009 (P3) - same paper, different bibkey",
+      "external_round": "OOOOO-M13 Gemini",
+      "ccai_missed_across_rounds": ["R43-R50"],
+      "root_cause": "Per-paper view masks cross-paper bibkey consistency"
+    }
+  ],
+
+  "ccai_caught_but_external_MISSED": [
+    {
+      "id": "GGGGG-introduced-regressions-R48",
+      "description": "Two R48 BLOCKERs were sub-agent regressions from GGGGG closure wave (P2 0.45 sigma arithmetic, P4 Table 4 self-contradiction)",
+      "ccai_round": "R48",
+      "advantage": "CCAI catches MECHANICAL closure-wave regressions immediately (same-day round); external vendors operating on PDF snapshot would not see the lineage. Pattern-008 detection is a real CCAI strength."
+    },
+    {
+      "id": "stale-comment-narrative-residuals",
+      "description": "R47-P4-M1 stranded 2.75 sigma narrative in Conclusion #1; R48-P3-M1 residual novelty-floor headers post-EEEEE",
+      "ccai_round": "R47, R48",
+      "advantage": "CCAI catches narrative-continuity drift between sections that external reviewers gloss"
+    }
+  ],
+
+  "ccai_internal_blind_spots_identified": {
+    "blind_spot_001_no_external_citation_retrieval": {
+      "description": "CCAI cannot verify whether cited arXiv IDs exist, whether author names match, whether quoted figures appear in the cited paper",
+      "external_finding_examples": ["B6 Yin2026 fake arXiv", "M2 LiBrandenberger author typo", "M4 Eskilt2022 PlanckWMAP-vs-ACT confusion", "M5 ACT_DR6 Madhavacheril vs Qu confabulation", "M6 Cai:2026echoes placeholder 2601.00000"],
+      "frequency": "5+ in single cross-vendor round; CCAI MISSED ALL across R43-R50",
+      "maps_to_pattern": "pattern-001 (Perplexity citation confab) and pattern-011 (confabulated bib survives many rounds)"
+    },
+    "blind_spot_002_no_cross_paper_consistency_grep": {
+      "description": "Per-paper CCAI reviewers do not see bibkeys, gamma values, sigma values used in companion papers",
+      "external_finding_examples": ["B1 PTA gamma drift P1A vs P3", "M3 Heinrich 2023 vs 2024 across 3 papers", "M12 Munchmeyer absent from P2", "M13 Cai bibkey divergence"],
+      "frequency": "4 distinct cross-paper drifts in single OOOOO round",
+      "structural_cause": "CCAI multi-agent topology is 4 parallel agents, each reviews 1 paper. No cross-paper reviewer."
+    },
+    "blind_spot_003_no_dimensional_first_principles_derivation_check": {
+      "description": "CCAI accepts prose-asserted prefactors and order-of-magnitude estimates without re-deriving from first principles",
+      "external_finding_examples": ["B4 (T/M)^{3/2} prefactor prose-asserted not derived", "M1 R2 OOM convention is fictitious"],
+      "frequency": "2 in OOOOO; CCAI MISSED across all 8 prior rounds despite Grok-4-style profile being requested",
+      "structural_cause": "Self-review reads paper as paper, not as proof. No symbolic derivation harness."
+    },
+    "blind_spot_004_no_fisher_reproducibility_check": {
+      "description": "CCAI does not recompute claimed Fisher/forecast numbers from stated inputs",
+      "external_finding_examples": ["B2 SDB Fisher 9.9 sigma not reproducible", "B3 P3 sigma(f_NL)~0.07 vs Munchmeyer 0.4-0.9", "M8 sigma_fNL=8.27+/-2.37 hides asymmetric uncertainty"],
+      "frequency": "3 in OOOOO; CCAI MISSED all"
+    },
+    "blind_spot_005_severity_under_classification": {
+      "description": "When CCAI does catch a real issue, it often classifies as MINOR/MAJOR what external calls BLOCKER. Self-review optimism bias.",
+      "examples": ["P3 Fisher floor: CCAI MINOR (R47-m3) -> External BLOCKER (OOOOO-B3)", "P2 BF gameability: CCAI MAJOR (R43-M4, then dropped) -> External BLOCKER (OOOOO-B5)"],
+      "implication": "CCAI <3B+<5M exit gate is satisfied at severity classifications the external would reject"
+    },
+    "blind_spot_006_no_editorial_hygiene_attack": {
+      "description": "Cross-pattern with pattern-018 - CCAI rounds do not flag leftover review-log artifacts, version-history sentences, multi-vendor framing in body prose",
+      "context": "Not directly seen in CCAI cluster (OOOOO predates editorial-hygiene patterns 017/018 in catalog) but the same structural blindness predicts it"
+    }
+  },
+
+  "multi_agent_overlap_analysis": {
+    "convergence_vs_divergence": "The 4 CCAI sub-agents within a single round CONVERGE strongly - they share Claude training-set and prompt-shape. R47 BLOCKERs were both cross-paper / cross-section consistency issues, the kind any Claude agent surfaces. The 4 sub-agents do NOT diverge enough to surface the 6 OOOOO BLOCKERs.",
+    "agent_role_overlap": "Each of the 4 CCAI sub-agents reviewed 1 different paper, so no within-paper redundancy. The 'cross-paper' visibility is therefore ZERO at the sub-agent level - it only emerges in the consolidator's summary step, but the consolidator is also Claude and inherits the same blindspots.",
+    "implication": "Adding more CCAI agents does not buy attack-surface diversity. Adding non-Anthropic vendors does. The OOOOO cross-vendor round exposed this empirically: 4 vendors found 50 findings where 4 CCAI agents found 4."
+  },
+
+  "per_paper_split_vs_cross_paper_split_finding": {
+    "observation": "The per-paper R47/R48 split files (R47_CCAI_P1A.md etc) DO surface more findings than the cross-paper summary (~7-9 per paper in detail vs ~3-4 mentioned in summary). The cross-paper summary compresses to BLOCKERs and headline MAJORs and drops MINORs and nuanced framings.",
+    "patterns_per_paper_view_unmasks": [
+      "Three-contradictory-labels-for-one-number (R47-P3-M1: 17.8% as 'provisional upper bound' AND 'single-sample point estimate' AND 'novelty floor')",
+      "Two-different-3.17-definitions-in-same-paragraph (R47-P3-m2: per-bin geomean vs jackknife geomean)",
+      "Stranded-narrative-residuals after partial closures (R47-P4-M1)",
+      "Rounding-policy-asserted-but-violated (R47-P3-n2)"
+    ],
+    "patterns_cross_paper_view_unmasks": [
+      "Cross-paper companion-cite anchor mismatches (R47-P1A-B1: footnote -> Paper 1B section that does not exist)"
+    ],
+    "recommendation": "Per-paper split is the load-bearing surface. Cross-paper summary should be derived from the splits, not used as the master."
+  },
+
+  "new_patterns_beyond_current_catalog": [
+    {
+      "proposed_id": "pattern-019",
+      "proposed_title": "Self-review severity-under-classification (optimism bias)",
+      "description": "CCAI self-review classifies as MINOR/MAJOR what external cross-vendor calls BLOCKER. Convergence to <3B+<5M is achieved at severity thresholds the external would reject.",
+      "evidence_count": "2 strong cases in CCAI cluster (P3 Fisher floor R47-m3 -> OOOOO-B3; P2 BF gameability R43-M4 -> OOOOO-B5)",
+      "severity": "high (meta - corrupts the convergence-exit gate)",
+      "detection": "compare CCAI severity tags vs external severity tags on findings present in both",
+      "fix": "when CCAI catches an issue that touches a load-bearing claim, automatic severity floor of MAJOR until cross-vendor sign-off"
+    },
+    {
+      "proposed_id": "pattern-020",
+      "proposed_title": "CCAI cross-paper bibkey/value/cite-anchor blindness",
+      "description": "Per-paper CCAI sub-agents do not see companion-paper artifacts. Cross-paper drift (bibkey, value, anchor) is structurally invisible to CCAI topology.",
+      "evidence_count": "4 distinct cross-paper drifts in single OOOOO round (B1 gamma, M3 Heinrich, M12 Munchmeyer, M13 Cai)",
+      "severity": "high",
+      "detection": "post-CCAI-round grep across all papers for shared author-year tokens; diff bibkeys across .bib files",
+      "fix": "add a 5th CCAI agent role: cross-paper consistency reviewer. Or run paper-pre-review-check cross-paper grep before declaring convergence."
+    },
+    {
+      "proposed_id": "pattern-021",
+      "proposed_title": "CCAI prose-asserted-prefactor acceptance",
+      "description": "CCAI reads paper as paper, not as proof. Prefactors and OOM estimates asserted via prose (no derivation) pass CCAI uniformly even when they are load-bearing.",
+      "evidence_count": "2 BLOCKER-tier cases in OOOOO (B4 prefactor, M1 OOM convention)",
+      "severity": "high",
+      "fix": "add Wolfram/symbolic derivation harness in /paper-pre-review-check or require explicit Appendix-derivation tag for any load-bearing prefactor"
+    },
+    {
+      "proposed_id": "pattern-022",
+      "proposed_title": "Multi-agent intra-round convergence (no diversity from N parallel sub-agents)",
+      "description": "Adding more Claude sub-agents in parallel does NOT increase finding-surface; they share training-set and prompt-shape. The 4-CCAI-to-4-vendor finding ratio in OOOOO is 4:50 (12.5x amplification from vendor diversity, ~0% from same-vendor-parallelism).",
+      "evidence_count": "empirical R43-R51 vs OOOOO",
+      "severity": "informational - meta-architecture rule",
+      "implication": "Loop convergence exit gate must require ALL of: (a) CCAI converged, (b) ONE cross-vendor round clean, (c) Houston sign-off. Not just (a)."
+    }
+  ],
+
+  "recommendation_two_stage_pre_review_check": {
+    "recommendation": "YES - /paper-pre-review-check should explicitly become a TWO-STAGE protocol",
+    "stage_1_ccai_self_review": {
+      "purpose": "Catch mechanical regressions, sub-agent closure-wave introduced defects (pattern-008), narrative-continuity drift, severity-progression-within-paper",
+      "convergence_signal": "<3B+<5M for 2 consecutive rounds is a NECESSARY but NOT SUFFICIENT gate",
+      "do_NOT_use_as": "publication-readiness signal"
+    },
+    "stage_2_cross_vendor_diversity": {
+      "purpose": "Catch the 6 CCAI blind spots identified above (external citation retrieval, cross-paper consistency, dimensional derivation, Fisher reproducibility, severity calibration, editorial hygiene)",
+      "minimum_vendor_set": ["GPT-5 or equivalent (numerical/statistical orthodoxy)", "Gemini-3.1-Pro or equivalent (cross-paper/literature)", "Grok-4 or equivalent (physical intuition / dimensional)", "Perplexity or equivalent (citation forensics)"],
+      "convergence_signal": "TWO consecutive cross-vendor rounds at <3B+<5M with the second round on a re-prep version that closed the first round's findings (per Houston's RRRRR-prep protocol)"
+    },
+    "stage_3_external_journal_reviewer": {
+      "purpose": "Catch the meta-blind-spot of internal-only review (pattern-018 editorial hygiene). Confirmed by P1A external 3-reviewer round where 8 internal CCAI-style rounds had 0 VERIFIED but external found 9 sites of pattern-017 artifacts.",
+      "implementation": "/paper-pre-review-check --strict mode that runs pattern-014 + 017 + 018 greps and BLOCKS submission until cleared"
+    },
+    "gate_arithmetic": "OOOOO showed CCAI exit at 4 findings -> cross-vendor surfaced 50. Ratio 12.5x. This is the strongest empirical argument in the entire CCAI cluster for mandatory cross-vendor step BEFORE any external submission and BEFORE any readiness >= 99%."
+  },
+
+  "implications_for_readiness_cap_99_skill": {
+    "current_rule": "Cap at 95% until clean CCAI R-round + clean cross-vendor R-round + Houston sign-off",
+    "ccai_cluster_validates_rule": true,
+    "evidence": "If readiness had been lifted to 99% after CCAI R47-R50 convergence (the literal text says 'four-consecutive-round <3B+<5M post-closure'), the 6 OOOOO BLOCKERs would have been missed - including a fake arXiv ID (B6), a not-reproducible 9.9 sigma Fisher (B2), and a sigma(f_NL) factor-of-10 mismatch with literature (B3).",
+    "strengthening_proposal": "Backward-step requirement: a paper that took >5pp backward in cross-vendor R-round must run a SECOND cross-vendor round on the post-closure version BEFORE lifting cap. OOOOO took -6.2pp backward; RRRRR (the second cross-vendor on post-PPPPP) is the load-bearing confirmation, not OOOOO closure alone."
+  },
+
+  "metadata": {
+    "generated_by": "r-round-pattern-mine retrospective analysis",
+    "generated_date": "2026-06-02",
+    "source_files": [
+      "project-context/peer-reviews/2026-05-08_1500pt_R43_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-08_1830pt_R44_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-09_0030pt_R45_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-09_0400pt_R46_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-09_0900pt_R47_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-09_0900pt_R47_CCAI_P{1A,2,3,4}.md",
+      "project-context/peer-reviews/2026-05-09_1500pt_R48_CCAI_multi-agent_self-review_P1A_P2_P3_P4.md",
+      "project-context/peer-reviews/2026-05-09_1500pt_R48_CCAI_P{1A,2,3,4}.md",
+      "project-context/peer-reviews/2026-05-10_0300pt_OOOOO_CROSS-VENDOR_consolidated_summary.md",
+      "project-context/peer-reviews/2026-05-10_0400pt_R51_CCAI_consolidated_summary.md"
+    ],
+    "git_commit_at_R51": "807be9c9 (Wave 14-PPPPP)"
+  }
+}
