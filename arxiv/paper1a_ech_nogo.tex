@@ -45,8 +45,58 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.37}
+\newcommand{\paperVersion}{v1A.0.38}
 \newcommand{\paperTimestamp}{June 1, 2026 PDT}
+% v1A.0.38 (R-multi-round2 3-vendor cross-vendor on v1A.0.37 ran 2026-06-01).
+%   Round 2 (Grok-4, GPT-4o-fallback, Perplexity Sonar-Pro; Gemini failed
+%   billing — skipped). Truth-audit synthesis at
+%   project-context/peer-reviews/2026-06-01_R-multi-round2_P1A_synthesis.md.
+%   Round-2 VERIFIED closures landed in this version:
+%     - PER-M3 (round 2): gamma = 0.274 \pm 0.020 reframed as scheme range,
+%       not stat error; Domagala/Meissner don't quote a +-0.020 uncertainty
+%       (Eq.~\ref{eq:gamma} + Table~\ref{tab:params} row).
+%     - PER-B1 (round 2): Mercuri/Capozziello attribution of the one-loop
+%       parity-odd operator softened to "motivated by but not literally
+%       derived in" their construction (Eq.~\ref{eq:oneloop_parity_odd}).
+%     - PER-M1 (round 2): Date-Kaul-Sengupta attribution of the gamma
+%       beta-function softened to "schematically motivated by" — DKS
+%       analyze the Holst/Nieh-Yan/topological-gamma setup but do not
+%       give this exact RG equation (Eq.~\ref{eq:gamma_running}).
+%     - PER-M2 (round 2): Lue-Wang-Kamionkowski attribution of the
+%       \tfrac14(\alpha/M)\theta F\tilde F operator clarified: LWK use
+%       a generic \partial_\mu\phi K^\mu form, not this exact
+%       normalization. We adopt the conventional ALP-photon
+%       normalization and cite LWK as an early cosmological-birefringence
+%       treatment (sec:r4_birefringence).
+%     - PER-m1 (round 2): Ashtekar-Singh rho_crit attribution flipped to
+%       0.41 rho_Pl (their canonical LQC value at gamma=0.2375); 0.27
+%       labeled explicitly as an internal extrapolation across counting
+%       schemes (eq:rhocrit + surrounding paragraph).
+%   STALE/OPINION (per round-1 audit, reflagged unchanged):
+%     - GRO-B1 (theorem framing of perturbation transparency): STALE.
+%       Section X carries the formal statement + 5-step proof; "theorem"
+%       is correct mathematical usage. Reflagged opinion.
+%     - GRO-B2 (structural-tension uses same ansatz, not independent):
+%       STALE. Section header sec:structural_tension is literally
+%       "(robustness check, not co-equal closure)"; abstract and §IV
+%       Scope already classify it that way. Reviewer asks for label
+%       that already exists.
+%     - GRO-M1 (R1--R4 "exhaust" contradicts omitted operators):
+%       STALE. v1A.0.37 already replaced "exhaust" with "cover the
+%       four parity-odd / dark-energy channels enumerated in this
+%       paper" at sec:fourroute_summary L919-921. Reviewer cited the
+%       new wording and still complained.
+%     - GRO-M2 (Barriers 8 and 14 counted separately): STALE. The
+%       paper says "13 logically-independent (14 historical catalog
+%       entries, of which B8 is subsumed by B14)" everywhere from
+%       abstract to conclusion to Table~\ref{tab:barriers} caption.
+%     - GPT-B1--B6 (all "phenomenological ansatz needs more
+%       discussion"): STALE/OPINION. The paper already names the
+%       +1 vs +4 dimensional mismatch explicitly, labels the ansatz
+%       phenomenological in abstract + §II.B.2 + Appendix
+%       app:dimensions, and disclaims D_inf as a reparameterization
+%       rather than a mechanism in §IV. Polish-tier framing requests,
+%       not new BLOCKER/MAJOR findings.
 % v1A.0.37 (R-multi-true95 3-vendor cross-vendor on v1A.0.36 ran 2026-06-01).
 % Vendors: Grok-4 (brutal), GPT-4o-fallback-from-GPT-5 (methodology), Perplexity
 % Sonar-Pro (citations). Gemini failed on billing and was skipped. Truth-audit
@@ -376,15 +426,24 @@ to fermionic matter. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
 shorthand for the four-fermion contact interaction obtained after integrating out
 the non-propagating torsion; it is not an independently specified kinetic term.
 
-The Barbero-Immirzi parameter is fixed by LQG black hole entropy:
+The Barbero-Immirzi parameter is fixed by LQG black hole entropy in
+the SU(2) full-counting scheme used here:
 \begin{equation}\label{eq:gamma}
-\gamma = 0.274 \pm 0.020,
+\gamma_{\rm SU(2)} \approx 0.274,
 \end{equation}
-with the U(1) horizon-state counting~\cite{ABCK1998} giving
-$\gamma_{\rm U(1)}\approx 0.127$ (using $\gamma = \ln 2/(\pi\sqrt{3})$) and
-the refined SU(2) full counting~\cite{Domagala2004,Meissner2004} giving
-$\gamma_{\rm SU(2)}\approx 0.274$ (used here) and the further DLM
-refinement giving $\gamma_{\rm DLM}\approx 0.2375$.
+where the apparent uncertainty range is
+\emph{scheme dependence rather than a statistical or theoretical error}:
+the U(1) horizon-state counting~\cite{ABCK1998} gives
+$\gamma_{\rm U(1)}\approx 0.127$ (using $\gamma = \ln 2/(\pi\sqrt{3})$),
+the refined SU(2) full counting~\cite{Domagala2004,Meissner2004} gives
+$\gamma_{\rm SU(2)}\approx 0.274$ (adopted in this paper), and the
+further Domaga\l{}a--Lewandowski--Meissner refinement gives
+$\gamma_{\rm DLM}\approx 0.2375$. Domaga\l{}a--Lewandowski and Meissner
+do \emph{not} quote a $\pm 0.020$ statistical uncertainty; the
+$\sim\!0.020$ figure that appears in the parameter-budget table
+(Appendix~\ref{app:dimensions}) is the spread between counting
+prescriptions, retained as an effective range only and
+\emph{not} propagated as a statistical error in any quantitative claim.
 
 \begin{figure}[t]
 \centering
@@ -456,10 +515,19 @@ Planck-scale densities~\cite{Ashtekar2011}:
 H^2 = \frac{8\pi G}{3}\,\rho\left[1-\frac{\rho}{\rhocrit}\right],
 \end{equation}
 \begin{equation}\label{eq:rhocrit}
-\rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl \simeq 0.27\,\rhoPl,
+\rhocrit = \frac{3}{8\pi G\,\gamma^2\,\Delta} = \frac{\sqrt{3}}{32\pi^2\gamma^3}\,\rhoPl,
 \end{equation}
-with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ the LQG area gap. The DLM value
-$\gamma = 0.2375$ gives $\rhocrit \simeq 0.41\,\rhoPl$. The factor
+with $\Delta = 4\sqrt{3}\pi\gamma\,\ell_P^2$ the LQG area gap. Ashtekar
+\& Singh~\cite{Ashtekar2011} quote the canonical LQC value
+$\rhocrit \simeq 0.41\,\rhoPl$ at the standard LQC area-gap choice
+$\gamma = 0.2375$. Substituting instead the SU(2)
+black-hole-entropy value $\gamma_{\rm SU(2)} \approx 0.274$
+(Eq.~\ref{eq:gamma}) into the same formula gives
+$\rhocrit \simeq 0.27\,\rhoPl$; this lower value is an internal
+extrapolation across counting schemes (not a value quoted in
+Ref.~\cite{Ashtekar2011}), and the $0.27$--$0.41\,\rhoPl$ window
+used elsewhere in this paper should be read as a scheme-dependent
+range rather than as a published LQC range. The factor
 $(1-\rho/\rhocrit)$ ensures $H^2\to 0$ as $\rho\to\rhocrit$, producing a smooth
 bounce with no free parameters.
 
@@ -764,8 +832,12 @@ corrections from minimally coupled fermions, however, generate a
 parity-odd coupling between the gravitational field and the chiral
 fermion current at one loop, with coefficient running logarithmically
 in the Barbero--Immirzi parameter $\gamma$~\cite{Mercuri2009,
-MercuriCapozziello2008}. Following Mercuri \& Capozziello, the
-effective action acquires the parity-odd term
+MercuriCapozziello2008}. Motivated by (but \emph{not literally
+derived in}) the Holst$+$non-minimal-fermion construction of
+Mercuri and Mercuri \& Capozziello---those works establish the
+classical structure of the Holst term coupled to fermions and the
+Nieh--Yan invariant, not this exact one-loop operator---we adopt
+the phenomenological one-loop parity-odd operator
 \begin{equation}
 \Gamma_{\rm one\text{-}loop}^{\rm parity\text{-}odd}
 = -\,\frac{1}{16\pi^2}\,
@@ -776,7 +848,12 @@ effective action acquires the parity-odd term
 \end{equation}
 where $\theta(x)$ is the Nieh--Yan pseudoscalar, $J^{5\mu}$ is the
 fermion axial current, and $\beta(\gamma)$ is a slowly varying function
-of $\gamma$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
+of $\gamma$. The form is the natural EFT operator built from the
+Nieh--Yan pseudoscalar and the chiral current at the
+$M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
+calculation currently derives this exact coefficient structure from
+the Mercuri construction, and the present analysis uses it strictly
+as an upper-bound EFT ansatz for the Route-2 amplitude budget. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power; once
 $\partial_\mu\theta \sim H \sim 10^{-33}\,$eV at the present epoch is
 substituted, the induced birefringence accumulated between
@@ -824,17 +901,24 @@ closed by mass-dimension lock}
 \label{sec:r3_immirzi}
 A second route to a parity-odd ECH contribution is the quantum running
 of the Barbero--Immirzi parameter $\gamma$ itself. Date, Kaul \& Sengupta
-established that, in the presence of a chiral matter sector,
-$\gamma$ acquires a beta-function whose leading non-trivial coefficient
-is fixed by the chiral fermion content of the Standard
-Model~\cite{DateKaulSengupta2009}. The induced one-loop running is
+analyzed the Holst term coupled to fermions and the Nieh--Yan
+invariant in the chiral-matter setting~\cite{DateKaulSengupta2009};
+that analysis establishes a topological interpretation of $\gamma$
+and motivates a $\gamma$-running in the presence of chiral asymmetry,
+but does \emph{not} itself present the explicit RG equation used
+below. Schematically motivated by their construction, we adopt the
+one-loop running ansatz
 \begin{equation}
 \frac{d\gamma}{d\ln \mu}
 = \frac{1}{12\pi^2}\,(N_F^L - N_F^R) \, \gamma + \mathcal{O}(\gamma^2),
 \label{eq:gamma_running}
 \end{equation}
 where $N_F^L$ and $N_F^R$ are the numbers of left- and right-chiral
-Weyl fermions running in the loop. In the Standard Model, the chiral
+Weyl fermions running in the loop. The $1/(12\pi^2)$ prefactor is
+the natural chiral-loop coefficient at this order; we use
+Eq.~\eqref{eq:gamma_running} only as an upper-bound EFT ansatz
+for the Route-3 amplitude budget and do not claim it is taken
+verbatim from~\cite{DateKaulSengupta2009}. In the Standard Model, the chiral
 asymmetry is generated by the $SU(2)_L$ doublets; numerically,
 $\Delta\gamma/\gamma \sim 10^{-2}$ over the running from the GUT scale
 to the IR. The Holst sector amplitude that this running can source is
@@ -856,11 +940,19 @@ neutrino current): closed by birefringence-amplitude bound}
 The fourth route is the direct parity-odd coupling between the
 electromagnetic field and either an axion-like field (ALP) or the
 fermion axial current, which would imprint on the CMB as a uniform
-rotation of the polarization plane. The classical reference for this
-mechanism is Lue, Wang \& Kamionkowski~\cite{LueWangKamionkowski1999},
-who derived the conversion from a parity-odd action term
-$\mathcal{L}_{\rm CS} \supset -\tfrac{1}{4}\,(\alpha/M)\,\theta\,
-\tilde F_{\mu\nu} F^{\mu\nu}$ (the standard ALP-photon Chern-Simons coupling with all indices fully contracted; the integrated-by-parts equivalent $(\alpha/M)\,\partial_\mu\theta\, K^\mu$ where $K^\mu \equiv \epsilon^{\mu\nu\rho\sigma} A_\nu F_{\rho\sigma}$ is the standard Chern-Simons 4-current (whose divergence $\partial_\mu K^\mu = \tfrac{1}{2}\tilde F_{\mu\nu}F^{\mu\nu}$ recovers the parity-odd contraction; R23 Perplexity/Gemini PAPER-GEM-n1 inline-definition closure) is also valid; v1A.0.28 R7 GPT-M3 closure: prior $(\alpha/M)\,\partial_\mu\theta\, \tilde F^{\mu\nu} F_{\mu\nu}$ left $\mu$ uncontracted on $\partial_\mu\theta$) into the rotation angle
+rotation of the polarization plane. An early cosmological-birefringence treatment of this
+mechanism is Lue, Wang \& Kamionkowski~\cite{LueWangKamionkowski1999};
+they work with a generic pseudoscalar-photon Chern--Simons coupling
+$\partial_\mu\phi\,K^\mu$ (equivalently $\phi F\tilde F$ up to a
+total divergence), not with the specific
+$-\tfrac{1}{4}\,(\alpha/M)$ normalization adopted here. The operator
+\(\mathcal{L}_{\rm CS} \supset -\tfrac{1}{4}\,(\alpha/M)\,\theta\,
+\tilde F_{\mu\nu} F^{\mu\nu}\) is the conventional ALP--photon
+Chern--Simons coupling used throughout the axion-electrodynamics
+literature; we adopt this normalization and use~\cite{LueWangKamionkowski1999}
+as an early example of its cosmological birefringence
+implications rather than as the source of the specific prefactor.
+All indices are fully contracted; the integrated-by-parts equivalent $(\alpha/M)\,\partial_\mu\theta\, K^\mu$, where $K^\mu \equiv \epsilon^{\mu\nu\rho\sigma} A_\nu F_{\rho\sigma}$ is the standard Chern--Simons 4-current and $\partial_\mu K^\mu = \tfrac{1}{2}\tilde F_{\mu\nu}F^{\mu\nu}$ recovers the parity-odd contraction, is also valid. From this operator one obtains the rotation angle
 \begin{equation}
 \beta = \frac{\alpha}{M}\,\Delta\theta_{\rm rec\to today}
 \sim \frac{\alpha}{M}\,\sqrt{2\rho_\theta/m_\theta^2},
@@ -1638,7 +1730,7 @@ Paper~I(b)~\cite{Golden2026P1b}.}
 Parameter & Description & Prior & Verified Value & Notes \\
 \hline
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
-$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274\pm 0.020$ & LQG area spectrum \\
+$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.020$) & LQG area spectrum (Eq.~\ref{eq:gamma}; scheme dependence, \emph{not} statistical error) \\
 $\alpha/M$ & Parity-odd coefficient & Log-flat & $\sim 10^{-21}\,\text{GeV}^{-1}$ & One-loop motivated \\
 $N_{\rm tot}$ & Total e-folds & $[60, 120]$ flat & $\approx 92$ (fitted) & Controls $\Xi$ \\
 \hline

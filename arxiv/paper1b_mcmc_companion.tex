@@ -43,8 +43,50 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.31}
+\newcommand{\paperVersion}{v1B.0.32}
 \newcommand{\paperTimestamp}{2026-06-01 PDT}
+% v1B.0.32 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round2 closure; 3 direct-vendor
+%   reviewers re-run on v1B.0.31 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
+%   Sonar Pro citation forensics). Truth-audit verdicts per
+%   feedback_peer_review_truth_audit_protocol: 1 VERIFIED / 13 STALE / 4 OPINION / 0 BLOCKER.
+%   - Grok-4: 3 findings, all minor/nit polish (redundant scope disclaimers in abstract +
+%     §IV + §VI). Verdict OPINION × 3 — redundancy-removal preferences, retained the
+%     repetition by design (per v1B.0.27/30 cascade rule "in-cell caveats win on visibility").
+%   - GPT-4o: 6 findings, all reflagged from round-1 (B1 ln B, B2 ALP range methodology,
+%     B3 NaMaster scope, B4 model-comparison, B5 SH0ES interaction, B6 abstract quant).
+%     Verdict STALE × 6 — every issue already disclosed in body + Table app:claims.
+%   - Perplexity Sonar Pro: 6 findings.
+%     - BLOCKER-1 (Liu et al. ECTorsionDESI2025): STALE — reflagged from round-1
+%       PER-B1; references.bib L571-579 has the real Liu+Li+Xu+Biesiada+Wang EPJC 2025
+%       arXiv 2507.04265 entry. Sonar Pro's web-search still can't surface it; entry is real.
+%     - MAJOR-1 (Eskilt2022b "Planck+ACT" mis-labelled): **VERIFIED**. references.bib
+%       L1040-1052 title literally reads "from the WMAP and Planck CMB polarization data";
+%       ACT is NOT part of that dataset. Prose at L370-371 (abstract), L779-780 (§VI body),
+%       L854-855 (§VI Headline observational constraint) said "joint Planck+ACT value"
+%       attributed to \cite{Eskilt2022b}. **Real factual error.** v1B.0.32 fix:
+%       relabelled to "joint WMAP+Planck value" in all 3 in-text occurrences. The Headline
+%       passage explicitly adds "(the PR4 NPIPE + WMAP analysis; ACT~DR6 enters only via
+%       the separate \cite{DiegoPalazuelos2025} measurement, used below only in the
+%       auxiliary inverse-variance combination)" to remove any remaining ambiguity.
+%       Round-1 PER-B2 had previously marked this FALSIFIED on bib-existence grounds
+%       (entry is real); round-2 sharper truth-audit upgrades the verdict because the
+%       prose ATTRIBUTION is wrong even though the cite-key resolves. Lesson: bib-resolves
+%       ≠ prose-correctly-attributes; both must be checked. Promoted to VERIFIED.
+%     - MAJOR-2 (ALP MCMC 9720 samples internal vs published): STALE — L898 already says
+%       verbatim "our internal model-independent MCMC fit"; framing is already explicit.
+%     - MAJOR-3 (β_combined=0.241° 3.9σ not in literature): STALE — L883 already labels
+%       "Summary-likelihood combination (auxiliary cross-check)" with "neglects shared
+%       calibration systematics; the published joint analysis at 3.6σ is the headline".
+%     - minor-1 (DESI DR1/DR2 mixing): STALE — same as round-1 PER-B5 FALSIFIED;
+%       DESI2024 (DR1) and DESI2025DR2 (DR2 arXiv 2503.14738) are distinct bibkeys
+%       cited at distinct locations matching the data release used.
+%     - minor-2 (Riess year mismatch): STALE — round-1 PER-B5 already addressed;
+%       "H0.riess2020Mb" is the cobaya YAML alias name, not a bibkey; the actual cite
+%       is \cite{Riess2022}.
+%   v1B.0.32 closure: single VERIFIED fix (Eskilt dataset relabel × 3 sites) + version
+%   stamp + recompile + PDF mirror + Convex bump. Cascaded round-2 demonstrates the
+%   value of cross-vendor R-rounds: round-1 missed the prose-attribution drift that
+%   round-2 Perplexity caught.
 % v1B.0.31 (2026-06-01 — external multi-vendor R-round 2026-06-01_R-multi-true95 closure;
 %   3 reviewers dispatched via DIRECT vendor APIs (Grok-4 brutal, gpt-4o methodology
 %   fallback from gpt-5, Perplexity Sonar Pro citation forensics); Gemini-2.5-pro skipped
@@ -367,7 +409,7 @@ published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025
 the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
 \emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$,
-$m\sim H_0$ is consistent with the published joint Planck+ACT value
+$m\sim H_0$ is consistent with the published joint WMAP+Planck value
 $\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} without
 fine-tuning. The same birefringence arises in standard GR with an identical
 ALP; it is not a distinctive ECH prediction.
@@ -777,7 +819,7 @@ performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
 \end{equation}
 The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
 a $2^\circ$ apodization scale). For $\beta=0.342^\circ$ (the published joint
-Planck+ACT value), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
+WMAP+Planck value~\cite{Eskilt2022b}), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
 $\beta=0$, recovery is consistent with zero (null check). The
 pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
@@ -851,8 +893,11 @@ coupling) and is not a distinctive ECH prediction. The model class was previousl
 studied by Fujita~\etal~\cite{Fujita2021}.
 
 \textit{Headline observational constraint.}---The primary observational reference
-adopted in this analysis is the published Eskilt~\etal\ joint Planck+ACT value
-$\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b}, which
+adopted in this analysis is the published Eskilt~\&~Komatsu joint WMAP+Planck value
+$\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} (the
+PR4 NPIPE + WMAP analysis; ACT~DR6 enters only via the separate
+$\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
+below only in the auxiliary inverse-variance combination), which
 accounts for shared calibration systematics. The simplified inverse-variance
 combination below ($3.9\sigma$) is retained as an auxiliary cross-check only
 and is explicitly \emph{not} used as the headline number anywhere in this paper.

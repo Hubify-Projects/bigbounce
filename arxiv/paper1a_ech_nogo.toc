@@ -25,30 +25,30 @@
 \contentsline {subsection}{\numberline {C}Route 3 (quantum running of the Immirzi parameter): closed by mass-dimension lock}{9}{section*.23}%
 \contentsline {subsection}{\numberline {D}Route 4 (parity-odd CMB coupling via spectator ALP or neutrino current): closed by birefringence-amplitude bound}{9}{section*.24}%
 \contentsline {subsection}{\numberline {E}Closure summary}{10}{section*.25}%
-\contentsline {section}{\numberline {V}Data Methods: Galaxy Spin Analysis}{10}{section*.26}%
-\contentsline {section}{\numberline {VI}Systematic Analysis}{10}{section*.27}%
-\contentsline {section}{\numberline {VII}Falsification Criteria}{10}{section*.28}%
+\contentsline {section}{\numberline {V}Data Methods: Galaxy Spin Analysis}{11}{section*.26}%
+\contentsline {section}{\numberline {VI}Systematic Analysis}{11}{section*.27}%
+\contentsline {section}{\numberline {VII}Falsification Criteria}{11}{section*.28}%
 \contentsline {section}{\numberline {VIII}Related Work}{11}{section*.29}%
 \contentsline {section}{\numberline {IX}Structural Constraints on Dark-Energy Routes in Minimal ECH}{11}{section*.30}%
 \contentsline {subsection}{\numberline {A}Barrier 1: Mass-Coupling Lock (Foundation A)}{11}{section*.31}%
-\contentsline {subsection}{\numberline {B}Barrier 2: Topological-Shift Duality (Foundation B)}{11}{section*.32}%
-\contentsline {subsection}{\numberline {C}Barrier 3: Scalar-Tensor Universality (Foundation C)}{11}{section*.33}%
-\contentsline {subsection}{\numberline {D}Barrier 4: Planck Suppression (Foundation D)}{11}{section*.34}%
-\contentsline {subsection}{\numberline {E}Barrier 5: Scale Separation (Foundation E)}{11}{section*.35}%
+\contentsline {subsection}{\numberline {B}Barrier 2: Topological-Shift Duality (Foundation B)}{12}{section*.32}%
+\contentsline {subsection}{\numberline {C}Barrier 3: Scalar-Tensor Universality (Foundation C)}{12}{section*.33}%
+\contentsline {subsection}{\numberline {D}Barrier 4: Planck Suppression (Foundation D)}{12}{section*.34}%
+\contentsline {subsection}{\numberline {E}Barrier 5: Scale Separation (Foundation E)}{12}{section*.35}%
 \contentsline {subsection}{\numberline {F}Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}{12}{section*.36}%
 \contentsline {subsection}{\numberline {G}Barrier 7: Parameter Immunity (Foundation G)}{12}{section*.37}%
 \contentsline {subsection}{\numberline {H}Barrier 8: Parity-Even Interaction (Branch H)}{12}{section*.38}%
-\contentsline {subsection}{\numberline {I}Barrier 9: Liouville Conservation (Branch J)}{12}{section*.39}%
-\contentsline {subsection}{\numberline {J}Barrier 10: UV$\to $IR Specificity Dilemma (Branch L)}{12}{section*.40}%
-\contentsline {subsection}{\numberline {K}Barrier 11: Decoupling Universality (Branches L/M)}{12}{section*.41}%
-\contentsline {subsection}{\numberline {L}Barrier 12: Vacuum Amplification Ceiling (Branch M)}{12}{section*.42}%
+\contentsline {subsection}{\numberline {I}Barrier 9: Liouville Conservation (Branch J)}{13}{section*.39}%
+\contentsline {subsection}{\numberline {J}Barrier 10: UV$\to $IR Specificity Dilemma (Branch L)}{13}{section*.40}%
+\contentsline {subsection}{\numberline {K}Barrier 11: Decoupling Universality (Branches L/M)}{13}{section*.41}%
+\contentsline {subsection}{\numberline {L}Barrier 12: Vacuum Amplification Ceiling (Branch M)}{13}{section*.42}%
 \contentsline {subsection}{\numberline {M}Barrier 13: Gravitational Democracy (Branches N/O)}{13}{section*.43}%
 \contentsline {subsection}{\numberline {N}Barrier 14: Perturbation Transparency}{13}{section*.44}%
 \contentsline {section}{\numberline {X}The Perturbation-Transparency Result}{13}{section*.45}%
 \contentsline {subsection}{\numberline {A}Statement}{13}{section*.46}%
 \contentsline {subsection}{\numberline {B}Proof (Scalar Sector)}{13}{section*.47}%
-\contentsline {subsection}{\numberline {C}Extension to Tensor Sector}{13}{section*.48}%
-\contentsline {subsection}{\numberline {D}Explicit Verification: The Holst Term in Perturbation Theory}{13}{section*.49}%
+\contentsline {subsection}{\numberline {C}Extension to Tensor Sector}{14}{section*.48}%
+\contentsline {subsection}{\numberline {D}Explicit Verification: The Holst Term in Perturbation Theory}{14}{section*.49}%
 \contentsline {subsection}{\numberline {E}What Would Break the Transparency}{14}{section*.50}%
 \contentsline {subsection}{\numberline {F}Implications}{14}{section*.51}%
 \contentsline {subsection}{\numberline {G}Discrimination Among Bouncing Cosmologies}{14}{section*.52}%
@@ -56,17 +56,17 @@
 \contentsline {section}{\numberline {XII}Discussion}{14}{section*.54}%
 \contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{14}{section*.55}%
 \contentsline {subsection}{\numberline {B}Theoretical Implications}{15}{section*.56}%
-\contentsline {section}{\numberline {XIII}Surviving Mechanism-Independent Tests}{15}{section*.57}%
+\contentsline {section}{\numberline {XIII}Surviving Mechanism-Independent Tests}{16}{section*.57}%
 \contentsline {section}{\numberline {XIV}Limitations and Future Directions}{16}{section*.58}%
 \contentsline {subsection}{\numberline {A}Current Limitations}{16}{section*.59}%
 \contentsline {subsubsection}{\numberline {1}Theoretical}{16}{section*.60}%
 \contentsline {subsubsection}{\numberline {2}Observational}{16}{section*.61}%
 \contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{16}{section*.62}%
-\contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{16}{section*.63}%
-\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$ (robustness check, not co-equal closure)}{16}{section*.64}%
+\contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{17}{section*.63}%
+\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$ (robustness check, not co-equal closure)}{17}{section*.64}%
 \contentsline {subsection}{\numberline {E}Structural Closure}{17}{section*.65}%
 \contentsline {section}{\numberline {XV}Conclusions}{17}{section*.66}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{17}{section*.67}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{18}{section*.67}%
 \contentsline {section}{\numberline {}Acknowledgments}{18}{section*.68}%
 \appendix 
 \contentsline {section}{\numberline {A}Complete Parameter Summary}{18}{section*.69}%
