@@ -1,0 +1,45 @@
+{
+  "round_label": "2026-06-01_R-multi-round8",
+  "date": "2026-06-01",
+  "papers": {
+    "P5": {
+      "version_at_time_of_review": "v0.1.38",
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "%-comment audit blocks misread as paper body", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [3, 14], "closure_action": "no action (premise-failed)", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "'Strongest single piece' ordering (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 5], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "MAJOR", "summary": "Sub-percent contamination wording (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M2", "raw_classification": "MAJOR", "summary": "App.A delete entirely (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-m1", "raw_classification": "minor", "summary": "'Upper bound any future model' (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-m2", "raw_classification": "minor", "summary": "Title-vs-DESIVAST emphasis (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Catalog-wide classifier-monopole offset breakdown", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M1", "raw_classification": "MAJOR", "summary": "Empirical max-stat MC primary (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M2", "raw_classification": "MAJOR", "summary": "Phase 2 sensitivity sweep (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M3", "raw_classification": "MAJOR", "summary": "Error propagation through systematic budget (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M4", "raw_classification": "MAJOR", "summary": "RSD scalar-displacement caveat (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M5", "raw_classification": "MAJOR", "summary": "Critical examination of alternatives", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "MAJOR", "summary": "Shamir2022 bibitem completeness (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "DESIVAST author-list truncation style", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M2", "raw_classification": "MAJOR", "summary": "ASTRA preprint disclosure (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M3", "raw_classification": "MAJOR", "summary": "TWebDESI2026 'submitted MNRAS' wording (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-m1", "raw_classification": "minor", "summary": "golden companion hedge (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [6], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-n1", "raw_classification": "nit", "summary": "DESIVAST artifact path format", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null}
+        ]
+      },
+      "exit_round": true,
+      "trend": "3/3 clean — EXIT P5 cascaded R-rounds at v0.1.38; 17 surface findings vs R7's 7 (exit-boundary reflag-bloom)"
+    }
+  },
+  "summary": {
+    "total_findings": 17,
+    "verified": 0,
+    "stale": 11,
+    "falsified": 1,
+    "opinion": 5,
+    "pattern_id_frequency": {"1": 1, "3": 1, "4": 11, "5": 1, "6": 1, "9": 10, "14": 1, "16": 1}
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "round_label": "2026-06-01_R-multi-round5",
+  "date": "2026-06-01",
+  "papers": {
+    "P1A": {
+      "version_at_time_of_review": "v1A.0.39",
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "Perturbation-transparency = standard vanishing-spin (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 5], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "Channel-level no-go exceeds shown (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "MAJOR", "summary": "N_tot≈92 ansatz-independence (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M2", "raw_classification": "MAJOR", "summary": "f_NL + birefringence labeled 'surviving' but non-ECH", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-n1", "raw_classification": "nit", "summary": "Review-history comments in source", "truth_audit_verdict": "OPINION", "pattern_ids": [3, 14], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-n2", "raw_classification": "nit", "summary": "Barriers 8/14 still separately counted", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Channel-level vs operator-level (reflag x5)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B2", "raw_classification": "MAJOR", "summary": "Parity-odd phenomenological (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B3", "raw_classification": "MAJOR", "summary": "LQC ρ_c scheme-dependent (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B4", "raw_classification": "MAJOR", "summary": "Route 1 NJL parity-odd partner (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B5", "raw_classification": "MAJOR", "summary": "Route 4 birefringence rigor (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B6", "raw_classification": "MAJOR", "summary": "Appendix B dim-mismatch (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "BLOCKER", "summary": "Shapiro-Teixeira title 'gravity' vs 'theory'", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "DLM ±0.020 sequential refinement", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M2", "raw_classification": "MAJOR", "summary": "DKS RG equation form 'schematically motivated' (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M3", "raw_classification": "MAJOR", "summary": "LWK don't introduce (α/M)θ F̃F form (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-m1", "raw_classification": "minor", "summary": "Ashtekar-Singh 0.41 vs 0.27 (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-m2", "raw_classification": "minor", "summary": "f_NL=-35/8 from Cai:2009fn single-field-specific", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "trend": "0 VERIFIED; clean-count 2/3 on v1A.0.39"
+    },
+    "P1B": {
+      "version_at_time_of_review": "v1B.0.34",
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "Preamble audit log (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [3, 14], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "'Ran stock codes' (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B3", "raw_classification": "BLOCKER", "summary": "Eskilt label unstable across rounds", "truth_audit_verdict": "OPINION", "pattern_ids": [2, 8], "closure_action": "no action (current text correct)", "closed_in_version": null},
+          {"finding_id": "GRO-B4", "raw_classification": "BLOCKER", "summary": "+4.3σ/-3.6σ tail extrapolations", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B5", "raw_classification": "BLOCKER", "summary": "ALP MCMC no ECH value (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B6", "raw_classification": "BLOCKER", "summary": "Paper-is-running-changelog", "truth_audit_verdict": "OPINION", "pattern_ids": [3, 14], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "CAMB ΛCDM+ΔNeff insufficient ECH proxy", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B2", "raw_classification": "MAJOR", "summary": "NaMaster pipeline-validation framing (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B3", "raw_classification": "MAJOR", "summary": "ALP rationale (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B4", "raw_classification": "MAJOR", "summary": "ΔNeff Hubble-tension stat", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B5", "raw_classification": "MAJOR", "summary": "AIC/BIC/ln B (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-B6", "raw_classification": "minor", "summary": "Cross-paper table clarity", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PER5-B1", "raw_classification": "BLOCKER", "summary": "Eskilt 'PR4/NPIPE' should revert to 'PR3'", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [2, 7, 13], "closure_action": "no action (reversion would re-introduce regression)", "closed_in_version": null},
+          {"finding_id": "PER5-M1", "raw_classification": "MAJOR", "summary": "DESI DR2 not real (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER5-M2", "raw_classification": "MAJOR", "summary": "Liu ECTorsionDESI2025 (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER5-M3", "raw_classification": "MAJOR", "summary": "DiegoPalazuelos2025 (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER5-m1", "raw_classification": "minor", "summary": "LiteBIRD 0.03° (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER5-nit1", "raw_classification": "nit", "summary": "Hehl/Mercuri ΔNeff inference framing", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "trend": "0 VERIFIED; clean-count 1/3 on v1B.0.34"
+    },
+    "P5": {
+      "version_at_time_of_review": "v0.1.37",
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "Abstract V-Web void (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [4], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "App.A toy EFT deletion request", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "MAJOR", "summary": "Concordance DESIVAST re-projection", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-M2", "raw_classification": "MAJOR", "summary": "Tempel to appendix structural rewrite", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-m1", "raw_classification": "minor", "summary": "App.A toy EFT (reflag)", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GRO-m2", "raw_classification": "minor", "summary": "Residual superlatives 'cleanest single-test publication-grade'", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5], "closure_action": "'cleanest'→'direct' at §IX.G L1520+L1539", "closed_in_version": "v0.1.38"}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Empirical max-stat MC primary (dup)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M1", "raw_classification": "MAJOR", "summary": "V-Web smoothing scale (dup)", "truth_audit_verdict": "STALE", "pattern_ids": [4, 9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-M2", "raw_classification": "MAJOR", "summary": "Per-class σ vs monopole offset", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-m1", "raw_classification": "minor", "summary": "Comparative context request", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-m2", "raw_classification": "minor", "summary": "Prior justification request", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "GPT-n1", "raw_classification": "nit", "summary": "Minor formatting", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "MAJOR", "summary": "Shamir2022 metadata (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "DESIVAST '(DESI Collaboration)' tag", "truth_audit_verdict": "VERIFIED", "pattern_ids": [11], "closure_action": "removed (DESI Collaboration) from author list", "closed_in_version": "v0.1.38"},
+          {"finding_id": "PER-M2", "raw_classification": "MAJOR", "summary": "ASTRA 'first public DESI cosmic-web catalog'", "truth_audit_verdict": "VERIFIED", "pattern_ids": [5, 11], "closure_action": "softened to 'DESI-EDR-based probabilistic environment catalog'", "closed_in_version": "v0.1.38"},
+          {"finding_id": "PER-M3", "raw_classification": "minor", "summary": "Approximate ranges", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null},
+          {"finding_id": "PER-m1", "raw_classification": "nit", "summary": "DR1 iron path (reflag)", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "trend": "3 VERIFIED; v0.1.37→v0.1.38; clean-count reset"
+    }
+  },
+  "summary": {
+    "total_findings": 54,
+    "verified": 3,
+    "stale": 26,
+    "falsified": 1,
+    "opinion": 24,
+    "pattern_id_frequency": {"1": 9, "2": 2, "3": 2, "4": 25, "5": 5, "7": 1, "8": 1, "9": 22, "11": 2, "12": 8, "13": 1, "14": 2}
+  }
+}
