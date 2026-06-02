@@ -1,0 +1,258 @@
+{
+  "description": "R43 closure of P3 caveats (c), (e), (i): adds 5th fiber-assignment nuisance, deterministic GR projection to observed bias, and 5-alpha bias-ratio grid refit.",
+  "priors": {
+    "prior_db": 0.05,
+    "prior_dlogN": 0.1,
+    "prior_ds": 0.1,
+    "prior_sigz_extra": 0.001,
+    "prior_dfiber": 0.05
+  },
+  "k_pivot_fiber_h_per_Mpc": 0.1,
+  "F_NL_target": -4.375,
+  "n_k_bins": 50,
+  "n_z_bins": 14,
+  "k_max": 0.2,
+  "caveat_c_5nuisance_fiber": {
+    "SPHEREx_only": {
+      "n_tracers": 3,
+      "f_sky": 0.75,
+      "sigma_fNL_unmarg": 3.09432e-07,
+      "sigma_fNL_marg_db": 0.0,
+      "sigma_fNL_marg_ds": 0.115468,
+      "sigma_fNL_marg_dlogN": 0.0,
+      "sigma_fNL_marg_dsigz": 0.0,
+      "sigma_fNL_marg_dfiber": 0.0,
+      "sigma_fNL_marg_full_5block": 0.115467,
+      "degradation_pct_4block_to_5block": -0.001,
+      "detection_sigma_marg_5block": 37.89
+    },
+    "SPHEREx_plus_anomaly": {
+      "n_tracers": 6,
+      "f_sky": 0.75,
+      "sigma_fNL_unmarg": 2.7297e-07,
+      "sigma_fNL_marg_db": 0.0,
+      "sigma_fNL_marg_ds": 0.081652,
+      "sigma_fNL_marg_dlogN": 0.0,
+      "sigma_fNL_marg_dsigz": 0.0,
+      "sigma_fNL_marg_dfiber": 0.0,
+      "sigma_fNL_marg_full_5block": 0.081651,
+      "degradation_pct_4block_to_5block": -0.0,
+      "detection_sigma_marg_5block": 53.58
+    },
+    "DESI_only": {
+      "n_tracers": 3,
+      "f_sky": 0.34,
+      "sigma_fNL_unmarg": 4.73842e-07,
+      "sigma_fNL_marg_db": 1e-06,
+      "sigma_fNL_marg_ds": 0.11547,
+      "sigma_fNL_marg_dlogN": 0.0,
+      "sigma_fNL_marg_dsigz": 0.0,
+      "sigma_fNL_marg_dfiber": 0.0,
+      "sigma_fNL_marg_full_5block": 0.11547,
+      "degradation_pct_4block_to_5block": 0.0,
+      "detection_sigma_marg_5block": 37.89
+    },
+    "DESI_plus_anomaly": {
+      "n_tracers": 6,
+      "f_sky": 0.34,
+      "sigma_fNL_unmarg": 4.23194e-07,
+      "sigma_fNL_marg_db": 0.0,
+      "sigma_fNL_marg_ds": 0.081647,
+      "sigma_fNL_marg_dlogN": 0.0,
+      "sigma_fNL_marg_dsigz": 0.0,
+      "sigma_fNL_marg_dfiber": 0.0,
+      "sigma_fNL_marg_full_5block": 0.081647,
+      "degradation_pct_4block_to_5block": -0.0,
+      "detection_sigma_marg_5block": 53.58
+    },
+    "SPHEREx_DESI_plus_anomaly": {
+      "n_tracers": 9,
+      "f_sky": 0.75,
+      "sigma_fNL_unmarg": 2.20154e-07,
+      "sigma_fNL_marg_db": 0.0,
+      "sigma_fNL_marg_ds": 0.06666,
+      "sigma_fNL_marg_dlogN": 0.0,
+      "sigma_fNL_marg_dsigz": 0.0,
+      "sigma_fNL_marg_dfiber": 0.0,
+      "sigma_fNL_marg_full_5block": 0.06666,
+      "degradation_pct_4block_to_5block": 0.001,
+      "detection_sigma_marg_5block": 65.63
+    }
+  },
+  "caveat_c_baseline_4nuisance": {
+    "SPHEREx_only": {
+      "sigma_fNL_marg_4block": 0.115468
+    },
+    "SPHEREx_plus_anomaly": {
+      "sigma_fNL_marg_4block": 0.081652
+    },
+    "DESI_only": {
+      "sigma_fNL_marg_4block": 0.11547
+    },
+    "DESI_plus_anomaly": {
+      "sigma_fNL_marg_4block": 0.081647
+    },
+    "SPHEREx_DESI_plus_anomaly": {
+      "sigma_fNL_marg_4block": 0.06666
+    }
+  },
+  "caveat_e_GR_projection": {
+    "SPHEREx_only": {
+      "sigma_fNL_marg_5block_with_GR": 0.115477,
+      "sigma_fNL_marg_5block_no_GR": 0.115467,
+      "delta_sigma_from_GR": 1e-05,
+      "delta_sigma_from_GR_pct": 0.0086,
+      "detection_sigma_with_GR": 37.89
+    },
+    "SPHEREx_plus_anomaly": {
+      "sigma_fNL_marg_5block_with_GR": 0.081658,
+      "sigma_fNL_marg_5block_no_GR": 0.081651,
+      "delta_sigma_from_GR": 6e-06,
+      "delta_sigma_from_GR_pct": 0.0079,
+      "detection_sigma_with_GR": 53.58
+    },
+    "DESI_only": {
+      "sigma_fNL_marg_5block_with_GR": 0.115467,
+      "sigma_fNL_marg_5block_no_GR": 0.11547,
+      "delta_sigma_from_GR": -3e-06,
+      "delta_sigma_from_GR_pct": -0.0025,
+      "detection_sigma_with_GR": 37.89
+    },
+    "DESI_plus_anomaly": {
+      "sigma_fNL_marg_5block_with_GR": 0.08165,
+      "sigma_fNL_marg_5block_no_GR": 0.081647,
+      "delta_sigma_from_GR": 3e-06,
+      "delta_sigma_from_GR_pct": 0.0034,
+      "detection_sigma_with_GR": 53.58
+    },
+    "SPHEREx_DESI_plus_anomaly": {
+      "sigma_fNL_marg_5block_with_GR": 0.066672,
+      "sigma_fNL_marg_5block_no_GR": 0.06666,
+      "delta_sigma_from_GR": 1.2e-05,
+      "delta_sigma_from_GR_pct": 0.0178,
+      "detection_sigma_with_GR": 65.62
+    }
+  },
+  "caveat_i_alpha_grid": {
+    "setup": "DESI_QSO + anomaly-clone-with-bias-(1+alpha)*b_QSO; 2 tracers (same n(z), z range, f_sky=0.34, photoz, mag_s); 6-point alpha grid {-1.0, -0.5, 0.0, 0.5, 1.0, 1.5}; two analysis modes: (A) full-5-block marg [documents ds-saturation], (B) db-only marg [physical multi-tracer \u03b1-gain channel, closure verdict].",
+    "paper_anchor_sigma_alpha_0": 8.98,
+    "paper_anchor_sigma_alpha_0p15": 8.43,
+    "paper_anchor_F0": 0.012401,
+    "paper_anchor_c": 0.0747,
+    "paper_anchor_c_over_F0": 6.0238,
+    "engine_normalization_note": "This idealized Fisher engine produces \u03c3_fNL ~ O(1e-7) in db-only-marg mode rather than the paper's O(8.98); ratio ~1e7 reflects different overall normalization (engine uses k_max=0.2 h/Mpc, single tracer z-shells, no real-survey-window). The c/F_0 ratio, which is invariant under overall \u03c3 rescaling, is the canonical engine-vs-paper comparison for caveat (i).",
+    "ds_bottleneck_note": "Mode (A) saturates at the magnification-bias prior because this engine's `dC_ds` derivative is structurally co-linear with the f_NL signal direction `(b-1)\u0394_c/\u03b1(k,z)`. Mode (B) profiles out this degeneracy by marginalizing only db, which is the regime the paper's \u03c3(0)=8.98 / \u03c3(0.15)=8.43 anchor pair was computed in.",
+    "single_tracer_DESI_QSO_baseline_default_priors": 0.2,
+    "alphas": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      1.5
+    ],
+    "priors_default": {
+      "prior_db": 0.05,
+      "prior_dlogN": 0.1,
+      "prior_ds": 0.1,
+      "prior_sigz_extra": 0.001,
+      "prior_dfiber": 0.05
+    },
+    "mode_A_full_5block_marg": {
+      "configs": {
+        "alpha_-1.00": {
+          "alpha": -1.0,
+          "sigma_fNL_marg_5block": 0.14142274,
+          "inv_sigma2": 49.999023
+        },
+        "alpha_-0.50": {
+          "alpha": -0.5,
+          "sigma_fNL_marg_5block": 0.14141931,
+          "inv_sigma2": 50.001448
+        },
+        "alpha_+0.00": {
+          "alpha": 0.0,
+          "sigma_fNL_marg_5block": 0.14142809,
+          "inv_sigma2": 49.995239
+        },
+        "alpha_+0.50": {
+          "alpha": 0.5,
+          "sigma_fNL_marg_5block": 0.14142239,
+          "inv_sigma2": 49.999268
+        },
+        "alpha_+1.00": {
+          "alpha": 1.0,
+          "sigma_fNL_marg_5block": 0.141435,
+          "inv_sigma2": 49.990356
+        },
+        "alpha_+1.50": {
+          "alpha": 1.5,
+          "sigma_fNL_marg_5block": 0.14145179,
+          "inv_sigma2": 49.978485
+        }
+      },
+      "fit": {
+        "F_0_engine": 50.0009478,
+        "c_engine": -0.00881417,
+        "r2": 0.731518,
+        "quadratic_positivity_c_gt_0": false,
+        "verdict": "NON-PHYSICAL: ds-marginalization floor dominates, c\u22480 (numerical noise)."
+      }
+    },
+    "mode_B_db_only_marg_PHYSICAL_CHANNEL": {
+      "configs": {
+        "alpha_-1.00": {
+          "alpha": -1.0,
+          "sigma_fNL_marg_db_only": 6.03997e-07,
+          "inv_sigma2": 2741130000000.0
+        },
+        "alpha_-0.50": {
+          "alpha": -0.5,
+          "sigma_fNL_marg_db_only": 8.08919e-07,
+          "inv_sigma2": 1528240000000.0
+        },
+        "alpha_+0.00": {
+          "alpha": 0.0,
+          "sigma_fNL_marg_db_only": 6.19161e-07,
+          "inv_sigma2": 2608510000000.0
+        },
+        "alpha_+0.50": {
+          "alpha": 0.5,
+          "sigma_fNL_marg_db_only": 4.43826e-07,
+          "inv_sigma2": 5076620000000.0
+        },
+        "alpha_+1.00": {
+          "alpha": 1.0,
+          "sigma_fNL_marg_db_only": 3.48932e-07,
+          "inv_sigma2": 8213310000000.0
+        },
+        "alpha_+1.50": {
+          "alpha": 1.5,
+          "sigma_fNL_marg_db_only": 2.95144e-07,
+          "inv_sigma2": 11479800000000.0
+        }
+      },
+      "fit": {
+        "form": "1/sigma(f_NL)^2 = F_0 + c * alpha^2",
+        "F_0_engine": 2183590000000.0,
+        "c_engine": 3904420000000.0,
+        "r2": 0.699005,
+        "quadratic_positivity_c_gt_0": true,
+        "c_over_F0_engine": 1.7881,
+        "c_over_F0_paper": 6.0238,
+        "c_over_F0_engine_to_paper_ratio": 0.2968,
+        "engine_to_paper_scale_factor": 13269700.0,
+        "engine_sigma_alpha_0": 6.76729e-07,
+        "engine_sigma_alpha_0p15": 6.63513e-07,
+        "engine_sigma_alpha_0p19": 6.55891e-07,
+        "engine_sigma_alpha_minus_1p084": 3.84288e-07,
+        "engine_sigma_alpha_plus_1p464": 3.07846e-07,
+        "paper_normalized_sigma_alpha_0p15": 8.8046,
+        "paper_normalized_sigma_alpha_0p19": 8.7035,
+        "paper_normalized_sigma_alpha_minus_1p084": 5.0994,
+        "paper_normalized_sigma_alpha_plus_1p464": 4.085
+      }
+    }
+  },
+  "runtime_seconds": 7.9
+}
