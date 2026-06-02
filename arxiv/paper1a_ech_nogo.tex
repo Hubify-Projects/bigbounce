@@ -1,5 +1,5 @@
-% Structural Closure of Minimal Einstein-Cartan-Holst Dark Energy
-% Paper 1A (theory / no-go paper)
+% Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes
+% Paper 1A (theory / channel-level no-go paper)
 % Houston Golden -- 2026
 % arXiv submission: gr-qc / astro-ph.CO / hep-th
 %
@@ -45,8 +45,43 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.39}
-\newcommand{\paperTimestamp}{June 1, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.40}
+\newcommand{\paperTimestamp}{June 2, 2026 PDT}
+% v1A.0.40 (Houston-shared 3-reviewer external R-round on v1A.0.36 ran
+%   2026-06-02; reviewers Grok / Gemini / ChatGPT). Substantial revision
+%   closures landed in this version (all real text edits, no defer):
+%     (1) Embedded LLM/R-round logs stripped from 9 body locations
+%         (Gemini BLOCKER 2.1; affected §I, §II.C.1, §IV, §IV.B, §IV.C,
+%         §IX/Barrier 12, §X reminder, §XII.A, Appendix B). Body now reads
+%         as a single-author scientific document.
+%     (2) Title retitled "Channel-Level Closure of Four Minimal ECH
+%         Dark-Energy Routes and Perturbation Transparency for Scalar
+%         Matter" (Grok B3 + ChatGPT B1/M1).
+%     (3) New "Scope and Limitations" paragraph added to §I covering
+%         operator-basis incompleteness, omitted operators (Jackiw-Pi
+%         CS + parity-odd 4-fermion partner), dim ansatz, and
+%         scalar-matter restriction of transparency theorem.
+%     (4) "structural closure" / "no-go theorem" softened to "channel-
+%         level closure under stated assumptions" throughout abstract,
+%         §I, §IV.E, §IX, §XIII, §XIV.E, conclusions.
+%     (5) Benedetti & Speziale (arXiv:1104.4028) added as the correct
+%         source for fermion-induced Immirzi running; DKS attribution
+%         softened (ChatGPT B6).
+%     (6) Companion-paper citations hedged with "(in preparation;
+%         companion work)" wording (ChatGPT B10 + Grok minor).
+%     (7) Route 4 reframed as a naturalness objection rather than an
+%         amplitude no-go (ChatGPT B8).
+%     (8) Reheating thermal-reset rewritten to source torsion from
+%         axial-current expectation $\langle J^5_\mu\rangle$ (which
+%         vanishes in the mean for a thermal unpolarized bath) rather
+%         than from total fermion number density (ChatGPT B9 + Gemini 3.1).
+%     (9) Route 2 dimensional ambiguity: $10^{-58}$ canonical-ordering
+%         estimate adopted as the canonical Route-2 bound, with
+%         $10^{-33}$ alternative footnoted (ChatGPT B5).
+%     (10) Bib alias-of-Eskilt2022b note stripped from references.bib
+%         and the .bbl entry (ChatGPT minor 1).
+%   See project-context/peer-reviews/external/2026-06-02_P1A_houston_external_synthesis.md
+%   for the full per-finding truth-audit table.
 % v1A.0.39 (R-multi-round3 3-vendor cross-vendor on v1A.0.38 ran 2026-06-01).
 %   Round 3 (Grok-4 brutal-honesty, GPT-4o-fallback methodology, Perplexity
 %   Sonar-Pro citations; Gemini failed billing — skipped). Truth-audit
@@ -222,8 +257,9 @@
 
 \preprint{HUBIFY-2026-001A}
 
-\title{Structural Closure of Einstein--Cartan--Holst Dark Energy:\\
-A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
+\title{Channel-Level Closure of Four Minimal\\
+Einstein--Cartan--Holst Dark-Energy Routes\\
+and Perturbation Transparency for Scalar Matter}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -232,15 +268,20 @@ A No-Go Theorem and the Matter-Bounce Tests It Does Not Predict}
 \date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
-We establish that the four enumerated minimal-Einstein-Cartan-Holst (ECH)
-spin-torsion channels for sourcing late-time dark energy fail at the
-amplitude level. This is a channel-level closure, not an operator-level
-theorem: the four enumerated routes (NJL, one-loop EA, Immirzi running,
-parity-CMB) are not proven to be a complete diffeomorphism-invariant
-operator basis for the minimal-ECH effective action; we acknowledge missing
-operators (Jackiw-Pi gravitational Chern-Simons $R\!\wedge\!\tilde R$,
-parity-odd four-fermion partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$
-coefficient) explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}.
+We assess four enumerated minimal-Einstein-Cartan-Holst (ECH) spin-torsion
+channels as candidate sources of late-time dark energy and find that each
+fails at the amplitude level under stated assumptions. This is a
+channel-level assessment, \emph{not} an operator-level theorem: the four
+enumerated routes (NJL, one-loop EA, Immirzi running, parity-CMB) are not
+proven to be a complete diffeomorphism-invariant operator basis for the
+minimal-ECH effective action; we acknowledge missing operators (Jackiw-Pi
+gravitational Chern-Simons $R\!\wedge\!\tilde R$, parity-odd four-fermion
+partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$ coefficient)
+explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}. The
+dark-energy mapping rests on a phenomenological on-shell scaling ansatz
+whose off-shell mass dimension is $+1$ rather than $+4$
+(Appendix~\ref{app:dimensions}); we treat this scaling explicitly as an
+ansatz, not a derivation.
 Through 7 foundation studies (Foundations~A--G) and 6 observational research
 branches (Branches~H, J, L, M, N, O) we report 13 logically-independent
 mechanism-class constraints (the prior count of 14 retained Barrier~8 as the
@@ -256,42 +297,45 @@ first Bianchi identity, and the Holst sector decouples from all
 scalar/tensor perturbation observables (Sec.~\ref{sec:transparency}).
 The proposed link from ECH to a late-time vacuum energy requires a phenomenological
 dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
-and is closed by the 13 logically-independent barriers of Sec.~\ref{sec:barriers} (14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency theorem).
-A structural incompatibility (Sec.~\ref{sec:structural_tension}) exists between
+and is constrained at the channel-amplitude level by 13 logically-independent
+barriers (Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result).
+A structural tension (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); ECH is therefore not internally consistent as both a
-dark-energy generator and a matter-bounce host. The two predictions discussed
+$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); the minimal-ECH four-route channel set is therefore tightly constrained as
+both a dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
-but bounce-class and GR$+$ALP-class observables that the ECH closure does not
-forbid in the parameter regimes complementary to its dark-energy mechanism;
+but bounce-class and GR$+$ALP-class observables that the channel-level
+assessment does not forbid in the parameter regimes complementary to its dark-energy mechanism;
 we report them here because they remain testable signatures of any bounce
 model in the broader programme. Specifically: (i)~$\fnl = -35/8$ is a
 property of the \emph{matter-bounce class}~\cite{Cai:2009fn}, derived from
-the contraction-phase cubic action with no ECH input, testable by SPHEREx at
-$3$--$5\sigma$ realistic significance (detailed multi-tracer Fisher forecast
-in Paper~II, Ref.~\cite{Golden2026P2}); and (ii)~spectator-ALP birefringence
-$\beta\approx 0.27^\circ$ consistent with the published Planck (WMAP$+$Planck
-joint) $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$ measurement
-($\sim\!3.6\sigma$, Eskilt~\&~Komatsu~\cite{Eskilt2022b}; with an independent
-ACT~DR6 follow-up $\beta = 0.215^\circ\pm 0.074^\circ$ at $\sim\!2.9\sigma$,
-Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}) arises in any GR$+$ALP
-setup with the same parameters and is \emph{not} derived from the ECH action. The role of this paper is the
-\emph{channel-level no-go} for the four enumerated minimal-ECH dark-energy
+the contraction-phase cubic action with no ECH input (a detailed
+multi-tracer SPHEREx Fisher forecast is presented in a companion work
+in preparation~\cite{Golden2026P2}); and (ii)~spectator-ALP birefringence
+$\beta\approx 0.27^\circ$ is a \emph{benchmark consistency point}, not an
+ECH prediction: it sits inside the WMAP$+$Planck $1\sigma$ band
+$\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
+($\sim\!3.6\sigma$ from $\beta=0$, Eskilt~\&~Komatsu~\cite{Eskilt2022b}),
+and is comparable to the independent
+ACT~DR6 follow-up $\beta = 0.215^\circ\pm 0.074^\circ$ at $\sim\!2.9\sigma$
+(Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}); the same
+benchmark arises in any GR$+$ALP setup with the same parameters and is
+\emph{not} derived from the ECH action. The role of this paper is the
+\emph{channel-level closure} of the four enumerated minimal-ECH dark-energy
 routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity; we do not
 claim a full operator-basis closure of the most general ECH parity-odd /
 torsion-sourced sector (Jackiw--Pi gravitational Chern--Simons and the
 parity-odd four-fermion partner of R1 are listed but not separately
 enumerated in the four routes; their explicit closure is left to a follow-up
-operator-level analysis). The complementary observational
-programme is hosted in the bounce-class portfolio (Paper~II, Paper~I(b)),
-not in ECH per se.
+operator-level analysis). The complementary observational programme is
+hosted in companion works in preparation~\cite{Golden2026P2,Golden2026P1b}.
 $\Lambda$CDM$+\Delta\Neff$ MCMC verification, NaMaster pipeline validation,
-and ALP parameter fitting are documented separately in the companion
-Paper~I(b)~\cite{Golden2026P1b}.
+and ALP parameter fitting are documented separately in companion work in
+preparation~\cite{Golden2026P1b}.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
-\keywords{Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, perturbation transparency, primordial non-Gaussianity, dark-energy no-go theorem}
+\keywords{Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, perturbation transparency, primordial non-Gaussianity, channel-level closure}
 
 \maketitle
 \tableofcontents
@@ -312,12 +356,36 @@ extensions of the standard model.
 
 This work presents and closes a phenomenological framework that connects ECH
 spin-torsion cosmology to dark energy. The structural conclusion is a
-\emph{channel-level amplitude no-go} on the four enumerated minimal-ECH
-dark-energy routes (Sec.~\ref{sec:fourroute}): the 14 constraints
-(Sec.~\ref{sec:barriers}, 13 logically-independent with B8 subsumed by B14)
-close those routes at amplitude-budget granularity. The surviving
-phenomenological predictors---matter-bounce $\fnl$ and spectator-ALP
-birefringence---are mechanism-independent and shared by other UV completions.
+\emph{channel-level amplitude closure} of the four enumerated minimal-ECH
+dark-energy routes (Sec.~\ref{sec:fourroute}): under the stated assumptions,
+the 14 constraints (Sec.~\ref{sec:barriers}, 13 logically-independent with
+B8 subsumed by B14) close those routes at amplitude-budget granularity.
+The surviving phenomenological predictors---matter-bounce $\fnl$ and
+spectator-ALP birefringence---are mechanism-independent and shared by other
+UV completions.
+
+\paragraph{Scope and limitations.} The four routes assessed below are
+minimal channels rather than a complete diffeomorphism-invariant operator
+basis. In particular, the Jackiw--Pi gravitational Chern--Simons term
+$R\!\wedge\!\widetilde R$ and the parity-odd four-fermion partner of
+Route~1 (carrying coefficient
+$\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\!\cdot\! 8\pi G$) are excluded from
+the enumeration and their explicit closure is left to a follow-up
+operator-basis analysis. The dark-energy mapping presented in
+Sec.~\ref{sec:rotation} and Appendix~\ref{app:dimensions} rests on a
+phenomenological on-shell scaling ansatz: the leading parity-odd operator
+written in Eq.~(\ref{eq:Seff_comp}) has off-shell mass dimension $+1$ and
+acquires its $\rho_\Lambda$ mapping only through on-shell evaluation at
+Planck-scale bounce densities; we treat this mapping explicitly as an
+ansatz, not a derivation. The perturbation-transparency result of
+Sec.~\ref{sec:transparency} is restricted to canonical scalar matter:
+fermion spin density, propagating torsion (Poincar\'{e} gauge theory),
+dynamical Immirzi fields, non-minimal matter couplings, and
+boundary/topological sectors are explicitly outside its scope. Within
+those caveats, the four channels are assessed at the amplitude-budget
+granularity at which observations discriminate, and the resulting closure
+is a channel-level statement under specified assumptions rather than a
+full operator-level theorem.
 
 Our approach builds on three theoretical pillars:
 
@@ -357,11 +425,12 @@ $H_0$/$\sigma_8$ tension resolution? & $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 
 {\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved.
 $^b$$3$--$5\sigma$ realistic after full systematic budget (GR-projection,
 $b_\phi$ uncertainty, photo-$z$ degradation) under
-Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$.
+Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ --- detailed Fisher forecast in
+companion work in preparation~\cite{Golden2026P2}.
 $^c$Class-level: scalar-only $w=0$ matter-bounce under Assumption~(f) of
-Paper~II; not fully mechanism-independent across the bouncing-cosmology
-landscape; not a distinctive ECH prediction.
-MCMC details in companion Paper~I(b)~\cite{Golden2026P1b}.}
+the companion forecast~\cite{Golden2026P2}; not fully mechanism-independent
+across the bouncing-cosmology landscape; not a distinctive ECH prediction.
+MCMC details in companion work in preparation~\cite{Golden2026P1b}.}
 \end{table*}
 
 \begin{figure*}[tb]
@@ -371,9 +440,10 @@ MCMC details in companion Paper~I(b)~\cite{Golden2026P1b}.}
   Bounce-mechanism $\rightarrow$ observable-prediction map. Left column:
   candidate non-singular bounce mechanisms (LQC, ECH/torsion, matter bounce,
   quintom-B, Cuscuton, ekpyrotic). Right column: distinctive observable channels.
-  ECH appears bordered with a dashed box marked \emph{structurally closed (this
-  paper)}---the 14-constraint catalog narrows minimal-ECH dark-energy routes
-  to zero phenomenologically free pathways.}
+  ECH appears bordered with a dashed box marked \emph{channel-level
+  closure under stated assumptions (this paper)}---the 14-constraint catalog
+  narrows the four enumerated minimal-ECH dark-energy channels to zero
+  phenomenologically free pathways within those channels.}
 \end{figure*}
 
 
@@ -523,8 +593,10 @@ introduce as a phenomenological ansatz the parity-odd term:
 \begin{equation}\label{eq:Seff}
 S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathring{R}],
 \end{equation}
-where $M = M_{\rm area\text{-}gap}\sim\MPl/\sqrt{\gamma}$ is the LQG area-gap (from the LQG area-gap $\Delta \propto \gamma\,\ell_P^2$, the inverse-length / mass scale is $M_\Delta \sim M_{\rm Pl}/\sqrt{\gamma}$ up to numerical constants; v1A.0.28 R7 GPT-m1 closure: prior $M\sim\sqrt{\gamma}\,\MPl$ inverted the scaling)
-mass scale and $\alpha$ is a dimensionless coupling.
+where $M = M_{\rm area\text{-}gap}\sim\MPl/\sqrt{\gamma}$ is the LQG area-gap
+mass scale (from the LQG area-gap $\Delta \propto \gamma\,\ell_P^2$, the
+inverse-length / mass scale is $M_\Delta \sim M_{\rm Pl}/\sqrt{\gamma}$ up
+to numerical constants) and $\alpha$ is a dimensionless coupling.
 
 In components, the leading contribution reduces to
 \begin{equation}\label{eq:Seff_comp}
@@ -641,16 +713,16 @@ $\bar\psi \gamma^{[a}\gamma^b\gamma^{c]}\psi$ axial-vector
 contraction from the parity-even scalar contraction (the parity-odd
 combination carries an extra phase-space suppression at thermal
 equilibrium, justified here on dimensional / phase-space grounds for
-the axial-current variance; per R23 Gemini-3.1-Pro PAPER-GEM-M1
-closure, the prior draft incorrectly equated this thermal phase-space
-factor with the Mercuri \& Capozziello~\cite{MercuriCapozziello2008}
-one-loop coefficient $\alpha_{\rm em}/(4\pi)$ in
-Eq.~\ref{eq:oneloop_parity_odd}, which is a quantum chiral-anomaly
-loop suppression and is physically unrelated to thermal phase-space
-counting; we now treat the $\sqrt{T_{\rm reh}/M_{\rm GUT}}$
-parity-odd-density-of-states factor as a phenomenological
-phase-space ansatz, not as derivable from the one-loop anomaly
-coefficient). The
+the axial-current variance). We emphasize that this thermal
+phase-space factor is \emph{not} identifiable with the
+Mercuri~\&~Capozziello~\cite{MercuriCapozziello2008} one-loop
+coefficient $\alpha_{\rm em}/(4\pi)$ appearing in
+Eq.~\ref{eq:oneloop_parity_odd}: the latter is a quantum
+chiral-anomaly loop suppression physically unrelated to thermal
+phase-space counting. The $\sqrt{T_{\rm reh}/M_{\rm GUT}}$
+parity-odd-density-of-states factor is therefore treated as a
+phenomenological phase-space ansatz, not as derivable from the
+one-loop anomaly coefficient. The
 two factors compound to $(T_{\rm reh}/M_{\rm GUT})^{3/2}$. Numerical
 matching at $T_{\rm reh} \approx 10^{15}\,\text{GeV}$ and
 $M_{\rm GUT} \approx 10^{16}\,\text{GeV}$ gives the
@@ -670,21 +742,36 @@ from $10^{122}$ (the genuine $\MPl^4/\rho_\Lambda^{\rm obs}$ cosmological-consta
 hierarchy; see Appendix~\ref{app:dimensions}) to $\sim 10^5$ as sensitivity to
 $\Delta N_{\rm tot}\approx 4$ $e$-folds.
 
-\textit{Reheating thermal-reset barrier (R2 finding, supporting B14).}---Even
-granting the dilution bookkeeping above, torsion in minimal ECH is non-propagating
-and tracks the \emph{instantaneous} local fermion spin density:
-$T^\lambda{}_{\mu\nu}\propto S^\lambda{}_{\mu\nu}$ algebraically. Reheating from
-the inflaton populates a thermal fermion bath with $n_\psi(T_{\rm reh})\sim
-T_{\rm reh}^3\sim (10^{15}\,\text{GeV})^3$, which is enormously larger than the
-bounce-era frozen-in spin density that any $e^{-3N_{\rm tot}}$ dilution leaves
-behind. The post-reheating torsion is therefore set by the instantaneous thermal
-bath, \emph{not} by the diluted bounce-era torsion. Any ``memory'' of the
-bounce-era torsion stored in $\Dinf$ is overwritten by the reheating thermal
-reset, providing an independent thermodynamic closure of the ECH dark-energy
-route that does not require the dimensional bookkeeping of
-Appendix~\ref{app:dimensions} or the specific value of $N_{\rm tot}$. This
-strengthens Barrier~14 (perturbation transparency) by adding a parallel
-thermodynamic erasure channel for the torsion-sourced dark-energy mechanism. We emphasize that this is bookkeeping, not progress: the residual
+\textit{Reheating thermal-reset barrier (supporting B14).}---Even
+granting the dilution bookkeeping above, torsion in minimal ECH is
+non-propagating and tracks the \emph{instantaneous} local fermion axial
+current density via the Cartan algebraic equation
+$T^\lambda{}_{\mu\nu}\propto S^\lambda{}_{\mu\nu}\propto
+\langle\bar\psi\gamma^{[\lambda}\gamma^\mu\gamma^{\nu]}\psi\rangle$.
+Critically, this source is the \emph{axial current} $\langle J^5_\mu\rangle$,
+not the total fermion number density $n_\psi$: a thermal unpolarized
+fermion bath in approximate $C/P$-equilibrium has $\langle J^5_\mu\rangle
+\to 0$ in the mean even when $n_\psi\sim T_{\rm reh}^3\sim 10^{45}\,
+\text{cm}^{-3}$ is enormous. Reheating from the inflaton drives the
+post-bounce plasma into precisely such a thermal regime: the
+$C/P$-violating scattering rates that randomize axial polarization
+exceed the Hubble rate at $T\sim T_{\rm reh}$, so any \emph{coherent}
+bounce-era axial-current background is rapidly washed out toward
+$\langle J^5_\mu\rangle\simeq 0$. Because the Cartan equation is
+\emph{algebraic} (no kinetic term for torsion in the minimal-ECH
+action), erasure of the coherent axial component is instantaneously
+inherited by the torsion configuration: the post-reheating mean
+torsion is set by the thermal expectation $\langle J^5_\mu\rangle_T$,
+whose r.m.s.\ residual scales as $\sim\!\sqrt{n_\psi}/T_{\rm reh}^{1/2}$
+under standard fluctuation-dissipation counting and vanishes in mean.
+Any ``memory'' of bounce-era torsion stored in $\Dinf$ is therefore
+overwritten by the reheating thermal reset to a coherent-mean-zero,
+incoherent-fluctuation-only configuration, providing an independent
+thermodynamic closure of the ECH dark-energy route that does not
+require the dimensional bookkeeping of Appendix~\ref{app:dimensions}
+or the specific value of $N_{\rm tot}$. This strengthens Barrier~14
+(perturbation transparency) by adding a parallel thermodynamic
+erasure channel for the coherent torsion-sourced dark-energy mechanism. We emphasize that this is bookkeeping, not progress: the residual
 $10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
 from the initial-condition choice for $N_{\rm tot}$, while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
@@ -790,48 +877,32 @@ deferred to a follow-up theory paper. The robustness check provided by the
 14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
 
-% v1A.0.28 R7 Grok-B1 closure: previously this paragraph carried a full internal cross-vendor review history with a REMOVE BEFORE JOURNAL SUBMISSION tag. The paragraph has been removed entirely; provenance is retained via git history at the bigbounce repository (commit log + project-context/peer-reviews/ directory of per-round reviewer output).
-A multi-vendor adversarial-review round (GPT-5.5 / Gemini-2.5-Pro /
-Grok-4-fast / Perplexity Sonar Pro / DeepSeek-V3.2, all queried via the
-OpenRouter unified API on 2026-05-14) surfaced three substantive
-theory-derivation BLOCKERs that the prior Claude-only persona-simulation
-rounds did not catch: (a) the dimensional reconstruction of
-$\rho_\Lambda^{\rm bounce}$ in Appendix~\ref{app:dimensions} carries an
-internal mass-dimension inconsistency between $(\alpha/M) M_{\rm Pl}^3$
-(dimension $+2$) and the equivalent rewriting as $[(\alpha/M) M_{\rm Pl}] M_{\rm Pl}^4$
-(dimension $+4$); the $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ choice and the
-subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping require a redo of the
-mass-dimension counting from the component operator and a recomputation of
-the hierarchy. (b) The Hehl-Datta torsion-induced
-four-fermion contact term $(\bar\psi\gamma^a\gamma^5\psi)^2$ is
-correctly characterized as \emph{parity-even} in Sec.~\ref{sec:r1_njl}: the
-axial-vector current $\bar\psi\gamma^a\gamma^5\psi$ is itself a
-pseudovector (parity-odd component-by-component), but the Lorentz
-contraction of two such pseudovectors gives a scalar that is
-parity-even (each component's parity-odd factor squared is $+1$). The
-prior v1A.0.21 deferral note that described this as ``pseudoscalar
-(parity-odd)'' was \emph{incorrect}; the main-text parity-even
-characterization is correct and the Route~1 amplitude-suppression
-argument stands as written. We note the issue here to record the
-correction made between v1A.0.21 and v1A.0.22. (c) The Route~2 one-loop
-graviton-correction derivation has a dimensional inconsistency in the
-$\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm obs}$ ratio (yields units of
-mass rather than a dimensionless number); the one-loop suppression factor
-needs a re-derivation that correctly relates the parity-odd one-loop term to
-the effective photon Chern-Simons coupling that sources birefringence. In v1A.0.22, items
-(a) and (b) are \textbf{closed}: the dimensional bookkeeping in
-Appendix~\ref{app:dimensions} is rewritten with explicit dimension-reduction
-factors (see Eq.~\ref{eq:onshell_rho}), and the Hehl-Datta parity-character
-is reaffirmed as parity-even (the prior deferral note was a transcription
-error). Item (c)---the Route~2 one-loop suppression ratio
-$\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm obs}$ dimensionless-form
-re-derivation---was \textbf{closed in v1A.0.24 / v1A.0.25}: the dimensionless reduction is now executed in-line in Sec.~\ref{sec:r2_oneloop} below (one-loop graviton-correction route, with the $H_0\to H_0/M_{\rm Pl}$ factor restored in the numerator), no longer deferred to a dedicated photon-Chern-Simons follow-up; the channel-level amplitude
-budget that closes Route~2 (Planck suppression by $H_0/\MPl \sim 10^{-60}$
-in the dimensionful form, or the equivalent dimensionless ratio after
-the missing factor of $1/\MPl$ is restored) is unaffected at the
-order-of-magnitude level, and the qualitative closure statement that
-Route~2 is below the observed birefringence amplitude by $\gtrsim 30$
-orders of magnitude survives any reasonable dimensional reconciliation.
+Three substantive theory-derivation issues were identified during preparation
+of this paper and are documented here for the record:
+(a)~the dimensional reconstruction of $\rho_\Lambda^{\rm bounce}$ in
+Appendix~\ref{app:dimensions} requires an internally consistent mass-dimension
+accounting between $(\alpha/M)\, M_{\rm Pl}^3$ (dimension $+2$) and the
+equivalent rewriting $[(\alpha/M)\, M_{\rm Pl}]\, M_{\rm Pl}^4$ (dimension
+$+4$); the choice of $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ controls the
+subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping. (b)~the Hehl--Datta
+torsion-induced four-fermion contact term $(\bar\psi\gamma^a\gamma^5\psi)^2$
+is correctly characterized as \emph{parity-even} in Sec.~\ref{sec:r1_njl}:
+the axial-vector current $\bar\psi\gamma^a\gamma^5\psi$ is a pseudovector
+(parity-odd component by component), but the Lorentz contraction of two
+such pseudovectors gives a scalar that is parity-even (each component's
+parity-odd factor squared is $+1$); the Route~1 amplitude-suppression
+argument stands accordingly. (c)~the Route~2 one-loop graviton-correction
+derivation requires that the $\Delta\theta_{\rm one-loop}/\Delta\theta_{\rm
+obs}$ ratio be expressed as a dimensionless number; the dimensionless
+reduction is executed in-line in Sec.~\ref{sec:r2_oneloop} below (with
+the $H_0\to H_0/M_{\rm Pl}$ factor restored in the numerator), and the
+channel-level amplitude budget that closes Route~2 (Planck suppression
+by $H_0/\MPl \sim 10^{-60}$ in the dimensionful form, or the equivalent
+dimensionless ratio after the missing factor of $1/\MPl$ is restored) is
+unaffected at the order-of-magnitude level. The qualitative closure
+statement that Route~2 lies below the observed birefringence amplitude by
+$\gtrsim 30$ orders of magnitude survives any reasonable dimensional
+reconciliation.
 
 \subsection{Route 1 (NJL four-fermion contact): closed by Planck suppression}
 \label{sec:r1_njl}
@@ -851,7 +922,9 @@ i.e.\ a four-fermion operator suppressed by $M_{\rm Pl}^{-2}$ and
 \emph{parity-even} in the $C\!P$-conserving Standard Model sector. The
 energy density that this operator contributes at cosmologically relevant
 fermion densities $n_\psi$ is bounded above by
-$\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy density has the correct mass-dim~$+4$; v1A.0.28 R7 GPT-M1 + GEM convergent closure: prior $/m^2$ factor was a transcription error giving dim~$+2$ rather than dim~$+4$),
+$\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where
+$\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
+density carries the correct mass-dim~$+4$),
 which for the largest plausible cosmic fermion densities at recombination
 or post-recombination is many orders of magnitude below the present-day
 dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$.
@@ -919,14 +992,13 @@ $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
 ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
 $\sim 58$--$60$ orders of magnitude relative to the observed
-signal. (A complementary cross-check using
-$\alpha_{\rm em}/(4\pi\cdot M_{\rm Pl}\cdot(\alpha/M)\cdot\beta_{\rm
-obs})\cdot H_0$ as the dimensionless ordering yields a numerically
-distinct ratio of order $10^{-33}$; the two orderings differ in how
-the $H_0$ factor and the $M_{\rm Pl}\cdot(\alpha/M)$ product are
-contracted with the dimensionful coupling, but both land on the
-qualitative R2 closure---one-loop induced $\beta$ is amplitude-suppressed
-many orders of magnitude below the observed WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up).) The R2 amplitude is
+signal. We adopt this contraction as the canonical Route-2 estimate;
+an alternative ordering that contracts the $H_0$ factor with the
+dimensionful coupling differently yields a numerically distinct
+$\sim 10^{-33}$ ratio. The canonical-bound conclusion that the
+one-loop induced $\beta$ is amplitude-suppressed many orders of
+magnitude below the observed WMAP$+$Planck birefringence signal (with
+ACT~DR6 follow-up) is robust to this choice. The Route-2 amplitude is
 therefore far below not only the WMAP$+$Planck birefringence sensitivity but the
 observed central value itself; the one-loop Holst-sector parity-odd
 term cannot account for the observed birefringence amplitude. (The
@@ -960,7 +1032,14 @@ Weyl fermions running in the loop. The $1/(12\pi^2)$ prefactor is
 the natural chiral-loop coefficient at this order; we use
 Eq.~\eqref{eq:gamma_running} only as an upper-bound EFT ansatz
 for the Route-3 amplitude budget and do not claim it is taken
-verbatim from~\cite{DateKaulSengupta2009}. In the Standard Model, the chiral
+verbatim from~\cite{DateKaulSengupta2009}. The actual fermion-induced
+perturbative running of the Immirzi parameter is computed by
+Benedetti~\&~Speziale~\cite{Benedetti2011}, who find a $\beta$-function
+whose sign depends on $|\gamma|$ through four-fermion interactions
+generated when fermions are coupled to the Holst sector; our
+Eq.~\eqref{eq:gamma_running} is a chiral-count EFT bound rather than
+the full perturbative result, and is used solely for the amplitude
+budget below. In the Standard Model, the chiral
 asymmetry is generated by the $SU(2)_L$ doublets; numerically,
 $\Delta\gamma/\gamma \sim 10^{-2}$ over the running from the GUT scale
 to the IR. The Holst sector amplitude that this running can source is
@@ -977,7 +1056,8 @@ magnitude. \emph{Closure: mass-dimension-locked at the classical level
 and amplitude-suppressed by the chiral-asymmetry running coefficient.}
 
 \subsection{Route 4 (parity-odd CMB coupling via spectator ALP or
-neutrino current): closed by birefringence-amplitude bound}
+neutrino current): naturalness objection rather than amplitude
+no-go}
 \label{sec:r4_birefringence}
 The fourth route is the direct parity-odd coupling between the
 electromagnetic field and either an axion-like field (ALP) or the
@@ -1039,17 +1119,22 @@ $m_\theta\sim H_0$ window where both observables are simultaneously
 matched has fractional width $\Delta m_\theta/m_\theta \sim 10^{-1}$,
 representing a dimensionful tuning of order $10^{-33}\,\text{eV}/
 M_{\rm Pl} \sim 10^{-61}$. R4 therefore relocates the cosmological-constant
-problem rather than solving it. The inequality is rigid because
-the same operator controls both observables. The same logic, run with
-$\alpha/M$ floated, recovers the spectator-ALP class as a
-\emph{viable parity-odd source} but \emph{not} as a dark-energy source.
+problem rather than solving it. The inequality is rigid only under the
+one-loop matching assumption; with $\alpha/M$ floated, the spectator-ALP
+class is recovered as a \emph{viable parity-odd source} but is \emph{not}
+a predictive dark-energy source --- the model contains no first-principles
+explanation for why $m_\theta\sim H_0$ or for the fitted value of
+$\alpha/M$.
 LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early
 2030s)~\cite{LiteBIRD2023} will tighten this bound by a factor of
 ${\sim}3$, but the bound's structure is set by the
 ratio of dark-energy to birefringence amplitudes, which is dimensional
-and instrument-independent. \emph{Closure: birefringence-amplitude
-bound severs the dark-energy and parity-odd channels at the operator
-level.}
+and instrument-independent. \emph{Route-4 status: a naturalness
+objection rather than an amplitude exclusion. A free-coupling
+spectator-ALP fit reproduces both $\beta_{\rm obs}$ and $\rho_\Lambda$,
+but minimal ECH does not derive $m_\theta\sim H_0$ or the fitted
+$\alpha/M$; the channel is closed at the level of an explanatory
+deficit, not an amplitude no-go at the operator level.}
 
 \subsection{Closure summary}
 \label{sec:fourroute_summary}
@@ -1069,19 +1154,21 @@ parity-even. R2 (one-loop graviton corrections) is amplitude-suppressed
 by $M_{\rm Pl}^{-1}$ and the one-loop factor $\alpha_{\rm em}/(4\pi)$.
 R3 (Immirzi running) is mass-dimension-locked and additionally
 suppressed by the chiral-asymmetry beta function. R4 (parity-odd
-CMB coupling) is closed by the rigid relation between birefringence
-amplitude and operator strength: the same coupling cannot deliver
-both dark-energy density and the observed $\beta$. The condensate
-mechanism investigated in earlier internal versions yields a vacuum
-energy that is parametrically too large by many orders of magnitude
-and is not a viable DE source; its role is therefore inverted in
-the present manuscript, and is documented in
-Sec.~\ref{sec:transparency} as a quantitative no-go rather than a
-viable channel. The companion MCMC fits and the
+CMB coupling) is closed by a naturalness objection: with $\alpha/M$
+treated as a free parameter, a spectator-ALP fit reproduces both
+$\beta_{\rm obs}$ and $\rho_\Lambda$, but minimal ECH does not derive
+$m_\theta\sim H_0$ or the fitted $\alpha/M$, so the channel closes at
+the level of an explanatory deficit rather than an amplitude exclusion.
+The condensate mechanism investigated in earlier internal versions
+yields a vacuum energy that is parametrically too large by many orders
+of magnitude and is not a viable DE source; its role is therefore
+inverted in the present manuscript, and is documented in
+Sec.~\ref{sec:transparency} as a quantitative closure rather than a
+viable channel. Companion MCMC fits and the
 $\Delta\Neff$/birefringence consistency analysis are reported in
-Paper~I(b)~\cite{Golden2026P1b}; the present appendix provides only
-the structural-amplitude closure of the four parity-odd routes
-in the ECH sector.
+companion work in preparation~\cite{Golden2026P1b}; the present
+manuscript provides only the channel-level amplitude closure of the
+four parity-odd routes in the ECH sector.
 
 The phenomenological parameter $\alpha/M$ in Sec.~\ref{sec:parityodd}
 is therefore best understood as the R4-bounded coupling required to
@@ -1312,7 +1399,7 @@ Gravitational wave production from the ECH bounce is bounded above by:
 \begin{equation}
 \Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \simeq 0.07\text{--}0.17,
 \end{equation}
-where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar-Singh effective-LQC status report~\cite{Ashtekar2011} (v1A.0.34 R23 undef-ref closure: prior `Sec.~ref{sec:lqc}' pointed to a section that does not exist in this paper; the LQC critical-density window is now cited to its primary source directly) (v1A.0.28 R7 GPT-M5 closure: prior $\sim 10^{-2}$ arithmetic mistook the square as ${\sim}(\rhocrit/\rhoPl)^4$ rather than ${\sim}(\rhocrit/\rhoPl)^2$). This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (queued); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
+where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC status report~\cite{Ashtekar2011}. This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (queued); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
 
 \subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
 
@@ -1476,18 +1563,20 @@ parity-odd spin-torsion interaction and inflationary dilution:
 a dimensionless quantity with $\Xi\approx 10^{-123}$, decomposed as
 $10^{-2}\times\Dinf$ with $\Dinf\sim 10^{-121}$.
 
-\textbf{R23 Gemini-3.1-Pro PAPER-GEM-m1 reminder (physical-versus-mathematical
-scope of $\Dinf$)}: while $N_{\rm tot}$ controls the mathematical
-$e^{-3N_{\rm tot}}$ ansatz used in the above bookkeeping, the
-\emph{physical} reheating thermal-reset barrier (R2 finding supporting
-B14, in Sec.~\ref{sec:dilution} ``Reheating thermal-reset barrier''
-paragraph at line~504) already closes
-the bounce-era-memory dilution channel by proving that non-propagating
-torsion has no memory of its pre-thermal-equilibrium state, so the
-$\Dinf$ exponential is mathematical scaffolding for the order-of-magnitude
-parameterization rather than a physically operative dilution mechanism;
-the entries in this section are kept as parameterization-of-fine-tuning
-diagnostics, not as a viable dynamical channel.
+\textit{Physical-versus-mathematical scope of $\Dinf$.}---While
+$N_{\rm tot}$ controls the mathematical $e^{-3N_{\rm tot}}$ ansatz
+used in the above bookkeeping, the \emph{physical} reheating
+thermal-reset barrier (supporting B14; see Sec.~\ref{sec:dilution},
+``Reheating thermal-reset barrier'' paragraph) already closes the
+bounce-era-memory dilution channel: non-propagating torsion is sourced
+algebraically by the instantaneous axial-current expectation value,
+and the post-reheating coherent axial component is washed to zero by
+$C/P$-violating thermal scattering. The $\Dinf$ exponential is
+therefore mathematical scaffolding for an order-of-magnitude
+parameterization of a hypothetical un-reset channel rather than a
+physically operative dilution mechanism; the entries in this section
+are retained as parameterization-of-fine-tuning diagnostics, not as
+a viable dynamical channel.
 
 The ``fine-tuning reduction from $10^{120}$ to $10^5$'' is a reparameterization
 as sensitivity to $N_{\rm tot}$ (the total number of inflationary $e$-folds),
@@ -1548,9 +1637,10 @@ LiteBIRD forecast are in companion Paper~I(b)~\cite{Golden2026P1b}.
 %% ============================================================
 \section{Surviving Mechanism-Independent Tests}\label{sec:surviving}
 
-Despite ECH structural closure (13 logically-independent barriers blocking the enumerated minimal-ECH dark-energy
-routes), the broader bounce-cosmology program retains two fully testable
-mechanism-independent predictions:
+Despite the channel-level closure of the four enumerated minimal-ECH
+dark-energy routes (13 logically-independent barriers under the stated
+assumptions), the broader bounce-cosmology program retains two fully
+testable mechanism-independent predictions:
 
 \textbf{(1) Matter-bounce $\fnl=-35/8$.}---The matter-dominated contracting
 phase of a \emph{scalar-only $w=0$} matter-bounce (the bounce-class
@@ -1668,12 +1758,14 @@ empirical support to quintom scenarios that can unify bounce and dark energy
 through mechanisms outside the ECH minimal-route catalog; these non-minimal-ECH
 mechanisms are not addressed by the present no-go.
 
-\subsection{Structural Closure}\label{sec:ech_closure}
+\subsection{Channel-Level Closure}\label{sec:ech_closure}
 
-The 13 logically-independent structural constraints (14 historical catalog entries) catalog the enumerated minimal-ECH dark-energy
-mechanisms and close all of them. The surviving science case rests on the
-matter-bounce $\fnl$ prediction, which is compatible with the ECH framework but
-not derived from it (Sec.~\ref{sec:surviving}).
+The 13 logically-independent structural constraints (14 historical catalog
+entries) catalog the four enumerated minimal-ECH dark-energy channels and
+close each under the stated assumptions (Scope and Limitations paragraph,
+Sec.~\ref{sec:intro}). The surviving science case rests on the
+matter-bounce $\fnl$ prediction, which is compatible with the ECH
+framework but not derived from it (Sec.~\ref{sec:surviving}).
 
 
 %% ============================================================
@@ -1683,10 +1775,12 @@ not derived from it (Sec.~\ref{sec:surviving}).
 
 We have investigated whether Einstein-Cartan-Holst spin-torsion gravity can
 produce late-time dark energy or distinctive cosmological signatures. The answer
-is a structural no-go: the 14 mechanism-class constraints (Table~\ref{tab:barriers};
-B8 is the observational consequence of the perturbation-transparency theorem B14
-and is retained for historical mechanism-class completeness)
-close every minimal-ECH dark-energy route.
+is a channel-level closure: under the stated assumptions, the 14
+mechanism-class constraints (Table~\ref{tab:barriers}; B8 is the
+observational consequence of the perturbation-transparency result B14
+and is retained for historical mechanism-class completeness) close each
+of the four enumerated minimal-ECH dark-energy routes at the amplitude
+level.
 
 \textit{Central result: perturbation transparency.}---For canonical scalar field
 matter, the Holst sector decouples completely from all scalar and tensor
@@ -1704,7 +1798,7 @@ principle unify bounce with late-time dark energy through mechanisms outside the
 ECH minimal-route catalog.
 
 \textit{Surviving tests.}---Two mechanism-independent predictions of the broader
-bounce/ALP landscape survive ECH structural closure and are testable:
+bounce/ALP landscape survive the channel-level closure and are testable:
 \begin{enumerate}[leftmargin=*]
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
@@ -1806,14 +1900,13 @@ $+1$, not the $+4$ required for a local Lagrangian density:
 \mathcal{F}_{IJ\rho\sigma}] = +2 \;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
 \end{equation}
 We acknowledge openly that this operator, as written, is not a controlled
-dimension-$+4$ EFT operator. Three vendors in the second cross-vendor R-round
-(R2) independently flagged this as a load-bearing dimensional problem in earlier
-draft framings that attempted to ``repair'' the dimensional gap by inserting
-on-shell background curvature factors and a phenomenological
-``volume-integration-density'' factor of $\MPl^{2}$. That construction is not a
-derivation; the missing powers of mass do not arise from off-shell EFT counting
-but from \emph{on-shell scaling assumptions} applied to a Planck-scale bounce
-geometry. We therefore treat the relation
+dimension-$+4$ EFT operator. Earlier draft framings of this manuscript
+attempted to ``repair'' the dimensional gap by inserting on-shell
+background curvature factors and a phenomenological
+``volume-integration-density'' factor of $\MPl^{2}$. That construction
+is not a derivation; the missing powers of mass do not arise from
+off-shell EFT counting but from \emph{on-shell scaling assumptions}
+applied to a Planck-scale bounce geometry. We therefore treat the relation
 \begin{equation}
 \rho_\Lambda^{\rm bounce}\sim(\alpha/M)\,\MPl^5 \sim 10^{-2}\,\MPl^4,
 \label{eq:onshell_rho}
@@ -1846,13 +1939,7 @@ that the structural tension uses Eq.~(\ref{eq:onshell_rho}) as the
 input ansatz, while the genuine $\MPl^4$-to-$\rho_\Lambda^{\rm obs}$
 hierarchy uses the unrescaled Planck density).
 \par
-\textbf{Sharper dependency statement (v1A.0.29 R8+R9 convergent BLOCKER
-closure: Grok-B4/B1 + Perplexity-B4/B5 + GPT-M2 across two consecutive
-rounds flagged that the prior framing ``no quantitative claim in the main
-text relies on this dimensional ansatz'' was too strong, since the
-precise value $N_{\rm tot} \approx 92$ derived in
-\S\ref{sec:structural_tension} does explicitly use Eq.~(\ref{eq:onshell_rho})
-as input).} The accurate statement is: the \emph{precise} value
+\textit{Sharper dependency statement.}---The precise value
 $N_{\rm tot} \approx 92$ vs the independent $\MPl^4$-to-$\rho_\Lambda^{\rm obs}$
 estimate $N_{\rm tot} \approx 94$ (a ${\sim}2\%$ offset) \emph{does}
 depend on the ansatz choice in Eq.~(\ref{eq:onshell_rho}); however, the
@@ -1872,15 +1959,12 @@ $N_{\rm tot} \approx 92$ as an order-of-magnitude estimate
 not as a precise number; the broader structural closure does not depend
 on the precise e-fold value.
 \par
-\emph{Status update for v1A.0.23}: the v1A.0.22 framing of this appendix as
-a ``dimensional bookkeeping fix'' was rejected by 3 of 5 R2 reviewers
-(Gemini-3.1-Pro, Grok-4.3, GPT-5.5) as by-hand insertion rather than
-derivation. The present text drops the ``fix'' framing and labels the
-on-shell scaling explicitly as a phenomenological ansatz, in agreement
-with the convergent reviewer assessment. A controlled EFT-level
-construction (an operator basis closure for a local dimension-$+4$
-parity-odd interaction with all required $\MPl$ factors in the coupling
-coefficient) remains on-record-deferred to a separate companion treatment.
+We emphasize that the present treatment labels the on-shell scaling
+explicitly as a phenomenological ansatz rather than as a derivation:
+a controlled EFT-level construction (an operator-basis closure for a
+local dimension-$+4$ parity-odd interaction with all required $\MPl$
+factors in the coupling coefficient) remains on-record-deferred to a
+separate companion treatment.
 
 
 %% ============================================================

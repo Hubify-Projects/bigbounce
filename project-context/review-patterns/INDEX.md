@@ -1,9 +1,10 @@
 # BigBounce Review-Pattern Catalog
 
 Codified failure modes observed across 19 cross-vendor R-rounds on 6 papers
-(P1A/P1B/P2/P3/P4/P5) on 2026-06-01. Every external/direct-vendor R-round
-must be pre-screened against these patterns BEFORE dispatch, per the
-[[feedback-review-learning-loop]] standing directive.
+(P1A/P1B/P2/P3/P4/P5) plus 1 external 3-reviewer round on P1A (2026-06-02).
+Every external/direct-vendor R-round must be pre-screened against these
+patterns BEFORE dispatch, per the [[feedback-review-learning-loop]]
+standing directive.
 
 Catalog is consumed by `/paper-pre-review-check` skill.
 
@@ -27,6 +28,8 @@ Catalog is consumed by `/paper-pre-review-check` skill.
 | 014 | [Review-log content left in `%`-comment block](pattern-014-text-comment-not-stripped-after-review.md) | medium | 4 |
 | 015 | [Gemini billing-failure skip (vendor-side outage, not paper-side)](pattern-015-gemini-billing-skip.md) | informational | 19 |
 | 016 | [Wide-net reflagging at exit boundary (volume increases as substance vanishes)](pattern-016-exit-boundary-wide-net-reflag.md) | informational | 3 |
+| 017 | [Review-log artifacts in BODY prose (not %-comments)](pattern-017-review-log-in-body-prose-DRAFT.md) (draft) | high | 9 (P1A v1A.0.35-36) |
+| 018 | [Internal R-rounds converge on "clean" while editorial artifacts persist](pattern-018-internal-rounds-blind-to-editorial-DRAFT.md) (draft) | high (meta) | 1 case (P1A 8-round cycle) |
 
 ## Cross-pattern observations
 

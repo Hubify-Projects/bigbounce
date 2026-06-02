@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "generated": "2026-06-02",
   "campaign": "BigBounce 2026-06-01 cross-vendor R-round campaign",
-  "rounds_count": 8,
+  "rounds_count": 9,
   "rounds": [
     {
       "round_label": "2026-06-01_R-multi-round2",
@@ -6030,27 +6030,40 @@
     }
   ],
   "cumulative_summary": {
-    "total_findings": 513,
-    "verified": 40,
+    "total_findings": 559,
+    "verified": 81,
+    "partial_verified": 2,
     "stale": 255,
     "falsified": 85,
-    "opinion": 145,
+    "opinion": 146,
+    "no_verdict_pending": 2,
     "pattern_id_frequency": {
-      "4": 225,
+      "4": 230,
       "9": 160,
-      "1": 94,
+      "1": 96,
       "12": 52,
-      "5": 32,
-      "6": 17,
+      "5": 53,
+      "6": 22,
+      "14": 13,
       "7": 12,
-      "2": 8,
-      "14": 8,
+      "2": 13,
       "13": 7,
       "3": 7,
       "11": 5,
       "10": 4,
-      "8": 4,
+      "8": 7,
       "16": 3
+    },
+    "note": "Includes 2026-06-02_P1A_external round (46 findings, 41 VERIFIED + 2 PARTIAL VERIFIED + 1 OPINION + 2 no-verdict) archived in 2026-06-02_P1A_external.json. Updated rounds_count to 9."
+  },
+  "external_round_pointers": [
+    {
+      "round_label": "2026-06-02_P1A_external",
+      "file": "2026-06-02_P1A_external.json",
+      "round_type": "external_houston_shared",
+      "papers": ["P1A"],
+      "reviewers": ["Grok", "Gemini", "ChatGPT"],
+      "findings_count": 46
     }
-  }
+  ]
 }

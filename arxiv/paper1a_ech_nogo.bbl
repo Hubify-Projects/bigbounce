@@ -304,6 +304,18 @@
   {pages} {044008} (\bibinfo {year} {2009})},\ \Eprint
   {https://arxiv.org/abs/0811.4496} {arXiv:0811.4496 [gr-qc]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Benedetti}\ and\ \citenamefont
+  {Speziale}(2011)}]{Benedetti2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Benedetti}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Speziale}},\ }\bibfield  {title} {\bibinfo {title} {{Perturbative quantum
+  gravity with the Immirzi parameter}},\ }\href
+  {https://doi.org/10.1007/JHEP06(2011)107} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {06}},\ \bibinfo {pages}
+  {107} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1104.4028} {arXiv:1104.4028 [hep-th]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Lue}\ \emph {et~al.}(1999)\citenamefont {Lue},
   \citenamefont {Wang},\ and\ \citenamefont
   {Kamionkowski}}]{LueWangKamionkowski1999}%
@@ -340,9 +352,7 @@
   polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
   {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year} {2022})},\
-  \bibinfo {note} {alias of @Eskilt2022; the canonical 0.342 +/- 0.094 deg
-  measurement. Bibkey retained for backward compatibility with prose
-  `\\cite{Eskilt2022b}` calls.},\ \Eprint {https://arxiv.org/abs/2205.13962}
+  \Eprint {https://arxiv.org/abs/2205.13962}
   {arXiv:2205.13962 [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
   {Komatsu}(2025)}]{DiegoPalazuelos2025}%

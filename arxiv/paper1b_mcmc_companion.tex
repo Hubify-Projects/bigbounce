@@ -43,8 +43,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.34}
-\newcommand{\paperTimestamp}{2026-06-01 PDT}
+\newcommand{\paperVersion}{v1B.0.35}
+\newcommand{\paperTimestamp}{2026-06-02 PDT}
 % v1B.0.34 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round4 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.33 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
 %   Sonar Pro citation forensics; Gemini-2.5-pro still skipped on billing failure).
@@ -956,9 +956,7 @@ uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
 stock CAMB and $\Delta\Neff$ as a free parameter---no custom CAMB modifications.
 The extended parameter space adds $\Delta\Neff$ to $\Lambda$CDM, with both
 $(\omega/H)_0$ and $\Omega_k$ fixed to zero in the actual sampled YAML
-configuration (R2 closure of an earlier scope ambiguity that listed
-$(\omega/H)_0$ as a free parameter inconsistently with $k=7$ in the
-model-comparison degree-of-freedom counting; the angular-momentum
+configuration (the angular-momentum
 parameter $(\omega/H)_0$ is discussed in Paper~I(a) as a phenomenological
 bounce-class indicator but is not separately sampled in the present
 $\Lambda$CDM$+\Delta\Neff$ MCMC). Reproducibility materials at
@@ -1085,7 +1083,6 @@ not uniquely predict it.
 
 \begin{table*}[tb]
 \caption{\label{tab:crosspaper} Cross-paper status table (Wave 14 / Mid-May 2026).
-Readiness reflects current state after the 2026-05-14 real cross-vendor R-round cycle. Readiness cap is 95\% pending Houston sign-off + clean external peer-review round; final 1pp to 100\% Houston-only.
 DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current slow-mode-dominated state.}
 \begin{ruledtabular}
 \begin{tabular}{llcl}

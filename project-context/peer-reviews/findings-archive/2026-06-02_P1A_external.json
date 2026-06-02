@@ -1,0 +1,492 @@
+{
+  "schema_version": "1.0",
+  "round_label": "2026-06-02_P1A_external",
+  "round_type": "external_houston_shared",
+  "date": "2026-06-02",
+  "source_file": "project-context/peer-reviews/external/2026-06-02_P1A_houston_external_grok_gemini_chatgpt.md",
+  "papers": {
+    "P1A": {
+      "version_at_time_of_review": "v1A.0.35-36",
+      "version_after_closures": "v1A.0.39-40",
+      "reviewers": {
+        "Grok": [
+          {
+            "finding_id": "GRO-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "ALP birefringence central-value mismatch — paper says β=0.27° 'consistent with Planck/ACT DR6 3.6σ'; Eskilt+Komatsu is WMAP+Planck not Planck/ACT; ACT DR6 = 0.215°±0.074° at 2.9σ (arXiv:2509.13654)",
+            "truth_audit_verdict": "PARTIAL VERIFIED",
+            "verdict_note": "v1A.0.39 L273-278 correctly disambiguates Eskilt as WMAP+Planck with separate ACT DR6 follow-up; reviewer read older v1A.0.36 PDF. L1122 ('Planck/ACT measurements') still needs polish for full closure.",
+            "pattern_ids": [2, 8],
+            "closure_action": "text edit (round-3 fix landed; L1122 polish pending)",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-B2",
+            "raw_classification": "BLOCKER",
+            "summary": "Dimensional status of parity-odd operator: paper now labels ρ_Λ~[(α/M)M_Pl]M_Pl^4 ansatz but still derives N_tot≈92 and fine-tuning reduction from it; main text/abstract treat no-go as derived from minimal ECH while appendix admits [ℒ_odd]=+1 off-shell",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Recurrent issue across multiple internal R-rounds; closures attempted in v1A.0.32-34, reviewer reads v1A.0.36 still containing hybrid framing. Real outstanding scope-clarification work.",
+            "pattern_ids": [4, 5],
+            "closure_action": "scope-clarification edit + abstract/title softening",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-B3",
+            "raw_classification": "BLOCKER",
+            "summary": "Scope of 'no-go theorem' overclaims; title says 'structural closure' while Sec IV/IX say 'channel-level, not operator-level' and list omitted operators (Jackiw-Pi, parity-odd four-fermion). Title/abstract should be 'Channel-Level No-Go on Four Enumerated Minimal-ECH Dark-Energy Routes'",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Internal disclaimer is real but title/abstract still overclaim. 3/3 external reviewers converge on this.",
+            "pattern_ids": [5],
+            "closure_action": "title/abstract softening + 'Scope and Limitations' paragraph",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-M1",
+            "raw_classification": "MAJOR",
+            "summary": "14-barrier catalog overcounted: B8 ⊂ B14 (paper's own admission); B5/6/9/13 are heuristic/philosophical not derived; 'gravitational democracy' (B13) and 'Liouville conservation' (B9) are philosophical statements not quantitative constraints",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "2/3 external reviewers (Grok+ChatGPT, partial Gemini agreement) converge. Real structural issue.",
+            "pattern_ids": [5],
+            "closure_action": "collapse Table II to 7-8 genuinely novel barriers; move generic to separate subsection",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-M2",
+            "raw_classification": "MAJOR",
+            "summary": "Perturbation-transparency theorem (Sec X) proof correct but novelty overclaimed; result is implicit in Hehl 1976 + Freidel 2005 for spinless matter; 'generalization to all orders' is useful but not revolutionary",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Both Grok+ChatGPT raise novelty-overclaim. Real polish work.",
+            "pattern_ids": [5],
+            "closure_action": "tone down novelty claims + add citations to Hehl/Freidel",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-M3",
+            "raw_classification": "MAJOR",
+            "summary": "Mercuri-Capozziello one-loop framing (§IIC1, post-R23): (T_reh/M_GUT)^{3/2} factor remains 'dimensional-analysis-aesthetic estimate' with no first-principles derivation; reheating thermal-reset barrier is standard knowledge",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Internal R23 closure landed but ansatz status still flagged externally. Real follow-up work.",
+            "pattern_ids": [4, 5],
+            "closure_action": "either derive thermal phase-space factor or label as phenomenological in appendix",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m1",
+            "raw_classification": "minor",
+            "summary": "Companion-paper citations (Paper Ib, II, III, IV) appear as if published; need arXiv numbers or quantitative claims (3-5σ SPHEREx forecast) removed",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [6],
+            "closure_action": "add in-prep hedge throughout",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m2",
+            "raw_classification": "minor",
+            "summary": "Inconsistent β notation: abstract uses 0.27°, Table IV uses 0.27° (midpoint), main text sometimes 0.342°",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [2],
+            "closure_action": "standardize β notation across paper",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m3",
+            "raw_classification": "minor",
+            "summary": "Table I and Fig. 1 contain minor LaTeX artifacts ('ρ_F1', 'ECH/torsion' box)",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "fix LaTeX artifacts",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m4",
+            "raw_classification": "minor",
+            "summary": "References: some arXiv numbers malformed; DESI 2025 citations future-dated relative to manuscript date",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [1],
+            "closure_action": "audit + fix arXiv numbers; verify DESI dates",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m5",
+            "raw_classification": "minor",
+            "summary": "Galaxy-spin ViT-Small analysis self-cited to Paper IV with no numbers here; summarize null-result statistics or remove",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [6],
+            "closure_action": "summarize key null-result stats or remove",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GRO-m6",
+            "raw_classification": "minor",
+            "summary": "Minor typos: repeated 'f_NL=-35/8 signature, which would be definitively erased'; wordy 'SPHEREx-accessible comoving wavenumbers' explanation",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "copy-edit pass",
+            "closed_in_version": "v1A.0.40 (pending)"
+          }
+        ],
+        "Gemini": [
+          {
+            "finding_id": "GEM-B2.1",
+            "raw_classification": "BLOCKER",
+            "summary": "Complete removal of AI-agent and multi-vendor review logs embedded in paper body: 'v1A.0.28 R7 GPT-ml closure', 'per R23 Gemini-3.1-Pro PAPER-GEM-M1 closure', 'A multi-vendor adversarial-review round (GPT-5.5/Gemini-2.5-Pro/Grok-4-fast/Perplexity Sonar Pro/DeepSeek-V3.2, all queried via the OpenRouter unified API on 2026-05-14)', 'Three vendors in the second cross-vendor R-round (R2)', 'v1A.0.29 R8+R9 convergent BLOCKER closure: Grok-B4/B1+Perplexity-B4/B5+GPT-M2'",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Most damning finding of the round. NINE distinct review-log artifacts in body prose (not %-comments). EIGHT internal R-rounds did not catch this — internal vendors audit physics, not editorial hygiene. Catch came only from external reviewer treating manuscript as journal submission.",
+            "pattern_ids": [14],
+            "closure_action": "purge all review-log artifacts from body prose; retain only standard AI-acknowledgment in Acknowledgments",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GEM-M3.1",
+            "raw_classification": "MAJOR",
+            "summary": "Logical contradiction between reheating thermal reset and N_tot≈92 scaffolding: if bounce-era memory is instantaneously erased by thermal bath at reheating, the e^{-3N_tot} analytical scaffolding becomes physically irrelevant; structural tension with f_NL=-35/8 is secondary because channel already blocked thermodynamically",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Real internal-consistency issue. Convergent with Grok-M3 + ChatGPT-M4.",
+            "pattern_ids": [],
+            "closure_action": "explicitly reconcile: state N_tot≈92 is diagnostic parameterization, not physical pathway",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GEM-M3.2",
+            "raw_classification": "MAJOR",
+            "summary": "Status of parity-odd effective action as controlled EFT: off-shell mass dim +1 vs +4, ad-hoc on-shell scaling ansatz ρ_Λ~(α/M)M_Pl^5 is 'by-hand insertion rather than derivation'; relying on ad-hoc ansatz to bypass fundamental dimensional mismatch undercuts 'structural closure' claim",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-B2 + ChatGPT-B2.",
+            "pattern_ids": [4, 5],
+            "closure_action": "clarify scope of no-go in intro and conclusions; state minimal ECH fails as off-shell EFT for dark energy",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GEM-m4.1",
+            "raw_classification": "minor",
+            "summary": "Over-reliance on complementary cross-checks with mismatching units in §IVB Route 2 closure: Δθ_one-loop/Δθ_obs ratio of 10^-33 vs alternative ordering signals lack of precision in effective photon-Chern-Simons coupling translation",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "standardize dimensional reduction of Eq 15; eliminate factor-of-100 ambiguity",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "GEM-m4.2",
+            "raw_classification": "minor",
+            "summary": "Notation cleanliness in scaling formulas: dense inline text descriptions (e.g. 'kphys bounce KSPHERE phys e Ntot-Nexit 32 phys KSPHEREX') hard to parse; replace with standalone LaTeX equation k_bounce^phys = k_SPHEREx^phys e^{N_tot-N_exit}",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "replace inline text scaling with formal LaTeX equation",
+            "closed_in_version": "v1A.0.40 (pending)"
+          }
+        ],
+        "ChatGPT": [
+          {
+            "finding_id": "CGT-B1",
+            "raw_classification": "BLOCKER",
+            "summary": "Central 'no-go theorem' is not a theorem because operator basis is explicitly incomplete; manuscript admits four routes 'not proven complete diffeomorphism-invariant operator basis' yet states R1-R4 'exhaust the parity-odd/dark-energy channels'; both statements cannot stand",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-B3. Real overclaim.",
+            "pattern_ids": [5],
+            "closure_action": "either provide complete EFT/operator-basis classification or retitle/reframe as 'Four minimal channels fail under specified assumptions'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B2",
+            "raw_classification": "BLOCKER",
+            "summary": "Dark-energy mechanism dimensionally non-EFT and remains load-bearing despite disclaimed: parity-odd op has off-shell mass dim +1 not +4, mapping to ρ_Λ is phenomenological ansatz, yet ansatz still motivates Ξ, D_inf, N_tot≈92, dark-energy/f_NL structural tension",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-B2 + Gemini-M3.2. Real outstanding scope-clarification.",
+            "pattern_ids": [4, 5],
+            "closure_action": "remove dark-energy derivation and N_tot claims OR replace with dim-consistent local action",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B3",
+            "raw_classification": "BLOCKER",
+            "summary": "14-barrier structure mostly catalogue of assertions, not 13 independent constraints; B13 explicitly 'structural/philosophical', B5 assumes absence of transfer mechanism, B6 attractor slogan, B9 invokes Liouville without defined Hamiltonian measure, B12 only global energy-fraction ceiling",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-M1 + Gemini-6.1. 3/3 external converge.",
+            "pattern_ids": [5],
+            "closure_action": "replace barrier count with table of caveats; don't use '13' or '14' as evidentiary weight",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B4",
+            "raw_classification": "BLOCKER",
+            "summary": "Perturbation-transparency theorem plausible under narrow assumptions but stated too broadly; paper says 'all scalar/tensor perturbation observables at all orders' then calls ALP birefringence and primordial-GW chirality 'tests of γ' despite no derived photon-torsion coupling",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-M2 + Gemini-6.3.",
+            "pattern_ids": [5],
+            "closure_action": "state formal proposition with exact hypotheses; remove claims that ALP/GW test γ unless coupling derived",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B5",
+            "raw_classification": "BLOCKER",
+            "summary": "Route 2 dimensionally and physically unresolved: 25-order ambiguity (10^-58 to 10^-60 vs 10^-33) shows mapping not derived; Eq 14 is coupling to fermion axial current not photon Chern-Simons; paper never derives photon rotation angle from Holst/fermion sector",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Gemini-m4.1 (different severity, same root cause).",
+            "pattern_ids": [],
+            "closure_action": "derive actual low-energy operator (g_φγγ φ F F~) with dims/normalization or remove Route 2 amplitude comparison",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B6",
+            "raw_classification": "BLOCKER",
+            "summary": "Route 3 misattributed and uses unsupported beta-function formula: chiral-matter beta function for γ attributed to Date-Kaul-Sengupta but their cited work is topological interpretation of Barbero-Immirzi via Nieh-Yan; correct source for perturbative running with fermions is Benedetti-Speziale (arXiv:1104.4028)",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "1/3 (ChatGPT alone) but with explicit arXiv citation. Real attribution error. Pattern-002 dataset-attribution-drift parallel.",
+            "pattern_ids": [2, 8],
+            "closure_action": "replace citation with Benedetti-Speziale arXiv:1104.4028 and correct beta function form or remove Route 3 quantitative closure",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B7",
+            "raw_classification": "BLOCKER",
+            "summary": "ALP birefringence discussion conflates observations: 'β=0.342°±0.094° 3.6σ Planck/ACT DR6' is wrong — that value is WMAP+Planck; ACT DR6 is 0.215°±0.074° 2.9σ with unresolved systematics; also 'spectator ALP with m~H_0 consistent without fine-tuning' conflicts with earlier 'reimports cosmological constant problem'",
+            "truth_audit_verdict": "PARTIAL VERIFIED",
+            "verdict_note": "Convergent with Grok-B1. v1A.0.39 L273-278 disambiguates; L1122 polish pending.",
+            "pattern_ids": [2, 8],
+            "closure_action": "replace 'prediction' with 'benchmark fit'; treat ACT DR6 separately with systematics caveat; remove 'without fine-tuning'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B8",
+            "raw_classification": "BLOCKER",
+            "summary": "Route 4 not a no-go but a naturalness objection; paper admits if α/M is free, both β_obs and ρ_Λ can be matched by scaling α/M; closure not amplitude no-go but statement that model doesn't explain m_θ~H_0 or fitted coupling value",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "recast R4 as 'spectator ALP fits birefringence but GR+ALP, not derived dark energy from ECH'; remove 'closed by birefringence-amplitude bound' and 'severs at operator level'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B9",
+            "raw_classification": "BLOCKER",
+            "summary": "Reheating thermal-reset argument conflates number density with axial spin density: minimal EC torsion sourced by spin/axial current not by total fermion number density; thermal unpolarized fermion bath has vanishing mean axial current even if n_ψ~T^3 large; need <J^5_μ> not just n_ψ",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Real physics critique. Distinct from Grok/Gemini framing.",
+            "pattern_ids": [],
+            "closure_action": "compute thermal expectation value of torsion source in reheating state; state reheating erases coherent axial background not sources new",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-B10",
+            "raw_classification": "BLOCKER",
+            "summary": "Load-bearing results outsourced to unpublished companion papers (Paper Ib, II, III, IV): MCMC posteriors, NaMaster validation, ALP fitting, SPHEREx forecast, galaxy-chirality null, NANOGrav real-KDE reanalysis all 'in preparation'; referee cannot verify from this manuscript",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-m1.",
+            "pattern_ids": [6],
+            "closure_action": "remove companion-paper-dependent quantitative claims OR include methods/data/code/summary-tables for self-contained reading",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M1",
+            "raw_classification": "MAJOR",
+            "summary": "Title and abstract overclaim relative to actual result; 'Structural Closure', 'No-Go Theorem', 'surviving tests' promise stronger paper than delivered",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "retitle to e.g. 'Four Minimal ECH Dark-Energy Channels and Perturbative Transparency for Scalar Matter'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M2",
+            "raw_classification": "MAJOR",
+            "summary": "Fundamental action written misleadingly: Eq 1 includes T^abc T_abc term inside 'fundamental action' but later said to be shorthand for four-fermion contact after integrating out non-propagating torsion; obscures what is varied vs effective",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "write first-order Palatini-Holst + fermion action cleanly, derive effective four-fermion in separate equation",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M3",
+            "raw_classification": "MAJOR",
+            "summary": "Route 1 treatment too narrow for Holst+fermions: axial-axial EC contact term is parity-even but Holst/fermion systems can contain vector-axial parity-violating components depending on minimal/non-minimal coupling (Freidel-Minic-Takeuchi); manuscript must not use minimal axial-axial to dismiss entire sector",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "state Route 1 is minimal-coupling axial-axial only; add non-minimal Holst-induced vector-axial to operator inventory or explicitly exclude by assumption",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M4",
+            "raw_classification": "MAJOR",
+            "summary": "Mercuri-Capozziello phase-space-vs-loop repair still not a derivation; correctly stops equating thermal phase-space with one-loop anomaly but (T_reh/M_GUT)^{3/2} remains phenomenological ansatz",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Grok-M3 + Gemini-M3.1.",
+            "pattern_ids": [4, 5],
+            "closure_action": "move (T_reh/M_GUT)^{3/2} to historical appendix or derive from partition function/bounce matching",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M5",
+            "raw_classification": "MAJOR",
+            "summary": "DESI motivation acceptable but should not be used as support for ECH; DESI DR2 prefers time-varying w_0w_a at 3.1-4.2σ but doesn't specifically motivate ECH",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "keep DESI as general motivation only; remove language implying empirical support for ECH route",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M6",
+            "raw_classification": "MAJOR",
+            "summary": "LiteBIRD forecast is not exactly the simple σ(β)=0.03° statement; recent forecast finds 0.3° signal at 5-13σ depending on pipeline, strongest with error budget ~0.02°; 0.03° plausible but should be cited to specific forecast",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [2],
+            "closure_action": "cite exact forecast, quote range, separate 'detection vs zero' from 'distinguish 0.27° from 0.342° central'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M7",
+            "raw_classification": "MAJOR",
+            "summary": "f_NL 'mechanism-independent' language too strong; paper qualifies f_NL=-35/8 as scalar-only matter-bounce not ECH-specific but abstract/Table I still market as surviving test of 'broader programme'",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "state once early 'this paper makes no new f_NL prediction'; keep f_NL as context or remove",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M8",
+            "raw_classification": "MAJOR",
+            "summary": "Black-hole-universe narrative not used in no-go; parent BH/baby universe material speculative context not required for ECH channel closure; distracts from theorem-like claim",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "remove BH-universe narrative or reduce to one contextual sentence in intro",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-M9",
+            "raw_classification": "MAJOR",
+            "summary": "Manuscript contains internal audit/versioning language unsuitable for journal publication: 'GPT/Gemini/Grok/Perplexity BLOCKER closure' notes make paper read like revision log rather than journal article",
+            "truth_audit_verdict": "VERIFIED",
+            "verdict_note": "Convergent with Gemini-B2.1. NINE distinct body-prose review-log artifacts. Pattern 017 candidate (new).",
+            "pattern_ids": [14],
+            "closure_action": "move all AI/revision-history material to private changelog; retain standard AI acknowledgment in Acknowledgments only",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m1",
+            "raw_classification": "minor",
+            "summary": "Ref [26] contains 'alias of @Eskilt2022' and prose about bibkeys in bibliography",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [1, 14],
+            "closure_action": "clean bibliography",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m2",
+            "raw_classification": "minor",
+            "summary": "MNRAS style: remove PACS numbers; MNRAS does not use them",
+            "truth_audit_verdict": "OPINION",
+            "verdict_note": "Journal-specific style. Out of scope for PRD/JCAP target.",
+            "pattern_ids": [],
+            "closure_action": "skip if targeting PRD/JCAP",
+            "closed_in_version": null
+          },
+          {
+            "finding_id": "CGT-m3",
+            "raw_classification": "minor",
+            "summary": "Data availability: replace 'main branch' with fixed commit hash, DOI/Zenodo archive, checksums; moving GitHub branch not reproducibility guarantee",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "add commit hash + Zenodo DOI + checksums to data availability statement",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m4",
+            "raw_classification": "minor",
+            "summary": "Notation: avoid using γ for both Barbero-Immirzi and PTA spectral index without repeated disambiguation",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "disambiguate γ usage",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m5",
+            "raw_classification": "minor",
+            "summary": "Eq 12: state explicitly that C_l^{EB} ≃ 2β(C_l^{EE}-C_l^{BB}) is small-angle, uniform-rotation approximation; define sign convention",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "add assumption + sign convention to Eq 12",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m6",
+            "raw_classification": "minor",
+            "summary": "Typos/encoding: fix Poincaré, Gödel, Popławski, w_0w_a, f_NL accents and names",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [],
+            "closure_action": "encoding pass",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m7",
+            "raw_classification": "minor",
+            "summary": "Figure 1: visually says ECH 'structurally closed' while text admits no operator-level closure; revise caption and dashed-box label",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "revise Fig 1 caption + dashed-box label",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m8",
+            "raw_classification": "minor",
+            "summary": "Figure 2: illustrates ansatz later admitted not derived; make warning visually prominent or move to appendix",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5],
+            "closure_action": "annotate Fig 2 with ansatz warning or move to appendix",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m9",
+            "raw_classification": "minor",
+            "summary": "'Referee-grade audit trail' self-evaluative language; referees decide that",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5, 14],
+            "closure_action": "remove self-evaluative language",
+            "closed_in_version": "v1A.0.40 (pending)"
+          },
+          {
+            "finding_id": "CGT-m10",
+            "raw_classification": "minor",
+            "summary": "'Confirmed null' for galaxy spin: say 'reported null in companion work' unless data + classifier validation included here",
+            "truth_audit_verdict": "VERIFIED",
+            "pattern_ids": [5, 6],
+            "closure_action": "soften to 'reported null in companion work'",
+            "closed_in_version": "v1A.0.40 (pending)"
+          }
+        ]
+      },
+      "exit_round": false,
+      "trend": "External 3-vendor round caught NINE body-prose review-log artifacts that 8 internal R-rounds missed; convergent overclaim/ALP-attribution/14-barrier-overcount; substantial v1A.0.40 closure work in flight"
+    }
+  },
+  "summary": {
+    "total_findings": 46,
+    "verified": 41,
+    "partial_verified": 2,
+    "stale": 0,
+    "falsified": 0,
+    "opinion": 1,
+    "no_verdict_pending": 2,
+    "pattern_id_frequency": {
+      "5": 21,
+      "14": 5,
+      "2": 5,
+      "4": 5,
+      "6": 5,
+      "8": 3,
+      "1": 2
+    }
+  },
+  "convergence_notes": [
+    "2/3 reviewers (Grok + ChatGPT) flag ALP birefringence attribution as Planck/ACT DR6 vs Eskilt = WMAP+Planck",
+    "3/3 reviewers (Grok + Gemini + ChatGPT) flag no-go theorem scope vs operator-basis incompleteness",
+    "3/3 reviewers (Grok + Gemini + ChatGPT) flag 14/13 barrier overcount (B8 ⊂ B14, B5/6/9/13 heuristic-philosophical)",
+    "2/3 reviewers (Grok + ChatGPT) flag companion-paper self-citations as unverifiable",
+    "1/3 (Gemini BLOCKER + ChatGPT M9) flag review-log artifacts in body prose (not %-comments) — 8 internal R-rounds did NOT catch this; all 8 went over the paper with 0 verified findings on this pattern",
+    "1/3 (ChatGPT B6) flag Date-Kaul-Sengupta beta-function misattribution; correct source is Benedetti-Speziale arXiv:1104.4028",
+    "3/3 reviewers flag dim+1 vs +4 EFT mismatch + N_tot≈92 ansatz over-extension",
+    "3/3 reviewers flag perturbation-transparency theorem stated too broadly (over-extension to ALP/GW chirality)"
+  ],
+  "learning_loop_notes": [
+    "Internal R-rounds (8 total) converged to '0 VERIFIED for 3 consecutive rounds = exit' while NINE body-prose review-log artifacts survived",
+    "Internal vendors (Grok/GPT/Perplexity) audit physics not editorial hygiene; external 3rd-party LLM treating manuscript as journal submission was the catch",
+    "Pattern 014 detector covered %-comments only; new pattern 017 needed for BODY-prose review-log",
+    "Pattern 018 (meta): internal R-rounds blind to editorial artifacts even with truth-audit + multi-vendor + cascaded loops; /paper-pre-review-check mandatory pre-flight"
+  ]
+}
