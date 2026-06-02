@@ -377,16 +377,23 @@
   \bibinfo {pages} {3067} (\bibinfo {year} {1998})},\ \Eprint
   {https://arxiv.org/abs/astro-ph/9806099} {arXiv:astro-ph/9806099 [astro-ph]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Caldwell}(2002)}]{Caldwell2002quintom}%
+\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2010)\citenamefont {Cai},
+  \citenamefont {Saridakis}, \citenamefont {Setare},\ and\ \citenamefont
+  {Xia}}]{Cai2010quintomReview}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~R.}\ \bibnamefont
-  {Caldwell}},\ }\bibfield  {title} {\bibinfo {title} {{A phantom menace?
-  Cosmological consequences of a dark energy component with super-negative
-  equation of state}},\ }\href {https://doi.org/10.1016/S0370-2693(02)02589-3}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
-  {\bibinfo {volume} {545}},\ \bibinfo {pages} {23} (\bibinfo {year} {2002})},\
-  \Eprint {https://arxiv.org/abs/astro-ph/9908168} {arXiv:astro-ph/9908168
-  [astro-ph]} \BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
+  {Cai}}, \bibinfo {author} {\bibfnamefont {E.~N.}\ \bibnamefont {Saridakis}},
+  \bibinfo {author} {\bibfnamefont {M.~R.}\ \bibnamefont {Setare}},\ and\
+  \bibinfo {author} {\bibfnamefont {J.-Q.}\ \bibnamefont {Xia}},\ }\bibfield
+  {title} {\bibinfo {title} {{Quintom Cosmology: Theoretical implications and
+  observations}},\ }\href {https://doi.org/10.1016/j.physrep.2010.04.001}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo
+  {volume} {493}},\ \bibinfo {pages} {1} (\bibinfo {year} {2010})},\ \bibinfo
+  {note} {canonical quintom-cosmology review (two-field DE with w crossing -1).
+  Used in P1A Sec. VI to point readers to the bounce-class alternative DE
+  mechanism that survives the 14 ECH-specific structural barriers.},\ \Eprint
+  {https://arxiv.org/abs/0909.2776} {arXiv:0909.2776 [hep-th]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Shamir}(2022)}]{Shamir2022}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont

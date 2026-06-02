@@ -110,43 +110,43 @@ Warning--missing journal in Cai:2026echoes
 Warning--missing number in Papanikolaou:2024pbh
 You've used 48 entries,
             6079 wiz_defined-function locations,
-            1993 strings with 23642 characters,
-and the built_in function-call counts, 47359 in all, are:
-= -- 3715
-> -- 938
-< -- 234
-+ -- 308
-- -- 220
-* -- 7101
-:= -- 4585
+            1994 strings with 23865 characters,
+and the built_in function-call counts, 47718 in all, are:
+= -- 3728
+> -- 961
+< -- 236
++ -- 314
+- -- 226
+* -- 7185
+:= -- 4605
 add.period$ -- 46
 call.type$ -- 48
-change.case$ -- 236
+change.case$ -- 237
 chr.to.int$ -- 54
 cite$ -- 52
-duplicate$ -- 4482
-empty$ -- 3430
-format.name$ -- 524
-if$ -- 9542
+duplicate$ -- 4514
+empty$ -- 3450
+format.name$ -- 538
+if$ -- 9615
 int.to.chr$ -- 5
 int.to.str$ -- 55
-missing$ -- 687
+missing$ -- 691
 newline$ -- 190
 num.names$ -- 138
-pop$ -- 1765
+pop$ -- 1773
 preamble$ -- 1
 purify$ -- 230
 quote$ -- 0
-skip$ -- 2211
+skip$ -- 2217
 stack$ -- 0
-substring$ -- 1067
-swap$ -- 4145
-text.length$ -- 92
+substring$ -- 1066
+swap$ -- 4186
+text.length$ -- 95
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 618
+type$ -- 621
 warning$ -- 5
 while$ -- 136
 width$ -- 0
-write$ -- 489
+write$ -- 490
 (There were 26 error messages)

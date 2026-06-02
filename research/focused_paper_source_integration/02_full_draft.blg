@@ -13,6 +13,11 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: 02_full_draftNotes.bib
 Database file #2: focused_paper_refs.bib
+You're missing a field name---line 170 of file focused_paper_refs.bib
+ :   
+ :   % NOTE (v1.7.29, real cross-vendor R-round, Perplexity Sonar Pro
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -26,8 +31,8 @@ Control: production of article title (0) allowed
 Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
-Warning--missing number in TanakaUrakawa:2011
 Warning--missing number in Maldacena:2002vr
+Warning--missing number in TanakaUrakawa:2011
 Warning--missing number in Cai:2009fn
 Warning--missing number in WilsonEwing:2012
 Warning--missing number in McDonaldSeljak2009
@@ -35,24 +40,24 @@ Warning--missing number in Cai:2018non
 Warning--missing number in Chen:2009zp
 You've used 40 entries,
             6079 wiz_defined-function locations,
-            1931 strings with 22159 characters,
-and the built_in function-call counts, 41879 in all, are:
-= -- 3172
+            1930 strings with 22150 characters,
+and the built_in function-call counts, 41826 in all, are:
+= -- 3168
 > -- 917
 < -- 211
 + -- 298
 - -- 222
-* -- 6476
-:= -- 3960
+* -- 6458
+:= -- 3957
 add.period$ -- 38
 call.type$ -- 40
 change.case$ -- 194
 chr.to.int$ -- 50
 cite$ -- 47
-duplicate$ -- 3963
-empty$ -- 3023
+duplicate$ -- 3957
+empty$ -- 3019
 format.name$ -- 528
-if$ -- 8428
+if$ -- 8420
 int.to.chr$ -- 1
 int.to.str$ -- 47
 missing$ -- 577
@@ -62,10 +67,10 @@ pop$ -- 1533
 preamble$ -- 1
 purify$ -- 190
 quote$ -- 0
-skip$ -- 1896
+skip$ -- 1895
 stack$ -- 0
 substring$ -- 923
-swap$ -- 3692
+swap$ -- 3684
 text.length$ -- 88
 text.prefix$ -- 0
 top$ -- 10
@@ -73,5 +78,5 @@ type$ -- 531
 warning$ -- 8
 while$ -- 115
 width$ -- 0
-write$ -- 420
-(There were 8 warnings)
+write$ -- 419
+(There was 1 error message)

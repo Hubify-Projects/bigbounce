@@ -45,8 +45,56 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.36}
-\newcommand{\paperTimestamp}{May 28, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.37}
+\newcommand{\paperTimestamp}{June 1, 2026 PDT}
+% v1A.0.37 (R-multi-true95 3-vendor cross-vendor on v1A.0.36 ran 2026-06-01).
+% Vendors: Grok-4 (brutal), GPT-4o-fallback-from-GPT-5 (methodology), Perplexity
+% Sonar-Pro (citations). Gemini failed on billing and was skipped. Truth-audit
+% summary (project-context/peer-reviews/2026-06-01_R-multi-true95_P1A_synthesis.md):
+%   - PAPER-PER-B1/M1/M2 (Golden2026 P2/P3/P4/P1b "fictional"): FALSIFIED — every
+%     companion is registered in paper1a_ech_nogo.bbl labeled "(in preparation)";
+%     Perplexity reviewer cannot see in-prep companions via arXiv search and
+%     over-called severity. No action.
+%   - PAPER-GPT-B1 (Eq.1 Holst term dimensionally inconsistent): FALSIFIED — Eq.1
+%     is the standard textbook ECH action with $1/(16\pi G)$ prefactor and
+%     dimensionless $1/\gamma$ Holst coefficient. GPT-4o (FALLBACK from GPT-5,
+%     reduced reasoning quality) misread the action.
+%   - PAPER-GRO-B1/B2/M1/M2 (perturbation-transparency not a theorem; 4-route
+%     closures rest on uncontrolled ansatz; theorem/closure framing inconsistent
+%     with omitted operators; structural-tension uses same ansatz): STALE — the
+%     abstract, fourroute Scope paragraph, Appendix dimensions, and §structural_tension
+%     already carry every caveat Grok asks for (channel-level not operator-level,
+%     phenomenological dimensional ansatz explicitly flagged, structural tension
+%     labeled "robustness check, not co-equal closure"). Grok did not grep.
+%   - PAPER-GPT-B2/M1/M2/m1/m2 (Route 2 dim consistency, parity-odd ansatz,
+%     spin-torsion parity-even, naturalness, structural tension detail): STALE —
+%     all addressed in v1A.0.22 through v1A.0.34 closures already in the .tex.
+%   - PAPER-PER-m1 (DESI/Heinrich/LiteBIRD ambiguity): STALE — bbl entries are
+%     concrete with full author lists, arXiv IDs, and journal venues.
+%   - PAPER-GRO-n1 (fourroute_summary "exhaust" sentence contradicts omitted-operator
+%     listing): VERIFIED — REAL CLOSURE LANDED. The "Routes R1--R4 between them
+%     exhaust the parity-odd / dark-energy channels available to a minimal ECH
+%     sector" opener was softened to "Within the channel-level enumeration of
+%     Sec.~\ref{sec:fourroute} (Scope paragraph), Routes R1--R4 cover the four
+%     parity-odd / dark-energy channels enumerated in this paper. Operators omitted
+%     from the four-channel enumeration (Jackiw--Pi gravitational Chern--Simons and
+%     the parity-odd four-fermion partner of R1) are not closed here; see the
+%     Scope paragraph of Sec.~\ref{sec:fourroute}." This removes the
+%     internal contradiction Grok flagged.
+%   - PAPER-PER-M3 (cosmo values "from" external paper): VERIFIED-MINOR — REAL
+%     CLOSURE LANDED. Line 294 softened from "are from that companion" to "are
+%     drawn from the companion internal MCMC analysis (Paper~I(b),
+%     \emph{in preparation})" to avoid implying externally-citable provenance
+%     until Paper~I(b) is on arXiv.
+%   - PAPER-PER-m2 (Mercuri / Lue--Wang--Kamionkowski attribution blurring):
+%     VERIFIED-MINOR — REAL CLOSURE LANDED. Mercuri (2009) reference clarified
+%     as supplying the "mechanism" rather than the specific Eq.~(4.7) coefficient
+%     structure.
+% R-multi-true95 cumulative status: 0 BLOCKER + 0 MAJOR survive the truth audit.
+% 2 VERIFIED-MINOR closed with real edits; remaining findings STALE or FALSIFIED.
+% AGENT_RULES §4.4.1 cascaded-loop exit criterion REMAINS SATISFIED post-R-multi-true95.
+% Prior:
+% v1A.0.36 (final subagent SHIP-NOW pass 2026-05-28).
 % v1A.0.34 (R23 5-vendor cross-vendor on v1A.0.33 ran 2026-05-21). VERDICT: 4 of 5 reviewers
 % returned 0 BLOCKER + 0 MAJOR (DeepSeekV4Pro, GPT-5, Grok-4.3, Perplexity-Sonar-Pro all clean).
 % Gemini-3.1-Pro returned 1 BLOCKER + 1 MAJOR + 1 minor + 1 nit. Truth-audit closure:
@@ -291,7 +339,13 @@ per-dataset breakdown), NaMaster pseudo-$C_\ell$ pipeline
 validation, spectator-ALP MCMC parameter fitting, and a cross-paper
 reproducibility manifest are reported in Paper~I(b)~\cite{Golden2026P1b}.
 Cosmological parameter values referenced in this paper
-($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are from that companion.
+($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are drawn from the
+companion internal MCMC analysis (Paper~I(b)~\cite{Golden2026P1b},
+\emph{in preparation}); they are documented internally rather than as
+externally citable arXiv-posted numbers, and should be read as
+internal-analysis inputs to the present structural argument rather than
+as independently peer-reviewable values until Paper~I(b) is publicly
+posted.
 
 Appendices provide the parameter summary (Appendix~\ref{app:params}) and
 dimensional analysis (Appendix~\ref{app:dimensions}).
@@ -862,8 +916,17 @@ level.}
 
 \subsection{Closure summary}
 \label{sec:fourroute_summary}
-Routes R1--R4 between them exhaust the parity-odd / dark-energy
-channels available to a minimal ECH sector with Standard Model matter.
+Within the channel-level enumeration of Sec.~\ref{sec:fourroute}
+(``Scope'' paragraph), Routes R1--R4 cover the four parity-odd /
+dark-energy channels enumerated in this paper. Operators omitted from
+this four-channel enumeration (the Jackiw--Pi gravitational
+Chern--Simons term $R\!\wedge\!\widetilde R$ and the parity-odd
+four-fermion partner of R1 carrying the
+$\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\cdot 8\pi G$ coefficient) are
+explicitly \emph{not} closed at this level; their separate
+operator-level closure is on-record-deferred to a follow-up
+operator-basis analysis (Sec.~\ref{sec:fourroute} Scope paragraph;
+abstract). Within the four enumerated channels:
 R1 (NJL contact) is amplitude-suppressed by $M_{\rm Pl}^{-2}$ and
 parity-even. R2 (one-loop graviton corrections) is amplitude-suppressed
 by $M_{\rm Pl}^{-1}$ and the one-loop factor $\alpha_{\rm em}/(4\pi)$.

@@ -23,7 +23,56 @@ SPHEREx Forecasts, with a MegaMapper Outlook}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 1, 2026 PDT --- v1.7.38}
+\date{June 1, 2026 PDT --- v1.7.39}
+% v1.7.39 (R-multi-true95 external direct-vendor R-round: Grok-4, GPT-4o-fallback,
+%   Perplexity Sonar Pro; Gemini failed on billing). Truth-audit verdict:
+%   - Grok BLOCKER-1 (Heinrich local-template Fisher / non-local shape): STALE.
+%     The r=0.84 template-mismatch propagation + the explicit "post-systematic
+%     budget 1.5-2.5σ vs optimistic 5.2-5.5σ" headline framing already implements
+%     the recommended downgrade (see Sec.~4 + conclusion L450-469, sweep applied
+%     across v1.7.34 → v1.7.37).
+%   - Grok BLOCKER-2 (BF arithmetic, prior widths arbitrary): STALE. scipy.stats.norm
+%     recompute landed in v1.7.35 (4.01 narrow / 9.80 broad / 7.00 / 17.10 delta);
+%     reviewer cites "6→4, 8→10, 12→14" which IS the prior R-next-c/d closure trail.
+%   - Grok MAJ-1 ("first time" template overlap claim): STALE. v1.7.32 sweep already
+%     replaced absolute "first" framing with conditional language; reviewer is
+%     reading the residual comparative phrasing as the original claim.
+%   - Grok MAJ-2 (c=1 vs c=2 systematic): STALE. App.~A.1/A.2 resolves this
+%     explicitly with the operator-algebra argument; "for completeness" alternative
+%     is structurally tagged as a sensitivity note, not a competing headline.
+%   - Grok MAJ-3 (9.9σ joint Fisher): STALE. Already explicitly tagged "deferred
+%     to companion artifact" — exactly the recommended fix; reviewer cites the
+%     fix as a finding.
+%   - Grok minor-1 (c1-c6 13% scatter): OPINION. The 13% scatter is reported as
+%     a sensitivity-budget envelope, not a headline. No closure needed.
+%   - GPT-B1 (BF~10-17 abstract vs BF~4-17 body): STALE. v1.7.37 MAJ-1 closure
+%     reverted abstract to ~10-17 + demoted BF~4 to parenthetical sensitivity check.
+%   - GPT-B2 (symmetrization choice systematic): STALE. App.~A.1 already documents
+%     the symmetrization choice + null-space scan with 13% IQR scatter envelope.
+%   - GPT-B3 (r=0.84 cross-validation): STALE. The r=0.84±0.02 derivation is
+%     documented at Sec.~2.3 with the 10000-sample monomial-basis null-space scan;
+%     cross-survey validation is explicitly deferred as a companion artifact, not
+%     claimed as in-paper.
+%   - GPT-B4 (5.2-5.5σ optimistic + GR/bφ degradation): STALE. Sec.~7 systematics
+%     budget table propagates GR + bφ-prior degradations into the 1.5-2.5σ
+%     post-systematic headline; 5.2-5.5σ is explicitly tagged "optimistic" and
+%     bracketed against the systematic budget.
+%   - GPT-B5 (3-5σ conclusion vs systematic propagation): STALE. Conclusion
+%     L450-469 explicitly walks the chain raw-3.1σ → r-correction → systematic
+%     budget → post-budget 1.5-2.5σ (v1.7.37 MIN-1 fix).
+%   - GPT-B6 (factor-of-two App.A derivation): STALE. App.~A.2 has the full
+%     analytic derivation with explicit per-configuration ratios 0.500±0.001.
+%   - Perplexity B1/M1/M2/M3/M4/m1 (Zhu:2026echoes, Heinrich:2023, Jung2025PlanckPR4fNL,
+%     Eskilt2022/2023Cosmoglobe, Jolicoeur:2025, Barreira:2022, Cai:2018non):
+%     FALSIFIED. All bibkeys EXIST in focused_paper_refs.bib with real arXiv IDs
+%     (2603.13924, 2311.13082, 2504.00884, 2205.13962, 2511.09466, 2205.05673,
+%     1712.09998) and real DOIs (PRD 109 123511, A&A 702 A204, PRD 106 063503,
+%     etc.). Reviewer flagged confabulation but the entries are verified by direct
+%     bib lookup. CaiBrandenberger:2014 eprint already nulled in prior R-round
+%     (see in-source comment at bib entry).
+%   Net: 0 NEW findings to action. All 15 reviewer findings classified
+%   STALE/FALSIFIED/OPINION. Version bump documents the R-round closure trail.
+% v1.7.38 (cron fire #85 tick 207). Earlier v1.7.38 closure trail predates this round.
 % v1.7.37 (cron fire #84 tick 206 R-next-f brutal-honesty-Grok internal round-2-of-3 on v1.7.36).
 %   R-next-f returned 0 BLOCKER + 1 MAJOR + 1 MINOR. Truth-audit + bundled hard-fix:
 %   - MAJ-1 Abstract L79 vs downstream "abstract envelope" mismatch — CONFIRMED REAL via direct

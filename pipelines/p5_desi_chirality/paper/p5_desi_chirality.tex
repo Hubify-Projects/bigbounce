@@ -18,7 +18,46 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.33-2026-06-01}
+\newcommand{\paperVersion}{v0.1.34-2026-06-01}
+% v0.1.34-2026-06-01 (R-multi-true95 R-round: Grok-4 + GPT-4o-fallback + Perplexity
+%   Sonar Pro; Gemini failed on billing). Truth-audit per
+%   feedback_peer_review_truth_audit_protocol:
+%   - PER-B1 (TWebDESI2026 + ASTRADESI2026 fabricated arXiv IDs) — FALSIFIED via direct
+%     WebFetch: arXiv:2604.02463 (Ullah, Awais, Matosb, Suarez-Perez 2026) and
+%     arXiv:2604.01456 (Zapata-Zuluaga et al. 2026) BOTH EXIST and match titles in our
+%     bibitems. However TWebDESI2026 was attributed to "DESI Collaboration" — corrected
+%     bibitem author list to the real authors (Ullah et al.).
+%   - PER-B2 (DESIVAST as full-DR1 cosmic-web overclaim) — VERIFIED. Rewrote "three
+%     independent DR1 cosmic-web catalogs" framing in §X to clarify DESIVAST is a
+%     BGS-z<=0.24 void catalog specifically (VoidFinder + ZOBOV watershed), and T-Web
+%     (Ullah+2026) is the broader DR1 cosmic-web classifier.
+%   - PER-M1 (ASTRA fabricated) — FALSIFIED, citation correct.
+%   - PER-M2 ("publication-grade independent external validation") — VERIFIED.
+%     Softened to "independent contemporaneous DR1 cosmic-web analysis"; dropped
+%     "publication-grade" framing since Ullah+2026 is at submitted-MNRAS stage.
+%   - PER-M3 (Papers II/IV cited as established external literature) — VERIFIED.
+%     Added explicit "companion (not-yet-published) work" label at first use of each.
+%   - PER-m1 (EFT operator form not in cited Alexander-Yunes / Lue-Wang-Kamionkowski) —
+%     VERIFIED. Added "introduced in this work, inspired by but not derived from" caveat
+%     sentence in §XI.B operator paragraph.
+%   - GRO-B1 ("clean null" abstract phrasing on n=428 void) — VERIFIED. Softened
+%     abstract: "clean null for environmental dependence" -> "no evidence for
+%     environment-dependent chirality beyond the catalog-monopole offset at current
+%     sensitivity; void class is sample-size limited at n=428 V-Web spirals and is
+%     constrained primarily via the DESIVAST-anchored re-projection (n=56,981)".
+%   - GRO-B2 (EFT operator paragraph post-hoc inflation) — VERIFIED. Operator paragraph
+%     reworded as toy/inspired-by parametrization with explicit transfer-function caveat;
+%     numerical bound retained but explicitly labeled order-of-magnitude.
+%   - GRO-M1 (V-Web void label unreliable at z<=0.24) — VERIFIED. Added explicit
+%     statement in abstract + §VII that the V-Web void class at z<=0.24 is dominated by
+%     survey-edge artifacts and DESIVAST is the primary void constraint at low z.
+%   - GRO-M2 (raw 3.94sigma vs 1.87 residual) — VERIFIED. Abstract pre-correction
+%     |sigma|_max=3.94 wording marked "(pre-monopole-subtraction; the corresponding
+%     monopole-subtracted residual is |sigma_obs-sigma_pred|=1.87, below all Bonferroni
+%     thresholds)".
+%   - GRO-M3 (RSD anisotropy unquantified) — VERIFIED. Added boundary-crossing
+%     order-of-magnitude estimate from V-Web eigenvalue field in §XII Limitations.
+%   - GRO-min1 (Tempel abstract framing) — already addressed v0.1.31, no change.
 % v0.1.33-2026-06-01 (drive-to-100 fire xx:17 — R-ext-v3 on v0.1.31 returned 4-of-5
 %   PERFECTLY CLEAN + Gemini-3.1-Pro flagged 3 MAJORs (GEM-M1 RSD anisotropy /
 %   GEM-M2 EFT parameterization / GEM-M3 missing foundational citations) + 2 minors.
@@ -167,12 +206,20 @@ $R_s\!=\!25, \lambda_{\rm th}\!=\!0.3$), and the headline sign-pattern
 uninformative at $|\sigma| \lesssim 3$) is invariant under the
 smoothing scale and threshold choices. We also report null tests in
 redshift (label-shuffle $p\!=\!0.372$), projected $k\!=\!5$ NN density
-($|\sigma|_{\max}\!=\!3.94$ across density quintiles), and sky-position
+($|\sigma|_{\max}\!=\!3.94$ across density quintiles, pre-monopole-
+subtraction; the corresponding monopole-subtracted residual is
+$|\sigma_{\rm obs}-\sigma_{\rm pred}|\!=\!1.87$, below all Bonferroni
+thresholds), and sky-position
 (HEALPix scans at NSIDE $\in \{16, 32, 64\}$ with label-shuffle nulls
 $p\!=\!0.61/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
-correction. We interpret this as a clean null for environmental
-dependence of large-scale spiral chirality within the DESI DR1 footprint
-at the resolution probed.
+correction. We interpret this as no evidence for environment-dependent
+chirality beyond the catalog-monopole offset at current sensitivity;
+the V-Web void class at $z\!\lesssim\!0.24$ is sample-size limited at
+$n\!=\!428$ chirality-relevant spirals and dominated by survey-edge
+artifacts (see \S\ref{sec:tweb_compare}), so the strongest void
+constraint comes from the DESIVAST-anchored re-projection
+($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$) rather than the
+V-Web void label.
 
 \textbf{Robustness.} We strengthen the headline with the Tempel
 \textit{et~al.}~2014~\cite{Tempel2014} friends-of-friends group
@@ -233,10 +280,13 @@ $\gtrsim 5\times$ larger.
 Spiral galaxy chirality is, to leading order in a parity-conserving
 universe, an equal mixture of clockwise (CW) and counterclockwise (CCW)
 projections on the sky once mirror-augmentation biases in classifier
-training are removed. Paper~IV~\cite{golden_chirality_2026} establishes
-the global mixture in the post-test-time-augmentation equivariant
-classifier as a CW fraction of $0.4974 \pm 0.000279$, consistent with
-parity at $\sim 1\sigma$. That null is a \emph{global} statement; it
+training are removed. Paper~IV~\cite{golden_chirality_2026} (a companion
+work by the same author, currently in preparation and not yet peer
+reviewed; the present manuscript treats its catalog and quoted monopole
+offset as inputs whose uncertainty is propagated explicitly below)
+establishes the global mixture in the post-test-time-augmentation
+equivariant classifier as a CW fraction of $0.4974 \pm 0.000279$,
+consistent with parity at $\sim 1\sigma$. That null is a \emph{global} statement; it
 does not constrain whether handedness is independent of
 \emph{environment}.
 
@@ -585,7 +635,8 @@ at $\Delta f_{\rm CW}=-0.0026$ (Paper~IV-monopole prediction).
 All five residuals lie below the Bonferroni-5 threshold
 $|\sigma|^{\rm Bonf}_{0.01,5}=3.09$, so no quintile shows a
 statistically-significant departure from the monopole-only model.
-Companion artifact: \texttt{pipelines/p5\_desi\_chirality/results/analysis\_density/cw\_fraction\_by\_density.csv}.}
+Companion artifact:
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_density/cw\_fraction\_by\_density.csv}.}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
 Quintile & $f_{\rm CW}$ & $\sigma_{\rm obs}$ & $\sigma_{\rm pred}$ & $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ \\
@@ -1004,8 +1055,11 @@ relative to a periodic comparison sample. The relative density
 ordering (knot $>$ filament $>$ sheet $>$ void) is preserved in both
 runs, which is the load-bearing structural property for the
 environment-stratified chirality analysis here. We therefore treat
-Ref.~\cite{TWebDESI2026} as a publication-grade independent external
-validation of the V-Web run that produced this paper's headline result.
+Ref.~\cite{TWebDESI2026} as an independent contemporaneous DR1
+cosmic-web analysis that is consistent with our V-Web run at the
+survey-shell-systematic level. (Ref.~\cite{TWebDESI2026} is currently
+in submission to MNRAS; we do not treat it as peer-reviewed external
+validation but rather as a contemporaneous independent measurement.)
 
 A second concurrent DESI cosmic-web paper~\cite{ASTRADESI2026} (Zapata-Zuluaga
 \textit{et al.}\ 2026, the first public DESI cosmic-web catalog) uses
@@ -1028,13 +1082,17 @@ calibration in Ref.~\cite{ASTRADESI2026} is consistent with the V-Web
 sheet/filament fractions reported here within the survey-shell
 systematic discussed above.
 
-A third concurrent DR1 catalog, DESIVAST~\cite{DESIVAST2025} (Douglass
-\textit{et al.}\ 2025, ApJ 982, 38), provides public DR1 void
-identifications using the sphere-growing VoidFinder algorithm and the
-watershed ZOBOV/V2 algorithm (REVOLVER and VIDE prunings) on the
-volume-limited DR1 Bright Galaxy Survey sample to $z \leq 0.24$: 1,461
-interior voids with VoidFinder, 420 with V2-REVOLVER, and 295 with
-V2-VIDE.
+A complementary public DR1 product, DESIVAST~\cite{DESIVAST2025}
+(Douglass \textit{et al.}\ 2025, ApJ 982, 38), is specifically a
+\emph{void catalog} (not a full cosmic-web classifier) using the
+sphere-growing VoidFinder algorithm and the watershed ZOBOV/V2
+algorithm (REVOLVER and VIDE prunings) on the volume-limited DR1
+Bright Galaxy Survey sample restricted to $z \leq 0.24$: 1,461 interior
+voids with VoidFinder, 420 with V2-REVOLVER, and 295 with V2-VIDE.
+DESIVAST therefore provides an authoritative public DR1 void
+identification at low $z$, complementary to (but narrower in scope
+than) the full four-class T-Web cosmic-web run of
+Ref.~\cite{TWebDESI2026}.
 
 \paragraph{DESIVAST per-galaxy cross-match (this work).} The DESIVAST
 public release at
@@ -1512,9 +1570,11 @@ discriminate between matter-bounce and inflation-class models because
 no published model in either class predicts an environment-dependent
 CW signature at DESI DR1 sensitivity; the null instead establishes an
 observational upper bound that any future parity-violating model
-proposing an environment-dependent chirality signature must respect. Paper~II~\cite{golden_fnl_2026} and Paper~III provide
-independent discriminators (primordial $f_{\rm NL}$ and multi-survey
-anomaly statistics); this null adds a clean negative result on the
+proposing an environment-dependent chirality signature must respect.
+Paper~II~\cite{golden_fnl_2026} and Paper~III (both companion,
+not-yet-published works by the same author) provide independent
+discriminators (primordial $f_{\rm NL}$ and multi-survey anomaly
+statistics); this null adds a clean negative result on the
 spiral-chirality axis.
 
 \subsection{Comparison to Shamir~2022 DESI Legacy}
@@ -1581,8 +1641,28 @@ smoothing length dominates. We expect this to be a sub-percent
 contamination at $R_s\!=\!25$\,Mpc$/h$ given the BGS pairwise velocity
 distribution, but a quantitative bound requires a reconstructed-position
 re-classification cross-check rather than the present scalar
-displacement argument alone. The full anisotropic robustness analysis
-is deferred to the Zel'dovich-reconstructed rerun.
+displacement argument alone.
+
+\emph{Order-of-magnitude boundary-crossing estimate (v0.1.34).}
+Using the V-Web eigenvalue field itself, the fraction of cells near
+class boundaries (eigenvalues within $|\lambda - \lambda_{\rm th}|
+\le \sigma_{\rm rsd}/R_s$ of the threshold) sets the maximum
+boundary-crossing rate. At $\sigma_{\rm rsd} \sim 5$\,Mpc/$h$ (BGS
+pairwise velocity dispersion projected through Hubble flow at
+$z\!\sim\!0.2$) and $R_s\!=\!25$\,Mpc/$h$, the eigenvalue-shift
+magnitude is $\sim 0.04\,\sigma_\lambda$. Reading the per-cell
+eigenvalue histogram from
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_eigenvalue\_dist.json},
+the fraction of cells within that band of any threshold is
+$\sim 3$--$5\%$. Galaxies in those cells are the maximum possible
+class-flip population under RSD; with $\sim 800$k chirality-relevant
+spirals this is at most $\sim 2$--$4\times 10^4$ galaxies, distributed
+across all four class boundaries, leaving the per-class
+$\Delta f_{\rm CW}$ estimates statistically unchanged at the
+$\sim 10^{-3}$ level we report. The full anisotropic robustness
+analysis (a proper Zel'dovich-reconstructed re-classification)
+remains a natural follow-up but is not required to support the
+headline null at current sensitivity.
 \end{itemize}
 
 \section{Future LSST extension}\label{sec:lsst}
@@ -1621,32 +1701,42 @@ inflation discrimination program: neither model predicts an
 environment-dependent chirality signature at DESI DR1 resolution, and
 the data agree.
 
-\emph{Mapping to a physical operator (v0.1.32).} The observational
-bound above is naturally parameterized in an effective-field-theory
-language. Consider an axion-like (or generic pseudoscalar) field
-$\phi$ coupled to matter density via a parity-violating gradient
-operator $\mathcal{L}_{\rm parity}\!\supset\!g_\phi\,
-(\nabla_i\phi)\,(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\hat z)$,
-where $\hat L$ is the local angular-momentum unit vector
-and $\rho$ is the total matter density (e.g.\ a Chern--Simons-style
-coupling in the Alexander \& Yunes~\cite{AlexanderYunes2009} sense,
-or a chiral-gravitational-wave coupling in the
-Lue--Wang--Kamionkowski~\cite{LueWangKamionkowski1999} sense). For
-$\nabla\phi$ aligned with the cosmic-web gradient $\nabla\rho$, the
-induced chirality asymmetry scales as
+\emph{Mapping to a physical operator (v0.1.32, toy parametrization).}
+The observational bound above can be cast in an
+effective-field-theory language as an order-of-magnitude guide for
+how a parity-violating coupling would map to V-Web class-to-class
+$\Delta f_{\rm CW}$. We emphasize that the operator form and scaling
+written below are a \emph{toy parametrization introduced in this
+work}, inspired by but not derived from the cited
+parity-violating-gravity literature: the specific operator
+\(\mathcal{L}_{\rm parity}\supset g_\phi\,(\nabla_i\phi)\,
+(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\hat z)\) is not contained
+in either Alexander \& Yunes~\cite{AlexanderYunes2009} (Chern--Simons
+modified gravity review) or Lue--Wang--Kamionkowski~%
+\cite{LueWangKamionkowski1999} (cosmological parity-violating
+interactions); those works motivate the general class of
+parity-violating couplings but not this specific
+density-gradient form. We deliberately keep the parameterization
+schematic. Consider an axion-like (or generic pseudoscalar) field
+$\phi$ coupled to matter density via the above operator, where
+$\hat L$ is the local angular-momentum unit vector and $\rho$ is the
+total matter density. For $\nabla\phi$ aligned with the cosmic-web
+gradient $\nabla\rho$, the induced chirality asymmetry scales as
 $\Delta f_{\rm CW}^{\rm env}\!\propto\!g_\phi\,\nabla\phi\cdot
-\nabla\rho/\rho_{\rm bg}$, i.e.\ the V-Web class-to-class
-$\Delta f_{\rm CW}$ becomes a direct probe of the dimensionless
-coupling $g_\phi\,|\nabla\phi|/H_0$ times the fractional density
-contrast across classes. With per-class $|\Delta f_{\rm CW}|\!<\!0.01$
-on $n\!\gtrsim\!4\!\times\!10^5$ spirals, the bound on the
-coupling $g_\phi\,|\nabla\phi|$ in $H_0$ units is approximately
+\nabla\rho/\rho_{\rm bg}$. With per-class $|\Delta f_{\rm CW}|\!<\!0.01$
+on $n\!\gtrsim\!4\!\times\!10^5$ spirals, an order-of-magnitude bound
+on the coupling $g_\phi\,|\nabla\phi|$ in $H_0$ units is
 $|g_\phi\,(\nabla\phi)/H_0|\!\lesssim\!1\!\times\!10^{-2}/
 \langle|\Delta\rho/\rho_{\rm bg}|\rangle$, where the cosmic-web
 fractional contrast averages $\sim\!\mathcal O(1)$ across the
-classes. This is a first-order bound: a quantitative ALP-coupling
-exclusion would require fully model-dependent transfer-function
-calculations beyond the scope of this companion paper.
+classes. \emph{This is an order-of-magnitude estimate only, not a
+quantitative ALP-coupling exclusion}: a real exclusion would require
+(i) a full transfer-function calculation mapping the high-redshift
+$\phi$-field gradient to the low-redshift V-Web eigenvalue field, and
+(ii) propagation of the per-class $\Delta f_{\rm CW}$ measurement
+uncertainties through that transfer function. We do not claim either
+calculation here; the parametrization is included as a guide for
+future model-building, not as a derived constraint.
 
 \section{Data and code availability}\label{sec:data_code}
 
@@ -1748,8 +1838,9 @@ catalogues and mass estimation,'' Astron.\ Astrophys.\ \textbf{566},
 A1 (2014), arXiv:1402.1350.
 
 \bibitem{TWebDESI2026}
-DESI Collaboration, ``Cosmic-web quenching with DESI DR1: T-Web
-environments and mass-dependent red/blue classification,''
+H.~I.~Ullah, M.~Awais, T.~Matos, and J.~F.~Su\'arez-P\'erez,
+``Cosmic-web quenching with DESI DR1: T-Web environments and
+mass-dependent red/blue classification,''
 submitted to MNRAS (2026), arXiv:2604.02463.
 
 \bibitem{ASTRADESI2026}

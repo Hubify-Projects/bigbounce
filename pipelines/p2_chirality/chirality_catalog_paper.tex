@@ -32,7 +32,7 @@
 \newcommand{\artbreak@us}{\discretionary{\char`\_}{}{\char`\_}}
 \DeclareRobustCommand{\artifact}[1]{%
  \StrSubstitute{#1}{\_}{_}[\art@urlpath]%
- \href{https://github.com/Hubify-Projects/bigbounce/blob/paper4-v1.0.142/\art@urlpath}{%
+ \href{https://github.com/Hubify-Projects/bigbounce/blob/paper4-v1.0.143/\art@urlpath}{%
  \begingroup
  \let\_\artbreak@us
  \texttt{#1}%
@@ -51,7 +51,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.142}
+\newcommand{\paperVersion}{v1.0.143}
 \newcommand{\paperTimestamp}{June 1, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for full revision history.}
 
@@ -85,7 +85,7 @@ A canonical-mask diagnostic of the leakage mechanism shows that pre-MASTER raw p
 
 Three interpretations of the canonical-mask residual are systematically tested with a four-null battery + direct cross-spectrum: (i)~a clean real cosmological dipole at amplitude $\sim\!1.7\%$, (ii)~a coherent depth/sampling-correlated systematic at low $\ell$ on the patchy canonical footprint, or (iii)~a NaMaster low-$\ell$ deconvolution artifact. Interpretation~(iii) sharp-edge variant is disfavored by the apodized-mask test ($+3.57\sigmaunit$ on $C^2$ $2^\circ$ apodization, essentially unchanged from binary). Interpretation~(i) as a clean dipole-only explanation is disfavored by three independent lines of evidence: (a)~$\ell\!=\!2 > \ell\!=\!1$ broadband structure (auto-spectrum $+4.73\sigmaunit$ at $\ell\!=\!2$ vs $+3.63\sigmaunit$ at $\ell\!=\!1$ — a real dipole at $1.7\%$ would be $\ell\!=\!1$-dominant, with injected real dipoles showing $\sigma\!=\!+2.87$ at $\ell\!=\!1$ under the same null); (b)~absence of monotonic $p_{\rm eq}$ quality-quartile scaling ($\sigma\!=\!+0.20,-0.42,+0.44,+0.43$ across four equal-$N$ quartiles, all $|\sigma|\!<\!1$); (c)~direct cross-spectrum $C(A_p\!\times\!n_{\rm total})$ at $\ell\!=\!2$ gives $r\!=\!-0.65$ with $\sigma\!=\!-2.89$ against permutation null (quadrupole-anti-alignment between the chirality asymmetry map and the pixel-density / depth proxy at the same multipole where the auto-spectrum has its largest excess); at $\ell\!=\!1$ the same cross-spectrum gives $r\!=\!-0.49$ with $\sigma\!=\!-1.53$, below the conventional detection threshold individually but with the same negative sign as the $\ell$=2 signal, consistent with a broadband low-$\ell$ depth-correlated systematic. Interpretation~(ii) is therefore the favored verdict: a coherent depth/sampling-correlated systematic at low $\ell$ on the patchy canonical footprint, directly confirmed at $\ell\!=\!2$ by the cross-spectrum and consistent at $\ell\!=\!1$. These tests do not exclude a small primordial dipole component sitting beneath the canonical-mask systematic; what they exclude is a clean dipole-only explanation that reproduces all three diagnostic patterns simultaneously. A bootstrap pixel-resample test gives $-0.22\sigmaunit$ for the canonical-mask data but is tautological for cosmological-dipole hypothesis testing (a real injected $A\!=\!1.7\%$ dipole also yields median $\sigma\!=\!-0.49$ under bootstrap; the bootstrap variance is too wide to discriminate) and is therefore retained only as a sampling-variance diagnostic.
 
-\textbf{Falsification criterion.} Detection of a chirality dipole at $\sigma\!>\!5$ at amplitude $\gtrsim\!0.75\%$ (the demonstrated 50\%-recovery-at-$3\sigma$ threshold on the present HC subsample injection sweep; 0.5\% is a tested non-detection point at the present pipeline, not the operational floor) in a future $\geq\!10^7$-galaxy systematics-modeled survey would falsify the present null; the floor tightens under LSST sample-size scaling. \textbf{Scope.} The $\ell\!=\!1$ subsample-mask null is the load-bearing scientific result; the canonical-mask residual is interpretation~(ii) systematic, not a primordial detection. A like-for-like matched-footprint Ganalyzer reanalysis under Shamir's pipeline + cuts is required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here. The catalog (3.2\,M spirals), model weights (ViT-Small with $Z_2$ 2-fold flip TTA; full $D_4$ TTA tested on holdouts only), and all reproducibility scripts are publicly released under the immutable release tag \texttt{paper4-v1.0.142} .
+\textbf{Falsification criterion.} Detection of a chirality dipole at $\sigma\!>\!5$ at amplitude $\gtrsim\!0.75\%$ (the demonstrated 50\%-recovery-at-$3\sigma$ threshold on the present HC subsample injection sweep; 0.5\% is a tested non-detection point at the present pipeline, not the operational floor) in a future $\geq\!10^7$-galaxy systematics-modeled survey would falsify the present null; the floor tightens under LSST sample-size scaling. \textbf{Scope.} The $\ell\!=\!1$ subsample-mask null is the load-bearing scientific result; the canonical-mask residual is interpretation~(ii) systematic, not a primordial detection. A like-for-like matched-footprint Ganalyzer reanalysis under Shamir's pipeline + cuts is required for a likelihood-level exclusion under his estimator; we do not perform that reanalysis here. The catalog (3.2\,M spirals), model weights (ViT-Small with $Z_2$ 2-fold flip TTA; full $D_4$ TTA tested on holdouts only), and all reproducibility scripts are publicly released under the immutable release tag \texttt{paper4-v1.0.143} .
 \end{abstract}
 
 \pacs{98.80.-k, 98.62.Ai, 95.75.Mn}
@@ -362,7 +362,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including \texttt{p4\_multinull\_battery.json} for the canonical $+3.64\sigma$, \texttt{master\_power\_spectrum.json} for the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan \texttt{wave12\_hemi\_2026-05-01/results.json}), and the legacy \texttt{canonical\_n\_master\_l1\_direct\_v1062\_baseline.json} (legacy pre-correction baseline $+1.85\sigma$, retained for historical provenance only) are pinned to the immutable release tag \texttt{paper4-v1.0.142} and its predecessor patch tags. Full machine-readable artifact paths + URLs are in \S\ref{sec:availability}.}
+Reproducibility artifact: \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including \texttt{p4\_multinull\_battery.json} for the canonical $+3.64\sigma$, \texttt{master\_power\_spectrum.json} for the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan \texttt{wave12\_hemi\_2026-05-01/results.json}), and the legacy \texttt{canonical\_n\_master\_l1\_direct\_v1062\_baseline.json} (legacy pre-correction baseline $+1.85\sigma$, retained for historical provenance only) are pinned to the immutable release tag \texttt{paper4-v1.0.143} and its predecessor patch tags. Full machine-readable artifact paths + URLs are in \S\ref{sec:availability}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -4307,7 +4307,7 @@ Sec.~\ref{sec:monopole_mask_null}).
  Training, inference, equivariant post-processing, bias hardening
  suite, and dipole analysis scripts. The specific commit backing
  the figures and tables of the present manuscript is pinned at the
- immutable release tag \texttt{paper4-v1.0.142} (and predecessor patch tags
+ immutable release tag \texttt{paper4-v1.0.143} (and predecessor patch tags
  historical predecessor tags), which carries the PDF asset, the canonical-provenance
  JSON artifact set, and a Zenodo DOI minted via the GitHub-Zenodo
  webhook on the release page.

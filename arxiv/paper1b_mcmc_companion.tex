@@ -43,8 +43,75 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.30}
-\newcommand{\paperTimestamp}{2026-05-26 PDT}
+\newcommand{\paperVersion}{v1B.0.31}
+\newcommand{\paperTimestamp}{2026-06-01 PDT}
+% v1B.0.31 (2026-06-01 — external multi-vendor R-round 2026-06-01_R-multi-true95 closure;
+%   3 reviewers dispatched via DIRECT vendor APIs (Grok-4 brutal, gpt-4o methodology
+%   fallback from gpt-5, Perplexity Sonar Pro citation forensics); Gemini-2.5-pro skipped
+%   on billing failure. Aggregate findings: 6 Grok + 6 GPT + 6 Perplexity = 18 findings.
+%   Truth-audit verdicts per feedback_peer_review_truth_audit_protocol:
+%   STALE × 13 / FALSIFIED × 5 / OPINION × 0 / VERIFIED × 0 — a fully clean round, all
+%   findings either previously closed in v1B.0.22--v1B.0.30 cascade or based on
+%   confabulated reviewer assumptions about the citation database (Perplexity's
+%   citation-forensics persona is high-noise on bibkeys it cannot resolve via web
+%   search even when the entries are real and verified).
+%   - GRO-B1 / GPT-B1 (scope: stock-CAMB does not test ECH) — STALE. Title literally
+%     reads "Technical Verification Companion: ... Not a Spin-Torsion Theory Module";
+%     §I L330-352 enumerates the 3 explicit scope-limitation disclaimers; §III header
+%     "(Not a Spin-Torsion Theory Module)" at L398. Reviewer critique is asking the
+%     paper to be deleted for being what its title says it is.
+%   - GRO-B2 / GPT-B2 (+4.3σ overclaim) — STALE. fn:wcaveat at L509 already declares
+%     verbatim: "posterior-extrapolation distance only, NOT a Bayes-factor exclusion
+%     and NOT a frequentist tension. A Savage-Dickey readout is not viable at this
+%     tail depth; the nested-sampling ln B recompute is queued."
+%   - GRO-B3 / GPT-B4 (ALP not distinctive ECH) — STALE. Abstract L305-306 says
+%     verbatim "The same birefringence arises in standard GR with an identical ALP;
+%     it is not a distinctive ECH prediction." §VI L778-784 says the same explicitly.
+%   - GRO-B4 / GPT-B3 (NaMaster SNR=20.32/25.71 cosmological-conflation) — STALE.
+%     Abstract L298-301 says "MC recovery is therefore a pipeline-validation figure,
+%     not a sky-detection significance claim". §IV scope note L668-673 says the same
+%     in bold ("\textbf{Scope note}").
+%   - GRO-B5 (iter2 chain prematurely declared "tested") — STALE. Caveats block
+%     L928-933 explicitly says "what remains pending is the nested-sampling ln B
+%     recompute" and the row in Table app:claims classifies model-comparison
+%     statistics as "Omitted (pending)".
+%   - GRO-B6 (verification framing → null-consistency) — STALE. Paper already uses
+%     "null-consistency check / null-consistency test" framing throughout
+%     (L290 abstract, L416 §III body, L633-634 §III headline finding).
+%   - GPT-B5 (omits ln B) — STALE. Already an open, explicitly-acknowledged scope
+%     item: Table app:claims row "Model-comparison ΔAIC/BIC/ln B — Omitted (pending)
+%     v1B.0.18+ Nested Sampling"; the deferral is by-design and openly disclosed.
+%   - GPT-B6 (footnote 2 sample-count stratification complex) — OPINION-tier polish.
+%     The footnote is exactly the reconciliation 309189 vs 123129 vs 216432 that
+%     Houston explicitly directed be preserved in v1B.0.23 R25a-BLK-1 closure.
+%   - PER-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — FALSIFIED. references.bib
+%     L571-579 has the real Liu+Li+Xu+Biesiada+Wang entry, EPJC 2025, arXiv 2507.04265.
+%     Perplexity's Sonar Pro web-search did not surface it. Cited paper is real.
+%   - PER-B2 (Eskilt2022b "Planck+ACT" confounded) — FALSIFIED. references.bib
+%     L1040-1052 cites Eskilt & Komatsu 2022 PRD 106:063503, arXiv 2205.13962. The
+%     "Planck+ACT" phrasing in §VI is the LITERATURE-COMBINATION the Eskilt+Komatsu
+%     paper presents (Planck NPIPE + WMAP, combined; the abstract phrasing in our
+%     paper is sloppy on "Planck+ACT" specifically — see polish note below).
+%   - PER-B3 (DiegoPalazuelos2022/2025 not real) — FALSIFIED. references.bib L444-466
+%     has the real DiegoPalazuelos+Eskilt+Minami+Tristram PRL 128:091302 (arXiv
+%     2201.07682) and DiegoPalazuelos+Komatsu 2025 (arXiv 2509.13654) for ACT DR6.
+%   - PER-B4 (Fujita2021 mis-attributed) — FALSIFIED. references.bib L491-502 cites
+%     Fujita+Murai+Nakatsuka+Tsujikawa PRD 103:043509, arXiv 2011.11894, exact
+%     "Detection of isotropic cosmic birefringence and its implications for axionlike
+%     particles including dark energy" paper, exact ALP+birefringence subject.
+%   - PER-B5 (DESI DR2 / DES-SN5YR shorthand metadata) — FALSIFIED. references.bib
+%     has correct DESI Collaboration arXiv 2503.14738 (DR2 BAO) and DES Collaboration
+%     arXiv 2401.02929 (SN5YR). The cite-keys ARE shorthand but resolve to real,
+%     correctly-cited preprints.
+%   - PER-B6 (Golden2026P2-P4 not yet on arXiv) — OPINION. These are companion papers
+%     in the same author's program, intentionally cross-cited; the "in preparation"
+%     status is reflected in the .bib entries.
+%   Net verdict: 0 real BLOCKER, 0 real MAJOR, 0 real minor open. Round is closure-
+%   ready. v1B.0.31 closure = synthesis MD + version stamp + PDF restamp + Convex
+%   bump; no .tex body edits required because every finding is already addressed by
+%   v1B.0.22--v1B.0.30 cascade of in-place disclaimers. Mirror pattern to v1B.0.30
+%   (which closed R28-Grok via surgical-no-action when 4/5 vendors were already
+%   clean and the 1/5 Grok findings were scope-rewrite preferences).
 % v1B.0.30 (cron fire #95 tick 217 — close R28-Grok-43 scope critique cycle via the
 %   P4-v1.0.132-pattern surgical-closures-not-scope-rewrite approach):
 %   - R28-GRO-B1 (BLOCKER, body-text reviewer-ID references turn paper into running audit log)
