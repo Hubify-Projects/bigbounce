@@ -43,8 +43,63 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.33}
+\newcommand{\paperVersion}{v1B.0.34}
 \newcommand{\paperTimestamp}{2026-06-01 PDT}
+% v1B.0.34 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round4 closure; 3 direct-vendor
+%   reviewers re-run on v1B.0.33 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
+%   Sonar Pro citation forensics; Gemini-2.5-pro still skipped on billing failure).
+%   Truth-audit verdicts per feedback_peer_review_truth_audit_protocol:
+%   1 VERIFIED / 12 STALE / 5 OPINION / 0 BLOCKER outstanding after closure.
+%   - Grok-4: 6 findings, all OPINION-tier narrative-style/scope preferences (B1 narrative
+%     hedging on auxiliary cross-check, B2 iter2 framing as P1A anchor, B3 redundant scope
+%     disclaimers ×5, B4 ALP MCMC adds no ECH-specific value, B5 source-only audit log
+%     stripped at arXiv bundle, B6 LiteBIRD forecast sentence). Verdict OPINION × 6 —
+%     scope-rewrite preferences inconsistent with the Technical Verification Companion
+%     title; in-cell caveats + redundant disclaimers retained by design per the v1B.0.27
+%     cascade rule "in-cell caveats win on visibility".
+%   - GPT-4o: 6 findings, identical to round-2/round-3 (B1 ln B missing, B2 NaMaster
+%     validation framing, B3 ALP rationale, B4 AIC/BIC/ln B omission, B5 error propagation,
+%     B6 citation/attribution). Verdict STALE × 6 — every issue already disclosed in body
+%     + Table app:claims + scope notes; reviewer is not integrating the existing disclaimers.
+%   - Perplexity Sonar Pro: 6 findings.
+%     - PER4-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — STALE. Same as round-1
+%       PER-B1 / round-2 PER2-B1 / round-3 PER3-B1. references.bib L571-579 has the
+%       real Liu+Li+Xu+Biesiada+Wang EPJC 2025 arXiv 2507.04265 entry.
+%     - **PER4-B2 (Eskilt2022b "WMAP9 + Planck 2018 (PR3)" mis-labelled): VERIFIED.**
+%       Round-3 closure (PER3-B2) changed the disambiguation clause from "PR4 NPIPE +
+%       WMAP" → "WMAP9 + Planck 2018 (PR3)". External verification against the actual
+%       Eskilt & Komatsu 2022 paper code repository (github.com/LilleJohs/Cosmic_Birefringence)
+%       confirms the analysis uses **Planck PR4 NPIPE + WMAP9** detector-split maps, NOT
+%       PR3. The PR4/NPIPE README of the public reproduction repo states "The detector
+%       split maps of Planck Data Release 4 (NPIPE) can be found on NERSC". Round-3
+%       closure introduced a regression by over-correcting away from "PR4 NPIPE" to
+%       "PR3"; the v1B.0.32 original phrasing "PR4 NPIPE + WMAP" was actually correct.
+%       **Real factual regression introduced by round-3 closure.** v1B.0.34 fix: change
+%       "the joint WMAP9 + Planck 2018 (PR3) analysis" → "the joint WMAP9 + Planck
+%       PR4/NPIPE analysis" at L951. Note Perplexity's proposed fix ("Planck 2018 PR3
+%       only") is also wrong — the right answer is PR4 NPIPE + WMAP9. The reviewer
+%       caught the error but proposed an incorrect remediation; the truth-audit
+%       cross-checked against the paper's code repository to land on the correct fix.
+%       Lesson: never rely solely on reviewer-proposed fix; verify dataset attribution
+%       against the cited paper's public artifacts (code repo, ancillary files).
+%       Promoted to VERIFIED. Cascaded R-rounds in 4 rounds have caught: R1→R2 prose
+%       attribution error (Planck+ACT → WMAP+Planck), R2→R3 dataset detail error
+%       (PR4 NPIPE → PR3 incorrect over-correction), R3→R4 PR3 → PR4 NPIPE correction.
+%     - PER4-M1 (DiegoPalazuelos2025 ACT DR6 not real) — STALE. references.bib L444-466
+%       cites DiegoPalazuelos+Komatsu 2025 (arXiv 2509.13654); entry real.
+%     - PER4-M2 (ACT DR6 β=0.215° ± 0.074° relabel) — STALE. Already disambiguated;
+%       same review thread as round-1/round-2.
+%     - PER4-m1 (LiteBIRD 0.03° units citation) — OPINION. Standard sensitivity target.
+%     - PER4-m2 (ALP MCMC custom-likelihood-stack provenance) — OPINION. The §VI text
+%       already labels it "our internal model-independent MCMC fit"; provenance disclosure
+%       is explicit.
+%   v1B.0.34 closure: single VERIFIED fix (Eskilt dataset PR3→PR4 NPIPE label at L951) +
+%   version stamp + recompile + PDF mirror + Convex bump. Cascaded round-4 demonstrates
+%   ongoing value of cascaded R-rounds: round-3 closure introduced a NEW prose-attribution
+%   drift (over-correction from "PR4 NPIPE" to "PR3") that round-4 caught. Lesson: when
+%   correcting dataset labels, ALWAYS cross-check against the cited paper's public code
+%   artifacts to avoid swinging from one mis-labelled extreme to another. Pattern this
+%   verification step into all future closure-prose dataset corrections.
 % v1B.0.33 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round3 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.32 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
 %   Sonar Pro citation forensics; Gemini-2.5-pro still skipped on billing failure).
@@ -948,7 +1003,7 @@ studied by Fujita~\etal~\cite{Fujita2021}.
 \textit{Headline observational constraint.}---The primary observational reference
 adopted in this analysis is the published Eskilt~\&~Komatsu joint WMAP+Planck value
 $\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} (the
-joint WMAP9 + Planck 2018 (PR3) analysis; ACT~DR6 enters only via the separate
+joint WMAP9 + Planck PR4/NPIPE analysis; ACT~DR6 enters only via the separate
 $\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
 below only in the auxiliary inverse-variance combination), which
 accounts for shared calibration systematics. The simplified inverse-variance
