@@ -462,15 +462,16 @@
   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {106}},\ \bibinfo
   {pages} {063503} (\bibinfo {year} {2022})},\ \Eprint
   {https://arxiv.org/abs/2205.13962} {arXiv:2205.13962} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Diego-Palazuelos}\ \emph {et~al.}(2025)\citenamefont
-  {Diego-Palazuelos} \emph {et~al.}}]{DiegoPalazuelos2025}%
+\bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
+  {Komatsu}(2025)}]{DiegoPalazuelos2025}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Diego-Palazuelos}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title}
-  {Act dr6 cosmic-birefringence measurement and consistency with planck},\
-  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ }
-  (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2503.19884}
-  {arXiv:2503.19884} \BibitemShut {NoStop}%
+  {Diego-Palazuelos}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Cosmic birefringence from
+  the {Atacama Cosmology Telescope} data release 6},\ }\href@noop {} {\bibfield
+   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
+  {2025})},\ \Eprint {https://arxiv.org/abs/2509.13654} {arXiv:2509.13654
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Eskilt}\ \emph {et~al.}(2023)\citenamefont {Eskilt}
   \emph {et~al.}}]{Eskilt2023Cosmoglobe}%
   \BibitemOpen

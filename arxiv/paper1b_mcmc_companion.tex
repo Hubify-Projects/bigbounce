@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.36}
+\newcommand{\paperVersion}{v1B.0.37}
 \newcommand{\paperTimestamp}{2026-06-02 PDT}
 % v1B.0.34 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round4 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.33 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
@@ -65,7 +65,7 @@
 %     - PER4-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — STALE. Same as round-1
 %       PER-B1 / round-2 PER2-B1 / round-3 PER3-B1. references.bib L571-579 has the
 %       real Liu+Li+Xu+Biesiada+Wang EPJC 2025 arXiv 2507.04265 entry.
-%     - **PER4-B2 (Eskilt2022b "WMAP9 + Planck 2018 (PR3)" mis-labelled): VERIFIED.**
+%     - **PER4-B2 (Eskilt2022 "WMAP9 + Planck 2018 (PR3)" mis-labelled): VERIFIED.**
 %       Round-3 closure (PER3-B2) changed the disambiguation clause from "PR4 NPIPE +
 %       WMAP" → "WMAP9 + Planck 2018 (PR3)". External verification against the actual
 %       Eskilt & Komatsu 2022 paper code repository (github.com/LilleJohs/Cosmic_Birefringence)
@@ -118,7 +118,7 @@
 %     - PER3-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — STALE. Same as round-1
 %       PER-B1 / round-2 PER2-B1. references.bib L571-579 has the real Liu+Li+Xu+Biesiada+Wang
 %       EPJC 2025 arXiv 2507.04265 entry. Sonar Pro's web-search continues to miss it; real.
-%     - **PER3-B2 (Eskilt2022b "PR4 NPIPE + WMAP analysis" mis-labelled): VERIFIED.**
+%     - **PER3-B2 (Eskilt2022 "PR4 NPIPE + WMAP analysis" mis-labelled): VERIFIED.**
 %       Round-2 closure (PER2-M1) introduced the disambiguation clause "(the PR4 NPIPE +
 %       WMAP analysis; ACT~DR6 enters only via the separate \cite{DiegoPalazuelos2025}
 %       measurement)" at the §VI Headline observational constraint passage (L898). However
@@ -167,11 +167,11 @@
 %     - BLOCKER-1 (Liu et al. ECTorsionDESI2025): STALE — reflagged from round-1
 %       PER-B1; references.bib L571-579 has the real Liu+Li+Xu+Biesiada+Wang EPJC 2025
 %       arXiv 2507.04265 entry. Sonar Pro's web-search still can't surface it; entry is real.
-%     - MAJOR-1 (Eskilt2022b "Planck+ACT" mis-labelled): **VERIFIED**. references.bib
+%     - MAJOR-1 (Eskilt2022 "Planck+ACT" mis-labelled): **VERIFIED**. references.bib
 %       L1040-1052 title literally reads "from the WMAP and Planck CMB polarization data";
 %       ACT is NOT part of that dataset. Prose at L370-371 (abstract), L779-780 (§VI body),
 %       L854-855 (§VI Headline observational constraint) said "joint Planck+ACT value"
-%       attributed to \cite{Eskilt2022b}. **Real factual error.** v1B.0.32 fix:
+%       attributed to \cite{Eskilt2022}. **Real factual error.** v1B.0.32 fix:
 %       relabelled to "joint WMAP+Planck value" in all 3 in-text occurrences. The Headline
 %       passage explicitly adds "(the PR4 NPIPE + WMAP analysis; ACT~DR6 enters only via
 %       the separate \cite{DiegoPalazuelos2025} measurement, used below only in the
@@ -237,7 +237,7 @@
 %   - PER-B1 (Liu et al. ECTorsionDESI2025 doesn't exist) — FALSIFIED. references.bib
 %     L571-579 has the real Liu+Li+Xu+Biesiada+Wang entry, EPJC 2025, arXiv 2507.04265.
 %     Perplexity's Sonar Pro web-search did not surface it. Cited paper is real.
-%   - PER-B2 (Eskilt2022b "Planck+ACT" confounded) — FALSIFIED. references.bib
+%   - PER-B2 (Eskilt2022 "Planck+ACT" confounded) — FALSIFIED. references.bib
 %     L1040-1052 cites Eskilt & Komatsu 2022 PRD 106:063503, arXiv 2205.13962. The
 %     "Planck+ACT" phrasing in §VI is the LITERATURE-COMBINATION the Eskilt+Komatsu
 %     paper presents (Planck NPIPE + WMAP, combined; the abstract phrasing in our
@@ -518,7 +518,7 @@ the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
 \emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$,
 $m\sim H_0$ is consistent with the published joint WMAP+Planck value
-$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} without
+$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022} without
 fine-tuning. The same birefringence arises in standard GR with an identical
 ALP; it is not a distinctive ECH prediction.
 A cross-paper status table and reproducibility manifest are included
@@ -927,7 +927,7 @@ performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
 \end{equation}
 The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
 a $2^\circ$ apodization scale). For $\beta=0.342^\circ$ (the published joint
-WMAP+Planck value~\cite{Eskilt2022b}), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
+WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
 $\beta=0$, recovery is consistent with zero (null check). The
 pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
@@ -1000,7 +1000,7 @@ studied by Fujita~\etal~\cite{Fujita2021}.
 
 \textit{Headline observational constraint.}---The primary observational reference
 adopted in this analysis is the published Eskilt~\&~Komatsu joint WMAP+Planck value
-$\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022b} (the
+$\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022} (the
 joint WMAP9 + Planck PR4/NPIPE analysis; ACT~DR6 enters only via the separate
 $\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
 below only in the auxiliary inverse-variance combination), which
@@ -1041,7 +1041,7 @@ inverse-variance weighting:
 \end{equation}
 (Auxiliary cross-check only.)
 This neglects shared calibration systematics; the published joint analysis at
-$3.6\sigma$~\cite{Eskilt2022b} is the headline.
+$3.6\sigma$~\cite{Eskilt2022} is the headline.
 
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (3 configurations, 9{,}720 total accepted samples) yields:

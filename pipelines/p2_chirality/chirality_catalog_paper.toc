@@ -77,5 +77,5 @@
 \contentsline {paragraph}{\numberline {c}Per-bin reporting convention.}{47}{section*.75}%
 \contentsline {section}{\numberline {IX}Data Availability}{48}{section*.76}%
 \contentsline {paragraph}{\numberline {a}Catalog usage limitations.}{48}{section*.77}%
-\contentsline {section}{\numberline {}Acknowledgments}{48}{section*.78}%
+\contentsline {section}{\numberline {}Acknowledgments}{49}{section*.78}%
 \contentsline {section}{\numberline {}References}{49}{section*.79}%

@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{24}%
+\begin{thebibliography}{23}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -60,16 +60,17 @@
   } (\bibinfo {year} {2026}{\natexlab{a}})},\ \bibinfo {note}
   {hUBIFY-2026-001A; companion paper, this volume}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
-  {Komatsu}(2022{\natexlab{a}})}]{Eskilt2022}%
+  {Komatsu}(2022)}]{Eskilt2022}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
   {Eskilt}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
   {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Improved constraints on
   cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background
   polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
-  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review D}\ }\textbf
-  {\bibinfo {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year}
-  {2022}{\natexlab{a}})}\BibitemShut {NoStop}%
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year} {2022})},\
+  \Eprint {https://arxiv.org/abs/2205.13962} {arXiv:2205.13962 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
   {Komatsu}(2025)}]{DiegoPalazuelos2025}%
   \BibitemOpen
@@ -80,21 +81,6 @@
    {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
   {2025})},\ \Eprint {https://arxiv.org/abs/2509.13654} {arXiv:2509.13654
   [astro-ph.CO]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
-  {Komatsu}(2022{\natexlab{b}})}]{Eskilt2022b}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
-  {Eskilt}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Improved constraints on
-  cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background
-  polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
-  {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year}
-  {2022}{\natexlab{b}})},\ \bibinfo {note} {alias of @Eskilt2022; the canonical
-  0.342 +/- 0.094 deg measurement. Bibkey retained for backward compatibility
-  with prose `\\cite{Eskilt2022b}` calls.},\ \Eprint
-  {https://arxiv.org/abs/2205.13962} {arXiv:2205.13962 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden2026P2}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont

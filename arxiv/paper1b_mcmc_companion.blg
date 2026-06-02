@@ -27,45 +27,45 @@ Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
 Warning--missing number in Cai:2009fn
-You've used 26 entries,
+You've used 25 entries,
             6079 wiz_defined-function locations,
-            1822 strings with 20263 characters,
-and the built_in function-call counts, 26834 in all, are:
-= -- 2013
-> -- 595
-< -- 136
-+ -- 198
-- -- 152
-* -- 4130
-:= -- 2545
-add.period$ -- 24
-call.type$ -- 26
-change.case$ -- 126
+            1819 strings with 20090 characters,
+and the built_in function-call counts, 25755 in all, are:
+= -- 1921
+> -- 575
+< -- 131
++ -- 191
+- -- 148
+* -- 3972
+:= -- 2443
+add.period$ -- 23
+call.type$ -- 25
+change.case$ -- 120
 chr.to.int$ -- 32
-cite$ -- 27
-duplicate$ -- 2544
-empty$ -- 1907
-format.name$ -- 335
-if$ -- 5390
-int.to.chr$ -- 5
-int.to.str$ -- 33
-missing$ -- 390
-newline$ -- 124
-num.names$ -- 72
-pop$ -- 968
+cite$ -- 26
+duplicate$ -- 2447
+empty$ -- 1830
+format.name$ -- 322
+if$ -- 5166
+int.to.chr$ -- 4
+int.to.str$ -- 32
+missing$ -- 374
+newline$ -- 121
+num.names$ -- 69
+pop$ -- 932
 preamble$ -- 1
-purify$ -- 120
+purify$ -- 115
 quote$ -- 0
-skip$ -- 1220
+skip$ -- 1169
 stack$ -- 0
-substring$ -- 584
-swap$ -- 2373
-text.length$ -- 50
+substring$ -- 550
+swap$ -- 2280
+text.length$ -- 48
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 342
+type$ -- 329
 warning$ -- 2
-while$ -- 76
+while$ -- 73
 width$ -- 0
-write$ -- 284
+write$ -- 274
 (There were 2 warnings)

@@ -40,38 +40,38 @@ Warning--missing number in Cai:2018non
 Warning--missing number in Chen:2009zp
 You've used 40 entries,
             6079 wiz_defined-function locations,
-            1930 strings with 22150 characters,
-and the built_in function-call counts, 41826 in all, are:
+            1931 strings with 22175 characters,
+and the built_in function-call counts, 41841 in all, are:
 = -- 3168
-> -- 917
-< -- 211
+> -- 918
+< -- 212
 + -- 298
 - -- 222
-* -- 6458
-:= -- 3957
+* -- 6464
+:= -- 3955
 add.period$ -- 38
 call.type$ -- 40
 change.case$ -- 194
 chr.to.int$ -- 50
 cite$ -- 47
 duplicate$ -- 3957
-empty$ -- 3019
-format.name$ -- 528
-if$ -- 8420
+empty$ -- 3018
+format.name$ -- 529
+if$ -- 8421
 int.to.chr$ -- 1
 int.to.str$ -- 47
 missing$ -- 577
 newline$ -- 166
 num.names$ -- 114
-pop$ -- 1533
+pop$ -- 1535
 preamble$ -- 1
 purify$ -- 190
 quote$ -- 0
 skip$ -- 1895
 stack$ -- 0
 substring$ -- 923
-swap$ -- 3684
-text.length$ -- 88
+swap$ -- 3689
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 10
 type$ -- 531

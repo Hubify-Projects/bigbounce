@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{46}%
+\begin{thebibliography}{47}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -70,6 +70,28 @@
   {\bibfield  {journal} {\bibinfo  {journal} {(in preparation)}\ } (\bibinfo
   {year} {2026}{\natexlab{a}})},\ \bibinfo {note} {hUBIFY-2026-002; companion
   paper, this volume}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
+  {Komatsu}(2022)}]{Eskilt2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Eskilt}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Improved constraints on
+  cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background
+  polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year} {2022})},\
+  \Eprint {https://arxiv.org/abs/2205.13962} {arXiv:2205.13962 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
+  {Komatsu}(2025)}]{DiegoPalazuelos2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Diego-Palazuelos}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Cosmic birefringence from
+  the {Atacama Cosmology Telescope} data release 6},\ }\href@noop {} {\bibfield
+   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
+  {2025})},\ \Eprint {https://arxiv.org/abs/2509.13654} {arXiv:2509.13654
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Golden}(2026{\natexlab{b}})}]{Golden2026P1b}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
@@ -313,9 +335,8 @@
   gravity with the Immirzi parameter}},\ }\href
   {https://doi.org/10.1007/JHEP06(2011)107} {\bibfield  {journal} {\bibinfo
   {journal} {JHEP}\ }\textbf {\bibinfo {volume} {06}},\ \bibinfo {pages}
-  {107} (\bibinfo {year} {2011})},\ \Eprint
-  {https://arxiv.org/abs/1104.4028} {arXiv:1104.4028 [hep-th]} \BibitemShut
-  {NoStop}%
+  {107}},\ \Eprint {https://arxiv.org/abs/1104.4028} {arXiv:1104.4028 [hep-th]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Lue}\ \emph {et~al.}(1999)\citenamefont {Lue},
   \citenamefont {Wang},\ and\ \citenamefont
   {Kamionkowski}}]{LueWangKamionkowski1999}%
@@ -342,28 +363,6 @@
   {125}},\ \bibinfo {pages} {221301} (\bibinfo {year} {2020})},\ \Eprint
   {https://arxiv.org/abs/2011.11254} {arXiv:2011.11254 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Eskilt}\ and\ \citenamefont
-  {Komatsu}(2022)}]{Eskilt2022b}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
-  {Eskilt}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Improved constraints on
-  cosmic birefringence from the {WMAP} and {Planck} cosmic microwave background
-  polarization data},\ }\href {https://doi.org/10.1103/PhysRevD.106.063503}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
-  {volume} {106}},\ \bibinfo {pages} {063503} (\bibinfo {year} {2022})},\
-  \Eprint {https://arxiv.org/abs/2205.13962}
-  {arXiv:2205.13962 [astro-ph.CO]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Diego-Palazuelos}\ and\ \citenamefont
-  {Komatsu}(2025)}]{DiegoPalazuelos2025}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Diego-Palazuelos}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Komatsu}},\ }\bibfield  {title} {\bibinfo {title} {Cosmic birefringence from
-  the {Atacama Cosmology Telescope} data release 6},\ }\href@noop {} {\bibfield
-   {journal} {\bibinfo  {journal} {arXiv preprint}\ } (\bibinfo {year}
-  {2025})},\ \Eprint {https://arxiv.org/abs/2509.13654} {arXiv:2509.13654
-  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{LiteBIRD Collaboration}}\ \emph
   {et~al.}(2023)\citenamefont {{LiteBIRD Collaboration}}, \citenamefont {Allys}
   \emph {et~al.}}]{LiteBIRD2023}%
