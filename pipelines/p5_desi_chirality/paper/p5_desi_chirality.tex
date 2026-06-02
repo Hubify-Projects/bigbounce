@@ -18,7 +18,56 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.37-2026-06-01}
+\newcommand{\paperVersion}{v0.1.38-2026-06-01}
+% v0.1.38-2026-06-01 (R-multi-round5 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
+%   re-fired on v0.1.37; Gemini skipped). Truth-audit per
+%   feedback_peer_review_truth_audit_protocol. Most findings STALE
+%   (already closed in v0.1.34-v0.1.37). Real closures:
+%   - PER-M1 (DESIVAST2025 bibitem still labeled "(DESI Collaboration)") —
+%     VERIFIED. Rincon et al. 2025 is not a formal DESI-collab paper; the
+%     "(DESI Collaboration)" tag was carried over from earlier drafts. Removed
+%     "(DESI Collaboration)" from the \bibitem author line.
+%   - PER-M2 (ASTRA labeled "the first public DESI cosmic-web catalog") —
+%     VERIFIED. ASTRA is a preprint on the EDR rosettes (~175 deg^2), not a
+%     released DR1-wide DESI value-added catalog. Reworded §X parenthetical to
+%     "a DESI-EDR-based probabilistic environment catalog" — drops the "first
+%     public" implication while keeping the correct EDR scope.
+%   - GRO-m2 (residual "publication-grade" + "cleanest single-test" superlatives
+%     at §IX.G near maximal-void correlation result) — VERIFIED. Replaced
+%     "cleanest single-test publication-grade demonstration" with "direct
+%     single-test demonstration" (L1520) and "cleanest single-statistic
+%     confirmation" with "direct single-statistic confirmation" (L1539). The
+%     §VII "strongest single piece of positive evidence" wording for the
+%     DESIVAST-anchored re-analysis is retained: it's not a stylistic
+%     superlative, it's an accurate ordering claim (n=56,981 vs n=428).
+%   STALE findings (already closed in prior rounds, reviewers re-flagged):
+%   - GRO-B1 (RSD "robust" wording): closed v0.1.36 GRO-M2.
+%   - GRO-B2 (delete "future model must satisfy"): closed v0.1.31 GRO-min1 +
+%     v0.1.36 GRO-M1.
+%   - GRO-M1 (DESIVAST not independent dataset): paper explicitly frames it as
+%     a re-projection on the same chirality-labeled galaxies; no claim of
+%     independent data. OPINION.
+%   - GRO-M2 (move Tempel to appendix): closed v0.1.31 GRO-M2; reviewer wants
+%     deeper structural rewrite. OPINION.
+%   - GRO-m1 (delete Appendix A entirely): closed v0.1.34 PER-m1 / v0.1.35
+%     GRO-R2-M2. OPINION.
+%   - GPT-B1 (Bonferroni vs FDR): closed v0.1.36 GPT-B1 (empirical max-stat MC
+%     is primary; Bonferroni is secondary benchmark). STALE.
+%   - GPT-M1 (empirical null detail): closed v0.1.35 GPT-R2-B1 + v0.1.36
+%     GPT-M2. STALE.
+%   - GPT-M2 (error propagation through monopole offset): OPINION; sigma uses
+%     1/(2 sqrt(N)) per v0.1.36 GPT-M4.
+%   - GPT-m1, GPT-m2, GPT-n1: OPINION.
+%   - PER-B1 (Shamir2022 MNRAS metadata): closed v0.1.36 PER-B4 via direct
+%     WebFetch. STALE.
+%   - PER-M3 (T-Web volume-fraction ranges): Perplexity itself says "likely
+%     approximate"; ranges are reported as approximate in §X. OPINION.
+%   - PER-m1 (zall-pix-iron path): closed v0.1.35 PER-R2-M1. STALE.
+% v0.1.37-2026-06-01 (R-multi-round4 R-round: Grok-4 + GPT-5 + Perplexity Sonar Pro
+%   re-fired on v0.1.36; Gemini skipped). Round 4 caught remaining
+%   in-text "Douglass" reference (false alarm — Douglass is a real DESIVAST
+%   co-author per ADS 2025ApJ...982...38R). Otherwise all STALE. No textual
+%   changes that round; counter was reset. (See round 4 synthesis md.)
 % v0.1.36-2026-06-01 (R-multi-round3 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
 %   re-fired on v0.1.35; Gemini failed). Truth-audit per
 %   feedback_peer_review_truth_audit_protocol:
@@ -228,7 +277,7 @@
 %   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
 %   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
 %   per the V-Web-as-headline-classifier structural choice).
-\newcommand{\paperTimestamp}{June 1, 2026 PDT (R-multi-round4)}
+\newcommand{\paperTimestamp}{June 1, 2026 PDT (R-multi-round5)}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -1194,7 +1243,7 @@ in submission to MNRAS; we do not treat it as peer-reviewed external
 validation but rather as a contemporaneous independent measurement.)
 
 A second concurrent DESI cosmic-web paper~\cite{ASTRADESI2026} (Zapata-Zuluaga
-\textit{et al.}\ 2026, the first public DESI cosmic-web catalog) uses
+\textit{et al.}\ 2026, a DESI-EDR-based probabilistic environment catalog) uses
 the ASTRA (Algorithm for Stochastic Topological RAnking) probabilistic
 classifier on the DESI Early Data Release ($175$~deg$^{2}$, 20
 rosettes), running 100 realizations per tracer-zone pair to deliver
@@ -1517,7 +1566,7 @@ around the P4-monopole, with no sign of systematic
 environment-conditioned chirality offset. Companion artifact:
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/p4\_monopole\_residual\_analysis.json}.
 
-This is the cleanest single-test publication-grade demonstration that
+This is a direct single-test demonstration that
 the V-Web class-level $\sigma$ values quoted in the headline table
 are sample-size-weighted projections of the P4 catalog-wide chirality
 monopole, not environmental signals.
@@ -1536,7 +1585,7 @@ indistinguishable from zero (Figure~\ref{fig:voids_vs_chirality}).
 A genuinely environment-dependent chirality signal would produce a
 detectable monotonic correlation between void density and the
 direction-of-chirality deviation; the observed near-zero Pearson is
-the cleanest single-statistic confirmation in this paper that the
+a direct single-statistic confirmation in this paper that the
 catalog-level $-5\sigma$ is not environment-driven.
 The result is robust to the NSIDE choice and spiral-count threshold:
 across the $3 \times 3$ grid of NSIDE $\in \{16, 32, 64\}$ and
@@ -2006,8 +2055,7 @@ Early Data Release: A Probabilistic Environment Catalog,'' (2026),
 arXiv:2604.01456.
 
 \bibitem{DESIVAST2025}
-H.~Rincon, S.~BenZvi, K.~A.~Douglass, D.~Veyrat \textit{et al.}\ (DESI
-Collaboration),
+H.~Rincon, S.~BenZvi, K.~A.~Douglass, D.~Veyrat \textit{et al.},
 ``DESIVAST: Catalogs of Low-redshift Voids Using Data from the DESI
 Data Release 1 Bright Galaxy Survey,'' Astrophys.\ J.\ \textbf{982},
 38 (2025), doi:10.3847/1538-4357/adb559, arXiv:2411.00148.
