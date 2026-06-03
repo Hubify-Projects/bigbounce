@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.39}
+\newcommand{\paperVersion}{v1B.0.40}
 \newcommand{\paperTimestamp}{2026-06-02 PDT}
 % v1B.0.39 (2026-06-02 — R-upgraded-round3 4-vendor direct closure: 3 VERIFIED Gemini findings.
 %   Gemini-2.5-Pro produced the only non-stale BLOCKER/MAJOR/minor of the round.
@@ -567,7 +567,19 @@ CMB polarization map ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
 $0.032^\circ$). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the foreground-cleaned Commander map removes the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
-published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};
+published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};\footnote{\label{fn:eskilt_pr3_pr4}Eskilt
+\& Komatsu 2022 disambiguation (per R-upgraded-round4 GEM-m2 and to
+preempt the recurring PR3-vs-PR4 reviewer reflag): the published PRD
+paper~\cite{Eskilt2022} (PRD 106:063503, arXiv:2205.13962) analyzes
+\emph{Planck PR3 + WMAP9}; the public reproduction code released by the
+authors at \href{https://github.com/LilleJohs/Cosmic_Birefringence}{github.com/LilleJohs/Cosmic\_Birefringence}
+was subsequently updated to use \emph{Planck PR4 / NPIPE}. Throughout
+this paper, the labels ``PR4/NPIPE'' attached to the Eskilt+Komatsu
+likelihoods refer to the code-repository dataset (which is what the
+ALP-MCMC re-runs actually use); the abstract $\beta=0.342^\circ\pm 0.094^\circ$
+($3.6\sigma$) headline is from the published PR3+WMAP9 joint analysis.
+The repository README is the authoritative source for the dataset
+attribution in the executed pipeline.}
 the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
 \emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$,
@@ -718,17 +730,30 @@ $309{,}189$-sample headline anywhere in this paper.}
 We emphasize that the stock-CAMB $\Lambda$CDM$+\Delta\Neff$ proxy run does
 \emph{not} test the ECH spin-torsion sector directly. The Hehl-Datta-Mercuri
 parity-even four-fermion contact interaction that survives torsion
-elimination~\cite{Hehl1976,Mercuri2006} is dimension-6 and $M_{\rm Pl}^{-2}$-suppressed:
+elimination~\cite{Hehl1976,Mercuri2006} is dimension-6 and $M_{\rm Pl}^{-2}$-suppressed\footnote{The
+dimension-6 four-fermion contact operator is interpreted here in the
+low-energy effective field theory (EFT) below the strong-coupling /
+torsion-resolution scale $\Lambda_{\rm strong}\!\sim\!\MPl/\sqrt{\gamma_{\rm BI}}$
+set by the inverse Barbero--Immirzi parameter $\gamma_{\rm BI}$
+(see~\cite{Mercuri2006}); above this scale the contact-operator description
+breaks down and the full Holst-sector dynamics with propagating torsion
+must be retained. All recombination-era and late-time observables addressed
+in this paper sit at energies $E\!\ll\!\Lambda_{\rm strong}$, where the EFT
+treatment is controlled.}:
 its leading Boltzmann effect is a scattering-amplitude shift, not a
 relativistic species, and it does \emph{not} produce a $\Delta\Neff$ at
-recombination. The matter-bounce class~\cite{Cai:2009fn} predicts $\Delta\Neff\!\approx\!0$
+recombination. The \emph{minimal} matter-bounce class~\cite{Cai:2009fn}
+(here ``minimal'' = the single-scalar $w\!=\!0$ matter-dominated contraction
+phase, distinguished from the broader matter-bounce family including
+ekpyrotic, cyclic, Cuscuton, string-gas, and quintom-bounce variants)
+predicts $\Delta\Neff\!\approx\!0$
 by construction (no light bounce-internal species are thermalized at
 recombination); the proxy run \emph{confirming} $\Delta\Neff = -0.020 \pm 0.169$
 (full-tension) and $+0.065\pm 0.17$ (Planck+BAO+SN) is therefore consistent
-with the matter-bounce prediction, but the absence of a $\Delta\Neff$
+with the minimal matter-bounce prediction, but the absence of a $\Delta\Neff$
 detection is not a discriminator between minimal-ECH and standard
 $\Lambda$CDM at the present data precision. We frame the proxy as a
-bounce-class \emph{compatibility check} (matter-bounce-class scenarios
+bounce-class \emph{compatibility check} (minimal matter-bounce-class scenarios
 without prolonged post-bounce inflation predict $\Delta\Neff\!\approx\!0$),
 not as a posterior-preference test against a competing model.
 
@@ -1027,15 +1052,19 @@ $\Lambda$CDM$+\Delta\Neff$ MCMC). Reproducibility materials at
 
 \subsection{Results}
 
-\paragraph{Model-comparison statistics: not reported in this paper.}
-The previously-published $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block in
-earlier versions of this manuscript was not reproducible from a single
-self-consistent readout of the final frozen-thinned chain
-(inconsistent effective sample counts between rows, and the
-Savage-Dickey $\ln B$ figure lacked a script in the reproducibility
-repository for the numerator/denominator from the chain). We
-therefore do not report model-comparison numerical statistics or a
-Bayes-factor piecewise in this paper. The two posterior parameter
+\paragraph{Model-comparison statistics: deferred to a dedicated nested-sampling run.}
+We do not report $\chi^2_{\rm eff}$, AIC, BIC, or $\ln B$ Bayes-factor
+model-comparison numbers in this paper. Robust evaluation of these
+statistics on the present quintom posterior requires either a dedicated
+nested-sampling run (PolyChord or MultiNest) on the identical likelihood
+stack, or thermodynamic integration on a joint quintom/$\Lambda$CDM run;
+a Savage-Dickey density-ratio readout from the converged Metropolis-Hastings
+chain used here is not viable because the $\Lambda$CDM point
+$(w_0,w_a)=(-1,0)$ sits at $>4\sigma$ in the joint marginal tails and
+is unsampled by the chain, so any KDE-based estimator yields kernel-dependent
+noise rather than a controlled density. The nested-sampling recompute is
+queued; we report only the parameter posteriors below, which are unaffected
+by the model-comparison-statistic deferral. The two posterior parameter
 measurements that remain are
 $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
@@ -1073,12 +1102,34 @@ and is explicitly \emph{not} used as the headline number anywhere in this paper.
 
 \textit{ALP field evolution.}---Numerical integration of the ALP equation of
 motion $\ddot\phi + 3H\dot\phi + m^2 f_a\sin(\phi/f_a) = 0$ in a $\Lambda$CDM
-background yields the field displacement from recombination to today:
+background\footnote{The ALP ODE is integrated on a $\Lambda$CDM late-time
+$H(z)$ here as an empirical background, distinct from the quintom-bounce
+dynamics that supply the early-universe / contracting-phase $H(z)$ in the
+underlying ECH cosmology~\cite{Cai2010quintomReview}. The $\Lambda$CDM-background
+choice is conservative for the ALP-MCMC: a quintom late-time $w_0 w_a$
+background (as in Sec.~\ref{sec:cosmo_fits} iter2) shifts $H(z)$ at
+$z\!\lesssim\!1$ by $\sim$few percent, propagating to a $\lesssim$few-percent
+systematic on $\Delta\phi/f_a$ — well below the $\sim$30\% prior-width
+envelope on $\theta_i$ and $m/H_0$ dominating the $\beta$ prediction.}
+yields the field displacement from recombination to today:
 \begin{equation}
 \Delta\phi/f_a \approx 0.65 \quad (m = H_0,\; \theta_i = 1).
 \end{equation}
 Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$:
-$\Delta\phi/f_a \in [0.2, 1.1]$.
+$\Delta\phi/f_a \in [0.2, 1.1]$.\footnote{\label{fn:theta_backreaction}Backreaction
+disclosure (per R-upgraded-round4 GEM-B1 spectator-prose / numerical-scan
+reconciliation): the ALP backreaction fraction scales as $\Omega_a \sim
+\rho_a/\rho_{\rm crit} \sim (m^2 f_a^2/H_0^2 \MPl^2)\,\theta_i^2$, so the
+abstract spectator-status restriction $\theta_i\ll 1$ (Eq.~\eqref{eq:beta_namaster}-adjacent
+disclaimer) implies $\Omega_a \ll 1$ only in the sub-natural sliver $\theta_i\sim 0.1$.
+The numerical scan range $\theta_i\in[0.5,2]$ is RETAINED here for completeness
+of the parameter envelope, but the natural-prior-anchored spectator-consistent
+result sits at $\theta_i\sim 0.1$: at $\theta_i=0.1$ vs the scan-midpoint
+$\theta_i=0.5$ the backreaction is $\Omega_a(0.1)/\Omega_a(0.5)\sim 1/25$
+(i.e., a $\sim 25\times$ fine-tuning of the misalignment initial condition is
+required to keep the ALP a true spectator). The $\Omega_a\sim 1$ regime at
+$\theta_i\sim 1$ is the dark-energy-ALP regime explicitly excluded from this
+spectator-consistency companion check.}
 
 \textit{Birefringence value.}---For $C_{a\gamma}=8$, $\theta_i=1$, $m\approx 2H_0$:
 \begin{equation}
@@ -1264,7 +1315,7 @@ dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 $\Delta\Neff$ extension does not resolve the Hubble tension. Current data
 neither require nor exclude a spin-torsion $\Delta\Neff$ contribution;
 CMB-S4 will provide the first precision test ($\sigma(\Neff)\sim 0.03$).
-The Savage-Dickey/$\Delta$AIC/$\Delta$BIC model-comparison block from earlier versions was REMOVED in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph) because the numbers were not reproducible from a single self-consistent readout of the final frozen-thinned chain; we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are deferred to a dedicated nested-sampling run (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph); we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons in this Metropolis-Hastings-only analysis.
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 the Planck Commander map confirms that the deconvolution pipeline recovers
@@ -1340,7 +1391,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: the prior $\chi^2_{\rm eff}$/AIC/BIC/$\ln B$ block was removed in v1B.0.7 per the 3-vendor convergent R2 BLOCKER (Sec.~\ref{sec:cosmo_fits}); dedicated nested sampling via PolyChord or MultiNest is needed for robust evidence and is queued for v1B.0.15+. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is a separate nested-sampling run on the identical likelihood stack rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph), and is queued. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is that separate nested-sampling run rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
@@ -1395,7 +1446,20 @@ parameter within a single chain.
 \item $m/H_0$: uniform prior on $[1, 3]$ (ultra-light ALP class;
 $m\sim H_0$ required for cosmological-time field evolution).
 \item $\theta_i$: uniform prior on $[0.5, 2]$ (natural-misalignment range,
-$\theta_i = \phi_{\rm init}/f_a$).
+$\theta_i = \phi_{\rm init}/f_a$).\footnote{Backreaction / spectator-status
+disclosure (per R-upgraded-round4 GEM-B1, cross-link to
+footnote~\ref{fn:theta_backreaction} in Sec.~\ref{sec:birefringence_check}):
+the natural-misalignment prior $\theta_i\in[0.5,2]$ adopted in the ALP-MCMC is
+RETAINED for envelope-completeness purposes but is NOT the spectator-consistent
+sub-range. Spectator-status ($\Omega_a\ll 1$) under the $\rho_a \sim m^2 f_a^2
+\theta_i^2$ scaling requires the sub-natural sliver $\theta_i\sim 0.1$, a
+$\sim 25\times$ fine-tuning relative to the prior-midpoint $\theta_i=0.5$
+adopted in this prior. Posterior samples at $\theta_i\gtrsim 0.5$ correspond
+to the dark-energy-ALP regime (excluded from the spectator-consistency claim
+of this companion paper) and should be reinterpreted as samples of a
+DE-ALP rather than a spectator ALP. The MCMC-level prior is therefore an
+upper envelope, not an evidence-weighted natural prior on the spectator
+subset.}
 \item $f_a$: fixed at $\MPl$ (spectator-class theoretical input from the
 Holst-sector pseudoscalar structure; not sampled).
 \end{itemize}

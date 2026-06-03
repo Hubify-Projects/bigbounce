@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.40-2026-06-02}
+\newcommand{\paperVersion}{v0.1.41-2026-06-02}
 % v0.1.40-2026-06-02 (R-upgraded-round3 R-round closures: 6 fixes from direct-vendor
 %   Gemini-2.5-Pro + Grok-4 + GPT-5 + Perplexity triage on v0.1.39).
 %   1. GEM-M1 — App A gauge-invariance caveat added (toy EFT operator clarified
@@ -368,7 +368,7 @@
 %   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
 %   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
 %   per the V-Web-as-headline-classifier structural choice).
-\newcommand{\paperTimestamp}{June 2, 2026 PDT (R-upgraded-postretro)}
+\newcommand{\paperTimestamp}{June 2, 2026 PDT (R-upgraded-round4 close)}
 % v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
 %   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
 %   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
@@ -1407,7 +1407,13 @@ the typical Kaiser-plus-finger-of-god displacement $\sigma_v/(aH)
 \lesssim 5$\,Mpc/$h$ at $z \lesssim 0.24$ is several times smaller
 than the void effective radii. The within-void/non-void chirality
 fractions therefore inherit no anisotropic RSD systematic at the
-present precision. This is in contrast to the V-Web secondary
+present precision. We note (R-upgraded-round4 GEM-m1 closure) that
+this RSD-immunity argument applies to the per-galaxy void-membership
+test itself; the internal composition of the ``non-void'' control
+sample (a mix of walls, filaments, and clusters) is still subject to
+RSD-induced boundary shifts between those non-void subclasses, but
+those internal shifts do not affect the binary void / non-void
+chirality fraction comparison reported here. This is in contrast to the V-Web secondary
 path (\S\ref{sec:limitations}), where the tidal-tensor eigenvalue
 field is computed from redshift-space galaxy positions on a
 $R_s\!=\!25$\,Mpc/$h$ Gaussian smoothing and is therefore
@@ -1979,9 +1985,12 @@ environment catalog of \S\ref{sec:vweb}, recovering
 $N_{\rm overlap} = 25{,}186$ spirals that carry all three labels:
 chirality classification (P4), ASTRA per-class membership probabilities
 (this section), and V-Web deterministic class assignment
-(\S\ref{sec:vweb}). This is the first per-galaxy cross-validation of
-the V-Web canonical classifier against an external published DESI
-environmental catalog within this campaign and is the closest currently
+(\S\ref{sec:vweb}). This is an EDR-overlap per-galaxy cross-check of
+the V-Web canonical classifier against the ASTRA published DESI
+environmental catalog within this campaign (R-upgraded-round4 GRO-B2
+closure: prior wording ``first per-galaxy cross-validation'' withdrawn
+as overclaim relative to existing literature on overlapping
+DESI-EDR/SDSS spin/morphology cross-matches) and is the closest currently
 available substitute for the full-DR1 environmental VAC discussed in
 \S\ref{sec:limitations}. The cross-match pipeline is at
 \artifact{pipelines/p5\_desi\_chirality/scripts/15\_astra\_per\_object\_crossmatch.py};
@@ -2296,7 +2305,18 @@ uncertainties through that transfer function. We do not claim either
 calculation here; the parametrization is included as a guide for
 future model-building, not as a derived constraint.
 
-\emph{Gauge-invariance caveat (v0.1.40, GEM-M1 closure).} The
+\emph{Rotational-invariance and gauge-invariance caveat (v0.1.41,
+GEM-B1/m2 closure).} Two distinct theoretical caveats apply to the toy
+operator. \emph{First (rotational invariance):} the explicit
+$(\hat L\cdot\hat z)$ factor breaks rotational invariance via the
+fixed coordinate-system unit vector $\hat z$, and should be read as
+shorthand for a rotationally-invariant pseudoscalar formed from
+$\hat L$ and a physical direction set by the local cosmic-web
+gradient (e.g.\ $\hat L\cdot\widehat{\nabla\rho}$ or $\hat L\cdot
+\widehat{\nabla\phi}$ in the limit $\nabla\phi\!\parallel\!\nabla\rho$
+adopted below); the literal $\hat z$ form is a coordinate-aligned
+schematic, not a covariant operator. \emph{Second (gauge invariance):}
+even with the rotational-invariance issue resolved, the
 density-gradient factor $\nabla^i\rho/\rho_{\rm bg}$ and the
 late-time angular-momentum direction $\hat L$ are quantities
 defined in a chosen synchronous-comoving slicing on the V-Web

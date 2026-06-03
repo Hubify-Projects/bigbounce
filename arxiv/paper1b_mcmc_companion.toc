@@ -11,15 +11,15 @@
 \contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{6}{section*.9}%
 \contentsline {subsection}{\numberline {A}Datasets and Configuration}{6}{section*.10}%
 \contentsline {subsection}{\numberline {B}Results}{6}{section*.11}%
-\contentsline {paragraph}{\numberline {a}Model-comparison statistics: not reported in this paper.}{6}{section*.12}%
+\contentsline {paragraph}{\numberline {a}Model-comparison statistics: deferred to a dedicated nested-sampling run.}{6}{section*.12}%
 \contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{6}{section*.13}%
-\contentsline {section}{\numberline {VII}Cross-Paper Verification Status}{7}{section*.14}%
-\contentsline {subsection}{\numberline {A}Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger $ footnote)}{7}{section*.15}%
+\contentsline {section}{\numberline {VII}Cross-Paper Verification Status}{8}{section*.14}%
+\contentsline {subsection}{\numberline {A}Free-$w_0w_a$ chain status (anchor for Paper~I(a) Table~II $\ddagger $ footnote)}{8}{section*.15}%
 \contentsline {section}{\numberline {VIII}Conclusions}{8}{section*.16}%
 \contentsline {subsection}{\numberline {}Data and Code Availability}{9}{section*.17}%
-\contentsline {section}{\numberline {}Acknowledgments}{9}{section*.18}%
+\contentsline {section}{\numberline {}Acknowledgments}{10}{section*.18}%
 \appendix 
-\contentsline {section}{\numberline {A}Reproducibility Materials}{9}{section*.19}%
+\contentsline {section}{\numberline {A}Reproducibility Materials}{10}{section*.19}%
 \contentsline {section}{\numberline {B}Claims Classification}{10}{section*.20}%
 \contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{10}{section*.21}%
-\contentsline {section}{\numberline {}References}{10}{section*.22}%
+\contentsline {section}{\numberline {}References}{11}{section*.22}%

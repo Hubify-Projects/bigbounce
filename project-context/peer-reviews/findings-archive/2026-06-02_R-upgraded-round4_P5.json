@@ -1,0 +1,253 @@
+{
+  "round_id": "2026-06-02_R-upgraded-round4_P5",
+  "paper": "P5",
+  "version_in": "v0.1.40",
+  "version_out": "v0.1.41",
+  "vendors": ["grok-4", "gpt-4o-fallback-from-gpt-5", "sonar-pro", "gemini-2.5-pro"],
+  "catalog_version": "34-patterns",
+  "cascaded_counter": "1/3",
+  "findings": [
+    {
+      "id": "P5-GEM-B1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "BLOCKER",
+      "claim": "Toy EFT operator breaks rotational invariance via fixed z-hat in (L-hat . z-hat) factor",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["003"],
+      "evidence": "App-A line 2271: literal (L-hat . z-hat) with fixed coordinate z-hat is not rotationally invariant. Operator should use a physical direction (gradient of rho / gradient of phi).",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex App-A 'Rotational-invariance and gauge-invariance caveat (v0.1.41, GEM-B1/m2 closure)'"
+    },
+    {
+      "id": "P5-GEM-B2",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "BLOCKER",
+      "claim": "Central argument invalid: 3.4 sigma filament sign-flip ignored while pivoting to DESIVAST primary",
+      "verdict": "STALE-MISLABELED",
+      "pattern_ids": ["016"],
+      "evidence": "Abstract lines 513-534 explicitly report the 3.4 sigma filament joint z-test, the chi2 = 4932 non-independence test, and the framing that DESIVAST primary is constructed to be insensitive. Reviewer did not ingest the closure scaffolding already in v0.1.40.",
+      "closure": "closed-by-truth-audit-falsification"
+    },
+    {
+      "id": "P5-GEM-M1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "MAJOR",
+      "claim": "DESIVAST primary waters down goal to void/non-void binary",
+      "verdict": "OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "Sec VII (sec:desivast_primary) lines 1390-1393 explicitly state DESIVAST is a void catalog rather than full 4-class classifier. Framing already honest.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GEM-m1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "RSD-immunity argument incomplete: non-void control sample composition still RSD-affected",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["008"],
+      "evidence": "Sec VII RSD paragraph (line 1408) prior wording only addressed void-membership test, not internal composition of non-void.",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "Sec VII RSD paragraph extended with R-upgraded-round4 GEM-m1 closure sentence"
+    },
+    {
+      "id": "P5-GEM-m2",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "Gauge-invariance caveat deflects from primary rotational-invariance flaw",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["003"],
+      "evidence": "Same root as GEM-B1.",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "App-A caveat now leads with rotational-invariance, then gauge-invariance"
+    },
+    {
+      "id": "P5-GPT-B1",
+      "reviewer": "gpt-4o",
+      "classification": "BLOCKER",
+      "claim": "Cross-matching selection effects and chirality catalog completeness not addressed",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Paper IV (referenced as catalog source) extensively documents selection function. Sec Systematics + sec:tweb_compare cover BGS-selection-function-conditioned imaging-leg systematics. Reviewer wide-net.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GPT-B2",
+      "reviewer": "gpt-4o",
+      "classification": "BLOCKER",
+      "claim": "Bonferroni vs FDR choice unjustified",
+      "verdict": "OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "Bonferroni is conservative; for a null-test paper this is the appropriate choice. FDR would weaken the null claim.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GPT-M1",
+      "reviewer": "gpt-4o",
+      "classification": "MAJOR",
+      "claim": "V-Web sensitivity to smoothing scale + threshold not explored",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Abstract lines 449-457 + sec:phase2 explicitly report the 9-cell Phase 2 sensitivity sweep across Rs in {10,25,50} Mpc/h x lambda_th in {0.0,0.1,0.3}.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GPT-M2",
+      "reviewer": "gpt-4o",
+      "classification": "MAJOR",
+      "claim": "Error bars not propagated through systematic budget",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Abstract lines 432-438 and sec:phase2_significance disclose the monopole-subtraction + counting-statistics floors that bound systematic + statistical contributions.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GPT-M3",
+      "reviewer": "gpt-4o",
+      "classification": "MAJOR",
+      "claim": "Discussion lacks RSD and observational bias treatment",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Sec Limitations + Sec VII RSD paragraph (v0.1.40 + v0.1.41 m1 closure) cover both.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GPT-M4",
+      "reviewer": "gpt-4o",
+      "classification": "MAJOR",
+      "claim": "DR1 cosmic-web classifier limitation: no mitigation strategy discussed",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Sec Future LSST extension + DESIVAST/Tempel/T-Web/ASTRA cross-checks ARE the mitigation. Reviewer missed the four cross-survey cross-validations.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GRO-B1",
+      "reviewer": "grok-4",
+      "classification": "BLOCKER",
+      "claim": "Title and abstract foreground V-Web while primary is DESIVAST",
+      "verdict": "PARTIAL-OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "Abstract already explicitly anchors DESIVAST as primary (line 530). Title still V-Web-centric but does include 'DESIVAST-Anchored Void Cross-Check'. Title rewrite is editorial preference, not falsifiable defect.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GRO-B2",
+      "reviewer": "grok-4",
+      "classification": "BLOCKER",
+      "claim": "'first per-galaxy cross-validation' is an overclaim - prior DESI-EDR/SDSS work exists",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["014"],
+      "evidence": "Line 1982 contained 'first per-galaxy cross-validation' - cannot be defended against the broader DESI-EDR/SDSS cross-match literature.",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "Line 1982 rewritten to 'an EDR-overlap per-galaxy cross-check' with explicit GRO-B2 closure note"
+    },
+    {
+      "id": "P5-GRO-M1",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "DESIVAST primary is re-projection not independent dataset; 'largest-sample null confirmation' is inflation",
+      "verdict": "OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "Abstract lines 482-486 explicitly state 'methodologically correlated by construction because they reuse the same matched-spiral subsample'. Already disclosed.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GRO-M2",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "Phase 2 significance framework adds no new info beyond catalog monopole",
+      "verdict": "OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "Phase 2 significance section (sec:phase2_significance) is GPT-B2 closure from a prior round; collapsing it would re-open that closure. Reviewer disagreement on framing, not factual error.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GRO-m1",
+      "reviewer": "grok-4",
+      "classification": "minor",
+      "claim": "Delete toy EFT appendix entirely",
+      "verdict": "OPINION",
+      "pattern_ids": ["003"],
+      "evidence": "Appendix already heavily self-caveated as 'order-of-magnitude estimate only, not a quantitative ALP-coupling exclusion'. GEM-B1/m2 closure (v0.1.41) addresses the rotational-invariance concern. Houston has consistently retained the toy mapping for future-model-building guidance.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-GRO-n1",
+      "reviewer": "grok-4",
+      "classification": "minor",
+      "claim": "Reviewer-initialed closure tags read as defensive scaffolding",
+      "verdict": "DEFERRED-TO-ARXIV-TARBALL",
+      "pattern_ids": ["014"],
+      "evidence": "All audit content lives in %-comments + body 'closure' notes. arXiv-tarball stage strips %-comments. Body closure parentheticals are minimal and retain attribution provenance.",
+      "closure": "deferred-to-arxiv-tarball-stage"
+    },
+    {
+      "id": "P5-FOR-1",
+      "reviewer": "sonar-pro",
+      "classification": "BLOCKER",
+      "claim": "DESIVAST2025 bibitem needs explicit verification",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Bibitem line 2429-2432: Rincon, BenZvi, Douglass et al., ApJ 982, present and well-formed. Reviewer requested re-verification, not flagged actual mismatch.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-FOR-2",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "TWebDESI2026 fused-metadata risk",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Bibitem line 2417-2420 present and labeled as preprint. No fusion detected.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-FOR-3",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "ASTRADESI2026 fused-metadata risk between arXiv + Zenodo",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Bibitem line 2423-2426 present; Zenodo DOI labeled as artifact. No conflation.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-FOR-4",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "Shamir2022DESI metadata re-verification request",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Bibitem line 2403-2406 present.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-FOR-5",
+      "reviewer": "sonar-pro",
+      "classification": "minor",
+      "claim": "Hahn2007/Hoffman2012/Cautun2014 author-list verification request",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Standard well-known V-Web method citations; bibitems present.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P5-FOR-6",
+      "reviewer": "sonar-pro",
+      "classification": "minor",
+      "claim": "Planck2018cosmoparams article-number verification",
+      "verdict": "VERIFIED-AS-CORRECT",
+      "pattern_ids": ["016"],
+      "evidence": "Bibitem line 2397: A&A 641, A6 (2020) - this is the correct VI. Cosmological parameters record.",
+      "closure": "no-action-already-disclosed"
+    }
+  ],
+  "closures_summary": {
+    "total_findings": 23,
+    "real_action_closures": 3,
+    "truth_audit_falsifications": 1,
+    "no_action_already_disclosed": 17,
+    "deferred_arxiv_tarball": 2
+  },
+  "gemini_signal_note": "Gemini-2.5-Pro found 1 genuine structural BLOCKER (toy EFT rotational invariance) plus 1 verified minor (RSD non-void composition) - both addressed in v0.1.41. GEM-B2 'central argument invalid' is reviewer not having ingested the v0.1.40 3.4-sigma disclosure scaffolding. Gemini is no longer dominant signal source - converging toward closure. R-upgraded-round4 yielded 3 real fixes (1 BLOCKER + 2 minors); 18 of 23 findings stale/opinion. Pattern-008 (closure-introduced regression) NOT triggered: v0.1.40's 2 new sections (App-A gauge caveat + Sec VIII RSD) generated no broken refs, no abstract-vs-body drift, no double-counting."
+}

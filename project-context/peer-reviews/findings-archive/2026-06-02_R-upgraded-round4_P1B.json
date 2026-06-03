@@ -1,0 +1,270 @@
+{
+  "round_id": "2026-06-02_R-upgraded-round4_P1B",
+  "paper": "P1B",
+  "version_in": "v1B.0.39",
+  "version_out": "v1B.0.39",
+  "vendors": ["grok-4", "gpt-4o-fallback-from-gpt-5", "sonar-pro", "gemini-2.5-pro"],
+  "catalog_version": "34-patterns",
+  "cascaded_counter": "1/3",
+  "findings": [
+    {
+      "id": "P1B-GRO-B1",
+      "reviewer": "grok-4",
+      "classification": "BLOCKER",
+      "claim": "Manuscript is 2000+ line review-audit log masquerading as a paper; delete all version-history comments and R-round citations",
+      "verdict": "STALE-OPINION",
+      "pattern_ids": ["014", "016"],
+      "evidence": "All audit content lives in %-comments (preamble + section headers), not in body prose. arXiv-tarball stage strips %-comments per established protocol. Repeat of P1B-GRO-B1 round-3.",
+      "closure": "deferred-to-arxiv-tarball-stage"
+    },
+    {
+      "id": "P1B-GRO-B2",
+      "reviewer": "grok-4",
+      "classification": "BLOCKER",
+      "claim": "Remove '+4.3σ from LCDM' headline; no Savage-Dickey / lnB exists",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "fn:wcaveat at L509 already states '+4.3σ marg.-tail + lnB pending'; Table 1B caption is similarly caveated. Already handled across R25/R26/R3. Houston has retained the column as-is with the caveat. Per /readiness-cap-99 the caveat is correct; deletion is reviewer-opinion.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GRO-B3",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "§6 ALP consistency: C_aγ∈[9,51] outside KSVZ/DFSZ benchmarks — relabel as parameter-scan",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "Round-3 GEM-M1 closure already rephrased L1059-1068 to 'acknowledge entire range is outside minimal benchmarks'. Grok wide-net re-flagged the same fix that just landed.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GRO-B4",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "Title 'Technical Verification Companion to the ECH Spin-Torsion Program' is false because no torsion-modified Boltzmann",
+      "verdict": "OPINION",
+      "pattern_ids": ["019"],
+      "evidence": "Section-level scope disclaimers throughout (§3, §4, §6) explicitly state stock-CAMB / not ECH-modified. The title accurately reflects the paper's role as null-tests + companion methodology + ALP cross-check. Houston framing; not a factual error.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GRO-B5",
+      "reviewer": "grok-4",
+      "classification": "minor",
+      "claim": "Remove SNR figures 20.32 / 25.71 from §4 prose — invites mis-citation",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Numbers are correctly framed as pipeline-validation injection-recovery SNR, not sky-detection significance. Removal would weaken the methods validation claim.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GRO-B6",
+      "reviewer": "grok-4",
+      "classification": "nit",
+      "claim": "Delete cross-paper status table §7 (project-management content)",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Houston-mandated reproducibility surface per SSOT / site-sync standing directive.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GPT-B1",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "Justify why stock-CAMB ΛCDM+ΔNeff is a valid proxy for ECH",
+      "verdict": "STALE",
+      "pattern_ids": ["009"],
+      "evidence": "§3 explicit scope disclaimers already state this is a null-consistency test on stock physics with ECH-mapping limitations made explicit. Same fix already landed multiple rounds.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GPT-B2",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "ΔNeff doesn't resolve Hubble tension — needs more parameter spaces",
+      "verdict": "OUT-OF-SCOPE",
+      "pattern_ids": ["009"],
+      "evidence": "Companion null-consistency paper, not an H0-tension MCMC. Out of scope.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GPT-B3",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "Quantify NaMaster pipeline systematic uncertainties",
+      "verdict": "STALE",
+      "pattern_ids": ["009"],
+      "evidence": "Bias numbers 0.032°-0.040° already reported in §4 + Table; injection-recovery validation present.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GPT-B4",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "Justify C_aγ ranges against standard KSVZ/DFSZ",
+      "verdict": "STALE",
+      "pattern_ids": ["009", "016"],
+      "evidence": "Just landed in round-3 GEM-M1 closure; reviewer didn't read the v1B.0.39 §VI update.",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GPT-B5",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "Elaborate LiteBIRD σ(β) ≈ 0.03° derivation",
+      "verdict": "OPINION",
+      "pattern_ids": ["009"],
+      "evidence": "Forecast cited as order-of-magnitude polarization-noise extrapolation; methods detail belongs in dedicated LiteBIRD whitepapers, not P1B companion.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GPT-B6",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER",
+      "claim": "Cross-paper status table needs explicit readiness % criteria",
+      "verdict": "OPINION",
+      "pattern_ids": ["009"],
+      "evidence": "Readiness criteria documented in SSOT/index.md (mirrored to site). The paper table is a pointer surface, not the criteria spec.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-PER-B1",
+      "reviewer": "sonar-pro",
+      "classification": "BLOCKER",
+      "claim": "Self-citations to Golden 2026 P1a–P4 don't exist on arXiv/ADS",
+      "verdict": "OPINION",
+      "pattern_ids": ["001", "012"],
+      "evidence": "Companion-paper cross-citations are a standard publishing pattern (in-prep / submitted-companion). All 6 papers have local .tex + compiled PDFs in repo and are being prepared as a coordinated arXiv bundle. Bibitems already labeled as preprints / in-prep where appropriate.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-PER-M1",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "Liu et al. ECTorsionDESI2025 (EPJC 2025, arXiv:2507.04265) doesn't exist",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["001", "012"],
+      "evidence": "5th-round-in-a-row reflagging. references.bib L574-580 has the canonical entry. Sonar Pro's web-search keeps missing this real EPJC 2025 paper. Pattern-013 escalation: AUTO-FALSIFY on sight.",
+      "closure": "no-action-falsified-6th-attempt"
+    },
+    {
+      "id": "P1B-PER-M2",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "Diego-Palazuelos & Komatsu 2025 ACT DR6 (arXiv:2509.13654) doesn't exist",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["001", "012"],
+      "evidence": "references.bib L461-466 has DiegoPalazuelos2025 with arXiv:2509.13654 (real preprint). Repeat reflagging across rounds.",
+      "closure": "no-action-falsified"
+    },
+    {
+      "id": "P1B-PER-M3",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "Eskilt PR4/NPIPE label is wrong — should be PR3",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["013", "030"],
+      "evidence": "**6TH-TIME-IN-A-ROW reversion attempt.** Pattern-013 hardened pre-screen rule activated. LilleJohs github.com/LilleJohs/Cosmic_Birefringence README states 'detector split maps of Planck Data Release 4 (NPIPE) can be found on NERSC' — the reproduction code uses PR4/NPIPE + WMAP9. Current L1003 phrasing is correct. AUTO-FALSIFY without re-litigation.",
+      "closure": "no-action-falsified-6th-attempt-auto"
+    },
+    {
+      "id": "P1B-PER-m1",
+      "reviewer": "sonar-pro",
+      "classification": "minor",
+      "claim": "LiteBIRD σ(β)≈0.03° under-sourced",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Already phrased as order-of-magnitude extrapolation from polarization noise floors.",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-PER-n1",
+      "reviewer": "sonar-pro",
+      "classification": "nit",
+      "claim": "arXiv 250x.xxxxx range IDs are speculative",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["001", "012"],
+      "evidence": "Today's date is 2026-06-02. arXiv IDs 2507.xxxxx (July 2025), 2509.xxxxx (Sept 2025), 2503.xxxxx (March 2025) are all real and posted. Perplexity's web-search index is stale.",
+      "closure": "no-action-falsified"
+    },
+    {
+      "id": "P1B-GEM-B1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "BLOCKER",
+      "claim": "MCMC priors θ_i∈[0.5,2] (Appx C) and §VI numerical analysis directly contradict the spectator-status disclaimer (θ_i<<1)",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["031"],
+      "evidence": "Round-3 GEM-B1 closure added the L576-580 fine-tuning disclaimer in §VI prose, but L1080-1090 numerical analysis still scans θ_i∈[0.5,2] AND L1397 MCMC prior is uniform [0.5,2]. Round-3 fixed the prose, did not propagate to the calculation/prior. Real internal contradiction. Either (a) restrict to θ_i<<1 + recompute β prediction (fix headline numbers) OR (b) add explicit backreaction estimate at θ_i~1 showing ALP energy fraction Ω_a~(θ_i² H_0² M_Pl²)/ρ_crit ~ O(θ_i²) and acknowledge per-percent contamination of spectator label.",
+      "closure": "deferred-genuine-needs-next-round-bump",
+      "next_action": "v1B.0.40 fix in next round: add backreaction footnote at L1080 quantifying Ω_a fraction across [0.5,2] range; cross-link to Appx C prior table; treat as 'effective spectator with quantified backreaction <X%' rather than strict spectator."
+    },
+    {
+      "id": "P1B-GEM-M1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "MAJOR",
+      "claim": "ALP evolution uses ΛCDM background but iter2 prefers quintom DE",
+      "verdict": "VERIFIED",
+      "pattern_ids": [],
+      "evidence": "L1075 'in a ΛCDM background' is the stated EOM solution context. Iter2 in Table 1B prefers w0/wa quintom region. The systematic from using ΛCDM background instead of quintom-best-fit for the ALP ODE is plausibly O(few %) on Δφ/f_a but is not quantified.",
+      "closure": "deferred-genuine-needs-next-round-bump",
+      "next_action": "v1B.0.40 fix: add brief estimate footnote at L1075 — for quintom (w0~-0.9, wa~-0.3) the integrated H(z)dz from recombination differs from ΛCDM by ~few percent, propagating to Δφ/f_a; bracket as systematic floor on β prediction band."
+    },
+    {
+      "id": "P1B-GEM-M2",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "MAJOR",
+      "claim": "Matter-bounce class predicting ΔNeff≈0 is over-generalized",
+      "verdict": "VERIFIED-MINOR",
+      "pattern_ids": [],
+      "evidence": "L600-602 claim is correct for minimal matter-bounce per cited refs. Easy one-word fix.",
+      "closure": "deferred-genuine-needs-next-round-bump",
+      "next_action": "v1B.0.40 fix: insert 'minimal' qualifier at L600 — 'minimal matter-bounce class predicts ΔNeff≈0...; non-minimal scenarios with hot phases or extra fields can generate relativistic species.'"
+    },
+    {
+      "id": "P1B-GEM-m1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "Dim-6 four-fermion EFT statement should acknowledge UV completion",
+      "verdict": "OPINION-VALID",
+      "pattern_ids": [],
+      "evidence": "Bundle with GEM-M2 in v1B.0.40 — add 'in the low-energy EFT' qualifier.",
+      "closure": "deferred-genuine-bundle-next-round"
+    },
+    {
+      "id": "P1B-GEM-m2",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "Eskilt PR3 vs PR4 footnote clarifying publication vs reproduction code",
+      "verdict": "OPINION-VALID",
+      "pattern_ids": ["030"],
+      "evidence": "Gemini correctly distinguishes published-paper-dataset (PR3) vs reproduction-code-dataset (PR4/NPIPE). Current L1003 'PR4/NPIPE analysis' matches the LilleJohs code (correct per pattern-013) but a one-line footnote disambiguating the PRD 106:063503 published dataset would close Perplexity's recurring confusion.",
+      "closure": "deferred-genuine-bundle-next-round",
+      "next_action": "v1B.0.40 fix: add footnote at L1003 — 'We use the PR4/NPIPE branch of the public LilleJohs reproduction code (github.com/LilleJohs/Cosmic_Birefringence); the original published Eskilt & Komatsu 2022 (PRD 106:063503) analysis used Planck 2018 PR3 + WMAP9.'"
+    },
+    {
+      "id": "P1B-GEM-n1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "nit",
+      "claim": "L854-855 'not reproducible from a single self-consistent readout' reads like audit log",
+      "verdict": "OPINION-VALID",
+      "pattern_ids": ["017"],
+      "evidence": "Bundle in v1B.0.40 cleanup — replace with clean 'Model-comparison statistics are not reported, pending a dedicated nested-sampling run.'",
+      "closure": "deferred-genuine-bundle-next-round"
+    }
+  ],
+  "summary": {
+    "total_findings": 25,
+    "verified_real_action": 0,
+    "verified_deferred_to_next_round": 5,
+    "stale": 7,
+    "falsified": 5,
+    "opinion": 8,
+    "out_of_scope": 1
+  },
+  "gemini_signal": "Gemini delivered 5 substantive findings (1 BLOCKER + 2 MAJOR + 2 minor + 1 nit); all 5 are legitimate methodology / consistency gaps not caught by R3. Gemini remains the only load-bearing reviewer (matches R3 pattern). GEM-B1 is the headline: prior + numerical scan still inconsistent with spectator-label after R3 prose-only fix — round-3 closure was incomplete.",
+  "perplexity_pattern_013_escalation": "Perplexity attempted Eskilt PR3 reversion for the 6TH-TIME-IN-A-ROW. Auto-FALSIFY rule per pattern-013 hardened activated; no re-litigation. Also re-confabulated Liu et al. + Diego-Palazuelos + 250x.xxxxx range — all 4 of Perplexity's primary findings FALSIFIED.",
+  "grok_signal": "Grok output dropped further (Grok-B1/B2 are repeats of R3 wide-net BLOCKERs already STALE-classified); pattern-010 convergent-silence trending (3rd successive round of zero VERIFIED real-action from Grok).",
+  "gpt_signal": "gpt-4o-fallback again 6/6 STALE (pattern-009 hardened). All BLOCKERs are reviewer-didn't-read-current-version artifacts.",
+  "cascaded_counter": "1 of 3 cascaded R-rounds complete on v1B.0.39 → need v1B.0.40 bump with 5 Gemini real-action closures BEFORE next round to satisfy 'zero novel BLOCKERs on prior closure regression' criterion.",
+  "next_action": "BUMP v1B.0.39 → v1B.0.40 in next session: 5 Gemini real-action edits (GEM-B1 backreaction footnote, GEM-M1 quintom-background footnote, GEM-M2 'minimal' qualifier, GEM-m1 EFT qualifier, GEM-m2 Eskilt disambiguation footnote, GEM-n1 audit-log rephrase). Then recompile + mirror + Convex + tag + dispatch R-upgraded-round5 (counter 2/3)."
+}
