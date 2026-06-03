@@ -91,7 +91,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.41",
+    version: "v1B.0.42",
     lastUpdated: "2026-06-02",
     tldr: "v1B.0.30 (2026-05-26 surgical body-text reviewer-ID scrub applying the P4 v1.0.132 pattern): Removed body-text reviewer-ID strings ('R10 GEM-M1', 'R7 GPT-B3', 'R25b-BLK-1', 'R25d-MAJ-2', 'R26-GRO-B1', 'R25a-MAJ-1', 'R13 GEM-M1', 'R11 GEM-B1', 'R8 GPT-B1', 'R45+', 'v1B.0.5 round', 'R2 multi-vendor adversarial round on v1B.0.6'). Removed SNR=20.32 from L268 NaMaster section ('MC recovery is a pipeline-validation figure, not a sky-detection significance claim'). Condensed audit-cascade prose to 'Model-comparison statistics: not reported in this paper'. **R27 + R28 + R29 + R30 + R-ext-maint + R-ext-maint-v2 + R-ext-maint-v3 all 5/5 PERFECTLY CLEAN** across v1B.0.28/29/30 — AGENT_RULES §4.4.1 cascaded-loop-exit SATISFIED. PDF 11pp/699KB/0 overfull/0 undef. 3 mirrors byte-identical md5 263ec963. arXiv tarball pre-built at p1b_v1B.0.30_arxiv.tar.gz (255 KB). Remaining: Houston sign-off (the final 1%) + arXiv endorsement.",
     blockingItems: [
@@ -124,10 +124,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, after DR2 chain incorporation)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF 731 KB · 12 pp · Jun 2, 2026, v1B.0.41",
+    pdfMeta: "PDF 731 KB · 12 pp · Jun 3, 2026, v1B.0.42 (R9 GEM-m1 audit-trail prose deleted L1210-1215 + GEM-B1 natural-params hedged x3; 0 overfull, 0 undef refs)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.41.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.41.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.42.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.42.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
@@ -142,7 +142,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.42",
+    version: "v1.7.43",
     lastUpdated: "2026-06-02",
     tldr: "v1.7.37 (cron fire #86 tick 208): 🎯🎯🎯 FIRST REAL EXTERNAL 5-VENDOR R-ROUND COMPLETELY CLEAN. R-next dispatched DeepSeek-V4-Pro + Gemini-3.1-Pro + GPT-5.5 + Grok-4.3 + Perplexity-Sonar-Pro in parallel via OpenRouter after weekly cap reset. ALL 5 VENDORS RETURNED 0 BLOCKER + 0 MAJOR + 0 MINOR + 0 NIT — perfect external clearance on the first external R-round after the BF-arithmetic + abstract-envelope cleanup cascade. P2 EXTERNAL 99%-gate CLEARED. Final gate: Houston sign-off. PDF 21pp/818KB/2 sub-3pt overfull/0 undef unchanged.",
     blockingItems: [
@@ -176,10 +176,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF 825 KB · 22 pp · Jun 2, 2026, v1.7.42 (0 overfull, 0 undef refs)",
+    pdfMeta: "PDF 827 KB · 23 pp · Jun 3, 2026, v1.7.43 (R9 GEM-M1 closure-fabricated-math regression caught: L225 'complete S3 basis / six orbits' overclaim demoted to Cai-physics restricted subset of 12-orbit space, cited Cai:2009fn Eq.37; pattern-036 codified; 0 overfull, 0 undef refs)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.42.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.42.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.43.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.43.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -312,7 +312,7 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.43",
+    version: "v0.1.44",
     lastUpdated: "2026-06-02",
     tldr: "v0.1.32 (2026-05-26 drive-to-100 fire xx:17): R-ext-v3 on v0.1.31 returned 4-of-5 clean (DeepSeek + GPT-5 + Grok-43 + Perplexity all 0/0/0/0) + Gemini-3.1-Pro flagged 3 MAJORs + 2 minors. All 3 MAJORs truth-audited as REAL substantive findings (not stale, not falsifiable) and closed in single bundled wave. **GEM-M1 (RSD anisotropy)**: added Limitations §XII paragraph clarifying that RSD's anisotropic Kaiser+FoG effect deforms tidal-tensor eigenvalues anisotropically not just isotropically displaces; full anisotropic robustness deferred to Zel'dovich-reconstructed rerun; sub-percent contamination expected at R_s=25 Mpc/h given BGS pairwise velocity distribution. **GEM-M2 (EFT parameterization)**: added §XI.B 'Mapping to a physical operator' paragraph parameterizing the environment-dependent parity bound via a generic pseudoscalar-density-gradient coupling L_parity ⊃ g_φ (∇_i φ)(∇^i ρ/ρ_bg)(\\hat L·\\hat z); derives ΔfCW^env ∝ g_φ (∇φ·∇ρ)/ρ_bg with first-order bound |g_φ ∇φ/H_0| ≲ 10⁻² / ⟨|Δρ/ρ_bg|⟩. **GEM-M3 (missing foundational citations)**: added \\bibitem{AlexanderYunes2009} (Phys.Rep.480, 1, 2009 — Chern-Simons gravity review) + \\bibitem{LueWangKamionkowski1999} (PRL 83, 1506, 1999 — cosmological parity-violating interactions). Both cited in the new EFT mapping paragraph. PDF 17pp (+1 from new paragraphs)/928KB/0 overfull/0 undef. 4 mirrors byte-identical md5 75a76e1c. §4.4.1 tick 200 satisfaction + R-ext-v2 baseline unchanged; v0.1.32 closures are additive depth/citation polish. 🎯🎯🎯 SECOND EXTERNAL 5-VENDOR R-ROUND ALL 5/5 PERFECTLY CLEAN. R-ext-v2 dispatched all 5 vendors including the previously-failed GPT-5; ALL 5 RETURNED 0 BLOCKER + 0 MAJOR + 0 MINOR + 0 NIT. P5 EXTERNAL 99%-GATE FULLY CLEARED. Combined with R10/R11/R12 cross-model internal §4.4.1, P5 is first paper to have BOTH cross-model internal §4.4.1 AND full 5/5 external clean. Last-fire GRO-M2 (Tempel relabel) + GRO-min1 (upper-bound reframe) closures verified to land cleanly under independent 5-vendor re-review. PDF 15pp/910KB/0 overfull/0 undef. Final gate: Houston sign-off.",
     blockingItems: [
@@ -351,10 +351,10 @@ export const papers: Paper[] = [
       "First R-round adversarial review (only after draft has headline numbers)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF 964 KB · 21 pp · Jun 2, 2026, v0.1.43 (DESIVAST-anchored void cross-classifier promoted to primary; 0 overfull, 0 undef refs)",
+    pdfMeta: "PDF 966 KB · 21 pp · Jun 3, 2026, v0.1.44 (R9 7-fix bundle: title retitled DESIVAST-lead, 'strongest' softened x3, RSD anisotropic-eigenvalue reframing, abstract DESIVAST scope clarification, scale-locality caveat, §XI.B retitle, 383-line preamble changelog archived to CHANGELOG_pre-v0.1.44.txt; 0 overfull, 0 undef refs)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.43.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.43.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.44.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.44.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{23}%
+\begin{thebibliography}{24}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -301,6 +301,23 @@
   {pages} {043509} (\bibinfo {year} {2021})},\ \Eprint
   {https://arxiv.org/abs/2011.11894} {arXiv:2011.11894 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cai}\ \emph {et~al.}(2010)\citenamefont {Cai},
+  \citenamefont {Saridakis}, \citenamefont {Setare},\ and\ \citenamefont
+  {Xia}}]{Cai2010quintomReview}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
+  {Cai}}, \bibinfo {author} {\bibfnamefont {E.~N.}\ \bibnamefont {Saridakis}},
+  \bibinfo {author} {\bibfnamefont {M.~R.}\ \bibnamefont {Setare}},\ and\
+  \bibinfo {author} {\bibfnamefont {J.-Q.}\ \bibnamefont {Xia}},\ }\bibfield
+  {title} {\bibinfo {title} {{Quintom Cosmology: Theoretical implications and
+  observations}},\ }\href {https://doi.org/10.1016/j.physrep.2010.04.001}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo
+  {volume} {493}},\ \bibinfo {pages} {1} (\bibinfo {year} {2010})},\ \bibinfo
+  {note} {canonical quintom-cosmology review (two-field DE with w crossing -1).
+  Used in P1A Sec. VI to point readers to the bounce-class alternative DE
+  mechanism that survives the 14 ECH-specific structural barriers.},\ \Eprint
+  {https://arxiv.org/abs/0909.2776} {arXiv:0909.2776 [hep-th]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {{LiteBIRD Collaboration}}\ \emph
   {et~al.}(2023)\citenamefont {{LiteBIRD Collaboration}}, \citenamefont {Allys}
   \emph {et~al.}}]{LiteBIRD2023}%

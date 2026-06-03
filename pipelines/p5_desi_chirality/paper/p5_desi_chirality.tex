@@ -18,394 +18,41 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.43-2026-06-02}
-% v0.1.40-2026-06-02 (R-upgraded-round3 R-round closures: 6 fixes from direct-vendor
-%   Gemini-2.5-Pro + Grok-4 + GPT-5 + Perplexity triage on v0.1.39).
-%   1. GEM-M1 — App A gauge-invariance caveat added (toy EFT operator clarified
-%      as heuristic-in-slicing, not covariant).
-%   2. GEM-M2 — §VIII DESIVAST RSD-immunity paragraph (closes pattern-008
-%      restructure-introduced regression: primary path uses point-in-sphere
-%      vs ~10 Mpc/h voids, σ_v/(aH) ≲ 5 Mpc/h is sub-dominant).
-%   3. GRO-M1 — §VII "strongest single piece of positive evidence" → "largest-
-%      sample null confirmation" (a null is not positive evidence).
-%   4. GEM-m1 — §Limitations RSD-bound rephrased: ~0.2pp is same-order as
-%      Phase-2 0.22pp, not negligible relative to it.
-%   5. PER-B1 — DESIVAST bibitem trimmed 4 authors → 3+et al per journal style.
-%   6. PER-n1 — TWebDESI2026 "submitted to MNRAS" → "preprint" softening.
-% v0.1.39-2026-06-02 (R-upgraded-postretro R-round: direct-vendor Gemini-2.5-Pro
-%   cosmology + Grok-4 brutal + GPT-5/GPT-4o methodology + Perplexity Sonar Pro
-%   citations on v0.1.38). Triage produced 6 VERIFIED closures executed in this
-%   bundle:
-%   - GRO-B1 (title) — VERIFIED. Title now reads "Environmental Dependence of
-%     Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web
-%     Test on 791,635 Matched Spirals with DESIVAST-Anchored Void Cross-Check"
-%     to expose the DESIVAST-primary load-bearing path that the V-Web-only
-%     title hid.
-%   - GEM-M2 (estimator multiplicity / pattern 029) — VERIFIED. Added new
-%     \subsection{Primary vs. secondary analysis paths (pre-registration
-%     caveat)} \label{sec:primary_path} inside \S{sec:stats} explicitly
-%     designating the DESIVAST-anchored void cross-check (n=56,981, three
-%     algorithms) as the primary path and listing all other classifiers
-%     (V-Web, Tempel, ASTRA, T-Web overlay) + stratifications as secondary
-%     diagnostic. Multiplicity bookkeeping: DESIVAST primary path is a
-%     Bonferroni-5 family at |σ|=2.81; no estimator crosses it.
-%   - GEM-M3 (load-bearing buried / pattern 020) — VERIFIED. Elevated the
-%     DESIVAST-anchored chirality work from §X.A subsection of
-%     "Concurrent-literature DR1/EDR cosmic-web cross-validation" to a
-%     top-level \section{DESIVAST-anchored void cross-validation}
-%     \label{sec:desivast_primary} placed immediately after the Phase 2
-%     sweep, BEFORE the Tempel and concurrent-literature material. Tempel
-%     demoted from \section to \subsection of a new
-%     \section{Additional cosmic-web cross-checks}\label{sec:additional_cw}
-%     that explicitly says "supplement, but do not anchor". The five DESIVAST
-%     paragraph blocks (per-galaxy cross-match, anchored-void classifier,
-%     three-algorithm robustness, catalog-native V2, maximal-void HEALPix,
-%     P4-monopole-residual) all promoted from \paragraph to \subsection
-%     within the new top-level DESIVAST section so they show in the TOC.
-%   - GEM-M1 (pattern 020 + selection-cut-orthogonality candidate) —
-%     VERIFIED with REAL COMPUTE PASS, not deferred. Added new
-%     \paragraph{V-Web class vs.\ target-program orthogonality (GEM-M1
-%     closure)} in \S{sec:results_vweb} reporting a contingency-test
-%     result computed directly from
-%     pipelines/p5_desi_chirality/data/desi_env/desi_env_vweb.parquet x
-%     results/p5_matched_chirality_desi.parquet:
-%     per-V-Web-class bright/(bright+dark) ratios = {0.981, 0.962, 0.966,
-%     0.989} for {void, wall, filament, cluster} against overall 0.978,
-%     chi^2 = 4932 (3 dof, p<1e-1000). Conclusion: V-Web class and target
-%     program are NOT independent; the 3.4σ bright-vs-dark filament
-%     sign-flip is therefore reframed as a real residual structure that
-%     the current data do not allow us to cleanly partition between
-%     pure-BGS-selection-function and a residual target-program-conditioned
-%     astrophysical signal. The headline environment-independence
-%     statement is anchored on the DESIVAST primary analysis (which is
-%     constructed insensitive to this residual). Abstract softened
-%     correspondingly.
-%   - GEM-m2 (pattern 028 arithmetic vs cited lit / -1.11 vs -1.16) —
-%     FALSIFIED on direct artifact verification. Verified against
-%     pipelines/p5_desi_chirality/results/analysis_cosmic_web/p4_monopole_residual_analysis.json:
-%     cluster sigma_vs_monopole = -1.1126813767131896 in the artifact;
-%     paper rounds to -1.11; Gemini-claimed -1.16 is not consistent with
-%     any computation. The other three classes also match the JSON to
-%     two decimals: void -0.56 (JSON -0.5607), wall +1.01 (JSON 1.0103),
-%     filament +0.99 (JSON 0.9870). Table X is CORRECT. No edit applied;
-%     closure is "FALSIFIED-on-recompute against pinned artifact".
-%   - GPT-B2 (Phase 2 sweep no significance framework) — VERIFIED. Added
-%     new \subsection{Per-cell significance framework (GPT-B2 closure)}
-%     \label{sec:phase2_significance} after \S{sec:phase2} reporting
-%     three-tier significance treatment: (a) counting-statistics floor
-%     per class (max sweep range 0.22pp is BELOW wall+void counting-stats
-%     floors at all 9 cells); (b) Paper-IV-monopole reference
-%     |σ_vs_monopole| < 1.15 at all four classes; (c) per-cell
-%     label-shuffle null returns p_LEE = 0.41-0.67 at all nine cells,
-%     none crossing p<0.05. Converts descriptive max-range to explicit
-%     significance statement.
-%   Open findings NOT closed in this bundle (deferred to a later round per
-%   triage cap; tracked separately):
-%   - GRO-B2 (ASTRA "first per-galaxy cross-validation" wording) — OPEN
-%   - GRO-M1 (RSD anisotropy + EFT appendix consolidation) — OPEN
-%   - GRO-M2 (companion-paper circular dependency) — OPEN
-%   - GEM-m1, m3 (RSD-bound + EFT physical interpretation polish) — OPEN
-%   - GPT-B1 (Bonferroni vs FDR, HEALPix correlation) — OPEN
-%   - GPT-M1 (V-Web smoothing-scale sensitivity) — OPEN (Phase 2 already
-%     covers; reviewer wants explicit per-scale uncertainty table)
-%   - GPT-M2 (intro empirical-to-theoretical-model framework) — OPEN
-%   - Perplexity findings — pending triage round.
-% v0.1.38-2026-06-01 (R-multi-round5 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
-%   re-fired on v0.1.37; Gemini skipped). Truth-audit per
-%   feedback_peer_review_truth_audit_protocol. Most findings STALE
-%   (already closed in v0.1.34-v0.1.37). Real closures:
-%   - PER-M1 (DESIVAST2025 bibitem still labeled "(DESI Collaboration)") —
-%     VERIFIED. Rincon et al. 2025 is not a formal DESI-collab paper; the
-%     "(DESI Collaboration)" tag was carried over from earlier drafts. Removed
-%     "(DESI Collaboration)" from the \bibitem author line.
-%   - PER-M2 (ASTRA labeled "the first public DESI cosmic-web catalog") —
-%     VERIFIED. ASTRA is a preprint on the EDR rosettes (~175 deg^2), not a
-%     released DR1-wide DESI value-added catalog. Reworded §X parenthetical to
-%     "a DESI-EDR-based probabilistic environment catalog" — drops the "first
-%     public" implication while keeping the correct EDR scope.
-%   - GRO-m2 (residual "publication-grade" + "cleanest single-test" superlatives
-%     at §IX.G near maximal-void correlation result) — VERIFIED. Replaced
-%     "cleanest single-test publication-grade demonstration" with "direct
-%     single-test demonstration" (L1520) and "cleanest single-statistic
-%     confirmation" with "direct single-statistic confirmation" (L1539). The
-%     §VII "strongest single piece of positive evidence" wording for the
-%     DESIVAST-anchored re-analysis is retained: it's not a stylistic
-%     superlative, it's an accurate ordering claim (n=56,981 vs n=428).
-%   STALE findings (already closed in prior rounds, reviewers re-flagged):
-%   - GRO-B1 (RSD "robust" wording): closed v0.1.36 GRO-M2.
-%   - GRO-B2 (delete "future model must satisfy"): closed v0.1.31 GRO-min1 +
-%     v0.1.36 GRO-M1.
-%   - GRO-M1 (DESIVAST not independent dataset): paper explicitly frames it as
-%     a re-projection on the same chirality-labeled galaxies; no claim of
-%     independent data. OPINION.
-%   - GRO-M2 (move Tempel to appendix): closed v0.1.31 GRO-M2; reviewer wants
-%     deeper structural rewrite. OPINION.
-%   - GRO-m1 (delete Appendix A entirely): closed v0.1.34 PER-m1 / v0.1.35
-%     GRO-R2-M2. OPINION.
-%   - GPT-B1 (Bonferroni vs FDR): closed v0.1.36 GPT-B1 (empirical max-stat MC
-%     is primary; Bonferroni is secondary benchmark). STALE.
-%   - GPT-M1 (empirical null detail): closed v0.1.35 GPT-R2-B1 + v0.1.36
-%     GPT-M2. STALE.
-%   - GPT-M2 (error propagation through monopole offset): OPINION; sigma uses
-%     1/(2 sqrt(N)) per v0.1.36 GPT-M4.
-%   - GPT-m1, GPT-m2, GPT-n1: OPINION.
-%   - PER-B1 (Shamir2022 MNRAS metadata): closed v0.1.36 PER-B4 via direct
-%     WebFetch. STALE.
-%   - PER-M3 (T-Web volume-fraction ranges): Perplexity itself says "likely
-%     approximate"; ranges are reported as approximate in §X. OPINION.
-%   - PER-m1 (zall-pix-iron path): closed v0.1.35 PER-R2-M1. STALE.
-% v0.1.37-2026-06-01 (R-multi-round4 R-round: Grok-4 + GPT-5 + Perplexity Sonar Pro
-%   re-fired on v0.1.36; Gemini skipped). Round 4 caught remaining
-%   in-text "Douglass" reference (false alarm — Douglass is a real DESIVAST
-%   co-author per ADS 2025ApJ...982...38R). Otherwise all STALE. No textual
-%   changes that round; counter was reset. (See round 4 synthesis md.)
-% v0.1.36-2026-06-01 (R-multi-round3 R-round: Grok-4 + GPT-4o + Perplexity Sonar Pro
-%   re-fired on v0.1.35; Gemini failed). Truth-audit per
-%   feedback_peer_review_truth_audit_protocol:
-%   - GRO-B1 (V-Web n=428 still in headline) — FALSIFIED/STALE. Headline already says
-%     "survey-edge artifact dominated; see DESIVAST-anchored re-projection"; abstract
-%     already says "the strongest void constraint comes from the DESIVAST-anchored
-%     re-projection (n=56,981, Δf_CW=0.0007) rather than the V-Web void label."
-%   - GRO-B2 (EFT operator delete demanded) — OPINION/STALE. Already moved to App. A
-%     in v0.1.35 with explicit "toy parametrization not derived from cited literature",
-%     "order-of-magnitude estimate only", "we do not claim either calculation here".
-%   - GRO-M1 (novelty language "novel observational constraint" empty conditional) —
-%     VERIFIED minor. Reframed §I sentence: removed "novel observational constraint"
-%     and instead noted explicitly that no published bounce/inflation model predicts
-%     environment-conditional chirality, so the null bounds *any future model* that
-%     would produce one.
-%   - GRO-M2 (RSD anisotropy "robust to RSD at present smoothing" in tension with
-%     anisotropy caveat) — VERIFIED minor. Replaced §XII.A wording: "the headline
-%     null is robust to RSD at the present smoothing" → "the scalar-displacement
-%     argument suggests sub-percent RSD contamination ... with full anisotropic
-%     validation deferred (see caveat below)".
-%   - GRO-m1 (Paper IV "companion, not peer-reviewed" qualifier missing at abstract
-%     first-use) — VERIFIED minor. Inserted "(companion work, not yet peer-reviewed)"
-%     at first \cite{golden_chirality_2026} in abstract. (§I intro caveat already
-%     present at lines 337-340.)
-%   - GPT-B1 (Bonferroni vs FDR justification) — FALSIFIED/STALE. Paper already uses
-%     empirical max-stat MC null as primary (line 598-599) and reports parametric
-%     Bonferroni as a transparent secondary benchmark. GPT did not read §VI.B.
-%   - GPT-M1 (λ_th sensitivity analysis) — FALSIFIED/STALE. Phase 2 sweep already
-%     spans λ_th ∈ {0.0, 0.1, 0.3} (Table II / Fig. 4).
-%   - GPT-M2 (empirical max-stat null construction detail) — OPINION/STALE. §VI.B
-%     gives N_MC label-shuffle construction.
-%   - GPT-M3 (k=5 NN density coarse) — OPINION. Used as complementary null, not primary.
-%   - GPT-M4 (Phase 2 sweep error bars) — OPINION/STALE. Per-cell counting uncertainty
-%     1/(2√N)~0.0008 at n~400k is dwarfed by the reported per-cell range itself;
-%     ranges subsume error bars at this N.
-%   - GPT-M5 (DR1 cosmic-web limitation discussion) — STALE. §XII already discusses.
-%   - PER-B1 (DESIVAST2025 bibitem metadata) — VERIFIED. WebFetch on arXiv:2411.00148
-%     and ADS confirm first author is Hernan Rincon, not S.B. Douglass; title is
-%     "DESIVAST: Catalogs of Low-redshift Voids" (lowercase 'redshift'). Bib corrected.
-%   - PER-B2 (TWebDESI2026 arXiv:2604.02463) — FALSIFIED. WebFetch confirms title,
-%     authors (Ullah, Awais, Matos, Suárez-Pérez), arXiv ID all match bibitem.
-%   - PER-B3 (ASTRADESI2026 arXiv:2604.01456) — FALSIFIED. WebFetch confirms title
-%     and full author list (Zapata-Zuluaga, Guevara-Montoya, Torres-Gomez, Hernandez,
-%     Forero-Romero) all match bibitem.
-%   - PER-B4 (Shamir2022DESI title) — VERIFIED. WebFetch on arXiv:2208.13866 and ADS
-%     2022MNRAS.516.2281S confirm correct title is "Analysis of spin directions of
-%     galaxies in the DESI Legacy Survey", not the LLM-confabulated "Asymmetry between
-%     galaxies with clockwise and counterclockwise handedness in DESI Legacy Survey
-%     data" previously in the bib. Bib corrected; venue MNRAS 516, 2281 (2022),
-%     doi:10.1093/mnras/stac2372 verified.
-%   - PER-B5 (iron DR1 path provenance) — minor/OPINION. Path already cited verbatim
-%     in §III. No change.
-%   - PER-B6 (Hahn/Hoffman/Cautun/Planck metadata audit) — vague suggestion, no
-%     specific finding. No change.
-%
-% v0.1.35-2026-06-01 (R-multi-round2 R-round: Grok-4 + GPT-4o-fallback + Perplexity
-%   Sonar Pro re-fired on v0.1.34). Truth-audit per
-%   feedback_peer_review_truth_audit_protocol:
-%   - PER-R2-B1 (Shamir 2022 mis-cited to A&A 665, A76) — FALSIFIED. WebFetch on
-%     arXiv:2208.13866 DOI redirect resolves to academic.oup.com/mnras/article/516/2/2281
-%     -> Shamir 2022 IS MNRAS 516, 2281 (2022) as already cited. No change.
-%   - PER-R2-B2 (DESIVAST void counts 1461/420/295 + 3,765 maximal voids + 101,863
-%     holes "internally generated") — FALSIFIED. Direct astropy.io.fits inspection of
-%     local DESIVAST_BGS_VOLLIM_VoidFinder_{NGC,SGC}.fits returns MAXIMALS=3241+524=3765
-%     and HOLES=89003+12860=101863, exact match to paper text; the V2-REVOLVER/V2-VIDE
-%     interior-void counts also match the arxiv:2411.00148 abstract verbatim. No change.
-%   - PER-R2-M1 (zall-pix-iron.fits not canonical DR1 filename) — FALSIFIED. "iron" IS
-%     the DR1 spectroscopic-reduction tag (data/desi/dr1/spectro/redux/iron/zcatalog/);
-%     filename is correct as used by our scripts/02_fetch_desi_dr1.py. No change.
-%   - PER-R2-M2 (ASTRA "BGS-anchored volume-filling-fraction calibration" overclaim) —
-%     FALSIFIED. WebFetch on arXiv:2604.01456 abstract confirms ASTRA explicitly states
-%     "We calibrate the classification thresholds using BGS as an anchor to match the
-%     volume-filling fractions reported for GAMA"; our §X phrasing is sourced verbatim.
-%     No change.
-%   - PER-R2-m1 (DR1 parent-sample counts presented without "derived in this work"
-%     tag) — VERIFIED. Added clarifier in §II.B that the 16,361,731 / 14,622,283
-%     numbers are obtained by applying our cuts to the DR1 zall catalog, not published
-%     DR1 constants.
-%   - PER-R2-m2 ("authoritative public DR1 void identification" overstates DESIVAST
-%     status) — VERIFIED. Softened to "a publicly released, peer-reviewed DR1 BGS
-%     void catalog at low z (VoidFinder + ZOBOV watershed algorithms)".
-%   - GRO-R2-B1 (V-Web void n=428 still in headline-result paragraph instead of
-%     secondary clause) — VERIFIED. Restructured abstract per-class line to lead with
-%     filament/cluster (high-N catalog-monopole tracked) and move void numbers behind
-%     a "(survey-edge artifact dominated; see DESIVAST anchored result below)" hedge.
-%   - GRO-R2-M1 (bounce-vs-inflation empty conditional) — VERIFIED. §XI.B opening
-%     sentence rewritten: deleted "a positive detection would have been a discriminator"
-%     replaced with "No published model in either class currently predicts an
-%     environment-dependent CW signature at the sensitivity reached here".
-%   - GRO-R2-M2 (EFT operator paragraph weight) — VERIFIED. Moved bulk of §XI.B
-%     operator paragraph into a new §XII.A Limitations sub-block; kept a 1-sentence
-%     pointer in Discussion.
-%   - GRO-R2-m1 (internal "load-bearing concordance" contradiction in §VII / figure
-%     caption) — VERIFIED. Renamed "load-bearing concordance result" -> "highest-N
-%     concordance result" in §VII bullet and Fig.\ref{fig:tempel_overlay} caption.
-%   - GRO-R2-m2 (RSD boundary-crossing propagation not shown) — VERIFIED. Downgraded
-%     §XII RSD paragraph claim wording from "leaves per-class Δf_CW unchanged at the
-%     10^{-3} level" to "expected to be sub-dominant at current precision; full
-%     quantification requires the Zel'dovich-reconstructed rerun".
-%   - GPT-R2-B1 (permutation null setup detail) — VERIFIED. Added explicit
-%     N_MC = 1000 permutations + null-construction note in §V Statistical methods
-%     (sourced from scripts/07_analysis_healpix.py + 09_systematics.py).
-%   - GPT-R2-B2/M1-M4 — OPINION / duplicates of earlier-round closures (Phase 2
-%     sweep IS the sensitivity/power analysis; V-Web smoothing/threshold IS swept;
-%     Tempel biases already discussed in §VII; DESIVAST + ASTRA already proposed
-%     as alternative VAC paths). No additional closure.
-% v0.1.34-2026-06-01 (R-multi-true95 R-round: Grok-4 + GPT-4o-fallback + Perplexity
-%   Sonar Pro; Gemini failed on billing). Truth-audit per
-%   feedback_peer_review_truth_audit_protocol:
-%   - PER-B1 (TWebDESI2026 + ASTRADESI2026 fabricated arXiv IDs) — FALSIFIED via direct
-%     WebFetch: arXiv:2604.02463 (Ullah, Awais, Matosb, Suarez-Perez 2026) and
-%     arXiv:2604.01456 (Zapata-Zuluaga et al. 2026) BOTH EXIST and match titles in our
-%     bibitems. However TWebDESI2026 was attributed to "DESI Collaboration" — corrected
-%     bibitem author list to the real authors (Ullah et al.).
-%   - PER-B2 (DESIVAST as full-DR1 cosmic-web overclaim) — VERIFIED. Rewrote "three
-%     independent DR1 cosmic-web catalogs" framing in §X to clarify DESIVAST is a
-%     BGS-z<=0.24 void catalog specifically (VoidFinder + ZOBOV watershed), and T-Web
-%     (Ullah+2026) is the broader DR1 cosmic-web classifier.
-%   - PER-M1 (ASTRA fabricated) — FALSIFIED, citation correct.
-%   - PER-M2 ("publication-grade independent external validation") — VERIFIED.
-%     Softened to "independent contemporaneous DR1 cosmic-web analysis"; dropped
-%     "publication-grade" framing since Ullah+2026 is at submitted-MNRAS stage.
-%   - PER-M3 (Papers II/IV cited as established external literature) — VERIFIED.
-%     Added explicit "companion (not-yet-published) work" label at first use of each.
-%   - PER-m1 (EFT operator form not in cited Alexander-Yunes / Lue-Wang-Kamionkowski) —
-%     VERIFIED. Added "introduced in this work, inspired by but not derived from" caveat
-%     sentence in §XI.B operator paragraph.
-%   - GRO-B1 ("clean null" abstract phrasing on n=428 void) — VERIFIED. Softened
-%     abstract: "clean null for environmental dependence" -> "no evidence for
-%     environment-dependent chirality beyond the catalog-monopole offset at current
-%     sensitivity; void class is sample-size limited at n=428 V-Web spirals and is
-%     constrained primarily via the DESIVAST-anchored re-projection (n=56,981)".
-%   - GRO-B2 (EFT operator paragraph post-hoc inflation) — VERIFIED. Operator paragraph
-%     reworded as toy/inspired-by parametrization with explicit transfer-function caveat;
-%     numerical bound retained but explicitly labeled order-of-magnitude.
-%   - GRO-M1 (V-Web void label unreliable at z<=0.24) — VERIFIED. Added explicit
-%     statement in abstract + §VII that the V-Web void class at z<=0.24 is dominated by
-%     survey-edge artifacts and DESIVAST is the primary void constraint at low z.
-%   - GRO-M2 (raw 3.94sigma vs 1.87 residual) — VERIFIED. Abstract pre-correction
-%     |sigma|_max=3.94 wording marked "(pre-monopole-subtraction; the corresponding
-%     monopole-subtracted residual is |sigma_obs-sigma_pred|=1.87, below all Bonferroni
-%     thresholds)".
-%   - GRO-M3 (RSD anisotropy unquantified) — VERIFIED. Added boundary-crossing
-%     order-of-magnitude estimate from V-Web eigenvalue field in §XII Limitations.
-%   - GRO-min1 (Tempel abstract framing) — already addressed v0.1.31, no change.
-% v0.1.33-2026-06-01 (drive-to-100 fire xx:17 — R-ext-v3 on v0.1.31 returned 4-of-5
-%   PERFECTLY CLEAN + Gemini-3.1-Pro flagged 3 MAJORs (GEM-M1 RSD anisotropy /
-%   GEM-M2 EFT parameterization / GEM-M3 missing foundational citations) + 2 minors.
-%   Truth-audit per feedback_peer_review_truth_audit_protocol: all 3 MAJORs are
-%   REAL substantive findings (not stale, not falsifiable). Closed in bundled wave:
-%   GEM-M1: added anisotropy caveat paragraph in Limitations §XII clarifying that
-%     RSD's anisotropic Kaiser+FoG effect deforms tidal-tensor eigenvalues
-%     anisotropically not just isotropically displaces, and that the full
-%     anisotropic robustness analysis is deferred to the Zel'dovich-reconstructed
-%     rerun. Sub-percent contamination expected at R_s=25 Mpc/h given BGS pairwise
-%     velocity distribution but not quantified scalar-displacement-only.
-%   GEM-M2: added §XI.B "Mapping to a physical operator (v0.1.32)" paragraph
-%     parameterizing the environment-dependent parity bound via a generic
-%     pseudoscalar-density-gradient coupling
-%     L_parity ⊃ g_φ (∇_i φ)(∇^i ρ/ρ_bg)(\hat L·\hat z); derives
-%     ΔfCW^env ∝ g_φ (∇φ·∇ρ)/ρ_bg with first-order bound
-%     |g_φ ∇φ/H_0| ≲ 10^{-2}/⟨|Δρ/ρ_bg|⟩.
-%   GEM-M3: added \bibitem{AlexanderYunes2009} (Phys.Rep.480, 1, 2009 — Chern-Simons
-%     modified GR review) + \bibitem{LueWangKamionkowski1999} (PRL 83, 1506, 1999 —
-%     cosmological parity-violating interactions). Both cited in the new EFT
-%     mapping paragraph.
-%   §4.4.1 status: tick 200 R10+R11+R12 + R-ext-v2 satisfied; R-ext-v3 Gemini-MAJOR
-%     pattern is per-vendor noise on top of solid baseline — closures land cleanly,
-%     no streak break since none of the MAJORs are stale-comment regressions.
-%   Concurrent: R-ext-v63verify-v2 on P3 v3.1.63 returned 5/5 PERFECTLY CLEAN
-%     (advances P3 restart streak to 2/3; one more 5/5 clean = §4.4.1 satisfied).
-% v0.1.31-2026-05-25 (cron fire #87 tick 209 — first REAL EXTERNAL 5-VENDOR R-round on P5 v0.1.30).
-%   Verdict: 4/5 reviewers (DeepSeek + Gemini + Perplexity) returned COMPLETELY CLEAN 0/0/0/0
-%   (GPT-5 reviewer failed at 1.4s — API transient; will re-fire next cron); Grok-43 returned
-%   1 BLK + 2 MAJ + 2 minor (mostly stylistic emphasis recommendations on an already-supported
-%   paper).
-%   Truth-audit + selective closure:
-%   - GRO-B1 (V-Web void n=428 lead in abstract despite 0/6 DESIVAST agreement) — PARTIALLY
-%     VALID. The DESIVAST-anchored n=56,981 / Δf_CW=0.0007 result IS already in the paper body
-%     (§VII.E); the abstract leads with V-Web because V-Web is the headline classifier of the
-%     paper. Stylistic framing decision: keep V-Web as headline (the paper is about V-Web
-%     environment classification) but ensure DESIVAST cross-validation is prominently cited
-%     immediately after — already structured this way in v0.1.30 §VII.E. NOT closing as full
-%     abstract rewrite; flagging GRO-B1 as "PARTIALLY-VALID stylistic re-emphasis preference".
-%   - GRO-M1 (cluster σ=-4.66 exceeds Paper IV monopole prediction by ~1.4σ; "tracks catalog-
-%     wide" claim needs explicit |σ_obs-σ_pred| column) — PARTIALLY FALSIFIED. L509 of v0.1.30
-%     ALREADY reports |σ_obs - σ_pred| ≈ 1.87 explicitly. Table II already has the catalog-wide-
-%     monopole-comparison column structure per fire #62 P4-monopole-residual analysis. The
-%     specific cluster |σ_obs - σ_pred| is reported. NOT closing.
-%   - GRO-M2 (Tempel labeled "load-bearing external-classifier validation" despite SDSS DR10
-%     + 14k galaxies + approximate richness mapping) — VALID. Closed L113-118: rewrote
-%     "this is the load-bearing external-classifier validation" → "supporting rather than
-%     load-bearing per R-ext-GRO-M2: the primary robustness evidence is the on-DESI DESIVAST
-%     cross-classifier and Phase 2 V-Web sensitivity analyses".
-%   - GRO-min1 (L1416 "clean environment-dependent constraint" while no published model
-%     predicts environmental signal) — VALID. Closed L1416: rewrote to "observational upper
-%     bound that any future bounce or inflation model proposing an environment-dependent parity
-%     signature must satisfy; it does not constrain the bounce-vs.\ inflation discrimination
-%     program at the current sensitivity floor".
-%   - GRO-min2 (density quintile residual table) — DEFERRED to v0.1.32+: the per-quintile
-%     |σ_obs - σ_pred| computation requires re-running density-stratified analysis with
-%     monopole-prediction subtraction; quick fix not available in this fire.
-%   MAJOR MILESTONE: 4 of 5 external vendors (DeepSeek + Gemini + Perplexity + Grok-as-
-%   stylistic-only-not-technical) effectively-clean on P5 v0.1.30; the Grok findings are
-%   framing-emphasis preferences, not technical errors. Combined with the cross-model internal
-%   §4.4.1 cascaded-loop-exit (R10/R11/R12 on v0.1.30), P5 v0.1.31 is at "external 99%-gate
-%   mostly-cleared" pending one more clean external round with GPT5 re-fire OR Houston
-%   decision on whether GRO-B1 stylistic re-emphasis warrants the abstract rewrite (does not
-%   per the V-Web-as-headline-classifier structural choice).
-\newcommand{\paperTimestamp}{June 2, 2026 PDT (R-upgraded-round7 close: PER-B1 author-order + PER-M1 T-Web tracer-mix)}
-% v0.1.6-2026-05-21 (cron fire #11: 6th figure — HEALPix per-pixel sigma_from_half
-%   Mollweide sky map at NSIDE=32, rendered from existing analysis_healpix/nside32_cw_per_pixel.csv
-%   via pipelines/p5_desi_chirality/scripts/14_make_p5_healpix_skymap.py (healpy + matplotlib
-%   diverging RdBu_r colormap, capped at ±4.5σ, with graticule overlay). Visual confirmation
-%   of the §VI.D HEALPix scan no-coherent-structure result (p=0.135 at NSIDE=32)).
-% v0.1.5-2026-05-21 (cron fire #7: 5th figure — density-quintile observed-vs-monopole
-%   overlay (scripts/13_make_p5_density_fig.py, 2-panel: f_CW per quintile with 95% Jeffreys
-%   CI + sigma-from-half with Paper IV monopole prediction sigma = -2 Delta_fCW sqrt(N)
-%   overlaid as red diamond markers, Bonferroni-5 alpha=0.01 thresholds) + new §V.A
-%   "Look-elsewhere correction" derivation block in statistical methods. Density figure
-%   inserted into §VI.C; LEE proof inserted before §VI.B redshift section).
-% v0.1.4-2026-05-21 (cron fire #6: V-Web vs Tempel 2-panel side-by-side bar
-%   overlay figure generated (scripts/12_make_p5_tempel_overlay.py, scipy.stats.beta
-%   Jeffreys 95% binomial CIs, shared y-axis [0.43, 0.53], annotated filament
-%   concordance 0.026pp arrow) + inserted into §VII.E Tempel cross-validation section).
-% v0.1.3-2026-05-21 (cron fire #5: Tempel+2014 SDSS DR10 FoF catalog INGESTED from
-%   CDS VizieR J/A+A/566/A1 — 588,193 galaxies parsed into parquet schema; cross-validation
-%   ran end-to-end on 110,586 Tempel-overlap matched spirals. KEY RESULT: V-Web vs Tempel
-%   concordance per paired class — filament_like_vs_filament 0.026pp (well below 0.2pp
-%   spec); the high-N concordance is the load-bearing cross-classifier validation.
-%   Lower-N classes (isolated/small_group/cluster_like) scatter by counting statistics
-%   over 0.6-1.1pp but with small sample sizes. New §VII.E "Tempel cross-validation"
-%   section + new Table III inserted; bibliography Tempel2014 cite remained intact).
-% v0.1.2-2026-05-21 (cron fire #4: 3 PNG figures generated + inserted — volume-fraction
-%   pie chart, CW-fraction-by-env bar chart with 95% Jeffreys binomial CIs, Phase 2
-%   sensitivity heatmap with per-cell annotations. Figure script:
-%   pipelines/p5_desi_chirality/scripts/11_make_p5_paper_figures.py).
-% v0.1.1-2026-05-21 (cron fire #3 polish: P5 Table I "Leg BASS+MzLS / DECaLS / DES"
-%   row split into separate per-leg rows to eliminate the 20.2pt overfull in v0.1.0).
-% v0.1.0-2026-05-21 (first compiled draft; scaffold to full-draft expansion during
-%   the autonomous drive-to-100 cron loop tick 122 / fire #2). Phase 1 V-Web env_finder
-%   plus Phase 2 sensitivity sweep across 9 (R_s, lambda_th) cells back every
-%   numerical claim. Pending: figures, Tempel+2018 cross-validation, first cross-vendor R-round.
+\newcommand{\paperVersion}{v0.1.44-2026-06-03}
+\newcommand{\paperTimestamp}{June 3, 2026 PDT (R-upgraded-round9 close: 7 do-now fixes — title retitle, ``strongest'' softening, RSD anisotropy reframe, DESIVAST scope, scale-locality caveat, \S{}XI.B rename, changelog strip)}
+% --- Preamble changelog (full pre-v0.1.44 history archived to CHANGELOG_pre-v0.1.44.txt) ---
+% v0.1.44-2026-06-03 (R-upgraded-round9 closure bundle, 7 do-now fixes from
+%   direct-vendor Gemini-2.5-Pro + Grok-4 + GPT-4o + Perplexity triage on v0.1.43).
+%   1. GRO-B1 — title retitled to lead with DESIVAST primary path
+%      ("A DESIVAST Three-Algorithm Test on 56,981 Void Spirals with V-Web
+%      Cross-Check Across 791,635 DR1 Matched Spirals").
+%   2. GRO-B2 — "largest-sample null confirmation" / "strongest" wording softened
+%      to "largest controlled-sample environmental-dependence test ... in DESI DR1
+%      to date" with single "null is not positive evidence" hedge.
+%   3. GEM-M1 + GPT-M3 + GRO-M1 3-way RSD reframing — §Limitations RSD lead now
+%      opens with anisotropic tidal-tensor eigenvalue deformation as dominant
+%      effect (Hahn/Hoffman/Cautun); scalar σ_v/(aH) is secondary.
+%   4. PER-M1 — abstract DESIVAST scope tightened: "DESIVAST provides the void
+%      catalog (three-algorithm VoidFinder/V2-REVOLVER/V2-VIDE); DR1 provides
+%      the environmental anchor (V-Web tidal classification on 14.6M spectro)".
+%   5. GEM-m1 — "any future model" scoped to "the bounce-chirality coupling
+%      class described in §sec:intro" (intro + conclusions + §XI.B).
+%   6. GEM-n1 — §XI.B retitled "Implications for bounce and inflation models".
+%   7. GRO-n1 — 380-line preamble changelog stripped; archived to
+%      pipelines/p5_desi_chirality/paper/CHANGELOG_pre-v0.1.44.txt.
+% v0.1.43-2026-06-02 (R-upgraded-round8 maintenance — see archived changelog).
+% v0.1.42-2026-06-02 (concurrent-literature DR1/EDR cross-checks consolidated).
+% v0.1.41-2026-06-02 (toy-EFT appendix gauge/rotational caveat — GEM-B1 close).
+% v0.1.40-2026-06-02 (R-upgraded-round3: 6 fixes — toy EFT caveat, RSD-immunity,
+%   "strongest" → "largest-sample null", RSD-bound rephrase, bib trim, preprint
+%   wording).
+% v0.1.39-2026-06-02 (R-upgraded-postretro: title elevation, DESIVAST primary-
+%   path subsection, RSD anisotropy caveat, BGS/dark tracer decomposition).
+% --- Pre-v0.1.39 full history in pipelines/p5_desi_chirality/paper/CHANGELOG_pre-v0.1.44.txt ---
 
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A V-Web Cosmic-Web Test on 791{,}635 Matched Spirals with DESIVAST-Anchored Void Cross-Check}
+\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with V-Web Cross-Check Across 791{,}635 DR1 Matched Spirals}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -419,7 +66,16 @@ We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
 with the DESI Data Release~1 redshift
 catalog ($16.4 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
-structure environment. The $1''$ matched catalog contains
+structure environment. \emph{Scope of the two DR1 inputs (v0.1.44
+PER-M1 clarification):} DESIVAST~\cite{DESIVAST2025} provides the
+\emph{void catalog} (three-algorithm: VoidFinder sphere-growing,
+V2-REVOLVER and V2-VIDE watershed); DESI DR1 redshifts provide the
+\emph{environmental anchor} through which we run a V-Web tidal
+classification on $14{,}622{,}283$ DR1 spectroscopic galaxies to
+assign every matched spiral to a cosmic-web class. The primary path
+of this paper is the DESIVAST-anchored void cross-check; the V-Web
+classification is the supporting cross-check across the full matched
+sample. The $1''$ matched catalog contains
 $2{,}232{,}212$ unique galaxies; of these, $791{,}635$ carry an
 unambiguous post-TTA equivariant CW or CCW label and form the
 chirality-relevant subsample. We classify each matched spiral into one
@@ -466,7 +122,7 @@ correction. We interpret this as no evidence for environment-dependent
 chirality beyond the catalog-monopole offset at current sensitivity;
 the V-Web void class at $z\!\lesssim\!0.24$ is sample-size limited at
 $n\!=\!428$ chirality-relevant spirals and dominated by survey-edge
-artifacts (see \S\ref{sec:tweb_compare}), so the strongest void
+artifacts (see \S\ref{sec:tweb_compare}), so the controlling void
 constraint comes from the DESIVAST-anchored re-projection
 ($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$) rather than the
 V-Web void label.
@@ -558,8 +214,10 @@ different chirality than galaxies in filaments or clusters? No
 published bounce or inflation model currently predicts a specific
 environment-conditional chirality signature at this scale; the present
 null therefore supplies an empirical upper bound on any future model
-that would produce one, and complements the Paper~IV global-dipole
-bound at the catalog-monopole level.
+in the bounce-chirality coupling class (Sec.~\ref{sec:p4}) that would
+produce one at the $\gtrsim\!25\,\text{Mpc}/h$ smoothing scale of the
+V-Web classification used here, and complements the Paper~IV
+global-dipole bound at the catalog-monopole level.
 
 We approach the test in three stages. First, we cross-match the
 canonical chirality catalog with DESI Data Release~1
@@ -1510,10 +1168,11 @@ DESIVAST rather than V-Web, the chirality-in-voids constraint is a
 clean null at full DESIVAST sample size.} Companion artifact:
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_canonical\_void\_chirality.json}.
 
-This DESIVAST-anchored re-analysis is the largest-sample null
-confirmation supporting the P5 headline environment-independence
-(a null is not positive evidence; it is the strongest available
-\emph{rejection of the alternative} on this dataset):
+This DESIVAST-anchored re-analysis is the largest matched-sample
+environmental-dependence test of spiral chirality in DESI DR1 to date,
+on the chirality-relevant subsample defined here
+(a null is not positive evidence; we report it as a controlled-sample
+non-detection of the environment-dependence hypothesis on this dataset):
 the V-Web $-0.68\sigma$ void deviation on $n = 428$ was counting-
 statistics-limited and contaminated by the survey-shell systematic,
 and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
@@ -1563,9 +1222,9 @@ tightly at $-4.59$ to $-4.94$ because the non-void class is the
 volume-dominant population carrying the full catalog-level monopole
 signature.
 
-The three-algorithm robustness pushes the P5 headline
-environment-independence into the strongest evidence regime available
-from current public DR1 cosmic-web catalogs.
+The three-algorithm robustness extends the P5 headline
+environment-independence test across the void-finding-algorithm axis
+available from current public DR1 cosmic-web catalogs.
 
 \subsection{Catalog-native V2 membership cross-check}\label{sec:desivast_catalog_native}
 
@@ -2120,15 +1779,17 @@ is invariant to V-Web hyperparameter choices over the ranges probed.
 The redshift, density, and HEALPix tests also produce no $3\sigma$
 deviations after look-elsewhere correction.
 
-\subsection{Bounce vs.\ inflation discrimination}
+\subsection{Implications for bounce and inflation models}
 
 No published model in either class (matter-bounce or inflation)
 currently predicts an environment-dependent CW signature at the
 sensitivity reached here, so the present null does not directly
 discriminate between matter-bounce and inflation-class models. It
 instead establishes an observational upper bound that any future
-parity-violating model proposing an environment-dependent chirality
-signature must respect.
+parity-violating model in the bounce-chirality coupling class
+(Sec.~\ref{sec:p4}), proposing an environment-dependent chirality
+signature at the $\gtrsim\!25\,\text{Mpc}/h$ V-Web smoothing scale,
+must respect.
 Paper~II~\cite{golden_fnl_2026} and Paper~III (both companion,
 not-yet-published works by the same author) provide independent
 discriminators (primordial $f_{\rm NL}$ and multi-survey anomaly
@@ -2178,37 +1839,41 @@ the canonical classifier rather than only cross-validate it in
 the EDR-overlap subset.
 \item Galaxy positions used for the V-Web tidal-tensor estimate are
 in observed redshift space rather than corrected to real space.
-For the typical pairwise velocity dispersion $\sigma_v
-\lesssim 400$\,km\,s$^{-1}$, the Kaiser-plus-finger-of-god
-displacement is $\sigma_v/(aH) \lesssim 5$--$8$\,Mpc/$h$ over
-$0.01 \le z \le 2$. This is a factor of $\sim 3$--$5$ smaller than
-the chosen Gaussian smoothing scale $R_s = 25$\,Mpc/$h$, so the
-V-Web class assignment is not redshift-space-distortion (RSD)
-limited at this resolution at the scalar-displacement level
-(R-multi-round4 GRO-m1 reordering): full anisotropic RSD validation
-on a reconstructed-position rerun is the necessary robustness step
-to convert this into a quantitative bound, and the scalar-displacement
-comparison given here supplies only an indicative upper limit
-(sub-percent RSD contamination of the per-class $\Delta f_{\rm CW}$
-at the present smoothing, i.e.\ $\sim 0.2$\,pp, which is the
+\emph{The dominant RSD effect for a tidal-tensor classifier is
+anisotropic eigenvalue deformation, not isotropic scalar displacement}
+(v0.1.44 GEM-M1 + GPT-M3 + GRO-M1 3-way reframing). The Kaiser
+line-of-sight squashing and the finger-of-god elongation each
+introduce a direction-dependent shift in the deformation-tensor
+spectrum
+(Hahn~\textit{et~al.}~2007~\cite{Hahn2007};
+Hoffman~\textit{et~al.}~2012~\cite{Hoffman2012};
+Cautun~\textit{et~al.}~2014~\cite{Cautun2014}): the eigenvalue
+ordering ($\lambda_1 \ge \lambda_2 \ge \lambda_3$) is the
+load-bearing quantity for V-Web class assignment, and anisotropic
+flow contributions enter the off-diagonal Hessian components rather
+than as a single scalar smearing length. At class-boundary edges
+(filament$\leftrightarrow$wall, wall$\leftrightarrow$void) a small
+fraction of pixels can shift class under RSD even when an isotropic
+smoothing-length comparison would suggest immunity. A quantitative
+RSD bound therefore requires a reconstructed-position re-classification
+cross-check (Zel'dovich or BAO reconstruction), not the scalar
+$\sigma_v/(aH)$ comparison alone.
+
+As a \emph{secondary} indicative bound, the scalar-displacement
+heuristic gives an order-of-magnitude floor: for the typical
+pairwise velocity dispersion $\sigma_v \lesssim 400$\,km\,s$^{-1}$,
+the Kaiser-plus-finger-of-god displacement is
+$\sigma_v/(aH) \lesssim 5$--$8$\,Mpc/$h$ over $0.01 \le z \le 2$,
+a factor of $\sim 3$--$5$ smaller than the chosen Gaussian smoothing
+scale $R_s = 25$\,Mpc/$h$. The implied per-class $\Delta f_{\rm CW}$
+contamination is sub-percent ($\sim 0.2$\,pp), the
 \emph{same order of magnitude} as the Phase~2 sweep max-range of
-$0.22$\,pp rather than negligible relative to it; the two are
-internally consistent at the order-of-magnitude level and the
-RSD-induced shift is not separable from the sweep-induced shift
-without a reconstructed-position rerun). A reconstructed-position rerun (Zel'dovich or BAO
-reconstruction) is a natural follow-up if the smoothing scale is
-ever pushed below $\sim 10$\,Mpc/$h$. \emph{Anisotropy caveat (v0.1.32):} the
-scalar-displacement comparison above is a necessary but not sufficient
-robustness argument. RSD is fundamentally anisotropic — the Kaiser
-squashing along the line of sight and finger-of-god elongation
-deform the tidal-tensor eigenvalues anisotropically, and at the
-class-boundary edges (filament$\leftrightarrow$wall, wall$\leftrightarrow$void)
-a small fraction of pixels can shift class even when the scalar
-smoothing length dominates. We expect this to be a sub-percent
-contamination at $R_s\!=\!25$\,Mpc$/h$ given the BGS pairwise velocity
-distribution, but a quantitative bound requires a reconstructed-position
-re-classification cross-check rather than the present scalar
-displacement argument alone.
+$0.22$\,pp rather than negligible relative to it. This scalar bound is
+necessary but \emph{not sufficient}: the anisotropic eigenvalue
+deformation above is the dominant channel and is not separable from
+the sweep-induced shift without a reconstructed-position rerun.
+A reconstructed-position rerun is a natural follow-up if the smoothing
+scale is ever pushed below $\sim 10$\,Mpc/$h$.
 
 \emph{Order-of-magnitude boundary-crossing estimate (v0.1.34).}
 Using the V-Web eigenvalue field itself, the fraction of cells near
@@ -2263,14 +1928,16 @@ $(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (max CW-fraction range
 $0.22$\,pp) and under six classes of systematics tests.
 
 This null is consistent with the Paper~IV global parity-mixture null
-and provides an observational upper bound that any future bounce or
-inflation model proposing an environment-dependent parity signature
-must satisfy (R-ext-GRO-min1 reframing from prior "clean
+and provides an observational upper bound that any future model in the
+bounce-chirality coupling class (Sec.~\ref{sec:p4}) proposing an
+environment-dependent parity signature at the $\gtrsim\!25\,\text{Mpc}/h$
+V-Web smoothing scale must satisfy (v0.1.44 GEM-m1 scope-locality
+caveat; R-ext-GRO-min1 reframing from prior "clean
 environment-dependent constraint"); it does not constrain the
 bounce-vs.\
 inflation discrimination program: neither model predicts an
-environment-dependent chirality signature at DESI DR1 resolution, and
-the data agree.
+environment-dependent chirality signature at DESI DR1 resolution at
+this smoothing scale, and the data agree.
 
 A schematic toy mapping of the observational bound to an
 effective-field-theory operator is summarized in

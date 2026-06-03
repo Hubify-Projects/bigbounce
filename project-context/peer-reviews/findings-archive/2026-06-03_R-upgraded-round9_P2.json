@@ -1,0 +1,67 @@
+{
+  "round": "2026-06-03_R-upgraded-round9_P2",
+  "paper": "P2",
+  "paper_version_in": "v1.7.42",
+  "paper_version_out": "v1.7.42",
+  "version_bumped": false,
+  "cascaded_counter": "REGRESSION — 3/3 EXIT (R8) BROKEN at R9",
+  "exit_triggered": false,
+  "vendors": ["gemini-2.5-pro", "gpt-4o-fallback-from-gpt-5", "grok-4", "sonar-pro"],
+  "totals": {
+    "findings": 22,
+    "verified_real_action_landed": 0,
+    "verified_needs_action": 1,
+    "stale": 9,
+    "falsified": 7,
+    "opinion": 5,
+    "oos": 0
+  },
+  "findings": [
+    {"id": "GEM-M1", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "six-monomial 'complete S3-symmetric' miscount", "verdict": "VERIFIED", "pattern_ids": ["030"], "evidence": "L225 + audit-trail L43-46 claim 'exactly six orbits' of partitions of 9 into 3 nonneg parts mod S3. Direct enumeration yields 12 orbits: (9,0,0),(8,1,0),(7,2,0),(7,1,1),(6,3,0),(6,2,1),(5,4,0),(5,3,1),(5,2,2),(4,4,1),(4,3,2),(3,3,3). Paper's basis = 6 of these 12; closure introduced incorrect justification. Fix: state basis is Cai-physics subset, or derive that omitted 6 monomials have zero coefficient."},
+    {"id": "GEM-M2", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "kappa_1≈80 lacks specific citation", "verdict": "OPINION", "pattern_ids": ["016"], "evidence": "L323 derives kappa_1∈[5.6, 80] from explicit-prefactor + Hankel-amplitude channels with refs to Cai App.~B and WilsonEwing; framing as physics-derived range is honest, not a citation gap."},
+    {"id": "GEM-M3", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "9.9σ joint-Fisher headline", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "L364+ quadruply caveats: 'idealized-Fisher self-consistency check,' 'deferred to companion artifact,' 'not a competing detection forecast.' R3-R8 closures land."},
+    {"id": "GEM-m1", "vendor": "gemini-2.5-pro", "class": "minor", "topic": "μ/H→3/2 'mismatch vanishes' overstatement", "verdict": "OPINION", "pattern_ids": [], "evidence": "L244+ correctly states shape-overlap collapses to BF→1 at endpoint; residual non-locality is polish-tier."},
+    {"id": "GPT-B1", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "BF 10-17 abstract vs 4-17 body inconsistency", "verdict": "FALSIFIED", "pattern_ids": ["009"], "evidence": "Abstract L184 explicitly states 'curvaton-natural [-5,+5] competitor narrows this to a lower-envelope sensitivity check of BF ~ 4 ... and BF ~ 7 at the delta prior.' Both bounds disclosed; no inconsistency."},
+    {"id": "GPT-B2", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "section heading wording 'UV-Completion Independence'", "verdict": "OPINION", "pattern_ids": ["019"], "evidence": "§2.2 heading already includes '(Conditional on Faithful Cubic-Order Transfer)'; rewording preference."},
+    {"id": "GPT-B3", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "3-5σ vs 1.5-2.5σ confusion in conclusion", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "L184 chain explicit: optimistic 5.2-5.5σ → post-systematic 3-5σ Planck c=2 → Li/Brand c=1 halves to 1.5-2.5σ. R3 R-next-MIN-1 closed."},
+    {"id": "GPT-B4", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "gauge vs physical-frame separation", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Abstract L184 already explicit: 'CFC physical-frame statement is a complementary theoretical discriminator, not the on-sky observable.'"},
+    {"id": "GPT-B5", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "9.9σ deferred-companion misleading", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Same as GEM-M3; quadruply caveated as idealized-Fisher self-consistency."},
+    {"id": "GPT-B6", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "MAJOR", "topic": "factor-of-two derivation gap in appendix", "verdict": "FALSIFIED", "pattern_ids": ["009"], "evidence": "L86 + Appendix A.1/A.2 give explicit source-to-source normalization audit + four-vertex agreement check + in-in commutator interpretation; derivation is extensive."},
+    {"id": "GRO-B1", "vendor": "grok-4", "class": "BLOCKER", "topic": "'first time' template-overlap framing", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "R7/R8 Grok-MAJ-1 audit-trail L73-74 closure; wording survives by Houston decision."},
+    {"id": "GRO-B2", "vendor": "grok-4", "class": "BLOCKER", "topic": "'SPHEREx forecast' → 'recast' rewording", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "Body §3-4 + audit-trail L92-94 disclose sensitivity-recasting framing; conclusion L381 says 'indicates ... favor.'"},
+    {"id": "GRO-M1", "vendor": "grok-4", "class": "MAJOR", "topic": "UV-completion caveat 'verified only at linear order'", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "Abstract + §2.2 heading + audit-trail L37-38 closure disclose."},
+    {"id": "GRO-M2", "vendor": "grok-4", "class": "MAJOR", "topic": "BF 10-17 envelope inflation", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1.7.35 R-next-c-MAJ-1 already corrected Table 1 to lead with σ_theory=1.0 BF~10; delta-prior BF~17 demoted to upper-bound row."},
+    {"id": "GRO-n1", "vendor": "grok-4", "class": "nit", "topic": "Appendix A length", "verdict": "OPINION", "pattern_ids": [], "evidence": "Derivation is load-bearing for convention closure; Houston framing."},
+    {"id": "GRO-n2", "vendor": "grok-4", "class": "nit", "topic": "audit-trail comments in .tex", "verdict": "OPINION", "pattern_ids": ["014"], "evidence": "Real but resolved at arXiv-tarball-stage strip; not content blocker."},
+    {"id": "PER-B1", "vendor": "sonar-pro", "class": "BLOCKER", "topic": "Cai/Li factor-of-two citation chain forensics", "verdict": "FALSIFIED", "pattern_ids": ["001", "035"], "evidence": "Pattern-035 HARDENED auto-FALSIFY: no specific arxiv-id challenge, narrative-style forensics. Appendix A.1/A.2 + L86 already source each factor to specific paper statements."},
+    {"id": "PER-B2", "vendor": "sonar-pro", "class": "BLOCKER", "topic": "audit every cited paper generic", "verdict": "FALSIFIED", "pattern_ids": ["001", "035"], "evidence": "Pattern-035 HARDENED auto-FALSIFY: zero specific arxiv-id flagged; generic boilerplate."},
+    {"id": "PER-B3", "vendor": "sonar-pro", "class": "MAJOR", "topic": "SPHEREx/MegaMapper/Heinrich mixed observables", "verdict": "FALSIFIED", "pattern_ids": ["001", "035"], "evidence": "Pattern-035 auto-FALSIFY + content false: §sec:discussion L364+ explicitly distinguishes bispectrum-only vs joint Fisher; r=0.84 explicitly disclaimed for SDB-Fisher channel."},
+    {"id": "PER-B4", "vendor": "sonar-pro", "class": "MAJOR", "topic": "composite significance not source-backed", "verdict": "FALSIFIED", "pattern_ids": ["001", "035"], "evidence": "Pattern-035 auto-FALSIFY; systematic-budget table §7 itemizes each correction with source."},
+    {"id": "PER-B5", "vendor": "sonar-pro", "class": "minor", "topic": "'robustness' overgeneralization", "verdict": "OPINION", "pattern_ids": ["035"], "evidence": "Pattern-035 generic; no specific overclaim cited."},
+    {"id": "PER-B6", "vendor": "sonar-pro", "class": "nit", "topic": "add citation-audit table", "verdict": "OPINION", "pattern_ids": ["035"], "evidence": "Pattern-035 process-suggestion; non-actionable."}
+  ],
+  "pattern_hits": {
+    "001_perplexity_confab": 4,
+    "009_gpt4o_fallback_low_rigor": 6,
+    "014_review_log_in_comments": 1,
+    "016_wide_net_exit_reflag": 7,
+    "019_section_heading_wording_preference": 1,
+    "030_round_to_round_regression_drift": 1,
+    "035_perplexity_arxiv_confab_HARDENED": 6
+  },
+  "new_pattern_candidate": {
+    "name": "closure-introduced math error",
+    "description": "Prior round closure can introduce a NEW technical error when the closure invents a justification (e.g., 'exactly 6 orbits') rather than verifying the underlying claim. Three subsequent vendors (Grok, GPT-4o, Perplexity at R8) failed to catch it; Gemini at R9 caught it via direct enumeration. Suggests 'verification of closure' subroutine separate from 'verification of original finding.'",
+    "occurrences_observed": 1,
+    "promote_threshold": "3+ across ≥2 papers"
+  },
+  "exit_criteria": {
+    "novel_blockers": 0,
+    "novel_majors_verified": 1,
+    "prior_round_regressions": 1,
+    "polish_majors_max": 0,
+    "exit_triggered": false,
+    "note": "R8 declared 3/3 EXIT MET prematurely. R9 (regression-check) caught GEM-M1: a math error introduced by an earlier closure (R3 GEM-m1) and missed by all four R8 vendors. EXIT BROKEN. Must re-open until GEM-M1 closure lands (correct L225 + footnote)."
+  },
+  "houston_facing_readiness_recommendation": "Oscillate P2 readiness backward from R8-locked 99% to ≤95% until GEM-M1 fix lands. Resume to 99% after fix + one more clean cross-vendor round confirms no further closure-introduced regressions."
+}

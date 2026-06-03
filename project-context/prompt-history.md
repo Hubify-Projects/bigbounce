@@ -70,3 +70,22 @@ Standing memory invoked: feedback_eat_the_frog + feedback_houston_method + feedb
 > [CHATGPT: REJECT — 8 BLOCKERS (B1 reviewer package not reproducible/.tex+JSONs absent though GitHub tag has them, B2 hierarchy declared after results not pre-registered, B3 canonical residual still unresolved with joint nuisance fit deferred, B4 null models mixed without single inference target, B5 sensitivity claims internally inconsistent 0.29%/0.75%/1.19% vs abstract "sub-percent", B6 classifier uncertainty not propagated to cosmological covariance, B7 Shamir body-text citations still using [2] PASJ methodology for DESI 2022 claims, B8 internal audit/version-control prose + broken \ref placeholders) + 8 MAJORS (M1 systematics-preserving canonical-mask null, M2 re-centre on post-MASTER monopole-only 12% result, M3 hemisphere-statistic contradiction, M4 DECaLS confidence-bin centrality, M5 morphology coupling too strong to leave as caveat, M6 null means + covariances must be published, M7 catalogue framing too strong, M8 split paper) + 10 minors. Notes the v1.0.132 PDF is materially improved vs v1.0.128 but still has structural flaws.]
 
 Houston's standing directive: full bundled hard-fix wave per feedback_default_hardest_path + feedback_take_critiques_seriously + feedback_peer_review_truth_audit_protocol. Several findings are ALREADY addressed by the v1.0.133 M1 closure landed earlier this turn (ChatGPT-M1 systematics-preserving null; partially Gemini-B2 + ChatGPT-B3 joint-fit framing) and by the boundary-distance variance script just executed (Gemini-Major1). Bundle remaining REAL findings as v1.0.134.
+
+---
+
+## 2026-06-03 — continue all + R9 + P5 compile + site/API sync + N4 rule
+
+> Okay yes, continuing all of that, do it all properly and correctly. We also definitely need to run a full another round on all the papers and make sure that the website is also 100% properly utilizing our new API and NCP etc., so that everything's correctly up to date. I can't even see a Paper 5 PDF compiled either so we need to make sure that the API is syncing all the latest versions of the PDFs as well as the external review prompts, the statuses, anything pending, and any notable contributions or novelty or anything on the pages for the papers.
+>
+> You need to compile Paper 5. I haven't even seen it yet so you gotta do that. On the paper too you need to add a novelty of an N4. If you look at our past scoring for what we defined as a novel contribution, you actually need maybe a little better definitions for the tiers. An N4 is basically not something I think that we can claim. That would be like the highest level tier that is truly groundbreaking, novel, Nobel Prize-worthy type of stuff so I never want to claim an N4, just as a rule.
+
+Standing directive extracted: **NEVER claim N4 novelty on any paper.** N4 is reserved
+for truly groundbreaking / paradigm-shifting / Nobel-worthy discoveries. Demote any
+existing N4 self-claims to N3 ceiling.
+
+Work plan:
+1. Compile P5 (Houston has never seen the PDF — embarrassing gap)
+2. Audit existing novelty scheme + write tier definitions
+3. Audit site/API/Convex sync — find every stale ref (P5 PDF path will be #1)
+4. Fire R9 direct-vendor reviews on all 6 papers
+5. Triage R9 + close findings + bump versions as needed

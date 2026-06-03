@@ -1,0 +1,63 @@
+{
+  "round": "2026-06-03_R-upgraded-round9_P1B",
+  "paper": "P1B",
+  "paper_version_in": "v1B.0.41",
+  "paper_version_out_proposed": "v1B.0.42",
+  "version_bump_required": true,
+  "cascaded_counter": "4/3 EXTENDED",
+  "exit_triggered": false,
+  "exit_recommended_after_closure": true,
+  "vendors": ["gemini-2.5-pro", "gpt-4o-fallback-from-gpt-5", "grok-4", "sonar-pro"],
+  "totals": {
+    "findings": 21,
+    "verified_real_action": 1,
+    "verified_partial_polish": 1,
+    "stale": 10,
+    "falsified": 4,
+    "opinion": 5,
+    "oos": 0
+  },
+  "pattern_fires": {
+    "pattern-013": 6,
+    "pattern-035": 6,
+    "pattern-014": 1,
+    "pattern-017": 1,
+    "pattern-016": 10,
+    "pattern-005": 1,
+    "pattern-019": 2,
+    "pattern-022": 1,
+    "pattern-009": 5
+  },
+  "findings": [
+    {"id": "GEM-B1", "vendor": "gemini-2.5-pro", "class": "BLOCKER", "downgrade_to": "MAJOR-soft", "topic": "'natural parameters' vs ~25× tuning tension", "verdict": "VERIFIED-PARTIAL", "pattern_ids": ["005"], "evidence": "L654/L1102/L1132/L1227 use 'natural parameters' framing while fn:theta_backreaction L1133-1146 discloses ~25× tuning required for spectator-consistent corner. Internally coherent (scan-prior naturalness ≠ corner naturalness) but reviewer-friendly polish: add hedge clause at L654/L1102/L1227.", "fix": "L654/L1102/L1227 hedge: 'natural parameters' → 'scan-prior-midpoint values; the spectator-consistent corner θ_i~0.1 requires ~25× tuning (fn:theta_backreaction)'.", "action": "polish-in-v1B.0.42"},
+    {"id": "GEM-M1", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "ALP ODE in LCDM not w0wa background", "verdict": "OPINION", "pattern_ids": ["009"], "evidence": "Methodologically valid critique but quantitatively immaterial — paper discloses <few-% Hubble-rate shift at z<1 propagating to ≲few-% systematic in fn:wcaveat L1119-1127. Re-running ODE in quintom background is high-cost / low-yield.", "action": "no-change"},
+    {"id": "GEM-m1", "vendor": "gemini-2.5-pro", "class": "minor", "topic": "audit-trail prose at L1211-1215", "verdict": "VERIFIED", "pattern_ids": ["014", "017"], "evidence": "Body text L1211-1215 contains audit-trail prose 'We previously closed an earlier reported product...' which is reviewer-process leakage, not scientific content. Identical pattern to v1B.0.41 GEM-m1 closure for inline R-codes.", "fix": "Delete sentence L1211-1215.", "action": "close-in-v1B.0.42"},
+    {"id": "GEM-m2", "vendor": "gemini-2.5-pro", "class": "minor", "topic": "Barbero-Immirzi parameter in fn7 (L751)", "verdict": "OPINION", "pattern_ids": ["009"], "evidence": "Citation to Mercuri2006 makes the BI scale explicit; this is a precise UV-completion anchor, not over-specification. Generalizing would lose the citation hook.", "action": "no-change"},
+    {"id": "GPT-B1", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "ΔNeff Bayes factor (nested sampling)", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Reflag from R3-R8. fn:wcaveat + Table 1B already disclose ln B pending; nested sampling deferred per R4 GEM-n1 closure.", "action": "no-change"},
+    {"id": "GPT-B2", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "NaMaster SNR vs sky detection", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Reflag from R3-R8. L583 + Sec VI explicitly state 'pipeline-validation figure, not a sky-detection significance claim' in 4 separate places.", "action": "no-change"},
+    {"id": "GPT-B3", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "ALP fine-tuning disclosure", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "v1B.0.41 GEM-m2 closure already disclosed ~25× misalignment tuning at fn:theta_backreaction L1133-1146.", "action": "no-change"},
+    {"id": "GPT-B4", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "C_aγ non-minimal benchmarks emphasis", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "v1B.0.41 GEM-m3 closure disclosed non-minimal model-building requirement at L1191-1210.", "action": "no-change"},
+    {"id": "GPT-B5", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "AIC/BIC/lnB deferral", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Reflag — deferral already disclosed in fn:wcaveat + Table 1B.", "action": "no-change"},
+    {"id": "GPT-B6", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "glossary for jargon", "verdict": "OPINION", "pattern_ids": ["009"], "evidence": "Audience choice for PRD-class submission. ΔNeff and SNR are standard CMB terms.", "action": "no-change"},
+    {"id": "GRO-B1", "vendor": "grok-4", "class": "BLOCKER", "topic": "delete entire preamble block", "verdict": "OPINION", "pattern_ids": ["014", "019"], "evidence": "Preamble is %-comments (LaTeX comments not body prose); arXiv-tarball strip handles this at submission. Reflag from R3 GRO-B1, R7 GRO-B1.", "action": "no-change"},
+    {"id": "GRO-B2", "vendor": "grok-4", "class": "BLOCKER", "topic": "move §6 spectator-ALP to appendix or delete", "verdict": "OPINION", "pattern_ids": ["019", "022"], "evidence": "§6 already explicitly labeled 'Not a distinctive ECH prediction' at L654 + L1102. Reviewer overreach — paper itself walls off scope.", "action": "no-change"},
+    {"id": "GRO-M1", "vendor": "grok-4", "class": "MAJOR", "topic": "Table II frozen Mid-May snapshot stale", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1B.0.41 GEM-n1 closure already updated Table II caption with frozen-snapshot disclosure + live-program-on-site pointer.", "action": "no-change"},
+    {"id": "GRO-M2", "vendor": "grok-4", "class": "MAJOR", "topic": "C_aγ vs KSVZ/DFSZ contradiction with natural framing", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1B.0.41 GEM-m3 + L1191-1210 already disclose required coupling lies outside minimal KSVZ/DFSZ ranges.", "action": "no-change"},
+    {"id": "GRO-m1", "vendor": "grok-4", "class": "minor", "topic": "PR3/PR4 footnote condensation", "verdict": "OPINION", "pattern_ids": ["004"], "evidence": "The detailed disambiguation footnote is the v1B.0.34 closure for the recurring Perplexity reflag (now 6 rounds). Condensing it would lose the prevention mechanism.", "action": "no-change"},
+    {"id": "GRO-n1", "vendor": "grok-4", "class": "nit", "topic": "remaining 'R-upgraded-round' / 'pattern-017' strings", "verdict": "FALSIFIED", "pattern_ids": [], "evidence": "Grep finds 3 occurrences (L585, L1134, L1485) — ALL inside scientific-disclosure footnotes that intentionally cite the round of origin per v1B.0.36 closure rationale. Not stripped per Houston standing decision: round-of-origin annotation in footnotes is legitimate audit-trail (different from inline body-prose codes that were stripped in v1B.0.41 GEM-m1).", "action": "no-change"},
+    {"id": "PER-B1", "vendor": "sonar-pro", "class": "BLOCKER", "topic": "Eskilt PR3 vs PR4 fused attribution", "verdict": "FALSIFIED", "pattern_ids": ["013", "030"], "evidence": "6TH CONSECUTIVE ROUND of pattern-013 firing. fn:eskilt_pr3_pr4 at L584-600 already splits the attribution cleanly (published PRD = PR3+WMAP9; code repo = PR4/NPIPE). Auto-FALSIFY per standing pattern-013 rule.", "action": "no-change"},
+    {"id": "PER-B2", "vendor": "sonar-pro", "class": "MAJOR", "topic": "Eskilt 'PR3 vs PR4' label oscillation across lines", "verdict": "FALSIFIED", "pattern_ids": ["013", "030"], "evidence": "Same pattern-013 reflag at different line numbers. Body uses 'PR4/NPIPE' consistently for code-repo-dataset uses (L590, L1109, L1372). Disambiguation footnote covers all body sites.", "action": "no-change"},
+    {"id": "PER-B3", "vendor": "sonar-pro", "class": "MAJOR", "topic": "ECTorsionDESI2025 cite-key Liu et al.", "verdict": "FALSIFIED", "pattern_ids": ["035", "001"], "evidence": "6TH CONSECUTIVE ROUND of pattern-035. references.bib L574+ has canonical Liu et al. ECTorsionDESI2025 entry with full metadata. Auto-FALSIFY per standing pattern-035 rule.", "action": "no-change"},
+    {"id": "PER-B4", "vendor": "sonar-pro", "class": "MAJOR", "topic": "ALP prior block mixes literature with paper inference", "verdict": "OPINION", "pattern_ids": ["006"], "evidence": "fn:theta_backreaction is explicitly the paper's own backreaction-scaling derivation, not literature claim. Already self-attributed by 'Backreaction disclosure' prefix.", "action": "no-change"},
+    {"id": "PER-B5", "vendor": "sonar-pro", "class": "minor", "topic": "sample-count arithmetic across 5 numbers", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "Reflag — each count corresponds to a different stage (raw / post-burnin / per-subset / getdist-thinned) and the provenance is correctly attributed in Table 1B + footnotes.", "action": "no-change"},
+    {"id": "PER-B6", "vendor": "sonar-pro", "class": "nit", "topic": "LiteBIRD σ(β) forecast citation completeness", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "L1219 cites LiteBIRD2023 — references.bib has full metadata. Reviewer asks for inline duplication of bib entry, not actionable.", "action": "no-change"}
+  ],
+  "closure_plan_v1B_0_42": [
+    {"finding": "GEM-m1", "action": "strip audit-trail sentence L1211-1215", "pattern": "014/017"},
+    {"finding": "GEM-B1", "action": "hedge 'natural parameters' at L654/L1102/L1227 with scan-prior-midpoint clause", "pattern": "005"}
+  ],
+  "promotion_candidates_for_pattern_mine": [
+    {"pattern_id": "013", "rationale": "9/9 fires on P1B; 6/6 on R3-R9 PR3/PR4 reflag. Promote to 'resolved at prevention layer' candidate."},
+    {"pattern_id": "035", "rationale": "6/6 fires on R3-R9 ECTorsionDESI2025 reflag. Same candidacy."}
+  ]
+}

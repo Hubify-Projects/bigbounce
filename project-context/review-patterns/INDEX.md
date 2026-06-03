@@ -122,3 +122,9 @@ across rounds, create `pattern-NNN-<kebab>.md` following the schema in
 the existing files and append a row to the table above. Skill
 `/paper-pre-review-check` picks up new patterns automatically by globbing
 `pattern-*.md`.
+
+## Pattern 036 — closure-fabricates-math-justification
+
+Variant of [[pattern-008-closure-introduced-regression]]. Closure round responds to a 'justification gap' finding by ADDING fabricated math (orbit count, partition count, symmetry argument) rather than verifying. Caught on P2 R9 Gemini-M1 after 6 rounds × 4 vendors missed it. The fabricated 'exactly six orbits / complete S3 set' justification at L225 was added by R3 closure; underlying basis was physics-correct, but the layer was a lie.
+
+Details: [pattern-036-closure-fabricates-math-justification.md](pattern-036-closure-fabricates-math-justification.md)

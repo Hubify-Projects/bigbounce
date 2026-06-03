@@ -1,0 +1,59 @@
+{
+  "round_label": "2026-06-03_R-upgraded-round9",
+  "date": "2026-06-03",
+  "papers": {
+    "P1A": {
+      "version_at_time_of_review": "v1A.0.44",
+      "version_at_closure": "v1A.0.44",
+      "bumped": false,
+      "convergent_silence_counter": "2 of 3",
+      "pattern_008_propagation_check": "CLEAN — Pontryagin propagation into abstract+conclusions+§X correctly states 'non-zero pointwise but a total derivative'; zero reviewer found a regression; GPT-B2 mis-claimed paper says it 'vanishes identically' = pattern-008 inverse-confab, falsified",
+      "reviewers": {
+        "Gemini25Pro_cosmology": [
+          {"finding_id": "GEM-M1", "raw_classification": "MAJOR", "summary": "Structural-tension argument uses N_tot~92 from now-defunct memory mechanism (thermal-reset barrier invalidates it)", "truth_audit_verdict": "STALE", "pattern_ids": [5, 22, 30], "closure_action": "no action (§XII.A L1615-1628 labels D_inf 'parameterization-of-fine-tuning diagnostic'; §XIV.D L1789 header is 'robustness check, not co-equal closure')", "closed_in_version": null},
+          {"finding_id": "GEM-M2", "raw_classification": "MAJOR", "summary": "Abstract says 'matter-bounce class' but f_NL=-35/8 holds only for single-field canonical scalar w=0", "truth_audit_verdict": "STALE", "pattern_ids": [5, 16], "closure_action": "no action (abstract L348-349 cites Cai:2009fn; detailed scalar-only w=0 scope at §XIII L1694-1707 and Table I footnote L469)", "closed_in_version": null},
+          {"finding_id": "GEM-M3", "raw_classification": "MAJOR", "summary": "Abstract understates severity of dimensionally-inconsistent ansatz", "truth_audit_verdict": "STALE", "pattern_ids": [5, 16, 20], "closure_action": "no action (abstract L317-320 already states +1 vs +4 mismatch and 'ansatz, not a derivation' verbatim)", "closed_in_version": null},
+          {"finding_id": "GEM-m1", "raw_classification": "minor", "summary": "Conclusions birefringence test leads with 9σ before 0.73σ model-discrimination", "truth_audit_verdict": "OPINION", "pattern_ids": [5], "closure_action": "no action (§XV.B L1859 explicit distinction between two null hypotheses; reordering preference)", "closed_in_version": null}
+        ],
+        "GPT5_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Eq.(1) parity-odd dimension +1 vs +4 inconsistent", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (abstract sentence 3 + Appendix B already name this explicitly)", "closed_in_version": null},
+          {"finding_id": "GPT-B2", "raw_classification": "BLOCKER", "summary": "Paper claims Holst dual contraction 'vanishing identically' — Pontryagin is non-zero", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [8, 9], "closure_action": "no action (paper says verbatim 'non-zero pointwise but a total derivative ... contributes only a boundary term' at abstract L329-335 and §X.A; reviewer inverse-misread)", "closed_in_version": null},
+          {"finding_id": "GPT-B3", "raw_classification": "BLOCKER", "summary": "Error bars not propagated through systematic budget", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action (systematic budget lives in companion Paper I(b)/II per scope split)", "closed_in_version": null},
+          {"finding_id": "GPT-B4", "raw_classification": "BLOCKER", "summary": "Bayes-factor/likelihood-ratio not properly marginalized", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action (P1A is no-go theorem; MCMC marginalization is Paper I(b) scope)", "closed_in_version": null},
+          {"finding_id": "GPT-M1", "raw_classification": "MAJOR", "summary": "One-loop graviton suppression factor inconsistent across sections", "truth_audit_verdict": "STALE", "pattern_ids": [9], "closure_action": "no action (consistent across abstract/§II.C.1/§XII.A; reviewer asserts without citing two lines)", "closed_in_version": null},
+          {"finding_id": "GPT-M2", "raw_classification": "MAJOR", "summary": "Structural tension framed as robustness check but reads as co-equal closure", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (§XIV.D L1789 header literally 'robustness check, not co-equal closure'; abstract L340 + §IV explicit)", "closed_in_version": null}
+        ],
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "Theorem / closure framing not load-bearing given scope disclaimers", "truth_audit_verdict": "STALE", "pattern_ids": [5, 19], "closure_action": "no action (abstract L309-311 already says 'channel-level assessment, not an operator-level theorem' verbatim; L362-369 qualifies 'closure')", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "MAJOR", "summary": "LaTeX source comments contain LLM-review choreography that doesn't belong in submission", "truth_audit_verdict": "STALE", "pattern_ids": [3, 14, 17], "closure_action": "no action (lines 1-291 are %-comment review-log, not PDF body; comment-stripping is pre-arXiv mechanical step per pattern-014)", "closed_in_version": null},
+          {"finding_id": "GRO-B3", "raw_classification": "MAJOR", "summary": "4-route closure rests on dimensional ansatz; not predictions, reparameterizations", "truth_audit_verdict": "STALE", "pattern_ids": [5, 22], "closure_action": "no action (abstract L317-320 + §IV Scope already state 'demonstrates an explanatory deficit under a stated scaling assumption, not a derived no-go')", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "minor", "summary": "13 logically-independent barriers contradicted by B8 subsumed-by-B14", "truth_audit_verdict": "STALE", "pattern_ids": [16], "closure_action": "no action (paper says verbatim '13 logically-independent (14 historical catalog entries, of which B8 is subsumed by B14)' at abstract L321-326, §XV L1846-1847, Table I caption)", "closed_in_version": null},
+          {"finding_id": "GRO-m1", "raw_classification": "nit", "summary": "Pontryagin sentence redundant — shorten phrasing", "truth_audit_verdict": "OPINION", "pattern_ids": [5], "closure_action": "no action (pattern-008 propagation flagged CLEAN by all other reviewers; do not regress)", "closed_in_version": null}
+        ],
+        "PerplexitySonarPro_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "BLOCKER", "summary": "Golden2026 P1b/P2/P3/P4 self-citations unverifiable / likely fictional", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [1, 12], "closure_action": "no action (all four registered in paper1a_ech_nogo.bbl with 'in preparation' annotation; Perplexity web-search cannot see in-prep companions per pattern-012; R-multi-true95 already audited falsified)", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "Shapiro & Teixeira 2014 doesn't literally contain α/M one-loop formula", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (attribution softened in R2 closure v1A.0.38, %-comment L168-170)", "closed_in_version": "v1A.0.38"},
+          {"finding_id": "PER-M2", "raw_classification": "MAJOR", "summary": "Date-Kaul-Sengupta / Benedetti-Speziale don't supply Eq.(γ_running) as written", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action (attribution softened in R2 closure v1A.0.38, %-comment L171-174; §IV Route 3 says 'schematically motivated by')", "closed_in_version": "v1A.0.38"},
+          {"finding_id": "PER-M3", "raw_classification": "MAJOR", "summary": "Lue-Wang-Kamionkowski normalization not from that paper", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (R2 closure v1A.0.38 %-comment L175-180; §IV.D L1100-1115 verbatim what PER requests)", "closed_in_version": "v1A.0.38"},
+          {"finding_id": "PER-m1", "raw_classification": "minor", "summary": "Ashtekar-Singh ρ_crit 0.27-0.41 attribution needs sharper separation", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (R2 closure v1A.0.38 %-comment L181-184; §II.B explicit on 0.41 vs 0.27 extrapolation)", "closed_in_version": "v1A.0.38"},
+          {"finding_id": "PER-n1", "raw_classification": "nit", "summary": "HehlDatta bibtex label may have mis-labeled metadata", "truth_audit_verdict": "FALSIFIED", "pattern_ids": [1], "closure_action": "no action (paper1a_ech_nogo.bbl L307-318 verified: F.W. Hehl + B.K. Datta, 1971, J. Math. Phys. 12, 1334; 'NJL' only in bibtex key, not title)", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "trend": "2/3 convergent silence — 21 findings, 0 VERIFIED, 0 BLOCKERs landed, 3 FALSIFIED (GPT-B2 pattern-008 inverse-confab, PER-B1 in-prep companions, PER-n1 false bib metadata claim); pattern-008 propagation CLEAN; one more clean round closes the cascaded loop"
+    }
+  },
+  "summary": {
+    "total_findings": 21,
+    "verified": 0,
+    "stale": 16,
+    "falsified": 3,
+    "opinion": 2,
+    "blockers_landed": 0,
+    "majors_landed": 0,
+    "minors_landed": 0,
+    "polish_deferred": 0,
+    "bump": null,
+    "convergent_silence_progress": "2 of 3"
+  }
+}

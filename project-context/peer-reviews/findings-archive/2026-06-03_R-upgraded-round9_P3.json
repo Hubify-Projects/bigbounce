@@ -1,0 +1,245 @@
+{
+  "round": "2026-06-03_R-upgraded-round9",
+  "paper": "P3",
+  "paper_tex": "pipelines/p3_anomaly_engine/paper3_draft.tex",
+  "paper_version": "v3.1.72",
+  "round_status": "7/5 EXTENDED (past exit gate, additional clean rounds)",
+  "vendors": ["gemini-2.5-pro", "gpt-4o(fallback-from-gpt-5)", "grok-4", "sonar-pro"],
+  "anthropic_excluded": true,
+  "openrouter_used": false,
+  "headline_verdict": "ZERO novel BLOCKERs. ZERO novel MAJORs. 4 polish-tier bib-hygiene VERIFIED. Convergent silence on real defects — cascaded-r-rounds exit signal met.",
+  "findings": [
+    {
+      "id": "PAPER-GEM-B1",
+      "reviewer": "gemini-2.5-pro",
+      "stated_class": "BLOCKER",
+      "topic": "alpha denominator methodology / bias of full anomaly sample",
+      "verdict": "STALE",
+      "evidence": "Methodology documented at L1005, L1076; angular-projection noise floor named in abstract; 3D xi(r) follow-up queued in pathc_caveats(e)(i)(j)",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GEM-B2",
+      "reviewer": "gemini-2.5-pro",
+      "stated_class": "BLOCKER",
+      "topic": "factor-of-80 sigma(fNL) contradiction",
+      "verdict": "FALSIFIED",
+      "evidence": "sigma_fNL=0.1 is the Heinrich+2024 SPHEREx EXTERNAL anchor; sigma_fNL=8.14 is this paper's internal Fisher forecast at alpha=0.19. Different surveys, different configurations. No contradiction.",
+      "closure_action": "optional: add inline 'external benchmark, not internal' tag at L501",
+      "patterns": ["pattern-external-vs-internal-anchor"]
+    },
+    {
+      "id": "PAPER-GEM-M1",
+      "reviewer": "gemini-2.5-pro",
+      "stated_class": "MAJOR",
+      "topic": "single-alpha applied to multi-bin Fisher",
+      "verdict": "STALE",
+      "evidence": "pathc_caveats(c) + Appendix sensitivity table alpha in [0.05, 0.50] already documents this. Abstract states zero-systematics assumption.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GEM-m1",
+      "reviewer": "gemini-2.5-pro",
+      "stated_class": "minor",
+      "topic": "NANOGrav framing wording",
+      "verdict": "OPINION",
+      "evidence": "Current text already cites >4sigma vs gamma=13/3 and ~1sigma vs matter-bounce.",
+      "closure_action": "none",
+      "patterns": ["pattern-style-as-blocker"]
+    },
+    {
+      "id": "PAPER-GPT-B1",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "linear-extrapolation values not fully retracted",
+      "verdict": "STALE",
+      "evidence": "Linear-extrapolation explicitly RETRACTED v3.1.52, reaffirmed v3.1.70 at L211, L478. Headline is 8.14 / [3.92, 8.98] positivity-respecting.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GPT-B2",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "5-fold CV held-out vs full-pool description",
+      "verdict": "STALE",
+      "evidence": "Closed v3.1.67 in pathc_caveats(g). Misleading held-out language already removed.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GPT-B3",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "388,493 vs 378,280 deduplication arithmetic",
+      "verdict": "STALE",
+      "evidence": "Closed v3.1.56 in pathc_caveats(a). Explicit 637 + 9,576 = 10,213 decomposition in sec:crossmatches.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GPT-B4",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "17.8% genuine novelty fraction emphasis",
+      "verdict": "STALE",
+      "evidence": "Abstract L501 + limitations L1076 already state '17.8% single-sample point estimate at top-1000 stratum' with explicit no-bound disclaimer 6+ times.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GPT-B5",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "conclusions retraction emphasis",
+      "verdict": "STALE",
+      "evidence": "Same as GPT-B1. Retraction explicit in body + caveats(j).",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GPT-B6",
+      "reviewer": "gpt-4o",
+      "stated_class": "BLOCKER",
+      "topic": "pathc_caveats lacks detail on Fisher positivity + NANOGrav Savage-Dickey",
+      "verdict": "STALE",
+      "evidence": "Caveats (d) and (i) already include full closure narrative with artifact paths (savage_dickey_2026-05-29.json; r43_4caveats_closure/result.json).",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GRO-B1",
+      "reviewer": "grok-4",
+      "stated_class": "BLOCKER",
+      "topic": "title 'largest-scale to date' framing",
+      "verdict": "FALSIFIED",
+      "evidence": "Abstract paragraph carries 141x/73x Liang 2023 like-for-like comparison in same paragraph as the claim (L501).",
+      "closure_action": "none",
+      "patterns": ["pattern-style-as-blocker"]
+    },
+    {
+      "id": "PAPER-GRO-B2",
+      "reviewer": "grok-4",
+      "stated_class": "BLOCKER",
+      "topic": "7.9% improvement framing as positive claim",
+      "verdict": "STALE",
+      "evidence": "'<1sigma from null' and 'not a detection claim' qualifier already in body 3+ times (L60, L501).",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GRO-M1",
+      "reviewer": "grok-4",
+      "stated_class": "MAJOR",
+      "topic": "17.8% as catalog property",
+      "verdict": "STALE",
+      "evidence": "Already corrected per GPT-B4 verdict; abstract framing is exactly the recommended fix.",
+      "closure_action": "none",
+      "patterns": ["pattern-stale-closure-reload"]
+    },
+    {
+      "id": "PAPER-GRO-M2",
+      "reviewer": "grok-4",
+      "stated_class": "MAJOR",
+      "topic": "gate-fail surveys still in headline 378,280",
+      "verdict": "OPINION",
+      "evidence": "Abstract L501 already names catalog-grade ~265,000 subset vs aggregate 378,280; LAMOST/Gaia/eROSITA exploratory tier called out explicitly.",
+      "closure_action": "none",
+      "patterns": ["pattern-style-as-blocker"]
+    },
+    {
+      "id": "PAPER-GRO-N1",
+      "reviewer": "grok-4",
+      "stated_class": "nit",
+      "topic": "reviewer-response comment block bloat",
+      "verdict": "OPINION",
+      "evidence": "Comment block is non-printing LaTeX (% lines); zero impact on rendered PDF. Move to appendix is style preference.",
+      "closure_action": "none",
+      "patterns": ["pattern-style-as-blocker"]
+    },
+    {
+      "id": "PAPER-PER-B1",
+      "reviewer": "sonar-pro",
+      "stated_class": "BLOCKER",
+      "topic": "NANOGrav Bayes-factor decisive language",
+      "verdict": "STALE",
+      "evidence": "Caveat (d) closure already documents prior-dependence + includes 2D analysis with conventional SMBHB amplitude prior. 'Decisive' is correct Jeffreys-scale terminology for log10 B = +3.85.",
+      "closure_action": "none",
+      "patterns": ["pattern-style-as-blocker"]
+    },
+    {
+      "id": "PAPER-PER-M1",
+      "reviewer": "sonar-pro",
+      "stated_class": "MAJOR",
+      "topic": "missing bibentries for Yoo2009 / Bonvin+Durrer 2011 / Challinor+Lewis 2011 / Di Dio+2013",
+      "verdict": "VERIFIED",
+      "evidence": "Inline named citations in pathc_caveats(e) lack confirmed .bib entries.",
+      "closure_action": "polish: add 4 bibentries in v3.1.73 chore commit",
+      "patterns": ["pattern-bib-hygiene-tail"]
+    },
+    {
+      "id": "PAPER-PER-M2",
+      "reviewer": "sonar-pro",
+      "stated_class": "MAJOR",
+      "topic": "Heinrich+2024 sigma_fNL=0.7 not table/figure-pointed",
+      "verdict": "STALE",
+      "evidence": "Heinrich+2024 = JCAP 2024 arXiv:2311.13082 documented at L138, L154. Adding exact table pointer is polish.",
+      "closure_action": "optional polish",
+      "patterns": ["pattern-bib-hygiene-tail"]
+    },
+    {
+      "id": "PAPER-PER-m1",
+      "reviewer": "sonar-pro",
+      "stated_class": "minor",
+      "topic": "Foreman-Mackey emcee bib title informal",
+      "verdict": "VERIFIED",
+      "evidence": "Bib entry can be sharpened with full 'emcee: The MCMC Hammer' title.",
+      "closure_action": "polish: bib update in v3.1.73 chore commit",
+      "patterns": ["pattern-bib-hygiene-tail"]
+    },
+    {
+      "id": "PAPER-PER-m2",
+      "reviewer": "sonar-pro",
+      "stated_class": "minor",
+      "topic": "Heinrich+2023 vs Heinrich+2024 label inconsistency",
+      "verdict": "VERIFIED",
+      "evidence": "Body and comment block alternate years for same JCAP 2024 paper.",
+      "closure_action": "polish: standardize to Heinrich+2024 in v3.1.73",
+      "patterns": ["pattern-bib-hygiene-tail"]
+    },
+    {
+      "id": "PAPER-PER-n1",
+      "reviewer": "sonar-pro",
+      "stated_class": "nit",
+      "topic": "Cai+2009 missing explicit arXiv:0903.0631",
+      "verdict": "VERIFIED",
+      "evidence": "Bib entry uses INSPIRE-style Cai:2009fn without arXiv ID.",
+      "closure_action": "polish: add arXiv:0903.0631 to bib entry in v3.1.73",
+      "patterns": ["pattern-bib-hygiene-tail"]
+    }
+  ],
+  "rollup": {
+    "blocker_stated": 11,
+    "blocker_after_audit": 0,
+    "major_stated": 5,
+    "major_after_audit": 0,
+    "minor_stated": 2,
+    "minor_after_audit": 0,
+    "verified_polish_bib": 4,
+    "stale": 13,
+    "falsified": 2,
+    "opinion": 5,
+    "out_of_scope": 0
+  },
+  "patterns_observed": [
+    "pattern-stale-closure-reload",
+    "pattern-external-vs-internal-anchor",
+    "pattern-bib-hygiene-tail",
+    "pattern-style-as-blocker"
+  ],
+  "exit_signal": "MET: convergent silence on novel defects; only polish-tier bib hygiene remains",
+  "recommendation": "No version bump required. Optional v3.1.73 bib-hygiene chore commit. Readiness held at 99% pending Houston sign-off; cascaded-r-rounds exit criteria met.",
+  "next_round": "Optional. R9 = clean for exit purposes."
+}
