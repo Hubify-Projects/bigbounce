@@ -32,7 +32,10 @@ Bounce-model agnostic. Goal: prove bounce cosmology beats ΛCDM + inflation, not
 
 ## Protocols → skills, not inline
 
-All recurring workflows are now skills. Discover via `~/.claude/skills/INDEX.md`. Read `AGENT_RULES.md` for the methodology bible.
+All recurring workflows are skills under `~/.claude/scipack/` (consolidated 2026-06-02).
+Discover via `~/.claude/scipack/INDEX.md` or `~/.claude/skills/INDEX.md`.
+Bigbounce-specific skills live at `~/.claude/scipack/astrostack/` (formerly in `bigbounce/.claude/skills/`).
+Read `AGENT_RULES.md` for the methodology bible.
 
 **Quick-pointer routing:**
 
@@ -79,7 +82,7 @@ Existing gstack skills that pair: `/latex-audit`, `/codex`, `/qa`, `/browse`, `/
 
 ## Standing directives (non-negotiable)
 
-All encoded as global skills in `~/.claude/skills/`:
+All encoded as global skills under `~/.claude/scipack/hubstack/infra/` (symlinked into `~/.claude/skills/`):
 
 - `/no-permission-loop` — never end with "want me to proceed?"
 - `/hardest-path-first` — lead with Path C, alternatives labeled weaker
