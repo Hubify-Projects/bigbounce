@@ -43,8 +43,22 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.40}
+\newcommand{\paperVersion}{v1B.0.41}
 \newcommand{\paperTimestamp}{2026-06-02 PDT}
+% v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
+%   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
+%      "R14 GEM-B1", "R7 GEM-B2+GPT-B4", "R2…GPT-M6") at body L900/L912/L1024/L1184/L1189.
+%      Double-miss from R3+R4 prose-only fixes — body-text inline codes now scrubbed.
+%   2. GEM-m2 (pattern-030): removed "without fine-tuning" claims at L1141 + L1328 that
+%      contradicted the v1B.0.40 fn:theta_backreaction θ_i~0.1 spectator-consistency
+%      caveat. Replaced with explicit disclosure that spectator-consistent regime
+%      requires ~25× misalignment tuning vs natural prior midpoint. Dovetails Grok-M2.
+%   3. GEM-m3 (dovetails Grok-M1): added explicit note at L1187+ that the
+%      spectator-consistent corner θ_i~0.1 demands C_aγ enhancement well above
+%      KSVZ/DFSZ O(1) benchmarks via the C_aγ·Δφ/f_a≈10.3 product.
+%   4. GEM-n1: Table II crosspaper caption updated — explicitly frozen Mid-May 2026
+%      snapshot for cross-paper-audit reproducibility, with live program tracked
+%      on the project site rather than re-bumped inside this table.
 % v1B.0.39 (2026-06-02 — R-upgraded-round3 4-vendor direct closure: 3 VERIFIED Gemini findings.
 %   Gemini-2.5-Pro produced the only non-stale BLOCKER/MAJOR/minor of the round.
 %   Grok / GPT-4o-fallback / Perplexity were all STALE / FALSIFIED / OPINION:
@@ -897,7 +911,7 @@ magnitude $M_B$ (which is correctly pulled toward the Riess value),
 but $H_0$ is determined predominantly by the BAO+CMB acoustic scale
 through Pantheon+, and the $\Delta\Neff$ extension lacks the degrees of
 freedom to shift $H_0$ enough to accommodate both data sets. This
-addresses R5 + R7 GEM-B1 + GPT-B1 reviewer concerns that the reported
+addresses earlier reviewer concerns that the reported
 67.68 was inconsistent with active SH0ES likelihood; the audit
 on-record at
 \texttt{shoes\_yaml\_audit.md} (under \texttt{reproducibility/\-cosmology/})
@@ -907,8 +921,8 @@ because the model cannot shift $H_0$ enough to satisfy both data sets
 simultaneously --- this is the canonical Hubble-tension result, not a
 YAML omission.
 \par
-\textit{M$_B$--H$_0$ joint-posterior offset check (R14 GEM-B1 truth-audit
-falsification).} R14 GEM-B1 argued that the joint posterior mean
+\textit{M$_B$--H$_0$ joint-posterior offset check.} An earlier truth-audit
+falsification argued that the joint posterior mean
 ($M_B = -19.263$, $H_0 = 67.69$) was inconsistent with an active
 \texttt{sn.pantheonplus} likelihood, claiming a Cobaya YAML alias
 failure. Direct arithmetic audit: \texttt{sn.pantheonplus} enforces a
@@ -1021,7 +1035,7 @@ pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
 $\Delta\hat\beta = 0.040^\circ$ at injection $\beta=0.342^\circ$
 ($\hat\beta=0.302^\circ$); the absolute bias scales mildly with injected
-amplitude (R7 GEM-B2 + GPT-B4: prior versions described the bias as
+amplitude (prior versions described the bias as
 strictly ``stable across all three injections'' at $0.032^\circ$, but the
 $0.342^\circ$ injection actually gives $0.040^\circ$, a relative $\sim 12\%$
 amplitude-dependent component). The deconvolution is therefore unbiased at the
@@ -1138,9 +1152,14 @@ spectator-consistency companion check.}
 The fiducial value $\beta\approx 0.27^\circ$ corresponds to the midpoint
 $m\approx 1.8\,H_0$, $\Delta\phi/f_a\approx 1.0$. The prediction spans
 $\beta\approx 0.17$--$0.43^\circ$ over $C_{a\gamma}\in[4,12]$, $m/H_0\in[1,3]$,
-$\theta_i\in[0.5,2]$, comfortably bracketing the observed value without fine-tuning
-of any single parameter (see Appendix~\ref{app:alp_priors} for the full ALP-MCMC
-sampled-parameter list, priors, and dataset-likelihood configuration).
+$\theta_i\in[0.5,2]$, comfortably bracketing the observed value across this
+photon-coupling / mass / misalignment envelope (see Appendix~\ref{app:alp_priors}
+for the full ALP-MCMC sampled-parameter list, priors, and dataset-likelihood
+configuration). The spectator-consistent corner of this envelope
+($\theta_i\sim 0.1$, per fn.~\ref{fn:theta_backreaction}) does require a
+$\sim 25\times$ tuning of the misalignment initial condition relative to the
+natural prior midpoint $\theta_i\sim 0.5$, so the model
+\textit{accommodates} the observed signal but is not free of misalignment-prior tuning.
 The range $[0.17,0.43]^\circ$ is obtained from a joint-trajectory scan over the
 \emph{coupled} $(C_{a\gamma}, m/H_0, \theta_i)$ space and not from an
 independent-extremes product (which would give the wider naive envelope
@@ -1181,12 +1200,19 @@ the upper end ($\sim 51$) requires either substantial UV-completion
 enhancement or a field displacement at the upper end of the
 $\Delta\phi/f_a\in[0.2,1.1]$ range. The signal is therefore accommodated
 across the considered parameter space rather than fine-tuned only at one
-benchmark, but the upper-coupling end is not generic. R2
-closure of an earlier reported product
+benchmark, but the upper-coupling end is not generic. We emphasize that the
+spectator-consistent corner $\theta_i\sim 0.1$ (fn.~\ref{fn:theta_backreaction})
+inflates the required photon-coupling further: at fixed $\beta=0.342^\circ$,
+$\Delta\phi/f_a\propto\theta_i$ along the underdamped trajectory, so a
+$5\times$ reduction in $\theta_i$ from the scan midpoint demands a
+correspondingly higher $C_{a\gamma}$ to hold the
+$C_{a\gamma}\,\Delta\phi/f_a\approx 10.3$ product, pushing the required
+enhancement well above standard KSVZ/DFSZ $\mathcal{O}(1)$ benchmarks. We previously
+closed an earlier reported product
 ``$C_{a\gamma}\times\theta_i = 3.4\pm 1.1$''
 that confused $\theta_i$ (initial misalignment) with $\Delta\phi/f_a$
 (integrated field-displacement) and was numerically inconsistent with
-$\beta = 0.342^\circ$ by a factor of $\sim 3$ (GPT-M6).
+$\beta = 0.342^\circ$ by a factor of $\sim 3$.
 Convergence: $\hat{R}-1 < 0.01$ for all runs.
 
 \textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta)
@@ -1208,8 +1234,15 @@ not uniquely predict it.
 \section{Cross-Paper Verification Status}\label{sec:crosspaper}
 
 \begin{table*}[tb]
-\caption{\label{tab:crosspaper} Cross-paper status table (Wave 14 / Mid-May 2026).
-DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current slow-mode-dominated state.}
+\caption{\label{tab:crosspaper} Cross-paper status table --- frozen Mid-May 2026
+snapshot (Wave 14). Versions and readiness percentages are intentionally pinned
+to the wave-14 cross-paper snapshot used by the companion-program audit so the
+P1(b) text remains a reproducible record of the cross-paper state at the time
+of submission of this companion; the live program continues to advance the
+per-paper versions (e.g.\ P1(b) is now post-v1B.0.40 in development), tracked
+on the project site rather than re-bumped inside this table.
+DESI DR2 cobaya chains: see Table~\ref{tab:mcmc_inventory} for current
+slow-mode-dominated state.}
 \begin{ruledtabular}
 \begin{tabular}{llcl}
 Paper & Version & Readiness & Key blocker \\
@@ -1325,7 +1358,9 @@ detection; the primary observational evidence for cosmic birefringence remains
 the published Planck/ACT~DR6 $2.4$--$2.9\sigma$ measurements.
 
 \textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
-is consistent with the published $3.6\sigma$ joint signal without fine-tuning
+is consistent with the published $3.6\sigma$ joint signal, with the caveat
+that the spectator-consistent regime $\theta_i\sim 0.1$ (fn.~\ref{fn:theta_backreaction})
+requires $\sim 25\times$ misalignment tuning relative to the natural prior midpoint
 ($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
 $\Delta\phi/f_a$ in the natural range $[0.2,1.1]$ giving $C_{a\gamma}$
 between $\sim 9$ and $\sim 51$; \S\ref{sec:birefringence_check} for the
