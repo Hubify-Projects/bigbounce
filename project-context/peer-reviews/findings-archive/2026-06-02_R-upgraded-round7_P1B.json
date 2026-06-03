@@ -1,0 +1,63 @@
+{
+  "round": "2026-06-02_R-upgraded-round7_P1B",
+  "paper": "P1B",
+  "paper_version_in": "v1B.0.41",
+  "paper_version_out": "v1B.0.41",
+  "version_bumped": false,
+  "cascaded_counter": "3/3 EXIT",
+  "exit_triggered": true,
+  "vendors": ["grok-4", "gpt-4o-fallback-from-gpt-5", "sonar-pro", "gemini-2.5-pro"],
+  "totals": {
+    "findings": 24,
+    "verified_real_action_landed": 0,
+    "stale": 16,
+    "falsified": 1,
+    "opinion": 6,
+    "oos": 1
+  },
+  "findings": [
+    {"id": "GRO-B1", "vendor": "grok-4", "class": "BLOCKER", "topic": "preamble audit log", "verdict": "STALE", "pattern_ids": ["014", "016"], "evidence": "%-comments not body prose; arXiv-tarball-stage strip; reflag from R3 GRO-B1."},
+    {"id": "GRO-B2", "vendor": "grok-4", "class": "MAJOR", "topic": "§6 spectator ALP null result framing", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1B.0.40 fn:theta_backreaction + L654 'Not a distinctive ECH prediction' already disclose."},
+    {"id": "GRO-B3", "vendor": "grok-4", "class": "MAJOR", "topic": "Table 2 σ without Bayes factor", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "fn:wcaveat + Table 1B 'ln B pending' already disclose."},
+    {"id": "GRO-B4", "vendor": "grok-4", "class": "minor", "topic": "section title rewording", "verdict": "OPINION", "pattern_ids": ["019"], "evidence": "Houston framing."},
+    {"id": "GRO-B5", "vendor": "grok-4", "class": "minor", "topic": "SNR abstract walk-back", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1B.0.30 removed SNR from body L268; only bias remains."},
+    {"id": "GRO-B6", "vendor": "grok-4", "class": "nit", "topic": "delete frozen cross-paper table", "verdict": "OPINION", "pattern_ids": [], "evidence": "v1B.0.41 GEM-n1 closure disclosed frozen Mid-May 2026 snapshot."},
+    {"id": "GPT-B1", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "ΔNeff Bayes factor", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Existing in-cell caveat; nested-sampling deferred per R4 GEM-n1 closure."},
+    {"id": "GPT-B2", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "NaMaster SNR vs sky detection", "verdict": "OOS", "pattern_ids": ["009"], "evidence": "P1B already states pipeline-recovery distinction in 4 locations."},
+    {"id": "GPT-B3", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "ALP fine-tuning disclosure", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "v1B.0.41 GEM-m2 closure disclosed ~25× misalignment tuning."},
+    {"id": "GPT-B4", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "C_aγ non-minimal benchmarks", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "v1B.0.41 GEM-m3 L1191-1204 disclosed non-minimal model-building."},
+    {"id": "GPT-B5", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "nested-sampling deferral", "verdict": "STALE", "pattern_ids": ["009", "016"], "evidence": "Deferral already disclosed in fn:wcaveat and Table 1B."},
+    {"id": "GPT-B6", "vendor": "gpt-4o-fallback-from-gpt-5", "class": "BLOCKER", "topic": "error-propagation explanation", "verdict": "OPINION", "pattern_ids": ["009"], "evidence": "Non-actionable generic methodology request."},
+    {"id": "PER-B1", "vendor": "sonar-pro", "class": "BLOCKER", "topic": "Liu et al. ECTorsionDESI2025 confab", "verdict": "STALE", "pattern_ids": ["001", "012"], "evidence": "references.bib L574 canonical entry; 6th-time reflag."},
+    {"id": "PER-M1", "vendor": "sonar-pro", "class": "MAJOR", "topic": "Eskilt PR4 → PR3 reversion", "verdict": "FALSIFIED", "pattern_ids": ["013", "030"], "evidence": "8TH-TIME-IN-A-ROW; LilleJohs reproduction code uses PR4/NPIPE; pattern-013 hardened auto-FALSIFY fires; v1B.0.40 fn:eskilt_pr3_pr4 (L584-594) already discloses split."},
+    {"id": "PER-M2", "vendor": "sonar-pro", "class": "MAJOR", "topic": "DiegoPalazuelos2025 not real", "verdict": "STALE", "pattern_ids": ["001", "012"], "evidence": "references.bib L444-466 canonical entry; 6th-time reflag."},
+    {"id": "PER-M3", "vendor": "sonar-pro", "class": "MAJOR", "topic": "Fujita2021 'previously studied' wording", "verdict": "OPINION", "pattern_ids": [], "evidence": "L1105 softening adequate."},
+    {"id": "PER-m1", "vendor": "sonar-pro", "class": "minor", "topic": "β provenance footnotes", "verdict": "OPINION", "pattern_ids": [], "evidence": "Values match cited papers; provenance adequate."},
+    {"id": "PER-n1", "vendor": "sonar-pro", "class": "nit", "topic": "Golden2026P2-P4 in prep", "verdict": "STALE", "pattern_ids": ["012"], "evidence": "Companion-paper cross-cites intentional per v1B.0.34 PER-B6."},
+    {"id": "GEM-B1", "vendor": "gemini-2.5-pro", "class": "BLOCKER", "topic": "θ_i prior in non-spectator regime", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "v1B.0.40 fn:theta_backreaction + v1B.0.41 GEM-m2 closure disclosed ~25× misalignment tuning."},
+    {"id": "GEM-M1", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "'natural parameters' overstatement", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "L1191-1204 explicit non-minimal C_aγ ∈ [9,51] outside KSVZ/DFSZ disclosure (v1B.0.41 GEM-m3 closure)."},
+    {"id": "GEM-M2", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "quintom no-go narrative contradiction", "verdict": "OPINION", "pattern_ids": [], "evidence": "Houston framing; positive-result contextualization belongs to P1A."},
+    {"id": "GEM-M3", "vendor": "gemini-2.5-pro", "class": "MAJOR", "topic": "Holst-ALP heuristic motivation overclaim", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "App C 'heuristic' qualifier in place; L1228+L1481 read as heuristic not derivation."},
+    {"id": "GEM-m1", "vendor": "gemini-2.5-pro", "class": "minor", "topic": "EFT bounce-particle-production clarification", "verdict": "OPINION", "pattern_ids": [], "evidence": "Readable to non-confused reader; nit."},
+    {"id": "GEM-m2", "vendor": "gemini-2.5-pro", "class": "minor", "topic": "NaMaster α/β separation caveat", "verdict": "STALE", "pattern_ids": ["016"], "evidence": "Commander-map caveat already noted in pipeline-validation framing."}
+  ],
+  "pattern_hits": {
+    "001_perplexity_confab": 3,
+    "009_gpt4o_fallback_low_rigor": 6,
+    "010_convergent_silence_trending": 1,
+    "012_perplexity_recent_arxiv_miss": 3,
+    "013_perplexity_counter_wrong_HARDENED": 1,
+    "014_review_log_in_comments": 1,
+    "016_wide_net_exit_reflag": 9,
+    "030_round_to_round_regression_drift": 1,
+    "031_self_review_optimism_bias": 0
+  },
+  "exit_criteria": {
+    "novel_blockers": 0,
+    "prior_round_regressions": 0,
+    "polish_majors_max": 0,
+    "exit_triggered": true,
+    "note": "0 VERIFIED across R5/R6/R7 on v1B.0.41 (with v1B.0.40 PR4/NPIPE + ~25× tuning + C_aγ non-minimal closures). Cascaded R-round closed."
+  },
+  "houston_facing_readiness_recommendation": "Lift floor 88-90% → 92-94%; remain under 95% cap until Houston sign-off + clean post-arXiv external reviewer round."
+}
