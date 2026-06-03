@@ -1,0 +1,128 @@
+{
+  "round_id": "2026-06-02_R-upgraded-round3_P4",
+  "date": "2026-06-02",
+  "paper": "P4",
+  "paper_version_reviewed": "v1.0.147",
+  "paper_version_after_closures": "v1.0.148",
+  "vendors": ["grok-4", "gpt-4o-fallback-from-gpt-5", "perplexity-sonar-pro", "gemini-2.5-pro"],
+  "findings": [
+    {
+      "id": "PAPER-PER-B1",
+      "vendor": "perplexity-sonar-pro",
+      "class": "MAJOR",
+      "topic": "Motloch bibitem: wrong arXiv ID + fused description",
+      "verdict": "VERIFIED",
+      "patterns": ["pattern-001-citation-attribution-fusion", "pattern-016-arxiv-id-fusion-candidate", "pattern-002-bibitem-author-incomplete"],
+      "evidence": "Bibitem (line 4458) had arXiv:2003.04325 = chiral plasma paper (Cartwright). Actual Motloch et al. 2021 Nature Astron 5, 283 = arXiv:2003.04800. Authors were Motloch, Yu, Pen, Xie (not just Motloch & Pen). Description fused BOSS/2MRS; actual paper uses SDSS-only initial-condition reconstruction.",
+      "closure_status": "closed-by-real-action",
+      "closure_artifact": "pipelines/p2_chirality/chirality_catalog_paper.tex lines 2740-2747, 4456-4458",
+      "closure_commit_sha": "pending-restamp"
+    },
+    {
+      "id": "PAPER-PER-B2",
+      "vendor": "perplexity-sonar-pro",
+      "class": "MAJOR",
+      "topic": "CE-ResNet training labels overspecified as 'GZ1 + bot-validated'",
+      "verdict": "VERIFIED",
+      "patterns": ["pattern-003-third-party-label-provenance-overclaim"],
+      "evidence": "Jia et al. 2023 (arXiv:2210.04168) describe training on GZ1 labels only. 'bot-validated' is not a term used by Jia et al.",
+      "closure_status": "closed-by-real-action",
+      "closure_artifact": "pipelines/p2_chirality/chirality_catalog_paper.tex line 2672",
+      "closure_commit_sha": "pending-restamp"
+    },
+    {
+      "id": "PAPER-PER-b3",
+      "vendor": "perplexity-sonar-pro",
+      "class": "minor",
+      "topic": "Walmsley 'featured' vs spiral",
+      "verdict": "VERIFIED-minor-framing",
+      "closure_status": "deferred-genuine",
+      "rationale": "Surrounding text already qualifies; cosmetic only."
+    },
+    {
+      "id": "PAPER-PER-b4",
+      "vendor": "perplexity-sonar-pro",
+      "class": "minor",
+      "topic": "Motloch significance 2σ vs 2.7σ",
+      "verdict": "VERIFIED",
+      "patterns": ["pattern-004-third-party-significance-rounding"],
+      "evidence": "Motloch et al. abstract reports ~2.7σ; .tex said ~2σ.",
+      "closure_status": "closed-by-real-action",
+      "closure_artifact": "pipelines/p2_chirality/chirality_catalog_paper.tex line 2741",
+      "closure_commit_sha": "pending-restamp"
+    },
+    {
+      "id": "PAPER-PER-n1",
+      "vendor": "perplexity-sonar-pro",
+      "class": "nit",
+      "topic": "Dual Shamir:2022 / Shamir:2022DESI bib keys",
+      "verdict": "STALE",
+      "evidence": "Bib already has explicit disambiguation comment (lines 4372-4373).",
+      "closure_status": "closed-by-truth-audit-falsification"
+    },
+    {
+      "id": "PAPER-PER-n2",
+      "vendor": "perplexity-sonar-pro",
+      "class": "nit",
+      "verdict": "OPINION",
+      "closure_status": "declined"
+    },
+    {
+      "id": "PAPER-GPT-B1",
+      "vendor": "gpt-4o-fallback",
+      "class": "B",
+      "topic": "0.29% sensitivity floor vs 0.75% injection threshold",
+      "verdict": "STALE",
+      "evidence": ".tex lines 88, 202-203 already label 0.29% as statistical Fisher floor and 0.75% as empirical 50%-recovery-3σ threshold.",
+      "closure_status": "closed-by-truth-audit-falsification"
+    },
+    {"id": "PAPER-GPT-B2", "class": "B", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GPT-B3", "class": "B", "verdict": "DUPLICATE-of-GEM-M1", "closure_status": "merged"},
+    {"id": "PAPER-GPT-B4", "class": "B", "verdict": "STALE", "closure_status": "closed-by-artifact-verification"},
+    {"id": "PAPER-GPT-B5", "class": "B", "verdict": "OUT-OF-SCOPE", "closure_status": "declined", "evidence": "Like-for-like Shamir reanalysis explicitly scoped-out in abstract + §9.1."},
+    {"id": "PAPER-GPT-B6", "class": "B", "verdict": "STALE", "closure_status": "closed-by-truth-audit-falsification", "evidence": "Falsification criterion stated at line 88: 5σ + ≥0.75%."},
+    {
+      "id": "PAPER-GEM-M1",
+      "vendor": "gemini-2.5-pro",
+      "class": "MAJOR",
+      "topic": "+3.64σ residual lacks generative-model regression",
+      "verdict": "OPINION",
+      "closure_status": "deferred-genuine",
+      "rationale": "Reviewer asks for positive template (depth/PSF) regression. Paper argues elimination + decomposition. Legitimate methodological preference, not error. Template regression queued as follow-up."
+    },
+    {
+      "id": "PAPER-GEM-M2",
+      "vendor": "gemini-2.5-pro",
+      "class": "MAJOR",
+      "topic": "Multi-σ reconciliation across estimators/nulls",
+      "verdict": "OPINION",
+      "closure_status": "deferred-genuine",
+      "rationale": "Footnote 15 + Table XI reconcile already. Unified null-definitions table is clarity improvement, not defect. Queued v1.0.149+."
+    },
+    {"id": "PAPER-GEM-m1", "class": "minor", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GEM-m2", "class": "minor", "verdict": "VERIFIED-already-disclosed", "closure_status": "declined", "evidence": "Hold-out size limitation acknowledged in §3.E."},
+    {"id": "PAPER-GEM-m3", "class": "minor", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GEM-m4", "class": "minor", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GRO-M1", "class": "minor-style", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GRO-M2", "class": "minor-style", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GRO-N1", "class": "nit", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GRO-N2", "class": "nit", "verdict": "OPINION", "closure_status": "declined"},
+    {"id": "PAPER-GRO-N3", "class": "nit", "verdict": "OPINION", "closure_status": "declined"}
+  ],
+  "counter": {
+    "verified_on_v1_0_147": 3,
+    "stale": 4,
+    "opinion": 11,
+    "out_of_scope": 1,
+    "blockers": 0,
+    "majors_after_closure": 0,
+    "real_action_closures_in_v1_0_148": 4
+  },
+  "pattern_mining_candidates": [
+    {
+      "id": "pattern-016-arxiv-id-fusion",
+      "frequency_threshold_met": false,
+      "description": "Bibitem arXiv ID swapped to unrelated paper (e.g., 2003.04325 → 2003.04800). Often co-occurs with description fusion."
+    }
+  ]
+}

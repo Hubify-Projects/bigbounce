@@ -1,0 +1,53 @@
+{
+  "round_label": "2026-06-02_R-upgraded-round3",
+  "date": "2026-06-02",
+  "round_type": "direct-vendor 4-reviewer (P3-only, post-postretro cascaded round)",
+  "vendor_convergence": "4-of-4 silence (second consecutive 4-clean round for P3)",
+  "papers": {
+    "P3": {
+      "version_at_time_of_review": "v3.1.72",
+      "closure_version": null,
+      "version_bump": false,
+      "reviewers": {
+        "Grok_brutal": [
+          {"finding_id": "GRO-Finding1", "raw_classification": "BLOCKER", "summary": "Title/abstract 'largest-scale ... to date' + 'first multi-survey' overclaim", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [5, 19], "closure_action": "no action (abstract qualifies with 141x/73x ratios; preamble GRO-B2 marks STALE since v3.1.45)", "closed_in_version": null},
+          {"finding_id": "GRO-Finding2", "raw_classification": "BLOCKER", "summary": "f_NL = 8.14 used as deliverable despite <1sigma from null", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (abstract explicitly states 'consistent with no improvement at <1sigma'; pathc_caveats (i)/(j) carry positivity envelope)", "closed_in_version": null},
+          {"finding_id": "GRO-Finding3", "raw_classification": "MAJOR", "summary": "~4000 lines of review-audit meta-commentary in source", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [14], "closure_action": "no action (LaTeX %-comments do not render in PDF body; reviewer reading source not manuscript)", "closed_in_version": null},
+          {"finding_id": "GRO-Finding4", "raw_classification": "MAJOR", "summary": "17.8% genuine novelty single-sample point estimate as headline", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (abstract explicitly: 'single-sample point estimate ... full-catalog rate empirically untested ... converse equally plausible'; sec:simbad L904 documents this)", "closed_in_version": null},
+          {"finding_id": "GRO-Finding5", "raw_classification": "minor", "summary": "Path-C presented as methodology advance vs damage control", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (sec:pathc already frames as remediation after cross-transfer failure)", "closed_in_version": null},
+          {"finding_id": "GRO-Finding6", "raw_classification": "nit", "summary": "Persistent 'decisive' Jeffreys-scale language for 1D Bayes factors", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (preamble L85-L90 documents log10 B > 2 IS decisive; 2D result already 'strong' not 'decisive' at L1046)", "closed_in_version": null}
+        ],
+        "GPT_methodology": [
+          {"finding_id": "PAPER-GPT-B1", "raw_classification": "BLOCKER", "summary": "Anomaly score Eq.(2) inconsistently applied across surveys", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (Eq.(2) is canonical; per-survey thresholds disclosed in Table 1 caption + footnotes)", "closed_in_version": null},
+          {"finding_id": "PAPER-GPT-B2", "raw_classification": "BLOCKER", "summary": "sigma_fNL 7.9% improvement statistical significance overstated", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (identical to GRO Finding 2; abstract explicitly <1sigma)", "closed_in_version": null},
+          {"finding_id": "PAPER-GPT-B3", "raw_classification": "BLOCKER", "summary": "SIMBAD-unmatched fraction overstates novelty without alternative metric", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (sec:simbad L904 introduces 'genuine novelty fraction' against NED+VizieR+20 catalogs as primary metric)", "closed_in_version": null},
+          {"finding_id": "PAPER-GPT-B4", "raw_classification": "BLOCKER", "summary": "LAMOST training-bias lesson lacks concrete forward path", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (sec:lamost_lesson provides methodological lesson; gate criteria in pathc)", "closed_in_version": null},
+          {"finding_id": "PAPER-GPT-B5", "raw_classification": "BLOCKER", "summary": "Path-C 6-step methodology too complex", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (editorial preference)", "closed_in_version": null},
+          {"finding_id": "PAPER-GPT-B6", "raw_classification": "BLOCKER", "summary": "Survey-by-survey reporting inconsistency", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (editorial preference)", "closed_in_version": null}
+        ],
+        "Perplexity_citations": [
+          {"finding_id": "PAPER-PER-B1", "raw_classification": "MAJOR (self-labeled B1)", "summary": "Phinney 2001 missing Caltech tech report ID", "truth_audit_verdict": "STALE_OPINION", "pattern_ids": [1], "closure_action": "no action (arXiv ID + title correct; tech-report ID is polish)", "closed_in_version": null},
+          {"finding_id": "PAPER-PER-m1", "raw_classification": "minor", "summary": "Heinrich 2023 vs 2024 label inconsistency for arXiv:2311.13082", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (preamble L141 confirms Heinrich2023 = JCAP 2024 verified; stylistic nit)", "closed_in_version": null},
+          {"finding_id": "PAPER-PER-m2", "raw_classification": "minor", "summary": "NANOGrav Zenodo KDE not separate bib entry", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (Zenodo DOI cited inline at L1046; separate entry is polish)", "closed_in_version": null},
+          {"finding_id": "PAPER-PER-n1", "raw_classification": "nit", "summary": "SPHEREx-class vs Dore 2014 concept-paper distinction", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (Dore 2014 standard literature usage)", "closed_in_version": null},
+          {"finding_id": "PAPER-PER-n2", "raw_classification": "nit", "summary": "Munchmeyer kSZ qualifier missing", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (intro L520 already labels as SPHEREx-class consensus)", "closed_in_version": null},
+          {"finding_id": "PAPER-PER-n3", "raw_classification": "nit", "summary": "Afzal 2023 title not exact-match published", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (faithful paraphrase; arXiv/journal match holds)", "closed_in_version": null}
+        ],
+        "Gemini25Pro_cosmology": [
+          {"finding_id": "PAPER-GEM-M1", "raw_classification": "MAJOR (self-downgraded from prior BLOCKER)", "summary": "alpha bias enhancement extrapolation to z>0.8 not formally valid", "truth_audit_verdict": "OPINION", "pattern_ids": [5, 9], "closure_action": "no action (abstract explicitly discloses angular-averaged measurement + 95% CI [-1.08, 1.46] crossing zero; reviewer's own text: 'commendably discloses this mismatch')", "closed_in_version": null},
+          {"finding_id": "PAPER-GEM-m1", "raw_classification": "minor", "summary": "Parameter-shift Delta-chi^2 paragraph kept alongside Savage-Dickey", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (L1044 explicitly retracts 1D ratio; keeping both for pedagogical clarity is editorial)", "closed_in_version": null}
+        ]
+      },
+      "summary": {
+        "total_findings": 18,
+        "verified_actionable": 0,
+        "stale_or_opinion": 18,
+        "vendors_silent": 4,
+        "vendors_total": 4,
+        "convergence": "4-clean (second consecutive)",
+        "version_bump": false,
+        "exit_status": "P3 v3.1.72 stands; cascaded counter = 2 consecutive 4-clean; needs 3 more for 5-clean exit"
+      }
+    }
+  }
+}

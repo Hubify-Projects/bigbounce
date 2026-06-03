@@ -51,7 +51,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.147}
+\newcommand{\paperVersion}{v1.0.148}
 \newcommand{\paperTimestamp}{June 2, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for full revision history.}
 
@@ -2669,7 +2669,7 @@ Flip-swap correlation & 1.000 (by construction) & 0.833 raw $\rightarrow$ 1.000 
 \NS{} class & No (CW/CCW only) & Yes (3-class output) \\
 Survey & DESI Legacy pre-imaging & DESI Legacy DR8 \\
 Sample size & $1{,}953{,}246$ classified & $8{,}474{,}531$ classified; $3{,}201{,}160$ spirals \\
-Training labels & GZ1 + bot-validated & GZ1 (6.6k) + CE-ResNet (17.2k) + synth (2k) \\
+Training labels & GZ1 (per Jia~\etal~2023) & GZ1 (6.6k) + CE-ResNet (17.2k) + synth (2k) \\
 Independent GZ1 agreement & Not separately reported & $69.91\%$ (Cohen's $\kappa=0.40$), 234,282 disjoint matches \\
 Bias audit & Not separately documented & 8-test suite (Sec.~\ref{sec:bias}) \\
 Rotational equivariance & Not separately tested & $Z_2$ only; $D_4$ deferred (Sec.~\ref{sec:tta}) \\
@@ -2737,14 +2737,14 @@ remains a genuine open data gap.
 \subsection{Motloch \& Pen (2021)}
 \label{sec:motloch}
 
-Motloch \& Pen~\cite{Motloch:2021} report a marginal
-($\sim\!2\sigmaunit$) correlation between inferred galaxy
-spin directions and the large-scale tidal field, using SDSS
-spirals with spin-direction estimates from SDSS imaging and
-large-scale tidal-field reconstructions from spectroscopic
-surveys (BOSS / 2MRS); the DESI Legacy classifier pipeline
+Motloch \etal~\cite{Motloch:2021} report a marginal
+($\sim\!2.7\sigmaunit$) correlation between observed galaxy
+angular-momentum directions and predictions from the initial
+density field reconstructed from SDSS galaxy positions (linking
+spin orientations to the tidal-torque-theory prediction from
+initial conditions); the DESI Legacy classifier pipeline
 used in the present work is independent of, and methodologically
-distinct from, the Motloch \& Pen estimator.
+distinct from, the Motloch \etal{} estimator.
 They interpret their signal in the linear-theory framework of
 \cite{Yu:2020}.
 Independent quantification of measurable reading-direction
@@ -4453,9 +4453,9 @@ DOI:10.1088/0004-637X/790/2/87.
 % SpArcFiRe / ApJ 790, 87 paper.
 
 \bibitem{Motloch:2021}
-P.~Motloch and U.-L.~Pen,
+P.~Motloch, H.-R.~Yu, U.-L.~Pen, and Y.~Xie,
 ``An observed correlation between galaxy spins and initial conditions,''
-Nature Astron.\ \textbf{5}, 283 (2021), arXiv:2003.04325.
+Nature Astron.\ \textbf{5}, 283 (2021), arXiv:2003.04800.
 
 \bibitem{LueWangKamionkowski:1999}
 A.~Lue, L.-M.~Wang, and M.~Kamionkowski,

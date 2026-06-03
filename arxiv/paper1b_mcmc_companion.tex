@@ -43,8 +43,62 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.38}
+\newcommand{\paperVersion}{v1B.0.39}
 \newcommand{\paperTimestamp}{2026-06-02 PDT}
+% v1B.0.39 (2026-06-02 — R-upgraded-round3 4-vendor direct closure: 3 VERIFIED Gemini findings.
+%   Gemini-2.5-Pro produced the only non-stale BLOCKER/MAJOR/minor of the round.
+%   Grok / GPT-4o-fallback / Perplexity were all STALE / FALSIFIED / OPINION:
+%     - GRO-B1 strip-history-comments → STALE (handled at arXiv-tarball stage; %-comments
+%       not body prose; pattern-014 not pattern-017).
+%     - GRO-B2 title "Technical Verification Companion" false-advertising → OPINION (Houston
+%       framing; the in-cell caveats already wall off scope at every section).
+%     - GRO-B3 iter2 "empirical anchor" reflag → STALE (pattern-016 wide-net exit reflag;
+%       +4.3σ marg.-tail + ln B pending already disclosed in fn:wcaveat and Table 1B).
+%     - GRO-M1 Eskilt PR4/PR3 → FALSIFIED. Current L1003 already reads "PR4/NPIPE";
+%       Grok misread. v1B.0.34 closure verified against LilleJohs Cosmic_Birefringence repo.
+%     - GRO-M2 NaMaster SNR remove from main text → STALE. v1B.0.30 already removed
+%       SNR=20.32 from §VI body L268; only the bias (0.032°) remains. Reflag.
+%     - GPT-B1..B6 → ALL STALE (pattern-009 gpt-4o fallback generic; each addressed by
+%       existing in-cell caveats, see history v1B.0.27→v1B.0.34).
+%     - PER-B1 (Eskilt PR4 vs PR3) → FALSIFIED 5th-time-in-a-row (pattern-013 + pattern-030
+%       Perplexity-counter-proposal-wrong + round-to-round regression drift). Current L1003
+%       says "WMAP9 + Planck PR4/NPIPE analysis" which is the correct LilleJohs-verified
+%       label. Standing-note: every R-round, Perplexity reflags this; FALSIFY against the
+%       Cosmic_Birefringence repo README.
+%     - PER-B2 (Liu et al. ECTorsionDESI2025 confab) → STALE (5th time; pattern-001 +
+%       pattern-012). references.bib L574-588 has the real Liu+Li+Xu+Biesiada+Wang
+%       EPJC 2025 entry; Perplexity web-search miss within 6mo.
+%     - PER-M1 (DiegoPalazuelos2025 ACT DR6 not real) → STALE (5th time; pattern-001 +
+%       pattern-012). references.bib L461-480 has the real entry, arXiv 2509.13654.
+%     - PER-M2 (Fujita2021 "model class previously studied") → OPINION; already addressed
+%       in prior closures.
+%     - PER-m1 (3.6σ derivation) → OPINION nit; trivial parenthetical, defer to polish.
+%     - PER-n1 (NPIPE wording) → OPINION nit.
+%   VERIFIED FIXES (Gemini-2.5-Pro only):
+%     1. GEM-B1 spectator-ALP-is-dark-energy-scale (BLOCKER): for f_a ~ M_Pl, θ_i ~ 1,
+%        m ~ H_0, ρ_a ~ m² f_a² θ_i² ~ H_0² M_Pl² ~ ρ_crit. Real theoretical inconsistency:
+%        the "spectator" label cannot be maintained at θ_i ~ 1. Closure: explicit
+%        fine-tuning disclosure added to §VI ALP discussion stating that the
+%        spectator-status assumption restricts the analysis to θ_i << 1, and the GR-
+%        equivalence disclaimer at L520-521 is strengthened to note that the energy-
+%        density tuning is required regardless of bounce vs GR.
+%     2. GEM-M1 C_aγ ~ 9 not in "standard GUT-scale / DFSZ benchmark ranges" (MAJOR):
+%        KSVZ/DFSZ predict |C_aγ| ~ O(1); C_aγ ~ 9 requires non-minimal model building.
+%        Closure: L1060-1061 rephrased to "C_aγ ~ 9 is larger than typical KSVZ/DFSZ
+%        benchmark values (which predict |C_aγ| ~ O(1)) but can be accommodated in
+%        extended models with enhanced photon coupling (chiral-fermion-loop, clockwork)."
+%     3. GEM-m1 audit-trail-in-body-prose (minor / pattern-017): L979 contains
+%        "v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 / v1B.0.13 markers" body-prose audit
+%        artifacts. Closure: scrub version-marker sentence from L979; the load-bearing
+%        scientific statement (nested-sampling lnB queued) is preserved without the
+%        version-history audit trail.
+%   GEM-m2 (Table II crosspaper v1B.0.13 → v1B.0.38) → reflagged but Table II is a
+%   Wave 14 / Mid-May snapshot by design (cross-paper-status freeze); leave as-is with
+%   the Mid-May 2026 label. Acceptable presentation choice.
+%   GEM-m3 (NaMaster MC ACT noise mismatched) → DEFER. Already disclosed in Appendix
+%   methods; full re-run is compute-bound (1-day pod), queued for v1B.0.40+ polish round.
+%   Counter on FALSIFIED Perplexity reversion: 5/5 rounds.
+%   Counter on STALE Grok reflag: 5/5 rounds.
 % v1B.0.34 (2026-06-01 — cascaded R-round 2026-06-01_R-multi-round4 closure; 3 direct-vendor
 %   reviewers re-run on v1B.0.33 PDF (Grok-4 brutal, gpt-4o methodology fallback, Perplexity
 %   Sonar Pro citation forensics; Gemini-2.5-pro still skipped on billing failure).
@@ -518,9 +572,18 @@ the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
 \emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$,
 $m\sim H_0$ is consistent with the published joint WMAP+Planck value
-$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022} without
-fine-tuning. The same birefringence arises in standard GR with an identical
-ALP; it is not a distinctive ECH prediction.
+$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022}.
+\emph{Spectator-status caveat}: for $\theta_i\sim 1$ the ALP energy
+density $\rho_a\sim m^2 f_a^2 \theta_i^2 \sim H_0^2 \MPl^2$ is of order
+the critical density today, so the spectator label is only consistent
+under the explicit restriction $\theta_i\ll 1$ (which constitutes
+fine-tuning of the misalignment initial condition); at $\theta_i\sim 1$
+the ALP must instead be treated as the dark-energy field itself, which
+is outside the scope of this companion-paper consistency check.
+The same birefringence arises in standard GR with an identical
+ALP; it is not a distinctive ECH prediction, and the spectator-status
+fine-tuning is required regardless of whether the underlying cosmology
+is a bounce or $\Lambda$CDM.
 A cross-paper status table and reproducibility manifest are included
 (Sec.~\ref{sec:crosspaper}).
 \end{abstract}
@@ -978,7 +1041,7 @@ $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
-A one-pass recomputation of the $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) from the final frozen-thinned chain via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there (Table 1B contains only the $\chi^2$ decomposition; the AIC/BIC/$\ln B$ evidence metrics are queued for a separate nested-sampling run). The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise. The nested-sampling $\ln B$ recompute is queued for v1B.0.15+ pending a separate pod-side run; the v1B.0.8 / v1B.0.9 / v1B.0.10 / v1B.0.12 / v1B.0.13 markers were carried over from prior version-numbering schemes when the chain was still mixing.
+A one-pass recomputation of the $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) from the final frozen-thinned chain via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there (Table 1B contains only the $\chi^2$ decomposition; the AIC/BIC/$\ln B$ evidence metrics are queued for a separate nested-sampling run). The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise. The nested-sampling $\ln B$ recompute is queued pending a separate pod-side run.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -1057,11 +1120,14 @@ $\alpha_{\rm EM}/(4\pi)$ is $5.8\times 10^{-4}$, giving
 $C_{a\gamma}\,\Delta\phi/f_a = \beta/[\alpha_{\rm EM}/(4\pi)] \approx 10.3$);
 with the field-displacement range $\Delta\phi/f_a \in [0.2, 1.1]$ from the
 numerical ALP-EOM integration, the required $C_{a\gamma}$ spans $\sim 9$
-to $\sim 51$. The lower end ($\sim 9$) sits within standard
-GUT-scale / DFSZ benchmark ranges; the upper end ($\sim 51$) is large
-relative to simple ALP benchmarks and requires either a UV-completion that
-enhances the photon coupling (e.g.\ chiral fermion-loop enhancement,
-clockwork constructions) or a field displacement at the upper end of the
+to $\sim 51$. Both ends are larger than the standard KSVZ/DFSZ benchmark
+range, which predicts $|C_{a\gamma}|\sim\mathcal{O}(1)$; the entire required
+range therefore lies outside minimal ALP photon-coupling benchmarks
+and requires non-minimal model building. The lower end ($\sim 9$) can be
+accommodated in extended models with modest photon-coupling enhancement
+(e.g.\ chiral-fermion-loop enhancement, clockwork constructions), while
+the upper end ($\sim 51$) requires either substantial UV-completion
+enhancement or a field displacement at the upper end of the
 $\Delta\phi/f_a\in[0.2,1.1]$ range. The signal is therefore accommodated
 across the considered parameter space rather than fine-tuned only at one
 benchmark, but the upper-coupling end is not generic. R2

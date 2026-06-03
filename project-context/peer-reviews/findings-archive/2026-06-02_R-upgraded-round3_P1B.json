@@ -1,0 +1,194 @@
+{
+  "round_id": "2026-06-02_R-upgraded-round3_P1B",
+  "paper": "P1B",
+  "version_in": "v1B.0.38",
+  "version_out": "v1B.0.39",
+  "vendors": ["grok-4", "gpt-4o-fallback-from-gpt-5", "sonar-pro", "gemini-2.5-pro"],
+  "catalog_version": "34-patterns",
+  "findings": [
+    {
+      "id": "P1B-GRO-B1",
+      "reviewer": "grok-4",
+      "classification": "BLOCKER",
+      "claim": "Strip 200+ lines of version-history comments before arXiv bundle",
+      "verdict": "STALE-OPINION",
+      "pattern_ids": ["014"],
+      "evidence": "%-comments not body prose; arXiv-tarball stage strips per established protocol",
+      "closure": "deferred-to-arxiv-tarball-stage"
+    },
+    {
+      "id": "P1B-GRO-B2",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "Title 'Technical Verification Companion' is false-advertising",
+      "verdict": "OPINION",
+      "pattern_ids": ["019"],
+      "evidence": "In-cell caveats wall off ECH-scope at every section; Houston framing",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GRO-B3",
+      "reviewer": "grok-4",
+      "classification": "MAJOR",
+      "claim": "Iter2 as 'empirical anchor' for Paper I(a) without lnB",
+      "verdict": "STALE",
+      "pattern_ids": ["016"],
+      "evidence": "fn:wcaveat + Table 1B already disclose +4.3σ marg.-tail + lnB pending",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-GRO-M1",
+      "reviewer": "grok-4",
+      "classification": "minor",
+      "claim": "Eskilt label says PR4/NPIPE should be PR3",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["013", "030"],
+      "evidence": "Current L1003 reads 'PR4/NPIPE' which is the correct LilleJohs-verified label",
+      "closure": "no-action-falsified"
+    },
+    {
+      "id": "P1B-GRO-M2",
+      "reviewer": "grok-4",
+      "classification": "minor",
+      "claim": "Remove NaMaster SNR=20.32/25.71 from main text",
+      "verdict": "STALE",
+      "pattern_ids": ["016", "030"],
+      "evidence": "v1B.0.30 already removed; §VI body L268 has only bias 0.032-0.040°",
+      "closure": "no-action-already-fixed"
+    },
+    {
+      "id": "P1B-GPT-B1-B6",
+      "reviewer": "gpt-4o-fallback",
+      "classification": "BLOCKER-generic",
+      "claim": "Generic methodology concerns: no torsion Boltzmann; NaMaster cosmological-conflation; ALP not ECH-distinctive; missing AIC/BIC/lnB; H0 implications; joint-trajectory justification",
+      "verdict": "STALE",
+      "pattern_ids": ["009"],
+      "evidence": "gpt-4o fallback from gpt-5; each addressed by existing in-cell caveats per v1B.0.27-0.34 history",
+      "closure": "no-action-already-disclosed"
+    },
+    {
+      "id": "P1B-PER-B1",
+      "reviewer": "sonar-pro",
+      "classification": "BLOCKER",
+      "claim": "Eskilt PR4 vs PR3 mislabeling (5th attempt)",
+      "verdict": "FALSIFIED",
+      "pattern_ids": ["013", "030", "001"],
+      "evidence": "L1003 says 'WMAP9 + Planck PR4/NPIPE analysis' — LilleJohs Cosmic_Birefringence repo confirms PR4 NPIPE",
+      "closure": "no-action-falsified-5th-time",
+      "perplexity_reversion_counter": "5/5 rounds"
+    },
+    {
+      "id": "P1B-PER-B2",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "Liu ECTorsionDESI2025 metadata unverifiable",
+      "verdict": "STALE",
+      "pattern_ids": ["001", "012"],
+      "evidence": "references.bib L574 has real Liu+Li+Xu+Biesiada+Wang EPJC 2025 arXiv:2507.04265; web-search miss",
+      "closure": "no-action-stale-5th-time"
+    },
+    {
+      "id": "P1B-PER-M1",
+      "reviewer": "sonar-pro",
+      "classification": "MAJOR",
+      "claim": "DiegoPalazuelos2025 ACT DR6 not real",
+      "verdict": "STALE",
+      "pattern_ids": ["001", "012"],
+      "evidence": "references.bib L461 has real entry, arXiv 2509.13654",
+      "closure": "no-action-stale-5th-time"
+    },
+    {
+      "id": "P1B-PER-M2",
+      "reviewer": "sonar-pro",
+      "classification": "minor",
+      "claim": "Fujita2021 'model class previously studied' wording overstates",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Already addressed in prior closures",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-PER-m1",
+      "reviewer": "sonar-pro",
+      "classification": "minor",
+      "claim": "3.6σ should be flagged as β/σ_β not independent significance",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Nit-tier polish",
+      "closure": "deferred-polish"
+    },
+    {
+      "id": "P1B-PER-n1",
+      "reviewer": "sonar-pro",
+      "classification": "nit",
+      "claim": "Standardize PR4 NPIPE vs Planck 2018 NPIPE terminology",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Mixed wording is conventional shorthand",
+      "closure": "no-action"
+    },
+    {
+      "id": "P1B-GEM-B1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "BLOCKER",
+      "claim": "Spectator ALP with f_a~M_Pl, θ_i~1 has ρ_a ~ ρ_crit; cannot be spectator at θ_i~1",
+      "verdict": "VERIFIED",
+      "pattern_ids": [],
+      "evidence": "Dimensional check: m² f_a² θ_i² ~ H_0² M_Pl² ~ ρ_crit; real theoretical inconsistency",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "arxiv/paper1b_mcmc_companion.tex L520-535 (spectator-status caveat strengthened, θ_i<<1 restriction made explicit, GR-equivalence noted as still requiring fine-tuning)"
+    },
+    {
+      "id": "P1B-GEM-M1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "MAJOR",
+      "claim": "C_aγ~9 incorrectly claimed to sit within 'standard GUT-scale / DFSZ benchmark ranges'",
+      "verdict": "VERIFIED",
+      "pattern_ids": [],
+      "evidence": "KSVZ/DFSZ predict |C_aγ|~O(1); C_aγ~9 is outside minimal benchmarks",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "arxiv/paper1b_mcmc_companion.tex L1059-1068 (rephrased to acknowledge entire range is outside KSVZ/DFSZ O(1) benchmark; both ends require non-minimal model building)"
+    },
+    {
+      "id": "P1B-GEM-m1",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "Version markers v1B.0.8/.9/.10/.12/.13 in body prose audit-trail",
+      "verdict": "VERIFIED",
+      "pattern_ids": ["017"],
+      "evidence": "L979 contained version-marker sentence in body text",
+      "closure": "closed-by-real-action",
+      "closure_artifact": "arxiv/paper1b_mcmc_companion.tex L979 (version-marker sentence removed; load-bearing 'nested-sampling lnB queued' statement preserved)"
+    },
+    {
+      "id": "P1B-GEM-m2",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "Table II crosspaper shows v1B.0.13 vs actual v1B.0.38",
+      "verdict": "OPINION",
+      "pattern_ids": [],
+      "evidence": "Table II is labeled 'Wave 14 / Mid-May 2026' snapshot by design",
+      "closure": "no-action-snapshot-label-acceptable"
+    },
+    {
+      "id": "P1B-GEM-m3",
+      "reviewer": "gemini-2.5-pro",
+      "classification": "minor",
+      "claim": "NaMaster MCs use ACT-noise on Planck Commander map (mismatched)",
+      "verdict": "VERIFIED-but-deferred",
+      "pattern_ids": [],
+      "evidence": "Real methodology issue; rationale is 'conservative worst-case' which Gemini correctly notes is unclear",
+      "closure": "deferred-genuine",
+      "rationale": "Full re-run is 1-day pod task; queued for v1B.0.40+ polish round"
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "verified_real_action": 3,
+    "verified_deferred": 1,
+    "stale": 9,
+    "falsified": 2,
+    "opinion": 5,
+    "perplexity_pr3_pr4_reversion_counter": "5/5 rounds — pattern-013 hardened"
+  }
+}

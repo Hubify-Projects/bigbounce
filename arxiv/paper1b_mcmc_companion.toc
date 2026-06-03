@@ -3,13 +3,13 @@
 \tocdepth@munge 
 \contentsline {section}{\numberline {}Contents}{1}{section*.3}%
 \tocdepth@restore 
-\contentsline {section}{\numberline {I}Introduction}{1}{section*.4}%
+\contentsline {section}{\numberline {I}Introduction}{2}{section*.4}%
 \contentsline {section}{\numberline {II}Cosmological Tensions: $H_0$ and $\sigma _8$}{2}{section*.5}%
 \contentsline {section}{\numberline {III}Stock-CAMB $\Lambda $CDM$+\Delta N_{\rm eff}$ MCMC: Generic Radiation-Proxy Test\\ (Not a Spin-Torsion Theory Module)}{2}{section*.6}%
-\contentsline {paragraph}{\numberline {a}Scope of the $\Delta N_{\rm eff}$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}{2}{section*.7}%
+\contentsline {paragraph}{\numberline {a}Scope of the $\Delta N_{\rm eff}$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}{3}{section*.7}%
 \contentsline {section}{\numberline {IV}Data Methods: CMB $E$-$B$ Analysis}{5}{section*.8}%
-\contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{5}{section*.9}%
-\contentsline {subsection}{\numberline {A}Datasets and Configuration}{5}{section*.10}%
+\contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{6}{section*.9}%
+\contentsline {subsection}{\numberline {A}Datasets and Configuration}{6}{section*.10}%
 \contentsline {subsection}{\numberline {B}Results}{6}{section*.11}%
 \contentsline {paragraph}{\numberline {a}Model-comparison statistics: not reported in this paper.}{6}{section*.12}%
 \contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{6}{section*.13}%
