@@ -51,7 +51,7 @@
 \contentsline {subsection}{\numberline {C}Extension to Tensor Sector}{14}{section*.49}%
 \contentsline {subsection}{\numberline {D}Explicit Verification: The Holst Term in Perturbation Theory}{14}{section*.50}%
 \contentsline {subsection}{\numberline {E}What Would Break the Transparency}{14}{section*.51}%
-\contentsline {subsection}{\numberline {F}Implications}{14}{section*.52}%
+\contentsline {subsection}{\numberline {F}Implications}{15}{section*.52}%
 \contentsline {subsection}{\numberline {G}Discrimination Among Bouncing Cosmologies}{15}{section*.53}%
 \contentsline {section}{\numberline {XI}The Hybrid Dark-Energy Loophole}{15}{section*.54}%
 \contentsline {section}{\numberline {XII}Discussion}{15}{section*.55}%
@@ -65,7 +65,7 @@
 \contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{17}{section*.63}%
 \contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{17}{section*.64}%
 \contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$ (robustness check, not co-equal closure)}{17}{section*.65}%
-\contentsline {subsection}{\numberline {E}Channel-Level Closure}{17}{section*.66}%
+\contentsline {subsection}{\numberline {E}Channel-Level Closure}{18}{section*.66}%
 \contentsline {section}{\numberline {XV}Conclusions}{18}{section*.67}%
 \contentsline {subsection}{\numberline {}Data and Code Availability}{18}{section*.68}%
 \contentsline {section}{\numberline {}Acknowledgments}{18}{section*.69}%
