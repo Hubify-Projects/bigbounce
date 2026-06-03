@@ -33,6 +33,11 @@ export type LivePaperState = {
   openCaveats: number;
   houstonSignOff: string | null;
   sitePdfPath: string | null;
+  // Canonical 4–6 focus bullets per paper (used by the detail page so it
+  // can stop hardcoding them). Convex source-of-truth — fallback is empty.
+  focusAreas: string[];
+  // /never-claim-n4 novelty tier (N1/N2/N3). null when Houston hasn't picked yet.
+  novelty: "N1" | "N2" | "N3" | null;
   source: "convex" | "static-fallback";
 };
 
@@ -66,8 +71,15 @@ async function fetchFromConvex(): Promise<LivePaperState[] | null> {
       openCaveats: number;
       houstonSignOff: string | null;
       sitePdfPath: string | null;
+      focusAreas?: string[];
+      novelty?: "N1" | "N2" | "N3" | null;
     }>;
-    return result.map((r) => ({ ...r, source: "convex" as const }));
+    return result.map((r) => ({
+      ...r,
+      focusAreas: r.focusAreas ?? [],
+      novelty: r.novelty ?? null,
+      source: "convex" as const,
+    }));
   } catch (err) {
     console.warn("[livePapers] Convex fetch failed, falling back to static:", err);
     return null;
@@ -80,6 +92,7 @@ function staticFallback(): LivePaperState[] {
   const liveByVersion = new Map(liveStatus.papers.map((p) => [p.version, p]));
   return staticPapers.map((p: Paper): LivePaperState => {
     const live = liveByVersion.get(p.version);
+    void live;
     return {
       slug: p.slug,
       number: p.number,
@@ -94,6 +107,8 @@ function staticFallback(): LivePaperState[] {
       openCaveats: p.blockingItems.length,
       houstonSignOff: null,
       sitePdfPath: null,
+      focusAreas: [],
+      novelty: null,
       source: "static-fallback",
     };
   });

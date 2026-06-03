@@ -81,6 +81,28 @@ export const setStatus = mutation({
   },
 });
 
+// Set the per-paper novelty tier (N1/N2/N3). Schema enum rejects "N4" — the
+// /never-claim-n4 standing directive is enforced at the database layer, not
+// just in review. Houston picks the tier per paper; agents never auto-assign.
+export const setNovelty = mutation({
+  args: {
+    slug: v.string(),
+    novelty: v.union(
+      v.literal("N1"),
+      v.literal("N2"),
+      v.literal("N3")
+    ),
+  },
+  handler: async (ctx, args) => {
+    const paper = await ctx.db
+      .query("papers")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .unique();
+    if (!paper) throw new Error(`paper not found: ${args.slug}`);
+    await ctx.db.patch(paper._id, { novelty: args.novelty });
+  },
+});
+
 export const setHoustonSignOff = mutation({
   args: {
     slug: v.string(),
@@ -125,7 +147,11 @@ export const getPaperState = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.slug))
       .collect();
-    versions.sort((a, b) => b.datestamp.localeCompare(a.datestamp));
+    versions.sort((a, b) => {
+      const d = b.datestamp.localeCompare(a.datestamp);
+      if (d !== 0) return d;
+      return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+    });
     const currentVersion = versions[0] ?? null;
 
     const findings = await ctx.db
@@ -271,6 +297,10 @@ export const listAllPaperStates = query({
         openCaveats,
         houstonSignOff: paper.houstonSignOff ?? null,
         sitePdfPath: paper.sitePdfPath ?? null,
+        // Surface canonical focus bullets + novelty tier to the detail page
+        // so it can stop hardcoding them in page.tsx (Gap #4 + Gap #2).
+        focusAreas: paper.focusAreas ?? [],
+        novelty: paper.novelty ?? null,
       });
     }
     // Sort by paper number for stable display
@@ -295,7 +325,11 @@ export const getExternalReviewPrompt = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.slug))
       .collect();
-    versions.sort((a, b) => b.datestamp.localeCompare(a.datestamp));
+    versions.sort((a, b) => {
+      const d = b.datestamp.localeCompare(a.datestamp);
+      if (d !== 0) return d;
+      return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+    });
     const cur = versions[0];
 
     const openCaveats = await ctx.db

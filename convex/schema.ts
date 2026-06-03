@@ -164,6 +164,16 @@ export default defineSchema({
     // Houston-only sign-off (final 1% per feedback_99_pct_readiness_cap).
     houstonSignOff: v.optional(v.string()),  // ISO date
     houstonSignOffNote: v.optional(v.string()),
+    // Novelty tier per /never-claim-n4 standing directive. Self-claim ceiling is
+    // N3; N4 is reserved for paradigm-shifting work awarded by the field over
+    // time and cannot be set on a paper by the authors. The enum here enforces
+    // that ceiling at the schema layer — Convex will reject any write of "N4".
+    // See project-context/SSOT/novelty-tiers.md for tier definitions.
+    novelty: v.optional(v.union(
+      v.literal("N1"),
+      v.literal("N2"),
+      v.literal("N3")
+    )),
   })
     .index("by_slug", ["slug"])
     .index("by_status", ["status"]),
