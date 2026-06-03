@@ -1,0 +1,62 @@
+{
+  "round_label": "2026-06-02_R-upgraded-round8",
+  "date": "2026-06-02",
+  "papers": {
+    "P1A": {
+      "version_at_time_of_review": "v1A.0.44",
+      "version_at_closure": "v1A.0.44",
+      "bumped": false,
+      "convergent_silence_counter": "1 of 3",
+      "pattern_008_propagation_check": "CLEAN — Pontryagin propagation into abstract+conclusions+§X correctly states 'non-zero pointwise but a total derivative'; zero reviewer found a regression; zero reviewer caught new physics",
+      "reviewers": {
+        "Gemini25Pro_cosmology": [
+          {"finding_id": "GEM-B1", "raw_classification": "BLOCKER", "summary": "Transparency theorem only for canonical scalar matter — fermion ECH channels not covered", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (already explicit in §X.A statement + §X.E break-conditions + abstract L329-330)", "closed_in_version": null},
+          {"finding_id": "GEM-B2", "raw_classification": "BLOCKER", "summary": "Route 4 closed on explanatory deficit = non-predictivity not closure", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (§IV.D heading + L1171-1176 already explicit; counter-proposal not fact-claim)", "closed_in_version": null},
+          {"finding_id": "GEM-M1", "raw_classification": "MAJOR", "summary": "Structural tension misleading given §II.C.1 thermal-reset already non-viable", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (already labeled 'robustness check, not co-equal closure' v1A.0.38)", "closed_in_version": null},
+          {"finding_id": "GEM-m1", "raw_classification": "minor", "summary": "β=0.27° statistically indistinguishable from WMAP+Planck even with LiteBIRD", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (conclusions L1859 explicit 0.73σ derivation; abstract L353-362 'benchmark not prediction')", "closed_in_version": null},
+          {"finding_id": "GEM-n1", "raw_classification": "nit", "summary": "Δθ_oneloop/Δθ_obs ratio two expressions imply different M_Pl powers", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (equivalent via α/M~g²γ substitution)", "closed_in_version": null},
+          {"finding_id": "GEM-n2", "raw_classification": "nit", "summary": "§X.E break-conditions list omits non-perturbative/anomaly effects from Pontryagin", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "polish-tier (1-sentence caveat in future cosmetic pass; not bump-grade)", "closed_in_version": null}
+        ],
+        "GPT5_methodology": [
+          {"finding_id": "GPT-B1", "raw_classification": "BLOCKER", "summary": "Eq.(2.3) parity-odd operator dimensional inconsistency +1 vs +4", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (abstract sentence 3 L317-320 + Appendix B already explicit)", "closed_in_version": null},
+          {"finding_id": "GPT-B2", "raw_classification": "MAJOR", "summary": "Route 4 naturalness objection not rigorous amplitude exclusion", "truth_audit_verdict": "STALE", "pattern_ids": [5, 9], "closure_action": "no action (§IV.D heading already explicit)", "closed_in_version": null},
+          {"finding_id": "GPT-B3", "raw_classification": "minor", "summary": "Galaxy-spin null defers too heavily to Paper IV", "truth_audit_verdict": "STALE", "pattern_ids": [9, 27], "closure_action": "no action (§V already provides survey-by-survey breakdown)", "closed_in_version": null},
+          {"finding_id": "GPT-B4", "raw_classification": "MAJOR", "summary": "14 barriers — distinguish novel/known/structural", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action (Table 1 caption + §IX categorize)", "closed_in_version": null},
+          {"finding_id": "GPT-B5", "raw_classification": "minor", "summary": "Inflationary suppression discussion speculative; needs forward path", "truth_audit_verdict": "OPINION", "pattern_ids": [9], "closure_action": "no action (violates /no-future-work-defer)", "closed_in_version": null},
+          {"finding_id": "GPT-B6", "raw_classification": "nit", "summary": "Appendix B not tied back to main text", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (cross-references already in abstract + §IV)", "closed_in_version": null}
+        ],
+        "Grok_brutal": [
+          {"finding_id": "GRO-B1", "raw_classification": "BLOCKER", "summary": "~200 lines of self-referential R-round comments before \\documentclass; rename 'channel-level closure'", "truth_audit_verdict": "STALE", "pattern_ids": [3, 14], "closure_action": "no action (L40-249 is LaTeX %-comment, not PDF body; pattern-014 raw-source misread)", "closed_in_version": null},
+          {"finding_id": "GRO-B2", "raw_classification": "BLOCKER", "summary": "Perturbation-transparency theorem not new — textbook for spinless matter", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (§X.A L1471 already credits Hehl 1976; framing is extension to Holst sector)", "closed_in_version": null},
+          {"finding_id": "GRO-M1", "raw_classification": "MAJOR", "summary": "β≈0.27° benchmark fitted to WMAP+Planck = double-counting", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (abstract L352-362 + conclusions L1859 explicit 'benchmark not prediction')", "closed_in_version": null},
+          {"finding_id": "GRO-M2", "raw_classification": "MAJOR", "summary": "13 barriers collapse if dimensional ansatz changes", "truth_audit_verdict": "STALE", "pattern_ids": [5], "closure_action": "no action (abstract sentence 3 already conditional)", "closed_in_version": null},
+          {"finding_id": "GRO-m1", "raw_classification": "minor", "summary": "AI acknowledgment — remove or withdraw paper", "truth_audit_verdict": "OPINION", "pattern_ids": [], "closure_action": "no action (Houston-directed disclosure per publisher norms)", "closed_in_version": null},
+          {"finding_id": "GRO-n1", "raw_classification": "nit", "summary": "Retitle to 'Amplitude bounds on four phenomenological ECH routes'", "truth_audit_verdict": "OPINION", "pattern_ids": [5, 19], "closure_action": "no action (current title already softened; counter-proposal)", "closed_in_version": null}
+        ],
+        "PerplexitySonarPro_citations": [
+          {"finding_id": "PER-B1", "raw_classification": "MAJOR", "summary": "Shapiro & Teixeira arXiv:1402.4854 doesn't literally contain quoted α/M one-loop formula", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (L650 + L990-992 + L1009 already qualify as 'motivated by, not derived from')", "closed_in_version": null},
+          {"finding_id": "PER-M1", "raw_classification": "MAJOR", "summary": "Date-Kaul-Sengupta β-function attribution risks literal-derivation reading", "truth_audit_verdict": "STALE", "pattern_ids": [1, 12], "closure_action": "no action (L1056-1058 + L1074 already explicit; Benedetti-Speziale credited)", "closed_in_version": null},
+          {"finding_id": "PER-M2", "raw_classification": "minor", "summary": "Lue-Wang-Kamionkowski normalization blurring", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (L1104-1115 verbatim what PER asks for)", "closed_in_version": null},
+          {"finding_id": "PER-m1", "raw_classification": "minor", "summary": "Minami 2020 vs Eskilt 2022 historical attribution", "truth_audit_verdict": "STALE", "pattern_ids": [1, 28], "closure_action": "no action (closed v1A.0.42 round-postretro PER-m1)", "closed_in_version": "v1A.0.42"},
+          {"finding_id": "PER-m2", "raw_classification": "nit", "summary": "Ashtekar-Singh ρ_crit 0.27-0.41 window phrasing", "truth_audit_verdict": "STALE", "pattern_ids": [], "closure_action": "no action (L677-681 verbatim what PER asks for)", "closed_in_version": null},
+          {"finding_id": "PER-n1", "raw_classification": "nit", "summary": "'Mercuri & Capozziello 2008' possible fused metadata", "truth_audit_verdict": "STALE", "pattern_ids": [1], "closure_action": "no action (bbl entry verified on disk)", "closed_in_version": null}
+        ]
+      },
+      "exit_round": false,
+      "trend": "1/3 convergent silence — 24 findings, 0 VERIFIED, 0 BLOCKERs landed; pattern-008 propagation clean; reflag bloom consistent with approaching cascaded-R exit"
+    }
+  },
+  "summary": {
+    "total_findings": 24,
+    "verified": 0,
+    "stale": 18,
+    "falsified": 0,
+    "opinion": 6,
+    "blockers_landed": 0,
+    "majors_landed": 0,
+    "minors_landed": 0,
+    "polish_deferred": 1,
+    "bump": null,
+    "convergent_silence_progress": "1 of 3"
+  }
+}
