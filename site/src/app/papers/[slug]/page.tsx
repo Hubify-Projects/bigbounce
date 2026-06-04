@@ -1,5 +1,9 @@
 import { papers, getPaperBySlug } from"@/data/papers";
-import { getLivePapers } from"@/lib/livePapers";
+import {
+  getLivePapers,
+  getNotablesForPaper,
+  getExternalReviewsForPaper,
+} from"@/lib/livePapers";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
@@ -72,7 +76,11 @@ export default async function PaperDetailPage({
   // The static papers.ts retains descriptive content (title, tldr, blockingItems,
   // figures, artifacts) but readiness + version + lastUpdated come from Convex so
   // they can never drift relative to the homepage dashboard.
-  const liveStates = await getLivePapers();
+  const [liveStates, notables, externalReviews] = await Promise.all([
+    getLivePapers(),
+    getNotablesForPaper(slug),
+    getExternalReviewsForPaper(slug),
+  ]);
   const live = liveStates.find((p) => p.slug === slug);
   const readiness = live?.readinessComputed ?? paper.readiness;
   const version = live?.currentVersion ?? paper.version;
@@ -361,6 +369,138 @@ export default async function PaperDetailPage({
                 <li key={item}><MathText>{item}</MathText></li>
               ))}
             </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {notables.length > 0 && (
+        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
+          <CardHeader>
+            <CardTitle
+              className="text-sm font-mono"
+              style={{
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                color: "var(--text-muted)",
+              }}
+            >
+              Notable contributions
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul style={{ margin: 0, paddingLeft: 20, fontSize: "0.88rem", lineHeight: 1.6 }}>
+              {notables.map((n) => (
+                <li key={n.ordinal}><MathText>{n.bullet}</MathText></li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {externalReviews.length > 0 && (
+        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
+          <CardHeader>
+            <CardTitle
+              className="text-sm font-mono"
+              style={{
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                color: "var(--text-muted)",
+              }}
+            >
+              External reviews ({externalReviews.length})
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-2" style={{ fontSize: "0.82rem" }}>
+              {externalReviews.map((r, i) => {
+                const sevTotal = r.blockerCount + r.majorCount + r.minorCount;
+                const recColor =
+                  r.recommendation === "accept"
+                    ? "var(--text-muted)"
+                    : r.recommendation === "minor-revisions"
+                      ? "#16a34a"
+                      : r.recommendation === "major-revisions"
+                        ? "#d97706"
+                        : r.recommendation === "reject"
+                          ? "#dc2626"
+                          : "var(--text-muted)";
+                return (
+                  <div
+                    key={`${r.receivedAt}-${r.reviewerLabel}-${i}`}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "90px 1fr auto",
+                      gap: 10,
+                      padding: "8px 0",
+                      borderTop: i === 0 ? "none" : "1px solid var(--border)",
+                      alignItems: "baseline",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono-stack)",
+                        color: "var(--text-muted)",
+                        fontSize: "0.75rem",
+                      }}
+                    >
+                      {r.receivedAt}
+                    </span>
+                    <span>
+                      <span style={{ fontWeight: 500 }}>{r.reviewerLabel}</span>
+                      <span
+                        style={{
+                          marginLeft: 8,
+                          color: "var(--text-muted)",
+                          fontFamily: "var(--font-mono-stack)",
+                          fontSize: "0.72rem",
+                        }}
+                      >
+                        [{r.source}]
+                      </span>
+                      {sevTotal > 0 && (
+                        <span
+                          style={{
+                            marginLeft: 8,
+                            color: "var(--text-muted)",
+                            fontFamily: "var(--font-mono-stack)",
+                            fontSize: "0.72rem",
+                          }}
+                          title="Post-truth-audit VERIFIED counts: BLOCKER / MAJOR / minor"
+                        >
+                          {r.blockerCount}B / {r.majorCount}M / {r.minorCount}m
+                        </span>
+                      )}
+                      {r.pdfUrl && (
+                        <a
+                          href={r.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            marginLeft: 8,
+                            color: "var(--text-muted)",
+                            fontSize: "0.72rem",
+                          }}
+                        >
+                          source
+                        </a>
+                      )}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono-stack)",
+                        fontSize: "0.72rem",
+                        color: recColor,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {r.recommendation}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </CardContent>
         </Card>
       )}

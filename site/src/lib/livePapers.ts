@@ -127,3 +127,81 @@ export async function getLivePapers(): Promise<LivePaperState[]> {
 export function isLive(states: LivePaperState[]): boolean {
   return states.length > 0 && states[0].source === "convex";
 }
+
+// ──────────────────────────────────────────────────────────────────────
+// Gap #1 (closed 2026-06-03) — papers_notables + papers_externalReviews
+// fetchers. Both are Convex-only with empty-array fallback; static
+// papers.ts does not carry these.
+// ──────────────────────────────────────────────────────────────────────
+
+export type Notable = {
+  ordinal: number;
+  bullet: string;
+  citationKey?: string;
+};
+
+export type ExternalReview = {
+  source:
+    | "journal"
+    | "arxiv"
+    | "houston-paste"
+    | "colleague-private"
+    | "internal-stage3";
+  reviewerLabel: string;
+  receivedAt: string;
+  blockerCount: number;
+  majorCount: number;
+  minorCount: number;
+  recommendation:
+    | "accept"
+    | "minor-revisions"
+    | "major-revisions"
+    | "reject"
+    | "pending";
+  pdfUrl?: string;
+  notes?: string;
+};
+
+export async function getNotablesForPaper(
+  paperSlug: string
+): Promise<Notable[]> {
+  if (!CONVEX_URL) return [];
+  try {
+    const { ConvexHttpClient } = await import("convex/browser");
+    const client = new ConvexHttpClient(CONVEX_URL);
+    const rows = (await client.query(
+      "notables:list" as unknown as Parameters<typeof client.query>[0],
+      { paperSlug } as unknown as Parameters<typeof client.query>[1]
+    )) as Array<{
+      ordinal: number;
+      bullet: string;
+      citationKey?: string;
+    }>;
+    return rows.map((r) => ({
+      ordinal: r.ordinal,
+      bullet: r.bullet,
+      citationKey: r.citationKey,
+    }));
+  } catch (err) {
+    console.warn("[livePapers] notables fetch failed:", err);
+    return [];
+  }
+}
+
+export async function getExternalReviewsForPaper(
+  paperSlug: string
+): Promise<ExternalReview[]> {
+  if (!CONVEX_URL) return [];
+  try {
+    const { ConvexHttpClient } = await import("convex/browser");
+    const client = new ConvexHttpClient(CONVEX_URL);
+    const rows = (await client.query(
+      "externalReviews:list" as unknown as Parameters<typeof client.query>[0],
+      { paperSlug } as unknown as Parameters<typeof client.query>[1]
+    )) as ExternalReview[];
+    return rows;
+  } catch (err) {
+    console.warn("[livePapers] externalReviews fetch failed:", err);
+    return [];
+  }
+}

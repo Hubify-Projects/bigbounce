@@ -313,6 +313,56 @@ export default defineSchema({
     .index("by_pod_id", ["podId"])
     .index("by_status", ["status"]),
 
+  // ──────────────────────────────────────────────────────────────────────
+  // Gap #1 (closed 2026-06-03) — notable contributions + external reviews.
+  //
+  // papers_notables = per-paper "novelty highlights" bullets for the
+  //   detail page; distinct from focusAreas (which targets reviewers).
+  //   Reader-facing 2-4 bullets that capture what's notable about the
+  //   paper.
+  //
+  // papers_externalReviews = referee-report metadata (one row per report).
+  //   Distinct from r_rounds (which is the direct-vendor adversarial
+  //   review pipeline). Stores Houston-paste, journal referees, arxiv
+  //   endorser comments, and internal-stage3 multi-vendor synthesis
+  //   rollups.
+  // ──────────────────────────────────────────────────────────────────────
+  papers_notables: defineTable({
+    paperSlug: v.string(),
+    ordinal: v.number(),                 // display order (1 = top)
+    bullet: v.string(),                  // short rendered string, supports MathText
+    citationKey: v.optional(v.string()), // FK to a future citations table
+    createdAt: v.number(),
+  }).index("by_paper", ["paperSlug", "ordinal"]),
+
+  papers_externalReviews: defineTable({
+    paperSlug: v.string(),
+    source: v.union(
+      v.literal("journal"),
+      v.literal("arxiv"),
+      v.literal("houston-paste"),
+      v.literal("colleague-private"),
+      v.literal("internal-stage3")
+    ),
+    reviewerLabel: v.string(),           // "MNRAS referee 1" | "Gemini-2.5-Pro" | ...
+    receivedAt: v.string(),              // ISO date
+    blockerCount: v.number(),            // post-truth-audit VERIFIED counts
+    majorCount: v.number(),
+    minorCount: v.number(),
+    recommendation: v.union(
+      v.literal("accept"),
+      v.literal("minor-revisions"),
+      v.literal("major-revisions"),
+      v.literal("reject"),
+      v.literal("pending")
+    ),
+    rRoundId: v.optional(v.id("r_rounds")),
+    pdfUrl: v.optional(v.string()),      // GitHub/Drive link to full report
+    notes: v.optional(v.string()),
+  })
+    .index("by_paper", ["paperSlug", "receivedAt"])
+    .index("by_source", ["source", "receivedAt"]),
+
   // Task tracker: cross-paper + per-paper open work items. The "should
   // I do this now?" queue for any agent that wants to contribute.
   tasks: defineTable({
