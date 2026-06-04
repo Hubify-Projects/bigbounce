@@ -16,6 +16,7 @@ import {
   TableRow,
 } from"@/components/ui/table";
 import type { Metadata } from"next";
+import { getLivePapers, type LivePaperState } from "@/lib/livePapers";
 
 export const metadata: Metadata = {
   title:"Research Status",
@@ -23,8 +24,30 @@ export const metadata: Metadata = {
 "Master status page: papers, pipelines, MCMC chains, compute pods, and discoveries.",
 };
 
+const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
+  "paper-1a": { number: "P1A", tagline: "Spin-torsion ECH no-go framework" },
+  "paper-1b": { number: "P1B", tagline: "MCMC companion + tension survey" },
+  "paper-2": { number: "P2", tagline: "f_NL = -35/8 forecast (SPHEREx)" },
+  "paper-3": { number: "P3", tagline: "Multi-survey anomaly catalogue" },
+  "paper-4": { number: "P4", tagline: "Galaxy chirality at 8.47M scale" },
+  "paper-5": { number: "P5", tagline: "DESI environmental chirality" },
+};
+
+function statusBadgeVariant(state: LivePaperState): "default" | "secondary" | "outline" {
+  if (state.openBlockers > 0) return "outline";
+  if (state.openMajors > 0) return "secondary";
+  return "default";
+}
+
+function statusLabel(state: LivePaperState): string {
+  if (state.openBlockers > 0) return `${state.openBlockers} BLOCKER${state.openBlockers === 1 ? "" : "s"}`;
+  if (state.openMajors > 0) return `${state.openMajors} MAJOR${state.openMajors === 1 ? "" : "s"}`;
+  if (state.openMinors > 0) return `${state.openMinors} MINOR${state.openMinors === 1 ? "" : "s"}`;
+  return "clean";
+}
+
 const stats: Array<{ value: string; label: string }> = [
-  { value:"4", label:"Papers" },
+  { value:"6", label:"Papers (P1A, P1B, P2–P5)" },
   {
     value:"424K+",
     label:"MCMC Samples (3 frozen datasets)",
@@ -34,27 +57,49 @@ const stats: Array<{ value: string; label: string }> = [
     label:"Sources Scored (8 Surveys)",
   },
   {
-    value:"319K+",
+    value:"378K+",
     label:"Anomalies Found",
   },
+  { value:"8.47M", label:"Galaxy Chirality Labels" },
   { value:"6", label:"AI Pipelines" },
-  { value:"14", label:"Computation Scripts" },
   { value:"6", label:"Bounce Channels" },
 ];
 
-export default function StatusPage() {
+export const dynamic = "force-static";
+
+export default async function StatusPage() {
+  const livePapers = await getLivePapers();
+  const isLive = livePapers.length > 0 && livePapers[0].source === "convex";
+  const renderedAt = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
+
+  const totalOpenBlockers = livePapers.reduce((s, p) => s + p.openBlockers, 0);
+  const totalOpenMajors = livePapers.reduce((s, p) => s + p.openMajors, 0);
+  const cleanCount = livePapers.filter(
+    (p) => p.openBlockers === 0 && p.openMajors === 0,
+  ).length;
+  const totalReadiness =
+    livePapers.length > 0
+      ? Math.round(livePapers.reduce((s, p) => s + p.readinessComputed, 0) / livePapers.length)
+      : 0;
+
   return (
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Last Updated: May 1, 2026 · 22:30 PDT
+          Rendered at build · {renderedAt} ·{" "}
+          {isLive ? (
+            <span className="tone-success">live Convex data</span>
+          ) : (
+            <span className="text-muted-foreground">static fallback</span>
+          )}
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Research Program Status
         </h1>
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
-          cosmology research program.
+          cosmology research program. Paper versions, readiness, and open
+          findings counts come from Convex on every build.
         </p>
       </div>
 
@@ -62,19 +107,30 @@ export default function StatusPage() {
         <CardHeader>
           <div className="flex items-baseline justify-between gap-2 flex-wrap">
             <CardTitle className="text-sm font-bold uppercase tracking-wider tone-success">
-              R42 4-LLM Adversarial Peer Review · Closure Sprint
+              Live portfolio status
             </CardTitle>
             <CardDescription className="font-mono text-xs">
-              Updated 2026-05-01 02:55 PDT
+              {renderedAt} · {livePapers.length} papers tracked
             </CardDescription>
           </div>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
-          <div className="flex items-center gap-3">
-            <strong>23 of 23 BLOCKERs CLOSED</strong>
-            <span className="text-muted-foreground">100%</span>
+          <div className="flex items-center gap-4 flex-wrap">
+            <span>
+              <strong>{cleanCount}</strong>/{livePapers.length} papers clean
+            </span>
+            <span className="text-muted-foreground">avg readiness {totalReadiness}%</span>
+            <span className="text-muted-foreground">
+              {totalOpenBlockers} open BLOCKER{totalOpenBlockers === 1 ? "" : "s"}
+            </span>
+            <span className="text-muted-foreground">
+              {totalOpenMajors} open MAJOR{totalOpenMajors === 1 ? "" : "s"}
+            </span>
             <div className="h-2 w-56 overflow-hidden rounded bg-muted">
-              <div className="h-full progress-fill-success" style={{ width:"100%" }} />
+              <div
+                className="h-full progress-fill-success"
+                style={{ width: `${Math.min(totalReadiness, 100)}%` }}
+              />
             </div>
           </div>
           <Table>
@@ -82,52 +138,41 @@ export default function StatusPage() {
               <TableRow>
                 <TableHead>Paper</TableHead>
                 <TableHead>Version</TableHead>
-                <TableHead>R42 Status</TableHead>
-                <TableHead>Open Items</TableHead>
+                <TableHead>Readiness</TableHead>
+                <TableHead>Open findings</TableHead>
+                <TableHead>Last update</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell><strong>P1</strong> Spin-Torsion</TableCell>
-                <TableCell className="font-mono">v2.3.17</TableCell>
-                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
-                <TableCell>—</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><strong>P2</strong> f<sub>NL</sub> Forecast</TableCell>
-                <TableCell className="font-mono">v1.7.10</TableCell>
-                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
-                <TableCell>—</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><strong>P3</strong> Anomaly Catalog</TableCell>
-                <TableCell className="font-mono">v3.1.20</TableCell>
-                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
-                <TableCell>—</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><strong>P4</strong> Chirality Catalog</TableCell>
-                <TableCell className="font-mono">v1.0.29</TableCell>
-                <TableCell><Badge variant="default">CLOSED</Badge></TableCell>
-                <TableCell>—</TableCell>
-              </TableRow>
+              {livePapers.map((p) => {
+                const meta = PAPER_DISPLAY_NAMES[p.slug] ?? {
+                  number: p.number,
+                  tagline: p.shortTitle,
+                };
+                return (
+                  <TableRow key={p.slug}>
+                    <TableCell>
+                      <strong>{meta.number}</strong>{" "}
+                      <span className="text-muted-foreground">{meta.tagline}</span>
+                    </TableCell>
+                    <TableCell className="font-mono">{p.currentVersion ?? "—"}</TableCell>
+                    <TableCell className="font-mono">{p.readinessComputed}%</TableCell>
+                    <TableCell>
+                      <Badge variant={statusBadgeVariant(p)}>{statusLabel(p)}</Badge>
+                    </TableCell>
+                    <TableCell className="font-mono text-xs text-muted-foreground">
+                      {p.lastUpdated ?? "—"}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
-          <div className="space-y-1 text-muted-foreground">
-            <p><strong className="text-foreground">B20 result:</strong> 240,919 GZ1 galaxies cross-matched (95.45%). Three-class accuracy on independent GZ1 = <strong>58.71%</strong>; spiral-only CW vs CCW = <strong>69.91%</strong> on 117,205 spirals.</p>
-            <p><strong className="text-foreground">B21 result:</strong> Of 53,862 NOT_SPIRAL galaxies in raw classification, <strong>51,694 (95.97%)</strong> stayed NOT_SPIRAL after equivariance averaging; CW/CCW leakage balanced (1,066 vs 1,102, Δ=0.07%).</p>
-            <p><strong className="text-foreground">Pod:</strong> <code className="font-mono text-xs">regular_green_pig-migration</code> @ 38.80.152.148:33089 · cross-match completed in 73 s.</p>
-            <p><strong className="text-foreground">B23:</strong> All five HuggingFace artifacts are <strong className="tone-success">PUBLIC</strong>:{""}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-catalog</code></a> (8.47M predictions),{""}
-              <a className="underline" href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener noreferrer"><code>galaxy-chirality-v2</code></a> (ViT-Small model),{""}
-              <a className="underline" href="https://huggingface.co/bamfai/desi-spectral-anomaly-detector" target="_blank" rel="noopener noreferrer"><code>desi-spectral-anomaly-detector</code></a> (BigAE),{""}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" target="_blank" rel="noopener noreferrer"><code>bigbounce-anomaly-catalog</code></a> (319K anomalies),{""}
-              <a className="underline" href="https://huggingface.co/datasets/bamfai/bigbounce-mcmc" target="_blank" rel="noopener noreferrer"><code>bigbounce-mcmc</code></a> (424K MCMC samples),{""}
-              <a className="underline" href="https://huggingface.co/bamfai/desi-bigae-ensemble-v1" target="_blank" rel="noopener noreferrer"><code>desi-bigae-ensemble-v1</code></a> (5-seed BigAE pack, R42 Phase 1),{""}
-              <a className="underline" href="https://huggingface.co/bamfai/desi-slae-16d" target="_blank" rel="noopener noreferrer"><code>desi-slae-16d</code></a> (second-level 640D→16D AE, R42 Phase 2).</p>
-            <p><strong className="text-foreground">R42 Phase 1–4 result:</strong> Ensemble relative std on OOD scores = <strong>2.04%</strong> (tight cross-seed convergence). SLAE top-100 ultra-rare anomalies show <strong>100% agreement</strong> (mean fraction = 1.000, std = 0.000) with all 5 BigAE seeds&apos; p99 thresholds — ensemble cross-validates the ultra-rare set rather than finding orthogonal structure.</p>
-            <p><strong className="tone-success">BUNDLE READY-TO-SEND. All 23 R42 BLOCKERs CLOSED. 7 public HF artifacts live.</strong></p>
-          </div>
+          <p className="text-xs text-muted-foreground">
+            Self-claim readiness ceiling is 95% pre-sign-off and 99% once a
+            clean cross-vendor R-round + Houston sign-off close together. The
+            final 1% is never awarded by the cron — only by Houston.
+          </p>
         </CardContent>
       </Card>
 
@@ -152,63 +197,15 @@ export default function StatusPage() {
       <Separator className="my-8" />
 
       <section className="section">
-        <h2>1. Research Papers</h2>
-        <Card>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Paper</TableHead>
-                  <TableHead>Title</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Pages</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-semibold">Paper 1</TableCell>
-                  <TableCell>
-                    Spin-Torsion Framework: 14 Barriers, Falsifiable Predictions
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="default">99% Ready</Badge>
-                  </TableCell>
-                  <TableCell className="font-mono">~24</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">Paper 2</TableCell>
-                  <TableCell>
-                    f<sub>NL</sub> = -35/8 Forecast: SPHEREx Discrimination
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="default">99% Ready</Badge>
-                  </TableCell>
-                  <TableCell className="font-mono">~12</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">Paper 3</TableCell>
-                  <TableCell>
-                    Multi-Survey Anomaly Catalog: 378K from 37.3M Sources
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="default">99% Ready</Badge>
-                  </TableCell>
-                  <TableCell className="font-mono">~40</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">Paper 4</TableCell>
-                  <TableCell>
-                    Galaxy Chirality at Scale: 8.47M Galaxies
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="default">99% Ready</Badge>
-                  </TableCell>
-                  <TableCell className="font-mono">~20</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        <h2>1. Bounce Cosmology Portfolio</h2>
+        <p className="text-sm text-muted-foreground">
+          The live paper table above is the canonical source of truth.
+          Per-paper detail and current PDF mirrors live at{" "}
+          <a href="/paper" className="underline">
+            /paper
+          </a>
+          .
+        </p>
       </section>
 
       <section className="section">
