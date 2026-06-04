@@ -15,6 +15,7 @@ import type * as chatMessages from "../chatMessages.js";
 import type * as checklist from "../checklist.js";
 import type * as externalReviews from "../externalReviews.js";
 import type * as feedback from "../feedback.js";
+import type * as figures from "../figures.js";
 import type * as findings from "../findings.js";
 import type * as galaxies from "../galaxies.js";
 import type * as mcmcStatus from "../mcmcStatus.js";
@@ -44,6 +45,7 @@ declare const fullApi: ApiFromModules<{
   checklist: typeof checklist;
   externalReviews: typeof externalReviews;
   feedback: typeof feedback;
+  figures: typeof figures;
   findings: typeof findings;
   galaxies: typeof galaxies;
   mcmcStatus: typeof mcmcStatus;

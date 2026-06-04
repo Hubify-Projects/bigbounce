@@ -188,6 +188,59 @@ export async function getNotablesForPaper(
   }
 }
 
+// ──────────────────────────────────────────────────────────────────────
+// paper_figures fetchers — drive /figures from Convex (seeded by
+// tools/seed_paper_figures.mjs from each paper's current .tex). The
+// build-time snapshot at site/src/data/figures.ts remains the SSG
+// fallback when Convex is unreachable.
+// ──────────────────────────────────────────────────────────────────────
+
+export type PaperFigure = {
+  paperSlug: string;
+  ordinal: number;
+  src: string;
+  alt: string;
+  title: string;
+  desc: string;
+  paperVersion: string;
+  citationLabel?: string;
+};
+
+export async function getFiguresForPaper(
+  paperSlug: string
+): Promise<PaperFigure[]> {
+  if (!CONVEX_URL) return [];
+  try {
+    const { ConvexHttpClient } = await import("convex/browser");
+    const client = new ConvexHttpClient(CONVEX_URL);
+    const rows = (await client.query(
+      "figures:list" as unknown as Parameters<typeof client.query>[0],
+      { paperSlug } as unknown as Parameters<typeof client.query>[1]
+    )) as PaperFigure[];
+    return rows;
+  } catch (err) {
+    console.warn("[livePapers] figures:list fetch failed:", err);
+    return [];
+  }
+}
+
+export async function getAllFiguresGroupedByPaper(): Promise<
+  Record<string, PaperFigure[]>
+> {
+  if (!CONVEX_URL) return {};
+  try {
+    const { ConvexHttpClient } = await import("convex/browser");
+    const client = new ConvexHttpClient(CONVEX_URL);
+    const grouped = (await client.query(
+      "figures:listAll" as unknown as Parameters<typeof client.query>[0]
+    )) as Record<string, PaperFigure[]>;
+    return grouped;
+  } catch (err) {
+    console.warn("[livePapers] figures:listAll fetch failed:", err);
+    return {};
+  }
+}
+
 export async function getExternalReviewsForPaper(
   paperSlug: string
 ): Promise<ExternalReview[]> {

@@ -17,7 +17,7 @@ interface FigureGalleryProps {
   sections: FigureSection[];
 }
 
-type FigurePaper = "P1" | "P2" | "P3" | "P4" | "X";
+type FigurePaper = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5" | "X";
 type FigureSort = "paper" | "number" | "title" | "source";
 type FigureView = "grid" | "list";
 
@@ -28,11 +28,11 @@ interface EnrichedFigure extends Figure {
   sourceGroup: string;
 }
 
-// Extract paper key from a section title like "Paper 1 — Framework Figures"
-// Returns "P1", "P2", "P3", "P4", or "X" (cross-cutting / other).
+// Extract paper key from a section title like "Paper 1A — …" / "Paper 5 — …".
+// Returns "P1A", "P1B", "P2", "P3", "P4", "P5", or "X" (cross-cutting).
 function paperKey(title: string): FigurePaper {
-  const m = title.match(/Paper\s+([1-4])/i);
-  if (m) return `P${m[1]}` as FigurePaper;
+  const m = title.match(/Paper\s+(1A|1B|[2-5])/i);
+  if (m) return `P${m[1].toUpperCase()}` as FigurePaper;
   return "X";
 }
 
@@ -48,23 +48,26 @@ function figureNumberValue(number: string) {
 
 function sourceGroup(source: string) {
   const normalized = source.toLowerCase();
-  if (normalized.includes("mcmc")) return "MCMC";
-  if (normalized.includes("forecast") || normalized.includes("fnl")) return "Forecast";
-  if (normalized.includes("chirality") || normalized.includes("paper 4")) return "Chirality";
-  if (normalized.includes("catalog") || normalized.includes("paper 3")) return "Catalog";
-  if (normalized.includes("paper 1")) return "Paper 1";
+  if (normalized.includes("paper 1a")) return "Paper 1A";
+  if (normalized.includes("paper 1b") || normalized.includes("mcmc")) return "Paper 1B / MCMC";
+  if (normalized.includes("paper 2") || normalized.includes("forecast") || normalized.includes("fnl")) return "Paper 2 / Forecast";
+  if (normalized.includes("paper 3") || normalized.includes("catalog")) return "Paper 3 / Catalog";
+  if (normalized.includes("paper 4") || normalized.includes("chirality")) return "Paper 4 / Chirality";
+  if (normalized.includes("paper 5")) return "Paper 5 / DESI × Void";
   if (normalized.includes("analysis")) return "Analysis";
   if (normalized.includes("program")) return "Program";
   return "Other";
 }
 
-// Stable display order: P1 → P2 → P3 → P4 → cross-cutting
+// Stable display order: P1A → P1B → P2 → P3 → P4 → P5 → cross-cutting
 const ORDER: Record<FigurePaper, number> = {
-  P1: 1,
-  P2: 2,
-  P3: 3,
-  P4: 4,
-  X: 5,
+  P1A: 1,
+  P1B: 2,
+  P2: 3,
+  P3: 4,
+  P4: 5,
+  P5: 6,
+  X: 7,
 };
 
 const FILTERS: Array<{
@@ -72,10 +75,12 @@ const FILTERS: Array<{
   label: string;
 }> = [
   { key: "all", label: "All papers" },
-  { key: "P1", label: "Paper 1" },
-  { key: "P2", label: "Paper 2" },
-  { key: "P3", label: "Paper 3" },
+  { key: "P1A", label: "Paper 1A (no-go)" },
+  { key: "P1B", label: "Paper 1B (MCMC)" },
+  { key: "P2", label: "Paper 2 (f_NL)" },
+  { key: "P3", label: "Paper 3 (anomalies)" },
   { key: "P4", label: "Paper 4 (chirality)" },
+  { key: "P5", label: "Paper 5 (DESI × void)" },
   { key: "X", label: "Cross-cutting" },
 ];
 

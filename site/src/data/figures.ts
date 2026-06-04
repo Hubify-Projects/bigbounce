@@ -1,5 +1,8 @@
-// AUTO-GENERATED from /figures.html — do not edit by hand.
-// Regenerate with: cd site && node scripts/extract-figures.mjs
+// AUTO-GENERATED from Convex paper_figures by
+// site/scripts/extract-figures-from-convex.mjs — do not edit by hand.
+// Source of truth: each paper's current .tex \includegraphics + \caption.
+// Re-seed Convex with: node tools/seed_paper_figures.mjs
+// Regenerate this snapshot with: cd site && node scripts/extract-figures-from-convex.mjs
 
 export interface Figure {
   src: string;
@@ -18,565 +21,455 @@ export interface FigureSection {
 
 export const figureSections: FigureSection[] = [
   {
-    "title": "Paper 3 — DESI Spectral Anomalies",
-    "count": "12 figures",
+    "title": "Paper 1A — ECH Structural Closure (No-Go Theorem)",
+    "count": "2 figures",
     "items": [
       {
-        "src": "/images/z6_qso_spectra_grid.png",
-        "alt": "Grid of 12 reionization-era QSO spectra at redshift z greater than 6, showing Gunn-Peterson troughs, Ly-alpha emission, and anomalous spectral features from the DESI DR1 archive",
-        "number": "Figure 53",
-        "title": "12 Reionization-Era QSO Spectra (z > 6)",
-        "desc": "12 QSOs at z > 6 from the gold anomaly catalog showing Gunn-Peterson troughs, Ly-α emission, and anomalous spectral features. Downloaded from the DESI DR1 archive.",
-        "source": "Enhanced 22.5M Catalog (2026-03-28)"
+        "src": "/images/fig_theory_map.png",
+        "alt": "Bounce-mechanism observable-prediction map",
+        "number": "Figure 1 (fig:theory_map)",
+        "title": "Bounce-mechanism observable-prediction map",
+        "desc": "Bounce-mechanism observable-prediction map. Left column: candidate non-singular bounce mechanisms (LQC, ECH/torsion, matter bounce, quintom-B, Cuscuton, ekpyrotic). Right column: distinctive observable channels. ECH appears bordered with a dashed box marked channel-level closure under stated assumptions (this paper)---the 14-constraint catalog narrows the f…",
+        "source": "Paper 1A · v1A.0.44"
       },
-      {
-        "src": "/images/umap_clusters.png",
-        "alt": "UMAP Clustering of 195,829 DESI DR1 Spectral Anomalies colored by HDBSCAN cluster",
-        "number": "Figure 54",
-        "title": "UMAP Clustering of 195,829 Spectral Anomalies",
-        "desc": "2D UMAP embedding of 195,829 anomalies colored by HDBSCAN cluster. Two distinct populations: a large B-band noise cluster and a red-anomaly cluster with genuinely unusual spectral features.",
-        "source": "Enhanced 22.5M Catalog (2026-03-28)"
-      },
-      {
-        "src": "/images/anomaly_rate_map.png",
-        "alt": "HEALPix Mollweide sky map of DESI DR1 anomaly rate showing mostly uniform ~1% rate across the survey footprint with Spearman r=0.03 correlation with depth, confirming anomalies are not depth-correlated artifacts",
-        "number": "Figure 55",
-        "title": "Anomaly Rate Sky Map (Mollweide)",
-        "desc": "HEALPix NSIDE=64 map of anomaly rate across the DESI DR1 footprint. Mostly uniform ~1% (Spearman r = 0.03 with depth), confirming anomalies are not depth-correlated artifacts.",
-        "source": "Enhanced 22.5M Catalog (2026-03-28)"
-      },
-      {
-        "src": "/images/survey_depth_map.png",
-        "alt": "HEALPix map of DESI DR1 survey depth showing objects per pixel across the survey footprint with variable coverage across sky regions",
-        "number": "Figure 56",
-        "title": "DESI DR1 Survey Depth Map",
-        "desc": "Objects per HEALPix pixel showing the survey footprint and variable depth across the DESI DR1 coverage area.",
-        "source": "Enhanced 22.5M Catalog (2026-03-28)"
-      },
-      {
-        "src": "/images/depth_vs_rate_scatter.png",
-        "alt": "Scatter plot of DESI DR1 anomaly rate versus survey depth showing weak anti-correlation r=-0.17 with outliers concentrated at survey edges",
-        "number": "Figure 57",
-        "title": "Anomaly Rate vs Survey Depth",
-        "desc": "Scatter plot showing weak anti-correlation (r = −0.17) between anomaly rate and survey depth. Bulk footprint clean; outliers concentrated at survey edges.",
-        "source": "Enhanced 22.5M Catalog (2026-03-28)"
-      },
-      {
-        "src": "/images/photo_z_scatter.png",
-        "alt": "Scatter plot of photometric redshift predicted from 128-dim autoencoder latent vectors versus spectroscopic redshift, showing sigma_NMAD=0.028 and R-squared=0.79 with zero redshift supervision during training",
-        "number": "Figure 58",
-        "title": "Photo-z from Latent Vectors (σNMAD = 0.028)",
-        "desc": "Predicted photometric redshift from 128-dim autoencoder latent vectors vs spectroscopic redshift. σNMAD = 0.028, R&sup2; = 0.79, with zero redshift supervision during training. The autoencoder spontaneously learned spectral features correlated with redshift.",
-        "source": "Paper 3 (2026-03-28)"
-      },
-      {
-        "src": "/images/photo_z_feature_importance.png",
-        "alt": "Bar chart of feature importance for 128 autoencoder latent dimensions predicting redshift, showing lat_067 as the dominant redshift neuron that spontaneously encodes spectroscopic redshift without supervision",
-        "number": "Figure 59",
-        "title": "Latent Dimension Feature Importance (Redshift Neuron)",
-        "desc": "Feature importance of 128 latent dimensions for redshift prediction. lat_067 dominates as the “redshift neuron” — a single latent dimension that spontaneously encodes redshift without any supervision, the strongest individual predictor of spectroscopic z.",
-        "source": "Paper 3 (2026-03-28)"
-      },
-      {
-        "src": "/images/umap_full_catalog_3panel.png",
-        "alt": "Three-panel UMAP embedding of 22.5M DESI DR1 catalog latent space colored by spectral type, redshift, and anomaly score, showing clean separation of galaxy, QSO, and star populations",
-        "number": "Figure 60",
-        "title": "Full-Catalog Latent Space (Type/Redshift/Score)",
-        "desc": "3-panel UMAP embedding of the full 22.5M catalog latent space, colored by spectral type, redshift, and anomaly score. Reveals clean separation of galaxy/QSO/star populations and smooth redshift gradients in the unsupervised embedding.",
-        "source": "Paper 3 (2026-03-28)"
-      },
-      {
-        "src": "/images/photo_z_residuals.png",
-        "alt": "Distribution of photo-z residuals (predicted minus spectroscopic redshift) showing tight core with sigma_NMAD=0.028 and outlier characterization for unsupervised autoencoder-based redshift estimation",
-        "number": "Figure 61",
-        "title": "Photo-z Residual Distribution",
-        "desc": "Distribution of photo-z residuals (zpred − zspec) showing tight core with σNMAD = 0.028 and outlier characterization. Demonstrates the quality of unsupervised redshift estimation from autoencoder latent vectors.",
-        "source": "Paper 3 (2026-03-28)"
-      },
-      {
-        "src": "/images/taxonomy_umap.png",
-        "alt": "UMAP embedding of 2,145 SNR-filtered DESI DR1 anomalies colored by HDBSCAN cluster revealing 10 distinct spectral families including 76 uncataloged AGN, 27 post-starburst galaxies, and 363 blue compact galaxies",
-        "number": "Figure 62",
-        "title": "Anomaly Taxonomy UMAP (10 Families)",
-        "desc": "UMAP embedding of 2,145 SNR-filtered anomalies colored by HDBSCAN cluster, revealing 10 distinct spectral families: 76 uncataloged AGN, 27 post-starburst galaxies, 363 blue compact galaxies, plus 7 additional families. First spectral taxonomy of DESI DR1 anomalies.",
-        "source": "Paper 3 (2026-03-29)"
-      },
-      {
-        "src": "/images/fnl_comparison.png",
-        "alt": "Comparison of sigma(f_NL) between standard DESI tracers and latent-space-selected anomalous tracers, showing 6.1% improvement from DESI alone and 7.93% improvement with 5-tracer combination",
-        "number": "Figure 63",
-        "title": "fNL Tracer Comparison (6.1–7.93% Improvement)",
-        "desc": "Comparison of σ(fNL) between standard DESI tracers and latent-space-selected anomalous tracers. The anomaly-selected sample yields a 6.1% improvement in fNL sensitivity from DESI alone (7.93% with 5-tracer), directly strengthening the flagship matter-bounce prediction for SPHEREx.",
-        "source": "Paper 3 (2026-03-29)"
-      },
-      {
-        "src": "/images/uncataloged_top50_grid.png",
-        "alt": "Grid of the 50 highest-scored DESI DR1 anomalies absent from both SIMBAD and NED catalogs, representing genuinely uncharacterized objects identified from 22.5 million spectra as follow-up targets",
-        "number": "Figure 64",
-        "title": "Top 50 Uncataloged Anomaly Spectra",
-        "desc": "Grid of the 50 highest-scored anomalies absent from both SIMBAD and NED. These represent genuinely uncharacterized objects identified by the autoencoder from 22.5M DESI DR1 spectra — concrete targets for spectroscopic follow-up.",
-        "source": "Paper 3 (2026-03-29)"
-      }
-    ]
-  },
-  {
-    "title": "Paper 4 — Galaxy Chirality Catalog",
-    "count": "13 figures",
-    "items": [
-      {
-        "src": "/images/chirality/fig_raw_vs_eq.png",
-        "alt": "Raw vs Equivariant: Eliminating Survey Systematics",
-        "number": "Figure 34",
-        "title": "Raw vs Equivariant: Eliminating Survey Systematics",
-        "desc": "Side-by-side Mollweide maps showing how equivariant averaging eliminates a 94.6σ systematic pattern down to null. The key figure demonstrating the method’s power: raw CNN outputs contain catastrophic survey-correlated bias that vanishes under flip-averaging.",
-        "source": "Paper 4, Figure 11"
-      },
-      {
-        "src": "/images/chirality/fig_sky_map.png",
-        "alt": "Galaxy Chirality Asymmetry Map (Mollweide)",
-        "number": "Figure 35",
-        "title": "Galaxy Chirality Asymmetry Map (Mollweide)",
-        "desc": "All-sky map of CW–CCW asymmetry from 8.47 M equivariant spiral classifications at NSIDE=64. Blue pixels indicate clockwise excess; red pixels indicate counter-clockwise excess. Post-TTA dipole amplitude 0.0019, 0.43σ — consistent with parity conservation.",
-        "source": "Paper 4, Figure 7"
-      },
-      {
-        "src": "/images/chirality/fig_multipoles.png",
-        "alt": "Angular Power Spectrum (l=1-5)",
-        "number": "Figure 36",
-        "title": "Angular Power Spectrum (ℓ=1–5)",
-        "desc": "Measured C_ℓ vs null expectation from 1,000 random shuffles. The dipole (ℓ=1) is elevated at 2.75σ and ℓ=5 at 2.46σ, while intermediate multipoles are consistent with null. Error bars from bootstrap resampling.",
-        "source": "Paper 4, Figure 8"
-      },
-      {
-        "src": "/images/chirality/fig_hemisphere.png",
-        "alt": "Hemisphere Asymmetry (3.05 sigma)",
-        "number": "Figure 37",
-        "title": "Hemisphere Asymmetry (3.05σ)",
-        "desc": "Galactic north vs south CW fraction with bootstrap distribution. The north–south asymmetry reaches 3.05σ significance, the strongest single-statistic signal in the catalog. Inset shows the bootstrap null distribution with observed value marked.",
-        "source": "Paper 4, Figure 9"
-      },
-      {
-        "src": "/images/chirality/fig_sky_regions.png",
-        "alt": "CW Fraction: Raw vs Equivariant by Sky Region",
-        "number": "Figure 38",
-        "title": "CW Fraction: Raw vs Equivariant by Sky Region",
-        "desc": "Two-panel comparison showing dramatic bias reduction from equivariant averaging. Raw predictions show large region-to-region variation (survey systematics); equivariant predictions collapse to near-uniform CW fraction across all sky regions.",
-        "source": "Paper 4, Figure 10"
-      },
-      {
-        "src": "/images/chirality/fig_confidence_dist.png",
-        "alt": "Classification Confidence Distribution",
-        "number": "Figure 39",
-        "title": "Classification Confidence Distribution",
-        "desc": "Three-class confidence distribution (CW, CCW, NOT_SPIRAL) with CW fraction vs confidence inset. High-confidence classifications (>0.9) show stable CW/CCW balance, confirming the classifier is not introducing artificial asymmetry at any confidence threshold.",
-        "source": "Paper 4, Figure 6"
-      },
-      {
-        "src": "/images/chirality/fig_spiral_density.png",
-        "alt": "Galaxy Density Map",
-        "number": "Figure 40",
-        "title": "Galaxy Density Map",
-        "desc": "Survey footprint showing where spiral galaxies are observed, reflecting the Galaxy Zoo DECaLS sky coverage. Density variations trace the survey geometry and depth, which equivariant averaging is designed to correct for.",
-        "source": "Paper 4, Figure 1"
-      },
-      {
-        "src": "/images/chirality/fig_cw_fraction_heatmap.png",
-        "alt": "CW Fraction Heatmap (RA vs DEC)",
-        "number": "Figure 41",
-        "title": "CW Fraction Heatmap (RA vs DEC)",
-        "desc": "2D spatial distribution of chirality balance in RA–DEC coordinates. Color encodes the local CW fraction, revealing spatial structure in the chirality signal after equivariant correction.",
-        "source": "Paper 4"
-      },
-      {
-        "src": "/images/chirality/fig_class_pie.png",
-        "alt": "Classification Breakdown",
-        "number": "Figure 42",
-        "title": "Classification Breakdown",
-        "desc": "CW/CCW/NOT_SPIRAL donut chart showing the three-class distribution across the full catalog. The near-equal CW and CCW fractions confirm no global classification bias; NOT_SPIRAL objects are excluded from asymmetry analyses.",
-        "source": "Paper 4, Figure 5"
-      },
-      {
-        "src": "/images/chirality/fig_gallery_cw.png",
-        "alt": "High-Confidence Clockwise Spirals",
-        "number": "Figure 43",
-        "title": "High-Confidence Clockwise Spirals",
-        "desc": "4×4 grid of real galaxy images classified as clockwise with high confidence (>0.95). These examples demonstrate clear visual spiral arm winding direction consistent with the CW label.",
-        "source": "Paper 4, Figure 2"
-      },
-      {
-        "src": "/images/chirality/fig_gallery_ccw.png",
-        "alt": "High-Confidence Counter-Clockwise Spirals",
-        "number": "Figure 44",
-        "title": "High-Confidence Counter-Clockwise Spirals",
-        "desc": "4×4 grid of real galaxy images classified as counter-clockwise with high confidence (>0.95). Mirror-image counterparts to the CW gallery, confirming the classifier distinguishes winding direction rather than other morphological features.",
-        "source": "Paper 4, Figure 3"
-      },
-      {
-        "src": "/images/chirality/fig_gallery_notspi.png",
-        "alt": "NOT_SPIRAL Classifications",
-        "number": "Figure 45",
-        "title": "NOT_SPIRAL Classifications",
-        "desc": "Representative sample of objects classified as NOT_SPIRAL: ellipticals, mergers, edge-on disks, and other morphologies where spiral arm winding direction cannot be determined. These are excluded from chirality analyses.",
-        "source": "Paper 4"
-      },
-      {
-        "src": "/images/chirality/fig_equivariance_demo.png",
-        "alt": "Equivariant Averaging Demonstration",
-        "number": "Figure 46",
-        "title": "Equivariant Averaging Demonstration",
-        "desc": "Original vs horizontally flipped predictions for the same galaxy. Equivariant averaging takes the mean of original and mirror-flipped classifications, ensuring that any systematic preference the CNN has for one orientation is exactly cancelled. This is the methodological foundation of the catalog.",
-        "source": "Paper 4, Figure 4"
-      }
-    ]
-  },
-  {
-    "title": "Paper 2 — fNL Forecast",
-    "count": "17 figures",
-    "items": [
-      {
-        "src": "/images/quintom_fnl_verification.png",
-        "alt": "Numerical verification that f_NL equals -35/8 is identical across three bounce mechanisms: pure dust contraction, quintom bounce, and asymmetric Papanikolaou bounce, confirming mechanism independence",
-        "number": "Figure 47",
-        "title": "fNL = −35/8 Mechanism Independence",
-        "desc": "Numerical verification that fNL = −35/8 is identical across three bounce mechanisms: pure dust contraction, quintom bounce (H = &Upsilon;t), and asymmetric Papanikolaou bounce (w: 0&rarr;1/3). The bispectrum is determined by contraction-phase dynamics, not the bounce UV completion.",
-        "source": "Literature Audit (2026-03-25)"
-      },
-      {
-        "src": "/images/fnl_pbh_regulation.png",
-        "alt": "PBH abundance f_PBH versus perturbation amplitude sigma for f_NL values of 0, -35/8, +4.375, and +10, showing how negative matter-bounce f_NL naturally suppresses primordial black hole overproduction without fine-tuning",
-        "number": "Figure 48",
-        "title": "fNL = −35/8 as PBH Regulator",
-        "desc": "Negative fNL from the matter bounce naturally suppresses PBH overproduction. Left: PBH abundance fPBH vs perturbation amplitude σ for fNL = 0, −35/8, +4.375, +10. Right: the non-Gaussian PDF tail cutoff. The matter bounce value keeps fPBH ∈ [10−3, 1] without fine-tuning — a unique advantage over inflationary PBH models.",
-        "source": "Literature Audit (2026-03-25)"
-      },
-      {
-        "src": "/images/nanograv_bounce_consistency.png",
-        "alt": "Matter-bounce induced gravitational wave spectrum with universal f-squared infrared scaling gamma=3.0, shown consistent with NANOGrav 15-year data gamma=3.20 plus or minus 0.42 at 0.48 sigma while SMBH binary prediction gamma=13/3 is excluded at 2 sigma",
-        "number": "Figure 49",
-        "title": "NANOGrav Consistency with Matter Bounce",
-        "desc": "The matter-bounce induced GW spectrum has universal f2 infrared scaling (γ = 3), consistent with NANOGrav 15-year data (γ = 3.20 ± 0.42) at 0.48σ. SMBH binary mergers predict γ = 13/3 (≥2σ tension). The bounce prediction is strongly constrained.",
-        "source": "Literature Audit (2026-03-25)"
-      },
-      {
-        "src": "/images/nanograv_proper_fit.png",
-        "alt": "Four-panel template fit of NANOGrav 15-year free-spectrum data showing matter bounce gamma=3.0 preferred 302-to-1 over SMBH mergers and 81000-to-1 over cosmic strings, with characteristic strain, residuals, Omega_GW, and comparison table",
-        "number": "Figure 50",
-        "title": "NANOGrav Proper Spectral Fit",
-        "desc": "Template fit of NANOGrav 15yr free-spectrum data. Matter bounce (γ=3.0) preferred 302:1 over SMBH mergers (γ=13/3) and 81,000:1 over cosmic strings (γ=5/3). 4-panel: hc(f), residuals, ΩGW, comparison table. Caveat: synthetic data from published power-law, not raw free-spectrum posteriors.",
-        "source": "NANOGrav Fit (2026-03-26)"
-      },
-      {
-        "src": "/images/enhanced_18m_first_batch.png",
-        "alt": "Analysis of first 500K spectra from the 173-column enhanced DESI DR1 catalog showing galaxies 19x more anomalous than QSOs (0.76% vs 0.04%), no score-vs-SNR correlation, and anomaly peak at redshift z~0.3-0.5",
-        "number": "Figure 51",
-        "title": "Enhanced 22.5M Catalog — First Batch Analysis",
-        "desc": "First 500K spectra from the 173-column enhanced DESI DR1 catalog. Key finding: galaxies are 19× more likely to be anomalous than QSOs (0.76% vs 0.04%). Score vs S/N shows no correlation (anomalies are NOT noise artifacts). Anomalies peak at z&sim;0.3–0.5.",
-        "source": "Enhanced 22.5M Catalog (2026-03-26)"
-      },
-      {
-        "src": "/images/fig1_shape_function.png",
-        "alt": "Complete bispectrum shape function S(k1,k2,k3) for matter contraction showing squeezed limit f_NL=-35/8 and equilateral and folded special cases for the matter-bounce primordial non-Gaussianity prediction",
-        "number": "Figure 23",
-        "title": "Matter-Bounce Bispectrum Shape Function",
-        "desc": "The complete bispectrum shape S(k_1,k_2,k_3) for matter contraction, showing squeezed limit f_NL = -35/8 and equilateral/folded special cases.",
-        "source": "Paper 2"
-      },
-      {
-        "src": "/images/fig2_survey_comparison.png",
-        "alt": "Detection significance for f_NL=-35/8 across survey configurations with GR marginalization bands, comparing SPHEREx 3-5 sigma realistic to MegaMapper ~7.5 sigma reach",
-        "number": "Figure 24",
-        "title": "SPHEREx vs MegaMapper Forecast Comparison",
-        "desc": "Detection significance for f_NL = -35/8 across survey configurations, with GR marginalization bands. SPHEREx: 3–5σ realistic; MegaMapper: ~7.5σ.",
-        "source": "Paper 2"
-      },
-      {
-        "src": "/images/fig3_kmin_cliff.png",
-        "alt": "Plot of f_NL detection significance versus minimum measurable wavenumber k_min showing the sensitivity cliff as ultra-large-scale modes are removed from the analysis",
-        "number": "Figure 25",
-        "title": "k_min Sensitivity Cliff",
-        "desc": "How detection significance depends on the minimum measurable wavenumber, showing the critical role of ultra-large-scale modes.",
-        "source": "Paper 2"
-      },
-      {
-        "src": "/images/fig4_decision_thresholds.png",
-        "alt": "Monte Carlo Bayes factor distributions for bounce versus inflation at various f_NL values showing Bayes factor 8-17 versus multifield competitors",
-        "number": "Figure 26",
-        "title": "Bayesian Decision Thresholds",
-        "desc": "Monte Carlo Bayes factor distributions: bounce vs inflation at various f_NL values. Bayes factor ~8-17 vs multifield competitors (prior-dependent).",
-        "source": "Paper 2"
-      },
-      {
-        "src": "/images/fig5_inflation_comparison.png",
-        "alt": "Parameter space comparison showing negative order-1 f_NL is natural for matter bounce but requires fine-tuning for inflation, demonstrating the anti-mimicry property of the matter-bounce bispectrum prediction",
-        "number": "Figure 27",
-        "title": "Matter Bounce vs Inflation Anti-Mimicry",
-        "desc": "Parameter space comparison showing why negative O(1) f_NL is natural for bounce but requires fine-tuning for inflation.",
-        "source": "Paper 2"
-      },
-      {
-        "src": "/images/fig_bnl_shape_slices.png",
-        "alt": "Matter-bounce B_NL versus local template across triangle configurations: squeezed series converging to -35/8 and isosceles series showing 63% variation from folded (-2.25) to equilateral (-3.98), with shaded region showing signal lost by a local estimator",
-        "number": "Figure 28",
-        "title": "B_NL Shape Slices",
-        "desc": "Matter-bounce B_NL vs local template across triangle configurations. Left: squeezed series showing convergence to -35/8. Right: isosceles series showing 63% variation from folded (-2.25) to equilateral (-3.98). The local template is constant at -35/8 for all configurations — the shaded area represents signal lost by a local estimator.",
-        "source": "Paper 2 — Template Mismatch"
-      },
-      {
-        "src": "/images/fig_template_overlap_robustness.png",
-        "alt": "Amplitude recovery factor r across 10 physically motivated weighting schemes using the physics-derived full-commutator polynomial, showing CMB Fisher r=0.90 and LSS r=0.85, with gray bars for adversarial extreme cuts",
-        "number": "Figure 29",
-        "title": "Template Overlap Robustness",
-        "desc": "Amplitude recovery factor r across 10 physically motivated weighting schemes, using the physics-derived full-commutator polynomial (6,2,−18,10,−66,18). With the true polynomial: CMB Fisher r = 0.90, LSS/SDB r = 0.85, giving r ≈ 0.85–0.90. Mismatch is intrinsic to the bounce shape. Gray bars show adversarial extreme cuts.",
-        "source": "Paper 2 — Template Mismatch"
-      },
-      {
-        "src": "/images/fig_forecast_template_corrected.png",
-        "alt": "Two-panel forecast: left shows detection significance with and without template mismatch correction for f_NL=-35/8, SPHEREx dropping from 6.2 sigma naive to 3-5 sigma realistic; right shows normalization sensitivity if -35/16 is correct",
-        "number": "Figure 30",
-        "title": "Forecast Significance Comparison",
-        "desc": "Left: Detection significance with and without template mismatch correction (canonical f_NL = -35/8). SPHEREx drops from 6.2σ naive to 3–5σ realistic. Right: Normalization sensitivity — if -35/16 is correct, SPHEREx drops further to 2.7σ. Template correction matters more for the MegaMapper SDB channel.",
-        "source": "Paper 2 — Forecasts"
-      },
-      {
-        "src": "/images/fig_true_vs_fitted_polynomial.png",
-        "alt": "Comparison of matter-bounce B_NL shape using physics-derived polynomial (6,2,-18,10,-66,18) versus 3-benchmark fit showing isosceles and squeezed series with both converging to f_NL=-35/8 in the squeezed limit",
-        "number": "Figure 31",
-        "title": "True vs Fitted Polynomial Shape",
-        "desc": "Matter-bounce B_NL shape: physics-derived polynomial (6,2,−18,10,−66,18) vs 3-benchmark fit (2,7,3,−12,−69,19). Left: isosceles series showing the true polynomial stays closer to the local template at intermediate configurations. Right: squeezed series showing both converge to -35/8. The physics-derived polynomial gives a less severe template mismatch (r ≈ 0.85--0.90 vs r ≈ 0.84).",
-        "source": "Paper 2 — True Polynomial"
-      },
-      {
-        "src": "/images/fig_namaster_beta_vs_nside.png",
-        "alt": "Cosmic birefringence angle beta measured from Planck SMICA using NaMaster with B-mode purification at increasing NSIDE resolution, showing NSIDE=1024 beta=0.19 plus or minus 0.03 degrees as lead result with bounce ALP prediction at beta=0.27 degrees",
-        "number": "Figure 32",
-        "title": "NaMaster β vs NSIDE",
-        "desc": "Cosmic birefringence β measured from Planck SMICA using NaMaster with B-mode purification at increasing resolution. NSIDE=1024 (β = 0.19 \\pm 0.03°) is the lead result. At NSIDE=2048, β drops to 0.07 \\pm 0.02°, suggesting high-ℓ contamination or noise. Green circle marks the preferred NSIDE=1024 result. Blue band shows the published Planck+ACT measurement. Red dashed line is our ALP prediction.",
-        "source": "Paper 2 — Birefringence"
-      },
-      {
-        "src": "/images/fig_forecast_true_polynomial.png",
-        "alt": "Detection significance for f_NL=-35/8 using physics-derived polynomial with r=0.88 template overlap, showing SPHEREx dropping from 6.2 sigma naive to 3-5 sigma realistic and MegaMapper dropping from 8.8 sigma to ~7.7 sigma after template correction",
-        "number": "Figure 33",
-        "title": "Updated Forecast with True Polynomial",
-        "desc": "Detection significance for f_NL = -35/8 using the physics-derived polynomial (r = 0.88). Template correction reduces SPHEREx from 6.2σ naive to 3–5σ realistic. MegaMapper drops from 8.8σ to ~7.7σ.",
-        "source": "Paper 2 — Forecasts"
-      }
-    ]
-  },
-  {
-    "title": "Paper 1 — ALP Birefringence + MCMC Corner",
-    "count": "3 figures",
-    "items": [
-      {
-        "src": "/images/paper1_corner_full_tension.png",
-        "alt": "Full-tension MCMC corner plot from 119,617 post-burnin samples over H0, Omega_m, sigma8, S8, and Delta N_eff using getdist, showing H0=67.69 plus or minus 1.06 and Delta N_eff consistent with zero",
-        "number": "Figure 22 (new, 2026-04-17)",
-        "title": "Full-Tension MCMC Corner Plot (H0, Ωm, σ8, S8, ΔNeff)",
-        "desc": "Joint posterior over the Planck+BAO+SN+H0+S8 full-tension combination from 119,617 post-burnin MCMC samples via getdist. Marginal results: H0=67.69±1.06, Ωm=0.308±0.006, σ8=0.803±0.008, S8=0.814±0.009, ΔNeff=−0.019±0.169 — consistent with zero, confirming the framework's compatibility with standard cosmology.",
-        "source": "Paper 1, &sect;IV — Fig. corner_full_tension"
-      },
-      {
-        "src": "/arxiv_v2/figures/beta_comparison_all_models.png",
-        "alt": "Cosmic birefringence angle beta compared across multiple spin-torsion model variants and competing frameworks, with bounce ALP prediction beta=0.27 degrees compared to the observed ACT measurement of 0.342 degrees",
-        "number": "Figure 20",
-        "title": "β Comparison Across Models",
-        "desc": "Cosmic birefringence angle β compared across multiple spin-torsion model variants and competing frameworks, showing the predicted signal range.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/arxiv_v2/figures/triangle_plot.png",
-        "alt": "Updated v2 parameter corner plot showing refined cosmological parameter constraints and posterior distributions from additional dataset combinations in the ALP birefringence analysis",
-        "number": "Figure 21",
-        "title": "Parameter Triangle Plot (v2)",
-        "desc": "Updated corner plot from the v2 analysis with refined parameter constraints and additional dataset combinations.",
-        "source": "Paper 1"
-      }
-    ]
-  },
-  {
-    "title": "Paper 1 — Framework Figures",
-    "count": "9 figures",
-    "items": [
       {
         "src": "/images/figure1_lqg_holst_derivation_enhanced.png",
-        "alt": "Derivation chain from Planck scale through one-loop parity-odd operator and inflationary suppression to observed dark energy scale rho_Lambda approximately (2.3 meV)^4, showing the energy density hierarchy for spin-torsion cosmology",
-        "number": "Figure 1",
-        "title": "Energy Density Hierarchy",
-        "desc": "Shows the derivation chain from Planck scale through one-loop parity-odd operator, inflationary suppression, to observed dark energy scale ρ_Λ ≈ (2.3 meV)^4.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure2_galaxy_spin_comprehensive.png",
-        "alt": "Galaxy spin dipole amplitude across SDSS DR7, Pan-STARRS, HST Deep, and Longo 2011 surveys with hierarchical Bayesian fit, showing a contested anomaly in the literature",
-        "number": "Figure 2",
-        "title": "Galaxy Spin Dipole Data",
-        "desc": "Dipole amplitude across SDSS DR7, Pan-STARRS, HST Deep, and Longo (2011) with hierarchical Bayesian fit. Status: contested anomaly.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure_3a_tension_resolution.png",
-        "alt": "Spin-torsion model H0 and sigma_8 position between Planck and SH0ES/KiDS measurements. Historical figure: tension reduction was later shown to be SH0ES-prior-driven and not an intrinsic model prediction.",
-        "number": "Figure 3a",
-        "title": "Hubble & σ_8 Tension Resolution",
-        "desc": "Shows spin-torsion model position between Planck and SH0ES/KiDS measurements. Note: tension reduction was disproved by independent MCMC. [Historical: tension reduction was later shown to be SH0ES-prior-driven]",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure3b_tensions_resolution_comprehensive.png",
-        "alt": "H0 and sigma_8/S8 measurements from 9 or more probes with spin-torsion model position overlaid. Historical figure: tension reduction was later shown to be SH0ES-prior-driven.",
-        "number": "Figure 3b",
-        "title": "Comprehensive Tension Comparison",
-        "desc": "H_0 and σ_8/S_8 measurements from 9+ probes with spin-torsion model position overlaid for direct comparison. [Historical: tension reduction was later shown to be SH0ES-prior-driven]",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure4_distance_impact.png",
-        "alt": "Luminosity and angular diameter distance deviations from Lambda-CDM at the ~2% level showing observational signatures of geometric dark energy from rotation-induced effective cosmological constant",
-        "number": "Figure 4",
-        "title": "Distance Impact of Rotation-Induced Λ_eff",
-        "desc": "Luminosity and angular diameter distance deviations from ΛCDM at the ~2% level, showing observational signatures of geometric dark energy.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure5_rotation_expansion.png",
-        "alt": "H(z) expansion rate comparison showing the spin-torsion rotation contribution is negligibly small (less than 10^-20), confirming the model is expansion-equivalent to Lambda-CDM",
-        "number": "Figure 5",
-        "title": "Rotation Component Effect on Expansion",
-        "desc": "H(z) comparison showing the rotation contribution is negligibly small (< 10^{-20}), confirming the model is expansion-equivalent to ΛCDM.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure6_parameter_naturalness.png",
-        "alt": "Log-scale fine-tuning comparison: Lambda-CDM (10^120), Quintessence (10^60), f(R) gravity (10^40), Spin-Torsion (10^5 illustrative, reparameterized not solved)",
-        "number": "Figure 6",
-        "title": "Fine-Tuning Comparison",
-        "desc": "Log-scale fine-tuning: ΛCDM (10^{120}), Quintessence (10^{60}), f(R) (10^{40}), Spin-Torsion (10^5). Note: 10^5 is illustrative. [Note: 105 figure is reparameterized, not solved]",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure7_observational_timeline.png",
-        "alt": "Timeline of key experimental milestones for testing spin-torsion cosmology: SPHEREx, CMB-S4 (2029), LSST (2030), and LiteBIRD (early 2030s JAXA JFY2032)",
-        "number": "Figure 7",
-        "title": "Observational Timeline",
-        "desc": "Key experimental milestones for testing the spin-torsion model: LiteBIRD (early 2030s, JAXA JFY2032), CMB-S4 (2029), LSST (2030), and SPHEREx.",
-        "source": "Paper 1"
-      },
-      {
-        "src": "/images/figure8_detection_forecast.png",
-        "alt": "Combined detection significance projections across multiple observational probes showing cumulative constraining power for the spin-torsion cosmology model over the next decade",
-        "number": "Figure 8",
-        "title": "Detection Forecast Sensitivity",
-        "desc": "Combined detection significance projections across multiple observational probes, showing cumulative constraining power over the next decade.",
-        "source": "Paper 1"
+        "alt": "Energy density hierarchy from the Planck scale to the observed dark energy scale, illustrating the phenomenol…",
+        "number": "Figure 2 (fig:derivation)",
+        "title": "Energy density hierarchy from the Planck scale to the observed dark energy scale, illustrating the phenomenol…",
+        "desc": "Energy density hierarchy from the Planck scale to the observed dark energy scale, illustrating the phenomenological scaling ansatz _ vac [(α/M)]M_ Pl^4 (Sec. , Appendix ). This ansatz is dimensionally correct on-shell at the bounce but is not derived from the ECH action.",
+        "source": "Paper 1A · v1A.0.44"
       }
     ]
   },
   {
-    "title": "Paper 1 — MCMC Verification",
-    "count": "6 figures",
-    "items": [
-      {
-        "src": "/paper/figures/full_tension_triangle.png",
-        "alt": "Corner plot with 2D posterior contours for all primary cosmological parameters from the full-tension MCMC analysis with 176,840 samples, showing parameter degeneracy structure",
-        "number": "Figure 10",
-        "title": "Full-Tension Triangle Plot",
-        "desc": "Corner plot showing 2D posterior contours for all primary cosmological parameters from the full-tension MCMC analysis with 176,840 samples.",
-        "source": "Paper 1 — MCMC"
-      },
-      {
-        "src": "/paper/figures/full_tension_posteriors.png",
-        "alt": "1D marginalized posterior distributions for key cosmological parameters H0, Omega_b h^2, Omega_c h^2, and Delta N_eff from full-tension MCMC, showing all parameters consistent with standard cosmology",
-        "number": "Figure 11",
-        "title": "Full-Tension Posteriors",
-        "desc": "1D marginalized posterior distributions for key cosmological parameters including H_0, Ω_b h^2, Ω_c h^2, and Δ N_eff.",
-        "source": "Paper 1 — MCMC"
-      },
-      {
-        "src": "/paper/figures/dneff_posterior_full_tension.png",
-        "alt": "Posterior distribution for dark radiation parameter Delta N_eff from the full-tension dataset combination, with spin-torsion prediction overlaid, showing consistency with zero within 1 sigma",
-        "number": "Figure 12",
-        "title": "Δ N_eff Posterior (Full-Tension)",
-        "desc": "Posterior distribution for the dark radiation parameter Δ N_eff, with the spin-torsion prediction overlaid. Consistent with zero within 1σ.",
-        "source": "Paper 1 — MCMC"
-      },
-      {
-        "src": "/paper/figures/full_tension_final_convergence.png",
-        "alt": "Chain convergence traces and R-hat evolution across MCMC iterations confirming R-hat minus 1 less than 0.005 for all parameters, demonstrating full convergence of the full-tension analysis",
-        "number": "Figure 13",
-        "title": "MCMC Convergence Diagnostics",
-        "desc": "Chain convergence traces and R̂ evolution across iterations, confirming R̂ - 1 < 0.005 for all parameters.",
-        "source": "Paper 1 — MCMC"
-      },
-      {
-        "src": "/paper/figures/full_tension_final_correlation.png",
-        "alt": "Pearson correlation coefficient matrix between all sampled cosmological parameters revealing the degeneracy structure of the spin-torsion model from the full-tension MCMC",
-        "number": "Figure 14",
-        "title": "Parameter Correlation Matrix",
-        "desc": "Pearson correlation coefficients between all sampled cosmological parameters, revealing the degeneracy structure of the spin-torsion model.",
-        "source": "Paper 1 — MCMC"
-      },
-      {
-        "src": "/paper/figures/full_tension_final_ess_growth.png",
-        "alt": "Effective sample size ESS accumulation across chain iterations demonstrating sufficient independent samples for reliable posterior estimation in the full-tension MCMC analysis",
-        "number": "Figure 15",
-        "title": "Effective Sample Size Growth",
-        "desc": "ESS accumulation across chain iterations, demonstrating sufficient independent samples for reliable posterior estimation.",
-        "source": "Paper 1 — MCMC"
-      }
-    ]
-  },
-  {
-    "title": "Paper 1 — Dataset Comparisons",
-    "count": "4 figures",
-    "items": [
-      {
-        "src": "/paper/figures/cosmology_dataset_comparison_two_frozen.png",
-        "alt": "H0, Delta N_eff, and S8 posteriors compared across three frozen dataset combinations: Planck+BAO, Planck+BAO+SN, and Full-Tension, showing consistent Delta N_eff approximately zero",
-        "number": "Figure 16",
-        "title": "Cross-Dataset Comparison",
-        "desc": "H_0, Δ N_eff, and S_8 posteriors compared across frozen dataset combinations (Planck+BAO, Planck+BAO+SN, Full-Tension).",
-        "source": "Paper 1 — Analysis"
-      },
-      {
-        "src": "/paper/figures/fig_dneff_viability_two_frozen.png",
-        "alt": "Delta N_eff posterior distributions from both frozen datasets (Planck+BAO and Planck+BAO+SN) showing both are consistent with Delta N_eff=0 at high significance",
-        "number": "Figure 17",
-        "title": "Δ N_eff Viability",
-        "desc": "Posterior distributions from both frozen datasets, demonstrating that both are consistent with Δ N_eff = 0 at high significance.",
-        "source": "Paper 1 — Analysis"
-      },
-      {
-        "src": "/paper/figures/vacuum_scale_sensitivity.png",
-        "alt": "Four-panel Monte Carlo analysis showing vacuum scale distribution, N_tot sensitivity, viable fraction of parameter space, and Spearman rank correlations for the spin-torsion framework",
-        "number": "Figure 18",
-        "title": "Vacuum Scale Sensitivity",
-        "desc": "4-panel Monte Carlo analysis: vacuum scale distribution, N_tot sensitivity, viable fraction of parameter space, and Spearman rank correlations.",
-        "source": "Paper 1 — Analysis"
-      },
-      {
-        "src": "/paper/figures/pk_feature_window_analysis.png",
-        "alt": "Analysis of potential spectral features in the matter power spectrum that could distinguish spin-torsion cosmology from vanilla Lambda-CDM using window function techniques",
-        "number": "Figure 19",
-        "title": "Power Spectrum Feature Window",
-        "desc": "Analysis of potential spectral features in the matter power spectrum that could distinguish spin-torsion cosmology from vanilla ΛCDM.",
-        "source": "Paper 1 — Analysis"
-      }
-    ]
-  },
-  {
-    "title": "Cross-Cutting — Research Program",
+    "title": "Paper 1B — Technical Verification Companion (MCMC + NaMaster)",
     "count": "1 figure",
     "items": [
       {
-        "src": "/articles/images/spin_torsion_mindmap.png",
-        "alt": "BigBounce research program mind map showing relationships between theoretical foundations, observational tests, and publication milestones",
-        "number": "Program Overview",
-        "title": "Research Program Mind Map",
-        "desc": "Full architecture of the BigBounce research program, mapping the relationships between theoretical foundations, observational tests, and publication milestones.",
-        "source": "Research Program"
+        "src": "/images/paper1_corner_full_tension.png",
+        "alt": "Full-tension MCMC corner plot (119,617 post-burnin samples, getdist-thinned from 176,240 raw",
+        "number": "Figure 1 (fig:corner_full_tension)",
+        "title": "Full-tension MCMC corner plot (119,617 post-burnin samples, getdist-thinned from 176,240 raw",
+        "desc": "Full-tension MCMC corner plot (119,617 post-burnin samples, getdist-thinned from 176,240 raw; footnote ) over Planck+BAO+SN+H0+S_8. The _eff posterior is consistent with zero (-0.020± 0.169), confirming no additional relativistic species at recombination.",
+        "source": "Paper 1B · v1B.0.42"
+      }
+    ]
+  },
+  {
+    "title": "Paper 2 — Matter-Bounce f_NL SPHEREx Forecast",
+    "count": "6 figures",
+    "items": [
+      {
+        "src": "/images/fig1_shape_function.png",
+        "alt": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing con…",
+        "number": "Figure 1 (fig:shape)",
+        "title": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing con…",
+        "desc": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing convergence to -35/8 in the squeezed limit. Red circle: squeezed benchmark. Orange square: equilateral. Green triangle: folded.",
+        "source": "Paper 2 · v1.7.43"
+      },
+      {
+        "src": "/images/fig2_survey_comparison.png",
+        "alt": "Detection significance for f_NL = -35/8 across survey configurations",
+        "number": "Figure 2 (fig:surveys)",
+        "title": "Detection significance for f_NL = -35/8 across survey configurations",
+        "desc": "Detection significance for f_NL = -35/8 across survey configurations. Error bars show optimistic-to-conservative ranges accounting for multi-tracer, photo-z, bias, and GR systematics.",
+        "source": "Paper 2 · v1.7.43"
+      },
+      {
+        "src": "/images/fig5_inflation_comparison.png",
+        "alt": "f_NL landscape: matter bounce vs.\\ inflationary alternatives. The bounce prediction (red diamond) is minimall…",
+        "number": "Figure 3 (fig:inflation)",
+        "title": "f_NL landscape: matter bounce vs.\\ inflationary alternatives. The bounce prediction (red diamond) is minimall…",
+        "desc": "f_NL landscape: matter bounce vs.\\ inflationary alternatives. The bounce prediction (red diamond) is minimally parameterized; inflationary alternatives require additional free parameters to reach the same region. SPHEREx 1σ error bar shown in blue.",
+        "source": "Paper 2 · v1.7.43"
+      },
+      {
+        "src": "/images/fig3_kmin_cliff.png",
+        "alt": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPH…",
+        "number": "Figure 4 (fig:kmin)",
+        "title": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPH…",
+        "desc": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel (σ = 0.7, dotted) avoids the ultra-large-scale fragility. Right: corresponding detection significance for f_NL = -35/8.",
+        "source": "Paper 2 · v1.7.43"
+      },
+      {
+        "src": "/images/bphi_sensitivity.png",
+        "alt": "Left: σ(f_NL) as a function of b_ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constra…",
+        "number": "Figure 5 (fig:bphi)",
+        "title": "Left: σ(f_NL) as a function of b_ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constra…",
+        "desc": "Left: σ(f_NL) as a function of b_ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constraint (red dashed) is less sensitive to b_ than SDB but not independent of it; the residual dependence enters at tree level through the Δ b(k) f_NL b_ / k^2 cross-terms f_NL b_ b_1^2 P(k_1) P(k_2) in the multi-tracer Fisher matrix , which propagate to…",
+        "source": "Paper 2 · v1.7.43"
+      },
+      {
+        "src": "/images/fig4_decision_thresholds.png",
+        "alt": "Observational decision thresholds",
+        "number": "Figure 6 (fig:thresholds)",
+        "title": "Observational decision thresholds",
+        "desc": "Observational decision thresholds. Green: strongly favors bounce. Red: strongly disfavors the quasi-dust matter bounce. Blue vertical line: bounce prediction f_NL = -35/8. Error bars: SPHEREx (σ = 0.7) and MegaMapper conservative (σ = 1.5).",
+        "source": "Paper 2 · v1.7.43"
+      }
+    ]
+  },
+  {
+    "title": "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)",
+    "count": "22 figures",
+    "items": [
+      {
+        "src": "/images/fig_architecture.png",
+        "alt": "architecture. Encoder (top) compresses the input to a per-survey latent bottleneck; decoder (bottom) reconstr…",
+        "number": "Figure 1 (fig:architecture)",
+        "title": "architecture. Encoder (top) compresses the input to a per-survey latent bottleneck; decoder (bottom) reconstr…",
+        "desc": "architecture. Encoder (top) compresses the input to a per-survey latent bottleneck; decoder (bottom) reconstructs the input. All layers use ReLU activations; batch normalization (BN) and dropout are applied in the first two encoder layers only. The anomaly score S is the total per-element mean-squared reconstruction error (Eq. ).",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_example_spectra.png",
+        "alt": "Representative spectra illustrating the six main anomaly categories identified across the multi-survey campai…",
+        "number": "Figure 2 (fig:example_spectra)",
+        "title": "Representative spectra illustrating the six main anomaly categories identified across the multi-survey campai…",
+        "desc": "Representative spectra illustrating the six main anomaly categories identified across the multi-survey campaign. Black line: observed spectrum; red dashed: reconstruction. Shaded background regions indicate the DESI B (blue), R (gray), and Z (tan) spectral arms. Anomaly scores are the total per-element MSE (Eq. ). (a) Baseline normal ELG at z=0.92: reconstr…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_skymap_all_surveys.png",
+        "alt": "[Cross-transfer baseline map --- superseded by Path-C native counts",
+        "number": "Figure 3 (fig:skymap)",
+        "title": "[Cross-transfer baseline map --- superseded by Path-C native counts",
+        "desc": "[Cross-transfer baseline map --- superseded by Path-C native counts.] Mollweide projection of the initial cross-transfer anomaly baseline (319,443 detections shown; canonical Path-C unique count is 378,280 after per-survey native retrains and 7-way deduplication --- see Table Path-C row and ). ACT DR6 is quarantined and excluded. Color-coded by survey (see…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_score_distributions.png",
+        "alt": "Anomaly score distributions for the three main spectroscopic surveys",
+        "number": "Figure 4 (fig:score_dist)",
+        "title": "Anomaly score distributions for the three main spectroscopic surveys",
+        "desc": "Anomaly score distributions for the three main spectroscopic surveys. The score S is the per-spectrum reconstruction MSE rescaled to validation z-units: S = (MSE - _ val)/_ val, where _ val and _ val are the mean and standard deviation of MSE on the held-out 20\\% validation split of the per-survey training pool (; cross-transfer for SDSS, native for DESI/LA…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_A1_highz_qso.png",
+        "alt": "DESI DR1 confirmed high-z QSO candidates (z ≈ 6",
+        "number": "Figure 5 (fig:gallery_highz)",
+        "title": "DESI DR1 confirmed high-z QSO candidates (z ≈ 6",
+        "desc": "DESI DR1 confirmed high-z QSO candidates (z ≈ 6.0--6.23). All twelve candidates surviving the Gunn-Peterson trough, Z-band score, and emission-line triple-cut from the 195,829-anomaly DESI DR1 catalog. Images are DESI Legacy Survey DR9 grz composite sky cutouts, 128 × 128 pixels (54'' × 54'' per panel). Panels sorted by decreasing Z-arm sub-score r_Z (top-l…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_sdss_umap.png",
+        "alt": "[Cross-transfer baseline --- superseded by Path-C native retrain (12 sources at S>5",
+        "number": "Figure 6 (fig:sdss_umap)",
+        "title": "[Cross-transfer baseline --- superseded by Path-C native retrain (12 sources at S>5",
+        "desc": "[Cross-transfer baseline --- superseded by Path-C native retrain (12 sources at S>5; see ).] UMAP embedding of the 77,905 SDSS DR18 anomalies from the initial DESI-trained cross-transfer scan, colored by HDBSCAN cluster (left) and by inferred physical category (right). The dominant cluster (green, 84\\% of objects) contains ultra-cool dwarfs (M7--T2) that ar…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_lamost_blue_excess.png",
+        "alt": "LAMOST DR10 training-bias artifact",
+        "number": "Figure 7 (fig:lamost)",
+        "title": "LAMOST DR10 training-bias artifact",
+        "desc": "LAMOST DR10 training-bias artifact. Left: Distribution of the peak-residual wavelength for LAMOST anomalies (green) vs.\\ the expected uniform distribution (gray). The extreme concentration below 4500 \\ (LAMOST B arm) — containing 98\\% of all anomalies — is a hallmark of training-set bias: objects observed at higher airmass or with sub-optimal blue-arm calib…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_neowise_top_anomaly.png",
+        "alt": "NEOWISE top infrared anomaly at (α, ) = (180",
+        "number": "Figure 8 (fig:neowise_top)",
+        "title": "NEOWISE top infrared anomaly at (α, ) = (180",
+        "desc": "NEOWISE top infrared anomaly at (α, ) = (180.59^, 0.56^), score = 11.5. DESI Legacy Survey DR9 grz composite, 256 × 256 pixels (108'' × 108''). Extreme W1-W2 infrared color excess; no prior SIMBAD entry within 5''. The optical counterpart is a bright, saturated source with diffraction spikes indicative of a luminous red stellar or quasi-stellar object. Phys…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_novelty_fractions.png",
+        "alt": "SIMBAD-unmatched fractions for the six surveys with coordinate-based cross-matching, ranked from lowest (Gaia…",
+        "number": "Figure 9 (fig:novelty)",
+        "title": "SIMBAD-unmatched fractions for the six surveys with coordinate-based cross-matching, ranked from lowest (Gaia…",
+        "desc": "SIMBAD-unmatched fractions for the six surveys with coordinate-based cross-matching, ranked from lowest (Gaia DR3, well-characterized variable stars) to highest (DESI DR1, 99\\% of top-10K objects absent from SIMBAD). The dashed line marks the aggregate 58.8\\% SIMBAD-unmatched fraction. The SIMBAD-unmatched fractions plotted here are a database-coverage meas…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_cross_survey_matches.png",
+        "alt": "Spectral pairs for the three DESI × SDSS cross-survey matches",
+        "number": "Figure 10 (fig:crossmatch)",
+        "title": "Spectral pairs for the three DESI × SDSS cross-survey matches",
+        "desc": "Spectral pairs for the three DESI × SDSS cross-survey matches. Left column: DESI DR1 spectrum; right column: same object in SDSS DR18. Black: observed flux (normalized); red dashed: reconstruction. (a, b) Known QSO at z ≈ 1.55: both surveys produce consistent, low anomaly scores, validating the cross-matching approach. (c, d) TIC 374313355 at two epochs: th…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_injection_recovery.png",
+        "alt": "Injection-recovery gate results across the six retained surveys, with three additional non-spectral retrains…",
+        "number": "Figure 11 (fig:injection_recovery)",
+        "title": "Injection-recovery gate results across the six retained surveys, with three additional non-spectral retrains…",
+        "desc": "Injection-recovery gate results across the six retained surveys, with three additional non-spectral retrains (Planck CMB native convolutional autoencoder, NEOWISE ecliptic-pole mask) brought into the same axis for comparison. Solid curves show recovery fraction versus injection amplitude (multiples of local noise σ). The horizontal dashed line marks the 50\\…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/B11_sigma_fnl_vs_ndensity.png",
+        "alt": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gra…",
+        "number": "Figure 12 (fig:shotnoise_sensitivity)",
+        "title": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gra…",
+        "desc": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gray line marks the dense-tracer limit ( = 11.71); the dotted dark-red line marks the single-tracer baseline ( = 16.85). Vertical orange and goldenrod lines mark the gold ( n = 8.5× 10^-6) and silver ( n = 4.5× 10^-5) anomaly sub-samples. The Heinrich-\\…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_top10.png",
+        "alt": "Representative DESI DR1 anomalies across all ten taxonomy families",
+        "number": "Figure 13 (fig:gallery_top10)",
+        "title": "Representative DESI DR1 anomalies across all ten taxonomy families",
+        "desc": "Representative DESI DR1 anomalies across all ten taxonomy families. One highest-scored member per family; 2-row × 5-column layout. Border color indicates taxonomy class. Images are DESI Legacy Survey DR9 grz composites. Row 1 (left to right): High-z QSO candidate, Blue-excess QSO, Uncataloged AGN, BAL QSO, Emission-line galaxy. Row 2: Unusual continuum (LRG…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a2_qso.png",
+        "alt": "Blue-excess QSO candidates (top 16 of 16,602)",
+        "number": "Figure 14 (fig:gallery_a2)",
+        "title": "Blue-excess QSO candidates (top 16 of 16,602)",
+        "desc": "Blue-excess QSO candidates (top 16 of 16,602). Quasars with anomalous UV-blue excess relative to the \\ training distribution. Excess continuum flux at < 4000 \\ drives the B-arm anomaly score in this family. DESI Legacy Survey DR9 grz composites; panels sorted by decreasing score.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a3_agn.png",
+        "alt": "Uncataloged AGN (top 16 of 23,400)",
+        "number": "Figure 15 (fig:gallery_a3)",
+        "title": "Uncataloged AGN (top 16 of 23,400)",
+        "desc": "Uncataloged AGN (top 16 of 23,400). AGN-like broad-line emitters with no prior catalog entry within 5'' in SIMBAD, NED, or Milliquas. 73\\% of this family are genuinely novel at the 5'' match radius. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a4_bal_qso.png",
+        "alt": "Broad Absorption Line (BAL) QSO candidates (top 16 of 13,650)",
+        "number": "Figure 16 (fig:gallery_a4)",
+        "title": "Broad Absorption Line (BAL) QSO candidates (top 16 of 13,650)",
+        "desc": "Broad Absorption Line (BAL) QSO candidates (top 16 of 13,650). Deep UV absorption troughs blueward of Civ 1549 and Mgii 2798 indicate powerful QSO-driven outflows. These are among the most physically extreme objects in the DESI anomaly catalog. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a5_elg.png",
+        "alt": "Extreme emission-line galaxies (top 16 of 35,100)",
+        "number": "Figure 17 (fig:gallery_a5)",
+        "title": "Extreme emission-line galaxies (top 16 of 35,100)",
+        "desc": "Extreme emission-line galaxies (top 16 of 35,100). Galaxies with anomalous emission-line ratios that fall predominantly in the AGN region of the BPT diagram. Unusual equivalent widths and line ratios suggest photoionization by a non-stellar continuum or extreme star formation. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a6_lrg.png",
+        "alt": "Unusual continuum objects (top 16 of 29,250)",
+        "number": "Figure 18 (fig:gallery_a6)",
+        "title": "Unusual continuum objects (top 16 of 29,250)",
+        "desc": "Unusual continuum objects (top 16 of 29,250). Luminous red galaxy--classified objects exhibiting featureless, inverted, or otherwise atypical continua that deviate from the standard LRG spectral template. Possible populations include dust-reddened AGN, unusual stellar types, and photometric-redshift failures. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a7_post_starburst.png",
+        "alt": "Post-starburst galaxy candidates (top 16 of 11,700)",
+        "number": "Figure 19 (fig:gallery_a7)",
+        "title": "Post-starburst galaxy candidates (top 16 of 11,700)",
+        "desc": "Post-starburst galaxy candidates (top 16 of 11,700). Galaxies with strong Balmer absorption (H_A > 5 ) and suppressed [Oii] emission, indicating a recently quenched ( 1 Gyr ago) starburst. The identifies these as anomalous because their post-burst spectral shape falls outside the normal passive-evolution locus. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a8_blue_compact.png",
+        "alt": "Blue compact galaxy candidates (top 16 of 7,800)",
+        "number": "Figure 20 (fig:gallery_a8)",
+        "title": "Blue compact galaxy candidates (top 16 of 7,800)",
+        "desc": "Blue compact galaxy candidates (top 16 of 7,800). Compact morphologies with UV-bright stellar populations. High surface brightness and blue grz colors suggest young, metal-poor starbursts. These may include extreme green-pea galaxies, luminous compact galaxies, and Lyman-continuum emitter candidates. DESI Legacy Survey DR9 grz composites.",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a9_star.png",
+        "alt": "Cool and unusual stellar objects (top 16 of 15,600)",
+        "number": "Figure 21 (fig:gallery_a9)",
+        "title": "Cool and unusual stellar objects (top 16 of 15,600)",
+        "desc": "Cool and unusual stellar objects (top 16 of 15,600). Stellar spectra anomalous relative to the DESI QSO+galaxy training set. Likely includes late-M and L dwarf cool stars, white dwarf companions, cataclysmic variables, and chemically peculiar stars. Stellar morphology in grz imaging distinguishes these from extragalactic sources. DESI Legacy Survey DR9 grz…",
+        "source": "Paper 3 · v3.1.73"
+      },
+      {
+        "src": "/images/fig_gallery_a10_unknown.png",
+        "alt": "Multi-band anomalies and unclassified objects (top 16 of 29,250)",
+        "number": "Figure 22 (fig:gallery_a10)",
+        "title": "Multi-band anomalies and unclassified objects (top 16 of 29,250)",
+        "desc": "Multi-band anomalies and unclassified objects (top 16 of 29,250). Objects in the highest-scoring ``Unknown'' HDBSCAN cluster, exhibiting anomalous flux across all three spectral arms simultaneously. This family has the highest anomaly scores in the full DESI catalog (S_ max = 25.2) and the lowest SIMBAD cross-match rate (< 0.1\\%). The most physically exotic…",
+        "source": "Paper 3 · v3.1.73"
+      }
+    ]
+  },
+  {
+    "title": "Paper 4 — Galaxy Chirality Catalog (3.2M Spirals)",
+    "count": "14 figures",
+    "items": [
+      {
+        "src": "/images/chirality/fig_spiral_density.png",
+        "alt": "Sky density of classified spiral galaxies (CW + CCW) in equatorial coordinates (Mollweide projection, = 64)",
+        "number": "Figure 1 (fig:spiral_density)",
+        "title": "Sky density of classified spiral galaxies (CW + CCW) in equatorial coordinates (Mollweide projection, = 64)",
+        "desc": "Sky density of classified spiral galaxies (CW + CCW) in equatorial coordinates (Mollweide projection, = 64). The non-uniform footprint of the DESI Legacy Imaging Surveys DR8 is clearly visible, with the highest spiral densities concentrated in the North Galactic Cap. This spatial non-uniformity is the primary driver of the pre-MASTER pseudo-C_ℓ inflation in…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_gallery_cw.png",
+        "alt": "Representative clockwise (CW) spiral galaxies from the catalog, ordered by decreasing classification confiden…",
+        "number": "Figure 2 (fig:gallery_cw)",
+        "title": "Representative clockwise (CW) spiral galaxies from the catalog, ordered by decreasing classification confiden…",
+        "desc": "Representative clockwise (CW) spiral galaxies from the catalog, ordered by decreasing classification confidence (left to right, top to bottom). Each cutout is 224 × 224 pixels ( 59'' × 59'') in grz composite from DESI Legacy DR8. All examples shown have equivariant confidence ^ eq > 0.95.",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_gallery_ccw.png",
+        "alt": "Representative counter-clockwise (CCW) spiral galaxies, presented identically to Fig",
+        "number": "Figure 3 (fig:gallery_ccw)",
+        "title": "Representative counter-clockwise (CCW) spiral galaxies, presented identically to Fig",
+        "desc": "Representative counter-clockwise (CCW) spiral galaxies, presented identically to Fig. . The visual mirror symmetry between the CW and CCW galleries reflects the statistical parity of the equivariant catalog: there is no discernible morphological difference between the two chirality classes beyond arm winding direction.",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_equivariance_demo.png",
+        "alt": "Demonstration of the test-time equivariant averaging procedure (Eq",
+        "number": "Figure 4 (fig:equivariance_demo)",
+        "title": "Demonstration of the test-time equivariant averaging procedure (Eq",
+        "desc": "Demonstration of the test-time equivariant averaging procedure (Eq. ). Left column: original galaxy images. Center column: horizontally reflected images. Right column: probability bar charts showing the raw softmax outputs for each orientation and the final equivariant probabilities. The CW and CCW channels swap exactly upon reflection; the equivariant aver…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_class_pie.png",
+        "alt": "Class breakdown of the 8,474,531-galaxy catalog",
+        "number": "Figure 5 (fig:class_pie)",
+        "title": "Class breakdown of the 8,474,531-galaxy catalog",
+        "desc": "Class breakdown of the 8,474,531-galaxy catalog. The three-class output is dominated by the /edge-on class (60.8\\% raw, 62.2\\% post-equivariance), which captures ellipticals, irregulars, edge-on disks, and artifacts. Among the equivariant-classified spirals (N_ spiral^ eq = 3,201,160 = 1,592,107 + 1,609,053 ), the CW and CCW fractions are 50.8\\% and 49.2\\%…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_confidence_dist.png",
+        "alt": "Distribution of maximum-class confidence for all 8",
+        "number": "Figure 6 (fig:confidence_dist)",
+        "title": "Distribution of maximum-class confidence for all 8",
+        "desc": "Distribution of maximum-class confidence for all 8.47 million galaxies. The distribution is strongly bimodal, with a sharp high-confidence peak near unity and a secondary peak near 0.5--0.6 corresponding to ambiguous morphologies (face-on ellipticals misclassifiable as smooth spirals, mergers, and low-surface-brightness objects). The high-confidence peak en…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_sky_map.png",
+        "alt": "HEALPix sky map ( = 64, Mollweide projection) of the per-pixel chirality asymmetry A_p = (N_ CW - N_ CCW) / (…",
+        "number": "Figure 7 (fig:sky_map)",
+        "title": "HEALPix sky map ( = 64, Mollweide projection) of the per-pixel chirality asymmetry A_p = (N_ CW - N_ CCW) / (…",
+        "desc": "HEALPix sky map ( = 64, Mollweide projection) of the per-pixel chirality asymmetry A_p = (N_ CW - N_ CCW) / (N_ CW + N_ CCW) for Catalog C (equivariant). The color scale spans ± 5\\%. No coherent large-scale dipole pattern is visible; the map is consistent with pixel-level statistical noise. Gray pixels contain fewer than 10 spiral galaxies and are masked fr…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_multipoles.png",
+        "alt": "Angular power spectrum of the chirality asymmetry map (Catalog C, equivariant) for multipoles ℓ = 1--5",
+        "number": "Figure 8 (fig:multipoles)",
+        "title": "Angular power spectrum of the chirality asymmetry map (Catalog C, equivariant) for multipoles ℓ = 1--5",
+        "desc": "Angular power spectrum of the chirality asymmetry map (Catalog C, equivariant) for multipoles ℓ = 1--5. Black points show the measured C_ℓ values; the gray band indicates the 1 and 2 envelopes from 1,000 Monte Carlo null realizations at the canonical N_ spiral=3,201,160 shot-noise normalization. The MASTER-deconvolved ℓ=1 value is -0.12 on the analysis subs…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/fig_2pt_chirality.png",
+        "alt": "Two-point chirality correlation w_ CW() (panel a, data with ± 1 and ± 2 null bands shaded) and per-bin signif…",
+        "number": "Figure 9 (fig:wtheta)",
+        "title": "Two-point chirality correlation w_ CW() (panel a, data with ± 1 and ± 2 null bands shaded) and per-bin signif…",
+        "desc": "Two-point chirality correlation w_ CW() (panel a, data with ± 1 and ± 2 null bands shaded) and per-bin significance (panel b). The maximum deviation is -2.41 at ≈0.5^, which coincides with the DESI Legacy Survey brick angular scale ( 0.25^ DR8 brick edge, periodic at 0.5^). A genuine cosmological CW-CW clustering signal would not have a characteristic scale…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_hemisphere.png",
+        "alt": "Hemisphere asymmetry scan results",
+        "number": "Figure 10 (fig:hemisphere)",
+        "title": "Hemisphere asymmetry scan results",
+        "desc": "Hemisphere asymmetry scan results. Each point represents the CW fraction difference between a pair of opposing hemispheres, evaluated for great-circle axes in 10^ increments of Galactic longitude and latitude ( 650 directions). The dashed horizontal lines mark 2 and 3 thresholds. The peak asymmetry of 3.05 (red diamond, local pre-LEE significance) has a hal…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_sky_regions.png",
+        "alt": "CW fraction by sky region for Catalog C (equivariant)",
+        "number": "Figure 11 (fig:sky_regions)",
+        "title": "CW fraction by sky region for Catalog C (equivariant)",
+        "desc": "CW fraction by sky region for Catalog C (equivariant). Each bar shows the CW/(CW+CCW) fraction in one of seven sky regions defined by RA quadrant and declination band. The dashed line marks exact parity (0.5000). All regions fall within ± 0.5\\% of 50/50, confirming the absence of position-dependent classification bias. Error bars show 1 binomial uncertainti…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/chirality/fig_raw_vs_eq.png",
+        "alt": "Side-by-side comparison of the chirality asymmetry sky maps for Catalog A (raw, left) and Catalog C (equivari…",
+        "number": "Figure 12 (fig:raw_vs_eq)",
+        "title": "Side-by-side comparison of the chirality asymmetry sky maps for Catalog A (raw, left) and Catalog C (equivari…",
+        "desc": "Side-by-side comparison of the chirality asymmetry sky maps for Catalog A (raw, left) and Catalog C (equivariant, right), both at = 64 in Mollweide projection. The raw map exhibits a 2.31 real-space dipole (with pre-MASTER pseudo-C_ℓ lowest bandpower (_ eff=4, ℓ[2,6]) inflated to +6.48) aligned with the DESI Legacy survey footprint, produced by a classifier…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/fig_psf_correlation.png",
+        "alt": "PSF-ellipticity correlation calibration",
+        "number": "Figure 13 (fig:psf_correlation)",
+        "title": "PSF-ellipticity correlation calibration",
+        "desc": "PSF-ellipticity correlation calibration. Panel (a): Pixel-level Pearson |r| between f_ CW and seven PSF/morphology covariates (e_1, e_2, |e|, b/a, PA, |e_1|, |e_2|), plotted against the strict |r|<10^-3 bar (dashed black) and the relaxed |r|<10^-2 bar (dotted gray). Red bars are statistically significant at p<10^-2; green bars are not. The maximum |r|=0.042…",
+        "source": "Paper 4 · v1.0.150"
+      },
+      {
+        "src": "/images/fig_binned_cw_fraction.png",
+        "alt": "Per-bin equivariant CW fraction for the three continuous morphology axes available in the production catalog…",
+        "number": "Figure 14 (fig:binned_cw_fraction)",
+        "title": "Per-bin equivariant CW fraction for the three continuous morphology axes available in the production catalog…",
+        "desc": "Per-bin equivariant CW fraction for the three continuous morphology axes available in the production catalog (left: log Sersic effective radius _10 r_ eff, a half-light-radius proxy; center: de-Vaucouleurs profile fraction fracdev; right: axis ratio b/a). Error bars are per-bin Poisson standard errors. The horizontal red line is the catalog-wide CW fraction…",
+        "source": "Paper 4 · v1.0.150"
+      }
+    ]
+  },
+  {
+    "title": "Paper 5 — DESI Chirality × Cosmic-Web Environment",
+    "count": "7 figures",
+    "items": [
+      {
+        "src": "/images/fig_p5_volume_fractions_pie.png",
+        "alt": "In-footprint V-Web volume fractions for the canonical (R_s=25 Mpc/h, _ th=0, N_ grid=256^3) run on 14,622,283…",
+        "number": "Figure 1 (fig:volfrac)",
+        "title": "In-footprint V-Web volume fractions for the canonical (R_s=25 Mpc/h, _ th=0, N_ grid=256^3) run on 14,622,283…",
+        "desc": "In-footprint V-Web volume fractions for the canonical (R_s=25 Mpc/h, _ th=0, N_ grid=256^3) run on 14,622,283 DESI DR1 spectroscopic galaxies. The cluster volume fraction (1.0\\%) reflects the high-density tail; the wall+filament fraction (74.5\\%) dominates as expected for galaxy-traced large-scale structure.",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_cw_by_env_bar.png",
+        "alt": "CW fraction per cosmic-web class on the canonical V-Web run, on n=791,635 chirality-relevant matched spirals",
+        "number": "Figure 2 (fig:cw_by_env)",
+        "title": "CW fraction per cosmic-web class on the canonical V-Web run, on n=791,635 chirality-relevant matched spirals",
+        "desc": "CW fraction per cosmic-web class on the canonical V-Web run, on n=791,635 chirality-relevant matched spirals. Bars show the observed f_ CW per class; black error bars are 95\\% Jeffreys binomial credible intervals. The void bin (n=428) is dominated by counting noise and brackets parity. The dashed horizontal line is parity (f_ CW=0.5); the dotted red line is…",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_cw_vs_density.png",
+        "alt": "Density-quintile null with Paper IV monopole-prediction overlay",
+        "number": "Figure 3 (fig:cw_vs_density)",
+        "title": "Density-quintile null with Paper IV monopole-prediction overlay",
+        "desc": "Density-quintile null with Paper IV monopole-prediction overlay. Left: CW fraction per projected-density quintile (k=5 NN proxy, N=158,327 per bin) with 95\\% Jeffreys binomial CIs; dashed parity f_ CW=0.5 and dotted Paper IV f_ CW=0.4974 references. Right: observed _ fromhalf per quintile (bars) vs the Paper IV-monopole prediction _ pred=-2Δ f_ CWN (red dia…",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_healpix_skymap_nside32.png",
+        "alt": "Per-pixel signed _ fromhalf for the chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide projec…",
+        "number": "Figure 4 (fig:healpix_skymap)",
+        "title": "Per-pixel signed _ fromhalf for the chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide projec…",
+        "desc": "Per-pixel signed _ fromhalf for the chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide projection, equatorial coordinates). The observed |σ|^ obs_=4.13 vs the label-shuffle null |σ|^ null,p99_=4.78 gives a look-elsewhere p=0.135; no NSIDE returns p<0.05. The map shows no coherent large-scale structure beyond random pixel-level scatter; the h…",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_phase2_sensitivity_heatmap.png",
+        "alt": "Phase 2 sensitivity heat-map",
+        "number": "Figure 5 (fig:healpix_skymap)",
+        "title": "Phase 2 sensitivity heat-map",
+        "desc": "Phase 2 sensitivity heat-map: per-cell range of f_ CW across the four environment classes \\void, wall, filament, cluster\\ in percentage points. Each cell corresponds to a complete V-Web re-run on the 14,622,283-galaxy DESI DR1 spectro sample at (R_s, _ th). The maximum range across all nine cells is 0.22percentage points (at R_s=25 Mpc/h, _ th=0.3). The hea…",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_voids_vs_chirality_skymap.png",
+        "alt": "HEALPix NSIDE = 32 Mollweide projection",
+        "number": "Figure 6 (fig:voids_vs_chirality)",
+        "title": "HEALPix NSIDE = 32 Mollweide projection",
+        "desc": "HEALPix NSIDE = 32 Mollweide projection. Top: count of DESIVAST maximal voids per pixel (885 occupied pixels, median 4 voids/pix). Bottom: per-pixel chirality _ from\\ half on the z 0.24 matched-spiral subsample restricted to pixels with 200 spirals (1,496 valid pixels, σ range -3.45 to +3.48). The Pearson correlation across the n_ pix^ both = 727 pixels con…",
+        "source": "Paper 5 · v0.1.44"
+      },
+      {
+        "src": "/images/fig_p5_vweb_vs_tempel_overlay.png",
+        "alt": "V-Web (left) vs Tempel+2014 FoF (right) cross-validation",
+        "number": "Figure 7 (fig:tempel_overlay)",
+        "title": "V-Web (left) vs Tempel+2014 FoF (right) cross-validation",
+        "desc": "V-Web (left) vs Tempel+2014 FoF (right) cross-validation: per-class CW fraction with 95\\% Jeffreys binomial credible intervals, shared y-axis [0.43, 0.53]. Dashed reference is parity f_ CW=0.5; dotted-red reference is the Paper IV global f_ CW=0.4974 classifier-monopole offset. The highest-n concordance is the filament class pair: V-Web filament f_ CW=0.498…",
+        "source": "Paper 5 · v0.1.44"
       }
     ]
   }
 ];
-
-export const allFigures: Figure[] = figureSections.flatMap((s) => s.items);

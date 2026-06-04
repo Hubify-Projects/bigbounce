@@ -335,6 +335,26 @@ export default defineSchema({
     createdAt: v.number(),
   }).index("by_paper", ["paperSlug", "ordinal"]),
 
+  // ──────────────────────────────────────────────────────────────────
+  // paper_figures — per-paper canonical figure list, sourced from each
+  // paper's current .tex \includegraphics + \caption block via
+  // tools/seed_paper_figures.mjs. Drives /figures so the page stays in
+  // sync with the live .tex (no manual figures.ts maintenance).
+  // ──────────────────────────────────────────────────────────────────
+  paper_figures: defineTable({
+    paperSlug: v.string(),               // p1a | p1b | p2 | p3 | p4 | p5
+    ordinal: v.number(),                 // appearance order in the .tex
+    src: v.string(),                     // public path e.g. /images/foo.png
+    alt: v.string(),                     // accessibility alt text
+    title: v.string(),                   // short label "Figure 3"-style heading
+    desc: v.string(),                    // caption (truncated)
+    paperVersion: v.string(),            // version this figure was seeded from
+    citationLabel: v.optional(v.string()),
+    addedAt: v.number(),
+  })
+    .index("by_paper", ["paperSlug"])
+    .index("by_paper_ordinal", ["paperSlug", "ordinal"]),
+
   papers_externalReviews: defineTable({
     paperSlug: v.string(),
     source: v.union(
