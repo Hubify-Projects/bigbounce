@@ -6,10 +6,10 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Contributions",
   description:
-    "Every novel contribution from the BigBounce research program ranked by novelty: NOVEL CONTRIBUTION, FIRST COMPUTATION, INDEPENDENT VERIFICATION, and PRIOR ART. Honest novelty accounting with definitions, equations, and code links.",
+    "Every novel contribution from the BigBounce research program ranked on the canonical N1–N4 novelty scale. Self-claim ceiling is N3 (first-of-kind). N4 (paradigm-shifting / Nobel-worthy) is reserved for outside arbiters and never self-claimed.",
 };
 
-type Tier = "N3" | "N2" | "N1" | "N0";
+type Tier = "N4" | "N3" | "N2" | "N1";
 
 interface Contribution {
   id: string;
@@ -26,17 +26,24 @@ interface Contribution {
 }
 
 const TIER_LABEL: Record<Tier, string> = {
-  N3: "NOVEL CONTRIBUTION",
-  N2: "FIRST COMPUTATION",
-  N1: "INDEPENDENT VERIFICATION",
-  N0: "PRIOR ART",
+  N4: "PARADIGM-SHIFTING (RESERVED)",
+  N3: "FIRST-OF-KIND DEMONSTRATION",
+  N2: "NOVEL COMBINATION / EXTENSION",
+  N1: "INCREMENTAL REFINEMENT / REPLICATION",
+};
+
+const TIER_DEF: Record<Tier, string> = {
+  N4: "Paradigm-shifting / consensus-breaking / Nobel-worthy. Awarded by the field over time — never self-claimed by the authors.",
+  N3: "First-of-kind demonstration, new constraint, or new direction that meaningfully opens or closes a measurable testbed. Ceiling for our self-claims.",
+  N2: "Novel application or combination of existing methods — applying a known technique to a regime it hasn't seen, or combining pipelines to broaden what's measurable.",
+  N1: "Incremental refinement or replication — tightens an existing measurement, fixes a known bias, or reproduces a prior result with a new dataset.",
 };
 
 const TIER_COLOR: Record<Tier, string> = {
+  N4: "#b91c1c",
   N3: "#16a34a",
   N2: "#2563eb",
   N1: "#9333ea",
-  N0: "#6b7280",
 };
 
 const contributions: Contribution[] = [
@@ -384,13 +391,13 @@ function ContributionCard({ c }: { c: Contribution }) {
 }
 
 export default function ContributionsPage() {
-  const grouped: Record<Tier, Contribution[]> = { N3: [], N2: [], N1: [], N0: [] };
+  const grouped: Record<Tier, Contribution[]> = { N4: [], N3: [], N2: [], N1: [] };
   for (const c of contributions) grouped[c.tier].push(c);
   const counts = {
+    N4: grouped.N4.length,
     N3: grouped.N3.length,
     N2: grouped.N2.length,
     N1: grouped.N1.length,
-    N0: grouped.N0.length,
   };
   return (
     <>
@@ -402,13 +409,102 @@ export default function ContributionsPage() {
           contributions
         </h1>
         <p className="subtitle">
-          Every contribution is labeled honestly: <strong>NOVEL</strong> (we did
-          this first), <strong>FIRST COMPUTATION</strong> (new quantitative
-          result within a known framework), <strong>VERIFICATION</strong> (we
-          confirmed someone else's result), or <strong>PRIOR ART</strong>
-          (foundation we use). Full credit to prior work throughout.
+          Each contribution is scored on the canonical four-tier novelty scale.
+          Our self-claim ceiling is <strong>N3</strong> (first-of-kind
+          demonstration). <strong>N4</strong> — paradigm-shifting / Nobel-worthy —
+          is intentionally reserved for outside arbiters and is never
+          self-claimed. Definitions, prior work, and verification links below.
         </p>
       </div>
+
+      <section
+        id="tier-scale"
+        style={{
+          marginTop: 24,
+          padding: 16,
+          border: "1px solid var(--border)",
+          borderRadius: 8,
+          background: "var(--surface)",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "var(--font-mono-stack)",
+            fontSize: 10,
+            textTransform: "uppercase",
+            letterSpacing: 0.8,
+            color: "var(--text-muted)",
+            marginBottom: 10,
+          }}
+        >
+          Novelty tier scale
+        </div>
+        <div style={{ display: "grid", gap: 8 }}>
+          {(["N4", "N3", "N2", "N1"] as Tier[]).map((tier) => {
+            const isReserved = tier === "N4";
+            return (
+              <div
+                key={tier}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "auto 1fr auto",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "8px 10px",
+                  borderLeft: `3px solid ${TIER_COLOR[tier]}`,
+                  background: isReserved
+                    ? "color-mix(in srgb, #b91c1c 5%, var(--surface))"
+                    : "transparent",
+                  opacity: isReserved ? 0.85 : 1,
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    padding: "2px 8px",
+                    borderRadius: 4,
+                    background: TIER_COLOR[tier],
+                    color: "#fff",
+                    fontFamily: "var(--font-mono-stack)",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: 0.4,
+                    minWidth: 28,
+                    textAlign: "center",
+                  }}
+                >
+                  {tier}
+                </span>
+                <span style={{ fontSize: 12, lineHeight: 1.5 }}>
+                  <strong
+                    style={{
+                      fontFamily: "var(--font-mono-stack)",
+                      fontSize: 11,
+                      letterSpacing: 0.4,
+                      color: TIER_COLOR[tier],
+                    }}
+                  >
+                    {TIER_LABEL[tier]}
+                  </strong>
+                  {" — "}
+                  {TIER_DEF[tier]}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono-stack)",
+                    fontSize: 11,
+                    color: "var(--text-muted)",
+                    minWidth: 50,
+                    textAlign: "right",
+                  }}
+                >
+                  {isReserved ? "reserved" : `${counts[tier]} item${counts[tier] === 1 ? "" : "s"}`}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 32, marginTop: 24 }}>
         <aside style={{ position: "sticky", top: 80, alignSelf: "start" }}>
@@ -424,7 +520,7 @@ export default function ContributionsPage() {
           >
             By tier
           </div>
-          {(["N3", "N2", "N1", "N0"] as Tier[]).map((tier) => (
+          {(["N4", "N3", "N2", "N1"] as Tier[]).map((tier) => (
             <a
               key={tier}
               href={`#tier-${tier}`}
@@ -441,7 +537,7 @@ export default function ContributionsPage() {
             >
               <span style={{ color: TIER_COLOR[tier], fontWeight: 700 }}>{tier}</span>
               {" — "}
-              {TIER_LABEL[tier]} · {counts[tier]}
+              {tier === "N4" ? "reserved" : `${counts[tier]} item${counts[tier] === 1 ? "" : "s"}`}
             </a>
           ))}
           <div
@@ -493,7 +589,65 @@ export default function ContributionsPage() {
         </aside>
 
         <div style={{ display: "grid", gap: 14 }}>
-          {(["N3", "N2", "N1", "N0"] as Tier[]).map(
+          <section id="tier-N4" style={{ scrollMarginTop: 80 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 12,
+              }}
+            >
+              <Badge variant="outline" className="font-mono text-[10px]">
+                N4
+              </Badge>
+              <h2
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-mono-stack)",
+                  fontSize: 14,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  color: TIER_COLOR.N4,
+                }}
+              >
+                {TIER_LABEL.N4}
+              </h2>
+            </div>
+            <Card
+              style={{
+                padding: 20,
+                borderLeft: `3px solid ${TIER_COLOR.N4}`,
+                background: "color-mix(in srgb, #b91c1c 4%, var(--surface))",
+              }}
+            >
+              <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6 }}>
+                <strong>Intentionally empty.</strong> N4 is reserved for
+                paradigm-shifting, consensus-breaking, or Nobel-worthy results.
+                That tier is awarded by the field over time — through broad
+                community replication, citation, and consensus — not by the
+                authors. We cap our own claims at N3 (first-of-kind
+                demonstration / new constraint / new direction) and let outside
+                arbiters raise the ceiling if any of this work earns it.
+              </p>
+              <p
+                style={{
+                  marginTop: 10,
+                  marginBottom: 0,
+                  fontSize: 12,
+                  lineHeight: 1.6,
+                  color: "var(--text-muted)",
+                }}
+              >
+                Standing rule (2026-06-03): no BigBounce / Hubify-published
+                paper self-annotates at N4. Site copy, paper abstracts, and
+                Convex novelty fields are all capped at N3 by the{" "}
+                <code>/never-claim-n4</code> audit.
+              </p>
+            </Card>
+          </section>
+
+          {(["N3", "N2", "N1"] as Tier[]).map(
             (tier) =>
               grouped[tier].length > 0 && (
                 <section key={tier} id={`tier-${tier}`} style={{ scrollMarginTop: 80 }}>

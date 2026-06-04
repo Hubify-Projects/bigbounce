@@ -6,6 +6,7 @@ import {
   Activity,
   BarChart3,
   BookOpen,
+  Code2,
   Database,
   FileText,
   Gauge,
@@ -82,6 +83,7 @@ const sections: SidebarSection[] = [
 const tail: SidebarLink[] = [
   { href: "/activity", label: "activity", icon: Activity },
   { href: "/status", label: "status", icon: Gauge },
+  { href: "/docs", label: "docs", icon: Code2 },
 ];
 
 function isActive(pathname: string, href: string): boolean {
