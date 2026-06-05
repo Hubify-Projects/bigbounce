@@ -116,3 +116,26 @@
 **Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
 
 ---
+### Meta-reviewer (v3.2) findings on fire 1
+
+| Paper | ESS | MAJ | Notable |
+|---|---|---|---|
+| P1A | 9 | 0 | (still landing) |
+| P1B | 3 | 7 | CMB E-B analysis deep gaps |
+| P2 | (landed) | | (still indexing) |
+| P3 | (running) | | — |
+| P4 | 4 | 5 | META-E1 Ap denominator factor-of-2 ambiguity (fCW-0.5 vs Ap), META-E2 W_p=N_all includes NS (persists), META-E3 monopole-leakage explanation for POST-MASTER residual unproven, META-E4 double LEE correction (max-stat MC + Bonferroni is wrong) |
+| P5 | 2 | 6 | T-Web vs V-Web mislabeling persists |
+
+### Loop status
+- Fire 1 complete (v3.1 reviews + most meta-reviews landed)
+- P3 meta-review still running
+- 4 NEW ESSENTIAL findings this round (loop continues; need 3 zero-new-ESS rounds to self-terminate)
+- Next fire: cron at :17 next hour
+
+### v3 tool improvements seeded into AUTOLOOP_IMPROVEMENTS.md
+- bash 3.2 compatibility for v3_review_autoloop.sh (fixed)
+- gpt-5 reasoning_effort vs max_output_tokens (fixed)
+- Claude streaming + adaptive thinking (fixed)
+- Synthesis parser for markdown header IDs (fixed)
+- gap_audit excludes synthesis/meta files (fixed)
