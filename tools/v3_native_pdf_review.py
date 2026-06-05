@@ -49,7 +49,7 @@ ENV_PATHS = [
 ]
 
 # ---------------------------------------------------------------------------
-# THE REVIEW PROMPT — same one Houston copies into ChatGPT/Gemini/Grok/Claude
+# THE REVIEW PROMPT — pass 1 (initial brutal review)
 # ---------------------------------------------------------------------------
 REVIEW_PROMPT_TEMPLATE = """\
 [REVIEWER METADATA — NOT PART OF THE PAPER — DO NOT FLAG AS ARTIFACTS]
@@ -58,6 +58,8 @@ Round context (not in paper): {round_context}
 [END REVIEWER METADATA]
 
 You are a {persona} for a cosmology methods paper submitted to Physical Review D.
+This is one of the most rigorous physics journals in the world. The acceptance
+bar is HIGH. Reject anything that doesn't meet PRD standards.
 
 YOUR ROLE: {focus}
 
@@ -65,8 +67,10 @@ CRITICAL: The [REVIEWER METADATA] block above is NOT part of the paper. Only fla
 text that actually appears in the rendered PDF you are looking at.
 
 REVIEW INSTRUCTIONS:
-1. Read the FULL paper carefully (do not skim — examine figures, tables, equations,
-   captions, references, and the abstract for arithmetic and cross-section consistency).
+1. Read the FULL paper carefully. Do NOT skim. Examine every figure, table,
+   equation, caption, reference, and the abstract. RECOMPUTE every quoted σ,
+   p-value, ratio, and percentage from the displayed numbers. Check dimensional
+   consistency of every equation. Audit every figure axis label.
 2. Write a complete referee report. NO cap on findings — list everything you find.
 3. Classify each finding as:
      - ESSENTIAL: paper cannot be accepted without this fix
@@ -88,18 +92,84 @@ REVIEW INSTRUCTIONS:
    placeholders appear in the body, flag each one.
 9. If any duplicate phrases appear (e.g. "canonical canonical-mask"), flag them.
 10. Audit every load-bearing scalar in the abstract: is it consistent with the body?
-    Check arithmetic — recompute every quoted σ, p-value, and ratio.
+    Recompute it from the displayed inputs.
 11. AUDIT FIGURES AND TABLES: look at each figure and table. Does the caption match
-    the body claim? Are the numbers in tables internally consistent with the text?
-    Are axes labeled? Is the figure useful or filler?
+    the body claim? Are the numbers internally consistent? Are axes labeled?
+    Are units correct? Is the figure useful or filler?
 12. Check that the abstract accurately summarizes what the paper PROVES — not
     what it hopes to prove.
+13. Check the bibliography: do citation years, arXiv IDs, journals match? Are
+    quoted statistics traceable to the cited paper's abstract/tables?
+14. Check for unsupported claims: every assertion of novelty, "first", "largest",
+    "unprecedented" — is it true?
 
 End your report with:
 ## Summary recommendation
 One of: REJECT | MAJOR REVISIONS | MINOR REVISIONS | ACCEPT WITH MINOR CORRECTIONS | ACCEPT
 
 Then one paragraph justifying your recommendation.
+"""
+
+# ---------------------------------------------------------------------------
+# PASS 2 — self-critique prompt (find what was missed)
+# ---------------------------------------------------------------------------
+SELF_CRITIQUE_TEMPLATE = """\
+Here is the review you just wrote on this paper:
+
+================================================================
+{initial_review}
+================================================================
+
+Now re-examine the paper with FRESH EYES. Your previous review almost certainly
+missed important issues. PRD reviewers expect rigor — what did you not look hard enough at?
+
+Check specifically these classes of issue, which initial passes routinely miss:
+
+A. ARITHMETIC. For every σ, percentage, ratio, count, and p-value in tables,
+   abstract, and conclusions — RECOMPUTE the value from the inputs in the
+   adjacent column / displayed numbers. Flag every value that doesn't match.
+
+B. FIGURE-CAPTION VS BODY-CLAIM. Every figure has a caption, and somewhere
+   in the body there's a sentence describing what the figure shows. Compare them.
+   Do the numbers match? Do the axes match the units quoted in the body?
+
+C. EQUATION DIMENSIONAL CONSISTENCY. For every equation displayed: does the
+   left side have the same units as the right side? Are any unit factors
+   missing? Are normalizations explicit?
+
+D. INTERNAL CROSS-REFERENCES. Every \\ref, \\cite, \\eqref. Does the section
+   referenced actually contain what the citing sentence claims? Is the cited
+   equation the right one?
+
+E. NULL PROCEDURE COMPARABILITY. Every σ value implicitly comes from a null
+   procedure. Are different σ values from different null procedures juxtaposed
+   without an explicit "not directly comparable" qualifier? Flag every
+   juxtaposition.
+
+F. ABSTRACT FAITHFULNESS. Re-read the abstract one sentence at a time.
+   For each sentence: where in the body is this proven? Does the body
+   support the claim, or does it walk it back?
+
+G. UNSUPPORTED NOVELTY CLAIMS. Every "first", "largest", "novel",
+   "unprecedented", "survey-scale" — is the supporting comparison shown?
+   Or is it hand-waved?
+
+H. UNQUANTIFIED HEDGES. Phrases like "consistent with", "broadly compatible",
+   "no significant tension" — these often hide quantitative gaps. Is the
+   actual delta + uncertainty quoted?
+
+I. APPENDIX VS MAIN-TEXT MISMATCH. Do the appendices' equations / configs
+   match what the main text claims was done?
+
+J. STALE NUMBERS. Some numbers may be from earlier paper versions that
+   weren't updated when other numbers changed. Look for inconsistent pairs.
+
+Add ALL new findings to your report below, using the same format
+([{paper_tag}-E#, M#, m#, N#]). Do not repeat findings already in your initial
+review — only add NEW ones.
+
+If you find nothing new, write "NO ADDITIONAL FINDINGS" and a brief explanation
+of why your initial review was already complete.
 """
 
 # ---------------------------------------------------------------------------
@@ -126,8 +196,8 @@ REVIEWERS = {
     },
     "OpenAI_methodology": {
         "vendor": "openai",
-        "model": "o3",
-        "fallback": "gpt-4.1",
+        "model": "gpt-5",
+        "fallback": "o3",
         "persona": "Physical Review D methodology referee with full PDF access",
         "focus": (
             "Methodology rigor: statistical-method validity, derivation chains, "
@@ -296,28 +366,44 @@ def call_anthropic(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple
 
 
 def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
-    """OpenAI Responses API with native PDF via Files API + reasoning effort high."""
+    """OpenAI Responses API with native PDF via Files API + reasoning effort high.
+    Handles both reasoning models (o3, o3-pro) and gpt-5 family."""
     from openai import OpenAI
-    client = OpenAI(api_key=keys["OPENAI_API_KEY"], timeout=600.0)
+    client = OpenAI(api_key=keys["OPENAI_API_KEY"], timeout=900.0)
 
     with open(pdf_path, "rb") as f:
         upload = client.files.create(file=f, purpose="user_data")
 
-    try:
-        resp = client.responses.create(
-            model=model,
-            reasoning={"effort": "high"},
-            input=[
-                {
-                    "role": "user",
-                    "content": [
-                        {"type": "input_file", "file_id": upload.id},
-                        {"type": "input_text", "text": prompt},
-                    ],
-                }
+    common_input = [
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_file", "file_id": upload.id},
+                {"type": "input_text", "text": prompt},
             ],
-            max_output_tokens=32000,
-        )
+        }
+    ]
+
+    try:
+        # Try with reasoning param first (works for o3, o3-pro, gpt-5)
+        try:
+            resp = client.responses.create(
+                model=model,
+                reasoning={"effort": "high"},
+                input=common_input,
+                max_output_tokens=32000,
+            )
+        except Exception as e:
+            err_msg = str(e).lower()
+            # Some models don't accept reasoning param; retry without
+            if "reasoning" in err_msg or "unsupported parameter" in err_msg or "unknown parameter" in err_msg:
+                resp = client.responses.create(
+                    model=model,
+                    input=common_input,
+                    max_output_tokens=32000,
+                )
+            else:
+                raise
 
         # output_text is the convenience getter when present
         text = getattr(resp, "output_text", "") or ""
@@ -329,6 +415,7 @@ def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -
                             text += c.text
         model_used = getattr(resp, "model", model)
 
+        # Detect silent downgrade only — gpt-5 → gpt-4o / gpt-3.5 / gpt-4.1 is a regression
         if "gpt-4o" in model_used.lower() or "gpt-3.5" in model_used.lower():
             raise RuntimeError(f"silent fallback: requested {model}, got {model_used}")
         return text, model_used
@@ -435,6 +522,21 @@ def call_perplexity(keys: dict, model: str, prompt: str, paper_text: str) -> tup
 # ---------------------------------------------------------------------------
 # Reviewer dispatcher
 # ---------------------------------------------------------------------------
+def _dispatch_one_call(vendor: str, keys: dict, model: str, prompt: str, pdf_path: Path, paper_text: str) -> tuple[str, str]:
+    if vendor == "anthropic":
+        return call_anthropic(keys, model, prompt, pdf_path)
+    elif vendor == "openai":
+        return call_openai_responses(keys, model, prompt, pdf_path)
+    elif vendor == "gemini":
+        return call_gemini(keys, model, prompt, pdf_path)
+    elif vendor == "xai":
+        return call_grok_images(keys, model, prompt, pdf_path)
+    elif vendor == "perplexity":
+        return call_perplexity(keys, model, prompt, paper_text)
+    else:
+        raise RuntimeError(f"unknown vendor: {vendor}")
+
+
 def run_reviewer(
     name: str,
     cfg: dict,
@@ -445,43 +547,45 @@ def run_reviewer(
     paper_tag: str,
     keys: dict,
     out_dir: Path,
+    enable_pass2: bool = True,
 ) -> dict:
     t0 = time.time()
     content = ""
     model_used = "unknown"
     error_msg = ""
     fallback_used = False
+    pass2_added = 0
     vendor = cfg["vendor"]
 
     try:
         primary_model = cfg["model"]
         fallback_model = cfg["fallback"]
         try:
-            if vendor == "anthropic":
-                content, model_used = call_anthropic(keys, primary_model, prompt, pdf_path)
-            elif vendor == "openai":
-                content, model_used = call_openai_responses(keys, primary_model, prompt, pdf_path)
-            elif vendor == "gemini":
-                content, model_used = call_gemini(keys, primary_model, prompt, pdf_path)
-            elif vendor == "xai":
-                content, model_used = call_grok_images(keys, primary_model, prompt, pdf_path)
-            elif vendor == "perplexity":
-                content, model_used = call_perplexity(keys, primary_model, prompt, paper_text)
-            else:
-                raise RuntimeError(f"unknown vendor: {vendor}")
+            content, model_used = _dispatch_one_call(vendor, keys, primary_model, prompt, pdf_path, paper_text)
         except Exception as e:
             print(f"[{name}] primary {primary_model} failed: {e!r} — trying fallback {fallback_model}", file=sys.stderr)
             fallback_used = True
-            if vendor == "anthropic":
-                content, model_used = call_anthropic(keys, fallback_model, prompt, pdf_path)
-            elif vendor == "openai":
-                content, model_used = call_openai_responses(keys, fallback_model, prompt, pdf_path)
-            elif vendor == "gemini":
-                content, model_used = call_gemini(keys, fallback_model, prompt, pdf_path)
-            elif vendor == "xai":
-                content, model_used = call_grok_images(keys, fallback_model, prompt, pdf_path)
-            elif vendor == "perplexity":
-                content, model_used = call_perplexity(keys, fallback_model, prompt, paper_text)
+            content, model_used = _dispatch_one_call(vendor, keys, fallback_model, prompt, pdf_path, paper_text)
+
+        # PASS 2 — self-critique to catch what initial review missed
+        if enable_pass2 and content and len(content) > 500 and "FAILED" not in content[:60]:
+            try:
+                p2_prompt = SELF_CRITIQUE_TEMPLATE.format(
+                    initial_review=content[:20000],  # cap for context budget
+                    paper_tag=paper_tag,
+                )
+                # Perplexity gets paper text again since it's text-mode
+                # Others get the PDF again
+                p2_content, _ = _dispatch_one_call(
+                    vendor, keys,
+                    primary_model if not fallback_used else fallback_model,
+                    p2_prompt, pdf_path, paper_text,
+                )
+                if p2_content and "NO ADDITIONAL FINDINGS" not in p2_content[:200].upper():
+                    content += "\n\n---\n\n## PASS 2 — self-critique findings (what initial review missed)\n\n" + p2_content
+                    pass2_added = len(p2_content)
+            except Exception as e:
+                print(f"[{name}] pass-2 self-critique failed (non-fatal): {e!r}", file=sys.stderr)
     except Exception as e:
         error_msg = repr(e) + "\n" + traceback.format_exc()
         content = f"## Reviewer call FAILED\n\n```\n{error_msg}\n```\n"
@@ -500,11 +604,12 @@ def run_reviewer(
     else:
         input_note = "TEXT + web search"
 
+    p2_note = f" + pass-2 self-critique ({pass2_added} chars)" if pass2_added > 0 else (" + pass-2 NO_NEW" if pass2_added == 0 and not error_msg else "")
     header = (
         f"# {paper_tag} {round_label} — {cfg['persona']}\n\n"
         f"**Reviewer**: `{name}`\n"
         f"**Model**: `{model_used}`{fb}\n"
-        f"**Input format**: {input_note}\n"
+        f"**Input format**: {input_note}{p2_note}\n"
         f"**Wall time**: {dt:.1f}s\n\n---\n\n"
     )
 

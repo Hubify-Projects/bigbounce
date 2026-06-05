@@ -89,3 +89,30 @@ Work plan:
 3. Audit site/API/Convex sync — find every stale ref (P5 PDF path will be #1)
 4. Fire R9 direct-vendor reviews on all 6 papers
 5. Triage R9 + close findings + bump versions as needed
+
+---
+
+## 2026-06-05 — Review gap closure brain dump (Houston pushback x2)
+
+> Alright I got to be real with you right now. We are hitting a major bottleneck and we've been hitting this bottleneck for weeks now, if not months. The issue is that for whatever reason your claude-code running these internal r-round revisions is not catching even a fraction of the issues that are being caught when I run these external reviews. You need to figure out why that is and we need to solve that problem immediately. It is the main bottleneck holding up this entire project.
+>
+> It's one of the reasons that we implemented some of these new paper-related self-improving skills, where it should be auditing every r-round review, finding common patterns, and then adding those to the paper review and paper compiling and paper writing skills. Even that is not enough. The fact that there is such a wide gap between simply me copying the exact prompt that you are giving me to copy on the page with the exact PDF that you are compiling for me and pasting it into ChatGPT, GroG, and Gemini, and I'm getting such a huge gap between what they are saying and what you are saying when you run the review, is a massive problem and probably the biggest bottleneck and problem in this entire research lab and this entire research project. I need you to close that gap completely. It is unacceptable and it is not scalable or sustainable any longer.
+>
+> You need to figure out why that is and solve that problem immediately. Also I want you to take the prompts that you're telling me to copy along with the PDFs to run them as my external review. I want you to do it with your own model and the external models that you already have at your disposal. You already have these models that I'm just using the no-chat web app versions of to do these external reviews so this should not be a problem that it is right now. You should run your internal reviews on the PDFs themselves, the ones that you are compiling. You run the review on the PDF itself. If that's a possible issue then that could be an issue. You need to actually use the prompts that you are giving me to run my external review to run your internal review on each paper, the same prompt that you're giving me for each paper, using that prompt on the exact PDF that has been compiled and actually running the review on the PDF itself and not some code version of it.
+>
+> I don't know if that's part of the issue but to me it seems like that could be. Otherwise why am I running this prompt that you're giving me with the exact PDF that you're compiling, using the same models and getting wildly different negative reviews and finding so many issues every time, which is totally unacceptable? You have all of the models. You are literally the one writing the prompt to review the paper. You are literally the one compiling the PDF. You have access to everything you need and you should.
+>
+> The gap between what you're telling me is a 95% closure ready for external review and then every single time when I run it there are so many issues that it finds every single time externally, which you're somehow not finding when you're doing these internal reviews or internal multi-model adversarial reviews all around. You need to close this gap in every single way possible. We need to do everything that I've mentioned and you need to investigate this issue even further beyond the solutions that I've proposed as possible and go way beyond that. Make sure that you actually solve this problem 100% and that the next time I run an external review on any of these papers, the gap between what you tell me and what I get in terms of my response from the external review is very very small. They should be almost the same.
+>
+> Continue looping and testing until this gap is completely solved and this problem is completely solved.
+>
+> You cannot just run this on paper four. You need to run this on all of the papers and I'm serious. You need to identify what is happening, fix the problem, and continue looping until you are 1000% positive that the gap between the external review and the internal reviews that you are running, not just on paper four but on all the papers, using the exact PDFs and the exact prompts that you're telling me to run externally. You're finding anything that these other models would find. You have access to the models to use as well for your multi-model peer review internally. There's no excuse for this anymore. Continue looping and testing until your internal review finds everything that your multi-model internal review finds on the same PDFs, exactly using the PDFs and the same prompts, exact prompts. And continue looping until this problem is 100% officially solved. I want you to run. Continue improving everything without stopping comprehensively. Every hour I want you to run the next loop to check the internal R round plus the internal multi-model R round plus all the improvements that you've made to the entire process of reviewing all of the skills that should be self-improving every time they run, all of the everything. Don't just make the papers better every time. Make the skills and tools and everything you are using to review the papers better and better every single time.
+
+**Pushback (after first attempt at gap closure):**
+
+> i still don't think you have fully closed the gap on solving this bottleneck you need to do better
+
+> i still don't think you have fully closed the gap on solving this bottleneck you need to do better
+
+Switched to Opus 4.7 + xhigh effort for this.
+
