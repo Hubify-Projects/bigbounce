@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.157}
+\newcommand{\paperVersion}{v1.0.158}
 \newcommand{\paperTimestamp}{June 2026}
 \newcommand{\paperRoundNote}{Catalog release manuscript; condensed for journal submission.}
 
@@ -130,7 +130,7 @@ We declare the estimator hierarchy used throughout:
 Table~\ref{tab:headline_summary} consolidates per-estimator $N_{\rm spiral}$, $f_{\rm sky}$, mask, null type, and reported $\sigma$.
 
 \begin{table*}[t]
-\caption{\label{tab:headline_summary}Headline-estimator summary. $N_{\rm catalog\,spiral}$ is the underlying Catalog~C spiral count; $N_{\rm map\,weighted}$ is the pixel-weighted galaxy count feeding the analysis-mask map.}
+\caption{\label{tab:headline_summary}Headline-estimator summary. $N_{\rm catalog\,spiral}$ is the underlying Catalog~C spiral count (CW+CCW only). $N_{\rm map\,weighted} = \sum_{p\in\rm mask} W_p$ where $W_p = N_{\rm all}^{(p)}$ is the total classified-galaxy count in pixel~$p$ (CW+CCW+NS), used as a survey-depth weight in the NaMaster field object. $N_{\rm map\,weighted}$ exceeds $N_{\rm catalog\,spiral}$ because $W_p$ includes non-spiral galaxies (${\sim}62\%$ of the catalog); each galaxy is counted once.}
 \begin{ruledtabular}
 \begin{tabular}{lrrcccr}
 \textbf{Estimator} & $N_{\rm catalog\,spiral}$ & $N_{\rm map\,weighted}$ & $f_{\rm sky}$ & \textbf{Mask} & \textbf{Null} & \textbf{$\sigma$} \\
@@ -329,7 +329,7 @@ The empirical $50\%$-recovery-at-$3\sigma$ threshold is $A\!\approx\!0.75\%$ (fu
 For full reproducibility we record the NaMaster (\texttt{pymaster} 2.6) configuration used for the MASTER mode-coupling deconvolution of the chirality-asymmetry pseudo-$C_\ell$.
 
 \paragraph{Declared data vector and $\ell\!=\!0$ treatment.}
-The headline dipole estimator of Sec.~\ref{sec:dipole} uses a single declared data vector: the monopole-subtracted CW-deficit map $f_{\rm CW}(\hat n)\!-\!0.5$ on the subsample mask ($f_{\rm sky}\!=\!0.659$), weighted by per-pixel spiral count. The monopole subtraction is performed at the data-vector construction step so that the $\ell\!=\!0$ mode is removed from the input field, and the MASTER mode-coupling matrix does NOT include $\ell\!=\!0$ on either the input or output side. The monopole-mask leakage channel (Sec.~\ref{sec:monopole_mask_null}) uses a separate input field constructed WITHOUT monopole subtraction precisely to expose the leakage.
+The headline dipole estimator of Sec.~\ref{sec:dipole} uses a single declared data vector: the monopole-subtracted CW-deficit map $f_{\rm CW}(\hat n)\!-\!0.5$ on the subsample mask ($f_{\rm sky}\!=\!0.659$). The NaMaster weight (mask) map assigns $W_p = N_{\rm all}^{(p)}$ to each pixel~$p$, where $N_{\rm all}^{(p)} = N_{\rm CW}^{(p)} + N_{\rm CCW}^{(p)} + N_{\rm NS}^{(p)}$ is the total count of all classified galaxies in that pixel (a standard survey-depth proxy). The asymmetry field is $A_p = (N_{\rm CW}^{(p)} - N_{\rm CCW}^{(p)})/(N_{\rm CW}^{(p)} + N_{\rm CCW}^{(p)})$ (spirals only). The quantity $N_{\rm map, weighted} = \sum_{p \in \rm mask} W_p = 5{,}547{,}858$ reported in Table~I is the sum of these pixel weights; it exceeds $N_{\rm catalog, spiral} = 3{,}201{,}160$ because each $W_p$ includes non-spiral objects (${\sim}62\%$ of the catalog). No galaxy is counted more than once. The depth weighting does not introduce a monopole--dipole coupling because the galaxy-weighted mask-mean $\langle A\rangle_{\rm mask, gw}$ is subtracted before field construction. The monopole subtraction is performed at the data-vector construction step so that the $\ell\!=\!0$ mode is removed from the input field, and the MASTER mode-coupling matrix does NOT include $\ell\!=\!0$ on either the input or output side. The monopole-mask leakage channel (Sec.~\ref{sec:monopole_mask_null}) uses a separate input field constructed WITHOUT monopole subtraction precisely to expose the leakage.
 
 \paragraph{Bandpower vs single-$\ell$ estimator distinction.}
 The reported MASTER $\ell\!=\!1$ result is the \emph{single-multipole bin} from $\ell\!=\!1$ to $\ell\!=\!1$ (\texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}, $\ell\!=\!1$ row of the bandpower matrix), NOT a bandpower over a range.
