@@ -62,3 +62,24 @@ will keep firing until LLM reviewers catch up.
 - Add stale-number-between-sections mechanical check (P4-E12 type) — search for repeated
   exact integers across sections and flag if same identity but different value.
 - Wire pattern-038 σ-qualifier check into post-compile pdflatex audit (latex-audit skill).
+
+## 2026-06-05 16:17pt — autoloop fire 3 setup
+
+**Improvement applied**: `tools/v3_persistence_tracker.py` — cross-fire
+fingerprint of META findings. Identifies findings the meta-reviewer surfaces
+in multiple consecutive rounds. After 2 fires, 3 findings persist ≥2 rounds:
+P1B/lee, P3/dedup, P4/binomial. After fire 3, these will likely hit 3/3 →
+LOAD-BEARING tier, escalated to top of TRIAGE_QUEUE.
+
+**Observation**: The current consensus_key heuristics in v3_autoloop_summary.py
+cluster on shallow keywords (`audit_artifact`, `companion`, `length`). The deep
+meta-reviewer findings (`binomial n_total`, `LEE double-correction`, `T-Web vs
+V-Web`) are missed because they don't appear as single-word matches. The
+persistence_tracker uses richer fingerprints — this is the right direction.
+
+**Improvement queued**:
+- Merge persistence_tracker's keyword vocabulary into v3_autoloop_summary.py so
+  the cross-round diff also catches the deep findings, not just the shallow ones.
+- Auto-promote PERSISTENT_FINDINGS.md entries to TRIAGE_QUEUE_<date>.md
+  when count ≥3 rounds.
+- Add fingerprint summary to AUTOLOOP_LOG.md per round.
