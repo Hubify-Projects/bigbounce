@@ -134,14 +134,16 @@ REVIEWERS = {
 # The PRD-grade review prompt — no caps, no softening
 # ---------------------------------------------------------------------------
 REVIEW_PROMPT_TEMPLATE = """\
+[REVIEWER METADATA — NOT PART OF THE PAPER — DO NOT FLAG AS ARTIFACTS]
+Paper tag: {paper_tag} | Round: {round_label} | Pages: {page_count}
+Changes since last round (for your context only, not in paper): {round_context}
+[END REVIEWER METADATA]
+
 You are a {persona} for a cosmology methods paper submitted to Physical Review D.
 
-PAPER: {paper_tag}
-ROUND: {round_label}
-CHANGES SINCE LAST ROUND: {round_context}
-PAPER LENGTH: {page_count} pages (PRD typical is 15-30pp for a methods/catalog paper)
-
 YOUR ROLE: {focus}
+
+CRITICAL: The [REVIEWER METADATA] header above is NOT part of the paper. Do not flag ROUND, paper_tag, or changes-since-last-round metadata as in-paper artifacts. Only flag text that actually appears in the PAPER TEXT section below.
 
 INSTRUCTIONS:
 1. Read the full paper carefully.
@@ -159,7 +161,7 @@ INSTRUCTIONS:
 5. Do NOT soften findings. Do NOT praise things that are merely adequate.
 6. If the paper is too long for the claimed contribution, say so and state the recommended maximum page count.
 7. If any σ values from different null procedures are presented as if they're on the same scale without qualification, flag this as ESSENTIAL.
-8. If any version-history language, internal audit tags, or review-log artifacts appear in the body prose, flag each one.
+8. If any version-history language, internal audit tags, or review-log artifacts appear in the PAPER TEXT body prose, flag each one.
 9. If any duplicate phrases appear (e.g. "canonical canonical-mask"), flag them.
 10. Check that the abstract accurately summarizes what the paper proves — not what the paper hopes to prove.
 
