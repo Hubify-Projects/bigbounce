@@ -280,8 +280,7 @@ $0.01 \le z \le 2.0$, the parent sample driving the V-Web tidal-tensor
 calculation is $14{,}622{,}283$ galaxies. These row counts are
 \emph{derived in this work} by applying our cuts to the DR1 zall
 catalog (not published DR1 constants); the fetch + filter driver
-is \artifact{pipelines/p5\_desi\_chirality/scripts/02\_fetch\_desi\_dr1.py}
-with a SHA-256 sidecar anchoring the iron-reduction snapshot.
+is derived in this work.
 
 \subsection{Cross-match method}
 
@@ -290,12 +289,10 @@ using \textsc{astropy} \texttt{SkyCoord.match\_to\_catalog\_sky}. The
 primary acceptance radius is $1.0''$ (DESI fiber positioning tolerance);
 sensitivity is reported at $\{0.5, 1.0, 2.0, 3.0, 5.0\}''$. Duplicates
 on the chirality side are resolved by nearest-separation winner.
-Driver: \artifact{pipelines/p5\_desi\_chirality/scripts/03\_crossmatch.py}.
 
 \subsection{Matched catalog summary}\label{sec:matched_summary}
 
-Table~\ref{tab:match_summary} summarizes the $1''$ matched catalog
-(\artifact{pipelines/p5\_desi\_chirality/results/p5\_matched\_chirality\_desi\_summary.json}).
+Table~\ref{tab:match_summary} summarizes the $1''$ matched catalog.
 The matched-primary count is $2{,}349{,}908$ before dedup and
 $2{,}232{,}212$ after. The chirality-relevant subsample is $791{,}635$
 galaxies. Median separation is $0.0066''$ and the 99th-percentile
@@ -339,8 +336,7 @@ $p_{99}$ separation & $0.30''$ \\
 We compute environment labels via the V-Web tidal-tensor classifier
 (Hahn~\textit{et~al.}~2007 \cite{Hahn2007};
 Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
-Cautun~\textit{et~al.}~2014 \cite{Cautun2014}), implemented in
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}.
+Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
 
 \begin{enumerate}
 \item Filter DESI DR1 \texttt{zall} to \texttt{ZWARN==0}, SPECTYPE
@@ -379,9 +375,7 @@ galaxy.
 For the canonical configuration $(R_s\!=\!25\,{\rm Mpc}/h,
 \lambda_{\rm th}\!=\!0, N_{\rm grid}\!=\!256^3)$ the in-footprint
 volume fractions are
-\{void $0.244$, wall $0.413$, filament $0.333$, cluster $0.010$\}
-(\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json};
-Fig.~\ref{fig:volfrac}).
+\{void $0.244$, wall $0.413$, filament $0.333$, cluster $0.010$\}(Fig.~\ref{fig:volfrac}).
 The cluster volume fraction ($1.0\%$) is consistent with the
 high-density tail expected at this smoothing scale; the wall+filament
 fraction dominates as predicted for galaxy-traced large-scale
@@ -412,11 +406,7 @@ independent permutations from a deterministic-seeded NumPy
 \texttt{default\_rng} (seed fixed in the pipeline config); per-bin
 $\sigma_{\rm from\,half}$ is recomputed under each draw, and the
 null distribution is constructed as the empirical CDF of the
-per-realization statistic. Drivers:
-\artifact{pipelines/p5\_desi\_chirality/scripts/07\_analysis\_healpix.py}
-(HEALPix per-pixel scans) and
-\artifact{pipelines/p5\_desi\_chirality/scripts/09\_systematics.py}
-(redshift + density + tracer-program nulls). Multi-bin scans are
+per-realization statistic. Analysis drivers are available in the companion data repository. Multi-bin scans are
 corrected for multiple testing with Bonferroni at $\alpha\!=\!0.01$.
 
 We explicitly compare each $\sigma_{\rm from\,half}$ against the
@@ -534,8 +524,7 @@ the DESIVAST primary path.
 
 Table~\ref{tab:cw_vs_env} reports CW fraction by cosmic-web class on
 the $791{,}635$ chirality-relevant matched spirals using the canonical
-V-Web run
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/cw\_fraction\_by\_env\_\_desi\_env\_vweb.csv}).
+V-Web run.
 
 \begin{table}[t]
 \caption{CW fraction per cosmic-web environment, canonical V-Web
@@ -601,8 +590,7 @@ parity.
 The matched chirality-relevant subsample has redshift median $0.168$
 and maximum $3.83$. The label-shuffle permutation null on the
 max-absolute-deviation-from-half over $1{,}000$ shuffles returns
-$p\!=\!0.372$
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_redshift/permutation\_null.json}).
+$p\!=\!0.372$.
 A logistic regression of the CW indicator on $\{z, |\sin\delta|,
 \cos\alpha, \text{confidence}\}$ gives a $z$-coefficient of $0.0059$
 with no significant intercept ($0.000652$), consistent with no
@@ -612,8 +600,7 @@ redshift dependence.
 
 The angular separation to the $k\!=\!5$ NN spiral on the sphere serves
 as a projected-density proxy. Binned in density quintiles, the maximum
-absolute deviation is $|\sigma|_{\max}\!=\!3.94$
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_density/summary.json}),
+absolute deviation is $|\sigma|_{\max}\!=\!3.94$,
 within the Paper~IV monopole prediction from Eq.~\eqref{eq:sigma_pred}:
 at $N\!=\!158{,}327$ per quintile the predicted
 $|\sigma_{\rm pred}|\!=\!2\!\cdot\!|{-0.0026}|\!\cdot\!\sqrt{158{,}327}\!\approx\!2.07$,
@@ -633,8 +620,7 @@ at $\Delta f_{\rm CW}=-0.0026$ (Paper~IV-monopole prediction).
 All five residuals lie below the Bonferroni-5 threshold
 $|\sigma|^{\rm Bonf}_{0.01,5}=3.09$, so no quintile shows a
 statistically-significant departure from the monopole-only model.
-Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_density/cw\_fraction\_by\_density.csv}.}
+}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
 Quintile & $f_{\rm CW}$ & $\sigma_{\rm obs}$ & $\sigma_{\rm pred}$ & $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ \\
@@ -676,8 +662,7 @@ this is a genuinely density-dependent effect within the cluster class
 or a boundary-misclassification artifact at the low-density edge of
 the V-Web cluster label, we stratify the cluster (and filament for
 comparison) class into four equal-population density quartiles using
-the V-Web per-galaxy density field
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/density\_stratified\_cluster\_filament.json}).
+the V-Web per-galaxy density field.
 
 \begin{table}[ht]
 \caption{Within-class density-stratified $f_{\rm CW}$ for the V-Web
@@ -730,7 +715,6 @@ does not survive within-class density stratification as a clean
 density-dependent effect.
 
 \paragraph{Redshift-stratified cross-check.} A second decomposition
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/redshift\_density\_stratified\_cluster.json})
 bins the cluster class into four redshift quartiles to test whether
 the boundary-leakage interpretation depends on redshift. Marginalizing
 over density, the cluster $\sigma_{\rm from\ half}$ per
@@ -754,8 +738,7 @@ sample size.
 \paragraph{Tracer-program stratification.} A fourth orthogonal
 cross-check stratifies the full matched-spiral catalog by DESI
 program (the broad selection-function bucket: \texttt{bright},
-\texttt{dark}, \texttt{backup}, \texttt{other};
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/tracer\_stratified\_cw\_fraction.json}).
+\texttt{dark}, \texttt{backup}, \texttt{other}.
 Per-program $f_{\rm CW}$ and $\sigma_{\rm from\ half}$:
 \texttt{bright} (BGS-dominated; $n = 775{,}760$, $\bar z = 0.145$)
 $f_{\rm CW} = 0.4970$, $\sigma = -5.25$; \texttt{dark} (LRG, ELG, QSO;
@@ -796,9 +779,7 @@ target classes; the sign-flip recurrence across both the cluster and
 filament classes (the two largest V-Web environments) is the strongest
 sign that the V-Web class-level $f_{\rm CW}$ deviations are sourced
 by the BGS-selection-function-conditioned imaging-leg systematics
-Paper~IV tracks, not by environment-driven astrophysics. Companion
-artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/filament\_within\_class\_decomposition.json}.
+Paper~IV tracks, not by environment-driven astrophysics. 
 
 \paragraph{V-Web class vs.\ target-program orthogonality.} The BGS-selection-function-origin interpretation
 above relies on V-Web environmental classification being approximately
@@ -835,9 +816,7 @@ the catalog-monopole subtraction; the DESIVAST-anchored primary
 analysis (\S\ref{sec:desivast_primary}) is constructed to be
 independent of this residual, because the DESIVAST void definition
 restricts to the volume-limited $z \leq 0.24$ BGS sample where
-target-program mixing is far more constrained. Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/tracer\_stratified\_cw\_fraction.json};
-contingency-test reproduction is a $\chi^{2}$ on the env-class
+target-program mixing is far more constrained. Contingency-test reproduction is a $\chi^{2}$ on the env-class
 $\times$ tracer-program cross-tab derivable from the
 \texttt{desi\_env\_vweb.parquet} + matched-spiral catalog join
 documented in \S\ref{sec:vweb_algo}.
@@ -845,8 +824,7 @@ documented in \S\ref{sec:vweb_algo}.
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
 HEALPix per-pixel CW-deviation scans at NSIDE $\in \{16, 32, 64\}$,
-compared against $1{,}000$-shuffle label-shuffle nulls
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_healpix/summary.json}):
+compared against $1{,}000$-shuffle label-shuffle nulls:
 
 \begin{table}[ht]
 \caption{HEALPix per-pixel CW-deviation scan with label-shuffle nulls.}
@@ -890,10 +868,7 @@ counting-statistics distribution expected from label-shuffle.}
 To test the robustness of the Section~\ref{sec:results_vweb} headline
 against V-Web hyperparameter choices, we run a Phase~2 sweep over nine
 cells $R_s \in \{10, 25, 50\}\,{\rm Mpc}/h \times N_{\rm grid}\!=\!256
-\times \lambda_{\rm th} \in \{0.0, 0.1, 0.3\}$. Driver:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/02\_phase2\_sensitivity\_sweep.py};
-consolidated output:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}.
+\times \lambda_{\rm th} \in \{0.0, 0.1, 0.3\}$. Details are in the companion data repository.
 
 \begin{table}[t]
 \caption{Phase 2 sensitivity sweep: range of $f_{\rm CW}$ across the
@@ -1080,9 +1055,9 @@ $n\!=\!56{,}981$, does not depend on the V-Web RSD argument.
 
 The DESIVAST
 public release at
-\artifact{data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/}
+\url{https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/}
 provides the VoidFinder NGC/SGC FITS files
-(\artifact{DESIVAST\_BGS\_VOLLIM\_VoidFinder\_\{NGC,SGC\}.fits},
+(\texttt{DESIVAST\_BGS\_VOLLIM\_VoidFinder\_\{NGC,SGC\}.fits},
 $89{,}003 + 12{,}860 = 101{,}863$ interior hole spheres comprising the
 $3{,}765$ maximal voids). We fetched both files and performed a direct
 per-galaxy cross-match of the V-Web void-class matched-spiral
@@ -1109,8 +1084,7 @@ the per-galaxy disagreement quantifies the V-Web void-class purity at
 $z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids, meaning
 the V-Web ``void'' label at low $z$ should be read as ``not in a
 DESIVAST-defined cosmic-web density minimum'' rather than ``confirmed
-void galaxy.'' Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_xmatch\_summary.json}.
+void galaxy.'' 
 This is a direct empirical small-sample illustration of the
 $+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy
 reported in \S\ref{sec:tweb_concurrent} below,
@@ -1161,8 +1135,7 @@ effect ($n_{\rm non-void} / n_{\rm void} \approx 10.9$); both classes
 carry the same $-5\sigma$-class P4 monopole signature scaled to their
 respective sample sizes. \textbf{When the void class is defined by
 DESIVAST rather than V-Web, the chirality-in-voids constraint is a
-clean null at full DESIVAST sample size.} Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_canonical\_void\_chirality.json}.
+clean null at full DESIVAST sample size.} 
 
 This DESIVAST-anchored re-analysis is the largest matched-sample
 environmental-dependence test of spiral chirality in DESI DR1 to date,
@@ -1189,8 +1162,7 @@ algorithm's published void-effective-radius spheres):
 \begin{table*}[ht]
 \caption{Three-algorithm DESIVAST void vs non-void chirality on the
 $z \leq 0.24$ matched-spiral subsample ($n_{\rm lz} = 678{,}945$).
-Companion artifact
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_three\_algorithm\_void\_chirality.json}.}
+}
 \label{tab:desivast_three_algo}
 \begin{ruledtabular}
 \begin{tabular}{lrrrrrr}
@@ -1237,8 +1209,7 @@ membership ($\texttt{OUT} = 0 \wedge \texttt{VOID0} \geq 0 \wedge
 $f_{\rm CW}^{\rm void} = 0.4996$, $\sigma^{\rm void} = -0.24$ (a
 \emph{near-perfect} null at this independent statistic); V2-VIDE
 $n_{\rm void} = 64{,}514$, $f_{\rm CW}^{\rm void} = 0.4979$,
-$\sigma^{\rm void} = -1.06$. Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/desivast\_catalog\_native\_void\_chirality.json}.
+$\sigma^{\rm void} = -1.06$. 
 
 The catalog-native definition excludes the survey-mask edge galaxies
 that the sphere-approximation picks up (~$16{,}000$--$17{,}000$
@@ -1260,8 +1231,7 @@ The DESIVAST release also ships the 3,765 \emph{maximal voids}
 HEALPix \texttt{NSIDE} $= 16$ pixel returns 297 occupied pixels with
 median 14 maximal voids per occupied pixel. Stratifying the $z \leq
 0.24$ matched-spiral subsample by the number of maximal voids in each
-spiral's HEALPix pixel produces (companion artifact
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/maximal\_voids\_healpix\_stratified.json}):
+spiral's HEALPix pixel produces :
 
 \begin{table}[ht]
 \caption{Sky-position-stratified $f_{\rm CW}$ by maximal-void count per
@@ -1380,8 +1350,7 @@ $+0.825$. The unit standard deviation (within $\sim\!18\%$, consistent
 with finite-pixel sample-size fluctuation), zero skewness, and modest
 positive kurtosis are all consistent with a pure shot-noise residual
 around the P4-monopole, with no sign of systematic
-environment-conditioned chirality offset. Companion artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/p4\_monopole\_residual\_analysis.json}.
+environment-conditioned chirality offset. 
 
 This is a direct single-test demonstration that
 the V-Web class-level $\sigma$ values quoted in the headline table
@@ -1413,9 +1382,7 @@ with cuts $200$ and $500$, are sample-limited at $n_{\rm pix}^{\rm both}
 out most pixels carrying both $\geq 1$ maximal void and $\geq$ cut
 matched spirals). The 7 computable cells all return $|r| < 0.11$ with
 $p > 0.10$, none statistically significant; the headline NSIDE $=32$
-cut $=200$ result $r=+0.006$ is consistent with this range. Companion
-artifact:
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/voids\_vs\_chirality\_robustness\_grid.json}.
+cut $=200$ result $r=+0.006$ is consistent with this range. 
 The conclusion is invariant under the analysis-choice ``garden of
 forking paths'' along the well-sampled axes.
 
@@ -1464,10 +1431,7 @@ $z \le 0.20$ over RA $\in [110^\circ, 262^\circ]$, Dec $\in [-4^\circ,
 catalog and the $791{,}635$ chirality-relevant matched-spiral sample;
 the overlap is $110{,}586$ spirals (the SDSS DR10 footprint is a
 subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
-than our $z \le 4$ DESI cut). Driver:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py};
-ingest:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/04\_ingest\_tempel.py}.
+than our $z \le 4$ DESI cut). Details are in the companion data repository.
 
 \begin{table}[t]
 \caption{Tempel+2014 FoF environment cross-validation on the
@@ -1583,7 +1547,6 @@ comparison to our DR1-all-spectro V-Web run is therefore approximate
 because of the differing target selection, redshift coverage, and
 sample volume (cubic $800$~Mpc box vs.\ thin survey shell). Our V-Web
 in-footprint volume fractions
-(\artifact{env\_finder/reports/01\_volume\_fractions.json})
 are $\{0.244,\, 0.413,\, 0.333,\, 0.010\}$. The sheet (V-Web wall) and
 filament classes agree to within ${\sim}5$\,percentage points across
 both methodologies (allowing for the tracer- and volume-mismatch
@@ -1656,10 +1619,7 @@ chirality classification (P4), ASTRA per-class membership probabilities
 the V-Web canonical classifier against the ASTRA published DESI
 environmental catalog within this campaign and is the closest currently
 available substitute for the full-DR1 environmental VAC discussed in
-\S\ref{sec:limitations}. The cross-match pipeline is at
-\artifact{pipelines/p5\_desi\_chirality/scripts/15\_astra\_per\_object\_crossmatch.py};
-the result summary at
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/summary.json}.
+\S\ref{sec:limitations}. The cross-match pipeline and result summary are available in the companion data repository.
 
 We compute the chirality-by-environment $f_{\rm CW}$ statistic on the
 $25{,}186$-galaxy overlap under three classifiers run on the
@@ -1746,8 +1706,7 @@ independent statistical weight.
 
 \section{Systematics and null tests}\label{sec:systematics}
 
-We run six classes of systematics tests
-(\artifact{pipelines/p5\_desi\_chirality/scripts/09\_systematics.py}):
+We run six classes of systematics tests:
 chirality-label shuffle ($1{,}000$ permutations), sky-position
 permutation, confidence-threshold sweep
 $p_{\rm cls\_eq}^{\max} \in \{0.4, 0.5, 0.6, 0.7, 0.8\}$ with
@@ -1874,9 +1833,7 @@ class boundaries (eigenvalues within $|\lambda - \lambda_{\rm th}|
 boundary-crossing rate. At $\sigma_{\rm rsd} \sim 5$\,Mpc/$h$ (BGS
 pairwise velocity dispersion projected through Hubble flow at
 $z\!\sim\!0.2$) and $R_s\!=\!25$\,Mpc/$h$, the eigenvalue-shift
-magnitude is $\sim 0.04\,\sigma_\lambda$. Reading the per-cell
-eigenvalue histogram from
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_eigenvalue\_dist.json},
+magnitude is $\sim 0.04\,\sigma_\lambda$. Based on the per-cell eigenvalue histogram,
 the fraction of cells within that band of any threshold is
 $\sim 3$--$5\%$. Galaxies in those cells are the maximum possible
 class-flip population under RSD; with $\sim 800$k chirality-relevant
@@ -2005,27 +1962,22 @@ $\Delta f_{\rm CW}$ bounds in the main text.
 
 \section{Data and code availability}\label{sec:data_code}
 
-All scripts, configuration, and provenance sidecars live under
-\artifact{pipelines/p5\_desi\_chirality/}. The canonical chirality
+All scripts, configuration, and provenance sidecars are available in the companion data repository. The canonical chirality
 catalog is mirrored on HuggingFace at
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
 {bamfai/galaxy-chirality-catalog} (immutable revision
 \texttt{paper4-v1.0.122}). DESI Data Release~1 is available from
-\url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep CSV is
-at
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}
-and the consolidated summary at
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep\_summary.json}.
+\url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep CSV and consolidated summary are available in the companion data repository.
 
 \section*{Reproducibility checklist}
 \begin{itemize}
 \item Single config file
-(\artifact{pipelines/p5\_desi\_chirality/config/p5\_config.yaml}).
+(available in companion data repository).
 \item Provenance sidecar (\texttt{*.provenance.json}) for every output.
 \item Git SHA + config hash logged in every sidecar.
 \item Deterministic seed: \texttt{20260515}.
 \item All Phase~2 sweep cell configs persisted at
-\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}.
+the companion data repository.
 \end{itemize}
 
 \begin{thebibliography}{99}
@@ -2048,20 +2000,12 @@ arXiv:astro-ph/9812088.
 H.~Golden,
 \emph{A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
 A Null Detection of Large-Scale Parity Violation at Sub-Percent
-Sensitivity}, companion paper (Paper~IV), in preparation; manuscript
-and reproducibility artifacts at
-\artifact{pipelines/p2\_chirality/chirality\_catalog\_paper.tex}
-(\texttt{v1.0.139}, 2026-05-28). \emph{Internal companion artifact; an
-arXiv identifier will be assigned upon Paper~IV submission.}
+Sensitivity}, companion paper (Paper~IV), in preparation; manuscript in preparation.
 
 \bibitem{golden_fnl_2026}
 H.~Golden,
 \emph{$f_{NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\
-Inflation}, companion paper (Paper~II), in preparation; manuscript
-and reproducibility artifacts at
-\artifact{research/focused\_paper\_source\_integration/02\_full\_draft.tex}
-(\texttt{v1.7.37}, 2026-05-24). \emph{Internal companion artifact; an
-arXiv identifier will be assigned upon Paper~II submission.}
+Inflation}, companion paper (Paper~II), in preparation; manuscript in preparation.
 
 \bibitem{Hahn2007}
 O.~Hahn, C.~M.~Carollo, C.~Porciani, and A.~Dekel,
