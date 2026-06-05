@@ -32,8 +32,13 @@ SEV_HEADER_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Finding marker (P4-E1, P4-M3, GRO-B1, p4-m1, etc.)
-FINDING_ID_RE = re.compile(r"\b([Pp]?\d?[A-Z]?-?[EBMmNnFf]\d+|B\d+)\b")
+# Finding marker — broad pattern matching across all vendor formats:
+#   P4-E1, P4-M3, P4-m1, P4-N1, P4-NIT1, GRO-B1, P4-META-E1
+# Used at the start of a line (optionally with markdown bold) to indicate
+# a new finding. We allow both upper-case and lower-case severities.
+FINDING_ID_RE = re.compile(
+    r"\b([Pp]?\d?[A-Z]?-?(?:META-)?[EBMmNnFf]\d+|B\d+|NIT\d+|N\d+)\b"
+)
 
 
 def reviewer_from_filename(p: Path) -> str:
@@ -43,18 +48,47 @@ def reviewer_from_filename(p: Path) -> str:
 
 
 def parse_findings(md_text: str, reviewer: str) -> list[dict]:
-    """Split a single reviewer .md into individual findings."""
+    """Split a single reviewer .md into individual findings.
+    Handles multiple ID conventions:
+      P4-E1, P4-M3, P4-m1, P4-N1, P4-NIT1
+      **P4-E7** (Claude format with bold)
+      P4-META-E1 (meta-reviewer format)
+    Infers severity from the ID letter when no section header is present.
+    """
     findings: list[dict] = []
     cur_sev = None
     cur_block: list[str] = []
     cur_id = None
 
+    LEADING_ID_RE = re.compile(
+        r"^(?:#{1,4}\s*)?\**\s*[Pp]?\d?[A-Z]?-?(?:META-)?([EBMmNnFf])(\d+)\b"
+    )
+
+    def infer_severity_from_id(fid: str) -> str:
+        """Map ID letter to severity. E/B → ESSENTIAL; M (upper) → MAJOR;
+        m (lower) → MINOR; N (upper) → NIT; n (lower) → NIT; F → FATAL."""
+        # Strip prefix like "P4-" or "P4-META-"
+        tail = fid.split("-")[-1]
+        if not tail:
+            return "UNKNOWN"
+        letter = tail[0]
+        if letter in ("E", "B", "F"):
+            return "ESSENTIAL"
+        elif letter == "M":
+            return "MAJOR"
+        elif letter == "m":
+            return "MINOR"
+        elif letter in ("N", "n"):
+            return "NIT"
+        return "UNKNOWN"
+
     def flush():
         nonlocal cur_block, cur_id
         if cur_id and cur_block:
+            sev = cur_sev or infer_severity_from_id(cur_id)
             findings.append({
                 "reviewer": reviewer,
-                "severity": cur_sev or "UNKNOWN",
+                "severity": sev,
                 "id": cur_id,
                 "text": "\n".join(cur_block).strip(),
             })
@@ -71,13 +105,13 @@ def parse_findings(md_text: str, reviewer: str) -> list[dict]:
             cur_sev = m_sev.group(1).upper()
             continue
 
-        # finding id marker — start of new finding
-        m_id = FINDING_ID_RE.search(s)
-        if (s.startswith("*") or s.startswith("**") or s.startswith("-") or s.startswith("P")) and m_id:
-            # heuristic: a line that LEADS with a finding id usually starts a new finding
-            if re.match(r"^\**\s*[Pp]?\d?[A-Z]?-?[EBMmNnFf]\d+\b", s):
-                flush()
-                cur_id = m_id.group(1)
+        # finding id marker at line start (with optional ** wrap)
+        m_lead = LEADING_ID_RE.match(s)
+        if m_lead:
+            flush()
+            # capture the full ID from the line
+            full_id_match = FINDING_ID_RE.search(s)
+            cur_id = full_id_match.group(1) if full_id_match else m_lead.group(0).strip(" *")
 
         if cur_id:
             cur_block.append(line)
