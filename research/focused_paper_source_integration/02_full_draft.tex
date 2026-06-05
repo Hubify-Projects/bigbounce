@@ -498,10 +498,10 @@ GR Treatment & BF vs.\ SSFSR & BF vs.\ Tuned & $P(\text{BF}>3)$ vs.\ SSFSR \\
 Ideal (no GR) & $3.3 \times 10^6$ & 10.9 & 98\% \\
 Marginalized ($\sigma_{\rm GR}=0.5$) & $4.1 \times 10^4$ & 9.4 & 97\% \\
 Marginalized ($\sigma_{\rm GR}=1.0$) & 329 & 7.9 & 96\% \\
-Corrected (10\% residual; sanity row)$^a$ & $3.3 \times 10^6$ & 10.9 & 98\% \\
+Corrected (10\% residual; verification)$^a$ & $3.3 \times 10^6$ & 10.9 & 98\% \\
 \bottomrule
 \end{tabular}
-\caption{Bayesian comparison with parameterized GR-contamination degradation. SSFSR = standard single-field slow-roll inflation. The ``BF vs.\ Tuned'' column reports the Bayes factor against a tuned multifield competitor with \emph{narrow} prior $[-5,+5]$ at the delta bounce prior; the corresponding broad $[-15,+15]$ multifield competitor gives BF~$\sim 17$ at $\sigma_{\rm GR}=0.5$ (Table~\ref{tab:bayes} row~5), consistent with the narrow$\to$broad sweep BF~$\sim 7\to 17$ at the delta bounce prior reported in the prose of \S\ref{sec:bayesian}. The bounce-vs-inflation comparison survives all treatment scenarios. $^a$The ``Corrected (10\% residual)'' row is, by construction, equal to ``Ideal'' at this template-overlap order: a 10\% residual GR contamination after correction has negligible impact on the Bayes factor at the reported significant-figure level ($\Delta\text{BF} < 0.1$). It is included as a no-op sanity row, not as an independent configuration, and the two rows are not independent scenarios but rather bookend the same GR-free regime.}
+\caption{Bayesian comparison with parameterized GR-contamination degradation. SSFSR = standard single-field slow-roll inflation. The ``BF vs.\ Tuned'' column reports the Bayes factor against a tuned multifield competitor with \emph{narrow} prior $[-5,+5]$ at the delta bounce prior; the corresponding broad $[-15,+15]$ multifield competitor gives BF~$\sim 17$ at $\sigma_{\rm GR}=0.5$ (Table~\ref{tab:bayes} row~5), consistent with the narrow$\to$broad sweep BF~$\sim 7\to 17$ at the delta bounce prior reported in the prose of \S\ref{sec:bayesian}. The bounce-vs-inflation comparison survives all treatment scenarios. $^a$The ``Corrected (10\% residual)'' row is, by construction, equal to ``Ideal'' at this template-overlap order: a 10\% residual GR contamination after correction has negligible impact on the Bayes factor at the reported significant-figure level ($\Delta\text{BF} < 0.1$). It is included as a verification row, not as an independent configuration, and the two rows are not independent scenarios but rather bookend the same GR-free regime.}
 \label{tab:gr}
 \end{table*}
 
@@ -603,7 +603,7 @@ The matter-bounce bispectrum provides what may be the sharpest single observable
 % ============================================================
 \section*{Data and Code Availability}
 
-All analysis code, Monte Carlo scripts, and shape-function evaluation routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/paper2-v1.7.40/research/} (pinned to release tag \texttt{paper2-v1.7.40}). The template overlap scan, Bayesian discrimination, and parameterized GR-degradation comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\cite{Heinrich:2023,Schlegel:2022}.
+All analysis code, Monte Carlo scripts, and shape-function evaluation routines are available at \url{https://github.com/Hubify-Projects/bigbounce/tree/main/research/}. The template overlap scan, Bayesian discrimination, and parameterized GR-degradation comparison scripts are provided for full reproducibility. No new observational data are introduced; all forecast sensitivities are adopted from published analyses~\cite{Heinrich:2023,Schlegel:2022}.
 
 % ============================================================
 \appendix
@@ -611,7 +611,7 @@ All analysis code, Monte Carlo scripts, and shape-function evaluation routines a
 \section{Bispectrum Convention vs.\ Operator-Algebra Identity: Cai vs.\ Li-Brandenberger}
 \label{app:convention}
 
-The factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\cite{Cai:2009fn}) and $\fnl = -35/16$ (Cai \& Brandenberger~\cite{CaiBrandenberger:2014}) decomposes into two distinct factors of two with very different status: one is a genuine \emph{normalization convention difference} (the Komatsu-Spergel constant $c$ defined below), and the other is the missing second time-ordering of the in-in commutator (Sec.~\ref{app:wick}), which is an \emph{operator-algebra identity}---not a normalization choice. Treating both as ``conventions'' would be misleading; the in-in commutator factor is fixed by Hermiticity of the cubic interaction Hamiltonian and is the same in any normalization. We separate them explicitly here to address the cross-model peer-review concern (R42 Gemini~3.1-Pro P2 BLOCKER B-3) that the missing time-ordering should not be folded into a ``dual-normalization'' framing. The local-type bispectrum is defined as:
+The factor-of-two discrepancy between $\fnl = -35/8$ (Cai \textit{et~al.}~\cite{Cai:2009fn}) and $\fnl = -35/16$ (Cai \& Brandenberger~\cite{CaiBrandenberger:2014}) decomposes into two distinct factors of two with very different status: one is a genuine \emph{normalization convention difference} (the Komatsu-Spergel constant $c$ defined below), and the other is the missing second time-ordering of the in-in commutator (Sec.~\ref{app:wick}), which is an \emph{operator-algebra identity}---not a normalization choice. Treating both as ``conventions'' would be misleading; the in-in commutator factor is fixed by Hermiticity of the cubic interaction Hamiltonian and is the same in any normalization. We separate them explicitly here because the missing time-ordering must not be folded into a ``dual-normalization'' framing. The local-type bispectrum is defined as:
 \begin{equation}
 B_\zeta(k_1,k_2,k_3) = c \cdot \fnl \left[P_\zeta(k_1)P_\zeta(k_2) + \text{2 perms}\right],
 \end{equation}
