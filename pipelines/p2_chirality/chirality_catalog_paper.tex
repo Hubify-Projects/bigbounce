@@ -361,7 +361,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Full reproducibility data are available in the companion data repository.\footnote{\label{fn:repro_artifacts}All result JSON artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including results for the canonical $+3.64\sigma$, the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan), and the legacy pre-correction baseline ($+1.85\sigma$, retained for historical provenance only) are archived in the public project repository. Full machine-readable artifact paths and URLs are in \S\ref{sec:availability}.}
+Full reproducibility data are available in the companion data repository.\footnote{\label{fn:repro_artifacts}All result JSON artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including results for the canonical $+3.64\sigma$, the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan), and the pre-monopole-subtraction result ($+1.85\sigma$) for comparison are archived in the public project repository. Full machine-readable artifact paths and URLs are in \S\ref{sec:availability}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -488,7 +488,7 @@ $\varepsilon\!\approx\!0.185$ and a dilution factor
 $(1\!-\!2\varepsilon)\!\approx\!0.63$, so a true underlying full-amplitude
 $0.5\%$ dipole would be measured as $\sim\!0.32\%$ on Catalog~C; the
 $\geq\!0.75\%$ empirical $50\%$-recovery-$3\sigma$ threshold then corresponds to a true
-underlying $\sim\!1.19\%$ dipole bound under symmetric-error dilution $D\!=\!1\!-\!2\varepsilon\!\approx\!0.63$ at $\varepsilon\!\approx\!0.185$ ($0.75\%/0.63\!=\!1.19\%$; the earlier $\sim\!0.79\%$ value used an inconsistent symmetric-error model and is corrected here) (upper end of a $[0.5\%, 1.5\%]$
+underlying $\sim\!1.19\%$ dipole bound under symmetric-error dilution $D\!=\!1\!-\!2\varepsilon\!\approx\!0.63$ at $\varepsilon\!\approx\!0.185$ ($0.75\%/0.63\!=\!1.19\%$) (upper end of a $[0.5\%, 1.5\%]$
 range under the alternative assumption that our pipeline is correct
 on the disagreements). This dilution is asymmetric only insofar as
 the catalog's $9.5\sigmaunit$ uniform CW excess is itself a label
@@ -918,19 +918,18 @@ flip at fixed model and fixed seed (different cached sub-sample)
 proves the argmax-CW-fraction is a fragile statistic at
 $N\!\sim\!2{,}000$ because the underlying per-galaxy distribution
 clusters around $\pcw\!\approx\!\pccw\!\approx\!0.39$ (near-tied),
-so argmax decisions tip on sub-percent noise. We therefore retract
-the original $\Delta\!=\!-1.35\%$ argmax-CW-fraction claim as
-sample-noise on a fragile statistic, NOT as a real $D_4$-TTA
-systematic, and adopt the mean-per-galaxy-probability statistic
-as the primary $D_4$-TTA invariance diagnostic: it is
-robust ($\Delta p\!<\!0.0016$ across two independent
-$\sim\!2{,}000$-galaxy holdouts) and confirms the $D_4$-TTA effect
-on the expected probability is null. The 9.5$\sigma$ residual
+so argmax decisions tip on sub-percent noise. The $\Delta\!=\!-1.35\%$
+argmax-CW-fraction shift on the $N\!=\!1{,}558$ holdout sign-flips to
+$+2.11\%$ at $N\!=\!1{,}988$, confirming it is fragile-argmax sample noise
+rather than a real $D_4$-TTA systematic. We therefore adopt the
+mean-per-galaxy-probability statistic as the primary $D_4$-TTA
+invariance diagnostic: it is robust ($\Delta p\!<\!0.0016$ across two
+independent $\sim\!2{,}000$-galaxy holdouts) and confirms the $D_4$-TTA
+effect on the expected probability is null. The 9.5$\sigma$ residual
 $0.26\%$ monopole on the full $8.47\!\times\!10^{6}$-galaxy
 catalog (\S\ref{sec:cw_frac}) rests on \emph{catalog-level}
 class-fraction arithmetic and the separately-measured per-galaxy
-$21.4\%$ argmax-flip rate, neither of which is affected by the
-holdout-level retraction. A full $3.2\!\times\!10^{6}$
+$21.4\%$ argmax-flip rate. A full $3.2\!\times\!10^{6}$
 $D_4$-TTA re-inference (estimated $\sim\!72\!\times$ the current
 single-flip throughput on the same H200) remains the canonical
 test at the full-catalog level and is deferred to future work as
@@ -1598,7 +1597,7 @@ null. The excess in the pre-deconvolution estimator arises from
 mask-induced mode coupling (Sec.~\ref{sec:dipole}) and not from
 a physical chirality anisotropy. The single-mode $\ell=1$ MASTER-deconvolved result is the primary isotropy-breaking dipole observable; the low-$\ell$ bandpowers in Table~\ref{tab:multipole} (rows 2--5, spanning $\ell\!\in\![2,26]$) remain $+2$ to $+6\sigmaunit$ above null even after MASTER deconvolution, but this residual is attributed to the same monopole-leakage channel that the canonical-mask geometry concentrates into low-$\ell$ modes (Sec.~\ref{sec:dipole}, joint $\chi^2/{\rm dof}=161.2/38$) and is \emph{not} a parity signal: the parity observable lives at $\ell\!=\!1$, which is null.
 
-The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the lowest pseudo-$C_\ell$ bandpower before deconvolution ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map, $+6.48\sigmaunit$; the older snapshot value $2.75\sigmaunit$ predates the canonical $N_{\rm spiral}=3{,}201{,}160$ recount) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+3.64\sigmaunit$ at $f_{\rm sky}=0.49005$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess resolved by a multi-null battery: the proper-monopole-subtracted binomial null gives $+3.64\sigmaunit$ (data $C_1$ correctly subtracted), the apodized canonical mask gives $+3.57\sigmaunit$ (ruling out sharp-edge NaMaster artifacts), and a direct cross-spectrum with pixel-density gives $\sigma_{\ell=1}\!=\!-1.53$ with $r_{\ell=1}\!=\!-0.49$ at the auto-spectrum dipole multipole AND $\sigma_{\ell=2}\!=\!-2.89$ at quadrupole anti-alignment with $r_{\ell=2}\!=\!-0.65$ (depth-correlated systematic at BOTH $\ell\!=\!1$ AND $\ell\!=\!2$ directly favored. The bootstrap pixel-resample test gives $-0.22\sigmaunit$ for the data but is tautological for cosmological-dipole hypothesis testing per the bootstrap injection-recovery audit (a REAL injected $A\!=\!1.7\%$ dipole also gives median $\sigma\!=\!-0.49$ under the same bootstrap) and is therefore reported only as a sampling-variance diagnostic, not as a verdict. The three discriminators that disfavor interpretation~(i) "real cosmological dipole at $\sim\!1.7\%$" are: (a)~$\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean dipole), (b)~$p_{\rm eq}$ quality-quartile washout (all four quartiles $|\sigma|<1$), and (c)~direct cross-spectrum quadrupole anti-alignment with the pixel-density proxy. Under this three-discriminator framework not assigned a physical interpretation in this manuscript, not as a primordial signal; it supersedes the earlier analytic projection $+0.26\sigmaunit$, which is retained only as a methodological-comparison reference. The full-catalog $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the primary nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
+The apparent gap between the simple dipole amplitude ($0.43\sigmaunit$, Sec.~\ref{sec:dipole}), the canonical MASTER-deconvolved $\ell=1$ angular power spectrum coefficient ($-0.12\sigmaunit$, Sec.~\ref{sec:dipole}), and the lowest pseudo-$C_\ell$ bandpower before deconvolution ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map, $+6.48\sigmaunit$) reflects different estimator sensitivities and the effect of the survey mask on large-scale modes. The headline figure is the MASTER-deconvolved $-0.12\sigmaunit$ on the analysis subsample mask ($n=5{,}547{,}858$, $f_{\rm sky}=0.659$). The canonical-$N$ direct-MC result $+3.64\sigmaunit$ at $f_{\rm sky}=0.49005$ / $N_{\rm spiral}=3{,}201{,}160$ (Sec.~\ref{sec:conclusions}) is a mild canonical-mask excess resolved by a multi-null battery: the proper-monopole-subtracted binomial null gives $+3.64\sigmaunit$ (data $C_1$ correctly subtracted), the apodized canonical mask gives $+3.57\sigmaunit$ (ruling out sharp-edge NaMaster artifacts), and a direct cross-spectrum with pixel-density gives $\sigma_{\ell=1}\!=\!-1.53$ with $r_{\ell=1}\!=\!-0.49$ at the auto-spectrum dipole multipole AND $\sigma_{\ell=2}\!=\!-2.89$ at quadrupole anti-alignment with $r_{\ell=2}\!=\!-0.65$ (depth-correlated systematic at BOTH $\ell\!=\!1$ AND $\ell\!=\!2$ directly favored. The bootstrap pixel-resample test gives $-0.22\sigmaunit$ for the data but is tautological for cosmological-dipole hypothesis testing per the bootstrap injection-recovery audit (a REAL injected $A\!=\!1.7\%$ dipole also gives median $\sigma\!=\!-0.49$ under the same bootstrap) and is therefore reported only as a sampling-variance diagnostic, not as a verdict. The three discriminators that disfavor interpretation~(i) "real cosmological dipole at $\sim\!1.7\%$" are: (a)~$\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean dipole), (b)~$p_{\rm eq}$ quality-quartile washout (all four quartiles $|\sigma|<1$), and (c)~direct cross-spectrum quadrupole anti-alignment with the pixel-density proxy. Under this three-discriminator framework not assigned a physical interpretation in this manuscript, not as a primordial signal. The full-catalog $0.43\sigmaunit$ and strict-superset $-0.12\sigmaunit$ figures both bypass the canonical-mask leakage channel and remain the primary nulls. The raw pseudo-$C_\ell$ enhancement is mask-induced mode coupling fully removed by MASTER and should not be quoted as a detection. Three distinct mechanisms contribute to the apparent enhancement of the raw pseudo-$C_\ell$:
 
 \emph{(i)~Estimator geometry.} The simple dipole fit operates in
 real space on the full asymmetry map, projecting onto a single
@@ -1725,9 +1724,7 @@ have pixel-to-pixel correlations induced by the varying survey depth,
 the isotropic null ensemble may underestimate the $\ell = 1$ variance
 by $\sim\!20\text{--}30\%$, inflating the apparent significance of a
 $\lesssim 2\sigmaunit$ fluctuation in the raw pseudo-$C_\ell$
-estimator (the $2.75\sigmaunit$ value in the older buggy-denominator
-snapshot predates the final normalization; the
-canonical-primary post-MASTER value is $-0.12\sigmaunit$).
+estimator (the canonical-primary post-MASTER value is $-0.12\sigmaunit$).
 
 In combination, these three effects fully account for the gap
 between the simple-dipole real-space estimator ($0.43\sigmaunit$)
@@ -2766,7 +2763,7 @@ different systematic mechanisms. The $\varepsilon\!=\!0.79\%$ ViT classifier CW 
 modulated by the non-uniform survey depth is the underlying source
 of both effects.
 
-Equivariant averaging suppresses the horizontal-flip component of the orientation bias at the soft-probability level: the CW and CCW channels are exactly symmetrized so the flip-equivariance of $(\pcw + \pccw)/2$ holds to machine precision. This guarantees flip-equivariance of the output protocol; it does NOT guarantee $\pcw\!=\!\pccw$ per galaxy, nor hard-label balance, nor cancellation of training/rotation/depth biases. The residual $9.5\sigmaunit$ monopole and $21\%$ per-galaxy argmax-flip rate (Sec.~\ref{sec:tta}) are the empirical evidence that hard-label bias is NOT cancelled by ensemble-level TTA alone. (Earlier drafts also cited a $\Delta\!=\!-1.35\%$ argmax CW-fraction shift on the $N\!=\!1{,}558$ holdout; This manuscript retracts this as fragile-argmax sample noise after a $N\!=\!1{,}988$ partial-harvest sign-flipped the same statistic to $+2.11\%$ at stable mean probability.) The collapse from
+Equivariant averaging suppresses the horizontal-flip component of the orientation bias at the soft-probability level: the CW and CCW channels are exactly symmetrized so the flip-equivariance of $(\pcw + \pccw)/2$ holds to machine precision. This guarantees flip-equivariance of the output protocol; it does NOT guarantee $\pcw\!=\!\pccw$ per galaxy, nor hard-label balance, nor cancellation of training/rotation/depth biases. The residual $9.5\sigmaunit$ monopole and $21\%$ per-galaxy argmax-flip rate (Sec.~\ref{sec:tta}) are the empirical evidence that hard-label bias is NOT cancelled by ensemble-level TTA alone. The argmax-CW-fraction shift $\Delta\!=\!-1.35\%$ on the $N\!=\!1{,}558$ holdout sign-flips to $+2.11\%$ on the $N\!=\!1{,}988$ partial-harvest, confirming it is fragile-argmax sample noise rather than a systematic. The collapse from
 $2.31\sigmaunit$ to $0.43\sigmaunit$ upon applying
 Eq.~(\ref{eq:tta}) confirms that the raw real-space dipole has no
 cosmological content. MASTER deconvolution independently confirms this
@@ -3453,7 +3450,7 @@ shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
 $\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
 $10$-bin granularity though the 4-bin reconciliation above showed $0.05\%$),
 \texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
-subsample} (HC-broad-0.6: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq}){>}0.6$; distinct from the spiral-only stricter HC-spiral-0.9 cut $n=471{,}049$ used in \S\ref{sec:mc_injection} for MC injection-recovery; the prior ``HC-broad'' label that included confident-NS galaxies has been corrected here to the spiral-only selection): all
+subsample} (HC-broad-0.6: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq}){>}0.6$; distinct from the spiral-only stricter HC-spiral-0.9 cut $n=471{,}049$ used in \S\ref{sec:mc_injection} for MC injection-recovery): all
 four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
 the smaller per-bin denominator. \emph{Reframe and verdict.} The
 three failing axes (size, fracdev, $b/a$ at $10$-bin granularity)
@@ -4045,10 +4042,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
  a complementary cross-check and is also consistent with null.
  The raw pseudo-$C_\ell$ value $6.48\sigmaunit$ before
  deconvolution is a mask-induced mode-coupling artifact, fully
- removed by MASTER, and must not be quoted as a detection (the
- older snapshot value $2.75\sigmaunit$ predates the canonical
- $N_{\rm spiral}=3{,}201{,}160$ normalization recount and is
- predates the final normalization; see
+ removed by MASTER, and must not be quoted as a detection (see
  Sec.~\ref{sec:dipole}).
  Under the per-pixel-shuffle empirical injection-recovery analysis (note: the per-pixel-shuffle null destroys depth/PSF/morphology covariance and is therefore a statistical-floor, NOT a fully systematic-inclusive sensitivity )
  (Sec.~\ref{sec:sensitivity}), no scale or sky region yields a
@@ -4192,7 +4186,7 @@ the $f_{\rm sky}=0.659$ subsample mask we use $C^2$ apodization at
 $2^\circ$.
 \item Field: scalar (spin-0); \texttt{nmt.NmtField(mask, [A\_p])} on
 the per-pixel asymmetry map $A_p = (N_{\rm CW}^{(p)} - N_{\rm CCW}^{(p)}) / N_{\rm total}^{(p)}$
-(this is $2(f_{\rm CW}(p) - 0.5)$ within each pixel). \textbf{Monopole-subtraction note}: in the production legacy pre-correction baseline, the input field $A_p$ was fed to \texttt{nmt.NmtField} WITHOUT explicit subtraction of the mask-weighted galaxy-mean $\langle A\rangle_{\rm mask, gw} = 2 f_{\rm CW}^{\rm global} - 1 = -0.005294$; the implicit subtraction of the constant $0.5$ at the per-pixel level does NOT remove the residual monopole arising from the observed $f_{\rm CW}^{\rm global} = 0.49735 \neq 0.5$ . A re-audit on the pod with proper galaxy-weighted mask-mean subtraction (available in the companion data repository) finds that the correction reduces pseudo-$C_0$ by a factor of $\sim\!330\times$ (the residual monopole is the dominant source of $\ell=0$ power as expected) and reduces decoupled $C_1$ at $\ell\!=\!1$ from $2.30\!\times\!10^{-5}$ to $1.51\!\times\!10^{-5}$ (a $\sim\!34\%$ reduction; an earlier estimate of ~5% was a bin-indexing error caught and corrected). The null std also drops correspondingly (legacy pre-correction baseline $8.10\!\times\!10^{-6}$ vs corrected $3.31\!\times\!10^{-6}$, a $\sim\!59\%$ reduction). The net effect on sigma is to increase it: legacy pre-correction baseline $\sigma\!=\!(2.30\!-\!0.80)\!\times\!10^{-5}/0.81\!\times\!10^{-5}\!=\!+1.85$; corrected $\sigma\!=\!(1.51\!-\!0.31)\!\times\!10^{-5}/0.33\!\times\!10^{-5}\!=\!+3.64$. The factor-$\sim\!2.5$ null-variance difference between the two scripts reflects the two scripts correctly computing different observables (uncorrected $A_p$ vs proper-monopole-subtracted $A_p$); the residual monopole was contributing $\sim\!2.5\!\times$ as much null power as the demonopole-corrected catalog. Both calculations are internally consistent under their respective definitions, and the corrected $\sigma\!=\!+3.64$ supersedes the legacy pre-correction baseline $\sigma\!=\!+1.85$ as the canonical-mask number (paper-wide convention); the legacy value is retained for historical provenance only.
+(this is $2(f_{\rm CW}(p) - 0.5)$ within each pixel). \textbf{Monopole-subtraction note}: the canonical analysis subtracts the mask-weighted galaxy-mean $\langle A\rangle_{\rm mask, gw} = 2 f_{\rm CW}^{\rm global} - 1 = -0.005294$ before computing power spectra, because the implicit subtraction of the constant $0.5$ at the per-pixel level does NOT remove the residual monopole arising from $f_{\rm CW}^{\rm global} = 0.49735 \neq 0.5$. The effect is substantial: monopole subtraction reduces pseudo-$C_0$ by a factor of $\sim\!330\times$ (the residual monopole is the dominant source of $\ell=0$ power as expected) and reduces decoupled $C_1$ at $\ell\!=\!1$ from $2.30\!\times\!10^{-5}$ to $1.51\!\times\!10^{-5}$ ($\sim\!34\%$). The null std also drops (without subtraction: $8.10\!\times\!10^{-6}$; with subtraction: $3.31\!\times\!10^{-6}$, a $\sim\!59\%$ reduction). The net effect on sigma is to increase it: without subtraction $\sigma\!=\!+1.85$; with proper subtraction $\sigma\!=\!+3.64$ (the canonical-mask number throughout this paper). The factor-$\sim\!2.5$ null-variance difference reflects the two computations correctly targeting different observables (uncorrected $A_p$ vs proper-monopole-subtracted $A_p$); the pre-subtraction result is reported in the companion data repository for completeness.
 \item Bins: single-multipole linear bin from $\ell=1$ to $\ell=L$ via
 \texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}.
 Reported quantity in the abstract is the $\ell=1$ row of
