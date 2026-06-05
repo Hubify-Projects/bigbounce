@@ -787,9 +787,7 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Sourced from
-\texttt{convergence\_latest.csv}: worst row is $n_s$ in the full-tension
-combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 17 sampled parameters (7 cosmological + 10 Planck likelihood nuisance: $A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE, $M_b$ for the SNIa absolute magnitude) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 17-parameter total sampled in the chains.
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 17 sampled parameters (7 cosmological + 10 Planck likelihood nuisance: $A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE, $M_b$ for the SNIa absolute magnitude) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 17-parameter total sampled in the chains.
 } & 0.001 & 0.003 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
@@ -814,7 +812,7 @@ Min ESS & 4{,}744 & 4{,}692 \\
 % calibrator); the 9 CamSpec foreground/calibration nuisance params are
 % identical between chains. Verified against iter2 chain header at
 % reproducibility/cosmology/iter2_converged_2026-05-18/.
-\caption{\label{tab:iter2_posterior} Converged iter2 DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$ at 2026-05-18 07:53~UTC; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE+TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Full parameter list, burn-in / acceptance diagnostics, and the iter2-vs-frozen parameter-set comparison appear in the chain manifest at \texttt{reproducibility/cosmology/iter2\_converged\_2026-05-18/}.}
+\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE+TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
@@ -848,7 +846,7 @@ $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
 \end{table*}
 
 \textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---The
-converged iter2 posterior \emph{disfavors} (in the marginal-tail sense; see
+converged $w_0w_a$ posterior \emph{disfavors} (in the marginal-tail sense; see
 fn.~\ref{fn:wcaveat}) the LCDM point
 $(w_0, w_a)=(-1,0)$ at the joint level: $w_0$ departs by $+4.3\sigma$ and
 $w_a$ departs by $-3.6\sigma$, with $w_0+w_a=-1.48 \pm 0.15$ requiring
@@ -883,10 +881,10 @@ KDE readout from the converged Metropolis-Hastings chain; robust $\ln B$ computa
 empirically by the low-$\ell$ EE + TT likelihoods listed in the caption
 (\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lowl.TT}) and is
 sampled as a free parameter rather than fixed by a Gaussian prior at the
-Planck best-fit value (the iter2 chain has $\tau$ free with the
+Planck best-fit value (the chain has $\tau$ free with the
 standard low-$\ell$ data constraint, not a Gaussian prior at the
 Planck best-fit). (c)~The SH0ES $H_0$ prior is \emph{not} included in this
-chain (the iter2 chain is BAO + CMB + SN-only, no local-distance ladder);
+chain (BAO + CMB + SN-only, no local-distance ladder);
 the joint posterior $H_0 = 67.185 \pm 0.455$ km/s/Mpc is therefore the
 no-SH0ES result. The interaction with the SH0ES prior is the subject of
 the separate \emph{full-tension} chain reported in
@@ -1051,7 +1049,7 @@ configuration (the angular-momentum
 parameter $(\omega/H)_0$ is discussed in Paper~I(a) as a phenomenological
 bounce-class indicator but is not separately sampled in the present
 $\Lambda$CDM$+\Delta\Neff$ MCMC). Reproducibility materials at
-\url{https://github.com/Hubify-Projects/bigbounce/tree/paper1b-v1B.0.36/reproducibility}.
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}.
 
 \subsection{Results}
 
@@ -1073,7 +1071,7 @@ $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
-A one-pass recomputation of the $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) from the final frozen-thinned chain via GetDist on the converged chain ($\hat R\!-\!1\!=\!0.00820$ at $N=128{,}385$, 2026-05-18 07:53~UTC; mean acceptance 0.2828; $\hat R_{\rm cl}=0.0705$ as chain-length diagnostic) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there (Table 1B contains only the $\chi^2$ decomposition; the AIC/BIC/$\ln B$ evidence metrics are left to a follow-up nested-sampling analysis). The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). A robust Bayesian evidence / Bayes factor against $\Lambda$CDM requires either a separate $\Lambda$CDM Cobaya run on the identical likelihood stack with nested sampling (PolyChord/MultiNest), or thermodynamic integration on a joint quintom/$\Lambda$CDM run; a Savage-Dickey density ratio readout from the present Metropolis-Hastings chain is \emph{not} viable because LCDM lies at $>4\sigma$ in the joint marginal tails ($w_0$ at $+4.3\sigma$, $w_a$ at $-3.6\sigma$) and is unsampled by the chain, so any KDE-based estimator yields arbitrary kernel-dependent noise. Robust $\ln B$ computation is left to a follow-up nested-sampling analysis.
+The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -1112,7 +1110,7 @@ $H(z)$ here as an empirical background, distinct from the quintom-bounce
 dynamics that supply the early-universe / contracting-phase $H(z)$ in the
 underlying ECH cosmology~\cite{Cai2010quintomReview}. The $\Lambda$CDM-background
 choice is conservative for the ALP-MCMC: a quintom late-time $w_0 w_a$
-background (as in Sec.~\ref{sec:cosmo_fits} iter2) shifts $H(z)$ at
+background (as in Sec.~\ref{sec:cosmo_fits}) shifts $H(z)$ at
 $z\!\lesssim\!1$ by $\sim$few percent, propagating to a $\lesssim$few-percent
 systematic on $\Delta\phi/f_a$ — well below the $\sim$30\% prior-width
 envelope on $\theta_i$ and $m/H_0$ dominating the $\beta$ prediction.}
@@ -1262,7 +1260,7 @@ $\sim 9\sigma$ in the early 2030s.
 
 All materials are at:
 \begin{center}
-\url{https://github.com/Hubify-Projects/bigbounce/tree/paper1b-v1B.0.36/reproducibility}
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
 The repository includes four Cobaya YAML configurations (one per dataset
 combination, stock CAMB, no custom modifications), galaxy-spin pipeline code,
@@ -1294,7 +1292,7 @@ were self-funded (RunPod H200 instances).
 \section{Reproducibility Materials}\label{app:reproducibility}
 
 \textit{Repository structure.}---The public repository
-\url{https://github.com/Hubify-Projects/bigbounce} (pinned to tag \texttt{paper1b-v1B.0.36})
+\url{https://github.com/Hubify-Projects/bigbounce}
 contains:
 \begin{itemize}[leftmargin=*]
 \item Four Cobaya YAML configurations (\texttt{cobaya\_planck.yaml},
@@ -1313,7 +1311,7 @@ be reproduced.
 
 \textit{What is NOT included.}---MCMC chains are not pre-computed (regenerate
 via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores).
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph), and is queued. With the converged iter2 posterior now extracted (Table~\ref{tab:iter2_posterior}), the next concrete step is that separate nested-sampling run rather than a Savage-Dickey readout from the present Metropolis-Hastings chain --- the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails of the converged chain and is unsampled, so a KDE-based Savage-Dickey ratio would yield kernel-dependent noise rather than a controlled density.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph). A Savage-Dickey readout from the present Metropolis-Hastings chain is not viable---the LCDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails and is unsampled, so a KDE-based estimator yields kernel-dependent noise rather than a controlled density. This is left to a dedicated future nested-sampling analysis.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
