@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.44-2026-06-03}
-\newcommand{\paperTimestamp}{June 3, 2026 PDT (R-upgraded-round9 close: 7 do-now fixes — title retitle, ``strongest'' softening, RSD anisotropy reframe, DESIVAST scope, scale-locality caveat, \S{}XI.B rename, changelog strip)}
+\newcommand{\paperVersion}{v0.1.45-2026-06-04}
+\newcommand{\paperTimestamp}{June 4, 2026}
 % --- Preamble changelog (full pre-v0.1.44 history archived to CHANGELOG_pre-v0.1.44.txt) ---
 % v0.1.44-2026-06-03 (R-upgraded-round9 closure bundle, 7 do-now fixes from
 %   direct-vendor Gemini-2.5-Pro + Grok-4 + GPT-4o + Perplexity triage on v0.1.43).
@@ -66,8 +66,7 @@ We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
 with the DESI Data Release~1 redshift
 catalog ($16.4 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
-structure environment. \emph{Scope of the two DR1 inputs (v0.1.44
-PER-M1 clarification):} DESIVAST~\cite{DESIVAST2025} provides the
+structure environment. \emph{Scope of the two DR1 inputs:} DESIVAST~\cite{DESIVAST2025} provides the
 \emph{void catalog} (three-algorithm: VoidFinder sphere-growing,
 V2-REVOLVER and V2-VIDE watershed); DESI DR1 redshifts provide the
 \emph{environmental anchor} through which we run a V-Web tidal
@@ -122,7 +121,7 @@ correction. We interpret this as no evidence for environment-dependent
 chirality beyond the catalog-monopole offset at current sensitivity;
 the V-Web void class at $z\!\lesssim\!0.24$ is sample-size limited at
 $n\!=\!428$ chirality-relevant spirals and dominated by survey-edge
-artifacts (see \S\ref{sec:tweb_compare}), so the controlling void
+artifacts (see \S\ref{sec:tweb_concurrent}), so the controlling void
 constraint comes from the DESIVAST-anchored re-projection
 ($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$) rather than the
 V-Web void label.
@@ -133,7 +132,7 @@ classifier as a supporting cross-survey consistency check
 (different parent catalog, SDSS DR10, only $\sim\!14$k galaxies in
 the filament-like bin, richness-selection rather than tidal-tensor,
 approximate richness-to-tidal mapping; filament-class concordance
-$0.026$\,pp; supporting rather than load-bearing per R-ext-GRO-M2:
+$0.026$\,pp; supporting rather than load-bearing:
 the primary robustness evidence is the on-DESI DESIVAST
 cross-classifier and Phase 2 V-Web sensitivity analyses) and four DESIVAST-anchored
 re-projections of the V-Web null on a $\sim\!130\times$ larger void
@@ -173,7 +172,7 @@ $n=21{,}203$ is large enough to test); the cluster class joint
 $|z| \approx 0.5\sigma$ is sample-size-limited ($n_{\rm dark}^{\rm
 cluster} = 4{,}234$) and does not independently confirm or refute the
 selection-function-conditioned interpretation.
-A contingency test (\S\ref{sec:results_vweb}, GEM-M1 closure paragraph)
+A contingency test (\S\ref{sec:results_vweb})
 finds V-Web class and target program are \emph{not} independent
 ($\chi^{2}\!=\!4932$, $3$ d.o.f., $p\!<\!10^{-1000}$, max class-to-overall
 bright-fraction deviation $1.5$\,pp), so the V-Web filament
@@ -801,8 +800,7 @@ Paper~IV tracks, not by environment-driven astrophysics. Companion
 artifact:
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_cosmic\_web/filament\_within\_class\_decomposition.json}.
 
-\paragraph{V-Web class vs.\ target-program orthogonality
-(GEM-M1 closure).} The BGS-selection-function-origin interpretation
+\paragraph{V-Web class vs.\ target-program orthogonality.} The BGS-selection-function-origin interpretation
 above relies on V-Web environmental classification being approximately
 orthogonal to the \texttt{bright}/\texttt{dark} target split: if
 V-Web class were strongly correlated with target program, then a
@@ -952,8 +950,7 @@ matches the observed $-11.3$ within order unity. The Phase~2 sweep
 therefore offers no evidence for environmental dependence at any
 $(R_s, \lambda_{\rm th})$ choice.
 
-\subsection{Per-cell significance framework
-(GPT-B2 closure)}\label{sec:phase2_significance}
+\subsection{Per-cell significance framework}\label{sec:phase2_significance}
 
 The per-cell range
 of $f_{\rm CW}$ values across the four V-Web classes is a
@@ -1050,8 +1047,7 @@ catalog rather than a full four-class cosmic-web classifier, so the
 DESIVAST-anchored chirality null tests environmental dependence on
 the cleanest available DR1 void definition.
 
-\emph{RSD treatment for DESIVAST (v0.1.40, GEM-M2 closure
-addressing R-multi-round2 pattern-008).} The DESIVAST primary
+\emph{RSD treatment for DESIVAST.} The DESIVAST primary
 path is essentially RSD-immune at the level relevant to this
 work: DESIVAST defines voids via the geometry of large
 ($R_{\rm eff}\!\gtrsim\!10$\,Mpc/$h$) underdensities in the
@@ -1065,7 +1061,7 @@ the typical Kaiser-plus-finger-of-god displacement $\sigma_v/(aH)
 \lesssim 5$\,Mpc/$h$ at $z \lesssim 0.24$ is several times smaller
 than the void effective radii. The within-void/non-void chirality
 fractions therefore inherit no anisotropic RSD systematic at the
-present precision. We note (R-upgraded-round4 GEM-m1 closure) that
+present precision. We note that
 this RSD-immunity argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
 sample (a mix of walls, filaments, and clusters) is still subject to
@@ -1540,7 +1536,7 @@ filament\_like $f_{\rm CW}\!=\!0.4982$ ($n\!=\!14{,}317$) differ by
 $0.026$\,percentage points, well below the $0.2$\,pp concordance
 spec (supporting, not load-bearing; the primary cross-classifier
 validation is the on-DESI DESIVAST re-projection in
-\S\ref{sec:tweb_compare}). Lower-$n$ classes scatter by counting statistics and
+\S\ref{sec:tweb_concurrent}). Lower-$n$ classes scatter by counting statistics and
 classifier-definition mismatch (V-Web $\lambda_{\rm th}\!=\!0$ vs
 Tempel discrete richness thresholds) but do not contradict the
 environmental-independence headline.}
@@ -1582,8 +1578,7 @@ the LRG and ELG samples shift these by a few percentage points each,
 spanning the combined ranges
 $\{0.06\text{--}0.16,\, 0.45\text{--}0.48,\, 0.37\text{--}0.40,\,
 0.04\text{--}0.06\}$
-across the three tracer samples (PER-M1-R7 closure: ranges now framed
-as tracer-dependent, not as a single all-DR1 fraction). Any direct
+across the three tracer samples. Any direct
 comparison to our DR1-all-spectro V-Web run is therefore approximate
 because of the differing target selection, redshift coverage, and
 sample volume (cubic $800$~Mpc box vs.\ thin survey shell). Our V-Web
@@ -1659,10 +1654,7 @@ chirality classification (P4), ASTRA per-class membership probabilities
 (this section), and V-Web deterministic class assignment
 (\S\ref{sec:vweb}). This is an EDR-overlap per-galaxy cross-check of
 the V-Web canonical classifier against the ASTRA published DESI
-environmental catalog within this campaign (R-upgraded-round4 GRO-B2
-closure: prior wording ``first per-galaxy cross-validation'' withdrawn
-as overclaim relative to existing literature on overlapping
-DESI-EDR/SDSS spin/morphology cross-matches) and is the closest currently
+environmental catalog within this campaign and is the closest currently
 available substitute for the full-DR1 environmental VAC discussed in
 \S\ref{sec:limitations}. The cross-match pipeline is at
 \artifact{pipelines/p5\_desi\_chirality/scripts/15\_astra\_per\_object\_crossmatch.py};
@@ -1713,7 +1705,7 @@ $25{,}186$ spirals as $11.9\%$~void~/~$31.7\%$~sheet~/~$35.2\%$~filament
 filament~(31.7\%) and cluster~(68.3\%), with only $3$~spirals total in
 the V-Web void~$+$~wall classes. This reflects the survey-shell
 density-grid systematic discussed in
-\S\ref{sec:tweb_compare}: the $25.9$~Mpc/$h$ cell size in the V-Web
+\S\ref{sec:tweb_concurrent}: the $25.9$~Mpc/$h$ cell size in the V-Web
 $256^{3}$~grid is comparable to the EDR rosette transverse extent, so
 the EDR-overlap subsample falls disproportionately on cells where the
 edge-density mask suppresses the V-Web void class, while ASTRA
@@ -1733,7 +1725,7 @@ deterministic single-class V-Web assignment reaches the same
 conclusion as the probabilistic ASTRA classifier even though the two
 classifiers assign vastly different per-galaxy class labels.
 
-We note (R-multi-round4 GRO-M1 reframing) that the ASTRA EDR
+We note that the ASTRA EDR
 per-object overlap is restricted to the $\sim\!175$\,deg$^2$ EDR
 rosettes ($N_{\rm overlap}=25{,}186$), and that V-Web and ASTRA argmax
 disagree strongly on per-galaxy environment labels on this overlap;
@@ -1742,7 +1734,7 @@ same null result under either classifier despite per-galaxy label
 disagreement, consistent with the catalog-monopole offset already
 present at the catalog-wide level (Paper~IV), rather than as a new
 independent detection. We list it alongside (i)~DESIVAST per-galaxy
-cross-match, \S\ref{sec:tweb_compare}; (ii)~within-class density
+cross-match, \S\ref{sec:tweb_concurrent}; (ii)~within-class density
 quartile null, \S\ref{sec:results_within_class_density};
 (iii)~DESIVAST-anchored void classifier;
 (iv)~three-algorithm DESIVAST robustness;
@@ -1840,8 +1832,8 @@ the EDR-overlap subset.
 \item Galaxy positions used for the V-Web tidal-tensor estimate are
 in observed redshift space rather than corrected to real space.
 \emph{The dominant RSD effect for a tidal-tensor classifier is
-anisotropic eigenvalue deformation, not isotropic scalar displacement}
-(v0.1.44 GEM-M1 + GPT-M3 + GRO-M1 3-way reframing). The Kaiser
+anisotropic eigenvalue deformation, not isotropic scalar displacement.}
+The Kaiser
 line-of-sight squashing and the finger-of-god elongation each
 introduce a direction-dependent shift in the deformation-tensor
 spectrum
@@ -1875,7 +1867,7 @@ the sweep-induced shift without a reconstructed-position rerun.
 A reconstructed-position rerun is a natural follow-up if the smoothing
 scale is ever pushed below $\sim 10$\,Mpc/$h$.
 
-\emph{Order-of-magnitude boundary-crossing estimate (v0.1.34).}
+\emph{Order-of-magnitude boundary-crossing estimate.}
 Using the V-Web eigenvalue field itself, the fraction of cells near
 class boundaries (eigenvalues within $|\lambda - \lambda_{\rm th}|
 \le \sigma_{\rm rsd}/R_s$ of the threshold) sets the maximum
@@ -1893,7 +1885,7 @@ across all four class boundaries. The propagated contribution to
 $\Delta f_{\rm CW}$ per class is therefore expected to be
 sub-dominant at the current $\sim 10^{-3}$ precision, but we
 explicitly do not quantify the propagated uncertainty in the
-present paper (v0.1.35 downgrade per R-multi-round2 GRO-R2-m2):
+present paper:
 a full quantification — distinguishing pure displacement from
 anisotropic eigenvalue deformation — requires the proper
 Zel'dovich-reconstructed re-classification, which we defer to a
@@ -1931,9 +1923,7 @@ This null is consistent with the Paper~IV global parity-mixture null
 and provides an observational upper bound that any future model in the
 bounce-chirality coupling class (Sec.~\ref{sec:p4}) proposing an
 environment-dependent parity signature at the $\gtrsim\!25\,\text{Mpc}/h$
-V-Web smoothing scale must satisfy (v0.1.44 GEM-m1 scope-locality
-caveat; R-ext-GRO-min1 reframing from prior "clean
-environment-dependent constraint"); it does not constrain the
+V-Web smoothing scale must satisfy; it does not constrain the
 bounce-vs.\
 inflation discrimination program: neither model predicts an
 environment-dependent chirality signature at DESI DR1 resolution at
@@ -1947,8 +1937,7 @@ Appendix~\ref{app:toy_eft} as a guide for future model-building
 \appendix
 \section{Toy EFT mapping of the environmental bound}\label{app:toy_eft}
 
-\emph{Mapping to a physical operator (toy parametrization, moved to
-appendix in v0.1.35 per R-multi-round2 GRO-R2-M2).}
+\emph{Mapping to a physical operator (toy parametrization).}
 The observational bound from the main text can be cast in an
 effective-field-theory language as an order-of-magnitude guide for
 how a parity-violating coupling would map to V-Web class-to-class
@@ -1985,8 +1974,7 @@ uncertainties through that transfer function. We do not claim either
 calculation here; the parametrization is included as a guide for
 future model-building, not as a derived constraint.
 
-\emph{Rotational-invariance and gauge-invariance caveat (v0.1.41,
-GEM-B1/m2 closure).} Two distinct theoretical caveats apply to the toy
+\emph{Rotational-invariance and gauge-invariance caveat.} Two distinct theoretical caveats apply to the toy
 operator. \emph{First (rotational invariance):} the explicit
 $(\hat L\cdot\hat z)$ factor breaks rotational invariance via the
 fixed coordinate-system unit vector $\hat z$, and should be read as

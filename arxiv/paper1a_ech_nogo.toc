@@ -64,7 +64,7 @@
 \contentsline {subsubsection}{\numberline {2}Observational}{17}{section*.62}%
 \contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{17}{section*.63}%
 \contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{17}{section*.64}%
-\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$ (robustness check, not co-equal closure)}{17}{section*.65}%
+\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$}{17}{section*.65}%
 \contentsline {subsection}{\numberline {E}Channel-Level Closure}{18}{section*.66}%
 \contentsline {section}{\numberline {XV}Conclusions}{18}{section*.67}%
 \contentsline {subsection}{\numberline {}Data and Code Availability}{18}{section*.68}%

@@ -13,11 +13,6 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: 02_full_draftNotes.bib
 Database file #2: focused_paper_refs.bib
-You're missing a field name---line 170 of file focused_paper_refs.bib
- :   
- :   % NOTE (v1.7.29, real cross-vendor R-round, Perplexity Sonar Pro
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -79,4 +74,4 @@ warning$ -- 8
 while$ -- 115
 width$ -- 0
 write$ -- 419
-(There was 1 error message)
+(There were 8 warnings)
