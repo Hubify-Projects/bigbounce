@@ -57,3 +57,62 @@
 **Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
 
 ---
+## Cross-round diff: `R10v3p1` → `auto-2026-06-05_1418pt`
+
+- **P1A**: 142 findings, 6 consensus | appeared=3, disappeared=4, new ESSENTIAL=0
+    - CLOSED [shamir_citation] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,table_ii,table_iv,companion] (was caught by 1 prev)
+    - CLOSED [table_ii,length] (was caught by 1 prev)
+    - CLOSED [table_iv,shamir_citation] (was caught by 1 prev)
+- **P1B**: 111 findings, 3 consensus | appeared=2, disappeared=4, new ESSENTIAL=0
+    - CLOSED [companion,future_date] (was caught by 1 prev)
+    - CLOSED [companion,length] (was caught by 1 prev)
+    - CLOSED [sigma_mixing] (was caught by 2 prev)
+    - CLOSED [table_ii,companion] (was caught by 2 prev)
+- **P2**: 138 findings, 1 consensus | appeared=0, disappeared=0, new ESSENTIAL=0
+- **P3**: 127 findings, 5 consensus | appeared=5, disappeared=4, new ESSENTIAL=2
+    + NEW ESS [companion] caught by 1 reviewer(s)
+    + NEW ESS [sigma_mixing,table_ii,dedup_audit] caught by 1 reviewer(s)
+    - CLOSED [audit_artifact] (was caught by 1 prev)
+    - CLOSED [companion,audit_artifact] (was caught by 1 prev)
+    - CLOSED [table_ii,length] (was caught by 1 prev)
+    - CLOSED [table_iv,companion] (was caught by 1 prev)
+- **P4**: 108 findings, 5 consensus | appeared=10, disappeared=10, new ESSENTIAL=0
+    - CLOSED [audit_artifact] (was caught by 1 prev)
+    - CLOSED [fisher_floor] (was caught by 2 prev)
+    - CLOSED [fisher_floor,dilution_factor] (was caught by 1 prev)
+    - CLOSED [gz1_stale_n] (was caught by 3 prev)
+    - CLOSED [iye_citation] (was caught by 1 prev)
+    - CLOSED [shamir_citation,fisher_floor] (was caught by 1 prev)
+    - CLOSED [table_ii,table_ii_sigma_arithmetic] (was caught by 2 prev)
+    - CLOSED [table_ii,table_iv,shamir_citation,length] (was caught by 1 prev)
+    - CLOSED [table_ii,table_iv,table_iv_z] (was caught by 1 prev)
+    - CLOSED [weighting,fsky_effective] (was caught by 1 prev)
+- **P5**: 92 findings, 6 consensus | appeared=8, disappeared=5, new ESSENTIAL=2
+    + NEW ESS [sigma_mixing,table_ii] caught by 1 reviewer(s)
+    + NEW ESS [sigma_mixing,table_ii,tweb_vweb] caught by 2 reviewer(s)
+    - CLOSED [companion,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [duplicate_phrase,tweb_vweb] (was caught by 2 prev)
+    - CLOSED [sigma_mixing,companion,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,table_ii,table_iv] (was caught by 1 prev)
+    - CLOSED [table_ii,companion,length] (was caught by 1 prev)
+
+### Cross-paper pattern candidates (consensus key appearing in 2+ papers)
+
+- `audit_artifact` → in 2 papers: ['P1A', 'P1B']
+- `companion` → in 5 papers: ['P1A', 'P1B', 'P2', 'P3', 'P5']
+- `companion,duplicate_phrase` → in 2 papers: ['P3', 'P5']
+- `companion,length` → in 2 papers: ['P1A', 'P5']
+- `future_date` → in 6 papers: ['P1A', 'P1B', 'P2', 'P3', 'P4', 'P5']
+- `length` → in 3 papers: ['P2', 'P3', 'P4']
+- `shamir_citation` → in 2 papers: ['P4', 'P5']
+- `sigma_mixing` → in 5 papers: ['P1A', 'P2', 'P3', 'P4', 'P5']
+- `sigma_mixing,table_ii` → in 3 papers: ['P1B', 'P4', 'P5']
+- `table_ii` → in 5 papers: ['P1A', 'P1B', 'P3', 'P4', 'P5']
+- `table_iv` → in 3 papers: ['P1A', 'P3', 'P4']
+
+**Total NEW ESSENTIAL across all 6 papers this round: 4**
+
+**Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
+
+---
