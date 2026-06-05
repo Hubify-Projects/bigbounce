@@ -731,12 +731,7 @@ post-burnin samples remain across both frozen chains
 $176{,}240 \times 0.7 \approx \mathbf{123{,}368}$ post-burnin (the
 \textbf{119{,}617} figure in Fig.~\ref{fig:corner_full_tension} reflects
 additional \texttt{getdist} effective-sample weight-based thinning of this
-subset only). The earlier draft footnote that quoted ``$\mathbf{123{,}129}$
-post-burnin'' as a both-chains total was an arithmetic error -- $123{,}129$ is
-the post-burnin count of the full-tension subset alone (within $\pm\!1\%$ of
-the $123{,}368$ exact computation, with the small offset reflecting the
-chain-end-truncation of partial samples at the burn-in cut); the correct
-both-chains post-burnin total is $216{,}432$. The third (Planck-only)
+subset only). The post-burnin count of the full-tension subset alone is $123{,}129$ (within $\pm\!1\%$ of the $123{,}368$ exact computation, with the small offset reflecting the chain-end-truncation of partial samples at the burn-in cut); the correct both-chains post-burnin total is $216{,}432$. The third (Planck-only)
 dataset combination ($114{,}992$ raw samples; $\hat R - 1 \sim 0.05$) is
 still accumulating samples, is reported separately in
 Table~\ref{tab:verification}, and is \emph{not} aggregated into the
@@ -795,9 +790,7 @@ Total samples & 176{,}240 & 132{,}949 \\
 Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Sourced from
 \texttt{convergence\_latest.csv}: worst row is $n_s$ in the full-tension
 combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 17 sampled parameters (7 cosmological + 10 Planck likelihood nuisance: $A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE, $M_b$ for the SNIa absolute magnitude) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 17-parameter total sampled in the chains.
-\emph{Not} the stale mid-burn-in diagnostic
-\texttt{convergence\_gpu\_20260305\_stale.csv} ($\hat{R}-1\in[0.23,0.86]$),
-preserved as a transparency artifact only.} & 0.001 & 0.003 \\
+} & 0.001 & 0.003 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
 \end{ruledtabular}
@@ -863,8 +856,7 @@ phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
 Pantheon+. This is the canonical quintom signature and is consistent with
 the bounce / pre-Big-Bang scenario discussed in Paper~I(a)'s \S~Structural
 Tension as a constraint that single-field quintessence cannot accommodate
-without a second degree of freedom (phantom / quintom-B). Earlier internal
-bookkeeping (corrected fire \#25) erroneously quoted ``98.6\% quintom-B''
+without a second degree of freedom (phantom / quintom-B). An earlier count erroneously quoted ``98.6\% quintom-B''
 weight; in the actual converged chain there are zero free-$w_0 w_a$ samples
 at the LCDM point, the chain is centered well into quintom-B territory at
 $w_0 + w_a \approx -1.48$. Note that $w_{\rm pivot}$ (the effective equation
@@ -1032,7 +1024,7 @@ pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
 $\Delta\hat\beta = 0.040^\circ$ at injection $\beta=0.342^\circ$
 ($\hat\beta=0.302^\circ$); the absolute bias scales mildly with injected
-amplitude (prior versions described the bias as
+amplitude (the bias was initially characterized as
 strictly ``stable across all three injections'' at $0.032^\circ$, but the
 $0.342^\circ$ injection actually gives $0.040^\circ$, a relative $\sim 12\%$
 amplitude-dependent component). The deconvolution is therefore unbiased at the
