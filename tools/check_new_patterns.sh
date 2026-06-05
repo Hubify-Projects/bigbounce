@@ -60,4 +60,19 @@ declare_papers | while IFS=: read -r tag rel; do
     echo "  ⚠ p039 hardcoded prose 'Table II/IV' reference(s):"
     echo "$prose_ref" | sed 's/^/    /'
   fi
+
+  # Pattern 040 (P4-E12 type): same percentage paired with two different integer counts.
+  # Find "<INT>,?<INT>" patterns followed by "<float>%" within 200 chars; bucket by percentage.
+  python3 -c "
+import re, sys
+text = open('$tex').read()
+# Match N{,}NNN followed within 200 chars by P.PP%
+buckets = {}
+for m in re.finditer(r'(\d{1,3}(?:[,]\s?\d{3})+)\b[^\n]{0,200}?(\d+\.\d{2}%)', text):
+    n, pct = m.group(1).replace(',','').replace(' ',''), m.group(2)
+    buckets.setdefault(pct, set()).add(n)
+flagged = {pct: ns for pct, ns in buckets.items() if len(ns) > 1}
+for pct, ns in flagged.items():
+    print(f'  ⚠ p040 candidate: same percentage \"{pct}\" paired with different counts: {sorted(ns)}')
+" 2>/dev/null
 done
