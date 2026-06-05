@@ -1,7 +1,7 @@
 # P4 auto-2026-06-05_1517pt — v3 native-PDF cross-vendor SYNTHESIS
 
-**Reviewers**: P4_Claude_brutal, P4_Gemini_cosmology, P4_Grok_brutal, P4_OpenAI_methodology, P4_Perplexity_citations
-**Total findings (across all reviewers)**: 146
+**Reviewers**: P4_Claude_brutal, P4_Gemini_cosmology, P4_Grok_brutal, P4_META_REVIEW, P4_OpenAI_methodology, P4_Perplexity_citations
+**Total findings (across all reviewers)**: 157
 **Distinct consensus groups**: 20
 
 ## Per-reviewer finding counts
@@ -11,6 +11,7 @@
 | P4_Claude_brutal | 9 | 11 | 48 | 0 |
 | P4_Gemini_cosmology | 0 | 0 | 0 | 0 |
 | P4_Grok_brutal | 2 | 3 | 0 | 4 |
+| P4_META_REVIEW | 1 | 6 | 3 | 1 |
 | P4_OpenAI_methodology | 7 | 23 | 6 | 4 |
 | P4_Perplexity_citations | 11 | 11 | 3 | 4 |
 
@@ -82,6 +83,14 @@ Reviewers: P4_Claude_brutal, P4_OpenAI_methodology
 - **[P4_Claude_brutal/P4-E5/ESSENTIAL]**: ### P4-E5 — Internal version-history language in body text **Sec. IV D, p. 4.** "The canonical-mask direct-MC ℓ=1 value of +3.64σ … were interpreted in **earlier paper versions** as mask-geometric leakage of the global 9.5σ monopole." This is a review-log artifact. Remove. Likewise repeated "non-headline, systematics-attributed" reads as post-hoc rebranding language inserted during revision — tighten or drop.
 - **[P4_OpenAI_methodology/P4-E6/ESSENTIAL]**: P4-E6 (Abstract p. 1; Sec. IV.D p. 4–5): “Earlier paper versions” language - Quote: “were interpreted in earlier paper versions as mask-geometric leakage …” - Problem: Version-history language must not appear in the manuscript. - Required fix: Remove all references to earlier paper versions. Rewrite the sentence to state the current interpretation only.
 
+### `nmap_weighting` — ESSENTIAL — **CONSENSUS** (2 reviewers)
+
+Reviewers: P4_META_REVIEW, P4_OpenAI_methodology
+
+- **[P4_META_REVIEW/P4-META-N1/NIT]**: P4-META-N1 Severity: NIT Section/page: Table I caption, p. 4 Why others missed it: Read as harmless prose. Specific problem: “each galaxy is counted once” in the Nmap,weighted explanation is potentially misleading: non-spiral galaxies are counted in weights only, not in the chirality field; the phrase invites confusion with unique-object counting in the science sample. Required fix: Rephrase to: “Each catalog entry contributes exactly once to the weight map Wp; the chirality field uses only spiral counts.”  ## Meta-review recommendation REJECT  Rationale: Beyond the numerous issues already ide…
+- **[P4_OpenAI_methodology/P4-E7/ESSENTIAL]**: P4-E7 (Abstract p. 1; Appendix A p. 7): “Subsample mask” definition is unclear/contradictory; “strict-superset subsample mask” - Problem: The term “strict-superset subsample mask” is contradictory and the analysis mask construction is not rigorously defined. The primary headline result hangs on this mask (fsky = 0.659; Nmap,weighted = 5,547,858), yet readers cannot reconstruct it. - Required fix: Provide a precise, reproducible definition of the “subsample mask”: selection criteria for pixels/objects (e.g., min counts, quality cuts), its relationship to the canonical mask (subset/superset?), a…
+- **[P4_OpenAI_methodology/P4-M8/MAJOR]**: P4-M8 (Abstract p. 1; App. A.a; p. 7): Misleading notation “n = 5,547,858” for a weighted sum - Quote: Abstract: “(n = 5,547,858, fsky = 0.659)”; App. A.a: “Nmap,weighted = Σp∈mask Wp = 5,547,858 where Wp = N(p)all.” - Problem: The abstract’s “n” looks like a count but is actually a sum of per-pixel weights (galaxy counts, including non-spirals) over a mask. This is not the number of galaxies analyzed nor the number of spirals and can be misread. - Required fix: Replace “n” by “ΣWp” or “Nmap,weighted” in the abstract and define it on first use. Also report the corresponding number of unique ga…
+
 ### `table_ii,table_iv` — ESSENTIAL — **CONSENSUS** (2 reviewers)
 
 Reviewers: P4_Claude_brutal, P4_OpenAI_methodology
@@ -89,6 +98,13 @@ Reviewers: P4_Claude_brutal, P4_OpenAI_methodology
 - **[P4_Claude_brutal/P4-E9/ESSENTIAL]**: ### P4-E9 — σ from different nulls juxtaposed in tables without per-cell qualifier **Table I, Table III, Table IV, p. 4–5.** The abstract adds a global "not directly comparable" note, but Table I shows columns "Null" and "σ" side by side with values from MC label-shuffle, isotropic bootstrap, monopole-only generative null, max-stat MC, and pp-shuffle. A reader scanning Table I will read −0.122, +0.43, +3.64, +1.68 as commensurable. Per the review instruction set, this is essential. **Fix**: add an explicit per-row footnote tying σ to its null, or replace σ with the null-conditioned p-value, or…
 - **[P4_Claude_brutal/P4-E10/MINOR]**: ### P4-E10 — Catalog A vs Catalog C conflation in the leakage demonstration **Abstract; Sec. IV C, IV D; Table IV.** The "99.3% leakage" demonstration is internally muddled across catalogs: - Sec. IV C says **Catalog A** (raw) produces "+6.48σ pre-MASTER pseudo-Cℓ in the lowest bandpower" from a **+0.79% CW excess** (per Table II). - Sec. IV D says the monopole-only null is run "at p_CW^global = 0.4974" — that is the **Catalog C** monopole value (a CCW excess, +0.26%, +9.5σ in Table II). - Table IV's "data" entry 1.696×10⁻² is the pre-MASTER pseudo-Cℓ; only +1.68σ above the monopole-only null.…
 - **[P4_OpenAI_methodology/P4-n3/NIT]**: P4-n3 (Appendix A; p. 7): Units on Cℓ - Table III lists “(sr)” while Table IV has no units.  - Required fix: State units everywhere and ensure they are consistent.
+
+### `table_iv` — ESSENTIAL — **CONSENSUS** (2 reviewers)
+
+Reviewers: P4_META_REVIEW, P4_Perplexity_citations
+
+- **[P4_META_REVIEW/P4-META-E1/ESSENTIAL]**: P4-META-E1 Severity: ESSENTIAL Section/page: Sec. IV D, p. 4–5 (Monopole+Mask Leakage Generative Null; Table IV label and surrounding text) Why others missed it: Several reviewers flagged null-definition ambiguity, but none checked the n used in the binomial generator against the field’s denominator. Specific problem: The generative null is defined as “per-pixel CW count is drawn from Binomial(ntotal, pglobalCW) on the exact canonical mask,” where earlier in Appendix A and Table I ntotal is explicitly the total number of classified galaxies in the pixel (CW+CCW+NS), not the spiral count. Howev…
+- **[P4_Perplexity_citations/P4-m6/MINOR]**: P4-m6 (MINOR)   Section: Throughout, especially Sec. IV D, Appendix D (pages 4–5, 8–9)   Problem: The term “monopole+mask leakage” is used as a shorthand for a specific mechanism (a spatially uniform classifier monopole coupling to an inhomogeneous depth/mask geometry) but sometimes appears without the “uniform” qualifier, which could be confused with more general mask‑systematics. For example, Sec. IV D says “monopole-only null” and “monopole+mask leakage” while Appendix D e–g discusses additional morphology/PSF/depth templates that go beyond a strict monopole.   Required fix: Where “monopole…
 
 ### `n_mc_500` — MAJOR — **CONSENSUS** (2 reviewers)
 
@@ -116,13 +132,6 @@ Reviewers: P4_Claude_brutal
 
 - **[P4_Claude_brutal/P4-E3/ESSENTIAL]**: ### P4-E3 — Training-label independence is overstated **Sec. II B, p. 2.** "67.6% of training labels derive from CE-ResNet predictions." The paper then trains a ViT on these pseudo-labels and reports a catalog that — by construction — partially reproduces CE-ResNet. The independent GZ1 cross-match yields **κ = 0.40 (fair only)** and 69.91% accuracy. Yet the abstract frames this as "advancing beyond CE-ResNet" and the paper offers the catalog as a community resource. The classifier is essentially a CE-ResNet distillation with a NOT_SPIRAL head and a GZ1-flavored bias. This must be stated plainl…
 - **[P4_Claude_brutal/P4-E12/MINOR]**: ### P4-E12 — "67.6% of training labels derive from CE-ResNet" matches neither denominator **Sec. II B, p. 2.** With the listed counts: - 17,153/25,790 = **66.5%** - 17,153/26,636 = **64.4%** - 67.6% requires a denominator of 25,375 — not given anywhere.  This is a load-bearing number because it controls how much "independent ground truth" the catalog claims. **Fix**: state which denominator gives 67.6% (or correct it), and report the κ = 0.40 GZ1 result against the actual independent-label fraction (which is at most 25%).
-
-### `nmap_weighting` — ESSENTIAL — _single-reviewer_ (1 reviewer)
-
-Reviewers: P4_OpenAI_methodology
-
-- **[P4_OpenAI_methodology/P4-E7/ESSENTIAL]**: P4-E7 (Abstract p. 1; Appendix A p. 7): “Subsample mask” definition is unclear/contradictory; “strict-superset subsample mask” - Problem: The term “strict-superset subsample mask” is contradictory and the analysis mask construction is not rigorously defined. The primary headline result hangs on this mask (fsky = 0.659; Nmap,weighted = 5,547,858), yet readers cannot reconstruct it. - Required fix: Provide a precise, reproducible definition of the “subsample mask”: selection criteria for pixels/objects (e.g., min counts, quality cuts), its relationship to the canonical mask (subset/superset?), a…
-- **[P4_OpenAI_methodology/P4-M8/MAJOR]**: P4-M8 (Abstract p. 1; App. A.a; p. 7): Misleading notation “n = 5,547,858” for a weighted sum - Quote: Abstract: “(n = 5,547,858, fsky = 0.659)”; App. A.a: “Nmap,weighted = Σp∈mask Wp = 5,547,858 where Wp = N(p)all.” - Problem: The abstract’s “n” looks like a count but is actually a sum of per-pixel weights (galaxy counts, including non-spirals) over a mask. This is not the number of galaxies analyzed nor the number of spirals and can be misread. - Required fix: Replace “n” by “ΣWp” or “Nmap,weighted” in the abstract and define it on first use. Also report the corresponding number of unique ga…
 
 ### `iye_citation,shamir_citation` — MAJOR — _single-reviewer_ (1 reviewer)
 
@@ -161,13 +170,7 @@ Reviewers: P4_Claude_brutal
 
 - **[P4_Claude_brutal/P4-m13/MINOR]**: ### P4-m13 — Software list (Appendix end) lists "timm [39]" and "NaMaster/pymaster" but no version for NaMaster except in Appendix A ("pymaster 2.6"). Add to software list.  ---  ## NITS  - **P4-n1**: "Headline" in conclusions §VII has lowercase "headline" but the section opens "*a. Headline finding*". Standardize capitalization. - **P4-n2**: Page 4 Table III: "Joint χ²/dof (38 bandpowers)" but Table III shows only 5 bandpowers and one single mode. The 38 number is unexplained. - **P4-n3**: Eq. (B1) uses bold **p** and italic *S*; consistency with notation elsewhere needs checking. - **P4-n4**…
 
-### `table_iv` — MINOR — _single-reviewer_ (1 reviewer)
-
-Reviewers: P4_Perplexity_citations
-
-- **[P4_Perplexity_citations/P4-m6/MINOR]**: P4-m6 (MINOR)   Section: Throughout, especially Sec. IV D, Appendix D (pages 4–5, 8–9)   Problem: The term “monopole+mask leakage” is used as a shorthand for a specific mechanism (a spatially uniform classifier monopole coupling to an inhomogeneous depth/mask geometry) but sometimes appears without the “uniform” qualifier, which could be confused with more general mask‑systematics. For example, Sec. IV D says “monopole-only null” and “monopole+mask leakage” while Appendix D e–g discusses additional morphology/PSF/depth templates that go beyond a strict monopole.   Required fix: Where “monopole…
-
-## Other findings (92)
+## Other findings (101)
 
 - **[P4_Claude_brutal/P4-E2/ESSENTIAL]**: ### P4-E2 — σ–p inconsistency on the real-space dipole headline **Sec. III A, Sec. IV C, p. 4.** The real-space dipole is reported as "+0.43σ (p = 0.30, isotropic-null bootstrap)." For a standard Gaussian one-sided test, P(Z > 0.43) ≈ 0.334; two-sided ≈ 0.668. p = 0.30 corresponds to ≈ 0.52σ one-sided or ≈ 1.04σ two-sided, not 0.43σ. The convention used (bootstrap rank? amplitude-only?) must be ex…
 - **[P4_Claude_brutal/P4-E6/ESSENTIAL]**: ### P4-E6 — Zero figures **Entire paper.** This is a methods paper claiming an angular dipole measurement, a power-spectrum reduction, a mask-leakage generative null, an injection-recovery sweep, multiple multipole bandpowers, and a 5-anchor systematic study. There are **no figures at all**: no sky map of A_p, no MASTER C_ℓ vs ℓ, no monopole-leakage null distribution histogram, no injection-recove…
@@ -223,6 +226,15 @@ Reviewers: P4_Perplexity_citations
 - **[P4_Grok_brutal/P4-N2/NIT]**: **P4-N2 (MINOR)** — Appendix B (p. 7): Equation (B1) defines the flip-equivariance loss but does not specify the numerical value of \(\lambda\) used in the final training run (only the search value \(\lambda=0.5\) appears). Required fix: state the adopted \(\lambda\).
 - **[P4_Grok_brutal/P4-N3/NIT]**: **P4-N3 (NIT)** — All tables: several \(\sigma\) entries are given to three decimal places while the underlying MC ensembles are only 500–10{,}000 realizations; rounding to two decimals is statistically warranted.
 - **[P4_Grok_brutal/P4-N4/NIT]**: **P4-N4 (NIT)** — References: arXiv IDs and journal years are internally consistent, but Ref. [7] (Jia et al. 2023) is cited for a 1.95 M galaxy catalog while the present work uses 8.47 M; no explicit statement that the two catalogs overlap in footprint.  ## Summary recommendation
+- **[P4_META_REVIEW/P4-META-M1/MAJOR]**: P4-META-M1 Severity: MAJOR Section/page: Appendix B, Table V (Bias hardening), p. 8; Methods Sec. III C, p. 3 Why others missed it: Prior reviewers noted bias tests were “generous,” but none analyzed the geometry of the specific metadata-leakage tests used. Specific problem: T5 “metadata leakage” tests |r(pCW, RA/Dec)|<0.10. Correlating with RA or Dec separately is not rotation-invariant on the sp…
+- **[P4_META_REVIEW/P4-META-M2/MAJOR]**: P4-META-M2 Severity: MAJOR Section/page: Sec. III C (TTA choice) p. 3; Appendix B Table V (T2), p. 8 Why others missed it: Rotation TTA was discussed as “not needed,” but no one connected this to survey roll-angle anisotropy. Specific problem: The paper uses only horizontal-flip TTA and argues rotations “do not change chirality,” so rotation-TTA would only probe non-equivariance. However, the imag…
+- **[P4_META_REVIEW/P4-META-M3/MAJOR]**: P4-META-M3 Severity: MAJOR Section/page: Sec. VI A (Injection–recovery), p. 6; Appendix D (systematics), p. 8 Why others missed it: Injection threshold was accepted at face value; no one asked about directional dependence. Specific problem: The empirical “50%-recovery-at-3σ threshold A ≈ 0.75%” is quoted without stating or scanning the injected dipole direction. On a highly anisotropic, patchy foo…
+- **[P4_META_REVIEW/P4-META-M4/MAJOR]**: P4-META-M4 Severity: MAJOR Section/page: Sec. IV B (spatial uniformity claim), p. 4 Why others missed it: The text’s “uniform across 7 equatorial coordinate slabs” sounds innocuous; reviewers did not unpack its limited power. Specific problem: The claim “spatially uniform across 7 equatorial coordinate slabs … and does not produce a dipole” is not a valid test of a general dipole. Binning by Dec (…
+- **[P4_META_REVIEW/P4-META-M5/MAJOR]**: P4-META-M5 Severity: MAJOR Section/page: Appendix A.a (monopole subtraction/weighting), p. 7; Sec. IV C–D, pp. 4–5 Why others missed it: Weighting choice was noted qualitatively, but not the null–field mismatch it induces. Specific problem: The harmonic-space pipeline subtracts the galaxy-weighted (Wp = Nall) monopole and uses the same Wp as the NaMaster weight. However, the per-pixel shuffle null…
+- **[P4_META_REVIEW/P4-META-M6/MAJOR]**: P4-META-M6 Severity: MAJOR Section/page: Sec. II A (Data), p. 2 Why others missed it: Assumed benign; no one questioned RA/Dec provenance. Specific problem: “Sky coordinates are obtained by cross-matching against the Galaxy Zoo DESI predictions catalog [9].” The DESI Legacy DR8 source table already contains RA/Dec keyed by dr8_id. Pulling positions from a separate predictions table introduces the …
+- **[P4_META_REVIEW/P4-META-m1/MINOR]**: P4-META-m1 Severity: MINOR Section/page: Appendix B, Table V, T1 (flip-swap), p. 8 Why others missed it: Flip-TTA was taken as an implementation detail. Specific problem: Reporting T1 “flip-swap consistency r = 1.000” as a passed bias test is tautological: the 2-fold TTA protocol in Eq. (2) enforces flip equivariance by construction. This tells the reader nothing about classifier bias and inflates…
+- **[P4_META_REVIEW/P4-META-m2/MINOR]**: P4-META-m2 Severity: MINOR Section/page: Sec. IV B, p. 4 Why others missed it: Focus was on the 2.05% vs 0.79% inconsistency; the statistical part of the uniformity claim went unchallenged. Specific problem: “All 7 equatorial coordinate slabs within 0.5% of 50/50” is presented without confidence intervals or an overall hypothesis test. With the stated N, even 0.2–0.3% per-slab deviations can be ma…
+- **[P4_META_REVIEW/P4-META-m3/MINOR]**: P4-META-m3 Severity: MINOR Section/page: Sec. III A; Sec. VII d (falsification), pp. 3, 7 Why others missed it: They critiqued the rhetoric but not the directional dependence that undercuts it. Specific problem: The “falsification criterion” and sensitivity floor are quoted without marginalizing over dipole direction, while the detection probability and required amplitude are orientation-dependent…
 - **[P4_OpenAI_methodology/P4-E1/ESSENTIAL]**: P4-E1 (Sec. III.C + App. A; pp. 3 and 7): Inconsistent definition of the asymmetry field Ap used in NaMaster - Quote:   - Eq. (3) (p. 4): “Ap = (N(p)CW − N(p)CCW)/(N(p)CW + N(p)CCW).”   - Appendix A.a (p. 7): “The asymmetry field is Ap = (NCW − NCCW)/(NCW + NCCW) (spirals only).”   - Appendix A.c (p. 7): “Field: scalar (spin-0) asymmetry map Ap = (NCW − NCCW)/Ntotal, with galaxy-weighted mask-mean…
 - **[P4_OpenAI_methodology/P4-E5/ESSENTIAL]**: P4-E5 (Sec. IV.C.a; p. 4): Inconsistent σ and p-value for the real-space dipole - Quote: “the fitted dipole has amplitude significance 0.43σ (p = 0.30 from the isotropic-null bootstrap, NMC = 10,000).” - Problem: If σ is the standard deviation from the same bootstrap null, 0.43σ corresponds to a two-sided Gaussian p ~ 0.66, not 0.30. If the distribution is non-Gaussian/skewed, explain how σ is com…
 - **[P4_OpenAI_methodology/P4-M1/MAJOR]**: P4-M1 (Null definitions; throughout): Ambiguity between “per-pixel shuffle,” “random-label permutation,” and “binomial monopole-only” nulls - Problem: The paper uses several distinct null procedures (per-pixel random permutations; per-pixel binomial draws with pglobal; isotropic bootstrap). Which null is used for which line in Tables I–IV is not always explicit, and the terms are used interchangea…

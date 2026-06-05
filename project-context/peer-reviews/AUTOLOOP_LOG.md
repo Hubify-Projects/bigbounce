@@ -286,3 +286,69 @@ Total NEW ESS this round = **4** (loop continues — need 0 NEW ESS for 3 consec
 The PERSISTENCE of P4-META-E1 (binomial null using N_all instead of N_spiral) and P5 T-Web/V-Web across both fire 1 and fire 2 confirms these are real issues that require Houston-level scientific judgment to fix (not mechanical). They will keep firing in every autoloop iteration until the underlying analysis or text is updated.
 
 Next fire: 16:17 via cron.
+
+## 2026-06-05_1617pt — round=auto-2026-06-05_1617pt
+
+  - P1A: 165 findings, 7 consensus, meta=yes (   10194 chars)
+  - P1B: 115 findings, 3 consensus, meta=yes (   10726 chars)
+  - P2: 122 findings, 1 consensus, meta=yes (   10939 chars)
+  - P3: 140 findings, 4 consensus, meta=yes (   11147 chars)
+  - P4: 160 findings, 8 consensus, meta=yes (   13475 chars)
+  - P5: 163 findings, 7 consensus, meta=yes (   10904 chars)
+
+## Cross-round diff: `auto-2026-06-05_1517pt` → `auto-2026-06-05_1617pt`
+
+- **P1A**: 165 findings, 7 consensus | appeared=7, disappeared=2, new ESSENTIAL=1
+    + NEW ESS [companion,future_date] caught by 1 reviewer(s)
+    - CLOSED [length] (was caught by 1 prev)
+    - CLOSED [table_ii,companion,audit_artifact] (was caught by 1 prev)
+- **P1B**: 115 findings, 3 consensus | appeared=1, disappeared=0, new ESSENTIAL=0
+- **P2**: 122 findings, 1 consensus | appeared=1, disappeared=1, new ESSENTIAL=0
+    - CLOSED [length] (was caught by 1 prev)
+- **P3**: 140 findings, 4 consensus | appeared=2, disappeared=1, new ESSENTIAL=0
+    - CLOSED [table_ii,table_iv] (was caught by 1 prev)
+- **P4**: 160 findings, 8 consensus | appeared=11, disappeared=9, new ESSENTIAL=2
+    + NEW ESS [label_noise,gz1_stale_n] caught by 1 reviewer(s)
+    + NEW ESS [sigma_mixing,table_ii,fisher_floor] caught by 1 reviewer(s)
+    - CLOSED [fisher_floor,dilution_factor] (was caught by 1 prev)
+    - CLOSED [fsky_effective] (was caught by 1 prev)
+    - CLOSED [length] (was caught by 1 prev)
+    - CLOSED [shamir_citation,dilution_factor] (was caught by 1 prev)
+    - CLOSED [table_ii,fsky_effective] (was caught by 1 prev)
+    - CLOSED [table_ii,shamir_citation,label_noise] (was caught by 1 prev)
+    - CLOSED [table_ii,table_iv,weighting] (was caught by 1 prev)
+    - CLOSED [table_iv,table_iv_z] (was caught by 1 prev)
+    - CLOSED [weighting,fsky_effective] (was caught by 1 prev)
+- **P5**: 163 findings, 7 consensus | appeared=7, disappeared=8, new ESSENTIAL=1
+    + NEW ESS [sigma_mixing] caught by 3 reviewer(s)
+    - CLOSED [companion,audit_artifact] (was caught by 1 prev)
+    - CLOSED [shamir_citation,companion] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,companion] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [table_ii,future_date,tweb_vweb,dedup_audit] (was caught by 1 prev)
+    - CLOSED [table_ii,shamir_citation,companion] (was caught by 1 prev)
+    - CLOSED [table_ii,shamir_citation,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [table_iv] (was caught by 1 prev)
+
+### Cross-paper pattern candidates (consensus key appearing in 2+ papers)
+
+- `audit_artifact` → in 4 papers: ['P1A', 'P1B', 'P3', 'P4']
+- `companion` → in 6 papers: ['P1A', 'P1B', 'P2', 'P3', 'P4', 'P5']
+- `companion,length` → in 2 papers: ['P1A', 'P1B']
+- `dedup_audit` → in 2 papers: ['P3', 'P5']
+- `duplicate_phrase` → in 2 papers: ['P3', 'P5']
+- `future_date` → in 6 papers: ['P1A', 'P1B', 'P2', 'P3', 'P4', 'P5']
+- `length` → in 2 papers: ['P3', 'P5']
+- `shamir_citation` → in 3 papers: ['P1A', 'P4', 'P5']
+- `sigma_mixing` → in 6 papers: ['P1A', 'P1B', 'P2', 'P3', 'P4', 'P5']
+- `sigma_mixing,table_ii` → in 2 papers: ['P1A', 'P5']
+- `table_ii` → in 5 papers: ['P1A', 'P1B', 'P3', 'P4', 'P5']
+- `table_ii,companion` → in 2 papers: ['P1A', 'P1B']
+- `table_iv` → in 3 papers: ['P1A', 'P3', 'P4']
+- `table_iv,companion` → in 2 papers: ['P1A', 'P3']
+
+**Total NEW ESSENTIAL across all 6 papers this round: 4**
+
+**Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
+
+---
