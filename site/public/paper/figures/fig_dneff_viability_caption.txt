@@ -1,0 +1,27 @@
+Figure X: Physical viability of the preferred ΔNeff region.
+
+(a) Preliminary posterior distributions for ΔNeff from Paper 1 MCMC chains
+(cohort_main, chains 2-7) under three dataset combinations: Planck+BAO (blue),
+Planck+BAO+SN (red), and the full tension dataset (green). The yellow shaded
+band indicates the preferred region ΔNeff ≈ 0.1-0.2 where the spin-torsion
+model provides the best fit to data. The dashed vertical line marks the ΛCDM
+value ΔNeff = 0.
+
+(b) Observational upper bounds on ΔNeff from BBN (Yeh et al. 2022;
+ΔNeff < 0.5), CMB (Planck 2018; ΔNeff < 0.34), ACT DR6 (Calabrese et al.
+2025), and the Paper 1 preferred region. All constraints are mutually
+compatible in the range ΔNeff ≈ 0.1-0.2.
+
+(c) Reheating mechanism parameter space from the WP4 microphysics scan at
+T_rh = 10^6 GeV, showing predicted ΔNeff as a function of the hidden-sector
+degrees of freedom g_{*,hidden} and the dark radiation branching ratio Br_dr.
+White dashed contours mark ΔNeff = 0.10 and 0.20; the yellow solid contour
+marks ΔNeff = 0.15 (best fit). The darkened region is excluded by BBN and CMB
+constraints. The orange contour highlights the overlap region where both
+observational constraints are satisfied and the predicted ΔNeff falls within
+the cosmologically preferred range. This demonstrates that a modest
+hidden-sector particle content (g_{*,hidden} ~ 5-10) with small branching
+ratios (Br_dr ~ 10^{-2}) naturally produces the preferred ΔNeff ~ 0.15.
+
+Draft figure — posteriors and contours will be updated once final MCMC
+convergence is achieved (R-hat-1 < 0.01 target).

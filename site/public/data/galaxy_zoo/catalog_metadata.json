@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-03-04T02:22:47.602646Z",
+  "catalogs": [
+    {
+      "name": "Galaxy Zoo DESI",
+      "galaxies": 8670000,
+      "reference": "Walmsley et al. 2023",
+      "source": "HuggingFace: mwalmsley/gz_desi",
+      "key_feature": "Spiral direction classifications"
+    },
+    {
+      "name": "Galaxy Zoo 2",
+      "galaxies": 304122,
+      "reference": "Willett et al. 2013",
+      "source": "VizieR: J/MNRAS/435/2835",
+      "key_feature": "Detailed morphology votes"
+    },
+    {
+      "name": "Galaxy Zoo DECaLS",
+      "galaxies": 314000,
+      "reference": "Walmsley et al. 2022",
+      "source": "VizieR: J/MNRAS/509/3966",
+      "key_feature": "DECam morphology"
+    },
+    {
+      "name": "TNG50-CEERS",
+      "galaxies": 10000,
+      "reference": "TNG Collaboration",
+      "source": "HuggingFace: StarThomas1002/TNG50-CEERS",
+      "key_feature": "Simulated images"
+    }
+  ],
+  "paper_parameters": {
+    "A0": 0.003,
+    "p": 0.5,
+    "q": 0.5,
+    "dipole_l": 52.0,
+    "dipole_b": 68.0
+  }
+}

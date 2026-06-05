@@ -32,7 +32,7 @@
 \newcommand{\artbreak@us}{\discretionary{\char`\_}{}{\char`\_}}
 \DeclareRobustCommand{\artifact}[1]{%
  \StrSubstitute{#1}{\_}{_}[\art@urlpath]%
- \href{https://github.com/Hubify-Projects/bigbounce/blob/paper4-v1.0.153/\art@urlpath}{%
+ \href{https://github.com/Hubify-Projects/bigbounce/blob/paper4-v1.0.154/\art@urlpath}{%
  \begingroup
  \let\_\artbreak@us
  \texttt{#1}%
@@ -51,14 +51,14 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.153}
+\newcommand{\paperVersion}{v1.0.154}
 \newcommand{\paperTimestamp}{June 4, 2026 PDT}
 \newcommand{\paperRoundNote}{Catalog release manuscript; see repository README for full revision history.}
 % v1.0.152 R-INT-2026-06-04: journal-clean sweep (remove review artifacts); σ-convention paragraph; Iye:2026 citation update; editorial language neutralized.
 
 \begin{document}
 
-\preprint{HUBIFY-2026-004}
+%\preprint{arXiv:XXXX.XXXXX}
 
 \title{Survey-Scale Galaxy Chirality with Equivariant TTA:\\
 A $-0.12\sigma$ Subsample-Mask $\ell\!=\!1$ Null,\\
@@ -206,7 +206,7 @@ under per-pixel-shuffle nulls; the latter is the experiment's
 sensitivity, not a frequentist upper limit on the measured signal).
 The measured dipole is consistent with null isotropy-breaking at
 sub-percent sensitivity (the primary present-pipeline strict-HC
-\texttt{wave\_14\_nn} sweep gives a $0.75\%$ $50\%$-recovery-at-$3\sigma$
+injection sweep gives a $0.75\%$ $50\%$-recovery-at-$3\sigma$
 threshold; related strict-HC pipeline variants span $0.75\!-\!1.5\%$
 under different per-pixel-count predicates; see
 Sec.~\ref{sec:sensitivity}): the equivariant CW fraction is
@@ -3185,7 +3185,7 @@ in Table~\ref{tab:mc_injection}.
 
 \begin{table}[h]
 \caption{\label{tab:mc_injection}Per-pixel-shuffle empirical injection-recovery
-sweep on the canonical strict-HC subsample (\texttt{wave\_14\_nn} pipeline: $N\!=\!471{,}049$ HC spirals with $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.9$ AND per-pixel-count $\geq\!10$ filter; companion \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak wave\allowbreak \_14\allowbreak \_nn\allowbreak \_injection\allowbreak \_recovery.json}; $N_{\rm inj}\!=\!100$ axes per amplitude; $N_{\rm MC,null}\!=\!500$). The extended sweep adds the $A\!\in\!\{0.75,\,1.00,\,1.50,\,2.00\}\%$ rows that complete the $50\%$-recovery-3$\sigma$ localization at $A\!=\!0.75\%$ under this pipeline. (pipeline-choice sensitivity range: three companion sweeps exist with different predicates and slightly different per-pixel-count filters: (a) the \texttt{wave\_14\_nn} primary sweep used here ($N\!=\!471{,}049$ strict HC + pix-count $\geq\!10$ filter; $50\%$-rec-3$\sigma$ at $A\!=\!0.75\%$); (b) the extended sweep at HC-broad $p_{\rm eq}\!>\!0.6$ (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended.json}; $n\!\approx\!949{,}584$; $50\%$-rec-3$\sigma$ also at $A\!=\!0.75\%$, larger $N$ partly offsets the looser confidence cut); (c) a strict-HC sweep without the per-pixel-count filter (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended\allowbreak \_hc09.json}; $N\!=\!496{,}531$; $50\%$-rec-3$\sigma$ at $A\!=\!1.5\%$). The three thresholds bracket the pipeline-choice sensitivity range $[0.75\%, 1.5\%]$. We adopt $0.75\%$ as the canonical present-pipeline threshold for the abstract + falsification criterion because it is the threshold of the \texttt{wave\_14\_nn} pipeline that produced Table I row (vi); $1.5\%$ is reported as a robustness stress test under a less-restrictive per-pixel-count pipeline. The two cited cuts are non-identical predicates and should not be cross-cited as the same sweep.)}
+sweep on the canonical strict-HC subsample (primary pipeline: $N\!=\!471{,}049$ HC spirals with $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.9$ AND per-pixel-count $\geq\!10$ filter; companion \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak wave\allowbreak \_14\allowbreak \_nn\allowbreak \_injection\allowbreak \_recovery.json}; $N_{\rm inj}\!=\!100$ axes per amplitude; $N_{\rm MC,null}\!=\!500$). The extended sweep adds the $A\!\in\!\{0.75,\,1.00,\,1.50,\,2.00\}\%$ rows that complete the $50\%$-recovery-3$\sigma$ localization at $A\!=\!0.75\%$ under this pipeline. (pipeline-choice sensitivity range: three companion sweeps exist with different predicates and slightly different per-pixel-count filters: (a) the primary sweep used here ($N\!=\!471{,}049$ strict HC + pix-count $\geq\!10$ filter; $50\%$-rec-3$\sigma$ at $A\!=\!0.75\%$); (b) the extended sweep at HC-broad $p_{\rm eq}\!>\!0.6$ (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended.json}; $n\!\approx\!949{,}584$; $50\%$-rec-3$\sigma$ also at $A\!=\!0.75\%$, larger $N$ partly offsets the looser confidence cut); (c) a strict-HC sweep without the per-pixel-count filter (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended\allowbreak \_hc09.json}; $N\!=\!496{,}531$; $50\%$-rec-3$\sigma$ at $A\!=\!1.5\%$). The three thresholds bracket the pipeline-choice sensitivity range $[0.75\%, 1.5\%]$. We adopt $0.75\%$ as the canonical present-pipeline threshold for the abstract + falsification criterion because it is the threshold of the primary pipeline that produced Table I row (vi); $1.5\%$ is reported as a robustness stress test under a less-restrictive per-pixel-count pipeline. The two cited cuts are non-identical predicates and should not be cross-cited as the same sweep.)}
 \begin{ruledtabular}
 \begin{tabular}{ccccc}
 $A$ & $\langle\sigma\rangle$ & $P(\sigma{>}2)$ & $P(\sigma{>}3)$ &
@@ -3538,7 +3538,7 @@ $0.4974$ baseline, with the dominant contributor to the
 $\Delta\!=\!1.41\%$ fracdev spread coming from the small-$N$
 $(fracdev > 0.5)$ bin ($n\!=\!10{,}941$). For the PSF-systematics
 analog (which is not bin-tabulated to per-bin CW fractions in the
-production artifacts), Wave 14-JJ reports
+production artifacts), the PSF-systematics analysis reports
 $|r_{\rm cw, e_1}|\!=\!0.043$ and $|r_{\rm cw, e_2}|\!=\!0.042$
 Pearson correlations between CW probability and PSF-ellipticity
 components, with the maximum bandpower-binned cross-power z-score
@@ -4168,7 +4168,7 @@ by a bias-hardened Vision Transformer. Our main conclusions are:
 
 \item \textbf{Falsification criterion.} The null result presented
  here is binary-testable: if a future survey (e.g.\ LSST Y3) detects
- a chirality dipole in a $\geq\!10^{7}$-galaxy sample with amplitude $A$ at or above $\gtrsim\!0.75\%$ at $>\!5\sigmaunit$ post-equivariant-averaging, where $0.75\%$ is the demonstrated 50\%-recovery-at-$3\sigma$ threshold on the primary present-pipeline strict-HC \texttt{wave\_14\_nn} injection sweep (related strict-HC pipeline variants span $0.75\!-\!1.5\%$) (the lower LSST-scale projection of $\sim\!0.44\%$ from Fisher $\sqrt{3}$ sample-size scaling is NOT a present-pipeline-demonstrated criterion and is conditional on a dedicated LSST-specific injection-recovery analysis with the LSST systematics budget; the $A\!\geq\!0.1\%$ and $A\!\geq\!0.5\%$ thresholds quoted in prior drafts are not justified by this methods paper as hard falsification criteria and have been removed),
+ a chirality dipole in a $\geq\!10^{7}$-galaxy sample with amplitude $A$ at or above $\gtrsim\!0.75\%$ at $>\!5\sigmaunit$ post-equivariant-averaging, where $0.75\%$ is the demonstrated 50\%-recovery-at-$3\sigma$ threshold on the primary present-pipeline strict-HC injection sweep (related strict-HC pipeline variants span $0.75\!-\!1.5\%$) (the lower LSST-scale projection of $\sim\!0.44\%$ from Fisher $\sqrt{3}$ sample-size scaling is NOT a present-pipeline-demonstrated criterion and is conditional on a dedicated LSST-specific injection-recovery analysis with the LSST systematics budget; the $A\!\geq\!0.1\%$ and $A\!\geq\!0.5\%$ thresholds quoted in prior drafts are not justified by this methods paper as hard falsification criteria and have been removed),
  look-elsewhere-corrected significance, then the result of this
  paper is falsified and a cosmological chirality dipole at the
  detected amplitude must be accepted. We do not require axis-alignment
