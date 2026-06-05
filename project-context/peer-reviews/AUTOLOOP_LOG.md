@@ -352,3 +352,39 @@ Next fire: 16:17 via cron.
 **Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
 
 ---
+## Fire 3 (auto-2026-06-05_1617pt) complete
+
+| Paper | Findings | Consensus | META-ESS |
+|---|---|---|---|
+| P1A | 165 | 7 | 1 |
+| P1B | 115 | 3 | 4 |
+| P2  | 122 | 1 | 2 |
+| P3  | 140 | 4 | 4 |
+| P4  | 160 | 8 | 2 |
+| P5  | 163 | 7 | 2 |
+| **TOTAL** | **865** | **30** | **15 META-ESS** |
+
+### Cross-round delta (fire 2 → fire 3)
+- 4 NEW non-meta ESSENTIAL (P1A: companion+future_date; P4: label_noise+gz1_stale_n possible regression; P4: sigma_mixing+table_ii+fisher_floor; P5: sigma_mixing consensus 3 reviewers)
+- 22 CLOSED
+
+### Persistence-tracker results (after 3 fires)
+🔴 **LOAD-BEARING (3/3 rounds)**:
+- P1B `lee` (look-elsewhere double-correction: max-stat MC + Bonferroni)
+- P4 `binomial` (n_total vs N_spiral in null generation)
+
+🟡 RECURRING (2/3 rounds):
+- P1B `master`, P3 `dedup`, P4 `leakage`
+
+The 2 LOAD-BEARING items are CONFIRMED scientific issues requiring Houston
+decision (not mechanical fixes). They will continue to surface in every
+autoloop fire until the underlying analysis/text is updated.
+
+### Self-terminate condition
+NEW ESS this round = 4 (NOT 0). Counter resets:
+- Round count toward 3-consecutive-zero: 0
+- Loop continues. Next fire: 17:17.
+
+### Improvements this fire
+- `tools/v3_persistence_tracker.py` — cross-fire fingerprint tracking
+- Confirmed pattern-037/038/039 firing on 6/6/5 papers respectively across 3/3 rounds
