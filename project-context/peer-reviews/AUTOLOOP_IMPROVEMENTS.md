@@ -29,3 +29,36 @@ Each entry: timestamp, observation, proposed improvement. Apply ones that demons
 - Find the cause of "ESS=0 / NIT=44" undercount in Perplexity output. Probably because Perplexity puts finding IDs in markdown table format that the parser doesn't recognize.
 
 ---
+
+## 2026-06-05 15:18pt — autoloop fire 2 setup
+
+**Improvement applied**: wired patterns 037, 038, 039 into
+`~/.claude/scistack/hubstack/learning-loop/paper-pre-review-check/SKILL.md`.
+These three patterns were auto-detected as cross-paper firings (fire 1)
+appearing in 5-6 of 6 papers. The skill now has mechanical detection rules
+so future R-rounds can catch them at compile time vs at review time.
+
+**Improvement applied**: `tools/check_new_patterns.sh` runs the mechanical
+detection on every paper. Initial baseline:
+  P1A: clean
+  P1B: clean
+  P2:  ⚠ σ in 7 captions but 0 qualifier mentions (p038)
+  P3:  clean
+  P4:  ⚠ σ in 3 captions but 2 qualifier mentions (p038, close)
+  P5:  ⚠ σ in 2 captions but 0 qualifier mentions (p038)
+
+These hits will get logged in the next triage queue. P2, P4, P5 should
+add `\sigmadisclaimer{}` macro to affected captions.
+
+**Observation**: p037 future-year regex matches 2027+ but today is 2026,
+so the "June 2026" dates are actually CURRENT. The pattern fires
+because LLM reviewers have knowledge-cutoffs in 2024-2025 and incorrectly
+flag "2026" as future. The real fix may be to use ISO-format dates that
+make the year unambiguous to humans, or simply accept that this pattern
+will keep firing until LLM reviewers catch up.
+
+**Improvement queued**:
+- Add cross-paper bibkey collision check (pattern-032 already covers this — verify it runs)
+- Add stale-number-between-sections mechanical check (P4-E12 type) — search for repeated
+  exact integers across sections and flag if same identity but different value.
+- Wire pattern-038 σ-qualifier check into post-compile pdflatex audit (latex-audit skill).
