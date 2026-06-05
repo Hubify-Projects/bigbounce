@@ -236,8 +236,7 @@ equivariant ViT-Small classifier with $Z_2$ test-time augmentation.
 The canonical labels live in the column \texttt{class\_eq} of the
 HuggingFace catalog
 (\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
-{bamfai/galaxy-chirality-catalog}, immutable revision
-\texttt{paper4-v1.0.122}). The catalog inherits sky positions from
+{bamfai/galaxy-chirality-catalog}). The catalog inherits sky positions from
 DESI Legacy DR8 Tractor and is not redshift-resolved beyond Tractor
 photo-$z$; this paper supplies spectroscopic redshifts and environment
 context by joining to DESI Data Release~1.
@@ -260,8 +259,8 @@ classification.
 
 \subsection{Chirality catalog (Paper IV)}
 
-We use the immutable HuggingFace revision \texttt{paper4-v1.0.122},
-filtered to the chirality-relevant \texttt{class\_eq} $\in$
+We use the HuggingFace galaxy chirality catalog,
+filtered to the chirality-relevant equivariant class $\in$
 \{\texttt{CW}, \texttt{CCW}\}. Imaging-leg provenance is retained for
 the per-leg systematics split in Section~\ref{sec:systematics}:
 BASS+MzLS, DECaLS, DES.
